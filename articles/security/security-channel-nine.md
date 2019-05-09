@@ -4,7 +4,7 @@ description: この記事では、Channel 9 の Azure セキュリティに関�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9e5e14aa-11d7-4242-8b7e-49fd0e79817a
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: b6e4539be76449093de0587e43b0e97243602967
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 148b26cc694abaa09bf5016f3c2f2fe3a1c12a70
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540137"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109811"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Channel 9 で配信中の Azure セキュリティに関するビデオ
 [Channel 9](https://channel9.msdn.com/) は製品を提供する側とお客様を結び付けるコミュニティです。
@@ -66,7 +66,7 @@ Azure にデプロイする重要なアプリはすべて、接続文字列、�
 
 Azure 仮想ネットワークでのネットワーク セキュリティ グループの使用方法を、シニア プログラム マネージャーの Narayan Annamalai が Scott に説明します。 サブネットとネットワークによって、Azure 内のオブジェクトへのアクセス制御を作成することができます。 PowerShell を使用して、アクセスを制御し、Azure 内にグループを作成する方法を説明します。
 
-[Azure AD Privileged Identity Management: Security Wizard, Alerts, Reviews (Azure AD Privileged Identity Management: セキュリティ ウィザード、アラート、レビュー)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews)
+[Azure AD Privileged Identity Management: Security Wizard, Alerts, Reviews (セキュリティ ウィザード、アラート、レビュー)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews)
 
 Azure Active Directory (AD) の Privileged Identity Management は、特権 ID と、特権 ID によるリソースへのアクセスを検出、制限、および監視することができるプレミアム機能です。 必要に応じて、オンデマンドのジャスト イン タイム管理アクセスも適用されます。 内容は次のとおりです。
 

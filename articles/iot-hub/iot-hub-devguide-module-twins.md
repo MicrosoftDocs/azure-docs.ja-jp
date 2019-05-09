@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 1b76bfded6562f61a0a9f4a870a18a1fff71bc6a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309738"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295744"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub のモジュール ツインの理解と使用
 
@@ -93,7 +93,7 @@ ms.locfileid: "49309738"
             "telemetryConfig": {
                 "sendFrequency": "5m",
                 "status": "success"
-            }
+            },
             "batteryLevel": 55,
             "$metadata" : {...},
             "$version": 4
@@ -174,7 +174,7 @@ ms.locfileid: "49309738"
 
 * **ツイン通知の受信** この操作は、ソリューション バックエンドでツインが変更されたときに通知できるようにします。 そのためには、IoT ソリューションでルートを作成し、データ ソースの値を *twinChangeEvents* に設定する必要があります。 既定では、ツイン通知は送信されません。つまり、このようなルートは事前に存在しません。 変化率が高すぎる場合、または内部エラーなどの理由のために、IoT Hub はすべての変更を含む 1 つの通知のみを送信する場合があります。 そのため、アプリケーションに信頼性の高い監査とすべての中間状態のログ記録が必要な場合は、device-to-cloud メッセージを使用する必要があります。 ツイン通知メッセージには、プロパティおよび本文が含まれます。
 
-    - Properties
+  - Properties
 
     | Name | 値 |
     | --- | --- |
@@ -191,26 +191,26 @@ ms.locfileid: "49309738"
 
     メッセージのシステム プロパティには、`$` シンボルが付きます。
 
-    - 本文
+  - 本文
         
     このセクションには、すべてのツイン変更が JSON 形式で含まれています。 修正プログラムと同じ形式を使用しますが、すべてのツイン セクション (タグ、properties.reported、properties.desired) を含めることができ、"$metadata" 要素を含みます。 たとえば、次のように入力します。
 
     ```json
     {
-        "properties": {
-            "desired": {
-                "$metadata": {
-                    "$lastUpdated": "2016-02-30T16:24:48.789Z"
-                },
-                "$version": 1
-            },
-            "reported": {
-                "$metadata": {
-                    "$lastUpdated": "2016-02-30T16:24:48.789Z"
-                },
-                "$version": 1
-            }
-        }
+      "properties": {
+          "desired": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          },
+          "reported": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          }
+      }
     }
     ```
 
@@ -300,7 +300,7 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
             "telemetryConfig": {
                 "sendFrequency": "5m",
                 "status": "success"
-            }
+            },
             "batteryLevel": "55%",
             "$metadata": {
                 "telemetryConfig": {
@@ -309,7 +309,7 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
                         "$lastUpdated": "2016-03-31T16:35:48.789Z"
                     },
                     "$lastUpdated": "2016-03-31T16:35:48.789Z"
-                }
+                },
                 "batteryLevel": {
                     "$lastUpdated": "2016-04-01T16:35:48.789Z"
                 },
@@ -327,7 +327,7 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
 ## <a name="optimistic-concurrency"></a>オプティミスティック コンカレンシー
 
 タグ、必要なプロパティ、報告されたプロパティはすべて、オプティミスティック コンカレンシーをサポートします。
-タグには、[RFC7232]()https://tools.ietf.org/html/rfc7232 のとおり ETag が含まれています。これは、タグの JSON 表現を表します。 ETag を使用すると、条件付き更新操作をソリューション バックエンドから実行し、一貫性を保持できます。
+タグは、[RFC7232](https://tools.ietf.org/html/rfc7232) に従って ETag を持ちます。これは、タグの JSON 表現を表します。 ETag を使用すると、条件付き更新操作をソリューション バックエンドから実行し、一貫性を保持できます。
 
 モジュール ツインの必要なプロパティと報告されるプロパティには ETag はありませんが、`$version` の値によって確実に増分されます。 ETag と同様、更新側がバージョンを使用することで更新プログラムの一貫性を確保することができます。 たとえば、報告されたプロパティ用のモジュール アプリ、または目的のプロパティのソリューション バックエンドです。
 

@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 02a12cc9fc614a642a5dad37e21bd8343c669aad
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 90ec7cf4964440d39b3f69eb9ae9708eaafe3748
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631142"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579038"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性
 
@@ -44,6 +44,7 @@ ms.locfileid: "45631142"
 
 [suse-ha-guide]:https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
+[suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -76,6 +77,7 @@ ms.locfileid: "45631142"
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
 * [SUSE SAP HA Best Practice Guides (SUSE SAP HA ベスト プラクティス ガイド)][suse-ha-guide]: このガイドには、オンプレミスで Netweaver HA と SAP HANA System Replication を設定するために必要なすべての情報が記載されています。 一般的なベースラインとしてこのガイドを使用してください。 このガイドには詳細な情報が提供されています。
+* [SUSE High Availability Extension 12 SP3 リリース ノート][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>概要
 
@@ -92,15 +94,16 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
 * バックエンドの構成
   * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 * プローブ ポート
-  * ポート 620**&lt;nr&gt;**
-* 負荷分散規則
-  * 32**&lt;nr&gt;** TCP
-  * 36**&lt;nr&gt;** TCP
-  * 39**&lt;nr&gt;** TCP
-  * 81**&lt;nr&gt;** TCP
-  * 5**&lt;nr&gt;** 13 TCP
-  * 5**&lt;nr&gt;** 14 TCP
-  * 5**&lt;nr&gt;** 16 TCP
+  * ポート 620<strong>&lt;nr&gt;</strong>
+* Load 
+* 分散規則
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 36<strong>&lt;nr&gt;</strong> TCP
+  * 39<strong>&lt;nr&gt;</strong> TCP
+  * 81<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -109,12 +112,12 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
 * バックエンドの構成
   * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 * プローブ ポート
-  * ポート 621**&lt;nr&gt;**
+  * ポート 621<strong>&lt;nr&gt;</strong>
 * 負荷分散規則
-  * 33**&lt;nr&gt;** TCP
-  * 5**&lt;nr&gt;** 13 TCP
-  * 5**&lt;nr&gt;** 14 TCP
-  * 5**&lt;nr&gt;** 16 TCP
+  * 33<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>高可用性 NFS サーバーのセットアップ
 
@@ -130,7 +133,8 @@ Azure Marketplace には、SUSE Linux Enterprise Server for SAP Applications 12 
 
 GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure Portal で、[ASCS/SCS マルチ SID テンプレート][template-multisid-xscs]または[集約型テンプレート][template-converged]を開きます。ASCS/SCS テンプレートで作成されるのは、SAP NetWeaver ASCS/SCS および ERS (Linux のみ) インスタンスの負荷分散規則のみであるのに対し、集約型テンプレートではデータベース (Microsoft SQL Server や SAP HANA など) の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールする予定があり、同じマシンにデータベースもインストールしたい場合は、[集約型テンプレート][template-converged]を使用してください。
+1. Azure portal で、[ASCS/SCS マルチ SID テンプレート][template-multisid-xscs]または[集約型テンプレート][template-converged]を開きます。 
+   ASCS/SCS テンプレートで作成されるのは、SAP NetWeaver ASCS/SCS および ERS (Linux のみ) インスタンスの負荷分散規則のみであるのに対し、集約型テンプレートではデータベース (Microsoft SQL Server や SAP HANA など) の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールする予定があり、同じマシンにデータベースもインストールしたい場合は、[集約型テンプレート][template-converged]を使用してください。
 1. 次のパラメーターを入力します
    1. リソース プレフィックス (ASCS/SCS マルチ SID テンプレートのみ)  
       使用するプレフィックスを入力します。 この値は、デプロイされるリソースのプレフィックスとして使用されます。
@@ -142,7 +146,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
       いずれかの Linux ディストリビューションを選択します。 この例では、SLES 12 BYOS を選択します
    6. データベースの種類  
       HANA を選択します
-   7. Sap System Size (SAP システムのサイズ)  
+   7. SAP システムのサイズ。  
       新しいシステムで提供する SAPS の量。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
    8. システムの可用性  
       [HA] を選択します
@@ -210,6 +214,9 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
       1. ASCS ERS の追加のポート
          * ASCS ERS のポート 33**02**、5**02**13、5**02**14、5**02**16 と TCP に対して上記の手順を繰り返します
 
+> [!IMPORTANT]
+> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+
 ### <a name="create-pacemaker-cluster"></a>Pacemaker クラスターの作成
 
 「[Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](high-availability-guide-suse-pacemaker.md)」の手順に従って、この (A)SCS サーバーに対して基本的な Pacemaker クラスターを作成します。
@@ -228,7 +235,8 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
    SAP SUSE クラスター コネクタの新しいバージョンをインストールしたことを確認します。 古いものの名前は sap_suse_cluster_connector であり、新しいものの名前は **sap-suse-cluster-connector**です。
 
-   <pre><code>sudo zypper info sap-suse-cluster-connector
+   ```
+   sudo zypper info sap-suse-cluster-connector
    
    Information for package sap-suse-cluster-connector:
    ---------------------------------------------------
@@ -243,7 +251,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    Status         : up-to-date
    Source package : sap-suse-cluster-connector-3.0.0-2.2.src
    Summary        : SUSE High Availability Setup for SAP Products
-   </code></pre>
+   ```
 
 1. **[A]** SAP リソース エージェントを更新します  
    
@@ -524,6 +532,8 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 1. **[1]** SAP クラスター リソースを作成します
 
+エンキュー サーバー 1 のアーキテクチャ (ENSA1) を使用する場合は、次のようにリソースを定義します。
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
@@ -550,7 +560,37 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
+  SAP では、SAP NW 7.52 の時点で、レプリケーションを含む、エンキュー サーバー 2 のサポートが導入されました。 ABAP Platform 1809 以降では、エンキュー サーバー 2 が既定でインストールされます。 エンキュー サーバー 2 のサポートについては、SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) を参照してください。
+エンキュー サーバー 2 のアーキテクチャ ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) を使用する場合は、以下のようにリソースを定義します。
+
+<pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>NW1</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
+    operations \$id=rsc_sap_<b>NW1</b>_ERS<b>02</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b>" AUTOMATIC_RECOVER=false IS_ERS=true 
+   
+   sudo crm configure modgroup g-<b>NW1</b>_ASCS add rsc_sap_<b>NW1</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>NW1</b>_ERS add rsc_sap_<b>NW1</b>_ERS<b>02</b>
+   
+   sudo crm configure colocation col_sap_<b>NW1</b>_no_both -5000: g-<b>NW1</b>_ERS g-<b>NW1</b>_ASCS
+   sudo crm configure order ord_sap_<b>NW1</b>_first_start_ascs Optional: rsc_sap_<b>NW1</b>_ASCS<b>00</b>:start rsc_sap_<b>NW1</b>_ERS<b>02</b>:stop symmetrical=false
+   
+   sudo crm node online <b>nw1-cl-0</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+  以前のバージョンからアップグレードしてエンキュー サーバー 2 に切り替える場合は、SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019) を参照してください。 
+
    クラスターの状態が正常であることと、すべてのリソースが起動されていることを確認します。 リソースがどのノードで実行されているかは重要ではありません。
+
 
    <pre><code>sudo crm_mon -r
    
@@ -683,7 +723,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 1. アプリケーション サーバーを準備します
 
-前述の「[SAP NetWeaver アプリケーション サーバーの準備](high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)」の章の手順に従って、アプリケーション サーバーを準備します。
+   前述の「[SAP NetWeaver アプリケーション サーバーの準備](high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)」の章の手順に従って、アプリケーション サーバーを準備します。
 
 1. SAP NetWeaver アプリケーション サーバーをインストールします
 
@@ -724,7 +764,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 1. HAGetFailoverConfig、HACheckConfig、および HACheckFailoverConfig をテストする
 
-   ASCS インスタンスが現在実行されているノードで、次のコマンドを \<sapsid>adm として実行します。 コマンドが FAIL で失敗した場合: メモリ不足。ホスト名にダッシュが含まれていることで発生することがあります。 これは既知の問題であり、SUSE によって ap-suse-cluster-connector パッケージで修正される予定です。
+   ASCS インスタンスが現在実行されているノードで、次のコマンドを \<sapsid>adm として実行します。 これらのコマンドが「失敗: メモリ不足」で失敗する場合は、ホスト名に含まれているダッシュが原因である可能性があります。 これは既知の問題であり、SUSE によって ap-suse-cluster-connector パッケージで修正される予定です。
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -800,7 +840,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    nw1-cl-0:~ # crm resource unmigrate rsc_sap_NW1_ASCS00
    # INFO: Removed migration constraints for rsc_sap_NW1_ASCS00
    
-   # Remove failed actions for the ERS that occured as part of the migration
+   # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
    </code></pre>
 
@@ -841,7 +881,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    <pre><code>nw1-cl-0:nw1adm 55> sapcontrol -nr 00 -host nw1-ascs -user nw1adm &lt;password&gt; -function HAFailoverToNode ""
    
    # run as root
-   # Remove failed actions for the ERS that occured as part of the migration
+   # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
    </code></pre>
 
@@ -952,7 +992,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   エンキュー ロックを作成します (たとえば、トランザクション su01 でユーザーを編集します)。 インスタンスが実行されているノードで、次のコマンドを \<sapsid>adm として実行します。 このコマンドは、ASCS インスタンスを停止し、もう一度開始します。 エンキュー ロックは、このテスト中に失われることが期待されます。
+   エンキュー ロックを作成します (たとえば、トランザクション su01 でユーザーを編集します)。 インスタンスが実行されているノードで、次のコマンドを \<sapsid>adm として実行します。 このコマンドは、ASCS インスタンスを停止し、もう一度開始します。 エンキュー サーバー 1 のアーキテクチャを使用する場合、このテストでエンキュー ロックが失われることが予想されます。 エンキュー サーバー 2 のアーキテクチャを使用する場合、エンキューは保持されます。 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>

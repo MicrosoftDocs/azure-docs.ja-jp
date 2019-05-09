@@ -4,6 +4,7 @@ description: この記事では、Azure Traffic Manager で使用できるさま
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: acdae15af1e81bf194bb9e599b97152af98ef5d4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3f41edef56b238d8789264d00d73998794fec7eb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139790"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881997"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager エンドポイント
 Microsoft Azure Traffic Manager を使用すると、世界中のさまざまなデータ センターで実行されているアプリケーションのデプロイに、ネットワーク トラフィックを分散させる方法を制御できます。 Traffic Manager では、各アプリケーションのデプロイを 'エンドポイント' として構成します。 Traffic Manager が DNS 要求を受信すると、DNS 応答で返すことができるエンドポイントを選択します。 Traffic Manager は、現在のエンドポイントの状態とトラフィック ルーティング方法に基づいて選択を行います。 詳細については、「 [Traffic Manager のしくみ](traffic-manager-how-it-works.md)」をご覧ください。
@@ -62,7 +63,7 @@ IPv4/IPv6 アドレスまたは Azure 外部のサービスには、外部エン
 
 Traffic Manager で Web アプリをエンドポイントとして構成するときの追加の考慮事項を次に示します。
 
-1. Web Apps を Traffic Manager で使用するには、その SKU が ’Standard’ 以上である必要があります。 SKU が低い Web アプリケーションの追加の試みが失敗します。 既存の Web アプリケーションの SKU をダウングレードすると、Traffic Manager がその Web アプリケーションにトラフィックを送信しなくなります。
+1. Web Apps を Traffic Manager で使用するには、その SKU が ’Standard’ 以上である必要があります。 SKU が低い Web アプリケーションの追加の試みが失敗します。 既存の Web アプリケーションの SKU をダウングレードすると、Traffic Manager がその Web アプリケーションにトラフィックを送信しなくなります。 サポートされているプランの詳細については、「[App Service のプラン](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)」を参照してください
 2. エンドポイントが HTTP 要求を受信すると、その要求の 'host' ヘッダーを使用して、どの Web アプリケーションで要求を処理するかを判断します。 ホスト ヘッダーには、'contosoapp.azurewebsites.net' など、要求を開始するための DNS 名が含まれています。 別の DNS 名を Web アプリケーションで使用するには、その DNS 名を、アプリのカスタム ドメイン名として登録する必要があります。 Web アプリケーション エンドポイントを Azure エンドポイントとして追加すると、Traffic Manager プロファイルの DNS 名は、そのアプリに自動的に登録されます。 この登録は、エンドポイントが削除されると、自動的に削除されます。
 3. 各 Traffic Manager プロファイルでは、Azure リージョンごとに最大 1 つの Web アプリ エンドポイントを使用できます。 この制約を回避するには、Web アプリケーションを外部エンドポイントとして構成します。 詳細については、[FAQ](traffic-manager-faqs.md#traffic-manager-endpoints) をご覧ください。
 

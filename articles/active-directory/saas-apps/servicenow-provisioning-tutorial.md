@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から ServiceNow に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: b3ef6e2a6b9b51c271372aa3c9342b52a4260788
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348108"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217702"
 ---
-# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>チュートリアル: ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>チュートリアル:ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から ServiceNow にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで ServiceNow と Azure AD で実行する必要がある手順について説明します。
 
@@ -50,7 +51,7 @@ ServiceNow と Azure AD の統合を構成するには、次のものが必要�
 
 Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
 
-プロビジョニング サービスを構成して有効にする前に、ServiceNow アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定したら、[エンタープライズ アプリへのユーザーまたはグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)に関する手順に従って、これらのユーザーを ServiceNow アプリに割り当てることができます。
+プロビジョニング サービスを構成して有効にする前に、ServiceNow アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを ServiceNow アプリに割り当てることができます。[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 
 > [!IMPORTANT]

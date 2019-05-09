@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 95285bf82fbf1582abcb5d95424b472d392a7a59
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134490"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863300"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -36,7 +36,7 @@ Azure DevOps Services は、作業項目 (ストーリーやタスク) を Git �
 
 各ストーリーの作業項目の Git ブランチを作成することをお勧めします。 次に、タスク作業項目ごとに、ストーリー ブランチに基づいてブランチを作成します。 ストーリーとタスクのリレーションシップに対応するこの階層的な方法でブランチを編成すると、複数のユーザーが同じプロジェクトの異なるストーリーを作業する場合や、複数のユーザーが同じストーリーの異なるタスクを作業する場合に便利です。 各チーム メンバーが異なるブランチに取り組むときや、ブランチを共有している各メンバーが異なるコードまたはその他のアーティファクトに取り組むときの競合を最小化できます。 
 
-次の図は、TDSP の推奨のブランチ戦略を示しています。 同じプロジェクトに取り組むユーザーが 1 人か 2 人だけの場合や、1 人のユーザーだけがストーリーのすべてのタスクに取り組む場合には特に、ここで示すほど多くのブランチは必要ありません。 ただし、開発ブランチは master ブランチから分離することを常にお勧めします。 これにより、リリース ブランチが開発アクティビティによって中断されるのを防ぐことができます。 Git ブランチ モデルのより詳細な説明は、「[A Successful Git Branching Model (成功する Git ブランチ モデル)](http://nvie.com/posts/a-successful-git-branching-model/)」をご覧ください。
+次の図は、TDSP の推奨のブランチ戦略を示しています。 同じプロジェクトに取り組むユーザーが 1 人か 2 人だけの場合や、1 人のユーザーだけがストーリーのすべてのタスクに取り組む場合には特に、ここで示すほど多くのブランチは必要ありません。 ただし、開発ブランチは master ブランチから分離することを常にお勧めします。 これにより、リリース ブランチが開発アクティビティによって中断されるのを防ぐことができます。 Git ブランチ モデルのより詳細な説明は、「[A Successful Git Branching Model (成功する Git ブランチ モデル)](https://nvie.com/posts/a-successful-git-branching-model/)」をご覧ください。
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
@@ -66,21 +66,21 @@ Git Bash コマンドで新しいブランチを作成することもできま�
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 手順 3.<a name='CreateapullrequestonVSTS-3'></a>Azure DevOps Services でのプル要求を作成します 
+## 手順 3.<a name='CreateapullrequestonVSTS-3'></a>Azure DevOps Services での pull request を作成します 
 
-いくつかのコミットとプッシュの後、現在のブランチをそのベース ブランチにマージする準備ができたら、Azure DevOps Services サーバーに**プル要求**を送信できます。 
+いくつかのコミットとプッシュの後、現在のブランチをそのベース ブランチにマージする準備ができたら、Azure DevOps Services サーバーに **pull request** を送信できます。 
 
-プロジェクトのメイン ページに移動し、**[CODE]\(コード\)** をクリックします。 マージするブランチと、ブランチのマージ先の Git リポジトリ名を選択します。 次に、**[プル要求]** をクリックし、**[新しいプル要求]** をクリックして、ブランチでの作業がベース ブランチにマージされる前にプル要求レビューを作成します。
+プロジェクトのメイン ページに移動し、**[CODE]\(コード\)** をクリックします。 マージするブランチと、ブランチのマージ先の Git リポジトリ名を選択します。 次に、**[Pull Requests]** をクリックし、**[新しい pull request]** をクリックして、ブランチでの作業がベース ブランチにマージされる前に pull request レビューを作成します。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-このプル要求に関するいくつかの説明を入力し、レビュー担当者を追加し、送信します。
+この pull request に関するいくつかの説明を入力し、レビュー担当者を追加し、送信します。
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
 ## 4.<a name='ReviewandMerge-4'></a>レビューとマージ 
 
-プル要求が作成されると、レビュー担当者は、プル要求のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能しているかどうかを検査し、可能であれば、要求元と共に変更をテストする必要があります。 アセスメントに基づいて、レビュー担当者はプル要求を承認または拒否できます。 
+pull request が作成されると、レビュー担当者は、pull request のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能しているかどうかを検査し、可能であれば、要求元と共に変更をテストする必要があります。 アセスメントに基づいて、レビュー担当者は pull request を承認または拒否できます。 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 

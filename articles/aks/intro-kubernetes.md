@@ -5,21 +5,23 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: overview
-ms.date: 09/26/2018
+ms.date: 03/05/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: db6a02db3a154193a9326e2957038e5daa2faae7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a147d95701af166c650411a91fb24e3448cfec09
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992357"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995032"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS) を使用すると、マネージド Kubernetes クラスターを Azure 内に簡単にデプロイできます。 AKS では、責任の多くを Azure にオフロードすることで、Kubernetes の管理の複雑さと運用上のオーバーヘッドを軽減します。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。 Kubernetes マスターは、Azure によって管理されます。 ユーザーは、エージェント ノードの管理とメンテナンスだけを行います。 マネージド Kubernetes サービスである AKS は無料のため、マスターではなく、クラスター内のエージェント ノードに対してのみ料金を支払います。
 
 Azure portal では、Azure CLI、または Resource Manager テンプレートや Terraform などのテンプレート駆動型のデプロイ オプションを使用して、AKS クラスターを作成できます。 AKS クラスターをデプロイすると、Kubernetes マスターとすべてのノードが自動的にデプロイされ、構成されます。 デプロイ プロセス中に、高度なネットワーク、Azure Active Directory 統合、監視などの追加機能も構成できます。
+
+Kubernetes の基礎について詳しくは、[AKS における Kubernetes の中心概念][concepts-clusters-workloads]に関するページを参照してください。
 
 開始するには、[Azure portal で][aks-portal]、または [Azure CLI を使用して][aks-cli]、AKS のクイック スタートを完了します。
 
@@ -30,6 +32,8 @@ Azure portal では、Azure CLI、または Resource Manager テンプレート�
 ### <a name="identity-and-security-management"></a>ID とセキュリティ管理
 
 クラスター リソースへのアクセスを制限するため、AKS は [Kubernetes のロールベースのアクセス制御 (RBAC)][kubernetes-rbac] をサポートしています。 RBAC を使用すると、Kubernetes のリソースと名前空間へのアクセスのほか、それらのリソースに対するアクセス許可を制御することができます。 Azure Active Directory (AD) と統合されるように AKS クラスターを構成することもできます。 Azure AD の統合によって、既存の ID とグループ メンバーシップに基づいて、Kubernetes アクセスを構成できます。 Azure AD の既存のユーザーとグループには、AKS リソースへのアクセスと、統合されたサインオン エクスペリエンスを提供できます。
+
+ID の詳細については、[AKS でのアクセスと ID オプション][concepts-identity]に関するページを参照してください。
 
 AKS クラスターをセキュリティで保護するには、[Azure Active Directory と AKS の統合][aks-aad]に関するページを参照してください。
 
@@ -65,13 +69,17 @@ AKS は GPU 対応ノード プールの作成をサポートしています。 
 
 アプリケーション ワークロードをサポートするため、永続的なデータ用にストレージ ボリュームをマウントできます。 静的ボリュームと動的ボリュームの両方を使用できます。 ストレージを共有するために接続されているポッドの数に応じて、単一ポッドへのアクセスのためには Azure Disks、複数のポッドへの同時アクセスのためには Azure Files のいずれかに基づくストレージを使用できます。
 
+詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
+
 [Azure Disks][azure-disk] または [Azure Files][azure-files] を使用して、動的な永続ボリュームの利用を開始してください。
 
 ## <a name="virtual-networks-and-ingress"></a>仮想ネットワークとイングレス
 
 AKS クラスターは、既存の仮想ネットワークにデプロイできます。 この構成では、クラスター内のすべてのポッドに仮想ネットワーク内の IP アドレスが割り当てられて、クラスター内の他のポッドや仮想ネットワーク内の他のノードと、直接通信することができます。 ポッドは、ExpressRoute やサイト間 (S2S) VPN 接続を経由してピアリングされた仮想ネットワーク内の他のサービスや、オンプレミス ネットワークとも接続できます。
 
-詳細については、[AKS ネットワークの概要][aks-networking]に関するページを参照してください。
+詳細については、[AKS のアプリケーションにおけるネットワークの概念][aks-networking]に関するページを参照してください。
+
+イングレス トラフィックの使用を開始するには、「[HTTP アプリケーションのルーティング][aks-http-routing]」を参照してください。
 
 ### <a name="ingress-with-http-application-routing"></a>HTTP アプリケーション ルーティングを使用するイングレス
 
@@ -101,7 +109,7 @@ Azure Kubernetes Service (AKS) は、Kubernetes 準拠として CNCF 認定さ�
 
 ## <a name="regulatory-compliance"></a>規制に対するコンプライアンス
 
-Azure Kubernetes Service (AKS) は、SOC、ISO、PCI DSS、HIPAA に準拠しています。
+Azure Kubernetes Service (AKS) は、SOC、ISO、PCI DSS、HIPAA に準拠しています。 詳細については、「[Overview of Microsoft Azure compliance (Microsoft Azure コンプライアンスの概要)][compliance-doc]」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -112,14 +120,12 @@ AKS のデプロイと管理の詳細については、Azure CLI のクイック
 
 <!-- LINKS - external -->
 [aks-engine]: https://github.com/Azure/aks-engine
-[draft]: https://github.com/Azure/draft
-[helm]: https://helm.sh/
 [kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
-[kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[compliance-doc]: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md
-[aks-aad]: ./aad-integration.md
+[aks-aad]: ./azure-ad-integration.md
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 [aks-http-routing]: ./http-application-routing.md
@@ -134,3 +140,7 @@ AKS のデプロイと管理の詳細については、Azure CLI のクイック
 [container-health]: ../monitoring/monitoring-container-health.md
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
+[concepts-clusters-workloads]: concepts-clusters-workloads.md
+[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[concepts-identity]: concepts-identity.md
+[concepts-storage]: concepts-storage.md

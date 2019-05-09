@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: b397d77b525bdb63f2531634e397ec210d4a6202
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 473bc0a58fe49c7f454c81402b57ddce7fc745b2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165618"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736140"
 ---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>クラウド アプライアンスのリモート管理を構成するには
 
@@ -29,5 +29,5 @@ ms.locfileid: "50165618"
     2. 既定では HTTPS 経由で接続します。 HTTP を使用した接続を選択できるようになります。 HTTP 経由での接続は、信頼のおけるネットワークでのみ許容されます。 HTTP が有効になっていることを確認します。
     3. ブレードの上部にあるコマンド バーで **[...More]\(...詳細\)**、**[証明書のダウンロード]** の順にクリックし、リモート管理証明書をダウンロードします。 このファイルを保存する場所を指定できます。 この証明書は、さらに、クラウド アプライアンスへの接続に使用するクライアントまたはホスト コンピューターにインストールする必要があります。
 
-        ![リモート管理ブレード](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
+        ![[リモート管理] ブレード](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
 5. **[保存]** をクリックし、メッセージが表示されたら変更を確認します。

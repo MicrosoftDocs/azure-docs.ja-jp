@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: 9b721ab614bf1797604fe342de117c78ba703f96
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/05/2019
+ms.openlocfilehash: 08430f3eee858cdb6c9a7fbdfe11bd4c00ef148d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557599"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630399"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -23,17 +23,17 @@ ms.locfileid: "53557599"
 
 以下の機能はパブリック プレビュー段階です。 これらの機能は現在でも利用できますが、運用環境では使用しないでください。
 
+### <a name="anomaly-detection"></a>異常検出
+
+Azure Stream Analytics では、"*スパイク*" と "*ディップ*" の検出、および双方向、ゆっくりした増加、ゆっくりした減少の傾向の検出のサポートを備えた、新しい機械学習モデルが導入されています。 詳細については、「[Azure Stream Analytics での異常検出](stream-analytics-machine-learning-anomaly-detection.md)」を参照してください。
+
+### <a name="sql-database-reference-data"></a>SQL Database 参照データ
+
+Azure Stream Analytics では、参照データ入力のソースとして Azure SQL Database がサポートされています。 Stream Analytics ツールを使用して、Azure portal および Visual Studio で Stream Analytics ジョブに対する参照データとして SQL Database を使用できます。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
+
 ### <a name="integration-with-azure-machine-learning"></a>Azure Machine Learning との統合
 
 Machine Learning (ML) 関数を使用して Stream Analytics のジョブをスケーリングできます。 Stream Analytics ジョブで ML 関数を使用する方法について詳しくは、「[Azure Machine Learning 関数を使用した Stream Analytics ジョブのスケーリング](stream-analytics-scale-with-machine-learning-functions.md)」をご覧ください。 現実のシナリオについては、「[Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行](stream-analytics-machine-learning-integration-tutorial.md)」を確認してください。
-
-### <a name="session-windows"></a>セッション ウィンドウ
-
-Stream Analytics には、ウィンドウ関数に対するネイティブ サポートがあるため、開発者は複雑なストリーム処理ジョブを最小限の作業で作成できます。 [セッション ウィンドウ](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics)は、類似した時刻に到着するイベントをグループ化することにより、データが存在しない期間をフィルターで除外します。 ウィンドウ関数について詳しくは、「[Stream Analytics ウィンドウ関数の概要](stream-analytics-window-functions.md)」をご覧ください。
-
-### <a name="blob-output-partitioning-by-custom-time"></a>カスタム日時による BLOB 出力のパーティション分割
-
-Azure Stream Analytics は、カスタム日時属性に基づいて BLOB ストレージに出力できます。 詳しくは、「[Azure Stream Analytics の BLOB ストレージ出力用のカスタム DateTime パス パターン](stream-analytics-custom-path-patterns-blob-storage-output.md)」をご覧ください。
 
 ### <a name="javascript-user-defined-aggregate"></a>JavaScript ユーザー定義集計
 
@@ -49,23 +49,15 @@ Visual Studio Tools for Azure Stream Analytics ではローカル テスト機�
 
 ## <a name="private-previews"></a>プライベート プレビュー
 
-以下の機能は、プライベート プレビュー段階です。 これらのプレビューを使用するには、Azure Stream Analytics のプライベート プレビュー [サインアップ](https://aka.ms/ASApreview1) ページにアクセスしてください。
-
-### <a name="anomaly-detection"></a>異常検出
-
-Azure Stream Analytics では、"*スパイク*" と "*ディップ*" の検出、および双方向、ゆっくりした増加、ゆっくりした減少の傾向の検出のサポートを備えた、新しい機械学習モデルが導入されています。
+以下の機能は、プライベート プレビュー段階です。
 
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge 用の C# カスタム デシリアライザー
 
 開発者は、C# でカスタム デシリアライザーを実装して、Azure Stream Analytics で受信したイベントを逆シリアル化できるようになりました。 逆シリアル化できる形式としては、Parquet、Protobuf、XML、または任意のバイナリ形式などがあります。
 
-### <a name="blob-output-partitioning-by-custom-attribute"></a>カスタム属性による BLOB 出力のパーティション分割
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
 
-クエリの任意の列に基づいて、Azure Stream Analytics の出力を BLOB ストレージにパーティション分割できるようになりました。
-
-### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>Azure Data Lake Storage に対する Azure リソース認証用のマネージド ID
-
-Azure Data Lake Storage Gen1 に書き込みながら、Azure リソース ベースの認証用のマネージド ID でリアルタイム パイプラインを運用化できるようになり、プログラムでジョブを作成できます。 詳しくは、「[Azure Stream Analytics ジョブを認証するマネージド ID を Azure Data Lake Storage Gen1 出力で使用する](stream-analytics-managed-identities-adls.md)」をご覧ください。
+Visual Studio Code で Azure Stream Analytics のジョブを作成できます。 ツールのプライベート プレビュー機能にアクセスするには、*ASAToolsfeedback\@microsoft.com* にお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

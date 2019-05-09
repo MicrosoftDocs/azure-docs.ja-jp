@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 77d3bdd755e7c8d68115e12c6bee318fda652b09
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972203"
 documentType: LandingData
 title: Azure Storage のドキュメント
 metadata:
@@ -22,128 +16,128 @@ metadata:
 abstract:
   description: Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたクラウド ストレージを提供する、Microsoft が管理するクラウド サービスです。 Azure Storage には、Azure BLOB (オブジェクト)、Azure Data Lake Storage Gen2、Azure Files、Azure キュー、Azure テーブルが含まれます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、アプリケーションで Azure Storage を活用する方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 次のクイックスタートを探索して、Azure Storage の使用方法を学習してください。
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/portal.svg
-        text: ポータル
-    - image:
-        src: media/index/logo_powershell.svg
-        text: Powershell
-    - image:
-        src: media/index/cli.svg
-        text: Azure CLI
-    - image:
-        src: media/index/logo_net.svg
-    - image:
-        src: media/index/logo_java.svg
-    - image:
-        src: media/index/logo_python.svg
-    - image:
-        src: media/index/logo_nodejs.svg
-    rows:
-    - title: ストレージ アカウントの作成
-      values:
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=powershell
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: BLOB のクイックスタート
-      values:
-      - href: /azure/storage/blobs/storage-quickstart-blobs-portal
-      - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
-      - href: /azure/storage/blobs/storage-quickstart-blobs-cli
-      - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
-      - href: /azure/storage/blobs/storage-quickstart-blobs-java
-      - href: /azure/storage/blobs/storage-quickstart-blobs-python
-      - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
-    - title: Data Lake Storage Gen2
-      values:
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-the-azure-portal
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-powershell
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-azure-cli
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+  - title: 5 分間のクイック スタート
     items:
-    - title: BLOB
-      html: <p>クラウドに画像データをアップロードして処理する</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">クラウドに画像データをアップロードし、クラウドの画像データを取得する</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Azure Functions をトリガーして BLOB を処理する</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">アプリケーション データをセキュリティで保護する</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">ストレージの監視とトラブルシューティングを行う</a></li></ul><p>高可用性を実現するようにアプリケーションを設計する</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">アプリケーション データの可用性を高める</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Azure Storage で非構造化データを検索する</a></p>
-    - title: Data Lake Storage Gen2
-      html: <p><a href="/azure/storage/blobs/handle-data-using-databricks">Azure Databricks を使ったデータの抽出、変換、読み込み</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Spark を使用した DataBricks で Azure Data Lake Storage Gen2 のデータにアクセスする</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う</a></p>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 一般的な管理タスクに使用されるスクリプトをご覧ください。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 次のクイックスタートを探索して、Azure Storage の使用方法を学習してください。
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/portal.svg
+              text: ポータル
+          - image:
+              src: media/index/logo_powershell.svg
+              text: Powershell
+          - image:
+              src: media/index/cli.svg
+              text: Azure CLI
+          - image:
+              src: media/index/logo_net.svg
+          - image:
+              src: media/index/logo_java.svg
+          - image:
+              src: media/index/logo_python.svg
+          - image:
+              src: media/index/logo_nodejs.svg
+        rows:
+          - title: ストレージ アカウントの作成
+            values:
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: BLOB のクイックスタート
+            values:
+              - href: /azure/storage/blobs/storage-quickstart-blobs-portal
+              - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
+              - href: /azure/storage/blobs/storage-quickstart-blobs-cli
+              - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
+              - href: /azure/storage/blobs/storage-quickstart-blobs-java
+              - href: /azure/storage/blobs/storage-quickstart-blobs-python
+              - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+          - title: Data Lake Storage Gen2
+            values:
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: .NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">BLOB</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">ファイル</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">キュー</a>
-    - html: Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">BLOB</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">ファイル</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">キュー</a>
-    - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-    - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-- title: Microsoft Learn でスキルを身に付ける
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: BLOB
+            html: <p>クラウドに画像データをアップロードして処理する</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">クラウドに画像データをアップロードし、クラウドの画像データを取得する</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Azure Functions をトリガーして BLOB を処理する</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">アプリケーション データをセキュリティで保護する</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">ストレージの監視とトラブルシューティングを行う</a></li></ul><p>高可用性を実現するようにアプリケーションを設計する</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">アプリケーション データの可用性を高める</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Azure Storage で非構造化データを検索する</a></p>
+          - title: Data Lake Storage Gen2
+            html: <p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Azure Databricks を使ったデータの抽出、変換、読み込み</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Spark を使用した DataBricks で Azure Data Lake Storage Gen2 のデータにアクセスする</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う</a></p>
+  - title: サンプル
     items:
-    - title: Azure でのデータの概要
-      href: /learn/modules/intro-to-data-in-azure/
-      image:
-        src: /learn/achievements/intro-to-data-in-azure.svg
-        href: //learn/modules/intro-to-data-in-azure/
-    - title: " Azure でのデータ ストレージのアプローチを選択する"
-      href: /learn/modules/choose-storage-approach-in-azure/
-      image:
-        src: /learn/achievements/choose-storage-approach-in-azure.svg
-        href: /learn/modules/choose-storage-approach-in-azure/
-    - title: Azure のストレージ アカウントの作成
-      href: /learn/modules/create-azure-storage-account/
-      image:
-        src: /learn/achievements/create-azure-storage-account.svg
-        href: /learn/modules/create-azure-storage-account/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-storage">対話型学習の詳細...</a>
-- title: 無料の Pluralsight ビデオ トレーニング
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 一般的な管理タスクに使用されるスクリプトをご覧ください。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">BLOB</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">ファイル</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">キュー</a>'
+          - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">BLOB</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">ファイル</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">キュー</a>'
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
+  - title: Microsoft Learn でスキルを身に付ける
     items:
-    - title: .NET を用いた Azure での開発
-      href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
-    - title: Node.js を使用した Azure での開発
-      href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure でのデータの概要
+            href: /learn/modules/intro-to-data-in-azure/
+            image:
+              src: /learn/achievements/intro-to-data-in-azure.svg
+              href: //learn/modules/intro-to-data-in-azure/
+          - title: "\_Azure でのデータ ストレージのアプローチを選択する"
+            href: /learn/modules/choose-storage-approach-in-azure/
+            image:
+              src: /learn/achievements/choose-storage-approach-in-azure.svg
+              href: /learn/modules/choose-storage-approach-in-azure/
+          - title: Azure のストレージ アカウントの作成
+            href: /learn/modules/create-azure-storage-account/
+            image:
+              src: /learn/achievements/create-azure-storage-account.svg
+              href: /learn/modules/create-azure-storage-account/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-storage">対話型学習の詳細...</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
     items:
-    - title: コマンド ライン
-      html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/overview/azure/storage/client?view=azure-dotnet">.NET</a></p><p><a href="/java/api/overview/azure/storage/client?view=azure-java-stable">Java</a></p><p><a href="/javascript/api/overview/azure/storage?view=azure-node-latest">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/storageservices">BLOB、キュー、テーブル、ファイルの API</a></p><p><a href="/rest/api/storagerp">ストレージ リソース プロバイダー API</a></p><p><a href="/rest/api/storageimportexport">インポート/エクスポート サービス API</a></p>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: .NET を用いた Azure での開発
+            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+          - title: Node.js を使用した Azure での開発
+            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
+          - title: Languages
+            html: '<p><a href="/dotnet/api/overview/azure/storage/client?view=azure-dotnet">.NET</a></p><p><a href="/java/api/overview/azure/storage/client?view=azure-java-stable">Java</a></p><p><a href="/javascript/api/overview/azure/storage?view=azure-node-latest">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="https://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="https://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="https://azure.github.io/azure-storage-android">Android</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/storageservices">BLOB、キュー、テーブル、ファイルの API</a></p><p><a href="/rest/api/storagerp">ストレージ リソース プロバイダー API</a></p><p><a href="/rest/api/storageimportexport">インポート/エクスポート サービス API</a></p>

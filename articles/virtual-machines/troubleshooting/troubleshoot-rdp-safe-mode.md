@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8e108d88282894a7b1bf014146083008bedd483d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095043"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>VM がセーフ モードで起動するため VM に RDP 接続できない
 
@@ -47,7 +47,7 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
 
 1. [シリアル コンソールに接続し、CMD インスタンスを開きます](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 VM 上でシリアル コンソールが有効になっていない場合は、「[VM をオフライン修復する](#repair-the-vm-offline)」をご覧ください。
+   )。 VM 上でシリアル コンソールが有効になっていない場合は、「[VM をオフライン修復する](#repair-the-vm-offline)」をご覧ください。
 2. ブート構成データを確認します。
 
         bcdedit /enum
@@ -55,12 +55,12 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
     VM がセーフ モードで起動するように構成されている場合、**[Windows ブート ローダー]** セクションに **[safeboot]** という追加のフラグが表示されます。 **[safeboot]** フラグが表示されない場合、VM はセーフ モードではありません。 そのシナリオには、この記事の内容は当てはまりません。
 
     **[safeboot]** フラグは、次の値と共に表示されることがあります。
-    - 最小限
-    - ネットワーク
+   - 最小限
+   - ネットワーク
 
-    この 2 つのモードのいずれでも、RDP は開始されません。 そのため、修正プログラムは同じままです。
+     この 2 つのモードのいずれでも、RDP は開始されません。 そのため、修正プログラムは同じままです。
 
-    ![セーフ モード フラグに関する画像](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
+     ![セーフ モード フラグに関する画像](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
 3. **[safemoade]** フラグを削除すると、VM が通常モードで起動します。
 

@@ -1,38 +1,41 @@
 ---
-title: Azure AD のグループベースのライセンスの PowerShell と Microsoft Graph の例 | Microsoft Docs
-description: Azure Active Directory のグループベースのライセンスが使用される PowerShell のシナリオ
+title: ライセンス グループ用の PowerShell と Graph の例 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory のグループベースのライセンスが使用される PowerShell と Graph の例とシナリオ
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 10/29/2018
+ms.date: 03/18/2019
 ms.author: curtand
-ms.openlocfilehash: d046b8e6c054131a4154654637f12dbdc26608a6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.reviewer: sumitp
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 70e4e56742f45e0f6bfd80455e4d7545523a478b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210433"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59265782"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD のグループベースのライセンスの PowerShell の例
 
 グループベースのライセンスの機能はすべて [Azure ポータル](https://portal.azure.com)を通じて利用できます。現在、PowerShell と Microsoft Graph のサポートは制限されていますが、 既存の [MSOnline PowerShell コマンドレット](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) と Microsoft Graph を使用して実行できる便利なタスクがいくつかあります。 このドキュメントでは、利用できる機能のいくつかの例を示します。
 
 > [!NOTE]
-> コマンドレットの実行を開始する前に、`Connect-MsolService` コマンドレットを実行して、テナントに接続していることを確認します。
+> コマンドレットの実行を開始する前に、`Connect-MsolService` コマンドレットを実行して、組織に接続していることを最初に確認します。
 
 > [!WARNING]
 > このコードは、デモンストレーション用のサンプルとして提供されています。 ご利用の環境で使用する場合は、まず小規模にテストするか別のテスト テナントでテストすることを検討してください。 お使いの環境の具体的なニーズに合わせてコードの調整が必要になる場合があります。
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>グループに割り当てられた製品ライセンスの表示
+
 [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) コマンドレットでは、グループ オブジェクトを取得し、*ライセンス* プロパティを確認できます (グループに現在割り当てられているすべての製品ライセンスが一覧表示されます)。
-```
+
+```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
 | Select SkuPartNumber
 ```
@@ -47,10 +50,10 @@ EMSPREMIUM
 > [!NOTE]
 > データは、製品 (SKU) 情報に限定されます。 ライセンスで無効になっているサービス プランを一覧表示することはできません。
 
-Microsoft Graph から、同じデータを取得するには次を使用します
+Microsoft Graph から、同じデータを取得するには次のサンプルを使用します。
 
 ```
-GET https://graph.microsoft.com/beta/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
 ```
 出力:
 ```
@@ -78,11 +81,11 @@ HTTP/1.1 200 OK
 ## <a name="get-all-groups-with-licenses"></a>ライセンスを持つすべてのグループを取得する
 
 次のコマンドを実行して、割り当てられているすべてのライセンスを持つグループをすべて検索できます。
-```
+```powershell
 Get-MsolGroup | Where {$_.Licenses}
 ```
 割り当てられている製品に関する詳細情報を表示することもできます。
-```
+```powershell
 Get-MsolGroup | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
@@ -102,7 +105,7 @@ c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM
 ## <a name="get-statistics-for-groups-with-licenses"></a>ライセンスを持つグループの統計を取得する
 ライセンスを持つグループの基本的な統計情報を報告できます。 次のスクリプト例は、合計ユーザー数、グループに既に割り当てられているライセンスを持つユーザーの数、およびグループにライセンスを割り当てることができなかったユーザーの数を一覧表示します。
 
-```
+```powershell
 #get all groups with licenses
 Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $groupId = $_.ObjectId;
@@ -114,8 +117,7 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
 
     Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full info about each user in the group
-    Get-MsolUser -ObjectId {$_.ObjectId} |
-    Foreach {
+    Get-MsolUser -ObjectId {$_.ObjectId} |     Foreach {
         $user = $_;
         $totalCount++
 
@@ -160,7 +162,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 
 ## <a name="get-all-groups-with-license-errors"></a>ライセンス エラーがあるすべてのグループを取得する
 ライセンスを割り当てることができなかったユーザーを含むグループを見つけるには、次の操作を実行します。
-```
+```powershell
 Get-MsolGroup -HasLicenseErrorsOnly $true
 ```
 出力:
@@ -171,7 +173,7 @@ ObjectId                             DisplayName             GroupType Descripti
 ```
 Microsoft Graph から、同じデータを取得するには次を使用します
 ```
-GET https://graph.microsoft.com/beta/groups?$filter=hasMembersWithLicenseErrors+eq+true
+GET https://graph.microsoft.com/v1.0/groups?$filter=hasMembersWithLicenseErrors+eq+true
 ```
 出力:
 ```
@@ -192,7 +194,7 @@ HTTP/1.1 200 OK
     },
     ... # other groups with license errors.
   ]
-"odata.nextLink":"https://graph.microsoft.com/beta/ groups?$filter=hasMembersWithLicenseErrors+eq+true&$skipToken=<encodedPageToken>"
+"odata.nextLink":"https://graph.microsoft.com/v1.0/ groups?$filter=hasMembersWithLicenseErrors+eq+true&$skipToken=<encodedPageToken>"
 }
 ```
 
@@ -201,7 +203,7 @@ HTTP/1.1 200 OK
 
 ライセンス関連のエラーがあるグループについて、これらのエラーの影響を受けるすべてのユーザーを表示できるようになりました。 ユーザーが他のグループからのエラーを持つ場合もあります。 ただし、この例では、対象のグループに関連するエラーのみに結果を制限しています。このためには、ユーザーの各 **IndirectLicenseError** エントリの **ReferencedObjectId** プロパティを確認します。
 
-```
+```powershell
 #a sample group with errors
 $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 
@@ -209,7 +211,7 @@ $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full information about user objects
     Get-MsolUser -ObjectId {$_.ObjectId} |
-    #filter out users without license errors and users with licenense errors from other groups
+    #filter out users without license errors and users with license errors from other groups
     Where {$_.IndirectLicenseErrors -and $_.IndirectLicenseErrors.ReferencedObjectId -eq $groupId} |
     #display id, name and error detail. Note: we are filtering out license errors from other groups
     Select ObjectId, `
@@ -218,17 +220,21 @@ Get-MsolGroupMember -All -GroupObjectId $groupId |
 ```
 
 出力:
-```
+
+```powershell
 ObjectId                             DisplayName      License Error
 --------                             -----------      ------------
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
-Microsoft Graph から、同じデータを取得するには次を使用します
+
+Microsoft Graph から、同じデータを取得するには次を使用します。
+
+```powershell
+GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
 ```
-GET https://graph.microsoft.com/beta/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
-```
+
 出力:
-```
+```powershell
 HTTP/1.1 200 OK
 {
   "value":[
@@ -240,7 +246,7 @@ HTTP/1.1 200 OK
     },
     ... # other users.
   ],
-  "odata.nextLink":"https://graph.microsoft.com/beta/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors?$skipToken=<encodedPageToken>" 
+  "odata.nextLink":"https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors?$skipToken=<encodedPageToken>"
 }
 
 ```
@@ -252,7 +258,7 @@ HTTP/1.1 200 OK
 > [!NOTE]
 > このスクリプトではテナントのすべてのユーザーが列挙されるため、大きなテナントでは最適でない場合があります。
 
-```
+```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
     $user = $_;
     $user.IndirectLicenseErrors | % {
@@ -267,7 +273,7 @@ Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {
 
 出力:
 
-```
+```powershell
 UserName         UserId                               GroupId                              LicenseError
 --------         ------                               -------                              ------------
 Anna Bergman     0d0fd16d-872d-4e87-b0fb-83c610db12bc 7946137d-b00d-4336-975e-b1b81b0666d0 MutuallyExclusiveViolation
@@ -278,7 +284,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 
 以下は、ライセンス エラーを含むグループのみを検索するスクリプトの別バージョンの例です。 これは、問題のあるグループが少数であることが予測されるシナリオにより適しています。
 
-```
+```powershell
 $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
@@ -296,7 +302,8 @@ $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
 特定のユーザー オブジェクトについて、特定の製品ライセンスがグループから割り当てられているか、または直接割り当てられているかを確認することができます。
 
 以下の 2 つの関数の例を使用すると、各ユーザーの割り当ての種類を分析できます。
-```
+
+```powershell
 #Returns TRUE if the user has the license assigned directly
 function UserHasLicenseAssignedDirectly
 {
@@ -358,8 +365,9 @@ function UserHasLicenseAssignedFromGroup
 ```
 
 このスクリプトは、SKU ID を入力値として利用し、テナントの各ユーザーに関数を実行します。この例では、*Enterprise Mobility + Security* のライセンスに注目します。テナントでこれは *contoso:EMS* という ID で表されます。
-```
-#the license SKU we are interested in. use Msol-GetAccountSku to see a list of all identifiers in your tenant
+
+```powershell
+#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
 $skuId = "contoso:EMS"
 
 #find all users that have the SKU license assigned
@@ -371,7 +379,8 @@ Get-MsolUser -All | where {$_.isLicensed -eq $true -and $_.Licenses.AccountSKUID
 ```
 
 出力:
-```
+
+```powershell
 ObjectId                             SkuId       AssignedDirectly AssignedFromGroup
 --------                             -----       ---------------- -----------------
 157870f6-e050-4b3c-ad5e-0f0a377c8f4d contoso:EMS             True             False
@@ -379,12 +388,15 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-Graph には、結果を表示する簡単な方法はありませんが、この API から確認することができます
+Graph には、結果を表示する簡単な方法はありませんが、この API から確認することができます。
+
+```powershell
+GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
 ```
-GET https://graph.microsoft.com/beta/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
-```
+
 出力:
-```
+
+```powershell
 HTTP/1.1 200 OK
 {
   "value":[
@@ -432,11 +444,12 @@ HTTP/1.1 200 OK
 ```
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>グループ ライセンスを持つユーザーの直接付与されたライセンスを削除する
+
 このスクリプトの目的は、グループから既に同じライセンスを継承している (例: [グループベースのライセンスへの移行](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)の一環として) ユーザーの不要な直接ライセンスを削除することです。
 > [!NOTE]
 > まず、削除する直接ライセンスで、継承されたライセンスより多い数のサービス機能が有効にされないことを検証することが重要です。 そうしないと、直接付与されたライセンスを削除したときに、ユーザーのサービスおよびデータへのアクセスが無効になる可能性があります。 現在、継承されたライセンスまたは直接ライセンスによって有効になっているサービスを PowerShell で確認することはできません。 このスクリプトでは、グループから継承されることがわかっているサービスの最小レベルを指定し、それに照らして確認を行うことで、サービスに対するユーザーのアクセス権が予期せず失われないようにしています。
 
-```
+```powershell
 #BEGIN: Helper functions used by the script
 
 #Returns TRUE if the user has the license assigned directly
@@ -552,10 +565,9 @@ $servicePlansFromGroups = ("EXCHANGE_S_ENTERPRISE", "SHAREPOINTENTERPRISE", "OFF
 $expectedDisabledPlans = GetDisabledPlansForSKU $skuId $servicePlansFromGroups
 
 #process all members in the group
-Get-MsolGroupMember -All -GroupObjectId $groupId |
+Get-MsolGroupMember -All -GroupObjectId $groupId
     #get full info about each user in the group
-    Get-MsolUser -ObjectId {$_.ObjectId} |
-    Foreach {
+    Get-MsolUser -ObjectId {$_.ObjectId} | Foreach {
         $user = $_;
         $operationResult = "";
 
@@ -598,12 +610,13 @@ Get-MsolGroupMember -All -GroupObjectId $groupId |
 ```
 
 出力:
-```
-UserId                               OperationResult                                                                                
-------                               ---------------                                                                                
-7c7f860f-700a-462a-826c-f50633931362 Removed direct license from user.                                                              
+
+```powershell
+UserId                               OperationResult
+------                               ---------------
+7c7f860f-700a-462a-826c-f50633931362 Removed direct license from user.
 0ddacdd5-0364-477d-9e4b-07eb6cdbc8ea User has extra plans that may be lost - license removal was skipped. Extra plans: SHAREPOINTWAC
-aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.                                                
+aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -7,19 +7,19 @@ author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
-ms.service: Marketplace
+ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 8bb964308e11d238def4eed3f194ffc9ef8ab086
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 810298fc45becf132da6f082df7ad33e7af828aa
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840165"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735543"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>クラウド マーケットプレースのリード管理
 
@@ -60,7 +60,7 @@ ms.locfileid: "52840165"
 
 ## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Cloud パートナー ポータルでの公開時に起こる一般的なリード構成エラー 
 
-**Could not save the lead to Dynamics CRM. \(リードを Dynamics CRM に保存できませんでした。\)Check the Dynamics CRM account settings. \(Dynamics CRM のアカウント設定を確認してください。\)LastCRMError:Unable to Login to Dynamics CRM, LastCRMException: (LastCRMError: Dynamics CRM にログインできません、LastCRMException:)** 
+**Could not save the lead to Dynamics CRM. \(リードを Dynamics CRM に保存できませんでした。\)Check the Dynamics CRM account settings. \(Dynamics CRM のアカウント設定を確認してください。\)LastCRMError:Unable to sign in to Dynamics CRM, LastCRMException: (LastCRMError: Dynamics CRM LastCRMException にサインインできません:)** 
 
 > O365 認証が選択されている場合は、ユーザー アカウントとパスワードが有効であることを確認してください。 AAD が選択されている場合は、テナント ID、アプリケーション ID およびアプリケーション シークレット キーが、AAD で設定されたものと一致するかどうか確認してください。 [こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の説明に従ってください。アカウントのユーザー名/パスワードが有効である場合は、Dynamics 365 へのアクセス権があることと、ライセンスが割り当てられていることを確認してください (Azure Active Directory を使用している場合は手順 11 ～ 15、Office ユーザーを使用している場合はセキュリティ設定)。 
 
@@ -87,11 +87,11 @@ ms.locfileid: "52840165"
 
 **Could not save the lead to Dynamics CRM using AAD. \(AAD を使用してリードを Dynamics CRM に保存できませんでした。\)Exception::Error validating credentials.:Exception:: Error validating credentials.: Invalid client secret is provided. (Exception:: 資格情報の検証中にエラーが発生しました。: 無効なクライアント シークレットが指定されています。)** 
 
-> 解決策:Azure Portal にログインし、アプリケーション キーが Cloud パートナー ポータルのものと一致しているかどうかチェックしてください。 手順 10 の説明に従って、パスワードを生成してください ([こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の「Azure Active Directory」)。 
+> 解決策:Azure Portal にサインインし、アプリケーション キーが Cloud パートナー ポータルのものと一致しているかどうかチェックしてください。 手順 10 の説明に従って、パスワードを生成してください ([こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の「Azure Active Directory」)。 
 
 **Could not save the lead to Dynamics CRM. \(リードを Dynamics CRM に保存できませんでした。\)LastCRMError:The request channel timed out while waiting for a reply after 00:02:00. (LastCRMError: 応答の待機中、00:02:00 後に要求チャネルがタイムアウトしました。)Increase the timeout value passed to the call to Request or increase the SendTimeout value on the Binding. \(要求への呼び出しに渡されるタイムアウト値を増やすか、バインドの SendTimeout 値を増やしてください。\)The time allotted to this operation may have been a portion of a longer timeout. \(この操作に割り当てられた時間は、より長いタイムアウト時間の一部であった可能性があります。\)**  
 
-> 解決策:Cloud パートナー ポータルにログインし、電子店舗の詳細 >> リードの送信先 >> URL をチェックして、有効な Dynamic CRM インスタンスであることを確認してください
+> 解決策:Cloud パートナー ポータルにサインインし、電子店舗の詳細 >> リードの送信先 >> URL をチェックして、有効な Dynamic CRM インスタンスであることを確認してください
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

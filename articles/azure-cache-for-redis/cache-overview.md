@@ -1,25 +1,25 @@
 ---
 title: Azure Cache for Redis とは  | Microsoft Docs
 description: Azure Cache for Redis の概要と一般的な使用方法について説明します。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/26/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: eab4365b6b86a82f29dbd1a79d4fda6dc9b30e0e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971326"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433809"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Azure Cache for Redis とは
 
@@ -48,7 +48,7 @@ Azure Cache for Redis は以下のレベルでご利用いただけます。
 | レベル | 説明 |
 |---|---|
 Basic | 単一ノード キャッシュ。 このレベルでは、複数のメモリ サイズ (250 MB ～ 53 GB) をサポートします。 これは、開発/テスト、およびクリティカルではない負荷に最適なレベルです。 Basic レベルには、サービス レベル アグリーメント (SLA) はありません。 |
-| 標準 | Microsoft が管理しているプライマリとセカンダリの 2 つのノード構成にレプリケートされたキャッシュ。高可用性の SLA が付きます (99.9%)。 |
+| Standard | Microsoft が管理しているプライマリとセカンダリの 2 つのノード構成にレプリケートされたキャッシュ。高可用性の SLA が付きます (99.9%)。 |
 | Premium | Premium レベルは、エンタープライズ対応のレベルです。 Premium レベルのキャッシュでは、より多くの機能をサポートし、より短い待機時間でより高いスループットを実現します。 Premium レベルのキャッシュは、Basic または Standard レベルと比較して優れたパフォーマンスを発揮する、より高性能なハードウェア上にデプロイされます。 この利点によって、Premium レベルでは、Standard レベルと比較して、同じサイズのキャッシュのスループットがより高くなります。 |
 
 > [!TIP]
@@ -57,11 +57,11 @@ Basic | 単一ノード キャッシュ。 このレベルでは、複数のメ�
 
 キャッシュは、既に作成された後に、より高いレベルにスケールアップできます。 より低いレベルへのスケールダウンは、サポートされていません。 スケーリングの詳細な手順については、「[How to Scale Azure Cache for Redis](cache-how-to-scale.md)」(Azure Redis Cache のスケーリング方法) と「[How to automate a scaling operation](cache-how-to-scale.md#how-to-automate-a-scaling-operation)」(スケーリング処理を自動化する方法) を参照してください。
 
-### <a name="feature-comparision"></a>機能の比較
+### <a name="feature-comparison"></a>機能の比較
 
 「[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)」ページに、各レベルの詳細な比較が示されています。 次の表に、レベル別にサポートされる一部の機能を紹介します。
 
-| 機能の説明 | Premium | 標準 | Basic |
+| 機能の説明 | Premium | Standard | Basic |
 | ------------------- | :-----: | :------: | :---: |
 | [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
 | [Redis データの保持](cache-how-to-premium-persistence.md) |✔|-|-|

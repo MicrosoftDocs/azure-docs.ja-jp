@@ -8,21 +8,23 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
-ms.component: ''
-ms.openlocfilehash: 6b8940f62b94615b4622f60786e411b9a18b2dee
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.subservice: ''
+ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001619"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754257"
 ---
-# <a name="monitoring-usage-and-estimated-costs"></a>使用量と推定コストの監視
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Monitor での使用量と推定コストの監視
 
 > [!NOTE]
 > この記事では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。  関連する情報については、次の記事を参照してください。
-> - 「[Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する](../../azure-monitor/platform/manage-cost-storage.md)」では、データ保有期間を変更することでコストを制御する方法について説明します。
+> - 「[Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する](manage-cost-storage.md)」では、データ保有期間を変更することでコストを制御する方法について説明します。
 > - 「[Log Analytics でのデータ使用状況の分析](../../azure-monitor/platform/data-usage.md)」では、データ使用状況を分析し、アラートを作成する方法について説明します。
 > - 「[Application Insights での価格とデータ ボリュームの管理](../../azure-monitor/app/pricing.md)」では、Application Insights でデータ使用状況を分析する方法について説明します。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Portal の [監視] ハブの **[使用量と推定コスト]** ページには、[アラート、メトリック、通知](https://azure.microsoft.com/pricing/details/monitor/)[Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)、[Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) などの中心的な監視機能の使用量が説明されています。 2018 年 4 月より前の価格プランを利用しているお客様の場合は、Insights と Analytics 経由で購入した Log Analytics の使用量も含まれています。
 
@@ -73,7 +75,7 @@ Azure Portal の [監視] ハブの **[使用量と推定コスト]** ページ�
 
 ## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>新しい価格モデルと Operations Management Suite のサブスクリプションの権利
 
-Microsoft Operations Management Suite E1 および E2 を購入されたお客様は、[Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) と [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans) でのノード単位のデータ インジェストが可能です。 特定のサブスクリプションで Log Analytics ワークスペースまたは Application Insights リソースの権利を得るには: 
+Microsoft Operations Management Suite E1 および E2 を購入されたお客様は、[Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) と [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing) でのノード単位のデータ インジェストが可能です。 特定のサブスクリプションで Log Analytics ワークスペースまたは Application Insights リソースの権利を得るには: 
 
 - そのサブスクリプションの価格モデルが、2018 年 4 月以前の価格モデルである必要があります。
 - Log Analytics ワークスペースは、"ノードごとの (OMS)" 価格レベルを使用してください。
@@ -112,14 +114,14 @@ Microsoft Operations Management Suite E1 および E2 を購入されたお客�
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>新しい価格モデルへの移行を自動化する
 
-以下のスクリプトを実行するには、Azure PowerShell モジュールが必要です。 最新バージョンがあるかどうかを確認するには、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0)に関するページをご覧ください。
+以下のスクリプトを実行するには、Azure PowerShell モジュールが必要です。 最新バージョンがあるかどうかを確認するには、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページをご覧ください。
 
-最新バージョンの Azure PowerShell がある場合は、まず ``Connect-AzureRmAccount`` を実行する必要があります。
+最新バージョンの Azure PowerShell がある場合は、まず ``Connect-AzAccount`` を実行する必要があります。
 
 ``` PowerShell
 # To check if your subscription is eligible to adjust pricing models.
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action listmigrationdate `
@@ -136,9 +138,9 @@ isGrandFatherableSubscription optedInDate
 
 このサブスクリプションを新しい価格モデルに移行するには、次を実行します。
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action migratetonewpricingmodel `
@@ -147,9 +149,9 @@ Invoke-AzureRmResourceAction `
 
 変更が成功したことを確認するには、次を再実行します。
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action listmigrationdate `
@@ -168,9 +170,9 @@ optInDate に、このサブスクリプションが新しい価格モデルに�
 
 古い価格モデルに戻す必要がある場合は、次を実行します。
 
-```PowerShell
+```powershell
  $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action rollbacktolegacypricingmodel `
@@ -181,20 +183,20 @@ Invoke-AzureRmResourceAction `
 
 同じテナントにホストされた複数のサブスクリプションを移行する場合は、次のスクリプトを使用して独自のバリアントを作成できます。
 
-```PowerShell
-#Query tenant and create an array comprised of all of your tenants subscription ids
+```powershell
+#Query tenant and create an array comprised of all of your tenants subscription IDs
 $TenantId = <Your-tenant-id>
-$Tenant =Get-AzureRMSubscription -TenantId $TenantId
+$Tenant =Get-AzSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
 ```
 
 テナント内のすべてのサブスクリプションで新しい価格モデルを使用できるかどうかを確認するには、次を実行します。
 
-```PowerShell
+```powershell
 Foreach ($id in $Subscriptions)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action listmigrationdate `
@@ -202,9 +204,9 @@ Invoke-AzureRmResourceAction `
 }
 ```
 
-スクリプトは、3 つの配列を生成するスクリプトを作成することで改善できます。 最初の配列は、```isGrandFatherableSubscription``` が True に設定されており、現在 optedInDate に値がないすべてのサブスクリプション ID で構成されます。 2 番目の配列は、現在新しい価格モデルになっているすべてのサブスクリプションです。 3 番目の配列は、テナント内にある新しい価格モデルを使用できないサブスクリプション ID のみが入力されます。
+スクリプトは、3 つの配列を生成するスクリプトを作成することで改善できます。 最初の配列は、```isGrandFatherableSubscription``` が True に設定されており、現在 optedInDate に値がないすべてのサブスクリプション ID で構成されます。 2 番目の配列は、現在新しい価格モデルになっているすべてのサブスクリプションです。 3 番目の配列には、テナント内にある新しい価格モデルを使用できないサブスクリプション ID のみが入力されます。
 
-```PowerShell
+```powershell
 [System.Collections.ArrayList]$Eligible= @{}
 [System.Collections.ArrayList]$NewPricingEnabled = @{}
 [System.Collections.ArrayList]$NotEligible = @{}
@@ -212,7 +214,7 @@ Invoke-AzureRmResourceAction `
 Foreach ($id in $Subscriptions)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-$Result= Invoke-AzureRmResourceAction `
+$Result= Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action listmigrationdate `
@@ -240,11 +242,11 @@ $Result= Invoke-AzureRmResourceAction `
 
 サブスクリプションが 3 つの配列に分割されたところで、結果を慎重に確認する必要があります。 将来変更を元に戻す必要性が出てきた場合に対応できるように、配列のコンテンツのバックアップ コピーを作成できます。 現在古い価格モデルを使用しており、かつ新しい価格モデルを使用できるすべてのサブスクリプションを変換する場合、このタスクは次のように実行できます。
 
-```PowerShell
+```powershell
 Foreach ($id in $Eligible)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action migratetonewpricingmodel `

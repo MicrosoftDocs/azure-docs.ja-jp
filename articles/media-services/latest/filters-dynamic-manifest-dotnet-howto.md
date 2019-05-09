@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 23e83b98288f9ac1fe23e01b9a91d81daa3b0f47
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3517a9c0aabf9e8ec029405f14461626d32335a7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632383"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992277"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用してフィルターを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "52632383"
 
 ## <a name="prerequisites"></a>前提条件 
 
-- [フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)を確認する。
+- [フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)を確認します。
 - [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
 - [API へのアクセス](access-api-cli-how-to.md)に必要な情報を取得する
 - [.NET SDK の使用を始める](stream-files-tutorial-with-api.md#start_using_dotnet)方法については、[Azure Media Services を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法](stream-files-tutorial-with-api.md)に関するページを参照してください。
@@ -37,17 +37,18 @@ ms.locfileid: "52632383"
 
 .NET では、[FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) クラスと [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) クラスを使用してトラックの選択を構成します。 
 
-次のコードでは、英語の EC-3 を持つオーディオ トラックと、0-1000000 の範囲でビットレートを持つビデオ トラックを含むフィルターを定義しています。
+次のコードでは、EC-3 であるオーディオ トラックと、0-1000000 の範囲でビットレートであるビデオ トラックを含むフィルターが定義されています。
 
 ```csharp
 var audioConditions = new List<FilterTrackPropertyCondition>()
 {
-    new FilterTrackPropertyCondition(FilterTrackPropertyType.Language, "en-us", FilterTrackPropertyCompareOperation.Equal),
+    new FilterTrackPropertyCondition(FilterTrackPropertyType.Type, "Audio", FilterTrackPropertyCompareOperation.Equal),
     new FilterTrackPropertyCondition(FilterTrackPropertyType.FourCC, "EC-3", FilterTrackPropertyCompareOperation.Equal)
 };
 
 var videoConditions = new List<FilterTrackPropertyCondition>()
 {
+    new FilterTrackPropertyCondition(FilterTrackPropertyType.Type, "Video", FilterTrackPropertyCompareOperation.Equal),
     new FilterTrackPropertyCondition(FilterTrackPropertyType.Bitrate, "0-1000000", FilterTrackPropertyCompareOperation.Equal)
 };
 

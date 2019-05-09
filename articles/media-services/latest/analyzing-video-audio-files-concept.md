@@ -9,23 +9,23 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 11/17/2018
+ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8f8af438d4034fc945a717fee0b720e3fe13cf56
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344314"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352002"
 ---
 # <a name="analyzing-video-and-audio-files"></a>ビデオおよびオーディオ ファイルの分析
 
 Azure Media Services v3 では、Video Indexer と AMS v3 アナライザー プリセットを使用して、オーディオおよびビデオ ファイルから分析情報を抽出することもできます (この記事で説明します)。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。 どのような場合に Video Indexer やMedia Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../video-indexer/compare-video-indexer-with-media-services-presets.md)をご覧ください。
 
-Media Services v3 プリセットを使用してコンテンツを分析するには、**Transform** を作成し、次のいずれかのプリセットを使用する **Job** を送信します (**AudioAnalyzerPreset** または **VideoAnalyzerPreset**)。 **VideoAnalyzerPreset** を使用する方法については、[Azure Media Services を使用してビデオを分析する方法に関するチュートリアル](analyze-videos-tutorial-with-api.md)を参照してください。
+Media Services v3 プリセットを使用してコンテンツを分析するには、**Transform** を作成し、次のいずれかのプリセットを使用する **Job** を送信します ([VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) または **AudioAnalyzerPreset**)。 **VideoAnalyzerPreset** を使用する方法については、[Azure Media Services を使用してビデオを分析する方法に関するチュートリアル](analyze-videos-tutorial-with-api.md)を参照してください。
 
 > [!NOTE]
-> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。
+> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](media-reserved-units-cli-how-to.md)に関するページを参照してください。
 
 ## <a name="built-in-presets"></a>組み込みのプリセット
 
@@ -33,7 +33,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 |**プリセット名**|**シナリオ**|**詳細**|
 |---|---|---|
-|**AudioAnalyzerPreset**|オーディオの分析|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは単一のオーディオ トラックでのコンテンツ処理をサポートしています。BCP-47 形式の "language tag-region" を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされる言語は、英語 ("en-US" および "en-GB")、スペイン語 ("es-ES" および "es-MX")、フランス語 ("fr-FR")、イタリア語 ("it-IT")、日本語 ("ja-JP")、ポルトガル語 ("pt-BR")、中国語 ("zh-CN")、ドイツ語 ("de-DE")、アラビア語 ("ar-EG")、ロシア語 ("ru-RU")、ヒンディー語 ("hi-IN")、韓国語 ("ko-KR") です。<br/><br/> 言語が指定されていない場合や、null に設定されている場合は、自動言語検出が採用されます。 自動言語検出機能では、現在、英語、中国語、フランス語、ドイツ語、イタリア語、日本語、スペイン語、ロシア語、およびポルトガル語がサポートされています。 自動言語検出機能は、はっきりと音声が認識できる録音において最も効果的に機能します。 自動言語検出で言語を認識できなかった場合、文字起こしは英語にフォールバックされます。|
+|**AudioAnalyzerPreset**|オーディオの分析|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは、1 つの言語での音声を含む単一オーディオ トラックを使用したコンテンツ処理をサポートしています。 BCP-47 形式の "language tag-region" を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされる言語は、英語 ("en-US" および "en-GB")、スペイン語 ("es-ES" および "es-MX")、フランス語 ("fr-FR")、イタリア語 ("it-IT")、日本語 ("ja-JP")、ポルトガル語 ("pt-BR")、中国語 ("zh-CN")、ドイツ語 ("de-DE")、アラビア語 ("ar-EG")、ロシア語 ("ru-RU")、ヒンディー語 ("hi-IN")、韓国語 ("ko-KR") です。<br/><br/> 言語が指定されていないか、null 値に設定されている場合、自動言語検出は、最初に検出された言語を選択し、ファイルの実行中、選択された言語で処理を行います。 自動言語検出機能では、現在、英語、中国語、フランス語、ドイツ語、イタリア語、日本語、スペイン語、ロシア語、およびポルトガル語がサポートされています。 現在、最初の言語が検出された後に複数の言語を動的に切り替えることはサポートされていません。 自動言語検出機能は、はっきりと音声が認識できる録音において最も効果的に機能します。 自動言語検出で言語を認識できなかった場合、文字起こしは英語にフォールバックされます。|
 |**VideoAnalyzerPreset**|オーディオとビデオの分析|オーディオとビデオの両方から分析情報 (リッチ メタデータ) を抽出し、JSON 形式のファイルを出力します。 ビデオ ファイルを処理するときにオーディオの分析情報のみを抽出するかどうかを指定できます。 詳細については、[ビデオの分析](analyze-videos-tutorial-with-api.md)に関するページを参照してください。|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
@@ -148,7 +148,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 |name|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
 |confidence|顔認識の信頼度。|
 |description|著名人の説明 |
-|thumbnalId|その顔のサムネイルの ID|
+|thumbnailId|その顔のサムネイルの ID|
 |knownPersonId|既知の人物の場合は、その内部 ID|
 |referenceId|Bing に登録されている著名人の場合は、その Bing ID|
 |referenceType|現時点では Bing のみ。|

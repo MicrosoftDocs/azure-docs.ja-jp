@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: vainolo
-ms.author: vainolo
+ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/25/2018
-ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 04/08/2019
+ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971523"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361281"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -25,11 +25,13 @@ Azure [SQL Database](sql-database-technical-overview.md) および [SQL Data War
 
 - 規定コンプライアンスの維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 
-- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準準拠をサポートする Azure プログラムの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/compliance/)のページを参照してください。
+- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)を参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 
 > [!NOTE] 
 > このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
 ## <a id="subheading-1"></a>Azure SQL Database 監査の概要
@@ -43,8 +45,11 @@ SQL Database 監査を使用して、以下を行うことができます。
 > [!IMPORTANT]
 > 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
 >
-> - **Premium Storage** は現在、追加 BLOB では**サポートされていません**。
+> - すべてのストレージの種類 (v1、v2、BLOB) がサポートされています。
+> - すべてのストレージ レプリケーション構成がサポートされています。
+> - **Premium Storage** は現在**サポートされていません**。
 > - **VNet 内の Storage** は現在**サポートされていません**。
+> - **ファイアウォールの背後にある Storage** は現在**サポートされていません**。
 
 ## <a id="subheading-8"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
 
@@ -82,7 +87,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     ![ナビゲーション ウィンドウ][3]
 
-5. **新規** - 監査ログを書き込む場所を構成するときに、複数のオプションから選択できるようになりました。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (Log Analytics で使用)、イベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
+5. **新規** - 監査ログを書き込む場所を構成するときに、複数のオプションから選択できるようになりました。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (Azure Monitor ログで使用)、イベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
 
     ![ストレージ オプション](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -92,7 +97,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 7. Log Analytics ワークスペースへの監査ログの書き込みを構成するには、**[Log Analytics (プレビュー)]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択または作成し、**[OK]** をクリックします。
 
-    ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics ワークスペース](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. イベント ハブへの監査ログの書き込みを構成するには、**[イベント ハブ (プレビュー)]** を選択し、**[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、**[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
 
@@ -109,7 +114,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 ## <a id="subheading-3"></a>監査ログとレポートを分析する
 
-監査ログを Log Analytics に書き込む場合:
+監査ログを Azure Monitor ログに書き込む場合:
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
@@ -120,15 +125,16 @@ SQL Database 監査を使用して、以下を行うことができます。
     ![Log Analytics で開く](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
 - また、Log Analytics ブレードから監査ログにアクセスすることもできます。 ご自身の Log Analytics ワークスペースを開いて、**[全般]** セクションで **[ログ]** をクリックします。 監査ログを表示するには、*search "SQLSecurityAuditEvents"* などの単純なクエリから始めることができます。
-    ここから [Log Analytics](../log-analytics/log-analytics-log-search.md) を使用して、監査ログのデータに対して詳細検索を実行することもできます。 Log Analytics により、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../log-analytics/log-analytics-log-search.md)に関するページをご覧ください。
+    ここから [Azure Monitor ログ](../log-analytics/log-analytics-log-search.md) を使用して、監査ログのデータに対して詳細検索を実行することもできます。 Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](../log-analytics/log-analytics-log-search.md)に関するページをご覧ください。
 
 監査ログをイベント ハブに書き込む場合:
 
 - イベント ハブの監査ログ データを使用するには、イベントを処理し、そのイベントをターゲットに書き込むようにストリームを設定する必要があります。 詳細については、「[Azure Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/)」を参照してください。
+- イベント ハブの監査ログは [Apache Avro](https://avro.apache.org/) イベントの本体でキャプチャされ、UTF-8 エンコードの JSON 形式を使用して格納されます。 監査ログを読み取るために、[Avro Tools](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) またはこの形式を処理する同様のツールを使用できます。
 
 監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
 
-- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
+- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
@@ -154,8 +160,8 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     4. 統合されたファイルを SSMS で開くと、ファイルを表示および分析し、XEL または CSV ファイルまたはテーブルにエクスポートすることができます。
 
-- Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 ダウンロード可能なテンプレートの詳細、およびテンプレートへのにアクセスについては、[Power BI での監査ログ データの分析](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/)に関するページをご覧ください。
-- ポータル経由で、あるいは [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
+- Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 ダウンロード可能なテンプレートの詳細と、テンプレートへのアクセスについては、[Power BI での監査ログ データの分析](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/)に関するページを参照してください。
+- ポータル経由で、あるいは [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
   - ログ ファイルをローカルでダウンロードした後に、ファイルをダブルクリックし、SSMS でログを開き、表示し、分析します。
   - また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 それには、特定のサブフォルダーを右クリックし、**[名前を付けて保存]** を選択してローカル フォルダーに保存します。
 
@@ -164,8 +170,7 @@ SQL Database 監査を使用して、以下を行うことができます。
   - 複数のファイルまたはログ ファイルが含まれるサブフォルダーをダウンロードした後、前述の SSMS 監査ファイルの統合の指示に従って、ローカルでマージすることができます。
   - BLOB 監査ログをプログラムで表示します。
 
-    - [拡張イベント リーダー](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) (C# ライブラリ) を使用します。
-    - PowerShell を使用して[拡張イベント ファイルにクエリを実行します](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/)。
+    - PowerShell を使用して[拡張イベント ファイルにクエリを実行します](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/)。
 
 ## <a id="subheading-5"></a>運用方法
 
@@ -182,6 +187,8 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
     >[!IMPORTANT]
     >データベースレベルの監査では、セカンダリ データベースのストレージ設定はプライマリ データベースと同じになるため、リージョンをまたいだトラフィックが発生します。 サーバー レベルの監査のみを有効にし、すべてのデータベースでデータベース レベルの監査を無効なままにしておくことをお勧めします。
+    > [!WARNING]
+    > geo レプリケーションのセカンダリ データベースでは、現在のところ、サーバー レベルで監査ログの対象としてイベント ハブまたは Azure Monitor ログを使用することができません。
 
 ### <a id="subheading-6">ストレージ キーの再生成</a>
 
@@ -220,30 +227,41 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 ## <a id="subheading-7"></a>Azure PowerShell を使用して SQL Database の監査を管理する
 
-**PowerShell コマンドレット**:
+**PowerShell コマンドレット (WHERE 句のサポートによってフィルタリングを強化)**:
 
-- [データベース BLOB 監査ポリシーを作成または更新する (Set-AzureRMSqlDatabaseAuditing)][105]
-- [サーバー BLOB 監査ポリシーを作成または更新する (Set-AzureRMSqlServerAuditing)][106]
-- [データベース監査ポリシーを取得する (Get-AzureRMSqlDatabaseAuditing)][101]
-- [サーバー BLOB 監査ポリシーを取得する (Get-AzureRMSqlServerAuditing)][102]
+- [データベース監査ポリシーを作成または更新する (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [サーバー監査ポリシーを作成または更新する (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [データベース監査ポリシーを取得する (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [サーバー監査ポリシーを取得する (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 スクリプトの例については、[PowerShell を使用した監査と脅威検出の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページを参照してください。
 
 ## <a id="subheading-9"></a>REST API を使用して SQL Database の監査を管理する
 
-**REST API - BLOB 監査**:
+**REST API**:
 
-- [データベース BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [サーバー BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [データベース BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [サーバー BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [データベース監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [サーバー監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [サーバー監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
 
-- [データベース "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [サーバー "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [データベース "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [サーバー "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [データベース "*拡張*" 監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [サーバー "*拡張*" 監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース "*拡張*" 監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [サーバー "*拡張*" 監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+
+## <a id="subheading-10"></a>ARM テンプレートを使用して SQL Database の監査を管理する
+
+以下の例で確認できるように、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートを使用して Azure SQL データベース監査を管理できます。
+
+- [Azure BLOB ストレージ アカウントに監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
+- [Log Analytics に監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Event Hubs に監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+
+> [!NOTE]
+> リンクされたサンプルは、外部の公開リポジトリにあり、保証なしに "手を加えず" に提供され、Microsoft サポート プログラム/サービスのサポート対象ではなありません。
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1
@@ -254,6 +272,7 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 [Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
 [Manage SQL database auditing using REST API]: #subheading-9
+[Manage SQL database auditing using ARM templates]: #subheading-10
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png
@@ -266,10 +285,3 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
 [10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
-
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditing
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditing
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing

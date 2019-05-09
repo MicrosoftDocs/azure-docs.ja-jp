@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 801fa50ea34da8ac40c559e77fb6c51c6422172e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166338"
 documentType: LandingData
 title: Language Understanding (LUIS) のドキュメント
 metadata:
-  document_id: 
+  document_id: null
   title: Language Understanding (LUIS) - チュートリアル、クイック スタート、API リファレンス
   description: Language Understanding サービスを使用して、アプリケーションが人の発言の意図を認識できるようにする方法について説明します。
   author: nitinme
@@ -17,104 +11,104 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 01/23/2019
   ms.author: nitinme
 abstract:
   description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ../media/index/luis-landing-page-video.png
       width: 250
-    title: LUIS の新機能 (18:28)
-    href: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+    title: 'LUIS の新機能 (18:28)'
+    href: 'https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/luis/what-is-luis
+            html: <p>Language Understanding サービス (LUIS) について説明します。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: LUIS とは
+          - href: /azure/cognitive-services/luis/luis-how-plan-your-app
+            html: <p>ご自身のアプリに関連する意図とエンティティの概要を準備します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: LUIS アプリの計画
+          - href: /azure/cognitive-services/luis/luis-concept-best-practices
+            html: <p>LUIS アプリを作成する際に、これらのベスト プラクティスを使用します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: LUIS アプリのベスト プラクティス
+  - title: 5 分間のクイック スタート
     items:
-    - href: /azure/cognitive-services/luis/what-is-luis
-      html: <p>Language Understanding サービス (LUIS) について説明します。</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: LUIS とは
-    - href: /azure/cognitive-services/luis/luis-how-plan-your-app
-      html: <p>ご自身のアプリに関連する意図とエンティティの概要を準備します。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: LUIS アプリの計画
-    - href: /azure/cognitive-services/luis/luis-concept-best-practices
-      html: <p>LUIS アプリを作成する際に、これらのベスト プラクティスを使用します。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: LUIS アプリのベスト プラクティス
-- title: 5 分間のクイック スタート
-  items:
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_csharp.svg
-    - image:
-        src: media/index/logo_java.svg
-    - image:
-        src: media/index/logo_nodejs.svg
-    - image:
-        src: media/index/logo_python.svg
-    rows:
-    - title: エンドポイント API
-      values:
-      - href: luis-get-started-cs-get-intent
-      - href: luis-get-started-java-get-intent
-      - href: luis-get-started-node-get-intent
-      - href: luis-get-started-python-get-intent
-    - title: オーサリング API
-      values:
-      - href: luis-get-started-cs-add-utterance
-      - href: luis-get-started-java-add-utterance
-      - href: luis-get-started-node-add-utterance
-      - href: luis-get-started-python-add-utterance
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: list
-    style: ordered
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo_csharp.svg
+          - image:
+              src: media/index/logo_java.svg
+          - image:
+              src: media/index/logo_nodejs.svg
+          - image:
+              src: media/index/logo_python.svg
+        rows:
+          - title: エンドポイント API
+            values:
+              - href: luis-get-started-cs-get-intent
+              - href: luis-get-started-java-get-intent
+              - href: luis-get-started-node-get-intent
+              - href: luis-get-started-python-get-intent
+          - title: オーサリング API
+            values:
+              - href: luis-get-started-cs-add-utterance
+              - href: luis-get-started-java-add-utterance
+              - href: luis-get-started-node-add-utterance
+              - href: luis-get-started-python-add-utterance
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="luis-quickstart-intents-only">人事 (HR) ドメインのアプリを作成する</a>
-    - html: <a href="luis-tutorial-prebuilt-intents-entities">事前構築済みの意図とエンティティを追加する</a>
-    - html: <a href="luis-quickstart-intents-regex-entity">正規表現エンティティを追加する</a>
-    - html: <a href="luis-quickstart-intent-and-list-entity">リスト エンティティを追加する</a>
-    - html: <a href="luis-quickstart-intent-and-hier-entity">階層構造エンティティを追加する</a>
-    - html: <a href="luis-quickstart-primary-and-secondary-data">シンプルなエンティティとフレーズ リストを追加する</a>
-    - html: <a href="luis-quickstart-intent-and-key-phrase">keyPhrase エンティティを追加する</a>
-    - html: <a href="luis-quickstart-intent-and-sentiment-analysis">センチメント分析を追加する</a>
-- title: サンプル
-  items:
-  - type: list
-    style: unordered
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="luis-quickstart-intents-only">人事 (HR) ドメインのアプリを作成する</a>
+          - html: <a href="luis-tutorial-prebuilt-intents-entities">事前構築済みの意図とエンティティを追加する</a>
+          - html: <a href="luis-quickstart-intents-regex-entity">正規表現エンティティを追加する</a>
+          - html: <a href="luis-quickstart-intent-and-list-entity">リスト エンティティを追加する</a>
+          - html: <a href="tutorial-entity-roles">エンティティ ロールを使用する</a>
+          - html: <a href="luis-quickstart-primary-and-secondary-data">シンプルなエンティティとフレーズ リストを追加する</a>
+          - html: <a href="luis-quickstart-intent-and-key-phrase">keyPhrase エンティティを追加する</a>
+          - html: <a href="luis-quickstart-intent-and-sentiment-analysis">センチメント分析を追加する</a>
+  - title: サンプル
     items:
-    - html: <a href="https://aka.ms/luis-code-samples">GitHub のサンプル</a><br/>
-- title: ビデオ
-  items:
-  - type: list
-    style: unordered
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://aka.ms/luis-code-samples">GitHub のサンプル</a><br/>'
+  - title: ビデオ
     items:
-    - html: <a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Build 2018 での Azure Friday - Cognitive Services - Language (LUIS)</a>
-    - html: <a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018 のセッション - ボット インテリジェンス、音声機能、NLU のベスト プラクティス</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Build 2018 での Azure Friday - Cognitive Services - Language (LUIS)</a>'
+          - html: '<a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018 のセッション - ボット インテリジェンス、音声機能、NLU のベスト プラクティス</a>'
+  - title: リファレンス
     items:
-    - title: REST API v2
-      html: <p><a href="https://aka.ms/luis-endpoint-apis"> エンドポイント API</a></p><p><a href="https://aka.ms/luis-authoring-apis"> 作成 API</a></p>
-    - title: SDK
-      html: <p><a href="https://aka.ms/luis-endpoint-sdk"> .NET エンドポイント SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 作成 SDK</a></p>
-    - title: PowerShell
-      html: <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API v2
+            html: '<p><a href="https://aka.ms/luis-endpoint-apis"> エンドポイント API</a></p><p><a href="https://aka.ms/luis-authoring-apis"> 作成 API</a></p>'
+          - title: SDK
+            html: '<p><a href="https://aka.ms/luis-endpoint-sdk"> .NET エンドポイント SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 作成 SDK</a></p>'
+          - title: PowerShell
+            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'

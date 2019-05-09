@@ -1,13 +1,10 @@
 ---
-title: VM (クラシック) のプライベート IP アドレスの構成 - Azure クラシック CLI | Microsoft Docs
+title: VM (クラシック) のプライベート IP アドレスの構成 - Azure クラシック CLI
+titlesuffix: Azure Virtual Network
 description: Azure クラシック コマンドライン インターフェイス (CLI) を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: tysonn
-tags: azure-service-management
-ms.assetid: 17386acf-c708-4103-9b22-ff9bf04b778d
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abc551f796cb2d8921b6b1f67fb6a6714655ffde
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2f71dc2bcd5463f81ae286bbe3099124eb3fa539
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134677"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023891"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 

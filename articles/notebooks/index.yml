@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1be098bb098befecf29863bfe2d0d5220edddb01
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852426"
 documentType: LandingData
 title: Azure Notebooks のドキュメント
 metadata:
@@ -13,62 +7,62 @@ metadata:
   services: notebooks
   author: kraigb
   manager: douge
-  ms.service: notebooks
+  ms.service: azure-notebooks
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/04/2018
   ms.author: kraigb
 abstract:
-  description: Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 Jupyter (旧称 IPython) はオープン ソース プロジェクトで、マークダウン テキスト、実行可能コード (Python、R、F#)、永続的なデータ、グラフィックス、視覚化を組み合わせて、ノートブックと呼ばれる 1 つの共有可能なキャンバスに簡単にまとめることができます。
+  description: 'Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 Jupyter (旧称 IPython) はオープン ソース プロジェクトで、マークダウン テキスト、実行可能コード (Python、R、F#)、永続的なデータ、グラフィックス、視覚化を組み合わせて、ノートブックと呼ばれる 1 つの共有可能なキャンバスに簡単にまとめることができます。'
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 次のクイック スタートを探索して、Azure Notebooks の使用方法を学習してください。
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
+  - title: 5 分間のクイック スタート
     items:
-    - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
-      html: <p>Azure Notebooks で Jupyter ノートブックを作成、実行した後、そのノートブックを他のユーザーと共有する方法を学習します。</p>
-      image:
-        src: media/index/Azure_AddNotebook.svg
-      title: ノートブックの作成と共有
-    - href: /azure/notebooks/quickstart-clone-jupyter-notebook
-      html: <p>GitHub リポジトリから Jupyter ノートブックを複製し、自分の Azure Notebooks アカウントで実行する方法を学習します。</p>
-      image:
-        src: media/index/Azure_ClonePage.svg
-      title: ノートブックの複製
-    - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
-      html: <p>Jupyter ノートブックをローカル コンピューターまたは Web URL から Azure Notebooks に転送した後、共同作業用に共有する方法を学習します。</p>
-      image:
-        src: media/index/Azure_MigrateNotebook.svg
-      title: ローカルの Jupyter ノートブックの移行
-    - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
-      html: <p>ある一連のインストール済みパッケージやスタートアップ スクリプトを使用して Azure Notebooks プロジェクトを構成する方法を学習します。</p>
-      image:
-        src: media/index/Azure_CustomEnvironment.svg
-      title: カスタム環境でのプロジェクトの作成
-    - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
-      html: <p>Azure Notebooks にサインインし、ユーザー ID を設定する方法を学習します。これにより、保存済みのプロジェクトにアクセスしたり、ノートブックを他のユーザーと共有したりできるようになります。</p>
-      image:
-        src: media/index/Azure_UserAccount.svg
-      title: サインインとユーザー ID の設定
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 次のクイック スタートを探索して、Azure Notebooks の使用方法を学習してください。
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
+            html: <p>Azure Notebooks で Jupyter ノートブックを作成、実行した後、そのノートブックを他のユーザーと共有する方法を学習します。</p>
+            image:
+              src: media/index/Azure_AddNotebook.svg
+            title: ノートブックの作成と共有
+          - href: /azure/notebooks/quickstart-clone-jupyter-notebook
+            html: <p>GitHub リポジトリから Jupyter ノートブックを複製し、自分の Azure Notebooks アカウントで実行する方法を学習します。</p>
+            image:
+              src: media/index/Azure_ClonePage.svg
+            title: ノートブックの複製
+          - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
+            html: <p>Jupyter ノートブックをローカル コンピューターまたは Web URL から Azure Notebooks に転送した後、共同作業用に共有する方法を学習します。</p>
+            image:
+              src: media/index/Azure_MigrateNotebook.svg
+            title: ローカルの Jupyter ノートブックの移行
+          - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
+            html: <p>ある一連のインストール済みパッケージやスタートアップ スクリプトを使用して Azure Notebooks プロジェクトを構成する方法を学習します。</p>
+            image:
+              src: media/index/Azure_CustomEnvironment.svg
+            title: カスタム環境でのプロジェクトの作成
+          - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
+            html: <p>Azure Notebooks にサインインし、ユーザー ID を設定する方法を学習します。これにより、保存済みのプロジェクトにアクセスしたり、ノートブックを他のユーザーと共有したりできるようになります。</p>
+            image:
+              src: media/index/Azure_UserAccount.svg
+            title: サインインとユーザー ID の設定
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">ノートブックの作成方法を最初から最後まで説明します。</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 次のサンプルを使用して Notebooks を操作しましょう。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">ノートブックの作成方法を最初から最後まで説明します。</a>
+  - title: サンプル
     items:
-    - html: <a href="/azure/notebooks/azure-notebooks-samples">Jupyter ノートブックのサンプル</a>
+      - type: paragraph
+        text: 次のサンプルを使用して Notebooks を操作しましょう。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/notebooks/azure-notebooks-samples">Jupyter ノートブックのサンプル</a>

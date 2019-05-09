@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: richcar
 ms.custom: seodec18
-ms.openlocfilehash: 842654f860a94481b53ebf9732fc4ed8be24cf4a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a03ab7bbdadad2728f54127583583c22bd2ec07a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077513"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650378"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスにリンクする高速プライベート通信です。 
@@ -75,7 +75,7 @@ ExpressRoute では、50 Mb/秒～ 10 Gb/秒のネットワーク速度をサポ
 ExpressRoute では、より高速での接続の利用効率を上げるために、複数の VNet から単一の ExpressRoute 回線への接続をサポートしています。 単一の ExpressRoute 回線は、同じ顧客が所有する複数の Azure サブスクリプション間で共有できます。
 
 ## <a name="configuring-expressroute"></a>ExpressRoute の構成
-ExpressRoute は、1 本の ExpressRoute 回線で 3 種類のトラフィック ([ルーティング ドメイン](#ExpressRoute-routing-domains)) をサポートするように構成できます。 このトラフィックは、Microsoft ピアリング、Azure パブリック ピアリング、プライベート ピアリングに分離されます。 1 種類または全種類のトラフィックを選択して 1 本の ExpressRoute 回線で送信することも、顧客が求める ExpressRoute 回線のサイズや分離性に応じて複数の ExpressRoute 回線を使用することもできます。 顧客のセキュリティ体制によっては、パブリック トラフィックとプライベート トラフィックを同じ回線で送受信できない場合があります。
+ExpressRoute は、1 本の ExpressRoute 回線で 3 種類のトラフィック ([ルーティング ドメイン](#expressroute-routing-domains)) をサポートするように構成できます。 このトラフィックは、Microsoft ピアリング、Azure パブリック ピアリング、プライベート ピアリングに分離されます。 1 種類または全種類のトラフィックを選択して 1 本の ExpressRoute 回線で送信することも、顧客が求める ExpressRoute 回線のサイズや分離性に応じて複数の ExpressRoute 回線を使用することもできます。 顧客のセキュリティ体制によっては、パブリック トラフィックとプライベート トラフィックを同じ回線で送受信できない場合があります。
 
 ### <a name="connect-through-model"></a>Connect-Through モデル
 Connect-Through の構成では、顧客データセンターのリソースを Azure でホストされるサブスクリプションに接続するためのすべてのネットワーク基盤に対して、貴社が責任を負います。 Azure の機能を利用するそれぞれの顧客には独自の ExpressRoute 接続が必要であり、それを貴社が管理します。 ExpressRoute 回線の調達は、顧客が調達する場合と同じ方法で行います。 回線のプロビジョニングと回線の状態に関しては、 [ExpressRoute ワークフロー](expressroute-workflows.md) に関する記事で概説されているものと同じ手順に従います。 その後、ボーダー ゲートウェイ プロトコル (BGP) のルートを構成して、オンプレミス ネットワークと Azure VNet の間のトラフィックを制御します。

@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl store のコマンドについて説明し
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 034ae29b5fabae15aa2b6b96e7fefaef23c1c5a1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 65dcceb2e55ec0927630b32670d2f915a01903bf
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275229"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667949"
 ---
 # <a name="sfctl-store"></a>sfctl store
 クラスター イメージ ストアで基本的なファイル レベルの操作を実行します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
-| 削除 | 既存のイメージ ストアのコンテンツを削除します。 |
+| delete | 既存のイメージ ストアのコンテンツを削除します。 |
 | root-info | イメージ ストアのルートにあるコンテンツ情報を取得します。 |
 | stat | イメージ ストアのコンテンツ情報を取得します。 |
 
@@ -52,7 +52,7 @@ ms.locfileid: "53275229"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-store-root-info"></a>sfctl store root-info
 イメージ ストアのルートにあるコンテンツ情報を取得します。
@@ -73,7 +73,7 @@ ms.locfileid: "53275229"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-store-stat"></a>sfctl store stat
 イメージ ストアのコンテンツ情報を取得します。
@@ -95,7 +95,7 @@ ms.locfileid: "53275229"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 
 ## <a name="next-steps"></a>次の手順

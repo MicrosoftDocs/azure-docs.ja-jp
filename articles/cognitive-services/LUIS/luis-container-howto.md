@@ -4,27 +4,27 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS コンテナーでは、お客様のトレーニング済みアプリまたは発行済みアプリを Docker コンテナーに読み込んで、コンテナーの API エンドポイントからクエリ予測を利用することができます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: a6170d51e1a8756020b4f2caa733c388b2ce4060
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013818"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894680"
 ---
-# <a name="install-and-run-containers"></a>コンテナーのインストールと実行
+# <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
 Language Understanding (LUIS) コンテナーでは、お客様のトレーニング済みまたは発行済みの Language Understanding モデル ([LUIS アプリ](https://www.luis.ai) とも呼ばれます) を Docker コンテナーに読み込みこんで、コンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリ ログを収集し、それらを Azure Language Understanding モデルに再度アップロードすることで、アプリの予測精度を高めることができます。
 
 次のビデオでは、このコンテナーの使用に関するデモが行われています。
 
-[![Cognitive Services のコンテナーのデモ](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![CCognitive Services のコンテナーのデモ](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -34,49 +34,41 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 |必須|目的|
 |--|--|
-|Docker エンジン| このプレビューを完了するには、[ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
+|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Language Understanding (LUIS) のリソースと関連アプリ |コンテナーを使用するためには、以下が必要です。<br><br>* [_Language Understanding_ Azure リソース](luis-how-to-azure-subscription.md)、および関連するエンドポイント キーとエンドポイント URI (課金エンドポイントとして使用されます)。<br>* コンテナーへのマウント済み入力としてパッケージ化されたトレーニング済みまたは発行済みのアプリと、その関連アプリ ID。<br>* そのアプリ パッケージをダウンロードするためのオーサリング キー (それを API から行う場合)。<br><br>これらの要件は、以下の変数にコマンドライン引数を渡すために使用されます。<br><br>**{AUTHORING_KEY}**: このキーは、パッケージ化されたアプリをクラウドの LUIS サービスから取得したり、クエリ ログをクラウドにアップロードしたりするために使用されます。 形式は `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` です。<br><br>**{APPLICATION_ID}**: この ID は、アプリを選択するために使用されます。 形式は `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。<br><br>**{ENDPOINT_KEY}**: このキーは、コンテナーを起動するために使用されます。 エンドポイント キーは 2 か所で確認できます。 1 つ目は Azure portal です (_Language Understanding_ リソースのキーの一覧内)。 また、LUIS ポータルの [Keys and endpoints]\(キーとエンドポイント\) の設定ページでもエンドポイント キーを確認できます。 スターター キーは使用しないでください。<br><br>**{BILLING_ENDPOINT}**: 課金エンドポイントの値は、Azure portal の [Language Understanding Overview]\(Language Understanding の概要\) ページで確認できます  (例: `https://westus.api.cognitive.microsoft.com/luis/v2.0`)。<br><br>[オーサリング キーとエンドポイント キー](luis-boundaries.md#key-limits)には、異なる目的があります。 これらは区別して使用してください。 |
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
-**ホスト**とは、Docker コンテナーを実行するコンピューターのことです。 お客様のオンプレミス上のコンピューターを使用できるほか、次のような Azure 内の Docker ホスティング サービスを使用することもできます。
-
-* [Azure Kubernetes Service](/azure/aks/)
-* [Azure Container Instances](/azure/container-instances/)
-* [Azure Stack](/azure/azure-stack/) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスター。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
+[!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
 このコンテナーでは、以下の設定に関して最小値と推奨値がサポートされます。
 
-|Setting| 最小値 | 推奨 |
-|-----------|---------|-------------|
-|コア<BR>`--cpus`|1 コア<BR>2.6 ギガヘルツ (GHz) 以上|1 コア|
-|メモリ<BR>`--memory`|2 GB|4 GB|
-|1 秒あたりのトランザクション数<BR>(TPS)|20 TPS|40 TPS|
+|コンテナー| 最小値 | 推奨 | TPS<br>(最大、最小)|
+|-----------|---------|-------------|--|
+|LUIS|1 コア、2 GB メモリ|1 コア、4 GB メモリ|20、40|
 
-`--cpus` と `--memory` の設定は、`docker run` コマンドの一部として使用されます。
+* 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
+* TPS - 1 秒あたりのトランザクション数
+
+コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して `mcr.microsoft.com/azure-cognitive-services/luis` リポジトリからコンテナー イメージをダウンロードします。
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
-上記のコマンドで使用されている `latest` など、利用可能なタグの詳細な説明については、Docker Hub の [LUIS](https://hub.docker.com/r/microsoft/azure-cognitive-services-luis/) に関するページを参照してください。
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
 
-> [!TIP]
-> [docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使用して、ダウンロードしたコンテナー イメージを一覧表示できます。 たとえば、次のコマンドは、ダウンロードした各コンテナー イメージの ID、リポジトリ、およびタグが表として書式設定されて表示されます。
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->
->  IMAGE ID            REPOSITORY                                                                TAG
->  ebbee78a6baa        mcr.microsoft.com/azure-cognitive-services/luis                           latest
->  ``` 
+上記のコマンドで使用されている `latest` など、利用可能なタグの詳細な説明については、Docker Hub の [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) に関するページを参照してください。
+
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
 
@@ -89,7 +81,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 1. 必要な "_入力マウント_" と課金設定で[コンテナーを実行](##run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](luis-container-configuration.md#example-docker-run-commands)もご覧いただけます。 
 1. [コンテナーの予測エンドポイントに対してクエリを実行します](#query-the-containers-prediction-endpoint)。 
 1. コンテナーの操作が完了したら、LUIS ポータルで出力マウントから[エンドポイント ログをインポート](#import-the-endpoint-logs-for-active-learning)し、コンテナーを[停止](#stop-the-container)します。
-1. LUIS ポータルの **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)を使用して、アプリを強化します。
+1. LUIS ポータルの **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)を使用して、アプリを強化します。
 
 コンテナーで実行中のアプリに変更を加えることはできません。 コンテナー内のアプリに変更を加えるには、[LUIS](https://www.luis.ai) ポータルを使用して LUIS サービスでアプリに変更を加えるか、または LUIS の[オーサリング API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用する必要があります。 そのうえで、アプリをトレーニングまたは発行し、新しいパッケージをダウンロードして、もう一度コンテナーを実行します。
 
@@ -113,7 +105,8 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 |ステージング|Get、Post|Azure とコンテナー|`{APPLICATION_ID}_STAGING.gz`|
 |Production|Get、Post|Azure とコンテナー|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**重要:** LUIS パッケージ ファイルの名前変更や改変、展開は行わないでください。
+> [!IMPORTANT]
+> LUIS パッケージ ファイルの名前変更や改変、展開は行わないでください。
 
 ### <a name="packaging-prerequisites"></a>パッケージの前提条件
 
@@ -254,11 +247,13 @@ ApiKey={ENDPOINT_KEY}
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 > ApiKey の値は、LUIS ポータルの [Keys and Endpoints]\(キーとエンドポイント\) ページにある **[キー]** です。また、[Azure Language Understanding Resource keys]\(Azure Language Understanding リソース キー\) ページで確認することもできます。  
 
+[!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 発行済み (ステージングまたは運用) アプリのエンドポイントには、トレーニング済みアプリのエンドポイントとは "_異なる_" ルートがあります。 
 
-コンテナーの API のホストとしては https://localhost:5000 を使用します。 
+コンテナーの API のホストとしては `https://localhost:5000` を使用します。 
 
 |パッケージの種類|方法|ルート|クエリ パラメーター|
 |--|--|--|--|
@@ -267,13 +262,13 @@ ApiKey={ENDPOINT_KEY}
 
 クエリ パラメーターを使用すると、クエリの応答で何がどのように返されるかを構成できます。
 
-|Query parameter (クエリ パラメーター)|type|目的|
+|Query parameter (クエリ パラメーター)|Type|目的|
 |--|--|--|
-|`q`|string|ユーザーの発話。|
+|`q`|文字列|ユーザーの発話。|
 |`timezoneOffset`|number|timezoneOffset を使用すると、事前構築済みのエンティティ datetimeV2 で使用される[タイムゾーンを変更](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)できます。|
 |`verbose`|ブール値|true に設定すると、すべての意図とそのスコアが返されます。 既定値は false で、この場合、最上位の意図だけが返されます。|
 |`staging`|ブール値|true に設定した場合、ステージング環境の結果からクエリが返されます。 |
-|`log`|ブール値|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)に使用できます。 既定値は true です。|
+|`log`|ブール値|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は true です。|
 
 ### <a name="query-published-app"></a>発行済みアプリに対してクエリを実行する
 
@@ -304,15 +299,20 @@ curl -X GET \
 LUIS コンテナーの出力マウントが指定された場合、アプリのクエリ ログ ファイルは出力ディレクトリ ({INSTANCE_ID} はコンテナーの ID) に保存されます。 アプリのクエリ ログには、LUIS コンテナーに送信された予測クエリごとに、クエリ、応答、タイムスタンプが記録されます。 
 
 次の場所は、コンテナーのログ ファイルに使用される入れ子になったディレクトリ構造を示しています。
-`
+```
 /output/luis/{INSTANCE_ID}/
-`
+```
  
 LUIS ポータルから、お客様のアプリを選択し、**[Import endpoint logs]\(エンドポイント ログのインポート\)** を選択して、それらのログをアップロードします。 
 
 ![アクティブ ラーニングに使用するコンテナーのログ ファイルをインポートする](./media/luis-container-how-to/upload-endpoint-log-files.png)
 
 ログがアップロードされたら、LUIS ポータルで[エンドポイント発話を確認](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances)します。
+
+
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 
@@ -322,33 +322,11 @@ LUIS ポータルから、お客様のアプリを選択し、**[Import endpoint
 
 出力[マウント](luis-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。 
 
-## <a name="containers-api-documentation"></a>コンテナーの API ドキュメント
-
-コンテナーには、エンドポイントの完全なドキュメント一式のほか、`Try it now` 機能が用意されています。 この機能を使用すると、コードを一切記述することなく、お客様の設定を Web ベースの HTML フォームに入力したりクエリを実行したりすることができます。 クエリから戻ると、HTTP ヘッダーと HTTP 本文の必要な形式を示すサンプル CURL コマンドが得られます。 
-
-> [!TIP]
-> [OpenAPI 仕様](https://swagger.io/docs/specification/about/)は、`/swagger` という相対 URI からご覧いただけます。コンテナーでサポートされる API 操作が説明されています。 例: 
->
->  ```http
->  http://localhost:5000/swagger
->  ```
-
 ## <a name="billing"></a>課金
 
 LUIS コンテナーでは、お客様の Azure アカウントの _Language Understanding_ リソースを使用して課金情報が Azure に送信されます。 
 
-Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services のコンテナーから Microsoft に顧客データ (発話) が送信されることはありません。 
-
-`docker run` では、次の引数が課金の目的に使用されます。
-
-| オプション | 説明 |
-|--------|-------------|
-| `ApiKey` | 課金情報を追跡するために使用される _Language Understanding_ リソースの API キー。<br/>このオプションの値には、`Billing` に指定されたプロビジョニング済みの LUIS Azure リソースの API キーが設定されている必要があります。 |
-| `Billing` | 課金情報を追跡するために使用される _Language Understanding_ リソースのエンドポイント。<br/>このオプションの値には、プロビジョニング済みの LUIS Azure リソースのエンドポイント URI が設定されている必要があります。|
-| `Eula` | コンテナーのライセンスに同意していることを示します。<br/>このオプションの値は `accept` に設定する必要があります。 |
-
-> [!IMPORTANT]
-> 3 つすべてのオプションに有効な値が指定されている必要があります。そうでないと、コンテナーが起動しません。
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 これらのオプションの詳細については、「[コンテナーの構成](luis-container-configuration.md)」を参照してください。
 
@@ -382,4 +360,5 @@ LUIS アプリケーションは、次の依存関係を一切**含んでいな�
 ## <a name="next-steps"></a>次の手順
 
 * 構成設定について、[コンテナーの構成](luis-container-configuration.md)を確認する
-* [よくあるご質問 (FAQ)](luis-resources-faq.md) を参照して、LUIS 機能に関連する問題を解決する。
+* [トラブルシューティング](troubleshooting.md)に関するページを参照して、LUIS 機能に関連する問題を解決する。
+* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

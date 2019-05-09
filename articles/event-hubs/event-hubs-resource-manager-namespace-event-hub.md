@@ -14,26 +14,28 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: db5bb30c4049eca699f8adb45a923915033b4216
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 8664b431239f7b288deccedeadff0806ab600bcd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134456"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232515"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してイベント ハブを作成する
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
-このクイック スタートでは、Azure Resource Manager テンプレートを使ってイベント ハブを作成します。 Azure Resource Manager テンプレートを使用して、イベント ハブとコンシューマー グループをそれぞれ 1 つずつ含んだ [Event Hubs](event-hubs-what-is-event-hubs.md) タイプの名前空間を作成します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、[Azure Resource Manager テンプレートのオーサリング][Authoring Azure Resource Manager templates]に関する記事をご覧ください。
-
+このクイック スタートでは、Azure Resource Manager テンプレートを使ってイベント ハブを作成します。 Azure Resource Manager テンプレートを使用して、イベント ハブとコンシューマー グループをそれぞれ 1 つずつ含んだ [Event Hubs](event-hubs-what-is-event-hubs.md) タイプの名前空間を作成します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、[Azure Resource Manager テンプレートのオーサリング][Authoring Azure Resource Manager templates]に関する記事をご覧ください。 テンプレートで使用する JSON の構文とプロパティについては、「[Microsoft.EventHub resource types (Microsoft.EventHub のリソースの種類)](/azure/templates/microsoft.eventhub/allversions)」を参照してください。
 
 > [!NOTE]
 > 完全なテンプレートについては、GitHub の[イベント ハブとコンシューマー グループを作成するためのテンプレート][Event Hub and consumer group template]を参照してください。 このテンプレートでは、イベント ハブの名前空間とイベント ハブだけでなく、コンシューマー グループも作成しました。 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Event Hubs" を検索してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-**Azure PowerShell** を使用して Resource Manager テンプレートをデプロイするには、[Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)します。
+**Azure PowerShell** を使用して Resource Manager テンプレートをデプロイするには、[Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)します。
 
 **Azure CLI** を使用して Resource Manager テンプレートをデプロイするには、[Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
 
@@ -118,12 +120,12 @@ Azure Resource Manager テンプレートのパラメーターを含む MyEventH
 2. 次のコマンドを実行して、Azure にサインインします。
 
    ```azurepowershell
-   Login-AzureRmAccount
+   Login-AzAccount
    ```
 3. 次のコマンドを発行して、現在のサブスクリプション コンテキストを設定します。
 
    ```azurepowershell
-   Select-AzureRmSubscription -SubscriptionName "<YourSubscriptionName>" 
+   Select-AzSubscription -SubscriptionName "<YourSubscriptionName>" 
    ```
 
 ### <a name="provision-resources"></a>リソースをプロビジョニングする
@@ -136,10 +138,10 @@ Azure PowerShell を使用してリソースをデプロイ/プロビジョニ�
 $resourceGroupName = "<Specify a name for the Azure resource group>"
 
 # Create an Azure resource group
-New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+New-AzResourceGroup $resourceGroupName -location 'East US'
 
 # Deploy the Resource Manager template. Specify the names of deployment itself, resource group, JSON file for the template, JSON file for parameters
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyEventHub.json -TemplateParameterFile MyEventHub-Parameters.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyEventHub.json -TemplateParameterFile MyEventHub-Parameters.json
 ```
 
 ## <a name="use-azure-cli-to-deploy-the-template"></a>Azure CLI を使用してテンプレートをデプロイする
@@ -164,7 +166,7 @@ az account set --subscription <Name of your Azure subscription>
 Azure CLI を使用してリソースをデプロイするには、C:\EventHubsQuickStart\ARM\ フォルダーに移動し、次のコマンドを実行します。
 
 > [!IMPORTANT]
-> az group create コマンドで Azure リソース グループの名前を指定します。 。
+> az group create コマンドで Azure リソース グループの名前を指定します 。
 
 ```azurecli
 # Create an Azure resource group

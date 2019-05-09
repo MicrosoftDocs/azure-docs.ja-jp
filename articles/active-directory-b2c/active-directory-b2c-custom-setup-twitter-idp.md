@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でカスタム ポリシーを使用して Tw
 description: Azure Active Directory B2C でカスタム ポリシーを使用して Twitter アカウントでのサインインを設定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 75d26387c8a9db1fa9acdc9d6b71bde63453c22d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.subservice: B2C
+ms.openlocfilehash: f2f70f16d27e8244e0fa3a259e963100f78aef55
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887351"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154430"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Twitter アカウントでのサインインを設定する
 
@@ -25,7 +25,7 @@ ms.locfileid: "48887351"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 「[Azure Active Directory B2C のカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了します。
+- 「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
 - まだ Twitter アカウントを持っていない場合は、[Twitter のサインアップ ページ](https://twitter.com/signup)でこのアカウントを作成します。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
@@ -47,13 +47,13 @@ Azure AD B2C テナントで前に記録した秘密鍵を格納する必要が�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure Portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
 5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
 6. **オプション**については、`Manual`を選択します。
-7. ポリシー キーの **[名前]** を入力します。 たとえば、「 `TwitterSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+7. ポリシー キーの**名前**を入力します。 たとえば、「 `TwitterSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
-9. **[キー使用法]** として `Encryption` を選択します。
+9. **[キー使用法]** として [`Encryption`] を選択します。
 10. **Create** をクリックしてください。
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
@@ -150,7 +150,7 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
     
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `Twitter-OAUTH1` 」のように入力します。
 
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のためにもう一度アップロードします。
+3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 
@@ -158,7 +158,7 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure Portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
 4. **[アプリケーション]** を選択し、**[追加]** を選択します。
 5. アプリケーションの名前を入力します (*testapp1* など)。
 6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。

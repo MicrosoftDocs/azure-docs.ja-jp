@@ -1,5 +1,5 @@
 ---
-title: PIM で Azure リソースにカスタム ロールを使用する | Microsoft Docs
+title: PIM で Azure リソースにカスタム ロールを使用する - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソースに対してカスタム ロールを使用する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: b01e785ac85c71b2982561e8b5e118775750fc69
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 13aef9b180a671a9b42bbc6319c487be36652093
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189875"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574877"
 ---
 # <a name="use-custom-roles-for-azure-resources-in-pim"></a>PIM で Azure リソースにカスタム ロールを使用する
 
-ロールの一部のメンバーには厳密な Privileged Identity Management (PIM) 設定を適用し、他のメンバーにはより自主性を持たせる必要がある場合があります。 Azure サブスクリプションで実行されるアプリケーションの開発を支援するために、組織が複数の契約担当者を雇用するシナリオを考えてみましょう。
+ロールの一部のメンバーには厳密な Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 設定を適用し、他のメンバーにはより自主性を持たせる必要がある場合があります。 Azure サブスクリプションで実行されるアプリケーションの開発を支援するために、組織が複数の契約担当者を雇用するシナリオを考えてみましょう。
 
 リソースの管理者として、承認を必要とせずに従業員がアクセスできるようにする必要があります。 ただし、組織のリソースへのアクセスを要求するときは、すべての契約社員が承認される必要があります。
 

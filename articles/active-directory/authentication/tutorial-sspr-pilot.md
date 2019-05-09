@@ -3,21 +3,22 @@ title: Azure AD SSPR パイロットを有効にする
 description: このチュートリアルでは、パイロット グループのユーザーに対して Azure AD のセルフサービスによるパスワードのリセットを有効にします。
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a86547ad3eddb57328a2a0358ac453c979b84d37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163361"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59362128"
 ---
-# <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>チュートリアル: Azure AD のセルフ サービスによるパスワードのリセットのパイロット展開を完了する
+# <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>チュートリアル:Azure AD のセルフ サービスによるパスワードのリセットのパイロット展開を完了する
 
 このチュートリアルでは、Azure AD のセルフサービスによるパスワードのリセット (SSPR) を組織にパイロット展開できるようにし、管理者以外のアカウントを使用してテストします。
 
@@ -33,7 +34,7 @@ ms.locfileid: "39163361"
 
 ## <a name="enable-self-service-password-reset"></a>セルフ サービスのパスワード リセットを有効にする
 
-1. グローバル管理者アカウントを使用して [Azure Portal](https://portal.azure.com) にサインインします。
+1. 全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. **Azure Active Directory** を参照し、**[パスワード リセット]** を選択します。
 1. 組織内のユーザーのサブセットに対してセルフサービス パスワードを有効にし、パイロット グループから始めます。
    * **[プロパティ]** ページのオプション **[セルフ サービスによるパスワードのリセットが有効]** の下で **[Selected]\(選択\)** を選び、パイロット グループを選択します。
@@ -41,8 +42,8 @@ ms.locfileid: "39163361"
       * 選択したグループ内のユーザーが適切にライセンスされていることを確認します。
    * **[保存]**
 1. **[認証方法]** ページで、次の操作を行います。
-   * **[Number of methods required to reset]\(リセットに必要な方法の数\)** を **2** に設定します。
-   * 組織が**ユーザーに許可する方法**を選択します。 このチュートリアルでは、**[メール]**、**[携帯電話]**、および **[会社電話]** を有効にするボックスをオンにします。
+   * **[リセットのために必要な方法の数]** を **1** に設定します。
+   * 組織が**ユーザーに許可する方法**を選択します。 このチュートリアルでは、**[メール]**、**[携帯電話]**、**[会社電話]**、**[モバイル アプリ通知 (プレビュー)]**、および **[モバイル アプリ コード (プレビュー)]** の各チェック ボックスをオンにします。
    * **[保存]**
 1. **[登録]** ページで、次の操作を行います。
    * **[Require users to register when signing in]\(サインイン時にユーザーに登録を要求する\)** に対して **[はい]** を選択します。

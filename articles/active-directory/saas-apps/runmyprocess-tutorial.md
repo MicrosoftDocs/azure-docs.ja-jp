@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と RunMyProcess の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と RunMyProcess の統合 | Microsoft Docs
 description: Azure Active Directory と RunMyProcess の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d31f7395-048b-4a61-9505-5acf9fc68d9b
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 8cfdbac75036e59cf4acebe07c76ff758b74cdd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dfef1371b7ac61712c0f70efd48c0e791c4c729d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439329"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162681"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>チュートリアル: Azure Active Directory と RunMyProcess の統合
+# <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>チュートリアル:Azure Active Directory と RunMyProcess の統合
 
 このチュートリアルでは、RunMyProcess と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ RunMyProcess で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 
 RunMyProcess で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[RunMyProcess のテスト ユーザーの作成](#creating-a-runmyprocess-test-user)** - RunMyProcess で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -145,14 +146,14 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
     c. **[Logout redirect (ログアウト リダイレクト)]** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    d. **[名前識別子形式]** ボックスで、**名前識別子形式**の値を「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前識別子形式]** ボックスで、**名前識別子形式**の値を「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。
 
     e. ダウンロードした証明書ファイルのコンテンツをコピーし、**[Certificate (証明書)]** ボックスに貼り付けます。 
  
     f. **[Save (保存)]** アイコンをクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -184,7 +185,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-runmyprocess-test-user"></a>RunMyProcess のテスト ユーザーの作成
 
@@ -208,7 +209,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
     c. **[アカウント作成の電子メールを自分に送信]** を選択します。 
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
    
     >[!NOTE]
     >他の RunMyProcess ユーザー アカウントの作成ツールまたは RunMyProcess から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。 

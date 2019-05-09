@@ -1,22 +1,22 @@
 ---
-title: Application Insights を使用してモデルを監視する
+title: Azure Application Insights を設定して ML モデルを監視する
 titleSuffix: Azure Machine Learning service
-description: Application Insights を使用して、Azure Machine Learning サービス経由でデプロイされた Web サービスを監視する
+description: Azure Machine Learning service を使ってデプロイされた Web サービスを Azure Application Insights を使用して監視します
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 10/01/2018
-ms.custom: seodec18
-ms.openlocfilehash: 176d0f00774106bbf9ae8dade0fe3fd4062530bb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277184"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885503"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Application Insights を使用して Azure Machine Learning のモデルを監視する
 
@@ -25,18 +25,18 @@ ms.locfileid: "53277184"
 * 依存率、応答時間、および失敗率。
 * 例外。
 
-[Application Insights](../../application-insights/app-insights-overview.md) の詳細 
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) の詳細 
 
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning サービス](http://aka.ms/AMLFree)を今日からお試しいただけます。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning サービス](https://aka.ms/AMLFree)を今日からお試しいただけます。
 
 * Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、および Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関する記事を参照してください。
 * Azure Kubernetes Service (AKS) または Azure コンテナー インスタンス (ACI) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
 
 
-## <a name="enable-and-disable-from-the-sdk"></a>SDK からの有効化と無効化
+## <a name="use-sdk-to-configure"></a>SDK を使って構成する 
 
 ### <a name="update-a-deployed-service"></a>デプロイされたサービスを更新する
 1. ワークスペースで、サービスを特定します。 `ws` の値は、ワークスペースの名前です。
@@ -77,7 +77,7 @@ Application Insights を無効にするには、次のコードを使用しま�
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="enable-and-disable-in-the-portal"></a>ポータルでの有効化と無効化
+## <a name="use-portal-to-configure"></a>ポータルを使って構成する
 
 Azure portal で Application Insights を有効または無効にすることができます。
 
@@ -126,7 +126,7 @@ Azure portal で Application Insights を有効または無効にすることが
 
    [![カスタム トレース](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
-Application Insights の使用方法の詳細については、「[Application Insights とは何か?](../../application-insights/app-insights-overview.md)」を参照してください。
+Application Insights の使用方法の詳細については、「[Application Insights とは何か?](../../azure-monitor/app/app-insights-overview.md)」を参照してください。
     
 
 ## <a name="example-notebook"></a>ノートブックの例
@@ -138,6 +138,4 @@ Application Insights の使用方法の詳細については、「[Application I
 ## <a name="next-steps"></a>次の手順
 運用環境でモデルに関するデータを収集することもできます。 記事「[実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)」を参照してください。 
 
-
-## <a name="other-references"></a>その他のリファレンス
-* [コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)
+[コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json) に関するページも参照してください。

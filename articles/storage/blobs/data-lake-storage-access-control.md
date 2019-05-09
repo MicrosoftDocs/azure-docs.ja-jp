@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 のアクセス制御の概要 | Microsoft D
 description: Azure Data Lake Storage Gen2 のアクセス制御のしくみを理解する
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 52af1a45f920139ddda1d02734de91372fe4719d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976595"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802960"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -27,9 +27,9 @@ RBAC ロールの割り当ての使用は、ユーザーのアクセス許可を
 
 Azure Storage では、BLOB ストレージに対して 3 つの組み込み RBAC ロールを提供しています。 
 
-- [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview)
-- [ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
-- [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
+- [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- [ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)
 
 これらの組み込みロールのいずれか、またはカスタム ロールを通じて、ユーザーまたはサービス プリンシパルに RBAC データのアクセス許可が付与されると、要求の承認時に、これらのアクセス許可がまず評価されます。 要求された操作が呼び出し元の RBAC の割り当てによって承認されている場合は、承認はすぐに解決され、追加の ACL チェックは実行されません。 または、呼び出し元に RBAC の割り当てがない場合、または要求の操作が割り当てられたアクセス許可と一致しない場合は、呼び出し元が要求された操作を実行することを承認されているかどうかを判断するため、ACL チェックが実行されます。
 
@@ -81,7 +81,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 Data Lake Storage Gen2 で使用されている POSIX 形式のモデルでは、項目のアクセス許可は項目自体に格納されます。 つまり、子項目が既に作成された後にアクセス許可を設定すると、項目のアクセス許可を親項目から継承できません。 子項目が作成される前に、親項目で既定のアクセス許可が設定されている場合にのみ、アクセス許可が継承されます。
 
-## <a name="common-scenarios-related-to-permissions"></a>Common scenarios related to permissions
+## <a name="common-scenarios-related-to-permissions"></a>アクセス許可に関連する一般的なシナリオ
 
 Data Lake Storage Gen2 アカウントに対する特定の操作の実行に必要なアクセス許可について理解できるように、一般的なシナリオを次の表に示します。
 
@@ -279,7 +279,18 @@ ACL で割り当て済みのプリンシパルとして常に Azure AD セキュ
 
 ### <a name="why-do-i-sometimes-see-guids-in-acls"></a>ACL に GUID が表示されることがあるのはなぜですか
 
-エントリがユーザーを表し、そのユーザーがもう Azure AD に存在しなくなった場合に、GUID が表示されます。 通常、ユーザーが会社を辞めた場合や Azure AD でそのアカウントが削除された場合に、この現象が発生します。 さらに、サービス プリンシパルおよびセキュリティ グループには、それらを識別するためのユーザー プリンシパル名 (UPN) がないため、これらは自身の OID 属性 (guid) で表されます。 
+エントリがユーザーを表し、そのユーザーがもう Azure AD に存在しなくなった場合に、GUID が表示されます。 通常、ユーザーが会社を辞めた場合や Azure AD でそのアカウントが削除された場合に、この現象が発生します。 さらに、サービス プリンシパルおよびセキュリティ グループには、それらを識別するためのユーザー プリンシパル名 (UPN) がないため、これらは自身の OID 属性 (guid) で表されます。
+
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>サービス プリンシパル用 ACL を正しく設定するにはどうすればよいですか。
+
+サービス プリンシパル用 ACL を定義するときは、作成したアプリ登録に対応する "*サービス プリンシパル*" のオブジェクト ID (OID) を使用することが重要です。 登録済みアプリについては、特定の Azure AD テナントに個別のサービス プリンシパルがあることに注意してください。 登録済みアプリの OID は Azure portal に表示されていますが、その "*サービス プリンシパル*" には別の (異なる) OID があります。
+
+アプリ登録に対応するサービス プリンシパルの OID を取得するには、`az ad sp show` コマンドを使用し、 パラメーターとしてアプリケーション ID を指定します。 アプリ ID が 18218b12-1895-43e9-ad80-6e8fc1ea88ce のアプリ登録に対応するサービス プリンシパルの OID を取得する例を次に示します。 Azure CLI で、次のコマンドを実行します。
+
+`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>`
+
+サービス プリンシパルの正しい OID を取得したら、Storage Explorer で **[アクセスの管理]** ページに移動して OID を追加し、その OID に対する適切なアクセス許可を割り当てます。 その後、必ず **[保存]** を選択してください。
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 は ACL の継承をサポートしていますか。
 
@@ -290,13 +301,13 @@ ACL は継承されません。 ただし、親ディレクトリの下に作成
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX アクセス制御モデルの詳細はどこで確認できますか
 
 * [POSIX Access Control Lists on Linux (Linux での POSIX アクセス制御リスト)](https://www.linux.com/news/posix-acls-linux)
-* [HDFS Permission Guide (HDFS アクセス許可ガイド)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
-* [POSIX FAQ (POSIX のよく寄せられる質問)](http://www.opengroup.org/austin/papers/posix_faq.html)
-* [POSIX 1003.1 2008](http://standards.ieee.org/findstds/standard/1003.1-2008.html)
-* [POSIX 1003.1 2013](http://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
-* [POSIX 1003.1 2016](http://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
+* [HDFS Permission Guide (HDFS アクセス許可ガイド)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+* [POSIX FAQ (POSIX のよく寄せられる質問)](https://www.opengroup.org/austin/papers/posix_faq.html)
+* [POSIX 1003.1 2008](https://standards.ieee.org/findstds/standard/1003.1-2008.html)
+* [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
+* [POSIX 1003.1 2016](https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
 * [Ubuntu での POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
-* [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
+* [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>関連項目
 

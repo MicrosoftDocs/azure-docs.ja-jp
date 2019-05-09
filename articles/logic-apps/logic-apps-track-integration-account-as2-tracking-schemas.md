@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
-ms.openlocfilehash: 6c4144d26042729684e507b1afaa5e3006d8a34e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125932"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193519"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps の統合アカウントで AS2 メッセージと MDN を追跡するスキーマを作成する
 
@@ -140,4 +140,4 @@ B2B プロトコル追跡スキーマ について詳しくは、次のページ
 ## <a name="next-steps"></a>次の手順
 
 * [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報
-* [Log Analytics での B2B メッセージの追跡方法](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報
+* [Azure Monitor ログでの B2B メッセージの追跡](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)について学習します

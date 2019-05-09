@@ -8,17 +8,17 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 02/25/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 85f02acf05e89db3e22dd24ecd0e100a9ec4af6f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e4849487c2dd9330dbf9e6b6cf0ed4d1b6b96020
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311730"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958101"
 ---
-#    <a name="deprecated-cognitive-search-skills"></a>非推奨のコグニティブ検索スキル
+# <a name="deprecated-cognitive-search-skills"></a>非推奨のコグニティブ検索スキル
 
 このドキュメントでは、非推奨と見なされるコグニティブ スキルについて説明します。 以下の内容について、次のガイドを使用してください。
 

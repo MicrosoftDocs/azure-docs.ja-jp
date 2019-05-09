@@ -10,14 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: aae6bc41f3c2fc2c5f8cf63d07f6b4d79bb3564a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093670"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547554"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure Functions ランタイム プレビュー 2 をインストールする
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 Azure Functions ランタイム プレビュー 2 をインストールする場合は、次の手順に従います。
 
@@ -102,36 +104,37 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
 Azure Functions ランタイム プレビューで最初の関数を作成するには
 
-1. **Azure Functions ランタイム ポータル**を https://<machinename>.<domain> として参照します。 例 https://mycomputer.mydomain.com
+1. **Azure Functions Runtime ポータル**を `https://<machinename>.<domain>`、たとえば `https://mycomputer.mydomain.com` として参照します。
+
 1. **ログイン** を要求されます。ドメインにデプロイした場合はドメイン アカウントのユーザー名とパスワードを使用し、それ以外の場合はローカル アカウントのユーザー名とパスワードを使用してポータルにログインします。
 
-![Azure Functions ランタイム プレビュー ポータルのログイン][14]
+    ![Azure Functions ランタイム プレビュー ポータルのログイン][14]
 
-1. 関数アプリを作成するには、サブスクリプションを作成する必要があります。  ポータルの左上隅で、サブスクリプションの横にある **[+]** オプションをクリックします
+1. 関数アプリを作成するには、サブスクリプションを作成する必要があります。  ポータルの左上隅で、サブスクリプションの横にある **[+]** オプションをクリックします。
 
-![Azure Functions ランタイム プレビュー ポータルのサブスクリプション][15]
+    ![Azure Functions ランタイム プレビュー ポータルのサブスクリプション][15]
 
 1. **[DefaultPlan]** を選択し、サブスクリプションの名前を入力して、**[作成]** をクリックします。
 
-![Azure Functions ランタイム プレビュー ポータルのサブスクリプション プランと名前][16]
+    ![Azure Functions ランタイム プレビュー ポータルのサブスクリプション プランと名前][16]
 
 1. すべての関数アプリがポータルの左側のウィンドウに表示されます。  新しい Function App を作成するには、見出し **[Function App]** を選択し、**[+]** オプションをクリックします。
 
 1. 関数アプリの名前を入力し、適切なサブスクリプションを選び、プログラミング対象の Azure Functions ランタイムのバージョンを選んで **[作成]** をクリックします
 
-![Azure Functions ランタイム プレビュー ポータルの新しい関数アプリ][17]
+    ![Azure Functions ランタイム プレビュー ポータルの新しい関数アプリ][17]
 
 1. 新しい関数アプリは、ポータルの左側のウィンドウに表示されます。  関数を選び、ポータルで中央のウィンドウの上部にある **[新しい関数]** をクリックします。
 
-![Azure Functions ランタイム プレビュー テンプレート][18]
+    ![Azure Functions ランタイム プレビュー テンプレート][18]
 
 1. タイマー トリガー関数を選び、右側のポップアップで関数に名前を付け、スケジュールを `*/5 * * * * *` に変更し (この cron 式によってタイマー関数が 5 秒ごとに実行されます)、**[作成]** をクリックします
 
-![Azure Functions ランタイム プレビューの新しいタイマー関数構成][19]
+    ![Azure Functions ランタイム プレビューの新しいタイマー関数構成][19]
 
 1. 関数が作成されました。  Function App の実行ログは、ポータルの下部にある **[ログ]** ウィンドウを展開して表示できます。
 
-![Azure Functions ランタイム プレビュー関数の実行][20]
+    ![Azure Functions ランタイム プレビュー関数の実行][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

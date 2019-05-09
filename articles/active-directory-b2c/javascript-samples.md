@@ -3,29 +3,29 @@ title: Azure Active Directory B2C で使用するための JavaScript のサン�
 description: Azure Active Directory B2C で JavaScript を使用する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 4a8d036ff2f36b75df17029c8f00edce25c49e65
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.subservice: B2C
+ms.openlocfilehash: 3645945400bcc58cdf11721458bfab529d89f0b7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994319"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009992"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-独自の JavaScript クライアント側コードを、Azure Active Directory (Azure AD) B2C アプリケーションに追加できます。 この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md) を変更してスクリプトの実行を有効にする方法について説明します。
+独自の JavaScript クライアント側コードを、Azure Active Directory (Azure AD) B2C アプリケーションに追加できます。 この記事では、[ユーザー フロー](user-flow-javascript-overview.md)または[カスタム ポリシー](active-directory-b2c-overview-custom.md)を変更してスクリプトの実行を有効にする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-アプリケーションのユーザー インターフェイスの要素に[ページ コントラクト](page-contract.md) を選択します。 JavaScript を使用する場合は、カスタム ポリシー内のすべてのコンテンツ定義に対してページ コントラクト バージョンを定義する必要があります。
+アプリケーションのユーザー インターフェイスの要素に[ページ コントラクト](page-contract.md) を選択します。 JavaScript を使用する場合は、ユーザー フローまたはカスタム ポリシー内のすべてのコンテンツ定義に対してページ コントラクト バージョンを定義する必要があります。
 
 ## <a name="add-the-scriptexecution-element"></a>ScriptExecution 要素を追加する
 
@@ -49,7 +49,7 @@ ms.locfileid: "53994319"
 
 JavaScript を使用して、アプリケーションのインターフェイスをカスタマイズするときに、次のガイドラインに従います。
 
-- `<a>` HTML 要素ではクリック イベントをバインドしないでください。 
+- `<a>` HTML 要素ではクリック イベントをバインドしないでください。
 - Azure AD B2C コードやコメントへの依存関係は使用しないでください。
 - Azure AD B2C の HTML 要素の順序や階層は変更しないでください。 UI 要素の順序を制御するには、Azure AD B2C のポリシーを使用します。
 - 任意の RESTful サービスを呼び出すことができますが、次の考慮事項があります。
@@ -113,9 +113,9 @@ function setupPwdTogglers(){
 setupPwdTogglers();
 ```
 
-### <a name="add-terms-of-use"></a>利用規約の追加 
+### <a name="add-terms-of-use"></a>利用規約の追加
 
-次のコードを、**[利用規約]** チェックボックスを組み込むページに含めます。 通常、このチェック ボックスは、ローカル アカウントのサインアップとソーシャル アカウント サインアップ ページで必要になります。  
+次のコードを、**[利用規約]** チェックボックスを組み込むページに含めます。 通常、このチェック ボックスは、ローカル アカウントのサインアップとソーシャル アカウント サインアップ ページで必要になります。
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -124,25 +124,24 @@ function addTermsOfUseLink() {
     if (!termsOfUseLabel) {
         return;
     }
-      
+
     // get the label text
     var termsLabelText = termsOfUseLabel.innerHTML;
-      
-    // create a new <a> element with the same inner text 
+
+    // create a new <a> element with the same inner text
     var termsOfUseUrl = 'https://docs.microsoft.com/legal/termsofuse';
     var termsOfUseLink = document.createElement('a');
     termsOfUseLink.setAttribute('href', termsOfUseUrl);
     termsOfUseLink.setAttribute('target', '_blank');
     termsOfUseLink.appendChild(document.createTextNode(termsLabelText));
 
-    // replace the label text with the new element 
+    // replace the label text with the new element
     termsOfUseLabel.replaceChild(termsOfUseLink, termsOfUseLabel.firstChild);
 }
 ```
 
-コードでは、`terms-of-use-url` を利用規約の同意のリンクで置き換えます。 ディレクトリでは、**termsOfUse** と呼ばれる新しいユーザー属性を作成し、**termsOfUse** をユーザー フローのユーザー属性として組み込みます。
+コードでは、`termsOfUseUrl` を利用規約の同意のリンクで置き換えます。 ディレクトリでは、**termsOfUse** と呼ばれる新しいユーザー属性を作成し、**termsOfUse** をユーザー フローのユーザー属性として組み込みます。
 
 ## <a name="next-steps"></a>次の手順
 
 アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」を参照してください。
-

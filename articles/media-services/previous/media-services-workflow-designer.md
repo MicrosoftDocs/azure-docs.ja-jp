@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/20/2019
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 1521d18ab94c647aebf303b660574afe6612474d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250514"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314026"
 ---
-# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する
+# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する  
 ## <a name="overview"></a>概要
 **ワークフロー デザイナー**は、**メディア エンコーダー プレミアム ワークフロー**でエンコードするカスタム ワークフローの設計と構築に使用する Windows デスクトップ ツールです。
 ワークフロー デザイナー ツールの機能を利用することで、 **メディア エンコーダー プレミアム**で実行する複雑なワークフローを設計し、作成できます。  
@@ -30,15 +30,13 @@ ms.locfileid: "50250514"
 
 作成可能なワークフローの例は次のとおりです。
 
-* 解決を求めてソース コンテンツを検査し、必要な出力トラックだけをエンコードする決定基準のワークフロー。  不注意でソース コンテンツをスケールアップし、生成される無駄なトラックをなくするので便利です。
+* 解決を求めてソース コンテンツを検査し、必要な出力トラックだけをエンコードする決定基準のワークフロー。  これは、不注意でソース コンテンツをスケールアップすることで生成される無駄なトラックをなくす助けになります。
 * 複数の入力ファイルを使用し、キャプション、オーバーレイ、結合コンテンツをサポートできます。 
 
 このツールはまた、 [公開済みワークフロー](media-services-workflow-designer.md#existing_workflows)の変更に使用できます。 
 
 > [!NOTE]
 > ワークフロー デザイナー ツールのコピーを取得するには、mepd@microsoft.com にお問い合わせください。
-> 
-> 
 
 作成されたワークフロー ファイルはアセットとしてアップロードした後、メディア ファイルのエンコードに使用できます。 **.NET** を使用した**メディア エンコーダー プレミアム ワークフロー**によるエンコード方法の詳細については、「[メディア エンコーダー プレミアム ワークフローでの高度なエンコード](media-services-encode-with-premium-workflow.md)」を参照してください。
 

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
@@ -15,14 +15,15 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: e00dcd90db4d7d7d67273da4840db6a784a5d86c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 12bfcea70c80929ade656bc5e23f8b95fce44a54
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959960"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312159"
 ---
-# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法: Azure PowerShell を使用して資格情報でサービス プリンシパルを作成する
+# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法:Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
 リソースへのアクセスを必要とするアプリやスクリプトがある場合は、アプリの ID を設定し、アプリを独自の資格情報で認証できます。 この ID は、サービス プリンシパルと呼ばれます。 このアプローチを使用すると、以下のことを実行できます。
 
@@ -34,7 +35,9 @@ ms.locfileid: "49959960"
 
 この記事では、証明書を使用して認証するサービス プリンシパルの作成方法について説明します。 パスワードを使用するサービス プリンシパルを設定するには、「[Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)」を参照してください。
 
-このアーティクルには、PowerShell の[最新バージョン](/powershell/azure/get-started-azureps)が必要です。
+このアーティクルには、PowerShell の[最新バージョン](/powershell/azure/install-az-ps)が必要です。
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -44,7 +47,7 @@ ms.locfileid: "49959960"
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>自己署名証明書を使用したサービス プリンシパルの作成
 
-以下の例では、単純なシナリオについて説明します。 ここでは、[New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) を使用して自己署名証明書でのサービス プリンシパルを作成し、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用して[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールをサービス プリンシパルに割り当てます。 ロールの割り当ては、現在選択されている Azure サブスクリプションに制限されます。 別のサブスクリプションを選択するには、[Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext) を使用します。
+以下の例では、単純なシナリオについて説明します。 ここでは、[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) を使用して自己署名証明書でのサービス プリンシパルを作成し、[New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用して[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールをサービス プリンシパルに割り当てます。 ロールの割り当ては、現在選択されている Azure サブスクリプションに制限されます。 別のサブスクリプションを選択するには、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を使用します。
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -52,15 +55,15 @@ $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
   -KeySpec KeyExchange
 $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
 
-$sp = New-AzureRMADServicePrincipal -DisplayName exampleapp `
+$sp = New-AzADServicePrincipal -DisplayName exampleapp `
   -CertValue $keyValue `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
 Sleep 20
-New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-この例では、新しいサービス プリンシパルが Azure AD 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合、"プリンシパル {ID} がディレクトリ {DIR-ID} にありません" というエラーが表示されます。 このエラーを解決するには、しばらく待ってから **New-AzureRmRoleAssignment** コマンドを再実行します。
+この例では、新しいサービス プリンシパルが Azure AD 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合は、次のエラーが表示されます。"プリンシパル {0} がディレクトリ {DIR-ID} にありません。" このエラーを解決するには、しばらく待ってから **New-AzRoleAssignment** コマンドを再実行します。
 
 **ResourceGroupName**パラメーターを使用して、特定のリソース グループにロールの割り当てをスコープできます。 **ResourceType**と**ResourceName**パラメーターを使用して、特定のリソースをスコープすることもできます。 
 
@@ -86,11 +89,11 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Azure AD のインスタンスです。
 
 ```powershell
-$TenantId = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
-$ApplicationId = (Get-AzureRmADApplication -DisplayNameStartWith exampleapp).ApplicationId
+$TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
+$ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).ApplicationId
 
- $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -match "CN=exampleappScriptCert" }).Thumbprint
- Connect-AzureRmAccount -ServicePrincipal `
+ $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
+ Connect-AzAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
@@ -115,18 +118,18 @@ Param (
  [String] $CertPlainPassword
  )
 
- Connect-AzureRmAccount
- Import-Module AzureRM.Resources
- Set-AzureRmContext -Subscription $SubscriptionId
+ Connect-AzAccount
+ Import-Module Az.Resources
+ Set-AzContext -Subscription $SubscriptionId
  
  $CertPassword = ConvertTo-SecureString $CertPlainPassword -AsPlainText -Force
 
  $PFXCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($CertPath, $CertPassword)
  $KeyValue = [System.Convert]::ToBase64String($PFXCert.GetRawCertData())
 
- $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName
- New-AzureRmADSpCredential -ObjectId $ServicePrincipal.Id -CertValue $KeyValue -StartDate $PFXCert.NotBefore -EndDate $PFXCert.NotAfter
- Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
+ $ServicePrincipal = New-AzADServicePrincipal -DisplayName $ApplicationDisplayName
+ New-AzADSpCredential -ObjectId $ServicePrincipal.Id -CertValue $KeyValue -StartDate $PFXCert.NotBefore -EndDate $PFXCert.NotAfter
+ Get-AzADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
  $Retries = 0;
@@ -134,8 +137,8 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
  
@@ -167,7 +170,7 @@ Param (
   -ArgumentList @($CertPath, $CertPassword)
  $Thumbprint = $PFXCert.Thumbprint
 
- Connect-AzureRmAccount -ServicePrincipal `
+ Connect-AzAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
@@ -176,29 +179,29 @@ Param (
 アプリケーション ID とテナント ID は機密情報ではないため、スクリプトに直接埋め込むことができます。 テナント ID を取得する必要がある場合は、次のコマンドを使用します。
 
 ```powershell
-(Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
+(Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
 ```
 
 アプリケーション ID を取得する必要がある場合は、次のコマンドを使用します。
 
 ```powershell
-(Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
+(Get-AzADApplication -DisplayNameStartWith {display-name}).ApplicationId
 ```
 
 ## <a name="change-credentials"></a>資格情報の変更
 
-セキュリティ侵害の発生または資格情報の期限切れのために AD アプリの資格情報を変更するには、[Remove-AzureRmADAppCredential](/powershell/module/azurerm.resources/remove-azurermadappcredential) コマンドレットと [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential) コマンドレットを使用します。
+セキュリティ侵害の発生または資格情報の期限切れのために AD アプリの資格情報を変更するには、[Remove-AzADAppCredential](/powershell/module/az.resources/remove-azadappcredential) コマンドレットと [New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential) コマンドレットを使用します。
 
 アプリケーションのすべての資格情報を削除するには、次のコマンドレットを使用します。
 
 ```powershell
-Get-AzureRmADApplication -DisplayName exampleapp | Remove-AzureRmADAppCredential
+Get-AzADApplication -DisplayName exampleapp | Remove-AzADAppCredential
 ```
 
 証明書の値を追加するには、この記事の説明に従って自己署名証明書を作成します。 その後、次のコマンドレットを使用します。
 
 ```powershell
-Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
+Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
   -CertValue $keyValue `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore

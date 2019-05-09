@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する | Microsoft Docs
+title: b2clogin.com にリダイレクト URL を設定する - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C のリダイレクト URL での b2clogin.com の使用について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/28/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ffceb8fd6f1afcd054bfc4c4035fb2b8b93ed390
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: 8188e36278bad9c93f709a5d7d9f831d1c19e6b4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720543"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486849"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -23,8 +23,15 @@ Azure Active Directory (Azure AD) B2C アプリケーションへのサインア
 
 b2clogin.com を使用すると、次のような利点が加わります。
 
-- Cookie は、他の Microsoft サービスと共有されなくなりました。
-- お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 」のように入力します。
+- Microsoft サービスによって Cookie ヘッダーで使用される領域が減ります。
+- お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp` 」のように入力します。
+
+>[!NOTE]
+> 次のように、テナント名とテナントの GUID の両方を使用できます。
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (引き続き `onmicrosoft.com` を参照します)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (この場合、Microsoft への参照は存在しません)
+>
+> ただし、ご自身の Azure Active Directory B2C テナントに対して_カスタム ドメイン_を使用することはできません。たとえば、`https://your-tenant-name.b2clogin.com/your-custom-domain-name` は動作 "_しません_"。
 
 b2clogin.com を使用する際は、変更が必要になる可能性があるこれらの設定に配慮してください。
 
@@ -60,7 +67,9 @@ ID プロバイダーの設定情報については、次の記事を参照し�
 
 ## <a name="set-the-validateauthority-property"></a>ValidateAuthority プロパティの設定
 
-MSAL を使用している場合は、**ValidateAuthority** を `false` に設定します。 次の例は、このプロパティを設定する方法を示しています。
+MSAL を使用している場合は、**ValidateAuthority** プロパティを `false` に設定します。 **ValidateAuthority** が `false` に設定されると、b2clogin.com へのリダイレクトが許可されます。 
+
+次の例は、このプロパティを設定する方法を示しています。
 
 [MSAL for .Net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) の場合:
 

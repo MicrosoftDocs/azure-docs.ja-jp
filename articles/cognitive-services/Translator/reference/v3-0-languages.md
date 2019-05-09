@@ -3,19 +3,19 @@ title: Translator Text API の Languages メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Languages メソッドを使用します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129643"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58915766"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -37,7 +37,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>説明</th>
   <tr>
     <td>api-version</td>
-    <td>"*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
+    <td>"<em>必須のパラメーター</em>"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
   </tr>
   <tr>
     <td>scope</td>
@@ -97,11 +97,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `translation` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、テキストの翻訳先の言語または元の言語を識別します。 キーに関連付けられる値は、言語を表すプロパティを持つ JSON オブジェクトです。
 
-  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
+  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
 
-  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
 
-  * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+  * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
   例を示します。
           
@@ -123,21 +123,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `transliteration` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、テキストをある書記体系から別の書記体系に変換できる言語を示します。 キーに関連付けられる値は、言語とそのサポートされる書記体系を表すプロパティを持つ JSON オブジェクトです。
 
-  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
+  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
 
-  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
 
-  * `scripts`: 変換元の書記体系の一覧。 `scripts` の一覧の各要素には、次のプロパティがあります。
+  * `scripts`:変換元の書記体系の一覧。 `scripts` の一覧の各要素には、次のプロパティがあります。
 
-    * `code`: 書記体系を識別するコード。
+    * `code`:書記体系を識別するコード。
 
-    * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの書記体系の表示名。
+    * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの書記体系の表示名。
 
-    * `nativeName`: この言語にネイティブなロケールの言語の表示名。
+    * `nativeName`:この言語にネイティブなロケールの言語の表示名。
 
-    * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+    * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
-    * `toScripts`: テキストの変換先として使用できる書記体系の一覧。 `toScripts` の一覧の各要素には、前述したとおり `code`、`name`、`nativeName`、`dir` の各プロパティがあります。
+    * `toScripts`:テキストの変換先として使用できる書記体系の一覧。 `toScripts` の一覧の各要素には、前述したとおり `code`、`name`、`nativeName`、`dir` の各プロパティがあります。
 
   例を示します。
 
@@ -188,21 +188,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `dictionary` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、代替翻訳と逆翻訳が利用可能な言語を識別します。 値は、ソース言語と利用可能な翻訳があるターゲット言語を記述する JSON オブジェクトです。
 
-  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールのソース言語の表示名。
+  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールのソース言語の表示名。
 
-  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
 
-  * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+  * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
-  * `translations`: 代替翻訳とソース言語で表現されたクエリの例を含む言語の一覧。 `translations` の一覧の各要素には、次のプロパティがあります。
+  * `translations`:代替翻訳とソース言語で表現されたクエリの例を含む言語の一覧。 `translations` の一覧の各要素には、次のプロパティがあります。
 
-    * `name`: `Accept-Language` ヘッダー経由で要求されたロケールのターゲット言語の表示名。
+    * `name`:`Accept-Language` ヘッダー経由で要求されたロケールのターゲット言語の表示名。
 
-    * `nativeName`: ターゲット言語にネイティブなロケールのターゲット言語の表示名。
+    * `nativeName`:ターゲット言語にネイティブなロケールのターゲット言語の表示名。
 
-    * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+    * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
     
-    * `code`: ターゲット言語を識別する言語コード。
+    * `code`:ターゲット言語を識別する言語コード。
 
   例を示します。
 
@@ -274,6 +274,8 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
     <td>サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
   </tr>
 </table> 
+
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
 
 ## <a name="examples"></a>例
 

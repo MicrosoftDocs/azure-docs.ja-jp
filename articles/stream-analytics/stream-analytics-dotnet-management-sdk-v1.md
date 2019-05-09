@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0f9e889a15933953af275460ba12906db6f3adec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9c4ddb1375154fef3290008a7b981a4e9069ae94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106534"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075204"
 ---
 # <a name="set-up-and-run-analytics-jobs-using-azure-stream-analytics-api-for-net"></a>.NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
@@ -38,8 +38,8 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
    Add-AzureAccount
    # Select the Azure subscription you want to use to create the resource group
    Select-AzureSubscription -SubscriptionName <subscription name>
-       # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the    Register-AzureRMProvider cmdlet to register the provider namespace
-       #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
+       # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the    Register-AzProvider cmdlet to register the provider namespace
+       #Register-AzProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
    # Create an Azure resource group
    New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
    ```
@@ -57,7 +57,7 @@ Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 1.8.3
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
 ```
 
-3. 次の **appSettings** セクションを App.config ファイルに追加します。
+1. 次の **appSettings** セクションを App.config ファイルに追加します。
 
    ```csharp
    <appSettings>
@@ -76,7 +76,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
 
         Get-AzureAccount
 
-4. .csproj ファイルに次の参照を追加します。
+1. .csproj ファイルに次の参照を追加します。
 
    ```csharp
    <Reference Include="System.Configuration" />
@@ -95,7 +95,7 @@ using Microsoft.Azure.Management.StreamAnalytics.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-2. 次の認証ヘルパー メソッドを追加します。
+1. 次の認証ヘルパー メソッドを追加します。
 
    ```csharp
    private static async Task<string> GetAuthorizationHeader()

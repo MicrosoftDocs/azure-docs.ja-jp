@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 731730aae59fa654394bf01a139af0088c207774
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955339"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117746"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは
 
@@ -44,11 +44,11 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
 - **速度** - Data Box では、1 Gbps または 10 Gbps ネットワーク インターフェイスを使用して、最大 80 TB のデータを Azure に移動します。
 
 - **セキュリティ保護** - Data Box には、デバイス、データ、サービスのセキュリティ保護が組み込まれています。
-    - デバイスの筐体は堅牢で、開封防止ネジと開封明示ステッカーによってセキュリティ保護されています。 
-    - デバイスのデータは、AES 256 ビット暗号化によって常にセキュリティ保護されています。
-    - デバイスは、Azure portal で提供されるパスワードでのみロックを解除できます。
-    - このサービスは、Azure のセキュリティ機能によって保護されています。
-    - データが Azure にアップロードされたら、NIST 800-88r1 規格に従って、デバイスのディスクが完全にワイプされます。
+  - デバイスの筐体は堅牢で、開封防止ネジと開封明示ステッカーによってセキュリティ保護されています。 
+  - デバイスのデータは、AES 256 ビット暗号化によって常にセキュリティ保護されています。
+  - デバイスは、Azure portal で提供されるパスワードでのみロックを解除できます。
+  - このサービスは、Azure のセキュリティ機能によって保護されています。
+  - データが Azure にアップロードされたら、NIST 800-88r1 規格に従って、デバイスのディスクが完全にワイプされます。
     
     詳細については、「[Azure Data Box のセキュリティとデータ保護](data-box-security.md)」を参照してください。
 
@@ -59,10 +59,11 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | 23 kg (50 lbs) 未満                |
-| ディメンション                                              | デバイス - 幅: 309.0 mm 高さ: 430.4 mm 奥行き: 502.0 mm |            
+| Dimensions                                              | デバイス - 幅: 309.0 mm、高さ: 430.4 mm、奥行: 502.0 mm |            
 | ラック スペース                                              | 寝かせてラックに配置した場合 7 U (ラック マウント不可)|
 | 必要なケーブル                                         | 電源ケーブル x 1 (同梱) <br> RJ45 ケーブル x 2 <br> SFP+ Twinax 銅線ケーブル x 2|
 | ストレージの容量                                        | 100 TB のデバイス (RAID 5 保護後の使用可能容量 80 TB)|
+| 電力定格                                            | 電源ユニットの定格は 700 W です。 <br> 通常は 375 W の電力が消費されます。|
 | ネットワーク インターフェイス                                      | 1 GbE インターフェイス x 2 - MGMT、DATA 3 <br> MGMT - 管理用、ユーザー構成不可、初期セットアップに使用 <br> DATA3 - データ用、ユーザー構成可能、既定で動的 <br> MGMT および DATA 3 は 10 GbE としても動作可能 <br> 10 GbE インターフェイス x 2 - DATA 1、DATA 2 <br> 両方ともデータ用、動的 (既定) または静的として構成可能 |
 | データ転送メディア                                     | RJ45、SFP+ 銅線 10 GbE イーサネット  |
 | セキュリティ                                                | 開封防止ネジを搭載した堅牢なデバイス筐体 <br> デバイスの下部に開封明示ステッカー|
@@ -75,7 +76,7 @@ Data Box に含まれるコンポーネントを次に示します。
 
 * **Data Box デバイス** - プライマリ ストレージを提供し、クラウド ストレージとの通信を管理する物理デバイスです。デバイス上に保存されたすべてのデータのセキュリティと機密性も確保されます。 Data Box デバイスでは、80 TB のストレージ容量を使用できます。 
 
-    ![Data Box の正面と背面 ](media/data-box-overview/data-box-combined3.png)
+    ![Data Box の正面と背面](media/data-box-overview/data-box-combined3.png)
 
     
 * **Data Box サービス** - さまざまな地理的場所からアクセスできる Web インターフェイスから、Data Box デバイスを管理できる、Azure portal の拡張機能。 Data Box サービスを使用すると、Data Box デバイスの日常的な管理を実行できます。 サービス タスクには、注文の作成と管理、警告の表示と管理、共有の管理が含まれます。  

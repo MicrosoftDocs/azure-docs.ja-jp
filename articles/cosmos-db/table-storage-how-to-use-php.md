@@ -1,20 +1,19 @@
 ---
 title: PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
-services: cosmos-db
-author: SnehaGunda
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: cf8cc380caec1475ad831cfd3e0e9aa5b168e8de
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111499"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -45,19 +44,19 @@ Storage Table service API または Azure Cosmos DB Table API にアクセスす
 ## <a name="get-the-client-library"></a>クライアント ライブラリを入手する
 
 1. プロジェクトのルートに composer.json という名前のファイルを作成して、次のコードを追加します。
-```json
-{
-  "require": {
+   ```json
+   {
+   "require": {
     "microsoft/azure-storage-table": "*"
-  }
-}
-```
+   }
+   }
+   ```
 2. [composer.phar](https://getcomposer.org/composer.phar) をルートにダウンロードします。 
 3. コマンド プロンプトを開き、次のコマンドをプロジェクトのルートで実行します。
-```
-php composer.phar install
-```
-または、GitHub で [Azure Storage Table PHP Client Library](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) に移動し、ソース コードを複製します。
+   ```
+   php composer.phar install
+   ```
+   または、GitHub で [Azure Storage Table PHP Client Library](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) に移動し、ソース コードを複製します。
 
 
 ## <a name="add-required-references"></a>必要な参照を追加する

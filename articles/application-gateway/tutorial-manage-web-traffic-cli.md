@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: eba1561e69da879efa9e61ff0a2040df5267d391
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 264e1050e74c64c003e08bc6a8ba1c115b83032c
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962193"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749072"
 ---
-# <a name="tutorial-manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用してアプリケーション ゲートウェイで Web トラフィックを管理する
+# <a name="tutorial-manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用してアプリケーション ゲートウェイで Web トラフィックを管理する
 
 アプリケーション ゲートウェイは、管理対象サーバーへの Web トラフィックの管理とセキュリティ保護のために使用します。 Web トラフィックを管理するために、バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する[アプリケーション ゲートウェイ](overview.md)を、Azure CLI を使用して作成できます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
 
@@ -48,7 +48,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet#az-net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -72,7 +72,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。 
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPAddress* に割り当てます。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -134,7 +134,7 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip) を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -156,7 +156,7 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ

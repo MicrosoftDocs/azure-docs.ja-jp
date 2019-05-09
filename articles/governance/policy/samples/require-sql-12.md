@@ -1,21 +1,20 @@
 ---
 title: サンプル - SQL Server バージョン 12.0 が必要
-description: このサンプルのポリシーでは、SQL Server でバージョン 12.0 を使用する必要があります。
-services: azure-policy
+description: このサンプルのポリシーの定義は、SQL Server バージョン 12.0 が実行されていることを要求します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 0d33a67b7a1fe30ac1463a7190efeaed00e6e547
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 498764d1fbd69762c09279303d75a6e2f1f2e0c6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318008"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59283717"
 ---
-# <a name="require-sql-server-version-120"></a>SQL Server バージョン 12.0 が必要
+# <a name="sample---require-sql-server-version-120"></a>サンプル - SQL Server バージョン 12.0 が必要
 
 このポリシーでは、SQL Server でバージョン 12.0 を使用する必要があります。
 
@@ -29,16 +28,16 @@ ms.locfileid: "53318008"
 
 ## <a name="deploy-with-the-portal"></a>ポータルでのデプロイ
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Frequire-sqlserver-version12%2Fazurepolicy.json)
+[![ポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Frequire-sqlserver-version12%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name "require-sqlserver-version12" -DisplayName "Require SQL Server version 12.0" -description "This policy ensures all SQL servers use version 12.0." -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/require-sqlserver-version12/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/require-sqlserver-version12/azurepolicy.parameters.json' -Mode All
+$definition = New-AzPolicyDefinition -Name "require-sqlserver-version12" -DisplayName "Require SQL Server version 12.0" -description "This policy ensures all SQL servers use version 12.0." -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/require-sqlserver-version12/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/require-sqlserver-version12/azurepolicy.parameters.json' -Mode All
 $definition
-$assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -PolicyDefinition $definition
+$assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -PolicyDefinition $definition
 $assignment
 ```
 
@@ -47,7 +46,7 @@ $assignment
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ

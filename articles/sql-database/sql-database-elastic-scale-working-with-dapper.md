@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: c6ca7637c8e251fa29781503ffc18227c51bb4da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002300"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Dapper でのエラスティック データベース クライアント ライブラリの使用
 このドキュメントは、Dapper を使用してアプリケーションを構築する開発者が、 [エラスティック データベース ツール](sql-database-elastic-scale-introduction.md) を導入し、シャーディングを実装してデータ層をスケール アウトするアプリケーションを作成する場合に使用します。  このドキュメントでは、エラスティック データベース ツールと統合するために Dapper ベースのアプリケーションに加える必要がある変更点を示します。 ここでは、Dapper を使用してエラスティック データベース シャード管理とデータ依存ルーティングを構成する方法を重点的に説明します。 
@@ -35,7 +35,7 @@ DapperExtensions を使用する場合に SQL ステートメントを指定す�
 
 Dapper と DapperExtensions のもう 1 つの利点は、データベース接続の作成がアプリケーションによって制御されることです。 これにより、データベースに対するシャードレットのマッピングに基づいてデータベース接続を仲介するエラスティック データベース クライアント ライブラリとやり取りできるようになります。
 
-Dapper アセンブリを入手するには、「 [Dapper dot net](http://www.nuget.org/packages/Dapper/)」をご覧ください。 Dapper の拡張機能については、「 [DapperExtensions](http://www.nuget.org/packages/DapperExtensions)」をご覧ください。
+Dapper アセンブリを入手するには、「 [Dapper dot net](https://www.nuget.org/packages/Dapper/)」をご覧ください。 Dapper の拡張機能については、「 [DapperExtensions](https://www.nuget.org/packages/DapperExtensions)」をご覧ください。
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>エラスティック データベース クライアント ライブラリの概要
 Elastic Database ライブラリでは、*シャードレット*と呼ばれる、アプリケーション データのパーティションを定義して、データベースにマップし、*シャーディング キー*によって識別します。 任意の数のデータベースを使用して、シャードレットをそれらのデータベースに分散できます。 シャーディング キー値とデータベースとの間のマッピングは、ライブラリの API によって提供されるシャード マップによって格納されます。 この機能は、 **シャード マップの管理**と呼ばれます。 シャード マップは、シャーディング キーを格納する要求のデータベース接続用のためのブローカーとしても機能します。 この機能は、**データ依存ルーティング**と呼ばれます。
@@ -64,8 +64,8 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
 次のコード例 (付属のサンプルからの抜粋) は、適切なシャードへの接続を仲介するために、アプリケーションがライブラリに対してシャーディング キーを提供するアプローチを示しています。   
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                     key: tenantId1, 
-                     connectionString: connStrBldr.ConnectionString, 
+                     key: tenantId1,
+                     connectionString: connStrBldr.ConnectionString,
                      options: ConnectionOptions.Validate))
     {
         var blog = new Blog { Name = name };
@@ -87,13 +87,13 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
 クエリの使用方法はまったく同じです。最初に、クライアント API から [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) を使用して接続を開きます。 次に、通常の Dapper 拡張メソッドを使用して、SQL クエリの結果を .NET オブジェクトにマップします。
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId1, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId1,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate ))
-    {    
+    {
            // Display all Blogs for tenant 1
            IEnumerable<Blog> result = sqlconn.Query<Blog>(@"
-                                SELECT * 
+                                SELECT *
                                 FROM Blog
                                 ORDER BY Name");
 
@@ -112,8 +112,8 @@ Dapper には、データベース アプリケーションの開発時にデー
 アプリケーションで DapperExtensions を使用しても、データベース接続の作成と管理の方法は変わりません。 接続を開く操作は引き続きアプリケーションが担当し、通常の SQL クライアント接続オブジェクトが拡張メソッドによって使用されます。 既に説明したように、 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) を利用できます。 次のコード サンプルに示すとおり、変更されたのは、ユーザーが T-SQL ステートメントを記述する必要がなくなった点のみです。
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            var blog = new Blog { Name = name2 };
@@ -123,8 +123,8 @@ Dapper には、データベース アプリケーションの開発時にデー
 クエリ用のコード サンプルを次に示します。 
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            // Display all Blogs for tenant 2
@@ -143,7 +143,7 @@ Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Ap
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
-       using (SqlConnection sqlconn = 
+       using (SqlConnection sqlconn =
           shardingLayer.ShardMap.OpenConnectionForKey(tenantId2, connStrBldr.ConnectionString, ConnectionOptions.Validate))
           {
               var blog = new Blog { Name = name2 };

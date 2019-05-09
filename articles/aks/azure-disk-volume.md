@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c5879474568885d9a705e7bfd16e2a4e2304b96
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068186"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337993"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクを含むボリュームの手動での作成および使用
 
@@ -21,13 +21,13 @@ ms.locfileid: "49068186"
 > [!NOTE]
 > Azure ディスクは、一度に 1 つのポッドにのみマウントできます。 複数のポッド間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-volume] を使用します。
 
-Kubernetes ボリュームの詳細については、[Kubernetes ボリューム][kubernetes-volumes]に関するページを参照してください。
+Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
-また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="create-an-azure-disk"></a>Azure ディスクを作成する
 
@@ -35,7 +35,7 @@ AKS で使用するための Azure ディスクを作成する場合は、**ノ�
 
 この記事では、ノード リソース グループ内にディスクを作成します。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
 
-```azurecli
+```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
@@ -52,7 +52,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Azure ディスクは、特定サイズの SKU 単位で課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S60 または P60 ディスクの 8 TiB までです。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
+> Azure ディスクは、特定サイズの SKU 単位で課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
 
 次の出力例に示すように、コマンドが正常に完了すると、ディスク リソース ID が表示されます。 このディスク ID は、次の手順でディスクをマウントするために使用します。
 
@@ -126,6 +126,8 @@ Events:
 
 ## <a name="next-steps"></a>次の手順
 
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
+
 AKS クラスターと Azure ディスクの操作の詳細については、[Azure ディスク対応の Kubernetes プラグイン][kubernetes-disks]に関するページを参照してください。
 
 <!-- LINKS - external -->
@@ -143,3 +145,5 @@ AKS クラスターと Azure ディスクの操作の詳細については、[Az
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azure-files-volume]: azure-files-volume.md
+[operator-best-practices-storage]: operator-best-practices-storage.md
+[concepts-storage]: concepts-storage.md

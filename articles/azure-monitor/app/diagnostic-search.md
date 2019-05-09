@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a9c9ac9ada6dfab051deda14cddb4ba6c07f48df
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998899"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119172"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
-検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](../../application-insights/app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
+検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](../../azure-monitor/app/app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
 
 (データでのより複雑なクエリについては、[Analytics](../../azure-monitor/log-query/get-started-portal.md) を使用してください。)
 
@@ -112,7 +112,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 部分文字列ではなく、語句全体を検索します。 引用符で特殊文字を囲みます。
 
-| string | 一致 "*しない*" | 一致する |
+| 文字列 | 一致 "*しない*" | 一致する |
 | --- | --- | --- |
 | HomeController.About |home<br/>controller<br/>out | homecontroller<br/>about<br/>"homecontroller.about"|
 |米国|Uni<br/>ted|united<br/>states<br/>united AND states<br/>"united states"
@@ -129,7 +129,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 ## <a name="sampling"></a>サンプリング
 (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。 ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるため、関連するイベントごとに操作できます。 
 
-[サンプリングについてはこちらを参照してください](../../application-insights/app-insights-sampling.md)。
+[サンプリングについてはこちらを参照してください](../../azure-monitor/app/sampling.md)。
 
 ## <a name="create-work-item"></a>作業項目を作成する
 任意のテレメトリ項目の詳細を使用して、GitHub または Azure DevOps でバグを作成できます。 
@@ -166,4 +166,4 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 * [Analytics で複雑なクエリを作成する](../../azure-monitor/log-query/get-started-portal.md)
 * [Application Insights にログとカスタム テレメトリを送信する](../../azure-monitor/app/asp-net-trace-logs.md)
 * [可用性と応答性のテストを設定する](../../azure-monitor/app/monitor-web-app-availability.md)
-* [トラブルシューティング](../../application-insights/app-insights-troubleshoot-faq.md)
+* [トラブルシューティング](../../azure-monitor/app/troubleshoot-faq.md)

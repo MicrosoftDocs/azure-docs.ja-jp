@@ -6,16 +6,17 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 2da6795e938f1a0c0ed0495fb169007126501eea
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: e70e7b79be7dd4ea55c56898eaf8007d25732366
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753662"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673020"
 ---
 # <a name="troubleshooting-bing-speech"></a>Bing Speech のトラブルシューティング
 

@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl chaos のコマンドについて説明し
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 697815aeca9b8a07e3cece877d610436b2b8ac83
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b584ec301f0f4841c8df8fbbafb410abf645c373
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278289"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666751"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -28,9 +28,9 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 |サブグループ|説明|
 | --- | --- |
 | [schedule](service-fabric-sfctl-chaos-schedule.md) | chaos のスケジュールを取得および設定します。 |
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | events | 継続トークンまたは時間範囲に基づいて Chaos イベントの次のセグメントを取得します。 |
 | get | Chaos の状態を取得します。 |
@@ -47,9 +47,9 @@ Chaos イベントの次のセグメントを取得するには、ContinuationTo
 |引数|説明|
 | --- | --- |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
-| --end-time-utc | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
+| --end-time-utc | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
 | --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
-| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
+| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -60,7 +60,7 @@ Chaos イベントの次のセグメントを取得するには、ContinuationTo
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-chaos-get"></a>sfctl chaos get
 Chaos の状態を取得します。
@@ -81,7 +81,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 クラスターで Chaos を開始します。
@@ -114,7 +114,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-chaos-stop"></a>sfctl chaos stop
 Chaos がクラスターで実行している場合は停止し、Chaos のスケジュールを停止状態にします。
@@ -135,7 +135,7 @@ Chaos が新しい障害を実行するのを停止します。 転送中の障�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 
 ## <a name="next-steps"></a>次の手順

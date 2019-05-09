@@ -1,19 +1,19 @@
 ---
 title: Azure Storage への診断データを保存および表示する
-description: Azure Storage に Azure 診断データを保存し、それを表示する
+description: Azure Storage に Azure Diagnostics データを保存し、それを表示する
 services: azure-monitor
 author: jpconnock
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
-ms.component: diagnostic-extension
-ms.openlocfilehash: 616738b60f4a26b15c8245136860692f84349cc4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 23379e9d9bb29efb7fb026260e8245e8eb8a2d71
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325603"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468524"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Storage への診断データの保存と表示
 診断データは、Microsoft Azure ストレージ エミュレーターまたは Azure ストレージに転送しない限り、永続的に保存されません。 診断データは、いったんストレージに保存されると、用意されているいくつかのツールの 1 つを使用して確認することができます。
@@ -29,13 +29,13 @@ ServiceConfiguration.cscfg ファイル内で使用するストレージ アカ�
 
 この接続文字列を変更することで、Azure ストレージ アカウントのアカウント情報を指定できます。
 
-収集される診断データの種類に応じて、Azure 診断では Blob service または Table service のいずれかを使用します。 次の表では、保持されるデータ ソースとその形式を示します。
+収集される診断データの種類に応じて、Azure Diagnostics では Blob service または Table service のいずれかを使用します。 次の表では、保持されるデータ ソースとその形式を示します。
 
 | データ ソース | ストレージ形式 |
 | --- | --- |
 | Azure ログ |テーブル |
 | IIS 7.0 ログ |BLOB |
-| Azure 診断インフラストラクチャ ログ |テーブル |
+| Azure Diagnostics インフラストラクチャ ログ |テーブル |
 | 失敗した要求トレース ログ |BLOB |
 | Windows イベント ログ |テーブル |
 | パフォーマンス カウンター |テーブル |
@@ -75,8 +75,9 @@ SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介
 
 * Visual Studio のサーバー エクスプローラー - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。 データは、ローカルのストレージ エミュレーター アカウントから表示できます。また、Azure 用に作成したストレージ アカウントから表示することもできます。 詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)」を参照してください。
 * [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
-* [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
+* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
 
 ## <a name="next-steps"></a>次の手順
 [Azure 診断で Cloud Services アプリケーションのフローをトレースする](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
+
 

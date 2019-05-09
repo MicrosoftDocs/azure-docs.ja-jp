@@ -1,22 +1,22 @@
 ---
-title: 信頼度スコア - Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
+title: 信頼度スコア - QnA Maker
+titleSuffix: Azure Cognitive Services
 description: 信頼度スコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
 services: cognitive-services
 author: tulasim88
-manager: pchoudh
+manager: nitinme
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 8fe4ecfe241422c03a2de8d0634ef1e1395aa050
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 97c44c9285ec7a29827361111599db37bc6a86f3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081321"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59282578"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。 
@@ -38,7 +38,7 @@ ms.locfileid: "53081321"
 
 |スコアの値|スコアの意味|サンプル クエリ|
 |--|--|--|
-|90 - 100|ユーザー クエリと KB の質問がほぼ完全に一致|"My changes aren't updated in Knowledge base after publish"|
+|90 - 100|ユーザー クエリと KB の質問がほぼ完全に一致|"My changes aren't updated in KB after publish"|
 |70 以上|高信頼度 - 通常､ユーザーのクエリに対する完全な答えとなる良い回答|"I published my KB but it's not updated"|
 |50 - 70|中程度の信頼度 - 通常､ユーザー クエリの主な意図に答えるかなり良い回答|"Should I save my updates before I publish my KB?"|
 |30 - 50|低信頼度 - 通常、ユーザーの意図の一部に答える回答。|" What does the save and train do?"|
@@ -58,7 +58,7 @@ ms.locfileid: "53081321"
 > QnA Maker の新しいバージョンにはスコアリング ロジックの機能強化が含まれ、しきい値に影響を与える可能性があります。 サービスを更新するときは常に、テストを行い、必要に応じてしきい値を調整してください。 お使いの QnA サービスのバージョンは、[こちら](https://www.qnamaker.ai/UserSettings)で確認できます。最新の更新プログラムの入手方法については、[こちら](../How-To/troubleshooting-runtime.md)をご覧ください。
 
 ## <a name="improve-confidence-scores"></a>信頼度スコアの向上
-ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。
+ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。 大文字と小文字が区別される[単語変更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)を使用して、KB のキーワードにシノニムを追加することもできます。
 
 
 ## <a name="similar-confidence-scores"></a>類似する信頼度スコア
@@ -66,14 +66,15 @@ ms.locfileid: "53081321"
 
 
 ## <a name="confidence-score-differences"></a>信頼度スコアの違い
-コンテンツが同じ場合でも、ナレッジ ベースのテスト バージョンと公開バージョンの間で、回答の信頼度スコアが、無視できるほどですが、変化する場合があります。 これは、ナレッジ ベースのテスト バージョンと公開バージョンのコンテンツが、異なる Azure Search インデックスに配置されるためです。
-公開のしくみについては、[こちら](../How-To/publish-knowledge-base.md)をご覧ください。
+コンテンツが同じ場合でも、ナレッジ ベースのテスト バージョンと公開バージョンの間で、回答の信頼度スコアが、無視できるほどですが、変化する場合があります。 これは、ナレッジ ベースのテスト バージョンと公開バージョンのコンテンツが、異なる Azure Search インデックスに配置されるためです。 ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)のしくみを確認してください。
+
+異なるリージョンにナレッジ ベースがある場合は、各リージョンが独自の Azure Search インデックスを使用しています。 異なるインデックスが使用されるため、スコアはまったく同じにはなりません。 
 
 
 ## <a name="no-match-found"></a>一致が見つからない
-ランク付けによって適切な一致が見つからない場合は、0.0 または "None" の信頼度スコアが返され、既定の応答は [No good match found in the KB]\(KB で適切な一致が見つかりませんでした\) になります。 ボットまたはエンドポイントを呼び出すアプリケーション コード内のこの既定の応答を上書きできます。 別の方法として、Azure に上書き応答を設定することもできます。この場合は、特定の QnA Maker サービスにデプロイされたすべてのナレッジ ベースの既定値が変更されます。
+ランク付けによって適切な一致が見つからない場合は、0.0 または "None" の信頼度スコアが返され、既定の応答は [No good match found in the KB]\(KB で適切な一致が見つかりませんでした\) になります。 エンドポイントを呼び出すボットまたはアプリケーションのコードで、この[既定の応答](#change-default-answer)を上書きできます。 別の方法として、Azure に上書き応答を設定することもできます。この場合は、特定の QnA Maker サービスにデプロイされたすべてのナレッジ ベースの既定値が変更されます。
 
-### <a name="change-default-answer"></a>既定の回答の変更
+## <a name="change-default-answer"></a>既定の回答の変更
 
 1. [Azure Portal](https://portal.azure.com) に移動し、作成した QnA Maker サービスを表すリソース グループに移動します。
 
@@ -93,5 +94,4 @@ ms.locfileid: "53081321"
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [サポートされるデータ ソース](./data-sources-supported.md)
-## <a name="see-also"></a>関連項目 
-[QnA Maker の概要](../Overview/overview.md)
+

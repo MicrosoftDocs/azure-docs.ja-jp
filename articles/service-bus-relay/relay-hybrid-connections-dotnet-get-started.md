@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
 ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 63961e978056a20e697872c0c1d892efaadcc627
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 88d540f274d8b07bfbdbb566c670adf6ddfefd74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612075"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878700"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET での Relay ハイブリッド接続 WebSocket の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "51612075"
 
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
-* [Visual Studio 2015 またはそれ以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
+* [Visual Studio 2015 またはそれ以降](https://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="create-a-namespace"></a>名前空間の作成

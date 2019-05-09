@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 85405a96d141188203ddc88410c96654667fa83a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270112"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599810"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure Traffic Manager による Azure App Service トラフィックの制御
 > [!NOTE]
@@ -52,7 +52,7 @@ Azure トラフィック マネージャーを Azure で使用する場合は、
 * リージョンごとに 1 つのみの App Service エンドポイントをプロファイルで指定することもできます。 1 つのリージョンのエンドポイントとしてアプリを選択すると、そのリージョン内の残りの アプリはそのプロファイルで選択できなくなります。
 * Azure Traffic Manager のプロファイルで指定した App Service エンドポイントは、プロファイルでアプリの構成ページの **[ドメイン名]** セクションに表示されますが、そこでは構成できません。
 * アプリをプロファイルに追加した後、アプリのポータル ページのダッシュボードの **[サイトの URL]** には、アプリのカスタム ドメインを設定していればその URL が表示されます。 それ以外の場合は、Traffic Manager のプロファイルの URL (`contoso.trafficmanager.net` など) が表示されます。 アプリの直接のドメイン名と Traffic Manager の URL の両方が、アプリの構成ページの **[ドメイン名]** セクションに表示されます。
-* カスタム ドメイン名は予期したとおりに機能しますが、それらのドメイン名をアプリに追加するだけでなく、Traffic Manager の URL を参照するように DNS マップを構成する必要もあります。 App Service アプリのカスタム ドメインを設定する方法については、「[既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)」を参照してください。
+* カスタム ドメイン名は予期したとおりに機能しますが、それらのドメイン名をアプリに追加するだけでなく、Traffic Manager の URL を参照するように DNS マップを構成する必要もあります。 App Service アプリのカスタム ドメインを設定する方法については、「[既存のカスタム DNS 名を Azure App Service にマップする](app-service-web-tutorial-custom-domain.md)」を参照してください。
 * 標準またはプレミアム モードのアプリのみを Azure Traffic Manager のプロファイルに追加できます。
 
 ## <a name="next-steps"></a>次の手順

@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: cf001d86356f4dd5fd3735803f0e329aa1e0940d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496882"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224024"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Apache Ambari ビューに対してユーザーを承認する
 
 [Enterprise セキュリティ パッケージ (ESP) が有効になっている HDInsight クラスター](./domain-joined/apache-domain-joined-introduction.md)には、エンタープライズ グレードの機能が備わっています。Azure Active Directory ベースの認証もその 1 つです。 クラスターへのアクセスが提供されている Azure AD グループに追加された[新しいユーザーを同期](hdinsight-sync-aad-users-to-cluster.md)して、特定のユーザーに特定のアクションの実行を許可できます。 [Apache Ambari](https://ambari.apache.org/) でのユーザー、グループ、およびアクセス許可の操作は、ESP HDInsight クラスターと標準 HDInsight クラスターの両方でサポートされています。
 
-Active Directory ユーザーはドメイン資格情報を使用してクラスター ノードにログオンできます。 また、クラスターと他の承認済みエンドポイント ([Hue](http://gethue.com/)、Ambari Views、ODBC、JDBC、PowerShell、REST API など) との対話も、ドメイン資格情報で認証することができます。
+Active Directory ユーザーは、自分のドメイン資格情報を使用してクラスター ノードにサインインできます。 また、クラスターと他の承認済みエンドポイント ([Hue](https://gethue.com/)、Ambari Views、ODBC、JDBC、PowerShell、REST API など) との対話も、ドメイン資格情報で認証することができます。
 
-> [!WARNING]
+> [!WARNING]  
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
 
 新しい ESP クラスターをまだプロビジョニングしていない場合は、[こちらの手順](./domain-joined/apache-domain-joined-configure.md)に従ってプロビジョニングしてください。
@@ -51,24 +51,24 @@ Ambari には、[Apache Hive](https://hive.apache.org/) や [Apache TEZ](https:/
 
 **[Grant permission to these groups]\(次のグループにアクセス許可を付与\)** ![[Grant permission to these groups]\(次のグループにアクセス許可を付与\)](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
 
-4. ユーザーを追加するには、**[Add User]\(ユーザーの追加\)** ボタンを選択します。
+1. ユーザーを追加するには、**[Add User]\(ユーザーの追加\)** ボタンを選択します。
 
-    * ユーザー名を入力し始めると、既に定義されている名前がドロップダウン リストに表示されます。
+   * ユーザー名を入力し始めると、既に定義されている名前がドロップダウン リストに表示されます。
 
-    ![ユーザーのオートコンプリート](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
+     ![ユーザーのオートコンプリート](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
 
-    * ユーザー名を選択するか、最後まで入力します。 このユーザー名を新しいユーザーとして追加するには、**[New]\(新規\)** ボタンを選択します。
+   * ユーザー名を選択するか、最後まで入力します。 このユーザー名を新しいユーザーとして追加するには、**[New]\(新規\)** ボタンを選択します。
 
-    * 変更を保存するには、**青色のチェック ボックス**をオンにします。
+   * 変更を保存するには、**青色のチェック ボックス**をオンにします。
 
-    ![入力されたユーザー](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
+     ![入力されたユーザー](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
 
-5. グループを追加するには、**[Add Group]\(グループの追加\)** ボタンを選択します。
+1. グループを追加するには、**[Add Group]\(グループの追加\)** ボタンを選択します。
 
-    * グループ名の入力を開始します。 既存のグループ名を選択 (または新しいグループを追加) するプロセスは、ユーザーを追加するときと同じです。
-    * 変更を保存するには、**青色のチェック ボックス**をオンにします。
+   * グループ名の入力を開始します。 既存のグループ名を選択 (または新しいグループを追加) するプロセスは、ユーザーを追加するときと同じです。
+   * 変更を保存するには、**青色のチェック ボックス**をオンにします。
 
-    ![入力されたグループ](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
+     ![入力されたグループ](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
 
 ビューのアクセス許可をユーザーに割り当てるとき、余分なアクセス許可があるグループのメンバーにすることを望まない場合、ビューに直接ユーザーを追加する方法が便利です。 管理オーバーヘッドを減らすには、おそらくグループにアクセス許可を割り当てる方が簡単です。
 

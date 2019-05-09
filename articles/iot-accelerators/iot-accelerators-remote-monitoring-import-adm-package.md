@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューション インポート ADM パッケージ - Azure | Microsoft Docs
+title: リモート監視ソリューション インポート パッケージ - Azure | Microsoft Docs
 description: この記事では、自動デバイス管理パッケージをリモート監視ソリューション アクセラレータにインポートする方法について説明します
 author: dominicbetts
 manager: philmea
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8fd6e733f3e80ba2a3ec632c088d070252e260cc
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684363"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59009854"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>自動デバイス管理パッケージをリモート監視ソリューション アクセラレータにインポートする
 

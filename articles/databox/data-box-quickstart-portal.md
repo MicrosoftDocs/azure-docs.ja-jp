@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 10/04/2018
+ms.date: 03/12/2019
 ms.author: alkohli
-ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834722"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Data Box をデプロイする
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box をデプロイする
 
 このクイック スタートでは、Azure portal を使用して Azure Data Box をデプロイする方法について説明します。 手順には、ケーブル接続、構成、および Azure にアップロードするためにデータを Data Box にコピーする方法が含まれます。 クイック スタートは、Azure portal およびデバイスのローカル Web UI で行われます。
 
-デプロイと追跡の手順をステップ バイ ステップで詳しく紹介した記事については、[Azure Data Box の注文に関するチュートリアル](data-box-deploy-ordered.md)を参照してください
+デプロイと追跡に関する詳しい手順については、「[チュートリアル:Azure Data Box を注文する](data-box-deploy-ordered.md)」を参照してください
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,6 @@ ms.locfileid: "49385845"
 - Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
     - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
     - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
-    - 使用量 - 従量課金制。 Azure の従量課金制サブスクリプションについての詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0003p/)です。
     - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。 
 
 - Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。
@@ -44,7 +43,7 @@ ms.locfileid: "49385845"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="order"></a>順序
 
@@ -75,7 +74,7 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
     
 4. 次に示すようにしてデバイスのケーブルを接続します。  
 
-    ![Data Box のケーブル接続](media/data-box-quickstart-portal/data-box-cabled-dhcp.png)  
+    ![ケーブル配線した Data Box デバイスのバックプレーン](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
 
     1. 電源ケーブルをデバイスに接続します。
     2. RJ-45 CAT 6 ネットワーク ケーブルを使用して、ホスト コンピューターをデバイス上の管理ポート (MGMT) に接続します。 
@@ -87,7 +86,7 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 
 この手順の所要時間は 5 分から 7 分程度です。
 
-1. デバイスのパスワードを取得するには、[Azure Portal](http://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
+1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
 2. Data Box に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。 
 3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
 4. 既定では、10 Gbps のデータ インターフェイス(または 1 Gbps) のネットワーク設定は、DHCP として構成されます。 必要に応じて、このインターフェイスを静的インターフェイスとして構成し、IP アドレスを入力することができます。 

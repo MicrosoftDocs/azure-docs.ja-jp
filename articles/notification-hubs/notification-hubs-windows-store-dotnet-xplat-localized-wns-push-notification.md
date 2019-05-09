@@ -3,8 +3,8 @@ title: Azure Notification Hubs を使用して Windows アプリにローカラ�
 description: ローカライズ ニュース速報通知を Azure Notification Hubs を使用して送信する方法について説明します。
 services: notification-hubs
 documentationcenter: windows
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
@@ -13,29 +13,31 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 0e78b00e49b2ef468e693abfdcde8a138313ba63
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.date: 03/22/2019
+ms.author: jowargo
+ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920340"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402714"
 ---
-# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Windows アプリにローカライズしたプッシュ通知を送信する
+# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Windows アプリにローカライズしたプッシュ通知を送信する
+
 > [!div class="op_single_selector"]
 > * [Windows ストア C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、Notification Hubs サービスに登録されているモバイル デバイスにローカライズしたプッシュ通知を送信する方法を示します。 このチュートリアルでは、「[チュートリアル: 特定のデバイスに通知を送信する (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)」で作成されたアプリケーションを、次のシナリオをサポートするように更新します。 
+
+このチュートリアルでは、Notification Hubs サービスに登録されているモバイル デバイスにローカライズしたプッシュ通知を送信する方法を示します。 このチュートリアルでは、[特定のデバイスに通知を送信するチュートリアル (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) で作成したアプリケーションを、次のシナリオをサポートするように更新します。
 
 - Windows ストア アプリを使用すると、クライアント デバイスは言語を指定したり、さまざまなニュース速報カテゴリにサブスクライブしたりできます。
 - バックエンド アプリは、Azure Notification Hubs の**タグ**および**テンプレート**機能を使用して通知をブロードキャストします。
 
-このチュートリアルを完了すると、モバイル アプリケーションを使用して、関心のあるカテゴリに登録したり、また通知を受信する言語を指定したりすることもできます。 バックエンド アプリケーションは、言語およびデバイスごとにローカライズされた通知を送信します。 
+このチュートリアルを完了すると、モバイル アプリケーションを使用して、関心のあるカテゴリに登録したり、また通知を受信する言語を指定したりすることもできます。 バックエンド アプリケーションは、言語およびデバイスごとにローカライズされた通知を送信します。
 
-このチュートリアルで学習する内容は次のとおりです。 
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * ロケール情報をサポートするように Windows アプリを更新する
@@ -43,9 +45,10 @@ ms.locfileid: "41920340"
 > * アプリケーションをテストする
 
 ## <a name="prerequisites"></a>前提条件
-「[チュートリアル: 特定のデバイスに通知を送信する (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)」を完了してください。 
 
-「[チュートリアル: 特定のデバイスに通知を送信する (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)」では、**タグ**を使用してさまざまなニュース**カテゴリ**の通知にサブスクライブするアプリを構築しました。 このチュートリアルでは、Notification Hubs の**テンプレート**機能を使用して、**ローカライズした**ニュース速報通知を簡単に配信します。
+[特定のデバイスに通知を送信するチュートリアル (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) を完了してください。
+
+[特定のデバイスに通知を送信するチュートリアル (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) では、**タグ**を使用してさまざまなニュース**カテゴリ**の通知にサブスクライブするアプリを構築しました。 このチュートリアルでは、Notification Hubs の**テンプレート**機能を使用して、**ローカライズした**ニュース速報通知を簡単に配信します。
 
 高いレベルでは、テンプレートは、特定のデバイスが通知を受信する形式を指定するための方法です。 テンプレートは、アプリケーション バックエンドにより送信されるメッセージの一部となっているプロパティを参照することで、正確なペイロードを指定します。 このチュートリアルでは、バックエンド アプリケーションは、サポートされるすべての言語を含む、ロケールにとらわれないメッセージを送信します。
 
@@ -69,12 +72,12 @@ ms.locfileid: "41920340"
 </toast>
 ```
 
-テンプレートの詳細については、「[テンプレート](notification-hubs-templates-cross-platform-push-messages.md)」の記事を参照してください。 
+テンプレートの詳細については、[プッシュ テンプレート](notification-hubs-templates-cross-platform-push-messages.md)に関するページを参照してください。
 
 ## <a name="update-windows-app-to-support-locale-information"></a>ロケール情報をサポートするように Windows アプリを更新する
 
-1. 「[チュートリアル: 特定のデバイスに通知を送信する (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)」のために作成した Visual Studio ソリューションを開きます。 
-2. ロケール コンボボックスを含むように **MainPage.xaml** を更新します。
+1. [特定のデバイスに通知を送信するチュートリアル (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) のために作成した Visual Studio ソリューションを開きます。
+2. ソリューションの `MainPage.xaml` ファイルを更新してロケール コンボ ボックスを追加します。
 
     ```xml
     <Grid Margin="120, 58, 120, 80"  
@@ -106,14 +109,14 @@ ms.locfileid: "41920340"
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-2. **Notifications** クラスで、**StoreCategoriesAndSubscribe** および **SubscribeToCateories** メソッドにロケール パラメーターを追加します。
+3. `Notifications` クラスの `StoreCategoriesAndSubscribe` メソッドと `SubscribeToCategories` メソッドにロケール パラメーターを追加します。
 
-    ```csharp   
+    ```csharp
     public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
     {
         ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
         ApplicationData.Current.LocalSettings.Values["locale"] = locale;
-        return await SubscribeToCategories(categories);
+        return await SubscribeToCategories(locale, categories);
     }
 
     public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
@@ -133,11 +136,11 @@ ms.locfileid: "41920340"
     }
     ```
 
-    *RegisterNativeAsync* メソッドを呼び出す代わりに、*RegisterTemplateAsync* を呼び出します。 テンプレートがロケールによって異なる特定の通知形式を登録します。 複数のテンプレート (たとえば、トースト通知用に 1 つとタイル用に 1 つ) を登録することもできるため、テンプレートの名前 ("localizedWNSTemplateExample") も指定します。 これらの名前はまた、テンプレートを更新または削除するときにも指定する必要があります。
-   
+    `RegisterNativeAsync` メソッドを呼び出す代わりに、`RegisterTemplateAsync` を呼び出します。 テンプレートがロケールによって異なる特定の通知形式を登録します。 複数のテンプレート (たとえば、トースト通知用に 1 つとタイル用に 1 つ) を登録することもできるため、テンプレートの名前 ("localizedWNSTemplateExample") も指定します。 これらの名前はまた、テンプレートを更新または削除するときにも指定する必要があります。
+
     デバイスが同じタグを持つ複数のテンプレートを登録している場合は、そのタグを対象にした受信メッセージにより、そのデバイスに複数の通知 (テンプレートごとに 1 つ) が配信されます。 この動作は、同じ論理メッセージによって複数のビジュアル通知を生成する必要がある場合に役立ちます。たとえば、Windows ストア アプリケーションにバッジとトーストの両方を表示する場合などです。
-3. 次のメソッドを追加して、格納されたロケールを取得します。
-   
+4. 次のメソッドを追加して、格納されたロケールを取得します。
+
     ```csharp
     public string RetrieveLocale()
     {
@@ -146,8 +149,8 @@ ms.locfileid: "41920340"
     }
     ```
 
-4. 次に示すように、**MainPage.xaml.cs** でロケール コンボ ボックスの現在の値を取得し、それを Notifications クラスの呼び出しに提供することによって、ボタン クリック ハンドラーを更新します。
-   
+5. `MainPage.xaml.cs` ファイルで、ボタン クリック ハンドラーを更新します。ロケール コンボ ボックスの現在の値を取得して、それを `Notifications` クラスの呼び出しに渡すようにします。
+
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
     {
@@ -170,9 +173,9 @@ ms.locfileid: "41920340"
         await dialog.ShowAsync();
     }
     ```
-4. 最後に、App.xaml.cs ファイルで `InitNotificationsAsync` メソッドを必ず更新してロケールを取得し、購読しているときに使用します。
+6. 最後に、`App.xaml.cs` ファイルの `InitNotificationsAsync` メソッドを更新します。サブスクライブする際にロケールを取得して使用するようにします。
 
-    ```csharp   
+    ```csharp
     private async void InitNotificationsAsync()
     {
         var result = await notifications.SubscribeToCategories(notifications.RetrieveLocale());
@@ -187,7 +190,22 @@ ms.locfileid: "41920340"
     }
     ```
 
-## <a name="send-localized-notifications-from-your-back-end"></a>バックエンドからローカライズした通知を送信する
+
+
+## <a name="run-the-uwp-application"></a>UWP アプリケーションを実行する
+
+1. ユニバーサル Windows プラットフォーム アプリケーションを実行します。 **登録が成功しました**というメッセージが表示されるまで待ちます。
+
+    ![モバイル アプリケーションと登録](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
+2. **カテゴリ**と**ロケール**を選択し、**[Subscribe]\(サブスクライブ)** をクリックします。 アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。
+
+    ![モバイル アプリケーション](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
+3. **サブスクリプション**に関する**確認**メッセージが表示されます。
+
+    ![サブスクリプション メッセージ](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
+
+## <a name="update-console-app-to-send-localized-notifications"></a>ローカライズした通知を送信するようにコンソール アプリを更新する
+
 テンプレート通知を送信する場合は、一連のプロパティを指定するだけで済みます。このチュートリアルでは、バックエンド アプリケーションが、現在のニュースのローカライズ版を含む一連のプロパティを送信します。次に例を示します。
 
 ```json
@@ -198,23 +216,21 @@ ms.locfileid: "41920340"
 }
 ```
 
-このセクションでは、ソリューション内のコンソール アプリケーション プロジェクトを更新します。 次のコードを使用して、前に作成したコンソール アプリ内の `SendTemplateNotificationAsync` メソッドを変更します。 
+このセクションでは、ソリューション内のコンソール アプリケーション プロジェクトを更新します。 次のコードを使用して、前に作成したコンソール アプリ内の `SendTemplateNotificationAsync` メソッドを変更します。
 
 > [!IMPORTANT]
-> コード内で、通知ハブに対するフル アクセスを持つ名前と接続文字列を指定します。 
-
+> コード内で、通知ハブに対するフル アクセスを持つ名前と接続文字列を指定します。
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
 {
     // Define the notification hub.
-    NotificationHubClient hub = 
-        NotificationHubClient.CreateClientFromConnectionString(
-            "<connection string with full access>", "<hub name>");
+    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(
+        "<connection string with full access>", "<hub name>");
 
-    // Sending the notification as a template notification. All template registrations that contain 
-    // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
-    // This includes APNS, GCM, WNS, and MPNS template registrations.
+    // Sending the notification as a template notification. All template registrations that contain
+    // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications.
+    // This includes APNS, FCM, WNS, and MPNS template registrations.
     Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
     // Create an array of breaking news categories.
@@ -241,27 +257,17 @@ private static async void SendTemplateNotificationAsync()
 
 通知ハブが適切なネイティブ ペイロードを構築し、特定のタグにサブスクライブしているすべてのデバイスに配信するため、この単純な呼び出しにより、プラットフォームには関係なく、ローカライズされたニュースが**すべての**デバイスに配信されます。
 
-## <a name="test-the-app"></a>アプリケーションをテストする
-1. ユニバーサル Windows ストア アプリケーションを実行します。 **登録が成功しました**というメッセージが表示されるまで待ちます。
+## <a name="run-console-app-to-send-localized-notification"></a>ローカライズした通知を送信するコンソール アプリを実行する
+**コンソール アプリ**を実行して、カテゴリごとの通知をサポートされる各言語で送信します。 サブスクライブしているカテゴリの通知のみを受信すること、およびメッセージが選択したロケールに対するものであることを確認します。
 
-    ![モバイル アプリケーションと登録](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
-1. **カテゴリ**と**ロケール**を選択し、**[Subscribe] (サブスクライブ)** をクリックします。 アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。
-
-    ![モバイル アプリケーション](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
-2.  **サブスクリプション**に関する**確認**メッセージが表示されます。 
-
-    ![サブスクリプション メッセージ](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
-1. 確認を受信した後、**コンソール アプリ**を実行して、カテゴリごとの通知をサポートされる各言語で送信します。 サブスクライブしているカテゴリの通知のみを受信すること、およびメッセージが選択したロケールに対するものであることを確認します。 
-
-    ![Notification messages](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
- 
+![Notification messages](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、タグが登録に関連付けられている特定のデバイスにローカライズしたプッシュ通知を送信する方法を学習しました。 複数のデバイスを使用している可能性のある特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
+
+このチュートリアルでは、タグが登録に関連付けられている特定のデバイスにローカライズしたプッシュ通知を送信する方法を学習しました。 複数のデバイスを使用している可能性のある特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 >[特定のユーザーにプッシュ通知を送信する](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
-
 
 <!-- Anchors. -->
 [Template concepts]: #concepts
@@ -277,10 +283,9 @@ private static async void SendTemplateNotificationAsync()
 [Notify users with Notification Hubs: ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Notify users with Notification Hubs: Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-dotnet
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet
@@ -288,8 +293,7 @@ private static async void SendTemplateNotificationAsync()
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
-
-[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
-[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx

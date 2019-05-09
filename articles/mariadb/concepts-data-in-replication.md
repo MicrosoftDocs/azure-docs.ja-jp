@@ -3,17 +3,15 @@ title: データを Azure Database for MariaDB にレプリケートする
 description: この記事では、Azure Database for MariaDB のデータイン レプリケーションについて説明します。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a6bb6ae45c4240f21b1e0baf4956b053d4b98720
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948181"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547611"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>データを Azure Database for MariaDB にレプリケートする
 

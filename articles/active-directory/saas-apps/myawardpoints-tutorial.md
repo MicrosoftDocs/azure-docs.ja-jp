@@ -1,60 +1,50 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Award Points Top Sub/Top Team の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Award Points Top Sub/Top Team の統合 | Microsoft Docs
 description: Azure Active Directory と Award Points Top Sub/Top Team 間でのシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: a7a08eed-7a6b-4a83-8f8e-0add6d2fb8cf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/27/2018
+ms.topic: tutorial
+ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: bfb858930bef87239021d049b59c282197bb49ef
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247756"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59276220"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Azure Active Directory と Award Points Top Sub/Top Team の統合
+# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>チュートリアル:Azure Active Directory と Award Points Top Sub/Top Team の統合
 
 このチュートリアルでは、Award Points Top Sub/Top Team と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Award Points Top Sub/Top Team と Azure AD の統合には、次の利点があります。
 
-- My Award Points Top Sub/Top Team にアクセスできるユーザーを、Azure AD で制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Award Points Top Sub/Top Team にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* My Award Points Top Sub/Top Team にアクセスできるユーザーを、Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで自動的に Award Points Top Sub/Top Team にサインイン (シングル サインオン) できるようにします。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure AD と My Award Points Top Sub/Top Team の統合を構成するには、次の項目が必要です。
 
-- Azure AD サブスクリプション
-- My Award Points Top Sub/Top Team シングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* My Award Points Top Sub/Top Team シングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-1. ギャラリーからの My Award Points Top Sub/Top Team の追加
-2. Azure AD シングル サインオンの構成とテスト
+* My Award Points Top Sub/Top Team では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-my-award-points-top-subtop-team-from-the-gallery"></a>ギャラリーからの My Award Points Top Sub/Top Team の追加
 
@@ -62,159 +52,149 @@ Azure AD への My Award Points Top Sub/Top Team の統合を構成するには�
 
 **ギャラリーから My Award Points Top Sub/Top Team を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
 4. 検索ボックスに「**My Award Points Top Sub/Top Team**」と入力し、結果パネルで **[My Award Points Top Sub/Top Team]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-    ![結果リストの My Award Points Top Sub/Top Team](./media/myawardpoints-tutorial/tutorial_myawardpoints_addfromgallery.png)
+     ![結果リストの My Award Points Top Sub/Top Team](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Award Points Top Sub/Top Team ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Award Points Top Sub/Top Team の関連ユーザーの間で、リンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンが機能するには、Azure AD ユーザーと Award Points Top Sub/Top Team の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[My Award Points Top Sub/Top Team テスト ユーザーの作成](#create-a-my-award-points-top-subtop-team-test-user)** - My Award Points Top Sub/Top Team で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+2. **My Award Points Top Sub/Top Team のシングル サインオンの構成** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **My Award Points Top Sub/Top Team テスト ユーザーの作成** - My Award Points Top Sub/Top Team で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にして、Award Points Top Sub/Top Team アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**My Award Points Top Sub/Top Team での Azure AD シングル サインオンを構成するには、次の手順に従います。**
+My Award Points Top Sub/Top Team での Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure portal の **My Award Points Top Sub/Top Team** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **My Award Points Top Sub/Top Team** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    ![[シングル サインオン] ダイアログ ボックス](./media/myawardpoints-tutorial/tutorial_myawardpoints_samlbase.png)
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[My Award Points Top Sub/Top Team Domain and URLs] (My Award Points Top Sub/Top Team のドメインと URL)** セクションで、次の手順に従います。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![My Award Points Top Sub/Top Team Domain and URLs (My Award Points Top Sub/Top Team のドメインと URL のシングル サインオン情報](./media/myawardpoints-tutorial/tutorial_myawardpoints_url.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    **[サインオン URL]** ボックスに、`https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>` のパターンを使用して URL を入力します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+
+    ![My Award Points Top Sub/Top Team Domain and URLs (My Award Points Top Sub/Top Team のドメインと URL のシングル サインオン情報](common/sp-signonurl.png)
+
+    **[サインオン URL]** ボックスに、`https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<Azure AD Identifier>` という形式で URL を入力します。
 
     > [!NOTE]
-    > このチュートリアルの後の手順で `<SAMLENTITYID>` 値を取得します。
+    > この値は実際のものではありません。 このチュートリアルの後の手順で `<Azure AD Identifier>` 値を取得します。
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](./media/myawardpoints-tutorial/tutorial_myawardpoints_certificate.png)
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-5. **[保存]** ボタンをクリックします。
+6. **[My Award Points Top Sub/Top Team の設定]** セクションで、要件どおりの適切な URL をコピーします。 
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/myawardpoints-tutorial/tutorial_general_400.png)
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-6. **[My Award Points Top Sub/Top Team Configuration]\(My Award Points Top Sub/Top Team の構成)** セクションで、**[Configure My Award Points Top Sub/Top Team]\(My Award Points Top Sub/Top Team を構成する)** を選択し、[サインオンの構成] ウィンドウを開きます。 **[クイック リファレンス]** セクションから SAML エンティティ ID をコピーし、Azure portal の **[My Award Points Top Sub/Top Team Domain and URLs] (My Award Points Top Sub/Top Team のドメインと URL)** セクションで、`<SAMLENTITYID>` の代わりに、サインオン URL を含む SAML エンティティ ID 値を追加します。
+    a. ログイン URL
 
-7. **My Award Points Top Sub/Top Team** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [My Award Points Top Sub/Top Team サポート チーム](mailto:myawardpoints@biworldwide.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+    b. Azure AD 識別子
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    c. ログアウト URL
+
+    >[!NOTE]
+    >Azure portal の **[基本的な SAML 構成]** セクションの `<Azure AD Identifier>` の代わりに、サインオン URL を含むコピーした Azure AD 識別子を追加します。
+
+### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>My Award Points Top Sub/Top Team のシングル サインオンを構成する
+
+**My Award Points Top Sub/Top Team** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [My Award Points Top Sub/Top Team サポート チーム](mailto:myawardpoints@biworldwide.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/myawardpoints-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/myawardpoints-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/myawardpoints-tutorial/create_aaduser_03.png)
-
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/myawardpoints-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
-
-### <a name="create-a-my-award-points-top-subtop-team-test-user"></a>My Award Points Top Sub/Top Team テスト ユーザーの作成
-
-このセクションでは、Award Points Top Sub/Top Team で Britta Simon というユーザーを作成します。 [My Award Points Top Sub/Top Team サポート チーム](mailto:myawardpoints@biworldwide.com)と一緒に作業して、My Award Points Top Sub/Top Team プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Award Points Top Sub/Top Team へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200]
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[My Award Points Top Sub/Top Team]** を選択します。
 
-**My Award Points Top Sub/Top Team に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で、**[My Award Points Top Sub/Top Team]** を選択します。
 
-    ![アプリケーションの一覧の [My Award Points Top Sub/Top Team] リンク](./media/myawardpoints-tutorial/tutorial_myawardpoints_app.png)  
+    ![アプリケーションの一覧の [My Award Points Top Sub/Top Team] リンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[割り当ての追加] ウィンドウ][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="create-my-award-points-top-subtop-team-test-user"></a>My Award Points Top Sub/Top Team テスト ユーザーの作成
+
+このセクションでは、Award Points Top Sub/Top Team で Britta Simon というユーザーを作成します。  [My Award Points Top Sub/Top Team サポート チーム](mailto:myawardpoints@biworldwide.com)と一緒に作業して、My Award Points Top Sub/Top Team プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [My Award Points Top Sub/Top Team] タイルをクリックすると、My Award Points Top Sub/Top Team アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [My Award Points Top Sub/Top Team] タイルをクリックすると、SSO を設定した My Award Points Top Sub/Top Team アプリケーションに自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/myawardpoints-tutorial/tutorial_general_01.png
-[2]: ./media/myawardpoints-tutorial/tutorial_general_02.png
-[3]: ./media/myawardpoints-tutorial/tutorial_general_03.png
-[4]: ./media/myawardpoints-tutorial/tutorial_general_04.png
-
-[100]: ./media/myawardpoints-tutorial/tutorial_general_100.png
-
-[200]: ./media/myawardpoints-tutorial/tutorial_general_200.png
-[201]: ./media/myawardpoints-tutorial/tutorial_general_201.png
-[202]: ./media/myawardpoints-tutorial/tutorial_general_202.png
-[203]: ./media/myawardpoints-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

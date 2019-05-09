@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/06/2018
+ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fba54fa1d2ca6675b41728b460a07515b05758f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868550"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531591"
 ---
-# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure で Linux 仮想マシンの監視と更新を行う
+# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で Linux 仮想マシンの監視と更新を行う
 
 Azure の仮想マシン (VM) が正常に実行されていることを確認するためには、ブート診断とパフォーマンス メトリックを確認し、パッケージの更新を管理します。 このチュートリアルでは、以下の内容を学習します。
 
@@ -123,7 +123,7 @@ Azure には、Linux VM と連動する専用のホストがあります。 メ�
 
 ## <a name="install-diagnostics-extension"></a>診断拡張機能をインストールする
 
-基本的なホスト メトリックは利用できますが、さらに粒度の細かい VM 固有のメトリックを表示するためには、Azure 診断拡張機能を VM にインストールする必要があります。 Azure 診断拡張機能を通じて、より詳しい監視データと診断データを VM から取得することができます。 これらのパフォーマンス メトリックを確認したり、VM のパフォーマンスに基づくアラートを作成したりすることができます。 診断拡張機能は、次のように Azure Portal からインストールします。
+基本的なホスト メトリックは利用できますが、さらに粒度の細かい VM 固有のメトリックを表示するためには、Azure Diagnostics 拡張機能を VM にインストールする必要があります。 Azure Diagnostics 拡張機能を通じて、より詳しい監視データと診断データを VM から取得することができます。 これらのパフォーマンス メトリックを確認したり、VM のパフォーマンスに基づくアラートを作成したりすることができます。 診断拡張機能は、次のように Azure Portal からインストールします。
 
 1. Azure Portal で **[リソース グループ]** を選択し、**[myResourceGroupMonitor]** を選択します。次に、リソース一覧から **[myVM]** を選択します。
 1. **[診断の設定]** を選択します。 *[ストレージ アカウントの選択]* ドロップダウン メニューから、前のセクションで作成した *mydiagdata [1234]* アカウントを選択します (まだ選択されていない場合)。
@@ -153,7 +153,7 @@ VM のメトリックは、ホスト VM のメトリックと同じ方法で表�
 5. 必要に応じて *[所有者、共同作成者、閲覧者に電子メールを送信]* のチェック ボックスをオンにして、電子メール通知を送信することもできます。 既定のアクションでは、ポータルに通知が表示されます。
 6. **[OK]**  ボタンを選択します。
 
-## <a name="manage-package-updates"></a>パッケージの更新を管理する
+## <a name="manage-software-updates"></a>ソフトウェア更新プログラムを管理する
 
 更新管理では、Azure Linux VM の更新プログラムとパッチを管理できます。
 VM から直接、利用可能な更新プログラムのステータスを迅速に把握したり、必要な更新プログラムのインストールをスケジュールしたり、デプロイの結果を確認して、VM に更新プログラムが正常に適用されたことを検証したりできます。
@@ -175,22 +175,21 @@ VM から直接、利用可能な更新プログラムのステータスを迅�
 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 更新を必要とする VM で追加のアクションを実行する場合、Azure Automation を使用すると、VM に対して Runbook を実行して、更新プログラムをダウンロードして適用するなどの操作を行うことができます。
 
-また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) と Automation ハイブリッド Runbook worker でプロビジョニングされているかどうかが確認されます。
-このエージェントは VM との通信に使用され、更新ステータスに関する情報を取得します。
+また、検証プロセスでは、VM に Log Analytics エージェントと Automation ハイブリッド runbook worker がプロビジョニングされているかどうかも確認されます。 このエージェントは VM との通信に使用され、更新ステータスに関する情報を取得します。
 
 Log Analytics ワークスペースと Automation アカウントを選択し、**[有効にする]** を選択して、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
 オンボード中に次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md) ワークスペース
-* [Automation](../../automation/automation-offering-get-started.md)
+* [Automation アカウント](../../automation/automation-offering-get-started.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) が VM で有効になっている
 
 **[更新の管理]** 画面が開きます。 使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** を選択します。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
 
 ![Update Management ソリューションを有効にする](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
-ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Log Analytics に送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
+ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Azure Monitor ログに送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
 ### <a name="view-update-assessment"></a>更新の評価を確認する
 
@@ -291,24 +290,11 @@ VM の起動時と停止時には、イベントがアクティビティ ログ�
 
 ## <a name="advanced-monitoring"></a>高度な監視
 
-使用している VM をさらに詳しく監視するには、[Azure Automation](../../automation/automation-intro.md) で提供される変更やインベントリ、Update Management などのソリューションを使用します。
+[Azure Monitor for VMs](../../azure-monitor/insights/vminsights-overview.md) のようなソリューションを使用することで、VM のより高度な監視を実現できます。Azure Monitor for VMs では、Azure 仮想マシン (VM) の大規模な監視が行われます。それを行うために、さまざまなプロセスや、その他のリソースおよび外部プロセスに対する相互接続された依存関係など、Windows および Linux VM のパフォーマンスと正常性が分析されます。 環境内の変更を簡単に識別できるように、[Azure Automation](../../automation/automation-intro.md) の Change Tracking と Inventory ソリューションによって Azure VM の構成管理が提供されます。 更新プログラムのコンプライアンス管理は、Azure Automation の Update Management ソリューションによって提供されます。   
 
-Log Analytics ワークスペースにアクセスして、ワークスペース キーとワークスペース識別子を確認するには、**[設定]** の **[詳細設定]** を選択します。 以下のように **az vm extension set** を使用して拡張機能を VM に追加できます。\<workspace-key\> と \<workspace-id\> は、実際の Log Analytics ワークスペースの値に置き換えてください。
+VM が接続されている Log Analytics ワークスペースから[高度なクエリ言語](../../azure-monitor/log-query/log-query-overview.md)を使用して、収集されたデータを取得、統合、および分析することもできます。 
 
-```azurecli-interactive
-az vm extension set \
-  --resource-group myResourceGroupMonitor \
-  --vm-name myVM \
-  --name OmsAgentForLinux \
-  --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.3 \
-  --protected-settings '{"workspaceKey": "<workspace-key>"}' \
-  --settings '{"workspaceId": "<workspace-id>"}'
-```
-
-しばらくすると、Log Analytics ワークスペースに新しい VM が表示されます。
-
-![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Log Analytics ワークスペース](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 58210db585befd7ce915d4579d4d0303eb15bff3
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27960563"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58892828"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>要求コンポーネントと応答コンポーネントの概要
 ロジック アプリで要求コンポーネントと応答コンポーネントを使用すると、リアルタイムでイベントに応答できます。
@@ -34,11 +34,12 @@ ms.locfileid: "27960563"
 ロジック アプリでの要求アクションと応答アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-http-request-trigger"></a>HTTP 要求トリガーの使用
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 
+トリガーの詳細については[こちら](../connectors/apis-list.md)を参照してください。
 
 ロジック アプリ デザイナーで HTTP 要求をセットアップする方法の例を次に示します。
 
-1. ロジック アプリに **[要求 - HTTP 要求の受信時]** トリガーを追加します。 必要に応じて、要求本文に JSON スキーマを指定できます ( [JSONSchema.net](http://jsonschema.net)などのツールを使用します)。 これにより、デザイナーで HTTP 要求のプロパティのトークンを生成できます。
+1. ロジック アプリに **[要求 - HTTP 要求の受信時]** トリガーを追加します。 必要に応じて、要求本文に JSON スキーマを指定できます ( [JSONSchema.net](https://jsonschema.net)などのツールを使用します)。 これにより、デザイナーで HTTP 要求のプロパティのトークンを生成できます。
 2. ロジック アプリを保存できるように別のアクションを追加します。
 3. ロジック アプリの保存後、要求カードから HTTP 要求の URL を取得できます。
 4. URL への HTTP POST ( [Postman](https://www.getpostman.com/)などのツールを使用できます) によってロジック アプリがトリガーされます。
@@ -68,14 +69,14 @@ HTTP 応答アクションの追加方法を次に示します。
 ## <a name="request-trigger"></a>Request トリガー
 ここでは、このコネクタでサポートされているトリガーの詳細について説明します。 1 つの要求トリガーがあります。
 
-| トリガー | [説明] |
+| トリガー | 説明 |
 | --- | --- |
-| 要求 |HTTP 要求を受信したときに実行されます。 |
+| Request |HTTP 要求を受信したときに実行されます。 |
 
 ## <a name="response-action"></a>応答アクション
 ここでは、このコネクタでサポートされているアクションの詳細について説明します。 要求トリガーに伴う場合にのみ使用可能な応答アクションが 1 つあります。
 
-| アクションを表示します。 | [説明] |
+| Action | 説明 |
 | --- | --- |
 | Response |関連する HTTP 要求に応答を返します。 |
 
@@ -85,7 +86,7 @@ HTTP 応答アクションの追加方法を次に示します。
 #### <a name="request-trigger"></a>要求トリガー
 受信 HTTP 要求からのトリガーの入力フィールドを次に示します。
 
-| 表示名 | プロパティ名 | [説明] |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | JSON スキーマ |schema |HTTP 要求本文の JSON スキーマ |
 
@@ -95,15 +96,15 @@ HTTP 応答アクションの追加方法を次に示します。
 
 要求の出力の詳細を次に示します。
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
-| headers |オブジェクト |要求ヘッダー |
-| 本文 |オブジェクト |要求オブジェクト |
+| headers |object |要求ヘッダー |
+| 本文 |object |要求オブジェクト |
 
 #### <a name="response-action"></a>応答アクション
 HTTP 応答アクションの入力フィールドを次に示します。 \* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | [説明] |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | 状態コード* |StatusCode |HTTP 状態コード |
 | headers |headers |含める任意の応答ヘッダーの JSON オブジェクト |

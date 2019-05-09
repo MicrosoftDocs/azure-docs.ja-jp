@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure DevOps Projects を使用して PHP 用の CI/CD パイプラインを作成する'
+title: クイック スタート:Azure DevOps Projects を使用して PHP 用の CI/CD パイプラインを作成する
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 24a957260e3e3f161ce9e2e61b746f9b052e784d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 82310857276c53c85af033ae32a3aeef4f33c8da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109377"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Azure DevOps Projects を使用して PHP 用の CI/CD パイプラインを作成する
 
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
     ![ダッシュボード ビュー](_img/azure-devops-project-php/dashboardnopreview.png) 
     
- DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されました。  Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、PHP アプリに対してチームで共同作業を行う準備ができました。
+   DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されました。  Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、PHP アプリに対してチームで共同作業を行う準備ができました。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>コードの変更をコミットし、CI/CD を実行する
 

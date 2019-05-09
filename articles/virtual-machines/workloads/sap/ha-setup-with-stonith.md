@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c6d4ec767b4c566e6a390f37b97266916819a40c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015162"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525468"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
@@ -258,7 +258,7 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) hawk にログインして、クラスターの状態 *https://<node IP>:7630* を確認することもできます。 既定のユーザーは hacluster で、パスワードは linux です。 必要な場合は、*passwd* コマンドを使ってパスワードを変更できます。
+![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) hawk にログインして、クラスターの状態 *https://\<ノード IP>:7630* を確認することもできます。 既定のユーザーは hacluster で、パスワードは linux です。 必要な場合は、*passwd* コマンドを使ってパスワードを変更できます。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.クラスターのプロパティとリソースを構成する 
 このセクションでは、クラスター リソースを構成する手順について説明します。
@@ -323,7 +323,7 @@ crm configure load update crm-vip.txt
 *crm_mon* コマンドを実行すると、2 つのリソースが表示されます。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-また、*https://<node IP address>:7630/cib/live/state* で状態を確認できます
+また、*https://\<ノード IP アドレス>:7630/cib/live/state* で状態を確認することもできます
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -480,7 +480,7 @@ Sep 28 21:48:27 sapprdhdb95 corosync[68812]: [MAIN  ] Corosync Cluster Engine ex
 Sep 28 21:48:27 sapprdhdb95 systemd[1]: Dependency failed for Pacemaker High Availability Cluster Manager
 -- Subject: Unit pacemaker.service has failed
 -- Defined-By: systemd
--- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
 --
 -- Unit pacemaker.service has failed.
 --

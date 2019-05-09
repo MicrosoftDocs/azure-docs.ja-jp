@@ -4,24 +4,25 @@ description: ハイブリッド ID ソリューションを計画する場合、
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 40dc4baa-fe82-4ab6-a3e4-f36fa9dcd0df
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: c317c2bab26a44fc78e42fe440744bd26add1f2e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e734b932976896b2fb4d86e2627b7827d40a2545
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310571"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189891"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>強力な ID ソリューションによりデータ セキュリティを強化するための計画
 データを保護する最初の手順は、そのデータにアクセスできるユーザーを特定することです。 また、認証および承認機能を提供するようにシステムと統合可能なIDソリューションが必要です。 認証と承認は混同され、その役割が誤解されることがよくあります。 実際には、次の図のように、大変異っています：

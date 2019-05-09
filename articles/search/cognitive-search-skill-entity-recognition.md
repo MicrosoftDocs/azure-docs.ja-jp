@@ -8,24 +8,24 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 02/27/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9745934891cd7ba99fa821377318e38134b7d2a5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2a245a6e3d76a7df41b5ef28f9bac8a2c2122402
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311866"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985429"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
 
-**エンティティ認識**スキルによってテキストからさまざまな種類のエンティティが抽出されます。 
+**エンティティ認識**スキルによってテキストからさまざまな種類のエンティティが抽出されます。 このスキルでは、Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) によって提供される機械学習モデルが使用されます。
 
 > [!NOTE]
-> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金が開始されるようになります。 また、この日には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始されます。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
+> 2018 年 12 月 21 日より、Azure Search のスキルセットに [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)できるようになっています。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従来課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格はプレビュー価格で課金されますが、[Azure Search 価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
+> [組み込みコグニティブ スキル](cognitive-search-predefined-skills.md)の実行は、[Cognitive Services の従量制価格](https://azure.microsoft.com/pricing/details/cognitive-services)で課金されます。これは、タスクを直接実行した場合と同じ料金です。 画像の抽出は Azure Search の課金対象であり、現在はプレビュー価格で提供されています。 詳細については、「[Azure Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)」のページ、または「[請求体系について](search-sku-tier.md#how-billing-works)」を参照してください。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -43,7 +43,8 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | categories    | 抽出する必要があるカテゴリの配列。  可能なカテゴリの型は、`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` です。 カテゴリが指定されていない場合、すべての型が返されます。|
 |defaultLanguageCode |  入力テキストの言語コード。 次の言語がサポートされます。`de, en, es, fr, it`|
 |minimumPrecision | 未使用。 将来利用するために予約されています。 |
-|includeTypelessEntites | true に設定されている場合、テキストに既知のエンティティが含まれるが、サポートされているカテゴリのいずれかに分類できないとき、`"entities"` 複合出力フィールドの一部として返されます。 既定値は `false` です。 |
+|includeTypelessEntities | true に設定されている場合、テキストに既知のエンティティが含まれるが、サポートされているカテゴリのいずれかに分類できないとき、`"entities"` 複合出力フィールドの一部として返されます。 
+これらは、よく知られているものの、現在サポートされている "カテゴリ" の一部として分類されていないエンティティです。 たとえば、"Windows 10" はよく知られているエンティティ (製品) ですが、"製品" は現在サポートされているカテゴリではありません。 既定値は `false` です。 |
 
 
 ## <a name="skill-inputs"></a>スキルの入力

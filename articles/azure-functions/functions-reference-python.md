@@ -1,24 +1,24 @@
 ---
 title: Azure Functions の Python 開発者向けリファレンス
-description: Python を使用して関数を開発する方法について説明します。
+description: Python を使用して関数を開発する方法について説明します
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーレス アーキテクチャ, Python
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 619db07204b88609314d0d3d06709eaa93cb7a43
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 28f2b395c7f9be1b194b500ef20456be8ff405b0
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188036"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438699"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -109,7 +109,7 @@ Python 関数プロジェクトのフォルダー構造は、次のようにな�
 from ..SharedCode import myFirstHelperFunction
 ```
 
-Functions ランタイムで使用されるバインディング拡張機能は、`extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダー内にあります。 ローカルで開発する場合は、Azure Functions Core Tools を使用して、[バインディング拡張機能を登録する](functions-triggers-bindings.md#local-development-azure-functions-core-tools)必要があります。 
+Functions ランタイムで使用されるバインディング拡張機能は、`extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダー内にあります。 ローカルで開発する場合は、Azure Functions Core Tools を使用して、[バインディング拡張機能を登録する](./functions-bindings-register.md#local-development-azure-functions-core-tools)必要があります。 
 
 Functions プロジェクトを Azure 内のご利用の関数アプリにデプロイする場合は、フォルダー自体ではなく、パッケージに FunctionApp フォルダーの内容全体を含める必要があります。
 
@@ -317,7 +317,7 @@ The terminal process terminated with exit code: 1
 必要なバイナリを自動的にビルドして構成するには、[Azure Functions Core Tools](functions-run-local.md#v2) (func) を使用することにより、ご利用のローカル マシン上に [Docker をインストール](https://docs.docker.com/install/)し、次のコマンドを実行して発行します。 `<app name>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
 
 ```bash
-func azure functionapp <app name> --build-native-deps
+func azure functionapp publish <app name> --build-native-deps
 ```
 
 Core Tools では、ご利用のローカル マシン上で [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) イメージをコンテナーとして実行するためにバックグラウンドで Docker が使用されます。 この環境を使用する場合、必要なモジュールがソース配布からビルドおよびインストールされてから、Azure への最終的なデプロイに備えてそれらがパッケージ化されます。

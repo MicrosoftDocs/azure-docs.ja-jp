@@ -4,22 +4,20 @@ description: 重要な Azure リソースの更新または削除をユーザー
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4d00da4adf3069069a66c02e391f0a1a3298ac29
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299675"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360447"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止 
 
@@ -28,28 +26,63 @@ ms.locfileid: "51299675"
 * **CanNotDelete** は、正規ユーザーはリソースの読み取りと変更を実行できますが、削除は実行できないことを示します。 
 * **ReadOnly** は、正規ユーザーはリソースの読み取りを実行できますが、リソースの更新は実行できないことを示します。 このロックの適用は、すべての正規ユーザーのアクセス許可を、**閲覧者**ロールによって与えられるアクセス許可に制限することに似ています。 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="how-locks-are-applied"></a>ロックが適用されるしくみ
 
 親スコープでロックを適用すると、そのスコープ内のすべてのリソースは同じロックを継承します。 後で追加するリソースも、親からロックを継承します。 継承されるロックの中で最も制限の厳しいロックが優先されます。
 
 ロールベースのアクセス制御とは異なり、管理ロックを使用すると、すべてのユーザーとロールに対して制限を適用することができます。 ユーザーとロールのアクセス許可を設定する方法については、「[Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-Resource Manager のロックは、管理ウィンドウで実行され、`https://management.azure.com` に送信される操作で構成される操作のみに適用されます。 ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、SQL Database に対する ReadOnly ロックは、ユーザーによるデータベースの削除または変更を禁止しますが、データベースに対するデータの作成、更新、または削除は禁止しません。 データのトランザクションは `https://management.azure.com` に送信されないため、これらの操作は許可されます。
+Resource Manager のロックは、管理ウィンドウで実行され、`https://management.azure.com` に送信される操作で構成される操作のみに適用されます。 ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、SQL Database に ReadOnly ロックを設定すると、データベースの削除または変更を実行できなくなりますが、 データベース内のデータの作成、更新、または削除は実行できます。 データのトランザクションは `https://management.azure.com` に送信されないため、これらの操作は許可されます。
 
 **ReadOnly** を適用すると、読み取り操作のように見えるいくつかの操作には実際に追加のアクションが必要となるため、予期しない結果を招く可能性があります。 たとえば、 **ReadOnly** ロックをストレージ アカウントに設定すると、すべてのユーザーがキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。 別の例として、 **ReadOnly** ロックを App Service リソースに配置すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
 
-## <a name="who-can-create-or-delete-locks-in-your-organization"></a>組織でロックを作成または削除できるユーザー
+## <a name="who-can-create-or-delete-locks"></a>誰がロックを作成または削除できるか
 管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、**所有者**と**ユーザー アクセス管理者**にのみこれらのアクションが許可されています。
+
+## <a name="managed-applications-and-locks"></a>Managed Applications とロック
+
+Azure Databricks などの一部の Azure サービスでは、[マネージド アプリケーション](../managed-applications/overview.md)を使用してサービスが実装されています。 その場合、サービスで 2 つのリソース グループが作成されます。 1 つのリソース グループにはサービスの概要が含まれ、ロックされません。 もう 1 つのリソース グループにはサービスのインフラストラクチャが含まれ、ロックされます。
+
+インフラストラクチャのリソース グループを削除しようとすると、リソース グループがロックされていることを示すエラーが表示されます。 インフラストラクチャのリソース グループのロックを削除しようとすると、システム アプリケーションによって所有されているためロックを削除できないことを示すエラーが表示されます。
+
+代わりに、サービスを削除すると、インフラストラクチャのリソース グループも削除されます。
+
+マネージド アプリケーションでは、デプロイしたサービスを選択します。
+
+![サービスを選択する](./media/resource-group-lock-resources/select-service.png)
+
+サービスに**マネージド リソース グループ**へのリンクが含まれることに注意してください。 そのリソース グループがインフラストラクチャを保持しており、ロックされています。 直接削除することはできません。
+
+![マネージド グループを表示する](./media/resource-group-lock-resources/show-managed-group.png)
+
+ロックされているインフラストラクチャ リソース グループを含め、サービスのすべてのものを削除するには、サービスの **[削除]** を選択します。
+
+![サービスの削除](./media/resource-group-lock-resources/delete-service.png)
 
 ## <a name="portal"></a>ポータル
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>テンプレート
+## <a name="template"></a>Template
+
+ロックをデプロイするために Resource Manager テンプレートを使用する場合は、ロックの範囲に応じて名前と型に異なる値を使用します。
+
+ロックを**リソース**に適用するときには、次の形式を使用します。
+
+* 名前 -  `{resourceName}/Microsoft.Authorization/{lockName}`
+* 種類 -  `{resourceProviderNamespace}/{resourceType}/providers/locks`
+
+**リソース グループ**または**サブスクリプション**にロックを適用するときには、次の形式を使用します。
+
+* 名前 -  `{lockName}`
+* 種類 -  `Microsoft.Authorization/locks`
+
 次の例では、App Service プラン、Web サイト、および Web サイトに対するロックを作成するテンプレートを示します。 ロックのリソースの種類は、ロック対象リソースのリソースの種類と **/providers/locks** です。 ロックの名前は、リソース名に **/Microsoft.Authorization/** とロックの名前を連結して作成されます。
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "hostingPlanName": {
@@ -102,58 +135,46 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 }
 ```
 
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurepowershell-interactive
-New-AzureRmResourceGroup -Name sitegroup -Location southcentralus
-New-AzureRmResourceGroupDeployment -ResourceGroupName sitegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json -hostingPlanName plan0103
-```
-
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli
-az group create --name sitegroup --location southcentralus
-az group deployment create --resource-group sitegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json --parameters hostingPlanName=plan0103
-```
+リソース グループに対するロックの設定の例は、「[Create a resource group and lock it (リソース グループの作成とロック)](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)」を参照してください。
 
 ## <a name="powershell"></a>PowerShell
-デプロイされているリソースを Azure PowerShell でロックするには、[New-AzureRmResourceLock](/powershell/module/azurerm.resources/new-azurermresourcelock) コマンドを使います。
+デプロイされているリソースを Azure PowerShell でロックするには、[New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) コマンドを使います。
 
 リソースをロックするには、対象となるリソースの名前とそのリソース タイプ、リソース グループ名を指定します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
+New-AzResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 ```
 
 リソース グループをロックするには、そのリソース グループの名前を指定します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
+New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
-ロックについての情報を取得するには、[Get-AzureRmResourceLock](/powershell/module/azurerm.resources/get-azurermresourcelock) を使います。 サブスクリプション内のすべてのロックを取得するには、次のように入力します。
+ロックについての情報を取得するには、[Get-AzureRmResourceLock](/powershell/module/az.resources/get-azresourcelock) を使います。 サブスクリプション内のすべてのロックを取得するには、次のように入力します。
 
 ```azurepowershell-interactive
-Get-AzureRmResourceLock
+Get-AzResourceLock
 ```
 
 特定のリソースのロックをすべて取得するには、次のように入力します。
 
 ```azurepowershell-interactive
-Get-AzureRmResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
+Get-AzResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 ```
 
 特定のリソース グループのロックをすべて取得するには、次のように入力します。
 
 ```azurepowershell-interactive
-Get-AzureRmResourceLock -ResourceGroupName exampleresourcegroup
+Get-AzResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
 ロックを削除するには、次のように入力します。
 
 ```azurepowershell-interactive
-$lockId = (Get-AzureRmResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
-Remove-AzureRmResourceLock -LockId $lockId
+$lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
+Remove-AzResourceLock -LockId $lockId
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -204,7 +225,7 @@ az lock delete --ids $lockid
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 lock-name には、ロックの名前を指定できます。 api-version には、 **2015-01-01**を使用します。
+スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 lock-name には、ロックの名前を指定できます。 api-version には、**2016-09-01** を使用します。
 
 要求に、ロックのプロパティを指定する JSON オブジェクトを含めます。
 
@@ -217,7 +238,6 @@ az lock delete --ids $lockid
 
 ## <a name="next-steps"></a>次の手順
 * リソースを理論的に整理する方法については、「 [タグを使用したリソースの整理](resource-group-using-tags.md)
-* リソースが存在するリソース グループを変更するには、「 [新しいリソース グループへのリソースの移動](resource-group-move-resources.md)
-* カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。 詳細については、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」を参照してください。
+* カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。 詳細については、「[Azure Policy とは](../governance/policy/overview.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。
 

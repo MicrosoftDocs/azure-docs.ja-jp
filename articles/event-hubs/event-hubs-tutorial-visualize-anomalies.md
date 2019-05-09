@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.openlocfilehash: add88a24da2e217d705065274f26382c1ffe8e17
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 02/26/2019
+ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091681"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123047"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -33,6 +33,8 @@ Azure Event Hubs では、Azure Stream Analytics を使用して受信データ�
 このチュートリアルを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成][]してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -112,7 +114,7 @@ echo "Connection string = " $connectionString
 
 ```azurepowershell-interactive
 # Log in to Azure account.
-Login-AzureRMAccount
+Login-AzAccount
 
 # Set the values for the location and resource group.
 $location = "West US"
@@ -120,7 +122,7 @@ $resourceGroup = "ContosoResourcesEH"
 
 # Create the resource group to be used  
 #   for all resources for this tutorial.
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 
 # The Event Hubs namespace name must be globally unique, so add a random number to the end.
 $eventHubNamespace = "contosoEHNamespace$(Get-Random)"
@@ -131,12 +133,12 @@ $eventHubName = "contosoEHhub$(Get-Random)"
 Write-Host "Event hub Name is " $eventHubName
 
 # Create the Event Hubs namespace.
-New-AzureRmEventHubNamespace -ResourceGroupName $resourceGroup `
+New-AzEventHubNamespace -ResourceGroupName $resourceGroup `
      -NamespaceName $eventHubNamespace `
      -Location $location
 
 # Create the event hub.
-$yourEventHub = New-AzureRmEventHub -ResourceGroupName $resourceGroup `
+$yourEventHub = New-AzEventHub -ResourceGroupName $resourceGroup `
     -NamespaceName $eventHubNamespace `
     -Name $eventHubName `
     -MessageRetentionInDays 3 `
@@ -144,7 +146,7 @@ $yourEventHub = New-AzureRmEventHub -ResourceGroupName $resourceGroup `
 
 # Get the event hub key, and retrieve the connection string from that object.
 # You need this to run the app that sends test messages to the event hub.
-$eventHubKey = Get-AzureRmEventHubKey -ResourceGroupName $resourceGroup `
+$eventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup `
     -Namespace $eventHubNamespace `
     -AuthorizationRuleName RootManageSharedAccessKey
 
@@ -322,12 +324,14 @@ Stream Analytics ジョブで、**[開始]**、**[今すぐ]**、**[開始]** �
 
     ![ダッシュボード タイルのタイトルとサブタイトルを指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
+    > [!IMPORTANT]
+    > サンプル アプリケーションを実行してイベント ハブにデータをストリーム配信すると、このタイルの数値が刻々と (毎秒) 変化します。 これは、Stream Analytics クエリによって実際に **1 秒ごとに**値が更新されているためです。 直近数分の合計を表示したければ、クエリのタンブリング ウィンドウを 3 分に更新してください。 
 11. 別の視覚化を追加します。 最初のいくつかの手順をもう一度繰り返します。
 
-   * **[タイルの追加]** をクリックします。
-   * **[カスタム ストリーミング データ]** を選択します。 
-   * **[次へ]** をクリックします。
-   * データセットを選択し、**[次へ]** をクリックします。 
+    * **[タイルの追加]** をクリックします。
+    * **[カスタム ストリーミング データ]** を選択します。 
+    * **[次へ]** をクリックします。
+    * データセットを選択し、**[次へ]** をクリックします。 
 
 12. **[視覚化タイプ]** で、**[折れ線グラフ]** を選択します。
 
@@ -361,10 +365,10 @@ az group delete --name $resourceGroup
 
 ### <a name="clean-up-resources-using-powershell"></a>PowerShell を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使います。
+リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使います。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

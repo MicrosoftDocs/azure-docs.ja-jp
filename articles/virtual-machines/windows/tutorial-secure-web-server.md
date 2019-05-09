@@ -3,7 +3,7 @@ title: チュートリアル - Azure で SSL 証明書を使用して Windows We
 description: このチュートリアルでは、Azure PowerShell を使用して、Azure Key Vault に格納されている SSL 証明書を使って IIS Web サーバーを実行する Windows 仮想マシンをセキュリティで保護する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c679b7378b941a2ace6e159cc8fc5ae95065ebab
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ce8b52717541ea9cf12112ee83d767a23b61f636
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464760"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58848223"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>チュートリアル: Key Vault に格納されている SSL 証明書を使用して Azure 内の Windows 仮想マシン上の Web サーバーをセキュリティで保護する
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている SSL 証明書を使用して Azure 内の Windows 仮想マシン上の Web サーバーをセキュリティで保護する
 
 Web サーバーをセキュリティ保護するには、Secure Sockets Layer (SSL) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの SSL 証明書は Azure Key Vault に格納できるため、Azure 上の Windows 仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -35,7 +35,11 @@ Web サーバーをセキュリティ保護するには、Secure Sockets Layer (
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
+
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
+
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
 
 ## <a name="overview"></a>概要
@@ -45,26 +49,26 @@ Azure Key Vault では、証明書やパスワードなどの暗号化キーと�
 
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
-Key Vault と証明書を作成する前に、[AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroupSecureWeb* という名前のリソース グループを*米国東部*に作成します。
+キー コンテナーと証明書を作成する前に、[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroupSecureWeb* という名前のリソース グループを*米国東部*に作成します。
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroupSecureWeb"
 $location = "East US"
-New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
+New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-次に、[New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) を使用して、Key Vault を作成します。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の `mykeyvault` は一意の Key Vault 名で置き換えてください。
+次に、[New-AzureRmKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) を使用して、Key Vault を作成します。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の `mykeyvault` は一意の Key Vault 名で置き換えてください。
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
-New-AzureRmKeyVault -VaultName $keyvaultName `
+New-AzKeyVault -VaultName $keyvaultName `
     -ResourceGroup $resourceGroup `
     -Location $location `
     -EnabledForDeployment
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>証明書を生成して Key Vault に格納する
-実際の運用では、[Import-AzureKeyVaultCertificate](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate) を使用して、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[Add-AzureKeyVaultCertificate](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificate) で、[New-AzureKeyVaultCertificatePolicy](/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificatepolicy) からの既定の証明書ポリシーを使用する自己署名証明書を生成する方法を次の例に示します。 
+実際の運用では、[Import-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate) を使用して、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[Add-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) で、[New-AzureKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy) からの既定の証明書ポリシーを使用する自己署名証明書を生成する方法を次の例に示します。 
 
 ```azurepowershell-interactive
 $policy = New-AzureKeyVaultCertificatePolicy `
@@ -87,11 +91,11 @@ Add-AzureKeyVaultCertificate `
 $cred = Get-Credential
 ```
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成できるようになりました。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、関連ネットワーク リソースが作成されます。 セキュリティで保護された Web トラフィックを許可するには、コマンドレットでポート *443* も開きます。
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになりました。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、関連ネットワーク リソースが作成されます。 セキュリティで保護された Web トラフィックを許可するには、コマンドレットでポート *443* も開きます。
 
 ```azurepowershell-interactive
 # Create a VM
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $resourceGroup `
     -Name "myVM" `
     -Location $location `
@@ -103,7 +107,7 @@ New-AzureRmVm `
     -OpenPorts 443
 
 # Use the Custom Script Extension to install IIS
-Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
+Set-AzVMExtension -ResourceGroupName $resourceGroup `
     -ExtensionName "IIS" `
     -VMName "myVM" `
     -Location $location `
@@ -113,25 +117,25 @@ Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server -IncludeManagementTools"}'
 ```
 
-VM が作成されるまで､数分間かかります｡ 最後に、Azure カスタム スクリプト拡張機能を使用して [Set-AzureRmVmExtension](/powershell/module/azurerm.compute/set-azurermvmextension)で IIS web サーバーをインストールします。
+VM が作成されるまで､数分間かかります｡ 最後に、Azure カスタム スクリプト拡張機能を使用して [Set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) で IIS web サーバーをインストールします。
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Key Vault からの証明書を VM に追加します。
-Key Vault からの証明書を VM に追加するには、[Get AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) で証明書の ID を取得します。 [Add-AzureRmVMSecret](/powershell/module/azurerm.compute/add-azurermvmsecret) で証明書を VM に追加します。
+Key Vault からの証明書を VM に追加するには、[Get AzureKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret) で証明書の ID を取得します。 [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret) で証明書を VM に追加します。
 
 ```azurepowershell-interactive
 $certURL=(Get-AzureKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
 
-$vm=Get-AzureRmVM -ResourceGroupName $resourceGroup -Name "myVM"
-$vaultId=(Get-AzureRmKeyVault -ResourceGroupName $resourceGroup -VaultName $keyVaultName).ResourceId
-$vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $vaultId -CertificateStore "My" -CertificateUrl $certURL
+$vm=Get-AzVM -ResourceGroupName $resourceGroup -Name "myVM"
+$vaultId=(Get-AzKeyVault -ResourceGroupName $resourceGroup -VaultName $keyVaultName).ResourceId
+$vm = Add-AzVMSecret -VM $vm -SourceVaultId $vaultId -CertificateStore "My" -CertificateUrl $certURL
 
-Update-AzureRmVM -ResourceGroupName $resourceGroup -VM $vm
+Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
 ```
 
 
 ## <a name="configure-iis-to-use-the-certificate"></a>証明書を使用するように IIS を構成します。
-再度、[Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) でカスタム スクリプト拡張機能を使用して IIS 構成を更新します。 この更新プログラムは、Key Vault から挿入した証明書を IIS に 適用し、Web バインド構成します。
+再度、[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) でカスタム スクリプト拡張機能を使用して IIS 構成を更新します。 この更新プログラムは、Key Vault から挿入した証明書を IIS に 適用し、Web バインド構成します。
 
 ```azurepowershell-interactive
 $PublicSettings = '{
@@ -139,7 +143,7 @@ $PublicSettings = '{
     "commandToExecute":"powershell -ExecutionPolicy Unrestricted -File secure-iis.ps1"
 }'
 
-Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
+Set-AzVMExtension -ResourceGroupName $resourceGroup `
     -ExtensionName "IIS" `
     -VMName "myVM" `
     -Location $location `
@@ -151,10 +155,10 @@ Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
 
 
 ### <a name="test-the-secure-web-app"></a>セキュリティで保護された Web アプリをテストする
-VM のパブリック IP アドレスを取得するには、[Get-AzureRmPublicIPAddress](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用します。 次の例では、先ほど作成した `myPublicIP` の IP アドレスを取得しています。
+VM のパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した `myPublicIP` の IP アドレスを取得しています。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"
+Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"
 ```
 
 Web ブラウザーを開き、アドレス バーに「`https://<myPublicIP>`」と入力できるようになりました。 自己署名証明書を使用した場合、セキュリティ警告を受け入れるには、そのまま **[詳細]** を選択し **Web ページに進みます**。

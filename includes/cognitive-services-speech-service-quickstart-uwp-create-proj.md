@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: 79fbe2db1ec9758d1e15ba7d89363429415918c7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8612c1cc2867d27a86b4b90b1ba63c097ad43cf7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729477"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804491"
 ---
 1. Visual Studio 2017 を起動します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "53729477"
 1. パッケージ マネージャー コンソールに次の出力行が表示されます。
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.2.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 1.4.0' to helloworld
    ```
 
 1. アプリケーションでは音声入力にマイクを使用するため、**[マイク]** 機能をプロジェクトに追加します。 ソリューション エクスプローラーで **Package.appxmanifest** をダブルクリックして、アプリケーション マニフェストを編集します。 次に、**[機能]** タブに切り替え、**[マイク]** 機能の ボックスをオンにして、変更を保存します。

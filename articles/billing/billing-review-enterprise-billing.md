@@ -4,7 +4,7 @@ description: Azure REST API を使用して、エンタープライズ加入契�
 services: billing
 documentationcenter: na
 author: lleonard-msft
-manager: MBaldwin
+manager: ''
 editor: ''
 ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: billing
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: f4b5fccefb08597a13fcc91eda11bbf3eb122914
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394848"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898705"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API を使用してエンタープライズ加入契約の請求書を確認する
 
 Azure レポート API は Azure コストの確認や管理に役立ちます。
 
-この記事では、Azure REST API を使用して、請求先アカウント、部門、またはエンタープライズ契約 (EA) 登録アカウントに関連付けられた課金情報を取得する方法について説明します。 
+この記事では、Azure REST API シリーズを使用して、請求先アカウント、部門、またはマイクロソフト エンタープライズ契約 (EA) 登録アカウントに関連付けられた課金情報を取得する方法について説明します。 
 
 ## <a name="individual-account-billing"></a>個別のアカウント課金
 
@@ -78,7 +78,7 @@ Authorization: Bearer
 }
 ```  
 
-この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[請求先アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/listbybillingaccount)に関する記事をご覧ください。
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[請求先アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist)に関する記事をご覧ください。
 
 ## <a name="department-billing"></a>部門の課金 
 
@@ -134,7 +134,7 @@ Authorization: Bearer
 }
 ```  
 
-この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[部門の使用状況詳細の取得](/rest/api/consumption/usagedetails/listbydepartment)に関する記事をご覧ください。
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[部門の使用状況詳細の取得](/rest/api/consumption/usagedetails/list#departmentusagedetailslist)に関する記事をご覧ください。
 
 ## <a name="enrollment-account-billing"></a>登録アカウントの課金
 
@@ -187,7 +187,7 @@ Authorization: Bearer
 }
 ``` 
 
-この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[登録アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/listbyenrollmentaccount)に関する記事をご覧ください。
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[登録アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順 
 - 「[Enterprise Reporting の概要](https://docs.microsoft.com/azure/billing/billing-enterprise-api)」を参照してください。

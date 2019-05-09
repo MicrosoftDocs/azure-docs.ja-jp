@@ -1,5 +1,5 @@
 ---
-title: Azure Relay とは  | Microsoft Docs
+title: Azure Relay とは | Microsoft Docs
 description: この記事では、Azure Relay サービスの概要について説明します。このサービスを使用すると、ファイアウォール接続を開いたり、ネットワーク インフラストラクチャ内に及ぶような変更を加えたりせずに、企業ネットワーク内で実行されるオンプレミスのサービスを利用するクラウド アプリケーションを開発できます。
 services: service-bus-relay
 author: spelluru
@@ -10,15 +10,15 @@ ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 47fbce7ea26bcb7224fe2624d593d85cd178d610
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621029"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776310"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
 Azure Relay サービスでは、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開することができます。 ファイアウォールでポートを開放したり、企業ネットワーク インフラストラクチャ内に及ぶような変更を加えたりすることなく、それが可能です。 
@@ -44,7 +44,7 @@ Azure Relay は、VPN のようなネットワーク レベルの統合テクノ
 Azure Relay には、次の 2 つの機能があります。
 
 - [ハイブリッド接続](#hybrid-connections) - オープン スタンダードの Web ソケットを使用することで、マルチプラットフォームの用途に対応します。
-- [WCF リレー](#wcf-relays) - Windows Communication Foundation (WCF) を使用してリモート プロシージャ コールに対応します。 WCF リレーは従来からあるリレー サービスで、多くのお客様が自社の WCF プログラミング モデルで既に利用しています。
+- WCF リレー - Windows Communication Foundation (WCF) を使用してリモート プロシージャ コールに対応します。 WCF リレーは従来からあるリレー サービスで、多くのお客様が自社の WCF プログラミング モデルで既に利用しています。
 
 ## <a name="hybrid-connections"></a>ハイブリッド接続と
 
@@ -63,14 +63,14 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 
 |  | WCF リレー | ハイブリッド接続と |
 | --- |:---:|:---:|
-| **WCF** |○ | |
+| **WCF** |x | |
 | **.NET Core** | |○ |
-| **.NET Framework** |○ |○ |
-| **Java script/Node.JS** | |○ |
-| **標準ベースのオープン プロトコル** | |○ |
-| **RPC プログラミング モデル** | |○ |
+| **.NET Framework** |x |x |
+| **Java script/Node.JS** | |x |
+| **標準ベースのオープン プロトコル** | |x |
+| **RPC プログラミング モデル** | |x |
 
-## <a name="architecture-processing-of-incoming-relay-requests"></a>アーキテクチャ: 受信リレー要求の処理
+## <a name="architecture-processing-of-incoming-relay-requests"></a>アーキテクチャ:受信リレー要求の処理
 次の図は、受信するリレー要求が、Azure Relay サービスでどのように処理されるかを示しています。
 
 ![受信 WCF Relay 要求の処理](./media/relay-what-is-it/ic690645.png)
@@ -82,7 +82,7 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 5. ゲートウェイは、ゲートウェイ ストアで挙げられた正しいゲートウェイに、接続要求を転送します。 
 6. ゲートウェイはリッスンしているクライアントに要求を送信し、そのクライアントが、送信側クライアントに最も近いゲートウェイ ノードへの一時的なチャネルを作成します。 
 7. リッスンしているクライアントは、送信側クライアントに最も近いゲートウェイに対して一時的なチャネルを作成します。 ゲートウェイを介したクライアント間の接続が確立されたら、クライアントどうしがメッセージを交換できます。 
-8. ゲートウェイは、リッスンしているクライアントからのすべてのメッセージを送信側クライアントに転送します。 
+8. ゲートウェイは、リッスンしているクライアントからのメッセージをすべて送信側クライアントに転送します。 
 9. ゲートウェイは、送信側クライアントからのすべてのメッセージをリッスンしているクライアントに転送します。  
 
 ## <a name="next-steps"></a>次の手順

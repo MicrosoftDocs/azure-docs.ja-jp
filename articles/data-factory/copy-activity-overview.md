@@ -9,22 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 1958d694ab87d635624884b43486761269e37c37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082648"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59267159"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
 ## <a name="overview"></a>概要
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-data-movement-activities.md)
 > * [現在のバージョン](copy-activity-overview.md)
 
@@ -55,14 +54,15 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 コピー アクティビティを使用すると、ファイル ベースの 2 つのデータ ストア間で**ファイルをそのままコピー**できます。その場合、データはシリアル化/逆シリアル化なしで効率的にコピーされます。
 
-また、コピー アクティビティでは、指定された形式(**テキスト、JSON、Avro、ORC、Parquet**) でのファイルの読み取りと書き込み、および圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 詳細については、「[サポートされているファイル形式と圧縮形式](supported-file-formats-and-compression-codecs.md)」を参照してください。
+また、コピー アクティビティでは、指定された形式**Text、JSON、Avro、ORC、Parquet**、およびコーデック **GZip、Deflate、BZip2、ZipDeflate** によるファイルの圧縮と解凍。 詳細については、「[サポートされているファイル形式と圧縮形式](supported-file-formats-and-compression-codecs.md)」を参照してください。
 
 たとえば、次のようなコピー アクティビティを実行できます。
 
-* オンプレミスの SQL Server のデータをコピーし、Azure Data Lake Store に ORC 形式で書き込む。
+* オンプレミスの SQL Server のデータをコピーし、Azure Data Lake Storage Gen2 に Parquet 形式で書き込む。
 * オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
-* オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Store 書き込む。
+* オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Storage Gen2 に書き込む。
 * Azure BLOB から GZip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
+* そのほか、シリアル化/逆シリアル化または圧縮/解凍が必要となるさまざまなケース。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
@@ -74,7 +74,7 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 1. **ソース データ ストアとシンク データ ストアのリンクされたサービスを作成します。** 構成方法およびサポートされるプロパティについては、コネクタの記事の「リンクされたサービスのプロパティ」セクションを参照してください。 サポートされるコネクタの一覧は、「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」セクションで見つけることができます。
 2. **ソースとシンクのデータセットを作成します。** 構成方法およびサポートされるプロパティについては、ソースおよびシンク コネクタの記事の「データセットのプロパティ」セクションを参照してください。
-3. **コピー アクティビティを含むパイプラインを作成します。** 次のセクションでは、例を示します。
+3. **コピー アクティビティを含むパイプラインを作成します。** 次のセクションでは、例を示します。  
 
 ### <a name="syntax"></a>構文
 
@@ -130,12 +130,12 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティの type プロパティは**Copy** に設定する必要があります | [はい] |
-| inputs | ソース データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | [はい] |
-| outputs | シンク データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | [はい] |
-| typeProperties | コピー アクティビティを構成するためのプロパティのグループ。 | [はい] |
-| source | コピー ソースの型と、データを取得する方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | [はい] |
-| sink | コピー シンクの型と、データを書き込む方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | [はい] |
+| type | コピー アクティビティの type プロパティは**Copy** に設定する必要があります | はい |
+| inputs | ソース データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | はい |
+| outputs | シンク データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | はい |
+| typeProperties | コピー アクティビティを構成するためのプロパティのグループ。 | はい |
+| source | コピー ソースの型と、データを取得する方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | はい |
+| sink | コピー シンクの型と、データを書き込む方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | はい |
 | translator | ソースからシンクへの明示的な列マッピングを指定します。 既定のコピー動作が要求を満足できない場合に適用されます。<br/><br/>「[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)」で詳細を学習してください。 | いいえ  |
 | dataIntegrationUnits | データ コピーを機能強化するために、[Azure 統合ランタイム](concepts-integration-runtime.md)の強力な機能を指定します。 以前はクラウド データ移動単位 (DMU) と呼ばれていました。 <br/><br/>詳しくは、[データ統合単位](copy-activity-performance.md#data-integration-units)に関するページをご覧ください。 | いいえ  |
 | parallelCopies | ソースからのデータの読み取り時やシンクへのデータの書き込み時にコピー アクティビティで使用する並列処理を指定します。<br/><br/>「[並列コピー](copy-activity-performance.md#parallel-copy)」で詳細を学習してください。 | いいえ  |
@@ -148,7 +148,7 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 
 ### <a name="monitor-visually"></a>視覚的な監視
 
-コピー アクティビティの実行を視覚的に監視するには、お使いのデータ ファクトリ -> **[Author & Monitor]\(作成者と監視\)** -> **[監視] タブ** の順に移動して、**[アクション]** 列にある [View Activity Runs]\(アクティビティ実行の表示\) リンクを使ってパイプライン実行の一覧を表示します。
+コピー アクティビティの実行を視覚的に監視するには、お使いのデータ ファクトリ -> **[Author & Monitor]\(作成者と監視\)** -> **[監視] タブ** の順に移動して、**[アクション]** 列にある [View Activity Runs]\(アクティビティ実行の表示\) リンクを使ってパイプライン実行の一覧を表示します。 
 
 ![パイプラインの実行を監視する](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
@@ -156,7 +156,10 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 
 ![アクティビティの実行を監視する](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-**[アクション]** にある **[詳細]** リンクをクリックして、コピー アクティビティ実行の詳細とパフォーマンス特性を確認します。 source から sink にコピーされた volume/rows/files のデータ、スループット、対応する期間に処理されるステップ、お使いのコピー シナリオで使用される構成などの情報が表示されます。
+**[アクション]** にある **[詳細]** リンクをクリックして、コピー アクティビティ実行の詳細とパフォーマンス特性を確認します。 source から sink にコピーされた volume/rows/files のデータ、スループット、対応する期間に処理されるステップ、お使いのコピー シナリオで使用される構成などの情報が表示されます。 
+
+>[!TIP]
+>一部のシナリオでは、コピーの監視ページの上部に "**パフォーマンス チューニングに関するヒント**" も表示されます。これは、特定されたボトルネックを示しています。このヒントを参考にして、コピーのスループットを強化するために変更すべき点を把握することができます。詳しい情報と例については、[こちら](#performance-and-tuning)を参照してください。
 
 **例: Amazon S3 から Azure Data Lake Store へコピーする**
 ![アクティビティ実行の詳細を監視する](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -234,8 +237,16 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
 
-## <a name="incremental-copy"></a>増分コピー
-Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。
+場合によっては、ADF でコピー アクティビティを実行すると、次の例に示されているように、[コピー アクティビティの監視ページ](#monitor-visually)の上部に "**パフォーマンス チューニングに関するヒント**" が直接表示されます。 これにより、特定のコピーの実行で特定されたボトルネックが提示されるだけでなく、コピーのスループットを向上させるために変更すべき点も示されます。 パフォーマンスのチューニングに関するヒントは、現在、Azure SQL Data Warehouse にデータをコピーするときは PolyBase を使用すること、データ ソース側のリソースがボトルネックである場合はAzure Cosmos DB の RU または Azure SQL DB の DTU を増やすこと、不要なステージング済みを削除することといった提案を示しています。パフォーマンスのチューニングのルールも、徐々に強化されていきます。
+
+**例: パフォーマンスのチューニングに関するヒントを使用した Azure SQL DB へのコピー**
+
+このサンプルでは、コピーの実行中に ADF が、シンク Azure SQL DB が書き込み操作を遅くする高 DTU 使用率に達したため、より多くの DTU のある Azure SQL DB 層を増やすという提案を通知します。 
+
+![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+## <a name="incremental-copy"></a>増分コピー 
+Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。 
 
 ## <a name="read-and-write-partitioned-data"></a>パーティション分割されたデータの読み取りおよび書き込み
 Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 現在のバージョンでは、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関するページをご覧ください。

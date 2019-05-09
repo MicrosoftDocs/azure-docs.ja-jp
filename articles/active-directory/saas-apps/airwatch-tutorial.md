@@ -7,19 +7,20 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 83a3a6fee7446766973cc8fdca1129cdc2ff80d0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e20a298c34a7b2723963396f8ccaafaa9472e19a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974456"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>チュートリアル:Azure Active Directory と AirWatch の統合
 
@@ -104,18 +105,47 @@ AirWatch で Azure AD シングル サインオンを構成するには、次の
 
     ![[AirWatch のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`AirWatch` という値を入力します。
 
     > [!NOTE]
     > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[AirWatch Client サポート チーム](https://www.air-watch.com/company/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. AirWatch アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+
+    ![image](common/edit-attribute.png)
+
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+
+    | Name |  ソース属性|
+    |---------------|----------------|
+    | UID | user.userprincipalname |
+    | | |
+
+    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
+    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+
+    c. **[名前空間]** は空白のままにします。
+
+    d. [ソース] として **[属性]** を選択します。
+
+    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
+
+    f. **[OK]** をクリックします。
+
+    g. **[Save]** をクリックします。
+
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[AirWatch のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
+8. **[AirWatch のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -207,7 +237,7 @@ AirWatch で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -277,6 +307,6 @@ Azure AD ユーザーが AirWatch にログインできるようにするには�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

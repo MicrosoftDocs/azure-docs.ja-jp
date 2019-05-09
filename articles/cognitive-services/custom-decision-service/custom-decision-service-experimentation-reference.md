@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: この記事は、Custom Decision Service による実験のガイドです。
 services: cognitive-services
 author: marco-rossi29
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: eec2c82b779fa5421bc9ac58107ef56f8c71bd1e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366558"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870267"
 ---
 # <a name="experimentation"></a>実験
 
@@ -35,8 +35,8 @@ Custom Decision Service は、コンテキストからアクションにマッ�
 * ポリシーの評価 `--cb_type` をテストします (逆傾向スコア (`ips`) または二重頑健 (`dr`))。 詳しくは、「[Contextual Bandit example](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example)」(Contextual Bandit の例) をご覧ください。
 * 限界をテストします。
 * 二次インタラクション機能をテストします。
-   * **ブルート フォース フェーズ**: `--q_bruteforce_terms` 個以下のペアですべての組み合わせをテストします。
-   * **最長一致フェーズ**: `--q_greedy_stop` ラウンドに向上がなくなるまで、最善のペアを追加します。
+   * **ブルート フォース フェーズ**:`--q_bruteforce_terms` 個以下のペアですべての組み合わせをテストします。
+   * **最長一致フェーズ**:`--q_greedy_stop` ラウンドに向上がなくなるまで、最善のペアを追加します。
 * ハイパーパラメーター (`learning rate`、`L1 regularization`、`power_t`) に対して 2 番目のスイープを実行します。
 
 これらのステップを制御するパラメーターには、いくつかの Vowpal Wabbit 引数が含まれます。
@@ -53,13 +53,13 @@ Custom Decision Service は、コンテキストからアクションにマッ�
 上記の引数について詳しくは、「[Vowpal Wabbit command-line arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)」(Vowpal Wabbit コマンド ライン引数) をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
-- Vowpal Wabbit: インストールされてパス上にあること。
-  - Windows: [`.msi` インストーラーを使用します](https://github.com/eisber/vowpal_wabbit/releases)。
-  - その他のプラットフォーム: [ソース コードを取得します](https://github.com/JohnLangford/vowpal_wabbit/releases)。
-- Python 3: インストールされてパス上にあること。
-- NumPy: 任意のパッケージ マネージャーを使用します。
-- *Microsoft/mwt-ds* リポジトリ: [リポジトリを複製](https://github.com/Microsoft/mwt-ds)します。
-- Decision Service JSON ログ ファイル: 既定では、ベース コマンドに `--dsjson` が含まれ、入力データ ファイルの Decision Service JSON の解析を有効にします。 [この形式の例を入手します](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json)。
+- Vowpal Wabbit:インストールされてパス上にあること。
+  - Windows:[`.msi`インストーラー](https://github.com/eisber/vowpal_wabbit/releases)を使用します。
+  - その他のプラットフォーム:[ソース コードを入手](https://github.com/JohnLangford/vowpal_wabbit/releases)します。
+- Python 3:インストールされてパス上にあること。
+- NumPy:任意のパッケージ マネージャーを使用します。
+- *Microsoft/mwt ds*リポジトリ:[リポジトリを複製](https://github.com/Microsoft/mwt-ds)します。
+- Decision Service JSON ログ ファイル:既定では、ベース コマンドに `--dsjson` が含まれ、入力データ ファイルの Decision Service JSON の解析を有効にします。 [この形式の例を入手します](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json)。
 
 ## <a name="usage"></a>使用法
 `mwt-ds/DataScience` に移動し、次のコードに説明するように関連する引数を使用して `Experimentation.py` を実行します。

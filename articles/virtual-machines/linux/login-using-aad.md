@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850977"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848696"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
 
@@ -45,10 +45,13 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 | ディストリビューション | Version |
 | --- | --- |
-| CentOS | CentOS 6.9、CentOS 7.4 |
+| CentOS | CentOS 6、CentOS 7 |
 | Debian | Debian 9 |
+| openSUSE | openSUSE Leap 42.3 |
 | RedHat Enterprise Linux | RHEL 6、RHEL 7 | 
-| Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04、Ubuntu Server 17.10、Ubuntu Server 18.04 |
+| SUSE Linux Enterprise Server | SLES 12 |
+| Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04、Ubuntu Server 18.04 |
+
 
 この機能のプレビュー期間中は、次の Azure リージョンがサポートされます。
 
@@ -102,7 +105,7 @@ Azure のロールベース アクセス制御 (RBAC) ポリシーは、VM に�
 > [!NOTE]
 > SSH 経由でユーザーが VM にログインできるようにするには、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかを割り当てる必要があります。 VM の*所有者*または*共同作成者*ロールが割り当てられた Azure ユーザーに、SSH 経由で VM にログインする権限は自動的には付与されません。
 
-次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用して、VM に対する*仮想マシンの管理者ログイン* ロールを現在の Azure ユーザーに割り当てます。 [az account show](/cli/azure/account#az-account-show) を使用して、アクティブな Azure アカウントのユーザー名を取得し、[az vm show](/cli/azure/vm#az-vm-show) を使用して前の手順で作成された VM に*スコープ*が設定されています。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、通常の RBAC 継承のアクセス許可が適用されます。 詳細については、「[Azure のロールベースのアクセス制御](../../azure-resource-manager/resource-group-overview.md#access-control)」を参照してください。
+次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用して、VM に対する*仮想マシンの管理者ログイン* ロールを現在の Azure ユーザーに割り当てます。 [az account show](/cli/azure/account#az-account-show) を使用して、アクティブな Azure アカウントのユーザー名を取得し、[az vm show](/cli/azure/vm#az-vm-show) を使用して前の手順で作成された VM に*スコープ*が設定されています。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、通常の RBAC 継承のアクセス許可が適用されます。 詳細については、「[Azure のロールベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -150,7 +153,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 
 ## <a name="sudo-and-aad-login"></a>sudo と AAD ログイン
 
-初めて sudo を実行するときに、2 回目の認証をするように求められます。 sudo を実行するのに再認証を必要としない場合は、sudoers ファイル `/aad/etc/sudoers.d/aad_admins` を編集して、次の行を、
+初めて sudo を実行するときに、2 回目の認証をするように求められます。 sudo を実行するのに再認証を必要としない場合は、sudoers ファイル `/etc/sudoers.d/aad_admins` を編集して、次の行を、
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -168,7 +171,7 @@ Azure AD の資格情報を使用して SSH 経由でログインしようとし
 
 ### <a name="access-denied-rbac-role-not-assigned"></a>アクセスが拒否されました:RBAC の役割が割り当てられていません
 
-SSH プロンプトで次のエラーが表示された場合は、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する [RBAC ポリシーが VM に設定されている](#configure-rbac-policy-for-the-virtual-machine)ことを確認してください。
+SSH プロンプトで次のエラーが表示された場合は、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する RBAC ポリシーが VM に設定されていることを確認してください。
 
 ```bash
 login as: azureuser@contoso.onmicrosoft.com
@@ -183,7 +186,7 @@ Access denied
 
 Web ブラウザーで認証手続きを完了した直後に、新しいコードを使ってもう一度サインインすることを求められる場合があります。 このエラーは、通常、SSH プロンプトに入力したサインイン名と Azure AD へのサインインに使用するアカウントの間の不整合により発生します。 この問題を解決するには、次の手順を実行してください。
 
-- SSH プロンプトに入力したサインイン名が正しいことを確認します。 サインイン名の入力ミスにより、SSH プロンプトに指定したサインイン名と Azure AD へのサインインに使用するアカウントの間で不整合が発生している場合があります。 たとえば、*azuresuer@contoso.onmicrosoft.com* を *azureuser@contoso.onmicrosoft.com* と入力した場合です。
+- SSH プロンプトに入力したサインイン名が正しいことを確認します。 サインイン名の入力ミスにより、SSH プロンプトに指定したサインイン名と Azure AD へのサインインに使用するアカウントの間で不整合が発生している場合があります。 たとえば、「*azureuser\@contoso.onmicrosoft.com*」ではなく、「*azuresuer\@contoso.onmicrosoft.com*」と入力しました。
 - 複数のユーザー アカウントを使用している場合は、Azure AD にサインインするときに、ブラウザーのウィンドウに別のユーザー アカウントを入力していないことを確認します。
 - Linux は、大文字と小文字を区別するオペレーティング システムです。 'Azureuser@contoso.onmicrosoft.com' と 'azureuser@contoso.onmicrosoft.com' の差により、不一致が発生します。 SSH プロンプトに大文字と小文字を正しく入力して UPN を指定してください。
 

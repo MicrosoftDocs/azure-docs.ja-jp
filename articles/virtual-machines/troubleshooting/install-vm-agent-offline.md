@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192058"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259684"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>オフライン モードでの Azure 仮想マシン エージェントのインストール 
 
@@ -36,7 +36,15 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 オフライン モードで VM エージェントをインストールするには、次の手順に従います。
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>手順 1: VM の OS ディスクをデータ ディスクとして別の VM に接続する
+> [!NOTE]
+> オフライン モードで VM エージェントをインストールするプロセスを自動化できます。
+> これを行うには、[Azure VM の復旧スクリプト](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md)を使用します。 Azure VM 復旧スクリプトを使用することを選択した場合は、次のプロセスを使用できます。
+> 1. スクリプトを使用して影響を受ける VM の OS ディスクを復旧 VM にアタッチすることで、手順 1 をスキップします。
+> 2. 手順 2 ～ 10 に従って軽減策を適用します。
+> 3. スクリプトを使用して VM を再構築することで、手順 11 をスキップします。
+> 4. 手順 12 に従います。
+
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>手順 1:VM の OS ディスクをデータ ディスクとして別の VM に接続する
 
 1.  VM を削除します。 VM を削除するときは、必ず**ディスクを保持する**オプションを選択します。
 

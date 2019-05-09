@@ -1,6 +1,6 @@
 ---
-title: Web アプリを構成する - Azure App Service
-description: Azure App Service での Web アプリの構成方法
+title: アプリを構成する - Azure App Service
+description: Azure App Service でアプリを構成する方法
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,22 +15,20 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fb8dedac8b795ec127d7b4a14728d73c9397a1dd
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269432"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807407"
 ---
-# <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
+# <a name="configure-apps-in-azure-app-service"></a>Azure App Service でアプリを構成する
 
-このトピックでは、 [Azure Portal]を使用して Web アプリを構成する方法について説明します。
-
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+このトピックでは、[Azure portal] を使用して Web アプリ、モバイル バックエンド、API アプリを構成する方法について説明します。
 
 ## <a name="application-settings"></a>アプリケーションの設定
-1. [Azure Portal]で、Web アプリのブレードを開きます。
-3. **[アプリケーションの設定]** をクリックします。
+1. [Azure portal] で、アプリのブレードを開きます。
+2. **[アプリケーションの設定]** をクリックします。
 
 ![アプリケーションの設定][configure01]
 
@@ -47,14 +45,14 @@ ms.locfileid: "53269432"
 技術的な理由で、Web アプリで Java を有効にすると、.NET、PHP、Python オプションが無効になります。
 
 <a name="platform"></a>
-**プラットフォーム**。 Web アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。 64 ビット環境では Basic レベルまたは Standard レベルを使用する必要があります。 Free レベルと Shared レベルは常に 32 ビット環境で実行されます。
+**プラットフォーム**。 アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。 64 ビット環境では Basic レベルまたは Standard レベルを使用する必要があります。 Free レベルと Shared レベルは常に 32 ビット環境で実行されます。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**[Web ソケット]**。 WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web アプリで [ASP.NET SignalR] または [socket.io](https://socket.io/) を使用する場合)。
+**[Web ソケット]**。 WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、アプリで [ASP.NET SignalR] または [socket.io](https://socket.io/) を使用する場合)。
 
 <a name="alwayson"></a>
-**常時接続**。 既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。 アプリで継続的な Web ジョブを実行する場合や CRON 式を使ってトリガーされた Web ジョブを実行する場合、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
+**常時接続**。 既定では、アイドル状態がしばらく続くとアプリはアンロードされます。 これにより、システムではリソースを節約できます。 基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。 アプリで継続的な Web ジョブを実行する場合や CRON 式を使ってトリガーされた Web ジョブを実行する場合、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
 **マネージド パイプライン バージョン**。 IIS [パイプライン モード]を設定します。 この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] \(既定) のままにしておきます。
 
@@ -65,13 +63,13 @@ ms.locfileid: "53269432"
 
 **ARR アフィニティ**。 複数の VM インスタンスにスケールアウトされたアプリケーションでは、ARR アフィニティの Cookie によって、セッションが有効な間、クライアントが同じインスタンスにルーティングされることが保証されます。 ステートレス アプリケーションのパフォーマンスを向上するには、このオプションを **[オフ]** に設定します。   
 
-**自動スワップ**。 デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。 詳細については、 [Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
+**自動スワップ**。 デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、アプリを運用環境に自動的にスワップします。 詳細については、[Azure App Service のアプリに対するステージング スロットへのデプロイ](deploy-staging-slots.md)に関するページを参照してください。
 
 ### <a name="debugging"></a>デバッグ
-**リモート デバッグ**。 リモート デバッグを有効にします。 これを有効にすると、Visual Studio でリモート デバッガーを使用して、Web アプリに直接接続できます。 リモート デバッグは 48 時間有効です。 
+**リモート デバッグ**。 リモート デバッグを有効にします。 これを有効にすると、Visual Studio でリモート デバッガーを使用して、アプリに直接接続できます。 リモート デバッグは 48 時間有効です。 
 
 ### <a name="app-settings"></a>アプリケーション設定
-このセクションには、起動時に Web アプリがロードする名前/値ペアが含まれます。 
+このセクションには、起動時にアプリがロードする名前/値ペアが含まれます。 
 
 * .NET アプリの場合、実行時にこれらの設定が .NET 構成の `AppSettings` に挿入され、既存の設定がオーバーライドされます。 
 * Linux 上の App Service や Web App for Containers で、`ApplicationInsights:InstrumentationKey` のように名前に json キー構造を入れ子にした場合、`ApplicationInsights__InstrumentationKey` をキー名にする必要があります。 そのため、すべての `:` は `__` (つまり二重のアンダースコア) に置き換える必要がある点に注意してください。
@@ -102,7 +100,7 @@ PHP、Python、Java、および Node アプリケーションの場合、実行�
 ### <a name="default-documents"></a>既定のドキュメント
 既定のドキュメントは、Web サイトのルート URL に表示される Web ページです。  一覧で最初に一致するファイルが使用されます。 
 
-Web アプリでは、静的コンテンツを提供する代わりに URL に基づいてルーティングするモジュールを使用することがあります。その場合には、このような既定のドキュメントはありません。    
+アプリでは、静的コンテンツを提供する代わりに URL に基づいてルーティングするモジュールを使用することがあります。その場合には、このような既定のドキュメントはありません。    
 
 ### <a name="handler-mappings"></a>ハンドラー マッピング
 この領域では、特定のファイル拡張子に関する要求を処理するカスタム スクリプト プロセッサを追加します。 
@@ -117,7 +115,7 @@ Web アプリでは、静的コンテンツを提供する代わりに URL に�
 ## <a name="enabling-diagnostic-logs"></a>診断ログの有効化
 診断ログを有効にするには
 
-1. Web アプリのブレードで、 **[すべての設定]** をクリックします。
+1. アプリのブレードで、**[すべての設定]** をクリックします。
 2. **[診断ログ]** をクリックします。 
 
 ログ記録をサポートする Web アプリケーションの診断ログの書き込みに関するオプション: 
@@ -134,31 +132,31 @@ Web アプリでは、静的コンテンツを提供する代わりに URL に�
 
 ログ ファイルを表示するには、次のように FTP の資格情報を作成する必要があります。
 
-1. Web アプリのブレードで、 **[すべての設定]** をクリックします。
+1. アプリのブレードで、**[すべての設定]** をクリックします。
 2. **[デプロイ資格情報]** をクリックします。
 3. ユーザー名とパスワードを入力します。
 4. **[Save]** をクリックします。
 
 ![デプロイメント資格情報の設定][configure03]
 
-完全な FTP ユーザー名は "app\username" です。*app* は Web アプリの名前です。 username は Web アプリ ブレードの **[Essentials]** の下に表示されます。
+完全な FTP ユーザー名は "app\username" です。*app* はアプリの名前です。 username はアプリ ブレードの **[Essentials]** の下に表示されます。
 
 ![FTP デプロイ資格情報][configure02]
 
 ## <a name="other-configuration-tasks"></a>その他の 構成タスク
 ### <a name="ssl"></a>SSL
-基本モードまたは標準モードでは、カスタム ドメインの SSL 証明書をアップロードすることができます。 詳細については、[Web アプリに対する HTTPS の有効化](app-service-web-tutorial-custom-ssl.md)に関するページをご覧ください。 
+基本モードまたは標準モードでは、カスタム ドメインの SSL 証明書をアップロードすることができます。 詳細については、[アプリに対する HTTPS の有効化](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 
 
 アップロードされた証明書を表示するには、 **[すべての設定]** > **[カスタム ドメインと SSL]** を使用して Web アプリを構成する方法について説明します。
 
 ### <a name="domain-names"></a>ドメイン名
-Web アプリのカスタム ドメイン名を追加します。 詳細については、[Azure App Service での Web アプリのカスタム ドメイン名の構成](app-service-web-tutorial-custom-domain.md)に関するページをご覧ください。
+アプリのカスタム ドメイン名を追加します。 詳細については、[Azure App Service でのアプリのカスタム ドメイン名の構成](app-service-web-tutorial-custom-domain.md)に関するページを参照してください。
 
 ドメイン名を表示するには、 **[すべての設定]** > **[カスタム ドメインと SSL]** を使用して Web アプリを構成する方法について説明します。
 
 ### <a name="deployments"></a>デプロイメント
-* 継続的なデプロイを設定します。 [Git を使用した Azure App Service への Web Apps のデプロイ](app-service-deploy-local-git.md)に関するページをご覧ください。
-* デプロイ スロット: 「[Azure App Service の Web アプリのステージング環境を設定する]」を参照してください。
+* 継続的なデプロイを設定します。 [Git を使用した Azure App Service へのアプリのデプロイ](deploy-local-git.md)に関するページを参照してください。
+* デプロイ スロット: [Azure App Service のステージング環境にデプロイする]方法に関するページを参照してください。
 
 デプロイ スロットを表示するには、 **[すべての設定]** > **[デプロイ スロット]** を使用して Web アプリを構成する方法について説明します。
 
@@ -167,29 +165,24 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 
 詳細については、[方法:Web エンドポイントの状態を監視する]に関する記事をご覧ください。
 
-> [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成]」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-> 
-> 
-
 ## <a name="next-steps"></a>次の手順
 * [Azure App Service のカスタム ドメイン名の構成]
 * [アプリに対する HTTPS を Azure App Service で有効にする]
-* [Azure App Service での Web アプリの拡張]
-* [Azure App Service での Web Apps の監視の基本]
+* [Azure App Service でのアプリのスケーリング]
+* [Azure App Service での監視の基本]
+* [applicationHost.xdt を使用して applicationHost.config 設定を変更する](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Azure App Service のカスタム ドメイン名の構成]: ./app-service-web-tutorial-custom-domain.md
-[Azure App Service の Web アプリのステージング環境を設定する]: ./web-sites-staged-publishing.md
+[Azure App Service のステージング環境にデプロイする]: ./deploy-staging-slots.md
 [アプリに対する HTTPS を Azure App Service で有効にする]: ./app-service-web-tutorial-custom-ssl.md
 [方法:Web エンドポイントの状態を監視する]: https://go.microsoft.com/fwLink/?LinkID=279906
-[Azure App Service での Web Apps の監視の基本]: ./web-sites-monitor.md
+[Azure App Service での監視の基本]: ./web-sites-monitor.md
 [パイプライン モード]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Azure App Service での Web アプリの拡張]: ./web-sites-scale.md
-[Azure App Service アプリケーションの作成]: https://azure.microsoft.com/try/app-service/
+[Azure App Service でのアプリのスケーリング]: ./web-sites-scale.md
 
 <!-- IMG List -->
 

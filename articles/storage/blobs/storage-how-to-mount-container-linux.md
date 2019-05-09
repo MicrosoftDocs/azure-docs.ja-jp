@@ -5,14 +5,14 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 2/1/2019
 ms.author: seguler
-ms.openlocfilehash: 2374875512bba55409ef43906acb20238c77158f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: eadf52afd115eb1cb642082cea4b9f338bd44914
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268463"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521655"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "53268463"
 ## <a name="install-blobfuse-on-linux"></a>Linux に blobfuse をインストールする
 blobfuse バイナリは、Linux の Ubuntu および RHEL ディストリビューション用の [Microsoft ソフトウェア リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で入手できます。 このようなディストリビューションに blobfuse をインストールするには、一覧からいずれかのリポジトリを構成します。 使用しているディストリビューション用のバイナリがない場合は、[Azure Storage のインストール手順](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)に従ってソース コードからバイナリをビルドすることもできます。
 
-blobfuse では、Ubuntu 14.04 および 16.04 へのインストールをサポートしています。 次のコマンドを実行して、これらのバージョンのいずれかがデプロイされていることを確認します。
+blobfuse では、Ubuntu 14.04、16.04、および 18.04 へのインストールをサポートしています。 次のコマンドを実行して、これらのバージョンのいずれかがデプロイされていることを確認します。
 ```
 lsb_release -a
 ```
@@ -51,7 +51,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-同様に、`.../ubuntu/16.04/...` の URL を Ubuntu 16.04 ディストリビューションを指すように変更します。
+同様に、URL を `.../ubuntu/16.04/...` または `.../ubuntu/18.04/...` に変更して別のバージョンの Ubuntu を参照します。
 
 ### <a name="install-blobfuse"></a>blobfuse をインストールする
 
@@ -85,7 +85,7 @@ Azure では、blobfuse に待機時間の短いバッファを提供するた�
 
 ユーザーが一時パスにアクセスできることを確認してください。
 ```bash
-sudo mkdir /mnt/resource/blobfusetmp
+sudo mkdir /mnt/resource/blobfusetmp -p
 sudo chown <youruser> /mnt/resource/blobfusetmp
 ```
 
@@ -97,10 +97,17 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
+`accountName` は完全な URL ではなく、ご自分のストレージ アカウントのプレフィックスです。
 
-このファイルを作成したら、他のユーザーが読み取れないように、アクセスを制限するようにしてください。
+次を使用してこのファイルを作成します。
+
+```
+touch ~/fuse_connection.cfg
+```
+
+このファイルを作成して編集したら、他のユーザーが読み取れないよう、必ずアクセスを制限してください。
 ```bash
-chmod 700 fuse_connection.cfg
+chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]

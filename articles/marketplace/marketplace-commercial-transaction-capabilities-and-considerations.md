@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: b2f106edf69b57410fd1990d0888cf9d3a71be56
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880184"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731091"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace ‎商用トランザクションの機能と考慮事項
 
@@ -165,7 +165,7 @@ Marketplace を通じて処理される注文は、顧客の Azure インフラ�
 
 たとえば、顧客がクレジット カードを使用して購入した場合:
 
-|説明    |    日付  |
+|説明    |    Date  |
 |----------|----------|
 |注文期間   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期間の終了 (月)   | 2018 年 8 月 30 日 |
@@ -179,16 +179,16 @@ Marketplace を通じて処理される注文は、顧客の Azure インフラ�
 
 顧客がエンタープライズ契約を使用して購入した場合:
 
-| 説明 |    日付  |
+| 説明 |    Date  |
 |----------|----------|
 |注文期間 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期間の終了 (四半期) | 2018 年 9 月 30 日 |
 |請求日 | 2018 年 10 月 15 日 |
 |エスクロー期間 (クレジット カードのみ、30 日間) | 該当なし |
 |回収機関の開始 | 2018 年 10 月 15 日 |
-|回収期間の終了 (最大、90 日) | 2018 年 1 月 15 日 |
+|回収期間の終了 (最大、90 日) | 2019 年 1 月 15 日 |
 |顧客の支払日 | 2018 年 12 月 30 日 |
-|支払い計算日 (毎月 15 日) | 2018 年 1 月 15 日 |
+|支払い計算日 (毎月 15 日) | 2019 年 1 月 15 日 |
 |支払日 | 2019 年 2 月 15 日 |
 
 **無料クレジットと年額コミットメント** 
@@ -214,7 +214,7 @@ Marketplace を通じて処理される注文は、顧客の Azure インフラ�
 
 詳細と法的なポリシーについては、Cloud パートナー ポータルに記載されている「[Publisher Agreement](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)」 (パブリッシャー契約) を確認してください。
 
-課金に関する質問がある場合は、[サポート チケットを作成](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636764613233453423)し、使用されているオファーの種類に応じて仮想マシンまたは Web アプリ (つまり SaaS アプリ) を選択してください。
+課金に関する質問がある場合は、[サポート チケットを作成](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&pesid=16230&forceorigin=esmc&ccsid=636764613233453423)し、使用されているオファーの種類に応じて仮想マシンまたは Web アプリ (つまり SaaS アプリ) を選択してください。
 
 ## <a name="transact-requirements"></a>販売の要件
 
@@ -226,7 +226,7 @@ Marketplace を通じて処理される注文は、顧客の Azure インフラ�
 
 * オファーの価格モデルに関係なく、取引の公開オプションを使用するには、デベロッパー センター アカウントと Microsoft アカウントの両方が必要です。
 * デベロッパー センター アカウントには、Microsoft が公開元に代わって顧客から料金を収集して公開元に支払うために必要な、すべての関連する財務情報の詳細が保持されます。
-* 両方のアカウントで組織または Microsoft の同じサインイン詳細を使用することは可能ですが、デベロッパー センターはクラウド発行者ポータル アカウントとは別のアカウントです。 取引の公開オプションを使用するには、公開元は、Cloud パートナー ポータルにアクセスするためのサインアップに加えて、デベロッパー センター アカウントへのサインアップ プロセスを完了する必要があります。
+* 両方のアカウントで組織または Microsoft の同じサインイン詳細を使用することは可能ですが、デベロッパー センターは Cloud パートナー ポータル アカウントとは別のアカウントです。 取引の公開オプションを使用するには、公開元は、Cloud パートナー ポータルにアクセスするためのサインアップに加えて、デベロッパー センター アカウントへのサインアップ プロセスを完了する必要があります。
 
 *これらのアカウントの設定の詳細については、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher)」を参照してください。*
 

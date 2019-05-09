@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と JDA Cloud の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と JDA Cloud の統合 | Microsoft Docs
 description: Azure Active Directory と JDA Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 371ff15121e3da0bec5be6159fea9c6764b0aeda
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f2dfaf281130115ff04ff84b413e224f54cfcf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703370"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168342"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jda-cloud"></a>チュートリアル: Azure Active Directory と JDA Cloud の統合
+# <a name="tutorial-azure-active-directory-integration-with-jda-cloud"></a>チュートリアル:Azure Active Directory と JDA Cloud の統合
 
 このチュートリアルでは、JDA Cloud と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -166,11 +167,11 @@ JDA Cloud での Azure AD シングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-jda-cloud-test-user"></a>JDA Cloud テスト ユーザーの作成
 
-このセクションでは、JDA Cloud で Britta Simon というユーザーを作成します。 [JDA Cloud サポート チーム](https://support.jda.com/)と連携して、JDA Cloud プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、JDA Cloud で Britta Simon というユーザーを作成します。  [JDA Cloud サポート チーム](https://support.jda.com/) と連携して、JDA Cloud プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -207,7 +208,7 @@ JDA Cloud での Azure AD シングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで JDA Cloud のタイルをクリックすると、自動的に JDA Cloud アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

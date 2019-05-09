@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 54dbeeede58116b01f21db784b3e34970ace029f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 30154c55e60b7150257729c9bc90ee07a561e08e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792149"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59264541"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
 
@@ -26,15 +26,18 @@ Azure PowerShell は、Microsoft Azure のワークロードのデプロイと�
 > Azure PowerShell は、Windows クライアントだけで利用できます。 Linux、Unix、または Mac OS X クライアントを使用している場合、クラシック CLI を使用したクラスターの作成方法については、[Azure クラシック CLI を使用した Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 この手順を開始するには、以下が必要です。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* [Azure PowerShell](/powershell/azure/install-azurerm-ps)
+* [Azure PowerShell](/powershell/azure/install-Az-ps)
 
     > [!IMPORTANT]  
     > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**非推奨**となり、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
-    > [Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページの手順に従って、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
+    > [Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページの手順に従って、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
 
 ## <a name="create-cluster"></a>クラスターの作成
 
@@ -64,11 +67,11 @@ SSH ユーザーに指定する値は、クラスターの SSH ユーザーの�
 
 ## <a name="create-cluster-configuration-object"></a>クラスターの作成:構成オブジェクト
 
-HDInsight の構成オブジェクトは、`New-AzureRmHDInsightClusterConfig` コマンドレットを使用して作成することもできます。 作成後に、クラスターの追加の構成オプションを有効にするように、この構成オブジェクトを変更できます。 最後に、`New-AzureRmHDInsightCluster` コマンドレットの `-Config` パラメーターを使用して構成を使用します。
+HDInsight の構成オブジェクトは、`New-AzHDInsightClusterConfig` コマンドレットを使用して作成することもできます。 作成後に、クラスターの追加の構成オプションを有効にするように、この構成オブジェクトを変更できます。 最後に、`New-AzHDInsightCluster` コマンドレットの `-Config` パラメーターを使用して構成を使用します。
 
 次のスクリプトでは、HDInsight クラスター タイプで R Server を構成する構成オブジェクトを作成します。 この構成は、エッジ ノード、RStudio、および追加のストレージ アカウントを有効にします。
 
-[!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
+[!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-99)]
 
 > [!WARNING]  
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。 この例の使用時には、サーバーと同じ場所に追加のストレージ アカウントを作成します。

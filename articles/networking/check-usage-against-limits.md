@@ -8,19 +8,19 @@ manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: networking
+ms.service: azure
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: d57f34da261d51707caf499bfdf1fffa344b72a9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 54050c4c20b6ebb35f198775448f51ee8cdc533b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385517"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117644"
 ---
 # <a name="check-resource-usage-against-limits"></a>制限に照らしたリソース使用量の確認
 
@@ -34,25 +34,27 @@ ms.locfileid: "49385517"
 4. 使用状況を確認するサブスクリプションの名前を選択します。
 5. **[設定]** で、**[使用量 + クォータ]** を選択します。
 6. 次のオプションを選択できます。
-    - **リソースの種類**: すべてのリソースの種類を選択することも、表示する特定のリソースの種類を選択することもできます。
-    - **プロバイダー**: すべてのリソース プロバイダーを選択することも、**コンピューティング**、**ネットワーク**、または**ストレージ**を選択することもできます。
-    - **場所**: すべての Azure の場所を選択することも、特定の場所を選択することもできます。
-    - すべてのリソースを選択することも、少なくとも 1 つがデプロイされているリソースのみを表示することもできます。
+   - **リソースの種類**: すべてのリソースの種類を選択することも、表示する特定のリソースの種類を選択することもできます。
+   - **プロバイダー**: すべてのリソース プロバイダーを選択することも、**コンピューティング**、**ネットワーク**、または**ストレージ**を選択することもできます。
+   - **場所**: すべての Azure の場所を選択することも、特定の場所を選択することもできます。
+   - すべてのリソースを選択することも、少なくとも 1 つがデプロイされているリソースのみを表示することもできます。
 
-    次の図の例は、少なくとも 1 つのリソースがデプロイされている、米国東部のすべてのネットワーク リソースを示しています。
+     次の図の例は、少なくとも 1 つのリソースがデプロイされている、米国東部のすべてのネットワーク リソースを示しています。
 
-        ![View usage data](./media/check-usage-against-limits/view-usage.png)
+       ![使用状況データを表示する](./media/check-usage-against-limits/view-usage.png)
 
-    列見出しを選択すると、列を並べ替えることができます。 表示されている制限は、ご使用のサブスクリプションに対する制限です。 既定の制限を増やす必要がある場合は、**[引き上げを依頼する]** を選択し、サポート リクエストを作成して送信します。 Azure の[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)に関するページには、すべてのリソースの最大制限値が一覧表示されています。 現在の制限が既に最大値に達している場合、制限値を増やすことはできません。
+     列見出しを選択すると、列を並べ替えることができます。 表示されている制限は、ご使用のサブスクリプションに対する制限です。 既定の制限を増やす必要がある場合は、**[引き上げを依頼する]** を選択し、サポート リクエストを作成して送信します。 Azure の[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)に関するページには、すべてのリソースの最大制限値が一覧表示されています。 現在の制限が既に最大値に達している場合、制限値を増やすことはできません。
 
 ## <a name="powershell"></a>PowerShell
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.0.1 以降が必要です。 コンピューターで `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure にログインする必要もあります。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-制限に照らして使用量を確認するには、[Get AzureRmNetworkUsage](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0) を使用します。 次の例では、米国東部の場所に少なくとも 1 つのリソースがデプロイされているリソースの使用量が取得されます。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、Azure PowerShell モジュール、バージョン 1.0.0 以降が必要です。 コンピューターで `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure にログインする必要もあります。
+
+制限に照らして使用状況を確認するには、[Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage) を使用します。 次の例では、米国東部の場所に少なくとも 1 つのリソースがデプロイされているリソースの使用量が取得されます。
 
 ```azurepowershell-interactive
-Get-AzureRmNetworkUsage `
+Get-AzNetworkUsage `
   -Location eastus `
   | Where-Object {$_.CurrentValue -gt 0} `
   | Format-Table ResourceType, CurrentValue, Limit

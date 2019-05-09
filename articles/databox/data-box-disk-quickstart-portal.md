@@ -6,26 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a01da3218b07307faa8e94acab1473c82bd86c41
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712264"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546927"
 ---
-# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>クイック スタート: Azure portal を使用して Azure Data Box Disk をデプロイする (プレビュー)
+# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box Disk をデプロイする
 
-このクイック スタートでは、Azure portal を使用して Azure Data Box Disk をデプロイする方法について説明します。 ここでは、すばやく注文を作成する手順や、ディスクを受け取る手順、開梱の手順、接続手順のほか、Azure にアップロードできるようデータをディスクにコピーする手順などについて取り上げています。 
+このクイック スタートでは、Azure portal を使用して Azure Data Box Disk をデプロイする方法について説明します。 ここでは、すばやく注文を作成する手順や、ディスクを受け取る手順、開梱の手順、接続手順のほか、Azure にアップロードできるようデータをディスクにコピーする手順などについて取り上げています。
 
-デプロイと追跡の手順をステップ バイ ステップで詳しく紹介した記事については、[Azure Data Box Disk の注文に関するチュートリアル](data-box-disk-deploy-ordered.md)を参照してください。 
+デプロイと追跡に関する詳しい手順については、「[チュートリアル: Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」を参照してください。 
 
 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
-> [!IMPORTANT]
-> Data Box Disk はプレビュー段階にあります。 このソリューションを展開する前に、[プレビューに関する Azure のサービス利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs)) にサインインします。
+Azure Portal ([https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs)) にサインインします。
 
 ## <a name="order"></a>順序
 
@@ -44,9 +41,9 @@ Azure Portal ([http://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredatab
 1. Azure portal で新しい Azure Data Box リソースを作成します。 
 2. このサービスが有効になったサブスクリプションを選択し、転送の種類として **[インポート]** を選択します。 **[ソースの国]** にデータが存在する場所を、**[宛先 Azure リージョン]** にデータの転送先を指定します。
 3. **[Data Box Disk]** を選択します。 ソリューションの最大容量は 35 TB ですが、それを超えるサイズのデータについては複数のディスク注文を作成することができます。  
-4. 注文の詳細と発送情報を入力します。 ご利用のリージョンでこのサービスが提供されている場合、通知メール アドレスを指定し、概要を確認したうえで注文を作成します。 
+4. 注文の詳細と発送情報を入力します。 ご利用のリージョンでこのサービスが提供されている場合、通知メール アドレスを指定し、概要を確認したうえで注文を作成します。
 
-注文が作成されると、ディスクの発送準備が行われます。 
+注文が作成されると、ディスクの発送準備が行われます。
 
 ## <a name="unpack"></a>開梱
 
@@ -55,7 +52,7 @@ Azure Portal ([http://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredatab
 Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱物をチェックしてください。
 
 - エアークッションで包まれた USB ディスク (1 台から 5 台)。
-- 接続ケーブル (ディスクごと)。 
+- 接続ケーブル (ディスクごと)。
 - 返送用の配送ラベル。
 
 ## <a name="connect-and-unlock"></a>接続とロック解除
@@ -72,18 +69,20 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
 ## <a name="copy-data-and-validate"></a>データをコピーし、検証する
 
-この工程にかかる時間は、実際のデータのサイズによって異なります。 
+この工程にかかる時間は、実際のデータのサイズによって異なります。
 
-1. ドライブには、*PageBlob*、*BlockBlob*、*DataBoxDiskImport* の各フォルダーが格納されています。 ブロック BLOB としてインポートするデータは、*BlockBlob* フォルダーにドラッグ アンド ドロップでコピーします。 同様に、VHD/VHDX などのデータは、*PageBlob* フォルダーにドラッグ アンド ドロップします。
+1. ドライブには、*PageBlob*、*BlockBlob*、*AzureFile*、*ManagedDisk*、*DataBoxDiskImport* の各フォルダーが格納されています。 ブロック BLOB としてインポートするデータは、*BlockBlob* フォルダーにドラッグ アンド ドロップでコピーします。 同様に、VHD/VHDX などのデータは、*PageBlob* フォルダーに、適切なデータは *AzureFile* にドラッグ アンド ドロップします。 マネージド ディスクとしてアップロードする VHD を *ManagedDisk* 以下のフォルダーにコピーします。
 
-    Azure Storage アカウントには、*BlockBlob* フォルダー下および *PageBlob* フォルダー下のサブフォルダーごとにコンテナーが 1 つ作成されます。 *BlockBlob* フォルダー下のファイルと *PageBlob* フォルダー下のファイルはすべて、Azure Storage アカウントの既定のコンテナー `$root` にコピーされます。
+    Azure Storage アカウントには、*BlockBlob* フォルダー下および *PageBlob* フォルダー下のサブフォルダーごとにコンテナーが 1 つ作成されます。 ファイル共有が *AzureFile* 以下のサブフォルダーに作成されます。
 
-    > [!NOTE] 
-    > - すべてのコンテナーと BLOB は、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)に準拠している必要があります。 これらの規則に従っていない場合、Azure へのデータのアップロードに失敗します。
-    > - ファイルが約 4.75 TiB (ブロック BLOB の場合) および約 8 TiB (ページ BLOB の場合) を超えないようにしてください。
+    *BlockBlob* フォルダー下のファイルと *PageBlob* フォルダー下のファイルはすべて、Azure Storage アカウントの既定のコンテナー `$root` にコピーされます。 ファイルを *AzureFile* 内のフォルダーにコピーします。 *AzureFile* フォルダーに直接コピーされたファイルはすべて失敗し、ブロック BLOB としてアップロードされます。
 
-2. (省略可) コピーが完了したら、*DataBoxDiskImport* フォルダーに格納されている `DataBoxDiskValidation.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
-3. ドライブを取り外します。 
+    > [!NOTE]
+    > - すべてのコンテナー、BLOB、およびファイルは、[Azure 名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)に準拠する必要があります。 これらの規則に従っていない場合、Azure へのデータのアップロードに失敗します。
+    > - ファイルのサイズが、ブロック BLOB の場合は最大 4.75 TiB、ページ BLOB の場合は最大 8 TiB、Azure Files の場合は最大 1 TiB を超えないようにします。
+
+2. **(省略可能ですが推奨されます)** コピーが完了したら、少なくとも *DataBoxDiskImport* フォルダーにある `DataBoxDiskValidation.cmd` を実行し、オプション 1 を選択してファイルを検証することを強くお勧めします。 時間が許せば、オプション 2 を使用して検証用のチェックサムも生成することをお勧めします (データ サイズによっては時間がかかる場合があります)。 このような手順で、データを Azure にアップロードするときに失敗する可能性が最小限になります。
+3. ドライブを安全に取り外す
 
 ## <a name="ship-to-azure"></a>Azure への発送
 
@@ -98,8 +97,8 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
 
 この工程にかかる時間は、実際のデータのサイズによって異なります。
 
-1. Data Box ディスクが Azure データセンターのネットワークに接続されると、Azure へのデータのアップロードが自動的に開始されます。 
-2. Azure Data Box サービスは、データのコピーが完了したことを Azure portal 経由でお客様に通知します。 
+1. Data Box ディスクが Azure データセンターのネットワークに接続されると、Azure へのデータのアップロードが自動的に開始されます。
+2. Azure Data Box サービスは、データのコピーが完了したことを Azure portal 経由でお客様に通知します。
     
     1. 失敗していないかエラー ログで確認し、適切な措置を講じます。
     2. コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。
@@ -110,17 +109,17 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
 
 クリーンアップするには、Data Box の注文をキャンセルしたうえで削除してください。
 
-- Data Box の注文は、注文が処理される前であれば、Azure portal からキャンセルできます。 注文が処理された後は、キャンセルできません。 注文は、完了ステージに到達するまで続行されます。 
+- Data Box の注文は、注文が処理される前であれば、Azure portal からキャンセルできます。 注文が処理された後は、キャンセルできません。 注文は、完了ステージに到達するまで続行されます。
 
     注文をキャンセルするには、**[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。  
 
-- Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。 
+- Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。
 
     注文を削除するには、**[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure へのデータのインポートを支援する Azure Data Box Disk をデプロイしました。 Azure Data Box Disk の管理について詳しくは、次のチュートリアルをご覧ください。 
+このクイック スタートでは、Azure へのデータのインポートを支援する Azure Data Box Disk をデプロイしました。 Azure Data Box Disk の管理について詳しくは、次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用して Data Box Disk を管理する](data-box-portal-ui-admin.md)

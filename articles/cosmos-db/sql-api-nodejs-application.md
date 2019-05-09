@@ -3,18 +3,18 @@ title: 'チュートリアル: JavaScript SDK を使用して Node.js Web アプ
 description: この Node.js チュートリアルでは、Microsoft Azure Cosmos DB を使用して、Microsoft Azure App Service の Web Apps 機能にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 5d1ff0a40b9924af2d789c5bbc755080c1c783ed
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: efe24f5203c0479c71b565b8cf2c272dc107a96b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088113"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル: JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 
@@ -87,7 +87,7 @@ ms.locfileid: "53383429"
    
    ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
- ターミナル ウィンドウで Ctrl キーを押しながら C キーを押してアプリケーションを停止し、**[y]** を選択してバッチ ジョブを終了します。
+   ターミナル ウィンドウで Ctrl キーを押しながら C キーを押してアプリケーションを停止し、**[y]** を選択してバッチ ジョブを終了します。
 
 ## <a name="_Toc395783179"></a>必須のモジュールをインストールする
 
@@ -99,7 +99,7 @@ ms.locfileid: "53383429"
    npm install async --save
    ```
 
-2. npm で **@azure/cosmos** モジュールをインストールします。 
+2. npm を使用して **\@azure/cosmos** モジュールをインストールします。 
 
    ```bash
    npm install @azure/cosmos
@@ -115,7 +115,7 @@ ms.locfileid: "53383429"
 
 3. 次のコードを **taskDao.js** ファイルにコピーします。
 
-   ```nodejs
+   ```javascript
    // @ts-check
    const CosmosClient = require("@azure/cosmos").CosmosClient;
    const debug = require("debug")("todo:taskDao");
@@ -183,7 +183,7 @@ ms.locfileid: "53383429"
       const { body } = await this.container.item(itemId).read();
       return body;
     }
-  }
+   }
 
    module.exports = TaskDao;
    ```
@@ -195,7 +195,7 @@ ms.locfileid: "53383429"
 
 2. 次のコードを **tasklist.js** に追加します。 このコードによって、**tasklist.js** で使用される CosmosClient および async モジュールが読み込まれます。 また、**TaskList** クラスが定義されます。先ほど定義した **TaskDao** オブジェクトのインスタンスとして、このクラスが渡されます。
    
-   ```nodejs
+   ```javascript
    const TaskDao = require("../models/TaskDao");
 
    class TaskList {
@@ -243,9 +243,9 @@ ms.locfileid: "53383429"
 
       res.redirect("/");
     }
-  }
+   }
 
-  module.exports = TaskList;
+   module.exports = TaskList;
    ```
 
 3. **tasklist.js** ファイルを保存して閉じます。
@@ -256,7 +256,7 @@ ms.locfileid: "53383429"
 
 2. 次のコードを **config.js** ファイルに追加します。 このコードにより、アプリケーションに必要な値と構成設定が定義されます。
    
-   ```nodejs
+   ```javascript
    const config = {};
 
    config.host = process.env.HOST || "[the endpoint URI of your Azure Cosmos DB account]";
@@ -285,7 +285,7 @@ ms.locfileid: "53383429"
 
 2. 次のコードを **app.js** ファイルに追加します。 このコードにより、使用される構成ファイルが定義され、以降のセクションで使用するいくつかの変数に値が読み込まれます。 
    
-   ```nodejs
+   ```javascript
    const CosmosClient = require("@azure/cosmos").CosmosClient;
    const config = require("./config");
    const TaskList = require("./routes/tasklist");
@@ -326,7 +326,7 @@ ms.locfileid: "53383429"
      })
      .catch(err => {
        console.error(err);
-       console.error("Shutting down because there was an error settinig up the database.");
+       console.error("Shutting down because there was an error setting up the database.");
        process.exit(1);
      });
 

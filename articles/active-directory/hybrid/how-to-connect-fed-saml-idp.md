@@ -1,24 +1,25 @@
 ---
-title: 'Azure AD Connect: シングル サインオンに SAML 2.0 ID プロバイダーを使用する | Microsoft Docs'
+title: Azure AD Connect:シングル サインオンに SAML 2.0 ID プロバイダーを使用する | Microsoft Docs
 description: このドキュメントでは、シングル サインオンに SAML 2.0 準拠の IDP を使用する方法について説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.custom: it-pro
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 08d9566c3ce8f486465f0ed7fb5aab4419e592d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a1870137505b3d00ee6ed31595050908c970c444
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228591"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58878096"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -29,16 +30,16 @@ ms.locfileid: "51228591"
 
 Microsoft では、適切に構成された SAML 2.0 プロファイル ベースの IDP と Microsoft クラウド サービス (Office 365 など) の統合として、このサインオン エクスペリエンスをサポートします。 SAML 2.0 ID プロバイダーはサード パーティ製品であるため、Microsoft では、それらのデプロイ、構成、トラブルシューティングに関するベスト プラクティスをサポートしません。 適切に構成したら、後ほど詳述する Microsoft 接続アナライザー ツールを使用して、SAML 2.0 ID プロバイダーとの統合が適切な構成かどうかをテストできます。 SAML 2.0 SP-Lite プロファイル ベースの ID プロバイダーの詳細については、提供元の組織にお問い合わせください。
 
->[!IMPORTANT]
->SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオで利用できるクライアントは、以下に限定されています。
-
->- Outlook Web Access や SharePoint Online などの Web ベースのクライアント
-- 基本認証を使用し、IMAP、POP、Active Sync、MAPI などのサポートされている Exchange アクセス方法をサポートする以下の電子メール リッチ クライアント (拡張クライアント プロトコル エンドポイントのデプロイが必要です)。
-    - Microsoft Outlook 2010/Outlook 2013/Outlook 2016、Apple iPhone (複数の iOS のバージョン)
-    - 多様な Google Android デバイス
-    - Windows Phone 7、Windows Phone 7.8、および Windows Phone 8.0
-    - Windows 8 メール クライアントと Windows 8.1 メール クライアント
-    - Windows 10 メール クライアント
+> [!IMPORTANT]
+> SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオで利用できるクライアントは、以下に限定されています。
+> 
+> - Outlook Web Access や SharePoint Online などの Web ベースのクライアント
+> - 基本認証を使用し、IMAP、POP、Active Sync、MAPI などのサポートされている Exchange アクセス方法をサポートする以下の電子メール リッチ クライアント (拡張クライアント プロトコル エンドポイントのデプロイが必要です)。
+>     - Microsoft Outlook 2010/Outlook 2013/Outlook 2016、Apple iPhone (複数の iOS のバージョン)
+>     - 多様な Google Android デバイス
+>     - Windows Phone 7、Windows Phone 7.8、および Windows Phone 8.0
+>     - Windows 8 メール クライアントと Windows 8.1 メール クライアント
+>     - Windows 10 メール クライアント
 
 他のすべてのクライアントは、SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオでは利用できません。 たとえば、Lync 2010 デスクトップ クライアントは、シングル サインオン用に SAML 2.0 ID プロバイダーが構成されているサービスにログインすることはできません。
 
@@ -60,11 +61,11 @@ SAML 応答メッセージでは、署名ノードにメッセージ自体のデ
 
 1. アサーション ノード自体を署名する必要があります。
 2.  DigestMethod として RSA-sha1 アルゴリズムを使用する必要があります。 その他のデジタル署名アルゴリズムは容認されません。
-   `<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>`
+   `<ds:DigestMethod Algorithm="https://www.w3.org/2000/09/xmldsig#sha1"/>`
 3.  XML ドキュメントにも署名できます。 
-4.  Transform アルゴリズムは、次の例の値と一致する必要があります。`<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-       <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>`
-9.  SignatureMethod アルゴリズムは、次の例と一致する必要があります。`<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
+4.  Transform アルゴリズムは、次の例の値と一致する必要があります。`<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+       <ds:Transform Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#"/>`
+9.  SignatureMethod アルゴリズムは、次の例と一致する必要があります。`<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
 
 ## <a name="supported-bindings"></a>サポートされるバインディング
 バインディングは、トランスポートに関連する必須の通信パラメーターです。 バインディングには次の要件が適用されます。
@@ -103,21 +104,21 @@ Azure AD からサンプル SAML 2.0 ID プロバイダーに送信されるサ�
     </samlp:Status>
     <Assertion ID="_7e3c1bcd-f180-4f78-83e1-7680920793aa" IssueInstant="2014-01-31T15:36:31.279Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
     <Issuer>http://WS2012R2-0.contoso.com/adfs/services/trust</Issuer>
-    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <ds:Signature xmlns:ds="https://www.w3.org/2000/09/xmldsig#">
       <ds:SignedInfo>
-        <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
-        <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <ds:CanonicalizationMethod Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#" />
+        <ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1" />
         <ds:Reference URI="#_7e3c1bcd-f180-4f78-83e1-7680920793aa">
           <ds:Transforms>
-            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
-            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+            <ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <ds:Transform Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#" />
           </ds:Transforms>
-          <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <ds:DigestMethod Algorithm="https://www.w3.org/2000/09/xmldsig#sha1" />
           <ds:DigestValue>CBn/5YqbheaJP425c0pHva9PhNY=</ds:DigestValue>
         </ds:Reference>
       </ds:SignedInfo>
       <ds:SignatureValue>TciWMyHW2ZODrh/2xrvp5ggmcHBFEd9vrp6DYXp+hZWJzmXMmzwmwS8KNRJKy8H7XqBsdELA1Msqi8I3TmWdnoIRfM/ZAyUppo8suMu6Zw+boE32hoQRnX9EWN/f0vH6zA/YKTzrjca6JQ8gAV1ErwvRWDpyMcwdYCiWALv9ScbkAcebOE1s1JctZ5RBXggdZWrYi72X+I4i6WgyZcIGai/rZ4v2otoWAEHS0y1yh1qT7NDPpl/McDaTGkNU6C+8VfjD78DrUXEcAfKvPgKlKrOMZnD1lCGsViimGY+LSuIdY45MLmyaa5UT4KWph6dA==</ds:SignatureValue>
-      <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
         <ds:X509Data>
           <ds:X509Certificate>MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyhBREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDTE1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9ybWVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/+3ZWxd9T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEMb2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvyJOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBySx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==</ds:X509Certificate>
         </ds:X509Data>
@@ -167,7 +168,7 @@ SAML 2.0 ID プロバイダーと Azure AD 間の通信を有効にする必要�
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>SAML 2.0 ID プロバイダーでサインオンするための Windows PowerShell をインストールする
 Azure AD サインオンで使用するように SAML 2.0 ID プロバイダーを構成したら、次の手順は、Azure Active Directory Module for Windows PowerShell をダウンロードしてインストールすることです。 インストールしたら、これらのコマンドレットを使用して、Azure AD ドメインをフェデレーション ドメインとして構成します。
 
-Azure Active Directory Module for Windows PowerShell は、組織のデータを Azure AD で管理するためのダウンロードです。 このモジュールは、Windows PowerShell に一連のコマンドレットをインストールします。これらのコマンドレットを実行して Azure AD へのシングル サインオン アクセスを設定し、サブスクライブしているすべてのクラウド サービスにアクセスします。 コマンドレットをダウンロードしてインストールする方法の手順については、[http://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx) を参照してください。
+Azure Active Directory Module for Windows PowerShell は、組織のデータを Azure AD で管理するためのダウンロードです。 このモジュールは、Windows PowerShell に一連のコマンドレットをインストールします。これらのコマンドレットを実行して Azure AD へのシングル サインオン アクセスを設定し、サブスクライブしているすべてのクラウド サービスにアクセスします。 コマンドレットをダウンロードしてインストールする方法の手順については、[https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx) を参照してください。
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>SAML ID プロバイダーと Azure AD との間に信頼を確立する
 Azure AD ドメインのフェデレーションを構成する前に、カスタム ドメインを構成する必要があります。 Microsoft によって提供されている既定のドメインをフェデレーションすることはできません。 Microsoft の既定のドメインは、"onmicrosoft.com" で終わります。
@@ -183,19 +184,19 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
 ## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Azure AD ディレクトリのドメインを フェデレーションに構成する
 
 
-1. テナント管理者として、Azure AD ディレクトリに接続します。Connect-MsolService
+1. 次のテナント管理者として Azure AD ディレクトリに接続します。Connect-MsolService。
 2.  SAML 2.0 とのフェデレーションで使用する Office 365 ドメインを構成します。`$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
 
 3.  IDP メタデータ ファイルから署名証明書の base64 でエンコードされた文字列を取得できます。 この場所の例は用意されていますが、実装に基づいて若干異なる場合があります。
 
-    `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
+    `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-"Set-MsolDomainAuthentication" の詳細については [http://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx) を参照してください。
+"Set-MsolDomainAuthentication" の詳細については [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx) を参照してください。
 
 >[!NOTE]
->“$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"” は、ID プロバイダーに対して ECP 拡張機能を設定する場合にのみ実行する必要があります。 Outlook Web Application (OWA) を除く Exchange Online クライアントは、POST ベースのアクティブなエンドポイントを活用します。 SAML 2.0 STS でアクティブなエンドポイントの Shibboleth の ECP 実装に似たアクティブなエンドポイントを実装すると、これらのリッチ クライアントが Exchange Online サービスと対話することが可能になる場合があります。
+>`$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` は、ID プロバイダーに対して ECP 拡張機能を設定する場合にのみ実行および使用する必要があります。 Outlook Web Application (OWA) を除く Exchange Online クライアントは、POST ベースのアクティブなエンドポイントを活用します。 SAML 2.0 STS でアクティブなエンドポイントの Shibboleth の ECP 実装に似たアクティブなエンドポイントを実装すると、これらのリッチ クライアントが Exchange Online サービスと対話することが可能になる場合があります。
 
-フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx) を参照してください。
+フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx) を参照してください。
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>ユーザー プリンシパルを Azure AD/Office 365 にプロビジョニングする
 Office 365 に対してユーザーを認証するには、SAML 2.0 要求のアサーションに対応するユーザー プリンシパルを使用して Azure AD をプロビジョニングしておく必要があります。 これらのユーザー プリンシパルが Azure AD で事前に認識されていない場合、フェデレーション サインインで使用することはできません。 ユーザー プリンシパルは、Azure AD Connect または Windows PowerShell を使用してプロビジョニングできます。
@@ -207,18 +208,21 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
 次の手順は、Azure AD に 1 人のユーザーを追加する方法を示しています。
 
 
-1. テナント管理者として、Azure AD ディレクトリに接続します。Connect-MsolService
-2.  新しいユーザー プリンシパルを作成します。` New-MsolUser
-        -UserPrincipalName elwoodf1@contoso.com
-        -ImmutableId ABCDEFG1234567890
-        -DisplayName "Elwood Folk"
-        -FirstName Elwood 
-        -LastName Folk 
-        -AlternateEmailAddresses "Elwood.Folk@contoso.com" 
-        -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
-        -UsageLocation "US" ` 
+1. 次のテナント管理者として Azure AD ディレクトリに接続します。Connect-MsolService。
+2.  新しいユーザー プリンシパルを作成します。
+    ```powershell
+    New-MsolUser
+      -UserPrincipalName elwoodf1@contoso.com
+      -ImmutableId ABCDEFG1234567890
+      -DisplayName "Elwood Folk"
+      -FirstName Elwood 
+      -LastName Folk 
+      -AlternateEmailAddresses "Elwood.Folk@contoso.com" 
+      -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
+      -UsageLocation "US" 
+    ```
 
-"New-MsolUser" チェックアウトの詳細については、[http://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx) を参照してください。
+"New-MsolUser" チェックアウトの詳細については、[https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx) を参照してください。
 
 >[!NOTE]
 >"UserPrinciplName" 値は SAML 2.0 要求で送信する "IDPEmail" の値と一致し、"ImmutableID" 値は "NameID" アサーションで送信される値と一致する必要があります。
@@ -260,7 +264,7 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 7. このウィンドウには、テストの失敗した結果を示しています。 [詳細結果をレビュー] クリックすると、実行された各テストの結果に関する情報が表示されます。 結果を共有するためにディスクに保存することもできます。
  
 >[!NOTE]
->接続アナライザーは、WS * ベースのプロトコルと ECP/PAOS プロトコルを使用するアクティブ フェデレーションもテストします。 これらを使用しない場合は、ID プロバイダーのアクティブ フェデレーション エンドポイントを使用したアクティブ サインイン フローのテストで発生したエラーは無視することができます。
+>接続アナライザーは、WS * ベースのプロトコルと ECP/PAOS プロトコルを使用するアクティブ フェデレーションもテストします。 これらを使用していない場合は、ID プロバイダーのアクティブ フェデレーション エンドポイントを使用したアクティブ サインイン フローのテストで発生したエラーは無視することができます。
 
 ### <a name="manually-verify-that-single-sign-on-has-been-set-up-correctly"></a>シングル サインオンが正しく設定されていることを手動で検証する
 手動による検証では、多くのシナリオで SAML 2.0 ID プロバイダーが正しく動作することを確認するために実行できる追加の手順があります。
@@ -268,7 +272,7 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 
 
 1. ドメインに参加しているコンピューターで、会社の資格情報で使用するのと同じログオン名を使用して、クラウド サービスにサインインします。
-2.  [パスワード] ボックスの内側をクリックします。 シングル サインオンが設定されている場合、パスワード ボックスが網掛けになり、"&lt;会社名&gt; にサインインする必要があります" というメッセージが表示されます。
+2.  [パスワード] ボックスの内側をクリックします。 シングル サインオンが設定されていれば、パスワード ボックスは網掛けになり、次のメッセージが表示されます。"&lt;お客様の会社&gt;にサインインする必要があります。"
 3.  &lt;会社名&gt; リンクの [サインイン] をクリックします。 サインインすることができたら、シングル サインオンが設定されています。
 
 ## <a name="next-steps"></a>次の手順

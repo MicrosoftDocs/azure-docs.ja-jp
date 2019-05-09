@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 872bfdfdef28dbb88861b723bd3186faea461cad
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410008"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880111"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Geo 人工知能データ サイエンス仮想マシンの使用
 
@@ -30,7 +30,7 @@ Geo AI データ サイエンス VM を使用すると、分析用のデータ�
 
 ## <a name="configuration-details"></a>構成の詳細
 
-ArcGIS とのインターフェイスに使用される Python ライブラリ ([arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)) は、データ サイエンス VM のグローバル ルート conda 環境 (```c:\anaconda``` にあります) にインストールされます。 
+ArcGIS とのインターフェイスに使用される Python ライブラリ ([arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)) は、データ サイエンス VM のグローバル ルート conda 環境 (```c:\anaconda``` にあります) にインストールされます。 
 
 - コマンド プロンプトで Python を実行する場合は、```activate``` を実行して、conda ルートの Python 環境へとアクティブ化します。 
 - IDE や Jupyter Notebook を使用している場合は、環境やカーネルを選択して、正しい conda 環境を使用していることを確認できます。 
@@ -43,7 +43,7 @@ ArcGIS への R ブリッジは、[arcgisbinding](https://github.com/R-ArcGIS/r-
 ベースのデータ サイエンス VM から提供される ML やディープ ラーニング フレームワーク ベースのサンプルに加え、Geo AI データ サイエンス VM では、一連の地理空間サンプルも提供されます。 これらのサンプルを使用すると、地理空間データと ArcGIS ソフトウェアを使用した AI アプリケーションの開発をスムーズに開始できます。 
 
 
-1. [Python を使用した地理空間分析](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): ArcGIS への Python インターフェイス ([arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) ライブラリによって提供されます) を使用して地理空間データを操作する方法が、初歩的なサンプルによって示されています。 また、従来型の機械学習に地理空間データを組み合わせて、その結果を ArcGIS のマップ上で視覚化する方法も示されています。 
+1. [Python を使用した地理空間分析](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): ArcGIS への Python インターフェイス ([arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) ライブラリによって提供されます) を使用して地理空間データを操作する方法が、初歩的なサンプルによって示されています。 また、従来型の機械学習に地理空間データを組み合わせて、その結果を ArcGIS のマップ上で視覚化する方法も示されています。 
 
 2. [R を使用した地理空間分析](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): ArcGIS への R インターフェイス ([arcgisbinding](https://github.com/R-ArcGIS/r-bridge) ライブラリによって提供されます) を使用して地理空間データを操作する方法が、初歩的なサンプルによって示されています。 
 

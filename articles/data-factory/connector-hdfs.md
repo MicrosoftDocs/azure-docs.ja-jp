@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 034c9a321f402bada87290f6aa72fc7e416ef2c6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 547edc2fdfc78f9c22cd62ad2707515f010f2d58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054546"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852425"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,6 +40,9 @@ HDFS から、サポートされている任意のシンク データ ストア�
 
 パブリックにアクセスできない HDFS からデータをコピーするには、セルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](concepts-integration-runtime.md)に関する記事をご覧ください。
 
+> [!NOTE]
+> Integration Runtime が、Hadoop クラスターの**すべて**の [name node server]:[name node port] および [data node servers]:[data node port] にアクセスできることを確認します。 既定の [name node port] は 50070、既定の [data node port] は 50075 です。
+
 ## <a name="getting-started"></a>使用の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -53,9 +55,9 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Hdfs** に設定する必要があります。 | [はい] |
-| url |HDFS への URL |[はい] |
-| authenticationType | 使用可能な値: **Anonymous** または**Windows**。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |[はい] |
+| type | type プロパティは、次のように設定する必要があります:**Hdfs**。 | はい |
+| url |HDFS への URL |はい |
+| authenticationType | 使用できる値は、以下のとおりです。**Anonymous** または **Windows**。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 Kerberos 認証の場合は `<username>@<domain>.com` を指定します。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |あり (Windows 認証用) |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
@@ -112,11 +114,13 @@ HDFS からデータをコピーするには、データセットの type プロ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **FileShare** に設定する必要があります。 |[はい] |
-| folderPath | フォルダーへのパス。 ワイルドカード フィルターはサポートされていません。 例: folder/subfolder/ |[はい] |
-| fileName |  指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ  |
-| format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
+| type | データセットの type プロパティは、次のように設定する必要があります: **FileShare** |はい |
+| folderPath | フォルダーへのパス。 ワイルドカード フィルターがサポートされいます。使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br/><br/>例: ルートフォルダー/サブフォルダー。「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の例を参照してください。 |はい |
+| fileName |  指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ  |
+| modifiedDatetimeStart | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。| いいえ  |
+| modifiedDatetimeEnd | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。| いいえ  |
+| format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析する場合にサポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 >[!TIP]
 >フォルダーの下のすべてのファイルをコピーするには、**folderPath** のみを指定します。<br>特定の名前の単一のファイルをコピーするには、フォルダー部分で **folderPath**、ファイル名で **fileName** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、フォルダー部分で **folderPath**、ワイルドカード フィルターで **fileName** を指定します。
@@ -134,7 +138,9 @@ HDFS からデータをコピーするには、データセットの type プロ
         },
         "typeProperties": {
             "folderPath": "folder/subfolder/",
-            "fileName": "myfile.csv.gz",
+            "fileName": "*",
+            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
+            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {
                 "type": "TextFormat",
                 "columnDelimiter": ",",
@@ -149,6 +155,17 @@ HDFS からデータをコピーするには、データセットの type プロ
 }
 ```
 
+### <a name="folder-and-file-filter-examples"></a>フォルダーとファイル フィルターの例
+
+このセクションでは、ワイルドカード フィルターを使用した結果のフォルダーのパスとファイル名の動作について説明します。
+
+| folderPath | fileName | recursive | ソースのフォルダー構造とフィルターの結果 (**太字**のファイルが取得されます)|
+|:--- |:--- |:--- |:--- |
+| `Folder*` | (空、既定値を使用) | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | (空、既定値を使用) | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | `*.csv` | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、HDFS ソースでサポートされるプロパティの一覧を示します。
@@ -159,14 +176,14 @@ HDFS からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **HdfsSource** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**HdfsSource** |はい |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 | distcpSettings | HDFS DistCp を使用する場合の プロパティ グループ。 | いいえ  |
 | resourceManagerEndpoint | Yarn ResourceManager エンドポイント。 | はい (DistCp を使用する場合) |
 | tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 このスクリプト ファイルは Data Factory によって生成され、コピー ジョブ完了後に削除されます。 | はい (DistCp を使用する場合) |
 | distcpOptions | DistCp コマンドに指定する追加オプション。 | いいえ  |
 
-**例: UNLOAD を使用するコピー アクティビティの HDFS ソース**
+**例:UNLOAD を使用するコピー アクティビティの HDFS ソース**
 
 ```json
 "source": {
@@ -187,7 +204,7 @@ HDFS からデータをコピーするは、コピー アクティビティの�
 
 コピー アクティビティは、DistCp を使用して Azure Blob または Azure Data Lake Store にファイルをそのままコピーする ことをサポートします (Azure Blob の場合は[ステージング コピー](copy-activity-performance.md)も含みます)。この場合、セルフホステッド統合ランタイムで実行する代わりに、クラスターのパワーを十分に活用できます。 特にクラスターのパワーが非常に強い場合、コピーのスループットが向上します。 Azure Data Factory の構成に基づいて、コピー アクティビティは、distcp コマンドを自動的に作成し、Hadoop クラスターに送信し、コピー状態を監視します。
 
-### <a name="prerequsites"></a>前提条件
+### <a name="prerequisites"></a>前提条件
 
 DistCp を使用して HDFS から Azure Blob (ステージング コピーも含みます) または Azure Data Lake Store にファイルをそのままコピーする場合は、Hadoop クラスターが次の要件を満たしていることを確認します。
 
@@ -244,10 +261,10 @@ DistCp を使用して HDFS から Azure Blob にデータをコピーするた�
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>HDFS コネクタでの Kerberos 認証の使用
 
 HDFS コネクタで Kerberos 認証を使用するようにオンプレミス環境を設定するためのオプションは 2 つあります。 ニーズに適した方法を選択できます。
-* オプション 1: [セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる](#kerberos-join-realm)
-* オプション 2: [Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
+* オプション 1:[セルフホステッド統合ランタイム コンピューターを Kerberos 領域に参加させる](#kerberos-join-realm)
+* オプション 2:[Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>オプション 1: セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる
+### <a name="kerberos-join-realm"></a>オプション 1: セルフホステッド統合ランタイム コンピューターを Kerberos 領域に参加させる
 
 #### <a name="requirements"></a>必要条件
 
@@ -291,49 +308,49 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **KDC サーバーで以下を実行します。**
 
-1.  **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定では、この構成は **/etc/krb5.conf** に置かれています。
+1. **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定では、この構成は **/etc/krb5.conf** に置かれています。
 
-            [logging]
-             default = FILE:/var/log/krb5libs.log
-             kdc = FILE:/var/log/krb5kdc.log
-             admin_server = FILE:/var/log/kadmind.log
+           [logging]
+            default = FILE:/var/log/krb5libs.log
+            kdc = FILE:/var/log/krb5kdc.log
+            admin_server = FILE:/var/log/kadmind.log
 
-            [libdefaults]
-             default_realm = REALM.COM
-             dns_lookup_realm = false
-             dns_lookup_kdc = false
-             ticket_lifetime = 24h
-             renew_lifetime = 7d
-             forwardable = true
+           [libdefaults]
+            default_realm = REALM.COM
+            dns_lookup_realm = false
+            dns_lookup_kdc = false
+            ticket_lifetime = 24h
+            renew_lifetime = 7d
+            forwardable = true
 
-            [realms]
-             REALM.COM = {
-              kdc = node.REALM.COM
-              admin_server = node.REALM.COM
-             }
+           [realms]
+            REALM.COM = {
+             kdc = node.REALM.COM
+             admin_server = node.REALM.COM
+            }
+           AD.COM = {
+            kdc = windc.ad.com
+            admin_server = windc.ad.com
+           }
+
+           [domain_realm]
+            .REALM.COM = REALM.COM
+            REALM.COM = REALM.COM
+            .ad.com = AD.COM
+            ad.com = AD.COM
+
+           [capaths]
             AD.COM = {
-             kdc = windc.ad.com
-             admin_server = windc.ad.com
+             REALM.COM = .
             }
 
-            [domain_realm]
-             .REALM.COM = REALM.COM
-             REALM.COM = REALM.COM
-             .ad.com = AD.COM
-             ad.com = AD.COM
+   構成したら KDC サービスを**再起動**します。
 
-            [capaths]
-             AD.COM = {
-              REALM.COM = .
-             }
+2. 次のコマンドを使用して、**krbtgt/REALM.COM\@AD.COM** という名前のプリンシパルを KDC サーバー内に準備します。
 
-  構成したら KDC サービスを**再起動**します。
+           Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-2.  次のコマンドを使用して、**krbtgt/REALM.COM@AD.COM** という名前のプリンシパルを KDC サーバー内に準備します。
-
-            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
-
-3.  **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、`RULE:[1:$1@$0](.*@AD.COM)s/@.*//` を追加します。
+3. **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、を追加します`RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`。
 
 **ドメイン コントローラーで、以下を実行します。**
 
@@ -342,7 +359,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、 **krbtgt/REALM.COM@AD.COM** プリンシパルのパスワードです。
+2.  Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、**krbtgt/REALM.COM\@AD.COM** プリンシパルのパスワードです。
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
@@ -350,7 +367,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
     1. サーバー マネージャーに移動し、[グループ ポリシー管理]、[ドメイン]、[グループ ポリシー オブジェクト]、[既定のポリシー] または [Active Domain ポリシー] の順に選択します。
 
-    2. **グループ ポリシー管理エディター** ポップアップ ウィンドウで、[コンピューターの構成]、[ポリシー]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション] の順に選択し、**[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** を設定します。
+    2. **[グループ ポリシー管理エディター]** ポップアップ ウィンドウで、[コンピューターの構成] > [ポリシー] > [Windows の設定] > [セキュリティの設定] > [ローカル ポリシー] > [セキュリティ オプション] に移動し、**[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** を構成します。
 
     3. KDC に接続するときに使用する暗号化アルゴリズムを選択します。 通常は、単純にすべてのオプションを選択できます。
 

@@ -5,20 +5,22 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 2/7/2019
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.subservice: files
+ms.openlocfilehash: e5078176b14835938c190daa031c12055ba9ffc3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625302"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996358"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
 この記事では、Azure File Sync をデプロイする際の重要な考慮事項について説明します。 「[Azure Files のデプロイの計画](storage-files-planning.md)」も読むことをお勧めします。 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="azure-file-sync-terminology"></a>Azure File Sync の用語
 Azure File Sync のデプロイの計画の詳細な説明に入る前に、用語を理解することが重要です。
@@ -34,9 +36,9 @@ Azure File Sync のデプロイの計画の詳細な説明に入る前に、用�
 
 ### <a name="azure-file-sync-agent"></a>Azure ファイル同期エージェント
 Azure File Sync エージェントは、Windows Server を Azure ファイル共有と同期できるようにするダウンロード可能なパッケージです。 Azure File Sync エージェントには、3 つの主要コンポーネントがあります。 
-- **FileSyncSvc.exe**: バックグラウンドの Windows サービス。サーバー エンドポイントの変更の監視と、Azure に対する同期セッションの開始を担当します。
-- **StorageSync.sys**: Azure File Sync ファイル システム フィルターであり、Azure Files に対するファイルの階層化を担当します (クラウドの階層化が有効な場合)。
-- **PowerShell 管理コマンドレット**: Microsoft.StorageSync Azure リソース プロバイダーと対話するために使用する PowerShell コマンドレット。 これらは、次の (既定の) 場所で見つけることができます。
+- **FileSyncSvc.exe**:バックグラウンドの Windows サービス。サーバー エンドポイントの変更の監視と、Azure に対する同期セッションの開始を担当します。
+- **StorageSync.sys**:Azure File Sync ファイル システム フィルターであり、Azure Files に対するファイルの階層化を担当します (クラウドの階層化が有効な場合)。
+- **PowerShell 管理コマンドレット**:Microsoft.StorageSync Azure リソース プロバイダーと対話するために使用する PowerShell コマンドレット。 これらは、次の (既定の) 場所で見つけることができます。
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
@@ -68,12 +70,12 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 このセクションでは、Windows Server の機能とロール、およびサード パーティ ソリューションとの Azure File Sync エージェント システムの要件と相互運用性について説明します。
 
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは AzureRM PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 そのチェックでは、以下で説明する機能のほとんどがカバーされていますが、すべてではないことに注意してください。デプロイが円滑に進むように、このセクションの残りの部分をよく読むことをお勧めします。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 そのチェックでは、以下で説明する機能のほとんどがカバーされていますが、すべてではないことに注意してください。デプロイが円滑に進むように、このセクションの残りの部分をよく読むことをお勧めします。 
 
 #### <a name="download-instructions"></a>ダウンロードの手順
 1. 最新バージョンの PackageManagement と PowerShellGet がインストールされていることを確認します (これにより、プレビュー モジュールをインストールできます)
     
-    ```PowerShell
+    ```powershell
         Install-Module -Name PackageManagement -Repository PSGallery -Force
         Install-Module -Name PowerShellGet -Repository PSGallery -Force
     ```
@@ -81,38 +83,39 @@ Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを
 2. PowerShell を再起動します
 3. モジュールをインストールする
     
-    ```PowerShell
-        Install-Module -Name AzureRM.StorageSync -AllowPrerelease
+    ```powershell
+        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
     ```
 
 #### <a name="usage"></a>使用法  
 複数の方法で評価ツールを呼び出すことができます。システム チェックとデータセット チェックのどちらか一方または両方を行うことができます。 システム チェックとデータセット チェックの両方を実行するには: 
 
-```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path>
+```powershell
+    Invoke-AzStorageSyncCompatibilityCheck -Path <path>
 ```
 
 データセットのみをテストするには:
-```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
+```powershell
+    Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
 ```
  
 システム要件のみをテストするには:
-```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -ComputerName <computer name>
+```powershell
+    Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
 ```
  
 CSV で結果を表示するには:
-```PowerShell
-    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck […]
+```powershell
+    $errors = Invoke-AzStorageSyncCompatibilityCheck […]
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
 ### <a name="system-requirements"></a>システム要件
-- Windows Server 2012 R2 または Windows Server 2016 を実行しているサーバー:
+- Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 を実行しているサーバー:
 
-    | Version | サポートされている SKU | サポートされているデプロイ オプション |
+    | バージョン | サポートされている SKU | サポートされているデプロイ オプション |
     |---------|----------------|------------------------------|
+    | Windows Server 2019 | Datacenter および Standard | フル (UI ありのサーバー) |
     | Windows Server 2016 | Datacenter および Standard | フル (UI ありのサーバー) |
     | Windows Server 2012 R2 | Datacenter および Standard | フル (UI ありのサーバー) |
 
@@ -129,6 +132,7 @@ CSV で結果を表示するには:
 - NTFS ファイル システムでフォーマットされたローカルに接続されたボリューム。
 
 ### <a name="file-system-features"></a>ファイル システムの機能
+
 | 機能 | サポートの状態 | メモ |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされます | Windows ACL は、Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 クラウドでファイルに直接アクセスする場合、Azure Files は Windows ACL を (まだ) サポートしていません。 |
@@ -145,6 +149,7 @@ CSV で結果を表示するには:
 > NTFS ボリュームのみがサポートされます。 ReFS、FAT、FAT32 などのファイル システムはサポートされていません。
 
 ### <a name="files-skipped"></a>スキップされるファイル
+
 | ファイル/フォルダー | Note |
 |-|-|
 | Desktop.ini | システムに固有のファイル |
@@ -154,7 +159,7 @@ CSV で結果を表示するには:
 | \*.laccdb | Access データベースのロック ファイル|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | 内部の同期ファイル|
 | \\System Volume Information | ボリュームに固有のフォルダー |
-| $RECYCLE.BIN| フォルダー |
+| $RECYCLE.BIN| Folder |
 | \\SyncShareState | 同期用のフォルダー |
 
 ### <a name="failover-clustering"></a>フェールオーバー クラスタリング
@@ -164,14 +169,18 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 > 同期が適切に機能するには、フェールオーバー クラスターのすべてのノードに Azure File Sync エージェントをインストールする必要があります。
 
 ### <a name="data-deduplication"></a>データ重複除去
-クラウドの階層化が有効ではないボリュームでは、Azure File Sync は、そのボリュームでの Windows Server のデータ重複除去の有効化をサポートします。 現時点では、クラウドの階層化が有効な Azure File Sync とデータ重複除去間の相互運用性はサポートされていません。
+**エージェント バージョン 5.0.2.0**   
+データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームで重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。
+
+**Windows Server 2012 R2 またはそれよりも古いエージェント バージョン**  
+クラウドの階層化が有効ではないボリュームでは、Azure File Sync は、そのボリュームでの Windows Server のデータ重複除去の有効化をサポートします。
 
 ### <a name="distributed-file-system-dfs"></a>分散ファイル システム (DFS)
-[Azure File Sync エージェント 1.2](https://go.microsoft.com/fwlink/?linkid=864522) 以降の Azure File Sync は、DFS 名前空間 (DFS-N) および DFS レプリケーション (DFS-R) との相互運用をサポートします。
+Azure File Sync は、DFS 名前空間 (DFS-N) および DFS レプリケーション (DFS-R) との相互運用をサポートします。
 
-**DFS 名前空間 (DFS-N)**: Azure File Sync は DFS-N サーバーで完全にサポートされます。 1 つまたは複数の DFS-N メンバーに Azure File Sync をインストールして、サーバー エンドポイントとクラウド エンドポイントの間でデータを同期できます。 詳しくは、「[DFS 名前空間の概要](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)」をご覧ください。
+**DFS 名前空間 (DFS-N)**:Azure File Sync は DFS-N サーバーで完全にサポートされます。 1 つまたは複数の DFS-N メンバーに Azure File Sync をインストールして、サーバー エンドポイントとクラウド エンドポイントの間でデータを同期できます。 詳しくは、「[DFS 名前空間の概要](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)」をご覧ください。
  
-**DFS レプリケーション (DFS-R)**: DFS-R と Azure File Sync はどちらもレプリケーション ソリューションなので、ほとんどの場合は、DFS-R を Azure File Sync に置き換えることをお勧めします。ただし、DFS-R と Azure File Sync を併用するのが望ましいシナリオがいくつかあります。
+**DFS レプリケーション (DFS-R)**:DFS-R と Azure File Sync はどちらもレプリケーション ソリューションなので、ほとんどの場合は、DFS-R を Azure File Sync に置き換えることをお勧めします。ただし、DFS-R と Azure File Sync を併用するのが望ましいシナリオがいくつかあります。
 
 - DFS-R のデプロイから Azure File Sync のデプロイに移行しているとき。 詳しくは、「[DFS レプリケーション (DFS-R) のデプロイを Azure File Sync に移行する](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync)」をご覧ください。
 - ファイル データのコピーが必要なオンプレミスのサーバーの中に、インターネットに直接接続することができないものが含まれる場合。
@@ -198,10 +207,13 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 ### <a name="backup-solutions"></a>バックアップ ソリューション
 ウイルス対策ソリューションと同様に、バックアップ ソリューションでも階層化されたファイルの再呼び出しが発生することがあります。 Azure ファイル共有をバックアップするには、オンプレミスのバックアップ製品ではなく、クラウド バックアップ ソリューションを使用することをお勧めします。
 
-オンプレミス バックアップ ソリューションを使用している場合、クラウドの階層化が無効な同期グループ内のサーバーに対してバックアップを実行する必要があります。 サーバー エンドポイント内にあるファイルを復元するときは、ファイル レベルの復元オプションを使用してください。 復元されたファイルは、同期グループ内のすべてのエンドポイントに同期され、既存のファイルはバックアップから復元されたバージョンに置き換えられます。
+オンプレミス バックアップ ソリューションを使用している場合、クラウドの階層化が無効な同期グループ内のサーバーに対してバックアップを実行する必要があります。 復元を実行するときは、ボリューム レベルまたはファイル レベルの復元オプションを使用します。 ファイル レベルの復元オプションを使用して復元されたファイルは、同期グループ内のすべてのエンドポイントに同期され、既存のファイルはバックアップから復元されたバージョンに置き換えられます。  ボリューム レベルの復元では、Azure ファイル共有やその他のサーバー エンドポイントの新しいファイル バージョンに置き換えられません。
 
 > [!Note]  
-> アプリケーションに対応した、ボリュームレベルおよびベアメタル (BMR) 復元オプションは予期しない結果を引き起こす可能性があるため、現在サポートされていません。 これらの復元オプションは、今後のリリースでサポートされる予定です。
+> ベアメタル (BMR) 復元は予期しない結果が生じることがあるため、現在サポートされていません。
+
+> [!Note]  
+> VSS スナップショット ([以前のバージョン] タブを含む) は、クラウドの階層化が有効なボリュームでは現在サポートされていません。 クラウドの階層化が有効になっている場合、Azure ファイル共有のスナップショットを使用して、バックアップからファイルを復元します。
 
 ### <a name="encryption-solutions"></a>暗号化ソリューション
 暗号化ソリューションのサポートは、実装方法によって変わります。 Azure ファイル同期は次のソリューションと連携することが確認されています。
@@ -225,13 +237,16 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 |--------|---------------------|
 | オーストラリア東部 | ニュー サウス ウェールズ州 |
 | オーストラリア南東部 | ビクトリア州 |
+| ブラジル南部 | サンパウロ州 |
 | カナダ中部 | トロント |
 | カナダ東部 | ケベック シティ |
 | インド中部 | プネー |
-| 米国中央部 | アイオワ州 |
+| 米国中部 | アイオワ州 |
 | 東アジア | 香港特別行政区 |
 | 米国東部 | バージニア州 |
 | 米国東部 2 | バージニア州 |
+| 東日本 | 東京、埼玉 |
+| 西日本 | 大阪 |
 | 米国中北部 | イリノイ州 |
 | 北ヨーロッパ | アイルランド |
 | 米国中南部 | テキサス |
@@ -247,6 +262,9 @@ Azure File Sync は、ストレージ同期サービスと同じリージョン�
 ### <a name="azure-disaster-recovery"></a>Azure ディザスター リカバリー
 Azure リージョンの損失を防ぐため、Azure File Sync には [geo 冗長ストレージの冗長性](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) オプションが統合されています。 GRS ストレージは、プライマリ リージョンのストレージ (通常、操作している) と、ペアのセカンダリ リージョンとの間でブロックの非同期レプリケーションを使用することで機能します。 Azure リージョンが一時的または永続的にオフラインになる障害が発生した場合、Microsoft はペアのリージョンにストレージをフェールオーバーします。 
 
+> [!Warning]  
+> Azure ファイル共有を GRS ストレージ アカウントのクラウド エンドポイントとして使用している場合は、ストレージ アカウントのフェールオーバーを開始しないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。 Azure リージョンが失われた場合は、Azure File Sync との互換性のある方法でストレージ アカウントのフェールオーバーがトリガーされます。
+
 geo 冗長ストレージと Azure File Sync との間のフェールオーバーの統合をサポートするため、すべての Azure File Sync リージョンが、ストレージで使用されるセカンダリ リージョンと一致するセカンダリ リージョンとペアになります。 これらのペアは次のとおりです。
 
 | プライマリ リージョン      | ペアのリージョン      |
@@ -256,10 +274,12 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | カナダ中部      | カナダ東部        |
 | カナダ東部         | カナダ中部     |
 | インド中部       | インド南部        |
-| 米国中央部          | 米国東部 2          |
+| 米国中部          | 米国東部 2          |
 | 東アジア           | 東南アジア     |
 | 米国東部             | 米国西部            |
-| 米国東部 2           | 米国中央部         |
+| 米国東部 2           | 米国中部         |
+| 韓国中部       | 韓国南部        |
+| 韓国南部         | 韓国中部      |
 | 北ヨーロッパ        | 西ヨーロッパ        |
 | 米国中北部    | 米国中南部   |
 | インド南部         | インド中部      |
@@ -277,3 +297,4 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 * [Azure Files のデプロイの計画](storage-files-planning.md)
 * [Azure Files をデプロイする](storage-files-deployment-guide.md)
 * [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
+* [Azure File Sync の監視](storage-sync-files-monitoring.md)

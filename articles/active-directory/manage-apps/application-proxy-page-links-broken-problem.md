@@ -3,24 +3,25 @@ title: ページ上のリンクがアプリケーション プロキシ アプ�
 description: Azure AD と統合したアプリケーション プロキシ アプリケーション上の壊れたリンクに関する問題をトラブルシューティングする方法
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 382b484f5ed1e45863d24635554cd7c3a55176a4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d860ac77653a97855248c45e43d28ea4c694979e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378416"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170909"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>ページ上のリンクがアプリケーション プロキシ アプリケーションに対して機能しない
 

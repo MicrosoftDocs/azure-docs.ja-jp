@@ -1,20 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f1317c78570ace901c076ae2814bee3216fc5b79
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172906"
 documentType: LandingData
 title: Azure AD Authentication のドキュメント
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory 認証のドキュメント
   description: Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの管理と展開を行う方法について説明します。
   services: active-directory
-  ms.component: authentication
+  ms.subservice: authentication
   author: MicrosoftGuyJFlo
-  manager: mtillman
+  manager: daveba
   ms.service: active-directory
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -24,26 +18,26 @@ metadata:
 abstract:
   description: Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの展開と管理を行う方法について説明します。 これらの機能が組み合わさることで、シンプルなサインイン プロセスが組織に提供されると同時に、さまざまな検証方法による強力な認証が実現されます。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: セルフサービスのパスワード リセットを有効にして、ユーザーからのヘルプデスク呼び出しを減らす方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: ./media/index/i_protect.png
-      text: セルフ サービスのパスワード リセットを有効にする
-      href: https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: 組織でシンプルで安全なサインイン プロセスを有効にする方法について説明します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: セルフサービスのパスワード リセットを有効にして、ユーザーからのヘルプデスク呼び出しを減らす方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/i_protect.png
+            text: セルフ サービスのパスワード リセットを有効にする
+            href: 'https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr'
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/active-directory/authentication/tutorial-sspr-pilot">セルフサービスのパスワード リセットのパイロットを有効にする</a>
-    - html: <a href="/azure/active-directory/authentication/tutorial-mfa-applications">Azure portal で MFA を要求する</a>
-    - html: <a href="/azure/active-directory/authentication/tutorial-enable-writeback">セルフサービスのパスワード リセットのオンプレミス統合を有効にする</a>
-    - html: <a href="/azure/active-directory/authentication/tutorial-sspr-windows">Windows 10 のパスワード リセットを有効にする</a>
-    - html: <a href="/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa">Azure Identity Protection と統合する</a>
+      - type: paragraph
+        text: 組織でシンプルで安全なサインイン プロセスを有効にする方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/authentication/tutorial-sspr-pilot">セルフサービスのパスワード リセットのパイロットを有効にする</a>
+          - html: <a href="/azure/active-directory/authentication/tutorial-mfa-applications">Azure portal で MFA を要求する</a>
+          - html: <a href="/azure/active-directory/authentication/tutorial-enable-writeback">セルフサービスのパスワード リセットのオンプレミス統合を有効にする</a>
+          - html: <a href="/azure/active-directory/authentication/tutorial-sspr-windows">Windows 10 のパスワード リセットを有効にする</a>
+          - html: <a href="/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa">Azure Identity Protection と統合する</a>

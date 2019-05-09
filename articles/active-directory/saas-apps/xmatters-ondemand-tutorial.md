@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と xMatters OnDemand の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と xMatters OnDemand の統合 | Microsoft Docs
 description: Azure Active Directory と xMatters OnDemand の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: ca0633db-4f95-432e-b3db-0168193b5ce9
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: a235b85887e64e0a5ca35aae8f31734250a78bb5
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8b5ec711f0e43d9d29d962d43ed8b1d86338db87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160236"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881216"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル: Azure Active Directory と xMatters OnDemand の統合
+# <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル:Azure Active Directory と xMatters OnDemand の統合
 
 このチュートリアルでは、xMatters OnDemand と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ xMatters OnDemand で、Azure AD の **[ユーザー名]** の値を **[Username
 
 xMatters OnDemand で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[xMatters OnDemand テスト ユーザーの作成](#creating-a-xmatters-ondemand-test-user)** - xMatters OnDemand で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -113,6 +114,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
     ![Configure single sign-on](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。
+
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -122,6 +124,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
     | `https://<companyname>.xmatters.com.au/`|
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -208,9 +211,9 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
 1. **XMatters OnDemand** テナントにログインします。
 
-1.  **[Users]\(ユーザー\)** タブをクリックし、**[Add User]\(ユーザーの追加\)** をクリックします。
+1. **[Users]\(ユーザー\)** タブをクリックし、**[Add User]\(ユーザーの追加\)** をクリックします。
 
-    ![ユーザー](./media/xmatters-ondemand-tutorial/IC781048.png "Users")
+   ![ユーザー](./media/xmatters-ondemand-tutorial/IC781048.png "Users")
 
 1. **[ユーザーの追加]** セクションで、次の手順に従います。
 

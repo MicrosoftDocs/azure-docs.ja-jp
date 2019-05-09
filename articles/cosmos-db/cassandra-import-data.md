@@ -5,17 +5,17 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: ed86ce20a6230d487dfbd968a31507953400fab6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cc312a707f5ab74967b9d3bc050fec7bfcad9dbc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100463"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58851074"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル: Azure Cosmos DB の Cassandra API アカウントにデータを移行する
 
@@ -35,31 +35,31 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * **スループットのニーズを推定する:** Azure Cosmos DB の Cassandra API アカウントにデータを移行する前に、ワークロードに必要なスループットを推定する必要があります。 一般に、CRUD 操作で必要な平均スループットで始めた後、抽出、変換、読み込み (ETL) またはスパイク性の操作に必要な追加スループットを含めることをお勧めします。 移行を計画するには次の詳細情報が必要です。 
 
-   * **既存のデータ サイズまたは推定データ サイズ:** データベースの最小サイズとスループットの要件を定義します。 新しいアプリケーションのデータ サイズを推定する場合は、データが行に一様に分布しているものと見なし、データ サイズを掛けることによって値を推定できます。 
+  * **既存のデータ サイズまたは推定データ サイズ:** データベースの最小サイズとスループットの要件を定義します。 新しいアプリケーションのデータ サイズを推定する場合は、データが行に一様に分布しているものと見なし、データ サイズを掛けることによって値を推定できます。 
 
-   * **必要なスループット:** 読み取り (クエリ/取得) および書き込み (更新/削除/挿入) の概算スループット レート。 この値は、必要な要求ユニット数と安定した状態データのサイズを計算するために必要です。  
+  * **必要なスループット:** 読み取り (クエリ/取得) および書き込み (更新/削除/挿入) の概算スループット レート。 この値は、必要な要求ユニット数と安定した状態データのサイズを計算するために必要です。  
 
-   * **スキーマ:** cqlsh を使用して既存の Cassandra クラスターに接続し、Cassandra からスキーマをエクスポートします。 
+  * **スキーマ:** cqlsh を使用して既存の Cassandra クラスターに接続し、Cassandra からスキーマをエクスポートします。 
 
-     ```bash
-     cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
-     ```
+    ```bash
+    cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
+    ```
 
-   既存のワークロードの要件を明らかにした後は、収集したスループットの要件に従って Azure Cosmos アカウント、データベース、およびコンテナーを作成する必要があります。  
+    既存のワークロードの要件を明らかにした後は、収集したスループットの要件に従って Azure Cosmos アカウント、データベース、およびコンテナーを作成する必要があります。  
 
-   * **操作の RU 料金の決定:** Cassandra API によってサポートされている任意の SDK を使用して、RU を決定できます。 この例では、.NET バージョンでの RU 負担取得方法を示します。
+  * **操作の RU 料金の決定:** Cassandra API によってサポートされている任意の SDK を使用して、RU を決定できます。 この例では、.NET バージョンでの RU 負担取得方法を示します。
 
-     ```csharp
-     var tableInsertStatement = table.Insert(sampleEntity);
-     var insertResult = await tableInsertStatement.ExecuteAsync();
+    ```csharp
+    var tableInsertStatement = table.Insert(sampleEntity);
+    var insertResult = await tableInsertStatement.ExecuteAsync();
 
-     foreach (string key in insertResult.Info.IncomingPayload)
-       {
-          byte[] valueInBytes = customPayload[key];
-          string value = Encoding.UTF8.GetString(valueInBytes);
-          Console.WriteLine($"CustomPayload:  {key}: {value}");
-       }
-     ```
+    foreach (string key in insertResult.Info.IncomingPayload)
+      {
+         byte[] valueInBytes = customPayload[key];
+         double value = Encoding.UTF8.GetString(valueInBytes);
+         Console.WriteLine($"CustomPayload:  {key}: {value}");
+      }
+    ```
 
 * **必要なスループットの割り当て:** Azure Cosmos DB は、要件の増大に従って、ストレージとスループットを自動的にスケーリングできます。 [Azure Cosmos DB の要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)を使って、スループットのニーズを推定することができます。 
 

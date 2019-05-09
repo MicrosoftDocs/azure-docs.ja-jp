@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/24/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 743ac433418386281acc58ad1deef06ee75e38d9
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d7684aa79ac9f58c2a047b01a6d9f5263795221d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316874"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912052"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK バージョン 5 へのアップグレード
 バージョン 4.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 5 を使用するようにアプリケーションをアップグレードできます。
@@ -44,17 +44,26 @@ Azure Search .NET SDK のバージョン 5 は、Azure Search REST API の最新
 ## <a name="steps-to-upgrade"></a>アップグレードの手順
 最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することで、 `Microsoft.Azure.Search` の NuGet 参照を更新します。
 
-NuGet が新しいパッケージとその依存関係をダウンロードした後、プロジェクトをリビルドします。 新しい GA SDK に含まれていないプレビュー機能を使用している場合を除き、正しくリビルドされるはずです (そうでない場合は、[GitHub](https://github.com/azure/azure-sdk-for-net/issues) にてお知らせください)。 リビルドされれば、準備は完了です。
+NuGet が新しいパッケージとその依存関係をダウンロードした後、プロジェクトをリビルドします。 コードの構成方法に応じて、正常にリビルドされます。 リビルドされれば、準備は完了です。
+
+ビルドが失敗した場合は、次のようにビルド エラーが表示されます。
+
+    The name 'SuggesterSearchMode' does not exist in the current context
+
+次の手順として、このビルド エラーを修正します。 エラーの原因と修正方法については、「[バージョン 5 における重大な変更](#ListOfChanges)」をご覧ください。
 
 Azure Search .NET SDK のパッケージにおける変更のため、バージョン 5 を使用するためには、アプリケーションをリビルドする必要があることに注意してください。 これらの変更については、「[バージョン 5 における重大な変更](#ListOfChanges)」で詳しく説明します。
 
 古いメソッドまたはプロパティに関連するビルド警告が表示される場合があります。 それらの警告には、非推奨の機能の代わりに何を使用するかについての指示が含まれます。 たとえば、アプリケーションが `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` メソッドを使用している場合、「この動作は既定で有効にされるようになったため、このメソッドを呼び出す必要はなくなりました」といった警告が表示されます。
 
-ビルドの警告をすべて修正した後、必要に応じて新しい機能を利用するようにアプリケーションを変更できます。 SDK の新機能の詳細については、「[バージョン 5 の新機能](#WhatsNew)」をご覧ください。
+ビルドのエラーまたは警告をすべて修正した後、必要に応じて新しい機能を利用するようにアプリケーションを変更できます。 SDK の新機能の詳細については、「[バージョン 5 の新機能](#WhatsNew)」をご覧ください。
 
 <a name="ListOfChanges"></a>
 
 ## <a name="breaking-changes-in-version-5"></a>バージョン 5 における重大な変更
+
+### <a name="new-package-structure"></a>新しいパッケージの構造
+
 バージョン 5 における最も重大な変更は、`Microsoft.Azure.Search` アセンブリとその内容が 4 つの別個のアセンブリに分割されたことです。これらは 4 つの別個の NuGet パッケージとして配布されるようになりました。
 
  - `Microsoft.Azure.Search`:依存関係がある Azure Search の他のパッケージをすべて含むメタパッケージです。 以前のバージョンの SDK からアップグレードする場合は、単純にこのパッケージをアップグレードしてリビルドすれば、新しいバージョンの使用を開始するのに十分です。
@@ -65,6 +74,10 @@ Azure Search .NET SDK のパッケージにおける変更のため、バージ�
 この変更が技術的に重要なのは、多くの型がアセンブリ間で移動されたためです。 バージョン 5 の SDK にアップグレードするためにアプリケーションのリビルドが必要なのは、このためです。
 
 バージョン 5 には、その他にも、アプリケーションのリビルドだけでなく、コードの変更が必要な場合がある重大な変更が少し含まれています。
+
+### <a name="change-to-suggesters"></a>サジェスターに対する変更点 
+
+`Suggester` コンストラクターで、`SuggesterSearchMode` に対する `enum` パラメーターはなくなりました。 この列挙型の値は 1 つだけであり、そのため冗長でした。 この結果としてビルド エラーが発生する場合は、単純に `SuggesterSearchMode` パラメーターの参照を削除してください。
 
 ### <a name="removed-obsolete-members"></a>古い形式のメンバーの削除
 

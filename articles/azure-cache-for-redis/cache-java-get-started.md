@@ -1,26 +1,26 @@
 ---
 title: 'クイック スタート: Java で Azure Cache for Redis を使用する方法 | Microsoft Docs'
 description: このクイック スタートでは、Azure Cache for Redis を使用する新しい Java アプリを作成します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
 ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/23/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0a407cdfd6786848825a114ff5667ccaff91fe71
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 047350fa957d9ca1fdec50f97a590ba90a42e1b2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556875"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237768"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>クイック スタート: Java で Azure Cache for Redis を使用する方法
 
@@ -38,7 +38,7 @@ Azure Cache for Redis を使用すると、Microsoft によって管理されて
 
 ## <a name="prerequisites"></a>前提条件
 
-[Apache Maven](http://maven.apache.org/)
+[Apache Maven](https://maven.apache.org/)
 
 
 

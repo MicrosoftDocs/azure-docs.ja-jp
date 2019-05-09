@@ -1,21 +1,22 @@
 ---
-title: Azure Active Directory での B2B コラボレーション ユーザーの要求マッピング | Microsoft Docs
+title: B2B コラボレーション ユーザーの要求マッピング - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) B2B ユーザーの SAML トークンで発行されたユーザー要求をカスタマイズします。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: fd18af3cca200813ba447e642ab678c3c1a8900a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 445d6c8b527b56f63a1156a39ac07393b4ffe115
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985681"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668549"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーション ユーザーの要求マッピング
 

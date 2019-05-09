@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 26959425ec42870ec084146380c376d76e7029f3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60489e3fc7fc6482a14a241e777066b3805a4d5e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542647"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095111"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
 
@@ -57,11 +57,11 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 
 3. [復元] フォームに必要な情報を入力します。
 
-   ![Azure Database for PostgreSQL - 情報の復元 ](./media/howto-restore-server-portal/3-restore.png)
-  - **復元ポイント**:復元先の特定の時点を選択します。
-  - **対象サーバー**:新しいサーバーの名前を指定します。
-  - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
-  - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
+   ![Azure Database for PostgreSQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
+   - **復元ポイント**:復元先の特定の時点を選択します。
+   - **対象サーバー**:新しいサーバーの名前を指定します。
+   - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+   - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
 4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
 

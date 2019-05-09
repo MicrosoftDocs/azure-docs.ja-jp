@@ -4,30 +4,25 @@ description: Azure Resource Manager テンプレートで、リソースに関�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2018
+ms.date: 04/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 72b0aba4d2bf9cb666d1cb7ae30d0cbdefe3045b
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438413"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490760"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
 リソース マネージャーには、リソース値を取得する次の関数が用意されています。
 
-* [listAccountSas](#list)
-* [listKeys](#listkeys)
-* [listSecrets](#list)
 * [list*](#list)
 * [providers](#providers)
 * [reference](#reference)
@@ -40,28 +35,122 @@ ms.locfileid: "53438413"
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listaccountsas-listkeys-listsecrets-and-list"></a>listAccountSas、listKeys、listSecrets、list*
-`listAccountSas(resourceName or resourceIdentifier, apiVersion, functionValues)`
+## <a name="list"></a>list*
 
-`listKeys(resourceName or resourceIdentifier, apiVersion)`
+`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-`listSecrets(resourceName or resourceIdentifier, apiVersion)`
-
-`list{Value}(resourceName or resourceIdentifier, apiVersion)`
-
-list 操作をサポートする任意の種類のリソースの値を返します。 最も一般的に使用されるのは、`listKeys` と `listSecrets` です。 
+この関数の構文はリスト操作の名前によって異なります。 実装ごとに、リスト操作をサポートするリソースの種類の値が返されます。 操作名は `list` で始める必要があります。 一般的に使用されるものに `listKeys` と `listSecrets` があります。 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
-| functionValues |いいえ  |オブジェクト | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 | 
+| functionValues |いいえ  |object | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 | 
+
+### <a name="implementations"></a>実装
+
+list* の使用例を次の表にまとめています。
+
+| リソースの種類 | 関数名 |
+| ------------- | ------------- |
+| Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
+| Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
+| Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
+| Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
+| Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
+| Microsoft.ContainerRegistry/registries | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
+| Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
+| Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
+| Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
+| Microsoft.DataFactory/datafactories/gateways | listauthkeys |
+| Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
+| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
+| Microsoft.Devices/iotHubs | [listkeys](/rest/api/iothub/iothubresource/listkeys) |
+| Microsoft.Devices/provisioningServices/keys | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
+| Microsoft.Devices/provisioningServices | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeys) |
+| Microsoft.DevTestLab/labs | [ListVhds](/rest/api/dtl/labs/listvhds) |
+| Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
+| Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
+| Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
+| Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
+| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
+| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
+| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft.ImportExport/jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
+| Microsoft.Logic/integrationAccounts/agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
+| Microsoft.Logic/integrationAccounts/assemblies | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
+| Microsoft.Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
+| Microsoft.Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
+| Microsoft.Logic/integrationAccounts/maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
+| Microsoft.Logic/integrationAccounts/partners | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
+| Microsoft.Logic/integrationAccounts/schemas | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
+| Microsoft.Logic/workflows | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
+| Microsoft.Logic/workflows | [listSwagger](/rest/api/logic/workflows/listswagger) |
+| Microsoft.MachineLearning/webServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
+| Microsoft.MachineLearning/Workspaces | listworkspacekeys |
+| Microsoft.MachineLearningServices/workspaces/computes | listKeys |
+| Microsoft.MachineLearningServices/workspaces | listKeys |
+| Microsoft.Maps/accounts | [listKeys](/rest/api/maps-management/accounts/listkeys) |
+| Microsoft.Media/mediaservices/assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
+| Microsoft.Media/mediaservices/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
+| Microsoft.Media/mediaservices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
+| Microsoft.Media/mediaservices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
+| Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
+| Microsoft.OperationalInsights/workspaces | [listKeys](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft.Relay/namespaces/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
+| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
+| Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
+| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
+| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
+| Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](/rest/api/servicebus/namespaces/listkeys) |
+| Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
+| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](/rest/api/servicebus/queues/listkeys) |
+| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](/rest/api/servicebus/topics/listkeys) |
+| Microsoft.SignalRService/SignalR | [listkeys](/rest/api/signalr/signalr/listkeys) |
+| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft.Storage/storageAccounts | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft.StorSimple/managers/devices | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
+| Microsoft.StorSimple/managers/devices | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
+| Microsoft.StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
+| Microsoft.StorSimple/managers | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Microsoft.Web/connectionGateways | ListStatus |
+| microsoft.web/connections | listconsentlinks |
+| Microsoft.Web/customApis | listWsdlInterfaces |
+| microsoft.web/locations | listwsdlinterfaces |
+| microsoft.web/sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
+| microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](/rest/api/appservice/webapps/listhybridconnectionkeys) |
+| microsoft.web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
+| microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+
+どのリソースの種類にリスト操作が含まれているのかを判断するには、次のオプションを使用できます。
+
+* リソース プロバイダーの [REST API の操作](/rest/api/)に関するページを参照して、リスト操作を検索します。 たとえば、ストレージ アカウントには [listKeys 操作](/rest/api/storagerp/storageaccounts)があります。
+* [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) PowerShell コマンドレットを使用します。 次の例では、ストレージ アカウントのすべてのリスト操作が取得されます。
+
+  ```powershell
+  Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
+  ```
+* 次の Azure CLI コマンドを使って、リスト操作のみをフィルター処理します。
+
+  ```azurecli
+  az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
+  ```
 
 ### <a name="return-value"></a>戻り値
 
-listKeys から返されるオブジェクトの形式は次のとおりです。
+返されるオブジェクトは、使用するリスト関数によって異なります。 たとえば、ストレージ アカウントに対して listKeys は次の形式を返します。
 
 ```json
 {
@@ -80,31 +169,19 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
 }
 ```
 
-他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、テンプレートの例に示すように、outputs セクションにその関数を含めてください。 
+他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、テンプレートの例に示すように、outputs セクションにその関数を含めてください。
 
 ### <a name="remarks"></a>解説
 
-**list** で始まるすべての操作は、テンプレート内で関数として使用できます。 使用可能な操作には、listKeys だけでなく、`list`、`listAdminKeys`、`listStatus` などの操作も含まれます。 [List Account SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) 操作には、*signedExpiry* などの要求本文のパラメーターが必要です。 テンプレートでこの関数を使用するには、オブジェクトに本文のパラメーター値を指定します。
+リソース名または [resourceId 関数](#resourceid)を使用して、リソースを指定します。 参照されているリソースをデプロイするのと同じテンプレートでリスト関数を使うときは、リソース名を使ってください。
 
-どのリソースの種類にリスト操作が含まれているのかを判断するには、次のオプションを使用できます。
-
-* リソース プロバイダーの [REST API の操作](/rest/api/)に関するページを参照して、リスト操作を検索します。 たとえば、ストレージ アカウントには [listKeys 操作](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys)があります。
-* [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) PowerShell コマンドレットを使用します。 次の例では、ストレージ アカウントのすべてのリスト操作が取得されます。
-
-  ```powershell
-  Get-AzureRmProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
-  ```
-* 次の Azure CLI コマンドを使って、リスト操作のみをフィルター処理します。
-
-  ```azurecli
-  az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
-  ```
-
-リソース名または [resourceId 関数](#resourceid)を使用して、リソースを指定します。 参照されているリソースをデプロイするのと同じテンプレートでこの関数を使うときは、リソース名を使ってください。
+**list** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。 **list** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースが存在する場合にのみこの関数が評価されるようにするには、**if** 関数を使用します。 if と list を条件付きでデプロイされるリソースで使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)は、outputs セクションでストレージ アカウントのプライマリ キーとセカンダリ キーを返す方法を示しています。 また、ストレージ アカウントの SAS トークンも返します。 そのトークンを取得するには、listAccountSas 関数にオブジェクトを渡します。 この例は、list 関数を使用する方法を示したものです。 通常、SAS トークンを出力値として返すのではなく、リソース値で使用します。 出力値はデプロイ履歴に格納され、セキュリティで保護されません。 デプロイを正常に行うには、将来の有効期限を指定する必要があります。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)は、outputs セクションでストレージ アカウントのプライマリ キーとセカンダリ キーを返す方法を示しています。 また、ストレージ アカウントの SAS トークンも返します。 
+
+SAS トークンを取得するには、有効期限のオブジェクトを渡します。 有効期限は将来の日付にする必要があります。 この例は、list 関数を使用する方法を示したものです。 通常、SAS トークンを出力値として返すのではなく、リソース値で使用します。 出力値はデプロイ履歴に格納され、セキュリティで保護されません。
 
 ```json
 {
@@ -167,30 +244,17 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
         }
     }
 }
-``` 
-
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json --parameters storagename=<your-storage-account>
 ```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json -storagename <your-storage-account>
-```
-
-<a id="providers" />
 
 ## <a name="providers"></a>providers
+
 `providers(providerNamespace, [resourceType])`
 
 リソース プロバイダーとサポートされているそのリソースの種類に関する情報を返します。 リソースの種類を指定しない場合、関数はリソース プロバイダーでサポートされているすべての種類を返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |はい |string |プロバイダーの名前空間 |
 | resourceType |いいえ  |string |指定した名前空間内にあるリソースの種類。 |
@@ -257,28 +321,15 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json --parameters providerNamespace=Microsoft.Web resourceType=sites
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json -providerNamespace Microsoft.Web -resourceType sites
-```
-
-<a id="reference" />
-
 ## <a name="reference"></a>reference
+
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 リソースのランタイム状態を表すオブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 |
 | apiVersion |いいえ  |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
@@ -295,6 +346,8 @@ reference 関数は、以前にデプロイされたリソースまたは現在�
 reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。
 
 参照されているリソースを同じテンプレート内でプロビジョニングし、(リソース ID ではなく) 名前でリソースを参照する場合は、reference 関数を使用することにより、あるリソースが他のリソースに依存することを暗黙的に宣言します。 dependsOn プロパティを一緒に使用する必要はありません。 参照先のリソースがデプロイを完了するまで、関数は評価されません。
+
+**reference** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。  **reference** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースが存在する場合にのみこの関数が評価されるようにするには、**if** 関数を使用します。 if と reference を条件付きでデプロイされるリソースで使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
 
 ある種類のリソースによって返されるプロパティの名前と値を確認するには、outputs セクションでオブジェクトを返すテンプレートを作成します。 その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。 
 
@@ -345,7 +398,7 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "storageAccountName": { 
@@ -435,18 +488,6 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json --parameters storageAccountName=<your-storage-account>
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json -storageAccountName <your-storage-account>
-```
-
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json)では、このテンプレートでデプロイされていないストレージ アカウントが参照されます。 このストレージ アカウントは、既に同じサブスクリプション内に存在します。
 
 ```json
@@ -471,21 +512,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json --parameters storageResourceGroup=<rg-for-storage> storageAccountName=<your-storage-account>
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json -storageResourceGroup <rg-for-storage> -storageAccountName <your-storage-account>
-```
-
-<a id="resourcegroup" />
-
 ## <a name="resourcegroup"></a>resourceGroup
+
 `resourceGroup()`
 
 現在のリソース グループを表すオブジェクトを返します。 
@@ -556,28 +584,15 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json 
-```
-
-<a id="resourceid" />
-
 ## <a name="resourceid"></a>resourceId
+
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
 
 リソースの一意の識別子を返します。 リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ  |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceGroupName |いいえ  |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
@@ -631,7 +646,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "virtualNetworkName": {
@@ -648,8 +663,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
       }
   },
   "variables": {
-      "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-      "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]"
+      "subnet1Ref": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]"
   },
   "resources": [
   {
@@ -704,28 +718,15 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json 
-```
-
-<a id="subscription" />
-
 ## <a name="subscription"></a>サブスクリプション
+
 `subscription()`
 
 現在のデプロイのサブスクリプションの詳細を返します。 
@@ -761,19 +762,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json 
-```
-
 ## <a name="next-steps"></a>次の手順
+
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

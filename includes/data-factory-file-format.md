@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: a9f956e66be03a4811868cbc2e7d6fc7dc672310
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886404"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58919278"
 ---
 ## <a name="specifying-formats"></a>形式の指定
 Azure Data Factory は次の形式をサポートしています。
@@ -27,10 +27,10 @@ Azure Data Factory は次の形式をサポートしています。
 | --- | --- | --- | --- |
 | columnDelimiter |ファイル内の列を区切るために使用する文字。 たとえば、見出しの先頭 (SOH) を表す "\u0001" を指定するなど、データ内に存在する可能性が低い、出力できないような珍しい文字を使用することを検討できます。 |使用できるのは 1 文字だけです。 **既定**値は**コンマ (,)** です。 <br/><br/>Unicode 文字を使用するには、[Unicode 文字](https://en.wikipedia.org/wiki/List_of_Unicode_characters)に関するページを参照して、対応するコードを取得してください。 |いいえ  |
 | rowDelimiter |ファイル内の行を区切るために使用する文字。 |使用できるのは 1 文字だけです。 読み取り時の**既定**値は **["\r\n"、"\r"、"\n"]** のいずれかになり、書き込み時の既定値は **"\r\n"** になります。 |いいえ  |
-| escapeChar |入力ファイルのコンテンツの列区切り記号をエスケープするために使用する特殊文字。 <br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定することはできません。 |使用できるのは 1 文字だけです。 既定値はありません。 <br/><br/>例: 列区切り記号としてコンマ (,) を使用しているときに、テキストにもコンマ文字を含める必要がある場合 (例: "Hello, world")、エスケープ文字として "$" を定義し、ソースで文字列 "Hello$, world" を使用できます。 |いいえ  |
+| escapeChar |入力ファイルのコンテンツの列区切り記号をエスケープするために使用する特殊文字。 <br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定することはできません。 |使用できるのは 1 文字だけです。 既定値はありません。 <br/><br/>例:列区切り記号としてコンマ (,) を使用しているときに、テキストにもコンマ文字を含める必要がある場合 (例:"Hello, world")、エスケープ文字として "$" を定義し、ソースで文字列 "Hello$, world" を使用できます。 |いいえ  |
 | quoteChar |文字列値の引用に使用する文字。 引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。 このプロパティは、入力と出力の両方のデータセットに適用されます。<br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定することはできません。 |使用できるのは 1 文字だけです。 既定値はありません。 <br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: Hello, world)、引用符文字として " (二重引用符) を定義し、ソースで文字列 "Hello, world" を使用できます。 |いいえ  |
 | nullValue |Null 値を表すために使用する 1 つ以上の文字。 |1 つ以上の文字。 **既定**値は、読み取り時は **"\N" および "NULL"**、書き込み時は **"\N"** です。 |いいえ  |
-| encodingName |エンコード名の指定。 |有効なエンコード名。 詳細については、[Encoding.EncodingName プロパティ](https://msdn.microsoft.com/library/system.text.encoding.aspx)に関するページを参照してください。 例: windows-1250 または shift_jis。 **既定**値は **UTF-8** です。 |いいえ  |
+| encodingName |エンコード名の指定。 |有効なエンコード名。 詳細については、[Encoding.EncodingName プロパティ](/dotnet/api/system.text.encoding)に関するページを参照してください。 例: windows-1250 または shift_jis。 **既定**値は **UTF-8** です。 |いいえ  |
 | firstRowAsHeader |先頭行をヘッダーと見なすかどうかを指定します。 入力データセットでは、Data Factory は先頭行をヘッダーとして読み取ります。 出力データセットでは、Data Factory は先頭行をヘッダーとして書き込みます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |True<br/>**False (既定値)** |いいえ  |
 | skipLineCount |入力ファイルからのデータ読み取り時にスキップする行数を示します。 skipLineCount と firstRowAsHeader の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |整数 |いいえ  |
 | treatEmptyAsNull |入力ファイルのデータの読み取り時に null または空の文字列 を Null 値として扱うかどうかを指定します。 |**True (既定値)**<br/>False |いいえ  |
@@ -64,7 +64,7 @@ Azure Data Factory は次の形式をサポートしています。
 ```
 
 #### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>firstRowAsHeader と skipLineCount を使用するシナリオ
-* ファイル以外のソースからテキスト ファイルにコピーし、スキーマ メタデータ (例: SQL スキーマ) を含むヘッダー行を追加する:  このシナリオでは、出力データセットの `firstRowAsHeader` を True として指定します。
+* ファイル以外のソースからテキスト ファイルにコピーし、スキーマ メタデータ(例:SQL スキーマ) を含むヘッダー行を追加する。 このシナリオでは、出力データセットの `firstRowAsHeader` を True として指定します。
 * ヘッダー行を含むテキスト ファイルから、ファイル以外のシンクにコピーし、その行を削除する:  入力データセットの `firstRowAsHeader` を True として指定します。
 * テキスト ファイルからコピーして、データやヘッダー情報を含まない先頭の数行をスキップする:  `skipLineCount` を指定して、スキップする行数を示します。 ファイルの残りの部分にヘッダー行が含まれている場合は、`firstRowAsHeader` も指定できます。 `skipLineCount` と `firstRowAsHeader` の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
@@ -78,7 +78,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 | filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定**値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ  |
 | jsonNodeReference | 同じパターンを持つ配列フィールド内のオブジェクトからのデータの反復処理と抽出を行う場合は、その配列の JSON のパスを指定します。 このプロパティは、JSON ファイルからデータをコピーするときにのみサポートされます。 | いいえ  |
 | jsonPathDefinition | カスタマイズされた列名 (先頭が小文字) での列マッピングごとに JSON のパス式を指定します。 このプロパティは JSON ファイルからデータをコピーするときにのみサポートされ、オブジェクトまたは配列からデータを抽出することができます。 <br/><br/> ルート オブジェクトの直下のフィールドの場合、ルートの $ から記述します。`jsonNodeReference` プロパティによって選択された配列内のフィールドの場合、配列要素から記述します。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。 | いいえ  |
-| encodingName |エンコード名の指定。 有効なエンコード名の一覧については、[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定**値は、**UTF-8** です。 |いいえ  |
+| encodingName |エンコード名の指定。 有効なエンコード名の一覧については、[Encoding.EncodingName](/dotnet/api/system.text.encoding) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、**UTF-8** です。 |いいえ  |
 | nestingSeparator |入れ子レベルの分割に使用される文字。 既定値は "." (ドット) です。 |いいえ  |
 
 #### <a name="json-file-patterns"></a>JSON ファイルのパターン
@@ -174,7 +174,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 
 #### <a name="jsonformat-example"></a>JsonFormat の例
 
-**ケース 1: JSON ファイルからのデータのコピー**
+**ケース 1:JSON ファイルからのデータのコピー**
 
 JSON ファイルからデータをコピーするときの 2 種類のサンプルと、全般的な注意点については、以下を参照してください。
 
@@ -213,7 +213,7 @@ JSON ファイルからデータをコピーするときの 2 種類のサンプ
 
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
-- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳細については、「[四角形のデータセットの構造定義を指定する](#specifying-structure-definition-for-rectangular-datasets)」セクションを参照してください。
+- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳細については、「四角形のデータセットの構造定義を指定する」セクションを参照してください。
 - `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 配列からデータをコピーするには、**array[x].property** を使用して x 番目のオブジェクトから特定のプロパティの値を抽出するか、**array[*].property** を使用してこのようなプロパティを含むオブジェクトから値を見つけることができます。
 
 ```json
@@ -286,7 +286,7 @@ JSON ファイルからデータをコピーするときの 2 種類のサンプ
 
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
-- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳細については、「[四角形のデータセットの構造定義を指定する](#specifying-structure-definition-for-rectangular-datasets)」セクションを参照してください。
+- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳細については、「四角形のデータセットの構造定義を指定する」セクションを参照してください。
 - `jsonNodeReference` は、orderlines という**配列**の直下にある同じパターンのオブジェクトからのデータの反復処理と抽出を行うことを示します。
 - `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 この例での "ordernumber"、"orderdate"、"city" は、"$." から始まる JSON のパスが含まれるルート オブジェクトの直下にあります。"order_pd" と "order_price" は、"$." のない配列要素から派生したパスで定義されています。
 
@@ -333,7 +333,7 @@ JSON ファイルからデータをコピーするときの 2 種類のサンプ
 * 同じレベルに重複する名前がある場合、コピー アクティビティでは最後の 1 つが選択されます。
 * プロパティ名では大文字と小文字が区別されます。 名前は同じでも大文字小文字が異なる 2 つのプロパティは、2 つの個別のプロパティとして扱われます。
 
-**ケース 2: JSON ファイルへのデータの書き込み**
+**ケース 2:JSON ファイルへのデータの書き込み**
 
 SQL Database 内に次のテーブルが含まれており、
 

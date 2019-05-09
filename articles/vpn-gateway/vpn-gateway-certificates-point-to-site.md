@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 74639dee6fb548e1c9067cae6fc22f6e3cc872c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096233"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>PowerShell を使用したポイント対サイトの証明書の生成とエクスポート
 
@@ -30,12 +30,12 @@ New-SelfSignedCertificate コマンドレットを使用して、自己署名ル
 1. Windows 10 または Windows Server 2016 を実行しているコンピューターから、昇格された特権を使用して Windows PowerShell コンソールを開きます。 これらの例は、Azure Cloud Shell の [使ってみる] では動作しません。 これらの例は、ローカルで実行する必要があります。
 2. 次の例を使用して、自己署名ルート証明書を作成します。 次の例では、"P2SRootCert" という名前の自己署名ルート証明書が作成され、"Certificates-Current User\Personal\Certificates" に自動的にインストールされます。 *certmgr.msc*、または*ユーザー証明書の管理*を開くと、証明書を表示できます。
 
-  ```powershell
-  $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
-  -Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
-  -HashAlgorithm sha256 -KeyLength 2048 `
-  -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
-  ```
+   ```powershell
+   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+   -Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
+   -HashAlgorithm sha256 -KeyLength 2048 `
+   -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+   ```
 
 ## <a name="clientcert"></a>2.クライアント証明書を生成
 
@@ -47,7 +47,7 @@ New-SelfSignedCertificate コマンドレットを使用して、自己署名ル
 
 ### <a name="example-1"></a>例 1
 
-この例では、前のセクションで宣言した '$cert' 変数を使用します。 自己署名ルート証明書の作成後に PowerShell コンソールを閉じた場合または新しい PowerShell コンソール セッションで追加のクライアント証明書を作成している場合は、[例 2](#ex2) の手順を使用してください。
+自己署名ルート証明書を作成した後で PowerShell コンソールを閉じていない場合は、この例を使用します。 この例では、前のセクションから継続して、宣言した "$cert" 変数を使用します。 自己署名ルート証明書の作成後に PowerShell コンソールを閉じた場合または新しい PowerShell コンソール セッションで追加のクライアント証明書を作成している場合は、[例 2](#ex2) の手順を使用してください。
 
 クライアント証明書を生成するには、例を変更して実行します。 次の例を変更せずに実行した場合、クライアント証明書の名前は "P2SChildCert" になります。  子証明書に別の名前を付ける場合は、CN 値を変更します。 この例を実行する際に TextExtension を変更しないでください。 生成したクライアント証明書は、コンピューターの "Certificates - Current User\Personal\Certificates" に自動的にインストールされます。
 
@@ -65,37 +65,37 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 
 1. コンピューターにインストールされている自己署名ルート証明書を特定します。 次のコマンドレットは、コンピューターにインストールされている証明書の一覧を返します。
 
-  ```powershell
-  Get-ChildItem -Path “Cert:\CurrentUser\My”
-  ```
+   ```powershell
+   Get-ChildItem -Path “Cert:\CurrentUser\My”
+   ```
 2. 返された一覧でサブジェクト名を探し、その横にある拇印をテキスト ファイルにコピーします。 次の例では、2 つの証明書があります。 CN 名は、子証明書の生成元となる自己署名ルート証明書の名前です。 この場合は "P2SRootCert" です。
 
-  ```
-  Thumbprint                                Subject
+   ```
+   Thumbprint                                Subject
   
-  AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
-  7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
-  ```
+   AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
+   7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
+   ```
 3. 前の手順の拇印を使用して、ルート証明書の変数を宣言します。 THUMBPRINT を、子証明書の生成元となるルート証明書の拇印に置き換えます。
 
-  ```powershell
-  $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
-  ```
+   ```powershell
+   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
+   ```
 
-  たとえば、前の手順の P2SRootCert の拇印を使用すると、変数は次のようになります。
+   たとえば、前の手順の P2SRootCert の拇印を使用すると、変数は次のようになります。
 
-  ```powershell
-  $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
-  ```
-4.  クライアント証明書を生成するには、例を変更して実行します。 次の例を変更せずに実行した場合、クライアント証明書の名前は "P2SChildCert" になります。 子証明書に別の名前を付ける場合は、CN 値を変更します。 この例を実行する際に TextExtension を変更しないでください。 生成したクライアント証明書は、コンピューターの "Certificates - Current User\Personal\Certificates" に自動的にインストールされます。
+   ```powershell
+   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
+   ```
+4. クライアント証明書を生成するには、例を変更して実行します。 次の例を変更せずに実行した場合、クライアント証明書の名前は "P2SChildCert" になります。 子証明書に別の名前を付ける場合は、CN 値を変更します。 この例を実行する際に TextExtension を変更しないでください。 生成したクライアント証明書は、コンピューターの "Certificates - Current User\Personal\Certificates" に自動的にインストールされます。
 
-  ```powershell
-  New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
-  -Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
-  -HashAlgorithm sha256 -KeyLength 2048 `
-  -CertStoreLocation "Cert:\CurrentUser\My" `
-  -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
-  ```
+   ```powershell
+   New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
+   -Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
+   -HashAlgorithm sha256 -KeyLength 2048 `
+   -CertStoreLocation "Cert:\CurrentUser\My" `
+   -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+   ```
 
 ## <a name="cer"></a>3.ルート証明書の公開キー (.cer) のエクスポート
 

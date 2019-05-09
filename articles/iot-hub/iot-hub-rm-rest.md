@@ -1,35 +1,36 @@
 ---
 title: リソース プロバイダー REST API を使用して Azure IoT Hnb を作成する | Microsoft Docs
 description: リソース プロバイダー REST API を使用して IoT Hub を作成する方法。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 06f05da839ebca2ae53e255acce7f07d1989673c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ca893670e01f4bccc211cd08064b6638e9224a9a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539773"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606788"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>リソース プロバイダー REST API を使用して IoT Hub を作成する (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-[IoT Hub リソース プロバイダー REST API][lnk-rest-api] を使って、Azure IoT ハブをプログラムを使用して作成、管理できます。 このチュートリアルでは、IoT Hub Resource Provider REST API を使用して C# プログラムから IoT Hub を作成する方法を説明します。
+[IoT Hub リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) を使って、Azure IoT ハブをプログラム的に作成、管理できます。 このチュートリアルでは、IoT Hub Resource Provider REST API を使用して C# プログラムから IoT Hub を作成する方法を説明します。
 
-> [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Azure Resource Manager デプロイ モデルの使用について説明します。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
-* [Azure PowerShell 1.0][lnk-powershell-install] 以降。
+
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
+
+* [Azure PowerShell 1.0](https://docs.microsoft.com/powershell/azure/install-Az-ps) 以降。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -70,13 +71,14 @@ ms.locfileid: "38539773"
     static string rgName = "{Resource group name}";
     static string iotHubName = "{IoT Hub name including your initials}";
     ```
-[!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+   
+    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
 ## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>リソース プロバイダー REST API を使用して IoT ハブを作成する
 
-[IoT Hub リソース プロバイダー REST API][lnk-rest-api] を使用して、リソース グループで新しい IoT ハブを作成します。 また、リソース プロバイダー REST API を使用して、既存の IoT ハブに変更を加えることもできます。
+[IoT Hub リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) を使用して、リソース グループで IoT ハブを作成します。 また、リソース プロバイダー REST API を使用して、既存の IoT ハブに変更を加えることもできます。
 
 1. 次のメソッドを Program.cs に追加します。
 
@@ -94,7 +96,7 @@ ms.locfileid: "38539773"
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
-3. 次のコードを **CreateIoTHub** メソッドに追加します。 このコードでは、IoT Hub が JSON 表現を作成して生成するように記述されています。 IoT Hub をサポートする場所の最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
+3. 次のコードを **CreateIoTHub** メソッドに追加します。 このコードでは、IoT Hub が JSON 表現を作成して生成するように記述されています。 IoT Hub をサポートする場所の最新のリストについては、「[Azure の状態](https://azure.microsoft.com/status/)」を参照してください。
 
     ```csharp
     var description = new
@@ -164,35 +166,25 @@ ms.locfileid: "38539773"
 
 3. **[デバッグ]**、**[デバッグの開始]** の順にクリックし、アプリケーションを実行します。 デプロイメントが実行されるまでに数分かかる場合があります。
 
-4. アプリケーションが新しい IoT Hub を追加したことを確認するには、[Azure Portal][lnk-azure-portal] にアクセスしてリソースの一覧を表示します。 または、**Get-AzureRmResource** PowerShell コマンドレットを使用します。
+4. アプリケーションが新しい IoT ハブを追加したことを確認するには、[Azure portal](https://portal.azure.com/) にアクセスしてリソースの一覧を表示します。 または、**Get-AzResource** PowerShell コマンドレットを使用します。
 
 > [!NOTE]
-> このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 完了したら、IoT ハブを削除するには、[Azure Portal][lnk-azure-portal] を使うか、終了時に **Remove-AzureRmResource** PowerShell コマンドレットを使用します。
+> このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 完了したら、[Azure portal](https://portal.azure.com/) を使うか、終了時に **Remove-AzResource** PowerShell コマンドレットを使用して IoT ハブを削除します。
 
 ## <a name="next-steps"></a>次の手順
+
 ここでは、リソース プロバイダー REST API を使用して IoT ハブをデプロイしました。次の手順に進んでください。
 
-* [IoT Hub リソース プロバイダー REST API][lnk-rest-api] の機能の詳細をご確認ください。
-* Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要][lnk-azure-rm-overview]」を参照してください。
+* [IoT Hub リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) の機能の詳細をご確認ください。
+
+* Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 
-* [C SDK の概要][lnk-c-sdk]
-* [Azure IoT SDK][lnk-sdks]
+* [C SDK の概要](iot-hub-device-sdk-c-intro.md)
+
+* [Azure IoT SDK](iot-hub-devguide-sdks.md)
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
-
-<!-- Links -->
-[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-azure-portal]: https://portal.azure.com/
-[lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
-[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
-
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)

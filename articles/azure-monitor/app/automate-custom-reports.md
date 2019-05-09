@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 74fdfed23d30dbf88b2faa6028039159010d9afc
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756176"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113080"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
@@ -110,12 +110,12 @@ availabilityResults
     
     (AI_ の値は、レポート対象となる Application Insights リソースの [API アクセス] で確認できます。 Application Insights API キーがない場合は、**[API キーの作成]** を使って作成できます。)
     
-    * AI_APP_ID = アプリケーション ID
-    * AI_APP_KEY = API キー
-    * SendGridAPI =SendGrid API キー
+   * AI_APP_ID = アプリケーション ID
+   * AI_APP_KEY = API キー
+   * SendGridAPI =SendGrid API キー
 
-    > [!NOTE]
-    > SendGrid アカウントがない場合は、 作成できます。 Azure Functions での SendGrid の使用に関するドキュメントは、[こちら](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)で参照できます。 SendGrid の設定方法と API キーの生成方法に関する簡単な説明は、この記事の最後に記載されています。 
+     > [!NOTE]
+     > SendGrid アカウントがない場合は、 作成できます。 Azure Functions での SendGrid の使用に関するドキュメントは、[こちら](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)で参照できます。 SendGrid の設定方法と API キーの生成方法に関する簡単な説明は、この記事の最後に記載されています。 
 
 9. **[統合]** を選択し、[出力] の下で **[SendGrid ($return)]** をクリックします。
 

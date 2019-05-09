@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7977dc55d101c99bf1f850a529083916367308b4
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: b83a6e2c81eac9993c481561e3cebbed681d2c4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747815"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096046"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>PowerShell を使用した静的内部プライベート IP アドレスの設定方法 (クラシック)
 ほとんどの場合は、仮想マシンに対して静的内部 IP アドレスを指定する必要はありません。 仮想ネットワーク内の VM は、指定された範囲の内部 IP アドレスを自動的に受け取るからです。 ただし、場合によっては、特定の VM に対して静的 IP アドレスを指定したほうが効果的な場合があります。 たとえば、VM が、DNS を実行したり、ドメイン コントローラーとして機能する場合です。 静的内部 IP アドレスは、VM が停止またはプロビジョニング解除された状態になっても VM で保持されます。 
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、[Resource Manager デプロイ モデル](virtual-networks-static-private-ip-arm-ps.md)を使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、[Resource Manager デプロイ モデル](virtual-networks-static-private-ip-arm-ps.md)を使用することをお勧めします。
 > 
 > 
-## <a name="install-the-azure-powershell-service-management-module"></a>Azure PowerShell Service Management モジュールをインストールする
+> ## <a name="install-the-azure-powershell-service-management-module"></a>Azure PowerShell Service Management モジュールをインストールする
 
 次のコマンドを実行する前に、[Azure PowerShell Service Management モジュール](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
 )がマシンにインストールされていることを確認します。 Azure PowerShell Service Management モジュールのバージョン履歴については、[PowerShell ギャラリーで Azure モジュール](https://www.powershellgallery.com/packages/Azure/5.3.0)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 847eddc78f8abc938e68e6fe383a773dadeaf779
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 7f8731f48b96ccbe0e77970af1ccefa1d7a7155f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557837"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438773"
 ---
 # <a name="azure-time-series-insights-preview-overview"></a>Azure Time Series Insights プレビューの概要
 

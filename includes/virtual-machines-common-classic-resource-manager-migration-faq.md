@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: 15cbfb9babe38ba6acaf4312735ab839af3f2d99
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 74496cd3d4cd01be326baae870b075eb923983af
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371305"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443299"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行に関してよく寄せられる質問
 
@@ -54,7 +54,7 @@ Resource Manager デプロイ モデルへのツールの更新は、移行計�
 クラシックから Resource Manager モードに VM を移行する<a name="vault">場合</a>、移行前に作成されたバックアップは、新しく移行した Resource Manager VM には移行されません。 ただし、クラシック VM のバックアップを保持する場合は、移行前に次の手順に従います。 
 
 1. Recovery Services コンテナーで、**[保護された項目]** タブに移動して VM を選択します。 
-2. [[保護の停止]](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines) をクリックします。 *[関連付けられたバックアップ データを削除します]* オプションは **オフ**のままにしておきます。
+2. [保護の停止] をクリックします。 *[関連付けられたバックアップ データを削除します]* オプションは **オフ**のままにしておきます。
 
 > [!NOTE]
 > データを保持するまでは、バックアップ インスタンス コストが課金されます。 バックアップ コピーは、リテンション期間に応じて取り除かれます。 ただし、バックアップ データを明示的に削除するまでは、最後のバックアップ コピーは常に保持されます。 仮想マシンのリテンション期間を確認し、リテンション期間が終了したら、コンテナーの保護された項目に対して "バックアップ データの削除" をトリガーすることをお勧めします。 

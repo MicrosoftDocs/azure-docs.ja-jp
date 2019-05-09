@@ -6,16 +6,16 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847798"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270984"
 ---
-# <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する 
+# <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する
 
 この記事では、SQL Server のビジネス継続性とディザスター リカバリー (BCDR) テクノロジおよび [Azure Site Recovery](site-recovery-overview.md) の組み合わせを使用してアプリケーションの SQL Server バックエンドを保護する方法について説明します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "52847798"
 * **SQL Server フェールオーバー クラスタリング インスタンス (Always On FCI)**: Windows フェールオーバー クラスター内には、共有ディスクを使用してインスタンス化された SQL Server を実行する 2 つ以上のノードが構成されます。 ノードが停止した場合、クラスターは SQL Server を別のインスタンスにフェールオーバーできます。 通常、この設定はプライマリ サイトに高可用性を実装するために使用されます。 このデプロイメントでは、共有ストレージ層の障害や停止は保護されません。 共有ディスクは、iSCSI、ファイバー チャネル、または共有 VHDX を使用して実装できます。
 * **SQL Always On 可用性グループ**: 2 つ以上のノードがシェアード ナッシング クラスター内に設定されます。この場合、SQL Server データベースは、同期レプリケーションと自動フェールオーバーを使用して可用性グループ内に構成されます。
 
- この記事では、次に示すネイティブの SQL ディザスター リカバリー テクノロジを活用して、データベースを リモート サイトに復旧します。
+  この記事では、次に示すネイティブの SQL ディザスター リカバリー テクノロジを活用して、データベースを リモート サイトに復旧します。
 
 * SQL Always On 可用性グループ: SQL Server 2012 または 2014 Enterprise の各エディションのディザスター リカバリーを提供します。
 * 高い安全性モードでの SQL Database ミラーリング: SQL Server Standard エディション (全バージョン) または SQL Server 2008 R2 用です。
@@ -45,7 +45,7 @@ Site Recovery は、次の表のように SQL Server を保護できます。
 **Hyper-V** | はい | はい
 **VMware** | はい | はい
 **物理サーバー** | はい | はい
-**Azure**|NA| はい
+**Azure** |NA| はい
 
 ### <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 これらの SQL Server バージョンは、サポートされるシナリオに対応しています。
@@ -70,14 +70,14 @@ Site Recovery は、次の表に要約したネイティブの SQL Server の BC
 
 次の表は、Site Recovery に SQL Server の BCDR テクノロジを統合するための推奨事項を示しています。
 
-| **バージョン** | **エディション** | **デプロイ** | **オンプレミスからオンプレミス** | **オンプレミスから Azure** |
+| **バージョン** | **エディション** | **Deployment** | **オンプレミスからオンプレミス** | **オンプレミスから Azure** |
 | --- | --- | --- | --- | --- |
 | SQL Server 2016、2014、2012 のいずれか |Enterprise |フェールオーバー クラスター インスタンス |Always On 可用性グループ |Always On 可用性グループ |
-|| Enterprise |高可用性のための Always On 可用性グループ |Always On 可用性グループ |Always On 可用性グループ | |
-|| 標準 |フェールオーバー クラスター インスタンス (FCI) |ローカルのミラーを使用した Site Recovery レプリケーション |ローカルのミラーを使用した Site Recovery レプリケーション | |
-|| Enterprise または Standard |スタンドアロン |Site Recovery レプリケーション |Site Recovery レプリケーション | |
+|| Enterprise |高可用性のための Always On 可用性グループ |Always On 可用性グループ |Always On 可用性グループ |
+|| Standard |フェールオーバー クラスター インスタンス (FCI) |ローカルのミラーを使用した Site Recovery レプリケーション |ローカルのミラーを使用した Site Recovery レプリケーション |
+|| Enterprise または Standard |スタンドアロン |Site Recovery レプリケーション |Site Recovery レプリケーション |
 | SQL Server 2008 R2 または 2008 |Enterprise または Standard |フェールオーバー クラスター インスタンス (FCI) |ローカルのミラーを使用した Site Recovery レプリケーション |ローカルのミラーを使用した Site Recovery レプリケーション |
-|| Enterprise または Standard |スタンドアロン |Site Recovery レプリケーション |Site Recovery レプリケーション | |
+|| Enterprise または Standard |スタンドアロン |Site Recovery レプリケーション |Site Recovery レプリケーション |
 | SQL Server (全バージョン) |Enterprise または Standard |フェールオーバー クラスター インスタンス - DTC アプリケーション |Site Recovery レプリケーション |サポートされていません |
 
 ## <a name="deployment-prerequisites"></a>デプロイの前提条件
@@ -101,7 +101,7 @@ SQL Server を正常に実行するために、セカンダリ復旧サイトに
 
 1. Azure Automation アカウントにスクリプトをインポートします。 これは SQL 可用性グループをフェールオーバーするスクリプトを [Resource Manager 仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)と[クラシック仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)に含んでいます。
 
-    [![Azure へのデプロイ](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![DAzure に配置する(https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. 復旧計画の最初のグループの事前アクションとして、ASR SQL-FailoverAG を追加します。
@@ -116,7 +116,7 @@ SQL Always On は、テスト フェールオーバーをネイティブでサ�
 
 1. 復旧計画のテスト フェールオーバーをトリガーする前に、前の手順で作成したバックアップから仮想マシンを復元します。
 
-    ![Azure Backup からの復元 ](./media/site-recovery-sql/restore-from-backup.png)
+    ![Azure Backup からの復元](./media/site-recovery-sql/restore-from-backup.png)
 
 1. バックアップから復元された仮想マシンで[クォーラムを強制](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure)します。
 
@@ -130,9 +130,9 @@ SQL Always On は、テスト フェールオーバーをネイティブでサ�
 
 1. 1 つの IP が各可用性グループ リスナーに対応するフロントエンド IP プールの下に作成された状態、そしてバックエンド プールに SQL 仮想マシンが追加された状態で、ロード バランサーを作成します。
 
-     ![ロード バランサーを作成する - フロントエンド IP プール ](./media/site-recovery-sql/create-load-balancer1.png)
+     ![ロード バランサーを作成する - フロントエンド IP プール](./media/site-recovery-sql/create-load-balancer1.png)
 
-    ![ロード バランサーを作成する - バックエンド プール ](./media/site-recovery-sql/create-load-balancer2.png)
+    ![ロード バランサーを作成する - バックエンド プール](./media/site-recovery-sql/create-load-balancer2.png)
 
 1. 復旧計画のテスト フェールオーバーを行います。
 

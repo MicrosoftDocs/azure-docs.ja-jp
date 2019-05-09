@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 53361ed460917fff42008283429967eff2e80ab2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: aed63e332375be4f8ed939cf162545c9f366f329
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345098"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317597"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
 
@@ -73,7 +73,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
     npm start
     ```
 
-1. 前のコマンドは、 http://localhost:3000/dashboard のローカルで UI を実行します。 サイトの実行中にコードを編集し、動的に更新されることを確認できます。
+1. 前のコマンドは、http:\//localhost:3000/dashboard でローカルに UI を実行します。 サイトの実行中にコードを編集し、動的に更新されることを確認できます。
 
 ## <a name="customize-the-layout"></a>レイアウトのカスタマイズ
 
@@ -84,7 +84,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 * マップ パネルとテレメトリ パネルの位置を交換します。
 * マップ パネルと分析パネルの相対的な幅を変更します。
 
-```nodejs
+```javascript
 <PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
@@ -156,7 +156,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 [パネルを複製して、カスタマイズする](#duplicate-and-customize-an-existing-control)場合は、同じパネルのいくつかのインスタンスやいくつかのバージョンを追加することもできます。 次の例は、テレメトリ パネルの 2 つのインスタンスを追加する方法を示しています。 これらの変更を行うには、`src/components/pages/dashboard/dashboard.js` ファイルを編集します。
 
-```nodejs
+```javascript
 <PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
@@ -247,19 +247,19 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. **cust_alerts** フォルダー内の **alertsPanel.js** ファイルで、クラスの名前を **CustAlertsPanel** に編集します。
 
-    ```nodejs
+    ```javascript
     export class CustAlertsPanel extends Component {
     ```
 
 1. 次の行を `src/components/pages/dashboard/panels/index.js` ファイルに追加します。
 
-    ```nodejs
+    ```javascript
     export * from './cust_alerts';
     ```
 
 1. `src/components/pages/dashboard/dashboard.js` ファイル内の `alertsPanel` を `CustAlertsPanel` で置き換えます。
 
-    ```nodejs
+    ```javascript
     import {
       OverviewPanel,
       CustAlertsPanel,
@@ -287,7 +287,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. 列定義を次のコード スニペットに示すように変更します。
 
-    ```nodejs
+    ```javascript
     this.columnDefs = [
       rulesColumnDefs.severity,
       {
@@ -312,7 +312,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. `src/services/telemetryService.js` ファイルで、**getTelemetryByDeviceIdP15M** という関数を見つけます。 この関数のコピーを作成し、コピーを次のように変更します。
 
-    ```nodejs
+    ```javascript
     static getTelemetryByDeviceIdP5M(devices = []) {
       return TelemetryService.getTelemetryByMessages({
         from: 'NOW-PT5M',
@@ -325,7 +325,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. この新しい関数を使用して、テレメトリ グラフに入力するには、`src/components/pages/dashboard/dashboard.js` ファイルを開きます。 テレメトリ ストリームを初期化する行を見つけて、それを次のように変更します。
 
-    ```node.js
+    ```javascript
     const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
@@ -335,11 +335,11 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 ## <a name="add-a-new-kpi"></a>新しい KPI の追加
 
-**ダッシュボード** ページには、**Analytics** パネルの KPI が表示されます。 これらの KPI は、`src/components/pages/dashboard/dashboard.js` ファイルで計算されます。 KPI は `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` ファイルによってレンダリングされます。 次の手順で、新しい KPI 値を計算して、**ダッシュ ボード** ページにレンダリングする方法について説明します。 示している例では、警告アラーム KPI に新しいパーセンテージの変更を追加しています。
+**ダッシュボード** ページには、**Analytics** パネルの KPI が表示されます。 これらの KPI は、`src/components/pages/dashboard/dashboard.js` ファイルで計算されます。 KPI は `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` ファイルによってレンダリングされます。 次の手順で、新しい KPI 値を計算して、**ダッシュ ボード** ページにレンダリングする方法について説明します。 示している例では、警告アラート KPI に新しいパーセンテージの変更を追加しています。
 
 1. `src/components/pages/dashboard/dashboard.js` ファイルを開きます。 **initialState** オブジェクトを次のように **warningAlertsChange** プロパティを含めるように変更します。
 
-    ```nodejs
+    ```javascript
     const initialState = {
       ...
 
@@ -359,19 +359,19 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. **currentAlarmsStats** オブジェクトを **totalWarningCount** をプロパティとして含めるように変更します。
 
-    ```nodejs
+    ```javascript
     return {
       openWarningCount: (acc.openWarningCount || 0) + (isWarning && isOpen ? 1 : 0),
       openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
       totalWarningCount: (acc.totalWarningCount || 0) + (isWarning ? 1 : 0),
       totalCriticalCount: (acc.totalCriticalCount || 0) + (isCritical ? 1 : 0),
-      alarmsPerDeviceId: updatedAlarmsPerDeviceId
+      alertsPerDeviceId: updatedAlertsPerDeviceId
     };
     ```
 
 1. 新しい KPI を計算します。 重大なアラート数の計算を見つけます。 コードをコピーし、次のようにコピーを変更します。
 
-    ```nodejs
+    ```javascript
     // ================== Warning Alerts Count - START
     const currentWarningAlerts = currentAlertsStats.totalWarningCount;
     const previousWarningAlerts = previousAlerts.reduce(
@@ -384,7 +384,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. KPI ストリームに新しい **warningAlertsChange** を含めます。
 
-    ```nodejs
+    ```javascript
     return ({
       analyticsIsPending: false,
       analyticsVersion: this.state.analyticsVersion + 1,
@@ -402,7 +402,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. UI のレンダリングに使用される状態データに新しい **warningAlertsChange** を含めます。
 
-    ```nodejs
+    ```javascript
     const {
       ...
 
@@ -421,7 +421,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. KPI パネルに渡されるデータを更新します。
 
-    ```node.js
+    ```javascript
     <AnalyticsPanel
       timeSeriesExplorerUrl={timeSeriesParamUrl}
       topAlerts={topAlertsWithName}
@@ -439,13 +439,13 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. 次のように新しい KPI 値を取得するために、次のコードの行を変更します。
 
-    ```nodejs
+    ```javascript
     const { t, isPending, criticalAlertsChange, warningAlertsChange, alertsPerDeviceId, topAlerts, timeSeriesExplorerUrl, error } = this.props;
     ```
 
 1. 次のように、新しい KPI 値を表示するために、マークアップを変更します。
 
-    ```nodejs
+    ```javascript
     <div className="analytics-cell">
       <div className="analytics-header">{t('dashboard.panels.analytics.criticalAlerts')}</div>
       <div className="critical-alerts">

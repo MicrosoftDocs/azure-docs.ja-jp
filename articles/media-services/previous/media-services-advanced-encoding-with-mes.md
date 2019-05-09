@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 4601628fd0fbdbd80c2b159a4578e25cb4e3c4c5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250769"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576294"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES プリセットをカスタマイズして高度なエンコードを実行する 
 
@@ -27,11 +27,10 @@ ms.locfileid: "50250769"
 
 このトピックでは、Media Encoder Standard プリセットをカスタマイズする方法を説明します。 .NET を使ってエンコード タスクと、このタスクを実行するジョブを作成する方法については、「[Media Encoder Standard を使用した高度なエンコード](media-services-custom-mes-presets-with-dotnet.md)」を参照してください。 プリセットをカスタマイズしたら、カスタム プリセットをエンコード タスクに指定します。 
 
->[!NOTE]
->XML プリセットを使用する場合、下で示す XML サンプルのように要素の順序を保持するようにしてください (たとえば、KeyFrameInterval は SceneChangeDetection の前に来ます)。
->
+XML プリセットを使用する場合、下で示す XML サンプルのように要素の順序を保持するようにしてください (たとえば、KeyFrameInterval は SceneChangeDetection の前に来ます)。
 
-このトピックでは、次のエンコード タスクを実行するカスタム プリセットを実演します。
+> [!NOTE] 
+> Media Services v2 の多くの高度な機能は v3 で現在利用できません。 詳細については、[機能のギャップ](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis)に関する記事を参照してください。
 
 ## <a name="support-for-relative-sizes"></a>相対サイズのサポート
 
@@ -160,7 +159,7 @@ ms.locfileid: "50250769"
 
 ### <a id="xml"></a>XML プリセット
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
         <H264Video>
           <KeyFrameInterval>00:00:02</KeyFrameInterval>
@@ -238,15 +237,15 @@ ms.locfileid: "50250769"
 * 明示的に Start、Step、Range でタイムスタンプを使用する場合、入力ソースは少なくとも 1 分であると仮定しています。
 * Jpg/Png/BmpImage 要素には、Start、Step、Range の各文字列属性があります。これらは次のように解釈できます。
 
-  * 負ではない整数の場合はフレーム番号 (例: "Start": "120")
-  * % サフィックス付きで表現されている場合は、ソース期間に対する相対値 (例: "Start": "15%")
-  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  (例: "Start": "00:01:00")
+  * 負でない整数である場合は、フレーム番号 (例: "Start": "120")
+  * % サフィックス付きで表現されている場合は、ソース期間に相対的 (例: "Start": "15%")
+  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  たとえば、"Start": "00:01:00"
 
     必要に応じて、表記法を混在させたり、一致させたりすることができます。
 
-    また、Start は特殊なマクロの {Best} もサポートしています。このマクロは、コンテンツの最初の "関連する" フレームを決定しようと試みます。注: (Start が {Best} に設定されている場合、Step と Range は無視されます)
-  * 既定: Start:{Best}
-* 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、MES は JpgVideo を JpgFormat などに対応付けます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
+    さらに、Start は、コンテンツの最初の "関連する" フレームを決定しようとする特殊なマクロ {Best} もサポートしています。注: (Start が {Best} に設定されている場合、Step と Range は無視されます)
+  * 既定値: Start:{Best}
+* 画像の形式ごとに出力形式を明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、MES は JpgVideo を JpgFormat などに対応付けます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
 ## <a id="trim_video"></a>動画をトリミングする (クリッピング)
 このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。 エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[こちらのブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
@@ -376,7 +375,7 @@ ms.locfileid: "50250769"
 動画をトリミングするには、 [ここ](media-services-mes-presets-overview.md) に記載されている MES プリセットを利用し、 **Sources** 要素を変更します (下記を参照)。
 
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Sources>
         <Source StartTime="PT4S" Duration="PT14S"/>
       </Sources>
@@ -581,8 +580,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
                 },
                 {
                   "IsOverlay": true,
-                  "OverlayLoopCount": 1,
-                  "InputLoop": true
+                  "OverlayLoopCount": 1
                 }
               ],
               "Source": "Image001.png",
@@ -639,7 +637,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 ### <a name="xml-preset"></a>XML プリセット
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Sources>
         <Source>
           <Streams />
@@ -656,12 +654,10 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
                 <MediaParam>
                   <IsOverlay>false</IsOverlay>
                   <OverlayLoopCount>1</OverlayLoopCount>
-                  <InputLoop>false</InputLoop>
                 </MediaParam>
                 <MediaParam>
                   <IsOverlay>true</IsOverlay>
                   <OverlayLoopCount>1</OverlayLoopCount>
-                  <InputLoop>true</InputLoop>
                 </MediaParam>
               </MediaParams>
             </VideoOverlay>
@@ -752,7 +748,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 
 ## <a id="audio_only"></a>オーディオのみのプリセット
-このセクションでは、2 つのオーディオのみの MES プリセット (AAC Audio と AAC Good Quality Audio) を示します。
+このセクションでは、AAC Audio と AAC Good Quality Audio という 2 つのオーディオのみの MES プリセットを示します。
 
 ### <a name="aac-audio"></a>AAC Audio
     {

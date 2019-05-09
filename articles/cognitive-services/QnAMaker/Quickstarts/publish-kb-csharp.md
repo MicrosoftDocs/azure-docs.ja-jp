@@ -4,19 +4,19 @@ titleSuffix: QnA Maker- Azure Cognitive Services
 description: この C# REST ベースのクイック スタートでは、ナレッジ ベースを公開する手順を紹介しています。公開時に、テスト済みのナレッジ ベースの最新バージョンが、公開済みのナレッジ ベースを表す専用の Azure Search インデックスにプッシュされます。 また、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/18/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 678b5d340fc81ad917e42e9b8e80051cc511da87
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8a6a46708b78b3f92087ace02173f9f081fa85b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162615"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170515"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート: C# を使用して QnA Maker のナレッジ ベースを公開する
 
@@ -41,7 +41,7 @@ ms.locfileid: "53162615"
 ## <a name="create-knowledge-base-project"></a>ナレッジ ベース プロジェクトを作成する
 
 1. Visual Studio 2017 Community エディションを開きます。
-1. 新しい**コンソール アプリ (.NET Core)** プロジェクトを作成し、そのプロジェクトに名前を付けます`QnaMakerQuickstart`。 残りの設定には既定値を受け入れます。
+1. 新しい**コンソール アプリ (.NET Core)** プロジェクトを作成し、そのプロジェクトに `QnaMakerQuickstart` という名前を付けます。 残りの設定には既定値を受け入れます。
 
 ## <a name="add-required-dependencies"></a>必要な依存関係を追加する
 

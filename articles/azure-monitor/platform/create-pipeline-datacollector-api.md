@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics データ コレクター API によるデータ パイプラインの作成 | Microsoft Docs
-description: Log Analytics HTTP データ コレクター API を使用すると、REST API を呼び出すことのできるクライアントから POST JSON データを Log Analytics リポジトリに追加できます。 この記事では、ファイルに格納されたデータを自動的にアップロードする方法について説明します。
+title: Azure Monitor Data Collector API を使用してデータ パイプラインを作成する | Microsoft Docs
+description: Azure Monitor HTTP Data Collector API を使用すると、REST API を呼び出すことのできる任意のクライアントから POST JSON データを Log Analytics ワークスペースに追加できます。 この記事では、ファイルに格納されたデータを自動的にアップロードする方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 94d026ce1d055d18a615919df6ed5021b15bf108
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d2736e397827373949da1634a99056420dc13b8a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186074"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003858"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>データ コレクター API によるデータ パイプラインの作成
 
-Log Analytics には、[Log Analytics データ コレクター API](../../azure-monitor/platform/data-collector-api.md) を使ってあらゆるカスタム データをインポートすることができます。 唯一の要件は、データが JSON 形式であること、また 30 MB 未満のセグメントに分割されていることです。 きわめて柔軟なメカニズムとなっており、アプリケーションにより直接送信されるデータから、必要なときに 1 回限り行われるアップロードまで、さまざまな方法で接続することができます。 この記事では、一般的なシナリオを想定し、ごく基本的な事柄について取り上げています。つまりファイルに格納されているデータを自動化された方法で定期的にアップロードするニーズを想定しています。 ここで紹介しているパイプラインはパフォーマンスや最適化の点で一番優れているわけではありません。運用環境のパイプラインを独自に構築するための出発点となることを意図しています。
+[Azure Monitor Data Collector API](data-collector-api.md) を使用すると、Azure Monitor の Log Analytics ワークスペースにカスタム ログ データをインポートすることができます。 唯一の要件は、データが JSON 形式であること、また 30 MB 未満のセグメントに分割されていることです。 きわめて柔軟なメカニズムとなっており、アプリケーションにより直接送信されるデータから、必要なときに 1 回限り行われるアップロードまで、さまざまな方法で接続することができます。 この記事では、一般的なシナリオを想定し、ごく基本的な事柄について取り上げています。つまりファイルに格納されているデータを自動化された方法で定期的にアップロードするニーズを想定しています。 ここで紹介しているパイプラインはパフォーマンスや最適化の点で一番優れているわけではありません。運用環境のパイプラインを独自に構築するための出発点となることを意図しています。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>問題の例
 以降この記事では、Application Insights のページ ビュー データを詳しく見ていきます。 ここではあるシナリオを想定しています。Application Insights SDK により既定で収集された地理的情報を、世界各国の人口が格納されているカスタム データに関連付けるというものです。マーケティングの予算をどこに一番多く費やすべきかを見極めるのがその目的です。 
@@ -42,13 +44,13 @@ Log Analytics には、[Log Analytics データ コレクター API](../../azure
 
 1. 新しいデータがアップロードされたことが、いずれかのプロセスによって検出されます。  この例で使用しているのは [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) で、BLOB にアップロードされる新しいデータを検出するためのトリガーが用意されています。
 
-2. その新しいデータをプロセッサが読み取り、Log Analytics に必要な形式である JSON に変換します。  この例では、目的の処理コードを実行する軽量かつ費用対効果の高い方法として [Azure Function](../../azure-functions/functions-overview.md) を使用します。 この関数は、新しいデータを検出するときにも使ったロジック アプリによって開始されます。
+2. プロセッサによってこの新しいデータをが読み取られて、Azure Monitor に必要な形式である JSON に変換されます。この例では、目的の処理コードを実行する軽量かつ費用対効果の高い方法として [Azure Function](../../azure-functions/functions-overview.md) を使用します。 この関数は、新しいデータを検出するときにも使ったロジック アプリによって開始されます。
 
-3. 最後に、利用可能な状態になった JSON オブジェクトが Log Analytics に送信されます。 このデータが、同じロジック アプリにより、ビルトインの Log Analytics データ コレクター アクティビティを使って、Log Analytics に送信されます。
+3. 最後に、利用可能な状態になった JSON オブジェクトが Azure Monitor に送信されます。 同じロジック アプリにより、組み込みの Log Analytics Data Collector アクティビティを使用して、データが Azure Monitor に送信されます。
 
 Blob Storage、Logic Apps、Azure Functions の詳しい設定については、この記事では取り上げませんが、それぞれの製品のページで詳しい手順をご覧いただけます。
 
-このパイプラインを監視するために、ここでは Application Insights を使って Azure Functions を ([詳細はこちら](../../azure-functions/functions-monitoring.md))、Log Analytics を使ってロジック アプリを監視します ([詳細はこちら](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md))。 
+このパイプラインを監視するため、ここでは Application Insights を使用して Azure 関数を監視し ([詳細はこちら](../../azure-functions/functions-monitoring.md))、Azure Monitor を使用してロジック アプリを監視します ([詳細はこちら](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md))。 
 
 ## <a name="setting-up-the-pipeline"></a>パイプラインの設定
 パイプラインを設定するために、まず BLOB コンテナーが作成され、構成済みであることを確認してください。 同様に、データの送信先となる Log Analytics ワークスペースが作成されていることを確認します。
@@ -136,10 +138,10 @@ Logic Apps を使えば JSON データは簡単に取り込むことができ、
 ![Logic Apps ワークフロー全体の例](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
 ## <a name="testing-the-pipeline"></a>パイプラインのテスト
-では、先ほど構成した BLOB に新しいファイルをアップロードし、ロジック アプリで監視してみましょう。 ほどなくロジック アプリの新しいインスタンスが起動し、Azure 関数を呼び出した後、データを Log Analytics に無事送信したことが確認できると思います。 
+では、先ほど構成した BLOB に新しいファイルをアップロードし、ロジック アプリで監視してみましょう。 間もなく、ロジック アプリの新しいインスタンスが起動し、Azure 関数を呼び出した後、データを Azure Monitor に正常に送信したことを確認できます。 
 
 >[!NOTE]
->新しい種類のデータを初めて送信するときは、Log Analytics にデータが表示されるまでに最大 30 分程度かかる場合があります。
+>新しい種類のデータを初めて送信するときは、Azure Monitor にデータが表示されるまでに最大 30 分程度かかる場合があります。
 
 
 ## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights 内の他のデータと関連付ける
@@ -163,7 +165,7 @@ app("fabrikamprod").pageViews
 
 * ロジック アプリと関数に、エラー処理と再試行ロジックを追加します。
 * Log Analytics Ingestion API の呼び出しに関して、その 1 回あたりの上限である 30 MB を超えないようにするためのロジックを追加します。 必要であれば、データをもっと小さいセグメントに分割します。
-* Blob Storage に対するクリーンアップ ポリシーを設定します。 Log Analytics への送信に成功したら、生データを保管しておく必要はありません (アーカイブ目的で生データを保存したい場合を除く)。 
+* Blob Storage に対するクリーンアップ ポリシーを設定します。 Log Analytics ワークスペースへの送信に成功したら、アーカイブ目的で生データを保存したい場合を除き、生データを保管しておく必要はありません。 
 * パイプライン全域で監視が有効になっていることを確認します。適宜トレース ポイントやアラートを追加してください。
 * ソース管理を活用して、関数とロジック アプリのコードを管理します。
 * 適切な変更管理ポリシーへの準拠を徹底します。スキーマに変更が生じた場合には、それに基づいて関数とロジック アプリが変更されるようにしてください。
@@ -171,4 +173,4 @@ app("fabrikamprod").pageViews
 
 
 ## <a name="next-steps"></a>次の手順
-REST API クライアントから[データ コレクター API](../../azure-monitor/platform/data-collector-api.md) を使って Log Analytics にデータを書き込む方法の詳細を確認します。
+REST API クライアントから [Data Collector API](data-collector-api.md) を使用して Log Analytics ワークスペースにデータを書き込む方法の詳細を確認します。

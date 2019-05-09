@@ -4,21 +4,22 @@ description: Azure Active Directory のグループベースのライセンス�
 services: active-directory
 keywords: Azure AD のライセンス
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 47d04f6e73d95a7cb1ba63c437b97468041af57f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183154"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
@@ -48,7 +49,7 @@ ms.locfileid: "53189865"
 
 - ユーザーレベルのライセンスが必要なすべての Microsoft クラウド サービスがサポートされています。 このサポートには、すべての Office 365 製品、Enterprise Mobility + Security、Dynamics 365 が含まれます。
 
-- グループベースのライセンスは、現時点では [Azure Portal](https://portal.azure.com) を介してのみ使用できます。 ユーザーとグループの管理に主に別の管理ポータル (Office 365 ポータルなど) を使用する場合は、引き続き使用できます。 ただし、グループ レベルでライセンスを管理するには Azure Portal の使用をお勧めします。
+- グループベースのライセンスは、現時点では [Azure portal](https://portal.azure.com) を介してのみ使用できます。 ユーザーとグループの管理に主に別の管理ポータル ([Microsoft 365 管理センター](https://admin.microsoft.com)など) を使用する場合は、引き続き使用できます。 ただし、グループ レベルでライセンスを管理するには Azure Portal の使用をお勧めします。
 
 - グループのメンバー変更に伴うライセンスの変更は、Azure AD により自動で管理されます。 通常、ライセンスの変更はメンバーシップを変更した数分以内に有効になります。
 

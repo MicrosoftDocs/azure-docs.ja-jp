@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: e68099609e5a4a27dfae7956fa43634d38311a22
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5f9fd062d445fb738842667cab0c24332c0e4cc8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015774"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58879258"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -285,13 +286,13 @@ Azure AD B2C がアプリケーションとサービスの最善の移行経路�
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。 |
-| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
+| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 
 <!--
 
-## Sharepoint 2010, 2013, 2016
+## SharePoint 2010, 2013, 2016
 
 TODO: Azure AD only, use Azure AD SAML 1.1 tokens, when we bring it back online.
 Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
@@ -347,7 +348,7 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。 |
-| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
+| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 

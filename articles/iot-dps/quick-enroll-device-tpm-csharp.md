@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 48409fec8a9edd8a56f6e0664e1451e9677c4281
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e3b0aeeacadc918d9b17e1cd873170c73eced510
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155036"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834763"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 

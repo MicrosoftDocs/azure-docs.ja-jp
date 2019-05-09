@@ -1,21 +1,20 @@
 ---
 title: サンプル - VM ネットワーク インターフェイスに承認されたサブネットを使用する
-description: このサンプル ポリシーは、承認されたサブネットがネットワーク インターフェイスで使用されていることが要件です。
-services: azure-policy
+description: このサンプル ポリシー定義は、承認されたサブネットの使用をネットワーク インターフェイスに要求します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: ed09740e7929dc2505a98b00e020eb7149dc4eab
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b4b6b2293952103bdcaccf11e8f7d528b33cbc46
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308534"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59270032"
 ---
-# <a name="use-approved-subnet-for-vm-network-interfaces"></a>VM ネットワーク インターフェイスでの承認されたサブネットの使用
+# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>サンプル - VM ネットワーク インターフェイスに承認されたサブネットを使用する
 
 このポリシーは、承認されたサブネットがネットワーク インターフェイスで使用されていることが要件です。 承認されたサブネットの ID を指定します。
 
@@ -29,16 +28,16 @@ ms.locfileid: "53308534"
 
 ## <a name="deploy-with-the-portal"></a>ポータルでのデプロイ
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
+[![ポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name "vm-creation-in-approved-subnet" -DisplayName "Use approved subnet for VM network interfaces" -description "This policy enforces VM network interfaces to use subnet" -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/vm-creation-in-approved-subnet/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/vm-creation-in-approved-subnet/azurepolicy.parameters.json' -Mode All
+$definition = New-AzPolicyDefinition -Name "vm-creation-in-approved-subnet" -DisplayName "Use approved subnet for VM network interfaces" -description "This policy enforces VM network interfaces to use subnet" -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/vm-creation-in-approved-subnet/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/vm-creation-in-approved-subnet/azurepolicy.parameters.json' -Mode All
 $definition
-$assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -subnetId <Subnet Id> -PolicyDefinition $definition
+$assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -subnetId <Subnet Id> -PolicyDefinition $definition
 $assignment
 ```
 
@@ -47,7 +46,7 @@ $assignment
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ

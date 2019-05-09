@@ -1,308 +1,298 @@
-items:
 - name: Azure のセキュリティのドキュメント
   href: index.md
 - name: アーキテクチャと設計
   href: azure-security.md
-  items:
-  - name: 高度な脅威検出
-    displayName: vulnerability, virus, ids, incident
-    href: azure-threat-detection.md
-  - name: Azure のログと監査
-    displayName: incident
-    href: azure-log-audit.md
-  - name: Azure のネットワーク セキュリティ
-    displayName: firewall, ssl, vpn, ids, gateway, https, application gateway, azure application gateway, ips, waf
-    href: abstract-azure-network-security.md
-  - name: Azure のサーバーレス プラットフォームのセキュリティ
-    href: abstract-serverless-platform-security.md
-  - name: Azure のコンテナーのセキュリティ
-    href: abstract-container-security-microsoft-azure.md
-  - name: 運用上のセキュリティの有効化
-    displayName: policy, policies, azure monitor, soc
-    href: abstract-azure-operational-security.md
-  - name: Azure クラウドでの分離
-    displayName: trust boundary
-    href: azure-isolation.md
-  - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
-    displayName: trust boundary
-    href: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-  - name: セキュリティの技術的な機能
-    href: azure-security-technical-capabilities.md
-  - name: セキュリティで保護されたアプリを Azure で開発する
-    href: abstract-develop-secure-apps.md
   expanded: false
+  items:
+    - name: 高度な脅威検出
+      displayName: 'vulnerability, virus, ids, incident'
+      href: azure-threat-detection.md
+    - name: Azure のログと監査
+      displayName: incident
+      href: azure-log-audit.md
+    - name: Azure のネットワーク セキュリティ
+      displayName: 'firewall, ssl, vpn, ids, gateway, https, application gateway, azure application gateway, ips, waf'
+      href: abstract-azure-network-security.md
+    - name: Azure のサーバーレス プラットフォームのセキュリティ
+      href: abstract-serverless-platform-security.md
+    - name: Azure のコンテナーのセキュリティ
+      href: abstract-container-security-microsoft-azure.md
+    - name: 運用上のセキュリティの有効化
+      displayName: 'policy, policies, azure monitor, soc'
+      href: abstract-azure-operational-security.md
+    - name: Azure クラウドでの分離
+      displayName: trust boundary
+      href: azure-isolation.md
+    - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
+      displayName: trust boundary
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+    - name: セキュリティの技術的な機能
+      href: azure-security-technical-capabilities.md
+    - name: セキュリティで保護されたアプリを Azure で開発する
+      href: abstract-develop-secure-apps.md
 - name: データ セキュリティと暗号化
   href: security-azure-encryption-overview.md
   items:
-  - name: データベースのセキュリティ
-    href: azure-database-security-overview.md
-    items:
-    - name: ベスト プラクティス
-      href: azure-database-security-best-practices.md
-    - name: セキュリティ チェックリスト
-      href: azure-database-security-checklist.md
-  - name: ディスクの暗号化
-    items:
-    - name: ベスト プラクティス
-      displayName: transit
-      href: azure-security-data-encryption-best-practices.md
-    - name: 保存時のデータ暗号化
-      href: azure-security-encryption-atrest.md
-    - name: IaaS VM のディスク暗号化
+    - name: データベースのセキュリティ
+      href: azure-database-security-overview.md
       items:
-      - name: Azure Disk Encryption について
-        displayName: bitlocker, bek
-        href: azure-security-disk-encryption-overview.md
-      - name: クイック スタート
-        items:
-        - name: VM の暗号化 - Azure PowerShell
-          href: quick-encrypt-vm-powershell.md
-      - name: Azure Disk Encryption
-        items:
-        - name: ディスク暗号化の前提条件
-          href: azure-security-disk-encryption-prerequisites.md
-        - name: Windows VM のディスク暗号化
-          href: azure-security-disk-encryption-windows.md
-        - name: Linux VM のディスク暗号化
-          href: azure-security-disk-encryption-linux.md
-      - name: ディスク暗号化に関する付録
-        href: azure-security-disk-encryption-appendix.md
-      - name: ディスク暗号化の FAQ
-        href: azure-security-disk-encryption-faq.md
-      - name: トラブルシューティング
-        href: azure-security-disk-encryption-tsg.md
-      - name: Azure AD アプリを使用した Azure Disk Encryption (以前のリリース)
-        displayName: active directory
-        items:
-        - name: Azure AD アプリによるディスク暗号化の前提条件
-          displayName: active directory
-          href: azure-security-disk-encryption-prerequisites-aad.md
-        - name: Azure AD アプリによるディスク暗号化 (Windows VM)
-          displayName: active directory
-          href: azure-security-disk-encryption-windows-aad.md
-        - name: Azure AD アプリによるディスク暗号化 (Linux VM)
-          displayName: active directory
-          href: azure-security-disk-encryption-linux-aad.md
-  - name: Azure Storage セキュリティ
-    href: security-storage-overview.md
-  - name: Storage のセキュリティ ガイド
-    href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: ベスト プラクティス
+          href: azure-database-security-best-practices.md
+        - name: セキュリティ チェックリスト
+          href: azure-database-security-checklist.md
+    - name: ディスクの暗号化
+      items:
+        - name: ベスト プラクティス
+          displayName: transit
+          href: azure-security-data-encryption-best-practices.md
+        - name: 保存時のデータ暗号化
+          href: azure-security-encryption-atrest.md
+        - name: IaaS VM のディスク暗号化
+          items:
+            - name: Azure Disk Encryption について
+              displayName: 'bitlocker, bek'
+              href: azure-security-disk-encryption-overview.md
+            - name: クイック スタート
+              items:
+                - name: VM の暗号化 - Azure PowerShell
+                  href: quick-encrypt-vm-powershell.md
+            - name: Azure Disk Encryption
+              items:
+                - name: ディスク暗号化の前提条件
+                  href: azure-security-disk-encryption-prerequisites.md
+                - name: Windows VM のディスク暗号化
+                  href: azure-security-disk-encryption-windows.md
+                - name: Linux VM のディスク暗号化
+                  href: azure-security-disk-encryption-linux.md
+                - name: VMSS 拡張機能のシーケンス処理によるディスク暗号化
+                  href: azure-security-disk-encryption-extension-sequencing.md
+                - name: ディスク暗号化に関する付録
+              href: azure-security-disk-encryption-appendix.md
+            - name: ディスク暗号化の FAQ
+              href: azure-security-disk-encryption-faq.md
+            - name: トラブルシューティング
+              href: azure-security-disk-encryption-tsg.md
+            - name: Azure AD アプリを使用した Azure Disk Encryption (以前のリリース)
+              displayName: active directory
+              items:
+                - name: Azure AD アプリによるディスク暗号化の前提条件
+                  displayName: active directory
+                  href: azure-security-disk-encryption-prerequisites-aad.md
+                - name: Azure AD アプリによるディスク暗号化 (Windows VM)
+                  displayName: active directory
+                  href: azure-security-disk-encryption-windows-aad.md
+                - name: Azure AD アプリによるディスク暗号化 (Linux VM)
+                  displayName: active directory
+                  href: azure-security-disk-encryption-linux-aad.md
+    - name: Azure Storage セキュリティ
+      href: security-storage-overview.md
+    - name: Storage のセキュリティ ガイド
+      href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: プラットフォームとインフラストラクチャ
   items:
-  - name: インフラストラクチャのセキュリティ
-    href: azure-security-infrastructure.md
-    items:
-    - name: 物理的なセキュリティ
-      href: azure-physical-security.md
-    - name: 可用性
-      href: azure-infrastructure-availability.md
-    - name: コンポーネントと境界
-      href: azure-infrastructure-components.md
-    - name: ネットワーク アーキテクチャ
-      displayName: ssl, https
-      href: azure-infrastructure-network.md
-    - name: 運用ネットワーク
-      href: azure-production-network.md
-    - name: SQL Database
-      href: azure-infrastructure-sql.md
-    - name: 操作
-      href: azure-infrastructure-operations.md
-    - name: 監視
-      href: azure-infrastructure-monitoring.md
-    - name: 整合性
-      href: azure-infrastructure-integrity.md
-    - name: データ保護
-      href: azure-protection-of-customer-data.md
-  - name: Microsoft Antimalware
-    displayName: virus
-    href: azure-security-antimalware.md
-  - name: IaaS セキュリティ
-    href: security-virtual-machines-overview.md
-    items:
-    - name: ベスト プラクティス - IaaS ワークロード
-      displayName: patch
-      href: azure-security-iaas.md
-    - name: Azure Marketplace イメージ
-      href: security-recommendations-azure-marketplace-images.md
-  - name: ID 管理
-    href: security-identity-management-overview.md
-    items:
-    - name: Azure AD 認証の選択
-      displayName: identity, active directory, seamless sso
-      href: azure-ad-choose-authn.md
-    - name: セキュリティ チェックリスト
-      displayName: identity, active directory, password
-      href: azure-ad-secure-steps.md
-    - name: ベスト プラクティス
-      displayName: password, identity, active directory
-      href: azure-security-identity-management-best-practices.md
-    - name: サブスクリプション管理者に対する MFA の適用
-      displayName: identity
-      href: azure-security-global-admin.md
-  - name: ネットワークのセキュリティ
-    displayName: firewall, ssl, vpn, ids, gateway, https, azure application gateway, application gateway, ips, waf
-    href: security-network-overview.md
-    items:
-    - name: ベスト プラクティス
-      href: azure-security-network-security-best-practices.md
-    - name: DDoS Protection
-      href: azure-ddos-best-practices.md
-    - name: 境界のセキュリティ
-      href: ../best-practices-network-security.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-- name: アプリケーション
+    - name: インフラストラクチャのセキュリティ
+      href: azure-security-infrastructure.md
+      items:
+        - name: 物理的なセキュリティ
+          href: azure-physical-security.md
+        - name: 可用性
+          href: azure-infrastructure-availability.md
+        - name: コンポーネントと境界
+          href: azure-infrastructure-components.md
+        - name: ネットワーク アーキテクチャ
+          displayName: 'ssl, https'
+          href: azure-infrastructure-network.md
+        - name: 運用ネットワーク
+          href: azure-production-network.md
+        - name: SQL Database
+          href: azure-infrastructure-sql.md
+        - name: 操作
+          href: azure-infrastructure-operations.md
+        - name: 監視
+          href: azure-infrastructure-monitoring.md
+        - name: 整合性
+          href: azure-infrastructure-integrity.md
+        - name: データ保護
+          href: azure-protection-of-customer-data.md
+    - name: Microsoft Antimalware
+      displayName: virus
+      href: azure-security-antimalware.md
+    - name: IaaS セキュリティ
+      href: security-virtual-machines-overview.md
+      items:
+        - name: ベスト プラクティス - IaaS ワークロード
+          displayName: patch
+          href: azure-security-iaas.md
+        - name: Azure Marketplace イメージ
+          href: security-recommendations-azure-marketplace-images.md
+    - name: ID 管理
+      href: security-identity-management-overview.md
+      items:
+        - name: Azure AD 認証の選択
+          displayName: 'identity, active directory, seamless sso'
+          href: azure-ad-choose-authn.md
+        - name: セキュリティ チェックリスト
+          displayName: 'identity, active directory, password'
+          href: azure-ad-secure-steps.md
+        - name: ベスト プラクティス
+          displayName: 'password, identity, active directory'
+          href: azure-security-identity-management-best-practices.md
+        - name: サブスクリプション管理者に対する MFA の適用
+          displayName: identity
+          href: azure-security-global-admin.md
+    - name: ネットワークのセキュリティ
+      displayName: 'firewall, ssl, vpn, ids, gateway, https, azure application gateway, application gateway, ips, waf'
+      href: security-network-overview.md
+      items:
+        - name: ベスト プラクティス
+          href: azure-security-network-security-best-practices.md
+        - name: DDoS Protection
+          href: azure-ddos-best-practices.md
+        - name: 境界のセキュリティ
+          href: ../best-practices-network-security.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Application
   items:
-  - name: PaaS
-    href: security-paas-deployments.md
-    items:
-    - name: PaaS の Azure App Service
-      href: security-paas-applications-using-app-services.md
-    - name: PaaS の Azure Storage
-      href: security-paas-applications-using-storage.md
-    - name: PaaS の DB ベスト プラクティス
-      href: security-paas-applications-using-sql.md
-  - name: IoT
-    href: security-internet-of-things-overview.md
-    items:
-    - name: IoT セキュリティのベスト プラクティス
-      href: ../iot-accelerators/iot-security-best-practices.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-    - name: IoT のセキュリティ
-      href: ../iot-accelerators/iot-security-architecture.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot
-    - name: IoT デプロイのセキュリティ保護
-      href: ../iot-accelerators/iot-accelerators-security-deployment.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-  - name: Azure Service Fabric のセキュリティ
-    href: azure-service-fabric-security-overview.md
-    items:
-    - name: ベスト プラクティス
-      href: azure-service-fabric-security-best-practices.md
-    - name: セキュリティ チェックリスト
-      href: azure-service-fabric-security-checklist.md
+    - name: PaaS
+      href: security-paas-deployments.md
+      items:
+        - name: PaaS の Azure App Service
+          href: security-paas-applications-using-app-services.md
+        - name: PaaS の Azure Storage
+          href: security-paas-applications-using-storage.md
+        - name: PaaS の DB ベスト プラクティス
+          href: security-paas-applications-using-sql.md
+    - name: IoT
+      href: security-internet-of-things-overview.md
+      items:
+        - name: IoT セキュリティのベスト プラクティス
+          href: ../iot-accelerators/iot-security-best-practices.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: IoT のセキュリティ
+          href: '../iot-accelerators/iot-security-architecture.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
+        - name: IoT デプロイのセキュリティ保護
+          href: ../iot-accelerators/iot-accelerators-security-deployment.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Azure Service Fabric のセキュリティ
+      href: azure-service-fabric-security-overview.md
+      items:
+        - name: ベスト プラクティス
+          href: azure-service-fabric-security-best-practices.md
+        - name: セキュリティ チェックリスト
+          href: azure-service-fabric-security-checklist.md
 - name: 監視、監査、および操作
   href: security-management-and-monitoring-overview.md
   items:
-  - name: 監査とログ記録
-    items:
-    - name: セキュリティ管理
-      displayName: vulnerability, incident, virus,
-      href: ../security-center/security-center-intro.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-    - name: リモート管理セキュリティ
-      href: azure-security-management.md
-    - name: Azure ログ統合
+    - name: 監査とログ記録
       items:
-      - name: はじめに
-        href: security-azure-log-integration-overview.md
-      - name: 作業開始
-        href: security-azure-log-integration-get-started.md
-      - name: Azure AD 監査ログの統合
-        displayName: active directory
-        href: security-azure-log-integration-ad.md
-      - name: Security Center のアラートの統合
-        displayName: splunk
-        href: ../security-center/security-center-export-data-to-siem.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-      - name: Key Vault のログの統合
-        displayName: keyvault
-        href: security-azure-log-integration-keyvault-eventhub.md
-      - name: FAQ
-        href: security-azure-log-integration-faq.md
-  - name: 運用上のセキュリティ
-    href: azure-operational-security-overview.md
-    items:
-    - name: ベスト プラクティス
-      href: azure-operational-security-best-practices.md
-    - name: セキュリティ チェックリスト
-      href: azure-operational-security-checklist.md
+        - name: セキュリティ管理
+          displayName: 'vulnerability, incident, virus,'
+          href: ../security-center/security-center-intro.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: リモート管理セキュリティ
+          href: azure-security-management.md
+        - name: Azure ログ統合
+          items:
+            - name: はじめに
+              href: security-azure-log-integration-overview.md
+            - name: 作業開始
+              href: security-azure-log-integration-get-started.md
+            - name: Azure AD 監査ログの統合
+              displayName: active directory
+              href: security-azure-log-integration-ad.md
+            - name: Security Center のアラートの統合
+              displayName: splunk
+              href: ../security-center/security-center-export-data-to-siem.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Key Vault のログの統合
+              displayName: keyvault
+              href: security-azure-log-integration-keyvault-eventhub.md
+            - name: FAQ
+              href: security-azure-log-integration-faq.md
+    - name: 運用上のセキュリティ
+      href: azure-operational-security-overview.md
+      items:
+        - name: ベスト プラクティス
+          href: azure-operational-security-best-practices.md
+        - name: セキュリティ チェックリスト
+          href: azure-operational-security-checklist.md
 - name: ガバナンスとコンプライアンス
-  displayName: blueprint, privacy, certifications
+  displayName: 'blueprint, privacy, certifications'
   items:
-  - name: 保護された AU
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/au-protected-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/au-protected-paaswa-overview.md
-  - name: FedRAMP
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: データ分析
-      href: ./blueprints/fedramp-analytics-overview.md
-    - name: データ ウェアハウス
-      href: ./blueprints/fedramp-datawarehouse-overview.md
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/fedramp-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/fedramp-paaswa-overview.md
-  - name: FFIEC
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: データ分析
-      href: ./blueprints/ffiec-analytics-overview.md
-    - name: データ ウェアハウス
-      href: ./blueprints/ffiec-dw-overview.md
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/ffiec-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/ffiec-paaswa-overview.md
-  - name: GDPR
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: データ分析
-      href: ./blueprints/gdpr-analytics-overview.md
-    - name: データ ウェアハウス
-      href: ./blueprints/gdpr-datawarehouse-overview.md
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/gdpr-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/gdpr-paaswa-overview.md
-  - name: HIPAA/HITRUST
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: 正常性データと AI
-      href: ./blueprints/azure-health.md
-  - name: NIST SP 800-171
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: データ分析
-      href: ./blueprints/nist171-analytics-overview.md
-    - name: データ ウェアハウス
-      href: ./blueprints/nist171-datawarehouse-overview.md
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/nist171-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/nist171-paaswa-overview.md
-  - name: PCI DSS
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: データ分析
-      href: ./blueprints/pcidss-analytics-overview.md
-    - name: データ ウェアハウス
-      href: ./blueprints/pcidss-dw-overview.md
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/pcidss-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/pcidss-paaswa-overview.md
-  - name: TIC
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: Azure による信頼できるインターネット接続
-      href: ./compliance/compliance-tic.md
-  - name: UK NHS
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: データ分析
-      href: ./blueprints/uknhs-analytics-overview.md
-    - name: データ ウェアハウス
-      href: ./blueprints/uknhs-datawarehouse-overview.md
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/uknhs-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/uknhs-paaswa-overview.md
-  - name: UK OFFICIAL
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/ukofficial-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/ukofficial-paaswa-overview.md
+    - name: 保護された AU
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/au-protected-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/au-protected-paaswa-overview.md
+    - name: FedRAMP
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: データ分析
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/fedramp-paaswa-overview.md
+    - name: FFIEC
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: データ分析
+          href: ./blueprints/ffiec-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/ffiec-dw-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/ffiec-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/ffiec-paaswa-overview.md
+    - name: HIPAA/HITRUST
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 正常性データと AI
+          href: ./blueprints/azure-health.md
+    - name: NIST SP 800-171
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: データ分析
+          href: ./blueprints/nist171-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/nist171-datawarehouse-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/nist171-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/nist171-paaswa-overview.md
+    - name: PCI DSS
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: データ分析
+          href: ./blueprints/pcidss-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/pcidss-dw-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/pcidss-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/pcidss-paaswa-overview.md
+    - name: TIC
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: Azure による信頼できるインターネット接続
+          href: ./compliance/compliance-tic.md
+    - name: UK NHS
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: データ分析
+          href: ./blueprints/uknhs-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/uknhs-datawarehouse-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/uknhs-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/uknhs-paaswa-overview.md
+    - name: UK OFFICIAL
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/ukofficial-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/ukofficial-paaswa-overview.md
 - name: ホワイト ペーパー
   href: security-white-papers.md
 - name: Azure セキュリティ サービス
@@ -313,51 +303,58 @@ items:
   href: security-best-practices-and-patterns.md
 - name: リソース
   items:
-  - name: Azure セキュリティの MVP プログラム
-    href: azure-security-mvp.md
-  - name: サイバーセキュリティに関する相談
-    href: azure-security-cyber-services.md
-  - name: セキュリティ イベント サポート チケットのログ記録
-    href: azure-security-event-support-ticket.md
-  - name: 侵入テスト
-    displayName: penetration
-    href: azure-security-pen-testing.md
-  - name: Microsoft Threat Modeling Tool
-    displayName: stride
-    href: azure-security-threat-modeling-tool.md
-    items:
-    - name: 使用の開始
-      href: azure-security-threat-modeling-tool-getting-started.md
-    - name: 機能の概要
-      href: azure-security-threat-modeling-tool-feature-overview.md
-    - name: 脅威
-      href: azure-security-threat-modeling-tool-threats.md
-    - name: 軽減策
-      href: azure-security-threat-modeling-tool-mitigations.md
+    - name: 一般的なセキュリティ属性
+      href: common-security-attributes.md
+    - name: Azure セキュリティの MVP プログラム
+      href: azure-security-mvp.md
+    - name: サイバーセキュリティに関する相談
+      href: azure-security-cyber-services.md
+    - name: セキュリティ イベント サポート チケットのログ記録
+      href: azure-security-event-support-ticket.md
+    - name: 侵入テスト
+      displayName: penetration
+      href: azure-security-pen-testing.md
+    - name: Microsoft Threat Modeling Tool
+      displayName: stride
+      href: azure-security-threat-modeling-tool.md
       items:
-      - name: 監査とログ記録
-        href: azure-security-threat-modeling-tool-auditing-and-logging.md
-      - name: Authentication
-        href: azure-security-threat-modeling-tool-authentication.md
-      - name: Authorization
-        href: azure-security-threat-modeling-tool-authorization.md
-      - name: 通信のセキュリティ
-        href: azure-security-threat-modeling-tool-communication-security.md
-      - name: 構成管理
-        href: azure-security-threat-modeling-tool-configuration-management.md
-      - name: 暗号化
-        href: azure-security-threat-modeling-tool-cryptography.md
-      - name: 例外管理
-        href: azure-security-threat-modeling-tool-exception-management.md
-      - name: 入力の検証
-        href: azure-security-threat-modeling-tool-input-validation.md
-      - name: 機微なデータ
-        href: azure-security-threat-modeling-tool-sensitive-data.md
-      - name: セッションの管理
-        href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 998b787657be90f3b7026a7e338d49e7c1903499
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710836"
+        - name: 使用の開始
+          href: azure-security-threat-modeling-tool-getting-started.md
+        - name: 機能の概要
+          href: azure-security-threat-modeling-tool-feature-overview.md
+        - name: 脅威
+          href: azure-security-threat-modeling-tool-threats.md
+        - name: リリース
+          href: azure-security-threat-modeling-tool-releases.md
+          items:
+            - name: Threat Modeling Tool GA リリース 7.1.5091.2 - 9/12/2018
+              href: azure-security-threat-modeling-tool-releases-71509112.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.51023.1 - 11/1/2018
+              href: azure-security-threat-modeling-tool-releases-71510231.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 1/29/2019
+              href: azure-security-threat-modeling-tool-releases-71601261.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 4/09/2019
+              href: azure-security-threat-modeling-tool-releases-71604081.md
+        - name: 軽減策
+          href: azure-security-threat-modeling-tool-mitigations.md
+          items:
+            - name: 監査とログ記録
+              href: azure-security-threat-modeling-tool-auditing-and-logging.md
+            - name: Authentication
+              href: azure-security-threat-modeling-tool-authentication.md
+            - name: Authorization
+              href: azure-security-threat-modeling-tool-authorization.md
+            - name: 通信のセキュリティ
+              href: azure-security-threat-modeling-tool-communication-security.md
+            - name: 構成管理
+              href: azure-security-threat-modeling-tool-configuration-management.md
+            - name: 暗号化
+              href: azure-security-threat-modeling-tool-cryptography.md
+            - name: 例外管理
+              href: azure-security-threat-modeling-tool-exception-management.md
+            - name: 入力の検証
+              href: azure-security-threat-modeling-tool-input-validation.md
+            - name: 機微なデータ
+              href: azure-security-threat-modeling-tool-sensitive-data.md
+            - name: セッションの管理
+              href: azure-security-threat-modeling-tool-session-management.md

@@ -4,12 +4,12 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: 71d19b5d922616944c176cdda98470607c515af9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 77019068279261a36f8ba40247e5f5694ca77892
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111962"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554078"
 ---
 | リソース | 制限 |
 | --- | --- |

@@ -5,7 +5,7 @@ services: security-center
 cloud: na
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 ms.assetid: ''
 ms.service: security-center
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: de9186faa9c6228f1938a94016ef449ce8bb1899
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: aa6c154e14fbf5291e2493f4f27b9d4501ba18f4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335933"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117988"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 

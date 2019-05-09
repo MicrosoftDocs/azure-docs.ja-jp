@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: LUIS はサービス内にさまざまな機能を備えています。 すべての機能の言語パリティが同じであるわけではありません。 関心のある機能が、自分の対象とする言語カルチャでサポートされていることをご確認ください。 LUIS アプリはカルチャ固有で、一度設定したら変更できません。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 452700593d7145e828155c3bd999ad90e2437ba9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099003"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757657"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -30,7 +30,7 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 LUIS が理解する発話の言語を次に示します。
 
-| 言語 |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
+| 言語 |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -44,6 +44,7 @@ LUIS が理解する発話の言語を次に示します。
 | ポルトガル語 (ブラジル) |`pt-BR` |-| ✔ |✔ |一部のサブカルチャのみ|
 | スペイン語 (スペイン) |`es-ES` |-| ✔ |✔|✔|
 | スペイン語 (メキシコ)|`es-MX` |-|  -   |✔|✔|
+| トルコ語 | `tr-TR` |-|-|-|センチメントのみ|
 
 
 言語サポートは、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)および[事前構築済みのドメイン](luis-reference-prebuilt-domains.md)によって異なります。
@@ -52,7 +53,7 @@ LUIS が理解する発話の言語を次に示します。
 
  - `zh-cn` カルチャで LUIS に必要なのは、繁体字中国語ではなく簡体字中国語の文字セットです。
  - 意図、エンティティ、機能、および正規表現の名前には、中国語の文字またはローマ字を使用できます。
- - `zh-cn` カルチャでサポートされている事前構築済みのドメインについては、[事前構築済みのドメインのリファレンス](luis-reference-prebuilt-domains.md)を参照してください。
+ - `zh-cn` カルチャでサポートされているあらかじめ構築されたドメインについては、[あらかじめ構築されたドメインのリファレンス](luis-reference-prebuilt-domains.md)を参照してください。
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>*日本語サポートに関するメモ
@@ -93,3 +94,119 @@ Speech ディクテーション モードの言語については、Speech の�
 |ポルトガル語 (ブラジル)|✔||||
 |スペイン語 (es-ES)|✔||||
 |スペイン語 (es-MX)|✔||||
+
+### <a name="custom-tokenizer-versions"></a>カスタム トークナイザーのバージョン
+
+次のカルチャには、カスタム トークナイザーのバージョンがあります。
+
+|カルチャ|バージョン|目的|
+|--|--|--|
+|ドイツ語<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは `Ich fahre einen kranken wagen` に変換されます。 `kranken` と `wagen` を別のエンティティとして独立にマークすることが可能になります。|
+|ドイツ語<br>`de-de`|1.0.1|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは 1 つのトークンのままになります。 そのため、`krankenwagen` は 1 つのエンティティとしてマークされます。 |
+
+### <a name="migrating-between-tokenizer-versions"></a>トークナイザーのバージョン間の移行
+<!--
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
+
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.0",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.0",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 23,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.1",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.1",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 16,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+-->
+
+トークン化は、アプリ レベルで発生します。 バージョン レベルのトークン化に対するサポートはありません。 
+
+バージョンの代わりに、[新しいアプリとしてファイルをインポート](luis-how-to-start-new-app.md#import-an-app-from-file)します。 このアクションは、新しいアプリはアプリ ID が異なるが、ファイルで指定されたトークナイザーのバージョンを使用することを示します。 

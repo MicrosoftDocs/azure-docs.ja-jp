@@ -1,24 +1,24 @@
 ---
-title: 'SSMS: Azure SQL Database に接続してデータを照会する | Microsoft Docs'
+title: 'SSMS: Azure SQL データベースに接続してデータを照会する | Microsoft Docs'
 description: SQL Server Management Studio (SSMS) を使用して Azure で SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
 keywords: SQL データベースへの接続、SQL Server Management Studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 03/25/2019
+ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745076"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59359985"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する
 
@@ -26,37 +26,53 @@ ms.locfileid: "53745076"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+  || 単一データベース | マネージド インスタンス |
+  |:--- |:--- |:---|
+  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |||
 
-* 構成済みのサーバーレベルのファイアウォール規則。 詳細については、「[サーバーレベルのファイアウォール規則を作成する](sql-database-get-started-portal-firewall.md)」を参照してください。
+  > [!IMPORTANT]
+  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
-#### <a name="install-the-latest-ssms"></a>最新の SSMS をインストールします。
+## <a name="install-the-latest-ssms"></a>最新の SSMS をインストールします。
 
-開始する前に、最新の [SSMS][ssms-install-latest-84g] がインストールされていることを確認します。 
+開始する前に、最新の [SSMS][ssms-install-latest-84g] がインストールされていることを確認します。
 
-## <a name="sql-server-connection-information"></a>SQL Server の接続情報
+## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+
+3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
 ## <a name="connect-to-your-database"></a>データベースに接続する
 
-SMSS で、Azure SQL Database サーバーに接続します。 
+SMSS で、Azure SQL Database サーバーに接続します。
 
 > [!IMPORTANT]
-> Azure SQL Database 論理サーバーは、ポート 1433 でリッスンします。 企業のファイアウォールの背後から論理サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
+> Azure SQL Database サーバーは、ポート 1433 でリッスンします。 企業のファイアウォールの外側から SQL Database サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
 >
 
 1. SSMS を開きます。 **[サーバーへの接続]** ダイアログ ボックスが表示されます。
 
 2. 次の情報を入力します。
 
-   | Setting      | 推奨値    | 説明 | 
-   | ------------ | ------------------ | ----------- | 
+   | Setting      | 推奨値    | 説明 |
+   | ------------ | ------------------ | ----------- |
    | **サーバーの種類** | データベース エンジン | 必須値。 |
    | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
-   | **認証** | パブリック | このチュートリアルでは、SQL 認証を使用します。 |
+   | **認証** | SQL Server 認証 | このチュートリアルでは、SQL 認証を使用します。 |
    | **ログイン** | サーバー管理者アカウントのユーザー ID | サーバーを作成するために使用するサーバー管理者アカウントのユーザー ID。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
    ||||
@@ -67,7 +83,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
    ![サーバー上のデータベースに接続](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. **[接続]** を選択します。 オブジェクト エクスプローラー ウィンドウが開きます。 
+4. **[接続]** を選択します。 オブジェクト エクスプローラー ウィンドウが開きます。
 
 5. データベースのオブジェクトを表示するには、**[データベース]** を展開して、**mySampleDatabase** を展開します。
 
@@ -124,19 +140,19 @@ SMSS で、Azure SQL Database サーバーに接続します。
 1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
-   SELECT * FROM [SalesLT].[Product] 
-   WHERE Name='myNewProduct' 
+   SELECT * FROM [SalesLT].[Product]
+   WHERE Name='myNewProduct'
+   ```
 
-2. Select **Execute**. The following result appears. 
+2. **[Execute (実行)]** を選択します。 次の結果が表示されます。
 
    ![result](./media/sql-database-connect-query-ssms/result.png)
 
- 
-## Update data
+## <a name="update-data"></a>データの更新
 
-Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
+次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL コードを実行して、新しい製品を変更します。
 
-1. Replace the previous query with this one.
+1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -171,8 +187,6 @@ Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL
 - Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
 - Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
 
-
 <!-- Article link references. -->
 
 [ssms-install-latest-84g]: https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms
-

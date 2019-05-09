@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 03ebdabf60882a73eb15cbd36481068591bbd3bc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 234febe92727e5a47d4cfc5b836cd5593e99b5b5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086285"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238370"
 ---
 # <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する
 
@@ -36,6 +36,8 @@ Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capt
 > * SQL Data Warehouse 内にキャプチャされたデータを確認する
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual Studio 2017 バージョン 15.3.2 以上](https://www.visualstudio.com/vs/)。 インストール時に、次のワークロードがインストールされることを確認します。.NET デスクトップ開発、Azure 開発、ASP.NET および Web 開発、Node.js 開発、Python 開発。
 - [Git サンプルのダウンロード](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)。 サンプル ソリューションには、次のコンポーネントが含まれます。
@@ -82,9 +84,9 @@ az group deployment create \
 PowerShell を使用してテンプレートをデプロイするには、次のコマンドを実行します。
 
 ```powershell
-New-AzureRmResourceGroup -Name rgDataMigration -Location westcentralus
+New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
+New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
 

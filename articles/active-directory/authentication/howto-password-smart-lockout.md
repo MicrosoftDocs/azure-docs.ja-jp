@@ -1,21 +1,22 @@
 ---
-title: Azure AD のスマート ロックアウトを使用してブルート フォース攻撃を防止する
+title: Azure AD のスマート ロックアウトを使用してブルート フォース攻撃を防止する - Azure Active Directory
 description: Azure Active Directory のスマート ロックアウトを使用すると、パスワードを推測するブルート フォース攻撃から組織を守れます
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435278"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370192"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -23,7 +24,7 @@ ms.locfileid: "53435278"
 
 既定のスマート ロックアウトでは、10 回試行に失敗した後、アカウントによるサインインの試行が 1 分間ロックされます。 後続のサインインの試行が失敗するたびに、アカウントは再度ロックされます。最初は 1 分間、後続の試行ではより長い時間ロックされます。
 
-スマート ロックアウトでは、直近 3 つの無効なパスワードのハッシュを追跡して、ロックアウト カウンターの再増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロックアウトされることはありません。
+スマート ロックアウトでは、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロックアウトされることはありません。
 
  > [!NOTE]
  > 認証はクラウドではなくオンプレミスで行われるため、パススルー認証を有効にしているお客様はハッシュ追跡機能を利用できません。
@@ -39,8 +40,8 @@ ms.locfileid: "53435278"
 
 [パススルー認証](../hybrid/how-to-connect-pta.md)を使用する場合は、以下を確認してください。
 
-   * Azure AD のロックアウトしきい値が、Active Directory アカウント ロックアウトしきい値より**小さい**。 Active Directory アカウント ロックアウトしきい値が Azure AD のロックアウトしきい値より少なくとも 2 - 3 倍長くなるように値を設定します。 
-   * Azure AD のロックアウト期間 **(秒単位)** が、Active Directory のロックアウト カウンターのリセットの期間 **(分単位)** より **長い**。
+* Azure AD のロックアウトしきい値が、Active Directory アカウント ロックアウトしきい値より**小さい**。 Active Directory アカウント ロックアウトしきい値が Azure AD のロックアウトしきい値より少なくとも 2 - 3 倍長くなるように値を設定します。 
+* Azure AD のロックアウト期間 **(秒単位)** が、Active Directory のロックアウト カウンターのリセットの期間 **(分単位)** より **長い**。
 
 > [!IMPORTANT]
 > 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。
@@ -54,7 +55,7 @@ ms.locfileid: "53435278"
 3. **[コンピューターの構成]** > **[ポリシー]** > **[Windows 設定]** > **[セキュリティ設定]** > **[アカウント ポリシー]** > **[アカウント ロックアウト ポリシー]** の順に移動します。
 4. **[アカウント ロックアウトのしきい値]** と **[ロックアウト カウンターのリセット]** の値を確認します。
 
-![グループ ポリシー オブジェクトを使用して、オンプレミス Active Directory アカウントを編集する](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![オンプレミス Active Directory アカウント ロックアウト ポリシーを変更する](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD スマート ロックアウトの値を管理する
 
@@ -70,8 +71,14 @@ ms.locfileid: "53435278"
 > ロックアウト後、はじめてのサインインにも失敗した場合は、アカウントは再度ロックアウトされます。 アカウントが繰り返しロックされた場合は、ロックアウト時間が長くなります。
 
 ![Azure Portal で Azure AD スマート ロックアウト ポリシーをカスタマイズする](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>スマート ロックアウト機能が動作しているかどうかを確認する方法
+
+スマート ロックアウトのしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
+
+**ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。**
+
 ## <a name="next-steps"></a>次の手順
 
-[Azure AD を使用して、組織内の不適切なパスワードの使用を禁止する方法について説明します。](howto-password-ban-bad.md)
-
-[ユーザーが自分でアカウントのロックを解除できるよう、セルフ サービスのパスワード リセット機能を構成します。](quickstart-sspr.md)
+* [Azure AD を使用して、組織内の不適切なパスワードの使用を禁止する方法について説明します。](howto-password-ban-bad.md)
+* [ユーザーが自分でアカウントのロックを解除できるよう、セルフ サービスのパスワード リセット機能を構成します。](quickstart-sspr.md)

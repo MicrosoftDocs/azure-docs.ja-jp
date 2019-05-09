@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/22/2017
+ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: ee7b403c2ebdc590bd428eff880769ae83632585
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5b647af7925ceb81c524deb0accf90f9e895080e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228217"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58876991"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 このトピックでは、以下のことを行う方法を示します。
@@ -38,24 +38,52 @@ ms.locfileid: "51228217"
 * [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
+
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
+## <a name="verify-powershell-version"></a>PowerShell のバージョンを確認する
+
+この記事の例は、Azure PowerShell モジュールのバージョン 5.4.1 を使用してテストされています。
+
+お使いの PowerShell モジュールが 5.4.1 以降であることを確認してください。
+
+[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。
+
 ## <a name="configure-the-windows-firewall"></a>Windows ファイアウォールの構成
+
 SQL Server のアクセスを許可するように Windows ファイアウォールを構成します。 ファイアウォール規則では、SQL Server インスタンスによって使用されるポートとリスナー プローブによって使用されるポートへの TCP 接続を許可します。 詳細については、「[データベース エンジン アクセスを有効にするための Windows ファイアウォールを構成する](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1)」をご覧ください。 SQL Server のポートとプローブ ポート用の受信規則を作成します。
 
 Azure ネットワーク セキュリティ グループを使用してアクセスを制限する場合は、バックエンド SQL Server VM の IP アドレス、AG リスナーのロード バランサー フローティング IP アドレス、および該当する場合はクラスター コア IP アドレスが許可ルールに含まれていることを確認します。
 
-## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>サンプル スクリプト: PowerShell を使用して内部ロード バランサーを作成する
-> [!NOTE]
-> [Microsoft テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) を使用して可用性グループを作成した場合、内部ロード バランサーは既に作成されています。 
-> 
-> 
+## <a name="determine-the-load-balancer-sku-required"></a>必要なロード バランサーの SKU を決定する
 
-次の PowerShell スクリプトでは、内部ロード バランサーを作成し、負荷分散規則を構成した後、ロード バランサーの IP アドレスを設定します。 スクリプトを実行するには、Windows PowerShell ISE を開いてスクリプト ウィンドウにスクリプトを貼り付けます。 `Connect-AzureRmAccount` を使用して PowerShell にログインします。 複数の Azure サブスクリプションがある場合は、 `Select-AzureRmSubscription ` を使用してサブスクリプションを設定します。 
+[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) は、2 つの SKU (Basic と Standard) で利用できます。 Standard Load Balancer をお勧めします。 仮想マシンが可用性セット内にある場合は、Basic Load Balancer が許可されます。 Standard Load Balancer では、すべての VM IP アドレスで標準 IP アドレスが使用されている必要があります。
+
+可用性グループ用の現在の [Microsoft テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)では、Basic Load Balancer と基本の IP アドレスが使用されています。
+
+この記事の例では、Standard Load Balancer が指定されています。 例のスクリプトには、`-sku Standard` が含まれています。
 
 ```powershell
-# Connect-AzureRmAccount
-# Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+```
+
+Basic Load Balancer を作成するには、ロード バランサーを作成する行から `-sku Standard` を削除します。 例: 
+
+```powershell
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
+```
+
+## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>サンプル スクリプト: PowerShell を使用して内部ロード バランサーを作成する
+
+> [!NOTE]
+> [Microsoft テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) を使用して可用性グループを作成した場合、内部ロード バランサーは既に作成されています。
+
+次の PowerShell スクリプトでは、内部ロード バランサーを作成し、負荷分散規則を構成した後、ロード バランサーの IP アドレスを設定します。 スクリプトを実行するには、Windows PowerShell ISE を開いてスクリプト ウィンドウにスクリプトを貼り付けます。 `Connect-AzAccount` を使用して PowerShell にログインします。 複数の Azure サブスクリプションがある場合は、 `Select-AzSubscription` を使用してサブスクリプションを設定します。 
+
+```powershell
+# Connect-AzAccount
+# Select-AzSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<Resource Group Name>" # Resource group name
 $VNetName = "<Virtual Network Name>"         # Virtual network name
@@ -74,30 +102,30 @@ $LBConfigRuleName = "ILBCR_$ListenerPort"    # The Load Balancer Rule Object Nam
 $FrontEndConfigurationName = "FE_SQLAGILB_1" # Object name for the front-end configuration 
 $BackEndConfigurationName ="BE_SQLAGILB_1"   # Object name for the back-end configuration
 
-$VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
+$VNet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
 
-$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName 
+$Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName 
 
-$FEConfig = New-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.id
+$FEConfig = New-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.id
 
-$BEConfig = New-AzureRMLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName 
+$BEConfig = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName 
 
-$SQLHealthProbe = New-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -Protocol tcp -Port $ProbePort -IntervalInSeconds 15 -ProbeCount 2
+$SQLHealthProbe = New-AzLoadBalancerProbeConfig -Name $LBProbeName -Protocol tcp -Port $ProbePort -IntervalInSeconds 15 -ProbeCount 2
 
-$ILBRule = New-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
+$ILBRule = New-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
 
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe 
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe 
 
-$bepool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
+$bepool = Get-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
 
 foreach($VMName in $VMNames)
     {
-        $VM = Get-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VMName 
+        $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName 
         $NICName = ($vm.NetworkProfile.NetworkInterfaces.Id.split('/') | select -last 1)
-        $NIC = Get-AzureRmNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName
+        $NIC = Get-AzNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName
         $NIC.IpConfigurations[0].LoadBalancerBackendAddressPools = $BEPool
-        Set-AzureRmNetworkInterface -NetworkInterface $NIC
-        start-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VM.Name 
+        Set-AzNetworkInterface -NetworkInterface $NIC
+        start-AzVM -ResourceGroupName $ResourceGroupName -Name $VM.Name 
     }
 ```
 
@@ -115,8 +143,8 @@ foreach($VMName in $VMNames)
 次のスクリプトは、既存のロード バランサーに新しい IP アドレスを追加します。 ILB では、負荷分散フロントエンド ポート用のリスナー ポートが使用されます。 このポートには、SQL Server がリッスンしているポートを使用できます。 SQL Server の既定のインスタンスでは、このポートは 1433 です。 バックエンド ポートがフロントエンド ポートと同じになるように、可用性グループの負荷分散規則ではフローティング IP (Direct Server Return) が必要です。 環境に合わせて変数を更新してください。 
 
 ```powershell
-# Connect-AzureRmAccount
-# Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
+# Connect-AzAccount
+# Select-AzSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<ResourceGroup>"          # Resource group name
 $VNetName = "<VirtualNetwork>"                  # Virtual network name
@@ -127,7 +155,7 @@ $ILBIP = "<n.n.n.n>"                            # IP address
 [int]$ListenerPort = "<nnnn>"                   # AG listener port
 [int]$ProbePort = "<nnnnn>"                     # Probe port 
 
-$ILB = Get-AzureRmLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName 
+$ILB = Get-AzLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName 
 
 $count = $ILB.FrontendIpConfigurations.Count+1
 $FrontEndConfigurationName ="FE_SQLAGILB_$count"  
@@ -135,22 +163,22 @@ $FrontEndConfigurationName ="FE_SQLAGILB_$count"
 $LBProbeName = "ILBPROBE_$count"
 $LBConfigrulename = "ILBCR_$count"
 
-$VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
-$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
+$VNet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
+$Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
 
-$ILB | Add-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id 
+$ILB | Add-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id 
 
-$ILB | Add-AzureRmLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 15  | Set-AzureRmLoadBalancer 
+$ILB | Add-AzLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 15  | Set-AzLoadBalancer 
 
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
-$FEConfig = get-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
+$FEConfig = get-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
 
-$SQLHealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
+$SQLHealthProbe  = Get-AzLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
-$BEConfig = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $ILB.BackendAddressPools[0].Name -LoadBalancer $ILB 
+$BEConfig = Get-AzLoadBalancerBackendAddressPoolConfig -Name $ILB.BackendAddressPools[0].Name -LoadBalancer $ILB 
 
-$ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort  $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP | Set-AzureRmLoadBalancer   
+$ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort  $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP | Set-AzLoadBalancer   
 ```
 
 ## <a name="configure-the-listener"></a>リスナーの構成
@@ -176,7 +204,7 @@ $ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConf
 1. **sqlcmd** ユーティリティを使用して接続をテストします。 たとえば次のスクリプトは、Windows 認証を使用し、リスナー経由でプライマリ レプリカとの **sqlcmd** 接続を確立しています。
    
     ```
-    sqlmd -S <listenerName> -E
+    sqlcmd -S <listenerName> -E
     ```
    
     リスナーが既定のポート (1433) 以外のポートを使用している場合は、そのポートを接続文字列で指定します。 たとえば、次の sqlcmd コマンドは、ポート 1435 でリスナーに接続します。 
@@ -205,9 +233,9 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット
 Azure 仮想マシン用の内部ロード バランサーを作成するには、次の PowerShell コマンドレットを使用します。
 
-* [New-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) は、ロード バランサーを作成します。 
-* [New-AzureRMLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) は、ロード バランサー用のフロントエンド IP 構成を作成します。 
-* [New-AzureRmLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) は、ロード バランサー用の規則の構成を作成します。 
-* [New-AzureRmLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) は、ロード バランサー用のバックエンド アドレス プールを作成します。 
-* [New-AzureRmLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) は、ロード バランサー用のプローブの構成を作成します。
-* [Remove-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) は、Azure リソース グループからロード バランサーを削除します。
+* [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) は、ロード バランサーを作成します。 
+* [New-AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) は、ロード バランサー用のフロントエンド IP 構成を作成します。 
+* [New-AzLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) は、ロード バランサー用の規則の構成を作成します。 
+* [New-AzLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) は、ロード バランサー用のバックエンド アドレス プール構成を作成します。 
+* [New-AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) は、ロード バランサー用のプローブの構成を作成します。
+* [Remove-AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) は、Azure リソース グループからロード バランサーを削除します。

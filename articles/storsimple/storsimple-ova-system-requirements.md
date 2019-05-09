@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d01523f326bd7e2518bff06e62ae62db8f318d3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24815230"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58876838"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 ## <a name="overview"></a>概要
@@ -42,7 +42,7 @@ ms.locfileid: "24815230"
 | **ハイパーバイザー** | **バージョン** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 以降 |
-| VMware ESXi |5.0、5.5、および 6.0 <br> (6.5 はサポートされていません。) |
+| VMware ESXi |5.0、5.5、6.0、および 6.5。 |
 
 > [!IMPORTANT]
 > VMware ツールを StorSimple Virtual Array にインストールしないでください。インストールすると、サポートされない構成になります。
@@ -54,7 +54,7 @@ ms.locfileid: "24815230"
 | 最小メモリ (RAM) |8 GB <br> ファイル サーバーの場合、処理するファイル数が 200 万個未満の場合は 8 GB、200 ～ 400 万個の場合は 16 GB|
 | ディスク領域<sup>1</sup> |OS ディスク - 80 GB  <br></br>データ ディスク - 500 GB ～ 8 TB |
 | 最小ネットワーク インターフェイス数 |1 |
-| インターネット帯域幅 <sup>2</sup> |必要な最小帯域幅: 5 Mbps <br> 推奨する帯域幅: 100 Mbps <br> データ転送速度は、インターネットの帯域幅に対応します。 たとえば、100 GB のデータは、5 Mbps で転送すると 2 日かかります。するとバックアップが 1 日で完了しないため、バックアップ エラーを招く可能性があります。 100 Mbps の帯域幅では、100 GB のデータが 2.5 時間で転送できます。   |
+| インターネット帯域幅 <sup>2</sup> |必要な最小帯域幅:5 Mbps <br> 推奨する帯域幅:100 Mbps <br> データ転送速度は、インターネットの帯域幅に対応します。 たとえば、100 GB のデータは、5 Mbps で転送すると 2 日かかります。するとバックアップが 1 日で完了しないため、バックアップ エラーを招く可能性があります。 100 Mbps の帯域幅では、100 GB のデータが 2.5 時間で転送できます。   |
 
 <sup>1</sup> - 仮想プロビジョニング対応
 
@@ -94,13 +94,13 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 
 | **ポート番号<sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |アウト |WAN |いいえ |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
-| TCP 443 (HTTPS) |アウト |WAN |あり |送信ポートは、クラウドのデータへのアクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
+| TCP 80 (HTTP) |アウト |WAN |いいえ  |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
+| TCP 443 (HTTPS) |アウト |WAN |はい |送信ポートは、クラウドのデータへのアクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 <br></br> ファイル サーバーをデプロイする場合は、ローカル DNS サーバーを使用することをお勧めします。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。<br></br> ファイル サーバーをデプロイする場合は、Active Directory ドメイン コントローラーと時刻を同期することをお勧めします。 |
-| TCP 80 (HTTP) |イン |LAN |あり |これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。 <br></br> HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。 |
-| TCP 443 (HTTPS) |イン |LAN |あり |これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。 |
-| TCP 3260 (iSCSI) |イン |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| TCP 80 (HTTP) |イン |LAN |はい |これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。 <br></br> HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。 |
+| TCP 443 (HTTPS) |イン |LAN |はい |これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。 |
+| TCP 3260 (iSCSI) |イン |LAN |いいえ  |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -125,12 +125,12 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 | --- | --- |
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple デバイス マネージャー サービス<br>Access Control Service<br>Azure Service Bus<br>認証サービス|
 | `http://*.backup.windowsazure.com` |デバイス登録 |
-| `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |証明書の失効 |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |証明書の失効 |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure ストレージ アカウントと監視 |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com` |Microsoft Update サーバー<br> |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update サーバー<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |サポート パッケージ |
-| `http://*.data.microsoft.com ` |Windows の Telemetry Service (「[顧客満足度及び診断テレメトリのための更新プログラム](https://support.microsoft.com/en-us/kb/3068708)」を参照) |
+| `https://*.data.microsoft.com` |Windows の Telemetry Service (「[顧客満足度及び診断テレメトリのための更新プログラム](https://support.microsoft.com/en-us/kb/3068708)」を参照) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-virtual-array-deploy1-portal-prep.md)

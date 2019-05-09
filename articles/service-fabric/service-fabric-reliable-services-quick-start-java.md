@@ -4,7 +4,7 @@ description: ステートレス サービスとステートフル サービス�
 services: service-fabric
 documentationcenter: java
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: d4e3419241d44744f8a692896848edb6cebb56a0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 6bf8c632a7513d018745bc74aa0a1db95a39af8b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049696"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663193"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
@@ -28,9 +28,7 @@ ms.locfileid: "44049696"
 >
 >
 
-ここでは、Azure Service Fabric Reliable Services の基本と、Java で記述された簡単な Reliable Services アプリケーションを作成およびデプロイする手順について説明します。 また、次の Microsoft Virtual Academy のビデオでは、ステートレスな Reliable Services を作成する方法を紹介しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
-<img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
+ここでは、Azure Service Fabric Reliable Services の基本と、Java で記述された簡単な Reliable Services アプリケーションを作成およびデプロイする手順について説明します。 
 
 ## <a name="installation-and-setup"></a>インストールとセットアップ
 開始する前に、マシン上に Service Fabric 開発環境がセットアップされていることを確認します。
@@ -201,7 +199,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable HashMap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable HashMap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable HashMap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable HashMap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
 
 Reliable Collection にはカスタム型を含むすべての Java 型を格納できます。ただし次の点にご注意ください。
 

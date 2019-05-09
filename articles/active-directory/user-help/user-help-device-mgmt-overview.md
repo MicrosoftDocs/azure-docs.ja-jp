@@ -3,27 +3,28 @@ title: デバイスの管理の概要 - Azure Active Directory | Microsoft Docs
 description: 組織のネットワークにデバイスを参加させて登録する方法について学習します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 7a4716be201b1923b54f09fa68f5769521b29168
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a99488025dc79a16006af4088555a67b23704cb1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42022922"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162817"
 ---
 # <a name="manage-my-devices-overview"></a>デバイスの管理の概要
 
+職場所有のデバイスと個人のデバイスの両方から、制限されている可能性がある組織の全リソースにアクセスできるようにします。
+
 >[!Important]
 >このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
-
-職場所有のデバイスと個人のデバイスの両方から、制限されている可能性がある組織の全リソースにアクセスできるようにします。
 
 |記事 |説明 |
 |------|------------|

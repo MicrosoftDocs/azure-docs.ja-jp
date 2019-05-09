@@ -6,23 +6,23 @@ author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
-ms.date: 10/07/2018
+ms.subservice: design
+ms.date: 04/03/2019
 ms.author: anvang
-ms.reviewer: igorstan
-ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.reviewer: jrasnick
+ms.openlocfilehash: 4bc1867f0dd18a101b2e764970de4e1904b960e0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425960"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790860"
 ---
 # <a name="change-a-maintenance-schedule"></a>メンテナンス スケジュールの変更 
 
 ## <a name="portal"></a>ポータル
 メンテナンス スケジュールをいつでも更新または、変更できます。 選択したインスタンスのアクティブなメンテナンス サイクルが経過している間、設定は保存されています。 指定した次のメンテナンス期間になると、設定がアクティブになります。 アクティブなメンテナンス イベント中にデータウェアハウスを監視する方法について[さらに理解する](https://docs.microsoft.com/azure/service-health/resource-health-overview)。 
 
-プレビュー中の Azure メンテナンス スケジュールでは、7 日の間に 2 つのメンテナンス ウィンドウを選択します。 メンテナンス ウィンドウはそれぞれ 3 ～ 8 時間です。 メンテナンスは、メンテナンス ウィンドウ内であればいつでも行われる可能性がありますが、ウィンドウ外については事前通知なしでは行われません。 また、サービスではデータ ウェアハウスに新しいコードが展開されるので、接続が一時的に失われます。 
+メンテナンス スケジュールを使用するには、7 日の間に 2 つのメンテナンス ウィンドウを選択する必要があります。 メンテナンス ウィンドウはそれぞれ 3 ～ 8 時間です。 メンテナンスは、メンテナンス ウィンドウ内であればいつでも行われる可能性がありますが、ウィンドウ外については事前通知なしでは行われません。 また、サービスではデータ ウェアハウスに新しいコードが展開されるので、接続が一時的に失われます。 
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>プライマリ ウィンドウとセカンダリ ウィンドウの指定
 
@@ -40,9 +40,9 @@ ms.locfileid: "49425960"
    ![メンテナンスの設定ブレード](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
 5. ドロップダウン リスト ボックスを使用して、優先されるプライマリとセカンダリのメンテナンス ウィンドウを選択します。
-   - **[日]**: 選択したウィンドウでメンテナンスを実行する優先日。
-   - **[開始時刻]**: メンテナンス ウィンドウに対する優先開始時刻。
-   - **[時間枠]**: 時間枠の優先時間数。
+   - **[日]**:選択したウィンドウでメンテナンスを実行する優先日。
+   - **[開始時刻]**:メンテナンス ウィンドウに対する優先開始時刻。
+   - **[時間枠]**:時間枠の優先時間数。
 
    ブレードの下部にある **[スケジュールの概要]** 領域が、選択した値に基づいて更新されます。 
   
@@ -53,7 +53,7 @@ ms.locfileid: "49425960"
    ![リージョンの可用性に関するメッセージ](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
 
 ## <a name="next-steps"></a>次の手順
-- ログ アラート ルール用の Webhook アクションについて[さらに理解する](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
+- ログ アラート ルール用の Webhook アクションについて[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
 - Azure Service Health について[詳しく知る](https://docs.microsoft.com/azure/service-health/service-health-overview)。
 
 

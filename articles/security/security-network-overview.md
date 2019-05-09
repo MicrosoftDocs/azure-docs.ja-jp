@@ -4,7 +4,7 @@ description: この記事では、ネットワーク セキュリティの中核
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: bedf411a-0781-47b9-9742-d524cf3dbfc1
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: ad711fe998a3c250775c5d4f4d76305ffb7cf860
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2aabe3d1fa8a6034c2dab38c8d6fa6da4b00ac1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080341"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -61,8 +61,8 @@ Azure では、次のように、いくつかの種類のネットワーク ア�
 
 セキュリティで保護されたデプロイにはいずれも、ある程度のネットワーク アクセス制御が必要です。 ネットワーク アクセス制御の目的は、必要なシステムのみが仮想マシンと通信できるようにすることです。 その他の通信試行はブロックされます。
 
->[!NOTE]
-Storage のファイアウォールについては、「[Azure Storage のセキュリティの概要](security-storage-overview.md)」の記事に説明されています
+> [!NOTE]
+> Storage のファイアウォールについては、「[Azure Storage のセキュリティの概要](security-storage-overview.md)」の記事に説明されています
 
 #### <a name="network-security-rules-nsgs"></a>ネットワーク セキュリティ規則 (NSG)
 
@@ -84,7 +84,7 @@ NSG はアプリケーション層検査も、認証済みのアクセス制御�
 
 詳細情報:
 
-* [Azure Security Center の Just In Time](../security-center/security-center-just-in-time.md)
+* [Azure Security Center の Just In Time アクセス](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
 
@@ -178,7 +178,7 @@ Azure の仮想マシンとサービスの管理を個々の開発者や運用�
 詳細情報:
 
 * [Azure Portal を使用してサイト間 VPN 接続を持つ Resource Manager VNet を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-* [VPN ゲートウェイの計画と設計](../vpn-gateway/vpn-gateway-plan-design.md)
+* [VPN Gateway について](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>オンプレミス ネットワークから仮想ネットワークへの専用 WAN リンクによる接続
 
@@ -313,18 +313,18 @@ Azure は、Azure DNS という形で可用性とパフォーマンスの高い�
 
 ## <a name="azure-ddos-protection"></a>Azure の DDoS 保護
 
-分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃は、アプリケーションのリソースを使い果たして、そのアプリケーションを正当なユーザーから使用不能にしようとします。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
+分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
 Microsoft では、Azure Platform の一部として、**Basic** と呼ばれる DDoS Protection を提供しています。 これは無料で提供され、一般的なネットワーク レベル攻撃の監視とリアルタイムの対応策に常に含まれています。 DDoS Protection **Basic** に含まれている保護に加え、**Standard** オプションを有効にできます。 DDoS Protection Standard の機能には、次のものが含まれます。
 
-* **ネイティブ プラットフォームの統合:** Azure にネイティブに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
+* **ネイティブのプラットフォーム統合:** Azure にネイティブに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
 * **ターンキー保護:** DDoS Protection Standard が有効になるとすぐに、簡略化された構成によって、仮想ネットワーク上のすべてのリソースが直ちに保護されます。 ユーザーが介入したり、ユーザーが定義したりする必要はありません。 DDoS Protection Standard では、攻撃が検出されるとすぐに自動で軽減されます。
 * **常時接続のトラフィック監視:** DDoS 攻撃の兆候を検出するために、アプリケーションのトラフィック パターンが 24 時間 365 日監視されます。 軽減策は、保護ポリシーを超えた場合に実行されます。
 * **攻撃の軽減策レポート:** 攻撃の軽減策レポートでは、集約されたネットワーク フロー データを使用して、リソースを対象とした攻撃に関する詳細な情報を提供します。
 * **攻撃の軽減フロー ログ:** 攻撃の軽減フロー ログを使用すると、アクティブな DDoS 攻撃中に、破棄されたトラフィック、転送されたトラフィック、およびその他の攻撃データをほぼリアルタイムに確認できます。
-* **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングが一定期間にわたってアプリケーションのトラフィックを学習し、そのサービスに最も適したプロファイルを選択して更新します。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。 レイヤー 3 からレイヤー 7 までの保護: Web アプリケーション ファイアウォールと併用すると、全スタックにわたって DDoS 保護が提供されます。
+* **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングにより、一定期間にわたってアプリケーションのトラフィックが学習され、そのサービスに最も適したプロファイルが選択および更新されます。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。 レイヤー 3 からレイヤー 7 までの保護:Web アプリケーション ファイアウォールと併用すると、全スタックにわたって DDoS 保護が提供されます。
 * **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。
 * **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
-* **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Log Analytics、Splunk、Azure Storage、電子メール、Azure Portal などの運用ソフトウェアに統合されます。
+* **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Monitor のログ、Splunk、Azure Storage、電子メール、Azure portal などの運用ソフトウェアに統合されます。
 * **コストの保証:** データ転送とアプリケーションは、ドキュメント化された DDoS 攻撃のサービス クレジットをスケールアウトします。
 * **DDoS への迅速な対応:** DDoS Protection Standard のお客様は、アクティブな攻撃中に Rapid Response チームを利用できるようになりました。 DRR では、攻撃の調査、攻撃中の独自の軽減策、攻撃後の分析に関して支援できます。
 
@@ -365,8 +365,8 @@ Azure Network Watcher では、セキュリティ問題を特定するための�
 
 Network Watcher と、ラボで機能の一部のテストを開始する方法について詳しくは、[Azure Network Watcher の監視の概要](../network-watcher/network-watcher-monitoring-overview.md)に関するページをご覧ください。
 
->[!NOTE]
-このサービスの可用性とステータスに関する最新の通知については、[Azure の更新情報](https://azure.microsoft.com/updates/?product=network-watcher)に関するページをご覧ください。
+> [!NOTE]
+> このサービスの可用性とステータスに関する最新の通知については、[Azure の更新情報](https://azure.microsoft.com/updates/?product=network-watcher)に関するページをご覧ください。
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -394,11 +394,11 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 ネットワーク レベルにおけるログ記録は、あらゆるネットワーク セキュリティ シナリオの主要な機能です。 Azure では、NSG に関して入手した情報をログに記録して、ネットワーク レベルのログ情報を取得できます。 NSG ログ記録によって、次のログから情報を取得します。
 
-* [アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。 これらのログは、Azure サブスクリプションに送信されたすべての操作を表示するときに使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は監査ログや操作ログと呼ばれていました。
+* [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)。 これらのログは、Azure サブスクリプションに送信されたすべての操作を表示するときに使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は監査ログや操作ログと呼ばれていました。
 * イベント ログ。 これらのログは、適用された NSG ルールについての情報を提供します。
 * カウンター ログ。 このログを使用すると、トラフィックを拒否または許可するために各 NSG ルールが適用された回数が分かります。
 
 優れたデータ視覚化ツールである [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)を使用して、これらのログを表示および分析することもできます。
 詳細情報:
 
-* [ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md)
+* [ネットワーク セキュリティ グループ (NSG) の Azure Monitor ログ](../virtual-network/virtual-network-nsg-manage-log.md)

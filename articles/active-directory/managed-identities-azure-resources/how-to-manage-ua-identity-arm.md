@@ -3,23 +3,24 @@ title: Azure Resource Manager を使用してユーザー割り当てマネー�
 description: Azure Resource Manager を使用して、ユーザー割り当てマネージド ID を作成および削除する手順について説明します。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
-ms.author: daveba
-ms.openlocfilehash: 9329695ed582a313ffdf1a83352e7b561b778654
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cccf129ff4ed9389422ec900a4a23f489cf3c7a4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298746"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444208"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Azure Resource Manager を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する
 
@@ -33,7 +34,7 @@ Azure Resource Manager テンプレートを使用して、ユーザー割り当
 
 - [ユーザー割り当てマネージド ID を一覧表示する](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
 - [ユーザー割り当てマネージド ID を削除する](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
-## <a name="prerequisites"></a>前提条件
+  ## <a name="prerequisites"></a>前提条件
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-it-work)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
@@ -43,7 +44,7 @@ Azure Resource Manager テンプレートを使用して、ユーザー割り当
 Azure Portal とスクリプトの場合と同じように、Azure Resource Manager テンプレートは、Azure リソース グループによって定義された新しいリソースまたは変更されたリソースをデプロイする機能を提供します。 ローカルとポータル ベースの両方を含むテンプレートの編集やデプロイでは、次のような複数のオプションが使用できます。
 
 - [Azure Marketplace のカスタム テンプレート](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)を使用します。これにより、最初からテンプレートを作成したり、既存の共通テンプレートまたは[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)に基づいてテンプレートを作成したりできます。
-- [元のデプロイ](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history)または[デプロイの現在の状態](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
+- [元のデプロイ](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)または[デプロイの現在の状態](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
 - ローカルの [JSON エディター (VS Code など)](../../azure-resource-manager/resource-manager-create-first-template.md) を使用してから、PowerShell または CLI を使用してアップロードおよびデプロイします。
 - Visual Studio の [Azure リソース グループ プロジェクト](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)を使用して、テンプレートを作成およびデプロイします。 
 
@@ -71,7 +72,7 @@ Azure Portal とスクリプトの場合と同じように、Azure Resource Mana
     {
       "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
       "name": "[parameters('resourceName')]",
-      "apiVersion": "2015-08-31-PREVIEW",
+      "apiVersion": "2018-11-30",
       "location": "[resourceGroup().location]"
     }
   ],

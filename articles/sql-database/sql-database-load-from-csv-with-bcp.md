@@ -7,35 +7,40 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: douglaslMS
-ms.author: douglasl
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 50c5071ce672e3a2aba130817628ad0d26f656e5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: 8d0d81d9c140c15f2e60d3f6e3033a8b0b629228
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653486"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100913"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>CSV から Azure SQL Database へのデータの読み込み (フラット ファイル)
+
 bcp コマンドライン ユーティリティを使用して、CSV ファイルから Azure SQL Database にデータをインポートできます。
 
 ## <a name="before-you-begin"></a>開始する前に
+
 ### <a name="prerequisites"></a>前提条件
+
 この記事の手順を完了するには、次のものが必要です。
 
-* Azure SQL Database の論理サーバーとデータベース
+* Azure SQL Database のサーバーとデータベース
 * インストールされた bcp コマンド ライン ユーティリティ
 * インストールされた sqlcmd コマンド ライン ユーティリティ
 
 bcp ユーティリティと sqlcmd ユーティリティは [Microsoft ダウンロード センター][Microsoft Download Center]からダウンロードできます。
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>ASCII または UTF-16 形式のデータ
+
 自身のデータを使ってこのチュートリアルを試す場合、bcp では UTF-8 がサポートされないため、データには ASCII または UTF-16 エンコードを使用する必要があります。 
 
 ## <a name="1-create-a-destination-table"></a>1.ターゲット テーブルを作成する
+
 SQL Database 内でターゲット テーブルとなるテーブルを定義します。 テーブル内の各列は、データ ファイルの各行のデータに対応する必要があります。
 
 テーブルを作成するには、コマンド プロンプトを開き、sqlcmd.exe を使用して次のコマンドを実行します。
@@ -54,6 +59,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## <a name="2-create-a-source-data-file"></a>2.ソース データ ファイルを作成する
+
 メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。 このデータは ASCII 形式です。
 
 ```
@@ -78,6 +84,7 @@ bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName
 ```
 
 ## <a name="3-load-the-data"></a>手順 3.データを読み込む
+
 データを読み込むには、コマンド プロンプトを開き、次のコマンドを実行します。ここでは、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えます。
 
 ```bcp
@@ -108,7 +115,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151201 |4 |2 |
 
 ## <a name="next-steps"></a>次の手順
-SQL Server データベースを移行するには、 [SQL Server データベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
+
+SQL Server データベースを移行するには、 [SQL Server データベースの移行](sql-database-single-database-migrate.md)に関するページを参照してください。
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx

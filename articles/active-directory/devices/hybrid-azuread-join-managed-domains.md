@@ -1,29 +1,30 @@
 ---
-title: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法 | Microsoft Docs
-description: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。
+title: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成 | Microsoft Docs
+description: マネージド ドメイン用のハイブリッド Azure Active Directory 参加を構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/01/2018
-ms.author: markvi
+ms.date: 03/20/2019
+ms.author: joflore
 ms.reviewer: sandeo
-ms.openlocfilehash: b8d45e72e15ff86b53f7355634e8f197b94260bd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 81a9726b73226cd940a55e316ae434aeaad6ff4d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435431"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519087"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
 ユーザーと同じく、デバイスは、保護の対象であると同時に、時と場所を選ばずにリソースを保護するために使用したいもう 1 つの ID になりつつあります。 この目標は、次のいずれかの方法を使用してデバイスの ID を Azure AD に設定することで達成できます。
 
@@ -55,8 +56,6 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 この記事のシナリオを構成するための要件を次に示します。
 
-- スキーマ レベルが 85 以降のオンプレミス Active Directory (AD)。 詳細については、「[Upgrade your Active Directory Schema (Active Directory スキーマをアップグレードする)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema)」を参照してください。
-
 - [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 以降) がインストールされていること。 
 
 Azure AD Connect が、Azure AD に参加するハイブリッド Azure AD にするデバイスのコンピューター オブジェクトを同期済みであることを確認します。 コンピューター オブジェクトが特定の組織単位 (OU) に属している場合、これらの OU を Azure AD Connect についても構成する必要があります。
@@ -70,7 +69,7 @@ Azure AD Connect が、Azure AD に参加するハイブリッド Azure AD に�
 - https://enterpriseregistration.windows.net
 - https://login.microsoftonline.com
 - https://device.login.microsoftonline.com
-- https://autologon.microsoftazuread-sso.com (シームレス SSO を使用している場合、または使用する予定の場合)
+- [https://autologon.microsoftazuread-sso.com](https://autologon.microsoftazuread-sso.com) (シームレス SSO を使用している場合、または使用する予定の場合)
 
 Windows 10 1709 以降では、組織が送信プロキシ経由でインターネットにアクセスする必要がある場合に、[グループ ポリシー オブジェクト (GPO) を使用してコンピューターのプロキシ設定を構成できます](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。 お使いのコンピューターで Windows 10 1709 より古いバージョンが実行されている場合は、Web Proxy Auto-Discovery (WPAD) を実装して、Windows 10 コンピューターが Azure AD にデバイスを登録できるようにする必要があります。 
 
@@ -221,5 +220,5 @@ Azure テナントのデバイス登録状態を確認するには、**[Azure Ac
 
 > [!div class="nextstepaction"]
 > [フェデレーション ドメインのハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-federated-domains.md)
-> [ハイブリッド Azure Active Directory 参加を手動で構成する](hybrid-azuread-join-manual-steps.md)
+> [ハイブリッド Azure Active Directory 参加を手動で構成する](hybrid-azuread-join-manual.md)
 

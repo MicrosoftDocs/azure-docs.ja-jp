@@ -1,24 +1,26 @@
 ---
 title: Azure PowerShell スクリプト - Azure Cosmos DB のマルチリージョン レプリケーション
 description: Azure PowerShell スクリプト サンプル - Azure Cosmos DB のマルチリージョン レプリケーション
-services: cosmos-db
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
-ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/10/2017
-ms.openlocfilehash: 8bc2b44f240327d8272af8a20c117c770377421f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: 02628401bed6e65784bf7ddc4a7082f617640cf9
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954585"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496146"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-powershell"></a>PowerShell を使用した複数リージョンへの Azure Cosmos DB データベース アカウントのレプリケートとフェールオーバーの優先順位の構成
 
 PowerShell を使ってさまざまな種類の Azure Cosmos DB データベース アカウントを複数のリージョンにレプリケートし、フェールオーバーの優先順位を構成する例を紹介します。 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -31,19 +33,19 @@ PowerShell を使ってさまざまな種類の Azure Cosmos DB データベー�
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
-| [Set-AzureRMResource](https://docs.microsoft.com/powershell/module/azurerm.resources/set-azurermresource?view=azurermps-3.8.0) | データベース アカウントに変更を加えます。 |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
+| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | データベース アカウントに変更を加えます。 |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
 ## <a name="next-steps"></a>次の手順

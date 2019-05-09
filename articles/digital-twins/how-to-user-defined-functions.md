@@ -1,29 +1,32 @@
 ---
-title: Azure Digital Twins でユーザー定義関数を使用する方法 |Microsoft Docs
-description: Azure Digital Twins を使用してユーザー定義関数、マッチャー、役割の割り当てを作成する方法のガイドラインです。
+title: Azure Digital Twins 内でユーザー定義関数を作成する方法 | Microsoft Docs
+description: Azure Digital Twins でユーザー定義関数、マッチャー、役割の割り当てを作成する方法。
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 6a757dca48dc3ff41adfe6f8802fad40e7a4ca81
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636834"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076248"
 ---
-# <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数を使用する方法
+# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins 内でユーザー定義関数を作成する方法
 
-[ユーザー定義関数](./concepts-user-defined-functions.md) (UDF) を使用すると、ユーザーは受信テレメトリ メッセージおよび空間グラフのメタデータに対してカスタム ロジックを実行できます。 その後、ユーザーは定義済みのエンドポイントにイベントを送信できます。 このガイドでは、一定の温度を超えるすべての測定値を検出して警告する温度イベントへの対応例を見ていきます。
+[ユーザー定義関数](./concepts-user-defined-functions.md)を使用すると、ユーザーは受信テレメトリ メッセージおよび空間グラフのメタデータから実行されるようにカスタム ロジックを構成できます。 ユーザーは定義済みの[エンドポイント](./how-to-egress-endpoints.md)にイベントを送信することもできます。
+
+このガイドでは、受信した温度イベントから一定の温度を超えるすべての測定値を検出して警告する方法を示す例を見ていきます。
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="client-library-reference"></a>クライアント ライブラリ リファレンス
 
-ユーザー定義関数の実行時のヘルパー メソッドとして使用できる関数の一覧が、[クライアント リファレンス](#Client-Reference)に示されています。
+ユーザー定義関数の実行時のヘルパー メソッドとして使用できる関数の一覧が、[クライアント ライブラリ リファレンス](./reference-user-defined-functions-client-library.md) ドキュメントに示されています。
 
 ## <a name="create-a-matcher"></a>マッチャーを作成する
 
@@ -41,10 +44,15 @@ ms.locfileid: "51636834"
   - `SensorDevice`
   - `SensorSpace`
 
-次の例のマッチャーは、データ型の値が `"Temperature"` であるすべてのセンサー テレメトリ イベントに対して true と評価されます。 ユーザー定義関数に対して複数のマッチャーを作成できます。
+次の例のマッチャーは、データ型の値が `"Temperature"` であるすべてのセンサー テレメトリ イベントに対して true と評価されます。 ユーザー定義関数に複数のマッチャーを作成するには、以下に対して認証済みの HTTP POST 要求を実行します。
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/matchers
+YOUR_MANAGEMENT_API_URL/matchers
+```
+
+JSON 本文は次のようになります。
+
+```JSON
 {
   "Name": "Temperature Matcher",
   "Conditions": [
@@ -63,26 +71,19 @@ POST YOUR_MANAGEMENT_API_URL/matchers
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | インスタンスをホストするサーバーのリージョン |
 
-## <a name="create-a-user-defined-function-udf"></a>ユーザー定義関数 (UDF) の作成
+## <a name="create-a-user-defined-function"></a>ユーザー定義関数を作成する
 
-マッチャーが作成された後、次の **POST** 呼び出しで関数スニペットをアップロードします。
+ユーザー定義関数を作成するには、Azure Digital Twins Management API にマルチパート HTTP 要求を行う必要があります。
 
-> [!IMPORTANT]
-> - ヘッダーで、次の `Content-Type: multipart/form-data; boundary="userDefinedBoundary"` を設定します。
-> - 本文は複数の部分から成ります。
->   - 最初の部分は、UDF に必要なメタデータの情報です。
->   - 2 番目の部分は、JavaScript の計算ロジックです。
-> - **USER_DEFINED_BOUNDARY** セクションで、**SpaceId** および **Machers** の値を置き換えます。
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
+
+マッチャーが作成された後、次の認証済みマルチパート HTTP POST 要求で関数スニペットをアップロードします。
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/userdefinedfunctions with Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
+YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-| パラメーター値 | 置換後の文字列 |
-| --- | --- |
-| *USER_DEFINED_BOUNDARY* | 複数の部分からなるコンテンツ境界名 |
-
-### <a name="body"></a>本文
+以下の本文を使用します。
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -90,10 +91,10 @@ Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
 
 {
-  "SpaceId": "YOUR_SPACE_IDENTIFIER",
-  "Name": "User Defined Function",
-  "Description": "The contents of this udf will be executed when matched against incoming telemetry.",
-  "Matchers": ["YOUR_MATCHER_IDENTIFIER"]
+  "spaceId": "YOUR_SPACE_IDENTIFIER",
+  "name": "User Defined Function",
+  "description": "The contents of this udf will be executed when matched against incoming telemetry.",
+  "matchers": ["YOUR_MATCHER_IDENTIFIER"]
 }
 --USER_DEFINED_BOUNDARY
 Content-Disposition: form-data; name="contents"; filename="userDefinedFunction.js"
@@ -108,8 +109,18 @@ function process(telemetry, executionContext) {
 
 | 値 | 置換後の文字列 |
 | --- | --- |
+| USER_DEFINED_BOUNDARY | マルチパート コンテンツ境界名 |
 | YOUR_SPACE_IDENTIFIER | 空間識別子  |
 | YOUR_MATCHER_IDENTIFIER | 使用するマッチャーの ID |
+
+1. ヘッダーに `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"` が含まれていることを確認します。
+1. 本文がマルチパートであることを確認します。
+
+   - 最初の部分には、必須のユーザー定義関数メタデータが含まれています。
+   - 2 番目の部分には、JavaScript の計算ロジックが含まれています。
+
+1. **USER_DEFINED_BOUNDARY** セクションで、**spaceId** (`YOUR_SPACE_IDENTIFIER`) および **matchers** (`YOUR_MATCHER_IDENTIFIER`) の値を置き換えます。
+1. JavaScript ユーザー定義関数が `Content-Type: text/javascript` として提供されていることを確認します。
 
 ### <a name="example-functions"></a>関数の例
 
@@ -180,476 +191,69 @@ function process(telemetry, executionContext) {
 }
 ```
 
-さらに複雑な UDF のコード サンプルについては、[新鮮な空気の空き空間を確認する UDF をご確認ください](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)。
+より複雑なユーザー定義関数のコード サンプルについては、[占有率のクイック スタート](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)に関するページをご覧ください。
 
 ## <a name="create-a-role-assignment"></a>役割の割り当ての作成
 
-ユーザー定義関数の実行に使われる役割の割り当てを作成する必要があります。 作成しない場合、ユーザー定義関数は、Management API とやり取りしてグラフ オブジェクトにアクションを実行するための適切なアクセス許可を得ることができません。 ユーザー定義関数が実行するアクションは、Azure Digital Twins Management API 内のロールベースのアクセス制御の対象から除外されません。 特定の役割または特定のアクセス制御パスを指定すると、これらのアクションの範囲を限定できます。 詳細については、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントを参照してください。
+ユーザー定義関数の実行に使われるロールの割り当てを作成します。 ユーザー定義関数にロールが割り当てられていない場合、ユーザー定義関数には Management API と対話したり、グラフ オブジェクトで操作を実行したりするための適切なアクセス許可がありません。 ユーザー定義関数で実行できるアクションは、Azure Digital Twins Management API 内のロールベースのアクセス制御によって指定および定義されます。 たとえば、ユーザー定義関数の範囲は、特定のロールまたは特定のアクセス制御パスを指定することで限定できます。 詳しくは、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントをご覧ください。
 
-1. 役割を照会するクエリを実行し、UDF に割り当てられる役割の ID を取得します。 それを **RoleId** に渡します。
-
-    ```plaintext
-    GET YOUR_MANAGEMENT_API_URL/system/roles
-    ```
-
-1. **ObjectId** は先ほど作成した UDF ID になります。
-1. `fullpath` を使用して空間でクエリを実行して、**Path** の値を見つけます。
-1. 返された `spacePaths` 値をコピーします。 次のコードでそれを使用します。
+1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#all)して、ユーザー定義関数に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
 
     ```plaintext
-    GET YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
+    YOUR_MANAGEMENT_API_URL/system/roles
+    ```
+   目的のロール ID を保持します。 これは、下で JSON 本文属性 **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) として渡されます。
+
+1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) は先ほど作成したユーザー定義関数 ID になります。
+1. `fullpath` を使用して空間に対してクエリを実行して、**path** (`YOUR_ACCESS_CONTROL_PATH`) の値を見つけます。
+1. 返された `spacePaths` 値をコピーします。 次のように使用します。 以下に対して認証済みの HTTP GET 要求を実行します。
+
+    ```plaintext
+    YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | パラメーター値 | 置換後の文字列 |
+    | 値 | 置換後の文字列 |
     | --- | --- |
-    | *YOUR_SPACE_NAME* | 使用する空間の名前 |
+    | YOUR_SPACE_NAME | 使用する空間の名前 |
 
-1. 返された `spacePaths` 値を **Path** に貼り付けて、UDF 役割の割り当てを作成します。
+1. 返された `spacePaths` 値を **path** に貼り付けて、認証済み HTTP POST 要求を以下に対して実行することでユーザー定義関数のロールの割り当てを作成します。
 
     ```plaintext
-    POST YOUR_MANAGEMENT_API_URL/roleassignments
+    YOUR_MANAGEMENT_API_URL/roleassignments
+    ```
+    JSON 本文は次のようになります。
+
+    ```JSON
     {
-      "RoleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
-      "ObjectId": "YOUR_USER_DEFINED_FUNCTION_ID",
-      "ObjectIdType": "YOUR_USER_DEFINED_FUNCTION_TYPE_ID",
-      "Path": "YOUR_ACCESS_CONTROL_PATH"
+      "roleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
+      "objectId": "YOUR_USER_DEFINED_FUNCTION_ID",
+      "objectIdType": "YOUR_USER_DEFINED_FUNCTION_TYPE_ID",
+      "path": "YOUR_ACCESS_CONTROL_PATH"
     }
     ```
 
     | 値 | 置換後の文字列 |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 目的の役割の識別子 |
-    | YOUR_USER_DEFINED_FUNCTION_ID | 使用する UDF の ID |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | UDF タイプを指定する ID |
+    | YOUR_USER_DEFINED_FUNCTION_ID | 使用するユーザー定義関数の ID |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ユーザー定義関数の種類を指定する ID |
     | YOUR_ACCESS_CONTROL_PATH | アクセス制御パス |
+
+>[!TIP]
+> ユーザー定義関数の Management API の操作とエンドポインについて詳しくは、[ロールの割り当てを作成および管理する方法](./security-create-manage-role-assignments.md)に関する記事をご覧ください。
 
 ## <a name="send-telemetry-to-be-processed"></a>処理するテレメトリを送信する
 
-グラフに示されているセンサーによって生成されたテレメトリは、アップロードされたユーザー定義関数の実行をトリガーします。 データ プロセッサがテレメトリを取得します。 次に、ユーザー定義関数の呼び出し用の実行プランが作成されます。
+空間インテリジェンス グラフで定義されているセンサーによってテレメトリが送信されます。 さらに、テレメトリでは、アップロードされたユーザー定義関数の実行がトリガーされます。 データ プロセッサがテレメトリを取得します。 次に、ユーザー定義関数の呼び出し用の実行プランが作成されます。
 
 1. 測定値の生成元であるセンサーのマッチャーを取得します。
 1. どのマッチャーが正常に評価されたかに応じて、関連付けられているユーザー定義関数を取得します。
-1. それぞれのユーザー定義関数を実行します。
-
-## <a name="client-reference"></a>クライアント リファレンス
-
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata(id) ⇒ `space`
-
-空間識別子が指定されると、この関数はグラフから空間を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ---------- | ------------------- | ------------ |
-| *id*  | `guid` | 空間識別子 |
-
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
-
-センサーの識別子が指定されると、この関数はグラフからセンサーを取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ---------- | ------------------- | ------------ |
-| *id*  | `guid` | センサーの識別子 |
-
-### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
-
-デバイスの識別子が指定されると、この関数はグラフからデバイスを取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *id* | `guid` | デバイスの識別子 |
-
-### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue(sensorId, dataType) ⇒ `value`
-
-センサーの識別子とそのデータ型が指定されると、この関数はそのセンサーの現在の値を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *sensorId*  | `guid` | センサーの識別子 |
-| *dataType*  | `string` | センサーのデータ型 |
-
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ⇒ `value`
-
-空間識別子と値名が指定されると、この関数はその空間プロパティの現在の値を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *spaceId*  | `guid` | 空間識別子 |
-| *valueName* | `string` | 空間プロパティの名前 |
-
-### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
-
-センサーの識別子とそのデータ型が指定されると、この関数はそのセンサーの履歴の値を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | センサーの識別子 |
-| *dataType* | `string` | センサーのデータ型 |
-
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ⇒ `value[]`
-
-空間識別子と値名が指定されると、この関数は空間のそのプロパティの履歴の値を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | 空間識別子 |
-| *valueName* | `string` | 空間プロパティの名前 |
-
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
-
-空間識別子が指定されると、この関数はその親空間の子空間を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | 空間識別子 |
-
-### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
-
-空間識別子が指定されると、この関数はその親空間の子センサーを取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | 空間識別子 |
-
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
-
-空間識別子が指定されると、この関数はその親空間の子デバイスを取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | 空間識別子 |
-
-### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
-
-デバイスの識別子が指定されると、この関数はその親デバイスの子センサーを取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | デバイスの識別子 |
-
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
-
-空間識別子が指定されると、この関数はその親空間を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *childSpaceId* | `guid` | 空間識別子 |
-
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
-
-センサーの識別子が指定されると、この関数はその親空間を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | センサーの識別子 |
-
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
-
-デバイスの識別子が指定されると、この関数はその親空間を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *childDeviceId* | `guid` | デバイスの識別子 |
-
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
-
-センサーの識別子が指定されると、この関数はその親デバイスを取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | センサーの識別子 |
-
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ⇒ `extendedProperty`
-
-空間識別子が指定されると、この関数は空間からプロパティとその値を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | 空間識別子 |
-| *propertyName* | `string` | 空間プロパティの名前 |
-
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
-
-センサーの識別子が指定されると、この関数はセンサーからプロパティとその値を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | センサーの識別子 |
-| *propertyName* | `string` | センサー プロパティの名前 |
-
-### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
-
-デバイスの識別子が指定されると、この関数はデバイスからプロパティとその値を取得します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | デバイスの識別子 |
-| *propertyName* | `string` | デバイス プロパティの名前 |
-
-### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
-
-この関数は、指定されたデータ型のセンサー オブジェクトの値を設定します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | センサーの識別子 |
-| *dataType*  | `string` | センサーのデータ型 |
-| *value*  | `string` | 値 |
-
-### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
-
-この関数は、指定されたデータ型の空間オブジェクトの値を設定します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | 空間識別子 |
-| *dataType* | `string` | データ型 |
-| *value* | `string` | 値 |
-
-### <a name="logmessage"></a>log(message)
-
-この関数は、ユーザー定義関数内での次のメッセージをログに記録します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *message* | `string` | 記録されるメッセージ |
-
-### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
-
-この関数は、ディスパッチされるカスタム通知を送信します。
-
-**種類**: グローバル関数
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *topologyObjectId*  | `guid` | グラフのオブジェクト識別子。 例: 空間、センサー、デバイスの ID。|
-| *topologyObjectType*  | `string` | 例: センサー、デバイス。|
-| *payload*  | `string` | 通知と共に送信される JSON ペイロード。 |
-
-## <a name="return-types"></a>戻り値の型
-
-次のモデルは、前述のクライアント リファレンスからのリターン オブジェクトを記述しています。
-
-### <a name="space"></a>スペース
-
-```JSON
-{
-  "Id": "00000000-0000-0000-0000-000000000000",
-  "Name": "Space",
-  "FriendlyName": "Conference Room",
-  "TypeId": 0,
-  "ParentSpaceId": "00000000-0000-0000-0000-000000000001",
-  "SubtypeId": 0
-}
-```
-
-### <a name="space-methods"></a>空間メソッド
-
-#### <a name="parent--space"></a>Parent() ⇒ `space`
-
-この関数は、現在の空間の親空間を返します。
-
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
-
-この関数は、現在の空間の子センサーを返します。
-
-#### <a name="childdevices--device"></a>ChildDevices() ⇒ `device[]`
-
-この関数は、現在の空間の子デバイスを返します。
-
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
-
-この関数は、現在の空間の拡張プロパティとその値を返します。
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | 拡張プロパティの名前 |
-
-#### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
-
-この関数は、現在の空間の値を返します。
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *valueName* | `string` | 値の名前 |
-
-#### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
-
-この関数は、現在の空間の履歴の値を返します。
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *valueName* | `string` | 値の名前 |
-
-#### <a name="notifypayload"></a>Notify(payload)
-
-この関数は、指定されたペイロードを含む通知を送信します。
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *payload* | `string` | 通知に含める JSON ペイロード |
-
-### <a name="device"></a>Device
-
-```JSON
-{
-  "Id": "00000000-0000-0000-0000-000000000002",
-  "Name": "Device",
-  "FriendlyName": "Temperature Sensing Device",
-  "Description": "This device contains a sensor that captures temperature readings.",
-  "Type": "None",
-  "Subtype": "None",
-  "TypeId": 0,
-  "SubtypeId": 0,
-  "HardwareId": "ABC123",
-  "GatewayId": "ABC",
-  "SpaceId": "00000000-0000-0000-0000-000000000000"
-}
-```
-
-### <a name="device-methods"></a>デバイスのメソッド
-
-#### <a name="parent--space"></a>Parent() ⇒ `space`
-
-この関数は、現在のデバイスの親空間を返します。
-
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
-
-この関数は、現在のデバイスの子センサーを返します。
-
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
-
-この関数は、現在のデバイスの拡張プロパティとその値を返します。
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | 拡張プロパティの名前 |
-
-#### <a name="notifypayload"></a>Notify(payload)
-
-この関数は、指定されたペイロードを含む通知を送信します。
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *payload* | `string` | 通知に含める JSON ペイロード |
-
-### <a name="sensor"></a>センサー
-
-```JSON
-{
-  "Id": "00000000-0000-0000-0000-000000000003",
-  "Port": "30",
-  "PollRate": 3600,
-  "DataType": "Temperature",
-  "DataSubtype": "None",
-  "Type": "Classic",
-  "PortType": "None",
-  "DataUnitType": "FahrenheitTemperature",
-  "SpaceId": "00000000-0000-0000-0000-000000000000",
-  "DeviceId": "00000000-0000-0000-0000-000000000001",
-  "PortTypeId": 0,
-  "DataUnitTypeId": 0,
-  "DataTypeId": 0,
-  "DataSubtypeId": 0,
-  "TypeId": 0  
-}
-```
-
-### <a name="sensor-methods"></a>センサーのメソッド
-
-#### <a name="space--space"></a>Space() ⇒ `space`
-
-この関数は、現在のセンサーの親空間を返します。
-
-#### <a name="device--device"></a>Device() ⇒ `device`
-
-この関数は、現在のセンサーの親デバイスを返します。
-
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
-
-この関数は、現在のセンサーの拡張プロパティとその値を返します。
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | 拡張プロパティの名前 |
-
-#### <a name="value--value"></a>Value() ⇒ `value`
-
-この関数は、現在のセンサーの値を返します。
-
-#### <a name="history--value"></a>History() ⇒ `value[]`
-
-この関数は、現在のセンサーの履歴の値を返します。
-
-#### <a name="notifypayload"></a>Notify(payload)
-
-この関数は、指定されたペイロードを含む通知を送信します。
-
-| パラメーター  | type                | 説明  |
-| ------ | ------------------- | ------------ |
-| *payload* | `string` | 通知に含める JSON ペイロード |
-
-### <a name="value"></a>値
-
-```JSON
-{
-  "DataType": "Temperature",
-  "Value": "70",
-  "CreatedTime": ""
-}
-```
-
-### <a name="extended-property"></a>拡張プロパティ
-
-```JSON
-{
-  "Name": "OccupancyStatus",
-  "Value": "Occupied"
-}
-```
+1. 各ユーザー定義関数を実行します。
 
 ## <a name="next-steps"></a>次の手順
 
-- イベントの送信先となる [Azure Digital Twins エンドポイントを作成する](how-to-egress-endpoints.md)方法を学習する。
+- イベントの送信先となる [Azure Digital Twins エンドポイントを作成する](./how-to-egress-endpoints.md)方法を学習する。
 
-- Azure Digital Twins エンドポイントの詳細については、[エンドポイントの詳細](concepts-events-routing.md)をご覧ください。
+- Azure Digital Twins でのルーティングについて詳しくは、「[ルーティング イベントおよびメッセージ](./concepts-events-routing.md)」をご覧ください。
+
+- [クライアント ライブラリ リファレンス ドキュメント](./reference-user-defined-functions-client-library.md)をご覧ください。

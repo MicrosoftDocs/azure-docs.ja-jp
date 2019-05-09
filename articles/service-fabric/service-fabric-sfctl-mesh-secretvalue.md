@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl mesh secretvalue のコマンドについ�
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 064aeaea47dd59a1dd75cf19ea4060d8f9c2c4bf
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 3f8e46f063d3e725e2174fd907169f3e0167586a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559061"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666547"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 メッシュ secretvalue リソースを取得および削除します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
-| 削除 | 名前付きシークレット リソースの指定された値を削除します。 |
+| delete | 名前付きシークレット リソースの指定された値を削除します。 |
 | list | 指定されたシークレット リソースのすべての値の名前を一覧表示します。 |
 | show | 指定されたバージョンのシークレット リソースの値を取得します。 |
 
@@ -52,7 +52,7 @@ ms.locfileid: "53559061"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-mesh-secretvalue-list"></a>sfctl mesh secretvalue list
 指定されたシークレット リソースのすべての値の名前を一覧表示します。
@@ -73,7 +73,7 @@ ms.locfileid: "53559061"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl mesh secretvalue show
 指定されたバージョンのシークレット リソースの値を取得します。
@@ -94,7 +94,7 @@ ms.locfileid: "53559061"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 
 ## <a name="next-steps"></a>次の手順

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: 88601383df5015f9ea23184d65266974bb0f35e1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 2aa521b0552b60e5a875a5f46ab9887c6e5b6e3e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345359"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472060"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>アラートとスマート グループの状態を管理する
 Azure Monitor のアラートは[アラート状態と監視条件](https://aka.ms/azure-alerts-overview)を持つようになり、スマート グループも同様に[スマート グループの状態](https://aka.ms/smart-groups)を持つようになりました。 状態の変更は、アラートまたはスマート グループにそれぞれ関連付けられた履歴にキャプチャされるようになりました。 この記事では、アラートおよびスマート グループの両方について、状態を変更するプロセスを説明します。
@@ -47,3 +47,4 @@ Azure Monitor のアラートは[アラート状態と監視条件](https://aka.
 
 1. これが完了すると、それぞれのスマート グループの履歴に状態の変更が記録されます。 この情報は、それぞれの詳細ページを開き、履歴のセクションを確認することによって表示できます。     
 ![監視](./media/alerts-managing-alert-states/state-sg-history.jpg)
+

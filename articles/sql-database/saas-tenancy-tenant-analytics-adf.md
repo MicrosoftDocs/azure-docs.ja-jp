@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
-ms.reviewer: MightyPen
+ms.reviewer: MightyPen, sstein
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 034fd2434d3b824c4356e640a1c1665dff542de6
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 12/18/2018
+ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056598"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850294"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Azure SQL Database、SQL Data Warehouse、Data Factory、Power BI による SaaS 分析を調べる
 
@@ -94,7 +94,7 @@ Wingtip Tickets アプリでは、テナントのトランザクション デー
 
 次に、デプロイした Azure リソースを確認します。
 #### <a name="tenant-databases-and-analytics-store"></a>テナント データベースと分析ストア
-[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使って、**tenants1-dpt-&lt;ユーザー&gt;** および **catalog-dpt-&lt;ユーザー&gt;** サーバーに接続します。 &lt;ユーザー&gt; は、アプリをデプロイしたときに使った値に置き換えます。 ログインには *developer* を、パスワードには *P@ssword1* を使います。 詳しいガイダンスについては、[入門チュートリアル](saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
+[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使って、**tenants1-dpt-&lt;ユーザー&gt;** および **catalog-dpt-&lt;ユーザー&gt;** サーバーに接続します。 &lt;ユーザー&gt; は、アプリをデプロイしたときに使った値に置き換えます。 ログインには *developer* を、パスワードには *P\@ssword1* を使います。 詳しいガイダンスについては、[入門チュートリアル](saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
 
 ![SSMS から SQL Database サーバーに接続する](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
@@ -113,7 +113,7 @@ Wingtip Tickets アプリでは、テナントのトランザクション デー
 #### <a name="blob-storage"></a>BLOB ストレージ
 1. [Azure portal](https://ms.portal.azure.com) で、アプリケーションのデプロイに使ったリソース グループに移動します。 **wingtipstaging\<ユーザー\>** というストレージ アカウントが追加されていることを確認します。
 
-  ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
+   ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
 1. **wingtipstaging\<ユーザー\>** ストレージ アカウントをクリックして、存在するオブジェクトを調べます。
 1. **[BLOB]** タイルをクリックします
@@ -142,11 +142,11 @@ Azure Data Factory は、データの抽出、読み込み、変換の調整に�
 概要ページで左側の **[作成者]** タブに切り替え、3 つの[パイプライン](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)と 3 つの[データセット](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)が作成されていることを確認します。
 ![adf_author](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
-3 つの入れ子になったパイプラインは SQLDBToDW、DBCopy、TableCopy です。
+入れ子になった 3 つのパイプラインは、SQLDBToDW、DBCopy、および TableCopy です。
 
 **パイプライン 1 - SQLDBToDW** は、カタログ データベース (テーブル名: [__ShardManagement].[ShardsGlobal]) に格納されているテナント データベースの名前を調べて、テナント データベースごとに、**DBCopy** パイプラインを実行します。 完了すると、提供されている **sp_TransformExtractedData** ストアド プロシージャのスキーマが実行されます。 このストアド プロシージャは、ステージング テーブルに読み込まれたデータを変換し、スター スキーマのテーブルに設定します。
 
-**パイプライン 2 - DBCopy** は、BLOB ストレージに格納されている構成ファイルから、ソース テーブルと列の名前を調べます。  **TableCopy** パイプラインは、4 つのテーブル TicketFacts、CustomerFacts、EventFacts、VenueFacts ごとに実行されます。 **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** アクティビティが、20 個のデータベースすべてに対して並列に実行します。 ADF では、最大 20 のループ イテレーションが並列に実行できます。 データベースを増やす場合は、複数のパイプラインを作成することを検討します。    
+**パイプライン 2 - DBCopy** は、BLOB ストレージに格納されている構成ファイルから、ソース テーブルと列の名前を調べます。  その後、**TableCopy** パイプラインが TicketFacts、CustomerFacts、EventFacts、および VenueFacts の 4 つの各テーブルに対して実行されます。 **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** アクティビティが、20 個のデータベースすべてに対して並列に実行します。 ADF では、最大 20 のループ イテレーションが並列に実行できます。 データベースを増やす場合は、複数のパイプラインを作成することを検討します。    
 
 **パイプライン 3 - TableCopy** は、SQL Database の行バージョン番号 (_rowversion_) を使って、変更または更新された行を識別します。 このアクティビティは、ソース テーブルから行を抽出するために開始と終了の行バージョンを検索します。 各テナント データベースに格納されている **CopyTracker** テーブルは、各実行において各ソース テーブルから抽出された最後の行を追跡します。 新しい行または変更された行は、データ ウェアハウス内の対応するステージング テーブル **raw_Tickets**、**raw_Customers**、**raw_Venues**、**raw_Events** にコピーされます。 最後に、次の抽出の最初の行バージョンとして使われるために、最後の行バージョンが **CopyTracker** テーブルに保存されます。 
 
@@ -189,13 +189,13 @@ SQL Data Warehouse は、テナント データに対して集計を実行する
 次の手順に従って、Power BI に接続し、以前に作成したビューをインポートします。
 
 1. Power BI Desktop を起動します。
-2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]** を選択します。
+2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]**  を選択します。
 3. **[データの取得]** ウィンドウで、**[Azure SQL Database]** を選びます。
 4. データベース ログイン ウィンドウで、サーバー名 (**catalog-dpt-&lt;ユーザー&gt;.database.windows.net**) を入力します。 **[データ接続モード]** で **[インポート]** を選び、**[OK]** をクリックします。 
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として *developer*、パスワードとして *P@ssword1* を入力します。 **[接続]** をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[接続]** をクリックします。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

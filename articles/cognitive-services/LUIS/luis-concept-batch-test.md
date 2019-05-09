@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: バッチ テストを使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133148"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528154"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUIS ポータルで 1000 件の発話をバッチ テストする
 
@@ -48,7 +48,7 @@ ms.locfileid: "53133148"
 
 バッチ ファイルは、発話で構成されます。 各発話には、検出されると予期されている[機械学習によるエンティティ](luis-concept-entity-types.md#types-of-entities)すべてと共に、予期される意図の予測が必要です。 
 
-## <a name="batch-syntax-template"></a>バッチ構文のテンプレート
+## <a name="batch-syntax-template-for-intents-with-entities"></a>エンティティがある意図のバッチ構文テンプレート
 
 次のテンプレートを使用してバッチ ファイルを開始します。
 
@@ -75,6 +75,24 @@ ms.locfileid: "53133148"
 ```
 
 バッチ ファイルは、**startPos** および **endPos** プロパティを使用して、エンティティの開始と終了をメモします。 これらの値は 0 から始まり、スペースで開始または終了してはいけません。 これは、startIndex および endIndex プロパティを使用するクエリ ログとは異なります。 
+
+[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
+
+## <a name="batch-syntax-template-for-intents-without-entities"></a>エンティティがない意図のバッチ構文テンプレート
+
+次のテンプレートを使用して、エンティティがないバッチ ファイルを開始します。
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": []
+  }
+]
+```
+
+エンティティをテストしないようにする場合は、`entities` プロパティを含め、値を空の配列 `[]` として設定します。
 
 
 ## <a name="common-errors-importing-a-batch"></a>バッチ インポートでの一般的なエラー

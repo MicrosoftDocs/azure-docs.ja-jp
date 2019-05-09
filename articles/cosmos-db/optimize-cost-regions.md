@@ -6,26 +6,26 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: d5e10e04ea9567e2656f592407855a53a70d7b0f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 012eacb172acfdeb0b82343c484c664a3f75310e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263357"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58876742"
 ---
-# <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョン デプロイにかかるコストを最適化する
+# <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 
 お客様の Azure Cosmos アカウントのリージョンは、いつでも追加したり削除したりすることができます。 Azure Cosmos の各種のデータベースとコンテナーに対してお客様が構成したスループットは、お客様のアカウントに関連付けられている各リージョンで予約されます。 プロビジョニングされる 1 時間あたりのスループット (つまり、お客様の Azure Cosmos アカウントのすべてのデータベースとコンテナーに対して構成された RU/秒の合計) が `T` で、お客様のデータベース アカウントに関連付けられている Azure リージョンの数が `N` である場合、お客様の Cosmos アカウントにプロビジョニングされる 1 時間あたりの合計スループットは、以下に相当します。
 
-1. ` T x N RU/s` (お客様の Azure Cosmos アカウントが単一の書き込みリージョンで構成されている場合) 
+1. `T x N RU/s` (お客様の Azure Cosmos アカウントが単一の書き込みリージョンで構成されている場合) 
 
 1. `T x (N+1) RU/s` (すべてのリージョンが書き込みを処理できるようにお客様の Azure Cosmos アカウントが構成されている場合) 
 
-プロビジョニング スループットのコストは、単一の書き込みリージョンの場合は 100 RU/秒で $0.008/時に、また複数の書き込みリージョンの場合は 100 RU/秒で $0.016/時になります。 詳細については、Cosmos DB の[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
+プロビジョニング スループットのコストは、単一の書き込みリージョンの場合は 100 RU/秒で $0.008/時に、また複数の書き込みリージョンの場合は 100 RU/秒で $0.016/時になります。 詳細については、Azure Cosmos DB の[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 
 ## <a name="costs-for-multiple-write-regions"></a>複数の書き込みリージョンにおけるコスト
 
-マルチマスター システムでは、書き込み操作に利用できる正味 RU が `N` 倍になります (`N` は書き込みリージョンの数)。 単一リージョンの書き込みとは異なり、すべてのリージョンが書き込み可能となるため、競合の解決をサポートする必要があります。 ライターのワークロード量は増加しています。 コスト計画の観点から、` M` RU/秒に相当する書き込みを全世界で実行するためには、コンテナー レベルまたはデータベース レベルで M `RUs` をプロビジョニングする必要があります。 その後、望ましい数のリージョンを追加し、書き込みに使用することで、`M` RU に相当する書き込みを全世界で実行できます。 
+マルチマスター システムでは、書き込み操作に利用できる正味 RU が `N` 倍になります (`N` は書き込みリージョンの数)。 単一リージョンの書き込みとは異なり、すべてのリージョンが書き込み可能となるため、競合の解決をサポートする必要があります。 ライターのワークロード量は増加しています。 コスト計画の観点から、`M` RU/秒に相当する書き込みを全世界で実行するためには、コンテナー レベルまたはデータベース レベルで M `RUs` をプロビジョニングする必要があります。 その後、望ましい数のリージョンを追加し、書き込みに使用することで、`M` RU に相当する書き込みを全世界で実行できます。 
 
 ### <a name="example"></a>例
 
@@ -51,12 +51,12 @@ ms.locfileid: "53263357"
 
 ## <a name="next-steps"></a>次の手順
 
-次は、Azure Cosmos DB でのコストの最適化について、以下の記事で詳しくご確認ください。
+次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 
-* [開発とテストのための最適化](optimize-dev-test.md)について確認する
-* [Azure Cosmos DB の請求書を理解する方法](understand-your-bill.md)について確認する
-* [スループット コストの最適化](optimize-cost-throughput.md)について確認する
-* [ストレージ コストの最適化](optimize-cost-storage.md)について確認する
-* [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)について確認する
+* [開発とテストのための最適化](optimize-dev-test.md)の詳細について学習します
+* [Azure Cosmos DB の課金内容の確認](understand-your-bill.md)の詳細について学習します
+* [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
+* [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
+* [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
 * [クエリのコストの最適化](optimize-cost-queries.md)について確認する
 

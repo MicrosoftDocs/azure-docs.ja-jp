@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 32a489ee6266018ef1160a0870fe236cc6a72d36
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5dfe768ddb3509f896b90f913ffecdf33907357a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726986"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876682"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 移行インフラストラクチャを展開する
 
@@ -30,7 +30,7 @@ ms.locfileid: "52726986"
 [記事 1:概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
 記事 2:Azure インフラストラクチャのデプロイ | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | この記事の内容は次のとおりです。
 [記事 3:Azure への移行の対象となるオンプレミスのリソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
-[記事 4:Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
+[記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
 [記事 5:Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
 [記事 6:Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso がアプリを移行します。Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用してアプリのデータベースを AlwaysOn 可用性グループで保護されている SQL Server クラスターに移行します。 | 使用可能
 [記事 7:Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery サービスを使用して、Azure VM への Linux osTicket アプリのリフトアンドシフト移行を完了します。 | 使用可能
@@ -94,17 +94,17 @@ Contoso は [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/ente
 - 何らかの理由で Contoso がコミットメントを超えて使うと、Microsoft は差額を請求します。
 - コミットメントを超えた分のコストはすべて同じレートであり、このレートは Contoso のコントラクトに記載されています。 超過に対するペナルティはありません。
 
-### <a name="manage-subscriptions"></a>[サブスクリプションの管理]
+### <a name="manage-subscriptions"></a>サブスクリプションの管理
 
 Azure の料金を支払った後、Contoso は Azure サブスクリプションを管理する方法を決める必要があります。 Contoso は EA を利用しているので、設定できる Azure サブスクリプションの数に制限はありません。
 
 - Azure エンタープライズ加入契約では、企業が Azure サービスを構成して使用する方法、および中心となるガバナンス構造が定義されています。
 - 最初のステップとして、Contoso はエンタープライズ登録の構造 (エンタープライズ スキャフォールディングと呼ばれます) を決定しました。 Contoso では、スキャフォールディングを理解して設計するために、[こちらの記事](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-governance)を読みました。
 - ここでは、Contoso は機能的アプローチを使用してサブスクリプションを管理することを決定しました。
-    - 企業内で、Contoso は Azure の予算を管理する 1 つの IT 部門を利用します。 これがサブスクリプションを持つ唯一のグループになります。
-    - Contoso は将来的にこのモデルを拡張し、会社の他のグループもエンタープライズ登録に部門として参加できるようにする意向です。
-    - IT 部門内には、製造と開発の 2 つのサブスクリプションが構成されています。
-    - 将来、サブスクリプションを追加する必要がある場合は、それらのサブスクリプションのアクセス、ポリシー、コンプライアンスを管理する必要があります。 Contoso では、サブスクリプションの上に追加の階層として [Azure 管理グループ](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview)を導入することで、この管理作業を行うことができます。
+  - 企業内で、Contoso は Azure の予算を管理する 1 つの IT 部門を利用します。 これがサブスクリプションを持つ唯一のグループになります。
+  - Contoso は将来的にこのモデルを拡張し、会社の他のグループもエンタープライズ登録に部門として参加できるようにする意向です。
+  - IT 部門内には、製造と開発の 2 つのサブスクリプションが構成されています。
+  - 将来、サブスクリプションを追加する必要がある場合は、それらのサブスクリプションのアクセス、ポリシー、コンプライアンスを管理する必要があります。 Contoso では、サブスクリプションの上に追加の階層として [Azure 管理グループ](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview)を導入することで、この管理作業を行うことができます。
 
     ![エンタープライズの構造](./media/contoso-migration-infrastructure/enterprise-structure.png) 
 
@@ -146,7 +146,7 @@ ID およびアクセス管理 (IAM) によってユーザーが Azure リソー
 
 Contoso は、Azure サブスクリプションに含まれる Azure AD Free エディションを使っています。 Contoso の管理者は、次の手順に従って AD ディレクトリを設定します。
 
-1. [Azure Portal](http://portal.azure.com/) で、**[リソースの作成]** > **[ID]** > **[Azure Active Directory]** の順に移動します。
+1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[ID]** > **[Azure Active Directory]** の順に移動します。
 2. **[ディレクトリの作成]** で、ディレクトリの名前、初期ドメイン名、および Azure AD ディレクトリを作成するリージョンを指定します。
 
     ![Azure AD を作成する](./media/contoso-migration-infrastructure/azure-ad-create.png) 
@@ -182,7 +182,7 @@ Azure リソース グループは Azure リソースをひとまとめにした
 
 Contoso の管理者は、次の表に示すように Azure リソース グループを設定します。
 
-**[リソース グループ]** | **詳細**
+**リソース グループ** | **詳細**
 --- | ---
 **ContosoCobRG** | このグループには、ビジネスの継続性 (COB) に関連するすべてのリソースが含まれています。  これには、Contoso が Azure Site Recovery サービスおよび Azure Backup サービス用に使用するコンテナーが含まれます。<br/><br/> また、Azure Migrate や Database Migration Service など、移行に使われるリソースも含まれます。
 **ContosoDevRG** | このグループには、開発とテストのリソースが含まれます。
@@ -451,7 +451,7 @@ Azure IaaS コンポーネントは、運用ネットワーク内に配置され
 **PROD-FE-EUS2** | 10.245.32.0/22 | 1019 | フロントエンド/Web 階層の VM
 **PROD-APP-EUS2** | 10.245.36.0/22 | 1019 | アプリ階層の VM
 **PROD-DB-EUS2** | 10.245.40.0/23 | 507 | データベース VM
-**PROD-DC-EUS2** | 10.245.42.0/23 | 251 | ドメイン コントローラー VM
+**PROD-DC-EUS2** | 10.245.42.0/24 | 251 | ドメイン コントローラー VM
 
 
 ![ハブ ネットワークのアーキテクチャ](./media/contoso-migration-infrastructure/azure-networks-eus2.png)
@@ -581,18 +581,18 @@ CUS | CONTOSODC6 | VNET-PROD-CUS | PROD-DC-CUS | 10.255.42.4
 
 1. Azure portal で、新しい Windows Server VM を適切な VNet に展開します。
 2. VM 用の可用性セットを各場所に作成します。 可用性セットは次のことを行います。
-    - Azure ファブリックが Azure リージョン内の異なるインフラストラクチャに VM を分離することを保証します。 
-    -  Contoso が Azure の VM で 99.95% SLA の対象になるようにします。  [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
+   - Azure ファブリックが Azure リージョン内の異なるインフラストラクチャに VM を分離することを保証します。 
+   - Contoso が Azure の VM で 99.95% SLA の対象になるようにします。  [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
 
-    ![可用性グループ](./media/contoso-migration-infrastructure/availability-group.png) 
+     ![可用性グループ](./media/contoso-migration-infrastructure/availability-group.png) 
 3. VM を展開した後、Contoso は VM に対してネットワーク インターフェイスを開きます。 ここでは、プライベート IP アドレスを静的に設定し、有効なアドレスを指定します。
 
     ![VM NIC](./media/contoso-migration-infrastructure/vm-nic.png)
 
 4. 次に、新しいデータ ディスクを VM に接続します。 このディスクには、Active Directory データベースと sysvol 共有が含まれています。 
-    - ディスクのサイズにより、サポートされる IOPS の値が決まります。
-    - 時間が経過して環境が拡大すると、ディスク サイズを増やすことが必要になる場合があります。
-    - ホスト キャッシュのためにドライブを読み取り/書き込みに設定しないでください。 Active Directory データベースはこれをサポートしません。
+   - ディスクのサイズにより、サポートされる IOPS の値が決まります。
+   - 時間が経過して環境が拡大すると、ディスク サイズを増やすことが必要になる場合があります。
+   - ホスト キャッシュのためにドライブを読み取り/書き込みに設定しないでください。 Active Directory データベースはこれをサポートしません。
 
      ![Active Directory ディスク](./media/contoso-migration-infrastructure/ad-disk.png)
 
@@ -646,7 +646,7 @@ Contoso は ID とアクセスの制御を構成しているので、ガバナ�
 
 Azure Policy サービスは、リソースを評価して、適用されているポリシー定義に準拠していないリソースをスキャンします。 たとえば、特定の種類の VM だけを許可するポリシーや、リソースが特定のタグを持つポリシーが設定されていることがあります。 
 
-Azure のポリシーではポリシーの定義が指定されており、ポリシー割り当てではポリシーの適用範囲が指定されています。 範囲は、管理グループからリソース グループまでです。 ポリシーの作成と管理の[詳細をご覧ください](https://docs.microsoft.com/azure/azure-policy/create-manage-policy)。
+Azure のポリシーではポリシーの定義が指定されており、ポリシー割り当てではポリシーの適用範囲が指定されています。 範囲は、管理グループからリソース グループまでです。 ポリシーの作成と管理の[詳細をご覧ください](../governance/policy/tutorials/create-and-manage.md)。
 
 Contoso は、いくつかのポリシーを開始する予定です。
 
@@ -781,7 +781,7 @@ Contoso は、これがアプリケーションからどのように見えるか
 
 ASG に関連付けられた NSG は最小限の特権で構成されており、許可されたパケットのみが、ネットワークの 1 つの部分から宛先にフローできます。
 
-**アクション** | **名前** | **ソース** | **ターゲット** | **ポート**
+**アクション** | **Name** | **ソース** | **ターゲット** | **ポート**
 --- | --- | --- | --- | --- 
 ALLOW | AllowiInternetToFE | VNET-HUB-EUS1/IB-TrustZone | APP1-FE 80、443
 ALLOW | AllowWebToApp | APP1-FE | APP1-DB | 1433

@@ -1,7 +1,7 @@
 ---
 title: Azure Search BLOB インデクサーを使用して CSV BLOB のインデックスを作成する - Azure Search
 description: Azure Search インデックスを使用して、Azure Blob Storage 内の BLOB CSV をフルテキスト検索用にクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 2bd89432a15f6960b07102ede317acca5864b773
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0bbb131b5fb155443c8c3dc340185f3a6fa950a3
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310897"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312923"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成
 既定では、 [Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストを解析し、それぞれが "id"、"datePublished"、"tags" フィールドを含む 2 つのドキュメントに格納するような場合です。 
@@ -26,9 +26,8 @@ ms.locfileid: "53310897"
 
 この記事では、Azure Search BLOB インデクサーを使用して CSV BLOB を解析する方法について説明します。 
 
-> [!IMPORTANT]
-> この機能は現在パブリック プレビューなので、運用環境では使わないでください。 詳しくは、[REST api-version 2017-11-11-Preview](search-api-2017-11-11-preview.md) に関するページをご覧ください。 
-> 
+> [!NOTE]
+> 1 つの Azure BLOB から複数の検索ドキュメントを出力するには、[一対多のインデックス作成](search-howto-index-one-to-many-blobs.md)に関するページにあるインデクサー構成の推奨事項に従ってください。
 
 ## <a name="setting-up-csv-indexing"></a>CSV インデックス作成の設定
 CSV BLOB のインデックスを作成するには、 `delimitedText` 解析モードを使用してインデクサーの定義を作成または更新します。  

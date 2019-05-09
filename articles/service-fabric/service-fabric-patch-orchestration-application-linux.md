@@ -4,7 +4,7 @@ description: Linux Service Fabric クラスターでオペレーティング シ
 services: service-fabric
 documentationcenter: .net
 author: novino
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746719"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266139"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Linux オペレーティング システムへのパッチの適用
 
 > [!div class="op_single_selector"]
-> * [Windows](service-fabric-patch-orchestration-application.md)
+> * [ Windows](service-fabric-patch-orchestration-application.md)
 > * [Linux](service-fabric-patch-orchestration-application-linux.md)
 >
 >
@@ -41,10 +41,10 @@ ms.locfileid: "42746719"
 
 パッチ オーケストレーション アプリケーションは、次のサブコンポーネントで構成されます。
 
-- **コーディネーター サービス**: このステートフル サービスは次の役割を担います。
+- **コーディネーター サービス**:このサービスの役割は次のとおりです。
     - クラスター全体における OS 更新ジョブを調整する。
     - 完了した OS 更新操作の結果を保存する。
-- **ノード エージェント サービス**: このステートレス サービスは、すべての Service Fabric クラスター ノードで実行されます。 このサービスは次の役割を担います。
+- **ノード エージェント サービス**:このステートレス サービスは、すべての Service Fabric クラスター ノードで実行されます。 このサービスは次の役割を担います。
     - Linux でノード エージェント デーモンをブートストラップする。
     - デーモン サービスを監視する。
 - **ノード エージェント デーモン**: この Linux デーモン サービスは、上位の特権 (ルート) で実行されます。 一方、ノード エージェント サービスとコーディネーター サービスは、下位の特権で実行されます。 このサービスは、全クラスター ノードで次の更新ジョブを実行する役割を担います。
@@ -76,7 +76,7 @@ Azure Linux クラスターの持続性層がシルバーおよびゴールド�
 
 ##### <a name="azure-portal"></a>Azure ポータル
 クラスターの設定時に Azure Portal から修復マネージャーを有効にすることができます。 クラスターの構成時に **[アドオン機能]** で **[Repair Manager を含める]** オプションを選択します。
-![Azure Portal から修復マネージャーを有効にする画像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
+![Azure portal から Repair Manager を有効にする画像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデル
 [Azure Resource Manager デプロイ モデル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで修復マネージャー サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Azure Resource Manager デプロイ モデル テンプレートを作成することもできます。 
@@ -121,20 +121,20 @@ Ubuntu の場合、[unattended-upgrades](https://help.ubuntu.com/community/Autom
 
 インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=867984)からダウンロード可能です。
 
-sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v2.0.2.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v2.0.3.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
 
 ## <a name="configure-the-app"></a>Configure the app
 
 パッチ オーケストレーション アプリケーションの動作はニーズに合わせて構成できます。 アプリケーションの作成時または更新時にアプリケーション パラメーターを渡して既定値をオーバーライドします。 アプリケーション パラメーターを渡すには、`Start-ServiceFabricApplicationUpgrade` コマンドレットまたは `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定します。
 
-|**パラメーター**        |**種類**                          | **詳細**|
+|**パラメーター**        |**Type**                          | **詳細**|
 |:-|-|-|
 |MaxResultsToCache    |long                              | キャッシュする更新結果の最大件数。 <br>既定値は 3000 で、次の条件を想定しています。 <br> - ノード数が 20 個である <br> - ノード上で実行される更新の回数が 1 か月あたり 5 回である <br> - 1 回の処理で 10 件程度の結果が生成される <br> - 過去 3 か月の結果を保存する |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに更新プログラムをインストールする際に使用するポリシーを示しています。<br>                         使用できる値は、以下のとおりです。 <br>                                                           <b>NodeWise</b>:  更新プログラムが 1 ノードずつインストールされます。 <br>                                                           <b>UpgradeDomainWise</b>:  更新プログラムが 1 アップグレード ドメインずつインストールされます  (最大で、アップグレード ドメインに属するすべてのノードに更新プログラムを適用できます)。
-| UpdateOperationTimeOutInMinutes | int <br>(既定: 180)                   | 更新操作 (ダウンロードまたはインストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
-| RescheduleCount      | int <br> (既定値: 5)                  | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする最大回数。          |
-| RescheduleTimeInMinutes  | int <br>(既定値: 30) | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする間隔。 |
-| UpdateFrequency           | コンマ区切りの文字列 (既定値: "Weekly, Wednesday, 7:00:00")     | クラスターでの OS 更新プログラムのインストールの頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD, HH:MM:SS (例: Monthly, 5, 12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、更新が実行されないことを示します。  <br><br> 時刻はすべて UTC 形式です。|
+| UpdateOperationTimeOutInMinutes | int <br>(既定値:180)                   | 更新操作 (ダウンロードまたはインストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
+| RescheduleCount      | int <br> (既定値:5)                  | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする最大回数。          |
+| RescheduleTimeInMinutes  | int <br>(既定値:30) | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする間隔。 |
+| UpdateFrequency           | コンマ区切りの文字列 (既定値:"Weekly, Wednesday, 7:00:00")     | クラスターでの OS 更新プログラムのインストールの頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD, HH:MM:SS (例: Monthly, 5, 12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、更新が実行されないことを示します。  <br><br> 時刻はすべて UTC 形式です。|
 | UpdateClassification | コンマ区切りの文字列 (既定値: "securityupdates") | クラスター ノードにインストールする必要のある更新プログラムの種類。 指定できる値は、securityupdates, all です。 <br> -  securityupdates - セキュリティ更新プログラムのみをインストールします <br> -  all - apt から利用可能な更新プログラムをすべてインストールします。|
 | ApprovedPatches | コンマ区切りの文字列 (既定値: "") | これは、クラスター ノードにインストールする必要がある承認済み更新プログラムの一覧です。 コンマ区切りリストには、承認されているパッケージと、必要に応じて目的のターゲット バージョンが含まれています。<br> 例: "apt-utils = 1.2.10ubuntu1, python3-jwt, apt-transport-https < 1.2.194, libsystemd0 >= 229-4ubuntu16" <br> 上記によって、次がインストールされます <br> - バージョン 1.2.10ubuntu1 の apt-utils (apt-cache で使用可能な場合)。 この特定のバージョンを使用できない場合は、何も行われません。 <br> - python3-jwt は利用可能な最新バージョンにアップグレードされます。 パッケージが存在しない場合は、何も行われません。 <br> - apt-transport-https は最新バージョン (1.2.194 未満) にアップグレードされます。 このバージョンが存在しない場合は、何も行われません。 <br> - libsystemd0 は最新バージョン (229-4ubuntu16 以上) にアップグレードされます。 このようなバージョンが存在しない場合は、何も行われません。|
 | RejectedPatches | コンマ区切りの文字列 (既定値: "") | これは、クラスター ノードにインストールしない更新プログラムの一覧です <br> 例: "bash, sudo" <br> 前述の例では、bash、sudo が更新プログラムの受信から除外されます。 |
@@ -147,7 +147,7 @@ sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/PO
 
 1. 前提条件となるすべての手順を実行してクラスターを準備します。
 2. 他の Service Fabric アプリケーションと同様に、パッチ オーケストレーション アプリケーションをデプロイします。 PowerShell または Azure Service Fabric CLI を使用してアプリケーションをデプロイすることができます。 「[PowerShell を使用してアプリケーションのデプロイと削除を実行する](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)」または [Azure Service Fabric CLI を使用したアプリケーションのデプロイ](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application)に関するページに記載されている手順に従います
-3. デプロイ時にアプリケーションを構成するには、`ApplicationParamater` を `New-ServiceFabricApplication` コマンドレットまたは指定されたスクリプトに渡します。 便宜を図るために、powershell (Deploy.ps1) および bash (Deploy.sh) スクリプトがアプリケーションと共に提供されます。 このスクリプトを使用するには、次の手順に従います。
+3. デプロイ時にアプリケーションを構成するには、`ApplicationParameter` を `New-ServiceFabricApplication` コマンドレットまたは指定されたスクリプトに渡します。 便宜を図るために、powershell (Deploy.ps1) および bash (Deploy.sh) スクリプトがアプリケーションと共に提供されます。 このスクリプトを使用するには、次の手順に従います。
 
     - Service Fabric クラスターに接続します。
     - デプロイ スクリプトを実行します。 必要に応じて、アプリケーション パラメーターをスクリプトに渡します。 例: .\Deploy.ps1 -ApplicationParameter @{ UpdateFrequency = "Daily, 11:00:00"} OR ./Deploy.sh "{\"UpdateFrequency\":\"Daily, 11:00:00\"}" 
@@ -173,7 +173,8 @@ sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/PO
 
 ## <a name="view-the-update-results"></a>更新結果の確認
 
-パッチ オーケストレーション アプリケーションは、結果の履歴をユーザーに表示するための REST API を公開しています。 サンプル結果を次に示します。```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+パッチ オーケストレーション アプリケーションは、結果の履歴をユーザーに表示するための REST API を公開しています。 サンプル結果を次に示します。
+```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 
@@ -285,11 +286,11 @@ A. インストール プロセス中に、パッチ オーケストレーショ
 
 問題が解決しない場合は、「トラブルシューティング」を参照してください。
 
-Q. **パッチ オーケストレーション アプリケーションが警告状態になっています。**
+Q. **パッチ オーケストレーション アプリケーションが警告状態になっています**
 
 A. アプリケーションに対してポストされた正常性レポートが根本的な原因であるかどうかを確認してください。 通常、警告には問題の詳細が含まれています。 問題が一時的なものであれば、アプリケーションはこの状態から自動的に回復すると考えられます。
 
-Q. **クラスターに異常があり、オペレーティング システムの更新をすぐに実行する必要がある場合はどうすればよいですか?**
+Q. **クラスターに異常がある場合で、オペレーティング システムの更新をすぐに実行する必要がある場合はどうすればよいですか?**
 
 A. クラスターに異常がある間は、パッチ オーケストレーション アプリケーションによって更新プログラムはインストールされません。 パッチ オーケストレーション アプリケーションのワークフローをブロック解除するには、クラスターを正常な状態にしてください。
 
@@ -305,10 +306,10 @@ A. パッチ オーケストレーション アプリケーションが必要と
 
 Q. **パッチ オーケストレーション アプリケーションでは、どの更新プログラムがセキュリティ更新プログラムであるかはどのように判断されますか。**
 
-A. パッチ オーケストレーション アプリケーションは、使用可能な更新プログラムのうちどれがセキュリティ更新プログラムであるかの判断にディストリビューション固有のロジックを使用します。 例: ubuntu では、アプリケーションはアーカイブ $RELEASE-security、$RELEASE-updates ($RELEASE = xenial または linux 標準ベース リリース バージョン) から更新プログラムを検索します。 
+A. パッチ オーケストレーション アプリケーションは、使用可能な更新プログラムのうちどれがセキュリティ更新プログラムであるかの判断にディストリビューション固有のロジックを使用します。 例: Ubuntu では、アプリケーションはアーカイブ $RELEASE-security、$RELEASE-updates ($RELEASE = xenial または linux 標準ベース リリース バージョン) から更新プログラムを検索します。 
 
  
-Q. **パッケージを特定のバージョンにロックするにはどのようにしますか?**
+Q. **パッケージを特定のバージョンをロックするにはどのようにしますか?**
 
 A. パッケージを特定のバージョンにロックするには ApprovedPatches 設定を使用します。 
 
@@ -318,11 +319,11 @@ Q. **Ubuntu で自動更新を有効にするとどうなりますか?**
 A. クラスターでパッチ オーケストレーション アプリケーションをインストールするとすぐに、クラスター ノード上の unattended-upgrades が無効になります。 すべての定期的な更新ワークフローは、パッチ オーケストレーション アプリケーションによって駆動されます。
 クラスター全体にわたって環境の一貫性を確保するために、パッチ オーケストレーション アプリケーションのみを使用して更新プログラムをインストールすることをお勧めします。 
  
-Q. **アップグレード後に、オーケストレーション アプリケーションは使用されていないパッケージのクリーンアップを行いますか?**
+Q. **アップグレード後に、パッチ オーケストレーション アプリケーションによって、使用されていないパッケージのクリーンアップが行われますか?**
 
 A. はい、クリーンアップはインストール後の手順の一部として行われます。 
 
-Q. **パッチ オーケストレーション アプリを、自分の開発クラスター (1 ノード クラスター) にパッチを適用するために使用できますか?**
+Q. **自分の開発クラスター (1 ノード クラスター) にパッチを適用するために、パッチ オーケストレーション アプリを使用できますか?**
 
 A. いいえ、パッチ オーケストレーション アプリは、1 ノード クラスターへのパッチ適用には使用できません。 この制限は設計によるものです。パッチ適用の修復ジョブは、[Service Fabric のシステム サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)または任意の顧客アプリにダウンタイムが発生するため、いずれも修復マネージャーからの承認が得られないからです。
 
@@ -373,5 +374,10 @@ A. いいえ、パッチ オーケストレーション アプリは、1 ノー�
 ### <a name="version-201"></a>バージョン 2.0.1
 - 最新の Service Fabric SDK を使用してアプリを再コンパイル
 
-### <a name="version-202-latest"></a>バージョン 2.0.2 (最新)
+### <a name="version-202"></a>バージョン 2.0.2 
 - 再起動時に正常性の警告が残る問題を修正しました。
+
+### <a name="version-203-latest"></a>バージョン 2.0.3 (最新)
+- Standard_D1_v2 VM 上でノード エージェント デーモン サービスの CPU 使用率が最大で 99% に到達するという問題の修正。
+- 現在のノード名のサブセットである名前を持つノードがある場合に、ノードでのパッチ適用のライフサイクルに影響を与える問題の修正。 このようなノードでは、パッチが適用されなかったり、再起動が保留になる可能性があります。
+- 破損している設定がサービスに渡されると、ノード エージェント デーモンがクラッシュしたままになるという問題を招くバグを修正しました。

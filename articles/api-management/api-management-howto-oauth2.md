@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967931"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746729"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
@@ -51,9 +51,9 @@ ms.locfileid: "52967931"
 
     ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. フォームの次のセクションには、**[Authorization code grant types (認証コード付与タイプ)]**、**[Authorization endpoint URL (認証エンドポイント URL)]**、および **[Authorization request method (認証要求方式)]** 設定が含まれます。
+4. フォームの次のセクションには、**[承認許可の種類]**、**[承認エンドポイントの URL]**、および **[承認要求方法]** の設定が含まれます。
 
-    必要なタイプにチェックマークを入れて、 **[認証コード付与タイプ (Authorization code grant types)]** を指定します。 **[認証コード]** が既定で指定されています。
+    必要な種類をオンにして、**[承認許可の種類]** を指定します。 **[認証コード]** が既定で指定されています。
 
     **[Authorization endpoint URL (認証エンドポイント URL)]** を入力します。 Azure Active Directory では、この URL は以下の URL のようになります。ここで、`<client_id>` は、使用するアプリケーションを OAuth 2.0 サーバーが識別するためのクライアント ID に置き換えてください。
 
@@ -75,7 +75,7 @@ ms.locfileid: "52967931"
 
     ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-04.png)
 
-    **[Authorization code grant types (認証コード付与タイプ)]** が **[Resource owner password (リソース所有者パスワード)]** に設定された場合、**[Resource owner password credentials (リソース所有者パスワードの資格情報)]** セクションがそれらの資格情報の指定に使用されます。そうでない場合は、そのセクションを空白のままにすることができます。
+    **[承認許可の種類]** を **[リソース所有者のパスワード]** に設定した場合は、**[リソース所有者のパスワード資格情報]** セクションを使用してそれらの資格情報を指定します。それ以外の場合は、空白のままにすることができます。
 
     フォームを完了したら、**[作成]** をクリックして API Management OAuth 2.0 認証サーバーの構成を保存します。 サーバーの構成が保存された後、次のセクションで説明されているように、この構成を使用するように API を構成できます。
 
@@ -115,7 +115,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 > [!NOTE]
 > ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。 ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
 
-![[サインイン]][api-management-oauth2-signin]
+![サインイン][api-management-oauth2-signin]
 
 サインインした後、**[要求ヘッダー]** には、要求を認証するための `Authorization : Bearer` ヘッダーが取り込まれます。
 

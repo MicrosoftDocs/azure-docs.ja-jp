@@ -2,36 +2,36 @@
 title: Azure Terraform Visual Studio Code 拡張機能のインストールと使用
 description: Visual Studio Code で Azure Terraform 拡張機能をインストールして使用する方法を説明します。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, Azure, DevOps, Visual Studio Code, 拡張機能
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: be0140606302335884d62ba60c875a049949b495
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b1102649e48af8cb36a64f1142c078bf9ebc0d99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353052"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006191"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Azure Terraform Visual Studio Code 拡張機能のインストールと使用
 
 Microsoft Azure Terraform Visual Studio Code 拡張機能は、Azure で Terraform を作成、テスト、および使用しながら、開発者の生産性を高めるように設計されています。 この拡張機能により、Visual Studio Code での Terraform コマンドのサポート、グラフを使ったリソースの視覚化、CloudShell との統合が実現します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 > [!div class="checklist"]
 > * Terraform を使用して Azure サービスのプロビジョニングを自動化および簡略化する。
 > * Azure サービス用の Microsoft Terraform Visual Studio Code 拡張機能をインストールして使用する。
 > * Visual Studio Code を使用して、Terraform プランを記述、計画、実行する。
 
 ## <a name="prerequisites"></a>前提条件
-- **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **Terraform**: [Terraform をインストールして構成](/azure/virtual-machines/linux/terraform-install-configure)します。
+- **Terraform**:[Terraform をインストールして構成します](/azure/virtual-machines/linux/terraform-install-configure)。
 
-- **Visual Studio Code**: ご利用の環境に適したバージョンの [Visual Studio Code](https://code.visualstudio.com/download) をインストールしてください。
+- **Visual Studio Code**:ご利用の環境に適したバージョンの [Visual Studio Code](https://code.visualstudio.com/download) をインストールしてください。
 
 ## <a name="prepare-your-dev-environment"></a>開発環境の準備
 
@@ -59,7 +59,7 @@ Cloud Shell で Terraform を使用するには、[Node.js をインストール
 
 ### <a name="install-graphviz"></a>GraphViz のインストール
 
-Terraform 視覚化機能を使用するには、[GraphViz をインストール](http://graphviz.org/)する必要があります。
+Terraform 視覚化機能を使用するには、[GraphViz をインストール](https://graphviz.org/)する必要があります。
 
 >[!NOTE]
 >GraphViz がインストールされているかどうかを確認するには、ターミナル ウィンドウを開いて、「`dot -V`」と入力します。
@@ -95,7 +95,7 @@ Azure Terraform 拡張機能が、インストール済み拡張機能の一覧�
 
 お使いの Cloud Shell 環境でサポートされているすべての Terraform コマンドを、Visual Studio Code 内から実行できるようになりました。
 
-## <a name="exercise-1-basic-terraform-commands-walk-through"></a>演習 1: 基本的な Terraform コマンドのチュートリアル
+## <a name="exercise-1-basic-terraform-commands-walk-through"></a>演習 1:基本的な Terraform コマンドのチュートリアル
 
 この演習では、新しい Azure リソース グループをプロビジョニングする基本的な Terraform 構成ファイルを作成して実行します。
 
@@ -128,7 +128,7 @@ Azure Terraform 拡張機能が、インストール済み拡張機能の一覧�
     ![main.tf として保存](media/terraform-vscode-extension/tf-save-as-main.png)
 
 1. **[保存]** を選択します。
-- メニュー バーで、**[ファイル] > [フォルダーを開く]** を選択します。 作成した新しいフォルダーに移動し、選択します。
+1. メニュー バーで、**[ファイル] > [フォルダーを開く]** を選択します。 作成した新しいフォルダーに移動し、選択します。
 
 ### <a name="run-terraform-init-command"></a>Terraform *init* コマンドの実行
 
@@ -138,7 +138,7 @@ Azure Terraform 拡張機能が、インストール済み拡張機能の一覧�
 
     ![main.tf ファイル](media/terraform-vscode-extension/tf-main-tf.png)
 
-1. メニュー バーから、**[表示] > [コマンド パレット] > [Azure Terraform: Init]** を選択します。
+1. メニュー バーで、**[表示] > [コマンド パレット] > [Azure Terraform:Init]** の順に選択します。
 
 1. 確認のメッセージが表示されたら **[OK]** を選択します。
 
@@ -173,7 +173,7 @@ Azure Terraform 拡張機能が、インストール済み拡張機能の一覧�
 
 先ほどこのチュートリアルの中で GraphViz をインストールしました。 Terraform では、構成または実行プランを視覚化するために GraphViz を使用できます。 この機能は、Azure Terraform Visual Studio Code 拡張機能の *visualize* コマンドによって実装されます。
 
-- メニュー バーから、**[表示] > [コマンド パレット] > [Azure Terraform: Visualize]** を選択します。
+- メニュー バーで、**[表示] > [コマンド パレット] > [Azure Terraform:Visualize]** の順に選択します。
 
     ![プランの視覚化](media/terraform-vscode-extension/tf-graph.png)
 
@@ -235,7 +235,7 @@ Terraform *plan* の結果に満足したら、*apply* コマンドを実行で�
 
     ![リソース グループが破棄されていることの確認](media/terraform-vscode-extension/tf-refresh-resource-groups-button.png)
 
-## <a name="exercise-2-terraform-compute-module"></a>演習 2: Terraform *compute* モジュール
+## <a name="exercise-2-terraform-compute-module"></a>演習 2:Terraform *compute* モジュール
 
 この演習では、Terraform *compute* モジュールを Visual Studio Code 環境に読み込む方法について説明します。
 
@@ -270,7 +270,7 @@ Visual Studio Code 内からの Terraform コマンドの使用を開始する�
 
 ### <a name="module-test-lint"></a>モジュール テスト: *lint*
 
-1. メニュー バーから、**[表示] > [コマンド パレット] > [Azure Terraform: Execute Test]** を選択します。
+1. メニュー バーで、**[表示] > [コマンド パレット] > [Azure Terraform:Execute Test]** の順に選択します。
 
 1. テストの種類のオプション一覧から **[lint]** を選択します。
 
@@ -289,7 +289,7 @@ Visual Studio Code 内からの Terraform コマンドの使用を開始する�
 
 ### <a name="module-test-end-to-end"></a>モジュール テスト: *end-to-end*
 
-1. メニュー バーから、**[表示] > [コマンド パレット] > [Azure Terraform: Execute Test]** を選択します。
+1. メニュー バーで、**[表示] > [コマンド パレット] > [Azure Terraform:Execute Test]** の順に選択します。
 
 1. テストの種類のオプション一覧から **[end to end]** を選択します。
 

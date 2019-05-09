@@ -1,32 +1,31 @@
 ---
 title: API リファレンス - Face API
 titleSuffix: Azure Cognitive Services
-description: API リファレンスでは、人の管理、LargePersonGroup/PersonGroup の管理、LargeFaceList/FaceList の管理および Face アルゴリズム API に関する情報を説明します。
+description: API リファレンスでは、Person、LargePersonGroup/PersonGroup、LargeFaceList/FaceList、Face アルゴリズム API に関する情報を説明します。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: be3e408b3f5f6393786a35108202d51ae871ea3b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: f4258f34bb7d353ee4e76f4675f4ef672a4a8c78
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679734"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547607"
 ---
 # <a name="api-reference"></a>API リファレンス
 
 Azure Face API は、顔検出および顔認識のアルゴリズムを提供するクラウド ベースの API です。 Face API は、以下のカテゴリで構成されます。
 
-- [Face アルゴリズム API](https://docs.microsoft.com/rest/api/cognitiveservices/face/face): [検出](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/detectwithstream)、[類似アイテムの検索](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar)、[検証](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/verifyfacetoface)、[識別](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)、[グループ](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/group)などのコア機能をカバーします。
-- [FaceList 管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/facelist): [類似アイテムの検索](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar)の FaceList の管理に使用します。
-- [LargePersonGroup 人管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/largepersongroupperson): [識別](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)の LargePersonGroup の人の顔の管理に使用します。
-- [LargePersonGroup 管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/largepersongroup): [識別](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)の LargePersonGroup データセットの管理に使用します。
-- [LargeFaceList 管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/largefacelist): [類似アイテムの検索](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar)の LargeFaceList の管理に使用します。
-- [PersonGroup 人管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroupperson): [識別](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)の PersonGroup の人の顔の管理に使用します。
-- [PersonGroup 管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup): [識別](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)の PersonGroup データセットの管理に使用します。
-
-<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->
+- Face アルゴリズム API:[検出](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[類似アイテムの検索](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)、[検証](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)、[識別](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、[グループ](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)などのコア機能をカバーします。
+- [FaceList API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b):[類似アイテムの検索](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)の FaceList の管理に使用します。
+- [LargePersonGroup Person API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40):[識別](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)の LargePersonGroup の人の顔の管理に使用します。
+- [LargePersonGroup API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d):[識別](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)の LargePersonGroup データセットの管理に使用します。
+- [LargeFaceList API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc):[類似アイテムの検索](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)の LargeFaceList の管理に使用します。
+- [PersonGroup Person API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c):[識別](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)の PersonGroup の人の顔の管理に使用します。
+- [PersonGroup API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244):[識別](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)の PersonGroup データセットの管理に使用します。
+- [Snapshot API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-take):サブスクリプション間のデータ移行用のスナップショットを管理するために使用します。

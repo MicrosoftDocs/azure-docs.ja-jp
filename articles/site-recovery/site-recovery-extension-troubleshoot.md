@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 7a4ff22bbb4c7c13d8c2feae3638ce8e33a8f7ad
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845826"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103538"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery エージェントに関する問題のトラブルシューティング
 
@@ -77,15 +77,15 @@ Linux VM の場合、エージェントに関連するエラーまたは拡張�
 
 1. [Linux VM エージェントを更新](../virtual-machines/linux/update-agent.md)する手順に従います。
 
- > [!NOTE]
- > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを直接 GitHub からダウンロードして、更新することはお勧めしません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
+   > [!NOTE]
+   > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを直接 GitHub からダウンロードして、更新することはお勧めしません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
 
 2. `ps -e` コマンドを実行して、Azure エージェントが VM で実行されていることを確認します。
 
- このプロセスが実行されていない場合は、次のコマンドを使用してプロセスを再起動します。
+   このプロセスが実行されていない場合は、次のコマンドを使用してプロセスを再起動します。
 
- * Ubuntu の場合: `service walinuxagent start`
- * その他のディストリビューションの場合: `service waagent start`
+   * Ubuntu の場合: `service walinuxagent start`
+   * その他のディストリビューションの場合: `service waagent start`
 
 3. [エージェントの自動再起動を構成します](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)。
 4. 仮想マシンの保護を有効にします。

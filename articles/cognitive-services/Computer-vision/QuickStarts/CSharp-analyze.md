@@ -4,23 +4,23 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# と Computer Vision API を使用してローカル画像を分析します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0c86c00c009ecf56c254557c085c4d7e6431c685
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 340638377dadfd662beb3ca6ed977aeb9050b645
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581085"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630003"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート:Computer Vision で REST API および C&#35; を使用してローカル画像を分析する
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>クイック スタート:Computer Vision で REST API および C# を使用してローカル画像を分析する
 
-このクイック スタートでは、Computer Vision の REST API を使用して、ローカルに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴を抽出できます。
+このクイック スタートでは、Computer Vision の REST API を使用して、ローカルに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴情報を抽出できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Visual Studio でサンプルを作成するには、次の手順を実行します。
 
-1. Visual C# コンソール アプリ テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションを作成します。
+1. Visual C# コンソール アプリ (.NET Framework) テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションを作成します。
 1. Newtonsoft.Json NuGet パッケージをインストールします。
     1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
     1. **[参照]** タブをクリックし、**[検索]** ボックスに「Newtonsoft.Json」と入力します。
@@ -253,7 +253,7 @@ namespace CSHttpClientSample
 
 ## <a name="next-steps"></a>次の手順
 
-Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する、基本的な Windows アプリケーションについて詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する、基本的な Windows アプリケーションについて詳細を確認します。
 
 > [!div class="nextstepaction"]
-> [Computer Vision API C&#35; チュートリアル](../Tutorials/CSharpTutorial.md)
+> [Computer Vision API の C# のチュートリアル](../Tutorials/CSharpTutorial.md)

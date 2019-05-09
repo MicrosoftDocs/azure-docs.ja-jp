@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 29c0a1a15db7670d83ff384a1ba0f37499389ef7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: d4a3dd6ae390fd48a8085cca33063a6bb74bd96c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741884"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008422"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>仮想マシン スケール セット テンプレートの詳細情報
 [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、実行可能な最小のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。 
@@ -40,7 +40,7 @@ GitHub を使用して、実行可能な最小のスケール セット テン�
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
 ## <a name="define-parameters"></a>パラメーターを定義する
@@ -70,7 +70,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
    "resources": [
 ```
 
-すべてのリソースのプロパティ `type`、`name`、`apiVersion`、`location` を指定する必要があります。 この例の最初のリソースは、種類が `Microsft.Network/virtualNetwork`、名前が `myVnet`、apiVersion が `2016-03-30` のリソースです。 (リソースの種類に対する最新の API バージョンを確認するには、[Azure REST API に関するドキュメント](https://docs.microsoft.com/rest/api/)を参照してください)。
+すべてのリソースのプロパティ `type`、`name`、`apiVersion`、`location` を指定する必要があります。 この例の最初のリソースには、type [Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)、name `myVnet`、apiVersion `2016-03-30` が含まれています。 (リソースの種類に対する最新の API バージョンを確認するには、[Azure Resource Manager テンプレートのリファレンス](/azure/templates/)を参照してください。)
 
 ```json
      {
@@ -124,7 +124,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>スケール セットのプロパティを指定する
-スケール セットには、スケール セットで VM をカスタマイズするための多くのプロパティがあります。 これらのプロパティの完全な一覧については、[スケール セットの REST API に関するドキュメント](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set)を参照してください。 このチュートリアルでは、一般的に使用されるいくつかのプロパティのみが設定されます。
+スケール セットには、スケール セットで VM をカスタマイズするための多くのプロパティがあります。 これらのプロパティの完全な一覧については、[テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachinescalesets)を参照してください。 このチュートリアルでは、一般的に使用されるいくつかのプロパティのみが設定されます。
 ### <a name="supply-vm-size-and-capacity"></a>VM のサイズと容量を指定する
 スケール セットは、作成する VM のサイズ ("SKU 名") と、作成する VM の数 ("SKU 容量") を把握する必要があります。 利用可能な VM サイズを確認するには、[VM サイズに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)を参照してください。
 

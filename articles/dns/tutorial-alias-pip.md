@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 1b157d8292eacff87a28554939a6f144b9f5d0e9
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7dcbfdaf00b0e628541cfd1a3b79df8cf8334ed3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092095"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536880"
 ---
-# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>チュートリアル: Azure パブリック IP アドレスを参照するエイリアス レコードを構成する 
+# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -30,13 +30,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="prerequisites"></a>前提条件
 テスト対象の Azure DNS でホストできる利用可能なドメイン名が必要です。 このドメインに対するフル コントロールが必要となります。 フル コントロールには、このドメインのネーム サーバー (NS) レコードを設定する権限が含まれます。
 
-Azure DNS にドメインをホストする手順については、「[チュートリアル: Azure DNS にドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
+Azure DNS にドメインをホストする手順については、「[チュートリアル:Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
 
 このチュートリアルで使用するドメインの例は contoso.com ですが、独自のドメイン名を使用してください。
 
 ## <a name="create-the-network-infrastructure"></a>ネットワーク インフラストラクチャを作成する
 まず、Web サーバーを配置する仮想ネットワークとサブネットを作成します。
-1. Azure Portal ( http://portal.azure.com ) にサインインします。
+1. Azure Portal ( https://portal.azure.com ) にサインインします。
 2. ポータルの左上にある **[リソースの作成]** を選択します。 検索ボックスに「*resource group*」と入力し、**RG-DNS-Alias-pip** という名前のリソース グループを作成します。
 3. **[+ リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順に選択します。
 4. **VNet-Server** という名前の仮想ネットワークを作成します。 それを **RG-DNS-Alias-pip** リソース グループに配置し、サブネットに **SN-Web** という名前を付けます。

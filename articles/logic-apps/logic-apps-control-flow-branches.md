@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 68f7df2ab004477fae5df1d200fcd44929465e93
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233125"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232245"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションに対して並列分岐を作成または結合する
 
@@ -37,7 +37,7 @@ ms.locfileid: "50233125"
 
 ![並列でステップを実行する](media/logic-apps-control-flow-branches/parallel.png)
 
-ロジック アプリはすべての分岐が終了するまで待機してから、ワークフローを続行します。 並列分岐が実行するのは、`runAfter` プロパティの値が、完了した親ステップの状態と一致する場合のみです。 たとえば、`branchAction1` と `branchAction2` の両方は、`parentAction` が `Succeded` 状態で完了した場合のみ実行するように設定されています。
+ロジック アプリはすべての分岐が終了するまで待機してから、ワークフローを続行します。 並列分岐が実行するのは、`runAfter` プロパティの値が、完了した親ステップの状態と一致する場合のみです。 たとえば、`branchAction1` と `branchAction2` の両方は、`parentAction` が `Succeeded` 状態で完了した場合のみ実行するように設定されています。
 
 > [!NOTE]
 > 開始する前に、並列分岐を追加できるステップがロジック アプリに存在していることが必要です。

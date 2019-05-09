@@ -4,7 +4,7 @@ description: Linux にランタイムと SDK をインストールし、ロー�
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 8b2d7053ce8d980f15132e1d48497aff192713d0
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9f738ab5022d1378925d920818e3f89fc2a1ee6d
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309376"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670528"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
 2. ソース リストに Service Fabric リポジトリを追加します。
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
 3. ソース リストに `dotnet` リポジトリを追加します。
@@ -162,7 +162,7 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
 sudo apt-get install servicefabricsdkcommon
 ```
 
->   [!TIP]
+> [!TIP]
 >   Service Fabric パッケージのライセンス受け取りを自動化するコマンドを以下に示します。
 >   ```bash
 >   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
@@ -219,7 +219,7 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
     nvm install node
     ```
-2. npm からマシンに [Yeoman](http://yeoman.io/) テンプレート ジェネレーターをインストールします。
+2. npm からマシンに [Yeoman](https://yeoman.io/) テンプレート ジェネレーターをインストールします。
 
     ```bash
     npm install -g yo
@@ -245,7 +245,8 @@ Java を使用して Service Fabric サービスをビルドするには、Gradl
 * Ubuntu
 
     ```bash
-    sudo apt-get install gradle
+    curl -s https://get.sdkman.io | bash
+    sdk install gradle 5.1
     ```
 
 * Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
@@ -275,7 +276,7 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 
 2. **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
-3. **[Work with]\(作業対象\)** ボックスに「**http://dl.microsoft.com/eclipse**」と入力します。
+3. **[Work with]\(作業対象\)** ボックスに「 **https://dl.microsoft.com/eclipse** 」と入力します。
 
 4. **[追加]** を選択します。
 

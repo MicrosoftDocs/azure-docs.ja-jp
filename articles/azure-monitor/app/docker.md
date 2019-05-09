@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: a4e4ca1ca4878a2a405b12413e4378a2cb79aef6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 115e2d6b041ecc3f38a2a6438d90777da9660221
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999120"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996476"
 ---
-# <a name="monitor-docker-applications-in-application-insights"></a>Application Insights で Docker アプリケーションを監視する
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights で Docker アプリケーションを監視する (非推奨)
+
+> [!NOTE]
+> このソリューションは非推奨になっています。 コンテナー監視の現状について詳しくは、[コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) に関する記事を確認することをお勧めします。
 
 [Docker](https://www.docker.com/) コンテナーから取得したライフサイクル イベントとパフォーマンス カウンターを Application Insights でグラフ化できます。 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) イメージをホストのコンテナーにインストールすると、ホストとその他のイメージのパフォーマンス カウンターが表示されます。
 
@@ -29,18 +32,15 @@ Docker ホストで [Application Insights イメージ](https://hub.docker.com/r
 
 * ホストで実行されているすべてのコンテナーに関するライフサイクル テレメトリ (開始や停止など)。
 * すべてのコンテナーのパフォーマンス カウンター。 CPU、メモリ、ネットワークの使用状況など。
-* コンテナーで実行されているアプリに [Application Insights SDK for Java をインストールした](../../azure-monitor/app/java-live.md) 場合、これらのアプリのすべてのテレメトリにコンテナーとホスト マシンを識別するプロパティが追加されます。 たとえば、1 つ以上のホストで実行中のアプリのインスタンスがある場合、アプリのテレメトリをホスト別に簡単にフィルター処理できます。
-
-> [!NOTE]
-> このソリューションは非推奨になっています。 コンテナー監視の現状について詳しくは、[コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) に関する記事を確認することをお勧めします。
+* コンテナーで実行されているアプリに [Application Insights SDK for Java をインストールした](../../azure-monitor/app/java-get-started.md) 場合、これらのアプリのすべてのテレメトリにコンテナーとホスト マシンを識別するプロパティが追加されます。 たとえば、1 つ以上のホストで実行中のアプリのインスタンスがある場合、アプリのテレメトリをホスト別に簡単にフィルター処理できます。
 
 ## <a name="set-up-your-application-insights-resource"></a>Application Insights リソースを設定する
 
-1. [Microsoft Azure Portal](https://azure.com) にサインインし、アプリ用の Application Insights リソースを開きます。または[新しく作成](../../application-insights/app-insights-create-new-resource.md)します。 
+1. [Microsoft Azure Portal](https://azure.com) にサインインし、アプリ用の Application Insights リソースを開きます。または[新しく作成](../../azure-monitor/app/create-new-resource.md )します。 
    
-    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](../../application-insights/app-insights-create-new-resource.md)必要があります。 テレメトリの表示と分析はこの場所で行います  (アプリの種類には [General (一般)] を選択します)。
+    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](../../azure-monitor/app/create-new-resource.md )必要があります。 テレメトリの表示と分析はこの場所で行います  (アプリの種類には [General (一般)] を選択します)。
    
-    ただし、アプリの開発者である場合は、各アプリに [Application Insights SDK を追加する](../../azure-monitor/app/java-live.md) ことをお勧めします。 すべてのアプリが 1 つのビジネス アプリケーションのコンポーネントである場合は、テレメトリを 1 つのリソースに送信するように構成することで、同じリソースを使用して Docker のライフサイクルとパフォーマンスのデータを表示できます。 
+    ただし、アプリの開発者である場合は、各アプリに [Application Insights SDK を追加する](../../azure-monitor/app/java-get-started.md) ことをお勧めします。 すべてのアプリが 1 つのビジネス アプリケーションのコンポーネントである場合は、テレメトリを 1 つのリソースに送信するように構成することで、同じリソースを使用して Docker のライフサイクルとパフォーマンスのデータを表示できます。 
    
     3 番目のシナリオは、アプリの大半は自分で開発しているが、それらのテレメトリの表示には別のリソースを使用している場合です。 その場合は、Docker データ用の別個のリソースを作成できます。
 

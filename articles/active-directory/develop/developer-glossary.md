@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 開発者向け用語集 | Microsoft Docs
-description: Azure Active Directory 開発で頻出する概念や機能に関する用語の定義を記載しています。
+title: Microsoft ID プラットフォーム開発者向け用語集 | Azure
+description: 一般的に使用される Microsoft ID プラットフォーム開発者の概念と機能に関する用語のリスト。
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -8,27 +8,28 @@ manager: mtillman
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/16/2017
+ms.date: 04/13/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
-ms.openlocfilehash: b74c3d355a720948c22e90b1792dcd6139c101ea
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338211"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565538"
 ---
-# <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
+# <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
-この記事では、Azure Active Directory (AD) 開発で重要となるいくつかの概念について定義しています。Azure AD のアプリケーション開発を習得する際の参考としてください。
+この記事には、主要な開発者のいくつかの概念と用語の定義が含まれています。これらは Microsoft ID プラットフォームを使用するアプリケーション開発について学習する場合に役立ちます。
 
-## <a name="access-token"></a>Twitter アプリケーションの
+## <a name="access-token"></a>アクセス トークン
 
 [承認サーバー](#authorization-server)によって発行される[セキュリティ トークン](#security-token)の一種。[クライアント アプリケーション](#client-application)が、[保護されたリソース サーバー](#resource-server)にアクセスする目的で使用します。 要求されたレベルのアクセスに関して、[リソース所有者](#resource-owner)がクライアントに付与しているアクセス権限を通常 [JSON Web トークン (JWT)][JWT] の形式で 1 つにまとめたものがこのトークンです。 このトークンは、認証対象に関して当てはまる[要求](#claim)をすべて含んでおり、クライアント アプリケーションが特定のリソースにアクセスする際に一種の資格情報として使用することができます。 また、これを使用すると、リソース所有者がクライアントに資格情報を開示する必要がなくなります。
 
@@ -37,7 +38,7 @@ ms.locfileid: "53338211"
 * ["承認コード" 型の承認付与](#authorization-grant): エンド ユーザーはまず、リソース所有者として認証を行い、リソースにアクセスするための承認をクライアントに委任します。 その後クライアントは、アクセス トークンを取得した時点で認証を行います。 このトークンは、クライアント アプリケーションを承認したユーザーとアプリケーションの両方を表すことから、より具体的に "User+App" トークンと呼ばれることがあります。
 * ["クライアント資格情報" 型の承認付与](#authorization-grant): クライアントが行うのは単一の認証のみです。クライアントがリソース所有者の認証/承認なしで機能することから、このトークンは、"App-Only" トークンと呼ばれることがあります。
 
-詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
+詳細については、[Microsoft ID プラットフォーム トークンのリファレンス][AAD-Tokens-Claims]に関するページを参照してください。
 
 ## <a name="application-id-client-id"></a>アプリケーション ID (クライアント ID)
 
@@ -58,12 +59,12 @@ ms.locfileid: "53338211"
 アプリケーションの "ID とアクセス管理" の機能を Azure AD で行うためには、そのアプリケーションを Azure AD [テナント](#tenant)に登録する必要があります。 アプリケーションを Azure AD に登録するとき、アプリケーションに使用する ID 構成を指定します。これによって Azure AD との連携が可能となり、次のような機能が使用できるようになります。
 
 * Azure AD Identity Management と[ OpenID Connect][OpenIDConnect] プロトコル実装によるシングル サインオンの強固な管理
-* [クライアント アプリケーション](#client-application)による[保護されたリソース](#resource-server)へのブローカー アクセス (Azure AD の OAuth 2.0 [承認サーバー](#authorization-server)実装を介したアクセス)
+* [クライアント アプリケーション](#client-application)による[保護されたリソース](#resource-server)への OAuth 2.0 [承認サーバー](#authorization-server)を介したブローカー アクセス
 * [同意フレームワーク](#consent) 
 
 詳細については、「[Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]」を参照してください。
 
-## <a name="authentication"></a>[認証]
+## <a name="authentication"></a>認証
 
 特定の当事者に対し、本物の資格情報の提示を要求する行為。ID 管理とアクセス制御に必要なセキュリティ プリンシパルの拠り所となります。 たとえば [OAuth2 承認付与](#authorization-grant)時には、使用する付与形態に応じて、[リソース所有者](#resource-owner)または[クライアント アプリケーション](#client-application)の役割を果たす当事者が、本物であることを証明する側になります。
 
@@ -92,13 +93,13 @@ ms.locfileid: "53338211"
 
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)を認証し、その承認を得た後にアクセス トークンを[クライアント](#client-application)に発行するサーバーをいいます。 [クライアント アプリケーション](#client-application)は実行時に、その[承認エンドポイント](#authorization-endpoint)および[トークン エンドポイント](#token-endpoint)を介し、OAuth2 によって定義された[承認付与](#authorization-grant)に従って承認サーバーと対話します。
 
-Azure AD アプリケーション統合の場合、Azure AD アプリケーションと Microsoft サービス API ([Microsoft Graph API][Microsoft-Graph] など) に使用する承認サーバーの役割を Azure AD が実装します。
+Microsoft ID プラットフォーム アプリケーション統合の場合、Azure AD アプリケーションと Microsoft サービス API ([Microsoft Graph API][Microsoft-Graph] など) に使用する承認サーバー ロールは、Microsoft ID プラットフォームで実装されます。
 
 ## <a name="claim"></a>要求
 
 [セキュリティ トークン](#security-token)には要求が格納されます。この要求を通じて、一方のエンティティ ([クライアント アプリケーション](#client-application)、[リソース所有者](#resource-owner)など) に関するアサーションが、もう一方のエンティティ ([リソース サーバー](#resource-server)など) に渡されます。 要求は、トークンのサブジェクト ([承認サーバー](#authorization-server)によって認証されたセキュリティ プリンシパルなど) に関する事実を伝達する名前と値のペアです。 特定のトークンとして提示される要求は、いくつかの不確定要素 (トークンの種類、サブジェクトの認証に使用された資格情報の種類、アプリケーション構成など) に依存します。
 
-詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
+詳細については、[Microsoft ID プラットフォーム トークンのリファレンス][AAD-Tokens-Claims]に関するページを参照してください。
 
 ## <a name="client-application"></a>クライアント アプリケーション
 
@@ -116,7 +117,7 @@ Azure AD アプリケーション統合の場合、Azure AD アプリケーシ�
 
 [承認サーバー](#authorization-server)の[承認エンドポイント](#authorization-endpoint)から提供される [OpenID Connect][OpenIDConnect-ID-Token][ セキュリティ トークン](#security-token)。このトークンには、エンド ユーザーの[リソース所有者](#resource-owner)の認証に関連した[要求](#claim)が格納されます。 ID トークンもアクセス トークンと同様、デジタル署名された [JSON Web トークン (JWT)][JWT] として表現されます。 ただし、アクセス トークンとは異なり、ID トークンの要求は、リソース アクセス (特にアクセス制御) に関連した目的には使用されません。
 
-詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
+詳細については、[Microsoft ID プラットフォーム トークンのリファレンス][AAD-Tokens-Claims]に関するページを参照してください。
 
 ## <a name="microsoft-identity-platform"></a>Microsoft ID プラットフォーム
 
@@ -132,7 +133,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 デバイス上にネイティブでインストールされるタイプの [クライアント アプリケーション](#client-application) 。 すべてのコードがデバイス上で実行され、機密性を保った状態でプライベートに資格情報を保存することができないため、"public" クライアントと見なされます。 詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページを参照してください。
 
-## <a name="permissions"></a>アクセス許可
+## <a name="permissions"></a>permissions
 
 [クライアント アプリケーション](#client-application)は、アクセス許可要求を宣言することで[リソース サーバー](#resource-server)へのアクセス権を取得します。 次の 2 種類があります。
 
@@ -203,7 +204,7 @@ Azure AD テナントはサインアップ時に作成され、Azure サブス�
 
 ## <a name="token-endpoint"></a>トークン エンドポイント
 
-[承認サーバー](#authorization-server)によって実装されるエンドポイントの 1 つ。OAuth2 [承認付与](#authorization-grant)をサポートするために使用されます。 付与された承認によっては、[クライアント](#client-application)への[アクセス トークン](#access-token) (と関連する "更新" トークン) を取得したり、[OpenID Connect][OpenIDConnect] プロトコルと共に使用する場合に [ID トークン](#ID-token)を取得したりできます。
+[承認サーバー](#authorization-server)によって実装されるエンドポイントの 1 つ。OAuth2 [承認付与](#authorization-grant)をサポートするために使用されます。 付与された承認によっては、[クライアント](#client-application)への[アクセス トークン](#access-token) (と関連する "更新" トークン) を取得したり、[OpenID Connect][OpenIDConnect] プロトコルと共に使用する場合に [ID トークン](#id-token)を取得したりできます。
 
 ## <a name="user-agent-based-client"></a>ユーザー エージェント ベースのクライアント
 
@@ -219,14 +220,14 @@ Web サーバーですべてのコードを実行する[クライアント ア�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure AD 開発者ガイド][AAD-Dev-Guide]は、[アプリケーションの統合][AAD-How-To-Integrate]の概要や[Azure AD 認証の基礎とサポートされる認証シナリオ][AAD-Auth-Scenarios]など、Azure AD 開発に関連したあらゆるトピックに使用するためのランディング ページとなっています。 また、迅速に開始および実行する方法に関するコード サンプルやチュートリアルは、[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) で見つかります。
+[Microsoft ID プラットフォーム開発者のガイド][AAD-Dev-Guide]は、[アプリケーション統合][AAD-How-To-Integrate]の概要や [Microsoft ID プラットフォーム認証の基礎とサポートされる認証シナリオ][AAD-Auth-Scenarios]など、Microsoft ID プラットフォーム開発に関連したあらゆるトピックに使用するためのランディング ページとなっています。 また、迅速に開始および実行する方法に関するコード サンプルやチュートリアルは、[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) で見つかります。
 
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。新しい定義に関するリクエストのほか、既存の定義の更新のリクエストもお待ちしております。
 
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-App-Manifest]:reference-azure-ad-app-manifest.md
+[AAD-App-Manifest]:reference-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md

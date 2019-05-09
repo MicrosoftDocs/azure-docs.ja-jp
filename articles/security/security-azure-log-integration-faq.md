@@ -12,26 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: bec62b8c6b70706fa6519cbc2fd59bf69f119e9d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 4f6a724fe6c1e8668084f1c1cefbaa01cffba181
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005859"
 ---
 # <a name="azure-log-integration-faq"></a>Azure ログ統合 のFAQ
 
 この記事では、Azure ログ統合についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 
 >[!IMPORTANT]
-> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月27 日で無効になります。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 Azure ログ統合は Windows オペレーティング システムのサービスです。このサービスを利用すると、未加工のログを Azure リソースからオンプレミスの Security Information and Event Management (SIEM) システムに統合できます。 この統合によって、オンプレミスでもクラウド上でも、すべての資産を一元化されたダッシュボードで利用できるようになります。 そうすることで、お使いのアプリケーションに関連するセキュリティ イベントの集計、関連付け、分析、および警告を行えます。
 
-Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
+Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネクタを使用して、こちらの[手順](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)に従うことをお勧めします。 ただし、SIEM ベンダーが Azure Monitor へのコネクタを提供していない場合は、そのようなコネクタが入手可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure ログ統合ソフトウェアは無料ですか。
 
@@ -97,7 +99,7 @@ Azure Active Directory 監査ログには、名前の一部として、テナン
 
 エラー:
 
-  *Warning creating Role Assignment - AuthorizationFailed: The client janedo@microsoft.com' with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.*
+  *Warning creating Role Assignment - AuthorizationFailed:The client janedo\@microsoft.com' with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.*
 
 **azlog authorize** コマンドは、(**azlog createazureid** で作成された) Azure AD サービス プリンシパルの閲覧者のロールを、指定されたサブスクリプションに割り当てます。 Azure ログインが、サブスクリプションの共同管理者または所有者としてのログインでない場合、ログインは失敗し、"承認に失敗しました" というエラー メッセージが表示されます。 このアクションを完了するには、共同管理者または所有者の Azure ロールベースのアクセス制御 (RBAC) が必要です。
 
@@ -114,29 +116,29 @@ Azure Active Directory 監査ログには、名前の一部として、テナン
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>VM 診断で収集した情報を変更するには、どうすればよいですか。
 
-Azure 診断の構成を取得、変更および設定する方法の詳細については、「[PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 
+Azure Diagnostics の構成を取得、変更および設定する方法の詳細については、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 
 
-Azure 診断の構成を取得する例を次に示します。
+Azure Diagnostics の構成を取得する例を次に示します。
 
-    -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
-    $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
+    Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
+    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
 
     $xmlconfig | Out-File -Encoding utf8 -FilePath "d:\WADConfig.xml"
 
-Azure 診断の構成を変更する例を次に示します。 この構成では、イベント ID 4624 と イベント ID 4625のみがセキュリティ イベント ログから収集されます。 Azure 向け Microsoft マルウェア対策のイベントは、システム イベント ログから収集されます。 XPath 式の使用に関する詳細については、「[Consuming Events (イベントの利用)](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85))」をご覧ください。
+Azure Diagnostics の構成を変更する例を次に示します。 この構成では、イベント ID 4624 と イベント ID 4625のみがセキュリティ イベント ログから収集されます。 Azure 向け Microsoft マルウェア対策のイベントは、システム イベント ログから収集されます。 XPath 式の使用に関する詳細については、「[Consuming Events (イベントの利用)](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85))」をご覧ください。
 
     <WindowsEventLog scheduledTransferPeriod="PT1M">
         <DataSource name="Security!*[System[(EventID=4624 or EventID=4625)]]" />
         <DataSource name="System!*[System[Provider[@Name='Microsoft Antimalware']]]"/>
     </WindowsEventLog>
 
-Azure 診断の構成を設定する例を次に示します。
+Azure Diagnostics の構成を設定する例を次に示します。
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
+    Set-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
 
 変更後、ストレージ アカウントをチェックして、適切なイベントが収集されていることを確認します。
 

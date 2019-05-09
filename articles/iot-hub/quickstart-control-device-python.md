@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub からのデバイスの制御に関するクイック スタート (Python) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル Python アプリケーションを実行します。 1 つのアプリケーションは、ハブに接続されたデバイスをリモートで制御できるバックエンド アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
-ms.author: dobett
-ms.openlocfilehash: 08b2018ec1f1d34291778df0fa217b874cc3ffab
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.date: 03/26/2019
+ms.openlocfilehash: 58b4acb3ebfc1ff22c04dafb3063f197d2866311
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515099"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59005849"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Python)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -35,9 +35,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートで実行する 2 つのサンプル アプリケーションは、Python を使って書かれています。 Python 2.7.x または 3.5.x が開発コンピューター上に必要です。
+このクイック スタートで実行する 2 つのサンプル アプリケーションは、Python を使って書かれています。 現在、Python 用の Microsoft Azure IoT SDK は、プラットフォームごとに特定のバージョンの Python のみをサポートしています。 詳細については、[Python SDK Readme](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) を参照してください。
 
-複数のプラットフォームに対応する Python を [Python.org](https://www.python.org/downloads/) からダウンロードできます。
+このクイック スタートでは、Windows の開発用コンピューターを使用することを前提としています。 Windows システムの場合、[Python 3.6.x](https://www.python.org/downloads/release/python-368/) のみがサポートされています。 選択する Python インストーラーは、ご使用のシステムのアーキテクチャによって異なります。 ご使用のシステムの CPU アーキテクチャが 32 ビットである場合は、x86 インストーラーをダウンロードします。64 ビット アーキテクチャの場合は、x86-64 インストーラーをダウンロードします。 さらに、[Visual Studio 2017 の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)がご使用のアーキテクチャ (x86 または x64) にインストールされていることを確認してください。
+
+他のプラットフォームに対応する Python を [Python.org](https://www.python.org/downloads/) からダウンロードできます。
 
 開発コンピューターに現在インストールされている Python のバージョンは、次のいずれかのコマンドを使って確認できます。
 
@@ -49,28 +51,33 @@ python --version
 python3 --version
 ```
 
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
 まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip からサンプル Python プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-python.md)」を完了した場合は、この手順を省略できます。
+前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-python.md)を完了した場合は、この手順を省略できます。
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-python.md)」を完了した場合は、この手順を省略できます。
+前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-python.md)を完了した場合は、この手順を省略できます。
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
     **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     **MyPythonDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyPythonDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
@@ -94,7 +101,7 @@ python3 --version
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --hub-name YourIoTHubName \
+      --name YourIoTHubName \
       --output table
     ```
 

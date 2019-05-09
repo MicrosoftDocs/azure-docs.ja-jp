@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d33b1415f15c72cdc6678af44127d8ca781c9d7a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716567"
 documentType: LandingData
 title: Azure Database Migration Service のドキュメント
 metadata:
@@ -12,65 +6,69 @@ metadata:
   title: Azure Database Migration Service のドキュメント - チュートリアル | Microsoft Docs
   meta.description: Learn how to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime by using Azure Database Migration Service.
   services: functions
-  author: pochiraju
+  author: HJToland3
+  ms.author: jtoland
   manager: craigg
+  ms.reviewer: craigg
   ms.service: dms
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 12/12/2018
-  ms.author: rajpo
+  ms.date: 03/12/2019
 abstract:
   description: Azure Database Migration Service を使用すると、複数のデータベース ソースから Azure データ プラットフォームに、ダウンタイムを最小限に抑えながらシームレスに移行できます。 このサービスでは、Data Migration Assistant を使用して評価レポートを生成します。評価レポートには、移行を実行する前に必要な変更について推奨される手順が記載されています。 移行プロセスを開始する準備ができたら、Azure Database Migration Service によって、必要な手順がすべて実行されます。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/video-thumb-intro2dms.png
       width: 250
-    title: Azure DMS の概要 (1:30)
-    href: https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu
+    title: 'Azure DMS の概要 (1:30)'
+    href: 'https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database に移行する方法を説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: /azure/dms/quickstart-create-data-migration-service-portal
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Database Migration Service を使ってデータベースを移行する方法を説明します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database に移行する方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: /azure/dms/quickstart-create-data-migration-service-portal
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">DMS を使用して SQL Server を Azure SQL Database にオフラインで移行する</a>
-    - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">DMS を使用して SQL Server を Azure SQL Database にオンラインで移行する</a>
-    - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">DMS を使用してオフラインで SQL Server を Azure SQL Database Managed Instance に移行する</a>
-    - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">DMS を使用して、SQL Server を Azure SQL Database Managed Instance にオンラインで移行する</a>
-    - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">DMS を使用して MySQL を Azure Database for MySQL にオンラインで移行する</a>
-    - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">DMS を使用して PostgreSQL を Azure Database for PostgreSQL にオンラインで移行する</a>
-- title: サンプル
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Database Migration Service を使ってデータベースを移行する方法を説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">DMS を使用して SQL Server を Azure SQL Database にオフラインで移行する</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">DMS を使用して SQL Server を Azure SQL Database にオンラインで移行する</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">DMS を使用してオフラインで SQL Server を Azure SQL Database Managed Instance に移行する</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">DMS を使用して、SQL Server を Azure SQL Database Managed Instance にオンラインで移行する</a>
+          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">DMS を使用して RDS SQL Server を Azure SQL Database または Azure SQL Database Managed Instance にオンラインで移行する</a>
+          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">DMS を使用して MySQL を Azure Database for MySQL にオンラインで移行する</a>
+          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">DMS を使用して PostgreSQL を Azure Database for PostgreSQL にオンラインで移行する</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">DMS を使用して MongoDB を Azure Cosmos DB Mongo API にオフラインで移行する</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">DMS を使用して MongoDB を Azure Cosmos DB Mongo API にオンラインで移行する</a>
+  - title: サンプル
     items:
-    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">Azure PowerShell を使用して オンプレミスの SQL Server を Azure SQL DB に移行する</a>
-    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">Azure PowerShell を使用してオンプレミスの SQL Server を Azure SQL DB Managed Instance に移行する</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">Azure PowerShell を使用して オンプレミスの SQL Server を Azure SQL DB に移行する</a>
+          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">Azure PowerShell を使用してオンプレミスの SQL Server を Azure SQL DB Managed Instance に移行する</a>
+  - title: リファレンス
     items:
-    - html: <a href="/azure/dms/resource-scenario-status">Azure Database Migration Service によってサポートされる移行シナリオの状態</a>
-    - html: <a href="/azure/dms/pre-reqs">Azure Database Migration Service を使用するための前提条件の概要</a>
-    - html: <a href="/azure/dms/faq">Azure Database Migration Service の使用に関する FAQ</a>
-    - html: <a href="/azure/dms/known-issues-azure-sql-online">Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項</a>
-    - html: <a href="/azure/dms/dms-tools-matrix">データ移行シナリオ用のサービスとツール</a>
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/dms/resource-scenario-status">Azure Database Migration Service によってサポートされる移行シナリオの状態</a>
+          - html: <a href="/azure/dms/pre-reqs">Azure Database Migration Service を使用するための前提条件の概要</a>
+          - html: <a href="/azure/dms/faq">Azure Database Migration Service の使用に関する FAQ</a>
+          - html: <a href="/azure/dms/known-issues-azure-sql-online">Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項</a>
+          - html: <a href="/azure/dms/dms-tools-matrix">データ移行シナリオ用のサービスとツール</a>

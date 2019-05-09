@@ -1,23 +1,21 @@
 ---
 title: Gremlin API を使用して Azure Cosmos DB .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する
 description: Azure Cosmos DB への接続とデータの照会に使用できる .NET Framework/Core コード サンプルについて説明します
-services: cosmos-db
 author: luisbosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: c44936604d0dcea2f00f237f27d27a03491c532e
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3f10c8d38d37682e2a949397d9747ec094bdb9af
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407679"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170107"
 ---
-# <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-gremlin-api"></a>Azure Cosmos DB は:Gremlin API を使用して .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して .NET Framework アプリケーションまたは Core アプリケーションを構築する
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)

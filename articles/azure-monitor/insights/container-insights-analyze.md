@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 04/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 47d597188c761921817bf7e2155548157e0d2eb3
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185428"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426394"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する 
 コンテナーの Azure Monitor を使用している場合、パフォーマンスのグラフと正常性状態を使用して、AKS クラスターから直接、または Azure Monitor からサブスクリプション内のすべての AKS クラスターという 2 つの観点から Azure Kubernetes Service (AKS) クラスターのワークロードを監視することができます。 Azure Container Instances (ACI) の表示は、特定の AKS クラスターを監視するときにも可能です。
@@ -29,7 +29,7 @@ ms.locfileid: "53185428"
 
 Azure Monitor には、サブスクリプション内のリソース グループに展開されているすべての監視対象 AKS クラスターの正常性状態が表示される複数クラスター ビューが用意されています。  ソリューションによって監視されていない、検出された AKS クラスターが表示されます。 すぐにクラスターの正常性を理解することができ、ここからは、ノードとコントローラーのパフォーマンス ページにドリルダウンしたり、クラスターのパフォーマンス グラフを表示したりできます。  監視対象外として検出および識別された AKS クラスターについては、いつでも監視対象にできます。  
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 [Azure Portal](https://portal.azure.com) にサインインします。 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Monitor の複数クラスター ビュー 
@@ -71,7 +71,7 @@ Azure Monitor には、サブスクリプション内のリソース グルー�
 | |警告 |該当なし |
 | |重大 |< 100% |
 | |Unknown |過去 30 分以内に報告していない場合 |
-|**Node** | | |
+|**ノード** | | |
 | |Healthy |> 85% |
 | |警告 |60 ～ 84% |
 | |重大 |< 60% |
@@ -97,6 +97,35 @@ Azure Monitor には、サブスクリプション内のリソース グルー�
 - **ノードのメモリ使用状況&nbsp;%**:クラスター全体のメモリ使用率の集計されたパースペクティブ。 時間範囲ごとに結果をフィルター処理するには、グラフの上のパーセンタイル セレクターで "**Avg**"、"**Min**"、"**Max**"、"**50th**"、"**90th**"、"**95th**" を個別にまたは組み合わせて選択します。 
 - **ノード数**:Kubernetes からのノードの数と状態。 表されるクラスター ノードの状態には、*[すべて]*、*[準備完了]*、*[準備未完了]* があり、グラフの上のセレクターで個別にまたは組み合わせてフィルター処理できます。 
 - **アクティビティ ポッド数**:Kubernetes からのポッドの数と状態。 表されるポッドの状態には、*[すべて]*、*[保留中]*、*[実行中]*、*[不明]* があり、グラフの上のセレクターで個別にまたは組み合わせてフィルター処理できます。 
+
+左/右矢印キーを使用してグラフ上の各データ ポイントを順番に進み、上/下矢印キーを使用してパーセンタイル ラインを順番に進むことができます。
+
+Azure Monitor for containers では Azure Monitor の[メトリックス エクスプローラー](../platform/metrics-getting-started.md)もサポートされており、独自のプロット グラフの作成、傾向の関連付けと調査、ダッシュボードへのピン留めを行うことができます。 メトリックス エクスプローラーでは、[メトリック ベースの警告ルール](../platform/alerts-metric.md)の基準として、メトリックを視覚化するために設定した条件を使用することもできます。  
+
+## <a name="view-container-metrics-in-metrics-explorer"></a>メトリックス エクスプローラーでコンテナーのメトリックを表示する
+メトリックス エクスプローラーでは、Azure Monitor for containers からのノードとポッドの使用率のメトリックを集計して表示できます。 次の表は、メトリックのグラフを使用してコンテナーのメトリックを視覚化する方法の理解に役立つ詳細情報をまとめたものです。
+
+|名前空間 | メトリック |
+|----------|--------|
+| insights.container/nodes | |
+| | cpuUsageMillicores |
+| | cpuUsagePercentage |
+| | memoryRssBytes |
+| | memoryRssPercentage |
+| | memoryWorkingSetBytes |
+| | memoryWorkingSetPercentage |
+| | nodesCount |
+| insights.container/pods | |
+| | PodCount |
+
+メトリックの[分割](../platform/metrics-charts.md#apply-splitting-to-a-chart)を適用してディメンションごとに表示したり、セグメント間の比較を視覚化したりできます。 ノードの場合は "*ホスト*" のディメンションでグラフを分割することができ、ポッドの場合は次のディメンションで分割できます。
+
+* コントローラー
+* Kubernetes 名前空間
+* ノード
+* 段階
+
+## <a name="analyze-nodes-controllers-and-container-health"></a>ノード、コントローラー、コンテナーの正常性を分析する
 
 **[ノード]**、**[コントローラー]**、および **[コンテナー]** タブに切り替えると、ページの右側に自動的にプロパティ ウィンドウが表示されます。  ここには選択された項目のプロパティが示され、Kubernetes オブジェクトを整理するために定義するラベルが含まれます。 ウィンドウの表示と非表示を切り替えるには、ウィンドウの **>>** リンクをクリックします。  
 
@@ -129,7 +158,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 ![パーセンタイル選択によるデータのフィルター処理](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
-**[傾向]** 列の棒グラフにマウスでポイントすると、選択したメトリックに応じて、15 分のサンプル期間内の CPU 使用率またはメモリ使用率が各棒グラフに表示されます。  
+**[傾向]** 列の棒グラフにマウスでポイントすると、選択したメトリックに応じて、15 分のサンプル期間内の CPU 使用率またはメモリ使用率が各棒グラフに表示されます。 キーボードからトレンド グラフを選択した後、Alt+PageUp または Alt+PageDown キーを使用して、それぞれのバーを個々に移動して、マウスを上に置いたときと同じ詳細を表示できます。
 
 ![傾向棒グラフのマウス ポイント例](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
@@ -273,5 +302,5 @@ Log Analytics に転送されるコンテナーのログ出力は STDOUT およ�
 | **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー CPU | 
 | **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー メモリ |
 
-## <a name="alerting"></a>アラート
-コンテナーの Azure Monitor には、サポートしているプロセスや手順に従ってコピーおよび変更できる定義済みのアラートのセットは含まれていません。 そのため、[Azure Monitor でログ アラートを作成する](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json)方法のページを確認し、独自のアラート セットを作成する方法を学んでください。  
+## <a name="next-steps"></a>次の手順
+コンテナーの Azure Monitor には、サポートしているプロセスや手順に従ってコピーおよび変更する、定義済みのアラートのセットは含まれていません。 「[コンテナーの Azure Monitor を使用してパフォーマンス アラートを作成する](container-insights-alerts.md)」を見直して、CPU やメモリの使用率が高い場合に推奨されるアラートを作成する方法について学習します。  

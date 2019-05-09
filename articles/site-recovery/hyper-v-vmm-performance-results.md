@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 62137f64f0f138ea1c2dfbdf97bde791227617db
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793038"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482802"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V レプリケーションのテスト結果
 
@@ -175,10 +175,10 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 | CPU |\Processor(_Total)\% Processor Time |
 | 使用可能なメモリ |\Memory\Available MBytes |
 | IOPS |\PhysicalDisk(_Total)\Disk Transfers/sec |
-| VM 読み取り (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(<VHD>)\Read Operations/Sec |
-| VM 書き込み (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(<VHD>)\Write Operations/S |
-| VM 読み取りスループット |\Hyper-V Virtual Storage Device(<VHD>)\Read Bytes/sec |
-| VM 書き込みスループット |\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec |
+| VM 読み取り (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(\<VHD>)\Read Operations/Sec |
+| VM 書き込み (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(\<VHD>)\Write Operations/S |
+| VM 読み取りスループット |\Hyper-V Virtual Storage Device(\<VHD>)\Read Bytes/sec |
+| VM 書き込みスループット |\Hyper-V Virtual Storage Device(\<VHD>)\Write Bytes/sec |
 
 ## <a name="next-steps"></a>次の手順
 

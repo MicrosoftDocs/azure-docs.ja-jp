@@ -1,21 +1,22 @@
 ---
-title: Azure MFA と AD FS を使用したクラウド リソースのセキュリティ保護 | Microsoft Docs
+title: Azure MFA と AD FS を使用したクラウド リソースのセキュリティ保護 - Azure Active Directory
 description: クラウドで Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: afb28488fc47f018b6d192eb1b65a54499ac8ff9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666365"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371530"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
@@ -29,15 +30,15 @@ ms.locfileid: "43666365"
 2. 左側で、**[証明書利用者信頼]** を選択します。
 3. **[Microsoft Office 365 ID プラットフォーム]** を右クリックし、**[要求規則の編集]** を選択します。
 
-   ![クラウド](./media/howto-mfa-adfs/trustedip1.png)
+   ![ADFS コンソール - 証明書利用者信頼](./media/howto-mfa-adfs/trustedip1.png)
 
 4. [発行変換規則] で、**[規則の追加]** をクリックします。
 
-   ![クラウド](./media/howto-mfa-adfs/trustedip2.png)
+   ![発行変換規則の編集](./media/howto-mfa-adfs/trustedip2.png)
 
 5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、**[次へ]** をクリックします。
 
-   ![クラウド](./media/howto-mfa-adfs/trustedip3.png)
+   ![Add Transform Claim Rule Wizard](./media/howto-mfa-adfs/trustedip3.png)
 
 6. 規則に名前を付けます。 
 7. 受信要求の種類として **[認証方法の参照]** を選択します。
@@ -57,15 +58,15 @@ ms.locfileid: "43666365"
 
 1. AD FS 管理を開きます。
 2. 左側で、**[証明書利用者信頼]** を選択します。
-3. **[Microsoft Office 365 ID プラットフォーム]** を右クリックし、**[要求規則の編集…]** を選択します。
-   ![クラウド](./media/howto-mfa-adfs/trustedip1.png)
+3. **[Microsoft Office 365 ID プラットフォーム]** を右クリックし、**[要求規則の編集…]** を選択します
+   ![ADFS コンソール - 要求規則の編集](./media/howto-mfa-adfs/trustedip1.png)
 4. [発行変換規則] で、**[規則の追加]** をクリックします。
-   ![クラウド](./media/howto-mfa-adfs/trustedip2.png)
+   ![要求規則の追加](./media/howto-mfa-adfs/trustedip2.png)
 5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、**[次へ]** をクリックします。
-   ![クラウド](./media/howto-mfa-adfs/trustedip3.png)
+   ![変換要求規則の追加ウィザード](./media/howto-mfa-adfs/trustedip3.png)
 6. [要求規則名] の横にあるボックスに、規則の名前を入力します。 例: InsideCorpNet。
 7. [入力方向の要求の種類] の横にあるドロップダウンから、**[企業ネットワーク内]** を選択します。
-   ![クラウド](./media/howto-mfa-adfs/trustedip4.png)
+   ![企業ネットワーク内要求の追加](./media/howto-mfa-adfs/trustedip4.png)
 8. **[完了]** をクリックします。
 9. [発行変換規則] で、**[規則の追加]** をクリックします。
 10. 変換要求規則の追加ウィザードで、ドロップダウンから **[カスタム規則を使用して要求を送信]** を選択し、**[次へ]** をクリックします。
@@ -74,7 +75,7 @@ ms.locfileid: "43666365"
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![クラウド](./media/howto-mfa-adfs/trustedip5.png)
+    ![ユーザーをサインインしたままにするカスタム要求を作成する](./media/howto-mfa-adfs/trustedip5.png)
 13. **[完了]** をクリックします。
 14. **[Apply]** をクリックします。
 15. **[OK]** をクリックします。

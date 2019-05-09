@@ -3,8 +3,8 @@ title: Azure Security Center でのデータ収集 | Microsoft Docs
 description: " Azure Security Center のデータ収集を有効にする方法について説明します。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: MBaldwin
+author: monhaber
+manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
-ms.author: rkarlin
-ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 04/02/2019
+ms.author: monhaber
+ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082453"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006743"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
-Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM) と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、クラッシュ ダンプ ファイルもワークスペースにコピーします。
+Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、Microsoft Monitoring Agent エージェントでは、クラッシュ ダンプ ファイルもワークスペースにコピーします。
 
 不足している更新プログラム、OS のセキュリティ設定ミス、エンドポイント保護の有効性、正常性と脅威の検出を可視化するためには、データ収集が欠かせません。 
 
 この記事では、Microsoft Monitoring Agent をインストールする方法と、収集されたデータの格納先となる Log Analytics ワークスペースを設定する方法についてのガイダンスを提供します。 データ収集を有効にするためには、両方の操作が必要となります。 
 
 > [!NOTE]
-> - データ収集を必要とするのは、計算リソース (VM および Azure 以外のコンピューター) だけです。 Azure Security Center の機能は、エージェントをプロビジョニングしなくても利用することができます。ただしセキュリティは限られており、前述の機能はサポートされません。  
+> - データ収集を必要とするのは、コンピューティング リソース (VM、仮想マシン スケール セット、IaaS コンテナー、非 Azure コンピューター) だけです。 Azure Security Center の機能は、エージェントをプロビジョニングしなくても利用することができます。ただしセキュリティは限られており、前述の機能はサポートされません。  
 > - サポートされるプラットフォームの一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
 > - 仮想マシン スケール セットのデータ収集は現在サポートされていません。
-
+> - 新しいワークスペースと既存のワークスペースのどちらを使用する場合でも、Log Analytics にデータを格納すると、データ ストレージについて追加料金が発生する可能性があります。詳細については、価格に関するページを参照してください。
 
 ## Microsoft Monitoring Agent の自動プロビジョニングの有効化<a name="auto-provision-mma"></a>
 
@@ -50,13 +50,13 @@ Microsoft Monitoring Agent の自動プロビジョニングを有効にする�
 1. Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
 2. リスト内の目的のサブスクリプションの [設定] 列にある **[設定の編集]** をクリックします。
 
-  ![サブスクリプションを選択します。][7]
+   ![サブスクリプションを選択します。][7]
 
 3. **[セキュリティ ポリシー]** で **[データ収集]** を選択します。
 4. **[Auto Provisioning] (自動プロビジョニング)** で **[オン]** を選択して、自動プロビジョニングを有効にします。
 5. **[保存]** を選択します。
 
-  ![自動プロビジョニングを有効にする][1]
+   ![自動プロビジョニングを有効にする][1]
 
 >[!NOTE]
 > - 既存のインストール済み環境をプロビジョニングする手順については、「[既にインストールされているエージェントが存在する場合の自動プロビジョニング](#preexisting)」を参照してください。
@@ -76,18 +76,19 @@ Security Center によって収集されたデータは、Log Analytics ワー�
 
 Security Center によって作成されたワークスペースを選択するには、次の手順に従います。
 
-1.  **[既定のワークスペース構成]** で、[Security Center によって作成されたワークスペースを使用] を選択します。
-   ![価格レベルの選択][10] 
+1. **[既定のワークスペース構成]** で、[Security Center によって作成されたワークスペースを使用] を選択します。
+   ![価格レベルを選択する][10] 
 
-2. **[Save]** をクリックします。<br>
+1. **[Save]** をクリックします。<br>
     Security Center で新しいリソース グループとその位置情報の既定のワークスペースが作成され、エージェントがそのワークスペースに接続されます。 ワークスペースとリソース グループの名前付け規則は次のとおりです。<br>
-**ワークスペース: DefaultWorkspace-[subscription-ID]-[geo]<br> リソース グループ: DefaultResourceGroup-[geo]**
+   **ワークスペース:DefaultWorkspace-[subscription-ID]-[geo]<br> リソース グループ:DefaultResourceGroup-[geo]**
 
    複数の地理的位置情報からの VM がサブスクリプションに含まれている場合、Security Center では複数のワークスペースを作成します。 複数のワークスペースは、データのプライバシー ルールを維持するために作成されます。
--   サブスクリプションに設定された価格レベルに従い、ワークスペースで Security Center ソリューションが自動的に有効になります。 
+1. サブスクリプションに設定された価格レベルに従い、ワークスペースで Security Center ソリューションが自動的に有効になります。 
 
 > [!NOTE]
 > Security Center で作成されたワークスペースの Log Analytics 価格レベルは、Security Center の課金に影響しません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。 Free レベルの場合、既定のワークスペースで *SecurityCenterFree* ソリューションが有効化されます。 Standard レベルの場合、既定のワークスペースで *Security* ソリューションが有効化されます。
+> Log Analytics にデータを格納すると、データ ストレージについて追加料金が発生可能性があります。詳細については、価格に関するページを参照してください。
 
 価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
@@ -101,7 +102,7 @@ Security Center によって作成されたワークスペースを選択する�
 
 > [!NOTE]
 > 既存のワークスペースに接続した Azure VM には、そのワークスペースで有効になっているソリューションが適用されます。 そのため有料ソリューションの場合、追加料金が発生することがあります。 データのプライバシー上、選択したワークスペースが適切な地理的領域に存在することを確認してください。
->
+> Log Analytics にデータを格納すると、データ ストレージについて追加料金が発生する可能性があります。詳細については、価格に関するページを参照してください。
 
 既存の Log Analytics ワークスペースを選択するには、次の手順に従います。
 
@@ -111,10 +112,10 @@ Security Center によって作成されたワークスペースを選択する�
 
 2. プルダウン メニューから、収集したデータを保存するワークスペースを選択します。
 
-  > [!NOTE]
-  > プルダウン メニューでは、ご利用のすべてのサブスクリプションにわたって、すべてのワークスペースを選択できます。 詳細については、「[クロス サブスクリプションのワークスペースの選択](security-center-enable-data-collection.md#cross-subscription-workspace-selection)」を参照してください。 ワークスペースへのアクセス許可が必要となります。
-  >
-  >
+   > [!NOTE]
+   > プルダウン メニューでは、ご利用のすべてのサブスクリプションにわたって、すべてのワークスペースを選択できます。 詳細については、「[クロス サブスクリプションのワークスペースの選択](security-center-enable-data-collection.md#cross-subscription-workspace-selection)」を参照してください。 ワークスペースへのアクセス許可が必要となります。
+   >
+   >
 
 3. **[保存]** を選択します。
 4. **[保存]** を選択すると、過去に既定のワークスペースに接続されていた監視対象の VM を再構成するかどうかをたずねられます。
@@ -136,8 +137,8 @@ Security Center によって作成されたワークスペースを選択する�
     a.  Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
      
     b.  リスト内の目的のサブスクリプションの [設定] 列にある **[設定の編集]** をクリックし、エージェントを接続するワークスペースを選択します。
-        ![ワークスペースを選択][8] c. 価格レベルを設定します。
-        ![価格レベルの選択][9] 
+        ![ワークスペースを選択する][8] c.  価格レベルを設定します。
+        ![価格レベルを選択する][9] 
    
    >[!NOTE]
    >対象のワークスペースで **Security** ソリューションまたは **SecurityCenterFree** ソリューションが既に有効になっている場合、価格は自動的に設定されます。 
@@ -147,11 +148,11 @@ Security Center によって作成されたワークスペースを選択する�
 
 
 ## <a name="data-collection-tier"></a>データ収集レベル
-Azure Security Center 内でデータ収集レベルを選択した場合、その影響を受けるのは Log Analytics ワークスペース内のセキュリティ イベントのストレージのみです。 Microsoft Monitoring Agent では、ご利用の Log Analytics ワークスペース (存在する場合) に格納するように選択したセキュリティ イベントのレベルに関係なく、Azure Security Center での脅威検出に必要なセキュリティ イベントが引き続き収集され分析されます。 ご利用のワークスペースにセキュリティ イベントを格納するように選択すると、そのワークスペース内のセキュリティ イベントの調査、検索、および監査が有効にされます。 
+Azure Security Center 内でデータ収集レベルを選択した場合、その影響を受けるのは Log Analytics ワークスペース内のセキュリティ イベントのストレージのみです。 Log Analytics エージェントでは、ご利用の Log Analytics ワークスペース (存在する場合) に格納するように選択したセキュリティ イベントのレベルに関係なく、Azure Security Center での脅威検出に必要なセキュリティ イベントが引き続き収集され分析されます。 ご利用のワークスペースにセキュリティ イベントを格納するように選択すると、そのワークスペース内のセキュリティ イベントの調査、検索、および監査が有効にされます。 
 > [!NOTE]
-> Log Analytics にデータを格納すると、データ ストレージについて追加料金が発生可能性があります。詳細については、価格に関するページを参照してください。
->
-ご利用のワークスペースに格納される 4 つのイベント セットの中から、サブスクリプションとワークスペースに最適なフィルタリング ポリシーを選択できます。 
+> Log Analytics にデータを格納すると、データ ストレージについて追加料金が発生する可能性があります。詳細については、価格に関するページを参照してください。
+> 
+> ご利用のワークスペースに格納される 4 つのイベント セットの中から、サブスクリプションとワークスペースに最適なフィルタリング ポリシーを選択できます。 
 
 - **なし** – セキュリティ イベントのストレージを無効にします。 これは、既定の設定です。
 - **最小** - イベント ボリュームを最小限に抑える必要があるお客様向けの小さなイベント セットです。
@@ -178,7 +179,7 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 | --- | --- |
 | 最小限 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| 一般 | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,461,4622, |
+| 一般 | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -202,29 +203,33 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 
 以下のユース ケースは、エージェントまたは拡張機能が既にインストールされていた場合の自動プロビジョニングの動作について記述したものです。 
 
-- マシンに Microsoft Monitoring Agent がインストールされているものの、拡張機能としてはインストールされていない<br>
-Microsoft Monitoring Agent が VM に (Azure 拡張機能としてではなく) 直接インストールされている場合、Security Center は Microsoft Monitoring Agent をインストールしません。 自動プロビジョニングを手動で有効にし、Security Center の自動プロビジョニング構成で、適切なユーザー ワークスペースを選択できます。 既に VM が接続されているワークスペースを選択した場合、Microsoft Monitoring Agent 拡張機能で既存のエージェントがラップされます。 
+- マシンに Microsoft Monitoring Agent がインストールされているものの、拡張機能としてはインストールされていない (ダイレクト エージェント)<br>
+Microsoft Monitoring Agent が VM に (Azure 拡張機能としてではなく) 直接インストールされている場合、Security Center によって Microsoft Monitoring Agent 拡張機能がインストールされ、Microsoft Monitoring Agent が最新バージョンにアップグレードされる可能性があります。
+インストールされたエージェントでは、既に構成されているそのワークスペースに引き続きレポートし、さらに Security Center で構成されたワークスペースにレポートします (マルチ ホームがサポートされます)。
+構成されたワークスペースがユーザーのワークスペース (Security Center の既定のワークスペースではない) の場合、Security Center でそのワークスペースにレポートする VM とコンピューターからイベントの処理を開始するために、"security/"securityFree" ソリューションをインストールする必要があります。<br>
+<br>
+2019 年 3 月 17 日より前に Security Center にオンボードされたサブスクリプションの既存のマシンについては、既存のエージェントが検出された場合、Microsoft Monitoring Agent の拡張機能はインストールされず、マシンに影響はありません。 これらのマシンについては、マシンでのエージェントのインストールに関する問題を解決するために、"マシンの監視エージェント正常性の問題を解決する" の推奨事項を参照してください。
 
-> [!NOTE]
-> SCOM エージェント バージョン 2012 がインストールされている場合は、自動プロビジョニングを有効に**しないでください**。 
+  
+- マシンに System Center Operations Manager エージェントがインストールされている<br>
+Security Center によって、Microsoft Monitoring Agent 拡張機能は、既存の Operations Manager と並行してインストールされます。 通常、既存の Operations Manager エージェントは引き続き Operations Manager サーバーに報告します。 Operations Manager エージェントと Microsoft Monitoring Agent は、このプロセス中に最新バージョンに更新される、共通のランタイム ライブラリを共有することに注意してください。
+注 - Operations Manager エージェント バージョン 2012 がインストールされている場合は、自動プロビジョニングを有効に**しないでください**。<br>
 
-詳しくは、「[SCOM または OMS のダイレクト エージェントが既に VM にインストールされている場合、どうなりますか?](security-center-faq.md#scomomsinstalled)」をご覧ください。
-
--   既存の VM 拡張機能が存在する<br>
-    - Security Center は、既存の拡張機能のインストール済み環境をサポートしています。既存の接続がオーバーライドされることはありません。 Security Center は、既に接続されているワークスペースに VM のセキュリティ データを保存し、ワークスペースで有効になっているソリューションに基づいて保護を提供します。   
-    - 既存の拡張機能がどのワークスペースにデータを送信しているのかを調べるには、[Azure Security Center との接続を確認](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)するテストを実行します。 または、Log Analytics を開いてワークスペースを選択し、対象の VM を選択して、Microsoft Monitoring Agent 接続を調べることもできます。 
-    - Microsoft Monitoring Agent がクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。詳しくは、「[既存の Log Analytics ユーザー](security-center-faq.md#existingloganalyticscust)」をご覧ください。
+- 既存の VM 拡張機能が存在する<br>
+    - Monitoring Agent が拡張機能としてインストールされると、拡張機能の構成で 1 つのワークスペースのみにレポートできます。 Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center では、"security" または "securityFree" ソリューションがインストールされているという条件で、既に接続されているワークスペース内の VM からのセキュリティ データを保存します。 Security Center では、このプロセスで拡張機能のバージョンを最新バージョンにアップグレードする可能性があります。  
+    - 既存の拡張機能がどのワークスペースにデータを送信しているのかを調べるには、[Azure Security Center との接続を確認](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)するテストを実行します。 または、Log Analytics ワークスペースを開いてワークスペースを選択し、対象の VM を選択して、Log Analytics エージェント接続を調べることもできます。 
+    - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。詳しくは、「[既存の Log Analytics ユーザー](security-center-faq.md#existingloganalyticscust)」をご覧ください。
  
 ### 自動プロビジョニングを無効にする<a name="offprovisioning"></a>
 リソースの自動プロビジョニングは、セキュリティ ポリシーでこの設定をオフにすることで、いつでも無効にすることができます。 
 
 
 1. Security Center のメイン メニューに戻り、[セキュリティ ポリシー] を選択します。
-2. 自動プロビジョニングを無効にするサブスクリプションを選択します。
+2. 自動プロビジョニングを無効にするサブスクリプションの行で、**[設定の編集]** をクリックします。
 3. **[セキュリティ ポリシー - データ収集]** ブレードの **[Auto provisioning] (自動プロビジョニング)** で、**[オフ]** を選択します。
 4. **[保存]** を選択します。
 
-  ![自動プロビジョニングの無効化][6]
+   ![自動プロビジョニングの無効化][6]
 
 自動プロビジョニングを無効 (オフ) にすると、既定のワークスペース構成セクションは表示されません。
 
@@ -243,56 +248,58 @@ Microsoft Monitoring Agent の手動インストールには、いくつかの�
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite VM 拡張機能のデプロイ 
 
 Security Center がお使いの VM からセキュリティ データを収集して、推奨や通知を提示できるように、Microsoft Monitoring Agent を手動でインストールすることができます。
-1.  自動プロビジョニングのオフを選択します。
-2.  ワークスペースを作成し、Microsoft Monitoring Agent を設定するワークスペースの価格レベルを設定します。
+1. 自動プロビジョニングのオフを選択します。
+2. ワークスペースを作成し、Microsoft Monitoring Agent を設定するワークスペースの価格レベルを設定します。
 
-    a.  Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
+   a.  Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
      
-    b.  エージェントを接続するワークスペースを選択します。 ワークスペースが存在するサブスクリプションが Security Center で使用しているサブスクリプションと同じであること、またそのワークスペースに対する読み取り/書き込みのアクセス許可があることを確認します。
-        ![ワークスペースを選択][8]
+   b.  エージェントを接続するワークスペースを選択します。 ワークスペースが存在するサブスクリプションが Security Center で使用しているサブスクリプションと同じであること、またそのワークスペースに対する読み取り/書き込みのアクセス許可があることを確認します。
+       ![ワークスペースを選択][8]
 3. 価格レベルを設定します。
-   ![価格レベルの選択][9] 
+   ![価格レベルを選択する][9] 
    >[!NOTE]
    >対象のワークスペースで **Security** ソリューションまたは **SecurityCenterFree** ソリューションが既に有効になっている場合、価格は自動的に設定されます。 
    > 
 
-4.  Resource Manager テンプレートを使用して新しい VM にエージェントをデプロイする場合は、OMS 仮想マシン拡張機能をインストールします。
+4. Resource Manager テンプレートを使用して新しい VM にエージェントをデプロイする場合は、OMS 仮想マシン拡張機能をインストールします。
 
-    a.  [Windows 用の OMS 仮想マシン拡張機能のインストール](../virtual-machines/extensions/oms-windows.md)
+   a.  [Windows 用の OMS 仮想マシン拡張機能のインストール](../virtual-machines/extensions/oms-windows.md)
     
-    b.  [Linux 用の OMS 仮想マシン拡張機能のインストール](../virtual-machines/extensions/oms-linux.md)
-5.  既存の VM に拡張機能をデプロイする場合は、「[Azure Virtual Machines に関するデータの収集](../azure-monitor/learn/quick-collect-azurevm.md)」の手順に従います。
+   b.  [Linux 用の OMS 仮想マシン拡張機能のインストール](../virtual-machines/extensions/oms-linux.md)
+5. 既存の VM に拡張機能をデプロイする場合は、「[Azure Virtual Machines に関するデータの収集](../azure-monitor/learn/quick-collect-azurevm.md)」の手順に従います。
 
-  > [!NOTE]
-  > 「**イベントとパフォーマンス データを収集する**」セクションは省略してもかまいません。
-  >
+   > [!NOTE]
+   > 「**イベントとパフォーマンス データを収集する**」セクションは省略してもかまいません。
+   >
 6. PowerShell を使用して拡張機能をデプロイするには、PowerShell の次の例を使用します。
-    1.  **[Log Analytics]** に移動し、**[詳細設定]** をクリックします。
+   
+   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+   
+   1. **[Log Analytics]** に移動し、**[詳細設定]** をクリックします。
     
-        ![Log Analytics の設定][11]
+      ![ログ分析の設定][11]
 
-    2. **ワークスペース ID** と**プライマリ キー**の値をコピーします。
+   2. **ワークスペース ID** と**プライマリ キー**の値をコピーします。
   
-       ![値をコピーする][12]
+      ![値をコピーする][12]
 
-    3. public config と private config に次の値を設定します。
+   3. public config と private config に次の値を設定します。
      
-            $PublicConf = '{
-                "workspaceId": "WorkspaceID value",
-                "MultipleConnectistopOnons": true
-            }' 
+           $PublicConf = '{
+               "workspaceId": "WorkspaceID value"
+           }' 
  
-            $PrivateConf = '{
-                "workspaceKey": "<Primary key value>”
-            }' 
+           $PrivateConf = '{
+               "workspaceKey": "<Primary key value>”
+           }' 
 
       - Windows VM にインストールする場合:
         
-             Set-AzureRmVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
+            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
     
-       - Linux VM にインストールする場合:
+      - Linux VM にインストールする場合:
         
-             Set-AzureRmVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
 > [!NOTE]
 > PowerShell を使用して Security Center をオンボードする方法については、「[Automate onboarding of Azure Security Center using PowerShell](security-center-powershell-onboarding.md)」 (PowerShell を使用して Azure Security Center のオンボードを自動化する) を参照してください。

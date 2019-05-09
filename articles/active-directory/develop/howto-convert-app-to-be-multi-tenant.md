@@ -8,29 +8,30 @@ manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 04/12/2019
 ms.author: celested
-ms.reviewer: justhu, elisol
+ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 6581081f0f34f73c915f0b026a3ed50816f6731f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c2054a873d73bce7048ef9e48adabf3fb5279df9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298945"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59500398"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法: すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
-多くの組織にサービスとしてのソフトウェア (SaaS) アプリケーションを提供する場合、すべての Azure Active Directory (Azure AD) テナントからのサインインを受け入れるようにアプリケーションを構成できます。 この構成は "*アプリケーションのマルチテナント化*" と呼ばれます。 すべての Azure AD テナントのユーザーは、アプリケーションで自分のアカウントを使用することに同意すれば、そのアプリケーションにサインインできるようになります。 
+多くの組織にサービスとしてのソフトウェア (SaaS) アプリケーションを提供する場合、すべての Azure Active Directory (Azure AD) テナントからのサインインを受け入れるようにアプリケーションを構成できます。 この構成は "*アプリケーションのマルチテナント化*" と呼ばれます。 すべての Azure AD テナントのユーザーは、アプリケーションで自分のアカウントを使用することに同意すれば、そのアプリケーションにサインインできるようになります。
 
 独自のアカウント システムを使用するか、他のクラウド プロバイダーの他の種類のサインインをサポートする既存のアプリケーションがある場合、任意のテナントからの Azure AD サインインの追加は簡単です。 アプリケーションを登録し、OAuth2、OpenID Connect、または SAML を使用してサインイン コードを追加し、アプリケーションに [[Microsoft でサインイン] ボタン][AAD-App-Branding]を配置するだけです。
 
-> [!NOTE] 
+> [!NOTE]
 > この記事では、Azure AD のシングル テナント アプリケーションの構築に慣れていることを前提としています。 慣れていない場合は、[開発者ガイドのホーム ページ][AAD-Dev-Guide]にあるいずれかのクイック スタートから始めます。
 
 アプリケーションを Azure AD マルチテナント アプリケーションに変換する手順は、次の 4 つだけです。
@@ -38,7 +39,7 @@ ms.locfileid: "51298945"
 1. [アプリケーション登録をマルチテナントに更新する](#update-registration-to-be-multi-tenant)
 2. [/common エンドポイントに要求を送信するようにコードを更新する](#update-your-code-to-send-requests-to-common)
 3. [複数の issuer 値を処理するようにコードを更新する](#update-your-code-to-handle-multiple-issuer-values)
-4. [ユーザーおよび管理者の同意について理解し、コードに適切な変更を加える](#understanding-user-and-admin-consent)
+4. [ユーザーおよび管理者の同意について理解し、コードに適切な変更を加える](#understand-user-and-admin-consent)
 
 それでは、各手順の詳細を見ていきましょう。 すぐに、[こちらのマルチテナント サンプルの一覧][AAD-Samples-MT]を参照してもかまいません。
 
@@ -46,34 +47,34 @@ ms.locfileid: "51298945"
 
 既定では、Azure AD の Web アプリケーション/API の登録はシングル テナントです。 登録をマルチテナントにするには、[Azure Portal][AZURE-portal] のアプリケーション登録の **[プロパティ]** ページで **[マルチテナント]** スイッチを見つけて、**[はい]** に設定します。
 
-Azure AD でアプリケーションをマルチテナントにするには、そのアプリケーションのアプリ ID URI をグローバルに一意なものにする必要があります。 アプリ ID URI は、プロトコル メッセージでアプリケーションを識別する手段の 1 つです。 シングル テナント アプリケーションの場合、アプリ ID URI はそのテナント内で一意であれば十分です。 これに対してマルチテナント アプリケーションの場合、Azure AD が全テナントから該当するアプリケーションを特定できるように、アプリ ID URI がグローバルで一意になっている必要があります。 グローバルな一意性を確保するため、アプリ ID URI には Azure AD テナントの検証済みドメインと一致するホスト名が含まれていなければならないという条件が存在します。 
+Azure AD でアプリケーションをマルチテナントにするには、そのアプリケーションのアプリ ID URI をグローバルに一意なものにする必要があります。 アプリ ID URI は、プロトコル メッセージでアプリケーションを識別する手段の 1 つです。 シングル テナント アプリケーションの場合、アプリ ID URI はそのテナント内で一意であれば十分です。 これに対してマルチテナント アプリケーションの場合、Azure AD が全テナントから該当するアプリケーションを特定できるように、アプリ ID URI がグローバルで一意になっている必要があります。 グローバルな一意性を確保するため、アプリ ID URI には Azure AD テナントの検証済みドメインと一致するホスト名が含まれていなければならないという条件が存在します。
 
 既定で、Azure Portal で作成されたアプリには、アプリの作成時にグローバルに一意のアプリ ID URI が設定されますが、この値は変更することができます。 たとえば、テナントの名前が contoso.onmicrosoft.com である場合、有効なアプリケーション ID URI は `https://contoso.onmicrosoft.com/myapp`のようになります。 また、テナントの検証済みドメインが `contoso.com` である場合は、有効なアプリケーション ID URI は `https://contoso.com/myapp` のようになります。 アプリ ID URI がこのパターンに従っていないと、アプリケーションのマルチテナントとしての設定が失敗します。
 
-> [!NOTE] 
-> ネイティブ クライアントの登録と [v2.0 アプリケーション](./active-directory-appmodel-v2-overview.md)は、既定でマルチテナントとなります。 このようなアプリケーション登録については、マルチテナントにする操作を行う必要はありません。
+> [!NOTE]
+> ネイティブ クライアントの登録と [Microsoft ID プラットフォーム アプリケーション](./active-directory-appmodel-v2-overview.md)は、既定でマルチテナントです。 このようなアプリケーション登録については、マルチテナントにする操作を行う必要はありません。
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>/common に要求を送信するようにコードを更新する
 
-シングル テナント アプリケーションでは、サインイン要求はテナントのサインイン エンドポイントに送信されます。 たとえば、contoso.onmicrosoft.com のエンドポイントは次のようになります。`https://login.microsoftonline.com/contoso.onmicrosoft.com` テナントのエンドポイントに要求が送信されることで、そのテナントのユーザー (またはゲスト) は当該テナントのアプリケーションにサインインできます。 
+シングル テナント アプリケーションでは、サインイン要求はテナントのサインイン エンドポイントに送信されます。 たとえば、contoso.onmicrosoft.com のエンドポイントは次のようになります。`https://login.microsoftonline.com/contoso.onmicrosoft.com` テナントのエンドポイントに要求が送信されることで、そのテナントのユーザー (またはゲスト) は当該テナントのアプリケーションにサインインできます。
 
 マルチテナント アプリケーションでは、アプリケーションがユーザーのサインイン元のテナントを事前に知ることができないため、テナントのエンドポイントに要求を送信できません。 このため、要求は、すべての Azure AD テナントと多重通信するエンドポイントに送信されます。`https://login.microsoftonline.com/common`
 
-Azure AD は、/common エンドポイントで要求を受信するとユーザーのサインインを行い、結果としてユーザーのサインイン元のテナントを特定します。 /common エンドポイントは、Azure AD でサポートされるすべての認証プロトコル (OpenID Connect、OAuth 2.0、SAML 2.0、WS-Federation) に対応しています。
+Microsoft ID プラットフォームは、/common エンドポイントで要求を受信するとユーザーのサインインを行い、結果としてユーザーのサインイン元のテナントを特定します。 /common エンドポイントは、Azure AD でサポートされるすべての認証プロトコル (OpenID Connect、OAuth 2.0、SAML 2.0、WS-Federation) に対応しています。
 
-その後のアプリケーションに対するサインイン応答には、ユーザーを表すトークンが含まれます。 アプリケーションは、トークンの issuer 値に基づいてユーザーのサインイン元のテナントを特定できます。 /common エンドポイントから応答が返された場合、トークン内の issuer 値はユーザーのテナントに対応しています。 
+その後のアプリケーションに対するサインイン応答には、ユーザーを表すトークンが含まれます。 アプリケーションは、トークンの issuer 値に基づいてユーザーのサインイン元のテナントを特定できます。 /common エンドポイントから応答が返された場合、トークン内の issuer 値はユーザーのテナントに対応しています。
 
 > [!IMPORTANT]
-> /common エンドポイントはテナントや発行者ではなく、マルチプレクサーです。 /common を使用する場合、アプリケーションのトークン検証ロジックを、このことを考慮するように更新する必要があります。 
+> /common エンドポイントはテナントや発行者ではなく、マルチプレクサーです。 /common を使用する場合、アプリケーションのトークン検証ロジックを、このことを考慮するように更新する必要があります。
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>複数の issuer 値を処理するようにコードを更新する
 
-Web アプリケーションと Web API は、Azure AD からトークンを受信して検証します。 
+Web アプリケーションと Web API は、Microsoft ID プラットフォームからトークンを受信して検証します。
 
 > [!NOTE]
-> ネイティブ クライアント アプリケーションは、Azure AD にトークンを要求して受信する際に API にトークンを送信し、API で検証が行われます。 ネイティブ アプリケーションではトークンを検証しないため、トークンを不透明なものとして処理する必要があります。
+> ネイティブ クライアント アプリケーションにより、Microsoft ID プラットフォームにトークンが要求され受信する際に、API にトークンが送信され、API で検証が行われます。 ネイティブ アプリケーションではトークンを検証しないため、トークンを不透明なものとして処理する必要があります。
 
-アプリケーションで Azure AD から受信したトークンが検証される仕組みを見てみましょう。 シングル テナント アプリケーションは通常、次のようなエンドポイント値を取得します。
+アプリケーションで Microsoft ID プラットフォームから受信したトークンが検証される仕組みを見てみましょう。 シングル テナント アプリケーションは通常、次のようなエンドポイント値を取得します。
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
@@ -105,9 +106,9 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 マルチテナント アプリケーションの場合、最初のアプリケーションの登録は、開発者が使用する Azure AD テナントに保存されます。 ユーザーが初めて別のテナントからこのアプリケーションにサインインすると、Azure AD により、アプリケーションで要求されるアクセス許可に同意するかどうかを尋ねられます。 同意した場合、アプリケーションを表す "*サービス プリンシパル*" と呼ばれるものがユーザーのテナントに作成され、サインインを続行できます。 また、アプリケーションに対するユーザーの同意を記録するデリゲートが、ディレクトリに作成されます。 アプリケーションのアプリケーション オブジェクトおよびサービス プリンシパル オブジェクトの詳細と、それらの関係については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト][AAD-App-SP-Objects]」を参照してください。
 
-![Consent to single-tier app][Consent-Single-Tier] 
+![Consent to single-tier app][Consent-Single-Tier]
 
-この同意は、アプリケーションから要求されるアクセス許可によって異なります。 Azure AD では、アプリケーション専用アクセス許可と委任アクセス許可の 2 種類がサポートされます。
+この同意は、アプリケーションから要求されるアクセス許可によって異なります。 Microsoft ID プラットフォームでは、アプリケーション専用アクセス許可と委任アクセス許可の 2 種類がサポートされています。
 
 * 委任アクセス許可を付与されると、アプリケーションは、サインイン済みのユーザーとして、そのユーザーが実行可能な操作の一部を行うことができます。 たとえば、アプリケーションに対し、サインイン済みユーザーのカレンダーを読み取る委任アクセス許可を付与できます。
 * アプリケーション専用アクセス許可は、アプリケーションの ID に直接付与されます。 たとえば、アプリケーションに、アプリケーションにサインインしているユーザーに関係なく、テナントのユーザーの一覧を読み取るアプリケーション専用アクセス許可を付与できます。
@@ -122,20 +123,20 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 アプリケーションで管理者の同意が必要なアクセス許可を使用する場合、ジェスチャ (管理者がアクションを開始できるボタンやリンク) を設定する必要があります。 通常、この操作に対してアプリケーションから送信される要求は OAuth2/OpenID Connect 承認要求ですが、この要求には `prompt=admin_consent` クエリ文字列パラメーターも含まれています。 管理者が同意し、ユーザーのテナントにサービス プリンシパルが作成されると、以降のサインイン要求では `prompt=admin_consent` パラメーターは不要になります。 管理者は要求されたアクセス許可を許容可能と判断しているため、その時点からは、テナント内の他のユーザーが同意を求められることはありません。
 
-テナント管理者は、通常ユーザーによるアプリケーションへの同意を無効にすることができます。 通常ユーザーによる同意が無効化された場合、テナントでアプリケーションを使用するには常に管理者の同意が必要になります。 エンド ユーザーによる同意を無効化した状態でアプリケーションのテストを行うには、[Azure Portal][AZURE-portal] の **[エンタープライズ アプリケーション]** の **[[ユーザー設定]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** セクションに構成スイッチがあります。
+テナント管理者は、通常ユーザーによるアプリケーションへの同意を無効にすることができます。 通常ユーザーによる同意が無効化された場合、テナントでアプリケーションを使用するには常に管理者の同意が必要になります。 エンド ユーザーによる同意を無効化した状態でアプリケーションをテストするには、[Azure portal][AZURE-portal] の **[[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** の **[ユーザー設定]** セクションにある構成スイッチを使用できます。
 
 `prompt=admin_consent` パラメーターは、管理者の同意を必要としないアクセス許可を要求するアプリケーションでも使用できます。 この方法が使用される例として、アプリケーションで、テナント管理者が一度 "サインアップ" すると、その時点から他のユーザーが同意を求められないエクスペリエンスを必要とする場合があります。
 
 アプリケーションが管理者の同意を必要とし、管理者はサインインしたが、`prompt=admin_consent` パラメーターが送信されない場合、管理者がアプリケーションへの同意に成功すると、**自分のユーザー アカウントについてのみ**適用されます。 通常のユーザーは、アプリケーションへのサインインも同意も実行できないままです。 この機能は、他のユーザーのアクセスを許可する前に、テナント管理者がアプリケーションを調査できるようにしたい場合に役立ちます。
 
 > [!NOTE]
-> 一部のアプリケーションでは、初めは通常ユーザーによる同意を許可してから、その後管理者に対して、管理者の同意が必要なアクセス許可を要求する必要があります。 現在、Azure AD の v1.0 アプリケーション登録でこの操作を実行する方法はありません。しかし、v2.0 エンドポイントを使用すると、登録時ではなく実行時にアプリケーションでアクセス許可を要求できるため、このシナリオが可能になります。 詳細については、[v2.0 エンドポイント][AAD-V2-Dev-Guide]に関するページを参照してください。
+> 一部のアプリケーションでは、初めは通常ユーザーによる同意を許可してから、その後管理者に対して、管理者の同意が必要なアクセス許可を要求する必要があります。 現在、Azure AD の v1.0 アプリケーション登録でこの操作を実行する方法はありません。しかしながら、Microsoft ID プラットフォーム (v2.0) エンドポイントを使用すると、登録時ではなく実行時にアプリケーションでアクセス許可を要求できるため、このシナリオが可能になります。 詳細については、[Microsoft ID プラットフォーム エンドポイント][AAD-V2-Dev-Guide]に関するページを参照してください。
 
 ### <a name="consent-and-multi-tier-applications"></a>同意と多層アプリケーション
 
 一部のアプリケーションは多層化されており、それぞれの層が個別の Azure AD 登録で表されている場合があります。 たとえば、Web API を呼び出すネイティブ アプリケーションや、Web API を呼び出す Web アプリケーションなどです。 どちらの場合でも、クライアント (ネイティブ アプリケーションまたは Web アプリケーション) は、リソース (Web API) を呼び出すアクセス許可を要求します。 クライアントがユーザーのテナントに対する同意を得られるようにするには、アクセス許可を要求されるリソースがすべて、あらかじめユーザーのテナントに存在する必要があります。 この条件が満たされない場合、Azure AD は、最初にリソースを追加する必要があることを示すエラーを返します。
 
-**1 つのテナント内の複数の階層**
+#### <a name="multiple-tiers-in-a-single-tenant"></a>1 つのテナント内の複数の階層
 
 この処理は、論理アプリケーションが 2 つ以上のアプリケーション登録 (別々のクライアントとリソースなど) で構成されている場合に問題になる可能性があります。 まずユーザーのテナントにリソースを追加するにはどうすればいいのでしょうか。 Azure AD では、ワンステップでクライアントとリソースが同意されるようにすることによって、この状況に対応します。 ユーザーには、同意ページにクライアントとリソースの両方によって要求されたアクセス許可の合計が表示されます。 この動作を有効にするには、リソースのアプリケーション登録で、[アプリケーションのマニフェスト][AAD-App-Manifest]に `knownClientApplications` というクライアントのアプリ ID を含める必要があります。 例: 
 
@@ -143,29 +144,29 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 この方法については、この記事の末尾の「[関連コンテンツ](#related-content)」セクションにある多層ネイティブ クライアントによる Web API 呼び出しのサンプルを参照してください。 次の図は、1 つのテナントに登録されている多層アプリケーションのための同意の概要を示しています。
 
-![Consent to multi-tier known client app][Consent-Multi-Tier-Known-Client] 
+![Consent to multi-tier known client app][Consent-Multi-Tier-Known-Client]
 
-**複数のテナント内の複数の階層**
+#### <a name="multiple-tiers-in-multiple-tenants"></a>複数のテナント内の複数の階層
 
-同様のケースは、アプリケーションの各層を別々のテナントに登録する場合にも起こります。 たとえば、Office 365 Exchange Online API を呼び出すネイティブ クライアント アプリケーションを構築する場合を考えます。 ネイティブ アプリケーションを開発するため、また開発後にユーザーのテナントでこのネイティブ アプリケーションを実行するために、Exchange Online のサービス プリンシパルが存在する必要があります。 この場合、開発者とユーザーは、テナントでサービス プリンシパルを作成するために、Exchange Online を購入する必要があります。 
+同様のケースは、アプリケーションの各層を別々のテナントに登録する場合にも起こります。 たとえば、Office 365 Exchange Online API を呼び出すネイティブ クライアント アプリケーションを構築する場合を考えます。 ネイティブ アプリケーションを開発するため、また開発後にユーザーのテナントでこのネイティブ アプリケーションを実行するために、Exchange Online のサービス プリンシパルが存在する必要があります。 この場合、開発者とユーザーは、テナントでサービス プリンシパルを作成するために、Exchange Online を購入する必要があります。
 
 API が Microsoft 以外の組織によって作成されている場合、この API の開発者は、ユーザーがユーザーのテナントでアプリケーションに対して同意する手段を提供する必要があります。 推奨される設計は、サード パーティー開発者向けに、サインアップを実装する Web クライアントとしても機能できるような API を構築することです。 これを行うには、次の手順を実行します。
 
 1. 前述のセクションに従って、API がマルチテナント アプリケーションの登録およびコード要件を実装していることを確認します。
-2. API のスコープとロールの公開に加えて、登録に、"サインインとユーザー プロファイルの読み取り" Azure AD アクセス許可 (既定で提供) が含まれていることを確認します。
+2. API のスコープとロールの公開に加えて、登録に、"サインインとユーザー プロファイルの読み取り" アクセス許可 (既定で提供) が含まれていることを確認します。
 3. Web クライアントでサインイン/サインアップ ページを実装し、[管理者の同意](#admin-consent)のガイダンスに従います。
 4. ユーザーがアプリケーションに同意し、テナントにサービス プリンシパルと同意の委任のリンクが作成されたら、ネイティブ アプリケーションで API のトークンを取得できます。
 
 次の図に、異なるテナントに登録されている多層アプリケーションの同意の概要を示します。
 
-![Consent to multi-tier multi-party app][Consent-Multi-Tier-Multi-Party] 
+![Consent to multi-tier multi-party app][Consent-Multi-Tier-Multi-Party]
 
 ### <a name="revoking-consent"></a>同意の取り消し
 
 ユーザーおよび管理者は、次の方法により、いつでもアプリケーションに対する同意を取り消すことができます。
 
 * ユーザーは、[[アクセス パネル アプリケーション]][AAD-Access-Panel] リストから個々のアプリケーションを削除することで、アプリケーションに対するアクセス許可を取り消すことができます。
-* 管理者は、[Azure Portal][AZURE-portal] の [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) セクションで Azure AD からアプリケーションを削除することで、アプリケーションに対するアクセス許可を取り消すことができます。
+* 管理者は、[Azure portal][AZURE-portal] の [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) セクションでアプリケーションを削除することで、アプリケーションに対するアクセス許可を取り消すことができます。
 
 管理者が、テナント内のすべてのユーザーについてアプリケーションに対して同意した場合、ユーザーは個別にアクセス許可を取り消すことはできません。 アクセス許可を取り消すことができるのは管理者のみであり、取り消しの対象はすべてのアプリケーションのみになります。
 
@@ -206,9 +207,9 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
-[Consent-Single-Tier]: ./media/active-directory-devhowto-multi-tenant-overview/consent-flow-single-tier.png
-[Consent-Multi-Tier-Known-Client]: ./media/active-directory-devhowto-multi-tenant-overview/consent-flow-multi-tier-known-clients.png
-[Consent-Multi-Tier-Multi-Party]: ./media/active-directory-devhowto-multi-tenant-overview/consent-flow-multi-tier-multi-party.png
+[Consent-Single-Tier]: ./media/howto-convert-app-to-be-multi-tenant/consent-flow-single-tier.svg
+[Consent-Multi-Tier-Known-Client]: ./media/howto-convert-app-to-be-multi-tenant/consent-flow-multi-tier-known-clients.svg
+[Consent-Multi-Tier-Multi-Party]: ./media/howto-convert-app-to-be-multi-tenant/consent-flow-multi-tier-multi-party.svg
 
 <!--Reference style links -->
 [AAD-App-Manifest]:reference-azure-ad-app-manifest.md
@@ -233,5 +234,5 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
-[OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
-[OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html
+[OpenIDConnect-ID-Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken

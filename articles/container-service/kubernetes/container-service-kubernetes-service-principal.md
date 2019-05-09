@@ -5,16 +5,16 @@ services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 53bb09824a88980a171fa4067a9efd2fc067a898
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 52ed101199126818abaddef47892e1f033eb3968
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992157"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777857"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(非推奨) Container Service の Kubernetes クラスター用の Azure AD サービス プリンシパルをセットアップする
 
@@ -26,7 +26,7 @@ ms.locfileid: "52992157"
 Azure Container Service で Kubernetes クラスターを使用するには、Azure API と対話するための [Azure Active Directory サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)が必要です。 サービス プリンシパルは、[ユーザー定義のルート](../../virtual-network/virtual-networks-udr-overview.md)や[レイヤー 4 の Azure Load Balancer](../../load-balancer/load-balancer-overview.md) などのリソースを動的に管理するために必要です。
 
 
-この記事では、Kubernetes クラスターのサービス プリンシパルをセットアップするためのさまざまなオプションを紹介します。 たとえば、[Azure CLI](/cli/azure/install-az-cli2) をインストールしてセットアップした場合は、[`az acs create`](/cli/azure/acs#az_acs_create) コマンドを実行して、Kubernetes クラスターとサービス プリンシパルを同時に作成できます。
+この記事では、Kubernetes クラスターのサービス プリンシパルをセットアップするためのさまざまなオプションを紹介します。 たとえば、[Azure CLI](/cli/azure/install-az-cli2) をインストールしてセットアップした場合は、[`az acs create`](/cli/azure/acs) コマンドを実行して、Kubernetes クラスターとサービス プリンシパルを同時に作成できます。
 
 
 ## <a name="requirements-for-the-service-principal"></a>サービス プリンシパルの要件
@@ -149,7 +149,7 @@ az ad app show --id <appId> --debug
 ...
 ```
 
-サービス プリンシパルの資格情報の有効期限が切れた場合は、[az ad sp reset-credentials](/cli/azure/ad/sp#az-ad-sp-reset-credentials) コマンドを使用して資格情報を更新します。
+サービス プリンシパルの資格情報の有効期限が切れた場合は、[az ad sp reset-credentials](/cli/azure/ad/sp) コマンドを使用して資格情報を更新します。
 
 ```azurecli
 az ad sp reset-credentials --name <appId>

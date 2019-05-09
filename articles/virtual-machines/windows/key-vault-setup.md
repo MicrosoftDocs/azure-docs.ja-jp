@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 599b16f633d9a0de5165bdf5cb3d7b82abca655b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a8c29f015b6b3652361a886585cb4ccc3f3b7293
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597712"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519954"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの Key Vault を設定する
 
@@ -35,22 +35,22 @@ Azure Resource Manager スタックでは、Key Vault のリソース プロバ�
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>PowerShell を使用して Key Vault を設定する
-PowerShell を使用して Key Vault を作成するには、「 [Azure Key Vault の概要](../../key-vault/key-vault-get-started.md#vault)」を参照してください。
+PowerShell を使用して Key Vault を作成するには、「[PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-powershell.md)」を参照してください。
 
 新しい Key Vault の場合は、次の PowerShell コマンドレットを使用することができます。
 
-    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
 既存の Key Vault の場合は、次の PowerShell コマンドレットを使用することができます。
 
-    Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="use-cli-to-set-up-key-vault"></a>CLI を使用して Key Vault を設定する
 コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成する方法については、「 [CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)」を参照してください。
 
 CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault を作成する必要があります。 この処理には、次のコマンドを使用できます。
 
-    azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
+    az keyvault set-policy ContosoKeyVault –enabled-for-deployment true
 
 ## <a name="use-templates-to-set-up-key-vault"></a>テンプレートを使用して Key Vault を設定する
 テンプレートを使用する場合、Key Vault リソースの `enabledForDeployment` プロパティを `true` に設定する必要があります。

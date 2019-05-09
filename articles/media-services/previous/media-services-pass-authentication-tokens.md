@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 03/19/2019
 ms.author: dwgeo
-ms.openlocfilehash: 204a2122f38306f2c883436fb13397b45fd91980
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254623"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260081"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>クライアントが Azure Media Services キー配信サービスにトークンを渡す方法
 プレーヤーがキーを取得できるよう検証を受けるために Azure Media Services キー配信サービスにトークンを渡す方法についてお客様から質問を受けることがよくあります。 Media Services は、単純 Web トークン (SWT) 形式と JSON Web トークン (JWT) 形式をサポートしています。 システムで共通暗号化または Advanced Encryption Standard (AES) エンベロープ暗号化のどちらが使われていても、すべての種類のキーにトークン認証が適用されます。
@@ -29,7 +29,7 @@ ms.locfileid: "51254623"
 
 - HTTP の Authorization ヘッダーを使います。
     > [!NOTE]
-    > OAuth 2.0 仕様に従い、"Bearer" プレフィックスが予期されます。 トークンが構成されたサンプル プレーヤーが、Azure Media Player の[デモ ページ](http://ampdemo.azureedge.net/)でホストされています。 ビデオ ソースを設定するには、**AES (JWT トークン)** または **AES (SWT トークン)** を選んでください。 トークンは Authorization ヘッダーで渡されます。
+    > OAuth 2.0 仕様に従い、"Bearer" プレフィックスが予期されます。 トークンが構成されたサンプル プレーヤーが、Azure Media Player の[デモ ページ](https://ampdemo.azureedge.net/)でホストされています。 ビデオ ソースを設定するには、**AES (JWT トークン)** または **AES (SWT トークン)** を選んでください。 トークンは Authorization ヘッダーで渡されます。
 
 - "token=tokenvalue" で URL クエリ パラメーターを追加します。  
     > [!NOTE]

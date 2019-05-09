@@ -4,19 +4,18 @@ description: このクイック スタートは、Node.js で記述された既�
 author: rimman
 ms.author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.custom: quickstart
-ms.openlocfilehash: 954be5699bb039f9eeaae827e6564fea6dfe70ff
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 99f6de4d0441594c09e5e8c29834b90aeb1d43a6
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788679"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586480"
 ---
-# <a name="migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
+# <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>クイック スタート:既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -253,7 +252,7 @@ git commit -m "configured MongoDB connection string"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を理解しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
+このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
 > [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)

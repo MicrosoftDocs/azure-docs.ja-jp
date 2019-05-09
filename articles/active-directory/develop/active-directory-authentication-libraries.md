@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,13 @@ ms.date: 12/01/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 72abe674110a60a046e06800bdeb484c9d6c2a33
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8e90a2fc0bb5e040e0c1a3179df1e4bef758d7ee
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682437"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173013"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 認証ライブラリ
 

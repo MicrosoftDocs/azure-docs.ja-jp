@@ -3,19 +3,19 @@ title: UserJourneys | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの UserJourneys 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: B2C
+ms.openlocfilehash: ccc1f94b9411a158b5c60509e09bd3edc0a61640
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567062"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795159"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -63,8 +63,8 @@ ms.locfileid: "51567062"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| 順序 | はい | オーケストレーション手順の順序。 | 
-| type | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> | 
+| `Order` | はい | オーケストレーション手順の順序。 | 
+| `Type` | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> | 
 | ContentDefinitionReferenceId | いいえ  | このオーケストレーション手順に関連付けられた[コンテンツ定義](contentdefinitions.md)の識別子。 通常、コンテンツ定義参照識別子は、セルフアサート技術プロファイルで定義されます。 ただし、Azure AD B2C が技術プロファイルなしで何かを表示することが必要となる場合もあります。 2 つの例を挙げます。オーケストレーション手順の種類が `ClaimsProviderSelection` または `CombinedSignInAndSignUp` である場合です。 Azure AD B2C は技術プロファイルなしで ID プロバイダー選定を表示する必要があります。 | 
 | CpimIssuerTechnicalProfileReferenceId | いいえ  | オーケストレーション手順の種類は `SendClaims` です。 このプロパティは、証明書利用者のトークンを発行する要求プロバイダーの技術プロファイル識別子を定義します。  省略すると、証明書利用者のトークンは作成されません。 |
 
@@ -77,7 +77,7 @@ ms.locfileid: "51567062"
 | ClaimsProviderSelections | 0:n | オーケストレーション手順のための要求プロバイダーの選定一覧。 | 
 | ClaimsExchanges | 0:n | オーケストレーション手順のための要求交換一覧。 | 
 
-#### <a name="preconditions"></a>Preconditions
+### <a name="preconditions"></a>Preconditions
 
 **Preconditions** 要素には、次の要素が含まれています。
 
@@ -86,14 +86,14 @@ ms.locfileid: "51567062"
 | Precondition | 0:n | 使用される技術プロファイルによって、要求プロバイダーの選定に従ってクライアントをリダイレクトするか、サーバーの呼び出しで要求を交換します。 | 
 
 
-##### <a name="precondition"></a>Precondition
+#### <a name="precondition"></a>Precondition
 
 **Precondition** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| type | はい | この前提条件に対して実行するチェックまたはクエリの種類。 値に **ClaimsExist** を指定すると、指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されます。または、**ClaimEquals** を指定すると、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されます。 |
-| ExecuteActionsIf | はい | 前提条件内のアクションを実行する必要があるかどうかを true または false を使用して決定します。 | 
+| `Type` | はい | この前提条件に対して実行するチェックまたはクエリの種類。 値に **ClaimsExist** を指定すると、指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されます。または、**ClaimEquals** を指定すると、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されます。 |
+| `ExecuteActionsIf` | はい | 前提条件内のアクションを実行する必要があるかどうかを true または false を使用して決定します。 | 
 
 **Precondition** 要素には、次の要素が含まれています。
 
@@ -102,7 +102,7 @@ ms.locfileid: "51567062"
 | Value | 1:n | クエリされる ClaimTypeReferenceId。 別の値要素には、チェック対象の値が含まれています。</li></ul>|
 | Action | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 `Action` の値を `SkipThisOrchestrationStep` に設定すると、関連付けられている `OrchestrationStep` は実行されません。 | 
 
-### <a name="preconditions-examples"></a>前提条件の例
+#### <a name="preconditions-examples"></a>前提条件の例
 
 以下の前提条件は、ユーザーの objectId が存在するかどうかを確認します。 ユーザー体験では、ユーザーはローカル アカウントを使用してサインインすることを選択しています。 objectId が存在する場合は、このオーケストレーション手順をスキップしてください。
 
@@ -177,7 +177,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection の例
 
-次のオーケストレーション手順では、ユーザーはFacebook、LinkIn、Twitter、Google、またはローカル アカウントでサインインすることを選択できます。 ユーザーがいずれかのソーシャル ID プロバイダーを選択すると、`TargetClaimsExchangeId` 属性で指定された選定要求交換を使用して 2 番目のオーケストレーション手順が実行されます。 2 番目のオーケストレーション手順は、ユーザーをソーシャル ID プロバイダーにリダイレクトしてサインイン プロセスを完了します。 ユーザーがローカル アカウントを使用してサインインすることを選択した場合、Azure AD B2C は同じオーケストレーション手順にとどまり (同じサインアップ ページまたはサインイン ページ)、2 番目の手順をスキップします。
+次のオーケストレーション手順では、ユーザーはFacebook、LinkedIn、Twitter、Google、またはローカル アカウントでサインインすることを選択できます。 ユーザーがいずれかのソーシャル ID プロバイダーを選択すると、`TargetClaimsExchangeId` 属性で指定された選定要求交換を使用して 2 番目のオーケストレーション手順が実行されます。 2 番目のオーケストレーション手順は、ユーザーをソーシャル ID プロバイダーにリダイレクトしてサインイン プロセスを完了します。 ユーザーがローカル アカウントを使用してサインインすることを選択した場合、Azure AD B2C は同じオーケストレーション手順にとどまり (同じサインアップ ページまたはサインイン ページ)、2 番目の手順をスキップします。
 
 ```XML
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
@@ -226,20 +226,3 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 | --------- | -------- | ----------- |
 | Id | はい | 要求交換手順の識別子。 この識別子は、ポリシーの要求プロバイダー選定手順から要求交換を参照するために使用されます。 | 
 | TechnicalProfileReferenceId | はい | 実行される技術プロファイルの識別子。 |
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

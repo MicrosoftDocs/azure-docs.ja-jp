@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,13 @@ ms.date: 07/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: edb8ae501548775932a259621c19acece474018d
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580412"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437885"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -81,10 +82,10 @@ Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 
 `NameIDPolicy` を指定する場合は、省略可能な `Format` 属性を含めることができます。 `Format` 属性で指定できる値は次のいずれかのみであり、それ以外の値はエラーになります。
 
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Azure Active Directory は、一対の識別子として NameID 要求を発行します。
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Azure Active Directory は、電子メール アドレス形式で NameID 要求を発行します。
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Azure Active Directory が要求の形式を選択できるようにします。 Azure Active Directory は、一対の識別子として NameID 要求を発行します。
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory は、現在の SSO 操作に固有となる無作為に生成された値として NameID 要求を発行します。 つまり、値は一時的であり、認証ユーザーの識別に使うことはできません。
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`:Azure Active Directory は、一対の識別子として NameID 要求を発行します。
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`:Azure Active Directory は、電子メール アドレス形式で NameID 要求を発行します。
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`:この値は、Azure Active Directory が要求の形式を選択することを許可します。 Azure Active Directory は、一対の識別子として NameID 要求を発行します。
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`:Azure Active Directory は、現在の SSO 操作に固有となる無作為に生成された値として NameID 要求を発行します。 つまり、値は一時的であり、認証ユーザーの識別に使うことはできません。
 
 Azure AD は `AllowCreate` 属性を無視します。
 
@@ -108,7 +109,7 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 ```
 <samlp:Response ID="_a4958bfd-e107-4e67-b06d-0d85ade2e76a" Version="2.0" IssueInstant="2013-03-18T07:38:15.144Z" Destination="https://contoso.com/identity/inboundsso.aspx" InResponseTo="id758d0ef385634593a77bdf7e632984b6" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
   <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
-  <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:Signature xmlns:ds="https://www.w3.org/2000/09/xmldsig#">
     ...
   </ds:Signature>
   <samlp:Status>
@@ -116,7 +117,7 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
   </samlp:Status>
   <Assertion ID="_bf9c623d-cc20-407a-9a59-c2d0aee84d12" IssueInstant="2013-03-18T07:38:15.144Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
     <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
-    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <ds:Signature xmlns:ds="https://www.w3.org/2000/09/xmldsig#">
       ...
     </ds:Signature>
     <Subject>
@@ -152,12 +153,12 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 
 `Response` 要素には、承認要求の結果が含まれます。 Azure AD は、`Response` 要素の `ID`、`Version`、`IssueInstant` の値を設定します。 また、次の属性も設定します。
 
-* `Destination`: サインオンが正常に完了すると、この属性にはサービス プロバイダー (クラウド サービス) の `RedirectUri` が設定されます。
-* `InResponseTo`: この属性には、応答を開始した `AuthnRequest` 要素の `ID` 属性が設定されます。
+* `Destination`:サインオンが正常に完了すると、サービス プロバイダー (クラウド サービス) の `RedirectUri` が設定されます。
+* `InResponseTo`:応答を開始した `AuthnRequest` 要素の `ID` 属性が設定されます。
 
 ### <a name="issuer"></a>発行者
 
-Azure AD は、`Issuer` 要素を  `https://login.microsoftonline.com/<TenantIDGUID>/` に設定します。<TenantIDGUID> は、Azure AD テナントのテナント ID です。
+Azure AD は、`Issuer` 要素を `https://login.microsoftonline.com/<TenantIDGUID>/` に設定します。\<TenantIDGUID> は、Azure AD テナントのテナント ID です。
 
 たとえば、Issuer 要素を含む応答の例は次のようになります。
 
@@ -169,7 +170,7 @@ Azure AD は、`Issuer` 要素を  `https://login.microsoftonline.com/<TenantIDG
 
 `Status` 要素には、サインオンの成功または失敗を示す値が設定されます。 `StatusCode` 要素が含まれており、この要素には要求の状態を表すコードまたは一連の入れ子になったコードが含まれます。 また、 `StatusMessage` 要素もあり、これにはサインイン プロセス中に生成されたカスタム エラー メッセージが含まれます。
 
-<!-- TODO: Add a authentication protocol error reference -->
+<!-- TODO: Add an authentication protocol error reference -->
 
 サインオンに失敗した場合、次のような SAML 応答が返されます。
 
@@ -192,7 +193,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 #### <a name="issuer"></a>発行者
 
-この要素は `https://sts.windows.net/<TenantIDGUID>/` に設定されます。<TenantIDGUID> は Azure AD テナントのテナント ID です。
+この要素は `https://sts.windows.net/<TenantIDGUID>/` に設定されます。\<TenantIDGUID> は Azure AD テナントのテナント ID です。
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
@@ -205,7 +206,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 このデジタル署名を生成するため、Azure AD はメタデータ ドキュメントの `IDPSSODescriptor` 要素の署名キーを使用します。
 
 ```
-<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:Signature xmlns:ds="https://www.w3.org/2000/09/xmldsig#">
       digital_signature_here
     </ds:Signature>
 ```

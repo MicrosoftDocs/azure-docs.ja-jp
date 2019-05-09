@@ -9,17 +9,16 @@ ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f68e1077ebc26245b25eae3b0310db74b6d1357e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046447"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330009"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,17 +38,17 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールや API を使用して、ソース データ ストアから Azure Search インデックスにデータをプッシュするコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
-ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Azure Search インデックスへのデータ コピーに使用する Data Factory エンティティの JSON 定義サンプルは、この記事の「[JSON の例: オンプレミスの SQL Server から Azure Search インデックスへのデータのコピー](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index)」セクションをご覧ください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Azure Search インデックスにデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: オンプレミスの SQL Server から Azure Search インデックスにデータをコピーする](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index)」のセクションを参照してください。
 
 以下のセクションでは、Azure Search インデックスに固有の Data Factory エンティティの定義に使用される JSON プロパティの詳細を説明します。
 
@@ -59,9 +58,9 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| type | type プロパティを **AzureSearch** に設定する必要があります。 | [はい] |
-| URL | Azure Search サービスの URL。 | [はい] |
-| key | Azure Search サービスの管理者キー。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
+| url | Azure Search サービスの URL。 | はい |
+| key | Azure Search サービスの管理者キー。 | はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -69,8 +68,8 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| type | type プロパティを **AzureSearchIndex** に設定する必要があります。| [はい] |
-| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | [はい] |
+| type | type プロパティを **AzureSearchIndex** に設定する必要があります。| はい |
+| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | はい |
 
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
@@ -105,20 +104,20 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
-| ブール | Y |
+| Boolean | Y |
 | DataTimeOffset | Y |
-| 文字列配列 | N |
+| String Array | N |
 | GeographyPoint | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>JSON の使用例: オンプレミスの SQL Server から Azure Search インデックスにデータをコピーする
+## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>JSON の使用例:オンプレミスの SQL Server から Azure Search インデックスにデータをコピーする
 
 次のサンプルは以下を示しています。
 
-1.  [AzureSearch](#linked-service-properties) 型のリンクされたサービス。
-2.  [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties)型のリンクされたサービス。
-3.  [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4.  [AzureSearchIndex](#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-4.  [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) と [AzureSearchIndexSink](#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+1. [AzureSearch](#linked-service-properties) 型のリンクされたサービス。
+2. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties)型のリンクされたサービス。
+3. [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4. [AzureSearchIndex](#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4. [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) と [AzureSearchIndexSink](#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは、オンプレミスの SQL Server データベースから Azure Search インデックスに時系列データを 1 時間おきにコピーします。 このサンプルで使用される JSON プロパティの説明は、サンプルに続くセクションにあります。
 
@@ -202,7 +201,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
             "frequency": "Minute",
             "interval": 15
         }
-   }
+    }
 }
 ```
 
@@ -211,13 +210,13 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **SqlSource** に設定され、**sink** 型が **AzureSearchIndexSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline for copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "SqlServertoAzureSearchIndex",
         "description": "copy activity",
@@ -241,7 +240,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
             "type": "AzureSearchIndexSink"
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -252,8 +251,8 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
           "timeout": "01:00:00"
         }
       }
-     ]
-   }
+    ]
+  }
 }
 ```
 
@@ -289,7 +288,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 
 コピー アクティビティ定義で、ソース データセットの列をシンク データセットの列にマップすることもできます。 詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。
 
-## <a name="performance-and-tuning"></a>パフォーマンスとチューニング  
+## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 データ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順

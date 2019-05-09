@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: ナレッジ ベースを作成する - REST (Go) - QnA Maker'
+title: クイック スタート:ナレッジ ベースを作成する - REST (Go) - QnA Maker
 titlesuffix: Azure Cognitive Services
 description: この Go REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: a1f477dd02e048a3bfb77463c2d9857ee32fb8fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cfb8cb60a828220ea681ad06e86588d3453b8d1b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235311"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874993"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>クイック スタート: Go を使用して QnA Maker でナレッジ ベースを作成する
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>クイック スタート:Go を使用して QnA Maker のナレッジ ベースを作成する
 
 このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "51235311"
 
 [!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
 
-この API 呼び出しは、ヘッダー フィールド **Location** に操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。 
+この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。 
 
 ```JSON
 {

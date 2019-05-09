@@ -1,26 +1,26 @@
 ---
 title: Azure Cache for Redis を使用して ASP.NET Web アプリを作成する | Microsoft Docs
 description: このクイック スタートでは、Azure Cache for Redis を使用して ASP.NET Web アプリを作成する方法について説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/26/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: fd5a995bf03d530ccbcf9b839ccc840d202b47d6
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556189"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886371"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
 
@@ -74,9 +74,9 @@ ms.locfileid: "53556189"
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>*CacheSecrets.config* ファイルを編集するには
 
-3. コンピューター上に *CacheSecrets.config* というファイルを作成します。そのファイルをサンプル アプリケーションのソース コードでチェックインされない場所に配置します。 このクイック スタートでは、*CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
+1. コンピューター上に *CacheSecrets.config* というファイルを作成します。そのファイルをサンプル アプリケーションのソース コードでチェックインされない場所に配置します。 このクイック スタートでは、*CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
 
-4. *CacheSecrets.config* ファイルを編集します。 次の内容を追加します。
+1. *CacheSecrets.config* ファイルを編集します。 次の内容を追加します。
 
     ```xml
     <appSettings>
@@ -84,23 +84,23 @@ ms.locfileid: "53556189"
     </appSettings>
     ```
 
-5. `<cache-name>` は実際のキャッシュ ホスト名に置き換えます。
+1. `<cache-name>` は実際のキャッシュ ホスト名に置き換えます。
 
-6. `<access-key>` は、実際のキャッシュのプライマリ キーに置き換えます。
+1. `<access-key>` は、実際のキャッシュのプライマリ キーに置き換えます。
 
     > [!TIP]
     > セカンダリ アクセス キーは、プライマリ アクセス キーを再生成する間の代替キーとして、キー ローテーションのときに使用できます。
->
-7. ファイルを保存します。
+   >
+1. ファイルを保存します。
 
 ## <a name="update-the-mvc-application"></a>MVC アプリケーションを更新する
 
 このセクションでは、Azure Cache for Redis に対する簡単なテストを表示する新しいビューをサポートするようにアプリケーションを更新します。
 
-* [キャッシュ用のアプリ設定で web.config ファイルを更新する](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* [StackExchange.Redis クライアントを使うようにアプリケーションを構成する](#configure-the-application-to-use-stackexchangeredis)
-* [HomeController と Layout を更新する](#update-the-homecontroller-and-layout)
-* [新しい RedisCache ビューを追加する](#add-a-new-rediscache-view)
+* [キャッシュ用のアプリ設定で web.config ファイルを更新する](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
+* StackExchange.Redis クライアントを使うようにアプリケーションを構成する
+* HomeController と Layout を更新する
+* 新しい RedisCache ビューを追加する
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>キャッシュ用のアプリ設定で web.config ファイルを更新する
 
@@ -116,7 +116,7 @@ ms.locfileid: "53556189"
 2. *web.config* ファイルで `<appSetting>` 要素を見つけます。 次の `file` 属性を追加します。 異なるファイル名または場所を使用した場合は、この例の値を実際の値で置き換えてください。
 
 * 変更前: `<appSettings>`
-* 変更後: ` <appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* 変更後:  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 `<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。 指定したファイルが見つからない場合、このファイル属性は無視されます。 このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。 Web アプリを Azure にデプロイするときに、*CacheSecrets.config* ファイルはデプロイされません。
 
@@ -276,10 +276,10 @@ ms.locfileid: "53556189"
 
     | Setting | 推奨値 | 説明 |
     | ------- | :---------------: | ----------- |
-    | **アプリ名** | 既定値を使用します。 | アプリ名は、Azure へのデプロイ時にアプリのホスト名になります。 必要に応じて、名前を一意にするためにタイムスタンプのサフィックスが追加される場合があります。 |
+    | **アプリの名前** | 既定値を使用します。 | アプリ名は、Azure へのデプロイ時にアプリのホスト名になります。 必要に応じて、名前を一意にするためにタイムスタンプのサフィックスが追加される場合があります。 |
     | **サブスクリプション** | Azure サブスクリプションを選択します。 | 関連するホスティング料金は、このサブスクリプションに請求されます。 複数の Azure サブスクリプションがある場合は、適切なサブスクリプションを選択したことを確認します。|
-    | **[リソース グループ]** | キャッシュを作成したものと同じリソース グループを使います (*TestResourceGroup* など)。 | リソース グループは、すべてのリソースをグループとして管理するときに便利です。 後でアプリを削除する必要があるときは、グループを削除するだけで済みます。 |
-    | **[App Service プラン]** | **[新規]** を選択し、*TestingPlan* という名前で新しい App Service プランを作成します。 <br />キャッシュを作成するときに使ったものと同じ **[場所]** を使います。 <br />サイズでは **[Free]** を選びます。 | App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 |
+    | **リソース グループ** | キャッシュを作成したものと同じリソース グループを使います (*TestResourceGroup* など)。 | リソース グループは、すべてのリソースをグループとして管理するときに便利です。 後でアプリを削除する必要があるときは、グループを削除するだけで済みます。 |
+    | **App Service プラン** | **[新規]** を選択し、*TestingPlan* という名前で新しい App Service プランを作成します。 <br />キャッシュを作成するときに使ったものと同じ **[場所]** を使います。 <br />サイズでは **[Free]** を選びます。 | App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 |
 
     ![[App Service] ダイアログ ボックス](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 

@@ -3,19 +3,19 @@ title: このクイック スタートは、Python を使用して X.509 デバ�
 description: このクイック スタートでは、グループ登録を使用します。 このクイック スタートでは、Python を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/25/2018
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: aad21bd4003f789a0a315d6514bf428a4ef3f9f5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d9ed0cb82f8ad1c19f95299b3dd651fc099368b8
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187350"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500772"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>クイック スタート: Python を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -52,7 +52,7 @@ ms.locfileid: "53187350"
    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
    ```
 
-   このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+   この操作は、完了するまでに数分かかります。
 
    テスト ツールは複製したリポジトリの *azure-iot-sdk-c/tools/CACertificates* にあります。    
 
@@ -140,7 +140,7 @@ ms.locfileid: "53187350"
 Java Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
-1. マシンの _X509 証明書ジェネレーター_のウィンドウを閉じます。
+1. マシンの _X509 証明書ジェネレーター_ のウィンドウを閉じます。
 1. Azure Portal で [デバイス プロビジョニング サービス] に移動し、**[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。このクイックスタートを使用して登録した X.509 デバイスの *GROUP NAME* を選択し、ブレードの上部にある **[削除]** ボタンをクリックします。  
 
 

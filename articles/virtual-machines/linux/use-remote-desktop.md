@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 44b0f8b3d11b737ad88f7d33b036b52d24b70e33
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dec0b8bcd5a0e0d20ead5b149405e3716589ba53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960329"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995729"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
 Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://www.xrdp.org)) をインストールして構成する方法を詳しく説明します。
@@ -103,7 +103,7 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 ![xrdp を介した xfce デスクトップ環境](./media/use-remote-desktop/xfce-desktop-environment.png)
 
-ローカル RDP クライアントがネットワーク レベル認証 (NLA) を使っている場合は、その接続設定を無効にすることが必要な場合があります。 現在、XRDP は NLA をサポートしていません。 [FreeRDP](http://www.freerdp.com) など、NLA をサポートする RDP ソリューションを代わりに使うこともできます。
+ローカル RDP クライアントがネットワーク レベル認証 (NLA) を使っている場合は、その接続設定を無効にすることが必要な場合があります。 現在、XRDP は NLA をサポートしていません。 [FreeRDP](https://www.freerdp.com) など、NLA をサポートする RDP ソリューションを代わりに使うこともできます。
 
 
 ## <a name="troubleshoot"></a>トラブルシューティング

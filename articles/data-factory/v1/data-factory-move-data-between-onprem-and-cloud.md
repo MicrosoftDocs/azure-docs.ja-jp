@@ -9,17 +9,16 @@ ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4eb881992b7e40e0a9d67bd2cee94f1f09958e9e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242842"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524108"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -63,7 +62,7 @@ ms.locfileid: "51242842"
     ![スタート画面への追加](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Azure Data Factory の名前はグローバルに一意にする必要があります。 " **データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません**" というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialOnPremDF など) 作成し直してください。 このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
+   > Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー "**Data factory name "ADFTutorialOnPremDF" is not available (データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません)**" が発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialOnPremDF など) 作成し直してください。 このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
    >
    > データ ファクトリの名前は今後、**DNS** 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
    >
@@ -106,7 +105,7 @@ ms.locfileid: "51242842"
 
     ![ゲートウェイ - [構成] ページ](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。 **Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** フォルダーで実行可能ファイル **ConfigManager.exe** を検索することもできます。
+    これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。 **Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。 また、実行可能ファイル **ConfigManager.exe** は、**C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** フォルダー内にあります。
 
     このページのリンクを使用してゲートウェイのダウンロードとインストールを手動で行い、**[新しいキー]** ボックスに表示されるキーを使用して登録することもできます。
 
@@ -119,7 +118,7 @@ ms.locfileid: "51242842"
 5. 2 ～ 3 分待つか、次のような通知メッセージが表示されるまで待ちます。
 
     ![ゲートウェイのインストールが正常に完了しました](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. コンピューターで **Data Management Gateway 構成マネージャー** アプリケーションを起動します。 **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** フォルダーで実行可能ファイル **ConfigManager.exe** を検索することもできます。
+6. コンピューターで **Data Management Gateway 構成マネージャー** アプリケーションを起動します。 **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。 また、実行可能ファイル **ConfigManager.exe** は、**C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** フォルダー内にあります
 
     ![Gateway Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. "`adftutorialgateway is connected to the cloud service`" というメッセージが表示されていることを確認します。 下部のステータス バーに、**緑色のチェック マーク**と共に "**Connected to the cloud service (クラウド サービスに接続済み)**" と表示されます。
@@ -154,7 +153,7 @@ ms.locfileid: "51242842"
 12. 左側のツリービューの **[データ ゲートウェイ]** に **[adftutorialgateway]** と表示されます。  クリックすると、関連する JSON が表示されます。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-この手順では、**AzureStorageLinkedService** と **SqlServerLinkedService** の 2 つのリンクされたサービスを作成します。 **SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**AzureStorageLinkedService** リンク サービスは Azure BLOB ストアを Data Factory にリンクします。 このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
+この手順では、2 つのリンクされたサービスを作成します (**AzureStorageLinkedService**、**SqlServerLinkedService**)。 **SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**AzureStorageLinkedService** リンク サービスは Azure BLOB ストアを Data Factory にリンクします。 このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
 #### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server Database にリンクされたサービスを追加する
 1. **Data Factory エディター**のツール バーにある **[新しいデータ ストア]** をクリックし、**[SQL Server]** を選択します。
@@ -173,7 +172,7 @@ ms.locfileid: "51242842"
       4. **[資格情報の設定]** ダイアログ ボックスで、認証の種類、ユーザー名、およびパスワードを指定し、**[OK]** をクリックします。 接続が成功すると、暗号化された資格情報は JSON に格納され、ダイアログ ボックスが閉じられます。
       5. ダイアログ ボックスを起動した空のブラウザー タブが自動的に閉じられない場合は手動で閉じて、Azure Portal のタブに戻ります。
 
-         ゲートウェイ コンピューターで、これらの資格情報は、Data Factory サービスが所有する証明書を使用して**暗号化**されます。 Data Management Gateway に関連付けられている証明書を使用する場合は、「 [Set credentials securely (資格情報を安全に設定する)](#set-credentials-and-security)」を参照してください。    
+         ゲートウェイ コンピューターで、これらの資格情報は、Data Factory サービスが所有する証明書を使用して**暗号化**されます。 Data Management Gateway に関連付けられている証明書を使用する場合は、「Set credentials securely (資格情報を安全に設定する)」を参照してください。    
    3. コマンド バーの **[デプロイ]** をクリックして、SQL Server リンク サービスをデプロイします。 リンクされたサービスは、ツリー ビューに表示されます。
 
       ![ツリー ビューでの SQL Server のリンクされたサービス](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
@@ -281,7 +280,7 @@ ms.locfileid: "51242842"
    * **folderPath** を **adftutorial/outfromonpremdf** に設定します。outfromonpremdf は adftutorial コンテナー内のフォルダーです。 **adftutorial** コンテナーを作成します (既に存在していない場合)。
    * **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
-   **出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.)。
+   **出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルの名前は次の形式になります。`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.)。
 
    **folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、partitionedBy プロパティを使用します。 次の例では、folderPath に SliceStart (処理されるスライスの開始時刻) の年、月、日を使用し、fileName に SliceStart の時間を使用します。 たとえば、スライスが 2014-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2014/10/20 に設定され、fileName は 08.csv に設定されます。
 
@@ -311,11 +310,11 @@ ms.locfileid: "51242842"
      {
          "name": "ADFTutorialPipelineOnPrem",
          "properties": {
-         "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
+         "description": "This pipeline has one Copy activity that copies data from an on premises SQL to Azure blob",
          "activities": [
            {
              "name": "CopyFromSQLtoBlob",
-             "description": "Copy data from on-prem SQL server to blob",
+             "description": "Copy data from on premises SQL server to blob",
              "type": "Copy",
              "inputs": [
                {
@@ -363,7 +362,7 @@ ms.locfileid: "51242842"
    * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink** が指定されています。
    * **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ `select * from emp` を指定します。
 
-   start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 (例: 2014-10-14T16:32:41Z)。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
+   start と end の日時は、いずれも [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)である必要があります。 例: 2014-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 
    **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 無期限でパイプラインを実行するには、**end** プロパティの値として **9/9/9999** を指定します。
 
@@ -408,7 +407,7 @@ ms.locfileid: "51242842"
 6. **[X]** をクリックしてすべてのページを閉じ、
 7. **ADFTutorialOnPremDF** のホーム ページに戻ります。
 8. (省略可能) **[パイプライン]** をクリックし、**[ADFTutorialOnPremDF]** をクリックして、入力テーブル (**Consumed**) または出力データセット (**Produced**) をドリル スルーします。
-9. [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用して、1 時間ごとに BLOB/ファイルが作成されることを確認します。
+9. [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して、1 時間ごとに BLOB/ファイルが作成されることを確認します。
 
    ![Azure ストレージ エクスプローラー](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 

@@ -3,20 +3,20 @@ title: Azure Virtual Machines で入れ子になった仮想化を有効にす�
 description: Azure Virtual Machines で入れ子になった仮想化を有効にする方法
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
-ms.author: zarhoads
+ms.author: cynthn
 ms.date: 10/09/2017
-ms.topic: howto
+ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: d1381ff16d0de382634b06fd081f1827588f8ee9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f90ca51349eef92bd25095f5a2a10d7d181fdb2c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435108"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766531"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -180,3 +180,7 @@ IP アドレスがゲスト仮想マシンに動的に割り当てられるよ�
 
 ゲスト仮想マシンで、ブラウザーを開いて Web ページに移動します。
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
+
+## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>ゲスト仮想マシンのイントラネット接続を設定する
+
+ゲスト VM と Azure VM との間で透過的接続を有効にする手順については、[こちらのドキュメント](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network)を参照してください。

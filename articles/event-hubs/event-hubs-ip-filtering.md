@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 707290d7bf453ca71dd3c5cf8b39c917b3a1c479
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268276"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507537"
 ---
 # <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
 
@@ -24,7 +24,7 @@ Azure Event Hubs が特定の既知のサイトからのみアクセスできる
 
 ## <a name="when-to-use"></a>いつ使用するか
 
-指定した IP アドレス範囲からのトラフィックのみを受信し、それ以外のすべてを拒否するように、Event Hubs 名前空間を設定する必要がある場合は、"*ファイアウォール ルール*" を利用して Event Hub のエンドポイントを他の IP アドレスからブロックすることができます。たとえば、[Azure ExpressRoute][express-route] で Event Hubs を使用して、オンプレミスのインフラストラクチャへのプライベート接続を作成しているような場合です。
+指定した IP アドレス範囲のみからトラフィックを受信し、それ以外のすべてを拒否するように、Event Hubs 名前空間を設定する必要がある場合は、*ファイアウォール ルール*を利用して Event Hub エンドポイントを他の IP アドレスからブロックすることができます。 たとえば、[Azure Express Route][express-route] で Event Hubs を使用する場合、*ファイアウォール ルール*を作成して、オンプレミス インフラストラクチャ IP アドレスからのトラフィックを制限できます。
 
 ## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
 
@@ -70,7 +70,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 
 > [!NOTE]
 > 可能な拒否ルールはありませんが、Azure Resource Manager テンプレートには、接続を制限しない **"Allow"** に設定された既定のアクション セットがあります。
-> 仮想ネットワークまたはファイアウォール ルールを作成するときは、***"defaultAction"*** を変更する必要があります
+> 仮想ネットワークまたはファイアウォールのルールを作成するときは、***"defaultAction"*** を変更する必要があります。
 > 
 > from
 > ```json

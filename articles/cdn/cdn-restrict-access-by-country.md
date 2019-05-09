@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 471a7e3704f10674c8a1d9bdf26df5f0aaf8519b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093308"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526183"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>国に応じて Azure CDN コンテンツへのアクセスを制限
 
@@ -56,11 +56,11 @@ geo フィルタリングは、スラッシュ (/) を指定してすべての�
 
 - **許可**: 指定した国のユーザーだけが、その再帰パスから要求された資産へのアクセスを許可されます。
 
-- **ブロック**: 指定した国のユーザーは、その再帰パスから要求された資産へのアクセスをブロックされます。 その場所に対して他の国フィルター オプションが構成されていない場合、他のすべてのユーザーはアクセスを許可されます。
+- **ブロック**: 指定した国のユーザーは、その再帰パスから要求された資産へのアクセスを拒否されます。 その場所に対して他の国フィルター オプションが構成されていない場合、他のすべてのユーザーはアクセスを許可されます。
 
 たとえば、*/Photos/Strasbourg/* パスをブロックする geo フィルタリング ルールは、次のファイルへのアクセスをブロックします。     
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
+*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countries"></a>国を定義する
 **[国番号]** の一覧から、パスを許可またはブロックする国を選択します。 
@@ -110,5 +110,5 @@ geo フィルタリングは、スラッシュ (/) を指定してすべての�
 
 * 同じ相対パスに適用できるのは、1 つのルールのみです。 つまり、同じ相対パスを指す複数の国フィルターを作成することはできません。 ただし、国フィルターの再帰的な性質のため、フォルダーには複数の国フィルターを含めることができます。 つまり、以前に構成されているフォルダーのサブフォルダーに、別の国フィルターを割り当てることができます。
 
-* geo フィルタリング機能では、国番号を使用して、保護されたディレクトリに対する要求が許可またはブロックされる国を定義します。 Akamai プロファイルと Verizon プロファイルは、ほぼ同一の国番号をサポートしますが、いくつか違いがあります。 詳細については、「[Azure CDN Country Codes](https://msdn.microsoft.com/library/mt761717.aspx)」(Azure CDN 国コード) を参照してください。 
+* geo フィルタリング機能では、国番号を使用して、保護されたディレクトリに対する要求が許可またはブロックされる国を定義します。 Akamai プロファイルと Verizon プロファイルは、ほぼ同一の国番号をサポートしますが、いくつか違いがあります。 詳細については、「[Azure CDN Country Codes](/previous-versions/azure/mt761717(v=azure.100))」(Azure CDN 国コード) を参照してください。 
 

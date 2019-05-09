@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: dc87079083b8f07ad18f5f871bff64de8d492ebd
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 414bb0183e68cb46e52c379ea3f7aceda5d4170e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285648"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701184"
 ---
 ## <a name="the-parts-of-the-device-model-schema"></a>デバイス モデル スキーマの各パーツ
 
@@ -57,7 +57,7 @@ ms.locfileid: "39285648"
 
 以下のセクションでは、JSON スキーマのその他のセクションについて説明します。
 
-## <a name="simulation"></a>Simulation
+## <a name="simulation"></a>シミュレーション
 
 `Simulation` セクションでは、シミュレートされたデバイスの内部状態を定義します。 デバイスから送信されたテレメトリ値は、このデバイスの状態に含まれている必要があります。
 
@@ -105,9 +105,9 @@ ms.locfileid: "39285648"
 }
 ```
 
-ソリューションは、開始されると、シミュレートされたすべてのデバイスにクエリを実行して、UI で使用する `Type` 値の一覧を作成します。 このソリューションでは、`Latitiude` プロパティと `Longitude` プロパティを使用して、デバイスの位置情報をダッシュボード上のマップに追加します。
+ソリューションは、開始されると、シミュレートされたすべてのデバイスにクエリを実行して、UI で使用する `Type` 値の一覧を作成します。 このソリューションでは、`Latitude` プロパティと `Longitude` プロパティを使用して、デバイスの位置情報をダッシュボード上のマップに追加します。
 
-## <a name="telemetry"></a>Telemetry
+## <a name="telemetry"></a>テレメトリ
 
 `Telemetry` 配列では、シミュレートされたデバイスがソリューションに送信するテレメトリの種類すべてが一覧表示されます。
 
@@ -143,9 +143,9 @@ ms.locfileid: "39285648"
 * バイナリ - base64 を使用してシリアル化
 * Text
 * Boolean
-* Integer
+* 整数
 * Double
-* Datetime
+* DateTime
 
 さまざまな間隔でテレメトリ メッセージを送信するには、複数のテレメトリの種類を `Telemetry` 配列に追加します。 次の例では、10 秒ごとに温度と湿度のデータ、1 分ごとにライトの状態を送信します。
 

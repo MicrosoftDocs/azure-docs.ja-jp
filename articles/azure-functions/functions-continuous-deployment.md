@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: fd8fa690c508b8bf748490668c1e9aaa811ac247
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301550"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300280"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
 Azure Functions を利用すると、App Service の継続的インテグレーションを使用して、関数アプリを簡単にデプロイできます。 Functions は、BitBucket、Dropbox、GitHub、および Azure DevOps と統合されています。 これにより、関数コードの更新がこれらの統合されたサービスのいずれかを使用して行われるワークフローで、Azure へのデプロイをトリガーできるようになります。 Azure Functions に慣れていない場合は、「 [Azure Functions の概要](functions-overview.md)」から始めてください。
@@ -26,10 +26,10 @@ Azure Functions を利用すると、App Service の継続的インテグレー�
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
 * 外部リポジトリ (Git または Mercurial)
-* [Git ローカル リポジトリ](../app-service/app-service-deploy-local-git.md)
+* [Git ローカル リポジトリ](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
-* [Azure DevOps Services](https://www.visualstudio.com/team-services/)
+* [Azure DevOps](https://azure.microsoft.com/services/devops/)
 
 デプロイは関数アプリごとに構成されます。 継続的なデプロイが有効になると、 ポータル内の関数コードへのアクセスは、 *読み取り専用*に設定されます。
 
@@ -52,7 +52,7 @@ Azure DevOps からデプロイできるようにするには、まず、Azure �
  
     ![継続的なデプロイの設定](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. **[展開元]** ブレードで、**[ソースの選択]** をクリックし、選択したデプロイ ソースの情報を入力して、**[OK]** をクリックします。
+3. **[展開元]** ブレードで、**[ソースの選択]** をクリックし、選択したデプロイ ソースの情報を入力して、**[OK]** をクリックします。
    
     ![デプロイ ソースの選択](./media/functions-continuous-deployment/choose-deployment-source.png)
 
@@ -93,12 +93,12 @@ Azure DevOps からデプロイできるようにするには、まず、Azure �
 > [!NOTE]
 > 継続的インテグレーションを構成した後は、Functions のポータルでソース ファイルを編集することはできなくなります。
 
-- [方法: デプロイ資格情報の構成](#credentials)
-- [方法: FTP を使用したファイルのダウンロード](#downftp)
-- [方法: ローカルの Git リポジトリを使用したファイルのダウンロード](#downgit)
+- [方法:デプロイ資格情報の構成](#credentials)
+- [方法:FTP を使用したファイルのダウンロード](#downftp)
+- [方法:ローカルの Git リポジトリを使用したファイルのダウンロード](#downgit)
 
 <a name="credentials"></a>
-#### <a name="how-to-configure-deployment-credentials"></a>方法: デプロイ資格情報の構成
+#### <a name="how-to-configure-deployment-credentials"></a>方法:デプロイ資格情報の構成
 FTP またはローカル Git リポジトリで関数アプリからファイルをダウンロードする前に、サイトにアクセスするための資格情報を構成する必要があります。 資格情報は関数アプリ レベルで設定されます。 以下の手順に従って、Azure Portal でデプロイ資格情報を設定します。
 
 1. [Azure Portal](https://portal.azure.com) の関数アプリで、**[プラットフォーム機能]** と **[デプロイ資格情報]** をクリックします。
@@ -108,7 +108,7 @@ FTP またはローカル Git リポジトリで関数アプリからファイ�
 2. ユーザー名とパスワードを入力し、 **[保存]** をクリックします。 これでこれらの資格情報を使用して、FTP または組み込みの Git リポジトリから関数アプリにアクセスできます。
 
 <a name="downftp"></a>
-#### <a name="how-to-download-files-using-ftp"></a>方法: FTP を使用したファイルのダウンロード
+#### <a name="how-to-download-files-using-ftp"></a>方法:FTP を使用したファイルのダウンロード
 
 1. [Azure Portal](https://portal.azure.com) の関数アプリで、**[プラットフォーム機能]** と **[プロパティ]** をクリックし、**FTP/デプロイ ユーザー**、**FTP ホスト名**、および **FTPS ホスト名**の値をコピーします。  
 
@@ -119,7 +119,7 @@ FTP またはローカル Git リポジトリで関数アプリからファイ�
 2. FTP クライアントから、収集した接続情報を使用してアプリに接続し、関数のソース ファイルをダウンロードします。
 
 <a name="downgit"></a>
-#### <a name="how-to-download-files-using-a-local-git-repository"></a>方法: ローカルの Git リポジトリを使用したファイルのダウンロード
+#### <a name="how-to-download-files-using-a-local-git-repository"></a>方法:ローカルの Git リポジトリを使用したファイルのダウンロード
 
 1. [Azure Portal](https://portal.azure.com) の関数アプリで、**[プラットフォーム機能]** と **[展開オプション]** をクリックします。 
    

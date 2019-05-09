@@ -3,19 +3,19 @@ title: ContentDefinitions - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの ContentDefinitions element 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: f51b058b14525cc5a4af312696330a3a39ea44e1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: e36eb3816d6f465552c4db740508d5e7f5fa1331
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44383170"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161666"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -63,7 +63,7 @@ ms.locfileid: "44383170"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | はい | コンテンツ定義の識別子。 この値は、このページの後半の**コンテンツ定義 ID** セクションで指定される値です。 |
+| Id | はい | コンテンツ定義の識別子。 この値は、このページの後半の**コンテンツ定義 ID** セクションで指定される値です。 |
 
 **ContentDefinition** 要素には、次の属性が含まれています。
 
@@ -101,7 +101,7 @@ ms.locfileid: "44383170"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Language | はい | 「RFC 5646 - 言語を識別するタグ」に従ってポリシーでサポートされている言語を含む文字列。 |
+| 言語 | はい | 「RFC 5646 - 言語を識別するタグ」に従ってポリシーでサポートされている言語を含む文字列。 |
 | LocalizedResourcesReferenceId | はい | **LocalizedResources** 要素の識別子。 |
 
 次の例は、サインアップまたはサインインのコンテンツ定義を示しています。

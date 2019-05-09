@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414779"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879941"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
 [ネットワーク セキュリティ グループ フロー ログ](network-watcher-nsg-flow-logging-overview.md)の情報を使用して、Azure ネットワーク インターフェイスのイングレスおよびエグレス IP トラフィックを把握できます。 フロー ログには、ネットワーク セキュリティ グループの規則ごとの送信および受信フロー、フローが適用されているネットワーク インターフェイス、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル)、トラフィックが許可されたか拒否されたかが示されます。
 
 ネットワークの複数のネットワーク セキュリティ グループでフロー ログを有効にすることができます。 複数のネットワーク セキュリティ グループでフロー ログを有効にすると、ログを解析し、ログから洞察を得ることが難しくなる可能性があります。 この記事では、Graylog (オープン ソースのログ管理および分析ツール) と Logstash (オープン ソースのサーバー側データ処理パイプライン) を使用して、これらのネットワーク セキュリティ グループ フロー ログを一元的に管理するソリューションについて説明します。
+
+> [!Warning]
+> 次の手順は、フロー ログのバージョン 1 に使用できます。 詳細については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」を参照してください。 次の手順は、変更しなければ、ログ ファイルのバージョン 2 で使用できません。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -44,12 +47,12 @@ Network Watcher を使用して、ネットワーク セキュリティ グル�
 
 この例では、Graylog と Logstash はどちらも Azure にデプロイされた Ubuntu 14.04 Server 上で構成されます。
 
-- Ubuntu にインストールする手順については、Graylog の[ドキュメント](http://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html)を参照してください。
-- [こちら](http://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif)のドキュメントに従って、Graylog Web インターフェイスも構成する必要があります。
+- Ubuntu にインストールする手順については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html)を参照してください。
+- [こちら](https://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif)のドキュメントに従って、Graylog Web インターフェイスも構成する必要があります。
 
-この例では、Graylog の最小限のセットアップ ( Graylog の単一のインスタンス) を使用しますが、システムと運用のニーズに応じて、複数のリソースにスケールするように構築できます。 アーキテクチャに関する考慮事項や詳細なアーキテクチャ ガイドについては、Graylog の[ドキュメント](http://docs.graylog.org/en/2.2/pages/architecture.html)と[アーキテクチャ ガイド](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture)を参照してください。
+この例では、Graylog の最小限のセットアップ ( Graylog の単一のインスタンス) を使用しますが、システムと運用のニーズに応じて、複数のリソースにスケールするように構築できます。 アーキテクチャに関する考慮事項や詳細なアーキテクチャ ガイドについては、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/architecture.html)と[アーキテクチャ ガイド](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture)を参照してください。
 
-Graylog は、プラットフォームと基本設定に応じて、さまざまな方法でインストールできます。 使用可能なインストール方法の一覧については、Graylog の公式[ドキュメント](http://docs.graylog.org/en/2.2/pages/installation.html)を参照してください。 Graylog サーバー アプリケーションは、Linux ディストリビューションで実行されます。前提条件は次のとおりです。
+Graylog は、プラットフォームと基本設定に応じて、さまざまな方法でインストールできます。 使用可能なインストール方法の一覧については、Graylog の公式[ドキュメント](https://docs.graylog.org/en/2.2/pages/installation.html)を参照してください。 Graylog サーバー アプリケーションは、Linux ディストリビューションで実行されます。前提条件は次のとおりです。
 
 -  Java SE 8 以降 - [Azul Azure JDK のドキュメント](https://aka.ms/azure-jdks)
 -  Elastic Search 2.x (2.1.0 以降) - [Elasticsearch のインストール ドキュメント](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
@@ -147,7 +150,7 @@ Logstash を使用して、JSON 形式のフロー ログをフロー タプル 
         }
     }
     ```
-用意されている Logstash 構成ファイルは、input、filter、output の 3 つの部分で構成されます。 input セクションでは、Logstash が処理するログの入力ソースを指定します。この例では、(次の手順でインストールする) Azure BLOB 入力プラグインを使用します。このプラグインにより、Blob Storage に格納されているネットワーク セキュリティ グループ フロー ログ JSON ファイルにアクセスできるようになります。
+   用意されている Logstash 構成ファイルは、input、filter、output の 3 つの部分で構成されます。 input セクションでは、Logstash が処理するログの入力ソースを指定します。この例では、(次の手順でインストールする) Azure BLOB 入力プラグインを使用します。このプラグインにより、Blob Storage に格納されているネットワーク セキュリティ グループ フロー ログ JSON ファイルにアクセスできるようになります。
 
 filter セクションは、個々のフロー タプルとそれに関連付けられたプロパティが別の Logstash イベントになるように、各フロー ログ ファイルをフラット化します。
 
@@ -180,7 +183,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
    ![使用の開始](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. 新しい入力を開始するには、**[Select input]\(入力の選択\)** ドロップダウンで *[GELF UDP]* を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](http://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
+3. 新しい入力を開始するには、**[Select input]\(入力の選択\)** ドロップダウンで *[GELF UDP]* を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
 
    Graylog サーバーが構成されている IP に入力をバインドする必要があります。 IP アドレスは、Logstash 構成ファイルの UDP 出力の **host** フィールドと一致する必要があります。 既定のポートは *12201* です。 ポートが、Logstash 構成ファイルで指定されている UDP 出力の **port** フィールドと一致することを確認します。
 
@@ -190,7 +193,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
    ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
-   Graylog のメッセージ入力の詳細については、[こちら](http://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)のドキュメントを参照してください。
+   Graylog のメッセージ入力の詳細については、[こちら](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)のドキュメントを参照してください。
 
 4. これらの構成を行ったら、`sudo systemctl start logstash.service` コマンドを使用して、Logstash を起動し、フロー ログの読み取りを開始できます。
 
@@ -204,7 +207,7 @@ Graylog サーバーがメッセージを収集するまでしばらく待って
 
 ![メッセージ](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
-検索対象となる特定のメッセージ フィールドを選択していない場合、既定ではすべてのメッセージ フィールドが検索に含まれます。 特定のメッセージ ( 特定のソース IP のフロー タプル) を検索する場合は、[こちら](http://docs.graylog.org/en/2.2/pages/queries.html)に記載されている Graylog の検索クエリ言語をご利用いただけます。
+検索対象となる特定のメッセージ フィールドを選択していない場合、既定ではすべてのメッセージ フィールドが検索に含まれます。 特定のメッセージ ( 特定のソース IP のフロー タプル) を検索する場合は、[こちら](https://docs.graylog.org/en/2.2/pages/queries.html)に記載されている Graylog の検索クエリ言語をご利用いただけます。
 
 ## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Graylog を使用したネットワーク セキュリティ グループ フロー ログの分析
 
@@ -238,7 +241,7 @@ Graylog の設定が完了したので、その機能を使用してフロー �
 
    ![フロー ログ ダッシュボード](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
 
-    ダッシュボードと他の種類のウィジェットの詳細については、Graylog の[ドキュメント](http://docs.graylog.org/en/2.2/pages/dashboards.html)を参照してください。
+    ダッシュボードと他の種類のウィジェットの詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/dashboards.html)を参照してください。
 
 Network Watcher を Graylog と統合することで、ネットワーク セキュリティ グループ フロー ログを簡単かつ一元的に管理し、視覚化できるようになりました。 Graylog には、ストリームやアラートなどの強力な機能が多数用意されています。これらの機能を使用してフロー ログを詳細に管理し、ネットワーク トラフィックの理解を深めることができます。 Graylog をセットアップし、Azure に接続したので、提供される他の機能を引き続き自由に探索してください。
 

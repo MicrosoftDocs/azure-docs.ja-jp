@@ -6,20 +6,20 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141409"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890855"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
-このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
+このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
 
 ## <a name="dataset"></a>NYC タクシー乗車データセットの説明
 NYC タクシー乗車データは、約 20GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) です。1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金で構成されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー (運転手の) 免許番号、および営業許可番号 (タクシーの一意の ID) が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
@@ -82,7 +82,7 @@ Azure のデータ サイエンス環境をセット アップするには、
 データセットのサイズ、データ ソースの場所、選択された Azure の対象環境に基づくと、このシナリオは「[シナリオ \#5: ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)](plan-sample-scenarios.md#largelocaltodb)」と類似しています。
 
 ## <a name="getdata"></a>公開されているソースからデータを取得する
-公開されている場所から [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットを取得するには、「[Azure Blob Storage との間でデータを移動する](move-azure-blob.md)」で説明するいずれかの方法を使用して、データを新しい仮想マシンにコピーします。
+公開されている場所から [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットを取得するには、「[Azure Blob Storage との間でデータを移動する](move-azure-blob.md)」で説明するいずれかの方法を使用して、データを新しい仮想マシンにコピーします。
 
 AzCopy を使用してデータをコピーするには
 
@@ -416,7 +416,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
+#### <a name="exploration-trip-distribution-per-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
     query = '''
         SELECT medallion,count(*) AS c
         FROM nyctaxi_one_percent
@@ -622,9 +622,9 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 このサンプルのチュートリアルとそれに付随するスクリプトおよび IPython notebooks は、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある LICENSE.txt ファイルを確認してください。
 
 ### <a name="references"></a>参照
-•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
-•    [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-•    [ニューヨーク市タクシー&リムジン委員会調査および統計](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
+•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](https://www.andresmh.com/nyctaxitrips/)  
+•    [NYC のタクシー乗車データを FOIL する (Chris Whong)](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sql-walkthrough/sql-walkthrough_28_1.png

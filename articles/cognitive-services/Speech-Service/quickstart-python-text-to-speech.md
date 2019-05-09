@@ -4,25 +4,25 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドに含まれているサンプル テキストは、音声合成マークアップ言語 (SSML) として構成されています。 そのため、音声応答の音声と言語を選択することができます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/16/2018
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 7512c443c49f1518d6a6f7ace7e981d3508b1d7a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 087440b60e1d5fecc668849bc1350d66988b16b9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090059"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339087"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>クイック スタート: Python を使用してテキストを音声に変換する
 
 このクイック スタートでは、Python と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドでは、要求本文が[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として構成されており、応答の音声と言語を選択することができます。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Service リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Services リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "53090059"
 
 * Python 2.7.x または 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Service の Azure サブスクリプション キー
+* Speech Services 用の Azure サブスクリプション キー
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
@@ -38,6 +38,7 @@ ms.locfileid: "53090059"
 
 ```python
 import os, requests, time
+from xml.etree import ElementTree
 ```
 
 > [!NOTE]
@@ -69,9 +70,9 @@ class TextToSpeech(object):
 
 ## <a name="get-an-access-token"></a>アクセス トークンを取得する
 
-Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、Speech Service のサブスクリプション キーをアクセス トークンと交換します。
+Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、ご利用の Speech Services のサブスクリプション キーをアクセス トークンと交換します。
 
-このサンプルでは、ご利用の Speech Service のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`fetch_token_url` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
+このサンプルでは、ご利用の Speech Services のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`fetch_token_url` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
 
 このコードを `TextToSpeech` クラスにコピーします。
 
@@ -86,13 +87,13 @@ def get_token(self):
 ```
 
 > [!NOTE]
-> 認証の詳細については、[アクセス トークンを取得する方法](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token)に関するセクションを参照してください。
+> 認証の詳細については、[アクセス トークンによる認証](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)に関するセクションを参照してください。
 
 ## <a name="make-a-request-and-save-the-response"></a>要求を実行して応答を保存する
 
-ここでは、要求を構築して音声応答を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech Service のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
+ここでは、要求を構築して音声応答を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech Services のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
 
-次に、要求に必要なヘッダーを追加する必要があります。 必ず `User-Agent` を (Azure portal にある) ご使用のリソースの名前に更新し、`X-Microsoft-OutputFormat` を、優先するオーディオ出力に設定してください。 出力形式の全一覧については、[オーディオ出力](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs)に関するセクションを参照してください。
+次に、要求に必要なヘッダーを追加する必要があります。 必ず `User-Agent` を (Azure portal にある) ご使用のリソースの名前に更新し、`X-Microsoft-OutputFormat` を、優先するオーディオ出力に設定してください。 出力形式の全一覧については、[オーディオ出力](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)に関するセクションを参照してください。
 
 次に、音声合成マークアップ言語 (SSML) を使用して要求本文を構成します。 このサンプルでは、その構造を定義し、先ほど作成した `tts` 入力を使用しています。
 
@@ -113,10 +114,15 @@ def save_audio(self):
         'Authorization': 'Bearer ' + self.access_token,
         'Content-Type': 'application/ssml+xml',
         'X-Microsoft-OutputFormat': 'riff-24khz-16bit-mono-pcm',
-        'User-Agent': 'YOUR_RESOURCE_NAME',
-        'cache-control': 'no-cache'
+        'User-Agent': 'YOUR_RESOURCE_NAME'
     }
-    body = "<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>" + self.tts + "</voice></speak>"
+    xml_body = ElementTree.Element('speak', version='1.0')
+    xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
+    voice = ElementTree.SubElement(xml_body, 'voice')
+    voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
+    voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+    voice.text = self.tts
+    body = ElementTree.tostring(xml_body)
 
     response = requests.post(constructed_url, headers=headers, data=body)
     if response.status_code == 200:
@@ -125,7 +131,6 @@ def save_audio(self):
             print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
     else:
         print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
-
 ```
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
@@ -157,9 +162,10 @@ python tts.py
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+> [GitHub で Python のサンプルを詳しく見てみる](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
 ## <a name="see-also"></a>関連項目
 
+* [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [カスタム音声フォントの作成](how-to-customize-voice-font.md)
 * [カスタム音声を作成するための音声サンプルを録音する](record-custom-voice-samples.md)

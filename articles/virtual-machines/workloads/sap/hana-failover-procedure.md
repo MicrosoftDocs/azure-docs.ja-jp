@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48bea302f2f8e878275e6a7c222d703e0f31f239
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ca4d5912d75dd7b33737f61737a209284b7a5a47
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44492866"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616154"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>ディザスター リカバリーのフェールオーバー手順
 
@@ -104,7 +104,7 @@ DR サイトの HANA L インスタンス ユニットで、スクリプト **az
 
 ![復元の進行状況](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
 
-復元が **[Finish]\(完了\)** 画面で停止しているように思われ、進行状況画面が表示されない場合は、ワーカー ノードのすべての SAP HANA インスタンスが実行されていることを確認します。 必要に応じて、SAP HANA インスタンスを手動で起動します。
+復元の応答が **[Finish]\(完了\)** 画面で停止しているように思われ、進行状況画面が表示されない場合は、ワーカー ノードのすべての SAP HANA インスタンスが実行されていることを確認します。 必要に応じて、SAP HANA インスタンスを手動で起動します。
 
 
 ## <a name="failback-from-a-dr-to-a-production-site"></a>DR サイトから運用サイトへのフェールバック

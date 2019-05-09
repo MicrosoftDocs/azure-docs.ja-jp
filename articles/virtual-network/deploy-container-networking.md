@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 62d19432cba431bce4485aaa2af3e0a23ad8b5f6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970976"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104099"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Virtual Network コンテナー ネットワーク インターフェイス プラグインのデプロイ
 
@@ -95,10 +95,10 @@ Kubernetes クラスター内のすべての Azure 仮想マシンにプラグ�
 1. [プラグインをダウンロードしてインストールします](#download-and-install-the-plug-in)。
 2. ポッドへの IP アドレスの割り当て元となるすべての仮想マシンで、仮想ネットワークの IP アドレス プールを事前に割り当てます。 すべての Azure 仮想マシンには、ネットワーク インターフェイスごとにプライマリ仮想ネットワークのプライベート IP アドレスが付属しています。 ポッド用の IP アドレスのプールは、次のいずれかのオプションを使用して、仮想マシンのネットワーク インターフェイス上にセカンダリ アドレス (*ipconfigs*) として追加されます。
 
-   - **CLI**: [Azure CLI を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [PowerShell を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-powershell.md)
-   - **ポータル**: [Azure portal を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager テンプレート**: [テンプレートを使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**:  [Azure CLI を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**:  [PowerShell を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-powershell.md)
+   - **ポータル**:  [Azure portal を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager テンプレート**:  [テンプレートを使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-template.md)
 
    仮想マシンでの起動が想定されるすべてのポッドに十分な IP アドレスを確実に追加します。
 
@@ -106,13 +106,13 @@ Kubernetes クラスター内のすべての Azure 仮想マシンにプラグ�
 4. ポッドをインターネットにアクセスさせるには、ご使用の Linux 仮想マシン上の次の *iptables* 規則を source-NAT インターネット トラフィックに追加します。 次の例では、指定された IP 範囲は、10.0.0.0/8 です。
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
    指定した IP 範囲に宛先がない NAT トラフィックの規則。 前の範囲外のすべてのトラフィックがインターネット トラフィックであることを前提としています。 仮想マシンの仮想ネットワーク、ピアリングされた仮想ネットワーク、およびオンプレミス ネットワークの IP 範囲を指定できます。
 
-  Windows 仮想マシンは、サブネット外の宛先を持つ NAT トラフィックを仮想マシンが属するサブネットに自動的に送信元を明らかにします。 カスタムの IP 範囲を指定することはできません。
+   Windows 仮想マシンは、サブネット外の宛先を持つ NAT トラフィックを仮想マシンが属するサブネットに自動的に送信元を明らかにします。 カスタムの IP 範囲を指定することはできません。
 
 前の手順を完了すると、Kubernetes エージェント仮想マシンで起動されたポッドに、仮想ネットワークからプライベート IP アドレスが自動的に割り当てられます。
 
@@ -157,12 +157,12 @@ CNI ネットワーク構成ファイルは、JSON 形式で記述されてい�
 
 #### <a name="settings-explanation"></a>設定の説明
 
-- **cniVersion**: Azure Virtual Network CNI プラグインは、[CNI 仕様](https://github.com/containernetworking/cni/blob/master/SPEC.md)のバージョン 0.3.0 および 0.3.1 をサポートしています。
-- **name**: ネットワークの名前。 このプロパティは、任意の一意の値に設定できます。
-- **type**: ネットワーク プラグインの名前。 *azure-vnet* に設定します。
-- **mode**: 操作モード。 このフィールドは省略可能です。 サポートされているモードは、"bridge" だけです。 詳細については、[操作モード](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)を参照してください。
+- **cniVersion**: Azure Virtual Network CNI プラグインは、 [CNI 仕様](https://github.com/containernetworking/cni/blob/master/SPEC.md)のバージョン 0.3.0 および 0.3.1 をサポートしています。
+- **name**:ネットワークの名前。 このプロパティは、任意の一意の値に設定できます。
+- **type**: ネットワーク プラグインの名前。  *azure-vnet* に設定します。
+- **mode**: 操作モード。 このフィールドは省略可能です。 サポートされているモードは、"bridge" だけです。 詳細については、 [操作モード](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)を参照してください。
 - **bridge**: コンテナーを仮想ネットワークに接続するために使用されるブリッジの名前。 このフィールドは省略可能です。 省略した場合、マスター インターフェイスのインデックスに基づいて、一意の名前がプラグインによって自動的に選択されます。
-- **ipam type**: IPAM プラグインの名前。 常に *azure-vnet-ipam* に設定します。
+- **ipam type**: IPAM プラグインの名前。 常に  *azure-vnet-ipam* に設定します。
 
 ## <a name="download-and-install-the-plug-in"></a>プラグインのダウンロードとインストール
 

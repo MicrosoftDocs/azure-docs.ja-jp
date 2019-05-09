@@ -3,19 +3,20 @@ title: LUIS アプリのテスト
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。
 author: diberry
-manager: cgronlun
+manager: nitinme
+services: cognitive-services
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 5aeb955b579a15f29429c585720dbef1b9560efa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105531"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789539"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUIS での発話の例のテスト
 
@@ -47,7 +48,7 @@ LUIS で、対話的に一度に 1 つずつ発話を[テスト](luis-interactiv
 ## <a name="where-to-find-utterances"></a>発話の検索場所
 LUIS では、ログに記録されたすべての発話がクエリ ログに格納され、[LUIS](luis-reference-regions.md) Web サイトの **[アプリ]** 一覧ページでダウンロードしたり、LUIS [オーサリング API](https://aka.ms/luis-authoring-apis) で使用したりできます。 
 
-LUIS が確信を持てなかった発話はすべて、[LUIS](luis-reference-regions.md) Web サイトの **[[エンドポイントの発話の確認]](luis-how-to-review-endoint-utt.md)** ページに一覧表示されます。 
+LUIS が確信を持てなかった発話はすべて、[LUIS](luis-reference-regions.md) Web サイトの **[[エンドポイントの発話の確認]](luis-how-to-review-endpoint-utterances.md)** ページに一覧表示されます。 
 
 ![エンドポイントの発言の確認](./media/luis-concept-test/review-endpoint-utterances.png)
  

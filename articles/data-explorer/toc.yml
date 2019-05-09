@@ -7,12 +7,24 @@ items:
     href: data-explorer-overview.md
 - name: クイック スタート
   items:
-  - name: クラスターを作成する - Azure portal
-    href: create-cluster-database-portal.md
+  - name: クラスターとデータベースの作成
+    items:
+    - name: Azure ポータル
+      href: create-cluster-database-portal.md
+    - name: Azure CLI
+      href: create-cluster-database-cli.md
+    - name: PowerShell
+      href: create-cluster-database-powershell.md
+    - name: C#
+      href: create-cluster-database-csharp.md
+    - name: Python
+      href: create-cluster-database-python.md
   - name: データの取り込み
     items:
     - name: データのストリーミング - イベント ハブ
       href: ingest-data-event-hub.md
+    - name: データのストリーミング - Event Grid
+      href: ingest-data-event-grid.md
     - name: データのストリーム配信 - Kafka
       href: ingest-data-kafka.md
     - name: データのバッチ処理 - Python
@@ -21,6 +33,8 @@ items:
       href: node-ingest-data.md
     - name: データのバッチ処理 - .NET Standard SDK
       href: net-standard-ingest-data.md
+    - name: データのバッチ処理 - Logstash
+      href: ingest-data-logstash.md
   - name: データのクエリを実行する
     items:
     - name: Web UI
@@ -35,8 +49,11 @@ items:
       href: power-bi-imported-query.md
     - name: Power BI - SQL クエリ
       href: power-bi-sql-query.md
+  expanded: true
 - name: チュートリアル
   items:
+  - name: コードを使用せずにデータを取り込む
+    href: ingest-data-no-code.md
   - name: Power BI でのデータの視覚化
     href: visualize-power-bi.md
 - name: 概念
@@ -46,7 +63,6 @@ items:
     href: ingest-data-overview.md
   - name: 時系列分析
     href: time-series-analysis.md
-  expanded: true
 - name: ハウツー ガイド
   items:
   - name: 作業の開始
@@ -55,27 +71,36 @@ items:
       href: write-queries.md
     - name: サンプル データを取り込む
       href: ingest-sample-data.md
-    expanded: true
   - name: 管理
     items:
     - name: データベースのアクセス許可を管理する
       href: manage-database-permissions.md
     - name: クラスターの正常性を確認する
       href: check-cluster-health.md
-    - name: クラスター スケーリングを管理する
-      href: manage-cluster-scaling.md
+    - name: クラスターのスケールアウトの管理
+      href: manage-cluster-scale-out.md
+    - name: クラスターのスケールアップの管理
+      href: manage-cluster-scale-up.md
     - name: データの削除
       href: delete-data.md
     - name: 重複したデータを処理する
       href: dealing-with-duplicates.md
+  - name: 監視
+    items:
+    - name: メトリックを使用してクラスターの正常性を監視する
+      href: using-metrics.md
   - name: その他のツールを操作する
     items:
     - name: Python を使用して Databricks から接続する
       href: connect-from-databricks.md
-    - name: Jupyter Notebook と Kqlmagic を使用してデータを分析する
+    - name: Jupyter Notebook と Kqlmagic でデータを分析する
       href: kqlmagic.md
+    - name: Azure Data Factory でデータをコピーする
+      href: data-factory-load-data.md
     - name: Grafana でデータを視覚化する
       href: grafana.md
+    - name: ODBC に接続する
+      href: connect-odbc.md
   - name: トラブルシューティング
     items:
     - name: クラスターを作成する
@@ -109,16 +134,16 @@ items:
     - name: MSDN フォーラム
       href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
   - name: 製品フィードバック
-    href: http://aka.ms/adefeedback
+    href: https://aka.ms/adefeedback
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/data-explorer/
   - name: Cost Estimator
-    href: http://aka.ms/adecostestimator
+    href: https://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: fd86d2d3ceb8e23567c8bfbfbbee87485d1def58
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c582b82f4b4caf0ee3bb007934cc4d50163fe139
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021637"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616817"

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Interpret メソッドを使用して、Microsoft Cognitive Services の Academic Graph データと Academic Grammar に基づくユーザー クエリ文字列の解釈を書式設定して返します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e16a772caa5fba632f8544094e2d8b57ed4ca765
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902571"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975493"
 ---
 # <a name="interpret-method"></a>Interpret メソッド
 
@@ -37,9 +37,11 @@ Name     | 値 | 必須  | 説明
 **count**    | Number | いいえ <br>既定値: 10 | 返される解釈の最大数。         
 **offset**   | Number | いいえ <br>既定値: 0  | 返される最初の解釈のインデックス。 たとえば、*count=2&offset=0* では、解釈 0 および 1 が返されます。 *count=2&offset=2* では、解釈 2 および 3 が返されます。       
 **timeout**  | Number | いいえ <br>既定値: 1000 | タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
+
 <br>
   
 ## <a name="response-json"></a>応答 (JSON)
+
 Name     | 説明
 ---------|---------
 **query** |要求からの *query* パラメーター。
@@ -54,6 +56,7 @@ Name     | 説明
 **aborted** | 要求がタイムアウトした場合は True です。
 
 <br>
+
 #### <a name="example"></a>例:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2

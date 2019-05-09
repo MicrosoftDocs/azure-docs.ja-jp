@@ -1,25 +1,25 @@
 ---
-title: 'Azure Analysis Services チュートリアル - レッスン 2 : データを取得する | Microsoft Docs'
+title: 'Azure Analysis Services チュートリアルのレッスン 2: データを取得する | Microsoft Docs'
 description: Azure Analysis Services チュートリアル プロジェクトでデータを取得､インポートする方法を説明します｡
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7aaadb6237a3b16d166d3bc931fddc70fb4a792
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6643d0851be1ad9d2827f51af3662a469020654c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427622"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189322"
 ---
 # <a name="get-data"></a>データを取得する
 
 このレッスンでは､SSDT の Get Data を使用して､Adventure Works サンプル データベースへの接続､データの選択とプレビュー､フィルター､モデル ワークスペースへのデータのインポートを行います｡  
   
-Get Data を使うことで､Azure SQL Database や Oracle､Sybase､OData Feed､Teradata､ファイルなどの広範囲のさまざまなソースからデータをインポートできます｡ Power Query M 数式を使ってデータの照会を行うこともできます｡
+Get Data を使うことで､幅広いさまざまなソースからデータをインポートできます (Azure SQL Database や Oracle､Sybase､OData Feed､Teradata､ファイルなど)｡ Power Query M 数式を使ってデータの照会を行うこともできます｡
 
 > [!NOTE]
 > このチュートリアルのタスクと画像は、オンプレミス サーバー上の AdventureWorksDW2014 データベースへの接続を示しています。 Azure 上の Adventure Works データベースとは異なる場合があります。
@@ -27,7 +27,7 @@ Get Data を使うことで､Azure SQL Database や Oracle､Sybase､OData Fee
 このレッスンの推定所要時間: **10 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 1: 新しい表形式モデル プロジェクトを作成する](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)」を終えている必要があります。  
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 1:新しい表形式モデル プロジェクトを作成する](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)」を完了する必要があります。  
   
 ## <a name="create-a-connection"></a>接続を作成する  
   
@@ -52,7 +52,7 @@ Get Data を使うことで､Azure SQL Database や Oracle､Sybase､OData Fee
   
 5.  ナビゲーターで **AdventureWorksDW2014** データベースを選択し､**[OK]** をクリックします｡これで､データベースへの接続が作成されます｡ 
   
-6.  ナビゲーターで､次の表の **DimCustomer**､**DimDate**､ **DimGeography**､**DimProduct**､ **DimProductCategory**､ **DimProductSubcategory**､および**FactInternetSales** チェックボックスを選択し、**[編集]** をクリックします。
+6.  ナビゲーターで､次の表の **DimCustomer**､**DimDate**､ **DimGeography**､**DimProduct**､ **DimProductCategory**､ **DimProductSubcategory**､および**FactInternetSales** チェック ボックスを選択し、**[編集]** をクリックします。
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
@@ -151,7 +151,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
 -   **[ファイル]** > **[保存]** の順にクリックします。  
   
 ## <a name="whats-next"></a>次の手順
-[レッスン 3: 日付テーブルとしてマークする](../tutorials/aas-lesson-3-mark-as-date-table.md)
+[レッスン 3: 日付テーブルとしてマークする](../tutorials/aas-lesson-3-mark-as-date-table.md)。
 
   
   

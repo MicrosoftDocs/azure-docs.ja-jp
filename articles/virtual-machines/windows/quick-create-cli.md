@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4ca8d42c1b2eece82fa31283b0df0d450e2f5afc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8ce1383717b59cc7b7a43ca707fbe5ebba897f20
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978881"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730324"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>クイック スタート: Azure CLI を使用して Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Windows 仮想マシンを作成する
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して、Windows Server 2016 を実行する仮想マシン (VM) を Azure に展開する方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
@@ -35,7 +35,7 @@ CLI をローカルにインストールして使用することを選択する�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、VM に接続するときに必要です。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、VM に接続するときに必要です。
 
 ```azurecli-interactive
 az vm create \
@@ -73,7 +73,7 @@ VM とサポート リソースを作成するには数分かかります。 次
 
 ## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く
 
-既定では、Azure において Windows VM を作成すると RDP 接続のみが開かれます。 IIS Web サーバーで使うために TCP ポート 80 を開くには、[az vm open-port](/cli/azure/vm#az_vm_open_port) を使います。
+既定では、Azure において Windows VM を作成すると RDP 接続のみが開かれます。 IIS Web サーバーで使うために TCP ポート 80 を開くには、[az vm open-port](/cli/azure/vm) を使います。
 
 ```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -105,7 +105,7 @@ IIS をインストールし、VM のポート 80 をインターネットから
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

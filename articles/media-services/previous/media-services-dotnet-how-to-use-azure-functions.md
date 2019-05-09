@@ -1,10 +1,10 @@
 ---
-title: Media Services を使用する Azure 関数の開発
-description: このトピックでは、Media Services を使用する Azure 関数を Azure Portal で開発する方法について説明します。
+title: Develop Azure Functions with Media Services
+description: This topic shows how to start developing Azure Functions with Media Services using the Azure portal.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 51bdcb01-1846-4e1f-bd90-70020ab471b0
 ms.service: media-services
@@ -12,80 +12,80 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 31a12d43ba71f1a0eacbb12887b047f2fafe3b53
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57851768"
 ---
-# <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
+# <a name="develop-azure-functions-with-media-services"></a>Develop Azure Functions with Media Services
 
-この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure 関数について確認するには、**Azure 関数**のセクションで[概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
+This article shows you how to get started with creating Azure Functions that use Media Services. The Azure Function defined in this article monitors a storage account container named **input** for new MP4 files. Once a file is dropped into the storage container, the blob trigger executes the function. To review Azure functions, see  [Overview](../../azure-functions/functions-overview.md) and other topics in the **Azure functions** section.
 
-Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、**[Azure に配置する]** を押します。
+If you want to explore and deploy existing Azure Functions that use Azure Media Services, check out [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). This repository contains examples that use Media Services to show workflows related to ingesting content directly from blob storage, encoding, and writing content back to blob storage. It also includes examples of how to monitor job notifications via WebHooks and Azure Queues. You can also develop your Functions based on the examples in the [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) repository. To deploy the functions, press the **Deploy to Azure** button.
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-- 初めての関数を作成するには、アクティブな Azure アカウントを用意しておく必要があります。 Azure アカウントがまだない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
-- Azure Media Services (AMS) アカウントでアクションを実行する Azure 関数を作成したり、Media Services から送信されるイベントをリッスンしたりするためには、[こちら](media-services-portal-create-account.md)の説明に従って AMS アカウントを作成する必要があります。
+- Before you can create your first function, you need to have an active Azure account. If you don't already have an Azure account, [free accounts are available](https://azure.microsoft.com/free/).
+- If you are going to create Azure Functions that perform actions on your Azure Media Services (AMS) account or listen to events sent by Media Services, you should create an AMS account, as described [here](media-services-portal-create-account.md).
     
-## <a name="create-a-function-app"></a>Function App を作成する
+## <a name="create-a-function-app"></a>Create a function app
 
-1. [Azure Portal](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
-2. [こちら](../../azure-functions/functions-create-function-app-portal.md)の説明に従って関数アプリを作成します。
+1. Go to the [Azure portal](https://portal.azure.com) and sign-in with your Azure account.
+2. Create a function app as described [here](../../azure-functions/functions-create-function-app-portal.md).
 
 >[!NOTE]
-> **StorageConnection** 環境変数で指定したストレージ アカウント (次の手順を参照してください) は、アプリと同じリージョンにする必要があります。
+> A storage account that you specify in the **StorageConnection** environment variable (see the next step) should be in the same region as your app.
 
-## <a name="configure-function-app-settings"></a>関数アプリの設定の構成
+## <a name="configure-function-app-settings"></a>Configure function app settings
 
-Media Services の関数を開発するときは、自分が開発するさまざまな関数で使用する環境変数を追加しておくと便利です。 アプリケーション設定を構成するには、[アプリケーション設定の構成] リンクをクリックします。 詳細については、「[Azure Function App の設定の構成方法](../../azure-functions/functions-how-to-use-azure-function-app-settings.md)」を参照してください。 
+When developing Media Services functions, it is handy to add environment variables that will be used throughout your functions. To configure app settings, click the Configure App Settings link. For more information, see  [How to configure Azure Function app settings](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
 
-この記事で定義されている関数では、アプリケーション設定に次の環境変数があることを前提としています。
+The function, defined in this article, assumes you have the following environment variables in your app settings:
 
-**AMSAADTenantDomain**: Azure AD テナント エンドポイント。 AMS API への接続の詳細については、[こちら](media-services-use-aad-auth-to-access-ams-api.md)の記事を参照してください。
+**AMSAADTenantDomain**: Azure AD tenant endpoint. For more information about connecting to the AMS API, see [this](media-services-use-aad-auth-to-access-ams-api.md) article.
 
-**AMSRESTAPIEndpoint**: REST API エンドポイントを表す URI。 
+**AMSRESTAPIEndpoint**:  URI that represents the REST API endpoint. 
 
-**AMSClientId**: Azure AD アプリケーション クライアント ID。
+**AMSClientId**: Azure AD application client ID.
 
-**AMSClientSecret**: Azure AD アプリケーション クライアント シークレット。
+**AMSClientSecret**: Azure AD application client secret.
 
-**StorageConnection**: Media Services アカウントに関連付けられているアカウントのストレージ接続。 この値は、**function.json** ファイルと **run.csx** ファイルで使用されます (下記参照)。
+**StorageConnection**: storage connection of the account associated with the Media Services account. This value is used in the **function.json** file and **run.csx** file (described below).
 
-## <a name="create-a-function"></a>関数を作成する
+## <a name="create-a-function"></a>Create a function
 
-デプロイした関数アプリは、**[App Services]** の Azure Functions に表示されます。
+Once your function app is deployed, you can find it among **App Services** Azure Functions.
 
-1. 目的の関数アプリを選択し、**[新しい関数]** をクリックします。
-2. **C#** 言語と**データ処理**シナリオを選択します。
-3. **BlobTrigger** テンプレートを選択します。 BLOB を **input** コンテナーにアップロードするたびに、この関数はトリガーされます。 **input** 名は、次の手順の **Path** で指定されます。
+1. Select your function app and click **New Function**.
+2. Choose the **C#** language and **Data Processing** scenario.
+3. Choose **BlobTrigger** template. This function is triggered whenever a blob is uploaded into the **input** container. The **input** name is specified in the **Path**, in the next step.
 
-    ![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
-4. **BlobTrigger** を選択すると、一部の追加のコントロールがページに表示されます。
+4. Once you select **BlobTrigger**, some more controls appear on the page.
 
-    ![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. **Create** をクリックしてください。 
+4. Click **Create**. 
 
-## <a name="files"></a>ファイル
+## <a name="files"></a>Files
 
-開発した Azure 関数は、コード ファイルなど、このセクションで取り上げる各種ファイルに関連付けることになります。 Azure Portal を使用して関数を作成すると、**function.json** および **run.csx** が自動的に作成されます。 ユーザーは、**project.json** ファイルを追加するか、アップロードする必要があります。 このセクションの残りの部分では、各ファイルの簡単な説明とその定義を紹介します。
+Your Azure function is associated with code files and other files that are described in this section. When you use the Azure portal to create a function, **function.json** and **run.csx** are created for you. You need to add or upload a **project.json** file. The rest of this section gives a brief explanation of each file and shows their definitions.
 
-![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-function.json ファイルは、関数バインドとその他の構成設定を定義します。 ランタイムはこのファイルを使用して、監視対象のイベントを特定し、関数の実行との間でデータを渡したりデータを受け取ったりする方法を判断します。 詳細については、「[Azure Functions における HTTP と Webhook のバインド](../../azure-functions/functions-reference.md#function-code)」を参照してください。
+The function.json file defines the function bindings and other configuration settings. The runtime uses this file to determine the events to monitor and how to pass data into and return data from function execution. For more information, see [Azure functions HTTP and webhook bindings](../../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
->関数が実行されることを防ぐために、**disabled** プロパティを **true** に設定します。 
+>Set the **disabled** property to **true** to prevent the function from being executed. 
 
-既存の function.json ファイルの内容を次のコードで置き換えます。
+Replace the contents of the existing function.json file with the following code:
 
 ```json
 {
@@ -104,9 +104,9 @@ function.json ファイルは、関数バインドとその他の構成設定を
 
 ### <a name="projectjson"></a>project.json
 
-project.json ファイルには、依存関係が含まれています。 以下に Nuget からの必要な .NET Azure Media Services を含む **project.json** ファイルの例を示します。 バージョン番号は、パッケージに最新の更新プログラムがあると変更されることに注意してください。そのため、最新バージョンを確認する必要があります。 
+The project.json file contains dependencies. Here is an example of **project.json** file that includes the required .NET Azure Media Services packages from Nuget. Note that the version numbers change with latest updates to the packages, so you should confirm the most recent versions. 
 
-次の定義を project.json に追加します。 
+Add the following definition to project.json. 
 
 ```json
 {
@@ -126,16 +126,16 @@ project.json ファイルには、依存関係が含まれています。 以下
     
 ### <a name="runcsx"></a>run.csx
 
-これは関数の C# コードです。  以下で定義されている関数は、新しい MP4 ファイルの (パスで指定された) **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。
+This is the C# code for your function.  The function defined below monitors a storage account container named **input** (that is what was specified in the path) for new MP4 files. Once a file is dropped into the storage container, the blob trigger executes the function.
     
-このセクションで定義されている例では、次の操作を行います 
+The example defined in this section demonstrates 
 
-1. (AMS 資産に BLOB をコピーして) Media Services アカウントに資産を取り込む方法 
-2. Media Encoder Standard の "アダプティブ ストリーミング" プリセットを使用するエンコード ジョブを送信する方法。
+1. how to ingest an asset into a Media Services account (by coping a blob into an AMS asset) and 
+2. how to submit an encoding job that uses Media Encoder Standard's "Adaptive Streaming" preset.
 
-現実のシナリオでは、ほとんどの場合、ジョブの進行状況を追跡し、エンコードされた資産を発行します。 詳細については、[Azure WebHook を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)に関する記事を参照してください。 例については、「[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)」を参照してください。  
+In the real life scenario, you most likely want to track job progress and then publish your encoded asset. For more information, see [Use Azure WebHooks to monitor Media Services job notifications](media-services-dotnet-check-job-progress-with-webhooks.md). For more examples, see [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
-既存の run.csx ファイルの内容を次のコードで置き換えます。必要な関数を定義したら、**[保存および実行]** をクリックします。
+Replace the contents of the existing run.csx file with the following code: Once you are done defining your function click **Save and Run**.
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -328,26 +328,26 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 }
 ```
 
-## <a name="test-your-function"></a>関数をテストする
+## <a name="test-your-function"></a>Test your function
 
-関数をテストするには、接続文字列で指定したストレージ アカウントの **input**  コンテナーに MP4 ファイルをアップロードする必要があります。  
+To test your function, you need to upload an MP4 file into the **input** container of the storage account that you specified in the connection string.  
 
-1. **StorageConnection** 環境変数で指定したストレージ アカウントを選択します。
-2. **[BLOB]** をクリックします。
-3. **[+ Container]** (+ コンテナー) をクリックします。 **input** コンテナーに名前を付けます。
-4. **[アップロード]** をクリックして、アップロードする .mp4 ファイルを参照します。
+1. Select the storage account that you specified in the **StorageConnection** environment variable.
+2. Click **Blobs**.
+3. Click **+ Container**. Name the container **input**.
+4. Press **Upload** and browse to a .mp4 file that you want to upload.
 
 >[!NOTE]
-> 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings)」をご覧ください。
+> When you're using a blob trigger on a Consumption plan, there can be up to a 10-minute delay in processing new blobs after a function app has gone idle. After the function app is running, blobs are processed immediately. For more information, see [Blob storage triggers and bindings](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-これで、Media Services アプリケーションの開発準備が整いました。 
+At this point, you are ready to start developing a Media Services application. 
  
-カスタム コンテンツ作成ワークフローを作成するために Azure Media Services で Azure Functions と Logic Apps を使用するサンプル/ソリューションの詳細については、[GitHub 上のMedia Services .NET Functions 統合サンプル](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)に関する記事を参照してください。
+For more details and complete samples/solutions of using Azure Functions and Logic Apps with Azure Media Services to create custom content creation workflows, see the [Media Services .NET Functions Integration Sample on GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
-また、「[Azure WebHook を使用して .NET で Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)」も参照してください。 
+Also, see [Use Azure WebHooks to monitor Media Services job notifications with .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## <a name="provide-feedback"></a>Provide feedback
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

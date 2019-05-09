@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2018
+ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480956"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013916"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
 
@@ -52,7 +52,7 @@ StorSimple Virtual Array の重要な機能を次の表にまとめます。
 | データのモビリティ |同じデバイスに復元することも、項目レベルの回復 (ファイル サーバー) を実行することも可能 |
 | ストレージ層 |ローカル ハイパーバイザー ストレージとクラウド |
 | 共有サイズ |階層化: 最大 20 TB、ローカル固定: 最大 2 TB |
-| ボリューム サイズ |階層化: 500 GB - 5 TB、ローカル固定: 50 GB - 200 GB <br> 階層化ボリュームに対する最大のローカル予約は 200 GB です。 |
+| ボリューム サイズ |階層化:500 GB - 5 TB、ローカル固定:50 GB - 200 GB <br> 階層化ボリュームに対する最大のローカル予約は 200 GB です。 |
 | スナップショット |クラッシュ整合性 |
 | 項目レベルの回復 |可能: ユーザーが共有から復元可能 |
 
@@ -74,8 +74,8 @@ StorSimple Virtual Array ソリューションの主なメリットを次の表�
 
 サポートされる StorSimple ワークロードの概要を、次の表に示します。
 
-|シナリオ     |ワークロード     |サポートされています      |制限               |
-|-------------|-------------|---------------|---------------------------|
+|シナリオ     |ワークロード     |サポートされています      |制限               | 適用可能なバージョン|
+|-------------|-------------|---------------|---------------------------|--------------------|
 |リモート オフィス/ブランチ オフィス (ROBO)  |ファイル共有     |はい      |[ファイル サーバーの最大制限](storsimple-ova-limits.md)を参照してください。<br></br>[サポートされている SMB バージョンのシステム要件](storsimple-ova-system-requirements.md)を参照してください。| すべてのバージョン     |
 |クラウド アーカイブ  |アーカイブ ファイル共有     |はい      |[ファイル サーバーの最大制限](storsimple-ova-limits.md)を参照してください。<br></br>[サポートされている SMB バージョンのシステム要件](storsimple-ova-system-requirements.md)を参照してください。| すべてのバージョン     |
 
@@ -169,7 +169,7 @@ Web ベースの UI の使用方法については、「 [Web UI を使用した
 
 * [自動ストレージ階層化](#automatic-storage-tiering) 
 * [ローカル固定共有/ボリューム](#locally-pinned-shares-and-volumes)
-* [クラウドに階層化またはバックアップされたデータの重複除去と圧縮](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+* クラウドに階層化またはバックアップされたデータの重複除去と圧縮 
 * [スケジュールされたバックアップとオンデマンド バックアップ](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>自動ストレージ階層化

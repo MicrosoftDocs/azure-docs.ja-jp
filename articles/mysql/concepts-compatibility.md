@@ -1,17 +1,17 @@
 ---
-title: MySQL ドライバーと管理ツールの互換性
+title: Azure Database for MySQL ドライバーと管理ツールの互換性
 description: この記事では、Azure Database for MySQL との、MySQL ドライバーと管理ツールの互換性について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 7bb5f861676517d709f59c1bf50d77c4d9cc49a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/19/2019
+ms.openlocfilehash: 05f48145973777052590f8d10e1a2ce1fd22ec7a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548053"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258107"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。
@@ -25,7 +25,7 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 | .NET | [GitHub 上の MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget のインストール パッケージ](https://www.nuget.org/packages/MySqlConnector/) | 0.27 以降 | 0.26.5 以前 | |
 | MySQL コネクタ/NET | [MySQL コネクタ/NET](https://github.com/mysql/mysql-connector-net) | 8.0、7.0、6.10 |  | 一部の非 UTF8 Windows システムでは、エンコードのバグが原因で、接続できない場合があります。 |
 | Nodejs |  [GitHub 上の MySQLjs](https://github.com/mysqljs/mysql/) <br> NPM のインストール パッケージ:<br> NPM から `npm install mysql` を実行 | 2.15 | 2.14.1 以前 | |
-| GO | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2 以前 | 接続文字列で allowNativePasswords=true を使用 |
+| GO | https://github.com/go-sql-driver/mysql/releases | 1.3、1.4 | 1.2 以前 | バージョン 1.3 では接続文字列で `allowNativePasswords=true` を使用します。 バージョン 1.4 には修正プログラムが含まれているため、`allowNativePasswords=true` は不要になりました。 |
 | Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3、2.0、2.1、2.2 | 1.2.2 以前 | |
 | Java | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 以前 | |
 
@@ -42,3 +42,7 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 | バックアップと復元 |  | X |  |
 | サーバー パラメーターの表示 | X | X | X |
 | クライアント接続の表示 | X | X | X |
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure Database for MySQL への接続に関する問題のトラブルシューティング](howto-troubleshoot-common-connection-issues.md)

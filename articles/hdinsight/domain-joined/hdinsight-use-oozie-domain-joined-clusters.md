@@ -8,13 +8,13 @@ ms.author: omidm
 ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0ab225d3579ed6a56c753f0c581709408c65f358
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 02/15/2019
+ms.openlocfilehash: 86cb6f6a18cb799574ae9badc0f02144b3a6e1d7
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436281"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445118"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
 
@@ -38,9 +38,9 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 Secure Shell (SSH) の詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
 1. SSH を使って HDInsight クラスターに接続します。  
- ```bash
-ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
- ```
+   ```bash
+   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+   ```
 
 2. Kerberos 認証が成功したかどうかを確認するには、`klist` コマンドを使用します。 そうでない場合は、`kinit` を使用して Kerberos 認証を開始します。
 
@@ -54,23 +54,25 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
 ## <a name="define-the-workflow"></a>ワークフローの定義
 Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (hPDL) を使って記述します。 hPDL は XML プロセス定義言語です。 次の手順に従ってワークフローを定義します。
 
-1.  ドメイン ユーザーのワークスペースを設定します。
- ```bash
-hdfs dfs -mkdir /user/<DomainUser>
-cd /home/<DomainUserPath>
-cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
-tar -xvf oozie-examples.tar.gz
-hdfs dfs -put examples /user/<DomainUser>/
- ```
-`DomainUser` をドメイン ユーザー名に置き換えます。 `DomainUserPath` をドメイン ユーザーのホーム ディレクトリのパスに置き換えます。 `ClusterVersion` をクラスターの Hortonworks Data Platform (HDP) バージョンに置き換えます。
+1. ドメイン ユーザーのワークスペースを設定します。
+   ```bash
+   hdfs dfs -mkdir /user/<DomainUser>
+   cd /home/<DomainUserPath>
+   cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
+   tar -xvf oozie-examples.tar.gz
+   hdfs dfs -put examples /user/<DomainUser>/
+   ```
+   `DomainUser` をドメイン ユーザー名に置き換えます。 
+   `DomainUserPath` をドメイン ユーザーのホーム ディレクトリのパスに置き換えます。 
+   `ClusterVersion` をクラスターの Hortonworks Data Platform (HDP) バージョンに置き換えます。
 
-2.  次のステートメントを使用して、新しいファイルを作成し、編集します。
- ```bash
-nano workflow.xml
- ```
+2. 次のステートメントを使用して、新しいファイルを作成し、編集します。
+   ```bash
+   nano workflow.xml
+   ```
 
 3. nano エディターが開いたら、ファイルの内容として次の XML を入力します。
- ```xml
+   ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
@@ -165,25 +167,25 @@ nano workflow.xml
        </kill>
        <end name="end" />
     </workflow-app>
- ```
+   ```
 4. `clustername` をクラスターの名前に置き換えます。 
 
 5. ファイルを保存するには、Ctrl + X キーを押します。 「 `Y` 」を入力します。 次に、**Enter** キーを押します。
 
     このワークフローは、次の 2 つの部分に分かれています。
-    *   **資格情報セクション:**  このセクションでは、Oozie アクションを認証するために使用される資格情報を取得します。
+   * **資格情報セクション:**  このセクションでは、Oozie アクションを認証するために使用される資格情報を取得します。
 
-       この例では、Hive アクション用の認証を使用します。 詳細については、[アクションの認証](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)に関するページを参照してください。
+     この例では、Hive アクション用の認証を使用します。 詳細については、[アクションの認証](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)に関するページを参照してください。
 
-       資格情報サービスでは、Oozie アクションが、Hadoop サービスにアクセスするためのユーザーを偽装することが許可されます。
+     資格情報サービスでは、Oozie アクションが、Hadoop サービスにアクセスするためのユーザーを偽装することが許可されます。
 
-    *   **アクション セクション:**  このセクションには、map-reduce、Hive server 2、および Hive server 1 という 3 つのアクションがあります。
+   * **アクション セクション:**  このセクションには、map-reduce、Hive server 2、および Hive server 1 という 3 つのアクションがあります。
 
-      - map-reduce アクションは、集計された単語数を出力する、map-reduce 用の Oozie パッケージにある例を実行します。
+     - map-reduce アクションは、集計された単語数を出力する、map-reduce 用の Oozie パッケージにある例を実行します。
 
-       - Hive server 2 および Hive server 1 アクションは、HDInsight に付属しているサンプルの Hive テーブルに対するクエリを実行します。
+     - Hive server 2 および Hive server 1 アクションは、HDInsight に付属しているサンプルの Hive テーブルに対するクエリを実行します。
 
-        Hive アクションは、アクション要素内のキーワード `cred` を使用して、認証用の資格情報セクションで定義されている資格情報を使用します。
+     Hive アクションは、アクション要素内のキーワード `cred` を使用して、認証用の資格情報セクションで定義されている資格情報を使用します。
 
 6. 次のコマンドを使用して、`workflow.xml` ファイルを `/user/<domainuser>/examples/apps/map-reduce/workflow.xml` にコピーします。
      ```bash
@@ -217,11 +219,12 @@ nano workflow.xml
        hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
-  
-   a. `domainuser` をドメインのユーザー名に置き換えます。  
-   b. `ClusterShortName` をクラスターの短い名前に置き換えます。 たとえば、クラスター名が https:// *[example link]* sechadoopcontoso.azurehdisnight.net である場合、`clustershortname` はクラスターの最初の 6 文字である **sechad** です。  
-   c. `jdbcurlvalue` を Hive 構成の JDBC URL に置き換えます。 たとえば、jdbc:hive2://headnodehost:10001/;transportMode=http とします。      
-   d. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
+
+   * プライマリ クラスター記憶域として Azure Data Lake Storage Gen1 がある場合は、`nameNode` プロパティに `adl://home` URI を使用します。 Azure Blob Storage を使用している場合は、これを `wasb://home` に変更します。 Azure Data Lake Storage Gen2 を使用している場合は、これを `abfs://home` に変更します。
+   * `domainuser` をドメインのユーザー名に置き換えます。  
+   * `ClusterShortName` をクラスターの短い名前に置き換えます。 たとえば、クラスター名が https:// *[example link]* sechadoopcontoso.azurehdisnight.net である場合、`clustershortname` はクラスターの最初の 6 文字である **sechad** です。  
+   * `jdbcurlvalue` を Hive 構成の JDBC URL に置き換えます。 たとえば、jdbc:hive2://headnodehost:10001/;transportMode=http とします。      
+   * ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
 
    このプロパティ ファイルは、Oozie ジョブの実行時にローカルに存在する必要があります。
 
@@ -329,5 +332,4 @@ Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する
 
 ## <a name="next-steps"></a>次の手順
 * [Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する](../hdinsight-use-oozie-linux-mac.md)。
-* [時間ベースの Apache Oozie コーディネーターを使用する](../hdinsight-use-oozie-coordinator-time.md)。
 * [SSH を使用して HDInsight (Apache Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。

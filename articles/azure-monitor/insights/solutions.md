@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor の管理ソリューション | Microsoft Docs
-description: Azure Monitor の管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。  この記事では、管理ソリューションのインストールと使用について説明します。
+title: Azure Monitor での監視ソリューション | Microsoft Docs
+description: Azure Monitor の監視ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。  この記事では、監視ソリューションのインストールと使用について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 574391fd64d0525d3d77b80bb488bea8109729af
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187336"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887558"
 ---
-# <a name="management-solutions-in-azure-monitor"></a>Azure Monitor の管理ソリューション
-管理ソリューションは、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対して詳細な分析情報を提供します。 この記事では、Azure の管理ソリューションの簡単な概要と、管理ソリューションの使用とインストールの詳細について説明します。
+# <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
+監視ソリューションでは、Azure のサービスを利用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報が提供されます。 この記事では、Azure の監視ソリューションの簡単な概要と、監視ソリューションの使用とインストールの詳細について説明します。
 
-通常、管理ソリューションではログ データが収集されます。また、収集されたデータを分析するクエリとビューが用意されています。 また、Azure Automation などの他のサービスを活用して、アプリケーションまたはサービスに関連した操作を実行することも可能です。
+> [!NOTE]
+> 監視ソリューションは、以前は管理ソリューションと呼ばれていました。
 
-使用する任意のアプリケーションおよびサービスの Azure Monitor に管理ソリューションを追加できます。 管理ソリューションは通常、無料で使用できますが、データの収集に対して利用料金が発生する場合があります。 パートナーとお客様は、Microsoft 提供のソリューションとは別に、自身の環境で使用する[管理ソリューションを作成](solutions-creating.md)したり、作成したソリューションをコミュニティを通じて公開したりすることができます。
+通常、監視ソリューションではログ データが収集されます。また、収集されたデータを分析するクエリとビューが用意されています。 また、Azure Automation などの他のサービスを活用して、アプリケーションまたはサービスに関連した操作を実行することも可能です。
 
-## <a name="use-management-solutions"></a>管理ソリューションを使用する
-Log Analytics ワークスペースの **[概要]** ページを開くと、ワークスペースにインストールされた各ソリューションのタイルが表示されます。 
+使用する任意のアプリケーションおよびサービスの Azure Monitor に監視ソリューションを追加できます。 管理ソリューションは通常、無料で使用できますが、データの収集に対して利用料金が発生する場合があります。 パートナーとお客様は、Microsoft 提供のソリューションとは別に、自身の環境で使用する[管理ソリューションを作成](solutions-creating.md)したり、作成したソリューションをコミュニティを通じて公開したりすることができます。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="use-monitoring-solutions"></a>監視ソリューションの使用
+Azure Monitor の **[概要]** ページを開くと、ワークスペースにインストールされた各ソリューションのタイルが表示されます。 
 
 1. Azure ポータルにログインします。
 1. **[すべてのサービス]** を開き、**[モニター]** を探します。
@@ -38,14 +43,14 @@ Log Analytics ワークスペースの **[概要]** ページを開くと、ワ�
 
 ![概要](media/solutions/overview.png)
 
-管理ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれるすべてのログ クエリは、[クエリ エクスプローラー](../log-query/get-started-portal.md#load-queries)の **[ソリューション クエリ]** に一覧表示されます。Log Analytics でアドホック分析を実行するときにこれらのクエリを使用できます。
+監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれるすべてのログ クエリは、[クエリ エクスプローラー](../log-query/get-started-portal.md#load-queries)の **[ソリューション クエリ]** に一覧表示されます。[ログ クエリ](../log-query/log-query-overview.md)でアドホック分析を実行するときにこれらのクエリを使用できます。
 
-## <a name="list-installed-management-solutions"></a>インストールされた管理ソリューションの一覧表示 
-サブスクリプションにインストールされている管理ソリューションを一覧表示するには、次の手順を使用します。
+## <a name="list-installed-monitoring-solutions"></a>インストールされている監視ソリューションを一覧表示する 
+サブスクリプションにインストールされている監視ソリューションを一覧表示するには、次の手順を使用します。
 
 1. Azure ポータルにログインします。
 1. **[すべてのサービス]** を開き、**[ソリューション]** を探します。
-4. すべてのワークスペースにインストールされているソリューションが一覧表示されます。 ソリューション名の後に、そのソリューションがインストールされている Log Analytics ワークスペースの名前が続けて表示されます。
+4. すべてのワークスペースにインストールされているソリューションが一覧表示されます。 ソリューション名の後に、そのソリューションがインストールされているワークスペースの名前が続けて表示されます。
 1. 画面上部のドロップダイン ボックスを使用して、サブスクリプションまたはリソース グループごとにフィルター処理します。
 
 
@@ -57,12 +62,12 @@ Log Analytics ワークスペースの **[概要]** ページを開くと、ワ�
 
 
 
-## <a name="install-a-management-solution"></a>管理ソリューションのインストール
-Microsoft およびパートナーの管理ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com) から入手できます。 次の手順を使用して、使用可能なソリューションを検索し、インストールできます。 ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。
+## <a name="install-a-monitoring-solution"></a>監視ソリューションをインストールする
+Microsoft およびパートナーの監視ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com) から入手できます。 次の手順を使用して、使用可能なソリューションを検索し、インストールできます。 ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。
 
 1. [お使いのサブスクリプションのソリューションの一覧](#list-installed-monitoring-solutions)で、**[追加]** をクリックします。 
 1. **[管理ソリューション]** の右側の **[More (その他)]** をクリックします。 
-1. 目的の管理ソリューションを見つけ、その説明を読みます。
+1. 目的の監視ソリューションを見つけ、その説明を読みます。
 1. **[作成]** をクリックして、インストール プロセスを開始します。
 1. インストール プロセスが開始されると、ソリューションごとに異なる必要な構成を提供するように求められます。
 
@@ -81,7 +86,7 @@ Microsoft およびパートナーの管理ソリューションは、[Azure Mar
 
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント
-ソリューションによって収集されたデータを格納し、ログ検索とビューをホストするために、すべての管理ソリューションで [Log Analytics ワークスペース](../platform/manage-access.md)を必要とします。 また、一部のソリューションでは、Runbook と関連するリソースを格納するために、[Automation アカウント](../../automation/automation-security-overview.md#automation-account-overview)も必要になります。 ワークスペースとアカウントは、次の要件を満たす必要があります。
+ソリューションによって収集されたデータを格納し、ログ検索とビューをホストするために、すべての監視ソリューションでは [Log Analytics ワークスペース](../platform/manage-access.md)が必要です。 また、一部のソリューションでは、Runbook と関連するリソースを格納するために、[Automation アカウント](../../automation/automation-security-overview.md#automation-account-overview)も必要になります。 ワークスペースとアカウントは、次の要件を満たす必要があります。
 
 * ソリューションの各インストールで使うことができる Log Analytics ワークスペースと Automation アカウントは、それぞれ 1 つのみです。 複数のワークスペースにソリューションを個別にインストールできます。
 * ソリューションに Automation アカウントが必要な場合は、Log Analytics ワークスペースと Automation アカウントを互いにリンクさせる必要があります。 1 つの Automation アカウントにリンクできる Log Analytics ワークスペースは 1 つのみであり、同様に 1 つの Log Analytics ワークスペースにリンクできる Automation アカウントは 1 つのみです。
@@ -100,13 +105,11 @@ Log Analytics ワークスペースと Automation アカウント間のリンク
 1. メニューの **[関連リソース]** セクションまでスクロールします。
 1. **[ワークスペース]** 設定が有効になっている場合、このアカウントは Log Analytics ワークスペースにリンクされます。 **[ワークスペース]** をクリックして、ワークスペースの詳細を表示できます。
 
-## <a name="remove-a-management-solution"></a>管理ソリューションの削除
+## <a name="remove-a-monitoring-solution"></a>監視ソリューションを削除する
 インストール済みのソリューションを削除するには、[インストールされているソリューションの一覧](#list-installed-monitoring-solutions)で検索します。 ソリューション名をクリックして [概要] ページを開き、**[削除]** をクリックします。
 
 
-
-
 ## <a name="next-steps"></a>次の手順
-* [Microsoft の管理ソリューションの一覧](solutions-inventory.md)を取得します。
-* [クエリを作成](../../azure-monitor/log-query/log-query-overview.md)して、管理ソリューションで収集したデータを分析する方法を確認します。
+* [Microsoft の監視ソリューションの一覧](solutions-inventory.md)を取得します。
+* 監視ソリューションで収集されたデータを分析するための[クエリを作成する](../log-query/log-query-overview.md)方法を確認します。
 

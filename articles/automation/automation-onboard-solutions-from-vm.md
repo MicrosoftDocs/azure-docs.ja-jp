@@ -4,17 +4,17 @@ description: Azure 仮想マシンを Azure Automation の一部である Update
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 039e2d3c70493868ca2f79e89fc82d8970ec6865
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032402"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619732"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 
@@ -26,7 +26,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="enable-the-solutions"></a>ソリューションの有効化
 
-既存の仮想マシンに移動します。 **［操作］** の下の **［更新プログラムの管理］**、**［インベントリ］** または **［変更の追跡］** を選択します。
+既存の仮想マシンに移動します。 **［操作］** の下の **［更新プログラムの管理］**、**［インベントリ］** または **［変更の追跡］** を選択します。 仮想マシンは、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。 VM からのソリューションをオンボードする場合、VM がワークスペースにオンボードされているかを判断するために、`Microsoft.OperationalInsights/workspaces/read` アクセス許可を保持している必要があります。 一般的に必要な追加のアクセス許可については、[コンピューターのオンボードに必要なアクセス許可](automation-role-based-access-control.md#onboarding)に関する記事をご覧ください。
 
 ソリューションを VM に対してのみ有効にするには、**［Enable for this VM］\(この VM で有効にする\)** が選択されていることを確認します。 複数のマシンをソリューションにオンボードするには、**[Enable for VMs in this subscription]\(このサブスクリプションの VM を有効にする\)** を選択し、**[Click to select machines to enable]\(クリックして有効にするマシンを選択\)** を選択します。 一度に複数のマシンをオンボードする方法については、「[Update Management、Change Tracking、および Inventory ソリューションのオンボード](automation-onboard-solutions-from-automation-account.md)」を参照してください。
 
@@ -34,7 +34,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ![Update Management ソリューションのオンボード](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
-他のソリューションに移動し、**[有効化]** を選択します。 Log Analytics と Automation アカウントのドロップダウン リストは、前に有効にしたソリューションと同じワークスペースと Automation アカウントを使用するため、選択不可になっています。
+他のソリューションに移動し、**[有効化]** を選択します。 これらのソリューションは前に有効にしたソリューションと同じワークスペースと Automation アカウントを使用するため、Log Analytics ワークスペースと Automation アカウントのドロップダウン リストは無効になっています。
 
 > [!NOTE]
 > **変更の追跡**と**インベントリ**は、同じソリューションを使用します。 これらのソリューションの片方を有効にすると、他方も有効になります。
@@ -59,7 +59,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ワークスペースに移動します。 **[全般]** の下の **[保存された検索]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|Name     |Category  |エイリアス  |
+|名前     |Category  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |
@@ -76,7 +76,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 * [変更の追跡](automation-change-tracking.md)
 * [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 
-Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
+ご使用の Automation アカウントを Log Analytics ワークスペースと統合する必要がなくなった場合は、Azure portal から直接、そのアカウントのリンクを解除できます。  作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
 
 これらのソリューションを削除したら、以下の手順を行うと、Automation アカウントのリンクを解除できます。
 
@@ -85,13 +85,13 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 
 1. Azure portal から Automation アカウントを開き、[Automation アカウント] ページで、左側にある **[関連リソース]** セクションで **[リンクされたワークスペース]** を選択します。
 
-1. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
+2. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
 
-   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
+   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png)。
 
    続行するかどうかを確認するプロンプトが表示されます。
 
-1. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
+3. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
 
 更新の管理ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
 

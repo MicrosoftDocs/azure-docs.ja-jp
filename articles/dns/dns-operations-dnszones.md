@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: victorh
-ms.openlocfilehash: 2cdf6ea0a992c996f4aeeb117c440e94b55ff8a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1ef44c16a8ae3b6254a6cea252501b72ddb24a5c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961962"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003770"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell を使用して DNS ゾーンを管理する方法
 
@@ -166,7 +166,7 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 現在の `$ConfirmPreference` 設定は `-Confirm` パラメーターを使用してオーバーライドできます。 `-Confirm` または `-Confirm:$True` を指定した場合は、コマンドレットによって実行前に確認のプロンプトが表示されます。 `-Confirm:$False` を指定した場合は、コマンドレットによって確認のプロンプトが表示されません。
 
-`-Confirm` と `$ConfirmPreference` の詳細については、「[About Preference Variables (設定変数について)](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables)」を参照してください。
+`-Confirm` と `$ConfirmPreference` の詳細については、「[About Preference Variables (設定変数について)](/powershell/module/microsoft.powershell.core/about/about_preference_variables)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

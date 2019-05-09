@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018l
+ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 93f47529e3be44ff1db4e089bdcdca3eb1b4dea3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438372"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728354"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -99,8 +99,8 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | 論理ディスク | Disk Read Bytes/sec  |
 | 論理ディスク | Disk Reads/sec  |
 | 論理ディスク | Disk Transfers/sec |
-| 論理ディスク |  Disk Write Bytes/sec |
-| 論理ディスク |  Disk Writes/sec |
+| 論理ディスク | Disk Write Bytes/sec |
+| 論理ディスク | Disk Writes/sec |
 | 論理ディスク | Free Megabytes |
 | 論理ディスク | Logical Disk Bytes/sec |
 | メモリ | % Available Memory |
@@ -195,7 +195,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 | CounterValue |カウンターの数値。 |
 | InstanceName |イベント インスタンスの名前。  インスタンスがない場合は空白です。 |
 | ObjectName |パフォーマンス オブジェクトの名前 |
-| SourceSystem |データが収集されたエージェントの種類。 <br><br>OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| SourceSystem |データが収集されたエージェントの種類。 <br><br>OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br>  AzureStorage – Azure Diagnostics |
 | TimeGenerated |データがサンプリングされた日付と時刻。 |
 
 ## <a name="sizing-estimates"></a>サイズ見積もり
@@ -206,7 +206,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 ## <a name="log-queries-with-performance-records"></a>パフォーマンス レコードに対するログ クエリ
 次の表は、パフォーマンス レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| Query | 説明 |
 |:--- |:--- |
 | Perf |すべてのパフォーマンス データ |
 | Perf &#124; where Computer == "MyComputer" |特定のコンピューターからのすべてのパフォーマンス データ |

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
-ms.openlocfilehash: e0694aa8c5226b794be59358e73751cc493a7e95
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4d4e68d99585522e773e71430b4e4f37ad7b1580
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755801"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124406"
 ---
-次の制限は、Azure Site Recovery に適用されます。
+次の制限が Azure Site Recovery に適用されます。
 
 | 制限の種類 | 既定の制限 |
-| --- | --- | --- | --- |
-| サブスクリプションあたりの資格情報コンテナーの数 |25 |
+| --- | --- |
+| サブスクリプションあたりの資格情報コンテナーの数 |500 |     
 | Azure 資格情報コンテナーあたりのサーバーの数 |250 |
 | Azure 資格情報コンテナーあたりの保護グループの数 |制限なし |
 | Azure 資格情報コンテナーあたりの復旧計画の数 |制限なし |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: f460c063ded489c8ec0ef23b35ab304c62943a98
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337072"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798045"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Azure Monitor for VMs (プレビュー) のマップを使用したアプリケーション コンポーネントの理解
 VM 用 Azure Monitor を使用して、Azure で実行されている Windows および Linux 仮想マシン上で検出されたアプリケーション コンポーネントを表示することで、環境を監視できます。仮想マシンから VM 用 Azure Monitor に直接アクセスする方法と、Azure Monitor から仮想マシンのグループ全体の情報を表示する方法があります。 
@@ -39,11 +39,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ![コンピューターのシステム プロパティ](./media/vminsights-maps/properties-pane-01.png)
 
-ウィンドウの右側にある **[ログ イベント]** アイコンをクリックしてウィンドウのフォーカスを切り替えると、VM から収集されたデータが Log Analytics に送信され、クエリに使用できるテーブルの一覧が表示されます。  表示されているレコードの種類のいずれかをクリックすると、**[ログ]** ページが開き、その仮想マシンに対する構成済みのクエリによってフィルター処理されたその種類の結果が表示されます。  
+ウィンドウの右側にある **[ログ イベント]** アイコンをクリックしてウィンドウのフォーカスを切り替えると、VM から収集したデータを Azure Monitor に送信してクエリに使用できるテーブルの一覧が表示されます。  表示されているレコードの種類のいずれかをクリックすると、**[ログ]** ページが開き、その仮想マシンに対する構成済みのクエリによってフィルター処理されたその種類の結果が表示されます。  
 
 ![[プロパティ] ウィンドウのログ検索の一覧](./media/vminsights-maps/properties-pane-logs-01.png)
 
-"*ログ*" を閉じると、**[プロパティ]** ウィンドウに戻ります。**[アラート]** を選択すると、正常性基準に基づいて VM で発生したアラートが表示されます。 マップが Azure アラートと統合され、選択された時間範囲内に選択されたサーバーで発生したアラートが表示されます。 最新のアラートがある場合はサーバーにアイコンが表示され、[Machine Alerts]\(マシンのアラート\) ウィンドウにアラートが一覧表示されます。 
+**[ログ]** を閉じると、**[プロパティ]** ウィンドウに戻ります。**[アラート]** を選択すると、正常性基準に基づいて VM で発生したアラートが表示されます。 マップが Azure アラートと統合され、選択された時間範囲内に選択されたサーバーで発生したアラートが表示されます。 最新のアラートがある場合はサーバーにアイコンが表示され、[Machine Alerts]\(マシンのアラート\) ウィンドウにアラートが一覧表示されます。 
 
 ![[プロパティ] ウィンドウのマシンのアラート](./media/vminsights-maps/properties-pane-alerts-01.png)
 

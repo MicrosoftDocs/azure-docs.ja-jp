@@ -2,31 +2,33 @@
 title: Azure Event Grid の Container Registry イベント スキーマ
 description: Azure Event Grid で Container Registry イベント用に用意されているプロパティについて説明します
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/13/2018
-ms.author: tomfitz
-ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.date: 03/12/2019
+ms.author: spelluru
+ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145192"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084329"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Container Registry 用の Azure Event Grid イベント スキーマ
 
-この記事では、Container Registry イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
+この記事では、Container Registry イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
-Blob Storage から出力されるイベントの種類は次のとおりです。
+Azure Container Registry では、次の種類のイベントが生成されます。
 
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | イメージがプッシュされたときに発生します。 |
 | Microsoft.ContainerRegistry.ImageDeleted | イメージが削除されたときに発生します。 |
+| Microsoft.ContainerRegistry.ChartPushed | Helm チャートがプッシュされたときに発生します。 |
+| Microsoft.ContainerRegistry.ChartDeleted | Helm チャートが削除されたときに発生します。 |
 
 ## <a name="example-event"></a>イベントの例
 
@@ -93,6 +95,62 @@ Blob Storage から出力されるイベントの種類は次のとおりです�
 }]
 ```
 
+チャート プッシュ イベントのスキーマはイメージ プッシュ イベントのスキーマと似ていますが、要求オブジェクトは含まれません。
+
+```json
+[{
+  "id": "ea3a9c28-5b17-40f6-a500-3f02b6829277",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name>",
+  "subject": "mychart:1.0.0",
+  "eventType": "Microsoft.ContainerRegistry.ChartPushed",
+  "eventTime": "2019-03-12T22:16:31.5164086Z",
+  "data": {
+    "id":"ea3a9c28-5b17-40f6-a500-3f02b682927",
+    "timestamp":"2019-03-12T22:16:31.0087496+00:00",
+    "action":"chart_push",
+    "target":{
+      "mediaType":"application/vnd.acr.helm.chart",
+      "size":25265,
+      "digest":"sha256:7f060075264b5ba7c14c23672698152ae6a3ebac1c47916e4efe19cd624d5fab",
+      "repository":"repo",
+      "tag":"mychart-1.0.0.tgz",
+      "name":"mychart",
+      "version":"1.0.0"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+チャート削除イベントのスキーマはイメージ削除イベントのスキーマと似ていますが、要求オブジェクトは含まれません。
+
+```json
+[{
+  "id": "39136b3a-1a7e-416f-a09e-5c85d5402fca",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name>",
+  "subject": "mychart:1.0.0",
+  "eventType": "Microsoft.ContainerRegistry.ChartDeleted",
+  "eventTime": "019-03-12T22:42:08.7034064Z",
+  "data": {
+    "id":"ea3a9c28-5b17-40f6-a500-3f02b682927",
+    "timestamp":"2019-03-12T22:42:08.3783775+00:00",
+    "action":"chart_delete",
+    "target":{
+      "mediaType":"application/vnd.acr.helm.chart",
+      "size":25265,
+      "digest":"sha256:7f060075264b5ba7c14c23672698152ae6a3ebac1c47916e4efe19cd624d5fab",
+      "repository":"repo",
+      "tag":"mychart-1.0.0.tgz",
+      "name":"mychart",
+      "version":"1.0.0"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
 ## <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
@@ -128,6 +186,8 @@ Blob Storage から出力されるイベントの種類は次のとおりです�
 | length | integer | コンテンツのバイト数。 size フィールドと同じです。 |
 | repository | 文字列 | リポジトリの名前。 |
 | tag | 文字列 | タグ名。 |
+| name | 文字列 | チャートの名前。 |
+| version | 文字列 | チャートのバージョン。 |
 
 要求オブジェクトには、次のプロパティがあります。
 

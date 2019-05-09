@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701922"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310059"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -32,7 +32,7 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 > [!NOTE]
 > -  Azure portal では、Update 5.0 以降を実行しているデバイスがサポートされます。 デバイスが最新の状態でない場合は、すぐに Update 5 をインストールしてください。 詳細については、「[Update 5 のインストール](storsimple-8000-install-update-5.md)」をご覧ください。 
 > - StorSimple Cloud Appliance (8010/8020) を使っている場合は、クラウド アプライアンスを更新できません。 最新バージョンのソフトウェアを使って、Update 5.0 で新しいクラウド アプライアンスを作成してから、作成した新しいクラウド アプライアンスにフェールオーバーします。 
-> - Update 4.0 以前を実行しているすべてのデバイスでは、[管理機能が制限](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0)されます。 
+> - Update 4.0 以前を実行しているすべてのデバイスでは、管理機能が制限されます。 
 
 ## <a name="create-a-service"></a>サービスの作成
 StorSimple デバイス マネージャー サービスを作成するには、以下が必要です。
@@ -93,7 +93,7 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 
 サービス登録キーは、安全な場所に保管してください。 このキーは、サービスに追加のデバイスを登録するときにサービス データ暗号化キーと共に必要です。 サービス登録キーを取得したら、StorSimple 用 Windows PowerShell インターフェイスを介してデバイスを構成する必要があります。
 
-登録キーの使用方法の詳細については、「[手順 3: StorSimple 用 Windows PowerShell インターフェイスを使用したデバイスの構成と登録](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)」を参照してください。
+この登録キーを使用する方法については、「[手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)」を参照してください。
 
 ## <a name="regenerate-the-service-registration-key"></a>サービス登録キーを再生成する
 キー ローテーションを実行する必要があるとき、またはサービス管理者の一覧が変更されたときは、サービス登録キーを再生成する必要があります。 キーを再生成した場合、新しいキーはその後のデバイスの登録に対してのみ使用されます。 既に登録されているデバイスは、再生成の影響を受けません
@@ -127,7 +127,7 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 2. StorSimple 用 Windows PowerShell を使用して、サービス データ暗号化キーの変更を開始します。
 3. StorSimple デバイスを複数使用している場合は、他のすべてのデバイスでサービス データ暗号化キーを更新します。
 
-### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>手順 1: Windows PowerShell スクリプトを使用してサービス データ暗号化キーを変更するデバイスを承認する
+### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>手順 1:Windows PowerShell スクリプトを使用してサービス データ暗号化キーを変更するデバイスを承認する
 通常、デバイスの管理者は、サービス データ暗号化キーを変更する場合、デバイスの承認をサービス管理者に依頼します。 その後、サービス管理者は、キーの変更をデバイスに承認します。
 
 この手順は、Azure Resource Manager ベースのスクリプトを使用して実行します。 サービス管理者は、承認するのに適したデバイスを選択できます。 選択したデバイスは、サービス データ暗号化キー変更プロセスを開始できるようになります。 
@@ -143,7 +143,7 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 * サービス データ暗号化キーのロールオーバーの実行中に、デバイスを承認することはできません。
 * サービスに登録されているデバイスの中に、暗号化をロールオーバーしたデバイスと、ロールオーバしていないデバイスがある場合、デバイスを承認できます。 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>手順 2. StorSimple 用 Windows PowerShell を使用してサービス データ暗号化キーの変更を開始する
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>手順 2:StorSimple 用 Windows PowerShell を使用してサービス データ暗号化キーの変更を開始する
 この手順は、承認済みの StorSimple デバイスの StorSimple 用 Windows PowerShell インターフェイスで実行されます。
 
 > [!NOTE]
@@ -168,7 +168,7 @@ StorSimple デバイス マネージャー サービスを作成するには、�
    
    サービスに登録されているデバイスが 1 台の場合は、ロールオーバー プロセスが完了し、次の手順をスキップできます。 サービスに登録されているデバイスが複数ある場合は、手順 3. に進みます。
 
-### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>手順 3. 他の StorSimple デバイス上のサービス データ暗号化キーを更新する
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>手順 3:他の StorSimple デバイス上のサービス データ暗号化キーを更新する
 StorSimple Manager サービスに登録されているデバイスが複数ある場合は、StorSimple デバイスの Windows PowerShell インターフェイスで次の手順を実行する必要があります。 手順 2. で取得したキーを使用して、StorSimple Manager サービスに登録されている残りのすべての StorSimple デバイスを更新する必要があります。
 
 デバイスのサービス データ暗号化を更新するには、次の手順を実行します。
@@ -176,7 +176,7 @@ StorSimple Manager サービスに登録されているデバイスが複数あ�
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>物理デバイス上のサービス データ暗号化キーを更新するには
 1. StorSimple 用 Windows PowerShell を使用して、コンソールに接続します。 オプション 1 を選択して、フル アクセスでログオンします。
 2. コマンド プロンプトに「`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`」と入力します。
-3. 「 [手順 2. StorSimple 用 Windows PowerShell を使用してサービス データ暗号化キーの変更を開始する](#to-initiate-the-service-data-encryption-key-change)」で取得したサービス データ暗号化キーを指定します。
+3. 「[手順 2. StorSimple 用 Windows PowerShell を使用してサービス データ暗号化キーの変更を開始する](#to-initiate-the-service-data-encryption-key-change)」で取得したサービス データ暗号化キーを指定します。
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>すべての 8010/8020 クラウド アプライアンス上のサービス データ暗号化キーを更新するには
 1. [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell スクリプトをダウンロードして設定します。 

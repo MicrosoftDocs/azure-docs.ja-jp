@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics の容量とパフォーマンス ソリューション | Microsoft Docs
-description: Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。
+title: Azure Monitor の Capacity and Performance ソリューション | Microsoft Docs
+description: Monitor の Capacity and Performance ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 41508a1d99ed243d377cc72c0accc005c5ca737d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: fcf71bf144b559c4867303988d4c1f08b7aa5605
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189202"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008629"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Capacity and Performance ソリューション (非推奨) を使って Hyper-V 仮想マシンの容量を計画する
 
 ![キャパシティとパフォーマンスのシンボル](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
 > Capacity and Performance ソリューションは非推奨になりました。  このソリューションを既にインストール済みのユーザーは引き続き使用できますが、新しいワークスペースに Capacity and Performance を追加することはできません。
 
-Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
+Monitor の Capacity and Performance ソリューションを使用すると、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
 
 このソリューションでは次のことが可能です。
 
@@ -124,7 +124,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 以下の表は、容量とパフォーマンスに関してこのソリューションで収集および計算されるデータを取得するためのログ検索のサンプルを示したものです。
 
 
-| クエリ | 説明 |
+| Query | 説明 |
 |:--- |:--- |
 | ホストのメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | VM のメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |

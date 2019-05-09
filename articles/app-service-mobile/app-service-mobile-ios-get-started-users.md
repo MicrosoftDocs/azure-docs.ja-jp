@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: crdun
-ms.openlocfilehash: e0eeee05ebad2e8148752f988bbbc2f6a0d7c296
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27592696"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445910"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>iOS アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-このチュートリアルでは、サポートされている ID プロバイダーを使用して、 [iOS のクイック スタート] プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [iOS のクイック スタート] チュートリアルを完了しておく必要があります。
+このチュートリアルでは、サポートされている ID プロバイダーを使用して、 [iOS クイック スタート] プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [iOS クイック スタート] チュートリアルを完了しておく必要があります。
 
 ## <a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -110,7 +110,7 @@ Xcode で、 **[Run]** をクリックしてアプリケーションを開始し
     }
     ```
 
-   `#pragma mark - Core Data stack` という行の前にこのコードを直接追加します。  _appname_ を、手順 1 で使用した urlScheme 値で置き換えます。
+   `#pragma mark - Core Data stack` という行の前にこのコードを直接追加します。  _appname_ を、手順 1. で使用した urlScheme 値で置き換えます。
 
 5. `AppName-Info.plist` ファイル (AppName はアプリの名前で置き換える) を開き、次のコードを追加します。
 
@@ -188,7 +188,7 @@ Xcode で、 **[Run]** をクリックしてアプリケーションを開始し
     }
     ```
 
-    _appname_ を、手順 1 で使用した urlScheme 値で置き換えます。
+    _appname_ を、手順 1. で使用した urlScheme 値で置き換えます。
 
 4. `AppName-Info.plist` ファイル (AppName はアプリの名前で置き換える) を開き、次のコードを追加します。
 
@@ -212,12 +212,12 @@ Xcode で、 **[Run]** をクリックしてアプリケーションを開始し
 
 5. *[実行]* をクリックしてアプリを起動したら、ログインします。 ログインが成功すると、Todo リストを表示して更新できます。
 
-App Service の認証では、Apple の Inter-App Communication が使用されます。  このトピックの詳細については、[Apple のドキュメント][2]を参照してください。
-<!-- URLs. -->
+App Service の認証では、Apple の Inter-App Communication が使用されます。  このトピックの詳細については、[Apple のドキュメント][2]
+<!-- URLs. -->を参照してください。
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
 [Azure Portal]: https://portal.azure.com
 
-[iOS のクイック スタート]: app-service-mobile-ios-get-started.md
+[iOS クイック スタート]: app-service-mobile-ios-get-started.md
 

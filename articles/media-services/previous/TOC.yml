@@ -1,0 +1,483 @@
+items:
+- name: Media Services のドキュメント
+  href: index.md
+- name: 概要
+  href: media-services-overview.md
+  items:
+  - name: シナリオと可用性
+    href: scenarios-and-availability.md
+  - name: 概念
+    href: media-services-concepts.md
+- name: 作業開始
+  items:
+  - name: アカウントを作成して管理する
+    href: media-services-portal-create-account.md
+  - name: 開発環境を設定する
+    href: media-services-set-up-computer.md
+    items:
+    - name: .NET
+      href: media-services-dotnet-how-to-use.md
+    - name: REST
+      href: media-services-rest-how-to-use.md
+  - name: Azure AD 認証を使用して API にアクセスする
+    href: media-services-use-aad-auth-to-access-ams-api.md
+    items:
+    - name: ポータルを使用して Azure AD 認証を管理する
+      href: media-services-portal-get-started-with-aad.md
+    - name: .NET で API にアクセスする
+      href: media-services-dotnet-get-started-with-aad.md
+    - name: REST で API にアクセスする
+      href: media-services-rest-connect-with-aad.md
+    - name: Azure CLI を使用して Azure AD アプリを作成および構成する
+      href: media-services-cli-create-and-configure-aad-app.md
+    - name: Azure PowerShell を使用して Azure AD アプリを作成および構成する
+      href: media-services-powershell-create-and-configure-aad-app.md
+  - name: ビデオ オン デマンドの配信
+    items:
+    - name: Azure ポータル
+      href: media-services-portal-vod-get-started.md
+    - name: .NET SDK
+      href: media-services-dotnet-get-started.md
+    - name: Java
+      href: media-services-java-how-to-use.md
+    - name: REST
+      href: media-services-rest-get-started.md
+  - name: ライブ ストリーミングの実行
+    items:
+    - name: Azure ポータル
+      href: media-services-portal-live-passthrough-get-started.md
+    - name: .NET
+      href: media-services-dotnet-live-encode-with-onpremises-encoders.md
+- name: 方法
+  items:
+  - name: 管理
+    items:
+    - name: エンティティ
+      items:
+      - name: .NET
+        href: media-services-dotnet-manage-entities.md
+      - name: REST
+        href: media-services-rest-manage-entities.md
+    - name: ストリーミング エンドポイント
+      href: media-services-streaming-endpoints-overview.md
+      items:
+      - name: Azure ポータル
+        href: media-services-portal-manage-streaming-endpoints.md
+      - name: .NET
+        href: media-services-dotnet-manage-streaming-endpoints.md
+    - name: Storage
+      items:
+      - name: ストレージ アクセス キーをローリングした後に Media Services を更新する
+        href: media-services-roll-storage-access-keys.md
+      - name: 複数のストレージ アカウントにわたって資産を管理する
+        href: meda-services-managing-multiple-storage-accounts.md
+    - name: クォータと制限
+      href: media-services-quotas-and-limitations.md
+  - name: Postman を構成する
+    href: media-rest-apis-with-postman.md
+    items:
+    - name: オンデマンド ストリーミングのコレクション
+      href: postman-collection.md
+    - name: ライブ ストリーミングのコレクション
+      href: postman-live-streaming-collection.md
+    - name: 環境
+      href: postman-environment.md
+  - name: コンテンツをアップロードする
+    items:
+    - name: ファイルをアカウントにアップロードする
+      items:
+      - name: Azure ポータル
+        href: media-services-portal-upload-files.md
+      - name: .NET
+        href: media-services-dotnet-upload-files.md
+      - name: REST
+        href: media-services-rest-upload-files.md
+    - name: Aspera を使用した大きなファイルのアップロード
+      href: media-services-upload-files-with-aspera.md
+    - name: StorSimple を使用したファイルのアップロード
+      href: media-services-upload-files-from-storsimple.md
+    - name: 既存の BLOB をコピーする
+      href: media-services-copying-existing-blob.md
+  - name: コンテンツのエンコード
+    href: media-services-encode-asset.md
+    items:
+    - name: エンコーダーの比較
+      href: media-services-compare-encoders.md
+    - name: エンコードの速度とコンカレンシーの管理
+      href: media-services-manage-encoding-speed.md
+    - name: Media Encoder Standard (MES)
+      items:
+      - name: Media Encoder Standard の形式とコーデック
+        href: media-services-media-encoder-standard-formats.md
+      - name: MES を使用したビットレート ラダーの自動生成
+        href: media-services-autogen-bitrate-ladder-with-mes.md
+      - name: Media Encoder Standard を使用したエンコード
+        items:
+        - name: Azure ポータル
+          href: media-services-portal-encode.md
+        - name: .NET
+          href: media-services-dotnet-encode-with-media-encoder-standard.md
+        - name: REST
+          href: media-services-rest-encode-asset.md
+      - name: MES による高度なエンコード
+        href: media-services-advanced-encoding-with-mes.md
+        items:
+        - name: Media Encoder Standard のプリセットのカスタマイズ
+          href: media-services-custom-mes-presets-with-dotnet.md
+        - name: .NET で Media Encoder Standard を使用してサムネイルを生成する方法
+          href: media-services-dotnet-generate-thumbnail-with-mes.md
+        - name: Media Encoder Standard を使用してビデオをトリミングする
+          href: media-services-crop-video.md
+        - name: サムネイル スプライトを生成する
+          href: generate-thumbnail-sprite.md
+      - name: MES スキーマ
+        items:
+        - name: Media Encoder Standard スキーマ
+          href: media-services-mes-schema.md
+        - name: 入力メタデータ
+          href: media-services-input-metadata-schema.md
+        - name: 出力メタデータ
+          href: media-services-output-metadata-schema.md
+      - name: MES のプリセット
+        href: media-services-mes-presets-overview.md
+        items:
+        - name: H264 Multiple Bitrate 1080p Audio 5.1
+          href: media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md
+        - name: H264 Multiple Bitrate 1080p
+          href: media-services-mes-preset-H264-Multiple-Bitrate-1080p.md
+        - name: H264 Multiple Bitrate 16x9 SD Audio 5.1
+          href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md
+        - name: H264 Multiple Bitrate 16x9 SD
+          href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md
+        - name: H264 Multiple Bitrate 16x9 for iOS
+          href: media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md
+        - name: H264 Multiple Bitrate 4K Audio 5.1
+          href: media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md
+        - name: H264 Multiple Bitrate 4K
+          href: media-services-mes-preset-H264-Multiple-Bitrate-4K.md
+        - name: H264 Multiple Bitrate 4x3 SD Audio 5.1
+          href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md
+        - name: H264 Multiple Bitrate 4x3 SD
+          href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md
+        - name: H264 Multiple Bitrate 4x3 for iOS
+          href: media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md
+        - name: H264 Multiple Bitrate 720p Audio 5.1
+          href: media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md
+        - name: H264 Multiple Bitrate 720p
+          href: media-services-mes-preset-H264-Multiple-Bitrate-720p.md
+        - name: H264 Single Bitrate 1080p Audio 5.1
+          href: media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md
+        - name: H264 Single Bitrate 1080p
+          href: media-services-mes-preset-H264-Single-Bitrate-1080p.md
+        - name: H264 Single Bitrate 16x9 SD Audio 5.1
+          href: media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md
+        - name: H264 Single Bitrate 16x9 SD
+          href: media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md
+        - name: H264 Single Bitrate 4K Audio 5.1
+          href: media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md
+        - name: H264 Single Bitrate 4K
+          href: media-services-mes-preset-H264-Single-Bitrate-4K.md
+        - name: H264 Single Bitrate 4x3 SD Audio 5.1
+          href: media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md
+        - name: H264 Single Bitrate 4x3 SD
+          href: media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md
+        - name: H264 Single Bitrate 720p Audio 5.1
+          href: media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md
+        - name: H264 Single Bitrate 720p
+          href: media-services-mes-preset-H264-Single-Bitrate-720p.md
+        - name: H264 Single Bitrate 720p for Android
+          href: media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md
+        - name: H264 Single Bitrate High Quality SD for Android
+          href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
+        - name: H264 Single Bitrate Low Quality SD for Android
+          href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
+    - name: メディア エンコーダー Premium ワークフロー
+      items:
+      - name: メディア エンコーダー プレミアム ワークフローの形式とコーデック
+        href: media-services-premium-workflow-encoder-formats.md
+      - name: メディア エンコーダー プレミアム ワークフローを使用したエンコード
+        items:
+        - name: メディア エンコーダー Premium ワークフロー
+          href: media-services-encode-with-premium-workflow.md
+        - name: メディア エンコーダー Premium ワークフローのチュートリアル
+          href: media-services-media-encoder-premium-workflow-tutorials.md
+        - name: ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する
+          href: media-services-workflow-designer.md
+        - name: 複数入力の場合の Premium ワークフロー
+          href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
+    - name: fMP4 チャンクを生成するタスクの作成
+      href: media-services-generate-fmp4-chunks.md
+    - name: メディア プロセッサ
+      items:
+      - name: .NET
+        href: media-services-get-media-processor.md
+      - name: REST
+        href: media-services-rest-get-media-processor.md
+    - name: エラー コード
+      href: media-services-encoding-error-codes.md
+    - name: 非推奨
+      items:
+      - name: 静的パッケージと暗号化
+        href: media-services-static-packaging.md
+  - name: ライブ ストリーム配信
+    href: media-services-manage-channels-overview.md
+    items:
+    - name: オンプレミス エンコーダー
+      href: media-services-live-streaming-with-onprem-encoders.md
+      items:
+      - name: 推奨のオンプレミス エンコーダー
+        href: media-services-recommended-encoders.md
+      - name: Azure ポータル
+        href: media-services-portal-live-passthrough-get-started.md
+      - name: .NET
+        href: media-services-dotnet-live-encode-with-onpremises-encoders.md
+    - name: クラウド エンコーダーを使用したライブ ストリーミング
+      href: media-services-manage-live-encoder-enabled-channels.md
+      items:
+      - name: Azure ポータル
+        href: media-services-portal-creating-live-encoder-enabled-channel.md
+      - name: .NET
+        href: media-services-dotnet-creating-live-encoder-enabled-channel.md
+    - name: オンプレミス エンコーダーをクラウド エンコーダーと使用するための構成
+      href: media-services-live-encoders-overview.md
+      items:
+      - name: FMLE エンコーダー
+        href: media-services-configure-fmle-live-encoder.md
+      - name: Haivision KB エンコーダー
+        href: media-services-configure-kb-live-encoder.md
+      - name: NewTek TriCaster エンコーダー
+        href: media-services-configure-tricaster-live-encoder.md
+      - name: Wirecast エンコーダー
+        href: media-services-configure-wirecast-live-encoder.md
+    - name: 長時間実行される操作を処理する
+      href: media-services-dotnet-long-operations.md
+    - name: フラグメント化 MP4 ライブ取り込みの仕様
+      href: media-services-fmp4-live-ingest-overview.md
+    - name: 使用の開始
+      href: media-services-azure-media-clipper-getting-started.md
+    - name: 動画の読み込み
+      href: media-services-azure-media-clipper-load-assets.md
+    - name: キーボード ショートカットの構成
+      href: media-services-azure-media-clipper-keyboard-shortcuts.md
+    - name: ローカライズを構成する
+      href: media-services-azure-media-clipper-localization.md
+    - name: クリッピング ジョブの送信
+      href: media-services-azure-media-clipper-submit-job.md
+    - name: Azure ポータル
+      href: media-services-azure-media-clipper-portal.md
+  - name: コンテンツの保護
+    href: media-services-content-protection-overview.md
+    items:
+    - name: ストレージ暗号化
+      href: media-services-rest-storage-encryption.md
+    - name: AES-128 暗号化
+      href: media-services-protect-with-aes128.md
+    - name: ストリーミング用 PlayReady および Widevine
+      href: media-services-protect-with-playready-widevine.md
+    - name: ストリーミング用 FairPlay
+      href: media-services-protect-hls-with-fairplay.md
+    - name: Windows 10 用のオフラインの PlayReady
+      href: offline-playready-streaming-windows-10.md
+    - name: iOS 用のオフラインの FairPlay
+      href: media-services-protect-hls-with-offline-fairplay.md
+    - name: Android 用のオフラインの Widevine
+      href: offline-widevine-for-android.md
+    - name: Azure Portal での構成
+      href: media-services-portal-protect-content.md
+    - name: DRM ライセンスの配布
+      href: media-services-deliver-keys-and-licenses.md
+    - name: ContentKeys を作成する
+      items:
+      - name: .NET
+        href: media-services-dotnet-create-contentkey.md
+      - name: REST
+        href: media-services-rest-create-contentkey.md
+    - name: ライセンス テンプレートの概要
+      items:
+      - name: PlayReady ライセンス テンプレート
+        href: media-services-playready-license-template-overview.md
+      - name: Widevine ライセンス テンプレート
+        href: media-services-widevine-license-template-overview.md
+    - name: 資産配信ポリシーを構成する
+      items:
+      - name: .NET
+        href: media-services-dotnet-configure-asset-delivery-policy.md
+      - name: REST
+        href: media-services-rest-configure-asset-delivery-policy.md
+    - name: コンテンツ キー承認ポリシーを構成する
+      items:
+      - name: Azure ポータル
+        href: media-services-portal-configure-content-key-auth-policy.md
+      - name: .NET
+        href: media-services-dotnet-configure-content-key-auth-policy.md
+      - name: REST
+        href: media-services-rest-configure-content-key-auth-policy.md
+    - name: 認証トークンを AMS に渡す
+      href: media-services-pass-authentication-tokens.md
+    - name: 参照設計
+      items:
+      - name: DRM システムのハイブリッド設計
+        href: hybrid-design-drm-sybsystem.md
+      - name: マルチ DRM の参照設計
+        href: media-services-cenc-with-multidrm-access-control.md
+  - name: 分析
+    href: media-services-analytics-overview.md
+    items:
+    - name: Azure portal を使用してメディアを分析する
+      href: media-services-portal-analyze.md
+    - name: Indexer 2 で処理する
+      href: media-services-process-content-with-indexer2.md
+    - name: Indexer で処理する
+      href: media-services-index-content.md
+      items:
+      - name: タスク プリセット
+        href: indexer-task-preset.md
+    - name: Face Detector で処理する
+      href: media-services-face-and-emotion-detection.md
+    - name: Motion Detector で処理する
+      href: media-services-motion-detection.md
+    - name: Face Redactor で処理する
+      href: media-services-face-redaction.md
+      items:
+      - name: Face Redactor のチュートリアル
+        href: media-services-redactor-walkthrough.md
+    - name: Video Thumbnails で処理する
+      href: media-services-video-summarization.md
+    - name: OCR で処理する
+      href: media-services-video-optical-character-recognition.md
+    - name: Content Moderator で処理する
+      href: media-services-content-moderation.md
+  - name: テレメトリの構成
+    href: media-services-telemetry-overview.md
+    items:
+    - name: .NET
+      href: media-services-dotnet-telemetry.md
+    - name: REST
+      href: media-services-rest-telemetry.md
+  - name: スケール
+    items:
+    - name: メディア処理
+      href: media-services-scale-media-processing-overview.md
+      items:
+      - name: Azure ポータル
+        href: media-services-portal-scale-media-processing.md
+      - name: .NET
+        href: media-services-dotnet-encoding-units.md
+    - name: ストリーミング エンドポイント
+      items:
+      - name: Azure ポータル
+        href: media-services-portal-scale-streaming-endpoints.md
+  - name: コンテンツを配信する
+    href: media-services-deliver-content-overview.md
+    items:
+    - name: 動的パッケージ
+      href: media-services-dynamic-packaging-overview.md
+    - name: フィルターと動的マニフェストの概要
+      href: media-services-dynamic-manifest-overview.md
+      items:
+      - name: .NET を使用したフィルターの作成
+        href: media-services-dotnet-dynamic-manifest.md
+      - name: REST を使用したフィルターの作成
+        href: media-services-rest-dynamic-manifest.md
+    - name: Media Services Extension での CDN キャッシュ ポリシー
+      href: ../../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json
+    - name: コンテンツを発行する
+      items:
+      - name: Azure ポータル
+        href: media-services-portal-publish.md
+      - name: .NET
+        href: media-services-deliver-streaming-content.md
+      - name: REST
+        href: media-services-rest-deliver-streaming-content.md
+    - name: ダウンロードで配信する
+      href: media-services-deliver-asset-download.md
+    - name: フェールオーバー ストリーミング シナリオ
+      href: media-services-implement-failover.md
+  - name: 使用
+    items:
+    - name: 既存のプレーヤーを使用したメディアの再生
+      href: media-services-playback-content-with-existing-players.md
+    - name: Media Player を使用したメディアの再生
+      href: media-services-develop-video-players.md
+    - name: その他の再生オプション
+      items:
+      - name: Smooth Streaming Windows ストア アプリケーション
+        href: media-services-build-smooth-streaming-apps.md
+      - name: DASH.js を使用した HTML5 アプリケーション
+        href: media-services-embed-mpeg-dash-in-html5.md
+      - name: Adobe Open Source Media Framework プレーヤー
+        href: media-services-use-osmf-smooth-streaming-client-plugin.md
+    - name: クライアント側で広告を挿入する
+      href: media-services-inserting-ads-on-client-side.md
+    - name: Microsoft Smooth Streaming Client Porting Kit のライセンス
+      href: media-services-sspk.md
+  - name: 統合
+    items:
+    - name: Media Services と共に Azure Functions を使用する
+      href: media-services-dotnet-how-to-use-azure-functions.md
+    - name: Media Services と Azure Functions の併用の例
+      href: https://github.com/Azure-Samples/media-services-dotnet-functions-integration
+  - name: 監視
+    items:
+    - name: ジョブの進行状況をチェックする
+      items:
+      - name: REST
+        href: media-services-rest-check-job-progress.md
+      - name: Azure ポータル
+        href: media-services-portal-check-job-progress.md
+      - name: .NET
+        href: media-services-check-job-progress.md
+    - name: Queue Storage を使用したジョブ通知の監視
+      href: media-services-dotnet-check-job-progress-with-queues.md
+    - name: Webhook を使用したジョブ通知の監視
+      href: media-services-dotnet-check-job-progress-with-webhooks.md
+  - name: トラブルシューティング
+    items:
+    - name: よく寄せられる質問
+      href: media-services-frequently-asked-questions.md
+    - name: ライブ ストリーミングのトラブルシューティング ガイド
+      href: media-services-troubleshooting-live-streaming.md
+    - name: エラー コード
+      href: media-services-error-codes.md
+    - name: 再試行ロジック
+      href: media-services-retry-logic-in-dotnet-sdk.md
+- name: リファレンス
+  items:
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?service=media-services
+  - name: Azure PowerShell (Resource Manager)
+    href: /powershell/module/az.media
+  - name: Azure PowerShell
+    href: /powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0
+  - name: .NET
+    href: /dotnet/api/microsoft.windowsazure.mediaservices.client
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
+  - name: 仕様
+    items:
+    - name: ライブ取り込み - フラグメント化 MP4 ライブ取り込みの仕様
+      href: media-services-fmp4-live-ingest-overview.md
+    - name: ライブ取り込み - ライブ ストリーミングでの時限メタデータのシグナル発信
+      href: media-services-specifications-live-timed-metadata.md
+    - name: スムーズ ストリーミング HEVC
+      href: media-services-specifications-ms-sstr-amendment-hevc.md
+- name: リソース
+  items:
+  - name: Azure Media Services コミュニティ
+    href: media-services-community.md
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=web-mobile
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/media-services/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: リリース ノート
+    href: media-services-release-notes.md
+  - name: ビデオ
+    href: https://azure.microsoft.com/resources/videos/index/?services=media-services
+ms.openlocfilehash: 900902a111a7b67a2b235d3a069542e2242fac07
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621517"

@@ -3,32 +3,27 @@ title: Azure Portal で Service Bus 名前空間を作成する方法 | Microsof
 description: Azure Portal を使用して Service Bus 名前空間を作成する
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: fbb10e62-b133-4851-9d27-40bd844db3ba
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: a56a13db5df1234a8011caf10a82ac561b6877cf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 02/12/2019
+ms.author: aschhab
+ms.openlocfilehash: a893cdf49792a8df624786804ec0ca4d8f043ec4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47390190"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764795"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure Portal を使用して Service Bus 名前空間を作成する
 
-名前空間は、すべてのメッセージング コンポーネントのスコープ コンテナーです。 複数のキューとトピックを 1 つの名前空間に格納できます。多くの場合、名前空間はアプリケーション コンテナーとして機能します。 Service Bus 名前空間の作成には 2 つの方法があります。
-
-1. Azure ポータル (この記事)
-2. [リソース マネージャーのテンプレート][create-namespace-using-arm]
-
-## <a name="create-a-namespace-in-the-azure-portal"></a>Azure Portal での名前空間の作成
+名前空間は、すべてのメッセージング コンポーネントのスコープ コンテナーです。 複数のキューとトピックを 1 つの名前空間に格納できます。多くの場合、名前空間はアプリケーション コンテナーとして機能します。 この記事では、Azure portal で名前空間を作成する手順を説明します。 
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 

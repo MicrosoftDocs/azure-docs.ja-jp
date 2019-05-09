@@ -12,16 +12,16 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a58644deb8d1325fd466d2a4d3a1fc927c83b685
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 24914cc3ff673d04e8c181082e13c087aeabe709
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720256"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765750"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
@@ -49,7 +49,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 * VM で必要な関連リソース
 
 ### <a name="naming"></a>名前を付ける
-仮想マシンには[名前](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
+仮想マシンには[名前](/azure/architecture/best-practices/naming-conventions)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
 
 Azure を使用してオペレーティング システム ディスクを作成する場合、コンピューター名と仮想マシン名は同じになります。 以前構成されたオペレーティング システムが含まれる[独自のイメージをアップロードして使用](upload-generalized-managed.md)し、それを基に仮想マシンを作成する場合は、別の名前にすることができます。 独自のイメージ ファイルをアップロードするときは、オペレーティング システムのコンピューター名と仮想マシン名を同じにすることをお勧めします。
 
@@ -61,9 +61,9 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |VM を作成するときに一覧から場所を選択します。 |
-| Azure PowerShell |[Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) コマンドを使用します。 |
-| REST API |[場所の一覧表示](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations)操作を使用します。 |
-| Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_list_locations) 操作を使用します。 |
+| Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
+| REST API |[場所の一覧表示](https://docs.microsoft.com/rest/api/resources/subscriptions)操作を使用します。 |
+| Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) 操作を使用します。 |
 
 ### <a name="vm-size"></a>VM サイズ
 使用する VM の[サイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
@@ -74,7 +74,7 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 サブスクリプションにはそれぞれ既定の[クォータ制限](../../azure-subscription-service-limits.md)が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。 制限は、[サポート チケットで引き上げを依頼する](../../azure-supportability/resource-manager-core-quotas-request.md)ことによって引き上げることができます。
 
 ### <a name="operating-system-disks-and-images"></a>オペレーティング システム ディスクおよびイメージ
-仮想マシンは、[仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
+仮想マシンは、[仮想ハード ディスク (VHD)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
 
 Azure には、Windows Server オペレーティング システムのさまざまなバージョンと種類で使用できる [Marketplace イメージ](https://azure.microsoft.com/marketplace/virtual-machines/)が多数用意されています。 Marketplace イメージは、イメージの発行元、プラン、SKU、およびバージョン (通常は最新バージョンとして指定) によって識別されます。 64 ビットのオペレーティング システムのみがサポートされています。 サポートされているゲストのオペレーティング システム、ロール、機能の詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)」を参照してください。
 
@@ -83,9 +83,9 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 | 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |値は、使用するイメージを選択する際に自動的に指定されます。 |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *場所*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *場所* -Publisher *発行元名*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *場所* -Publisher *発行元名* -Offer *プラン名* |
+| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST API |[イメージ発行元の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[イメージ プランの一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location *場所*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location *場所* --publisher *発行元名*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location *場所* --publisher *発行元名* --offer *プラン名*|
+| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *場所*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *場所* --publisher *発行元名*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *場所* --publisher *発行元名* --offer *プラン名*|
 
 [独自のイメージをアップロードして使用](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account)することができますが、そのとき、発行元名、プラン、SKU は使用されません。
 

@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: fec075a744b5f47a4be7f1b960cceedfea7b9a2c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3641833f0b55f20066302de350bfab17adfade0e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47090794"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107006"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 テンプレートに含まれているリソースはすべて 1 つの[リソース グループ](resource-group-overview.md)にデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで、複数のリソース グループまたはサブスクリプションにデプロイしたい状況もあります。 たとえば Azure Site Recovery に使うバックアップ仮想マシンは、別のリソース グループと場所にデプロイした方がよい場合があります。 Resource Manager では、入れ子になったテンプレートを使用することで、親テンプレートに使われているサブスクリプションおよびリソース グループとは異なる、サブスクリプションとリソース グループを対象にすることができます。
 
@@ -167,7 +169,7 @@ ms.locfileid: "47090794"
 
 以下のテンプレートは、複数のリソース グループのデプロイを示しています。 テンプレートをデプロイするスクリプトは、表の後に示されています。
 
-|テンプレート  |説明  |
+|Template  |説明  |
 |---------|---------|
 |[クロス サブスクリプション テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |1 つのストレージ アカウントを 1 つのリソース グループに、また 1 つのストレージ アカウントを 2 番目のリソース グループにデプロイします。 2 番目のリソース グループが別のサブスクリプションにある場合は、サブスクリプション ID の値が含まれます。 |
 |[クロス リソース グループ プロパティ テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |`resourceGroup()` 関数の解決方法を示します。 このテンプレートではリソースはデプロイされません。 |
@@ -180,10 +182,10 @@ PowerShell の場合、2 つのストレージ アカウントを、**同じサ�
 $firstRG = "primarygroup"
 $secondRG = "secondarygroup"
 
-New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
-New-AzureRmResourceGroup -Name $secondRG -Location eastus
+New-AzResourceGroup -Name $firstRG -Location southcentralus
+New-AzResourceGroup -Name $secondRG -Location eastus
 
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -ResourceGroupName $firstRG `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
   -storagePrefix storage `
@@ -200,13 +202,13 @@ $secondRG = "secondarygroup"
 $firstSub = "<first-subscription-id>"
 $secondSub = "<second-subscription-id>"
 
-Select-AzureRmSubscription -Subscription $secondSub
-New-AzureRmResourceGroup -Name $secondRG -Location eastus
+Select-AzSubscription -Subscription $secondSub
+New-AzResourceGroup -Name $secondRG -Location eastus
 
-Select-AzureRmSubscription -Subscription $firstSub
-New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+Select-AzSubscription -Subscription $firstSub
+New-AzResourceGroup -Name $firstRG -Location southcentralus
 
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -ResourceGroupName $firstRG `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
   -storagePrefix storage `
@@ -218,11 +220,11 @@ New-AzureRmResourceGroupDeployment `
 PowerShell の場合、**リソース グループ オブジェクト**が親テンプレート、インライン テンプレート、およびリンクされたテンプレートに対してどのように解決されるかをテストするには、次を使用します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name parentGroup -Location southcentralus
-New-AzureRmResourceGroup -Name inlineGroup -Location southcentralus
-New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
+New-AzResourceGroup -Name parentGroup -Location southcentralus
+New-AzResourceGroup -Name inlineGroup -Location southcentralus
+New-AzResourceGroup -Name linkedGroup -Location southcentralus
 
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -ResourceGroupName parentGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```

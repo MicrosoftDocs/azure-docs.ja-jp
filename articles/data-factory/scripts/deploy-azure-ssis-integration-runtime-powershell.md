@@ -2,28 +2,28 @@
 title: PowerShell スクリプト - Azure-SSIS 統合ランタイムのデプロイ | Microsoft Docs
 description: この PowerShell スクリプトは、クラウドで SSIS パッケージを実行できる Azure-SSIS 統合ランタイムを作成します。
 services: data-factory
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
-ms.author: douglasl
-ms.openlocfilehash: 31a3d51b482a5e14b7a3db9081a8960b968980f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+author: swinarko
+ms.author: sawinark
+manager: craigg
+ms.openlocfilehash: a2d53ddb9f55942cd6ad396d42cc926f20c2d396
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128204"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57574720"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell スクリプト - Azure-SSIS 統合ランタイムのデプロイ
 
 このサンプル PowerShell スクリプトは、Azure で SSIS パッケージを実行できる Azure-SSIS 統合ランタイムを作成します。  
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -34,26 +34,26 @@ ms.locfileid: "43128204"
 このサンプル スクリプトを実行した後、次のコマンドを使用して、リソース グループとそれに関連付けられたすべてのリソースを削除できます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName
+Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 リソース グループからデータ ファクトリを削除するには、次のコマンドを実行します。 
 
 ```powershell
-Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
+Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2) | データ ファクトリを作成します。 |
-| [Set-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2integrationruntime) | クラウドで SSIS パッケージを実行できる Azure-SSIS 統合ランタイムを作成します |
-| [Start-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/start-azurermdatafactoryv2integrationruntime) | Azure-SSIS 統合ランタイムを起動します。 |
-| [Get-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2integrationruntime) | Azure-SSIS 統合ランタイムに関する情報を取得します。 |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | データ ファクトリを作成します。 |
+| [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | クラウドで SSIS パッケージを実行できる Azure-SSIS 統合ランタイムを作成します |
+| [Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Azure-SSIS 統合ランタイムを起動します。 |
+| [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Azure-SSIS 統合ランタイムに関する情報を取得します。 |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
 ## <a name="next-steps"></a>次の手順

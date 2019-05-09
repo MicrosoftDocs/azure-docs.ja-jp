@@ -10,20 +10,20 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: f8ea270e5a41c094b29fb2dbb6df4bd325b66b32
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999970"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437818"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
-この手順では、[Azure Application Insights](../../application-insights/app-insights-overview.md) サービスにテレメトリを送信するように ASP.NET Web アプリを構成します。 このサービスは、オンプレミスの IIS サーバーまたはクラウドでホストされる ASP.NET アプリに対して機能します。 アプリのパフォーマンスと利用状況の把握に役立つグラフと強力なクエリ言語が提供され、エラーやパフォーマンスの問題に対する自動アラート機能も備えられています。 多くの開発者にとって、これらの機能はそのままでも便利ですが、必要に応じてテレメトリを拡張したりカスタマイズしたりすることもできます。
+この手順では、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) サービスにテレメトリを送信するように ASP.NET Web アプリを構成します。 このサービスは、オンプレミスの IIS サーバーまたはクラウドでホストされる ASP.NET アプリに対して機能します。 アプリのパフォーマンスと利用状況の把握に役立つグラフと強力なクエリ言語が提供され、エラーやパフォーマンスの問題に対する自動アラート機能も備えられています。 多くの開発者にとって、これらの機能はそのままでも便利ですが、必要に応じてテレメトリを拡張したりカスタマイズしたりすることもできます。
 
-セットアップは、Visual Studio でクリック操作を数回行うだけで済みます。 テレメトリの量を制限して、課金を回避するオプションもあります。 そうすることで、ユーザーがそれほど多くないサイトを実験してデバッグしたり、監視したりすることができます。 運用サイトに移行し、監視することに決定した場合は、後で制限を簡単に引き上げることができます。
+セットアップは、Visual Studio でクリック操作を数回行うだけで済みます。 テレメトリの量を制限して、課金を回避するオプションもあります。 この機能により、ユーザーがそれほど多くないサイトを実験してデバッグしたり、監視したりすることができます。 運用サイトに移行し、監視することに決定した場合は、後で制限を簡単に引き上げることができます。
 
 ## <a name="prerequisites"></a>前提条件
 ASP.NET Web サイトに Application Insights を追加するうえで必要なことは次のとおりです。
@@ -37,11 +37,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="ide"></a>手順 1: Application Insights SDK を追加する
 
 > [!IMPORTANT]
-> Application Insights を追加するプロセスは、ASP.NET テンプレートの種類によって異なります。 **空**のテンプレートや **Azure Mobile App** テンプレートを使用する場合は、**[プロジェクト]** > **[Application Insights Telemetry の追加]** を選択します。 それ以外のすべての ASP.NET テンプレートについては、以下の手順をご覧ください。 
+> このサンプルのスクリーンショットは、Visual Studio 2017 バージョン 15.9.9 に基づきます。 Application Insights に追加する経験は、Visual Studio 2017 のバージョンや ASP.NET テンプレート タイプによって異なります。 旧バージョンでは、「Application Insights の構成」といった代替テキストがない場合があります。
 
-ソリューション エクスプローラーで Web アプリ名を右クリックし、**[Application Insights の構成]** を選択します。
+ソリューション エクスプローラーで Web アプリ名を右クリックし、**[追加]** > **[Application Insights Telemetry]** を選択します。
 
-![[Application Insights の構成] が強調表示された、ソリューション エクスプローラーのスクリーンショット](./media/asp-net/0001-configure-application-insights.png)
+![[Application Insights の構成] が強調表示された、ソリューション エクスプローラーのスクリーンショット](./media/asp-net/add-telemetry-new.png)
 
 (Application Insights SDK のバージョンに応じて、最新の SDK リリースへのアップグレードを促すメッセージが表示されることがあります。 メッセージが表示されたら、**[SDK の更新]** を選択します。)
 
@@ -49,15 +49,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Application Insights の構成画面:
 
-**[開始 (無料)]** を選択します。
+**[開始]** を選択します。
 
-![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/asp-net/0004-start-free.png)
+![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/asp-net/00004-start-free.png)
 
 データを格納するリソース グループまたは場所を設定するには、**[設定の構成]** をクリックします。 リソース グループは、データへのアクセスの制御に使用されます。 たとえば、同じシステムの一部を構成する複数のアプリがある場合、そのアプリに関する Application Insights のデータを同じリソース グループ内に配置することができます。
 
- **[登録]** を選択します。 
+ **[登録]** を選択します。
 
-![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/asp-net/0005-register-ed.png)
+![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/asp-net/00005-register-ed.png)
 
  デバッグ時と、アプリを発行した後に、[Azure Portal](https://portal.azure.com) にテレメトリが送信されます。
 > [!NOTE]
@@ -68,9 +68,9 @@ F5 キーを押して、アプリを実行します。 ある程度のテレメ�
 
 Visual Studio で、ログに記録されたイベント数が表示されます。
 
-![Visual Studio のスクリーンショット。 デバッグ中に表示される [Application Insights] ボタン。](./media/asp-net/0006-Events.png)
+![Visual Studio のスクリーンショット。 デバッグ中に表示される [Application Insights] ボタン。](./media/asp-net/00006-Events.png)
 
-## <a name="step-3-see-your-telemetry"></a>手順 3:テレメトリを確認する
+## <a name="step-3-see-your-telemetry"></a>手順 3: テレメトリを確認する
 Visual Studio または Application Insights Web ポータルで、テレメトリを確認できます。 Visual Studio でテレメトリを検索し、アプリのデバッグに役立てます。 システムを稼働させたら、Web ポータルでパフォーマンスと使用状況を監視します。 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Visual Studio でのテレメトリの表示
@@ -84,7 +84,7 @@ Visual Studio の [Application Insights の検索] ウィンドウに、アプ�
 > [!Tip]
 > データが何も表示されない場合は、時間の範囲が正しいかどうかを確認し、検索アイコンをクリックします。
 
-[Visual Studio の Application Insights ツールの詳細については、こちらを参照してください](../../application-insights/app-insights-visual-studio.md)。
+[Visual Studio の Application Insights ツールの詳細については、こちらを参照してください](../../azure-monitor/app/visual-studio.md)。
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>Web ポータルでのテレメトリの表示
@@ -95,29 +95,27 @@ Application Insights リソースを開きます。 [Azure Portal](https://porta
 
 ポータルを開くと、アプリのテレメトリが表示されます。
 
-![Application Insights 概要ページのスクリーンショット](./media/asp-net/66.png)
+![Application Insights 概要ページのスクリーンショット](./media/asp-net/007.png)
 
 詳細を表示するには、ポータルで任意のタイルまたはグラフをクリックします。
 
 [Azure Portal での Application Insights の使用方法の詳細については、こちらを参照してください](../../azure-monitor/app/app-insights-dashboards.md)。
 
-## <a name="step-4-publish-your-app"></a>手順 4:アプリケーションの発行
+## <a name="step-4-publish-your-app"></a>手順 4: アプリケーションの発行
 IIS サーバーまたは Azure にアプリを発行します。 [ライブ メトリック ストリーム](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) を観察して、必要な処理がすべて滞りなく実行されていることを確認してください。
 
-Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したり、[ダッシュボード](../../azure-monitor/app/app-insights-dashboards.md)を設定したりすることができます。 強力な [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguage)を使って使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
+Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したり、[ダッシュボード](../../azure-monitor/app/app-insights-dashboards.md)を設定したりすることができます。 強力な [Kusto クエリ言語](/azure/kusto/query/)を使用して、使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
 
-[Visual Studio](../../application-insights/app-insights-visual-studio.md) から各種ツール (診断検索、[傾向](../../application-insights/app-insights-visual-studio-trends.md)など) を使って継続的にテレメトリを分析することもできます。
+[Visual Studio](../../azure-monitor/app/visual-studio.md) から各種ツール (診断検索、[傾向](../../azure-monitor/app/visual-studio-trends.md)など) を使って継続的にテレメトリを分析することもできます。
 
 > [!NOTE]
-> アプリから送信されたテレメトリの量が[スロットル制限](../../azure-monitor/app/pricing.md#limits-summary)に近づくと、自動[サンプリング](../../application-insights/app-insights-sampling.md)がオンに変わります。 アプリから送信されるテレメトリの量をサンプリングによって抑えながら、診断に利用できる相関性のあるデータを維持することができます。
+> アプリから送信されたテレメトリの量が[スロットル制限](../../azure-monitor/app/pricing.md#limits-summary)に近づくと、自動[サンプリング](../../azure-monitor/app/sampling.md)がオンに変わります。 アプリから送信されるテレメトリの量をサンプリングによって抑えながら、診断に利用できる相関性のあるデータを維持することができます。
 >
 >
 
 ## <a name="land"></a>設定の完了
 
 お疲れさまでした。 Application Insights パッケージをアプリにインストールし、Azure の Application Insights サービスにテレメトリを送信するように構成しました。
-
-![テレメトリの移動のダイアグラム](./media/asp-net/01-scheme.png)
 
 アプリのテレメトリを受信する Azure リソースは、*インストルメンテーション キー*によって識別されます。 このキーは、ApplicationInsights.config ファイルにあります。
 
@@ -129,7 +127,7 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
 ## <a name="video"></a>ビデオ
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+* [.NET アプリケーションを使って最初から Application Insights を構成する](https://www.youtube.com/watch?v=blnGAVgMAfA)ステップ バイ ステップの外部ビデオ。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -147,15 +145,15 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
 ### <a name="analysis"></a>分析
 
-* **[Visual Studio での Application Insights の操作](../../application-insights/app-insights-visual-studio.md)**<br/>テレメトリ、診断検索、コードのドリル スルーを使用したデバッグについて説明しています。
+* **[Visual Studio での Application Insights の操作](../../azure-monitor/app/visual-studio.md)**<br/>テレメトリ、診断検索、コードのドリル スルーを使用したデバッグについて説明しています。
 * **[Application Insights ポータルの操作](../../azure-monitor/app/app-insights-dashboards.md)**<br/> ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポートについて説明しています。
 * **[Analytics](../../azure-monitor/log-query/get-started-portal.md)** - 強力なクエリ言語です。
 
 ### <a name="alerts"></a>アラート
 
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
-* [スマート診断](../../application-insights/app-insights-proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
-* [メトリック アラート](../../azure-monitor/app/alerts.md): メトリックがしきい値を超えた場合に警告するように設定します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
+* [スマート診断](../../azure-monitor/app/proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
+* [メトリック アラート](../../azure-monitor/app/alerts.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
 
 ### <a name="automation"></a>Automation
 

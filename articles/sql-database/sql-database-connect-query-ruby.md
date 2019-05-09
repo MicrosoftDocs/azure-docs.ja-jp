@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 66819cbd65f6f044d0dac68326eb5890476964b6
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 03/25/2019
+ms.openlocfilehash: 05f3213383c526944a8a1cf51fb92d5186ac7434
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993911"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449026"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>クイック スタート:Ruby を使用して Azure SQL Database に照会する
 
@@ -27,9 +27,21 @@ ms.locfileid: "53993911"
 
 このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-  
-- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+
+  || 単一データベース | マネージド インスタンス |
+  |:--- |:--- |:---|
+  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |||
+
+  > [!IMPORTANT]
+  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
   
 - ご使用のオペレーティング システムに対応した Ruby とそれに関連するソフトウェア:
   
@@ -41,7 +53,13 @@ ms.locfileid: "53993911"
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+
+3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。 
 
 ## <a name="create-code-to-query-your-sql-database"></a>コードを作成して、SQL データベースのクエリを実行する
 

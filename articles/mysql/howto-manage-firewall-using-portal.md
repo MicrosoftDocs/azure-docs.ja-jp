@@ -5,16 +5,18 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 598af6bb945318f0a76ffe094dd5786abacccc3f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 04/09/2018
+ms.openlocfilehash: 017266fd28fb31b4509957560a042abf74314453
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543531"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791141"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
-サーバーレベルのファイアウォール規則を使用すると、管理者は、指定された IP アドレスまたは IP アドレス範囲から Azure Database for MySQL サーバーにアクセスできます。 
+サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 
+
+仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティで保護することもできます。 [Azure portal を使用して仮想ネットワーク サービス エンドポイントと規則の作成および管理](howto-manage-vnet-using-portal.md)する方法を確認してください。
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
 
@@ -34,7 +36,7 @@ ms.locfileid: "53543531"
 
 4. アドレス範囲を追加します。 Azure Database for MySQL のファイアウォール規則では、単一の IP アドレスまたはアドレスの範囲を指定できます。 規則を単一の IP アドレスに限定する場合は、[開始 IP] フィールドと [終了 IP] フィールドに同じアドレスを入力します。 ファイアウォールを開くと、管理者、ユーザー、およびアプリケーションは、有効な資格情報を持っている MySQL サーバー上の任意のデータベースにアクセスできます。
 
-   ![Azure Portal - ファイアウォール規則 ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Azure Portal - ファイアウォール規則](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
 5. ツール バーの **[保存]** をクリックしてこのサーバーレベルのファイアウォール規則を保存します。 ファイアウォール規則の更新が成功したという確認を待機します。
 
@@ -57,4 +59,5 @@ Azure のアプリケーションが Azure Database for MySQL サーバーに接
 
 ## <a name="next-steps"></a>次の手順
 - 同様に、[Azure CLI を使用して Azure Database for MySQL ファイアウォール規則を作成および管理する](howto-manage-firewall-using-cli.md)スクリプトを作成できます。
+- [Azure portal を使用して、仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-using-portal.md)して、サーバーへのアクセスのセキュリティ保護を強化します。
 - Azure Database for MySQL サーバーに接続する方法のヘルプについては、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」をご覧ください。

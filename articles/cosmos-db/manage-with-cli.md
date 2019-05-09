@@ -1,24 +1,21 @@
 ---
 title: Azure CLI を使用した Azure Cosmos DB リソースの管理
 description: Azure CLI を使用し、Azure Cosmos DB のアカウント、データベース、コンテナーを作成します。
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 4/8/2019
 ms.author: mjbrown
-ms.openlocfilehash: d79cae16c109b407840b8565eb80fb87bbed6432
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d19e58b2d1381725de490b68d9e4d00a2ca4cb6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877549"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59495483"
 ---
-# <a name="manage-azure-cosmos-db-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos DB リソースの管理
+# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos リソースの管理
 
-次のガイドでは、Azure CLI を使用して Azure Cosmos DB のアカウント、データベース、コンテナーの管理を自動化するためのコマンドについて説明します。 コンテナー スループットをスケーリングするためのコマンドも含まれています。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](https://docs.microsoft.com/cli/azure/cosmosdb)で確認できます。 [Azure Cosmos DB 向け Azure CLI サンプル](cli-samples.md)にも、MongoDB、Gremlin、Cassandra、Table API で Cosmos DB のアカウント、データベース、コンテナーを作成し、管理する方法などを含むその他の例があります。
-
-この CLI サンプル スクリプトでは、Azure Cosmos DB の SQL API アカウント、データベース、コンテナーを作成します。  
+次のガイドでは、Azure CLI を使用して Azure Cosmos DB のアカウント、データベース、コンテナーの管理を自動化するための共通のコマンドについて説明します。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](https://docs.microsoft.com/cli/azure/cosmosdb)で確認できます。 [Azure Cosmos DB 向け Azure CLI サンプル](cli-samples.md)にも、MongoDB、Gremlin、Cassandra、Table API で Cosmos DB のアカウント、データベース、コンテナーを作成し、管理する方法などを含むその他の例があります。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -26,89 +23,92 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
-米国東部と米国西部で SQL API、セッションの整合性、マルチマスターが有効になっている Azure Cosmos DB アカウントを作成するには、Azure CLI またはクラウド シェルを開き、次のコマンドを実行します。
+SQL API で Azure Cosmos DB アカウントを作成し、米国東部と米国西部でセッション整合性を指定するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az cosmosdb create \
-   –-name "myCosmosDbAccount" \
-   --resource-group "myResourceGroup" \
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup \
    --kind GlobalDocumentDB \
-   --default-consistency-level "Session" \
-   --locations "EastUS=0" "WestUS=1" \
-   --enable-multiple-write-locations true \
+   --default-consistency-level Session \
+   --locations EastUS=0 WestUS=1 \
+   --enable-multiple-write-locations false
 ```
+
+> [!IMPORTANT]
+> Azure Cosmos アカウントの名前は小文字にする必要があります。
 
 ## <a name="create-a-database"></a>データベースを作成する
 
-Cosmos DB データベースを作成するには、Azure CLI またはクラウド シェルを開き、次のコマンドを実行します。
+Cosmos DB データベースを作成するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az cosmosdb database create \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup"
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-秒あたり RU が 1000 でパーティション キーを持つ Cosmos DB コンテナーを作成するには、Azure CLI またはクラウド シェルを開き、次のコマンドを実行します。
+1 秒あたりの RU が 400 でパーティション キーを持つ Cosmos DB コンテナーを作成するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 # Create a container
 az cosmosdb collection create \
-   --collection-name "myContainer" \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup" \
-   --partition-key-path = "/myPartitionKey" \
-   --throughput 1000
+   --collection-name myContainer \
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup \
+   --partition-key-path /myPartitionKey \
+   --throughput 400
 ```
 
 ## <a name="change-the-throughput-of-a-container"></a>コンテナーのスループットの変更
 
-Cosmos DB コンテナーのスループットを毎秒 400 RU に変更するには、Azure CLI またはクラウド シェルを開き、次のコマンドを実行します。
+Cosmos DB コンテナーのスループットを毎秒 1000 RU に変更するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 # Update container throughput
 az cosmosdb collection update \
-   --collection-name "myContainer" \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup" \
-   --throughput 400
+   --collection-name myContainer \
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup \
+   --throughput 1000
 ```
 
 ## <a name="list-account-keys"></a>アカウント キーの一覧表示
 
-Azure Cosmos DB アカウントを作成すると、2 つのマスター アクセス キーが生成されます。これらのアクセス キーは、Azure Cosmos DB アカウントにアクセスする際の認証に使用できます。 2 つのアクセス キーが提供されるので、Azure Cosmos DB アカウントを中断することなくキーを再生成できます。 読み取り専用操作を認証するための読み取り専用キーも使用できます。 2 つの読み取り/書き込みキー (プライマリおよびセカンダリ) と、2 つの読み取り専用キー (プライマリおよびセカンダリ) が存在します。 次のコマンドを実行してアカウントのキーを取得できます。
+Cosmos アカウントのキーを取得するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 # List account keys
 az cosmosdb list-keys \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup"
+   --name  mycosmosdbaccount \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="list-connection-strings"></a>接続文字列の一覧表示
 
-アプリケーションを Cosmos DB アカウントに接続する接続文字列は、次のコマンドで取得できます。
+Cosmos アカウントの接続文字列を取得するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 # List connection strings
 az cosmosdb list-connection-strings \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup"
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="regenerate-account-key"></a>アカウント キーの再生成
 
-接続のセキュリティを高めるために、Azure Cosmos DB アカウントのアクセス キーは定期的に変更する必要があります。 一方のアクセス キーを使用して Azure Cosmos DB アカウントへの接続を維持しながら、もう一方のアクセス キーを再生成できるように、2 つのアクセス キーが割り当てられます。
+Cosmos アカウントの主キーを新しく生成するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 # Regenerate account key
 az cosmosdb regenerate-key \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup" \
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup \
    --key-kind primary
 ```
 

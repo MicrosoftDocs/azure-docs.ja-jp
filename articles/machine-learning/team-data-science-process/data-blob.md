@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 36e3512caa8922f8bc1a65f13ea41d6873b51e5e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a91c4d9f5dcdcee436f2dbf012eb5485b7a92192
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140540"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790775"
 ---
 # <a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
 このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 
@@ -75,11 +75,12 @@ ms.locfileid: "53140540"
         print miss_num
 7. データ内の特定の列に不足値がある場合は、次のように削除できます。
    
-     dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape
+        dataframe_blobdata_noNA = dataframe_blobdata.dropna()
+        dataframe_blobdata_noNA.shape
    
    不足値を置き換えるを別の方法として、モード関数を使用した以下のものを実行します。
    
-     dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
+        dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
 8. 変数の分布をプロットする可変個の箱を使用して、ヒストグラム図を作成します。    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')

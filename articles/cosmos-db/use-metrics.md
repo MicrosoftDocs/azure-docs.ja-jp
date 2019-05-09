@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB のメトリックを使用した監視とデバッグ
 description: Azure Cosmos DB のメトリックを使用して、一般的な問題をデバッグし、データベースを監視します。
-services: cosmos-db
 ms.service: cosmos-db
 author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.openlocfilehash: 8461797e0c3b8d92466c37c5564df895e494ce74
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: ff6e0b6084eebf236d01b4dd00a46897687938c2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957591"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034728"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
@@ -38,7 +38,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>パーティション全体のストレージの分散を決める
 
-適切なカーディナリティのパーティションを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の [メトリック] ブレードに移動します。 [スループット] タブの [各物理パーティションによる 1 秒あたりの最大消費 RU] グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切なことを示しています。
+適切なカーディナリティのパーティションを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのストレージの分散を決めるには、[Azure portal](https://portal.azure.com) の [メトリック] ブレードに移動します。 [ストレージ] タブの [上位パーティション キーで使用されるデータとインデックスのストレージ] グラフに、ストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データ ストレージの分散が不適切なことを示しています。
 
 ![不適切なデータ分散の例](media/use-metrics/metrics-07.png)
 

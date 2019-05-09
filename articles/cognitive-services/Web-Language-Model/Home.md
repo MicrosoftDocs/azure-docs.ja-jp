@@ -4,21 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Web Language Model API には、自然言語処理のための最新ツールが用意されています。
 services: cognitive-services
 author: piyushbehre
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: web-language-model
+ms.subservice: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3c7f9e4cc4cf023aa93bd80ad1165ba9595e9034
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 751b6e5979174eae9bc815061f16bf99bd0899cf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807439"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534788"
 ---
-# <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは  (プレビュー)
+# <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは (プレビュー)
 
 > [!IMPORTANT]
 > Web Language Model プレビューは、2018 年 8 月 9 日に使用停止になりました。 テキスト処理と分析には、[Azure Machine Learning テキスト解析モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)の使用をお勧めします。
@@ -44,7 +44,7 @@ Web Language Model API では、次の 4 つの検索操作がサポートされ
 1. サービスをサブスクライブします。
 2. [SDK](https://www.github.com/microsoft/cognitive-weblm-windows) をダウンロードします。
 3. SDK のサンプル コードを実行します。
-4. エンドポイントの完全な説明は、[API リファレンス](http://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)を参照してください。さまざまな言語のコード スニペットも含まれています。
+4. エンドポイントの完全な説明は、[API リファレンス](https://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)を参照してください。さまざまな言語のコード スニペットも含まれています。
 
 ## <a name="underlying-technology"></a>基礎となるテクノロジ
 

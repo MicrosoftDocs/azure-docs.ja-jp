@@ -10,18 +10,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 4ca97271608fda447cbda35c7edfa7b55d266fe5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 188c252064028ccecc0fd4fe231cda190d2b4c08
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985352"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663674"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Azure CLI を使用して SSL 終了でアプリケーション ゲートウェイを作成する
 
 Azure CLI を使用して、バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する [SSL 終了](application-gateway-backend-ssl.md)の証明書で、[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成することができます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 自己署名証明書の作成
@@ -53,7 +53,7 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#create) を使用してリソース グループを作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
 次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-[az network vnet create](/cli/azure/network/vnet#az-net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -85,7 +85,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#create) を使用して、アプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、アプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 
 
 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 この例では、アプリケーション ゲートウェイを作成するときに、作成した証明書とそのパスワードを関連付けます。 
 
@@ -151,7 +151,7 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) を使用できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip) を使用できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -169,7 +169,7 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 自己署名証明書の作成

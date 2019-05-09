@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: a9af97bcd85833a140d6c668fe4c757c85d7447a
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337174"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113381"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
@@ -87,7 +87,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 ユーザー定義のルートの背景情報については、「[仮想ネットワーク トラフィック ルーティング][UDROverview]」を参照してください。  
 
-ユーザー定義のルートの作成および構成方法については、[PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする][UDRHowTo] を参照してください。
+ユーザー定義のルートの作成および構成方法については、「[PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする][UDRHowTo]」を参照してください。
 
 ## <a name="udr-configuration"></a>UDR の構成
 
@@ -95,7 +95,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Azure ダウンロード ページ][AzureDownloads] から Azure PowerShell をインストールします。 2015 年 6 月以降の日付のダウンロードを選択してください。 **[コマンド ライン ツール]** > **[Windows Powershell]** で、**[インストール]** を選択して最新の PowerShell コマンドレットをインストールします。
+* [Azure ダウンロード ページ][AzureDownloads]から Azure PowerShell をインストールします。 2015 年 6 月以降の日付のダウンロードを選択してください。 **[コマンド ライン ツール]** > **[Windows Powershell]** で、**[インストール]** を選択して最新の PowerShell コマンドレットをインストールします。
 
 * App Service Environment が独占的に使用する一意のサブネットを作成します。 一意のサブネットにより、サブネットに適用される UDR で、App Service Environment 用の発信トラフィックのみが開くことが保証されます。
 
@@ -118,7 +118,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 0.0.0.0/0 は広いアドレス範囲です。 この範囲は、より具体的な ExpressRoute からアドバタイズされたアドレス範囲によってオーバーライドされます。 0.0.0.0/0 ルートの UDR は、0.0.0.0/0 のみをアドバタイズする ExressRoute 構成と組み合わせて使用する必要があります。 
 
-または、Azure で使用されている CIDR 範囲の最新の全一覧をダウンロードしてください。 すべての Azure IP アドレス範囲の XML ファイルは、[Microsoft ダウンロード センター][DownloadCenterAddressRanges] で入手できます。  
+または、Azure で使用されている CIDR 範囲の最新の全一覧をダウンロードしてください。 すべての Azure IP アドレス範囲の XML ファイルは、[Microsoft ダウンロード センター][DownloadCenterAddressRanges]で入手できます。  
 
 > [!NOTE]
 >
@@ -148,16 +148,23 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 ## <a name="next-steps"></a>次の手順
 
-PowerApps 用の App Service Environment の使用を開始するには、[App Service Environment の概要][IntroToAppServiceEnvironment] を参照してください。
+PowerApps 用の App Service Environment の使用を開始するには、[App Service Environment の概要][IntroToAppServiceEnvironment]に関する記事を参照してください。
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
-[ExpressRoute]: https://azure.microsoft.com/services/expressroute/
-[requiredports]: app-service-app-service-environment-control-inbound-traffic.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
-<!-- Old link -- [UDRHowTo]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ --> [UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md [AzureDownloads]: https://azure.microsoft.com/downloads/ [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ [IntroToAppServiceEnvironment]: app-service-app-service-environment-intro.md [NewPortal]。  https://portal.azure.com
+[virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 
+[ExpressRoute]: https://azure.microsoft.com/services/expressroute/ 
+[requiredports]: app-service-app-service-environment-control-inbound-traffic.md 
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
+[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/ 
+<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
+
+[UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell 
+[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md 
+[AzureDownloads]: https://azure.microsoft.com/downloads/ 
+[DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653 
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
+[IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md 
+[NewPortal]:  https://portal.azure.com 
 
 
 <!-- IMAGES -->

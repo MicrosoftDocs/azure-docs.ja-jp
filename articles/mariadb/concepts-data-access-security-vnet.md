@@ -5,18 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 82b72b45f9577c83e2c6619220b26e26d696c4f1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/26/2019
+ms.openlocfilehash: 5a4e6819eeff2a2c8efaf3807c38cc06f7c35002
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540256"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59006691"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtual Network のサービス エンドポイントと規則を Azure Database for MariaDB に対して使用する
-
-> [!IMPORTANT]
-> VNet サービス エンドポイント機能は、パブリック プレビューの段階です。
 
 *仮想ネットワーク規則*は、Azure Database for MariaDB サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure Database for MariaDB サーバーへの通信を安全に許可するための最善の選択になる理由を説明します。
 
@@ -108,6 +105,8 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 ## <a name="limitations"></a>制限事項
 
 Azure Database for MariaDB の場合、仮想ネットワーク規則機能には以下のような制限事項があります。
+
+- Web アプリは、VNet/サブネット内のプライベート IP にマップできます。 サービス エンドポイントが特定の VNet/サブネットから有効化されている場合でも、Web アプリからサーバーへの接続には、VNet/サブネットのソースではなく、Azure のパブリック IP ソースが使用されます。 サーバーに VNet ファイアウォール規則がある場合、Web アプリからそのサーバーへの接続を有効にするには、サーバーで Azure サービスにサーバーへのアクセスを許可する必要があります。
 
 - Azure Database for MariaDB のファイアウォールでは、各仮想ネットワーク規則はサブネットを参照します。 これらの参照されるサブネットはすべて、Azure Database for MariaDB がホストされているのと同じ geography 型のリージョンでホストされている必要があります。
 

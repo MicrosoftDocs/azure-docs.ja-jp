@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 353616141e37e8024695fad81a16c9c2f3b82625
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107346"
 documentType: LandingData
 title: Azure Managed Applications のドキュメント
 metadata:
@@ -13,19 +19,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/25/2017
   ms.author: tomfitz
-  ms.openlocfilehash: 85f4d5d37dabfa5a8781a4f9ed0fb52d7c6e0297
-  ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/12/2018
-  ms.locfileid: "27779569"
 abstract:
   description: Azure Managed Applications を使用すると、クラウド ソリューションを内部および外部の顧客に提供できます。 ソリューションのインフラストラクチャのほか、ソリューションの継続的な管理の条件を定義します。 ソリューションの課金は、Azure Billing によって処理されます。
 sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: マネージ アプリケーションを発行してデプロイする方法を説明します。
+    text: マネージド アプリケーションを発行してデプロイする方法を説明します。
   - type: list
     style: icon48
     items:
@@ -36,20 +36,20 @@ sections:
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: マネージ アプリケーションを開発する方法と Azure Marketplace を通じてそれらを提供する方法を説明します。
+    text: マネージド アプリケーションを開発する方法と Azure Marketplace を通じてそれらを提供する方法を説明します。
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/managed-applications/publish-service-catalog-app">マネージ アプリケーションを内部のユーザーに発行する</a>
-    - html: <a href="/azure/managed-applications/publish-marketplace-app">マネージ アプリケーションを外部のユーザーに発行する</a>
-- title: 参照
+    - html: <a href="/azure/managed-applications/publish-service-catalog-app">マネージド アプリケーションを内部のユーザーに発行する</a>
+    - html: <a href="/azure/managed-applications/publish-marketplace-app">マネージド アプリケーションを外部のユーザーに発行する</a>
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
+      html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/az.resources">PowerShell</a></p>
     - title: REST API
       html: <p><a href="/rest/api/resources/">REST</a></p>
     - title: ユーザー インターフェイス

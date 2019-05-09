@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a107689796c58b17c445e7a9cf7c6f0402ef6005
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339758"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571054"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断の検出とトラブルシューティング
 
@@ -28,37 +28,48 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 デバイス接続のイベントとエラーをログに記録するには、IoT Hub の診断を有効にします。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. IoT ハブに移動します。
-1. **[診断設定]** を選択します。
-1. **[診断を有効にする]** を選択します。
-1. **[接続]** ログの収集を有効にします。
-1. 分析しやすくするために、**[Log Analytics への送信]** を有効にします ([価格を参照](https://azure.microsoft.com/pricing/details/log-analytics/))。 「[接続に関するエラーを解決する](#Resolve-connectivity-errors)」の例を参照してください。
 
-   ![推奨設定][2]
+2. IoT ハブに移動します。
+
+3. **[診断設定]** を選択します。
+
+4. **[診断を有効にする]** を選択します。
+
+5. **[接続]** ログの収集を有効にします。
+
+6. 分析しやすくするために、**[Log Analytics への送信]** を有効にします ([価格を参照](https://azure.microsoft.com/pricing/details/log-analytics/))。 「[接続に関するエラーを解決する](#resolve-connectivity-errors)」の例を参照してください。
+
+   ![推奨設定](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
 詳細については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する](iot-hub-monitor-resource-health.md)」を参照してください。
 
 ### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>_接続されているデバイス_ 数のメトリックに関するアラートを設定する
 
-デバイスが切断されたときにアラートを受け取るには、**接続されているデバイス**のメトリックに関するアラートを構成します。
+デバイスが切断されたときにアラートを受け取るには、**接続されているデバイス (プレビュー)** のメトリックに関するアラートを構成します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. IoT ハブに移動します。
-1. **[アラート (クラシック)]** を選択します。
-1. **[メトリック アラートの追加 (クラシック)]** を選択します。
-1. フォームに入力して **[OK]** を選択します。
 
-   ![推奨されるメトリック アラート][3]
+2. IoT ハブに移動します。
+
+3. **[Alerts]**(アラート) を選択します。
+
+4. **[新しいアラート ルール]** を選択します。
+
+5. **条件の追加** を選択して、Connected devices (preview)\(接続されているデバイス (プレビュー)\) を選択します。
+
+6. プロンプトに従って、目的のしきい値とアラート オプションの設定を完了します。
 
 詳細については、「[Microsoft Azure のクラシック アラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。
 
 ## <a name="resolve-connectivity-errors"></a>接続に関するエラーを解決する
 
-接続されたデバイスの診断ログとアラートを有効にすると、エラーが発生したときにアラートを受け取ります。 このセクションでは、アラートを受け取ったときに一般的な問題を解決する方法について説明します。 実際の診断ログに合わせて Azure Log Analytics を設定済みであることを前提として、以下の手順を説明します。
+接続されたデバイスの診断ログとアラートを有効にすると、エラーが発生したときにアラートを受け取ります。 このセクションでは、アラートを受け取ったときに一般的な問題を解決する方法について説明します。 実際の診断ログに合わせて Azure Monitor ログを設定済みであることを前提として、以下の手順を説明します。
 
 1. Azure portal で、**Log Analytics** のワークスペースに移動します。
-1. **[ログ検索]** を選択します。
-1. IoT Hub の接続エラー ログを分離するために、次のクエリを入力してから **[実行]** を選択します。
+
+2. **[ログ検索]** を選択します。
+
+3. IoT Hub の接続エラー ログを分離するために、次のクエリを入力してから **[実行]** を選択します。
 
     ```
     search *
@@ -68,12 +79,12 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 
 1. 結果がある場合は、`OperationName`、`ResultType` (エラー コード)、および `ResultDescription` (エラー メッセージ) を探してエラーの詳細を確認します。
 
-   ![エラー ログの例][4]
+   ![エラー ログの例](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-1. この表を参照して、一般的なエラーを理解し、解決してください。
+2. この表を参照して、一般的なエラーを理解し、解決してください。
 
     | Error | 根本原因 | 解決策 |
-    |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    |-------|------------|------------|
     | 404104 DeviceConnectionClosedRemotely | 接続はデバイスによって閉じられましたが、IoT Hub では理由が認識されていません。 一般的な原因には、MQTT/AMQP のタイムアウトやインターネット接続の喪失などがあります。 | [接続をテスト](tutorial-connectivity.md)して、デバイスが IoT Hub に接続できることを確認します。 接続は正常でも、デバイスが断続的に切断される場合は、必ず選択したプロトコル (MQTT/AMPQ) に適したキープ アライブ デバイス ロジックを実装してください。 |
     | 401003 IoTHubUnauthorized | IoT Hub は接続を認証できませんでした。 | 使用する SAS などのセキュリティ トークンが期限切れでないことを確認してください。 [Azure IoT SDK](iot-hub-devguide-sdks.md) を使用すると、特別な構成を行うことなく自動でトークンを生成できます。 |
     | 409002 LinkCreationConflict | デバイスに複数の接続が存在します。 新しい接続要求がデバイスに送信されると、IoT Hub はこのエラーで前の接続を閉じます。 | 最も一般的な事例では、デバイスによって切断が検出され、接続の再確立が試行されますが、IoT Hub では引き続きデバイスが接続されていると見なされます。 IoT Hub では前の接続が閉じられ、このエラーが記録されます。 このエラーは通常、別の一時的な問題の副作用として現れます。そのため、問題解決を続けるには、ログで他のエラーを探してください。 そうでなければ、接続が切断された場合にのみ、新しい接続要求を発行してください。 |
@@ -85,7 +96,9 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 前述の手順が役に立たなかった場合は、以下の手順を試すことができます。
 
 * 問題のあるデバイスに物理的にまたは (SSH などを使用して) リモートからアクセスできる場合は、[デバイス側のトラブルシューティング ガイド](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices)の記事に従ってトラブルシューティングを続けます。
+
 * Azure portal の IoT ハブで IoT デバイスを選択し、デバイスが **[有効]** であることを確認します。
+
 * [Azure IoT Hub フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)、または [Azure サポート](https://azure.microsoft.com/support/options/)で相談します。
 
 このガイドが役に立たなかった場合は、すべてのお客様のためにこのドキュメントを改善できるように、以下のフィードバック セクションでコメントを残してください。
@@ -93,10 +106,5 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 ## <a name="next-steps"></a>次の手順
 
 * 一時的な問題の解決に関する詳細については、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」を参照してください。
-* Azure IoT SDK と再試行管理に関する詳細については、「[Azure IoT Hub device SDK を利用して接続と信頼できるメッセージ処理を管理する](iot-hub-reliability-features-in-sdks.md#connection-and-retry)」を参照してください。
 
-<!-- Images -->
-[1]: ../../includes/media/iot-hub-diagnostics-settings/turnondiagnostics.png
-[2]: ./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png
-[3]: ./media/iot-hub-troubleshoot-connectivity/metric-alert.png
-[4]: ./media/iot-hub-troubleshoot-connectivity/diag-logs.png
+* Azure IoT SDK と再試行管理に関する詳細については、「[Azure IoT Hub device SDK を利用して接続と信頼できるメッセージ処理を管理する](iot-hub-reliability-features-in-sdks.md#connection-and-retry)」を参照してください。

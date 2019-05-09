@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0049468330a9fcb26f023de2a8adb5dfd1544321
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436808"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -15,193 +9,172 @@ metadata:
   author: CarlRabeler
   manager: craigg
   ms.service: sql-database
+  ms.subservice: service
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
-  ms.date: 07/07/2018
+  ms.date: 03/04/2019
   ms.author: carlrab
 abstract:
-  description: Azure SQL Database とは、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
+  description: Azure SQL Database は、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、汎用のサービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたクラウド データベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
+      src: 'https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png'
       width: 250
-    title: Azure でデータベースを作成する。 (3:12)
-    href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
+    title: 'Azure でデータベースを作成する。 (3:12)'
+    href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/sql-database/sql-database-technical-overview
+            html: <p>安定した最新バージョンの SQL Server データベース エンジンとパッチ適用済み OS で常に実行される、可用性が 99.99% の PaaS データベース。</p>
+            image:
+              src: media/index/i_managed.svg
+            title: フル マネージド
+          - href: /azure/sql-database/sql-database-service-tiers
+            html: <p>月額 5 米国ドルの手頃なデータベースから強力な 80 コア データベースまでの柔軟なサービス プランによって、価格/パフォーマンスの比率をニーズに合わせて調整することができます。</p>
+            image:
+              src: media/index/i_perftier.svg
+            title: 価格/サービス プラン
+          - href: /azure/sql-database/sql-database-scalability-index
+            html: <p>ニーズに応じて簡単にデータベースをスケールアップ、スケールアウト、シャード化して、アプリケーションのパフォーマンスを向上させます。</p>
+            image:
+              src: media/index/i_scale.svg
+            title: スケーラビリティ
+          - href: /azure/sql-database/sql-database-single-index
+            html: <p>SQL Database サーバーで管理されている単一データベースを、予測可能なパフォーマンスの単一データベースを必要とする SaaS アプリケーションやマイクロサービスに使用します。</p>
+            image:
+              src: media/index/i_db.svg
+            title: 単一データベース
+          - href: /azure/sql-database/sql-database-elastic-pool
+            html: <p>SQL Database のエラスティック プールは、予期できない多様な使用ニーズを持つ複数のデータベースを管理しスケーリングするための、シンプルでコスト効率の高いソリューションです。</p>
+            image:
+              src: media/index/i_elasticpool.svg
+            title: エラスティック プール
+          - href: /azure/sql-database/sql-database-managed-instance-index
+            html: <p>マネージド インスタンスを使用して、オンプレミス データベースからの移行に必要なデータベース コードの変更を最小またはゼロに抑えて、Azure クラウドでホストされたフル マネージド SQL Server Database エンジン インスタンスを取得します。</p>
+            image:
+              src: media/index/i_mi.svg
+            title: マネージド インスタンス
+          - href: /azure/sql-database/sql-database-paas
+            html: <p>組み込みの高可用性、自動バックアップ、geo レプリケーションによって、メンテナンス操作やインフラストラクチャ障害、ハードウェア障害でビジネスが中断されることがなくなります。</p>
+            image:
+              src: media/index/gear.svg
+            title: サービスとしてのプラットフォーム
+          - href: /azure/sql-database/sql-database-security-index
+            html: <p>Azure AD 認証、仮想ネットワーク、ファイアウォール、Always Encrypted 接続でデータベースをセキュリティ保護できます。 組み込みのセキュリティで脅威と脆弱性を特定します。</p>
+            image:
+              src: media/index/i_security.svg
+            title: 高度なセキュリティ
+          - href: /azure/sql-database/sql-database-monitoring-tuning-index
+            html: <p>組み込みの監視とインテリジェントなチューニングによって、データベースの運用コストと管理コストが大幅に削減され、アプリケーションのパフォーマンスが最大化されます。</p>
+            image:
+              src: media/index/i_intelligence.svg
+            title: 監視とチューニング
+  - title: 5 分間のクイック スタート
     items:
-    - href: /azure/sql-database/sql-database-technical-overview
-      html: <p>安定した最新バージョンの SQL Server データベース エンジンとパッチ適用済み OS で常に実行される、可用性が 99.99% の PaaS データベース。</p>
-      image:
-        src: media/index/i_managed.svg
-      title: フル マネージド
-    - href: /azure/sql-database/sql-database-service-tiers
-      html: <p>月額 5 米国ドルの手頃なデータベースから強力な 80 コア データベースまでの柔軟なサービス プランによって、価格/パフォーマンスの比率をニーズに合わせて調整することができます。</p>
-      image:
-        src: media/index/i_perftier.svg
-      title: 価格/サービス プラン
-    - href: /azure/sql-database/sql-database-scalability-index
-      html: <p>ニーズに応じて簡単にデータベースをスケールアップ、スケールアウト、シャード化して、アプリケーションのパフォーマンスを向上させます。</p>
-      image:
-        src: media/index/i_scale.svg
-      title: スケーラビリティ
-    - href: /azure/sql-database/sql-database-single-index
-      html: <p>論理サーバーでホストされている単一データベースを、予測可能なパフォーマンスで単一データベースを必要とする SaaS アプリケーションやマイクロサービスに使用します。</p>
-      image:
-        src: media/index/i_db.svg
-      title: 単一データベース
-    - href: /azure/sql-database/sql-database-elastic-pool
-      html: <p>SQL Database のエラスティック プールは、予期できない多様な使用ニーズを持つ複数のデータベースを管理しスケーリングするための、シンプルでコスト効率の高いソリューションです。</p>
-      image:
-        src: media/index/i_elasticpool.svg
-      title: エラスティック プール
-    - href: /azure/sql-database/sql-database-managed-instance-index
-      html: <p>Managed Instance を使用すると、データベース コードの変更を最小またはゼロに抑えながら、オンプレミス データベースをフル マネージド Azure PaaS データベース サービスに簡単に移行できます。</p>
-      image:
-        src: media/index/i_mi.svg
-      title: マネージド インスタンス
-    - href: /azure/sql-database/sql-database-paas
-      html: <p>組み込みの高可用性、自動バックアップ、geo レプリケーションによって、メンテナンス操作やインフラストラクチャ障害、ハードウェア障害でビジネスが中断されることがなくなります。</p>
-      image:
-        src: media/index/gear.svg
-      title: サービスとしてのプラットフォーム
-    - href: /azure/sql-database/sql-database-security-index
-      html: <p>Azure AD 認証、仮想ネットワーク、ファイアウォール、Always Encrypted 接続でデータベースをセキュリティ保護できます。 組み込みのセキュリティで脅威と脆弱性を特定します。</p>
-      image:
-        src: media/index/i_security.svg
-      title: 高度なセキュリティ
-    - href: /azure/sql-database/sql-database-monitoring-tuning-index
-      html: <p>組み込みの監視とインテリジェントなチューニングによって、データベースの運用コストと管理コストが大幅に削減され、アプリケーションのパフォーマンスが最大化されます。</p>
-      image:
-        src: media/index/i_intelligence.svg
-      title: 監視とチューニング
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure SQL Database により、Azure portal、Azure CLI、Azure PowerShell を使用して基本的な管理タスクを簡単に実行することができます。 次のクイック スタート サンプルを使用して基本的な管理タスクを実行する方法を学習します。
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/portal.svg
-      title: Azure ポータル
-    - image:
-        src: media/index/cli.svg
-      title: Azure CLI
-    - image:
-        src: media/index/logo_powershell.svg
-      title: PowerShell
-    - image:
-        src: media/index/logo_arm.svg
-      title: Azure Resource Manager テンプレート
-    rows:
-    - title: 1 つの SQL データベースの作成
-      values:
-      - href: /azure/sql-database/sql-database-get-started-portal
-      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-      - href: 
-    - title: SQL マネージド インスタンスの作成
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
-    - title: SQL エラスティック プールの作成
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
-      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: 1 つの SQL データベースのスケーリング
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
-      - href: 
-    - title: SQL エラスティック プールのスケーリング
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
-    - title: マネージド インスタンスのスケーリング
-      values:
-      - href: 
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
-      - href: 
-    - title: マネージド インスタンスの Azure ネットワークの構成
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: SQL DB を使用してデータベースを作成、管理、移行する方法について説明します
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Azure SQL Database により、Azure portal、Azure CLI、Azure PowerShell を使用して基本的な管理タスクを簡単に実行することができます。 次のクイック スタート サンプルを使用して基本的な管理タスクを実行する方法を学習します。
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/portal.svg
+            title: Azure ポータル
+          - image:
+              src: media/index/cli.svg
+            title: Azure CLI
+          - image:
+              src: media/index/logo_powershell.svg
+            title: PowerShell
+          - image:
+              src: media/index/logo_arm.svg
+            title: Azure Resource Manager テンプレート
+        rows:
+          - title: 単一データベースの作成
+            values:
+              - href: /azure/sql-database/sql-database-single-database-get-started
+              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
+              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create'
+          - title: エラスティック プールの作成
+            values:
+              - href: /azure/sql-database/sql-database-elastic-pool-manage
+              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create'
+          - title: マネージド インスタンスの作成
+            values:
+              - href: /azure/sql-database/sql-database-managed-instance-get-started
+              - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
+              - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい SQL データベースのスキーマを作成および設計する
-    - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">データベースの復元</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC インポート</a>を使用して、既存のデータベースを Azure に移行する
-    - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Database をセキュリティ保護する</a>
-    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理的に分散したデータベース</a>を使用してデータをグローバルに分散する
-- title: Microsoft Learn でスキルを身に付ける
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: SQL Database を使用してデータベースを作成、管理、移行する方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: クイック スタート ガイドを使用して、<a href="/azure/sql-database/sql-database-single-database-quickstart-guide">単一データベース</a>と<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">マネージド インスタンス</a>の使用を開始する。
+          - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい単一データベースのスキーマを作成および設計する
+          - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブな SQL Server バックアップ ファイル</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC ファイルのインポート</a>を使用して、既存のデータベースを Azure に移行する
+          - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Database をセキュリティ保護する</a>
+          - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geo 分散型データベース</a>を使用してデータをグローバルに分散する
+  - title: Microsoft Learn でスキルを身に付ける
     items:
-    - title: アプリケーション データを格納する Azure SQL Database をプロビジョニングする
-      href: /learn/modules/provision-azure-sql-db/
-      image:
-        src: /learn/achievements/provision-azure-sql-db.svg
-        href: /learn/modules/provision-azure-sql-db/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-sql-database">対話型学習の詳細...</a>
-- title: 無料の Pluralsight ビデオ トレーニング
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: アプリケーション データを格納する Azure SQL Database をプロビジョニングする
+            href: /learn/modules/provision-azure-sql-db/
+            image:
+              src: /learn/achievements/provision-azure-sql-db.svg
+              href: /learn/modules/provision-azure-sql-db/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-sql-database">対話型学習の詳細...</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
     items:
-    - title: .NET を用いた Azure での開発
-      href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 一般的なタスクを管理するためのスクリプトを探します。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: .NET を用いた Azure での開発
+            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
+  - title: サンプル
     items:
-    - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
-    - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 一般的なタスクを管理するためのスクリプトを探します。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
+          - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="/powershell/module/azurerm.sql/#sql">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (エラスティック データベース)</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/sql/">REST API リファレンス</a></p>
-    - title: SQL Server Tools
-      html: <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server Tools</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL Database の管理ライブラリ パッケージ</a></p>
-    - title: SQL Server ドライバー
-      html: <p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server ドライバー</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: '<p><a href="/powershell/module/Az.Sql/">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (エラスティック データベース)</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>'
+          - title: Languages
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/sql/">REST API リファレンス</a></p>
+          - title: SQL Server Tools
+            html: '<p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server Tools</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL Database の管理ライブラリ パッケージ</a></p>'
+          - title: SQL Server ドライバー
+            html: '<p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server ドライバー</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>'

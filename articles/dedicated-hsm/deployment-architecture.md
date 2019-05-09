@@ -3,21 +3,21 @@ title: デプロイ アーキテクチャ - Azure Dedicated HSM | Microsoft Docs
 description: アプリケーション アーキテクチャの一部として Azure Dedicated HSM を使用するときの基本設計に関する考慮事項
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 913be9d1ee6ce92d71f5f0c7eda46a618483ce8d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1e00e1f06f2409c94174a752a799cd4c1b7b23ef
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078295"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539974"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM のデプロイ アーキテクチャ
 
@@ -37,6 +37,12 @@ HSM は、Microsoft のデータ センター全体に分散され、高可用�
 * 東アジア
 * 北ヨーロッパ
 * 西ヨーロッパ
+* 英国南部
+* 英国西部
+* カナダ中部
+* カナダ東部
+* オーストラリア東部
+* オーストラリア南東部
 
 これらの各リージョンでは、2 つの独立したデータ センターか、少なくとも 2 つの独立した可用性ゾーンに HSM ラックがデプロイされています。 可用性ゾーンは、東南アジアには 3 つ、米国東部 2 には 2 つ存在します。 専用 HSM サービスを提供するリージョンは、ヨーロッパ、アジア、米国全体で合計 8 つ存在します。 Azure リージョンの詳細については、公式の [Azure リージョン情報](https://azure.microsoft.com/global-infrastructure/regions/)を参照してください。
 専用 HSM ベースのソリューションでは、いくつかの設計要素として、場所/待ち時間、高可用性、他の分散アプリケーションのサポートが挙げられます。

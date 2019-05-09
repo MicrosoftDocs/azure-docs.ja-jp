@@ -1,25 +1,24 @@
 ---
-title: Apache Kafka の開始 - Azure HDInsight クイック スタート
+title: Azure Resource Manager を使用して HDInsight に Apache Kafka を設定する - クイック スタート
 description: このクイックス タートでは、Azure portal を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.custom: mvc,hdinsightactive
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 66c6b6908a225301f0bce9f70b43e96047bcd6d1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c1b8f711a6984a6134e6df0ae6ae12bf0b62cc0d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791147"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757669"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>クイック スタート:HDInsight クラスター上に Apache Kafka を作成する
 
 [Apache Kafka](https://kafka.apache.org/) は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。 
 
-このクイック スタートでは、Azure Resource Manager テンプレートを使って [Apache Kafka](https://kafka.apache.org) クラスターを作成する方法について説明します。 Kafka を使って、付属のユーティリティでメッセージを送受信する方法についても説明します。
+このクイック スタートでは、Azure Resource Manager テンプレートを使って [Apache Kafka](https://kafka.apache.org) クラスターを作成する方法について説明します。 Kafka を使って、付属のユーティリティでメッセージを送受信する方法についても説明します。 同じようなテンプレートを「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)」で見ることができます。 テンプレートのリファレンスについては、[こちら](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)をご覧ください。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -36,9 +35,9 @@ ms.locfileid: "53791147"
 
     Linux、Unix、および macOS システムでは、既定で `ssh` コマンドが用意されています。 Windows 10 では、次のいずれかの方法を使って、`ssh` コマンドをインストールします。
 
-    * [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) を使います。 Cloud Shell は `ssh` コマンドを提供し、シェル環境として Bash または PowerShell を使うように構成できます。
+  * [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) を使います。 Cloud Shell は `ssh` コマンドを提供し、シェル環境として Bash または PowerShell を使うように構成できます。
 
-    * [Windows Subsystem for Linux をインストールします](https://docs.microsoft.com/windows/wsl/install-win10)。 Microsoft Store から入手可能な Linux ディストリビューションでは、`ssh` コマンドが提供されています。
+  * [Windows Subsystem for Linux をインストールします](https://docs.microsoft.com/windows/wsl/install-win10)。 Microsoft Store から入手可能な Linux ディストリビューションでは、`ssh` コマンドが提供されています。
 
     > [!IMPORTANT]  
     > このドキュメントの手順では、上記のいずれかの SSH クライアントを使っていることを前提としています。 別の SSH クライアントを使っていて、問題が発生した場合は、お使いの SSH クライアントのドキュメントを参照してください。
@@ -57,7 +56,7 @@ ms.locfileid: "53791147"
     | --- | --- |
     | サブスクリプション | Azure サブスクリプション。 |
     | リソース グループ | クラスターを作成するリソース グループ。 |
-    | 場所 | クラスターを作成する Azure リージョン。 |
+    | Location | クラスターを作成する Azure リージョン。 |
     | クラスター名 | Kafka クラスターの名前。 |
     | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターでホストされている HTTPS ベースのサービスにログインするために使うアカウント名。 |
     | [クラスター ログイン パスワード] | ログイン ユーザー名のパスワード。 |

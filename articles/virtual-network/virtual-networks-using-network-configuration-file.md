@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 5267ce5c50e8a57843f0bc54165289b38013ad91
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e26ec4d268b9bd8852ef8cd2c522995902e15923
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986117"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992384"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>ネットワーク構成ファイルを使用した仮想ネットワーク (クラシック) の構成
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは Resource Manager デプロイ モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは Resource Manager デプロイ モデルを使用することをお勧めします。
 
 仮想ネットワーク (クラシック) は、Azure クラシック コマンド ライン インターフェイス (CLI) または Azure PowerShell でネットワーク構成ファイルを使用して作成および構成することができます。 ネットワーク構成ファイルを使用して、Azure Resource Manager デプロイ モデルを介して仮想ネットワークを作成または変更することはできません。 Azure Portal でネットワーク構成ファイルを使って仮想ネットワーク (クラシック) の作成と変更を行うことはできませんが、Azure Portal では、ネットワーク構成ファイルを使わなくても仮想ネットワーク (クラシック) を作成できます。
 
@@ -71,7 +71,7 @@ ms.locfileid: "46986117"
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns />
     <VirtualNetworkSites>
@@ -134,7 +134,7 @@ ms.locfileid: "46986117"
 
 ### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
-1. [Azure クラシック CLI をインストールします](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 残りの手順は、クラシック CLI のコマンド プロンプトから行います。
+1. [Azure クラシック CLI をインストールします](/cli/azure/install-classic-cli)。 残りの手順は、クラシック CLI のコマンド プロンプトから行います。
 2. `azure login` コマンドを入力して Azure にログインします。
 3. `azure config mode asm` コマンドを入力して asm モードになっていることを確認します。
 4. 次のコマンドを実行してネットワーク構成ファイルをインポートします。ディレクトリとファイル名は必要に応じて変更してください。

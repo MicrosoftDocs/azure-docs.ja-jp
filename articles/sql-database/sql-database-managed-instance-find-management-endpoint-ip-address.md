@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: carlrab
+ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 83eea565a12ee5201c42b543cdbdad72ddc28ca9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7eb9ecd6b94aad263346ad6b5c45b694e0bd46f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345795"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797960"
 ---
 # <a name="determine-the-management-endpoint-ip-address"></a>管理エンドポイント IP アドレスを確認する
 
@@ -29,10 +29,9 @@ Managed Instance のホストが `mi-demo.xxxxxx.database.windows.net` である
 
 ![内部ホスト名の解決](./media/sql-database-managed-instance-management-endpoint/01_find_internal_host.png)
 
-次に、強調表示されている名前についてもう一度 `nslookup` を実行し、`.vnet.` セグメントを削除します。 このコマンドの実行結果として、パブリック IP アドレスが取得されます。
+次に、強調表示されている名前についてもう一度 `nslookup` を実行し、`.vnet.` セグメントを削除します。 このコマンドを実行すると、パブリック IP アドレスが取得されます。
 
 ![パブリック IP アドレスの解決](./media/sql-database-managed-instance-management-endpoint/02_find_public_ip.png)
-
 
 ## <a name="next-steps"></a>次の手順
 

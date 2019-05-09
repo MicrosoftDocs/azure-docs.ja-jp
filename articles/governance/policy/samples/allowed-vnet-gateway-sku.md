@@ -1,21 +1,20 @@
 ---
 title: サンプル - 許可されている仮想ネットワーク ゲートウェイ SKU
-description: このサンプル ポリシーでは、仮想ネットワーク ゲートウェイが適切な SKU とゲートウェイの種類を使用することを必須にします。
-services: azure-policy
+description: このサンプル ポリシー定義は、適切な SKU とゲートウェイの種類を使用するよう仮想ネットワーク ゲートウェイに要求します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 23645d8648acc641dd5d58ee16d1f84599011867
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3338117f44639fd8342c4275016461db16a76686
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318804"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59280606"
 ---
-# <a name="allowed-virtual-network-gateway-skus"></a>許可されている仮想ネットワーク ゲートウェイ SKU
+# <a name="sample---allowed-virtual-network-gateway-skus"></a>サンプル - 許可されている仮想ネットワーク ゲートウェイ SKU
 
 このポリシーでは、仮想ネットワーク ゲートウェイが適切な SKU とゲートウェイの種類を使用することを必須にします。 承認された SKU の配列と、承認されたゲートウェイの種類の配列を指定します。
 
@@ -29,16 +28,16 @@ ms.locfileid: "53318804"
 
 ## <a name="deploy-with-the-portal"></a>ポータルでのデプロイ
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvirtual-network-gateway-skus%2Fazurepolicy.json)
+[![ポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvirtual-network-gateway-skus%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name "virtual-network-gateway-skus" -DisplayName "Allowed Virtual Network Gateway SKUs" -description "This policy enables you to specify a set of virtual network gateway SKUs that your organization can deploy." -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/virtual-network-gateway-skus/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/virtual-network-gateway-skus/azurepolicy.parameters.json' -Mode All
+$definition = New-AzPolicyDefinition -Name "virtual-network-gateway-skus" -DisplayName "Allowed Virtual Network Gateway SKUs" -description "This policy enables you to specify a set of virtual network gateway SKUs that your organization can deploy." -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/virtual-network-gateway-skus/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/virtual-network-gateway-skus/azurepolicy.parameters.json' -Mode All
 $definition
-$assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -listOfAllowedSKUs <Allowed SKUs> -gatewayType <Gateway Type> -PolicyDefinition $definition
+$assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -listOfAllowedSKUs <Allowed SKUs> -gatewayType <Gateway Type> -PolicyDefinition $definition
 $assignment
 ```
 
@@ -47,7 +46,7 @@ $assignment
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ

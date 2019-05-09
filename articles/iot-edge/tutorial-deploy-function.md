@@ -4,17 +4,17 @@ description: このチュートリアルでは、Azure 関数を IoT Edge モジ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/19/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1488f6aff202f8b307b883d8a795d7df20066661
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1fba2c4e5191d4c827035362a8eb6876fcbb67cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081882"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081748"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル: Azure 関数を IoT Edge モジュールとして展開する
 
@@ -27,6 +27,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 > * フィルター処理されたデータを表示する。
 
 <center>
+
 ![図 - チュートリアルのアーキテクチャ、関数モジュールのステージングと展開](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
@@ -51,13 +52,13 @@ Azure IoT Edge デバイス:
 
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
-* [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)  
+* [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。 
 * [The .NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 * [Docker CE](https://docs.docker.com/install/)。 
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このチュートリアルでは、Visual Studio Code 用の Azure IoT Edge 拡張機能を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
+このチュートリアルでは、Visual Studio Code 用の Azure IoT Tools を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
 
 コンテナー イメージは、Docker と互換性のある任意のレジストリを使用して格納できます。 2 つの一般的な Docker レジストリ サービスは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) と [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) です。 このチュートリアルでは、Azure Container Registry を使用します。 
 
@@ -72,7 +73,7 @@ Azure IoT Edge デバイス:
    | レジストリ名 | 一意の名前を指定します。 |
    | サブスクリプション | ドロップダウン リストで、サブスクリプションを選択します。 |
    | リソース グループ | IoT Edge のクイック スタートおよびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
-   | 場所 | 近くの場所を選択します。 |
+   | Location | 近くの場所を選択します。 |
    | 管理者ユーザー | **[有効]** に設定します。 |
    | SKU | **[Basic]** を選択します。 | 
 
@@ -84,7 +85,7 @@ Azure IoT Edge デバイス:
 
 ## <a name="create-a-function-project"></a>関数プロジェクトを作成する
 
-前提条件としてインストールした Visual Studio Code 用 Azure IoT Edge 拡張機能は、いくつかのコード テンプレートと管理機能を提供します。 このセクションでは、Visual Studio Code を使用して、Azure 関数を含む IoT Edge ソリューションを作成します。 
+前提条件としてインストールした Visual Studio Code 用 Azure IoT Tools は、いくつかのコード テンプレートと管理機能を提供します。 このセクションでは、Visual Studio Code を使用して、Azure 関数を含む IoT Edge ソリューションを作成します。 
 
 1. 開発用マシンで Visual Studio Code を開きます。
 
@@ -221,7 +222,7 @@ Azure IoT Edge デバイス:
 
 ## <a name="deploy-and-run-the-solution"></a>ソリューションの配置と実行
 
-クイック スタートで行ったように、Azure portal を使用して関数モジュールを IoT Edge デバイスに展開できます。 また、Visual Studio Code 内からモジュールを配置して、監視することもできます。 以降のセクションでは、前提条件で示された VS Code 用の Azure IoT Edge 拡張機能が使用されます。 この拡張機能をまだインストールしていない場合は、ここでインストールしてください。 
+クイック スタートで行ったように、Azure portal を使用して関数モジュールを IoT Edge デバイスに展開できます。 また、Visual Studio Code 内からモジュールを配置して、監視することもできます。 以降のセクションでは、前提条件で示された VS Code 用の Azure IoT Tools を使用します。 この拡張機能をまだインストールしていない場合は、ここでインストールしてください。 
 
 1. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 

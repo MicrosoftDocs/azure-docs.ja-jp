@@ -1,6 +1,6 @@
 ---
-title: トリガーとアクションの種類のリファレンス - Azure Logic Apps | Microsoft Docs
-description: ワークフロー定義言語スキーマで記述する Azure Logic Apps のトリガーとアクションの種類について説明します。
+title: ワークフロー定義言語のトリガーとアクションの種類のリファレンス - Azure Logic Apps
+description: Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス ガイド
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -9,22 +9,23 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044775"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617921"
 ---
-# <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類に関するリファレンス
+# <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) では、すべてのロジック アプリのワークフローは、アクションに続くトリガーから開始されます。 この記事では、タスク、プロセス、ワークフローを自動化するためのロジック アプリを作成するときに使用できる、トリガーとアクションの種類について説明します。 ロジック アプリ ワークフローは Logic Apps デザイナーを使用して作成でき、視覚的に作成する方法と、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)を使用して基になるワークフロー定義を作成する方法があります。 ロジック アプリは、Azure portal または Visual Studio のどちらでも作成できます。 トリガーとアクションを含む、ワークフロー全体の基になる定義には、Javascript Object Notation (JSON) を使用します。
+このリファレンスでは、ロジック アプリの基となるワークフロー定義でトリガーとアクションを識別するために使用される一般的な種類について説明します。ワークフロー定義については、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で説明および検証されています。
+ロジック アプリで使用できる特定のコネクターのトリガーおよびアクションを見つけるには、[コネクタの概要](https://docs.microsoft.com/connectors/)にある一覧を参照してください。
 
 <a name="triggers-overview"></a>
 
 ## <a name="triggers-overview"></a>トリガーの概要
 
-すべてのロジック アプリはトリガーから開始されます。トリガーには、ロジック アプリのワークフローをインスタンス化して開始する呼び出しが定義されています。 一般的なトリガーのカテゴリを次に示します。
+すべてのワークフローにはトリガーが含まれています。トリガーには、ワークフローをインスタンス化して開始する呼び出しが定義されています。 一般的なトリガーのカテゴリを次に示します。
 
 * *ポーリング* トリガーでは、定期的にサービスのエンドポイントをチェックすることができます。
 
@@ -49,18 +50,18 @@ ms.locfileid: "48044775"
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*trigger-name*> | String | トリガーの名前 | 
 | <*trigger-type*> | String | トリガーの種類 ("Http" や "ApiConnection" など) | 
 | <*trigger-inputs*> | JSON オブジェクト | トリガーのビヘイビアーを定義する入力 | 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
+| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
 |||| 
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*array-with-conditions*> | Array | ワークフローを実行するかどうかを決定する 1 つまたは複数の[条件](#trigger-conditions)を含む配列。 トリガーでのみ使用できます。 | 
 | <*runtime-config-options*> | JSON オブジェクト | 実行時のトリガーのビヘイビアーは、`runtimeConfiguration`プロパティを設定することによって変更できます。 詳細については、「[ランタイム構成の設定](#runtime-config-options)」を参照してください。 | 
@@ -129,35 +130,35 @@ ms.locfileid: "48044775"
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | String | トリガーの名前 | 
 | <*connection-name*> | String | ワークフローに使用するマネージド API への接続の名前 | 
 | <*method-type*> | String | マネージド API と通信するための HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" | 
 | <*api-operation*> | String | 呼び出す対象の API 操作 | 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
+| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
 |||| 
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
 | <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター。 たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまで同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*splitOn-expression*> | String | 配列を返すトリガーの場合、使用する配列をこの式で参照すると、"for each" ループを使わずに、配列の項目ごとにワークフローを作成して実行することができます。 <p>たとえば、`@triggerbody()?['value']` という式は、トリガー本文の内容の中に返される配列の項目を表します。 |
-| <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
+| <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 |
 ||||
 
 *Outputs*
  
-| 要素 | type | 説明 |
-|---------|------|-------------| 
-| headers | JSON オブジェクト | 応答のヘッダー | 
-| body | JSON オブジェクト | 応答の本文 | 
-| 状態コード | 整数 | 応答の状態コード | 
+| 要素 | Type | 説明 |
+|---------|------|-------------|
+| headers | JSON オブジェクト | 応答のヘッダー |
+| body | JSON オブジェクト | 応答の本文 |
+| 状態コード | 整数 | 応答の状態コード |
 |||| 
 
 *例*
@@ -171,7 +172,7 @@ ms.locfileid: "48044775"
       "host": {
          "connection": {
             "name": "@parameters('$connections')['office365']['connectionId']"
-         }     
+         }
       },
       "method": "get",
       "path": "/Mail/OnNewEmail",
@@ -223,7 +224,7 @@ ms.locfileid: "48044775"
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*connection-name*> | String | ワークフローに使用するマネージド API への接続の名前 | 
 | <*body-content*> | JSON オブジェクト | マネージド API にペイロードとして送信するメッセージの内容 | 
@@ -231,12 +232,12 @@ ms.locfileid: "48044775"
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
 | <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまで同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*splitOn-expression*> | String | 配列を返すトリガーの場合、使用する配列をこの式で参照すると、"for each" ループを使わずに、配列の項目ごとにワークフローを作成して実行することができます。 <p>たとえば、`@triggerbody()?['value']` という式は、トリガー本文の内容の中に返される配列の項目を表します。 |
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
@@ -302,31 +303,31 @@ ms.locfileid: "48044775"
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*method-type*> | String | 指定されたエンドポイントのポーリングに使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" | 
 | <*endpoint-URL*> | String | ポーリング対象エンドポイントの HTTP または HTTPS の URL <p>文字列の最大サイズ: 2 KB | 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
+| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
 |||| 
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*header-content*> | JSON オブジェクト | 要求で送信するヘッダー <p>要求の言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | String | ペイロードとして要求で送信するメッセージの内容 | 
 | <*authentication-method*> | JSON オブジェクト | 要求で使用する認証の方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 Scheduler 以外に、`authority` プロパティがサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、別の値を使用できます。 |
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 |  
  <*query-parameters*> | JSON オブジェクト | 要求に含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を要求に追加します。 | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまで同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
 *Outputs*
 
-| 要素 | type | 説明 |
+| 要素 | Type | 説明 |
 |---------|------|-------------| 
 | headers | JSON オブジェクト | 応答のヘッダー | 
 | body | JSON オブジェクト | 応答の本文 | 
@@ -339,7 +340,7 @@ ms.locfileid: "48044775"
   
 | Response | 必須 | 説明 | 
 |----------|----------|-------------| 
-| 状態コード | [はい] | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
+| 状態コード | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
 | Retry-after ヘッダー | いいえ  | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
 | Location ヘッダー | いいえ  | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 | 
 |||| 
@@ -399,7 +400,7 @@ ms.locfileid: "48044775"
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*method-type*> | String | サブスクリプション要求に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
 | <*endpoint-subscribe-URL*> | String | サブスクリプション要求の送信先であるエンドポイント URL | 
@@ -407,21 +408,21 @@ ms.locfileid: "48044775"
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*method-type*> | String | 取り消し要求に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
 | <*endpoint-unsubscribe-URL*> | String | 取り消し要求の送信先であるエンドポイント URL | 
 | <*body-content*> | String | サブスクリプションまたは取り消しの要求で送信するメッセージの内容 | 
 | <*authentication-method*> | JSON オブジェクト | 要求で使用する認証の方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまですべて同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
 *Outputs* 
 
-| 要素 | type | 説明 |
+| 要素 | Type | 説明 |
 |---------|------|-------------| 
 | headers | JSON オブジェクト | 応答のヘッダー | 
 | body | JSON オブジェクト | 応答の本文 | 
@@ -493,23 +494,23 @@ ms.locfileid: "48044775"
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
+| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
 |||| 
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
-| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | 次の形式の開始日時: <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2 時の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。タイム ゾーンを指定しない場合は、「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除いた [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)で、[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従って入力する必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
+| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | 次の形式の開始日時: <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2 時の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。タイム ゾーンを指定しない場合は、「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
 | <*time-zone*> | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを指定してください。 | 
 | <*one-or-more-hour-marks*> | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻として 0 ～ 23 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば "10"、"12"、"14" を指定した場合、時刻のマークとして 10 AM、12 PM、2 PM が取得されます。 | 
 | <*one-or-more-minute-marks*> | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻の分として 0 ～ 59 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 | 
 | weekDays | 文字列または文字列配列 | `frequency` に "Week" を指定した場合、ワークフローを実行する 1 日または複数の日 ("Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、および "Sunday") をコンマ区切りで指定できます | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまですべて同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
@@ -602,7 +603,7 @@ ms.locfileid: "48044775"
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*property-name*> | String | ペイロードを記述する JSON スキーマのプロパティの名前 | 
 | <*property-type*> | String | プロパティの型 | 
@@ -610,13 +611,13 @@ ms.locfileid: "48044775"
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
-| <*method-type*> | String | 受信要求でのトリガーの呼び出しに使用する必要があるメソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" |
+| <*method-type*> | String | 受信要求でのロジック アプリの呼び出しに使用する必要があるメソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" |
 | <*relative-path-for-accepted-parameter*> | String | 使用しているエンドポイントの URL で受け入れ可能なパラメーターの相対パス | 
 | <*required-properties*> | Array | 値が必要な 1 つ以上のプロパティ | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまですべて同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
@@ -657,7 +658,7 @@ ms.locfileid: "48044775"
 
 ## <a name="trigger-conditions"></a>トリガーの条件
 
-トリガーのみですが、どのトリガーにも、ワークフローを実行するかどうかを決める条件を表した 1 つまたは複数の式を含む配列を追加できます。 ロジック アプリ内のトリガーに `conditions` プロパティを追加するには、ロジック アプリをコード ビュー エディターで開きます。
+トリガーのみですが、どのトリガーにも、ワークフローを実行するかどうかを決める条件を表した 1 つまたは複数の式を含む配列を追加できます。 ワークフロー内のトリガーに `conditions` プロパティを追加するには、ロジック アプリをコード ビュー エディターで開きます。
 
 たとえば、Web サイトから内部サーバー エラーが返されたときに限ってトリガーが起動するように指定する場合は、次のように `conditions` プロパティ内のトリガーの状態コードを参照します。
 
@@ -682,7 +683,7 @@ ms.locfileid: "48044775"
 
 ## <a name="trigger-multiple-runs"></a>複数の実行をトリガーする
 
-トリガーによって返される配列をロジック アプリが処理する場合、"for each" ループに時間がかかりすぎて、配列の各項目を処理できないことがあります。 この場合は、トリガーで **SplitOn** プロパティを使用すると、配列を "*バッチ解除*" できます。 バッチ解除すると、配列の項目が分割され、配列の各項目に対して実行する新しいロジック アプリ インスタンスが起動されます。 このアプローチが役立つのは、たとえば、エンドポイントをポーリングするときに、ポーリング間隔のたびに複数の新しい項目が返される場合です。
+トリガーによって返される配列をロジック アプリが処理する場合、"for each" ループに時間がかかりすぎて、配列の各項目を処理できないことがあります。 この場合は、トリガーで **SplitOn** プロパティを使用すると、配列を "*バッチ解除*" できます。 バッチ解除すると、配列の項目が分割されて、配列の項目ごとに実行される新しいワークフロー インスタンスが開始されます。 このアプローチが役立つのは、たとえば、エンドポイントをポーリングするときに、ポーリング間隔のたびに複数の新しい項目が返される場合です。
 **SplitOn** が 1 つのロジック アプリ実行で処理できる配列項目の最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に関するページをご覧ください。 
 
 > [!NOTE]
@@ -775,7 +776,7 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------|
 | <*action-name*> | String | アクションの名前 | 
 | <*action-type*> | String | アクションの種類 ("Http" や "ApiConnection" など)| 
@@ -786,9 +787,9 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------|
-| <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](#retry-policies)」をご覧ください。 | 
+| <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「再試行ポリシー」を参照してください。 | 
 | <*runtime-config-options*> | JSON オブジェクト | 一部のアクションについては、`runtimeConfiguration` プロパティを設定してアクションのビヘイビアーを実行時に変更できます。 詳細については、「[ランタイム構成の設定](#runtime-config-options)」を参照してください。 | 
 | <*operation-option*> | String | 一部のアクションについては、`operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
@@ -888,17 +889,17 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*action-name*> | String | コネクタによって指定されるアクションの名前 | 
 | <*api-name*> | String | 接続に使用される Microsoft マネージド API の名前 | 
-| <*method-type*> | String | API を呼び出すための HTTP メソッド:"GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
+| <*method-type*> | String | API を呼び出すための HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
 | <*api-operation*> | String | 呼び出す対象の API 操作 | 
 |||| 
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*other-action-specific-input-properties*> | JSON オブジェクト | この特定のアクションに適用するその他の入力プロパティ | 
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
@@ -968,7 +969,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*action-name*> | String | コネクタによって指定されるアクションの名前 | 
 | <*method-type*> | String | エンドポイントの登録または登録解除に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
@@ -977,7 +978,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*api-unsubscribe-URL*> | String | API からの登録解除に使用する URI | 
 | <*header-content*> | JSON オブジェクト | 要求で送信するヘッダー <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
@@ -1008,14 +1009,16 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須* 
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*inputs-to-compose*> | 任意 | 単一の出力を作成するための入力 | 
 |||| 
 
 *例 1*
 
+<!-- markdownlint-disable MD038 -->
 このアクション定義では、`abcdefg ` に後続のスペースと値 `1234` を結合します。
+<!-- markdownlint-enable MD038 -->
 
 ```json
 "Compose": {
@@ -1069,15 +1072,15 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------|  
 | <*Azure-function-ID*> | String | 呼び出す対象である Azure 関数を表すリソース ID。 この値の形式は次のとおりです。<p>"/subscriptions/<*Azure-subscription-ID*>/resourceGroups/<*Azure-resource-group*>/providers/Microsoft.Web/sites/<*Azure-function-app-name*>/functions/<*Azure-function-name*>" | 
-| <*method-type*> | String | 関数を呼び出すために使用する HTTP メソッド:"GET"、"PUT"、"POST"、"PATCH"、または "DELETE" <p>指定しない場合、既定のメソッドは "POST" です。 | 
+| <*method-type*> | String | 関数を呼び出すために使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" <p>指定しない場合、既定のメソッドは "POST" です。 | 
 ||||
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------|  
 | <*header-content*> | JSON オブジェクト | 呼び出しで送信するヘッダー <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON オブジェクト | 要求で送信するメッセージの内容 | 
@@ -1140,7 +1143,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*method-type*> | String | 要求を送信するために使用するメソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
 | <*HTTP-or-HTTPS-endpoint-URL*> | String | 呼び出す対象である HTTP または HTTPS エンドポイント。 文字列の最大サイズ: 2 KB | 
@@ -1148,7 +1151,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*header-content*> | JSON オブジェクト | 要求で送信するヘッダー <p>言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON オブジェクト | 要求で送信するメッセージの内容 | 
@@ -1191,7 +1194,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*array*> | Array | ソース項目を渡す配列または式。 式を指定する場合は、その式を二重引用符で囲みます。 | 
 | <*delimiter*> | 1 文字の文字列 | 文字列内の各項目を区切る文字 | 
@@ -1235,7 +1238,7 @@ JSON コンテンツのプロパティからユーザー フレンドリなフ�
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*JSON-source*> | JSON オブジェクト | 解析する対象の JSON コンテンツ | 
 | <*JSON-schema*> | JSON オブジェクト | 基になる JSON コンテンツを記述する JSON スキーマ。ソースの JSON コンテンツを解析するために、アクションによって使用されます。 <p>**ヒント**: Logic Apps デザイナーで、スキーマを指定するかサンプル ペイロードを入力すると、アクションによるスキーマの作成が可能になります。 | 
@@ -1243,7 +1246,7 @@ JSON コンテンツのプロパティからユーザー フレンドリなフ�
 
 *例*
 
-このアクション定義では、ロジック アプリのワークフロー内で使用できる以下のトークンを作成しますが、これらを使用できるのは、**Parse JSON** アクションに続けて実行されるアクション内に限ります。 
+このアクション定義により、ワークフローで使用できる以下のトークンが作成されますが、これらを使用できるのは、**Parse JSON** アクションに続いて実行されるアクション内に限ります。 
 
 `FirstName`、`LastName`、`Email`
 
@@ -1337,10 +1340,10 @@ JSON コンテンツのプロパティからユーザー フレンドリなフ�
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*array*> | Array | ソース項目を渡す配列または式。 式を指定する場合は、その式を二重引用符で囲みます。 |
-| <*condition-or-filter*> | String | ソース配列内の項目をフィルター処理するために使用される条件 <p>**注意**: 条件を満たす値がない場合は、アクションによって空の配列が作成されます。 |
+| <*condition-or-filter*> | String | ソース配列内の項目をフィルター処理するために使用される条件 <p>**メモ**:条件を満たす値がない場合は、アクションによって空の配列が作成されます。 |
 |||| 
 
 *例*
@@ -1378,14 +1381,14 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*response-status-code*> | 整数 | 受信要求に送信される HTTP 状態コード。 既定のコードは "200 OK" ですが、2xx、4xx、または 5xx で始まる任意の有効な状態コードを使用できます。3xxx で始まるコードは使用できません。 | 
 |||| 
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*response-headers*> | JSON オブジェクト | 応答に含める 1 つまたは複数のヘッダー | 
 | <*response-body*> | 各種 | 応答本文。文字列、JSON オブジェクト、または先行アクションからのバイナリ コンテンツとすることができます。 | 
@@ -1453,9 +1456,9 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 *必須* 
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
-| <*array*> | Array | ソース項目を渡す配列または式。 式は必ず二重引用符で囲みます。 <p>**注**: ソース配列が空の場合、アクションによって空の配列が作成されます。 | 
+| <*array*> | Array | ソース項目を渡す配列または式。 式は必ず二重引用符で囲みます。 <p>**メモ**:ソース配列が空の場合、アクションによって空の配列が作成されます。 | 
 | <*key-name*> | String | <*expression*>  の結果に割り当てられたプロパティ名<p>出力配列内のすべてのオブジェクトに新しいプロパティを追加するには、そのプロパティの <*key-name*> と、プロパティ値を表す <*expression*> を指定します。 <p>あるプロパティを配列内のすべてのオブジェクトから削除するには、そのプロパティの <*key-name*> を省略します。 | 
 | <*expression*> | String | ソース配列の項目を変換し、結果を <*key-name*> に代入する式 | 
 |||| 
@@ -1551,17 +1554,17 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 *必須* 
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <CSV *or* HTML>| String | 作成するテーブルの形式 | 
-| <*array*> | Array | テーブルのソース項目を渡す配列または式 <p>**注**: ソース配列が空の場合、アクションによって空のテーブルが作成されます。 | 
+| <*array*> | Array | テーブルのソース項目を渡す配列または式 <p>**メモ**:ソース配列が空の場合、アクションによって空のテーブルが作成されます。 | 
 |||| 
 
 *省略可能*
 
 列ヘッダーと値を指定またはカスタマイズするには、`columns` 配列を使用します。 ヘッダー名が同じ `header-value` のペアが複数ある場合、それらのペアの値は、そのヘッダー名の下の同じ列に表示されます。 そうでない場合、一意のヘッダーごとに一意の列が定義されます。
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*column-name*> | String | 列のヘッダー名 | 
 | <*column-value*> | 任意 | その列に含まれる値 | 
@@ -1646,7 +1649,7 @@ ID,Product_Name
 
 ### <a name="terminate-action"></a>終了アクション
 
-ロジック アプリ ワークフロー インスタンスの実行を停止するアクションです。進行中のすべてのアクションをキャンセルし、残りのアクションをスキップして、指定した状態を返します。 たとえば、エラー状態のロジック アプリを完全に終了する必要があるときに、**Terminate** アクションを使用できます。 このアクションは、既に完了しているアクションには影響しません。また、順次ループを含めて、**Foreach** ループと **Until** ループの内部には指定できません。 
+このアクションは、ワークフロー インスタンスの実行を停止し、進行中のすべてのアクションをキャンセルし、残りのアクションをすべてスキップして、指定された状態を返します。 たとえば、エラー状態のロジック アプリを完全に終了する必要があるときに、**Terminate** アクションを使用できます。 このアクションは、既に完了しているアクションには影響しません。また、順次ループを含めて、**Foreach** ループと **Until** ループの内部には指定できません。 
 
 ```json
 "Terminate": {
@@ -1664,7 +1667,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*status*> | String | 実行に関して返す状態: "Failed"、"Cancelled"、または "Succeeded" |
 |||| 
@@ -1673,7 +1676,7 @@ ID,Product_Name
 
 "runStatus" オブジェクトのプロパティは、"runStatus" プロパティが "Failed" 状態に設定されている場合にのみ適用されます。
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*error-code-or-name*> | String | コード、またはエラーの名前 |
 | <*error-message*> | String | エラーとアプリ ユーザーが実行できる対処について説明したメッセージまたはテキスト | 
@@ -1734,7 +1737,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*number-of-units*> | 整数 | **Delay** アクションで待機する単位数 | 
 | <*interval*> | String | **Delay** アクションで待機する期間: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
@@ -1807,7 +1810,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*nested-logic-app-name*> | String | 呼び出す対象のロジック アプリの前 | 
 | <*trigger-name*> | String | 入れ子になったロジック アプリ内の、呼び出す対象のトリガーの名前 | 
@@ -1818,7 +1821,7 @@ ID,Product_Name
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------|  
 | <*header-content*> | JSON オブジェクト | 呼び出しで送信するヘッダー | 
 | <*body-content*> | JSON オブジェクト | 呼び出しで送信するメッセージの内容 | 
@@ -1884,7 +1887,7 @@ ID,Product_Name
 
 *必須* 
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*action-1...n*> | String | 配列の各項目に対して実行するアクションの名前 | 
 | <*action-definition-1...n*> | JSON オブジェクト | 実行するアクションの定義 | 
@@ -1893,7 +1896,7 @@ ID,Product_Name
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*count*> | 整数 | 既定では、"for each" ループの反復処理は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは同時に (並行して) 実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「["for each" のコンカレンシーを変更する](#change-for-each-concurrency)」を参照してください。 | 
 | <*operation-option*> | String | "for each" ループを並行してではなく順次実行するには、<*operation-option*> を `Sequential` に設定するか、<*count*> を `1` に設定します。両方を設定することはできません。 詳細については、「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。 | 
@@ -1957,7 +1960,7 @@ ID,Product_Name
 }
 ```
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*condition*> | JSON オブジェクト | 評価する条件 (式にすることもできます) | 
 | <*action-1*> | JSON オブジェクト | <*condition*> が true と評価された場合に実行するアクション | 
@@ -2047,7 +2050,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------|  
 | <*inner-action-1...n*> | JSON オブジェクト | スコープ内部で実行される 1 つ以上のアクション |
 | <*action-inputs*> | JSON オブジェクト | 各アクションの入力 |
@@ -2088,7 +2091,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*expression-object-or-token*> | 多様 | 評価する対象の式、JSON オブジェクト、またはトークン | 
 | <*action-name*> | String | 一致するケースがある場合に実行するアクションの名前 | 
@@ -2098,7 +2101,7 @@ ID,Product_Name
 
 *省略可能*
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*default-action-name*> | String | 一致するケースが存在しないときに実行する既定のアクションの名前 | 
 | <*default-action-definition*> | JSON オブジェクト | 一致するケースが存在しないときに実行するアクションの定義 | 
@@ -2214,7 +2217,7 @@ ID,Product_Name
 }
 ```
 
-| 値 | type | 説明 | 
+| 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*action-name*> | String | ループ内で実行するアクションの名前 | 
 | <*action-type*> | String | 実行するアクションの種類 | 
@@ -2293,10 +2296,10 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 トリガーまたはアクションの定義で `runtimeConfiguration` プロパティを使用して、トリガーとアクションの既定の実行時ビヘイビアーを変更できます。
 
-| プロパティ | type | 説明 | トリガーまたはアクション | 
+| プロパティ | Type | 説明 | トリガーまたはアクション | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | 整数 | 同時に (並行して) 実行できるロジック アプリ インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 この値を使用して、バックエンド システムが受信する要求の数を制限できます。 <p>`runs` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」または「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | 整数 | ロジック アプリが最大数の同時実行インスタンスを既に実行している場合に実行を待機できるロジック アプリ インスタンスの数に対する、[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 `concurrency.runs` プロパティでコンカレンシーの制限を変更できます。 <p>既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | すべてのトリガー | 
+| `runtimeConfiguration.concurrency.runs` | 整数 | 同時に、または並行して実行できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 この値を使用して、バックエンド システムが受信する要求の数を制限できます。 <p>`runs` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」または「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | 整数 | ワークフローが最大数の同時実行インスタンスを既に実行しているときに実行を待機できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 `concurrency.runs` プロパティでコンカレンシーの制限を変更できます。 <p>既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | すべてのトリガー | 
 | `runtimeConfiguration.concurrency.repetitions` | 整数 | 同時に (並行して) 実行できる "for each" ループ繰り返し回数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 <p>`repetitions` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「["for each" のコンカレンシーを変更する](#change-for-each-concurrency)」、または「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。 | アクション: <p>[Foreach](#foreach-action) | 
 ||||| 
 
@@ -2306,7 +2309,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 トリガーまたはアクションの定義で `operationOptions` プロパティを使用して、トリガーとアクションの既定のビヘイビアーを変更できます。
 
-| 操作オプション | type | 説明 | トリガーまたはアクション | 
+| 操作オプション | Type | 説明 | トリガーまたはアクション | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | HTTP ベースのアクションを非同期に実行するのではなく、同期的に実行します。 <p><p>このオプションを設定するには、「[アクションを同期的に実行する](#asynchronous-patterns)」を参照してください。 | アクション: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[応答](#response-action) | 
 | `OptimizedForHighThroughput` | String | 5 分あたりのアクション実行回数に対する[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)を[上限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)に変更します。 <p><p>このオプションを設定するには、「[高スループット モードで実行する](#run-high-throughput-mode)」を参照してください。 | すべてのアクション | 
@@ -2318,9 +2321,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 ### <a name="change-trigger-concurrency"></a>トリガーのコンカレンシーを変更する
 
-既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは同時に (並行して) 実行されます。 そのため、先行するロジック アプリ インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 この制限を使用して、バックエンド システムが受信する要求の数を制限できます。 
+既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは同時に (並行して) 実行されます。 そのため、先行するワークフロー インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 この制限を使用して、バックエンド システムが受信する要求の数を制限できます。 
 
-既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティでは、並行して実行できるロジック アプリ インスタンスの最大数を制御します。 
+既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティは、並行して実行できるワークフロー インスタンスの最大数を制御します。 
 
 > [!NOTE] 
 > デザイナーまたはコード ビュー エディターを使用してトリガーの順次実行を設定する場合、コード ビュー エディターでトリガーの `operationOptions` プロパティを `SingleInstance` に設定しないでください。 これに従わないと、検証エラーになります。 詳細については、「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。
@@ -2350,9 +2353,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. トリガーの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[既定値のオーバーライド]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、**[Limit]\(限度\)** を **[オン]** に設定します。 
 
-3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 
+3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 ロジック アプリを順番に実行するには、スライダーの値を **1** にドラッグします。
 
 <a name="change-for-each-concurrency"></a>
 
@@ -2387,15 +2390,15 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. **For each** アクションの右上隅で省略記号 (...) ボタンを選択し、**[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[既定値のオーバーライド]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、**[コンカレンシー制御]** を **[オン]** に設定します。 
 
-3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 
+3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 ロジック アプリを順番に実行するには、スライダーの値を **1** にドラッグします。
 
 <a name="change-waiting-runs"></a>
 
 ### <a name="change-waiting-runs-limit"></a>実行待機の制限を変更する
 
-既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは同時に (並行して) 実行されます。 直前のアクティブなロジック アプリ インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 [この既定の制限を変更する](#change-trigger-concurrency)ことができますが、ロジック アプリ インスタンスの数が新しいコンカレンシーの制限に達した場合、他の新しいインスタンスは実行を待機する必要があります。 
+既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまではすべて同時に、または並行して実行されます。 直前のアクティブなロジック アプリ インスタンスが実行を終了する前に、各トリガー インスタンスが起動します。 [この既定の制限は変更](#change-trigger-concurrency)できますが、ワークフロー インスタンスの数が新しいコンカレンシーの制限に達すると、他の新しいインスタンスは実行を待機する必要があります。 
 
 待機できる実行の数にも[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)があり、既定の制限は変更できます。 ただし、ロジック アプリが実行待機の制限に達すると、Logic Apps エンジンで新しい実行が受け付けられなくなります。 要求と webhook のトリガーは 429 エラーを返し、繰り返しトリガーによるポーリングの試行がスキップされ始めます。
 
@@ -2420,7 +2423,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 ### <a name="trigger-instances-sequentially"></a>インスタンスを順次トリガーする
 
-各ロジック アプリ インスタンスを、必ず直前のインスタンスの実行が終了してから実行するには、トリガーの順次実行を設定します。 コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 
+各ロジック アプリ ワークフロー インスタンスを、必ず直前のインスタンスの実行が終了してから実行するには、トリガーの順次実行を設定します。 コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 
 
 > [!NOTE] 
 > デザイナーまたはコード ビュー エディターを使用してトリガーの順次実行を設定する場合、コード ビュー エディターでトリガーの `operationOptions` プロパティを `Sequential` に設定しないでください。 これに従わないと、検証エラーになります。 
@@ -2465,7 +2468,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. トリガーの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[既定値のオーバーライド]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、**[Limit]\(限度\)** を **[オン]** に設定します。 
 
 3. **[並列処理の次数]** スライダーをドラッグして数値 `1` に設定します。 
 
@@ -2516,7 +2519,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. **For each** アクションの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[既定値のオーバーライド]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、**[コンカレンシー制御]** を **[オン]** に設定します。 
 
 3. **[並列処理の次数]** スライダーをドラッグして数値 `1` に設定します。 
 
@@ -2557,7 +2560,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 <a name="connector-authentication"></a>
 
-## <a name="authenticate-triggers-or-actions"></a>トリガーまたはアクションを認証する
+## <a name="authenticate-http-triggers-and-actions"></a>HTTP トリガーとアクションを認証する
 
 HTTP エンドポイントはさまざまな認証をサポートしています。 次の HTTP トリガーとアクションに対して認証を設定できます。
 
@@ -2571,27 +2574,30 @@ HTTP エンドポイントはさまざまな認証をサポートしています
 * [クライアント証明書認証](#client-certificate-authentication)
 * [Azure Active Directory (Azure AD) OAuth 認証](#azure-active-directory-oauth-authentication)
 
+> [!IMPORTANT]
+> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
+
 <a name="basic-authentication"></a>
 
 ### <a name="basic-authentication"></a>基本認証
 
-この認証の種類の場合、トリガーまたはアクション定義には、次のプロパティがある `authentication` JSON オブジェクトを含めることができます。
+Azure Active Directory を使用する[基本認証](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md)では、トリガーまたはアクションの定義に、`authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。 
 
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
-| **type** | [はい] | "Basic" | 使用する認証の種類。ここでは "Basic" です | 
-| **username** | [はい] | "@parameters('userNameParam')" | ターゲット サービス エンドポイントにアクセスするために認証するユーザー名を渡すパラメーター |
-| **password** | [はい] | "@parameters('passwordParam')" | ターゲット サービス エンドポイントにアクセスするために認証するパスワードを渡すパラメーター |
+| **type** | はい | "Basic" | 使用する認証の種類。ここでは "Basic" です | 
+| **username** | はい | "@parameters('userNameParam')" | ターゲット サービス エンドポイントへのアクセスを認証するためのユーザー名 |
+| **password** | はい | "@parameters('passwordParam')" | ターゲット サービス エンドポイントへのアクセスを認証するためのパスワード |
 ||||| 
 
-たとえば、トリガーまたはアクション定義の `authentication` オブジェクトの形式は次のとおりです。 パラメーターのセキュリティ保護の詳細については、[機密情報のセキュリティ保護](#secure-info)に関するページを参照してください。 
+この HTTP アクション定義の例では、`authentication` セクションで `Basic` 認証が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
-```javascript
+```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
          "type": "Basic",
          "username": "@parameters('userNameParam')",
@@ -2601,112 +2607,85 @@ HTTP エンドポイントはさまざまな認証をサポートしています
   "runAfter": {}
 }
 ```
+
+> [!IMPORTANT]
+> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
 <a name="client-certificate-authentication"></a>
 
 ### <a name="client-certificate-authentication"></a>クライアント証明書認証
 
-この認証の種類の場合、トリガーまたはアクション定義には、次のプロパティがある `authentication` JSON オブジェクトを含めることができます。
+Azure Active Directory を使用する[証明書ベース認証](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)では、トリガーまたはアクションの定義に `authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。 使用できるクライアント証明書の数の制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。
 
-| プロパティ | 必須 | 値 | 説明 | 
-|----------|----------|-------|-------------| 
-| **type** | [はい] | "ClientCertificate" | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類 | 
-| **pfx** | [はい] | <*base64-encoded-pfx-file*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| **password** | [はい] | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワードに関するパラメーター |
+| プロパティ | 必須 | 値 | 説明 |
+|----------|----------|-------|-------------|
+| **type** | はい | "ClientCertificate" | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
+| **pfx** | はい | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
+| **password** | はい | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワード |
 ||||| 
 
-たとえば、トリガーまたはアクション定義の `authentication` オブジェクトの形式は次のとおりです。 パラメーターのセキュリティ保護の詳細については、[機密情報のセキュリティ保護](#secure-info)に関するページを参照してください。 
+この HTTP アクション定義の例では、`authentication` セクションで `ClientCertificate` 認証が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
-```javascript
-"authentication": {
-   "password": "@parameters('passwordParam')",
-   "pfx": "aGVsbG8g...d29ybGQ=",
-   "type": "ClientCertificate"
+```json
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "https://www.microsoft.com",
+      "authentication": {
+         "type": "ClientCertificate",
+         "pfx": "@parameters('pfxParam')",
+         "password": "@parameters('passwordParam')"
+      }
+   },
+   "runAfter": {}
 }
 ```
+
+> [!IMPORTANT]
+> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
 ### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth 認証
 
-この認証の種類の場合、トリガーまたはアクション定義には、次のプロパティがある `authentication` JSON オブジェクトを含めることができます。
+[Azure AD OAuth 認証](../active-directory/develop/authentication-scenarios.md)では、トリガーまたはアクションの定義に `authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。
 
-| プロパティ | 必須 | 値 | 説明 | 
-|----------|----------|-------|-------------| 
-| **type** | [はい] | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") | 
-| **authority** | いいえ  | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |  
-| **tenant** | [はい] | <*tenant-ID*> | Azure AD テナントのテナント ID | 
-| **audience** | [はい] | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) | 
-| **clientId** | [はい] | <*client-ID*> | 承認を要求しているアプリのクライアント ID | 
-| **credentialType** | [はい] | "Secret" または "Certificate" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 | 
-| **password** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワードに関するパラメーター | 
-| **pfx** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | <*base64-encoded-pfx-file*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| **secret** | はい (ただし資格情報の種類が "Secret" の場合のみ) | <*secret-for-authentication*> | クライアントが承認を要求するために使用する base64 でエンコードされたシークレット |
-||||| 
+| プロパティ | 必須 | 値 | 説明 |
+|----------|----------|-------|-------------|
+| **type** | はい | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") |
+| **authority** | いいえ  | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |
+| **tenant** | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
+| **audience** | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
+| **clientId** | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
+| **credentialType** | はい | "Certificate" または "Secret" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 |
+| **pfx** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
+| **password** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワード |
+| **secret** | はい (ただし資格情報の種類が "Secret" の場合のみ) | "@parameters('secretParam')" | 承認を要求しているクライアント シークレット |
+|||||
 
-たとえば、トリガーまたはアクションの定義で資格情報の種類 "Secret" を使用する場合の `authentication` オブジェクトの形式は次のとおりです。パラメーターのセキュリティ保護の詳細については、「[機密情報のセキュリティ保護](#secure-info)」を参照してください。 
+この HTTP アクション定義の例では、`authentication` セクションで `ActiveDirectoryOAuth` 認証と "Secret" 資格情報の種類が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
-```javascript
-"authentication": {
-   "audience": "https://management.core.windows.net/",
-   "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-   "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
-   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "type": "ActiveDirectoryOAuth"
-}
-```
-
-<a name="secure-info"></a>
-
-## <a name="secure-sensitive-information"></a>機密情報のセキュリティ保護
-
-トリガーとアクションの定義でユーザー名やパスワードなどの認証に使用する機密情報を保護するために、パラメーターと `@parameters()` 式を使用して、ロジック アプリを保存した後に機密情報が表示されないようにすることができます。 
-
-たとえば、トリガーまたはアクションの定義で "Basic" 認証を使用しているとします。 ユーザー名とパスワードを指定する例の `authentication` オブジェクトを次に示します。
-
-```javascript
+```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
+         "type": "ActiveDirectoryOAuth",
+         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+         "audience": "https://management.core.windows.net/",
+         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+         "secret": "@parameters('secretParam')"
+     }
+   },
+   "runAfter": {}
 }
 ```
 
-ロジック アプリ定義の `parameters` セクションで、トリガーまたはアクションの定義で使用したパラメーターを定義します。
-
-```javascript
-"definition": {
-   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-   "actions": {
-      "HTTP": {
-      }
-   },
-   "parameters": {
-      "passwordParam": {
-         "type": "securestring"
-      },
-      "userNameParam": {
-         "type": "securestring"
-      }
-   },
-   "triggers": {
-      "HTTP": {
-      }
-   },
-   "contentVersion": "1.0.0.0",
-   "outputs": {}
-},
-```
-
-Azure Resource Manager デプロイ テンプレートを作成または使用している場合は、テンプレート定義の外側の `parameters` セクションも含める必要があります。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリに対するアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow)に関するセクションを参照してください。 
+> [!IMPORTANT]
+> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

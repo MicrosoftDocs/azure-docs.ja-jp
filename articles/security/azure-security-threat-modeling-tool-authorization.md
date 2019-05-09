@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888470"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | 記事 |
@@ -397,7 +397,7 @@ return result;
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、MVC5 |
 | **属性**              | 該当なし、ID プロバイダー - ADFS、ID プロバイダー - Azure AD |
-| **参照**              | [ASP.NET Web API の認証と承認](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
+| **参照**              | [ASP.NET Web API の認証と承認](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
 | **手順** | <p>アプリケーションが Azure AD または ADFS 要求を ID プロバイダーとして使用している場合、アプリケーション ユーザーのロール情報は、その Azure AD または ADFS 要求から派生していることがあります。また、アプリケーション自体がその情報を提供している場合もあります。 いずれの場合も、カスタム承認の実装によって、ユーザー ロール情報を検証する必要があります。</p><p>アプリケーションが Azure AD または ADFS 要求を ID プロバイダーとして使用している場合、アプリケーション ユーザーのロール情報は、その Azure AD または ADFS 要求から派生していることがあります。また、アプリケーション自体がその情報を提供している場合もあります。 いずれの場合も、カスタム承認の実装によって、ユーザー ロール情報を検証する必要があります。</p>
 
 ### <a name="example"></a>例

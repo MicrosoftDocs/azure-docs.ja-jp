@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5f111fea8fa1ef9f6e07c01f507e487c992729d5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 47db5ba826b94422672dd46b191556da43b70b02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233533"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57873827"
 ---
-# <a name="media-services-development-with-net"></a>.NET を使用した Media Services 開発
+# <a name="media-services-development-with-net"></a>.NET を使用した Media Services 開発 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 この記事では、.NET を使用して Media Services アプリケーションを開発する方法について説明します。
@@ -30,7 +30,7 @@ ms.locfileid: "50233533"
 
 ## <a name="prerequisites"></a>前提条件
 * 新規または既存の Azure サブスクリプションで作成した Media Services アカウント。 「[Media Services アカウントの作成方法](media-services-portal-create-account.md)」をご覧ください。
-* オペレーティング システム: Windows 10、Windows 7、Windows Server 2008 R2、または Windows 8。
+* オペレーティング システム: Windows 10、Windows 7、Windows 2008 R2、または Windows 8。
 * .NET Framework 4.5 以降。
 * 見ることができます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "50233533"
 2. ソリューションをビルドします。
 3. **NuGet** を使用して、**Azure Media Services .NET SDK Extensions** (**windowsazure.mediaservices.extensions**) をインストールして追加します。 このパッケージをインストールすると、 **Media Services .NET SDK** が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
    
-    最新バージョンの NuGet がインストールされていることをご確認ください。 詳しい情報とインストール手順については、 [NuGet](http://nuget.codeplex.com/)をご覧ください。
+    最新バージョンの NuGet がインストールされていることをご確認ください。 詳しい情報とインストール手順については、 [NuGet](https://nuget.codeplex.com/)をご覧ください。
 
     1. ソリューション エクスプローラーでプロジェクトの名前を右クリックし、**[NuGet パッケージの管理]** を選択します。
 
@@ -54,7 +54,7 @@ ms.locfileid: "50233533"
     3. オンライン ギャラリーで、Azure Media Services Extensions を検索し、**[Azure Media Services .NET SDK Extensions]** \(**windowsazure.mediaservices.extensions**\) を選択し、**[インストール]** ボタンをクリックします。
    
     4. プロジェクトが変更され、Media Services .NET SDK Extensions、Media Services .NET SDK、その他の依存アセンブリへの参照が追加されます。
-4. よりクリーンな開発環境を実現するために、NuGet パッケージの復元を有効にすることを検討してください。 詳細については、「 [NuGet Package Restore (NuGet パッケージの復元)](http://docs.nuget.org/consume/package-restore)」をご覧ください。
+4. よりクリーンな開発環境を実現するために、NuGet パッケージの復元を有効にすることを検討してください。 詳細については、「 [NuGet Package Restore (NuGet パッケージの復元)](https://docs.nuget.org/consume/package-restore)」をご覧ください。
 5. **System.Configuration** アセンブリへの参照を追加します。 このアセンブリには、構成ファイル (App.config など) にアクセスするための System.Configuration.**ConfigurationManager** クラスが含まれています。
    
     1. [Manage References (参照の管理)] ダイアログを使用して参照を追加するには、ソリューション エクスプローラーでプロジェクト名を右クリックします。 **[追加]**、**[参照]** の順にクリックします。

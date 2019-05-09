@@ -8,13 +8,13 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.date: 08/25/2018
-ms.openlocfilehash: 0c30ffec58b1542fa80cf0c9873a0e6df8641104
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/13/2019
+ms.openlocfilehash: a933824e9553ee7f638da495b46ebed19e04169d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232547"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316968"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps でオンプレミスのファイル システムに接続する
 
@@ -28,13 +28,17 @@ ms.locfileid: "50232547"
 
 ## <a name="prerequisites"></a>前提条件
 
+この例に従うには、次の項目が必要です。
+
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
 * ファイル システム サーバーなどのオンプレミス システムにロジック アプリを接続するには、あらかじめ[オンプレミス データ ゲートウェイをインストールしてセットアップ](../logic-apps/logic-apps-gateway-install.md)しておく必要があります。 そうすることで、ロジック アプリからファイル システムへの接続を作成するときに、ゲートウェイのインストール済み環境を使用するように指定できます。
 
-* [Drobox アカウント](https://www.dropbox.com/)とユーザー資格情報。
+* 無料でサインアップできる [Dropbox アカウント](https://www.dropbox.com/)。 ご自分のロジック アプリと Drobox アカウント間の接続を作成するには、アカウントの資格情報が必要です。 
 
-  接続を作成してお使いの Drobox アカウントにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。 
+* 使用するファイル システムが存在するコンピューターへのアクセス権。 たとえば、ご使用のファイル システムと同じコンピューターにデータ ゲートウェイをインストールする場合は、そのコンピューター用のアカウントの資格情報が必要です。 
+
+* Logic Apps によってサポートされているプロバイダー (Office 365 Outlook、Outlook.com、Gmail など) の電子メール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](https://docs.microsoft.com/connectors/)してください。 このロジック アプリでは、Office 365 Outlook アカウントを使います。 別のメール アカウントをお使いの場合でも、全体的な手順は同じですが、UI がやや異なる場合があります。 
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識。 この例では、空のロジック アプリが必要となります。
 
@@ -44,7 +48,7 @@ ms.locfileid: "50232547"
 
 1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. 検索ボックスに、フィルターとして「dropbox」と入力します。 トリガーの一覧から、**[ファイルが作成されたとき]** というトリガーを選択します。 
+1. 検索ボックスに、フィルターとして「dropbox」と入力します。 トリガーの一覧から、**ファイルの作成時**
 
    ![Dropbox トリガーを選択](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
@@ -56,7 +60,7 @@ ms.locfileid: "50232547"
 
 ## <a name="add-actions"></a>アクションの追加
 
-1. トリガーで、**[次のステップ]** を選択します。 検索ボックスに、フィルターとして「file system」と入力します。 アクションの一覧から、**[ファイルの作成 - ファイル システム]** アクションを選択します。
+1. トリガーで、**[次のステップ]** を選択します。 検索ボックスに、フィルターとして「file system」と入力します。 アクションの一覧から、次のアクションを選択します。**[ファイルの作成 - ファイル システム]**
 
    ![ファイル システム コネクタの検索](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -64,17 +68,17 @@ ms.locfileid: "50232547"
 
    ![接続を作成する](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | プロパティ | 必須 | 値 | [説明] | 
+   | プロパティ | 必須 | 値 | 説明 | 
    | -------- | -------- | ----- | ----------- | 
-   | **Connection Name** | [はい] | <*connection-name*> | 接続に付ける名前 | 
-   | **ルート フォルダー** | [はい] | <*root-folder-name*> | ファイル システムのルート フォルダー。たとえば、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダーや、コンピューターがアクセス可能なネットワーク共有のフォルダーを指定できます。 <p>次に例を示します。`\\PublicShare\\DropboxFiles` <p>ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 | 
+   | **Connection Name** | はい | <*connection-name*> | 接続に付ける名前 | 
+   | **ルート フォルダー** | はい | <*root-folder-name*> | ファイル システムのルート フォルダー。たとえば、オンプレミスのデータ ゲートウェイをインストールしている場合は、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダーや、コンピューターがアクセス可能なネットワーク共有のフォルダー。 <p>次に例を示します。`\\PublicShare\\DropboxFiles` <p>ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 | 
    | **認証の種類** | いいえ  | <*auth-type*> | ファイル システムで使用される認証の種類 (**Windows** など) | 
-   | **ユーザー名** | [はい] | <*domain*>\\<*username*> | あらかじめインストールしておいたデータ ゲートウェイのユーザー名 | 
-   | **パスワード** | [はい] | <*your-password*> | あらかじめインストールしておいたデータ ゲートウェイのパスワード | 
-   | **gateway** | [はい] | <*installed-gateway-name*> | あらかじめインストールしておいたゲートウェイの名前 | 
+   | **ユーザー名** | はい | <*domain*>\\<*username*> | ファイル システムが存在するコンピューターでのユーザー名 | 
+   | **パスワード** | はい | <*your-password*> | ファイル システムが存在するコンピューターでのパスワード | 
+   | **gateway** | はい | <*installed-gateway-name*> | あらかじめインストールしておいたゲートウェイの名前 | 
    ||| 
 
-1. 操作が完了したら、**[作成]** を選択します。 
+1. 操作が完了したら、**[作成]** を選択します。
 
    Logic Apps により、接続の構成とテストが行われ、適切に機能していることが確認されます。 
    接続が正しくセットアップされると、事前に選択したアクションのオプションが表示されます。 

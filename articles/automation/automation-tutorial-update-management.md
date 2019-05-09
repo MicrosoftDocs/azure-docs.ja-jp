@@ -4,17 +4,17 @@ description: この記事では、Azure Automation Update Management を使用�
 services: automation
 author: zjalexander
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 83647dfb0965b8aac8ede5f2e9669ae3d7722c41
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184986"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822354"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Azure Automation を使用して Windows 更新プログラムを管理する
 
@@ -66,7 +66,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ![[Update Management の有効化] ソリューション ウィンドウ](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-ソリューションの有効化には、最大数分かかることがあります。 この処理中はブラウザーのウィンドウを閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Log Analytics に送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
+ソリューションの有効化には、最大数分かかることがあります。 この処理中はブラウザーのウィンドウを閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Azure Monitor ログに送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
 ## <a name="view-update-assessment"></a>更新の評価を確認する
 
@@ -92,10 +92,10 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 **[条件の追加]** をクリックして、お客様の更新プログラムの展開に適したシグナルを選択します。 次の表は、更新プログラムの展開に使用できる 2 つのシグナルの詳細を示しています。
 
-|シグナル名|ディメンション|説明|
+|シグナル名|Dimensions|説明|
 |---|---|---|
 |**Total Update Deployment Runs (更新プログラムの展開の合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)|このシグナルは、更新プログラムの展開の全体的な状態を通知するために使用されます。|
-|**Total Update Deployment Machine Runs (更新プログラムの展開マシンの合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)</br>- Target Computer (対象のコンピューター)</br>- Update Deployment Run Id (更新プログラムの展開の実行 ID)|このシグナルは、特定のマシンを対象とした更新プログラムの展開の状態を通知するために使用されます。|
+|**Total Update Deployment Machine Runs (更新プログラムの展開マシンの合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)</br>- Target Computer (ターゲット コンピューター)</br>- Update Deployment Run Id (更新プログラムの展開の実行 ID)|このシグナルは、特定のマシンを対象とした更新プログラムの展開の状態を通知するために使用されます。|
 
 ディメンションの値には、一覧から有効な値を選択します。 探している値が一覧に見つからない場合は、ディメンションの横にある **\+** 記号をクリックしてカスタム名を入力します。 その後、お客様が探したい値を選択できます。 ディメンションのすべての値を選択したい場合は、**[選択]\*** ボタンをクリックします。 ディメンションの値を選択しなかった場合、そのディメンションは評価中に無視されます。
 
@@ -137,16 +137,16 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 * **[Groups to update (preview)]\(更新するグループ (プレビュー)\)**: サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳しくは、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページをご覧ください。
 
-* **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
+* **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
 
-* **[更新プログラムの分類]**: 更新プログラムの展開によって展開に追加されたソフトウェアの種類を選択します。 このチュートリアルでは、すべての種類を選択したままにします。
+* **[更新プログラムの分類]**:更新プログラムの展開によって展開に追加されたソフトウェアの種類を選択します。 このチュートリアルでは、すべての種類を選択したままにします。
 
   分類の種類は次のとおりです。
 
    |OS  |type  |
    |---------|---------|
-   | Windows     | 緊急更新プログラム</br>セキュリティ更新プログラム</br>更新プログラムのロールアップ</br>Feature Pack</br>Service Pack</br>定義の更新</br>ツール</br>更新プログラム        |
-   | Linux     | 緊急更新プログラムとセキュリティ更新プログラム</br>他の更新プログラム       |
+   |Windows     | 緊急更新プログラム</br>セキュリティ更新プログラム</br>更新プログラムのロールアップ</br>Feature Pack</br>Service Pack</br>定義の更新</br>ツール</br>更新プログラム        |
+   |Linux     | 緊急更新プログラムとセキュリティ更新プログラム</br>他の更新プログラム       |
 
    分類の種類の詳細については、「[Update classifications (更新プログラムの分類)](automation-update-management.md#update-classifications)」をご覧ください。
 
@@ -156,7 +156,7 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
    展開を 1 回行うか、定期的なスケジュールを設定するかを指定することもできます。 **[繰り返し]** で **[1 回]** を選択します。 既定値の 1 日のままにし、**[OK]** を選択します。 これで定期的なスケジュールが設定されます。
 
-* **[Pre-scripts + Post-scripts]\(事前スクリプト + 事後スクリプト\)**: お客様の展開の前後に実行するスクリプトを選択します。 詳細については、[事前および事後スクリプトの管理](pre-post-scripts.md)に関するページを参照してください。
+* **[Pre-scripts + Post-scripts]\(事前スクリプト + 事後スクリプト\)**: デプロイの前後に実行するスクリプトを選択します。 詳細については、[事前および事後スクリプトの管理](pre-post-scripts.md)に関するページを参照してください。
 * **[メンテナンス期間 (分)]**: 既定値をそのまま使用します。 更新プログラムを展開する時間の範囲を設定できます。 この設定により、定義したサービス期間内は変更が確実に実行されます。
 
 * **[再起動のオプション]**: この設定によって、再起動の処理方法が決まります。 使用できるオプションは次のとおりです。
@@ -188,7 +188,7 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 * **試行されていません**: メンテナンス期間として定義された時間が十分ではなかったため、更新プログラムがインストールされませんでした。
 * **成功**: 更新できました。
-* **失敗**: 更新できませんでした。
+* **失敗**:更新できませんでした。
 
 展開によって作成されたログ エントリをすべて表示するには、**[すべてのログ]** を選択します。
 
@@ -215,3 +215,4 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 > [!div class="nextstepaction"]
 > [更新の管理ソリューション](../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json)
+

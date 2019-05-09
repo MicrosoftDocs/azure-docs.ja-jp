@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
-ms.date: 10/31/2018
-ms.openlocfilehash: 336288aaf3817fe267d58a225249bf54cca691bc
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 01/15/2019
+ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979099"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575098"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -27,10 +27,16 @@ ms.locfileid: "50979099"
 * ファイルの内容とメタデータを取得します。
 * アーカイブをフォルダーに抽出します。
 
-[SFTP コネクタ](../connectors/connectors-create-api-sftp.md)と比べて、SFTP-SSH コネクタでは、最大サイズ *1 GB* のファイルを読み書きできます。 1 GB より大きいファイルの場合は、SFTP-SSH コネクタに加えて、[大きなメッセージを処理するためのチャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用できます。 その他の違いについては、この記事の後述にある「[SFTP-SSH と SFTP を比較する](#comparison)」で確認してください。
-
 SFTP サーバー上のイベントを監視し、出力を他のアクションで使用できるようにするトリガーを使用できます。 SFTP サーバーで各種のタスクを実行するアクションを使用できます。 ロジック アプリ内の他のアクションでも、SFTP アクションからの出力を使用するようにできます。 たとえば、SFTP サーバーからファイルを定期的に取得する場合は、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、これらのファイルやその内容に関するメールのアラートを送信できます。
 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
+
+## <a name="limits"></a>制限
+
+* SFTP-SSH アクションでは、1 GB ではなく "*50 MB 単位*" でデータを管理することで、"*1 GB 以下*" のファイルを読み書きできます。
+
+* ファイルが "*1 GB を超える*" 場合、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用できます。 現在、SFTP-SSH トリガーではチャンクはサポートされていません。
+
+その他の違いについては、次のセクションの「[SFTP-SSH と SFTP を比較する](#comparison)」で確認してください。
 
 <a name="comparison"></a>
 
@@ -38,23 +44,23 @@ SFTP サーバー上のイベントを監視し、出力を他のアクション
 
 以下に、SFTP-SSH コネクタと SFTP-SSH コネクタのその他の主な違いを、SFTP コネクタは以下の機能を備えているという形で示します。
 
-* .NET をサポートする Secure Shell (SSH) オープン ソース ライブラリである <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET** </a>ライブラリを使用します。 
+* .NET をサポートする Secure Shell (SSH) オープン ソース ライブラリである <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET** </a>ライブラリを使用します。
 
   > [!NOTE]
   >
   > SFTP-SSH コネクタは、以下に示す秘密キー、形式、アルゴリズム、およびフィンガープリント*のみ*をサポートしています。
-  > 
-  > * **秘密キー形式**: OpenSSH 形式および ssh.com 形式両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
+  >
+  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
   > * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
   > * **フィンガープリント**: MD5
 
-* SFTP コネクタと比べて、最大サイズ *1 GB* のファイルを読み書きします。 1 GB より大きいファイルの場合は、[大きいメッセージを処理するためのチャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。 
+* SFTP コネクタと比べて、アクションでは、"*1 GB まで*" のファイルを読み書きできます。ただし、データは 1 GB 単位ではなく 50 MB 単位で処理されます。 ファイルが 1 GB を超える場合、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用することもできます。 現在、SFTP-SSH トリガーではチャンクはサポートされていません。
 
 * SFTP サーバーの指定されたパスにフォルダーを作成する**フォルダーの作成**アクションを提供します。
 
 * SFTP サーバーのファイルの名前を変更する**ファイル名の変更**アクションを提供します。
 
-* SFTP サーバーへの接続を*最大 1 時間*キャッシュします。これによりパフォーマンスが向上し、サーバーへの接続試行数が減少します。 このキャッシュ動作の期間を設定するには、SFTP サーバーの SSH 構成で、<a href="http://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> プロパティを編集します。 
+* SFTP サーバーへの接続を*最大 1 時間*キャッシュします。これによりパフォーマンスが向上し、サーバーへの接続試行数が減少します。 このキャッシュ動作の期間を設定するには、SFTP サーバーの SSH 構成で、<a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> プロパティを編集します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +72,7 @@ SFTP サーバー上のイベントを監視し、出力を他のアクション
   >
   > SFTP-SSH コネクタは、以下に示す秘密キー形式、アルゴリズム、およびフィンガープリント*のみ*をサポートしています。
   > 
-  > * **秘密キー形式**: OpenSSH 形式および ssh.com 形式両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
+  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
   > * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
   > * **フィンガープリント**: MD5
   >
@@ -130,22 +136,39 @@ SFTP-SSH は、SFTP ファイル システムをポーリングし、前回の�
 
 トリガーによって新しいファイルが検出されると、トリガーはその新しいファイルが完了していて、すべて書き込まれていることを確認します。 たとえば、トリガーがファイル サーバーを確認している際に、ファイルの進行状態が変化する場合があります。 部分的に書き込まれたファイルが返されることなないように、トリガーは最新の変更を含むファイルのタイムスタンプをメモしますが、すぐにそのファイルを返すことはありません。 トリガーは、もう一度サーバーをポーリングしてファイルを返します。 場合によっては、この動作によって、最大でトリガーのポーリング間隔が 2 倍となる遅延が生じる場合があります。 
 
-ファイルの内容を要求するときに、トリガーは 50 MB より大きいファイルを取得しません。 50 MB より大きいファイルを取得するには、次のパターンに従います。
+ファイルの内容を要求するとき、トリガーでは 50 MB より大きいファイルは取得されません。 50 MB より大きいファイルを取得するには、次のパターンに従います。 
 
-* **ファイルが追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返すトリガーを使用します。 
-* **パスを使用してファイルの内容を取得する**といた、完全なファイルを読み取るアクションをとるトリガーに従います。
+* **ファイルが追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返すトリガーを使用します。
+
+* **パスを使用してファイルの内容を取得する**といった、完全なファイルを読み取るアクションを使用するトリガーに従い、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。
 
 ## <a name="examples"></a>例
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH トリガー: ファイルが追加または変更されたとき
+<a name="file-added-modified"></a>
+
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH トリガー: When a file is added or modified (ファイルの追加または変更時)
 
 このトリガーは、SFTP サーバーでファイルが追加または変更されたときにロジック アプリ ワークフローを開始します。 たとえば、ファイルの内容をチェックし、内容が指定された条件を満たすかどうかに基づいてその内容を取得する条件を追加できます。 その後、ファイルの内容を取得し、その内容を SFTP サーバーのフォルダーに格納するアクションを追加できます。 
 
 **企業での使用例**: このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。 その後、さらに処理するために注文の内容を取得し、その注文を注文データベース内に格納できるように、**ファイルの内容を取得する**などの SFTP アクションを使用できます。
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH アクション: 内容を取得する
+ファイルの内容を要求するとき、トリガーでは 50 MB より大きいファイルは取得されません。 50 MB より大きいファイルを取得するには、次のパターンに従います。 
+
+* **ファイルが追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返すトリガーを使用します。
+
+* **パスを使用してファイルの内容を取得する**といった、完全なファイルを読み取るアクションを使用するトリガーに従い、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。
+
+<a name="get-content"></a>
+
+### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH アクション: パスを使用してコンテンツを取得する
 
 このアクションは、SFTP サーバー上のファイルの内容を取得します。 そのため、たとえば前の例のトリガーと、ファイルの内容が満たす必要がある条件を追加できます。 条件が true であれば、内容を取得するアクションを実行できます。 
+
+ファイルの内容を要求するとき、トリガーでは 50 MB より大きいファイルは取得されません。 50 MB より大きいファイルを取得するには、次のパターンに従います。 
+
+* **ファイルが追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返すトリガーを使用します。
+
+* **パスを使用してファイルの内容を取得する**といった、完全なファイルを読み取るアクションを使用するトリガーに従い、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 

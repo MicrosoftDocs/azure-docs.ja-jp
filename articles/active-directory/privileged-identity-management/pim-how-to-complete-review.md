@@ -1,6 +1,6 @@
 ---
-title: PIM で Azure AD ディレクトリ ロールのアクセス レビューを完了する | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure AD ディレクトリ ロールのアクセス レビューを完了して結果を表示する方法について説明します。
+title: PIM で Azure AD ロールのアクセス レビューを完了する - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールのアクセス レビューを完了して結果を表示する方法について説明します
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,19 +9,20 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3955f4bf9b579ae40424c2650f9d3b4c2ac4f030
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ed53c8bb3cb735822fc40aab86ca40bef7b9607a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188588"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619184"
 ---
-# <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールのアクセス レビューを完了する
-[アクセス レビューが開始](pim-how-to-start-security-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 ユーザーにアクセスを確認するよう求める電子メールは Azure AD Privileged Identity Management (PIM) によって自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、[アクセス レビューを実行する方法](pim-how-to-perform-security-review.md)に関する手順を送信できます。
+# <a name="complete-an-access-review-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールのアクセス レビューを完了する
+[アクセス レビューが開始](pim-how-to-start-security-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) によって、ユーザーに自分のアクセスをレビューするよう求めるメールが自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、[アクセス レビューを実行する方法](pim-how-to-perform-security-review.md)に関する手順を送信できます。
 
 アクセス レビューの期間が終わった後、またはすべてのユーザーが自己レビューを完了した後に、この記事に記載されている手順に従って、レビューを管理し、結果を表示することができます。
 
@@ -54,5 +55,5 @@ ms.locfileid: "43188588"
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールのアクセス レビューを開始する](pim-how-to-start-security-review.md)
-- [PIM で自分の Azure AD ディレクトリ ロールのアクセス レビューを実行する](pim-how-to-perform-security-review.md)
+- [PIM で Azure AD ロールのアクセス レビューを開始する](pim-how-to-start-security-review.md)
+- [PIM で自分の Azure AD ロールのアクセス レビューを実行する](pim-how-to-perform-security-review.md)

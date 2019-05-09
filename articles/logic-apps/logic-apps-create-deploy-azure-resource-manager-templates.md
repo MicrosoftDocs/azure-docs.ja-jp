@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager テンプレートでロジック アプリを作成する - Azure Logic Apps | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用してロジック アプリ ワークフローを作成し、Azure Logic Apps にデプロイします
+title: Azure Resource Manager テンプレートを使用してロジック アプリをデプロイする - Azure Logic Apps
+description: Azure Resource Manager テンプレートを使用してロジック アプリをデプロイする
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,90 +10,32 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 274fa3153f6a354b121b7fd8338d8e0d2d94f4f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: bbb10bf0174b6e06e28d171510345ed92b6642d9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230814"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357088"
 ---
-# <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してロジック アプリを作成してデプロイする
+# <a name="deploy-logic-apps-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してロジック アプリをデプロイする
 
-Azure Logic Apps には、ワークフローを自動化するためのロジック アプリの作成だけでなく、デプロイで使用されるリソースとパラメーターの定義にも使用できる Azure Resource Manager テンプレートが用意されています。 このテンプレートを独自のビジネス シナリオで使用することも、要件に合わせてカスタマイズすることもできます。 詳細については、[ロジック アプリ用の Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)と [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/resource-group-authoring-templates.md)に関する記事を参照してください。
+ロジック アプリをデプロイするための Azure Resource Manager テンプレートを作成したら、次の方法でテンプレートをデプロイできます。
 
-## <a name="define-the-logic-app"></a>ロジック アプリを定義する
+* [Azure ポータル](#portal)
+* [Azure PowerShell](#powershell)
+* [Azure CLI](#cli)
+* [Azure Resource Manager REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Azure DevOps Azure Pipelines](#azure-pipelines)
 
-このロジック アプリの定義の例は、1 時間に 1 回実行され、`testUri` パラメーターに指定された場所に ping を実行します。
-このテンプレートでは、ロジック アプリ名 (```logicAppName```) と ping テスト用の場所 (```testUri```) のパラメーター値を使用します。 詳細については、[テンプレートへのこれらのパラメーターの定義](#define-parameters)の説明を参照してください。 テンプレートには、ロジック アプリの場所として Azure リソース グループと同じ場所が設定されます。 
+<a name="portal"></a>
 
-``` json
-{
-   "type": "Microsoft.Logic/workflows",
-   "apiVersion": "2016-06-01",
-   "name": "[parameters('logicAppName')]",
-   "location": "[resourceGroup().location]",
-   "tags": {
-      "displayName": "LogicApp"
-   },
-   "properties": {
-      "definition": {
-         "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-            "testURI": {
-               "type": "string",
-               "defaultValue": "[parameters('testUri')]"
-            }
-         },
-         "triggers": {
-            "Recurrence": {
-               "type": "Recurrence",
-               "recurrence": {
-                  "frequency": "Hour",
-                  "interval": 1
-               }
-            }
-         },
-         "actions": {
-            "Http": {
-              "type": "Http",
-              "inputs": {
-                  "method": "GET",
-                  "uri": "@parameters('testUri')"
-              },
-              "runAfter": {}
-           }
-         },
-         "outputs": {}
-      },
-      "parameters": {}
-   }
-}
-``` 
+## <a name="deploy-through-azure-portal"></a>Azure portal を使用してデプロイする
 
-<a name="define-parameters"></a>
+ロジック アプリ テンプレートを Azure に自動的にデプロイするには、次の **[Azure に配置する]** ボタンを選択します。これにより、Azure portal にサインインし、ロジック アプリに関する情報の入力を求められます。 その後、ロジック アプリ テンプレートまたはパラメーターに必要な変更を加えることができます。
 
-### <a name="define-parameters"></a>パラメーターを定義する
+[![DAzure に配置する(./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-[!INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
-
-テンプレート内のパラメーターの説明を次に示します。
-
-| パラメーター | 説明 | JSON 定義の例 | 
-| --------- | ----------- | ----------------------- | 
-| `logicAppName` | テンプレートで作成するロジック アプリの名前を定義します。 | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
-| `testUri` | ping テスト用の場所を定義します。 | "testUri": { "type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
-||||
-
-詳細については、[ロジック アプリのワークフロー定義とプロパティ用の REST API](https://docs.microsoft.com/rest/api/logic/workflows) と [JSON を使用したロジック アプリの定義の作成](logic-apps-author-definitions.md)に関する記事を参照してください。
-
-## <a name="deploy-logic-apps-automatically"></a>ロジック アプリを自動的にデプロイする
-
-ロジック アプリを作成して Azure に自動的にデプロイするには、**[Azure へデプロイ]** を選択します。
-
-[![Azure へのデプロイ](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
-
-このアクションで Azure ポータルにサインインして、ロジック アプリの詳細を指定したり、テンプレートやパラメーターに変更を加えたりすることができます。 たとえば、Azure ポータルでは、次の詳細の入力を求められます。
+たとえば、Azure portal にサインインした後にこの情報の入力を求められます。
 
 * Azure サブスクリプション名
 * 使用するリソース グループ
@@ -102,26 +44,80 @@ Azure Logic Apps には、ワークフローを自動化するためのロジッ
 * テスト URI
 * 規定の使用条件への同意
 
-## <a name="deploy-logic-apps-with-commands"></a>ロジック アプリをコマンドを使用してデプロイする
+詳細については、「[Deploy resources with Azure Resource Manager templates and the Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)」 (Azure Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ) を参照してください。
 
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+## <a name="authorize-oauth-connections"></a>OAuth 接続を作成する
 
-### <a name="powershell"></a>PowerShell
+デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。 ただし、有効なアクセス トークンを生成するには、OAuth 接続を承認する必要があります。 自動デプロイの場合は、[GitHub LogicAppConnectionAuth プロジェクトにおけるこのスクリプトの例](https://github.com/logicappsio/LogicAppConnectionAuth)のように、各 OAuth 接続に同意するスクリプトを使用できます。 Logic Apps デザイナーでロジック アプリを開くことで、Azure portal または Visual Studio で OAuth 接続を承認することもできます。
 
+<a name="powershell"></a>
+
+## <a name="deploy-with-azure-powershell"></a>Azure PowerShell でのデプロイ
+
+特定の *Azure リソース グループ*にデプロイするには、次のコマンドを使用します。
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json 
 ```
-New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
-``` 
 
-### <a name="azure-cli"></a>Azure CLI
+特定の Azure サブスクリプションにデプロイするには、次のコマンドを使用します。
 
+```powershell
+New-AzDeployment -Location <location> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json 
 ```
-azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
+
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
+* [`New-AzDeployment`](/powershell/module/az.resources/new-azdeployment)
+
+<a name="cli"></a>
+
+## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
+
+特定の *Azure リソース グループ*にデプロイするには、次のコマンドを使用します。
+
+```azurecli
+az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
+
+特定の Azure サブスクリプションにデプロイするには、次のコマンドを使用します。
+
+```azurecli
+az deployment create --location <location> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+```
+
+詳細については、以下のトピックを参照してください。 
+
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az deployment create`](https://docs.microsoft.com/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)
+
+<a name="azure-pipelines"></a>
+
+## <a name="deploy-with-azure-devops"></a>Azure DevOps を使用してデプロイする
+
+ロジック アプリ テンプレートをデプロイし、環境を管理するために、チームは一般的に [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services) の [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) のようなツールを使用します。 Azure Pipelines は、あらゆるビルドまたはリリース パイプラインに追加できる [[Azure リソース グループの配置] タスク](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) を提供します。
+リリース パイプラインをデプロイおよび生成するための承認には、Azure Active Directory (AD) [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)も必要です。 詳細は、[Azure Pipelines でのサービス プリンシパルの使用](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)に関するページを参照してください。 
+
+Azure Pipelines を使用するための一般的な大まかな手順は次のとおりです。
+
+1. Azure Pipelines で、空のパイプラインを作成します。
+
+1. ロジック アプリ テンプレートやテンプレート パラメーター ファイルなど、パイプラインに必要なリソースを選択します。これらは手動で、またはビルド プロセスの一環として生成します。
+
+1. エージェント ジョブの場合は、**[Azure リソース グループの配置]** タスクを見つけて追加します。
+
+   ![[Azure リソース グループの配置] タスクの追加](./media/logic-apps-create-deploy-template/add-azure-resource-group-deployment-task.png)
+
+1. [サービス プリンシパル](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)を使用して構成します。 
+
+1. ロジック アプリ テンプレートとテンプレート パラメーター ファイルへの参照を追加します。
+
+1. 必要に応じて、その他の環境、自動化されたテスト、承認者のために、リリース プロセスの手順の構築を続行します。
 
 ## <a name="get-support"></a>サポートを受ける
 
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
+質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

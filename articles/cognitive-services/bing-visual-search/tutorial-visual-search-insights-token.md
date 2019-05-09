@@ -1,146 +1,119 @@
 ---
-title: 'チュートリアル: ImageInsightsToken - Bing Visual Search'
-titlesuffix: Azure Cognitive Services
-description: Bing Visual Search SDK を使用して ImageInsightsToken で指定された画像の URL を取得する方法。
+title: ImageInsightsToken を使用して以前の検索から似た画像を見つける - Bing Visual Search
+titleSuffix: Azure Cognitive Services
+description: Bing Visual Search SDK を使用して、ImageInsightsToken で指定されている画像の URL を取得します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
-ms.topic: tutorial
-ms.date: 06/21/2018
+ms.subservice: bing-visual-search
+ms.topic: article
+ms.date: 04/05/2019
 ms.author: rosh
-ms.openlocfilehash: 62780500d29c891182d3869bf0ba3ccdc5e2f715
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 39a95e877c766eb8f491c166edeb9d96f21db7dd
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441063"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493947"
 ---
-# <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>チュートリアル: Bing Visual Search SDK の ImageInsightsToken と結果
-Visual Search SDK には、前に実行された `ImageInsightsToken` を返す検索からオンラインで画像を検索するオプションがあります。  この例では `ImageInsightsToken` を取得し、このトークンをその後の検索で使用します。  コードでは、`ImageInsightsToken` を Bing に送信し、Bing Search URL とオンラインで見つかった類似する画像の URL を含む結果を返します。
+# <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>ImageInsightsToken を使用して以前の検索から似た画像を見つける
+
+Visual Search SDK を使用すると、前に実行された `ImageInsightsToken` を返す検索からオンラインで画像を検索できます。 このアプリケーションでは `ImageInsightsToken` を取得し、このトークンをその後の検索で使用します。 その後、`ImageInsightsToken` を Bing に送信し、Bing Search URL とオンラインで見つかった類似する画像の URL を含む結果を返します。
+
+このチュートリアルのソース コード全体は、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInisghtsTokens.cs) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
-Visual Studio 2017。 必要に応じて、 https://www.visualstudio.com/vs/community/ から無料のコミュニティ バージョンをダウンロードすることができます。
-SDK の呼び出しを認証するには、Cognitive Services API キーが必要です。 無料試用版キーにサインアップしてください。 試用版キーは 1 秒あたり 1 回の呼び出しが可能で、有効期間は 7 日間です。 運用環境のシナリオでは、アクセス キーを購入してください。 価格情報も参照してください。
-.NET Core SDK、.NET Core 1.1 アプリを実行する機能。 https://www.microsoft.com/net/download/ から、Core、Framework、およびランタイムを入手できます。
 
-このチュートリアルでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
+* NuGet Visual Search パッケージと Image Search パッケージ。
+    - Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、メニューから **[NuGet パッケージの管理]** を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージと `Microsoft.Azure.CognitiveServices.Search.ImageSearch` パッケージをインストールします。 NuGet パッケージをインストールすると、次のものもインストールされます。
+        - Microsoft.Rest.ClientRuntime
+        - Microsoft.Rest.ClientRuntime.Azure
+        - Newtonsoft.Json
 
-Azure portal でサブスクリプションを開始するには、次の手順に従います。
-1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
-2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
-3. 新しいリソースの名前を [`Name`] に入力します。
-4. `Pay-As-You-Go` サブスクリプションを選択します。
-5. `S9` 価格レベルを選択します。
-6. [`Enable`] をクリックしてサブスクリプションを開始します。
 
-## <a name="application-dependencies"></a>アプリケーションの依存関係
-Bing Web Search SDK を使用してコンソール アプリケーションを設定するには、Visual Studio のソリューション エクスプローラーで [NuGet パッケージの管理] オプションに移動します。 次の項目を追加します。
-* Microsoft.Azure.CognitiveServices.Search.VisualSearch
-* Microsoft.Azure.CognitiveServices.Search.ImageSearchpackage パッケージ。
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-NuGet Web Search SDK パッケージをインストールすると、次の項目を含む依存関係もインストールされます。
+## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Bing Image Search SDK から ImageInsightsToken を取得する
 
-* Microsoft.Rest.ClientRuntime
-* Microsoft.Rest.ClientRuntime.Azure
-* Newtonsoft.Json
+このアプリケーションでは、[Bing Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) によって取得された `ImageInsightsToken` を使用します。 新しい C# コンソール アプリケーションで、`ImageSearchAPI()` を使用して API を呼び出すクライアントを作成します。 その後、クエリで `SearchAsync()` を使用します。
 
-## <a name="get-the-imageinsightstoken-from-image-search"></a>Image Search から ImageInsightsToken を取得する
-
-この例では、次のメソッドで取得した `ImageInsightsToken` を使用しています。  この呼び出しの詳細については、「[Image Search SDK C# quickstart (Image Search SDK C# のクイック スタート)](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)」を参照してください。
-
-このコードでは、"Canadian Rockies" のクエリ結果を検索し、ImageInsightsToken を取得します。 最初の画像の分析情報トークン、サムネイル URL、画像コンテンツ URL を印刷します。  このメソッドは、後続の Visual Search 要求で使用するための `ImageInsightsToken` を返します。
-
-```
-        private static String ImageResults(String subKey)
-        {
-            String insightTok = "None";
-            try
-            {
-                var client = new ImageSearchAPI(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey)); //
-                var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
-                Console.WriteLine("Search images for query \"canadian rockies\"");
-
-                if (imageResults == null)
-                {
-                    Console.WriteLine("No image result data.");
-                }
-                else
-                {
-                    // Image results
-                    if (imageResults.Value.Count > 0)
-                    {
-                        var firstImageResult = imageResults.Value.First();
-
-                        Console.WriteLine($"\r\nImage result count: {imageResults.Value.Count}");
-                        insightTok = firstImageResult.ImageInsightsToken;
-                        Console.WriteLine($"First image insights token: {firstImageResult.ImageInsightsToken}");  
-                        Console.WriteLine($"First image thumbnail url: {firstImageResult.ThumbnailUrl}");
-                        Console.WriteLine($"First image content url: {firstImageResult.ContentUrl}");
-                    }
-                    else
-                    {
-                        insightTok = "None found";
-                        Console.WriteLine("Couldn't find image results!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("\r\nEncountered exception. " + ex.Message);
-            }
-
-            return insightTok;
-        }
+```csharp
+var client = new ImageSearchAPI(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
+var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
+Console.WriteLine("Search images for query \"canadian rockies\"");
 ```
 
-## <a name="specify-the-imageinsightstoken-for-visual-search-request"></a>Visual Search 要求に ImageInsightsToken を指定する
+`imageResults.Value.First()` を使用して最初の検索結果を格納した後、画像の分析情報の `ImageInsightsToken` を格納します。
 
-この例では、前のメソッドから返される分析情報トークンを使用します。 次のコードは、`ImageInfo` オブジェクトを `ImageInsightsToken` から作成し、ImageInfo オブジェクトを `VisualSearchRequest` に読み込みます。 `ImageInsightsToken` を `VisualSearchRequest` の `ImageInfo` に指定します
-
+```csharp
+String insightTok = "None";
+if (imageResults.Value.Count > 0)
+{
+    var firstImageResult = imageResults.Value.First();
+    insightTok = firstImageResult.ImageInsightsToken;
+}
+else
+{
+    insightTok = "None found";
+    Console.WriteLine("Couldn't find image results!");
+}
 ```
+
+この `ImageInsightsToken` は、要求で Bing Visual Search に送信されます。
+
+## <a name="add-the-imageinsightstoken-to-a-visual-search-request"></a>Visual Search の要求に ImageInsightsToken を追加する
+
+Bing Visual Search からの応答に含まれる `ImageInsightsToken` から `ImageInfo` オブジェクトを作成することにより、Visual Search の要求に対する `ImageInsightsToken` を指定します。
+
+```csharp
 ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
 ```
 
-## <a name="use-visual-search-to-find-images-from-an-imageinsightstoken"></a>Visual Search を使用して ImageInsightsToken から画像を検索する
+## <a name="use-bing-visual-search-to-find-images-from-an-imageinsightstoken"></a>Bing Visual Search を使用して ImageInsightsToken から画像を検索する
 
-`VisualSearchRequest` では、検索する画像に関する情報を `ImageInfo` オブジェクトに格納します。  `VisualSearchMethodAsync` メソッドを使用して結果を取得します。
-```
-// An image binary is not necessary here, as the image is specified by insights token.
+`VisualSearchRequest` オブジェクトでは、検索対象の画像に関する情報が `ImageInfo` に含まれます。 `VisualSearchMethodAsync()` メソッドを使用して結果を取得します。 画像はトークンによって表されるので、画像のバイナリを提供する必要はありません。
+
+```csharp
 VisualSearchRequest VisualSearchRequest = new VisualSearchRequest(ImageInfo);
 
 var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest: VisualSearchRequest).Result;
-Console.WriteLine("\r\nVisual search request with knowledgeRequest");
 
 ```
 
-## <a name="get-the-url-data-from-imagemoduleaction"></a>ImageModuleAction から URL データを取得する
-Visual Search の結果は `ImageTag` オブジェクトです。  各タグには、`ImageAction` オブジェクトのリストが含まれます。  各 `ImageAction` には、アクションのタイプに依存する値のリストである `Data` フィールドが含まれます。
+## <a name="iterate-through-the-visual-search-results"></a>Visual Search の結果を反復処理する
 
-次のコードを使用すると、さまざまなタイプを取得できます。
+Visual Search の結果は `ImageTag` オブジェクトです。 各タグには、`ImageAction` オブジェクトのリストが含まれます。 各 `ImageAction` には、アクションのタイプに依存する値のリストである `Data` フィールドが含まれます。 たとえば、`visualSearchResults.Tags` 内の `ImageTag` オブジェクトを反復処理して、その中の `ImageAction` タグを取得できます。 次のサンプルでは、`PagesIncluding` アクションの詳細が表示されます。
+
+```csharp
+if (visualSearchResults.Tags.Count > 0)
+{
+    // List of tags
+    foreach (ImageTag t in visualSearchResults.Tags)
+    {
+        foreach (ImageAction i in t.Actions)
+        {
+            Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " WebSearchURL: " + i.WebSearchUrl);
+
+            if (i.ActionType == "PagesIncluding")
+            {
+                foreach (ImageObject o in (i as ImageModuleAction).Data.Value)
+                {
+                    Console.WriteLine("ContentURL: " + o.ContentUrl);
+                }
+            }
+        }
+    }
+}
 ```
-Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " + i.WebSearchUrl);
 
-```
-完全なアプリケーションでは、次の項目が返されます。
+### <a name="pagesincluding-actiontypes"></a>PagesIncluding ActionTypes
 
-* ActionType: MoreSizes -> WebSearchUrl:
-* ActionType: VisualSearch -> WebSearchUrl:
-* ActionType: ImageById -> WebSearchUrl:
-* ActionType: RelatedSearches -> WebSearchUrl:
-* ActionType: DocumentLevelSuggestions -> WebSearchUrl:
-* ActionType: TopicResults -> WebSearchUrl: https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1
-* ActionType: ImageResults -> WebSearchUrl: https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1
+アクションのタイプから実際の画像 URL を取得するには、キャストにより、`ActionType` を、値のリストを持つ `Data` 要素が含まれる `ImageModuleAction` として読み取る必要があります。 各値は、画像の URL です。  次のコードでは、`PagesIncluding` アクション タイプを `ImageModuleAction` にキャストして、値を読み取ります。
 
-前の一覧からわかるように、`TopicResults` タイプと `ImageResults` タイプには、関連する画像のクエリが含まれています。 リスト内の URL は、Bing Search の結果にリンクしています。
-
-
-## <a name="pagesincluding-actiontype-urls-of-images-found-by-visual-search"></a>Visual Search で見つかった画像の PagesIncluding ActionType URL
-
-実際の画像 URL を取得するには、キャストにより、`ActionType` を、値のリストを持つ `Data` 要素が含まれる `ImageModuleAction` として読み取る必要があります。  各値は、画像の URL です。  次のコードでは、`PagesIncluding` アクション タイプを `ImageModuleAction` にキャストして、値を読み取ります。
-```
+```csharp
     if (i.ActionType == "PagesIncluding")
     {
         foreach(ImageObject o in (i as ImageModuleAction).Data.Value)
@@ -149,155 +122,26 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
         }
     }
 ```
+
 これらのデータ型の詳細については、「[Images - Visual Search (画像 - Visual Search)](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)」を参照してください。
 
-## <a name="complete-code"></a>完成したコード
+## <a name="returned-urls"></a>返された URL
 
-前の例を実行するコードを次に示します。 次のコードは、投稿要求で `ImageInsightsToken` を送信します。 次に、各 ActionType の Bing Search URL を出力します。 ActionType が `PagesIncluding` の場合、`Data` 内の `ImageObject` 項目が取得されます。  `Data` には、Web ページ上の画像の URL である値のリストが含まれています。  結果の Visual Search URL をコピーしてブラウザーに貼り付け、結果を表示します。 ContentUrl 項目をコピーしてブラウザーに貼り付け、画像を表示します。
+完全なアプリケーションでは、次の URL が返されます。
 
-```
-using System;
-using System.IO;
-using System.Linq;
-using Microsoft.Azure.CognitiveServices.Search.VisualSearch;
-using Microsoft.Azure.CognitiveServices.Search.VisualSearch.Models;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
+|ActionType  |URL  | |
+|---------|---------|---------|
+|MoreSizes -> WebSearchUrl     |         |
+|VisualSearch -> WebSearchUrl     |         |
+|ImageById -> WebSearchUrl    |         |
+|RelatedSearches -> WebSearchUrl:    |         |
+|DocumentLevelSuggestions -> WebSearchUrl:     |         |
+|TopicResults -> WebSearchUrl    | https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
+|ImageResults -> WebSearchUrl    |  https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
 
-namespace VisualSearchFeatures
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            String subscriptionKey = "YOUR-ACCESS-KEY";
-
-            insightsToken = ImageResults(subscriptionKey);
-
-            VisualSearchInsightsToken(subscriptionKey, insightsToken);
-
-            Console.WriteLine("Any key to quit...");
-            Console.ReadKey();
-
-        }
-
-        // Searches for results on query (Canadian Rockies) and gets an ImageInsightsToken.
-        // Also prints first image insights token, thumbnail url, and image content url.
-        private static String ImageResults(String subKey)
-        {
-            String insightTok = "None";
-            try
-            {
-                var client = new ImageSearchAPI(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey)); //
-                var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
-                Console.WriteLine("Search images for query \"canadian rockies\"");
-
-                if (imageResults == null)
-                {
-                    Console.WriteLine("No image result data.");
-                }
-                else
-                {
-                    // Image results
-                    if (imageResults.Value.Count > 0)
-                    {
-                        var firstImageResult = imageResults.Value.First();
-
-                        Console.WriteLine($"\r\nImage result count: {imageResults.Value.Count}");
-                        insightTok = firstImageResult.ImageInsightsToken;
-                        Console.WriteLine($"First image insights token: {firstImageResult.ImageInsightsToken}");  
-                        Console.WriteLine($"First image thumbnail url: {firstImageResult.ThumbnailUrl}");
-                        Console.WriteLine($"First image content url: {firstImageResult.ContentUrl}");
-                    }
-                    else
-                    {
-                        insightTok = "None found";
-                        Console.WriteLine("Couldn't find image results!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("\r\nEncountered exception. " + ex.Message);
-            }
-
-            return insightTok;
-        }
-
-
-        // This method will get Visual Search results from an imageInsightsToken obtained from the return value of the ImageResults method.
-        // The method includes imageInsightsToken the in a knowledgeRequest parameter, along with a cropArea object. 
-        // It prints out the imageInsightsToken uploaded in the request.
-        // Finally the example prints URLs of images found using the imageInsightsToken.
-
-        public static void VisualSearchInsightsToken(string subscriptionKey, string insightsTok)
-        {
-            var client = new VisualSearchAPI(new Microsoft.Azure.CognitiveServices.Search.VisualSearch.ApiKeyServiceClientCredentials(subscriptionKey));
-
-            try
-            {
-                // The image can be specified via an insights token, in the ImageInfo object.
-                ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
-
-                // An image binary is not necessary here, as the image is specified by insights token.
-                VisualSearchRequest VisualSearchRequest = new VisualSearchRequest(ImageInfo);
-
-                var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest: VisualSearchRequest).Result;
-                Console.WriteLine("\r\nVisual search request with imageInsightsToken and knowledgeRequest");
-
-                if (visualSearchResults == null)
-                {
-                    Console.WriteLine("No visual search result data.");
-                }
-                else
-                {
-                    // Visual Search results
-                    if (visualSearchResults.Image?.ImageInsightsToken != null)
-                    {
-                        Console.WriteLine($"Uploaded image insights token: {insightsTok}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find image insights token!");
-                    }
-
-                    if (visualSearchResults.Tags.Count > 0)
-                    {
-                        // List of tags
-                        foreach (ImageTag t in visualSearchResults.Tags)
-                        {
-                            foreach (ImageAction i in t.Actions)
-                            {
-                                Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " WebSearchURL: " + i.WebSearchUrl);
-
-                                if (i.ActionType == "PagesIncluding")
-                                {
-                                    foreach (ImageObject o in (i as ImageModuleAction).Data.Value)
-                                    {
-                                        Console.WriteLine("ContentURL: " + o.ContentUrl);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("Couldn't find image tags!");
-                    }
-
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-        }
-    }
-}
-
-```
+上で示されているように、`TopicResults` タイプと `ImageResults` タイプには、関連する画像のクエリが含まれています。 URL は、Bing Search の結果にリンクしています。
 
 ## <a name="next-steps"></a>次の手順
-[Visual Search 応答](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)
+
+> [!div class="nextstepaction"]
+> [Visual Search のシングルページ Web アプリを作成する](tutorial-bing-visual-search-single-page-app.md)

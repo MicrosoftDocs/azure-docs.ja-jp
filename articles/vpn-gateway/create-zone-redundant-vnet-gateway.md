@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 03/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 400ac3232b7e7dcd594734d818e3cafef09188fd
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: f2b459ccfd7e3f513b9b6526864321ce247ae7aa
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614550"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004518"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Azure Availability Zones にゾーン冗長仮想ネットワーク ゲートウェイを作成する
 
@@ -21,19 +21,21 @@ Azure Availability Zones に、VPN ゲートウェイと ExpressRoute ゲート�
 
 ## <a name="before-you-begin"></a>開始する前に
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 お使いのコンピューターにローカルにインストールされている PowerShell か、Azure Cloud Shell のいずれかを使用できます。 PowerShell をローカルにインストールして使用する場合、この機能には最新バージョンの PowerShell モジュールが必要です。
 
 [!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ### <a name="to-use-powershell-locally"></a>PowerShell をローカルで使用するには
 
-Cloud Shell を使用するのではなくコンピューターで PowerShell をローカルに使用する場合は、PowerShell モジュール 6.1.1 以降をインストールする必要があります。 インストールされている PowerShell のバージョンを確認するには、次のコマンドを使用します。
+Cloud Shell を使用するのではなくコンピューターで PowerShell をローカルに使用する場合は、PowerShell モジュール 1.0.0 以降をインストールする必要があります。 インストールされている PowerShell のバージョンを確認するには、次のコマンドを使用します。
 
 ```azurepowershell
-Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
+Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
 ```
 
-アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
@@ -62,15 +64,15 @@ $GwIPConf1   = "gwipconf1"
 リソース グループを作成します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName $RG1 -Location $Location1
+New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 ```
 
 仮想ネットワークを作成します。
 
 ```azurepowershell-interactive
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
-$besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
-$vnet = New-AzureRmVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
+$fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
+$besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
+$vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
 ## <a name="gwsub"></a>3.Add the gateway subnet
@@ -80,14 +82,14 @@ $vnet = New-AzureRmVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location
 ゲートウェイ サブネットを追加します。
 
 ```azurepowershell-interactive
-$getvnet = Get-AzureRmVirtualNetwork -ResourceGroupName $RG1 -Name VNet1
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $getvnet
+$getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name VNet1
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $getvnet
 ```
 
 仮想ネットワークのゲートウェイ サブネット構成を設定します。
 
 ```azurepowershell-interactive
-$getvnet | Set-AzureRmVirtualNetwork
+$getvnet | Set-AzVirtualNetwork
 ```
 ## <a name="publicip"></a>4.パブリック IP アドレスの要求
  
@@ -98,7 +100,7 @@ $getvnet | Set-AzureRmVirtualNetwork
 **Standard** PublicIpaddress SKU を使用してパブリック IP アドレスを要求し、ゾーンは指定しません。 この場合、作成される Standard パブリック IP アドレスはゾーン冗長パブリック IP となります。   
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
 ### <a name="ipzonalgw"></a>ゾーン ゲートウェイの場合
@@ -106,7 +108,7 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 **Standard** PublicIpaddress SKU を使用してパブリック IP アドレスを要求し、 ゾーン (1、2、または 3) を指定します。 すべてのゲートウェイ インスタンスがこのゾーンにデプロイされます。
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
 ### <a name="ipregionalgw"></a>リージョン ゲートウェイの場合
@@ -114,14 +116,14 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 **Basic** PublicIpaddress SKU を使用してパブリック IP アドレスを要求します。 この場合、ゲートウェイはリージョン ゲートウェイとしてデプロイされ、ゲートウェイにはゾーン冗長性が組み込まれません。 ゲートウェイ インスタンスはすべてのゾーンにそれぞれ作成されます。
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
 ## <a name="gwipconfig"></a>5.IP 構成を作成する
 
 ```azurepowershell-interactive
-$getvnet = Get-AzureRmVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $getvnet
-$gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
+$getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $getvnet
+$gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
 ## <a name="gwconfig"></a>6.ゲートウェイを作成する
@@ -131,13 +133,13 @@ $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $
 ### <a name="for-expressroute"></a>ExpressRoute の場合
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
 ```
 
 ### <a name="for-vpn-gateway"></a>VPN Gateway の場合
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
 ```
 
 ## <a name="faq"></a>FAQ
@@ -152,7 +154,7 @@ New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name 
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>新しい SKU を使用する場合、どのようなリージョンを利用できますか。
 
-新しい SKU は、Azure Availability Zones がある Azure リージョン (米国中部、フランス中部、西ヨーロッパ) でご利用いただけます。 将来的には、他の Azure パブリック リージョンでもゾーン冗長ゲートウェイを利用できるようになる予定です。
+利用可能なリージョンの最新の一覧については、[Availability Zones](../availability-zones/az-overview.md#services-support-by-region) に関するページを参照してください。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>既存の仮想ネットワーク ゲートウェイをゾーン冗長ゲートウェイまたはゾーン ゲートウェイに変更、移行、アップグレードすることはできますか。
 

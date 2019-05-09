@@ -5,18 +5,18 @@ description: この記事には、Language Understanding (LUIS) での dimension
 services: cognitive-services
 ms.custom: seodec18
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 0ed5d68905353cc0b99a8ce5e1d1b6bfde9d1b87
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 9099cdbb91e41998065d953b9d48b3b501df7c10
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166049"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336939"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの dimension 作成済みエンティティ
 作成済みの dimension エンティティは、LUIS アプリのカルチャに関係なく、さまざまな種類の寸法を検出します。 このエンティティは既にトレーニングされているので、寸法を含む発話の例をアプリケーション意図に追加する必要はありません。 dimension エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 

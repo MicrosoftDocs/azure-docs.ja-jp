@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Kantega SSO for FishEye/Crucible の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Kantega SSO for FishEye/Crucible の統合 | Microsoft Docs
 description: Azure Active Directory と Kantega SSO for FishEye/Crucible の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9fe951fd-1530-4d33-a1a4-390385b99ce9
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: f49ec56c3e891aff5c603af58a36a303f9d14de8
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e8205fe300cb88dc9cced5f5a75e692700f9f34b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821533"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166340"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>チュートリアル: Azure Active Directory と Kantega SSO for FishEye/Crucible の統合
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>チュートリアル:Azure Active Directory と Kantega SSO for FishEye/Crucible の統合
 
 このチュートリアルでは、Kantega SSO for FishEye/Crucible と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -222,7 +223,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
     c. **[Save]** をクリックします。  
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -253,7 +254,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-kantega-sso-for-fisheyecrucible-test-user"></a>Kantega SSO for FishEye/Crucible のテスト ユーザーの作成
 
@@ -281,7 +282,7 @@ Azure AD ユーザーが FishEye/Crucible にログインできるようにす�
     
     c. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
-    d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。  
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。  
 
     e. **[Confirm Password]\(パスワードの確認\)** ボックスに、ユーザーのパスワードを再入力します。
 

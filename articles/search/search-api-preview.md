@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 06/28/2018
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: e496e4e2e7e2f66033d090a0534911bff4c53baa
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 524c1a6d083db02349c7dae9a0131228613dc170
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310284"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997612"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Azure Search Service REST api-version 2017-11-11-Preview
 この記事では、まだ一般公開されていない実験的機能を提供する Azure Search Service REST API の `api-version=2017-11-11-Preview` バージョンについて説明します。
@@ -28,7 +28,7 @@ ms.locfileid: "53310284"
 
 ## <a name="new-in-2017-11-11-preview"></a>2017-11-11-Preview の新機能
 
-[**オートコンプリート**](search-autocomplete-tutorial.md)が既存の [Suggestions API](https://docs.microsoft.com/rest/api/searchservice/suggestions) に追加され、検索バーで補完的な先行入力機能を利用できるようになりました。 オートコンプリートは、以降の検索でクエリ文字列として選択できるクエリ用語候補を返します。 Suggestions は、部分的な入力に応答して実際のドキュメントを返します。検索結果は即時に表示され、検索語の入力が長さと特異性が増すにつれて動的に変化します。
+[**オートコンプリート**](search-autocomplete-tutorial.md)が既存の [Suggestions API](https://docs.microsoft.com/rest/api/searchservice/suggestions) に追加され、検索バーで補完的な先行入力機能を利用できるようになりました。 オートコンプリートは、ユーザーが以降の検索でクエリ文字列として選択できる候補の検索語を返します。 Suggestions は、部分的な入力に応答して実際のドキュメントを返します。検索結果は即時に表示され、検索語の入力が長さと特異性が増すにつれて動的に変化します。
 
 [**コグニティブ検索**](cognitive-search-concept-intro.md)は、Azure Search における新しい強化機能で、テキスト以外のソースや区別されていないテキスト内の潜在的な情報を検索し、それを Azure Search でフルテキスト検索可能なコンテンツに変換します。 プレビューの REST API では、次のリソースが導入または変更されています。 その他のすべての REST API は、一般公開バージョンまたはプレビュー バージョンのどちらを呼び出しても同じです。
 

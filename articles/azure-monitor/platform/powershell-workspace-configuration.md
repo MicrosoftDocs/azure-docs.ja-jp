@@ -1,28 +1,23 @@
 ---
 title: PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Docs
-description: Log Analytics は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。
+description: Azure Monitor の Log Analytics ワークスペースは、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを格納します。 Azure Diagnostics によって生成された場合は、Azure Storage からマシンのデータを収集できます。
 services: log-analytics
-documentationcenter: ''
 author: richrundmsft
-manager: jochan
-editor: ''
-ms.assetid: 3b9b7ade-3374-4596-afb1-51b695f481c2
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/21/2016
+ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: 088d8155fda6c370d89cded516bfa6c174c9380a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438033"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789030"
 ---
-# <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
-Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell を使用して Azure Monitor の Log Analytics ワークスペースを管理する
+
+Azure Monitor の Log Analytics ワークスペースでは、コマンド ラインから、またはスクリプトの一部として、[Log Analytics の PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.operationalinsights/) を使用してさまざまな機能を実行できます。  PowerShell で実行できる作業の例を次に挙げます。
 
 * ワークスペースの作成
 * ソリューションの追加と削除
@@ -30,24 +25,24 @@ Log Analytics のさまざまな機能は、コマンド ラインまたはス�
 * コンピューター グループの作成
 * Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
 * Linux および Windows コンピューターからのパフォーマンス カウンターの収集
-* Linux コンピューターの syslog からのイベントの収集 
+* Linux コンピューターの syslog からのイベントの収集
 * Windows イベント ログからのイベントの収集
 * カスタム イベント ログの収集
-* Azure 仮想マシンへの Log Analytics エージェントの追加
-* Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
+* Azure 仮想マシンへのログ分析エージェントの追加
+* Azure Diagnostics を使用して収集されたデータをログ分析でインデックスするための構成
 
-この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) を参照してください。
+この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/az.operationalinsights/) を参照してください。
 
 > [!NOTE]
 > Log Analytics は以前、オペレーション インサイトと呼ばれていました。そのため、コマンドレットにはその旧称が使用されています。
-> 
-> 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
-これらの例は、AzureRm.OperationalInsights モジュールのバージョン 2.3.0 以降で動作します。
+これらの例は、Az.OperationalInsights モジュールのバージョン 1.0.0 以降で動作します。
 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成と構成
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースを作成して構成する
 以下のサンプル スクリプトは、次の作業の方法を紹介したものです。
 
 1. ワークスペースの作成
@@ -61,9 +56,9 @@ Log Analytics のさまざまな機能は、コマンド ラインまたはス�
 9. Linux コンピューターからの syslog イベントの収集
 10. Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
 11. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
-12. カスタム ログの収集 
+12. カスタム ログの収集
 
-```
+```powershell
 
 $ResourceGroup = "oms-example"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
@@ -81,7 +76,7 @@ $ExportedSearches = @"
         "Query":  "Type=Event SourceSystem:AzureStorage ",
         "Version":  1
     },
-    {        
+    {
         "Category":  "My Saved Searches",
         "DisplayName":  "Current Disk Queue Length",
         "Query":  "Type=Perf ObjectName=LogicalDisk InstanceName=\"C:\" CounterName=\"Current Disk Queue Length\"",
@@ -93,109 +88,121 @@ $ExportedSearches = @"
 # Custom Log to collect
 $CustomLog = @"
 {
-    "customLogName": "sampleCustomLog1", 
-    "description": "Example custom log datasource", 
+    "customLogName": "sampleCustomLog1",
+    "description": "Example custom log datasource",
     "inputs": [
-        { 
-            "location": { 
-            "fileSystemLocations": { 
-                "windowsFileTypeLogPaths": [ "e:\\iis5\\*.log" ], 
-                "linuxFileTypeLogPaths": [ "/var/logs" ] 
-                } 
-            }, 
-        "recordDelimiter": { 
-            "regexDelimiter": { 
-                "pattern": "\\n", 
-                "matchIndex": 0, 
-                "matchIndexSpecified": true, 
-                "numberedGroup": null 
-                } 
-            } 
-        }
-    ], 
-    "extractions": [
-        { 
-            "extractionName": "TimeGenerated", 
-            "extractionType": "DateTime", 
-            "extractionProperties": { 
-                "dateTimeExtraction": { 
-                    "regex": null, 
-                    "joinStringRegex": null 
-                    } 
-                } 
+        {
+            "location": {
+            "fileSystemLocations": {
+                "windowsFileTypeLogPaths": [ "e:\\iis5\\*.log" ],
+                "linuxFileTypeLogPaths": [ "/var/logs" ]
+                }
+            },
+        "recordDelimiter": {
+            "regexDelimiter": {
+                "pattern": "\\n",
+                "matchIndex": 0,
+                "matchIndexSpecified": true,
+                "numberedGroup": null
+                }
             }
-        ] 
+        }
+    ],
+    "extractions": [
+        {
+            "extractionName": "TimeGenerated",
+            "extractionType": "DateTime",
+            "extractionProperties": {
+                "dateTimeExtraction": {
+                    "regex": null,
+                    "joinStringRegex": null
+                    }
+                }
+            }
+        ]
     }
 "@
 
 # Create the resource group if needed
 try {
-    Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
 } catch {
-    New-AzureRmResourceGroup -Name $ResourceGroup -Location $Location
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
 }
 
 # Create the workspace
-New-AzureRmOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List all solutions and their installation status
-Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
+Get-AzOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Add solutions
 foreach ($solution in $Solutions) {
-    Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
+    Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
 }
 
 # List enabled solutions
-(Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Where({($_.enabled -eq $true)})
+(Get-AzOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Where({($_.enabled -eq $true)})
 
 # Import Saved Searches
 foreach ($search in $ExportedSearches) {
     $id = $search.Category + "|" + $search.DisplayName
-    New-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId $id -DisplayName $search.DisplayName -Category $search.Category -Query $search.Query -Version $search.Version
+    New-AzOperationalInsightsSavedSearch -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId $id -DisplayName $search.DisplayName -Category $search.Category -Query $search.Query -Version $search.Version
 }
 
 # Export Saved Searches
-(Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Value.Properties | ConvertTo-Json 
+(Get-AzOperationalInsightsSavedSearch -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Value.Properties | ConvertTo-Json
 
 # Create Computer Group based on a query
-New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Web Servers" -DisplayName "Web Servers" -Category "My Saved Searches" -Query "Computer=""web*"" | distinct Computer" -Version 1
-
-# Create a computer group based on names (up to 5000)
-$computerGroup = """servername1.contoso.com"",""servername2.contoso.com"",""servername3.contoso.com"",""servername4.contoso.com"""
-New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Named Servers" -DisplayName "Named Servers" -Category "My Saved Searches" -Query $computerGroup -Version 1
+New-AzOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Web Servers" -DisplayName "Web Servers" -Category "My Saved Searches" -Query "Computer=""web*"" | distinct Computer" -Version 1
 
 # Enable IIS Log Collection using agent
-Enable-AzureRmOperationalInsightsIISLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
+Enable-AzOperationalInsightsIISLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Perf
-New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
-Enable-AzureRmOperationalInsightsLinuxCustomLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
+New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
+Enable-AzOperationalInsightsLinuxCustomLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Syslog
-New-AzureRmOperationalInsightsLinuxSyslogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -Facility "kern" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -Name "Example kernal syslog collection"
-Enable-AzureRmOperationalInsightsLinuxSyslogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
+New-AzOperationalInsightsLinuxSyslogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -Facility "kern" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -Name "Example kernel syslog collection"
+Enable-AzOperationalInsightsLinuxSyslogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Windows Event
-New-AzureRmOperationalInsightsWindowsEventDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -EventLogName "Application" -CollectErrors -CollectWarnings -Name "Example Application Event Log"
+New-AzOperationalInsightsWindowsEventDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -EventLogName "Application" -CollectErrors -CollectWarnings -Name "Example Application Event Log"
 
 # Windows Perf
-New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Memory" -InstanceName "*" -CounterName "Available MBytes" -IntervalSeconds 20 -Name "Example Windows Performance Counter"
+New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Memory" -InstanceName "*" -CounterName "Available MBytes" -IntervalSeconds 20 -Name "Example Windows Performance Counter"
 
 # Custom Logs
-New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
+
+New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+前述の例では、regexDelimiter は改行のために "\\n" と定義されていました。 ログの区切り記号はタイムスタンプにすることもできます。  サポートされる形式は次のとおりです。
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する
-エージェントを介さずに Azure リソースを監視するには、リソースで Azure 診断を有効にし、Log Analytics ワークスペースへの書き込みを構成する必要があります。 この方法では、データが Log Analytics に直接送信され、ストレージ アカウントにデータを書き込む必要がありません。 サポートされているリソースは次のとおりです。
+| 形式 | Json RegEx 形式では、標準の RegEx 内のすべての \ に 2 つの \\ が使用されるので、RegEx アプリでテストする場合は \\ を \ に減らします | | |
+| --- | --- | --- | --- |
+| `YYYY-MM-DD HH:MM:SS` | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
+| `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\\\d)\|[0-9])/(([0-3]\\\\d)\|(\\\\d))/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\\\s(AM\|PM\|am\|pm)` | | |
+| `dd/MMM/yyyy HH:MM:SS` | `((([0-3]\\\\d)\` | `(\\\\d))/(Jan\|Feb\|Mar\|May\|Apr\|Jul\|Jun\|Aug\|Oct\|Sep\|Nov\|Dec\|jan\|feb\|mar\|may\|apr\|jul\|jun\|aug\|oct\|sep\|nov\|dec)/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\` | `([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9])` |
+| `MMM dd yyyy HH:MM:SS` | `(((?:Jan(?:uary)?\|Feb(?:ruary)?\|Mar(?:ch)?\|Apr(?:il)?\|May\|Jun(?:e)?\|Jul(?:y)?\|Aug(?:ust)?\|Sep(?:tember)?\|Sept\|Oct(?:ober)?\|Nov(?:ember)?\|Dec(?:ember)?)).*?((?:(?:[0-2]?\\\\d{1})\|(?:[3][01]{1})))(?![\\\\d]).*?((?:(?:[1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?:[2]{1}\\\\d{3})))(?![\\\\d]).*?((?:(?:[0-1][0-9])\|(?:[2][0-3])\|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\\\s?(?:am\|AM\|pm\|PM))?))` | | |
+| `yyMMdd HH:mm:ss` | `([0-9]{2}([0][1-9]\|[1][0-2])([0-2][0-9]\|[3][0-1])\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9])` | | |
+| `ddMMyy HH:mm:ss` | `(([0-2][0-9]\|[3][0-1])([0][1-9]\|[1][0-2])[0-9]{2}\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9])` | | |
+| `MMM d HH:mm:ss` | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s?([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0-1]?[0-9]\|[2][0-3]):([0-5][0-9]):([0-5][0-9])` | | |
+| `MMM  d HH:mm:ss` <br> MMM の後に 2 つのスペース | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
+| `MMM d HH:mm:ss` | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
+| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> この + は + または - です <br> zzz は時刻のオフセットです | `(([0-2][1-9]\|[3][0-1])\\\\/(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\/((19\|20)[0-9][0-9]):([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\\\s[\\\\+\|\\\\-][0-9]{4})` | | |
+| `yyyy-MM-ddTHH:mm:ss` <br> T はリテラル文字の T です | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
+
+## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Azure Diagnostics を送信するための Log Analytics の構成
+エージェントを介さずに Azure リソースを監視するには、リソースで Azure Diagnostics を有効にし、Log Analytics ワークスペースへの書き込みを構成する必要があります。 この方法では、データがワークスペースに直接送信され、ストレージ アカウントにデータを書き込む必要がありません。 サポートされているリソースは次のとおりです。
 
 | リソースの種類 | ログ | メトリック |
 | --- | --- | --- |
 | Application Gateway    | はい | はい |
 | Automation アカウント     | はい | |
 | Batch アカウント          | はい | はい |
-| Data Lake Analytics     | はい | | 
+| Data Lake Analytics     | はい | |
 | Data Lake Store         | はい | |
 | Elastic SQL Pool        |     | はい |
 | Event Hub 名前空間     |     | はい |
@@ -213,57 +220,57 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 使用可能なメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md)」を参照してください。
 
-利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../../azure-monitor/platform/tutorial-dashboards.md)」を参照してください。
+利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../../azure-monitor/platform/diagnostic-logs-schema.md)」を参照してください。
 
+```powershell
+$workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
+
+$resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
+
+Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
-$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
-$resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO" 
-
-Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
-```
-
-前述のコマンドレットを使用して、異なるサブスクリプションに含まれるリソースからログを収集することもできます。 ログを作成するリソースとログが送信されるワークスペースの両方の ID を指定しているため、このコマンドレットは複数のサブスクリプションにまたがって動作します。
+前述のコマンドレットを使用して、異なるサブスクリプションに含まれるリソースからログを収集することもできます。 ログを作成するリソースとログが送信されるワークスペースの両方の ID が指定されているため、このコマンドレットは複数のサブスクリプションにまたがって動作します。
 
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics-from-storage"></a>Azure 診断でストレージから収集されたデータのインデックスを作成するように Log Analytics を構成する
-従来のクラウド サービスまたは Service Fabric クラスターの実行中のインスタンスからログ データを収集するには、まず Azure ストレージにデータを書き込む必要があります。 その後、ストレージ アカウントからログを収集するように Log Analytics を構成します。 サポートされているリソースは次のとおりです。
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>ストレージから Azure 診断を収集するための Log Analytics ワークスペースの構成
+従来のクラウド サービスまたは Service Fabric クラスターの実行中のインスタンスからログ データを収集するには、まず Azure ストレージにデータを書き込む必要があります。 その後、ストレージ アカウントからログを収集するように Log Analytics ワークスペースを構成します。 サポートされているリソースは次のとおりです。
 
 * クラシック クラウド サービス (Web ロールと worker ロール)
 * Service Fabric クラスター
 
 以下の例では、次のことを行っています。
 
-1. 既存のストレージ アカウントと Log Analytics でインデックスするデータの収集元とをリストする
+1. 既存のストレージ アカウントと、ワークスペースでインデックスを付けるデータの収集元の場所をリストする
 2. ストレージ アカウントからデータを読み取るための構成を作成する
 3. 新しく作成した構成に変更を加え、インデックスの作成対象となるデータの収集元を追加する
 4. 新しく作成した構成を削除する
 
-```
-# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
-$workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
+```powershell
+# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
+$workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to  
-$storageId = "/subscriptions/ec11ca60-1234-491e-5678-0ea07feae25c/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
+# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
+$storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 
 # List existing insights
-Get-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name
+Get-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name
 
 # Create a new insight
-New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -StorageAccountResourceId $storageId -StorageAccountKey $key -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles")
+New-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -StorageAccountResourceId $storageId -StorageAccountKey $key -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles")
 
 # Update existing insight
-Set-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
+Set-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
 
 # Remove the insight
-Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" 
+Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight"
 
 ```
 
-前述のスクリプトを使用して、異なるサブスクリプションに含まれるストレージ アカウントからログを収集することもできます。 ストレージ アカウントのリソース ID と対応するアクセス キーを指定しているため、このスクリプトは複数のサブスクリプションにまたがって動作します。 アクセス キーを変更した場合は、ストレージ情報を更新して新しいキーを反映する必要があります。
+前述のスクリプトを使用して、異なるサブスクリプションに含まれるストレージ アカウントからログを収集することもできます。 ストレージ アカウントのリソース ID と対応するアクセス キーが指定されているため、このスクリプトは複数のサブスクリプションにまたがって動作します。 アクセス キーを変更した場合は、ストレージ情報を更新して新しいキーを反映する必要があります。
 
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics の PowerShell コマンドレットを参照](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
+* [Log Analytics の PowerShell コマンドレットを参照](https://docs.microsoft.com/powershell/module/az.operationalinsights/) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
 

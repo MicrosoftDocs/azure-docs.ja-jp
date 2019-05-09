@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 829d6bc6cb3f8e78d065d7aaca4937634e7349c8
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437067"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58791628"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
 API Management のポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 ポリシー ステートメントは、リテラル テキストの値、ポリシーの式、名前付きの値を使用して構築できます。 
 
 それぞれの API Management サービス インスタンスには、名前付きの値と呼ばれる、サービス インスタンスにグローバルなキー/値ペアのプロパティ コレクションがあります。 これらの名前付きの値を利用し、すべての API の構成とポリシーを対象に、定数文字列値を管理できます。 各プロパティは次の属性を持つことができます。
 
-| Attribute | type | 説明 |
+| Attribute | Type | 説明 |
 | --- | --- | --- |
-| 表示名 |文字列 |ポリシーのプロパティを参照する際に使用する英数字の文字列。 |
-| 値 |文字列 |プロパティの値。 空にすることはできません。スペースのみで構成することはできません。 |
-|シークレット|ブール値|値がシークレットかどうかと暗号化する必要があるかどうかを決定します。|
-| タグ |文字列の配列 |任意のタグ。指定されている場合、プロパティの一覧のフィルター処理に利用できます。 |
+| Display name |string |ポリシーのプロパティを参照する際に使用する英数字の文字列。 |
+| Value |string |プロパティの値。 空にすることはできません。スペースのみで構成することはできません。 |
+|Secret|ブール値|値がシークレットかどうかと暗号化する必要があるかどうかを決定します。|
+| Tags |文字列の配列 |任意のタグ。指定されている場合、プロパティの一覧のフィルター処理に利用できます。 |
 
 ![名前付きの値](./media/api-management-howto-properties/named-values.png)
 
-プロパティ値にはリテラル文字列と[ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx)を含めることができます。 たとえば、`ExpressionProperty` の値は、現在の日時を含む文字列を返すポリシー式です。 プロパティ `ContosoHeaderValue` はシークレットとして設定されています。そのため、その値は表示されていません。
+プロパティ値にはリテラル文字列と[ポリシー式](/azure/api-management/api-management-policy-expressions)を含めることができます。 たとえば、`ExpressionProperty` の値は、現在の日時を含む文字列を返すポリシー式です。 プロパティ `ContosoHeaderValue` はシークレットとして設定されています。そのため、その値は表示されていません。
 
-| Name | 値 | シークレット | タグ |
+| Name | Value | Secret | Tags |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
@@ -50,12 +50,12 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 2. **[名前付きの値]** を選択します。
 3. **[+ 追加]** を押します。
 
-  [名前] と [値] は必須値です。 このプロパティの値がシークレットの場合、[これはシークレットです] チェック ボックスをオンします。 名前付きの値の整理に役立つ任意のタグを 1 つまたは複数入力し、[保存] をクリックします。
+   [名前] と [値] は必須値です。 このプロパティの値がシークレットの場合、[これはシークレットです] チェック ボックスをオンします。 名前付きの値の整理に役立つ任意のタグを 1 つまたは複数入力し、[保存] をクリックします。
 4. **Create** をクリックしてください。
 
 プロパティが作成されたら、そのプロパティをクリックすることで編集できます。 プロパティ名を変更すると、そのプロパティを参照するポリシーも、その新しい名前を使用するように自動的に更新されます。
 
-REST API を利用し、プロパティを編集する方法については、「 [Edit a property using the REST API (REST API を利用してプロパティを編集する)](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch)」を参照してください。
+REST API を利用し、プロパティを編集する方法については、「 [Edit a property using the REST API (REST API を利用してプロパティを編集する)](/rest/api/apimanagement/property?Patch)」を参照してください。
 
 ## <a name="to-delete-a-property"></a>プロパティを削除するには
 
@@ -66,7 +66,7 @@ REST API を利用し、プロパティを編集する方法については、�
 > 
 > 
 
-REST API を利用し、プロパティを削除する方法については、「 [Delete a property using the REST API (REST API を利用してプロパティを作成する)](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete)」を参照してください。
+REST API を利用し、プロパティを削除する方法については、「 [Delete a property using the REST API (REST API を利用してプロパティを作成する)](/rest/api/apimanagement/property?Delete)」を参照してください。
 
 ## <a name="to-search-and-filter-named-values"></a>名前付きの値を検索し、フィルター処理するには
 
@@ -111,8 +111,8 @@ REST API を利用し、プロパティを削除する方法については、�
 ## <a name="next-steps"></a>次の手順
 * ポリシーの使用に関する説明
   * [API Management のポリシー](api-management-howto-policies.md)
-  * [Policy reference (ポリシー リファレンス)](https://msdn.microsoft.com/library/azure/dn894081.aspx)
-  * [ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx)
+  * [Policy reference (ポリシー リファレンス)](/azure/api-management/api-management-policies)
+  * [ポリシー式](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

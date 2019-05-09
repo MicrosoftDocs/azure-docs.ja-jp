@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: 5bafceca09cfe5a981365a39e4f3803b5865ce73
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 69895fff5e1daaf02caec54a6d38052e36ad8d49
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999062"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート:Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -89,7 +89,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 キーを押して続行すると、サンプル プログラムによってストレージ コンテナーとファイルが削除されます。 
 
 > [!TIP]
-> [Azure Storage Explorer](http://storageexplorer.com) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。 
+> [Azure Storage Explorer](https://storageexplorer.com) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。 
 >
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 99953b486fbd1daa9800aa850684447465eead9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599946"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182100"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>接続済みファクトリ ソリューション アクセラレータ用のエッジ ゲートウェイを Windows または Linux にデプロイする
 
@@ -39,7 +39,7 @@ ms.locfileid: "53599946"
 
 ## <a name="choose-a-gateway-device"></a>ゲートウェイ デバイスを選択する
 
-ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 接続済みファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、 [Azure IoT デバイス カタログ](https://catalog.azureiotsuite.com/?q=opc)をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。
+ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 接続済みファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、 [Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/?q=opc)をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。
 
 既存のゲートウェイ デバイスを手動で設定する必要がある場合は、以下の手順に従ってください。
 

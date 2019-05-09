@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: de47cae219aa457343df292bb91b6af06c4b1186
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 147cf61dcd36edc75a936cf9b467fd89c8d8a965
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091931"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082825"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box の制限
 
@@ -22,8 +22,7 @@ Microsoft Azure Data Box をデプロイおよび運用する際には、以下�
 
 ## <a name="data-box-service-limits"></a>Data Box サービスの制限
 
- - Data Box サービスは、米国における [Azure パブリック クラウドのすべての Azure リージョン](https://azure.microsoft.com/regions/)でのみ利用できます。
- - Data Box サービスで複数のストレージ アカウントを使用している場合、すべてのストレージ アカウントが同じ Azure リージョンのみに属している必要があります。
+ - Data Box サービスで複数のストレージ アカウントを使用している場合、すべてのストレージ アカウントが同じ Azure リージョンに属している必要があります。
  - 3 つの以内のストレージ アカウントを使用することをお勧めします。 それ以上のストレージ アカウントを使用するとパフォーマンスに影響する可能性があります。
 
 ## <a name="data-box-limits"></a>Data Box の制限
@@ -45,7 +44,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 
 ## <a name="data-upload-caveats"></a>データのアップロードに関する注意事項
 
-- データを事前に作成された共有の下に直接にコピーしないでください。 共有の下にフォルダーを作成し、データをそのフォルダーにコピーする必要があります。
+- 事前に作成された共有にファイルを直接コピーしないでください。 共有の下にフォルダーを作成し、そのフォルダーにファイルをコピーする必要があります。
 - *StorageAccount_BlockBlob*  と *StorageAccount_PageBlob* の下のフォルダーはコンテナーです。 コンテナーは、たとえば、*BlockBlob/container* や *PageBlob/container* として作成されます。
 - *StorageAccount_AzureFiles* の直下に作成された各フォルダーは、Azure ファイル共有に変換されます。
 - コピー対象のオブジェクトと同じ名前の既存の Azure オブジェクト (BLOB やファイルなど) がクラウド内にある場合、Data Box はクラウド内のファイルを上書きします。
@@ -71,7 +70,8 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 |-------------------|-----------------------------------------------------------|
 | ブロック BLOB        | ~ 4.75 TiB                                                 |
 | ページ BLOB         | 8 TiB <br> ページ BLOB 形式でアップロードするファイルには 512 バイトをアライン (整数倍) する必要があります。そうでないと、アップロードが失敗します。 <br> VHD と VHDX には 512 バイトでアラインされます。 |
-| Azure ファイル        | 1 TiB                                                      |
+| Azure Files        | 1 TiB                                                      |
+| マネージド ディスク     | 4 TiB <br> サイズと制限の詳細については、以下をご覧ください。 <li>[Standard SSD のスケーラビリティの目標](../virtual-machines/windows/disks-types.md#standard-ssd)</li><li>[Premium SSD のスケーラビリティの目標](../virtual-machines/windows/disks-types.md#standard-hdd)</li><li>[Standard HDD のスケーラビリティの目標](../virtual-machines/windows/disks-types.md#premium-ssd)</li><li>[マネージド ディスクの価格と課金](../virtual-machines/windows/disks-types.md#billing)</li>                                                     |
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure ブロック BLOB、ページ BLOB およびファイルの名前付け規則
 
@@ -79,5 +79,5 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ブロック BLOB とページ BLOB のコンテナー名 | 3 ～ 63 文字の有効な DNS 名にする必要があります。 <br>  先頭は文字か数字にします。 <br> 小文字、数字、ハイフン (-) のみを含めることができます。 <br> すべてのハイフン (-) は、その直前または直後に文字または数字が使用されている必要があります。 <br> 連続するハイフンを名前に使用することはできません。 |
 | Azure ファイルの共有名                  | 同上                                                                                                                                                                                                                                                                                                             |
-| Azure ファイルのディレクトリ名とファイル名     |<li> 小文字、大文字を区別し、長さが 255 文字以内である必要があります。 </li><li> 末尾にフォワード スラッシュ (/) を使用することはできません。 </li><li>使用した場合、自動的に削除されます。 </li><li> 次の文字は使用できません：` " \ / : | < > * ?`</li><li> URL の予約文字は適切にエスケープしてください。 </li><li> 無効な URL パス文字は使用できません。 \UE000 のようなコード ポイントは、有効な Unicode 文字ではありません。 制御文字 (0x00 ~ 0x1F、\u0081 など) など一部の ASCII または Unicode 文字も使用できません。 Http/1.1 での Unicode 文字列に適用される規則については、RFC 2616 の Section 2.2「Basic Rules」および RFC 3987 を参照してください。 </li><li> 以下のファイル名は使用できません : LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, ドット (.), 2 ドット(..)</li>|
+| Azure ファイルのディレクトリ名とファイル名     |<li> 小文字、大文字を区別し、長さが 255 文字以内である必要があります。 </li><li> 末尾にフォワード スラッシュ (/) を使用することはできません。 </li><li>使用した場合、自動的に削除されます。 </li><li> 次の文字は使用できません: <code>" \\ / : \| < > * ?</code></li><li> URL の予約文字は適切にエスケープしてください。 </li><li> 無効な URL パス文字は使用できません。 \\uE000 のようなコード ポイントは、有効な Unicode 文字ではありません。 制御文字 (0x00 to 0x1F, \\u0081 など) など一部の ASCII または Unicode 文字も使用できません。 Http/1.1 での Unicode 文字列に適用される規則については、RFC 2616 の Section 2.2:「Basic Rules」および RFC 3987 を参照してください。 </li><li> 以下のファイル名は使用できません。LPT1、LPT2、LPT3、LPT4、LPT5、LPT6、LPT7、LPT8、LPT9、COM1、COM2、COM3、COM4、COM5、COM6、COM7、COM8、COM9、PRN、AUX、NUL、CON、CLOCK$、ドット (.)、2 ドット(..)</li>|
 | ブロック BLOB とページ BLOB の BLOB 名      | </li><li>BLOB 名は、大文字と小文字が区別されます。また、名前には任意の組み合わせの文字を使用できます。 </li><li>BLOB 名は 1 文字から 1,024 文字にする必要があります。 </li><li>URL の予約文字は適切にエスケープしてください。 </li><li>BLOB 名を構成するパスのセグメントの数が 254 個を超えないようにしてください。 パスのセグメントは、仮想ディレクトリの名前に対応した連続する区切り記号文字 (スラッシュ "/" など) の間の文字列です。</li> |

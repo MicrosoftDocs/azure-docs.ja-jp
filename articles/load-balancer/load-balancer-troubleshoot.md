@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 495325696dad79a6cc1a77b9a87f6db0af4c1156
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253257"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108833"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
@@ -128,7 +128,7 @@ Load Balancer のバックエンド VM でホストされているアプリケ�
 サポート ケースを開く場合は、迅速に解決できるように次の情報を収集します。 1 つのバックエンド VM を選択して、次のテストを実行してください。
 - VNet 内にあるバックエンド VM から Psping でプローブ ポートの応答をテストし (psping 10.0.0.4:3389 など)、結果を記録します。 
 - この ping テストで応答がなかった場合は、PsPing を実行しながら、バックエンド VM と VNet テスト VM で同時 Netsh トレースを実行し、その後、Netsh トレースを停止します。 
-  
+  
 ## <a name="next-steps"></a>次の手順
 
 前の手順で問題を解決できない場合は、 [サポート チケット](https://azure.microsoft.com/support/options/)を開きます。

@@ -5,21 +5,22 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 657800c6f96560c68e690ccbd1dfb166c5034812
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 51a0f560a0e4b6ff791d5ed3f9f221eb2eeb9b4d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430138"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191345"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services の高可用性
+
 この記事では、Azure Analysis Services サーバーの高可用性の確保について説明します。 
 
-
 ## <a name="assuring-high-availability-during-a-service-disruption"></a>サービス中断時の高可用性
+
 まれではありますが、Azure データ センターが停止することもあります。 停止が発生すると、ビジネスが中断します。この中断はわずか数分で解消されることもありますが、数時間に及ぶ場合もあります。 高可用性を実現するには、多くの場合、サーバーの冗長性を確保します。 Azure Analysis Services では、1 つ以上のリージョンに追加のセカンダリ サーバーを作成することで、冗長性が実現します。 冗長サーバーを作成するとき、そのサーバー上のデータおよびメタデータが、オフラインになったリージョンのサーバーと確実に同期されるようにするには、次の操作を行います。
 
 * モデルを他のリージョンの冗長サーバーにデプロイします。 この方法を使用する場合、プライマリ サーバーと冗長サーバーの両方のデータを並行して処理し、すべてのサーバーを確実に同期させる必要があります。
@@ -31,6 +32,7 @@ ms.locfileid: "49430138"
 レポート クライアント上の接続文字列の変更を回避するには、プライマリ サーバーに対してサーバー [エイリアス](analysis-services-server-alias.md)を作成します。 プライマリ サーバーで障害が発生した場合は、別のリージョンの冗長サーバーを示すようにエイリアスを変更できます。 プライマリ サーバーのエンドポイントの正常性チェックをコーディングすることで、サーバー名のエイリアスを自動化できます。 正常性チェックが失敗した場合、そのエンドポイントを別のリージョンの冗長サーバーにリダイレクトできます。 
 
 ## <a name="related-information"></a>関連情報
+
 [バックアップと復元](analysis-services-backup.md)   
 [Azure Analysis Services を管理する](analysis-services-manage.md)   
 [サーバー名のエイリアス](analysis-services-server-alias.md) 

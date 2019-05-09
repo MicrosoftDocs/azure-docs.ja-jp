@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Screencast-O-Matic の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Screencast-O-Matic の統合 | Microsoft Docs
 description: Azure Active Directory と Screencast-O-Matic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 20c0acebde232bd50e6e5befed0facc96ee11b4d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 941a02ef9ab3d623d34c8dc6996040f6d9e44859
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040951"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096845"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>チュートリアル: Azure Active Directory と Screencast-O-Matic の統合
+# <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>チュートリアル:Azure Active Directory と Screencast-O-Matic の統合
 
 このチュートリアルでは、Screencast-O-Matic と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -132,17 +133,17 @@ Screencast-O-Matic で Azure AD のシングル サインオンを構成して�
 
 9. **[Setup Access Page]\(アクセス ページのセットアップ\)** で、次の手順を実行します。
 
-    * **[アクセス URL]** セクションで、指定されたテキスト ボックスにインスタンス名を入力します。
+   * **[アクセス URL]** セクションで、指定されたテキスト ボックスにインスタンス名を入力します。
 
-    ![アクセス](./media/screencast-tutorial/tutorial_screencast_access.png)
+     ![アクセス](./media/screencast-tutorial/tutorial_screencast_access.png)
 
-    * **[SAML User Restriction (optional)]\(SAML ユーザーの制限 (省略可能)\)** セクションで、**[Require Domain User]\(ドメイン ユーザーが必要\)** を選択します。
+   * **[SAML User Restriction (optional)]\(SAML ユーザーの制限 (省略可能)\)** セクションで、**[Require Domain User]\(ドメイン ユーザーが必要\)** を選択します。
 
-    * **[Upload IDP Metadata XML File]\(IDP メタデータ XML ファイルのアップロード\)** で、**[ファイルの選択]** をクリックして、Azure portal からダウンロードしたメタデータをアップロードします。
+   * **[Upload IDP Metadata XML File]\(IDP メタデータ XML ファイルのアップロード\)** で、**[ファイルの選択]** をクリックして、Azure portal からダウンロードしたメタデータをアップロードします。
 
-    * Click **OK**. 
+   * Click **OK**. 
 
-    ![アクセス](./media/screencast-tutorial/tutorial_screencast_save.png)
+     ![アクセス](./media/screencast-tutorial/tutorial_screencast_save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -181,7 +182,7 @@ Screencast-O-Matic で Azure AD のシングル サインオンを構成して�
 このセクションの目的は、Screencast-O-Matic で Britta Simon というユーザーを作成することです。 Screencast-O-Matic では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Screencast-O-Matic にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Screencast-O-Matic クライアント サポート チーム](mailto:support@screencast-o-matic.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Screencast-O-Matic クライアント サポート チーム](mailto:support@screencast-o-matic.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -218,7 +219,7 @@ Screencast-O-Matic で Azure AD のシングル サインオンを構成して�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Screencast-O-Matic] タイルをクリックすると、自動的に Screencast-O-Matic アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

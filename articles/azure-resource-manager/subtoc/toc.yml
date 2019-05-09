@@ -1,4 +1,3 @@
-items:
 - name: AAD
   href: /azure/templates/microsoft.aad/allversions
 - name: AKS
@@ -27,7 +26,7 @@ items:
   href: /azure/templates/microsoft.certificateregistration/allversions
 - name: Cognitive Services
   href: /azure/templates/microsoft.cognitiveservices/allversions
-- name: コンピューティング
+- name: Compute
   href: /azure/templates/microsoft.compute/allversions
 - name: 消費
   href: /azure/templates/microsoft.consumption/allversions
@@ -137,9 +136,3 @@ items:
   href: /azure/templates/microsoft.visualstudio/allversions
 - name: Web
   href: /azure/templates/microsoft.web/allversions
-ms.openlocfilehash: d29dd56953933c504ed5f63ec87f92fca42c7201
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307324"

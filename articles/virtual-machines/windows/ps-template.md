@@ -13,200 +13,74 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7be724a93eb951a3f9e35048a3c70571e43e79cf
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c1ba96c76c51abcfe5bb5ef9bd66eb8a50afdfda
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184748"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58846612"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Resource Manager テンプレートから Windows 仮想マシンを作成する
 
-この記事では、PowerShell を使用して Azure Resource Manager テンプレートをデプロイする方法を示します。 作成したテンプレートは、単一のサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する単一の仮想マシンをデプロイします。
+Azure Resource Manager テンプレートと、Azure Cloud シェルの Azure PowerShell を使用して、Windows 仮想マシンを作成する方法を説明します。 この記事で作成されたテンプレートは、単一のサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する単一の仮想マシンをデプロイします。 Linux 仮想マシンの作成方法については、「[Azure Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法](../linux/create-ssh-secured-vm-from-template.md)」を参照してください。
 
-仮想マシン リソースの詳細については、「[Virtual machines in an Azure Resource Manager template](template-description.md)」(Azure Resource Manager テンプレートの仮想マシン) をご覧ください。 テンプレート内のすべてのリソースの詳細については、「[Resource Manager テンプレートのチュートリアル](../../azure-resource-manager/resource-manager-template-walkthrough.md)」をご覧ください。
+## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-この記事の手順を実行するには、約 5 分かかります。
+通常、Azure 仮想マシンの作成には、次の 2 つの手順が含まれます。
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+- リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。
+- 仮想マシンを作成します。
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.3 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+次の例では、[Azure クイック スタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json)から VM を作成します。 テンプレートのコピーは次のとおりです。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+[!code-json[create-windows-vm](~/quickstart-templates/101-vm-simple-windows/azuredeploy.json)]
 
-すべてのリソースを[リソース グループ](../../azure-resource-manager/resource-group-overview.md)にデプロイする必要があります。
+PowerShell スクリプトを実行するには、**[使ってみる]** を選択して、Azure Cloud シェルを開きます。 スクリプトを貼り付けるには、シェルを右クリックし、**[貼り付け]** を選択します。
 
-1. リソースを作成できる場所の一覧を取得します。
-   
-    ```powershell   
-    Get-AzureRmLocation | sort-object DisplayName | Select DisplayName
-    ```
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$adminUsername = Read-Host -Prompt "Enter the administrator username"
+$adminPassword = Read-Host -Prompt "Enter the administrator password" -AsSecureString
+$dnsLabelPrefix = Read-Host -Prompt "Enter an unique DNS name for the public IP"
 
-2. 選択した場所にリソース グループを作成します。 この例では、**West US** という場所に **myResourceGroup** という名前のリソース グループを作成します。
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json" `
+    -adminUsername $adminUsername `
+    -adminPassword $adminPassword `
+    -dnsLabelPrefix $dnsLabelPrefix
 
-    ```powershell   
-    New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
-    ```
+ (Get-AzVm -ResourceGroupName $resourceGroupName).name
 
-## <a name="create-the-files"></a>ファイルの作成
-
-この手順では、リソースをデプロイするテンプレート ファイルと、テンプレートにパラメーター値を指定するパラメーター ファイルを作成します。 また、Azure Resource Manager の操作を実行するために使用する承認ファイルも作成します。 
-
-1. *CreateVMTemplate.json* という名前のファイルを作成し、そのファイルに JSON コードを追加します。 `domainNameLabel` の値を独自の一意の名前に置き換えます。
-
-    ```json
-    {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-        "adminUsername": { "type": "string" },
-        "adminPassword": { "type": "securestring" }
-      },
-      "variables": {
-        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks','myVNet')]", 
-        "subnetRef": "[concat(variables('vnetID'),'/subnets/mySubnet')]" 
-      },
-      "resources": [
-        {
-          "apiVersion": "2016-03-30",
-          "type": "Microsoft.Network/publicIPAddresses",
-          "name": "myPublicIPAddress",
-          "location": "[resourceGroup().location]",
-          "properties": {
-            "publicIPAllocationMethod": "Dynamic",
-            "dnsSettings": {
-              "domainNameLabel": "myresourcegroupdns1"
-            }
-          }
-        },
-        {
-          "apiVersion": "2016-03-30",
-          "type": "Microsoft.Network/virtualNetworks",
-          "name": "myVNet",
-          "location": "[resourceGroup().location]",
-          "properties": {
-            "addressSpace": { "addressPrefixes": [ "10.0.0.0/16" ] },
-            "subnets": [
-              {
-                "name": "mySubnet",
-                "properties": { "addressPrefix": "10.0.0.0/24" }
-              }
-            ]
-          }
-        },
-        {
-          "apiVersion": "2016-03-30",
-          "type": "Microsoft.Network/networkInterfaces",
-          "name": "myNic",
-          "location": "[resourceGroup().location]",
-          "dependsOn": [
-            "[resourceId('Microsoft.Network/publicIPAddresses/', 'myPublicIPAddress')]",
-            "[resourceId('Microsoft.Network/virtualNetworks/', 'myVNet')]"
-          ],
-          "properties": {
-            "ipConfigurations": [
-              {
-                "name": "ipconfig1",
-                "properties": {
-                  "privateIPAllocationMethod": "Dynamic",
-                  "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses','myPublicIPAddress')]" },
-                  "subnet": { "id": "[variables('subnetRef')]" }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "apiVersion": "2016-04-30-preview",
-          "type": "Microsoft.Compute/virtualMachines",
-          "name": "myVM",
-          "location": "[resourceGroup().location]",
-          "dependsOn": [
-            "[resourceId('Microsoft.Network/networkInterfaces/', 'myNic')]"
-          ],
-          "properties": {
-            "hardwareProfile": { "vmSize": "Standard_DS1" },
-            "osProfile": {
-              "computerName": "myVM",
-              "adminUsername": "[parameters('adminUsername')]",
-              "adminPassword": "[parameters('adminPassword')]"
-            },
-            "storageProfile": {
-              "imageReference": {
-                "publisher": "MicrosoftWindowsServer",
-                "offer": "WindowsServer",
-                "sku": "2012-R2-Datacenter",
-                "version": "latest"
-              },
-              "osDisk": {
-                "name": "myManagedOSDisk",
-                "caching": "ReadWrite",
-                "createOption": "FromImage"
-              }
-            },
-            "networkProfile": {
-              "networkInterfaces": [
-                {
-                  "id": "[resourceId('Microsoft.Network/networkInterfaces','myNic')]"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-    ```
-
-2. *Parameters.json* という名前のファイルを作成し、そのファイルに次の JSON コードを追加します。
-
-    ```json
-    {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-      "adminUserName": { "value": "azureuser" },
-        "adminPassword": { "value": "Azure12345678" }
-      }
-    }
-    ```
-
-3. 次のようにして、新しいストレージ アカウントとコンテナーを作成します。
-
-    ```powershell
-    $storageName = "st" + (Get-Random)
-    New-AzureRmStorageAccount -ResourceGroupName "myResourceGroup" -AccountName $storageName -Location "West US" -SkuName "Standard_LRS" -Kind Storage
-    $accountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName myResourceGroup -Name $storageName).Value[0]
-    $context = New-AzureStorageContext -StorageAccountName $storageName -StorageAccountKey $accountKey 
-    New-AzureStorageContainer -Name "templates" -Context $context -Permission Container
-    ```
-
-4. 次のようにして、ストレージ アカウントにファイルをアップロードします。
-
-    ```powershell
-    Set-AzureStorageBlobContent -File "C:\templates\CreateVMTemplate.json" -Context $context -Container "templates"
-    Set-AzureStorageBlobContent -File "C:\templates\Parameters.json" -Context $context -Container templates
-    ```
-
-    "-File" パスは、ファイルを実際に保存した場所に変更してください。
-
-## <a name="create-the-resources"></a>リソースの作成
-
-次のようにして、パラメーターを使用してテンプレートをデプロイします。
-
-```powershell
-$templatePath = "https://" + $storageName + ".blob.core.windows.net/templates/CreateVMTemplate.json"
-$parametersPath = "https://" + $storageName + ".blob.core.windows.net/templates/Parameters.json"
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "myDeployment" -TemplateUri $templatePath -TemplateParameterUri $parametersPath 
 ```
 
-> [!NOTE]
-> ローカル ファイルからテンプレートとパラメーターをデプロイすることもできます。 詳細については、「[Azure Storage での Azure PowerShell の使用](../../storage/common/storage-powershell-guide-full.md)」をご覧ください。
+Azure Cloud シェルからではなく、PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュールが必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+
+前の例では、GitHub に格納されているテンプレートが指定されています。 テンプレートをダウンロードまたは作成し、`--template-file` パラメーターを使用してローカル パスを指定することもできます。
+
+次にその他のリソースを示します。
+
+- Resource Manager テンプレートを開発する方法については、[Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)を参照してください。
+- Azure 仮想マシンのスキーマを表示するには、「[Azure テンプレート リファレンス](/azure/templates/microsoft.compute/allversions)」をご覧ください。
+- さらに仮想マシン テンプレートのサンプルを表示するには、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)」を参照してください。
+
+## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
+
+前述のスクリプトの最後の PowerShell コマンドでは、仮想マシンの名前が表示されます。 仮想マシンへの接続方法については、「[Windows が実行されている Azure 仮想マシンに接続してサインオンする方法](./connect-logon.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 - デプロイに問題がある場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../../resource-manager-common-deployment-errors.md)」を参照してください。
 - 仮想マシンを作成して管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
+テンプレートの作成に関する詳細については、JSON 構文とデプロイしたリソースの種類のプロパティを参照してください。
+
+- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

@@ -3,21 +3,21 @@ title: Azure Active Directory B2C で Android アプリケーションを使用�
 description: この記事では、Azure Active Directory B2C と AppAuth を使用してユーザー ID の管理とユーザーの認証を行う Android アプリを作成する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a5bf15289e91cc568524e8110702b5608118bc2d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 3aa2969f8373ae935b0905160f7ad1b57ce17f01
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833926"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172342"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C:Android アプリケーションを使用してサインインする
+# <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で Android アプリケーションを使用してサインインする
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 これらの標準により、Azure Active Directory B2C と統合する任意のライブラリを活用できます。 他のライブラリを使用できるように、このようなチュートリアルを使用して、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を示すことができます。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
@@ -30,7 +30,7 @@ Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect と�
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してから先に進んでください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](tutorial-create-tenant.md) してから先に進んでください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
@@ -42,13 +42,11 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 ## <a name="create-your-user-flows"></a>ユーザー フローを作成する
 
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ユーザー フロー](active-directory-b2c-reference-policies.md)によって定義されます。これは、Azure AD の動作を制御するポリシーのセットです。 このアプリには、サインインとサインアップのユーザー フローを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ユーザー フローについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、このユーザー フローを作成する必要があります。 ユーザー フローを作成するときは、必ず次のようにします。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ユーザー フロー](active-directory-b2c-reference-policies.md)によって定義されます。これは、Azure AD の動作を制御するポリシーのセットです。 このアプリケーションには、サインインとサインアップのユーザー フローが必要です。 ユーザー フローを作成するときは、必ず次のようにします。
 
 * ユーザー フローのサインアップ属性として **[表示名]** を選択します。
 * すべてのユーザー フローで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。 その他のクレームも選択できます。
 * ユーザー フローの作成後、各ユーザー フローの **[名前]** をコピーしておきます。 名前には、 `b2c_1_`というプレフィックスが付加されています。  このユーザー フロー名は後で必要になります。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 ユーザー フローを作成したら、アプリを構築できます。
 
@@ -134,6 +132,4 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
 ```
 
 残りのプロセスを完了する方法については、[AppAuth ガイド](https://openid.github.io/AppAuth-Android/)を参照してください。 動作するアプリをすぐに開始する必要がある場合は、[用意されているサンプル](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c)をチェックしてください。 [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) の手順に従って、独自の Azure AD B2C 構成を入力してください。
-
-ご意見とご提案をお待ちしております。 この記事に問題がある場合、またはこのコンテンツを改善するためのご提案がある場合には、ページの下部でフィードバックを送信できます。 機能についてのご要望は、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) までお寄せください。
 

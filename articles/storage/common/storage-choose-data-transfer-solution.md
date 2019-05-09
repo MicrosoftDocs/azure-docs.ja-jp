@@ -4,16 +4,16 @@ description: データ サイズと環境内で使用可能なネットワーク
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: alkohli
-ms.openlocfilehash: b90e84082eb73dde5a2303f166e9aa254c6f3101
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4e2a182493b1e9de3d2ba9d586a9560e42fe0ecb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263237"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773437"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>データ転送用の Azure ソリューションを選択する
 

@@ -4,17 +4,17 @@ description: IoT Edge デバイスおよびモジュールがどのようにし�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/20/2018
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096946"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307991"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する (プレビュー)
 
@@ -25,7 +25,7 @@ Azure IoT Edge では、IoT Edge デバイスでの拡張オフライン操作�
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-IoT Edge デバイスがオフライン モードになると、Edge ハブは 3 つのロールを担います。 第一に、アップストリーム方向のすべてのメッセージを格納し、デバイスが再接続されるまで保存します。 第二に、モジュールと子デバイスが動作を継続できるよう、IoT Hub に代わってこれらを認証するために動作します。 第三に、通常は IoT Hub を経由する、子デバイス間の通信を可能にします。 
+IoT Edge デバイスがオフライン モードになると、IoT Edge ハブは 3 つのロールを担います。 第一に、アップストリーム方向のすべてのメッセージを格納し、デバイスが再接続されるまで保存します。 第二に、モジュールと子デバイスが動作を継続できるよう、IoT Hub に代わってこれらを認証するために動作します。 第三に、通常は IoT Hub を経由する、子デバイス間の通信を可能にします。 
 
 次の例は、IoT Edge のシナリオがオフライン モードでどのように動作するかを示しています。
 
@@ -39,7 +39,7 @@ IoT Edge デバイスがオフライン モードになると、Edge ハブは 3
 
 3. **オフラインにします。**
 
-   IoT Hub から切断されている間、IoT Edge デバイス、そのデプロイ済みのモジュール、およびすべての子 IoT デバイスは無期限に動作できます。 オフライン中にモジュールと子デバイスは、Edge ハブによって認証することで起動と再起動を行うことができます。 IoT Hub にアップストリーム方向でバインドされている利用統計情報は、ローカルに格納されます。 ダイレクト メソッドまたはダイレクト メッセージによって、モジュール間または子 IoT デバイス間の通信が維持されます。 
+   IoT Hub から切断されている間、IoT Edge デバイス、そのデプロイ済みのモジュール、およびすべての子 IoT デバイスは無期限に動作できます。 オフライン中にモジュールと子デバイスは、IoT Edge ハブによって認証することで起動と再起動を行うことができます。 IoT Hub にアップストリーム方向でバインドされている利用統計情報は、ローカルに格納されます。 ダイレクト メソッドまたはダイレクト メッセージによって、モジュール間または子 IoT デバイス間の通信が維持されます。 
 
 4. **IoT Hub と再接続および再同期します。**
 
@@ -55,7 +55,7 @@ Edge IoT 以外のデバイスのみを子デバイスとして追加できま�
 
 最初の 1 回限りの同期後、IoT Edge デバイスとそれに割り当てられている子デバイスは、無期限にオフラインで機能できます。ただし、メッセージのストレージは、有効期限 (TTL) 設定と、メッセージを格納するための空きディスク容量により異なります。 
 
-## <a name="set-up-an-edge-device"></a>Edge デバイスを設定する
+## <a name="set-up-an-iot-edge-device"></a>IoT Edge デバイスを設定する
 
 IoT Edge デバイスによってその拡張オフライン機能を子 IoT デバイスまで拡張するには、Azure portal で親子リレーションシップを宣言する必要があります。
 
@@ -71,9 +71,9 @@ IoT Edge デバイスによってその拡張オフライン機能を子 IoT デ
 
 堅牢性を向上させるため、環境内で使用する DNS サーバー アドレスを指定することをお勧めします。 たとえば、linux では、以下を含むように **/etc/docker/daemon.json** を更新します (ファイルの作成が必要な場合があります)。
 
-```
+```json
 {
-    "dns": [“1.1.1.1”]
+    "dns": ["1.1.1.1"]
 }
 ```
 
@@ -82,13 +82,13 @@ IoT Edge デバイスによってその拡張オフライン機能を子 IoT デ
 
 ## <a name="optional-offline-settings"></a>オプションのオフライン設定
 
-デバイスが長時間オフラインになることが予測され、その後、生成されたすべてのメッセージを収集する場合は、すべてのメッセージを格納できるように Edge ハブを構成します。 2 つの変更、長期的なメッセージ ストレージを有効にするために、Edge ハブに対して行える変更は 2 つあります。 まず有効期限設定を大きくしてから、メッセージ ストレージに空きディスク領域をさらに追加します。 
+長いオフライン期間中にご利用のデバイスによって生成されたメッセージがすべて収集されることを期待する場合は、メッセージをすべて格納できるように IoT Edge ハブを構成する必要があります。 次の 2 つの変更を IoT Edge ハブに加えることで、長期的なメッセージの格納を有効にすることができます。 最初に、有効期限の設定値を大きくします。 次に、メッセージを格納するためのディスク領域をさらに追加します。 
 
 ### <a name="time-to-live"></a>Time to Live
 
 有効期限設定は、有効期限が切れる前にメッセージが配信されるのを待機できる時間の量 (秒単位) です。 既定値は 7200 秒 (2 時間) です。 
 
-この設定は、モジュール ツインに格納される、Edge ハブの必要なプロパティです。 この設定は、Azure portal の **[Edge ランタイムの詳細設定を構成する]** セクションで、または配置マニフェストで直接、構成することができます。 
+この設定は、モジュール ツインに格納される、IoT Edge ハブの必須のプロパティです。 この設定は、Azure portal の **[Edge ランタイムの詳細設定を構成する]** セクションで、または配置マニフェストで直接、構成することができます。 
 
 ```json
 "$edgeHub": {
@@ -104,16 +104,25 @@ IoT Edge デバイスによってその拡張オフライン機能を子 IoT デ
 
 ### <a name="additional-offline-storage"></a>追加のオフライン ストレージ
 
-既定では、メッセージは Edge ハブのコンテナー ファイルシステムに格納されます。 ストレージの量がオフラインのニーズに見合わない場合は、IoT Edge デバイス上のローカル ストレージを割り当てることができます。 コンテナー内のストレージ フォルダーを指す、Edge ハブの環境変数を作成する必要があります。 その後、作成オプションを使用して、ホスト コンピューター上のフォルダーにそのストレージ フォルダーをバインドします。 
+既定では、メッセージは IoT Edge ハブのコンテナー ファイルシステムに格納されます。 ストレージの量がオフラインのニーズに見合わない場合は、IoT Edge デバイス上のローカル ストレージを割り当てることができます。 コンテナー内のストレージ フォルダーを指す、IoT Edge ハブの環境変数を作成します。 その後、作成オプションを使用して、ホスト コンピューター上のフォルダーにそのストレージ フォルダーをバインドします。 
 
-Edge ハブ モジュールの環境変数および作成オプションは、Azure portal の **[Edge ランタイムの設定詳細を構成する]** セクションで構成できます。 または、配置マニフェストで直接構成できます。 
+IoT Edge ハブ モジュールの環境変数および作成オプションは、Azure portal の **[Edge ランタイムの詳細設定を構成する]** セクションで構成できます。 または、配置マニフェストで直接構成できます。 
 
 ```json
 "edgeHub": {
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"Binds\":[\"<HostStoragePath>:<ModuleStoragePath>\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
+        "createOptions": {
+            "HostConfig": {
+                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
+                "PortBindings": {
+                    "8883/tcp": [{"HostPort":"8883"}],
+                    "443/tcp": [{"HostPort":"443"}],
+                    "5671/tcp": [{"HostPort":"5671"}]
+                }
+            }
+        }
     },
     "env": {
         "storageFolder": {
@@ -125,7 +134,11 @@ Edge ハブ モジュールの環境変数および作成オプションは、Az
 }
 ```
 
-`<HostStoragePath>` と `<ModuleStoragePath>` は、ご利用のホストとモジュールのストレージ パスに置き換えます。ホストとモジュールの両方のストレージ パスは絶対パスである必要があります。  たとえば、`\"Binds\":[\"/etc/iotedge/storage/:/iotedge/storage/"` は、ホスト パス `/etc/iotedge/storage` がコンテナー パス `/iotedge/storage/` にマップされることを意味します。  createOptions の詳細は、[Docker ドキュメント](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)でも確認できます。
+`<HostStoragePath>` と `<ModuleStoragePath>` は、ご利用のホストとモジュールのストレージ パスに置き換えます。ホストとモジュールの両方のストレージ パスは絶対パスである必要があります。 作成オプションでは、ホストとモジュールのストレージ パスをバインドします。 次に、モジュールのストレージ パスを指す環境変数を作成します。  
+
+たとえば、`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` は、ご利用のホスト システム上のディレクトリ **/etc/iotedge/storage** がコンテナー上のディレクトリ **/iotedge/storage/** にマップされていることを意味します。 または Windows システムにおける別の例として、`"Binds":["C:\\temp:C:\\contemp"]` は、ご利用のホスト システム上のディレクトリ **C:\\temp** がコンテナー上のディレクトリ **C:\\contemp** にマップされていることを意味します。 
+
+作成オプションの詳細については、[Docker ドキュメント](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)でも確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

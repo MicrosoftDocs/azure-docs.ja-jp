@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2acf39a7537d25b05999b7b2813fa66d7f778724
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b10be061e015686c68684723fd2d73c1431c7266
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995795"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699408"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -45,11 +45,13 @@ Analysis Services サーバー管理操作のためにサービス プリンシ�
 
 ### <a name="powershell"></a>PowerShell
 
-[AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) モジュールによるリソース管理操作でサービス プリンシパルを使用するとき、`Login-AzureRmAccount` コマンドレットを使用します。 [SQLServer](https://www.powershellgallery.com/packages/SqlServer) モジュールによるサーバー操作のためにサービス プリンシパルを使用するとき、`Add-AzureAnalysisServicesAccount` コマンドレットを使用します。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[Az.AnalysisServices](/powershell/module/az.analysisservices) モジュールによるリソース管理操作でサービス プリンシパルを使用するときは、`Connect-AzAccount` コマンドレットを使用します。 [SQLServer](https://www.powershellgallery.com/packages/SqlServer) モジュールによるサーバー操作のためにサービス プリンシパルを使用するとき、`Add-AzAnalysisServicesAccount` コマンドレットを使用します。 
 
 次の例では、appID とパスワードを使用し、モデル データベース更新操作を実行します。
 
-```PowerShell
+```powershell
 Param (
 
         [Parameter(Mandatory=$true)] [String] $AppId,
@@ -60,9 +62,7 @@ $PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
 
 $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
 
-Add-AzureAnalysisServicesAccount -Credential $Credential -ServicePrincipal -TenantId $TenantId -RolloutEnvironment "westcentralus.asazure.windows.net"
-
-Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserver" -TableName "MyTable" -Database "MyDb" -RefreshType "Full"
+Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserver" -TableName "MyTable" -Database "MyDb" -RefreshType "Full" -ServicePrincipal -ApplicationId $AppId -TenantId $TenantId -Credential $Credential
 ```
 
 ### <a name="amo-and-adomd"></a>AMO と ADOMD 

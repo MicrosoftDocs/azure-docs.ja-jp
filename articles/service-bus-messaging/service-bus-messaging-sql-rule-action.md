@@ -3,9 +3,9 @@ title: Azure の SQLRuleAction 構文リファレンス | Microsoft Docs
 description: SQLRuleAction の文法について詳しく説明します。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: cd5bc1fb959872cfb98236feb5c32517ac7472ac
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394184"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847732"
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 構文
 
@@ -123,9 +123,9 @@ ms.locfileid: "47394184"
   
  `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
--   `%`: 0 個以上の文字から成る任意の文字列。  
+-   `%`:0 個以上の文字から成る任意の文字列。  
   
--   `_`: 1 つの任意の文字。  
+-   `_`:任意の 1 文字を表します。  
   
 ## <a name="escapechar"></a>escape_char  
   

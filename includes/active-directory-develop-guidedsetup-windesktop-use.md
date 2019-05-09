@@ -4,22 +4,22 @@ description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 87ac7364a2c409af410fcb5cd09aed4377b28d8e
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3f72f6a5097221c904faff633b5a4ee5a6e023c1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988185"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532783"
 ---
 ## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>MSAL を使用して Microsoft Graph API のトークンを取得する
 
@@ -37,41 +37,47 @@ ms.locfileid: "49988185"
     public partial class MainWindow : Window
     {
         //Set the API Endpoint to Graph 'me' endpoint
-        string _graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
+        string graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
 
         //Set the scope for API call to user.read
-        string[] _scopes = new string[] { "user.read" };
+        string[] scopes = new string[] { "user.read" };
+
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+      /// <summary>
+        /// Call AcquireToken - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
             AuthenticationResult authResult = null;
-
             var app = App.PublicClientApp;
             ResultText.Text = string.Empty;
             TokenInfoText.Text = string.Empty;
 
             var accounts = await app.GetAccountsAsync();
+            var firstAccount = accounts.FirstOrDefault();
 
             try
             {
-                authResult = await app.AcquireTokenSilentAsync(_scopes, accounts.FirstOrDefault());
+                authResult = await app.AcquireTokenSilent(scopes, firstAccount)
+                    .ExecuteAsync();
             }
             catch (MsalUiRequiredException ex)
             {
-                // A MsalUiRequiredException happened on AcquireTokenSilentAsync. This indicates you need to call AcquireTokenAsync to acquire a token
+                // A MsalUiRequiredException happened on AcquireTokenSilent.
+                // This indicates you need to call AcquireTokenInteractive to acquire a token
                 System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
 
                 try
                 {
-                    authResult = await App.PublicClientApp.AcquireTokenAsync(_scopes);
+                    authResult = await app.AcquireTokenInteractive(scopes)
+                        .WithAccount(accounts.FirstOrDefault())
+                        .WithPrompt(Prompt.SelectAccount)
+                        .ExecuteAsync();
                 }
                 catch (MsalException msalex)
                 {
@@ -86,12 +92,11 @@ ms.locfileid: "49988185"
 
             if (authResult != null)
             {
-                ResultText.Text = await GetHttpContentWithToken(_graphAPIEndpoint, authResult.AccessToken);
+                ResultText.Text = await GetHttpContentWithToken(graphAPIEndpoint, authResult.AccessToken);
                 DisplayBasicTokenInfo(authResult);
                 this.SignOutButton.Visibility = Visibility.Visible;
             }
         }
-    }
     ```
 
 <!--start-collapse-->
@@ -99,21 +104,21 @@ ms.locfileid: "49988185"
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-`AcquireTokenAsync` メソッドを呼び出すと、ユーザーにサインインを求めるウィンドウが表示されます。 アプリケーションは通常、ユーザーが保護されたリソースに初めてアクセスするときに、対話形式でユーザーにサインインを求めます。 また、自動でのトークンの取得に失敗した場合 (ユーザーのパスワードが期限切れになっている場合など) にも、ユーザーはサインインする必要があります。
+`AcquireTokenInteractive` メソッドを呼び出すと、ユーザーにサインインを求めるウィンドウが表示されます。 アプリケーションは通常、ユーザーが保護されたリソースに初めてアクセスするときに、対話形式でユーザーにサインインを求めます。 また、自動でのトークンの取得に失敗した場合 (ユーザーのパスワードが期限切れになっている場合など) にも、ユーザーはサインインする必要があります。
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
-`AcquireTokenSilentAsync` メソッドは、ユーザーの操作なしでトークンの取得と更新を処理します。 `AcquireTokenAsync` が初めて実行された後、以降の呼び出しでは、保護されたリソースへのアクセスに使用するトークンを取得する際に、通常は `AcquireTokenSilentAsync` メソッドを使用します。トークンを要求または更新する呼び出しが自動で行われるからです。
+`AcquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得と更新を処理します。 `AcquireTokenInteractive` が初めて実行された後、以降の呼び出しでは、保護されたリソースへのアクセスに使用するトークンを取得する際に、通常は `AcquireTokenSilent` メソッドを使用します。トークンを要求または更新する呼び出しが自動で行われるからです。
 
-最終的に、`AcquireTokenSilentAsync` メソッドは失敗します。 この失敗は、ユーザーがサインアウトしたか、別のデバイスでパスワードを変更したことが原因と考えられます。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MsalUiRequiredException` 例外を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
+最終的に、`AcquireTokenSilent` メソッドは失敗します。 この失敗は、ユーザーがサインアウトしたか、別のデバイスでパスワードを変更したことが原因と考えられます。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MsalUiRequiredException` 例外を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-* すぐに `AcquireTokenAsync` を呼び出します。 この呼び出しにより、ユーザーにサインインを求めます。 ユーザーが使用できるオフライン コンテンツがないオンライン アプリケーションでは、通常、このパターンを使用します。 このガイド付きセットアップで生成されるサンプルでは、このパターンを使用します。サンプルの初回実行時に、実際の動作を確認できます。 
+* すぐに `AcquireTokenInteractive` を呼び出します。 この呼び出しにより、ユーザーにサインインを求めます。 ユーザーが使用できるオフライン コンテンツがないオンライン アプリケーションでは、通常、このパターンを使用します。 このガイド付きセットアップで生成されるサンプルでは、このパターンを使用します。サンプルの初回実行時に、実際の動作を確認できます。 
 
 * アプリケーションはユーザーによって使用されたことがないため、`PublicClientApp.Users.FirstOrDefault()` には null 値が含まれ、`MsalUiRequiredException` 例外がスローされます。 
 
-* サンプルのコードでは、`AcquireTokenAsync` を呼び出してユーザーにサインインを求めることにより、この例外を処理します。
+* サンプルのコードでは、`AcquireTokenInteractive` を呼び出してユーザーにサインインを求めることにより、この例外を処理します。
 
-* 対話形式でのサインインが必要であることをユーザーに視覚的に示すことで、ユーザーが適切なタイミングでサインインできるようにします。 または、アプリケーションが後で `AcquireTokenSilentAsync` を再試行します。 アプリケーションでオフライン コンテンツを使用できる場合など、ユーザーが中断なしでアプリケーションの他の機能を使用できる場合に、このパターンがよく使用されます。 この場合、保護されたリソースにアクセスしたり、古くなった情報を更新したりするために、サインインするタイミングをユーザーが決定できます。 また、一時的に使用できなくなっていたネットワークが回復したときに、アプリケーションが `AcquireTokenSilentAsync` の再試行を決定することもできます。
+* 対話形式でのサインインが必要であることをユーザーに視覚的に示すことで、ユーザーが適切なタイミングでサインインできるようにします。 または、アプリケーションが後で `AcquireTokenSilent` を再試行します。 アプリケーションでオフライン コンテンツを使用できる場合など、ユーザーが中断なしでアプリケーションの他の機能を使用できる場合に、このパターンがよく使用されます。 この場合、保護されたリソースにアクセスしたり、古くなった情報を更新したりするために、サインインするタイミングをユーザーが決定できます。 また、一時的に使用できなくなっていたネットワークが回復したときに、アプリケーションが `AcquireTokenSilent` の再試行を決定することもできます。
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>取得したトークンを使用して Microsoft Graph API を呼び出す
@@ -169,7 +174,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     {
         try
         {
-            await App.PublicClientApp.RemoveAsync(accounts.FirstOrDefault()); 
+            await App.PublicClientApp.RemoveAsync(accounts.FirstOrDefault());
             this.ResultText.Text = "User has signed-out";
             this.CallGraphButton.Visibility = Visibility.Visible;
             this.SignOutButton.Visibility = Visibility.Collapsed;
@@ -205,7 +210,6 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
     {
         TokenInfoText.Text += $"Username: {authResult.Account.Username}" + Environment.NewLine;
         TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
-        TokenInfoText.Text += $"Access Token: {authResult.AccessToken}" + Environment.NewLine;
     }
 }
 ```

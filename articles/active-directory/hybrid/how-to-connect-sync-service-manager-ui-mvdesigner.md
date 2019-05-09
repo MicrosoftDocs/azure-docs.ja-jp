@@ -4,24 +4,25 @@ description: Azure AD Connect の Synchronization Service Manager の [メタバ
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: abaa9eb2-f105-42d1-b00a-2a63129a8ffb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a6a063d412d51c5faf513255770d0cf290f162e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d08454a0ad87adb97037517579f11ab976280425
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309381"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194582"
 ---
 # <a name="sync-service-manager-metaverse-designer"></a>Sync Service Manager のメタバース デザイナー
 

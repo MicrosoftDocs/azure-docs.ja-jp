@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0f98f815c0417d1ee8ad5708589b5402a033f83a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e690ae8cd8f6b2ae52c0c8a9dae12c51f8921531
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989540"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694569"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
-仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 この記事では、次のことについて説明します:
+仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 この記事では、次のことについて説明します。
 
 * 2 つの仮想ネットワークを作成する
 * 仮想ネットワーク ピアリングを使用して 2 つの仮想ネットワークを接続する
@@ -41,13 +41,13 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ## <a name="create-virtual-networks"></a>仮想ネットワークを作成する
 
-仮想ネットワークを作成する前に、仮想ネットワークのリソース グループと、この記事で作成された他のすべてのリソースを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+仮想ネットワークを作成する前に、仮想ネットワークのリソース グループと、この記事で作成された他のすべてのリソースを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 次の例では、アドレス プレフィックスが *10.0.0.0/16* の、*myVirtualNetwork1* という名前の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して仮想ネットワークを作成します。 次の例では、アドレス プレフィックスが *10.0.0.0/16* の、*myVirtualNetwork1* という名前の仮想ネットワークを作成します。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -71,7 +71,7 @@ az network vnet create \
 
 ## <a name="peer-virtual-networks"></a>仮想ネットワークをピアリングする
 
-ピアリングは仮想ネットワーク ID 間で確立されるため、最初に [az network vnet show](/cli/azure/network/vnet#az_network_vnet_show) を使用して各仮想ネットワーク の ID を取得し、その ID を変数に格納する必要があります。
+ピアリングは仮想ネットワーク ID 間で確立されるため、最初に [az network vnet show](/cli/azure/network/vnet) を使用して各仮想ネットワーク の ID を取得し、その ID を変数に格納する必要があります。
 
 ```azurecli-interactive
 # Get the id for myVirtualNetwork1.
@@ -88,7 +88,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-[az network vnet peering create](/cli/azure/network/vnet/peering#az_network_vnet_peering_create) を使用して、*myVirtualNetwork1* から *myVirtualNetwork2* へのピアリングを作成します。 `--allow-vnet-access` パラメーターが指定されていない場合、ピアリングは確立されますが、通信を行うことはできません。
+[az network vnet peering create](/cli/azure/network/vnet/peering) を使用して、*myVirtualNetwork1* から *myVirtualNetwork2* へのピアリングを作成します。 `--allow-vnet-access` パラメーターが指定されていない場合、ピアリングは確立されますが、通信を行うことはできません。
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -110,7 +110,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-前のコマンドの実行後に返された出力では、**peeringState** が *Connected* です。 Azure によって、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態も *Connected* に変更されました。 [az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) を使用して、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態が *Connected* に変更されたことを確認します。
+前のコマンドの実行後に返された出力では、**peeringState** が *Connected* です。 Azure によって、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態も *Connected* に変更されました。 [az network vnet peering show](/cli/azure/network/vnet/peering) を使用して、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態が *Connected* に変更されたことを確認します。
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -128,7 +128,7 @@ az network vnet peering show \
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVirtualNetwork1* 仮想ネットワークで *myVm1* という名前の VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、*myVirtualNetwork1* 仮想ネットワークで *myVm1* という名前の VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。
 
 ```azurecli-interactive
 az vm create \
@@ -192,7 +192,7 @@ ping 10.0.0.4 -c 4
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
+不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

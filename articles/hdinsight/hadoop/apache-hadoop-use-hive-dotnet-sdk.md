@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: d3c9c8eab0ce13aee5dbe7bdb732d45555e547fb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 31e759baa4f5e7b220eabf2bb9ffcc5cc011a354
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200465"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して Apache Hive クエリを実行する
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -139,7 +139,6 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 * [Azure HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight で Apache Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](../hdinsight-administer-use-management-portal.md)
 * [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での Apache Sqoop の使用](apache-hadoop-use-sqoop-mac-linux.md)

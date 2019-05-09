@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 9a61b5d25d554ea7e39490b0ca64cde3dcb396d6
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b0a8deb5f656fafde358dbcf2e1a2724f1a84113
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61225441"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux 仮想マシンのドキュメント
 

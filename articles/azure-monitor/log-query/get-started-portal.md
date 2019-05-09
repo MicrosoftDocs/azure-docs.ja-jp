@@ -1,30 +1,25 @@
 ---
-title: Azure portal で Log Analytics の使用を開始する | Microsoft Docs
+title: Azure Monitor Log Analytics の使用を開始する | Microsoft Docs
 description: この記事では、Azure portal で Log Analytics を使用してクエリを記述する方法を説明します。
 services: log-analytics
-documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 6ed8906066d66b6e16ec482a53137f9ca70ae9c7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec6f3884504c94b7669df21882aeb2a1eb9d7220
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000046"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750584"
 ---
-# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Azure portal で Log Analytics の使用を開始する
+# <a name="get-started-with-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics の使用を開始する
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-このチュートリアルでは、Azure portal の [Log Analytics] ページ (現在プレビュー段階) を使用して Log Analytics クエリを作成する方法について説明します。 以下の方法について説明します。
+このチュートリアルでは、Azure portal で Azure Monitor Log Analytics を使用して、Azure Monitor ログ クエリを記述する方法について説明します。 以下の方法について説明します。
 
 - 単純なクエリを作成する
 - データのスキーマの概要
@@ -35,8 +30,8 @@ ms.locfileid: "53000046"
 - クエリのエクスポートと共有
 
 
-## <a name="meet-the-log-analytics-page"></a>[Log Analytics] ページの紹介 
-[Log Analytics] ページは、Azure Log Analytics クエリの作成と実行に使用される Web ツールです。 [Log Analytics] メニューの **[ログ]** (プレビュー) を選択して開きます。 新しい空のクエリから開始されます。
+## <a name="meet-log-analytics"></a>Log Analytics について
+Log Analytics は、Azure Monitor ログ クエリの記述と実行に使用される Web ツールです。 Azure Monitor のメニューで **[ログ]** を選択し、これを開きます。 新しい空のクエリから開始されます。
 
 ![ホーム ページ](media/get-started-portal/homepage.png)
 
@@ -66,7 +61,7 @@ search in (Event) "error"
 
 - 改行:1 つの区切りでクエリが明確になります。 複数の改行で、別々のクエリに分割されます。
 - カーソル:クエリ内のどこかにカーソルを置いて実行します。 現在のクエリは、空白行が見つかるまでのコードと見なされます。
-- 時間の範囲: 既定では_過去 24 時間_の時間の範囲が設定されています。 別の範囲を使用するには、時刻の選択ツールを使用するか、明示的な時間の範囲フィルターをクエリに追加します。
+- 時間の範囲: 既定では _過去 24 時間_ の時間の範囲が設定されています。 別の範囲を使用するには、時刻の選択ツールを使用するか、明示的な時間の範囲フィルターをクエリに追加します。
 
 
 ## <a name="understand-the-schema"></a>スキーマの概要
@@ -83,7 +78,7 @@ search in (Event) "error"
 Event
 ```
 
-[Log Analytics] ページでは、以下の条件で結果が自動的に絞り込まれます。
+Log Analytics では、以下によって結果の範囲が自動的に調整されます。
 
 - 時間の範囲:既定で、クエリは過去 24 時間に制限されます。
 - 結果の数:結果は最大 10,000 レコードに制限されます。
@@ -121,7 +116,7 @@ Event
 
 
 ## <a name="select-a-time-range"></a>時間の範囲を選択する
-[Log Analytics] ページの既定では_過去 24 時間_の時間の範囲が適用されます。 別の範囲を使用するには、時刻の選択ツールで別の値を選択し、**[実行]** をクリックします。 事前設定されている値に加えて、_[カスタムの時間の範囲]_ オプションを使用して、クエリの絶対範囲を選択することができます。
+既定では、Log Analytics では _過去 24 時間_ の時間範囲が適用されます。 別の範囲を使用するには、時刻の選択ツールで別の値を選択し、**[実行]** をクリックします。 事前設定されている値に加えて、_[カスタムの時間の範囲]_ オプションを使用して、クエリの絶対範囲を選択することができます。
 
 ![時刻の選択ツール](media/get-started-portal/time-picker.png)
 
@@ -166,7 +161,7 @@ x 軸や y 軸などのビューのさまざまなプロパティ、またはグ
 
 - テーブルの列と行:テーブルをダッシュボードにピン留めするには、列数が 4 つ以下である必要があります。 最初の 7 行のみが表示されます。
 - 時間の制限:クエリの対象は自動的に過去 14 日間のものに制限されます。
-- ビン数の制限:多数の不連続ビンが表示されているグラフを表示すると、割合の低いビンは_その他_のビンに自動的にグループ化されます。
+- ビン数の制限:多数の不連続ビンが表示されているグラフを表示すると、割合の低いビンは _その他_ のビンに自動的にグループ化されます。
 
 ## <a name="save-queries"></a>クエリの保存
 便利なクエリを作成したら、クエリを保存したり、他のユーザーと共有したりすることができます。 **[保存]** アイコンは上部バーにあります。
@@ -183,12 +178,12 @@ Log Analytics のクエリは、常に選択したワークスペースに保存
 ![クエリ エクスプローラー](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>エクスポートとリンクとしての共有
-[Log Analytics] ページは、いくつかのエクスポート方法をサポートしています。
+Log Analytics では、いくつかのエクスポート方法がサポートされています。
 
 - Excel:結果を CSV ファイルとして保存します。
-- Power BI:結果を Power BI にエクスポートします。 詳細については、「[Azure Log Analytics データを Power BI にインポートする](../../azure-monitor/platform/powerbi.md)」を参照してください。
+- Power BI:結果を Power BI にエクスポートします。 詳細については、[Azure Monitor ログ データを Power BI にインポートする](../../azure-monitor/platform/powerbi.md)ことに関するページを参照してください。
 - リンクの共有:クエリ自体をリンクとして共有できます。そのリンクは、同じワークスペースにアクセスできる他のユーザーが送信および実行することができます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics クエリの記述方法](get-started-queries.md)を参照してください。
+- [Azure Monitor ログ クエリの記述](get-started-queries.md)についてさらに学習します。

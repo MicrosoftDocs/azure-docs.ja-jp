@@ -3,19 +3,19 @@ title: カスタム ポリシーを使用して Azure Active Directory B2C に A
 description: カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 2a4519484c3319ca73bef2862db4d279ba117c4f
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.subservice: B2C
+ms.openlocfilehash: 966ed0732ce807377693917eeab588bb55a9abdb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636732"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867679"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する 
 
@@ -98,7 +98,7 @@ ms.locfileid: "51636732"
             <Key Id="client_secret" StorageReferenceId="B2C_1A_ContosoAppSecret"/>
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="oid"/>
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid"/>
             <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid"/>
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
             <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />

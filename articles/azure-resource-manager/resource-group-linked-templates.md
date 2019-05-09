@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.author: tomfitz
-ms.openlocfilehash: 724b1a2562e4723bd02c97cdecb0ef7dbd8ed177
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d4ecccf8787e369b9a3270eab2d01a01ce7ae0c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58174309"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -31,6 +31,10 @@ ms.locfileid: "53139063"
 
 チュートリアルについては、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./resource-manager-tutorial-create-linked-templates.md)」を参照してください。
 
+> [!NOTE]
+> リンクされたテンプレートまたは入れ子になったテンプレートには、[増分](deployment-modes.md)デプロイ モードのみを使用できます。
+>
+
 ## <a name="link-or-nest-a-template"></a>テンプレートをリンクするか入れ子にする
 
 別のテンプレートにリンクするには、メイン テンプレートに**展開**リソースを追加します。
@@ -38,20 +42,18 @@ ms.locfileid: "53139063"
 ```json
 "resources": [
   {
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-          "mode": "Incremental",
-          <nested-template-or-external-template>
-      }
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2018-05-01",
+    "name": "linkedTemplate",
+    "properties": {
+        "mode": "Incremental",
+        <nested-template-or-external-template>
+    }
   }
 ]
 ```
 
 展開リソースに指定するプロパティは、外部テンプレートにリンクするか、インライン テンプレートをメイン テンプレートに入れ子にするかによって異なります。
-
-リンクされたテンプレートと入れ子になったテンプレートのいずれにも、[増分](deployment-modes.md)デプロイ モードのみを使用できます。
 
 ### <a name="nested-template"></a>入れ子になったテンプレート
 
@@ -60,9 +62,9 @@ ms.locfileid: "53139063"
 ```json
 "resources": [
   {
-    "apiVersion": "2017-05-10",
-    "name": "nestedTemplate",
     "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2018-05-01",
+    "name": "nestedTemplate",
     "properties": {
       "mode": "Incremental",
       "template": {
@@ -71,8 +73,8 @@ ms.locfileid: "53139063"
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2018-07-01",
             "name": "[variables('storageName')]",
-            "apiVersion": "2015-06-15",
             "location": "West US",
             "properties": {
               "accountType": "Standard_LRS"
@@ -88,6 +90,13 @@ ms.locfileid: "53139063"
 > [!NOTE]
 > 入れ子になったテンプレートの場合、入れ子になったテンプレート内に定義されている変数またはパラメーターは使用できません。 パラメーターと変数は、メイン テンプレートから使用できます。 上の例では、`[variables('storageName')]` は、入れ子になったテンプレートではなく、メイン テンプレートから値を取得します。 この制限は、外部テンプレートには適用されません。
 >
+> 入れ子テンプレート内で定義された 2 つのリソースがあり、一方のリソースが他方のリソースに依存している場合、依存関係の値は単に依存先リソースの名前になります。
+> ```json
+> "dependsOn": [
+>   "[variables('storageAccountName')]"
+> ],
+> ```
+>
 > 入れ子になったテンプレートの出力セクションでは `reference` 関数を使用できません。 入れ子になったテンプレート内のデプロイされたリソースの値を返すには、入れ子になったテンプレートをリンク済みテンプレートに変換します。
 
 入れ子になったテンプレートでは、標準のテンプレートと[同じプロパティ](resource-group-authoring-templates.md)が必要です。
@@ -99,20 +108,20 @@ ms.locfileid: "53139063"
 ```json
 "resources": [
   {
-     "apiVersion": "2017-05-10",
-     "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
-     "properties": {
-       "mode": "Incremental",
-       "templateLink": {
-          "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-          "contentVersion":"1.0.0.0"
-       },
-       "parametersLink": {
-          "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-          "contentVersion":"1.0.0.0"
-       }
-     }
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2018-05-01",
+    "name": "linkedTemplate",
+    "properties": {
+    "mode": "Incremental",
+    "templateLink": {
+        "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion":"1.0.0.0"
+    },
+    "parametersLink": {
+        "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+        "contentVersion":"1.0.0.0"
+    }
+    }
   }
 ]
 ```
@@ -128,9 +137,9 @@ ms.locfileid: "53139063"
 ```json
 "resources": [
   {
-     "apiVersion": "2017-05-10",
-     "name": "linkedTemplate",
      "type": "Microsoft.Resources/deployments",
+     "apiVersion": "2018-05-01",
+     "name": "linkedTemplate",
      "properties": {
        "mode": "Incremental",
        "templateLink": {
@@ -201,9 +210,9 @@ ms.locfileid: "53139063"
     "variables": {},
     "resources": [
         {
-            "apiVersion": "2017-05-10",
-            "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "linkedTemplate",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -239,8 +248,8 @@ ms.locfileid: "53139063"
     "resources": [
         {
             "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2018-11-01",
             "name": "[parameters('publicIPAddresses_name')]",
-            "apiVersion": "2017-06-01",
             "location": "eastus",
             "properties": {
                 "publicIPAddressVersion": "IPv4",
@@ -279,8 +288,8 @@ ms.locfileid: "53139063"
     "resources": [
         {
             "type": "Microsoft.Network/loadBalancers",
+            "apiVersion": "2018-11-01",
             "name": "[parameters('loadBalancers_name')]",
-            "apiVersion": "2017-06-01",
             "location": "eastus",
             "properties": {
                 "frontendIPConfigurations": [
@@ -306,9 +315,9 @@ ms.locfileid: "53139063"
             ]
         },
         {
-            "apiVersion": "2017-05-10",
-            "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "linkedTemplate",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -345,8 +354,8 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
     "resources": [
         {
             "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2018-11-01",
             "name": "[parameters('publicIPAddresses_name')]",
-            "apiVersion": "2017-06-01",
             "location": "southcentralus",
             "properties": {
                 "publicIPAddressVersion": "IPv4",
@@ -379,9 +388,13 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
     "variables": {},
     "resources": [
         {
-            "apiVersion": "2017-05-10",
-            "name": "[concat('linkedTemplate', copyIndex())]",
             "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat('linkedTemplate', copyIndex())]",
+            "copy": {
+                "count": 3,
+                "name": "ip-loop"
+            },
             "properties": {
               "mode": "Incremental",
               "templateLink": {
@@ -391,10 +404,6 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
               "parameters":{
                   "publicIPAddresses_name":{"value": "[concat('myip-', copyIndex())]"}
               }
-            },
-            "copy": {
-                "count": 3,
-                "name": "ip-loop"
             }
         }
     ]
@@ -408,7 +417,7 @@ $loopCount = 3
 for ($i = 0; $i -lt $loopCount; $i++)
 {
     $name = 'linkedTemplate' + $i;
-    $deployment = Get-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -Name $name
+    $deployment = Get-AzResourceGroupDeployment -ResourceGroupName examplegroup -Name $name
     Write-Output "deployment $($deployment.DeploymentName) returned $($deployment.Outputs.returnedIPAddress.value)"
 }
 ```
@@ -444,9 +453,9 @@ done
   },
   "resources": [
     {
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -461,13 +470,13 @@ done
 }
 ```
 
-PowerShell では、コンテナーのトークンを取得し、次のコマンドを使ってテンプレートを展開します。 **containerSasToken** パラメーターはテンプレートで定義されていることに注意してください。 **New-AzureRmResourceGroupDeployment** コマンド内のパラメーターではありません。
+PowerShell では、コンテナーのトークンを取得し、次のコマンドを使ってテンプレートを展開します。 **containerSasToken** パラメーターはテンプレートで定義されていることに注意してください。 **New-AzResourceGroupDeployment** コマンド内のパラメーターではありません。
 
 ```azurepowershell-interactive
-Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
-$token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
-$url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
+Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
+$token = New-AzStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
+$url = (Get-AzStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
 Bash シェルの Azure CLI では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。

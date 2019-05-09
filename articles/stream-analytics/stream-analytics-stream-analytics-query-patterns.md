@@ -3,18 +3,17 @@ title: Azure Stream Analytics での一般的なクエリ パターン
 description: この記事では、Azure Stream Analytics ジョブで役に立つさまざまな一般的クエリ パターンとデザインについて説明します。
 services: stream-analytics
 author: jseb225
-manager: kfile
 ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9c9a5f219af0d474e1608f98595abe027b894117
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578893"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001734"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
 
@@ -30,8 +29,8 @@ Azure Stream Analytics では、CSV、JSON、および Avro データ形式の�
 JSON と Avro のどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含むことができます。 これらの複雑なデータ型の操作については、[JSON および AVRO データの解析](stream-analytics-parsing-json.md)に関する記事をご覧ください。
 
 
-## <a name="query-example-convert-data-types"></a>クエリの例: データ型の変換
-**説明**: 入力ストリームのプロパティの型を定義します。
+## <a name="query-example-convert-data-types"></a>クエリの例:データ型の変換
+**説明**:入力ストリームのプロパティの型を定義します。
 たとえば、自動車の重量は入力ストリームでは文字列ですが、**合計**を計算するために **INT** に変換する必要があります。
 
 **入力**:
@@ -49,6 +48,7 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 
 **解決策**:
 
+```SQL
     SELECT
         Make,
         SUM(CAST(Weight AS BIGINT)) AS Weight
@@ -57,11 +57,12 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
     GROUP BY
         Make,
         TumblingWindow(second, 10)
+```
 
-**説明**: **Weight** フィールドの **CAST** ステートメントを使用してそのデータ型を指定します。 サポートされるデータ型の一覧については、「[Data types (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx)」(データ型 (Azure Stream Analytics)) をご覧ください。
+**説明**:**Weight** フィールドの **CAST** ステートメントを使用してそのデータ型を指定します。 サポートされるデータ型の一覧については、「[Data types (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx)」(データ型 (Azure Stream Analytics)) をご覧ください。
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>クエリ例: Like/Not like を使用してパターン マッチングを行う
-**説明**: イベントのフィールド値が特定のパターンと一致することを確認します。
+## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>クエリの例:Like/Not like を使用してパターン マッチングを行う
+**説明**:イベントのフィールド値が特定のパターンと一致することを確認します。
 たとえば、結果が A で始まり 9 で終わるライセンス プレートを返すかどうかを検査します。
 
 **入力**:
@@ -81,17 +82,19 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 
 **解決策**:
 
+```SQL
     SELECT
         *
     FROM
         Input TIMESTAMP BY Time
     WHERE
         LicensePlate LIKE 'A%9'
+```
 
-**説明**: **LIKE** ステートメントを使用して **LicensePlate** フィールドの値を検査します。 値は A で始まり、0 個以上の文字列が続き、9 で終わります。 
+**説明**:**LIKE** ステートメントを使用して **LicensePlate** フィールドの値を検査します。 値は A で始まり、0 個以上の文字列が続き、9 で終わります。 
 
-## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>クエリ例: 異なるケース/値に異なるロジックを指定する (CASE ステートメント)
-**説明**: 特定の条件に基づいて、フィールドに異なる計算を適用します。
+## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>クエリの例:異なるケース/値に異なるロジックを指定する (CASE ステートメント)
+**説明**:特定の条件に基づいて、フィールドに異なる計算を適用します。
 たとえば、通過した自動車の台数を製造元ごとに表す文字列情報を指定します。このとき、台数が 1 のときだけ異なる計算を適用するものとします。
 
 **入力**:
@@ -105,12 +108,13 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 **出力**:
 
 | CarsPassed | Time |
-| --- | --- | --- |
+| --- | --- |
 | 1 Honda |2015-01-01T00:00:10.0000000Z |
 | 2 Toyotas |2015-01-01T00:00:10.0000000Z |
 
 **解決策**:
 
+```SQL
     SELECT
         CASE
             WHEN COUNT(*) = 1 THEN CONCAT('1 ', Make)
@@ -122,11 +126,12 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
     GROUP BY
         Make,
         TumblingWindow(second, 10)
+```
 
 **説明**:**CASE** 式は、式を一連の単純な式と比較して結果を決定します。 この例では、カウント 1 の自動車は、カウントが 1 以外の自動車とは異なる文字列の説明を返します。 
 
-## <a name="query-example-send-data-to-multiple-outputs"></a>クエリ例: 複数の出力にデータを送信する
-**説明**: 1 つのジョブから複数の出力ターゲットにデータを送信します。
+## <a name="query-example-send-data-to-multiple-outputs"></a>クエリの例:複数の出力にデータを送信する
+**説明**:1 つのジョブから複数の出力ターゲットにデータを送信します。
 たとえば、しきい値に基づくアラートのデータを分析し、すべてのイベントを Blob Storage にアーカイブします。
 
 **入力**:
@@ -157,6 +162,7 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 
 **解決策**:
 
+```SQL
     SELECT
         *
     INTO
@@ -177,14 +183,16 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
         TumblingWindow(second, 10)
     HAVING
         [Count] >= 3
+```
 
-**説明**: **INTO** 句は、Stream Analytics に対して、このステートメントからのデータを書き込む出力を指定します。
+**説明**:**INTO** 句は、Stream Analytics に対して、このステートメントからのデータを書き込む出力を指定します。
 1 番目のクエリは、受け取ったデータを **ArchiveOutput** という名前の出力にパススルーします。
 2 番目のクエリは、簡単な集計とフィルター処理を行い、結果を下流のアラート システムに送信します。
 
 また、共通テーブル式 (CTE) (**WITH** ステートメントなど) の結果を複数の出力ステートメントに再利用することもできます。 このオプションには、入力ソースに対して開くリーダーが少なくて済むという追加の利点があります。
-For example: 
+例:  
 
+```SQL
     WITH AllRedCars AS (
         SELECT
             *
@@ -195,9 +203,10 @@ For example:
     )
     SELECT * INTO HondaOutput FROM AllRedCars WHERE Make = 'Honda'
     SELECT * INTO ToyotaOutput FROM AllRedCars WHERE Make = 'Toyota'
+```
 
-## <a name="query-example-count-unique-values"></a>クエリ例: 一意の値をカウントする
-**説明**: ストリームに出現するフィールドの、値ごとの件数を一定間隔でカウントします。
+## <a name="query-example-count-unique-values"></a>クエリの例:一意の値をカウントする
+**説明**:ストリームに出現するフィールドの、値ごとの件数を一定間隔でカウントします。
 たとえば、料金所を通過した自動車の、メーカーごとの台数を 2 秒間隔でカウントする場合などです。
 
 **入力**:
@@ -219,21 +228,21 @@ For example:
 
 **解決策:**
 
-````
+```SQL
 SELECT
      COUNT(DISTINCT Make) AS CountMake,
      System.TIMESTAMP AS TIME
 FROM Input TIMESTAMP BY TIME
 GROUP BY 
      TumblingWindow(second, 2)
-````
+```
 
 
 **説明:**
 **COUNT(DISTINCT Make)** は、特定の時間枠内での、**Make** 列の個別の値の数を返します。
 
-## <a name="query-example-determine-if-a-value-has-changed"></a>クエリ例: 値が変化したかどうかを判定する
-**説明**: 前の値が現在の値と異なるかどうかを判定します。
+## <a name="query-example-determine-if-a-value-has-changed"></a>クエリの例:値が変化したかどうかを判定する
+**説明**:前の値が現在の値と異なるかどうかを判定します。
 たとえば、前に有料道路を走っていた自動車のメーカーが現在の自動車と同じであるかどうかなどです。
 
 **入力**:
@@ -251,6 +260,7 @@ GROUP BY
 
 **解決策**:
 
+```SQL
     SELECT
         Make,
         Time
@@ -258,11 +268,12 @@ GROUP BY
         Input TIMESTAMP BY Time
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
+```
 
-**説明**: **LAG** を使用して入力ストリームで 1 つ前のイベントを調べて、**Make** の値を取得します。 次に、現在のイベントの **Make** の値と比較し、異なる場合はイベントを出力します。
+**説明**:**LAG** を使用して入力ストリームで 1 つ前のイベントを調べて、**Make** の値を取得します。 次に、現在のイベントの **Make** の値と比較し、異なる場合はイベントを出力します。
 
-## <a name="query-example-find-the-first-event-in-a-window"></a>クエリ例: 期間内の最初のイベントを検索する
-**説明**: 10 分間隔で最初の自動車を検索します。
+## <a name="query-example-find-the-first-event-in-a-window"></a>クエリの例:期間内の最初のイベントを検索する
+**説明**:10 分間隔で最初の自動車を検索します。
 
 **入力**:
 
@@ -285,6 +296,7 @@ GROUP BY
 
 **解決策**:
 
+```SQL
     SELECT 
         LicensePlate,
         Make,
@@ -293,6 +305,7 @@ GROUP BY
         Input TIMESTAMP BY Time
     WHERE 
         IsFirst(minute, 10) = 1
+```
 
 問題を変更して、10 分ごとに特定のメーカーの最初の自動車を検索します。
 
@@ -306,6 +319,7 @@ GROUP BY
 
 **解決策**:
 
+```SQL
     SELECT 
         LicensePlate,
         Make,
@@ -314,9 +328,10 @@ GROUP BY
         Input TIMESTAMP BY Time
     WHERE 
         IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
+```
 
-## <a name="query-example-find-the-last-event-in-a-window"></a>クエリ例: 期間内の最後のイベントを検索する
-**説明**: 10 分間隔で最後の自動車を検索します。
+## <a name="query-example-find-the-last-event-in-a-window"></a>クエリの例:期間内の最後のイベントを検索する
+**説明**:10 分間隔で最後の自動車を検索します。
 
 **入力**:
 
@@ -339,6 +354,7 @@ GROUP BY
 
 **解決策**:
 
+```SQL
     WITH LastInWindow AS
     (
         SELECT 
@@ -357,11 +373,12 @@ GROUP BY
         INNER JOIN LastInWindow
         ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
         AND Input.Time = LastInWindow.LastEventTime
+```
 
-**説明**: クエリには 2 つの手順があります。 最初の手順では、10 分間隔で最新のタイムスタンプを検索します。 2 番目の手順では、最初のクエリの結果と元のストリームを結合し、各期間で最後のタイムスタンプに一致するイベントを検索します。 
+**説明**:クエリには 2 つの手順があります。 最初の手順では、10 分間隔で最新のタイムスタンプを検索します。 2 番目の手順では、最初のクエリの結果と元のストリームを結合し、各期間で最後のタイムスタンプに一致するイベントを検索します。 
 
-## <a name="query-example-detect-the-absence-of-events"></a>クエリ例: イベントがないことを検出する
-**説明**: 特定の条件と一致する値がストリームに存在しないことを確認します。
+## <a name="query-example-detect-the-absence-of-events"></a>クエリの例:イベントがないことを検出する
+**説明**:特定の条件と一致する値がストリームに存在しないことを確認します。
 たとえば、同じ製造元の 2 台の自動車が、最後の 90 秒で続けて有料道路に進入したことを把握するには、どうすればよいのでしょうか。
 
 **入力**:
@@ -381,6 +398,7 @@ GROUP BY
 
 **解決策**:
 
+```SQL
     SELECT
         Make,
         Time,
@@ -391,11 +409,12 @@ GROUP BY
         Input TIMESTAMP BY Time
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
+```
 
-**説明**: **LAG** を使用して入力ストリームで 1 つ前のイベントを調べて、**Make** の値を取得します。 これを現在のイベントの **Make** の値と比較し、同じ場合はイベントを出力します。 また、**LAG** を使用して前の自動車のデータを取得することもできます。
+**説明**:**LAG** を使用して入力ストリームで 1 つ前のイベントを調べて、**Make** の値を取得します。 これを現在のイベントの **Make** の値と比較し、同じ場合はイベントを出力します。 また、**LAG** を使用して前の自動車のデータを取得することもできます。
 
-## <a name="query-example-detect-the-duration-between-events"></a>クエリ例: イベントの間隔を検出する
-**説明**: 特定のイベントの間隔を検出します。 たとえば、Web クリック ストリームから、ある機能に費やされた時間を調べます。
+## <a name="query-example-detect-the-duration-between-events"></a>クエリの例:イベントの間隔を検出する
+**説明**:特定のイベントの間隔を検出します。 たとえば、Web クリック ストリームから、ある機能に費やされた時間を調べます。
 
 **入力**:  
 
@@ -412,18 +431,18 @@ GROUP BY
 
 **解決策**:
 
-````
+```SQL
     SELECT
         [user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
     FROM input TIMESTAMP BY Time
     WHERE
         Event = 'end'
-````
+```
 
-**説明**: **LAST** 関数を使用して、イベントの種類が **Start** であった最後の **TIME** 値を取得します。 **LAST** 関数は **PARTITION BY [user]** が使用し、一意のユーザーごとに結果が計算されることを示します。 このクエリでは、**Start** イベントと **Stop** イベントの時間差の最大しきい値を 1 時間としていますが、必要に応じて構成可能です **(LIMIT DURATION(hour, 1)**。
+**説明**:**LAST** 関数を使用して、イベントの種類が **Start** であった最後の **TIME** 値を取得します。 **LAST** 関数は **PARTITION BY [user]** が使用し、一意のユーザーごとに結果が計算されることを示します。 このクエリでは、**Start** イベントと **Stop** イベントの時間差の最大しきい値を 1 時間としていますが、必要に応じて構成可能です **(LIMIT DURATION(hour, 1)**。
 
-## <a name="query-example-detect-the-duration-of-a-condition"></a>クエリ例: 条件の期間を検出する
-**説明**: 条件が発生していた時間の長さを調べます。
+## <a name="query-example-detect-the-duration-of-a-condition"></a>クエリの例:条件の期間を検出する
+**説明**:条件が発生していた時間の長さを調べます。
 たとえば、バグのためにすべての自動車の重量が正しくない (20,000 ポンドを超過) 結果になった場合、バグが継続した期間を計算する必要があります。
 
 **入力**:
@@ -447,7 +466,7 @@ GROUP BY
 
 **解決策**:
 
-````
+```SQL
     WITH SelectPreviousEvent AS
     (
     SELECT
@@ -464,12 +483,12 @@ GROUP BY
     WHERE
         [weight] < 20000
         AND previousWeight > 20000
-````
+```
 
-**説明**: **LAG** を使用して 24 時間の入力ストリームに着目し、重量の上限を 20000 として、**StartFault** と **StopFault** の範囲で該当するインスタンスを探します。
+**説明**:**LAG** を使用して 24 時間の入力ストリームに着目し、重量の上限を 20000 として、**StartFault** と **StopFault** の範囲で該当するインスタンスを探します。
 
-## <a name="query-example-fill-missing-values"></a>クエリ例: 欠落値を入力する
-**説明**: 欠落値があるイベントのストリームの場合、定期的な間隔でイベントのストリームを生成します。
+## <a name="query-example-fill-missing-values"></a>クエリの例:欠落値を入力する
+**説明**:欠落値があるイベントのストリームの場合、定期的な間隔でイベントのストリームを生成します。
 たとえば、最近検出されたデータ ポイントを報告する 5 秒ごとのイベントを生成します。
 
 **入力**:
@@ -500,19 +519,20 @@ GROUP BY
 
 **解決策**:
 
+```SQL
     SELECT
         System.Timestamp AS windowEnd,
         TopOne() OVER (ORDER BY t DESC) AS lastEvent
     FROM
         input TIMESTAMP BY t
     GROUP BY HOPPINGWINDOW(second, 300, 5)
+```
+
+**説明**:このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。 [ホッピング ウィンドウ](https://msdn.microsoft.com/library/dn835041.aspx "ホッピング ウィンドウ -- Azure Stream Analytics") 期間は、クエリが最新のイベントを検出するためにさかのぼる期間 (この例では 300 秒) を指定します。
 
 
-**説明**: このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。 [ホッピング ウィンドウ](https://msdn.microsoft.com/library/dn835041.aspx "ホッピング ウィンドウ -- Azure Stream Analytics") 期間は、クエリが最新のイベントを検出するためにさかのぼる期間 (この例では 300 秒) を指定します。
-
-
-## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>クエリの例: 同じストリーム内で 2 つのイベントの種類を関連付ける
-**説明**: 場合によっては、特定の期間中に発生した複数のイベントの種類に基づいて、アラートを生成する必要があります。
+## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>クエリの例:同じストリーム内で 2 つのイベントの種類を関連付ける
+**説明**:場合によっては、特定の期間中に発生した複数のイベントの種類に基づいて、アラートを生成する必要があります。
 たとえば、家庭用電子レンジの IoT シナリオにおいて、ファン温度が 40 未満、直近 3 分間の最大電力が 10 未満の場合にアラートを生成する必要があるとします。
 
 **入力**:
@@ -546,7 +566,7 @@ GROUP BY
 
 **解決策**:
 
-````
+```SQL
 WITH max_power_during_last_3_mins AS (
     SELECT 
         System.TimeStamp AS windowTime,
@@ -580,15 +600,16 @@ WHERE
     t1.sensorName = 'temp'
     AND t1.value <= 40
     AND t2.maxPower > 10
-````
+```
 
-**説明**: 1 つ目の `max_power_during_last_3_mins` クエリでは、[スライディング ウィンドウ](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)を使用して、すべてのデバイスの電力センサーの最大値 (直近 3 分間) を特定しています。 2 つ目のクエリでは、1 つ目のクエリと結合して、現在のイベントに関連する直近のウィンドウの電力値を特定しています。 その後、条件が満たされた場合には、デバイスについてのアラートが生成されます。
+**説明**:1 つ目の `max_power_during_last_3_mins` クエリでは、[スライディング ウィンドウ](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)を使用して、すべてのデバイスの電力センサーの最大値 (直近 3 分間) を特定しています。 2 つ目のクエリでは、1 つ目のクエリと結合して、現在のイベントに関連する直近のウィンドウの電力値を特定しています。 その後、条件が満たされた場合には、デバイスについてのアラートが生成されます。
 
-## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>クエリの例: デバイスのクロックのずれ (サブストリーム) と関係なくイベントを処理します。
-**説明**: イベント プロデューサー間またはパーティション間のクロックのずれや、ネットワーク待機時間が原因でイベントが遅れて、あるいは順序がずれて到着することがあります。 次の例では、TollID 2 のデバイス クロックは TollID 1 より 10 秒遅れており、TollID 3 のデバイス クロックは TollID 1 より 5 秒遅れています。 
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>クエリの例:デバイスのクロックのずれ (サブストリーム) と関係なくイベントを処理する
+**説明**:イベント プロデューサー間またはパーティション間のクロックのずれや、ネットワーク待機時間が原因でイベントが遅れて、あるいは順序がずれて到着することがあります。 次の例では、TollID 2 のデバイス クロックは TollID 1 より 10 秒遅れており、TollID 3 のデバイス クロックは TollID 1 より 5 秒遅れています。 
 
 
 **入力**:
+
 | LicensePlate | Make | Time | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
@@ -601,6 +622,7 @@ WHERE
 | YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
 
 **出力**:
+
 | TollID | Count |
 | --- | --- |
 | 1 | 2 |
@@ -612,18 +634,62 @@ WHERE
 
 **解決策**:
 
-````
+```SQL
 SELECT
       TollId,
       COUNT(*) AS Count
 FROM input
       TIMESTAMP BY Time OVER TollId
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
+```
 
-````
+**説明**:[TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 句は、サブストリームを使用して各デバイスのタイムラインで個別に検索します。 各 TollID の出力イベントは計算されると同時に生成され、同じクロックをすべてのデバイスが参照しているかのように順序が変更されるのではなく、各 TollID ごとにイベントが順序付けられます。
 
-**説明**: [TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 句は、サブストリームを使用して各デバイスのタイムラインで個別に検索します。 各 TollID の出力イベントは計算されると同時に生成され、同じクロックをすべてのデバイスが参照しているかのように順序が変更されるのではなく、各 TollID ごとにイベントが順序付けられます。
+## <a name="query-example-remove-duplicate-events-in-a-window"></a>クエリの例:期間内の重複するイベントを削除する
+**説明**:特定の期間内のイベントに対する平均の計算などの操作を実行するときは、重複するイベントを除外する必要があります。
 
+**入力**:  
+
+| deviceId | Time | Attribute | 値 |
+| --- | --- | --- | --- |
+| 1 |2018-07-27T00:00:01.0000000Z |気温 |50 |
+| 1 |2018-07-27T00:00:01.0000000Z |気温 |50 |
+| 2 |2018-07-27T00:00:01.0000000Z |気温 |40 |
+| 1 |2018-07-27T00:00:05.0000000Z |気温 |60 |
+| 2 |2018-07-27T00:00:05.0000000Z |気温 |50 |
+| 1 |2018-07-27T00:00:10.0000000Z |気温 |100 |
+
+**出力**:  
+
+| AverageValue | deviceId |
+| --- | --- |
+| 70 | 1 |
+|45 | 2 |
+
+**解決策**:
+
+```SQL
+With Temp AS (
+    SELECT
+        COUNT(DISTINCT Time) AS CountTime,
+        Value,
+        DeviceId
+    FROM
+        Input TIMESTAMP BY Time
+    GROUP BY
+        Value,
+        DeviceId,
+        SYSTEM.TIMESTAMP
+)
+
+SELECT
+    AVG(Value) AS AverageValue, DeviceId
+INTO Output
+FROM Temp
+GROUP BY DeviceId,TumblingWindow(minute, 5)
+```
+
+**説明**:[COUNT(DISTINCT Time)](https://docs.microsoft.com/stream-analytics-query/count-azure-stream-analytics) は、特定の時間枠内での、Time 列の個別の値の数を返します。 その後、このステップの出力を使用し、重複を除去することによって、デバイスあたりの平均を計算できます。
 
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。

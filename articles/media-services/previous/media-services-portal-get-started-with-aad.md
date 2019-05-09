@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: bae134d30bd175656e4da9121bca8dbfcfe7fcdd
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 37c5a97d5f7a872e916f223f2cdfc98bcdec3cad
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229461"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258430"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure ポータルで Azure AD 認証を開始する
 

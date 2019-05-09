@@ -3,24 +3,25 @@ title: ネイティブ クライアント アプリの発行 - Azure AD | Micros
 description: ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: a73e652c74f9d88f1e066de190834fc033c13cf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21e101dee878a48cce1005d51ad5e59166b0cfa1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135528"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193120"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>プロキシ アプリケーションからネイティブ クライアント アプリケーションを操作する方法
 

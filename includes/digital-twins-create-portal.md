@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/17/2018
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: f286676cba3d1333db52fb1125279772d518dd88
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0c89c8353d410ddd54e8a59f3838c914702b96ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584810"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124527"
 ---
 1. [Azure Portal](http://portal.azure.com) にサインインします。
 
@@ -24,10 +24,10 @@ ms.locfileid: "53584810"
 1. **[Digital Twins]** ウィンドウで、次の情報を入力します。
    * **[リソース名]**:Digital Twins インスタンスの一意の名前を作成します。
    * **サブスクリプション**:この Digital Twins インスタンスを作成するために使用するサブスクリプションを選択します。 
-   * **[リソース グループ]**: Digital Twins インスタンスの[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)を選択または作成します。
-   * **場所**: 使用しているデバイスに最も近い場所を選択します。
+   * **[リソース グループ]**:Digital Twins インスタンスの[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)を選択または作成します。
+   * **[場所]**:使用しているデバイスに最も近い場所を選択します。
 
-    ![情報が入力されている [Digital Twins] ウィンドウ](./media/create-digital-twins-portal/create-digital-twins-param.png)
+     ![情報が入力されている [Digital Twins] ウィンドウ](./media/create-digital-twins-portal/create-digital-twins-param.png)
 
 1. Digital Twins の情報を確認してから、**[作成]** を選択します。 Digital Twins インスタンスが作成されるまでに数分かかる場合があります。 **[通知]** ウィンドウで進行状況を監視できます。
 

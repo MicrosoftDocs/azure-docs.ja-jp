@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d90439e498e8812551d9e2994165f1714d3bdaab
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093337"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109309"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行
 この記事では、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
@@ -145,7 +145,7 @@ ms.locfileid: "53093337"
 
    ![新しい Stream Analytics ジョブ入力用の設定](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-4. **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
 ### <a name="configure-the-job-output"></a>ジョブの出力を構成する
 このジョブは、入力を取得したのと同じ BLOB ストレージに結果を送信します。 

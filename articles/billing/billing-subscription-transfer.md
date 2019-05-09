@@ -5,7 +5,7 @@ keywords: Azure サブスクリプションの譲渡,譲渡、Azure サブスク
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 6d8baa5f10aeba179ef141cfea86fded8cf44dfc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422604"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878212"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
 
@@ -31,9 +31,6 @@ ms.locfileid: "47422604"
 > [!IMPORTANT]
 > 
 > 新しい Azure AD テナントにサブスクリプションを譲渡すると、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) のすべてのロールの割り当てがソース テナントから完全に削除されます。ターゲット テナントには移行されません。
-
-> [!div class="nextstepaction"]
-> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure サブスクリプションの所有権を譲渡する
 
@@ -98,7 +95,7 @@ ms.locfileid: "47422604"
 | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
 | [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
 | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
-| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
+| [Visual Studio Enterprise:BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
 | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
 | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
 
@@ -175,6 +172,6 @@ Azure サブスクリプションは、アカウント管理者が属するデ�
 
 サブスクリプションの所有権を譲渡できない場合、リソースを手動で移行することもできます。 「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

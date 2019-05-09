@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: echuvyrov
-ms.openlocfilehash: 0943bd1bffb3df7beda97ea0619f1aced4ca3a41
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 71cf07b227a75e53119f2f35e79ccd7926b551e7
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946784"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200702"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>VM などのインフラストラクチャを Azure にプロビジョニングするための Terraform のインストールと構成
  
@@ -59,7 +59,7 @@ az account show --query "{subscriptionId:id, tenantId:tenantId}"
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-これで、Terraform で使用するサービス プリンシパルを作成できます。 次のように、[az ad sp create-for-rbac]/cli/azure/ad/sp#az-ad-sp-create-for-rbac) を使用して、サブスクリプションの*スコープ*を設定します。
+これで、Terraform で使用するサービス プリンシパルを作成できます。 次のように、[az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) を使用して、サブスクリプションの*スコープ*を設定します。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"

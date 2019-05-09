@@ -3,19 +3,20 @@ title: クイック スタート Azure AD のセルフサービスによるパ�
 description: このクイック スタートでは、ユーザーが自分のパスワードをリセットできるように、Azure AD のセルフサービスによるパスワードのリセットをすばやく構成します
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: d04d27ee6136edec8d9af16f9133cf9a7cc0720c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 58e3254d499e013dc686bf6b7d53f919a457c901
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311560"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371285"
 ---
 # <a name="quickstart-self-service-password-reset"></a>クイック スタート:セルフサービスのパスワード リセット
 
@@ -41,11 +42,11 @@ ms.locfileid: "53311560"
 3. **[認証方法]** ページで、以下を選択します。
    * リセットに必要な方法の数:**1**
    * ユーザーが使用できる方法:
-      * **携帯電話**
-      * **会社電話**
+      * **電子メール**
+      * **モバイル アプリ コード (プレビュー)**
    * **[Save]** をクリックします。
 
-    ![認証][Authentication]
+     ![SSPR 用の認証方法を選択する][Authentication]
 
 4. **[登録]** ページで、以下を選択します。
    * サインイン時にユーザーに登録を求める:**はい**

@@ -4,7 +4,7 @@ description: このクイック スタートでは、Azure App Service on Linux 
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 12/10/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 0c72318f6c80563d138d9c885ea5984a22c5c7fa
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: af1256b4432e42f91209b622239ca55901929a1b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653902"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544740"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>クイック スタート:App Service on Linux で Java アプリを作成する
 
@@ -55,21 +55,18 @@ code pom.xml
     <!--*************************************************-->
     <!-- Deploy to Tomcat in App Service Linux           -->
     <!--*************************************************-->
-      
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.4.0</version>
+        <version>1.5.3</version>
         <configuration>
-   
             <!-- App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
             <!-- Java Runtime Stack for App on Linux-->
-            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
-   
+            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime> 
         </configuration>
     </plugin>
 </plugins>
@@ -102,16 +99,15 @@ mvn package azure-webapp:deploy
 
 **お疲れさまでした。** App Service on Linux に初めての Java アプリをデプロイしました。
 
-
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Maven を使用して Java アプリを作成し、[Maven Plugin for Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) を構成した後、Web アーカイブにパッケージ化された Java アプリを App Service on Linux にデプロイしました。 App Serivce on Linux での Java アプリケーションのホストについて詳しくは、次のチュートリアルとハウツー記事を参照してください。
+> [!div class="nextstepaction"]
+> [チュートリアル:Java Enterprise アプリと PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 
-- [チュートリアル: PostgreSQL を使って Java Enterprise アプリをデプロイする](tutorial-java-enterprise-postgresql-app.md)
-- [Tomcat データ ソースを構成する](app-service-linux-java.md#connecting-to-data-sources)
-- [Jenkins での CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)
-- [アプリケーション パフォーマンス監視ツールのセットアップ](how-to-java-apm-monitoring.md)
+> [!div class="nextstepaction"]
+> [Java アプリを構成する](configure-custom-container.md)
 
+> [!div class="nextstepaction"]
+> [Jenkins での CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388274"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369668"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
@@ -33,17 +33,17 @@ ms.locfileid: "49388274"
 | `directory` | いいえ  | リポジトリの複製を作成するディレクトリ。 パスには "`..`" を含めることができません。  "`.`" を指定すると、リポジトリの複製がボリュームのディレクトリに作成されます。 指定しない場合、ボリューム ディレクトリ内の指定の下位ディレクトリに Git リポジトリの複製が作成されます。 |
 | `revision` | いいえ  | 複製を作成するリビジョンのコミット ハッシュ。 指定しない場合、`HEAD` リビジョンが複製されます。 |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>gitRepo ボリュームのマウント: Azure CLI
+## <a name="mount-gitrepo-volume-azure-cli"></a>gitRepo ボリュームのマウント:Azure CLI
 
 [Azure CLI](/cli/azure)を使ってコンテナー インスタンスをデプロイするときに gitRepo ボリュームをマウントするには、[az container create][az-container-create] コマンドに `--gitrepo-url` および `--gitrepo-mount-path` パラメーターを指定します。 必要に応じて、複製先となるボリューム内のディレクトリ (`--gitrepo-dir`) と複製されるリビジョンのコミット ハッシュ (`--gitrepo-revision`) を指定することもできます。
 
-この例のコマンドは、[aci-helloworld][aci-helloworld] サンプル アプリケーションをコンテナー インスタンス内の `/mnt/aci-helloworld`に複製しています。
+この例のコマンドは、Microsoft [aci-helloworld][aci-helloworld] サンプル アプリケーションをコンテナー インスタンス内の `/mnt/aci-helloworld` に複製しています。
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name hellogitrepo \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --dns-name-label aci-demo \
     --ports 80 \
     --gitrepo-url https://github.com/Azure-Samples/aci-helloworld \
@@ -62,13 +62,14 @@ total 16
 drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 ```
 
-## <a name="mount-gitrepo-volume-resource-manager"></a>gitRepo ボリュームのマウント: Resource Manager
+## <a name="mount-gitrepo-volume-resource-manager"></a>gitRepo ボリュームのマウント:リソース マネージャー
 
 [Azure Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)を使ってコンテナー インスタンスをデプロイするときに gitRepo ボリュームをマウントするには、最初にテンプレートのコンテナー グループの `properties` セクションにある `volumes` 配列を設定します。 次に、*gitRepo* ボリュームをマウントするコンテナー グループ内の各コンテナーに対して、コンテナー定義の `properties` セクションで `volumeMounts` 配列を設定します。
 
 たとえば、次の Resource Manager テンプレートでは、1 つのコンテナーから構成されるコンテナー グループが作成されます。 このコンテナーによって、*gitRepo* ボリューム ブロックにより指定される 2 つの GitHub リポジトリが複製されます。 2 つ目のボリュームには、複製先のディレクトリを指定する追加プロパティと複製する特定のリビジョンのコミット ハッシュが含まれています。
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
+[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 先のテンプレートに定義されていた 2 つの複製リポジトリのディレクトリ構造は結果的に次のようになります。
 
@@ -97,9 +98,9 @@ Azure Repos Git リポジトリの場合、有効な PAT と組み合わせて�
 
 GitHub と Azure Repos の個人用アクセス トークンの詳細については、以下を参照してください。
 
-GitHub: [コマンド ラインに使用する個人用アクセス トークンを作成する][pat-github]
+GitHub:[コマンド ラインに使用する個人用アクセス トークンを作成する][pat-github]
 
-Azure Repos: [アクセスの認証に使用する個人用アクセス トークンを作成する][pat-repos]
+Azure Repos:[アクセスの認証に使用する個人用アクセス トークンを作成する][pat-repos]
 
 ## <a name="next-steps"></a>次の手順
 

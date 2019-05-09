@@ -12,17 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 46a12307a70125973d36cf0a09b44b32d3279a97
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a4596b711cd90610051faee0d09501c075548062
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808226"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991902"
 ---
-<a name="prerequisites-for-application-curation"></a>アプリケーションのキュレーションの前提条件
-===============================
+# <a name="prerequisites-for-application-curation"></a>アプリケーションのキュレーションの前提条件
 
 Microsoft では、次の要件を満たしていることを検証するために特定のレビューが必要です。
 
@@ -43,4 +42,5 @@ Microsoft では、次の要件を満たしていることを検証するため�
 - モデル (コードとテスト)
 - マーケティング コンテンツ
 
-詳しくは、[アプリ キュレーションの前提条件](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions)に関する記事をご覧ください。
+技術面とプロセス面の要件の詳細については、「[Finance and Operations 用のアプリケーションを検証する](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions)」を参照してください。  また、まだお読みになっていない場合は、「[Office 365、Dynamics 365、Power BI、PowerApps 用のオファー発行ガイド](../appsource-offer-publishing-guide.md)」をご確認ください。
+

@@ -1,14 +1,11 @@
 ---
-title: 仮想ネットワークの作成 - クイック スタート - Azure CLI | Microsoft Docs
+title: 仮想ネットワークの作成 - クイック スタート - Azure CLI
+titlesuffix: Azure Virtual Network
 description: このクイック スタートでは、Azure CLI を使用して仮想ネットワークを作成する方法について説明します。 仮想ネットワークによって、仮想マシンなどの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: quickstart
@@ -16,13 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: 5219ba0885c15d68bd17f07fb8f1f41e856dad0c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: affbfdebd91d341a4bc32b4a6bc9827919a48817
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321360"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427799"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用した仮想ネットワークの作成
 
@@ -36,13 +32,13 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>リソース グループと仮想ネットワークを作成する
 
-仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 この例では、*eastus* の場所内に *myResourceGroup* という名前のリソース グループを作成します。
+仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 この例では、*eastus* の場所内に *myResourceGroup* という名前のリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 この例では、*default* という名前のサブネットを使って、*myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して仮想ネットワークを作成します。 この例では、*default* という名前のサブネットを使って、*myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -57,7 +53,7 @@ az network vnet create \
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。 この例では、*myVm1* という名前の VM を作成します。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。 この例では、*myVm1* という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \
@@ -94,6 +90,7 @@ VM の作成には数分かかります。 Azure で VM が作成された後、
   "privateIpAddress": "10.0.0.5",
   "publicIpAddress": "40.68.254.142",
   "resourceGroup": "myResourceGroup"
+  "zones": ""
 }
 ```
 
@@ -121,7 +118,7 @@ ping myVm1 -c 4
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのすべてのリソースを削除できます。
+不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのすべてのリソースを削除できます。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

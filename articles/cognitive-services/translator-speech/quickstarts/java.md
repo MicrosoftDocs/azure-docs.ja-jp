@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: Java での Translator Speech API'
+title: クイック スタート:Translator Speech API (Java)
 titlesuffix: Azure Cognitive Services
 description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ebff07a68975f3629b57df4cfc8a5bbcf564ce27
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: b9cf9a5e60ff5f66a3956170b4f5fb41d4b6d66c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412926"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551043"
 ---
-# <a name="quickstart-translator-speech-api-with-java"></a>クイック スタート: Java での Translator Speech API 
+# <a name="quickstart-translator-speech-api-with-java"></a>クイック スタート:Translator Speech API (Java)
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -39,7 +40,7 @@ ms.locfileid: "50412926"
 - [javax-websocket-client-impl-9.4.11.v20180605.jar (以降)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
 - [jetty-client-9.4.11.v20180605.jar (以降)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。 このような .wav ファイルは、[Text to Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech) から取得できます。
+下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。 このような .wav ファイルは、[Text to Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) から取得できます。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft Translator Speech API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 
@@ -103,7 +104,7 @@ import org.eclipse.jetty.websocket.common.scopes.*;
     https://docs.oracle.com/javaee/7/api/javax/websocket/Session.html
     https://docs.oracle.com/javaee/7/api/javax/websocket/RemoteEndpoint.Basic.html
     https://docs.oracle.com/javaee/7/api/javax/websocket/OnMessage.html
-    http://www.oracle.com/technetwork/articles/java/jsr356-1937161.html
+    https://www.oracle.com/technetwork/articles/java/jsr356-1937161.html
 */
 
 @ClientEndpoint(configurator = Config.class)
@@ -277,7 +278,7 @@ public class Speak {
 > [!div class="nextstepaction"]
 > [Translator Speech のチュートリアル](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
 [Translator Speech の概要](../overview.md)
 [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

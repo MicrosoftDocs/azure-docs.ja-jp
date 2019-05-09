@@ -4,7 +4,7 @@ description: ビデオ要約では、ソース ビデオから興味深いスニ
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a245529f-3150-4afc-93ec-e40d8a6b761d
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 03/20/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: aba01314b26f11df41aef25215697389bc7f46b2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0fcacf68f4b41ed8945a6a40d7da125aef499947
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786011"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313262"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する  
 ## <a name="overview"></a>概要
 **Azure Media Video Thumbnails** メディア プロセッサ (MP) では、長いビデオの要約をプレビューするだけのお客様に役に立つビデオの要約を作成することができます。 たとえば、サムネイルにマウス ポインターを合わせたときに、お客者は短い "要約ビデオ" を参照できます。 構成プリセットを通じて **Azure Media Video Thumbnails** のパラメーターを調整することにより、MP の強力なショット検出と連結テクノロジを使用して、わかりやすいサブクリップをアルゴリズムに生成できます。  
 
@@ -37,10 +37,10 @@ ms.locfileid: "33786011"
 次に Azure Media Video Thumbnails メディア プロセッサで実行できる例をいくつか示します。
 
 ### <a name="original-video"></a>元のビデオ
-[元のビデオ](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
+[元のビデオ](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
 
 ### <a name="video-thumbnail-result"></a>ビデオのサムネイル結果
-[ビデオのサムネイル結果](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[ビデオのサムネイル結果](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Video Thumbnails**でビデオのサムネイル タスクを作成するときは、構成プリセットを指定する必要があります。 上記のサムネイル サンプルは、次の基本的な JSON 構成で作成されました。
@@ -53,16 +53,16 @@ ms.locfileid: "33786011"
 
 現在、次のパラメーターを変更できます。
 
-| Param | [説明] |
+| Param | 説明 |
 | --- | --- |
-| outputAudio |結果ビデオにオーディオが含まれているかどうかを指定します。 <br/>使用可能な値: True または False。 既定値は True です。 |
-| fadeInFadeOut |フェードの遷移が独立したモーションのサムネイル間で使用されているかどうかを指定します。  <br/>使用可能な値: True または False。  既定値は True です。 |
+| outputAudio |結果ビデオにオーディオが含まれているかどうかを指定します。 <br/>使用できる値は、以下のとおりです。True または False。 既定値は True です。 |
+| fadeInFadeOut |フェードの遷移が独立したモーションのサムネイル間で使用されているかどうかを指定します。  <br/>使用できる値は、以下のとおりです。True または False。  既定値は True です。 |
 | maxMotionThumbnailDurationInSecs |結果ビデオ全体の長さを指定する整数。  既定値は、元のビデオの再生時間によって異なります。 |
 
 次の表に、 **maxMotionThumbnailInSecs** が使用されていない場合の既定の再生時間を示します。
 
 |  |  |  |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | ビデオの再生時間 |d < 3 分 |3 分 < d < 15 分 |
 | サムネイルの再生時間 |15 秒 (2 ～ 3 シーン) |30 秒 (3 ～ 5 シーン) |
 
@@ -276,7 +276,7 @@ ms.locfileid: "33786011"
 ```
 
 ### <a name="video-thumbnail-output"></a>ビデオのサムネイル出力
-[ビデオのサムネイル出力](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[ビデオのサムネイル出力](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -287,5 +287,5 @@ ms.locfileid: "33786011"
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

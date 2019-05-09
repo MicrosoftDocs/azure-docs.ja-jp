@@ -5,23 +5,24 @@ keywords: Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Conne
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2bcb0caf-5d97-46cb-8c32-bda66cc22dad
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: reference
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 545ec1d4f5cd817b1fa02a135d305b997c9945bc
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705397"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178194"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
 ## <a name="introduction"></a>はじめに
@@ -37,7 +38,7 @@ Azure AD Connect は、オンプレミス Active Directory と Azure Active Dire
 * Azure AD ディレクトリにサインインするときは、onmicrosoft.de ドメインのアカウントを使用する必要があります。
 
  
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 Azure AD Connect は、ポータル内の Azure AD Connect ブレードからダウンロードできます。  Azure AD Connect ブレードを表示するには、次の手順に従います。
 
 ### <a name="the-azure-ad-connect-blade"></a>Azure AD Connect ブレード

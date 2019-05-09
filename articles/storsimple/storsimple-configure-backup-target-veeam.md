@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-ms.openlocfilehash: f06b74493bad546997f82ed6eef0a89cffb7c75b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261980"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011995"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veeam を使用したバックアップ ターゲットとしての StoreSimple
 
@@ -81,7 +81,7 @@ StorSimple には次の利点があります。
 
 StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
-StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
+StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
 
 > [!IMPORTANT]
 > バックアップ ターゲットとして StorSimple デバイスを使用できるのは、StorSimple 8000 の Update 3 以降のバージョンのみです。
@@ -186,7 +186,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 | StorSimple のデプロイメント タスク  | その他のコメント |
 |---|---|
-| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョンは Update 3 以降です。 |
+| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョン:Update 3 以降。 |
 | バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](storsimple-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
 | バックアップ データを格納するボリュームの共通ボリューム コンテナーを作成する。 ボリューム コンテナー内のすべてのデータが重複除去されます。 | StorSimple のボリューム コンテナーでは、重複除去のドメインを定義します。  |
 | StorSimple ボリュームを作成する。 | ボリューム サイズはクラウド スナップショットの実行時間に影響するため、予想される使用量に可能な限り近いサイズのボリュームを作成します。 ボリューム サイズの決定方法については、「[保持ポリシー](#retention-policies)」を参照してください。</br> </br> StorSimple 階層化ボリュームを使用し、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。 </br> ローカル固定ボリュームのみの使用はサポートされていません。 |
@@ -209,16 +209,16 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 ### <a name="operating-system-best-practices"></a>オペレーティング システムのベスト プラクティス
 
--   Windows Server の暗号化と、NTFS ファイル システムの重複除去を無効にします。
--   StorSimple ボリュームでの Windows Server の最適化を無効にします。
--   StorSimple ボリュームでの Windows Server のインデックス作成を無効にします。
--   (StorSimple ボリュームに対してではなく) ソース ホストでウィルス対策スキャンを実行します。
--   タスク マネージャーで、既定の [ Windows Server のメンテナンス](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)を無効にします。 これは、次の方法のいずれかで実行します。
-    - Windows タスク スケジューラでメンテナンス コンフィギュレータを無効にする。
-    - Windows Sysinternals から [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) をダウンロードする。 PsExec のダウンロード後、Windows PowerShell を管理者として実行し、次のように入力します。
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Windows Server の暗号化と、NTFS ファイル システムの重複除去を無効にします。
+- StorSimple ボリュームでの Windows Server の最適化を無効にします。
+- StorSimple ボリュームでの Windows Server のインデックス作成を無効にします。
+- (StorSimple ボリュームに対してではなく) ソース ホストでウィルス対策スキャンを実行します。
+- タスク マネージャーで、既定の [ Windows Server のメンテナンス](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)を無効にします。 これは、次の方法のいずれかで実行します。
+  - Windows タスク スケジューラでメンテナンス コンフィギュレータを無効にする。
+  - Windows Sysinternals から [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) をダウンロードする。 PsExec のダウンロード後、Windows PowerShell を管理者として実行し、次のように入力します。
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple のベスト プラクティス
 
@@ -265,6 +265,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 | 年単位 - 完全 | 1  | 10 | 10 |
 | GFS 要件 |   | 38 |   |
 | 追加のクォータ  | 4  |   | GFS 要件合計 42  |
+
 \* GFS 乗数は、バックアップ ポリシー要件を遵守するために保護および保持する必要があるコピー数を指します。
 
 ## <a name="set-up-veeam-storage"></a>Veeam ストレージのセットアップ
@@ -319,7 +320,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 |---|---|---|
 | 週単位 (第 1 - 4 週) | 土曜日 | 月曜日 - 金曜日 |
 | 月単位  | 土曜日  |   |
-| 年単位 | 土曜日  |   |   |
+| 年単位 | 土曜日  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple ボリュームを Veeam バックアップ ジョブに割り当てる
@@ -384,6 +385,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 | 月単位 - 完全 |StorSimple ディスク (長期) | 1 | 12 | 12 |
 | 年単位 - 完全 |StorSimple ディスク (長期) | 1 | 1 | 1 |
 |GFS ボリュームのサイズ要件 |  |  |  | 18*|
+
 \* 合計容量は、StorSimple ディスクの 17 TiB とローカル RAID ボリュームの 1 TiB の合計です。
 
 
@@ -398,7 +400,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 | 第 3 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
 | 第 4 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
 | 月単位 | StorSimple 月単位 |   |   |   |   |   |
-| 年単位 | StorSimple 年単位  |   |   |   |   |   |   |
+| 年単位 | StorSimple 年単位  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple ボリュームを Veeam コピー ジョブに割り当てる
 
@@ -469,9 +471,9 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 1. [Azure PowerShell をインストールします](/powershell/azure/overview)。
 2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell スクリプトをダウンロードして設定します。
 3. スクリプトを実行するサーバーで PowerShell を管理者として実行します。 スクリプトによって行われる変更を確認するには、`-WhatIf $true` を指定してスクリプトを実行してください。 検証が完了したら、`-WhatIf $false` を渡します。 次のコマンドを実行します。
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
 4. スクリプトをバックアップ ジョブに追加するには、Veeam ジョブの詳細設定のオプションを編集します。
 
     ![Veeam バックアップの詳細設定のスクリプト タブ](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
@@ -510,7 +512,7 @@ Veeam では、Veeam コンソールに組み込まれた各種エクスプロ�
 この記事では次のドキュメントを参考にしています。
 
 - [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [ストレージ シナリオ:シン プロビジョニング](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 

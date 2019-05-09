@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 40d16076a3d995ecccd06591278b330652d960d8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9ff134b0747e78773c95fac7ceab4cddd61c601d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189015"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227016"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用した IoT ハブへのデバイスのプロビジョニング
 
@@ -43,7 +43,7 @@ ms.locfileid: "53189015"
       [![ポータルに表示された TPM の登録情報](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509 ベースのデバイスの場合、次のものが必要となります。
-    - *.pem* ファイルまたは *.cer* ファイルの形式で、[X.509 チップまたはシミュレーションに発行された証明書](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)。 個別登録では、X.509 システムのデバイスごとの "*署名者証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" を使用する必要があります。 
+    - *.pem* ファイルまたは *.cer* ファイルの形式で、[X.509 チップまたはシミュレーションに発行された証明書](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)。 個別登録では、X.509 システムのデバイスごとの "*署名証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" を使用する必要があります。 
 
       [![X.509 構成証明の個々の登録をポータルで追加](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 

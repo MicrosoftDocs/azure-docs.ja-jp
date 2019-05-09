@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5d0259726a45346f1e9b891cb235531d6c24d4a2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003472"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - データ移行のベスト プラクティス
 
@@ -34,9 +34,9 @@ ms.locfileid: "53433425"
 
 次の表に、データ ボリュームとネットワーク帯域幅に基づくおおまかなデータ転送時間を示します。 データ移行に 3 週間以上かかることが予想される場合は Data Box を使用してください。
 
-|**データ量**|**ネットワーク帯域幅**|||
-|---|---|---|---|
-|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**
+|**データ量**|**ネットワーク帯域幅**||||
+|---|---|---|---|---|
+|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
 |1 TB (テラバイト)|2 日|1 日| 2 時間|14 分|
 |10 TB|22 日|10 日|1 日|2 時間|
 |35 TB|76 日|34 日|3 日|8 時間|

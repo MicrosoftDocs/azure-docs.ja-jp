@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と PHP を使って、画像からサムネイルを生成します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1527f57a1d300f730222d100bc9caf2001098fea
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 7239ae1bdad59b87f316d3ee27213420447fcc7e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579347"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839476"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と PHP を使用したサムネイルの生成
 
@@ -133,7 +133,7 @@ catch (HttpException $ex)
 
 ## <a name="next-steps"></a>次の手順
 
-画像の分析、著名人やランドマークの検出、サムネイルの作成、印刷されたテキストや手書きテキストの抽出に使用される Computer Vision API の詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+画像の分析、著名人やランドマークの検出、サムネイルの作成、印刷されたテキストや手書きテキストの抽出を実行する Computer Vision API の詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
 
 > [!div class="nextstepaction"]
 > [Computer Vision API の詳細を確認する](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

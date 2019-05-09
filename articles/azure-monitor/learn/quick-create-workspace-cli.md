@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: dd78e5b212edfa096086499e7eebce2060171e8a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4be33b809ee2e620a565c9907a5b77833a279567
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191140"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848815"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 
-Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI 2.0 を使用して Log Analytics ワークスペースを Azure にデプロイする方法を説明します。このワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた独自の環境です。  次のソースからデータを収集する場合は、この記事で説明する手順を実行する必要があります。
+Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI 2.0 を使って、Azure Monitor に Log Analytics ワークスペースをデプロイする方法を示します。 Log Analytics ワークスペースは、Azure Monitor ログ データ用の一意の環境です。 各ワークスペースには、独自のデータ リポジトリと構成があり、データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。 次のソースからデータを収集しようとする場合、Log Analytics ワークスペースが必要です。
 
 * サブスクリプション内の Azure リソース  
 * System Center Operations Manager によって監視されているオンプレミスのコンピューター  
@@ -31,8 +31,8 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
  
 環境内の Azure VM、Windows VM、Linux VM などの他のソースについては、次のトピックを参照してください。
 
-* [Azure Virtual Machines に関するデータの収集](../../azure-monitor/learn/quick-collect-azurevm.md)
-* [ハイブリッド Linux コンピューターからのデータの収集](../../azure-monitor/learn/quick-collect-linux-computer.md)
+* [Azure Virtual Machines に関するデータの収集](../learn/quick-collect-azurevm.md)
+* [ハイブリッド Linux コンピューターからのデータの収集](../learn/quick-collect-linux-computer.md)
 * [ハイブリッド Windows コンピューターからのデータの収集](quick-collect-windows-computer.md)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
@@ -43,6 +43,8 @@ CLI をローカルにインストールして使用することを選択する�
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) を使用してワークスペースを作成します。 次の例では、ローカル コンピューターから Resource Manager テンプレートを使用して、*eastus* の場所にあるリソース グループ *Lab* に *TestWorkspace* という名前のワークスペースを作成します。 JSON テンプレートは、ワークスペースの名前の入力だけをユーザーに求め、環境の標準構成として使用される可能性のある他のパラメーターには既定値を指定するように構成されています。 または、組織内の共有アクセス用に Azure ストレージ アカウントにテンプレートを格納することができます。 テンプレートを操作する方法の詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)」を参照してください
+
+サポートされているリージョンについては、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照し、**[製品を検索する]** フィールドから Azure Monitor を検索してください。 
 
 以下のパラメーターには、既定値が設定されます。
 
@@ -59,7 +61,7 @@ CLI をローカルにインストールして使用することを選択する�
 
     ```json
     {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspaceName": {
@@ -96,7 +98,7 @@ CLI をローカルにインストールして使用することを選択する�
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
@@ -111,12 +113,12 @@ CLI をローカルにインストールして使用することを選択する�
     }
     ```
 
-2. 要件に合わせてテンプレートを編集します。  どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
+2. 要件に合わせてテンプレートを編集します。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
 3. このファイルを **deploylaworkspacetemplate.json** としてローカル フォルダーに保存します。   
 4. これでこのテンプレートをデプロイする準備が整いました。 テンプレートがあるフォルダーから以下のコマンドを使用します。
 
     ```azurecli
-    azure group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
+    az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
     ```
 
 デプロイが完了するまでに数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
@@ -126,7 +128,7 @@ CLI をローカルにインストールして使用することを選択する�
 ## <a name="next-steps"></a>次の手順
 使用できるワークスペースが用意されたので、管理テレメトリの収集の構成、ログ検索の実行によるデータの分析、管理ソリューションの追加による追加データと分析的な考察の提供を行うことができます。  
 
-* Microsoft Azure 診断または Azure ストレージを使用して Azure リソースからデータを収集できるようにするには、「[Log Analytics で Azure サービスのログとメトリックを使用できるように収集する](../../azure-monitor/platform/collect-azure-metrics-logs.md)」を参照してください。  
-* Operations Manager 管理グループに報告するエージェントからデータを収集して Log Analytics ワークスペースに格納するには、[データ ソースとして System Center Operations Manager を追加](../../azure-monitor/platform/om-agents.md)します。  
-* 階層内のコレクションのメンバーであるコンピュータをインポートするには、[構成マネージャー](../../azure-monitor/platform/collect-sccm.md)に接続します。  
-* 使用可能な[管理ソリューション](../../azure-monitor/insights/solutions.md)と、ソリューションをワークスペースに対して追加または削除する方法を確認します。
+* Microsoft Azure Diagnostics または Azure ストレージを使用して Azure リソースからデータを収集できるようにするには、「[Log Analytics で Azure サービスのログとメトリックを使用できるように収集する](../platform/collect-azure-metrics-logs.md)」を参照してください。  
+* Operations Manager 管理グループに報告するエージェントからデータを収集して Log Analytics ワークスペースに格納するには、[データ ソースとして System Center Operations Manager を追加](../platform/om-agents.md)します。  
+* 階層内のコレクションのメンバーであるコンピュータをインポートするには、[構成マネージャー](../platform/collect-sccm.md)に接続します。  
+* 使用可能な[監視ソリューション](../insights/solutions.md)と、ソリューションをワークスペースに対して追加または削除する方法を確認します。

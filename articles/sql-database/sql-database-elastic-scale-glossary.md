@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 75da9fd6dbd6218e46925eb2fc6cbec4969d5925
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 446203b45744a95c32cd41d9ded26fd960ac8a22
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867802"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561435"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastic Database ツールの用語集
+
 Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。 このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。 
 
 これらの用語は、「[Elastic Database ツールを使用してシャードを追加する](sql-database-elastic-scale-add-a-shard.md)」と「[RecoveryManager クラスを使用したシャード マップに関する問題の解決](sql-database-elastic-database-recovery-manager.md)」で使用されています。

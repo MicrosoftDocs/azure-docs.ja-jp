@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: cwatson
-ms.openlocfilehash: a9ca57ce916dc3f9bc8d451063596519d1d6649c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: kfollis
+ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391346"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444873"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -28,7 +28,7 @@ ms.locfileid: "47391346"
 
 ## <a name="overview"></a>概要
 
-Azure 内の共有ダッシュボードは、仮想マシンやストレージ アカウントと同様に[リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)です。  このため、共有ダッシュボードは、[Azure Resource Manager REST API](/rest/api/)、または [Azure CLI](https://docs.microsoft.com/cli/azure)、[Azure PowerShell コマンド](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0)、およびこれらの API を使用して構築されたその他の多数の [Azure ポータル](https://portal.azure.com)機能を使用してプログラム的に管理でき、リソース管理を簡易化できます。  
+Azure 内の共有ダッシュボードは、仮想マシンやストレージ アカウントと同様に[リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)です。  このため、共有ダッシュボードは、[Azure Resource Manager REST API](/rest/api/)、または [Azure CLI](https://docs.microsoft.com/cli/azure)、[Azure PowerShell コマンド](https://docs.microsoft.com/powershell/azure/get-started-azureps)、およびこれらの API を使用して構築されたその他の多数の [Azure ポータル](https://portal.azure.com)機能を使用してプログラム的に管理でき、リソース管理を簡易化できます。  
 
 これらの API とツールを使用することにより、リソースの作成、一覧表示、取得、変更、および削除を実行できます。  ダッシュボードはリソースであるため、使用する API やツールを任意に選択できます。
 
@@ -100,7 +100,7 @@ Azure では、複数のリソースの配置を調整するための機能が�
 ```json
 
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachineName": {
@@ -386,7 +386,7 @@ __このドキュメントの末尾に、実際に機能する、詳細なテン
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachineName": {

@@ -4,7 +4,7 @@ description: Azure Service Fabric クラスターの監視と診断に Applicati
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 25e8d0aafc8593c9c759dd8ac1d7d1d495c9e026
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f4c620bbb0e17abfacb504866230786a971ff409
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001772"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664151"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -48,50 +48,6 @@ Application Insights には、取得したすべてのデータに対してク�
 ![Application Insights の要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
 Application Insights ポータルの機能についてさらに調べるには、[Application Insights ポータルに関するドキュメント](../azure-monitor/app/app-insights-dashboards.md)をご覧ください。
-
-### <a name="configuring-application-insights-with-wad"></a>WAD を使用した Application Insights の構成
-
->[!NOTE]
->これは現在、Windows クラスターにのみ当てはまります。
-
-WAD から Azure Application Insights にデータを送信する主な方法は 2 つあります。この方法は、[この記事](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)で説明しているように、Application Insights シンクを WAD 構成に追加することで実行できます。
-
-#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Azure portal でクラスターを作成するときに、Application Insights のインストルメンテーション キーを追加する
-
-![AIKey の追加](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
-
-クラスターを作成するときに、診断が "オン" になっている場合、Application Insights のインストルメンテーション キーを入力するオプションのフィールドが表示されます。 ここに Application Insights のキーを貼り付けると、クラスターの展開に使用される Resource Manager テンプレートで、Application Insights シンクが自動的に構成されます。
-
-#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Resource Manager テンプレートに Application Insights シンクを追加する
-
-Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を含めることによって "シンク" を追加します。
-
-1. `DiagnosticMonitorConfiguration` の宣言の完了直後にシンク構成を追加します。
-
-    ```json
-    "SinksConfig": {
-        "Sink": [
-            {
-                "name": "applicationInsights",
-                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
-            }
-        ]
-    }
-
-    ```
-
-2. `DiagnosticMonitorConfiguration` にシンクを含めます。`WadCfg` の `DiagnosticMonitorConfiguration` に次の行を追加します (`EtwProviders` の宣言の直前に)。
-
-    ```json
-    "sinks": "applicationInsights"
-    ```
-
-上記の両方のコード スニペットには、シンクを記述するために "applicationInsights" という名前が使用されていました。 これは要件ではなく、シンクの名前が "sinks" に含まれている限り、任意の文字列で名前を設定できます。
-
-現時点では、クラスターのログは Application Insights のログ ビューアーに**トレース**として表示されます。 プラットフォームからのトレースのほとんどは "情報" レベルであるため、シンクの構成を変更して "重大" または "エラー" タイプのログのみを送信することも検討できます。 これは、[この記事](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)で説明するように、シンクに "チャネル" を追加することで実現できます。
-
->[!NOTE]
->ポータルまたは Resource Manager テンプレートのいずれかで間違った Application Insights キーを使用した場合、手動でキーを変更してクラスターを更新するか、再デプロイする必要があります。
 
 ### <a name="configuring-application-insights-with-eventflow"></a>EventFlow を使用した Application Insights の構成
 
@@ -127,4 +83,4 @@ EventFlow と WAD は集計ソリューションとして使用することを�
 ## <a name="next-steps"></a>次の手順
 
 * [AI のアラートを設定して](../azure-monitor/app/alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
-* [Application Insights のスマート検出](../application-insights/app-insights-proactive-diagnostics.md)は、Application Insights に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
+* [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、Application Insights に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します

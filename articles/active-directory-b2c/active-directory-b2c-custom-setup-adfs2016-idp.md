@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシーを使って ADFS 
 description: Azure Active Directory B2C で SAML プロトコルとカスタム ポリシーを使用して ADFS 2016 を設定する
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.subservice: B2C
+ms.openlocfilehash: 0462ae68194fa22d99339b2ef369e3bbe3deabb2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685771"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077464"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
@@ -64,7 +64,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
           <Metadata>
             <Item Key="WantsEncryptedAssertions">false</Item>
             <Item Key="PartnerEntity">https://your-ADFS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
-            <Item Key=" XmlSignatureAlgorithm">Sha256</Item>
+            <Item Key="XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
@@ -169,13 +169,13 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
 
     | LDAP 属性 | 出力方向の要求の種類 |
     | -------------- | ------------------- |
-    | User-Principal-Name | userPricipalName |
+    | User-Principal-Name | userPrincipalName |
     | Surname | family_name |
     | Given-Name | given_name |
     | E-Mail-Address | email |
     | Display-Name | name |
     
-12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、**[詳細]** タブを選択して、**[セキュア ハッシュ アルゴリズム]** を `SHA-1` または `SHA-256` に変更し、**[OK]** をクリックします。  
+12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、**[詳細]** タブを選択して、**[セキュア ハッシュ アルゴリズム]** を `SHA-256` に変更し、**[OK]** をクリックします。  
 13. [サーバー マネージャー] で、**[ツール]** を選択し、**[ADFS Management]\(ADFS 管理\)** を選択します。
 14. 作成した証明書利用者信頼を選択し、**[フェデレーション メタデータから更新]** を選択し、**[更新]** をクリックします。 
 
@@ -197,7 +197,7 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 
 1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、その名前を *SignUpSignInADFS.xml* に変更します。
 2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInADFS` 」のように入力します。
-3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、「`http://contoso.com/B2C_1A_signup_signin_adfs">」とします。
+3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_adfs` にします。
 4. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignInADFS) に一致するように更新します。
 5. 変更を保存し、ファイルをアップロードしてから、一覧内の新しいポリシーを選択します。
 6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。

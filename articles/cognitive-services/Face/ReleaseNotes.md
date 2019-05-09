@@ -3,23 +3,35 @@ title: リリース ノート - Face API サービス
 titleSuffix: Azure Cognitive Services
 description: Face API サービスのリリース ノートには、さまざまなバージョンのリリース変更履歴が含まれています。
 services: cognitive-services
-author: SteveMSFT
-manager: cgronlun
+author: yluiu
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 6fd3d33d40b0ed142127e46dd7c9173de39947c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.date: 03/29/2019
+ms.author: yluiu
+ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121993"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544552"
 ---
 # <a name="face-api-release-notes"></a>Face API リリース ノート
 
 この記事は、Face API Service バージョン 1.0 に関連します。
+
+### <a name="release-changes-in-march-2019"></a>2019 年 3 月のリリース変更
+
+* 正確性が向上した新しい顔認識モデルを追加しました。 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)、[LargeFaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)、[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)、[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d) で、`recognitionModel` パラメーターに新しい顔認識モデル名 `recognition_02` を指定して使用してください。 詳細については、[認識モデルの指定方法](Face-API-How-to-Topics/specify-recognition-model.md)に関するページを参照してください。
+
+### <a name="release-changes-in-january-2019"></a>2019 年 1 月のリリースでの変更
+
+* サブスクリプション間のデータ移行をサポートするためのスナップショット機能が追加されました。[スナップショット](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)。 詳細については、[顔データを別の Face サブスクリプションに移行する方法](Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
+
+### <a name="release-changes-in-october-2018"></a>2018 年 10 月のリリースでの変更
+
+* 「[PersonGroup - Get Training Status (PersonGroup - トレーニングの状態の取得)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247)」、「[LargePersonGroup - Get Training Status (LargePersonGroup - トレーニングの状態の取得)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae32c6ac60f11b48b5aa5)」、および「[LargeFaceList - Get Training Status (LargeFaceList - トレーニング状態の取得)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a1582f8d2de3616c086f2cf)」で、`status`、`createdDateTime`、`lastActionDateTime`、および `lastSuccessfulTrainingDateTime` の説明を改善しました。
 
 ### <a name="release-changes-in-may-2018"></a>2018 年 5 月のリリース変更
 
@@ -29,7 +41,7 @@ ms.locfileid: "46121993"
 
 ### <a name="release-changes-in-march-2018"></a>2018 年 3 月のリリース変更
 
-* 100 万規模のコンテナー、[LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) と [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d) を追加しました。 詳細は「[How to use the large-scale feature](Face-API-How-to-Topics/how-to-use-large-scale.md)」 (大規模な機能を使用する方法) にあります。
+* 100 万規模のコンテナーを追加しました ([LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) と [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d))。 詳細は「[How to use the large-scale feature](Face-API-How-to-Topics/how-to-use-large-scale.md)」 (大規模な機能を使用する方法) にあります。
 
 * [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) `maxNumOfCandidatesReturned` パラメーターを [1, 5] から [1, 100] に増やしました。指定しなければ、10 です。
 
@@ -41,7 +53,7 @@ ms.locfileid: "46121993"
 
 * [PersonGroup Person - List](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241) がオプション パラメーターの `start` と `top` で改ページに対応しました。
 
-* さまざまな FaceLists と PersonGroup のさまざまな人に対する顔の追加/削除で同時実行に対応しました。
+* さまざまな FaceLists と PersonGroup のさまざまな人に対する顔の追加/削除でコンカレンシーに対応しました。
 
 ### <a name="release-changes-in-march-2017"></a>2017 年 3 月のリリース変更
 * [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` パラメーターに `emotion` 属性を追加しました。
@@ -66,7 +78,7 @@ ms.locfileid: "46121993"
 * [PersonGroup - List](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248) にオプション パラメーターの `start` と `top` を追加しました。一覧表示する開始点と合計 PersonGroups 数を指定できます。
 
 ### <a name="v10-changes-from-v0"></a>V1.0 の V0 からの変更点
-* サービス ルート エンドポイントが ```https://westus.api.cognitive.microsoft.com/face/v0/``` から ```https://westus.api.cognitive.microsoft.com/face/v1.0/``` に更新されました。 変更は [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)、[Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) に適用されます。
+* サービス ルート エンドポイントが ```https://westus.api.cognitive.microsoft.com/face/v0/``` から ```https://westus.api.cognitive.microsoft.com/face/v1.0/``` に更新されました。 変更の適用対象は、[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)、[Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) です。
 
 * 顔の検出可能な最小サイズが 36 x 36 ピクセルに変更されました。 36 x 36 ピクセルより小さな顔は検出されません。
 

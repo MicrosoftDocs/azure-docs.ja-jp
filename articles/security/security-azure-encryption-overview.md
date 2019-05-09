@@ -4,7 +4,7 @@ description: Azure でのさまざまな暗号化オプションの詳細につ�
 services: security
 documentationcenter: na
 author: Barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: dc1ca62ce184ac290f289975ff609b8240351099
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 272cc843ab90eade06525f665d3cf2decf74a26f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035098"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114656"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -78,7 +78,7 @@ Azure BLOB のクライアント側暗号化は、さまざまな方法で実行
 
 Key Vault でクライアント側暗号化を使用すると、Azure Storage クライアント SDK によって生成される 1 回限りの対称コンテンツ暗号化キー (CEK) を使用してデータが暗号化されます。 CEK は、対称キーまたは非対称キーのいずれかのペアであるキー暗号化キー (KEK) を使用して暗号化されます。 CEK はローカルで管理するか、Key Vault で格納できます。 その後、暗号化されたデータは Azure Storage にアップロードされます。
 
-Key Vault のクライアント側暗号化の詳細について確認し、手順に従って作業を開始するには、「[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](../storage/storage-encrypt-decrypt-blobs-key-vault.md)」をご覧ください。
+Key Vault のクライアント側暗号化の詳細について確認し、手順に従って作業を開始するには、[チュートリアル: Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化](../storage/storage-encrypt-decrypt-blobs-key-vault.md)に関する記事をご覧ください。
 
 最後に、Java 用の Azure Storage Client Library を使用して、Azure Storage にデータをアップロードする前にクライアント側暗号化を実行したり、データをクライアントにダウンロードするときに暗号化を解除したりすることもできます。 また、このライブラリは [Key Vault](https://azure.microsoft.com/services/key-vault/) との統合にも役立ち、ストレージ アカウント キーの管理に利用できます。
 
@@ -170,7 +170,7 @@ Azure Portal を使用して、証明書認証または PowerShell を使用し�
 
 Azure 仮想ネットワークへのポイント対サイト VPN 接続に関して詳しくは、以下をご覧ください。
 
-[証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: Azure Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
+[証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
 [証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 

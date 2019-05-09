@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 16e0fa6f7336b39f63b00564d37c1be308bebb16
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 44ee23a510bc15d5cb52a338be1652180b922db9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526285"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451610"
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>インポート ジョブで頻繁に使用するコマンドのクイック リファレンス
 このセクションでは、よく使用されるコマンドのクイック リファレンスを提供します。 詳細な使用方法については、「[インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)」を参照してください。  

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: be08740024e87179a48f3dfd6f8406fa6a2bbca6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963523"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436554"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL Database から**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -33,6 +32,8 @@ ms.locfileid: "52963523"
 > * フル コピー パイプラインを作成、実行、監視します。
 > * ソース テーブルのデータを追加または更新します。
 > * 増分コピー パイプラインを作成、実行、監視します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概要
 データ統合ソリューションでは、初回データ読み込みの後、増分データを読み込む手法が広く利用されています。 ソース データ ストアから特定の期間に変更されたデータを簡単に切り出すことができる場合もあります (LastModifyTime、CreationTime など)。 一方、前回データを処理した時点からの差分データを明示的に特定する方法がない場合もあります。 こうした差分データは、Azure SQL Database や SQL Server などのデータ ストアでサポートされる Change Tracking テクノロジを使用して特定することができます。  このチュートリアルでは、Azure Data Factory と SQL Change Tracking テクノロジを使用して、Azure SQL Database から Azure Blob Storage に差分データを増分読み込みする方法について説明します。  SQL Change Tracking テクノロジに関するより具体的な情報については、[SQL Server における変更の追跡](/sql/relational-databases/track-changes/about-change-tracking-sql-server)に関するページを参照してください。 
@@ -69,7 +70,8 @@ ms.locfileid: "52963523"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure PowerShell。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+
+* Azure PowerShell。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 * **Azure SQL データベース**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に書かれている手順を参照して作成してください。
 * **Azure Storage アカウント**。 **シンク** データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。 **adftutorial** という名前のコンテナーを作成します。 
 
@@ -146,7 +148,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
@@ -164,7 +166,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. Azure リソース グループを作成するには、次のコマンドを実行します。 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
     リソース グループが既に存在する場合、上書きしないようお勧めします。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。 
 3. データ ファクトリ名の変数を定義します。 
@@ -175,10 +177,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```powershell
     $dataFactoryName = "IncCopyChgTrackingDF";
     ```
-5. データ ファクトリを作成するには、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
+5. データ ファクトリを作成するには、次の **Set-AzDataFactoryV2** コマンドレットを実行します。 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 以下の点に注意してください。
@@ -215,10 +217,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }
     ```
 2. **Azure PowerShell** で **C:\ADFTutorials\IncCopyChgTrackingTutorial** フォルダーに切り替えます。
-3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureStorageLinkedService** を作成します。 次の例では、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡しています。 
+3. **Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス**AzureStorageLinkedService** を作成します。 次の例では、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡しています。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
     出力例を次に示します。
@@ -249,10 +251,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         }
     }
     ```
-2. **Azure PowerShell** で、**Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureSQLDatabaseLinkedService** を作成します。 
+2. **Azure PowerShell** で、**Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス**AzureSQLDatabaseLinkedService** を作成します。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
     出力例を次に示します。
@@ -288,10 +290,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }   
     ```
 
-2.  Set-AzureRmDataFactoryV2Dataset コマンドレットを実行して、データセット SourceDataset を作成します。
+2.  Set-AzDataFactoryV2Dataset コマンドレットを実行して、データセットSourceDataset を作成します。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     このコマンドレットの出力例を次に示します。
@@ -330,10 +332,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
     前提条件の 1 つとして adftutorial コンテナーを Azure Blob Storage に作成します。 このコンテナーが存在しない場合は作成するか、または既存のコンテナーの名前に設定してください。 このチュートリアルでは、@CONCAT('Incremental-', pipeline().RunId, '.txt') という式を使って出力ファイル名が動的に生成されます。
-2.  Set-AzureRmDataFactoryV2Dataset コマンドレットを実行して、データセット SinkDataset を作成します。
+2.  Set-AzDataFactoryV2Dataset コマンドレットを実行して、データセットSinkDataset を作成します。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     このコマンドレットの出力例を次に示します。
@@ -368,10 +370,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
     前提条件の 1 つとして table_store_ChangeTracking_version テーブルを作成します。
-2.  Set-AzureRmDataFactoryV2Dataset コマンドレットを実行して、データセット WatermarkDataset を作成します。
+2.  Set-AzDataFactoryV2Dataset コマンドレットを実行して、データセットWatermarkDataset を作成します。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
     ```
 
     このコマンドレットの出力例を次に示します。
@@ -417,10 +419,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         }
     }
     ```
-2. Set-AzureRmDataFactoryV2Pipeline コマンドレットを実行して、パイプライン FullCopyPipeline を作成します。
+2. Set-AzDataFactoryV2Pipeline コマンドレットを実行して、パイプラインFullCopyPipeline を作成します。
     
    ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
    ``` 
 
    出力例を次に示します。 
@@ -434,10 +436,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ```
  
 ### <a name="run-the-full-copy-pipeline"></a>フル コピー パイプラインを実行する
-パイプライン **FullCopyPipeline** を、**Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って実行します。 
+パイプライン **FullCopyPipeline** を、**Invoke-AzDataFactoryV2Pipeline** コマンドレットを使って実行します。 
 
 ```powershell
-Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
+Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
 ``` 
 
 ### <a name="monitor-the-full-copy-pipeline"></a>フル コピー パイプラインを監視する
@@ -606,10 +608,10 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     }
     
     ```
-2. Set-AzureRmDataFactoryV2Pipeline コマンドレットを実行して、パイプライン FullCopyPipeline を作成します。
+2. Set-AzDataFactoryV2Pipeline コマンドレットを実行して、パイプラインFullCopyPipeline を作成します。
     
    ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
    出力例を次に示します。 
@@ -623,10 +625,10 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>増分コピー パイプラインを実行する
-パイプライン **IncrementalCopyPipeline** を、**Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って実行します。 
+パイプライン **IncrementalCopyPipeline** を、**Invoke-AzDataFactoryV2Pipeline** コマンドレットを使って実行します。 
 
 ```powershell
-Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
+Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
 ``` 
 
 
@@ -662,10 +664,10 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
     
 ## <a name="next-steps"></a>次の手順
-次のチュートリアルに進み、Azure 上の Spark クラスターを使ってデータを変換する方法について学習しましょう。
+次のチュートリアルに進んで、LastModifiedDate に基づいて新規ファイルおよび変更されたファイルのみをコピーする方法について学習してください。
 
 > [!div class="nextstepaction"]
->[クラウド内の Spark クラスターを使用してデータを変換する](tutorial-transform-data-spark-powershell.md)
+>[lastmodifieddate を基準に新しいファイルをコピーする](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 
 

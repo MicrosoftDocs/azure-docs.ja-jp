@@ -4,11 +4,8 @@ description: Azure Virtual Network の概念と機能について説明します
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure Virtual Network, so that my Azure resources such as VMs, can securely communicate with each other, the internet, and my on-premises resources.
-ms.assetid: 9633de4b-a867-4ddf-be3c-a332edf02e24
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: overview
@@ -16,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: 87ccc80d36022361ad6191aaf674d38d0f632f10
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9fb6aa0c2bf585862f61d7c78bd09b340ff8a3ce
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321734"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015901"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 

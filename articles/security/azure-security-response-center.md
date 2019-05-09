@@ -4,7 +4,7 @@ description: この記事では、MSRC のプラクティスと推奨事項に�
 services: security
 documentationcenter: na
 author: barclayn
-manager: Mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 6293b13f-55d0-4d85-a993-4f1cd3c103c0
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 08bc037817be92ea19cf126a9f4db4adea136cad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bacfbae3e4c9750798b8df739706d9c9b9850d45
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182444"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113951"
 ---
 # <a name="microsoft-security-response-center"></a>Microsoft Security Response Center
 

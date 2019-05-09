@@ -2,32 +2,36 @@
 title: サポート - Azure の専用 HSM | Microsoft Docs
 description: さまざまなシナリオにおける Azure の専用 HSM のサポート オプションと責任の範囲
 services: dedicated-hsm
-author: barclayn
-manager: mbaldwin
+author: johndaw
+manager: barbkess
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 12/07/2018
+ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 2ed6a79b8736a1d3b472e31ce643c0d1ee085bbb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3fd460409cab8dce0f5c4ce31f5323f19706d268
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085911"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541105"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure の専用 HSM のサポート
 
 Azure の専用 HSM サービスでは、完全な管理制御と管理責任が備わった、お客様専用の物理デバイスが提供されます。 使用できるようになったデバイスは、[Gemalto SafeNet Luna 7 HSM モデル A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) です。 お客様がプロビジョニングを行った後は、監視ロールで物理シリアル ポートに接続することを除き、Microsoft による管理アクセスはできなくなります。  アクセス権がないため、Microsoft には継続的なソフトウェア レベルのメンテナンスまたはシステム管理の責任はありません。 そのため、お客様が一般的な運用アクティビティを担当する必要があります。
 お客様は、Gemalto からサポートまたはコンサルティング ベースの支援を受け、HSM を使用しているアプリケーションについての全責任を負います。 運用の健全性はお客様の責任であるため、Microsoft はこのサービスについていかなる高可用性の保証も行うことはできません。 高可用性を実現するためにアプリケーションが正しく構成されていることを確認するのは、お客様の責任です。 Microsoft は、デバイスの正常性とネットワーク接続の監視および管理を行います。
 
+## <a name="getting-support"></a>サポートの利用
+
+専用 HSM のカスタマー サポートは、Microsoft と Gemalto の間の共同の取り組みです。 ハードウェアの問題やネットワーク パスの問題はすべて Microsoft が対処し、実際の HSM (構成、ソフトウェア、ファームウェア、およびアプリケーション開発など) に関連する問題は Gemalto が対処します。 このサポート モデルにより、最も効率的なサポートを受けるための最短ルートが確保されます。 ある特定の問題について不確かな場合は、Microsoft にサポート要求を上げていただければ、適切な部署が対処するようにします。 Microsoft はすべてのサポート ナリオに関与し続けて、お客様が最良のサポート体験をできるように努力します。
+
 ## <a name="gemalto-support"></a>Gemalto のサポート
 
-専用 HSM サービスを使用するお客様は、Gemalto とサポート契約を結ぶ必要があります。 サポート契約の一部として、Gemalto はお客様に直接ガイダンス、サポート、およびサービスを提供します。 Gemalto のサポートは、[カスタマー サポート ポータル](https://supportportal.gemalto.com/csm/)を通して受けることができます。
-Gemalto は、HSM を使用するために必要なすべてのソフトウェア コンポーネント (たとえば、クライアント アクセス ソフトウェアや SDK) を提供します。 構成のサポートや、SafeNet Luna 7 HSM を使用するアプリケーションの設計、開発、およびデプロイに関するコンサルティング サービスも提供されます。
+専用 HSM サービスを使用しているお客様は、ご利用の Plus サポート プランにより、Gemalto からのサポートを受けることができます。 このために必要なことは、Gemalto サポート ポータルを使用した登録プロセスだけです。 このための顧客 ID と手順は、専用 HSM サービスにアクセスするための Microsoft との初期契約の一部として提供されます。 Gemalto のサポートは、[カスタマー サポート ポータル](https://supportportal.gemalto.com/csm/)を通して受けることができます。
+注目すべき重要な点は、HSM を使用するために必要なすべてのソフトウェアと資料 (たとえば、クライアント アクセス ソフトウェアや SDK) は、カスタマー サポート ポータルからのダウンロードによって Gemalto が提供するという点です。
 
 ### <a name="software-components"></a>ソフトウェア コンポーネント
 
@@ -51,7 +55,7 @@ HSM を使用するカスタム アプリケーションの設計、開発、お
 
 ## <a name="microsoft-support"></a>Microsoft のサポート
 
-Microsoft は、物理 HSM デバイスが到達可能で、単一のお客様が占有して使用できる動作状態とする責任を負います。 お客様は、デバイスの管理責任を負います。 Microsoft の責任は次のとおりです。
+Microsoft では、物理 HSM デバイスがネットワークを通じてアクセス可能で、1 人のお客様が占有して使用できる動作状態になるようにします。 お客様は、デバイスの構成、管理、マネージメントの責任を負います。 Microsoft の責任は次のとおりです。
 
 * デバイスの電源および冷却
 * HSM の動作状態の維持 (障害シナリオなど)
@@ -72,7 +76,7 @@ Microsoft は、監視ロール (つまり、管理ロールではない) でデ
 
 ### <a name="hardware-issues"></a>ハードウェアの問題
 
-HSM デバイスの電源とファン ユニットは、冗長かつ交換可能になっています。 デバイスの電源を入れたままファン ユニットを外すと、改ざんイベントが発生します。 コンポーネントの障害が発生した場合、Microsoft は中断時間が最も短く、お客様のサービス可用性に対するリスクが最も低くなるように、最適なプロセスを使用してコンポーネント レベルの問題に対処します。
+HSM デバイスの電源とファン ユニットは、冗長かつ交換可能になっています。  ただし、ファン ユニットを取り外しても、改ざんイベントは発生します。 コンポーネントの障害が発生した場合、Microsoft は中断時間が最も短く、お客様のサービス可用性に対するリスクが最も低くなるように、最適なプロセスを使用してコンポーネント レベルの問題に対処します。
 デバイスにより深刻な障害が発生した場合、そのデバイスを空きプールの新しいデバイスと交換します。 お客様が新しいデバイスを既存の HA ペアに含めると、デバイスが同期されて完全な運用状態に戻ります。 障害が発生したデバイスは、データ関連のデバイスを切り離させ、データ センターのサイト上に細分化させます。 シャーシのみが、リサイクル用に Gemalto に返却されます。
 
 
@@ -93,4 +97,4 @@ Gemalto のサポートのサービス レベルについては、[Gemalto サ�
 * [高可用性](high-availability.md)
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
-* [監視](monitoring.md)
+

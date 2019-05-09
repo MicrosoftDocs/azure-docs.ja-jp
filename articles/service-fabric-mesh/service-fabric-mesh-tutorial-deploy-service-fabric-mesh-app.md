@@ -3,8 +3,8 @@ title: チュートリアル - Service Fabric Mesh アプリケーションを�
 description: バックエンド Web サービスと通信する ASP.NET Core Web サイトで構成される Azure Service Fabric Mesh アプリケーションを、Visual Studio を使用して発行する方法を説明します。
 services: service-fabric-mesh
 documentationcenter: .net
-author: TylerMSFT
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/18/2018
-ms.author: twhitney
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec282bc1159e8a8cf21b88b8430bbf3067686528
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: eef4cfaff38a96597794354cc991f5d3eeae9404
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788624"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806625"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>チュートリアル:Service Fabric Mesh アプリケーションをデプロイする
 
@@ -95,18 +95,19 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
 
 Azure に初めて発行したときは、Docker イメージが Azure Container Registry (ACR) にプッシュされます。イメージのサイズによっては、この処理に時間がかかります。 同じプロジェクトの以降の発行は高速になります。 Visual Studio の**出力**ウィンドウで **[Service Fabric Tools]** ウィンドウを選択することで、デプロイの進行状況を監視できます。 デプロイが完了すると、**Service Fabric Tools** の出力に、アプリケーションの IP アドレスとポートが URL の形式で表示されます。
 
-```json
+```
 Packaging Application...
 Building Images...
 Web1 -> C:\Code\ServiceFabricMeshApp\ToDoService\bin\Any CPU\Release\netcoreapp2.0\ToDoService.dll
-Uploading the images to Azure Container Registy...
+Uploading the images to Azure Container Registry...
 Deploying application to remote endpoint...
 The application was deployed successfully and it can be accessed at http://10.000.38.000:20000.
 ```
 
 Web ブラウザーを開き、その URL に移動して、Azure で実行されている Web サイトを表示します。
 
-## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定 
+## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
+
 残りの手順は、Azure Cloud Shell または Azure CLI のローカル インストールを使用して実行できます。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric Mesh CLI 拡張モジュールをインストールしてください。
 
 ## <a name="check-application-deployment-status"></a>アプリケーションのデプロイの状態を確認する
@@ -117,6 +118,14 @@ Web ブラウザーを開き、その URL に移動して、Azure で実行さ�
 
 ```azurecli-interactive
 az mesh app show --resource-group $rg --name todolistapp
+```
+
+## <a name="get-the-ip-address-of-your-deployment"></a>デプロイの IP アドレスを取得する
+
+アプリケーションの IP アドレスを取得したい場合は、次のコマンドを使用します。
+  
+```azurecli-interactive
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>サブスクリプションに現在デプロイされているすべてのアプリケーションを表示する

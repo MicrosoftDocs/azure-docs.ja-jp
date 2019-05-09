@@ -2,7 +2,7 @@
 title: Azure Batch の監視 | Microsoft Docs
 description: Azure Batch の Azure 監視サービス、メトリック、診断ログ、その他の監視機能について説明します。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: danlep
-ms.openlocfilehash: ee483c19aa59ca98226f77a5e56b1ee4eb4dede5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.author: lahugh
+ms.openlocfilehash: b0243b37f725fc977337b72998d610e9bda71a86
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543412"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58848031"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
@@ -34,7 +34,7 @@ Batch アカウントを含むサブスクリプション レベルでは、[Azu
 
 ## <a name="batch-account-level-monitoring"></a>Batch アカウント レベルの監視
 
-[Azure Monitor](../azure-monitor/overview.md) の機能を使用して各 Batch アカウントを監視します。 Azure Monitor は、Batch アカウントのレベルをスコープとして、プール、ジョブ、タスクなどのリソースの[メトリック](../azure-monitor/platform/data-collection.md#metrics)と、必要に応じて[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を収集します。 このデータを手動またはプログラムによって収集および利用して、Batch アカウント内のアクティビティを監視し、問題を診断します。 詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」をご覧ください。
+[Azure Monitor](../azure-monitor/overview.md) の機能を使用して各 Batch アカウントを監視します。 Azure Monitor は、Batch アカウントのレベルをスコープとして、プール、ジョブ、タスクなどのリソースの[メトリック](../azure-monitor/platform/data-platform-metrics.md)と、必要に応じて[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を収集します。 このデータを手動またはプログラムによって収集および利用して、Batch アカウント内のアクティビティを監視し、問題を診断します。 詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」をご覧ください。
  
 > [!NOTE]
 > メトリックは、既定では追加の構成なしで Batch アカウントで利用でき、30 日間のローリング履歴があります。 Batch アカウントの診断ログを有効化する必要があり、診断ログ データの格納または処理には追加のコストが生じる可能性があります。 
@@ -55,7 +55,7 @@ Batch アプリケーションでは、Batch API を使用して、ジョブ、�
 
 ## <a name="vm-performance-counters-and-application-monitoring"></a>VM パフォーマンス カウンターおよびアプリケーションの監視
 
-* [Application Insights](../application-insights/app-insights-overview.md) は、Batch のジョブとタスクの可用性、パフォーマンス、使用状況をプログラムで監視するために使用できる Azure サービスです。 コンピューティング ノード (VM) からのパフォーマンス カウンターと VM からのタスクに関するカスタム情報を簡単に取得できます。 
+* [Application Insights](../azure-monitor/app/app-insights-overview.md) は、Batch のジョブとタスクの可用性、パフォーマンス、使用状況をプログラムで監視するために使用できる Azure サービスです。 コンピューティング ノード (VM) からのパフォーマンス カウンターと VM からのタスクに関するカスタム情報を簡単に取得できます。 
 
   例については、[Application Insights による Batch .NET アプリケーションの監視とデバッグ](monitor-application-insights.md)に関する記事と付随する[コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights)をご覧ください。
 

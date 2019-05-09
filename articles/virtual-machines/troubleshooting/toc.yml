@@ -107,6 +107,8 @@ items:
       href: serial-console-cmd-ps-commands.md
 - name: ストレージ リソースの削除時のエラー
   href: storage-resource-deletion-errors.md
+- name: クラシック ストレージ リソースの削除時のエラー
+  href: storage-classic-cannot-delete-storage-account-container-vhd.md
 - name: 接続された VHD による VM の予期しない再起動
   href: unexpected-reboots-attached-vhds.md
 - name: Windows のライセンス認証に関する問題
@@ -170,9 +172,9 @@ items:
   href: understand-vm-reboot.md
 - name: リモートのトラブルシューティング ツール
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: b745b9e42c700ea446d934df7d2e3201b555f075
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7ba013c372eefcbf83bb141ba44fcea9b68064de
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976326"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382968"

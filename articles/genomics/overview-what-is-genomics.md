@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 4b4510a02c4212724f8a592c7318aecab3d06275
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1b52f47d692cf2fb2925ebb2a9882b9c79c29a87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733263"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452642"
 ---
 # <a name="what-is-microsoft-genomics"></a>Microsoft Genomics とは
 Microsoft Genomics は、二次的な分析のために Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を提供します。 このサービスは ISO の認定を受け、HIPAA の法規に準拠しており、ゲノム シーケンシングのニーズに対する価格の予測を可能にします。 クイックスタート、チュートリアル、ドキュメントを読んで、Microsoft Genomics サービスの使用方法および API との統合方法を学習しましょう。

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: d05d8c39ae393d62969967c2ce09a97ec6a6710f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f56595abf354d1124a40729ce93f97ab2acdeeeb
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791712"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361559"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して HDInsight 内に Apache Spark クラスターを作成する
 Azure HDInsight で [Apache Spark](https://spark.apache.org/) クラスターを作成し、[Apache Hive](https://hive.apache.org/) テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight 上のSpark については、[Azure HDInsight 上の Apache Spark に関する概要](apache-spark-overview.md)をご覧ください。
@@ -25,6 +25,8 @@ Azure HDInsight で [Apache Spark](https://spark.apache.org/) クラスターを
 > HDInsight クラスターの料金は、そのクラスターを使用しているかどうかに関係なく、分単位で課金されます。 使用後は、クラスターを必ず削除してください。 詳しくは、この記事の「[リソースのクリーンアップ](#clean-up-resources)」をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスターを作成する
 
@@ -39,7 +41,7 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
 |パラメーター|値|
 |------|------|
 |Azure リソース グループ名 | リソース グループの一意名を指定します。|
-|場所| Azure リージョンを指定します (例: "米国中部")。 |
+|Location| Azure リージョンを指定します (例: "米国中部")。 |
 |既定のストレージ アカウント名 | ストレージ アカウントに一意の名前を指定してください。 |
 |クラスター名 | HDInsight Spark クラスターの一意名を指定します。|
 |クラスター ログイン資格情報 | このクイック スタートでは後で、このアカウントを使ってクラスター ダッシュボードに接続します。|
@@ -56,20 +58,20 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
     # Create the resource group
     $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
     $location = Read-Host -Prompt "Enter the Azure region to create resources in, such as 'Central US'"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
     
     $defaultStorageAccountName = Read-Host -Prompt "Enter the default storage account name"
     
     # Create an Azure storae account and container
-    New-AzureRmStorageAccount `
+    New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $defaultStorageAccountName `
         -Type Standard_LRS `
         -Location $location
-    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
+    $defaultStorageAccountKey = (Get-AzStorageAccountKey `
                                     -ResourceGroupName $resourceGroupName `
                                     -Name $defaultStorageAccountName)[0].Value
-    $defaultStorageContext = New-AzureStorageContext `
+    $defaultStorageContext = New-AzStorageContext `
                                     -StorageAccountName $defaultStorageAccountName `
                                     -StorageAccountKey $defaultStorageAccountKey
     
@@ -90,14 +92,14 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
     $defaultBlobContainerName = $clusterName
     
     # Create a blob container. This holds the default data store for the cluster.
-    New-AzureStorageContainer `
+    New-AzStorageContainer `
         -Name $clusterName -Context $defaultStorageContext 
     
     $sparkConfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
     $sparkConfig.Add("spark", "2.3")
     
     # Create the HDInsight cluster
-    New-AzureRmHDInsightCluster `
+    New-AzHDInsightCluster `
         -ResourceGroupName $resourceGroupName `
         -ClusterName $clusterName `
         -Location $location `
@@ -112,9 +114,9 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
         -DefaultStorageContainer $clusterName `
         -SshCredential $sshCredentials 
     
-    Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+    Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
     ```
-クラスターの作成には約 20 分かかります。 次のセッションに進む前に、クラスターを作成する必要があります。
+   クラスターの作成には約 20 分かかります。 次のセッションに進む前に、クラスターを作成する必要があります。
 
 HDInsight クラスターを作成する際に問題が発生した場合は、適切なアクセス許可がない可能性があります。 詳細については、「[アクセス制御の要件](../hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 

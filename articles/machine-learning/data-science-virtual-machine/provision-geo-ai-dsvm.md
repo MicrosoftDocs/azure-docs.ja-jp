@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 395604da3465e66214f89b4f74ddf9d6bcdc48f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103950"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59008840"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Azure での Geo 人工知能仮想マシンのプロビジョニング 
 
@@ -33,7 +33,7 @@ Geo-DSVM には、AI 用のツールが複数含まれています。これに�
 - 画像やテキスト データを取得し、前処理するためのツール 
 - 開発作業用のツール (Microsoft R Server Developer Edition、Anaconda Python、Python および R 用の Jupyter Notebook、Python および R 用の IDE、SQL データベースなど)
 - ESRI の ArcGIS Pro デスクトップ ソフトウェアと、AI アプリケーションの地理空間データを使用するための Python および R インターフェイス。 
-
+ 
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>Geo AI データ サイエンス VM の作成
 
@@ -67,16 +67,16 @@ Geo-DSVM には、AI 用のツールが複数含まれています。これに�
    - **概要**:入力したすべての情報が正しいことを確認します。
 
    - **[購入]**:プロビジョニングを開始するには、**[購入]** をクリックします。 サービスの使用条件へのリンクが表示されます。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
-
+ 
 >[!NOTE]
 > プロビジョニングには、20 ～ 30 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
 
-
+ 
 ## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Geo AI データ サイエンス仮想マシンにアクセスする方法
 
-VM が作成されたら、VM にインストールされて事前構成されたツールを使い始めることができます。 多くのツールには、スタート メニュー タイルとデスクトップ アイコンがあります。 前述の **[基本]** セクションで作成した管理者アカウントの資格情報を使って、リモート デスクトップを使用できます。 
+ VM が作成されたら、VM にインストールされて事前構成されたツールを使い始めることができます。 多くのツールには、スタート メニュー タイルとデスクトップ アイコンがあります。 前述の **[基本]** セクションで作成した管理者アカウントの資格情報を使って、リモート デスクトップを使用できます。 
 
-
+ 
 ## <a name="using-arcgis-pro-installed-in-the-vm"></a>VM にインストールされた ArcGIS Pro の使用
 
 Geo-DSVM には ArcGIS Pro デスクトップがプレインストールされており、環境も、DSVM 内のすべてのツールを使用できるよう事前構成されています。 ArcGIS を起動すると、ArcGIS アカウントへのログインを求めるプロンプトが表示されます。 既に ArcGIS アカウントがあり、ソフトウェアのライセンスを持っている場合は、既存の資格情報を使用できます。  
@@ -87,7 +87,7 @@ Geo-DSVM には ArcGIS Pro デスクトップがプレインストールされ�
 
 ![ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-有料または無料試用版の ArcGIS アカウントを取得したら、[ArcGIS Pro のスタードガイド ドキュメント](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)に記載されている手順に従って、ArcGIS Pro を自分のアカウント用に承認できます。 
+有料または無料試用版の ArcGIS アカウントにサインアップしたら、[ArcGIS Pro のスタードガイド](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)に記載されている手順に従って、ArcGIS Pro を自分のアカウント用に承認できます。 
 
 ArcGIS アカウントを使用して ArcGIS Pro デスクトップにサインインしたら、VM にインストールされた構成済みのデータ サイエンス ツールを、地理空間分析や機械学習のプロジェクトに使用できます。
 

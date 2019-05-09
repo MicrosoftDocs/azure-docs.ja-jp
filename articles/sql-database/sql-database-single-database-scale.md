@@ -7,73 +7,67 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 258f8fbe8d99923240db8d6d10c4cf812c939510
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 03/20/2019
+ms.openlocfilehash: c6dc49204c0a7e1cb0d1116e29746eed2fe52f8d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466888"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286263"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースをスケーリングする
 
 この記事では、Azure SQL Database で単一データベースに使用できるコンピューティング リソースとストレージ リソースをスケーリングする方法について説明します。
 
-## <a name="vcore-based-purchasing-model-change-storage-size"></a>仮想コアベースの購入モデル: ストレージ サイズの変更
-
-- 1 GB の増分を使用して最大サイズの上限に達するまでストレージをプロビジョニングすることができます。 構成可能な最小データ ストレージは 5 GB です
-- 単一データベースのストレージは、[Azure Portal](https://portal.azure.com)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使って最大サイズを増減することでプロビジョニングできます。
-- SQL Database は自動的に追加ストレージの 30% をログ ファイルに割り当て、TempDB の仮想コアごとに 32 GB を割り当てますが、384 GB を超えることはありません。 TempDB は、すべてのサービス レベルの接続されている SSD にあります。
-- 単一データベースのストレージの料金は、データ ストレージとログ ストレージの容量の合計にサービス レベルのストレージ単価を掛けて計算します。 TempDB のコストは仮想コア価格に含まれています。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
-
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
-## <a name="vcore-based-purchasing-model-change-compute-resources"></a>仮想コアベースの購入モデル: コンピューティング リソースの変更
+## <a name="change-compute-resources-vcores-or-dtus"></a>コンピューティング リソース (仮想コアまたは DTU) の変更
 
-仮想コア数を最初に選択した後は、[Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-server)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使い、実際の状況に基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
-
-データベースのサービス レベルやコンピューティング サイズを変更すると、新しいコンピューティング サイズで元のデータベースのレプリカが作成され、接続先がそのレプリカに切り替えられます。 このプロセスでデータが失われることはありませんが、レプリカに切り替えるほんの少しの間、データベースに接続できなくなるため、実行中の一部トランザクションがロールバックされる場合があります。 切り替え時間はさまざまですが、通常 4 秒以内であり、99% 以上が 30 秒未満です。 接続が無効になった時点で多数のトランザクションが実行中の場合、切り替え時間が長引くことがあります。
-
-スケールアップ プロセス全体の継続時間は、変更前後のデータベースのサイズとサービス レベルによって異なります。 たとえば、250 GB のデータベースを General Purpose サービス レベルとの間または General Purpose サービス レベル内で変更する場合は、6 時間以内に完了します。 Business Critical サービス レベル内で同じサイズのデータベースのコンピューティング サイズを変更する場合、スケールアップは 3 時間以内で完了します。
-
-> [!TIP]
-> 実行中の操作の監視については、[SQL REST API を使った操作の管理](https://docs.microsoft.com/rest/api/sql/operations/list)、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) と [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity) をご覧ください。
-
-- より上位のサービス レベルまたはコンピューティング サイズにアップグレードしても、より大きなサイズ (最大サイズ) を明示的に指定しない限り、データベースの最大サイズは増加しません。
-- データベースをダウングレードするには、データベースで使われている領域がダウングレード後のサービス レベルとコンピューティング サイズで許可されている最大サイズより小さい必要があります。
-- [geo レプリケーション](sql-database-geo-replication-portal.md)が有効な状態でデータベースをアップグレードする場合、そのセカンダリ データベースを目的のサービス レベルとコンピューティング サイズにアップグレードしてから、プライマリ データベースをアップグレードします (パフォーマンスを最大にするための一般的なガイダンス)。 別のエディションにアップグレードする場合は、最初にセカンダリ データベースのアップグレードが必要です。
-- [geo レプリケーション](sql-database-geo-replication-portal.md)が有効な状態でデータベースをダウングレードする場合、そのプライマリ データベースを目的のサービス レベルとコンピューティング サイズにダウングレードしてから、セカンダリ データベースをダウングレードします (パフォーマンスを最大にするための一般的なガイダンス)。 別のエディションにダウングレードする場合は、最初にプライマリ データベースのダウングレードが必要です。
-- データベースに対する新しいプロパティは、変更が完了するまで適用されません。
-
-## <a name="dtu-based-purchasing-model-change-storage-size"></a>DTU ベースの購入モデル: ストレージ サイズの変更
-
-- 単一データベースの DTU 価格には、追加コストなしで一定量のストレージが含まれます。 付属の容量を超える分のストレージについては、追加費用を払うことで、1 TB までは 250 GB 単位で、1 TB 以降は 256 GB 単位で、最大サイズ制限までプロビジョニングできます。 付属するストレージの量と最大サイズ制限については、「[単一データベース: ストレージ サイズとコンピューティング サイズ](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)」をご覧ください。
-- 単一データベースの追加ストレージは、Azure portal、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
-- 単一データベースの追加ストレージの料金は、追加ストレージ量にサービス レベルの追加ストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
-
-> [!IMPORTANT]
-> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
-
-## <a name="dtu-based-purchasing-model-change-compute-resources-dtus"></a>DTU ベースの購入モデル: コンピューティング リソース (DTU) の変更
-
-サービス レベル、コンピューティング サイズ、ストレージ量を最初に選択した後は、Azure portal、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使い、実際の状況に基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
+最初に仮想コア数または DTU 数を選択すると、[Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使い、実際のエクスペリエンスに基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
 
 次のビデオでは、サービス レベルとコンピューティング サイズを動的に変更して単一データベースで使用可能な DTU を増やす方法を示します。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
 
-データベースのサービス レベルやコンピューティング サイズを変更すると、新しいコンピューティング サイズで元のデータベースのレプリカが作成され、接続先がそのレプリカに切り替えられます。 このプロセスでデータが失われることはありませんが、レプリカに切り替えるほんの少しの間、データベースに接続できなくなるため、実行中の一部トランザクションがロールバックされる場合があります。 切り替え時間はさまざまですが、99% 以上が 30 秒未満です。 接続が無効になった時点で多数のトランザクションが実行中の場合、切り替え時間が長引くことがあります。
+> [!IMPORTANT]
+> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
-スケールアップ プロセス全体の継続時間は、変更前後のデータベースのサイズとサービス レベルによって異なります。 たとえば、250 GB のデータベースを Standard サービス レベルとの間または Standard サービス レベル内で変更する場合は、6 時間以内に完了します。 Premium サービス レベル内で同じサイズのデータベースのコンピューティング サイズを変更する場合、スケールアップは 3 時間以内で完了します。
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>サービス レベルの変更またはコンピューティング サイズの再スケーリングの影響
+
+単一データベースのサービス レベルまたはコンピューティング サイズの変更には、主に次の手順を実行するサービスが含まれます。
+
+1. データベース用に新しいコンピューティング インスタンスを作成する  
+
+    要求されたサービス レベルとコンピューティング サイズを持つ新しいコンピューティング インスタンスがデータベース用に作成されます。 サービス レベルとコンピューティング サイズの変更の組み合わせの中には、新しいコンピューティング インスタンスにデータベースのレプリカを作成する必要があるものがあります。これにはデータのコピーも含まれ、全体の待機時間に大きく影響する場合があります。 いずれにしても、この手順の間、データベースはオンラインのままで、接続は元のコンピューティング インスタンスのデータベースに引き続き向けられます。
+
+2. 接続のルーティングを新しいコンピューティング インスタンスに切り替える
+
+    元のコンピューティング インスタンス内のデータベースへの既存の接続が削除されます。 新しいコンピューティング インスタンス内のデータベースへの新しい接続が確立されます。 サービス レベルとコンピューティング サイズの一部の組み合わせの変更では、データベース ファイルがデタッチされ、切り替え時に再アタッチされます。  いずれにしても、切り替えにより、データベースが使用できなくなる短時間の中断が発生する場合があります。中断は通常は 30 秒未満で、多くの場合はほんの数秒です。 接続が削除されたときに長時間実行されているトランザクションがあると、中断されたトランザクションを復旧するために、この手順の所要時間が長くなる場合があります。 [高速データベースの復旧](sql-database-accelerated-database-recovery.md)により、長時間実行されているトランザクションの中断による影響を軽減できます。
+
+> [!IMPORTANT]
+> ワークフローのいずれの手順でもデータが失われることはありません。
+
+### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>サービス レベルの変更またはコンピューティング サイズの再スケーリングの待機時間
+
+単一データベースまたはエラスティック プールのサービス レベルを変更またはコンピューティング サイズを変更する待機時間は、次のようにパラメーター化されます。
+
+|サービス階層|Basic 単一データベース、</br>Standard (S0-S1)|Basic エラスティック プール、</br>Standard (S2-S12)、 </br>ハイパースケール、 </br>汎用の単一データベースまたはエラスティック プール|Premium または Business Critical の単一データベースまたはエラスティック プール|
+|:---|:---|:---|:---|
+|**Basic 単一データベース、</br>Standard (S0-S1)**|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 5 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
+|**Basic エラスティック プール、</br>Standard (S2-S12)、</br>ハイパースケール、</br>汎用の単一データベースまたはエラスティック プール**|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 5 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
+|**Premium または Business Critical の単一データベースまたはエラスティック プール**|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
 
 > [!TIP]
-> 実行中の操作の監視については、[SQL REST API を使った操作の管理](https://docs.microsoft.com/rest/api/sql/operations/list)、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) と [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity) をご覧ください。
+> 実行中の操作の監視については、[SQL REST API を使った操作の管理](https://docs.microsoft.com/rest/api/sql/operations/list)、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) と [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
+
+### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>サービス レベルを変更またはコンピューティング サイズを再スケーリングする場合の追加の考慮事項
 
 - より上位のサービス レベルまたはコンピューティング サイズにアップグレードしても、より大きなサイズ (最大サイズ) を明示的に指定しない限り、データベースの最大サイズは増加しません。
 - データベースをダウングレードするには、データベースで使われている領域がダウングレード後のサービス レベルとコンピューティング サイズで許可されている最大サイズより小さい必要があります。
@@ -83,18 +77,39 @@ ms.locfileid: "49466888"
 - サービス階層によって、提供されている復元サービスは異なります。 **Basic** レベルにダウングレードする場合は、バックアップのリテンション期間が短くなります。 [Azure SQL Database のバックアップ](sql-database-automated-backups.md)に関する記事をご覧ください。
 - データベースに対する新しいプロパティは、変更が完了するまで適用されません。
 
-## <a name="dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>DTU ベースの購入モデル: 最大サイズが 1 TB を超える場合の P11 および P15 の制限事項
+### <a name="billing-during-rescaling"></a>再スケーリング時の課金
 
-次のリージョンでは、最大サイズが 1 TB を超える P11 および P15 データベースがサポートされます。オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 最大サイズが 1 TB を超える P11 および P15 データベースには、次の考慮事項と制限事項が適用されます。
+使用状況やデータベースがアクティブであったのが 1 時間未満であったことに関係なく、データベースが存在していた 1 時間単位で、その時間に使用された最上位のサービス階層とコンピューティング サイズで課金は行われます。 たとえば、Single Database を作成し、それを 5 分後に削除した場合、請求書にはデータベース時間として 1 時間の請求が表示されます。
 
-- データベースを作成するときに (4 TB または 4096 GB の値を使用して) 1 TB を超える最大サイズを選択した場合、サポートされていないリージョンでデータベースをプロビジョニングすると、エラーのため、create コマンドが失敗します。
-- サポート対象のリージョンにある既存の P11 と P15 のデータベースでは、最大ストレージを 1 TB を超えて最大 4 TB まで 256 GB 刻みで増やすことができます。 対象リージョンでより大きなサイズがサポートされているかどうかを確認するには、[DATABASEPROPERTYEX](/sql/t-sql/functions/databasepropertyex-transact-sql) 関数を使うかか、Azure Portal でデータベースのサイズを調べてください。 既存の P11 または P15 のデータベースのアップグレードは、サーバーレベル プリンシパルのログインまたは dbmanager データベース ロールのメンバーのみが実行できます。
-- サポートされているリージョンでアップグレード操作が実行されると、すぐに構成が更新されます。 データベースは、アップグレード処理中もオンラインのままになります。 ただし、実際のデータベース ファイルが新しい最大サイズにアップグレードされるまで、1 TB を超えるストレージの容量を完全に利用することはできません。 必要な時間は、アップグレードされるデータベースのサイズに応じて異なります。
-- P11 または P15 データベースを作成または更新するときは、1 TB から 4 TB の範囲で、256 GB 刻みでのみ最大サイズを選択できます。 P11/P15 を作成するとき、既定で 1 TB のストレージ オプションがあらかじめ選択されています。 サポート対象のリージョンにあるデータベースでは、新規または既存の単一データベースのストレージの最大サイズを最大 4 TB まで増やすことができます。 他のすべてのリージョンでは、最大サイズが 1 TB を超えることはできません。 4 TB の付属のストレージを選択しても、価格は変わりません。
-- データベースの最大サイズを 1 TB より大きい値に設定した場合は、ストレージの実際の使用量が 1 TB を下回る場合でも、1 TB に変更することはできません。 したがって、最大サイズが 1 TB より大きい P11 または P15 を、1 TB の P11、1 TB の P15、またはそれより低いコンピューティング サイズ (P1-P6 など) にダウングレードすることはできません。 この制限は、ポイントインタイム リストア、geo リストア、長期的なバックアップ保有期間、データベース コピーなど、復元とコピーのシナリオにも適用されます。 データベースを 1 TB より大きい最大サイズで構成した後、そのデータベースのすべての復元操作は、最大サイズが 1 TB より大きい P11/P15 に対して実行する必要があります。
+## <a name="change-storage-size"></a>ストレージ サイズの変更
+
+### <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
+
+- 1 GB の増分を使用して最大サイズの上限に達するまでストレージをプロビジョニングすることができます。 構成可能な最小データ ストレージは 5 GB です
+- 単一データベースのストレージは、[Azure Portal](https://portal.azure.com)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使って最大サイズを増減することでプロビジョニングできます。
+- SQL Database は自動的に追加ストレージの 30% をログ ファイルに割り当て、TempDB の仮想コアごとに 32 GB を割り当てますが、384 GB を超えることはありません。 TempDB は、すべてのサービス レベルの接続されている SSD にあります。
+- 単一データベースのストレージの料金は、データ ストレージとログ ストレージの容量の合計にサービス レベルのストレージ単価を掛けて計算します。 TempDB のコストは仮想コア価格に含まれています。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+
+> [!IMPORTANT]
+> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
+
+### <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
+
+- 単一データベースの DTU 価格には、追加コストなしで一定量のストレージが含まれます。 付属の容量を超える分のストレージについては、追加費用を払うことで、1 TB までは 250 GB 単位で、1 TB 以降は 256 GB 単位で、最大サイズ制限までプロビジョニングできます。 付属するストレージの量と最大サイズ制限については、「[単一データベース: ストレージ サイズとコンピューティング サイズ](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)」をご覧ください。
+- 単一データベースの追加ストレージは、Azure portal、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
+- 単一データベースの追加ストレージの料金は、追加ストレージ量にサービス レベルの追加ストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+
+> [!IMPORTANT]
+> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
+
+## <a name="dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>DTU ベースの購入モデル:最大サイズが 1 TB を超える場合の P11 および P15 の制限事項
+
+現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、米国中西部、米国 DoD の各リージョンと、米国政府中部を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 詳しくは、[P11-P15 の現在の制限事項](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページをご覧ください。 最大サイズが 1 TB を超える P11 および P15 データベースには、次の考慮事項と制限事項が適用されます。
+
+- P11 または P15 のデータベースの最大サイズが 1 TB を超える値に設定されていた場合、P11 または P15 のデータベースにしか復元またはコピーできません。  その後、再スケーリング操作の時に割り当てられた領域の量が新しいコンピューティング サイズの最大サイズ制限を超えなければ、データベースを異なるコンピューティング サイズに再スケーリングすることができます。
 - アクティブ geo レプリケーションのシナリオの場合:
-  - geo レプリケーションのリレーションシップの設定: プライマリ データベースが P11 または P15 の場合は、セカンダリも P11 または P15 である必要があります。つまり、下位のコンピューティング サイズは、1 TB を超えるサイズをサポートできないため、セカンダリとして拒否されます。
-  - geo レプリケーションのリレーションシップでのプライマリ データベースのアップグレード: プライマリ データベースで最大サイズを 1 TB 超に変更すると、セカンダリ データベースでも同じ変更がトリガーされます。 プライマリに対する変更を有効にするには、両方のアップグレードが正常に完了する必要があります。 1 TB を超えるオプションに関するリージョンの制限が適用されます。 1 TB 超をサポートしていないリージョンにセカンダリが存在する場合、プライマリはアップグレードされません。
+  - geo レプリケーションのリレーションシップの設定:プライマリ データベースが P11 または P15 の場合は、セカンダリも P11 または P15 である必要があります。つまり、下位のコンピューティング サイズは、1 TB を超えるサイズをサポートできないため、セカンダリとして拒否されます。
+  - geo レプリケーションのリレーションシップでのプライマリ データベースのアップグレード:プライマリ データベースで最大サイズを 1 TB 超に変更すると、セカンダリ データベースでも同じ変更がトリガーされます。 プライマリに対する変更を有効にするには、両方のアップグレードが正常に完了する必要があります。 1 TB を超えるオプションに関するリージョンの制限が適用されます。 1 TB 超をサポートしていないリージョンにセカンダリが存在する場合、プライマリはアップグレードされません。
 - 1 TB を超える P11/P15 データベースの読み込みに Import/Export サービスを使うことはサポートされていません。 SqlPackage.exe を使用して、データを[インポート](sql-database-import.md)および[エクスポート](sql-database-export.md)してください。
 
 ## <a name="next-steps"></a>次の手順

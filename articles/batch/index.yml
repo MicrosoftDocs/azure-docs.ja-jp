@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a24e27f4258a1bd003e8cde3f6241744372bd539
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cc30c4552cfa672121a5e7fc520fb4412237b7e9
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388410"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591691"
 documentType: LandingData
 title: Batch のドキュメント
 metadata:
@@ -70,7 +70,7 @@ sections:
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/azurerm.batch">Azure PowerShell</a></p>
+      html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
     - title: REST

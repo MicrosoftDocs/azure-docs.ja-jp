@@ -1,5 +1,5 @@
 ---
-title: 'Azure Toolkit for Eclipse: HDInsight Spark 向けの Scala アプリケーションの作成 '
+title: 'Azure Toolkit for Eclipse:HDInsight Spark 向けの Scala アプリケーションの作成 '
 description: Azure Toolkit for Eclipse の HDInsight ツールを使用して Scala で記述された Spark アプリケーションを開発し、Eclipse IDE から直接、HDInsight Spark クラスターに送信します。
 services: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: a875e7517870e4a782d3169fd5eb0796c9b0f16a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 123c05470f8f162095b92c0894716c7b5d2a92b2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496589"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648773"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
 Azure Toolkit for [Eclipse](https://www.eclipse.org/) の HDInsight Tools を使用して [Scala](https://www.scala-lang.org/) で記述された [Apache Spark](https://spark.apache.org/) アプリケーションを開発し、Eclipse IDE から直接、Azure HDInsight Spark クラスターに送信します。 HDInsight Tools プラグインには、次のような複数の使い方があります。
 
-* Scala Spark アプリケーションを開発して HDInsight Spark クラスターに送信する
-* Azure HDInsight Spark クラスター リソースにアクセスする
-* Scala Spark アプリケーションをローカルで開発して実行する
+* Scala Spark アプリケーションを開発して HDInsight Spark クラスターに送信する。
+* Azure HDInsight Spark クラスター リソースにアクセスする。
+* Scala Spark アプリケーションをローカルで開発して実行する。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このツールを使用して、Linux 上で HDInsight Spark クラスター専用のアプリケーションを作成し、送信することができます。
 > 
 > 
@@ -47,7 +47,7 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
 
 ![Scala プラグインの自動インストール](./media/apache-spark-eclipse-tool-plugin/auto-install-scala.png)
 
-[Azure サブスクリプションにサインイン](#Sign-in-to-your-Azure-subscription)するか、[HDInsight クラスターをリンク](#Link-a-cluster)して開始できます。Ambari のユーザー名/パスワードまたはドメイン参加の資格情報を利用してください。 
+[Azure サブスクリプションにサインイン](#sign-in-to-your-azure-subscription)するか、[HDInsight クラスターをリンク](#link-a-cluster)して開始できます。Ambari のユーザー名/パスワードまたはドメイン参加の資格情報を利用してください。 
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 1. Eclipse IDE を起動し、Azure Explorer を開きます。 **[Window]\(ウィンドウ\)** メニューの **[Show View]\(ビューの表示\)** を選択し、**[Other]\(その他\)** を選択します。 表示されたダイアログ ボックスで **[Azure]** を展開し、**[Azure Explorer]** を選択して、**[OK]** を選択します。
@@ -78,7 +78,7 @@ Ambari マネージド ユーザー名を使用して、通常のクラスター
    
    ![リンク クラスターのダイアログ](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。
    > ![Eclipse のストレージ エクスプローラー](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
@@ -141,12 +141,12 @@ Ambari マネージド ユーザー名を使用して、通常のクラスター
    a. Package Explorer で、プロジェクト名を右クリックし、**[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択します。        
    b. **[Spark Submission]\(Spark 送信\)** ダイアログ ボックスで、次の値を入力し、**[Submit]\(送信\)** を選択します。
       
-      * **[Cluster Name (クラスター名)]** で、アプリケーションを実行する HDInsight Spark クラスターを選択します。
-      * Eclipse プロジェクトまたはハード ドライブからアーティファクトを選択します。 既定値は、Package Explorer から右クリックした項目によって異なります。
-      * 送信ウィザードの **[Main class name]\(メイン クラス名\)** ボックスの一覧に、プロジェクトのすべてのオブジェクト名が表示されます。 実行するオブジェクトを選択または入力します。 ハード ドライブからアーティファクトを選択した場合は、メイン クラス名を手動で入力する必要があります。 
-      * この例のアプリケーション コードでは、コマンドライン引数を必要とせず、JAR またはファイルを参照することもないので、残りのテキスト ボックスは空のままでかまいません。
+   * **[Cluster Name (クラスター名)]** で、アプリケーションを実行する HDInsight Spark クラスターを選択します。
+   * Eclipse プロジェクトまたはハード ドライブからアーティファクトを選択します。 既定値は、Package Explorer から右クリックした項目によって異なります。
+   * 送信ウィザードの **[Main class name]\(メイン クラス名\)** ボックスの一覧に、プロジェクトのすべてのオブジェクト名が表示されます。 実行するオブジェクトを選択または入力します。 ハード ドライブからアーティファクトを選択した場合は、メイン クラス名を手動で入力する必要があります。 
+   * この例のアプリケーション コードでは、コマンドライン引数を必要とせず、JAR またはファイルを参照することもないので、残りのテキスト ボックスは空のままでかまいません。
         
-      ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
+     ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
 1. **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。 **[Spark Submission]\(Spark 送信\)** ウィンドウにある赤いボタンを選択して、アプリケーションを停止することができます。 地球アイコン (図では青のボックスで示されています) を選択して、この特定のアプリケーションの実行に関するログを表示することもできます。
       
    ![[Spark Submission]\(Spark 送信\) ウィンドウ](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-4.png)
@@ -207,7 +207,7 @@ Azure Toolkit for Eclipse の HDInsight Tools を使用すると、ワークス�
 ### <a name="prerequisite"></a>前提条件
 Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、[SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されている例外が発生する場合があります。 この例外は、Windows 上に **WinUtils.exe** がないことが原因で発生します。 
 
-このエラーを解決するには、[実行可能ファイルをダウンロード](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** などの場所に保存する必要があります。次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
+このエラーを解決するには、[実行可能ファイルをダウンロード](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** などの場所に保存する必要があります。次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
 
 ### <a name="run-a-local-spark-scala-application"></a>ローカル Spark Scala アプリケーションの実行
 1. Eclipse を起動し、プロジェクトを作成します。 **[新しいプロジェクト]** ダイアログ ボックスで、次の選択を行い、**[Next]\(次へ\)** を選択します。
@@ -245,10 +245,10 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
-* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>アプリケーションの作成と実行
 * [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)

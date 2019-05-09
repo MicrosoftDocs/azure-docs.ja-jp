@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 30eb458b9d0584b467479163d8312d7bd5456be1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409736"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58886014"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -62,13 +62,13 @@ public class TodoItem
 
 [JsonPropertyAttribute][6] を使用して、クライアントのフィールドとテーブルのフィールド間の *PropertyName* のマッピングが定義されます。
 
-Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Azure Portal]設定を使用することもできます。
+Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 [Azure ポータル] で **Easy Tables**設定を使用することもできます。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>方法:マネージド クライアント SDK パッケージをインストールする
 [NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
 
 * **Visual Studio** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[インストール]** をクリックします。
-* **Xamarin Studio** でプロジェクトを右クリックし、**[Add]\(追加\)**、>**[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client ` パッケージを見つけ、**[Add Package]\(パッケージの追加\)** をクリックします。
+* **Xamarin Studio** でプロジェクトを右クリックし、**[Add]\(追加\)**、>**[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[Add Package]\(パッケージの追加\)** をクリックします。
 
 メイン アクティビティ ファイルに、次の **using** ステートメントを必ず追加してください。
 
@@ -89,7 +89,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] �
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure Portal]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
+上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure ポータル]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
 
 ## <a name="work-with-tables"></a>テーブルの操作
 以下のセクションでは、レコードを検索し、取得する方法や、テーブル内のデータを変更する方法について詳しく説明します。  次のトピックについて説明します。
@@ -103,7 +103,7 @@ var client = new MobileServiceClient("MOBILE_APP_URL");
 * [ID でレコードを検索する](#lookingup)
 * [型指定のないクエリを処理する](#untypedqueries)
 * [データを挿入する](#inserting)
-* [データを更新する](#updating)
+* データを更新する
 * [データを削除する](#deleting)
 * [競合の解決とオプティミスティック コンカレンシー](#optimisticconcurrency)
 * [Windows ユーザー インターフェイスへのバインド](#binding)
@@ -520,7 +520,7 @@ PullOptions pullOptions = new PullOptions
 1. Visual Studio で、ソリューション、**[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
 2. (省略可能) Windows デバイスをサポートする場合、次の SQLite ランタイム パッケージのいずれかをインストールします。
 
-   * **Windows 8.1 Runtime:** [SQLite for Windows 8.1][3] をインストールします。
+   * **Windows 8.1 ランタイム:** [SQLite for Windows 8.1][3] をインストールします。
    * **Windows Phone 8.1:** [SQLite for Windows Phone 8.1][4] をインストールします。
    * **ユニバーサル Windows プラットフォーム**: [ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
 3. (省略可能)。 Windows デバイスで、**[参照]**、 > **[参照の追加]** の順に右クリックします。**Windows** フォルダー、**[拡張機能]** の順に展開してから、**Visual C++ 2013 Runtime for Windows** SDK と共に適切な **SQLite for Windows** SDK を有効にします。
@@ -609,7 +609,7 @@ public async Task SyncAsync()
 
 クライアントで [InvokeApiAsync] メソッドのいずれかを呼び出して、カスタム API を呼び出します。 たとえば、次のコード行は、バックエンドの **completeAll** API に POST 要求を送信します。
 
-```
+```javascript
 var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
 ```
 
@@ -651,10 +651,10 @@ Mobile Apps は、Facebook、Google、Microsoft アカウント、Twitter、Azur
 Active Directory Authentication Library (ADAL) を使うと、クライアントから Azure Active Directory 認証を使用してユーザー認証を開始できます。
 
 1. 「[Azure Active Directory ログインを使用するように App Service を構成する方法]」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
-2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
+2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。 それぞれで、次の置換を行います。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。 この値は、[Azure Portal] の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。 この値は、[Azure ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
@@ -663,10 +663,10 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 
      **Windows:**
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync()
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync()
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -694,15 +694,15 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
-    }
-    ```
+     }
+     ```
 
      **Xamarin.iOS**
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync(UIViewController view)
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync(UIViewController view)
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -722,15 +722,15 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
         {
             Console.Error.WriteLine(@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
         }
-    }
-    ```
+     }
+     ```
 
      **Xamarin.Android**
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync()
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync()
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -753,14 +753,14 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
             builder.SetTitle("You must log in. Login Required");
             builder.Create().Show();
         }
-    }
-    protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-    {
+     }
+     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+     {
 
         base.OnActivityResult(requestCode, resultCode, data);
         AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
-    }
-    ```
+     }
+     ```
 
 #### <a name="client-facebook"></a>Facebook または Google から取得したトークンを使用したシングル サインオン
 この Facebook や Google のスニペットに示すようにクライアント フローを使用できます。
@@ -902,9 +902,9 @@ private async void InitNotificationsAsync()
 WNS に対するプッシュを行う場合は、[Microsoft Store パッケージ SID を取得する](#package-sid)必要があります。  テンプレート登録に登録する方法を含む Windows アプリの詳細については、「 [アプリにプッシュ通知を追加する]」を参照してください。
 
 クライアントからのタグ要求はサポートされていません。  タグ要求は、通告なく登録から削除されます。
-タグと共にデバイスを登録したい場合は、Notification Hubs API を使用するカスタム API を作成し、登録を代行させます。  `RegisterNativeAsync()` メソッドの代わりに、[カスタム API を呼び出します](#customapi)。
+タグと共にデバイスを登録したい場合は、Notification Hubs API を使用するカスタム API を作成し、登録を代行させます。  `RegisterNativeAsync()` メソッドの代わりに、カスタム API を呼び出します。
 
-### <a name="package-sid"></a>方法: Microsoft Store のパッケージ SID を取得する
+### <a name="package-sid"></a>方法:Microsoft Store のパッケージ SID を取得する
 Microsoft Store アプリでプッシュ通知を有効にするには、パッケージ SID が必要です。  パッケージ SID を受け取るには、Microsoft Store　にアプリケーションを登録します。
 
 この値を取得するには:
@@ -1068,7 +1068,7 @@ public class MyHandler : DelegatingHandler
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

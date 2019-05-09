@@ -1,35 +1,35 @@
 ---
 title: クイック スタート:音声を認識する (JavaScript (ブラウザー)) - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する方法について説明します
+description: ブラウザーで JavaScript と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: fmegen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: b6add6ac94e45789033cfe9913ec64e69f394f45
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715139"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59008988"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>クイック スタート: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>クイック スタート:ブラウザーで JavaScript と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、音声をテキストに文字起こしする Web サイトを、Cognitive Services Speech SDK の JavaScript バインドを使用して作成する方法について説明します。
-このアプリケーションは、Microsoft Cognitive Services Speech SDK ([ダウンロード バージョン 1.2.0](https://aka.ms/csspeech/jsbrowserpackage)) が基になっています。
+このアプリケーションは、JavaScript 用 Speech SDK が基になっています ([バージョン 1.4.0 のダウンロード](https://aka.ms/csspeech/jsbrowserpackage))。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Speech サービスのサブスクリプション キー。 「[Speech サービスを無料で試す](get-started.md)」を参照してください。
+* Speech サービスのサブスクリプション キー。 「[Speech Service を無料で試す](get-started.md)」を参照してください。
 * 機能するマイクを備えた PC または Mac。
 * テキスト エディター。
-* 現在のバージョンの Chrome または Microsoft Edge。
+* 最新バージョンの Chrome、Microsoft Edge、Safari。
 * 必要に応じて、PHP スクリプトのホストをサポートしている Web サーバー。
 
 ## <a name="create-a-new-website-folder"></a>新しい Web サイト フォルダーを作成する
@@ -49,12 +49,12 @@ Speech SDK を [.zip パッケージ](https://aka.ms/csspeech/jsbrowserpackage)�
 
 1. 次の HTML スケルトンを作成します。
 
-  ```html
-  <html>
-  <head>
-      <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
-  </head>
-  <body>
+   ```html
+   <html>
+   <head>
+      <title>Speech SDK JavaScript Quickstart</title>
+   </head>
+   <body>
     <!-- UI code goes here -->
 
     <!-- SDK reference goes here -->
@@ -62,21 +62,21 @@ Speech SDK を [.zip パッケージ](https://aka.ms/csspeech/jsbrowserpackage)�
     <!-- Optional authorization token request goes here -->
 
     <!-- Sample code goes here -->
-  </body>
-  </html>
-  ```
+   </body>
+   </html>
+   ```
 
 1. 次の UI コードを、ファイルの最初のコメントの下に追加します。
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
 
 1. Speech SDK への参照を追加します
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
 1. UI コードで定義されている認識ボタン、認識結果、およびサブスクリプション関連フィールドに、ハンドラーを接続します。
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 
 ## <a name="create-the-token-source-optional"></a>トークン ソースを作成する (省略可能)
 
@@ -85,11 +85,11 @@ Web サーバーで Web ページをホストする場合は、デモ アプリ�
 
 1. `token.php` という名前で新しいファイルを作成します。 この例では、Web サーバーが PHP スクリプト言語をサポートするものと想定します。 次のコードを入力します。
 
-  [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
+   [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
 
 1. `index.html` ファイルを編集し、次のコードをファイルに追加します。
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
 
 > [!NOTE]
 > 承認トークンは有効期間が限られています。
@@ -98,6 +98,10 @@ Web サーバーで Web ページをホストする場合は、デモ アプリ�
 ## <a name="build-and-run-the-sample-locally"></a>サンプルをビルドしてローカルに実行する
 
 アプリを起動するには、index.html ファイルをダブルクリックするか、または好みの Web ブラウザーで index.html を開きます。 簡単な GUI が表示されるので、サブスクリプション キーと[リージョン](regions.md)を入力し、マイクを使用して認識を開始することができます。
+
+> [!NOTE]
+> Safari ブラウザーでは、この方法が使用できません。
+> Safari では、サンプル Web ページを Web サーバーでホストする必要があります。Safari では、ローカル ファイルから読み込まれた Web サイトにはマイクの使用が許可されません。
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Web サーバーからサンプルをビルドして実行する
 

@@ -3,7 +3,7 @@ title: Azure SQL Database への移行時に T-SQL の相違点を解決する |
 description: Azure SQL Database では完全にサポートされない Transact-SQL ステートメント
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,16 +12,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4d3f27d48819a4bd997cbb62177f5aae4afc85eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993156"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する
 
-SQL Server から Azure SQL サーバーに[データベースを移行](sql-database-cloud-migrate.md)する場合、SQL Server を移行する前にデータベースの再構築が必要だと気づくことがあります。 この記事では、再構築を実行し、再構築が必要な根本的な原因を理解するうえで役立つガイダンスを提供します。 非互換性を検出するには、[データ移行アシスタント (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用します。
+SQL Server から Azure SQL サーバーに[データベースを移行](sql-database-single-database-migrate.md)する場合、SQL Server を移行する前にデータベースの再構築が必要だと気づくことがあります。 この記事では、再構築を実行し、再構築が必要な根本的な原因を理解するうえで役立つガイダンスを提供します。 非互換性を検出するには、[データ移行アシスタント (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用します。
 
 ## <a name="overview"></a>概要
 
@@ -31,7 +31,7 @@ SQL Server から Azure SQL サーバーに[データベースを移行](sql-dat
 
 たとえば、高可用性は、[Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)に似たテクノロジを使用して、Azure SQL Database に組み込まれています。 可用性グループに関連する T-SQL ステートメントは SQL Database でサポートされず、AlwaysOn 可用性グループに関連する動的管理ビューもサポートされていません。
 
-SQL Database でサポートされる機能とサポートされない機能の一覧については、「 [Azure SQL Database の機能の比較](sql-database-features.md)」をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。
+SQL Database でサポートされる機能とサポートされない機能の一覧については、 [Azure SQL Database の機能の比較](sql-database-features.md)に関する記事をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。
 
 ## <a name="transact-sql-syntax-statements-with-partial-differences"></a>部分的に異なる Transact-SQL 構文のステートメント
 
@@ -39,7 +39,7 @@ SQL Database でサポートされる機能とサポートされない機能の�
 
 - CREATE ステートメントと ALTER DATABASE ステートメントには 30 以上のオプションがあります。 ステートメントには SQL Server にのみ適用されるファイルの配置、FILESTREAM、および Service Broker のオプションが含まれます。 移行前にデータベースを作成する場合は、これは問題になりませんが、データベースを作成する T-SQL コードを移行する場合は、[CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) を [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) の SQL Server 構文と比較して、使用するすべてのオプションがサポートされているかを確認します。 また Azure SQL Database 用の CREATE DATABASE には、SQL Database にのみ適用されるサービス目標と柔軟なスケールのオプションがあります。
 - FILESTREAM はサポートされていないため、CREATE ステートメントと ALTER TABLE ステートメントには、SQL Database では使用できない FileTable のオプションがあります。
-- CREATE ステートメントと ALTER LOGIN ステートメントはサポートされますが、SQL Database ではすべてのオプションは提供されません。 データベースの移植性を高めるために、SQL Database は可能な限りログインの代わりに包含データベース ユーザーを使用することを推奨しています。 詳細については、「[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)」と「[データベース アクセスの制御と許可](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)」を参照してください。
+- CREATE ステートメントと ALTER LOGIN ステートメントはサポートされますが、SQL Database ではすべてのオプションは提供されません。 データベースの移植性を高めるために、SQL Database は可能な限りログインの代わりに包含データベース ユーザーを使用することを推奨しています。 詳細については、「[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)」と「[データベース アクセスの制御と許可](sql-database-manage-logins.md)」を参照してください。
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Azure SQL Database でサポートされない Transact-SQL 構文
 
@@ -89,4 +89,4 @@ Transact-SQL リファレンスには、SQL Server 2008 以降のバージョン
 
 ## <a name="next-steps"></a>次の手順
 
-SQL Database でサポートされる機能とサポートされない機能の一覧については、「 [Azure SQL Database の機能の比較](sql-database-features.md)」をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。
+SQL Database でサポートされる機能とサポートされない機能の一覧については、 [Azure SQL Database の機能の比較](sql-database-features.md)に関する記事をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。

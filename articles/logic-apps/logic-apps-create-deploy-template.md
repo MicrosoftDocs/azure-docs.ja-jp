@@ -10,193 +10,185 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 624539557b0bf57e9d919a3a46337f1cf93a4f07
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000565"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894236"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>ロジック アプリをデプロイするための Azure Resource Manager テンプレートの作成
 
-ロジック アプリが作成された後は、このロジック アプリを Azure Resource Manager のテンプレートとして作成することができます。
-これにより、任意の環境またはリソース グループにロジック アプリを簡単にデプロイできます。
-Resource Manager テンプレートの詳細については、「[Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」と「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」をご覧ください。
+ロジック アプリを作成する場合、ロジック アプリの定義を [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)に展開することができます。 デプロイを自動化するために、このテンプレートを使用するには、[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)経由で、デプロイに使用するリソースとパラメーターを定義し、パラメーター値を指定します。
+これにより、目的の任意の環境または Azure リソース グループにロジック アプリを簡単にデプロイできます。 
 
-## <a name="logic-app-deployment-template"></a>ロジック アプリ デプロイ テンプレート
+Azure Logic Apps には、ロジック アプリの作成だけでなく、デプロイに使用するリソースとパラメーターの定義にも再利用できる[事前構築済みのロジック アプリ Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)が用意されています。 このテンプレートを独自のビジネス シナリオで使用することも、要件に合わせてカスタマイズすることもできます。 [Resource Manager テンプレートの構造と構文](../azure-resource-manager/resource-group-authoring-templates.md)に関する詳細を確認してください。 JSON の構文とプロパティについては、[Microsoft.Logic のリソースの種類](/azure/templates/microsoft.logic/allversions)に関する記事を参照してください。
 
-ロジック アプリには、次の 3 つの基本的なコンポーネントがあります。
+Azure Resource Manager テンプレートの詳細については、次の記事を参照してください。
 
-* **ロジック アプリ リソース**:価格設定計画、場所、ワークフロー定義などの情報が含まれています。
-* **ワークフロー定義**:ロジック アプリのワークフローの手順と、Logic Apps エンジンでのワークフローの実行方法を説明しています。
-この定義はロジック アプリの **[コード ビュー]** ウィンドウで確認できます。
-ロジック アプリ リソースでは、`definition` プロパティでこの定義を確認できます。
-* **接続**:接続文字列やアクセス トークンなど、コネクタ接続関連のメタデータを安全に保存するための個別のリソースです。
-ロジック アプリ リソースでは、`parameters` セクションでこれらのリソースが参照されます。
+* [Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
+* [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates-cloud-consistency.md)
 
-以上のコンポーネントを既存のロジック アプリで参照する場合、[Azure リソース エクスプローラー](http://resources.azure.com)などのツールを利用できます。
+## <a name="logic-app-structure"></a>ロジック アプリの構造
 
-リソース グループ デプロイで使用するロジック アプリのテンプレートを作成するには、リソースを定義し、必要に応じてパラメーター化する必要があります。
-たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を SQL データベースに使用すると効果的です。
-または、異なるサブスクリプションやリソース グループ内でデプロイすることもできます。  
+ロジック アプリ定義には、これらの基本セクションがあり、"デザイナー ビュー" から"コード ビュー" に切り替えるか、または [Azure Resource Explorer](http://resources.azure.com) などのツールを使用して、表示できます。 ロジック アプリ定義では Javascript Object Notation (JSON) が使われているため、JSON 構文とプロパティの詳細については、「[Microsoft.Logic resource types](/azure/templates/microsoft.logic/allversions)」(Microsoft.Logic リソースの種類) を参照してください。
 
-## <a name="create-a-logic-app-deployment-template"></a>ロジック アプリのデプロイ テンプレートの作成
+* **ロジック アプリ リソース**:ロジック アプリの場所やリージョン、価格プラン、ワークフロー定義などの情報について説明します。
 
-有効なロジック アプリ デプロイ テンプレートを作成するもっとも簡単な方法は、[Visual Studio Tools for Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) を使用することです。
-Visual Studio Tools は、任意のサブスクリプションまたは場所で使用できる有効なデプロイ テンプレートを生成します。
+* **ワークフロー定義**:ロジック アプリのトリガーとアクション、および Azure Logic Apps サービスがワークフローを実行する方法について説明します。 コード ビューの `definition` セクションでワークフロー定義を見つけることができます。
 
-他にも、ロジック アプリ デプロイ テンプレートの作成に役立ついくつかのツールがあります。
-テンプレートは手書きで作成できます。つまり、上述のリソースを使用して、必要に応じてパラメータを作成できます。
-また、[Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator) という PowerShell モジュールを利用することもできます。 このオープン ソース モジュールは、最初にロジック アプリとそれが利用している接続を評価し、デプロイに必要なパラメーターと共にテンプレート リソースを生成します。
-たとえば、ロジック アプリが Azure Service Bus キューからメッセージを受信し、Azure SQL データベースにデータを追加した場合、このツールはすべてのオーケストレーション ロジックを保存し、デプロイ時に設定できるように、SQL と Service Bus 接続文字列をパラメーター化します。
+* **接続**:ロジック アプリで管理対象コネクタを使用する場合、`$connections` セクションは、接続文字列やアクセス トークンなど、ロジック アプリと他のシステムやサービス間でこれらの接続に関するメタデータを安全に保存するその他のリソースを参照します。 ロジック アプリ定義内で、これらの接続への参照は、ロジック アプリ定義の `parameters` セクション内に表示されます。
 
-> [!NOTE]
-> 接続はロジック アプリと同じリソース グループ内に置く必要があります。
->
->
+Azure リソース グループ デプロイで使用できるロジック アプリ テンプレートを作成するには、リソースを定義し、必要に応じてパラメーター化する必要があります。 たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を SQL データベースに使用すると効果的です。
+または、異なるサブスクリプションやリソース グループ内でデプロイすることもできます。
 
-### <a name="install-the-logic-app-template-powershell-module"></a>ロジック アプリ テンプレートの PowerShell モジュールのインストール
-最も簡単なモジュールのインストール方法は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1)と `Install-Module -Name LogicAppTemplate`コマンドを使用することです。  
+## <a name="create-logic-app-deployment-templates"></a>ロジック アプリ デプロイ テンプレートの作成
+
+有効なロジック アプリ デプロイ テンプレートを作成する最も簡単な方法として、Visual Studio と Azure Logic Apps Tools for Visual Studio 拡張を使用します。 Azure portal から Visual Studio にロジック アプリをダウンロードすることによって、任意の Azure サブスクリプションと場所で使用できる有効なデプロイ テンプレートを取得します。 さらに、ロジック アプリをダウンロードすると、テンプレートに埋め込まれているロジック アプリ定義が自動的にパラメーター化されます。
+Visual Studio でのロジック アプリの作成と管理の詳細については、[Visual Studio によるロジック アプリの作成](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)と [Visual Studio によるロジック アプリの管理](../logic-apps/manage-logic-apps-with-visual-studio.md)に関するページを参照してください。
+
+このトピックのガイダンスに従って、Visual Studio またはテンプレートと必要なパラメーターを手動で作成する以外に、[ロジック アプリ テンプレートの作成用の PowerShell モジュール](https://github.com/jeffhollan/LogicAppTemplateCreator)を使用することもできます。 このオープン ソース モジュールは、最初にロジック アプリとロジック アプリで使用している接続を評価します。 次に、モジュールは、デプロイに必要なパラメーターでテンプレート リソースを生成します。 たとえば、Azure Service Bus キューからメッセージを受信し、Azure SQL データベースにデータを追加するロジック アプリがあるとします。 モジュール ツールはすべてのオーケストレーション ロジックを保存し、SQL および Service Bus 接続文字列をパラメーター化して、デプロイ時にそれらの値を設定できるようにします。
+
+> [!IMPORTANT]
+> 接続はロジック アプリと同じリソース グループ内に存在している必要があります。
+> PowerShell モジュールがあらゆる Azure テナントやサブスクリプション アクセス トークンで機能するように、[Azure Resource Manager クライアント ツール](https://github.com/projectkudu/ARMClient)でモジュールを使用します。 詳細については、ARMClient について詳しく説明しているこの [Azure Resource Manager クライアント ツールに関する記事](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)を参照してください。
+
+### <a name="install-powershell-module-for-logic-app-templates"></a>ロジック アプリ テンプレート用 PowerShell モジュールのインストール
+
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1)からモジュールをインストールする最も簡単な方法として、このコマンドを使用します。
+
+`Install-Module -Name LogicAppTemplate`
 
 PowerShell モジュールを手動でインストールすることもできます。
 
-1. [ロジック アプリのテンプレート作成機能](https://github.com/jeffhollan/LogicAppTemplateCreator/releases)の最新リリースをダウンロードします。  
-2. PowerShell モジュール フォルダー (通常は `%UserProfile%\Documents\WindowsPowerShell\Modules`) にフォルダーを解凍します。
+1. 最新の [Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator/releases) をダウンロードします。
 
-モジュールがあらゆるテナントやサブスクリプション アクセス トークンで機能するように、[ARMClient](https://github.com/projectkudu/ARMClient) コマンド ライン ツールの使用をお勧めします。  この[ブログの投稿](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)では、ARMClient についてさらに詳しく説明しています。
+1. PowerShell モジュール フォルダー (通常は `%UserProfile%\Documents\WindowsPowerShell\Modules`) にフォルダーを解凍します。
 
-### <a name="generate-a-logic-app-template-by-using-powershell"></a>PowerShell を使用したロジック アプリ テンプレートの生成
+### <a name="generate-logic-app-template---powershell"></a>ロジック アプリ テンプレートの生成 - PowerShell
+
 PowerShell をインストールした後は、次のコマンドを使用してテンプレートを生成できます。
 
 `armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp MyApp -ResourceGroup MyRG -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json`
 
 `$SubscriptionId` は Azure サブスクリプション ID です。 この行はまず、ARMClient を使用してアクセス トークンを取得し、このアクセス トークンを PowerShell スクリプトにパイプして、JSON ファイルでテンプレートを作成します。
 
-## <a name="add-parameters-to-a-logic-app-template"></a>ロジック アプリ テンプレートにパラメーターを追加する
-ロジック アプリ テンプレートを作成したら、引き続き必要なパラメータを追加または変更できます。 たとえば、定義により、1 回のデプロイでデプロイを予定している Azure 機能または入れ子になったワークフローにリソース ID が追加される場合、テンプレートにリソースを追加し、必要に応じて ID をパラメーター化すると便利です。 これは、カスタム API や Swagger エンドポイントの参照をリソース グループごとにデプロイする予定の場合にも該当します。
+## <a name="parameters-in-logic-app-templates"></a>ロジック アプリ テンプレートのパラメーター
 
-### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>依存リソースの参照を Visual Studio のデプロイ テンプレートに追加する
+ロジック アプリ テンプレートを作成したら、必要な任意のパラメーターを追加および編集することができます。 テンプレートには、複数の `parameters` セクションがあります。たとえば、次のようになります。 
 
-ロジック アプリで依存リソースを参照する場合は、[Azure Resource Manager テンプレート関数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)を、ロジック アプリのデプロイ テンプレートで使うことができます。 たとえば、ロジック アプリと共にデプロイする Azure 関数または統合アカウントをロジック アプリで参照するような場合です。 ロジック アプリ デザイナーが正しく記述するように、デプロイ テンプレートでのパラメーターの使い方についての次のガイドラインに従ってください。 
+* ロジック アプリのワークフロー定義には、独自の [`parameters` セクション](../logic-apps/logic-apps-workflow-definition-language.md#parameters)があり、ここには、ロジック アプリがデプロイ時に入力を受け入れるために使用するすべてのパラメーターを定義できます。
 
-ロジック アプリ パラメーターは、次の種類のトリガーとアクションで使うことができます。
+* Resource Manager テンプレートには、ロジック アプリの `parameters` セクションとは別に、独自の [`parameters` セクション](../azure-resource-manager/resource-group-authoring-templates.md#parameters)があります。 例: 
 
-*   子ワークフロー
-*   関数アプリ
-*   APIM 呼び出し
-*   API 接続ランタイム URL
-*   API 接続パス
+  [!INCLUDE [logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
 
-さらに、parameters、variables、resourceId、concat などのテンプレート関数を使用できます。たとえば、Azure 関数のリソース ID を置換する方法を次に示します。
+たとえば、ロジック アプリ定義で、Azure 関数または入れ子になったロジック アプリ ワークフローを表すリソース ID を参照しており、そのリソース ID をロジック アプリと共に単一のデプロイとしてデプロイするとします。 その ID をリソースとしてテンプレートに追加し、その ID をパラメーター化できます。 各 Azure リソース グループと共にデプロイするカスタム API または OpenAPI エンドポイント (以前の "Swagger") への参照に、この同じアプローチを使用できます。
 
-```
-"parameters":{
-    "functionName": {
+デプロイ テンプレートでパラメーターを使用する場合、Logic Apps デザイナーで、それらのパラメーターを正しく表示できるように、次のガイダンスに従ってください。
+
+* パラメーターは、次のトリガーとアクションでのみ使用します。
+
+  * Azure Functions アプリ
+  * 入れ子になったまたは子ロジック アプリ ワークフロー
+  * API Management 呼び出し
+  * API 接続ランタイム URL
+  * API 接続パス
+
+* パラメーターを定義する場合、`defaultValue` プロパティ値を使用して、既定値を指定してください。たとえば、次のように指定します。
+
+  ```json
+  "parameters": {
+     "IntegrationAccount": {
         "type":"string",
-        "minLength":1,
-        "defaultValue":"<FunctionName>"
-    }
+        "minLength": 1,
+        "defaultValue": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource=group-name>/providers/Microsoft.Logic/integrationAccounts/<integration-account-name>"
+     }
+  },
+  ```
+
+* テンプレート内の機密情報を保護するか、非表示にするには、パラメーターをセキュリティで保護します。 [セキュリティ保護されたパラメーターの使用方法](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)の詳細を確認してください。
+
+次の例に、Azure Service Bus の "メッセージ送信" アクションをパラメーター化する方法を示します。
+
+```json
+"Send_message": {
+   "type": "ApiConnection",
+   "inputs": {
+      "host": {
+         "connection": {
+            "name": "@parameters('$connections')['servicebus']['connectionId']"
+         },
+         // If the `host.runtimeUrl` property appears in your template, 
+         // you can remove this property, which is optional, for example:
+         "runtimeUrl": {}
+      },
+      "method": "POST",
+      "path": "[concat('/@{encodeURIComponent(''', parameters('<Azure-Service-Bus-queue-name>'), ''')}/messages')]",
+      "body": {
+         "ContentData": "@{base64(triggerBody())}"
+      },
+      "queries": {
+         "systemProperties": "None"
+      }
+   },
+   "runAfter": {}
 },
 ```
 
-parameters は次のように使用します。
+### <a name="reference-dependent-resources"></a>依存リソースの参照
 
+ロジック アプリで依存リソースを参照する必要がある場合は、[Azure Resource Manager テンプレート関数](../azure-resource-manager/resource-group-template-functions.md)を、ロジック アプリのデプロイ テンプレートで使うことができます。 たとえば、ロジック アプリで、ロジック アプリと共にデプロイするパートナー、契約、およびその他アーティファクトの定義で、Azure 関数または統合アカウントを参照するとします。
+`parameters`、`variables`、`resourceId`、`concat` などの Resource Manager テンプレート関数を使用できます。
+
+次の例に、これらのパラメーターを定義することによって、Azure 関数のリソース ID を置換する方法を示します。
+
+``` json
+"parameters": {
+   "<Azure-function-name>": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "<Azure-function-name>"
+   }
+},
 ```
+
+次に、Azure 関数を参照するときにこれらのパラメーターを使用する方法を示します。
+
+```json
 "MyFunction": {
-    "type": "Function",
-    "inputs": {
-        "body":{},
-        "function":{
-            "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
-        }
-    },
-    "runAfter":{}
-}
+   "type": "Function",
+   "inputs": {
+      "body": {},
+      "function": {
+         "id":"[resourceid('Microsoft.Web/sites/functions','<Azure-Functions-app-name>', parameters('<Azure-function-name>'))]"
+      }
+   },
+   "runAfter": {}
+},
 ```
-別の例として、Service Bus のメッセージ送信操作をパラメーター化できます。
 
-```
-"Send_message": {
-    "type": "ApiConnection",
-        "inputs": {
-            "host": {
-                "connection": {
-                    "name": "@parameters('$connections')['servicebus']['connectionId']"
-                }
-            },
-            "method": "post",
-            "path": "[concat('/@{encodeURIComponent(''', parameters('queueuname'), ''')}/messages')]",
-            "body": {
-                "ContentData": "@{base64(triggerBody())}"
-            },
-            "queries": {
-                "systemProperties": "None"
-            }
-        },
-        "runAfter": {}
-    }
-```
-> [!NOTE] 
-> host.runtimeUrl は省略可能であり、テンプレートに存在する場合は削除できます。
-> 
+## <a name="add-logic-app-to-resource-group-project"></a>リソース グループ プロジェクトにロジック アプリを追加する
 
+既存の Azure リソース グループ プロジェクトがある場合は、[JSON アウトライン] ウィンドウを使用してそのプロジェクトにロジック アプリを追加できます。 また、以前に作成したアプリと共に別のロジック アプリを追加することもできます。
 
-> [!NOTE] 
-> ロジック アプリ デザイナーでパラメーターを使うには、既定値を指定する必要があります。次はその例です。
-> 
-> ```
-> "parameters": {
->     "IntegrationAccount": {
->     "type":"string",
->     "minLength":1,
->     "defaultValue":"/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Logic/integrationAccounts/<integrationAccountName>"
->     }
-> },
-> ```
+1. ソリューション エクスプローラーで、`<template>.json` ファイルを開きます。
 
-## <a name="add-your-logic-app-to-an-existing-resource-group-project"></a>ロジック アプリを既存のリソース グループ プロジェクトに追加する
+2. **[表示]** メニューの **[その他のウィンドウ]** > **[JSON アウトライン]** を選択します。
 
-既存のリソース グループ プロジェクトがある場合は、[JSON アウトライン] ウィンドウでそのプロジェクトにロジック アプリを追加できます。 また、以前に作成したアプリと共に別のロジック アプリを追加することもできます。
+3. テンプレート ファイルにリソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** を選択します。 または、[JSON アウトライン] ウィンドウで、**[リソース]** を右クリックして、**[新しいリソースの追加]** を選びます。
 
-1. `<template>.json` ファイルを開きます。
+   ![[JSON アウトライン] ウィンドウ](./media/logic-apps-create-deploy-template/jsonoutline.png)
 
-2. [JSON アウトライン] ウィンドウを開くには、**[表示]** > **[その他のウィンドウ]** > **[JSON アウトライン]** の順に選びます。
-
-3. テンプレート ファイルにリソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** をクリックします。 または、[JSON アウトライン] ウィンドウで、**[リソース]** を右クリックして、**[新しいリソースの追加]** を選びます。
-
-    ![[JSON アウトライン] ウィンドウ](./media/logic-apps-create-deploy-template/jsonoutline.png)
-    
 4. **[リソースの追加]** ダイアログ ボックスで、**[ロジック アプリ]** を探して選びます。 ロジック アプリの名前を指定し、**[追加]** を選びます。
 
-    ![リソースの追加](./media/logic-apps-create-deploy-template/addresource.png)
+   ![リソースの追加](./media/logic-apps-create-deploy-template/addresource.png)
 
+## <a name="get-support"></a>サポートを受ける
 
-## <a name="deploy-a-logic-app-template"></a>ロジック アプリ テンプレートをデプロイする
+質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 
-PowerShell、REST API、[Azure DevOps Azure Pipelines](#team-services)、Azure portal を介したテンプレート デプロイなど、さまざまなツールを使用して、テンプレートをデプロイできます。
-パラメーターの値を保存するため、[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)の作成も推奨されます。
-詳しくは、「[Azure Resource Manager テンプレートと PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」または「[Azure Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md)」をご覧ください。
+## <a name="next-steps"></a>次の手順
 
-### <a name="authorize-oauth-connections"></a>OAuth 接続を作成する
-
-デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。
-ただし、有効なアクセス トークンを生成するには、OAuth 接続を承認する必要があります。
-OAuth 接続を承認するには、Logic Apps デザイナーでロジック アプリを開いてこれらの接続を承認します。 または、デプロイを自動化する場合は、各 OAuth 接続に対して同意するスクリプトを使用することができます。
-例として、 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) プロジェクトの GitHub のスクリプトがあります。
-
-<a name="team-services"></a>
-## <a name="azure-devops-azure-pipelines"></a>Azure DevOps Azure Pipelines
-
-環境をデプロイし、管理する一般的なシナリオは、Azure DevOps の Azure Pipelines のようなツールをロジック アプリ デプロイ テンプレートと共に使用することです。 Azure DevOps に含まれる [Deploy Azure Resource Group (Azure リソース グループのデプロイ)](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) タスクは、あらゆるビルドまたはリリース パイプラインに追加できます。 認証には[サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)をデプロイする必要があります。その後、リリース パイプラインを生成できます。
-
-1. Azure Pipelines で、**[空]** を選択して空のパイプラインを作成します。
-
-    ![空のパイプラインを作成する][1]
-
-2. 必要なリソースをすべて選択します。これには、多くの場合、手動またはビルド プロセスで生成したロジック アプリ テンプレートが含まれます。
-3. **Azure Resource Group Deployment (Azure リソース グループ デプロイ)** タスクを追加します。
-4. [サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)で構成し、テンプレート ファイルとテンプレート パラメーター ファイルを参照します。
-5. 必要に応じて、その他の環境、自動化されたテスト、承認者のために、リリース プロセスの手順の構築を続行します。
-
-<!-- Image References -->
-[1]: ./media/logic-apps-create-deploy-template/emptyreleasedefinition.png
+> [!div class="nextstepaction"]
+> [ロジック アプリ テンプレートのデプロイ](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)

@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/25/2018
+ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6a0ea318f2e9b8f392ac7c0a1f1091c062c59d41
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852358"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56884034"
 ---
-この記事では、PowerShell コマンドレットを使用します。 コマンドレットを実行するには、無料のインタラクティブ シェルである Azure Cloud Shell を使用できます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 **[コピー]** をクリックしてコードをコピーし、Cloud Shell に貼り付けて Enter キーを押すだけで、コードを実行することができます。 Cloud Shell は、次のようにいくつかの方法で起動することができます。
+この記事では、PowerShell コマンドレットを使用します。 コマンドレットを実行するには、Azure Cloud Shell を使用できます。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールがプリインストールされ、お客様のアカウントで使用するよう構成されています。 **[コピー]** をクリックしてコードをコピーし、Cloud Shell に貼り付けて Enter キーを押すだけで、コードを実行することができます。 Cloud Shell は、次のようにいくつかの方法で起動することができます。
 
 |  |   |
 |-----------------------------------------------|---|
@@ -24,6 +24,6 @@ ms.locfileid: "52852358"
 | Azure Portal の右上のメニューの **[Cloud Shell]** ボタンをクリックします。 | [![ポータルの Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
 |  |  |
 
-Azure Cloud Shell を使用しない場合は、代わりにローカルに PowerShell をインストールできます。 PowerShell をローカルにインストールして使用する場合は、最新の機能を利用するために、必ず Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。
+**ローカルでの PowerShell の実行**
 
-ローカルで実行している PowerShell のバージョンを確認するには、' Get-Module-ListAvailable AzureRM' コマンドレットを使用します。 更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/install-azurerm-ps)」を参照してください。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
+Azure PowerShell コマンドレットは、コンピューターでローカルにインストールおよび実行することもできます。 PowerShell コマンドレットは、頻繁に更新されます。 最新バージョンを実行していないと、手順内で指定された値は失敗する場合があります。 ローカルで実行している PowerShell のバージョンを確認するには、`Get-Module -ListAvailable Az` コマンドレットを使用します。 インストールまたは更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/install-az-ps)」を参照してください。

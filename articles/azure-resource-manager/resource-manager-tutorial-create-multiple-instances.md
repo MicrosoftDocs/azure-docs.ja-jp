@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b50609449d6144d2bb013d82e2eb29e94b5b01be
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: ce882ecee25f9570082a978b72a76ca903bfc12f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754120"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59279383"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>チュートリアル:Resource Manager テンプレートを使用した複数のリソース インスタンスの作成
 
 Azure Resource Manager テンプレートで反復処理して、Azure リソースの複数のインスタンスを作成する方法について説明します。 このチュートリアルでは、3 つのストレージ アカウント インスタンスが作成されるようテンプレートを変更します。
+
+![Azure Resource Manager による複数のインスタンスの作成の図](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -120,6 +122,8 @@ Visual Studio Code で、次の 4 つの変更を行います。
 
 デプロイ手順については、Visual Studio Code のクイック スタートの「[テンプレートのデプロイ](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)」セクションを参照してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 3 つのストレージ アカウントをすべて一覧表示するには、--name パラメータを省略します。
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -133,7 +137,7 @@ az storage account list --resource-group $resourceGroupName
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName
+Get-AzStorageAccount -ResourceGroupName $resourceGroupName
 ```
 
 ---
@@ -151,7 +155,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、複数のストレージ アカウント インスタンスを作成する方法について説明しました。 次のチュートリアルでは、あるリソース グループから別のリソース グループにリソースを移行する方法について説明します。
+このチュートリアルでは、複数のストレージ アカウント インスタンスを作成する方法について説明しました。  次のチュートリアルでは、複数のリソースと複数のリソース タイプを含むテンプレートを作成します。 一部のリソースには依存リソースがあります。
 
 > [!div class="nextstepaction"]
-> [リソースの移動](./resource-manager-tutorial-move-resources.md)
+> [依存リソースの作成](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

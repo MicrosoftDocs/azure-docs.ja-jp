@@ -1,10 +1,10 @@
 ---
-title: Log Analytics を使用して Azure Active Directory アクティビティ ログを分析する方法 (プレビュー) | Microsoft Docs
-description: Log Analytics を使用して Azure Active Directory アクティビティ ログを分析する方法について説明します (プレビュー)
+title: Azure Monitor ログ (プレビュー) を使用して Azure Active Directory アクティビティ ログを分析する | Microsoft Docs
+description: Azure Monitor ログ (プレビュー) を使用して Azure Active Directory アクティビティ ログを分析する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
@@ -12,22 +12,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2f0f5341ba6818f375d463638979c68689519227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e195dd0e52b4938e829ea0aec1f4cc3ef7107c0
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624201"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436814"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Log Analytics を使用した Azure AD アクティビティ ログの分析 (プレビュー)
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Azure Monitor ログ (プレビュー) を使用して Azure AD アクティビティ ログを分析する
 
-[Azure AD アクティビティ ログを Log Analytics と統合](howto-integrate-activity-logs-with-log-analytics.md)した後、Log Analytics の機能を使用して、環境に対する洞察を得ることができます。 [Azure AD アクティビティ ログ用の Log Analytics ビュー](howto-install-use-log-analytics-views.md)をインストールして、環境での監査およびサインイン イベントに関する事前構築済みレポートへのアクセス権を取得することもできます。
+[Azure AD アクティビティ ログを Azure Monitor ログと統合](howto-integrate-activity-logs-with-log-analytics.md)した後、Azure Monitor ログの機能を使用して、環境に対する洞察を得ることができます。 [Azure AD アクティビティ ログ用の Log Analytics ビュー](howto-install-use-log-analytics-views.md)をインストールして、環境での監査およびサインイン イベントに関する事前構築済みレポートへのアクセス権を取得することもできます。
 
 この記事では、Log Analytics ワークスペースでの Azure AD アクティビティ ログを分析する方法について説明します。 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -77,11 +80,13 @@ AuditLogs
 
 クエリでアラートを設定することもできます。 たとえば、10 個を超えるアプリケーションが過去 1 週間に使用された場合にアラートを構成するには:
 
-1. ワークスペースから、**[Set alert]**(アラートの設定) を選択して **[ルールの作成]** ページを開きます。 
-    ![[Set alert]](./media/howto-analyze-activity-logs-log-analytics/setalert.png)(アラートの設定)
+1. ワークスペースから、**[Set alert]**(アラートの設定) を選択して **[ルールの作成]** ページを開きます。
 
-2. アラートに作成された既定の**アラートの条件**を選択し、既定のメトリックの **[しきい値]** を 10 に更新します。 
-    ![[アラートの条件]](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
+    ![警告の設定](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
+
+2. アラートに作成された既定の**アラートの条件**を選択し、既定のメトリックの **[しきい値]** を 10 に更新します。
+
+    ![アラートの条件](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
 3. アラートの名前と説明を入力して、重大度を選択します。 この例では、これを **[情報]** に設定できます。
 
@@ -91,17 +96,17 @@ AuditLogs
 
 ## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Azure AD アクティビティ ログの事前構築済みビューをインストールし使用する
 
-Azure AD アクティビティ ログの事前構築済み Log Analytics ビューをダウンロードすることもできます。 ビューには、監査およびサインイン イベントに関する一般的なシナリオに関連した複数のレポートが表示されます。 前のセクションで説明されている手順を使用して、レポートに表示されるデータのいずれかについてアラートすることもできます。
+Azure AD アクティビティ ログの事前構築済みログ分析ビューをダウンロードすることもできます。 ビューには、監査およびサインイン イベントに関する一般的なシナリオに関連した複数のレポートが表示されます。 前のセクションで説明されている手順を使用して、レポートに表示されるデータのいずれかについてアラートすることもできます。
 
-* **[Azure AD Account Provisioning Events]\(Azure AD アカウントのプロビジョニング イベント\)**: プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
-* **[Sign-ins Events]\(サインイン イベント\)**: このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
-* **[Users Performing Consent]\(ユーザ―実行の同意\)**: このビューは、すべての同意ベースのアプリケーションに対して、アプリゲーションごとのサインインだけでなく、ユーザーによる同意、同意したユーザーによるサインインなど、ユーザーの同意に関連するレポートを表示します。 
+* **Azure AD Account Provisioning Events\(Azure AD アカウントのプロビジョニング イベント\)**:プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
+* **Sign-ins Events\(サインイン イベント\)**:このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
+* **Users Performing Consent\(ユーザ―実行の同意\)**:このビューは、すべての同意ベースのアプリケーションに対して、アプリケーションごとのサインインだけでなく、ユーザーによる同意、同意したユーザーによるサインインなど、ユーザーの同意に関連するレポートを表示します。 
 
-Azure AD のアクティビティ ログ用の Log Analytics ビューをインストールして使用する方法については、[こちら](howto-install-use-log-analytics-views.md)を参照してください。 
+[Azure AD のアクティビティ ログ用の Log Analytics ビューをインストールして使用する](howto-install-use-log-analytics-views.md)方法を学習してください。 
 
 
 ## <a name="next-steps"></a>次の手順
 
-* [Log Analytics のクエリの概要](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
+* [Azure Monitor ログでクエリの使用を開始する](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [Create and manage alert groups in the Azure portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
 * [Azure Active Directory 用の Log Analytics ビューのインストールと使用](howto-install-use-log-analytics-views.md)

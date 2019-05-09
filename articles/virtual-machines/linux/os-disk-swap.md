@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 983c2e6d03735ba26f7660fc07dcf1a05ef88189
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b17647a09c88491e2486046b1ca99ee277f0cc28
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960398"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700215"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>CLI を使用して Azure VM で使用される OS ディスクを変更する
 
@@ -34,7 +34,7 @@ VM のサイズとストレージの種類が、接続するディスクと互�
 この記事では、Azure CLI バージョン 2.0.25 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 
-[az disk list](/cli/azure/disk#list) を使用してリソース グループ内のディスクの一覧を取得します。
+[az disk list](/cli/azure/disk) を使用してリソース グループ内のディスクの一覧を取得します。
 
 ```azurecli-interactive
 az disk list \
@@ -44,7 +44,7 @@ az disk list \
 ```
 
 
-ディスクを交換する前に、[az vm stop](/cli/azure/vm#stop) を使用して VM を停止するか、割り当てを解除します。
+ディスクを交換する前に、[az vm stop](/cli/azure/vm) を使用して VM を停止するか、割り当てを解除します。
 
 ```azurecli-interactive
 az vm stop \
@@ -62,7 +62,7 @@ az vm update \
    --os-disk /subscriptions/<subscription ID>/resourceGroups/swap/providers/Microsoft.Compute/disks/myDisk 
    ```
    
-[az vm start](/cli/azure/vm#start) を使用して VM を再起動します。
+[az vm start](/cli/azure/vm) を使用して VM を再起動します。
 
 ```azurecli-interactive
 az vm start \

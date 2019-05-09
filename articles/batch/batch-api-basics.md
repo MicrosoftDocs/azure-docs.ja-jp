@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 1107842444ad0ac77ab890f07e65c8b489030461
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754069"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617485"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -62,7 +62,7 @@ ms.locfileid: "53754069"
   * [開始タスク](#start-task)
   * [ジョブ マネージャー タスク](#job-manager-task)
   * [ジョブ準備タスクおよびジョブ解放タスク](#job-preparation-and-release-tasks)
-  * [マルチインスタンス タスク (MPI)](#multi-instance-tasks)
+  * マルチインスタンス タスク (MPI)
   * [Task dependencies](#task-dependencies)
 * [アプリケーション パッケージ](#application-packages)
 
@@ -153,7 +153,7 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
 
 #### <a name="container-support-in-virtual-machine-pools"></a>仮想マシンのプールでのコンテナーのサポート
 
-Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現在は、Docker コンテナーをサポートするイメージを使ってプールを作成する必要があります。 Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用するか、Docker Community Edition (または Enterprise Edition) と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add#definitions_containerconfiguration)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
+Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現在は、Docker コンテナーをサポートするイメージを使ってプールを作成する必要があります。 Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用するか、Docker Community Edition (または Enterprise Edition) と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
 
 詳細については、「[Azure Batch で Docker コンテナー アプリケーションを実行する](batch-docker-container-workloads.md)」を参照してください。
 
@@ -215,7 +215,7 @@ Batch でプール内のすべてのノードにタスクを均等に配分す�
 
 ### <a name="network-configuration"></a>ネットワーク構成
 
-プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットを指定できます。 詳細については、「[プール ネットワーク構成](#pool-network-configuration)」セクションを参照してください。
+プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットを指定できます。 詳細については、「プール ネットワーク構成」セクションを参照してください。
 
 
 ## <a name="job"></a>ジョブ
@@ -271,7 +271,7 @@ Batch サービスには、ノードで計算を実行するために定義す�
 * [開始タスク](#start-task)
 * [ジョブ マネージャー タスク](#job-manager-task)
 * [ジョブ準備タスクおよびジョブ解放タスク](#job-preparation-and-release-tasks)
-* [マルチインスタンス タスク (MPI)](#multi-instance-tasks)
+* マルチインスタンス タスク (MPI)
 * [Task dependencies](#task-dependencies)
 
 ### <a name="start-task"></a>開始タスク
@@ -471,7 +471,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 ### <a name="accounting-for-task-failures-or-interruptions"></a>タスクのエラーや中断の理由
 タスクは、エラーが発生したり中断されたりする場合があります。 タスク アプリケーション自体でエラーが発生したり、タスクが実行されているノードが再起動したりすることがあります。また、プールの割り当て解除ポリシーがタスクの完了を待たずに直ちにノードを削除するように設定されている場合は、サイズ変更操作中にノードがプールから削除されることもあります。 どのようなケースでも、Batch によってタスクを自動的にキューに戻し、別のノードで実行することができます。
 
-断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになる場合もあります。 このような場合は、タスクに最大実行間隔を設定することができます。 最大実効間隔を超過すると、Batch サービスによってタスク アプリケーションが中断されます。
+断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになったりする場合もあります。 このような場合は、タスクに最大実行間隔を設定することができます。 最大実効間隔を超過すると、Batch サービスによってタスク アプリケーションが中断されます。
 
 ### <a name="connecting-to-compute-nodes"></a>コンピューティング ノードへの接続
 リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET][net_rdpfile]、[Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) など) で実行することもできます。

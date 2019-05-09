@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff9d025980f80cb77246ea12dbf2e9bcedd73f86
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e5efe0516d1b2dd387532d31a0a6654e6651fe41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38705886"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011737"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する
 
@@ -49,7 +49,7 @@ Azure ポータルを使用して、リソース マネージャー デプロイ
 
 *TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、以下の手順に従います。
 
-1. ブラウザーで http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
+1. ブラウザーで https://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 2. 次の図に示すように、**[リソースの作成]** > **[Compute]** > **[Windows Server 2012 R2 Datacenter]** の順にクリックし、**[デプロイ モデルの選択]** の一覧に既に **[Resource Manager]** と表示されているのを確認してから **[作成]** をクリックします。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
@@ -66,8 +66,8 @@ Azure ポータルを使用して、リソース マネージャー デプロイ
    
     -**ストレージ アカウント**: *vnetstorage*
    
-   * **ネットワーク**: *TestVNet*
-   * **サブネット**: *FrontEnd*
+   * **ネットワーク**:*TestVNet*
+   * **サブネット**:*FrontEnd*
      
      ![[サイズの選択] ウィンドウ](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
 7. **[概要]** ウィンドウで、**[OK]** をクリックします。 ダッシュ ボードに以下のタイルが表示されることを確認します。

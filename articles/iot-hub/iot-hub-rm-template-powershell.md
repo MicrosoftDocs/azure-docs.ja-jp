@@ -1,149 +1,61 @@
 ---
 title: テンプレートを使用した Azure IoT Hub の作成 (PowerShell) | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用して PowerShell から IoT ハブを作成する方法。
-author: dominicbetts
-manager: timlt
+description: Azure Resource Manager テンプレートを使用して Azure PowerShell から IoT ハブを作成する方法です。
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: cdc53aeb0ecbea5714a8587c8d03ab6aa292394c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 04/02/2019
+ms.openlocfilehash: d23d3824c477d3bba4e4900bee355376f1317f92
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635000"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609177"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Azure リソース マネージャーを使って、Azure IoT ハブをプログラムを使用して作成、管理できます。 このチュートリアルでは、Azure Resource Manager テンプレートを使用して PowerShell で IoT Hub を作成する方法を説明します。
+Azure Resource Manager テンプレートを使って IoT ハブとコンシューマー グループを作成する方法を学習します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Resource Manager の作成の詳細については、[Azure Resource Manager のドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/)に関する記事をご覧ください。
 
-> [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、Azure Resource Manager デプロイ モデルの使用について説明します。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
-* [Azure PowerShell 1.0][lnk-powershell-install] 以降。
+このクイック スタートで使われる Resource Manager テンプレートは、[Azure クイック スタートのテンプレート](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/)に関する記事からのものです。 テンプレートのコピーを次に示します。
 
-> [!TIP]
-> PowerShell と Azure Resource Manager テンプレートを使用して Azure のリソースを作成する方法について詳しくは、[Azure Resource Manager での Azure PowerShell の使用][lnk-powershell-arm]に関する記事をご覧ください。
+[!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-## <a name="connect-to-your-azure-subscription"></a>Azure サブスクリプションへの接続
+テンプレートでは、3 つのエンドポイント (eventhub、cloud-to-device、messaging) を持つ Azure Iot ハブとコンシューマー グループが作成されます。 テンプレートの他のサンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)」をご覧ください。 Iot Hub テンプレートのスキーマについては、[こちら](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)をご覧ください。
 
-PowerShell コマンド プロンプトから、次のコマンドを入力して Azure サブスクリプションにサインインします。
+テンプレートをデプロイするには複数の方法があります。  このチュートリアルでは、Azure PowerShell を使います。
 
-```powershell
-Connect-AzureRmAccount
+PowerShell スクリプトを実行するには、**[使ってみる]** を選択して、Azure Cloud シェルを開きます。 スクリプトを貼り付けるには、シェルを右クリックし、[貼り付け] を選択します。
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$iotHubName = Read-Host -Prompt "Enter the IoT Hub name"
+
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-iothub-with-consumergroup-create/azuredeploy.json" `
+    -iotHubName $iotHubName
 ```
 
-複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドで、使用できる Azure サブスクリプションの一覧を表示します。
-
-```powershell
-Get-AzureRMSubscription
-```
-
-以下のコマンドを使用して、コマンドを実行して IoT ハブを作成するために使用するサブスクリプションを選択します。 前のコマンドの出力から、サブスクリプション名または ID のいずれかを使用できます。
-
-```powershell
-Select-AzureRMSubscription `
-    -SubscriptionName "{your subscription name}"
-```
-
-IoT Hub のデプロイ先と現在サポートされている API バージョンは、次のコマンドで調べることができます。
-
-```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).Locations
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).ApiVersions
-```
-
-IoT Hub がサポートされているいずれかの場所から次のコマンドを使用し、IoT Hub の追加先となるリソース グループを作成します。 この例では、 **MyIoTRG1**というリソース グループを作成しています。
-
-```powershell
-New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
-```
-
-## <a name="submit-a-template-to-create-an-iot-hub"></a>テンプレートを送信して IoT Hub を作成する
-
-JSON テンプレートを使用して、リソース グループに IoT Hub を作成します。 Azure Resource Manager テンプレートを使用して、既存の IoT Hub に変更を加えることもできます。
-
-1. テキスト エディターを使用して、**template.json** という Azure Resource Manager テンプレートを作成し、標準的な IoT Hub を新規作成するリソース定義 (以下) を記述します。 この例では、IoT Hub を**米国東部**リージョンに追加し、Event Hub と互換性のあるエンドポイントに 2 つのコンシューマー グループ (**cg1** と **cg2**) を作成し、**2016-02-03** API バージョンを使用します。 また、このテンプレートでは、 **hubName**というパラメーターに IoT Hub の名前を指定する必要があります。 IoT Hub をサポートする場所の最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
-
-    ```json
-    {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-        "hubName": {
-          "type": "string"
-        }
-      },
-      "resources": [
-      {
-        "apiVersion": "2016-02-03",
-        "type": "Microsoft.Devices/IotHubs",
-        "name": "[parameters('hubName')]",
-        "location": "East US",
-        "sku": {
-          "name": "S1",
-          "tier": "Standard",
-          "capacity": 1
-        },
-        "properties": {
-          "location": "East US"
-        }
-      },
-      {
-        "apiVersion": "2016-02-03",
-        "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
-        "name": "[concat(parameters('hubName'), '/events/cg1')]",
-        "dependsOn": [
-          "[concat('Microsoft.Devices/Iothubs/', parameters('hubName'))]"
-        ]
-      },
-      {
-        "apiVersion": "2016-02-03",
-        "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
-        "name": "[concat(parameters('hubName'), '/events/cg2')]",
-        "dependsOn": [
-          "[concat('Microsoft.Devices/Iothubs/', parameters('hubName'))]"
-        ]
-      }
-      ],
-      "outputs": {
-        "hubKeys": {
-          "value": "[listKeys(resourceId('Microsoft.Devices/IotHubs', parameters('hubName')), '2016-02-03')]",
-          "type": "object"
-        }
-      }
-    }
-    ```
-
-2. Azure Resource Manager テンプレート ファイルをローカル マシン上に保存します。 この例では、**c:\templates** フォルダーに保存することを前提としています。
-
-3. 次のコマンドを実行して、新しい IoT Hub をデプロイします。実際の IoT Hub の名前をパラメーターで指定してください。 この例では、IoT Hub の名前は `abcmyiothub` です。 IoT Hub の名前は、グローバルに一意である必要があります。
-
-    ```powershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
-    ```
-  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
-
-4. 作成した IoT Hub のキーが出力として表示されます。
-
-5. アプリケーションが新しい IoT Hub を追加したことを確認するには、[Azure Portal][lnk-azure-portal] にアクセスしてリソースの一覧を表示します。 または、**Get-AzureRmResource** PowerShell コマンドレットを使用します。
-
-> [!NOTE]
-> このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 IoT ハブを削除するには、[Azure Portal][lnk-azure-portal] を使うか、終了時に **Remove-AzureRmResource** PowerShell コマンドレットを使用します。
+PowerShell スクリプトを見るとわかるように、使うテンプレートは Azure クイック スタート テンプレートからのものです。 独自のものを使うには、最初に、テンプレート ファイルを Cloud Shell にアップロードしてから、`-TemplateFile` スイッチを使ってファイル名を指定する必要があります。  例については、「[テンプレートのデプロイ](../azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、PowerShell と Azure Resource Manager テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
+ここでは、Azure Resource Manager テンプレートを使って IoT ハブをデプロイしました。次の手順に進んでください。
 
 * [IoT Hub リソース プロバイダー REST API][lnk-rest-api] の機能の詳細をご確認ください。
 * Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要][lnk-azure-rm-overview]」を参照してください。
+* テンプレートで使用する JSON 構文とプロパティについては、「[Microsoft.Devices resource types (Microsoft.Devices のリソースの種類)](/azure/templates/microsoft.devices/iothub-allversions)」を参照してください。
 
 IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 
@@ -158,10 +70,10 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: /powershell/azure/install-azurerm-ps
+[lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
-[lnk-powershell-arm]: ../azure-resource-manager/powershell-azure-resource-manager.md
+[lnk-powershell-arm]: ../azure-resource-manager/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md

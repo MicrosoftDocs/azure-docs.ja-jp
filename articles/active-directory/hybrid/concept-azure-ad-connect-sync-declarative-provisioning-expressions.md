@@ -1,28 +1,29 @@
 ---
-title: 'Azure AD Connect: 宣言型プロビジョニングの式 | Microsoft Docs'
+title: Azure AD Connect:宣言型プロビジョニングの式 | Microsoft Docs
 description: 宣言型のプロビジョニングの式について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 26c835e6c2f658f7ad852fdd02dc8974db33e47b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306051"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181985"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: 宣言型のプロビジョニングの式について
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同期: 宣言型のプロビジョニングの式について
 Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入された宣言型のプロビジョニングに基づいています。 これにより、コンパイル済みコードを記述することなく完全な ID 統合ビジネス ロジックを実装できます。
 
 宣言型のプロビジョニングの不可欠な要素は、属性フローに使用される式言語です。 使用される言語は、Microsoft ® Visual Basic ® for Applications (VBA) のサブセットです。 この言語は、Microsoft Office で使用され、VBScript の経験を持つユーザーも理解できます。 宣言型のプロビジョニングの式言語は、関数を使用するだけであり、構造化言語ではありません。 メソッドやステートメントはありません。 代わりに、関数を入れ子にして、プログラム フローを記述します。
@@ -37,8 +38,8 @@ Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入�
 * パラメーターは、パーセント記号で識別されます。たとえば、%ParameterName% などです。
 * 文字列定数は、引用符で囲まれます。たとえば、"Contoso" などです (注: 左右区別がある引用符 “” ではなく、左右区別がない引用符 "" を使用する必要があります)。
 * 数値は、引用符を使用しないで表され、10 進数であることが求められます。 16 進数の値には、&H がプレフィックスとして付加されます。 たとえば、98052、&HFF などです。
-* ブール値は、定数 (True、False) で表されます。
-* 組み込み定数とリテラルは、その名前のみで表されます。たとえば、NULL、CRLF、IgnoreThisFlow などです。
+* ブール値は、次の定数で表されます。True、False です。
+* 組み込み定数とリテラルは、その名前のみで表されます。たとえば、NULL、CRLF、IgnoreThisFlow などです
 
 ### <a name="functions"></a>Functions
 宣言型のプロビジョニングでは、属性値を変換する機能を持つ多くの関数を使用します。 これらの関数を入れ子にすると、ある関数の結果を別の関数に渡すことができます。
@@ -93,10 +94,10 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 
 **参照トピック**
 
-* [Azure AD Connect Sync: 関数リファレンス](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同期:関数参照](reference-connect-sync-functions-reference.md)
 

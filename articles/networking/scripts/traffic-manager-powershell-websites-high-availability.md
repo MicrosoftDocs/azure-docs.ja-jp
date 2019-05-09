@@ -15,22 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: 24054625870cb073eec9769f50f370deb2828535
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1086fe6d656db9450d84fd6971a271775f54687d
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31597335"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202828"
 ---
 # <a name="route-traffic-for-high-availability-of-applications"></a>高可用性アプリケーションのためのトラフィックのルーティング
 
 このスクリプトは、1 つのリソース グループ、2 つの App Service プラン、2 つの Web アプリ、1 つの Traffic Manager プロファイル、および 2 つの Traffic Manager エンドポイントを作成します。 Traffic Manager は、プライマリ リージョンのアプリケーションにトラフィックを誘導し、プライマリ リージョンのアプリケーションが利用できない場合には、セカンダリ リージョンにトラフィックを誘導します。 スクリプトを実行する前に、MyWebApp、MyWebAppL1、および MyWebAppL2 の値を、Azure 全体で一意の値に変更する必要があります。 スクリプトを実行した後は、URL mywebapp.trafficmanager.net でプライマリ リージョンのアプリケーションにアクセスできます。
 
-必要に応じて、[Azure PowerShell ガイド](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)の手順に従って Azure PowerShell をインストールし、`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。
+必要に応じて、[Azure PowerShell ガイド](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-powershell[main](../../../powershell_scripts/traffic-manager/direct-traffic-for-increased-application-availability/direct-traffic-for-increased-application-availability.ps1 "Route traffic for high availability")]
 
@@ -38,8 +40,8 @@ ms.locfileid: "31597335"
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup1
-Remove-AzureRmResourceGroup -Name myResourceGroup2
+Remove-AzResourceGroup -Name myResourceGroup1
+Remove-AzResourceGroup -Name myResourceGroup2
 ```
 
 
@@ -47,14 +49,14 @@ Remove-AzureRmResourceGroup -Name myResourceGroup2
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、Web アプリ、Traffic Manager プロファイル、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)  | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
-| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | App Service プラン内に Azure Web アプリを作成します。 |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | App Service プラン内に Azure Web アプリを作成します。 |
-| [New-AzureRmTrafficManagerProfile](/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerprofile) | Azure Traffic Manager プロファイルを作成します。 |
-| [New-AzureRmTrafficManagerEndpoint](/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerendpoint) | Azure Traffic Manager プロファイルにエンドポイントを追加します。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | App Service プラン内に Azure Web アプリを作成します。 |
+| [Set-AzResource](/powershell/module/az.resources/new-azresource) | App Service プラン内に Azure Web アプリを作成します。 |
+| [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | Azure Traffic Manager プロファイルを作成します。 |
+| [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Azure Traffic Manager プロファイルにエンドポイントを追加します。 |
 
 ## <a name="next-steps"></a>次の手順
 

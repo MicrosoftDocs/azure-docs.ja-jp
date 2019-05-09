@@ -1,15 +1,15 @@
 ---
-author: dominicbetts
+author: robinsh
+ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: dobett
-ms.openlocfilehash: 2eacb55eaf355a4eef17b9e16075d8d12167266d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 74f15452c7def068403b97b11e784170835edc18
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165077"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804487"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Azure Resource Manager の要求を認証するための準備
 [Azure Resource Manager][lnk-authenticate-arm] と Azure Active Directory (AD) を使用して、リソース上で実行するすべての操作を認証する必要があります。 これを構成するうえで、PowerShell または Azure CLI を使用するのが最も簡単な方法です。
@@ -21,19 +21,19 @@ ms.locfileid: "50165077"
 1. 次のコマンドを使用して Azure サブスクリプションにサインインします。
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 1. 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドで、使用できる Azure サブスクリプションの一覧を表示します。
 
     ```powershell
-    Get-AzureRMSubscription
+    Get-AzSubscription
     ```
 
     次のコマンドで、使用するサブスクリプションを選択して、IoT Hub を管理するためのコマンドを実行します。 前のコマンドの出力から、サブスクリプション名または ID のいずれかを使用できます。
 
     ```powershell
-    Select-AzureRMSubscription `
+    Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
@@ -41,24 +41,24 @@ ms.locfileid: "50165077"
 3. 次のコマンドを使用して新しい Azure Active Directory アプリケーションを作成します。プレース ホルダーを以下のとおりに置き換えます。
    
    * **{Display name}:** **MySampleApp** など、アプリケーションの表示名。
-   * **{Home page URL}:** アプリのホームページの URL (例: **http://mysampleapp/home**)。 この URL は実際のアプリケーションを示している必要はありません。
-   * **{Application identifier}:** 一意識別子 (例: **http://mysampleapp**)。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Home page URL}:** **http:\//mysampleapp/home** など、お使いのアプリのホーム ページの URL。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Application identifier}:**  **http:\//mysampleapp** などの一意の識別子。 この URL は実際のアプリケーションを示している必要はありません。
    * **{Password}:** 自分のアプリで認証に使用するパスワード。
      
      ```powershell
      $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
-     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
+     New-AzADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. 作成したアプリケーションの **ApplicationId** を書き留めておきます。 この情報は後で必要になります。
 5. 次のコマンドを使用して新しいサービス プリンシパルを作成します。**{MyApplicationId}** を前の手順で書き留めた **ApplicationId** と置き換えます。
    
     ```powershell
-    New-AzureRmADServicePrincipal -ApplicationId {MyApplicationId}
+    New-AzADServicePrincipal -ApplicationId {MyApplicationId}
     ```
 6. 次のコマンドを使用してロール割り当てを設定します。**{MyApplicationId}** を自分の **ApplicationId** と置き換えます。
    
     ```powershell
-    New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
+    New-AzRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
 これで、カスタム C# アプリケーションから認証できるようにする Azure AD アプリケーションの作成が完了しました。 このチュートリアルでは後で次の値が必要になります。
@@ -69,4 +69,4 @@ ms.locfileid: "50165077"
 * パスワード
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[lnk-powershell-install]: /powershell/azure/install-Az-ps

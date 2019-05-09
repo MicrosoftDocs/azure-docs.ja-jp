@@ -4,7 +4,7 @@ description: この記事では、Azure 仮想マシンで使用できる Azure 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 15ac70891f23d95709d1998bca1ce29ad735cb87
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969687"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109080"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 
@@ -90,8 +90,7 @@ Key Vault では、オプションとして、キーを保管するためのハ�
 
 詳細情報:
 
-* [Azure Key Vault とは](../key-vault/key-vault-whatis.md)
-* [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
+* [Azure Key Vault とは](../key-vault/key-vault-overview.md)
 * [Azure Key Vault ブログ](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>仮想マシン ディスクの暗号化

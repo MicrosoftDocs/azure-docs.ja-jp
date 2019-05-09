@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning Service でマルチテナント用に�
 description: デバイス プロビジョニング サービス インスタンスでマルチテナント用にデバイスをプロビジョニングする方法です
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/15/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+manager: philmea
+ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344093"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793165"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>マルチテナント用にプロビジョニングする方法 
 
@@ -86,7 +86,7 @@ ms.locfileid: "53344093"
 
 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-security.md#x509-certificates)を使用することを検討してください。
 
-1. [Azure portal](http://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
 
 2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
 
@@ -208,7 +208,7 @@ ms.locfileid: "53344093"
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
 
-    このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+    この操作は、完了するまでに数分かかります。
 
 1. 両方の VM で、リポジトリの内部に新しい **cmake** フォルダーを作成して、そのフォルダーに移動します。
 
@@ -421,7 +421,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 ## <a name="next-steps"></a>次の手順
 
 - 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-- プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」を参照してください 
+- プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
 
 
 

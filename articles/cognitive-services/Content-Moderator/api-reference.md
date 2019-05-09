@@ -1,28 +1,28 @@
 ---
 title: API リファレンス - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: コンテンツ モデレーションについて学習し、Content Moderator の API を確認します。
+description: さまざまなコンテンツ モデレーションについて学習し、Content Moderator の各種 API を確認します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 320638c958799bbf7fea73880fd3e27b6d598d23
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229749"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756056"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API リファレンス
 
-Azure Content Moderator API を使用するには次の方法で開始します (「[資格情報を管理する](review-tool-user-guide/credentials.md)」も参照してください)。
+Azure Content Moderator API シリーズを使用するには次の方法で開始します ([資格情報の管理](review-tool-user-guide/credentials.md)に関するページも参照してください)。
 
 - Azure Portal で、[Content Moderator API をサブスクライブ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)します。
-- [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップします。 [クイック スタート](quick-start.md)を参照してください。
+- [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップします。 「[Try Content Moderator on the web (Web 上で Content Moderator を試す)](quick-start.md)」を参照してください。
 
 ## <a name="moderation-apis"></a>モデレート API
 
@@ -31,7 +31,7 @@ Azure Content Moderator API を使用するには次の方法で開始します 
 | 説明 | リファレンス |
 | -------------------- |-------------|
 | **Image Moderation API**<br /><br />画像をスキャンし、タグ、信頼度スコア、その他の抽出された情報を使用して、成人向けやきわどいコンテンツの可能性があるものを検出します。 <br /><br />この情報を使用して、モデレート後のワークフローで、コンテンツを公開、拒否、またはレビューします。 <br /><br />| [Image Moderation API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "Image Moderation API リファレンス")   |
-| **Text Moderation API**<br /><br />テキスト コンテンツをスキャンします。 不適切な言葉と個人を特定できる情報 (PII) が返されます。 <br /><br />この情報を使用して、モデレート後のワークフローで、コンテンツを公開、拒否、またはレビューします。<br /><br /> | [Text Moderation API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "Text Moderation API リファレンス")   |
+| **Text Moderation API**<br /><br />テキスト コンテンツをスキャンします。 不適切な用語と個人データが返されます。 <br /><br />この情報を使用して、モデレート後のワークフローで、コンテンツを公開、拒否、またはレビューします。<br /><br /> | [Text Moderation API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "Text Moderation API リファレンス")   |
 | **Video Moderation API**<br /><br />ビデオをスキャンし、成人向けやきわどいコンテンツの可能性があるものを検出します。 <br /><br />この情報を使用して、モデレート後のワークフローで、コンテンツを公開、拒否、またはレビューします。<br /><br /> | [Video Moderation API の概要](video-moderation-api.md "Video Moderation API の概要")   |
 | **List Management API**<br /><br />画像とテキストの除外一覧と対象一覧を作成して管理します。 有効にした場合、**Image - Match** および **Text - Screen** 操作では、提出したコンテンツとカスタム一覧とのあいまい一致が照合されます。 <br /><br />効率を高めるため、機械学習ベースのモデレーション手順を省略できます。<br /><br /> | [List Management API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "List Management API リファレンス")   |
 

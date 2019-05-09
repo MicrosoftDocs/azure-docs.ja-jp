@@ -5,21 +5,22 @@ description: このチュートリアルでは、Azure portal を使用して、
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 1ed77e8573479665d0caac15941d6b6c6ab790cb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262352"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489316"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Basic ロードバランサーを使用して内部トラフィックの負荷を分散する
 
@@ -45,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **ResourceGroup**:**[新規作成]** を選択してから「*MyResourceGroupLB*」と入力し、**[OK]** を選択します。 
    - **[サブネット]** > **[名前]**:「*MyBackendSubnet*」と入力します。
    
-1. **作成**を選択します。
+1. **作成** を選択します。
 
    ![仮想ネットワークの作成](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
@@ -54,17 +55,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. ポータルの左上で、**[リソースの作成]** > **[Compute]** > **[Windows Server 2016 Datacenter]** の順に選択します。 
    
 1. **[仮想マシンの作成]** の **[Basic]** タブに次の値を入力するか選択します。
-   - **[サブスクリプション]** > **[リソース グループ]**:ドロップダウンから **[MyResourceGroupLB]** を選択します。
-   - **[インスタンスの詳細]** > **[仮想マシン名]**:「*MyVM1*」と入力します。
+   - **[サブスクリプション]** > **[リソース グループ]**: ドロップダウンから **[MyResourceGroupLB]** を選択します。
+   - **[インスタンスの詳細]** > **[仮想マシン名]**: 「*MyVM1*」と入力します。
    - **[インスタンスの詳細]** > **[可用性オプション]**: 
      1. ドロップダウン メニューから **[可用性セット]** を選択します。 
      2. **[新規作成]** を選択し、「*MyAvailabilitySet*」と入力して **[OK]** を選択します。
    
-1. **[ネットワーク]** タブまたは **[次へ:ディスク]** を選択してから **[次へ:ネットワーク]** を選択します。 
+1. **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。 
    
    以下が選択されていることを確認します。
    - **[仮想ネットワーク]**:**MyVNet**
-   - **[サブネット]**:**MyBackendSubnet**
+   - **[サブネット]**: **MyBackendSubnet**
    
    **[ネットワーク セキュリティ グループ]**:
    1. **[Advanced] \(詳細設定)** を選択します。 
@@ -86,20 +87,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ポータルの左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。
    
-1. **[ロード バランサーの作成]** ウィンドウで次の値を入力または選択します。
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
+
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
+    | Name                   | *myLoadBalancer*                                   |
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | Type          | **[内部]** を選択します。                                        |
+    | SKU           | **[Basic]** を選択します。                          |
+    | 仮想ネットワーク           | *[MyVNet]* を選択します。                          |    
+    | IP アドレスの割り当て              | **[静的]** を選択します。   |
+    | プライベート IP アドレス|仮想ネットワークとサブネットのアドレス空間内にあるアドレスを入力します (例: *10.3.0.7*)。  |
+
+3. **[確認と作成]** タブで、**[作成]** をクリックします。 
    
-   - **[名前]**:「*MyLoadBalancer*」と入力します。
-   - **[種類]**:**[内部]** を選択します。 
-   - **[SKU]**:**[Basic]** を選択します。
-   - **[仮想ネットワーク]**:**[仮想ネットワークの選択]** を選択し、**[MyVNet]** を選択します。
-   - **[サブネット]**:**[サブネットの選択]** を選択し、**[MyBackendSubnet]** を選択します。
-   - **[IP アドレスの割り当て]**:選択されていない場合は **[静的]** を選択します。
-   - **[プライベート IP アドレス]**:仮想ネットワークとサブネットのアドレス空間内にあるアドレスを入力します (例: *10.3.0.7*)。
-   - **ResourceGroup**:**[既存の選択]** ドロップ ダウンから **[MyResourceGroupLB]** を選択します。 
-   
-1. **作成**を選択します。
-   
-![ロード バランサーの作成](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-basic-load-balancer-resources"></a>Basic ロード バランサーのリソースを作成する
 
@@ -119,7 +122,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
    - **[名前]**:「*MyBackendPool*」と入力します。
    - **[関連付け先]**:ドロップダウン メニューから **[可用性セット]** を選択します。
-   - **[可用性セット]**:**[MyAvailabilitySet]** を選択します。
+   - **[可用性セット]**: **[MyAvailabilitySet]** を選択します。
    
 1. **[ターゲット ネットワーク IP 構成の追加]** を選択します。 
    1. **[MyVM1]** と **[MyVM2]** をバックエンド プールに追加します。
@@ -147,11 +150,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[正常性プローブの追加]** ページで、以下の値を入力または選択します。
    
    - **[名前]**:「*MyHealthProbe*」と入力します。
-   - **[プロトコル]**:ドロップダウン メニューから **[HTTP]** を選択します。 
-   - **[ポート]**:「*80*」と入力します。 
-   - **[パス]**:既定の URI の */* をそのまま使用します。 この値は任意の別の URI に置き換えることができます。 
-   - **[間隔]**:「*15*」と入力します。 [間隔] は、プローブの試行の間隔を示す秒数です。
-   - **[異常のしきい値]**:「*2*」と入力します。 この値は、プローブの連続する失敗回数です (この回数を超えると、VM は異常と見なされます)。
+   - **[プロトコル]**: ドロップダウンから **[HTTP]** を選択します。 
+   - **[ポート]**: 「*80*」と入力します。 
+   - **[パス]**: 既定の URI の */* をそのまま使用します。 この値は任意の別の URI に置き換えることができます。 
+   - **[間隔]**: 「*15*」と入力します。 [間隔] は、プローブの試行の間隔を示す秒数です。
+   - **[異常のしきい値]**: 「*2*」と入力します。 この値は、プローブの連続する失敗回数です (この回数を超えると、VM は異常と見なされます)。
    
 1. **[OK]** を選択します。
    
@@ -174,14 +177,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[名前]**:「*MyLoadBalancerRule*」と入力します。
    - **[フロントエンド IP アドレス]**:指定されていない場合は「*LoadBalancerFrontEnd*」と入力します。
    - **[プロトコル]**:**[TCP]** を選択します。
-   - **[ポート]**:「*80*」と入力します。
+   - **[ポート]**: 「*80*」と入力します。
    - **[バックエンド ポート]**:「*80*」と入力します。
-   - **[バックエンド プール]**:**[MyBackendPool]** を選択します。
-   - **[正常性プローブ]**:**[MyHealthProbe]** を選択します。 
+   - **[バックエンド プール]**: **[MyBackendPool]** を選択します。
+   - **[正常性プローブ]**: **[MyHealthProbe]** を選択します。 
    
 1. **[OK]** を選択します。
    
-  ![ロード バランサー規則の追加](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
+   ![ロード バランサー規則の追加](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
@@ -262,4 +265,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次は、可用性ゾーン間で VM の負荷分散を行う方法を学びます。
 
 > [!div class="nextstepaction"]
-> [可用性ゾーン間での VM の負荷分散](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [可用性ゾーン間で VM の負荷分散を行う](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

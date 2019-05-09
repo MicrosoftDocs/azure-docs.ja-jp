@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 03/18/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: e7159a8e3acf45105a11cc4574f9474457bed3ea
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682658"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189854"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
@@ -31,7 +31,7 @@ Azure Media Services (AMS) では、 **チャネル** はライブ ストリー�
 
 * オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効なチャネルに、シングル ビットレート ストリームが送信されます:RTMP またはスムーズ ストリーミング (Fragmented MP4)。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 * オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、AMS によるライブ エンコードの実行が無効なチャネルに送信します。 取り込んだストリームは、追加の処理なしで **チャネル**を通過します。 この方式は、 **パススルー**と呼ばれます。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek、Tricaster の各エンコーダー。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
-  
+
   > [!NOTE]
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
   > 
@@ -50,7 +50,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 > 
 
 ## <a name="billing-implications"></a>課金への影響
-ライブ エンコード チャネルでは、API を通じて状態が "実行中" に遷移するとすぐに、課金が開始されます。   Azure Portal や Azure Media Services Explorer ツール (http://aka.ms/amse) でも状態を表示できます。
+ライブ エンコード チャネルでは、API を通じて状態が "実行中" に遷移するとすぐに、課金が開始されます。   Azure Portal や Azure Media Services Explorer ツール (https://aka.ms/amse) でも状態を表示できます。
 
 次の表は、API と Azure Portal でチャネルの状態がどのように課金の状態に対応しているかを示しています。 API とポータルのユーザー エクスペリエンスとでは状態が少し異なります。 チャネルが API を通じて "実行中" 状態になるか、Azure ポータルで "準備完了" または "ストリーミング" 状態になるとすぐに、課金がアクティブになります。
 チャネルへの課金を停止するには、API を通じて、または Azure Portal で、チャネルを停止する必要があります。
@@ -89,29 +89,27 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 
 > [!NOTE]
 > 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。 ライブ エンコードは課金に影響するため、ライブ エンコード チャネルを "実行中" 状態のままにしておくと時間料金が発生します。  余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。 
-> 
-> 
 
 1. ビデオ カメラをコンピューターに接続します。 オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーでは、**シングル** ビットレート ストリームを次のいずれかのプロトコルで出力できます:RTMP またはスムーズ ストリーミング。 
-   
+
     この手順は、チャネルを作成した後でも実行できます。
 2. チャネルを作成し、起動します。 
 3. チャネルの取り込み URL を取得します。 
-   
+
     取り込み URL は、ライブ エンコーダーがチャネルにストリームを送信する際に使用されます。
 4. チャネルのプレビュー URL を取得します。 
-   
+
     この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
 5. プログラムを作成します。 
-   
+
     Azure Portal を使用する場合、プログラムを作成すると資産も作成されます。 
-   
+
     .NET SDK または REST を使用する場合は、プログラムを作成するときに資産を作成し、その資産を使用するように指定する必要があります。 
 6. プログラムに関連付けられた資産を発行します。   
-   
+
     >[!NOTE]
     >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミング元のストリーミング エンドポイントは、**実行中**状態である必要があります。 
-    
+
 7. ストリーミングとアーカイブの開始を準備するときにプログラムを開始します。
 8. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
 9. イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。
@@ -217,6 +215,7 @@ ISO 639-2 に準拠している、オーディオ ストリームの言語識別
 **Default720p** では、次の 6 つのレイヤーにビデオがエンコードされます。
 
 #### <a name="output-video-stream"></a>出力ビデオ ストリーム
+
 | ビットレート | 幅 | 高さ | 最大 FPS | プロファイル | 出力ストリーム名 |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |高 |Video_1280x720_3500kbps |
@@ -314,7 +313,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 | チャネルの状態 | ポータル UI インジケーター | 課金対象 |
 | --- | --- | --- |
 | 開始中 |開始中 |いいえ (遷移状態) |
-| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |[はい] |
+| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |はい |
 | 停止中 |停止中 |いいえ (遷移状態) |
 | 停止済み |停止済み |いいえ  |
 
@@ -357,7 +356,7 @@ Media Services のラーニング パスを確認します。
 [.NET SDK でシングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
 [REST API でチャネルを管理する](https://docs.microsoft.com/rest/api/media/operations/channel)
- 
+
 [Media Services の概念](media-services-concepts.md)
 
 [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992127"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651545"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 
@@ -48,10 +48,10 @@ ms.locfileid: "52992127"
 
 **URL** | **詳細**  
 --- | ---
-*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。
+*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 VM に対するすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (例: cache1.blob.core.windows.net および cache2.blob.core.windows.net) をホワイトリストに登録できます。
 login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
-*.hypervrecoverymanager.windowsazure.com | VM から Site Recovery サービス通信を実行できるようにするために必要です。
-*.servicebus.windows.net | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。
+*.hypervrecoverymanager.windowsazure.com | VM から Site Recovery サービス通信を実行できるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery IP' を使用できます。
+*.servicebus.windows.net | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery Monitoring IP' を使用できます。
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
@@ -99,8 +99,10 @@ Site Recovery IP アドレスの範囲は次のとおりです。
    韓国南部 | 52.231.298.185 | 52.231.200.144
    フランス中部 | 52.143.138.106 | 52.143.136.55
    フランス南部 | 52.136.139.227 |52.136.136.62
-
-
+   オーストラリア中部| 20.36.34.70 | 20.36.46.142
+   オーストラリア中部 2| 20.36.69.62 | 20.36.74.130
+   南アフリカ西部 | 102.133.72.51 | 102.133.26.128
+   南アフリカ北部 | 102.133.160.44 | 102.133.154.128
 ## <a name="example-nsg-configuration"></a>NSG 構成の例
 
 この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。

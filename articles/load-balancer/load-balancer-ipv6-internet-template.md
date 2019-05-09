@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 2374df3a457e0f4730dcaa6d69ea3f2e0fa6e9cc
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163210"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039794"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 
@@ -133,3 +133,7 @@ Azure Resource Manager のテンプレートには複数の変数とパラメー
 | lbName |ロード バランサーの名前を指定します。 この名前はポータルに表示されるか、CLI または PowerShell コマンドを使用して参照するときに使用されます。 |
 
 テンプレート内の残りの変数には、Azure がリソースを作成するときに割り当てられている派生値が含まれます。 これらの変数は変更しないでください。
+
+## <a name="next-steps"></a>次の手順
+
+テンプレート内のロード バランサーの JSON の構文とプロパティについては、「[Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)」を参照してください。

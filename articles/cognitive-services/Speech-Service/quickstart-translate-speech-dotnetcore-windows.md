@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、ユーザーの音声をキャプチャし、別の言語に変換してコマンド ラインにテキストを出力する、単純な .NET Core アプリケーションを作成します。 このガイドは、Windows ユーザー向けに設計されています。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 62d94113872585f1eb3444e57017046a7a684834
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b0b0c256db3cc93e515b38bf7daad72b082d2d3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729605"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850260"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>クイック スタート:Speech SDK for .NET Core を使用して音声を翻訳する
 
@@ -39,99 +39,7 @@ ms.locfileid: "53729605"
 
 1. `Program.cs` を開き、その中のすべてのコードを次の内容に置き換えます。
 
-    ```csharp
-    using System;
-    using System.Threading.Tasks;
-    using Microsoft.CognitiveServices.Speech;
-    using Microsoft.CognitiveServices.Speech.Translation;
-
-    namespace helloworld
-    {
-        class Program
-        {
-            public static async Task TranslationContinuousRecognitionAsync()
-            {
-                // Creates an instance of a speech translation config with specified subscription key and service region.
-                // Replace with your own subscription key and service region (e.g., "westus").
-                var config = SpeechTranslationConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
-                // Sets source and target languages.
-                string fromLanguage = "en-US";
-                config.SpeechRecognitionLanguage = fromLanguage;
-                config.AddTargetLanguage("de");
-
-                // Sets voice name of synthesis output.
-                const string GermanVoice = "de-DE-Hedda";
-                config.VoiceName = GermanVoice;
-                // Creates a translation recognizer using microphone as audio input.
-                using (var recognizer = new TranslationRecognizer(config))
-                {
-                    // Subscribes to events.
-                    recognizer.Recognizing += (s, e) =>
-                    {
-                        Console.WriteLine($"RECOGNIZING in '{fromLanguage}': Text={e.Result.Text}");
-                        foreach (var element in e.Result.Translations)
-                        {
-                            Console.WriteLine($"    TRANSLATING into '{element.Key}': {element.Value}");
-                        }
-                    };
-
-                    recognizer.Recognized += (s, e) =>
-                    {
-                        if (e.Result.Reason == ResultReason.TranslatedSpeech)
-                        {
-                            Console.WriteLine($"\nFinal result: Reason: {e.Result.Reason.ToString()}, recognized text in {fromLanguage}: {e.Result.Text}.");
-                            foreach (var element in e.Result.Translations)
-                            {
-                                Console.WriteLine($"    TRANSLATING into '{element.Key}': {element.Value}");
-                            }
-                        }
-                    };
-
-                    recognizer.Synthesizing += (s, e) =>
-                    {
-                        var audio = e.Result.GetAudio();
-                        Console.WriteLine(audio.Length != 0
-                            ? $"AudioSize: {audio.Length}"
-                            : $"AudioSize: {audio.Length} (end of synthesis data)");
-                    };
-
-                    recognizer.Canceled += (s, e) =>
-                    {
-                        Console.WriteLine($"\nRecognition canceled. Reason: {e.Reason}; ErrorDetails: {e.ErrorDetails}");
-                    };
-
-                    recognizer.SessionStarted += (s, e) =>
-                    {
-                        Console.WriteLine("\nSession started event.");
-                    };
-
-                    recognizer.SessionStopped += (s, e) =>
-                    {
-                        Console.WriteLine("\nSession stopped event.");
-                    };
-
-                    // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
-                    Console.WriteLine("Say something...");
-                    await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
-
-                    do
-                    {
-                        Console.WriteLine("Press Enter to stop");
-                    } while (Console.ReadKey().Key != ConsoleKey.Enter);
-
-                    // Stops continuous recognition.
-                    await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
-                }
-            }
-
-            static void Main(string[] args)
-            {
-                TranslationContinuousRecognitionAsync().Wait();
-            }
-        }
-    }
-    ```
+    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-dotnetcore/helloworld/Program.cs#code)]
 
 1. 同じファイル内で、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 

@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: このクイック スタートでは、提供されているパブリック LUIS アプリを使って、会話形式のテキストからユーザーの意図を判断します。 Node.js を使用して、パブリック アプリの HTTP 予測エンドポイントにユーザーの意図をテキストとして送信します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/07/2018
+ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: 3a16c87e96a94fcf95694d3cbfd6f8f07adedb74
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 38a95593d01fdac091504a6decf30b3dd55f9327
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717077"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865150"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>クイック スタート: Node.js を使用した意図の取得
 

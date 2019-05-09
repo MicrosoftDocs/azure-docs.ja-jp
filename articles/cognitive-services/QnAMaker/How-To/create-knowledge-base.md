@@ -1,26 +1,26 @@
 ---
 title: ナレッジ ベースを作成する
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: QnA Maker ポータルを使用して、おしゃべり機能を備えるナレッジ ベースを作成します。 これにより、アプリが魅力的になります。 上位の事前設定済みのおしゃべりのセットをボットのおしゃべりの開始点として KB に追加すると、最初から作成するよりもコストと時間を節約することができます。
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: QnA Maker API サービス ポータルを使用して、おしゃべり機能を備えるナレッジ ベースを作成します。 これにより、アプリが魅力的になります。 上位の事前設定済みのおしゃべりのセットをボットのおしゃべりの開始点として KB に追加すると、最初から作成するよりもコストと時間を節約することができます。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/25/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 4a4f3d44454e7851f74bbeb072a9d4dcd600a6ef
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338126"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439245"
 ---
-# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルを使用してナレッジ ベースを作成する
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>クイック スタート:QnA Maker API サービス ポータルを使用してナレッジ ベースを作成する
 
-QnA Maker では、ナレッジ ベースを作成するときに既存のデータ ソースを簡単に追加できます。 次のドキュメントの種類から、新しい QnA Maker ナレッジ ベースを作成できます。
+QnA Maker API サービス ポータルでは、ナレッジ ベースを作成するときに既存のデータ ソースを簡単に追加できます。 次のドキュメントの種類から、新しい QnA Maker ナレッジ ベースを作成できます。
 
 <!-- added for scanability -->
 * FAQ ページ
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **おしゃべり**を KB に追加します。 3 つのパーソナリティのいずれかを選択して、おしゃべりのサポートをボットに追加します。 
 
-    ![おしゃべりを KB に追加する ](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+    ![おしゃべりを KB に追加する](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
 
 1. **[Create your KB]\(KB の作成\)** を選択します。
 
@@ -69,6 +69,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ナレッジ ベースを作成できたら、QnA Maker ポータルで削除します。
 
 ## <a name="next-steps"></a>次の手順
+
+コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker)することができます。
 
 > [!div class="nextstepaction"]
 > [Add chit-chat personal](./chit-chat-knowledge-base.md)\(おしゃべり個人の追加\)

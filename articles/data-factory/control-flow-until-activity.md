@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: cd4b58dea43e497a2d7a5b977379d95f7004af45
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052309"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447474"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory の Until アクティビティ
 Until アクティビティは、プログラミング言語における do-until ループ構文と同じ働きを持ちます。 Until アクティビティでは、そこに関連付けられている条件が true に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。 
@@ -55,11 +54,11 @@ Until アクティビティは、プログラミング言語における do-unti
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | `Until` アクティビティの名前。 | String | [はい]
-type | **Until** に設定する必要があります。 | String | [はい]
-expression | true または false に評価される式であることが必要です | 式。  | [はい]
+name | `Until` アクティビティの名前。 | String | はい
+type | **Until** に設定する必要があります。 | String | はい
+expression | true または false に評価される式であることが必要です | 式。  | はい
 timeout | ここに指定した時間が経過すると、do-until ループがタイムアウトします。 | 文字列 をオンにします。 `d.hh:mm:ss` または `hh:mm:ss`。 既定値は 7 日間です。 最大値は 90 日間です。 | いいえ 
-アクティビティ | 式が `true` に評価されるまで実行される一連のアクティビティです。 | アクティビティの配列。 |  [はい]
+Activities | 式が `true` に評価されるまで実行される一連のアクティビティです。 | アクティビティの配列。 |  はい
 
 ## <a name="example-1"></a>例 1
 
@@ -67,7 +66,7 @@ timeout | ここに指定した時間が経過すると、do-until ループが�
 > このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用して Data Factory パイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
 
 ### <a name="pipeline-with-until-activity"></a>Until アクティビティのあるパイプライン
-この例では、パイプラインに **Until** および **Wait** という 2 つのアクティビティが含まれています。 Web アクティビティをループ実行する前に、指定した待ち時間が Wait アクティビティによって確保されます。 Data Factory における式と関数については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。 
+この例では、パイプラインに 2 つのアクティビティ **Until** および **Wait** が含まれています。 Web アクティビティをループ実行する前に、指定した待ち時間が Wait アクティビティによって確保されます。 Data Factory における式と関数については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。 
 
 ```json
 {
@@ -248,25 +247,28 @@ timeout | ここに指定した時間が経過すると、do-until ループが�
 ```
 
 ### <a name="powershell-commands"></a>PowerShell コマンド
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 これらのコマンドは、JSON ファイルが C:\ADF フォルダーに保存されていることを前提としています。 
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription "<Your subscription name>"
+Connect-AzAccount
+Select-AzSubscription "<Your subscription name>"
 
 $resourceGroupName = "<Resource Group Name>"
 $dataFactoryName = "<Data Factory Name. Must be globally unique>";
-Remove-AzureRmDataFactoryV2 $dataFactoryName -ResourceGroupName $resourceGroupName -force
+Remove-AzDataFactoryV2 $dataFactoryName -ResourceGroupName $resourceGroupName -force
 
 
-Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -DefinitionFile "C:\ADF\AzureStorageLinkedService.json"
-Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "BlobDataset" -DefinitionFile "C:\ADF\BlobDataset.json"
-Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "Adfv2QuickStartPipeline" -DefinitionFile "C:\ADF\Adfv2QuickStartPipeline.json"
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName "Adfv2QuickStartPipeline" -ParameterFile C:\ADF\PipelineParameters.json
+Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
+Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -DefinitionFile "C:\ADF\AzureStorageLinkedService.json"
+Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "BlobDataset" -DefinitionFile "C:\ADF\BlobDataset.json"
+Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "Adfv2QuickStartPipeline" -DefinitionFile "C:\ADF\Adfv2QuickStartPipeline.json"
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName "Adfv2QuickStartPipeline" -ParameterFile C:\ADF\PipelineParameters.json
 
 while ($True) {
-    $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+    $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
     if ($run) {
         if ($run.Status -ne 'InProgress') {
@@ -276,7 +278,7 @@ while ($True) {
         }
         Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
         Write-Host "Activity run details:" -foregroundcolor "Yellow"
-        $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+        $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
         $result
 
         Write-Host "Activity 'Output' section:" -foregroundcolor "Yellow"

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2017
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 083cb4eb84746f4a61b51f3573a0bf66110fe1ee
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: b824d122a5d26c17c41a0e2ea1c595c9e2dd7206
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435050"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354350"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>条件付きアクセスを使用して Azure 管理へのアクセスを管理する
 
@@ -32,7 +32,7 @@ Azure 管理のポリシーを作成するには、ポリシーを適用する�
 
 ![Azure 管理の条件付きアクセス](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-作成したポリシーは、従来の Azure Portal、Azure Portal、Azure Resource Manager のプロバイダー、従来の Service Management API、および Azure PowerShell を含む、すべての Azure 管理エンドポイントに適用されます。
+作成したポリシーは、Azure portal、Azure Resource Manager のプロバイダー、従来の Service Management API、Azure PowerShell、および Visual Studio サブスクリプション管理者ポータルを含め、すべての Azure 管理エンドポイントに適用されます。 ポリシーは Azure Resource Manager API を呼び出す Azure PowerShell に適用されることに注意してください。 Microsoft Graph を呼び出す [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) には適用されません。
 
 > [!CAUTION]
 > Azure 管理へのアクセスを管理するポリシーを設定する前に、条件付きアクセスのしくみについて理解しておくようにしてください。 ポータルへのアクセスをブロックする条件を作成しないようにしてください。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: b1d4a3bde7852cb4eb9192ed1eab80c20613510a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263267"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176584"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
 
@@ -21,44 +21,44 @@ Azure Kubernetes Service (AKS) のクラスターを作成および管理する�
 このベスト プラクティスの記事では、クラスター オペレーター向けのネットワーク接続とセキュリティに焦点を当てます。 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
-> * AKS の基本的なネットワーク モードと高度なネットワーク モードを比較する
+> * AKS で kubenet ネットワーク モードと Azure CNI ネットワーク モードを比較する
 > * 必要な IP アドレス指定と接続を計画する
 > * ロード バランサー、イングレス コントローラー、または Web アプリケーション ファイアウォール (WAF) を使用してトラフィックを分散する
 > * クラスター ノードに安全に接続する
 
 ## <a name="choose-the-appropriate-network-model"></a>適切なネットワーク モデルを選択する
 
-**ベスト プラクティス ガイダンス** - 既存の仮想ネットワークまたはオンプレミス ネットワークと統合するには、AKS で高度なネットワークを使用します。 このネットワーク モデルでは、エンタープライズ環境でリソースとコントロールをさらに分離することもできます。
+**ベスト プラクティス ガイダンス** - 既存の仮想ネットワークまたはオンプレミスのネットワークと統合するには、AKS で Azure CNI ネットワークを使用します。 このネットワーク モデルでは、エンタープライズ環境でリソースとコントロールをさらに分離することもできます。
 
 仮想ネットワークは、AKS ノードおよび顧客がアプリケーションにアクセスするための基本的な接続を提供します。 仮想ネットワークに AKS クラスターをデプロイするには、次の 2 つの異なる方法があります。
 
-* **基本的なネットワーク** - Azure は、クラスターがデプロイされて [kubenet][kubenet] Kubernetes プラグインを使用する際に、仮想ネットワーク リソースを管理します。
-* **高度なネットワークの** - 既存の仮想ネットワークにデプロイし、[Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインを使用します。 ポッドは、他のネットワーク サービスまたはオンプレミス リソースにルーティングできる個々の IP を受け取ります。
+* **Kubenet ネットワーク** - クラスターがデプロイされ、そのクラスターで [kubenet][kubenet] Kubernetes プラグインが使用される場合、Azure によって仮想ネットワーク リソースが管理されます。
+* **Azure CNI ネットワーク** - 既存の仮想ネットワークにデプロイし、[Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインを使用します。 ポッドは、他のネットワーク サービスまたはオンプレミス リソースにルーティングできる個々の IP を受け取ります。
 
 Container Networking Interface (CNI) は、コンテナー ランタイムがネットワーク プロバイダーに要求を行うことを可能にする、ベンダーに依存しないプロトコルです。 Azure CNI はポッドとノードの IP アドレスを割り当てられるし、既存の Azure 仮想ネットワークに接続する際に IP アドレス管理 (IPAM) 機能を提供します。 各ノードおよびポッド リソースは、Azure 仮想ネットワーク内の IP アドレスを受け取ります。他のリソースまたはサービスと通信するのに追加のルーティングは必要ありません。
 
 ![各ブリッジが 1 つの Azure VNet に接続している 2 つのノードを示す図](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-ほとんどの運用環境デプロイでは、高度なネットワークを使用する必要があります。 このネットワーク モデルでは、コントロールの分離とリソースの管理が可能です。 セキュリティの観点から、多くの場合に、それらのリソースを異なるチームが管理し、セキュリティで保護することが望まれます。 高度なネットワークでは、各ポッドに割り当てられた IP アドレスを使用して、既存の Azure リソース、オンプレミス リソース、またはその他のサービスに直接接続することができます。
+ほとんどの運用環境デプロイでは、Azure CNI ネットワークを使用する必要があります。 このネットワーク モデルでは、コントロールの分離とリソースの管理が可能です。 セキュリティの観点から、多くの場合に、それらのリソースを異なるチームが管理し、セキュリティで保護することが望まれます。 Azure CNI ネットワークでは、各ポッドに割り当てられた IP アドレスを使用して、既存の Azure リソース、オンプレミスのリソース、またはその他のサービスに直接接続することができます。
 
-高度なネットワークを使用する際に、仮想ネットワーク リソースは、AKS クラスターとは別個のリソース グループに含まれます。 これらのリソースにアクセスして管理するためのアクセス許可を AKS サービス プリンシパルに委任します。 AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
+Azure CNI ネットワークを使用する場合、仮想ネットワーク リソースは AKS クラスターとは別個のリソース グループに含まれます。 これらのリソースにアクセスして管理するためのアクセス許可を AKS サービス プリンシパルに委任します。 AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 AKS サービス プリンシパルへの委任の詳細については、[他の Azure リソースへのアクセスの委任][sp-delegation]に関するページを参照してください。
 
-各ノードとポッドは独自の IP アドレスを受け取ると、AKS サブネットのアドレス範囲を計画します。 これらのサブネットは、デプロイするすべてのノード、ポッド、およびネットワーク リソースの IP アドレスを提供するのに十分な大きさである必要があります。 各 AKS クラスターは、その独自のサブネットに配置する必要があります。 Azure でオンプレミスまたはピアリングされたネットワークへの接続を許可するには、既存のネットワーク リソースと重複する IP アドレス範囲を使用しないようにします。 各ノードが基本的なネットワークと高度なネットワークの両方で実行するポッドの数には、既定の制限があります。 スケール アップ イベントまたはクラスター アップグレードを処理するには、割り当てられたサブネットで使用できる追加の IP アドレスも必要となります。
+各ノードとポッドは独自の IP アドレスを受け取ると、AKS サブネットのアドレス範囲を計画します。 これらのサブネットは、デプロイするすべてのノード、ポッド、およびネットワーク リソースの IP アドレスを提供するのに十分な大きさである必要があります。 各 AKS クラスターは、その独自のサブネットに配置する必要があります。 Azure でオンプレミスまたはピアリングされたネットワークへの接続を許可するには、既存のネットワーク リソースと重複する IP アドレス範囲を使用しないようにします。 各ノードが kubenet ネットワークと Azure CNI ネットワークの両方で実行するポッドの数には、既定の制限があります。 スケール アップ イベントまたはクラスター アップグレードを処理するには、割り当てられたサブネットで使用できる追加の IP アドレスも必要となります。
 
-必要な IP アドレスを計算するには、[AKS における高度なネットワークの構成][advanced-networking]に関するページを参照してください
+必要な IP アドレスを計算するには、[AKS での Azure CNI ネットワークの構成][advanced-networking]に関するページを参照してください。
 
-### <a name="basic-networking-with-kubenet"></a>Kubenet を使用した基本的なネットワーク
+### <a name="kubenet-networking"></a>Kubenet ネットワーク
 
-基本的なネットワークでは、クラスターをデプロイする前に仮想ネットワークをセットアップする必要はないものの、欠点があります。
+kubenet では、クラスターをデプロイする前に仮想ネットワークを設定する必要はないものの、次のような欠点があります。
 
-* ノードとポッドが異なる IP サブネット上に配置されます。 ユーザー定義ルーティング (UDR) と IP 転送を使用すると、ポッドとノードの間のトラフィックをルーティングできます。 この追加のルーティングにより、ネットワーク パフォーマンスが低下します。
-* 既存のオンプレミス ネットワークへの接続または他の Azure 仮想ネットワークへのピアリングが複雑です。
+* ノードとポッドが異なる IP サブネット上に配置されます。 ユーザー定義ルーティング (UDR) と IP 転送を使用すると、ポッドとノードの間のトラフィックをルーティングできます。 この追加のルーティングにより、ネットワーク パフォーマンスが低下する場合があります。
+* 既存のオンプレミスのネットワークへの接続または他の Azure 仮想ネットワークへのピアリングが複雑である可能性があります。
 
-基本的なネットワークは、AKS クラスターから仮想ネットワークとサブネットを個別に作成する必要がないので、小規模の開発またはテスト ワークロードに適しています。 トラフィックの少ない単純な Web サイト (ワークロードをコンテナーにリフト アンド シフトする) は、基本的なネットワークを使用してデプロイされた AKS クラスターのシンプルさからもメリットを得られます。 ほとんどの運用環境デプロイでは、高度なネットワークを計画して使用します。
+Kubenet は、AKS クラスターから仮想ネットワークとサブネットを個別に作成する必要がないので、小規模の開発またはテスト ワークロードに適しています。 トラフィックの少ないシンプルな Web サイト (ワークロードをコンテナーにリフト アンド シフトする) は、Kubenet ネットワークを使用してデプロイされた AKS クラスターのシンプルさからもメリットを得られます。 ほとんどの運用環境デプロイでは、Azure CNI ネットワークを計画して使用する必要があります。 [kubenet を使用して独自の IP アドレス範囲と仮想ネットワークを構成][aks-configure-kubenet-networking]することもできます。
 
 ## <a name="distribute-ingress-traffic"></a>イングレス トラフィックを分散する
 
@@ -116,9 +116,37 @@ spec:
 
 ![Azure App Gateway などの Web アプリケーション ファイアウォール (WAF) は、AKS クラスターのトラフィックを保護および分散することができます](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Web アプリケーション ファイアウォール (WAF) は、着信トラフィックをフィルター処理して追加のセキュリティ層を提供します。 Open Web Application Security Project (OWASP) は、クロス サイト スクリプティングや cookie ポイズニングなどの攻撃を監視する一連のルールを提供します。 [Azure Application Gateway][app-gateway] は、トラフィックが AKS クラスターおよびアプリケーションに到達する前にこれらのセキュリティ機能を提供できるよう、AKS クラスターと統合可能な WAF です。 他のサード パーティ製ソリューションでもこれらの関数が実行されるので、特定の製品で既存の投資や専門知識を引き続き使用できます。
+Web アプリケーション ファイアウォール (WAF) は、着信トラフィックをフィルター処理して追加のセキュリティ層を提供します。 Open Web Application Security Project (OWASP) は、クロス サイト スクリプティングや cookie ポイズニングなどの攻撃を監視する一連のルールを提供します。 [Azure Application Gateway][app-gateway] (現在 AKS でプレビューの段階です) は、トラフィックが AKS クラスターおよびアプリケーションに到達する前にこれらのセキュリティ機能を提供できるよう、AKS クラスターと統合可能な WAF です。 他のサード パーティ製ソリューションでもこれらの関数が実行されるので、特定の製品で既存の投資や専門知識を引き続き使用できます。
 
 ロード バランサーまたはイングレス リソースは、AKS クラスターで持続的に実行されて、トラフィックの分散をさらにきめ細かく調整します。 App Gateway は、リソース定義でイングレス コントローラーとして一元的に管理できます。 最初に、[Application Gateway イングレス コントローラーを作成します][app-gateway-ingress]。
+
+## <a name="control-traffic-flow-with-network-policies"></a>ネットワーク ポリシーを使用してトラフィック フローを制御する
+
+**ベスト プラクティス ガイダンス** - ネットワーク ポリシーを使用して、ポッドへのトラフィックを許可または拒否します。 既定では、1 つのクラスター内でポッド間のすべてのトラフィックが許可されます。 セキュリティを強化するには、ポッドの通信を制限するルールを定義します。
+
+ネットワーク ポリシー (現在 AKS でプレビューの段階です) は、ポッド間のトラフィック フローを制御できる Kubernetes の機能です。 割り当てられたラベル、名前空間、トラフィック ポートなどの設定に基づいて、トラフィックを許可するか拒否するかを選択できます。 トラフィックのフローを制御するには、ネットワーク ポリシーを使用するのがクラウドネイティブな方法です。 ポッドは AKS クラスター内で動的に作成されるため、必要なネットワーク ポリシーを自動的に適用できます。 ポッド間のトラフィック制御には Azure ネットワーク セキュリティ グループを使用せず、ネットワーク ポリシーを使用してください。
+
+ネットワーク ポリシーを使用するには、AKS クラスターを作成するときにこの機能を有効にする必要があります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。 クラスター上でネットワーク ポリシーを有効にして、必要に応じて使用できるように、事前に計画してください。
+
+ネットワーク ポリシーは、YAML マニフェストを使用して Kubernetes リソースとして作成されます。 ポリシーが定義済みのポッドに適用され、次にイングレス ルールまたはエグレス ルールによってトラフィックのフロー方法が定義されます。 次の例では、*app: backend* ラベルが適用されたポッドにネットワーク ポリシーを適用します。 次に、イングレス ルールでは、*app: frontend* ラベルが適用されたポッドからのトラフィックのみを許可します。
+
+```yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+```
+
+ポリシーの概要については、「[Secure traffic between pods using network policies in Azure Kubernetes Service (AKS) (Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護)][use-network-policies]」を参照してください。
 
 ## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>要塞ホストを介してノードに安全に接続する
 
@@ -140,7 +168,7 @@ AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubern
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
 [nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
-[haproxy]: http://www.haproxy.org
+[haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik
 [barracuda-waf]: https://www.barracuda.com/products/webapplicationfirewall/models/5
 
@@ -155,4 +183,6 @@ AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubern
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
-[advanced-networking]: configure-advanced-networking.md
+[use-network-policies]: use-network-policies.md
+[advanced-networking]: configure-azure-cni.md
+[aks-configure-kubenet-networking]: configure-kubenet.md

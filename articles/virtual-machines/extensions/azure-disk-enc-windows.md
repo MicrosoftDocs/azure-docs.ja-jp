@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 11ec26729b2239279dddc8cd62f6b658a4f7ed20
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413792"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983474"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryption)
 
 ## <a name="overview"></a>概要
 
-Azure Disk Encryption は、Bitlocker を利用して、Windows を実行している Azure 仮想マシン上で完全なディスク暗号化を提供します。  このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで管理することができます。 
+Azure Disk Encryption は、BitLocker を利用して、Windows を実行している Azure 仮想マシン上で完全なディスク暗号化を提供します。  このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで管理することができます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,8 +58,14 @@ Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッ�
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KekVaultResourceId": "[keyVaultResourceID]",
+      
       "KeyVaultURL": "[keyVaultURL]",
+          "KeyVaultResourceId": "[keyVaultResourceID]",
+
+      "EncryptionOperation": "[encryptionOperation]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     },
@@ -76,13 +82,15 @@ Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッ�
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | 文字列 |
 | type | AzureDiskEncryptionForWindows| 文字列 |
-| typeHandlerVersion | 1.0、2.2 (VMSS) | int |
-| (省略可能) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
+| typeHandlerVersion | 1.0、1.1、2.2 (VMSS) | int |
+| (省略可能) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (省略可能) AADClientSecret | password | 文字列 |
 | (省略可能) AADClientCertificate | thumbprint | 文字列 |
 | EncryptionOperation | EnableEncryption | 文字列 | 
-| KeyEncryptionAlgorithm | RSA-OAEP | 文字列 |
+| KeyEncryptionAlgorithm | RSA-OAEP、RSA1_5 | 文字列 |
 | KeyEncryptionKeyURL | url | 文字列 |
+| KeyVaultResourceId | リソース URI | 文字列 |
+| KekVaultResourceId | リソース URI | 文字列 |
 | KeyVaultURL | url | 文字列 |
 | SequenceVersion | uniqueidentifier | 文字列 |
 | VolumeType | OS、Data、All | 文字列 |

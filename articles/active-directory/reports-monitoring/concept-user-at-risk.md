@@ -2,24 +2,25 @@
 title: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート | Microsoft Docs
 description: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。
 services: active-directory
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
-ms.date: 11/13/2018
-ms.author: priyamo
+ms.subservice: report-monitor
+ms.date: 01/17/2019
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a7a3877970d5ecf3b86471b94fbb1bf6e5efbb4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 463f5c2d03cd96089342aa9b22ef85ebc05aa909
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621073"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436729"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure portal におけるリスクのフラグ付きユーザー レポート
 
@@ -55,19 +56,16 @@ Azure AD の Free および Basic エディションのリスクのフラグ付�
 
 ![リスクの高いサインイン](./media/concept-user-at-risk/03.png)
 
-ユーザーを選択すると、関連するユーザー データ ブレードが開きます。 危険な状態のユーザーに関して、そのユーザーのサインイン履歴を確認し、必要に応じてパスワードをリセットすることができます。
-
-![リスクの高いサインイン](./media/concept-user-at-risk/46.png)
-
+ユーザーを選択すると、サインイン情報が表示されます。 危険な状態のユーザーに関して、そのユーザーのサインイン履歴を確認し、必要に応じてパスワードをリセットすることができます。
 
 このダイアログから次の操作を行うことができます。
 
 - レポートのダウンロード
-
 - ユーザーの検索
 
-![リスクの高いサインイン](./media/concept-user-at-risk/16.png)
+    ![リスクの高いサインイン](./media/concept-user-at-risk/16.png)
 
+より詳細な情報を取得するには、Premium ライセンスが必要です。
 
 ## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Azure AD Premium エディションにおける危険な状態のユーザー レポート
 

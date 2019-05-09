@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569442f5dfdf96f03a95f7210bfe1ed7dc3af8de
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091489"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093458"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection-preview"></a>Azure Data Box Disk のセキュリティとデータ保護 (プレビュー)
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk のセキュリティとデータ保護
 
 この記事では、Azure Data Box Disk のセキュリティに注目し、Azure Data Box ソリューションの各コンポーネントとそこに格納されるデータを保護する働きを持った機能について説明します。 
-
-> [!IMPORTANT]
-> Data Box Disk はプレビュー段階にあります。 このソリューションを展開する前に、[プレビューに関する Azure のサービス利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
 
 ## <a name="data-flow-through-components"></a>各コンポーネントを通るデータのフロー
 
@@ -74,17 +71,17 @@ Azure Data Box Disk は、同サービスにおける次の主要なインスタ
 
 - **注文の詳細** - 発注後、ユーザーの配送先住所、メール、連絡先情報が Azure portal に格納されます。 たとえば、次の情報が保存の対象となります。
 
-    - 連絡先の名前
-    - 電話番号
-    - 電子メール
-    - 番地
-    - City
-    - 郵便番号
-    - 状態
-    - 国/地方/地域
-    - ドライブ ID
-    - 運送業者のアカウント番号
-    - 配送追跡番号
+  - 連絡先の名前
+  - 電話番号
+  - 電子メール
+  - 番地
+  - City
+  - 郵便番号
+  - 状態
+  - 国/地方/地域
+  - ドライブ ID
+  - 運送業者のアカウント番号
+  - 配送追跡番号
 
     注文の詳細は、ジョブが完了するか、お客様が注文を削除すると、Data Box サービスによって削除されます。
 

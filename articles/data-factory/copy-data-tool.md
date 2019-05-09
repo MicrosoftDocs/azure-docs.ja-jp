@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 8941ec26cef5e3dc2f17faf0d7eb843b76f8926f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101756"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
 Azure Data Factory のデータのコピー ツールを使うと、通常はエンド ツー エンドのデータ統合シナリオの最初の手順である、Data Lake へのデータの取り込みプロセスが容易になり、最適化されます。  時間が短縮され、Azure Data Factory を使って初めてデータ ソースからデータを取り込むときに特に効果があります。 このツールには次のような利点があります。
@@ -48,7 +48,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 5. 作成される Data Factory のエンティティの**概要**を確認します。 
 6. 必要に応じてパイプラインを**編集**し、コピー アクティビティの設定を更新します。 
 
- このツールは最初からビッグ データを考慮して設計されており、さまざまな種類のデータとオブジェクトをサポートしています。 何百ものフォルダー、ファイル、テーブルの移動に使うことができます。 このツールは、自動データ プレビュー、スキーマのキャプチャと自動マッピング、およびデータのフィルター処理にも対応しています。
+   このツールは最初からビッグ データを考慮して設計されており、さまざまな種類のデータとオブジェクトをサポートしています。 何百ものフォルダー、ファイル、テーブルの移動に使うことができます。 このツールは、自動データ プレビュー、スキーマのキャプチャと自動マッピング、およびデータのフィルター処理にも対応しています。
 
 ![データのコピー ツール](./media/copy-data-tool/copy-data-tool.png)
 

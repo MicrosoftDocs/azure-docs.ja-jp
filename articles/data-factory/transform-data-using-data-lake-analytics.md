@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: cbe4d3931a5e7b279218a1f56a3842efbc238780
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053569"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760972"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,8 +36,8 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 
 | プロパティ                 | 説明                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 | [はい]                                      |
-| **accountName**          | Azure Data Lake Analytics アカウント名。  | [はい]                                      |
+| **type**                 | type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 | はい                                      |
+| **accountName**          | Azure Data Lake Analytics アカウント名。  | はい                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                        |
 | **subscriptionId**       | Azure サブスクリプション ID                    | いいえ                                        |
 | **resourceGroupName**    | Azure リソース グループ名                | いいえ                                        |
@@ -56,11 +55,11 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 
 | プロパティ                | 説明                              | 必須 |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | アプリケーションのクライアント ID を取得します。     | [はい]      |
-| **servicePrincipalKey** | アプリケーションのキーを取得します。           | [はい]      |
-| **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい]      |
+| **servicePrincipalId**  | アプリケーションのクライアント ID を取得します。     | はい      |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。           | はい      |
+| **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい      |
 
-**例: サービス プリンシパル認証**
+**例:サービス プリンシパルの認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -120,19 +119,19 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 
 | プロパティ            | 説明                              | 必須 |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | パイプラインのアクティビティの名前。     | [はい]      |
+| name                | パイプラインのアクティビティの名前。     | はい      |
 | description         | アクティビティの動作を説明するテキスト。  | いいえ        |
-| type                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | [はい]      |
-| linkedServiceName   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |[はい]       |
-| scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | [はい]      |
-| scriptLinkedService | データ ファクトリへのスクリプトを含む **Azure Data Lake Store** または **Azure Storage** をリンクするリンク サービス | [はい]      |
+| type                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | はい      |
+| linkedServiceName   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |はい       |
+| scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | はい      |
+| scriptLinkedService | データ ファクトリへのスクリプトを含む **Azure Data Lake Store** または **Azure Storage** をリンクするリンク サービス | はい      |
 | degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ        |
 | priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ        |
 | parameters          | U-SQL スクリプトに渡すパラメーター。    | いいえ        |
 | runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ        |
-| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります: **Semantic:** セマンティクスの検査と必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コードの生成などを含む完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ  |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ  |
 
-Data Factory によって送信されるスクリプト定義については、[SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script)をご覧ください。 
+スクリプト定義については、[SearchLogProcessing.txt](#sample-u-sql-script) をご覧ください。 
 
 ## <a name="sample-u-sql-script"></a>U-SQL スクリプトのサンプル
 
@@ -163,7 +162,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-前述のスクリプト例では、スクリプトの入力と出力は **@in** パラメーターと **@out** パラメーターで定義されます。 U-SQL スクリプトの **@in** パラメーターと **@out** パラメーターの値は、"parameters" セクションを使用して Data Factory によって動的に渡されます。 
+前述のスクリプト例では、スクリプトの入力と出力は **\@in** パラメーターと **\@out** パラメーターで定義されます。 U-SQL スクリプトの **\@in** パラメーターと **\@out** パラメーターの値は、"parameters" セクションを使用して Data Factory によって動的に渡されます。 
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism など) や優先度も指定できます。
 

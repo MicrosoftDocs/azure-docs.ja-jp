@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 2a1fe501386884e02657d4b6cbef58ffc533fa33
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43ecdafac4f0a5cdc9e619537cdbe2a42ff7fe1b
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297990"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191920"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>ロジック アプリを使用した B2B ソリューション用の統合アカウントの作成と管理
 
@@ -54,12 +54,12 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | プロパティ | 必須 | 値の例 | 説明 | 
    |----------|----------|---------------|-------------|
-   | Name | [はい] | test-integration-account | 統合アカウントの名前。 たとえば、指定された名前を使用します。 | 
-   | サブスクリプション | [はい] | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 | 
-   | リソース グループ | [はい] | test-integration-account-rg | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 この例では、指定された名前の新しいリソース グループを作成します。 | 
-   | 価格レベル | [はい] | 無料 | 使用する価格レベル。 この例では、**[Free]** を選択します。詳しくは、「[LLogic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)」と「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。 | 
-   | リージョン | [はい] | 米国西部 | 統合アカウントの情報の保存先となるリージョン ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 | 
-   | Log Analytics | いいえ  | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
+   | Name | はい | test-integration-account | 統合アカウントの名前。 たとえば、指定された名前を使用します。 | 
+   | サブスクリプション | はい | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 | 
+   | リソース グループ | はい | test-integration-account-rg | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 この例では、指定された名前の新しいリソース グループを作成します。 | 
+   | 価格レベル | はい | 無料 | 使用する価格レベル。 この例では、**[Free]** を選択します。詳しくは、「[LLogic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)」と「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。 | 
+   | Location | はい | 米国西部 | 統合アカウントの情報の保存先となるリージョン ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 | 
+   | Log Analytics ワークスペース | いいえ  | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    ||||| 
 
 4. 準備ができたら、**[ダッシュボードにピン留めする]**、**[作成]** の順に選択します。

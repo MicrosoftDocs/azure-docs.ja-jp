@@ -1,26 +1,22 @@
 ---
 title: 'チュートリアル: Azure Stream Analytics の JavaScript ユーザー定義関数 | Microsoft Docs '
 description: このチュートリアルでは、JavaScript ユーザー定義関数を使用して高度なクエリ機構を実行します
-keywords: JavaScript、ユーザー定義関数、UDF
 services: stream-analytics
 author: rodrigoamicrosoft
-manager: kfile
-ms.assetid: ''
+ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.workload: data-services
-ms.author: rodrigoa
-ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088879"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192277"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル: Azure Stream Analytics の JavaScript ユーザー定義関数
+# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数
  
 Azure Stream Analytics は、JavaScript で記述されたユーザー定義関数をサポートします。 JavaScript が提供する一連の豊富な **String**、**RegExp**、**Math**、**Array**、**Date** メソッドによって、Stream Analytics ジョブを伴う複雑なデータ変換の作成が容易になります。
 
@@ -50,12 +46,19 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 関数定義において禁止されているわけではありませんが、**Date.GetDate()** や **Math.random()** などの関数の使用は避ける必要があります。 これらの関数では呼び出すたびに同じ結果が**返らず**、Azure Stream Analytics サービスは関数呼び出しや戻り値のジャーナルを保持しません。 関数が同じイベントで異なる結果を返す場合、ユーザーや Stream Analytics サービスによってジョブが再起動された際の再現性は保証されません。
 
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Azure Portal での JavaScript ユーザー定義関数の追加
-既存の Stream Analytics ジョブの下で単一の JavaScript ユーザー定義関数を作成するには、次の手順を実行します。
+既存の Stream Analytics ジョブの下で単一の JavaScript ユーザー定義関数を作成するには、次の手順に従います。
+
+> [!NOTE]
+> これらの手順は、クラウド内で実行するように構成された Stream Analytics ジョブに対して有効です。 お使いの Stream Analytics ジョブが Azure IoT Edge 上で実行されるように構成されている場合は、代わりに Visual Studio を使用し、[C# を使ってユーザー定義関数を記述](stream-analytics-edge-csharp-udf.md)します。
 
 1.  Azure Portal で Stream Analytics ジョブを見つけます。
-2.  **[ジョブ トポロジ]** で、関数を選択します。 空の関数一覧が表示されます。
-3.  新しいユーザー関数を作成するには、**[追加]** を選択します。
+
+2. **[ジョブ トポロジ]** 見出しの下にある **[関数]** を選択します。 空の関数一覧が表示されます。
+
+3.  新しいユーザー定義関数を作成するには、**[追加]** を選択します。
+
 4.  **[新しい関数]** ブレードの **[関数の種類]** で、**[JavaScript]** を選択します。 既定の関数テンプレートがエディターに表示されます。
+
 5.  **[UDF alias (UDF エイリアス)]** に「**hex2Int**」と入力し、関数の実装を次のように変更します。
 
     ```javascript
@@ -70,7 +73,7 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>クエリでの JavaScript ユーザー定義関数の呼び出し
 
-1. クエリ エディターの **[ジョブ トポロジ]** で、**[クエリ]** を選択します。
+1. クエリ エディターで、**[ジョブ トポロジ]** 見出しの下にある **[クエリ]** を選択します。
 2.  クエリを編集し、次のようにユーザー定義関数を呼び出します。
 
     ```SQL
@@ -97,10 +100,10 @@ Stream Analytics クエリ言語と JavaScript でサポートされる型の間
 Stream Analytics | JavaScript
 --- | ---
 bigint | Number (JavaScript では最大 2^53 の精度の整数しか表現できません)
-Datetime | Date (JavaScript ではミリ秒のみサポートされています)
+DateTime | Date (JavaScript ではミリ秒のみサポートされています)
 double | Number
 nvarchar(MAX) | String
-レコード | オブジェクト
+レコード | Object
 Array | Array
 NULL | Null
 
@@ -111,9 +114,9 @@ JavaScript から Stream Analytics への変換を以下に示します。
 JavaScript | Stream Analytics
 --- | ---
 Number | Bigint (値が四捨五入され、long.MinValue と long.MaxValue の間の場合。それ以外の場合は double)
-日付 | Datetime
+Date | DateTime
 String | nvarchar(MAX)
-オブジェクト | レコード
+Object | レコード
 Array | Array
 Null、未定義 | NULL
 他のすべての種類 (関数やエラーなど) | サポート対象外 (ランタイム エラーが発生します)

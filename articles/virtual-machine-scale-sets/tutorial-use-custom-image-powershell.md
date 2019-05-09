@@ -16,14 +16,15 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 924fea7a8a8e6fb1ab25584a49f38b25156d1ec6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a3b0f9b2b158bd36259ee96633682e1777333499
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230514"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981045"
 ---
-# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
+# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
+
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -34,9 +35,9 @@ ms.locfileid: "51230514"
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 6.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 
 ## <a name="create-and-configure-a-source-vm"></a>ソース VM の作成と構成
@@ -44,24 +45,24 @@ PowerShell をインストールしてローカルで使用する場合、この
 >[!NOTE]
 > このチュートリアルでは、汎用化された VM イメージを作成および使用する手順について説明します。 特殊な VHD からスケール セットを作成することはサポートされていません。
 
-最初に [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成し、次に [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 この VM は、カスタム VM イメージのソースとして使用されます。 次の例では、*myResourceGroup* という名前のリソース グループに *myCustomVM* という名前の VM を作成します。 メッセージが表示されたら、VM のログオン資格情報として使用するユーザー名とパスワードを入力します。
+最初に [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成し、次に [New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 この VM は、カスタム VM イメージのソースとして使用されます。 次の例では、*myResourceGroup* という名前のリソース グループに *myCustomVM* という名前の VM を作成します。 メッセージが表示されたら、VM のログオン資格情報として使用するユーザー名とパスワードを入力します。
 
 ```azurepowershell-interactive
 # Create a resource a group
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 # Create a Windows Server 2016 Datacenter VM
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Name "myCustomVM" `
   -ImageName "Win2016Datacenter" `
   -OpenPorts 3389
 ```
 
-VM に接続するには、次のように [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用してパブリック IP アドレスを一覧表示します。
+VM に接続するには、次のように [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用してパブリック IP アドレスを一覧表示します。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
 VM とのリモート接続を作成します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 前のコマンドから返された独自の IP アドレスを入力します。 メッセージが表示されたら、最初の手順で VM を作成したときに使用した資格情報を入力します。
@@ -76,7 +77,7 @@ VM をカスタマイズするために、基本的な Web サーバーをイン
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-カスタム イメージとして使用する VM を準備するための最後の手順は、VM を汎用化することです。 Sysprep を使用すると、すべての個人アカウント情報と構成を削除して、将来のデプロイのために VM をクリーンな状態にリセットできます。 Sysprep の詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+カスタム イメージとして使用する VM を準備するための最後の手順は、VM を汎用化することです。 Sysprep を使用すると、すべての個人アカウント情報と構成を削除して、将来のデプロイのために VM をクリーンな状態にリセットできます。 詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 VM を汎用化するには、Sysprep を実行して、すぐに使用できるように VM を設定します。 終了したら、VM をシャットダウンするよう Sysprep に指示します。
 
@@ -90,34 +91,34 @@ Sysprep がプロセスを完了し、VM がシャットダウンされると、
 ## <a name="create-a-custom-vm-image-from-the-source-vm"></a>ソース VM からのカスタム VM イメージの作成
 これで IIS Web サーバーがインストールされ、ソース VM がカスタマイズされました。 次に、スケール セットで使用するカスタム VM イメージを作成しましょう。
 
-イメージを作成するには、VM の割り当てを解除する必要があります。 [Stop-AzureRmVm](/powershell/module/azurerm.compute/stop-azurermvm) を使用して VM の割り当てを解除します。 次に、[Set-AzureRmVm](/powershell/module/azurerm.compute/set-azurermvm) を使用して VM の状態を汎用化済みとして設定します。これにより、Azure プラットフォームは、カスタム イメージを使用するための VM の準備が整ったことを認識します。 イメージを作成できるのは、汎用化された VM からのみです。
+イメージを作成するには、VM の割り当てを解除する必要があります。 [Stop-AzVm](/powershell/module/az.compute/stop-azvm) を使用して VM の割り当てを解除します。 次に、[Set-AzVm](/powershell/module/az.compute/set-azvm) を使用して VM の状態を汎用化済みとして設定します。これにより、Azure プラットフォームは、カスタム イメージを使用するための VM の準備が整ったことを認識します。 イメージを作成できるのは、汎用化された VM からのみです。
 
 ```azurepowershell-interactive
-Stop-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
-Set-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
+Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
+Set-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
 ```
 
 VM を割り当て解除して汎用化するには数分かかることがあります。
 
-次に、[New-AzureRmImageConfig](/powershell/module/azurerm.compute/new-azurermimageconfig) と [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage) を使用して VM のイメージを作成します。 次の例では、VM から *myImage* という名前のイメージを作成します。
+次に、[New-AzImageConfig](/powershell/module/az.compute/new-azimageconfig) と [New-AzImage](/powershell/module/az.compute/new-azimage) を使用して VM のイメージを作成します。 次の例では、VM から *myImage* という名前のイメージを作成します。
 
 ```azurepowershell-interactive
 # Get VM object
-$vm = Get-AzureRmVM -Name "myCustomVM" -ResourceGroupName "myResourceGroup"
+$vm = Get-AzVM -Name "myCustomVM" -ResourceGroupName "myResourceGroup"
 
 # Create the VM image configuration based on the source VM
-$image = New-AzureRmImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID 
+$image = New-AzImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID 
 
 # Create the custom VM image
-New-AzureRmImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
+New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
 ```
 
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>カスタム VM イメージからのスケール セットの作成
-[New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) を使用して、スケール セットを作成します。このとき、`-ImageName` パラメーターを使用して、前の手順で作成したカスタム VM イメージを定義します。 個々の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 ロード バランサーには、TCP ポート 80 上のトラフィックを分散するルールだけでなく、TCP ポート 3389 上のリモート デスクトップ トラフィックと TCP ポート 5985 上の PowerShell リモート処理を許可するルールも含まれています。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
+[New-AzVmss](/powershell/module/az.compute/new-azvmss) を使用して、スケール セットを作成します。このとき、`-ImageName` パラメーターを使用して、前の手順で作成したカスタム VM イメージを定義します。 個々の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 ロード バランサーには、TCP ポート 80 上のトラフィックを分散するルールだけでなく、TCP ポート 3389 上のリモート デスクトップ トラフィックと TCP ポート 5985 上の PowerShell リモート処理を許可するルールも含まれています。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet" `
@@ -133,10 +134,11 @@ New-AzureRmVmss `
 
 
 ## <a name="test-your-scale-set"></a>スケール セットのテスト
-スケール セットが動作していることを確認するには、次のように [Get-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/Get-AzureRmPublicIpAddress) を使用してロード バランサーのパブリック IP アドレスを取得します。
+スケール セットが動作していることを確認するには、次のように [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) を使用してロード バランサーのパブリック IP アドレスを取得します。
+
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
   -Name "myPublicIPAddress" | Select IpAddress
 ```
@@ -147,10 +149,10 @@ Get-AzureRmPublicIpAddress `
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-スケール セットと追加のリソースを削除するには、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。 `-Force` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。 `-AsJob` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。
+スケール セットと追加のリソースを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。 `-Force` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。 `-AsJob` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
+Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 

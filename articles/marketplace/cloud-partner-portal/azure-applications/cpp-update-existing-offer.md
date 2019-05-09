@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3fbbf688f6de7c3fceb6695a6b085f917dbec242
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1019c06afbdab0a6b0e172133da316aea01a5504
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195793"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216902"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>既存の Azure アプリケーション プランを更新する
 
@@ -75,6 +75,9 @@ ms.locfileid: "53195793"
 2. **[すべてのオファー]** で、更新するオファーを見つけます。
 3. **[Marketplace]** タブに移動します。「[Publish Azure application offer (Azure アプリケーション プランを発行する)](./cpp-publish-offer.md)」の手順に従ってメタデータの変更を行います。
 4. **[発行]** を選択し、変更を発行するワークフローを開始します。
+ 
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。
 
 ## <a name="deleting-an-existing-offer"></a>既存のプランの削除
 

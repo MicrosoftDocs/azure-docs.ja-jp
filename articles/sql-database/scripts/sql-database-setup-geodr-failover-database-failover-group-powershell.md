@@ -1,6 +1,6 @@
 ---
 title: PowerShell の例 - geo レプリケーション フェールオーバー グループ - 単一の Azure SQL Database | Microsoft Docs
-description: 単一の Azure SQL Database 用のアクティブ geo レプリケーション フェールオーバー グループを設定してフェールオーバーする Azure PowerShell のサンプル スクリプト。
+description: Azure SQL Database の単一データベース用のアクティブ geo レプリケーション フェールオーバー グループを設定してフェールオーバーする Azure PowerShell のサンプル スクリプト。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,55 +11,56 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: 9981953240a79fd58327b11e61c49d726a74fe9e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 03/12/2019
+ms.openlocfilehash: 421972303ae6d63adf8f4a26af626a13e20a411d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602975"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59359116"
 ---
-# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-azure-sql-database"></a>PowerShell を使用して単一の Azure SQL Database のアクティブ geo レプリケーション フェールオーバー グループを構成する
+# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database の単一データベース用のアクティブ geo レプリケーション フェールオーバー グループを構成する
 
-この PowerShell スクリプトの例は、単一の Azure SQL Database 用にアクティブ geo レプリケーション フェールオーバー グループを構成し、そのデータベースを Azure SQL Database のセカンダリ レプリカにフェールオーバーします。
+この PowerShell スクリプトの例では、単一データベース用のアクティブ geo レプリケーション フェールオーバー グループを構成し、それをデータベースのセカンダリ レプリカにフェールオーバーします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは AZ PowerShell 1.4.0 以降が必要になります。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover/setup-geodr-and-failover-database-failover-group.ps1?highlight=19-22 "Set up failover group for single database")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover/setup-geodr-and-failover-database-failover-group.ps1?highlight=18-21 "Set up failover group for single database")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $primaryresourcegroupname
-Remove-AzureRmResourceGroup -ResourceGroupName $secondaryresourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $primaryresourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $secondaryresourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | 論理サーバー内にエラスティック プールを作成します。 |
-| [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | データベースのプロパティを更新するか、エラスティック プールに対して、エラスティック プールから、またはエラスティック プール間でデータベースを移動します。 |
-| [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary)| 既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
-| [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)| 1 つまたは複数のデータベースを取得します。 |
-| [Set-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/set-azurermsqldatabasesecondary)| セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。|
-| [Get-AzureRmSqlDatabaseReplicationLink](/powershell/module/azurerm.sql/get-azurermsqldatabasereplicationlink) | Azure SQL Database とリソース グループまたは SQL Server 間の geo レプリケーション リンクを取得します。 |
-| [Remove-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/remove-azurermsqldatabasesecondary) | SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
-| [New-AzureRMSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/new-azurermsqldatabasefailovergroup) | 指定されたサーバーの新しい Azure SQL Database フェールオーバー グループを作成します。 |
-| [Switch-AzureRMSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | フェールオーバー グループ内のサーバーのロールを交換し、すべてのセカンダリ データベースをプライマリ ロールに切り替えます。 |
-| [Get-AzureRMSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | 特定の Azure SQL Database フェールオーバー グループを取得するか、サーバー上のフェールオーバー グループを一覧表示します。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | エラスティック プールを作成します。 |
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | データベースのプロパティを更新するか、エラスティック プールに対して、エラスティック プールから、またはエラスティック プール間でデータベースを移動します。 |
+| [New-AzSqlDatabaseSecondary](/powershell/module/az.sql/new-azsqldatabasesecondary)| 既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)| 1 つまたは複数のデータベースを取得します。 |
+| [Set-AzSqlDatabaseSecondary](/powershell/module/az.sql/set-azsqldatabasesecondary)| セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。|
+| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) | Azure SQL Database とリソース グループまたは SQL Server 間の geo レプリケーション リンクを取得します。 |
+| [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) | SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 指定されたサーバーの新しい Azure SQL Database フェールオーバー グループを作成します。 |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | フェールオーバー グループ内のサーバーのロールを交換し、すべてのセカンダリ データベースをプライマリ ロールに切り替えます。 |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 特定の Azure SQL Database フェールオーバー グループを取得するか、サーバー上のフェールオーバー グループを一覧表示します。 |
 
 ## <a name="next-steps"></a>次の手順
 

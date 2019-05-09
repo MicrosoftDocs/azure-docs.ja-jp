@@ -1,0 +1,57 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure SQL Database - サービスとしてのプラットフォーム
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database - サービスとしてのプラットフォーム
+  meta.description: Learn about the PaaS capabilities of Azure SQL Database.
+  services: sql-database
+  ms.subservice: service
+  author: jovanpop-msft
+  ms.reviewer: carlrab
+  manager: craigg
+  requires-business-manager-approval: false
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: null
+  ms.topic: overview
+  ms.date: 11/11/2018
+  ms.author: jovanpop-msft
+sections:
+  - items:
+      - type: paragraph
+        text: Azure SQL Database は、フルマネージド PaaS (サービスとしてのプラットフォーム) データべース エンジンであり、アップグレード、修正プログラムの適用、監視などのデータベース管理機能の大半をユーザーの介入なしで処理します。 Azure SQL Database は、安定した最新バージョンの SQL Server データベース エンジンとパッチ適用済み OS 上で常に実行され、99.99% の可用性があります。 Azure SQL Database に組み込まれている PaaS 機能によって、お客様は、ビジネスにとって不可欠なドメイン固有のデータベース管理と最適化アクティビティに注力できます。
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: ビジネス継続性
+            href: /azure/sql-database/sql-database-business-continuity
+            html: <p>Azure SQL Database を使用すると、中断が発生した場合、特にコンピューティング インフラストラクチャが中断した場合でも、ビジネスを継続できます。</p>
+          - title: 高可用性
+            href: /azure/sql-database/sql-database-high-availability
+            html: <p>Azure SQL Database では、お使いのデータベースで 99.99% の稼働率が保証され、メンテナンスやダウンタイムを気にする必要はありません。</p>
+          - title: 自動バックアップ
+            href: /azure/sql-database/sql-database-automated-backups
+            html: <p>Azure SQL Database では、データベースのバックアップが自動的に作成され、Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) を利用して地理的冗長性が提供されます。</p>
+          - title: 長期的なバックアップ保有期間
+            href: /azure/sql-database/sql-database-long-term-retention
+            html: <p>Azure SQL Database では、指定された SQL データベースの完全バックアップを最長 10 年間保存できます。</p>
+          - title: geo レプリケーション
+            href: /azure/sql-database/sql-database-geo-replication-overview
+            html: <p>Azure SQL Database では、同じデータ センターまたは異なるデータ センター (リージョン) 内に、お使いのデータベースの読み取り可能レプリカを作成できます。</p>
+          - title: リソースのスケール
+            href: /azure/sql-database/sql-database-scale-resources
+            html: <p>Azure SQL Database では、長時間のプロビジョニングなしでリソース (CPU、メモリ、ストレージ) を簡単に追加できます。</p>
+  - title: その他のリソース
+    items:
+      - type: paragraph
+        text: Azure SQL Database には、お使いのデータベースをもっと簡単に管理するために使用できる一連の組み込みの PaaS 機能が用意されています。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/sql-database/sql-database-security-index">高度なセキュリティ</a>によって脅威とデータベースの脆弱性を検出し、データをセキュリティで保護できます。
+          - html: <a href="/azure/sql-database/sql-database-automatic-tuning">自動チューニング</a>によってワークロードを分析し、インデックスの追加、未使用のインデックスの削除、クエリ プランの問題の自動修正を行うことによってアプリケーションのパフォーマンスを最適化できる推奨事項を提供します。
+          - html: <a href="/azure/log-analytics/log-analytics-azure-sql">組み込みの監視機能</a>によってデータベースとワークロードの分析情報を取得し、パフォーマンスに関する問題のトラブルシューティングを実行できます。
+          - html: <a href="/azure/sql-database/sql-database-intelligent-insights">組み込みのインテリジェンス</a>によってワークロード内の潜在的な問題を自動的に識別し、問題を解決するに役立つ推奨事項を提供します。

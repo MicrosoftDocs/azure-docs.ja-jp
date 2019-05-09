@@ -1,20 +1,19 @@
 ---
 title: 'Azure Cosmos DB: .NET Change Feed Processor API、SDK、およびリソース'
 description: リリース日、提供終了日、.NET Change Feed Processor SDK の各バージョン間の変更など、Change Feed Processor API と SDK に関するあらゆる詳細を提供します。
-services: cosmos-db
 author: ealsur
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 7b6fefd575901648a99bb3a67a05e705622bb74a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407866"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090340"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -41,6 +40,12 @@ ms.locfileid: "53407866"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+* オブザーバーの例外の処理が改善されました。
+* オブザーバーのエラーに関する情報がより方法になりました。
+  * オブザーバーの ProcessChangesAsync によってスローされた例外によりオブザーバーが閉じられると、CloseAsync が ChangeFeedObserverCloseReason.ObserverError に設定された reason パラメーターを受け取るようになりました。
+  * オブザーバーでユーザー コード内のエラーを識別するためにトレースが追加されました。
 
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * 共有データベースのスループットを使用するコレクション内の分割を処理するためのサポートが追加されました。
@@ -158,6 +163,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
 | [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
 | [2.2.4](#2.2.4) |2018 年 11 月 29 日 |--- |
 | [2.2.3](#2.2.3) |2018 年 11 月 19 日 |--- |

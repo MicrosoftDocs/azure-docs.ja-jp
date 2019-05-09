@@ -1,5 +1,5 @@
 ---
-title: Log Analytics から Azure へのアラートの拡張
+title: Log Analytics から Azure Government クラウドにアラートを拡張する
 description: この記事では、アラートを Log Analytics から Azure アラートに拡張するためのツールと API について説明します。
 author: msvijayn
 services: azure-monitor
@@ -7,25 +7,25 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 0524e38f155049c630ace7f33805ef230c8dccca
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 9d734f74c4e12b369e46c15dcb9d01a8185dddd6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344246"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103379"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>アラートを Log Analytics から Azure アラートに拡張する
-Azure Log Analytics のアラート機能は、Azure アラートに置き換わりつつあります。 この移行の一環として、Log Analytics で最初に構成したアラートは Azure に拡張されます。 アラートが自動的に Azure に移動されるのを待ちたくない場合は、次の方法でプロセスを開始できます。
+OMS ポータルのアラート機能は、Azure Government クラウドの Azure アラートに置き換わりつつあります。 この移行の一環として、Log Analytics で最初に構成したアラートは Azure に拡張されます。 アラートが自動的に Azure に移動されるのを待ちたくない場合は、次の方法でプロセスを開始できます。
 
 - Operations Management Suite ポータルから手動で開始する。 
 - AlertsVersion API を使ってプログラムによって開始する。  
 
 > [!NOTE]
-> Microsoft は 2018 年 5 月 14 日より、完了するまで反復される一連の処理で、Log Analytics のパブリック クラウド インスタンスで作成されたアラートを自動的に Azure アラートに拡張します。 [アクション グループ](../../azure-monitor/platform/action-groups.md)の作成でなんらかの問題がある場合は、[これらの修復手順](alerts-extend-tool.md#troubleshooting)を使用して、アクション グループを自動作成させます。 2018 年 7 月 5日まで、これらの手順を使用できます。 *Log Analytics の Azure Government およびソブリン クラウド ユーザーには適用されません*。 
+> Microsoft は 2019 年 3 月 1 日より、体系的な方法で、Log Analytics の Azure Government OMS ポータル インスタンスで作成されたアラートを自動的に Azure アラートに拡張します。 [アクション グループ](../../azure-monitor/platform/action-groups.md)の作成でなんらかの問題がある場合は、[これらの修復手順](alerts-extend-tool.md#troubleshooting)を使用して、アクション グループを自動作成させます。 2019 年 3 月 15 日までは、Azure Government OMS ポータルでこれらの手順を使用できます。
 
-## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>選択肢 1: Operations Management Suite ポータルから開始する
-次の手順では、Operations Management Suite ポータルからワークスペースのアラートを拡張する方法について説明します。  
+## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>オプション 1:Operations Management Suite ポータルから開始する
+次の手順では、Azure Government クラウドの Operations Management Suite ポータルからワークスペースのアラートを拡張する方法について説明します。  
 
 1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルを選択します。
@@ -89,7 +89,7 @@ GET 要求が成功すると、HTTP 状態コード 200 と、アラートおよ
                     "webhookActions": [
                         {
                             "name": "Webhook_1",
-                            "serviceUri": "http://test.com"
+                            "serviceUri": "https://test.com"
                         }
                     ],
                     "itsmAction": {}
@@ -186,7 +186,7 @@ POST 要求が成功すると、HTTP 200 OK 状態と次の応答が返されま
                     "webhookActions": [
                         {
                             "name": "Webhook_1",
-                            "serviceUri": "http://test.com"
+                            "serviceUri": "https://test.com"
                         }
                     ],
                     "itsmAction": {}
@@ -213,251 +213,11 @@ POST 要求が成功すると、HTTP 200 OK 状態と次の応答が返されま
 
 ```
 
-
-## <a name="option-3-use-a-custom-powershell-script"></a>選択肢 3: カスタム PowerShell スクリプトを使用する
- Microsoft によって対象のアラートが Operation Management Suite ポータルから Azure にまだ拡張されていない場合、2018 年 7 月 5日まではご自身で手動で拡張できます。 2 つの手動拡張オプションについては、前の 2 つのセクションで説明しました。
-
-2018 年 7 月 5日を過ぎると、すべてのアラートが Operations Management Suite ポータルから Azure に拡張されます。 [提案された必要な修復手順](#troubleshooting)をまだ実行していないユーザーのアラートは、関連付けられた[アクション グループ](../../azure-monitor/platform/action-groups.md)がないため、アクションまたは通知なしで実行されます。 
-
-Log Analytics でアラートの[アクション グループ](../../azure-monitor/platform/action-groups.md)を手動で作成するには、次のサンプル スクリプトを使用します。
-```PowerShell
-########## Input Parameters Begin ###########
-
-
-$subscriptionId = ""
-$resourceGroup = ""
-$workspaceName = "" 
-
-
-########## Input Parameters End ###########
-
-armclient login
-
-try
-{
-    $workspace = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/"$workspaceName"?api-version=2015-03-20 | ConvertFrom-Json
-    $workspaceId = $workspace.properties.customerId
-    $resourceLocation = $workspace.location
-}
-catch
-{
-    "Please enter valid input parameters i.e. Subscription Id, Resource Group and Workspace Name !!"
-    exit
-}
-
-# Get Extend Summary of the Alerts
-"`nGetting Extend Summary of Alerts for the workspace...`n"
-try
-{
-
-    $value = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview
-
-    "Extend preview summary"
-    "=========================`n"
-
-    $value
-
-    $result = $value | ConvertFrom-Json
-}
-catch
-{
-
-    $ErrorMessage = $_.Exception.Message
-    "Error occured while fetching/parsing Extend summary: $ErrorMessage"
-    exit 
-}
-
-if ($result.version -eq 2)
-{
-    "`nThe alerts in this workspace have already been extended to Azure."
-    exit
-}
-
-$in = Read-Host -Prompt "`nDo you want to continue extending the alerts to Azure? (Y/N)"
-
-if ($in.ToLower() -ne "y")
-{
-    exit
-} 
-
-
-# Check for resource provider registration
-try
-{
-    $val = armclient get subscriptions/$subscriptionId/providers/microsoft.insights/?api-version=2017-05-10 | ConvertFrom-Json
-    if ($val.registrationState -eq "NotRegistered")
-    {
-        $val = armclient post subscriptions/$subscriptionId/providers/microsoft.insights/register/?api-version=2017-05-10
-    }
-}
-catch
-{
-    "`nThe user does not have required access to register the resource provider. Please try with user having Contributor/Owner role in the subscription"
-    exit
-}
-
-$actionGroupsMap = @{}
-try
-{
-    "`nCreating new action groups for alerts extension...`n"
-    foreach ($actionGroup in $result.migrationSummary.actionGroups)
-    {
-        $actionGroupName = $actionGroup.actionGroupName
-        $actions = $actionGroup.actions
-        if ($actionGroupsMap.ContainsKey($actionGroupName))
-        {
-            continue
-        } 
-        
-        # Create action group payload
-        $shortName = $actionGroupName.Substring($actionGroupName.LastIndexOf("AG_"))
-        $properties = @{"groupShortName"= $shortName; "enabled" = $true}
-        $emailReceivers = New-Object Object[] $actions.emailIds.Count
-        $webhookReceivers = New-Object Object[] $actions.webhookActions.Count
-        
-        $count = 0
-        foreach ($email in $actions.emailIds)
-        {
-            $emailReceivers[$count] = @{"name" = "Email$($count+1)"; "emailAddress" = "$email"}
-            $count++
-        }
-
-        $count = 0
-        foreach ($webhook in $actions.webhookActions)
-        {
-            $webhookReceivers[$count] = @{"name" = "$($webhook.name)"; "serviceUri" = "$($webhook.serviceUri)"}
-            $count++
-        }
-
-        $itsmAction = $actions.itsmAction
-        if ($itsmAction.connectionId -ne $null)
-        {
-            $val = @{
-            "name" = "ITSM"
-            "workspaceId" = "$subscriptionId|$workspaceId"
-            "connectionId" = "$($itsmAction.connectionId)"
-            "ticketConfiguration" = $itsmAction.templateInfo
-            "region" = "$resourceLocation"
-            }
-            $properties["itsmReceivers"] = @($val)  
-        }
-
-        $properties["emailReceivers"] = @($emailReceivers)
-        $properties["webhookReceivers"] = @($webhookReceivers)
-        $armPayload = @{"properties" = $properties; "location" = "Global"} | ConvertTo-Json -Compress -Depth 4
-
-    
-        # Azure Resource Manager call to create action group
-        $response = $armPayload | armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroupName/?api-version=2017-04-01
-
-        "Created Action Group with name $actionGroupName" 
-        $actionGroupsMap[$actionGroupName] = $actionGroup.actionGroupResourceId.ToLower()
-        $index++
-    }
-
-    "`nSuccessfully created all action groups!!"
-}
-catch
-{
-    $ErrorMessage = $_.Exception.Message
-
-    #Delete all action groups in case of failure
-    "`nDeleting newly created action groups if any as some error happened..."
-    
-    foreach ($actionGroup in $actionGroupsMap.Keys)
-    {
-        $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
-    }
-
-    "`nError: $ErrorMessage"
-    "`nExiting..."
-    exit
-}
-
-# Update all alerts configuration to the new version
-"`nExtending OMS alerts to Azure...`n"
-
-try
-{
-    $index = 1
-    foreach ($alert in $result.migrationSummary.alerts)
-    {
-        $uri = $alert.alertId + "?api-version=2015-03-20"
-        $config = armclient get $uri | ConvertFrom-Json
-        $aznsNotification = @{
-            "GroupIds" = @($actionGroupsMap[$alert.actionGroupName])
-        }
-        if ($alert.customWebhookPayload)
-        {
-            $aznsNotification.Add("CustomWebhookPayload", $alert.customWebhookPayload)
-        }
-        if ($alert.customEmailSubject)
-        {
-            $aznsNotification.Add("CustomEmailSubject", $alert.customEmailSubject)
-        }      
-
-        # Update alert version
-        $config.properties.Version = 2
-
-        $config.properties | Add-Member -MemberType NoteProperty -Name "AzNsNotification" -Value $aznsNotification
-        $payload = $config | ConvertTo-Json -Depth 4
-        $response = $payload | armclient put $uri
-    
-        "Extended alert with name $($alert.alertName)"
-        $index++
-    }
-}
-catch
-{
-    $ErrorMessage = $_.Exception.Message   
-    if ($index -eq 1)
-    {
-        "`nDeleting all newly created action groups as no alerts got extended..."
-        foreach ($actionGroup in $actionGroupsMap.Keys)
-        {
-            $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
-        }
-        "`nDeleted all action groups."  
-    }
-    
-    "`nError: $ErrorMessage"
-    "`nPlease resolve the issue and try extending again!!"
-    "`nExiting..."
-    exit
-}
-
-"`nSuccessfully extended all OMS alerts to Azure!!" 
-
-# Update version of workspace to indicate extension
-"`nUpdating alert version information in OMS workspace..." 
-
-$response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview&iversion=2"
-
-"`nExtension complete!!"
-```
-
-
-### <a name="about-the-custom-powershell-script"></a>カスタム PowerShell スクリプトについて 
-スクリプトの使用に関する重要な情報を次に示します。
-- 前提条件として、Azure Resource Manager API の呼び出しを簡略化する、オープン ソースのコマンドライン ツールである [ARMclient](https://github.com/projectkudu/ARMClient) をインストールする必要があります。
-- スクリプトを実行するには、Azure サブスクリプションの共同作成者または所有者のロールが必要です。
-- 次のパラメーターを指定する必要があります。
-    - $subscriptionId: Operations Management Suite Log Analytics ワークスペースに関連付けられている Azure サブスクリプション ID。
-    - $resourceGroup: Operations Management Suite Log Analytics ワークスペースの Azure リソース グループ。
-    - $workspaceName: Operations Management Suite Log Analytics ワークスペースの名前。
-
-### <a name="output-of-the-custom-powershell-script"></a>カスタム PowerShell スクリプトの出力
-スクリプトには詳細な情報が示されており、実行中に手順が出力されます。 
-- 概要が表示されます。この概要には、ワークスペース内の既存の Operations Management Suite Log Analytics アラートに関する情報が含まれます。 また、概要には、アクションに対して作成され、そのアクションに関連付けられた Azure アクション グループに関する情報も含まれます。 
-- 拡張を続行するように求められます。概要の表示後に処理を終了することもできます。
-- 拡張を続行すると、新しい Azure アクション グループが作成され、既存のアラートすべてがそのアクション グループに関連付けられます。 
-- スクリプトが完了すると、"拡張が完了" したことを示すメッセージが表示されます。 途中で障害が発生した場合は、その後にスクリプトによってエラーが表示されます。
-
 ## <a name="troubleshooting"></a>トラブルシューティング 
 アラートを拡張するプロセスの途中で問題が発生し、必要な[アクション グループ](../../azure-monitor/platform/action-groups.md)を作成できないことがあります。 このような場合は、エラー メッセージが Operation Management Suite ポータルの **[アラート]** セクションのバナーに表示されます。または、API に対する GET 呼び出しの完了時に表示されます。
 
 > [!IMPORTANT]
-> Azure パブリック クラウド ベースの Log Analytics ユーザーが 2018 年 7 月 5日までに次の修復手順を実行しない場合、アラートは Azure で実行されますが、アクションや通知は実行されません。 アラートの通知を取得するには、[アクション グループ](../../azure-monitor/platform/action-groups.md)を手動で編集して追加するか、前述の[カスタム PowerShell スクリプト](#option-3---using-custom-powershell-script)を使用する必要があります。
+> Azure Government クラウド ベースの OMS ポータル ユーザーが 2019 年 3 月 15 日までに次の修復手順を実行しない場合、アラートは Azure で実行されますが、アクションや通知は実行されません。 アラートの通知を受け取るには、Azure でアラート ルールを手動で編集して[アクション グループ](../../azure-monitor/platform/action-groups.md)を追加する必要があります。
 
 各エラーの修復手順を次に示します。
 - **エラー: Scope Lock is present at subscription/resource group level for write operations (サブスクリプション/リソース グループ レベルに書き込み操作のスコープ ロックが存在します)**:  ![スコープ ロックのエラー メッセージが強調表示されている Operations Management Suite ポータルの [アラートの設定] ページのスクリーンショット](media/alerts-extend-tool/ErrorScopeLock.png)
@@ -481,3 +241,4 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 
 * 新しい [Azure アラートのエクスペリエンス](../../azure-monitor/platform/alerts-overview.md)の詳細について学習する。
 * [Azure Alerts のログ アラート](alerts-unified-log.md)について学習する。
+

@@ -10,22 +10,24 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 10/26/2018
+ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 17e0cf170197b99037e2892d1b74a699a3a9eef5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275331"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59010118"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
 このガイドには、JavaScript で Azure 関数を記述する複雑な作業についての情報が含まれます。
 
-JavaScript 関数はエクスポートされた `function` であり、トリガーされると実行します ([トリガーは function.json で構成します](functions-triggers-bindings.md))。 各関数の最初の引数には `context` オブジェクトが渡され、バインド データの送受信、ログ記録、ランタイムとの通信に使用されます。
+JavaScript 関数はエクスポートされた `function` であり、トリガーされると実行します ([トリガーは function.json で構成します](functions-triggers-bindings.md))。 各関数に渡される最初の引数は `context` オブジェクトで、バインディング データの送受信、ログ記録、ランタイムとの通信に使用されます。
 
-この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 [Visual Studio Code](functions-create-first-function-vs-code.md) を使用または [portal](functions-create-first-azure-function.md) 内で最初の関数を作成する Functions のクイック スタートも終えている必要があります。
+この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 [Visual Studio Code](functions-create-first-function-vs-code.md) を使用するか、または [portal](functions-create-first-azure-function.md) 内で、最初の関数を作成する Functions のクイック スタートを完了しておいてください。
+
+この記事は「[TypeScript アプリの開発](#typescript)」もサポートしています。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -46,12 +48,11 @@ FunctionsProject
  | - host.json
  | - package.json
  | - extensions.csproj
- | - bin
 ```
 
 プロジェクトのルートには、関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.js) とバインド構成ファイル (function.json) が含まれるフォルダーがあります。 `function.json` の親ディレクトリの名前は常に関数の名前です。
 
-Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-triggers-bindings.md#local-development-azure-functions-core-tools)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#local-development-azure-functions-core-tools)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="exporting-a-function"></a>関数のエクスポート
 
@@ -109,7 +110,7 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
 
 ### <a name="inputs"></a>入力
 Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
- - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 なお、*function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
+ - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -138,8 +139,9 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
 ### <a name="outputs"></a>出力
 関数は、さまざまな方法で出力 (`direction === "out"` のバインド) に書き込むことができます。 どの場合も、*function.json* で定義されているバインドの `name` プロパティは、関数に書き込むオブジェクトのメンバーの名前に対応しています。 
 
-次の方法のいずれかで、出力バインドにデータを割り当てることができます。 これらの方法は、組み合わせて使用しないでください。
-- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期/Promise を返す関数を使用している場合は、出力データを割り当てたオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
+次の方法のいずれかで (これらの方法を組み合わせることはできません)、出力バインドにデータを割り当てることができます。
+
+- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
 
   ```javascript
   module.exports = async function(context) {
@@ -152,7 +154,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
       };
   };
   ```
-  
+
   同期関数を使用している場合、[`context.done`](#contextdone-method) を使用してこのオブジェクトを返すことができます (例を参照)。
 - **_[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
 - **`context.bindings` に値を割り当てます。** context.bindings に直接値を割り当てることができます。
@@ -167,7 +169,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
       return;
   };
   ```
- 
+
 ### <a name="bindings-data-type"></a>バインドのデータ型
 
 入力バインドのデータ型を定義するには、バインド定義の `dataType` プロパティを使用します。 たとえば、バイナリ形式で HTTP 要求のコンテンツを読み取るには、`binary` 型を使用します。
@@ -269,7 +271,7 @@ context.log(message)
 既定のトレース レベルでストリーミング関数ログに書き込むことができます。 `context.log` には、他のトレース レベルで関数のログを書き込むことができる追加のログ記録メソッドがあります。
 
 
-| 方法                 | 説明                                |
+| Method                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
 | **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
@@ -326,7 +328,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>コンソール ログのトレース レベルを構成する
 
-関数を使用して、コンソールに書き込むためのしきい値のトレース レベルを定義できます。これによって、関数からコンソールにトレースを書き込む方法を簡単に制御できます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、host.json ファイルの `tracing.consoleLevel` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
+関数 1.x を使用して、コンソールに書き込むためのしきい値のトレース レベルを定義できます。これによって、関数からコンソールにトレースを書き込む方法を簡単に制御できます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、host.json ファイルの `tracing.consoleLevel` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
 
 ```json
 {
@@ -336,7 +338,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 }  
 ```
 
-**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、**consoleLevel** を _off_ に設定します。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
+**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、**consoleLevel** を _off_ に設定します。 詳細については、[host.json](functions-host-json-v1.md) のリファレンスを参照してください。
 
 ## <a name="http-triggers-and-bindings"></a>HTTP トリガーとバインディング
 
@@ -366,7 +368,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
 | _isRaw_   | 応答の書式設定をスキップすることを示します。    |
-| _状態_  | 応答の HTTP 状態コード。                     |
+| _status_  | 応答の HTTP 状態コード。                     |
 
 ### <a name="accessing-the-request-and-response"></a>要求と応答へのアクセス 
 
@@ -552,21 +554,71 @@ module.exports = myObj;
 
 この例では、オブジェクトはエクスポートされていますが、実行間で状態が保持される保証はないことに注意することが重要です。
 
+## <a name="local-debugging"></a>ローカル デバッグ
+
+Node.js プロセスは、`--inspect` パラメーターを指定して起動されると、指定されたポートでデバッグ クライアントをリッスンします。 Azure Functions 2.x では、環境変数またはアプリ設定 `languageWorkers:node:arguments = <args>` を追加することで、コードを実行する Node.js プロセスに渡す引数を指定できます。 
+
+ローカルでデバッグするには、[local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) ファイルの `Values` の下に `"languageWorkers:node:arguments": "--inspect=5858"` を追加し、デバッガーをポート 5858 に接続します。
+
+VS Code を使用してデバッグするときは、プロジェクトの launch.json ファイルの `port` 値を使用して、`--inspect` パラメーターが自動的に追加されます。
+
+バージョン 1.x では、設定 `languageWorkers:node:arguments` は機能しません。 デバッグ ポートは、Azure Functions Core Tools の [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) パラメーターを使用して選択できます。
+
+## <a name="typescript"></a>TypeScript
+
+Functions ランタイムのバージョン 2.x を対象とする場合、[Visual Studio Code 用の Azure Functions](functions-create-first-function-vs-code.md) と [Azure Functions Core Tools](functions-run-local.md) の両方によって、TypeScript 関数アプリ プロジェクトをサポートするテンプレートを使用して関数アプリを作成することができます。 テンプレートは、`package.json` および `tsconfig.json` プロジェクト ファイルを生成します。これらのプロジェクト ファイルは、これらのツールによって TypeScript コードから JavaScript 関数のトランスパイル、実行、発行を容易にします。
+
+生成された `.funcignore` ファイルは、プロジェクトが Azure に発行されるときに除外するファイルを指定するために使用します。  
+
+TypeScript ファイル (.ts) は、`dist` 出力ディレクトリ内の JavaScript ファイル (.js) にトランスパイルされます。 TypeScript テンプレートは、`function.json` の [`scriptFile` パラメーター](#using-scriptfile)を使用して `dist` フォルダー内の対応する .js ファイルの場所を示します。 出力場所は、`tsconfig.json` ファイルの `outDir` パラメーターを使用することで、テンプレートによって設定されます。 この設定またはフォルダーの名前を変更した場合、ランタイムは実行するコードを見つけることができません。
+
+> [!NOTE]
+> TypeScript の試験的サポートは、Functions ランタイムのバージョン 1.x に含まれます。 試験版は、関数が呼び出されるときに TypeScript ファイルを JavaScript ファイルにトランスパイルします。 バージョン 2.x では、この試験的なサポートは、ホストが初期化される前およびデプロイ プロセス中にトランスパイルを実行するツール駆動方式に置き換えられています。
+
+TypeScript プロジェクトからローカルで開発およびデプロイする方法は、開発ツールによって異なります。
+
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+Visual Studio Code 用の [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) の拡張機能を使用すると、TypeScript を使用して関数を開発することができます。 Core Tools は Azure Functions の拡張機能の要件です。
+
+Visual Studio Code で TypeScript 関数アプリを作成するには、関数アプリを作成し、言語の選択を求められる際に、`TypeScript` を選択するだけです。
+
+**F5** を押してアプリをローカルで実行すると、ホスト (func.exe) が初期化される前にトランスパイルが実行されます。 
+
+**[Deploy to function app... (関数アプリにデプロイする...)]** ボタンを使用して関数アプリを Azure にデプロイすると、Azure Functions の拡張機能はまず、TypeScript ソース ファイルから実稼働可能な JavaScript ファイルのビルドを生成します。
+
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+
+Core Tools を使用して TypeScript 関数アプリ プロジェクトを作成するには、関数アプリを作成するときに typescript 言語オプションを指定する必要があります。 これは、次の方法のいずれかで実行できます。
+
+- `func init` コマンドを実行し、言語スタックとして `node` を選択してから `typescript` を選択してください。
+
+- `func init --worker-runtime typescript` コマンドを実行します。
+
+Core Tools を使用して関数アプリのコードをローカルで実行するには、`func host start` ではなく `npm start` コマンドを使用してください。 `npm start` コマンドは次のコマンドと同等です。
+
+- `npm run build`
+- `func extensions install`
+- `tsc`
+- `func start`
+
+[`func azure functionapp publish`] コマンドを使用して Azure にデプロイする前に、`npm run build:production` コマンドを実行する必要があります。 このコマンドは、TypeScript ソースファイルから、[`func azure functionapp publish`] を使用してデプロイできる JavaScript ファイルの実稼働可能なビルドを作成します。
+
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 関数に関する考慮事項
 
 JavaScript 関数を使用するときは、以下のセクションに記載されている事柄に注意する必要があります。
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>シングル vCPU App Service プランを選択する
 
-App Service プランを使用する関数アプリを作成するときは、複数の vCPU を持つプランではなく、シングル vCPU プランを選択することをお勧めします。 今日では、関数を使用して、シングル vCPU VM で JavaScript 関数をより効率的に実行できるようになりました。そのため、大規模な VM を使用しても、期待以上にパフォーマンスが向上することはありません。 必要な場合は、シングル vCPU VM インスタンスを追加することで手動でスケールアウトするか、自動スケールを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)」を参照してください。    
-
-### <a name="typescript-and-coffeescript-support"></a>TypeScript と CoffeeScript のサポート
-
-ランタイムによる TypeScript/CoffeeScript の自動コンパイルはまだ直接サポートされていません。そのため、デプロイ時にランタイムの外部ですべて処理する必要があります。 
+App Service プランを使用する関数アプリを作成するときは、複数の vCPU を持つプランではなく、シングル vCPU プランを選択することをお勧めします。 今日では、関数を使用して、シングル vCPU VM で JavaScript 関数をより効率的に実行できるようになりました。そのため、大規模な VM を使用しても、期待以上にパフォーマンスが向上することはありません。 必要な場合は、シングル vCPU VM インスタンスを追加することで手動でスケールアウトするか、自動スケーリングを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。
 
 ### <a name="cold-start"></a>コールド スタート
 
 サーバーレス ホスティング モデルで Azure 関数を開発するときは、コールド スタートが現実のものになります。 *コールド スタート*とは、非アクティブな期間の後で初めて関数アプリが起動するとき、起動に時間がかかることを意味します。 特に、大きな依存関係ツリーを持つ JavaScript 関数の場合は、コールド スタートが重要になる可能性があります。 コールド スタート プロセスをスピードアップするには、可能な場合、[パッケージ ファイルとして関数を実行](run-functions-from-deployment-package.md)します。 多くの展開方法ではパッケージからの実行モデルが既定で使用されますが、大規模なコールド スタートが発生していて、この方法で実行していない場合は、変更が大きな向上につながる可能性があります。
+
+### <a name="connection-limits"></a>接続の制限
+
+Azure Functions アプリケーションでサービス固有のクライアントを使用する場合は、関数呼び出しごとに新しいクライアントを作成しないでください。 代わりに、グローバル スコープに 1 つの静的クライアントを作成してください。 詳細については、[Azure Functions での接続の管理](manage-connections.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -575,3 +627,5 @@ App Service プランを使用する関数アプリを作成するときは、�
 + [Azure Functions のベスト プラクティス](functions-best-practices.md)
 + [Azure Functions 開発者向けリファレンス](functions-reference.md)
 + [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+
+[`func azure functionapp publish`]: functions-run-local.md#project-file-deployment

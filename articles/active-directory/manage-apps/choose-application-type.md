@@ -3,23 +3,24 @@ title: アプリケーションを追加するときに使用するアプリケ�
 description: Azure AD と統合可能なサポートされている種類のアプリケーション、およびアプリケーションに関連した構成オプションを理解する
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
-ms.openlocfilehash: 99405f9ae3e86324aba7a6fdc583225c1f71f83a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 13b0c03f03012058616dba21536cfc3f292fff4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845112"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091513"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションを追加するときにアプリケーションの種類を選択する
 Azure Active Directory (Azure AD) に追加できる 4 種類のアプリケーションについて説明します。 Azure Active Directory でアプリケーションを追加すると、4 種類のアプリケーションのいずれかを選択するように求められます。 
@@ -42,7 +43,7 @@ Azure AD では、上記 4 つのすべてのアプリケーションの種類�
 
 -   **クイック スタート** – [簡単なデプロイ手順](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)に従って、アプリケーションのデプロイを速やかに開始します。
 
--   **全般プロパティの管理** – アプリケーションへの[直接のディープリンク](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users)を取得し、アプリケーションの[ブランドをカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal)し、すべてのユーザーに対して[アプリケーションを無効](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)にします。
+-   **全般プロパティの管理** – アプリケーションへの[直接のディープリンク](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)を取得し、アプリケーションの[ブランドをカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal)し、すべてのユーザーに対して[アプリケーションを無効](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)にします。
 
 -   **ユーザーとグループの管理** – アプリケーションに対するユーザーとグループの[割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)や[削除](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal)を行い、必要に応じてアプリケーションへのアクセスがあるユーザーとグループに特定のアプリケーション ロールを割り当てます。
 
@@ -66,36 +67,36 @@ Azure AD では、上記 4 つのすべてのアプリケーションの種類�
 
 Azure AD アプリケーションに対してサポートされている**シングル サインオン** モードを次に示します。
 
--   **Azure AD シングル サインオンが無効** – このアプリケーションを Azure AD とシングル サインオンで統合する準備ができていないか、単純にテストする場合は、[Azure AD シングル サインオンが無効] の**シングル サインオン モード**を選びます
+- **Azure AD シングル サインオンが無効** – このアプリケーションを Azure AD とシングル サインオンで統合する準備ができていないか、単純にテストする場合は、[Azure AD シングル サインオンが無効] の**シングル サインオン モード**を選びます
 
--   **リンクされたサインオン** – 既存のシングル サインオン ソリューションに既に接続されているアプリケーションがある場合、または[アプリケーション アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)や [Office 365 アプリケーション起動プログラム](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)でユーザーの単純なリンクを公開するだけの場合は、[[リンクされたサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **シングル サインオン モード**を選びます
+- **リンクされたサインオン** – 既存のシングル サインオン ソリューションに既に接続されているアプリケーションがある場合、または[アプリケーション アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)や [Office 365 アプリケーション起動プログラム](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)でユーザーの単純なリンクを公開するだけの場合は、[[リンクされたサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **シングル サインオン モード**を選びます
 
--   **パスワード ベースのサインオン** – アプリケーションで HTML のユーザー名とパスワードのフィールドを表示し、後でアプリケーションを再生するためそのユーザー名とパスワードを安全に格納する必要がある場合は、[[パスワード ベースのサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **シングル サインオン モード**を選びます
+- **パスワード ベースのサインオン** – アプリケーションで HTML のユーザー名とパスワードのフィールドを表示し、後でアプリケーションを再生するためそのユーザー名とパスワードを安全に格納する必要がある場合は、[[パスワード ベースのサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **シングル サインオン モード**を選びます
 
--   **SAML ベースのサインオン** – アプリケーションで SAML または OpenID Connect プロトコルをサポートするか、SAML 要求で定義するルールに基づいて特定のアプリケーション ロールにユーザーをマップできるようにする場合は、[[SAML ベースのサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) シングル サインオン モードを選びます。*
+- **SAML ベースのサインオン** – アプリケーションで SAML または OpenID Connect プロトコルをサポートするか、SAML 要求で定義するルールに基づいて特定のアプリケーション ロールにユーザーをマップできるようにする場合は、[[SAML ベースのサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) シングル サインオン モードを選びます。*
 
-   >[!NOTE]
-   >このオプションは、アプリケーションに対してアプリケーション プロキシが構成されている場合は使用できません。
-   >
-   >
+  >[!NOTE]
+  >このオプションは、アプリケーションに対してアプリケーション プロキシが構成されている場合は使用できません。
+  >
+  >
 
--   **ヘッダーベースのサインオン** - シングル サインオンを実行する、HTTP ヘッダーベースの認証をサポートする PingAccess を使用しているアプリケーションがある場合は、[[ヘッダーベースのサインオン]](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) シングル サインオン モードを選びます 
+- **ヘッダーベースのサインオン** - シングル サインオンを実行する、HTTP ヘッダーベースの認証をサポートする PingAccess を使用しているアプリケーションがある場合は、[[ヘッダーベースのサインオン]](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) シングル サインオン モードを選びます 
 
-   >[!NOTE]
-   >このオプションは、アプリケーションに対してアプリケーション プロキシと PingAccess が構成されている場合にのみ使用可能です。
-   >
-   >
+  >[!NOTE]
+  >このオプションは、アプリケーションに対してアプリケーション プロキシと PingAccess が構成されている場合にのみ使用可能です。
+  >
+  >
 
--   **統合 Windows 認証** – シングル サインオンを実行するオンプレミスの WIA アプリケーションを公開する場合は、[[統合 Windows 認証]](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) シングル サインオン モードを選びます。 
+- **統合 Windows 認証** – シングル サインオンを実行するオンプレミスの WIA アプリケーションを公開する場合は、[[統合 Windows 認証]](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) シングル サインオン モードを選びます。 
 
-   >[!NOTE]
-   >このオプションは、アプリケーションに対してアプリケーション プロキシが構成されている場合にのみ使用可能です。
-   >
-   >
+  >[!NOTE]
+  >このオプションは、アプリケーションに対してアプリケーション プロキシが構成されている場合にのみ使用可能です。
+  >
+  >
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>カスタム開発アプリケーションのシングル サインオン モード
 
-[カスタム開発アプリケーション](#_Custom-Developed_Applications) エクスペリエンスでカスタム開発したアプリケーションは、上記の一覧にない、次のような追加のシングル サインオンもサポートします。
+カスタム開発アプリケーション エクスペリエンスでカスタム開発したアプリケーションは、上記の一覧にない、次のような追加のシングル サインオンもサポートします。
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) ベースのサインオン
 
@@ -111,39 +112,39 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 アプリケーションの**シングル サインオン** モードを設定するには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
+5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-  * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
-6.  シングル サインオンを構成するアプリケーションを選択します。
+6. シングル サインオンを構成するアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
+7. アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
 
 ## <a name="how-to-choose-a-provisioning-mode"></a>プロビジョニング モードを選択する方法
 
--   **手動プロビジョニング** – 既存のアカウントがある場合、または Azure AD 以外でこのアプリケーションのアカウントを管理する場合は、[手動](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes)プロビジョニング モードを選択します。
+- **手動プロビジョニング** – 既存のアカウントがある場合、または Azure AD 以外でこのアプリケーションのアカウントを管理する場合は、[手動](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes)プロビジョニング モードを選択します。
 
--   **自動プロビジョニング** – API ベースの自動プロビジョニングおよび/またはこのアプリケーションのユーザー アカウントのプロビジョニング解除を有効にする場合は、[自動](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning)**プロビジョニング モード**を選択します。 
+- **自動プロビジョニング** – API ベースの自動プロビジョニングおよび/またはこのアプリケーションのユーザー アカウントのプロビジョニング解除を有効にする場合は、[自動](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning)**プロビジョニング モード**を選択します。 
 
-   >[!NOTE]
-   >このオプションは、[Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery)の**おすすめ**カテゴリ内のアプリケーションにのみ使用できます。
-   >
-   >
+  >[!NOTE]
+  >このオプションは、[Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal)の**おすすめ**カテゴリ内のアプリケーションにのみ使用できます。
+  >
+  >
 
--   **SCIM ベースの自動プロビジョニング** – Azure AD と統合したアプリケーションの変更に対して自動的に生成される、ユーザーとグループの変更を検出するための SCIM プロトコルがアプリケーションでサポートされている場合は、[SCIM ベースの自動プロビジョニング](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) を使用します。 
+- **SCIM ベースの自動プロビジョニング** – Azure AD と統合したアプリケーションの変更に対して自動的に生成される、ユーザーとグループの変更を検出するための SCIM プロトコルがアプリケーションでサポートされている場合は、[SCIM ベースの自動プロビジョニング](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) を使用します。 
 
-   >[!NOTE]
-   >このオプションは特定のプロビジョニング モードとして表示されませんが、既定では Azure AD と統合しているすべてのアプリケーションで有効になっています。
-   >
-   >
+  >[!NOTE]
+  >このオプションは特定のプロビジョニング モードとして表示されませんが、既定では Azure AD と統合しているすべてのアプリケーションで有効になっています。
+  >
+  >
 
 ## <a name="how-to-set-an-applications-provisioning-mode"></a>アプリケーションのプロビジョニング モードを設定する方法
 
@@ -151,21 +152,21 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 アプリケーションの**シングル サインオン** モードを設定するには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
+5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-  * ここに表示したいアプリケーションが表示されない場合は、**[すべてのアプリケーション リスト]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、**[すべてのアプリケーション リスト]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
-6.  プロビジョニングを構成するアプリケーションを選択します。
+6. プロビジョニングを構成するアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[プロビジョニング]** をクリックします。
+7. アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[プロビジョニング]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

@@ -2,7 +2,7 @@
 title: Durable Functions における診断 - Azure
 description: Azure Functions の Durable Functions 拡張機能に関する問題を診断する方法について説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,20 +10,20 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5a09bd8db89f85c785d3d701a3b7180e4616e52c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713233"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608488"
 ---
-# <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions における診断 (Azure Functions)
+# <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
 [Durable Functions](durable-functions-overview.md) に関する問題の診断には、いくつかの方法があります。 その中には、通常の関数の場合と同じ方法もあれば、Durable Functions に固有の方法もあります。
 
 ## <a name="application-insights"></a>Application Insights
 
-Azure Functions の診断と監視には、[Application Insights](../../application-insights/app-insights-overview.md) を使用する方法が推奨されています。 Durable Functions にもそれが当てはまります。 Application Insights を関数アプリで活用する方法の概要については、「[Azure Functions を監視する](../functions-monitoring.md)」を参照してください。
+Azure Functions の診断と監視には、[Application Insights](../../azure-monitor/app/app-insights-overview.md) を使用する方法が推奨されています。 Durable Functions にもそれが当てはまります。 Application Insights を関数アプリで活用する方法の概要については、「[Azure Functions を監視する](../functions-monitoring.md)」を参照してください。
 
 また、Azure Functions Durable 拡張機能では "*追跡イベント*" が生成されます。このイベントを使って、オーケストレーションの実行をエンドツーエンドでトレースできます。 これらは、Azure Portal で [Application Insights 分析](../../azure-monitor/app/analytics.md)ツールを使って検出および照会できます。
 
@@ -327,7 +327,7 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 
 既定では、Durable Functions の状態が Azure Storage に格納されます。 つまり、オーケストレーションの状態は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) などのツールを使用して調査することができます。
 
-![Azure Storage Explorer のスクリーン ショット](./media/durable-functions-diagnostics/storage-explorer.png)
+![Azure Storage Explorer のスクリーンショット](./media/durable-functions-diagnostics/storage-explorer.png)
 
 オーケストレーションの状態を正確に把握できるので、これはデバッグで役に立ちます。 また、キュー内のメッセージを調べることで、保留中になっている (場合によってはスタックしている) 処理を把握することも可能です。
 

@@ -2,21 +2,22 @@
 title: Azure IoT Hub と Event Grid | Microsoft Docs
 description: Azure Event Grid を使い、IoT Hub で発生したアクションに基づいてプロセスをトリガーします。
 author: kgremban
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/14/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 14bdbb5d629cb5a3fccd6f874e30ded0648e0124
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: a2c49a6ba269321d1903565ace3ebaae3f3b917e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249470"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673855"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
-他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure IoT Hub は Azure Event Grid と統合します。 信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、IoT Hub のイベントをリッスンするようにビジネス アプリケーションを構成します。 たとえば、新しい IoT デバイスが IoT Hub に登録されるたびに、データベースの更新、チケットの作成、メール通知の配信などの複数のアクションを実行するよう、アプリケーションを構築します。 
+他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure IoT Hub は Azure Event Grid と統合します。 信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、IoT Hub のイベントをリッスンするようにビジネス アプリケーションを構成します。 たとえば、新しい IoT デバイスが IoT Hub に登録されるたびに、データベースの更新、作業チケットの作成、メール通知の配信などを実行するよう、アプリケーションを構築します。 
 
 [Azure Event Grid](../event-grid/overview.md) は、発行-サブスクライブ モデルを使う、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」をご覧ください。 
 
@@ -118,7 +119,7 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
 }]
 ```
 
-各プロパティの詳しい説明については、「[IoT Hub の Azure Event Grid イベント スキーマ](../event-grid/event-schema-iot-hub.md)」をご覧ください
+各プロパティの詳しい説明については、「[IoT Hub の Azure Event Grid イベント スキーマ](../event-grid/event-schema-iot-hub.md)」をご覧ください。
 
 ## <a name="filter-events"></a>イベントのフィルター処理
 
@@ -139,7 +140,7 @@ devices/{deviceId}
 
 IoT Hub イベントを処理するアプリケーションは、以下の推奨される手法に従う必要があります。
 
-* 同じイベント ハンドラーにイベントをルーティングするように複数のサブスクリプションを構成できるので、イベントが特定のソースからであると想定しないことが重要です。 常にメッセージ トピックをチェックし、予期される IoT Hub からものであることを確認してください。 
+* 同じイベント ハンドラーにイベントをルーティングするように複数のサブスクリプションを構成できるので、イベントが特定のソースからであると想定しないでください。 常にメッセージ トピックをチェックし、予期される IoT Hub からものであることを確認してください。 
 
 * 受信するすべてのイベントが予期する種類であると想定してはいけません。 メッセージを処理する前に、常に eventType をチェックしてください。
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Speech SDK for C++ を使用して音声を認識するさまざまな方法を示します (ファイルから、マイクから、カスタマイズしたモデルで、継続的に、1 回限りで)。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 2289a41fad552082e93f4d0d51ff76c6f4c241da
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 05c94689ef2ca1ecc0051a4b502e03f980c68c87
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470531"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884275"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-c"></a>Speech SDK for C++ を使用して音声を認識する
 

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 12/15/2018
 ms.author: hrasheed
-ms.openlocfilehash: 280d56951053870d5dc1bb8fba52cc089e842757
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 03c86aa069300f88b61752ebd3223e424f6e9c96
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743869"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382608"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>SSH トンネリングを使用して Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の Web UI にアクセスする
 
@@ -126,10 +126,10 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
 クラスターが確立したら、次の手順で、Ambari Web からサービス Web UI にアクセスできることを確認します。
 
-1. ブラウザーで http://headnodehost:8080 に移動します。 この `headnodehost` アドレスはトンネル経由でクラスターに送信され、Ambari が実行されているヘッド ノードに解決されます。 プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。 Ambari Web UI からもう一度入力を求められることがあります。 その場合は、情報を再入力します。
+1. ブラウザーで、http\://headnodehost:8080 に移動します。 この `headnodehost` アドレスはトンネル経由でクラスターに送信され、Ambari が実行されているヘッド ノードに解決されます。 プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。 Ambari Web UI からもう一度入力を求められることがあります。 その場合は、情報を再入力します。
 
    > [!NOTE]  
-   > アドレス http://headnodehost:8080 を使ってクラスターに接続するときは、トンネル経由で接続しています。 通信は、HTTPS ではなく SSH トンネルを使って保護されます。 HTTPS を使用してインターネット経由で接続するには、 https://clustername.azurehdinsight.net を使用します。**clustername** はクラスターの名前です。
+   > http\://headnodehost:8080 のアドレスを使用してクラスターに接続する場合は、トンネル経由で接続しています。 通信は、HTTPS ではなく SSH トンネルを使って保護されます。 HTTPS を使用してインターネット経由で接続するには、https\://clustername.azurehdinsight.net を使用します。ここで、**clustername** はクラスターの名前です。
 
 2. Ambari Web UI でページの左側にある一覧から [HDFS] を選択します。
 
@@ -149,7 +149,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
     ![NameNode UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
    > [!NOTE]  
-   > このページの URL に注意してください。 **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster** に類似しています。 この URI は、ノードの内部の完全修飾ドメイン名 (FQDN) を使っているので、SSH トンネルを使うことによってのみアクセスできます。
+   > このページの URL に注意してください。**http\://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster** のようになっています。 この URI は、ノードの内部の完全修飾ドメイン名 (FQDN) を使っているので、SSH トンネルを使うことによってのみアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
 

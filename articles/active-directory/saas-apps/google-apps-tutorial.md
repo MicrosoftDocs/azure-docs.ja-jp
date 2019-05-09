@@ -7,19 +7,20 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: f4f7546efca0bd69fd71418116142acacb927604
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d48977c60fb4a13e1fc0dbd294fa4e7708f1cd5d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970901"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58878969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>チュートリアル:Azure Active Directory と G Suite の統合
 
@@ -142,28 +143,47 @@ G Suite で Azure AD のシングル サインオンを構成するには、次�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、**Gmail** を構成する場合は次の手順で行います。
 
     ![[G Suite のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. **[サインオン URL]** ボックスに、`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com` のパターンを使用して URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
+    b. **[識別子]** ボックスに、次の形式で URL を入力します。
+
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[G Suite クライアント サポート チーム](https://www.google.com/contact/)に連絡してください。
 
-5. G Suite アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[一意のユーザー ID]** の既定値は **user.userprincipalname** ですが、G Suite ではこれがユーザーのメール アドレスにマップされることが想定されています。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
+5. **[基本的な SAML 構成]** セクションで、**Google Cloud Platform** を構成する場合は次の手順で行います。
+
+    ![[G Suite のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+
+    a. **[サインオン URL]** ボックスに、`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com` のパターンを使用して URL を入力します。
+
+    b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
+    | |
+    |--|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+    
+    > [!NOTE] 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[G Suite クライアント サポート チーム](https://www.google.com/contact/)に連絡してください。
+
+6. G Suite アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[一意のユーザー ID]** の既定値は **user.userprincipalname** ですが、G Suite ではこれがユーザーのメール アドレスにマップされることが想定されています。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
 
     ![image](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     | Name | ソース属性 |
     | ---------------| --------------- |
@@ -187,11 +207,11 @@ G Suite で Azure AD のシングル サインオンを構成するには、次�
 
     g. **[Save]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-8. **[G Suite のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
+9. **[G Suite のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -203,7 +223,7 @@ G Suite で Azure AD のシングル サインオンを構成するには、次�
 
 ### <a name="configure-g-suite-single-sign-on"></a>G Suite のシングル サインオンを構成する
 
-1. ブラウザーで新しいタブを開き、管理者アカウントを使用して、[G Suite 管理コンソール](http://admin.google.com/)にサインインします。
+1. ブラウザーで新しいタブを開き、管理者アカウントを使用して、[G Suite 管理コンソール](https://admin.google.com/)にサインインします。
 
 2. **[セキュリティ]** をクリックします。 このリンクが表示されていない場合、画面下部の **[その他の設定]** に隠れていることがあります。
 
@@ -249,7 +269,7 @@ G Suite で Azure AD のシングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -302,7 +322,7 @@ G Suite で Azure AD のシングル サインオンを構成するには、次�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [[ユーザー プロビジョニングの構成]](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)

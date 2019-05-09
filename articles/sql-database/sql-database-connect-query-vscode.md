@@ -4,21 +4,21 @@ description: Visual Studio Code を使用して Azure SQL Database に接続す�
 keywords: SQL Database への接続
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: 994f7d300b1e9a76e109e73467a2e7f0d4c1584d
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 03/25/2019
+ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652117"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59357110"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: Visual Studio Code を使って Azure SQL Database に接続して照会する
 
@@ -26,18 +26,31 @@ ms.locfileid: "53652117"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+  || 単一データベース | マネージド インスタンス |
+  |:--- |:--- |:---|
+  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |||
 
-#### <a name="install-visual-studio-code"></a>Visual Studio Code のインストール
+  > [!IMPORTANT]
+  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
-必ず最新の [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおきます。 mssql 拡張機能のインストールのガイダンスについては、「[Install VS Code (VS コードのインストール)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)」と「[mssql for Visual Studio Code (Visual Studio Code 用 mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。 
+## <a name="install-visual-studio-code"></a>Visual Studio Code のインストール
 
-## <a name="configure-visual-studio-code"></a>Visual Studio Code を構成する 
+必ず最新の [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおきます。 mssql 拡張機能のインストールのガイダンスについては、「[Install VS Code (VS コードのインストール)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code)」と「[mssql for Visual Studio Code (Visual Studio Code 用 mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。
+
+## <a name="configure-visual-studio-code"></a>Visual Studio Code を構成する
 
 ### <a name="mac-os"></a>**Mac OS**
-macOS では、mssql 拡張機能で使用される .Net Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL** をインストールします。 
+
+macOS では、mssql 拡張機能で使用される .NET Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL** をインストールします。
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -56,21 +69,27 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 特別な構成は必要ありません。
 
-## <a name="sql-server-connection-information"></a>SQL Server の接続情報
+## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+
+3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
 ## <a name="set-language-mode-to-sql"></a>言語モードを SQL に設定
 
 Visual Studio Code で、言語モードを **[SQL]** に設定し、mssql コマンドと T-SQL IntelliSense を有効にします。
 
-1. 新しい Visual Studio Code ウィンドウを開きます。 
+1. 新しい Visual Studio Code ウィンドウを開きます。
 
-2. **Ctrl** + **N** キーを押します。 新しいプレーンテキスト ファイルが開きます。 
+2. **Ctrl** + **N** キーを押します。 新しいプレーンテキスト ファイルが開きます。
 
 3. ステータス バーの右下隅の **[プレーン テキスト]** を選択します。
 
-4. 開かれた **[言語モードの選択]** ドロップダウン メニューで、**[SQL]** を選択します。 
+4. 開かれた **[言語モードの選択]** ドロップダウン メニューで、**[SQL]** を選択します。
 
 ## <a name="connect-to-your-database"></a>データベースに接続する
 
@@ -78,7 +97,6 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 > [!IMPORTANT]
 > 続行する前に、サーバーおよびサインインの情報が準備できていることを確認します。 接続プロファイル情報の入力を開始した後は、Visual Studio Code からフォーカスを移動すると、プロファイルの作成をやり直さなければならなくなります。
->
 
 1. Visual Studio Code で、**Ctrl + Shift + P** キー (または **F1** キー) を押してコマンド パレットを開きます。
 
@@ -86,17 +104,17 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 3. **[接続プロファイルの作成]** を選択します。
 
-4. プロンプトに従って、新しいプロファイルの接続プロパティを指定します。 それぞれの値を指定したら、**Enter** キーを押して続行します。 
+4. プロンプトに従って、新しいプロファイルの接続プロパティを指定します。 それぞれの値を指定したら、**Enter** キーを押して続行します。
 
    | プロパティ       | 推奨値 | 説明 |
-   | ------------ | ------------------ | ------------------------------------------------- | 
+   | ------------ | ------------------ | ------------------------------------------------- |
    | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
    | **データベース名** | mySampleDatabase | 接続先のデータベース。 |
    | **認証** | SQL ログイン| このチュートリアルでは、SQL 認証を使用します。 |
    | **ユーザー名** | ユーザー名 | サーバーを作成するために使用するサーバー管理者アカウントのユーザー名。 |
    | **[パスワード (SQL ログイン)]** | パスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
    | **[パスワードを保存しますか?]** | はい/いいえ | パスワードを毎回入力する手間を省くには、**[はい]** を選択します。 |
-   | **[このプロファイルの名前を入力してください]** | プロファイル名 (**mySampleProfile** など) | 保存されたプロファイルによって、以降のログインでは、より速く接続できるようになります。 | 
+   | **[このプロファイルの名前を入力してください]** | プロファイル名 (**mySampleProfile** など) | 保存されたプロファイルによって、以降のログインでは、より速く接続できるようになります。 |
 
    成功した場合、プロファイルが作成され接続されたことを示す通知が表示されます。
 
@@ -125,22 +143,22 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
    ```sql
    INSERT INTO [SalesLT].[Product]
-           ( [Name]
-           , [ProductNumber]
-           , [Color]
-           , [ProductCategoryID]
-           , [StandardCost]
-           , [ListPrice]
-           , [SellStartDate]
-           )
+        ( [Name]
+        , [ProductNumber]
+        , [Color]
+        , [ProductCategoryID]
+        , [StandardCost]
+        , [ListPrice]
+        , [SellStartDate]
+        )
      VALUES
-           ('myNewProduct'
-           ,123456789
-           ,'NewColor'
-           ,1
-           ,100
-           ,100
-           ,GETDATE() );
+        ('myNewProduct'
+        ,123456789
+        ,'NewColor'
+        ,1
+         ,100
+         ,100
+         ,GETDATE() );
    ```
 
 2. **Ctrl** + **Shift** + **E** キーを押して、`Product` テーブルに新しい行を挿入します。

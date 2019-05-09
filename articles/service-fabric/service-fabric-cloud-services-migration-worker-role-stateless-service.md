@@ -4,7 +4,7 @@ description: このガイドでは、Cloud Services から Service Fabric に移
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049951"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667720"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。
@@ -32,19 +32,19 @@ ms.locfileid: "44049951"
 ![Service Fabric プロジェクトと Cloud Services プロジェクトの比較][3]
 
 ## <a name="worker-role-to-stateless-service"></a>worker ロールからステートレス サービスへ
-概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Document DB などの外部の状態ストアが管理します。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートフル サービスに変換する方法です。
+概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Document DB などの外部の状態ストアが管理します。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートレス サービスに変換する方法です。
 
 ![worker ロールからステートレス サービスへ][4]
 
 ## <a name="web-role-to-stateless-service"></a>Web ロールからステートレス サービスへ
 worker ロールと同様に、Web ロールもステートレス ワークロードを表すため、概念上、Service Fabric ステートレス サービスにマッピングできます。 ただし、Web ロールとは異なり、Service Fabric は IIS をサポートしていません。 Web ロールの Web アプリケーションをステートレス サービスに移行するには、まず自己ホスト型で、IIS や System.Web に依存しない Web フレームワーク (ASP.NET Core 1 など) に移行する必要があります。
 
-| **アプリケーション** | **サポートされています** | **移行パス** |
+| **Application** | **サポートされています** | **移行パス** |
 | --- | --- | --- |
 | ASP.NET Web Forms |いいえ  |ASP.NET Core 1 MVC への変換 |
 | ASP.NET MVC |移行あり |ASP.NET Core 1 MVC にアップグレードする |
 | ASP.NET Web API |移行あり |自己ホスト型サーバーまたは ASP.NET Core 1 を使用する |
-| ASP.NET Core 1 |[はい] |該当なし |
+| ASP.NET Core 1 |はい |該当なし |
 
 ## <a name="entry-point-api-and-lifecycle"></a>エントリ ポイントの API とライフサイクル
 worker ロールと Service Fabric サービス API には、同様のエントリ ポイントが用意されています。 
@@ -110,8 +110,8 @@ namespace Stateless1
 
 worker ロールと Service Fabric サービスのライフサイクルと有効期間には、主な違いがいくつかあります。
 
-* **ライフサイクル**: 最も大きな違いは、worker ロールが VM であるため、そのライフサイクルが VM に関連付けられている点です。そのため、VM の開始時と停止時のイベントが含まれます。 Service Fabric サービスには、VM のライフサイクルとは別のライフサイクルがあります。関連性がないため、そのため、ホスト VM またはコンピューターの開始時と停止時のイベントは含まれません。
-* **有効期間**: worker ロール インスタンスは、`Run` メソッドの終了時にリサイクルされます。 一方、Service Fabric サービスの `RunAsync` メソッドは、完了まで実行を継続できるので、サービス インスタンスは有効なままになります。 
+* **ライフサイクル:** 最も大きな違いは、worker ロールが VM であるため、そのライフサイクルが VM に関連付けられている点です。そのため、VM の開始時と停止時のイベントが含まれます。 Service Fabric サービスには、VM のライフサイクルとは別のライフサイクルがあります。関連性がないため、そのため、ホスト VM またはコンピューターの開始時と停止時のイベントは含まれません。
+* **有効期間:** worker ロール インスタンスは、`Run` メソッドの終了時にリサイクルされます。 一方、Service Fabric サービスの `RunAsync` メソッドは、完了まで実行を継続できるので、サービス インスタンスは有効なままになります。 
 
 Service Fabric には、クライアント要求をリッスンするサービス向けに、オプションの通信セットアップ エントリ ポイントがあります。 RunAsync と通信エントリ ポイントは、いずれも Service Fabric サービスのオプションのオーバーライドです。クライアント要求のリッスンのみを行うか、処理ループのみを実行するか、またはその両方かをサービスで選択できます。クライアント要求のリッスンを継続できるので、サービス インスタンスを再開することなく RunAsync メソッドを終了できます。
 
@@ -209,7 +209,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 スタートアップ タスクは、アプリケーションの起動前に実行されるアクションです。 通常、スタートアップ タスクは、昇格された特権を使用してセットアップ スクリプトを実行するために使用されます。 Cloud Services と Service Fabric のいずれもスタートアップ タスクをサポートしています。 主な違いは、Cloud Services の場合、ロール インスタンスの一部なので、スタートアップ タスクは VM に関連付けられている点です。一方、Service Fabric では、スタートアップ タスクはサービスに関連付けられており、特定の VM には関連付けられていません。
 
 | Service Fabric | Cloud Services |
-| --- | --- | --- |
+| --- | --- |
 | 構成の場所 |ServiceDefinition.csdef |
 | 特権 |"制限付き" または "昇格された" 特権 |
 | シーケンス処理 |"簡易"、"バックグラウンド"、"フォアグラウンド" |

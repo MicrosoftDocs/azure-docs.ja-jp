@@ -6,23 +6,24 @@ documentationcenter: ''
 author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 01/21/2019
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 0f0de122dc3dbd770e91a8412430423bee222b30
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 534c0463cd8aee9fccfa183586b946032dada722
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577961"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094560"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法: 無効化された Access Control Service 名前空間を再度有効化する
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
 
 2017 年 11 月に、Azure Active Directory (Azure AD) のサービスである Microsoft Azure Access Control (ACS) が 2018 年 11 月 7 日で終了となると告知しました。
 
@@ -32,7 +33,7 @@ ms.locfileid: "51577961"
 
 ## <a name="why-your-namespace-is-disabled"></a>名前空間が無効となっている理由
 
-延長を選択していない場合、2018 年 11 月 7 日より ACS 名前空間の無効化を開始します。 連絡できなかったお客様が 2019 年 2 月 4 日までの延長を希望する場合、次のセクションの指示に従ってください。
+延長を選択していない場合、2018 年 11 月 7 日より ACS 名前空間の無効化を開始します。 お客様は既に 2019 年 2 月 4 日までの延長を要請していることでしょうが、そうでない場合は、PowerShell を介して名前空間を有効にすることができなくなります。
 
 > [!NOTE]
 > サブスクリプションのサービス管理者または共同管理者でなければ、PowerShell コマンドを実行したり、延長を要求したりできません。
@@ -57,7 +58,7 @@ ACS PowerShell を使用して自分の ACS 名前空間をすべて一覧表示
 
         特定のコマンドのヘルプを表示するには、次を実行します。
 
-        ```
+        ```powershell
         Get-Help [Command-Name] -Full
         ```
     
@@ -79,18 +80,45 @@ ACS PowerShell を使用して自分の ACS 名前空間をすべて一覧表示
 
 ## <a name="request-an-extension"></a>延長を要請する
 
-1. `https://{your-namespace}.accesscontrol.windows.net` に進み、自分の ACS 名前空間の管理ポータルに移動します。
-1. **[使用条件を読む]** ボタンを選択し、[更新された利用規約](https://azure.microsoft.com/support/legal/access-control/)を読みます。更新された利用規約が含まれたページに自動的に移動します。
+Microsoft では、2019 年 1 月 21 日より、新しい延長要請を受け付けています。
 
-    [![[使用条件を読む] ボタンを選択する](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png#lightbox)
+2019 年 2 月 4 日までの延長を要請したお客様については、名前空間の無効化が開始されます。 お客様は引き続き PowerShell を使用して名前空間を再度有効にすることができますが、名前空間は 48 時間後に再び無効になります。
 
-1. ページの一番上にあるバナーの **[延長をリクエスト]** を選択します。 このボタンは[更新された利用規約](https://azure.microsoft.com/support/legal/access-control/)を読まないと有効になりません。
+2019 年 3 月 4 日以降、お客様は PowerShell を介して名前空間を再び有効にすることができなくなります。
 
-    [![[延長をリクエスト] ボタンを選択する](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png#lightbox)
+これ以上の延長は自動的に承認されなくなります。 移行するのにさらに時間が必要な場合は、[Azure サポート](https://portal.azure.com/#create/Microsoft.Support)まで詳細な移行タイムラインをお知らせください。
 
-1. 延長依頼が登録されると、ページが更新され、ページの一番上に新しいバナーが表示されます。
+### <a name="to-request-an-extension"></a>延長を要請するには
 
-    [![更新後のページとバナー](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png#lightbox)
+1. Azure portal にログインし、[新しいサポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を作成します。
+1. 次の例に示すように、新しいサポート リクエスト フォームに入力します。
+
+    | サポート リクエストのフィールド | 値 |
+    |-----------------------|--------------------|
+    | **問題の種類** | `Technical` |
+    | **サブスクリプション** | 対象のサブスクリプションに設定します |
+    | **サービス** | `All services` |
+    | **リソース** | `General question/Resource not available` |
+    | **問題の種類** | `ACS to SAS Migration` |
+    | **[件名]** | 問題を説明します |
+
+   ![新しいテクニカル サポート リクエスト](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+
+<!--
+
+1. Navigate to your ACS namespace's management portal by going to `https://{your-namespace}.accesscontrol.windows.net`.
+1. Select the **Read Terms** button to read the [updated Terms of Use](https://azure.microsoft.com/support/legal/access-control/), which will direct you to a page with the updated Terms of Use.
+
+    [![Select the Read Terms button](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png#lightbox)
+
+1. Select **Request Extension** on the banner at the top of the page. The button will only be enabled after you read the [updated Terms of Use](https://azure.microsoft.com/support/legal/access-control/).
+
+    [![Select the Request Extension button](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png#lightbox)
+
+1. After the extension request is registered, the page will refresh with a new banner at the top of the page.
+
+    [![Updated page with refreshed banner](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png#lightbox)
+-->
 
 ## <a name="help-and-support"></a>ヘルプとサポート
 
@@ -99,4 +127,4 @@ ACS PowerShell を使用して自分の ACS 名前空間をすべて一覧表示
 
 ## <a name="next-steps"></a>次の手順
 
-- 「[方法: Azure Access Control Service からの移行](active-directory-acs-migration.md)」で ACS サービス終了に関する情報を確認します。
+- 「[方法: Azure Access Control Service からの移行](active-directory-acs-migration.md)」を参照して、ACS の提供終了に関する情報を確認します。

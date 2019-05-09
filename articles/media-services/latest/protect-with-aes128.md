@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services の AES 動的暗号化の使用 | Microsoft Docs
+title: Azure Media Services を使用して AES-128 によってビデオを暗号化する | Microsoft Docs
 description: Microsoft Azure Media Services を使用して、AES 128 ビット暗号化キーを使用して暗号化したコンテンツを配信できます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 このトピックでは、AES-128 を使用して動的に暗号化する方法とキー配信サービスを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -11,31 +11,49 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 8d071f64df0097b4029884a9efa84c6f2708fd44
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 2216deb7a59dda2a7c3b99c55956ef8541925425
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376603"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877284"
 ---
-# <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
+# <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>チュートリアル:AES-128 動的暗号化とキー配信サービスの使用
 
-Media Services では、AES 128 ビット暗号化キーを使用して暗号化された HTTP ライブ ストリーミング (HLS)、MPEG-DASH、およびスムーズ ストリーミングを配信できます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 Media Services で資産を暗号化する場合は、暗号化キーを StreamingLocator に関連付け、さらにコンテンツ キー ポリシーを構成します。 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES でコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーによるキーの取得が承認されているかどうかを判断するために、キーに指定されたコンテンツ キー ポリシーがサービスにより評価されます。
+Media Services では、AES 128 ビット暗号化キーを使用して暗号化された HTTP ライブ ストリーミング (HLS)、MPEG-DASH、およびスムーズ ストリーミングを配信できます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 Media Services によってビデオを動的に暗号化する場合は、暗号化キーをストリーミング ロケーターに関連付けて、さらにコンテンツ キー ポリシーも構成します。 プレーヤーによってストリームが要求されると、Media Services では指定されたキーを使用して、AES-128 によってコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーによるキーの取得が承認されているかどうかを判断するために、キーに指定されたコンテンツ キー ポリシーがサービスにより評価されます。
 
-この記事は、[EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) サンプルに基づいています。 このサンプルでは、適応型ビットレート エンコードのための組み込みプリセットを使用し、[HTTPs ソース URL](job-input-from-http-how-to.md) からファイルを直接取り込むエンコード Transform を作成する方法を示します。 次に、出力資産が AES (ClearKey) 暗号化を使用して公開されます。 サンプルからの出力は、DASH マニフェストとコンテンツを再生するために必要な AES トークンの両方を含む、Azure Media Player への URL です。 このサンプルでは、JWT トークンの有効期限を 1 時間に設定しています。 ブラウザーを開いて結果の URL を貼り付けると、URL とトークンが既に入力されている Azure Media Player のデモ ページが起動します (形式は次のとおりです: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```)。
+複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各アセットを暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](content-protection-overview.md#streaming-protocols-and-encryption-types)」を参照してください。 また、[DRM による保護方法](protect-with-drm.md)に関するページも参照してください。
 
-> [!NOTE]
-> 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各アセットを暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](content-protection-overview.md#streaming-protocols-and-encryption-types)」を参照してください。
+この記事のサンプルからの出力には、Azure Media Player への URL、マニフェスト URL、およびコンテンツを再生するのに必要な AES トークンが含まれます。 このサンプルでは、JWT トークンの有効期限を 1 時間に設定しています。 ブラウザーを開いて結果の URL を貼り付けると、URL とトークンが既に入力されている Azure Media Player のデモ ページが起動します (形式は次のとおりです: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```)。
+
+このチュートリアルでは、次の操作方法について説明します。    
+
+> [!div class="checklist"]
+> * この記事で説明する [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) サンプルをダウンロードする
+> * .NET SDK で Media Services API の使用を開始する
+> * 出力アセットを作成する
+> * エンコード Transform を作成する
+> * ジョブを送信する
+> * ジョブが完了するのを待つ
+> * コンテンツ キー ポリシーを作成する
+> * ポリシーを構成して JWT トークンの制限を使用する 
+> * ストリーミング ロケーターを作成する
+> * ストリーミング ロケーターを構成して AES (ClearKey) によってビデオを暗号化する
+> * テスト トークンを取得する
+> * ストリーミング URL を作成する
+> * リソースのクリーンアップ
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 チュートリアルを完了するには次のものが必要です。
 
-* 「[コンテンツ保護の概要](content-protection-overview.md)」の記事を確認します。
+* [コンテンツ保護の概要](content-protection-overview.md)に関する記事を確認する
 * Visual Studio Code または Visual Studio をインストールする
-* [このクイックスタート](create-account-cli-quickstart.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
+* [Media Services アカウントを作成する](create-account-cli-quickstart.md)
 * [API へのアクセス](access-api-cli-how-to.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。
 
 ## <a name="download-code"></a>コードをダウンロードする
@@ -87,27 +105,27 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-contentkeypolicy"></a>ContentKeyPolicy を作成する
+## <a name="create-a-content-key-policy"></a>コンテンツ キー ポリシーを作成する
 
-コンテンツ キーにより、アセットに安全にアクセスすることができます。 エンド クライアントにコンテンツ キーを配信する方法を構成する **ContentKeyPolicy** ポリシーを作成する必要があります。 コンテンツ キーは、**StreamingLocator** に関連付けられます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 
+コンテンツ キーにより、アセットに安全にアクセスすることができます。 エンド クライアントにコンテンツ キーを配信する方法を構成する**コンテンツ キー ポリシー**を作成する必要があります。 コンテンツ キーは、**ストリーミング ロケーター**に関連付けられます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 
 
 プレーヤーがストリームを要求すると、Media Services は、指定されたキーを使用してコンテンツを動的に暗号化します (この場合は AES 暗号化を使用します)。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーによるキーの取得が承認されているかどうかを判断するために、キーに指定されたコンテンツ キー ポリシーがサービスにより評価されます。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="create-a-streaminglocator"></a>StreamingLocator を作成する
+## <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 
 エンコードが完了し、コンテンツ キー ポリシーを設定したら、次に、出力アセット内のビデオを、クライアントが再生に利用できるようにします。 これは 2 つの手順で実行します。 
 
-1. [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成します。
+1. [ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成する
 2. クライアントが使用できるストリーミング URL を作成します。 
 
-**StreamingLocator** を作成するプロセスは発行と呼ばれます。 既定では、**StreamingLocator** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
+**ストリーミング ロケーター**を作成するプロセスは、発行と呼ばれます。 既定では、**ストリーミング ロケーター** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 このチュートリアルでは、定義済みのストリーミング ポリシーの 1 つを使用しています。これは、ストリーミングのためにコンテンツを発行する方法を Azure Media Services に指示します。 この例では、AES エンベロープ暗号化が適用されます (DRM ライセンスではなく、キーが HTTPS 経由で再生クライアントに配信されるため、ClearKey 暗号化とも呼ばれます)。
+[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 このチュートリアルでは、定義済みのストリーミング ポリシーの 1 つを使用しています。これは、ストリーミングのためにコンテンツを発行する方法を Azure Media Services に指示します。 この例では、AES エンベロープ暗号化が適用されます (DRM ライセンスではなく、キーが HTTPS 経由で再生クライアントに配信されるため、ClearKey 暗号化とも呼ばれます)。
 
 > [!IMPORTANT]
-> カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 StreamingLocator ごとに新しい StreamingPolicy を作成しないでください。
+> カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いのストリーミング ロケーターに対してそのセットを再利用する必要があります。 Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 ストリーミング ロケーターごとに新しい StreamingPolicy を作成しないでください。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
 
@@ -115,22 +133,32 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
         
 このチュートリアルでは、トークン制限があるコンテンツ キー ポリシーを指定します。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、サンプルで構成されている [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。
 
-ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり、キー配信サービスに提示されるトークンに ContentKey の識別子が含まれている必要があります。 このサンプルでは、StreamingLocator の作成時にコンテンツ キーを指定していません。システムによってランダムなコンテンツ キーが自動的に作成されます。 テスト トークンを生成するには、ContentKeyIdentifierClaim 要求に含める ContentKeyId を取得する必要があります。
+ContentKeyIdentifierClaim は **ContentKeyPolicy** 内で使用されます。つまり、キー配信サービスに提示されるトークンに、コンテンツ キーの識別子が含まれている必要があります。 サンプルでは、ストリーミング ロケーターの作成時にコンテンツ キーを指定していません。システムによってランダムなコンテンツ キーが作成されます。 テスト トークンを生成するには、ContentKeyIdentifierClaim 要求に含める ContentKeyId を取得する必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>DASH ストリーミング URL を作成する
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と **StreamingLocator** のパスを連結する必要があります。 このサンプルでは、"*既定の*" **StreamingEndpoint** を使っています。 最初に Media Service アカウントを作成したとき、この "*既定の*" **StreamingEndpoint** は停止状態になっているので、**Start** を呼び出す必要があります。
+[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、"*既定の*" **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この "*既定の*" **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services アカウント内のリソースをクリーンアップする
 
-一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform は再利用し、StreamingLocator などは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。  たとえば、次のコードはジョブを削除します。
+一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform は再利用し、ストリーミング ロケーターなどは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。  たとえば、次のコードはジョブを削除します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。 
+
+次の CLI コマンドを実行します。
+
+```azurecli
+az group delete --name amsResourceGroup
+```
 ## <a name="next-steps"></a>次の手順
 
-[DRM での保護](protect-with-drm.md)に関するページを参照してください。
+> [!div class="nextstepaction"]
+> [DRM での保護](protect-with-drm.md)

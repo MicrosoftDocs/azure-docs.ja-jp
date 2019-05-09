@@ -1,25 +1,25 @@
 ---
-title: 'クイック スタート: Custom Vision SDK for Python を使って画像分類プロジェクトを作成する'
+title: クイック スタート:Custom Vision SDK for Python を使用して画像分類プロジェクトを作成する
 titlesuffix: Azure Cognitive Services
 description: Python SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
 author: areddish
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 11/2/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: b95adf3cb07ae98d4b690dbe29d72d30671c4a6a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 47e2f2a03c08ae1e44dcba35b440880ce06f6f95
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681213"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484463"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>クイック スタート: Custom Vision Python SDK を使って画像分類プロジェクトを作成する
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>クイック スタート:Custom Vision Python SDK を使用して画像分類プロジェクトを作成する
 
-この記事では、Custom Vision SDK と Python を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
+この記事では、Custom Vision SDK と Python を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後は、タグの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "52681213"
 
 Custom Vision Service SDK for Python をインストールするには、PowerShell で次のコマンドを実行します。
 
-```PowerShell
+```powershell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
@@ -49,13 +49,16 @@ pip install azure-cognitiveservices-vision-customvision
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageUrlCreateEntry
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
 
 ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
 
 # Replace with a valid key
 training_key = "<your training key>"
 prediction_key = "<your prediction key>"
+prediction_resource_id = "<your prediction resource id>"
+
+publish_iteration_name = "classifyModel"
 
 trainer = CustomVisionTrainingClient(training_key, endpoint=ENDPOINT)
 
@@ -84,19 +87,31 @@ cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```Python
 base_image_url = "<path to project>"
 
-print ("Adding images...")
-for image_num in range(1,10):
-    image_url = base_image_url + "Images/Hemlock/hemlock_{}.jpg".format(image_num)
-    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ hemlock_tag.id ] ) ])
+print("Adding images...")
 
-for image_num in range(1,10):
-    image_url = base_image_url + "Images/Japanese Cherry/japanese_cherry_{}.jpg".format(image_num)
-    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ cherry_tag.id ] ) ])
+image_list = []
+
+for image_num in range(1, 11):
+    file_name = "hemlock_{}.jpg".format(image_num)
+    with open(base_image_url + "images/Hemlock/" + file_name, "rb") as image_contents:
+        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[hemlock_tag.id]))
+
+for image_num in range(1, 11):
+    file_name = "japanese_cherry_{}.jpg".format(image_num)
+    with open(base_image_url + "images/Japanese Cherry/" + file_name, "rb") as image_contents:
+        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[cherry_tag.id]))
+
+upload_result = trainer.create_images_from_files(project.id, images=image_list)
+if not upload_result.is_batch_successful:
+    print("Image batch upload failed.")
+    for image in upload_result.images:
+        print("Image status: ", image.status)
+    exit(-1)
 ```
 
-### <a name="train-the-classifier"></a>分類子をトレーニングする
+### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
 
-このコードにより、プロジェクトに最初のイテレーションが作成されて、それが既定のイテレーションに指定されます。 既定のイテレーションは、予測要求に応答するモデルのバージョンを表します。 モデルを再トレーニングするたびに更新する必要があります。
+このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 ```Python
 import time
@@ -108,12 +123,12 @@ while (iteration.status != "Completed"):
     print ("Training status: " + iteration.status)
     time.sleep(1)
 
-# The iteration is now trained. Make it the default project endpoint
-trainer.update_iteration(project.id, iteration.id, is_default=True)
+# The iteration is now trained. Publish it to the project endpoint
+trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, prediction_resource_id)
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-default-prediction-endpoint"></a>既定の予測エンドポイントを取得して使用する
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>予測エンドポイントで公開されたイテレーションを取得して使用する
 
 画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
@@ -121,28 +136,27 @@ print ("Done!")
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
 
 # Now there is a trained endpoint that can be used to make a prediction
-
 predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
 
-test_img_url = base_image_url + "Images/Test/test_image.jpg"
-results = predictor.predict_image_url(project.id, iteration.id, url=test_img_url)
+with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents:
+    results = predictor.classify_image(project.id, publish_iteration_name, image_contents.read())
 
-# Display the results.
-for prediction in results.predictions:
-    print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
+    # Display the results.
+    for prediction in results.predictions:
+        print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
 *sample.py* を実行します。
 
-```PowerShell
+```powershell
 python sample.py
 ```
 
 アプリケーションの出力は次のテキストのようになります。
 
-```
+```console
 Creating project...
 Adding images...
 Training...

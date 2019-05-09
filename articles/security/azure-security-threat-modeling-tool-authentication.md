@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1170266ed0b59c53adce4e44fe3e7a0bc62f394e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888589"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
+
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Web アプリケーション**    | <ul><li>[標準の認証メカニズムを使用して Web アプリケーションに対する認証を行うことを検討する](#standard-authn-web-app)</li><li>[認証失敗のシナリオをアプリケーションが安全に処理する](#handle-failed-authn)</li><li>[ステップアップまたはアダプティブ認証を有効にする](#step-up-adaptive-authn)</li><li>[管理インターフェイスのロックが適切にロックダウンされていることを確認する](#admin-interface-lockdown)</li><li>[パスワードの再設定機能を安全に実装する](#forgot-pword-fxn)</li><li>[パスワードとアカウント ポリシーが実装されていることを確認する](#pword-account-policy)</li><li>[ユーザー名が列挙されないコントロールを実装する](#controls-username-enum)</li></ul> |
@@ -338,7 +339,7 @@ ms.locfileid: "53014863"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET Web API での認証と権限承認](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api)、[ASP.NET Web API (C#) の外部認証サービス](http://www.asp.net/web-api/overview/security/external-authentication-services) |
+| **参照**              | [ASP.NET Web API での認証と権限承認](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api)、[ASP.NET Web API (C#) の外部認証サービス](https://www.asp.net/web-api/overview/security/external-authentication-services) |
 | **手順** | <p>認証は、エンティティがその ID を証明するプロセスで、通常はユーザー名、パスワードなどの資格情報を使用します。 使用を検討できる認証プロトコルは複数あります。 その一部を次に示します。</p><ul><li>[クライアント証明書]</li><li>Windows ベース</li><li>フォーム ベース</li><li>フェデレーション - ADFS</li><li>フェデレーション - Azure AD</li><li>フェデレーション - Identity Server</li></ul><p>「参照」セクションのリンクは、認証スキームを実装して Web API をセキュリティで保護する方法について、細かなレベルの詳細情報をスキームごとに提供します。</p>|
 
 ## <a id="authn-aad"></a>Azure Active Directory でサポートされる標準的な認証シナリオを使用する
@@ -454,7 +455,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、C#、Node.JS、  |
 | **属性**              | 該当なし、ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | 該当なし、[.NET での Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[Azure IoT Hub の使用と Node.JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、[SAS と 証明書による IoT のセキュリティ保護](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **参照**              | 該当なし、[.NET での Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[IoT Hub と Node.JS の概要](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、[SAS と証明書による IoT のセキュリティ保護](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
 | **手順** | <ul><li>**ジェネリック:** トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。 完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。 Azure AD の OAuth をご利用ください。</li><li>**C#:** DeviceClient インスタンスを作成するとき、既定では、Create メソッドによって、IoT Hub と通信するために AMQP プロトコルを使用する DeviceClient インスタンスが作成されます。 HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、Create メソッドのオーバーライドを使用します。 HTTPS プロトコルを使用する場合は、`Microsoft.AspNet.WebApi.Client` NuGet パッケージをプロジェクトに追加して、`System.Net.Http.Formatting` 名前空間を含める必要もあります。</li></ul>|
 
 ### <a name="example"></a>例
@@ -475,7 +476,7 @@ await deviceClient.SendEventAsync(message);
 ### <a name="example"></a>例
 **Node.JS: 認証**
 #### <a name="symmetric-key"></a>対称キー
-* Azure で IoT Hub を作成します
+* Azure で IoT ハブを作成します
 * デバイスの ID レジストリにエントリを作成します
     ```javascript
     var device = new iothub.Device(null);
@@ -489,7 +490,7 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-#### <a name="sas-token"></a>SAS トークン
+  #### <a name="sas-token"></a>SAS トークン
 * 対称キーを使用しているときに内部的に生成されますが、明示的に生成して使用することもできます
 * プロトコルを定義します: `var Http = require('azure-iot-device-http').Http;`
 * SAS トークンを作成します: 
@@ -506,7 +507,7 @@ await deviceClient.SendEventAsync(message);
     var base64UriEncoded = encodeURIComponent(base64signature);
     // construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "%2fdevices%2f"+deviceName+"&sig="
-    + base64UriEncoded + "&se=" + expires;
+  + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
@@ -514,7 +515,7 @@ await deviceClient.SendEventAsync(message);
     ```javascript
     Client.fromSharedAccessSignature(sas, Http); 
     ```
-#### <a name="certificates"></a>証明書
+  #### <a name="certificates"></a>証明書
 * OpenSSL などのツールを使用して自己署名 X509 証明書を生成し、証明書を格納する .cert ファイルと、キーを格納する .key ファイルを生成します
 * 証明書を使用してセキュリティで保護された接続を受け入れるデバイスをプロビジョニングします。
     ```javascript

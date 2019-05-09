@@ -10,14 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 4d11af1edc13fa675bef5cf9067dbe95646abff1
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2af9575c50ee522d6330ddf46c75b666132b7a84
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091919"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546835"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime の概要 (プレビュー)
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 Azure Functions Runtime (プレビュー) は、オンプレミスの Azure Functions プログラミング モデルのシンプルさと柔軟性を活用するための新たな手段です。 Azure Functions ランタイムは、Azure Functions と同一のオープン ソースのルートで構築すると、オンプレミスにデプロイされて、クラウド サービスとほぼ同じ開発環境を提供します。
 

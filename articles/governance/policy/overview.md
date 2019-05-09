@@ -1,21 +1,20 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 11384d1bbffb675bd322469d129464f58a48bb6b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311833"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59259458"
 ---
-# <a name="what-is-azure-policy"></a>Azure Policy とは
+# <a name="overview-of-the-azure-policy-service"></a>Azure Policy サービスの概要
 
 ガバナンスは、組織が IT の効率的かつ効果的な使用によって、その組織のゴールを達成できることを検証します。 それは、ビジネスのゴールと IT プロジェクトの間の関係を明確にすることによってこのニーズを満たします。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 46ae8cd9775432d126cbde856c1fb06ea319297e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 48a84520a61d19968b467091871459e21898dd5e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38301567"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548645"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "38301567"
 
 CDN プロファイルとエンドポイントの作成と管理は、 [Azure CDN SDK for Node.js](https://www.npmjs.com/package/azure-arm-cdn) を使用して自動化できます。  このチュートリアルでは、単純な Node.js コンソール アプリケーションを作成しながら、使用可能な操作のいくつかを紹介します。  このチュートリアルは、Azure CDN SDK for Node.js のすべての側面を詳細に説明することを目的としていません。
 
-このチュートリアルに取り組む前に、 [Node.js](http://www.nodejs.org) **4.x.x** 以降をインストールし、構成を済ませておく必要があります。  Node.js アプリケーションの作成には、好きなテキスト エディターを使用してかまいません。  このチュートリアルは [Visual Studio Code](https://code.visualstudio.com)を使って執筆されています。  
+このチュートリアルに取り組む前に、 [Node.js](https://www.nodejs.org) **4.x.x** 以降をインストールし、構成を済ませておく必要があります。  Node.js アプリケーションの作成には、好きなテキスト エディターを使用してかまいません。  このチュートリアルは [Visual Studio Code](https://code.visualstudio.com)を使って執筆されています。  
 
 > [!TIP]
 > [このチュートリアルに沿って作成されたプロジェクト](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) は MSDN からダウンロードできます。
@@ -363,9 +363,9 @@ function cdnDelete() {
 ## <a name="next-steps"></a>次の手順
 このチュートリアルの完成したプロジェクトを確認するには、 [サンプルをダウンロード](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)してください。
 
-Azure CDN SDK for Node.js のリファレンスは、 [こちら](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)でご覧いただけます。
+Azure CDN SDK for Node.js のリファレンスは、 [こちら](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)でご覧いただけます。
 
-Azure SDK for Node.js に関するその他のドキュメントについては、 [詳しいリファレンス](http://azure.github.io/azure-sdk-for-node/)を参照してください。
+Azure SDK for Node.js に関するその他のドキュメントについては、 [詳しいリファレンス](https://azure.github.io/azure-sdk-for-node/)を参照してください。
 
-[PowerShell](cdn-manage-powershell.md) で CDN リソースを管理します。
+[PowerShell](cdn-manage-powershell.md)で CDN リソースを管理します。
 

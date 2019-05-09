@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl chaos schedule のコマンドについて
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: dc3dd06b5feac1f66598cd65fa79f447a1bbd9be
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276453"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668315"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 chaos のスケジュールを取得および設定します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | get | Chaos をいつどのようにして実行するかを定義する Chaos Schedule を取得します。 |
 | set | Chaos によって使用されるスケジュールを設定します。 |
@@ -50,7 +50,7 @@ Chaos をいつどのようにして実行するかを定義する Chaos Schedul
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 Chaos によって使用されるスケジュールを設定します。
@@ -76,22 +76,22 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ### <a name="examples"></a>例
 
 次のコマンドは、2016-01-01 から 2038-01-01 まで無停止で Chaos を実行するスケジュールを設定します (現在のスケジュールのバージョンは 0 であるものとします)。 Chaos は、その時刻にクラスター上でスケジュールされます。
 
     sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
-    --chaos-parameters-dictionary 
-    [  
-    {  
+    --chaos-parameters-dictionary
+    [
+    {
         "Key":"adhoc",
-        "Value":{  
+        "Value":{
             "MaxConcurrentFaults":3,
             "EnableMoveReplicaFaults":true,
-            "ChaosTargetFilter":{  
-                "NodeTypeInclusionList":[  
+            "ChaosTargetFilter":{
+                "NodeTypeInclusionList":[
                 "N0010Ref",
                 "N0020Ref",
                 "N0030Ref",
@@ -103,12 +103,12 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
             "WaitTimeBetweenIterationsInSeconds":15,
             "WaitTimeBetweenFaultsInSeconds":30,
             "TimeToRunInSeconds":"600",
-            "Context":{  
-                "Map":{  
+            "Context":{
+                "Map":{
                 "test":"value"
                 }
             },
-            "ClusterHealthPolicy":{  
+            "ClusterHealthPolicy":{
                 "MaxPercentUnhealthyNodes":0,
                 "ConsiderWarningAsError":true,
                 "MaxPercentUnhealthyApplications":0
@@ -116,11 +116,11 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
         }
     }
     ]
-    --jobs 
-    [  
-    {  
+    --jobs
+    [
+    {
         "ChaosParameters":"adhoc",
-        "Days":{  
+        "Days":{
             "Sunday":true,
             "Monday":true,
             "Tuesday":true,
@@ -129,13 +129,13 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
             "Friday":true,
             "Saturday":true
         },
-        "Times":[  
-            {  
-                "StartTime":{  
+        "Times":[
+            {
+                "StartTime":{
                 "Hour":0,
                 "Minute":0
                 },
-                "EndTime":{  
+                "EndTime":{
                 "Hour":23,
                 "Minute":59
                 }

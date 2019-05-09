@@ -1,20 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5a7328e4d64dae4ca04f7af1bd8353951111029b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282103"
 documentType: LandingData
 title: Azure Service Fabric のドキュメント
 metadata:
   title: Azure Service Fabric のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.
+  meta.description: 'Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.'
   services: service-fabric
-  author: 
+  author: null
   manager: carolz
   layout: LandingPage
-  ms.assetid: 
+  ms.assetid: null
   ms.service: service-fabric
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -24,79 +18,79 @@ metadata:
 abstract:
   description: Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Service Fabric の使用方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: クラウドに初めての Service Fabric アプリケーションをデプロイする方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_net.svg
-      text: .NET
-      href: service-fabric-quickstart-dotnet
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_Java.svg
-      text: Java (Reliable Services)
-      href: service-fabric-quickstart-java-reliable-services
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_Java.svg
-      text: Java (Spring Boot)
-      href: service-fabric-quickstart-java-spring-boot
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_linux.svg
-      text: Linux コンテナー
-      href: service-fabric-quickstart-containers-linux
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_Windows.svg
-      text: Windows コンテナー
-      href: service-fabric-quickstart-containers
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure でセキュリティ保護された Web アプリケーションをデプロイ、管理、監視する方法について説明します
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: クラウドに初めての Service Fabric アプリケーションをデプロイする方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_net.svg'
+            text: .NET
+            href: service-fabric-quickstart-dotnet
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_Java.svg'
+            text: Java (Reliable Services)
+            href: service-fabric-quickstart-java-reliable-services
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_Java.svg'
+            text: Java (Spring Boot)
+            href: service-fabric-quickstart-java-spring-boot
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+            text: Linux コンテナー
+            href: service-fabric-quickstart-containers-linux
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
+            text: Windows コンテナー
+            href: service-fabric-quickstart-containers
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="service-fabric-tutorial-create-dotnet-app">.NET アプリケーションのデプロイ</a>
-    - html: <a href="service-fabric-tutorial-create-java-app">Java アプリケーションのデプロイ</a>
-    - html: <a href="service-fabric-host-app-in-a-container">既存の .NET アプリケーションのコンテナー格納</a>
-    - html: <a href="service-fabric-tutorial-create-container-images">Linux コンテナー アプリケーションの作成</a>
-    - html: <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a> または <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a> クラスターの作成と管理
-- title: 概念
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Azure でセキュリティ保護された Web アプリケーションをデプロイ、管理、監視する方法について説明します
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="service-fabric-tutorial-create-dotnet-app">.NET アプリケーションのデプロイ</a>
+          - html: <a href="service-fabric-tutorial-create-java-app">Java アプリケーションのデプロイ</a>
+          - html: <a href="service-fabric-host-app-in-a-container">既存の .NET アプリケーションのコンテナー格納</a>
+          - html: <a href="service-fabric-tutorial-create-container-images">Linux コンテナー アプリケーションの作成</a>
+          - html: <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a> または <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a> クラスターの作成と管理
+  - title: 概念
     items:
-    - html: <a href="service-fabric-overview-microservices">マイクロサービスの概要</a>
-    - html: <a href="service-fabric-content-roadmap">全体像</a>
-    - html: <a href="service-fabric-application-scenarios">アプリケーションのシナリオ</a>
-    - html: <a href="service-fabric-technical-overview">用語集</a>
-    - html: <a href="service-fabric-choose-framework">アプリケーションの構築の概要</a>
-    - html: <a href="service-fabric-deploy-anywhere">クラスターの概要</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 一般的な管理タスクに使用されるスクリプトをご覧ください。
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="service-fabric-overview-microservices">マイクロサービスの概要</a>
+          - html: <a href="service-fabric-content-roadmap">全体像</a>
+          - html: <a href="service-fabric-application-scenarios">アプリケーションのシナリオ</a>
+          - html: <a href="service-fabric-technical-overview">用語集</a>
+          - html: <a href="service-fabric-choose-framework">アプリケーションの構築の概要</a>
+          - html: <a href="service-fabric-deploy-anywhere">クラスターの概要</a>
+  - title: サンプル
     items:
-    - title: サンプル
-      html: <p><a href="service-fabric-powershell-samples">Azure PowerShell</a></p><p><a href="samples-cli">Service Fabric CLI</a></p>
-    - title: .NET
-      html: <p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-getting-started/">使用の開始</a></p><p><a href="https://github.com/Azure-Samples/service-fabric-dotnet-quickstart">投票</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-web-reference-app/">Web リファレンス</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-iot/">IoT</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-watchdog-service/">ウォッチドッグ</a></p>
-    - title: Java
-      html: <p><a href="https://azure.microsoft.com/resources/samples/service-fabric-java-getting-started/">使用の開始</a></p>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 一般的な管理タスクに使用されるスクリプトをご覧ください。
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: サンプル
+            html: <p><a href="service-fabric-powershell-samples">Azure PowerShell</a></p><p><a href="samples-cli">Service Fabric CLI</a></p>
+          - title: .NET
+            html: '<p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-getting-started/">使用の開始</a></p><p><a href="https://github.com/Azure-Samples/service-fabric-dotnet-quickstart">投票</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-web-reference-app/">Web リファレンス</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-iot/">IoT</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-watchdog-service/">ウォッチドッグ</a></p>'
+          - title: Java
+            html: '<p><a href="https://azure.microsoft.com/resources/samples/service-fabric-java-getting-started/">使用の開始</a></p>'
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/sf">Azure CLI</a></p><p><a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl">Service Fabric CLI</a></p><p><a href="/powershell/module/azurerm.servicefabric">Azure PowerShell</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>
-    - title: Languages
-      html: <p><a href="/java/api/overview/azure/servicefabric">Java API</a></p><p><a href="/dotnet/api/overview/azure/service-fabric?view=azure-dotnet">.NET</a></p><p><a href="/azure/service-fabric/service-fabric-service-model-schema">サービス モデルの XML スキーマ</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/servicefabric">REST API リファレンス</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: '<p><a href="/cli/azure/sf">Azure CLI</a></p><p><a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl">Service Fabric CLI</a></p><p><a href="/powershell/module/az.servicefabric">Azure PowerShell</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>'
+          - title: Languages
+            html: <p><a href="/java/api/overview/azure/servicefabric">Java API</a></p><p><a href="/dotnet/api/overview/azure/service-fabric?view=azure-dotnet">.NET</a></p><p><a href="/azure/service-fabric/service-fabric-service-model-schema">サービス モデルの XML スキーマ</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/servicefabric">REST API リファレンス</a></p>

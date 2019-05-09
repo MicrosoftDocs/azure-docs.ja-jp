@@ -10,18 +10,22 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713271"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58905094"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
-[Azure Functions](../functions-overview.md) と [Durable Functions](durable-functions-overview.md) 拡張機能は、[WebJobs SDK](../../app-service/webjobs-create.md) に基づいて構築されています。 WebJobs SDK の `JobHost` は、Azure Functions 内のランタイムです。 `JobHost` の動作を Azure Functions では不可能な方法で制御する必要がある場合は、WebJobs SDK を使用して Durable Functions を独自に開発し、実行することができます。 開発した Durable Functions は、Azure WebJob や、コンソール アプリケーションを実行できる任意の場所で実行できます。
+既定で、Durable Functions ではオーケストレーションをホストするために Azure Functions ランタイムが使用されます。 ただし、特定のシナリオでは、イベントをリッスンするコードに対してより細かな制御が必要となる場合があります。 この記事では、WebJobs SDK を使用してオーケストレーションを実装する方法を示します。 Functions と WebJobs のより詳細な比較については、「[Functions と WebJobs の比較](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)」を参照してください。
 
-Durable Functions のチェイニング のサンプルは、WebJobs SDK バージョンで提供されています。[Durable Functions リポジトリ](https://github.com/azure/azure-functions-durable-extension/)をダウンロードまたは複製し、*samples\\webjobssdk\\chaining* フォルダーに移動してください。
+[Azure Functions](../functions-overview.md) と [Durable Functions](durable-functions-overview.md) 拡張機能は、[WebJobs SDK](../../app-service/webjobs-sdk-how-to.md) に基づいて構築されています。 WebJobs SDK のジョブ ホストは、Azure Functions 内のランタイムです。 Azure Functions では不可能な方法で動作を制御する必要がある場合は、WebJobs SDK を使用して Durable Functions を独自に開発し、実行することができます。
+
+WebJobs SDK のバージョン 3.x では、このホストは `IHost` の実装であり、バージョン 2.x では `JobHost` オブジェクトを使用します。
+
+Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージョンで提供されています。[Durable Functions リポジトリ](https://github.com/azure/azure-functions-durable-extension/)をダウンロードまたは複製し、*samples\\webjobssdk\\chaining* フォルダーに移動してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +39,7 @@ Durable Functions のチェイニング のサンプルは、WebJobs SDK バー�
 
 * **Azure 開発**のワークロードを備えた、[Visual Studio 2017 バージョン 15.6 以降をインストールします](https://docs.microsoft.com/visualstudio/install/)。
 
-  Visual Studio は既にあるものの、必要なワークロードがない場合は、**[ツール] > [Get Tools and Features]\(ツールと機能の取得\)** を選択してワークロードを追加してください。
+  Visual Studio は既にあるものの、必要なワークロードがない場合は、**[ツール]** > **[ツールと機能の取得]** の順に選択してワークロードを追加してください。
 
   (代わりに [Visual Studio Code](https://code.visualstudio.com/) を使うこともできますが、一部の説明は Visual Studio に固有のものです。)
 
@@ -45,13 +49,13 @@ Durable Functions のチェイニング のサンプルは、WebJobs SDK バー�
 
 この記事では、WebJobs SDK 2.x プロジェクト (Azure Functions バージョン 1.x に相当) の開発方法について説明します。 バージョン 3.x について詳しくは、この記事で後述する「[WebJobs SDK 3.x](#webjobs-sdk-3x)」をご覧ください。
 
-## <a name="create-console-app"></a>コンソール アプリの作成
+## <a name="create-a-console-app"></a>コンソール アプリを作成する
 
-WebJobs SDK プロジェクトは、適切な NuGet パッケージがインストールされたコンソール アプリ プロジェクトです。
+Durable Functions を WebJobs として実行するには、まず、コンソール アプリを作成する必要があります。 WebJobs SDK プロジェクトは、適切な NuGet パッケージがインストールされたコンソール アプリ プロジェクトです。
 
-Visual Studio の **[新しいプロジェクト]** ダイアログで、**[Windows クラシック デスクトップ] > [コンソール アプリ (.NET Framework)]** を選択します。 プロジェクト ファイルでは、`TargetFrameworkVersion` が `v4.6.1` になっています。
+Visual Studio の **[新しいプロジェクト]** ダイアログ ボックスで、**[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]** を選択します。 プロジェクト ファイルでは、`TargetFrameworkVersion` が `v4.6.1` になっています。
 
-Visual Studio には、WebJob プロジェクト テンプレートも用意されています。これを使用するには、**[クラウド] > [Azure WebJob (.NET Framework)]** を選択します。 このテンプレートでは多数のパッケージがインストールされますが、これらの一部は必要ない場合があります。
+Visual Studio には、WebJob プロジェクト テンプレートも用意されています。これを使用するには、**[クラウド]** > **[Azure WebJob (.NET Framework)]** を選択します。 このテンプレートでは多数のパッケージがインストールされますが、これらの一部は必要ない場合があります。
 
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
@@ -63,7 +67,7 @@ Install-Package Microsoft.Extensions.Logging -version 2.0.1
 Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.4.0
 ```
 
-ログ プロバイダーも必要です。 次に示すのは、Application Insights プロバイダーと `ConfigurationManager` をインストールするコマンドです。 `ConfigurationManager` では、Application Insights のインストルメンテーション キーをアプリ設定から取得できます。
+ログ プロバイダーも必要です。 次に示すのは、Azure Application Insights プロバイダーと `ConfigurationManager` をインストールするコマンドです。 `ConfigurationManager` では、Application Insights のインストルメンテーション キーをアプリ設定から取得できます。
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
@@ -78,6 +82,8 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 
 ## <a name="jobhost-code"></a>JobHost コード
 
+コンソール アプリを作成し、必要な NuGet パッケージをインストールしたので、Durable Functions を使用する準備ができました。 そのためには、JobHost コードを使用します。
+
 Durable Functions 拡張機能を使用するには、`Main` メソッド内の `JobHostConfiguration` オブジェクトで `UseDurableTask` を呼び出します。
 
 ```cs
@@ -90,7 +96,7 @@ config.UseDurableTask(new DurableTaskExtension
 
 `DurableTaskExtension` オブジェクトで設定できるプロパティの一覧については、「[host.json](../functions-host-json.md#durabletask)」をご覧ください。
 
-`Main` メソッドでは、ログ プロバイダーも設定します。 次に示すのは、コンソールと Application Insights プロバイダーを構成するコードの例です。
+`Main` メソッドでは、ログ プロバイダーも設定します。 次の例では、コンソールと Application Insights プロバイダーを構成します。
 
 ```cs
 static void Main(string[] args)
@@ -121,7 +127,7 @@ static void Main(string[] args)
 
 ## <a name="functions"></a>Functions
 
-WebJobs SDK 関数用に記述するコードは、Azure Functions 用に記述するコードと比べていくつかの違いがあります。
+WebJobs のコンテキスト内の Durable Functions と、Azure Functions のコンテキスト内の Durable Functions はやや異なります。 コードを記述する際は、この相違点に注意することが重要です。
 
 WebJobs SDK では、次の Azure Functions 機能はサポートされません。
 
@@ -182,15 +188,17 @@ while (true)
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
+WebJob として実行されるように設定された Durable Functions を取得できたので、これが、Durable Functions をスタンドアロン Azure Functions として実行する場合とどのように異なるのかを理解します。 この時点で、それがサンプル内で動作するのを確認することをお勧めします。
+
 このセクションでは、[サンプル プロジェクト](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)の実行方法について概説します。 WebJobs SDK プロジェクトをローカルで実行し、それを Azure WebJob にデプロイする方法について詳しくは、「[WebJobs SDK の概要](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)」をご覧ください。
 
 ### <a name="run-locally"></a>ローカルで実行する
 
 1. ストレージ エミュレーターが実行されていることを確認します (「[前提条件](#prerequisites)」をご覧ください)。
 
-1. ローカルで実行するときに Application Insights でログを表示するには:
+1. プロジェクトをローカルで実行するときに Application Insights でログを表示するには:
 
-    a. Application Insights リソースを作成します (アプリの種類は **[全般]**)。
+    a. Application Insights リソースを作成し、それに対するアプリの種類として **[全般]** を使用します。
 
     b. インストルメンテーション キーを *App.config* ファイルに保存します。
 
@@ -200,58 +208,70 @@ while (true)
 
 1. Web アプリとストレージ アカウントを作成します。
 
-1. Web アプリで、AzureWebJobsStorage という名前のアプリ設定にストレージ接続文字列を保存します。
+1. Web アプリで、`AzureWebJobsStorage` という名前のアプリ設定にストレージ接続文字列を保存します。
 
-1. Application Insights リソースを作成します (アプリの種類は **[全般]**)。
+1. Application Insights リソースを作成し、それに対するアプリの種類として **[全般]** を使用します。
 
-1. APPINSIGHTS_INSTRUMENTATIONKEY という名前のアプリ設定に、インストルメンテーション キーを保存します。
+1. `APPINSIGHTS_INSTRUMENTATIONKEY` という名前のアプリ設定に、インストルメンテーション キーを保存します。
 
 1. WebJob としてデプロイします。
 
 ## <a name="webjobs-sdk-3x"></a>WebJobs SDK 3.x
 
-3.x で導入された主な変更は、.NET Framework の代わりに .NET Core を使用することです。 3.x プロジェクトの作成手順は基本的に以前と同じですが、次の点が異なります。
+この記事では、WebJobs SDK 2.x プロジェクトの開発方法について説明します。 [WebJobs SDK 3.x](../../app-service/webjobs-sdk-get-started.md) プロジェクトを開発中である場合、このセクションは変更履歴を理解するのに役立ちます。
 
-1. .NET Core コンソール アプリを作成します。 Visual Studio の **[新しいプロジェクト]** ダイアログで、**[.NET Core] > [コンソール アプリ (.NET Core)]** を選択します。 プロジェクト ファイルでは、`TargetFramework` が `netcoreapp2.0` と指定されています。
+導入された主な変更は、.NET Framework の代わりに .NET Core を使用することです。 WebJobs SDK 3.x プロジェクトの作成手順は基本的に以前と同じですが、次の点が異なります。
 
-1. 次のパッケージのプレリリース版 3.x を選択します。
+1. .NET Core コンソール アプリを作成します。 Visual Studio の **[新しいプロジェクト]** ダイアログ ボックスで、**[.NET Core]** > **[コンソール アプリ (.NET Core)]** を選択します。 プロジェクト ファイルでは、`TargetFramework` が `netcoreapp2.x` と指定されています。
+
+1. 次のパッケージのリリース版 WebJobs SDK 3.x を選択します。
 
     * `Microsoft.Azure.WebJobs.Extensions`
+    * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. `Main` メソッドのコードを変更して、ストレージ接続文字列と Application Insights のインストルメンテーション キーを (.NET Core の構成フレームワークを使用して) *appsettings.json* ファイルから取得するようにします。  次に例を示します。
+1. ストレージ接続文字列と Application Insights のインストルメンテーション キーを、.NET Core の構成フレームワークを使用して、*appsettings.json* ファイル内に設定します。 次に例を示します。
+
+    ```json
+        {
+            "AzureWebJobsStorage": "<replace with storage connection string>",
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "<replace with Application Insights instrumentation key>"
+        }
+    ```
+
+1. `Main` メソッドを変更して、これを行います。 次に例を示します。
 
    ```cs
    static void Main(string[] args)
    {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.json");
+        var hostBuilder = new HostBuilder()
+            .ConfigureWebJobs(config =>
+            {
+                config.AddAzureStorageCoreServices();
+                config.AddAzureStorage();
+                config.AddTimers();
+                config.AddDurableTask(options =>
+                {
+                    options.HubName = "MyTaskHub";
+                    options.AzureStorageConnectionStringName = "AzureWebJobsStorage";
+                });
+            })
+            .ConfigureLogging((context, logging) =>
+            {
+                logging.AddConsole();
+                logging.AddApplicationInsights(config =>
+                {
+                    config.InstrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
+                });
+            })
+            .UseConsoleLifetime();
 
-       var appSettingsConfig = builder.Build();
+        var host = hostBuilder.Build();
 
-       using (var loggerFactory = new LoggerFactory())
-       {
-           var config = new JobHostConfiguration();
-
-           config.DashboardConnectionString = "";
-           config.StorageConnectionString =
-               appSettingsConfig.GetConnectionString("AzureWebJobsStorage");
-           var instrumentationKey =
-               appSettingsConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
-
-           config.LoggerFactory = loggerFactory
-               .AddApplicationInsights(instrumentationKey, null)
-               .AddConsole();
-
-           config.UseTimers();
-           config.UseDurableTask(new DurableTaskExtension
-           {
-               HubName = "MyTaskHub",
-           });
-           var host = new JobHost(config);
-           host.RunAndBlock();
-       }
+        using (host)
+        {
+            host.Run();
+        }
    }
    ```
 

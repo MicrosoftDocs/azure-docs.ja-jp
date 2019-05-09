@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Python 用の Bing Web Search SDK を使用する'
+title: クイック スタート:Python 用の Bing Web Search SDK を使用する
 titleSuffix: Azure Cognitive Services
 description: Bing Web Search SDK を使用すると、Python アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: c28a3097e8b0733db229fc10778d0ac77a3b0a7a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 273922c8cf48c24ff3b1b55fa44b36b69e061057
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306372"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863901"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>クイック スタート: Python 用の Bing Web Search SDK を使用する
+# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>クイック スタート:Python 用の Bing Web Search SDK を使用する
 
 Bing Web Search SDK を使用すると、Python アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 
@@ -25,7 +25,7 @@ Bing Web Search SDK を使用すると、Python アプリケーションに Bing
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 Bing Web Search SDK は、Python 2.7、3.3、3.4、3.5、および 3.6 と互換性があります。 このクイック スタートには仮想環境を使用することをお勧めします。
@@ -81,7 +81,9 @@ python -m pip install azure-cognitiveservices-search-websearch
 応答に Web ページ、画像、ニュース、または動画が含まれている場合は、それぞれの最初の結果が出力されます。
 
 1. 普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。
-2. このサンプル コードをプロジェクトにコピーします。  
+
+1. このサンプル コードをプロジェクトにコピーします。  
+
     ```python
     # Import required modules.
     from azure.cognitiveservices.search.websearch import WebSearchAPI
@@ -161,19 +163,22 @@ python -m pip install azure-cognitiveservices-search-websearch
     else:
         print("Didn't find any videos...")
     ```
-3. `subscription_key` を有効なサブスクリプション キーに置き換えます。
-4. プログラムを実行します。 (例: `python your_program.py`)。
+
+1. `subscription_key` を有効なサブスクリプション キーに置き換えます。
+
+1. プログラムを実行します。 (例: `python your_program.py`)。
 
 ## <a name="define-functions-and-filter-results"></a>関数の定義と結果のフィルター処理
 
-これで Bing Web Search API の最初の呼び出しを実行できたので、次は SDK 機能がよくわかるいくつかの関数を調べて、クエリとフィルター処理の結果を調整しましょう。 各関数は、前のセクションで作成した Python プログラムに追加することができます。
+Bing Web Search API の最初の呼び出しを行ったので、関数をいくつか見てみましょう。 以下のセクションでは、クエリを調整して結果をフィルター処理するための SDK の機能に注目します。 各関数は、前のセクションで作成した Python プログラムに追加することができます。
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Bing から返される結果の数の制限
 
-このサンプルでは、`count` パラメーターと `offset` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search)によって返される結果の数を制限しています。 最初の結果の `name` と `URL` が出力されます。
+このサンプルでは、`count` パラメーターと `offset` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)によって返される結果の数を制限しています。 最初の結果の `name` と `url` が出力されます。
 
 1. 次のコードを Python プロジェクトに追加します。
-    ```python
+
+   ```python
     # Declare the function.
     def web_results_with_count_and_offset(subscription_key):
         client = WebSearchAPI(CognitiveServicesCredentials(subscription_key))
@@ -181,7 +186,7 @@ python -m pip install azure-cognitiveservices-search-websearch
         try:
             '''
             Set the query, offset, and count using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(query="Best restaurants in Seattle", offset=10, count=20)
             print("\r\nSearching for \"Best restaurants in Seattle\"")
@@ -203,13 +208,15 @@ python -m pip install azure-cognitiveservices-search-websearch
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. プログラムを実行します。
+
+1. プログラムを実行します。
 
 ### <a name="filter-for-news-and-freshness"></a>ニュースと鮮度のフィルター処理
 
-このサンプルでは、`response_filter` パラメーターと `freshness` パラメーターを使用して、SDK の [`search` メソッド](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations#search)による検索結果をフィルター処理します。 返される検索結果は、ニュース記事と、Bing が過去 24 時間以内に検出したページだけに制限されます。 最初の結果の `name` と `URL` が出力されます。
+このサンプルでは、`response_filter` パラメーターと `freshness` パラメーターを使用して、SDK の [`search` メソッド](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)による検索結果をフィルター処理します。 返される検索結果は、ニュース記事と、Bing が過去 24 時間以内に検出したページだけに制限されます。 最初の結果の `name` と `url` が出力されます。
 
 1. 次のコードを Python プロジェクトに追加します。
+
     ```python
     # Declare the function.
     def web_search_with_response_filter(subscription_key):
@@ -217,7 +224,7 @@ python -m pip install azure-cognitiveservices-search-websearch
         try:
             '''
             Set the query, response_filter, and freshness using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(query="xbox",
                 response_filter=["News"],
@@ -251,13 +258,15 @@ python -m pip install azure-cognitiveservices-search-websearch
     # Call the function.
     web_search_with_response_filter(subscription_key)
     ```
-2. プログラムを実行します。
+
+1. プログラムを実行します。
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>セーフ サーチ、回答数、昇格フィルターの使用
 
-このサンプルでは、`answer_count`、`promote`、および `safe_search` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search)による検索結果をフィルター処理します。 最初の結果の `name` と `URL` が表示されます。
+このサンプルでは、`answer_count`、`promote`、および `safe_search` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)による検索結果をフィルター処理します。 最初の結果の `name` と `url` が表示されます。
 
 1. 次のコードを Python プロジェクトに追加します。
+
     ```python
     # Declare the function.
     def web_search_with_answer_count_promote_and_safe_search(subscription_key):
@@ -267,7 +276,7 @@ python -m pip install azure-cognitiveservices-search-websearch
         try:
             '''
             Set the query, answer_count, promote, and safe_search parameters using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(
                 query="Niagara Falls",
@@ -294,7 +303,8 @@ python -m pip install azure-cognitiveservices-search-websearch
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. プログラムを実行します。
+
+1. プログラムを実行します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

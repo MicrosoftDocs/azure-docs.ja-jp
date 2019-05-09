@@ -1,29 +1,29 @@
 ---
-title: 'クイック スタート: 文の長さを取得する (PHP) - Translator Text API'
+title: クイック スタート:文の長さを取得する (PHP) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、PHP で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c709c10d7944a53a557f6a1ce2a6d9b930cccce
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2844017986b39b417407fc3da4b92af4aea51a42
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645392"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542728"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-php"></a>クイック スタート: Translator Text REST API を使用して文の長さを取得する (PHP)
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-php"></a>クイック スタート:Translator Text REST API を使用して文の長さを取得する (PHP)
 
 このクイック スタートでは、Translator Text API を使って、テキストに含まれる文の長さを調べます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[PHP 5.6.x](http://php.net/downloads.php) が必要です。
+このコードを実行するには、[PHP 5.6.x](https://php.net/downloads.php) が必要です。
 
 Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
 
@@ -74,7 +74,7 @@ function BreakSentences ($host, $path, $key, $params, $content) {
         "X-ClientTraceId: " . com_create_guid() . "\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,
@@ -98,7 +98,7 @@ $result = BreakSentences ($host, $path, $key, "", $content);
 
 // Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
 // We want to avoid escaping any Unicode characters that result contains. See:
-// http://php.net/manual/en/function.json-encode.php
+// https://php.net/manual/en/function.json-encode.php
 $json = json_encode(json_decode($result), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 echo $json;
 ?>

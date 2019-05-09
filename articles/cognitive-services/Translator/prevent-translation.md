@@ -3,23 +3,23 @@ title: コンテンツの翻訳を防止する - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Translator Text API によるコンテンツの翻訳を防止します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: b012201bcb9e0aece3d7e1ddd4f771643088af76
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: a9590a9a38859818e0b609d64fc12e30afd2e09e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52683350"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58915273"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Translator Text API によるコンテンツの翻訳を防止する方法
 
-Translator Text API では、翻訳されないようコンテンツにタグを付けることができます。 たとえば、コードやブランド名、ローカライズしても意味がない語句にタグを付けることが考えられます。 
+Translator Text API では、翻訳されないようコンテンツにタグを付けることができます。 たとえば、コードやブランド名、ローカライズしても意味がない語句にタグを付けることが考えられます。
 
 ## <a name="methods-for-preventing-translation"></a>翻訳を防止する方法
 1. Twitter タグ (@somethingtopassthrough または #somethingtopassthrough) でエスケープする。 翻訳後にエスケープを解除します。

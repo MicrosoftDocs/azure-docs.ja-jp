@@ -7,23 +7,17 @@ ms.author: mamccrea
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2018
-ms.openlocfilehash: fa32aafa4f042351db7693ee684deafe9ed13fb0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.date: 03/13/2019
+ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748325"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188103"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks クラスターに対するリージョンのディザスター リカバリー
 
 この記事では、Azure Databricks クラスターに適したディザスター リカバリー アーキテクチャと、その設計を実現する手順について説明します。
-
-## <a name="azure-databricks-overview"></a>Azure Databricks の概要
-
-Azure Databricks は、高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービスです。 ビッグ データ パイプラインに使用されるデータ (生データまたは構造化データ) は、Azure Data Factory を介して一連のバッチに分けて Azure に取り込まれるか、Kafka、Event Hubs、IoT Hub を使ってほぼリアルタイムでストリーム配信されます。 このデータは、長期永続保管を目的としたデータ レイク (Azure Blob Storage または Azure Data Lake Storage) に到達します。 Azure Databricks は、分析ワークフローの過程で使います。[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml)、[Azure SQL Data Warehouse](../sql-data-warehouse/index.md) などさまざまなデータ ソースから、Azure Databricks を使ってデータを読み取り、そのデータを Spark で変換することによって重要な分析情報が得られます。
-
-![Databricks のパイプライン](media/howto-regional-disaster-recovery/databricks-pipeline.png)
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks のアーキテクチャ
 
@@ -269,9 +263,14 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
 10. **アクセスの制御を手動で再構成して再適用する**
 
-   既存のプライマリ ワークスペースが Premium レベル (SKU) を使用するように構成されている場合、高い確率で [Access Control 機能](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)も使用していることが考えられます。
+    既存のプライマリ ワークスペースが Premium レベル (SKU) を使用するように構成されている場合、高い確率で [Access Control 機能](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)も使用していることが考えられます。
 
-   Access Control 機能をご利用の場合は、アクセスの制御を各種リソース (ノートブック、クラスター、ジョブ、テーブル) に手動で再適用してください。
+    Access Control 機能をご利用の場合は、アクセスの制御を各種リソース (ノートブック、クラスター、ジョブ、テーブル) に手動で再適用してください。
+
+## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Azure エコシステムのディザスター リカバリー
+
+他の Azure サービスを使用している場合は、それらのサービスにもディザスター リカバリーのベスト プラクティスを必ず実装してください。 たとえば、外部の Hive metastore インスタンスを使用する場合は、[Azure SQL Server](../sql-database/sql-database-disaster-recovery.md)、[Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)、[Azure Database for MySQL](../mysql/concepts-business-continuity.md) のいずれかまたはすべてのディザスター リカバリーを検討する必要があります。 ディザスター リカバリーの全般的な情報については、「[Azure アプリケーションのディザスター リカバリー](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
 詳しくは、[Azure Databricks のドキュメント](https://docs.azuredatabricks.net/user-guide/index.html)をご覧ください。

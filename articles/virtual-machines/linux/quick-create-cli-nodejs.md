@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: 94362256dfb5b8deff233f7c575d0720f29eec5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987853"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990419"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Linux VM を作成する
 
 この記事では、Azure コマンド ライン インターフェイス (CLI) で `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。 `quick-create` コマンドは、プロトタイプの作成や概念のテストを迅速に行うことができる、セキュリティで保護された基本的なインフラストラクチャ内に VM をデプロイします。
 
 > [!NOTE]
-Azure CLI を使用して VM を作成するには、[Azure CLI を使用した VM の作成](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+> Azure CLI を使用して VM を作成するには、[Azure CLI を使用した VM の作成](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 
 [Azure ポータル](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、Linux VM をすばやくデプロイすることもできます。
 
@@ -50,7 +50,7 @@ azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
 
 ディストリビューションを簡単に選択するには、最も一般的な OS ディストリビューションにマップされた Azure CLI のエイリアスを使用します。 次の表にエイリアスを示します (Azure CLI バージョン 0.10 の時点)。 `quick-create` を使用したすべてのデプロイの既定の VM では、プロビジョニングの高速化と高パフォーマンスのディスク アクセスを実現するソリッドステート ドライブ (SSD) ストレージを利用します  (これらのエイリアスは、Azure で利用可能なディストリビューションのごく一部を表しています。 Azure Marketplace ではさらに多くのイメージを見つけることができます。[PowerShell でイメージを検索するか](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Web で探してください](https://azure.microsoft.com/marketplace/virtual-machines/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。[独自のカスタム イメージをアップロードすることもできます](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json))。
 
-| エイリアス | 発行元 | プラン | SKU | Version |
+| エイリアス | Publisher | プラン | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
 | CentOS |OpenLogic |CentOS |7.2 |latest |
 | CoreOS |CoreOS |CoreOS |安定版 |latest |
@@ -184,7 +184,7 @@ Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-65-generic x86_64)
     https://landscape.canonical.com/
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 0 packages can be updated.
 0 updates are security updates.

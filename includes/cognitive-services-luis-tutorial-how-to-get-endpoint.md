@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 ms.custom: include file
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.date: 10/08/2018
 ms.author: diberry
-ms.openlocfilehash: 11d0461e8d7c2711445856ecd255619a92dd6cb5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4ada2e36f067db685944c683de8cc36d3bbf8cf6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53107281"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56741482"
 ---
 **[Manage]\(管理\)** セクション (右上のメニュー) の **[Keys and endpoints]\(キーとエンドポイント\)** ページ (左側のメニュー) で、ページの下部にある**エンドポイント** URL を選択します。 別のブラウザー タブが開き、アドレス バーにエンドポイント URL が表示されます。 
 

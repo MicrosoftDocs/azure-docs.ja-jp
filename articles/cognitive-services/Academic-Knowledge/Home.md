@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API を使用してユーザーのクエリを解釈し、Academic Graph から豊富な情報を取得します。
 services: cognitive-services
 author: darrine
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: 02675b8cdc8c509764b20893bde54b50bec74a50
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b15ed5e2b31ed817d3f6558858e2b7285f98a70f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242148"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551723"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 
@@ -23,7 +23,7 @@ Academic Knowledge API へようこそ。 このサービスでは、教育や�
 
 MAG データは、Bing Web インデックスだけではなく、Bing からの社内ナレッジ ベースからも掘り出されます。 継続的な Bing のインデックス化を受けて、この API には、Web のフォローによる検出と Bing によるインデックス化から取得された最新の情報が含まれます。 このデータセットに基づいて、Academic Knowledge API は、プロアクティブな提案を伴う反応の速い検索、豊富な研究論文のグラフ検索の結果、および論文と関連エントリのセットに含まれる属性値のヒストグラム分布がシームレスに結合された知識主導型の対話式ダイアログを実現できます。
 
-Microsoft Academic Graph については、[http://aka.ms/academicgraph](https://aka.ms/academicgraph) を参照してください。
+Microsoft Academic Graph については、[https://aka.ms/academicgraph](https://aka.ms/academicgraph) を参照してください。
 
 Academic Knowledge API は、Cognitive Services Preview から Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge) です。 既存の API キーは、2018 年 5 月 24日 まで機能します。 この日を過ぎたら、新しい API キーを生成してください。 既存のキーの有効期限が切れた後、有料プレビューは使用できなくなることに注意してください。 この API の無料レベルでは目的を十分に果たせない場合は、Microsoft のチームにお問い合わせください。 
 

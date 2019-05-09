@@ -3,20 +3,20 @@ title: テキストのモデレート - Content Moderator
 description: 混入が考えられる不要なテキスト、PII、および条件のカスタム一覧に対して、テキストのモデレートを使用します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226570"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757754"
 ---
-# <a name="text-moderation"></a>テキストのモデレート
+# <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 
 Content Moderator のコンピューター支援型のテキスト モデレーションと[目視レビュー](Review-Tool-User-Guide/human-in-the-loop.md)機能を使用して、テキスト コンテンツをモデレートします。
 
@@ -26,10 +26,10 @@ Content Moderator のコンピューター支援型のテキスト モデレー�
 
 - 不適切な表現: さまざまな言語での不適切な用語の組み込みの一覧との用語ベースのマッチング
 - 分類: 3 つのカテゴリへのコンピューター支援型の分類
-- 個人を特定できる情報 (PII)
+- 個人データ
 - 自動修正済みテキスト
 - 元のテキスト
-- Language
+- 言語
 
 ## <a name="profanity"></a>不適切な表現
 
@@ -75,7 +75,7 @@ JSON の次の抽出箇所は、出力例を示しています。
 - `Score` は 0 から 1 の間です。 このモデルでは、スコアが高いほど、そのカテゴリに該当する可能性が高いと予測しています。 この機能は、人がコーディングした結果ではなく、統計モデルに依存しています。 独自のコンテンツを使用してテストを行い、実際の要件に合うように各カテゴリをどのように設定するかを決めることをお勧めします。
 - `ReviewRecommended` は、内部スコアのしきい値に応じて true または false のどちらかになります。 ユーザーは、この値を使用するか、独自のコンテンツ ポリシーに基づいてカスタムしきい値を決めるかを見極める必要があります。
 
-## <a name="personally-identifiable-information-pii"></a>個人を特定できる情報 (PII)
+## <a name="personal-data"></a>個人データ
 
 PII 機能は、この情報の潜在的な存在を検出します。
 

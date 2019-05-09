@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: b8ca2d74012418dbd8ca9e878f133a250ebb5991
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465102"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698192"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI を使用してルートベースの VPN ゲートウェイを作成する
 
@@ -26,7 +26,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 
 ```azurecli-interactive 
@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="vnet"></a>仮想ネットワークの作成
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) コマンドを使用して、仮想ネットワークを作成します。 次の例では、**EastUS** の場所に、**VNet1** という名前の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet) コマンドを使用して、仮想ネットワークを作成します。 次の例では、**EastUS** の場所に、**VNet1** という名前の仮想ネットワークを作成します。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g TestRG1 \
-  --address-prefix 10.1.255.0/27 
+  --address-prefix 10.1.255.0/27 
 ```
 
 ## <a name="PublicIP"></a>パブリック IP アドレスの要求
@@ -67,12 +67,12 @@ VPN ゲートウェイには、動的に割り当てられるパブリック IP 
 az network public-ip create \
   -n VNet1GWIP \
   -g TestRG1 \
-  --allocation-method Dynamic 
+  --allocation-method Dynamic 
 ```
 
 ## <a name="CreateGateway"></a>VPN ゲートウェイの作成
 
-VPN ゲートウェイの作成には、[az network vnet-gateway create](/cli/azure/group#az_network_vnet_gateway_create) コマンドを使用します。
+VPN ゲートウェイの作成には、[az network vnet-gateway create](/cli/azure/group) コマンドを使用します。
 
 `--no-wait` パラメーターを使用してこのコマンドを実行した場合は、フィードバックや出力が表示されなくなります。 `--no-wait` パラメーターは、ゲートウェイをバックグラウンドで作成するためのものです。 これは、VPN ゲートウェイがすぐに作成されるという意味ではありません。
 
@@ -172,7 +172,7 @@ az network public-ip show \
 ```
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-作成したリソースが必要でなくなったら、[az group delete](/cli/azure/group#az_group_delete) を使用してリソース グループを削除します。 これでリソース グループとそれに含まれるすべてのリソースが削除されます。
+作成したリソースが必要でなくなったら、[az group delete](/cli/azure/group) を使用してリソース グループを削除します。 これでリソース グループとそれに含まれるすべてのリソースが削除されます。
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes

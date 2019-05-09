@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure CLI を使用してアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と Azure CLI を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
+title: RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と Azure CLI を使用してユーザー、グループ、アプリケーションの Azure リソースへのアクセスを管理する方法について説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6d1e64c7630f3fd35124e6671476174ddfc16bb6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8e75a6344e517fb0343343f557cb7211f49cfed8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437101"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838318"
 ---
-# <a name="manage-access-using-rbac-and-azure-cli"></a>RBAC と Azure CLI を使用してアクセスを管理する
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 この記事では、RBAC と Azure CLI を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 この記事では、RBAC と Azure CLI を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,9 +89,9 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role"></a>ロールのアクションの表示
+## <a name="list-a-role-definition"></a>ロール定義を一覧表示する
 
-ロール定義の動作を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
+ロール定義を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
 
 ```azurecli
 az role definition list --name <role_name>
@@ -104,6 +104,7 @@ az role definition list --name "Contributor"
 ```
 
 ```Output
+[
   {
     "additionalProperties": {},
     "assignableScopes": [
@@ -133,6 +134,8 @@ az role definition list --name "Contributor"
   }
 ]
 ```
+
+### <a name="list-actions-of-a-role"></a>ロールのアクションの表示
 
 次の例では、"*共同作成者*" ロールの *actions* および *notActions* を一覧表示します。
 
@@ -191,7 +194,7 @@ az role assignment list --assignee <assignee>
 
 既定では、サブスクリプションをスコープとする割り当てのみが表示されます。 リソースまたはグループでスコープとされている割り当てを表示するには、`--all` を使用します。
 
-次の例では、*patlong@contoso.com* ユーザーに直接割り当てられているロールの割り当てを一覧表示します。
+次の例では、*patlong\@contoso.com* ユーザーに直接割り当てられているロールの割り当てを一覧表示します。
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -249,7 +252,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-次の例では、*pharma-sales-projectforecast* リソース グループのスコープで、*patlong@contoso.com* ユーザーに "*仮想マシンの共同作成者*" ロールを付与します。
+次の例では、*pharma-sales-projectforecast* リソース グループのスコープで、*patlong\@contoso.com* ユーザーに "*仮想マシンの共同作成者*" ロールを付与します。
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
@@ -297,7 +300,7 @@ RBAC でアクセス権を削除するには、[az role assignment delete](/cli/
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-次の例では、*pharma-sales-projectforecast* リソース グループの *patlong@contoso.com* ユーザーから、"*仮想マシンの共同作成者*" ロールの割り当てを削除します。
+次の例では、*pharma-sales-projectforecast* リソース グループの *patlong\@contoso.com* ユーザーから、"*仮想マシンの共同作成者*" ロールの割り当てを削除します。
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast
@@ -311,5 +314,5 @@ az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role
 
 ## <a name="next-steps"></a>次の手順
 
-- [チュートリアル: Azure CLI を使用してカスタム ロールを作成する](tutorial-custom-role-cli.md)
-- [Azure CLI を使用して Azure のリソースとリソース グループを管理する](../azure-resource-manager/xplat-cli-azure-resource-manager.md)
+- [チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-cli.md)
+- [Azure CLI を使用して Azure のリソースとリソース グループを管理する](../azure-resource-manager/cli-azure-resource-manager.md)

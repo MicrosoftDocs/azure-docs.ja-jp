@@ -2,20 +2,20 @@
 title: SQL Data Warehouse でのデータベースの保護 | Microsoft Docs
 description: ソリューション開発のための Azure SQL Data Warehouse でのデータベース保護に関するヒント。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: security
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 8abb40b0c1a5b9cd3f8d1e23124090c00e8cfadb
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 179925fc7411a1ccf3de02d7b6298cc66f93bc66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302541"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175719"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL Data Warehouse でのデータベース保護
 > [!div class="op_single_selector"]

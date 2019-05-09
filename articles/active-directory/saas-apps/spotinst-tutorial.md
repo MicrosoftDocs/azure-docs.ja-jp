@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Spotinst の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Spotinst の統合 | Microsoft Docs
 description: Azure Active Directory と Spotinst の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 7edf1cbc5cc351e25a9ae7b319768376ea9968a3
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f0bffdf439a192fb10fe695fbfa18e8c7abf8077
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39267540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57846686"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>チュートリアル: Azure Active Directory と Spotinst の統合
+# <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>チュートリアル:Azure Active Directory と Spotinst の統合
 
 このチュートリアルでは、Spotinst と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -220,7 +221,7 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 
     * **[Full Name]\(フルネーム\)** ボックスに、ユーザーの氏名 (**BrittaSimon** など) を入力します。
 
-    * **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (**brittasimon@contoso.com** など)。
+    * **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **Brittasimon\@contoso.com**) を入力します。
 
     * **[Organization Role, Account Role, and Accounts]\(組織ロール、アカウント ロール、アカウント\)** で組織に固有の詳細を選択します。
 
@@ -261,7 +262,7 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Spotinst] タイルをクリックすると、自動的に Spotinst アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

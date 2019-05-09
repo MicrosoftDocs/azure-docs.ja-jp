@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 03/20/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 38310ce64335e03c6728092bf1b8ce4752740a83
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233465"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293616"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
+# <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 **Media Services Operations REST** API は、Media Services アカウントで、ジョブ、アセット、ライブ チャネル、およびその他のリソースを作成するときに使用されます。 詳細については、[Media Services Operations REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)を参照してください。
@@ -35,7 +35,7 @@ Media Services REST API への認証は、Azure Active Directory 認証で実行
 REST を使用するときには、次の考慮事項が適用されます。
 
 * パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
-* JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)に設定する必要があります (次の例を参照)。 verbose に設定していない場合、Odata は要求内の **__metadata** プロパティを認識しません。  
+* JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)に設定する必要があります (次の例を参照)。 verbose に設定していない場合、Odata は要求内の **__metadata** プロパティを認識しません。  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
         Content-Type: application/json;odata=verbose
@@ -71,9 +71,9 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 | ヘッダー | type | 値 |
 | --- | --- | --- |
-| 日付 |RFC 1123 の日付 |要求のタイムスタンプ |
+| Date |RFC 1123 の日付 |要求のタイムスタンプ |
 | Accept |コンテンツの種類 |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
-| Accept-Encoding |Gzip、deflate |GZIP Encoding および DEFLATE Encoding　(該当する場合)。 注: 大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。 |
+| Accept-Encoding |Gzip、deflate |GZIP Encoding および DEFLATE Encoding　(該当する場合)。 注:大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。 |
 | Accept-Language |"en"、"es" など。 |応答の優先言語を指定します。 |
 | Accept-Charset |"UTF-8"　などの文字の種類 |既定値は UTF-8 です。 |
 | X-HTTP-Method |HTTP メソッド |PUT や DELETE などの HTTP メソッドをサポートしないクライアントやファイアウォールが、GET 呼び出しを通じてトンネリングされたこれらのメソッドを使用できます。 |
@@ -87,7 +87,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 | --- | --- | --- |
 | request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
 | client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
-| 日付 |RFC 1123 の日付 |要求が処理された日時。 |
+| Date |RFC 1123 の日付 |要求が処理された日時。 |
 | Content-Type |多様 |応答本文のコンテンツの種類。 |
 | Content-Encoding |多様 |Gzip またはデフレート (必要に応じて)。 |
 

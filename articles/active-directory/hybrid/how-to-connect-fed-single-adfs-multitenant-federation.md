@@ -5,23 +5,24 @@ keywords: フェデレーション, ADFS, AD FS, 複数のテナント, 単一�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/17/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 951b47c7193b2b405def9831e94c5e29faff3119
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 620255896e02319675928396c3d6e5e0d9865c0c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791118"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181730"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
 

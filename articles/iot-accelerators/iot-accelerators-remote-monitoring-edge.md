@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606250"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58166754"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>チュートリアル:リモート監視ソリューション アクセラレータを使用してエッジで異常を検出する
 
@@ -55,12 +55,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 リモート監視ソリューション アクセラレータに IoT Edge デバイスを追加するには、2 つの手順があります。 このセクションでは、次の使用方法について説明します。
 
-* リモート監視 Web UI の **[デバイス]** ページで IoT Edge デバイスを追加します。
+* リモート監視 Web UI の **[Device Explorer]** ページで IoT Edge デバイスを追加します。
 * Linux 仮想マシン (VM) に IoT Edge ランタイムをインストールします。
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>IoT Edge デバイスをソリューションに追加する
 
-リモート監視ソリューション アクセラレータに IoT Edge デバイスを追加するには、Web UI の **[デバイス]** ページに移動し、**[+ 新規デバイス]** をクリックします。
+リモート監視ソリューション アクセラレータに IoT Edge デバイスを追加するには、Web UI の **[Device Explorer]** ページに移動し、**[+ 新規デバイス]** をクリックします。
 
 **[新規デバイス]** パネルで **[IoT Edge デバイス]** を選択し、デバイス ID として「**oil-pump**」と入力します。 その他の設定は既定値のままでかまいません。 次に、**[適用]** をクリックします。
 
@@ -68,13 +68,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 デバイスの接続文字列は、このチュートリアルの次のセクションで必要になるので、書き留めておいてください。
 
-リモート監視ソリューション アクセラレータの IoT ハブにデバイスを登録すると、それが Web UI の **[デバイス]** ページに表示されます。
+リモート監視ソリューション アクセラレータの IoT ハブにデバイスを登録すると、それが Web UI の **[Device Explorer]** ページに表示されます。
 
 [![新しい IoT Edge デバイス](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
 ソリューションの IoT Edge デバイスを管理しやすくするために、デバイス グループを作成して、IoT Edge デバイスを追加します。
 
-1. **[デバイス]** ページにある一覧で **[oil-pump]** デバイスを選択し、**[ジョブ]** をクリックします。
+1. **[Device Explorer]** ページにある一覧で **[oil-pump]** デバイスを選択し、**[ジョブ]** をクリックします。
 
 1. 次の設定を使用して、デバイスに **IsEdge** タグを追加するジョブを作成します。
 
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[適用]**、**[閉じる]** の順にクリックします。
 
-1. **[デバイス]** ページで、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
+1. **[Device Explorer]** ページで、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
 
 1. **[Create new device group]\(新しいデバイス グループの作成\)** をクリックします。 次の設定を使用して新しいデバイス グループを作成します。
 
@@ -300,7 +300,7 @@ Stream Analytics ジョブは、ポータルで定義した後に Edge モジュ
 
 オイル ポンプ装置からの温度テレメトリは、リモート監視の Web UI で確認できます。
 
-1. **[デバイス]** ページに移動して、対象のオイル ポンプ装置を選択します。
+1. **[Device Explorer]** ページに移動して、対象のオイル ポンプ装置を選択します。
 1. **[デバイスの詳細]** パネルの **[テレメトリ]** セクションで、**[Temperature]** をクリックします。
 
     [![テレメトリの表示](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)

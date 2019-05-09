@@ -4,19 +4,19 @@ titleSuffix: QnA Maker - Azure Cognitive Services
 description: この Go REST ベースのクイック スタートでは、ナレッジ ベースを公開する手順を紹介しています。公開時に、テスト済みのナレッジ ベースの最新バージョンが、公開済みのナレッジ ベースを表す専用の Azure Search インデックスにプッシュされます。 また、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/19/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: e7f0d3c756988cc890b6560181727b5c80b5548d
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 058365f4dcc6e4be7c14c162afb1c0d4a9f3d9a6
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162088"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213502"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>クイック スタート: Go を使用して QnA Maker のナレッジ ベースを公開する
 

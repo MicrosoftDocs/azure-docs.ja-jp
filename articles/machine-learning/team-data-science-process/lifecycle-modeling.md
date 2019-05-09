@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dac686878ff128e3d556c0dbd7e9a2d51ac1756d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c22c75b4fe900ecb96d016251c09e9ad6ec31f7c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139955"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474022"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのモデリング ステージ
 

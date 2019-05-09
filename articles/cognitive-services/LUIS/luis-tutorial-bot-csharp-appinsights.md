@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: C# を使用して LUIS アプリケーションおよび Application Insights と統合されるボットを構築します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: a5150d3f318fce2f66adfa4bdc43ae8aec651223
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d546951cf283cf15874b1b6d95da75549a8a93ac
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251149"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884938"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>C# からボットを使用して LUIS の結果を Application Insights に追加する
 
@@ -39,7 +39,7 @@ ms.locfileid: "53251149"
 > [!Tip]
 > サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
 
-このチュートリアルのコードはすべて、[LUIS-Samples GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp)から入手できます。このチュートリアルに関連付けられている各行に、`//LUIS Tutorial:` というコメントが付いています。
+このチュートリアルのコードはすべて、[Azure-Samples GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp)から入手できます。このチュートリアルに関連付けられている各行に、`//LUIS Tutorial:` というコメントが付いています。
 
 ## <a name="review-luis-web-app-bot"></a>LUIS Web アプリ ボットの確認
 
@@ -127,11 +127,11 @@ Azure portal で **Application Insights** パッケージがプロジェクト�
 
 2. **[発行]** ウィンドウで、**[新しいプロファイルの作成]** を選択します。
 
-    ![ポータルへのプロジェクトの発行](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
+    ![発行の一部として、新しいプロファイルを作成します。](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
 
 3. **[プロファイルのインポート]** を選択し、**[OK]** を選択します。
 
-    ![ポータルへのプロジェクトの発行](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
+    ![発行の一部として、プロファイルをインポートします。](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
 
 4. **[発行設定ファイルのインポート]** ウィンドウで、お使いのプロジェクト フォルダー、`PostDeployScripts` フォルダーの順に移動し、末尾が `.PublishSettings` のファイル、`Open` の順に選択します。 これで、このプロジェクトの発行が構成されました。
 
@@ -204,7 +204,7 @@ Application Insights を開いて、LUIS エントリを表示します。
 
 1. ポータルで、**[すべてのリソース]** を選択し、Web アプリ ボット名でフィルター処理します。 **Application Insights** 型のリソースをクリックします。 Application Insights のアイコンは電球です。
 
-    ![App Insights の検索](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
+    ![Azure Portal で Application Insights を探す](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
 
 2. リソースが開いたら、一番右のパネルにある虫眼鏡の**検索**アイコンをクリックします。 右側に新しいパネルが表示されます。 見つかったテレメトリ データの量に応じて、パネルが表示されるまでに少し間が空くことがあります。 `LUIS` を検索します。 このチュートリアルを使用して追加された LUIS クエリ結果だけに一覧が絞り込まれます。
 

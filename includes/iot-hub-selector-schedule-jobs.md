@@ -1,15 +1,15 @@
 ---
-author: dominicbetts
+author: wesmc7777
+ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: dobett
-ms.openlocfilehash: a07b7c44bce32014dfaea3b6d77f9900003ba41d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2e2567d5e14ca8e3722d426834c19a1beaf56c62
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164924"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011647"
 ---
 > [!div class="op_single_selector"]
 > * [デバイス: Node.js サービス: Node.js](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)

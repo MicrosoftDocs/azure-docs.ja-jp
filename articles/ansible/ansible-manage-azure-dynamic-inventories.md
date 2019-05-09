@@ -1,19 +1,19 @@
 ---
 title: Ansible を使用した Azure の動的インベントリの管理
 description: Ansible を使用して Azure の動的インベントリを管理する方法について説明します
-ms.service: ansible
+ms.service: azure
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
-ms.topic: article
-ms.openlocfilehash: 1f19d5918d81acb76936edf8989a556335a3c0df
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.topic: tutorial
+ms.openlocfilehash: 0ef754b792654281f2a12b8eee613434896d5476
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261266"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092210"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Ansible を使用した Azure の動的インベントリの管理
 Ansible を使用して、(Azure などのクラウド ソースを含む) さまざまなソースから "*動的インベントリ*" にインベントリ情報をプルすることができます。 この記事では、[Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) を使用して、Ansible Azure 動的インベントリを構成します。この動的インベントリに 2 つの仮想マシンを作成した後、そのうちの 1 つの仮想マシンにタグを付け、タグを付けた仮想マシンに Nginx をインストールします。
@@ -130,9 +130,9 @@ ansible-inventory-test-vm1 | SUCCESS => {
 
 1. 次のように、(プレイブックを保存するための) `nginx.yml` という名前のファイルを作成します。
 
-  ```azurecli-interactive
-  vi nginx.yml
-  ```
+   ```azurecli-interactive
+   vi nginx.yml
+   ```
 
 1. 新しく作成した `nginx.yml` ファイルに次のコードを挿入します。
 

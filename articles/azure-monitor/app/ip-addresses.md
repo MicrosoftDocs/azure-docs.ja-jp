@@ -10,25 +10,25 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 01/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4efd4622745a4a86c691cec32f5b93225715930a
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: b383a4f85a039eb8eed87e2e78940aaf48b30a33
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974379"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425918"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
-[Azure Application Insights](../../application-insights/app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
 
 > [!NOTE]
-> これらは静的アドレスですが、しばしば変更の必要が生じることがあります。
+> これらは静的アドレスですが、しばしば変更の必要が生じることがあります。 Application Insights のトラフィックは、受信ファイアウォール規則を必要とする可用性の監視と webhook を除き、すべて送信トラフィックです。
 > 
 > 
 
 > [!TIP]
-> https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/application-insights/ip-addresses.md.atom をお気に入りの RSS/ATOM リーダーに追加してこのページを RSS フィードとしてサブスクライブすると、最新の変更に関する通知を受け取ることができます。
+> https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom をお気に入りの RSS/ATOM リーダーに追加してこのページを RSS フィードとしてサブスクライブすると、最新の変更に関する通知を受け取ることができます。
 > 
 > 
 
@@ -37,7 +37,7 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
 | 目的 | URL | IP | ポート |
 | --- | --- | --- | --- |
-| テレメトリ |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22 | 443 |
+| テレメトリ |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7 | 443 |
 | ライブ メトリック ストリーム |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Status Monitor
@@ -52,7 +52,7 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 | 構成 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | 構成 |`auth.gfx.ms` | |`443` |
 | 構成 |`login.live.com` | |`443` |
-| インストール |`packages.nuget.org`、`nuget.org`、`api.nuget.org`、`az320820.vo.msecnd.net` (NuGet ダウンロード) | |`443` |
+| インストール |`packages.nuget.org` 、`nuget.org`、`api.nuget.org`、`az320820.vo.msecnd.net` (NuGet ダウンロード) | |`443` |
 
 ## <a name="availability-tests"></a>可用性テスト
 これは [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) の実行元のアドレスの一覧です。 アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
@@ -69,6 +69,9 @@ Australia East
 52.187.246.13
 52.147.30.74
 52.187.250.193
+20.40.124.176/28
+20.40.124.240/28
+20.40.125.80/28
 
 Brazil South
 191.232.32.122
@@ -79,12 +82,19 @@ Brazil South
 191.232.199.76
 191.232.236.210
 191.237.249.118
+191.233.26.176/28
+191.233.26.128/28
+191.233.26.64/28
 
 France South
 52.136.140.221
 52.136.140.222
 52.136.140.223
 52.136.140.226
+20.40.129.96/28
+20.40.129.112/28
+20.40.129.128/28
+20.40.129.144/28
 
 France Central
 52.143.140.242
@@ -97,6 +107,10 @@ France Central
 40.89.136.180
 40.89.139.142
 40.89.129.184
+20.40.129.32/28
+20.40.129.48/28
+20.40.129.64/28
+20.40.129.80/28
 
 East Asia
 13.75.121.122
@@ -107,6 +121,9 @@ East Asia
 52.175.39.103
 13.75.66.249
 13.70.1.3
+52.229.216.48/28
+52.229.216.64/28
+52.229.216.80/28
 
 North Europe
 13.74.184.101
@@ -123,6 +140,10 @@ North Europe
 40.115.125.114
 40.127.205.106
 40.113.2.95
+52.158.28.64/28
+52.158.28.80/28
+52.158.28.96/28
+52.158.28.112/28
 
 Japan East
 52.243.33.33
@@ -131,6 +152,9 @@ Japan East
 52.243.41.117
 13.78.35.173
 13.78.34.107
+52.140.232.160/28
+52.140.232.176/28
+52.140.232.192/28
 
 West Europe
 52.174.166.113
@@ -149,7 +173,12 @@ West Europe
 104.40.145.255
 23.97.139.23
 23.97.181.233
-
+51.144.56.96/28
+51.144.56.112/28
+51.144.56.128/28
+51.144.56.144/28
+51.144.56.160/28
+51.144.56.176/28
 
 UK South
 51.140.79.229
@@ -160,6 +189,9 @@ UK South
 51.140.4.10
 51.140.29.140
 51.140.138.114
+51.105.9.128/28
+51.105.9.144/28
+51.105.9.160/28
 
 UK West
 51.141.25.219
@@ -174,6 +206,10 @@ UK West
 51.140.205.207
 51.140.223.169
 51.140.221.13
+20.40.104.96/28
+20.40.104.112/28
+20.40.104.128/28
+20.40.104.144/28
 
 Southeast Asia
 52.187.29.7
@@ -186,6 +222,10 @@ Southeast Asia
 52.163.184.26
 104.215.188.85
 13.67.34.253
+52.139.250.96/28
+52.139.250.112/28
+52.139.250.128/28
+52.139.250.144/28
 
 West US
 104.45.228.236
@@ -212,6 +252,12 @@ West US
 104.42.199.138
 40.83.213.165
 40.118.230.208
+40.91.82.48/28
+40.91.82.64/28
+40.91.82.80/28
+40.91.82.96/28
+40.91.82.112/28
+40.91.82.128/28
 
 Central US
 52.165.130.58
@@ -234,7 +280,12 @@ Central US
 168.61.222.30
 40.113.223.10
 40.113.217.146
-
+13.86.97.224/28
+13.86.97.240/28
+13.86.98.48/28
+13.86.98.0/28
+13.86.98.16/28
+13.86.98.64/28
 
 North Central US
 23.96.247.139
@@ -259,6 +310,14 @@ North Central US
 157.55.163.96
 65.52.207.6
 157.55.208.50
+23.100.224.16/28
+23.100.224.32/28
+23.100.224.48/28
+23.100.224.64/28
+23.100.224.80/28
+23.100.224.96/28
+23.100.224.112/28
+23.100.225.0/28
 
 South Central US
 104.210.145.106
@@ -281,6 +340,12 @@ South Central US
 104.214.72.169
 104.215.101.235
 40.124.43.29
+20.45.5.160/28
+20.45.5.176/28
+20.45.5.192/28
+20.45.5.208/28
+20.45.5.224/28
+20.45.5.240/28
 
 East US
 13.82.218.95
@@ -305,22 +370,28 @@ East US
 168.62.161.181
 168.61.48.246
 40.121.5.6
+20.42.35.32/28
+20.42.35.64/28
+20.42.35.80/28
+20.42.35.96/28
+20.42.35.112/28
+20.42.35.128/28
 
 ```  
 
 ## <a name="application-insights-api"></a>Application Insights API
 | 目的 | URI | IP | ポート |
 | --- | --- | --- | --- |
-| API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80,443 |
-| API ドキュメント |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80,443 |
+| API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
+| API ドキュメント |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | 内部 API |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |動的|443 |
 
 ## <a name="log-analytics-api"></a>Log Analytics API
 
 | 目的 | URI | IP | ポート |
 | --- | --- | --- | --- |
-| API |api.loganalytics.io<br/>*.api.loganalytics.io |動的 |80,443 |
-| API ドキュメント |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |動的 |80,443 |
+| API |api.loganalytics.io<br/>*.api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
+| API ドキュメント |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
 

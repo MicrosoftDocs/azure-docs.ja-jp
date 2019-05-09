@@ -3,27 +3,27 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
-ms.date: 09/19/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 8c7f11d74d0a0b81f9f0c40871b2eaa3eb25f51f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 971ae8cd44f1b345d3a71b8fa4f256c8f25ef961
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988258"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503271"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>iOS アプリケーションから Microsoft Graph API を呼び出す
 
-このガイドでは、ネイティブ iOS アプリケーション (Swift) で Microsoft Azure Active Directory (Azure AD) v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法を説明します。 アクセス トークンを取得し、Microsoft Graph API や他の API の呼び出しでそれを使う方法について説明します。
+このガイドでは、ネイティブ iOS アプリケーション (Swift) で Microsoft ID プラットフォーム エンドポイントからのアクセス トークンを必要とする API を呼び出す方法を説明します。 アクセス トークンを取得し、Microsoft Graph API や他の API の呼び出しでそれを使う方法について説明します。
 
 このガイドの演習を完了すると、Azure AD を使用する会社や組織の保護された API をアプリケーションで呼び出すことができるようになります。 アプリケーションで outlook.com や live.com などの個人アカウントおよび職場または学校アカウントを使って、保護された API を呼び出すことができます。
 
@@ -34,13 +34,13 @@ ms.locfileid: "49988258"
 
 ## <a name="how-this-guide-works"></a>このガイドの利用法
 
-![このガイドの利用法](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
+![このチュートリアルで生成されたサンプル アプリの動作の紹介](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
-このガイドのサンプル アプリケーションを参考にすると、iOS アプリケーションで、Microsoft Graph API または Azure AD v2.0 エンドポイントからトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、トークンは **Authorization** ヘッダーを使って HTTP 要求に追加されます。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) で処理されます。
+このガイドのサンプル アプリケーションを参考にすると、iOS アプリケーションで、Microsoft Graph API または Microsoft ID プラットフォーム エンドポイントからトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、トークンは **Authorization** ヘッダーを使って HTTP 要求に追加されます。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) で処理されます。
 
 ### <a name="handle-token-acquisition-for-access-to-protected-web-apis"></a>保護された Web API にアクセスするためのトークンの取得を処理する
 
-ユーザー認証の後、サンプル アプリケーションはトークンを受け取ります。 トークンは、Microsoft Graph API や、Azure AD v2.0 エンドポイントによって保護された Web API に対して、クエリを実行するために使われます。
+ユーザー認証の後、サンプル アプリケーションはトークンを受け取ります。 トークンは、Microsoft Graph API や、Microsoft ID プラットフォーム エンドポイントによって保護された Web API に対してクエリを実行するために使われます。
 
 Microsoft Graph などの API では、特定のリソースへのアクセスを許可するためにアクセス トークンが必要になります。 トークンは、ユーザーのプロファイルの読み取り、ユーザーの予定表へのアクセス、メールの送信などに必要です。 アプリケーションでは、MSAL を使って API スコープを指定することで、アクセス トークンを要求できます。 アクセス トークンは、保護されたリソースに対するすべての呼び出しで、HTTP の **Authorization** ヘッダーに追加されます。
 

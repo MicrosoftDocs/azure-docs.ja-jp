@@ -1,84 +1,99 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e73dbdb5a12215dafba285b377de2e22a14b7a0e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787513"
 documentType: LandingData
 title: Bing Entity Search のドキュメント
 metadata:
-  title: Bing Web Search のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  title: Bing Entity Search API のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
   description: Bing Entity Search API を使用して、人物、場所、または定義されたサブジェクトに関する情報を取得する方法を説明します。 チュートリアルでは、このサービスを使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: mikedodaro
   manager: rosh
   ms.service: cognitive-services
-  ms.component: bing-entity-search
+  ms.subservice: bing-entity-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/07/2018
+  ms.date: 02/01/2019
   ms.author: v-gedod
 abstract:
-  description: Bing Web Search API によって、ユーザーのクエリに関連があると Bing が判断したエンティティに関する情報が返されます。
+  description: Bing Entity Search API では、検索クエリで検出されたエンティティに関する情報をアプリケーションによって取得できます。 エンティティは、人物、場所、メディアのタイトルなどの場合があります。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: クエリを作成して JSON 応答を表示することで、Bing Entity Search API の使用を開始します。
-  - type: list
-    style: icon48
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-entities-search/overview
+            html: <p>Bing Entity Search API について説明します</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: エンティティの検索
+          - href: /azure/cognitive-services/bing-entities-search/concepts/search-for-entities
+            html: <p>Bing Entity Search API を使用してエンティティを検索する方法について説明します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 検索要求の送信
+          - href: /azure/cognitive-services/bing-custom-search/hosted-ui
+            html: <p>検索要求を API に送信する方法について説明します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 検索クエリの送信
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: quickstarts/java
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: quickstarts/php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: quickstarts/python
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: quickstarts/ruby
-      text: Ruby
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Bing Entity Search API を使用してアプリケーションを開発する方法について説明します。
-  - type: paragraph
-    text: <a href="tutorial-bing-entities-search-single-page-app">シングルページの Web アプリ</a> &#124; <a href="tutorial-bing-entities-search-single-page-app-source">ソース コード</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 'Bing Entity Search API のサンプルを見つける:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: クエリを作成して JSON 応答を表示することで、Bing Entity Search API の使用を開始します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: quickstarts/entity-sdk-csharp-quickstart
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: quickstarts/entity-sdk-java-quickstart
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: quickstarts/entity-sdk-node-quickstart
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: quickstarts/php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: quickstarts/entity-sdk-python-quickstart
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: quickstarts/ruby
+            text: Ruby
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="sdk.md">コード サンプル</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Bing Entity Search API を使用してアプリケーションを開発する方法について説明します。
+      - type: paragraph
+        text: <a href="tutorial-bing-entities-search-single-page-app">単一ページの Web アプリ</a>
+  - title: サンプル
     items:
-    - title: API
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference">Bing Entity Search API v7</a></p>
-    - title: SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/entitysearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch">Go</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>
+      - type: paragraph
+        text: 'Bing Entity Search API のサンプルを見つける:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="sdk.md">コード サンプル</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference">Bing Entity Search API v7</a></p>'
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-entitysearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch">Go</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

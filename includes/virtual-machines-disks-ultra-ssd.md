@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 212506667a56befb4e3926dec7a9e3eb9772ebed
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285810"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55735999"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Azure 仮想マシンのワークロード用の Ultra SSD (プレビュー) Managed Disks
 
@@ -21,9 +21,9 @@ Azure Ultra SSD (プレビュー) は、Azure IaaS VM 用に高スループッ�
 
 ## <a name="ultra-ssd-features"></a>Ultra SSD の機能
 
-**Managed Disks**: Standard SSD は Managed Disks としてのみ使用できます。 Ultra SSD は、アンマネージド ディスクまたはページ BLOB としてデプロイすることはできません。 マネージド ディスクを作成するときに、ディスクの種類を UltraSSD_LRS と指定し、必要なディスク サイズ、IOPS、スループットを指定すると、Azure によって自動的にディスクの作成と管理が行われます。  
+**Managed Disks**: Ultra SSD はマネージド ディスクとしてのみ使用できます。 Ultra SSD は、アンマネージド ディスクまたはページ BLOB としてデプロイすることはできません。 マネージド ディスクを作成するときに、ディスクの種類を UltraSSD_LRS と指定し、必要なディスク サイズ、IOPS、スループットを指定すると、Azure によって自動的にディスクの作成と管理が行われます。  
 
-**仮想マシン**: Ultra SSD は、すべての Premium SSD 対応 Azure 仮想マシン SKU で動作するように設計されています。ただし、現在は、プレビュー段階であるため、VM のサイズは ES/DS v3 として設定されています。
+**Virtual Machines**: Ultra SSD は、すべての Premium SSD 対応 Azure 仮想マシン SKU で動作するように設計されています。ただし、現在は、プレビュー段階であるため、VM のサイズは ES/DS v3 として設定されています。
 
 **動的パフォーマンス構成**: Ultra SSD を使用すると、仮想マシンを再起動しなくても、ワークロードのニーズに合わせてディスクのパフォーマンス (IOPS とスループット) を動的に変更できます。
 
@@ -74,7 +74,7 @@ IOPS は、アプリケーションが 1 秒あたりにディスクに送信す
 
 スループットは、指定された期間にアプリケーションがディスクに送信するデータの量 (バイト/秒単位) です。 アプリケーションが大規模な入力/出力操作を実行する場合、高スループットが必要となります。  
 
-スループットと IOPS の間には、IOPS x IO サイズ = スループットという式で表される関係があります
+スループットと IOPS の間には、次の式に示すような関係があります。IOPS x IO サイズ = スループット
 
 そのため、アプリケーションが必要とする最適なスループットと IOPS の値を特定することが重要です。 一方を最適化すると、もう一方も影響を受けます。 16 KiB の IO サイズに対応するスループットから開始し、より多くのスループットが必要な場合は調整することをお勧めします。
 

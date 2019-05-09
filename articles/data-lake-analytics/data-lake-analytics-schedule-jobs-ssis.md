@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6894486118f69e682353142be04821e1d28440e5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579235"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523173"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -40,13 +40,13 @@ U-SQL スクリプトは、SSIS の組み込み関数とタスクを使用して
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>シナリオ 1: インライン スクリプト呼び出し tvf とストアド プロシージャを使用する
 
-Azure Data Lake Analytics タスク エディターで、**SourceType** を **DiretInput** として構成し、U-SQL ステートメントを **USQLStatemnt** に配置します。
+Azure Data Lake Analytics タスク エディターで、**SourceType** を **DirectInput** として構成し、U-SQL ステートメントを **USQLStatement** に配置します。
 
 容易なメンテナンスとコード管理のため、たとえば、短い U-SQL スクリプトのみをインライン スクリプトとして含めると、U-SQL データベース内で既存のテーブル値関数とストアド プロシージャを呼び出すことができます。 
 
 ![SSIS タスクのインライン U-SQL スクリプトを編集する](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-関連記事: [ストアド プロシージャにパラメーターを渡す方法](#scenario-6-pass-parameters-to-u-sql-script)
+関連記事:[ストアド プロシージャにパラメーターを渡す方法](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>シナリオ 2: Azure Data Lake Store 内の U-SQL ファイルを使用する
 
@@ -93,16 +93,16 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
     
     このファイル接続を作成するには:
 
-    1. FileConnection 設定で **<New Connection...>** を選択します。
-    2. **[使用法の種類]** を **[既存のファイル]** に設定し、**[ファイル]** を既存の任意のファイルのファイル パスに設定します。
+   1. [FileConnection] の設定で **[\<新しい接続...>]** を選択します。
+   2. **[使用法の種類]** を **[既存のファイル]** に設定し、**[ファイル]** を既存の任意のファイルのファイル パスに設定します。
 
-        ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-    3. **接続マネージャー** ビューで、今作成したファイル接続を右クリックし、**[プロパティ]** を選択します。
+   3. **接続マネージャー** ビューで、今作成したファイル接続を右クリックし、**[プロパティ]** を選択します。
 
-    4. **[プロパティ]** ウィンドウで、**[式]** を展開し、**[ConnectionString]** を Foreach ループ コンテナーで定義されている変数 (`@[User::FileName]` など) に設定します。
+   4. **[プロパティ]** ウィンドウで、**[式]** を展開し、**[ConnectionString]** を Foreach ループ コンテナーで定義されている変数 (`@[User::FileName]` など) に設定します。
 
-        ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
+       ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
 3. **[AzureDataLakeAnalyticsConnection]** を、ジョブの送信先となる Azure Data Lake Analytics アカウントに設定します。 Azure Data Lake Analytics 接続マネージャーの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)を参照してください。
 

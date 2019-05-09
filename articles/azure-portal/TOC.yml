@@ -1,44 +1,48 @@
-items:
-- name: Azure portal のカスタマイズのドキュメント
+- name: Azure Portal のドキュメント
   href: index.yml
-- name: Azure のダッシュ ボード
+- name: 概要
   items:
-  - name: Azure ダッシュボードの作成と共有
-    href: azure-portal-dashboards.md
-  - name: ロールベースのアクセス制御を使用したダッシュボードの共有
-    href: azure-portal-dashboard-share-access.md
-  - name: Azure ダッシュボードの構造
-    href: azure-portal-dashboards-structure.md
-  - name: プログラムによる Azure ダッシュボードの作成
-    href: azure-portal-dashboards-create-programmatically.md
-- name: 設定
+    - name: Azure portal について
+      href: azure-portal-overview.md
+    - name: サポートされているブラウザーとデバイス
+      href: azure-portal-supported-browsers-devices.md
+- name: 概念
   items:
-  - name: キーボード ショートカット
-    href: azure-portal-keyboard-shortcuts.md
-  - name: サポートされているブラウザーとデバイス
-    href: ../azure-preview-portal-supported-browsers-devices.md
-  - name: ハイコントラストの有効化またはテーマの変更
-    href: azure-portal-change-theme-high-contrast.md
-  - name: ユーザー設定のエクスポートまたは削除
-    href: azure-portal-export-delete-settings.md
-  expanded: true
+    - name: Azure ダッシュボードの作成と共有
+      href: azure-portal-dashboards.md
+    - name: ロールベースのアクセス制御を使用したダッシュボードの共有
+      href: azure-portal-dashboard-share-access.md
+    - name: プログラムによる Azure ダッシュボードの作成
+      href: azure-portal-dashboards-create-programmatically.md
+- name: ハウツー ガイド
+  items:
+    - name: ハイコントラストの有効化またはテーマの変更
+      href: azure-portal-change-theme-high-contrast.md
+    - name: お気に入りの追加、削除、並べ替え
+      href: azure-portal-add-remove-sort-favorites.md
+    - name: カスタムのマークダウン タイルを使用する
+      href: azure-portal-markdown-tile.md
+    - name: ユーザー設定のエクスポートまたは削除
+      href: azure-portal-export-delete-settings.md
+    - name: Azure portal の使い方に関するビデオ シリーズ
+      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+- name: リファレンス
+  items:
+    - name: キーボード ショートカット
+      href: azure-portal-keyboard-shortcuts.md
+    - name: Azure ダッシュボードの構造
+      href: azure-portal-dashboards-structure.md
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/updates/
-  - name: Microsoft Learn でスキルを身に付ける
-    href: /learn/browse/?products=azure-portal
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/regions/services/
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 3ce637e9d2eba4bd166bb971cacef46b266d4332
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104172"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/updates/'
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?products=azure-portal
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
+    - name: Azure のビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'

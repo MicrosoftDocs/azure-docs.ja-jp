@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2e6591dc25ab498b496f6abff1041e448240896d
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5eb80051052138924cdb30655609215974435839
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426062"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729918"
 ---
 # <a name="create-hierarchies"></a>階層を作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "49426062"
 このレッスンの推定所要時間: **20 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 8: パースペクティブを作成する](../tutorials/aas-lesson-8-create-perspectives.md)」を完了している必要があります。  
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 8: パースペクティブを作成する](../tutorials/aas-lesson-8-create-perspectives.md)」を完了する必要があります。  
   
 ## <a name="create-hierarchies"></a>階層を作成する  
   
@@ -72,7 +72,7 @@ ms.locfileid: "49426062"
     *  WeekNumberOfYear
     *  DayNumberOfWeek
   
- ## <a name="whats-next"></a>次の手順
-[レッスン 10: パーティションを作成する](../tutorials/aas-lesson-10-create-partitions.md) 
+## <a name="whats-next"></a>次の手順
+[レッスン 10: パーティションを作成する](../tutorials/aas-lesson-10-create-partitions.md)。 
   
   

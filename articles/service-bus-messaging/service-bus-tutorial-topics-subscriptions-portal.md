@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: fb3358775881f102ecea62fbd20a1e4d85dda308
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a325b976e657fbdc318a41b3b79b50e77a948e14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079845"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル:Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -45,49 +45,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [トピックへの各サブスクリプション](service-bus-messaging-overview.md#topics)は、各メッセージのコピーを受信できます。 トピックは完全にプロトコルであり、意味的には Service Bus キューと互換性があります。 Service Bus のトピックは、フィルターの条件を持つさまざまな選択ルールをサポートしています。メッセージのプロパティを設定または変更するオプションのアクションもあります。 ルールが一致するたびに、メッセージが生成されます。 ルール、フィルター、およびアクションの詳細については、こちらの[リンク](topic-filters.md)を参照してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-まず [Azure Portal][Azure portal] にアクセスし、Azure サブスクリプションを使用してサインインします。 最初の手順は、種類が**メッセージング**の Service Bus 名前空間を作成することです。
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-## <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
 
-Service Bus のメッセージング名前空間は一意のスコープ コンテナーを提供します。このコンテナーは、1 つ以上のキュー、トピック、サブスクリプションを作成する[完全修飾ドメイン名][]によって参照されます。 次の例では、新規または既存の[リソース グループ](/azure/azure-resource-manager/resource-group-portal)に Service Bus メッセージング名前空間を作成します。
-
-1. ポータルの左側のナビゲーション ウィンドウで、**[+ リソースの作成]** をクリックし、**[Enterprise Integration]**、**[Service Bus]** の順にクリックします。
-2. **[名前空間の作成]** ダイアログで、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
-3. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Standard または Premium) を選択します。
-4. **[サブスクリプション]** フィールドで、名前空間を作成する Azure サブスクリプションを選択します。
-5. **[リソース グループ]** フィールドで、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。      
-6. **[場所]** で、名前空間をホストする国またはリージョンを選択します。
-7. **Create** をクリックしてください。 これで、システムによってサービス名前空間が作成され、有効になります。 システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
-
-  ![namespace](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>管理資格情報の取得
-
-新しい名前空間を作成すると、Shared Access Signature (SAS) の初期規則が自動的に生成され、あらゆる角度から名前空間を完全に制御することを可能にするプライマリ キーとセカンダリ キーのペアが関連付けられます。 初期規則をコピーするには、次の手順を実行します。
-
-1. **[すべてのリソース]** で、新しく作成した名前空間の名前をクリックします。
-2. 名前空間ウィンドウで、**[共有アクセス ポリシー]** をクリックします。
-3. **[共有アクセス ポリシー]** 画面で、**[RootManageSharedAccessKey]** をクリックします。
-4. **[ポリシー:RootManageSharedAccessKey]** ウィンドウで、**[プライマリ接続文字列]** の横にある **[コピー]** ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
-
-    ![connection-string][connection-string]
-5. 前の手順を繰り返し、**[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。
-
-## <a name="create-a-topic-and-subscriptions"></a>トピックとサブスクリプションを作成する
-
-Service Bus トピックを作成するには、作成する名前空間を指定します。 次の例は、ポータルでトピックを作成する方法を示しています。
-
-1. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は **[すべてのサービス]** をクリックします)。
-2. トピックを作成する名前空間をクリックします。
-3. 名前空間ウィンドウで **[トピック]** をクリックし、**[トピック]** ウィンドウで **[+ トピック]** をクリックします。
-4. トピックの **[名前]** に入力し、他の値は既定値のままにします。
-5. ウィンドウの下部にある **[作成]** をクリックします。
-6. トピック名をメモします。
-7. 作成したトピックを選択します。
-8. **[+ サブスクリプション]** をクリックし、サブスクリプション名に「**S1**」と入力し、他のすべての値は既定値のままにします。
-9. 前の手順をさらに 2 回繰り返し、「**S2**」と「**S3**」というサブスクリプションを作成します。
 
 ## <a name="create-filter-rules-on-subscriptions"></a>サブスクリプションに対してフィルター ルールを作成する
 
@@ -105,7 +67,7 @@ Service Bus トピックを作成するには、作成する名前空間を指�
 
 2. サンプル フォルダー `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters` に移動します。
 
-3. このチュートリアルの「[管理資格情報の取得](#obtain-the-management-credentials)」セクションで、メモ帳にコピーした接続文字列を取得します。 前のセクションで作成したトピックの名前も必要です。
+3. このチュートリアルの「管理資格情報の取得」セクションで、メモ帳にコピーした接続文字列を取得します。 前のセクションで作成したトピックの名前も必要です。
 
 4. コマンド プロンプトで、次のコマンドを入力します。
 
@@ -126,7 +88,7 @@ Service Bus トピックを作成するには、作成する名前空間を指�
    - 2 の実行: 独自のフィルターを追加します。
    - 3 の実行: 必要に応じて独自のフィルターを削除します。 この操作では、既定のフィルターは再作成されません。
 
-    ![2 の出力例](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
+     ![2 の出力例](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
 
 8. フィルターの作成後は、メッセージを送信できます。 4 キーを押して、トピックに送信されている 10 個のメッセージを観察します。
 
@@ -451,7 +413,7 @@ Service Bus の公開/サブスクライブ機能の使用方法の詳細につ�
 > [PowerShell とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[完全修飾ドメイン名]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
 [connection-string]: ./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png

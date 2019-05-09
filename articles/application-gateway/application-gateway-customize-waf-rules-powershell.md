@@ -1,32 +1,19 @@
 ---
-title: Azure Application Gateway での Web アプリケーション ファイアウォール ルールのカスタマイズ - PowerShell | Microsoft Docs
+title: Azure Application Gateway での Web アプリケーション ファイアウォール ルールのカスタマイズ - PowerShell
 description: この記事では、PowerShell を使用して Application Gateway で Web アプリケーション ファイアウォール ルールをカスタマイズする方法について説明します。
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: dfcd82a17a399f213f5c4e32326a8995d26e8458
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: f96395a54f66b787878faeee057f02818f956ade
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218271"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317001"
 ---
 # <a name="customize-web-application-firewall-rules-through-powershell"></a>PowerShell を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
 Azure Application Gateway Web アプリケーション ファイアウォール (WAF) は、Web アプリケーションを保護します。 こうした保護は、Open Web Application Security Project (OWASP) コア ルール セット (CRS) によって提供されます。 ルールによっては誤検出を発生させて、実際のトラフィックを妨げることがあります。 このため、Application Gateway には、ルール グループとルールをカスタマイズする機能が用意されています。 特定のルール グループおよびルールの詳細については、[Web アプリケーション ファイアウォールの CRS 規則グループと規則の一覧](application-gateway-crs-rulegroups-rules.md)に関するページを参照してください。
 
@@ -39,7 +26,7 @@ Azure Application Gateway Web アプリケーション ファイアウォール 
 次の例は、ルール グループの表示方法を示しています。
 
 ```powershell
-Get-AzureRmApplicationGatewayAvailableWafRuleSets
+Get-AzApplicationGatewayAvailableWafRuleSets
 ```
 
 以下の出力は、前の例から返される応答を簡略化したものです。
@@ -99,10 +86,23 @@ OWASP (Ver. 3.0):
 次の例は、アプリケーション ゲートウェイに対するルール `911011` および `911012` を無効にします。
 
 ```powershell
-$disabledrules=New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-911-METHOD-ENFORCEMENT -Rules 911011,911012
-Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $gw -Enabled $true -FirewallMode Detection -RuleSetVersion 3.0 -RuleSetType OWASP -DisabledRuleGroups $disabledrules
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
+$disabledrules=New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-911-METHOD-ENFORCEMENT -Rules 911011,911012
+Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $gw -Enabled $true -FirewallMode Detection -RuleSetVersion 3.0 -RuleSetType OWASP -DisabledRuleGroups $disabledrules
+Set-AzApplicationGateway -ApplicationGateway $gw
 ```
+
+## <a name="mandatory-rules"></a>必須ルール
+
+次の一覧には、防止モードの場合に WAF による要求のブロックをトリガーする条件が含まれます (検出モードでは例外としてログ記録されます)。 これらを構成したり、無効にしたりすることはできません。
+
+* 本文の検査がオフになっている場合を除き (XML、JSON、フォーム データ)、要求本文の解析に失敗すると、要求がブロックされる
+* 要求本文 (ファイルなし) のデータの長さが、構成されている制限を超えている場合
+* 要求本文 (ファイルを含む) のサイズが制限を超えている場合
+* WAF エンジンで内部エラーが発生した場合
+
+CRS 3.x 固有: 
+
+* インバウンド異常スコアがしきい値を超えた場合
 
 ## <a name="next-steps"></a>次の手順
 

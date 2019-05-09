@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: fe19890197c14a053c1ed1446555433a7c2875f5
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 74f40578ee155eaa7289cfc3e79cdf4c36540af2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324593"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532070"
 ---
 # <a name="scheduler-documentation"></a>Scheduler のドキュメント
 

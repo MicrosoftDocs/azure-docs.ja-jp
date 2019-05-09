@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 9d72bc885bdaaed521042df236dd722b80533186
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013347"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
 
@@ -63,8 +63,8 @@ _いいえ。現在データとログのバックアップを作成できるの�
 
 - [SAP HANA 管理の概要](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US)
 - [バックアップと回復の戦略の計画](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)
-- [ABAP DBACOCKPIT を使用した HANA バックアップのスケジュール設定](http://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
-- [データ バックアップのスケジュール設定 (SAP HANA Cockpit)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
+- [ABAP DBACOCKPIT を使用した HANA バックアップのスケジュール設定](https://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
+- [データ バックアップのスケジュール設定 (SAP HANA Cockpit)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
 - [SAP ノート 1642148](https://launchpad.support.sap.com/#/notes/1642148) に記載されている SAP HANA バックアップに関する FAQ
 - [SAP ノート 2039883](https://launchpad.support.sap.com/#/notes/2039883) に記載されている、SAP HANA のデータベース スナップショットとストレージ スナップショットに関する FAQ
 - [SAP ノート 1820529](https://launchpad.support.sap.com/#/notes/1820529) に記載されている、バックアップと回復に適していないネットワーク ファイル システム
@@ -80,7 +80,7 @@ Azure Storage には、高可用性と信頼性が最初から備わっていま
 
 簡単な復元を行って HANA の稼働を確認するだけでは不十分であることに留意してください。 テーブルの整合性チェックを実行して、復元されたデータベースに問題がないようにするのが理想的です。 SAP HANA には数種類の整合性チェックが用意されており、これらは [SAP ノート 1977584](https://launchpad.support.sap.com/#/notes/1977584) で説明されています。
 
-テーブルの整合性チェックに関する情報は、SAP Web サイトの「[Table and Catalog Consistency Checks (テーブルとカタログの整合性チェック)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b)」にもあります。
+テーブルの整合性チェックに関する情報は、SAP Web サイトの「[Table and Catalog Consistency Checks (テーブルとカタログの整合性チェック)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b)」にもあります。
 
 標準的なファイル バックアップでは、復元のテストは必要ありません。 復元に使用できるバックアップをチェックするには、hdbbackupdiag と hdbbackupcheck の 2 つの SAP HANA ツールが役立ちます。 これらのツールの詳細については、「[Manually Checking Whether a Recovery is Possible (回復が可能かどうかを手動でチェックする)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm)」を参照してください。
 
@@ -90,7 +90,7 @@ HANA バックアップとストレージ スナップショットについて�
 
 Azure では、Azure BLOB スナップショット機能を使ってもファイル システムの整合性が確保されるわけでない点に注意してください ([PowerShell による BLOB スナップショットの使用](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)に関するページを参照)。 次のセクション「_ストレージ スナップショットを作成する際の SAP HANA データの整合性_」では、この機能に関するいくつかの考慮事項について説明します。
 
-さらに、BLOB スナップショットを頻繁に使用する場合、「[Understanding How Snapshots Accrue Charges (スナップショットの課金方法について)](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)」で説明されているとおり、課金への影響を把握する必要があります。これは Azure 仮想ディスクの使用よりもわかりにくくなっています。
+さらに、BLOB スナップショットを頻繁に使用する場合、次の記事で説明されているとおり、課金への影響を把握する必要があります: 「[Understanding How Snapshots Accrue Charges (スナップショットの課金方法について)](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)」。これは Azure 仮想ディスクの使用よりもわかりにくくなっています。
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>ストレージ スナップショットを作成する際の SAP HANA データの整合性
 
@@ -137,7 +137,7 @@ HANA 管理ガイドには例の一覧があります。 管理ガイドによ�
 特定のタイプのバックアップを行う適切なタイミングと頻度の正確なスケジュールについて、一般的なガイドラインはありません。これは、スケジュールがお客様固有のものであり、システム内で行われるデータ変更の回数に依存するためです。 SAP は HANA の完全バックアップを週一回行うことを基本として推奨しており、これを一般的なガイダンスと見なすことができます。
 ログ バックアップについては、SAP HANA ドキュメント「[Log Backups (ログ バックアップ)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)」を参照してください。
 
-SAP は、バックアップ カタログが無限に増加するのを防ぐためにハウスキープ処理を実行することも推奨しています (「[Housekeeping for Backup Catalog and Backup Storage (バックアップ カタログとバックアップ ストレージのハウスキープ処理)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)」を参照)。
+SAP は、バックアップ カタログが無限に増加するのを防ぐためにハウスキープ処理を実行することも推奨しています (「[Housekeeping for Backup Catalog and Backup Storage (バックアップ カタログとバックアップ ストレージのハウスキープ処理)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)」を参照)。
 
 ### <a name="sap-hana-configuration-files"></a>SAP HANA 構成ファイル
 

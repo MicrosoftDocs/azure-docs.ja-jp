@@ -5,19 +5,19 @@ description: このクイック スタートを使用して、PHP を使って B
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 9/07/2018
+ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 239ceb7ad88dd711ce082ae70391dae09bfc5e1f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c1f67fe01708f110c121f1acc5baf6d6998fe463
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261128"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59256959"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>クイック スタート:Bing Image Search REST API と PHP を使用してイメージを検索する
 
@@ -25,11 +25,11 @@ ms.locfileid: "53261128"
 
 このアプリケーションは PHP で記述されていますが、この API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 
-このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7.java) で入手できます。
+このサンプルのソース コードは、[GitHub 上]https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php)で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [PHP 5.6.x 以降](http://php.net/downloads.php)。
+* [PHP 5.6.x 以降](https://php.net/downloads.php)。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -49,7 +49,7 @@ ms.locfileid: "53261128"
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-a-http-request"></a>HTTP 要求の構築と実行
+   ## <a name="construct-and-perform-an-http-request"></a>HTTP 要求の構築と実行
 
 1. 最後の手順の変数を使用して、Image Search API に対する HTTP 要求を準備します。
 
@@ -59,7 +59,7 @@ ms.locfileid: "53261128"
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
-2. Web 要求を実行し、JSON 応答を取得します。
+2. Web 要求を送信し、JSON 応答を取得します。
 
     ```php
     $context = stream_context_create($options);
@@ -81,7 +81,7 @@ ms.locfileid: "53261128"
         return array($headers, $result);
     ```
 
-## <a name="sample-json-response"></a>サンプルの JSON 応答
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Image Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。
 
@@ -125,7 +125,7 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -137,7 +137,8 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 ## <a name="see-also"></a>関連項目
 
 * [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* Bing Search API シリーズの[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 * [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

@@ -3,21 +3,21 @@ title: Distcp を使用して Azure Data Lake Storage Gen1 と WASB の間でデ
 description: Distcp ツールを使用して Azure Storage BLOB と Azure Data Lake Storage Gen1 の間でデータをコピーする
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ae2e9506-69dd-4b95-8759-4dadca37ea70
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 9740de34fe7cf7d06af1803cc6d77d7e89bbb73f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.author: twooley
+ms.openlocfilehash: fbefe233ce0d2477982faf0a9f38a73062e0c7a1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391523"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58884467"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Distcp を使用して Azure Storage BLOB と Azure Data Lake Storage Gen1 の間でデータをコピーする
 > [!div class="op_single_selector"]
@@ -33,9 +33,6 @@ Azure Data Lake Storage Gen1 にアクセスできる HDInsight クラスター�
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
 * Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
-
-## <a name="do-you-learn-fast-with-videos"></a>ビデオで速習する
-DistCp を使用して Azure Storage Blob と Data Lake Storage Gen1 の間でデータをコピーする方法については、[こちらのビデオ](https://mix.office.com/watch/1liuojvdx6sie)をご覧ください。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターから Distcp を使用する
 
@@ -79,9 +76,9 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 使用できるガイダンスがいくつかあります。
 
-* **手順 1: 合計 YARN メモリを確認する** - 最初に DistCp ジョブを実行するクラスターで利用できる YARN メモリを確認します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs (構成)] タブで YARN メモリを表示します。 合計 YARN メモリを取得するには、ノードあたりの YARN メモリと、クラスター内にあるのノードの数を掛けます。
+* **手順 1:合計 YARN メモリを確認する** - 最初に DistCp ジョブを実行するクラスターで利用できる YARN メモリを確認します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs (構成)] タブで YARN メモリを表示します。 合計 YARN メモリを取得するには、ノードあたりの YARN メモリと、クラスター内にあるのノードの数を掛けます。
 
-* **手順 2: マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
+* **手順 2:マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -107,9 +104,9 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 * DistCp では、パフォーマンスを最適化するために、同じようなサイズのマッパーを作成しようとします。 マッパー数を増やしても、必ずしもパフォーマンスが向上するとは限りません。
 
-* DistCp では、ファイルあたりのマッパーの数が 1 つに制限されています。 したがって、ファイル数よりも多くのマッパーを持つことはできません。 DistCp がファイルに割り当てることができるマッパーの数は 1 つだけのため、大きなファイルのコピーに使用できる同時実行量は制限されます。
+* DistCp では、ファイルあたりのマッパーの数が 1 つに制限されています。 したがって、ファイル数よりも多くのマッパーを持つことはできません。 DistCp がファイルに割り当てることができるマッパーの数は 1 つだけのため、大きなファイルのコピーに使用できるコンカレンシー量は制限されます。
 
-* 大きなファイルが少数だけ存在する場合は、潜在的な同時実行性を高めるために、そのファイルを 256 MB ファイル チャンクに分割します。 
+* 大きなファイルが少数だけ存在する場合は、潜在的なコンカレンシーを高めるために、そのファイルを 256 MB ファイル チャンクに分割します。 
  
 * Azure Blob Storage アカウントからコピーする場合、コピー ジョブは、Blob Storage 側で調整されることがあります。 これにより、コピー ジョブのパフォーマンスが低下します。 Azure Blob Storage の制限の詳細については、[Azure サブスクリプションとサービスの制限事項](../azure-subscription-service-limits.md)に関するページをご覧ください。
 

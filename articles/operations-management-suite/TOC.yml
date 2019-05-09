@@ -1,0 +1,124 @@
+- name: 概要
+  items:
+    - name: エージェントの監視
+      href: ../monitoring/index.md
+- name: 作業開始
+  items:
+    - name: Azure Monitor ログ
+      href: ../log-analytics/log-analytics-get-started.md
+    - name: Automation
+      href: /azure/automation/
+    - name: バックアップ
+      href: ../backup/backup-introduction-to-azure-backup.md
+    - name: Site Recovery
+      href: ../site-recovery/site-recovery-overview.md
+- name: 方法
+  items:
+    - name: 分析
+      items:
+        - name: Azure Monitor ログ
+          href: ../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+    - name: 自動化
+      items:
+        - name: Azure Automation の概要
+          href: ../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+    - name: バックアップ
+      items:
+        - name: Backup の概要
+          href: ../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+        - name: Site Recovery の概要
+          href: ../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+    - name: セキュリティ保護
+      items:
+        - name: リソースの監視
+          href: ../security-center/security-center-monitoring.md
+        - name: セキュリティの警告への対応
+          href: ../security-center/security-center-managing-and-responding-alerts.md
+        - name: ベースライン評価
+          href: ../security-center/security-center-customize-os-security-config.md
+        - name: マルウェアの評価
+          href: ../security-center/security-center-install-endpoint-protection.md
+        - name: セキュリティ製品の接続
+          href: ../security-center/quick-security-solutions.md
+        - name: Web ベースライン評価
+          href: ../security-center/security-center-customize-os-security-config.md
+    - name: ソリューションの使用
+      items:
+        - name: 管理ソリューション
+          href: ../azure-monitor/insights/solutions.md
+        - name: ターゲット ソリューション
+          href: ../azure-monitor/insights/solution-targeting.md
+        - name: 洞察と分析
+          items:
+            - name: AD 評価
+              href: ../azure-monitor/insights/ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: AD レプリケーションの状態
+              href: ../azure-monitor/insights/ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: エージェントの正常性
+              href: oms-solution-agenthealth.md
+            - name: アラートの管理
+              href: ../azure-monitor/platform/alert-management-solution.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: Azure Networking Analytics
+              href: ../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: Containers
+              href: ../azure-monitor/insights/containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: Key Vault Analytics
+              href: ../azure-monitor/insights/azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: ネットワーク パフォーマンス監視
+              href: ../azure-monitor/insights/network-performance-monitor.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: Office 365
+              href: oms-solution-office-365.md
+            - name: Service Fabric 分析
+              href: ../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: サービス マップ
+              items:
+                - name: 用途
+                  href: ../azure-monitor/insights/service-map.md
+                - name: 構成
+                  href: ../azure-monitor/insights/service-map-configure.md
+                - name: Operations Manager との統合
+                  href: ../azure-monitor/insights/service-map-scom.md
+            - name: SQL の評価
+              href: ../azure-monitor/insights/sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: Surface Hub
+              href: ../azure-monitor/insights/surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: アップグレード分析
+              href: 'https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396'
+            - name: VMware 分析
+              href: ../azure-monitor/insights/vmware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: 送信データ
+              href: ../azure-monitor/insights/wire-data.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+        - name: Automation と制御
+          items:
+            - name: 変更の追跡
+              href: ../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+            - name: 更新管理
+              href: oms-solution-update-management.md
+        - name: セキュリティとコンプライアンス
+          items:
+            - name: マルウェア対策評価
+              href: ../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+    - name: ソリューションを作成する
+      items:
+        - name: 設計とビルド
+          href: ../azure-monitor/insights/solutions-creating.md
+        - name: ソリューション ファイル
+          href: ../azure-monitor/insights/solutions-solution-file.md
+        - name: Automation リソース
+          href: ../azure-monitor/insights/solutions-resources-automation.md
+        - name: ログ検索とアラート
+          href: ../azure-monitor/insights/solutions-resources-searches-alerts.md
+        - name: ビュー
+          href: ../azure-monitor/insights/solutions-resources-views.md
+        - name: ベスト プラクティス
+          href: ../azure-monitor/insights/solutions-best-practices.md
+    - name: 管理のシナリオ
+      items:
+        - name: Runbook からの分析データの収集
+          href: ../azure-monitor/platform/runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'

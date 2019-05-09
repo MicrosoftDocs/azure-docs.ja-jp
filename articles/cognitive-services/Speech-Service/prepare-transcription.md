@@ -1,27 +1,27 @@
 ---
-title: Speech Service トレーニングのための文字起こしガイドライン
+title: Speech Services モデルのトレーニングのための文字起こしガイドライン
 titleSuffix: Azure Cognitive Services
-description: 音響モデルと言語モデルおよび音声フォントを Speech Service 用にカスタマイズするためにテキストを準備する方法を説明します。
+description: 音響モデルと言語モデルおよび音声フォントを Speech Services 用にカスタマイズするためにテキストを準備する方法を説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 07b90942c8d231418888491fd47a9be3caff77ea
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0d7508ed9cf1807fa05c57a1d60c804af7d2244f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467737"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897216"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Speech Service を使用するための文字起こしガイドライン
 
 **音声テキスト変換**または**テキスト読み上げ**をカスタマイズするには、音声と共にテキストを提供する必要があります。 テキストの各行は 1 つの発話に対応します。 テキストはできるだけ音声と一致する必要があります。 このテキストは "*トランスクリプト*" と呼ばれ、特定の形式で作成する必要があります。
 
-Speech Service では、テキストの整合性を保つために入力が正規化されます。 
+Speech Services では、テキストの整合性を保つために入力が正規化されます。
 
 この記事では、この両方の種類の正規化について説明します。 このガイドラインは言語によって若干異なります。
 
@@ -39,7 +39,7 @@ Speech Service では、テキストの整合性を保つために入力が正�
 
 ### <a name="text-normalization-rules-for-english"></a>英語のテキスト正規化規則
 
-Speech Service では、次の正規化規則を実行します。
+Speech Services では、次の正規化規則を実行します。
 
 * すべてのテキストで小文字を使用する
 * 単語内のアポストロフィを除くすべての句読点を削除する
@@ -64,7 +64,7 @@ Speech Service では、次の正規化規則を実行します。
 * 非標準の数値文字列 (一部の日付形式や会計形式など) は単語で書き出す。
 * アルファベット以外の文字を含む語句または英数字が混在する語句は、発音どおりに文字に起こす。
 * 単語として発音される省略形はそのまま残す ("radar"、"laser"、"RAM"、"NATO" など)。
-* 個々の文字として発音される省略形は、スペースで区切られた文字で記述する ("IBM"、"CPU"、"FBI"、"TBD"、"NaN")。 
+* 個々の文字として発音される省略形は、スペースで区切られた文字で記述する ("IBM"、"CPU"、"FBI"、"TBD"、"NaN")。
 
 次に例をいくつか示します。
 
@@ -83,7 +83,7 @@ Speech Service では、次の正規化規則を実行します。
 
 ## <a name="chinese-zh-cn"></a>中国語 (zh-cn)
 
-Custom Speech Service にアップロードするテキスト データでは、バイト順マーカーを含む UTF-8 エンコードを使用します。 ファイルは、行当たり 1 つの発話で作成します。
+Custom Speech Services にアップロードするテキスト データでは、バイト順マーカーを含む UTF-8 エンコードを使用します。 ファイルは、行当たり 1 つの発話で作成します。
 
 半角句読点文字の使用は避けます。 これらの文字は、ワード プロセッシング プログラムでデータを準備するときや、Web ページからデータを収集するときに誤って含まれる可能性があります。 それらを適切な全角文字に置き換えます。 例: 
 
@@ -94,7 +94,7 @@ Custom Speech Service にアップロードするテキスト データでは、
 
 ### <a name="text-normalization-rules-for-chinese"></a>中国語のテキスト正規化規則
 
-Speech Service では、次の正規化規則を実行します。
+Speech Services では、次の正規化規則を実行します。
 
 * すべての句読点を削除する
 * 数字を読み上げ形式に拡張する
@@ -134,7 +134,7 @@ Speech Service では、次の正規化規則を実行します。
 
 ### <a name="text-normalization-rules-for-german"></a>ドイツ語のテキスト正規化規則
 
-Speech Service では、次の正規化規則を実行します。
+Speech Services では、次の正規化規則を実行します。
 
 * すべてのテキストで小文字を使用する
 * 各種引用符を含むすべての句読点を削除する ("test"、'test'、"test„、«test» は許可される)
@@ -162,13 +162,13 @@ Speech Service では、次の正規化規則を実行します。
 
 次に例をいくつか示します。
 
-| 元のテキスト | ユーザーによる正規化後 | システムによる正規化後
+| 元のテキスト | ユーザーによる正規化後 | システムによる正規化後 |
 |--------  | ----- | -------- |
 | Es ist 12.23 Uhr | Es ist 12:23 Uhr | es ist zwölf uhr drei und zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf ||
+| {12.45} | {12,45} | zwölf komma vier fünf |
 | 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier|
 
 ## <a name="next-steps"></a>次の手順
 
-- [Speech Service 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [Speech Services 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
 - [C# で音声を認識する](quickstart-csharp-dotnet-windows.md)

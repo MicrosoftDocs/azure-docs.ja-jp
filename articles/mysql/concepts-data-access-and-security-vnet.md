@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MySQL サーバーの VNet サービス エンドポイントの概要 | Microsoft Docs
 description: Azure Database for MySQL サーバーで VNet サービス エンドポイントがどのように機能するかについて説明します。
-author: mbolz
+author: bolzmj
 ms.author: mbolz
 manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: af067cabf312ec3c2556b84dc4d739e41ec0aacc
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3a7eaacc4c234ec7d1d3d88455bd423256a07e90
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535286"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005853"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の Virtual Network のサービス エンドポイントと規則を使用する
 
@@ -24,6 +24,7 @@ ms.locfileid: "53535286"
 
 > [!NOTE]
 > この機能は、Azure Database for MySQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
+> VNet ピアリングでは、トラフィックがサービス エンドポイントを含む共通 VNet Gateway を通過して、ピアにフローするようになっている場合は、ACL/VNet ルールを作成して、Gateway VNet 内の Azure Virtual Machines が Azure Database for MySQL サーバーにアクセスできるようにしてください。
 
 <a name="anch-terminology-and-description-82f" />
 
@@ -106,6 +107,8 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 ## <a name="limitations"></a>制限事項
 
 Azure Database for MySQL の場合、仮想ネットワーク規則機能には以下のような制限事項があります。
+
+- Web アプリは、VNet/サブネット内のプライベート IP にマップできます。 サービス エンドポイントが特定の VNet/サブネットから有効化されている場合でも、Web アプリからサーバーへの接続には、VNet/サブネットのソースではなく、Azure のパブリック IP ソースが使用されます。 サーバーに VNet ファイアウォール規則がある場合、Web アプリからそのサーバーへの接続を有効にするには、サーバーで Azure サービスにサーバーへのアクセスを許可する必要があります。
 
 - Azure Database for MySQL のファイアウォールでは、各仮想ネットワーク規則はサブネットを参照します。 これらの参照されるサブネットはすべて、Azure Database for MySQL がホストされているのと同じ geographic 型のリージョンでホストされている必要があります。
 

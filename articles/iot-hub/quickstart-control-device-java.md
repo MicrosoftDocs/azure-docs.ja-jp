@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub からのデバイスの制御に関するクイック スタート (Java) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル Java アプリケーションを実行します。 1 つのアプリケーションは、ハブに接続されたデバイスをリモートで制御できるバックエンド アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/22/2018
-ms.author: dobett
-ms.openlocfilehash: 454c3961cb31e147f647095c0a3a71a6c65630f1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.date: 02/22/2019
+ms.openlocfilehash: 4a4b2047cea186db681f4190073cfff94bf99b1a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422119"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59005132"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Java)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Java)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -42,7 +42,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 開発コンピューターに現在インストールされている Java のバージョンは、次のコマンドを使って確認できます。
 
 ```cmd/sh
-java --version
+java -version
 ```
 
 サンプルをビルドするには、Maven 3 をインストールする必要があります。 複数のプラットフォームに対応する Maven を [Apache Maven](https://maven.apache.org/download.cgi) からダウンロードできます。
@@ -53,28 +53,33 @@ java --version
 mvn --version
 ```
 
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
 まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip からサンプル Java プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-java.md)」を完了した場合は、この手順を省略できます。
+前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-java.md)を完了した場合は、この手順を省略できます。
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-java.md)」を完了した場合は、この手順を省略できます。
+前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-java.md)を完了した場合は、この手順を省略できます。
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
-   **MyJavaDevice**: この値は、登録済みデバイスに付けられた名前です。 示されているように、MyJavaDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **MyJavaDevice**: 登録するデバイスの名前。 示されているように、**MyJavaDevice** を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新する必要があります。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create \
       --hub-name YourIoTHubName --device-id MyJavaDevice
     ```
@@ -99,11 +104,11 @@ mvn --version
 ## <a name="retrieve-the-service-connection-string"></a>サービス接続文字列を取得する
 
 また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、"_サービス接続文字列_" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
-   
-**YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
+**YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 次のようなサービス接続文字列をメモしておきます。

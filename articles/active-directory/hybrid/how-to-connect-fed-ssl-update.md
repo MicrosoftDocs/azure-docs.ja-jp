@@ -2,25 +2,26 @@
 title: Azure AD Connect - AD FS ファームの SSL 証明書の更新 | Microsoft Docs
 description: このドキュメントでは、Azure AD Connect を使って AD FS ファームの SSL 証明書を更新する手順について詳しく説明します。
 services: active-directory
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
-ms.service: active-directory
+ms.service: active-directory  
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.component: hybrid
+ms.subservice: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
-ms.openlocfilehash: 8320eae9e1c12123a4379887124dee810998c4e3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 39ac0e9cf11a0c6c212c4beadb6635ad2b6b056d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309531"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734712"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 
@@ -37,12 +38,12 @@ ms.locfileid: "46309531"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **AD FS ファーム**: AD FS ファームが Windows Server 2012 R2 以降ベースであることを確認します。
-* **Azure AD Connect**: Azure AD Connect のバージョンが 1.1.553.0 以降であることを確認します。 **AD FS SSL 証明書の更新**タスクを使用します。
+* **AD FS ファーム**:AD FS ファームが Windows Server 2012 R2 以降ベースであることを確認します。
+* **Azure AD Connect**:Azure AD Connect のバージョンが 1.1.553.0 以降であることを確認します。 **AD FS SSL 証明書の更新**タスクを使用します。
 
 ![SSL の更新タスク](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
-## <a name="step-1-provide-ad-fs-farm-information"></a>手順 1: AD FS ファームの情報を提供する
+## <a name="step-1-provide-ad-fs-farm-information"></a>手順 1:AD FS ファームの情報を提供する
 
 Azure AD Connect は、次の方法で自動的に AD FS ファームに関する情報の取得を試みます。
 1. AD FS (Windows Server 2016 以降) でファームの情報を照会します。
@@ -59,7 +60,7 @@ AD FS ファームの一部ではなくなったサーバーが一覧に含ま�
 >[!NOTE]
 > Azure AD Connect での AD FS ファームのサーバー一覧からのサーバーの削除はローカルな操作であり、Azure AD Connect がローカルに保持する AD FS ファームの情報が更新されます。 Azure AD Connect が、変更を反映するために AD FS の構成を変更することはありません。    
 
-## <a name="step-2-provide-a-new-ssl-certificate"></a>手順 2: 新しい SSL 証明書を提供する
+## <a name="step-2-provide-a-new-ssl-certificate"></a>手順 2:新しい SSL 証明書を提供する
 
 AD FS ファームのサーバーに関する情報の確認が済むと、Azure AD Connect は新しい SSL 証明書を要求します。 パスワードで保護された PFX 証明書を指定して、インストールを続けます。
 
@@ -72,7 +73,7 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 -   証明書の信頼チェーンが有効であること。
 -   証明書がパスワードで保護されていること。
 
-## <a name="step-3-select-servers-for-the-update"></a>手順 3: 更新するサーバーを選ぶ
+## <a name="step-3-select-servers-for-the-update"></a>手順 3:更新するサーバーを選ぶ
 
 次の手順では、SSL 証明書を更新する必要があるサーバーを選びます。 オフラインになっているサーバーを更新対象に選ぶことはできません。
 
@@ -108,3 +109,4 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 - [Azure AD Connect とフェデレーション](how-to-connect-fed-whatis.md)
 - [Azure AD Connect による Active Directory フェデレーション サービスの管理とカスタマイズ](how-to-connect-fed-management.md)
+

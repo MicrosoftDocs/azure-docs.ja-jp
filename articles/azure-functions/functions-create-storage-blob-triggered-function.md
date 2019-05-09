@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fcc5052d73d921a8181ad068453111e5ead4361a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: cc730650f7bd570f237c06b074afb3678b54448f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999869"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901464"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob Storage によってトリガーされる関数の作成
 
@@ -62,7 +62,7 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
     | Setting | 推奨値 | Description |
     |---|---|---|
-    | **名前** | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
+    | **Name** | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
     | **パス**   | samples-workitems/{name}    | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、_name_ パラメーターとしてバインディングで渡されます。  |
     | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
 
@@ -113,8 +113,6 @@ Blob コンテナーが用意されているので、このコンテナーにフ
 
 ## <a name="next-steps"></a>次の手順
 
-Blob Storage で Blob が追加または更新されたときに実行する関数を作成しました。 
+Blob Storage で Blob が追加または更新されたときに実行する関数を作成しました。 Blob Storage トリガーの詳細については、「[Azure Functions における Blob Storage バインディング](functions-bindings-storage-blob.md)」を参照してください。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-
-Blob Storage トリガーの詳細については、「[Azure Functions における Blob Storage バインディング](functions-bindings-storage-blob.md)」を参照してください。

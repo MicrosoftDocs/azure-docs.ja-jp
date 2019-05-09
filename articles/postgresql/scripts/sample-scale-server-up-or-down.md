@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.custom: mvc
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: 37b7364d48508ad557e6118487c0cb88f9df8e4f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 65958eb1e2d7cc4492e0437b24db77f00ebc7eba
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548758"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728335"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Azure CLI での単一の PostgreSQL サーバーの監視とスケーリング
 このサンプル CLI スクリプトは、単一の Azure Database for PostgreSQL サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングするものです。 
@@ -35,10 +35,10 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 
 | **コマンド** | **メモ** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) | データベースをホストする PostgreSQL サーバーを作成します。 |
-| [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) | リソースのメトリック値を一覧表示します。 |
-| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az postgres server create](/cli/azure/postgres/server) | データベースをホストする PostgreSQL サーバーを作成します。 |
+| [az monitor metrics list](/cli/azure/monitor/metrics) | リソースのメトリック値を一覧表示します。 |
+| [az group delete](/cli/azure/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)

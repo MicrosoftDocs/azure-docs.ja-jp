@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384260"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540081"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -44,7 +44,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 ### <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 
-次に、RBAC の Event Hubs プレビューをサポートする Azure リージョンのいずれか (**米国東部**、**米国東部 2**、または**西ヨーロッパ**) で、[Event Hubs 名前空間を作成](event-hubs-create.md)します。 
+次に、RBAC の Event Hubs プレビューをサポートする Azure リージョンのいずれかで、[Event Hubs 名前空間を作成](event-hubs-create.md)します。**米国東部**、**米国東部 2**、または**西ヨーロッパ**。 
 
 名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。 これで、そのユーザー アカウントは、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになります。
  
@@ -52,7 +52,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 サンプル アプリケーションを実行できるようにするには、その前に、アプリケーションを Azure AD に登録し、アプリケーションが Event Hubs にアクセスすることを許可する同意プロンプトに同意します。 
 
-サンプル アプリケーションはコンソール アプリケーションであるため、ネイティブ アプリケーションを登録し、**Microsoft.EventHub** に対する API アクセス許可を "必要なアクセス許可" セットに追加する必要があります。 また、ネイティブ アプリケーションには識別子として機能する Azure AD の**リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `http://eventhubs.microsoft.com` を既に使っているため、この URI を使います。
+サンプル アプリケーションはコンソール アプリケーションであるため、ネイティブ アプリケーションを登録し、**Microsoft.EventHub** に対する API アクセス許可を "必要なアクセス許可" セットに追加する必要があります。 また、ネイティブ アプリケーションには識別子として機能する Azure AD の**リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `https://eventhubs.microsoft.com` を既に使っているため、この URI を使います。
 
 登録の詳細な手順については、[こちらのチュートリアル](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)をご覧ください。 手順に従って**ネイティブ** アプリを登録した後、更新手順に従って **Microsoft.EventHub** API を必要なアクセス許可に追加します。 手順を実行している間に、**TenantId** と **ApplicationId** を書き留めておきます。これらの値はアプリケーションを実行するために必要です。
 

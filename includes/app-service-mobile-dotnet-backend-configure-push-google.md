@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 5a5d3e13f5c5f46e82e4f1620be1840db556d30e
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d1dcd7895025ea608e5f6c4db5e0967817934f2a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42809441"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804470"
 ---
 バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に応じた手順を使用します。
 
@@ -81,7 +81,7 @@ ms.locfileid: "42809441"
 
     table.insert(function (context) {
     // For more information about the Notification Hubs JavaScript SDK,
-    // see http://aka.ms/nodejshubs
+    // see https://aka.ms/nodejshubs
     logger.info('Running TodoItem.insert');
 
     // Define the GCM payload.

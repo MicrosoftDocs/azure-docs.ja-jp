@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 このサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/29/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f6418602fcf1de6ea98c45635029f71aa6fdf06
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b30fa9bb0af8da7b3c72fef7aa2ecd18a8f759e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999283"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862847"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>クイック スタート: Python と Translator Text API を使用してテキストの表記を変換する
 
@@ -32,7 +32,7 @@ ms.locfileid: "52999283"
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `transliterate-text.py` という名前のファイルにコピーします。
+任意の IDE またはエディターを使用して新しいプロジェクトを作成するか、`transliterate-text.py` という名前のファイルが含まれる新しいフォルダーをデスクトップに作成します。 次に、このコード スニペットをプロジェクト/ファイルにコピーします。
 
 ```python
 # -*- coding: utf-8 -*-
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`transliterate` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`transliterate` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 入力言語、入力スクリプト、出力スクリプトは、`params` を使用して設定します。 このサンプルでは、日本語からラテン アルファベットへの表記変換を実行します。
 
@@ -135,7 +135,7 @@ python transliterate-text.py
 [
     {
         "script": "latn",
-        "text": "konnnichiha"
+        "text": "konnichiwa"
     }
 ]
 ```

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と Python を使って、10 分以内でテキストを別の言語に翻訳します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/17/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: db2328d09f9e06ccabdc2408327a342fe94fefe0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 573c45eb9c48d7b6663b518d4830577f951ec70d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899402"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>クイック スタート: Python と Translator Text API を使用して文字列を翻訳する
 
@@ -32,7 +32,7 @@ ms.locfileid: "52999578"
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `translate-text.py` という名前のファイルにコピーします。
+普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `translate-text.py` という名前のファイルにコピーします。 ライブラリが認識されるように、IDE のインタープリターが正しいバージョンの Python を参照していることを確認してください。
 
 ```python
 # -*- coding: utf-8 -*-
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`translate` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`translate` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 `params` は、出力言語を設定するために使用されます。 このサンプルでは、英語からイタリア語とドイツ語 (`it` と `de`) に翻訳しています。
 

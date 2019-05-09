@@ -1,28 +1,24 @@
 ---
-title: Azure AD でパスワードを禁止する方法
+title: Azure AD で脆弱なパスワードを禁止する方法 - Azure Active Directory
 description: Azure AD でのパスワードの動的禁止を使用して環境の脆弱なパスワードを禁止する
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: c4a289d1aeefc35f07e7598adf3780620b11f0da
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a7f6dbc869db4a0a444d09a2dc234e171758c706
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252203"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316492"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>カスタムの禁止パスワード リストを構成する
-
-|     |
-| --- |
-| Azure AD パスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
 
 多くの組織では、ユーザーが学校、スポーツ チーム、有名人などの一般的な地域の用語を使用して推測しやすいパスワードを作成していることがわかっています。 Microsoft のカスタム禁止パスワード リストでは、ユーザーと管理者がパスワードを変更またはリセットしようとしたときに、グローバル禁止パスワード リストに加えて、評価およびブロックする文字列を追加することができます。
 
@@ -30,7 +26,7 @@ ms.locfileid: "53252203"
 
 カスタム禁止パスワード リストを構成するには、Azure Active Directory Premium P1 または P2 ライセンスが必要です。 Azure Active Directory のライセンスの詳細については、[Azure Active Directory の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]**、**[Password protection (Preview)]\(パスワード保護 (プレビュー)\)** の順に参照します。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]**、**[パスワード保護]** の順に選択します。
 1. オプション **[Enforce custom list]\(カスタム リストを適用する\)** を **[はい]** に設定します。
 1. **[Custom banned password list]\(カスタム禁止パスワード リスト\)** に文字列 (1 行に 1 文字列) を追加します。
    * カスタム禁止パスワード リストには、最大 1,000 語を含めることができます。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: e106094ce94b7f232fd5687988af2bd11b971e3f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4d8c389055b81c355de6e1c9120230e1f04443cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001936"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087059"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -49,20 +49,20 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 3. 次のアプリケーション ゲートウェイの値を入力します。
 
-    - *myAppGateway* - アプリケーション ゲートウェイの名前です。
-    - *myResourceGroupAG* - 新しいリソース グループの名前です。
+   - *myAppGateway* - アプリケーション ゲートウェイの名前です。
+   - *myResourceGroupAG* - 新しいリソース グループの名前です。
 
-    ![新しいアプリケーション ゲートウェイの作成](./media/create-url-route-portal/application-gateway-create.png)
+     ![新しいアプリケーション ゲートウェイの作成](./media/create-url-route-portal/application-gateway-create.png)
 
 4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
 5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
-    - *myVNet* - 仮想ネットワークの名前です。
-    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
-    - *myAGSubnet* - サブネットの名前です。
-    - *10.0.0.0/24* - サブネットのアドレス空間です。
+   - *myVNet* - 仮想ネットワークの名前です。
+   - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
+   - *myAGSubnet* - サブネットの名前です。
+   - *10.0.0.0/24* - サブネットのアドレス空間です。
 
-    ![Create virtual network](./media/create-url-route-portal/application-gateway-vnet.png)
+     ![Create virtual network](./media/create-url-route-portal/application-gateway-vnet.png)
 
 6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
 7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
@@ -99,6 +99,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 ### <a name="install-iis"></a>IIS のインストール
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. 対話型シェルを開いて、**PowerShell** に設定されていることを確認します。
 
     ![カスタム拡張機能のインストール](./media/create-url-route-portal/application-gateway-extension.png)
@@ -107,7 +109,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -118,12 +120,12 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
       -Settings $publicSettings
     ```
 
-3. さらに 2 つの仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzureRmVMExtension の VMName の値として、*myVM2* と *myVM3* という名前を入力します。
+3. さらに 2 つの仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzVMExtension の VMName の値として、*myVM2* と *myVM3* という名前を入力します。
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>仮想マシンでのバックエンド プールの作成
 
 1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
-2. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGateayBackendPool]** をクリックします。
+2. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** をクリックします。
 3. **[ターゲットの追加]** をクリックして、*myVM1* を appGatewayBackendPool に追加します。
 
     ![バックエンド サーバーの追加](./media/create-url-route-portal/application-gateway-backend.png)

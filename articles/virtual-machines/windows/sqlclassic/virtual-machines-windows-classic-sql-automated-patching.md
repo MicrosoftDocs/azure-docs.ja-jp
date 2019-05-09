@@ -3,7 +3,7 @@ title: SQL Server VM の自動修正 (クラシック) | Microsoft Docs
 description: Azure でクラシック デプロイメント モデルを使用して実行されている SQL Server Virtual Machines の自動修正機能について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,17 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
-ms.author: jroth
-ms.openlocfilehash: 4bb13ec9d835959273801c2f53c8d736491080a6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: aa912e3eb76d72e7a79c83d7e51d493310bd36b3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061337"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331318"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Virtual Machines での SQL Server の自動修正 (クラシック)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
+> * [リソース マネージャー](../sql/virtual-machines-windows-sql-automated-patching.md)
 > * [クラシック](../classic/sql-automated-patching.md)
 > 
 > 
@@ -37,7 +38,7 @@ ms.locfileid: "37061337"
 自動修正は、 [SQL Server IaaS Agent 拡張機能](../classic/sql-server-agent-extension.md)に依存します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの Azure Virtual Machines での SQL Server の自動修正](../sql/virtual-machines-windows-sql-automated-patching.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの Azure Virtual Machines での SQL Server の自動修正](../sql/virtual-machines-windows-sql-automated-patching.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 自動修正を使用するには、次の前提条件を検討してください。

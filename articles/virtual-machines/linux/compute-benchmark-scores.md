@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
-ms.openlocfilehash: 1d7f11b7d9db87ebea5cb31b2918dba3fe8a56b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2a558f2cf91907e85bb8b14c7214a63afd1faca0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001401"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM のコンピューティング ベンチマーク スコア
 次の CoreMark ベンチマーク スコアは、Ubuntu を実行している、Azure の 高パフォーマンス VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。
@@ -369,7 +369,7 @@ ms.locfileid: "51262354"
 | Standard_M128s | Intel(R) Xeon(R) CPU E7-8890 v3 \@ 2.50GHz | 128 | 4 | 2,064.3 | 1,275,445 | 19,510 | 1.53% | 42 |
 
 ## <a name="about-coremark"></a>CoreMark について
-Linux の数値は、Ubuntu 上で [CoreMark](http://www.eembc.org/coremark/faq.php) を実行して計算しました。 CoreMark は、スレッド数を仮想 CPU の数に設定し、コンカレンシー数を PThreads に設定して構成しました。 目標の反復の回数は、少なくとも 20 秒 (通常はもっとはるかに長い) のランタイムを提供するために予期されるパフォーマンスに基づいて調整されました。 最終のスコアは、完了した反復の回数をテストの実行にかかった秒数で割った値を表します。 VM ごとに各テストを少なくとも 7 回実行しました。 テストの実行日は上に示されています。 テストは、実行日に VM サポートされていた Azure パブリック リージョン間の複数の VM で実行されました。 基本 A および B (バースト対応) シリーズは、パフォーマンスが可変であるため示されていません。 N シリーズは、GPU 中心であり、Coremark は GPU のパフォーマンスを測定しないため、示されていません。
+Linux の数値は、Ubuntu 上で [CoreMark](https://www.eembc.org/coremark/faq.php) を実行して計算しました。 CoreMark は、スレッド数を仮想 CPU の数に設定し、コンカレンシー数を PThreads に設定して構成しました。 目標の反復の回数は、少なくとも 20 秒 (通常はもっとはるかに長い) のランタイムを提供するために予期されるパフォーマンスに基づいて調整されました。 最終のスコアは、完了した反復の回数をテストの実行にかかった秒数で割った値を表します。 VM ごとに各テストを少なくとも 7 回実行しました。 テストの実行日は上に示されています。 テストは、実行日に VM サポートされていた Azure パブリック リージョン間の複数の VM で実行されました。 基本 A および B (バースト対応) シリーズは、パフォーマンスが可変であるため示されていません。 N シリーズは、GPU 中心であり、Coremark は GPU のパフォーマンスを測定しないため、示されていません。
 
 ## <a name="next-steps"></a>次の手順
 * ストレージの容量、ディスクの詳細、VM のサイズを選択する際のその他の考慮事項については、 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。

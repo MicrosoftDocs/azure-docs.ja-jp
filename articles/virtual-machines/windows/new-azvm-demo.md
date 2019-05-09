@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell で簡素化された New-AzureRMVM コマンドレットを使用して Windows VM を作成する | Microsoft Docs
-description: Azure Cloud Shell で簡素化された New-AzureRMVM コマンドレットを使用して Windows 仮想マシンを作成する方法を簡単に説明します。
+title: Azure Cloud Shell で簡素化された New-AzVM コマンドレットを使用して Windows VM を作成する | Microsoft Docs
+description: Azure Cloud Shell で簡素化された New-AzVM コマンドレットを使用して Windows 仮想マシンを作成する方法を簡単に説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,40 +16,40 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: defc871caed429eeda1f8672323b48a9c0007c8e
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 02f2bd78ca5656534b106c6f7f18c05165b4b9ff
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371739"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444497"
 ---
-# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Cloud Shell で簡素化された New-AzureRMVM コマンドレットを使用して Windows 仮想マシンを作成する 
+# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azvm-cmdlet-in-cloud-shell"></a>Cloud Shell で簡素化された New-AzVM コマンドレットを使用して Windows 仮想マシンを作成する 
 
-[New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) コマンドレットには、PowerShell を使用して新しい VM を作成するための簡素化されたパラメーター セットが追加されました。 このトピックでは、Azure Cloud Shell で PowerShell を使用して、プレインストールされている最新バージョンの New-AzureVM コマンドレットで新しい VM を作成する方法について説明します。 スマートな既定値を使用して必要なすべてのリソースが自動的に作成される、簡素化されたパラメーター セットを使用します。 
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットには、PowerShell を使用して新しい VM を作成するための簡素化されたパラメーター セットが追加されました。 このトピックでは、Azure Cloud Shell で PowerShell を使用して、プレインストールされている最新バージョンの New-AzureVM コマンドレットで新しい VM を作成する方法について説明します。 スマートな既定値を使用して必要なすべてのリソースが自動的に作成される、簡素化されたパラメーター セットを使用します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.1.1 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-the-vm"></a>VM の作成
 
-[New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) コマンドレットを使用して、Azure Marketplace の Windows Server 2016 Datacenter イメージの使用を含むスマートな既定値で VM を作成することができます。 New-AzureRMVM は **-Name** パラメーターだけで使用できます。この値は、すべてのリソース名に使用されます。 この例では、**-Name** パラメーターを *myVM* として設定します。 
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットを使用して、Azure Marketplace の Windows Server 2016 Datacenter イメージの使用を含むスマートな既定値で VM を作成することができます。 New-AzVM は **-Name** パラメーターだけで使用できます。この値は、すべてのリソース名に使用されます。 この例では、**-Name** パラメーターを *myVM* として設定します。 
 
 Cloud Shell で **PowerShell** が選択されていることを確認して、次のように入力します。
 
 ```azurepowershell-interactive
-New-AzureRMVm -Name myVM
+New-AzVm -Name myVM
 ```
 
 VM のユーザー名とパスワードの作成を求められます。これらは、このトピックで後ほど VM に接続するときに使用します。 パスワードは、12 ～ 123 文字で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 要件のうち、3 つを満たしている必要があります。
 
-VM と関連リソースを作成するにはしばらくかかります。 完了したら、[Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) コマンドレットを使用して、作成されたすべてのリソースを確認することができます。
+VM と関連リソースを作成するにはしばらくかかります。 完了したら、[Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) コマンドレットを使用して、作成されたすべてのリソースを確認することができます。
 
 ```azurepowershell-interactive
-Get-AzureRmResource `
+Get-AzResource `
     -ResourceGroupName myVMResourceGroup | Format-Table Name
 ```
 
@@ -57,10 +57,10 @@ Get-AzureRmResource `
 
 デプロイが完了したら、仮想マシンとのリモート デスクトップ接続を作成します。
 
-[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) コマンドを使用して、仮想マシンのパブリック IP アドレスを返します。 この IP アドレスを書き留めておきます。
+[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) コマンドを使用して、仮想マシンのパブリック IP アドレスを返します。 この IP アドレスを書き留めておきます。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
     -ResourceGroupName myVMResourceGroup | Select IpAddress
 ```
 
@@ -74,7 +74,7 @@ mstsc /v:<publicIpAddress>
 リソースにはよりわかりやすい名前を指定することもできます。この場合も、これらのリソースは自動で作成されます。 次の例では、新しいリソース グループなど、新しい VM の複数のリソースに名前が付けられています。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVM" `
     -Location "East US" `
@@ -87,11 +87,11 @@ New-AzureRmVm `
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myVM
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myVM
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

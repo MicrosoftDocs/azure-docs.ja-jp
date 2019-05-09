@@ -3,27 +3,27 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで要求変換
 description: Azure Active Directory B2C 内のカスタム ポリシーで要求変換技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: fd1e2aa5162ce9263d521edf3ae11e0508353b46
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: a204e8cdc20a6897c40d4d5f68217a2922371737
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382990"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148610"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで要求変換技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
- 要求変換技術プロファイルにより、出力要求変換を呼び出して、要求の値を操作したり、要求を検証したり、一連の出力要求の既定値を設定することができます。
+要求変換技術プロファイルにより、出力要求変換を呼び出して、要求の値を操作したり、要求を検証したり、一連の出力要求の既定値を設定することができます。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
 **Protocol** 要素の **Name** 属性は、`Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
@@ -33,7 +33,7 @@ ms.locfileid: "44382990"
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
     <DisplayName>Unlink Facebook</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  ...    
+  ...
 ```
 
 ## <a name="output-claims"></a>出力要求
@@ -53,16 +53,16 @@ ms.locfileid: "44382990"
 
 ```XML
 <ClaimsTransformations>
-  <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" 
+  <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider"
 TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="IdentityProvider2"
 TransformationClaimType="identityProvider" />
-      <InputClaim ClaimTypeReferenceId="AlternativeSecurityIds" 
+      <InputClaim ClaimTypeReferenceId="AlternativeSecurityIds"
 TransformationClaimType="collection" />
     </InputClaims>
     <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="AlternativeSecurityIds" 
+      <OutputClaim ClaimTypeReferenceId="AlternativeSecurityIds"
 TransformationClaimType="collection" />
     </OutputClaims>
   </ClaimsTransformation>
@@ -81,11 +81,11 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-要求変換技術プロファイルにより、任意のユーザー体験のオーケストレーション手順から、要求変換を実行できます。 次の例では、オーケストレーション手順は、**Facebook-OAUTH のリンク解除** などの、いずれかのリンク解除技術プロファイルを呼び出します。 この技術プロファイルは、要求変換技術プロファイル **RemoveAlternativeSecurityIdByIdentityProvider** を呼び出します。これは、コレクションから Facebook ID を削除しながら、ユーザーのソーシャル ID のリストが存在する、新しい **AlternativeSecurityIds2** 要求を生成します。
+要求変換技術プロファイルにより、任意のユーザー体験のオーケストレーション手順から、要求変換を実行できます。 次の例では、オーケストレーション手順は、**Facebook-OAUTH のリンク解除** などの、いずれかのリンク解除技術プロファイルを呼び出します。 この技術プロファイルでは、要求変換技術プロファイル **RemoveAlternativeSecurityIdByIdentityProvider** が呼び出されます。これは、ユーザーのソーシャル ID の一覧を含む新しい **AlternativeSecurityIds2** 要求を生成し、同時にコレクションから Facebook ID を削除します。
 
 ```XML
 <UserJourney Id="AccountUnLink">
-  <OrchestrationSteps>    
+  <OrchestrationSteps>
     ...
     <OrchestrationStep Order="8" Type="ClaimsExchange">
       <ClaimsExchanges>
@@ -98,7 +98,6 @@ TransformationClaimType="collection" />
   </OrchestrationSteps>
 </UserJourney>
 ```
-
 
 ## <a name="use-a-validation-technical-profile"></a>検証技術プロファイルの使用
 
@@ -122,19 +121,19 @@ TransformationClaimType="collection" />
 
 ```XML
 <TechnicalProfile Id="Validate-Email">
-    <DisplayName>Unlink Facebook</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <DisplayName>Unlink Facebook</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailRepeat" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="email" />
-  </OutputClaims>          
+  </OutputClaims>
   <OutputClaimsTransformations>
-        <OutputClaimsTransformation ReferenceId="AssertEmailAreEqual" />
-    </OutputClaimsTransformations>
-    <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-</TechnicalProfile> 
+    <OutputClaimsTransformation ReferenceId="AssertEmailAreEqual" />
+  </OutputClaimsTransformations>
+  <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+</TechnicalProfile>
 ```
 
 自己宣言された技術プロファイルは、検証技術プロファイルを呼び出して、**UserMessageIfClaimsTransformationStringsAreNotEqual** メタデータで指定されたエラー メッセージを表示できます。
@@ -155,5 +154,5 @@ TransformationClaimType="collection" />
   <ValidationTechnicalProfiles>
     <ValidationTechnicalProfile ReferenceId="Validate-Email" />
   </ValidationTechnicalProfiles>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```

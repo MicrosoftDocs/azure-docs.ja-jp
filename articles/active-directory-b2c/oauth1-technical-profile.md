@@ -3,27 +3,27 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth1 技�
 description: Azure Active Directory B2C 内のカスタム ポリシーで OAuth1 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 15c6730d752adf48cee2ff509220a033cac91ef2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842120"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915784"
 ---
-# <a name="define-a-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth1 技術プロファイルを定義する
+# <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth1 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https://tools.ietf.org/html/rfc5849) の ID プロバイダーにサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 OAuth1 技術プロファイルを使用すると、Twitter などの OAuth1 ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
 **Protocol** 要素の **Name** 属性は `OAuth1` に設定する必要があります。 たとえば、**Twitter-OAUTH1** 技術プロファイル用のプロトコルは `OAuth1` です。
 

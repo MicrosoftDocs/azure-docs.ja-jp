@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: 4a8db246f02d68a7924b9a09a1b2fc1f5bcf2edc
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467227"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817242"
 ---
-# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成: Cisco ASA デバイス (IKEv2/BGP なし)
+# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成:Cisco ASA デバイス (IKEv2/BGP なし)
 この記事では、Cisco Adaptive Security Appliance (ASA) デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成を紹介します。 この例は、ボーダー ゲートウェイ プロトコル (BGP) を使用せずに IKEv2 を実行する Cisco ASA デバイスに適用されます。 
 
 ## <a name="device-at-a-glance"></a>デバイスの概略
@@ -44,7 +44,7 @@ Azure VPN ゲートウェイでは、標準の IPsec/IKE プロトコル スイ�
 > [暗号化の要件](vpn-gateway-about-compliance-crypto.md)に関する記事の説明に従って、特定の接続を対象に、暗号アルゴリズムとキーの強度の組み合わせを具体的に指定することもできます。 アルゴリズムとキーの強度の組み合わせを具体的に指定する場合は必ず、対応する仕様をご利用の VPN デバイスで使用してください。
 
 ## <a name="single-vpn-tunnel"></a>単一の VPN トンネル
-この構成は、Azure VPN ゲートウェイとオンプレミスの VPN デバイスの間にある単一の S2S VPN トンネルで構成されます。 [VPN トンネル上に BGP](#bgp) を構成することもできます。
+この構成は、Azure VPN ゲートウェイとオンプレミスの VPN デバイスの間にある単一の S2S VPN トンネルで構成されます。 VPN トンネル上に BGP を構成することもできます。
 
 ![単一の S2S VPN トンネル](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
@@ -114,8 +114,8 @@ Azure の構成を作成する具体的な手順については、[単一の VPN
   - 外部インターフェイスの名前: **outside**
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
-  - IKE: **Pre_Shared_Key**
-  - 仮想ネットワークおよびローカル ネットワーク ゲートウェイの名前: **VNetName** と **LNGName**
+  - IKE:**Pre_Shared_Key**
+  - 仮想ネットワークおよびローカル ネットワーク ゲートウェイの名前:**VNetName** と **LNGName**
   - 仮想ネットワークおよびオンプレミスのネットワーク アドレス **プレフィックス**
   - 適切な**ネットマスク**
 
@@ -248,7 +248,7 @@ crypto ipsec ikev2 ipsec-proposal AES-256
  protocol esp integrity  sha-1
 exit
 !
-!     > Set access list & traffic selectors, PFS, IPsec protposal, SA lifetime
+!     > Set access list & traffic selectors, PFS, IPsec proposal, SA lifetime
 !       - This sample uses "Azure-<VNetName>-map" as the crypto map name
 !       - ASA supports only one crypto map per interface, if you already have
 !         an existing crypto map assigned to your outside interface, you must use

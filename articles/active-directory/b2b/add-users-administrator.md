@@ -3,23 +3,24 @@ title: Azure Portal で B2B コラボレーション ユーザーを追加する
 description: 管理者が Azure Active Directory (Azure AD) B2B コラボレーションを使用してパートナー組織からディレクトリにゲスト ユーザーを追加する方法を説明します。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: celested
 ms.reviewer: mal
-ms.openlocfilehash: 3da427974c4a270a7a743bb81d2376cf61b77390
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436910"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799407"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
-グローバル管理者、またはいずれかの制限付き管理者ディレクトリ ロールを割り当てられたユーザーとして、Azure Portal を使用して B2B コラボレーション ユーザーを招待できます。 ゲスト ユーザーをディレクトリ、グループ、またはアプリケーションに招待できます。 これらのメソッドを使用してユーザーを招待すると、招待されたユーザーのアカウントが、"*ゲスト*" というユーザー タイプで Azure Active Directory (Azure AD) に追加されます。 次に、ゲスト ユーザーは、招待に応じてリソースにアクセスします。
+制限付き管理者ディレクトリ ロールのいずれかを割り当てられたユーザーとして、Azure portal を使用して B2B コラボレーション ユーザーを招待できます。 ゲスト ユーザーをディレクトリ、グループ、またはアプリケーションに招待できます。 これらのメソッドを使用してユーザーを招待すると、招待されたユーザーのアカウントが、"*ゲスト*" というユーザー タイプで Azure Active Directory (Azure AD) に追加されます。 次に、ゲスト ユーザーは、招待に応じてリソースにアクセスします。
 
 ゲスト ユーザーをディレクトリに追加すると、共有アプリへの直接リンクをゲスト ユーザーに送信するか、ゲスト ユーザーが招待メール内の引き換えの URL をクリックできます。 引き換えプロセスの詳細については、[B2B コラボレーションの招待の利用](redemption-experience.md)に関するページを参照してください。
 
@@ -30,7 +31,7 @@ ms.locfileid: "53436910"
 
 B2B コラボレーション ユーザーをディレクトリに追加するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
+1. 制限付き管理者ディレクトリ ロールのいずれかが割り当てられたユーザーとして、[Azure portal](https://portal.azure.com) にサインインします。
 2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
 3. **[管理]** にある **[ユーザー]** を選択します。
 4. **[新しいゲスト ユーザー]** を選択します。
@@ -45,7 +46,7 @@ B2B コラボレーション ユーザーをディレクトリに追加するに
    ![UI 内の新しいゲスト ユーザーの場所を示す](./media/add-users-administrator/InviteGuest.png) 
 
     > [!NOTE]
-    > 一部の電子メール プロバイダーでは、ユーザーはプラス記号 (+) と追加テキストを電子メール アドレスに付け加えて、受信ボックスのフィルター処理などに役立てることができます。 ただし、Azure AD では現在、電子メール アドレスのプラス記号はサポートされていません。 配信の問題を回避するために、プラス記号と、それに続く @ 記号より前の任意の文字を含めません。
+    > グループのメール アドレスはサポートされていません。個人のメール アドレスを入力してください。 また、一部の電子メール プロバイダーでは、ユーザーはプラス記号 (+) と追加テキストを電子メール アドレスに付け加えて、受信ボックスのフィルター処理などに役立てることができます。 ただし、Azure AD では現在、電子メール アドレスのプラス記号はサポートされていません。 配信の問題を回避するために、プラス記号と、それに続く @ 記号より前の任意の文字を含めません。
 
 6. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 
  

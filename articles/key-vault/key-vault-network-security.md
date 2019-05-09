@@ -1,21 +1,21 @@
 ---
 ms.assetid: ''
-title: Azure Key Vault のファイアウォールと仮想ネットワークを構成する
+title: Azure Key Vault のファイアウォールと仮想ネットワークを構成する - Azure Key Vault
 description: Key Vault のファイアウォールと仮想ネットワークを構成する手順
 services: key-vault
 author: amitbapat
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/31/2018
+ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: 7dd768d3f0059f4b26f09298992483553f1508d2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c54b78a24068758fabb0918cfeb7d6516fd1bce5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681248"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487245"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 
@@ -38,11 +38,11 @@ Azure portal を使用して Key Vault ファイアウォールと仮想ネッ�
 
 **[+ 新しい仮想ネットワークを追加]** を選択し、新しい仮想ネットワークとサブネットを追加して、新しく作成した仮想ネットワークとサブネットのサービス エンドポイントを有効にすることもできます。 その後、プロンプトに従います。
 
-## <a name="use-the-azure-cli-20"></a>Azure CLI 2.0 を使用する
+## <a name="use-the-azure-cli"></a>Azure CLI の使用 
 
-Azure CLI 2.0 を使用して Key Vault ファイアウォールと仮想ネットワークを構成する方法を次に示します。
+Azure CLI を使用して Key Vault ファイアウォールと仮想ネットワークを構成する方法を次に示します
 
-1. [Azure CLI 2.0 をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)して[サインイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)します。
+1. [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)して[サインイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)します。
 
 2. 使用可能な仮想ネットワーク ルールの一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
    ```azurecli
@@ -77,45 +77,47 @@ Azure CLI 2.0 を使用して Key Vault ファイアウォールと仮想ネッ�
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 PowerShell を使用して Key Vault ファイアウォールと仮想ネットワークを構成する方法を次に示します。
 
-1. 最新の [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) をインストールして[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
+1. 最新の [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) をインストールして[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
 
 2. 使用可能な仮想ネットワーク ルールの一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
-   ```PowerShell
-   (Get-AzureRmKeyVault -VaultName "mykeyvault").NetworkAcls
+   ```powershell
+   (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
    ```
 
 3. 既存の仮想ネットワークとサブネット上の Key Vault のサービス エンドポイントを有効にします。
-   ```PowerShell
-   Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzureRmVirtualNetwork
+   ```powershell
+   Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
    ```
 
 4. 仮想ネットワークとサブネットに対するネットワーク ルールを追加します。
-   ```PowerShell
-   $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-   Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
+   ```powershell
+   $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
+   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
    ```
 
 5. そこから送信されたトラフィックを許可する IP アドレス範囲を追加します。
-   ```PowerShell
-   Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
+   ```powershell
+   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
 6. すべての信頼されたサービスでこのキー コンテナーにアクセスできるようにする必要がある場合は、`bypass` を `AzureServices` に設定します。
-   ```PowerShell
-   Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
+   ```powershell
+   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
 7. 既定のアクションを `Deny` に設定することによって、ネットワーク ルールを有効にします。
-   ```PowerShell
-   Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
+   ```powershell
+   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
 ## <a name="references"></a>参照
 
-* Azure CLI 2.0 コマンド: [az keyvault network-rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Azure PowerShell コマンドレット:[Get-AzureRmKeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurermkeyvault)、[Add-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureRmKeyVaultNetworkRule)、[Remove-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureRmKeyVaultNetworkRule)、[Update-AzureRmKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureRmKeyVaultNetworkRuleSet)
+* Azure CLI コマンド: [az keyvault network-rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Azure PowerShell コマンドレット:[Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault)、[Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule)、[Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule)、[Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,19 +4,19 @@ description: このクイック スタートを利用し、Bing Image Search SDK
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cb01b45e26975d44e30669e066b195f4e3abc90a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 641247a0ddc08f15fa70006e280426fda083241f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083030"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>クイック スタート:Bing Image Search SDK for Node.js を使用してイメージを検索する
 
@@ -68,7 +68,7 @@ ms.locfileid: "53251999"
         return await imageSearchApiClient.imagesOperations.search(searchTerm);
     };
     ```
-## <a name="send-a-query-and-handle-the-response"></a>クエリを送信して応答を処理する
+   ## <a name="send-a-query-and-handle-the-response"></a>クエリを送信して応答を処理する
 
 1. ヘルパー関数を呼び出して `promise` を処理し、応答で返されたイメージの結果を解析します。
 

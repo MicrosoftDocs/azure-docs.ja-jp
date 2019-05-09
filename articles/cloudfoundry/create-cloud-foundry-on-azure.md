@@ -10,16 +10,16 @@ ms.assetid: ''
 ms.author: ruyakubu
 ms.date: 09/13/2018
 ms.devlang: ''
-ms.service: Cloud Foundry
+ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 9514118e1f29faab937ed01899b5947789ca9735
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 382e342f2144bcc6eeedafd74790bb442b8f9308
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101400"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784860"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
@@ -72,11 +72,11 @@ ssh-keygen -t rsa -b 2048
 
 5. サービス プリンシパルのアクセス許可のロールは、共同作成者として設定します。
 
-    `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor” `
+    `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor”`
 
     以下を使用することもできます
 
-    `az role assignment create --assignee {service-princ-name} --role “Contributor” `
+    `az role assignment create --assignee {service-principal-name} --role “Contributor”`
 
     ![サービス プリンシパルのロールの割り当て](media/deploy/svc-princ.png )
 

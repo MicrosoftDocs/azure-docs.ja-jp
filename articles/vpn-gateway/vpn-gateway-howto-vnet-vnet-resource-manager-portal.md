@@ -1,5 +1,5 @@
 ---
-title: Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する | Microsoft Docs
+title: Azure ポータルを使用して VNet 対 VNet VPN ゲートウェイ接続を構成する | Microsoft Docs
 description: Resource Manager と Azure Portal を使用して VNet 間の VPN ゲートウェイ接続を作成します。
 services: vpn-gateway
 documentationcenter: na
@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 245710d1ae3e7af4db5286a5db985fe35549ad3a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 94b32595cf2c884ccfd1362f6c8d03f542aabfc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098789"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090102"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 
@@ -65,7 +65,7 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 
 ### <a name="cross-region-geo-redundancy-and-geo-presence"></a>リージョン間の geo 冗長性および geo プレゼンス
 
-  * インターネット接続エンドポイントを介さず、安全な接続を使って独自の geo レプリケーションや geo 同期を設定することができます。
+  * インターネット接続エンドポイントを介さず、安全な接続を使って独自の geo レプリケーションや同期を設定することができます。
   * Azure Traffic Manager および Azure Load Balancer を使用し、複数の Azure リージョンをまたぐ geo 冗長性を備えた、可用性に優れたワークロードを設定することができます。 たとえば、複数の Azure リージョン間で SQL Server Always On 可用性グループを設定できます。
 
 ### <a name="regional-multi-tier-applications-with-isolation-or-administrative-boundaries"></a>特定のリージョン内で分離または管理境界を備えた多層アプリケーション
@@ -133,7 +133,7 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
        - **共有キー**:「*abc123*」と入力します。 独自の共有キーを作成できます。 VNet 間の接続を作成する際に、値が一致する必要があります。
 
 ## <a name="create-and-configure-testvnet1"></a>TestVNet1 の作成と構成
-既に VNet がある場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。 特に、他のネットワークと重複している可能性のあるサブネットに注意してください。 サブネットの重複があると、接続が適切に動作しません。 VNet が正しい設定で構成された後、[DNS サーバーの指定](#dns) に関するセクションの手順を開始できます。
+既に VNet がある場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。 特に、他のネットワークと重複している可能性のあるサブネットに注意してください。 サブネットの重複があると、接続が適切に動作しません。 VNet が正しい設定で構成された後、DNS サーバーの指定に関するセクションの手順を開始できます。
 
 ### <a name="to-create-a-virtual-network"></a>仮想ネットワークを作成するには
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
@@ -172,10 +172,10 @@ TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成�
 
 1. Azure ポータルで、**[すべてのリソース]** を選択し、検索ボックスに*仮想ネットワーク ゲートウェイ* を入力してから、VNet の仮想ネットワーク ゲートウェイに移動します。 たとえば、**[TestVNet1GW]** に移動します。 それを選択して、**仮想ネットワーク ゲートウェイ**のページを開きます。
 
-  ![[接続] ページ](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "[接続] ページ")
+   ![[接続] ページ](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "[接続] ページ")
 2. **[設定]** で **[接続]** を選択し、**[追加]** を選んで **[接続の追加]** ページを開きます。
 
-  ![接続の追加](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "接続の追加")
+   ![接続の追加](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "接続の追加")
 3. **[接続の追加]** ページで、接続の値を入力します。
 
    - **名前**:接続の名前を入力します。 たとえば、「*TestVNet1toTestVNet4*」と入力します。
@@ -186,11 +186,11 @@ TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成�
 
    - **2 番目の仮想ネットワーク ゲートウェイ**:このフィールドでは、接続先として作成する VNet の仮想ネットワーク ゲートウェイを設定します。 **[別の仮想ネットワーク ゲートウェイを選択する]** を選び、**[仮想ネットワーク ゲートウェイの選択]** ページを開きます。
 
-    - このページに一覧表示されている仮想ネットワーク ゲートウェイを確認します。 自分のサブスクリプションに属している仮想ネットワーク ゲートウェイのみが表示されていることがわかります。 自分のサブスクリプションに属していない仮想ネットワーク ゲートウェイに接続する場合は、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用します。
+     - このページに一覧表示されている仮想ネットワーク ゲートウェイを確認します。 自分のサブスクリプションに属している仮想ネットワーク ゲートウェイのみが表示されていることがわかります。 自分のサブスクリプションに属していない仮想ネットワーク ゲートウェイに接続する場合は、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用します。
 
-    - 接続先となる仮想ネットワーク ゲートウェイを選択します。
+     - 接続先となる仮想ネットワーク ゲートウェイを選択します。
 
-    - **共有キー (PSK)**:このフィールドには、接続の共有キーを入力します。 このキーは、自分で生成または作成できます。 サイト間接続では、使用するキーは、オンプレミス デバイスと仮想ネットワーク ゲートウェイの接続の場合と同じになります。 VPN デバイスではなく、別の仮想ネットワーク ゲートウェイに接続するという点を除けば、概念は同じです。
+     - **共有キー (PSK)**:このフィールドには、接続の共有キーを入力します。 このキーは、自分で生成または作成できます。 サイト間接続では、使用するキーは、オンプレミス デバイスと仮想ネットワーク ゲートウェイの接続の場合と同じになります。 VPN デバイスではなく、別の仮想ネットワーク ゲートウェイに接続するという点を除けば、概念は同じです。
     
 4. **[OK]** を選択して変更を保存します。
 

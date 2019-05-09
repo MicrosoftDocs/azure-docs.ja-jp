@@ -13,30 +13,29 @@ ms.workload: azure-vs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.prod: vs-devops-alm
-ms.date: 09/12/2018
+ms.date: 04/02/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 49ed750a25c732b7f11ef5de2e545be2a5412fa8
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: df91ba12c1ee74b8e28f75344a5cd55af018d3cd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437573"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58884875"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
-事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1) で入手できます。
+事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1) で入手できます。
 
 Azure を利用するのが初めてであれば、 [無料の Azure アカウントを作成します](https://azure.microsoft.com/free)。
 
 ## <a name="what-configurations-and-versions-are-available"></a>どんな構成とバージョンを使用できますか。
-最新のメジャー バージョン (Visual Studio 2017 および Visual Studio 2015) のイメージは、Azure Marketplace で提供されています。  次期メジャー バージョンである Visual Studio 2019 のプレビューのサポートが最近追加されました。  リリースされたメジャー バージョンごとに、最初にリリースされたバージョン (RTW) と最新の更新バージョンが表示されます。  これらの各バージョンでは、Visual Studio Enterprise エディションと Visual Studio Community エディションが提供されます。  これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。  イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンと、その時点のイメージの日付が記載されます。
+最新のメジャー バージョン (Visual Studio 2019、Visual Studio 2017、Visual Studio 2015) のイメージは、Azure Marketplace で提供されています。  リリースされたメジャー バージョンごとに、最初に Web にリリースされたバージョン (RTW: Released To Web) と最新の更新バージョンが表示されます。  これらの各バージョンでは、Visual Studio Enterprise エディションと Visual Studio Community エディションが提供されます。  これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。  イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンと、その時点のイメージの日付が記載されます。
 
 | リリース バージョン                                              | エディション                     |     製品バージョン      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|    Visual Studio 2019:ビュー (Preview 1)                   |           Enterprise         | バージョン 16.0.0 Preview 1 |
-| Visual Studio 2017:最新 (バージョン 15.9)                    |    Enterprise、Community     |      バージョン 15.9.4      |
-|         Visual Studio 2017:RTW                              |    Enterprise、Community     |      バージョン 15.0.20     |
+|     Visual Studio 2019:RTW                                  |    Enterprise、Community     |      バージョン 16.0.0      |
+| Visual Studio 2017:最新 (バージョン 15.9)                    |    Enterprise、Community     |      バージョン 15.9.10     |
+|         Visual Studio 2017:RTW                              |    Enterprise、Community     |      バージョン 15.0.22     |
 |   Visual Studio 2015:最新 (Update 3)                      |    Enterprise、Community     |  Version 14.0.25431.01   |
 |         Visual Studio 2015:RTW                              |             なし             | (サービスの有効期限切れ)  |
 

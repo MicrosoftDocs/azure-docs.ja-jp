@@ -1,18 +1,17 @@
 ---
 title: Azure Cosmos DB SQL API アカウントで地理空間データを扱う
 description: Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 29bb495bbbd56ab39964b34db35fb4d222a60179
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074697"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770739"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API アカウントで地理空間データと GeoJSON 位置データを使用する
 
@@ -151,32 +150,13 @@ await client.CreateDocumentAsync(
 ### <a name="spatial-sql-built-in-functions"></a>空間 SQL 組み込み関数
 Azure Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を使った地理空間検索をサポートしています。 SQL 言語の全組み込み関数の詳細については、[Azure Cosmos DB のクエリ](how-to-sql-query.md)に関する記事をご覧ください。
 
-<table>
-<tr>
-  <td><strong>使用方法</strong></td>
-  <td><strong>説明</strong></td>
-</tr>
-<tr>
-  <td>ST_DISTANCE (spatial_expr, spatial_expr)</td>
-  <td>2 つの GeoJSON Point、Polygon、または LineString 式間の距離を返します。</td>
-</tr>
-<tr>
-  <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>1 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) が 2 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) 内に存在するかどうかを示すブール式を返します。</td>
-</tr>
-<tr>
-  <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>指定された 2 つの GeoJSON オブジェクト (Point、Polygon、または LineString) が重なるかどうかを示すブール式を返します。</td>
-</tr>
-<tr>
-  <td>ST_ISVALID</td>
-  <td>指定された GeoJSON Point、Polygon、または LineString 式が有効かどうかを示すブール値を返します。</td>
-</tr>
-<tr>
-  <td>ST_ISVALIDDETAILED</td>
-  <td>指定された GeoJSON Point、Polygon、または LineString 式が有効であるかどうかのブール値を含んだ JSON 値を返します。無効である場合はさらに、その理由が文字列値として返されます。</td>
-</tr>
-</table>
+|**使用方法**|**説明**|
+|---|---|
+| ST_DISTANCE (spatial_expr, spatial_expr) | 2 つの GeoJSON Point、Polygon、または LineString 式間の距離を返します。|
+|ST_WITHIN (spatial_expr, spatial_expr) | 1 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) が 2 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) 内に存在するかどうかを示すブール式を返します。|
+|ST_INTERSECTS (spatial_expr, spatial_expr)| 指定された 2 つの GeoJSON オブジェクト (Point、Polygon、または LineString) が重なるかどうかを示すブール式を返します。|
+|ST_ISVALID| 指定された GeoJSON Point、Polygon、または LineString 式が有効かどうかを示すブール値を返します。|
+| ST_ISVALIDDETAILED| 指定された GeoJSON Point、Polygon、または LineString 式が有効であるかどうかのブール値を含んだ JSON 値を返します。無効である場合はさらに、その理由が文字列値として返されます。|
 
 空間関数を使用すると、空間データに対して近接検索クエリを実行することができます。 指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得するクエリの例を以下に示します。 
 
@@ -239,7 +219,7 @@ Azure Cosmos DB は逆クエリの実行もサポートします。つまり、A
 
 空間オブジェクトが有効であるかどうかは、ST_ISVALID と ST_ISVALIDDETAILED を使用してチェックできます。 たとえば以下のクエリでは、範囲外の緯度値 (-132.8) を指定して、ポイントの有効性をチェックしています。 ST_ISVALID で返されるのはブール値だけであるのに対し、ST_ISVALIDDETAILED では、ブール値に加え、無効と考えられる理由の文字列が返されます。
 
-** クエリ **
+**クエリ**
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 

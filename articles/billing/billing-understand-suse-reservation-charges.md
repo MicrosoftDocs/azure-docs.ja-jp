@@ -1,5 +1,5 @@
 ---
-title: SUSE プランの割引と使用状況を理解する - Azure の予約 | Microsoft Docs
+title: SUSE の予約プラン割引と使用状況を理解する - Azure | Microsoft Docs
 description: SUSE プランの割引が仮想マシン上の SUSE ソフトウェアにどのように適用されるかを学習します。
 services: billing
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 62f75be44ed92528b48fc0f093f5966284662312
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: banders
+ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393691"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917789"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-plan-discount-is-applied"></a>SUSE Linux Enterprise ソフトウェア プランの割引の適用方法を理解する
+# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>SUSE Linux Enterprise ソフトウェアの予約プラン割引が Azure に適用されるしくみについて説明します
 
 SUSE Linux プランを購入すると、割引は、予約に一致するデプロイされた SUSE 仮想マシン (VM) に自動的に適用されます。 SUSE Linux プランでは、Azure VM 上で SUSE ソフトウェアを実行するコストが対象になります。
 
 適切な SUSE Linux プランを購入するためには、実行する SUSE VM と、その VM 上で実行する vCPU の数を理解する必要があります。 以降のセクションは、使用状況 CSV ファイルに基づいて購入するプランを識別するうえで役に立ちます。
 
-## <a name="discount-applies-to-different-vm-sizes-with-instance-size-flexibility"></a>さまざまな VM サイズに適用され、インスタンス サイズの柔軟性を提供する割引
+## <a name="discount-applies-to-different-vm-sizes"></a>異なる VM サイズに対する割引の適用
 
 予約 VM インスタンスと同様に、SUSE プランの購入は、インスタンス サイズの柔軟性を提供します。 つまり、異なる vCPU 数の VM をデプロイする場合でも、割引が適用されます。 割引は、ソフトウェア プラン内の異なる VM サイズに適用されます。
 
@@ -40,7 +40,7 @@ SUSE Linux プランを購入すると、割引は、予約に一致するデプ
 
 5 つ以上の vCPU の場合、比率は 2.6 です。 したがって、5 つ以上の vCPU を使用する VM に対して SUSE を予約した場合、ソフトウェア コストの一部のみ (約 77%) が対象になります。
 
-## <a name="understand-your-suse-vm-usage-before-buying-a-suse-linux-plan"></a>SUSE Linux プランを購入する前に SUSE VM の使用状況を理解する
+## <a name="understand-suse-vm-usage-before-you-buy"></a>購入前における SUSE VM の使用状況の把握
 
 次の表は、予約を購入できるソフトウェア プラン、関連する使用量メーター、およびそれぞれの比率を示しています。
 
@@ -63,7 +63,7 @@ Azure portal マーケットプレース名:
 - SLES 12 SP3 for HPC
 
 |SUSE VM | MeterId | 比率|VM サイズの例|
-| ------- | --- | ------------------------| --- | --- |
+| ------- | --- | ------------------------| --- |
 |SLES for HPC 1-2 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
 |SLES for HPC 3-4 vCPU|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1.92308|D4s_v3|
 |SLES for HPC 5+ vCPU |907a85de-024f-4dd6-969c-347d47a1bdff|2.92308|D8s_v3|
@@ -129,10 +129,10 @@ Azure portal マーケットプレース名:
 - [Azure の予約とは](billing-save-compute-costs-reservations.md)
 - [Azure の予約による SUSE ソフトウェア プランの前払い](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
+- [Azure の予約を管理する](billing-manage-reserved-vm-instance.md)
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

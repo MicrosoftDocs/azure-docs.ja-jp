@@ -1,7 +1,6 @@
 ---
 title: クエリ言語を理解する
-description: Azure Resource Graph のクエリ言語のしくみについて説明します。
-services: resource-graph
+description: Azure Resource Graph で使用可能な Kusto の演算子と関数について説明します。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/11/2018
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 62f61bfea3896fd3828253f5ec16cc38fe3ca007
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316674"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59276679"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 

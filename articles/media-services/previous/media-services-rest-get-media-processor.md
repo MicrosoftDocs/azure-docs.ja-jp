@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 673aac79d3cba94b9579000a333bb03086312994
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: d342cff6d322195ee88a74215f814be7d702aa5e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248978"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294129"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
 > [!div class="op_single_selector"]

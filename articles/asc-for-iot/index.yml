@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Security Center for IoT プレビューのドキュメント
+metadata:
+  title: Azure Security Center for IoT プレビューのドキュメント - チュートリアル、クイック スタート | Microsoft Doc
+  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  services: asc-for-iot
+  author: mlottner
+  manager: barbkess
+  ms.service: ascforiot
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/26/19
+  ms.author: barbkess
+abstract:
+  description: "Azure Security Center (ASC) for IoT プレビューを使用して、既存のサイバーセキュリティ ビューを IoT ソリューション全体に拡張しましょう。 Azure に関連するすべてのリソースのセキュリティを完全に概観できるようになります。 迅速なデプロイ オプションがあり、IoT Hub モジュール ツインとの完全な統合が行われるため、幅広いカスタム オプションを利用し、現在のデバイス管理ツールと容易に統合できます。\_"
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: ASC for IoT に対して IoT Hub を有効にする方法、ASC for IoT エージェントをインストールする方法、データと潜在的な脅威を視覚化する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/deploy.svg
+            text: ASC for IoT を有効にする
+            href: /azure/asc-for-iot/quickstart-onboard-iot-hub
+          - image:
+              src: media/index/get-started.svg
+            text: ASC for IoT を使用して作業を開始する
+            href: /azure/asc-for-iot/getting-started
+  - title: ハウツー ガイド
+    items:
+      - type: paragraph
+        text: セキュリティ ポリシーを定義する方法、悪意のあるアクティビティからデバイスを保護する方法、セキュリティのアラートおよびインシデントに対応する方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">ASC for IoT を使用して脅威を検出する</a>
+  - title: Microsoft Learn でスキルを身に付ける
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure のセキュリティの概要
+            href: 'https://docs.microsoft.com/learn/azure'
+            image:
+              src: media/index/tutorial.svg
+              href: 'https://docs.microsoft.com/learn/azure'
+      - type: paragraph
+        text: <a href="/learn/browse/?term=security">対話型学習の詳細...</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - html: '<a href="https://azure.microsoft.com/updates/?product=iotsecurity">サービスの更新情報</a>'

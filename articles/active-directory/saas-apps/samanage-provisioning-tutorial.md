@@ -6,20 +6,22 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 62d0392f-37d4-436e-9aff-22f4e5b83623
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2018
+ms.date: 03/28/2019
 ms.author: v-wingf-msft
-ms.openlocfilehash: d3442710e1e1327dcafc1b4ed6617aeb7ff1bf0f
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ca43b62e66e3a736aa52fdd10fe36e635daba245
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322432"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59280351"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>チュートリアル:Samanage を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,39 +34,34 @@ ms.locfileid: "53322432"
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure AD テナント
-*   Professional パッケージを含む [Samanage テナント](https://www.samanage.com/pricing/)
-*   Admin アクセス許可がある Samanage のユーザー アカウント
+* Azure AD テナント
+* Professional パッケージを含む [Samanage テナント](https://www.samanage.com/pricing/)
+* Admin アクセス許可がある Samanage のユーザー アカウント
 
 > [!NOTE]
 > Azure AD プロビジョニング統合では、Professional パッケージを含むアカウントについて Samanage 開発者が使用できる [Samanage Rest API](https://www.samanage.com/api/) が必要です。
 
 ## <a name="adding-samanage-from-the-gallery"></a>ギャラリーからの Samanage の追加
+
 Azure AD で自動ユーザー プロビジョニング用に Samanage を構成する前に、Azure AD アプリケーション ギャラリーから Samanage を管理対象の SaaS アプリケーションの一覧に追加する必要があります。
 
 **Azure AD アプリケーション ギャラリーから Samanage を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] セクション][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. Samanage を追加するには、ダイアログの上部にある **[新しいアプリケーション]** を選択します。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに、「**Samanage**」と入力します。
+4. 検索ボックスに「**Samanage**」と入力し、結果パネルで **Samanage** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Samanage のプロビジョニング](./media/samanage-provisioning-tutorial/AppSearch.png)
-
-5. 結果パネルで **[Samanage]** を選択し、**[追加]** をクリックして Samanage を SaaS アプリケーションの一覧に追加します。
-
-    ![Samanage のプロビジョニング](./media/samanage-provisioning-tutorial/AppSearchResults.png)
-
-    ![Samanage のプロビジョニング](./media/samanage-provisioning-tutorial/AppCreation.png)
+    ![結果一覧の Samanage](common/search-new-app.png)
 
 ## <a name="assigning-users-to-samanage"></a>Samanage へのユーザーの割り当て
 
@@ -91,11 +88,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Azure AD で Samanage の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** に移動します。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Samanage]** の順に選択します。
 
-2. SaaS アプリケーションの一覧から Samanage を選択します。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![Samanage のプロビジョニング](./media/samanage-provisioning-tutorial/AppInstanceSearch.png)
+2. アプリケーションの一覧で **[Samanage]** を選択します。
+
+    ![アプリケーションの一覧の Samanage のリンク](common/all-applications.png)
 
 3. **[プロビジョニング]** タブを選択します。
 
@@ -107,9 +106,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションの **[管理ユーザー名]** と **[管理パスワード]** に、Samanage アカウントの情報を入力します。 これらの値の例を次に示します。
 
-    *   **[管理ユーザー名]** フィールドには、Samanage テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
+   * **[管理ユーザー名]** フィールドには、Samanage テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
 
-    *   **[管理パスワード]** フィールドに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
+   * **[管理パスワード]** フィールドに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
 
 6. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Samanage に接続できることを確認します。 接続できない場合は、使用中の Samanage アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

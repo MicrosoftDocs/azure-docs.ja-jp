@@ -13,20 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: cccc42cd925c123b52c0f2416599bb989ce44d8a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713499"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59426191"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントから Azure Monitor 内に Nagios と Zabbix からのアラートを収集する 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 他のソースからのログ データと共に分析するために、これらのツールからのアラートを Azure Monitor 内に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
+[Nagios](https://www.nagios.org/) と [Zabbix](https://www.zabbix.com/) は、オープン ソースの監視ツールです。 他のソースからのログ データと共に分析するために、これらのツールからのアラートを Azure Monitor 内に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
+
 
 > [!NOTE]
-> [Azure Monitor によって作成されたアラート](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)はログ データとは別に格納され、ログ クエリからアクセスすることはできません。
+> [Azure Monitor によって作成されたアラート](alerts-overview.md)はログ データとは別に格納され、ログ クエリからアクセスすることはできません。
 
  
 ## <a name="prerequisites"></a>前提条件
@@ -91,15 +92,15 @@ Nagios によって収集されたアラート レコードには、**アラー�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| type |*アラート:* |
-| SourceSystem |*Nagios* |
-| AlertName |アラートの名前。 |
-| AlertDescription | アラートの説明。 |
-| AlertState | サービスまたはホストの状態。<br><br>OK<br>WARNING<br>UP<br>DOWN |
-| HostName | アラートを作成したホストの名前。 |
-| PriorityNumber | アラートの優先度。 |
-| StateType | アラートの状態の種類。<br><br>SOFT - 再確認されていない問題。<br>HARD - 指定された回数だけ再確認された問題。  |
-| TimeGenerated |アラートが作成された日付と時刻。 |
+| `Type` |*アラート:* |
+| `SourceSystem` |*Nagios* |
+| `AlertName` |アラートの名前。 |
+| `AlertDescription` | アラートの説明。 |
+| `AlertState` | サービスまたはホストの状態。<br><br>OK<br>WARNING<br>UP<br>DOWN |
+| `HostName` | アラートを作成したホストの名前。 |
+| `PriorityNumber` | アラートの優先度。 |
+| `StateType` | アラートの状態の種類。<br><br>SOFT - 再確認されていない問題。<br>HARD - 指定された回数だけ再確認された問題。  |
+| `TimeGenerated` |アラートが作成された日付と時刻。 |
 
 
 ### <a name="zabbix-alert-records"></a>Zabbix のアラート レコード
@@ -107,19 +108,19 @@ Zabbix によって収集されたアラート レコードには、**アラー�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| type |*アラート:* |
-| SourceSystem |*Zabbix* |
-| AlertName | アラートの名前。 |
-| AlertPriority | アラートの重大度。<br><br>未分類<br>情報<br>警告<br>average<br>高<br>障害  |
-| AlertState | アラートの状態。<br><br>0 - 状態は最新です。<br>1 - 状態は不明です。  |
-| AlertTypeNumber | アラートによって複数の問題イベントが生成される場合があるかどうかを指定します。<br><br>0 - 状態は最新です。<br>1 - 状態は不明です。    |
-| 説明 | アラートのその他のコメント。 |
-| HostName | アラートを作成したホストの名前。 |
-| PriorityNumber | アラートの重大度を示す値。<br><br>0 - 未分類<br>1 - 情報<br>2 - 警告<br>3 - 平均<br>4 - 高<br>5 - 障害 |
-| TimeGenerated |アラートが作成された日付と時刻。 |
-| TimeLastModified |アラートの状態が最後に変更された日付と時刻。 |
+| `Type` |*アラート:* |
+| `SourceSystem` |*Zabbix* |
+| `AlertName` | アラートの名前。 |
+| `AlertPriority` | アラートの重大度。<br><br>未分類<br>情報<br>warning<br>average<br>高<br>障害  |
+| `AlertState` | アラートの状態。<br><br>0 - 状態は最新です。<br>1 - 状態は不明です。  |
+| `AlertTypeNumber` | アラートによって複数の問題イベントが生成される場合があるかどうかを指定します。<br><br>0 - 状態は最新です。<br>1 - 状態は不明です。    |
+| `Comments` | アラートのその他のコメント。 |
+| `HostName` | アラートを作成したホストの名前。 |
+| `PriorityNumber` | アラートの重大度を示す値。<br><br>0 - 未分類<br>1 - 情報<br>2 - 警告<br>3 - 平均<br>4 - 高<br>5 - 障害 |
+| `TimeGenerated` |アラートが作成された日付と時刻。 |
+| `TimeLastModified` |アラートの状態が最後に変更された日付と時刻。 |
 
 
 ## <a name="next-steps"></a>次の手順
-* Azure Monitor の[アラート](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)について確認します。
+* Azure Monitor の[アラート](alerts-overview.md)について確認します。
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 

@@ -1,21 +1,20 @@
 ---
 title: サンプル - 診断設定の監査
-description: このサンプル ポリシーでは、指定されたリソースの種類で診断設定が有効になっていない場合に監査を行います。
-services: azure-policy
+description: このサンプル ポリシー定義は、指定されたリソースの種類で診断設定が有効になっていない場合に監査を行います。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 283db04ba0edc988e9156d6b6681c9d8024127ce
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 66c9c1c21cad7fb4058a91be826a50059691877c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318828"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797773"
 ---
-# <a name="audit-diagnostic-setting"></a>診断設定の監査
+# <a name="sample---audit-diagnostic-setting"></a>サンプル - 診断設定の監査
 
 このビルトイン ポリシーでは、指定されたリソースの種類で診断設定が有効になっていない場合に監査を行います。 リソースの種類の配列を指定して、診断設定が有効になっているかどうかを確認します。
 
@@ -41,12 +40,12 @@ ms.locfileid: "53318828"
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
-$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/7f89b1eb-583c-429a-8828-af049802c1d9
+$definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/7f89b1eb-583c-429a-8828-af049802c1d9
 
-New-AzureRmPolicyAssignment -name "Audit diagnostics" -PolicyDefinition $definition -PolicyParameter '{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}' -Scope <scope>
+New-AzPolicyAssignment -name "Audit diagnostics" -PolicyDefinition $definition -PolicyParameter '{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}' -Scope <scope>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>PowerShell でのデプロイをクリーンアップする
@@ -54,7 +53,7 @@ New-AzureRmPolicyAssignment -name "Audit diagnostics" -PolicyDefinition $definit
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name "Audit diagnostics" -Scope <scope>
+Remove-AzPolicyAssignment -Name "Audit diagnostics" -Scope <scope>
 ```
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ

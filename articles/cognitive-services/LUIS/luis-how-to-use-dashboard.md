@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: ご自身のアプリをひと目で監視できる視覚的なレポート作成ツール、アプリケーション ダッシュボードについて説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 6f6de278e802b83623413b0bf70e556d083818c8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140610"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338435"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>ダッシュボードにおけるモデルと使用状況の統計
 アプリ ダッシュボードを使用すると、ご自身のアプリをひと目で監視することができます。 **ダッシュボード**は、**[マイ アプリ]** でアプリケーション名をクリックし、上部パネルから **[ダッシュボード]** を選択してアプリを開いたときに表示されます。 
@@ -69,21 +69,8 @@ ms.locfileid: "53140610"
 
 ![意図の内訳](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-内訳の基準をラベル付き発話にするかエンドポイント ヒットにするかを制御するには:
-
-1. **[追加設定]** ![一覧にアクセスするための [追加設定] ボタン](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) をクリックして、次の図のような一覧にアクセスします。
-
-    ![意図の内訳の一覧](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. 一覧から値を選択し、戻る矢印  ![戻る矢印 ](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) をクリックして、グラフを表示します。
-
 ## <a name="entity-breakdown"></a>エンティティの内訳
 ダッシュボードには、ラベル付き発話またはエンドポイント ヒットに基づいてエンティティの内訳が表示されます。 この概要グラフは、アプリ内の各エンティティの重要度を相対的に示しています。 スライスにマウス ポインターを置くと、エンティティの名前と、ラベル付き発話/エンドポイント ヒットのエンティティの内訳がパーセンテージで表示されます。 
 
 ![エンティティの内訳](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-内訳の基準をラベル付き発話にするかエンドポイント ヒットにするかを制御するには:
-
-1. **[追加設定]** ![一覧を取得するための [追加設定] ボタン](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) をクリックして、次の図のような一覧にアクセスします。
-
-    ![エンティティの内訳の一覧](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. 一覧から値を選択し、戻る矢印  ![戻る矢印 ](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) をクリックすると、適宜グラフが表示されます。

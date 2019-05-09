@@ -8,18 +8,18 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 374a27b10b3928838b10e4fba24e1f36721c162a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433681"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729525"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>デバイスの接続性とテレメトリの受信
 
 デバイスとセンサーによって送信されるテレメトリ データが、IoT ソリューションのバックボーンを形成します。 これらのさまざまなリソースを表し、場所のコンテキスト内でそれらを管理する方法は、IoT アプリの開発における主な考慮事項です。 Azure Digital Twins は、デバイスやセンサーと空間インテリジェンス グラフを統合することにより、IoT ソリューションの開発のプロセスを簡単にします。
 
-まず、空間グラフのルートに Azure IoT Hub のリソースを作成します。 IoT Hub のリソースにより、メッセージを送信するルート空間の下ですべてのデバイスが許可されます。 IoT ハブが作成されたら、Digital Twins のインスタンス内のセンサーにデバイスを登録します。 デバイスは、[Azure IoT device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 経由で Digital Twins サービスにデータを送信することができます。
+まず、空間グラフのルートに Azure IoT Hub のリソースを作成します。 IoT Hub のリソースにより、メッセージを送信するルート空間の下ですべてのデバイスが許可されます。 IoT ハブが作成されたら、Digital Twins のインスタンス内のセンサーにデバイスを登録します。 デバイスは、[Azure IoT device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 経由で Digital Twins サービスにデータを送信することができます。
 
 デバイスをオンボードする方法の詳しい手順については、[Digital Twins のデプロイと構成に関するチュートリアル](tutorial-facilities-setup.md)の記事をご覧ください。 手順の概要は次のとおりです。
 
@@ -69,8 +69,8 @@ YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
 | プロパティ名 | 値 | 必須 | 説明 |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | [はい] | システムに対してメッセージを示す定数値。 |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | [はい] | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、「 `00FF0643BE88-CO2` 」のように入力します。 |
+| **DigitalTwins-Telemetry** | 1.0 | はい | システムに対してメッセージを示す定数値。 |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | はい | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、「 `00FF0643BE88-CO2` 」のように入力します。 |
 | **CreationTimeUtc** | `string` | いいえ  | ペイロードのサンプリング日時を示す [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の日付文字列。 たとえば、「 `2018-09-20T07:35:00.8587882-07:00` 」のように入力します。 |
 | **CorrelationId** | `string` | いいえ  | システム全体でイベントをトレースするために使用される UUID。 たとえば、「 `cec16751-ab27-405d-8fe6-c68e1412ce1f` 」のように入力します。
 
@@ -80,4 +80,4 @@ DeviceClient の [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsof
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Digital Twins のデータ処理およびユーザー定義関数の機能については、[Azure Digital Twins でのデータ処理とユーザー定義関数](concepts-user-defined-functions.md)に関するページをご覧ください。
+- Azure Digital Twins のデータ処理およびユーザー定義関数の機能については、[Azure Digital Twins でのデータ処理とユーザー定義関数](concepts-user-defined-functions.md)に関するページをご覧ください。

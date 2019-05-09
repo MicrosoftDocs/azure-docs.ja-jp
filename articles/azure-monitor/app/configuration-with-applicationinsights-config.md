@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: be572e068b0dd08f3af60701c4f5aa39646ac1fc
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1a5b6d435dcc82b59c30302f9cd711975864594c
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000395"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522249"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかのモジュールのパラメーターを設定したりできます。
@@ -30,7 +30,7 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 このドキュメントでは、構成ファイルの各セクション、SDK のコンポーネントの制御方法、それらのコンポーネントを読み込む NuGet パッケージについて説明します。
 
 > [!NOTE]
-> ApplicationInsights.config および .xml の手順は、.NET Core SDK には適用されません。 .NET Core アプリケーションへの変更には、通常 appsettings.json ファイルを使用します。 この例については、[スナップショット デバッガーのドキュメント](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)を参照してください。
+> ApplicationInsights.config および .xml の手順は、.NET Core SDK には適用されません。 .NET Core アプリケーションへの変更には、通常 appsettings.json ファイルを使用します。 この例については、[スナップショット デバッガーのドキュメント](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)を参照してください。
 
 ## <a name="telemetry-modules-aspnet"></a>テレメトリ モジュール (ASP.NET)
 各テレメトリ モジュールは特定の種類のデータを回収し、コア API を利用してデータを送信します。 モジュールはさまざまな NuGet パッケージによりインストールされます。NuGet パッケージはまた、必要な行を .config ファイルに追加します。
@@ -154,7 +154,7 @@ Service Fabric で実行されている .NET アプリケーションの場合�
 
 パラメーターは、アルゴリズムが実現しようとするターゲットを指定します。 SDK の各インスタンスは独立して機能するため、サーバーが複数のコンピューターのクラスターである場合、テレメトリの実際の量もそれに応じて増加します。
 
-[サンプリングの詳細についてはこちらを参照してください](../../application-insights/app-insights-sampling.md)。
+[サンプリングの詳細についてはこちらを参照してください](../../azure-monitor/app/sampling.md)。
 
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>固定レート サンプリング テレメトリ プロセッサー (2.0.0-beta1 以降)
 標準的な [サンプリング テレメトリ プロセッサ](../../azure-monitor/app/api-filtering-sampling.md) も用意されています (2.0.1 以降)。
@@ -233,7 +233,7 @@ SDK のメモリー内ストレージに格納できるテレメトリ項目の�
 
 #### <a name="local-forwarder"></a>ローカル フォワーダー
 
-[ローカル フォワーダー](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder)とは、さまざまな SDK やフレームワークから Application Insights または [OpenCensus](https://opencensus.io/) のテレメトリを収集して、それを Application Insights にルーティングするエージェントです。 これは、Windows と Linux で実行できます。 Application Insights Java SDK と組み合わせた場合、ローカル フォワーダーで、[Live Metrics](../../azure-monitor/app/live-stream.md) とアダプティブ サンプリングが完全にサポートされます。
+[ローカル フォワーダー](opencensus-local-forwarder.md)とは、さまざまな SDK やフレームワークから Application Insights または [OpenCensus](https://opencensus.io/) のテレメトリを収集して、それを Application Insights にルーティングするエージェントです。 これは、Windows と Linux で実行できます。 Application Insights Java SDK と組み合わせた場合、ローカル フォワーダーで、[Live Metrics](../../azure-monitor/app/live-stream.md) とアダプティブ サンプリングが完全にサポートされます。
 
 ```xml
 <Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
@@ -382,6 +382,6 @@ API の詳細については、[こちら][api]をご覧ください。
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: ../../azure-monitor/app/asp-net-exceptions.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
-[new]: ../../application-insights/app-insights-create-new-resource.md
+[new]: ../../azure-monitor/app/create-new-resource.md 
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md

@@ -1,19 +1,20 @@
 ---
 title: Java を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs
 description: Java 用 Azure IoT device SDK を使用してデバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.author: dobett
-ms.openlocfilehash: 86967f2e4c495cc0a2689dd4312b262fdb5943d9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3658b57d003ddc5429c6857f88044376fe1aaa93
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230650"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548985"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
@@ -144,7 +145,7 @@ ms.locfileid: "51230650"
     ```
 
     > [!NOTE]
-    > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
 
 4. `pom.xml` ファイルを保存して閉じます。
 
@@ -176,7 +177,7 @@ ms.locfileid: "51230650"
       public void run() {
         try {
           while (true) {
-            System.out.println("Recieve file upload notifications...");
+            System.out.println("Receive file upload notifications...");
             FileUploadNotification fileUploadNotification = fileUploadNotificationReceiver.receive();
             if (fileUploadNotification != null) {
               System.out.println("File Upload notification received");

@@ -12,26 +12,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/11/2018
+ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 1c70441ea5b35a55ba39f934e74a6512d783fcf0
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 7b9976d7f9d0644c11a5decf607e95ac05508e06
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615390"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100055"
 ---
-# <a name="cli-example-reset-the-account-credentials"></a>CLI の例: アカウント資格情報のリセット
+# <a name="cli-example-reset-the-account-credentials"></a>CLI の例:アカウント資格情報のリセット
 
 この記事の Azure CLI スクリプトは、アカウントの資格情報をリセットし、app.config 設定を取得する方法を示しています。
 
 ## <a name="prerequisites"></a>前提条件 
 
-- CLI をローカルにインストールして使用します。この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+[Media Services アカウントを作成する](../create-account-cli-how-to.md)
 
-    現在、一部の [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
-
-- [Media Services アカウントを作成する](../create-account-cli-how-to.md)
+[!INCLUDE [media-services-cli-instructions.md](../../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>サンプル スクリプト
 

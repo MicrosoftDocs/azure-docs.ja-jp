@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002068"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311219"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
 
@@ -31,7 +31,7 @@ ms.locfileid: "53002068"
 
 [カナリア リリース](https://martinfowler.com/bliki/CanaryRelease.html)は、Netflix、Facebook、Spotify などの革新的な組織で採用されている、スマート デプロイ戦略の 1 つです。 このアプローチでは、問題を減らし、セーフティ ネットを導入し、イノベーションを拡大できます。 こんなに便利な方法を、一部の企業しか使用していないのはなぜでしょうか。 カナリア戦略を含めるように CI/CD パイプラインを拡張することは複雑な作業で、開発運用に関する豊富な知識や経験を必要とします。 小規模な会社や企業が、このアプローチへの着手に尻込みするのも無理はありません。 
 
-[Vamp](http://vamp.io/) は、この切り替えを簡単にし、お好みのコンテナー スケジューラでカナリア リリース機能を実行することを目的としたオープンソース システムです。 Vamp のカナリア機能は、パーセンテージを基にした展開をしのぐ機能です。 たとえば、特定のユーザー、IP 範囲、デバイスを対象とする、広範な条件に基づいてトラフィックをフィルター処理したり、分割したりすることができます。 Vamp はパフォーマンス メトリックを追跡して分析し、現実世界のデータに基づいた自動化を実現します。 エラーに対して自動ロールバックを設定したり、負荷または待機時間に基づいて個々のサービス バリアントをスケールしたりできます。
+[Vamp](https://vamp.io/) は、この切り替えを簡単にし、お好みのコンテナー スケジューラでカナリア リリース機能を実行することを目的としたオープンソース システムです。 Vamp のカナリア機能は、パーセンテージを基にした展開をしのぐ機能です。 たとえば、特定のユーザー、IP 範囲、デバイスを対象とする、広範な条件に基づいてトラフィックをフィルター処理したり、分割したりすることができます。 Vamp はパフォーマンス メトリックを追跡して分析し、現実世界のデータに基づいた自動化を実現します。 エラーに対して自動ロールバックを設定したり、負荷または待機時間に基づいて個々のサービス バリアントをスケールしたりできます。
 
 ## <a name="set-up-azure-container-service-with-dcos"></a>Azure Container Service と DC/OS の設定
 
@@ -44,7 +44,7 @@ ms.locfileid: "53002068"
 
 ## <a name="set-up-vamp"></a>Vamp の設定
 
-DC/OS クラスターが実行されたので、DC/OS UI (http://localhost:80)) から Vamp をインストールできます。 
+DC/OS クラスターが実行されたので、DC/OS UI (http:\//localhost:80) から Vamp をインストールできます。 
 
 ![DC/OS UI](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
@@ -62,12 +62,12 @@ Vamp では、メトリックの収集と集計に Elasticsearch が必要です
 
 2. **[Deploy New Service]\(新しいサービスのデプロイ\)** ポップアップから **[JSON モード]** を選択します。
 
-  ![JSON モードの選択](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
+   ![JSON モードの選択](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
 3. 次の JSON を貼り付けます。 この構成は、RAM が 1 GB のコンテナーを実行し、Elasticsearch ポートで基本的な正常性チェックを実行します。
   
-  ```JSON
-  {
+   ```JSON
+   {
     "id": "elasticsearch",
     "instances": 1,
     "cpus": 0.2,
@@ -89,47 +89,47 @@ Vamp では、メトリックの収集と集計に Elasticsearch が必要です
         "maxConsecutiveFailures": 0
       }
     ]
-  }
-  ```
+   }
+   ```
   
 
 3. **[デプロイ]** をクリックします。
 
-  DC/OS により、Elasticsearch コンテナーがデプロイされます。 進捗状況は **[サービス]** ページで追跡できます。  
+   DC/OS により、Elasticsearch コンテナーがデプロイされます。 進捗状況は **[サービス]** ページで追跡できます。  
 
-  ![e?Elasticsearch のデプロイ](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
+   ![e?Elasticsearch のデプロイ](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
 ### <a name="deploy-vamp"></a>Vamp のデプロイ
 
 Elasticsearch が**実行中**として報告されたら、Vamp DC/OS ユニバース パッケージを追加できます。 
 
 1. **[ユニバース]** に移動し、**[vamp]** を検索します。 
-  ![DC/OS ユニバースでの Vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
+   ![DC/OS ユニバースでの Vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
 2. vamp パッケージの横の **[インストール]** をクリックし、**[Advanced Installation]\(高度なインストール\)** を選択します。
 
 3. 下へスクロールし、次の elasticsearch-url を入力します: `http://elasticsearch.marathon.mesos:9200`。 
 
-  ![Elasticsearch URL の入力](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
+   ![Elasticsearch URL の入力](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
 4. **[確認後にインストールする]** をクリックし、**[インストール]** をクリックしてデプロイを開始します。  
 
-  DC/OS により、必要なすべての Vamp コンポーネントがデプロイされます。 進捗状況は **[サービス]** ページで追跡できます。
+   DC/OS により、必要なすべての Vamp コンポーネントがデプロイされます。 進捗状況は **[サービス]** ページで追跡できます。
   
-  ![Vamp のユニバース パッケージとしてのデプロイ](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
+   ![Vamp のユニバース パッケージとしてのデプロイ](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
 5. デプロイが完了したら、Vamp UI にアクセスできるようになります。
 
-  ![DC/OS での Vamp サービス](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
+   ![DC/OS での Vamp サービス](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
   
-  ![Vamp UI](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
+   ![Vamp UI](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
 
 
 ## <a name="deploy-your-first-service"></a>最初のサービスのデプロイ
 
 Vamp が稼働状態になったので、ブループリントからサービスをデプロイします。 
 
-最も単純な形式では、[Vamp ブループリント](http://vamp.io/documentation/using-vamp/blueprints/)は、デプロイするエンドポイント (ゲートウェイ)、クラスター、およびサービスを説明します。 Vamp はクラスターを使用して、カナリア リリースまたは A/B テスト用に同じサービスのさまざまなバリアントを論理グループにグループ化します。  
+最も単純な形式では、[Vamp ブループリント](https://vamp.io/documentation/using-vamp/blueprints/)は、デプロイするエンドポイント (ゲートウェイ)、クラスター、およびサービスを説明します。 Vamp はクラスターを使用して、カナリア リリースまたは A/B テスト用に同じサービスのさまざまなバリアントを論理グループにグループ化します。  
 
 このシナリオでは、[**sava**](https://github.com/magneticio/sava) と呼ばれるサンプルのモノリシック アプリケーション (バージョン 1.0) を使用します。 モノリシックは、Docker コンテナーにパッケージ化されます。このコンテナーは magneticio/sava:1.0.0 の下のDocker Hub にあります。 通常、アプリケーションはポート 8080 で実行されますが、ここではポート 9050 に公開します。 シンプルなブループリントを使用して、Vamp を使ってアプリをデプロイします。
 
@@ -139,11 +139,11 @@ Vamp が稼働状態になったので、ブループリントからサービス
 
 3. 次のブループリント YAML を貼り付けます。 このブループリントには、サービス バリアントが 1 つのみの 1 つのクラスターが含まれます。これは、後の手順で変更します。
 
-  ```YAML
-  name: sava                        # deployment name
-  gateways:
+   ```YAML
+   name: sava                        # deployment name
+   gateways:
     9050: sava_cluster/webport      # stable endpoint
-  clusters:
+   clusters:
     sava_cluster:               # cluster to create
      services:
         -
@@ -152,7 +152,7 @@ Vamp が稼働状態になったので、ブループリントからサービス
             deployable: magneticio/sava:1.0.0
             ports:
               webport: 8080/http # cluster endpoint, used for canary releasing
-  ```
+   ```
 
 4. **[Save]** をクリックします。 Vamp により、デプロイが初期化されます。
 
@@ -202,9 +202,9 @@ Azure ポータルを使用してこれらのタスクを完了する詳細な�
 
 2. **[追加]** をクリックし、次のブループリント YAML を貼り付けます。このブループリントは、既存のクラスター (sava_cluster) 内にデプロイする新しいサービス バリアント (sava:1.1.0) を説明します。
 
-  ```YAML
-  name: sava:1.1.0      # blueprint name
-  clusters:
+   ```YAML
+   name: sava:1.1.0      # blueprint name
+   clusters:
     sava_cluster:       # cluster to update
       services:
         -
@@ -213,17 +213,17 @@ Azure ポータルを使用してこれらのタスクを完了する詳細な�
             deployable: magneticio/sava:1.1.0    
             ports:
               webport: 8080/http # cluster endpoint to update
-  ```
+   ```
   
 3. **[Save]** をクリックします。 ブループリントが格納され、**[ブループリント]** ページに一覧表示されます。
 
 4. sava:1.1 ブループリントでアクション メニューを開き、**[Merge to]\(マージ先\)** をクリックします。
 
-  ![Vamp UI - ブループリント](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
+   ![Vamp UI - ブループリント](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
 5. **[sava]** デプロイを選択し、**[Merge]\(マージ)\** をクリックします。
 
-  ![Vamp UI - ブループリントをデプロイにマージ](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
+   ![Vamp UI - ブループリントをデプロイにマージ](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
 Vamp により、ブループリントに説明された新しい sava:1.1.0 サービス バリアントが、実行中のデプロイの **sava_cluster** 内のsava:1.0.0 と共にデプロイされます。 
 
@@ -241,11 +241,11 @@ Vamp により、ブループリントに説明された新しい sava:1.1.0 サ
 
 2. 重みの配分を 50%/50% に設定し、**[保存]** をクリックします。
 
-  ![Vamp UI - ゲートウェイの重みスライダー](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
+   ![Vamp UI - ゲートウェイの重みスライダー](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
 3. ブラウザーに戻り、数回 sava ページを更新します。 sava アプリケーションが、sava:1.0 ページと sava:1.1 ページで切り替わるようになります。
 
-  ![sava1.0 サービスと sava1.1 サービスの切り替え](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
+   ![sava1.0 サービスと sava1.1 サービスの切り替え](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
 
 
   > [!NOTE]
@@ -264,23 +264,23 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 
 2. 条件 **user-agent == Firefox** を入力し、![[Vamp UI - save]\(Vamp UI - 保存\)](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) をクリックします。
 
-  Vamp により、既定の強度 0% で条件が追加されます。 トラフィックのフィルター処理を開始するには、条件の強度を調整する必要があります。
+   Vamp により、既定の強度 0% で条件が追加されます。 トラフィックのフィルター処理を開始するには、条件の強度を調整する必要があります。
 
 3. ![[Vamp UI - edit]\(Vamp UI - 編集\)](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) をクリックし、条件に適用されている**強度**を変更します。
  
 4. **強度**を 100% に設定し、![[Vamp UI - save]\(Vamp UI - save\)](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) をクリックして保存します。
 
-  ここで、Vamp は条件に一致するすべてのトラフィックを (すべての Firefox ユーザー) sava:1.0.0 に送信します。
+   ここで、Vamp は条件に一致するすべてのトラフィックを (すべての Firefox ユーザー) sava:1.0.0 に送信します。
 
-  ![Vamp UI - ゲートウェイへの条件の適用](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
+   ![Vamp UI - ゲートウェイへの条件の適用](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
 5. 最後に、ゲートウェイの重みを調整して、残りのすべてのトラフィック (すべての非 Firefox ユーザー) を新しい sava:1.1.0 に送信します。 **[重み]** の横の ![[Vamp UI - edit]\(Vamp UI - 編集\)](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) をクリックして、100% がルート sava/sava_cluster/sava:1.1.0/webport に送信されるように重みの配分を設定します。
 
-  これで、条件によってフィルターされないすべてのトラフィックが、新しい sava:1.1.0 に送信されます。
+   これで、条件によってフィルターされないすべてのトラフィックが、新しい sava:1.1.0 に送信されます。
 
 6. 動作中のフィルターを表示するには、2 つの個々のブラウザー (Firefox とその他のブラウザー) を開き、両方から sava サービスにアクセスします。 すべての Firefox 要求が sava:1.0.0 に送信され、他のすべてのブラウザーが sava:1.1.0 に送信されます。
 
-  ![Vamp UI - トラフィックのフィルター処理](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
+   ![Vamp UI - トラフィックのフィルター処理](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
 
 ## <a name="summing-up"></a>要約
 
@@ -291,9 +291,9 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 
 ## <a name="next-steps"></a>次の手順
 
-* Vamp アクションの管理について詳しくは、「[Vamp REST API](http://vamp.io/documentation/api/api-reference/)」を参照してください。
+* Vamp アクションの管理について詳しくは、「[Vamp REST API](https://vamp.io/documentation/api/api-reference/)」を参照してください。
 
 * Node.js で Vamp 自動スクリプトを構築し、[Vamp ワークフロー](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)として実行します。
 
-* その他の [VAMP チュートリアル](http://vamp.io/documentation/tutorials/)もご覧ください。
+* その他の [VAMP チュートリアル](https://vamp.io/documentation/tutorials/)もご覧ください。
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9f96b4cbe95d918a94ea0d02f9b8fdd8f663eeec
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f6a678e03818f1e1f2182b3b0dfab221d415dc72
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001466"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698248"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
 
@@ -53,7 +53,7 @@ Azure Portal を開きます。 これを行うには、Azure アカウントで
 
 1. **[Save]** をクリックします。
 
-HTTP 関数をカスタマイズする方法の詳細については、「[Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint)」をご覧ください。
+HTTP 関数をカスタマイズする方法の詳細については、「[Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)」をご覧ください。
 
 ### <a name="test-your-api"></a>API のテスト
 
@@ -176,7 +176,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 }
 ```
 
-backendUri プロパティを変更することなく、"GetUserByName" という新しいプロキシを追加しています。 別のリソースを呼び出す代わりに、応答のオーバーライドによって Proxies からの既定の応答を変更します。 要求と応答のオーバーライドは、バックエンド URL と併用することもできます。 これは、レガシ システムにプロキシする際に特に役立ちます。その際は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合があります。要求と応答のオーバーライドの詳細については、[Proxies での要求と応答の変更](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses)に関する記事をご覧ください。
+backendUri プロパティを変更することなく、"GetUserByName" という新しいプロキシを追加しています。 別のリソースを呼び出す代わりに、応答のオーバーライドによって Proxies からの既定の応答を変更します。 要求と応答のオーバーライドは、バックエンド URL と併用することもできます。 これは、レガシ システムにプロキシする際に特に役立ちます。その際は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合があります。要求と応答のオーバーライドの詳細については、[Proxies での要求と応答の変更](https://docs.microsoft.com/azure/azure-functions/functions-proxies)に関する記事をご覧ください。
 
 ブラウザーまたはお使いの REST クライアントを使用して `<YourProxyApp>.azurewebsites.net/api/users/{username}` エンドポイントを呼び出し、モック API をテストします。 _{username}_ をユーザー名を表す文字列値に必ず置き換えてください。
 

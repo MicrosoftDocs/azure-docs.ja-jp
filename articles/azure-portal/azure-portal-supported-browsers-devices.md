@@ -12,23 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2018
-ms.author: cwatson
+ms.date: 03/27/2019
+ms.author: kfollis
 ms.custom: accessibility
-ms.openlocfilehash: c1816c59cc3dd4fff4a97a8d0c90cfee3a471d6e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 1595d744fbfda47a9db9ff27de09cd53c6f73ece
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47390053"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576396"
 ---
-# <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Azure Portal でサポートされるブラウザーとデバイス
-[Azure Portal](https://portal.azure.com) は、最新の主要なデスクトップ デバイス、タブレット デバイス、ブラウザーで実行できます。
+# <a name="supported-devices"></a>サポートされているデバイス
 
-### <a name="supported-devices"></a>サポートされているデバイス
-Azure Portal は、最新の PC、Mac、タブレットで快適に動作します。 モバイル デバイスから Azure リソースを管理する必要がある場合は、iPhone と Android で使用できる Azure mobile app をお試しください。 詳しくは、[Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) のページをご覧ください。
+[Azure portal](https://portal.azure.com) は Web ベースのコンソールで、最新のすべてのデスクトップおよびタブレット デバイスのブラウザーで動作します。 モバイル デバイスから Azure リソースを管理する必要がある場合は、[Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) をお試しください。 iOS と Android でご利用可能です。
 
-### <a name="supported-browsers"></a>サポートされているブラウザー
+## <a name="recommended-browsers"></a>推奨されるブラウザー
+
 オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
 
 * Microsoft Edge (最新バージョン)
@@ -36,4 +35,3 @@ Azure Portal は、最新の PC、Mac、タブレットで快適に動作しま�
 * Safari (最新バージョン、Mac のみ)
 * Chrome (最新バージョン)
 * Firefox (最新バージョン)
-

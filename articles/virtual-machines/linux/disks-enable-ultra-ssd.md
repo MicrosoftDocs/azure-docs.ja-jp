@@ -1,6 +1,6 @@
 ---
-title: Linux VM 向けの Ultra SSD マネージド ディスク | Microsoft Docs
-description: Azure VM 向けの Ultra SSD Managed Disks について説明します
+title: Linux VM 向けの Ultra Disks - Azure マネージド ディスク | Microsoft Docs
+description: Azure VM 向けの Ultra マネージド ディスクについて説明します
 services: virtual-machines-linux
 author: roygara
 ms.service: virtual-machines-linux
@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: seodec18
-ms.openlocfilehash: 9272e47a85cc5cd04b9fa9645cf6bd4da9b5ed97
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.subservice: disks
+ms.openlocfilehash: c0642b9985b987b479da1d426a504e652cdee0b9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192846"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329389"
 ---
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

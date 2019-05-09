@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f1e2b9dfc329e67d94fba998a01d593b992ba90f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434010"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886810"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
 
@@ -105,7 +105,7 @@ HDInsight では、Hive metastore と Oozie metastore に Azure SQL Database を
 - ある HDInsight クラスター バージョン用に作成された metastore を別のバージョンのクラスターと共有しないでください。 異なるバージョンの Hive は異なるスキーマを使用します。 たとえば、1 つの metastore を Hive 1.2 クラスターと Hive 2.1 クラスターの両方で共有することはできません。
 - カスタム metastore を定期的にバックアップします。
 - metastore と HDInsight クラスターを同じリージョンで保持します。
-- Azure portal や Azure Log Analytics などの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
+- Azure portal や Azure Monitor ログなどの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
 - 必要に応じて **ANALYZE TABLE** コマンドを実行して、表と列の統計を生成します。 たとえば、「 `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 」のように入力します。
 
 ## <a name="best-practices-for-different-workloads"></a>さまざまなワークロードのベスト プラクティス

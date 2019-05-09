@@ -1,101 +1,80 @@
 ---
-title: 作成時に Azure VM のバックアップを有効にする
-description: 作成プロセスの間に Azure 仮想マシンのバックアップを有効にする手順を説明します。
-services: backup, virtual-machines
+title: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする
+description: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする方法について説明します。
 author: rayne-wiselman
 manager: carmonm
-tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup, virtual-machines
+ms.service: backup
 ms.topic: conceptual
-ms.date: 01/08/2018
-ms.author: trinadhk
-ms.openlocfilehash: 518d171c96b9c4f9bf3e195a7130f4c022b7ad07
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 03/22/2019
+ms.author: raynew
+ms.openlocfilehash: d96b898c8f72abd7e4eb3522ae046e9fc926f387
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879878"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403580"
 ---
-# <a name="enable-backup-during-azure-virtual-machine-creation"></a>Azure 仮想マシンの作成時にバックアップを有効にする 
+# <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM の作成時にバックアップを有効にする
 
-Azure Backup サービスでは、クラウドへのバックアップを作成して構成するインターフェイスが提供されています。 定期的にバックアップ (復旧ポイントと呼ばれます) を取得することで、データを保護します。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure Portal で仮想マシン (VM) を作成するときにバックアップを有効にする方法について説明します。  
+Azure Virtual Machines (VM) をバックアップするには、Azure Backup サービスを使用します。 バックアップ ポリシーで指定されているスケジュールに従って VM がバックアップされ、バックアップから復旧ポイントが作成されます。 復旧ポイントは、Recovery Services コンテナーに格納されます。
 
-## <a name="log-in-to-azure"></a>Azure にログインする 
+この記事では、Azure portal で仮想マシン (VM) を作成するときにバックアップを有効にする方法について説明します。  
 
-まだアカウントにサインインしていない場合は、[Azure Portal](http://portal.azure.com) にサインインします。
+## <a name="before-you-start"></a>開始する前に
+
+- VM の作成時にバックアップを有効にする場合は、どのオペレーティング システムがサポートされているかを[確認](backup-support-matrix-iaas.md#supported-backup-actions)してください。
+
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+まだアカウントにサインインしていない場合は、[Azure portal](https://portal.azure.com) にサインインします。
  
-## <a name="create-virtual-machine-with-backup-configured"></a>バックアップを構成して仮想マシンを作成する 
+## <a name="create-a-vm-with-backup-configured"></a>バックアップが構成された VM を作成する
 
-1. Azure Portal の左上隅にある **[新規]** をクリックします。 
+1. Azure portal で、**[リソースの作成]** をクリックします。
 
-2. **[コンピューティング]** を選び、仮想マシンのイメージを選びます。   
+2. Azure Marketplace で **[Compute]\(コンピューティング\)** をクリックし、VM イメージを選択します。
 
-3. 仮想マシンの情報を入力します。 ここで指定したユーザー名とパスワードが、仮想マシンへのサインインに使われます。 完了したら、**[OK]** をクリックします。 
+3. [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) の指示に従って、VM を設定します。
 
-4. VM のサイズを選択します。  
+4. **[管理]** タブの **[バックアップの有効化]** で **[オン]** をクリックします。
+5. Azure Backup により、Recovery Services コンテナーにバックアップされます。 既存のコンテナーがない場合は、**[新規作成]** をクリックします。
+6. 提示されたコンテナー名を採用するか、独自に指定します。
+7. コンテナーが配置されるリソース グループを指定するか、作成します。 リソース グループのコンテナーは、VM のリソース グループとは異なる場合があります。
 
-5. **[設定] > [バックアップ]** で、**[有効]** をクリックして、バックアップの構成設定を表示します。 設定ページでは既定値のままにして **[OK]** をクリックし、VM を作成する [概要] ページに進むことができます。 値を変更する場合は、次の手順に従います。  
+    ![VM のバックアップを有効にする](./media/backup-during-vm-creation/enable-backup.png) 
 
-6. 仮想マシンのバックアップを保持する Recovery Services コンテナーを作成するか選びます。 Recovery Services コンテナーを作成する場合は、コンテナーのリソース グループを選ぶことができます。  
+8. 既定のバックアップ ポリシーを採用するか、設定を変更します。
+    - バックアップ ポリシーでは、VM のバックアップ スナップショットを取得する頻度と、バックアップ コピーを保持する期間が指定されます。 
+    - 既定のポリシーでは、1 日に 1 回、VM がバックアップされます。
+    - バックアップが毎日または毎週取得されるように、Azure VM の独自のバックアップ ポリシーをカスタマイズできます。
+    - Azure VM のバックアップの考慮事項について詳しくは、[こちら](backup-azure-vms-introduction.md#backup-and-restore-considerations)を参照してください。
+    - インスタント リストア機能について詳しくは、[こちら](backup-instant-restore-capability.md)を参照してください。
 
-    ![VM 作成でのバックアップ構成ページ](./media/backup-during-vm-creation/create-vm-backup-config.png) 
+      ![既定のバックアップ ポリシー](./media/backup-during-vm-creation/daily-policy.png) 
 
-    > [!NOTE] 
-    > Recovery Services コンテナーのリソース グループは、仮想マシンのリソース グループと異なっていてもかまいません。  
-    > 
-    > 
 
-7. 既定では、VM をすぐに保護できるよう、バックアップ ポリシーが自動的に選択されます。 バックアップ ポリシーでは、バックアップ スナップショットを取得する頻度と、バックアップ コピーを保持する期間が指定されます。 既定のポリシーを受け入れることも、別のバックアップ ポリシーを作成または選択することもできます。 バックアップ ポリシーを編集するには、**[バックアップ ポリシー]** を選んで、ポリシーの値を変更します。  
+## <a name="start-a-backup-after-creating-the-vm"></a>VM の作成後にバックアップを開始する 
 
-8. バックアップの構成値に問題がなければ、[設定] ページで **[OK]** をクリックします。  
+VM のバックアップは、バックアップ スケジュールに従って実行されます。 ただし、初回バックアップを実行することをお勧めします。 
 
-9. [概要] ページで検証に合格したら、**[作成]** をクリックして、構成済みのバックアップ設定を使う仮想マシンを作成します。 
+VM が作成されたら、次の操作を行います。
 
-## <a name="initiate-a-backup-after-creating-the-vm"></a>VM の作成後にバックアップを開始する 
+1. VM のプロパティで、**[バックアップ]** をクリックします。 初回バックアップが実行されるまで、VM の状態は [初回のバックアップが保留中] です
+2. オンデマンド バックアップを実行するには、**[今すぐバックアップ]** をクリックします。
 
-バックアップ ポリシーが作成されていたとしても、初期バックアップを作成するのがよい方法です。 VM 作成テンプレートが完了した後で仮想マシンのバックアップの詳細を確認するには、左側のメニューの **[操作]** の設定から、**[バックアップ]** をクリックします。 これを使って、オンデマンド バックアップの開始、完全な VM またはすべてのディスクの復元、VM のバックアップからのファイルの復元、または仮想マシンに関連付けられているバックアップ ポリシーの変更を、行うことができます。  
+    ![オンデマンド バックアップを実行する](./media/backup-during-vm-creation/run-backup.png) 
 
-## <a name="using-a-resource-manager-template-to-deploy-a-protected-vm"></a>Resource Manager テンプレートを使用して保護された VM を展開する
+## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Resource Manager テンプレートを使用して保護された VM をデプロイする
 
-前の手順では、Azure Portal を使って仮想マシンを作成し、Recovery Services コンテナーにそれを保護する方法について説明しました。 仮想マシンをすばやく展開し、Recovery Services コンテナーにそれを保護したい場合は、[Windows VM を展開してバックアップを有効にする](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)ためのテンプレートをご覧ください。
+前の手順では、Azure portal を使用して仮想マシンを作成し、Recovery Services コンテナーにそれを保護する方法について説明しました。 VM をすばやくデプロイし、Recovery Services コンテナーでそれを保護するには、[Windows VM をデプロイしてバックアップを有効にする](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)ためのテンプレートをご覧ください。
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問 
 
-### <a name="which-vm-images-enable-backup-at-the-time-of-vm-creation"></a>VM の作成時には、どの VM イメージでバックアップが有効になりますか。 
-
-Microsoft によって公開されている以下のコア イメージの一覧が、VM 作成時のバックアップの有効化に対してサポートされています。 他の VM の場合は、VM を作成した後でバックアップを有効にできます。 詳しくは、[VM 作成後のバックアップの有効化](quick-backup-vm-portal.md)に関するページをご覧ください 
-
-- **Windows** - Windows Server 2016 Datacenter、Windows Server 2016 Data Center core、Windows Server 2012 DataCenter、Windows Server 2012 R2 DataCenter、Windows Server 2008 R2 SP1 
-- **Ubuntu** - Ubuntu Server 1710、Ubuntu Server 1704、UUbuntu Server 1604(LTS)、Ubuntu Server 1404(LTS) 
-- **Red Hat** - RHEL 6.7、6.8、6.9、7.2、7.3、7.4 
-- **SUSE** - SUSE Linux Enterprise Server 11 SP4、12 SP2、12 SP3 
-- **Debian** - Debian 8、Debian 9 
-- **CentOS** - CentOS 6.9、CentOS 7.3 
-- **Oracle Linux** - Oracle Linux 6.7、6.8、6.9、7.2、7.3 
- 
-### <a name="is-backup-cost-included-in-the-vm-cost"></a>バックアップのコストは VM のコストに含まれますか。 
-
-いいえ、バックアップのコストは仮想マシンのコストとは別にかかります。 バックアップの料金について詳しくは、[Backup の価格のサイト](https://azure.microsoft.com/pricing/details/backup/)をご覧ください。
- 
-### <a name="which-permissions-are-required-to-enable-backup-on-a-vm"></a>VM でバックアップを有効にするにはどのアクセス許可が必要ですか。 
-
-仮想マシンの共同作成者の場合は、VM でバックアップを有効にできます。 カスタム ロールを使っている場合は、VM でバックアップを正常に有効にするには、次のアクセス許可が必要です。 
-
-- Microsoft.RecoveryServices/Vaults/write 
-- Microsoft.RecoveryServices/Vaults/read 
-- Microsoft.RecoveryServices/locations/* 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/read 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/write 
- 
-Recovery Services コンテナーと仮想マシンが異なるリソース グループに属している場合は、Recovery Services コンテナーのリソース グループへの書き込みアクセス許可があることを確認してください。  
 
 ## <a name="next-steps"></a>次の手順 
 
-VM を保護したので、VM の管理タスクおよび VM の復元方法の詳細については、次の記事を参照してください。 
+VM が保護されたので、その VM を管理および復元する方法を学習してください。
 
-- [仮想マシンの管理と監視](backup-azure-manage-vms.md) 
-- [仮想マシンの復元](backup-azure-arm-restore-vms.md) 
+- [VM の管理と監視](backup-azure-manage-vms.md) 
+- [VM を復元する](backup-azure-arm-restore-vms.md) 
+
+問題が発生した場合は、トラブルシューティング ガイドを[確認して](backup-azure-vms-troubleshoot.md)ください。

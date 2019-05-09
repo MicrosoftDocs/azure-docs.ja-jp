@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: ba56804431048005914a79c4cd957a8365de067a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970894"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486376"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 
@@ -88,9 +88,9 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
-|apis|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
+|`apis`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -343,17 +343,17 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
-|apiId|string|現在の API の ID。|  
-|apiName|string|API の名前。|  
-|apiDescription|string|API の説明。|  
-|api|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
-|operation|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
-|sampleUrl|string|現在の操作の URL。|  
-|operationMenu|[操作メニュー](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
-|consoleUrl|URI|**[試してみる]** ボタンの URI。|  
-|サンプル|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
+|`apiId`|文字列|現在の API の ID。|  
+|`apiName`|文字列|API の名前。|  
+|`apiDescription`|文字列|API の説明。|  
+|`api`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
+|`operation`|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
+|`sampleUrl`|文字列|現在の操作の URL。|  
+|`operationMenu`|[Operation menu](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
+|`consoleUrl`|URI|**[試してみる]** ボタンの URI。|  
+|`samples`|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bed37d98b988ce81ffcb8c18f2289a9e6ff880c5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651930"
 documentType: LandingData
 title: Site Recovery のドキュメント
 metadata:
@@ -21,64 +15,64 @@ metadata:
 abstract:
   description: Azure Site Recovery では、Azure VM、オンプレミス VM、物理サーバーのディザスター リカバリーを調整および管理します。 Microsoft が提供するクイックスタートとチュートリアルを使用して、レプリケーション、フェールオーバー、フェールバックを実行する方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure VM のディザスター リカバリーをすばやく設定します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /azure/site-recovery/media/index/portal.svg
-      text: Azure ポータル
-      href: /azure/site-recovery/azure-to-azure-quickstart
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: VM と物理サーバーのディザスター リカバリーを設定する方法を説明します。
-  - type: text
-    html: <h3>Azure から Azure</h3>
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Azure VM のディザスター リカバリーをすばやく設定します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/site-recovery/media/index/portal.svg
+            text: Azure ポータル
+            href: /azure/site-recovery/azure-to-azure-quickstart
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="azure-to-azure-tutorial-enable-replication">ディザスター リカバリーを設定する</a>
-    - html: <a href="azure-to-azure-tutorial-dr-drill">ディザスター リカバリー訓練を実行する</a>
-    - html: <a href="azure-to-azure-tutorial-failover-failback">フェールオーバーとフェールバックを実行する</a>
-  - type: text
-    html: <h3>VMware</h3>
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: VM と物理サーバーのディザスター リカバリーを設定する方法を説明します。
+      - type: text
+        html: <h3>Azure から Azure</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="azure-to-azure-tutorial-enable-replication">ディザスター リカバリーを設定する</a>
+          - html: <a href="azure-to-azure-tutorial-dr-drill">ディザスター リカバリー訓練を実行する</a>
+          - html: <a href="azure-to-azure-tutorial-failover-failback">フェールオーバーとフェールバックを実行する</a>
+      - type: text
+        html: <h3>VMware</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-azure">Azure を準備する</a>
+          - html: <a href="tutorial-prepare-on-premises-vmware">オンプレミスの VMware を準備する</a>
+          - html: <a href="tutorial-vmware-to-azure">ディザスター リカバリーを設定する</a>
+          - html: <a href="tutorial-dr-drill-azure">ディザスター リカバリー訓練を実行する</a>
+          - html: <a href="vmware-azure-tutorial-failover-failback">フェールオーバーとフェールバックを実行する</a>
+      - type: text
+        html: <h3>Hyper-V</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-azure">Azure を準備する</a>
+          - html: <a href="tutorial-prepare-on-premises-hyper-v">オンプレミスの Hyper-V を準備する</a>
+          - html: <a href="tutorial-hyper-v-to-azure">Hyper-V VM のディザスター リカバリーを設定する</a>
+          - html: <a href="tutorial-hyper-v-vmm-to-azure">System Center VMM で管理されている Hyper-V VM のディザスター リカバリーを設定する</a>
+          - html: <a href="tutorial-dr-drill-azure">ディザスター リカバリーのテストを実行する</a>
+          - html: <a href="tutorial-hyper-v-to-azure-failover-failback">フェールオーバーとフェールバックを実行する</a>
+      - type: text
+        html: <h3>Azure への移行</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-azure">Azure を準備する</a>
+          - html: <a href="tutorial-migrate-on-premises-to-azure">オンプレミス マシン</a>または <a href="tutorial-migrate-aws-to-azure">AWS インスタンス</a>を Azure に移行する
+  - title: リファレンス
     items:
-    - html: <a href="tutorial-prepare-azure">Azure を準備する</a>
-    - html: <a href="tutorial-prepare-on-premises-vmware">オンプレミスの VMware を準備する</a>
-    - html: <a href="tutorial-vmware-to-azure">ディザスター リカバリーを設定する</a>
-    - html: <a href="tutorial-dr-drill-azure">ディザスター リカバリー訓練を実行する</a>
-    - html: <a href="vmware-azure-tutorial-failover-failback">フェールオーバーとフェールバックを実行する</a>
-  - type: text
-    html: <h3>Hyper-V</h3>
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="tutorial-prepare-azure">Azure を準備する</a>
-    - html: <a href="tutorial-prepare-on-premises-hyper-v">オンプレミスの Hyper-V を準備する</a>
-    - html: <a href="tutorial-hyper-v-to-azure">Hyper-V VM のディザスター リカバリーを設定する</a>
-    - html: <a href="tutorial-hyper-v-vmm-to-azure">System Center VMM で管理されている Hyper-V VM のディザスター リカバリーを設定する</a>
-    - html: <a href="tutorial-dr-drill-azure">ディザスター リカバリーのテストを実行する</a>
-    - html: <a href="tutorial-hyper-v-to-azure-failover-failback">フェールオーバーとフェールバックを実行する</a>
-  - type: text
-    html: <h3>Azure への移行</h3>
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="tutorial-prepare-azure">Azure を準備する</a>
-    - html: <a href="tutorial-migrate-on-premises-to-azure">オンプレミス マシン</a>または <a href="tutorial-migrate-aws-to-azure">AWS インスタンス</a>を Azure に移行する
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: コマンド ライン
-      html: <p><a href="/powershell/module/azurerm.siterecovery/">Azure PowerShell</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/site-recovery/">REST API リファレンス</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/powershell/module/az.recoveryservices/">Azure PowerShell</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/site-recovery/">REST API リファレンス</a></p>

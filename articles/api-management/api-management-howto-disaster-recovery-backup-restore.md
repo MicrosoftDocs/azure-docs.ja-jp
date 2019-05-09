@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 7da97b763c532a2189ef058cbb8ffb14c5b150f9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7b5df31c3e1d07cc9ac93f73362e853fab728fa9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968375"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793800"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -33,12 +33,14 @@ API Management サービスをホストしているリージョンに影響す�
 >
 > 各バックアップの有効期限は 30 日間です。 30 日の有効期限が切れた後にバックアップを復元しようとしても、"`Cannot restore: backup expired`" というメッセージが表示されて復元は失敗します。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="authenticating-azure-resource-manager-requests"></a>Azure Resource Manager の要求の認証
 
 > [!IMPORTANT]
-> バックアップと復元用の REST API では、Azure Resource Manager が使用されます。API Management のエンティティ管理には REST API 以外の認証メカニズムも用意されています。 このセクションの手順では、Azure Resource Manager の要求を認証する方法について説明します。 詳細については、「[Azure REST API Reference (Azure REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください。
+> バックアップと復元用の REST API では、Azure Resource Manager が使用されます。API Management のエンティティ管理には REST API 以外の認証メカニズムも用意されています。 このセクションの手順では、Azure Resource Manager の要求を認証する方法について説明します。 詳細については、「[Azure REST API Reference (Azure REST API リファレンス)](/rest/api/index)」を参照してください。
 
 Azure Resource Manager を使用してリソースに実行するすべてのタスクは、Azure Active Directory で以下の手順に従って認証する必要があります。
 
@@ -207,7 +209,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> バックアップと復元の操作は、PowerShell の *Backup-AzureRmApiManagement* コマンドと *Restore-AzureRmApiManagement* コマンドでも実行できます。
+> バックアップと復元の操作は、PowerShell の *Backup-AzApiManagement* コマンドと *Restore-AzApiManagement* コマンドでも実行できます。
 
 ## <a name="next-steps"></a>次の手順
 

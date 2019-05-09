@@ -4,10 +4,10 @@ description: 設定とアプリ データの同期に関する質問とその答
 services: active-directory
 keywords: Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: curtand
-ms.component: devices
+ms.subservice: devices
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
 ms.service: active-directory
 ms.workload: identity
@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
-ms.author: markvi
-ms.openlocfilehash: 24c7ddff1eea16fc2be3f99d04abd90ee0791f4c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: joflore
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247298"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517863"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。
@@ -31,7 +32,7 @@ ms.locfileid: "51247298"
 
 * *テーマ*: デスクトップ テーマやタスク バーの設定などの機能が含まれています。
 * *Internet Explorer の設定*: 最近開いたタブ、お気に入りなどが含まれています。
-* *Edge ブラウザーの設定*: お気に入り、リーディング リストなどがあります。
+* *Microsoft Edge ブラウザーの設定*: お気に入り、リーディング リストなどがあります。
 * *パスワード*: インターネット パスワード、Wi-Fi プロファイルなどが含まれています。
 * *言語設定*: キーボード レイアウト、システム言語、日付と時刻などの設定が含まれています。
 * *簡単操作機能*: ハイ コントラスト テーマ、ナレーター、拡大鏡などがあります。

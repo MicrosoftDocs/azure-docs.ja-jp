@@ -4,17 +4,17 @@ description: Azure IoT Edge を使って、複数のダウンストリーム デ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e0aafc6e5a6926ad70aa5df335f45b841955cab9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092283"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877598"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge デバイスをゲートウェイとして使用する方法
 
@@ -54,4 +54,4 @@ ID 変換を行うゲートウェイを使うと、プロトコル変換の利�
 非透過的なゲートウェイ (プロトコル変換) パターンを使用する場合、そのゲートウェイを介して接続するすべてのデバイスは、同一のクラウドからデバイスのキューを共有します。これには最大で 50 のメッセージを含めることができます。 したがって、各フィールド ゲートウェイを介して接続するデバイスが非常に少なく、クラウドからデバイスへのトラフィックが少ない場合にのみ、非透過的なゲートウェイ パターンを使用する必要があります。
 
 ## <a name="next-steps"></a>次の手順
-IoT Edge デバイスを[透過的ゲートウェイ](how-to-create-transparent-gateway-linux.md)として構成する方法を学習してください。
+IoT Edge デバイスを[透過的ゲートウェイ](how-to-create-transparent-gateway.md)として構成する方法を学習してください。

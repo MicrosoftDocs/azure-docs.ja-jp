@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: e5ee2f40526837fbe0251e1fdda6847db1c51288
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b8a45f3014b3fd5d0f5592b3f9bd408fc37b387b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999958"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
 
@@ -60,6 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | Filter Year |2013 |
    | Filter Period |January |
    | フィールド |Year、FlightDate、UniqueCarrier、Carrier、FlightNum、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
+   
    その他のフィールドはすべてクリアします。 
 
 3. **[Download]** を選択します。 選択したデータ フィールドを含む .zip ファイルがダウンロードされます。

@@ -8,27 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 03/20/2019
+ms.openlocfilehash: f2baaf598be8ede69fd6e1fa49a5f5a6b64c24ff
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632661"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521202"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop で MapReduce を使用する
 
-HDInsight クラスターで MapReduce ジョブを実行する方法を説明します。 次の表を使用して、HDInsight で MapReduce を使用できるさまざまな方法を確認してください。
-
-| **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
-|:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) | **SSH** | Linux |Linux、Unix、Mac OS X、または Windows |
-| [REST](apache-hadoop-use-mapreduce-curl.md) |**REST** を使用してリモートからジョブを送信する (例では cURL を使用) |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) | **Windows PowerShell** |Linux または Windows | Windows |
-
-> [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
->
+HDInsight クラスターで MapReduce ジョブを実行する方法を説明します。 
 
 ## <a id="whatis"></a>MapReduce とは
 
@@ -57,7 +47,7 @@ Hadoop ストリーミングは、STDIN と STDOUT 上で mapper や reducer と
 
     [key]/t[value]
 
-詳細については、「 [Hadoop ストリーミング](http://hadoop.apache.org/docs/r1.2.1/streaming.html)」を参照してください。
+詳細については、「 [Hadoop ストリーミング](https://hadoop.apache.org/docs/r1.2.1/streaming.html)」を参照してください。
 
 HDInsight での Hadoop ストリーミングの使用例については、以下のドキュメントを参照してください。
 
@@ -159,12 +149,9 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 | **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) | **SSH** | Linux |Linux、Unix、Mac OS X、または Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) | **REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) | **Windows PowerShell** |Linux または Windows | Windows |
-
-> [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |**REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows | Windows |
 
 ## <a id="nextsteps"></a>次のステップ
 
@@ -174,9 +161,9 @@ HDInsight でのデータ操作の詳細については、次のドキュメン�
 
 * [HDInsight 用 Python ストリーミング MapReduce プログラムの開発](apache-hadoop-streaming-python.md)
 
-* [HDInsight での Hive の使用][hdinsight-use-hive]
+* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
 
-* [HDInsight での Pig の使用][hdinsight-use-pig]
+* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
 
 
 [hdinsight-upload-data]: hdinsight-upload-data.md

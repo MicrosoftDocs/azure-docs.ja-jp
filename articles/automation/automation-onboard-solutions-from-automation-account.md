@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/16/2018
+ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b91c3dec1dda401fbacab39325b2c8980ec7254f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625066"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578443"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -22,7 +22,7 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-https://portal.azure.com で Azure にサインインします
+ https://portal.azure.com で Azure にサインインします
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 
@@ -31,6 +31,28 @@ Automation アカウントに移動し、**[構成管理]** で、**[インベ�
 Log Analytics ワークスペースおよび Automation アカウントを選択し、**[有効にする]** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
 ![Inventory ソリューションの配布準備](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
+
+ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
+
+サポートするマッピングを次の表に示します。
+
+|**Log Analytics ワークスペース リージョン**|**Azure Automation リージョン**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS<sup>1</sup>|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|西ヨーロッパ|西ヨーロッパ|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP および EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、同じリージョンどうしのマッピングではありませんが、正しいマッピングです。
+
+<sup>2</sup> 容量の制約により、新しいリソースを作成するときにリージョンを使用できません。 これには、Automation アカウントと Log Analytics ワークスペースが含まれます。 ただし、リージョン内のリンクされた既存のリソースは引き続き動作します。
 
 Change Tracking と Inventory ソリューションには、仮想マシンで[変更を追跡](automation-vm-change-tracking.md)し、[インベントリを作成](automation-vm-inventory.md)する機能が用意されています。 この手順では、仮想マシンでソリューションを有効にします。
 
@@ -73,7 +95,7 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** を選択するか、**[更新の管理]** で **[更新プログラムの管理]** を選択します。
 
-**[+ Azure VM の追加]** をクリックし、リストから 1 つ以上の VM を選択します。 有効にできない仮想マシンは灰色で表示され、選択できません。 **[Update Management の有効化]** ページで、**[有効化]** をクリックします。 このアクションにより、選択された VM が、ソリューションのコンピューター グループの保存された検索条件に追加されます。
+**[+ Azure VM の追加]** をクリックし、リストから 1 つ以上の VM を選択します。 有効にできない仮想マシンは灰色で表示され、選択できません。 Azure VM は、Automation アカウントの場所に関係なく任意のリージョンに存在できます。 **[Update Management の有効化]** ページで、**[有効化]** をクリックします。 このアクションにより、選択された VM が、ソリューションのコンピューター グループの保存された検索条件に追加されます。
 
 ![Azure VM の有効化](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -81,7 +103,7 @@ Automation アカウントの **[構成管理]** で **[インベントリ]** �
 
 Azure に存在しないマシンは手動で追加する必要があります。 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** を選択するか、**[更新の管理]** で **[更新プログラムの管理]** を選択します。
 
-**[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、マシンがソリューションへのレポートを開始できるように、[Microsoft Monitoring Agent をマシンにインストールして構成する方法](../log-analytics/log-analytics-agent-overview.md)が示されます。 System Center Operations Manager によって現在管理されているマシンの配布準備を行う場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
+**[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、マシンがソリューションへのレポートを開始できるように、[Microsoft Monitoring Agent をマシンにインストールして構成する方法](../azure-monitor/platform/log-analytics-agent.md)が示されます。 System Center Operations Manager によって現在管理されているマシンの配布準備を行う場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
 
 ## <a name="onboard-machines-in-the-workspace"></a>ワークスペースでのマシンの配布準備
 
@@ -111,7 +133,7 @@ Azure に存在しないマシンは手動で追加する必要があります�
 * [変更の追跡](automation-change-tracking.md)
 * [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 
-Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  続行する前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを進めることはできません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
+Automation アカウントを Log Analytics ワークスペースと統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  続行する前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを進めることはできません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
 
 これらのソリューションを削除したら、以下の手順を完了して、Automation アカウントのリンクを解除できます。
 

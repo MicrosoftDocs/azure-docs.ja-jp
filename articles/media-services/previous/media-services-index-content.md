@@ -4,7 +4,7 @@ description: Azure Media Indexer を使用すると、メディア ファイル�
 services: media-services
 documentationcenter: ''
 author: Asolanki
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 827a56b2-58a5-4044-8d5c-3e5356488271
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 03/18/2019
 ms.author: adsolank;juliako;johndeu
-ms.openlocfilehash: 7366ab573360e046ae112a32c32b292ebaeb8178
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189106"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer によるメディア ファイルのインデックス作成
 Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 バッチ内の 1 つのメディア ファイルまたは複数のメディア ファイルを処理できます。  
@@ -31,7 +31,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 
 インデックス作成ジョブは次の出力を生成できます。
 
-* 次の形式のクローズド キャプション ファイル: **SAMI**、**TTML**、および **WebVTT**。
+* 次の形式のクローズド キャプション ファイル:**SAMI**、**TTML**、および **WebVTT**。
   
     クローズド キャプション ファイルには、Recognizability と呼ばれるタグが含まれています。これは、ソース ビデオ内の音声がどれくらい認識可能であるかに基づいて、インデックス作成ジョブを評価します。  見分けの値を使用して、出力ファイルの使いやすさを検査します。 低いスコアは、オーディオの品質が良好ではないために、インデックスの作成結果が良好ではないという意味です。
 * キーワード ファイル (XML)。
@@ -154,7 +154,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 | --- | --- |
 | **InputFileName.aib** |オーディオ インデックス BLOB ファイル。 <br/><br/> オーディオ インデックス BLOB (AIB) ファイルは、フルテキスト検索を使用して Microsoft SQL server で検索できるバイナリ ファイルです。  AIB ファイルは、各単語に豊富な代替候補を含み、より充実した検索を実現しているため、単純なキャプション ファイルよりも強力です。 <br/> <br/>Microsoft SQL server 2008 以降を実行しているマシンに Indexer SQL アドオンのインストールする必要があります。 Microsoft SQL サーバーのフル テキスト検索を使用して、AIB を検索すると、WAMI によって生成されたクローズド キャプション ファイルを検索するよりも正確な検索結果が得られます。 これは、クローズド キャプション ファイルがオーディオの各セグメントに信頼度が最上位の単語を含んでいるのに対し、AIB には代替候補として似ているサウンドの単語が含まれているためです。 話された単語の検索が最も重要な場合は、AIB を Microsoft SQL Server と組み合わせて使用することをお勧めします。<br/><br/> アドオンをダウンロードするには、<a href="https://aka.ms/indexersql">[Azure メディア インデクサー SQL アドオン]</a> をクリックします。 <br/><br/>Apache Lucene/Solr などの他の検索エンジンを使用してクローズド キャプションとキーワードの XML ファイルに基づいたビデオをインデックスすることも可能ですが、検索精度は低くなります。 |
 | **InputFileName.smi**<br/>**InputFileName.ttml**<br/>**InputFileName.vtt** |SAMI、TTML、および WebVTT 形式のクローズド キャプション (CC) ファイル<br/><br/>オーディオとビデオ ファイルを聴覚障がいを持つユーザーにアクセスできるようにするために使用できます。<br/><br/>クローズド キャプション ファイルには、<b>Recognizability</b> と呼ばれるタグが含まれています。これは、ソース ビデオ内の音声がどれくらい認識可能であるかに基づいて、インデックス作成ジョブを評価します。  <b>Recognizability</b> の値を使用して、出力ファイルの利用価値を検査することができます。 低いスコアは、オーディオの品質が良好ではないために、インデックスの作成結果が良好ではないという意味です。 |
-| **InputFileName.kw.xml<br/>InputFileName.info** |キーワードと情報ファイル。 <br/><br/>キーワードのファイルは、頻度とオフセットの情報を含む、音声コンテンツから抽出されたキーワードを含む XML ファイルです。 <br/><br/>情報ファイルは、認識された各用語に関する詳細な情報が含まれるプレーンテキスト ファイルです。 最初の行は特殊で、認識度スコアを含みます。 後続の各行は、開始時刻、終了時刻、言葉/言い回し、信頼度データのタブ区切り一覧になります。 時間は秒単位で、信頼度は 0 ～ 1 の数値として指定されます。 <br/><br/>行の例: "1.20    1.45    word    0.67" <br/><br/>これらのファイルは、音声分析を実行する、Bing、Google または Microsoft SharePoint などの検索エンジンに公開してメディア ファイルをより検索しやすくする、または関連性の高い広告を配信するなど、さまざまな目的で使用できます。 |
+| **InputFileName.kw.xml<br/>InputFileName.info** |キーワードと情報ファイル。 <br/><br/>キーワードのファイルは、頻度とオフセットの情報を含む、音声コンテンツから抽出されたキーワードを含む XML ファイルです。 <br/><br/>情報ファイルは、認識された各用語に関する詳細な情報が含まれるプレーンテキスト ファイルです。 最初の行は特殊で、認識度スコアを含みます。 後続の各行は、開始時刻、終了時刻、言葉/言い回し、信頼度データのタブ区切り一覧になります。 時間は秒単位で、信頼度は 0 ～ 1 の数値として指定されます。 <br/><br/>行の例:"1.20    1.45    word    0.67" <br/><br/>これらのファイルは、音声分析を実行する、Bing、Google または Microsoft SharePoint などの検索エンジンに公開してメディア ファイルをより検索しやすくする、または関連性の高い広告を配信するなど、さまざまな目的で使用できます。 |
 | **JobResult.txt** |出力マニフェストは、複数のファイルのインデックスを作成する場合にのみ存在します。次の情報が含まれています。<br/><br/><table border="1"><tr><th>InputFile</th><th>エイリアス</th><th>MediaLength</th><th>Error</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
 すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 4000 を表示して失敗します。 詳細については、 [エラー コード](#error_codes)をご覧ください
@@ -249,9 +249,9 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 
 | Name | 必須 | 説明 |
 | --- | --- | --- |
-| **input** |false |インデックスの対象となるアセット ファイル。</p><p>Azure Media Indexer は、MP4、WMV、MP3、M4A、WMA、AAC、WAV の各メディア ファイル形式をサポートしています。</p><p>ファイル名は、**input** 要素の **name** 属性または **list** 属性に指定できます (以下の例を参照)。インデックスの対象となるアセット ファイルを指定しなかった場合は、プライマリ ファイルが選択されます。 プライマリ資産ファイルが設定されていない場合は、入力資産の 1 つ目のファイルのインデックスが作成されます。</p><p>資産ファイル名を明示的に指定するには、次を実行します。<br/>`<input name="TestFile.wmv">`<br/><br/>複数の資産ファイルのインデックスを一度に作成することもできます (最大 10 ファイル)。 これを行うには、次の手順を実行します。<br/><br/><ol class="ordered"><li><p>テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。 </p></li><li><p>入力資産に含まれるすべての資産ファイルの名前をこのマニフェスト ファイルに追加します。 </p></li><li><p>マニフェスト ファイルを資産に追加 (アップロード) します。  </p></li><li><p>マニフェスト ファイルの名前を input の list 属性に指定します。<br/>`<input list="input.lst">`</li></ol><br/><br/>注: 10 個を超えるファイルを追加すると、インデックス作成ジョブが 2006 エラー コードで失敗します。 |
+| **input** |false |インデックスの対象となるアセット ファイル。</p><p>Azure Media Indexer は、メディア ファイル形式としてMP4、WMV、MP3、M4A、WMA、AAC、WAV をサポートしています。</p><p>ファイル名は、**input** 要素の **name** 属性または **list** 属性に指定できます (以下の例を参照)。インデックスの対象となるアセット ファイルを指定しなかった場合は、プライマリ ファイルが選択されます。 プライマリ資産ファイルが設定されていない場合は、入力資産の 1 つ目のファイルのインデックスが作成されます。</p><p>資産ファイル名を明示的に指定するには、次を実行します。<br/>`<input name="TestFile.wmv">`<br/><br/>複数の資産ファイルのインデックスを一度に作成することもできます (最大 10 ファイル)。 これを行うには、次の手順を実行します。<br/><br/><ol class="ordered"><li><p>テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。 </p></li><li><p>入力資産に含まれるすべての資産ファイルの名前をこのマニフェスト ファイルに追加します。 </p></li><li><p>マニフェスト ファイルを資産に追加 (アップロード) します。  </p></li><li><p>マニフェスト ファイルの名前を input の list 属性に指定します。<br/>`<input list="input.lst">`</li></ol><br/><br/>注:マニフェスト ファイルに 10 を超えるファイルを追加すると、インデックス作成ジョブが 2006 エラー コードで失敗します。 |
 | **metadata** |false |語彙アダプテーション用に指定する資産ファイルのメタデータ。  標準的ではない語彙 (固有名詞など) をインデクサーに認識させる必要があるときに使用します。<br/>`<metadata key="..." value="..."/>` <br/><br/>事前定義済みの**キー**に対して**値**を指定できます。 現在サポートされているキーは <br/><br/>"title" と "description" です。これは、語彙アダプテーションで対象ジョブの言語モデルを微調整し、音声認識の精度を高める目的で使用します。  インターネット検索機能は、これらの値を足掛かりとしてコンテキストに合ったテキスト ドキュメントを検索し、そのコンテンツを使って、インデックス作成タスクの過程で用いられる内部辞書を補強します。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **features** <br/><br/> バージョン 1.2 で追加。 現時点でサポートされている機能は、音声認識 ("ASR") のみです。 |false |音声認識機能には、次の設定キーがあります。<table><tr><th><p>キー</p></th>        <th><p>説明</p></th><th><p>値の例</p></th></tr><tr><td><p>Language</p></td><td><p>マルチメディア ファイル内で認識される自然言語。</p></td><td><p>English、Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>出力キャプション形式をセミコロンで区切ったリスト (存在する場合)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>(SQL Server とお客様の Indexer IFilter で使用するために) AIB ファイルが必要かどうかを指定するブール値のフラグ。  詳細については、「 <a href="https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">AIB ファイルを Azure Media Indexer および SQL Server で使用する</a>」をご覧ください。</p></td><td><p>True、False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>キーワード XML ファイルが必要かどうかを指定するブール型のフラグ。</p></td><td><p>True、False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>(信頼レベルに関係なく) フル キャプションを強制するかどうかを指定するブール型のフラグ。  </p><p>既定値は false です。この場合、信頼レベルが 50% 未満の語句は最終的なキャプションの出力から除外され、省略記号 ("...") で置き換えられます。  省略記号は、キャプションの品質管理や監査に用いられます。</p></td><td><p>True、False。 </p></td></tr></table> |
+| **features** <br/><br/> バージョン 1.2 で追加。 現時点でサポートされている機能は、音声認識 ("ASR") のみです。 |false |音声認識機能には、次の設定キーがあります。<table><tr><th><p>キー</p></th>        <th><p>説明</p></th><th><p>値の例</p></th></tr><tr><td><p>言語</p></td><td><p>マルチメディア ファイル内で認識される自然言語。</p></td><td><p>English、Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>出力キャプション形式をセミコロンで区切ったリスト (存在する場合)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>(SQL Server とお客様の Indexer IFilter で使用するために) AIB ファイルが必要かどうかを指定するブール値のフラグ。  詳細については、「 <a href="https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">AIB ファイルを Azure Media Indexer および SQL Server で使用する</a>」をご覧ください。</p></td><td><p>True、False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>キーワード XML ファイルが必要かどうかを指定するブール型のフラグ。</p></td><td><p>True、False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>(信頼レベルに関係なく) フル キャプションを強制するかどうかを指定するブール型のフラグ。  </p><p>既定値は false です。この場合、信頼レベルが 50% 未満の語句は最終的なキャプションの出力から除外され、省略記号 ("...") で置き換えられます。  省略記号は、キャプションの品質管理や監査に用いられます。</p></td><td><p>True、False。 </p></td></tr></table> |
 
 ### <a id="error_codes"></a>エラー コード
 エラーが発生した場合、Azure Media Indexer は、次のいずれかのエラー コードを返します。

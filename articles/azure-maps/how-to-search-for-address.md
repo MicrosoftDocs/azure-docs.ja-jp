@@ -1,23 +1,30 @@
 ---
 title: Azure Maps Search サービスを使用して住所を検索する方法 | Microsoft Docs
 description: Azure Maps Search サービスを使用して住所を検索する方法について説明します。
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+manager: philmea
+ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387431"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785577"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する
 
 Maps Search サービスは、開発者が住所、場所、関心地点、事業所一覧、およびその他の地理情報を検索するために設計された RESTful API のセットです。 このサービスでは、特定の住所、交差点、地理的特徴、関心地点に対して緯度/経度を割り当てます。 検索で返された緯度と経度の値は、ルートや交通の流れなどの他の Maps サービスのパラメーターとして使用できます。
+
+この記事では、次のことについて説明します。
+
+* [あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用した住所の検索
+* 住所をプロパティや座標と一緒に検索
+* 番地を検索するための[住所の逆引き検索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)の実行
+* [交差点住所の逆引き検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet) を使用した交差点の検索
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +44,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
 
-    ![あいまい検索 ](./media/how-to-search-for-address/fuzzy_search_url.png)
+    ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_url.png)
 
     | パラメーター | 推奨値 |
     |---------------|------------------------------------------------|
@@ -49,7 +56,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
 
-    ![あいまい検索 ](./media/how-to-search-for-address/fuzzy_search_params.png)
+    ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_params.png)
 
     | キー | 値 |
     |------------------|-------------------------|
@@ -75,7 +82,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
 6. [パラメーター] に次のキーと値のペアを入力して、**[送信]** をクリックします。
 
-    ![あいまい検索 ](./media/how-to-search-for-address/fuzzy_search_latlon.png)
+    ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
     | キー | 値 |
     |-----|------------|
@@ -89,7 +96,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 1. Postman で、**[新しい要求]** | **[GET request\(GET 要求\)]** をクリックして、「**Address Search**」 (住所検索) という名前を付けます。
 2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力して、承認プロトコルを選択します (存在する場合)。
 
-    ![住所検索 ](./media/how-to-search-for-address/address_search_url.png)
+    ![住所検索](./media/how-to-search-for-address/address_search_url.png)
   
     | パラメーター | 推奨値 |
     |---------------|------------------------------------------------|
@@ -99,7 +106,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
   
-    ![住所検索 ](./media/how-to-search-for-address/address_search_params.png)
+    ![住所検索](./media/how-to-search-for-address/address_search_params.png)
   
     | キー | 値 |
     |------------------|-------------------------|
@@ -130,7 +137,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
   
-    ![住所の逆引き検索の URL ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![住所の逆引き検索の URL](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | パラメーター | 推奨値 |
     |---------------|------------------------------------------------|
@@ -140,7 +147,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
   
-    ![住所の逆引き検索のパラメーター ](./media/how-to-search-for-address/reverse_address_search_params.png)
+    ![住所の逆引き検索のパラメーター](./media/how-to-search-for-address/reverse_address_search_params.png)
   
     | キー | 値 |
     |------------------|-------------------------|
@@ -158,7 +165,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |-----|------------|
     | number | true |
 
-    [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが要求と共に送信された場合、通りの側 (左/右) とその数値からのオフセット位置を応答に含めることができます。
+    [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが要求と共に送信された場合、通りの側 (左/右) とその数値からのオフセット位置を応答に含めることができます。
   
 6. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
@@ -166,7 +173,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |-----|------------|
     | returnSpeedLimit | true |
   
-    [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には公示されている速度制限が返されます。
+    [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが設定された場合、応答には公示されている速度制限が返されます。
 
 7. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
@@ -174,7 +181,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |-----|------------|
     | returnRoadUse | true |
 
-    [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には番地レベルで逆引き地理コードの道路用途の配列が返されます。
+    [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが設定された場合、応答には番地レベルで逆引き地理コードの道路用途の配列が返されます。
 
 8. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
@@ -182,7 +189,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |-----|------------|
     | roadUse | true |
 
-    [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターを使用して、逆引き地理コードのクエリを特定の種類の道路用途に制限できます。
+    [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターを使用して、逆引き地理コードのクエリを特定の種類の道路用途に制限できます。
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>交差点住所の逆引き検索を使用して交差点を検索する
 
@@ -190,7 +197,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
   
-    ![交差点住所の逆引き検索 ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![交差点住所の逆引き検索](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | パラメーター | 推奨値 |
     |---------------|------------------------------------------------|

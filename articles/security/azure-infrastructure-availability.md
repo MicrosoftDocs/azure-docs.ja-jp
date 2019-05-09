@@ -4,7 +4,7 @@ description: この記事では、顧客のデータの最大の可用性を提�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 3679361522105d1f3c55eae6b1f33c1c6baa1d55
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171495"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105877"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure インフラストラクチャの可用性
 Azure は、仮想化テクノロジで実現される広範囲の冗長性に基づいた堅牢な可用性を提供します。 Azure には、顧客のデータの最大の可用性を提供するさまざまなレベルの冗長性が用意されています。
@@ -33,7 +33,7 @@ Microsoft Cloud Infrastructure and Operations チームは、クラウド イン
 
 Microsoft は、高度な監視およびインシデント対応、サービスのサポート、およびバックアップ フェールオーバー機能を通して高可用性を確保します。 地理的に分散した Microsoft オペレーション センターは、365 日 24 時間体制で運用しています。 Azure ネットワークは、世界最大のネットワークの 1 つです。 光ファイバーおよびコンテンツ配信ネットワークは、データセンターとエッジ ノードを接続して高パフォーマンスと信頼性を確保します。
 
-## <a name="disaster-recovery"></a>ディザスター リカバリー
+## <a name="disaster-recovery"></a>障害復旧
 Azure では、2 つの場所でデータを持続的に保持します。 バックアップ サイトの場所を選択できます。 Azure は常に、両方の場所でお客様のデータの 3 つの正常なレプリカを保持します。
 
 ## <a name="database-availability"></a>データベースの可用性

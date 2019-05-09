@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 0d27ae79ab2c14cc5fd5ca81b8b7f089e7fa294e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126226"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233050"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>リージョン間での Azure Data Lake Storage Gen1 の移行
 
@@ -46,7 +46,7 @@ Azure Data Lake Storage Gen1 が新しいリージョンで利用できるよう
 
 * **帯域幅の料金**。 Azure リージョンからデータが転送されるため、[帯域幅の料金](https://azure.microsoft.com/pricing/details/bandwidth/)が適用されます。
 
-* **データの ACL**。 ファイルとフォルダーに ACL を適用して、新しいリージョンのデータをセキュリティで保護します。 詳細については、「[Securing data stored in Azure Data Lake Storage Gen1 (Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護)](data-lake-store-secure-data.md)」をご覧ください。 移行を ACL の更新と調整に使用することをお勧めします。 現在の設定と同様の設定を使用することもできます。 Azure Portal、[PowerShell コマンドレット](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission)、または SDK を使用して、ファイルに適用されている ACL を表示できます。  
+* **データの ACL**。 ファイルとフォルダーに ACL を適用して、新しいリージョンのデータをセキュリティで保護します。 詳細については、「[Securing data stored in Azure Data Lake Storage Gen1 (Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護)](data-lake-store-secure-data.md)」をご覧ください。 移行を ACL の更新と調整に使用することをお勧めします。 現在の設定と同様の設定を使用することもできます。 Azure Portal、[PowerShell コマンドレット](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission)、または SDK を使用して、ファイルに適用されている ACL を表示できます。  
 
 * **分析サービスの場所**。 最良のパフォーマンスを得るには、Azure Data Lake Analytics や Azure HDInsight などの分析サービスをデータと同じリージョンに配置する必要があります。  
 

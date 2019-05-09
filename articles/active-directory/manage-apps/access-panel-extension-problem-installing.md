@@ -3,24 +3,25 @@ title: アプリケーション アクセス パネルのブラウザー拡張�
 description: アクセス パネルのブラウザー拡張機能のインストール時に発生する一般的なエラーを修正します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/4/18
-ms.author: barbkess
+ms.date: 5/4/2018
+ms.author: celested
 ms.reviewer: japere,asteen
-ms.openlocfilehash: aa0602ec0ecb97e9174fe6ef552b88fc30900d09
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 216568ac43c8e1b04c91d9a8f611a0ceb2e430af
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355528"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674006"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 
@@ -36,7 +37,7 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 
 パスワードベースの SSO には、次のブラウザーを使用できます。
 
-- **Edge**: Windows 10 Anniversary Edition 以降。 
+- **Microsoft Edge**: Windows 10 Anniversary Edition 以降。 
 - **Chrome**: Windows 7 以降、MacOS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
 
@@ -59,10 +60,10 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 
 7.  アクセス パネルにサインインし、パスワードベースの SSO アプリケーションを起動できるかどうかを確認します。
 
-次のサイトから Chrome と Edge 対応の拡張機能を直接ダウンロードすることもできます。
+次のサイトから Chrome と Microsoft Edge 対応の拡張機能を直接ダウンロードすることもできます。
 
 - [Chrome 拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Microsoft Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能の使用
 * `https://myapps.microsoft.com` 以外のマイ アプリの URL を使用している場合は、次の手順に従って既定の URL を構成します。

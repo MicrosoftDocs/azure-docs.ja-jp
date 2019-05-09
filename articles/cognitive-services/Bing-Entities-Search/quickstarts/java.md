@@ -1,123 +1,156 @@
 ---
-title: 'クイック スタート: Bing Entity Search API (Java)'
+title: クイック スタート:Java を使用して Bing Entity Search REST API に検索要求を送信する
 titlesuffix: Azure Cognitive Services
-description: Bing Entity Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
+description: このクイック スタートを使用すると、Java を使用して Bing Entity Search REST API に要求を送信し、JSON 応答を受信することができます。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 20a9e9b9c52d45c0f1c933f82e81d2d9a6f73edd
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e1799f2af89fd0498c11f3d695d84ccd93a9c857
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313879"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681932"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-java"></a>Bing Entity Search API のクイック スタート (Java) 
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>クイック スタート:Java を使用して Bing Entity Search REST API に検索要求を送信する
 
-この記事では、Java で [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)  API を使用する方法について説明します。
+このクイック スタートを使用すると、Bing Entity Search API への最初の呼び出しを行い、JSON 応答を表示することができます。 このシンプルな Java アプリケーションは、新しい検索クエリを API に送信してその応答を表示します。
+
+このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Gson ライブラリ](https://github.com/google/gson)
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Entity Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
 
-## <a name="search-entities"></a>エンティティの検索
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-このアプリケーションを削除するには、次の手順に従います。
+## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-1. 適切な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+1. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成し、以下のライブラリをインポートします。
 
-```java
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+   ```java
+   import java.io.*;
+   import java.net.*;
+   import java.util.*;
+   import javax.net.ssl.HttpsURLConnection;
+   import com.google.gson.Gson;
+   import com.google.gson.GsonBuilder;
+   import com.google.gson.JsonObject;
+   import com.google.gson.JsonParser;
+   import com.google.gson.Gson;
+   import com.google.gson.GsonBuilder;
+   import com.google.gson.JsonObject;
+   import com.google.gson.JsonParser;
+   ```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- *
- * Once you have compiled or downloaded gson-2.8.1.jar, assuming you have placed it in the
- * same folder as this file (EntitySearch.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac EntitySearch.java -cp .;gson-2.8.1.jar
- * java -cp .;gson-2.8.1.jar EntitySearch
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+2. 新しいクラスで、API エンドポイント、サブスクリプション キー、および検索クエリのための変数を作成します。
 
-public class EntitySearch {
+   ```java
+   public class EntitySearch {
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+      static String subscriptionKey = "ENTER KEY HERE";
+    
+        static String host = "https://api.cognitive.microsoft.com";
+        static String path = "/bing/v7.0/entities";
+    
+        static String mkt = "en-US";
+        static String query = "italian restaurant near me";
+   //...
+    
+   ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+## <a name="construct-a-search-request-string"></a>検索要求の文字列を作成する
 
-    static String host = "https://api.cognitive.microsoft.com";
-    static String path = "/bing/v7.0/entities";
-
-    static String mkt = "en-US";
-    static String query = "italian restaurant near me";
-
+1. JSON の `String` を返す `search()` という名前の関数を作成します。 検索クエリを URL でエンコードし、`&q=` でパラメーター文字列に追加します。 `?mkt=` を使用して文字列に市場を追加します。
+ 
+2. ホスト、パス、パラメーターの文字列を使用して、URL オブジェクトを作成します。
+    
+    ```java
+    //...
     public static String search () throws Exception {
         String encoded_query = URLEncoder.encode (query, "UTF-8");
         String params = "?mkt=" + mkt + "&q=" + encoded_query;
         URL url = new URL (host + path + params);
+    //...
+    ```
+      
+## <a name="send-a-search-request-and-receive-a-response"></a>検索要求を送信して応答を受信する
 
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setDoOutput(true);
+1. 上で作成した `search()` 関数内で、`url.openCOnnection()` を使用して新しい `HttpsURLConnection` オブジェクトを作成します。 要求方法を `GET` に設定し、`Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加します。
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(
+    ```java
+    //...
+    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+    connection.setDoOutput(true);
+    //...
+    ```
+
+2. 新しい `StringBuilder` を作成します。 API の応答を読み取るため、`BufferedReader` をインスタンス化するときに、パラメーターとして新しい `InputStreamReader` を使用します。  
+    
+    ```java
+    //...
+    StringBuilder response = new StringBuilder ();
+    BufferedReader in = new BufferedReader(
         new InputStreamReader(connection.getInputStream()));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+    //...
+    ```
 
-        return response.toString();
+3. `String` オブジェクトを作成し、`BufferedReader` からの応答を格納します。 それを反復処理して、各行を文字列に追加します。 その後リーダーを閉じて、応答を返します。 
+    
+    ```java
+    String line;
+    
+    while ((line = in.readLine()) != null) {
+      response.append(line);
     }
+    in.close();
+    
+    return response.toString();
+    ```
 
-    public static String prettify (String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
+## <a name="format-the-json-response"></a>JSON 応答の書式を設定する
 
-    public static void main(String[] args) {
-        try {
-            String response = search ();
-            System.out.println (prettify (response));
+1. JSON 応答の書式を設定するために、`prettify` という新しい関数を作成します。 新しい `JsonParser` を作成して、JSON テキストで `parse()` を呼び出し、それを JSON オブジェクトとして格納します。 
+
+2. Gson ライブラリを使用して新しい `GsonBuilder()` を作成し、`setPrettyPrinting().create()` を使用して JSON の書式を設定します。 次に、それを返します。    
+  
+   ```java
+   //...
+   public static String prettify (String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonObject json = parser.parse(json_text).getAsJsonObject();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+   }
+   //...
+   ```
+
+## <a name="call-the-search-function"></a>検索関数を呼び出す
+
+1. プロジェクトの main メソッドから `search()` を呼び出し、`prettify()` を使用してテキストの書式を設定します。
+    
+    ```java
+        public static void main(String[] args) {
+            try {
+                String response = search ();
+                System.out.println (prettify (response));
+            }
+            catch (Exception e) {
+                System.out.println (e);
+            }
         }
-        catch (Exception e) {
-            System.out.println (e);
-        }
-    }
-}
-```
+    ```
 
-**応答**
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -157,7 +190,7 @@ public class EntitySearch {
         "_type": "Restaurant",
         "webSearchUrl": "https://www.bing.com/search?q=Pickles+and+Preserves...",
         "name": "Munson's Pickles and Preserves Farm",
-        "url": "http://www.princi.com/",
+        "url": "https://www.princi.com/",
         "entityPresentationInfo": {
           "entityScenario": "ListItem",
           "entityTypeHints": [
@@ -182,11 +215,10 @@ public class EntitySearch {
 }
 ```
 
-[先頭に戻る](#HOLTop)
-
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Entity Search のチュートリアル](../tutorial-bing-entities-search-single-page-app.md)
-> [Bing Entity Search の概要](../search-the-web.md )
-> [API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
+
+* [Bing Entity Search API とは](../overview.md )
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

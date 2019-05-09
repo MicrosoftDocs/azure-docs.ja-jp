@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3c22aab20a9260bfd21869f0b327211e2f3d8894
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959735"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004209"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -55,7 +55,7 @@ ionic plugin add cordova-plugin-ms-azure-mobile-apps
 
 次の行を `app.component.ts` に追加してクライアント オブジェクトを作成します。
 
-```
+```typescript
 declare var WindowsAzure: any;
 var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
 ```
@@ -106,7 +106,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
              "https://localhost:3000"
          ],
 
-    URL をご使用のサービスの URL に置き換えます。  例には、"http://localhost:3000" (Node.js サンプル サービス用)、または "http://localhost:4400" (Ripple サービス用) が含まれています。  ただし、これらの URL は例にすぎません。例に示されているサービスの状況など、状況が異なる場合があります。
+    URL をご使用のサービスの URL に置き換えます。  例には、`http://localhost:3000` (Node.js サンプル サービス用)、または `http://localhost:4400` (Ripple サービス用) が含まれています。  ただし、これらの URL は例にすぎません。例に示されているサービスの状況など、状況が異なる場合があります。
 8. 画面の右上隅にある **[読み取り/書き込み]** ボタンをクリックします。
 9. 緑色の **[PUT]** ボタンをクリックします。
 
@@ -126,7 +126,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 ## <a name="register-for-push"></a>方法:プッシュ通知に登録する
 プッシュ通知を処理するには、 [phonegap-plugin-push] をインストールします。  このプラグインは、コマンド ラインで `cordova plugin add` コマンドを使用するか、Visual Studio 内で Git プラグイン インストーラーを使用することで簡単に追加できます。  Apache Cordova アプリの次のコードによって、デバイスがプッシュ通知に登録されます。
 
-```
+```javascript
 var pushOptions = {
     android: {
         senderId: '<from-gcm-console>'

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5b338f0b829a337bccf41af5ab9449a6b39b665d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b122d12394fe39990e359a3192e1ec5b68f17515
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186958"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899895"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>仮想ハード ディスクのデプロイ テンプレート 
 
@@ -27,7 +27,7 @@ ms.locfileid: "53186958"
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "userStorageAccountName": {

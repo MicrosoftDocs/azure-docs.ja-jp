@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 727ae9bbea4cabc5d27c32baff2123a7c03b531c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 31d4829c6adaf4bd5392ef393dcaefbeb7dc6255
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992421"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
+
 
 Azure は、定期的に更新を行い、仮想マシン (VM) のホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 更新には、ホスティング環境の修正や、ハードウェアのアップグレードおよび使用停止が含まれる場合があります。 更新の多くは、ホストされている VM には影響しません。 ただし、次のシナリオでは、更新によって VM に影響が及びます。
 
@@ -38,10 +39,8 @@ Azure は、定期的に更新を行い、仮想マシン (VM) のホスト イ�
 
 2 つの期間を用意した目的は、Azure によってメンテナンスが自動的に開始される時期を把握した上で、メンテナンスを開始して VM を再起動するのに必要な時間を十分に確保できるようにすることにあります。
 
-
 Azure Portal、PowerShell、REST API、Azure CLI を使用して、仮想マシン スケール セット VM のメンテナンス期間のクエリを実行し、セルフサービス メンテナンスを開始することができます。
 
-  
 ## <a name="should-you-start-maintenance-during-the-self-service-window"></a>セルフ サービス期間中にメンテナンスを開始する必要があるかどうか  
 
 次のガイドラインは、メンテナンスの開始時刻をお客様自身が選択するべきかどうかを判断するうえで役立ちます。
@@ -89,7 +88,7 @@ Azure Portal、PowerShell、REST API、Azure CLI を使用して、仮想マシ�
 
 | 値 | 説明 |
 |-------|-------------|
-| [はい] | 仮想マシン スケール セット内の少なくとも 1 つの VM がセルフ サービス期間内です。 このセルフサービス期間中は、いつでもメンテナンスを開始することができます。 | 
+| はい | 仮想マシン スケール セット内の少なくとも 1 つの VM がセルフ サービス期間内です。 このセルフサービス期間中は、いつでもメンテナンスを開始することができます。 | 
 | いいえ  | 影響を受ける仮想マシン スケール セットには、セルフサービス期間内の VM はありません。 | 
 | - | 仮想マシン スケール セットは、計画メンテナンス ウェーブの一部ではありません。| 
 
@@ -118,32 +117,28 @@ Azure は、サブスクリプション所有者と共同所有者グループ�
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>PowerShell を使用してメンテナンスの状態を確認する
 
-Azure PowerShell を使用して、仮想マシン スケール セット内の VM のメンテナンスの予定を確認することができます。 計画メンテナンスに関する情報は、[Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) コマンドレットと `-InstanceView` パラメーターを使用することで取得できます。
+Azure PowerShell を使用して、仮想マシン スケール セット内の VM のメンテナンスの予定を確認することができます。 計画メンテナンスに関する情報は、[Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) コマンドレットと `-InstanceView` パラメーターを使用することで取得できます。
  
 メンテナンス情報は、計画済みのメンテナンスがある場合にのみ返されます。 VM インスタンスに影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
 
 ```powershell
-Get-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
+Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
 **MaintenanceRedeployStatus** では、次のプロパティが返されます。 
-| 値 | 説明   |
-|-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 ||
-| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 ||
-| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 ||
-| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 ||
-| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 ||
-| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 ||
+
+| Value | Description   |
+
+|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | 現在 VM でメンテナンスを開始できるかどうかが示されます。 | | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 | | PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 | | MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 | | MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 | | LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
 
 
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>PowerShell を使用して VM インスタンスに対するメンテナンスを開始する
 
-**IsCustomerInitiatedMaintenanceAllowed** が **true** に設定されている場合は、VM のメンテナンスを開始できます。 [Set-AzureRmVmss](/powershell/module/azurerm.compute/set-azurermvmss) コマンドレットと `-PerformMaintenance` パラメーターを使用します。
+**IsCustomerInitiatedMaintenanceAllowed** が **true** に設定されている場合は、VM のメンテナンスを開始できます。 [Set-AzVmss](/powershell/module/az.compute/set-azvmss) コマンドレットと `-PerformMaintenance` パラメーターを使用します。
 
 ```powershell
-Set-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
+Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>CLI を使用してメンテナンスの状態を確認する
@@ -157,14 +152,10 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
 **MaintenanceRedeployStatus** では、各 VM インスタンスについて次のプロパティが返されます。 
-| 値 | 説明   |
-|-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 ||
-| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 ||
-| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 ||
-| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 ||
-| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 ||
-| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 ||
+
+| Value | Description   |
+
+|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | 現在 VM でメンテナンスを開始できるかどうかが示されます。 | | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 | | PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 | | MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 | | MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 | | LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
 
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>CLI を使用して VM インスタンスに対するメンテナンスを開始する

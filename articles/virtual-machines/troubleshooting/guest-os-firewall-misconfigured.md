@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137839"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839748"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM のゲスト OS のファイアウォールが正しく構成されていない
 
@@ -68,7 +68,7 @@ ms.locfileid: "53137839"
 *   アプリケーションで使用されているローカル ポートを使用して照会します。
 
     ```cmd
-    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICAITON PORT>)" -context 9,4 | more
+    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICATION PORT>)" -context 9,4 | more
     ```
 
 *   アプリケーションで使用されているローカル IP アドレスを使用して照会します。
@@ -96,9 +96,9 @@ ms.locfileid: "53137839"
 
 *   RDP を介して VM への接続を再試行します。
 
-### <a name="offline-mitigations"></a>オフラインの軽減策
+### <a name="offline-mitigations"></a>オフラインの対応策
 
-1.  ファイアウォール規則を有効または無効にする方法については、「[Enable or disable a firewall rule on a Azure VM Guest OS](enable-disable-firewall-rule-guest-os.md)」(Azure VM のゲスト OS のファイアウォール規則を有効または無効にする) を参照してください。
+1.  ファイアウォール規則を有効または無効にする方法については、「[Azure VM のゲスト OS 上のファイアウォール規則を有効または無効にする](enable-disable-firewall-rule-guest-os.md)」を参照してください。
 
 2.  [ゲスト OS のファイアウォールによって受信トラフィックがブロックされるシナリオ](guest-os-firewall-blocking-inbound-traffic.md)に該当するかどうかを確認します。
 

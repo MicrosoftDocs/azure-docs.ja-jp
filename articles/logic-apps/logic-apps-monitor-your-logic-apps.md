@@ -10,18 +10,20 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: e06bf20a04c6a57ae5988d4cc334ec7a3cdd4bf1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543858"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112315"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
 [ロジック アプリを作成して実行する](../logic-apps/quickstart-create-first-logic-app-workflow.md)と、その実行の履歴、トリガーの履歴、状態、パフォーマンスを確認できます。 リアルタイムでのイベントの監視と高度なデバッグについては、ご利用のロジック アプリの[診断ログ](#azure-diagnostics)を設定します。 このようにして、トリガー イベント、実行イベント、アクション イベントなど、[イベントを検索して表示する](#find-events)ことができます。 また、Azure Storage や Azure Event Hubs などの[他のサービスでこの診断データ](#extend-diagnostic-data)を使用することもできます。 
 
-エラーやその他考えられる問題に関する通知を受け取るには、[アラート](#add-azure-alerts)を設定します。 たとえば、"1 時間に 5 件を超える実行が失敗したとき" を検出するアラートを作成できます。 また、[Azure 診断イベントの設定とプロパティ](#diagnostic-event-properties)を使用すると、監視、追跡、ログ記録をプログラムで設定することもできます。
+エラーやその他考えられる問題に関する通知を受け取るには、[アラート](#add-azure-alerts)を設定します。 たとえば、"1 時間に 5 件を超える実行が失敗したとき" を検出するアラートを作成できます。 また、[Azure Diagnostics イベントの設定とプロパティ](#diagnostic-event-properties)を使用すると、監視、追跡、ログ記録をプログラムで設定することもできます。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>ロジック アプリの実行の履歴とトリガーの履歴を表示する
 
@@ -72,7 +74,7 @@ ms.locfileid: "53543858"
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>ロジック アプリの診断ログを有効にする
 
-実行時の詳細情報やイベントを使用した高度なデバッグの場合は、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して診断ログを設定できます。 Log Analytics は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するうえで役立ちます。 
+実行時の詳細情報やイベントを使用した高度なデバッグの場合は、[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を使用して診断ログを設定できます。 Azure Monitor は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するうえで役立ちます。 
 
 開始する前に、Log Analytics ワークスペースを用意しておく必要があります。 [Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
 
@@ -91,8 +93,8 @@ ms.locfileid: "53543858"
    1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
    3. **[OMS ワークスペース]** で、ログに使用するワークスペースを選択します。
-   > [!NOTE]
-   > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
+      > [!NOTE]
+      > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
    4. **[ログ]** で、**[WorkflowRuntime]** カテゴリを選択します。
    5. メトリックの間隔を選択します。
    6. 完了したら、**[保存]** を選択します。
@@ -125,7 +127,7 @@ ms.locfileid: "53543858"
 
    ![検索文字列を入力する](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+   詳細については、[Azure Monitor ログでのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
 
 5. 結果ページの左側のバーで、表示する期間を選択します。
 フィルターを追加してクエリを絞り込むには、**[+ 追加]** を選択します。
@@ -153,7 +155,7 @@ ms.locfileid: "53543858"
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>診断データを他のサービスで使用する方法と場所を拡張する
 
-Azure Log Analytics と併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。 
+Azure Monitor ログと併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。 
 
 * [Azure 診断ログを Azure Storage にアーカイブする](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Azure 診断ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -176,7 +178,7 @@ Azure Log Analytics と併せて、ロジック アプリの診断データを�
 
 ご利用のロジック アプリの特定のメトリックまたは超過したしきい値を監視するには、[Azure のアラート](../azure-monitor/platform/alerts-overview.md)を設定します。 [Azure のメトリック](../monitoring-and-diagnostics/monitoring-overview-metrics.md)について確認してください。 
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用せずにアラートを設定するには、次の手順に従います。 高度なアラートの条件とアクションの場合は、[Log Analytics も設定してください](#azure-diagnostics)。
+[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を使用せずにアラートを設定するには、次の手順を実行します。 高度なアラートの条件とアクションの場合は、[Azure Monitor ログも設定してください](#azure-diagnostics)。
 
 1. ロジック アプリ ブレードのメニューの **[監視]** で、次に示すように、**[診断]** > **[アラート ルール]** > **[アラートの追加]** の順に選択します。
 
@@ -205,9 +207,9 @@ Azure Log Analytics と併せて、ロジック アプリの診断データを�
 
 <a name="diagnostic-event-properties"></a>
 
-## <a name="azure-diagnostics-event-settings-and-details"></a>Azure 診断イベントの設定と詳細
+## <a name="azure-diagnostics-event-settings-and-details"></a>Azure Diagnostics イベントの設定と詳細
 
-各診断イベントには、ご利用のロジック アプリとそのイベントに関する詳細 (状態、開始時刻、終了時刻など) が含まれています。 監視、追跡、ログをプログラムで設定する際に、これらの詳細を [Azure Logic Apps 用 REST API](https://docs.microsoft.com/rest/api/logic) と [Azure 診断用 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) で使用できます。
+各診断イベントには、ご利用のロジック アプリとそのイベントに関する詳細 (状態、開始時刻、終了時刻など) が含まれています。 監視、追跡、ログをプログラムで設定する際に、これらの詳細を [Azure Logic Apps 用 REST API](https://docs.microsoft.com/rest/api/logic) と [Azure Diagnostics 用 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) で使用できます。
 
 たとえば、`ActionCompleted` イベントには、追跡と監視に使用できる `clientTrackingId` プロパティと `trackedProperties` プロパティがあります。
 

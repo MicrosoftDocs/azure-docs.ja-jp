@@ -2,19 +2,19 @@
 title: Azure Key Vault 開発者ガイド
 description: 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。
 services: key-vault
-author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/05/2018
-ms.author: bryanla
-ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 02/11/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 06fd66c3fb9e90e0198d40253f3c554fe8596c3d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237538"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543371"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -23,7 +23,7 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 - 自分でコードを記述しなくても、キーとシークレットが保護され、アプリケーションから簡単に使用できます。
 - 顧客自身にキーを所有して管理してもらうことができるため、主要なソフトウェア機能の提供に集中できます。 この方法では、アプリケーションが顧客のテナント キーとシークレットに対して義務や潜在的責任を負うことはありません。
 - アプリケーションで署名と暗号化にキーを使用しながら、キー管理をアプリケーションの外部で行うことができます。これにより、ソリューションは地理的に分散したアプリを対象とすることができます。
-- Key Vault の 2016 年 9 月のリリース以降、アプリケーションで Key Vault の証明書を管理できるようになりました。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)」を参照してください。
+- Key Vault の 2016 年 9 月のリリース以降、アプリケーションで Key Vault の証明書を管理できるようになりました。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](/rest/api/keyvault/about-keys--secrets-and-certificates)」を参照してください。
 
 Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-whatis.md)」を参照してください。
 
@@ -36,7 +36,7 @@ Key Vault の新機能のパブリック プレビューは定期的にリリー
 >[!NOTE]
 >Azure Key Vault のこのアップデートでは、**ストレージ アカウント キー**機能のみがプレビュー段階です。
 
-このプレビューには、[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) の各インターフェイスで使用できる新しいストレージ アカウント キー機能が用意されています。 
+このプレビューには、[.NET/C#](/dotnet/api/microsoft.azure.keyvault/)、[REST](/rest/api/keyvault/)、[PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) の各インターフェイスで使用できる新しいストレージ アカウント キー機能が用意されています。 
 
 新しいストレージ アカウント キー機能について詳しくは、[Azure Key Vault ストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)に関する記事をご覧ください。
 
@@ -55,14 +55,14 @@ Key Vault の新機能のパブリック プレビューは定期的にリリー
 
 Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 Azure リソースのマネージド ID は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-Azure リソースのマネージド ID の詳細については、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。 AAD の操作の詳細については、[Azure Active Directory とアプリケーションの統合](/azure/active-directory/develop/active-directory-integrating-applications)に関するページを参照してください。
+Azure リソースのマネージド ID の詳細については、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。 AAD の操作の詳細については、[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-integrating-applications.md)に関するページを参照してください。
 
 キー コンテナーでキー、シークレット、または証明書を使用する前に、次の記事に従って、CLI、PowerShell、Resource Manager テンプレートまたは REST でキーを作成し、管理します。
 
 - [CLI を使用した Key Vault の管理](key-vault-manage-with-cli2.md)
-- [PowerShell を使用した Key Vault の作成と管理](key-vault-get-started.md)
+- [PowerShell を使用した Key Vault の作成と管理](key-vault-overview.md)
 - [Azure Resource Manager テンプレートを使用した Key Vault の作成とシークレットの追加](../azure-resource-manager/resource-manager-template-keyvault.md)
-- [REST を使用した Key Vault の作成と管理](https://docs.microsoft.com/rest/api/keyvault/)
+- [REST を使用した Key Vault の作成と管理](/rest/api/keyvault/)
 
 
 ## <a name="coding-with-key-vault"></a>Key Vault を使用したコーディング
@@ -75,35 +75,35 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 すべてのキー コンテナー リソースは、インターフェイス、コンテナー、キー、シークレットなどの REST インターフェイスからアクセスできます。 
 
-[Key Vault REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)。 
+[Key Vault REST API リファレンス](/rest/api/keyvault/)。
 
 #### <a name="net"></a>.NET
 
-[Key Vault の .NET API リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault) 
+[Key Vault の .NET API リファレンス](/dotnet/api/microsoft.azure.keyvault)。
 
 .NET SDK の 2.x バージョンの詳細については、[リリース ノート](key-vault-dotnet2api-release-notes.md)をご覧ください。
 
 #### <a name="java"></a>Java
 
-[Key Vault の Java SDK](https://docs.microsoft.com/java/api/overview/azure/keyvault)
+[Key Vault の Java SDK](/java/api/overview/azure/keyvault)
 
 #### <a name="nodejs"></a>Node.js
 
 Node.js では、キー コンテナー管理 API とキー コンテナー オブジェクト API は別々になっています。 次の概要の記事から、両方にアクセスすることができます。 
 
-[Node.js 用 Azure Key Vault モジュール](https://docs.microsoft.com/nodejs/api/overview/azure/key-vault)
+[Node.js 用 Azure Key Vault モジュール](/nodejs/api/overview/azure/key-vault)
 
 #### <a name="python"></a>Python
 
-[Python 用 Azure Key Vault ライブラリ](https://docs.microsoft.com/python/api/overview/azure/key-vault)
+[Python 用 Azure Key Vault ライブラリ](/python/api/overview/azure/key-vault)
 
 #### <a name="azure-cli-2"></a>Azure CLI 2
 
-[Azure CLI for Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+[Azure CLI for Key Vault](/cli/azure/keyvault)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 
-[Azure PowerShell for Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault)
+[Azure PowerShell for Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
 ### <a name="quick-start-guides"></a>クイック スタート ガイド
 
@@ -139,7 +139,7 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 Key Vault を使用したり、Key Vault と統合したりする他のシナリオとサービスについては、以下の記事で取り上げています。
 
 - [Azure Disk Encryption](../security/azure-security-disk-encryption.md) では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS とデータ ディスクのボリュームの暗号化を提供します。 ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
-- [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) では、アカウントに格納されているデータを暗号化するオプションを提供します。 キーの管理に関して、Data Lake Store には、Data Lake Store に格納されているすべてのデータを暗号化解除するのに必要なマスター暗号化キー (MEK) を管理するための 2 つのモードが用意されています。 Data Lake Store に MEK の管理を任せることも、Azure Key Vault アカウントを使用して MEK の所有権を保持することもできます。 キー管理のモードは、Data Lake Store アカウントの作成時に指定します。 
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) では、アカウントに格納されているデータを暗号化するオプションを提供します。 キーの管理に関して、Data Lake Store には、Data Lake Store に格納されているすべてのデータを暗号化解除するのに必要なマスター暗号化キー (MEK) を管理するための 2 つのモードが用意されています。 Data Lake Store に MEK の管理を任せることも、Azure Key Vault アカウントを使用して MEK の所有権を保持することもできます。 キー管理のモードは、Data Lake Store アカウントの作成時に指定します。
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) では、独自のテナント キーを管理できます。 たとえば、テナント キーの管理をマイクロソフトに任せる (既定値) 代わりに、組織に適用される特定の規則を遵守する独自のテナント キーを管理できます。 独自のテナント キーの管理は、BYOK (Bring Your Own Key: 独自のキーを持ち込むの意) とも呼ばれます。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
@@ -156,7 +156,5 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 ## <a name="supporting-libraries"></a>対応ライブラリ
 
-- [Microsoft Azure Key Vault Core Library](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core): 識別子からキーを検索し、キーを使用して操作を実行する、**IKey** および **IKeyResolver** インターフェイスを提供します。
-- [Microsoft Azure Key Vault Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) : Azure Key Vault の拡張機能を提供します。
-
-
+- [Microsoft Azure Key Vault Core Library](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core): 識別子からキーを検索し、キーを使用して操作を実行する、**IKey** および **IKeyResolver** インターフェイスを提供します。
+- [Microsoft Azure Key Vault Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) : Azure Key Vault の拡張機能を提供します。

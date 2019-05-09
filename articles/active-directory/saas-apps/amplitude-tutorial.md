@@ -1,248 +1,228 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Amplitude の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Amplitude の統合 | Microsoft Docs
 description: Azure Active Directory と Amplitude の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 496c9ffa-c833-41fa-8d17-2dc3044954d1
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/16/2018
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a2815b60799f98071915a0f06908fd92ff3fb2f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: af8bba46bba103eae49ea26ffc0c653c2ccc8309
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043933"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860467"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-amplitude"></a>チュートリアル: Azure Active Directory と Amplitude の統合
+# <a name="tutorial-azure-active-directory-integration-with-amplitude"></a>チュートリアル:Azure Active Directory と Amplitude の統合
 
 このチュートリアルでは、Amplitude と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Amplitude と Azure AD の統合には、次の利点があります。
 
-- Amplitude にアクセスするユーザーを Azure AD で管理できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Amplitude にサインオン (シングル サインオン) できるように、設定が可能です。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Amplitude にアクセスするユーザーを Azure AD で管理できます。
+* ユーザーが自分の Azure AD アカウントを使用して自動的に Amplitude にサインイン (シングル サインオン) するよう指定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Amplitude と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Amplitude でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Amplitude でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーから Amplitude を追加する
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Amplitude では、**SP と IDP** によって開始される SSO がサポートされます
+* Amplitude では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-amplitude-from-the-gallery"></a>ギャラリーから Amplitude を追加する
+
 Azure AD への Amplitude の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Amplitude を追加する必要があります。
 
 **ギャラリーから Amplitude を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
 4. 検索ボックスに「**Amplitude**」と入力し、結果ウィンドウで **[Amplitude]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の Amplitude](./media/amplitude-tutorial/tutorial_amplitude_addfromgallery.png)
+    ![結果一覧の Amplitude](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Amplitude で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Amplitude ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Amplitude の関連ユーザーの間で、リンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Amplitude による Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Amplitude 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Amplitude で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Amplitude のテスト ユーザーの作成](#create-an-amplitude-test-user)** - Amplitude で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+2. **[Amplitude シングル サインオンの構成](#configure-amplitude-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[Amplitude のテスト ユーザーの作成](#create-amplitude-test-user)** - Azure AD のユーザー表現にリンクさせる Britta Simon に対応するユーザーを Amplitude 内に作成します。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Amplitude アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Amplitude で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Amplitude によって Azure AD のシングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **Amplitude** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) 内の **Amplitude** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/amplitude-tutorial/tutorial_amplitude_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-3. アプリケーションを **IDP** 開始モードで構成する場合は、**[Amplitude のドメインと URL]** セクションで次の手順を実行します。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[Amplitude のドメインと URL] のシングル サインオン情報](./media/amplitude-tutorial/tutorial_amplitude_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    a. **[識別子]** ボックスに次の URL を入力します。`https://amplitude.com/saml/sso/metadata`
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    b. **[応答 URL]** ボックスに、`https://analytics.amplitude.com/saml/sso/<uniqueid>` のパターンを使用して URL を入力します。
+4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+
+    ![[Amplitude のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+
+    a. **[識別子]** ボックスに、`https://amplitude.com/saml/sso/metadata` という URL を入力します。
+
+    b. **[応答 URL]** ボックスに、`https://analytics.amplitude.com/saml/sso/<uniqueid>` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 応答 URL はこのチュートリアルの後半で取得します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Amplitude のドメインと URL] のシングル サインオン情報](./media/amplitude-tutorial/tutorial_amplitude_url1.png)
+    ![[Amplitude のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、URL として「`https://analytics.amplitude.com/sso`」を入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://analytics.amplitude.com/sso`」と入力します。
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](./media/amplitude-tutorial/tutorial_amplitude_certificate.png) 
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[保存]** ボタンをクリックします。
+7. **[Amplitude のセットアップ]** セクションで、要件に沿った適切な URL をコピーします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/amplitude-tutorial/tutorial_general_400.png)
-    
-7. Amplitude 企業サイトに管理者としてサインオンします。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-8. 左側のナビゲーション バーから **[Plan Admin]\(プラン管理者\)** をクリックします。
+    a. ログイン URL
+
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-amplitude-single-sign-on"></a>Amplitude シングル サインオンの構成
+
+1. Amplitude 企業サイトに管理者としてサインオンします。
+
+2. 左側のナビゲーション バーから **[Plan Admin]\(プラン管理者\)** をクリックします。
 
     ![Configure single sign-on](./media/amplitude-tutorial/configure1.png)
 
-9. **[SSO Integration]\(SSO の統合\)** から **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** を選択します。
+3. **[SSO Integration]\(SSO の統合\)** から **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** を選択します。
 
     ![Configure single sign-on](./media/amplitude-tutorial/configure2.png)
 
-10. **[Setup Single Sign-On]\(シングル サインオンの設定\)** セクションで、次の手順を実行します。
+4. **[Setup Single Sign-On]\(シングル サインオンの設定\)** セクションで、次の手順を実行します。
 
     ![Configure single sign-on](./media/amplitude-tutorial/configure3.png)
 
     a. Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
 
-    b. **[Reply URL (ACS)]\(応答 URL (ACS)\)** の値をコピーして Azure Portal の [Amplitude のドメインと URL] セクションの **[応答 URL]** ボックスに貼り付けます。
+    b. **[Reply URL (ACS)]\(応答 URL (ACS)\)** の値をコピーして Azure portal 上の **[基本的な SAML 構成]** にある **[応答 URL]** テキスト ボックスに貼り付けます。
 
     c. **[保存]**
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/amplitude-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/amplitude-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/amplitude-tutorial/create_aaduser_03.png)
-
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/amplitude-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="create-an-amplitude-test-user"></a>Amplitude テスト ユーザーを作成する
-
-このセクションの目的は、Amplitude で Britta Simon というユーザーを作成することです。 Amplitude では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Amplitude にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
->[!Note]
->ユーザーを手動で作成する必要がある場合は、[Amplitude サポート チーム](https://amplitude.zendesk.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Amplitude へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Amplitude]** の順に選択します。
 
-**Amplitude に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で **[Amplitude]** を選択します。
 
-    ![アプリケーションの一覧の Amplitude リンク](./media/amplitude-tutorial/tutorial_amplitude_app.png)  
+    ![アプリケーションの一覧の Amplitude リンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[割り当ての追加] ウィンドウ][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+
+### <a name="create-amplitude-test-user"></a>Amplitude のテスト ユーザーの作成
+
+このセクションでは、Britta Simon というユーザーを Amplitude に作成します。 Amplitude では、Just-In-Time ユーザー プロビジョニングがサポートされ、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Amplitude にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+
+> [!Note]
+> ユーザーを手動で作成する必要がある場合は、 [Amplitude のサポート チーム](https://amplitude.zendesk.com)にお問い合わせください。
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Amplitude] タイルをクリックすると、自動的に Amplitude アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネル内の [Amplitude] タイルをクリックすると、SSO を設定した Amplitude に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/amplitude-tutorial/tutorial_general_01.png
-[2]: ./media/amplitude-tutorial/tutorial_general_02.png
-[3]: ./media/amplitude-tutorial/tutorial_general_03.png
-[4]: ./media/amplitude-tutorial/tutorial_general_04.png
-
-[100]: ./media/amplitude-tutorial/tutorial_general_100.png
-
-[200]: ./media/amplitude-tutorial/tutorial_general_200.png
-[201]: ./media/amplitude-tutorial/tutorial_general_201.png
-[202]: ./media/amplitude-tutorial/tutorial_general_202.png
-[203]: ./media/amplitude-tutorial/tutorial_general_203.png
-
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

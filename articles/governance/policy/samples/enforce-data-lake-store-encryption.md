@@ -1,21 +1,20 @@
 ---
 title: サンプル - Data Lake Store の暗号化が必要
-description: このサンプル ポリシーには、Data Lake Store の暗号化が必要です。
-services: azure-policy
+description: このサンプル ポリシー定義は、Data Lake Store の暗号化が有効になっていることを要求します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f2cd6523b8f96066fbbc91a7bfb6c283e23fdea3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f9e38b737cad255ef2d9802490b5d114950d01e6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318820"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785923"
 ---
-# <a name="require-data-lake-store-encryption"></a>Data Lake Store 暗号化を必要とする
+# <a name="sample---require-data-lake-store-encryption"></a>サンプル - Data Lake Store 暗号化を必要とする
 
 このビルトイン ポリシーでは、暗号化が有効になっていない Data Lake Store アカウントを拒否します。
 
@@ -51,12 +50,12 @@ ms.locfileid: "53318820"
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
-$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/a7ff3161-0087-490a-9ad9-ad6217f4f43a
+$definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/a7ff3161-0087-490a-9ad9-ad6217f4f43a
 
-New-AzureRmPolicyAssignment -name "Data Lake Store encryption" -PolicyDefinition $definition -Scope <scope>
+New-AzPolicyAssignment -name "Data Lake Store encryption" -PolicyDefinition $definition -Scope <scope>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>PowerShell でのデプロイをクリーンアップする
@@ -64,7 +63,7 @@ New-AzureRmPolicyAssignment -name "Data Lake Store encryption" -PolicyDefinition
 ポリシーの割り当てを削除するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
+Remove-AzPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
 ```
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ

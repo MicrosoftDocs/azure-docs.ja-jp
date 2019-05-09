@@ -1,23 +1,23 @@
 ---
-title: Azure Data Lake Storage Gen2 プレビューの概要
-description: Azure Data Lake Storage Gen2 プレビューの概要について説明します
+title: Azure Data Lake Storage Gen2 の概要
+description: Azure Data Lake Storage Gen2 の概要について説明します
 services: storage
 author: jamesbak
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994336"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009436"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 プレビューの概要
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
-‎Azure Data Lake Storage Gen2 プレビューは、ビッグ データ分析専用の機能セットであり、[Azure Blob Storage](storage-blobs-introduction.md) に基づいて構築されています。 Data Lake Storage Gen2 は、Azure Blob ストレージと Azure Data Lake Storage Gen1 という、既存の 2 つのストレージ サービスの機能を集約したものです。 ファイル システム セマンティクス、ディレクトリ、ファイル レベルのセキュリティおよびスケーリングなど、[Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index) に由来する機能が、[Azure Blob ストレージ](storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能と組み合わされています。
+‎Azure Data Lake Storage Gen2 は、ビッグ データ分析専用の機能セットであり、[Azure Blob Storage](storage-blobs-introduction.md) に基づいて構築されています。 Data Lake Storage Gen2 は、Azure Blob ストレージと Azure Data Lake Storage Gen1 という、既存の 2 つのストレージ サービスの機能を集約したものです。 ファイル システム セマンティクス、ディレクトリ、ファイル レベルのセキュリティおよびスケーリングなど、[Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index) に由来する機能が、[Azure Blob ストレージ](storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能と組み合わされています。
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>エンタープライズ ビッグ データ分析用に設計されている
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 の基礎部分は、BLOB ストレージに[階層型名
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 の主な機能
 
--   **Hadoop と互換性のあるアクセス**:Data Lake Storage Gen2 を使用すると、[Hadoop 分散ファイル システム (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理およびアクセスを行うことができます。 新しい [ABFS ドライバー](data-lake-storage-abfs-driver.md)は、[Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*、* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)、[SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) など、すべての Apache Hadoop 環境内で、Data Lake Storage Gen2 に格納されているデータにアクセスするために使用できます。
+-   **Hadoop と互換性のあるアクセス**:Data Lake Storage Gen2 を使用すると、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理およびアクセスを行うことができます。 新しい [ABFS ドライバー](data-lake-storage-abfs-driver.md)は、[Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*、* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)、[SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) など、すべての Apache Hadoop 環境内で、Data Lake Storage Gen2 に格納されているデータにアクセスするために使用できます。
 
 -   **POSIX アクセス許可のスーパーセット**:Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定をサポートしています。 設定は、ストレージ エクスプローラーだけでなく、Hive や Spark などのフレームワークを使用して構成できます。
 
@@ -51,7 +51,7 @@ Azure Storage では、Data Lake Storage Gen2 または Blob ストレージ イ
 
 ### <a name="cost-effectiveness"></a>コスト効率
 
-Azure Blob ストレージの上位に Data Lake Storage Gen2 をビルドする多くのメリットの 1 つが、低コストのストレージ容量とトランザクションです。 他のクラウド ストレージ サービスとは違って、Data Lake Storage Gen2 に格納されているデータは、分析を実行する前に移行または変換を行う必要がありません。 価格の詳細については、[Azure Storage の価格]((https://azure.microsoft.com/pricing/details/storage))に関するページを参照してください。
+Azure Blob ストレージの上位に Data Lake Storage Gen2 をビルドする多くのメリットの 1 つが、低コストのストレージ容量とトランザクションです。 他のクラウド ストレージ サービスとは違って、Data Lake Storage Gen2 に格納されているデータは、分析を実行する前に移行または変換を行う必要がありません。 価格の詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage)に関するページを参照してください。
 
 さらに、[階層構造の名前空間](data-lake-storage-namespace.md)などの機能は、多数の分析ジョブのパフォーマンス全体を大幅に向上させます。 このパフォーマンスの向上は、同じデータ量を処理するうえで必要とするコンピューティング能力をより低減できることを意味し、結果として、エンド ツー エンドの分析ジョブの総保有コスト (TCO) を削減できます。
 
@@ -76,10 +76,10 @@ Data Lake Storage Gen2 は、Azure Blob ストレージに基づいて構築さ�
 | プラットフォーム |  サポートされるバージョン | 詳細情報 |
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 以降 | [HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-| [Hadoop](https://hadoop.apache.org/) | 2.7 以降 | [Apache Hadoop リリース アーカイブ](https://hadoop.apache.org/release.html) |
+| [Hadoop](https://hadoop.apache.org/) | 3.2 以降 | [Apache Hadoop リリース アーカイブ](https://hadoop.apache.org/release.html) |
 | [Cloudera](https://www.cloudera.com/) | 6.1 以降 | [Cloudera Enterprise 6.x のリリース ノート](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
-| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 4.2 以降 | [Databricks Runtime のバージョン](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[Hortonworks](https://hortonworks.com/)| 2.6 以降 | [Hortonworks のドキュメント](https://docs.hortonworks.com/) |
+| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 以降 | [Databricks Runtime のバージョン](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
+|[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [クラウド データ アクセスの構成](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
 
 ## <a name="next-steps"></a>次の手順
 
@@ -87,5 +87,4 @@ Data Lake Storage Gen2 は、Azure Blob ストレージに基づいて構築さ�
 
 -   [階層構造の名前空間](data-lake-storage-namespace.md)
 -   [ストレージ アカウントの作成](data-lake-storage-quickstart-create-account.md)
--   [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 -   [Azure Databricks での Data Lake Storage Gen2 アカウントの使用](data-lake-storage-quickstart-create-databricks-account.md)

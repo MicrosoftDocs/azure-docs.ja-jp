@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e92e86f59058f1f226c67f873530cd9c06b5d5fc
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c26da5d047a1e904510f96b44d81632b6e98689e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428336"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190971"
 ---
 # <a name="create-perspectives"></a>パースペクティブを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "49428336"
 このレッスンの推定所要時間: **5 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 7: 主要業績評価指標を作成する](../tutorials/aas-lesson-7-create-key-performance-indicators.md)」を完了している必要があります。  
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 7: 主要業績評価指標を作成する](../tutorials/aas-lesson-7-create-key-performance-indicators.md)」を完了している必要があります。  
   
 ## <a name="create-perspectives"></a>パースペクティブを作成する  
   
@@ -45,7 +45,7 @@ ms.locfileid: "49428336"
     後のレッスンでは、[Excel で分析] 機能を使用して、このパースペクティブをテストすることができます。 Excel の [ピボットテーブルのフィールド リスト] には、DimCustomer テーブルを除く各テーブルが含まれます。  
 
 ## <a name="whats-next"></a>次の手順
-[レッスン 9: 階層を作成する](../tutorials/aas-lesson-9-create-hierarchies.md)
+[レッスン 9: 階層を作成する](../tutorials/aas-lesson-9-create-hierarchies.md)。
   
   
   

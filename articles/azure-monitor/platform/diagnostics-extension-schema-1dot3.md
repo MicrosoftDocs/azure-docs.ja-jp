@@ -1,6 +1,6 @@
 ---
-title: Azure 診断拡張機能 1.3 以降の構成スキーマ
-description: スキーマがバージョン 1.3 以降の Azure 診断は、Microsoft Azure SDK 2.4 以降に付属しています。
+title: Azure Diagnostics 拡張機能 1.3 以降の構成スキーマ
+description: スキーマがバージョン 1.3 以降の Azure Diagnostics は、Microsoft Azure SDK 2.4 以降に付属しています。
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -8,17 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: a330f92e0a44153cb258ff86299d34aa408496d2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325691"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59497085"
 ---
-# <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure 診断の 1.3 以降の構成スキーマ
+# <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure Diagnostics の 1.3 以降の構成スキーマ
 > [!NOTE]
-> Azure 診断拡張機能は、パフォーマンス カウンターとその他の統計を収集するために使用されるコンポーネントです。
+> Azure Diagnostics 拡張機能は、パフォーマンス カウンターとその他の統計を収集するために使用されるコンポーネントです。
 > - Azure Virtual Machines
 > - Virtual Machine Scale Sets
 > - Service Fabric
@@ -31,7 +31,7 @@ ms.locfileid: "53325691"
 
 ここで説明する構成ファイルは、診断モニターの開始時に、診断構成設定を設定するために使用されます。  
 
-この拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と組み合わせて使用します。
+この拡張機能は、Application Insights と Log Analytics が含まれる Azure Monitor など、他の Microsoft 診断製品と組み合わせて使用します。
 
 
 
@@ -41,7 +41,7 @@ ms.locfileid: "53325691"
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
-Azure 診断の詳細については、[Azure 診断拡張機能](diagnostics-extension-overview.md)に関するページを参照してください。  
+Azure Diagnostics の詳細については、[Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)に関するページを参照してください。  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>診断構成ファイルの例  
  一般的な診断構成ファイルの例を次に示します。  
@@ -404,7 +404,7 @@ Azure 診断の詳細については、[Azure 診断拡張機能](diagnostics-ex
  次のタグは、前の例で示されている順序とほぼ同じように示されています。  説明が見つからない場合は、このページで要素または属性を検索してください。  
 
 ## <a name="common-attribute-types"></a>一般的な属性の型  
- **scheduledTransferPeriod** 属性は、複数の要素に表示されます。 ストレージへのスケジュールされている転送の間隔です。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。
+ **scheduledTransferPeriod** 属性は、複数の要素に表示されます。 ストレージへのスケジュールされている転送の間隔です。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration 要素  
@@ -434,7 +434,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**WadCfg**|必須。 このページの他の場所の説明を参照してください。|  
 |**StorageAccount**|データを格納する Azure ストレージ アカウントの名前。 Set-AzureServiceDiagnosticsExtension コマンドレットを実行するときに、パラメーターとして指定することもできます。|  
 |**StorageType**|*Table*、*Blob*、または *TableAndBlob* を指定できます。 既定値は Table です。 TableAndBlob を選択すると、種類ごとに 1 回、つまり合計 2 回、診断データが書き込まれます。|  
-|**LocalResourceDirectory**|監視エージェントがイベント データを保存する仮想マシンのディレクトリ。 設定しない場合は、既定のディレクトリが使用されます。<br /><br /> worker/Web ロールの場合: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 仮想マシンの場合: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必須属性は次のとおりです。<br /><br /> - **path** - Azure 診断で使用するシステム上のディレクトリ。<br /><br /> - **expandEnvironment** - 環境変数をパス名で展開するかどうかを制御します。|  
+|**LocalResourceDirectory**|監視エージェントがイベント データを保存する仮想マシンのディレクトリ。 設定しない場合は、既定のディレクトリが使用されます。<br /><br /> worker/Web ロールの場合: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 仮想マシンの場合: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必須属性は次のとおりです。<br /><br /> - **path** - Azure Diagnostics で使用するシステム上のディレクトリ。<br /><br /> - **expandEnvironment** - 環境変数をパス名で展開するかどうかを制御します。|  
 
 ## <a name="wadcfg-element"></a>WadCFG 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG*
@@ -449,8 +449,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|説明|  
 |----------------|-----------------|  
-| **overallQuotaInMB** | Azure 診断によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 4096 MB です。<br />
-|**useProxyServer** | IE 設定で設定したプロキシ サーバー設定を使用するように Azure 診断を構成します。|
+| **overallQuotaInMB** | Azure Diagnostics によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 4096 MB です。<br />
+|**useProxyServer** | IE 設定で設定したプロキシ サーバー設定を使用するように Azure Diagnostics を構成します。|
 |**sinks** | 1.5 で追加されました。 省略可能。 シンクの場所を指定すると共に、シンクをサポートするすべての子要素の診断データを送信します。 シンクの例に、Application Insights または Event Hubs があります。|  
 
 
@@ -459,7 +459,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |子要素|説明|  
 |--------------------|-----------------|  
 |**CrashDumps**|このページの他の場所の説明を参照してください。|  
-|**DiagnosticInfrastructureLogs**|Azure 診断によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**DiagnosticInfrastructureLogs**|Azure Diagnostics によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 |**Directories**|このページの他の場所の説明を参照してください。|  
 |**EtwProviders**|このページの他の場所の説明を参照してください。|  
 |**メトリック**|このページの他の場所の説明を参照してください。|  
@@ -477,12 +477,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |属性|説明|  
 |----------------|-----------------|  
 |**containerName**|省略可能。 クラッシュ ダンプの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|  
-|**crashDumpType**|省略可能。  Azure 診断を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
+|**crashDumpType**|省略可能。  Azure Diagnostics を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
 |**directoryQuotaPercentage**|省略可能。  VM でのクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**CrashDumpConfiguration**|必須。 各プロセスの構成値を定義します。<br /><br /> 次の属性も必須です。<br /><br /> **processName** - Azure 診断でクラッシュ ダンプを収集するプロセスの名前。|  
+|**CrashDumpConfiguration**|必須。 各プロセスの構成値を定義します。<br /><br /> 次の属性も必須です。<br /><br /> **processName** - Azure Diagnostics でクラッシュ ダンプを収集するプロセスの名前。|  
 
 ## <a name="directories-element"></a>Directories 要素
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories*
@@ -532,8 +532,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性: <br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
-|**EtwManifestProviderConfiguration**|必須属性: <br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性: <br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**EtwManifestProviderConfiguration**|必須属性: <br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 
 
 
@@ -564,11 +564,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。  
 
- **resourceId** 属性は必須です。  Azure 診断プログラムのデプロイ先仮想マシンまたは仮想マシン スケール セットのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。  
+ **resourceId** 属性は必須です。  Azure Diagnostics のデプロイ先仮想マシンまたは仮想マシン スケール セットのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。  
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**MetricAggregation**|必須属性: <br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**MetricAggregation**|必須属性: <br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 
 
 
@@ -610,10 +610,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  基本的な Azure ログのバッファー構成を定義します。  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
-|**scheduledTransferLogLevelFilterr**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
+|**scheduledTransferLogLevelFilter**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
 |**scheduledTransferPeriod**|**duration**|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
 |**sinks** |**string**| 1.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Application Insights または Event Hubs があります。|  
 
@@ -642,11 +642,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  診断データの送信先を定義します。 Application Insights サービスなど。  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**name**|string|シンク名を特定する文字列。|  
 
-|要素|type|説明|  
+|要素|Type|説明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
 |**Channels**|string|追加フィルタリングごとに 1 つ|  
@@ -658,7 +658,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  シンクを通過するログ データのストリームのフィルターを定義します。  
 
-|要素|type|説明|  
+|要素|Type|説明|  
 |-------------|----------|-----------------|  
 |**Channel**|string|このページの他の場所の説明を参照してください。|  
 
@@ -693,3 +693,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
  *ツリー: ルート - DiagnosticsConfiguration - IsEnabled*
 
  ブール値。 `true` を使用して診断を有効にするか、`false` を使用して診断を無効にします。
+

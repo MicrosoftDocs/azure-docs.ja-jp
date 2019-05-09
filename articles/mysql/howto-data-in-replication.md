@@ -1,20 +1,17 @@
 ---
 title: Azure Database for MySQL にデータをレプリケートするデータイン レプリケーションを構成する
 description: この記事では、Azure Database for MySQL のデータイン レプリケーションをセットアップする方法について説明します。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497928"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102943"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -156,7 +153,7 @@ ms.locfileid: "46497928"
    - master_password: マスター サーバーのパスワード
    - master_log_file: `show master status` を実行することによって得たバイナリ ログ ファイルの名前
    - master_log_pos: `show master status` を実行することによって得たバイナリ ログの位置
-   - master_ssl_ca: CA 証明書のコンテキスト。 SSL を使用していない場合は、空の文字列を渡します。
+   - master_ssl_ca:CA 証明書のコンテキスト。 SSL を使用していない場合は、空の文字列を渡します。
        - このパラメーターは変数で渡すことをお勧めします。 詳細については、以降の例を参照してください。
 
 > [!NOTE]
@@ -187,7 +184,7 @@ ms.locfileid: "46497928"
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
    ```
 
-2. レプリケーションを開始する
+1. レプリケーションを開始する
 
    `mysql.az_replication_start` ストアド プロシージャを呼び出してレプリケーションを開始します。
 
@@ -195,7 +192,7 @@ ms.locfileid: "46497928"
    CALL mysql.az_replication_start;
    ```
 
-3. レプリケーションの状態をチェックする
+1. レプリケーションの状態をチェックする
 
    レプリカ サーバーで [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) コマンドを呼び出して、レプリケーションの状態を確認します。
     

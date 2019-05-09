@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリの高度な集計 | Microsoft Docs
-description: Log Analytics クエリで使用可能なより高度な集計オプションをいくつか説明します。
+title: Azure Monitor ログ クエリの高度な集計 | Microsoft Docs
+description: Azure Monitor ログ クエリで使用できる、より高度な集計オプションの一部について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 1116d03fc9c2328365b0bde29cf9ea900e58b7ed
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 37eb8ca3c25268dd7923087439a8fbf0fd1f168b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186363"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269911"
 ---
-# <a name="advanced-aggregations-in-log-analytics-queries"></a>Log Analytics クエリの高度な集計
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの高度な集計
 
 > [!NOTE]
-> このレッスンを完了する前に、「[Aggregations in Log Analytics queries (Log Analytics クエリの集計)](./aggregations.md)」のレッスンを完了する必要があります。
+> このレッスンを完了する前に、[Azure Monitor クエリでの集計](./aggregations.md)に関するレッスンを完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-この記事では、Log Analytics クエリで使用可能なより高度な集計オプションをいくつか説明します。
+この記事では、Azure Monitor クエリで使用できる、より高度な集計オプションの一部について説明します。
 
 ## <a name="generating-lists-and-sets"></a>リストとセットの生成
 `makelist` を使用して、特定の列にある値の順序でデータをピボットできます。 たとえば、マシンで行われる最も一般的な注文イベントを調査できます。 基本的に言って、各マシンの EventID の順番でデータをピボットできます。 
@@ -46,7 +46,7 @@ Event
 
 `makelist` は、データが渡された順序でリストを生成します。 イベントを一番前のものから最新のものに並べ替えるには、order ステートメントで `desc` の代わりに `asc` を使用します。 
 
-また、個別の値だけの一覧を作成するのも便利です。 これは_セット_と呼ばれ、次のように `makeset` で生成できます。
+また、個別の値だけの一覧を作成するのも便利です。 これは _セット_ と呼ばれ、次のように `makeset` で生成できます。
 
 ```Kusto
 Event
@@ -181,7 +181,7 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>次の手順
 
-Log Analytics クエリ言語の使用については、他のレッスンをご覧ください。
+Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)
 - [日付と時刻の操作](datetime-operations.md)

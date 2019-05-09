@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: e1dc637d2f629b5002c2e8796fbd29a95478c392
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035325"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125267"
 ---
 Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは "*プロビジョニング状態*" と "*電源の状態*" に分類することができます。 この記事の目的は、各状態について説明し、ユーザーがインスタンスの使用料金を課金されるタイミングを具体的に明示することです。 
 
-## <a name="power-states"></a>電源の状態
+## <a name="power-states"></a>電源状態
 
 電源の状態は、最後に検出された VM の状態を表します。
 
@@ -108,7 +108,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
  ]</code><br>
 </td>
 <td>
-<p><b>課金されません&#42;</b></p>
+<p><b>課金されます&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -151,7 +151,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 </table>
 
 
-&#42;ディスクやネットワークなど、一部の Azure リソースに対してはインスタンスの状態に関係なく料金が発生します。 
+&#42;ディスクやネットワークなど、一部の Azure リソースに対しては料金が発生します。 インスタンスのソフトウェア ライセンスには料金は発生しません。
 
 ## <a name="provisioning-states"></a>プロビジョニング状態
 
@@ -244,7 +244,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>注</b>: OS でエラーが発生するか、時間内に OS をインストールできない場合、OS のプロビジョニングが**失敗**に移行する場合があります。 お客様は、インフラストラクチャ上にデプロイした VM に対して課金されます。</p>
+<p><b>メモ</b>:OS でエラーが発生するか、時間内に OS をインストールできない場合、OS のプロビジョニングが**失敗**に移行する場合があります。 お客様は、インフラストラクチャ上にデプロイした VM に対して課金されます。</p>
 </td>
 </tr>
 </table>
@@ -255,14 +255,14 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 - **成功** – ユーザーが開始したアクションが完了しました。
 
     ```
- "statuses": [ 
- {
+  "statuses": [ 
+  {
      "code": "ProvisioningState/succeeded",
      "level": "Info",
      "displayStatus": "Provisioning succeeded",
      "time": "time"
- }
- ]
+  }
+  ]
     ```
 
  
@@ -270,7 +270,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 - **失敗** – 操作が失敗したことを表します。 詳細と考えられる解決策については、エラー コードを参照してください。
 
     ```
- "statuses": [
+  "statuses": [
     {
       "code": "ProvisioningState/failed/InternalOperationError",
       "level": "Error",

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: f0ae48cadf2e90dc685a24aff54d89f86a11c287
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1d0905900b81a0c7775011774b55565217d13b71
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011543"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -51,7 +51,7 @@ Oracle Golden Gate のインストールを実行するには、同じ可用性�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-[az login](/cli/azure/reference-index#az_login) コマンドを使用して、Azure サブスクリプションにサインインします。 その後、画面の指示に従います。
+[az login](/cli/azure/reference-index) コマンドを使用して、Azure サブスクリプションにサインインします。 その後、画面の指示に従います。
 
 ```azurecli
 az login
@@ -59,7 +59,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、`myResourceGroup` という名前のリソース グループを `westus` の場所に作成します。
 
@@ -81,7 +81,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。 
+[az vm create](/cli/azure/vm) コマンドで VM を作成します。 
 
 次の例では、`myVM1` と `myVM2` という名前の 2 つの VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
@@ -349,79 +349,79 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Golden Gate ソフトウェアのダウンロード
 Oracle Golden Gate ソフトウェアをダウンロードして準備するには、次の手順を実行します。
 
-1. [Oracle Golden Gate ダウンロード ページ](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html)から **fbo_ggs_Linux_x64_shiphome.zip** のファイルをダウンロードします。 ダウンロード タイトル **Oracle GoldenGate 12.x.x.x for Oracle Linux x86-64** の下に、ダウンロードする一連の .zip ファイルがあります。
+1. [Oracle Golden Gate ダウンロード ページ](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html)から **fbo_ggs_Linux_x64_shiphome.zip** のファイルをダウンロードします。 ダウンロード タイトル **Oracle GoldenGate 12.x.x.x for Oracle Linux x86-64** の下に、ダウンロードする一連の .zip ファイルがあります。
 
 2. これらの .zip ファイルをクライアント コンピューターにダウンロードしたら、Secure Copy Protocol (SCP) を使用してそのファイルを VM にコピーします。
 
-  ```bash
-  $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
-  ```
+   ```bash
+   $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
+   ```
 
 3. .zip ファイルを **/opt** フォルダーに移動します。 その後、次のようにファイルの所有者を変更します。
 
-  ```bash
-  $ sudo su -
-  # mv <folder>/*.zip /opt
-  ```
+   ```bash
+   $ sudo su -
+   # mv <folder>/*.zip /opt
+   ```
 
 4. ファイルを解凍します (Linux のファイル解凍ユーティリティがまだインストールされていない場合はインストールします)。
 
-  ```bash
-  # yum install unzip
-  # cd /opt
-  # unzip fbo_ggs_Linux_x64_shiphome.zip
-  ```
+   ```bash
+   # yum install unzip
+   # cd /opt
+   # unzip fbo_ggs_Linux_x64_shiphome.zip
+   ```
 
 5. アクセス許可を変更します。
 
-  ```bash
-  # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
-  ```
+   ```bash
+   # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
+   ```
 
 ### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>X11 を実行するクライアントと VM の準備 (Windows クライアントの場合のみ)
 これは省略可能な手順です。 Linux クライアントを使用している場合、または X11 を既にセットアップしている場合はこの手順をスキップできます。
 
 1. PuTTY と Xming を Windows コンピューターにダウンロードします。
 
-  * [PuTTY のダウンロード](http://www.putty.org/)
-  * [Xming のダウンロード](https://xming.en.softonic.com/)
+   * [PuTTY のダウンロード](https://www.putty.org/)
+   * [Xming のダウンロード](https://xming.en.softonic.com/)
 
-2.  PuTTY をインストールしたら、PuTTY フォルダー (C:\Program Files\PuTTY など) にある puttygen.exe (PuTTY Key Generator) を実行します。
+2. PuTTY をインストールしたら、PuTTY フォルダー (C:\Program Files\PuTTY など) にある puttygen.exe (PuTTY Key Generator) を実行します。
 
-3.  PuTTY Key Generator で、次の手順を実行します。
+3. PuTTY Key Generator で、次の手順を実行します。
 
-  - キーを生成するために、**[Generate]\(生成\)** ボタンを選択します。
-  - キーの内容をコピーします (**Ctrl + C キー**)。
-  - **[Save private key]\(秘密キーの保存\)** ボタンを選択します。
-  - 表示される警告を無視し、**[OK]** を選択します。
+   - キーを生成するために、**[Generate]\(生成\)** ボタンを選択します。
+   - キーの内容をコピーします (**Ctrl + C キー**)。
+   - **[Save private key]\(秘密キーの保存\)** ボタンを選択します。
+   - 表示される警告を無視し、**[OK]** を選択します。
 
-    ![PuTTY Key Generator ページのスクリーンショット](./media/oracle-golden-gate/puttykeygen.png)
+   ![PuTTY Key Generator ページのスクリーンショット](./media/oracle-golden-gate/puttykeygen.png)
 
-4.  VM で、次のコマンドを実行します。
+4. VM で、次のコマンドを実行します。
 
-  ```bash
-  # sudo su - oracle
-  $ mkdir .ssh (if not already created)
-  $ cd .ssh
-  ```
+   ```bash
+   # sudo su - oracle
+   $ mkdir .ssh (if not already created)
+   $ cd .ssh
+   ```
 
 5. **authorized_keys** という名前のファイルを作成します。 このファイルにキーの内容を貼り付けて、ファイルを保存します。
 
-  > [!NOTE]
-  > キーには、`ssh-rsa` という文字列を含める必要があります。 また、キーの内容は 1 行のテキストである必要があります。
-  >  
+   > [!NOTE]
+   > キーには、`ssh-rsa` という文字列を含める必要があります。 また、キーの内容は 1 行のテキストである必要があります。
+   >  
 
 6. PuTTY を起動します。 **[Category]\(カテゴリ\)** ウィンドウで、**[Connection]\(接続\)** > **[SSH]** > **[Auth]\(認証\)** の順に選択します。**[Private key file for authentication]\(認証のための秘密キー ファイル\)** ボックスに、先ほど生成したキーを参照します。
 
-  ![秘密キーを設定するページのスクリーンショット](./media/oracle-golden-gate/setprivatekey.png)
+   ![秘密キーを設定するページのスクリーンショット](./media/oracle-golden-gate/setprivatekey.png)
 
 7. **[Category]\(カテゴリ\)** ウィンドウで、**[Connection]\(接続\)** > **[SSH]** > **[X11]** の順に選択します。 **[Enable X11 forwarding]\(X11 フォワーディングを有効にする\)** チェック ボックスをオンにします。
 
-  ![X11 を有効にするページのスクリーンショット](./media/oracle-golden-gate/enablex11.png)
+   ![X11 を有効にするページのスクリーンショット](./media/oracle-golden-gate/enablex11.png)
 
 8. **[Category]\(カテゴリ\)** ウィンドウで、**[Session]\(セッション\)** に移動します。 ホスト情報を入力し、**[Open]\(開く\)** を選択します。
 
-  ![セッション ページのスクリーンショット](./media/oracle-golden-gate/puttysession.png)
+   ![セッション ページのスクリーンショット](./media/oracle-golden-gate/puttysession.png)
 
 ### <a name="install-golden-gate-software"></a>Golden Gate ソフトウェアのインストール
 
@@ -429,43 +429,43 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
 1. oracle としてサインインします。 (パスワードの入力を要求されることなくサインインできるはずです)。インストールを開始する前に、Xming が実行されていることを確認してください。
  
-  ```bash
-  $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
-  $ ./runInstaller
-  ```
+   ```bash
+   $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
+   $ ./runInstaller
+   ```
 2. [Oracle GoldenGate for Oracle Database 12c] を選択します。 **[Next]\(次へ\)** をクリックして続行します。
 
-  ![インストーラーの [Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_01.png)
+   ![インストーラーの [Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_01.png)
 
 3. ソフトウェアの場所を変更します。 **[Start Manager]\(Manager の起動\)** チェックボックスをオンにし、データベースの場所を入力します。 **[次へ]** をクリックして続行します。
 
-  ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_02.png)
+   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_02.png)
 
 4. インベントリ ディレクトリを変更し、**[Next]\(次へ\)** を選択して続行します。
 
-  ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. **[Summary]\(概要\)** 画面で、**[Install]\(インストール\)** を選択して続行します。
 
-  ![インストーラーの [Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![インストーラーの [Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. スクリプトを "ルート" として実行するよう求められる場合があります。 その場合は別のセッションを開き (VM には ssh、root には sudo)、スクリプトを実行します。 **[OK]** を選択して続行します。
 
-  ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. インストールが完了したら、**[Close]\(閉じる\)** を選択してプロセスを完了します。
 
-  ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>myVM1 (プライマリ) でのサービスのセットアップ
 
 1. tnsnames.ora ファイルを作成または更新します。
 
-  ```bash
-  $ cd $ORACLE_HOME/network/admin
-  $ vi tnsnames.ora
+   ```bash
+   $ cd $ORACLE_HOME/network/admin
+   $ vi tnsnames.ora
 
-  cdb1=
+   cdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -478,7 +478,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
       )
     )
 
-  pdb1=
+   pdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -490,13 +490,13 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
         (SERVICE_NAME=pdb1)
       )
     )
-  ```
+   ```
 
 2. Golden Gate の所有者とユーザー アカウントを作成します。
 
-  > [!NOTE]
-  > 所有者のアカウントには、C## プレフィックスが必要です。
-  >
+   > [!NOTE]
+   > 所有者のアカウントには、C## プレフィックスが必要です。
+   >
 
     ```bash
     $ sqlplus / as sysdba
@@ -510,124 +510,124 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
 3. Golden Gate のテスト ユーザー アカウントを作成します。
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ sqlplus system/OraPasswd1@pdb1
-  SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba TO test;
-  SQL> ALTER USER test QUOTA 100M on USERS;
-  SQL> connect test/test@pdb1
-  SQL> @demo_ora_create
-  SQL> @demo_ora_insert
-  SQL> EXIT;
-  ```
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ sqlplus system/OraPasswd1@pdb1
+   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
+   SQL> GRANT connect, resource, dba TO test;
+   SQL> ALTER USER test QUOTA 100M on USERS;
+   SQL> connect test/test@pdb1
+   SQL> @demo_ora_create
+   SQL> @demo_ora_insert
+   SQL> EXIT;
+   ```
 
 4. Extract パラメーター ファイルを構成します。
 
- Golden Gate コマンドライン インターフェイス (ggsci) を起動します。
+   Golden Gate コマンドライン インターフェイス (ggsci) を起動します。
 
-  ```bash
-  $ sudo su - oracle
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
-  GGSCI> DBLOGIN USERID test@pdb1, PASSWORD test
-  Successfully logged into database  pdb1
-  GGSCI>  ADD SCHEMATRANDATA pdb1.test
-  2017-05-23 15:44:25  INFO    OGG-01788  SCHEMATRANDATA has been added on schema test.
-  2017-05-23 15:44:25  INFO    OGG-01976  SCHEMATRANDATA for scheduling columns has been added on schema test.
+   ```bash
+   $ sudo su - oracle
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
+   GGSCI> DBLOGIN USERID test@pdb1, PASSWORD test
+   Successfully logged into database  pdb1
+   GGSCI>  ADD SCHEMATRANDATA pdb1.test
+   2017-05-23 15:44:25  INFO    OGG-01788  SCHEMATRANDATA has been added on schema test.
+   2017-05-23 15:44:25  INFO    OGG-01976  SCHEMATRANDATA for scheduling columns has been added on schema test.
 
-  GGSCI> EDIT PARAMS EXTORA
-  ```
+   GGSCI> EDIT PARAMS EXTORA
+   ```
 5. vi コマンドを使用して、Extract パラメーター ファイルに次を追加します。 Esc キーを押すか、":wq!" で ファイルを保存します。 
 
-  ```bash
-  EXTRACT EXTORA
-  USERID C##GGADMIN, PASSWORD ggadmin
-  RMTHOST 10.0.0.5, MGRPORT 7809
-  RMTTRAIL ./dirdat/rt  
-  DDL INCLUDE MAPPED
-  DDLOPTIONS REPORT 
-  LOGALLSUPCOLS
-  UPDATERECORDFORMAT COMPACT
-  TABLE pdb1.test.TCUSTMER;
-  TABLE pdb1.test.TCUSTORD;
-  ```
+   ```bash
+   EXTRACT EXTORA
+   USERID C##GGADMIN, PASSWORD ggadmin
+   RMTHOST 10.0.0.5, MGRPORT 7809
+   RMTTRAIL ./dirdat/rt  
+   DDL INCLUDE MAPPED
+   DDLOPTIONS REPORT 
+   LOGALLSUPCOLS
+   UPDATERECORDFORMAT COMPACT
+   TABLE pdb1.test.TCUSTMER;
+   TABLE pdb1.test.TCUSTORD;
+   ```
 6. Extract (統合された Extract) を登録します。
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
 
-  GGSCI> dblogin userid C##GGADMIN, password ggadmin
-  Successfully logged into database CDB$ROOT.
+   GGSCI> dblogin userid C##GGADMIN, password ggadmin
+   Successfully logged into database CDB$ROOT.
 
-  GGSCI> REGISTER EXTRACT EXTORA DATABASE CONTAINER(pdb1)
+   GGSCI> REGISTER EXTRACT EXTORA DATABASE CONTAINER(pdb1)
 
-  2017-05-23 15:58:34  INFO    OGG-02003  Extract EXTORA successfully registered with database at SCN 1821260.
+   2017-05-23 15:58:34  INFO    OGG-02003  Extract EXTORA successfully registered with database at SCN 1821260.
 
-  GGSCI> exit
-  ```
+   GGSCI> exit
+   ```
 7. Extract チェックポイントを設定し、リアルタイムの Extract を開始します。
 
-  ```bash
-  $ ./ggsci
-  GGSCI>  ADD EXTRACT EXTORA, INTEGRATED TRANLOG, BEGIN NOW
-  EXTRACT (Integrated) added.
+   ```bash
+   $ ./ggsci
+   GGSCI>  ADD EXTRACT EXTORA, INTEGRATED TRANLOG, BEGIN NOW
+   EXTRACT (Integrated) added.
 
-  GGSCI>  ADD RMTTRAIL ./dirdat/rt, EXTRACT EXTORA, MEGABYTES 10
-  RMTTRAIL added.
+   GGSCI>  ADD RMTTRAIL ./dirdat/rt, EXTRACT EXTORA, MEGABYTES 10
+   RMTTRAIL added.
 
-  GGSCI>  START EXTRACT EXTORA
+   GGSCI>  START EXTRACT EXTORA
 
-  Sending START request to MANAGER ...
-  EXTRACT EXTORA starting
+   Sending START request to MANAGER ...
+   EXTRACT EXTORA starting
 
-  GGSCI > info all
+   GGSCI > info all
 
-  Program     Status      Group       Lag at Chkpt  Time Since Chkpt
+   Program     Status      Group       Lag at Chkpt  Time Since Chkpt
 
-  MANAGER     RUNNING
-  EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
-  ```
-この手順では起点の SCN を検索します。これは後ほど別のセクションで使用します。
+   MANAGER     RUNNING
+   EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
+   ```
+   この手順では起点の SCN を検索します。これは後ほど別のセクションで使用します。
 
-  ```bash
-  $ sqlplus / as sysdba
-  SQL> alter session set container = pdb1;
-  SQL> SELECT current_scn from v$database;
-  CURRENT_SCN
-  -----------
+   ```bash
+   $ sqlplus / as sysdba
+   SQL> alter session set container = pdb1;
+   SQL> SELECT current_scn from v$database;
+   CURRENT_SCN
+   -----------
       1857887
-  SQL> EXIT;
-  ```
+   SQL> EXIT;
+   ```
 
-  ```bash
-  $ ./ggsci
-  GGSCI> EDIT PARAMS INITEXT
-  ```
+   ```bash
+   $ ./ggsci
+   GGSCI> EDIT PARAMS INITEXT
+   ```
 
-  ```bash
-  EXTRACT INITEXT
-  USERID C##GGADMIN, PASSWORD ggadmin
-  RMTHOST 10.0.0.5, MGRPORT 7809
-  RMTTASK REPLICAT, GROUP INITREP
-  TABLE pdb1.test.*, SQLPREDICATE 'AS OF SCN 1857887'; 
-  ```
+   ```bash
+   EXTRACT INITEXT
+   USERID C##GGADMIN, PASSWORD ggadmin
+   RMTHOST 10.0.0.5, MGRPORT 7809
+   RMTTASK REPLICAT, GROUP INITREP
+   TABLE pdb1.test.*, SQLPREDICATE 'AS OF SCN 1857887'; 
+   ```
 
-  ```bash
-  GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
-  ```
+   ```bash
+   GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
+   ```
 
 ### <a name="set-up-service-on-myvm2-replicate"></a>myVM2 (レプリケート) でのサービスのセットアップ
 
 
 1. tnsnames.ora ファイルを作成または更新します。
 
-  ```bash
-  $ cd $ORACLE_HOME/network/admin
-  $ vi tnsnames.ora
+   ```bash
+   $ cd $ORACLE_HOME/network/admin
+   $ vi tnsnames.ora
 
-  cdb1=
+   cdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -640,7 +640,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
       )
     )
 
-  pdb1=
+   pdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -652,72 +652,72 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
         (SERVICE_NAME=pdb1)
       )
     )
-  ```
+   ```
 
 2. レプリケート アカウントを作成します。
 
-  ```bash
-  $ sqlplus / as sysdba
-  SQL> alter session set container = pdb1;
-  SQL> create user repuser identified by rep_pass container=current;
-  SQL> grant dba to repuser;
-  SQL> exec dbms_goldengate_auth.grant_admin_privilege('REPUSER',container=>'PDB1');
-  SQL> connect repuser/rep_pass@pdb1 
-  SQL> EXIT;
-  ```
+   ```bash
+   $ sqlplus / as sysdba
+   SQL> alter session set container = pdb1;
+   SQL> create user repuser identified by rep_pass container=current;
+   SQL> grant dba to repuser;
+   SQL> exec dbms_goldengate_auth.grant_admin_privilege('REPUSER',container=>'PDB1');
+   SQL> connect repuser/rep_pass@pdb1 
+   SQL> EXIT;
+   ```
 
 3. Golden Gate のテスト ユーザー アカウントを作成します。
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ sqlplus system/OraPasswd1@pdb1
-  SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba TO test;
-  SQL> ALTER USER test QUOTA 100M on USERS;
-  SQL> connect test/test@pdb1
-  SQL> @demo_ora_create
-  SQL> EXIT;
-  ```
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ sqlplus system/OraPasswd1@pdb1
+   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
+   SQL> GRANT connect, resource, dba TO test;
+   SQL> ALTER USER test QUOTA 100M on USERS;
+   SQL> connect test/test@pdb1
+   SQL> @demo_ora_create
+   SQL> EXIT;
+   ```
 
 4. 変更をレプリケートする REPLICAT パラメーター ファイル: 
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
-  GGSCI> EDIT PARAMS REPORA  
-  ```
-  REPORA パラメーター ファイルの内容:
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
+   GGSCI> EDIT PARAMS REPORA  
+   ```
+   REPORA パラメーター ファイルの内容:
 
-  ```bash
-  REPLICAT REPORA
-  ASSUMETARGETDEFS
-  DISCARDFILE ./dirrpt/repora.dsc, PURGE, MEGABYTES 100
-  DDL INCLUDE MAPPED
-  DDLOPTIONS REPORT
-  DBOPTIONS INTEGRATEDPARAMS(parallelism 6)
-  USERID repuser@pdb1, PASSWORD rep_pass
-  MAP pdb1.test.*, TARGET pdb1.test.*;
-  ```
+   ```bash
+   REPLICAT REPORA
+   ASSUMETARGETDEFS
+   DISCARDFILE ./dirrpt/repora.dsc, PURGE, MEGABYTES 100
+   DDL INCLUDE MAPPED
+   DDLOPTIONS REPORT
+   DBOPTIONS INTEGRATEDPARAMS(parallelism 6)
+   USERID repuser@pdb1, PASSWORD rep_pass
+   MAP pdb1.test.*, TARGET pdb1.test.*;
+   ```
 
-5. Replicat チェックポイントを設定します。
+5. レプリケート チェックポイントを設定します。
 
-  ```bash
-  GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
-  GGSCI> EDIT PARAMS INITREP
+   ```bash
+   GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
+   GGSCI> EDIT PARAMS INITREP
 
-  ```
+   ```
 
-  ```bash
-  REPLICAT INITREP
-  ASSUMETARGETDEFS
-  DISCARDFILE ./dirrpt/tcustmer.dsc, APPEND
-  USERID repuser@pdb1, PASSWORD rep_pass
-  MAP pdb1.test.*, TARGET pdb1.test.*;   
-  ```
+   ```bash
+   REPLICAT INITREP
+   ASSUMETARGETDEFS
+   DISCARDFILE ./dirrpt/tcustmer.dsc, APPEND
+   USERID repuser@pdb1, PASSWORD rep_pass
+   MAP pdb1.test.*, TARGET pdb1.test.*;   
+   ```
 
-  ```bash
-  GGSCI> ADD REPLICAT INITREP, SPECIALRUN
-  ```
+   ```bash
+   GGSCI> ADD REPLICAT INITREP, SPECIALRUN
+   ```
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>レプリケーション (myVM1 と myVM2) のセットアップ
 

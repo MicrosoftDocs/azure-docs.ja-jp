@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 正規表現エンティティを使用して一貫した形式のデータを発話から抽出する
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 58fa0c36f8c3f630ae7f349bd0f54a497a38f19d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 012d77227e7c0283b565361dda32cb77e12fc62b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976785"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867271"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>チュートリアル:発話から適切な形式のデータを取得する
 このチュートリアルでは、**正規表現**エンティティを使用して、発話から一貫した形式のデータを抽出するアプリを作成します。
@@ -82,7 +82,7 @@ ms.locfileid: "53976785"
     |hrf 546234 の作成者は誰ですか。|
     |hrf-456234 のタイトルは何ですか。|
 
-    [ ![新しい発話が強調表示されている [Intents]\(意図\) ページのスクリーンショット](./media/luis-quickstart-intents-regex-entity/findform-intent.png) ](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
+    [![新しい発話が強調表示されている [Intents]\(意図\) ページのスクリーンショット](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 

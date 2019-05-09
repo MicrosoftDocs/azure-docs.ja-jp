@@ -3,31 +3,34 @@ title: webhook を使用した Azure Automation の Runbook の開始
 description: HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。  この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/06/2018
+ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 381f8c5fb59379c0494dabcd22f4675be9535837
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016693"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224894"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 
-*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure DevOps Services、GitHub、Azure Log Analytics などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。  
+*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure DevOps Services、GitHub、Azure Monitor ログなどの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
- [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
+[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
+
+> [!NOTE]
+> Webhook を使用して Python Runbook を開始することはできません。
 
 ## <a name="details-of-a-webhook"></a>Webhook の詳細
 
 次のテーブルは、Webhook 用に構成する必要があるプロパティについて説明しています。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | Name |Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。 これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。 <br> ベスト プラクティスとして、webhook を使用するクライアントに関連した名前を webhook に付ける必要があります。 |
 | URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。 これは、Webhook を作成するときに自動的に生成されます。 カスタム URL を指定することはできません。 <br> <br> この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。 その理由で、これはパスワードと同じように扱う必要があります。 セキュリティ上の理由から、Webhook の作成時に Azure ポータルで表示できるのは URL だけです。 将来の使用に備えて、URL を安全な場所にメモしてください。 |
@@ -38,7 +41,7 @@ ms.locfileid: "53016693"
 
 Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。 Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。 Webhook に対して構成されているパラメーター値は、Webhook の作成後であっても変更できます。 1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
 
-Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値をオーバーライドできません。 クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
+Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値をオーバーライドできません。 クライアントからデータを受け取るために、Runbook が **$WebhookData** という名前の単一のパラメーターを受け入れることができます。 このパラメーターの型は [object] で、これにはクライアントによって POST 要求に含められるデータが含まれます。
 
 ![Webhookdata プロパティ](media/automation-webhooks/webhook-data-properties.png)
 
@@ -189,7 +192,7 @@ else {
 
 次の例では、Windows PowerShell を使用して Webhook で Runbook を開始します。 webhook は、HTTP 要求を実行できる任意の言語で使用できます。ここでは、例として Windows PowerShell を使用します。
 
-Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要です。 Runbook では、Webhook の呼び出し元が有効であることを検証するために具体的に定義されたメッセージがヘッダーに含まれることも検証されます。
+Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要です。 Runbook では、Webhook の呼び出し元が有効であることを検証するために定義されたメッセージがヘッダーに含まれることも検証されます。
 
 ```azurepowershell-interactive
 $uri = "<webHook Uri>"
@@ -200,11 +203,11 @@ $vms  = @(
         )
 $body = ConvertTo-Json -InputObject $vms
 $header = @{ message="StartedbyContoso"}
-$response = Invoke-RestMethod -Method Post -Uri $uri -Body $body -Headers $header
+$response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $header
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-次の例は、**WebhookData** の **RequestBody** プロパティで Runbook に利用できる要求の本文を示しています。 要求の本文に含まれていた形式が JSON であったため、この形式は JSON になります。
+次の例は、**WebhookData** の **RequestBody** プロパティで Runbook に利用できる要求の本文を示しています。 要求の本文に含まれていた形式が JSON であったため、この値の形式は JSON になります。
 
 ```json
 [
@@ -226,3 +229,4 @@ $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ## <a name="next-steps"></a>次の手順
 
 * Azure Automation を使用して Azure アラートに対処する方法については、「[Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)」をご覧ください。
+

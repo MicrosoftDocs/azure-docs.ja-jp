@@ -4,22 +4,22 @@ description: クラスター リソース マネージャーと Service Fabric �
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a1bab75521730f7e80e5b86112bbb0aed129f88
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: c201945e94474d54b8a19918f3b55a0b40995a97
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917876"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670321"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Service Fabric クラスター管理とクラスター リソース マネージャーの統合
 Service Fabric クラスター リソース マネージャーは Service Fabric でのアップグレードを推進していませんが、関係しています。 クラスター リソース マネージャーが管理に役立つ第 1 の点は、クラスターとクラスター内のサービスの望ましい状態を追跡できることです。 クラスター リソース マネージャーは、クラスターを望ましい構成に設定できない場合に正常性レポートを送信します。 たとえば、容量が不十分な場合、クラスター リソース マネージャーから問題を示す正常性の計画とエラーが送信されます。 統合のもう 1 つの利点は、アップグレードのしくみに関係があります。 クラスター リソース マネージャーは、アップグレード中、動作を若干変更します。  
@@ -73,11 +73,11 @@ HealthEvents          :
 
 この正常性メッセージによって、次のことがわかります。
 
-1. すべてのレプリカがそれぞれ正常に動作していること (それぞれの AggregatedHealthState が OK)。
+1. すべてのレプリカがそれぞれ正常に動作していることそれぞれの AggregatedHealthState が[OK]
 2. アップグレード ドメインの分散の制約に現在違反していること。 これは、特定のアップグレード ドメインのレプリカ数が、そのパーティションの限度よりも多いことを示します。
 3. 違反を起こしているレプリカを含むノード。 この例では、"Node.8" という名前のノードです。
 4. このパーティションでアップグレードが現在実行されているかどうか ("Currently Upgrading -- false")
-5. このサービスの分散ポリシー: "Distribution Policy -- Packing"。 これは `RequireDomainDistribution` の[配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)で制御されます。 "パッキング" は、この例では DomainDistribution が _必須ではなかった_ ことを示しています。その結果、このサービスに配置ポリシーが指定されていなかったことがわかります。 
+5. このサービスの分散ポリシー:"Distribution Policy -- Packing"。 これは `RequireDomainDistribution` の[配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)で制御されます。 "パッキング" は、この例では DomainDistribution が_必須ではなかった_ことを示しています。その結果、このサービスに配置ポリシーが指定されていなかったことがわかります。 
 6. レポートの生成日時 (2015 年 8 月 10 日午後 7 時 13 分 2 秒)
 
 このような情報から運用環境で発生するアラートが生成され、問題点が明らかになります。また、この情報は、正しくないアップグレードを検出し、停止するためにも使用されます。 このケースでは、リソース マネージャーがアップグレード ドメインにレプリカをまとめる必要があったのはなぜなのか、理由を探ることができます。 通常、他のアップグレード ドメインのノードがダウンしていたためなどの理由で、パッキングは一時的なものです。
@@ -92,12 +92,12 @@ HealthEvents          :
 ## <a name="constraint-types"></a>制約の種類
 これらの正常性レポートに記載されている各種の制約について説明します。 レプリカを配置できない場合、制約に関連する正常性メッセージがあります。
 
-* **ReplicaExclusionStatic** と **ReplicaExclusionDynamic**: これらの制約は、同じパーティションの 2 つのサービス オブジェクトを同じノードに配置する必要があるため、ソリューションが拒否されたことを示します。 そのノードの障害はそのパーティションに過度に影響するため、これは許可されません。 ReplicaExclusionStatic と ReplicaExclusionDynamic はほぼ同じルールです。違いはあまり問題ではありません。 制約除外シーケンスに ReplicaExclusionStatic 制約または ReplicaExclusionDynamic 制約のいずれかが含まれている場合、クラスター リソース マネージャーによってノードが十分にないと認識されます。 この場合、残りのソリューションで、許可されていないこれらの無効な配置を使用する必要があります。 このシーケンスの他の制約で、通常、最初の段階でノードが除外された理由がわかります。
-* **PlacementConstraint**: このメッセージが表示された場合、サービスの配置の制約に一致しなかったために、ノードが除外されたことを意味します。 現在構成されている配置の制約をこのメッセージの一部としてトレースします。 これは配置の制約を定義していれば正常です。 ただし、配置の制約によって、誤ってノードが必要以上に除外される場合、注意する必要があります。
-* **NodeCapacity**: この制約は、指定されたノードにレプリカを配置するとそのノードが容量超過になるため、クラスター リソース マネージャーがレプリカを配置できなかったことを意味します。
-* **Affinity**: この制約は、影響を受けるノードにレプリカを配置すると、アフィニティ制約違反が発生するため、レプリカを配置できなかったことを示します。 アフィニティの詳細については、[こちらの記事](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)を参照してください。
-* **FaultDomain** と **UpgradeDomain**: 指定されたノードにレプリカを配置することで、特定の障害ドメインまたはアップグレード ドメインにまとめられる場合は、この制約によってそのノードが除外されます。 この制約について説明するいくつかの例については、「 [fault and upgrade domain constraints and resulting behavior (障害ドメインとアップグレード ドメインの制約および行われる動作)](service-fabric-cluster-resource-manager-cluster-description.md)
-* **PreferredLocation**: この制約は既定で最適化として実行されるため、通常、ノードがソリューションから削除されることはありません。 優先される場所の制約は、アップグレード中にも適用されます。 アップグレードの際に、アップグレード開始時にサービスがあった場所にサービスを戻すために使用されます。
+* **ReplicaExclusionStatic** と **ReplicaExclusionDynamic**:これらの制約は、同じパーティションの 2 つのサービス オブジェクトを同じノードに配置する必要があるため、ソリューションが拒否されたことを示します。 そのノードの障害はそのパーティションに過度に影響するため、これは許可されません。 ReplicaExclusionStatic と ReplicaExclusionDynamic はほぼ同じルールです。違いはあまり問題ではありません。 制約除外シーケンスに ReplicaExclusionStatic 制約または ReplicaExclusionDynamic 制約のいずれかが含まれている場合、クラスター リソース マネージャーによってノードが十分にないと認識されます。 この場合、残りのソリューションで、許可されていないこれらの無効な配置を使用する必要があります。 このシーケンスの他の制約で、通常、最初の段階でノードが除外された理由がわかります。
+* **PlacementConstraint**:このメッセージが表示された場合、サービスの配置の制約に一致しなかったために、ノードが除外されたことを意味します。 現在構成されている配置の制約をこのメッセージの一部としてトレースします。 これは配置の制約を定義していれば正常です。 ただし、配置の制約によって、誤ってノードが必要以上に除外される場合、注意する必要があります。
+* **NodeCapacity**:この制約は、指定されたノードにレプリカを配置するとそのノードが容量超過になるため、クラスター リソース マネージャーがレプリカを配置できなかったことを意味します。
+* **Affinity**:この制約は、影響を受けるノードにレプリカを配置すると、アフィニティ制約違反が発生するため、レプリカを配置できなかったことを示します。 アフィニティの詳細については、[こちらの記事](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)を参照してください。
+* **FaultDomain** と **UpgradeDomain**:指定されたノードにレプリカを配置することで、特定の障害ドメインまたはアップグレード ドメインにまとめられる場合は、この制約によってそのノードが除外されます。 この制約について説明するいくつかの例については、「 [fault and upgrade domain constraints and resulting behavior (障害ドメインとアップグレード ドメインの制約および行われる動作)](service-fabric-cluster-resource-manager-cluster-description.md)
+* **PreferredLocation**:この制約は既定で最適化として実行されるため、通常、ノードがソリューションから削除されることはありません。 優先される場所の制約は、アップグレード中にも適用されます。 アップグレードの際に、アップグレード開始時にサービスがあった場所にサービスを戻すために使用されます。
 
 ## <a name="blocklisting-nodes"></a>ノードをブロックリストに登録する
 クラスター リソース マネージャーは、ノードがブロックリストに登録されたときにも、正常性メッセージを報告します。 ブロックリストの登録は、自動的に適用される一時的な制約と考えることができます。 そのサービスの種類のインスタンスを起動するときに、繰り返しエラーが発生する場合、ノードはブロックリストに登録されます。 ノードは、サービスの種類ごとにブロックリストに登録されます。 あるサービスの種類ではブロックリストに登録されているノードでも、別のサービスでは登録されていない可能性があります。 

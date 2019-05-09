@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44056ae1bca2595965abd3a47b4a2aa29d221623
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cec8ab9d678ff559176580fa8eccc261f449f4c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255235"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012886"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure Table ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス プロジェクト)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,12 +29,12 @@ Azure テーブル ストレージ サービスを使用すると、大量の構
 
 最初に、ストレージ アカウント内にテーブルを作成する必要があります。 コードで Azure テーブルを作成する方法やテーブルとエンティティの基本的な操作について説明します (テーブル エンティティの追加、変更、読み取りなど)。 サンプルは C\# コードで記述され、[NET 用 Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を使用しています。
 
-**注** : Azure ストレージへの呼び出しを実行する API の一部は非同期です。 詳細については、 [Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/hh191443.aspx) に関するページをご覧ください。 次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+**注:** Azure ストレージへの呼び出しを実行する API の一部は非同期です。 詳細については、 [Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/hh191443.aspx) に関するページをご覧ください。 次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 * プログラムを使用してテーブルを操作する方法の詳細については、「 [.NET を使用して Azure Table Storage を使用する](../storage/storage-dotnet-how-to-use-tables.md) 」をご覧ください。
 * Azure Storage の一般情報については、「 [ストレージのドキュメント](https://azure.microsoft.com/documentation/services/storage/) 」をご覧ください。
 * Azure Cloud Services の一般情報については、「 [Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/) 」をご覧ください。
-* ASP.NET アプリケーションのプログラミングについての詳細は、「 [ASP.NET](http://www.asp.net) 」をご覧ください。
+* ASP.NET アプリケーションのプログラミングについての詳細は、「 [ASP.NET](https://www.asp.net) 」をご覧ください。
 
 ## <a name="access-tables-in-code"></a>コードでテーブルにアクセスする
 クラウド サービス プロジェクト内のテーブルにアクセスするには、Azure テーブル ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。

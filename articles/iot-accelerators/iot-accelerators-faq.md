@@ -1,5 +1,5 @@
 ---
-title: Azure IoT ソリューション アクセラレータに関する FAQ | Microsoft Docs
+title: IoT ソリューション アクセラレータに関してよく寄せられる質問 - Azure | Microsoft Docs
 description: IoT ソリューション アクセラレータに関してよく寄せられる質問
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 294eae1dd5e591d12fdb82f62ea013ba54489686
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b2f08e811217572e09a254e9ab3306ab954b14b5
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253344"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009692"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -40,7 +40,28 @@ DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.co
 
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>新しい更新プログラムで新しいオープン ソース マイクロサービス ベースのアーキテクチャによって提供される利点はどのようなものですか?
 
-過去 2 年間、クラウド アーキテクチャは大幅に進化してきました。 マイクロサービスは、開発速度を犠牲にすることなく、拡張性と柔軟性を達成する素晴らしいパターンとして登場してきました。 いくつかの Microsoft のサービスは、このアーキテクチャ パターンを内部的に使用し、優れた信頼性とスケーラビリティの成果を出しています。 私たちは、お客様がメリットを得られるように、この学習を実践に移しました。
+過去 2 年間、クラウド アーキテクチャは大幅に進化してきました。 マイクロサービスは、開発速度を犠牲にすることなく、拡張性と柔軟性を達成する素晴らしいパターンとして登場してきました。 いくつかの Microsoft のサービスは、このアーキテクチャ パターンを内部的に使用し、優れた信頼性とスケーラビリティの成果を出しています。 Microsoft では、学習した内容をソリューション アクセラレータで実践しており、お客様がそこからメリットを得られるようにしています。
+
+### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>サービス管理者が自分のサブスクリプションと特定の Azure AD テナントの間のディレクトリ マッピングを変更するには どうすればよいですか
+
+「[既存のサブスクリプションを Azure AD ディレクトリに追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)」をご覧ください
+
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>組織アカウントでログインするときにサービス管理者または共同管理者を変更するにはどうすればよいですか
+
+[組織アカウントでログインしたときのサービス管理者および共同管理者の変更](https://azure.microsoft.com/support/changing-service-admin-and-co-admin)に関するサポート記事をご覧ください。
+
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>次のエラーが表示されるのはなぜですか。 「お使いのアカウントにはソリューションを作成する適切なアクセス許可がありません。 アカウント管理者に確認するか、別のアカウントを使用してください。」
+
+次の図を見てみましょう。
+
+![アクセス許可のフローチャート](media/iot-accelerators-faq/flowchart.png)
+
+> [!NOTE]
+> 自分が Azure AD テナントの全体管理者になっていることとサブスクリプションの共同管理者になっていることを確認した後もエラーが表示される場合は、ユーザーを削除してから必要なアクセス許可を再度割り当てるよう、アカウント管理者に依頼してください。 その場合はまず、ユーザーを全体管理者として追加したうえで、Azure サブスクリプションの共同管理者としてそのユーザーを追加することになります。 問題が解決しない場合は、[ヘルプとサポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
+
+### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Azure サブスクリプションがあるのに次のエラーが表示されるのはなぜですか。 「構成済みソリューションを作成するには Azure サブスクリプションが必要です。 数分で無料試用版のアカウントを作成することができます。」
+
+Azure サブスクリプションが確かにある場合は、サブスクリプションのテナント マッピングを調べ、ドロップダウンで正しいテナントが選択されていることを確認してください。 テナントが正しいことを確認したら、上の図に従って、サブスクリプションとこの Azure AD テナントのマッピングを確認してください。
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>以前のバージョンのリモート監視ソリューションに関する情報はどこで入手できますか?
 
@@ -50,9 +71,9 @@ DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.co
 
 はい、新しいリモート監視は同じ地理的リージョンで利用可能です。
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Azure Portal 上でのリソース グループの削除と、azureiotsuite.com の ソリューション アクセラレータで削除をクリックすることの違いは何ですか?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Azure portal でのリソース グループの削除と、azureiotsolutions.com のソリューション アクセラレータで削除をクリックすることの違いは何ですか?
 
-* [azureiotsuite.com](https://www.azureiotsolutions.com/) でソリューション アクセラレータを削除すると、ソリューション アクセラレータの作成時にプロビジョニングしたすべてのリソースが削除されます。 リソース グループにリソースを追加してある場合、それらも削除されます。
+* [azureiotsolutions.com](https://www.azureiotsolutions.com/) でソリューション アクセラレータを削除すると、ソリューション アクセラレータの作成時にデプロイしたすべてのリソースが削除されます。 リソース グループにリソースを追加してある場合、それらも削除されます。
 * [Azure Portal](https://portal.azure.com) でリソース グループを削除した場合は、そのリソース グループ内のリソースのみが削除されます。 さらに、ソリューション アクセラレータに関連付けられている Azure Active Directory アプリケーションを削除する必要があります。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータで既存の投資の活用を続行できますか?
@@ -78,7 +99,7 @@ DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.co
 
 現時点では、[Microsoft Azure for DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) アカウントを使用して、ソリューション アクセラレータを作成することはできません。 ただし、[Azure の無料試用版アカウント](https://azure.microsoft.com/free/)を数分で作成して、ソリューション アクセラレータを作成できるようにすることは可能です。
 
-### <a name="how-do-i-delete-an-aad-tenant"></a>AAD テナントはどうすれば削除できますか?
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Azure AD テナントを削除するにはどうすればよいですか。
 
 [Azure AD テナントの削除方法](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)に関する Eric Golpe のブログ記事を参照してください。
 

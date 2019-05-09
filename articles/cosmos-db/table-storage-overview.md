@@ -1,20 +1,20 @@
 ---
 title: Azure Table Storage の概要
 description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: overview
 ms.date: 11/03/2017
-ms.author: sngun
-ms.openlocfilehash: 5f07d041e7674cb1579247ca2b444017762c5be0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+author: wmengmsft
+ms.author: wmeng
+ms.reviewer: sngun
+ms.openlocfilehash: 69d2eb1627d42c12a0af024bf1c80e787ed5eca7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867411"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044503"
 ---
 # <a name="azure-table-storage-overview"></a>Azure Table Storage の概要
 

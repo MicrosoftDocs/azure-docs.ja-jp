@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: ad9e9e893dc831530b69a30cc3dd930e879e9d7b
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185120"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116828"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs 仮想マシンのカスタム アーティファクトの作成
 
 この記事で説明する手順の概要については、次のビデオをご覧ください。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/how-to-author-custom-artifacts/player]
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概要
 "*アーティファクト*" を使用すると、VM のプロビジョニング後にアプリケーションをデプロイして設定できます。 アーティファクトは、Git リポジトリ内のフォルダーに格納されているアーティファクト定義ファイルとその他のスクリプト ファイルで構成されます。 アーティファクト定義ファイルは、VM にインストールするものを指定するのに使用できる JSON と式で構成されます。 たとえば、アーティファクトの名前、実行するコマンド、コマンドの実行時に使用可能なパラメーターを定義できます。 アーティファクト定義ファイル内では、他のスクリプト ファイルを名前で参照できます。
@@ -56,12 +56,12 @@ ms.locfileid: "39185120"
 | 要素名 | 必須 | 説明 |
 | --- | --- | --- |
 | $schema |いいえ  |JSON スキーマ ファイルの場所。 JSON スキーマ ファイルは、定義ファイルの有効性をテストする際に役立ちます。 |
-| title |[はい] |ラボで表示されるアーティファクトの名前 |
-| Description |[はい] |ラボで表示されるアーティファクトの説明 |
+| title |はい |ラボで表示されるアーティファクトの名前 |
+| Description |はい |ラボで表示されるアーティファクトの説明 |
 | iconUri |いいえ  |ラボで表示されるアイコンの URI。 |
-| targetOsType |[はい] |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
+| targetOsType |はい |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
 | parameters |いいえ  |マシンでアーティファクトのインストール コマンドが実行されるときに指定する値。 これは、アーティファクトをカスタマイズする際に役立ちます。 |
-| runCommand |[はい] |VM 上で実行されるアーティファクトのインストール コマンド。 |
+| runCommand |はい |VM 上で実行されるアーティファクトのインストール コマンド。 |
 
 ### <a name="artifact-parameters"></a>アーティファクトのパラメーター
 定義ファイルの parameters セクションでは、アーティファクトのインストール時にユーザーが入力できる値を指定します。 アーティファクトのインストール コマンドでこれらの値を参照できます。
@@ -69,18 +69,18 @@ ms.locfileid: "39185120"
 パラメーターを定義するには、次の構造を使用します。
 
     "parameters": {
-        "<parameterName>": {
-          "type": "<type-of-parameter-value>",
-          "displayName": "<display-name-of-parameter>",
-          "description": "<description-of-parameter>"
-        }
+      "<parameterName>": {
+        "type": "<type-of-parameter-value>",
+        "displayName": "<display-name-of-parameter>",
+        "description": "<description-of-parameter>"
       }
+    }
 
 | 要素名 | 必須 | 説明 |
 | --- | --- | --- |
-| type |[はい] |パラメーター値の型。 使用できる型については、下記を参照してください。 |
-| displayName |[はい] |ラボのユーザーに対して表示されるパラメーターの名前。 | |
-| description |[はい] |ラボで表示されるパラメーターの説明。 |
+| type |はい |パラメーター値の型。 使用できる型については、下記を参照してください。 |
+| displayName |はい |ラボのユーザーに対して表示されるパラメーターの名前。 |
+| description |はい |ラボで表示されるパラメーターの説明。 |
 
 使用できる型は次のとおりです。
 
@@ -96,13 +96,13 @@ ms.locfileid: "39185120"
 
 次の一覧に、一般的な関数を示します。
 
-* **parameters(parameterName)**: アーティファクト コマンドの実行時に指定するパラメーター値を返します。
-* **concat(arg1, arg2, arg3,…..)**: 複数の文字列値を結合します。 この関数は、さまざまな引数を受け取ることができます。
+* **parameters(parameterName)**:アーティファクト コマンドの実行時に指定されるパラメーター値を返します。
+* **concat(arg1, arg2, arg3,….. )**:複数の文字列値を結合します。 この関数は、さまざまな引数を受け取ることができます。
 
 次の例は、式と関数を使用して値を構成する方法を示しています。
 
     runCommand": {
-         "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
     , ' -RawPackagesList ', parameters('packages')
     , ' -Username ', parameters('installUsername')
     , ' -Password ', parameters('installPassword'))]"
@@ -113,7 +113,7 @@ ms.locfileid: "39185120"
 1. JSON エディターをインストールします。 アーティファクト定義ファイルを操作するには、JSON エディターが必要です。 Windows、Linux、OS X で使用可能な [Visual Studio Code](https://code.visualstudio.com/) を使用することをお勧めします。
 2. サンプルの artifactfile.json 定義ファイルを取得します。 [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)で、DevTest Labs チームが作成したアーティファクトを確認します。 リポジトリには、独自のアーティファクトの作成に役立つアーティファクトの豊富なライブラリが用意されています。 アーティファクト定義ファイルをダウンロードし、変更を加えて独自のアーティファクトを作成します。
 3. IntelliSense を使用します。 IntelliSense を使用して、アーティファクト定義ファイルの作成に使用できる有効な要素を確認します。 要素の値のさまざまなオプションを確認することもできます。 たとえば、**targetOsType** 要素を編集するときに、IntelliSense は Windows と Linux の 2 つの選択肢を表示します。
-4. アーティファクトを、[DevTest Labs 用のパブリック Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)または[独自の Git リポジトリ](devtest-lab-add-artifact-repo.md)に格納します。 パブリック リポジトリでは、他のユーザーが共有している成果物を表示し、必要に応じてそのまま使用したり、カスタマイズしたりすることができます。 
+4. アーティファクトを、[DevTest Labs 用のパブリック Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)または[独自の Git リポジトリ](devtest-lab-add-artifact-repo.md)に格納します。 パブリック リポジトリでは、他のユーザーが共有している成果物を表示し、必要に応じてそのまま使用したり、カスタマイズしたりすることができます。
    
    1. アーティファクトごとに個別のディレクトリを作成します。 ディレクトリ名は、アーティファクト名と同じにします。
    2. 作成したディレクトリに、アーティファクト定義ファイル (artifactfile.json) を格納します。
@@ -122,13 +122,11 @@ ms.locfileid: "39185120"
       アーティファクト フォルダーの例を次に示します。
       
       ![アーティファクト フォルダーの例](./media/devtest-lab-artifact-author/git-repo.png)
-5. 独自のリポジトリを使用してアーティファクトを格納する場合は、[アーティファクトとテンプレート用の Git リポジトリの追加](devtest-lab-add-artifact-repo.md)に関する記事の手順に従って、そのリポジトリをラボに追加します。
-
+5. 独自のリポジトリを使用してアーティファクトを格納する場合は、[アーティファクトとテンプレート用の Git リポジトリの追加](devtest-lab-add-artifact-repo.md)に関する記事の手順に従って、リポジトリをラボに追加します。
 
 ## <a name="related-articles"></a>関連記事
 * [DevTest Labs でアーティファクトのエラーを診断する方法](devtest-lab-troubleshoot-artifact-failure.md)
-* [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>次の手順
 * [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
-

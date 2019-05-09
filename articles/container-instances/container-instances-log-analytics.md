@@ -1,24 +1,26 @@
 ---
-title: Azure Log Analytics によるコンテナー インスタンスのログ記録
-description: コンテナーの出力 (STDOUT と STDERR) を Log Analytics に送信する方法を説明します。
+title: Azure Monitor ログによるコンテナー インスタンスのログ記録
+description: コンテナーの出力 (STDOUT と STDERR) を Azure Monitor ログに送信する方法を説明します。
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337888"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879715"
 ---
-# <a name="container-instance-logging-with-azure-log-analytics"></a>Azure Log Analytics によるコンテナー インスタンスのログ記録
+# <a name="container-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー インスタンスのログ記録
 
-Log Analytics ワークスペースは、Azure リソースだけでなくオンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、Log Analytics にデータを送信するための組み込みサポートが含まれています。
+Log Analytics ワークスペースは、Azure リソースだけでなくオンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、Azure Monitor ログにデータを送信するための組み込みサポートが含まれています。
 
-Log Analytics にコンテナー インスタンス データを送信するには、Azure CLI (または Cloud Shell) と YAML ファイルを使用して、コンテナー グループを作成する必要があります。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成と、ログに対するクエリの実行について説明します。
+Azure Monitor ログにコンテナー インスタンスのデータを送信するには、Azure CLI (または Cloud Shell) と YAML ファイルを使用して、コンテナー グループを作成する必要があります。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成と、ログに対するクエリの実行について説明します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,7 +33,7 @@ Log Analytics にコンテナー インスタンス データを送信するに�
 
 Azure Container Instances が Log Analytics ワークスペースにデータを送信するには、アクセス許可が必要です。 このアクセス許可を付与し、ログ記録を有効にするには、コンテナー グループを作成するときに、Log Analytics ワークスペース ID と、そのキーの 1 つ (プライマリまたはセカンダリ) を提供する必要があります。
 
-Log Analytics ワークスペースの ID とプライマリ キーを取得するには:
+ログ分析ワークスペースの ID とプライマリ キーを取得するには:
 
 1. Azure portal で Log Analytics ワークスペースに移動します
 1. **[設定]** で **[詳細設定]** を選択します
@@ -42,7 +44,7 @@ Log Analytics ワークスペースの ID とプライマリ キーを取得す�
 
 ## <a name="create-container-group"></a>コンテナー グループを作成する
 
-Log Analytics のワークスペース ID とプライマリ キーがわかったので、ログ記録が有効なコンテナー グループを作成できます。
+ログ分析のワークスペース ID とプライマリ キーがわかったので、ログ記録が有効なコンテナー グループを作成できます。
 
 次の例は、1 つの [fluentd][fluentd] コンテナーが含まれたコンテナー グループを作成する 2 つの方法を示します。1 つは Azure CLI を使用する方法で、もう 1 つは Azure CLI と YAML テンプレートを使用する方法です。 Fluentd コンテナーは、既定の構成で複数の出力行を生成します。 この出力は Log Analytics ワークスペースに送信されるため、ログの表示とクエリのデモンストレーションに適しています。
 
@@ -96,7 +98,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 コマンドを発行した直後に、Azure から展開の詳細を含む応答を受け取るはずです。
 
-## <a name="view-logs-in-log-analytics"></a>Log Analytics ログを表示する
+## <a name="view-logs-in-azure-monitor-logs"></a>Azure Monitor ログのログを表示する
 
 コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 コンテナー グループのログを表示するには、Log Analytics ワークスペースを開いた後、次のようにします。
 
@@ -109,7 +111,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 ## <a name="query-container-logs"></a>コンテナー ログのクエリを実行する
 
-Log Analytics には、何千行にもなる可能性があるログ出力から情報を抽出ための広範な[クエリ言語][query_lang]が含まれます。
+Azure Monitor ログには、何千行にもなる可能性があるログ出力から情報を抽出ための広範な[クエリ言語][query_lang]が含まれます。
 
 Azure Container Instances のログ エージェントは、Log Analytics ワークスペースの `ContainerInstanceLog_CL` テーブルにエントリを送信します。 クエリの基本構造では、ソース テーブル (`ContainerInstanceLog_CL`) の後に、一連の演算子をパイプ文字 (`|`) で区切って記述します。 複数の演算子を連結して結果を絞り込み、高度な機能を実行できます。
 
@@ -130,11 +132,11 @@ ContainerInstanceLog_CL
 
 ## <a name="next-steps"></a>次の手順
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-Azure Log Analytics でのログのクエリとアラートの構成について詳しくは、以下をご覧ください。
+Azure Monitor ログでのログのクエリとアラートの構成について詳しくは、以下をご覧ください。
 
-* [Log Analytics でのログ検索について](../log-analytics/log-analytics-log-search.md)
+* [Azure Monitor ログでのログ検索について](../log-analytics/log-analytics-log-search.md)
 * [Azure Monitor での統合アラート](../azure-monitor/platform/alerts-overview.md)
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 2035d342a89ace6d286fc205c346591b29646c5d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270146"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59048760"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -33,9 +33,12 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
 
 ![シナリオ][scenario]
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-* 最新バージョンの [Azure PowerShell](/powershell/azure/install-azurerm-ps)。
+* 最新バージョンの [Azure PowerShell](/powershell/azure/install-Az-ps)。
 * Network Watcher の既存インスタンス。 まだない場合は、[Network Watcher のインスタンスを作成](network-watcher-create.md)します。
 * [Windows 拡張機能](../virtual-machines/windows/extensions-nwa.md)または [Linux 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)を備えた、Network Watcher と同じリージョン内の既存の仮想マシン。
 
@@ -78,7 +81,7 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
     |**サブスクリプション**|[お使いのサブスクリプション] Function App を作成するサブスクリプション。||
     |**リソース グループ**|PacketCaptureRG|Function App を格納するリソース グループ。|
     |**ホスティング プラン**|従量課金プラン| Function App で使うプランの種類。 オプションは、[従量課金プラン] と [Azure App Service プラン] です。 |
-    |**場所**|米国中央部| Function App を作成するリージョン。|
+    |**場所**|米国中部| Function App を作成するリージョン。|
     |**ストレージ アカウント**|{自動生成}| 一般的な記憶のために Azure Functions が必要とするストレージ アカウント。|
 
 3. **PacketCaptureExample Function App** ブレードで、**[関数]** > **[カスタム関数]** >**[+]** の順に選びます。
@@ -89,7 +92,7 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
     |---|---|---|
     |**シナリオ**|試験段階|シナリオの種類|
     |**関数名の指定**|AlertPacketCapturePowerShell|関数の名前|
-    |**承認レベル**|関数|関数の承認レベル|
+    |**承認レベル**|Function|関数の承認レベル|
 
 ![関数の例][functions1]
 
@@ -105,18 +108,18 @@ Network Watcher PowerShell コマンドレットを使うには、最新の Powe
 1. 最新の Azure PowerShell モジュールがインストールされているローカル コンピューターで、次の PowerShell コマンドを実行します。
 
     ```powershell
-    (Get-Module AzureRM.Network).Path
+    (Get-Module Az.Network).Path
     ```
 
     この例では、Azure PowerShell モジュールのローカル パスを取得しています。 これらのフォルダーは、後の手順で使用されます。 このシナリオで使われているモジュールは次のとおりです。
 
-    * AzureRM.Network
+   * Az.Network
 
-    * AzureRM.Profile
+   * Az.Accounts
 
-    * AzureRM.Resources
+   * Az.Resources
 
-    ![PowerShell フォルダー][functions5]
+     ![PowerShell フォルダー][functions5]
 
 1. **[Function App の設定]** > **[App Service エディターに移動]** の順に選びます。
 
@@ -128,19 +131,19 @@ Network Watcher PowerShell コマンドレットを使うには、最新の Powe
 
     ![フォルダーとサブフォルダー][functions3]
 
-    * AzureRM.Network
+    * Az.Network
 
-    * AzureRM.Profile
+    * Az.Accounts
 
-    * AzureRM.Resources
+    * Az.Resources
 
-1. **AzureRM.Network** サブフォルダーを右クリックし、**[ファイルのアップロード]** を選びます。 
+1. **Az.Network** サブフォルダーを右クリックし、**[ファイルのアップロード]** を選びます。 
 
-6. Azure モジュールに移動します。 ローカルの **AzureRM.Network** フォルダーで、フォルダー内のすべてのファイルを選びます。 **[OK]** をクリックします。 
+6. Azure モジュールに移動します。 ローカルの **Az.Network** フォルダーで、フォルダー内のすべてのファイルを選びます。 **[OK]** をクリックします。 
 
-7. **AzureRM.Profile** と **AzureRM.Resources** についても、同様の手順を繰り返します。
+7. **Az.Accounts** と **Az.Resources** にこれらの手順を繰り返します。
 
-    ![ファイルのアップロード][functions6]
+    ![ファイルをアップロードする][functions6]
 
 1. 完了すると、各フォルダーにローカル コンピューターから PowerShell モジュールがアップロードされています。
 
@@ -196,10 +199,10 @@ Function App の App Service エディターで、**AlertPacketCapturePowerShell
 1. 使うアプリケーションがまだない場合は、次の例を実行してアプリケーションを作成します。
 
     ```powershell
-    $app = New-AzureRmADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
-    New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
+    $app = New-AzADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
+    New-AzADServicePrincipal -ApplicationId $app.ApplicationId
     Start-Sleep 15
-    New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
+    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
     ```
 
    > [!NOTE]
@@ -218,7 +221,7 @@ Function App の App Service エディターで、**AlertPacketCapturePowerShell
 次の PowerShell サンプルを実行して、テナント ID を取得します。
 
 ```powershell
-(Get-AzureRmSubscription -SubscriptionName "<subscriptionName>").TenantId
+(Get-AzSubscription -SubscriptionName "<subscriptionName>").TenantId
 ```
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
@@ -266,9 +269,9 @@ $Encryptedpassword
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Profile\AzureRM.Profile.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Network\AzureRM.Network.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Resources\AzureRM.Resources.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Accounts\Az.Accounts.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Network\Az.Network.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Resources\Az.Resources.psd1" -Global
 
             #Process alert request body
             $requestBody = Get-Content $req -Raw | ConvertFrom-Json
@@ -290,7 +293,7 @@ $Encryptedpassword
             #Authentication
             $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
             $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-            Connect-AzureRmAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            Connect-AzAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
             #Get the VM that fired the alert
@@ -302,22 +305,22 @@ $Encryptedpassword
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
                 #Get the Network Watcher in the VM's region
-                $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-                $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
+                $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
                 #Get existing packetCaptures
-                $packetCaptures = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
+                $packetCaptures = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
 
                 #Remove existing packet capture created by the function (if it exists)
                 $packetCaptures | %{if($_.Name -eq $packetCaptureName)
                 { 
-                    Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
+                    Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
                 }}
 
                 #Initiate packet capture on the VM that fired the alert
-                if ((Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
+                if ((Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
                     echo "Initiating Packet Capture"
-                    New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
+                    New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
                     Out-File -Encoding Ascii -FilePath $res -inputObject "Packet Capture created on ${requestBody.context.resourceID}"
                 }
             } 
@@ -343,8 +346,8 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
   |**設定** | **値** | **詳細** |
   |---|---|---|
-  |**名前**|TCP_Segments_Sent_Exceeded|アラート ルールの名前。|
-  |**説明**|送信された TCP セグメント数がしきい値を超えました|アラート ルールの説明。||
+  |**Name**|TCP_Segments_Sent_Exceeded|アラート ルールの名前。|
+  |**説明**|送信された TCP セグメント数がしきい値を超えました|アラート ルールの説明。|
   |**メトリック**|送信した TCP セグメント数| アラートのトリガーに使うメトリック。 |
   |**Condition**|より大きい| メトリックを評価するときに使う条件。|
   |**しきい値**|100| アラートをトリガーするメトリックの値。 この値は、環境で有効な値に設定する必要があります。|
@@ -362,7 +365,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 キャプチャ ファイルがローカルに格納されている場合は、仮想マシンにサインインすることで取得できます。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](http://storageexplorer.com/)を使うことができます。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](https://storageexplorer.com/)を使うことができます。
 
 ダウンロードしたキャプチャは、**.cap** ファイルを読み取ることができる任意のツールを使って表示できます。 次に示すのはそのような 2 つのツールへのリンクです。
 

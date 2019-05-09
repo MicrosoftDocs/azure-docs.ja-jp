@@ -3,19 +3,19 @@ title: Azure Active Directory B2C で B2C テナントに切り替える | Micro
 description: Active Directory B2C テナントのコンテキストに切り替える方法。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 4/13/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8c0b6cb411618b01adfc23fa124ff624206da7b2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 9315b3a5e1641098daf2c7dadf9fa4f09d0cb2a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836102"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438510"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントへの切り替え
 
@@ -37,7 +37,7 @@ Azure Portal が更新されます。  これで、Azure AD B2C テナントの�
 1. **[すべてのサービス]** をクリックし、左側のナビゲーション ウィンドウで `Azure AD B2C` を検索します   (左側のスタート画面にピン留めするには、Azure AD B2C の左側にある星をクリックします)。
 1. **[Azure AD B2C]** をクリックして B2C 機能ウィンドウにアクセスします。
    
-    ![B2C 機能ウィンドウへの移動のスクリーン ショット](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![B2C 機能ウィンドウへの移動のスクリーンショット](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
 > B2C 機能ウィンドウにアクセスするには、B2C テナントのグローバル管理者である必要があります。 他のテナントのグローバル管理者やテナントのユーザーはアクセスできません。  Azure Portal の右上隅にあるテナント スイッチャーを使用して、B2C テナントに切り替えることができます。

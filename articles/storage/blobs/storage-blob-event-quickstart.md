@@ -7,14 +7,14 @@ ms.author: cbrooks
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
-ms.component: blobs
+ms.subservice: blobs
 ms.custom: seodec18
-ms.openlocfilehash: 2586b7f9c2a182ee065daab1d2a43eb5e0e2c99c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f38c6fec7ff98e7d5c46661741ff036edb791673
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073722"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756378"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート: Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
 
@@ -39,7 +39,7 @@ Cloud Shell を使用していない場合は、先に `az login` でサイン�
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 
 
 次の例では、`<resource_group_name>` という名前のリソース グループを場所 *westcentralus* に作成します。  `<resource_group_name>` を、リソース グループの一意の名前に置き換えます。
 

@@ -2,7 +2,7 @@
 title: Durable Functions のバインド - Azure
 description: Azure Functions の Durable Functons 拡張機能のトリガーとバインドの使用方法。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 889d26be12fef62d37a471fbe0640a2b8ecdd99c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 678e370977cadae642207f91a02136404fb6c34e
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337191"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609321"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 

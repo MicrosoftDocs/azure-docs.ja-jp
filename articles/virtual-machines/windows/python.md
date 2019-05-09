@@ -3,7 +3,7 @@ title: Python を使用して Azure で Windows VM を作成および管理す�
 description: Python を使って Azure で Windows VM を作成および管理する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
-ms.author: zarhoads
-ms.openlocfilehash: b15b3b07768d531b748944529cc7e8e6df6d9808
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: cynthn
+ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958875"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326978"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -499,7 +499,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM にデータ ディスクを追加する
 
-仮想マシンでは 1 つ以上の[データ ディスク](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を保持することができ、それらは VHD として格納されます。
+仮想マシンでは 1 つ以上の[データ ディスク](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を保持することができ、それらは VHD として格納されます。
 
 1. 仮想マシンにデータ ディスクを追加するには、.py ファイルの変数の後に次の関数を追加します。 
 

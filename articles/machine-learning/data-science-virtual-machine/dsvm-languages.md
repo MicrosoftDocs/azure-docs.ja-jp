@@ -10,19 +10,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 8cc5d1a2d78179624ee1ba17482e9d1892625d6f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104290"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58877416"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでサポートされている言語 
 
@@ -145,7 +145,7 @@ DSVM での既定の Python 環境は、すべてのユーザーが読み取り�
 | ------------- | ------------- |
 | サポートされている言語バージョン | Microsoft R Open 3.x (CRAN-R と 100% 互換)<br /> Microsoft R Server 9.x Developer エディション (スケーラブルなエンタープライズ対応 R プラットフォーム)|
 | サポートされている DSVM エディション      | Linux、Windows     |
-| DSVM での構成/インストール方法  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: ` /usr/lib64/microsoft-r/3.3/lib64/R`    |
+| DSVM での構成/インストール方法  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | サンプルへのリンク      | R 用のサンプル Jupyter ノートブックが含まれています     |
 | DSVM 上の関連ツール      | SparkR、Python、Julia      |
 ### <a name="how-to-use--run-it"></a>使用/実行方法    

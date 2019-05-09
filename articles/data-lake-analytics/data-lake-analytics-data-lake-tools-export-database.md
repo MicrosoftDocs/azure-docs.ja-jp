@@ -9,12 +9,12 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251004"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59496191"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL データベースのエクスポート
 
@@ -26,7 +26,7 @@ ms.locfileid: "51251004"
 
 ## <a name="export-steps"></a>エクスポートの手順
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>手順 1: サーバー エクスプローラーでデータベースをエクスポートする
+### <a name="step-1-export-the-database-in-server-explorer"></a>手順 1:サーバー エクスプローラーでデータベースをエクスポートする
 
 自分が権限を持つすべての Data Lake Analytics アカウントがサーバー エクスプローラーに表示されます。 データベースをエクスポートするには:
 
@@ -37,7 +37,7 @@ ms.locfileid: "51251004"
 
      **[エクスポート]** メニュー オプションが使用可能でない場合は、[ツールを最新リリースに更新](https://aka.ms/adltoolsvs)する必要があります。
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>手順 2: エクスポートするオブジェクトを構成する
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>手順 2:エクスポートするオブジェクトを構成する
 
 大規模データベースのごく一部のみが必要な場合は、エクスポート ウィザードでエクスポートするオブジェクトのサブセットを構成できます。 
 
@@ -45,7 +45,7 @@ U-SQL ジョブを実行して、エクスポート アクションを完了し�
 
 ![データベースのエクスポート ウィザード - エクスポートするオブジェクトの選択](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-### <a name="step-3-check-the-objects-list-and-other-configurations"></a>手順 3: オブジェクト一覧やその他の構成を確認する
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>手順 3:オブジェクト一覧やその他の構成を確認する
 
 この手順では、選択したオブジェクトを **[エクスポート オブジェクト一覧]** ボックスで確認することができます。 エラーがある場合は、**[前へ]** を選択して前に戻り、エクスポートするオブジェクトを正しく構成します。
 
@@ -61,7 +61,7 @@ U-SQL ジョブを実行して、エクスポート アクションを完了し�
 
 ![データベースのエクスポート ウィザード - エクスポート オブジェクト一覧とその他の構成](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
 
-### <a name="step-4-check-the-export-results"></a>手順 4: エクスポート結果を確認する
+### <a name="step-4-check-the-export-results"></a>手順 4:エクスポート結果を確認する
 
 エクスポートが完了したら、ウィザードのログ ウィンドウでエクスポート結果を表示できます。 次の例では、エクスポートされた U-SQL スクリプトと、アセンブリ、追加のファイル、サンプル データなどのデータベース リソースを検索する方法を示します。
 
@@ -84,7 +84,7 @@ U-SQL ジョブを実行して、エクスポート アクションを完了し�
 
 ## <a name="next-steps"></a>次の手順
 
-* [U-SQL データベースの詳細](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
+* [U-SQL データベースの詳細](/u-sql/data-definition-language-ddl-statements) 
 * [ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ](data-lake-analytics-data-lake-tools-local-run.md)
 
 

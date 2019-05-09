@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 21fa41db2e205a7b17deae6d018308fe6e7ff213
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0c37ad6de867c4abe4ebf0e6c7a40b5cf27c4541
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006772"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079641"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -22,14 +22,14 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
 この例では、ミラーリングを使用して、2 つの HDInsight クラスター間でトピックをレプリケートします。 両方のクラスターは同じリージョンの Azure Virtual Network に存在します。
 
-> [!WARNING]
+> [!WARNING]  
 > ミラーリングは、フォールト トレランスを実現するための手段として考慮するべきではありません。 トピック内の項目へのオフセットは、移行元クラスターと移行先クラスターによって異なるため、クライアントはこれら 2 つを入れ替えて使用することはできません。
 >
-> フォールト トレランスを考慮する場合は、クラスター内のトピックをレプリケートする設定にします。 詳細については、「[Get started with Kafka on HDInsight (HDInsight での Kafka の使用)](apache-kafka-get-started.md)」を参照してください。
+> フォールト トレランスを考慮する場合は、クラスター内のトピックをレプリケートする設定にします。 詳しくは、「[HDInsight での Apache Kafka の概要](apache-kafka-get-started.md)」をご覧ください。
 
-## <a name="how-kafka-mirroring-works"></a>Kafka のミラーリングのしくみ
+## <a name="how-apache-kafka-mirroring-works"></a>Apache Kafka のミラーリングのしくみ
 
-ミラーリングでは、Apache Kafka に含まれるツール MirrorMaker によって移行元クラスターのトピックからレコードが使用され、移行元クラスターにローカル コピーが作成されます。 MirrorMaker では、移行元クラスターから読み取りを行う 1 つ (あるいは複数) の*コンシューマー*と、ローカル (移行先) クラスターへの書き込みを行う*プロデューサー*を使用します。
+ミラーリングでは、Apache Kafka に含まれるツール [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) によって移行元クラスターのトピックからレコードが使用され、移行元クラスターにローカル コピーが作成されます。 MirrorMaker では、移行元クラスターから読み取りを行う 1 つ (あるいは複数) の*コンシューマー*と、ローカル (移行先) クラスターへの書き込みを行う*プロデューサー*を使用します。
 
 次の図にミラーリング プロセスを示します。
 
@@ -45,18 +45,18 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 
 異なるネットワークの Kafka クラスター間でミラーリングの必要がある場合には、次の追加の考慮事項があります。
 
-* **ゲートウェイ**: ネットワークは、TCPIP レベルで通信できる必要があります。
+* **ゲートウェイ**:ネットワークは、TCPIP レベルで通信できる必要があります。
 
-* **名前の解決**: 各ネットワークの Kafka クラスターは、ホスト名を使用して相互に接続できる必要があります。 そのためには、要求を他のネットワークに転送するように構成された各ネットワークに、ドメイン ネーム システム (DNS) サーバーが必要です。
+* **名前解決**:各ネットワークの Kafka クラスターは、ホスト名を使用して相互に接続できる必要があります。 そのためには、要求を他のネットワークに転送するように構成された各ネットワークに、ドメイン ネーム システム (DNS) サーバーが必要です。
 
     Azure Virtual Network を作成するときに、ネットワークで自動的に提供される DNS を使用せず、カスタムの DNS サーバーおよびサーバーの IP アドレスを指定する必要があります。 Virtual Network の作成が完了したら、その IP アドレスを使用する Azure Virtual Machine を作成し、そこに DNS ソフトウェアをインストールして構成を行います。
 
-    > [!WARNING]
+    > [!WARNING]  
     > カスタム DNS サーバーの作成と構成は、HDInsight を Virtual Network にインストールする前に行うようにします。 HDInsight が Virtual Network 用に構成された DNS サーバーを使用するために必要な、追加の構成はありません。
 
 2 つの Azure Virtual Network を接続する方法の詳細については、[VNet と VNet 間の接続の構成](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)に関する記事を参照してください。
 
-## <a name="create-kafka-clusters"></a>Kafka クラスターの作成
+## <a name="create-apache-kafka-clusters"></a>Apache Kafka クラスターを作成する
 
 Azure 仮想ネットワークと Kafka クラスターは手動で作成できますが、Azure Resource Manager テンプレートを使用する方が簡単です。 次の手順に従って、Azure 仮想ネットワークと 2 つの Kafka クラスターを Azure サブスクリプションにデプロイします。
 
@@ -66,32 +66,32 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
    
     Azure Resource Manager テンプレートは、**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json** にあります。
 
-    > [!WARNING]
+    > [!WARNING]  
     > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
 2. 次の情報に従って、**[カスタム デプロイ]** ブレードの各エントリに入力します。
     
     ![HDInsight のカスタム デプロイ](./media/apache-kafka-mirroring/parameters.png)
     
-    * **[リソース グループ]**: グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
+    * **リソース グループ**:グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
 
-    * **[場所]**: 地理的に近い場所を選択します。
+    * **場所**: 地理的に近い場所を選択します。
      
-    * **[Base Cluster Name] \(ベース クラスター名)**: この値は、Kafka クラスターのベース名として使用されます。 たとえば、「**hdi**」と入力すると、**source-hdi** と、**dest-hdi** という名前のクラスターが作成されます。
+    * **Base Cluster Name (ベース クラスター名)**:この値は、Kafka クラスターのベース名として使用されます。 たとえば、「**hdi**」と入力すると、**source-hdi** と、**dest-hdi** という名前のクラスターが作成されます。
 
-    * **[Cluster Login User Name] \(クラスター ログイン ユーザー名)**: 移行元および移行先の Kafka クラスターの管理者のユーザー名。
+    * **Cluster Login User Name (クラスター ログイン ユーザー名)**:移行元および移行先の Kafka クラスターの管理者ユーザー名。
 
-    * **[クラスター ログイン パスワード]**: 移行元および移行先の Kafka クラスターの管理者のユーザー パスワード。
+    * **クラスター ログイン パスワード**:移行元および移行先の Kafka クラスターの管理者ユーザー パスワード。
 
-    * **[SSH ユーザー名]**: 移行元および移行先の Kafka クラスターの作成に使用する SSHユーザー。
+    * **SSH ユーザー名**:移行元および移行先の Kafka クラスターの作成に使用する SSHユーザー。
 
-    * **[SSH パスワード]**: 移行元および移行先の Kafka クラスター用の SSH ユーザーのパスワード。
+    * **SSH パスワード**:移行元および移行先の Kafka クラスター用の SSH ユーザーのパスワード。
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 
 4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 各 HDInsight クラスターの名前は、**source-BASENAME** と **dest-BASENAME** です。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。
 
 ## <a name="create-topics"></a>トピックの作成
@@ -106,7 +106,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
     詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-2. 次のコマンドを使用して、移行元クラスターの Zookeeper ホストを見つけます。
+2. 次のコマンドを使用して、移行元クラスターの Apache Zookeeper ホストを見つけます。
 
     ```bash
     # Install jq if it is not installed
@@ -218,7 +218,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
 7. HDInsight の Kafka に使用される既定の構成では、トピックの自動作成が許可されません。 ミラーリング プロセスを開始する前に、次のいずれかの方法を選択する必要があります。
 
-    * **移行先クラスターにトピックを作成する**: この方法を選択した場合、パーティション数とレプリケーション係数も設定することができます。
+    * **移行先クラスターにトピックを作成する**:この方法を選択した場合、パーティション数とレプリケーション係数も設定することができます。
 
         次のコマンドを使用して事前にトピックを作成することができます。
 
@@ -228,7 +228,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
         `testtopic` は、作成するトピックの名前に置き換えます。
 
-    * **トピックを自動的に作成するようにクラスターを構成する**: この方法を選択した場合、MirrorMaker によって自動的にトピックが作成されます。ただし、トピックと共に作成されるパーティションの数またはレプリケーション係数が、移行元のトピックとは異なる場合があります。
+    * **トピックを自動的に作成するようにクラスターを構成する**:この方法を選択した場合、MirrorMaker によって自動的にトピックが作成されます。ただし、トピックと共に作成されるパーティションの数またはレプリケーション係数は、移行元のトピックと異なる場合があります。
 
         トピックを自動的に作成するように移行先クラスターを構成するには、次の手順を実行します。
 
@@ -250,15 +250,15 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
     この例で使用するパラメーターは次のとおりです。
 
-    * **--consumer.config**: コンシューマーのプロパティを格納するファイルを指定します。 これらのプロパティは、*移行元*の Kafka クラスターから読み取りを行うコンシューマーの作成に使用します。
+    * **--consumer.config**:コンシューマーのプロパティを格納するファイルを指定します。 これらのプロパティは、*移行元*の Kafka クラスターから読み取りを行うコンシューマーの作成に使用します。
 
-    * **--producer.config**: プロデューサーのプロパティを格納するファイルを指定します。 これらのプロパティは、*移行先*の Kafka クラスターへの書き込みを行うプロデューサーの作成に使用します。
+    * **--producer.config**:プロデューサーのプロパティを格納するファイルを指定します。 これらのプロパティは、*移行先*の Kafka クラスターへの書き込みを行うプロデューサーの作成に使用します。
 
-    * **--whitelist**: MirrorMaker が移行元クラスターから移行先クラスターにレプリケートするトピックの一覧。
+    * **--whitelist**:MirrorMaker が移行元クラスターから移行先クラスターにレプリケートするトピックの一覧。
 
-    * **--num.streams**: 作成するコンシューマー スレッドの数。
+    * **--num.streams**:作成するコンシューマー スレッドの数。
 
- スタートアップ時に、MirrorMaker により次のテキストのような情報が返されます。
+   スタートアップ時に、MirrorMaker により次のテキストのような情報が返されます。
 
     ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}
@@ -295,10 +295,10 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、MirrorMaker を使用して Kafka クラスターのレプリカを作成する方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
+このドキュメントでは、[MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して [Apache Kafka](https://kafka.apache.org/) クラスターのレプリカを作成する方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 
 * [Apache Kafka MirrorMaker に関するドキュメント](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) (cwiki.apache.org)
 * [HDInsight での Apache Kafka の使用](apache-kafka-get-started.md)
-* [HDInsight での Kafka に Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
-* [HDInsight での Kafka に Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
-* [Azure Virtual Network 経由で Kafka に接続する](apache-kafka-connect-vpn-gateway.md)
+* [HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
+* [HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
+* [Azure Virtual Network 経由で Apache Kafka に接続する](apache-kafka-connect-vpn-gateway.md)

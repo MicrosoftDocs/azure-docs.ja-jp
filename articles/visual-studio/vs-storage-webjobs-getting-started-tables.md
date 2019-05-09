@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: c708c396911badb7c7ce5df2497aaba47cb7defe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243762"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799329"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure Storage の使用 (Azure Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "51243762"
 ## <a name="overview"></a>概要
 この記事では、Azure テーブル ストレージ サービスで Azure WebJobs SDK バージョン 1.x を使用する方法を示す C# コードのサンプルを提供します。 コード サンプルでは [Web ジョブ SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) Version 1.x を使用しています。
 
-Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。  詳細については、「 [.NET を使用して Azure Table Storage を使用する](../cosmos-db/table-storage-how-to-use-dotnet.md#create-a-table) 」をご覧ください。
+Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。  詳細については、「 [.NET を使用して Azure Table Storage を使用する](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) 」をご覧ください。
 
 一部のコード スニペットは、手動で呼び出される関数で使用される **Table** 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
 

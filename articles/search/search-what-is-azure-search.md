@@ -1,20 +1,20 @@
 ---
 title: Azure Search サービスとは - Azure Search
-description: Azure Search は完全に管理されたホスト型クラウド検索サービスです。 機能の説明、開発ワークフロー、Azure Search と他の検索製品との比較、および開始する方法を確認します。
+description: Azure Search は、Microsoft が提供するフルマネージド ホストのクラウド検索サービスです。 機能の説明、開発ワークフロー、Azure Search と Microsoft の他の検索製品との比較、および開始する方法を確認します。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 11/09/2018
+ms.date: 02/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 884a726dbc7d7f2812f4de2228ca5adaf9b223ea
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 8893d8a55f77b54c9327e913af192ad39df46ba2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630403"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090017"
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
 Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 クエリはユーザー定義インデックスを介して実行されます。
@@ -116,8 +116,8 @@ Azure サブスクライバーは [Free レベルでサービスをプロビジ�
 
 3. .NET と REST API のいずれかを使用してコーディングを進めます。
 
-  + [.NET SDK を使用する方法](search-howto-dotnet-sdk.md)では、マネージド コードにおける主なワークフローについて説明します。  
-  + [REST API の概要](https://github.com/Azure-Samples/search-rest-api-getting-started)では、REST API の使用と同じ手順を示します。 さらに、次のクイック スタートを使用して、Postman または Fiddler から REST API を呼び出すこともできます([Azure Search REST API の探索](search-fiddler.md)に関するクイック スタート)。
+   + [.NET SDK を使用する方法](search-howto-dotnet-sdk.md)では、マネージド コードにおける主なワークフローについて説明します。  
+   + [REST API の概要](https://github.com/Azure-Samples/search-rest-api-getting-started)では、REST API の使用と同じ手順を示します。 さらに、次のクイック スタートを使用して、Postman または Fiddler から REST API を呼び出すこともできます([Azure Search REST API の探索](search-fiddler.md)に関するクイック スタート)。
 
 ## <a name="watch-this-video"></a>次の動画をご覧ください
 

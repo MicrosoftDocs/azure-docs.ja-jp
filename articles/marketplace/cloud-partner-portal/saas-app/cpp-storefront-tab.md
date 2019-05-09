@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 25fdce2381cc6dd65559a2450a42de5389589863
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7c4bd326c597b8e989dfc7aac5239ddb2d38376a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195942"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884772"
 ---
 # <a name="saas-application-storefront-details-tab"></a>SaaS アプリケーションの [ネットショップの詳細] タブ
 
@@ -37,7 +37,7 @@ ms.locfileid: "53195942"
 |  **オファーのフィールド**   |  **説明**  |
 |  ---------------   |  ---------------  |
 |      オファーの概要              |        オファーの価値提案の概要です。 オファーの検索ページに表示されます。 最大で 100 文字までにする必要があります。           |
-|      オファーの説明              |      アプリケーションの詳細ページに表示される説明です。 指定できる最大長は 1300 文字です。 基本的な HTML タグを使用してコンテンツの書式を設定できます。 たとえば、&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;li&gt; です。 書式設定後の説明を確認するには、 http://htmledit.squarefree.com のようなオンライン リアルタイム HTML ツールを使用できます。             |
+|      オファーの説明              |      アプリケーションの詳細ページに表示される説明です。 指定できる最大長は 1300 文字です。 基本的な HTML タグを使用してコンテンツの書式を設定できます。 たとえば、&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;li&gt; です。 書式設定後の説明を確認するには、[http://htmledit.squarefree.com](https://htmledit.squarefree.com) のようなオンライン リアルタイム HTML ツールを使用できます。             |
 |          業界          |        このオファーが最も適している業種を選択します。 アプリが複数の業種に関連している場合は、2 つまで選択できます。           |
 |          推奨されるカテゴリ (最大 3 個)         |        このオファーが最も適しているカテゴリを選択します。 3 つまで選択できます。           |
 |           アプリのバージョン         |        アプリケーションのバージョン番号を入力します。           |

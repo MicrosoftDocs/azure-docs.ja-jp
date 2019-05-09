@@ -1,5 +1,5 @@
 ---
-title: 'ポイント対サイトの証明書の作成とエクスポート: MakeCert : Azure | Microsoft Docs'
+title: 'ポイント対サイトの証明書を生成してエクスポートするMakeCert: Azure | Microsoft Docs'
 description: MakeCert を使用して、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を行います。
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297861"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102079"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert を使用したポイント対サイト接続の証明書の生成とエクスポート
 
@@ -28,16 +28,16 @@ ms.locfileid: "44297861"
 次の手順では、MakeCert を使用して自己署名証明書を作成する方法を説明します。 これらの手順は、デプロイ モデル固有のものではありません。 リソース マネージャーとクラシックの両方で有効です。
 
 1. [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx) をダウンロードし、インストールします。
-2. インストール後、makecert.exe ユーティリティは通常、C:\Program Files (x86)\Windows Kits\10\bin\<arch> で見つかります。 ただし、別の場所にインストールされている場合もあります。 管理者としてコマンド プロンプトを開き、MakeCert ユーティリティの場所に移動します。 次の例を使って、適切な場所に調整できます。
+2. インストール後、makecert.exe ユーティリティは通常、次のパスで見つかります: C:\Program Files (x86)\Windows Kits\10\bin\<arch>。 ただし、別の場所にインストールされている場合もあります。 管理者としてコマンド プロンプトを開き、MakeCert ユーティリティの場所に移動します。 次の例を使って、適切な場所に調整できます。
 
-  ```cmd
-  cd C:\Program Files (x86)\Windows Kits\10\bin\x64
-  ```
+   ```cmd
+   cd C:\Program Files (x86)\Windows Kits\10\bin\x64
+   ```
 3. コンピューターの個人証明書ストアで証明書を作成し、インストールします。 次の例は、P2S を構成するときに Azure にアップロードする、対応する *.cer* ファイルを作成します。 'P2SRootCert' と 'P2SRootCert.cer' を証明書に使う名前に置き換えます。 証明書は 'Current User\Personal\Certificates' にあります。
 
-  ```cmd
-  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
-  ```
+   ```cmd
+   makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
+   ```
 
 ## <a name="cer"></a>公開キー (.cer) のエクスポート
 
@@ -61,14 +61,14 @@ ms.locfileid: "44297861"
  
 1. 自己署名証明書の作成に使用した同じコンピューターで、管理者としてコマンド プロンプトを開きます。
 2. クライアント証明書を生成するには、サンプルを変更して実行します。
-  * *"P2SRootCert"* を、クライアント証明書を生成している自己署名ルートの名前に変更します。 必ずルート証明書の名前を使用してください。これは、自己署名ルートの作成時に指定した 'CN=' の値です。
-  * *P2SChildCert* を、生成するクライアント証明書の名前に変更します。
+   * *"P2SRootCert"* を、クライアント証明書を生成している自己署名ルートの名前に変更します。 必ずルート証明書の名前を使用してください。これは、自己署名ルートの作成時に指定した 'CN=' の値です。
+   * *P2SChildCert* を、生成するクライアント証明書の名前に変更します。
 
-  下の例を変更せずに実行すると、ルート証明書 P2SRootCert から生成された個人用証明書ストアに P2SChildcert という名前のクライアント証明書が作成されます。
+   下の例を変更せずに実行すると、ルート証明書 P2SRootCert から生成された個人用証明書ストアに P2SChildcert という名前のクライアント証明書が作成されます。
 
-  ```cmd
-  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
-  ```
+   ```cmd
+   makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
+   ```
 
 ### <a name="clientexport"></a>クライアント証明書のエクスポート
 

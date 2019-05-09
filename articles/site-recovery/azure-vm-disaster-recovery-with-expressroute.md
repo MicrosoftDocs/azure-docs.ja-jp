@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875401"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618100"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure ExpressRoute を Azure VM のディザスター リカバリーと統合する
 
@@ -40,7 +40,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 - ExpressRoute の[ルーティング ドメイン](../expressroute/expressroute-circuit-peerings.md#routingdomains)
 - ExpressRoute の[場所](../expressroute/expressroute-locations.md)。
 - Azure VM の[レプリケーション アーキテクチャ](azure-to-azure-architecture.md)
-- Azur VM の[レプリケーションを設定する](azure-to-azure-tutorial-enable-replication.md)方法。
+- Azure VM の[レプリケーションを設定する](azure-to-azure-tutorial-enable-replication.md)方法。
 - Azure VM を[フェールオーバーする](azure-to-azure-tutorial-failover-failback.md)方法。
 
 
@@ -91,11 +91,11 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
     - **ソース vNet2**: 10.2.0.0/24。
     - 各スポークの仮想ネットワークは、**ハブ vNet** に接続されます。
 - **ハブ vNet**。 1 つのハブ vNet があります。**ソース ハブ vNet**: 10.10.10.0/24。
-    - このハブ vNet はゲートキーパーとして機能します。
-    - サブネット間でのすべての通信は、このハブを通過します。
- - ****ハブ vNet のサブネット**。 ハブ vNet には、次の 2 つのサブネットがあります。
-     - **NVA サブネット**: 10.10.10.0/25。 このサブネットには NVA (10.10.10.10) が含まれています。
-     - **ゲートウェイ サブネット**: 10.10.10.128/25。 このサブネットには、ExpressRoute 接続に接続された ExpressRoute ゲートウェイがあります。これは、プライベート ピアリング ルーティング ドメインを通じてオンプレミス サイトにルーティングされます。
+  - このハブ vNet はゲートキーパーとして機能します。
+  - サブネット間でのすべての通信は、このハブを通過します。
+    - **ハブ vNet のサブネット**。 ハブ vNet には、次の 2 つのサブネットがあります。
+    - **NVA サブネット**: 10.10.10.0/25。 このサブネットには NVA (10.10.10.10) が含まれています。
+    - **ゲートウェイ サブネット**: 10.10.10.128/25。 このサブネットには、ExpressRoute 接続に接続された ExpressRoute ゲートウェイがあります。これは、プライベート ピアリング ルーティング ドメインを通じてオンプレミス サイトにルーティングされます。
 - オンプレミス データ センターでは、香港のパートナー エッジを介した ExpressRoute 回線接続が使用されています。
 - すべてのルーティングは、Azure ルート テーブル (UDR) によって制御されます。
 - vNet 間のアウトバウンド トラフィックや、オンプレミス データ センターへのアウトバウンド トラフィックはすべて、NVA を介してルーティングされます。
@@ -190,7 +190,7 @@ Site Recovery を使用してターゲット Azure リージョンに Azure VM �
 ### <a name="example-steps"></a>手順の例
 この例で復旧を自動化するには、次のようにする必要があります。
 
-1. [レプリケーションを設定する](#azure-vm-replication-steps)手順に従います。
+1. レプリケーションを設定する手順に従います。
 2. [Azure VM をフェールオーバーします](azure-to-azure-tutorial-failover-failback.md)。フェールオーバー中またはフェールオーバー後に以下の追加の手順を行います。
 
     a. ターゲット リージョンのハブ vNet に、Azure ExpressRoute ゲートウェイを作成します。 この場合、ターゲットのハブ vNet を ExpressRoute 回線に接続する必要があります。

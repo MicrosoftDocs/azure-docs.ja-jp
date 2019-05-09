@@ -4,23 +4,24 @@ description: ハイブリッド ID の設計上の考慮事項のガイドの概
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344884"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167866"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項
 企業世界では消費者基準のデバイスが広まっており、クラウド基準の SaaS (Software-as-a-Service/サービスとしてのソフトウェア) アプリケーションの導入が簡単になっています。 結果的に、内部データセンターとクラウド プラットフォームにわたりユーザーのアプリケーション アクセスを制御することが課題となります。  
@@ -49,7 +50,7 @@ Microsoft の ID ソリューションでは、オンプレミスとクラウド
 
 このガイドでは、組織の固有要件を満たすハイブリッド ID ソリューションを設計するための一連の手順と作業を紹介します。 次の手順と作業を通して、機能面とサービス面における組織の品質レベル要件を満たすために利用できる技術と機能の選択肢を提示します。
 
-**前提条件**: Windows Server、Active Directory Domain Services、Azure Active Directory の利用経験があること。 本書では、ソリューションが単独または統合ソリューションの形式でビジネス ニーズを満たす方法を読者が探しているものと想定しています。
+**前提条件**:Windows Server、Active Directory Domain Services、Azure Active Directory の利用経験があること。 本書では、ソリューションが単独または統合ソリューションの形式でビジネス ニーズを満たす方法を読者が探しているものと想定しています。
 
 ## <a name="design-considerations-overview"></a>設計上の考慮事項の概要
 本書では、要件を満たすハイブリッド ID ソリューションを設計するための一連の手順と作業を紹介します。 手順には連続番号が付き、その順番で実行します。 ただし、選択した設計の競合に起因し、後の手順で学習する設計上の考慮事項により先の手順で行った決定を変更しなければならなくなることもあります。 本書全体で、設計上の競合が潜在する場合、可能な限り警告されます。 

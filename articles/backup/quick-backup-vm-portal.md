@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 7/17/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 9d2578e10916d3770e73ab88e4d0e63aea3fe420
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d167ed012e3f0e45988c88b64040208d87623518
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114778"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59275501"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure で仮想マシンをバックアップする
 Azure ポータルで Azure のバックアップを作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスで Azure のバックアップを作成し、すべての関連リソースを構成できます。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure ポータルを使用して仮想マシン (VM) をバックアップする方法を説明します。 
@@ -25,12 +25,12 @@ Azure ポータルで Azure のバックアップを作成できます。 この
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (http://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com) にログインします。
 
 ## <a name="select-a-vm-to-back-up"></a>バックアップする VM を選択する
 Recovery Services コンテナーに対するバックアップを 1 日 1 回の単純なスケジュールで作成します。 
 
-1. 左側のメニューの **[仮想マシン]** を選択します。 
+1. 左側のメニューから **[仮想マシン]** を選択します。 
 2. バックアップする VM を一覧から選択します。 サンプルの VM クイック スタート コマンドを使用する場合、VM は *myVM* という名前で、*myResourceGroup* リソース グループ内にあります。
 3. **[操作]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ウィンドウが開きます。
 
@@ -73,7 +73,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 
 1. 目的の VM の **[バックアップ]** オプションを選択します。
 
-2. **[...さらに表示]** を選択して他のオプションを表示し、**[バックアップの停止]** を選択します。
+2. **[...More]\(...その他\)** を選択して他のオプションを表示し、**[バックアップの停止]** を選択します。
 
     ![Azure ポータルから VM のバックアップを停止する](./media/quick-backup-vm-portal/stop-backup.png)
 

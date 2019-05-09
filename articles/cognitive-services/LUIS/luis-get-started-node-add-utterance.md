@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: この Node.js クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0f59a1b84b78bf5c35d11d79f56cb44d128f042e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e2a8bed2b07934bf178ea338e074ec8e239ee646
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723061"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874840"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>クイック スタート: Node.js を使ってモデルを変更する
 

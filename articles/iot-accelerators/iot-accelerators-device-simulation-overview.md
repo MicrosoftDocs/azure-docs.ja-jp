@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 69e3708ef4c31e2dd91b5f50baecc46ea129cf33
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345785"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452226"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>デバイス シミュレーション ソリューション アクセラレータの概要
 
@@ -28,7 +28,7 @@ IoT ソリューションを開発するプロセスで不可欠なものは、�
 
 ![ドローンのシミュレーションの例](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-デバイス シミュレーションを使用して、物理デバイスをシミュレートするデバイス モデルを定義できます。 このモデルには、メッセージ形式、ツインのプロパティ、およびメソッドが含まれます。 JavaScript を使用して複雑なデバイスの動作をシミュレートすることもできます。
+デバイス シミュレーションを使用して、実際のデバイスをシミュレートするデバイス モデルを定義できます。 このモデルには、メッセージ形式、ツインのプロパティ、およびメソッドが含まれます。 JavaScript を使用して複雑なデバイスの動作をシミュレートすることもできます。
 
 任意の IoT ハブに接続されている 1 台から数千台のデバイスに対するシミュレーションを実行できます。 テストに役立つように、必要に応じて IoT ハブとデバイス シミュレーションをスタンドアロン環境にデプロイできます。
 

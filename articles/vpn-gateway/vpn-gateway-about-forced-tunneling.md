@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: cf566811f1e5fe7fde20d148e68417acf6d42f54
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0955d95ebfd9e1f72ed1da577bf3520a70b71624
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073824"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008329"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用した 強制トンネリングの構成
 
@@ -28,7 +28,7 @@ ms.locfileid: "53073824"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-この記事では、クラシック デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。 強制トンネリングは、ポータルを経由せずに、PowerShell を使用して構成できます。 Resource Manager デプロイ モデル向けに強制トンネリングを構成する場合は、次のドロップダウン リストから従来の記事を選択します。
+この記事では、クラシック デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。 強制トンネリングは、ポータルを経由せずに、PowerShell を使用して構成できます。 Resource Manager デプロイ モデル向けに強制トンネリングを構成する場合は、次のドロップダウン リストから Resource Manager の記事を選択します。
 
 > [!div class="op_single_selector"]
 > * [PowerShell - クラシック](vpn-gateway-about-forced-tunneling.md)

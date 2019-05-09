@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 9647522f4b3990d065f292f05934b8d19c691454
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865524"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441374"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベースの管理
 
@@ -48,7 +48,7 @@ ms.locfileid: "52865524"
 
 スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集を簡単に実行できます。
 
-### <a name="reports"></a>レポート
+### <a name="reports"></a>Reports
 
 Azure SQL データベースのコレクションから 1 つのテーブルにデータを集約します。
 

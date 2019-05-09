@@ -1,142 +1,147 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Way We Do の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Way We Do の統合 | Microsoft Docs
 description: Azure Active Directory と Way We Do の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 84fc4f36-ecd1-42c6-8a70-cb0f3dc15655
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/25/2018
+ms.topic: tutorial
+ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: bc415ec7c577e221a1ab5af585dff5b4fc9ab7dc
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 541be5466b65705daa0485976eab3df8eb3d707f
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259594"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565534"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>チュートリアル: Azure Active Directory と Way We Do の統合
+# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>チュートリアル:Azure Active Directory と Way We Do の統合
 
 このチュートリアルでは、Way We Do と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Way We Do と Azure AD の統合には、次の利点があります。
 
-- Way We Do にアクセスできる Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Way We Do にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Way We Do にアクセスできる Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Way We Do に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Way We Do と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Way We Do シングル サインオンに対応したサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* Way We Do でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Way We Do の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Way We Do では、**SP** によって開始される SSO がサポートされます
+
+* Way We Do では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-way-we-do-from-the-gallery"></a>ギャラリーからの Way We Do の追加
+
 Azure AD への Way We Do の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Way We Do を追加する必要があります。
 
 **ギャラリーから Way We Do を追加するには、次の手順を行います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
 4. 検索ボックスに「**Way We Do**」と入力し、結果パネルで **[Way We Do]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の Way We Do](./media/waywedo-tutorial/tutorial_waywedo_addfromgallery.png)
+    ![結果一覧の Way We Do](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Way We Do で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Way We Do ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Way We Do の関連ユーザーの間で、リンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Way We Do で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Way We Do 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Way We Do で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Way We Do テスト ユーザーの作成](#create-a-way-we-do-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Way We Do で作成します。
+2. **[Way We Do シングル サインオンの構成](#configure-way-we-do-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[Way We Do テスト ユーザーの作成](#create-way-we-do-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Way We Do で作成します。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Way We Do アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Way We Do で Azure AD シングル サインオンを構成するには、次の手順を行います。**
+Way We Do で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **Way We Do** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Way We Do** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/waywedo-tutorial/tutorial_waywedo_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-3. **[Way We Do のドメインと URL]** セクションで、次の手順を行います。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[Way We Do のドメインと URL] のシングル サインオン情報](./media/waywedo-tutorial/tutorial_waywedo_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    a. **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.waywedo.com/Authentication/ExternalSignIn` のパターンを使用して URL を入力します。
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    b. **[識別子]** ボックスに、`https://<SUBDOMAIN>.waywedo.com` の形式で URL を入力します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 この値を取得するには、[Way We Do クライアント サポート チーム](mailto:support@waywedo.com)にお問い合わせください。 
- 
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Raw) (証明書 (Raw))]** をクリックし、コンピューターに証明書ファイルを保存します。
+    ![[Way We Do のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    ![証明書のダウンロードのリンク](./media/waywedo-tutorial/tutorial_waywedo_certificate.png) 
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.waywedo.com/Authentication/ExternalSignIn`
 
-5. **[保存]** ボタンをクリックします。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.waywedo.com`
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/waywedo-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[Way We Do クライアント サポート チーム](mailto:support@waywedo.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[Way We Do Configuration]\(Way We Do 構成\)** セクションで、**[Configure Way We Do]\(Way We Do の構成\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![Way We Do の構成](./media/waywedo-tutorial/tutorial_waywedo_configure.png) 
+    ![証明書のダウンロードのリンク](common/certificateraw.png)
 
-7. 異なる Web ブラウザー ウィンドウで、セキュリティ管理者として Way We Do にログインします。
+6. **[Way We Do のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
-8. Way We Do の任意のページで右上隅にある**人アイコン**をクリックし、ドロップダウン メニューで **[Account]\(アカウント\)** をクリックします。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
+
+    a. ログイン URL
+
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-way-we-do-single-sign-on"></a>Way We Do シングル サインオンの構成
+
+1. 異なる Web ブラウザー ウィンドウで、セキュリティ管理者として Way We Do にサインインします。
+
+2. Way We Do の任意のページで右上隅にある**人アイコン**をクリックし、ドロップダウン メニューで **[Account]\(アカウント\)** をクリックします。
 
     ![Way We Do アカウント](./media/waywedo-tutorial/tutorial_waywedo_account.png) 
 
-9. **メニュー アイコン**をクリックしてプッシュ ナビゲーション メニューを開き、**[Single Sign On]\(シングル サイン オン\)** をクリックします。
+3. **メニュー アイコン**をクリックしてプッシュ ナビゲーション メニューを開き、**[Single Sign On]\(シングル サイン オン\)** をクリックします。
 
     ![Way We Do シングル](./media/waywedo-tutorial/tutorial_waywedo_single.png)
 
-10. **[Single sign-on setup]\(シングル サイン オンの設定\)** ページで、次の手順を行います。
+4. **[Single sign-on setup]\(シングル サイン オンの設定\)** ページで、次の手順を行います。
 
     ![Way We Do 保存](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
@@ -144,9 +149,9 @@ Way We Do で Azure AD のシングル サインオンを構成してテスト�
 
     b. **[Single sign-on name]\(シングル サイン オン名\)** テキストボックスに、自分の名前を入力します。
 
-    c. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    c. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    d. **[SAML SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
     e. **[Certificate]\(証明書\)** の横にある**選択**ボタンをクリックして、証明書をアップロードします。
 
@@ -161,100 +166,74 @@ Way We Do で Azure AD のシングル サインオンを構成してテスト�
 
     g. **[Save]\(保存\)** をクリックして設定を保持します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/waywedo-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/waywedo-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/waywedo-tutorial/create_aaduser_03.png)
-
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/waywedo-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="create-a-way-we-do-test-user"></a>Way We Do テスト ユーザーを作成する
-
-このセクションの目的は、Way We Do で Britta Simon というユーザーを作成することです。 Way We Do では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Way We Do ユーザーにアクセスしようとすると、新しいユーザーが作成されます。
-
-> [!Note]
-> ユーザーを手動で作成する必要がある場合は、[Way We Do クライアント サポート チーム](mailto:support@waywedo.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Way We Do へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Way We Do]** を選択します。
 
-**Way We Do に Britta Simon を割り当てるには、次の手順を行います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で **[Way We Do]** を選択します。
 
-    ![アプリケーションの一覧の [Way We Do] リンク](./media/waywedo-tutorial/tutorial_waywedo_app.png)  
+    ![アプリケーションの一覧の [Way We Do] リンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[割り当ての追加] ウィンドウ][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+
+### <a name="create-way-we-do-test-user"></a>Way We Do テスト ユーザーの作成
+
+このセクションでは、Britta Simon というユーザーを Way We Do に作成します。 Way We Do では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Way We Do にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+
+> [!Note]
+> ユーザーを手動で作成する必要がある場合は、[Way We Do クライアント サポート チーム](mailto:support@waywedo.com)にお問い合わせください。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Way We Do] タイルをクリックすると、自動的に Way We Do アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [Way We Do] タイルをクリックすると、SSO を設定した Way We Do に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/waywedo-tutorial/tutorial_general_01.png
-[2]: ./media/waywedo-tutorial/tutorial_general_02.png
-[3]: ./media/waywedo-tutorial/tutorial_general_03.png
-[4]: ./media/waywedo-tutorial/tutorial_general_04.png
-
-[100]: ./media/waywedo-tutorial/tutorial_general_100.png
-
-[200]: ./media/waywedo-tutorial/tutorial_general_200.png
-[201]: ./media/waywedo-tutorial/tutorial_general_201.png
-[202]: ./media/waywedo-tutorial/tutorial_general_202.png
-[203]: ./media/waywedo-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

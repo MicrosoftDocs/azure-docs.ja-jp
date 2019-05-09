@@ -1,5 +1,5 @@
 ---
-title: Active Directory ID を使用して結果をトリミングするためのセキュリティ フィルター - Azure Search
+title: Active Directory を使用して結果をトリミングするためのセキュリティ フィルター - Azure Search
 description: セキュリティ フィルターと Azure Active Directory (AAD) ID を使用した Azure Search コンテンツに対するアクセス制御。
 author: brjohnstmsft
 manager: jlembicz
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 2d1ac36341ef47ac95317c583005b675f31f1265
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308827"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102528"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -22,13 +22,13 @@ ms.locfileid: "53308827"
 
 この記事に含まれるタスクは次のとおりです。
 > [!div class="checklist"]
-- AAD グループとユーザーを作成します
-- 作成したユーザーとグループを関連付けます
-- 新しいグループをキャッシュします
-- 関連付けられているグループでドキュメントのインデックスを作成します
-- グループ識別子フィルターでの検索要求を発行します
-
->[!NOTE]
+> - AAD グループとユーザーを作成します
+> - 作成したユーザーとグループを関連付けます
+> - 新しいグループをキャッシュします
+> - 関連付けられているグループでドキュメントのインデックスを作成します
+> - グループ識別子フィルターでの検索要求を発行します
+> 
+> [!NOTE]
 > この記事のサンプル コード スニペットは、C# で書かれています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -64,7 +64,7 @@ Microsoft Graph に用意されている API では、REST API を使ってプ�
 
 特に大規模な組織では、ユーザーとグループ メンバーシップが頻繁に変更される場合があります。 ユーザーとグループの ID を作成するコードは、組織のメンバーシップの変更を反映するのに十分な頻度で実行する必要があります。 また、Azure Search インデックスについても、許可されたユーザーとリソースの現在の状態を反映するために同様の更新スケジュールが必要です。
 
-### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apigrouppostgroups"></a>手順 1:[AAD グループ](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/group_post_groups)を作成する 
+### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>手順 1:[AAD グループ](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0)を作成する 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -78,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>手順 2:[AAD ユーザー](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)を作成する 
+### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>手順 2:[AAD ユーザー](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)を作成する
 ```csharp
 User user = new User()
 {
@@ -139,7 +139,7 @@ _indexClient.Documents.Index(batch);
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>手順 1:ユーザーのグループ識別子を取得する
 
-ユーザーのグループがまだキャッシュされていない場合、またはキャッシュの有効期限を過ぎている場合は、[groups](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups) 要求を発行します。
+ユーザーのグループがまだキャッシュされていない場合、またはキャッシュの有効期限を過ぎている場合は、[groups](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) 要求を発行します。
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {

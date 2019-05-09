@@ -7,19 +7,19 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44335137eedb67d7ceca420a061880767b895cad
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ef1af4d3d27bc098341a4de716e293557baa946a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339282"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761389"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure での管理ソリューションの設計とビルド (プレビュー)
 > [!NOTE]

@@ -3,8 +3,8 @@ title: Azure Active Directory ポータルのサインイン アクティビテ�
 description: Azure Active Directory ポータルのサインイン アクティビティ レポートの概要
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
-ms.date: 11/13/2018
-ms.author: priyamo
+ms.subservice: report-monitor
+ms.date: 04/18/2019
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ac65a9ac81bca942f9fcbe802fdbf8a0aa3f8248
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623788"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997667"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -44,7 +45,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 * さらに、任意のユーザー (非管理者) が自分のサインインにアクセス可能 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>サインイン アクティビティにアクセスするために必要な Azure AD ライセンスを教えてください。
-* すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。
+* すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 アップグレード前の時点でアクティビティ データがまったく存在しなかった場合、Premium ライセンスへのアップグレード後、データがレポートに表示されるまでに数日かかります。
 
 ## <a name="sign-ins-report"></a>サインイン レポート
 
@@ -54,9 +55,12 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 * 1 週間で何人のユーザーがサインインを行ったか。
 * これらのサインインはどのような状態か。
 
-[Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[アクティビティ]** セクションで **[サインイン]** を選択して、サインイン レポートにアクセスできます。
+[Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[アクティビティ]** セクションで **[サインイン]** を選択して、サインイン レポートにアクセスできます。 サインイン レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあることに注意してください。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/61.png "サインイン アクティビティ")
+
+> [!IMPORTANT]
+> サインイン レポートには、**対話型**のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
 
 サインイン ログには、次のものを示す既定のリスト ビューがあります。
 
@@ -93,10 +97,10 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 報告されるデータを有用なものだけに絞り込むために、次の既定のフィールドを使用してサインイン データをフィルター処理できます。
 
 - User
-- アプリケーション
+- Application
 - サインインの状態
 - 条件付きアクセス
-- 日付
+- Date
 
 ![サインイン アクティビティ](./media/concept-sign-ins/04.png "サインイン アクティビティ")
 
@@ -129,7 +133,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 サインイン ビューにフィールドを追加すると、これらのフィールドがフィルターの一覧に自動的に追加されます。 たとえば、**[クライアント アプリ]** フィールドを一覧に追加した場合、次のフィルターを設定できるもう 1 つのフィルター オプションが表示されます。
 
-- [ブラウザー] ボタンを      
+- ブラウザー      
 - Exchange ActiveSync (supported) (Exchange ActiveSync (サポート対象))               
 - Exchange ActiveSync (unsupported) (Exchange ActiveSync (サポート外))
 - その他のクライアント               
@@ -145,23 +149,13 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
 
-Azure portal の外部で操作する場合は、[サインイン データをダウンロード](quickstart-download-sign-in-report.md)できます。 **[ダウンロード]** をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。  Azure portal では、ダウンロード ボタンの他に、[データをダウンロードするためのスクリプトを生成する](tutorial-signin-logs-download-script.md)オプションも提供されています。  
+Azure portal の外部で操作する場合は、[サインイン データをダウンロード](quickstart-download-sign-in-report.md)できます。 **[ダウンロード]** をクリックすると、最新の 250,000 件のレコードを含む CSV または JSON ファイルを作成することができます。  
 
 ![ダウンロード](./media/concept-sign-ins/71.png "ダウンロード")
-
-さらに柔軟性が必要である場合は、スクリプト ソリューションを使用することができます。 **[スクリプト]** をクリックすると、設定したすべてのフィルターを含む PowerShell が作成されます。 **管理者モード**でこのスクリプトをダウンロードして実行し、CSV ファイルを生成します。 
 
 > [!IMPORTANT]
 > ダウンロードできるレコードの数は、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によって制限されます。  
 
-### <a name="running-the-script-on-a-windows-10-machine"></a>Windows 10 マシン上でスクリプトを実行する
-
-**Windows 10** マシン上でスクリプトを実行する場合は、最初にいくつかの手順を追加で実行する必要があります。 
-
-1. [AzureRM モジュール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0l)をインストールします。
-2. PowerShell プロンプトを開き、コマンド **Import-Module AzureRM** を実行して、モジュールをインポートします。
-3. **Set-ExecutionPolicy unrestricted** を実行し、**[Yes to All]\(すべてはい\)** を選択します。 
-4. 以上で、ダウンロードした PowerShell スクリプトを管理者モードで実行して、CSV ファイルを生成できます。
 
 ## <a name="sign-ins-data-shortcuts"></a>サインイン データのショートカット
 
@@ -174,7 +168,7 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>ID セキュリティ保護のユーザーのサインイン データ
 
-**ID セキュリティ保護**のユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
+**[ID のセキュリティ保護]** の概要ページのユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/06.png "サインイン アクティビティ")
 
@@ -193,14 +187,17 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 - User
 - ユーザー名
 - アプリケーション ID
-- アプリケーション
-- クライアント
+- Application
+- Client
 - Location
 - IP アドレス
-- 日付
+- Date
 - MFA が必要
 - サインインの状態
- 
+
+> [!NOTE]
+> IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 IP アドレスのマッピングは、多くの場合、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから、モバイル プロバイダーや VPN が IP アドレスを発行しているという事実によって、複雑になります。 現在の Azure AD レポートでは、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。
+
 **[ユーザー]** ページの **[アクティビティ]** セクションの **[サインイン]** をクリックすると、すべてのユーザー サインインの完全な概要が表示されます。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/08.png "サインイン アクティビティ")
@@ -230,6 +227,12 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 **[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/11.png "サインイン アクティビティ")
+
+## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
+
+Office 365 のアクティビティ ログは、[Microsoft 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
+
+[Office 365 Management API シリーズ](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

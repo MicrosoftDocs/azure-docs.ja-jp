@@ -1,21 +1,19 @@
 ---
 title: サンプルの使用
 description: この記事では、Power BI ワークスペース コレクションの使用を開始するためのサンプルを紹介します。
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: maghan
-ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c80dc2ca4d0062fcb98aeb6431566ce6ca39411
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246686"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519495"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI ワークスペース コレクションのサンプルの使用
 
@@ -24,7 +22,7 @@ ms.locfileid: "51246686"
 > [!IMPORTANT]
 > Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、[Power BI ワークスペース コレクション コンテンツを Power BI Embedded に移行する方法](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)に関するページを参照してください。
 
-先に進む前に、次のリソースを保存してください。これらは、サンプル アプリや独自のアプリに Power BI レポートを統合する際に役立ちます。
+先に進む前に、次のリソースを保存できます。それらは、サンプル アプリや独自のアプリに Power BI レポートを統合する際に役立ちます。
 
 * [サンプル ワークスペース Web アプリ](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI ワークスペース コレクション API リファレンス](https://msdn.microsoft.com/library/azure/mt711507.aspx)
@@ -71,9 +69,9 @@ Checking import state... Succeeded
 サンプル Web アプリは、**ワークスペース**にインポートされたレポートを表示するサンプル アプリケーションです。 サンプル Web アプリを構成する方法は以下のとおりです。
 
 1. **PowerBI-embedded** Visual Studio ソリューションで **EmbedSample** Web アプリケーションを右クリックして、**[スタートアップ プロジェクトに設定]** を選択します。
-2. **EmbedSample** Web アプリケーションの **web.config** で、**[appSettings]** の **[AccessKey]**、**[WorkspaceCollection]** の名前、および **[WorkspaceId]** を編集します。
+2. **web.config** の **EmbedSample** Web アプリケーションで、次の **appSettings** を編集します:**AccessKey**、**WorkspaceCollection** 名、および **WorkspaceId**。
 
-    ```
+    ```xml
     <appSettings>
         <add key="powerbi:AccessKey" value="" />
         <add key="powerbi:ApiUrl" value="https://api.powerbi.com" />
@@ -93,7 +91,7 @@ Checking import state... Succeeded
 
 ## <a name="explore-the-sample-code"></a>サンプル コードの検証
 
-**Microsoft Power BI ワークスペース コレクション**のサンプルは、アプリへの **Power BI** レポートの統合方法を示すサンプル Web アプリです。 このサンプルは、モデル ビュー コント ローラー (MVC) デザイン パターンを使用して、ベスト プラクティスを説明します。 このセクションでは、サンプル コードのうち、**PowerBI-embedded** Web アプリ ソリューション内で検証できる部分について説明します。 モデル ビュー コント ローラー (MVC) パターンは、ユーザー入力に基づいて、ドメイン、プレゼンテーション、およびアクションのモデリングをモデル、ビュー、およびコントロールという 3 つの個別クラスに分割します。 MVC の詳細については、[ASP.NET の詳細](http://www.asp.net/mvc)に関するページをご覧ください。
+**Microsoft Power BI ワークスペース コレクション**のサンプルは、アプリへの **Power BI** レポートの統合方法を示すサンプル Web アプリです。 このサンプルは、モデル ビュー コント ローラー (MVC) デザイン パターンを使用して、ベスト プラクティスを説明します。 このセクションでは、サンプル コードのうち、**PowerBI-embedded** Web アプリ ソリューション内で検証できる部分について説明します。 Model-View-Controller (MVC) パターンは、ユーザー入力に基づいて、ドメイン、プレゼンテーション、およびアクションのモデリングをモデル、ビュー、およびコントロールという 3 つの個別クラスに分割します。 MVC の詳細については、[ASP.NET の詳細](https://www.asp.net/mvc)に関するページをご覧ください。
 
 **Microsoft Power BI ワークスペース コレクション**のサンプル コードは以下のように区切られています。 サンプル内のコードを簡単に見つけることができるように、各セクションには PowerBI-embedded.sln ソリューションのファイル名が含まれます。
 
@@ -104,21 +102,25 @@ Checking import state... Succeeded
 
 サンプルには、**ReportsViewModel** と **ReportViewModel** があります。
 
-**ReportsViewModel.cs**: 複数の Power BI レポートを表します。
+**ReportsViewModel.cs**:複数の Power BI レポートを表します。
 
-    public class ReportsViewModel
-    {
-        public List<Report> Reports { get; set; }
-    }
+```csharp
+public class ReportsViewModel
+{
+    public List<Report> Reports { get; set; }
+}
+```
 
-**ReportViewModel.cs**： 1 つの Power BI レポートを表します。
+**ReportViewModel.cs**:1 つの Power BI レポートを表します。
 
-    public classReportViewModel
-    {
-        public IReport Report { get; set; }
+```csharp
+public class ReportViewModel
+{
+    public IReport Report { get; set; }
 
-        public string AccessToken { get; set; }
-    }
+    public string AccessToken { get; set; }
+}
+```
 
 ### <a name="connection-string"></a>接続文字列
 
@@ -128,107 +130,115 @@ Checking import state... Succeeded
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 ```
 
-一般的なサーバーとデータベースの属性を使用すると失敗します。 たとえば、Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase を使用した場合です。
+一般的なサーバーとデータベースの属性を使用すると失敗します。 例: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
 
 ### <a name="view"></a>表示
 
 **ビュー**では、複数の Power BI **レポート** の表示と 1 つの Power BI **レポート**の表示を管理します。
 
-**Reports.cshtml**: **ActionLink** を作成するために **Model.Reports** を反復処理します。 **ActionLink** の構成は次のとおりです。
+**Reports.cshtml**:**ActionLink** を作成するために **Model.Reports** を反復処理します。 **ActionLink** の構成は次のとおりです。
 
 | パーツ | 説明 |
 | --- | --- |
 | タイトル |レポートの名前。 |
 | QueryString |レポート ID へのリンク。 |
-
-    <div id="reports-nav" class="panel-collapse collapse">
-        <div class="panel-body">
-            <ul class="nav navbar-nav">
-                @foreach (var report in Model.Reports)
-                {
-                    var reportClass = Request.QueryString["reportId"] == report.Id ? "active" : "";
-                    <li class="@reportClass">
-                        @Html.ActionLink(report.Name, "Report", new { reportId = report.Id })
-                    </li>
-                }
-            </ul>
-        </div>
+```cshtml
+<div id="reports-nav" class="panel-collapse collapse">
+    <div class="panel-body">
+        <ul class="nav navbar-nav">
+            @foreach (var report in Model.Reports)
+            {
+                var reportClass = Request.QueryString["reportId"] == report.Id ? "active" : "";
+                <li class="@reportClass">
+                    @Html.ActionLink(report.Name, "Report", new { reportId = report.Id })
+                </li>
+            }
+        </ul>
     </div>
+</div>
+```
+Report.cshtml:**Model.AccessToken** と、**PowerBIReportFor** のラムダ式を設定します。
 
-Report.cshtml: **Model.AccessToken** と、**PowerBIReportFor** のラムダ式を設定します。
+```cshtml
+@model ReportViewModel
 
-    @model ReportViewModel
+...
 
-    ...
+<div class="side-body padding-top">
+    @Html.PowerBIAccessToken(Model.AccessToken)
+    @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
+</div>
+```
 
-    <div class="side-body padding-top">
-        @Html.PowerBIAccessToken(Model.AccessToken)
-        @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
-    </div>
+### <a name="controller"></a>コントローラー
 
-### <a name="controller"></a>Controller
+**DashboardController.cs**:**アプリ トークン**を渡す PowerBIClient を作成します。 **資格情報**を取得するために、JSON Web トークン (JWT) が**署名キー**から生成されます。 **資格情報**は、**PowerBIClient** のインスタンスの作成に使用されます。 **PowerBIClient** のインスタンスを作成したら、GetReports() と GetReportsAsync() を呼び出すことができます。
 
-**DashboardController.cs**: **アプリ トークン**を渡す PowerBIClient を作成します。 **資格情報**を取得するために、JSON Web トークン (JWT) が**署名キー**から生成されます。 **資格情報**は、**PowerBIClient** のインスタンスの作成に使用されます。 **PowerBIClient** のインスタンスを作成したら、GetReports() と GetReportsAsync() を呼び出すことができます。
 
 CreatePowerBIClient()
 
-    private IPowerBIClient CreatePowerBIClient()
+```csharp
+private IPowerBIClient CreatePowerBIClient()
+{
+    var credentials = new TokenCredentials(accessKey, "AppKey");
+    var client = new PowerBIClient(credentials)
     {
-        var credentials = new TokenCredentials(accessKey, "AppKey");
-        var client = new PowerBIClient(credentials)
-        {
-            BaseUri = new Uri(apiUrl)
-        };
+        BaseUri = new Uri(apiUrl)
+    };
 
-        return client;
-    }
+    return client;
+}
+```
 
 ActionResult Reports()
 
-    public ActionResult Reports()
+```csharp
+public ActionResult Reports()
+{
+    using (var client = this.CreatePowerBIClient())
     {
-        using (var client = this.CreatePowerBIClient())
+        var reportsResponse = client.Reports.GetReports(this.workspaceCollection, this.workspaceId);
+
+        var viewModel = new ReportsViewModel
         {
-            var reportsResponse = client.Reports.GetReports(this.workspaceCollection, this.workspaceId);
+            Reports = reportsResponse.Value.ToList()
+        };
 
-            var viewModel = new ReportsViewModel
-            {
-                Reports = reportsResponse.Value.ToList()
-            };
-
-            return PartialView(viewModel);
-        }
+        return PartialView(viewModel);
     }
-
+}
+```
 
 Task<ActionResult> Report(string reportId)
 
-    public async Task<ActionResult> Report(string reportId)
+```csharp
+public async Task<ActionResult> Report(string reportId)
+{
+    using (var client = this.CreatePowerBIClient())
     {
-        using (var client = this.CreatePowerBIClient())
+        var reportsResponse = await client.Reports.GetReportsAsync(this.workspaceCollection, this.workspaceId);
+        var report = reportsResponse.Value.FirstOrDefault(r => r.Id == reportId);
+        var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
+
+        var viewModel = new ReportViewModel
         {
-            var reportsResponse = await client.Reports.GetReportsAsync(this.workspaceCollection, this.workspaceId);
-            var report = reportsResponse.Value.FirstOrDefault(r => r.Id == reportId);
-            var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
+            Report = report,
+            AccessToken = embedToken.Generate(this.accessKey)
+        };
 
-            var viewModel = new ReportViewModel
-            {
-                Report = report,
-                AccessToken = embedToken.Generate(this.accessKey)
-            };
-
-            return View(viewModel);
-        }
+        return View(viewModel);
     }
+}
+```
 
 ### <a name="integrate-a-report-into-your-app"></a>アプリへのレポートの統合
 
 **レポート**を作成したら、**IFrame** を使用して Power BI **レポート**を埋め込みます。 **Microsoft Power BI ワークスペース コレクション** サンプルの powerbi.js のコード スニペットを次に示します。
 
-```
+```javascript
 init: function() {
     var embedUrl = this.getEmbedUrl();
-    var iframeHtml = '<igrame style="width:100%;height:100%;" src="' + embedUrl + 
+    var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + 
         '" scrolling="no" allowfullscreen="true"></iframe>';
     this.element.innerHTML = iframeHtml;
     this.iframe = this.element.childNodes[0];
@@ -258,4 +268,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: a76b82764b926a228dcb544e272e280789ca7356
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: a9434bebe82687b14f45b3c375572717d71d0e55
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345463"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430621"
 ---
 # <a name="manage-smart-groups"></a>スマート グループを管理する
 [スマート グループ](https://aka.ms/smart-groups)では、機械学習アルゴリズムを使用して、同時発生または類似性に基づいてアラートがグループ化されるので、ユーザーは、各アラートを個別に管理するのではなく、スマート グループを管理することができます。 この記事では、Azure Monitor でスマート グループにアクセスしてそれを使用する手順について説明します。
@@ -26,4 +26,5 @@ ms.locfileid: "53345463"
 ![監視](./media/alerts-managing-smart-groups/sg-list.jpg)
 3.  いずれかのスマート グループをクリックすると詳細ページが開き、グループ化の理由とメンバーのアラートを見ることができます。 この集計により、複数のアラートを選別するのではなく、1 つのスマート グループを扱うことができるようになります。   
 ![監視](./media/alerts-managing-smart-groups/sg-details.jpg)
+
 

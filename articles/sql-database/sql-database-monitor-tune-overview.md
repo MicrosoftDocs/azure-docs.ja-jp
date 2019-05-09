@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: ac87ce2198296b82ef5655d7d75443a0bd49df3c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272866"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875140"
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 
-Azure SQL Database は、自動的に管理される柔軟なデータ サービスです。このサービスでは、使用状況の監視、リソース (CPU、メモリ、I/O) の追加または削除、データベースのパフォーマンスを向上させることのできる推奨事項の検出、あるいはデータベースをワークロードに適応させることによるパフォーマンスの自動的な最適化などを容易に行うことができます。
+Azure SQL Database は、自動管理される柔軟なデータ サービスです。このサービスでは、使用状況の監視、リソース (CPU、メモリ、I/O) の追加または削除、ご使用のデータベースのパフォーマンスを向上させる推奨事項の検出、あるいはデータベースをご自分のワークロードに適応させパフォーマンスを自動的に最適化するなどを容易に行うことができます。
 
 ## <a name="monitoring-database-performance"></a>データベース パフォーマンスの監視
 
@@ -34,14 +34,14 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 - [SQL Database Advisor](sql-database-advisor-portal.md) を使用して、インデックスの作成と削除、クエリのパラメーター化、およびスキーマの問題の修正に関する推奨事項を表示します。
 - データベース パフォーマンスの自動監視には、[Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) を使用します。 パフォーマンスの問題が検出されたら、問題の詳細と根本原因分析 (RCA) が記載された診断ログが生成されます。 可能な場合は、パフォーマンス改善の推奨事項も提供されます。
 - [自動チューニングを有効にします](sql-database-automatic-tuning-enable.md)。これにより、Azure SQL Database では、特定されたパフォーマンスの問題を自動的に修正できるようになります。
-- [動的管理ビュー (DMV)](sql-database-monitoring-with-dmvs.md)、[拡張イベント](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-db-diff-from-svr)、および[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して、パフォーマンスの問題のトラブルシューティングをより詳細に行います。
+- [動的管理ビュー (DMV)](sql-database-monitoring-with-dmvs.md)、[拡張イベント](sql-database-xevent-db-diff-from-svr.md)、および[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して、パフォーマンスの問題のトラブルシューティングをより詳細に行います。
 
 > [!TIP]
 > 上の 1 つまたは複数の方法を使用してパフォーマンスの問題を識別した後、Azure SQL Database のパフォーマンスを向上させるために使用できる手法を見つけるには、[パフォーマンス ガイダンス](sql-database-performance-guidance.md)を参照してください。
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
 
-[Azure portal](https://portal.azure.com/) では、データベースを選択し、**[監視]** グラフをクリックすることによって単一データベースの使用を監視できます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
+[Azure portal](https://portal.azure.com/) で、ご使用のデータベースを選択し、**[監視]** グラフをクリックすることによって個々のデータベースの使用を監視できます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
 
 - CPU の割合
 - DTU の割合
@@ -102,10 +102,10 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 この種の問題の解決方法について詳しくは、以下をご覧ください。
 
-- こちらの[パラメーターのにおい](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)に関するブログ投稿
-- こちらの[パラメーター スニッフィング問題と回避策](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/)に関するブログ投稿
-- こちらの[象とマウスのパラメーター スニッフィング](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)に関するブログ投稿
-- こちらの、[パラメーター化クエリに対する動的 SQL とプランの品質](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)に関するブログ投稿
+- こちらの[パラメーターのにおい](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/)に関するブログ投稿
+- こちらの[パラメーター スニッフィング問題と回避策](https://blogs.msdn.microsoft.com/turgays/20../../parameter-sniffing-problem-and-possible-workarounds/)に関するブログ投稿
+- こちらの[象とマウスのパラメーター スニッフィング](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)に関するブログ投稿
+- こちらの、[パラメーター化クエリに対する動的 SQL とプランの品質](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)に関するブログ投稿
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>不適切なパラメーター化が原因のコンパイル アクティビティのトラブルシューティング
 
@@ -175,7 +175,7 @@ CPU の問題をもたらしているワークロード ボリュームの変更
 
 高い CPU 使用率や、実行に関連するパフォーマンスの問題に直面していないことが確信できたら、待機に関連するパフォーマンスの問題に直面しています。 つまり、CPU が他の何らかのリソースを待機しているために CPU リソースが効率的に使用されていません。 この場合、次のステップは CPU リソースが何を待機しているかを識別することです。 最上位の待機の種類カテゴリを示すための最も一般的な方法は次のとおりです。
 
-- [クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)は、一定期間にわたるクエリごとの待機の統計を提供します。 クエリ ストアでは、待機の種類は待機カテゴリに結合されます。 待機カテゴリから待機の種類へのマッピングは、[sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table) で使用できます。
+- [クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)は、一定期間にわたるクエリごとの待機の統計を提供します。 クエリ ストアでは、待機の種類は待機カテゴリに結合されます。 待機カテゴリから待機の種類へのマッピングは、[sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table) で使用できます。
 - [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) は、操作中に実行されたスレッドによって発生したすべての待機に関する情報を返します。 この集計ビューを使用して、Azure SQL Database のほか、特定のクエリやバッチに関するパフォーマンスの問題を診断できます。
 - [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) は、何らかのリソースを待機しているタスクの待機キューに関する情報を返します。
 
@@ -204,7 +204,7 @@ CPU の問題をもたらしているワークロード ボリュームの変更
 
 最後に、データベースのパフォーマンス向上につながるすぐに実施可能な方法がない場合は、Azure SQL Database で使用できるリソースの量を変更することができます。 単一データベースの[DTU サービス レベル](sql-database-service-tiers-dtu.md)を変更するか、エラスティック プールの eDTU を増やすことにより、いつでもリソース割り当てを増やすことができます。 あるいは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用した場合は、サービス レベルを変更することも、データベースへの割り当てリソースを増やすこともできます。
 
-1. 単一データベースの場合は、[サービス レベルの変更](sql-database-service-tiers-dtu.md)や[コンピューティング リソース](sql-database-service-tiers-vcore.md)の変更をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
+1. 単一データベースの場合は、[サービス レベルの変更](sql-database-single-database-scale.md)や[コンピューティング リソース](sql-database-single-database-scale.md)の変更をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
 2. 複数のデータベースの場合は、リソースを自動的にスケーリングするための [エラスティック プール](sql-database-elastic-pool-guidance.md) の使用を検討してください。
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>アプリケーションまたはデータベース コードをチューニングおよびリファクタリングする

@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: この C# クイック スタートでは、提供されているパブリック LUIS アプリを使って、会話形式のテキストからユーザーの意図を判断します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 0e58fb35fa29cde16b1ccf50dc20dacc693a4757
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6d72299e4350c472ef552fa6afd96e48fd1869b9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141766"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876966"
 ---
 # <a name="quickstart-get-intent-using-c"></a>クイック スタート: C# による意図の取得
 

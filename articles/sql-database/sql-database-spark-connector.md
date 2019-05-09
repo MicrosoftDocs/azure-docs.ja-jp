@@ -11,19 +11,19 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/23/2018
-ms.openlocfilehash: 09035b19ee48602fde70736ab918fccae71108a5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/25/2018
+ms.openlocfilehash: 8e531de34302ef8aee571c960955d33a4832aa11
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013703"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Azure SQL Database と SQL Server 用の Spark コネクタを使用してビッグ データのリアルタイム分析を高速化する
 
 Azure SQL Database と SQL Server 用の Spark コネクタを使用して、Azure SQL Database と SQL Server を含む SQL データベースを Spark ジョブの入力データ ソースまたは出力データ シンクとして機能させることができます。 ビッグ データ分析の中でリアルタイム トランザクション データを利用でき、アドホック クエリの結果やレポートを保持できます。 組み込みの JDBC コネクタに比べて、このコネクタには、SQL データベースにデータを一括挿入する機能があります。 行単位の挿入に比べ、パフォーマンスを 10 倍から 20 倍も向上させることができます。 Azure SQL Database と SQL Server 用の Spark コネクタは、AAD 認証もサポートします。 AAD アカウントを使用して Azure Databricks から Azure SQL Database に安全に接続できます。 組み込みの JDBC コネクタと同様のインターフェイスを備えています。 この新しいコネクタを使用するための既存の Spark ジョブの移行は簡単に実行できます。
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 最初に、GitHub の [azure-sqldb-spark リポジトリ](https://github.com/Azure/azure-sqldb-spark) から Spark to SQL DB コネクタをダウンロードします。
 
 ## <a name="official-supported-versions"></a>正式にサポートされているバージョン
@@ -161,7 +161,7 @@ collection.show()
 #### <a name="setup-requirement"></a>設定要件
 アクセス トークンに基づく認証モードを使用する場合は、[azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) とその依存関係をダウンロードし、それらを Java ビルド パスに含める必要があります。
 
-Azure SQL Ｄatabase のアクセス トークンを取得する方法については、[Azure Active Directory 認証を使用した SQL Database の認証](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)に関する記事を参照してください。
+Azure SQL Ｄatabase のアクセス トークンを取得する方法については、[Azure Active Directory 認証を使用した SQL Database の認証](sql-database-aad-authentication.md)に関する記事を参照してください。
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -219,5 +219,5 @@ Azure SQL Database と SQL Server 用の Spark コネクタをまだダウンロ
 -   [Azure Databricks ノートブックのサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [サンプル スクリプト (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-また、[Apache Spark SQL、DataFrames、データセット ガイド](http://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](https://docs.microsoft.com/azure/azure-databricks/)を確認することもできます。
+また、[Apache Spark SQL、DataFrames、データセット ガイド](https://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](https://docs.microsoft.com/azure/azure-databricks/)を確認することもできます。
 

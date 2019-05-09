@@ -4,21 +4,21 @@ description: このドキュメントでは、Azure Security Center と Windows 
 services: security-center
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 12/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 1109e72d00ccddd6fc0f120ee71c88adaae72fed
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ee5ed8871ea5c021ad8c87e35f45e42ad641a324
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337599"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124175"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection と Azure Security Center
 
@@ -57,7 +57,21 @@ Windows Defender ATP にピボットすることによって、アラートを�
 
 Standard サービス レベルのサブスクリプションのサーバーのみがサポートされます。
 
-## <a name="onboarding-instructions"></a>オンボード手順
+## <a name="onboarding-servers-to-security-center"></a>Security Center にサーバーをオンボードする 
+
+サーバーを Security Center にオンボードするには、Windows Defender ATP サーバーのオンボードから **[Azure Security Center に移動] をクリックしてサーバーをオンボード**します。
+
+1. **[オンボード]** ブレードで、データを保存するワークスペースを選択または作成します。 <br>
+2. すべてのワークスペースが表示されない場合は、アクセス許可が不足している可能性があります。ワークスペースが Azure Security Standard レベルに設定されていることを確認してください。 詳細については、「[Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化](security-center-pricing.md)」を参照してください。
+    
+3. **[サーバーの追加]** を選択すると、Microsoft Monitoring Agent をインストールする手順が表示されます。 
+
+4. オンボード後は、**[計算とアプリ]** でマシンを監視できます。
+
+   ![コンピューターをオンボードする](media/security-center-wdatp/onboard-computers.png)
+
+
+## <a name="enable-windows-defender-atp-integration"></a>Windows Defender ATP の統合を有効にする
 
 Windows Defender ATP の統合が有効になっているかどうか確認するには、**[セキュリティ センター]** > **[セキュリティ ポリシー]** > **[サブスクリプション]** > **[設定の編集]** の順に選択します。
 

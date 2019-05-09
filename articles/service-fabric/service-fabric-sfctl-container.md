@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl container のコマンドについて説�
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 455b2a70568566bff5b1ea4c185568a1758f7db3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a5037c535737946a50d8af6fa60d0815120276d9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274906"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663708"
 ---
 # <a name="sfctl-container"></a>sfctl container
 クラスター ノード上でコンテナー関連のコマンドを実行します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | invoke-api | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーでコンテナー API を呼び出します。 |
-| ログ | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーのコンテナー ログを取得します。 |
+| logs | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーのコンテナー ログを取得します。 |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーでコンテナー API を呼び出します。
@@ -57,7 +57,7 @@ ms.locfileid: "53274906"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-container-logs"></a>sfctl container logs
 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーのコンテナー ログを取得します。
@@ -82,7 +82,7 @@ ms.locfileid: "53274906"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 
 ## <a name="next-steps"></a>次の手順

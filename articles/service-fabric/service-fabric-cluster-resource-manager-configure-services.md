@@ -4,22 +4,22 @@ description: メトリック、配置の制約、およびその他の配置ポ�
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea781b5dbbf09c0a21fbcf781ae129295d02dbad
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 21fcac62c9335652d0c682a6ac889be82e649464
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054793"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661549"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Service Fabric サービスのために Cluster Resource Manager の設定を構成する
 Service Fabric のクラスター リソース マネージャーを使用すると、すべての名前付きサービスを個別に制御するルールを非常にきめ細かく制御できます。 各名前付きサービスで、クラスター内の割り当て方法のルールを指定できます。 また、各名前付きサービスで、それらがサービスにとってどれだけ重要であるかを含め、レポートする一連のメトリックを定義できます。 サービスの構成は次の 3 つの異なるタスクに分かれます。

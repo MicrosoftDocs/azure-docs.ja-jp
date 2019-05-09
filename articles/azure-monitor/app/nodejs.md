@@ -10,26 +10,24 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/01/2017
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0ced0ae62bcccadafd090964daae4e7828c05ce2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 13379111706eaa816a8fa16cfe72711b7bf4d739
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004731"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013298"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
-[Azure Application Insights](../../application-insights/app-insights-overview.md) では、[パフォーマンスなどの問題を検出し、迅速に診断](../../azure-monitor/app/detect-triage-diagnose.md)できるように、デプロイしたバックエンド サービスとコンポーネントを監視します。 Application Insights は、自社のデータセンターや、Azure VM、Web アプリ、さらには他のパブリック クラウドにホストされた Node.js サービスに対して使用できます。
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) では、[パフォーマンスなどの問題を検出し、迅速に診断](../../azure-monitor/app/detect-triage-diagnose.md)できるように、デプロイしたバックエンド サービスとコンポーネントを監視します。 Application Insights は、自社のデータセンターや、Azure VM、Web アプリ、さらには他のパブリック クラウドにホストされた Node.js サービスに対して使用できます。
 
 監視データを受信、保存、探索するためには、ご使用のコードに SDK を追加し、対応する Application Insights リソースを Azure で設定します。 そのリソースに対して SDK からデータが送信され、詳細な分析と探索が行えるようになります。
 
 Node.js SDK では、受信と発信 HTTP 要求、例外のほか、システムのいくつかのメトリックを自動的に監視できます。 さらに、バージョン 0.20 以降の SDK では、MongoDB、MySQL、Redis など、一般的なサードパーティ製パッケージを監視することもできます。 受信 HTTP 要求に関連するすべてのイベントは、トラブルシューティングを迅速に行えるように関連付けられます。
 
 TelemetryClient API を使用して手動でインストルメント化すれば、ご使用のアプリとシステムのその他の側面も監視できます。 TelemetryClient API については、この記事の後半でさらに詳しく説明します。
-
-![Example performance monitoring charts](./media/nodejs/10-perf.png)
 
 ## <a name="get-started"></a>作業開始
 
@@ -49,11 +47,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 1. [Azure Portal][portal] にサインインします。
 2. **[リソースの作成]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。 このリソースには、テレメトリ データを受信するためのエンドポイント、そのデータのストレージ、保存済みのレポートとダッシュボード、ルールとアラートの構成などが含まれています。
 
-  ![Application Insights リソースの作成](./media/nodejs/03-new_appinsights_resource.png)
-
 3. リソース作成ページの **[アプリケーションの種類]** ボックスで **[Node.js アプリケーション]** を選択します。 アプリの種類によって、作成される既定のダッシュボードとレポートが決まります  (どの Application Insights リソースでも、あらゆる言語およびプラットフォームからデータを収集できます)。
-
-  ![新しい Application Insights リソースのフォーム](./media/nodejs/04-create_appinsights_resource.png)
 
 ### <a name="sdk"></a> Node.js SDK の設定
 
@@ -61,29 +55,29 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 
 1. リソースのインストルメンテーション キー (*ikey*) を Azure Portal からコピーします。 Application Insights では、この ikey を使用して、対象の Azure リソースにデータをマッピングします。 SDK で ikey を使用するためには、その ikey を環境変数またはコードの中で指定する必要があります。  
 
-  ![インストルメンテーション キーのコピー](./media/nodejs/05-appinsights_ikey_portal.png)
+   ![インストルメンテーション キーのコピー](./media/nodejs/instrumentation-key-001.png)
 
 2. package.json を使用して、Node.js SDK ライブラリをアプリの依存関係に追加します。 アプリのルート フォルダーから次を実行します。
 
-  ```bash
-  npm install applicationinsights --save
-  ```
+   ```bash
+   npm install applicationinsights --save
+   ```
 
 3. コードでライブラリを明示的に読み込みます。 インストルメンテーションは、SDK によって他の多数のライブラリに挿入されます。そのため、ライブラリはできる限り早く (`require` ステートメントよりも前に) 読み込むようにしてください。 
 
-  最初の .js ファイルの先頭に、次のコードを追加します。 `setup` メソッドでは、ikey (および Azure リソース) をすべての追跡項目で既定で使用するよう構成します。
+   最初の .js ファイルの先頭に、次のコードを追加します。 `setup` メソッドでは、ikey (および Azure リソース) をすべての追跡項目で既定で使用するよう構成します。
 
-  ```javascript
-  const appInsights = require("applicationinsights");
-  appInsights.setup("<instrumentation_key>");
-  appInsights.start();
-  ```
+   ```javascript
+   const appInsights = require("applicationinsights");
+   appInsights.setup("<instrumentation_key>");
+   appInsights.start();
+   ```
    
-  ikey は、`setup()` または `new appInsights.TelemetryClient()` に手動で渡す代わりに、APPINSIGHTS\_INSTRUMENTATIONKEY 環境変数を使用して渡すこともできます。 この方法では、コミットされたソース コードに ikey を含めず、異なる環境に合わせて異なる ikey を指定できます。
+   ikey は、`setup()` または `new appInsights.TelemetryClient()` に手動で渡す代わりに、APPINSIGHTS\_INSTRUMENTATIONKEY 環境変数を使用して渡すこともできます。 この方法では、コミットされたソース コードに ikey を含めず、異なる環境に合わせて異なる ikey を指定できます。
 
-  その他の構成方法については、以降のセクションを参照してください。
+   その他の構成方法については、以降のセクションを参照してください。
 
-  `appInsights.defaultClient.config.disableAppInsights = true` を設定すると、テレメトリを送信することなく SDK を試すことができます。
+   `appInsights.defaultClient.config.disableAppInsights = true` を設定すると、テレメトリを送信することなく SDK を試すことができます。
 
 ### <a name="monitor"></a> アプリを監視する
 
@@ -91,15 +85,13 @@ SDK は、Node.js ランタイムおよび一般的なサードパーティ モ�
 
 次に、[Azure Portal][portal] で、先ほど作成した Application Insights リソースに移動します。 **[概要のタイムライン]** に、いくつかの最初のデータ ポイントが現れます。 さらに詳しいデータを表示するには、グラフ内の別のコンポーネントを選択してください。
 
-![最初のデータ ポイント](./media/nodejs/12-first-perf.png)
-
 対象のアプリに関して検出されたトポロジを表示するには、**[アプリケーション マップ]** ボタンを選択します。 マップ内のコンポーネントを選択すると、詳しい情報が表示されます。
 
-![簡単なアプリ マップ](./media/nodejs/06-appinsights_appmap.png)
+![簡単なアプリ マップ](./media/nodejs/application-map-002.png)
 
 アプリについてさらに詳しい情報を把握したり、問題のトラブルシューティングを行ったりするには、**[調査]** セクションに用意されているその他のビューを選択してください。
 
-![[調査] セクション](./media/nodejs/07-appinsights_investigate_blades.png)
+![[調査] セクション](./media/nodejs/007-investigate-pane.png)
 
 #### <a name="no-data"></a>データが表示されない場合
 
@@ -216,5 +208,5 @@ server.on("listening", () => {
 <!--references-->
 
 [portal]: https://portal.azure.com/
-[FAQ]: ../../application-insights/app-insights-troubleshoot-faq.md
+[FAQ]: ../../azure-monitor/app/troubleshoot-faq.md
 

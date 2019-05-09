@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: ec17f06fa9d527ef62861a152b3e143bfd10a37f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263367"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840190"
 ---
-# <a name="optimize-the-cost-required-to-run-queries-in-azure-cosmos-db"></a>Azure Cosmos DB でクエリを実行するために必要なコストを最適化する
+# <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのクエリ コストを最適化する
 
 Azure Cosmos DB では、コンテナー内の項目を操作するリレーショナル クエリや階層クエリなど、豊富なデータベース操作が提供されます。 これらの操作のそれぞれに関連付けられたコストは、操作を完了するために必要な CPU、IO、およびメモリに応じて異なります。 ハードウェア リソースについて考えて管理する代わりに、要求ユニット (RU) を、さまざまなデータベース操作を実行して要求を処理するのに必要なリソースの 1 つの測定単位として考えることができます。 この記事では、クエリの要求ユニット使用量を評価し、パフォーマンスとコストの観点からクエリを最適化する方法について説明します。 
 
@@ -33,7 +33,7 @@ Azure Cosmos DB でのクエリは、通常、以下のようにスループッ�
 
 Azure Cosmos コンテナーでデータを格納したら、Azure ポータルのデータ エクスプローラーを使用して、クエリを構築して実行することができます。 また、データ エクスプローラーを使用して、クエリのコストを取得することもできます。 この方法では、ご利用のシステムでサポートされる一般的なクエリと操作に関する実際の使用量を把握できます。
 
-また、SDK を使用して、クエリのコストをプログラムで取得することもできます。 作成、更新、削除などの操作のオーバーヘッドを測定するには、REST API を使用するときに `x-ms-request-charge` ヘッダーを確認します。 .Net または Java SDK を使用する場合、`RequestCharge` プロパティは要求使用量を取得するためのプロパティと同等であり、このプロパティは ResourceResponse または FeedResponse 内にあります。
+また、SDK を使用して、クエリのコストをプログラムで取得することもできます。 作成、更新、削除などの操作のオーバーヘッドを測定するには、REST API を使用するときに `x-ms-request-charge` ヘッダーを確認します。 .NET または Java SDK を使用する場合、`RequestCharge` プロパティは要求使用量を取得するためのプロパティと同等であり、このプロパティは ResourceResponse または FeedResponse 内にあります。
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -59,7 +59,7 @@ while (queryable.HasMoreResults)
 
 ## <a name="metrics-for-troubleshooting"></a>トラブルシューティング用のメトリック
 
-パフォーマンス、クエリで使用されるスループット、ユーザー定義関数 (UDF) は、ほとんどの場合、関数本体によって異なります。 UDF で費やされるクエリの実行時間と、使用される RU の数を確認する最も簡単な方法は、クエリ メトリックを有効にすることです。 .Net SDK を使用する場合に、SDK によって返されるクエリ メトリックのサンプルを以下に示します。
+パフォーマンス、クエリで使用されるスループット、ユーザー定義関数 (UDF) は、ほとんどの場合、関数本体によって異なります。 UDF で費やされるクエリの実行時間と、使用される RU の数を確認する最も簡単な方法は、クエリ メトリックを有効にすることです。 .NET SDK を使用する場合に、SDK によって返されるクエリ メトリックのサンプルを以下に示します。
 
 ```bash
 Retrieved Document Count                 :               1              

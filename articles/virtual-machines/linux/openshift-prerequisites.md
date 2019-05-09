@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: bbc9ad4f15bdffa2c0f9b6f4b56f8b1701c83c47
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: f4fd33b250bf1f79610f4363e85b97be87892d78
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636619"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449973"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Azure で OpenShift をデプロイする場合の共通の前提条件
 
@@ -53,14 +53,14 @@ Ansible でリモート ホストへの SSH 接続を開始した場合は、パ
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
-[az login](/cli/azure/reference-index#az_login) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従うか、**[使ってみる]** をクリックして Cloud Shell を使用します。
+[az login](/cli/azure/reference-index) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従うか、**[使ってみる]** をクリックして Cloud Shell を使用します。
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーのホストには、専用のリソース グループを使用することをお勧めします。 このグループは、OpenShift クラスター リソースがデプロイするリソース グループとは別です。
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーのホストには、専用のリソース グループを使用することをお勧めします。 このグループは、OpenShift クラスター リソースがデプロイするリソース グループとは別です。
 
 次の例では、*keyvaultrg* という名前のリソース グループを場所 *eastus* に作成します。
 
@@ -69,7 +69,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
-[az keyvault create](/cli/azure/keyvault#az_keyvault_create) コマンドを使用して、クラスターの SSH キーを格納するキー コンテナーを作成します。 キー コンテナーの名前はグローバルに一意である必要があります。
+[az keyvault create](/cli/azure/keyvault) コマンドを使用して、クラスターの SSH キーを格納するキー コンテナーを作成します。 キー コンテナーの名前はグローバルに一意である必要があります。
 
 次の例では、*keyvault* という名前のキー コンテナーを *keyvaultrg* リソース グループに作成します。
 
@@ -101,7 +101,7 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成 
 OpenShift は、ユーザー名とパスワード、またはサービス プリンシパルを使用して Azure と通信します。 Azure のサービス プリンシパルは、アプリケーション、サービス、OpenShift などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。 サービス プリンシパルのアクセス許可のスコープは、サブスクリプション全体ではなく、特定のリソース グループに設定することが最適です。
 
-[az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) を使用してサービス プリンシパルを作成し、OpenShift が必要とする資格情報を出力します。
+[az ad sp create-for-rbac](/cli/azure/ad/sp) を使用してサービス プリンシパルを作成し、OpenShift が必要とする資格情報を出力します。
 
 次の例では、サービス プリンシパルを作成して、共同作成者のアクセス許可を openshiftrg という名前のリソース グループに割り当てます。
 

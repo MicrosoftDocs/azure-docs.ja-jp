@@ -3,22 +3,22 @@ title: Azure Service Bus のメッセージの読み取り | Microsoft Docs
 description: Service Bus メッセージの読み取りとピーク
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: 7ce2e870be0178420d80682bd18adbef814c162f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857467"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855943"
 ---
 # <a name="message-browsing"></a>メッセージの読み取り
 

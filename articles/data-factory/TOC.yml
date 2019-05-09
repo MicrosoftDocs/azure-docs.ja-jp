@@ -25,6 +25,8 @@ items:
     href: quickstart-create-data-factory-rest-api.md
   - name: データ ファクトリの作成 - Resource Manager テンプレート
     href: quickstart-create-data-factory-resource-manager-template.md
+  - name: データ フローの作成
+    href: data-flow-create.md
   expanded: true
 - name: チュートリアル
   items:
@@ -71,6 +73,14 @@ items:
         href: tutorial-incremental-copy-change-tracking-feature-portal.md
       - name: Azure PowerShell
         href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+    - name: 4 - lastmodifieddate を基準に新しいファイルをコピーする
+      items:
+      - name: データのコピー ツール
+        href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
+    - name: 5 - 時間でパーティション分割されたファイル名を基準に新しいファイルをコピーする
+      items:
+      - name: データのコピー ツール
+        href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
   - name: クラウドのデータを変換する
     items:
     - name: HDInsight Spark
@@ -117,6 +127,32 @@ items:
     href: concepts-pipeline-execution-triggers.md
   - name: 統合ランタイム
     href: concepts-integration-runtime.md
+  - name: マッピング データ フロー
+    items:
+    - name: マッピング データ フローの概念
+      href: concepts-data-flow-overview.md
+    - name: データ フローのデータセット
+      href: concepts-data-flow-datasets.md
+    - name: デバッグ モード
+      href: concepts-data-flow-debug-mode.md
+    - name: スキーマの誤差
+      href: concepts-data-flow-schema-drift.md
+    - name: '[検査] ウィンドウ'
+      href: concepts-data-flow-inspect-pane.md
+    - name: 列パターン
+      href: concepts-data-flow-column-pattern.md
+    - name: データ フローの監視
+      href: concepts-data-flow-monitoring.md
+    - name: ノードの移動
+      href: concepts-data-flow-move-nodes.md
+    - name: '[最適化] タブ'
+      href: concepts-data-flow-optimize-tab.md
+    - name: 式ビルダー
+      href: concepts-data-flow-expression-builder.md
+    - name: 参照ノード
+      href: concepts-data-flow-reference-node.md
+    - name: 式言語
+      href: data-flow-expression-functions.md
   - name: ロールとアクセス許可
     href: concepts-roles-permissions.md
   - name: 価格について
@@ -133,7 +169,7 @@ items:
       href: continuous-integration-deployment.md
     - name: 反復開発とデバッグ
       href: iterative-development-debugging.md
-  - name: コネクタ
+  - name: Connectors
     items:
     - name: Amazon Marketplace Web Service
       href: connector-amazon-marketplace-web-service.md
@@ -147,6 +183,8 @@ items:
       href: connector-azure-cosmos-db.md
     - name: Azure Cosmos DB MongDB API
       href: connector-azure-cosmos-db-mongodb-api.md
+    - name: Azure データ エクスプローラー
+      href: connector-azure-data-explorer.md
     - name: Azure Data Lake Storage Gen1
       href: connector-azure-data-lake-store.md
     - name: Azure Data Lake Storage Gen2
@@ -264,7 +302,12 @@ items:
       href: connector-salesforce.md
     - name: Salesforce Marketing Cloud
       href: connector-salesforce-marketing-cloud.md
-    - name: SAP Business Warehouse
+    - name: SAP Business Warehouse Open Hub
+      href: connector-sap-business-warehouse-open-hub.md
+      items:
+      - name: SAP BW データの読み込み
+        href: load-sap-bw-data.md
+    - name: SAP Business Warehouse MDX
       href: connector-sap-business-warehouse.md
     - name: SAP Cloud for Customer
       href: connector-sap-cloud-for-customer.md
@@ -296,10 +339,12 @@ items:
       href: connector-xero.md
     - name: Zoho
       href: connector-zoho.md
-  - name: データをコピーする
+  - name: データの移動
     items:
     - name: コピー アクティビティを使用したデータのコピー
       href: copy-activity-overview.md
+    - name: 削除アクティビティを使用したファイルの削除
+      href: delete-activity.md
     - name: データのコピー ツール
       href: copy-data-tool.md
     - name: Data Lake Storage Gen2 の読み込み
@@ -311,6 +356,8 @@ items:
       href: load-azure-sql-data-warehouse.md
     - name: Data Lake Storage Gen1 の読み込み
       href: load-azure-data-lake-store.md
+    - name: SAP BW データの読み込み
+      href: load-sap-bw-data.md
     - name: Office 365 データの読み込み
       href: load-office-365-data.md
     - name: パーティション分割されたデータの読み取りまたは書き込み
@@ -360,6 +407,8 @@ items:
       href: control-flow-append-variable-activity.md
     - name: Azure 関数アクティビティ
       href: control-flow-azure-function-activity.md
+    - name: データ フローの実行アクティビティ
+      href: control-flow-execute-data-flow-activity.md
     - name: パイプラインの実行アクティビティ
       href: control-flow-execute-pipeline-activity.md
     - name: アクティビティのフィルター処理
@@ -376,10 +425,52 @@ items:
       href: control-flow-set-variable-activity.md
     - name: Until アクティビティ
       href: control-flow-until-activity.md
+    - name: 検証アクティビティ
+      href: control-flow-validation-activity.md
     - name: Wait アクティビティ
       href: control-flow-wait-activity.md
     - name: Web アクティビティ
       href: control-flow-web-activity.md
+    - name: Webhook アクティビティ
+      href: control-flow-webhook-activity.md
+  - name: データ フローの変換
+    items:
+    - name: 集計
+      href: data-flow-aggregate.md
+    - name: 行の変更
+      href: data-flow-alter-row.md
+    - name: 条件分割
+      href: data-flow-conditional-split.md
+    - name: 派生列
+      href: data-flow-derived-column.md
+    - name: Exists
+      href: data-flow-exists.md
+    - name: filter
+      href: data-flow-filter.md
+    - name: 結合
+      href: data-flow-join.md
+    - name: 参照
+      href: data-flow-lookup.md
+    - name: 新しいブランチ
+      href: data-flow-new-branch.md
+    - name: ピボット
+      href: data-flow-pivot.md
+    - name: 選択
+      href: data-flow-select.md
+    - name: シンク
+      href: data-flow-sink.md
+    - name: 並べ替え
+      href: data-flow-sort.md
+    - name: ソース
+      href: data-flow-source.md
+    - name: 代理キー
+      href: data-flow-surrogate-key.md
+    - name: 和集合
+      href: data-flow-union.md
+    - name: ピボット解除
+      href: data-flow-unpivot.md
+    - name: ウィンドウ
+      href: data-flow-window.md
   - name: パラメーター化
     items:
     - name: リンクされたサービスをパラメーター化する
@@ -396,7 +487,7 @@ items:
       href: store-credentials-in-key-vault.md
     - name: 自己ホスト型統合ランタイムの資格情報の暗号化
       href: encrypt-credentials-self-hosted-integration-runtime.md
-    - name: データ ファクトリのサービス ID
+    - name: Data Factory のマネージド ID
       href: data-factory-service-identity.md
   - name: 監視と管理
     items:
@@ -412,6 +503,8 @@ items:
       href: monitor-integration-runtime.md#azure-ssis-integration-runtime
     - name: Azure-SSIS 統合ランタイムの再構成
       href: manage-azure-ssis-integration-runtime.md
+    - name: データ ファクトリのコピーまたは複製
+      href: copy-clone-data-factory.md
   - name: 統合ランタイムの作成
     items:
     - name: Azure 統合ランタイム
@@ -448,18 +541,32 @@ items:
       href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
   - name: トリガーの作成
     items:
+    - name: イベントベースのトリガーの作成
+      href: how-to-create-event-trigger.md
     - name: スケジュール トリガーの作成
       href: how-to-create-schedule-trigger.md
     - name: タンブリング ウィンドウ トリガーの作成
       href: how-to-create-tumbling-window-trigger.md
-    - name: イベントベースのトリガーの作成
-      href: how-to-create-event-trigger.md
+  - name: テンプレート
+    items:
+    - name: テンプレートの概要
+      href: solution-templates-introduction.md
+    - name: 複数のコンテナーからのファイルのコピー
+      href: solution-template-copy-files-multiple-containers.md
+    - name: LastModifiedDate を基準に新しいファイルをコピーする
+      href: solution-template-copy-new-files-lastmodifieddate.md
+    - name: 制御テーブルを使用した一括コピー
+      href: solution-template-bulk-copy-with-control-table.md
+    - name: 制御テーブルを使用した差分コピー
+      href: solution-template-delta-copy-with-control-table.md
+    - name: Databricks を使用したデータ変換
+      href: solution-template-databricks-notebook.md
 - name: リファレンス
   items:
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.datafactory
   - name: PowerShell
-    href: /powershell/module/azurerm.datafactoryv2/
+    href: /powershell/module/az.datafactory/
   - name: REST API
     href: /rest/api/datafactory
   - name: Resource Manager テンプレート
@@ -484,9 +591,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 5c667c1e29870b2a8d120e63b27607dbb65496f3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0edb3a8bab3effef2219746714e8ab1f58462fb8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120361"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518016"

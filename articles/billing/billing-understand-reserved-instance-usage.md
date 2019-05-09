@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 1edf87d9ec334845f82c3c0c20c958e27f01e87a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.date: 03/13/2019
+ms.author: banders
+ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585222"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652537"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>従量課金制サブスクリプションに適用される Azure の予約の使用状況について
 
@@ -64,7 +64,7 @@ CSV ファイルのこのセクションには、予約の合計使用量が表�
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>SQL Database および Cosmos DB の予約容量の予約の使用状況
 
-以下のセクションでは、Azure SQL Database を例に使用して、使用状況に関するレポートについて説明します。 同じ手順を使用して、Azure Cosmos DB の使用状況を取得することもできます。 
+以下のセクションでは、Azure SQL Database を例に使用して、使用状況に関するレポートについて説明します。 同じ手順を使用して、Azure Cosmos DB の使用状況を取得することもできます。
 
 SQL Database Gen 4 を米国東部リージョンで実行していて、その予約情報が次の表のようになっていると想定します。
 
@@ -93,6 +93,10 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 2. **ConsumptionMeter** は、SQL データベース リソースの測定 ID です。
 3. **Meter Id** は予約の測定です。 この測定のコストは $0 です。 予約割引が適用される SQL データベース リソースの場合、CSV ファイルにこの測定 ID が表示されます。
 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+
 ## <a name="next-steps"></a>次の手順
 
 Azure の予約の詳細については、次の記事を参照してください。
@@ -104,9 +108,3 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [予約割引の適用方法について](billing-understand-vm-reservation-charges.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
-
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-
-

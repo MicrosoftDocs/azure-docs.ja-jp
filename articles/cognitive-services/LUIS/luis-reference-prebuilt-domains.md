@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: 事前構築済みのドメインのリファレンスです。事前構築済みのドメインは、Language Understanding Intelligent Service (LUIS) の意図とエンティティの事前構築済みのコレクションです。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e1e579233a5ad1af1ef8ee84019cd995959d3b2b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140967"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433775"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS アプリの事前構築済みのドメインのリファレンス
 このリファレンスは、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)に関する情報を提供します。事前構築済みのドメインは、LUIS が提供している意図とエンティティの事前構築済みのコレクションです。
@@ -68,7 +68,7 @@ Calendar ドメインには、カレンダー エントリに関する意図と�
 ### <a name="entities"></a>エンティティ
 | エンティティ名 | 説明 | 例 |
 | ---------------- |-----------------------|----|
-| 場所 | カレンダー項目、会議、予定の場所。 たとえば、住所、都市、地域などです。| 209 ナッシュビル ジム <br/><br/>897 パンケーキ ハウス<br/><br/>ガレージ|
+| Location | カレンダー項目、会議、予定の場所。 たとえば、住所、都市、地域などです。| 209 ナッシュビル ジム <br/><br/>897 パンケーキ ハウス<br/><br/>ガレージ|
 | Subject | 会議または予定のタイトル。| 歯科の予約 <br/><br/>Julia とランチ<br/><br/>医師の予約|
 
 ## <a name="camera"></a>Camera 
@@ -106,7 +106,7 @@ Communication ドメインには、電子メール、メッセージ、電話の
 | Confirm| アクションを確認します。|はい<br/>OK<br/>大丈夫<br/>このメールの送信を確定します。<br/>|
 | Dial| 電話を発信します。|Jim に電話<br/>311 に電話をかけて<br/>|
 | FindContact| 連絡先情報を名前で検索します。|Carol の番号を検索して<br/>Carol の番号を表示して<br/>|
-| FindSpeedDial| 電話番号が設定されている短縮番号、またはその逆を検索します。|ダイヤル番号 5 は何?<br/>短縮番号は設定されている?<br/>941-5555-333 のダイヤル番号は何?|
+| FindSpeedDial| 電話番号が設定されている短縮ダイヤル番号、またはその逆のものを検索します。|ダイヤル番号 5 は何?<br/>短縮番号は設定されている?<br/>941-5555-333 のダイヤル番号は何?|
 | GetForwardingsStatus| 着信の転送の現在の状態を取得します。|着信の転送は有効?<br/>自分の通話状態がオンかオフかを教えて<br/>|
 | Goback| 前の手順に戻ります。|Twitter に戻って<br/>1 ステップ戻って<br/>Go back|
 | Ignore| 電話の着信を無視します。|応答しないで<br/>着信を無視して|
@@ -182,7 +182,7 @@ Events ドメインには、コンサート、フェスティバル、スポー�
 | Name | イベントの名前。|公園でシェイクスピア|
 | PlaceName| イベントの場所の名前。|ルーブル<br/>オペラ ハウス<br/>ブロードウェイ|
 | PlaceType | イベントが開かれる場所の種類。|カフェ<br/>劇場<br/>ライブラリ|
-| type | イベントの種類。|コンサート<br/>スポーツの試合|
+| Type | イベントの種類。|コンサート<br/>スポーツの試合|
 
 ## <a name="fitness"></a>Fitness 
 Fitness ドメインには、フィットネス アクティビティの追跡に関する意図およびエンティティが用意されています。 意図には、メモの保存、残りの時間や距離、アクティビティ結果の保存が含まれます。
@@ -252,7 +252,7 @@ MovieTickets ドメインには、映画館の映画チケットの予約に関�
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
 | ---------------- |-----------------------|----|
-| Book | 映画チケットを購入します。|「オマール大佐と 2 人の銃士」のチケットを 2 枚予約して。<br/>明日の映画のチケットを買いたい<br/>来週水曜日の「オマール大佐と 2 人の銃士」のチケットがほしい|
+| Book | 映画チケットを購入します。|「オマール大佐と 2 人の銃士」のチケットを 2 枚予約して。<br/>明日の映画のチケットを買いたい<br/>来週水曜日の「オマール大佐」パート 2 のチケットがほしい|
 |GetShowTime| 映画の上映時間を取得します。|「オマール大佐」の上映時間はいつ?|
 
 
@@ -412,7 +412,7 @@ Places ドメインには、会社、施設、レストラン、公共の場所�
 |GetMenu|レストランのメニュー項目を確認します。|ズッカはビーガン料理を出している?<br/>シズラーのメニューの内容を教えて<br/>アップルビーのメニューを表示して|
 |GetPhoneNumber| 場所の電話番号を確認します。|最寄りのスターバックスの電話番号を教えて<br/>ホーム デポの番号を教えて| 
 |GetPriceRange| 場所の価格帯を確認します。|ズッカは安い?<br/>シネプレックスは水曜日に半額になる?<br/>シズラーのロブスター 1 尾付きのディナーはいくら?|
-|GetReviews|場所のレビューを確認します。|チーズケース ファクトリのレビューを表示して<br/>シネプレックスのレビューを Yelp で読む|
+|GetReviews|場所のレビューを確認します。|チーズケーキ ファクトリのレビューを表示して<br/>シネプレックスのレビューを Yelp で読む|
 |GetRoute|場所までの道案内を確認します。|徒歩でベルビュー スクエアまで行く方法<br/>ここから 8 番通と 59 番通までの最短距離を表示して<br/>カリフォルニア州マウンテン ビューまで道案内して|
 |GetStarRating|場所の星評価を確認します。|Yelp によるとズッカの評価はどのくらい?<br/>フレンチ ランドリーの星はいくつ?<br/>モンテレイの水族館は良い?|
 |GetTransportationSchedule|場所のバスのスケジュールを取得します。|商業地区までの次のバスはいつですか?<br/>キング郡のバスを表示して|
@@ -634,7 +634,7 @@ Weather ドメインには、天気のレポートと予測を取得するため
 ### <a name="entities"></a>エンティティ
 | エンティティ名 | 説明 | 例 |
 | ---------------- |-----------------------|----|
-| 場所| 気象リクエストの絶対的な場所。|シアトル<br/>パリ<br/>パロ アルト|
+| Location| 気象リクエストの絶対的な場所。|シアトル<br/>パリ<br/>パロ アルト|
 
 ## <a name="web"></a>Web 
 Web ドメインには、Web サイトにナビゲートする意図が用意されています。

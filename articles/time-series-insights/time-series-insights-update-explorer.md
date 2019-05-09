@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights プレビュー エクスプローラー - Azure Time Series Insights プレビュー エクスプローラーでデータを視覚化する | Microsoft Docs
+title: Azure Time Series Insights プレビュー エクスプローラーでデータを視覚化する | Microsoft Docs
 description: この記事では、Azure Time Series Insights プレビュー エクスプローラー Web アプリで使用できる機能とオプションについて説明します。
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5372a36291ee13966d497bdae83a6e214dce99b9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ed8a829bd73a53dc94bf8b08648b3d6684f718f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272339"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109765"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>エクスプローラー プレビューでデータを視覚化する
 
@@ -141,7 +141,7 @@ Time Series Insights プレビューを使用するときは、最初に時間�
 
 1. **日付範囲の開始と終了 Web コントロール**:この Web コントロールを使用すると、クリックして簡単に目的の日付と時刻の範囲を選択できます。 コントロールを使用して、異なるタイム ゾーンに切り替えることもできます。 変更を行った後、現在のワークスペースに適用するには、**[保存]** を選択します。
 
-  ![explorer-thirteen][13]
+   ![explorer-thirteen][13]
 
 ## <a name="time-series-insights-preview-navigation-panel"></a>Time Series Insights プレビューのナビゲーション パネル
 

@@ -2,19 +2,19 @@
 title: HDInsight クラスターのログを管理する - Azure HDInsight
 description: HDInsight アクティビティ ログ ファイルの種類、サイズ、およびリテンション期間ポリシーを決定します。
 services: hdinsight
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.author: ashishth
-ms.openlocfilehash: 9a76ad219e538874af04a72c9aa64e87a35bc53d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 03/19/2019
+ms.author: hrasheed
+ms.openlocfilehash: 7ff89e12a1011c0a16644324584eb1610302b1b3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434887"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544284"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -43,13 +43,12 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 * クラスターの状態、最後の状態変化の詳細を含む
 * マスター、コア、タスクの各ノードに指定されている HDInsight インスタンスの種類と数
 
-この最上位レベルの情報のほとんどは、Azure Portal を使って取得できます。  代わりに、Azure クラシック CLI を使って HDInsight クラスターに関する情報を取得することもできます。
+この最上位レベルの情報のほとんどは、Azure Portal を使って取得できます。  代わりに、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して HDInsight クラスターに関する情報を取得することもできます。
 
+```azurecli
+    az hdinsight list --resource-group <ResourceGroup>
+    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 また、PowerShell を使ってこの情報を表示できます。  詳細については、「[Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-powershell.md)」を参照してください。
 
@@ -77,7 +76,7 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Ambari UI でクラスターの構成設定を表示する
 
-Apache Ambari には Web UI と REST API が用意されており、HDInsight クラスターを簡単に管理、構成、監視できます。 Ambari は Linux ベースの HDInsight クラスターに付属しています。 Azure Portal の HDInsight ページで **[クラスター ダッシュボード]** ウィンドウを選び、**[クラスター ダッシュボード]** リンク ページを開きます。  次に、**[HDInsight クラスター ダッシュボード]** ウィンドウを選んで、Ambari UI を開きます。  クラスター ログイン資格情報の入力を求められます。
+Apache Ambari には Web UI と REST API が用意されており、HDInsight クラスターを簡単に管理、構成、監視できます。 Ambari は Linux ベースの HDInsight クラスターに付属しています。 Azure portal の HDInsight ページで **[クラスター ダッシュボード]** ウィンドウを選び、**[クラスター ダッシュボード]** リンク ページを開きます。  次に、**[HDInsight クラスター ダッシュボード]** ウィンドウを選んで、Ambari UI を開きます。  クラスター ログイン資格情報の入力を求められます。
 
 サービス ビューの一覧を開くには、HDInsight の Azure Portal ページで **[Ambari Views]** ウィンドウを選びます。  この一覧は、インストールされているライブラリによって異なります。  たとえば、YARN Queue Manager、Hive View、Tez View などが表示される場合があります。  構成とサービスの情報を表示するには、サービスのリンクを選びます。  Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。 Ambari UI のこのセクションに移動するには、**[Admin]\(管理\)** メニューを選んでから、**[Stacks and Versions]\(スタックとバージョン\)** を選びます。  サービスのバージョン情報を見るには、**[Versions]\(バージョン\)** タブを選びます。
 
@@ -99,7 +98,7 @@ HDInsight の[スクリプト アクション](hdinsight-hadoop-customize-cluste
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop のログ ファイルにアクセスする
 
-HDInsight では、クラスター ファイル システムと Azure ストレージの両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの SSH 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure ストレージのログ ファイルは、Azure ストレージにアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、AZCopy、CloudXplorer、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
+HDInsight では、クラスター ファイル システムと Azure ストレージの両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure ストレージのログ ファイルは、Azure ストレージにアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
 
 Hadoop は、クラスターのさまざまなノードでジョブの作業を "*タスク試行*" として実行します。 HDInsight は、予測タスク試行を開始して、最初に完了していない他のすべてのタスク試行を終了することがあります。 これにより、コントローラー、stderr、syslog のログ ファイルに即座に記録される大量のアクティビティが生成されます。 さらに、複数のタスク試行が同時に実行しますが、ログ ファイルでは結果を順番にしか表示できません。
 
@@ -168,9 +167,9 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 ### <a name="other-log-management-techniques"></a>その他のログ管理手法
 
-ディスク領域の不足を回避するには、`logrotate` などのいくつかの OS ツールを使って、ログ ファイルの処理を管理できます。 `logrotate` を構成して毎日実行し、ログ ファイルを圧縮し、古いログ ファイルを削除できます。 方法は、ログ ファイルをローカル ノードに保持する期間などの要件に依存します。 
+ディスク領域不足を回避するには、[logrotate](https://linux.die.net/man/8/logrotate) などのいくつかの OS ツールを使って、ログ ファイルの処理を管理できます。 `logrotate` を構成して毎日実行し、ログ ファイルを圧縮し、古いログ ファイルを削除できます。 方法は、ログ ファイルをローカル ノードに保持する期間などの要件に依存します。  
 
-また、サービスに対して DEBUG ログを有効にするかどうかも確認できます。DEBUG ログを使うと、出力ログのサイズが大幅に増加します。 
+また、サービスに対して DEBUG ログを有効にするかどうかも確認できます。DEBUG ログを使うと、出力ログのサイズが大幅に増加します。  
 
 すべてのノードから 1 つの場所にログを収集するには、データ フローを作成できます (Solr へのすべてのログ エントリの取り込みなど)。
 

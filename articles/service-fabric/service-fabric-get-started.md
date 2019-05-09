@@ -3,8 +3,8 @@ title: Azure マイクロサービスの Windows 開発環境のセットアッ�
 description: ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、Windows でアプリケーションを構築する準備が整います。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
-ms.author: ryanwi
-ms.openlocfilehash: 968c9f2455269cf41a701de685e4f47255b46847
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.date: 04/02/2019
+ms.author: aljo
+ms.openlocfilehash: 45d5d1b4e050d01b003b6321e1af44c0da762e19
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386430"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59275498"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -50,6 +50,9 @@ Windows 開発コンピューターで [Azure Service Fabric アプリケーシ�
 ## <a name="install-the-sdk-and-tools"></a>SDK とツールのインストール
 SDK とツールをインストールするには、Web Platform Installer (Web PI) を使用することをお勧めします。 Web PI を使用してランタイム エラーが発生した場合は、特定の Service Fabric リリースのリリース ノートで、インストーラーへの直接リンクを検索することもできます。 リリース ノートは、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)の各種リリースの発表で見つけることができます。
 
+> [!NOTE]
+> ローカルな Service Fabric 開発クラスターのアップグレードはサポートされていません。
+
 ### <a name="to-use-visual-studio-2017"></a>Visual Studio 2017 を使用するには
 Service Fabric ツールは、Visual Studio 2017 の Azure 開発ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
 さらに、Web Platform Installer を使用して Microsoft Azure Service Fabric SDK とランタイムをインストールする必要があります。
@@ -66,12 +69,12 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK および Tools 3.3.617
-* Service Fabric ランタイム 6.4.617
+* Service Fabric SDK および Tools 3.3.654
+* Service Fabric ランタイム 6.4.654
 * Service Fabric Tools for Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 には、Service Fabric Tools for Visual Studio 2.4.11024.1 が含まれています 
 
-サポートされているバージョンの一覧については、[Service Fabric のサポート](service-fabric-support.md)に関するページを参照してください。
+サポートされているバージョンの一覧については、[Service Fabric のバージョン](service-fabric-versions.md)に関するページを参照してください
 
 > [!NOTE]
 > アプリケーションまたはクラスターのアップグレードには、1 台のマシンのクラスター (OneBox) はサポートされていません。クラスターのアップグレードを実行する必要がある場合や、アプリケーションのアップグレードの実行で問題がある場合は、OneBox クラスターを削除し再作成します。 
@@ -88,8 +91,7 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 ## <a name="next-steps"></a>次の手順
 開発環境のセットアップが完了したので、アプリのビルドと実行を開始してください。
 
-* [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
-* [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
+* [アプリケーションを作成、デプロイ、および管理する方法](service-fabric-tutorial-create-dotnet-app.md)
 * [プログラミング モデル Reliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
 * [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)

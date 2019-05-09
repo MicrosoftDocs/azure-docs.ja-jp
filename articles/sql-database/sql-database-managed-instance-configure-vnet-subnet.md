@@ -1,36 +1,41 @@
 ---
-title: Azure SQL Database Managed Instance 用の既存の VNet/サブネットの構成 | Microsoft Docs
-description: このトピックでは、Azure SQL Database Managed Instance をデプロイできる既存の仮想ネットワーク (VNet) とサブネットの構成方法について説明します。
+title: Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する | Microsoft Docs
+description: この記事では、Azure SQL Database Managed Instance をデプロイできる既存の仮想ネットワークとサブネットの構成方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 53aba5192ddf57598965fcfe0db5f2b18423c7e9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 01/15/2019
+ms.openlocfilehash: c4ff12f0c9adcb9943a6e2426eaf2740ba171e39
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345595"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792437"
 ---
-# <a name="configure-an-existing-vnet-for-azure-sql-database-managed-instance"></a>既存の VNet を Azure SQL Database Managed Instance 用に構成する
+# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する
 
-Azure SQL Database Managed Instance は、Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) と Managed Instance 専用のサブネット内にデプロイする必要があります。 [Managed Instance の VNet 要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に従って構成されていれば、既存の VNet とサブネットを使用できます。 
+Azure SQL Database Managed Instance は、Azure [仮想ネットワーク](../virtual-network/virtual-networks-overview.md)と Managed Instance 専用のサブネット内にデプロイする必要があります。 [Managed Instance の仮想ネットワーク要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に従って構成されていれば、既存の仮想ネットワークとサブネットを使用できます。
 
-未構成の新しいサブネットがあり、そのサブネットが[要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に適合しているかどうかわからない場合、または何らかの変更を行った後でサブネットが依然として[ネットワーク要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に準拠していることを確認したい場合は、この記事で説明するスクリプトを使用してネットワークの検証と変更を行うことができます。 
+次のいずれかのケースに該当する場合は、この記事で説明されているスクリプトを使用してネットワークを検証および変更できます。
 
-  > [!Note]
-  > マネージド インスタンスを作成できるのは、Resource Manager 仮想ネットワークでのみです。 クラシック デプロイ モデルを使用してデプロイされた Azure VNet はサポートされていません。 サブネットはその中にリソースをデプロイした後でサイズを変更することはできないため、[Managed Instance 用のサブネットのサイズの決定](#determine-the-size-of-subnet-for-managed-instances)に関する記事のガイドラインに従ってサブネットのサイズが計算されていることを確認してください。
+- まだ構成されていない新しいサブネットがある。
+- サブネットが[要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に準拠しているかどうかがわからない。
+- 変更を加えた後も、サブネットが[ネットワーク要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に準拠していることを確認したい。
 
-## <a name="validate-and-modify-an-existing-virtual-network"></a>既存の仮想ネットワークを検証および変更する 
+> [!Note]
+> Azure Resource Manager デプロイ モデルを使用して作成された仮想ネットワーク内にのみマネージド インスタンスを作成できます。 クラシック デプロイ モデルを使用して作成された Azure 仮想ネットワークはサポートされていません。 [マネージド インスタンスのサブネットのサイズの決定](sql-database-managed-instance-determine-size-vnet-subnet.md)に関する記事のガイドラインに従って、サブネットのサイズを計算します。 サブネットは、いったんリソースを配置するとサイズを変更できなくなります。
+
+## <a name="validate-and-modify-an-existing-virtual-network"></a>既存の仮想ネットワークを検証および変更する
 
 既存のサブネット内にマネージド インスタンスを作成する場合は、次の PowerShell スクリプトでサブネットを準備することをお勧めします。
+
 ```powershell
 $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
 
@@ -43,14 +48,15 @@ $parameters = @{
 
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
-サブネットの準備は、次に示した簡単な 3 つの手順で行います。
 
-1. 検証 - 選択された仮想ネットワークとサブネットが Managed Instance のネットワーク要件と照らして検証されます。
-2. 同意 - Managed Instance のデプロイに備えてサブネットを準備するために必要な一連の変更がユーザーに示され、それに対する同意をユーザーは求められます。
-3. 準備 - 仮想ネットワークとサブネットが適切に構成されます。
+このスクリプトでは、3 つの手順でサブネットを準備します。
+
+1. 検証:選択された仮想ネットワークとサブネットが Managed Instance のネットワーク要件と照らして検証されます。
+2. 確認:Managed Instance のデプロイに備えてサブネットを準備するために必要な一連の変更がユーザーに示されます。 また、同意も求められます。
+3. 準備:仮想ネットワークとサブネットが適切に構成されます。
 
 ## <a name="next-steps"></a>次の手順
 
 - 概要については、[マネージド インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
-- VNet を作成し、マネージド インスタンスを作成して、データベース バックアップからデータベースを復元する方法を示すチュートリアルについては、[Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するページを参照してください。
+- 仮想ネットワークを作成し、マネージド インスタンスを作成して、データベース バックアップからデータベースを復元する方法を示すチュートリアルについては、[Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するページを参照してください。
 - DNS の問題については、[カスタム DNS の構成](sql-database-managed-instance-custom-dns.md)に関するページを参照してください。

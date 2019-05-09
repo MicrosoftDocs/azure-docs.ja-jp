@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 5ff8f5c51f17375208fdb32e521bfc85ee3f0c77
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 535ba0049e91e09de3d1dcf05fc8ede80ef403ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088062"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso の移行: Azure VM および SQL Server AlwaysOn 可用性グループでオンプレミス アプリをリホストする
 
@@ -23,20 +23,20 @@ ms.locfileid: "52880218"
 
 **記事** | **詳細** | **状態**
 --- | --- | ---
-[記事 1: 概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
-[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | 使用可能
-[記事 3: Azure への移行の対象となるオンプレミスのリソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
+[記事 1:概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
+[記事 2: Azure インフラストラクチャをデプロイする](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | 使用可能
+[記事 3: Azure への移行についてオンプレミスのリソースを評価する](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
 [記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
-[記事 5: Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
+[記事 5:Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
 記事 6: Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト | Contoso が SmartHotel360 アプリを移行します。 Contoso は、Site Recovery を使用してアプリの VM を移行します。 Contoso は、Database Migration Service を使用して、AlwaysOn 可用性グループで保護されている SQL Server クラスターにアプリのデータベースを移行します。 | この記事の内容は次のとおりです。
 [記事 7: Azure VM での Linux アプリのリホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Azure Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を行います | 使用可能
 [記事 8: Azure VM および Azure MySQL Server での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Azure Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行します。 | 使用可能
-[記事 9: Azure Web Apps および Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
-[記事 10: Azure Web Apps および Azure MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能 
-[記事 11: Azure DevOps Services での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
-[記事 12: Azure コンテナーおよび Azure SQL Database でのアプリのリアーキテクト](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
-[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能
-[記事 14: Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
+[記事 9: Azure Web Apps と Azure SQL Database でアプリをリファクタリングする](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
+[記事 10: Azure Web Apps と Azure MySQL で Linux アプリをリファクタリングする](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能 
+[記事 11: Azure DevOps Services で TFS をリファクタリングする](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
+[記事 12: Azure Containers と Azure SQL Database でアプリを再構築する](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
+[記事 13:Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能
+[記事 14:Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
 
 
 この記事では、Contoso が VMware VM で実行されている 2 層 Windows .NET SmartHotel360 アプリを Azure に移行します。 このアプリを使用したい場合は、オープン ソースとして提供されていますので、[GitHub](https://github.com/Microsoft/SmartHotel360) からダウンロードしてください。
@@ -95,7 +95,7 @@ Contoso は目標と要件を決定した後、デプロイ ソリューショ�
 
 ### <a name="database-considerations"></a>データベースの考慮事項
 
-Contoso はソリューション設計プロセスの一環として、Azure SQL Database と SQL Server の機能を比較しました。 次の事柄を検討した結果、同社は、SQL Server を実行する Azure Iaas VM を採用することに決定しました。
+Contoso はソリューション設計プロセスの一環として、Azure SQL Database と SQL Server の機能を比較しました。 次の事柄を検討した結果、同社は、SQL Server を実行する Azure IaaS VM を採用することに決定しました。
 
  - Contoso がオペレーティング システムまたはデータベース サーバーをカスタマイズしなければならなくなった場合や、同じ VM にサードパーティのアプリを併置して実行することが必要になった場合、SQL Server を実行する Azure VM を使用することが最適な解決策であると考えられる。
  - Contoso は Data Migration Assistant を使って容易に評価を行い、Azure SQL Database に移行することができます。
@@ -107,7 +107,7 @@ Contoso は、長所と短所の一覧をまとめて、提案されたデザイ
 
 **考慮事項** | **詳細**
 --- | ---
-**長所** | WEBVM は変更することなく Azure に移されるため、移行が簡単で済みます。<br/><br/> SQL Server 層は、SQL Server 2017 と Windows Server 2016 で実行されます。 これによって現在の Windows Server 2008 R2 オペレーティング システムは廃止されることになりますが、Contoso の技術的要件と目標は、SQL Server 2017 を実行することで満たすことができます。 SQL Server 2008 R2 から移行しても 100% の互換性が確保されます。<br/><br/> Contoso は、Azure ハイブリッド特典を使用して、ソフトウェア アシュアランスへの投資を活かすことができます。<br/><br/> Auzre への高可用性 SQL Server のデプロイによってフォールト トレランスが得られるので、アプリのデータ層が単一フェールオーバー ポイントではなくなります。
+**長所** | WEBVM は変更することなく Azure に移されるため、移行が簡単で済みます。<br/><br/> SQL Server 層は、SQL Server 2017 と Windows Server 2016 で実行されます。 これによって現在の Windows Server 2008 R2 オペレーティング システムは廃止されることになりますが、Contoso の技術的要件と目標は、SQL Server 2017 を実行することで満たすことができます。 SQL Server 2008 R2 から移行しても 100% の互換性が確保されます。<br/><br/> Contoso は、Azure ハイブリッド特典を使用して、ソフトウェア アシュアランスへの投資を活かすことができます。<br/><br/> Azure への高可用性 SQL Server のデプロイによってフォールト トレランスが得られるので、アプリのデータ層が単一フェールオーバー ポイントではなくなります。
 **短所** | WEBVM では、Windows Server 2008 R2 が実行されています。 このオペレーティング システムは、特定のロールを対象に Azure でサポートされます (2018 年 7 月)。 [詳細情報](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。<br/><br/> アプリの Web 層は、依然として単一フェールオーバー ポイントになります。</br><br/> Contoso は、Azure App Service といったマネージド サービスにアプリを移行するのではなく、Azure VM として Web 層を引き続きサポートする必要があります。<br/><br/> このソリューションを選択した場合、Contoso は、Azure SQL Database Managed Instance などのマネージド プラットフォームに移行するのではなく、引き続き 2 つの SQL Server VM を管理する必要があります。 また、ソフトウェア アシュアランスに基づき、Contoso は、既存のライセンスを Azure SQL Database Managed Instance の割引料金のライセンスに交換することができます。
 
 
@@ -496,7 +496,7 @@ Contoso の管理者は、これらのステップを以下のように実行し
 
 1. **[インフラストラクチャの準備]** > **[レプリケーション設定]** > **[レプリケーション ポリシー]** >  **[作成と関連付け]** で、ポリシー **ContosoMigrationPolicy** を作成します。
 2. 以下の既定の設定を使用します。
-    - **[RPO しきい値]**。既定値は 60 分です。 この値で、復旧ポイントの作成頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
+    - **RPO しきい値**: 既定値は 60 分です。 この値で、復旧ポイントの作成頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
     - **[復旧ポイントのリテンション期間]**。 既定値は 24 時間です。 この値は、各復旧ポイントのリテンション期間の長さを指定します。 レプリケートされた VM は、期間内の任意の時点に復旧できます。
     - **[アプリ整合性スナップショットの頻度]**。 既定値は 1 時間です。 この値は、アプリケーション整合性スナップショットが作成される頻度を指定します。
  
@@ -549,7 +549,7 @@ Contoso の管理者は、DMA を使用して SmartHotel360 データベース�
 ## <a name="step-8-migrate-the-database-with-dma"></a>ステップ 8: DMA を使用してデータベースを移行する
 
 1. DMA で、新しい移行 **SmartHotel** を実行します。
-2. **[Target server type]\(対象サーバーの種類\)** で **[Azure Virtual Machines 上の SQL Server]** を選択します。 
+2. **[Target server type]\(ターゲット サーバーの種類\)** で **[Azure Virtual Machines 上の SQL Server]** を選択します。 
 
     ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-1.png)
 
@@ -698,16 +698,16 @@ Contoso のセキュリティ チームは、Azure VM (WEBVM、SQLAOG1 および
 - チームは、ディスク上のデータ保護のために、Azure Disk Encryption と KeyVault の使用も検討します。
 - チームは、Transparent Data Encryption (TDE) を評価してから、新しい SQL AOG で実行されている SmartHotel360 データベース上で有効にします。 [詳細情報](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017)。
 
-VM に関するセキュリティの実務の[詳細については、こちら](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control)を参照してください。
+VM に関するセキュリティの実務の[詳細については、こちら](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms)を参照してください。
 
 
 ## <a name="bcdr"></a>BCDR
 
  事業継続とディザスター リカバリー (BCDR) のために、Contoso は次のアクションを実施します。
- - データの保護: Contoso は、Azure Backup サービスを使用して、WEBVM、SQLAOG1、SQLAOG2 の各 VM 上のデータをバックアップします。 [詳細情報]
-(https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-- また、Contoso は、Azure Storage を使用して SQL Server を直接 Blob Storage にバックアップする方法を把握する必要があります。 [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)。
-- アプリの稼働状態の維持: Contoso は、Site Recovery を使用して、Azure 内のアプリ VM をセカンダリ リージョンにレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
+- データの保護: Contoso は、Azure Backup サービスを使用して、WEBVM、SQLAOG1、SQLAOG2 の各 VM 上のデータをバックアップします。 [詳細情報]
+  (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+  - また、Contoso は、Azure Storage を使用して SQL Server を直接 Blob Storage にバックアップする方法を把握する必要があります。 [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)。
+  - アプリの稼働状態を維持する: Contoso は、Site Recovery を使用して、Azure 内のアプリの VM をセカンダリ リージョンにレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
 
 
 ### <a name="licensing-and-cost-optimization"></a>ライセンスとコストの最適化

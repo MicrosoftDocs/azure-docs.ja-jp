@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/04/2018
-ms.openlocfilehash: 1464b2685e0ae084de3679e8a8fea36a3cf19c4b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599146"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217038"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する
 
-このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
+このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
 
 ## <a name="log-header"></a>ログ ヘッダー
 
@@ -135,7 +135,7 @@ Intelligent Insights パフォーマンス ログの最後の部分には、識�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Intelligent Insights パフォーマンス ログは、[Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
+Intelligent Insights パフォーマンス ログは、[Azure Monitor ログ]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
 
 ## <a name="next-steps"></a>次の手順
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得

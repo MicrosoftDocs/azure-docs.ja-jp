@@ -4,23 +4,23 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) バッチ テスト セットを使用して、不適切な意図とエンティティを含む発話を見つけます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9ad71c34bdf88023bcb0a4115fc02ddf3a8d7624
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d615eb2a23b953bad5e41859357d9ae9e9be2ba6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086400"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521218"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
- バッチ テストは、ご自身の現在のトレーニング済みモデルで実行する包括的なテストで、LUIS におけるそのモデルのパフォーマンスを測定します。 
+ バッチ テストは、ご自身の現在のトレーニング済みモデルで実行する包括的なテストで、LUIS におけるそのモデルのパフォーマンスを測定します。 バッチ テストに使用されるデータ セットには、予測ランタイム エンドポイントから受信した意図または発話内の発話の例が含まれていてはいけません。 
 
 <a name="batch-testing"></a>
 
@@ -66,9 +66,6 @@ ms.locfileid: "53086400"
 
 ![バッチ テストの結果](./media/luis-how-to-batch-test/run-test-results.png)
 
-<!-- Select the **See results** link that appears after you run the test. A scatter graph known as an error matrix displays. The data points represent the utterances in the dataset. Green points indicate correct prediction, and red ones indicate incorrect prediction. The filtering panel on the right side of the screen displays a list of all intents and entities in the app, with a green point for intents/entities that were predicted correctly in all dataset utterances, and a red point for those items with errors. Also, for each intent/entity, you can see the number of correct predictions out of the total utterances.-->
-
-
 <a name="filter-chart-results-by-intent-or-entity"></a>  
 
 ## <a name="filter-chart-results"></a>グラフの結果のフィルター処理
@@ -99,11 +96,13 @@ ms.locfileid: "53086400"
 
 グラフ上で緑色で示されている 2 つのセクションは、想定される予測と一致しました。
 
+[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
+
 ## <a name="next-steps"></a>次の手順
 
 ご自身の LUIS アプリで正しい意図とエンティティが認識されないことがテストによって示されている場合、LUIS アプリのパフォーマンスを向上させるには、発話にさらに多くのラベルを付けるか、機能を追加します。 
 
-* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endoint-utt.md) 
+* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md) 
 * [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md) 
 * [このチュートリアルでのバッチ テストについて](luis-tutorial-batch-testing.md)
 * [バッチ テストの概念について](luis-concept-batch-test.md)

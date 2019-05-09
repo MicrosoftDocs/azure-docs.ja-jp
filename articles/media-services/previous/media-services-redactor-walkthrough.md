@@ -4,7 +4,7 @@ description: このトピックでは、Azure Media Services Explorer (AMSE) と
 services: media-services
 documentationcenter: ''
 author: Lichard
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 03/20/2019
 ms.author: rli; juliako;
-ms.openlocfilehash: 81618446930a23a7ea713da19bb7c63a06d135ed
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3e4844c3174e41ca7f6f5667a2777aba11f70f11
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162443"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292990"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
@@ -130,6 +130,6 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 [Azure Media Analytics の顔編集の発表](https://azure.microsoft.com/blog/azure-media-redactor/)

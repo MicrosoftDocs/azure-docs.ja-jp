@@ -1,7 +1,7 @@
 ---
 title: Docker Compose を使用してマルチコンテナー アプリを作成する - Azure App Service
 description: 最初のマルチコンテナー アプリを数分で Azure Web App for Containers にデプロイする
-keywords: azure app service, Web アプリ, linux, docker, compose, マルチコンテナー, マルチ コンテナー, コンテナー用の Web アプリ, 複数のコンテナー, コンテナー, kubernetes, wordpress, azure db for mysql, コンテナーを使用した運用データベース
+keywords: azure app service, Web アプリ, linux, docker, compose, マルチコンテナー, マルチ コンテナー, コンテナー用の Web アプリ, 複数のコンテナー, コンテナー, wordpress, azure db for mysql, コンテナーを使用した運用データベース
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 543ba3ee4e72c5d31708e9b4983e7889421940ca
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316582"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546240"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose 構成を使用してマルチコンテナー (プレビュー) アプリを作成する
 
-[Web App for Containers](app-service-linux-intro.md) には、Docker イメージを柔軟に使用できる機能があります。 このクイック スタートでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で Docker Compose 構成を使用して Web App for Containers にマルチコンテナー アプリをデプロイする方法を示します。 Kubernetes と Azure DB for MySQL を使用する完全なエンド ツー エンド ソリューションの場合は、[マルチコンテナーのチュートリアル](tutorial-multi-container-app.md)に従ってください。
+[Web App for Containers](app-service-linux-intro.md) には、Docker イメージを柔軟に使用できる機能があります。 このクイック スタートでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で Docker Compose 構成を使用して Web App for Containers にマルチコンテナー アプリをデプロイする方法を示します。
 
 このクイック スタートは Cloud Shell で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 以降) を使用してローカルで実行することもできます。 
 
@@ -138,7 +138,10 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Web App for Containers にマルチコンテナー WordPress アプリを作成する](tutorial-multi-container-app.md)
+> [チュートリアル:マルチコンテナーの WordPress アプリ](tutorial-multi-container-app.md)
+
+> [!div class="nextstepaction"]
+> [カスタム コンテナーの構成](configure-custom-container.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

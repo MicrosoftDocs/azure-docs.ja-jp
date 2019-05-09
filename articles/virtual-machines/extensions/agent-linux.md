@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243881"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011600"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 
@@ -73,7 +73,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
 次のシステムがテスト済みで、Azure Linux エージェントで機能することがわかっています。
 
 > [!NOTE]
-> この一覧は、Microsoft Azure Platform でサポートされるシステムの公式の一覧とは異なる場合があります (Microsoft Azure Platform でサポートされるシステムの一覧: [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216))
+> この一覧は、Microsoft Azure Platform でサポートされるシステムの公式の一覧とは異なる場合があります (Microsoft Azure Platform でサポートされるシステムの一覧: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216))
 > 
 > 
 
@@ -108,10 +108,10 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 ## <a name="command-line-options"></a>コマンド ライン オプション
 ### <a name="flags"></a>フラグ
-* verbose: 指定したコマンドのメッセージの詳細度を上げます。
-* force: 一部のコマンドの対話形式の確認をスキップします。
+* verbose: 指定したコマンドのメッセージの詳細度を上げます
+* force: 一部のコマンドの対話形式の確認をスキップします
 
-### <a name="commands"></a>コマンド
+### <a name="commands"></a>command
 * help: サポートされているコマンドとフラグを一覧表示します。
 * deprovision: システムをクリーンアップし、再プロビジョニングに適した状態にしようとします。 次の項目を削除します｡
   
@@ -127,8 +127,8 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 > 
 
 * deprovision+user: -deprovision の場合のすべての対象 (上記参照) を実行するほか、前回プロビジョニングされたユーザー アカウント (/var/lib/waagent から取得) および関連付けられたデータも削除します。 このパラメーターは、Azure で前回プロビジョニングされたイメージのプロビジョニングを解除するため、取得して再利用できます。
-* version: waagent のバージョンを表示します。
-* serialconsole: GRUB で ttyS0 (最初のシリアル ポート) がブート コンソールに なるように構成します。 これにより、カーネルの起動ログがシリアル ポートに送信され、デバッグに使用できるようになります。
+* version: waagent のバージョンを表示します
+* serialconsole: GRUB で ttyS0 (最初のシリアル ポート) がブート コンソールになるように構成します。 これにより、カーネルの起動ログがシリアル ポートに送信され、デバッグに使用できるようになります。
 * daemon: プラットフォームとの相互動作を管理するデーモンとして waagent を実行します。 この引数には waagent init スクリプト内で waagent が指定されます。
 * start: バックグラウンド プロセスとして waagent を実行します
 
@@ -344,6 +344,6 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
 * 詳しくは､プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成するための次のリソースを参照してください。
   
-  * [Ubuntu Wiki: スワップ パーティションの構成に関するページ](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki: スワップ パーティションの構成](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Azure の仮想マシンにカスタム データを挿入する](../windows/classic/inject-custom-data.md)
 

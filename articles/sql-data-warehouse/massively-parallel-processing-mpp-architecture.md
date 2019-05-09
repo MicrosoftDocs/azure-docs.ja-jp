@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 92e16104edb46298d6e503b7546449ed71041047
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0c2ad7e5a707c20db2773324e8047eedaad1a48b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005752"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835035"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse - 超並列処理 (MPP) アーキテクチャ
 Azure SQL Data Warehouse が超並列処理 (MPP) と Azure ストレージを結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。 
@@ -51,7 +51,7 @@ SQL Data Warehouse では、ユーザー データを安全に保つために Az
 
 コンピューティング ノードは計算能力を提供します。 ディストリビューションは、処理のためにコンピューティング ノードにマップされます。 追加のコンピューティング リソースの料金を支払うと、SQL Data Warehouse はディストリビューションを使用可能なコンピューティング ノードに再マップします。 コンピューティング ノード数の範囲は 1 ～ 60 で、データ ウェアハウスのサービス レベルによって決定されます。
 
-各コンピューティング ノードにはノード ID があり、システム ビューで確認できます。 名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノード ID を見ることができます。 これらのシステム ビューの一覧については、[MPP のシステム ビューに関する記事](sql-data-warehouse-reference-tsql-statements.md)をご覧ください。
+各コンピューティング ノードにはノード ID があり、システム ビューで確認できます。 名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノード ID を見ることができます。 これらのシステム ビューの一覧については、[MPP のシステム ビューに関する記事](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7)をご覧ください。
 
 ### <a name="data-movement-service"></a>データ移動サービス
 データ移動サービス (DMS) は、コンピューティング ノード間のデータ移動を調整するデータ転送テクノロジです。 一部のクエリでは、並列クエリで正確な結果が返されるためにデータ移動が必要です。 データ移動が必要な場合は、DMS により、適切なデータが適切な場所に移動する必要があります。 
@@ -124,9 +124,9 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
+[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

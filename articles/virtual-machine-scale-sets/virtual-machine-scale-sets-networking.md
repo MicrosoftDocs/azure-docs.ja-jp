@@ -12,21 +12,21 @@ ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: a939438ad657066805f0179eb06f829abf301763
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a9141adfb1dd05efd73061379be89ddf27ab3832
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740129"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487500"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
 ポータルを通じて Azure 仮想マシン スケール セットをデプロイすると、特定のネットワーク プロパティには既定値が設定されます。たとえば、受信 NAT 規則付きの Azure ロード バランサーです。 この記事では、スケール セットで構成できる、いくつかのより高度なネットワーク機能の使用方法について説明します。
 
-この記事で説明されているすべての機能は、Azure Resource Manager テンプレートを使用して構成することができます。 一部の機能については、Azure CLI と PowerShell の例も含まれています。 Azure CLI 2.0.10 以降、および PowerShell 4.2.0 以降を使用します。
+この記事で説明されているすべての機能は、Azure Resource Manager テンプレートを使用して構成することができます。 一部の機能については、Azure CLI と PowerShell の例も含まれています。
 
 ## <a name="accelerated-networking"></a>高速ネットワーク
 Azure 高速ネットワークでは、仮想マシンでシングルルート I/O 仮想化 (SR-IOV) が可能になることにより、ネットワークのパフォーマンスが向上します。 高速ネットワークの使用方法について詳しくは、[Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) または [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 仮想マシンの高速ネットワークに関する記事をご覧ください。 スケール セットで高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を **true** に設定します。 例: 
@@ -164,19 +164,19 @@ Azure テンプレートを使用してスケール セットを作成するに�
     }
 }
 ```
-サンプル テンプレート: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
+テンプレートの例:[201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>スケール セットに含まれた仮想マシンのパブリック IP アドレスの照会
 CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、**az vmss list-instance-public-ips** コマンドを使用します。
 
-PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、_Get-AzureRmPublicIpAddress_ コマンドを使用します。 例: 
-```PowerShell
-Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、_Get-AzPublicIpAddress_ コマンドを使用します。 例: 
+```powershell
+Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 また、パブリック IP アドレス構成のリソース ID を直接参照して、パブリック IP アドレスを照会することもできます。 例: 
-```PowerShell
-Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+```powershell
+Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
 [Azure Resource Explorer](https://resources.azure.com) またはバージョン **2017-03-30** 以上の Azure REST API でクエリを実行して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを表示することもできます。

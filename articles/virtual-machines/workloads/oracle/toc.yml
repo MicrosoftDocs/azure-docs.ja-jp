@@ -1,0 +1,35 @@
+items:
+- name: 概要
+  items:
+  - name: Oracle VM に関する考慮事項
+    href: oracle-considerations.md
+- name: クイック スタート
+  items:
+  - name: Oracle DB の作成
+    href: oracle-database-quick-create.md
+- name: チュートリアル
+  items:
+  - name: Oracle ASM の構成
+    href: configure-oracle-asm.md
+  - name: Oracle DataGuard の構成
+    href: configure-oracle-dataguard.md
+  - name: Oracle GoldenGate の構成
+    href: configure-oracle-golden-gate.md
+- name: 概念
+  items:
+  - name: Oracle DB の構築
+    href: oracle-design.md
+  - name: Oracle DB のバックアップ戦略
+    href: oracle-backup-recovery.md
+  - name: Oracle のディザスター リカバリーのオプション
+    href: oracle-disaster-recovery.md
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 9c8aba887e728904aed51d3db2db5bb02c03d7b8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340610"

@@ -1,6 +1,6 @@
 ---
 title: 統合アカウント アーティファクト メタデータの管理 - Azure Logic Apps | Microsoft Docs
-description: Enterprise Integration Pack を使用して Azure Logic Apps の統合アカウントからアーティファクト メタデータを追加または取得します
+description: Enterprise Integration Pack を使用して Azure Logic Apps の統合アカウントからアーティファクト メタデータを追加または取得する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,57 +9,101 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
-ms.date: 02/23/2018
-ms.openlocfilehash: 537014c2780fe94cfb35806759f8bcbd974c4c95
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 01/17/2019
+ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128805"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446784"
 ---
-# <a name="manage-artifact-metadata-from-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の統合アカウントからアーティファクト メタデータを管理する
+# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して統合アカウントからアーティファクト メタデータを管理する
 
-統合アカウント内でアーティファクトのカスタム メタデータを定義し、ロジック アプリの実行時にそのメタデータを取得することができます。 たとえば、パートナー、契約、スキーマ、マップなどのアーティファクトに対してメタデータを指定することができます。これらすべてのアーティファクトには、キーと値のペアを使用してメタデータが保存されます。 
+統合アカウント内でアーティファクトのカスタム メタデータを定義し、ロジック アプリを使用する目的で実行時にそのメタデータを取得できます。 たとえば、パートナー、契約、スキーマ、マップなどのアーティファクトに対してメタデータを指定できます。これらすべてのアーティファクトには、キーと値のペアを使用してメタデータが保存されます。 
 
-## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>統合アカウント内のアーティファクトにメタデータを追加する
+## <a name="prerequisites"></a>前提条件
 
-1. Azure Portal で、[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)を作成します。
+* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
-2. 統合アカウントにアーティファクトを追加します (たとえば、[パートナー](logic-apps-enterprise-integration-partners.md)、[契約](logic-apps-enterprise-integration-agreements.md)、[スキーマ](logic-apps-enterprise-integration-schemas.md))。
+* メタデータを追加するアーティファクトが与えられている基本[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。例: 
 
-3. アーティファクトを選択し、**[編集]** を選択して、メタデータの詳細を入力します。
+  * [パートナー](logic-apps-enterprise-integration-partners.md)
+  * [契約](logic-apps-enterprise-integration-agreements.md)
+  * [スキーマ](logic-apps-enterprise-integration-schemas.md)
+  * [Map](logic-apps-enterprise-integration-maps.md)
 
-   ![メタデータを入力する](media/logic-apps-enterprise-integration-metadata/image1.png)
+* 統合アカウントと使用するアーティファクト メタデータにリンクされているロジック アプリ。 ロジック アプリがまだリンクされていない場合、[統合アカウントにロジック アプリをリンクする方法](logic-apps-enterprise-integration-create-integration-account.md#link-account)を確認してください。 
 
-## <a name="retrieve-metadata-from-artifacts-for-logic-apps"></a>ロジック アプリのアーティファクトからメタデータを取得する
+  ロジック アプリを用意していない場合は、[ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)を確認してください。 
+  アーティファクト メタデータの管理に使用するトリガーとアクションを追加します。 あるいは、試用目的で、**要求**や **HTTP** などのトリガーをロジック アプリに追加します。
 
-1. Azure Portal で、[ロジック アプリ](quickstart-create-first-logic-app-workflow.md)を作成します。
+## <a name="add-metadata-to-artifacts"></a>アーティファクトにメタデータを追加する
 
-2. [ロジック アプリから統合アカウントへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)を作成します。 
+1. Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。 統合アカウントを見つけて開きます。
 
-3. ロジック アプリ デザイナーで、ロジック アプリに**要求**や **HTTP** などのトリガーを追加します。
+1. メタデータを追加するアーティファクトを選択し、**[編集]** を選択します。 下の画像のように、そのアーティファクトのメタデータ詳細を入力します。
 
-4. トリガーで、**[新しいステップ]** > **[アクションの追加]** の順に選びます。 "統合アカウント" を検索し、**[統合アカウント - 統合アカウントのアーティファクトの検索]** アクションを選びます。
+   ![メタデータを入力する](media/logic-apps-enterprise-integration-metadata/add-partner-metadata.png)
 
-   ![[統合アカウントのアーティファクトの検索] を選択する](media/logic-apps-enterprise-integration-metadata/image2.png)
+1. 完了したら、**[OK]** を選びます。
 
-5. **アーティファクトの種類**を選択し、**アーティファクトの名前**を指定します。 例: 
+1. 統合アカウントの JavaScript Object Notation (JSON) 定義でこのメタデータを表示するには、**[JSON として編集]** を選択し、JSON エディターを開きます。 
 
-   ![アーティファクトの種類を選択し、アーティファクト名を指定する](media/logic-apps-enterprise-integration-metadata/image3.png)
+   ![パートナー メタデータの JSON](media/logic-apps-enterprise-integration-metadata/partner-metadata.png)
 
-## <a name="example-retrieve-partner-metadata"></a>例: パートナーのメタデータを取得する
+## <a name="get-artifact-metadata"></a>アーティファクト メタデータを取得する
 
-このパートナーが、`routingUrl` の詳細を含むこのメタデータを持っているものとします。
+1. Azure portal で、目的の統合アカウントにリンクされているロジック アプリを開きます。 
 
-![パートナーの "routingURL" メタデータを見つける](media/logic-apps-enterprise-integration-metadata/image6.png)
+1. ロジック アプリ デザイナーで、ワークフローのトリガーまたは最後のアクションの下にメタデータを取得する手順を追加する場合、**[新しいステップ]**、**[アクションの追加]** の順に選択します。 
 
-1. ロジック アプリで、トリガー、パートナーの **[統合アカウント - 統合アカウントのアーティファクトの検索]** アクション、および **HTTP** アクションを追加します。次はその例です。
+1. 検索ボックスに「integration account」と入力します。 検索ボックスで、**[すべて]** を選択します。 アクションの一覧から、次のアクションを選択します。**統合アカウントのアーティファクトの検索 - 統合アカウント**
 
-   ![ロジック アプリに、トリガー、アーティファクト検索、および HTTP アクションを追加する](media/logic-apps-enterprise-integration-metadata/image4.png)
+   ![[統合アカウントのアーティファクトの検索] を選択する](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
 
-2. URI を取得するには、ロジック アプリ デザイナー ツールバーで、ロジック アプリの **[コード ビュー]** を選びます。 ロジック アプリの定義は、次の例のようになります。
+1. 検索するアーティファクトに関する情報を指定します。
 
-   ![参照の検索](media/logic-apps-enterprise-integration-metadata/image5.png)
+   | プロパティ | 必須 | 値 | 説明 | 
+   |----------|---------|-------|-------------| 
+   | **アーティファクトの種類** | はい | **スキーマ**、**マップ**、**パートナー**、**契約**、カスタム型 | 目的のアーティファクトの種類 | 
+   | **アーティファクトの名前** | はい | <*artifact-name*> | 目的のアーティファクトの名前 | 
+   ||| 
+
+   たとえば、取引先アーティファクトのメタデータを取得するとします。
+
+   ![アーティファクトの種類を選択し、アーティファクトの名前を入力する](media/logic-apps-enterprise-integration-metadata/artifact-lookup-information.png)
+
+1. そのメタデータを処理するためのアクションを追加します。例:
+
+   1. **[統合アカウントのアーティファクトの検索]** で **[次のステップ]** を選択し、**[アクションの追加]** を選択します。 
+
+   1. 検索ボックスに「http」と入力します。 検索ボックスの下で **[ビルトイン]** を選択し、**[HTTP - HTTP]** アクションを選択します。
+
+      ![HTTP アクションを追加する](media/logic-apps-enterprise-integration-metadata/http-action.png)
+
+   1. 管理するアーティファクト メタデータに関する情報を指定します。 
+
+      たとえば、このトピックで前に追加した `routingUrl` メタデータを取得するとします。 次のようなプロパティ値を指定します。 
+
+      | プロパティ | 必須 | 値 | 説明 | 
+      |----------|----------|-------|-------------| 
+      | **メソッド** | はい | <*operation-to-run*> | アーティファクトで実行する HTTP 操作。 たとえば、この HTTP アクションでは **GET** メソッドが使用されます。 | 
+      | **URI** | はい | <*metadata-location*> | 取得したアーティファクトから `routingUrl` メタデータ値にアクセスするには、下のような式を使用できます。 <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **ヘッダー** | いいえ  | <*header-values*> | HTTP アクションに渡すトリガーからのヘッダー出力。 たとえば、トリガーの `headers` プロパティ値を渡すには、次のような式を使用できます。 <p>`@triggeroutputs()['headers']` | 
+      | **本文** | いいえ  | <*body-content*> | HTTP アクションの `body` プロパティで渡すその他のコンテンツ。 この例では、アーティファクトの `properties` 値が HTTP アクションに渡されます。 <p>1.**[本文]** プロパティ内をクリックし、動的コンテンツ リストを表示します。 プロパティが表示されていない場合、**[さらに表示する]** を選択します。 <br>2.動的コンテンツ リストの **[統合アカウントのアーティファクトの検索]** で **[プロパティ]** を選択します。 | 
+      |||| 
+
+      例: 
+
+      ![HTTP アクションの値と式を指定する](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
+
+   1. HTTP アクションに指定した情報を確認するには、ロジック アプリの JSON 定義を表示します。 ロジック アプリ デザイナーのツール バーで **[コード ビュー]** を選択し、次のようにアプリの JSON 定義を表示します。
+
+      ![ロジック アプリの JSON 定義](media/logic-apps-enterprise-integration-metadata/finished-logic-app-definition.png)
+
+      ロジック アプリ デザイナーに切り替えると、次の画像のように、使用した式が解決された状態で表示されます。
+
+      ![ロジック アプリ デザイナーの解決された式](media/logic-apps-enterprise-integration-metadata/resolved-expressions.png)
 
 ## <a name="next-steps"></a>次の手順
 

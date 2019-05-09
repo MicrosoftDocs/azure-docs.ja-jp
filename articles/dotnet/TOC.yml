@@ -1,0 +1,17 @@
+items:
+- name: 概要
+  href: index.md
+- name: リファレンス
+  href: https://docs.microsoft.com/dotnet/api/?term=Microsoft.Azure
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: e870ae4247a72c429ad1c3c140688f8214426d36
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340763"

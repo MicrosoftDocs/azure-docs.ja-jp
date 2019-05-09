@@ -4,7 +4,7 @@ description: Azure Security Center で Endpoint Protection の問題を管理す
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1e1401d7f7f383f60b37a3af3a18569bd5a2520a
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336920"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789653"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Azure Security Center での Endpoint Protection の問題の管理
 Azure Security Center では、マルウェア保護の状態を監視し、[Endpoint protection issues]\(Endpoint Protection の問題\) ブレードでこれを報告します。 Security Center では、仮想マシン (VM) やコンピューターをマルウェアの脅威に対して脆弱にする可能性のある問題 (検出された脅威や不十分な保護など) が示されます。 **[Endpoint protection issues]\(Endpoint Protection の問題\)** に表示される情報を使用して、特定された問題に対処する計画を立てることができます。
@@ -30,15 +30,15 @@ Security Center では、次の Endpoint Protection の問題が報告されま�
 - 非 Azure コンピューターに Endpoint Protection がインストールされていない - サポートされているマルウェア対策がこれらの非 Azure コンピューターにインストールされていません。
 - Endpoint Protection の正常性:
 
-   - シグネチャが古い - これらの VM とコンピューターにはマルウェア対策ソリューションがインストールされていますが、ソリューションに最新のマルウェア対策シグネチャがありません。
-   - リアルタイム保護がない - これらの VM とコンピューターにはマルウェア対策ソリューションがインストールされていますが、リアルタイム保護を使用するようにソリューションが構成されていません。   サービスが無効になっている可能性があります。または、ソリューションがサポートされていないために、Security Center が状態を取得できない可能性があります。 サポートされているソリューションの一覧については、[パートナー統合](security-center-partner-integration.md)に関する記事をご覧ください。
-   - 報告なし - マルウェア対策ソリューションはインストールされていますが、データが報告されていません。
-   - 不明 - マルウェア対策ソリューションはインストールされていますが、状態が不明であるか、不明なエラーが報告されています。
+  - シグネチャが古い - これらの VM とコンピューターにはマルウェア対策ソリューションがインストールされていますが、ソリューションに最新のマルウェア対策シグネチャがありません。
+  - リアルタイム保護がない - これらの VM とコンピューターにはマルウェア対策ソリューションがインストールされていますが、リアルタイム保護を使用するようにソリューションが構成されていません。   サービスが無効になっている可能性があります。または、ソリューションがサポートされていないために、Security Center が状態を取得できない可能性があります。 サポートされているソリューションの一覧については、[パートナー統合](security-center-os-coverage.md#supported-endpoint-protection-solutions)に関する記事をご覧ください。
+  - 報告なし - マルウェア対策ソリューションはインストールされていますが、データが報告されていません。
+  - 不明 - マルウェア対策ソリューションはインストールされていますが、状態が不明であるか、不明なエラーが報告されています。
 
-   > [!NOTE]
-   > Security Center に統合された Endpoint Protection セキュリティ ソリューションの一覧については、[セキュリティ ソリューションの統合](security-center-partner-integration.md#integrated-azure-security-solutions)に関するページを参照してください。
-   >
-   >
+    > [!NOTE]
+    > Security Center に統合された Endpoint Protection セキュリティ ソリューションの一覧については、[セキュリティ ソリューションの統合](security-center-os-coverage.md#supported-endpoint-protection-solutions)に関するページを参照してください。
+    >
+    >
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 Endpoint Protection の問題は、Security Center に推奨事項として表示されます。  環境がマルウェアの脅威に対して脆弱である場合、**[推奨事項]** と **[コンピューティング]** にこの推奨事項が表示されます。 **[Endpoint protection issues]\(Endpoint Protection の問題\) ダッシュボード**を表示するには、コンピューティング ワークフローに従う必要があります。
@@ -47,7 +47,7 @@ Endpoint Protection の問題は、Security Center に推奨事項として表�
 
 ## <a name="install-antimalware-on-azure-vms"></a>Azure VM へのマルウェア対策のインストール
 
-1. Security Center のメイン メニューの **[コンピューティング]** を選択するか、**[概要]** を選択します。
+1. Security Center のメイン メニューの **[計算とアプリ]** を選択するか、**[概要]** を選択します。
 
    ![[コンピューティング] を選択する][1]
 
@@ -60,7 +60,7 @@ Endpoint Protection の問題は、Security Center に推奨事項として表�
    - [Installed endpoint protection providers]\(インストール済みの Endpoint Protection プロバイダー\) - Security Center によって特定された各種プロバイダーが表示されます。
    - [Installed endpoint protection health state]\(インストール済みの Endpoint Protection の正常性状態\) - Endpoint Protection ソリューションがインストールされている VM とコンピューターの正常性状態が表示されます。 グラフには、正常な VM とコンピューターの数、および保護が不十分な VM とコンピューターの数が示されます。
    - [Malware detected]\(検出されたマルウェア\) - Security Center によってマルウェアの検出が報告されている VM とコンピューターの数が表示されます。
-   - [Attacked computers]\(攻撃されたコンピューター\) - Security Center によってマルウェアによる攻撃が報告されている VM とコンピューターの数が表示されます。
+   - [攻撃されたコンピューター] - Security Center によってマルウェアによる攻撃が報告されている VM とコンピューターの数が表示されます。
 
    ダッシュボードの下部にある Endpoint Protection の問題の一覧には、次の情報が含まれています。  
 
@@ -76,7 +76,7 @@ Endpoint Protection の問題は、Security Center に推奨事項として表�
 
 4. **[Endpoint protection not installed on Azure VMs]\(Azure VM に Endpoint Protection がインストールされていません\)** に、マルウェア対策がインストールされていない Azure VM の一覧が表示されます。  一覧のすべての VM にマルウェア対策をインストールすることも、特定の VM をクリックして、マルウェア対策をインストールする個々の VM を選択することもできます。
 5. **[Endpoint Protection の選択]** で、使用する Endpoint Protection ソリューションを選択します。 この例では、**[Microsoft マルウェア対策]** を選択します。
-6. Endpoint Protection ソリューションに関する追加情報が表示されます。 **作成**を選択します。
+6. Endpoint Protection ソリューションに関する追加情報が表示されます。 **作成** を選択します。
 
 ## <a name="install-antimalware-on-non-azure-computers"></a>非 Azure コンピューターへのマルウェア対策のインストール
 
@@ -84,13 +84,13 @@ Endpoint Protection の問題は、Security Center に推奨事項として表�
 
    ![[Endpoint protection not installed on non-Azure computers]\(非 Azure コンピューターに Endpoint Protection がインストールされていません\) を選択する][4]
 
-2. **[Endpoint protection not installed on non-Azure computers]\(非 Azure コンピューターに Endpoint Protection がインストールされていません\)** で、ワークスペースを選択します。 ワークスペースでフィルター処理された Log Analytics 検索クエリが開き、マルウェア対策がインストールされていないコンピューターの一覧が表示されます。 一覧でコンピューターを選択して詳細を確認します。
+2. **[Endpoint protection not installed on non-Azure computers]\(非 Azure コンピューターに Endpoint Protection がインストールされていません\)** で、ワークスペースを選択します。 ワークスペースでフィルター処理された Azure Monitor ログ検索クエリが開き、マルウェア対策がインストールされていないコンピューターの一覧が表示されます。 一覧でコンピューターを選択して詳細を確認します。
 
-   ![Log Analytics 検索][5]
+   ![Azure Monitor ログ検索][5]
 
 そのコンピューターだけを対象にフィルター処理された情報が含まれた別の検索結果が表示されます。
 
-  ![Log Analytics 検索][6]
+  ![Azure Monitor ログ検索][6]
 
 > [!NOTE]
 > ウイルス、スパイウェア、その他の悪意のあるソフトウェアを特定して削除できるように、すべての VM に Endpoint Protection をプロビジョニングすることをお勧めします。

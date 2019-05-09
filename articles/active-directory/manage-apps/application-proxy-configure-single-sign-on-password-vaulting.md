@@ -3,22 +3,23 @@ title: Azure AD アプリケーション プロキシを使用したアプリへ
 description: Azure Portal で Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへのシングルサインオンを有効にします。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 6ae7cff42a9b744409fa454199155796c8c06713
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2339ce23379ab51090d536ba071a42017f6941b5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138968"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174182"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管
 

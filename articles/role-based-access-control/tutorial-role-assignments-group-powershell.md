@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: RBAC と Azure PowerShell を使用してグループにアクセス権を付与する | Microsoft Docs'
-description: Azure PowerShell を使用して、ロールベースのアクセス制御 (RBAC) によって、サブスクリプション内のすべてを表示し、リソース グループ内のすべてを管理するためのアクセス権をグループに付与します。
+title: チュートリアル - RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用して、Azure リソースへのアクセス権をグループに付与する方法について説明します。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -11,20 +11,20 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/11/2018
+ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 8bb06493683dabb92dfe75f371f96db14a7951b3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f080682baf42c5852e167a20bfbad7f00fe8bd3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301005"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343691"
 ---
-# <a name="tutorial-grant-access-for-a-group-using-rbac-and-azure-powershell"></a>チュートリアル: RBAC と Azure PowerShell を使用してグループにアクセス権を付与する
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) とは、Azure に存在するリソースに対するアクセス権を管理するための手法です。 このチュートリアルでは、Azure PowerShell を使用して、サブスクリプション内のすべてを表示し、リソース グループ内のすべてを管理するためのアクセス権をグループに付与します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセス権を管理するための手法です。 このチュートリアルでは、Azure PowerShell を使用して、サブスクリプション内のすべてを表示し、リソース グループ内のすべてを管理するためのアクセス権をグループに付与します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * さまざまなスコープでのグループへのアクセス権の付与
@@ -32,6 +32,8 @@ ms.locfileid: "43301005"
 > * アクセス権の削除
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,16 +70,16 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-グループを作成するアクセス許可がない場合は、代わりに「[チュートリアル: RBAC と Azure PowerShell を使用してユーザーにアクセス権を付与する](tutorial-role-assignments-user-powershell.md)」をお試しください。
+グループを作成するアクセス許可がない場合は、代わりに「[チュートリアル: RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
 リソース グループを使用して、リソース グループ スコープでロールを割り当てる方法を示すことができます。
 
-1. [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) コマンドを使用して、リージョンの場所の一覧を取得します。
+1. [Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを使用して、リージョンの場所の一覧を取得します。
 
    ```azurepowershell
-   Get-AzureRmLocation | select Location
+   Get-AzLocation | select Location
    ```
 
 1. 近くの場所を選択し、変数に割り当てます。
@@ -86,10 +88,10 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
    $location = "westus"
    ```
 
-1. [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドを使用して、新しいリソース グループを作成します。
+1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して、新しいリソース グループを作成します。
 
    ```azurepowershell
-   New-AzureRmResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
+   New-AzResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
    ```
 
    ```Example
@@ -102,7 +104,7 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 
 ## <a name="grant-access"></a>アクセス権の付与
 
-グループにアクセス権を付与するには、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) コマンドを使用してロールを割り当てます。 セキュリティ プリンシパル、ロールの定義、およびスコープを指定する必要があります。
+グループにアクセス権を付与するには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドを使用してロールを割り当てます。 セキュリティ プリンシパル、ロールの定義、およびスコープを指定する必要があります。
 
 1. [Get-AzureADGroup](/powershell/module/azuread/new-azureadgroup) コマンドを使用して、グループのオブジェクト ID を取得します。
 
@@ -122,10 +124,10 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
     $groupId = "11111111-1111-1111-1111-111111111111"
     ```
 
-1. [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) コマンドを使用して、サブスクリプションの ID を取得します。
+1. [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドを使用して、サブスクリプションの ID を取得します。
 
     ```azurepowershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     ```Example
@@ -144,7 +146,7 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 1. [閲覧者](built-in-roles.md#reader)ロールをサブスクリプション スコープでグループに割り当てます。
 
     ```azurepowershell
-    New-AzureRmRoleAssignment -ObjectId $groupId `
+    New-AzRoleAssignment -ObjectId $groupId `
       -RoleDefinitionName "Reader" `
       -Scope $subScope
     ```
@@ -164,7 +166,7 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 1. [共同作成者](built-in-roles.md#contributor)ロールをリソース グループ スコープでグループに割り当てます。
 
     ```azurepowershell
-    New-AzureRmRoleAssignment -ObjectId $groupId `
+    New-AzRoleAssignment -ObjectId $groupId `
       -RoleDefinitionName "Contributor" `
       -ResourceGroupName "rbac-tutorial-resource-group"
     ```
@@ -183,10 +185,10 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 
 ## <a name="list-access"></a>アクセス権の表示
 
-1. サブスクリプションのアクセス権を確認するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) コマンドを使用して、ロールの割り当てを一覧表示します。
+1. サブスクリプションのアクセス権を確認するには、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) コマンドを使用して、ロールの割り当てを一覧表示します。
 
     ```azurepowershell
-    Get-AzureRmRoleAssignment -ObjectId $groupId -Scope $subScope
+    Get-AzRoleAssignment -ObjectId $groupId -Scope $subScope
     ```
 
     ```Example
@@ -203,10 +205,10 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 
     出力では、閲覧者ロールが、サブスクリプション スコープで RBAC チュートリアル グループに割り当てられていることを確認できます。
 
-1. リソース グループのアクセス権を確認するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) コマンドを使用して、ロールの割り当てを一覧表示します。
+1. リソース グループのアクセス権を確認するには、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) コマンドを使用して、ロールの割り当てを一覧表示します。
 
     ```azurepowershell
-    Get-AzureRmRoleAssignment -ObjectId $groupId -ResourceGroupName "rbac-tutorial-resource-group"
+    Get-AzRoleAssignment -ObjectId $groupId -ResourceGroupName "rbac-tutorial-resource-group"
     ```
 
     ```Example
@@ -245,12 +247,12 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 
 ## <a name="remove-access"></a>アクセス権の削除
 
-ユーザー、グループ、アプリケーションのアクセス権を削除するには、[Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) を使用して、ロールの割り当てを削除します。
+ユーザー、グループ、アプリケーションのアクセス権を削除するには、[Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) を使用して、ロールの割り当てを削除します。
 
 1. 次のコマンドを使用して、リソース グループ スコープでグループの共同作成者ロールの割り当てを削除します。
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -ObjectId $groupId `
+    Remove-AzRoleAssignment -ObjectId $groupId `
       -RoleDefinitionName "Contributor" `
       -ResourceGroupName "rbac-tutorial-resource-group"
     ```
@@ -258,7 +260,7 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 1. 次のコマンドを使用して、サブスクリプション スコープでグループの閲覧者ロールの割り当てを削除します。
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -ObjectId $groupId `
+    Remove-AzRoleAssignment -ObjectId $groupId `
       -RoleDefinitionName "Reader" `
       -Scope $subScope
     ```
@@ -267,10 +269,10 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 
 このチュートリアルで作成したリソースをクリーンアップするには、リソース グループとグループを削除します。
 
-1. [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使用して、リソース グループを削除します。
+1. [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループを削除します。
 
     ```azurepowershell
-    Remove-AzureRmResourceGroup -Name "rbac-tutorial-resource-group"
+    Remove-AzResourceGroup -Name "rbac-tutorial-resource-group"
     ```
 
     ```Example
@@ -292,4 +294,4 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [RBAC と PowerShell を使用してアクセスを管理する](role-assignments-powershell.md)
+> [RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](role-assignments-powershell.md)

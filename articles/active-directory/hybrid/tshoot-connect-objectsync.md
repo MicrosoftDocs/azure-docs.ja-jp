@@ -4,7 +4,7 @@ description: このトピックでは、トラブルシューティング タス
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.service: active-directory
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: cfd963ae38d42d245f2eec1ddb76c7af316039ba
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 82139178d4c1db4774d539180e41e49699d8ee12
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961129"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174216"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング
 この条項では、トラブルシューティングタスクを使用し、オブジェクト同期の問題のトラブルシューティングを行う手順を示します。 Azure Active Directory (Azure AD) Connect でどのようにトラブルシューティングが行われるか確認するには、[ このショートビデオ ](https://aka.ms/AADCTSVideo) をご覧ください。

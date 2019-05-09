@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b529af1db6d72d87abc25eb37f2f1c39216a0ba4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724166"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002012"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) 用のアプリケーションの準備
 
@@ -89,7 +89,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>ローカルでアプリケーションをテストする
 
-実行中のアプリケーションを表示するには、ローカルの Web ブラウザーで「 http://localhost:8080」と入力します。 次の例で示すように、サンプル アプリケーションが読み込まれます。
+実行中のアプリケーションを表示するには、ローカルの Web ブラウザーで「 `http://localhost:8080`」と入力します。 次の例で示すように、サンプル アプリケーションが読み込まれます。
 
 ![Azure 上の Kubernetes クラスターの図](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 

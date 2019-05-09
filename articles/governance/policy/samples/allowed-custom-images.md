@@ -1,21 +1,20 @@
 ---
 title: サンプル - 承認された VM イメージ
-description: このサンプル ポリシーは、承認されたカスタム イメージのみが環境にデプロイされることを要求します。
-services: azure-policy
+description: このサンプル ポリシー定義は、承認されたカスタム イメージのみが環境にデプロイされることを要求します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: efec6c4e0a677681fd9f1132f4573d99b35236d4
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8def11c2d92af618054d0353fa2687d2e88e1134
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312665"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59266717"
 ---
-# <a name="approved-vm-images"></a>承認された VM イメージ
+# <a name="sample---approved-virtual-machine-images"></a>サンプル - 承認された仮想マシン イメージ
 
 このポリシーは、承認されたカスタム イメージのみを環境にデプロイすることが要件です。 承認されたイメージ ID の配列を指定します。
 
@@ -53,7 +52,7 @@ ms.locfileid: "53312665"
 
 ## <a name="parameters"></a>parameters
 
-|Name |type |フィールド |説明 |
+|Name |Type |フィールド |説明 |
 |---|---|---|---|
 |imageIds |Array |Microsoft.Compute/imageIds |承認された VM イメージの一覧|
 
@@ -75,27 +74,27 @@ PowerShell では、`-PolicyParameterObject` もサポートされます。こ�
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-[![Azure へのデプロイ](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
-[![Azure Gov へのデプロイ](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![ポリシーのサンプルを Azure にデプロイする](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![ポリシーのサンプルを Azure Gov にデプロイする](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ### <a name="deploy-with-azure-powershell"></a>Azure PowerShell でのデプロイ
 
 ```azurepowershell-interactive
 # Create the Policy Definition (Subscription scope)
-$definition = New-AzureRmPolicyDefinition -Name 'allowed-custom-images' -DisplayName 'Approved VM images' -description 'This policy governs the approved VM images' -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.parameters.json' -Mode All
+$definition = New-AzPolicyDefinition -Name 'allowed-custom-images' -DisplayName 'Approved VM images' -description 'This policy governs the approved VM images' -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.parameters.json' -Mode All
 
-# Set the scope to a resource group; may also be a subscription or management group
-$scope = Get-AzureRmResourceGroup -Name 'YourResourceGroup'
+# Set the scope to a resource group; may also be a resource, subscription, or management group
+$scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 
 # Set the Policy Parameter (JSON format)
 $policyparam = '{ "imageIds": { "value": [ "/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage", "/Subscriptions/<subscriptionId>/Providers/Microsoft.Compute/Locations/centralus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/2016.127.20180510" ] } }'
 
 # Create the Policy Assignment
-$assignment = New-AzureRmPolicyAssignment -Name 'allowed-custom-images-assignment' -DisplayName 'Approved VM images Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition -PolicyParameter $policyparam
+$assignment = New-AzPolicyAssignment -Name 'allowed-custom-images-assignment' -DisplayName 'Approved VM images Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition -PolicyParameter $policyparam
 ```
 
 ### <a name="remove-with-azure-powershell"></a>Azure PowerShell での削除
@@ -104,23 +103,23 @@ $assignment = New-AzureRmPolicyAssignment -Name 'allowed-custom-images-assignmen
 
 ```azurepowershell-interactive
 # Remove the Policy Assignment
-Remove-AzureRmPolicyAssignment -Id $assignment.ResourceId
+Remove-AzPolicyAssignment -Id $assignment.ResourceId
 
 # Remove the Policy Definition
-Remove-AzureRmPolicyDefinition -Id $definition.ResourceId
+Remove-AzPolicyDefinition -Id $definition.ResourceId
 ```
 
 ### <a name="azure-powershell-explanation"></a>Azure PowerShell の説明
 
 デプロイおよび削除のスクリプトには、次のコマンドが使用されています。 以下の表の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) | 新しい Azure Policy の定義を作成します。 |
-| [Get-AzureRmResourceGroup](/powershell/module/azurerm.resources/get-azurermresourcegroup) | 単一のリソース グループを取得します。 |
-| [New-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) | 新しい Azure Policy の割り当てを作成します。 この例では定義を渡していますが、イニシアチブを渡すこともできます。 |
-| [Remove-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/remove-azurermpolicyassignment) | 既存の Azure Policy の割り当てを削除します。 |
-| [Remove-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/remove-azurermpolicydefinition) | 既存の Azure Policy の定義を削除します。 |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | 新しい Azure Policy の定義を作成します。 |
+| [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | 単一のリソース グループを取得します。 |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | 新しい Azure Policy の割り当てを作成します。 この例では定義を渡していますが、イニシアチブを渡すこともできます。 |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | 既存の Azure Policy の割り当てを削除します。 |
+| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | 既存の Azure Policy の定義を削除します。 |
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -132,7 +131,7 @@ Remove-AzureRmPolicyDefinition -Id $definition.ResourceId
 # Create the Policy Definition (Subscription scope)
 definition=$(az policy definition create --name 'allowed-custom-images' --display-name 'Approved VM images' --description 'This policy governs the approved VM images' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.parameters.json' --mode All)
 
-# Set the scope to a resource group; may also be a subscription or management group
+# Set the scope to a resource group; may also be a resource, subscription, or management group
 scope=$(az group show --name 'YourResourceGroup')
 
 # Set the Policy Parameter (JSON format)
@@ -156,7 +155,7 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 ### <a name="azure-cli-explanation"></a>Azure CLI の説明
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | 新しい Azure Policy の定義を作成します。 |
 | [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | 単一のリソース グループを取得します。 |
@@ -217,7 +216,7 @@ Resource Manager REST API の対話操作には、[ARMClient](https://github.com
 
 ### <a name="rest-api-explanation"></a>REST API の説明
 
-| Service | グループ | Operation | メモ |
+| Service | Group | Operation | メモ |
 |---|---|---|---|
 | リソース管理 | ポリシーの定義 | [作成](/rest/api/resources/policydefinitions/createorupdate) | 新しい Azure Policy 定義をサブスクリプションで作成します。 代替手段:[管理グループで作成する](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | リソース管理 | ポリシーの割り当て | [作成](/rest/api/resources/policyassignments/create) | 新しい Azure Policy の割り当てを作成します。 この例では定義を渡していますが、イニシアチブを渡すこともできます。 |

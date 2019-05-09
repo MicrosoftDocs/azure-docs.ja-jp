@@ -1,124 +1,117 @@
-items:
 - name: Bing Web Search API のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Bing Web Search とは
-    href: overview.md
-    expanded: true
+    - name: Bing Web Search とは
+      href: overview.md
+      expanded: true
+    - name: Bing Search API を比較する
+      href: ../Bing-Web-Search/bing-api-comparison.md
 - name: クイック スタート
   items:
-  - name: REST API
-    items:
-    - name: C#
-      href: quickstarts/csharp.md
-    - name: Go
-      href: quickstarts/go.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
-  - name: SDK
-    items:
-    - name: C#
-      href: web-search-sdk-quickstart.md
-    - name: Java
-      href: web-sdk-java-quickstart.md
-    - name: Node.js
-      href: web-search-sdk-node-quickstart.md
-    - name: Python
-      href: web-sdk-python-quickstart.md
+    - name: REST API
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Go
+          href: quickstarts/go.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: SDK
+      items:
+        - name: 'C#'
+          href: web-search-sdk-quickstart.md
+        - name: Java
+          href: web-sdk-java-quickstart.md
+        - name: Node.js
+          href: web-search-sdk-node-quickstart.md
+        - name: Python
+          href: web-sdk-python-quickstart.md
 - name: チュートリアル
   items:
-  - name: シングルページ Web アプリの作成
-    href: tutorial-bing-web-search-single-page-app.md
+    - name: シングルページ Web アプリの作成
+      href: tutorial-bing-web-search-single-page-app.md
 - name: サンプル
   items:
-  - name: REST サンプル
-    href: https://github.com/Azure-Samples/cognitive-services-REST-api-samples
-  - name: SDK のサンプル
-    href: sdk-samples.md
+    - name: REST サンプル
+      href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'
+    - name: SDK のサンプル
+      href: sdk-samples.md
 - name: ハウツー ガイド
   items:
-  - name: 回答のフィルター処理
-    href: filter-answers.md
-  - name: 結果のランク付け
-    href: rank-results.md
-  - name: 検索結果の強調表示の処理
-    href: hit-highlighting.md
-  - name: 結果のページング
-    href: paging-webpages.md
-  - name: サムネイルのサイズ変更とトリミング
-    href: resize-and-crop-thumbnails.md
-  - name: v5 から v7 へのアップグレード
-    href: bing-web-upgrade-guide-v5-to-v7.md
+    - name: 回答のフィルター処理
+      href: filter-answers.md
+    - name: 結果のランク付け
+      href: rank-results.md
+    - name: 検索結果の強調表示の処理
+      href: hit-highlighting.md
+    - name: 結果のページング
+      href: paging-webpages.md
+    - name: サムネイルのサイズ変更とトリミング
+      href: resize-and-crop-thumbnails.md
+    - name: v5 から v7 へのアップグレード
+      href: bing-web-upgrade-guide-v5-to-v7.md
 - name: 概念
   items:
-  - name: 検索語句の自動提案
-    href: autosuggest-bing-search-terms.md
-  - name: Search の応答
-    href: search-responses.md
-  - name: スロットル リクエスト
-    href: throttling-requests.md
+    - name: 検索語句の自動提案
+      href: autosuggest-bing-search-terms.md
+    - name: Search の応答
+      href: search-responses.md
+    - name: スロットル リクエスト
+      href: throttling-requests.md
 - name: リファレンス
   items:
-  - name: Bing Web Search API v7
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference
-  - name: Bing Web Search API v5
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference
-  - name: Azure CLI
-    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: Azure PowerShell
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/websearch?view=azure-node-latest
-    - name: Go
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/websearch
+    - name: Bing Web Search API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference'
+    - name: Bing Web Search API v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference'
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: Azure PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/websearch?view=azure-node-latest'
+        - name: Go
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/websearch'
+    - name: 使用と表示の要件
+      href: Use-display-requirements.md
 - name: リソース
   items:
-  - name: FAQ
-    href: bing-web-search-resource-faq.md
-  - name: API キーを取得する
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api
-  - name: Bing Web Search エンドポイント
-    href: web-search-endpoints.md
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: 使用と表示の要件
-    href: UseAndDisplayRequirements.md
-  - name: 言語とリージョンのサポート
-    href: language-support.md
-  - name: Bing Web Search API 用の分析
-    href: bing-web-stats.md
-  - name: サポート
-    items:
-    - name: User Voice フォーラム
-      href: https://cognitive.uservoice.com/forums/555907-bing-web-search-api
-    - name: スタック オーバーフロー
-      href: https://stackoverflow.com/search?q=bing+web+search
-    - name: ナレッジ ベース
-      href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 0e86f4433a79475089c9bb1dbe7a84ac3ebb9b51
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793973"
+    - name: API キーを取得する
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
+    - name: Bing Web Search エンドポイント
+      href: web-search-endpoints.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 言語とリージョンのサポート
+      href: language-support.md
+    - name: Bing Web Search API 用の分析
+      href: bing-web-stats.md
+    - name: サポート
+      items:
+        - name: User Voice フォーラム
+          href: 'https://cognitive.uservoice.com/forums/555907-bing-web-search-api'
+        - name: スタック オーバーフロー
+          href: 'https://stackoverflow.com/search?q=bing+web+search'
+        - name: ナレッジ ベース
+          href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'

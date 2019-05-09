@@ -1,26 +1,24 @@
 ---
-title: Azure 仮想ネットワーク サービス エンドポイント | Microsoft Docs
+title: Azure 仮想ネットワーク サービス エンドポイント
+titlesuffix: Azure Virtual Network
 description: サービス エンドポイントを使って仮想ネットワークから Azure リソースへの直接アクセスを有効にする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: sumeetmittal
-manager: narayan
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: acb5897825a2a7762869d3ad961dfcdcb87071b4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540556"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618160"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -35,14 +33,16 @@ ms.locfileid: "53540556"
 - **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
 - **[Azure Database for PostgreSQL サーバー](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (データベース サービスを利用できる Azure リージョン)。
 - **[Azure Database for MySQL サーバー](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (データベース サービスを利用できる Azure リージョン)。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure パブリック クラウド リージョン)。
-- **[Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**:一般公開 (全 Azure パブリック クラウド リージョン)。
-- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure パブリック クラウド リージョン)。
-- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure パブリック クラウド リージョン)。
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**: 一般公開 (データベース サービスを利用できる Azure リージョン)。
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
+- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)**:一般公開 (全 Azure リージョン)。
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
+- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (ADLS Gen1 を利用できる全 Azure リージョン)。
 
-**プレビュー**
+**パブリック プレビュー**
 
-- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:プレビューで利用可能。
+- **[Azure Container Registry](../container-registry/container-registry-vnet.md)**:プレビュー公開 (Azure Container Registry を利用できる全 Azure リージョン)。
 
 最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
@@ -61,6 +61,7 @@ ms.locfileid: "53540556"
 - この機能は、Azure Resource Manager デプロイ モデルを使ってデプロイされた仮想ネットワークでのみ使用できます。
 - エンドポイントは、Azure 仮想ネットワークに構成されたサブネット上で有効になります。 エンドポイントは、お客様の構内から Azure サービスへのトラフィックに対しては使用できません。 詳細については、「[オンプレミスから Azure サービスへのアクセスの保護](#securing-azure-services-to-virtual-networks)」をご覧ください。
 - Azure SQL の場合、サービス エンドポイントは、仮想ネットワークのリージョン内の Azure サービス トラフィックにのみ適用されます。 Azure Storage の場合、RA-GRS および GRS のトラフィックをサポートするには、仮想ネットワークのデプロイ先のリージョンとペアになっているリージョンを含めるようにエンドポイントも拡張します。 [Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)の詳細をご覧ください。
+- ADLS Gen 1 の場合、VNET 統合機能は、同じリージョン内の仮想ネットワークでのみ利用できます。
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Azure サービスへのアクセスを仮想ネットワークに限定する
 
@@ -83,7 +84,7 @@ ms.locfileid: "53540556"
 - サービス エンドポイントは仮想ネットワーク内のサブネット上で構成されます。 エンドポイントは、そのサブネット内で実行されているどの種類のコンピューティング インスタンスでも動作します。
 - サブネット上のサポートされているすべての Azure サービス (Azure Storage や Azure SQL Database など) に対して複数のサービス エンドポイントを構成できます。
 - Azure SQL Database の場合、仮想ネットワークは、Azure サービス リソースと同じリージョンにある必要があります。 GRS および RA-GRS Azure Storage アカウントを使用している場合、プライマリ アカウントは仮想ネットワークと同じリージョンにある必要があります。 その他のすべてのサービスでは、任意のリージョンで、仮想ネットワークに対する Azure サービス リソースをセキュリティで保護できます。 
-- エンドポイントが構成されている仮想ネットワークのサブスクリプションは、Azure サービス リソースのサブスクリプションと同じでも違っていてもかまいません。 エンドポイントを設定して Azure サービスのセキュリティを保護するために必要なアクセス許可の詳細については、[プロビジョニング](#Provisioning)に関するページを参照してください。
+- エンドポイントが構成されている仮想ネットワークのサブスクリプションは、Azure サービス リソースのサブスクリプションと同じでも違っていてもかまいません。 エンドポイントを設定して Azure サービスのセキュリティを保護するために必要なアクセス許可の詳細については、[プロビジョニング](#provisioning)に関するページを参照してください。
 - サポートされているサービスについては、サービス エンドポイントを使って新規または既存のリソースへのアクセスを仮想ネットワークに限定することができます。
 
 ### <a name="considerations"></a>考慮事項
@@ -100,7 +101,7 @@ ms.locfileid: "53540556"
 ### <a name="scenarios"></a>シナリオ
 
 - **ピアリングされた仮想ネットワーク、接続された仮想ネットワーク、または複数の仮想ネットワーク**:Azure サービスへのアクセスを 1 つの仮想ネットワーク内または複数の仮想ネットワークにまたがる複数のサブネットに限定するには、サブネットごとに個別にサービス エンドポイントを有効にして、Azure サービス リソースへのアクセスをこれらのサブネットに限定します。
-- **仮想ネットワークから Azure サービスへの送信トラフィックのフィルタリング**:仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、このサブネットのみに Azure サービス リソースへのアクセスを限定します。 このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
+- **仮想ネットワークから Azure サービスへの送信トラフィックのフィルタリング**:仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、このサブネットのみに Azure サービス リソースへのアクセスを限定します。 このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](/azure/architecture/reference-architectures/dmz/nva-ha)に関するページを参照してください。
 - **Azure リソースへのアクセスを仮想ネットワークに直接デプロイされたサービスに限定する**:さまざまな Azure サービスを仮想ネットワーク内の特定のサブネットに直接デプロイできます。 管理されたサービスのサブネット上にサービス エンドポイントを設定することで、Azure サービス リソースへのアクセスを[管理されたサービス](virtual-network-for-azure-services.md)のサブネットに限定することができます。
 - **Azure の仮想マシンからのディスク トラフィック**:マネージド/アンマネージド ディスクの仮想マシン ディスク トラフィック (マウント、マウント解除、diskIO を含みます) は、Azure Storage のサービス エンドポイントのルーティング変更の影響を受けません。 サービス エンドポイントと [Azure Storage ネットワーク ルール](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を介して、ページ BLOB への REST アクセスを選択したネットワークに制限することができます。 
 
@@ -131,7 +132,7 @@ ms.locfileid: "53540556"
 
 仮想ネットワーク内のサービス エンドポイントの合計数に制限はありません。
 
-Azure サービス リソース (Azure Storage アカウントなど) の場合、リソースへのアクセスに使用されるサブネットの数がサービスによって制限される場合があります。 詳細については、「[次のステップ](#next-steps)」の各種サービスに関するドキュメントを参照してください。
+特定の Azure サービス (Azure Storage アカウントなど) では、リソースのセキュリティ保護に使用されるサブネットの数に制限が適用される場合があります。 詳細については、「[次のステップ](#next-steps)」の各種サービスに関するドキュメントを参照してください。
 
 ## <a name="virtual-network-service-endpoint-policies"></a>仮想ネットワークのサービス エンドポイント ポリシー 
 

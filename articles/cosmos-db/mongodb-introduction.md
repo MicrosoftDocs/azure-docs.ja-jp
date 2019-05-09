@@ -1,20 +1,18 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API の概要
 description: Azure Cosmos DB の MongoDB 用 API を使用して、Azure Cosmos DB で膨大な量のデータを格納し、それに対してクエリを実行する方法について説明します。
-keywords: Azure Cosmos DB の MongoDB 用 API
-services: cosmos-db
-author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: f17d8f46bc14297c70c21919abe236fc544facfa
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: d0f61afaba094a1e499a91f9937a31554438759e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787615"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042174"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 

@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: d5cf4005ad50c9c75f22b2fa2719925afbe69f26
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9e5da96cb02e681c83bd707fc038117050712ccf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38581268"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044248"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure Data Factory のデータセットとリンクされたサービス
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-create-datasets.md)
 > * [現在のバージョン](concepts-datasets-linked-services.md)
 
@@ -65,10 +64,10 @@ Data Factory のリンクされたサービスは、次のように JSON 形式�
 
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
-name | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  [はい] |
-type | リンクされたサービスの種類  例: AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | [はい] |
-typeProperties | 型のプロパティは、データ ストアまたはコンピューティングごとに異なります。 <br/><br/> サポートされているデータ ストア型と型のプロパティについては、この記事の「[データセットの型](#dataset-type)」の表を参照してください。 データ ストアに固有の型のプロパティについては、データ ストア コネクタに関する記事に移動してください。 <br/><br/> サポートされているコンピューティング型とその型のプロパティについては、[コンピューティングのリンクされたサービス](compute-linked-services.md)に関する記事を参照してください。 | [はい] |
-connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ
+name | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+type | リンクされたサービスの種類  例: AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | はい |
+typeProperties | 型のプロパティは、データ ストアまたはコンピューティングごとに異なります。 <br/><br/> サポートされているデータ ストア型と型のプロパティについては、この記事の「[データセットの型](#dataset-type)」の表を参照してください。 データ ストアに固有の型のプロパティについては、データ ストア コネクタに関する記事に移動してください。 <br/><br/> サポートされているコンピューティング型とその型のプロパティについては、[コンピューティングのリンクされたサービス](compute-linked-services.md)に関する記事を参照してください。 | はい |
+connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ 
 
 ## <a name="linked-service-example"></a>リンクされたサービスの例
 次のリンクされたサービスは、Azure Storage のリンクされたサービスです。 type が AzureStorage に設定されている点に注目してください。 Azure Storage のリンクされたサービスの型のプロパティには、接続文字列が含まれます。 Data Factory サービスは、この接続文字列を使用して、実行時にデータ ストアに接続します。
@@ -122,10 +121,10 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
-name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  [はい] |
-type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | [はい] |
+name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
 structure | データセットのスキーマ。 詳細については、「[データセット構造](#dataset-structure)」セクションを参照してください。 | いいえ  |
-typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | [はい] |
+typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
 
 ## <a name="dataset-example"></a>データセットの例
 以下の例では、データセットは SQL Database 内にある MyTable という名前のテーブルを表しています。
@@ -188,10 +187,10 @@ structure の各列には次のプロパティが含まれます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | 列の名前です。 | [はい]
-type | 列のデータ型です。 Data Factory は、使用できる値として、中間データ型の **Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 | いいえ
-culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ
-format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ
+name | 列の名前です。 | はい
+type | 列のデータ型です。 Data Factory は、使用できる値として、中間データ型の **Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 | いいえ 
+culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ 
+format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ 
 
 ### <a name="example"></a>例
 次の例は、ソース BLOB データが、CSV 形式であり、userid、name、lastlogindate の 3 つの列を含むことを前提としています。 その型は、それぞれ、Int64、String、Datetime (曜日を表すフランス語の省略形を使用するカスタムの日付/時刻形式) です。

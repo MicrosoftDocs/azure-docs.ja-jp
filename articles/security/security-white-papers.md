@@ -4,7 +4,7 @@ description: この記事では、さまざまな Azure リソースに対する
 services: azure-security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 4bf99fb103850582ded56604d3f65ecd030cb167
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3fb6e42e55119684ace8547a55297d38dbb9a26e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410038"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57402378"
 ---
 # <a name="azure-security-white-papers"></a>Azure セキュリティ ホワイト ペーパー
 | | |
@@ -42,4 +42,4 @@ ms.locfileid: "53410038"
 |[Azure コンプライアンスの概要](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|このダウンロード可能なホワイト ペーパーでは、Azure のコンプライアンス認証について説明します。独立したサード パーティの監査企業による正式な証明書、認証、検証、承認、および評価の他に、Microsoft による契約の修正、自己評価、および顧客向けのガイダンス ドキュメントが含まれます。 <br/> 各認証の説明では、評価の対象になる顧客向けのサービスを示し、顧客による独自のコンプライアンスへの順守を支援するダウンロード可能なリソースへのリンクを提供します。|
 |[Azure でのセキュリティ管理](azure-security-management.md)|Azure リソースのリモート アクセスの問題について説明します。 クラウドの性質上、リモート アクセスの管理が必要です。そのため、セキュリティは非常に重要です。 一般的なセキュリティのガイドライン、クライアントの構成、ベスト プラクティス、および運用上の原則と手順について説明します。 |
 |[Azure AD のデータとセキュリティ](https://aka.ms/aaddatawhitepaper) | Azure Active Directory の各種コンポーネントとその相互作用について説明するダウンロード可能なドキュメントです。 インターネットで転送されるデータなど、転送中のデータが各種コンポーネントによってどのように保護され、セキュリティが確保され、暗号化され、ハッシュされるか、また、保存データがどのように保護されるかについて概説しています。 Azure AD のさまざまなデータセンター拠点について説明すると共に、データセンターとオンプレミス ディレクトリとの間の対話、さらには、Azure AD との間でやり取りされるフローについても説明します。 最後に、Azure AD エンジニアリング チームがサービスを管理し、そのセキュリティを確保するために使用している運用手順について説明します。|
-
+|[An overview of password-less authentication (パスワードなし認証の概要)](https://aka.ms/pwdless-whitepaper)|このドキュメントは、Windows Hello for Business、FIDO2 セキュリティ キー、および Microsoft Authenticator App を使用したパスワードなし認証の主な利点の概要です。 パスワードを超えた次世代の認証資格情報のデプロイを Microsoft がどのように支援できるかに関心があるセキュリティ専門家や CISO にお勧めします。|

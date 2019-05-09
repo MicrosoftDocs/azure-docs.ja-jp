@@ -5,23 +5,23 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632694"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792483"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する
 
-マルチ ステップ タスクは、複数のステップから成る複数コンテナー ベースのワークフローを持つ、ACR タスクの単一イメージのビルドおよびプッシュ機能を拡張します。 マルチ ステップ タスクを使用して、いくつかのイメージのビルドとプッシュを順番に、または並列で行い、それらのイメージを 1 回のタスク実行中にコマンドとして実行します。 各ステップでは、コンテナー イメージのビルド操作またはプッシュ操作を定義します。また、コンテナーの実行を定義することもできます。 マルチ ステップ タスクの各ステップは、その実行環境としてコンテナーを使用します。
+マルチ ステップ タスクは、複数のステップから成る複数コンテナー ベースのワークフローを持つ、ACR タスクの単一イメージのビルドおよびプッシュ機能を拡張します。 複数のイメージを、順番または並列に、ビルドしてプッシュするには、マルチ ステップ タスクを使用します。 その後、それらのイメージを、1 つのタスク実行内でコマンドとして実行します。 各ステップでは、コンテナー イメージのビルド操作またはプッシュ操作を定義します。また、コンテナーの実行を定義することもできます。 マルチ ステップ タスクの各ステップは、その実行環境としてコンテナーを使用します。
 
 > [!IMPORTANT]
 > 以前、プレビュー期間中に `az acr build-task` コマンドを使用してタスクを作成した場合、それらのタスクは [az acr task][az-acr-task] コマンドを使用して再作成する必要があります。
 
-たとえば、以下を自動化するステップを含むタスクを実行できます。
+たとえば、以下のロジックを自動化するステップを含むタスクを実行できます。
 
 1. Web アプリケーション イメージをビルドする
 1. Web アプリケーション コンテナーを実行する
@@ -32,12 +32,10 @@ ms.locfileid: "51632694"
 
 すべてのステップは Azure 内で実行されて、作業を Azure のコンピューティング リソースにオフロードし、ユーザーはインフラストラクチャの管理から解放されます。 Azure コンテナー レジストリのほかに、使用するリソースに対してのみ支払いを行います。 価格については、「[Azure Container Registry の価格][pricing]」の「**コンテナー ビルド**」セクションを参照してください。
 
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 ## <a name="common-task-scenarios"></a>一般的なタスク シナリオ
 
-マルチ ステップ タスクでは、以下のようなシナリオが実現されます。
+マルチ ステップ タスクでは、以下のロジックのようなシナリオが実現されます。
 
 * 1 つ以上のコンテナー イメージのビルド、タグ付け、プッシュを順番または並列に行います。
 * 単体テストとコード カバレッジを実行して結果をキャプチャします。
@@ -49,14 +47,14 @@ ms.locfileid: "51632694"
 
 ACR タスクのマルチ ステップ タスクは、YAML ファイル内で一連のステップとして定義されます。 各ステップでは、前の 1 つ以上のステップが正常に完了することへの依存関係を指定できます。 以下に示すタスク ステップの種類を使用できます。
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): 使い慣れた `docker build` 構文を順番または並列で使用して、1 つ以上のコンテナー イメージをビルドします。
-* [`push`](container-registry-tasks-reference-yaml.md#push): ビルドされたイメージをコンテナー レジストリにプッシュします。 パブリック Docker Hub と同様に、Azure Container Registry のようなプライベート レジストリがサポートされています。
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): 実行中のタスクのコンテキスト内で関数として動作できるように、コンテナーを実行します。 コンテナーの `[ENTRYPOINT]` にパラメーターを渡すことができます。また、env や detach などのプロパティや、その他の使い慣れた `docker run` パラメーターを指定できます。 `cmd` ステップの種類では、単体テストや機能テストに加え、コンテナーの同時実行が可能です。
+* [`build`](container-registry-tasks-reference-yaml.md#build):使い慣れた `docker build` 構文を順番または並列で使用して、1 つ以上のコンテナー イメージをビルドします。
+* [`push`](container-registry-tasks-reference-yaml.md#push):ビルドされたイメージをコンテナー レジストリにプッシュします。 パブリック Docker Hub と同様に、Azure Container Registry のようなプライベート レジストリがサポートされています。
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd):実行中のタスクのコンテキスト内で関数として動作できるように、コンテナーを実行します。 コンテナーの `[ENTRYPOINT]` にパラメーターを渡すことができます。また、env や detach などのプロパティや、その他の使い慣れた `docker run` パラメーターを指定できます。 `cmd` ステップの種類では、単体テストや機能テストに加え、コンテナーの同時実行が可能です。
 
 次のスニペットでは、これらのタスクのステップの種類を組み合わせる方法を示しています。 マルチ ステップ タスクは、次のような YAML ファイルを使用して、Dockerfile から 1 つのイメージを構築してレジストリにプッシュするのと同じように単純にすることができます。
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
@@ -64,8 +62,8 @@ steps:
 
 複雑なものでは、次の架空のマルチ ステップ定義のように、ビルド、テスト、helm によるパッケージ化、および helm によるデプロイを実行するためのステップを含めることができます (コンテナー レジストリと Helm リポジトリの構成は示されていません)。
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - id: build-web
     build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
@@ -151,14 +149,6 @@ Run ID: yd14 was successful after 19s
 
 Git でのコミット時または基本イメージの更新時のビルド自動化に関する詳細については、チュートリアル記事の「[イメージのビルドを自動化する](container-registry-tutorial-build-task.md)」と「[基本イメージ更新ビルド](container-registry-tutorial-base-image-update.md)」を参照してください。
 
-## <a name="preview-feedback"></a>プレビューのフィードバック
-
-ACR タスクのマルチ ステップ タスク機能はプレビュー段階ですが、フィードバックをご提供ください。 いくつかのフィードバック チャネルが用意されています。
-
-* [問題](https://aka.ms/acr/issues) - 既存のバグや問題を参照したり、新しいものを記録したりする
-* [UserVoice](https://aka.ms/acr/uservoice) - 既存の機能要求について提議したり、新しい要求を作成したりする
-* [説明](https://aka.ms/acr/feedback) - Stack Overflow コミュニティで Azure Container Registry のディスカッションに参加する
-
 ## <a name="next-steps"></a>次の手順
 
 マルチ ステップ タスクのリファレンスと例は以下に用意されています。
@@ -176,5 +166,5 @@ ACR タスクのマルチ ステップ タスク機能はプレビュー段階�
 
 <!-- LINKS - Internal -->
 [az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-run]: /cli/azure/acr/run#az-acr-run
-[az-acr-task]: /cli/azure/acr#az-acr-task
+[az-acr-run]: /cli/azure/acr#az-acr-run
+[az-acr-task]: /cli/azure/acr/task

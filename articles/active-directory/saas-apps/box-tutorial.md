@@ -4,22 +4,23 @@ description: Azure Active Directory と Box の間にシングル サインオ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 188405d110b164d2c83a2a25d0c8705cba04a9e3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21e71e38cd8e2a6d627676cddd400f625452e449
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>チュートリアル:Azure Active Directory と Box の統合
 
@@ -142,7 +143,7 @@ Box で Azure AD シングル サインオンを構成するには、次の手�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -192,7 +193,7 @@ Box で Azure AD シングル サインオンを構成するには、次の手�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

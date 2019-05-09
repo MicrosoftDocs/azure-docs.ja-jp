@@ -3,21 +3,21 @@ title: 'Python: Azure Data Lake Storage Gen1 に対するアカウント管理�
 description: Python SDK を使用して Azure Data Lake Storage Gen1 に対するアカウント管理操作を行う方法について説明します。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 75f6de6f-6fd8-48f4-8707-cb27d22d27a6
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 0cc5b101e1afb6ea648963188887cf43b65a5afa
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: b6ef5a5c12bb766fb7106d5c7a8189c4b92980d2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124951"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58880204"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -35,15 +35,15 @@ Azure Data Lake Storage Gen1 用 Python SDK を使用して、Data Lake Storage 
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **Azure リソース グループ**。 手順については、[Azure リソース グループの作成](../azure-resource-manager/resource-group-portal.md)に関するページを参照してください。
+* **Azure リソース グループ**。 手順については、[Azure リソース グループの作成](../azure-resource-manager/manage-resource-groups-portal.md)に関するページを参照してください。
 
 ## <a name="install-the-modules"></a>モジュールをインストールする
 
 Python を使用して Data Lake Storage Gen1 を操作するには、3 つのモジュールをインストールする必要があります。
 
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールなどが含まれています。
-* `azure-mgmt-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)に関するページをご覧ください。
-* `azure-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 ファイルシステム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](http://azure-datalake-store.readthedocs.io/en/latest/)に関するページをご覧ください。
+* `azure-mgmt-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)をご覧ください。
+* `azure-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 ファイルシステム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://azure-datalake-store.readthedocs.io/en/latest/)に関するページをご覧ください。
 
 モジュールをインストールするには、次のコマンドを使用します。
 
@@ -135,5 +135,5 @@ pip install azure-datalake-store
 
 ## <a name="see-also"></a>関連項目
 
-* [azure-datalake-store Python (ファイルシステム) リファレンス](http://azure-datalake-store.readthedocs.io/en/latest)
+* [azure-datalake-store Python (ファイルシステム) リファレンス](https://azure-datalake-store.readthedocs.io/en/latest)
 * [Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)

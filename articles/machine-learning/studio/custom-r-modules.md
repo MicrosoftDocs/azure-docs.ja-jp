@@ -1,26 +1,21 @@
 ---
-title: カスタム R モジュールを定義する - Azure Machine Learning Studio | Microsoft Docs
-description: このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。
+title: カスタム R モジュールを定義する
+titleSuffix: Azure Machine Learning Studio
+description: このトピックでは、Azure Machine Learning Studio でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 2bdc8b7b28bee37ae88e466874d2b3d22dcd7556
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277932"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120382"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用にカスタム R モジュールを定義する
 
@@ -29,9 +24,9 @@ ms.locfileid: "53277932"
 
 
 ## <a name="what-is-a-custom-r-module"></a>カスタム R モジュールとは
-**カスタム モジュール** とは、ユーザーのワークスペースにアップロードし、Azure Machine Learning の実験の一部として実行できるユーザー定義モジュールです。 **カスタム R モジュール** とは、ユーザー定義の R 関数を実行するカスタム モジュールです。 **R** とは、アルゴリズムを実装するために統計学者やデータ科学者によって広く使用されている統計コンピューティングおよびグラフィックス用のプログラミング言語です。 現在、カスタム モジュールでサポートされている言語は R だけですが、今後のリリースで他の言語のサポートが追加される予定です。
+**カスタム モジュール**とは、ユーザーのワークスペースにアップロードして Azure Machine Learning Studio の実験の一部として実行できるユーザー定義モジュールです。 **カスタム R モジュール** とは、ユーザー定義の R 関数を実行するカスタム モジュールです。 **R** とは、アルゴリズムを実装するために統計学者やデータ科学者によって広く使用されている統計コンピューティングおよびグラフィックス用のプログラミング言語です。 現在、カスタム モジュールでサポートされている言語は R だけですが、今後のリリースで他の言語のサポートが追加される予定です。
 
-カスタム モジュールには、他のモジュールと同様に使用できるという意味で、Azure Machine Learning の **ファースト クラス ステータス** があります。 これは、公開された実験や視覚化に含まれる他のモジュールとともに実行できます。 制御できるのは、モジュールによって実装されたアルゴリズム、使用される入出力ポート、モデリング パラメーターなど、さまざまな実行時の動作です。 また、カスタム モジュールが含まれる実験を Azure AI Gallery に公開して簡単に共有することもできます。
+カスタム モジュールには、他のモジュールと同様に使用できるという意味で、Azure Machine Learning Studio では**ファースト クラスのステータス**になります。 これは、公開された実験や視覚化に含まれる他のモジュールとともに実行できます。 制御できるのは、モジュールによって実装されたアルゴリズム、使用される入出力ポート、モデリング パラメーターなど、さまざまな実行時の動作です。 また、カスタム モジュールが含まれる実験を Azure AI Gallery に公開して簡単に共有することもできます。
 
 ## <a name="files-in-a-custom-r-module"></a>カスタム R モジュールのファイル
 カスタム R モジュールは、少なくとも以下の 2 つのファイルが含まれる .zip ファイルによって定義されます。
@@ -60,7 +55,7 @@ ms.locfileid: "53277932"
     } 
 
 ### <a name="the-xml-definition-file"></a>XML 定義ファイル
-この `CustomAddRows` 関数を Azure Machine Learning モジュールとして公開するには、XML 定義ファイルを作成して **Custom Add Rows** モジュールの表示と動作を指定する必要があります。 
+この `CustomAddRows` 関数を Azure Machine Learning Studio モジュールとして公開するには、XML 定義ファイルを作成して **Custom Add Rows** モジュールの表示と動作を指定する必要があります。 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -110,7 +105,7 @@ XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値
 
 ## <a name="elements-in-the-xml-definition-file"></a>引数
 ### <a name="module-elements"></a>Module 要素
-**Module** 要素は、XML ファイルでカスタム モジュールを定義する際に使用します。 1 つの XML ファイルで複数の **Module** 要素を使用することで、複数のモジュールを定義できます。 ワークスペース内の各モジュールには、一意の名前が必要です。 既存のカスタム モジュールと同じ名前でカスタム モジュールを登録すると、既存のモジュールが新しいモジュールに置き換えられます。 ただし、既存の Azure Machine Learning モジュールと同じ名前でカスタム モジュールを登録できます。 この場合、カスタム モジュールはモジュール パレットの **[カスタム]** カテゴリに表示されます。
+**Module** 要素は、XML ファイルでカスタム モジュールを定義する際に使用します。 1 つの XML ファイルで複数の **Module** 要素を使用することで、複数のモジュールを定義できます。 ワークスペース内の各モジュールには、一意の名前が必要です。 既存のカスタム モジュールと同じ名前でカスタム モジュールを登録すると、既存のモジュールが新しいモジュールに置き換えられます。 ただし、既存の Azure Machine Learning Studio モジュールと同じ名前でカスタム モジュールを登録できます。 この場合、カスタム モジュールはモジュール パレットの **[カスタム]** カテゴリに表示されます。
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
@@ -293,7 +288,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * Categorical
     * String
     * Label
-    * Feature
+    * 機能
     * Score
     * All
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 
@@ -318,7 +313,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * AllLabel
     * AllFeature
     * AllScore
-    * All
+    * すべて
 
 **DropDown**: ユーザーが指定した列挙型 (ドロップダウン) リスト。 ドロップダウン項目は、**Properties** 要素内で **Item** 要素を使用して指定します。 各 **Item** の **id** は、一意で有効な R 変数である必要があります。 **Item** の **name** は、表示されるテキストであり、R 関数に渡される値でもあります。
 
@@ -335,7 +330,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
   * **default** - 既定のプロパティの値は、**Item** 要素のいずれかの id 値と一致する必要があります。
 
 ### <a name="auxiliary-files"></a>補助ファイル
-カスタム モジュールの ZIP ファイル内に配置されたファイルはすべて、実行時に使用できるようなります。 ディレクトリ構造がある場合は保持されます。 つまり、ファイル ソーシングはローカルでの実行と Azure Machine Learning での実行で同じように機能します。 
+カスタム モジュールの ZIP ファイル内に配置されたファイルはすべて、実行時に使用できるようなります。 ディレクトリ構造がある場合は保持されます。 つまり、ファイル ソーシングはローカルでの実行と Azure Machine Learning Studio での実行で同じように機能します。 
 
 > [!NOTE]
 > すべてのファイルが "src" ディレクトリに展開されることに注意してください。これにより、すべてのパスに "src/" プレフィックスが含まれます。

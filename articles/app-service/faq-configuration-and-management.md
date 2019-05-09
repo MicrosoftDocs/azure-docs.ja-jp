@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 266c9df095e9153533dbd89b4cd557d12ddcdc66
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408886"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118447"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -39,7 +39,7 @@ Azure web アプリでのカスタム ドメイン名の使用に関するよく
 
 ## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Web アプリの新しいカスタム ドメインはどのように購入しますか?
 
-App Service Web アプリのカスタム ドメインを購入して設定する方法については、「[Buy and configure a custom domain name in App Service](custom-dns-web-site-buydomains-web-app.md)」(App Service でカスタム ドメイン名を購入して構成する) を参照してください。
+App Service Web アプリのカスタム ドメインを購入して設定する方法については、「[Buy and configure a custom domain name in App Service](manage-custom-dns-buy-domain.md)」(App Service でカスタム ドメイン名を購入して構成する) を参照してください。
 
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Web アプリに既存の SSL 証明書をアップロードして構成するにはどうすればよいですか?
@@ -72,9 +72,11 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
     * Value = *目的のタイム ゾーン*
 3. **[保存]** を選択します。
 
+指定可能な値については、[既定のタイム ゾーン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。
+
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 
-既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 Basic プランおよび Standard プランでは、**[常時接続]** 設定をオンにして、常に Web アプリをロードしておくことができます。 アプリで継続的な Web ジョブを実行する場合は、**[常時接続]** をオンにする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。 詳細については、「[Create a continuously running WebJob](web-sites-create-web-jobs.md#CreateContinuous)」(継続的に実行する Web ジョブの作成) を参照してください。
+既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 Basic プランおよび Standard プランでは、**[常時接続]** 設定をオンにして、常に Web アプリをロードしておくことができます。 アプリで継続的な Web ジョブを実行する場合は、**[常時接続]** をオンにする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。 詳細については、「[Create a continuously running WebJob](webjobs-create.md#CreateContinuous)」(継続的に実行する Web ジョブの作成) を参照してください。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Web アプリの送信 IP アドレスはどのように取得しますか?
 
@@ -124,7 +126,7 @@ PCI DSS バージョン 3.1 の証明書は、トランスポート層セキュ�
 
 Standard および Premium App Service プランでは、Web アプリを App Service にデプロイする際、既定の運用スロットではなく、個別のデプロイ スロットにデプロイすることができます。 デプロイ スロットは、独自のホスト名を持つライブ Web アプリです。 Web アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。
 
-デプロイ スロットの使用の詳細については、「[Set up a staging environment in App Service](web-sites-staged-publishing.md)」(App Service でのステージング環境のセットアップ) を参照してください。
+デプロイ スロットの使用の詳細については、「[Set up a staging environment in App Service](deploy-staging-slots.md)」(App Service でのステージング環境のセットアップ) を参照してください。
 
 ## <a name="how-do-i-access-and-review-webjob-logs"></a>Web ジョブのログにアクセスして確認するにはどうすればよいですか?
 
@@ -186,7 +188,7 @@ F12 トレースをキャプチャする方法は 2 つあります。
 3. **[ネットワーク]** タブが選択されていることを確認し、緑色の **[再生]** ボタンをクリックします。
 4. 問題を再現する手順を実行します。
 5. 赤の **[停止]** ボタンをクリックします。
-6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Edge)。*または* HAR ファイルを右クリックし、**[HAR 形式ですべて保存]** を選択します (Chrome)。
+6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Microsoft Edge)。"*または*"、HAR ファイルを右クリックし、**[HAR 形式ですべて保存]** を選択します (Chrome)。
 
 ### <a name="f12-console-output"></a>F12 コンソール出力
 
@@ -242,13 +244,13 @@ Cron 式を使用して Web ジョブのスケジュールを作成できます�
 
 1. settings.job ファイルを作成します。
 2. Cron 式を使用して、この JSON ファイルにスケジュールのプロパティを含めます。 
-    ```
+    ```json
     { "schedule": "{second}
     {minute} {hour} {day}
     {month} {day of the week}" }
     ```
 
-Web ジョブのスケジュールの詳細については、「[Create a scheduled WebJob by using a Cron expression](web-sites-create-web-jobs.md#CreateScheduledCRON)」(Cron 式を使用して、Web ジョブのスケジュールを作成する) を参照してください。
+Web ジョブのスケジュールの詳細については、「[Create a scheduled WebJob by using a Cron expression](webjobs-create.md#CreateScheduledCRON)」(Cron 式を使用して、Web ジョブのスケジュールを作成する) を参照してください。
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>App Service アプリの侵入テストを実行する方法は?
 
@@ -260,6 +262,8 @@ Web ジョブのスケジュールの詳細については、「[Create a schedu
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>App Service 証明書に詐欺のフラグが付いています。 解決するにはどうすればよいですか?
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 App Service 証明書購入のドメインの確認中に、次のメッセージが表示されることがあります。
 
 “Your certificate has been flagged for possible fraud. The request is currently under review. If the certificate does not become usable within 24 hours, please contact Azure Support.”(証明書に詐欺の可能性のフラグが付けられました。要求を確認中です。24 時間以内に証明書が使用可能にならない場合、Azure サポートに問い合わせてください)。
@@ -268,13 +272,13 @@ App Service 証明書購入のドメインの確認中に、次のメッセー�
 
 24 時間を過ぎてもこのメッセージを表示されたままの場合、次の PowerShell スクリプトを実行してください。 このスクリプトは[証明書プロバイダー](https://www.godaddy.com/)に直接送信され、問題を解決します。
 
-```
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId <subId>
+```powershell
+Connect-AzAccount
+Set-AzContext -SubscriptionId <subId>
 $actionProperties = @{
     "Name"= "<Customer Email Address>"
     };
-Invoke-AzureRmResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
+Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
 ```
 
 ## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>App Service では認証および承認はどのように動作しますか?
@@ -310,10 +314,10 @@ Azure の自動スケールが期待どおりに Web アプリのインスタン
 
 静的コンテンツ タイプと動的コンテンツ タイプの両方に対する圧縮を有効にするには、アプリケーション レベルの web.config ファイルに次のコードを追加します。
 
-```
+```xml
 <system.webServer>
-<urlCompression doStaticCompression="true" doDynamicCompression="true" />
-< /system.webServer>
+    <urlCompression doStaticCompression="true" doDynamicCompression="true" />
+</system.webServer>
 ```
 
 圧縮する特定の動的および静的 MIME の種類を指定することもできます。 詳細については、「[httpCompression settings on a simple Azure website](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview)」(単純な Azure Web サイトでの httpCompression 設定) のフォーラムで質問への回答を参照してください。

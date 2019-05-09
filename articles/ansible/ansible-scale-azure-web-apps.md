@@ -1,19 +1,19 @@
 ---
 title: Ansible を使用して Azure App Service Web アプリをスケーリングする
 description: Linux 上の App Service で、Ansible を使用して、Java 8 と Tomcat コンテナー ランタイムを使った Web アプリを作成する方法について学習します。
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, プレイブック, Azure App Service, Web アプリ, スケール, Java
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
-ms.author: kyliel
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 740ff6d6a636377f9d58a5231692c87f935ae6d2
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601867"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792278"
 ---
 # <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Ansible を使用して Azure App Service Web アプリをスケーリングする
 [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (または単に Web Apps) は、Web アプリケーション、REST API、モバイル バックエンドをホストします。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。
@@ -39,7 +39,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
     location: eastus
 
   tasks:
-  - name: Get facts of existing App serivce plan
+  - name: Get facts of existing App service plan
     azure_rm_appserviceplan_facts:
       resource_group: "{{ resource_group }}"
       name: "{{ plan_name }}"
@@ -80,7 +80,7 @@ PLAY [localhost] **************************************************************
 TASK [Gathering Facts] ********************************************************
 ok: [localhost]
 
-TASK [Get facts of existing App serivce plan] **********************************************************
+TASK [Get facts of existing App service plan] **********************************************************
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 ok: [localhost]

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: c5b70d40ed43cfc5d1c7a826c639d00d394733fb
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 43ccc8e53c30219630ad10ee66a4db38656818e6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038445"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651007"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -33,12 +33,11 @@ ms.locfileid: "40038445"
 この記事では、PowerShell を使用して、クラウド サービスのロールでリモート デスクトップを有効にする方法について説明します。 この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) に関するページを参照してください。 PowerShell では、リモート デスクトップ拡張機能を使用するため、アプリケーションのデプロイ後にリモート デスクトップを有効化できます。
 
 ## <a name="configure-remote-desktop-from-powershell"></a>PowerShell からリモート デスクトップを構成する
-
 [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) コマンドレットを使用すると、クラウド サービス デプロイの指定したロールまたはすべてのロールでリモート デスクトップを有効にすることができます。 このコマンドレットでは、PSCredential オブジェクトを受け入れる *Credential* パラメーターを使用してリモート デスクトップ ユーザーのユーザー名とパスワードを指定できます。
 
 PowerShell を対話形式で使用している場合は、 [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを呼び出すことで、PSCredential オブジェクトを簡単に設定できます。
 
-```
+```powershell
 $remoteusercredentials = Get-Credential
 ```
 
@@ -48,7 +47,7 @@ PowerShell は自動化のシナリオで役立つため、ユーザー操作を
 
 パスワードを毎回手動で入力しなくても済むように、セキュリティで保護されたパスワード ファイルを作成することもできます。 また、セキュリティで保護されたパスワード ファイルはプレーン テキスト ファイルよりも適切です。 セキュリティで保護されたパスワード ファイルを作成するには、次の PowerShell を使用します。
 
-```
+```powershell
 ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
 ```
 
@@ -61,7 +60,7 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 
 次の PowerShell の例では、クラウド サービスでリモート デスクトップ拡張機能を設定する方法を示しています。
 
-```
+```powershell
 $servicename = "cloudservice"
 $username = "RemoteDesktopUser"
 $securepassword = Get-Content -Path "password.txt" | ConvertTo-SecureString
@@ -77,7 +76,7 @@ Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $cr
 
 クラウド サービスの特定のロール インスタンスにリモート デスクトップ接続するには、 [Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) コマンドレットを使用します。 *LocalPath* パラメーターを使用すると、RDP ファイルをローカルにダウンロードできます。 *Launch* パラメーターを使用して、クラウド サービスのロール インスタンスにアクセスするための [リモート デスクトップ接続] ダイアログを直接起動することもできます。
 
-```
+```powershell
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
 ```
 
@@ -85,7 +84,7 @@ Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -L
 
 [Get-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) コマンドレットを使用すると、サービスのデプロイでリモート デスクトップが有効になっているか、無効になっているかが表示されます。 このコマンドレットによって、リモート デスクトップ ユーザーのユーザー名と、リモート デスクトップ拡張機能が有効になっているロールが返されます。 既定では、これはデプロイ スロットで行われるため、代わりにステージング スロットを使用することもできます。
 
-```
+```powershell
 Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ```
 
@@ -95,7 +94,7 @@ Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 
 リモート デスクトップ拡張機能をデプロイから削除するには、 [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) コマンドレットを使用します。 また、必要に応じて、リモート デスクトップ拡張機能を削除するデプロイ スロットおよびロールを指定することもできます。
 
-```
+```powershell
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration
 ```
 

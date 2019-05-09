@@ -3,18 +3,18 @@ title: Language Understanding (LUIS) とは - Azure Cognitive Services | Microso
 description: Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 12/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ca92a6a2eb92e3b7fed9452d135c0a6bce55a57c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c26f3d6c3b34ed90a5455bb94ea71d7556b47751
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273240"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441969"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -33,7 +33,7 @@ LUIS アプリの発行後、クライアント アプリケーションは、LU
 
 ![チャット ボットと連携し、Natural Language Understanding (NLP) でユーザー テキストを予測する LUIS の概念図](./media/luis-overview/luis-overview-process-2.png "チャット ボットと連携し、Natural Language Understanding (NLP) でユーザー テキストを予測する LUIS の概念図")
 
-|手順|Action|
+|手順|アクション|
 |:--|:--|
 |1|クライアント アプリケーションがユーザーの "_発話_" (自分の言葉で表現されたテキスト) を送信します。ここでは、"I want to call my HR rep." を LUIS エンドポイントに HTTP 要求として送信します。|
 |2|LUIS は、自然言語テキストに対して学習済みのモデルを適用し、ユーザー入力についてのインテリジェントな解釈を提供します。 LUIS は、"HRContact" を最上位の意図とする JSON 形式の応答を返します。 エンドポイントからの JSON 形式の応答には、少なくとも、クエリの発話と上位スコアの意図が含まれます。 Contact Type エンティティなどのデータを抽出することもできます。|
@@ -55,7 +55,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 ## <a name="build-the-luis-model"></a>LUIS モデルの構築
 モデルの構築には、[オーサリング](https://aka.ms/luis-authoring-apis) API または LUIS ポータルを使用します。
 
-LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを "**[意図](luis-concept-intent.md)**" といいます。 意図にはそれぞれ、ユーザー**[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からさまざまなデータが得られますが、それらのデータは、**[エンティティ](luis-concept-entity-types.md)** を使って抽出する必要があります。 
+LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを "**[意図](luis-concept-intent.md)**" といいます。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からさまざまなデータが得られますが、それらのデータは、**[エンティティ](luis-concept-entity-types.md)** を使って抽出する必要があります。 
 
 |ユーザーの発話例|意図|エンティティ|
 |-----------|-----------|-----------|
@@ -115,6 +115,10 @@ LUIS で使用されるその他の Cognitive Services:
 * [Speech サービス](../Speech-Service/overview.md)は、話し言葉による要求をテキストに変換します。 
 * [Conversation Learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview): LUIS を使ったボットの会話を短時間で構築できます。
 * [Project Personality Chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview): ボットの短い会話を扱います。
+
+LUIS を使用したサンプル:
+* [会話型 AI](https://github.com/Microsoft/AI) GitHub リポジトリ。
+* [Language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding) Azure サンプル
 
 ## <a name="next-steps"></a>次の手順
 

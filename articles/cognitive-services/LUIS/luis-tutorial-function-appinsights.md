@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Node.js を使用して LUIS アプリケーションおよび Application Insights と統合されるボットを構築する
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255603"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098774"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>LUIS の結果を Application Insights と Azure Functions に追加する
 このチュートリアルでは、LUIS 要求と応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBi を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
@@ -26,9 +26,9 @@ ms.locfileid: "53255603"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-* Application Insights ライブラリを Web アプリ ボットに追加する
-* LUIS クエリの結果をキャプチャし、Application Insights に送信する
-* Application Insights で最上位の意図、スコア、および発話のクエリを実行する
+> * Application Insights ライブラリを Web アプリ ボットに追加する
+> * LUIS クエリの結果をキャプチャし、Application Insights に送信する
+> * Application Insights で最上位の意図、スコア、および発話のクエリを実行する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "53255603"
 > [!Tip]
 > サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
 
-このチュートリアルのコードはすべて、[LUIS-Samples GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)から入手できます。このチュートリアルに関連付けられている各行に、`//APPINSIGHT:` というコメントが付いています。 
+このチュートリアルのコードはすべて、[Azure-Samples GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)から入手できます。このチュートリアルに関連付けられている各行に、`//APPINSIGHT:` というコメントが付いています。 
 
 ## <a name="web-app-bot-with-luis"></a>LUIS を使用する Web アプリ ボット
 このチュートリアルでは、次のようなコードがあるか、[他のチュートリアル](luis-nodejs-tutorial-build-bot-framework-sample.md)を完了していることを前提としています。 
@@ -51,11 +51,11 @@ LUIS 要求と応答をキャプチャするために、Web アプリ ボット�
 
 1. Azure ポータルの Web アプリ ボット サービスで、**[Bot Management]\(ボットの管理\)** セクションの **[ビルド]** を選択します。 
 
-    ![App Insights を検索する](./media/luis-tutorial-appinsights/build.png)
+    ![Azure portal の Web アプリ ボット サービスで、[Bot Management]\(ボットの管理\) セクションの [ビルド] を選択します。](./media/luis-tutorial-appinsights/build.png)
 
 2. App Service エディターで新しいブラウザー タブを開きます。 上部のバーでアプリの名前を選択し、**[Open Kudu Console]\(Kudu コンソールを開く\)** を選択します。 
 
-    ![App Insights を検索する](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![上部のバーでアプリの名前を選択し、[Open Kudu Console]\(Kudu コンソールを開く\) を選択します。](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. コンソールで、次のコマンドを入力して、Application Insights と Underscore パッケージをインストールします。
 
@@ -63,7 +63,7 @@ LUIS 要求と応答をキャプチャするために、Web アプリ ボット�
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![App Insights を検索する](./media/luis-tutorial-appinsights/npm-install.png)
+    ![npm コマンドを使用して Application Insights と Underscore パッケージをインストールする](./media/luis-tutorial-appinsights/npm-install.png)
 
     パッケージがインストールされるまで待機します。
 
@@ -112,9 +112,7 @@ Application Insights を開いて、LUIS エントリを表示します。
 
 1. ポータルで、**[すべてのリソース]** を選択し、Web アプリ ボット名でフィルター処理します。 **Application Insights** 型のリソースをクリックします。 Application Insights のアイコンは電球です。 
 
-    ![App Insights の検索](./media/luis-tutorial-appinsights/search-for-app-insights.png)
-
-
+    ![[Azure Portal で Application Insights を探す](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 2. リソースが開いたら、一番右のパネルにある虫眼鏡の**検索**アイコンをクリックします。 右側に新しいパネルが表示されます。 見つかったテレメトリ データの量に応じて、パネルの表示に 1 秒かかる場合があります。 `LUIS-results` を検索し、キーボードで Enter キーを押します。 リストが、このチュートリアルを使用して追加された LUIS クエリ結果だけに絞り込まれます。
 

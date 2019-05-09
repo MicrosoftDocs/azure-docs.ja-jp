@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5e2b31671a8f08bae1cba66e05d6ae72f960cf9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ca77662e7756d74f8f939e78af626b7f2da2a3c4
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050933"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792720"
 documentType: LandingData
 title: Azure 上の Ansible のドキュメント
 metadata:
   title: Azure 上の Ansible のドキュメント - チュートリアル、サンプル、リファレンス、リソース
   description: Ansible を使用してクラウド プロビジョニング、構成管理、アプリケーションのデプロイを自動化する方法について説明します。
-  ms.service: ansible
+  ms.service: azure
   keywords: Ansible, Azure, DevOps, チュートリアル, サンプル, リファレンス
   author: tomarchermsft
   manager: jeconnoc
@@ -53,6 +53,9 @@ sections:
     - html: <a href="./ansible-deploy-app-vmss">Azure で仮想マシン スケール セットにアプリケーションをデプロイします。</a>
     - html: <a href="./ansible-create-configure-aks">Azure Kubernetes Service クラスターを作成して管理します。</a>
     - html: <a href="./ansible-create-configure-application-gateway">Azure Application Gateway で Web トラフィックを管理します。</a>
+    - html: <a href="./ansible-auto-scale-vmss">Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングします。</a>
+    - html: <a href="./ansible-scale-azure-web-apps">Ansible を使用して Azure App Service Web アプリをスケーリングします。</a>
+    - html: <a href="./ansible-create-configure-route-table">Ansible を使用して Azure ルート テーブルを作成、変更、または削除します。</a>
 - title: リファレンス
   items:
   - type: list

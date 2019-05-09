@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091348"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002699"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -102,12 +102,12 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 
 4. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。
 
-## <a name="availability-zones-preview"></a>Availability Zones (プレビュー)
+## <a name="availability-zones"></a>可用性ゾーン 
 
-Event Hubs Standard SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) もサポートされています。 
+Event Hubs Standard SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 
 
 > [!NOTE]
-> Availability Zones プレビューは、**米国中部**、**米国東部 2**、および**フランス中部**リージョンのみでサポートされます。
+> Azure Event Hubs Standard に対する Availability Zones のサポートは、可用性ゾーンが存在する [Azure リージョン](../availability-zones/az-overview.md#services-support-by-region)内でのみ利用できます。
 
 Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Event Hubs では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
 

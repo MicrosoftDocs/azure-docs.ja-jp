@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: f1a3b99d40435bf2b7e33f81a43372f304fbb856
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: a9fae37acd653b05502737756baf463188ef631d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861708"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 4 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 4 月に導入された新しい機能と変更点について説明します。
@@ -35,8 +35,8 @@ ALTER TABLE SourceTable
 ## <a name="improved-query-compilation-performance"></a>クエリ コンパイルのパフォーマンスの向上
 SQL Data Warehouse に、分散クエリのクエリ コンパイル手順を向上させるための一連の変更が導入されました。 これらの変更により、クエリ コンパイル時間が最大 **10 倍**向上し、クエリ実行の全体的な実行時間が短縮されます。 これらの変更は、オブジェクト (テーブル、関数、ビュー、プロシージャ) の数が多いデータ ウェアハウスで顕著です。
 
-## <a name="dbcc-commands-do-not-consume-concurrency-slots-behavior-change"></a>DBCC コマンドは同時実行スロットを消費しない (動作変更)
-SQL Data Warehouse では、[DBCC DROPCLEANBUFFERS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropcleanbuffers-transact-sql) など、T-SQL [DBCC コマンド](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql)のサブセットがサポートされます。 以前は、これらのコマンドは[同時実行スロット](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#concurrency-slots)を消費したので、実行できるユーザー負荷/クエリの数が減少しました。 `DBCC` コマンドは、リソース スロットを消費しないローカル キューで実行されるようになったため、全体的なクエリ実行パフォーマンスが向上します。
+## <a name="dbcc-commands-do-not-consume-concurrency-slots-behavior-change"></a>DBCC コマンドはコンカレンシー スロットを消費しない (動作変更)
+SQL Data Warehouse では、[DBCC DROPCLEANBUFFERS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropcleanbuffers-transact-sql) など、T-SQL [DBCC コマンド](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql)のサブセットがサポートされます。 以前は、これらのコマンドは[コンカレンシー スロット](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#concurrency-slots)を消費したので、実行できるユーザー負荷/クエリの数が減少しました。 `DBCC` コマンドは、リソース スロットを消費しないローカル キューで実行されるようになったため、全体的なクエリ実行パフォーマンスが向上します。
 
 ## <a name="updated-error-message-for-excessive-literals-behavior-change"></a>過剰なリテラルに対するエラー メッセージの更新 (動作変更)
 以前は、SQL Data Warehouse には、クエリに含まれるリテラルが多すぎる場合に "*おおよそ*" の数が含まれました。
@@ -72,7 +72,7 @@ SQL Data Warehouse の概要について学習したので、次は[SQL Data War
 [Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

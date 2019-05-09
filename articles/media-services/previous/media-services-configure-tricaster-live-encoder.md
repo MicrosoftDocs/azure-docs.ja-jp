@@ -4,7 +4,7 @@ description: このトピックでは、TriCaster ライブ エンコーダー�
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 8973181a-3059-471a-a6bb-ccda7d3ff297
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 03/14/2019
 ms.author: juliako;cenkd;anilmur
-ms.openlocfilehash: 8084f32ac8cc2184d93796468ad66fb73398e876
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: adacce5c8307f3be972920bd3aef6d8ea912eb30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991996"
 ---
-# <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>NewTek TriCaster エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
+# <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>NewTek TriCaster エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する  
 > [!div class="op_single_selector"]
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Elemental Live](media-services-configure-elemental-live-encoder.md)
@@ -40,18 +40,21 @@ ms.locfileid: "33783781"
 >
 
 ## <a name="prerequisites"></a>前提条件
+
 * [Azure Media Services アカウントを作成します](media-services-portal-create-account.md)
 * ストリーミング エンドポイントが実行されていることを確認します。 詳細については、「 [Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)
 * 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
 * ツールを起動し、AMS アカウントに接続します。
 
 ## <a name="tips"></a>ヒント
+
 * 可能な限り、有線のインターネット接続を使用します。
 * 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
+
+1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]**  を選択します。
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
@@ -75,24 +78,26 @@ ms.locfileid: "33783781"
 >
 >
 
-## <a id=configure_tricaster_rtmp></a>NewTek TriCaster エンコーダーを構成する
+## <a name="a-idconfiguretricasterrtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>NewTek TriCaster エンコーダーを構成する
+
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
 **ビデオ**:
 
-* コーデック: H.264
-* プロファイル: 高 (レベル 4.0)
-* ビットレート: 5000 kbps
-* キーフレーム: 2 秒 (60 秒)
-* フレーム レート: 30
+* コーデック:H.264
+* プロファイル:高 (レベル 4.0)
+* ビットレート:5000 kbps
+* キーフレーム:2 秒 (60 秒)
+* フレーム レート:30
 
 **オーディオ**:
 
-* コーデック: AAC (LC)
-* ビットレート: 192 kbps
-* サンプル レート: 44.1 kHz
+* コーデック:AAC (LC)
+* ビットレート:192 kbps
+* サンプル レート:44.1 kHz
 
 ### <a name="configuration-steps"></a>構成の手順
+
 1. 使用中のビデオ入力ソースに応じて、新しい **NewTek TriCaster** プロジェクトを作成します。
 2. そのプロジェクトの中で、 **[ストリーム]** ボタンを見つけて横にある歯車アイコンをクリックし、ストリーム構成メニューにアクセスします。
 
@@ -131,6 +136,7 @@ ms.locfileid: "33783781"
 >
 
 ## <a name="test-playback"></a>再生をテストする
+
 AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、**[プレビューの再生]** にマウスを合わせ、**[Azure Media Player を使用]** を選択します。  
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
@@ -140,6 +146,7 @@ AMSE ツールに移動し、テストするチャネルを右クリックしま
 エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。 ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関する記事をご覧ください。  
 
 ## <a name="create-a-program"></a>プログラムを作成する
+
 1. チャネルの再生が確認されたら、プログラムを作成します。 AMSE ツールの **[Live]** タブで、プログラム領域内を右クリックし、**[新しいプログラムの作成]** を選択します。  
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
@@ -156,12 +163,15 @@ AMSE ツールに移動し、テストするチャネルを右クリックしま
 これで、ストリームをプレーヤーに埋め込んだり、ライブ表示のために対象ユーザーに配信したりできるようになりました。  
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
 ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関する記事をご覧ください。
 
 ## <a name="next-step"></a>次のステップ
+
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

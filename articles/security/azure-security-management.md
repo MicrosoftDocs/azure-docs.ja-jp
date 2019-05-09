@@ -4,7 +4,7 @@ description: この記事では、クラウド サービスや仮想マシン、
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: c2b7935cc110b2ad05f4af2773158c2e1b658d4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2d6d1d121e41b0446e7f63b9aa530df89697ef67
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242009"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117924"
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。

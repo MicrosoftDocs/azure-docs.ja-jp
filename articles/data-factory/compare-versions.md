@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638244"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432704"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
 この記事では、Data Factory と Azure Data Factory バージョン 1 を比較します。 Data Factory の概要については、[Data Factory の概要](introduction.md)に関するページを参照してください。Data Factory バージョン 1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 
@@ -30,13 +29,13 @@ ms.locfileid: "49638244"
 | データセット | アクティビティで入力および出力として使用するデータを参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Azure Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。<br/><br/>**可用性**で、データセットの処理時間枠スライス モデル (時間単位、日単位など) を定義します。 | データセットは、現在のバージョンと同じです。 ただし、データセットの**可用性**スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 詳細については、「[トリガー](concepts-pipeline-execution-triggers.md#triggers)」と[データセット](concepts-datasets-linked-services.md)に関するページを参照してください。 | 
 | リンクされたサービス | リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 | リンクされたサービスは Data Factory V1 と同じですが、現在のバージョン の Data Factory の Integration Runtime コンピューティング環境を利用するための新しい **connectVia** プロパティがあります。 詳細については、[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)に関するページと、[Azure Blob Storage のリンクされたサービスのプロパティ](connector-azure-blob-storage.md#linked-service-properties)に関するページを参照してください。 |
 | パイプライン | データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプラインをスケジュールして実行するには、startTime、endTime、isPaused を使用します。 | パイプラインは、データに対して実行されるアクティビティのグループです。 ただし、パイプライン内のアクティビティのスケジュールは、新しいトリガー リソースに分割されています。 現在のバージョンの Data Factory のパイプラインは、むしろ、トリガーを介して個別にスケジュールされる "ワークフロー単位" として考えることができます。 <br/><br/>現在のバージョンの Data Factory では、パイプラインに実行時間の "枠" がありません。 Data Factory V1 の概念である startTime、endTime、isPaused は、現在のバージョンの Data Factory にはなくなりました。 詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページと、[パイプラインとアクティビティ](concepts-pipelines-activities.md)に関するページを参照してください。 |
-| アクティビティ | アクティビティは、パイプライン内のデータに対して実行するアクションを定義します。 データ移動 (コピー アクティビティ) およびデータ変換アクティビティ (Hive、Pig、MapReduce など) がサポートされています。 | 現在のバージョンの Data Factory では、アクティビティは引き続き、パイプライン内に定義されたアクションです。現在のバージョンの Data Factory では、[制御フロー アクティビティ](concepts-pipelines-activities.md#control-activities)が新たに導入されています。 これらのアクティビティは、制御フロー (ループおよび分岐) で使用します。 V1 でサポートされていたデータ移動およびデータ変換アクティビティは、現在のバージョンでもサポートされています。 現在のバージョンでは、データセットを使用せずに変換アクティビティを定義できます。 |
+| Activities | アクティビティは、パイプライン内のデータに対して実行するアクションを定義します。 データ移動 (コピー アクティビティ) およびデータ変換アクティビティ (Hive、Pig、MapReduce など) がサポートされています。 | 現在のバージョンの Data Factory では、アクティビティは引き続き、パイプライン内に定義されたアクションです。現在のバージョンの Data Factory では、[制御フロー アクティビティ](concepts-pipelines-activities.md#control-activities)が新たに導入されています。 これらのアクティビティは、制御フロー (ループおよび分岐) で使用します。 V1 でサポートされていたデータ移動およびデータ変換アクティビティは、現在のバージョンでもサポートされています。 現在のバージョンでは、データセットを使用せずに変換アクティビティを定義できます。 |
 | ハイブリッド データ移動とアクティビティのディスパッチ | [Data Management Gateway](v1/data-factory-data-management-gateway.md) (現在は Integration Runtime と呼ばれます) は、オンプレミスとクラウドの間のデータ移動をサポートしていました。| Data Management Gateway は、セルフホステッド Integration Runtime と呼ばれるようになりました。 機能は V1 と同じです。 <br/><br/> 現在のバージョンの Data Factory の Azure-SSIS Integration Runtime では、クラウドでの SQL Server Integration Services (SSIS) パッケージのデプロイと実行もサポートされています。 詳細については、「[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)」を参照してください。|
-| parameters | 該当なし | パラメーターは、パイプラインで定義されている、読み取り専用構成設定のキーと値のペアです。 パイプラインを手動で実行するときは、パラメーターの引数を渡すことができます。 スケジューラ トリガーを使用している場合は、トリガーでパラメーターの値を渡すこともできます。 パイプライン内のアクティビティは、パラメーターの値を使用します。  |
+| parameters | NA | パラメーターは、パイプラインで定義されている、読み取り専用構成設定のキーと値のペアです。 パイプラインを手動で実行するときは、パラメーターの引数を渡すことができます。 スケジューラ トリガーを使用している場合は、トリガーでパラメーターの値を渡すこともできます。 パイプライン内のアクティビティは、パラメーターの値を使用します。  |
 | 式 | Data Factory V1 では、データ選択クエリやアクティビティ/データセットのプロパティに関数やシステム変数を使用できます。 | 現在のバージョンの Data Factory では、JSON 文字列値の任意の場所で式を使用できます。 詳細については、[現在のバージョンの Data Factory の式と関数](control-flow-expression-language-functions.md)に関するページを参照してください。|
-| パイプライン実行 | 該当なし | パイプライン実行の単一のインスタンスです。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 ここでは、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 それぞれが特定のパイプライン実行を一意に定義する GUID です。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 |
-| アクティビティの実行 | 該当なし | パイプライン内のアクティビティ実行のインスタンス。 | 
-| トリガーの実行 | 該当なし | トリガー実行のインスタンス。 詳細については、[トリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。 |
+| パイプライン実行 | NA | パイプライン実行の単一のインスタンスです。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 ここでは、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 それぞれが特定のパイプライン実行を一意に定義する GUID です。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 |
+| アクティビティの実行 | NA | パイプライン内のアクティビティ実行のインスタンス。 | 
+| トリガーの実行 | NA | トリガー実行のインスタンス。 詳細については、[トリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。 |
 | スケジュール設定 | スケジュール設定は、パイプラインの開始/終了時間、およびデータセットの可用性に基づきます。 | 外部スケジューラを介したスケジューラ トリガーまたは実行。 詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。 |
 
 以降のセクションでは、現在のバージョンの機能の詳細について説明します。 
@@ -68,7 +67,7 @@ V1 では、アクティビティの出力を別のアクティビティの入�
 [パイプラインの実行アクティビティ](control-flow-execute-pipeline-activity.md)を使用すると、Data Factory のパイプラインが別のパイプラインを呼び出すことができます。
 
 ### <a name="delta-flows"></a>差分フロー
-ETL パターンの主要な使用例は、"差分読み込み" です。つまり、パイプラインの最後の反復以降に変更されたデータのみを読み込みます。 現在のバージョンの新機能 ([ルックアップ アクティビティ](control-flow-lookup-activity.md)、柔軟なスケジュール設定、制御フローなど) により、この使用例を自然な方法で実現できます。 詳細な手順については、[増分コピーのチュートリアル](tutorial-incremental-copy-powershell.md)のページを参照してください。
+ETL パターンの主要な使用例は、"差分読み込み" です。つまり、パイプラインの最後の反復以降に変更されたデータのみを読み込みます。 現在のバージョンの新機能 ([ルックアップ アクティビティ](control-flow-lookup-activity.md)、柔軟なスケジュール設定、制御フローなど) により、この使用例を自然な方法で実現できます。 詳細な手順については、[増分コピーのチュートリアル](tutorial-incremental-copy-powershell.md)を参照してください。
 
 ### <a name="other-control-flow-activities"></a>その他の制御フロー アクティビティ
 現在のバージョンの Data Factory でサポートされているその他の制御フロー アクティビティをいくつか次に示します。 
@@ -117,13 +116,13 @@ V1 では、IDotNetActivity インターフェイスの Execute メソッドを�
 ## <a name="sdks"></a>SDK
  現在のバージョンの Data Factory では、パイプラインの作成、管理、および監視に使用できる、より豊富な SDK セットが用意されています。
 
-- **.NET SDK**: .NET SDK は現在のバージョンで更新されています。
+- **.NET SDK**:.NET SDK は現在のバージョンで更新されています。
 
-- **PowerShell**: PowerShell コマンドレットは現在のバージョンで更新されています。 現在のバージョンのコマンドレットには、名前に **DataFactoryV2** が付いています (たとえば、Get-AzureRmDataFactoryV2)。 
+- **PowerShell**:PowerShell コマンドレットは現在のバージョンで更新されています。 現在のバージョンのコマンドレットには、名前に **DataFactoryV2** が付いています (たとえば、Get-AzDataFactoryV2)。 
 
-- **Python SDK**: この SDK は、現在のバージョンで新しく導入されました。
+- **Python SDK**:この SDK は、現在のバージョンで新しく導入されました。
 
-- **REST API**: REST API は現在のバージョンで更新されています。 
+- **REST API**:REST API は現在のバージョンで更新されています。 
 
 現在のバージョンで更新された SDK は、V1 クライアントと下位互換性がありません。 
 

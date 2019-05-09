@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Custom Decision Service の完全な API ガイド。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: 3d9b87241946a04ae71fabde9958b24ad626c0db
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: be9966f5d8e8d94aa3f49aac91b35b105195b108
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364026"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552063"
 ---
 # <a name="api"></a>API
 
@@ -44,7 +44,7 @@ Ranking API は、標準の [JSONP](https://en.wikipedia.org/wiki/JSONP) スタ�
 > Ranking API を呼び出す前に、コールバック関数を定義する必要があります。
 
 > [!TIP]
-> 待ち時間を短縮するため、Ranking API は、`http://ds.microsoft.com/api/v2/<appId>/rank/*` のように、HTTPS ではなく HTTP を使用して公開されます。
+> 待ち時間を短縮するため、Ranking API は、`https://ds.microsoft.com/api/v2/<appId>/rank/*` のように、HTTPS ではなく HTTP を使用して公開されます。
 > ただし、フロント ページが HTTPS で提供される場合は、HTTPS エンドポイントを使用する必要があります。
 
 パラメーターが使用されない場合、Ranking API からの HTTP 応答は JSONP 形式の文字列です。
@@ -144,7 +144,7 @@ $.ajax({
 テストだけの場合は、[cURL](https://en.wikipedia.org/wiki/CURL) を使用して Reward API を呼び出すことができます。
 
 ```sh
-curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST -d 1 -H "Content-Type: application/json"
+curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST -d 1 -H "Content-Type: application/json"
 ```
 
 結果としては、200 (OK) の HTTP 応答が予想されます。 このイベントに対する報酬 1 をログで確認できます (Azure ストレージ アカウント キーがポータルで提供されている場合)。

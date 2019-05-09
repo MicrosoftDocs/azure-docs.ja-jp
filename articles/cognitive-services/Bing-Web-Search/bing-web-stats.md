@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Bing Statistics は、Bing Image Search API に分析を提供します。 分析には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれます。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 03/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 858c86eb17133d663d7f3398a68f292811f55aed
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 20018e8d97aa5af6dd12d74a10d951d788c0d306
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259734"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171144"
 ---
 # <a name="add-analytics-to-the-bing-web-search-api"></a>Bing Web Search API に分析を追加する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 診断と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する | Microsoft Docs
+title: Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する | Microsoft Docs
 description: Azure Application Insights を使用して Azure Cloud Services での起動エラー、クラッシュ、ロールのリサイクル ループなどの問題を監視します
 services: application-insights
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.author: mbullwin
-ms.openlocfilehash: c71ace039c8b8b7ec89c5a38ef203399f5af82aa
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 219ba632d7688f1a428378309828b689698d2fe5
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004715"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019476"
 ---
-# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure 診断と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する
+# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する
 
 この記事では、Azure Cloud Services (Web ロールとワーカー ロール) での起動エラー、クラッシュ、ロールのリサイクル ループなどの問題を監視するアラート ルールを設定する方法について説明します。
 
@@ -120,7 +120,7 @@ Application Insights リソース内のナビゲーション メニューで **[
 
 自動検出の詳細を確認します。
 
-[失敗の異常](../../application-insights/app-insights-proactive-failure-diagnostics.md)
-[メモリ リーク](../../application-insights/app-insights-proactive-potential-memory-leak.md)
-[パフォーマンスの異常](../../application-insights/app-insights-proactive-performance-diagnostics.md)
+[失敗の異常](../../azure-monitor/app/proactive-failure-diagnostics.md)
+[メモリ リーク](../../azure-monitor/app/proactive-potential-memory-leak.md)
+[パフォーマンスの異常](../../azure-monitor/app/proactive-performance-diagnostics.md)
 

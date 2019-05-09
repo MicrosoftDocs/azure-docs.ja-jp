@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing Spell Check API の分析を取得する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 25b34adc413b24539fca14b70eb58e577a5cfc50
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 51a621a09b7f093f0674ee852d7492275f995e93
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883209"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890166"
 ---
 # <a name="how-to-get-analytics-for-bing-spell-check-api"></a>Bing Spell Check API の分析を取得する方法
 

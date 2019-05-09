@@ -12,26 +12,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/11/2018
+ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 32dcbce86153034048627692dddc14a2f5b3d129
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 028aceac240afd62619e2d7be4f6ced9522fc4de
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615210"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094820"
 ---
-# <a name="cli-example-create-a-transform"></a>CLI の例: 変換の作成
+# <a name="cli-example-create-a-transform"></a>CLI の例:Transform を作成します。
 
 この記事の Azure CLI スクリプトは、変換の作成方法を示しています。 変換では、ビデオまたはオーディオ ファイルを処理するためのタスクの単純なワークフローを記述します (多くの場合、"レシピ" と呼ばれます)。 必要な名前と "レシピ" を持つ変換が既に存在するかどうかを必ず確認する必要があります。 その場合は再利用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件 
 
-- CLI をローカルにインストールして使用します。この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+[Media Services アカウントを作成する](../create-account-cli-how-to.md)
 
-    現在、一部の [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
-
-- [Media Services アカウントを作成する](../create-account-cli-how-to.md)
+[!INCLUDE [media-services-cli-instructions.md](../../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>サンプル スクリプト
 

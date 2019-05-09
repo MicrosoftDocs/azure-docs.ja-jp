@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 78381bd34bd7fe7a8941d7e3a567ec1282d6a8d9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 186bd272fdca20475686847dc4e86b8ad50e5e41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261402"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080966"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の Python デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -26,8 +26,8 @@ ms.locfileid: "51261402"
 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」も確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
-- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
-- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
+- [個々の登録](concepts-service.md#individual-enrollment):単一デバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
@@ -83,14 +83,14 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 1. Device Provisioning Service の概要ブレードで、**[Manage enrollments]\(登録の管理\)** を選択します。 **[個別登録]** タブを選択し、上部にある **[個別登録の追加]** ボタンをクリックします。 
 
 1. **[Add Enrollment] (登録の追加)** で、次の情報を入力します。
-    - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
-    - TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。 
-    - プロビジョニング サービスにリンクされた IoT ハブを選択します。
-    - 一意のデバイス ID を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。
-    - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-    - 作業が完了したら、**[保存]** をクリックします。 
+   - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
+   - TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。 
+   - プロビジョニング サービスにリンクされた IoT ハブを選択します。
+   - 一意のデバイス ID を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。
+   - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
+   - 作業が完了したら、**[保存]** をクリックします。 
 
-    ![ポータルのブレードにデバイス登録情報を入力します。](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
+     ![ポータルのブレードにデバイス登録情報を入力します。](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
 
    登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
@@ -102,11 +102,11 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 1. [これらの手順](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に従って、Python パッケージをビルドします。
 
-    > [!NOTE]
-        > `build_client.cmd` を実行する場合は、必ず `--use-tpm-simulator` フラグを使用してください。
-
-    > [!NOTE]
-        > `pip` を使用する場合は、`azure-iot-provisioning-device-client` パッケージもインストールされていることを確認してください。 リリースされている PIP パッケージでは、シミュレーターではなく実際の TPM が使用されています。 シミュレーターを使用するには、`--use-tpm-simulator` フラグを使用してソースからコンパイルする必要があります。
+   > [!NOTE]
+   > `build_client.cmd` を実行する場合は、必ず `--use-tpm-simulator` フラグを使用してください。
+   > 
+   > [!NOTE]
+   > `pip` を使用する場合は、`azure-iot-provisioning-device-client` パッケージもインストールされていることを確認してください。 リリースされている PIP パッケージでは、シミュレーターではなく実際の TPM が使用されています。 シミュレーターを使用するには、`--use-tpm-simulator` フラグを使用してソースからコンパイルする必要があります。
 
 1. samples フォルダーに移動します。
 

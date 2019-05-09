@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: erhopf
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 71b88afeb941e6b635548468e634e07597318116
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 441aa1cd0c43b50c8c1212e7ba8840ed97a890d1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994098"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175830"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>クイック スタート: Translator Text API と Python を使用して文の長さを調べる
 
@@ -60,7 +60,7 @@ func main() {
      * Read your subscription key from an env variable.
      * Please note: You can replace this code block with
      * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables.
+     * want to use env variables. If so, be sure to delete the "os" import.
      */
     subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
     if subscriptionKey == "" {
@@ -119,7 +119,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>要求を作成する
 
-要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator Text API を呼び出します。
+要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator Text API を呼び出すことができます。
 
 ```go
 // Build the HTTP POST request

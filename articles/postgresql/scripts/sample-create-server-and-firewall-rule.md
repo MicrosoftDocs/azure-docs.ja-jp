@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: e31a51fe8004c92b629e93333348192668922792
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 14bb46d8917aedb3ea5a625db2489c97a4fd0ba3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536034"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727111"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure CLI を使った Azure Database for PostgreSQL サーバーの作成とファイアウォール規則の構成
 このサンプル CLI スクリプトは、Azure Database for PostgreSQL サーバーを作成して、サーバー レベルのファイアウォール規則を構成するものです。 スクリプトが正常に実行されると、すべての Azure サービスと構成済み IP アドレスから PostgreSQL サーバーにアクセスできるようになります。
@@ -35,10 +35,10 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 
 | **コマンド** | **メモ** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) | データベースをホストする PostgreSQL サーバーを作成します。 |
-| [az postgres server firewall create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) | 対象のサーバーとそこにあるデータベースに対し、入力した IP アドレス範囲からアクセスできるようにするファイアウォール規則を作成します。 |
-| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az postgres server create](/cli/azure/postgres/server) | データベースをホストする PostgreSQL サーバーを作成します。 |
+| [az postgres server firewall create](/cli/azure/postgres/server/firewall-rule) | 対象のサーバーとそこにあるデータベースに対し、入力した IP アドレス範囲からアクセスできるようにするファイアウォール規則を作成します。 |
+| [az group delete](/cli/azure/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)

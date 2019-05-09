@@ -1,6 +1,6 @@
 ---
-title: Windows VM 向けの Ultra SSD Managed Disks | Microsoft Docs
-description: Azure VM 向けの Ultra SSD Managed Disks について説明します
+title: Windows VM 向けの Ultra Disks - Azure Managed Disks | Microsoft Docs
+description: Azure VM 向けの Ultra SSD について説明します
 services: virtual-machines-windows
 author: roygara
 ms.service: virtual-machines-windows
@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: seodec18
-ms.openlocfilehash: 308aef1ea8c76a1c3202fdb5131eba8b51bf41f9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.subservice: disks
+ms.openlocfilehash: c5eaac4766bec2c4666e2a533d0d771237cbde53
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188114"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428280"
 ---
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

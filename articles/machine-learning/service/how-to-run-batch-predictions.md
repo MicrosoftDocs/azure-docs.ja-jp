@@ -4,34 +4,34 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service を使用して大量のデータで非同期にバッチ予測を行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a711b80471da0677c5e2d0dd0ee5e371e5a16f75
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1e403ac0d2fbe9572a44fb3cde9d25e4df9b3db4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268651"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885001"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Azure Machine Learning service で大規模なデータ セットのバッチ予測を実行する
 
-この記事では、Azure Machine Learning service を使用して、迅速かつ効率的に、大量のデータの予測を非同期に行う方法を学習します。
+この記事では、Azure Machine Learning service を使用して、大量のデータの予測を非同期的に行う方法を学習します。
 
-バッチ予測 (または、バッチ スコアリング) では、非同期アプリケーションの比類のないスループットで、コスト効率の良い推論が提供されます。 テラバイト規模の運用データで推論を実行するように、バッチ予測パイプラインをスケーリングできます。 バッチ予測は、大規模なデータ コレクションに対する高スループットのファイア アンド フォーゲット予測に関して最適化されています。
+バッチ予測 (または、バッチ スコアリング) では、非同期アプリケーションの比類のないスループットで、コスト効率のよい推論が提供されます。 テラバイト規模の運用データで推論を実行するように、バッチ予測パイプラインをスケーリングできます。 バッチ予測は、大規模なデータ コレクションに対する高スループットのファイア アンド フォーゲット予測に対して最適化されています。
 
->[!NOTE]
-> 低待機時間の処理が必要な (1 つのドキュメントまたは小さいドキュメント セットをすばやく処理する) システムの場合は、バッチ予測の代わりに[リアルタイム スコアリング](how-to-consume-web-service.md)を使用します。
+>[!TIP]
+> お使いのシステムで低待機時間の処理が必要な場合 (1 つのドキュメントまたは小さいドキュメント セットをすばやく処理する場合) に、バッチ予測ではなく[リアルタイム スコアリング](how-to-consume-web-service.md)を使用します。
 
-以下の手順では、事前トレーニング済みのコンピューター ビジョン モデル ([Inception-V3](https://arxiv.org/abs/1512.00567)) を登録するための[機械学習パイプライン](concept-ml-pipelines.md)を作成した後、その事前トレーニング済みモデルを使用して Azure BLOB アカウントで使用可能なイメージに対するバッチ スコアリングを行います。 スコアリングに使用されるこれらのイメージは、[ImageNet](http://image-net.org/) データセットからのラベル付けされていないイメージです。
+以下の手順では、[機械学習パイプライン](concept-ml-pipelines.md)を作成して、事前トレーニング済みのコンピューター ビジョン モデル ([Inception-V3](https://arxiv.org/abs/1512.00567)) を登録した後、 その事前トレーニング済みモデルを使用して、Azure Blob Storage アカウントで使用可能なイメージに対するバッチ スコアリングを行います。 スコアリングに使用されるこれらのイメージは、[ImageNet](http://image-net.org/) データセットからのラベル付けされていないイメージです。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) をお試しください。
 
 - Azure Machine Learning SDK をインストールするための開発環境を構成します。 詳しくは、「[Azure Machine Learning のための開発環境を構成する](how-to-configure-environment.md)」をご覧ください。
 
@@ -52,7 +52,7 @@ ms.locfileid: "53268651"
 
 - 事前トレーニング済みモデル、入力ラベル、スコア付け対象のイメージ (これは既に設定されています) が既に存在するデータストアにアクセスします。
 - 出力を格納するようにデータストアを設定します。
-- 前のデータストア内のデータを指すように DataReference オブジェクトを構成します。
+- 前のデータストア内のデータを指すように  `DataReference`  オブジェクトを構成します。
 - パイプラインのステップが実行されるコンピューティング マシンまたはクラスターを設定します。
 
 ### <a name="access-the-datastores"></a>データストアにアクセスする
@@ -76,7 +76,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 
 次に、出力に既定のデータストアを使用するように設定します。
 
-ワークスペースを作成すると、 [Azure ファイル ストレージ](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)と [BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)が既定でワークスペースに関連付けられます。 Azure ファイル ストレージがワークスペースの "既定のデータストア" ですが、BLOB ストレージをデータストアとして使用することもできます。  [Azure ストレージ オブジェクト](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページをご覧ください。
+ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)  ストレージと [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)  が既定でワークスペースに関連付けられます。 Azure Files がワークスペースの既定のデータストアですが、Blob Storage をデータストアとして使用することもできます。 詳細については、[Azure Storage のオプション](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関する記事を参照してください。
 
 ```python
 def_data_store = ws.get_default_datastore()
@@ -86,7 +86,7 @@ def_data_store = ws.get_default_datastore()
 
 ここでは、パイプラインのステップへの入力として、パイプライン内のデータを参照します。
 
-パイプライン内のデータ ソースは [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) オブジェクトによって表されます。 DataReference オブジェクトでは、データストアに存在するデータまたはデータストアからアクセス可能なデータが指し示されています。 入力イメージに使用されるディレクトリ、事前トレーニング済みモデルが格納されているディレクトリ、ラベル用のディレクトリ、出力ディレクトリのそれぞれに対して、DataReference オブジェクトが必要です。
+パイプライン内のデータ ソースは [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) オブジェクトによって表されます。  `DataReference`  オブジェクトでは、データストアに存在するデータまたはデータストアからアクセス可能なデータが指し示されています。 入力イメージに使用されるディレクトリ、事前トレーニング済みモデルが格納されているディレクトリ、ラベル用のディレクトリ、出力ディレクトリのそれぞれに対して、`DataReference`  オブジェクトが必要です。
 
 ```python
 input_images = DataReference(datastore=batchscore_blob, 
@@ -111,7 +111,7 @@ output_dir = PipelineData(name="scores",
 
 ### <a name="set-up-compute-target"></a>コンピューティング ターゲットを設定する
 
-Azure Machine Learning でのコンピューティング (またはコンピューティング先) とは、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 たとえば、`Azure Machine Learning compute` を作成できます。
+Azure Machine Learning での "*コンピューティング*" (または "*コンピューティング先*") とは、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 たとえば、`Azure Machine Learning compute` を作成できます。
 
 ```python
 compute_name = "gpucluster"
@@ -148,7 +148,7 @@ else:
 
 ### <a name="download-the-pretrained-model"></a>事前トレーニング済みモデルをダウンロードする
 
-事前トレーニング済みのコンピューター ビジョン モデル (InceptionV3) を、<http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz> からダウンロードします。 ダウンロードが済んだら、`models` サブフォルダーに抽出します。
+事前トレーニング済みのコンピューター ビジョン モデル (InceptionV3) を、<http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz> からダウンロードします。 その後、`models` サブフォルダーに抽出します。
 
 ```python
 import os
@@ -167,6 +167,8 @@ tar.extractall(model_dir)
 
 ### <a name="register-the-model"></a>モデルを登録する
 
+モデルを登録する方法を次に示します。
+
 ```python
 import shutil
 from azureml.core.model import Model
@@ -183,7 +185,7 @@ model = Model.register(
 ## <a name="write-your-scoring-script"></a>スコアリング スクリプトを記述する
 
 >[!Warning]
->次のコードは、[サンプルのノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-batch-scoring.ipynb)で使用される [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/batch_score.py) に含まれる内容のサンプルに過ぎません。自分のシナリオに合わせて、独自のスコアリング スクリプトを作成する必要があります。
+>次のコードは、[サンプルのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)で使用される [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) に含まれる内容のサンプルに過ぎません。 ご自身のシナリオに合わせて、独自のスコアリング スクリプトを作成する必要があります。
 
 `batch_score.py` スクリプトでは、入力イメージが *dataset_path* で、事前トレーニング済みモデルが *model_dir* でそれぞれ受け取られて、*results-label.txt* が *output_dir* に出力されます。
 
@@ -241,7 +243,7 @@ def main(_):
 
 ### <a name="prepare-the-run-environment"></a>実行環境を準備する
 
-スクリプトに対する Conda の依存関係を指定します。 このオブジェクトは、後でパイプラインのステップを作成するときに必要です。
+スクリプトに対する Conda の依存関係を指定します。 このオブジェクトは後で、パイプラインのステップを作成するときに必要です。
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
@@ -258,7 +260,7 @@ amlcompute_run_config.environment.spark.precache_packages = False
 
 ### <a name="specify-the-parameter-for-your-pipeline"></a>パイプラインのパラメーターを指定する
 
-既定の値の  [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) オブジェクトを使用して、パイプライン パラメーターを作成します。
+既定の値の  [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py)  オブジェクトを使用して、パイプライン パラメーターを作成します。
 
 ```python
 batch_size_param = PipelineParameter(
@@ -297,7 +299,7 @@ batch_score_step = PythonScriptStep(
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
 pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_params={"param_batch_size": 20})
 
-# Wait for the run to finish (this may take several minutes)
+# Wait for the run to finish (this might take several minutes)
 pipeline_run.wait_for_completion(show_output=True)
 
 # Download and review the output
@@ -312,7 +314,7 @@ df.head()
 
 ## <a name="publish-the-pipeline"></a>パイプラインを発行する
 
-実行の結果に満足したら、後で異なる入力値で実行できるように、パイプラインを発行します。 パイプラインを発行すると得られる REST エンドポイントでは、既に [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) を使用して組み込んだ一連のパラメーターを使用したパイプラインの呼び出しが受け付けられます。
+実行の結果に満足したら、後で異なる入力値で実行できるように、パイプラインを発行します。 パイプラインを発行するときに、REST エンドポイントが提供されます。 このエンドポイントは、[PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) を使用して既に組み込まれている一連のパラメーターを使用したパイプラインの呼び出しを受け入れます。
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
@@ -321,9 +323,9 @@ published_pipeline = pipeline_run.publish_pipeline(
     version="1.0")
 ```
 
-## <a name="rerun-the-pipeline-using-the-rest-endpoint"></a>REST エンドポイントを使用してパイプラインを再実行する
+## <a name="rerun-the-pipeline-by-using-the-rest-endpoint"></a>REST エンドポイントを使用してパイプラインを再実行する
 
-パイプラインを実行するには、「[AzureCliAuthentication class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)」(AzureCliAuthentication クラス) で説明されているように、Azure Active Directory 認証ヘッダー トークンが必要です。
+パイプラインを実行するには、「[AzureCliAuthentication class (AzureCliAuthentication クラス)](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)」で説明されているように、Azure Active Directory 認証ヘッダー トークンが必要です。
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -344,7 +346,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>次の手順
 
-これのエンド ツー エンドの動作を確認するには、[how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) にあるバッチ スコアリング ノートブックを試してください。 
+このエンド ツー エンドの動作を確認するには、[GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) にあるバッチ スコアリング ノートブックを試してください。 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

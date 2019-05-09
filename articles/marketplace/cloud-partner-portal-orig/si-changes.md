@@ -12,24 +12,36 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 3/3/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ec3784a91f8aeb7f0fedd13c9ab86a844832a578
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7df96d53b02e80283f263901dc7e26ed4edb947d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807179"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342379"
 ---
-<a name="seller-insights-release-notes"></a>Seller Insights リリース ノート 
-===============================
-(リリース日: 2018 年 7 月 28 日)
+# <a name="seller-insights-release-notes"></a>Seller Insights リリース ノート 
+
+(リリース日: 2019 年 3 月 1 日)
 
 この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)で Seller Insights 機能への変更に関する情報を提供します。
 
+## <a name="release-highlights-for-march-1-2019"></a>2019 年 3 月 1 日のリリースの概要
 
-<a name="release-highlights"></a>リリースの概要
-------------------
+* *顧客傾向*を概要に追加しました
+* 概要の*上位 5 顧客*は、顧客が持つすべての Azure サブスクリプションを反映するようになりました
+* 概要の*正規化された利用状況の傾向と注文の傾向*は、*毎月の注文の概要*の下に移動しました
+* *支払い調整レポート*が更新されました
+* 支払いの*上位 5 顧客*は、顧客が持つすべての Azure サブスクリプションを反映するようになりました
+* *使用状況レポート*が顧客 ID で更新されました
+* 注文と使用状況の*顧客の期間*は、顧客が持つすべての Azure サブスクリプションを反映するようになりました
+
+
+(リリース日: 2018 年 7 月 28 日)
+
+## <a name="release-highlights-for-july-28-2018"></a>2018 年 7 月 28 日のリリースの概要
+
 
 -   *見積価格*では、通貨換算の影響と共に顧客請求金額のビューを提供します。
 -   *予測支払額*では、可能性のある支払額に以前のビューを提供します。
@@ -37,8 +49,7 @@ ms.locfileid: "48807179"
 -   *1 日単位の使用状況*では、顧客の使用状況により細かく、より優れた分析情報を提供します。
 
 
-<a name="changes-to-data-structure-and-taxonomy"></a>データ構造と分類への変更
---------------------------------------
+### <a name="changes-to-data-structure-and-taxonomy"></a>データ構造と分類への変更
 
 次の表では、このリリースで追加または著しく変更されたメトリックを一覧します。 
 

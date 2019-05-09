@@ -1,7 +1,7 @@
 ---
 title: フルテキスト検索用に Azure Blob Storage コンテンツのインデックスを作成する - Azure Search
 description: Azure Search で Azure Blob Storage のインデックスを作成し、ドキュメントからテキストを抽出する方法について説明します。
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c73a802cd67c9ecb94482cfcd6aac51fc8bbc19e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 87dc1dab0670f69ff8c418be476986baec2821fb
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317476"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310881"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
@@ -34,7 +34,6 @@ Azure Blob Storage インデクサーを設定するには、以下を使用し�
 
 > [!NOTE]
 > フィールド マッピングなど、機能によってはまだポータルで使用できないものがあります。こうした機能についてはプログラムで使用する必要があります。
->
 >
 
 ここでは、REST API を使用したフローについて説明します。
@@ -69,7 +68,7 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
 
 次のいずれかの方法で BLOB コンテナーに対して資格情報を指定できます。
 
-- **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 この接続文字列は、ストレージ アカウント ブレードに移動し、[設定]、[キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定]、[アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
+- **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` この接続文字列は、ストレージ アカウント ブレードに移動し、[設定] > [キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定] > [アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure portal から取得できます。
 - **ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列:`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS にはコンテナー上およびオブジェクト (この場合は BLOB) にリストおよび読み取りアクセス許可が必要です。
 -  **コンテナーの Shared Access Signature**:`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS にはコンテナー上にリストおよび読み取りアクセス許可が必要です。
 
@@ -334,7 +333,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 インデックスの複数のソースからドキュメントを「アセンブル」できます。 たとえば、Cosmos DB に格納された他のメタデータを使用して BLOB からテキストをマージすることもできます。 プッシュ インデックス作成 API を各種インデクサーとともに使用して、複数のパーツから検索ドキュメントを構築することもできます。 
 
-これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このソリューションのチュートリアルについて詳しくは、外部資料「[Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」(ドキュメントを Azure Search の他のデータと組み合わせる) をご覧ください。
+これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このソリューションのチュートリアルについて詳しくは、外部資料「[Combine documents with other data in Azure Search (ドキュメントを Azure Search の他のデータと組み合わせる)](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」をご覧ください。
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>プレーンテキストのインデックス作成 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: この記事では、Cognitive Services Speech SDK を使用して C# のユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成する方法について説明します。 デバイスのマイクからリアルタイムで音声をテキストに変換します。 このアプリケーションの構築には、Speech SDK NuGet パッケージと Microsoft Visual Studio 2017 を使用します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 2d51bd910b86c81304fb228d35079fca166b1eb7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 26d6e5e53968a88eaccff863b4affee6057f5952
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719883"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903302"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する
 
@@ -68,7 +68,7 @@ ms.locfileid: "53719883"
 
     ![アクセス許可要求のスクリーンショット](media/sdk/qs-csharp-uwp-10-access-prompt.png "アプリのデバッグの開始")
 
-1. **[Speech recognition with microphone input]** を選択し、デバイスのマイクに向かって英語のフレーズを話します。 音声が Speech サービスに送信されてテキストに変換され、ウィンドウに表示されます。
+1. **[Speech recognition with microphone input]** を選択し、デバイスのマイクに向かって英語のフレーズを話します。 音声が Speech Services に送信されてテキストに変換され、ウィンドウに表示されます。
 
     ![音声認識ユーザー インターフェイスのスクリーンショット](media/sdk/qs-csharp-uwp-11-ui-result.png)
 

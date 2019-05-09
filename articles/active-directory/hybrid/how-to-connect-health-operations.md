@@ -4,21 +4,22 @@ description: この記事では、Azure AD Connect Health のデプロイ後に�
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 7e0e2e19f2f21fa3199cbc4911fed3427cbc162c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280519"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187051"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -64,6 +65,7 @@ Active Directory フェデレーション サービス (AD FS) および Azure A
 
 1. **[サーバーの一覧]** ブレードから、削除するサーバー名を選択して **[サーバー]** ブレードを開きます。
 2. **[サーバー]** ブレードで、操作バーの **[削除]** をクリックします。
+![Azure AD Connect Health でのサーバーの削除のスクリーンショット](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. 確認ボックスにサーバー名を入力して確定します。
 4. **[削除]** をクリックします。
 
@@ -86,8 +88,9 @@ Azure Active Directory Domain Services の Azure AD Connect Health の場合は�
 * このアクションを実行した後、サービスの監視を再開する場合、すべてのサーバー上の Health エージェントをアンインストールしてから再インストールしてください。 このアクションを実行した後、同じサーバーの監視を再開する場合、そのサーバー上の Health エージェントをアンインストールしてから再インストールし、登録してください。
 
 #### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Azure AD Connect Health サービスからサービス インスタンスを削除するには
-1. **[サービスの一覧]** ブレードから、削除するサービスの ID (ファーム名) を選択して、**[サービス]** ブレードを開きます。
-2. **[サーバー]** ブレードで、操作バーの **[削除]** をクリックします。
+1. **[サービスの一覧]** ブレードから、削除するサービスの ID (ファーム名) を選択して、**[サービス]** ブレードを開きます。 
+2. **[サービス]** ブレードで、操作バーの **[削除]** をクリックします。 
+![Azure AD Connect Health でのサービスの削除のスクリーンショット](./media/how-to-connect-health-operations/DeleteServer.png)
 3. 確認ボックスにサービス名 (例: sts.contoso.com) を入力して確定します。
 4. **[削除]** をクリックします。
    <br><br>
@@ -110,17 +113,17 @@ Azure AD Connect Health では、次の組み込みのロールがサポート�
 ### <a name="access-scope"></a>アクセス スコープ
 Azure AD Connect Health では、2 つのレベルのアクセス管理をサポートします。
 
-* **すべてのサービス インスタンス**: これはほとんどの場合の推奨パスです。 Azure AD Connect Health によって監視されるすべてのロールの種類のすべてのサービス インスタンス (たとえば、AD FS ファーム) のアクセスを制御します。
-* **サービス インスタンス**: 場合によっては、ロールの種類またはサービス インスタンスに基づいてアクセスを分離する必要があります。 この場合は、サービス インスタンス レベルでアクセスを管理できます。  
+* **すべてのサービス インスタンス**:これはほとんどの場合の推奨パスです。 Azure AD Connect Health によって監視されるすべてのロールの種類のすべてのサービス インスタンス (たとえば、AD FS ファーム) のアクセスを制御します。
+* **サービス インスタンス**:場合によっては、ロールの種類またはサービス インスタンスに基づいてアクセスを分離する必要があります。 この場合は、サービス インスタンス レベルでアクセスを管理できます。  
 
 アクセス許可は、エンド ユーザーがディレクトリ レベルまたはサービス インスタンス レベルのいずれかでアクセス権がある場合に与えられます。
 
 ### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>ユーザーまたはグループに Azure AD Connect Health へのアクセスを許可する
 次の手順では、アクセスを許可する方法を説明します。
-#### <a name="step-1-select-the-appropriate-access-scope"></a>手順 1: 適切なアクセス スコープを選択する
+#### <a name="step-1-select-the-appropriate-access-scope"></a>手順 1:適切なアクセス スコープを選択する
 Azure AD Connect Health 内で "*すべてのサービス インスタンス*" レベルのユーザーにアクセスを許可するには、Azure AD Connect Health でメイン ブレードを開きます。<br>
 
-#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>手順 2: ユーザーおよびグループを追加し、ロールを割り当てる
+#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>手順 2:ユーザーおよびグループを追加し、ロールを割り当てる
 1. **[構成]** セクションで、**[ユーザー]** をクリックします。<br>
    ![Azure AD Connect Health リソースのサイドバーのスクリーンショット](./media/how-to-connect-health-operations/startRBAC.png)
 2. **[追加]** を選択します。
@@ -140,7 +143,7 @@ Azure AD Connect Health 内で "*すべてのサービス インスタンス*" �
 >
 >
 
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>手順 3: ブレードの場所をユーザーまたはグループと共有する
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>手順 3:ブレードの場所をユーザーまたはグループと共有する
 1. アクセス許可が割り当てられた後、ユーザーは[ここ](https://aka.ms/aadconnecthealth)に移動することで Azure AD Connect Health にアクセスできます。
 2. ブレードで、ブレードやブレードのさまざまな部分をダッシュボードにピン留めできます。 **[ダッシュボードにピン留めする]** アイコンをクリックするだけです。<br>
    ![ピン アイコンが強調表示されている Azure AD Connect Health RBAC のピン ブレードのスクリーンショット](./media/how-to-connect-health-operations/RBAC_pin_blade.png)

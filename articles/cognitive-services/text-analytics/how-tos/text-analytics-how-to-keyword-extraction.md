@@ -1,24 +1,24 @@
 ---
-title: Text Analytics REST API でキー フレーズを抽出する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
-description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、キー フレーズを抽出する方法を説明します。
+title: Text Analytics REST API を使用したキー フレーズ抽出 | Microsoft Docs
+description: Azure Cognitive Services の Text Analytics REST API を使用してキー フレーズを抽出する方法。
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: d38886d40a92d5e75f5d0b6b189dbf7c067e1635
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 04/16/2019
+ms.author: aahi
+ms.openlocfilehash: 9cb6a40e6ce53a6d82d4129db876a1b24269f166
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632392"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997718"
 ---
-# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>例: Text Analytics でキー フレーズを抽出する方法
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
-[キー フレーズ抽出](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) API は、非構造化テキストを評価し、各 JSON ドキュメントに対してキー フレーズのリストを返します。 
+[キー フレーズ抽出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) API は、非構造化テキストを評価し、各 JSON ドキュメントに対してキー フレーズのリストを返します。 
 
 この機能は、ドキュメントのコレクション内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、このサービスは話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
 
@@ -29,13 +29,13 @@ ms.locfileid: "51632392"
 
 ## <a name="preparation"></a>準備
 
-キー フレーズの抽出は、操作するテキストのチャンクが大きい場合に最適です。 感情分析では逆で、テキスト ブロックが 小さいほどパフォーマンスが向上します。 両方の操作から最良の結果を得るには、両方の操作に応じて入力を再構築することを検討してください。
+キー フレーズ抽出は、扱うテキストの量が多いほど効果を発揮します。 感情分析では逆で、テキストの量が少ないほどパフォーマンスが向上します。 両方の操作から最善の結果を得るには、両方の操作に応じて入力を再構成することを検討してください。
 
 JSON ドキュメントは、id、text、language の形式である必要があります。
 
-ドキュメントのサイズは、ドキュメントあたり 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、キー フレーズの抽出用に送信するコンテンツを示しています。
+ドキュメントのサイズは、ドキュメントあたり 5,120 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、キー フレーズの抽出用に送信するコンテンツを示しています。
 
-```
+```json
     {
         "documents": [
             {
@@ -67,36 +67,36 @@ JSON ドキュメントは、id、text、language の形式である必要があ
     }
 ```    
     
-## <a name="step-1-structure-the-request"></a>手順 1: 要求を構造化する
+## <a name="step-1-structure-the-request"></a>手順 1:要求を構造化する
 
 要求定義の詳細については、[Text Analytics API を呼び出す方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください: [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[キー フレーズ API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
 
-+ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、キー フレーズ抽出用の HTTP エンドポイントを設定します。 そこには、`/keyPhrases` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、キー フレーズ抽出用の HTTP エンドポイントを設定します。 そこには、`/keyPhrases` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
 
 + Text Analytics 操作用のアクセス キーが含まれるように要求ヘッダーを設定します。 詳細については、[エンドポイントを見つけてアクセス キーにアクセスする方法](text-analytics-how-to-access-key.md)についてのページを参照してください。
 
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
-## <a name="step-2-post-the-request"></a>手順 2: 要求を投稿する
+## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
 要求が受信されると分析が実行されます。 サービスは、1 分あたり最大 100 個の要求を受け付けます。 各要求の最大サイズは 1 MB です。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 
-## <a name="step-3-view-results"></a>手順 3: 結果を表示する
+## <a name="step-3-view-results"></a>手順 3:結果の表示
 
 すべての POST 要求で、ID と検出されたプロパティを含む JSON 形式の応答が返されます。
 
 出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。
 
-キー フレーズの抽出の出力例を次に示します。
+キー フレーズ抽出の出力例を次に示します。
 
-```
+```json
     "documents": [
         {
             "keyPhrases": [
@@ -147,7 +147,7 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 この記事では、Cognitive Services の Text Analytics を使用するキー フレーズ抽出の概念とワークフローについて説明しました。 要約すると:
 
-+ 選択した言語に対して、[キー フレーズ抽出 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) を使用できます。
++ 選択した言語に対して、[キー フレーズ抽出 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) を使用できます。
 + 要求本文内の JSON ドキュメントには、id、text、および language のコードが含まれます。
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](text-analytics-how-to-access-key.md)を使用して `/keyphrases` エンドポイントに対して行われます。
 + ドキュメント ID ごとのキーワードやキーフレーズで構成される応答出力は、Excel や Power BI を含む JSON を受け取るすべてのアプリにストリーミングすることができます。
@@ -161,4 +161,4 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Text Analytics API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)

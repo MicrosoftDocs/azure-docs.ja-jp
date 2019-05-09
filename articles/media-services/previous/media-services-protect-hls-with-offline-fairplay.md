@@ -7,23 +7,30 @@ documentationcenter: ''
 author: willzhan
 manager: steveng
 editor: ''
-ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 7d4094abacb46c5e2b525766d61cb0ede7fc20ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 31da745727d567e1b3b85b3508df368d78ad84a0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251834"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002665"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
- Azure Media Services では、次のものを対象にして、適切に設計された[コンテンツ保護サービス](https://azure.microsoft.com/services/media-services/content-protection/)のセットが提供されます。
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Version 3](../latest/offline-fairplay-for-ios.md)
+> * [Version 2](media-services-protect-hls-with-offline-fairplay.md)
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+
+Azure Media Services では、次のものを対象にして、適切に設計された[コンテンツ保護サービス](https://azure.microsoft.com/services/media-services/content-protection/)のセットが提供されます。
 
 - Microsoft PlayReady
 - Google Widevine
@@ -115,14 +122,14 @@ if (objDRMSettings.EnableOfflineMode)
 ## <a name="sample-ios-player"></a>サンプル iOS プレーヤー
 FPS オフライン モードのサポートは iOS 10 以降でのみ利用可能です。 FPS Server SDK (バージョン 3.0 以降) には、FPS オフライン モードのドキュメントとサンプルが含まれています。 具体的には、FPS Server SDK (バージョン 3.0 以降) には、オフライン モードに関連する次の 2 つの項目が含まれます。
 
-* ドキュメント: 「Offline Playback with FairPlay Streaming and HTTP Live Streaming」(FairPlay Streaming と HTTP ライブ ストリーミングでのオフライン再生) (Apple、2016 年 9 月 14 日発行)。 FPS Server SDK バージョン 4.0 では、このドキュメントはメインの FPS ドキュメントにマージされています。
-* サンプル コード: FPS オフライン モードの HLSCatalog サンプル (\FairPlay Streaming Server SDK version 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\)。 HLSCatalog サンプル アプリでは、次のコード ファイルがオフラインモード機能の実装に使用されます。
+* ドキュメント:「Offline Playback with FairPlay Streaming and HTTP Live Streaming」(FairPlay Streaming と HTTP ライブ ストリーミングでのオフライン再生) (Apple、2016 年 9 月 14 日発行)。 FPS Server SDK バージョン 4.0 では、このドキュメントはメインの FPS ドキュメントにマージされています。
+* サンプル コード:\FairPlay Streaming Server SDK version 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ 内の FPS オフライン モードの HLSCatalog サンプル。 HLSCatalog サンプル アプリでは、次のコード ファイルがオフラインモード機能の実装に使用されます。
 
-    - AssetPersistenceManager.swift コード ファイル: AssetPersistenceManager が、次の方法を示すこのサンプルのメイン クラスです
+    - AssetPersistenceManager.swift コード ファイル:AssetPersistenceManager が、次の方法を示すこのサンプルのメイン クラスです。
 
         - ダウンロードの開始とキャンセルやデバイスからの既存資産の削除に使用される API など、HLS ストリームのダウンロードを管理します。
         - ダウンロードの進行状況を監視します。
-    - AssetListTableViewController.swift および AssetListTableViewCell.swift コード ファイル: AssetListTableViewController はこのサンプルのメイン インターフェイスです。 サンプルが再生、ダウンロード、削除、またはダウンロードのキャンセルに使用できる資産の一覧を提供します。 
+    - AssetListTableViewController.swift および AssetListTableViewCell.swift コード ファイル:AssetListTableViewController は、このサンプルのメイン インターフェイスです。 サンプルが再生、ダウンロード、削除、またはダウンロードのキャンセルに使用できる資産の一覧を提供します。 
 
 実行中の iOS プレーヤーを設定する手順を説明します。 FPS Server SDK バージョン 4.0.1 の HLSCatalog サンプルを基にして始める場合は、次のようにコードを変更します。
 
@@ -211,7 +218,7 @@ FPS Server SDK のバージョン 3 またはバージョン 4 サンプルで�
 boot.xml ファイルのサンプル:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<HLSMoviePackage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
   <Version>1.0</Version>
   <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
   <Streams>

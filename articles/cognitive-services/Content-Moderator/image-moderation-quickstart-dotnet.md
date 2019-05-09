@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: 好ましくない要素を検出するために画像の内容を C# で分析する'
+title: クイック スタート:画像を分析して好ましくない内容を検出する (C#) - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for .NET を使用してさまざまな好ましくない要素を検出するために画像コンテンツを分析する方法
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 10/26/2018
+ms.date: 03/20/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7a8341d4189b90a67525fd0fba25aa0f321b21b1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084755"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757234"
 ---
-# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>クイック スタート: 好ましくない要素を検出するために画像の内容を C# で分析する
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>クイック スタート:画像を分析して好ましくない内容を検出する (C#)
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 潜在的に好ましくない素材をモデレートすることを目的として、成人向けまたはわいせつなコンテンツ、抽出可能なテキスト、および人間の顔をスキャンする方法を学習します。
 

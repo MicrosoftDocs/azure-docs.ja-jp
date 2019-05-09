@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 08/27/2018
-ms.openlocfilehash: e760b67c1b971613de6b21102687c8ffeb556ed8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.date: 01/28/2019
+ms.openlocfilehash: 33a882e8543f1a57afe9207f7a7263ec39530a0c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386878"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817924"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -27,7 +27,6 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 > [!IMPORTANT]  
 > HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 詳細については、[クラスターの削除方法](hdinsight-delete-cluster.md)に関するページを参照してください。
->
 
 ## <a name="cluster-setup-methods"></a>クラスターのセットアップ方法
 次の表は、HDInsight クラスターのセットアップに使用できる各種の方法を示しています。
@@ -51,7 +50,7 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 * [リソース グループ名](#resource-group-name)
 * [クラスターの種類と構成](#cluster-types) 
-* [クラスター ログインと SSH ユーザー名](#cluster-login-and-ssh-username)
+* クラスター ログインと SSH ユーザー名
 * [場所](#location)
 
 > [!IMPORTANT]  
@@ -67,8 +66,6 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 > [!IMPORTANT]  
 > HDInsight クラスターには、さまざまな種類があり、それぞれ単一のワークロードまたはテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network) で接続してください。 
->
->
 
 | クラスターの種類 | 機能 |
 | --- | --- |
@@ -84,20 +81,12 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 ### <a name="hdinsight-version"></a>HDInsight のバージョン
 このクラスターの HDInsight のバージョンを選択します。 詳細については、「[サポートされる HDInsight のバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」を参照してください。
 
-### <a name="enterprise-security-package"></a>Enterprise セキュリティ パッケージ
 
-クラスターの種類が Hadoop、Spark、および対話型クエリの場合は、**Enterprise セキュリティ パッケージ**を有効にすることができます。 このパッケージは、Apache Ranger を使用し、Azure Active Direcotry と統合することによってより安全なクラスターのセットアップを行うオプションを提供します。 詳細については、「[Enterprise Security Package in Azure HDInsight (Azure HDInsight での Enterprise セキュリティ パッケージ)](./domain-joined/apache-domain-joined-introduction.md)」を参照してください。
-
-![hdinsight の作成オプション [Enterprise セキュリティ パッケージ] を選択](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
-
-ドメイン参加済みの HDInsight クラスターの作成の詳細については、[ドメイン参加済みの HDInsight サンドボックス環境の作成](./domain-joined/apache-domain-joined-configure.md)に関する記事を参照してください。
-
-
-## <a name="cluster-login-and-ssh-user-name"></a>クラスター ログインと SSH ユーザー名
+## <a name="cluster-login-and-ssh-username"></a>クラスター ログインと SSH ユーザー名
 HDInsight クラスターでは、クラスターの作成時に次の 2 つのユーザー アカウントを構成できます。
 
-* HTTP ユーザー: 既定のユーザー名は *admin* です。Azure Portal の基本的な構成を使用します。 "クラスター ユーザー" と呼ばれることもあります。
-* SSH ユーザー (Linux クラスター): SSH を使用してクラスターに接続する際に使用します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* HTTP ユーザー: 既定のユーザー名は *admin*です。Azure Portal の基本的な構成を使用します。 "クラスター ユーザー" と呼ばれることもあります。
+* SSH ユーザー:SSH を使用してクラスターに接続する際に使用します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 Enterprise セキュリティ パッケージでは、HDInsight を Active Directory と Apache Ranger と統合することができます。 Enterprise セキュリティ パッケージを使用して、複数のユーザーを作成できます。
 
@@ -107,12 +96,12 @@ Enterprise セキュリティ パッケージでは、HDInsight を Active Direc
 
 ## <a name="storage-endpoints-for-clusters"></a>クラスターのストレージ エンドポイント
 
-クラスターのストレージには、Hadoop のオンプレミス環境では Hadoop 分散ファイル システム (HDFS) が使用されますが、クラウドでは、クラスターに接続されたストレージ エンドポイントを使用します。 HDInsight クラスターで使用されるのは、[Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) と [Azure Storage の BLOB](hdinsight-hadoop-use-blob-storage.md) のいずれかとなります。 Azure Storage または Data Lake Store を使用するということは、必要なデータは維持したまま、計算に使用された HDInsight クラスターを安全に削除できるということです。 
+クラスターのストレージには、Hadoop のオンプレミス環境では Hadoop 分散ファイル システム (HDFS) が使用されますが、クラウドでは、クラスターに接続されたストレージ エンドポイントを使用します。 HDInsight クラスターでは、[Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md) または [Azure Storage の BLOB](hdinsight-hadoop-use-blob-storage.md) が使用されます。 Azure Storage または Data Lake Store を使用するということは、必要なデータは維持したまま、計算に使用された HDInsight クラスターを安全に削除できるということです。 
 
 > [!WARNING]  
 > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
 
-構成時、既定のストレージ エンドポイントには、Azure ストレージ アカウントまたは Data Lake Store の BLOB コンテナーを指定します。 既定のストレージには、アプリケーション ログとシステム ログが格納されます。 それとは別に、クラスターからアクセスできるリンクされた Azure ストレージ アカウントまたは Data Lake Store アカウントを必要に応じて指定することもできます。 HDInsight クラスターとそのクラスターで使用されるストレージ アカウントは、同じ Azure リージョンに存在している必要があります。
+構成時、既定のストレージ エンドポイントには、Azure Storage アカウントの BLOB コンテナーまたは Data Lake Storage を指定します。 既定のストレージには、アプリケーション ログとシステム ログが格納されます。 必要に応じて、クラスターからアクセスできるリンクされた Azure Storage アカウントおよび Data Lake Storage アカウントを追加指定できます。 HDInsight クラスターとそのクラスターで使用されるストレージ アカウントは、同じ Azure リージョンに存在している必要があります。
 
 ![クラスター ストレージの設定: HDFS と互換性のあるストレージ エンドポイント](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
 
@@ -143,10 +132,19 @@ Oozie の使用時にパフォーマンスを向上させるには、カスタ�
 
 ## <a name="custom-cluster-setup"></a>カスタム クラスターのセットアップ
 カスタム クラスターのセットアップには、[簡易作成] の設定に次のオプションが加わります。
+- [Enterprise セキュリティ パッケージ](#enterprise-security-package)
 - [HDInsight アプリケーション](#install-hdinsight-applications-on-clusters)
 - [クラスター サイズ](#configure-cluster-size)
 - [スクリプト アクション](#advanced-settings-script-actions)
 - [Virtual Network](#advanced-settings-extend-clusters-with-a-virtual-network)
+ 
+## <a name="enterprise-security-package"></a>Enterprise セキュリティ パッケージ
+
+クラスターの種類が Hadoop、Spark、HBase、Kafka、および対話型クエリの場合は、**Enterprise セキュリティ パッケージ**を有効にすることができます。 このパッケージは、Apache Ranger を使用し、Azure Active Direcotry と統合することによってより安全なクラスターのセットアップを行うオプションを提供します。 詳細については、「[Enterprise Security Package in Azure HDInsight (Azure HDInsight での Enterprise セキュリティ パッケージ)](./domain-joined/apache-domain-joined-introduction.md)」を参照してください。
+
+![hdinsight の作成オプション [Enterprise セキュリティ パッケージ] を選択](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
+
+ドメイン参加済みの HDInsight クラスターの作成の詳細については、[ドメイン参加済みの HDInsight サンドボックス環境の作成](./domain-joined/apache-domain-joined-configure.md)に関する記事を参照してください。 
 
 ## <a name="install-hdinsight-applications-on-clusters"></a>クラスターへの HDInsight アプリケーションのインストール
 
@@ -245,9 +243,6 @@ Azure の仮想ネットワークの HDInsight との併用の詳細について
 
 Azure の仮想ネットワーク内で 2 つのクラスターの種類を使用した例の詳細については、[Apache Kafka を使用した Apache Spark 構造化ストリーミングの使用](hdinsight-apache-kafka-spark-structured-streaming.md)に関するページを参照してください。 仮想ネットワークの具体的な構成要件など、仮想ネットワークで HDInsight を使用する方法の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
-## <a name="troubleshoot-access-control-issues"></a>アクセス制御に関する問題のトラブルシューティング
-
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

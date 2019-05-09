@@ -3,8 +3,8 @@ title: Azure VM で SAP を使用する | Microsoft Docs
 description: Microsoft Azure 上の仮想マシン (VM) で実行される SAP ソリューションについて説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,41 +14,39 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/14/2018
-ms.author: rclaus
+ms.date: 04/10/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0508e6418a5095ed9ee27baf045f655d66ea9b58
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3e07824db683b55cf5827962c1030d6cfd6c9f66
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435346"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490431"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 
-Microsoft Azure を SAP 対応クラウド パートナーとして選択することで、ミッション クリティカルな SAP ワークロードとシナリオを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行できます。  Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。 Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用までのシナリオを通じて SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。 SAP NetWeaver から SAP S4/HANA、SAP BI、Linux から Windows、SAP HANA から SQL まで対応しています。
+Microsoft Azure を選択することで、ミッション クリティカルな SAP ワークロードとシナリオを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行できます。  Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。 Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用までのシナリオを通じて SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。 SAP NetWeaver から SAP S/4HANA、SAP BI、Linux から Windows、SAP HANA から SQL まで対応しています。
 
-SAP NetWeaver シナリオをさまざまな DBMS を使用して Azure でホストすることに加え、その他の SAP ワークロード シナリオ (SAP BI など) も Azure でホストできます。 Azure のネイティブ Virtual Machines での SAP NetWeaver のデプロイに関するドキュメントについては、「Azure Virtual Machines 上の SAP NetWeaver」セクションを参照してください。
+SAP NetWeaver シナリオをさまざまな DBMS を使用して Azure でホストすることに加え、その他の SAP ワークロード シナリオ (SAP BI など) も Azure でホストできます。 
 
-Azure for SAP HANA の独自性は、その製品の独自性にあります。これにより、Azure は、競合製品の中で特に優れています。 SAP HANA が関与するより多くのメモリと CPU リソースを必要とする SAP シナリオをホストできるようにするため、Azure では、お客様専用のベア メタル ハードウェアの使用を提案しています。その目的は、S/4HANA またはその他の SAP HANA ワークロードで最大 20 TB (60 TB のスケールアウト) のメモリを必要とする SAP HANA のデプロイを実行することです。 このSAP HANA on Azure (L インスタンス) の独自の Azure ソリューションによって、SAP アプリケーション レイヤーまたはネイティブ Azure Virtual Machines でホストされるワークロードのミドルウェア レイヤーを使用して、SAP HANA を専用のベア メタル ハードウェア上で実行できます。 このソリューションについては、さまざまなドキュメントの「SAP HANA on Azure (L インスタンス)」セクションで説明されています。   
+Azure for SAP HANA の独自性は、Azure を他社と一線を画すものにしているオファーにあります。 SAP HANA が関与するより多くのメモリと CPU リソースを必要とする SAP シナリオをホストできるようにするため、Azure では、お客様専用のベア メタル ハードウェアの使用を提案しています。その目的は、S/4HANA またはその他の SAP HANA ワークロードで最大 24 TB (120 TB のスケールアウト) のメモリを必要とする SAP HANA のデプロイを実行することです。 このSAP HANA on Azure (L インスタンス) の独自の Azure ソリューションによって、SAP アプリケーション レイヤーまたはネイティブ Azure Virtual Machines でホストされるワークロードのミドルウェア レイヤーを使用して、SAP HANA を専用のベア メタル ハードウェア上で実行できます。 このソリューションについては、さまざまなドキュメントの「SAP HANA on Azure (L インスタンス)」セクションで説明されています。   
 
-Azure で SAP ワークロードをホストするシナリオでは、さまざまな SAP コンポーネントと SAP SaaS または PaaS 製品に対する Activity Directory を使用した ID 統合要件とシングル サインオンを構成できます。 Azure Active Directory (AAD) と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
+Azure で SAP ワークロードをホストするシナリオでは、さまざまな SAP コンポーネント、および SAP SaaS または PaaS オファーに対して Azure Active Directory を使用する ID 統合やシングル サインオンの要件を構成することもできます。 Azure Active Directory (AAD) と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
 
 ## <a name="latest-changes"></a>最新の変更
 
-待ち時間が重要な SAP システムの通信パスでの [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)の使用法および構成の明確化。
+[Azure portal を介した Azure HANA L インスタンスの制御](hana-li-portal.md)のリリース
 
-- [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
+[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](high-availability-guide-suse-netapp-files.md)のリリース
 
-Azure VM 用の SAP HANA Dynamic Tiering に関するドキュメント
+Azure Load Balancer と関連した **Linux OS パラメーター net.ipv4.tcp_timestamps** の設定の明確化
 
-- [Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#sap-hana-dynamic-tiering-20-for-azure-virtual-machines)
+[Azure Availability Zones での SAP ワークロードの構成](sap-ha-availability-zones.md)のリリース
 
-Azure VM M128 上の SAP HANA スケールアウト関連のドキュメントには、次の内容が追加されました。
+[SAP ワークロードの計画とデプロイ チェックリスト](sap-deployment-checklist.md)のリリース
 
-- [Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#configuring-azure-infrastructure-for-sap-hana-scale-out)
-- [1 つの Azure リージョン内での SAP HANA の可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
+
 
 
 ## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の SAP HANA
@@ -57,10 +55,10 @@ Azure VM M128 上の SAP HANA スケールアウト関連のドキュメント�
 
 - [SAP HANA on Azure (Large Instances) の概要](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 - [SAP HANA on Azure (Large Instances) のアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
-- [SAP HANA on Azure (Large Instances) のインフラストラクチャと接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- [SAP HANA on Azure (Large Instances) への SAP HANA のインストール](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
-- [SAP HANA on Azure (Large Instances) の高可用性とディザスター リカバリー](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
-- [SAP HANA on Azure (Large Instances) のトラブルシューティングと監視](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
+- [SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
+- [SAP HANA on Azure (L インスタンス) への SAP HANA のインストール](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
+- [SAP HANA on Azure (L インスタンス) の高可用性とディザスター リカバリー | Microsoft Docs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- [SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
 次のステップ:
 
@@ -123,7 +121,7 @@ Azure Active Directory (AAD) と SAP Services の統合、さらにシングル 
 - [チュートリアル:Azure Active Directory と SAP NetWeaver の統合](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-netweaver-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [チュートリアル:Azure Active Directory と SAP Business ByDesign の統合](https://docs.microsoft.com/azure/active-directory/saas-apps/sapbusinessbydesign-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [チュートリアル:Azure Active Directory と SAP HANA の統合](https://docs.microsoft.com/azure/active-directory/saas-apps/saphana-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [S/4HANA 環境 – Azure AD を使用した Fiori Launchpad SAML シングル サインオン](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
+- [ご利用の S/4HANA 環境 – Azure AD を使用した Fiori Launchpad SAML シングル サインオン](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
 
 Azure Services と SAP コンポーネントの統合に関するドキュメントの一覧は次のとおりです。
 

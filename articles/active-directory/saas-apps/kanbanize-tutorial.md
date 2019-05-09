@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Kanbanize の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Kanbanize の統合 | Microsoft Docs
 description: Azure Active Directory と Kanbanize の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 746eaadcdb9a588087367c4c70237922cf0f14bf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057834"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199682"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>チュートリアル: Azure Active Directory と Kanbanize の統合
+# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>チュートリアル:Azure Active Directory と Kanbanize の統合
 
 このチュートリアルでは、Kanbanize と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -113,7 +114,7 @@ Kanbanize で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[詳細な URL 設定の表示]** をクリックします。
 
-    d.  **[リレー状態]** ボックスに、URL `/ctrl_login/saml_login` を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  **[リレー状態]** ボックスに、URL `/ctrl_login/saml_login` を入力します。
 
     e. **[SP]** 開始モードでアプリケーションを構成する場合は、**[サインオン URL]** テキストボックスに `https://<subdomain>.kanbanize.com` のパターンで URL を入力します。
      
@@ -160,7 +161,7 @@ Kanbanize で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Idp Login Endpoint]\(IdP ログイン エンドポイント\)** テキストボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    d. **[Attribute name for Email]\(電子メールの属性名\)** テキストボックスで、この値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Attribute name for Email]\(電子メールの属性名\)** テキストボックスで、この値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を入力します。
 
     e. **[Attribute name for First Name]\(名の属性名\)** テキストボックスで、この値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` を入力します。
 
@@ -168,7 +169,7 @@ Kanbanize で Azure AD のシングル サインオンを構成してテスト�
     > [!Note]
     > これらの値は、Azure Portal の [ユーザー属性] セクションから対応する名前空間と名前の値を結合することで取得できます。
 
-    g. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容を (開始マーカーとエンド マーカーを除いて) コピーして **[Idp X.509 Certificate]\(IdP X.509 証明書\)** ボックスに貼り付けます。
+    g. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容を (開始マーカーとエンド マーカーを除いて) コピーして  **[Idp X.509 Certificate]\(IdP X.509 証明書\)** ボックスに貼り付けます。
 
     h. **[Enable login with both SSO and Kanbanize]\(SSO と Kanbanize の両方でログインを有効にする\)** をオンにします。
     
@@ -204,14 +205,14 @@ Kanbanize で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-kanbanize-test-user"></a>Kanbanize テスト ユーザーの作成
 
 このセクションの目的は、Kanbanize で Britta Simon というユーザーを作成することです。 Kanbanize では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Kanbanize ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Kanbanize クライアント サポート チーム](mailto:support@ms.kanbanize.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Kanbanize クライアント サポート チーム](mailto:support@ms.kanbanize.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -248,7 +249,7 @@ Kanbanize で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Kanbanize] タイルをクリックすると、自動的に Kanbanize アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

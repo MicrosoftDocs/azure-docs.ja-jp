@@ -9,22 +9,21 @@ ms.assetid: f54a26a4-baa4-4255-9791-5a8f935898e2
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 05833599059c2724529f9fd23edcd86934793835
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048858"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814352"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブル ソースからデータを移動する
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-web-table-connector.md)
-> * [Version 2 (現在のバージョン)](../connector-web-table.md)
+> * [バージョン 2 (最新バージョン)](../connector-web-table.md)
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Web テーブル コネクタ](../connector-web-table.md)に関するページを参照してください。
@@ -54,18 +53,18 @@ ms.locfileid: "37048858"
 ```
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。
+さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
-- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
+- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Web テーブルからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: Web テーブルから Azure BLOB へのデータのコピー](#json-example-copy-data-from-web-table-to-azure-blob)」をご覧ください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Web テーブルからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON の使用例: Web テーブルから Azure BLOB にデータをコピーする](#json-example-copy-data-from-web-table-to-azure-blob)」セクションを参照してください。 
 
 次のセクションでは、Web テーブルに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -74,9 +73,9 @@ ms.locfileid: "37048858"
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **Web** |[はい] |
-| Url |Web ソースへの URL |[はい] |
-| authenticationType |Anonymous |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**Web** |はい |
+| Url |Web ソースへの URL |はい |
+| authenticationType |Anonymous |はい |
 
 ### <a name="using-anonymous-authentication"></a>匿名認証を使用する
 
@@ -102,9 +101,9 @@ ms.locfileid: "37048858"
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |データセットの型。 **データセット** |[はい] |
-| パス |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
-| Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |[はい] |
+| type |データセットの型。 **データセット** |はい |
+| path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
+| Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |はい |
 
 **例:**
 
@@ -135,7 +134,7 @@ ms.locfileid: "37048858"
 現時点では、ソースが **WebSource**型のコピー アクティビティの場合、追加プロパティはサポートされません。
 
 
-## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON の使用例: Web テーブルから Azure BLOB へのデータのコピー
+## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON の使用例:Web テーブルから Azure BLOB にデータをコピーする
 次のサンプルは以下を示しています。
 
 1. [Web](#linked-service-properties)型のリンクされたサービス。
@@ -183,7 +182,7 @@ ms.locfileid: "37048858"
 **WebTable 入力データセット** **external** を **true** に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 > [!NOTE]
-> HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。
+> HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。  
 >
 >
 
@@ -209,7 +208,7 @@ ms.locfileid: "37048858"
 
 **Azure BLOB の出力データセット**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。
 
 ```json
 {
@@ -237,16 +236,16 @@ ms.locfileid: "37048858"
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **WebSource** に設定され、**sink** 型が **BlobSink** に設定されています。
 
-WebSource でサポートされるプロパティの一覧については、 [WebSource type プロパティに関するセクション](#copy-activity-type-properties) を参照してください。
+WebSource でサポートされるプロパティの一覧については、WebSource type プロパティに関するセクションを参照してください。
 
 ```json
-{
+{  
     "name":"SamplePipeline",
-    "properties":{
+    "properties":{  
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline with copy activity",
-    "activities":[
+    "activities":[  
       {
         "name": "WebTableToAzureBlob",
         "description": "Copy from a Web table to an Azure blob",
@@ -286,7 +285,7 @@ WebSource でサポートされるプロパティの一覧については、 [We
 ```
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>HTML ページのテーブルのインデックスを取得する
-1. **Excel 2016** を起動し、**[データ]** タブに切り替えます。
+1. **Excel 2016** を起動し、**[データ]** タブに切り替えます。  
 2. ツール バーの **[新しいクエリ]** をクリックし、**[その他のソースから]** をポイントし、**[Web から]** をクリックします。
 
     ![Power Query メニュー](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
@@ -298,7 +297,7 @@ WebSource でサポートされるプロパティの一覧については、 [We
 4. **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、**[接続]** をクリックします。
 
    ![[Access Web コンテンツ] ダイアログ ボックス](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5. ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。
+5. ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。  
 
    ![[ナビゲーター] ダイアログ](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
 6. **[クエリ エディター]** ウィンドウで、ツール バーの **[詳細エディター]** をクリックします。

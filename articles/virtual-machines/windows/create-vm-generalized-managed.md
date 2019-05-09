@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8acbb33b396aa617936eb0333bd68fea60532425
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9157765afaa610d207a47e19b73f80ae3898fd68
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404658"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977560"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
 
 Azure portal または PowerShell を使用して、Azure 管理 VM イメージから複数の仮想マシン (VM) を作成できます。 管理 VM イメージには、OS や データ ディスクなど、VM の作成に必要な情報が含まれています。 OS ディスクやデータ ディスクなど、イメージを構成する仮想ハード ディスク (VHD) は、マネージド ディスクとして保管されます。 
 
 新しい VM を作成する前に、ソース イメージとして使用する[管理 VM イメージを作成](capture-image-resource.md)する必要があります。 
+
 
 ## <a name="use-the-portal"></a>ポータルの使用
 
@@ -41,17 +42,17 @@ Azure portal または PowerShell を使用して、Azure 管理 VM イメージ
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
-PowerShell を使用すると、[New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) コマンドレットに対して設定された簡略化されたパラメーターを使用して、イメージから VM を作成できます。 このイメージは、VM を作成する同じリソース グループに存在する必要があります。
+PowerShell を使用すると、[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットに対して設定された簡略化されたパラメーターを使用して、イメージから VM を作成できます。 このイメージは、VM を作成する同じリソース グループに存在する必要があります。
 
-この例では、AzureRM モジュール バージョン 5.6.0 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-[New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) の簡易なパラメーター セットでは、イメージから VM を作成するための名前、リソース グループ、およびイメージ名を指定する必要があります。 New-AzureRmVm には、自動的に作成するすべてのリソースの名前として **-Name** パラメーターの値が使用されます。 この例では、各リソースのより詳細な名前を指定しますが、それらがコマンドレットで自動的に作成されるようにしてください。 また、仮想ネットワークなどのリソースを事前に作成し、そのリソース名をコマンドレットに渡すこともできます。 New-AzureRmVm では、一致する名前の既存のリソースが見つかった場合は、それが使用されます。
+[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) の簡易なパラメーター セットでは、イメージから VM を作成するための名前、リソース グループ、およびイメージ名を指定する必要があります。 New-AzVm には、自動的に作成するすべてのリソースの名前として **-Name** パラメーターの値が使用されます。 この例では、各リソースのより詳細な名前を指定しますが、それらがコマンドレットで自動的に作成されるようにしてください。 また、仮想ネットワークなどのリソースを事前に作成し、そのリソース名をコマンドレットに渡すこともできます。 New-AzVm では、一致する名前の既存のリソースが見つかった場合は、それが使用されます。
 
 次の例では、*myImage* という名前のイメージから *myVMFromImage* という名前の VM を (*myResourceGroup* リソース グループ内に) 作成します。 
 
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVMfromImage" `
     -ImageName "myImage" `

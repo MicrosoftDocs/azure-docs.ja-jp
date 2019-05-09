@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Ruby と Computer Vision API を使って、画像内の印刷されたテキストを抽出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 32855d9c5b39d99034fee3b923ba7b28a472d346
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 738700a481da76d8ed6893fa1cc3276b2c5c814b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582118"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877515"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Ruby を使用して印刷されたテキストを抽出する (OCR)
 
@@ -143,13 +143,9 @@ puts response.body
 }
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になったら、ファイルを削除します。
-
 ## <a name="next-steps"></a>次の手順
 
-画像の分析、著名人やランドマークの検出、サムネイルの作成、印刷されたテキストや手書きテキストの抽出に使用される Computer Vision API の詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+画像の分析、著名人やランドマークの検出、サムネイルの作成、印刷されたテキストや手書きテキストの抽出を実行する Computer Vision API の詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
 
 > [!div class="nextstepaction"]
 > [Computer Vision API の詳細を確認する](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

@@ -1,0 +1,38 @@
+- name: 概要
+  items:
+    - name: Linux SQL Server VM について
+      href: sql-server-linux-virtual-machines-overview.md
+- name: クイック スタート
+  items:
+    - name: SQL VM の作成 - ポータル
+      href: provision-sql-server-linux-virtual-machine.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/
+    - name: PowerShell
+      href: /powershell/azure/overview
+    - name: T-SQL
+      href: 'https://msdn.microsoft.com/library/azure/bb510741.aspx'
+    - name: SQL Server ドライバー
+      href: 'https://msdn.microsoft.com/library/mt654049.aspx'
+    - name: REST
+      href: /rest/api/
+- name: リソース
+  items:
+    - name: FAQ
+      href: sql-server-linux-faq.md
+    - name: SQL Server on Linux のドキュメント
+      href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
+    - name: 価格
+      href: ../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json
+    - name: PaaS または IaaS
+      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
+    - name: SQL Server Data Tools (SSDT)
+      href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+    - name: SQL Server Tools
+      href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'

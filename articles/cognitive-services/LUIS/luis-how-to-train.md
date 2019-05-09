@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリ バージョンを教育するプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 04/07/2019
 ms.author: diberry
-ms.openlocfilehash: ba450258a03fc21a06476a6bdd81dc5a886056de
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ba0db22437961a33b0b415ec7cb60ad3df12821c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137626"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267057"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUIS アプリのアクティブなバージョンをトレーニングする 
 
@@ -44,6 +44,10 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 >[!NOTE]
 >アプリの 1 つまたは複数の意図に、発話の例が含まれていない場合は、アプリのトレーニングを行うことはできません。 すべての意図に発話を追加します。 詳細については、「[Add example utterances](luis-how-to-add-example-utterances.md)」(発話の追加) を参照してください。
 
+## <a name="training-date-and-time"></a>日付と時刻をトレーニングする
+
+トレーニングの日付と時刻は GMT + 2 です。 
+
 ## <a name="train-with-all-data"></a>すべてのデータでトレーニングする
 
 トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 少数のネガティブ サンプリングではなく、すべてのデータを使用したい場合は、`UseAllTrainingData` を True に設定した状態で[バージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を使用し、この機能をオフにします。 
@@ -60,5 +64,5 @@ LUIS ポータルでのトレーニングは、**[トレーニング]** ボタ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endoint-utt.md) 
-* [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md) 
+* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md) 
+* [LUIS アプリのパフォーマンスを向上させるフィーチャーを使用する](luis-how-to-add-features.md) 

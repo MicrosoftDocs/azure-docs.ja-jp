@@ -4,29 +4,29 @@ description: Service Fabric クラスター リソース マネージャーに�
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f25a422385abfcdb7020eb7477c0ae2ee55cd8fb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e9b1cc8b66be36a0a77118f4de672c9411433ba5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210598"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660887"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーの概要
 従来、IT システムまたはオンライン サービスの管理とは、特定の物理コンピューターまたは仮想マシンを特定のサービスまたはシステム専用にすることを意味していました。 サービスは階層として設計されていました。 "Web" 階層と、"データ" または "ストレージ" 階層があります。 アプリケーションには、要求が出入りするメッセージング階層と、キャッシュ専用の一連のコンピューターがあります。 ワークロードの階層または種類にはそれぞれ専用のコンピューターが使用されていました。データベースには 2 個の専用コンピューターが、Web サーバーには数個が使用されました。 特定の種類のワークロードがそのワークロード用のコンピューターの能力を超えた場合は、そのワークロード用に構成されたコンピューターの数をその階層に増やしていました。 ただし、すべてのワークロードを簡単にスケール アウトできる訳ではありません。通常はコンピューターを大きなコンピューターで置き換えるデータ層では特にそうですが、 簡単です。 マシンで障害が発生した場合、マシンが復元されるまで、アプリケーションのその部分の処理能力が低下します。 まだ (楽しくはないにしても) 十分に簡単です。
 
 ただし、サービスとソフトウェア アーキテクチャの世界は変化しました。 アプリケーションがスケールアウト設計を採用することは一般的になりました。 コンテナーまたはマイクロサービス (またはその両方) を使用してアプリケーションを構築することは一般的です。 現在では、コンピューター数がごくわずかでも、実行しているワークロードのインスタンスは 1 つのみではありません。 複数のワークロードを同時に実行している可能性もあります。 何十種類ものサービス (コンピューターの容量すべてに相当するリソースを消費するサービスはありません) があり、おそらくこれらのサービスの何百ものインスタンスがあります。 各名前付きインスタンスには高可用性 (HA) のためのインスタンスまたはレプリカが 1 つ以上あります。 ワークロードのサイズとビジー状態によっては、数百または数千単位のコンピューターがある可能性があります。 
 
-いきなり、環境の管理は、1 種類のワークロードに専用の数台のマシンの管理といった単純なものではなくなります。 サーバーは仮想化されており、もはや名前を持ちません (考え方を[ペットから家畜の牛](http://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20)に変えます)。 マシンに関する構成は減り、サービス自体に関する構成が増えています。 単一インスタンスのワークロード専用のハードウェアの大部分は過去のものになっています。 サービス自体が複数の細分化されたコモディティ ハードウェアにまで及ぶ小規模な分散システムになっています。
+いきなり、環境の管理は、1 種類のワークロードに専用の数台のマシンの管理といった単純なものではなくなります。 サーバーは仮想化されており、もはや名前を持ちません (考え方を[ペットから家畜の牛](https://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20)に変えます)。 マシンに関する構成は減り、サービス自体に関する構成が増えています。 単一インスタンスのワークロード専用のハードウェアの大部分は過去のものになっています。 サービス自体が複数の細分化されたコモディティ ハードウェアにまで及ぶ小規模な分散システムになっています。
 
 アプリケーションは複数の階層にまたがって分散する一連のモノリスではなくなったため、処理に必要な数の組み合わせを持つことができるようになりました。 どのハードウェアまたは何台のハードウェアで実行できるワークロードの種類をだれが決定しますか。 どのワークロードが同じハードウェアで適切に動作し、競合しているでしょうか。 コンピューターが停止した場合、そのコンピューターで実行されていたものを知るにはどうすればよいでしょうか。 確実にワークロードが再実行する責任はだれにありますか。 (仮想) マシンが回復するまで待ちますか、またはワークロードは自動的に他のマシンにフェールオーバーし、実行し続けていますか。 ユーザーの介入は必要ですか。 この環境でのアップグレードについてはどうですか。
 
@@ -44,10 +44,6 @@ Microsoft では、この環境に対応している開発者およびオペレ�
 2. 環境の最適化
 3. その他のプロセスの支援
 
-クラスター リソース マネージャーの機能については、次の Microsoft Virtual Academy のビデオをご覧ください。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
-<img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
-
 ### <a name="what-it-isnt"></a>説明
 従来の N 層 アプリケーションには、常に[ロード バランサー](https://en.wikipedia.org/wiki/Load_balancing_(computing))があります。 通常は、ネットワーク スタック内での位置によりネットワーク ロード バランサー (NLB) またはアプリケーション ロード バランサー (ALB) と呼ばれていました。 ロード バランサーには、F5 の BigIP のようなハードウェア ベースのものと、Microsoft の NLB のようなソフトウェア ベースのものがあります。 他の環境では、このロールに HAProxy、nginx、Istio、Envoy のようなものがありました。 これらのアーキテクチャでの負荷分散の仕事は、すべての異なるステートレス ワークロードが、(ほぼ) 同じ量の作業を受け取るようにすることです。 負荷分散にはさまざまな戦略があります。 一部のロード バランサーは、異なるサーバーにそれぞれ異なる呼び出しを送信していました。 その他のロード バランサーは、セッションの固定や持続性を提供するものでした。 より高度なロード バランサーは、予想されるコストと現状のコンピューターの負荷に基づいて、実際の負荷の推定またはレポートを使用して呼び出しをルーティングします。
 
@@ -58,9 +54,9 @@ Microsoft では、この環境に対応している開発者およびオペレ�
 クラスター リソース マネージャーはサービスを移動させる役割を担うため、ネットワーク ロード バランサーにあるものとは違った機能セットを持っています。 これは、ネットワーク ロード バランサーは、その場所がサービス自体の実行に最適ではない場合でも、サービスが既に配置されている場所にネットワーク トラフィックを配信するためです。 クラスター内のリソースが効率的に活用されるようにするため、Service Fabric クラスター リソース マネージャーは、根本的に異なる方法を採用しています。
 
 ## <a name="next-steps"></a>次の手順
-- クラスター リソース マネージャー内のアーキテクチャと情報フローの詳細については、[この記事](service-fabric-cluster-resource-manager-architecture.md)を確認してください。
+- クラスター リソース マネージャー内のアーキテクチャと情報フローについては、[こちらの記事](service-fabric-cluster-resource-manager-architecture.md)をご確認ください
 - Cluster Resource Manager には、クラスターを記述するためのさまざまなオプションがあります。 メトリックの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
-- サービスの構成の詳細については、[サービスの構成](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md) に関する記事を参照してください。
+- サービスの構成の詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。
 - メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 - クラスター リソース マネージャーは Service Fabric の管理機能と連動します。 その統合の詳細については、 [この記事](service-fabric-cluster-resource-manager-management-integration.md)
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での geographyV2 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: a81c97cf8883d2a3629d1eb1b9f6137609c6edda
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 17f612f2ee6c7d27dcec9f72ed3df1ed418eb3d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135102"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961611"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの geographyV2 作成済みエンティティ
 作成済みの geographyV2 エンティティは、場所を検出します。 このエンティティは既にトレーニングされているので、GeographyV2 を含む発話の例をアプリケーション意図に追加する必要はありません。 GeographyV2 エンティティは、英語[カルチャ](luis-reference-prebuilt-entities.md)でサポートされています。

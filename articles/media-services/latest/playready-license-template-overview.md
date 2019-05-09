@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: f0fd4d8a9d6e9382ab02b0bd924e2a43b31f6684
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 0ce0d40bfd9d41838573f6355ceffc17761111c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377618"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843355"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady ライセンス テンプレートの概要 
 
@@ -47,7 +47,7 @@ XML は、「[PlayReady ライセンス テンプレート XML スキーマ](#sc
 
 
     <?xml version="1.0" encoding="utf-8"?>
-    <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
+    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
                                       xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
       <LicenseTemplates>
         <PlayReadyLicenseTemplate>
@@ -77,7 +77,7 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
     BeginDate = new DateTime(2016, 1, 1),
     ContentKeyLocation = new ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader(),
     ContentType = ContentKeyPolicyPlayReadyContentType.UltraVioletStreaming,
-    LicenseType = drmSettings.EnbleOfflineMode ? ContentKeyPolicyPlayReadyLicenseType.Persistent : ContentKeyPolicyPlayReadyLicenseType.NonPersistent,
+    LicenseType = drmSettings.EnableOfflineMode ? ContentKeyPolicyPlayReadyLicenseType.Persistent : ContentKeyPolicyPlayReadyLicenseType.NonPersistent,
     PlayRight = new ContentKeyPolicyPlayReadyPlayRight
     {
         ImageConstraintForAnalogComponentVideoRestriction = true,
@@ -90,7 +90,7 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
 
 ## <a id="schema"></a>PlayReady ライセンス テンプレート XML スキーマ
     <?xml version="1.0" encoding="utf-8"?>
-    <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xs:complexType name="AgcAndColorStripeRestriction">
         <xs:sequence>

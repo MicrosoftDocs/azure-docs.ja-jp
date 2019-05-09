@@ -1,18 +1,19 @@
 ---
 title: Azure IoT Hub device-to-cloud オプション | Microsoft Docs
 description: 開発者ガイド - device-to-cloud メッセージ、報告されるプロパティ、または cloud-to-device 通信のファイルのアップロードを使用するタイミングに関するガイダンスです。
-author: fsautomata
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: elioda
-ms.openlocfilehash: cd20c835fbb08ca0d44f6c77374ba52e19536d63
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: fffa064b912a96b05feb901d1d2d44533c4681b7
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452192"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57007983"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>device-to-cloud 通信に関するガイダンス
 
@@ -32,9 +33,9 @@ ms.locfileid: "47452192"
 | ---- | ------- | ---------- | ---- |
 | シナリオ | テレメトリの時系列と警告。 たとえば、256 KB のセンサー データをひとまとめにして 5 分間隔で送信します。 | 利用できる機能や条件。 たとえば現在のデバイス接続モード (携帯ネットワークか WiFi かなど) を報告します。 構成やソフトウェア更新などの実行時間の長いワークフローと同期します。 | メディア ファイル。 大規模な (通常は圧縮された) テレメトリ バッチ。 |
 | 格納と取得 | IoT Hub によって、最大 7 日間、一時的に格納されます。 シーケンシャルな読み取りのみ可能です。 | IoT Hub によってデバイス ツインに格納されます。 [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)を使用して取得できます。 | ユーザー指定の Azure Storage アカウントに格納されます。 |
-| サイズ | 最大 256 KB のメッセージ。 | 報告されるプロパティの最大サイズは 8 KB。 | Azure Blob Storage によってサポートされるファイルの最大サイズ。 |
+| Size | 最大 256 KB のメッセージ。 | 報告されるプロパティの最大サイズは 8 KB。 | Azure Blob Storage によってサポートされるファイルの最大サイズ。 |
 | 頻度 | 高。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 | 中。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 | 低。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |
-| プロトコル | すべてのプロトコルで使用できます。 | MQTT または AMQP を使用して利用できます。 | どのプロトコルでも使用できますが、デバイス上に HTTPS が必要です。 |
+| Protocol | すべてのプロトコルで使用できます。 | MQTT または AMQP を使用して利用できます。 | どのプロトコルでも使用できますが、デバイス上に HTTPS が必要です。 |
 
 アプリケーションは、情報を時系列のテレメトリまたはアラートとして送信することと、デバイス ツインで使用できるようにすることの両方を要求できます。 このシナリオでは、次のいずれかの方法を選ぶことができます。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1491068248d20a917e28db5a75dee3d4b3753f5c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730298"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549490"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。 
@@ -52,7 +52,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 ## <a name="requirements-and-restrictions"></a>要件および制限
 * バックアップと復元の機能には、**Standard** レベルまたは **Premium** レベル以上のレベルにある App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](web-sites-scale.md)に関するページを参照してください。  
   **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
-* バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure のストレージ アカウントの詳細については、この記事の末尾に示されている [リンク](#moreaboutstorage) を参照してください。
+* バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」をご覧ください。
 * 最大 10 GB のアプリとデータベースのコンテンツをバックアップできます。 バックアップのサイズがこの制限を超えた場合、エラーが発生します。
 * SSL が有効な Azure Database for MySQL はサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
 * SSL が有効な Azure Database for PostgreSQL はサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
@@ -121,6 +121,9 @@ App Service によって、アプリで使用するようにユーザーが構�
 * ログ ファイルはバックアップしない。
 
 部分バックアップでは、バックアップするファイルを詳細に選択できます。
+
+> [!NOTE]
+> バックアップ内の個々のデータベースは最大 4 GB となりますが、バックアップの合計最大サイズは 10 GB です。
 
 ### <a name="exclude-files-from-your-backup"></a>バックアップからファイルを除外する
 一度バックアップされており今後まったく変更されることがないログ ファイルや静止画像を含むアプリがあるとします。 このような場合には、将来のバックアップ時にそれらのフォルダーやファイルを保存しないように除外できます。 バックアップからファイルやフォルダーを除外するには、アプリの `D:\home\site\wwwroot`フォルダー内に `_backup.filter` ファイルを作成します。 このファイルに、除外するファイルやフォルダーの一覧を指定します。 

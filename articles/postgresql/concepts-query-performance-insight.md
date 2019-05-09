@@ -1,25 +1,21 @@
 ---
 title: Azure Database for PostgreSQL の Query Performance Insight
 description: この記事では、Azure Database for PostgreSQL の Query Performance Insight 機能について説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 38cfac8932859db7daa76e831372c97d97f0b24c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 03/28/2019
+ms.openlocfilehash: 56abdd819e78312e64209078c3966826385df7bc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376313"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620735"
 ---
-# <a name="query-performance-insight"></a>[Query Performance Insight] 
+# <a name="query-performance-insight"></a>Query Performance Insight 
 
 **適用対象:** Azure Database for PostgreSQL 9.6 および 10
-
-> [!IMPORTANT]
-> Query Performance Insight 機能は現在パブリック プレビュー段階です。 
 
 Query Performance Insight では、実行時間が最長のクエリ、クエリの経時変化､影響を受けている待機状態を素早く特定することができます。
 
@@ -32,11 +28,11 @@ Query Performance Insight が機能するには、[クエリ ストア](concepts
 ## <a name="viewing-performance-insights"></a>パフォーマンス洞察の表示
 Azure portal の [Query Performance Insight](concepts-query-performance-insight.md) ビューは、クエリ ストアからの重要な情報を視覚化します。 
 
-Azure Database for PostgreSQL サーバーのポータル ページのメニュー バーの **サポート + トラブルシューティング**セクションにある **Query Performance Insight** を選択します。
+Azure Database for PostgreSQL サーバーのポータル ページのメニュー バーの **[インテリジェント パフォーマンス]** セクションにある **[Query Performance Insight]** を選択します。
 
 ![Query Performance Insight 実行時間が長いクエリ](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-**実行時間の長いクエリ**タブは、実行ごとの平均実行時間上位 5 クエリを示し、15 分間隔で集計しています。 **Number of Queries** ドロップダウンから選択してより多くのクエリを表示することができます。 グラフの色は、これを行うときに、特定のクエリ ID に対して変更できます。
+**[実行時間の長いクエリ]** タブには、15 分間隔で集計された、実行ごとの平均実行時間上位 5 クエリが示されます。 **Number of Queries** ドロップダウンから選択してより多くのクエリを表示することができます。 グラフの色は、これを行うときに、特定のクエリ ID に対して変更できます。
 
 特定の時間枠を絞り込むために、クリックして、グラフにドラッグします。 拡大および縮小アイコン使用して、それぞれ期間を短くしたり､長くしたりすることもできます｡
 
@@ -44,7 +40,7 @@ Azure Database for PostgreSQL サーバーのポータル ページのメニュ�
 
 **Wait Statistics** タブを選択し、サーバー内の待機時間に関して、対応する視覚化を表示します。
 
-![Query Performance Insight の待機の統計](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Query Performance Insight の待機時間の統計](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="next-steps"></a>次の手順
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0fb2103b982d5b2fc1a04455b451459ede12166e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108207"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>ディザスター リカバリーと地理的分散
 
@@ -24,7 +24,7 @@ ms.locfileid: "53336937"
 Durable Functions では、すべての状態は Azure Storage に保持されます。 [タスク ハブ](durable-functions-task-hubs.md)は、オーケストレーションに使用される Azure Storage リソースの論理コンテナーです。 オーケストレーター関数とアクティビティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。
 説明されているシナリオでは、ディザスター リカバリー中の可用性を向上し、ダウンタイムを最小限に抑える展開オプションが提案されています。
 
-これらのシナリオでは、Azure Storage の使用を前提としたアクティブ/パッシブ構成が使用されていることに注意してください。 このパターンは、異なるリージョンに、バックアップ (パッシブ) 関数アプリを展開することで構成されます。 Traffic Manager では、プライマリ (アクティブ) 関数アプリの可用性を監視します。 プライマリに障害が発生した場合、バックアップ関数アプリにフェールオーバーします。 詳細については、「[Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) での[優先順位によるトラフィック ルーティング方法の構成](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)」をご覧ください。
+これらのシナリオでは、Azure Storage の使用を前提としたアクティブ/パッシブ構成が使用されていることに注意してください。 このパターンは、異なるリージョンに、バックアップ (パッシブ) 関数アプリを展開することで構成されます。 Traffic Manager では、プライマリ (アクティブ) 関数アプリの可用性を監視します。 プライマリに障害が発生した場合、バックアップ関数アプリにフェールオーバーします。 詳細については、「[Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) での[優先順位によるトラフィック ルーティング方法の構成](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)」をご覧ください。
 
 >[!NOTE]
 >

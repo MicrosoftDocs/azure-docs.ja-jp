@@ -9,99 +9,66 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: c5f441fef95989e5c82586d96fc6c10e00a9627c
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085497"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746746"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
 
-Azure Media Services v3 では、ストリーミング ポリシーを使用して、StreamingLocator のためのストリーミング プロトコルと暗号化オプションを定義できます。 作成したストリーミング ポリシーの名前を指定するか、定義済みのストリーミング ポリシーのいずれかを指定できます。 現在、利用できる定義済みのストリーミング ポリシーは次のとおりです。'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming'。
+Azure Media Services v3 では、[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を使用して、[ストリーミング ロケーター](streaming-locators-concept.md)のためのストリーミング プロトコルと暗号化オプションを定義できます。 定義済みのストリーミング ポリシーまたは作成済みのカスタム ポリシーのいずれかを使用できます。 現在利用できる定義済みのストリーミング ポリシーは次のとおりです。'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming'
 
 > [!IMPORTANT]
-> カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 StreamingLocator ごとに新しい StreamingPolicy を作成しないでください。
+> * Datetime 型の**ストリーミング ポリシー**のプロパティは、常に UTC 形式です。
+> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 
 
-## <a name="streamingpolicy-definition"></a>StreamingPolicy の定義
+## <a name="examples"></a>例
 
-次の表は、StreamingPolicy のプロパティとそれらの定義を示しています。
+### <a name="not-encrypted"></a>暗号化なし
 
-|Name|説明|
-|---|---|
-|id|リソースの完全修飾リソース ID。|
-|name|リソースの名前。|
-|properties.commonEncryptionCbcs|CommonEncryptionCbcs の構成|
-|properties.commonEncryptionCenc|CommonEncryptionCenc の構成|
-|properties.created |ストリーミング ポリシーの作成時刻|
-|properties.defaultContentKeyPolicyName |現在のストリーミング ポリシーによって使用される既定の ContentKey|
-|properties.envelopeEncryption  |EnvelopeEncryption の構成|
-|properties.noEncryption|NoEncryption の構成|
-|type|リソースの種類。|
+平文 (暗号化されていない) でファイルをストリーミングする場合は、定義済みの平文のストリーミング ポリシーを 'Predefined_ClearStreamingOnly' に設定します (.NET では、PredefinedStreamingPolicy.ClearStreamingOnly を使用できます)。
 
-完全な定義については、「[Streaming Policies](https://docs.microsoft.com/rest/api/media/streamingpolicies)」(ストリーミング ポリシー) を参照してください。
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
+    });
+```
+
+### <a name="encrypted"></a>暗号化 
+
+エンベロープと CENC 暗号化を使用してコンテンツを暗号化する必要がある場合は、ポリシーを 'Predefined_MultiDrmCencStreaming' に設定してください。 このポリシーは、2 つのコンテンツ キー (エンベロープおよび CENC) を生成してロケーターに設定する必要があることを示しています。 このため、エンベロープ、PlayReady および Widevine の暗号化が適用されます (キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます)。
+
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
+        DefaultContentKeyPolicyName = contentPolicyName
+    });
+```
+
+また、CBCS (FairPlay) でもストリームを暗号化する場合は、'Predefined_MultiDrmStreaming' を使用します。
 
 ## <a name="filtering-ordering-paging"></a>フィルター処理、順序付け、ページング
 
-Media Services は、ストリーミング ポリシー用の次の OData クエリ オプションをサポートします。 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-演算子の説明:
-
-* Eq = 次の値と等しい
-* Ne = 次の値と等しくない
-* Ge = 次の値以上
-* Le = 次の値以下
-* Gt = より大きい
-* Lt = より小さい
-
-### <a name="filteringordering"></a>フィルター処理/順序付け
-
-次の表は、これらのオプションを StreamingPolicy プロパティに適用できる方法を示しています。 
-
-|Name|filter|順序|
-|---|---|---|
-|id|||
-|name|eq、ne、ge、le、gt、lt|昇順および降順|
-|properties.commonEncryptionCbcs|||
-|properties.commonEncryptionCenc|||
-|properties.created |eq、ne、ge、le、gt、lt|昇順および降順|
-|properties.defaultContentKeyPolicyName |||
-|properties.envelopeEncryption|||
-|properties.noEncryption|||
-|type|||
-
-### <a name="pagination"></a>改ページ位置の自動修正
-
-改ページ位置の自動修正は、4 つの有効な各並べ替え順序でサポートされています。 現時点では、ページ サイズは 10 です。
-
-> [!TIP]
-> 常に次のリンクを使用してコレクションを列挙する必要があります。特定のページ サイズに依存しないでください。
-
-クエリ応答に多数の項目が含まれている場合、サービスは "\@odata.nextLink" プロパティを返して結果の次のページを取得します。 この方法を利用して、結果セット全体のページングを実行できます。 ページ サイズを構成することはできません。 
-
-コレクションのページング中に StreamingPolicy が作成または削除された場合、その変更は返される結果に反映されます (変更がまだダウンロードされていないコレクション部分にある場合)。 
-
-次の C# の例は、アカウント内のすべての StreamingPolicy を列挙する方法を示しています。
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-REST の例については、[ストリーミング ポリシーの一覧](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)に関する記事を参照してください
+「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-[ファイルのストリーミング](stream-files-dotnet-quickstart.md)
+* [ファイルのストリーミング](stream-files-dotnet-quickstart.md)
+* [AES-128 動的暗号化とキー配信サービスの使用](protect-with-aes128.md)
+* [DRM 動的暗号化とライセンス配信サービスの使用](protect-with-drm.md)

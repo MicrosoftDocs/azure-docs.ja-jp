@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションを管理する | Microsoft Doc
 description: 管理者として、Azure IoT Central アプリケーションを管理する方法
 author: viv-liu
 ms.author: viviali
-ms.date: 04/16/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4dba6aff2002c1f17055cd647be94c4d8f644ad7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 29ded279e2a76940049c257b954b1dae75f14836
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992200"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778605"
 ---
 # <a name="administer-your-iot-central-application"></a>IoT Central アプリケーションを管理する
 
@@ -46,9 +46,9 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 ### <a name="copy-an-application"></a>アプリケーションをコピーする
 デバイス インスタンス、デバイス データ履歴、およびユーザー データ以外の任意のアプリケーションのコピーを作成できます。 コピーは、課金対象となる従量課金制アプリケーションになります。 この方法で試用版アプリケーションを作成することはできません。
 
-**[コピー]** ボタンをクリックします。 ダイアログ ボックスに、新しい従量課金制アプリケーションの詳細を入力します。 次に、**[コピー]** ボタンをクリックして、続行することを確認します。 このフォームのフィールドの詳細については、[アプリケーションの作成](quick-deploy-iot-central.md)に関するクイック スタートを参照してください。
+**[コピー]** を選択します。 ダイアログ ボックスに、新しい従量課金制アプリケーションの詳細を入力します。 **[コピー]** を選択して､続行することを確認します｡ このフォームのフィールドの詳細については、[アプリケーションの作成](quick-deploy-iot-central.md)に関するクイック スタートを参照してください。
 
-![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/appCopy2.png)
+![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/appcopy2.png)
 
 アプリのコピー操作が成功したら、表示されるリンクを使用してアプリケーションをコピーすることで作成された新しいアプリケーションに移動できます。
 
@@ -95,7 +95,7 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 
 ## <a name="manage-roles"></a>ロールの管理
 
-ロールを使用すると、組織内で IoT Central のさまざまなタスクを実行できるユーザーを制御することができます。 アプリケーションのユーザーに割り当てることができるロールが 3 つあります。 
+ロールを使用すると、組織内で IoT Central のさまざまなタスクを実行できるユーザーを制御することができます。 アプリケーションのユーザーに割り当てることができるロールが 3 つあります。
 
 ### <a name="administrator"></a>管理者
 
@@ -111,7 +111,6 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 
 **Application Operator (アプリケーション オペレーター)** ロール内のユーザーはデバイス テンプレートを変更したり、アプリケーションを管理したりすることはできません。 つまり、オペレーターはデバイスの追加と削除、デバイス セットの管理、分析とジョブの実行が可能です。 オペレーターが、**[Application Builder]\(アプリケーション ビルダー\)** ページと **[管理]** ページにアクセスすることはできません。
 
-
 ## <a name="view-your-bill"></a>課金状況の表示
 
 請求書を表示するには、**課金**ページの**管理**セクションに移動します。 新しいタブに Azure 課金ページが開き、Azure IoT Central アプリケーションごとに請求書を確認することができます。
@@ -124,32 +123,32 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 - **従量課金制**アプリケーションは、デバイスごとに課金され、最初の 5 個のデバイスは無料です。
 
 価格の詳細については、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)を参照してください。
-    
+
 このセルフ サービスのプロセスを完了するには、次の手順に従います。
 
-1. **[管理]** セクションの **[課金]** ページに移動します。 
+1. **[管理]** セクションの **[課金]** ページに移動します。
 
     ![試用版の状態](media/howto-administer/freetrialbilling.png)
 
-1. **[Convert to Pay-As-You-Go]\(従量課金制に変換\)** をクリックします。 
+1. **[Convert to Pay-As-You-Go]\(従量課金制に変換\)** を選択します。
 
     ![試用版を変換する](media/howto-administer/convert.png)
 
 1. 適切な Azure Active Directory を選択してから、従量課金制アプリケーションで使用する Azure サブスクリプションを選びます。
 
-1. **[変換]** をクリックすると、ご利用のアプリケーションが従量課金制アプリケーションとなり、課金が開始されます。
+1. **[変換]** を選択すると、ご利用のアプリケーションが従量課金制アプリケーションとなり、課金が開始されます。
 
 ## <a name="export-data"></a>データのエクスポート
 
-**[Continuous data export]\(連続データ エクスポート\)** を有効にすることで、測定、デバイス、デバイス テンプレートのデータを、Azure Blob ストレージ アカウントにエクスポートできます。 詳細については、[データをエクスポートする方法](#howto-export-data)に関する記述を参照してください。
+**[Continuous data export]\(連続データ エクスポート\)** を有効にすることで、測定、デバイス、デバイス テンプレートのデータを、Azure Blob ストレージ アカウントにエクスポートできます。 詳細については、[データをエクスポートする](howto-export-data.md)方法に関する記述を参照してください。
 
 ## <a name="manage-device-connection"></a>デバイス接続の管理
 
-ここではキーと証明書を使用して、アプリケーションで数多くのデバイスを接続します。 詳細については、[デバイスの接続](#concepts-connectivity)に関する記述を参照してください。
+ここではキーと証明書を使用して、アプリケーションで数多くのデバイスを接続します。 詳細については、[デバイスの接続](concepts-connectivity.md)に関する記述を参照してください。
 
 ## <a name="use-access-tokens"></a>アクセス トークンの使用
 
-アクセス トークンを生成し、開発者ツールで使用します。 現時点では、利用できる開発者ツール (デバイス メッセージ、およびプロパティと設定の変更を監視するための IoT Central エクスプローラー) が 1 つあります。 詳細については、[IoT Central エクスプローラー](#howto-use-iotc-explorer)に関する記述を参照してください。 
+アクセス トークンを生成し、開発者ツールで使用します。 現時点では、利用できる開発者ツール (デバイス メッセージ、およびプロパティと設定の変更を監視するための IoT Central エクスプローラー) が 1 つあります。 詳細については、[IoT Central エクスプローラー](howto-use-iotc-explorer.md)に関する記述を参照してください。
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Azure SDK を使用して制御プレーンを操作する
 

@@ -3,7 +3,7 @@ title: HSM の物理的なセキュリティ - Azure Dedicated HSM | Microsoft D
 description: データ センター内での Azure Dedicated HSM デバイスの物理的なセキュリティに関する情報
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 662800d2b9db7d7a19861431354e55b3897e020a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e7a7e1d27f230bc5f38080abfbe3aeeb077e557b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080046"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107890"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure Dedicated HSM の物理的なセキュリティ
 

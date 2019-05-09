@@ -4,25 +4,26 @@ description: Azure Portal でクラシック ポリシーを移行するため�
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/24/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: nigu
-ms.openlocfilehash: c8431ee305c8a266a79f58e8b4ba4e6541f79f9b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f3246a7efa36e6c6ef0dac93e659a73dac17090a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629873"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516877"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのポリシー移行の概要 
 

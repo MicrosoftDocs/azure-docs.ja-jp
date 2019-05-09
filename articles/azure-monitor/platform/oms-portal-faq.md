@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384719"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990430"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -105,13 +105,13 @@ Log Analytics のクエリに基づくアラート ルールは現在、[一元�
 ワークスペースの **[ソリューション]** メニューでソリューションを管理します。 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>管理ソリューションのインストールと削除の方法を教えてください
-OMS ポータルでは、ソリューション ギャラリーから管理ソリューションをインストールし、その削除は **[設定]** から行います。 Azure portal では、[管理ソリューションのインストール](../insights/solutions.md#install-a-management-solution)を Azure Marketplace から行います。 インストールされているソリューションの一覧から[ソリューションを削除](../insights/solutions.md#remove-a-management-solution)してください。
+OMS ポータルでは、ソリューション ギャラリーから管理ソリューションをインストールし、その削除は **[設定]** から行います。 Azure portal では、[管理ソリューションのインストール](../insights/solutions.md#install-a-monitoring-solution)を Azure Marketplace から行います。 インストールされているソリューションの一覧から[ソリューションを削除](../insights/solutions.md#remove-a-monitoring-solution)してください。
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>アラートの作成と管理の方法を教えてください
 Log Analytics のクエリに基づくアラート ルールは現在、[一元化されたアラート機能](../../azure-monitor/platform/alerts-metric.md)で管理するようになっています。 Azure portal でのアラートの構成と使用について詳しくは、[Log Analytics から Azure にアラートを拡張する方法](../../azure-monitor/platform/alerts-extend-tool.md)に関するページを参照してください。
 
 ## <a name="how-do-i-access-my-dashboards"></a>ダッシュボードへのアクセス方法を教えてください
-Log Analytics の [[マイ ダッシュボード]](dashboards.md) 機能は非推奨になりました。 この機能では、[ビュー デザイナー] 部分の個人のコレクションを利用できました。後継は、組み込みの Azure ダッシュボード機能になります。 共有ビューには [[ビュー デザイナー]](view-designer.md) を使用して、Log Analytics のデータを引き続き視覚化できます。 これらのビューからの視覚表現や、Azure ダッシュボードへの[個々のクエリ](../learn/tutorial-logs-dashboards.md)に対する視覚表現を固定することも可能です。
+Log Analytics の **[マイ ダッシュボード]** 機能は非推奨になりました。 この機能では、[ビュー デザイナー] 部分の個人のコレクションを利用できました。後継は、組み込みの Azure ダッシュボード機能になります。 共有ビューには [[ビュー デザイナー]](view-designer.md) を使用して、Log Analytics のデータを引き続き視覚化できます。 これらのビューからの視覚表現や、Azure ダッシュボードへの[個々のクエリ](../learn/tutorial-logs-dashboards.md)に対する視覚表現を固定することも可能です。
 
 ## <a name="how-do-i-check-my-usage"></a>使用量をチェックするにはどうすればよいですか?
 Log Analytics の使用量とコストは、ワークスペースから **[使用量と推定コスト]** を選択して簡単に表示、管理できます。

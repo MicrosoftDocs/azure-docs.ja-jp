@@ -2,19 +2,19 @@
 title: Azure Container Instances とは
 description: Azure Container Instances サービスには、仮想マシンを管理したり、より高度なオーケストレーターを採用したりせずに、Azure で最も高速かつ簡単に別個のコンテナーを実行する方法が用意されています。
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
 ms.date: 11/30/2018
-ms.author: seanmck
+ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ba454965ff2bb78ebe526e71d9280200b1f4b08b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187196"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499558"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -48,9 +48,15 @@ Azure Container Instances を使用して状態を取得および保持できる
 
 Azure Container Instances では、同じ API で、Windows と Linux の両方のコンテナーをスケジュールできます。 [コンテナー グループ](container-instances-container-groups.md)を作成するときに、OS の種類を指定するだけです。
 
-一部の機能は、現在のところ Linux コンテナーに限定されています。 Windows コンテナーに対する機能パリティ実現に向けて取り組んでいますが、現時点では、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) に記載されているような違いがプラットフォーム間には存在します。
+一部の機能は、現在のところ Linux コンテナーに限定されています。
 
-Azure Container Instances では、長期的なサービス チャネル (LTSC) のバージョンに基づいて Windows イメージをサポートしています。 1709 や 1803 のような Windows 半期チャネル (SAC) のリリースは、サポートされていません。
+* コンテナー グループあたりの複数のコンテナー
+* ボリューム マウント ([Azure Files](container-instances-volume-azure-files.md)、[emptyDir](container-instances-volume-emptydir.md)、[GitRepo](container-instances-volume-gitrepo.md)、[シークレット](container-instances-volume-secret.md))
+* [リソース使用量メトリック](container-instances-monitor.md)と Azure Monitor
+* [仮想ネットワークのデプロイ](container-instances-vnet.md) (プレビュー)
+* [GPU リソース](container-instances-gpu.md) (プレビュー)
+
+Azure Container Instances では、現在、長期的なサービス チャネル (LTSC) のバージョンに基づいて Windows Server 2016 イメージがサポートされています。 1709 や 1803 のような Windows 半期チャネル (SAC) のリリースは、サポートされていません。
 
 ## <a name="co-scheduled-groups"></a>共同スケジュール グループ
 

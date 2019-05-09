@@ -1,31 +1,31 @@
 ---
-title: Azure SQL Database を構成する方法 - シングルトン | Microsoft Docs
-description: Azure SQL Database (Single Database) を構成して管理する方法について説明します。
+title: Azure SQL Database (単一) を構成する方法 | Microsoft Docs
+description: Azure SQL Database (単一データベース) を構成して管理する方法について説明します
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 12/14/2018
-ms.openlocfilehash: d34853220e423e73c6ca8cf7c76ba616b815b8bd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 02/08/2019
+ms.openlocfilehash: 4c6799372f203f021a07ae52a1d7f591aae5afad
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439749"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770836"
 ---
-# <a name="how-to-use-single-database"></a>Single Database を使用する方法
+# <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースを使用する方法
 
-このセクションでは、お客様の Azure SQL データベース (Single Database) を管理して構成するのに役立つさまざまなガイド、スクリプト、説明をご紹介します。
+このセクションでは、Azure SQL Database のお客様の単一データベースを管理して構成するのに役立つさまざまなガイド、スクリプト、説明を確認することができます
 
 ## <a name="migrate"></a>移行
 
-- [SQL Database に移行する](sql-database-cloud-migrate.md) – Managed Instance への移行に関して推奨される移行プロセスとツールについて確認します。
+- [SQL Database への移行](sql-database-single-database-migrate.md) – マネージド インスタンスへの移行に関して推奨される移行プロセスとツールについて確認します。
 - [移行後に SQL データベースを管理](sql-database-manage-after-migration.md)する方法について確認する。
 
 ## <a name="configure-features"></a>機能の構成
@@ -66,7 +66,7 @@ ms.locfileid: "53439749"
 - [マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)を実行する。
 - [シャード化されたデータを移動する](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
 - データベース シャードの[セキュリティを構成](sql-database-elastic-scale-split-merge-security-configuration.md)する。
-- データベース シャードの現在のセットに[シャードを追加](sql-database-elastic-scale-add-a-shard.md)する。
+- データベース シャードの現在のセットに[シャードを追加する](sql-database-elastic-scale-add-a-shard.md)。
 - [シャード マップに関する問題を修正する](sql-database-elastic-database-recovery-manager.md)。
 - [シャード化された DB を移行する](sql-database-elastic-convert-to-use-elastic-tools.md)。
 - [カウンターを作成する](sql-database-elastic-database-perf-counters.md)。
@@ -74,4 +74,4 @@ ms.locfileid: "53439749"
 - [Dapper Framework を使用](sql-database-elastic-scale-working-with-dapper.md)して、シャード化されたデータにクエリを実行する。
 
 ## <a name="next-steps"></a>次の手順
-- [Managed Instance の攻略ガイド](sql-database-howto-managed-instance.md)について詳しく確認する
+- [マネージド インスタンスの攻略ガイド](sql-database-howto-managed-instance.md)の詳細を確認する

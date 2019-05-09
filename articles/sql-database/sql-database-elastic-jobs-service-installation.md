@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: cc322f44760ddf0a7cd28751c895a7c4938dbbc0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 32df3e7ac6dc22e247bd4aecea4f39bf6d3a8017
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867242"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316866"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
 
@@ -27,12 +27,12 @@ ms.locfileid: "52867242"
 
 [**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)は、PowerShell または Azure Portal を使用してインストールできます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
 
-既存の**エラスティック プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。 PowerShell API 経由で公開されている新しい機能を活用するために、最新の **Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
+既存の**エラスティック プール**から、ポータルを使用して **Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。 PowerShell API 経由で公開されている新しい機能を活用するために、最新の **Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Azure PowerShell。 [Web Platform インストーラー](https://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョンをインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
-* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。 詳細については、 http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
+* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。 詳細については、 https://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Elastic Database ジョブ PowerShell パッケージをダウンロードしてインストールする
 1. Microsoft Azure PowerShell コマンド ウィンドウを開き、NuGet Command-line Utility (nuget.exe) をダウンロードしたディレクトリに移動します。
@@ -75,9 +75,7 @@ ms.locfileid: "52867242"
     <td>新しく作成された Azure コンポーネントを含めるために作成する Azure リソース グループ名を指定します。 このパラメーターの既定値は “__ElasticDatabaseJob” です。 この値は変更しないことをお勧めします。</td>
     </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ResourceGroupLocation</td>
     <td>新しく作成された Azure コンポーネントに使用する Azure のリージョンを指定します。 このパラメーターの既定値は Central US (米国中央部) です。</td>
 </tr>
@@ -85,28 +83,24 @@ ms.locfileid: "52867242"
 <tr>
     <td>ServiceWorkerCount</td>
     <td>インストールするサービス ワーカーの数を指定します。 このパラメーターの既定値は 1 です。 ワーカー数を多くすると、サービスをスケール アウトし、高可用性を実現できます。 サービスの高可用性が必要なデプロイメントの場合、"2" を使用することをお勧めします。</td>
-    </tr>
-
 </tr>
-    <tr>
+
+<tr>
     <td>ServiceVmSize</td>
-    <td>クラウド サービス内で使用する VM サイズを指定します。 このパラメーターの既定値は A0 です。 A0/A1/A2/A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。 worker ロールのサイズについて詳しくは、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>クラウド サービス内で使用する VM サイズを指定します。 このパラメーターの既定値は A0 です。 ../../A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。 worker ロールのサイズについて詳しくは、<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">エラスティック データベース ジョブのコンポーネントと価格</a>に関するページをご覧ください。</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Standard エディションのコンピューティング サイズを指定します。 このパラメーターの既定値は S0 です。 S0/S1/S2/S3/S4/S6/S9/S12 のパラメーター値を指定できます。Azure SQL Database では各コンピューティング サイズが使用されます。 SQL Database のコンピューティング サイズの詳細については、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>Standard エディションのコンピューティング サイズを指定します。 このパラメーターの既定値は S0 です。 ../../../../S9/S12 のパラメーター値を指定できます。Azure SQL Database では各コンピューティング サイズが使用されます。 SQL Database のコンピューティング サイズの詳細については、<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">エラスティック データベース ジョブのコンポーネントと価格</a>に関するページをご覧ください。</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorUserName</td>
     <td>新しく作成した Azure SQL Database サーバーの管理ユーザー名を指定します。 指定しない場合、PowerShell の資格情報ウィンドウが開き、資格情報の入力を求められます。</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorPassword</td>
     <td>新しく作成した Azure SQL Database サーバーの管理パスワードを指定します。 指定しない場合、PowerShell の資格情報ウィンドウが開き、資格情報の入力を求められます。</td>
 </tr>
@@ -131,24 +125,19 @@ ms.locfileid: "52867242"
   <th>説明</th>
 </tr>
 
-  <tr>
+<tr>
     <td>ResourceGroupName</td>
     <td>Elastic Database ジョブ コンポーネントを最初にインストールしたときに使用した Azure リソース グループ名を指定します。 このパラメーターの既定値は “__ElasticDatabaseJob” です。 この値を変更することは推奨されないので、このパラメーターを指定する必要はありません。</td>
-    </tr>
 </tr>
 
-</tr>
-
-  <tr>
+<tr>
     <td>ServiceWorkerCount</td>
     <td>インストールするサービス ワーカーの数を指定します。  このパラメーターの既定値は 1 です。  ワーカー数を多くすると、サービスをスケール アウトし、高可用性を実現できます。  サービスの高可用性が必要なデプロイメントの場合、"2" を使用することをお勧めします。</td>
 </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ServiceVmSize</td>
-    <td>クラウド サービス内で使用する VM サイズを指定します。 このパラメーターの既定値は A0 です。 A0/A1/A2/A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。 worker ロールのサイズについて詳しくは、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>クラウド サービス内で使用する VM サイズを指定します。 このパラメーターの既定値は A0 です。 ../../A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。 worker ロールのサイズについて詳しくは、<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">エラスティック データベース ジョブのコンポーネントと価格</a>に関するページをご覧ください。</td>
 </tr>
 
 </table>

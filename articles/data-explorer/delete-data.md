@@ -2,18 +2,17 @@
 title: Azure データ エクスプローラーからデータを削除する
 description: この記事では、Azure データ エクスプローラーで、消去およびリテンション期間を使用した削除を含む、一括削除のシナリオについて説明します。
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 485ee48bf197ad996bba8a516b80882f44ba623a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9c1b21e119a38c6d306b9c564ab7958ba21a1c41
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212915"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796809"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>Azure データ エクスプローラーからデータを削除する
 

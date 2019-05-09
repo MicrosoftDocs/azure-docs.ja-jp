@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 1a8f12f016af744cb66df7f27b65ee9e7ba8a3a5
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 61768420580c1489efe15577ad7cde6894fbbee2
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412862"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496496"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a90a6811b1c59538db98b85d950906dba2969d57
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338245"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549086"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのバージョン管理
 
@@ -140,7 +140,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 新しいバージョンの関数アプリは新しい[デプロイ スロット](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)にデプロイすることをお勧めします。 デプロイ スロットでは、複数のコピーの関数アプリを並行して実行し、そのうちの 1 つのみをアクティブな*運用*スロットとして実行できます。 既存のインフラストラクチャに新しいオーケストレーション ロジックを公開する準備ができている場合、新しいバージョンを運用スロットにスワップするのと同じくらい簡単です。
 
 > [!NOTE]
-> この方法は、オーケストレーター関数の HTTP トリガーや Webhook トリガーを使用する場合に最適です。 キューや Event Hubs などの HTTP 以外のトリガーの場合、トリガー定義は、スワップ操作の一環として更新されたアプリ設定を引き継ぐ必要があります。
+> この方法は、オーケストレーター関数の HTTP トリガーや Webhook トリガーを使用する場合に最適です。 キューや Event Hubs などの HTTP 以外のトリガーの場合、トリガー定義は、スワップ操作の一環として更新された[アプリ設定を派生する](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings)必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

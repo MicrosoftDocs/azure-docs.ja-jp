@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: f073637810e9ed1acdf37b0e541ca3f1d518de2a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: cdd2b24e6f833ee0acb229a37c7cd3b8b6f36339
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346769"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682051"
 ---
 # <a name="deploy-a-new-simulated-device"></a>新しいシミュレートされたデバイスをデプロイする
 
@@ -75,13 +75,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
       depends_on:
         - storageadapter
       environment:
-        - PCS_IOTHUB_CONNSTRING
-        - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
-        - PCS_AUTH_ISSUER
-        - PCS_AUTH_AUDIENCE
-        - PCS_AUTH_REQUIRED
-        - PCS_CORS_WHITELIST
-        - PCS_APPLICATION_SECRET
+        - PCS_KEYVAULT_NAME
+        - PCS_AAD_APPID
+        - PCS_AAD_APPSECRET
       # How one could mount custom device models
       volumes:
         - /tmp/devicemodels:/app/webservice/data/devicemodels:ro
@@ -147,4 +143,4 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="next-steps"></a>次の手順
 
-このガイドでは、カスタム デバイス モデルをリモート監視ソリューション アクセラレータに展開する方法について説明しました。 次は、[ 物理デバイスをご利用のリモート監視ソリューションに接続する ](iot-accelerators-connecting-devices-node.md) 方法について学習することをお勧めします。
+このガイドでは、カスタム デバイス モデルをリモート監視ソリューション アクセラレータに展開する方法について説明しました。 次は、[実際のデバイスをご利用のリモート監視ソリューションに接続する](iot-accelerators-connecting-devices-node.md)方法について学習することをお勧めします。

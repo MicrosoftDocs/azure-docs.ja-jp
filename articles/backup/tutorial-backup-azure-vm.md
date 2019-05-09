@@ -1,90 +1,126 @@
 ---
-title: Azure での Azure VM の大規模なバックアップ
-description: このチュートリアルでは、複数の Azure 仮想マシンを Recovery Services コンテナーにバックアップする方法について説明します。
-services: backup
+title: PowerShell を使用して複数の Azure VM をバックアップする
+description: このチュートリアルでは、Azure PowerShell を使用して、複数の Azure VM を Recovery Services コンテナーにバックアップする方法について詳しく説明します。
 author: rayne-wiselman
 manager: carmonm
-keywords: 仮想マシン バックアップ; 仮想マシンのバックアップ; バックアップとディザスター リカバリー
 ms.service: backup
 ms.topic: tutorial
-ms.date: 09/06/2017
-ms.author: trinadhk
+ms.date: 03/05/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d2b83963f7af52101ed298e85b6c7fd64fc99a07
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2a35435f56a4bb09a8a1958fbc175ef7c889c380
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875588"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58863017"
 ---
-# <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>Azure での Azure 仮想マシンの大規模なバックアップ
+# <a name="back-up-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップする
 
-このチュートリアルでは、Azure 仮想マシンを Recovery Services コンテナーにバックアップする方法について説明します。 仮想マシンをバックアップするための作業のほとんどは、準備です。 仮想マシンをバックアップ (または保護) する前に、[前提条件](backup-azure-arm-vms-prepare.md)をすべて満たして、VM を保護するための環境を準備する必要があります。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+このチュートリアルでは、[Azure Backup](backup-overview.md) Recovery Services コンテナーをデプロイし、PowerShell を使用して複数の Azure VM をバックアップする方法について説明します。  
+
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * Recovery Services のコンテナーを作成し、コンテナーのコンテキストを設定する。
+> * バックアップ ポリシーを定義する
+> * 複数の仮想マシンを保護するバックアップ ポリシーを適用する
+> * 保護された仮想マシン用のオンデマンドのバックアップ ジョブをトリガーする 仮想マシンをバックアップ (または保護) する前に、[前提条件](backup-azure-arm-vms-prepare.md)をすべて満たして、VM を保護するための環境を準備する必要があります。 
 
 > [!IMPORTANT]
 > このチュートリアルでは、リソース グループと Azure 仮想マシンを既に作成していることを前提としています。
 
+
+## <a name="log-in-and-register"></a>ログインして登録する
+
+
+1. `Connect-AzAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+
+    ```powershell
+    Connect-AzAccount
+    ```
+2. Azure Backup を最初に使用するときは、[Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider) を使ってサブスクリプション内で Azure Recovery Service プロバイダーを登録する必要があります。 既に登録してある場合は、この手順をスキップします。
+
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    ```
+
+
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
-[Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)は、バックアップされている項目の復旧ポイントを保持するコンテナーです。 Recovery Services コンテナーは、Azure リソース グループの一部としてデプロイし、管理できる Azure リソースです。 このチュートリアルでは、保護されている仮想マシンと同じリソース グループに Recovery Services コンテナーを作成します。
+[Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)は、Azure VM などの保護されたリソースのバックアップ データを格納する論理コンテナーです。 バックアップ ジョブを実行すると、Recovery Services コンテナー内に復旧ポイントが作成されます。 この復元ポイントのいずれかを使用して、データを特定の時点に復元できます。
 
 
-Azure Backup を最初に使用するときは、ご使用のサブスクリプションで Azure Recovery Service プロバイダーを登録する必要があります。 ご使用のサブスクリプションでプロバイダーが既に登録されている場合は、次の手順に進みます。
+- このチュートリアルでは、バックアップする VM と同じリソース グループと場所にコンテナーを作成します。
+- Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
+
+次のようにコンテナーを作成します。
+
+1. [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) を使用して、コンテナーを作成します。 バックアップする VM の場所とリソース グループ名を指定します。
+
+    ```powershell
+    New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
+    ```
+2. Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。 このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。
+
+    ```powershell
+    $vault1 = Get-AzRecoveryServicesVault –Name myRSVault
+    ```
+    
+3. [Set-AzRecoveryServicesVaultContext](/powershell/module/az.RecoveryServices/Set-azRecoveryServicesVaultContext) を使用して、コンテナーのコンテキストを設定します。
+
+   - コンテナーのコンテキストとは、コンテナーで保護されるデータの種類です。
+   - コンテキストが設定されたら、後続のすべてのコマンドレットに適用されます
+
+     ```powershell
+     Get-AzRecoveryServicesVault -Name "myRSVault" | Set-AzRecoveryServicesVaultContext
+     ```
+
+## <a name="back-up-azure-vms"></a>Azure VM のバックアップ
+
+バックアップ ポリシーに指定されているスケジュールに従って、バックアップが実行されます。 Recovery Services コンテナーの作成時に、既定の保護およびアイテム保持ポリシーも付属しています。
+
+- 既定の保護ポリシーによって、1 日 1 回、指定された時刻にバックアップ ジョブがトリガーされます。
+- 既定のアイテム保持ポリシーは、毎日の復旧ポイントを 30 日間保持します。 
+
+このチュートリアルで Azure VM を有効にしてバックアップするには、以下のようにします。
+
+1. [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) を使用して、バックアップ データを保持するコンテナー内のコンテナーを指定します。
+2. バックアップする各 VM は項目です。 バックアップ ジョブを開始するには、[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) を使用して、VM に関する情報を取得します。
+3. [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) を使用して、アドホック バックアップを実行します。 
+    - 最初の初回バックアップ ジョブによって、完全な復旧ポイントが作成されます。
+    - 初回バックアップ後の各バックアップ ジョブでは、増分復旧ポイントが作成されます。
+    - 増分復元ポイントでは、前回のバックアップ以降に行われた変更のみが転送されるため、保存効率と時間効率が向上します。
+
+次のように、バックアップを有効にして実行します。
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+$namedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM"
+$item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadType AzureVM
+$job = Backup-AzRecoveryServicesBackupItem -Item $item
 ```
 
-**New-AzureRmRecoveryServicesVault** を使用して Recovery Services コンテナーを作成します。 バックアップを作成する仮想マシンを構成するときに使用するリソース グループ名と保存先を必ず指定します。 
+## <a name="troubleshooting"></a>トラブルシューティング 
 
-```powershell
-New-AzureRmRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
-```
+仮想マシンのバックアップ中に問題が発生した場合は、この[トラブルシューティングに関する記事](backup-azure-vms-troubleshoot.md)を参照してください。
 
-Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。 このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。 次に **Set-AzureRmRecoveryServicesBackupProperties** を使用して、**-BackupStorageRedundancy** オプションを [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) に設定します。 
+### <a name="deleting-a-recovery-services-vault"></a>Recovery Services コンテナーの削除
 
-```powershell
-$vault1 = Get-AzureRmRecoveryServicesVault –Name myRSVault
-Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
-```
-
-## <a name="back-up-azure-virtual-machines"></a>Azure 仮想マシンのバックアップ
-
-初期バックアップを実行するには、コンテナーのコンテキストを設定する必要があります。 コンテナーのコンテキストとは、コンテナーで保護されるデータの種類です。 Recovery Services コンテナーの作成時に、既定の保護およびアイテム保持ポリシーも付属しています。 既定の保護ポリシーは、毎日指定した時刻にバックアップ ジョブをトリガーします。 既定のアイテム保持ポリシーは、毎日の復旧ポイントを 30 日間保持します。 このチュートリアルでは、既定のポリシーをそのまま使用します。 
-
-**[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** を使用して、コンテナーのコンテキストを設定します。 コンテナーのコンテキストを設定すると、後続のすべてのコマンドレットに適用されます。 
-
-```powershell
-Get-AzureRmRecoveryServicesVault -Name myRSVault | Set-AzureRmRecoveryServicesVaultContext
-```
-
-**[Backup-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem)** を使用して、バックアップ ジョブをトリガーします。 バックアップ ジョブによって、復旧ポイントが作成されます。 初回バックアップの場合は、復旧ポイントは完全バックアップです。 以後のバックアップでは、増分コピーを作成します。
-
-```powershell
-$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM"
-$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType AzureVM
-$job = Backup-AzureRmRecoveryServicesBackupItem -Item $item
-```
-
-## <a name="delete-the-recovery-services-vault"></a>Recovery Services コンテナーを削除する
-
-Recovery Services コンテナーを削除するには、まずコンテナーのすべての復旧ポイントを削除し、コンテナーの登録を解除する必要があります。 次のコマンドは、この手順を詳しく説明しています。 
+コンテナーを削除する必要がある場合は、まず、コンテナーのすべての復旧ポイントを削除し、次のように、コンテナーの登録を解除します。
 
 
 ```powershell
-$Cont = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered
-$PI = Get-AzureRmRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVm
-Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints $PI[0]
-Unregister-AzureRmRecoveryServicesBackupContainer -Container $namedContainer
-Remove-AzureRmRecoveryServicesVault -Vault $vault1
+$Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered
+$PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVm
+Disable-AzRecoveryServicesBackupProtection -RemoveRecoveryPoints $PI[0]
+Unregister-AzRecoveryServicesBackupContainer -Container $namedContainer
+Remove-AzRecoveryServicesVault -Vault $vault1
 ```
-
-## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
-仮想マシンのバックアップ中に問題が発生した場合は、[Azure 仮想マシンのバックアップのトラブルシューティングに関する記事](backup-azure-vms-troubleshoot.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-これでお使いの仮想マシンが保護されました。管理タスクおよび仮想マシンを復旧ポイントから復元する方法の詳細については、次の記事をご覧ください。
 
-* バックアップ ポリシーを変更する場合は、「[AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする](backup-azure-vms-automation.md#create-a-protection-policy)」をご覧ください。
-* [仮想マシンの管理と監視](backup-azure-manage-vms.md)
-* [仮想マシンの復元](backup-azure-arm-restore-vms.md)
+- PowerShell での Azure VM のバックアップと復元に関するより詳細なチュートリアルを[確認](backup-azure-vms-automation.md)する。 
+- [Azure VM を管理および監視する](backup-azure-manage-vms.md)
+- [Azure VM の復元](backup-azure-arm-restore-vms.md)

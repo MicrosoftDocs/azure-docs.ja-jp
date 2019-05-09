@@ -3,7 +3,7 @@ title: Azure における SAP HANA インフラストラクチャの構成と運
 description: Azure 仮想マシンにデプロイされている SAP HANA システムの運用ガイドです。
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
-author: juergent
+author: msjuergent
 manager: patfilot
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/04/2018
-ms.author: msjuergent
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d716a27cc2b4879451a8d5edbca46ca1bbfeaf40
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6f60fdced25fdc594c28972f555bb28a9c629f21
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968989"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878657"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -68,10 +68,10 @@ VPN または ExpressRoute 経由でのサイト対サイト接続は運用環�
 [SAP Cloud platform](https://cal.sap.com/) を使って Azure VM サービスに完全にインストールされた SAP HANA プラットフォームをデプロイすることもできます。 インストール プロセスについては、「[Azure に SAP S/4HANA または BW/4HANA をデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)」をご覧いただくか、[こちら](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)でリリースされている自動化スクリプトを参照してください。
 
 ### <a name="choose-azure-storage-type"></a>Azure ストレージの種類を選択する
-Azure は、SAP HANA を実行する Azure VM に適した 2 種類のストレージを提供します。
+Azure は、SAP HANA を実行する Azure VM に適した 2 種類のストレージを提供します。Standard ハード ディスク ドライブ (HDD) と Premium ソリッドステート ドライブ (SSD)。 これらのディスクの種類の詳細については、[ディスクの種類の選択](../../windows/disks-types.md)に関する記事を参照してください。
 
-- [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
-- [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Standard ハード ディスク ドライブ (HDD)
+- Premium ソリッド ステート ドライブ (SSD)
 
 Azure では、Azure Standard と Premium Storage の 2 つの VHD 展開方法を提供します。 シナリオ全体で可能な場合は、[Azure 管理ディスク](https://azure.microsoft.com/services/managed-disks/) デプロイを利用します。
 
@@ -161,10 +161,10 @@ Azure 書き込みアクセラレータの詳細と制限事項についても�
 
 | VM の SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data and /hana/log<br /> LVM または MDADM によるストライピング | /hana/shared | /root ボリューム | /usr/sap | hana/backup |
 | --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 128 GiB | 768 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| DS14v2 | 112 GiB | 768 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E16v3 | 128 GiB | 384 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E32v3 | 256 GiB | 768 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| E64v3 | 443 GiB | 1200 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| E64v3 | 432 GiB | 1200 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
 | GS5 | 448 GiB | 2000 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
 | M32ts | 192 GiB | 500 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
 | M32ls | 256 GiB | 500 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
@@ -408,7 +408,7 @@ DT 2.0 のベスト プラクティス ガイダンスに従い、ディスク I
 
 DT 2.0 VM に複数の Azure ディスクをアタッチし、OS レベルでソフトウェア RAID (ストライピング) を作成して、VM あたりのディスク スループットの上限に達するようにする必要があります。 この点に関しては、単一の Azure ディスクで VM の上限に達するスループットを提供することはできません。 DT 2.0 を実行するには、Azure Premium Storage が必須です。 
 
-- 利用可能な Azure ディスクの種類の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)を参照してください。
+- 利用可能な Azure ディスクの種類の詳細については、[こちら](../../windows/disks-types.md)を参照してください。
 - mdadm でのソフトウェア RAID の作成の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)を参照してください。
 - 最大スループットのストライプ ボリュームを作成するための LVM の構成の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)を参照してください。
 
@@ -442,7 +442,7 @@ SAP HANA のスケール アウトの場合と同様に、SAP HANA VM と DT 2.0
 ### <a name="links-to-dt-20-documentation"></a>DT 2.0 ドキュメントへのリンク 
 
 - [SAP HANA Dynamic Tiering のインストールと更新に関するガイド](https://help.sap.com/viewer/88f82e0d010e4da1bc8963f18346f46e/2.0.03/en-US)
-- [SAP HANA Dynamic Tiering のチュートリアルとリソース](https://www.sap.com/developer/topics/hana-dynamic-tiering.html)
+- [SAP HANA Dynamic Tiering のチュートリアルとリソース](https://help.sap.com/viewer/fb9c3779f9d1412b8de6dd0788fa167b/2.0.03/en-US)
 - [SAP HANA Dynamic Tiering の PoC](https://blogs.sap.com/2017/12/08/sap-hana-dynamic-tiering-delivering-on-low-tco-with-impressive-performance/)
 - [SAP HANA 2.0 SPS 02 Dynamic Tiering の拡張](https://blogs.sap.com/2017/07/31/sap-hana-2.0-sps-02-dynamic-tiering-enhancements/)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: a16b2dd61a1a04d8fc3362ce2e26c7d3c9433972
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274475"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622078"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]
@@ -28,6 +28,8 @@ ms.locfileid: "53274475"
 > 単純な問題の診断と解決を支援することが、このドキュメントの目的です。 Microsoft サポートに代わるものではありません。 以降のガイダンスで問題を解決できない場合は、 [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) にサポート チケットを申請してください。
 > 
 > 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>アドレス解決プロトコル (ARP) と ARP テーブル
 アドレス解決プロトコル (ARP) は、 [RFC 826](https://tools.ietf.org/html/rfc826)で定義されたレイヤー 2 のプロトコルです。 Ethernet アドレス (MAC アドレス) と IP アドレスとを対応付けるために、ARP が使用されます。
@@ -58,6 +60,11 @@ ARP テーブルの例:
 * 各 IP アドレスで使用するインターフェイスの MAC アドレスに関する情報 (ネットワーク チーム/接続プロバイダーから支給してもらう)。
 * Azure 用の最新の PowerShell モジュール (バージョン 1.50 以降)。
 
+> [!NOTE]
+> レイヤー 3 がサービス プロバイダーから提供され、以下のポータル/出力において ARP テーブルが空の場合は、ポータルの更新ボタンを使用して回線の構成を更新します。 この操作で、回線に適切なルーティング構成が適用されます。 
+>
+>
+
 ## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>ExpressRoute 回線の ARP テーブルの取得
 このセクションでは、各ピアリングの ARP テーブルを PowerShell で参照する手順について説明します。 対象となるピアリングについては、あらかじめ貴社または貴社の接続プロバイダーによって構成済みであることを前提としています。 それぞれの回線には 2 つのパス (プライマリとセカンダリ) があります。 それぞれのパスについて別々に ARP テーブルを確認することができます。
 
@@ -69,10 +76,10 @@ Azure プライベート ピアリングの ARP テーブルは、次のコマ�
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Azure private peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
 
-        # ARP table for Azure private peering - Secodary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
+        # ARP table for Azure private peering - Secondary path
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
 以下に示したのは、該当する 1 本のパスについての出力例です。
 
@@ -90,10 +97,10 @@ Azure パブリック ピアリングの ARP テーブルは、次のコマン�
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Azure public peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
 
-        # ARP table for Azure public peering - Secodary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
+        # ARP table for Azure public peering - Secondary path
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
 以下に示したのは、該当する 1 本のパスについての出力例です。
@@ -112,10 +119,10 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Microsoft peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
 
-        # ARP table for Microsoft peering - Secodary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
+        # ARP table for Microsoft peering - Secondary path
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
 以下に示したのは、該当する 1 本のパスについての出力例です。
@@ -141,7 +148,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>オンプレミス側または接続プロバイダー側に問題がある場合の ARP テーブル
-オンプレミスまたは接続プロバイダーに問題がある場合は、ARP テーブルにエントリが 1 つだけ表示されるか、オンプレミス MAC アドレスがIncomplete と表示されます。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。 
+オンプレミスまたは接続プロバイダーに問題がある場合は、ARP テーブルにエントリが 1 つだけ表示されるか、オンプレミス MAC アドレスが Incomplete と表示されます。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    

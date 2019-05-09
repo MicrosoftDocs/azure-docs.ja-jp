@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 24ffc841-7a77-481c-9cc4-6f8bda58fe66
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b02a5ec5a68743e148bcfef3c631d7777fd0a067
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 02b831df98db5b9d63873a0da93e603cd7cbf308
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871696"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>チュートリアル:Azure Active Directory と iWellnessNow の統合
 

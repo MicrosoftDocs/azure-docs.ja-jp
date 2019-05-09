@@ -1,33 +1,19 @@
 ---
-title: Azure Application Gateway での Web アプリケーション ファイアウォール ルールのカスタマイズ - Azure Portal | Microsoft Docs
+title: Azure Application Gateway での Web アプリケーション ファイアウォール ルールのカスタマイズ - Azure portal
 description: この記事では、Azure Portal を使用して Application Gateway で Web アプリケーション ファイアウォール ルールをカスタマイズする方法について説明します。
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-ms.assetid: 1159500b-17ba-41e7-88d6-b96986795084
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 03/28/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: 30df26dc3a9697d3435779f91c32b2d99a747b88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b18c9666e58925746a3b61740db6fb5118c2010b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990469"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733718"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Azure Portal を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
 Azure Application Gateway Web アプリケーション ファイアウォール (WAF) は、Web アプリケーションを保護します。 こうした保護は、Open Web Application Security Project (OWASP) コア ルール セット (CRS) によって提供されます。 ルールによっては誤検出を発生させて、実際のトラフィックを妨げることがあります。 このため、Application Gateway には、ルール グループとルールをカスタマイズする機能が用意されています。 特定のルール グループおよびルールの詳細については、[Web アプリケーション ファイアウォールの CRS 規則グループと規則の一覧](application-gateway-crs-rulegroups-rules.md)に関するページをご覧ください。
 
@@ -62,6 +48,19 @@ Azure Application Gateway Web アプリケーション ファイアウォール 
    2. **[保存]** を選択します。 
 
 ![変更を保存する][3]
+
+## <a name="mandatory-rules"></a>必須ルール
+
+次の一覧には、防止モードの場合に WAF による要求のブロックをトリガーする条件が含まれます (検出モードでは例外としてログ記録されます)。 これらを構成したり、無効にしたりすることはできません。
+
+* 本文の検査がオフになっている場合を除き (XML、JSON、フォーム データ)、要求本文の解析に失敗すると、要求がブロックされる
+* 要求本文 (ファイルなし) のデータの長さが、構成されている制限を超えている場合
+* 要求本文 (ファイルを含む) のサイズが制限を超えている場合
+* WAF エンジンで内部エラーが発生した場合
+
+CRS 3.x 固有: 
+
+* インバウンド異常スコアがしきい値を超えた場合
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,22 +3,22 @@ title: Azure Active Directory を使用するようにアプリケーション�
 description: IT プロフェッショナル向けに記述されたこの記事では、Azure アプリケーションを Active Directory を統合するためのガイドラインを示します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: barbkess
+ms.author: celested
 ms.custom: seohack1
-ms.openlocfilehash: 844f569b7c425f6a67acabe491508aa8d5fb00f5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 341d7667f039a7272a7ad3fec80a445aa95b619d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669719"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202691"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory 用の基幹業務アプリをの開発する
 このガイドでは、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。Active Directory/Office 365 のグローバル管理者向けに記述されています。

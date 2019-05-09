@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Bing Web Search API からランキングを使用して検索結果を表示する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: d362d3aa131ba2ddfec8c7873352c634e7ce099c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9a49c4af474d7f0618bf0cff1a093e5cbb62fe2d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124203"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295608"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>ランキングを使用して Bing Web Search API の結果を表示する方法  
 
@@ -56,7 +56,7 @@ ID を使用するのは簡単です。必要があるのは、ランキング I
             },
             . . .  
         ]  
-    },  
+    }],  
     "images" : {
         "id" : "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#Images",
         "readLink" : "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images...",

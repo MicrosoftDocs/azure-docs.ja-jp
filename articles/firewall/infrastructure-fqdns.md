@@ -22,7 +22,7 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 
 - ストレージのプラットフォーム イメージ リポジトリ (PIR) への Compute アクセス
 - マネージド ディスク状態ストレージ アクセス
-- Azure 診断とログ記録 (MDS)
+- Azure Diagnostics とログ記録 (MDS)
 - Azure Active Directory
 
 ## <a name="overriding"></a>オーバーライド 

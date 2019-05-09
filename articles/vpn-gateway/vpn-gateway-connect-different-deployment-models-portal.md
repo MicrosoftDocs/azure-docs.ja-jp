@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405006"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099173"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -30,6 +30,8 @@ ms.locfileid: "49405006"
 仮想ネットワーク ゲートウェイがまだなく、新しく作成しない場合は、代わりに VNet ピアリングを使用して VNet を接続することを検討する可能性があります。 VNet ピアリングは、VPN ゲートウェイを使用しません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
 ### <a name="before"></a>開始する前に
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 次の手順では、両方の VNet が既に作成されていることを前提にしています。 この記事を演習として使用しており、VNet がない場合は、手順内のリンクを使用して作成できます。
 * これらの VNet のアドレス範囲が互いに重複しておらず、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していないことを確認します。
@@ -112,8 +114,8 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 1. **[新しい VPN 接続]** ページで、**[ゲートウェイをすぐに作成する]** チェック ボックスをオンにします。
 2. **[ゲートウェイの構成 (オプション)]** をクリックして、**[ゲートウェイの構成]** ページを開きます。
 
-  ![[ゲートウェイの構成] ページを開く](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[ゲートウェイの構成] ページを開く")
-3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet** で既に構成されています。
+   ![[ゲートウェイの構成] ページを開く](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[ゲートウェイの構成] ページを開く")
+3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet**。
 4. **[アドレス範囲]** は、ゲートウェイ サブネットの範囲を示します。 /29 アドレス範囲 (3 アドレス) でゲートウェイ サブネットを作成することもできますが、さらに多くの IP アドレスを含むゲートウエイ サブネットを作成することをお勧めします。 これにより、将来の構成でさらに多くの IP アドレスが必要になった場合にも対応できるようになります。 可能であれば、/27 または /28 を使います。 これらの手順を演習として使用している場合は、[例の値](#values)を参照してください。 この例では、10.0.0.32/28 を使用します。 **[OK]** をクリックして、ゲートウェイ サブネットを作成します。
 5. **[ゲートウェイの構成]** ページの **[サイズ]** は、ゲートウェイの SKU を示します。 VPN Gateway のゲートウェイ SKU を選びます。
 6. **[ルーティングの種類]** が **[動的]** であることを確認した後、**[OK]** をクリックして **[新しい VPN 接続]** ページに戻ります。
@@ -147,7 +149,7 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 
 ### <a name="2-create-a-gateway-subnet"></a>2.ゲートウェイ サブネットの作成
 
-**例の値:** GatewaySubnet = 192.168.0.0/26
+**値の例:** GatewaySubnet = 192.168.0.0/26
 
 仮想ネットワーク ゲートウェイを作成する前に、まずゲートウェイ サブネットを作成する必要があります。 CIDR カウント /28 以上 (/27、/26 など) で、ゲートウェイ サブネットを作成します。 練習としてこれを作成している場合、例の値を使用できます。
 
@@ -171,7 +173,7 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 
 ### <a name="createlng"></a>4.ローカル ネットワーク ゲートウェイの作成
 
-**例の値:** ローカル ネットワーク ゲートウェイ = ClassicVNetLocal
+**値の例:** Local network gateway = ClassicVNetLocal
 
 | Virtual Network | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |ゲートウェイのパブリック IP アドレス|
 |:--- |:--- |:--- |:--- |:--- |
@@ -190,16 +192,16 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 2. 仮想ネットワークのページで、**[概要]** をクリックします。
 3. **[VPN 接続]** セクションのグラフィックで、ローカル サイトの名前をクリックします。
 
-  ![VPN 接続](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN 接続")
+   ![VPN 接続](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN 接続")
 4. **[サイト対サイト VPN 接続]** ページで、サイトの名前をクリックします。
 
-  ![サイト名](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "ローカル サイトの名前")
+   ![サイト名](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "ローカル サイトの名前")
 5. ローカル サイトの接続ページで、ローカル サイトの名前をクリックして、**[ローカル サイト]** ページを開きます。
 
-  ![ローカル サイトを開く](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "ローカル サイトを開く")
+   ![ローカル サイトを開く](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "ローカル サイトを開く")
 6. **[ローカル サイト]** ページで、**VPN Gateway の IP アドレス**を、Resource Manager ゲートウェイの IP アドレスで置き換えます。
 
-  ![ゲートウェイの IP アドレス](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "ゲートウェイの IP アドレス")
+   ![ゲートウェイの IP アドレス](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "ゲートウェイの IP アドレス")
 7. **[OK]** をクリックして、IP アドレスを更新します。
 
 ## <a name="RMtoclassic"></a>セクション 4 - Resource Manager からクラシックへの接続の作成
@@ -226,19 +228,19 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 管理者特権を使って PowerShell コンソールを開き、Azure アカウントにログインします。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 次のコマンドレットは、Resource Manager デプロイ モデルの Azure アカウント用のログイン資格情報をユーザーに求めます。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Azure サブスクリプションの一覧を取得します。
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 複数のサブスクリプションがある場合は、使用するサブスクリプションを指定します。
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+Select-AzSubscription -SubscriptionName "Name of subscription"
 ```
 
 次に、ログインしてクラシック PowerShell コマンドレット (Service Management) を使用します。 クラシック デプロイ モデルに Azure アカウントを追加するには、次のコマンドを使用します。
@@ -261,7 +263,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2.ネットワーク構成ファイルの値を表示する
 
-Azure Portal で VNet を作成するときには、Azure で使用される完全名は Azure Portal に表示されません。 たとえば、Azure Portal に "ClassicVNet" という名前で表示されている VNet が、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 つまり、実際には "Group ClassicRG ClassicVNet" のような名前である場合があります。 次の手順では、ネットワーク構成ファイルをダウンロードして、値を表示します。
+Azure Portal で VNet を作成するときには、Azure で使用される完全名は Azure Portal に表示されません。 たとえば、Azure Portal に "ClassicVNet" という名前で表示されている VNet が、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 名前は次のように表示されます。'Group ClassicRG ClassicVNet' 次の手順では、ネットワーク構成ファイルをダウンロードして、値を表示します。
 
 コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 この例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
 

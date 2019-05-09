@@ -3,7 +3,7 @@ title: チュートリアル - Azure 内の Linux 仮想マシンに LEMP を展
 description: このチュートリアルでは、Azure 内の Linux 仮想マシンに LEMP スタックをインストールする方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.author: danlep
-ms.openlocfilehash: c4926760162baa5687242f4372377c64c7e24b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 01/30/2019
+ms.author: cynthn
+ms.openlocfilehash: 0a9d63f4064952adbfedfc3f9656370ef7c4a1cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999360"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511279"
 ---
-# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure 内の Linux 仮想マシンに LEMP Web サーバーをインストールする
+# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに LEMP Web サーバーをインストールする
 
 この記事では、NGINX Web サーバー、MySQL、PHP (LEMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 LEMP スタックは、同様に Azure にインストールすることができる、一般的な [LAMP スタック](tutorial-lamp-stack.md) の代替品です。 LEMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -46,17 +46,15 @@ CLI をローカルにインストールして使用する場合、このチュ�
 次のコマンドを実行して、Ubuntu パッケージ ソースを更新し NGINX、MySQL、および PHP をインストールします。 
 
 ```bash
-sudo apt update && sudo apt install nginx mysql-server php-mysql php php-fpm
+sudo apt update && sudo apt install nginx && sudo apt install mysql-server php-mysql php-fpm
 ```
 
-パッケージやその他の依存関係をインストールすることが求められます。 メッセージが表示されたら、MySQL のルート パスワードを設定し、Enter キーを押して続行します。 残りの指示に従います。 このプロセスにより、MySQL で PHP を使用するための必要最小限の PHP 拡張機能がインストールされます。 
-
-![MySQL ルート パスワード ページ][1]
+パッケージやその他の依存関係をインストールすることが求められます。 このプロセスにより、MySQL で PHP を使用するための必要最小限の PHP 拡張機能がインストールされます。  
 
 ## <a name="verify-installation-and-configuration"></a>インストールと構成を確認する
 
 
-### <a name="nginx"></a>NGINX
+### <a name="verify-nginx"></a>NGINX を確認する
 
 次のコマンドで NGINX のバージョンを確認します。
 ```bash
@@ -68,7 +66,7 @@ NGINX がインストールされ、VM に対しポート 80 が開かれると�
 ![NGINX の既定のページ][3]
 
 
-### <a name="mysql"></a>MySQL
+### <a name="verify-and-secure-mysql"></a>MySQL を確認してセキュリティで保護する
 
 次のコマンドを使用して MySQL のバージョンを確認します (大文字の `V` パラメーターに注意)。
 
@@ -76,24 +74,24 @@ NGINX がインストールされ、VM に対しポート 80 が開かれると�
 mysql -V
 ```
 
-MySQL のインストールのセキュリティ保護を強化するには、`mysql_secure_installation` スクリプトを実行します。 一時的なサーバーをセットアップするだけの場合は、このステップを省略できます。 
+MySQL のインストールのセキュリティ保護を強化 (ルートのパスワードを設定するなど) するには、`mysql_secure_installation` スクリプトを実行します。 
 
 ```bash
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
-MySQL のルート パスワードを入力し、環境のセキュリティ設定を構成します。
+必要に応じてValidate Password プラグインを設定することもできます (推奨)。 次に、MySQL のルート ユーザーに使用するパスワードを設定し、その他、環境のセキュリティ設定を構成します。 質問にはすべて "Y" (はい) で答えることをお勧めします。
 
 MySQL の機能 (MySQL データベースの作成、ユーザーの追加、構成設定の変更) を試したい場合は、MySQL にログインします。 このチュートリアルを実行するには、このステップは必要ありません。 
 
 
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 ```
 
 完了したら「`\q`」と入力して、mysql プロンプトを終了します。
 
-### <a name="php"></a>PHP
+### <a name="verify-php"></a>PHP を確認する
 
 次のコマンドで PHP のバージョンを確認します。
 
@@ -109,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-エディターで、`/etc/nginx/sites-available/default` の内容を次のコードに置き換えます。 設定を説明するコメントを参照してください。 *yourPublicIPAddress* を VM のパブリック IP アドレス置き換え、その他の設定はそのままにします。 そのうえでファイルを保存します。
+エディターで、`/etc/nginx/sites-available/default` の内容を次のコードに置き換えます。 設定を説明するコメントを参照してください。 *yourPublicIPAddress* を実際の VM のパブリック IP アドレスに置き換え、`fastcgi_pass` の PHP バージョンを確認します。それ以外の設定はそのままにしてください。 そのうえでファイルを保存します。
 
 ```
 server {
@@ -129,7 +127,7 @@ server {
     # Include FastCGI configuration for NGINX
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
     }
 }
 ```
@@ -177,6 +175,5 @@ SSL 証明書を使用して Web サーバーをセキュリティ保護する�
 > [!div class="nextstepaction"]
 > [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
 
-[1]: ./media/tutorial-lemp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

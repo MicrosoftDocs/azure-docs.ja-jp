@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: 960dc8f2908a20620a84113b27e474b553cd45d4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345375"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466918"
 ---
 # <a name="smart-groups"></a>スマート グループ
 アラートを処理する際に直面する一般的な課題は、実際の問題を特定するためにノイズを調べることです。スマート グループはそのような問題を解決するためのものです。  
@@ -62,4 +62,5 @@ ms.locfileid: "53345375"
 
 - [スマート グループを管理する](https://aka.ms/managing-smart-groups)
 - [アラートとスマート グループの状態を変更する](https://aka.ms/managing-alert-smart-group-states)
+
 

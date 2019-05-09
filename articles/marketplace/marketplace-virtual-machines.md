@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: d2ff854d291f65848c7e87b88d8020a835b3bdaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: eb49d0fe610a78b8d1a407644a206fddaba0a67a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958663"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116217"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>仮想マシンのオファー発行ガイド
 
@@ -56,24 +56,28 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 
 顧客に関連付けられているサブスクリプションに仮想アプライアンスをデプロイするときは、オファーの種類として仮想マシンを使用します。 VM は、従量課金制またはライセンス持ち込み (BYOL) のライセンス モデルを使用して完全に販売可能です。 商用トランザクションは Microsoft がホストし、公開元に代わって顧客に請求します。 公開元にとっては、顧客と Microsoft との間で推奨される支払い関係 (Enterprise Agreement など) を利用できる利点があります。
 
->[!NOTE]
->現在、Enterprise Agreement に関連付けられている年額コミットメントは VM の Azure 利用には使えますが、公開元のソフトウェア ライセンス料金には使えません。  
-
->[!NOTE]
->イメージと価格をプライベート オファーとして発行することで､VM の検出とデプロイを特定の顧客に限定することができます。 プライベート オファーとすることで､公開元が近しい顧客に排他的なオファーを作成し､カスタマイズされたソフトウェアと条件を提供できるようになります。 条件をカスタマイズすることによって､公開元は特別な価格と条件によるフィールド主導の取引､さらには限定的なソフトウェア リリースの利用などのさまざまなシナリオにスポットライトを当てることができます。 プライベート オファーにより､公開元はそうした詳細から成る新しい SKU を作成し､限られた顧客に具体的な価格や製品を提供することができます。  
-*   プライベート オファーの詳細については、[azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace) の「Private Offers on Azure Marketplace (Azure Marketplace のプライベート オファー)」を参照してください。  
+> [!NOTE]
+> 現在、Enterprise Agreement に関連付けられている年額コミットメントは VM の Azure 利用には使えますが、公開元のソフトウェア ライセンス料金には使えません。  
+> 
+> [!NOTE]
+> イメージと価格をプライベート オファーとして発行することで､VM の検出とデプロイを特定の顧客に限定することができます。 プライベート オファーとすることで､公開元が近しい顧客に排他的なオファーを作成し､カスタマイズされたソフトウェアと条件を提供できるようになります。 条件をカスタマイズすることによって､公開元は特別な価格と条件によるフィールド主導の取引､さらには限定的なソフトウェア リリースの利用などのさまざまなシナリオにスポットライトを当てることができます。 プライベート オファーにより､公開元はそうした詳細から成る新しい SKU を作成し､限られた顧客に具体的な価格や製品を提供することができます。  
+> *   プライベート オファーの詳細については、[azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace) の「Private Offers on Azure Marketplace (Azure Marketplace のプライベート オファー)」を参照してください。  
 
 | 要件 | 詳細 |  
 |:--- |:--- | 
 | 請求/メータリング | 対象の VM は、BYOL または従量課金制の月額請求をサポートしている必要があります。 |  
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。<ul> <li>Linux VHD の作成の詳細については、[docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based) の「Azure と互換性のある VHD の作成 (Linux ベース)」セクションを参照してください。</li> <li>Windows VHD の作成の詳細については、[docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based) の「Azure と互換性のある VHD の作成 (Windows ベース)」セクションを参照してください。</li> </ul> |  
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 <ul> <li>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。</li> <li>Windows VHD の作成の詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」を参照してください。</li> </ul> |  
+
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 まだ行っていない場合は、 
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)する
+- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させる
+- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
+- 詳細については、「[仮想マシン サイズ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer)」を参照してください。

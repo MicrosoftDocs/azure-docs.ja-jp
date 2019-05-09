@@ -1,81 +1,74 @@
-items:
 - name: 概要
   items:
-  - name: Power BI ワークスペース コレクションとは
-    href: what-are-power-bi-workspace-collections.md
-  - name: Power BI ワークスペース コレクションの新機能
-    href: whats-new.md
+    - name: Power BI ワークスペース コレクションとは
+      href: what-are-power-bi-workspace-collections.md
+    - name: Power BI ワークスペース コレクションの新機能
+      href: whats-new.md
 - name: 作業開始
   items:
-  - name: Power BI ワークスペース コレクションの概要
-    href: get-started.md
-  - name: サンプルの使用
-    href: get-started-sample.md
-  - name: FAQ
-    href: faq.md
+    - name: Power BI ワークスペース コレクションの概要
+      href: get-started.md
+    - name: サンプルの使用
+      href: get-started-sample.md
+    - name: FAQ
+      href: faq.md
 - name: 方法
   items:
-  - name: 計画と設計
-    items:
-    - name: 一般的なシナリオ
-      href: scenarios.md
-  - name: 管理
-    items:
-    - name: データ ソースへの接続
-      href: connect-datasource.md
-    - name: Power BI レポートの埋め込み
-      href: embed-report.md
-    - name: レポートの操作
-      href: interact-with-reports.md
-    - name: データセットからの新しいレポートの作成
-      href: create-report-from-dataset.md
-    - name: レポートの保存
-      href: save-reports.md
-    - name: 表示と編集の切り替え
-      href: toggle-mode.md
-  - name: セキュリティ保護
-    items:
-    - name: 認証と承認
-      href: app-token-flow.md
-    - name: Power BI ワークスペース コレクションでの行レベルのセキュリティ
-      href: row-level-security.md
+    - name: 計画と設計
+      items:
+        - name: 一般的なシナリオ
+          href: scenarios.md
+    - name: 管理
+      items:
+        - name: データ ソースへの接続
+          href: connect-datasource.md
+        - name: Power BI レポートの埋め込み
+          href: embed-report.md
+        - name: レポートの操作
+          href: interact-with-reports.md
+        - name: データセットからの新しいレポートの作成
+          href: create-report-from-dataset.md
+        - name: レポートの保存
+          href: save-reports.md
+        - name: 表示と編集の切り替え
+          href: toggle-mode.md
+    - name: セキュリティ保護
+      items:
+        - name: 認証と承認
+          href: app-token-flow.md
+        - name: Power BI ワークスペース コレクションでの行レベルのセキュリティ
+          href: row-level-security.md
 - name: リファレンス
   items:
-  - name: コード サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=power-bi-embedded
-  - name: PowerShell
-    href: /powershell/module/azurerm.powerbiembedded
-  - name: .NET Azure Resource Manager
-    href: /dotnet/api/microsoft.azure.management.powerbiembedded
-  - name: .NET SDK ダウンロード
-    href: https://www.nuget.org/profiles/powerbi
-  - name: JavaScript
-    href: https://github.com/Microsoft/PowerBI-JavaScript/wiki
-  - name: 管理 REST API
-    href: https://docs.microsoft.com/rest/api/power-bi-workspace-collections/
-  - name: REST API
-    href: https://msdn.microsoft.com/library/azure/mt711507.aspx
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=power-bi-embedded'
+    - name: PowerShell
+      href: /powershell/module/az.powerbiembedded
+    - name: .NET Azure Resource Manager
+      href: /dotnet/api/microsoft.azure.management.powerbiembedded
+    - name: .NET SDK ダウンロード
+      href: 'https://www.nuget.org/profiles/powerbi'
+    - name: JavaScript
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript/wiki'
+    - name: 管理 REST API
+      href: 'https://docs.microsoft.com/rest/api/power-bi-workspace-collections/'
+    - name: REST API
+      href: 'https://msdn.microsoft.com/library/azure/mt711507.aspx'
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
-  - name: JavaScript 埋め込みサンプル
-    href: https://microsoft.github.io/PowerBI-JavaScript/demo/
-  - name: JavaScript の Git リポジトリ
-    href: https://github.com/Microsoft/PowerBI-JavaScript
-  - name: Power BI C# の Git リポジトリ
-    href: https://github.com/Microsoft/PowerBI-CSharp
-  - name: Power BI コミュニティ
-    href: http://community.powerbi.com/t5/Developer/bd-p/Developer
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: サンプル アプリケーション
-    href: https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/powerbi
-ms.openlocfilehash: 8478b88c9c23d7fe933921f99102c64a1b5025ab
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434680"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: JavaScript 埋め込みサンプル
+      href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/'
+    - name: JavaScript の Git リポジトリ
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript'
+    - name: 'Power BI C# の Git リポジトリ'
+      href: 'https://github.com/Microsoft/PowerBI-CSharp'
+    - name: Power BI コミュニティ
+      href: 'https://community.powerbi.com/t5/Developer/bd-p/Developer'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サンプル アプリケーション
+      href: 'https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/powerbi'

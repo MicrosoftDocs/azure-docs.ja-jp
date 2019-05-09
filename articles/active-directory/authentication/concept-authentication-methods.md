@@ -1,27 +1,28 @@
 ---
-title: Azure AD の認証方法
+title: 認証方法 - Azure Active Directory
 description: Azure AD で MFA および SSPR として使用できる認証方法
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249695"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59360638"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
-Azure AD のセルフサービスによるパスワードのリセット (SSPR) と多要素認証 (MFA) では、関連する機能を使用する際、ユーザーが本人であることを確認するために、認証方法やセキュリティ情報と呼ばれる追加の情報の入力を求められる場合があります。
+管理者が Azure Multi-Factor Authentication とセルフサービスのパスワード リセット (SSPR) の認証方法を選択する場合は、ユーザーに複数の認証方法を登録するよう要求することをお勧めします。 ユーザーがある認証方法を使用できない場合、そのユーザーは別の方法で認証することを選択できます。
 
-管理者は、ユーザーが使用できる SSPR および MFA の認証方法をポリシー内で定義できます。 認証方法によっては、すべての機能で使用できないものもあります。
+管理者は、ユーザーが使用できる SSPR および MFA の認証方法をポリシー内で定義できます。 認証方法によっては、すべての機能で使用できないものもあります。 ポリシーの構成の詳細については、「[セルフサービスによるパスワードのリセットを適切にロールアウトする方法](howto-sspr-deployment.md)」および[クラウド ベースの Azure Multi-Factor Authentication の計画](howto-mfa-getstarted.md)に関する記事を参照してください。
 
 Microsoft では、認証方法を利用できない場合に備えて、ユーザーが選択できる認証方法の数を、最低限必要な数より多く設定することを強くお勧めしています。
 
@@ -140,6 +141,9 @@ Microsoft Authenticator アプリは、スマートフォンまたはタブレ�
 
 モバイル アプリからの通知とモバイル アプリからの確認コードの両方の使用を有効にした場合、通知を使用して Microsoft Authenticator アプリを登録するユーザーは、通知とコードの両方を使用してその身元を証明できます。
 
+> [!NOTE]
+> 組織に中国勤務のスタッフや中国に出張中のスタッフがいる場合、**Android デバイス**での**モバイル アプリによる通知**メソッドはその国では機能しません。 それらのユーザーには別の方法を使用できるようにする必要があります。
+
 ### <a name="verification-code-from-mobile-app"></a>モバイル アプリからの確認コード
 
 Microsoft Authenticator アプリまたは他のサードパーティ アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。 ユーザー名とパスワードを入力したら、アプリから提供されたコードをサインイン画面に入力します。 検証コードにより、2 番目の形式の認証が行われます。
@@ -148,17 +152,19 @@ Microsoft Authenticator アプリまたは他のサードパーティ アプリ�
 > セルフサービスによるパスワードのリセットの場合、リセットに必要な方法が 1 つのみのときは、**最高レベルのセキュリティを確保するため**、ユーザーが使用できるオプションは確認コードのみです。
 >
 
+ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせている場合があります。
+
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH ハードウェア トークン (パブリック プレビュー)
 
-OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていることに注意してください。すべてのトークンと互換性があるとは限りません。
+OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。
 
-![Azure portal の [MFA Server OATH tokens]\(MFA サーバー - OATH トークン\) ブレードでの OATH トークンのアップロード](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![OATH トークンの MFA サーバー OATH トークン ブレードへのアップロード](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
 OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 いったんトークンを取得したら、次に示す例のように、UPN、シリアル番号、秘密鍵、間隔、製造元、モデルを含む、コンマ区切り値 (CSV) ファイル形式でアップロードする必要があります。
 
-```
+```csv
 upn,serial number,secret key,timeinterval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```
@@ -171,6 +177,8 @@ CSV ファイルとして適切な形式が整ったら、管理者は Azure por
 CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンをクリックして、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。
 
 すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。アクティブにするトークンの **[アクティブ化]** をクリックし、トークンに表示されている OTP を入力します。
+
+ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせている場合があります。
 
 ## <a name="mobile-phone"></a>携帯電話
 
@@ -193,6 +201,9 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 ユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。
 
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
+
 ## <a name="office-phone"></a>会社電話
 
 ユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。
@@ -200,6 +211,9 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 正常に動作させるには、電話番号の形式が "*+<国コード> <電話番号>*" (例: +1 4255551234) になっている必要があります。
 
 会社電話の属性は、管理者によって管理されます。
+
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
 
 > [!NOTE]
 > 国番号と電話番号の間にスペースを入れる必要があります。
@@ -226,6 +240,6 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 [Azure Multi-Factor Authentication を組織で使用できるようにする](howto-mfa-getstarted.md)
 
-[Azure Multi-Factor Authentication と Azure AD のセルフサービスによるパスワードのリセットで集中型登録を有効にする](concept-registration-mfa-sspr-converged.md)
+[テナントで統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
 
 [エンドユーザーの認証方法の構成に関するドキュメント](https://aka.ms/securityinfoguide)

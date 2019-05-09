@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: Bing Spell Check API V7 を LUIS エンドポイント クエリに追加して、発話の単語のスペルミスを修正します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 478970c6b5f4035949c8b6579f1021dfa161fd39
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1e5536b08b3b78f35426207369f444e6eb21c87d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096793"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341804"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 

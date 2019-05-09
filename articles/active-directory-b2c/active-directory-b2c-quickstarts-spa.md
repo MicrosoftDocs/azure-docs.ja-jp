@@ -3,21 +3,21 @@ title: クイック スタート - Azure Active Directory B2C を使用したシ
 description: Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル シングルページ アプリケーションを実行します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: f3c2eaf7277e63d8cc1311255d5809f73c6f5d19
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.subservice: B2C
+ms.openlocfilehash: c841497fe0a072497b622876b9b0205097ccb25e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250371"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191705"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
 Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリケーションは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。 このクイック スタートでは、シングル ページ アプリケーションにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio 2017](https://www.visualstudio.com/downloads/) と **ASP.NET および開発**ワークロード。
-- [Node.js](https://nodejs.org/en/download/)
+-  [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
 - [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 

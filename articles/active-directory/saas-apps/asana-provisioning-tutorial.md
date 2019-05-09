@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Asana を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Asana を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Asana に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -8,22 +8,23 @@ writer: asmalser-msft
 manager: sakula
 ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 26642fefbb86b2709e110b13d782286fd18d5e60
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a763b2516f88e8c92efc321db50dc15881f54c9b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348057"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59265639"
 ---
-# <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>チュートリアル: Asana を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>チュートリアル:Asana を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure Active Directory (Azure AD) から Asana にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Asana と Azure AD で実行する必要がある手順について説明します。
 
@@ -31,16 +32,16 @@ ms.locfileid: "44348057"
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure AD テナント
-*   [Enterprise](https://www.asana.com/pricing) プラン以上の有効な Asana テナント 
-*   Admin アクセス許可がある Asana のユーザー アカウント 
+* Azure AD テナント
+* [Enterprise](https://www.asana.com/pricing) プラン以上の有効な Asana テナント
+* Admin アクセス許可がある Asana のユーザー アカウント
 
-> [!NOTE] 
+> [!NOTE]
 > Azure AD プロビジョニング統合では、Asana で使用できる [Asana API](https://asana.com/developers/api-reference/users) が必要です。
 
 ## <a name="assign-users-to-asana"></a>ユーザーを Asana に割り当てる
 
-Azure AD では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーのみが同期されます。 
+Azure AD では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に *割り当て* という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーのみが同期されます。
 
 プロビジョニング サービスを構成して有効にする前に、Asana アプリにアクセスする必要がある Azure AD 内のユーザーを決定しておく必要があります。 その後、次の手順でこれらのユーザーを Asana アプリに割り当てることができます。
 
@@ -50,7 +51,7 @@ Azure AD では、選択されたアプリへのアクセスが付与される�
 
 Asana には、Azure AD ユーザーを 1 人だけ割り当てて、プロビジョニングの構成をテストすることをお勧めします。 その他のユーザーは後で割り当てることができます。
 
-## <a name="configure-user-provisioning-to-asana"></a>Asana へのユーザー プロビジョニングの構成 
+## <a name="configure-user-provisioning-to-asana"></a>Asana へのユーザー プロビジョニングの構成
 
 このセクションでは、Asana のユーザー アカウント プロビジョニング API に Azure AD を接続する手順を説明します。 Azure AD でのユーザーの割り当てに基づいて、Asana での割り当て済みユーザー アカウントの作成、更新、および無効化を行うプロビジョニング サービスを構成することもできます。
 
@@ -85,7 +86,7 @@ Asana には、Azure AD ユーザーを 1 人だけ割り当てて、プロビ�
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** に入力し、 その下のチェック ボックスをオンにします。
 
-1. **[保存]** を選択します。 
+1. **[保存]** を選択します。
 
 1. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Asana]\(Azure Active Directory ユーザーを Asana に同期する\)** を選択します。
 
@@ -93,7 +94,7 @@ Asana には、Azure AD ユーザーを 1 人だけ割り当てて、プロビ�
 
 1. Asana に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-1. **[保存]** を選択します。 
+1. **[保存]** を選択します。
 
 **[ユーザー]** セクションで Asana に割り当てたユーザーの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用して、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。 監査ログには、Asana アプリでプロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 

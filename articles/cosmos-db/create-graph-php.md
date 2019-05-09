@@ -1,23 +1,21 @@
 ---
 title: 'クイック スタート: Gremlin API と PHP - Azure Cosmos DB'
 description: このクイック スタートでは、Azure portal および PHP で Azure Cosmos DB Gremlin API を使ってコンソール アプリケーションを作成する方法を説明します
-services: cosmos-db
 author: luisbosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f6ff46f391ce03f67619ef685f841dcf95a1fd92
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: aace9b61ae7625f1d3bbed5181fd88e367ea8f12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082757"
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB は:PHP と Azure portal を使用してグラフ データベースを作成する
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>クイック スタート:PHP と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -241,17 +239,17 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンをクリックします。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
 
-   ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
+    ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、**[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
 
-   ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
+    ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
 
 14. 結果リストから **[rakesh]** を選択すると、ashley と rakesh が接続されていることがわかります。 
 
-   ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
+    ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
 
-   以上で、このクイック スタートのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
+    以上で、このクイック スタートのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

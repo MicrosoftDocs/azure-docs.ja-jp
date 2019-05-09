@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/19/2018
+ms.date: 01/03/2019
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 7628260efff34b52ca7d4bd4c35cce279d5474b3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: blobs
+ms.openlocfilehash: 093f749ac29dc2bd341712d87b404de769d0b7bc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965412"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865575"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -33,7 +33,7 @@ Blob Storage には、3 種類のリソースがあります。
 
 ### <a name="storage-accounts"></a>ストレージ アカウント
 
-ストレージ アカウントは、データ用の一意の名前空間を Azure 内に用意します。 Azure Storage 内に格納されるすべてのオブジェクトには、一意のアカウント名を含むアドレスが割り当てられます。 アカウント名と Azure Storage サービス エンドポイントの組み合わせによって、ストレージ アカウント用のエンドポイントが形成されます。
+ストレージ アカウントは、データ用の一意の名前空間を Azure 内に用意します。 Azure Storage 内に格納されるすべてのオブジェクトには、一意のアカウント名を含むアドレスが割り当てられます。 アカウント名と Azure Storage Blob エンドポイントの組み合わせによって、ストレージ アカウント内のオブジェクト用のベース アドレスが形成されます。
 
 たとえば、ストレージ アカウントの名前が *mystorageaccount* の場合、Blob Storage の既定のエンドポイントは次のようになります。
 
@@ -43,7 +43,7 @@ http://mystorageaccount.blob.core.windows.net
 
 ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md)」を参照してください。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
-### <a name="containers"></a>コンテナー
+### <a name="containers"></a>Containers
 
 ファイル システムのディレクトリと同じように、コンテナーを使用して BLOB のセットを整理できます。 ストレージ アカウントに含めることができるコンテナーの数には制限がなく、1 つのコンテナーに格納できる BLOB の数にも制限はありません。 
 
@@ -56,7 +56,7 @@ Azure Storage では、3 種類の BLOB がサポートされています。
 
 * **ブロック BLOB** には、約 4.7 TB までのテキストとバイナリ データが格納されます。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
 * **追加 BLOB** は、ブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されています。 追加 BLOB は、仮想マシンのデータのログ記録などのシナリオに最適です。
-* **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB には、Azure 仮想マシン用のディスクとして機能する仮想ハード ドライブ (VHD) ファイルが格納されます。 ページ BLOB の詳細については、(../articles/storage/blobs/storage-blob-pageblob-overview.md) を参照してください。
+* **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB には、Azure 仮想マシン用のディスクとして機能する仮想ハード ドライブ (VHD) ファイルが格納されます。 ページ BLOB について詳しくは、「[Azure ページ BLOB の概要](storage-blob-pageblob-overview.md)」をご覧ください
 
 異なる種類の BLOB の詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)」(ブロック BLOB、追加 BLOB、ページ BLOB について) をご覧ください。
 

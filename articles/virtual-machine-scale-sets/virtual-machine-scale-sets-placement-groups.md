@@ -12,15 +12,15 @@ ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: rajraj
-ms.openlocfilehash: 5280936cdec25f7b5fc4b77c989b31c7a01f7bd6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 98032291d9b9d1b0885e7442b882a7f62f9ccd59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123438"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
 現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 
@@ -61,7 +61,7 @@ _vmss create_ コマンドでは、構成値を指定しない場合に既定で
 az vmss create --help
 ```
 
-Azure Resource Manager テンプレートを構成して大規模なスケール セットを作成している場合、このテンプレートによって Azure Managed Disks に基づいたスケール セットが作成されることを確認してください。 _Microsoft.Compute/virtualMAchineScaleSets_ リソースの _properties_ セクションで、_singlePlacementGroup_ プロパティを _false_ に設定できます。 次の JSON フラグメントは、スケール セット テンプレートの先頭部分を示しています。これには、VM 容量が 1,000 であることと _"singlePlacementGroup" : false_ 設定が含まれています。
+Azure Resource Manager テンプレートを構成して大規模なスケール セットを作成している場合、このテンプレートによって Azure Managed Disks に基づいたスケール セットが作成されることを確認してください。 _Microsoft.Compute/virtualMachineScaleSets_ リソースの _properties_ セクションで、_singlePlacementGroup_ プロパティを _false_ に設定できます。 次の JSON フラグメントは、スケール セット テンプレートの先頭部分を示しています。これには、VM 容量が 1,000 であることと _"singlePlacementGroup" : false_ 設定が含まれています。
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
@@ -83,7 +83,7 @@ Azure Resource Manager テンプレートを構成して大規模なスケール
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>複数の配置グループをまたぐように既存のスケール セットを変換する
 既存の仮想マシン スケール セットで 100 個を超える VM にスケーリングできるようにするには、スケール セット モデルで _singlePlacementGroup_ プロパティを _false_ に変更する必要があります。 このプロパティの変更は、[Azure リソース エクスプローラー](https://resources.azure.com/)を使用してテストできます。 既存のスケール セットを探し、_[編集]_ を選択して、_singlePlacementGroup_ プロパティを変更します。 このプロパティが表示されていない場合は、スケール セットの表示に以前のバージョンの Microsoft.Compute API を使用している可能性があります。
 
->[!NOTE] 
-スケール セットは、1 つの配置グループのみのサポート (既定の動作) から複数の配置グループのサポートに変更できますが、その逆の変換を行うことはできません。 そのため、変換する前に、大規模なスケール セットのプロパティを理解しておく必要があります。
+> [!NOTE]
+> スケール セットは、1 つの配置グループのみのサポート (既定の動作) から複数の配置グループのサポートに変更できますが、その逆の変換を行うことはできません。 そのため、変換する前に、大規模なスケール セットのプロパティを理解しておく必要があります。
 
 

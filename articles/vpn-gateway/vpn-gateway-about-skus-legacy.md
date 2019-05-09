@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4feecb9c1e91e1bc6c66a610c092e7bf894886e5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190230"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417314"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
@@ -40,19 +40,21 @@ ms.locfileid: "30190230"
 
 ## <a name="resize"></a>ゲートウェイのサイズを変更する
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 使用しているゲートウェイのサイズを、同じ SKU ファミリ内のゲートウェイ SKU のサイズに変更できます。 たとえば、Standard SKU の場合は、HighPerformance SKU にサイズ変更可能です。 ただし、古い SKU と新しい SKU ファミリとの間で VPN ゲートウェイのサイズを変更することはできません。 たとえば、Standard SKU から VpnGw2 SKU にしたり、Basic SKU から VpnGw1 にしたりすることはできません。
 
-クラシック デプロイメント モデルのゲートウェイのサイズを変更するには、次のコマンドを使用します。
+クラシック デプロイ モデルのゲートウェイのサイズを変更するには、次のコマンドを使用します。
 
 ```powershell
 Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 ```
 
-Resource Manager デプロイメント モデルのゲートウェイのサイズを変更するには、PowerShell で次のコマンドを使用します。
+Resource Manager デプロイ モデルのゲートウェイのサイズを変更するには、PowerShell で次のコマンドを使用します。
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+$gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 ゲートウェイのサイズ変更は、Azure Portal でも行うことができます。
 

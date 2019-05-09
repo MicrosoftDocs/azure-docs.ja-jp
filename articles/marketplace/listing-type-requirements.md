@@ -12,19 +12,19 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 1c850b16492f725114fb23a8503f6345e1509212
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ebe344d9f596f862fe5ffbfef083725e6527d0d3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868669"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650208"
 ---
 # <a name="requirements-by-listing-type"></a>登録リストの要件  
 技術要件とマーケティング コンテンツ要件は、ネットショップ、オファーの種類、登録リストの種類によって異なります。 次の仕様を再確認して、要件を満たしているか確認してください。  
 1. ネットショップの要件:  
-    *   [AppSource](#storefront-requirements-appSource)  
+    *   [AppSource](#storefront-requirements-appsource)  
     *   [Azure Marketplace](#storefront-requirements-azure-marketplace)  
 2. 登録リストの種類とオファーの種類に関する要件:  
     *   登録リストの種類とオファーの種類について詳しくは、「ソリューションの登録リストの種類を選定する」([docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md)) を参照してください。  
@@ -40,7 +40,7 @@ ms.locfileid: "52868669"
 | ***ビジネス向けサービスとしてのソフトウェア (SaaS) アプリ*** | アプリは次の要件を満たしている必要があります。<ul> <li>基幹業務 SaaS アプリ</li> <li>業務プロセスに重点を置いている</li> <li>企業のお客様を対象とする</li> <li>ユーザーが勤務先の資格情報 (ユーザー名とパスワードなど) を使用してサインインできる</li> </ul> | 必須 |  
 | ***無料試用期間および試用エクスペリエンス*** | 顧客が限られた期間無料でアプリを使用するために、次のいずれかの選択肢が用意されている必要があります。<ul> <li>`try` 方式を用意し、顧客が AppSource 内からアプリの試用版を開始できるようにする</li> <li>AppSource に `request trial` の選択肢を用意し、顧客がアプリの試用版を要求できるようにする</li> </ul>提供する無料試用版には、顧客が追加料金なしでアプリを試用できる期間をあらかじめ設ける必要があります。 | 必須 |  
 | ***簡単に構成できてすぐに使用できるソリューション*** | アプリは、カスタマイズが不要で、簡単に短時間で構成およびセットアップできる必要があります。 | 必須 |  
-| ***リード管理*** | ネットショップからリードを受け取るには、CRM を有効にしてリード データを受け付ける必要があります。<ul> <li>CRM の例としては、Marketo、Microsoft Dynamics、Salesforce があります。</li> </ul> | 必須 |  
+| ***リード管理*** | ネットショップから潜在顧客を受け取るには、お使いの CRM で潜在顧客データの受け付けを有効にします。<ul> <li>CRM の例としては、Marketo、Microsoft Dynamics、Salesforce があります。</li> </ul> | 必須 |  
 | ***プライバシー ポリシーと使用条件*** | プライバシー ポリシー ページへのリンクを公開 URL を使用して提供する必要があります。 使用条件は、公開時にテキストとして入力する必要があります。 | 必須 |  
 | ***サポート*** | カスタマー サポート ページへのリンクを公開 URL を使用して提供する必要があります。 アプリが試用版である場合、試用期間中は追加料金なしでサポートする必要があります。 | 必須 |  
 
@@ -52,7 +52,7 @@ ms.locfileid: "52868669"
 | ***参加ポリシー*** | アプリは、Azure Marketplace 参加ポリシーに準拠している必要があります。<ul> <li>参加ポリシーについて詳しくは、Azure Marketplace 参加ポリシーに関するページ ([azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies)) をご覧ください。</li></ul> | list<br />トランザクション<br />試用 |  
 | ***Microsoft との統合*** | オファーは、コンピューティング、ネットワーク、ストレージなどの Microsoft Azure サービス タイプを使用または拡張する必要があります。 データベース、セキュリティ、ネットワークなど、既存の Azure Marketplace カテゴリにオファーが合致している必要があります。<ul> <li>Marketplace オファーについて詳しくは、Marketplace アプリのページ ([azuremarketplace.microsoft.com/marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps)) をご覧ください。</li> </ul> | list<br />トランザクション<br />試用 |  
 | ***対象ユーザー*** | オファーは、IT プロフェッショナル、クラウド開発者、または顧客のその他の技術的役割を対象としたものでなければなりません。 | list<br />トランザクション<br />試用 |  
-| ***リード管理*** | ネットショップからリードを受け取るには、リード データを受け付けるように CRM (Marketo、Microsoft Dynamics、または Salesforce) を有効にする必要があります。 | list<br />トランザクション<br />試用 |  
+| ***リード管理*** | ネットショップから潜在顧客を受け取るには、お使いの CRM (Marketo、Microsoft Dynamics、または Salesforce) で潜在顧客データの受け付けを有効にします。 | list<br />トランザクション<br />試用 |  
 | ***プライバシー ポリシーと使用条件*** | プライバシー ポリシー ページへのリンクを公開 URL を使用して提供する必要があります。 使用条件は、公開時にテキストとして入力する必要があります。 | list<br />トランザクション<br />試用 |  
 | ***サポート*** | カスタマー サポート ページへのリンクを公開 URL を使用して提供する必要があります。 オファーが試用版である場合、試用期間中は追加料金なしでサポートする必要があります。 | トランザクション<br />試用 |    
 
@@ -64,10 +64,10 @@ ms.locfileid: "52868669"
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| コンサルティング サービス | AppSource | [要件:AppSource:リスト:コンサルティング サービス](#requirements-appsource-list-consulting-services) |  
-| コンサルティング サービス | Azure Marketplace | [要件:Azure Marketplace:リスト:コンサルティング サービス](#requirements-azure-marketplace-list-consulting-services) |  
+| コンサルティング サービス | AppSource | 要件:AppSource:リスト:コンサルティング サービス |  
+| コンサルティング サービス | Azure Marketplace | 要件:Azure Marketplace:リスト:コンサルティング サービス |  
 | 連絡する | AppSource | [](#) |  
-| 連絡する | Azure Marketplace | [要件:AppSource:リスト:連絡する](#requirements-azure-marketplace-list-contact-me) |  
+| 連絡する | Azure Marketplace | 要件:AppSource:リスト:連絡する |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要件:AppSource:リスト:コンサルティング サービス  
 
@@ -85,17 +85,17 @@ ms.locfileid: "52868669"
 
 <!-- #### Requirements: Azure Marketplace: List: Contact Me -->
 
----   
+---
 
 ### <a name="trial"></a>試用版  
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| 無料/SaaS 試用版 | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
-| 無料/SaaS 試用版 | Azure Marketplace | [要件:Azure Marketplace:試用版:無料試用版/SaaS 試用版](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| 対話型デモ | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
+| 無料/SaaS 試用版 | AppSource | 登録リストの種類の要件:試用版 |  
+| 無料/SaaS 試用版 | Azure Marketplace | 要件:Azure Marketplace:試用版:無料試用版/SaaS 試用版 |  
+| 対話型デモ | AppSource | 登録リストの種類の要件:試用版 |  
 | 対話型デモ | Azure Marketplace | [要件:Azure Marketplace:試用版:対話型デモ](#requirements-azure-marketplace-trial-interactive-demo) |  
-| 体験版 | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
+| 体験版 | AppSource | 登録リストの種類の要件:試用版 |  
 | 体験版 | Azure Marketplace | [要件:Azure Marketplace:試用版:体験版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要件:Azure Marketplace:試用版  
@@ -133,8 +133,8 @@ ms.locfileid: "52868669"
 
 | プランの種類 | ネットショップ | 詳細 |   
 |:---        |:---        | :--- |  
-| Azure アプリ:マネージド アプリ | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Azure アプリ:マネージド アプリ](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Azure アプリ:ソリューション テンプレート | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Azure アプリ:ソリューション テンプレート](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Azure アプリ:マネージド アプリ | Azure Marketplace | 要件:Azure Marketplace:トランザクション:Azure アプリ:マネージド アプリ |  
+| Azure アプリ:ソリューション テンプレート | Azure Marketplace | 要件:Azure Marketplace:トランザクション:Azure アプリ:ソリューション テンプレート |  
 | Containers | Azure Marketplace | [要件:Azure Marketplace:トランザクション:コンテナー](#requirements-azure-marketplace-transact-container) |  
 | SaaS アプリ  | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Saas アプリ](#requirements-azure-marketplace-transact-saas-app) |  
 | 仮想マシン | Azure Marketplace | [要件:Azure Marketplace:トランザクション:仮想マシン](#requirements-azure-marketplace-transact-virtual-machine) |  
@@ -155,7 +155,7 @@ ms.locfileid: "52868669"
 | 要件 | 詳細 |  
 |:--- |:--- |  
 | 請求/メータリング | オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "*補正発注*" オプションは、現時点でサポートされていません。 |  
-| 解約 | オファーは、いつでも顧客が解約できます。 |  
+| キャンセル | オファーは、いつでも顧客が解約できます。 |  
 | トランザクションのランディング ページ | Azure ブランド提携トランザクションのランディング ページをホストします。 顧客はそのランディング ページから、SaaS サービス アカウントを作成したり管理したりすることができます。 |  
 | SaaS サブスクリプション API | SaaS サブスクリプションと対話することによってユーザー アカウントとサービス プランを作成、更新、削除するサービスを提供します。 重要な API の変更には、すべて 24 時間以内に対応する必要があります。 重要でない API の変更は定期的に更新されます。 |  
 
@@ -164,9 +164,8 @@ ms.locfileid: "52868669"
 | 要件 | 詳細 |  
 |:--- |:--- | 
 | 請求/メータリング | 対象の VM は、BYOL または従量課金制の月額請求をサポートしている必要があります。 |  
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。<ul> <li>Linux VHD の作成の詳細については、[docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based) の「Azure と互換性のある VHD の作成 (Linux ベース)」セクションを参照してください。</li> <li>Windows VHD の作成の詳細については、[docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based) の「Azure と互換性のある VHD の作成 (Windows ベース)」セクションを参照してください。</li> </ul> |  
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。<ul> <li>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。</li> <li>Windows VHD の作成の詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」を参照してください。</li> </ul> |  
 
 ## <a name="next-steps"></a>次の手順
 *   「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
- 
----  
+

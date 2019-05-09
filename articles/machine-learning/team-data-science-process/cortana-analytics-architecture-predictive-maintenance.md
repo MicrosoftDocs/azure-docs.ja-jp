@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 8a33c8c030ccea7e3cc52ae47716e4d463fc2a26
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 057607a67de72fa3607f584772693a31c9448fd6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135969"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457736"
 ---
 # <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙業界における予測メンテナンスのための Cortana Intelligence Solution Template のアーキテクチャ
 次の図に、 [予測メンテナンスのための Cortana Intelligence Solution Template](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1)のアーキテクチャの概要を示します。

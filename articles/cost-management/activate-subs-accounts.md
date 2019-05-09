@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 9a27efe7908b2a15ceb823d7a85c4a12603731ab
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ad8ab0466ed902a2852fe83293fc270cfcaab208
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997662"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Cloudyn で Azure サブスクリプションとアカウントをアクティブ化する
 
-Azure Resource Manager の資格情報を追加または更新すると、Cloudyn は Azure テナント内のすべてのアカウントとサブスクリプションを検出できるようになります。 仮想マシンで Azure 診断拡張機能も有効になっていると、Cloudyn は CPU やメモリなどの拡張メトリックを収集できます。 この記事では、Azure Resource Manager API を使って新規アカウントおよび既存アカウントに対するアクセスを有効にする方法を説明します。 また、アカウントに関する一般的な問題を解決する方法についても説明します。
+Azure Resource Manager の資格情報を追加または更新すると、Cloudyn は Azure テナント内のすべてのアカウントとサブスクリプションを検出できるようになります。 仮想マシンで Azure Diagnostics 拡張機能も有効になっていると、Cloudyn は CPU やメモリなどの拡張メトリックを収集できます。 この記事では、Azure Resource Manager API を使って新規アカウントおよび既存アカウントに対するアクセスを有効にする方法を説明します。 また、アカウントに関する一般的な問題を解決する方法についても説明します。
 
 サブスクリプションが _アクティブ化されていない_ 場合、Cloudyn はほとんどの Azure サブスクリプション データにアクセスできません。 Cloudyn がこれらのデータにアクセスできるように、_アクティブ化されていない_ アカウントを編集する必要があります。
 

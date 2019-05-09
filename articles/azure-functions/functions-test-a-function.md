@@ -9,14 +9,14 @@ keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピ�
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 90eac2fda46dc5fbfff791e1fc0afb9858aa27a4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: e0009e1c6380e02e2e0e24bf86e6dab435b6c022
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408036"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59357644"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -43,8 +43,9 @@ ms.locfileid: "53408036"
 1. [新しい関数アプリを作成](./functions-create-first-azure-function.md)して *Functions* という名前を付けます
 2. [テンプレートから HTTP 関数を作成](./functions-create-first-azure-function.md)して *HttpTrigger* という名前を付けます。
 3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して *TimerTrigger* という名前を付けます。
-4. [xUnit テスト アプリを作成](https://xunit.github.io/docs/getting-started-dotnet-core)して *Functions.Test* という名前を付けます。
-5. [*Functions.Test* アプリから *Functions* アプリを参照](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
+4. Visual Studio で **[ファイル] > [新規作成] > [プロジェクト] > [Visual C#] > [.NET Core] > [xUnit テスト プロジェクト]** の順にクリックして [xUnit テスト アプリを作成](https://xunit.github.io/docs/getting-started-dotnet-core)し、*Functions.Test* という名前を付けます。 
+5. Nuget を使用して、テスト アプリ [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) からの参照を追加します
+6. [*Functions.Test* アプリから *Functions* アプリを参照](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
 
 ### <a name="create-test-classes"></a>テスト クラスの作成
 
@@ -54,11 +55,28 @@ ms.locfileid: "53408036"
 
 `ListLogger` クラスは、`ILogger` インターフェイスを実装するためのもので、テスト中に評価するメッセージの内部リストに保持されます。
 
-*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
+*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**NullScope.cs** という名前を付けて、次のコードを入力します。
+
+```csharp
+using System;
+
+namespace Functions.Tests
+{
+    public class NullScope : IDisposable
+    {
+        public static NullScope Instance { get; } = new NullScope();
+
+        private NullScope() { }
+
+        public void Dispose() { }
+    }
+}
+```
+
+次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -93,7 +111,7 @@ namespace Functions.Tests
 
 `ListLogger` クラスは、`ILogger` インターフェイスによって縮小される次のメンバーを実装します。
 
-- **BeginScope**:スコープがログにコンテキストを追加します。 この場合、テストで [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) クラスの静的インスタンスをポイントするだけで、テストを機能させることができます。
+- **BeginScope**:スコープがログにコンテキストを追加します。 この場合、テストで `NullScope` クラスの静的インスタンスをポイントするだけで、テストを機能させることができます。
 
 - **IsEnabled**:既定の値 `false` が指定されます。
 
@@ -203,7 +221,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string()
         {
             var request = TestFactory.CreateHttpRequest("name", "Bill");
-            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
             Assert.Equal("Hello, Bill", response.Value);
         }
 
@@ -212,7 +230,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
         {
             var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
-            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
             Assert.Equal($"Hello, {queryStringValue}", response.Value);
         }
 
@@ -220,7 +238,7 @@ namespace Functions.Tests
         public void Timer_should_log_message()
         {
             var logger = (ListLogger)TestFactory.CreateLogger(LoggerTypes.List);
-            TimerFunction.Run(null, logger);
+            TimerTrigger.Run(null, logger);
             var msg = logger.Logs[0];
             Assert.Contains("C# Timer trigger function executed at", msg);
         }
@@ -234,6 +252,8 @@ namespace Functions.Tests
 - **Http_trigger_should_return_string_from_member_data**:このテストは、xUnit 属性を使用して、HTTP 関数にサンプル データを提供します。
 
 - **Timer_should_log_message**:このテストは、`ListLogger` のインスタンスを作成してタイマー関数に渡します。 関数が実行されると、予期されたメッセージが存在することを確認するためにログがチェックされます。
+
+テストでアプリケーション設定にアクセスする場合は、[System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables) を使用できます。
 
 ### <a name="run-tests"></a>テストの実行
 
@@ -287,10 +307,10 @@ module.exports = {
 
 ```javascript
 module.exports = {
-    isPastDue: false
+    IsPastDue: false
 };
 ```
-このモジュールは、偽のタイマー インスタンスである `isPastDue` プロパティを実装します。
+このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。
 
 次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](https://code.visualstudio.com/tutorials/functions-extension/getting-started)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
 

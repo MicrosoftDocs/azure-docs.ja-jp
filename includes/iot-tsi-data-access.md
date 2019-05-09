@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: anshan
 ms.custom: include file
-ms.openlocfilehash: fb45ea02f365cf4e7b394e249f9b91a784e5469f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c9daa86bf36b260001d9969385b9e8a98a8ac0cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369940"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125367"
 ---
 ## <a name="grant-data-access"></a>データ アクセスの許可
 
@@ -33,12 +33,12 @@ ms.locfileid: "46369940"
     ![Time Series Insights ソースの管理 - 追加](media/iot-tsi-data-access/getstarted-grant-data-access2.png)
 
 6. **[ロールの選択]** を選択します。 ユーザーに割り当てる適切なアクセス ロールを選択します。
-    - ユーザーに対して、参照データの変更に加え、保存クエリとパースペクティブを環境の他のユーザーと共有することを許可する場合は **[共同作成者]** を選択します。 
-    - それ以外の場合は **[閲覧者]** を選択し、環境内のデータへのクエリ実行と環境内の個人用 (共有されない) クエリの保存をユーザーに許可します。
+   - ユーザーに対して、参照データの変更に加え、保存クエリとパースペクティブを環境の他のユーザーと共有することを許可する場合は **[共同作成者]** を選択します。 
+   - それ以外の場合は **[閲覧者]** を選択し、環境内のデータへのクエリ実行と環境内の個人用 (共有されない) クエリの保存をユーザーに許可します。
 
-    **[OK]** を選び、ロールの選択を確定します。
+     **[OK]** を選び、ロールの選択を確定します。
 
-    ![Time Series Insights ソースの管理 - ユーザーの選択](media/iot-tsi-data-access/getstarted-grant-data-access3.png)
+     ![Time Series Insights ソースの管理 - ユーザーの選択](media/iot-tsi-data-access/getstarted-grant-data-access3.png)
 
 7. **[ユーザー ロールの選択]** ページで **[OK]** を選択します。
 

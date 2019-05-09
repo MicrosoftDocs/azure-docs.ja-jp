@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: この記事では、Bing Image Search API を使用して画像の詳細を抽出する C# アプリケーションを作成します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 9/14/2018
 ms.author: aahi
-ms.openlocfilehash: 36996ebed25d159cdc2a1908b5c9f1f5447c823f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 567a220ce9adcb3cca9c70cef6a7058a85789eb7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259768"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861749"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
 

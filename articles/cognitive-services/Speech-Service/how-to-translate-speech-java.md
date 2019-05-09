@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: この記事では、Java 環境で Speech SDK を使用して音声を翻訳するサンプル コードを紹介します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 233c6b33a4b6dea8ae5aea56272d43bee228d71f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c84a0feda1d602a2049644732bf2f18181cda356
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092249"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874619"
 ---
 # <a name="translate-speech-with-the-speech-sdk-for-java"></a>Speech SDK for Java を使用して音声を翻訳する
 

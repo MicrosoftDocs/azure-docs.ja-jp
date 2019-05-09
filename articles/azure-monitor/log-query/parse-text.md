@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics でのテキスト データの解析 | Microsoft Docs
-description: データが取り込まれたとき、またデータがクエリで取得されたときに、Log Analytics レコード内のデータを解析するためのさまざまなオプションについて説明します。また、それぞれの相対的な利点について比較します。
+title: Azure Monitor ログのテキスト データの解析 | Microsoft Docs
+description: データが取り込まれたとき、またデータがクエリで取得されたときに、Azure Monitor レコード内のログ データを解析するためのさまざまなオプションについて説明します。また、それぞれの相対的な利点について比較します。
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 03268981bcfe90f14f35c74effe5799dd31e4ac0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185785"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620861"
 ---
-# <a name="parse-text-data-in-log-analytics"></a>Log Analytics でのテキストデータの解析
-Log Analytics によって収集された一部のデータには、1 つのプロパティで複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../../log-analytics/log-analytics-data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。
+# <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Monitor ログのテキスト データの解析
+Azure Monitor によって収集された一部のログ データでは、1 つのプロパティに複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../../log-analytics/log-analytics-data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。
 
-この記事では、データが取り込まれたとき、またデータがクエリで取得されたときに、Log Analytics レコード内のデータを解析するためのさまざまなオプションについて説明します。また、それぞれの相対的な利点について比較します。
+この記事では、データが取り込まれたとき、またデータがクエリで取得されたときに、Azure Monitor でログ データを解析するためのさまざまなオプションについて説明します。また、それぞれの相対的な利点について比較します。
 
 
 ## <a name="parsing-methods"></a>解析方法
@@ -55,15 +55,15 @@ Log Analytics によって収集された一部のデータには、1 つのプ�
  
 この方法には、次のような短所があります。
 
-- より複雑なクエリを記述する必要があります。 これは、[テーブルをシミュレートする関数](#Use-function-to-simulate-a-table)を使用することによって軽減できます。
+- より複雑なクエリを記述する必要があります。 これは、[テーブルをシミュレートする関数](#use-function-to-simulate-a-table)を使用することによって軽減できます。
 - 複数のクエリの解析ロジックをレプリケートする必要があります。 関数を使用して一部のロジックを共有できます。
 - 非常に大きなレコード セット (数十億件のレコード) に対して複雑なロジックを実行するときに、オーバーヘッドが発生する可能性があります。
 
 ## <a name="parse-data-as-its-collected"></a>収集されたとおりにデータを解析する
-収集されたとおりにデータを解析する方法については、「[Log Analytics でカスタム フィールドを作成する](../../log-analytics/log-analytics-custom-fields.md)」を参照してください。 この方法では、他のプロパティと同じようにクエリで使用できるテーブル内のカスタム プロパティが作成されます。
+収集されたとおりにデータを解析する方法については、[Azure Monitor でのカスタム フィールドの作成](../platform/custom-fields.md)に関するページを参照してください。 この方法では、他のプロパティと同じようにクエリで使用できるテーブル内のカスタム プロパティが作成されます。
 
 ## <a name="parse-data-in-query-using-patterns"></a>パターンを使用してクエリでデータを解析する
-レコード全体で繰り返されるパターンによって解析するデータを識別できる場合、[Data Explorer クエリ言語](/azure/kusto/query/)のさまざまな演算子を使用して、1 つまたは複数の新しいプロパティに特定のデータを抽出することができます。
+レコード全体で繰り返されるパターンによって解析するデータを識別できる場合、[Kusto クエリ言語](/azure/kusto/query/)のさまざまな演算子を使用して、1 つまたは複数の新しいプロパティに特定のデータを抽出することができます。
 
 ### <a name="simple-text-patterns"></a>単純なテキスト パターン
 
@@ -98,7 +98,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>正規表現
-データを正規表現で識別できる場合、個々の値を抽出するために、[正規表現を使用する関数](/azure/kusto/query/re2)を使用できます。 次の例では、[extract](/kusto/query/extractfunction) を使用して、_AzureActivity_ レコードから _UPN_ フィールドを呼び出し、個別のユーザーを返します。
+データを正規表現で識別できる場合、個々の値を抽出するために、[正規表現を使用する関数](/azure/kusto/query/re2)を使用できます。 次の例では、[extract](/azure/kusto/query/extractfunction) を使用して、_AzureActivity_ レコードから _UPN_ フィールドを呼び出し、個別のユーザーを返します。
 
 ```Kusto
 AzureActivity
@@ -106,7 +106,7 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-大規模な解析を効率的にするために、Log Analytics は re2 バージョンの正規表現を使用します。これは、類似しているものの、他の正規表現のバリアントとは異なります。 詳細については、[re2 式の構文](https://aka.ms/kql_re2syntax)に関するページを参照してください。
+大規模な解析を効率的にするために、Azure Monitor は re2 バージョンの正規表現を使用します。これは、類似しているものの、他の正規表現のバリアントとは異なります。 詳細については、[re2 式の構文](https://aka.ms/kql_re2syntax)に関するページを参照してください。
 
 
 ## <a name="parse-delimited-data-in-a-query"></a>クエリで区切られたデータを解析する
@@ -139,7 +139,7 @@ MyCustomCSVLog_CL
 ```
 
 ## <a name="parse-predefined-structures-in-a-query"></a>クエリの定義済み構造の解析
-データが既知の構造で形式が設定されている場合、定義済みの構造を解析するために、[Data Explorer クエリ言語](/azure/kusto/query/)のいずれかの関数を使用することができます。
+データが既知の構造で形式が設定されている場合、定義済みの構造を解析するために、[Kusto クエリ言語](/azure/kusto/query/)のいずれかの関数を使用することができます。
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)

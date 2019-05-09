@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
 ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309283"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735802"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN での課金について
 

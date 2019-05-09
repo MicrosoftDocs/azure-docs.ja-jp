@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: d9d94a7ece4b3758792cc0df8e013d14ac40c027
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276364"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107380"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 
 > [!NOTE] 
 > この記事は、App Service Environment v1 に関するものです。 より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](intro.md)」を参照してください。
 >
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概要
 App Service Environment は、パブリック VIP の代わりに仮想ネットワークの内部アドレスを使用して作成することができます。  この内部アドレスは、内部ロード バランサー (ILB) と呼ばれる Azure コンポーネントによって提供されます。  ILB ASE は、Azure ポータルを使用して作成できます。  また、Azure Resource Manager テンプレートによる自動化を利用して作成することもできます。  この記事では、Azure Resource Manager テンプレートを使用して ILB ASE を作成するために必要な手順と構文について詳しく説明します。
@@ -42,7 +44,7 @@ Azure Resource Manager テンプレートの例と、それに関連するパラ
 
 *azuredeploy.parameters.json* ファイルのパラメーターのほとんどは、ILB ASE と、パブリック VIP にバインドされた ASE の両方の作成に共通するパラメーターです。  以下の一覧では、ILB ASE を作成するうえで特に注意が必要なパラメーターや、固有のパラメーターについて説明します。
 
-* *interalLoadBalancingMode*:ほとんどの場合、これは 3 に設定します。この設定により、ポート 80/443 の HTTP/HTTPS トラフィックと、ASE 上の FTP サービスによってリッスンされているコントロール/データ チャネル ポートは、ILB が割り当てられた仮想ネットワークの内部アドレスにバインドされます。  このプロパティを 2 に設定すると、FTP サービス関連のポート (コントロール チャネルとデータ チャネル両方のポート) のみが ILB アドレスにバインドされ、HTTP/HTTPS トラフィックにはパブリック VIP が使用されます。
+* *internalLoadBalancingMode*:ほとんどの場合、これは 3 に設定します。この設定により、ポート 80/443 の HTTP/HTTPS トラフィックと、ASE 上の FTP サービスによってリッスンされているコントロール/データ チャネル ポートは、ILB が割り当てられた仮想ネットワークの内部アドレスにバインドされます。  このプロパティを 2 に設定すると、FTP サービス関連のポート (コントロール チャネルとデータ チャネル両方のポート) のみが ILB アドレスにバインドされ、HTTP/HTTPS トラフィックにはパブリック VIP が使用されます。
 * *dnsSuffix*:このパラメーターでは、ASE に割り当てられる既定のルート ドメインを定義します。  Azure App Service のパブリック版では、すべての Web アプリの既定のルート ドメインは *azurewebsites.net*です。  しかし、ILB ASE はユーザーの仮想ネットワーク内部に位置することから、パブリック サービスの既定のルート ドメインを使用しても意味がありません。  ILB ASE には、会社の内部仮想ネットワーク内での使用に適した既定のルート ドメインを用意する必要があります。  たとえば、Contoso Corporation という架空の企業では、Contoso の仮想ネットワーク内でのみ解決およびアクセス可能になるよう設計されたアプリに対して、 *internal-contoso.com* という既定のルート ドメインが使用されます。 
 * *ipSslAddressCount*:ILB ASE には単一の ILB アドレスしかないため、このパラメーターは、*azuredeploy.json* ファイル内で既定値の 0 に自動設定されます。  ILB ASE 用に明示されている IP-SSL アドレスがないため、ILB ASE の IP-SSL アドレス プールはゼロに設定する必要があり、ゼロ以外に設定するとプロビジョニング エラーが発生します。 
 
@@ -51,7 +53,7 @@ ILB ASE に関して *azuredeploy.parameters.json* ファイルへの入力が�
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 Azure Resource Manager テンプレートを送信した後、ILB ASE が作成されるまでには数時間かかります。  作成が完了すると、ポータル UX で、デプロイを開始したサブスクリプションの App Service Environment の一覧に ILB ASE が表示されます。
 
@@ -124,7 +126,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 Azure Resource Manager テンプレートを送信した後、変更が適用されるまでには、ASE フロントエンドあたり約 40 分かかります。  たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまで約 1 時間 20 分かかります。  テンプレートの実行中に、ASE をスケーリングすることはできません。  
 

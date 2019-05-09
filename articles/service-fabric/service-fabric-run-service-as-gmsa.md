@@ -3,8 +3,8 @@ title: gMSA アカウントで Azure Service Fabric サービスを実行する 
 description: Service Fabric の Windows スタンドアロン クラスターで、gMSA としてサービスを実行する方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: dkkapur
+manager: chackdan
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
-ms.author: mfussell
-ms.openlocfilehash: 5f93285061708172b9b6ac40dc97fce08f7b2a86
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: dekapur
+ms.openlocfilehash: 5c3781c2111fff7483a7fb65bd7b2e69c2011d18
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206715"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666428"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>グループ管理サービス アカウントでのサービスの実行
 Windows Server のスタンドアロン クラスターで、RunAs ポリシーを使用してサービスをグループ管理サービスアカウント (gMSA) として実行できます。  既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 異なるアカウントで実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより強固に保護されることになります。 これは、ドメイン内のオンプレミスの Active Directory を使用しており、Azure Active Directory (Azure AD) ではないことに注意してください。 gMSA を使用することで、パスワードや暗号化されたパスワードがアプリケーション マニフェストに格納されることがなくなります。  また、[Active Directory ユーザーまたはグループ](service-fabric-run-service-as-ad-user-or-group.md)としてサービスを実行することもできます。
@@ -32,7 +32,7 @@ Windows Server のスタンドアロン クラスターで、RunAs ポリシー�
 
 1. Active Directory ドメイン管理者に、`New-ADServiceAccount` コマンドレットを使用してグループ管理サービス アカウントを作成してもらい、すべてのサービス ファブリック クラスター ノードが `PrincipalsAllowedToRetrieveManagedPassword` に含まれるようにします。 `AccountName`、`DnsHostName`、および `ServicePrincipalName` は一意である必要があります。
 
-    ```poweshell
+    ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
     ```
 
@@ -48,7 +48,7 @@ Windows Server のスタンドアロン クラスターで、RunAs ポリシー�
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+    <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
         <ServiceManifestImport>
           <ServiceManifestRef ServiceManifestName="MyServiceTypePkg" ServiceManifestVersion="1.0.0" />
           <ConfigOverrides />

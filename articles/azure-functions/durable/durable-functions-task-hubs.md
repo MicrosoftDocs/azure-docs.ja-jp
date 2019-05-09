@@ -10,18 +10,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 596eedab39ff926fcdc880c82c49ac464b7ff23b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336902"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753472"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) の*タスク ハブ*は、オーケストレーションに使用される Azure Storage リソースの論理コンテナーです。 オーケストレーター関数とアクティビティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。
 
-各関数アプリには、個別のタスク ハブがあります。 複数の関数アプリでストレージ アカウントを共有している場合、ストレージ アカウントには複数のタスク ハブが含まれます。 次の図は、共有ストレージ アカウントと専用ストレージ アカウントの各関数アプリにタスク ハブが 1 つあることを示しています。
+複数の関数アプリがストレージ アカウントを共有している場合、各関数アプリには個別のタスク ハブ名を構成する*必要があります*。 ストレージ アカウントには、複数のタスク ハブを含めることができます。 次の図は、共有ストレージ アカウントと専用ストレージ アカウントの各関数アプリにタスク ハブが 1 つあることを示しています。
 
 ![共有ストレージ アカウントと専用ストレージ アカウントの図](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "53336902"
 ```json
 {
   "durableTask": {
-    "HubName": "MyTaskHub"
+    "hubName": "MyTaskHub"
   }
 }
 ```
@@ -58,7 +58,7 @@ ms.locfileid: "53336902"
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "MyTaskHub"
+      "hubName": "MyTaskHub"
     }
   }
 }
@@ -71,7 +71,7 @@ ms.locfileid: "53336902"
 ```json
 {
   "durableTask": {
-    "HubName": "%MyTaskHub%"
+    "hubName": "%MyTaskHub%"
   }
 }
 ```
@@ -83,7 +83,7 @@ ms.locfileid: "53336902"
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "%MyTaskHub%"
+      "hubName": "%MyTaskHub%"
     }
   }
 }
@@ -134,7 +134,7 @@ public static async Task<HttpResponseMessage> Run(
 タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定されていない場合、既定の名前は **DurableFunctionsHub** です。
 
 > [!NOTE]
-> この名前は共有ストレージ アカウント内に複数のタスク ハブがある場合に、それぞれのタスク ハブを区別するものです。 共有ストレージ アカウントを共有する関数アプリが複数ある場合、*host.json* ファイルでタスク ハブごとに異なる名前を構成する必要があります。
+> この名前は共有ストレージ アカウント内に複数のタスク ハブがある場合に、それぞれのタスク ハブを区別するものです。 共有ストレージ アカウントを共有する関数アプリが複数ある場合、*host.json* ファイルでタスク ハブごとに異なる名前を明示的に構成する必要があります。 このようにしないと、複数の関数アプリで他の関数アプリとのメッセージに関する競合が発生し、それが原因で未定義の動作が発生する可能性があります。
 
 ## <a name="next-steps"></a>次の手順
 

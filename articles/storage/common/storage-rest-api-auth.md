@@ -4,16 +4,16 @@ description: 認証を含む Azure ストレージ サービス REST API 操作�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: how-to
-ms.date: 05/22/2018
+ms.topic: conceptual
+ms.date: 03/21/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 78e2620ba6e5e29a1f1ac9719b709d5a2f468122
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 9f6698eebf184d1df80920b7779512e2fda83a0c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529829"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369090"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
 
@@ -46,7 +46,7 @@ git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 
 ## <a name="what-is-rest"></a>REST とは
 
-REST は *Representational State Transfer* の頭文字です。 具体的な定義は、[Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer) で確認してください。
+REST は *Representational State Transfer* の頭文字です。 具体的な定義は、[Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer) で確認してください。
 
 基本的には、REST とは、API を呼び出すとき、または API を呼び出すことができるようにするときに、利用できるアーキテクチャです。 両側で行われていること、および REST 呼び出しを送受信するときに使われている他のソフトウェアからは、独立しています。 Mac、Windows、Linux、Android の携帯電話やタブレット、iPhone、iPod、Web サイトで動作するアプリケーションを作成でき、すべてのプラットフォームで同じ REST API を使うことができます。 REST API を呼び出すときは、データを受け渡すことができます。 REST API では、どのようなプラットフォームから呼び出されたかということは大事ではありません。重要なのは、要求で渡される情報と、応答で提供されるデータです。
 
@@ -64,7 +64,7 @@ REST の使い方の知識は、役に立つスキルです。 Azure 製品チ�
 
 **要求メソッド**: GET。 この動詞は、要求オブジェクトのプロパティとして指定する HTTP メソッドです。 この動詞の他の値としては、呼び出す API に応じて HEAD、PUT、DELETE などがあります。
 
-**要求 URI**: https://myaccount.blob.core.windows.net/?comp=list  これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
+**要求 URI**: https://myaccount.blob.core.windows.net/?comp=list  これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
 
 [URI パラメーター](/rest/api/storageservices/List-Containers2#uri-parameters): ListContainers を呼び出すときに使うことができる追加のクエリ パラメーターがあります。 そのうちの 2 つは、呼び出しの *timeout* (タイムアウト、秒単位) と、フィルター処理に使われる *prefix* (プレフィックス) です。
 
@@ -80,15 +80,15 @@ REST の使い方の知識は、役に立つスキルです。 Azure 製品チ�
 
 [要求本文](/rest/api/storageservices/List-Containers2#request-body)**:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
-[応答状態コード](/rest/api/storageservices/List-Containers2#status-code)**:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
+[応答の状態コード](/rest/api/storageservices/List-Containers2#status-code)**:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
 
 [応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers)**:** "*コンテンツ タイプ*"、*x-ms-request-id* (渡した要求 ID、ある場合)、*x-ms-version* (使われた Blob service のバージョンを示します)、*Date* (UTC、要求が行われた日時を示します) などがあります。
 
-[応答本文](/rest/api/storageservices/List-Containers2#response-body): このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
+[応答本文](/rest/api/storageservices/List-Containers2#response-body):このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
 
 ## <a name="creating-the-rest-request"></a>REST 要求の作成
 
-始める前にいくつか注意事項があります。セキュリティのため、運用環境で実行するときは HTTP ではなく HTTPS を使う必要があります。 ただし、この演習では、要求と応答のデータを見ることができるように、HTTP を使う必要があります。 実際の REST 呼び出しで要求と応答の情報を表示するには、[Fiddler](http://www.telerik.com/fiddler) または同様のアプリケーションをダウンロードできます。 Visual Studio のソリューションでは、ストレージ アカウントの名前とキーはクラスにハードコーディングされており、ListContainersAsyncREST メソッドは、REST 要求のさまざまなコンポーネントの作成に使われるメソッドにストレージ アカウントの名前とキーを渡します。 実際のアプリケーションでは、ストレージ アカウントの名前とキーは、構成ファイルまたは環境変数に格納されているか、または Azure Key Vault から取得します。
+始める前にいくつか注意事項があります。セキュリティのため、運用環境で実行するときは HTTP ではなく HTTPS を使う必要があります。 ただし、この演習では、要求と応答のデータを見ることができるように、HTTP を使う必要があります。 実際の REST 呼び出しで要求と応答の情報を表示するには、[Fiddler](https://www.telerik.com/fiddler) または同様のアプリケーションをダウンロードできます。 Visual Studio のソリューションでは、ストレージ アカウントの名前とキーはクラスにハードコーディングされており、ListContainersAsyncREST メソッドは、REST 要求のさまざまなコンポーネントの作成に使われるメソッドにストレージ アカウントの名前とキーを渡します。 実際のアプリケーションでは、ストレージ アカウントの名前とキーは、構成ファイルまたは環境変数に格納されているか、または Azure Key Vault から取得します。
 
 このサンプル プロジェクトでは、Authorization ヘッダーを作成するためのコードは別のクラスになっており、クラス全体をコピーして独自のソリューションに追加し、"そのまま" 使うことができます。 Authorization ヘッダーのコードは、Azure Storage に対するほとんどの REST API 呼び出しで機能します。
 
@@ -266,7 +266,7 @@ Content-Length: 1511
 ## <a name="creating-the-authorization-header"></a>Authorization ヘッダーの作成
 
 > [!TIP]
-> Azure Storage で、BLOB およびキュー サービス (プレビュー) のために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Authenticate with Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)」 (Azure Active Directory (AAD) での認証 (プレビュー)) を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview)](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー)) を参照してください。
+> Azure Storage で、BLOB およびキューのために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Authenticate with Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)」 (Azure Active Directory (AAD) での認証) を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証) を参照してください。
 
 [Azure ストレージ サービスの認証](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services)を実行する方法を (コードではなく) 概念的に説明した記事があります。
 その記事から本当に必要な部分を取り出し、コードを示します。
@@ -283,24 +283,24 @@ signature フィールドはハッシュ ベースのメッセージ認証コー
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 これらのフィールドの大部分はほとんど使われません。 Blob Storage の場合、VERB、md5、コンテンツの長さ、正規化されたヘッダー、および正規化されたリソースを指定します。 それ以外は空白のままでかまいません (ただし、空白であることがわかるように、`\n` を入れておきます)。
 
-CanonicalizedHeaders および CanonicalizedResource とは何でしょうか。 よい質問です。 実際、正規化 (canonicalized) とはどのような意味でしょうか。 Microsoft Word では、canonicalized は単語として認識すらされません。 [Wikipedia での正規化の説明](http://en.wikipedia.org/wiki/Canonicalization)は次のようなものです。"*コンピューター サイエンスでは、正規化 (canonicalization、standardization、normalization など) とは、複数の方法で表現できるデータを 1 つの "標準的な" つまり正規の形式に変換する処理のことです。*" つまり、項目のリスト (正規化されたヘッダーの場合のヘッダーなど) を取得して、必要な形式に標準化することです。 基本的に、Microsoft で決定されている形式に一致させる必要があります。
+CanonicalizedHeaders および CanonicalizedResource とは何でしょうか。 よい質問です。 実際、正規化 (canonicalized) とはどのような意味でしょうか。 Microsoft Word では、canonicalized は単語として認識すらされません。 [Wikipedia での正規化の説明](https://en.wikipedia.org/wiki/Canonicalization)は次のようなものです。"*コンピューター サイエンスでは、正規化 (canonicalization、standardization、normalization など) とは、複数の方法で表現できるデータを 1 つの "標準的な" つまり正規の形式に変換する処理のことです。*" つまり、項目のリスト (正規化されたヘッダーの場合のヘッダーなど) を取得して、必要な形式に標準化することです。 基本的に、Microsoft で決定されている形式に一致させる必要があります。
 
 それでは 2 つの正規化されたフィールドについて説明します。これらは Authorization ヘッダーを作成するために必要なものです。
 
@@ -325,7 +325,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
     StringBuilder sb = new StringBuilder();
 
     // Create the string in the right format; this is what makes the headers "canonicalized" --
-    //   it means put in a standard format. http://en.wikipedia.org/wiki/Canonicalization
+    //   it means put in a standard format. https://en.wikipedia.org/wiki/Canonicalization
     foreach (var kvp in headers)
     {
         StringBuilder headerBuilder = new StringBuilder(kvp.Key);
@@ -482,7 +482,7 @@ GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
 SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 ```
 
-次の値は [Fiddler](http://www.telerik.com/fiddler) からのものです。
+次の値は [Fiddler](https://www.telerik.com/fiddler) からのものです。
 
 **要求:**
 

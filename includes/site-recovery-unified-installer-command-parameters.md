@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: 4b0c8ad227b9aa8a0692ff453c3751aaa38a4849
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9d9790c9b3dbe3b130be999dd76092ae64f7b52c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164849"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841433"
 ---
 |パラメーター名| type | 説明| 指定できる値|
 |-|-|-|-|
@@ -17,7 +17,7 @@ ms.locfileid: "50164849"
 |/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|
 |/MySQLCredsFilePath|必須|MySQL サーバーの資格情報が保存されているファイルのパス。|ファイルは下記の形式である必要があります。|
 |/VaultCredsFilePath|必須|コンテナーの資格情報ファイルのパス。|有効なファイル パス|
-|/EnvType|必須|保護する環境の種類。 |VMware<br>NonVMware|
+|/EnvType|必須|保護する環境の種類 |VMware<br>NonVMware|
 |/PSIP|必須|レプリケーション データの転送に使用する NIC の IP アドレス。| 任意の有効な IP アドレス|
 |/CSIP|必須|構成サーバーがリッスンする NIC の IP アドレス。| 任意の有効な IP アドレス|
 |/PassphraseFilePath|必須|パスフレーズ ファイルの場所の完全パス。|有効なファイル パス|

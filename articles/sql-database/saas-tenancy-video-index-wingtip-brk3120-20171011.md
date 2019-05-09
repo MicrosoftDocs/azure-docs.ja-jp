@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 05/14/2018
-ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: bbe220780a3c21e7bfb15d0568904af4ed47f765
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608904"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567555"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスと注釈付きのビデオ
 

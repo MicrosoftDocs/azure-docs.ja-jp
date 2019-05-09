@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a0ab88b1375f5178ca6f41689de8d2f30f8d7808
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307487"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728133"
 ---
 # <a name="guidelines"></a>ガイドライン  
 
 <!--
 ## Guidelines for AppSource  
 -->
----  
+---
 
 ## <a name="guidelines-for-azure-marketplace"></a>Azure Marketplace のガイドライン  
 
@@ -35,7 +35,7 @@ Marketplace アカウントを作成するために使用される同じ Microso
 
 >[!IMPORTANT]
 >複数のユーザーに Microsoft Developer Center (デベロッパー センター) アカウントへのアクセスを承認するには、Microsoft では Azure Active Directory (Azure AD) を使用して、個々のユーザーにロールを割り当てることをお勧めしています。 各ユーザーは、個人の Azure AD 資格情報を使ってサインインすることで、アカウントにアクセスできます。 会社に登録されているドメインのメール アドレスを使用して Microsoft ID を作成します。Microsoft では、メールを個人に割り当てないことを提案しています。 例: `windowsapps@fabrikam.com`。  
->*   詳細については、「[問題: Azure AD フェデレーション ドメインでの Microsoft ID](#issue-microsoft-id-in-an-azure-ad-federated-domain)」セクションを参照してください。  
+>*   詳細については、「[問題: Azure AD フェデレーション ドメインでの Microsoft ID](#issue-microsoft-id-in-an-azure-ad-federated-domain)」を参照してください。  
 
 *   Microsoft ID へのアクセスは、最小限の数の開発者に制限してください。 
 *   デベロッパー センター アカウントにアクセスする必要があるすべての従業員が含まれる会社のメール配布リスト (DL) を設定します。 DL メール アドレスをセキュリティ情報に追加します。 DL により、リストに登録されたすべての従業員が、要求に応じてセキュリティ コードを受信し、Microsoft ID のセキュリティ情報を管理できるようになります。 配布リストの設定が適していない場合は、求められたときに、個々の電子メール アカウントの所有者がセキュリティ コードにアクセスして共有できる状態になっている必要があります。  
@@ -49,7 +49,7 @@ Marketplace アカウントを作成するために使用される同じ Microso
 デベロッパー センター アカウントには、主に信頼されているコンピューターからアクセスする必要があります。 1 週間あたり 1 つのデベロッパー センター アカウントに生成されるコード数には制限があるため、信頼されているコンピューターからアクセスすることが重要です。 信頼されているコンピューターを使用すると、最も安全で一貫したサインイン エクスペリエンスも実現できます。 
 *   デベロッパー センター アカウントに関する追加のガイドラインとセキュリティの詳細については、「開発者アカウントを開く」ページ ([docs.microsoft.com/windows/uwp/publish/opening-a-developer-account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account)) を参照してください。 
 
----  
+---
 
 #### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>問題: Azure AD フェデレーション ドメインでの Microsoft ID  
 会社のアカウントは、Azure Active Directory (Azure AD) 経由でフェデレーションできます。 Azure AD とフェデレーションされている会社のメール アドレスを使用して Microsoft ID を作成しようとすると、エラーが発生します。 エラーが発生した場合は、IT チームに問い合わせて、Azure AD を介してアカウントがフェデレーションされていることを確認する必要があります。 Azure AD のフェデレーション メールは、既知の問題であり、Microsoft はこの問題の解決に取り組んでいます。  
@@ -75,4 +75,4 @@ Microsoft では回避策を推奨しています。 次の手順に従って、
 ## <a name="next-steps"></a>次の手順
 *   「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
  
----  
+---

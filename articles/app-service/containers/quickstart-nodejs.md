@@ -4,7 +4,7 @@ description: Azure App Service on Linux で、初めての Node.js の Hello Wor
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/07/2017
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c739aa4fb510bd5ebe9e3ffff67f93a2dd49cf0c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 54602425ae6e1ff65a8445355af2eca09d495b05
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631534"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548680"
 ---
 # <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js アプリの作成
 
@@ -37,22 +37,6 @@ ms.locfileid: "53631534"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-web-app-extension-for-cloud-shell"></a>Cloud Shell の Web アプリ拡張機能をインストールする
-
-このクイックスタートを完了するには、[az Web アプリ拡張機能](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add)を追加する必要があります。 この拡張機能が既にインストールされている場合は、最新バージョンに更新してください。 Web アプリ拡張機能を更新するには、「`az extension update -n webapp`」と入力します。
-
-Web アプリ拡張機能をインストールするには、次のコマンドを実行します。
-
-```bash
-az extension add -n webapp
-```
-
-拡張機能がインストールされると、Cloud Shell に次の例の情報が表示されます。
-
-```bash
-The installed extension 'webapp' is in preview.
-```
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -78,7 +62,11 @@ remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
 Unpacking objects: 100% (40/40), done.
 Checking connectivity... done.
-````
+```
+
+> [!NOTE]
+> サンプル index.js では、リッスン ポートが process.env.PORT に設定されます。 この環境変数は、App Service によって割り当てられます。
+>
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
@@ -203,4 +191,7 @@ az group delete --name appsvc_rg_Linux_CentralUS
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Node.js と MongoDB](tutorial-nodejs-mongodb-app.md)
+> [チュートリアル:Node.js app と MongoDB](tutorial-nodejs-mongodb-app.md)
+
+> [!div class="nextstepaction"]
+> [Node.js アプリの構成](configure-language-nodejs.md)

@@ -3,7 +3,7 @@ title: VM の SQL Server への SQL Server データベースの移行 | Microso
 description: オンプレミスのユーザー データベースを Azure 仮想マシンの SQL Server に移行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2018
-ms.author: jroth
-ms.openlocfilehash: 298a8597ae111550dfbd44d1e7bd9efb212f08af
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 95acda60935e82b226a1a0e860b5fa8effb8e47e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323219"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332134"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Azure VM の SQL Server への SQL Server データベースの移行
 

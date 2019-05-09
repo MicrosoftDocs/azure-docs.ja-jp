@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7330c8369fa8232c90fe6931745e298107ed6ad1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c160fe39b02d8adf6c12e3736307cf7f9688b0c5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418060"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483235"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure リソース ポリシーに関する RequestDisallowedByPolicy エラー
 
@@ -43,10 +43,12 @@ ms.locfileid: "50418060"
 
 ### <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 PowerShell では、そのポリシー識別子を `Id` パラメーターとして指定して、デプロイをブロックしたポリシーの詳細を取得します。
 
-```PowerShell
-(Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
+```powershell
+(Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -64,5 +66,5 @@ az policy definition show --name regionPolicyAssignment
 
 詳細については、次の記事を参照してください。
 
-- [Azure Policy とは](../azure-policy/azure-policy-introduction.md)
-- [コンプライアンスを強制するポリシーの作成と管理](../azure-policy/create-manage-policy.md)
+- [Azure Policy とは](../governance/policy/overview.md)
+- [コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)

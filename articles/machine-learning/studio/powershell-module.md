@@ -1,66 +1,79 @@
 ---
-title: Machine Learning Studio 用 PowerShell モジュール - Azure | Microsoft Docs
-description: Azure Machine Learning 用 PowerShell モジュールは、パブリック プレビューとしてご利用いただけます。 ワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
-keywords: 実験, 線形回帰, 機械学習アルゴリズム, 機械学習チュートリアル, 予測モデリング手法, データ サイエンス実験
+title: Machine Learning Studio 用 PowerShell モジュール
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning Studio のワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/15/2017
-ms.openlocfilehash: 6539ec36c23feccfa52c8214784590106fa5a01e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.date: 01/25/2019
+ms.openlocfilehash: bd3a82f326cdf7f51e8842e45333ff2bd647c260
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092754"
 ---
-# <a name="powershell-module-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用 PowerShell モジュール
-Azure Machine Learning 用 PowerShell モジュールは、ワークスペースや実験、データセット、従来の Web サービスなどを Windows PowerShell で管理することができる強力なツールです。
+# <a name="powershell-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用 PowerShell モジュール
 
-ドキュメントを閲覧したり、完全なソース コード付きでモジュールをダウンロードしたりするには、[https://aka.ms/amlps](https://aka.ms/amlps) にアクセスしてください。 
+PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio のリソースと資産をプログラムで管理できます。
 
-> [!NOTE]
-> Azure Machine Learning の PowerShell モジュールは、現在プレビュー モードです。 モジュールは、このプレビュー期間中に引き続き改善され、拡張される予定です。 「[Cortana Intelligence and Machine Learning Blog (Cortana Intelligence と Machine Learning のブログ)](https://blogs.technet.microsoft.com/machinelearning/)」で最新情報をチェックしてください。
+次の 3 つの Powershell モジュールを使用して Studio リソースとやり取りすることができます。
 
-## <a name="what-is-the-machine-learning-powershell-module"></a>Machine Learning PowerShell モジュールとは
-Machine Learning PowerShell モジュールは、Azure Machine Learning のワークスペースや実験、データセット、従来の Web サービス、従来の Web サービス エンドポイントを Windows PowerShell からすべて管理できる .NET ベースの DLL モジュールです。 
+* 2018 年にリリースされた [Azure PowerShell Az](#az-rm)。AzureRM のすべての機能が含まれていますが、コマンドレット名は異なります
+* 2016 年にリリースされた [AzureRM](#az-rm)
+* 2016 年にリリースされた [Azure Machine Learning PowerShell クラシック](#classic)
 
-モジュールと共に、整然と分離された [C# API レイヤー](https://github.com/hning86/azuremlps/blob/master/code/AzureMLSDK.cs)を含んだ完全なソース コードをダウンロードできます。 この DLL を独自の .NET プロジェクトから参照すれば、.NET コードから Azure Machine Learning を管理することができます。 また、この DLL はその土台となる REST API に依存しており、好きなクライアントから直接これらの REST API を利用することができます。
+これらのモジュールにはいくつかの類似点もありますが、それぞれが特定のシナリオ向けに設計されています。 この記事では、PowerShell のモジュールの相違点について説明し、どれを選択すればよいかを把握しやすくします。
 
-## <a name="what-can-i-do-with-the-powershell-module"></a>PowerShell モジュールでできること
-以下、この PowerShell モジュールで実行できるタスクの例を挙げます。 ここに挙げた以外にも、さまざまな機能があります。[こちらの詳しいドキュメント](https://aka.ms/amlps)を参照してください。
+## <a name="choosing-modules"></a> モジュールの選択
 
-* 管理証明書を使用して新しいワークスペースをプロビジョニングする ([New-AmlWorkspace](https://github.com/hning86/azuremlps#new-amlworkspace))
-* 実験グラフを表す JSON ファイルをエクスポート/インポートする ([Export-AmlExperimentGraph](https://github.com/hning86/azuremlps#export-amlexperimentgraph) および [Import-AmlExperimentGraph](https://github.com/hning86/azuremlps#import-amlexperimentgraph))
-* 実験を実行する ([Start-AmlExperiment](https://github.com/hning86/azuremlps#start-amlexperiment))
-* 予測実験から Web サービスを作成する ([New-AmlWebService](https://github.com/hning86/azuremlps#new-amlwebservice))
-* 発行済みの Web サービスにエンドポイントを作成する ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
-* RRS/BES Web サービス エンドポイントを呼び出す ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) および [Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
+利用可能な PowerShell モジュールの選択は、管理しているリソースの種類によって異なります。
 
-PowerShell を使用して既存の実験を実行する簡単な例を次に示します。
+以下の[サポート表](#support-table)で、各モジュールでサポートされるリソースを確認してください。 PowerShell クラシックは Az または AzureRM のいずれかと並行してインストールできるため、2 つのモジュールをインストールして、すべてのリソースの種類 (クラシックと Az またはクラシックと AzureRM) をカバーすることができます
 
-        #Find the first Experiment named “xyz”
-        $exp = (Get-AmlExperiment | where Description -eq ‘xyz’)[0]
-        #Run the Experiment
-        Start-AmlExperiment -ExperimentId $exp.ExperimentId 
+ただし、Az と AzureRM が同時にインストールされていることは推奨されません。 Az と AzureRM の間で決定する場合、Microsoft では今後のすべてのデプロイ用に Az をお勧めします。 AzureRm は、環境でそれが必要となる特殊な状況がある場合にのみ使用してください。
 
-さらに詳しい使用例については、記事「[PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する](create-models-and-endpoints-with-powershell.md)」を参照してください。PowerShell モジュールを使用して、一般的に要求されるタスクを自動化する例が紹介されています。
+Az と AzureRM の相違点の詳細については、[Azure PowerShell Az の概要](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)に関するページを参照してください。
 
-## <a name="how-do-i-get-started"></a>開始するには?
-Machine Learning PowerShell を初めて使用する方は、GitHub から[リリース パッケージ](https://github.com/hning86/azuremlps/releases)をダウンロードし、[インストール手順](https://github.com/hning86/azuremlps/blob/master/README.md)に従ってください。 その手順に、ダウンロード/解凍した DLL のブロックを解除してからご使用の PowerShell 環境にインポートする方法が説明されています。 ほとんどのコマンドレットで、ワークスペース ID とワークスペース承認トークン、そのワークスペースが存在する Azure リージョンの指定が必要となります。 これらの値を提供する最も簡単な方法は、既定の config.json ファイルを使用することです。 このファイルの構成方法も、手順に説明があります。 
+## <a name="az-rm"></a> Azure PowerShell Az および AzureRM
 
-必要に応じて、git ツリーの複製、コードの変更、および Visual Studio を使用したローカルなコンパイルを実行できます。
+Az と AzureRM は、両方とも、**Azure Resource Manager** デプロイ モデルを使ってソリューションを管理します。 これらのリソースには、Studio ワークスペースと Studio の新しい Web サービスが含まれます。 クラシック デプロイ モデルを使用してデプロイされたリソースを管理するには、PowerShell クラシック モジュールを使用する必要があります。 デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
+
+Az は、現在、Azure とやり取りすることを目的とした PowerShell モジュールであり、AzureRM の以前のすべての機能が含まれています。 AzureRM は引き続きバグ修正プログラムを受信しますが、新しいコマンドレットや機能は受信しなくなります。 AzureRM からのアップグレード パスはありますが、Studio を操作しているときに Az に関する問題が発生した場合は、問題を報告してから、AzureRM の使用に戻ってください。
+
+Az の使用を開始するには、[Azure Az のインストール手順](https://docs.microsoft.com/powershell/azure/install-az-ps)に従ってください。
+
+## <a name="classic"></a> PowerShell クラシック
+
+Studio の [PowerShell クラシック モジュール](https://aka.ms/amlps)を使用すると、**クラシック デプロイ モデル**を使用してデプロイされたリソースを管理することができます。 これらのリソースには、Studio ユーザーの資産、従来の Web サービス、および従来の Web サービス エンドポイントが含まれます。
+
+ただし、Microsoft では、リソースのデプロイと管理を簡素化するために、すべての新しいリソースに対して Resource Manager デプロイ モデルを使用することをお勧めします。 デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
+
+PowerShell クラシックを初めて使用する方は、GitHub から[リリース パッケージ](https://github.com/hning86/azuremlps/releases)をダウンロードし、[インストール手順](https://github.com/hning86/azuremlps/blob/master/README.md)に従ってください。 その手順に、ダウンロード/解凍した DLL のブロックを解除してからご使用の PowerShell 環境にインポートする方法が説明されています。
+
+## <a name="support-table"></a> PowerShell サポート表
+
+ **Studio ワークスペース** | **Az** |  **AzureRM** | **PowerShell クラシック** |
+| --- | --- | --- | --- |
+| ワークスペースを作成/削除する | [Resource Manager テンプレート](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) | [Resource Manager テンプレート](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
+| ワークスペース ユーザーを管理する |  |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
+| コミットメント プランを管理する | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | [New-AzureRmMlCommitmentPlan](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/new-azurermmlcommitmentplan) |
+|||
+| **Web サービス** | **Az** | **AzureRM** | **PowerShell クラシック** |
+| Web サービスを管理する | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br> (新しい Web サービス) | [New-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/new-azurermmlwebservice) <br> (新しい Web サービス) |[New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br> (クラシック Web サービス) |
+| エンドポイント/キーを管理する |  [Get-AzMlWebServiceKeys](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekeys) <br> (新しい Web サービス) | [Get-AzureRmMlWebServiceKeys](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservicekeys) <br> (新しい Web サービス) | [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint) <br> (クラシック Web サービス) |
+|||
+| **ユーザー資産** | **Az** | **AzureRM** | **PowerShell クラシック** |
+| データセット/トレーニング済みモデルを管理する |  |  | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
+| 実験を管理する |  |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
+| カスタム モジュールを管理する |  |  | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
+
 
 ## <a name="next-steps"></a>次の手順
-PowerShell モジュールの完全なドキュメントは [https://aka.ms/amlps](https://aka.ms/amlps) にあります。 
-
-現実世界のシナリオでモジュールを使用する広範な実例については、詳細なユース ケースである「[PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する](create-models-and-endpoints-with-powershell.md)」を参照してください。
+PowerShell モジュールの完全なドキュメントは、以下のリンクにあります。
+* [AzureRM](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/#machine_learning)
+* [PowerShell クラシック](https://aka.ms/amlps)
+* [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

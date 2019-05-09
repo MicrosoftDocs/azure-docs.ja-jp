@@ -1,25 +1,25 @@
 ---
 title: Azure Cache for Redis Premium レベルの概要 | Microsoft Docs
 description: Premium レベルの Azure Cache for Redis インスタンス向けの Redis の永続化、Redis クラスタリング、および VNET サポートの作成と管理方法について説明します。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: wesmc
-ms.openlocfilehash: 0978e906467fd5b16f25bd2e053980dda4510127
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021758"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237742"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Azure Cache for Redis Premium レベルの概要
 Azure Cache for Redis は、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションの作成を可能にする分散マネージド キャッシュです。 
@@ -34,7 +34,7 @@ Azure Cache for Redis は、データへの超高速アクセスを提供する�
 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Cache for Redis FAQ](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」(Azure Cache for Redis の FAQ) を参照してください。
 
 ## <a name="redis-data-persistence"></a>Redis データの保持
-Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、[Redis 永続化](http://redis.io/topics/persistence)の RDB オプションと AOF オプション (近日提供予定) が用意されています。 
+Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、[Redis 永続化](https://redis.io/topics/persistence)の RDB オプションと AOF オプション (近日提供予定) が用意されています。 
 
 永続化の構成手順については、[Premium Azure Cache for Redis の永続性の構成方法](cache-how-to-premium-persistence.md)に関するページを参照してください。
 

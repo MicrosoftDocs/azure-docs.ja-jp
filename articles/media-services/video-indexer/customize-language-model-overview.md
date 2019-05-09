@@ -7,18 +7,18 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: aa2c089659d202222e7dd5e41ae56bf2a683bb1e
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c4ccc189c0f8ed3de868c9965d7068ad9670cbcb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323031"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004096"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Video Indexer で言語モデルをカスタマイズする
 
-Video Indexer は、Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/) との統合を通して自動音声認識をサポートしています。 適応テキスト、つまりエンジンを適応させたいボキャブラリのドメインに属するテキストをアップロードすることで、言語モデルをカスタマイズできます。 モデルをトレーニングすると、適応テキスト内に現れる新しい単語が認識され、既定の発音が想定されて、言語モデルが、ありそうな新しい一連の単語を学習することになります。 カスタム言語モデルは、英語、ドイツ語、スペイン語、アラビア語、フランス語、ヒンディー語、イタリア語、日本語、ポルトガル語、ロシア語、および中国語でサポートされます。
+Video Indexer は、Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/) との統合を通して自動音声認識をサポートしています。 適応テキスト、つまりエンジンを適応させたいボキャブラリのドメインに属するテキストをアップロードすることで、言語モデルをカスタマイズできます。 モデルをトレーニングすると、適応テキスト内に現れる新しい単語が認識され、既定の発音が想定されて、言語モデルが、ありそうな新しい一連の単語を学習することになります。 カスタム言語は、英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、ロシア語、ポルトガル語 (ブラジル)、ヒンズー語、および韓国語がサポートされています。 
 
 例として、(Azure Kubernetes サービスのコンテキストにおける) "Kubernetes" のように、非常に限られた意味を持つ単語を見てみましょう。 その単語は Video Indexer にとって新しいものなので、単語は "コミュニティ" として認識されます。 これが "Kubernetes" と認識されるようにモデルをトレーニングする必要があります。 その他の場合、単語は存在していても、言語モデルはそれらの単語が特定のコンテキスト内に現れることを予期していません。 たとえば、"コンテナー サービス" は、特殊化されていない言語モデルが特定の単語のセットとして認識する 2 語のシーケンスではありません。
 

@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 03/12/2019
+ms.openlocfilehash: 52a12486add25cd32400af755aa6cd8cac07c6f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278459"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905064"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
 
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
-
 **エラスティック データベース ジョブ** 用 PowerShell API (プレビュー) を使うと、スクリプトの実行対象となるデータベースのグループを定義できます。 この記事では、PowerShell のコマンドレットを使用して **エラスティック データベース ジョブ** を作成して管理する方法について説明します。 [エラスティック ジョブの概要](sql-database-elastic-jobs-overview.md)に関するページを参照してください。 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
@@ -34,9 +34,9 @@ ms.locfileid: "53278459"
 * **Elastic Database ジョブ** PowerShell パッケージ:「[Elastic Database ジョブのインストールの概要](sql-database-elastic-jobs-service-installation.md)」を参照してください。
 
 ### <a name="select-your-azure-subscription"></a>Azure サブスクリプションを選択します。
-サブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要です。 複数のサブスクリプションがある場合は、 **Get-AzureRmSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。 サブスクリプション情報を取得したら、次のコマンドレットを実行して、そのサブスクリプションを既定 (つまりジョブの作成および管理のターゲット) として設定します。
+サブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要です。 複数のサブスクリプションがある場合は、**Get-AzSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。 サブスクリプション情報を取得したら、次のコマンドレットを実行して、そのサブスクリプションを既定 (つまりジョブの作成および管理のターゲット) として設定します。
 
-    Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
+    Select-AzSubscription -SubscriptionId {SubscriptionID}
 
 エラスティック データベース ジョブに対して PowerShell スクリプトを開発して実行する場合には、 [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) をお勧めします。
 
@@ -189,7 +189,7 @@ ms.locfileid: "53278459"
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>サポートされているエラスティック データベース ジョブ グループの種類
-このジョブは、Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションをデータベースのグループに対して実行します。 データベース グループ全体に対して実行するジョブを送信すると、対象のジョブが子ジョブにまで "拡張" されます。各子ジョブでは、グループ内の Single Database に対して要求されたジョブ実行が実行されます。 
+このジョブは、Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションをデータベースのグループに対して実行します。 データベース グループ全体に対して実行するジョブを送信すると、対象のジョブが子ジョブにまで "拡張" されます。各子ジョブでは、グループ内の個々のデータベースに対して要求されたジョブ実行が実行されます。 
 
 次の 2 種類のグループを作成できます。 
 
@@ -416,7 +416,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 
 * 名前:実行ポリシーの識別子。
 * ジョブのタイムアウト:Elastic Database ジョブによってジョブが取り消されるまでの合計時間。
-* 初期再試行間隔:最初の再試行前に待機する間隔。
+* 初期再試行間隔:最初の再試行する前に待機する間隔。
 * 最大再試行間隔:使用する再試行間隔の上限。
 * 再試行間隔のバックオフ係数:次回の再試行間隔の計算に使用される係数。  (初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。 
 * 最大試行回数:1 つのジョブ内で実行する最大再試行回数。

@@ -4,7 +4,7 @@ description: このトピックでは、Azure Portal を使用して Media Analy
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d8c3bb07c88dc96b7ca779ca0f4dfe09052ab290
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666172"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619443"
 ---
-# <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する
+# <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する 
 > [!NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 > 
@@ -50,7 +50,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
-### <a name="language"></a>Language
+### <a name="language"></a>言語
 マルチメディア ファイル内で認識される自然言語。 たとえば、英語やスペイン語です。 
 
 ### <a name="captions"></a>字幕
@@ -73,11 +73,6 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ### <a name="output-file"></a>出力ファイル
 出力コンテンツを特定するためのフレンドリ名。 
-
-## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Azure Media Hyperlapse は、一人称視点またはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成する MP です。  詳細については、 [こちらの](media-services-hyperlapse-content.md) トピックを参照してください。 このセクションでは、この MP に対して指定するオプションについて詳細を説明します。
-
-![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
 ### <a name="speed"></a>速度
 入力ビデオの高速化に使用する速度を指定します。 出力は、入力ビデオの安定した低速度撮影画像となります。
@@ -141,7 +136,7 @@ Azure Media Hyperlapse は、一人称視点またはアクション カメラ�
 
 ![ビデオのモデレート](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>Version 
+### <a name="version"></a>バージョン 
 "2.0" を使用しています。
 
 ### <a name="mode"></a>Mode

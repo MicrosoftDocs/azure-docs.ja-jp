@@ -1,24 +1,24 @@
 ---
-title: 'チュートリアル: カスタム Java モジュールを作成する - Azure IoT Edge | Microsoft Docs'
+title: カスタム Java モジュールのチュートリアル - Azure IoT Edge | Microsoft Docs
 description: このチュートリアルでは、Java コードで IoT Edge モジュールを作成し、Edge デバイスに展開する方法について説明します。
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/25/2018
+ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f099d280615607382bd424063d39bb26cdeea793
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f654f33fe03b29a3aa93386d49e8f5a43cffc9c8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557862"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59493044"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>チュートリアル:Java IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
-Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。    
+Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Linux](quickstart-linux.md) でシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。    
 
 > [!div class="checklist"]
 > * Visual Studio Code を使用して、Azure IoT Edge maven テンプレート パッケージと Azure IoT Java デバイス SDK に基づく IoT Edge Java モジュールを作成する。
@@ -36,8 +36,8 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 Azure IoT Edge デバイス:
 
-* IoT Edge デバイスは、[Linux](quickstart-linux.md) または [Windows](quickstart.md) のクイック スタートの手順に従って設定できます。
-* Windows デバイスで実行されている IoT Edge のバージョン 1.0.5 では Java モジュールがサポートされません。 詳細については、[1.0.5 のリリース ノート](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)を参照してください。 特定のバージョンをインストールする手順については、「[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)」を参照してください。
+* [Linux](quickstart-linux.md) 用のクイック スタートに記載された手順に従うことで、Azure 仮想マシンを IoT Edge デバイスとして使用できます。 
+* IoT Edge 用 Java モジュールは、Windows コンテナーをサポートしていません。 
 
 クラウド リソース:
 
@@ -47,7 +47,7 @@ Azure IoT Edge デバイス:
 
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * Visual Studio Code 向け [Java 拡張機能パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)。
-* Visual Studio Code 用の [Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
+* Visual Studio Code 用 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [Java SE Development Kit 10](https://aka.ms/azure-jdks) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
 * [Maven](https://maven.apache.org/)
 * [Docker CE](https://docs.docker.com/install/)
@@ -56,7 +56,7 @@ Azure IoT Edge デバイス:
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このチュートリアルでは、Visual Studio Code 用の Azure IoT Edge 拡張機能を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
+このチュートリアルでは、Visual Studio Code 用の Azure IoT Tools を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
 
 コンテナー イメージは、Docker と互換性のある任意のレジストリを使用して格納できます。 2 つの一般的な Docker レジストリ サービスは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) と [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) です。 このチュートリアルでは、Azure Container Registry を使用します。 
 
@@ -82,7 +82,7 @@ Azure IoT Edge デバイス:
 7. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値は、このチュートリアルで後ほどコンテナー レジストリへのアクセスを提供するために使用します。 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge モジュール プロジェクトを作成する
-以降の手順では、Azure IoT Edge maven テンプレート パッケージと Azure IoT Java デバイス SDK に基づく IoT Edge モジュール プロジェクトを作成します。 Visual Studio Code と Azure IoT Edge の拡張機能を使用してプロジェクトを作成します。
+以降の手順では、Azure IoT Edge maven テンプレート パッケージと Azure IoT Java デバイス SDK に基づく IoT Edge モジュール プロジェクトを作成します。 Visual Studio Code と Azure IoT Tools を使用してプロジェクトを作成します。
 
 ### <a name="create-a-new-solution"></a>新しいソリューションの作成
 
@@ -99,7 +99,7 @@ Azure IoT Edge デバイス:
    | Select module template (モジュール テンプレートの選択) | **Java モジュール**を選択します。 |
    | Provide value for groupId (groupId の値の指定) | グループ ID の値を入力するか、既定値の **com.edgemodule** をそのまま使用します。 |
    | Provide a module name (モジュール名の指定) | モジュールに **JavaModule** という名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 最終的には、\<registry name\>.azurecr.io/javamodule のような文字列になります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/javamodule のようになります。 |
  
    ![Docker イメージ リポジトリを指定する](./media/tutorial-java-module/repository.png)
    
@@ -146,8 +146,9 @@ Java モジュールを初めて作成する場合は、maven パッケージの
 7. **MessageCallbackMqtt** の実行メソッドを次のコードに置き換えます。 このメソッドは、モジュールが IoT Edge ハブから MQTT メッセージを受け取るたびに呼び出されます。 これにより、モジュール ツインで設定されているしきい値を下回る温度を報告するメッセージは除外されます。
 
     ```java
+    protected static class MessageCallbackMqtt implements MessageCallback {
         private int counter = 0;
-       @Override
+        @Override
         public IotHubMessageResult execute(Message msg, Object context) {
             this.counter += 1;
  
@@ -173,6 +174,7 @@ Java モジュールを初めて作成する場合は、maven パッケージの
             }
             return IotHubMessageResult.COMPLETE;
         }
+    }
     ```
 
 8. **App** クラスに次の 2 つの静的内部クラスを追加します。 モジュール ツインの desired プロパティが変化すると、これらのクラスによって tempThreshold 変数が更新されます。 すべてのモジュールに独自のモジュール ツインがあり、これにより、モジュール内で実行されているコードをクラウドから直接構成できます。
@@ -216,27 +218,33 @@ Java モジュールを初めて作成する場合は、maven パッケージの
     client.getTwin();
     ```
 
-11. このファイルを保存します。
+11. App.java ファイルを保存します。
 
-12. VS Code エクスプローラーで、IoT Edge ソリューション ワークスペースの deployment.template.json ファイルを開きます。 このファイルは、**tempSensor** と **JavaModule** の 2 つのモジュールを配置するように **$edgeAgent** に指示します。 IoT Edge の既定のプラットフォームは、VS Code のステータス バーで **amd64** に設定されています。つまり、**JavaModule** は Linux amd64 バージョンのイメージに設定されています。 IoT Edge デバイスのアーキテクチャに応じて、ステータス バーで既定のプラットフォームを **amd64** から **arm32v7** または **windows-amd64** に変更します。 
+12. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。 このファイルは、IoT Edge エージェントにどのモジュールをデプロイするかを指示し、IoT Edge ハブにそれらの間でメッセージをルーティングする方法を指示します。 このケースでは、2 つのモジュールは **tempSensor** と **JavaModule** です。 デプロイ テンプレートで必要なほとんどの情報は Visual Studio Code 拡張機能によって自動的に入力されますが、ソリューションに関してすべての情報が正確であることを確認します。 
 
-   配置マニフェストの詳細については、[IoT Edge モジュールを使用、構成、再利用する方法の確認](module-composition.md)に関するページをご覧ください。
+   1. IoT Edge の既定のプラットフォームは、VS Code のステータス バーで **amd64** に設定されています。つまり、**JavaModule** は Linux amd64 バージョンのイメージに設定されています。 IoT Edge デバイスのアーキテクチャに応じて、ステータス バーで既定のプラットフォームを **amd64** から **arm32v7** に変更します。 
 
-   Docker レジストリの資格情報は、deployment.template.json ファイルの **registryCredentials** セクションに格納されています。 実際のユーザー名とパスワードの組み合わせは、.env ファイル (Git では無視されます) に格納されます。  
+      ![モジュール イメージ プラットフォームを更新する](./media/tutorial-java-module/image-platform.png)
+
+   2. テンプレートで、モジュール名が既定の **SampleModule** という名前ではなく、IoT Edge ソリューションの作成時に変更した正しい名前になっていることを確認します。
+
+   3. IoT Edge エージェントがモジュール イメージを取得できるように、**registryCredentials** セクションには Docker レジストリの認証情報が格納されています。 実際のユーザー名とパスワードの組み合わせは、.env ファイル (Git では無視されます) に格納されます。 まだ行っていない場合は、.env ファイルに資格情報を追加します。  
+
+   4. デプロイ マニフェストの詳細については、「[IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。](module-composition.md)」を参照してください。
 
 13. **JavaModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **moduleContent** セクションの下部、**$edgeHub** モジュール ツインの後に挿入します。 
 
    ```json
-       "JavaModule": {
-           "properties.desired":{
-               "TemperatureThreshold":25
-           }
-       }
+     "JavaModule": {
+         "properties.desired":{
+             "TemperatureThreshold":25
+         }
+     }
    ```
 
    ![モジュール ツインをデプロイ テンプレートに追加する](./media/tutorial-java-module/module-twin.png)
 
-14. このファイルを保存します。
+14. deployment.template.json ファイルを保存します。
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
 
@@ -254,6 +262,13 @@ Java モジュールを初めて作成する場合は、maven パッケージの
 ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、**config** という名前の新しいフォルダーに deployment.json ファイルが生成されます。次に、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 これらの 2 つのコマンドによって、コードがビルドされ、Java アプリがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。 
 
 タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで確認できます。 イメージ アドレスは、\<リポジトリ\>:\<バージョン\>-\<プラットフォーム\> の形式で、module.json ファイルの情報から作成されます。 このチュートリアルでは、registryname.azurecr.io/javamodule:0.0.1-amd64 になります。
+
+>[!TIP]
+>モジュールをビルドしてプッシュしようとするときにエラーが発生した場合は、次の点を確認してください。
+>* Visual Studio Code からお使いのコンテナー レジストリの資格情報を使用して Docker にサインインしているか。 これらの資格情報は、Azure portal にサインインする際に使用する情報とは異なります。
+>* コンテナー リポジトリは正しいか。 **[modules]** > **[JavaModule]** > **[module.json]** の順に開いて、**[repository]** フィールドを見つけます。 イメージ リポジトリは、**\<registryname\>.azurecr.io/javamodule** のようになっている必要があります。 
+>* 開発マシンで実行されているものと同じタイプのコンテナーをビルドしているか。 Visual Studio Code の既定のコンテナーは Linux amd64 です。 お使いの開発マシンで Linux arm32v7 コンテナーが実行されている場合は、実際のコンテナーのプラットフォームに合わせて、VS Code ウィンドウ下部の青色のステータス バーでプラットフォームを更新してください。
+>* IoT Edge 用 Java モジュールは、Windows コンテナーをサポートしていません。
 
 ## <a name="deploy-and-run-the-solution"></a>ソリューションの配置と実行
 

@@ -14,17 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 45baa709e715cb94c8c9c6ac7548b89813c8194b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6ee3e2b452dedbf791bdc05bbc81b07531e1f075
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195929"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59049315"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Azure Marketplace から仮想マシンをデプロイする
 
 この記事では、与えられた Azure PowerShell スクリプトを使用し、Azure Marketplace から事前構成済み仮想マシンをデプロイする方法について説明します。  このスクリプトによって、VM 上で WinRM HTTP と HTTPS のエンドポイントも公開されます。  このスクリプトでは、Azure Key Vault に証明書を既にアップロードしていることが前提条件となります。詳細は「[Create certificates for Azure Key Vault](./cpp-create-key-vault-cert.md)」(Azure Key Vault の証明書を作成する) にあります。 
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="vm-deployment-template"></a>VM デプロイ テンプレート
 
@@ -43,7 +44,7 @@ ms.locfileid: "53195929"
 | vmName                | VM の名前                                    |
 | vaultName             | Key Vault の名前                             |
 | vaultResourceGroup    | Key Vault のリソース グループ                   |
-| certificateUrl        | 証明書の URL。 https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7 のように KeyVault のバージョンが含まれます |
+| certificateUrl        | 証明書の URL。`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` のように KeyVault のバージョンが含まれます |
 |  |  |
 
 
@@ -53,7 +54,7 @@ ms.locfileid: "53195929"
 
 ```powershell
 
-New-AzureRmResourceGroupDeployment -Name "dplvm$postfix" -ResourceGroupName "$rgName" -TemplateUri "https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json" -newStorageAccountName "test$postfix" -dnsNameForPublicIP $vmName -adminUserName "isv" -adminPassword $pwd -vmSize "Standard_A2" -vmName $vmName -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id 
+New-AzResourceGroupDeployment -Name "dplvm$postfix" -ResourceGroupName "$rgName" -TemplateUri "https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json" -newStorageAccountName "test$postfix" -dnsNameForPublicIP $vmName -adminUserName "isv" -adminPassword $pwd -vmSize "Standard_A2" -vmName $vmName -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id 
 
 ```
 

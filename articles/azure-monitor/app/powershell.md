@@ -12,17 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: bcf33538479a18d1849515f00e9a0d02ef77dba2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004810"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58883413"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
-この記事では、Azure Resource 管理を使用して [Application Insights](../../application-insights/app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)の作成、[アラート](../../azure-monitor/app/alerts.md)の設定、[価格の詳細](pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
 
-これらのリソースを作成する際に重要となるのが、[Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md) の JSON テンプレートです。 簡単に言うと、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するという手順になります。 いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。 パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+この記事では、Azure Resource 管理を使用して [Application Insights](../../azure-monitor/app/app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)の作成、[アラート](../../azure-monitor/app/alerts.md)の設定、[価格の詳細](pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
+
+これらのリソースを作成する際に重要となるのが、[Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md) の JSON テンプレートです。 簡単に言うと、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するという手順になります。 いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。 パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
 
 ## <a name="one-time-setup"></a>1 回限りのセットアップ
 以前に Azure サブスクリプションで PowerShell を使用したことがない場合
@@ -154,12 +157,12 @@ ms.locfileid: "54004810"
 ## <a name="create-application-insights-resources"></a>Application Insights リソースの作成
 1. PowerShell で Azure にサインインします。
    
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 2. 次のようにコマンドを実行します。
    
     ```PS
    
-        New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
+        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -appName myNewApp
 
@@ -175,8 +178,8 @@ ms.locfileid: "54004810"
 アプリケーション リソースを作成したら、インストルメンテーション キーが必要になります。 
 
 ```PS
-    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
-    $details = Get-AzureRmResource -ResourceId $resource.ResourceId
+    $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
+    $details = Get-AzResource -ResourceId $resource.ResourceId
     $ikey = $details.Properties.InstrumentationKey
 ```
 
@@ -189,7 +192,7 @@ ms.locfileid: "54004810"
 上記のテンプレートを使用して、Enterprise 料金プランを使ったアプリ リソースを作成するには、次のコマンドを実行します。
 
 ```PS
-        New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
+        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -priceCode 2 `
                -appName myNewApp
@@ -333,7 +336,7 @@ ms.locfileid: "54004810"
           }
         ],
         "Configuration": {
-          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies the existence of the specified text in the response.\"         Level=\"High\"  ExectuionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
+          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies the existence of the specified text in the response.\"         Level=\"High\"  ExecutionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
         },
         "SyntheticMonitorId": "[variables('pingTestName')]"
       }
@@ -419,14 +422,14 @@ ms.locfileid: "54004810"
 
 | find | 置き換え |
 | --- | --- |
-| `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>` resourceId('microsoft.insights/components',` <br/> ` parameters('appName')))]"` |
+| `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>`resourceId('microsoft.insights/components',` <br/> `parameters('appName')))]"` |
 | `"/subscriptions/.../../alertrules/myAlertName-myAppName-subsId",` |`"[resourceId('Microsoft.Insights/alertrules', variables('alertRuleName'))]",` |
 | `"/subscriptions/.../../webtests/myTestName-myAppName",` |`"[resourceId('Microsoft.Insights/webtests', parameters('webTestName'))]",` |
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
 | `"myappname"` (小文字) |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Guid と Id を削除します。 |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Guid と Id を削除します。 |
 
 ### <a name="set-dependencies-between-the-resources"></a>リソース間の依存関係の設定
 Azure では、厳密な順序でリソースを設定する必要があります。 次の設定を開始する前に、確実に 1 つの設定を完了するために、依存関係の行を追加します。
@@ -446,7 +449,7 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 * [Application Insights リソースを作成するための PowerShell スクリプト](powershell-script-create-resource.md) - テンプレートを使用しない簡単な方法
 * [PowerShell を使用して Application Insights のアラートを設定する](powershell-alerts.md)
 * [Web テストを作成する](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
-* [Azure 診断を Application Insights に送信する](powershell-azure-diagnostics.md)
+* [Azure Diagnostics を Application Insights に送信する](powershell-azure-diagnostics.md)
 * [GitHub から Azure にデプロイする](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [リリースの注釈を作成する](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

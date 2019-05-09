@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Sedgwick CMS の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Sedgwick CMS の統合 | Microsoft Docs
 description: Azure Active Directory と Sedgwick CMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 957931e0-e426-47e7-9904-3ed98d3f504c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ff9f3186602b9047e53fb78edbf52c2c0d9ee574
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4c42b7010a6586e4845d3a58b9a47b01143f5b1d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904833"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>チュートリアル: Azure Active Directory と Sedgwick CMS の統合
+# <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>チュートリアル:Azure Active Directory と Sedgwick CMS の統合
 
 このチュートリアルでは、Sedgwick CMS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -111,12 +112,14 @@ Sedgwick CMS で Azure AD のシングル サインオンを構成してテス�
     ![[Sedgwick CMS のドメインと URL] のシングル サインオン情報](./media/sedgwickcms-tutorial/tutorial_sedgwickcms_url.png)
 
     a. **[識別子]** ボックスに次の URL を入力します。 
+
     | |
     |--|
     | `expresspreview.sedgwickcms.net/voe/sso` |
     | `claimlookup.com/Voe/sso` |
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |--|
     | `https://<subdomain>.sedgwickcms.net/voe/sso` |
@@ -134,10 +137,10 @@ Sedgwick CMS で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/sedgwickcms-tutorial/tutorial_general_400.png)
 
-1. **Sedgwick CMS** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Sedgwick CMS サポート チーム](https://www.sedgwick.com/contact/Pages/contactform.aspx)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Sedgwick CMS** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Sedgwick CMS サポート チーム](https://www.sedgwick.com/help)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -173,7 +176,7 @@ Sedgwick CMS で Azure AD のシングル サインオンを構成してテス�
   
 ### <a name="create-a-sedgwick-cms-test-user"></a>Sedgwick CMS テスト ユーザーの作成
 
-このセクションでは、Sedgwick CMS で Britta Simon というユーザーを作成します。 [Sedgwick CMS サポート チーム](https://www.sedgwick.com/contact/Pages/contactform.aspx)と連携して、Sedgwick CMS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。  
+このセクションでは、Sedgwick CMS で Britta Simon というユーザーを作成します。  [Sedgwick CMS サポート チーム](https://www.sedgwick.com/help) に相談して、Sedgwick CMS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -210,7 +213,7 @@ Sedgwick CMS で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Sedgwick CMS] タイルをクリックすると、自動的に Sedgwick CMS アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

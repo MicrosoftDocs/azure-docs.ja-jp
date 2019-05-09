@@ -5,53 +5,41 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 022ffeaf75f8f03447b931ed9c3a474286a17f89
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 43f3a55bc820a232ccebc3a940faa86f9eb730f7
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067807"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338265"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
-永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 複数のポッドが同じストレージ ボリュームに同時アクセスする必要がある場合、Azure Files を使用し、[サーバー メッセージ ブロック (SMB) プロトコル][smb-overview]を使用して接続します。 この記事では、Azure Kubernetes Service (AKS) クラスターの複数のポッドで使用するために、Azure Files 共有を動的に作成する方法を示します。
+永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 複数のポッドが同じストレージ ボリュームに同時アクセスする必要がある場合は、Azure Files を使用し、[サーバー メッセージ ブロック (SMB) プロトコル][smb-overview]を使用して接続します。 この記事では、Azure Kubernetes Service (AKS) クラスターの複数のポッドで使用するために、Azure Files 共有を動的に作成する方法を示します。
 
-Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。
+Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
-また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+## <a name="create-a-storage-class"></a>ストレージ クラスの作成
 
-Azure Files 共有を Kubernetes ボリュームとして動的に作成するときは、AKS **ノード** リソース グループ内にある限り、任意のストレージ アカウントを使用できます。 このグループは、AKS クラスターにリソースのプロビジョニングによって作成された *MC_* プレフィックスを備えています。 [az aks show][az-aks-show] コマンドを使用して、リソース グループの名前を取得します。
+ストレージ クラスを使用して、Azure ファイル共有を作成する方法を定義します。 ストレージ アカウントは、ストレージ クラスと共に使用して Azure ファイル共有を保持するために、*_MC* リソース グループ内に自動的に作成されます。 *skuName* には、次のいずれかの [Azure Storage の冗長性][storage-skus]を選択します。
 
-```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-[az storage account create][az-storage-account-create] コマンドを使用して、ストレージ アカウントを作成します。
-
-最後の手順で収集したリソース グループの名前を使用して `--resource-group` を更新し、`--name` を任意の名前に更新します。 独自の一意のストレージ アカウント名を指定します。
-
-```azurecli
-az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --sku Standard_LRS
-```
+* *Standard_LRS* - 標準のローカル冗長ストレージ (LRS)
+* *Standard_GRS* - 標準の geo 冗長ストレージ (GRS)
+* *Standard_RAGRS* - 標準の読み取りアクセス geo 冗長ストレージ (RA-GRS)
 
 > [!NOTE]
 > Azure Files は現在、Standard ストレージのみと連動します。 Premium ストレージを使用すると、ボリュームはプロビジョニングに失敗します。
 
-## <a name="create-a-storage-class"></a>ストレージ クラスの作成
+Azure Files 用の Kubernetes ストレージ クラスについて詳しくは、[Kubernetes ストレージ クラス][kubernetes-storage-classes]に関するページをご覧ください。
 
-ストレージ クラスを使用して、Azure ファイル共有を作成する方法を定義します。 クラス内にストレージ アカウントを指定できます。 ストレージ アカウントが指定されない場合は、*skuName* と *location* が指定される必要があり、関連するリソース グループ内のすべてのストレージ アカウントが一致するかどうかの評価が行われます。 Azure Files 用の Kubernetes ストレージ クラスについて詳しくは、[Kubernetes ストレージ クラス][kubernetes-storage-classes]に関するページをご覧ください。
-
-`azure-file-sc.yaml` という名前のファイルを作成し、次の例のマニフェストにコピーします。 *storageAccount* の値を、前の手順で作成したストレージ アカウントの名前に更新します。 *mountOptions* について詳しくは、「[マウント オプション][mount-options]」セクションをご覧ください。
+`azure-file-sc.yaml` という名前のファイルを作成し、次の例のマニフェストにコピーします。 *mountOptions* について詳しくは、「[マウント オプション][mount-options]」セクションをご覧ください。
 
 ```yaml
 kind: StorageClass
@@ -66,7 +54,6 @@ mountOptions:
   - gid=1000
 parameters:
   skuName: Standard_LRS
-  storageAccount: mystorageaccount
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使用して、ストレージ クラスを作成します。
@@ -140,7 +127,7 @@ kubectl apply -f azure-file-pvc.yaml
 
 完了すると、ファイル共有が作成されます。 接続情報と資格情報を含む Kubernetes シークレットも作成されます。 [kubectl get][kubectl-get] コマンドを使用すると、PVC の状態を表示できます。
 
-```
+```console
 $ kubectl get pvc azurefile
 
 NAME        STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -184,7 +171,7 @@ spec:
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-これで Azure ディスクが */mnt/azure* ディレクトリにマウントされ、ポッドが稼働状態となりました。 この構成は、`kubectl describe pod mypod` 経由でポッドを調べるときに表示できます。 次に示したのは、その出力例の抜粋です。コンテナーにマウントされたボリュームが表示されています。
+これで Azure Files 共有が */mnt/azure* ディレクトリにマウントされ、ポッドが稼働状態となりました。 この構成は、`kubectl describe pod mypod` 経由でポッドを調べるときに表示できます。 次に示したのは、その出力例の抜粋です。コンテナーにマウントされたボリュームが表示されています。
 
 ```
 Containers:
@@ -193,7 +180,7 @@ Containers:
     Image:          nginx:1.15.5
     Image ID:       docker-pullable://nginx@sha256:d85914d547a6c92faa39ce7058bd7529baacab7e0cd4255442b04577c4d1f424
     State:          Running
-      Started:      Wed, 15 Aug 2018 22:22:27 +0000
+      Started:      Fri, 01 Mar 2019 23:56:16 +0000
     Ready:          True
     Mounts:
       /mnt/azure from volume (rw)
@@ -236,32 +223,11 @@ parameters:
   skuName: Standard_LRS
 ```
 
-バージョン 1.8.5 以降のクラスターを使い、永続ボリューム オブジェクトを静的に作成している場合は、*PersistentVolume* オブジェクトに対してマウント オプションを指定する必要があります。 永続ボリュームの静的作成について詳しくは、[静的な永続ボリューム][pv-static]に関するページをご覧ください。
-
-```yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: azurefile
-spec:
-  capacity:
-    storage: 5Gi
-  accessModes:
-    - ReadWriteMany
-  azureFile:
-    secretName: azure-secret
-    shareName: azurefile
-    readOnly: false
-  mountOptions:
-  - dir_mode=0777
-  - file_mode=0777
-  - uid=1000
-  - gid=1000
-```
-
 バージョン 1.8.0 - 1.8.4 のクラスターを使用している場合は、*runAsUser* の値を *0* に設定してセキュリティ コンテキストを指定できます。 ポッドのセキュリティ コンテキストについて詳しくは、[セキュリティ コンテキストの構成][kubernetes-security-context]に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 
 Azure Files を使用した Kubernetes 永続ボリュームについて、さらに詳しい情報を確認します。
 
@@ -279,7 +245,6 @@ Azure Files を使用した Kubernetes 永続ボリュームについて、さ�
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-file
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 [pv-static]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#static
-[kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 [smb-overview]: /windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview
 
 <!-- LINKS - internal -->
@@ -295,3 +260,7 @@ Azure Files を使用した Kubernetes 永続ボリュームについて、さ�
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[storage-skus]: ../storage/common/storage-redundancy.md
+[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[operator-best-practices-storage]: operator-best-practices-storage.md
+[concepts-storage]: concepts-storage.md

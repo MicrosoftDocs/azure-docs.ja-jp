@@ -1,23 +1,23 @@
 ---
-title: Azure Data Lake Storage Gen2 プレビューで HDFS CLI を使用する
-description: Data Lake Storage Gen2 プレビューの HDFS CLI の概要
+title: Azure Data Lake Storage Gen2 で HDFS CLI を使用する
+description: Data Lake Storage Gen2 の HDFS CLI の概要
 services: storage
 author: artemuwka
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: b4485e234e19e93a852895c80775b8aadc7a15ce
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: 051681150501f7c5737f335f8eb48144b08bb990
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976945"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482668"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
-Azure Data Lake Storage Gen2 プレビューでは、[Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理やアクセスを行うことができます。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Storage アカウントに保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。
+Azure Data Lake Storage Gen2 では、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Storage アカウントに保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDInsight での HDFS CLI
 
@@ -26,23 +26,43 @@ HDInsight では、それぞれのコンピューティング ノードにロー
 >[!IMPORTANT]
 >HDInsight クラスターの課金は、クラスターが作成された後に開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 クラスターを削除する方法については、[トピックに関する記事](../../hdinsight/hdinsight-delete-cluster.md)を参照してください。 ただし、HDInsight クラスターを削除しても、Data Lake Storage Gen2 が使用可能なストレージ アカウントに保存されているデータは削除されません。
 
+### <a name="create-a-file-system"></a>ファイル システムを作成する
+
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+
+* `<file-system-name>` プレースホルダーを、ファイル システムに付ける名前に置き換えます。
+
+* `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
+
 ### <a name="get-a-list-of-files-or-directories"></a>ファイルまたはディレクトリの一覧を取得する
 
-    hdfs dfs -ls <args>
+    hdfs dfs -ls <path>
+
+`<path>` プレースホルダーを、ファイル システムまたはファイル システム フォルダーの URI に置き換えます。
+
+次に例を示します。`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
 
-    hdfs dfs -mkdir [-p] <paths>
+    hdfs dfs -mkdir [-p] <path>
 
-### <a name="delete-a-file-or-a-directory"></a>ファイルまたはディレクトリを削除する
+`<path>` プレースホルダーを、ルート ファイル システム名またはファイル システム内のフォルダーに置き換えます。
 
-    hdfs dfs -rm [-skipTrash] URI [URI ...]
+次に例を示します。`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+
+### <a name="delete-a-file-or-directory"></a>ファイルまたはディレクトリを削除する
+
+    hdfs dfs -rm <path>
+
+`<path>` プレースホルダーを、削除するファイルまたはフォルダーの URI に置き換えます。
+
+次に例を示します。`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ### <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Linux の HDInsight Hadoop クラスターで HDFS CLI を使用する
 
 最初に、[サービスへのリモート アクセス](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services)を確立します。 [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) を選択した場合、PowerShell のサンプル コードは、次のようになります。
 
-```PowerShell
+```powershell
 #Connect to the cluster via SSH.
 ssh sshuser@clustername-ssh.azurehdinsight.net
 #Execute basic HDFS commands. Display the hierarchy.
@@ -52,7 +72,7 @@ hdfs dfs -mkdir /samplefolder
 ```
 接続文字列は、Azure portal 内の HDInsight クラスター ブレードの "SSH + Cluster login" セクションで確認できます。 SSH 資格情報は、クラスターの作成時に指定されています。
 
-HDFS CLI の詳細については、[公式ドキュメント](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)、および「[HDFS Permissions Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」 (HDFS 権限ガイド) を参照してください。 Databricks の ACL の詳細については、「[Secrets CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli)」を参照してください。 
+HDFS CLI の詳細については、[公式ドキュメント](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)、および「[HDFS Permissions Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」 (HDFS 権限ガイド) を参照してください。 Databricks の ACL の詳細については、「[Secrets CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli)」を参照してください。
 
 ## <a name="hdfs-cli-with-azure-databricks"></a>Azure Databricks での HDFS CLI
 

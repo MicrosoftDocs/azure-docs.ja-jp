@@ -6,20 +6,20 @@ author: craigshoemaker
 ms.author: cshoe
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions; cosmos-db
+ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 2a501129720447462d1e6e961597b51fa683dc1e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0421ec62d25bbfaba2909d16498cac5afd038a53
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136207"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776327"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
-> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択してください: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Version 1](functions-bindings-cosmosdb.md)
 > * [Version 2](functions-bindings-cosmosdb-v2.md)
 
@@ -33,7 +33,7 @@ ms.locfileid: "53136207"
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Azure Cosmos DB のバインドは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、[MongoDB API](../cosmos-db/mongodb-introduction.md)](../cosmos-db/mongodb-introduction.md)、[Cassandra API](../cosmos-db/cassandra-introduction.md)、[Gremlin API](../cosmos-db/graph-introduction.md)、[Table API](../cosmos-db/table-introduction.md) など、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
+> Azure Cosmos DB のバインドは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、[Azure Cosmos DB の MongoDB 用 API](../cosmos-db/mongodb-introduction.md)、[Cassandra API](../cosmos-db/cassandra-introduction.md)、[Gremlin API](../cosmos-db/graph-introduction.md)、[Table API](../cosmos-db/table-introduction.md) など、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
@@ -150,7 +150,7 @@ C# スクリプト コードを次に示します。
 JavaScript コードを次に示します。
 
 ```javascript
-      module.exports = function (context, documents) {
+    module.exports = function (context, documents) {
         context.log('First document Id modified : ', documents[0].id);
 
         context.done();
@@ -192,14 +192,15 @@ JavaScript コードを次に示します。
 |**leaseDatabaseName** |**LeaseDatabaseName** | (省略可能) リースの保存のために使用するコレクションを保持しているデータベースの名前。 この値を設定しない場合、`databaseName` の設定の値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
 |**leaseCollectionName** | **LeaseCollectionName** | (省略可能) リースの保存のために使用するコレクションの名前。 この値を設定しない場合、`leases` という値が使用されます。 |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (省略可能) `true` を設定すると、リース コレクションが存在していない場合に自動でリース コレクションを作成します。 既定値は `false` です。 |
-|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (省略可能) リース コレクションの作成に割り当てる要求ユニットの量を定義します。 この設定は、`createLeaseCollectionIfNotExists` が `true` に設定されている場合のみ使用できます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。
+|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (省略可能) リース コレクションの作成に割り当てる要求ユニットの量を定義します。 この設定は、`createLeaseCollectionIfNotExists` が `true` に設定されている場合のみ使用できます。 このパラメーターは、ポータルを使用してバインドを作成するときに自動的に設定されます。
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (省略可能) 設定すると、この関数のリース コレクション内に作成されたリースにプレフィックスが追加され、2 つの独立した Azure Functions が、異なるプレフィックスを使用することで同じリース コレクションを効率的に共有できます。
 |**feedPollDelay**| **FeedPollDelay**| (省略可能) 設定すると、現在の変更がすべて排除された後、パーティションでフィードの新しい変更をポーリングするまでの遅延時間がミリ秒単位で定義されます。 既定値は 5,000 (5 秒) です。
 |**leaseAcquireInterval**| **LeaseAcquireInterval**| (省略可能) 設定すると、パーティションが既知のホスト インスタンス間で均等に分散されているかどうかを計算するタスクを開始する間隔がミリ秒単位で定義されます。 既定値は 13,000 (13 秒) です。
 |**leaseExpirationInterval**| **LeaseExpirationInterval**| (省略可能) 設定すると、パーティションを表すリースでリースを取得する間隔がミリ秒単位で定義されます。 この間隔内にリースが更新されない場合、リースは期限切れとなり、パーティションの所有権は別のインスタンスに移動します。 既定値は 60,000 (60 秒) です。
 |**leaseRenewInterval**| **LeaseRenewInterval**| (省略可能) 設定すると、インスタンスが現在保持しているパーティションのすべてのリースの更新間隔がミリ秒単位で定義されます。 既定値は 17,000 (17 秒) です。
-|**checkpointFrequency**| **CheckpointFrequency**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に成功した関数呼び出しの後になります。
+|**checkpointFrequency**| **CheckpointFrequency**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に各関数呼び出しの後です。
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (省略可能) 設定すると、関数呼び出しごとに受信するアイテムの最大量がカスタマイズされます。
+|**startFromBeginning**| **StartFromBeginning**| (省略可能) 設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、トリガーが指示されます。 これは、初めてトリガーが起動される場合にのみ機能します。その後の実行では、チェックポイントが既に格納されているためです。 既にリースが作成されているときにこれを `true` に設定しても効果はありません。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1165,7 +1166,7 @@ F# コードを次に示します。
 |**name**     || 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**databaseName** |**DatabaseName** |ドキュメントを含むデータベース。        |
 |**collectionName** |**CollectionName** | ドキュメントを含むコレクションの名前。 |
-|**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、[バインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)をサポートしています。 **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |
+|**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、[バインド式](./functions-bindings-expressions-patterns.md)をサポートしています。 **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |
 |**sqlQuery**  |**SqlQuery**  | 複数のドキュメントを取得するときに使用する Azure Cosmos DB SQL クエリ。 このプロパティは、次の例のように実行時のバインドをサポートします。`SELECT * FROM c where c.departmentId = {departmentId}` **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。|
 |**connection**     |**ConnectionStringSetting**|Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
 |**partitionKey**|**PartitionKey**|参照用のパーティション キー値を指定します。 バインディング パラメーターを含めることもできます。|
@@ -1345,16 +1346,16 @@ C# スクリプト コードを次に示します。
 
     public static void Run(string myQueueItem, out object employeeDocument, TraceWriter log)
     {
-      log.Info($"C# Queue trigger function processed: {myQueueItem}");
+        log.Info($"C# Queue trigger function processed: {myQueueItem}");
 
-      dynamic employee = JObject.Parse(myQueueItem);
+        dynamic employee = JObject.Parse(myQueueItem);
 
-      employeeDocument = new {
-        id = employee.name + "-" + employee.employeeId,
-        name = employee.name,
-        employeeId = employee.employeeId,
-        address = employee.address
-      };
+        employeeDocument = new {
+            id = employee.name + "-" + employee.employeeId,
+            name = employee.name,
+            employeeId = employee.employeeId,
+            address = employee.address
+        };
     }
 ```
 

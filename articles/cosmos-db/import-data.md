@@ -1,20 +1,17 @@
 ---
 title: Azure Cosmos DB のデータベース移行ツール
 description: オープン ソースの Azure Cosmos DB データ移行ツールを使用して、MongoDB、SQL Server、Table Storage、Amazon DynamoDB、CSV、JSON ファイルなどのさまざまなソースからデータを Azure Cosmos DB にインポートする方法について説明します。 CSV から JSON への変換についても説明します。
-keywords: csv を json へ、データベース移行ツール、csv を json へ
-services: cosmos-db
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 02/22/2019
 ms.author: dech
-ms.custom: mvc
-ms.openlocfilehash: 45c9d5fac24bbbc7d90abf43f5f7662c26c7d4b0
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 023b344d796ea5297cda202e7baa2f0e0ef5eebd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810153"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315812"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 
@@ -61,7 +58,7 @@ Azure Cosmos DB で使用する API を教えてください。
 
 ## <a id="Install"></a>インストール
 
-移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ソリューションをローカルにダウンロードしてコンパイルするか、[プリコンパイル済みのバイナリをダウンロード](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip)してから、次のいずれかを実行できます。
+移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ソリューションをローカルにダウンロードしてコンパイルするか、[プリコンパイル済みのバイナリをダウンロード](https://aka.ms/csdmtool)してから、次のいずれかを実行できます。
 
 * **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
 * **Dt.exe**: コマンド ライン バージョンのツール
@@ -198,7 +195,7 @@ SQL ソースの場合と同様、[入れ子の区切り記号] プロパティ�
 
 DomainInfo.Domain_Name や RedirectInfo.Redirecting などのエイリアスに注目してください。 入れ子の区切り記号 "." を指定することで、インポート ツールによって、インポート中に DomainInfo や RedirectInfo のサブドキュメントが作成されます。 Azure Cosmos DB で生成されるドキュメントの例を以下に示します。
 
-*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV" }, "Federal Agency":"Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 CSV ファイルに含まれる引用符なしの値に関して、インポート ツールは型情報の推測を試みます (引用符で囲まれた値は、常に文字列として扱われます)。  型は、数値型、DateTime 型、ブール型の順に識別されます。  
 

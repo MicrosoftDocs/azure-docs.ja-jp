@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bf1ff4391e65fea68ac019be8fde8709fb4422b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998092"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181352"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
-アプリケーション開発がコンテナーベースの手法に移行してきているため、相互に接続されたリソースを調整して管理するというニーズが重要になっています。 Kubernetes は、フォールト トレラント アプリケーションワークロードの信頼性の高いスケジュール機能を提供する主要プラットフォームです。 Azure Kubernetes Service (AKS) は、コンテナーベースのアプリケーション開発と管理をさらに簡素化するマネージド Kubernetes のオファリングです。
+アプリケーション開発がコンテナーベースの手法に移行するにつれて、リソースを調整して管理する必要性が重要になります。 Kubernetes は、フォールト トレラント アプリケーションワークロードの信頼性の高いスケジュール機能を提供する主要プラットフォームです。 Azure Kubernetes Service (AKS) は、コンテナーベースのアプリケーション開発と管理をさらに簡素化するマネージド Kubernetes のオファリングです。
 
 この記事では、*クラスター マスター*、*ノード*、および*ノード プール*など、主要な Kubernetes インフラストラクチャ コンポーネントを紹介します。 また、*プール*、*デプロイ*、および*セット*などのワークロード リソースと、リソースを*名前空間*にグループ化する方法も紹介します。
 
@@ -28,7 +28,7 @@ Kubernetes は、コンテナー ベース アプリケーションとそれに�
 
 Kubernetes はオープン プラットフォームとして、使いたいプログラミング言語、OS、ライブラリ、またはメッセージング バスでアプリケーションを開発することを可能にします。 既存の継続的インテグレーションと継続的デリバリー (CI/CD) ツールは、リリースをスケジュール設定してデプロイするために、Kubernetes と連携できます。
 
-Azure Kubernetes Service (AKS) は、アップグレードの調整など、デプロイ タスクと主要な管理タスクの複雑さを軽減する、マネージド Kubernetes サービスを提供します。 AKS クラスター マスターは Azure プラットフォームによって管理され、お使いのアプリケーションを実行する AKS ノードに対してのみ課金されます。 AKS は、オープンソースの Azure Kubernetes Service Engine (aks-engine) の最上位に構築されます。
+Azure Kubernetes Service (AKS) は、アップグレードの調整など、デプロイ タスクと主要な管理タスクの複雑さを軽減する、マネージド Kubernetes サービスを提供します。 AKS クラスター マスターは Azure プラットフォームによって管理され、お使いのアプリケーションを実行する AKS ノードに対してのみ課金されます。 AKS は、オープンソースの Azure Kubernetes Service Engine ([aks-engine][aks-engine]) の最上位に構築されます。
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes クラスターのアーキテクチャ
 
@@ -41,7 +41,7 @@ Kubernetes クラスターは、次の 2 つのコンポーネントに分割さ
 
 ## <a name="cluster-master"></a>クラスター マスター
 
-AKS クラスターを作成すると、クラスター マスターが自動的に作成され構成されます。 このクラスター マスターは、ユーザーから抽象化されたマネージド Azure リソースとして提供されます。 単に AKS クラスターに属するノードであるクラスター マスターには、課金されません。
+AKS クラスターを作成すると、クラスター マスターが自動的に作成され構成されます。 このクラスター マスターは、ユーザーから抽象化されたマネージド Azure リソースとして提供されます。 クラスター マスターには課金されません。AKS クラスターに属するノードに対してのみ課金されます。
 
 クラスター マスターには、次の主要な Kubernetes コンポーネントが含まれます。
 
@@ -52,9 +52,11 @@ AKS クラスターを作成すると、クラスター マスターが自動的
 
 AKS は、専用の API サーバー、スケジューラなど、単一のテナント クラスター マスターを提供します。ノードの数とサイズを定義すると、Azure プラットフォームはクラスター マスターとノード間にセキュアな通信を構成します。 クラスター マスターの操作は、`kubectl` や Kubernetes ダッシュボードなどの、Kubernetes API を介して行われます。
 
-このマネージド クラスター マスターによって、高可用性を備えた *etcd* ストアなどのコンポーネントを構成する必要はなくなりますが、それと同時に、クラスター マスターには直接アクセスできないことがわかります。 Kubernetes のアップグレードは、Azure CLI または Azure portal 経由で調整され、クラスター マスターの次にノードのアップグレードが、順番に行われます。 想定される問題をトラブルシューティングするために、Azure Log Analytics からクラスター マスター ログを確認できます。
+このマネージド クラスター マスターによって、高可用性を備えた *etcd* ストアなどのコンポーネントを構成する必要はなくなりますが、それはまた、クラスター マスターに直接アクセスできないことも意味します。 Kubernetes のアップグレードは、Azure CLI または Azure portal 経由で調整され、クラスター マスターの次にノードのアップグレードが、順番に行われます。 想定される問題をトラブルシューティングするために、Azure Monitor ログからクラスター マスター ログを確認できます。
 
 クラスター マスターを特定の方法で構成する必要がある場合や、クラスター マスターに直接アクセスする必要がある場合は、[aks-engine][aks-engine] を使用して、独自の Kubernetes クラスターをデプロイできます。
+
+関連付けられているベスト プラクティスについては、[AKS でのクラスターのセキュリティとアップグレードに関するベスト プラクティス][operator-best-practices-cluster-security]のページを参照してください。
 
 ## <a name="nodes-and-node-pools"></a>ノードとノード プール
 
@@ -62,7 +64,7 @@ AKS は、専用の API サーバー、スケジューラなど、単一のテ�
 
 - `kubelet` は、クラスター マスターからの調整要求と、要求されたコンテナーの実行のスケジュール設定を処理する Kubernetes エージェントです。
 - 仮想ネットワークは、各ノード上の *kube-proxy* によって処理されます。 プロキシはネットワーク トラフィックをルーティングして、サービスとポッドの IP アドレスを管理します。
-- *コンテナー ランタイム*は、コンテナー化されたアプリケーションが仮想ネットワークやストレージなどの追加リソースを実行して操作できるようにするためのコンポーネントです。 AKS では、Docker はコンテナー ランタイムとして使用されます。
+- *コンテナー ランタイム*は、コンテナー化されたアプリケーションが仮想ネットワークやストレージなどの追加リソースを実行して操作できるようにするためのコンポーネントです。 AKS では、Moby はコンテナー ランタイムとして使用されます。
 
 ![Kubernetes ノードの Azure 仮想マシンとサポート対象リソース](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -70,7 +72,7 @@ AKS は、専用の API サーバー、スケジューラなど、単一のテ�
 
 AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。
 
-別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目して、AKS クラスターで公式にサポートされる前に構成オプションを提供しています。 たとえば、Docker 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
+別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、Moby 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
 
 ### <a name="resource-reservations"></a>リソース予約
 
@@ -92,6 +94,8 @@ Kubernetes のコア コンポーネントは、各ノード (*kubelet*、*kube-
     - ノードで使用できるメモリの合計は、*(32 - 4) = 28 GiB* になります
     
 基盤のノード OS にも、自身のコア機能を果たすために一定の CPU とメモリ リソースが必要になります。
+
+関連付けられているベスト プラクティスについては、[AKS の基本的なスケジューラ機能のベスト プラクティス][operator-best-practices-scheduler]に関するページを参照してください。
 
 ### <a name="node-pools"></a>ノード プール
 
@@ -203,7 +207,7 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 
 - *既定* - この名前空間は、何も指定されない場合に、既定でポッドおよびデプロイが作成される場所です。 より小規模な環境では、追加の論理分割を作成せずに、既定の名前空間にアプリケーションを直接デプロイできます。 `kubectl get pods` などの Kubernetes API を操作する場合、何も指定しないと、既定の名前空間が使用されます。
 - *kube-system* - この名前空間は、DNS とプロキシ、または Kubernetes ダッシュボードのようなネットワーク機能など、重要なリソースが置かれている場所です。 通常は、この名前空間に独自のアプリケーションをデプロイしません。
-- *kube-public* - この名前空間は、通常は使用されませんが、クラスター全体でリソースを表示可能にするために使用したり、任意のユーザーによる表示を可能にしたりします。
+- *kube-public* - この名前空間は、通常は使用されませんが、クラスター全体でリソースを表示可能にして、ユーザーが確認できるようにするために使用できます。
 
 詳細については、[Kubernetes の名前空間][kubernetes-namespaces] に関するページをご覧ください。
 
@@ -236,3 +240,5 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 [aks-concepts-network]: concepts-network.md
 [acr-helm]: ../container-registry/container-registry-helm-repos.md
 [aks-helm]: kubernetes-helm.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[operator-best-practices-scheduler]: operator-best-practices-scheduler.md

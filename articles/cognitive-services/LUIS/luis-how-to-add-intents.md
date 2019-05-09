@@ -4,39 +4,27 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 意図を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 3e6064b4c202c36e4b63d6e06edfbf3149f6665f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139872"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521744"
 ---
-# <a name="add-intents"></a>意図の追加 
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 
 [意図](luis-concept-intent.md)を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。 
 
 インテントを管理するには、上部のナビゲーション バーの **[ビルド]** セクションに移動し、左側のパネルの **[Intents]\(意図\)** を選択します。 
 
-## <a name="create-an-app"></a>アプリを作成する
-
-1. [LUIS](https://www.luis.ai) ポータルにサインインします。
-
-1. **[Create new app]\(新しいアプリの作成\)** を選択します。 
-
-1. 新しいアプリに `MyHumanResourcesApp` という名前を付けます。 **[英語]** カルチャを選択します。 説明は省略できます。 
-
-1. **[完了]** を選択します。 
-
 ## <a name="add-intent"></a>意図を追加する
-
-1. アプリが開き、**[Intents]\(意図\)** リストが表示されます。
 
 1. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。
 
@@ -62,21 +50,14 @@ ms.locfileid: "53139872"
 
 上部のナビゲーションで、**[トレーニング]** を選択します。 これで、予測の不一致がなくなります。
 
+> [!Note]
+> サンプル発話内の単語またはフレーズの下に赤い線が表示されている場合は、[エンティティ予測エラー](luis-how-to-add-example-utterances.md#entity-status-predictions)が発生しています。 このエラーは修正する必要があります。 
+
 ## <a name="add-a-custom-entity"></a>カスタム エンティティの追加
 
 意図に発話を追加したら、発話内からテキストを選択してカスタム エンティティを作成できます。 カスタム エンティティは、抽出するテキスト (および正しい意図) をタグ付けするためのものです。 
 
-1. 発話内の単語 (`Seattle`) を選択します。 テキストを囲む角かっこが表示され、ドロップダウン メニューが表示されます。 
-
-    ![意図の詳細ページのスクリーンショット (カスタム エンティティの作成)](./media/luis-how-to-add-intents/create-custom-entity.png) 
-
-    この例では、1 つの単語をエンティティとしてマークします。 エンティティとしてマークできるのは、1 つの単語や語句です。
-
-1. メニューの上部のテキスト ボックスに「`Location`」と入力し、を選択し、**[新しいエンティティの作成]** を選択します。 
-
-    ![意図の詳細ページのスクリーンショット (カスタム エンティティ名の作成)](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
-
-1. エンティティ作成の **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ウィンドウで、**エンティティ名**が _Location_、**エンティティの種類**が "_簡易_" であることを確認します。 **[完了]** を選択します。
+詳細については、[発話に対するエンティティの追加](luis-how-to-add-example-utterances.md)に関するページを参照してください。
 
 ## <a name="entity-prediction-discrepancy-errors"></a>エンティティ予測の不一致エラー 
 
@@ -88,11 +69,11 @@ ms.locfileid: "53139872"
 
 ## <a name="add-a-prebuilt-entity"></a>作成済みエンティティの追加
 
-詳しくは、「[事前構築済みのエンティティ](luis-how-to-add-entities.md#add-prebuilt-entity)」をご覧ください。
+詳しくは、「[事前構築済みのエンティティ](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app)」をご覧ください。
 
 ## <a name="using-the-contextual-toolbar"></a>コンテキスト ツールバーの使用
 
-一覧で 1 つ以上のサンプル発話が選択されているときに発話の左側のチェックボックスをオンにすると、発話一覧の上部にあるツールバーを使用して次の操作を実行できます。
+一覧で 1 つ以上のサンプル発話が選択されているときに発話の左側のチェック ボックスをオンにすると、発話一覧の上部にあるツール バーを使用して次のアクションを実行できます。
 
 * 意図の再割り当て: 発話を別の意図に移動します
 * 発話の削除

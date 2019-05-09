@@ -2,25 +2,22 @@
 title: Azure AD で既存のオンプレミス プロキシ サーバーと連携する| Microsoft Docs
 description: 既存のオンプレミス プロキシ サーバーと連携する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0b4cb1f6cc3da5230f510f57a56c7297341f82f3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404955"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175576"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -73,7 +70,7 @@ ms.locfileid: "49404955"
 >[!NOTE]
 >アプリケーション プロキシは、他のプロキシに対する認証をサポートしていません。 コネクタ/アップデータのネットワーク サービス アカウントは、認証を求められることなく、プロキシに接続できる必要があります。
 
-### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>手順 1: コネクタと関連サービスが送信プロキシを経由するように構成する
+### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>手順 1:送信プロキシを経由するようにコネクタと関連サービスを構成する
 
 環境内で WPAD を有効にし、適切に構成している場合、コネクタは送信プロキシ サーバーを自動的に検出して使用を試みます。 一方で、送信プロキシを経由するようにコネクタを明示的に構成することができます。
 
@@ -98,7 +95,7 @@ ms.locfileid: "49404955"
 
 次に、C:\Program Files\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config ファイルに同じような変更を加えて、コネクタ アップデーター サービスがプロキシを使用するように構成します。
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>手順 2: プロキシがコネクタと関連サービスのトラフィックの通過を許可するように構成する
+### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>手順 2:コネクタと関連サービスからのトラフィックが経由して流れることを許可するようにプロキシを構成する
 
 送信プロキシで考慮すべき点は次の 4 つです。
 * プロキシ送信規則
@@ -107,15 +104,16 @@ ms.locfileid: "49404955"
 * SSL インスペクション
 
 #### <a name="proxy-outbound-rules"></a>プロキシ送信規則
-コネクタ サービスへのアクセスに、次のエンドポイントへのアクセスを許可します。
+次の URL へのアクセスを許可します。
 
-* *.msappproxy.net
-* *.servicebus.windows.net
+| URL | 用途 |
+| --- | --- |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure では、これらの URL を使用して証明書が検証されます |
+| login.windows.net<br>login.microsoftonline.com | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 
-最初の登録では、次のエンドポイントへのアクセスを許可します。
+ファイアウォールまたはプロキシで DNS ホワイトリスト登録が許可されている場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続をホワイトリストに登録できます。 そうでない場合は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
 
-* login.windows.net
-* login.microsoftonline.com
 
 FQDN による接続を許可することはできず、代わりに IP 範囲を指定する必要がある場合は、これらのオプションを使用します。
 

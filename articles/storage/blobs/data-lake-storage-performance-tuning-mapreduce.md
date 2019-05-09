@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 の MapReduce パフォーマンス チュ�
 description: Azure Data Lake Storage Gen2 の MapReduce パフォーマンス チューニング ガイドライン
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 4ba683bc75ed841fc92eb2c9fcc908e419b716d6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1df7765f4f006d3d79f867fbf23929f6b9b0cf08
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976872"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884394"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight の MapReduce と Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス
 
@@ -22,8 +22,8 @@ Map Reduce ジョブのパフォーマンスを調整する際に考慮すべき
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、「[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
-* Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
+* Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」をご覧ください
 * **HDInsight での MapReduce の使用**。  詳細については、「[HDInsight での MapReduce と Hadoop の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)」を参照してください。
 * **Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス](data-lake-storage-performance-tuning-guidance.md)を参照してください。
 

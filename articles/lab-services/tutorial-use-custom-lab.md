@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470865"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422900"
 ---
-# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs のラボにアクセスする
-このチュートリアルでは、[チュートリアル: Azure DevTest Labs でラボを作成する](tutorial-create-custom-lab.md)の記事で作成したラボを使います。
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>チュートリアル:Azure DevTest Labs のラボへのアクセス
+このチュートリアルでは、[Azure DevTest Labs でラボを作成するチュートリアル](tutorial-create-custom-lab.md)で作成したラボを使います。
 
 このチュートリアルでは、次のアクションを実行します。
 
@@ -68,14 +68,16 @@ VM を使い終わったら、次の手順で VM を解放します。
 1. 仮想マシンのページで、ツール バーの **[解放]** を選びます。 
 
     ![VM を解放する](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. VM は、解放される前にシャットダウンされます。 
+1. VM は、解放される前にシャットダウンされます。 この動作の状態は、通知で確認できます。  
+3. 一番上の階層リンク メニューでラボ名をクリックして DevTest Lab ページに戻ります。 
+    
+    ![ラボに戻る](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. 一番下の **[要求可能な仮想マシン]** ボックスの一覧に、対象の VM が表示されていることを確認します。
 
-    ![状態を解放する](./media/tutorial-use-custom-lab/unclaim-status.png) 
-1. 解放操作が完了すると、下部にある **[要求可能な仮想マシン]** の一覧に VM が表示されます。 
     
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure DevTest Labs を使って作成されたラボにアクセスして使用する方法を示しました。 ラボの VM にアクセスして使用する方法について詳しくは、次をご覧ください 
 
 > [!div class="nextstepaction"]
-> [方法: ラボでの VM の使用](devtest-lab-add-vm.md)
+> [方法:ラボでの VM の使用](devtest-lab-add-vm.md)
 

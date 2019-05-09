@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8ca936220bf1f4d7f38858c0e09e332cd474077
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b35c5073f2b19523010528800c2a989d5de5b448
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193860"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848015"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -38,17 +38,17 @@ HDInsight は多数の Azure リージョンで利用できます。 最も近�
 
 ### <a name="location-of-default-storage"></a>既定のストレージの場所
 
-既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Store) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Store Gen1 は一部のリージョンで利用できます。Data Lake Store の現在の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」の「*ストレージ*」を参照してください。
+既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Storage) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Storage Gen1 は一部のリージョンで利用できます。Data Lake Storage の現在の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」の「*Storage*」を参照してください。
 
 ### <a name="location-of-existing-data"></a>既存のデータの場所
 
-データを格納しているストレージ アカウントまたは Data Lake Store が既にあり、そのストレージをクラスターの既定のストレージとして使用する場合は、ストレージと同じ場所にクラスターをデプロイする必要があります。
+データを格納しているストレージ アカウントまたは Data Lake Storage が既にあり、そのストレージをクラスターの既定のストレージとして使用する場合は、ストレージと同じ場所にクラスターをデプロイする必要があります。
 
 ### <a name="storage-size"></a>ストレージ サイズ
 
-HDInsight クラスターのデプロイ後に、追加の Azure ストレージ アカウントを接続したり、他の Data Lake Store にアクセスしたりできます。 すべてのストレージ アカウントがクラスターと同じ場所に存在する必要があります。 Data Lake Store は別の場所にあっても構いませんが、その場合、データの読み取り/書き込みの待機時間が発生する可能性があります。
+HDInsight クラスターのデプロイ後に、追加の Azure ストレージ アカウントを接続したり、他の Data Lake Storage にアクセスしたりできます。 すべてのストレージ アカウントがクラスターと同じ場所に存在する必要があります。 Data Lake Storage は別の場所にあっても構いませんが、その場合、データの読み取り/書き込みの待機時間が発生する可能性があります。
 
-Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#storage-limits)がありますが、Data Lake Store には実質的に制限はありません。
+Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#storage-limits)がありますが、Data Lake Storage には実質的に制限はありません。
 
 クラスターは、さまざまなストレージ アカウントの組み合わせにアクセスできます。 一般的な例を次に示します。
 
@@ -75,7 +75,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 * RAM: VM サイズによって、VM で使用可能な RAM の容量も決まります。 処理するデータをディスクから読み取るのではなく、メモリに格納するワークロードの場合、ワーカー ノードにデータを格納できる十分なメモリがあることを確認します。
 
-* ネットワーク: クラスターのほとんどの種類では、クラスターで処理されるデータはローカル ディスク上に存在するのではなく、Data Lake Store や Azure Storage などの外部ストレージ サービスに存在します。 ノードの VM とストレージ サービス間のネットワーク帯域幅とスループットを考慮します。 通常は、VM のサイズが大きいほど、VM が使用できるネットワーク帯域幅が増加します。 詳細については、[VM サイズの概要](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)に関する記事をご覧ください。
+* ネットワーク: クラスターのほとんどの種類では、クラスターで処理されるデータはローカル ディスク上に存在するのではなく、Data Lake Storage や Azure Storage などの外部ストレージ サービスに存在します。 ノードの VM とストレージ サービス間のネットワーク帯域幅とスループットを考慮します。 通常は、VM のサイズが大きいほど、VM が使用できるネットワーク帯域幅が増加します。 詳細については、[VM サイズの概要](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)に関する記事をご覧ください。
 
 ## <a name="choose-the-cluster-scale"></a>クラスターのスケールの選択
 
@@ -89,7 +89,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 クラスターの有効期間に課金が発生します。 特定の時間にのみクラスターを起動して実行する必要がある場合は、[Azure Data Factory を使用してオンデマンド クラスターを作成](hdinsight-hadoop-create-linux-clusters-adf.md)できます。 また、クラスターのプロビジョニングと削除を実行する PowerShell スクリプトを作成し、[Azure Automation](https://azure.microsoft.com/services/automation/) を使用してそれらのスクリプトのスケジュールを設定することもできます。
 
-> [!NOTE]
+> [!NOTE]  
 > クラスターが削除されると、既定の Hive metastore も削除されます。 クラスターを次回再作成するために metastore を保持するには、Azure Database や [Apache Oozie](https://oozie.apache.org/) などの外部メタデータ ストアを使用します。
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
@@ -109,23 +109,23 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 1. ページの左下にある **[ヘルプとサポート]** をクリックします。
 1. **[新しいサポート要求]** をクリックします。
 1. **[新しいサポート要求]** ページの **[基本]** タブで、次のオプションを選択します。
-    - **問題の種類**: **サービスとサブスクリプションの制限 (クォータ)**
-    - **サブスクリプション**: 使用するサブスクリプション
-    - **クォータの種類**: **HDInsight**
+   - **問題の種類**: **サービスとサブスクリプションの制限 (クォータ)**
+   - **サブスクリプション**: 使用するサブスクリプション
+   - **クォータの種類**: **HDInsight**
     
-    ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+     ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. **[次へ]** をクリックします。
 1. **[詳細]** ページで、問題に関する説明を入力し、問題の重大度を選択し、希望する連絡方法を選択します。
 1. **[次へ: 確認と作成]** をクリックします。
 1. **[確認と作成]** タブで、**[作成]** をクリックします。
 
-> [!Note]
+> [!NOTE]  
 > プライベート リージョンで HDInsight コア クォータを増やす必要がある場合は、[ホワイト リストの要求を送信](https://aka.ms/canaryintwhitelist)してください。
 
 [サポートに連絡してクォータの引き上げを要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)できます。
 
-ただし、固定のクォータ制限もいくつかあります。たとえば、1 つの Azure サブスクリプションで使用できるコア数は最大 10,000 コアです。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager)」をご覧ください。
+ただし、固定のクォータ制限もいくつかあります。たとえば、1 つの Azure サブスクリプションで使用できるコア数は最大 10,000 コアです。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

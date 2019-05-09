@@ -1,27 +1,27 @@
 ---
 title: Azure IoT Hub の通信プロトコルとポート | Microsoft Docs
 description: 開発者ガイド - サポートされている device-to-cloud と cloud-to-device 通信の通信プロトコルと、開く必要があるポート番号について説明します。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: dobett
-ms.openlocfilehash: 3079b2414c44fc97bc8aff4b207e0943e94c7457
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584338"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59051057"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>リファレンス - 通信プロトコルの選択
 
 IoT Hub によって、デバイスはデバイス側の通信に次のプロトコルを使うことができるようになります。
 
-* [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.pdf)
+* [MQTT](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.pdf)
 * WebSocket 経由の MQTT
-* [AMQP](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
+* [AMQP](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 * AMQP over WebSocket
 * HTTPS
 
@@ -29,7 +29,7 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 
 プロトコル選択に関する高度な推奨事項には次のようなものがあります。
 
-| プロトコル | そのプロトコルを選択しなければならない場合 |
+| Protocol | そのプロトコルを選択しなければならない場合 |
 | --- | --- |
 | MQTT <br> WebSocket 経由の MQTT |同じ TLS 接続で (それぞれがデバイス独自の資格情報を有する) 複数のデバイスに接続する必要がないすべてのデバイスで使用します。 |
 | AMQP <br> WebSocket 経由の AMQP |デバイスを多重化する接続を活用するために、フィールド ゲートウェイとクラウド ゲートウェイで使用します。 |
@@ -54,7 +54,7 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 
 デバイスは、さまざまなプロトコルを使用して Azure の IoT Hub と通信できます。 通常、プロトコルの選択は、ソリューションの特定の要件によって左右されます。 次の表に、デバイスが特定のプロトコルを使用できるようにするために開く必要がある送信ポートを示します。
 
-| プロトコル | ポート |
+| Protocol | Port |
 | --- | --- |
 | MQTT |8883 |
 | WebSocket 経由の MQTT |443 |

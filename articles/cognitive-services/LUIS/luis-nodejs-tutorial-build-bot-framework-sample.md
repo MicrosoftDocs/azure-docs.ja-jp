@@ -1,22 +1,22 @@
 ---
 title: Bot - Node.js - v3
 titleSuffix: Azure Cognitive Services
-description: Bot Framework を使用して LUIS アプリケーションと統合されるボットをビルドします。
+description: Bot Framework 3.x と Azure Web アプリ ボットを使用して、LUIS アプリケーションと統合されるボットを作成します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: e73f22a2da9e8b8b3bd70f4a0231ea7932fc7a86
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 27ebe827e97c8361c7f93a125f09aa9e339a6a14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436944"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087110"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを備えた Node.js の LUIS ボット
 
@@ -38,23 +38,23 @@ Bot を作成する前に、[アプリの作成](./luis-get-started-create-app.m
 
 1. [Azure portal](https://portal.azure.com) のメニュー ブレードで、**[新しいリソースの作成]** を選択し、**[すべて表示]** を選択します。
 
-    ![新しいリソースの作成](./media/luis-tutorial-node-bot/bot-service-creation.png)
+    ![Azure portal ですべてのリソースを表示する](./media/luis-tutorial-node-bot/bot-service-creation.png)
 
 2. 検索ボックスで、**Web アプリ ボット**を検索します。 
 
-    ![新しいリソースの作成](./media/luis-tutorial-node-bot/bot-service-selection.png)
+    ![Web アプリ ボットを選択してリソース作成プロセスを開始する](./media/luis-tutorial-node-bot/bot-service-selection.png)
 
-3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** を選択します。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
-    * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
-    * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
-    * **Bot テンプレート**で、以下を選択します。
-        * **SDK v3**
-        * **Node.js**
-        * **言語の理解**
-    * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン][LUIS]です。
-    * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
+3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** を選択します。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
+   * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+   * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
+   * **Bot テンプレート**で、以下を選択します。
+       * **SDK v3**
+       * **Node.js**
+       * **言語の理解**
+   * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン][LUIS]です。
+   * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
 
-    ![[ボット サービス] ブレード](./media/luis-tutorial-node-bot/bot-service-setting-callout-template.png)
+     ![[ボット サービス] ブレード](./media/luis-tutorial-node-bot/bot-service-setting-callout-template.png)
 
 
 4. ボット サービスがデプロイされたことを確認します。
@@ -116,7 +116,7 @@ LUIS アプリ ID がない場合は、Azure へのログインに使用する�
 
 コード エディターで、`app.js` を開きます。 これには以下のコードが含まれます。
 
-```nodejs
+```javascript
 /*-----------------------------------------------------------------------------
 A simple Language Understanding (LUIS) bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
@@ -207,7 +207,7 @@ app.js の既存の意図は無視されます。 これは、そのままにし
 
 次のコードをコピーし、`app.js` に追加します。
 
-```nodejs
+```javascript
 bot.dialog('TurnOn',
     (session) => {
         session.send('You reached the TurnOn intent. You said \'%s\'.', session.message.text);
@@ -224,7 +224,7 @@ bot.dialog('TurnOn',
 
 次のコードをコピーし、`app.js` に追加します。
 
-```nodejs
+```javascript
 bot.dialog('TurnOff',
     (session) => {
         session.send('You reached the TurnOff intent. You said \'%s\'.', session.message.text);
@@ -247,7 +247,8 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 
 ## <a name="next-steps"></a>次の手順
 
-<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.--> ヘルプ、キャンセル、あいさつなど、他の意図を LUIS アプリに追加してみることができます。 その後、新しい意図のダイアログを追加し、ボットを使用してテストします。 
+<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.-->
+ヘルプ、キャンセル、あいさつなど、他の意図を LUIS アプリに追加してみることができます。 その後、新しい意図のダイアログを追加し、ボットを使用してテストします。 
 
 <!-- 
 > [!NOTE] 
@@ -258,54 +259,10 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 > [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
 
 
-[intentDialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
-
-[intentDialog_matches]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
-
-[NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/Node/basics-naturalLanguage
-
 [triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
-
-[confirmPrompt]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
-
-[waterfall]: bot-builder-nodejs-dialog-manage-conversation-flow.md#manage-conversation-flow-with-a-waterfall
-
-[session_userData]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
-
-[EntityRecognizer_findEntity]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
 
 [matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
 
-[LUISAzureDocs]: https://docs.microsoft.com/azure/cognitive-services/LUIS/Home
 
-[Dialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
-
-[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
-
-[LuisRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
-
-[LUISConcepts]: https://docs.botframework.com/node/builder/guides/understanding-natural-language/
-
-[DisambiguationSample]: https://github.com/Microsoft/BotBuilder/tree/master/Node/examples/feature-onDisambiguateRoute
-
-[IDisambiguateRouteHandler]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
-
-[RegExpRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
-
-[AlarmBot]: https://github.com/Microsoft/BotBuilder/blob/master/Node/examples/basics-naturalLanguage/app.js
-
-[LUISBotSample]: https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/intelligence-LUIS
-
-[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
-
-
-<!-- Old Links -->
-[GitHub-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
-[GitHub-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[GitHub-LUIS-Samples-node-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
-[NodeJs]: https://nodejs.org/
-[BFPortal]: https://dev.botframework.com/
-[RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
-[BotFramework]: https://docs.microsoft.com/bot-framework/
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 

@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24a12c9144535fecd23be432ee33402eb6528b28
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412027"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984343"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure で新しい Windows VM を作成するときのデプロイに関する問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -54,7 +54,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 
 **解決策**
 
-これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な [元の VHD をアップロードするために Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd)を使用します。 一般化された OS としてアップロードするには、まず sysprep を必ず実行してください。
+これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な [元の VHD をアップロードするために Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)を使用します。 一般化された OS としてアップロードするには、まず sysprep を必ず実行してください。
 
 **キャプチャ エラー:**
 
@@ -66,7 +66,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 
 これらのエラーの両方を解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](../windows/create-vm-specialized.md)。
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/マーケットプレース イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求されている VM サイズをサポートできないか、要求に対応するための使用可能な空き領域がないクラスターに固定されている場合に発生します。
 
 **原因 1:** クラスターが要求された VM サイズをサポートできない。

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: ae0ad4422c8c8ce01ed9d00d2966212d1bdb5c7f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: autoscale
+ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440239"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997261"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>自動スケールの一般的なパターンの概要
 この記事では、Azure におけるリソースのスケールの一般的なパターンについて説明します。
@@ -66,3 +66,4 @@ Web フロントエンド、およびバックエンドと通信する API 層�
 [3]: ./media/autoscale-common-scale-patterns/weekday-weekend-scale.png
 [4]: ./media/autoscale-common-scale-patterns/holidays-scale.png
 [5]: ./media/autoscale-common-scale-patterns/custom-metric-scale.png
+

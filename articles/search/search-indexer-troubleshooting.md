@@ -7,23 +7,23 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 03/01/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 7696f1628edd3b81568382fd7892a877c6f54ef7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312393"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652418"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Azure Search のインデクサーの一般的な問題のトラブルシューティング
 
 Azure Search においてデータにインデックスを付けるとき、インデクサーでいくつかの問題が発生することがあります。 エラーは次のように分類されます。
 
-* [データ ソースへの接続](#Data-Source-Connection-Errors)
-* [ドキュメントの処理](#Document-Processing-Errors)
-* [インデックスへのドキュメントの取り込み](#Index-Errors)
+* [データ ソースへの接続](#data-source-connection-errors)
+* [ドキュメントの処理](#document-processing-errors)
+* [インデックスへのドキュメントの取り込み](#index-errors)
 
 ## <a name="data-source-connection-errors"></a>データ ソースの接続エラー
 

@@ -1,22 +1,22 @@
 ---
-title: クイック スタート:Azure Storage Explorer を使用して、Azure Data Lake Storage Gen2 が有効なオブジェクト ストレージ内に BLOB を作成する
+title: 'クイック スタート:Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のデータを管理する '
 description: このクイック スタートでは、Azure Storage Explorer を使用して、Azure Data Lake Storage Gen2 アカウントでファイルシステムだけでなく、ディレクトリとファイルを作成する方法について説明します。 次に、ローカル コンピューターにファイルをダウンロードする方法と、ディレクトリ内のすべてのファイルを表示する方法について説明します。
 services: storage
 author: tamram
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: tamram
-ms.openlocfilehash: e556dbe377f5bba6cbd727ac69c3d4fb9127a2c9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6f3aa81f0fa2497db02d069e93e007b43c37beb9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385620"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250454"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>クイック スタート:Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する
+# <a name="quickstart-use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>クイック スタート:Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 アカウントのデータを管理する
 
 このクイック スタートでは、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、ディレクトリと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、ディレクトリ内のすべての BLOB を表示する方法について説明します。 また、BLOB のスナップショットを作成する方法、ディレクトリのアクセス ポリシーを管理する方法、共有アクセス署名を作成する方法についても学習します。
 

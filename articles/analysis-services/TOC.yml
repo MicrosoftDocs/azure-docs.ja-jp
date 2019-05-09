@@ -1,0 +1,168 @@
+items:
+- name: Analysis Services のドキュメント
+  href: index.md
+- name: 概要
+  items:
+  - name: Analysis Services とは
+    href: analysis-services-overview.md
+- name: クイック スタート
+  items:
+  - name: サーバーの作成 - ポータル
+    href: analysis-services-create-server.md
+  - name: サーバーの作成 - PowerShell
+    href: analysis-services-create-powershell.md
+  - name: サーバーのファイアウォールの構成 - ポータル
+    href: analysis-services-qs-firewall.md
+- name: チュートリアル
+  items:
+  - name: 1 - ポータルからサンプル モデルを追加する
+    href: analysis-services-create-sample-model.md
+  - name: 2 - サーバー管理者とユーザー ロールを構成する
+    href: tutorials/analysis-services-tutorial-roles.md
+  - name: 3 - Power BI Desktop を使用して接続する
+    href: tutorials/analysis-services-tutorial-pbid.md
+- name: 概念
+  items:
+  - name: 認証とユーザーのアクセス許可
+    href: analysis-services-manage-users.md
+  - name: サービス プリンシパルによる自動化
+    href: analysis-services-service-principal.md
+  - name: クライアント ライブラリ
+    href: analysis-services-data-providers.md
+  - name: 互換性レベル
+    href: analysis-services-compat-level.md
+  - name: オンプレミス データ ソースへの接続
+    href: analysis-services-gateway.md
+  - name: サーバーへの接続
+    href: analysis-services-connect.md
+  - name: 高可用性
+    href: analysis-services-bcdr.md
+  - name: サポートされるデータ ソース
+    href: analysis-services-datasource.md
+- name: 操作方法
+  items:
+  - name: サーバー
+    items:
+    - name: バックアップと復元
+      href: analysis-services-backup.md
+    - name: サーバー名の別名を構成する
+      href: analysis-services-server-alias.md
+    - name: スケールアウトを構成する
+      href: analysis-services-scale-out.md
+    - name: オンプレミスのデータ ゲートウェイをインストールして構成する
+      href: analysis-services-gateway-install.md
+    - name: Azure 仮想ネットワーク上のデータソースに対してゲートウェイを使用する
+      href: analysis-services-vnet-gateway.md
+    - name: サーバーを管理する
+      href: analysis-services-manage.md
+    - name: サーバー メトリックの監視
+      href: analysis-services-monitor.md
+    - name: 診断ログのセットアップ
+      href: analysis-services-logging.md
+    - name: サービス プリンシパルを作成する - Azure portal
+      href: ../active-directory/develop/howto-create-service-principal-portal.md
+    - name: サービス プリンシパルを作成する - PowerShell
+      href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
+    - name: サーバー管理者ロールにサービス プリンシパルを追加する
+      href: analysis-services-addservprinc-admins.md
+  - name: モデル
+    items:
+    - name: Visual Studio からのデプロイ (SSDT)
+      href: analysis-services-deploy.md
+    - name: REST API を使用した更新
+      href: analysis-services-async-refresh.md
+    - name: Visual Studio でのデータ モデリング - Adventure Works (1400) チュートリアル
+      href: tutorials/aas-adventure-works-tutorial.md
+      items:
+      - name: 1 - 表形式モデル プロジェクトを作成する
+        href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
+      - name: 2 - データを取得する
+        href: tutorials/aas-lesson-2-get-data.md
+      - name: 3 - 日付テーブルとしてマークする
+        href: tutorials/aas-lesson-3-mark-as-date-table.md
+      - name: 4 - リレーションシップを作成する
+        href: tutorials/aas-lesson-4-create-relationships.md
+      - name: 5 - 計算列を作成する
+        href: tutorials/aas-lesson-5-create-calculated-columns.md
+      - name: 6 - メジャーを作成する
+        href: tutorials/aas-lesson-6-create-measures.md
+      - name: 7 - 主要業績評価指標を作成する
+        href: tutorials/aas-lesson-7-create-key-performance-indicators.md
+      - name: 8 - パースペクティブを作成する
+        href: tutorials/aas-lesson-8-create-perspectives.md
+      - name: 9 - 階層を作成する
+        href: tutorials/aas-lesson-9-create-hierarchies.md
+      - name: 10 - パーティションを作成する
+        href: tutorials/aas-lesson-10-create-partitions.md
+      - name: 11 - ロールを作成する
+        href: tutorials/aas-lesson-11-create-roles.md
+      - name: 12 - Excel で分析する
+        href: tutorials/aas-lesson-12-analyze-in-excel.md
+      - name: 13 - デプロイする
+        href: tutorials/aas-lesson-13-deploy.md
+      - name: 補足のレッスン - 詳細行
+        href: tutorials/aas-supplemental-lesson-detail-rows.md
+      - name: 補足のレッスン - 動的なセキュリティ
+        href: tutorials/aas-supplemental-lesson-dynamic-security.md
+      - name: 補足のレッスン - 不規則階層
+        href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
+  - name: セキュリティ
+    items:
+    - name: データベース ユーザーの管理
+      href: analysis-services-database-users.md
+    - name: サーバー管理者の管理
+      href: analysis-services-server-admins.md
+  - name: 接続
+    items:
+    - name: Excel を使用した接続
+      href: analysis-services-connect-excel.md
+    - name: Power BI を使用した接続
+      href: analysis-services-connect-pbi.md
+    - name: .odc ファイルの作成
+      href: analysis-services-odc.md
+- name: リファレンス
+  items:
+  - name: PowerShell
+    href: analysis-services-powershell.md
+  - name: REST
+    href: /rest/api/analysisservices
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.analysisservices/servers
+  - name: DAX
+    href: https://msdn.microsoft.com/library/gg413422.aspx
+  - name: Power Query M
+    href: https://msdn.microsoft.com/library/mt211003.aspx
+  - name: Tabular Model Scripting Language (TMSL)
+    href: https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference
+  - name: 表形式オブジェクト モデル (TOM)
+    href: https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo
+  - name: リソースとオブジェクトの制限
+    href: analysis-services-capacity-limits.md
+- name: リソース
+  items:
+  - name: サンプル
+    href: analysis-services-samples.md
+  - name: Analysis Services チーム ブログ
+    href: https://blogs.msdn.microsoft.com/analysisservices/
+  - name: Azure Analysis Services フォーラム
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
+  - name: Azure の状態
+    href: https://azure.microsoft.com/status/
+  - name: フィードバック
+    href: https://feedback.azure.com/forums/556165-azure-analysis-services
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/analysis-services/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-analysis-services
+  - name: ビデオ
+    href: https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest
+ms.openlocfilehash: 4d3a592d4d0d9bd0a75dcd1cc76deb2a273bdf09
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525264"

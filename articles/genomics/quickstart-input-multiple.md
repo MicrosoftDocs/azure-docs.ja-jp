@@ -1,27 +1,28 @@
 ---
-title: 'クイック スタート: 複数の入力を使用するワークフローを送信する - Microsoft Genomics'
+title: 複数の入力を使用するワークフローを送信する - Microsoft Genomics
 titleSuffix: Azure
-description: このクイックスタートでは、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
+description: この記事では、入力ファイルが、同じサンプルに属する複数の FASTQ ファイルまたは BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。 msgen クライアントが既にインストールされていて、そのサービスを通じてサンプル データが正常に実行されているとします。
 services: genomics
+ms.service: genomics
 author: grhuynh
 manager: cgronlund
 ms.author: grhuynh
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 1007d81a73ce9f183f997354188e534274b2fe95
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 399b1ed735ce1b7a3fca1d27155863f6bfa18776
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730364"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791361"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>同じサンプルに属する複数の入力を使用するワークフローを送信する
 
-このクイックスタートでは、入力ファイルが**同じサンプルに属する**複数の FASTQ ファイルまたは BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。 たとえば DNA 解析装置上の複数のレーンで**同じサンプル**を実行した場合、レーンごとに一対の FASTQ ファイルが装置から出力される可能性があります。 これらの FASTQ ファイルを連結してから配列およびバリアントの呼び出しを行う代わりに、これらすべての入力を `msgen` クライアントに直接送信することができます。 この場合、`msgen` クライアントからの出力は、.bam、.bai、.vcf を含んだ**単一のファイル群**となることが考えられます。 
+この記事では、入力ファイルが、**同じサンプルに属する**複数の FASTQ ファイルまたは BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。 たとえば DNA 解析装置上の複数のレーンで**同じサンプル**を実行した場合、レーンごとに一対の FASTQ ファイルが装置から出力される可能性があります。 これらの FASTQ ファイルを連結してから配列およびバリアントの呼び出しを行う代わりに、これらすべての入力を `msgen` クライアントに直接送信することができます。 この場合、`msgen` クライアントからの出力は、.bam、.bai、.vcf を含んだ**単一のファイル群**となることが考えられます。 
 
 ただし、FASTQ ファイルと BAM ファイルを同じ送信に混在させることは**できません**。 また、複数の個体から得た複数の FASTQ (または BAM) ファイルを送信することは**できません**。 
 
-この記事では、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローの送信に成功した場合、このクイックスタートを進める準備ができています。 
+この記事では、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローを正常に送信したら、この記事を読み進める準備は完了です。 
 
 
 ## <a name="multiple-bam-files"></a>複数の BAM ファイル

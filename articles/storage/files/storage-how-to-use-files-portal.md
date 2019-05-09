@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: f295245cc14000e48cb3db55dc291edf02bb660e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: files
+ms.openlocfilehash: ac78510a3f736d9d5a3f2aafcc1f77ef20e6d81a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634390"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467767"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure ファイル共有の作成および管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows、Linux、macOS でマウントできます。 このガイドでは、[Azure Portal](https://portal.azure.com/) を使用して Azure ファイル共有を操作する方法の基本について説明します。

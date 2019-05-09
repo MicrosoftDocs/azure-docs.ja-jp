@@ -1,137 +1,136 @@
 ---
-title: VMware VM と物理サーバーのディザスター リカバリー時に Azure からオンプレミス サイトへの VM を再保護する | Microsoft Docs
-description: VMware VM と物理サーバーのディザスター リカバリー時の Azure へのフェールオーバー後に、Azure からオンプレミス サイトにフェールバックする方法について説明します。
-author: rajani-janaki-ram
-manager: gauravd
+title: Reprotect VMs from Azure to an on-premises site during disaster recovery of VMware VMs and physical servers | Microsoft Docs
+description: After failover to Azure during disaster recovery of VMware VMs and physical servers, learn how to fail back from Azure to the on-premises site.
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: e965848b0c3c009444762dafdf42acc080b6915e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 3/12/2019
+ms.author: mayg
+ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834963"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771819"
 ---
-# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Azure へのフェールオーバー後に、マシンを再保護し、オンプレミス サイトにフェールバックする
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Reprotect and fail back machines to an on-premises site after failover to Azure
 
-オンプレミスの VMware VM または物理サーバーを Azure に[フェールオーバーした](site-recovery-failover.md)後、オンプレミス サイトにフェールバックする最初の手順は、フェールオーバー時に作成された Azure VM を再保護することです。 この記事では、その方法について説明します。 
+After [failover](site-recovery-failover.md) of on-premises VMware VMs or physical servers to Azure, the first step in failing back to your on-premises site is to reprotect the Azure VMs that were created during failover. This article describes how to do this. 
 
-概要を簡単に把握するために、Azure からオンプレミス サイトへのフェールオーバー方法に関する次の動画をご覧ください。<br /><br />
+For a quick overview, watch the following video about how to fail over from Azure to an on-premises site.<br /><br />
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="before-you-begin"></a>Before you begin
 
-テンプレートを使用して仮想マシンを作成する場合は、各仮想マシンのディスクに独自の UUID が割り当てられていることを確認してください。 オンプレミスの仮想マシンとマスター ターゲットが同じテンプレートから作成されたためにその両方の UUID が衝突すると、再保護は失敗します。 同じテンプレートから作成されていない別のマスター ターゲットをデプロイします。 次の情報をメモしておきます。
-- 代替の vCenter にフェールバックしようとしている場合は、新しい vCenter とマスター ターゲット サーバーが検出されることを確認してください。 典型的な症状は、データストアにアクセスできないか、データストアが **[再保護]** ダイアログ ボックスに表示されないことです。
-- オンプレミスにレプリケートするには、フェールバック ポリシーが必要です。 このポリシーは、順方向のポリシーを作成したときに自動的に作成されます。 次の情報をメモしておきます。
-    - このポリシーは、作成時に構成サーバーに自動的に関連付けられます。
-    - このポリシーは編集できません。
-    - ポリシーの設定値は、RPO しきい値 = 15 分、復旧ポイントのリテンション期間 = 24 時間、アプリケーションの整合性スナップショットの取得頻度 = 60 分です。
-- 再保護とフェールバック中には、オンプレミスの構成サーバーが実行中で接続状態である必要があります。
-- vCenter サーバーがフェールバック先の仮想マシンを管理している場合は、vCenter サーバー上の VM の検出に[必要なアクセス許可](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)があることを確認してください。
-- 再保護する前に、マスター ターゲット サーバー上のスナップショットを削除します。 スナップショットがオンプレミスのマスター ターゲットまたは仮想マシン上に存在する場合、再保護は失敗します。 仮想マシン上のスナップショットは、再保護ジョブ中に自動的にマージされます。
-- レプリケーション グループのすべての仮想マシンは、同じオペレーティング システムの種類 (すべて Windows、またはすべて Linux) である必要があります。 現在、異種オペレーティング システムが混在するレプリケーション グループは、再保護およびオンプレミスへのフェールバックではサポートされていません。 これは、マスター ターゲットが仮想マシンと同じオペレーティング システムである必要があるためです。 レプリケーション グループのすべての仮想マシンには、同じマスター ターゲットが必要です。 
-- フェールバックするときは、構成サーバーがオンプレミスに必要です。 フェールバック中、仮想マシンが構成サーバー データベースに存在している必要があります。 それ以外の場合、フェールバックは失敗します。 必ず、構成サーバーを定期的にバックアップするようスケジュールを設定します。 障害が発生した場合は、フェールバックが機能するように、同じ IP アドレスを持つサーバーを復元します。
-- 再保護とフェールバックには、データをレプリケートするためのサイト間 (S2S) VPN が必要です。 Azure 内のフェールオーバーされた仮想マシンがオンプレミスの構成サーバーに到達 (ping を発行) できるようにネットワークを提供します。 フェールオーバーされた仮想マシンの Azure ネットワークにプロセス サーバーをデプロイすることもできます。 このプロセス サーバーも、オンプレミスの構成サーバーと通信できる必要があります。
-- フェールオーバーとフェールバックのために以下のポートを開いておく必要があります。
+If you used a template to create your virtual machines, ensure that each virtual machine has its own UUID for the disks. If the on-premises virtual machine's UUID clashes with the UUID of the master target because both were created from the same template, reprotection fails. Deploy another master target that wasn't created from the same template. Note the following information:
+- If you are trying to fail back to an alternate vCenter, make sure that your new vCenter and the master target server are discovered. A typical symptom is that the datastores aren't accessible or aren't visible in the **Reprotect** dialog box.
+- To replicate back to on-premises, you need a failback policy. This policy is automatically created when you create a forward direction policy. Note the following information:
+    - This policy is auto associated with the configuration server during creation.
+    - This policy isn't editable.
+    - The set values of the policy are (RPO Threshold = 15 Mins, Recovery Point Retention = 24 Hours, App Consistency Snapshot Frequency = 60 Mins).
+- During reprotection and failback, the on-premises configuration server must be running and connected.
+- If a vCenter server manages the virtual machines to which you'll fail back, make sure that you have the [required permissions](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) for discovery of VMs on vCenter servers.
+- Delete snapshots on the master target server before you reprotect. If snapshots are present on the on-premises master target or on the virtual machine, reprotection fails. The snapshots on the virtual machine are automatically merged during a reprotect job.
+- All virtual machines of a replication group must be of the same operating system type (either all Windows or all Linux). A replication group with mixed operating systems currently isn't supported for reprotect and failback to on-premises. This is because the master target must be of the same operating system as the virtual machine. All the virtual machines of a replication group must have the same master target. 
+- A configuration server is required on-premises when you fail back. During failback, the virtual machine must exist in the configuration server database. Otherwise, failback is unsuccessful. Make sure that you make regularly scheduled backups of your configuration server. If there's a disaster, restore the server with the same IP address so that failback works.
+- Reprotection and failback require a site-to-site (S2S) VPN to replicate data. Provide the network so that the failed-over virtual machines in Azure can reach (ping) the on-premises configuration server. You also might want to deploy a process server in the Azure network of the failed-over virtual machine. This process server must also be able to communicate with the on-premises configuration server.
+- Make sure that you open the following ports for failover and failback:
 
-    ![フェールオーバーおよびフェールバック用のポート](./media/vmware-azure-reprotect/failover-failback.png)
+    ![Ports for failover and failback](./media/vmware-azure-reprotect/failover-failback.png)
 
-- [ポートと URL のホワイトリストの前提条件](vmware-azure-deploy-configuration-server.md#prerequisites)をすべて確認してください。
+- Read all the [prerequisites for ports and URL whitelisting](vmware-azure-deploy-configuration-server.md#prerequisites).
 
-## <a name="deploy-a-process-server-in-azure"></a>Azure でプロセス サーバーをデプロイする
+## <a name="deploy-a-process-server-in-azure"></a>Deploy a process server in Azure
 
-オンプレミス サイトにフェールバックする前に、Azure でプロセス サーバーが必要になることがあります。
-- プロセス サーバーは、Azure の保護された仮想マシンからデータを受け取り、オンプレミス サイトにデータを送信します。
-- プロセス サーバーと保護された仮想マシンとの間には、待ち時間が短いネットワークが必要です。 プロセス サーバーが Azure に必要かどうかを判断する場合、一般的に待機時間を考慮する必要があります。
-    - Azure ExpressRoute 接続が設定されている場合は、仮想マシンとプロセス サーバーの間の待ち時間が短いため、オンプレミスのプロセス サーバーを使用してデータを送信できます。
-    - ただし、S2S VPN しか使用していない場合は、Azure にプロセス サーバーをデプロイすることをお勧めします。
-    - フェールバック中は Azure ベースのプロセス サーバーを使用することをお勧めします。 レプリケーションのパフォーマンスは、プロセス サーバーが、レプリケートしている仮想マシン (Azure 内のフェールオーバーされたマシン) に近いほど高くなります。 概念実証の場合、オンプレミスのプロセス サーバーと、プライベート ピアリングを使用した ExpressRoute を利用できます。
+You might need a process server in Azure before you fail back to your on-premises site:
+- The process server receives data from the protected virtual machine in Azure, and then sends data to the on-premises site.
+- A low-latency network is required between the process server and the protected virtual machine. In general, you need to consider latency when deciding whether you need a process server in Azure:
+    - If you have an Azure ExpressRoute connection set up, you can use an on-premises process server to send data because the latency between the virtual machine and the process server is low.
+    - However, if you have only a S2S VPN, we recommend deploying the process server in Azure.
+    - We recommend using an Azure-based process server during failback. The replication performance is higher if the process server is closer to the replicating virtual machine (the failed-over machine in Azure). For a proof of concept, you can use the on-premises process server and ExpressRoute with private peering.
 
-Azure でプロセス サーバーをデプロイするには:
+To deploy a process server in Azure:
 
-1. Azure にプロセス サーバーをデプロイする必要がある場合は、「[フェールバックのために Azure でプロセス サーバーを設定する](vmware-azure-set-up-process-server-azure.md)」を参照してください。
-2. Azure VM はレプリケーション データをプロセス サーバーに送信します。 Azure VM がプロセス サーバーに到達できるようにネットワークを構成します。
-3. Azure からオンプレミスへのレプリケーションは、S2S VPN、または ExpressRoute ネットワークのプライベート ピアリングを介してのみ実行できることに注意してください。 そのネットワーク チャネルで十分な帯域幅を使用できることを確認してください。
+1. If you need to deploy a process server in Azure, see [Set up a process server in Azure for failback](vmware-azure-set-up-process-server-azure.md).
+2. The Azure VMs send replication data to the process server. Configure networks so that the Azure VMs can reach the process server.
+3. Remember that replication from Azure to on-premises can happen only over the S2S VPN or over the private peering of your ExpressRoute network. Ensure that enough bandwidth is available over that network channel.
 
-## <a name="deploy-a-separate-master-target-server"></a>別のマスター ターゲット サーバーをデプロイする
+## <a name="deploy-a-separate-master-target-server"></a>Deploy a separate master target server
 
-マスター ターゲット サーバーは、フェールバック データを受信します。 既定で、マスター ターゲット サーバーは、オンプレミスの構成サーバー上で実行されます。 ただし、フェールバック トラフィックの量によっては、フェールバック用に別のマスター ターゲット サーバーを作成する必要があります。 作成手順は次のとおりです。
+The master target server receives failback data. By default, the master target server runs on the on-premises configuration server. However, depending on the volume of failed-back traffic, you might need to create a separate master target server for failback. Here's how to create one:
 
-* Linux VM のフェールバック用に [Linux マスター ターゲット サーバーを作成](vmware-azure-install-linux-master-target.md)します。 これは必須です。
-* 必要に応じて、Windows VM のフェールバック用に別のマスター ターゲット サーバーを作成します。 この場合、Unified Setup を再度実行し、マスター ターゲット サーバーの作成を選択します。 [詳細情報](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers)。
+* [Create a Linux master target server](vmware-azure-install-linux-master-target.md) for failback of Linux VMs. This is required. Note that, Master target server on LVM is not supported.
+* Optionally, create a separate master target server for Windows VM failback. To do this, run Unified Setup again, and select to create a master target server. [Learn more](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
 
-マスター ターゲット サーバーを作成したら、次のタスクを実行します。
+After you create a master target server, do the following tasks:
 
-- 仮想マシンが vCenter サーバー上でオンプレミスに存在する場合、マスター ターゲット サーバーにはオンプレミスの仮想マシンの仮想マシン ディスク (VMDK) ファイルへのアクセス権が必要です。 アクセス権は、レプリケートされたデータを仮想マシンのディスクに書き込むために必要です。 オンプレミスの仮想マシンのデータ ストアが、読み取りと書き込みアクセス権のあるマスター ターゲットのホストにマウントされていることを確認します。
-- 仮想マシンが vCenter サーバー上でオンプレミスに存在しない場合、Site Recovery サービスは、再保護中に新しい仮想マシンを作成する必要があります。 この仮想マシンは、マスター ターゲットを作成する ESX ホスト上に作成されます。 そのため、希望するホストにフェールバック仮想マシンが作成されるように、ESX ホストは慎重に選択します。
-- マスター ターゲット サーバーに Storage vMotion を使用することはできません。 マスター ターゲット サーバーに Storage vMotion を使用すると、フェールバックが失敗する可能性があります。 ディスクが使用できないため、この仮想マシンは起動できません。 この問題の発生を防ぐには、vMotion の一覧からマスター ターゲット サーバーを除外します。
-- マスター ターゲットで再保護の後に Storage vMotion タスクが実行される場合、そのマスター ターゲットに接続されている保護された仮想マシン ディスクは vMotion タスクのターゲットに移行されます。 この後にフェールバックしようとすると、ディスクが見つからないため、ディスクの取り外しは失敗します。 その後、ストレージ アカウントでディスクを見つけることは困難になります。 手動でディスクを見つけ、それを仮想マシンに接続する必要があります。 その後に、オンプレミスの仮想マシンを起動できます。
-- 既存の Windows マスター ターゲット サーバーにリテンション ドライブを追加します。 新しいディスクを追加し、ドライブをフォーマットします。 リテンション ドライブは、仮想マシンがオンプレミス サイトにレプリケートされたときの特定の時点で停止するために使用します。 リテンション ドライブのいくつかの条件を次に示します。 これらの条件を満たさない場合、ドライブはマスター ターゲット サーバーに表示されません。
-    - ボリュームが他のどの目的 (レプリケーションのターゲットなど) にも使用されていない。
-    - ボリュームがロック モードではない。
-    - ボリュームがキャッシュ ボリュームではない。 そのボリュームにマスター ターゲット インストールが存在してはいけません。 プロセス サーバーとマスター ターゲットのカスタム インストール ボリュームは、リテンション ボリュームになる資格がありません。 プロセス サーバーとマスター ターゲットがボリュームにインストールされている場合、そのボリュームがマスター ターゲットのキャッシュ ボリュームになります。
-    - ボリュームのファイル システムの種類が FAT および FAT32 ではない。
-    - ボリュームの容量がゼロ以外である。
-    - Windows の既定のリテンション ボリュームは R ボリュームです。
-    - Linux の既定のリテンション ボリュームは /mnt/retention/ です。
-- 既存のプロセス サーバー/構成サーバー マシン、スケールまたはプロセス サーバー/マスター ターゲット サーバー マシンを使用している場合は、新しいドライブを追加する必要があります。 新しいドライブは、上記の要件を満たしている必要があります。 リテンション ドライブが存在しない場合、そのドライブは、ポータル上の選択ドロップダウン リストに表示されません。 オンプレミスのマスター ターゲットにドライブを追加した後、そのドライブがポータル上の選択リストに表示されるまでに最大 15 分かかります。 15 分経ってもドライブが表示されない場合は、構成サーバーを更新することもできます。
-- マスター ターゲット サーバーに VMware ツールまたは open-vm-tools をインストールします。 ツールがない場合、マスター ターゲットの ESXi ホスト上のデータストアを検出できません。
-- VMware でマスター ターゲット仮想マシンの構成パラメーターに `disk.EnableUUID=true` を設定します。 この行が存在しない場合は追加してください。 この設定は、一貫性のある UUID を VMDK に提供することで適切なマウントが実行されるようにするために必要です。
-- マスター ターゲットが作成される ESX ホストには、少なくとも 1 つの仮想マシン ファイル システム (VMFS) データストアが接続されている必要があります。 VMFS データストアが接続されていない場合、再保護ページ上の**データストア**の入力が空になり、処理を続行できません。
-- マスター ターゲット サーバーのディスクにはスナップショットが存在してはいけません。 スナップショットが存在する場合、再保護およびフェールバックは失敗します。
-- 準仮想化 SCSI コントローラーをマスター ターゲットに割り当てることはできません。 LSI Logic コントローラー以外は使用できません。 LSI Logic コントローラがない場合、再保護は失敗します。
-- どのインスタンスでもマスター ターゲットに接続できるディスクの最大数は 60 台です。 オンプレミスのマスター ターゲットに再保護される仮想マシンのディスクの合計数が 60 を超えると、マスター ターゲットへの再保護が失敗するようになります。 マスター ターゲットに十分な数のディスク スロットがあることを確認するか、マスター ターゲット サーバーを追加デプロイしてください。
+- If the virtual machine is present on-premises on the vCenter server, the master target server needs access to the on-premises virtual machine's Virtual Machine Disk (VMDK) file. Access is required to write the replicated data to the virtual machine's disks. Ensure that the on-premises virtual machine's datastore is mounted on the master target's host with read/write access.
+- If the virtual machine isn't present on-premises on the vCenter server, the Site Recovery service needs to create a new virtual machine during reprotection. This virtual machine is created on the ESX host on which you create the master target. Choose the ESX host carefully, so that the failback virtual machine is created on the host that you want.
+- You can't use Storage vMotion for the master target server. Using Storage vMotion for the master target server might cause the failback to fail. The virtual machine can't start because the disks aren't available to it. To prevent this from occurring, exclude the master target servers from your vMotion list.
+- If a master target undergoes a Storage vMotion task after reprotection, the protected virtual machine disks that are attached to the master target migrate to the target of the vMotion task. If you try to fail back after this, detachment of the disk fails because the disks are not found. It then becomes hard to find the disks in your storage accounts. You need to find them manually and attach them to the virtual machine. After that, the on-premises virtual machine can be booted.
+- Add a retention drive to your existing Windows master target server. Add a new disk and format the drive. The retention drive is used to stop the points in time when the virtual machine replicates back to the on-premises site. Following are some criteria of a retention drive. If these criteria aren't met, the drive isn't listed for the master target server:
+    - The volume isn't used for any other purpose, such as a target of replication.
+    - The volume isn't in lock mode.
+    - The volume isn't a cache volume. The master target installation can't exist on that volume. The custom installation volume for the process server and master target isn't eligible for a retention volume. When the process server and master target are installed on a volume, the volume is a cache volume of the master target.
+    - The file system type of the volume isn't FAT or FAT32.
+    - The volume capacity is nonzero.
+    - The default retention volume for Windows is the R volume.
+    - The default retention volume for Linux is /mnt/retention.
+- You must add a new drive if you're using an existing process server/configuration server machine or a scale or process server/master target server machine. The new drive must meet the preceding requirements. If the retention drive isn't present, it doesn't appear in the selection drop-down list on the portal. After you add a drive to the on-premises master target, it takes up to 15 minutes for the drive to appear in the selection on the portal. You can also refresh the configuration server if the drive doesn't appear after 15 minutes.
+- Install VMware tools or open-vm-tools on the master target server. Without the tools, the datastores on the master target's ESXi host can't be detected.
+- Set the `disk.EnableUUID=true` setting in the configuration parameters of the master target virtual machine in VMware. If this row doesn't exist, add it. This setting is required to provide a consistent UUID to the VMDK so that it mounts correctly.
+- The ESX host on which the master target is created must have at least one virtual machine file system (VMFS) datastore attached to it. If no VMFS datastores are attached, the **Datastore** input on the reprotect page is empty and you can't proceed.
+- The master target server can't have snapshots on the disks. If there are snapshots, reprotection and failback fail.
+- The master target can't have a Paravirtual SCSI controller. The controller can only be an LSI Logic controller. Without an LSI Logic controller, reprotection fails.
+- For any instance, the master target can have at most 60 disks attached to it. If the number of virtual machines being reprotected to the on-premises master target has more than a total number of 60 disks, reprotects to the master target begin to fail. Ensure that you have enough master target disk slots, or deploy additional master target servers.
     
 
-## <a name="enable-reprotection"></a>再保護を有効にする
+## <a name="enable-reprotection"></a>Enable reprotection
 
-Azure 内の仮想マシンが起動した後、エージェントが構成サーバーに再度登録されるまでにある程度の時間 (最大 15 分) かかります。 この間は再保護を実行できないため、エージェントがインストールされていないというエラー メッセージが表示されます。 このような場合は、数分待ってから再保護を再試行してください。
-
-
-1. **[コンテナー]** > **[レプリケートされたアイテム]** の順に選択します。 フェールオーバーされた仮想マシンを右クリックし、**[再保護]** を選択します。 または、コマンド ボタンからマシンを選択し、**[再保護]** を選択します。
-2. 保護の方向として **[Azure からオンプレミスへ]** が選択されていることを確認します。
-3. **[マスター ターゲット サーバー]** と **[プロセス サーバー]** で、オンプレミスのマスター ターゲット サーバーとプロセス サーバーを選択します。  
-4. **[Datastore] \(データストア)** では、オンプレミスのディスクの復旧先のデータストアを選択します。 このオプションは、オンプレミスの仮想マシンを削除し、新しいディスクを作成する必要がある場合に使用します。 ディスクが既に存在する場合、このオプションは無視されます。 それでも値は指定しておく必要があります。
-5. リテンション ドライブを選択します。
-6. フェールバック ポリシーは自動的に選択されます。
-7. **[OK]** を選択して再保護を開始します。 仮想マシンを Azure からオンプレミス サイトにレプリケートするジョブが開始されます。 進行状況は **[ジョブ]** タブで追跡できます。再保護が成功すると、仮想マシンは保護された状態になります。
-
-次の情報をメモしておきます。
-- 代わりの場所に復旧する (オンプレミスの仮想マシンが削除されている) 場合は、マスター ターゲット サーバー用に構成されているリテンション ドライブとデータストアを選択します。 オンプレミス サイトにフェールバックした場合、フェールバック保護計画の VMware 仮想マシンはマスター ターゲット サーバーと同じデータストアを使用します。 その後、新しい仮想マシンが vCenter に作成されます。
-- Azure 上の仮想マシンを既存のオンプレミスの仮想マシン復旧する場合は、マスター ターゲット サーバーの ESXi ホストに対する読み取り/書き込みアクセス権を持つオンプレミスの仮想マシンのデータストアをマウントします。
-
-    ![[再保護] ダイアログ ボックス](./media/vmware-azure-reprotect/reprotectinputs.png)
-
-- また、復旧計画のレベルで再保護を実行することもできます。 レプリケーション グループは、復旧計画を使用してのみ再保護できます。 復旧計画を使用して再保護する場合は、すべての保護されたマシンの値を指定する必要があります。
-- レプリケーション グループを再保護するには、同じマスター ターゲット サーバーを使用します。 異なるマスター ターゲット サーバーを使用してレプリケーション グループを再保護すると、サーバーは共通の時点を提供できません。
-- 再保護の間、オンプレミスの仮想マシンは無効になります。 これは、レプリケーション中のデータの整合性を確保するのに役立ちます。 再保護が完了した後、仮想マシンを有効にしないでください。
+After a virtual machine boots in Azure, it takes some time for the agent to register back to the configuration server (up to 15 minutes). During this time, you won't be able to reprotect and an error message indicates that the agent isn't installed. If this happens, wait for a few minutes, and then try reprotection again:
 
 
+1. Select **Vault** > **Replicated items**. Right-click the virtual machine that failed over, and then select **Re-Protect**. Or, from the command buttons, select the machine, and then select **Re-Protect**.
+2. Verify that the **Azure to On-premises** direction of protection is selected.
+3. In **Master Target Server** and **Process Server**, select the on-premises master target server and the process server.  
+4. For **Datastore**, select the datastore to which you want to recover the disks on-premises. This option is used when the on-premises virtual machine is deleted, and you need to create new disks. This option is ignored if the disks already exist. You still need to specify a value.
+5. Select the retention drive.
+6. The failback policy is automatically selected.
+7. Select **OK** to begin reprotection. A job begins to replicate the virtual machine from Azure to the on-premises site. You can track the progress on the **Jobs** tab. When the reprotection succeeds, the virtual machine enters a protected state.
 
-## <a name="common-issues"></a>一般的な問題
+Note the following information:
+- If you want to recover to an alternate location (when the on-premises virtual machine is deleted), select the retention drive and datastore that are configured for the master target server. When you fail back to the on-premises site, the VMware virtual machines in the failback protection plan use the same datastore as the master target server. A new virtual machine is then created in vCenter.
+- If you want to recover the virtual machine on Azure to an existing on-premises virtual machine, mount the on-premises virtual machine's datastores with read/write access on the master target server's ESXi host.
 
-- 現在、Site Recovery では、VMFS または vSAN データストアへのフェールバックのみをサポートしています。 NFS データストアはサポートしていません。 この制限のために、再保護画面上のデータストア選択の入力は NFS データストアの場合は空になるか、vSAN データストアが表示されますが、ジョブの実行中に失敗します。 フェールバックする予定がある場合は、VMFS データストアをオンプレミスに作成し、それにフェールバックできます。 このフェールバックによって、VMDK の完全なダウンロードが実行されます。
-- 読み取り専用ユーザー vCenter の検出を実行し、仮想マシンを保護すると、適切に保護され、フェールオーバーが機能します。 再保護中は、データストアが検出できないため、フェールオーバーは失敗します。 再保護中はデータストアが一覧表示されないという現象が発生します。 この問題を解決するには、アクセス許可が割り当てられている適切なアカウントを使用して vCenter 資格情報を更新し、ジョブを再試行します。 
-- Linux 仮想マシンをフェールバックし、それをオンプレミスで実行すると、ネットワーク マネージャー パッケージがマシンからアンインストールされていることを確認できます。 このアンインストールは、Azure で仮想マシンが復旧されるときに、ネットワーク マネージャー パッケージが削除されるために発生します。
-- Linux 仮想マシンが静的 IP アドレスで構成されているときに Azure にフェールオーバーされると、IP アドレスは DHCP から取得されます。 オンプレミスにフェールオーバーすると、仮想マシンは、引き続き DHCP を使用して IP アドレスを取得します。 必要であれば、手動でマシンにサインインし、IP アドレスを静的アドレスに設定し直します。 Windows 仮想マシンは、同じ静的 IP アドレスを再度取得できます。
-- ESXi 5.5 Free エディションまたは vSphere 6 Hypervisor Free エディションを使用すると、フェールオーバーは成功しますが、フェールバックが失敗します。 フェールバックを有効にするには、いずれかのプログラムの評価ライセンスにアップグレードしてください。
-- プロセス サーバーから構成サーバーにアクセスできない場合は、Telnet を使用して、構成サーバーのポート 443 への接続を確認します。 プロセス サーバーから構成サーバーに対して ping を試すこともできます。 プロセス サーバーも、構成サーバーに接続されている場合、ハートビートを送信します。
-- 物理オンプレミス サーバーとして保護されている Windows Server 2008 R2 SP1 サーバーは、Azure からオンプレミス サイトにフェールバックすることができません。
-- 次のような状況ではフェールバックできません。
-    - マシンを Azure に移行した。 [詳細情報](migrate-overview.md#what-do-we-mean-by-migration)。
-    - 別のリソース グループに VM を移動した。
-    - Azure VM を削除した。
-    - VM の保護を無効にした。
-    - 手動で Azure に VM を作成した。 マシンは、最初にオンプレミスで保護されていて、再保護の前に Azure にフェールオーバーされたものでなければなりません。
-    - ESXi ホストにのみ、フェールバックすることができます。 VMware VM または物理サーバーを Hyper-V ホスト、物理マシン、または VMware ワークステーションにフェールバックすることはできません。
+    ![Reprotect dialog box](./media/vmware-azure-reprotect/reprotectinputs.png)
+
+- You can also reprotect at the level of a recovery plan. A replication group can be reprotected only through a recovery plan. When you reprotect by using a recovery plan, you must provide the values for every protected machine.
+- Use the same master target server to reprotect a replication group. If you use a different master target server to reprotect a replication group, the server can't provide a common point in time.
+- The on-premises virtual machine is turned off during reprotection. This helps ensure data consistency during replication. Don't turn on the virtual machine after reprotection finishes.
 
 
-## <a name="next-steps"></a>次の手順
 
-仮想マシンが保護された状態に入ったら、[フェールバックを開始](vmware-azure-failback.md)できます。 フェールバックによって Azure の仮想マシンがシャットダウンされ、オンプレミスの仮想マシンが起動されます。 アプリケーションのある程度のダウンタイムをみておいてください。 アプリケーションがダウンタイムを許容できるフェールバック用の時間を選択します。
+## <a name="common-issues"></a>Common issues
+
+- If you perform a read-only user vCenter discovery and protect virtual machines, protection succeeds, and failover works. During reprotection, failover fails because the datastores can't be discovered. A symptom is that the datastores aren't listed during reprotection. To resolve this problem, you can update the vCenter credentials with an appropriate account that has permissions and then retry the job. 
+- When you fail back a Linux virtual machine and run it on-premises, you can see that the Network Manager package has been uninstalled from the machine. This uninstallation occurs because the Network Manager package is removed when the virtual machine is recovered in Azure.
+- When a Linux virtual machine is configured with a static IP address and is failed over to Azure, the IP address is acquired from DHCP. When you fail over to on-premises, the virtual machine continues to use DHCP to acquire the IP address. Manually sign in to the machine, and then set the IP address back to a static address if necessary. A Windows virtual machine can acquire its static IP address again.
+- If you use either the ESXi 5.5 free edition or the vSphere 6 Hypervisor free edition, failover succeeds, but failback doesn't succeed. To enable failback, upgrade to either program's evaluation license.
+- If you can't reach the configuration server from the process server, use Telnet to check connectivity to the configuration server on port 443. You can also try to ping the configuration server from the process server. A process server should also have a heartbeat when it's connected to the configuration server.
+- A Windows Server 2008 R2 SP1 server that is protected as a physical on-premises server can't be failed back from Azure to an on-premises site.
+- You can't fail back in the following circumstances:
+    - You migrated machines to Azure. [Learn more](migrate-overview.md#what-do-we-mean-by-migration).
+    - You moved a VM to another resource group.
+    - You deleted the Azure VM.
+    - You disabled protection of the VM.
+    - You created the VM manually in Azure. The machine should have been initially protected on-premises and failed over to Azure before reprotection.
+    - You can fail only to an ESXi host. You can't failback VMware VMs or physical servers to Hyper-V hosts, physical machines, or VMware workstations.
+
+
+## <a name="next-steps"></a>Next steps
+
+After the virtual machine has entered a protected state, you can [initiate a failback](vmware-azure-failback.md). The failback shuts down the virtual machine in Azure and boots the on-premises virtual machine. Expect some downtime for the application. Choose a time for failback when the application can tolerate downtime.
 
 

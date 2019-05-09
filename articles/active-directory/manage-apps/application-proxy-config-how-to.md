@@ -3,24 +3,25 @@ title: アプリケーション プロキシ アプリケーションを構成�
 description: いくつかの簡単な手順でアプリケーション プロキシ アプリケーションを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: a7a5c097f0400d89398cef66eeb7bd0ce8d5e97b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 95f22f064043467bf52c23cab547a7e6c8ba2205
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132433"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172316"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションを構成する方法
 

@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 8b1290c2030835af1435e9a21602d3d2334a6737
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: e66747cd350d10a5a66ec54b9aae9e9b485b0ba2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919572"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014512"
 ---
-# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
+# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
-仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 これらの仮想ネットワークは、同じリージョン内にあっても異なるリージョン内にあってもかまいません (グローバル VNet ピアリングとも呼ばれます)。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 このチュートリアルで学習する内容は次のとおりです。
+仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 これらの仮想ネットワークは、同じリージョン内にあっても異なるリージョン内にあってもかまいません (グローバル VNet ピアリングとも呼ばれます)。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 2 つの仮想ネットワークを作成する
@@ -121,10 +121,11 @@ Azure Portal (https://portal.azure.com) にログインします。
     |Location| **[米国東部]** を選択します。|
 4. **[サイズの選択]** で、VM サイズを選択します。
 5. **[設定]** に次の値を選択し、**[OK]** を選択します。
+
     |Setting|値|
     |---|---|
     |仮想ネットワーク| myVirtualNetwork1 - まだ選択されていない場合は、**[仮想ネットワーク]** を選択し、**[仮想ネットワークの選択]** で **[myVirtualNetwork1]** を選択します。|
-    |サブネット| Subnet1 - まだ選択されていない場合は、**[サブネット]** を選択し、**[サブネットの選択]** で **[Subnet1]** を選択します。|
+    |Subnet| Subnet1 - まだ選択されていない場合は、**[サブネット]** を選択し、**[サブネットの選択]** で **[Subnet1]** を選択します。|
     
     ![仮想マシンの設定](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
  

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 8a8c8c7abf5b6f0f2a870f6983c7e855db1e0192
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231816"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58884688"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Azure Logic Apps を使用してスケジュールに従ってトラフィックをチェックする
 
@@ -43,7 +43,7 @@ Azure サブスクリプションがない場合は、始める前に<a href="ht
 
 * ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Bing 地図のキーを取得する方法</a>に関するページの手順に従ってください。 
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 
@@ -57,11 +57,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **名前** | LA-TravelTime | ロジック アプリの名前 | 
+   | **Name** | LA-TravelTime | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | LA-TravelTime-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
+   | **リソース グループ** | LA-TravelTime-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
    | **場所** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
@@ -74,7 +74,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="add-scheduler-trigger"></a>スケジューラ トリガーを追加する
 
-1. デザイナーの検索ボックスに「繰り返し」と入力します。 トリガー **[スケジュール - 繰り返し]** を選択します。
+1. デザイナーの検索ボックスに「繰り返し」と入力します。 トリガーとして、**スケジュール - 繰り返し**
 
    !["スケジュール-繰り返し" トリガーを探して追加](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
@@ -117,13 +117,13 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 1. Logic Apps デザイナーのトリガーで、**[+ 新しいステップ]** > **[アクションの追加]** の順に選択します。
 
-2. "maps" を検索し、**[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\)** アクションを選択します。
+2. "地図" を検索し、次のアクションを選択します: **[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\)**
 
 3. Bing 地図の接続が存在しない場合、接続を作成するように求められます。 これらの接続情報を入力して **[作成]** を選択します。
 
    ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションを選択](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Setting | 値 | [説明] |
+   | Setting | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
    | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">キーの取得方法</a>に関するページを参照してください。 | 
@@ -135,14 +135,14 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションの情報を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Setting | 値 | [説明] |
+   | Setting | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **通過地点 1** | <*start-location*> | ルートの起点 | 
    | **通過地点 2** | <*end-location*> | ルートの目的地 | 
    | **回避** | なし | ルート上で回避する要素 (高速道路、通行料金など) | 
    | **最適化** | timeWithTraffic | ルートを最適化するためのパラメーター (距離、最新の交通量を加味した移動時間など) このパラメーターとして "timeWithTraffic" を選択します。 | 
-   | **距離単位** | <*your-preference*> | ルートの距離の単位。 この記事では、単位として "マイル" を使います。  | 
-   | **Travel mode (移動手段)** | Driving (車) | ルートの移動手段。 [Driving]\(車\) を選択します。 | 
+   | **距離単位** | <*your-preference*> | ルートの距離の単位。 この記事では、次の単位を使用します: "マイル"  | 
+   | **Travel mode (移動手段)** | Driving (車) | ルートの移動手段。 次の手段を選択します: "車" | 
    | **Transit Date-Time (交通機関の日時)** | なし | 移動手段が交通機関の場合のみ | 
    | **Date-Time Type (日時の種類)** | なし | 移動手段が交通機関の場合のみ | 
    |||| 
@@ -161,7 +161,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 1. **[Get route]\(ルートを取得する\)** アクションで、**[+ 新しいステップ]** > **[アクションの追加]** を選択します。
 
-2. "変数" を検索し、**[変数 - 変数を初期化する]** アクションを選択します。
+2. "変数" を検索し、次のアクションを選択します: **変数 - 変数を初期化する**
 
    ![[変数 - 変数を初期化する] アクションを選択](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
@@ -169,10 +169,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 4. 変数の詳細を次のように入力します。
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **名前** | travelTime | 変数の名前 | 
-   | **種類** | 整数 | 変数のデータ型 | 
+   | **Name** | travelTime | 変数の名前 | 
+   | **Type** | 整数 | 変数のデータ型 | 
    | **値** | 最新の移動時間を秒から分に変換する式 (この表の下の手順を参照)。 | 変数の初期値 | 
    |||| 
 
@@ -262,7 +262,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 6. **[件名]** ボックスに、メールの件名を指定し、**travelTime** 変数を追加します。
 
-   1. 「```Current travel time (minutes): ```」というテキストを入力します。末尾にスペースを 1 つ追加してください。 
+   1. 「```Current travel time (minutes):```」というテキストを入力します。末尾にスペースを 1 つ追加してください。 
    
    2. パラメーター リストまたは動的コンテンツ リストの **[変数]** から **travelTime** を選択します。 
    
@@ -272,7 +272,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 7. **[本文]** ボックスに、メールの本文の内容を指定します。 
 
-   1. 「```Add extra travel time (minutes): ```」というテキストを入力します。末尾にスペースを 1 つ追加してください。 
+   1. 「```Add extra travel time (minutes):```」というテキストを入力します。末尾にスペースを 1 つ追加してください。 
    
    2. 必要に応じて、動的コンテンツ リストが表示されるまでブラウザーの幅を広げてください。 
    動的コンテンツ リストの **[式]** を選択します。

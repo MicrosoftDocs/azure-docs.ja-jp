@@ -1,324 +1,333 @@
-items:
 - name: Azure AD B2C ドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure AD B2C について
-    href: active-directory-b2c-overview.md
-    expanded: true
+    - name: Azure AD B2C について
+      expanded: true
+      href: active-directory-b2c-overview.md
 - name: クイック スタート
-  items:
-  - name: サインインの設定 - ASP.NET
-    href: active-directory-b2c-quickstarts-web-app.md
-  - name: サインインの設定 - デスクトップ
-    href: active-directory-b2c-quickstarts-desktop-app.md
-  - name: サインインの設定 - シングル ページ
-    href: active-directory-b2c-quickstarts-spa.md
   expanded: true
+  items:
+    - name: サインインの設定 - ASP.NET
+      href: active-directory-b2c-quickstarts-web-app.md
+    - name: サインインの設定 - デスクトップ
+      href: active-directory-b2c-quickstarts-desktop-app.md
+    - name: サインインの設定 - シングル ページ
+      href: active-directory-b2c-quickstarts-spa.md
 - name: チュートリアル
   items:
-  - name: 1 - B2C テナントの作成
-    href: tutorial-create-tenant.md
-  - name: 2 - アカウントの認証
-    items:
-    - name: ASP.NET
-      href: active-directory-b2c-tutorials-web-app.md
-    - name: デスクトップ
-      href: active-directory-b2c-tutorials-desktop-app.md
-    - name: シングル ページ
-      href: active-directory-b2c-tutorials-spa.md
-  - name: 3 - API アクセスの許可
-    items:
-    - name: ASP.NET
-      href: active-directory-b2c-tutorials-web-api.md
-    - name: デスクトップ
-      href: active-directory-b2c-tutorials-desktop-app-webapi.md
-    - name: シングル ページ
-      href: active-directory-b2c-tutorials-spa-webapi.md
-  - name: UI のカスタマイズ
-    href: tutorial-customize-ui.md
+    - name: 1 - B2C テナントの作成
+      href: tutorial-create-tenant.md
+    - name: 2 - アプリケーションの登録
+      href: tutorial-register-applications.md
+    - name: 3 - ユーザー フローの作成
+      href: tutorial-create-user-flows.md
+    - name: ID プロバイダーの追加
+      href: tutorial-add-identity-providers.md
+    - name: UI のカスタマイズ
+      href: tutorial-customize-ui.md
+    - name: アカウントの認証
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-tutorials-web-app.md
+        - name: デスクトップ
+          href: active-directory-b2c-tutorials-desktop-app.md
+        - name: シングル ページ
+          href: active-directory-b2c-tutorials-spa.md
+    - name: API アクセスの許可
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-tutorials-web-api.md
+        - name: デスクトップ
+          href: active-directory-b2c-tutorials-desktop-app-webapi.md
+        - name: シングル ページ
+          href: active-directory-b2c-tutorials-spa-webapi.md
 - name: サンプル
   href: code-samples.md
 - name: 概念
   items:
-  - name: アプリケーションの種類
-    href: active-directory-b2c-apps.md
-  - name: 認証プロトコル
-    href: active-directory-b2c-reference-protocols.md
-  - name: ユーザー フロー
-    href: active-directory-b2c-reference-policies.md
-  - name: Identity Experience Framework
-    items:
-    - name: カスタム ポリシー
-      href: active-directory-b2c-overview-custom.md
-    - name: ユーザー アクセス
-      href: manage-user-access.md
+    - name: アプリケーションの種類
+      href: active-directory-b2c-apps.md
+    - name: 認証プロトコル
+      href: active-directory-b2c-reference-protocols.md
+    - name: Identity Experience Framework
+      items:
+        - name: カスタム ポリシー
+          href: active-directory-b2c-overview-custom.md
+        - name: ユーザー アクセス
+          href: manage-user-access.md
+    - name: OAuth 2.0
+      href: active-directory-b2c-reference-oauth-code.md
+    - name: OpenId Connect
+      href: active-directory-b2c-reference-oidc.md
+    - name: シングルページ サインイン
+      href: active-directory-b2c-reference-spa.md
+    - name: トークン
+      href: active-directory-b2c-reference-tokens.md
+    - name: ユーザー アカウント
+      href: user-overview.md
     - name: ユーザー データ
       href: manage-user-data.md
-  - name: OAuth 2.0
-    href: active-directory-b2c-reference-oauth-code.md
-  - name: OpenId Connect
-    href: active-directory-b2c-reference-oidc.md
-  - name: シングルページ サインイン
-    href: active-directory-b2c-reference-spa.md
-  - name: トークン
-    href: active-directory-b2c-reference-tokens.md
-  - name: ユーザー アカウント
-    href: user-overview.md
-  - name: ユーザー インターフェイスのカスタマイズ
-    href: customize-ui-overview.md
+    - name: ユーザー フロー
+      href: active-directory-b2c-reference-policies.md
+    - name: JavaScript を使用したユーザー フロー
+      href: user-flow-javascript-overview.md
+    - name: ユーザー インターフェイスのカスタマイズ
+      href: customize-ui-overview.md
 - name: ハウツー ガイド
   items:
-  - name: 監査ログにアクセスする
-    href: active-directory-b2c-reference-audit-logs.md
-  - name: 年齢制限
-    href: basic-age-gating.md
-  - name: トークンを構成する
-    href: active-directory-b2c-token-session-sso.md
-  - name: 言語をカスタマイズする
-    href: active-directory-b2c-reference-language-customization.md
-  - name: パスワードをカスタマイズする
-    href: active-directory-b2c-reference-password-complexity.md
-  - name: カスタム属性を定義する
-    href: active-directory-b2c-reference-custom-attr.md
-  - name: メールの確認を無効にする
-    href: active-directory-b2c-reference-disable-ev.md
-  - name: MFA の有効化
-    href: active-directory-b2c-reference-mfa.md
-  - name: Identity Experience Framework
-    items:
-    - name: Application Insights を使用したログの収集
-      href: active-directory-b2c-troubleshoot-custom.md
-    - name: ROPC を構成する
-      href: ropc-custom.md
-    - name: ユーザー入力の構成
-      href: active-directory-b2c-configure-signup-self-asserted-custom.md
-    - name: カスタム ポリシーの作成
-      href: active-directory-b2c-get-started-custom.md
-    - name: UI のカスタマイズ
-      href: active-directory-b2c-ui-customization-custom.md
-    - name: UI の動的なカスタマイズ
-      href: active-directory-b2c-ui-customization-custom-dynamic.md
-    - name: トークンのカスタマイズ
-      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+    - name: 監査ログにアクセスする
+      href: active-directory-b2c-reference-audit-logs.md
+    - name: Web API アプリケーションを追加する
+      href: add-web-application.md
+    - name: ネイティブ クライアント アプリケーションを追加する
+      href: add-native-application.md
+    - name: 年齢制限を構成する
+      href: basic-age-gating.md
+    - name: セッションの動作を構成する
+      href: session-behavior.md
+    - name: 言語をカスタマイズする
+      href: active-directory-b2c-reference-language-customization.md
+    - name: パスワードをカスタマイズする
+      href: active-directory-b2c-reference-password-complexity.md
     - name: カスタム属性を定義する
-      href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-    - name: '[サインインしたままにする] の有効化'
-      href: active-directory-b2c-reference-kmsi-custom.md
-    - name: RESTful API の統合
+      href: active-directory-b2c-reference-custom-attr.md
+    - name: メールの確認を無効にする
+      href: active-directory-b2c-reference-disable-ev.md
+    - name: MFA の有効化
+      href: active-directory-b2c-reference-mfa.md
+    - name: Identity Experience Framework
       items:
-      - name: ユーザー入力の検証
-        href: active-directory-b2c-rest-api-validation-custom.md
-      - name: 追加の要求の取得
-        href: active-directory-b2c-rest-api-step-custom.md
-      - name: 独自の RESTful API の追加
-        href: active-directory-b2c-custom-rest-api-netfw.md
-      - name: 基本認証を使用した RESTful API のセキュリティ保護
-        href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
-      - name: 証明書認証を使用した RESTful API のセキュリティ保護
-        href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
-    - name: OIDC プロバイダーおよび OAuth プロバイダー
+        - name: Application Insights を使用したログの収集
+          href: active-directory-b2c-troubleshoot-custom.md
+        - name: ROPC の構成
+          href: ropc-custom.md
+        - name: ユーザー入力の構成
+          href: active-directory-b2c-configure-signup-self-asserted-custom.md
+        - name: カスタム ポリシーの作成
+          href: active-directory-b2c-get-started-custom.md
+        - name: UI のカスタマイズ
+          href: active-directory-b2c-ui-customization-custom.md
+        - name: UI の動的なカスタマイズ
+          href: active-directory-b2c-ui-customization-custom-dynamic.md
+        - name: カスタム属性を定義する
+          href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+        - name: '[サインインしたままにする] の有効化'
+          href: active-directory-b2c-reference-kmsi-custom.md
+        - name: RESTful API の統合
+          items:
+            - name: ユーザー入力の検証
+              href: active-directory-b2c-rest-api-validation-custom.md
+            - name: 追加の要求の取得
+              href: active-directory-b2c-rest-api-step-custom.md
+            - name: 独自の RESTful API の追加
+              href: active-directory-b2c-custom-rest-api-netfw.md
+            - name: 基本認証を使用した RESTful API のセキュリティ保護
+              href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
+            - name: 証明書認証を使用した RESTful API のセキュリティ保護
+              href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
+        - name: OIDC プロバイダーおよび OAuth プロバイダー
+          items:
+            - name: Amazon
+              href: setup-amazon-custom.md
+            - name: Azure AD (シングルテナント)
+              href: active-directory-b2c-setup-aad-custom.md
+            - name: Azure AD (マルチテナント)
+              href: active-directory-b2c-setup-commonaad-custom.md
+            - name: Google
+              href: active-directory-b2c-custom-setup-goog-idp.md
+            - name: LinkedIn
+              href: active-directory-b2c-custom-setup-li-idp.md
+            - name: Microsoft アカウント
+              href: active-directory-b2c-custom-setup-msa-idp.md
+            - name: Twitter
+              href: active-directory-b2c-custom-setup-twitter-idp.md
+        - name: ページ コントラクト
+          href: page-contract.md
+        - name: パスワードの複雑さ
+          href: active-directory-b2c-reference-password-complexity-custom.md
+        - name: パスワードの変更
+          href: active-directory-b2c-reference-password-change-custom.md
+        - name: SAML プロバイダー
+          items:
+            - name: ADFS
+              href: active-directory-b2c-custom-setup-adfs2016-idp.md
+            - name: Salesforce
+              href: active-directory-b2c-setup-sf-app-custom.md
+        - name: トークン
+          items:
+            - name: トークンのカスタマイズ
+              href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+            - name: アクセス トークンのパススルー
+              href: idp-pass-through-custom.md
+        - name: ユーザー動作の追跡
+          href: active-directory-b2c-custom-guide-eventlogger-appins.md
+        - name: リファレンス
+          items:
+            - name: 要求リゾルバー
+              href: claim-resolver-overview.md
+            - name: Identity Experience Framework のスキーマ
+              items:
+                - name: TrustFrameworkPolicy
+                  href: trustframeworkpolicy.md
+                - name: BuildingBlocks
+                  href: buildingblocks.md
+                  items:
+                    - name: ClaimsSchema
+                      href: claimsschema.md
+                    - name: ClaimsTransformations
+                      href: claimstransformations.md
+                      items:
+                        - name: Boolean
+                          href: boolean-transformations.md
+                        - name: 日付
+                          href: date-transformations.md
+                        - name: 全般
+                          href: general-transformations.md
+                        - name: 整数
+                          href: integer-transformations.md
+                        - name: JSON
+                          href: json-transformations.md
+                        - name: ソーシャル アカウント
+                          href: social-transformations.md
+                        - name: StringCollection
+                          href: stringcollection-transformations.md
+                        - name: String
+                          href: string-transformations.md
+                    - name: Predicates
+                      href: predicates.md
+                    - name: ContentDefinitions
+                      href: contentdefinitions.md
+                    - name: ローカライズ
+                      href: localization.md
+                      items:
+                        - name: ローカライズ文字列 ID
+                          href: localization-string-ids.md
+                - name: ClaimsProviders
+                  href: claimsproviders.md
+                  items:
+                    - name: TechnicalProfiles
+                      href: technicalprofiles.md
+                      items:
+                        - name: 技術プロファイルについて
+                          href: technical-profiles-overview.md
+                        - name: Azure Active Directory
+                          href: active-directory-technical-profile.md
+                        - name: 要求の変換
+                          href: claims-transformation-technical-profile.md
+                        - name: JWT トークン発行者
+                          href: jwt-issuer-technical-profile.md
+                        - name: OAuth1
+                          href: oauth1-technical-profile.md
+                        - name: OAuth2
+                          href: oauth2-technical-profile.md
+                        - name: OpenId Connect
+                          href: openid-connect-technical-profile.md
+                        - name: REST
+                          href: restful-technical-profile.md
+                        - name: SAML
+                          href: saml-technical-profile.md
+                        - name: セルフアサート
+                          href: self-asserted-technical-profile.md
+                        - name: SSO セッション
+                          href: active-directory-b2c-reference-sso-custom.md
+                        - name: 検証
+                          href: validation-technical-profile.md
+                - name: UserJourneys
+                  href: userjourneys.md
+                - name: RelyingParty
+                  href: relyingparty.md
+            - name: JavaScript のサンプル
+              href: javascript-samples.md
+            - name: 開発者向けのメモ
+              href: active-directory-b2c-developer-notes-custom.md
+            - name: 信頼フレームワークの定義
+              href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
+    - name: ID プロバイダー
       items:
-      - name: Amazon
-        href: setup-amazon-custom.md
-      - name: Azure AD (シングルテナント)
-        href: active-directory-b2c-setup-aad-custom.md
-      - name: Azure AD (マルチテナント)
-        href: active-directory-b2c-setup-commonaad-custom.md
-      - name: Google
-        href: active-directory-b2c-custom-setup-goog-idp.md
-      - name: LinkedIn
-        href: active-directory-b2c-custom-setup-li-idp.md
-      - name: Microsoft アカウント
-        href: active-directory-b2c-custom-setup-msa-idp.md
-      - name: Twitter
-        href: active-directory-b2c-custom-setup-twitter-idp.md
-    - name: ページ コントラクト
-      href: page-contract.md
-    - name: アクセス トークンのパススルー
-      href: idp-pass-through-custom.md
-    - name: パスワードの複雑さ
-      href: active-directory-b2c-reference-password-complexity-custom.md
-    - name: パスワードの変更
-      href: active-directory-b2c-reference-password-change-custom.md
-    - name: SAML プロバイダー
+        - name: Amazon
+          href: active-directory-b2c-setup-amzn-app.md
+        - name: Azure AD (シングル テナント)
+          href: active-directory-b2c-setup-oidc-azure-active-directory.md
+        - name: Microsoft アカウント
+          href: active-directory-b2c-setup-msa-app.md
+        - name: Facebook
+          href: active-directory-b2c-setup-fb-app.md
+        - name: GitHub
+          href: active-directory-b2c-setup-github-app.md
+        - name: Google
+          href: active-directory-b2c-setup-goog-app.md
+        - name: LinkedIn
+          href: active-directory-b2c-setup-li-app.md
+        - name: OpenID Connect
+          href: active-directory-b2c-setup-oidc-idp.md
+        - name: Twitter
+          href: active-directory-b2c-setup-twitter-app.md
+    - name: ユーザーを移行する
+      href: active-directory-b2c-user-migration.md
+    - name: ソーシャル ID を持つユーザーを移行する
+      href: active-directory-b2c-social-migration.md
+    - name: モバイル アプリとデスクトップ アプリ
       items:
-      - name: ADFS
-        href: active-directory-b2c-custom-setup-adfs2016-idp.md
-      - name: Salesforce
-        href: active-directory-b2c-setup-sf-app-custom.md
-    - name: ユーザー動作の追跡
-      href: active-directory-b2c-custom-guide-eventlogger-appins.md
+        - name: AppAuth を使用した iOS ObjC
+          href: active-directory-b2c-devquickstarts-ios.md
+        - name: AppAuth を使用した Android
+          href: active-directory-b2c-devquickstarts-android.md
+    - name: レポートの使用
+      href: active-directory-b2c-reference-usage-reporting-api.md
+    - name: リソース所有者のパスワード資格情報
+      href: configure-ropc.md
+    - name: 直接サインインの設定
+      href: direct-signin.md
+    - name: セルフサービスパスワードのリセットの設定
+      href: active-directory-b2c-reference-sspr.md
+    - name: トークン
+      items:
+        - name: トークンを構成する
+          href: configure-tokens.md
+        - name: アクセス トークンのパススルー
+          href: idp-pass-through-user-flow.md
+        - name: アクセス トークンの要求
+          href: active-directory-b2c-access-tokens.md
+    - name: b2clogin.com の使用
+      href: b2clogin.md
+    - name: Azure AD Graph API を使用する
+      href: active-directory-b2c-devquickstarts-graph-dotnet.md
     - name: リファレンス
       items:
-      - name: 要求リゾルバー
-        href: claim-resolver-overview.md
-      - name: Identity Experience Framework のスキーマ
-        items:
-        - name: TrustFrameworkPolicy
-          href: trustframeworkpolicy.md
-        - name: BuildingBlocks
-          href: buildingblocks.md
-          items:
-          - name: ClaimsSchema
-            href: claimsschema.md
-          - name: ClaimsTransformations
-            href: claimstransformations.md
-            items:
-            - name: Boolean
-              href: boolean-transformations.md
-            - name: 日付
-              href: date-transformations.md
-            - name: 全般
-              href: general-transformations.md
-            - name: 整数
-              href: integer-transformations.md
-            - name: JSON
-              href: json-transformations.md
-            - name: ソーシャル アカウント
-              href: social-transformations.md
-            - name: StringCollection
-              href: stringcollection-transformations.md
-            - name: String
-              href: string-transformations.md
-          - name: Predicates
-            href: predicates.md
-          - name: ContentDefinitions
-            href: contentdefinitions.md
-          - name: ローカライズ
-            href: localization.md
-            items:
-            - name: ローカライズ文字列 ID
-              href: localization-string-ids.md
-        - name: ClaimsProviders
-          href: claimsproviders.md
-          items:
-          - name: TechnicalProfiles
-            href: technicalprofiles.md
-            items:
-            - name: 技術プロファイルについて
-              href: technical-profiles-overview.md
-            - name: Azure Active Directory
-              href: active-directory-technical-profile.md
-            - name: 要求の変換
-              href: claims-transformation-technical-profile.md
-            - name: JWT トークン発行者
-              href: jwt-issuer-technical-profile.md
-            - name: OAuth1
-              href: oauth1-technical-profile.md
-            - name: OAuth2
-              href: oauth2-technical-profile.md
-            - name: OpenId Connect
-              href: openid-connect-technical-profile.md
-            - name: REST
-              href: restful-technical-profile.md
-            - name: SAML
-              href: saml-technical-profile.md
-            - name: セルフアサート
-              href: self-asserted-technical-profile.md
-            - name: SSO セッション
-              href: active-directory-b2c-reference-sso-custom.md
-            - name: 検証
-              href: validation-technical-profile.md
-        - name: UserJourneys
-          href: userjourneys.md
-        - name: RelyingParty
-          href: relyingparty.md
-      - name: JavaScript のサンプル
-        href: javascript-samples.md
-      - name: リリース ノート
-        href: active-directory-b2c-developer-notes-custom.md
-      - name: 信頼フレームワークの定義
-        href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
-  - name: ID プロバイダー
-    items:
-    - name: Amazon
-      href: active-directory-b2c-setup-amzn-app.md
-    - name: Azure AD (シングル テナント)
-      href: active-directory-b2c-setup-oidc-azure-active-directory.md
-    - name: Microsoft アカウント
-      href: active-directory-b2c-setup-msa-app.md
-    - name: Facebook
-      href: active-directory-b2c-setup-fb-app.md
-    - name: GitHub
-      href: active-directory-b2c-setup-github-app.md
-    - name: Google
-      href: active-directory-b2c-setup-goog-app.md
-    - name: LinkedIn
-      href: active-directory-b2c-setup-li-app.md
-    - name: OpenID Connect
-      href: active-directory-b2c-setup-oidc-idp.md
-    - name: Twitter
-      href: active-directory-b2c-setup-twitter-app.md
-  - name: ユーザーを移行する
-    href: active-directory-b2c-user-migration.md
-  - name: ソーシャル ID を持つユーザーを移行する
-    href: active-directory-b2c-social-migration.md
-  - name: モバイル アプリとデスクトップ アプリ
-    items:
-    - name: AppAuth を使用した iOS ObjC
-      href: active-directory-b2c-devquickstarts-ios.md
-    - name: AppAuth を使用した Android
-      href: active-directory-b2c-devquickstarts-android.md
-  - name: アクセス トークンを取得する
-    href: active-directory-b2c-access-tokens.md
-  - name: アクセス トークンのパススルー
-    href: idp-pass-through-user-flow.md
-  - name: アプリケーションの登録
-    href: active-directory-b2c-app-registration.md
-  - name: レポートの使用
-    href: active-directory-b2c-reference-usage-reporting-api.md
-  - name: リソース所有者のパスワード資格情報
-    href: configure-ropc.md
-  - name: 直接サインインの設定
-    href: direct-signin.md
-  - name: セルフサービスパスワードのリセットの設定
-    href: active-directory-b2c-reference-sspr.md
-  - name: b2clogin.com の使用
-    href: b2clogin.md
-  - name: Azure AD Graph API を使用する
-    href: active-directory-b2c-devquickstarts-graph-dotnet.md
-  - name: リファレンス
-    items:
-    - name: コード サンプル
-      href: https://azure.microsoft.com/resources/samples/?service=active-directory-b2c
-    - name: 利用可能なリージョンとデータの保存場所
-      href: active-directory-b2c-reference-tenant-type.md
-    - name: 課金の有効化
-      href: active-directory-b2c-how-to-enable-billing.md
-    - name: 脅威管理
-      href: active-directory-b2c-reference-threat-management.md
-    - name: ディレクトリを作成する際の問題
-      href: active-directory-b2c-support-create-directory.md
-    - name: Extensions アプリ
-      href: active-directory-b2c-reference-extensions-app.md
-    - name: ユーザー フローのバージョン
-      href: user-flow-versions.md
+        - name: コード サンプル
+          href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+        - name: Cookie の定義
+          href: cookie-definitions.md
+        - name: 利用可能なリージョンとデータの保存場所
+          href: active-directory-b2c-reference-tenant-type.md
+        - name: 課金の有効化
+          href: active-directory-b2c-how-to-enable-billing.md
+        - name: 脅威管理
+          href: active-directory-b2c-reference-threat-management.md
+        - name: Extensions アプリ
+          href: active-directory-b2c-reference-extensions-app.md
+        - name: ユーザー フローのバージョン
+          href: user-flow-versions.md
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: よく寄せられる質問
-    href: active-directory-b2c-faqs.md
-  - name: ヘルプの表示
-    href: /azure/active-directory/develop/developer-support-help-options
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/active-directory-b2c/
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=active-directory-b2c
-  - name: ソリューションとトレーニング
-    href: solution-articles.md
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework
-  - name: サポート
-    href: active-directory-b2c-support.md
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: b8a8db0dc15877cc772efbb1e9656c12f27f426a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788284"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: よく寄せられる質問
+      href: active-directory-b2c-faqs.md
+    - name: ヘルプの表示
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/active-directory-b2c/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
+    - name: ソリューションとトレーニング
+      href: solution-articles.md
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
+    - name: サポート
+      href: active-directory-b2c-support.md
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'

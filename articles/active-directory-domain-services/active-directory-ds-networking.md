@@ -4,23 +4,23 @@ description: Azure Active Directory Domain Services のネットワークに関�
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: c13a4606219ebdb1d23a83a0bd3bdf14f1a3882e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3eba9f504f98d250ad60de3b4dd775effaad2040
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970911"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185552"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法

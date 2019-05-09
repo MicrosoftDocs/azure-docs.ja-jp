@@ -1,25 +1,25 @@
 ---
 title: Azure Cache for Redis に関する FAQ | Microsoft Docs
 description: Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: wesmc
-ms.openlocfilehash: 311a576381927536386f5852336c3713fca5c3bf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.author: yegu
+ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260754"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58895598"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -83,14 +83,14 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [どの Azure Cache を利用すればよいですか。](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Azure Cache for Redis とは
-Azure Cache for Redis は、広く支持されているオープン ソースの [Azure Cache for Redis](http://redis.io) がベースとなっています。 これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Azure Cache for Redis に Azure 内の任意のアプリケーションからアクセスできます。 詳細については、azure.com の [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) の製品ページを参照してください。
+Azure Cache for Redis は、人気のあるオープンソース ソフトウェア [Redis](https://redis.io/) が基になっています。 これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Azure Cache for Redis に Azure 内の任意のアプリケーションからアクセスできます。 詳細については、azure.com の [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) の製品ページを参照してください。
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Azure Cache for Redis の使用を開始する方法
 Azure Cache for Redis の使用を開始する方法はいくつかあります。
 
 * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)、[ASP.NET](cache-web-app-howto.md)、[Java](cache-java-get-started.md)、[Node.js](cache-nodejs-get-started.md)、[Python](cache-python-get-started.md) で使用可能なチュートリアルのいずれかを確認できます。
 * [Microsoft Azure Cache for Redis を使用して高パフォーマンス アプリケーションを構築する方法](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)のビデオを見ることができます。
-* プロジェクトの開発言語と一致するクライアントのドキュメントで、Redis を使用する方法を確認できます。 Azure Cache for Redis で使用できる Redis クライアントは多数あります。 Redis クライアントの一覧については、「[http://redis.io/clients](http://redis.io/clients)」を参照してください。
+* プロジェクトの開発言語と一致するクライアントのドキュメントで、Redis を使用する方法を確認できます。 Azure Cache for Redis で使用できる Redis クライアントは多数あります。 Redis クライアントの一覧については、「[https://redis.io/clients](https://redis.io/clients)」を参照してください。
 
 Azure アカウントをお持ちでない場合は、次の操作を行います。
 
@@ -120,7 +120,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Cache for Redis のパフォーマンス
-次の表に、Azure Cache for Redis のエンドポイントに対して Iaas VM から `redis-benchmark.exe` を使用して、Standard および Premium キャッシュのさまざまなサイズをテストした際に測定された最大帯域幅を示します。 SSL のスループットについては、Azure Cache for Redis エンドポイントに接続するため、Redis ベンチマークは stunnel と共に使用されています。
+次の表に、Azure Cache for Redis のエンドポイントに対して IaaS VM から `redis-benchmark.exe` を使用して、Standard および Premium キャッシュのさまざまなサイズをテストした際に測定された最大帯域幅を示します。 SSL のスループットについては、Azure Cache for Redis エンドポイントに接続するため、Redis ベンチマークは stunnel と共に使用されています。
 
 >[!NOTE] 
 >これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。 アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
@@ -133,7 +133,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 400 万 (400,000 * 10) RPS となります。
 * キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
-| [価格レベル]  | サイズ | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
+| 価格レベル  | Size | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
 | --- | --- | --- | --- | --- | --- |
 | **Standard のキャッシュ サイズ** | | |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS) 非 SSL** |**1 秒あたりの要求数 (RPS) SSL** |
 | C0 |250 MB |共有 |100 / 12.5 |15,000 |7,500 |
@@ -174,7 +174,7 @@ Azure Cache for Redis の価格は[ここ](https://azure.microsoft.com/pricing/d
 その他のクラウドで Azure Cache for Redis を使用するときの考慮事項の詳細については、次のリンクを参照してください。
 
 - [Azure Government データベース - Azure Cache for Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Azure China Cloud - Azure Cache for Redis](https://www.azure.cn/documentation/services/azure-cache-for-redis/)
+- [Azure China Cloud - Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
 Azure Government Cloud、Azure China Cloud、および Microsoft Azure Germany で PowerShell と共に Azure Cache for Redis を使用する方法の詳細については、[その他のクラウドへの接続方法の、Azure Cache for Redis PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds) に関する説明を参照してください。
@@ -210,7 +210,7 @@ StackExchange.Redis には多くのオプションが用意されています。
       * このガイダンスにより、`ConnectionMultiplexer` あたりの待機時間が合理化される場合があります。
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>使用可能な Azure Cache for Redis クライアントについて
-Redis のメリットの 1 つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。 現在のクライアントの一覧については、 [Radis クライアント](http://redis.io/clients)に関するページをご覧ください。 さまざまな言語とクライアントのチュートリアルについては、[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)に関するページの上部にある言語の切り替えツールで、目的の言語をクリックしてください。
+Redis のメリットの 1 つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。 現在のクライアントの一覧については、 [Radis クライアント](https://redis.io/clients)に関するページをご覧ください。 さまざまな言語とクライアントのチュートリアルについては、[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)に関するページとその関連記事を目次から見つけて参照してください。
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -236,12 +236,12 @@ Azure Cache for Redis のローカル エミュレーターがなくても、ロ
         }
 
 
-必要に応じて、オンラインの Azure Cache for Redis の[既定のキャッシュ設定](cache-configure.md#default-redis-server-configuration)とより正確に一致するように、[redis.conf](http://redis.io/topics/config) ファイルを構成します。
+必要に応じて、オンラインの Azure Cache for Redis の[既定のキャッシュ設定](cache-configure.md#default-redis-server-configuration)とより正確に一致するように、[redis.conf](https://redis.io/topics/config) ファイルを構成します。
 
 <a name="cache-commands"></a>
 
 ### <a name="how-can-i-run-redis-commands"></a>Redis コマンドの実行方法
-[Azure Cache for Redis でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis)に関するセクションに示されているコマンドを除き、[Redis コマンド](http://redis.io/commands#)のページに示されているすべてのコマンドを使用できます。 Redis コマンドを実行するにはオプションがいくつかあります。
+[Azure Cache for Redis でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis)に関するセクションに示されているコマンドを除き、[Redis コマンド](https://redis.io/commands#)のページに示されているすべてのコマンドを使用できます。 Redis コマンドを実行するにはオプションがいくつかあります。
 
 * Standard または Premium キャッシュがある場合は、 [Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。 Redis コンソールは、Azure Portal で Redis コマンドを安全に実行するための方法です。
 * Redis コマンド ライン ツールを使用することもできます。 これらを使用するには、次の手順を実行します。
@@ -257,9 +257,9 @@ Azure Cache for Redis のローカル エミュレーターがなくても、ロ
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>他のいくつかの Azure サービスと異なり Azure Cache for Redis の MSDN クラス ライブラリ リファレンスが提供されない理由
-Microsoft Azure Cache for Redis は、広く普及しているオープン ソースの Azure Cache for Redis をベースにしており、多くのプログラミング言語のさまざまな [Redis クライアント](http://redis.io/clients)からアクセスできます。 各クライアントは、[Redis コマンド](http://redis.io/commands)を使用して Azure Cache for Redis インスタンスを呼び出す独自の API を持ちます。
+Microsoft Azure Cache for Redis は、広く普及しているオープン ソースの Azure Cache for Redis をベースにしており、多くのプログラミング言語のさまざまな [Redis クライアント](https://redis.io/clients)からアクセスできます。 各クライアントは、[Redis コマンド](https://redis.io/commands)を使用して Azure Cache for Redis インスタンスを呼び出す独自の API を持ちます。
 
-クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されています。 リファレンス ドキュメントのほかに、チュートリアルもいくつか用意されています。チュートリアルでは、さまざまな言語とキャッシュ クライアントを使用して Azure Cache for Redis を使用する方法について説明します。 こうしたチュートリアルにアクセスするには、[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)に関するページの上部にある言語の切り替えツールで、目的の言語をクリックしてください。
+クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されています。 リファレンス ドキュメントのほかに、チュートリアルもいくつか用意されています。チュートリアルでは、さまざまな言語とキャッシュ クライアントを使用して Azure Cache for Redis を使用する方法について説明します。 これらのチュートリアルについては、[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)に関するページとその関連記事を目次から見つけて参照してください。
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Azure Cache for Redis を PHP セッションのキャッシュとして使用できるか
 はい。Azure Cache for Redis を PHP セッションのキャッシュとして使用するには、`session.save_path` に Azure Cache for Redis インスタンスへの接続文字列を指定します。
@@ -310,7 +310,7 @@ Redis ツールのダウンロードの詳細については、「 [Redis コマ
 * 値が小さいほど Redis のパフォーマンスは向上するため、大きなデータは複数のキーに分割することを検討してください。 [こちらの Redis に関する議論](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)では、100kb が大きいとみなされています。 値が大きい場合に生じる可能性のある問題の例については、 [こちらの記事](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) を参照してください。
 * タイムアウトが起こらないように [ThreadPool の設定](#important-details-about-threadpool-growth) を構成してください。
 * connectTimeout については既定の 5 秒以上を使用してください。 この間隔を設定することで、ネットワーク ブリップが発生した場合に、StackExchange.Redis で接続を再び確立するのに十分な時間を確保できます。
-* 実行中のさまざまな操作に関連するパフォーマンス コストを把握してください。 たとえば、 `KEYS` コマンドは O(n) 操作であるため、使用しないでください。 [redis.io のサイト](http://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
+* 実行中のさまざまな操作に関連するパフォーマンス コストを把握してください。 たとえば、 `KEYS` コマンドは O(n) 操作であるため、使用しないでください。 [redis.io のサイト](https://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
 
 #### <a name="configuration-and-concepts"></a>構成と概念
 * 実稼働システムでは Standard レベルまたは Premium レベルを使用する。 Basic レベルは単一ノード システムであり、データ レプリケーション機能や SLA がありません。 また、C1 以上のキャッシュを使用してください。 通常、C0 キャッシュは単純な開発/テスト シナリオで使用されます。
@@ -329,7 +329,7 @@ Redis ツールのダウンロードの詳細については、「 [Redis コマ
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>一般的な Redis コマンドの使用に関するいくつかの考慮事項
 * 処理に時間がかかる特定の Redis コマンドについては、その影響を理解せずに実行することは避けてください。
-  * たとえば、[KEYS](http://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。 Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。 KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。 [redis.io のサイト](http://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
+  * たとえば、[KEYS](https://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。 Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。 KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。 [redis.io のサイト](https://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
 * キー サイズ - 小さなキー/値と大きなキー/値のどちらを使用するか。 一般に、これはシナリオによって異なります。 サイズの大きなキーが必要となるシナリオでは、ConnectionTimeout 値と再試行回数を調整して、再試行ロジックを調整できます。 Redis サーバーの観点からは、小さな値を設定した方がパフォーマンスが高くなります。
 * これらの考慮事項は、サイズの大きな値を Redis に格納できないという意味ではありません。次の点を考慮する必要があります。 待機時間は長くなります。 サイズの大きなデータ セットとサイズの小さなデータ セットがある場合は、前の「[StackExchange.Redis 構成オプションについて](#cache-configuration)」に説明したように、それぞれ異なるタイムアウト値と再試行回数が構成された複数の ConnectionMultiplexer インスタンスを使用できます。
 
@@ -392,7 +392,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
   > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、 `<processModel minIoThreads="50"/>`を使用します。
   >
 
-* ASP.NET の外部、および Azure WebSites global.asax では、[ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx)API を使用します。
+* ASP.NET の外部、および Azure WebSites global.asax では、[ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_)API を使用します。
 
   > [!NOTE]
   > この API によって指定される値はグローバル設定であり、AppDomain 全体に影響を与えます。 4 コア マシンがあり、実行中の minWorkerThreads および minIOThreads を CPU あたり 50 に設定する場合は、ThreadPool.SetMinThreads (200, 200) を使用します。
@@ -402,9 +402,9 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 ### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる
 StackExchange.Redis を使用するときにサーバー GC を有効にすると、クライアントが最適化され、パフォーマンスとスループットを向上させることができます。 サーバー GC とそれを有効にする方法の詳細については、次の記事を参照してください。
 
-* [サーバー GC を有効にするには](https://msdn.microsoft.com/library/ms229357.aspx)
-* [ガベージ コレクションの基礎](https://msdn.microsoft.com/library/ee787088.aspx)
-* [ガベージ コレクションとパフォーマンス](https://msdn.microsoft.com/library/ee851764.aspx)
+* [サーバー GC を有効にするには](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
+* [ガベージ コレクションの基礎](/dotnet/standard/garbage-collection/fundamentals)
+* [ガベージ コレクションとパフォーマンス](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>接続のパフォーマンスに関する考慮事項
@@ -469,11 +469,11 @@ Azure Cache for Redis の使用を開始することの詳細については、�
 ### <a name="managed-cache-service"></a>Managed Cache Service
 [Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-アーカイブされたドキュメントを参照するには、[アーカイブされた Managed Cache Service に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386094.aspx)を参照してください。
+アーカイブされたドキュメントを参照するには、[アーカイブされた Managed Cache Service に関するドキュメント](/previous-versions/azure/azure-services/dn386094(v=azure.100))を参照してください。
 
 ### <a name="in-role-cache"></a>In-Role Cache
 [In-Role Cache は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386103.aspx)を参照してください。
+アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](/previous-versions/azure/azure-services/dn386103(v=azure.100))を参照してください。
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

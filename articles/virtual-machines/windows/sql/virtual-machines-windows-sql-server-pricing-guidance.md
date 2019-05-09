@@ -3,7 +3,7 @@ title: Azure Virtual Machines における SQL Server の効率的なコスト�
 description: 適切な SQL Server 仮想マシンの料金モデルを選択するためのベスト プラクティスについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
-ms.author: jroth
-ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 19ba6896d9186cae32249fc8eb51319f9b37a6ff
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003561"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330792"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
 
@@ -90,6 +91,9 @@ ms.locfileid: "40003561"
 >
 >Web、Standard、および Enterprise エディションに対する追加の SQL Server ライセンス コストは含まれません。 正確な価格の見積もりを得るには、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) の価格ページで、ご自身のオペレーティング システムと SQL Server エディションを選択します
 
+> [!NOTE]
+> ライセンス モデルを従量課金制のライセンスとライセンス持ち込み (BYOL) の間で切り替えられるようになりました。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
+
 ## <a id="byol"></a> ライセンスを持ち込む (BYOL)
 
 **ライセンス モビリティを使用した自分の SQL Server ライセンスの持ち込み** (**BYOL**) は、Azure VM のソフトウェア アシュアランスで既存の SQL Server ボリューム ライセンスを使用することです。 BYOL を使用した SQL Server VM の料金は、SQL Server のライセンスではなく、VM を実行するコストに対してのみ発生します。これは、ボリューム ライセンス プログラムを介して既にライセンスとソフトウェア アシュアランスを取得している場合が対象になります。
@@ -123,7 +127,9 @@ BYOL を SQL Server VM で利用するには、SQL Server Standard または Ent
 > Azure で使用する SQL Server ライセンス数を 10 日以内にお知らせください。 前のイメージのリンクに、この方法が記載されています。
 
 > [!NOTE]
-> SQL Server VM のライセンス モデルを秒単位のライセンスから既存のライセンスに変更することはできません。 既存のライセンスを利用する場合は、BYOL VM を新規作成して、データベースを新しい VM に移行する必要があります。
+> ライセンス モデルを従量課金制のライセンスとライセンス持ち込み (BYOL) の間で切り替えられるようになりました。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
+
+
 
 ## <a name="reduce-costs"></a>コストの削減
 

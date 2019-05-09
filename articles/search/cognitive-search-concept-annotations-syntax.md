@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 57fed710d7d58199fb3cb70640d1f2d3f316f180
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: bfb8f5ca9b4d204b7a5efdc1b54a0fdd150e5ed6
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315829"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749615"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>コグニティブ検索スキルセットで注釈を参照する方法
 

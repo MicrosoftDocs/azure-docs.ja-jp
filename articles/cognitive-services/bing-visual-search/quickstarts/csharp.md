@@ -4,34 +4,34 @@ titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API に画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 5/16/2018
+ms.date: 3/28/2019
 ms.author: scottwhi
-ms.openlocfilehash: f8a9602248ce579431622b11471eba14c5a7035e
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d2f5e87bd6c6780e8504abe1753e90eca5db763a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742135"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880408"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>クイック スタート:Bing Visual Search REST API と C# を使用して画像に関する分析情報を取得する
 
-このクイック スタートを使用すると、Bing Visual Search API への最初の呼び出しを行い、検索結果を表示することができます。 このシンプルな C# アプリケーションは、API に画像をアップロードし、それについて返された情報を表示するというものです。
+このクイック スタートでは、Bing Visual Search API に画像をアップロードして、返される分析情報を表示する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
-* NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
+* NuGet パッケージとして入手できる [Json.NET フレームワーク](https://www.newtonsoft.com/json)。
+* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-1. Visual Studio で、`BingSearchApisQuickStart` という新しいコンソール ソリューションを作成します。 次に、メイン コード ファイルに次の名前空間を追加します。
+1. Visual Studio で、BingSearchApisQuickStart という名前の新しいコンソール ソリューションを作成します。 メイン コード ファイルに次の名前空間を追加します。
 
     ```csharp
     using System;
@@ -41,16 +41,15 @@ ms.locfileid: "53742135"
     using System.Collections.Generic;
     ```
 
-2. サブスクリプション キー、エンドポイント、およびアップロードする画像のパスを格納する変数を追加します。
+2. サブスクリプション キー、エンドポイント、およびアップロードする画像へのパスを格納する変数を追加します。
 
     ```csharp
-        const string accessKey = "<yoursubscriptionkeygoeshere>";
+        const string accessKey = "<my_subscription_key>";
         const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
-        static string imagePath = @"<pathtoimagegoeshere>";
+        static string imagePath = @"<path_to_image>";
     ```
 
-
-1. 画像のパスを取得するための `GetImageFileName()` というメソッドを作成します
+3. 画像のパスを取得するための `GetImageFileName()` というメソッドを作成します
     
     ```csharp
     static string GetImageFileName(string path)
@@ -59,7 +58,7 @@ ms.locfileid: "53742135"
             }
     ```
 
-2. 画像のバイナリ文字を取得するためのメソッドを作成します。
+4. 画像のバイナリ データを取得するためのメソッドを作成します。
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -70,7 +69,7 @@ ms.locfileid: "53742135"
 
 ## <a name="build-the-form-data"></a>フォーム データを作成する
 
-ローカルの画像をアップロードする際には、API に送信されるフォーム データを正しくフォーマットする必要があります。 フォーム データには Content-Disposition ヘッダーが含まれる必要があります。その `name` パラメーターには "image" を設定する必要があり、`filename` パラメーターには任意の文字列を設定できます。 フォームの内容には、画像のバイナリが含まれます。 アップロードできるイメージの最大サイズは、1 MB です。
+ローカルの画像をアップロードするには、最初に、API に送信するフォーム データを作成します。 フォーム データには `Content-Disposition` ヘッダーが含まれる必要があります。その `name` パラメーターには "image" を設定する必要があり、`filename` パラメーターには任意の文字列を設定できます。 フォームの内容には、画像のバイナリ データが含まれます。 アップロードできる画像の最大サイズは、1 MB です。
 
     ```
     --boundary_1234-abcd
@@ -81,7 +80,7 @@ ms.locfileid: "53742135"
     --boundary_1234-abcd--
     ```
 
-1. フォーム データの書式を設定するには、先頭、末尾、およびデータの改行文字を決定するフォームの POST データを正しく書式設定するための境界文字列を追加します。
+1. POST フォーム データを書式設定する境界文字列を追加します。 境界文字列により、データの開始、終了、改行文字が決まります。
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -91,14 +90,14 @@ ms.locfileid: "53742135"
     static string EndBoundaryTemplate = "--{0}--";
     ```
 
-2. フォーム データにパラメーターを追加するのには、次の変数が使用されます。 
+2. フォーム データにパラメーターを追加するには、次の変数を使います。
 
     ```csharp
     const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. 境界文字列と画像のパスを使用して、必要なフォーム データの開始部分を作成するための `BuildFormDataStart()` という関数を作成します。
+3. `BuildFormDataStart()` という名前の関数を作成し、境界文字列と画像のパスを使用して、フォーム データの開始を作成します。
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -112,7 +111,7 @@ ms.locfileid: "53742135"
         }
     ```
 
-4. 境界文字列を使用して、必要なフォーム データの終了部分を作成するための `BuildFormDataEnd()` という関数を作成します。
+4. `BuildFormDataEnd()` という名前の関数を作成し、境界文字列を使用して、フォーム データの終了を作成します。
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -123,11 +122,11 @@ ms.locfileid: "53742135"
 
 ## <a name="call-the-bing-visual-search-api"></a>Bing Visual Search API を呼び出す
 
-1. Bing Visual Search エンドポイントを呼び出し、JSON 応答を返すための関数を作成します。 この関数では、フォーム データの開始部分と終了部分、画像データを含んだバイト配列、および contentType 値をを取得する必要があります。
+1. Bing Visual Search エンドポイントを呼び出し、JSON 応答を返すための関数を作成します。 その関数では、フォーム データの開始と終了、画像データを含むバイト配列、および `contentType` 値を受け取ります。
 
 2. `WebRequest` 使用して、URI、contentType 値、ヘッダーを格納します。  
 
-3. `request.GetRequestStream()` を使用して、フォーム データと画像データを書き込みます。 その後、応答を取得します。 この関数のコードは次のようになります。
+3. `request.GetRequestStream()` を使用して、フォーム データと画像データを書き込んだ後、応答を受け取ります。 関数は次のようになります。
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -157,16 +156,16 @@ ms.locfileid: "53742135"
         }
     ```
 
-## <a name="create-the-main-method"></a>メイン メソッドを作成する
+## <a name="create-the-main-method"></a>Main メソッドを作成する
 
-1. アプリケーションのメイン メソッドでは、画像のファイル名と画像バイナリを取得します。 
+1. アプリケーションの `Main` メソッドでは、画像のファイル名とバイナリ データを取得します。
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. 境界を書式設定して、POST の本文を設定します。 その後、`startFormData()` と `endFormData` を呼び出してフォーム データを作成します。 
+2. 境界を書式設定して、POST の本文を設定します。 その後、`startFormData()` と `endFormData` を呼び出してフォーム データを作成します。
 
     ```csharp
     // Set up POST body.
@@ -175,13 +174,13 @@ ms.locfileid: "53742135"
     var endFormData = BuildFormDataEnd(boundary);
     ```
 
-3. `CONTENT_TYPE_HEADER_PARAMS` とフォーム データの境界を書式設定して、ContentType 値を作成します。
+3. `CONTENT_TYPE_HEADER_PARAMS` とフォーム データの境界を書式設定して、`ContentType` 値を作成します。
 
     ```csharp
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. `BingImageSearch()` を呼び出して API 応答を取得します。 その後、応答を出力します。
+4. `BingImageSearch()` を呼び出して API の応答を取得し、応答を表示します。
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -192,9 +191,9 @@ ms.locfileid: "53742135"
 
 ## <a name="using-httpclient"></a>HTTPClient の使用
 
-HttpClient を使用する場合は、MultipartFormDataContent を使用してフォーム データを作成します。 次のコード セクションを使用して、前の例に含まれる同じ名前付きメソッドを置き換えるだけです。
+`HttpClient` を使用する場合は、`MultipartFormDataContent` クラスを使用してフォーム データを作成できます。 次のコード セクションを使用して、前の例の対応するメソッドを置き換えるだけです。
 
-Main メソッドを次のコードに置き換えます。
+`Main` メソッドを次のコードに置き換えます。
 
 ```csharp
         static void Main()
@@ -234,7 +233,7 @@ Main メソッドを次のコードに置き換えます。
         }
 ```
 
-BingImageSearch メソッドを次のコードに置き換えます。
+`BingImageSearch` メソッドを次のコードに置き換えます。
 
 ```csharp
         /// <summary>
@@ -271,4 +270,4 @@ BingImageSearch メソッドを次のコードに置き換えます。
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Custom Search Web アプリの作成](../tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search のシングルページ Web アプリを作成する](../tutorial-bing-visual-search-single-page-app.md)

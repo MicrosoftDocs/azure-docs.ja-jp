@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Translator Text API にサインアップしてサブスクリプション キーを取得する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 011e1db141c36c44ef51edc62d0123fdf3c036c7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6bd7a014e765d32349951d99d3027c90f61f7eb7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091563"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726144"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Translator Text API にサインアップする方法
 

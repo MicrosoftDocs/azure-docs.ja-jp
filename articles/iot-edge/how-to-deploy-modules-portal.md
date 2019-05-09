@@ -4,18 +4,18 @@ description: Azure Portal を使用して IoT Edge デバイスにモジュー�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/03/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8b7327796cf29c8c234c0a750c90e0689f508f7e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969405"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430116"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 
@@ -51,6 +51,7 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 
    * **IoT Edge モジュール** - 既定のオプションです。
    * **Azure Stream Analytics モジュール** - Azure Stream Analytics ワークロードから生成されるモジュールのみです。
+   * **Azure Machine Learning モジュール** - Azure Machine Learning ワークスペースから生成されたモデル イメージのみです。
 
 1. **[IoT Edge モジュール]** を選択します。
 
@@ -82,6 +83,29 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 ## <a name="view-modules-on-your-device"></a>デバイス上のモジュールを表示する
 
 モジュールをデバイスにデプロイした後で、そのすべてを Portal の **[デバイスの詳細]** ページで表示できます。 このページには、デプロイした各モジュールの名前、およびデプロイ状態や終了コードなどの役立つ情報が表示されます。
+
+## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketplace からモジュールをデプロイする
+
+Azure Marketplace は、アプリケーションとサービスのオンライン マーケットプレースであり、[IoT Edge モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)など、Azure での実行を認定されてそれに最適化されている、さまざまなエンタープライズ アプリケーションとソリューションを参照できます。 Azure Marketplace には、Azure portal の **[リソースの作成]** からアクセスすることもできます。
+
+Azure Marketplace または Azure portal のいずれかから、IoT Edge モジュールをインストールできます。
+
+1. モジュールを見つけて、デプロイ プロセスを開始します。
+
+   * Azure portal:モジュールを見つけて、**[作成]** を選択します。
+
+   * Azure Marketplace:
+
+     1. モジュールを見つけて、**[今すぐ入手する]** を選択します。
+     1. **[続行]** を選択して、プロバイダーの使用条件とプライバシー ポリシーを確認します。
+
+1. お使いのサブスクリプションと、ターゲット デバイスをアタッチする IoT ハブを選択します。
+
+1. **[デバイスへのデプロイ]** を選択します。
+
+1. デバイスの名前を入力するか、または **[デバイスの検索]** を選択してハブに登録されているデバイスを参照します。
+
+1. **[作成]** を選択して、必要な場合の他のモジュールの追加など、配置マニフェストの構成の標準的な処理を続行します。 イメージの URI、作成オプション、必要なプロパティなどの新しいモジュールの詳細はあらかじめ定義されていますが、変更できます。
 
 ## <a name="next-steps"></a>次の手順
 

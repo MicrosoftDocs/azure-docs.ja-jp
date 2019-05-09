@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6eb0ce9098b5cc5f66035851c6837e9e46fcf2df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075000"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows コマンド - CMD と PowerShell
 
@@ -118,7 +118,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 ### <a name="disable-windows-firewall"></a>Windows ファイアウォールの無効化
 `netsh advfirewall set allprofiles state off`
 
-トラブルシューティング時にこのコマンドを使用して、Windows ファイアウォールを一時的に無効にすることができます。 ファイアウォールは、次の再起動時か、以下のコマンドを使用した場合に有効になります。 Windows ファイアウォールを無効にするために Windows ファイアウォール サービス (MPSSVC) を停止したり、ベース フィルター エンジン (BFE) サービスを停止したりしないでください。 MPSSVC や BFE を停止すると、すべての接続がブロックされます。
+トラブルシューティング時にこのコマンドを使用して、Windows ファイアウォールを一時的に無効にすることができます。 これは、次の再起動時か、以下のコマンドを使用した有効化時に有効になります。 Windows ファイアウォールを無効にするために Windows ファイアウォール サービス (MPSSVC) を停止したり、ベース フィルター エンジン (BFE) サービスを停止したりしないでください。 MPSSVC や BFE を停止すると、すべての接続がブロックされます。
 ### <a name="enable-windows-firewall"></a>Windows ファイアウォールの有効化
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>ユーザーとグループの管理
@@ -247,8 +247,8 @@ SAC で PowerShell を実行するには、コマンド プロンプトで次の
 
 `powershell <enter>`
 
->[!CAUTION]
-他の PowerShell コマンドを実行する前に、PowerShell セッションから PSReadLine モジュールを削除してください。 SAC の PowerShell セッションで PSReadLine が実行されていると、クリップボードから貼り付けたテキストに余分な文字が追加されるという既知の問題があります。
+> [!CAUTION]
+> 他の PowerShell コマンドを実行する前に、PowerShell セッションから PSReadLine モジュールを削除してください。 SAC の PowerShell セッションで PSReadLine が実行されていると、クリップボードから貼り付けたテキストに余分な文字が追加されるという既知の問題があります。
 
 最初に、PSReadLine が読み込まれているかどうかを確認します。 Windows Server 2016、Windows 10、およびそれ以降のバージョンの Windows では、既定で読み込まれています。 以前のバージョンの Windows では、手動でインストールしない限り PSReadLine は存在しません。 
 

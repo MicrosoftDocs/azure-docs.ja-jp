@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 0cb40e4cbbfccaaf60e53010603e1d547e45dab9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b6c5722d5e096300f76f60dfaf8bab1e07d0c61c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263227"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455671"
 ---
-# <a name="optimize-the-cost-required-to-read-and-write-data-from-azure-cosmos-db"></a>Azure Cosmos DB からデータを読み取りおよび書き込みするために必要なコストを最適化します。
+# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の読み取りと書き込みのコストの最適化
 
 この記事では、Azure Cosmos DB からデータを読み取りおよび書き込みするために必要なコストを計算する方法について説明します。 読み取り操作には、アイテムの取得が含まれ、書き込み操作には、アイテムの挿入、置換、削除、およびアップサートが含まれます。  
 

@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 6f36879828f5927cbb5477b32cdb6b4832010d4c
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 30625423553b71e848d27d047d4b7bc3add6eaff
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413134"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59265153"
 ---
 # <a name="quickstart-clone-a-notebook"></a>クイック スタート:ノートブックの複製
 
@@ -28,9 +28,9 @@ ms.locfileid: "53413134"
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Cognitive Services ノートブックを複製する
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、[クイック スタートの Azure Notebooks へのサインイン](quickstart-sign-in-azure-notebooks.md)に関する記事をご覧ください)。
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
-1. パブリック プロファイル ページで、ページの上部にある **[マイ プロジェクト]** を選択します。
+1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
     ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
 
@@ -40,13 +40,13 @@ ms.locfileid: "53413134"
 
 1. 表示された **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** で、次の詳細を入力または設定した後、**[インポート]** を選択します。
 
-    - **[GitHub リポジトリ]**:Microsoft/cognitive-services-notebooks (この名前により、[https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) にある Azure Cognitive Services 用の Jupyter ノートブックが複製されます)。
-    - **[Clone recursively]\(再帰的に複製\)**: (オフ)
-    - **[プロジェクト名]**:Cognitive Services Clone
-    - **[プロジェクト ID]**: cognitive-services-clone
-    - **[パブリック]**: (オフ)
+   - **[GitHub リポジトリ]**:Microsoft/cognitive-services-notebooks (この名前により、[https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) にある Azure Cognitive Services 用の Jupyter ノートブックが複製されます)。
+   - **[Clone recursively]\(再帰的に複製\)**: (オフ)
+   - **[プロジェクト名]**:Cognitive Services Clone
+   - **[プロジェクト ID]**: cognitive-services-clone
+   - **[パブリック]**: (オフ)
 
-    ![リポジトリ情報を収集するための [Upload GitHub Repo]\(GitHub リポジトリのアップロード\) ポップアップ](media/quickstarts/upload-github-repo-popup.png)
+     ![リポジトリ情報を収集するための [Upload GitHub Repo]\(GitHub リポジトリのアップロード\) ポップアップ](media/quickstarts/upload-github-repo-popup.png)
 
 1. プロセスが完了するまでしばらくお待ちください。リポジトリの複製には数分かかる可能性があります。
 
@@ -72,7 +72,7 @@ ms.locfileid: "53413134"
 
     ![個々のノートブックへのリンクをコピーするためのコンテキスト メニュー コマンド](media/quickstarts/copy-link-to-individual-notebook.png)
 
-1. ノートブック以外のファイルを編集するには、プロジェクト内のファイルを右クリックし、**[ファイルの編集]** (キーボード ショートカット: i) を選択します。 既定のアクションである **[実行]** (キーボード ショートカット: r) ではファイルの内容が表示されるだけであり、編集は許可されません。
+1. ノートブック以外のファイルを編集するには、プロジェクト内のファイルを右クリックし、**[ファイルの編集]** (キーボード ショートカット: i) を選択します。 既定のアクションである **[実行]** (キーボード ショートカット: R) ではファイルの内容が表示されるだけであり、編集は許可されません。
 
 ## <a name="next-steps"></a>次の手順
 

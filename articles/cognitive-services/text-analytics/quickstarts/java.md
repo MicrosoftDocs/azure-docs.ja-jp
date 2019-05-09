@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Java を使用して Text Analytics API を呼び出す'
+title: クイック スタート:Java を使用して Text Analytics API を呼び出す
 titleSuffix: Azure Cognitive Services
-description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: noellelacharite
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: nolachar
-ms.openlocfilehash: f2e576b421526c0245ff249d77214b27c9fd649a
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.date: 04/16/2019
+ms.author: aahi
+ms.openlocfilehash: fc848feb3f9a0e1160a8e36014ca4a469f792c96
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283946"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008581"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Java を使用して Text Analytics Cognitive Service を呼び出す
+# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Java を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Java で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
@@ -28,19 +28,20 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
+また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>言語を検出する
 
-言語検出 API では、 [言語検出メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
+言語検出 API では、 [言語検出メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
 
-1. 適切な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 `DetectLanguage.java` という名前のクラスを作成します。
+1. そのクラスに次のコードを追加します。
+1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
+1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
+1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
 ```java
 import java.io.*;
@@ -59,6 +60,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (DetectLanguage.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac DetectLanguage.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar DetectLanguage
  */
@@ -106,7 +108,7 @@ public class DetectLanguage {
 // a free trial access key, you should not need to change this region.
     static String host = "https://westus.api.cognitive.microsoft.com";
 
-    static String path = "/text/analytics/v2.0/languages";
+    static String path = "/text/analytics/v2.1/languages";
     
     public static String GetLanguage (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -160,7 +162,7 @@ public class DetectLanguage {
 }
 ```
 
-**言語検出の応答**
+### <a name="language-detection-response"></a>言語検出の応答
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -208,13 +210,14 @@ public class DetectLanguage {
 
 ## <a name="analyze-sentiment"></a>センチメントを分析する
 
-感情分析 API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、テキスト レコードのセットのセンチメントを検出します。 次の例では、英語とスペイン語で書かれた 2 つのドキュメントをスコア付けします。
+Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
-1. 適当な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. `uriBase` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetSentiment.java` という名前のクラスを作成します。
+1. そのクラスに次のコードを追加します。
+1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
+1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
+1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
 ```java
 import java.io.*;
@@ -233,6 +236,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetSentiment.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetSentiment.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetSentiment
  */
@@ -281,9 +285,9 @@ public class GetSentiment {
 // a free trial access key, you should not need to change this region.
     static String host = "https://westus.api.cognitive.microsoft.com";
 
-    static String path = "/text/analytics/v2.0/sentiment";
+    static String path = "/text/analytics/v2.1/sentiment";
     
-    public static String GetSentiment (Documents documents) throws Exception {
+    public static String getTheSentiment (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
@@ -324,7 +328,7 @@ public class GetSentiment {
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.");
 
-            String response = GetSentiment (documents);
+            String response = getTheSentiment (documents);
             System.out.println (prettify (response));
         }
         catch (Exception e) {
@@ -333,9 +337,11 @@ public class GetSentiment {
     }
 }
 ```
-**センチメント分析の応答**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+### <a name="sentiment-analysis-response"></a>センチメント分析の応答
+
+結果は、スコアが 1.0 に近いほど肯定的と評価され、0.0 に近いほど否定的と評価されます。
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -357,13 +363,14 @@ public class GetSentiment {
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
 
-Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 次の例では、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
+Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 次の例では、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
 
-1. 適当な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. `uriBase` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetKeyPhrases.java` というクラスを作成します。
+1. そのクラスに次のコードを追加します。
+1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
+1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
+1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
 ```java
 import java.io.*;
@@ -382,6 +389,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetKeyPhrases.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetKeyPhrases.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetKeyPhrases
  */
@@ -430,7 +438,7 @@ public class GetKeyPhrases {
 // a free trial access key, you should not need to change this region.
     static String host = "https://westus.api.cognitive.microsoft.com";
 
-    static String path = "/text/analytics/v2.0/keyPhrases";
+    static String path = "/text/analytics/v2.1/keyPhrases";
     
     public static String GetKeyPhrases (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -483,9 +491,10 @@ public class GetKeyPhrases {
     }
 }
 ```
-**キー フレーズ抽出の応答**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+### <a name="key-phrase-extraction-response"></a>キー フレーズ抽出の応答
+
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -526,13 +535,14 @@ public class GetKeyPhrases {
 
 ## <a name="identify-entities"></a>エンティティの識別
 
-Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
-1. 適当な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. `uriBase` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetEntities.java` という名前のクラスを作成します。
+1. そのクラスに次のコードを追加します。
+1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
+1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
+1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
 ```java
 import java.io.*;
@@ -551,6 +561,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetEntities.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetEntities.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetEntities
  */
@@ -599,7 +610,7 @@ public class GetEntities {
 // a free trial access key, you should not need to change this region.
     static String host = "https://westus.api.cognitive.microsoft.com";
 
-    static String path = "/text/analytics/v2.1-preview/entities";
+    static String path = "/text/analytics/v2.1/entities";
     
     public static String GetEntities (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -639,8 +650,7 @@ public class GetEntities {
     public static void main (String[] args) {
         try {
             Documents documents = new Documents ();
-            documents.add ("1", "en", "Jeff bought three dozen eggs because there was a 50% discount.");
-            documents.add ("2", "en", "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%.");
+            documents.add ("1", "en", "Microsoft is an It company.");
 
             String response = GetEntities (documents);
             System.out.println (prettify (response));
@@ -651,163 +661,53 @@ public class GetEntities {
     }
 }
 ```
-**エンティティ抽出の応答**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+### <a name="entity-extraction-response"></a>エンティティ抽出の応答
+
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
-{
-    "Documents": [
-        {
-            "Id": "1",
-            "Entities": [
-                {
-                    "Name": "Jeff",
-                    "Matches": [
-                        {
-                            "Text": "Jeff",
-                            "Offset": 0,
-                            "Length": 4
-                        }
-                    ],
-                    "Type": "Person"
-                },
-                {
-                    "Name": "three dozen",
-                    "Matches": [
-                        {
-                            "Text": "three dozen",
-                            "Offset": 12,
-                            "Length": 11
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "50",
-                    "Matches": [
-                        {
-                            "Text": "50",
-                            "Offset": 49,
-                            "Length": 2
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "50%",
-                    "Matches": [
-                        {
-                            "Text": "50%",
-                            "Offset": 49,
-                            "Length": 3
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Percentage"
-                }
-            ]
-        },
-        {
-            "Id": "2",
-            "Entities": [
-                {
-                    "Name": "Great Depression",
-                    "Matches": [
-                        {
-                            "Text": "The Great Depression",
-                            "Offset": 0,
-                            "Length": 20
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "Great Depression",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
-                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
-                },
-                {
-                    "Name": "1929",
-                    "Matches": [
-                        {
-                            "Text": "1929",
-                            "Offset": 30,
-                            "Length": 4
-                        }
-                    ],
-                    "Type": "DateTime",
-                    "SubType": "DateRange"
-                },
-                {
-                    "Name": "By 1933",
-                    "Matches": [
-                        {
-                            "Text": "By 1933",
-                            "Offset": 36,
-                            "Length": 7
-                        }
-                    ],
-                    "Type": "DateTime",
-                    "SubType": "DateRange"
-                },
-                {
-                    "Name": "Gross domestic product",
-                    "Matches": [
-                        {
-                            "Text": "GDP",
-                            "Offset": 49,
-                            "Length": 3
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "Gross domestic product",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
-                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
-                },
-                {
-                    "Name": "United States",
-                    "Matches": [
-                        {
-                            "Text": "America",
-                            "Offset": 56,
-                            "Length": 7
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "United States",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
-                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
-                    "Type": "Location"
-                },
-                {
-                    "Name": "25",
-                    "Matches": [
-                        {
-                            "Text": "25",
-                            "Offset": 72,
-                            "Length": 2
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "25%",
-                    "Matches": [
-                        {
-                            "Text": "25%",
-                            "Offset": 72,
-                            "Length": 3
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Percentage"
-                }
-            ]
-        }
-    ],
-    "Errors": []
+{  
+   "documents":[  
+      {  
+         "id":"1",
+         "entities":[  
+            {  
+               "name":"Microsoft",
+               "matches":[  
+                  {  
+                     "wikipediaScore":0.20872054383103444,
+                     "entityTypeScore":0.99996185302734375,
+                     "text":"Microsoft",
+                     "offset":0,
+                     "length":9
+                  }
+               ],
+               "wikipediaLanguage":"en",
+               "wikipediaId":"Microsoft",
+               "wikipediaUrl":"https://en.wikipedia.org/wiki/Microsoft",
+               "bingId":"a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
+               "type":"Organization"
+            },
+            {  
+               "name":"Technology company",
+               "matches":[  
+                  {  
+                     "wikipediaScore":0.82123868042800585,
+                     "text":"It company",
+                     "offset":16,
+                     "length":10
+                  }
+               ],
+               "wikipediaLanguage":"en",
+               "wikipediaId":"Technology company",
+               "wikipediaUrl":"https://en.wikipedia.org/wiki/Technology_company",
+               "bingId":"bc30426e-22ae-7a35-f24b-454722a47d8f"
+            }
+         ]
+      }
+   ],
+    "errors":[]
 }
 ```
 
@@ -816,7 +716,7 @@ public class GetEntities {
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)

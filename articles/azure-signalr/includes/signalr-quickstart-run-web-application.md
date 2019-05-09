@@ -4,24 +4,24 @@ description: インクルード ファイル
 author: anthonychu
 ms.service: signalr
 ms.topic: include
-ms.date: 09/14/2018
+ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 73d40bfb5a7e691cead5a84be70398e9cbf6656a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 73d4d4e1a5f148dce6099b2d747ee1c290bcf7c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051842"
 ---
 ## <a name="run-the-web-application"></a>Web アプリケーションの実行
 
-1. 利便性のために、サンプルのシングルページ Web アプリケーションが GitHub で公開されています。 ブラウザーで [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat/) を開きます。
+1. 利便性のために、サンプルのシングルページ Web アプリケーションが GitHub で公開されています。 ブラウザーで [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/) を開きます。
 
     > [!NOTE]
-    > HTML ファイルのソースは [/docs/demo/chat/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat/index.html) にあります。
+    > HTML ファイルのソースは [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html) にあります。
 
-1. 関数アプリのベース URL の入力を求められたら、*http://localhost:7071* と入力します。
+1. 関数アプリのベース URL の入力を求められたら、「`http://localhost:7071`」と入力します。
 
 1. 入力を求められたら、ユーザー名を入力します。
 
@@ -32,3 +32,6 @@ ms.locfileid: "53262768"
     ![アプリケーションの実行](../media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-run-application.png)
 
 1. Web アプリケーションの別のインスタンスを、別のブラウザー ウィンドウで開きます。 送信したメッセージがアプリケーションのすべてのインスタンスで表示されることを確認します。
+
+> [!IMPORTANT]
+> HTML ページは HTTPS を使用して返されますが、ローカルの Azure Functions Runtime には HTTP が既定で使用されます。そのため、お使いのブラウザー (Firefox など) によって矛盾したコンテンツ ポリシーが強制され、Web ページから関数への要求がブロックされることがあります。 これを解決するためには、この制限がないブラウザーを使用するか、またはローカル HTTP サーバー (*/docs/demo/chat-v2* ディレクトリの [http-server](https://www.npmjs.com/package/http-server) など) を起動します。 *local.settings.json* の `CORS` 設定にオリジンが追加されていることを確認してください。

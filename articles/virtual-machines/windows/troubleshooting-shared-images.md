@@ -8,7 +8,7 @@ manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machine-windows
+ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 3e4aea6811326760ffb3cf6a7e3ac27e262b0bbb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fa9c6cf1977c6648b9d5f7be6e63844b3a57f928
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046517"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669752"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>共有イメージ ギャラリーのトラブルシューティング
 

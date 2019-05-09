@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: 3ba4105fccda8948b953b2dc8c790b66c691eb4d
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 464520fa90cb4ad2c3da7f4df99564e27f10186b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429996"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56278057"
 ---
 > [!NOTE]
-> 例の `utterances.json` ファイルを含む完成したソリューションは、[**LUIS-Samples** の GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/change-model/)から入手できます。
+> サンプルの `utterances.json` ファイルを含む完全なソリューションは、[**cognitive-services-language-understanding** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/)から入手できます。

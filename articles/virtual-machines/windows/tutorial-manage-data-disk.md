@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/05/2018
+ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 334fd01568b05cd16ff6f85725a799234fefda48
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: disks
+ms.openlocfilehash: be6375972747c5c962bf1a8ef9b9b0093402bb7a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871831"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368257"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 
@@ -48,12 +49,9 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 **一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは [VM のサイズ](sizes.md)によって決まります。 一時ディスクには、既定でドライブ文字 *D:* が割り当てられます。
 
-
-
 ## <a name="azure-data-disks"></a>Azure データ ディスク
 
-アプリケーションのインストールやデータの保存のために、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが必要な状況では、必ず、データ ディスクを使用する必要があります。 各データ ディスクの最大容量は 4 TB です。 仮想マシンのサイズによって、VM に接続できるデータ ディスクの数が決まります。 各 VM vCPU に、4 つのデータ ディスクを接続できます。 
-
+アプリケーションのインストールやデータの保存のために、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが必要な状況では、必ず、データ ディスクを使用する必要があります。 各データ ディスクの最大容量は 4 TB です。 仮想マシンのサイズによって、VM に接続できるデータ ディスクの数が決まります。 各 VM vCPU に、4 つのデータ ディスクを接続できます。
 
 ## <a name="vm-disk-types"></a>VM ディスクの種類
 
@@ -64,12 +62,7 @@ Azure では、2 種類のディスクを提供しています。
 **Premium ディスク** - SSD ベースの高性能で待ち時間の短いディスクが使用されています。 実稼働ワークロードを実行する VM に最適です。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、FS シリーズの VM をサポートしています。 Premium ディスクは、5 種類 (P10、P20、P30、P40、P50) に分類され、ディスク サイズによってディスクの種類が決まります。 ディスク サイズを選択するときは、値を切り上げて 1 つ上の種類にします。 たとえば、サイズが 128 GB 未満の場合、ディスクの種類は P10 で、サイズが 129 GB から 512 GB までの場合、ディスクの種類は P20 です。
 
 ### <a name="premium-disk-performance"></a>Premium ディスクのパフォーマンス
-
-|Premium Storage ディスクの種類 | P4 | P6 | P10 | P20 | P30 | P40 | P50 | P60 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| ディスク サイズ (切り上げ) | 32 GiB | 64 GiB | 128 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB)
-| ディスクあたりの最大 IOPS | 120 | 240 | 500 | 2,300 | 5,000 | 7,500 | 7,500 | 12,500 |
-ディスクあたりのスループット | 25 MB/秒 | 50 MB/秒 | 100 MB/秒 | 150 MB/秒 | 200 MB/s | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 |
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
 上記の表は、ディスクあたりの最大 IOPS を割り出していますが、複数のデータ ディスクをストライピングすることによって、より高いレベルのパフォーマンスを実現できます。 たとえば、64 のデータ ディスクを Standard_GS5 VM に接続することができます。 これらの各ディスクのサイズが P30 である場合、最大 80,000 IOPS を実現できます。 VM あたりの最大 IOPS について詳しくは、「[VM の種類とサイズ](./sizes.md)」をご覧ください。
 
@@ -80,10 +73,10 @@ Azure では、2 種類のディスクを提供しています。
 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、仮想マシンの管理者アカウントに必要なユーザー名とパスワードを設定します。
 
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、仮想マシンを作成します。 VM の管理者アカウントのユーザー名とパスワードを入力するよう求められます。
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して、仮想マシンを作成します。 VM の管理者アカウントのユーザー名とパスワードを入力するよう求められます。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupDisk" `
     -Name "myVM" `
     -Location "East US" `
@@ -94,34 +87,34 @@ New-AzureRmVm `
 ```
 
 
-[New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) を使用して、初期構成を作成します。 次の例では、サイズが 128 ギガバイトのディスクを構成します。
+[New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) を使用して、初期構成を作成します。 次の例では、サイズが 128 ギガバイトのディスクを構成します。
 
 ```azurepowershell-interactive
-$diskConfig = New-AzureRmDiskConfig `
+$diskConfig = New-AzDiskConfig `
     -Location "EastUS" `
     -CreateOption Empty `
     -DiskSizeGB 128
 ```
 
-[New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) コマンドを使用して、データ ディスクを作成します。
+[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) コマンドを使用して、データ ディスクを作成します。
 
 ```azurepowershell-interactive
-$dataDisk = New-AzureRmDisk `
+$dataDisk = New-AzDisk `
     -ResourceGroupName "myResourceGroupDisk" `
     -DiskName "myDataDisk" `
     -Disk $diskConfig
 ```
 
-[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) コマンドを使用して、データ ディスクを追加する仮想マシンを取得します。
+[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) コマンドを使用して、データ ディスクを追加する仮想マシンを取得します。
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
+$vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-[Add-AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk) コマンドを使用して、データ ディスクを仮想マシンの構成に追加します。
+[Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) コマンドを使用して、データ ディスクを仮想マシンの構成に追加します。
 
 ```azurepowershell-interactive
-$vm = Add-AzureRmVMDataDisk `
+$vm = Add-AzVMDataDisk `
     -VM $vm `
     -Name "myDataDisk" `
     -CreateOption Attach `
@@ -129,10 +122,10 @@ $vm = Add-AzureRmVMDataDisk `
     -Lun 1
 ```
 
-[Update-AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk) コマンドを使用して、仮想マシンを更新します。
+[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) コマンドを使用して、仮想マシンを更新します。
 
 ```azurepowershell-interactive
-Update-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
+Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
 ```
 
 ## <a name="prepare-data-disks"></a>データ ディスクを準備する

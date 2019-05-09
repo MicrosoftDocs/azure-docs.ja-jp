@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 5a3fe90da0b469707c67c852784468455bbec95d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999190"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117692"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ:Application Insights データ モデル
 
-[Application Insights](../../application-insights/app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
 
 事前集計メトリック テレメトリは、その集計期間が 1 分間であることを前提としています。
 

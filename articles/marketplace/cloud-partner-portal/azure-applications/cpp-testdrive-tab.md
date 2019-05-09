@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: de4c8aecefce334889c3fa6790c0ba42673896c7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d51c7330acd37d8a861c136ea85a2ff456eb264e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195809"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446488"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Azure アプリケーションの [体験版] タブ
 
@@ -33,7 +33,7 @@ ms.locfileid: "53195809"
 
 ## <a name="how-a-test-drive-works"></a>体験版のしくみ
 
-潜在顧客が Marketplace でアプリケーションを検索して発見します。 顧客がサインインし、使用条件に同意します。 この時点で顧客は、あらかじめ構成された環境を受け取り、決められた時間数だけ試すことができます。一方、発行元はフォローアップすべき見込みの高いリードを獲得します。 詳細については、「[体験版とは](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/what-is-test-drive)」を参照してください。
+潜在顧客が Marketplace でアプリケーションを検索して発見します。 顧客がサインインし、使用条件に同意します。 この時点で顧客は、あらかじめ構成された環境を受け取り、決められた時間数だけ試すことができます。一方、発行元はフォローアップすべき見込みの高いリードを獲得します。 詳細については、「[体験版とは](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)」を参照してください。
 
 ## <a name="setting-up-a-test-drive"></a>体験版の設定
 
@@ -65,9 +65,9 @@ ms.locfileid: "53195809"
 |      説明              |   お客様の体験版でできることについて説明します。 この説明は、基本的な HTML タグを使用して書式設定できます。 たとえば、&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; のほか、見出しが使用できます。                |
 |    ユーザー マニュアル                |     お客様の顧客が体験版を利用する際に使用できるユーザー マニュアルをアップロードします。 このドキュメントは .pdf ファイルでなければなりません。              |
 |         Test Drive Demo Video (体験版のデモ ビデオ) (省略可)           |       お客様の体験版のビデオ チュートリアルを提供できます。 顧客は体験版を利用する前にこのビデオを視聴できます。 YouTube または Vimeo にあるビデオの URL を指定します。 **[+ ビデオの追加]** を選択した場合、次の情報を指定するように求められます。<ul><li>Name</li><li>URL</li><li>サムネイル (PNG 形式、533 x 324 ピクセル)</li></ul>            |
-|       Instances             |        お客様が必要とするインスタンスの数、リージョン、お客様の顧客が体験版を取得できる速さを構成します。 詳細については、「[体験版の発行方法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/azure-resource-manager-test-drive#how-to-publish-a-test-drive)」を参照してください。           |
+|       Instances             |        お客様が必要とするインスタンスの数、リージョン、お客様の顧客が体験版を取得できる速さを構成します。 詳細については、「[体験版の発行方法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive)」を参照してください。           |
 |       Test Drive Duration (hours) (体験版の期間 (時間))             |       時間数を整数で入力してください。 指定できる範囲は 1 から 999 です。            |
-|        Test Drive ARM Template (体験版 ARM テンプレート)            |        お客様のアプリの Azure Resource Manager テンプレートが含まれた圧縮 (.zip) ファイルをアップロードします。 詳細については、「[Azure Resource Manager の体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/azure-resource-manager-test-drive)」を参照してください。            |
+|        Test Drive ARM Template (体験版 ARM テンプレート)            |        お客様のアプリの Azure Resource Manager テンプレートが含まれた圧縮 (.zip) ファイルをアップロードします。 詳細については、「[Azure Resource Manager の体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)」を参照してください。            |
 |        Access Information (アクセス情報)            |         お客様の顧客が体験版を入手した後のアクセス情報を指定します。 たとえば、体験版にアクセスするための URL やサインイン情報が該当します。 。 この説明は、基本的な HTML タグを使用して書式設定できます。 たとえば、&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; のほか、見出しが使用できます。          |
 |       Access Subscription Id (アクセス サブスクリプション ID)             |       Azure サービスと Azure portal へのアクセス権を付与します。 このサブスクリプションで、リソースの使用状況がレポートされ、サービスが課金されます。 体験版専用の独立した Azure サブスクリプションがまだない場合は、サブスクリプションを作成してください。             |
 |          Azure AD Tenant Id (Azure AD テナント ID)          |        Azure Active Directory の既存のテナントを指定するか、この体験版用にテナントを作成します。           |

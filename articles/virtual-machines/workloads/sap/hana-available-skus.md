@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a62c30235fdd262f0df5937b6a829382d2b45ef
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b80f872c82061c0cb87f4f1e2714183e71cf02cd
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866289"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448128"
 ---
 # <a name="available-skus-for-hli"></a>HLI で利用可能な SKU
 
@@ -29,11 +29,11 @@ SAP HANA on Azure (L インスタンス) サービスは、米国西部、米国
 
 | SAP ソリューション | CPU | メモリ | Storage | 可用性 |
 | --- | --- | --- | --- | --- |
-| OLAP に合わせて最適化:SAP BW、BW/4HANA<br /> または SAP HANA (一般的な OLAP ワークロード向け) | SAP HANA on Azure S72<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  768 GB |  3 TB | 使用可能 |
+| OLAP に合わせて最適化:SAP BW、BW/4HANA<br /> または SAP HANA (一般的な OLAP ワークロード向け) | SAP HANA on Azure S72<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  768 GB |  3 TB | 提供終了 |
 | --- | SAP HANA on Azure S144<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 72 CPU コアと 144 CPU スレッド |  1.5 TB |  6 TB | 提供終了 |
 | --- | SAP HANA on Azure S192<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド |  2.0 TB |  8 TB | 使用可能 |
 | --- | SAP HANA on Azure S384<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  4.0 TB |  16 TB | 使用可能 |
-| OLTP に合わせて最適化:SAP Business Suite<br /> on SAP HANA または S/4HANA (OLTP)、<br /> 一般的な OLTP | SAP HANA on Azure S72m<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  1.5 TB |  6 TB | 使用可能 |
+| OLTP に合わせて最適化:SAP Business Suite<br /> on SAP HANA または S/4HANA (OLTP)、<br /> 一般的な OLTP | SAP HANA on Azure S72m<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  1.5 TB |  6 TB | 提供終了 |
 |---| SAP HANA on Azure S144m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 72 CPU コアと 144 CPU スレッド |  3.0 TB |  12 TB | 提供終了 |
 |---| SAP HANA on Azure S192m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド  |  4.0 TB |  16 TB | 使用可能 |
 |---| SAP HANA on Azure S384m<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  6.0 TB |  18 TB | 使用可能 |

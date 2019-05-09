@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 7ecd35ba33d2860ba052aa27286c69985c2f7dd9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6462673f6c3992aacbaee168eafc6bdb1b2fa944
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190232"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733472"
 ---
-# <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>New-AzureRmIotHub コマンドレットを使用して IoT Hub を作成する
+# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>New-AzIotHub コマンドレットを使用して IoT ハブを作成する
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
@@ -25,6 +25,8 @@ Azure PowerShell コマンドレットを使用すると、Azure IoT Hub を作�
 
 このハウツー記事を完了するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="connect-to-your-azure-subscription"></a>Azure サブスクリプションへの接続
@@ -33,25 +35,25 @@ Cloud Shell を使用している場合は、既にサブスクリプション�
 
 ```powershell
 # Log into Azure account.
-Login-AzureRMAccount
+Login-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
 IoT Hub をデプロイするためのリソース グループが必要です。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
 
-お使いの IoT ハブ用のリソース グループを作成するには、[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) コマンドを使用します。 この例では、**米国東部**リージョンに **MyIoTRG1** というリソース グループを作成しています。
+お使いの IoT ハブ用のリソース グループを作成するには、[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) コマンドを使用します。 この例では、**米国東部**リージョンに **MyIoTRG1** というリソース グループを作成しています。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
+New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-前の手順で作成したリソース グループに IoT ハブを作成するには、[New-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/New-AzureRmIotHub) コマンドを使用します。 この例では、**米国東部**リージョンに **MyTestIoTHub** という **S1** ハブを作成しています。
+前の手順で作成したリソース グループに IoT ハブを作成するには、[New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) コマンドを使用します。 この例では、**米国東部**リージョンに **MyTestIoTHub** という **S1** ハブを作成しています。
 
 ```azurepowershell-interactive
-New-AzureRmIotHub `
+New-AzIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub `
     -SkuName S1 -Units 1 `
@@ -62,33 +64,33 @@ IoT ハブの名前は、グローバルに一意である必要があります�
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-[Get-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/Get-AzureRmIotHub) コマンドを使用して、お使いのサブスクリプションに含まれるすべての IoT ハブを一覧表示できます。
+[Get-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub) コマンドを使用して、お使いのサブスクリプションに含まれるすべての IoT ハブを一覧表示できます。
 
 ```azurepowershell-interactive
-Get-AzureRmIotHub
+Get-AzIotHub
 ```
 
 この例では、前のステップで作成した S1 Standard IoT Hub を示します。
 
-IoT ハブを削除するには、[Remove-AzureRmIotHub](https://docs.microsoft.com/powershell/module/azurerm.iothub/remove-azurermiothub) コマンドを使用します。
+IoT ハブを削除するには、[Remove-AzIotHub](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub) コマンドを使用します。
 
 ```azurepowershell-interactive
-Remove-AzureRmIotHub `
+Remove-AzIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub
 ```
 
-また、[Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Remove-AzureRmResourceGroup) コマンドを使用して、リソース グループとそのグループに含まれるすべてのリソースを削除することもできます。
+また、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) コマンドを使用して、リソース グループとそのグループに含まれるすべてのリソースを削除することもできます。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name MyIoTRG1
+Remove-AzResourceGroup -Name MyIoTRG1
 ```
 
 ## <a name="next-steps"></a>次の手順
 
 ここでは、PowerShell コマンドレットを使用して IoT ハブをデプロイしました。さらに詳しく知りたい場合は、以下の記事をご覧ください。
 
-* [IoT ハブを操作するための PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.iothub/)。
+* [IoT ハブを操作するための PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.iothub/)。
 
 * [IoT Hub リソースプロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)。
 

@@ -103,7 +103,7 @@ v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186e
 
 イメージがレプリケートされている間、Azure Container Registry Webhook がトリガーされていることを確認できます。
 
-前のチュートリアルでコンテナーを *Web Apps for Containers* にデプロイしたときに作成されたリージョン Webhook を表示するには、Azure Portal のコンテナー レジストリに移動し、**[SERVICES] (サービス)** の **[Webhook]** を選択します。
+前のチュートリアルでコンテナーを *Web Apps for Containers* にデプロイしたときに作成されたリージョン Webhook を表示するには、Azure Portal のコンテナー レジストリに移動し、**[SERVICES] \(サービス)** の **[Webhook]** を選択します。
 
 ![Azure Portal のコンテナー レジストリ Webhook][tutorial-portal-01]
 

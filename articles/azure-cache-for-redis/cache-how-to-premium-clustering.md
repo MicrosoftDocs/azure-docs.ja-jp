@@ -1,25 +1,25 @@
 ---
 title: Premium Azure Cache for Redis の Redis クラスタリングの構成方法 | Microsoft Docs
 description: Premium レベルの Azure Cache for Redis インスタンス用に Redis を作成して管理する方法について説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
-ms.author: wesmc
-ms.openlocfilehash: e0c50046cd3cdb4db7c9e7e3961124b891b3c0a4
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: 602d77f3d4e8ed10c2c964462bc2dc21240cef5c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021577"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235718"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Cache for Redis インスタンスでクラスタリングを構成する方法について説明します。
@@ -27,7 +27,7 @@ Azure Redis Cache には、クラスタリング、永続性、仮想ネット�
 Premium キャッシュのその他の機能については、「[Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
 ## <a name="what-is-redis-cluster"></a>Redis クラスターとは
-Azure Cache for Redis では、 [Redis での実装](http://redis.io/topics/cluster-tutorial)と同じように Redis クラスターが提供されます。 Redis クラスターには、次の利点があります。 
+Azure Cache for Redis では、 [Redis での実装](https://redis.io/topics/cluster-tutorial)と同じように Redis クラスターが提供されます。 Redis クラスターには、次の利点があります。 
 
 * データセットを複数のノードに自動的に分割する機能。 
 * ノードのサブセットで障害が発生したとき、またはクラスターの他の部分と通信できないときに、操作を続行する機能。 
@@ -101,7 +101,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 ### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか
 * クラスタリングが有効になっている場合は、データベース 0 のみを使用できます。 クライアント アプリケーションで複数のデータベースを使用している状態で、0 以外のデータベースに対して読み取りまたは書き込みを試みると、次の例外がスローされます。 `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
-  詳細については、「 [Redis Cluster Specification - Implemented subset (Redis クラスターの仕様 - 実装済みのサブセット)](http://redis.io/topics/cluster-spec#implemented-subset)」を参照してください。
+  詳細については、「 [Redis Cluster Specification - Implemented subset (Redis クラスターの仕様 - 実装済みのサブセット)](https://redis.io/topics/cluster-spec#implemented-subset)」を参照してください。
 * [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/)を使用する場合は、1.0.481 以降を使用する必要があります。 クラスタリングが有効になっていないキャッシュに接続するときに使用するものと同じ [エンドポイント、ポート、キー](cache-configure.md#properties) を使用して、キャッシュに接続します。 唯一の違いは、すべての読み取りと書き込みをデータベース 0 に対して実行する必要があることです。
   
   * 他のクライアントの要件は異なる場合があります。 「 [すべての Redis クライアントがクラスタリングをサポートしますか](#do-all-redis-clients-support-clustering)
@@ -109,14 +109,14 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 * Redis ASP.NET セッション状態プロバイダーを使用する場合は、2.0.1 以降を使用する必要があります。 「 [Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>クラスターにはキーはどのように配布されるのですか
-Redis の [キー配布モデル](http://redis.io/topics/cluster-spec#keys-distribution-model) に関するドキュメントによると、キー スペースは 16384 スロットに分割されます。 各キーはハッシュされ、クラスターのノード全体に配布される、これらのスロットのいずれかに割り当てられます。 ハッシュ タグを使用して同じシャードに複数のキーが配置されていることを確認するために、キーのどの部分をハッシュするかを構成することができます。
+Redis の [キー配布モデル](https://redis.io/topics/cluster-spec#keys-distribution-model) に関するドキュメントによると、キー スペースは 16384 スロットに分割されます。 各キーはハッシュされ、クラスターのノード全体に配布される、これらのスロットのいずれかに割り当てられます。 ハッシュ タグを使用して同じシャードに複数のキーが配置されていることを確認するために、キーのどの部分をハッシュするかを構成することができます。
 
-* ハッシュ タグのあるキー - キーの任意の部分を `{` と `}` で囲むと、キーのその部分のみが、キーのハッシュ スロットを決定するためにハッシュされます。 たとえば、`{key}1`、`{key}2`、`{key}3` という 3 つのキーは、名前の `key` 部分のみがハッシュされるため、同じシャードに配置されます。 キーのハッシュ タグ仕様に関する完全なリストについては、「 [キーのハッシュ タグ](http://redis.io/topics/cluster-spec#keys-hash-tags)」を参照してください。
+* ハッシュ タグのあるキー - キーの任意の部分を `{` と `}` で囲むと、キーのその部分のみが、キーのハッシュ スロットを決定するためにハッシュされます。 たとえば、`{key}1`、`{key}2`、`{key}3` という 3 つのキーは、名前の `key` 部分のみがハッシュされるため、同じシャードに配置されます。 キーのハッシュ タグ仕様に関する完全なリストについては、「 [キーのハッシュ タグ](https://redis.io/topics/cluster-spec#keys-hash-tags)」を参照してください。
 * ハッシュ タグのないキー - キー名全体がハッシュに使用されます。 そのため、キャッシュのシャード全体で統計的に均等に配布されます。
 
 最高のパフォーマンスとスループットを得るために、キーを均等に配布することをお勧めします。 ハッシュ タグのあるキーを使用する場合、キーが均等に配布されていることを確認するのはアプリケーションの責任です。
 
-詳細については、「[Keys distribution model (キー配布モデル)](http://redis.io/topics/cluster-spec#keys-distribution-model)」、「[Redis Cluster data sharding (Redis クラスターのデータ シャーディング)](http://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)」、および「[Keys hash tags (キーのハッシュ タグ)](http://redis.io/topics/cluster-spec#keys-hash-tags)」を参照してください。
+詳細については、「[Keys distribution model (キー配布モデル)](https://redis.io/topics/cluster-spec#keys-distribution-model)」、「[Redis Cluster data sharding (Redis クラスターのデータ シャーディング)](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)」、および「[Keys hash tags (キーのハッシュ タグ)](https://redis.io/topics/cluster-spec#keys-hash-tags)」を参照してください。
 
 StackExchange.Redis クライアントを使用した同じシャードでのクラスタリングおよびキーの検索の操作におけるサンプル コードについては、[Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分を参照してください。
 
@@ -124,7 +124,7 @@ StackExchange.Redis クライアントを使用した同じシャードでのク
 Premium の最大キャッシュ サイズは、53 GB です。 最大 10 個のシャードを作成できるので、最大サイズは 530 GB です。 さらに大きいサイズが必要な場合は、 [追加を要求](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)できます。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。
 
 ### <a name="do-all-redis-clients-support-clustering"></a>すべての Redis クライアントがクラスタリングをサポートしますか
-現時点では、すべてのクライアントが Redis クラスタリングをサポートしているわけではありません。 StackExchange.Redis はサポートしているものの 1 つです。 他のクライアントの詳細については、「[Redis cluster tutorial (Redis クラスター チュートリアル)](http://redis.io/topics/cluster-tutorial)」の「[Playing with the cluster (クラスターの使用)](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。 
+現時点では、すべてのクライアントが Redis クラスタリングをサポートしているわけではありません。 StackExchange.Redis はサポートしているものの 1 つです。 他のクライアントの詳細については、「[Redis cluster tutorial (Redis クラスター チュートリアル)](https://redis.io/topics/cluster-tutorial)」の「[Playing with the cluster (クラスターの使用)](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。 
 
 Redis クラスタリング プロトコルでは、各クライアントが各シャードにクラスタリング モードで直接接続する必要があります。 クラスタリングをサポートしないクライアントの使用を試みると、高確率で、多数の [MOVED リダイレクト例外](https://redis.io/topics/cluster-spec#moved-redirection)が発生します。
 
@@ -137,7 +137,7 @@ Redis クラスタリング プロトコルでは、各クライアントが各�
 クラスタリングが有効になっていないキャッシュに接続するときに使うものと同じ[エンドポイント](cache-configure.md#properties)、[ポート](cache-configure.md#properties)、[キー](cache-configure.md#access-keys)を使って、キャッシュに接続できます。 Redis がバックエンドのクラスタリングを管理するので、クライアントから管理する必要はありません。
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>キャッシュの個々のシャードに直接接続できますか
-クラスタリング プロトコルでは、クライアントが正しいシャード接続を実行する必要があります。 したがって、クライアントが自動的に、これを正しく実行する必要があります。 つまり、各シャードは、キャッシュ インスタンスと総称される、プライマリ/レプリカ キャッシュ ペアで構成されています。 GitHub で Redis リポジトリの [不安定な](http://redis.io/download) ブランチにある redis-cli ユーティリティを使用して、これらのキャッシュ インスタンスに接続できます。 このバージョンは、 `-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。 詳細については、[http://redis.io](http://redis.io) の「[Redis cluster tutorial](http://redis.io/topics/cluster-tutorial)」 (Redis クラスター チュートリアル) にある「[Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」 (クラスターの使用) をご覧ください。
+クラスタリング プロトコルでは、クライアントが正しいシャード接続を実行する必要があります。 したがって、クライアントが自動的に、これを正しく実行する必要があります。 つまり、各シャードは、キャッシュ インスタンスと総称される、プライマリ/レプリカ キャッシュ ペアで構成されています。 GitHub で Redis リポジトリの [不安定な](https://redis.io/download) ブランチにある redis-cli ユーティリティを使用して、これらのキャッシュ インスタンスに接続できます。 このバージョンは、 `-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。 詳細については、[https://redis.io](https://redis.io) の「[Redis cluster tutorial](https://redis.io/topics/cluster-tutorial)」 (Redis クラスター チュートリアル) にある「[Playing with the cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」 (クラスターの使用) をご覧ください。
 
 SSL 以外の場合は、次のコマンドを使用します。
 

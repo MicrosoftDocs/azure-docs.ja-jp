@@ -7,16 +7,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: fae74d3912bb608afec93b7aa587885f66af4e53
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085339"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 
@@ -34,7 +33,7 @@ ms.locfileid: "49115061"
 
 3. パイプラインを毎時実行するスケジュールトリガー。
 
- ![Scenario1](media/pricing-concepts/scenario1.png)
+   ![Scenario1](media/pricing-concepts/scenario1.png)
 
 | **操作** | **タイプとユニット** |
 | --- | --- |
@@ -44,7 +43,7 @@ ms.locfileid: "49115061"
 | パイプラインを取得する | 1 つの読み取り/書き込みエンティティ |
 | パイプラインを実行する | 2 つのアクティビティの実行 (トリガーの実行用に 1 つ、アクティビティの実行用に 1 つ) |
 | Data Assumption をコピーする: 実行時間 = 10 分 | 10 \* 4つの Azure 統合ランタイム (デフォルト DIU 設定 = 4) データ統合ユニットとコピーパフォーマンスの最適化についての詳細は、 [このアーティクル](copy-activity-performance.md)を参照してください |
-| パイプライン Assumption を監視する: 1 つの実行のみが発生しました | 2つの監視実行レコードの再試行 (パイプラインの実行用に 1 つ、アクティビティの実行用に 1 つ) |
+| パイプライン監視の仮定:1 回の実行のみが発生 | 2つの監視実行レコードの再試行 (パイプラインの実行用に 1 つ、アクティビティの実行用に 1 つ) |
 
 **シナリオ価格の合計: $0.16811**
 
@@ -75,7 +74,7 @@ ms.locfileid: "49115061"
 | パイプラインを取得する | 1 つの読み取り/書き込みエンティティ |
 | パイプラインを実行する | 3つのアクティビティの実行(トリガーの実行用に1つ、アクティビティの実行用に2つ) |
 | Data Assumption をコピーする: 実行時間 = 10 分 | 10 \* 4つの Azure 統合ランタイム (デフォルト DIU 設定 = 4) データ統合ユニットとコピーパフォーマンスの最適化についての詳細は、 [このアーティクル](copy-activity-performance.md)を参照してください |
-| パイプライン Assumption を監視する: 1 つの実行のみが発生しました | 3つの監視実行レコードの再試行(パイプラインの実行用に1つ、アクティビティの実行用に2つ) |
+| パイプライン監視の仮定:1 回の実行のみが発生 | 3つの監視実行レコードの再試行(パイプラインの実行用に1つ、アクティビティの実行用に2つ) |
 | Databricksアクティビティ Assumption を実行する: 実行時間 = 10分 | 10分間の外部パイプラインアクティビティの実行 |
 
 **シナリオ価格の合計: $0.16916**
@@ -109,7 +108,7 @@ ms.locfileid: "49115061"
 | パイプラインを取得する | 1 つの読み取り/書き込みエンティティ |
 | パイプラインを実行する | 4 つのアクティビティの実行 (トリガーの実行用に 1 つ、アクティビティの実行用に 3 つ) |
 | Data Assumption をコピーする: 実行時間 = 10 分 | 10 \* 4つの Azure 統合ランタイム (デフォルト DIU 設定 = 4) データ統合ユニットとコピーパフォーマンスの最適化についての詳細は、 [このアーティクル](copy-activity-performance.md)を参照してください |
-| パイプライン Assumption を監視する: 1 つの実行のみが発生しました | 4 つの監視実行レコードの再試行 (パイプラインの実行用に 1 つ、 アクティビティの実行用に 3 つ) |
+| パイプライン監視の仮定:1 回の実行のみが発生 | 4 つの監視実行レコードの再試行 (パイプラインの実行用に 1 つ、 アクティビティの実行用に 3 つ) |
 | 検索アクティビティ Assumption を実行する: 実行時間 = 1 分 | 1 分間のパイプラインアクティビティの実行 |
 | Databricksアクティビティ Assumption を実行する: 実行時間 = 10 分 | 10 分間の外部パイプラインアクティビティの実行 |
 

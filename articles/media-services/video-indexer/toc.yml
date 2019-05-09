@@ -19,6 +19,8 @@ items:
   items:
   - name: Video Indexer と Media Services のプリセットを比較する
     href: compare-video-indexer-with-media-services-presets.md
+  - name: 複数のテナントの管理
+    href: manage-multiple-tenants.md
   - name: コンテンツ モデルのカスタマイズ
     items:
     - name: ブランド
@@ -39,8 +41,12 @@ items:
     href: video-indexer-output-json-v2.md
   - name: ビデオ内の正確な場面の検出
     href: video-indexer-search.md
+  - name: シーン、ショット、キーフレーム
+    href: scenes-shots-keyframes.md
   - name: Video Indexer の分析情報の表示と編集
     href: video-indexer-view-edit.md
+  - name: エディターを使用したプロジェクトの作成
+    href: use-editor-create-project.md
   - name: 既存のビデオからのビデオの分析情報の作成
     href: video-indexer-create-new.md
   - name: アプリケーションへのウィジェットの埋め込み
@@ -79,9 +85,13 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: リージョン
     href: regions.md
-ms.openlocfilehash: 9b87d0495951823808cf64b125af35759b5881c6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+  - name: FAQ
+    href: faq.md
+  - name: コンプライアンス
+    href: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
+ms.openlocfilehash: f6caade807d37dfbf38e3f0dd47ab7f801c36a9a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015986"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793338"

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3052d856d83a7bf7cbb41a90f92b598c8c24cd5e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669151"
 documentType: LandingData
 title: Avere vFXT for Azure のドキュメント
 metadata:
@@ -17,14 +11,14 @@ metadata:
   ms.date: 10/31/2018
   ms.author: v-erkell
 abstract:
-  description: Avere vFXT for Azure では、データ集約型のハイ パフォーマンス コンピューティング (HPC) タスク向けのクラウドベースのキャッシュ レイヤーが提供します。 コンピューティング ノードの近くにファイルをキャッシュすることによって、Avere vFXT では読み取り時間が短縮されるため、負荷のピーク時でも作業をよりスムーズに行うことができます。 Avere vFXT は、搭載するクライアント コアが 1,000 から 40,000 までのシステムで最適に動作します。 <p>Avere vFXT は、既存のオンプレミス データ ストレージを利用して、Azure ベースのコンピューティング リソースから、データセンターに長期間保存されているアクティブなファイルへのローカル アクセスを可能にすることができます。
+  description: 'Avere vFXT for Azure では、データ集約型のハイ パフォーマンス コンピューティング (HPC) タスク向けのクラウドベースのキャッシュ レイヤーが提供します。 コンピューティング ノードの近くにファイルをキャッシュすることによって、Avere vFXT では読み取り時間が短縮されるため、負荷のピーク時でも作業をよりスムーズに行うことができます。 Avere vFXT は、搭載するクライアント コアが 1,000 から 40,000 までのシステムで最適に動作します。 <p>Avere vFXT は、既存のオンプレミス データ ストレージを利用して、Azure ベースのコンピューティング リソースから、データセンターに長期間保存されているアクティブなファイルへのローカル アクセスを可能にすることができます。'
 sections:
-- title: Avere vFXT for Azure を使ってみる
-  items:
-  - type: list
-    style: unordered
+  - title: Avere vFXT for Azure を使ってみる
     items:
-    - html: <a href="avere-vfxt-deploy-plan">Avere vFXT for Azure システムを計画する</a>
-    - html: <a href="avere-vfxt-deploy-overview">Avere vFXT デプロイについて学習する</a>
-    - html: <a href="avere-vfxt-prereqs">前提条件を満たす</a>
-    - html: <a href="avere-vfxt-deploy">Avere vFXT クラスターをデプロイする</a>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="avere-vfxt-deploy-plan">Avere vFXT for Azure システムを計画する</a>
+          - html: <a href="avere-vfxt-deploy-overview">Avere vFXT デプロイについて学習する</a>
+          - html: <a href="avere-vfxt-prereqs">前提条件を満たす</a>
+          - html: <a href="avere-vfxt-deploy">Avere vFXT クラスターをデプロイする</a>

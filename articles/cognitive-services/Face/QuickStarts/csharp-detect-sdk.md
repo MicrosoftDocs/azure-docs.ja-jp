@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Azure Face .NET SDK を使って画像から顔を検出する'
+title: クイック スタート:Azure Face .NET SDK を使って画像から顔を検出する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face SDK と C# を使用して、画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/07/2018
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 4fbbde167a8c895a71ab3614e8c3ecbce26604a9
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578159"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630698"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>クイック スタート: Face .NET SDK を使用して画像から顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>クイック スタート:Face .NET SDK を使用して画像から顔を検出する
 
 このクイック スタートでは、Face サービス SDK と C# を使用して、画像から人の顔を検出します。 このクイック スタートで取り上げているコードの実例については、GitHub の [Cognitive Services Vision csharp quickstarts](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) リポジトリにある Face プロジェクトを参照してください。
 
@@ -34,6 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
 1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーで目的のプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[参照]** タブをクリックし、**[プレリリースを含める]** を選択した後、次のパッケージを検索してインストールします。
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
+1. プロジェクトのすべての NuGet パッケージの最新バージョンをインストールしたことを確認します。 ソリューション エクスプローラーで目的のプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[更新]** タブをクリックして、表示されたすべてのパッケージの最新バージョンをインストールします。
 
 ## <a name="add-face-detection-code"></a>顔検出コードを追加する
 
@@ -47,21 +48,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="add-essential-fields"></a>必須フィールドを追加する
 
-**Program** クラスに次のフィールドを追加します。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `faceEndpoint` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください。 `localImagePath` と `remoteImageUrl` の値についても、実際の画像ファイルを指すパスに設定する必要があります。
+次のフィールドを含む **Program** クラスを追加します。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `faceEndpoint` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください。 `localImagePath` と `remoteImageUrl` の値についても、実際の画像ファイルを指すパスに設定する必要があります。
 
 `faceAttributes` フィールドは、簡単に言えば、特定の種類の属性を格納する配列です。 検出された顔について、どの情報を取得するかを指定します。
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=13-34)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=9-34)]
 
 ### <a name="create-and-use-the-face-client"></a>Face クライアントを作成して使用する
 
-次に、**Program** クラスの **Main** メソッドに次のコードを追加します。 これは、Face API クライアントを設定するものです。
+次に、次のコードを含む **Program** クラスの **Main** メソッドを追加します。 これは、Face API クライアントを設定するものです。
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=38-41)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=36-41)]
 
 また、新たに作成した Face クライアントを使ってリモートとローカルの画像から顔を検出するコード (下記) を **Main** メソッドに追加します。 実際の検出メソッドは、この後で定義します。 
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-49)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-50)]
 
 ### <a name="detect-faces"></a>顔を検出する
 
@@ -79,9 +80,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=103-116)]
 
-最後に、顔の属性データをコンソール出力に書き込む **DisplayAttributes** メソッドを定義します。
+最後に、顔の属性データをコンソール出力に書き込む **DisplayAttributes** メソッドを定義します。 その後、クラスと名前空間を閉じることができます。
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-123)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-125)]
 
 ## <a name="run-the-app"></a>アプリの実行
 
@@ -97,4 +98,4 @@ Male 37   Female 56
 このクイック スタートでは、Face API サービスを使ってローカルとリモートの両方の画像から顔を検出する簡単な .NET コンソール アプリケーションを作成しました。 この後は、一歩進んだチュートリアルに取り組んでみましょう。顔の情報を直感的な方法でユーザーに見せる方法をご覧いただけます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 画像から顔を検出して分析する WPF アプリの作成](../Tutorials/FaceAPIinCSharpTutorial.md)
+> [チュートリアル:画像から顔を検出して分析する WPF アプリの作成](../Tutorials/FaceAPIinCSharpTutorial.md)

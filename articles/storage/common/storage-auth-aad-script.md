@@ -1,105 +1,133 @@
 ---
-title: Azure AD ID で Azure CLI または PowerShell コマンドを実行し、Azure Storage にアクセスする (プレビュー) | Microsoft Docs
-description: Azure CLI と PowerShell では、Azure AD ID でログインし、Azure Storage コンテナー、キュー、そのデータにコマンドを実行できます。 セッションにはアクセス トークンが与えられ、呼び出し操作の承認に使用されます。 アクセス許可は、Azure AD ID に割り当てられた役割によって異なります。
+title: Azure AD ID で Azure CLI または PowerShell コマンドを実行し、BLOB とキューのデータにアクセスする | Microsoft Docs
+description: Azure CLI と PowerShell では、Azure AD ID でログインし、Azure Storage blob とキューのデータにコマンドを実行できます。 セッションにはアクセス トークンが与えられ、呼び出し操作の承認に使用されます。 アクセス許可は、Azure AD ID に割り当てられた RBAC ロールによって異なります。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/26/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 345e7c6985f03081048019912d636bba8e9a2361
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.subservice: common
+ms.openlocfilehash: a0972beff48e07b6ce8afdcec10581300f59ed41
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426483"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803580"
 ---
-# <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー)
+# <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>Azure AD ID を使用し、CLI または PowerShell で BLOB とキューのデータにアクセスする
 
-Azure Storage には、Azure CLI と PowerShell のためのプレビュー拡張機能があります。この機能では、Azure Active Directory (Azure AD) ID でログインし、スクリプト コマンドを実行できます。 Azure AD ID には、ユーザー、グループ、アプリケーション サービス プリンシパル、または [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用できます。 ストレージ リソースにアクセスするためのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD ID に割り当てることができます。 Azure Storage の RBAC ロールについては、「[Manage access rights to Azure Storage data with RBAC (Preview)](storage-auth-aad-rbac.md)」 (RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)) を参照してください。
+Azure Storage には、Azure CLI と PowerShell のための拡張機能があります。この機能では、Azure Active Directory (Azure AD) ID でサインインし、スクリプト コマンドを実行できます。 Azure AD ID には、ユーザー、グループ、アプリケーション サービス プリンシパル、または [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用できます。 BLOB とキューのデータにアクセスするためのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD ID に割り当てることができます。 Azure Storage の RBAC ロールの詳細については、[RBAC を使用した Azure ストレージ データへのアクセス権の管理](storage-auth-aad-rbac.md)」を参照してください。
 
-Azure AD ID で Azure CLI または PowerShell にログインするとき、その ID で Azure Storage にアクセスするためのアクセス トークンが返されます。 そのトークンが CLI または PowerShell によって自動的に使用され、Azure Storage に対する操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
-
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+Azure AD ID で Azure CLI または PowerShell にサインインするとき、その ID で Azure Storage にアクセスするためのアクセス トークンが返されます。 そのトークンが CLI または PowerShell によって自動的に使用され、Azure Storage に対する操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
 ## <a name="supported-operations"></a>サポート対象の操作
 
-プレビュー拡張機能は、コンテナーとキューの操作でサポートされています。 呼び出す操作は、Azure CLI または PowerShell にログインする Azure AD ID に与えられているアクセス許可に依存します。 Azure Storage のコンテナーまたはキューのアクセス許可は、ロールベースのアクセス制御 (RBAC) を介して割り当てられます。 たとえば、Data Reader ロールが ID に割り当てられている場合、コンテナーまたはキューからデータを読み取るスクリプト コマンドを実行できます。 Data Contributer ロールが ID に割り当てられている場合、コンテナー、キュー、またはそれらに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。 
+拡張機能は、コンテナーとキューの操作でサポートされています。 呼び出す操作は、Azure CLI または PowerShell にサインインする Azure AD ID に与えられているアクセス許可に依存します。 Azure Storage のコンテナーまたはキューのアクセス許可は、ロールベースのアクセス制御 (RBAC) を介して割り当てられます。 たとえば、Data Reader ロールが ID に割り当てられている場合、コンテナーまたはキューからデータを読み取るスクリプト コマンドを実行できます。 Data Contributor ロールが ID に割り当てられている場合、コンテナー、キュー、またはそれらに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。 
 
 コンテナーまたはキューでの各 Azure Storage 操作に必要なアクセス許可については、「[Permissions for calling REST operations](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」 (REST 操作を呼び出すためのアクセス許可) を参照してください。  
 
-## <a name="call-cli-commands-with-an-azure-ad-identity"></a>Azure AD ID で CLI コマンドを呼び出す
+## <a name="call-cli-commands-using-azure-ad-credentials"></a>Azure AD サインイン情報を使用して CLI コマンドを呼び出す
 
-Azure CLI 用のプレビュー拡張機能をインストールするには:
+Azure CLI では、BLOB とキューのデータに対するデータ操作について `--auth-mode` パラメーターがサポートされています。
 
-1. Azure CLI バージョン 2.0.32 以降がインストールされていることを確認してください。 `az --version` を実行し、インストールされたバージョンを確認します。
-2. 次のコマンドを実行し、プレビュー拡張機能をインストールします。 
-
-    ```azurecli
-    az extension add -n storage-preview
-    ```
-
-プレビュー拡張機能によって、サポートされているコマンドに新しい `--auth-mode` パラメーターが追加されます。
-
-- Azure AD ID を利用してサインインするために、`--auth-mode` パラメーターを `login` に設定します。
+- Azure AD セキュリティ プリンシパルを利用してサインインするために、`--auth-mode` パラメーターを `login` に設定します。
 - アカウントの認証パラメーターが与えられない場合、アカウント キーを問い合わせる目的で、`--auth-mode` パラメーターをレガシー `key` 値に設定します。 
 
-たとえば、Azure AD ID を利用して Azure CLI で BLOB をダウンロードするには、最初に `az login` を実行し、`--auth-mode` を `login` に設定した状態でコマンドを呼び出します。
+次の例では、Azure CLI から自分の Azure AD サインイン情報を使用して新しいストレージ アカウントにコンテナーを作成する方法を示します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。 
 
-```azurecli
-az login
-az storage blob download --account-name storagesamples --container sample-container --name myblob.txt --file myfile.txt --auth-mode login 
-```
+1. Azure CLI バージョン 2.0.46 以降がインストールされていることを確認してください。 `az --version` を実行し、インストールされたバージョンを確認します。
 
-`--auth-mode` パラメーターに関連付けられている環境変数は `AZURE_STORAGE_AUTH_MODE` です。
+1. ブラウザー ウィンドウで `az login` と認証を実行します。 
 
-## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Azure AD ID で PowerShell コマンドを呼び出す
-
-Azure PowerShell は、次のプレビュー モジュールのいずれかについてのみ、Azure AD ID でのサインインをサポートしています。 
-
-- 4.4.0-preview 
-- 4.4.1-preview 
-
-Azure PowerShell を使用し、Azure AD ID でサインインするには:
-
-1. Azure PowerShell の以前のインストールがある場合はアンインストールします。
-
-    - **[設定]** の **[アプリと機能]** 設定を使用して、Windows から Azure PowerShell の以前のインストールを削除します。
-    - `%Program Files%\WindowsPowerShell\Modules` からすべての **Azure*** モジュールを削除します。
-
-1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 Windows PowerShell ウィンドウを開き、次のコマンドを実行して最新バージョンをインストールします。
- 
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
+    ```azurecli
+    az login
     ```
-1. PowerShellGet のインストール後、PowerShell ウィンドウを閉じて再び開きます。 
+    
+1. 必要なサブスクリプションを指定します。 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) を使用してリソース グループを作成します。 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)を使用して、このリソース グループ内にストレージ アカウントを作成します。 
 
-1. 最新バージョンの Azure PowerShell をインストールします。
+    ```azurecli
+    az account set --subscription <subscription-id>
 
-    ```powershell
-    Install-Module AzureRM –Repository PSGallery –AllowClobber
+    az group create \
+        --name sample-resource-group-cli \
+        --location eastus
+
+    az storage account create \
+        --name <storage-account> \
+        --resource-group sample-resource-group-cli \
+        --location eastus \
+        --sku Standard_LRS \
+        --encryption-services blob
+    ```
+    
+1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 RBAC ロールの割り当ての詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
+
+    > [!IMPORTANT]
+    > RBAC ロールの割り当ての反映には数分かかることがあります。
+    
+1. [az storage container create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) コマンドを、`--auth-mode` パラメーターに `login` を設定して呼び出し、自分の Azure AD サインイン情報を使用してコンテナーを作成します。
+
+    ```azurecli
+    az storage container create \ 
+        --account-name <storage-account> \ 
+        --name sample-container \
+        --auth-mode login
     ```
 
-1. Azure AD をサポートする Azure Storage プレビュー モジュールのいずれかをインストールします。
+`--auth-mode` パラメーターに関連付けられている環境変数は `AZURE_STORAGE_AUTH_MODE` です。 この環境変数に適切な値を指定すれば、Azure Storage データ操作を呼び出すたびにパラメーターに値を設定する必要はなくなります。
+
+## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Azure AD サインイン情報を使用して PowerShell コマンドを呼び出す
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Azure PowerShell を使用してサインインし Azure Storage に対する後続操作を Azure AD サインイン情報を使用して実行するには、ストレージ アカウントを参照するストレージ コンテキストを、`-UseConnectedAccount`パラメーターを含めて作成します。
+
+次の例では、Azure PowerShell から自分の Azure AD サインイン情報を使用して新しいストレージ アカウントにコンテナーを作成する方法を示します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
+
+1. `Connect-AzAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従って自分の Azure AD サインイン情報を入力します。 
 
     ```powershell
-    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
+    Connect-AzAccount
     ```
-1. PowerShell ウィンドウを閉じて再び開きます。
-1. [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) コマンドレットを呼び出してコンテキストを作成し、`-UseConnectedAccount` パラメーターを含めます。 
-1. Azure AD ID でコマンドレットを呼び出すには、新しく作成したコンテキストをコマンドレットに渡します。
+    
+1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を呼び出して、Azure リソース グループを作成します。 
 
-次の例では、Azure AD ID を使用し、Azure PowerShell からコンテナーの BLOB を一覧表示する方法を示しています。 プレースホルダーのアカウント名とコンテナー名は、必ず実際の値に置き換えてください。 
+    ```powershell
+    $resourceGroup = "sample-resource-group-ps"
+    $location = "eastus"
+    New-AzResourceGroup -Name $resourceGroup -Location $location
+    ```
 
-```powershell
-$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
-Get-AzureStorageBlob -Container sample-container -Context $ctx 
-```
+1. [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) を呼び出して、ストレージ アカウントを作成します。
+
+    ```powershell
+    $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
+      -Name "<storage-account>" `
+      -SkuName Standard_LRS `
+      -Location $location `
+    ```
+
+1. [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext) を呼び出して、新しいストレージ アカウントを指定するストレージ アカウント コンテキストを取得します。 ストレージ アカウントを操作するときは、サインイン情報を繰り返し渡す代わりに、このコンテキストを参照することができます。 後続のデータ操作を自分の Azure AD サインイン情報を使用して呼び出すには、`-UseConnectedAccount` パラメーターを含めます。
+
+    ```powershell
+    $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
+    ```
+
+1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 RBAC ロールの割り当ての詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
+
+    > [!IMPORTANT]
+    > RBAC ロールの割り当ての反映には数分かかることがあります。
+
+1. [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) を呼び出して、コンテナーを作成します。 この呼び出しでは前の手順で作成したコンテキストが使用されるため、コンテナーは自分の Azure AD サインイン情報を使用して作成されます。 
+
+    ```powershell
+    $containerName = "sample-container"
+    New-AzStorageContainer -Name $containerName -Context $ctx
+    ```
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Storage の RBAC ロールについては、[RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。
-- Azure Storage を使用して Azure リソースのマネージド ID を使用する方法については、「[Azure マネージド サービス ID (プレビュー) から Azure AD の認証を受ける](storage-auth-aad-msi.md)」を参照してください。
+- Azure Storage の RBAC ロールの詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
+- Azure Storage を使用して Azure リソースのマネージド ID を使用する方法については、[Azure リソースに対する Azure マネージド ID を使用した BLOB およびキューへのアクセスの認証](storage-auth-aad-msi.md)に関するページを参照してください。
 - ストレージ アプリケーション内からコンテナーやキューへのアクセスを承認する方法については、[ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)方法に関するページを参照してください。
-- Azure の BLOB とキューの Azure AD 統合に関する詳細については、Azure Storage チームのブログ投稿「[Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)」(Azure Storage の Azure AD Authentication のプレビューの発表) を参照してください。

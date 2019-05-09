@@ -3,8 +3,8 @@ title: EventFlow を使用した Azure Service Fabric のイベントの集計 |
 description: Azure Service Fabric クラスターの監視と診断に EventFlow を使用したイベントの集計と収集について説明します。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
-manager: timlt
+author: srrengar
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 9b851b2d75cf78a02dd223788085ac9a0963376e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 2/25/2019
+ms.author: srrengar
+ms.openlocfilehash: bdc6c9476529b986f425d56544fd4b1afd8a864e
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211356"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668298"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow を使用したイベントの集計と収集
 
-[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) では、ノードから 1 つ以上の監視対象にイベントをルーティングすることができます。 EventFlow は NuGet パッケージとしてサービス プロジェクトに含まれるため、EventFlow のコードと構成はサービスと共に移動します。これにより、Azure 診断で説明したノードごとの構成の問題が排除されます。 EventFlow はサービス プロセス内で実行され、構成済みの出力に直接接続されます。 この直接接続により、EventFlow は Azure、コンテナー、オンプレミスの各サービス デプロイで機能します。 各 EventFlow パイプラインは外部接続を行うため、コンテナーなどの高密度シナリオで EventFlow を実行する場合は注意してください。 そのため、複数のプロセスをホストしている場合、いくつかの送信接続が発生することになります。 Service Fabric アプリケーションでは、`ServiceType` のすべてのレプリカが同じプロセス内で実行され、送信接続の数が限られるため、これはそれほど問題にはなりません。 また、EventFlow ではイベントのフィルター処理も行われるので、指定したフィルターと一致するイベントだけが送信されます。
+[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) では、ノードから 1 つ以上の監視対象にイベントをルーティングすることができます。 EventFlow は NuGet パッケージとしてサービス プロジェクトに含まれるため、EventFlow のコードと構成はサービスと共に移動します。これにより、Azure Diagnostics で説明したノードごとの構成の問題が排除されます。 EventFlow はサービス プロセス内で実行され、構成済みの出力に直接接続されます。 この直接接続により、EventFlow は Azure、コンテナー、オンプレミスの各サービス デプロイで機能します。 各 EventFlow パイプラインは外部接続を行うため、コンテナーなどの高密度シナリオで EventFlow を実行する場合は注意してください。 そのため、複数のプロセスをホストしている場合、いくつかの送信接続が発生することになります。 Service Fabric アプリケーションでは、`ServiceType` のすべてのレプリカが同じプロセス内で実行され、送信接続の数が限られるため、これはそれほど問題にはなりません。 また、EventFlow ではイベントのフィルター処理も行われるので、指定したフィルターと一致するイベントだけが送信されます。
 
 ## <a name="set-up-eventflow"></a>EventFlow の設定
 
@@ -142,7 +142,7 @@ namespace Stateless1
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>eventFlowConfig で Service Fabric の設定とアプリケーション パラメーターを使用する
 
-EventFlow は、EventFlow 設定を構成する Service Fabric の設定とアプリケーションのパラメーターの使用をサポートします。 以下の特殊な構文を値にして Service Fabric の設定パラメーターを参照できます。
+EventFlow では、EventFlow 設定を構成する Service Fabric の設定とアプリケーションのパラメーターの使用がサポートされます。 以下の特殊な構文を値にして Service Fabric の設定パラメーターを参照できます。
 
 ```json
 servicefabric:/<section-name>/<setting-name>
@@ -157,5 +157,5 @@ servicefabric:/<section-name>/<setting-name>
 ## <a name="next-steps"></a>次の手順
 
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Log Analytics を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
+* [Azure Monitor ログを使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow のドキュメント](https://github.com/Azure/diagnostics-eventflow)

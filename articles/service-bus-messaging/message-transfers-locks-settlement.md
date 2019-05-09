@@ -3,22 +3,22 @@ title: Azure Service Bus メッセージの転送、ロック、および解決 
 description: Service Bus メッセージの転送および解決処理の概要
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: a1835e26f67427f84abd8a3cf24ad196fec8e99d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: aschhab
+ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854424"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846449"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>メッセージの転送、ロック、および解決
 
@@ -96,7 +96,7 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>受信操作の解決
 
-受信操作を行う Service Bus API クライアントには、*受信して削除*と*ピーク ロック*の 2 つの明示的なモードがあります。
+受信操作を行う Service Bus API クライアントでは、明示的なモードが 2 つ有効になっています。*受信して削除*と*ピーク ロック*です。
 
 [受信して削除](/dotnet/api/microsoft.servicebus.messaging.receivemode)モードでは、ブローカーは、ブローカーが受信クライアントに送信するすべてのメッセージを、送信時点で解決済みとみなします。 つまり、ブローカーが送信するとただちにメッセージは消費されたとみなされます。 メッセージの転送が失敗した場合、メッセージは失われます。
 

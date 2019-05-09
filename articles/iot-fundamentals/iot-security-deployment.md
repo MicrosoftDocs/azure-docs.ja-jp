@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 01/17/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: b2d69f6ee24ced392da09585c9e934f647efbf14
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b6a444e64e58611e36208cfa615b4a148de3596c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286879"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182678"
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 

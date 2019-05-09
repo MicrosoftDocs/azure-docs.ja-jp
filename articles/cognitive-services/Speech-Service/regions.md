@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Speech Service のリージョンに関するリファレンスです。
 services: cognitive-services
 author: mahilleb-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: mahilleb
+ms.date: 03/12/2019
+ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: eb3697eefb5835305b2ec80ca1e77ccade19e44f
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091647"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578190"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 
@@ -26,7 +26,7 @@ Speech Service を使用すると、アプリケーションで音声をテキ�
 
 ## <a name="speech-sdk"></a>Speech SDK
 
-[Speech Service SDK](speech-sdk.md) では、リージョンは文字列として (たとえば、C# 用の Speech SDK では `SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。
+[Speech SDK](speech-sdk.md) では、リージョンは文字列として (たとえば、C# 用の Speech SDK では `SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。
 
 ### <a name="speech-recognition-and-translation"></a>音声認識と翻訳
 
@@ -38,19 +38,41 @@ Speech SDK は、**音声認識**と**翻訳**のために以下のリージョ�
  米国西部 2 | `westus2` | https://westus2.cris.ai
  米国東部 | `eastus` | https://eastus.cris.ai
  米国東部 2 | `eastus2` | https://eastus2.cris.ai
+ 米国中央部 | `centralus` | https://centralus.cris.ai
+ 米国中北部 | `northcentralus` | https://northcentralus.cris.ai
+ 米国中南部 | `southcentralus` | https://southcentralus.cris.ai
+ インド中部 | `centralindia` | https://centralindia.cris.ai
  東アジア | `eastasia` | https://eastasia.cris.ai
  東南アジア | `southeastasia` | https://southeastasia.cris.ai
+ 東日本 | `japaneast` | https://japaneast.cris.ai
+ 韓国中部 | `koreacentral` | https://koreacentral.cris.ai
+ オーストラリア東部 | `australiaeast` | https://australiaeast.cris.ai
+ カナダ中部 | `canadacentral` | https://canadacentral.cris.ai
  北ヨーロッパ | `northeurope` | https://northeurope.cris.ai
  西ヨーロッパ | `westeurope` | https://westeurope.cris.ai
-
+ 英国南部 | `uksouth` | https://uksouth.cris.ai
+ フランス中部 | `francecentral` | https://francecentral.cris.ai
 
 ### <a name="intent-recognition"></a>意図認識
 
-Speech SDK の**意図認識**は、リージョンのサポートを LUIS と共有します。 使用できるリージョンの詳細な一覧については、[公開リージョンとエンドポイント - LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions) に関するページを参照してください。
+Speech SDK を介して**意図認識**を使用できるリージョンは以下の通りです。
 
-Speech SDK 経由で**意図認識**に使用可能なリージョンは、[Language Understanding サービスのリージョンのページ](/azure/cognitive-services/luis/luis-reference-regions)に一覧表示されています。
+ グローバル リージョン | リージョン | Speech SDK パラメーター
+ ------|-------|--------
+ アジア | 東アジア | `eastasia`
+ アジア | 東南アジア | `southeastasia`
+ オーストラリア | オーストラリア東部 | `australiaeast`
+ ヨーロッパ | 北ヨーロッパ | `northeurope`
+ ヨーロッパ | 西ヨーロッパ | `westeurope`
+ 北米 | 米国東部 | `eastus`
+ 北米 | 米国東部 2 | `eastus2`
+ 北米 | 米国中南部 | `southcentralus`
+ 北米 | 米国中西部 | `westcentralus`
+ 北米 | 米国西部 | `westus`
+ 北米 | 米国西部 2 | `westus2`
+ 南アメリカ | ブラジル南部 | `brazilsouth`
 
-一覧の各公開リージョンについては、提供されている **API リージョン名**を使用します。 たとえば、米国西部の場合は `westus` を使用します。
+これは、[Language Understanding サービス (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) でサポートされている公開リージョンのサブセットです。
 
 ## <a name="rest-apis"></a>REST API
 
@@ -58,12 +80,12 @@ Speech Service は、音声テキスト変換要求とテキスト読み上げ�
 
 ### <a name="speech-to-text"></a>音声テキスト変換
 
-音声テキスト変換のリファレンス ドキュメントについては、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text) に関するページを参照してください。
+音声テキスト変換のリファレンス ドキュメントについては、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) に関するページを参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 ### <a name="text-to-speech"></a>テキスト読み上げ
 
-テキスト読み上げのリファレンス ドキュメントについては、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text) に関するページを参照してください。
+テキスト読み上げのリファレンス ドキュメントについては、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) に関するページを参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

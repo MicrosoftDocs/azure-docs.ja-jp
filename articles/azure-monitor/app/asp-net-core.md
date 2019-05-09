@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 19830ade92e5d2a046abc8a2ad00c086a5bf62ec
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ae0d3658d9ae8534b1596fa7363495926cd0dfe7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972789"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520753"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights for ASP.NET Core
 
@@ -62,7 +62,7 @@ ASP.NET Core 2 以降がベースのプロジェクトを扱う Visual Studio 20
    ![Visual Studio の [Application Insights の検索] のスクリーンショット](./media/asp-net-core/006-search.png)
 
 > [!NOTE]
-> ASP.NET Core プロジェクトに Application Insights を追加する前に、[Application Insights の検索](../../application-insights/app-insights-visual-studio.md)や [CodeLens](../../application-insights/app-insights-visual-studio-codelens.md) のような機能を Visual Studio のローカルで有効にする方法の詳細については、「[Application Insights の検索 (続き)](#application-insights-search-continued)」を参照してください。
+> ASP.NET Core プロジェクトに Application Insights を追加する前に、[Application Insights の検索](../../azure-monitor/app/visual-studio.md)や [CodeLens](../../azure-monitor/app/visual-studio-codelens.md) のような機能を Visual Studio のローカルで有効にする方法の詳細については、「[Application Insights の検索 (続き)](#application-insights-search-continued)」を参照してください。
 
 ## <a name="add-application-insights-telemetry"></a>Application Insights Telemetry の追加
 
@@ -88,15 +88,15 @@ Application Insights は低オーバーヘッドです。 Application Insights �
 
 - 1 つの新規ファイルが作成されています。
 
-  -  _ConnectedService.json_
+  - _ConnectedService.json_
 
     ```json
     {
-      "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-      "Version": "8.12.10405.1",
-      "GettingStartedDocument": {
-        "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-      }
+     "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
+     "Version": "8.12.10405.1",
+     "GettingStartedDocument": {
+       "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
+     }
     }
     ```
 
@@ -181,6 +181,10 @@ Application Insights は低オーバーヘッドです。 Application Insights �
       }
       ```
 
+## <a name="send-ilogger-logs-to-application-insights"></a>ILogger ログを Application Insights に送信する
+
+Application Insights では、ILogger を介して送信されるログのキャプチャがサポートされます。 ログ記録を設定するには、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)のコード サンプルをご確認ください。
+
 ## <a name="synthetic-transactions-with-powershell"></a>PowerShell を使用した代理トランザクション
 
 代理トランザクションを使用してアプリに対する要求を自動化するには、以下の手順に従います。
@@ -193,7 +197,7 @@ Application Insights は低オーバーヘッドです。 Application Insights �
 
 3. 次の PowerShell ループを実行して、テスト アプリを使用して 100 個の代理トランザクションを作成します。 `localhost:` の後のポート番号を、前の手順でコピーした URI と一致するように変更します。 例: 
 
-   ```PowerShell
+   ```powershell
    for ($i = 0 ; $i -lt 100; $i++)
    {
     Invoke-WebRequest -uri http://localhost:50984/
@@ -404,7 +408,7 @@ Visual Studio .NET Core プロジェクトで Application Insights を完全に�
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
 ## <a name="next-steps"></a>次の手順
-* [ユーザー フローの探索](../../application-insights/app-insights-usage-flows.md): ユーザーがアプリ内をどのように移動しているかを把握します。
-* [スナップショット コレクションを構成](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)して、例外がスローされたときのソース コードと変数の状態を確認します。
+* [ユーザー フローの探索](../../azure-monitor/app/usage-flows.md): ユーザーがアプリ内をどのように移動しているかを把握します。
+* [スナップショット コレクションを構成](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)して、例外がスローされたときのソース コードと変数の状態を確認します。
 * [API の使用](../../azure-monitor/app/api-custom-events-metrics.md) : アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)の使用: 世界中からアプリを常にチェックします。

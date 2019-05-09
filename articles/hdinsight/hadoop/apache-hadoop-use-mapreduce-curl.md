@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: ff905f34ab63027e9708082c4690e4275220854f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b422074c33f52a6819d2a05144a85768a2e484a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406795"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011922"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して MapReduce ジョブを実行する
 
@@ -107,10 +107,10 @@ HDInsight クラスター上の Apache Hadoop で Apache Hive WebHCat REST API �
     URI の末尾 (/mapreduce/jar) により、この要求では jar ファイルのクラスから MapReduce ジョブが起動されることが WebHCat に通知されます。 このコマンドで使用されるパラメーターの意味は次のとおりです。
 
    * **-d**: `-G` が使用されていないため、要求は既定で POST メソッドになります。 `-d` は要求で送信されるデータ値を指定します。
-    * **user.name**: コマンドを実行するユーザー
-    * **jar**: 実行されるクラスを含む jar ファイルの場所
-    * **class**: MapReduce ロジックを含むクラス
-    * **arg**: MapReduce ジョブに渡される引数。 この場合、入力テキスト ファイルと出力に使用するディレクトリです
+     * **user.name**: コマンドを実行するユーザー
+     * **jar**: 実行されるクラスを含む jar ファイルの場所
+     * **class**: MapReduce ロジックを含むクラス
+     * **arg**: MapReduce ジョブに渡される引数。 この場合、入力テキスト ファイルと出力に使用するディレクトリです
 
    このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。
 

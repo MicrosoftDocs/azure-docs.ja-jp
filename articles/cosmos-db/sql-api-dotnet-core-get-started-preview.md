@@ -3,17 +3,17 @@ title: .NET Core コンソール アプリケーションを作成して Azure C
 description: Azure Cosmos DB SQL API .NET Core SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成するチュートリアル。
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 917cf6ddf23fb9240aa6f2cef8add14c66d0cb06
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 828d0ced775d46b0e966969acb3220d2a678c57b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973174"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440048"
 ---
 # <a name="build-a-net-core-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>.NET Core コンソール アプリケーションを作成して Azure Cosmos DB SQL API アカウントのデータを管理する (SDK バージョン 3 プレビュー)
 
@@ -59,7 +59,7 @@ SQL API および .NET Core SDK を使用して Xamarin iOS、Android、また�
 
   - 独自のエディターを使用するか、[Visual Studio Code](https://code.visualstudio.com/) をダウンロードできます。Visual Studio Code は無料で、Windows、Linux、MacOS で動作します。
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a>ステップ 1:Azure Cosmos DB アカウントを作成する
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1:Azure Cosmos DB アカウントを作成する
 
 それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「 [Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「[Visual Studio プロジェクトをセットアップする](#SetupVS)」に進んでください。
 
@@ -70,15 +70,15 @@ SQL API および .NET Core SDK を使用して Xamarin iOS、Android、また�
 1. コンピューターで **Visual Studio 2017** を開きます。
 1. **[ファイル]** メニューで、**[新規]**、**[プロジェクト]** の順に選択します。
 1. **[新しいプロジェクト]** ダイアログで、**[Visual C#]** / **[コンソール アプリ (.NET Core)]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。
-   ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/sql-api-dotnetcore-get-started/dotnetcore-tutorial-visual-studio-new-project.png)
+   ![[新しいプロジェクト] ウィンドウのスクリーンショット](./media/sql-api-dotnetcore-get-started/dotnetcore-tutorial-visual-studio-new-project.png)
 1. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-   ![プロジェクトの右クリック メニューのスクリーン ショット](./media/sql-api-dotnetcore-get-started/dotnetcore-tutorial-visual-studio-manage-nuget.png)
+   ![プロジェクトの右クリック メニューのスクリーンショット](./media/sql-api-dotnetcore-get-started/dotnetcore-tutorial-visual-studio-manage-nuget.png)
 
 1. **[NuGet]** タブの **[参照]** をクリックし、検索ボックスに「**Microsoft.Azure.Cosmos**」と入力します。
 1. 結果の中から **Microsoft.Azure.Cosmos** を探し、**[インストール]** をクリックします。
    Azure Cosmos DB SQL API クライアント ライブラリのパッケージ ID は [Microsoft Azure Cosmos DB クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) です。
-   ![Azure Cosmos DB クライアント SDK を見つける NuGet メニューのスクリーン ショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
+   ![Azure Cosmos DB クライアント SDK を見つける NuGet メニューのスクリーンショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
    ソリューションの変更の確認に関するメッセージが表示されたら、**[OK]** をクリックします。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** をクリックします。
 
@@ -311,7 +311,7 @@ SQL API および .NET Core SDK を使用して Xamarin iOS、Android、また�
    ```csharp
    /*
        Create the container if it does not exist.
-       Specifiy "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
+       Specify "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
    */
    private async Task CreateContainer()
    {

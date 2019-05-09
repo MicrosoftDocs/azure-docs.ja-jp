@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 227ea446a75c167be27128b15de1d3c216e6856d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3d35860452aabb6aecc4e8549c7b5ce4447d7aa4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363378"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789858"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化
 
 インフラストラクチャのセキュリティ体制の検証は、多くのお客様が直面する課題です。 この課題は Azure の VM にも同様に存在します。 適用するネットワーク セキュリティ グループ (NSG) 規則に基づいて、同様のセキュリティ プロファイルを確保することが重要です。 セキュリティ グループ ビューを使用すれば、NSG 内の VM に適用された規則の一覧を取得できます。 適切な NSG セキュリティ プロファイルを定義し、一週間ごとにセキュリティ グループ ビューを起動して、その出力を適切なプロファイルと比較してレポートを作成することができます。 この方法で、所定のセキュリティ プロファイルに準拠していないすべての VM を簡単に特定できます。
 
 ネットワーク セキュリティ グループについてよくご存じでない場合は、「[ネットワーク セキュリティの概要](../virtual-network/security-overview.md)」をご覧ください。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -46,7 +49,7 @@ ms.locfileid: "34363378"
 
 ## <a name="retrieve-rule-set"></a>規則セットの取得
 
-この例の最初の手順では、既存の基準を処理します。 次の例は、`Get-AzureRmNetworkSecurityGroup` コマンドレットを使用して既存のネットワーク セキュリティ グループから抽出した json です。これをこの例の基準として使用します。
+この例の最初の手順では、既存の基準を処理します。 次の例は、`Get-AzNetworkSecurityGroup` コマンドレットを使用して既存のネットワーク セキュリティ グループから抽出した json です。これをこの例の基準として使用します。
 
 ```json
 [
@@ -123,19 +126,19 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher の取得
 
-次の手順では、Network Watcher インスタンスを取得します。 `$networkWatcher` 変数は、`AzureRmNetworkWatcherSecurityGroupView` コマンドレットに渡されます。
+次の手順では、Network Watcher インスタンスを取得します。 `$networkWatcher` 変数は、`AzNetworkWatcherSecurityGroupView` コマンドレットに渡されます。
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 ```
 
 ## <a name="get-a-vm"></a>VM の取得
 
-`Get-AzureRmNetworkWatcherSecurityGroupView` コマンドレットを実行する仮想マシンが必要です。 次の例では VM オブジェクトを取得します。
+`Get-AzNetworkWatcherSecurityGroupView` コマンドレットを実行する仮想マシンが必要です。 次の例では VM オブジェクトを取得します。
 
 ```powershell
-$VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
+$VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
 ## <a name="retrieve-security-group-view"></a>セキュリティ グループ ビューの取得
@@ -143,7 +146,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 次に、セキュリティ グループ ビューの結果を取得します。 この結果は、先ほど表示した "基準" の json と比較されます。
 
 ```powershell
-$secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
+$secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
 ## <a name="analyzing-the-results"></a>結果の分析

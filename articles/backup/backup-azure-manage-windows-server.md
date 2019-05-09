@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 716ddcaf61c4d7db40821056dc759667f9376023
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871337"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268874"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
@@ -40,7 +40,7 @@ ms.locfileid: "52871337"
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. コンテナーの一覧でコンテナーをクリックして、その **[概要]** ダッシュボードを開きます。 
+4. コンテナーの一覧でコンテナーをクリックして、その **[概要]** ダッシュボードを開きます。
 
     ![Recovery Services コンテナーのダッシュボード](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -75,7 +75,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-バックアップ アラート レポートには、コンテナーのアラートが一覧表示されます。 
+バックアップ アラート レポートには、コンテナーのアラートが一覧表示されます。
 
 ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
@@ -100,10 +100,10 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 * アラート:
 * バックアップ項目
 * 保護されるサーバー
-* severity
-* duration
+* 重大度
+* 期間
 * 作成時刻
-* Status
+* 状態
 * 最新発生時刻
 
 ### <a name="change-the-details-in-alerts-report"></a>アラート レポートで詳細を変更する
@@ -124,7 +124,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ### <a name="change-the-filter-in-alerts-report"></a>アラート レポートでフィルターを変更する
 
-アラートの重大度、状態、開始時刻、終了時刻を変更するには、**[フィルター]** メニューを使用します。 
+アラートの重大度、状態、開始時刻、終了時刻を変更するには、**[フィルター]** メニューを使用します。
 
 > [!NOTE]
 > バックアップ アラートのフィルターを編集しても、コンテナーの [概要] ダッシュボードに表示されている重大アラートまたは警告アラートは変化しません。
@@ -184,7 +184,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 **[バックアップ ジョブ]** メニューには、項目の種類、操作、状態、開始時刻、および継続時間に関する情報が表示されます。  
 
-[バックアップ ジョブ] メニューを開くには、コンテナーのメイン メニューで **[バックアップ ジョブ]** をクリックします。 
+[バックアップ ジョブ] メニューを開くには、コンテナーのメイン メニューで **[バックアップ ジョブ]** をクリックします。
 
 ![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -216,19 +216,19 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 * Azure Storage
 * Azure ワークロード
 
-#### <a name="operation"></a>Operation
+#### <a name="operation"></a>操作
 
 1 つの操作またはすべての操作を表示することができます。 2 つまたは 3 つの操作を選択することはできません。 使用可能な操作は次のとおりです。
 
 * すべての操作
-* Register
+* 登録
 * バックアップの構成
 * バックアップ
 * 復元
 * バックアップを無効にする
 * バックアップ データの削除
 
-#### <a name="status"></a>Status
+#### <a name="status"></a>状態
 
 すべての状態または 1 つの状態を表示できます。 2 つまたは 3 つの状態を選択することはできません。 使用可能な状態は次のとおりです。
 
@@ -236,7 +236,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 * 完了
 * 進行中
 * 失敗
-* Canceled
+* キャンセル
 * 完了 (警告あり)
 
 #### <a name="start-time"></a>開始時刻
@@ -263,17 +263,14 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-**Q1.Azure バックアップ エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。**
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure バックアップ エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。
+Azure portal に Azure バックアップ エージェント ジョブの状態が反映されるまでには、最大で 15 分かかります。
 
-A1. Azure portal に Azure バックアップ エージェント ジョブの状態が反映されるまでには、最大で 15 分かかります。
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。
+アラートは、Azure のバックアップが失敗してから 20 分以内に発生します。
 
-**Q2.バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。**
-
-A2. アラートは、Azure のバックアップが失敗してから 20 分以内に発生します。
-
-**Q3.通知が設定されているのに、電子メールが送信されないことはありますか。**
-
-A3. はい。 次のような状況では、通知は送信されません。
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>通知が設定されているのに、電子メールが送信されないことはありますか。
+はい。 次のような状況では、通知は送信されません。
 
 * 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した
 * ジョブが取り消された
@@ -296,4 +293,4 @@ A3. はい。 次のような状況では、通知は送信されません。
 ## <a name="next-steps"></a>次の手順
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-*  [Azure Backup フォーラム](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+* [Azure Backup フォーラム](https://go.microsoft.com/fwlink/p/?LinkId=290933)

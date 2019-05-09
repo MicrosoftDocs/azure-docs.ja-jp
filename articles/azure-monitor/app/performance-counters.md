@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: d5c7e1815fe27d9b851407a8e6f17d04d7bc1cad
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d38a575af54f044d64efc67b5483a67ffcd2fcd6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004723"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837611"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -122,8 +122,8 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 
 * *例外* は、グラフのサンプリング時間間隔中にポータルが受信した TrackException レポートの数です。 これには、コード内で TrackException 呼び出しが記述されている処理済みの例外のみが含まれ、 [未処理の例外](../../azure-monitor/app/asp-net-exceptions.md)はいずれも含められません。 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.Net Core アプリケーションのパフォーマンス カウンター
-パフォーマンス カウンターは、アプリケーションが .NET Framework 全体を対象とする場合のみサポートされます。 .Net Core アプリケーションのパフォーマンス カウンターを収集する能力はありません。
+## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.NET Core アプリケーションのパフォーマンス カウンター
+パフォーマンス カウンターは、アプリケーションが .NET Framework 全体を対象とする場合のみサポートされます。 .NET Core アプリケーションのパフォーマンス カウンターを収集する機能はありません。
 
 ## <a name="alerts"></a>アラート
 他のメトリックと同様に、パフォーマンス カウンターが指定した制限を超えた場合に警告する[アラートを設定](../../azure-monitor/app/alerts.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。

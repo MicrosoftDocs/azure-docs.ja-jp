@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 9bf48a994c3efeb433bcb99342f7a477d87858eb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283588"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58918690"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Video Indexer Web サイトを使用して言語モデルをカスタマイズする
 
@@ -116,6 +116,34 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 これを行うと新しいウィンドウが開き、削除操作は元に戻せないというメッセージが表示されます。 新しいウィンドウで **[削除]** オプションをクリックします。
 
 これにより、アカウントから言語モデルが完全に削除されます。 削除された言語モデルを使用していたビデオでは、ユーザーがビデオのインデックスを再作成するまで、同じインデックスが保持されます。 ビデオのインデックスを再作成すると、ビデオに新しい言語モデルを割り当てることができます。 それ以外の場合は、Video Indexer により、既定のモデルを使用してビデオのインデックスが再作成されます。 
+
+## <a name="customize-language-models-by-correcting-transcripts"></a>トランスクリプトの変更による言語モデルのカスタマイズ
+
+Video Indexer では、ユーザーがそのビデオの文字起こしに対して行う実際の変更に基づく、言語モデルの自動カスタマイズがサポートされています。
+
+1. トランスクリプトを変更するには、自分のアカウントのビデオから、編集したいビデオを開きます。 **[タイムライン]** タブを選択します。
+
+    ![言語モデルのカスタマイズ](./media/customize-language-model/timeline.png)
+1. 鉛筆アイコンをクリックして、自分の文字起こしのトランスクリプトを編集します。 
+
+    ![言語モデルのカスタマイズ](./media/customize-language-model/edits.png)
+
+    Video Indexer によって、ビデオの文字起こし内の変更した行がすべてキャプチャされ、"From transcript edits" というテキスト ファイルにそれらが自動的に追加されます。 これらの編集は、このビデオにインデックスを付けるために使用された特定の言語モデルを再トレーニングするために使用されます。 
+    
+    このビデオのインデックスを付けるときに言語モデルを指定しなかった場合、このビデオの編集はすべて、ビデオの検出された言語内でアカウント適応と呼ばれる既定の言語モデルに格納されます。 
+    
+    同じ行に対して複数の編集が加えられた場合、変更された行の最新バージョンのみが、言語モデルの更新に使用されます。  
+    
+    > [!NOTE]
+    > カスタマイズに使用されるのは、テキストの変更のみです。 つまり、実際の単語に関係しない変更 (句読点やスペースなど) は対象になりません。 
+    
+1. [コンテンツ モデルのカスタマイズ] ページの [言語] タブに、トランスクリプトの変更が表示されるのがわかります。
+
+    ![言語モデルのカスタマイズ](./media/customize-language-model/customize.png)
+
+   自分の各言語モデルの "From transcript edits" ファイルを見るには、それをクリックして開きます。 
+
+    ![From transcript edits](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>次の手順
 

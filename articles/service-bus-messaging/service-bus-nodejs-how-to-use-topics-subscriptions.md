@@ -3,23 +3,23 @@ title: Azure Service Bus のトピックとサブスクリプションを Node.j
 description: Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/16/2018
-ms.author: spelluru
-ms.openlocfilehash: 00ae254a9e9d40ec88802f2f46666aff72cb242a
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 04/15/2019
+ms.author: aschhab
+ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377652"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608879"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Node.js で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -35,7 +35,12 @@ ms.locfileid: "49377652"
 
 トピックとサブスクリプションの詳細については、「[次のステップ](#next-steps)」を参照してください。
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+## <a name="prerequisites"></a>前提条件
+1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+2. 従うべき手順を「[クイック スタート:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。
+
+    > [!NOTE]
+    > このクイック スタートでは、**Node.js** を使用して **トピック**と、そのトピックへの**サブスクリプション**を作成します。 
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web サイト」をご覧ください。

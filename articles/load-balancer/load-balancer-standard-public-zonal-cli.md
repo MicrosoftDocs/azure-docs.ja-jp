@@ -1,7 +1,7 @@
 ---
 title: Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 titlesuffix: Azure Load Balancer
-description: Azure CLI でゾーンのパブリック IP アドレス フロントエンドを使用してパブリック Load Balancer Standard を作成する方法について説明します。
+description: Azure CLI でゾーンのパブリック IP アドレス フロントエンドを使用してパブリック Standard Load Balancer を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: f1a6777a99c2237fc4d201fa5c87eaea88117866
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7f5aa65b055669a8a4047dffa72d456fed0714f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099122"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Azure CLI を使用してゾーン フロントエンドでパブリック Load Balancer Standard を作成する
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 
-この記事では、パブリック IP 標準アドレスを使用してゾーン フロントエンドでパブリック [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 このシナリオでは、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することができます。
+この記事では、パブリック IP 標準アドレスを使用してゾーン フロントエンドでパブリック [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 このシナリオでは、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することができます。
 
 可用性ゾーンと Standard Load Balancer の使用方法の詳細については、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」を参照してください。
 
@@ -31,10 +31,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合は、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) の最新版をインストールしていることと、 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az_login) で Azure アカウントにログインしていることを確認します。
+CLI をローカルにインストールして使用する場合は、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) の最新版をインストールしていることと、 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest) で Azure アカウントにログインしていることを確認します。
 
 > [!NOTE]
- 可用性ゾーンのサポートは、Azure リソース、リージョン、および VM サイズ ファミリを選択するために使用できます。 使用を開始する方法、および可用性ゾーンを試行する場合にどの Azure リソース、リージョン、および VM サイズ ファミリを使用できるかの詳細については、「[Overview of Availability Zones (可用性ゾーンの概要)](https://docs.microsoft.com/azure/availability-zones/az-overview)」を参照してください。 サポートについては、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) でアクセスするか、または [Azure サポート チケットを開く](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ことができます。  
+>  可用性ゾーンのサポートは、Azure リソース、リージョン、および VM サイズ ファミリを選択するために使用できます。 使用を開始する方法、および可用性ゾーンを試行する場合にどの Azure リソース、リージョン、および VM サイズ ファミリを使用できるかの詳細については、「[Overview of Availability Zones (可用性ゾーンの概要)](https://docs.microsoft.com/azure/availability-zones/az-overview)」を参照してください。 サポートについては、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) でアクセスするか、または [Azure サポート チケットを開く](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ことができます。  
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -51,7 +51,7 @@ az group create \
 ## <a name="create-a-zonal-public-ip-standard"></a>ゾーンのパブリック IP Standard を作成する
 インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 特定のゾーンに作成されたパブリック IP アドレスは、常にそのゾーンにのみ存在します。 パブリック IP アドレスのゾーンを変更することはできません。
 
-[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) を使用してパブリック IP アドレスを作成します。 次の例では、*myPublicIP* という名前のゾーンのパブリック IP アドレスをゾーン 1 の *myResourceGroupLoadBalancer* リソース グループに作成します。
+パブリック IP アドレスは、[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) で作成します。 次の例では、*myPublicIP* という名前のゾーンのパブリック IP アドレスをゾーン 1 の *myResourceGroupLoadBalancer* リソース グループに作成します。
 
 ```azurecli-interactive
 az network public-ip create \
@@ -61,7 +61,7 @@ az network public-ip create \
 --zone 1
 ```
 
-## <a name="create-azure-load-balancer-standard"></a>Azure Load Balancer Standard を作成する
+## <a name="create-azure-standard-load-balancer"></a>Azure Standard Load Balancer を作成する
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
 - ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
 - フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。

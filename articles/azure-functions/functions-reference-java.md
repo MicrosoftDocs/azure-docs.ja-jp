@@ -11,22 +11,26 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: e4d96fa558e1122ef9e0fe0b265166757c45e678
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9258b58783d4670620a251fef866211f7634480f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321052"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096726"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
-[!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
+Azure Functions ランタイムは、[Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/) をサポートします。
+
+このガイドには、Java で Azure 関数を記述する複雑な作業についての情報が含まれます。
+
+Java 関数は、注釈 `@FunctionName` で装飾された `public` メソッドです。 このメソッドは、Java 関数のエントリを定義し、特定のパッケージ内で一意である必要があります。 
+
+この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 さらに、[Visual Studio Code](functions-create-first-function-vs-code.md) を使用するか、[maven を使用](functions-create-first-java-maven.md)して、最初の関数を作成する Functions のクイック スタートも終えている必要があります。
 
 ## <a name="programming-model"></a>プログラミング モデル 
 
 [トリガーとバインド](functions-triggers-bindings.md)の概念は、Azure Functions の基盤です。 トリガーによって、コードの実行が開始します。 バインドでは、データを関数に渡し、関数からデータを返す方法が提供されます。カスタム データ アクセス コードを記述する必要はありません。
-
-入力を処理し、出力を生成するには、関数がステートレス メソッドである必要があります。 関数は、クラスのどのインスタンス フィールドにも依存しない必要があります。 すべての関数メソッドは `public` である必要があり、注釈 @FunctionName を持つメソッドは一意である必要があります。メソッド名が関数のエントリを定義するためです。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -272,7 +276,7 @@ public class Function {
 
 ## <a name="metadata"></a>Metadata
 
-いくつかのトリガーでは、入力データと共に[トリガー メタデータ](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties)が送信されます。 注釈 `@BindingName` を使用して、トリガー メタデータにバインドできます
+いくつかのトリガーでは、入力データと共に[トリガー メタデータ](/azure/azure-functions/functions-triggers-bindings)が送信されます。 注釈 `@BindingName` を使用して、トリガー メタデータにバインドできます
 
 
 ```Java
@@ -301,7 +305,7 @@ public class Function {
         @QueueOutput(name = "output", queueName = "test-output-java-metadata", connection = "AzureWebJobsStorage") OutputBinding<TestData> output,
         final ExecutionContext context
     ) {
-        context.getLogger().info("Java Queue trigger function processed a message: " + message + " whith metadaId:" + metadataId );
+        context.getLogger().info("Java Queue trigger function processed a message: " + message + " with metadaId:" + metadataId );
         TestData testData = new TestData();
         testData.id = metadataId;
         output.setValue(testData);
@@ -387,6 +391,6 @@ Java による Azure Functions 開発の詳細については、次のリソー�
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
-- [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使ったローカルでの開発とデバッグ 
+* [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使ったローカルでの開発とデバッグ 
 * [Visual Studio Code を使用した Java Azure Functions のリモート デバッグ](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [Maven plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) - `azure-functions:add` ゴールを使って関数の作成を効率化し、[ZIP ファイル デプロイ](deployment-zip-push.md)に向けてステージング ディレクトリを準備します。

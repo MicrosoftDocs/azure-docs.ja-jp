@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 976e1ea013c6a30615bdc742ed79e76ec35258a1
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132808"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003960"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>自動生成されたビットレート ラダーでエンコードする
 

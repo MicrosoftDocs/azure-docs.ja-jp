@@ -1,10 +1,10 @@
 ---
-title: Azure AD と同期していないオブジェクトのトラブルシューティング | Microsoft Docs
-description: オブジェクトが Azure AD と同期していない理由のトラブルシューティングを行います。
+title: Azure Active Directory と同期していないオブジェクトのトラブルシューティング |Microsoft Docs
+description: Azure Active Directory と同期していないオブジェクトのトラブルシューティング。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -13,23 +13,50 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b66aeb0832058c56e63c56c0420c7793eb2a632a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306561"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416923"
 ---
-# <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
+# <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Azure Active Directory と同期していないオブジェクトのトラブルシューティング
 
-オブジェクトが Azure AD と期待どおりに同期していない場合は、いくつかの理由が考えられます。 Azure AD からエラー電子メールを受信した場合、または Azure AD Connect Health にエラーが表示される場合は、代わりに[エクスポート エラーのトラブルシューティング](tshoot-connect-sync-errors.md)に関するページをご覧ください。 しかし、オブジェクトが Azure AD にないという問題のトラブルシューティングを行う場合は、このトピックが役に立ちます。 オンプレミスのコンポーネントの Azure AD Connect 同期のエラーを検出する方法について説明します。
+オブジェクトが Microsoft Azure Active Directory (Azure AD) と期待どおりに同期していない場合、いくつかの理由が考えられます。 Azure AD からエラー電子メールを受信した場合、または Azure AD Connect Health にエラーが表示される場合は、代わりに「[同期中のエラーのトラブルシューティング](tshoot-connect-sync-errors.md)」をお読みください。 しかし、オブジェクトが Azure AD にないという問題をトラブルシューティングする場合は、この記事が役に立ちます。 オンプレミス コンポーネントの Azure AD Connect 同期のエラーを検出する方法について説明します。
 
 >[!IMPORTANT]
->Azure Active Directory (AAD) Connect のバージョン 1.1.749.0 以上のデプロイについては、ウィザードの[トラブルシューティング タスク](tshoot-connect-objectsync.md)を使用して、オブジェクト同期の問題のトラブルシューティングを行ってください。 
+>Azure AD Connect のバージョン 1.1.749.0 以上のデプロイについては、ウィザードの[トラブルシューティング タスク](tshoot-connect-objectsync.md)を使用して、オブジェクトの同期問題をトラブルシューティングしてください。 
 
-エラーを探すには、いくつかの異なる場所を次の順序で参照します。
+## <a name="synchronization-process"></a>同期プロセス
+
+同期問題を調査する前に、Azure AD Connect の同期プロセスについて理解しておきましょう。
+
+  ![Azure AD Connect 同期プロセスの図](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+
+### <a name="terminology"></a>**用語集**
+
+* **CS:** コネクタ スペース。データベース内のテーブル
+* **MV:** メタバース。データベース内のテーブル
+
+### <a name="synchronization-steps"></a>**同期のステップ**
+同期プロセスでは、次のステップが実行されます。
+
+1. **AD からインポートする:** Active Directory オブジェクトが Active Directory CS に取り込まれます。
+
+2. **Azure AD からインポートする:** Azure AD オブジェクトが Azure AD CS に取り込まれます。
+
+3. **同期:** 受信同期規則と送信同期規則は、優先順位の番号の低い方から順に実行されます。 同期規則は、デスクトップ アプリケーションから同期規則エディターにアクセスして表示することができます。 受信同期規則は、CS から MV にデータを取り込みます。 送信同期規則は、MV から CS にデータを移動します。
+
+4. **AD にエクスポートする:** 同期の後、オブジェクトは Active Directory CS から Active Directory にエクスポートされます。
+
+5. **Azure AD にエクスポートする:** 同期の後、オブジェクトは Azure AD CS から Azure AD にエクスポートされます。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+エラーを見つけるには、いくつかの異なる場所を次の順序で探します。
 
 1. インポートと同期中に同期エンジンによって特定されたエラーを探す場合は[操作ログ](#operations)。
 2. 不足しているオブジェクトと同期エラーを探す場合は[コネクタ スペース](#connector-space-object-properties)。
@@ -37,115 +64,150 @@ ms.locfileid: "46306561"
 
 これらの手順を開始する前に、[Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) を起動します。
 
-## <a name="operations"></a>[操作]
-トラブルシューティングは、Synchronization Service Manager の [操作] タブで開始する必要があります。 [操作] タブには、最近の操作の結果が表示されます。  
-![Sync Service Manager](./media/tshoot-connect-object-not-syncing/operations.png)  
+## <a name="operations"></a>操作
+トラブルシューティングは、Synchronization Service Manager の **[Operations]\(操作\)** タブから開始する必要があります。 このタブには、最近の操作の結果が表示されます。 
 
-上半分にはすべての実行が時系列で表示されます。 既定では、操作ログには過去 7 日間の情報が保持されますが、この設定は [スケジューラ](how-to-connect-sync-feature-scheduler.md)で変更できます。 状態が成功になっていない実行を探したい場合があります。 見出しをクリックすると、並べ替えを変更できます。
+![[Operations]\(操作\) タブが選択されている Synchronization Service Manager のスクリーンショット](./media/tshoot-connect-object-not-syncing/operations.png)  
 
-**[Status]** (ステータス) 列は最も重要な情報であり、実行関連で最も深刻な問題を示します。 最も一般的なステータスを調査の優先度に基づいて簡単にまとめると次のようになります (* はエラー文字列が入ることを意味します)。
+**[Operations]\(操作\)** タブの上半分にはすべての実行が時系列で表示されます。 既定では、操作ログには過去 7 日間の情報が保持されますが、この設定は [スケジューラ](how-to-connect-sync-feature-scheduler.md)で変更できます。 **success** の状態を示していない実行を探します。 見出しをクリックすると、並べ替えを変更できます。
+
+**[Status]\(状態\)** 列は最も重要な情報を含んでおり、実行の最も重大な問題を示しています。 最も一般的な状態を調査の優先度に基づいて簡単にまとめると次のようになります (* はエラー文字列が入ることを意味します)。
 
 | Status | Comment (コメント) |
 | --- | --- |
-| stopped-* |実行を完了できませんでした。 たとえば、リモート システムがダウンし、連絡できない場合などです。 |
+| stopped-* |実行を完了できませんでした。 これは、たとえば、リモート システムがダウンして接続できない場合などに発生する可能性があります。 |
 | stopped-error-limit |エラーの数が 5,000 を超えています。 大量のエラーに起因し、実行が自動的に停止しました。 |
 | completed-\*-errors |実行は完了しましたが、エラーが発生し (5,000 件未満)、調査が必要です。 |
-| completed-\*-warnings |実行は完了しましたが、一部のデータが予想と異なります。 エラーがある場合には通常、このメッセージは単なる症状の 1 つにすぎません。 エラーを解決するまでは、警告を調査しないでください。 |
+| completed-\*-warnings |実行は完了しましたが、一部のデータが予想と異なる状態になっています。 エラーがある場合、このメッセージは通常、症状の 1 つにすぎません。 エラーに対処するまでは、警告を調査しないでください。 |
 | 成功 |問題ありません。 |
 
-行を選択すると、下の領域が更新され、実行の詳細が表示されます。 下の領域の左端には、 **Step #**(# は番号) という一覧が表示されることがあります。 これは、フォレストに複数のドメインがあり、手順が各ドメインを表す場合にのみ表示されます。 ドメイン名は **[Partition]**(パーティション) という見出しにあります。 **[Synchronization Statistics (同期統計)]** には、処理された変更の数に関する詳細が表示されます。 リンクをクリックすると、変更されたオブジェクトの一覧を取得できます。 オブジェクトにエラーがある場合、 **[Synchronization Errors (同期エラー)]** の下に表示されます。
+行を選択すると、**[Operations]\(操作\)** タブの下の領域が更新されて、実行の詳細が表示されます。 この領域の左端に、**[Step #]\(ステップ番号\)** というタイトルの一覧がある場合があります。 これは、フォレストに複数のドメインがあり、手順が各ドメインを表す場合にのみ表示されます。 ドメイン名は **[Partition]**(パーティション) という見出しにあります。 **[Synchronization Statistics]\(同期統計\)** 見出しの下には、処理された変更の数に関する詳細が表示されています。 リンクを選択すると、変更されたオブジェクトの一覧を取得できます。 エラーのオブジェクトがある場合、**[Synchronization Errors]\(同期エラー\)** 見出しの下にそれらのエラーが表示されます。
 
-### <a name="troubleshoot-errors-in-operations-tab"></a>[オペレーション] タブでエラーを解決する
-![Sync Service Manager](./media/tshoot-connect-object-not-syncing/errorsync.png)  
-エラーがある場合、エラーのあるオブジェクトとエラー自体がリンクとなり、クリックすると詳細が表示されます。
+### <a name="errors-on-the-operations-tab"></a>[Operations]\(操作\) タブのエラー
+エラーがある場合は、Synchronization Service Manager に、エラーのあるオブジェクトとエラー自体の両方が、詳細を提供するリンクとして表示されます。
 
-まず、エラー文字列をクリックしてみます (上の画像の**sync-rule-error-function-triggered** )。 最初にオブジェクトの概要が表示されます。 実際のエラーを確認するには、 **[スタック トレース]** ボタンをクリックします。 このトレースにより、エラーのデバッグ レベル情報が表示されます。
+![Synchronization Service Manager でのエラーのスクリーンショット](./media/tshoot-connect-object-not-syncing/errorsync.png)  
+エラー文字列を選択して開始します。 (上の図では、**sync-rule-error-function-triggered** がエラー文字列です。)最初にオブジェクトの概要が表示されます。 実際のエラーを表示するには、**[Stack Trace]\(スタック トレース\)** を選択します。 このトレースにより、エラーのデバッグ レベル情報が表示されます。
 
-**[コール スタック情報]** ボックスで右クリックし、**[すべて選択]** を選択し、**[コピー]** を選択します。 次に、スタックをコピーし、メモ帳など、普段利用しているエディターでエラーを確認できます。
+**[Call Stack Information]\(コール スタック情報\)** ボックスを右クリックして **[Select All]\(すべて選択\)** をクリックし、**[Copy]\(コピー\)** を選択します。 次に、スタックをコピーし、メモ帳などの普段利用しているエディターでエラーを表示します。
 
-* エラー元が **SyncRulesEngine**の場合、コール スタック情報の最初にオブジェクトの全属性の一覧が表示されます。 **InnerException =>** という見出しが表示されるまで下へスクロールします。  
-  ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)  
-  その次の行には、エラーが表示されます。 上の図では、Fabrikam が作成したカスタムの同期規則がエラー元になっています。
+エラー元が **SyncRulesEngine** の場合、コール スタック情報では、オブジェクトの全属性の一覧が最初に表示されます。 **InnerException =>** という見出しが表示されるまで下へスクロールします。  
 
-エラー自体から十分な情報が得られない場合、データ自体を見る必要があります。 オブジェクト識別子が付いたリンクをクリックし、[コネクタ スペースのインポート済みオブジェクト](#cs-import)のトラブルシューティングを続行できます。
+  ![[InnerException =>] という見出しの下にエラー情報が表示されている Synchronization Service Manager のスクリーンショット](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
+  
+見出しの後の行に、エラーが表示されます。 前の図では、Fabrikam が作成した custom synchronization ルールがエラー元になります。
+
+エラーに十分な情報が提供されない場合は、データ自体を確認します。 オブジェクト ID のあるリンクを選択して、[コネクタ スペースのインポート済みオブジェクト](#cs-import)のトラブルシューティングを続行します。
 
 ## <a name="connector-space-object-properties"></a>コネクタ スペース オブジェクトのプロパティ
-[[操作]](#operations) タブにエラーが見つからない場合、次の手順は、Active Directory からメタバース、さらに Azure AD までコネクタ スペース オブジェクトを追跡することです。 このパスで、問題がある場所を探す必要があります。
+[**[Operations]\(操作\)**](#operations) タブにエラーが表示されていない場合は、コネクタ スペース オブジェクトを Active Directory からメタバース、そして Azure AD へと追跡します。 このパスで、問題がある場所を探す必要があります。
 
-### <a name="search-for-an-object-in-the-cs"></a>CS 内のオブジェクトの検索
+### <a name="searching-for-an-object-in-the-cs"></a>CS 内のオブジェクトの検索
 
-**Synchronization Service Manager** で、**[コネクタ]** をクリックして Active Directory コネクタを選び、**[コネクタ スペースの検索]** を選択します。
+Synchronization Service Manager で、**[Connectors]\(コネクタ\)** を選択し、Active Directory コネクタを選択し、**[Search Connector Space]\(コネクタ スペースの検索\)** を選択します。
 
-**[Scope (スコープ)]** で、**[RDN]** (CN 属性を検索する場合) または **[DN or anchor (DN またはアンカー)]** (distinguishedName 属性を検索する場合) を選択します。 値を入力し、**[検索]** をクリックします。  
-![コネクタ スペースの検索](./media/tshoot-connect-object-not-syncing/cssearch.png)  
+**[Scope]\(スコープ\)** ボックスで、**[RDN]** (CN 属性を検索する場合) または **[DN or anchor]\(DN またはアンカー\)**(**distinguishedName** 属性を検索する場合) を選択します。 値を入力して、**[Search]\(検索\)** を選択します。 
+ 
+![コネクタ スペースの検索のスクリーンショット](./media/tshoot-connect-object-not-syncing/cssearch.png)  
 
-探しているオブジェクトが見つからない場合は、[ドメイン ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#domain-based-filtering)または[組織単位ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)でフィルターされた可能性があります。 フィルター処理が期待どおりに構成されていることを確認するには、[フィルター処理の構成](how-to-connect-sync-configure-filtering.md)に関するトピックをご覧ください。
+探しているオブジェクトが見つからない場合は、[ドメイン ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#domain-based-filtering)または [OU ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)によってフィルターされている可能性があります。 フィルター処理が予想どおりに構成されていることを確認するには、「[Azure AD Connect 同期:フィルター処理の構成](how-to-connect-sync-configure-filtering.md)」をお読みください。
 
-別の便利な検索は、Azure AD コネクタを選び、**[Scope (スコープ)]** で **[インポートを保留しています]** を選択し、**[追加]** チェックボックスをオンにすることです。 この検索によって、オンプレミスのオブジェクトに関連付けできない、Azure AD 内の同期されているすべてのオブジェクトが得られます。  
-![コネクタ スペースの検索の孤立](./media/tshoot-connect-object-not-syncing/cssearchorphan.png)  
-これらのオブジェクトは、別の同期エンジンまたは別のフィルター処理構成を持つ同期エンジンによって作成されています。 このビューは、管理されなくなった**孤立した**オブジェクトの一覧です。 この一覧を確認し、[Azure AD PowerShell](https://aka.ms/aadposh) コマンドレットを使用してこれらのオブジェクトを削除することを検討する必要があります。
+Azure AD コネクタを選択して、もう 1 つの便利な検索を実行できます。 **[Scope]\(スコープ\)** ボックスで、**[Pending Import]\(保留中のインポート\)** を選び、**[Add]\(追加\)** チェック ボックスを選択します。 この検索で、オンプレミス オブジェクトに関連付けできない、Azure AD 内の同期されているすべてのオブジェクトが検出されます。  
+
+![コネクタ スペース検索の孤立オブジェクトのスクリーンショット](./media/tshoot-connect-object-not-syncing/cssearchorphan.png) 
+ 
+これらのオブジェクトは、別の同期エンジン、または異なるフィルター処理構成を持つ同期エンジンによって作成されたものです。 これらの孤立オブジェクトはもう管理されていません。 この一覧を確認し、[Azure AD PowerShell](https://aka.ms/aadposh) コマンドレットを使用してこれらのオブジェクトを削除することを検討してください。
 
 ### <a name="cs-import"></a>CS インポート
-cs オブジェクトを開くと、いくつかのタブが上部に表示されます。 **[インポート]** タブには、インポート後にステージングされるデータが表示されます。  
-![CS オブジェクト](./media/tshoot-connect-object-not-syncing/csobject.png)    
-**[古い値]** には Connect に現在保存されているデータが、**[新しい値]** にはソース システムから受け取り、まだ適用されていないデータが表示されます。 オブジェクトにエラーがある場合、変更は処理されません。
+CS オブジェクトを開くと、いくつかのタブが上部にあります。 **[インポート]** タブには、インポート後にステージングされるデータが表示されます。  
 
-**エラー**  
-![CS オブジェクト](./media/tshoot-connect-object-not-syncing/cssyncerror.png)  
-**[同期エラー]** タブは、オブジェクトに問題がある場合にのみ表示されます。 詳しくは、[同期エラーのトラブルシューティング](#troubleshoot-errors-in-operations-tab)に関するページをご覧ください。
+![[インポート] タブが選択された [Connector Space Object Properties]\(コネクタ スペース オブジェクトのプロパティ\) ウィンドウのスクリーンショット](./media/tshoot-connect-object-not-syncing/csobject.png)    
+
+**[Old Value]\(古い値\)** 列には、現在 Connect に保存されているデータが表示され、**[New Value]\(新しい値\)** 列には、ソース システムから受け取って、まだ適用されていないデータが表示されます。 オブジェクトにエラーがある場合、変更は処理されません。
+
+**[Synchronization Error]\(同期エラー\)** タブが **[Connector Space Object Properties]\(コネクタ スペース オブジェクトのプロパティ\)** ウィンドウに表示されるのは、オブジェクトに問題がある場合だけです。 詳細については、[**[Operations]\(操作\)** タブでの同期エラーのトラブルシューティング](#errors-on-the-operations-tab)方法を確認してください。
+
+![[Connector Space Object Properties]\(コネクタ スペース オブジェクトのプロパティ\) ウィンドウのスクリーンショット](./media/tshoot-connect-object-not-syncing/cssyncerror.png)  
 
 ### <a name="cs-lineage"></a>CS 系列
-[Lineage] \(系列) タブには、コネクタ スペース オブジェクトとメタバース オブジェクトの関係が表示されます。 コネクタが接続されているシステムから変更を最後にインポートしたタイミングと、メタバースにデータを入力するために適用された規則を確認できます。  
-![CS 系列](./media/tshoot-connect-object-not-syncing/cslineage.png)  
-**[アクション]** 列に、アクションが **[プロビジョニング]** である **[受信]** 同期規則が 1 つ表示されています。 これは、このコネクタ スペース オブジェクトが存在する限り、メタバース オブジェクトが残ることを示します。 同期規則の一覧に **[送信]** と **[Provision (プロビジョニング)]** が表示されている場合は、メタバース オブジェクトが削除されたときに、このオブジェクトが削除されることを示しています。  
-![Sync Service Manager](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
-また、**[PasswordSync]** 列を見ると、1 つの同期規則の値が **[True]** に設定されており、受信コネクタ スペースに起因してパスワードが変更される可能性があることがわかります。 このパスワードはその後、受信ルールを経由して Azure AD に送信されます。
+**[Connector Space Object Properties]\(コネクタ スペース オブジェクトのプロパティ\)** ウィンドウの **[Lineage]\(系列\)** タブには、コネクタ スペース オブジェクトとメタバース オブジェクトの関係が示されます。 コネクタが、接続されているシステムから最後に変更をインポートした日時と、メタバースにデータを取り込むために適用された規則を確認できます。  
 
-[Lineage (系列)] タブで [[Metaverse Object Properties (メタバース オブジェクトのプロパティ)]](#mv-attributes)をクリックすると、メタバースに移動できます。
+![[Connector Space Object Properties]\(コネクタ スペース オブジェクトのプロパティ\) ウィンドウの [Lineage]\(系列\) タブを示すスクリーンショット](./media/tshoot-connect-object-not-syncing/cslineage.png)  
 
-すべてのタブの一番下に **[Preview (プレビュー)]** ボタンと **[Log (ログ)]** ボタンがあります。
+前の図で、**[Action]\(アクション\)** 列には、**[Provision]** アクションの受信同期規則が表示されています。 これは、このコネクタ スペース オブジェクトが存在する限り、メタバース オブジェクトが残ることを示します。 同期規則の一覧に、**[Provision]\(プロビジョン\)** アクションの送信同期規則が代わりに表示されている場合、このオブジェクトは、メタバース オブジェクトが削除されるときに削除されます。  
+
+![[Connector Space Object Properties]\(コネクタ スペース オブジェクトのプロパティ\) ウィンドウの [Lineage]\(系列\) タブの [lineage]\(系列\) ウィンドウを示すスクリーンショット](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
+
+前の図ではまた、**[PasswordSync]** 列で 1 つの同期規則の値が **[True]** に設定されているため、受信コネクタ スペースに起因してパスワードが変更される可能性があることも確認できます。 このパスワードは、受信規則により Azure AD に送信されます。
+
+**[Lineage]\(系列\)** タブから、[**[Metaverse Object Properties]\ (メタバース オブジェクトのプロパティ\)**](#mv-attributes) を選択して、メタバースに移動できます。
 
 ### <a name="preview"></a>プレビュー
-[プレビュー] ページは、1 つのオブジェクトの同期に使用されます。 カスタム同期ルールの問題を解決しているとき、1 つのオブジェクトに与える変更の影響を確認するのに便利です。 **完全同期**か**差分同期**を選択できます。**[Generate Preview (プレビューの生成)]** か **[Commit Preview (プレビューのコミット)]** かも選択できます。生成の場合、変更はメモリにのみ保存されます。コミットの場合、メタバースが更新され、すべての変更がターゲット コネクタ スペースにステージングされます。  
-![Sync Service Manager](./media/tshoot-connect-object-not-syncing/preview.png)  
-オブジェクトを調べ、特定の属性フローに適用されたルールを確認できます。  
-![Sync Service Manager](./media/tshoot-connect-object-not-syncing/previewresult.png)
+**[Connector Space Object Properties]\(コネクタ スペース オブジェクトのプロパティ\)** ウィンドウの左下隅に **[Preview]\(プレビュー\)** ボタンがあります。 このボタンを選択すると **[Preview]\(プレビュー\)** ページが表示され、そこで 1 つのオブジェクトを同期できます。 このページは、カスタム同期規則をトラブルシューティングしていて、1 つのオブジェクトに対する変更の影響を確認したい場合に便利です。 **[Full sync]\(完全同期\)** または **[Delta sync]\(差分同期\)** を選択できます。また、**[Generate Preview]\(プレビューの生成\)** も選択できます。これは、単にメモリ内の変更を保持します。 あるいは、**[Commit Preview]\(プレビューのコミット\)** を選択します。そうすると、メタバースが更新されて、すべての変更がターゲット コネクタ スペースにステージングされます。  
+
+![[Start Preview]\(プレビューの開始\) が選択された[Preview]\(プレビュー\) ページのスクリーンショット](./media/tshoot-connect-object-not-syncing/preview.png)  
+
+プレビューで、オブジェクトを調べて、特定の属性フローに適用された規則を確認できます。  
+
+![インポート属性フローを示す [Preview]\(プレビュー\) ページのスクリーンショット](./media/tshoot-connect-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>ログ
-ログ ページを使用して、パスワード同期の状態と履歴を確認できます。 詳細については、[パスワード ハッシュ同期のトラブルシューティング](tshoot-connect-password-hash-synchronization.md)に関するページをご覧ください。
+**[Preview]\(プレビュー\)** ボタンの横の **[Log]\(ログ\)** ボタンを選択すると、**[Log]\(ログ\)** ページが開きます。 ここでは、パスワードの同期の状態と履歴を確認することができます。 詳細については、「[Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング](tshoot-connect-password-hash-synchronization.md)」を参照してください。
 
 ## <a name="metaverse-object-properties"></a>メタバース オブジェクトのプロパティ
-通常は、ソースの Active Directory [コネクタ スペース](#connector-space)から検索を開始することをお勧めします。 メタバースから検索を開始することもできます。
+通常は、ソースの Active Directory コネクタ スペースから検索を開始することをお勧めします。 メタバースから検索を開始することもできます。
 
-### <a name="search-for-an-object-in-the-mv"></a>MV 内のオブジェクトの検索
-**Synchronization Service Manager** で、**[メタバース検索]** をクリックします。 ユーザーが見つかるとわかっているクエリを作成します。 accountName (sAMAccountName) や userPrincipalName などの一般的な属性を検索できます。 詳しくは、[メタバース検索](how-to-connect-sync-service-manager-ui-mvsearch.md)に関する記事をご覧ください。
-![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
+### <a name="searching-for-an-object-in-the-mv"></a>MV 内のオブジェクトの検索
+Synchronization Service Manager では、以下の図に示すように、**[Metaverse Search]\(メタバース検索\)** を選択します。 ユーザーが検出されるとわかっているクエリを作成します。 **accountName** (**sAMAccountName**) や **userPrincipalName** などの一般的な属性を検索します。 詳細については、「[Sync Service Manager のメタバース検索](how-to-connect-sync-service-manager-ui-mvsearch.md)」を参照してください。
+
+![[Metaverse Search]\(メタバース検索\) タブが選択されている Synchronization Service Manager のスクリーンショット](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
 **[検索結果]** ウィンドウで、オブジェクトをクリックします。
 
-オブジェクトが見つからなかった場合、それはまだメタバースに届いていません。 Active Directory [コネクタ スペース](#connector-space-object-properties)でオブジェクトの検索を続行します。 オブジェクトがメタバースに届くのを阻止している同期のエラーがあるか、フィルターが適用されている可能性があります。
+オブジェクトが検出されなかった場合は、まだメタバースに届いていません。 Active Directory [コネクタ スペース](#connector-space-object-properties)でオブジェクトの検索を続行します。 Active Directory コネクタ スペースでオブジェクトが検出される場合は、オブジェクトがメタバースに届くのを阻止している同期エラーがあるか、同期規則のスコープ フィルターが適用されている可能性があります。
+
+### <a name="object-not-found-in-the-mv"></a>オブジェクトが MV に見つからない
+オブジェクトが Active Directory CS には存在するが、MV には存在しない場合は、スコープ フィルターが適用されています。 スコープ フィルターを調べるには、デスクトップ アプリケーションのメニューに移動して、**[Synchronization Rules Editor]\(同期規則エディター\)** を選択します。 以下のフィルターを調整して、オブジェクトに該当する規則をフィルタリングしてください。
+
+  ![受信同期規則検索を示す、Synchronization Rules Editor (同期規則エディター) のスクリーンショット](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+
+上のリストで各規則を表示し、**[スコープ フィルター]** を確認します。 以下のスコープ フィルターで、**isCriticalSystemObject** 値が null (または FALSE) または空の場合は、範囲内です。
+
+  ![受信同期規則検索でのスコープ フィルターのスクリーンショット](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+
+[CS Import](#cs-import) 属性リストに移動して、オブジェクトが MV に移動するのを妨害しているフィルターを確認します。 **[Connector Space]\(コネクタ スペース\)** 属性リストには、null 以外の属性と空でない属性だけが表示されます。 たとえば、**isCriticalSystemObject** がリストに表示されない場合、この属性の値は null または空です。
+
+### <a name="object-not-found-in-the-azure-ad-cs"></a>オブジェクトが Azure AD CS に見つからない
+オブジェクトが Azure AD のコネクタ スペースにはないが、MV にはある場合は、対応するコネクタ スペースの送信規則のスコープ フィルターを調べて、[MV 属性](#mv-attributes)が基準を満たしていないためにオブジェクトがフィルターで除外されているかどうかを確認します。
+
+送信スコープ フィルターを調べるには、以下のフィルターを調整してオブジェクトに該当する規則を選択します。 それぞれの規則を表示して、対応する [MV 属性](#mv-attributes)の値を調べてください。
+
+  ![Synchronization Rules Editor (同期規則エディター) での送信同期規則検索のスクリーンショット](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+
 
 ### <a name="mv-attributes"></a>MV 属性
-[属性] タブには、値と、値を提供したコネクタが表示されます。  
-![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvobject.png)  
+**[Attributes]\(属性\)** タブでは、値とそれらを提供したコネクタを確認できます。  
 
-オブジェクトが同期していない場合は、メタバースで次の属性を参照します。
-- 属性 **cloudFiltered** が存在し、**true** に設定されていますか。 設定されている場合は、[属性ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)の手順に従ってフィルターされています。
-- 属性 **sourceAnchor** は存在しますか。 存在しない場合、アカウント リソース フォレスト トポロジはありますか。 オブジェクトがリンクされたメールボックスとして識別されている場合 (属性 **msExchRecipientTypeDetails** の値が 2)、sourceAnchor は有効になっている Active Directory アカウントを使用してフォレストによって提供されます。 マスター アカウントがインポートされ、正しく同期されていることを確認してください。 マスター アカウントがオブジェクトの[コネクタ](#mv-connectors)に一覧表示されている必要があります。
+![[Attributes]\(属性\) タブが選択された [Metaverse Object Properties]\(メタバース オブジェクトのプロパティ\) ウィンドウのスクリーンショット](./media/tshoot-connect-object-not-syncing/mvobject.png)  
+
+オブジェクトが同期していない場合は、メタバース内の属性の状態について以下のことを確認してください。
+- 属性 **cloudFiltered** が存在しており、**True** に設定されていますか。 設定されている場合は、[属性ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)の手順に従ってフィルターされています。
+- 属性 **sourceAnchor** は存在しますか。 存在しない場合、アカウント リソース フォレスト トポロジはありますか。 オブジェクトがリンクされたメールボックスとして識別されている場合 (属性 **msExchRecipientTypeDetails** の値が **2**)、**sourceAnchor** は、有効な Active Directory アカウントを含むフォレストによって提供されます。 マスター アカウントがインポートされて、正しく同期されていることを確認してください。 マスター アカウントはオブジェクトの[コネクタ](#mv-connectors)に一覧表示されている必要があります。
 
 ### <a name="mv-connectors"></a>MV コネクタ
-[コネクタ] タブには、オブジェクトを表すすべてのコネクタ スペースが表示されます。  
-![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
+**[Connectors]\(コネクタ\)** タブには、オブジェクトの表現を含むすべてのコネクタ スペースが表示されます。 
+ 
+![[Connectors]\(コネクタ\) タブが選択された [Metaverse Object Properties]\(メタバース オブジェクトのプロパティ\) ウィンドウのスクリーンショット](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
+
 次のものに対するコネクタが必要です。
 
-- ユーザーが表現される各 Active Directory フォレスト。 この表現は、foreignSecurityPrincipals と Contact オブジェクトを含むことができます。
+- ユーザーが表現される各 Active Directory フォレスト。 この表現には、**foreignSecurityPrincipals** オブジェクトと **Contact** オブジェクトを含めることができます。
 - Azure AD 内のコネクタ。
 
-Azure AD にコネクタが存在しない場合は、[MV 属性](#mv-attributes)を読み取って、Azure AD にプロビジョニングされる条件を確認します。
+Azure AD へのコネクタがない場合は、「[MV 属性](#mv-attributes)」のセクションを参照して、Azure AD へのプロビジョニングの基準を確認してください。
 
-このタブから[コネクタ スペース オブジェクト](#connector-space-object-properties)に移動することもできます。 行を選択し、**[プロパティ]** をクリックします。
+**[Connectors]\(コネクタ\)** タブから、[コネクタ スペース オブジェクト](#connector-space-object-properties)に移動することもできます。 行を選択し、**[プロパティ]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-[Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
-
-「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。
+- [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の詳細情報についてはこちらをご覧ください。
+- [ハイブリッド ID](whatis-hybrid-identity.md) の詳細についてはこちらをご覧ください。

@@ -1,39 +1,41 @@
 ---
 title: Azure Active Directory B2C のユーザー フロー | Microsoft Docs
-description: Azure Active Directory B2C の拡張可能なポリシー フレームワークと、さまざまなユーザー フロー タイプの作成方法に関するトピック。
+description: Azure Active Directory B2C の拡張可能なポリシー フレームワークと、さまざまなユーザー フローの作成方法の詳細を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: d4a93b04b8ad86a6a6d36a5bdaf3209b49e7a9dc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: B2C
+ms.openlocfilehash: 67db13c8a36977f2614ba7b0e263919bd0405bc7
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877084"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585595"
 ---
-# <a name="azure-active-directory-b2c-user-flows"></a>Azure Active Directory B2C:ユーザー フロー
+# <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー
 
+Azure Active Directory (Azure AD) B2C の拡張可能なポリシー フレームワークは、このサービスの中核となる強みです。 ポリシーには、サインアップ、サインイン、プロファイル編集などの ID エクスペリエンスが完全に記述されています。 最も一般的な ID タスクを設定しやすくするために、Azure AD B2C ポータルには、**ユーザー フロー**という事前定義済みで構成できるポリシーが用意されています。 
 
-Azure Active Directory (Azure AD) B2C の拡張可能なポリシー フレームワークは、このサービスの中核となる強みです。 ポリシーには、サインアップ、サインイン、プロファイル編集などのコンシューマーの ID エクスペリエンスが完全に記述されています。 最も一般的な ID タスクを設定しやすくするために、Azure AD B2C ポータルには、**ユーザー フロー**という事前定義済みで構成できるポリシーが用意されています。 たとえば、サインアップ ユーザー フローを使用すると、次の設定を構成して動作を制御できます。
+## <a name="what-are-user-flows"></a>ユーザー フローとは
 
-* コンシューマーがアプリケーションにサインアップするために使用できるアカウントの種類 (Facebook などのソーシャル アカウント、または電子メール アドレスなどのローカル アカウント)
-* サインアップ中にコンシューマーから収集される属性 (名、郵便番号、靴のサイズなど)
-* Azure Multi-Factor Authentication の使用
-* すべてのサインアップ ページの外観
-* ユーザー フローの実行が完了したときにアプリケーションが受信する情報 (トークン内で要求として明示される)
+ユーザー フローを使用すると、次の設定を構成することで、アプリケーション内の動作を制御できます。
 
-テナント内でさまざまな種類のユーザー フローを複数作成し、必要に応じてそれらをアプリケーションで使用できます。 ユーザー フローは、アプリケーション間で再利用することができます。 この柔軟性により、開発者は最小限のコード変更で、またはコードをまったく変更せずにコンシューマーの ID エクスペリエンスを定義および変更できます。
+- サインインに使用するアカウントの種類 (Facebook などのソーシャル アカウントやローカル アカウント)
+- コンシューマーから収集される属性 (名、郵便番号、靴のサイズなど)
+- Azure Multi-Factor Authentication
+- ユーザー インターフェイスのカスタマイズ
+- アプリケーションがトークンで要求として受け取る情報 
 
-ユーザー フローは、簡単な開発者インターフェイスを使用して入手できます。 アプリケーションは (要求でユーザー フロー パラメーターを渡す) 標準の HTTP 認証要求を使用してユーザー フローをトリガーし、カスタマイズされたトークンを応答として受信します。 たとえば、サインアップ ユーザー フローを呼び出す要求とサインイン ユーザー フローを呼び出す要求の唯一の違いは、"p" クエリ文字列パラメーターで使用されるユーザー フロー名です。
+テナント内でさまざまな種類のユーザー フローを多数作成し、必要に応じてそれらをアプリケーションで使用できます。 ユーザー フローは、アプリケーション間で再利用することができます。 この柔軟性により、最小限のコード変更で、またはコードをまったく変更せずに、ID エクスペリエンスを定義および変更できます。 アプリケーションでは、ユーザー フロー パラメーターを含む標準の HTTP 認証要求を使用して、ユーザー フローがトリガーされます。 カスタマイズされた[トークン](active-directory-b2c-reference-tokens.md)は応答として受信されます。 
+
+次の例では、使用するユーザー フローを指定する "p" クエリ文字列パラメーターを示しています。
 
 ```
-
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
@@ -43,11 +45,9 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 &nonce=dummy
 &state=12345                                        // Any value provided by your application
 &p=b2c_1_siup                                       // Your sign-up user flow
-
 ```
 
 ```
-
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
@@ -57,50 +57,34 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 &nonce=dummy
 &state=12345                                        // Any value provided by your application
 &p=b2c_1_siin                                       // Your sign-in user flow
-
 ```
 
-## <a name="create-a-sign-up-or-sign-in-user-flow"></a>サインアップまたはサインイン ユーザー フローを作成する
+## <a name="user-flow-versions"></a>ユーザー フローのバージョン
 
-このユーザー フローは、1 つの構成でコンシューマーのサインアップ エクスペリエンスとサインイン エクスペリエンスの両方を処理します。 コンシューマーは、状況に応じて正しいパス (サインアップまたはサインイン) に誘導されます。 このポリシーはまた、サインアップまたはサインインが成功したときにアプリケーションが受け取るトークンのコンテンツを記述します。**サインアップまたはサインイン** ユーザー フローのサンプル コードは、[こちらで入手できます](active-directory-b2c-devquickstarts-web-dotnet-susi.md)。  **サインアップ** ユーザー フローまたは**サインイン** ユーザー フローには、このユーザー フローを使用することをお勧めします。  
+Azure portal では、[ユーザー フローの新しいバージョン](user-flow-versions.md)が常時追加されています。 Azure AD B2C を使用して開始する場合は、テスト済みのユーザー フローを使用することをお勧めします。 新しいユーザー フローを作成するときに、必要なユーザー フローを **[推奨]** タブから選択します。
 
-[!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
+現在推奨されているユーザー フローは次のとおりです。
 
-## <a name="create-a-sign-up-user-flow"></a>サインアップ ユーザー フローを作成する
+- **サインアップとサインイン**: サインアップ エクスペリエンスとサインイン エクスペリエンスの両方を 1 つの構成で処理します。 ユーザーは、状況に応じて正しいパスに誘導されます。 **サインアップ** ユーザー フローまたは**サインイン** ユーザー フローには、このユーザー フローを使用することをお勧めします。
+- **プロファイル編集**: ユーザーが自身のプロファイル情報を編集できるようにします。
+- **パスワードのリセット**: ユーザーが自分のパスワードをリセットできるかどうか、およびその方法を構成できるようにします。
 
-[!INCLUDE [active-directory-b2c-create-sign-up-policy](../../includes/active-directory-b2c-create-sign-up-policy.md)]
+## <a name="linking-user-flows"></a>ユーザー フローのリンク
 
-## <a name="create-a-sign-in-user-flow"></a>サインイン ユーザー フローを作成する
+ローカル アカウントを使用した**サインアップまたはサインイン** ユーザー フローには、エクスペリエンスの最初のページに **[パスワードを忘れた場合]** リンクが含まれます。 このリンクをクリックしても、パスワード リセット ユーザー フローは自動的にはトリガーされません。 
 
-[!INCLUDE [active-directory-b2c-create-sign-in-policy](../../includes/active-directory-b2c-create-sign-in-policy.md)]
+代わりに、エラー コード `AADB2C90118` がアプリケーションに返されます。 アプリケーションは、パスワードをリセットする特定のユーザー フローを実行してこのエラー コードを処理する必要があります。 例を参照するには、ユーザー フローへのリンクを示す[簡単な ASP.NET サンプル](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)をご覧ください。
 
-## <a name="create-a-profile-editing-user-flow"></a>プロファイル編集ユーザー フローを作成する
+## <a name="email-address-storage"></a>メール アドレスの保存
 
-[!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
-
-## <a name="create-a-password-reset-user-flow"></a>パスワードのリセット ユーザー フローを作成する
-
-[!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
-
-## <a name="preview-user-flows"></a>プレビュー ユーザー フロー
-
-新機能がリリースされると、これらのいくつかは、既存のポリシーまたはユーザー フローからなくなる場合があります。  これらのユーザー フローが GA になったら、古いバージョンは同種の最新のものに置き換えられる予定です。  既存のポリシーまたはユーザー フローには変更はなく、これらの新機能を利用するには、新しいユーザー フローを作成する必要があります。
-
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-### <a name="how-do-i-link-a-sign-up-or-sign-in-user-flow-with-a-password-reset-user-flow"></a>サインアップまたはサインイン ユーザー フローをパスワード リセット ユーザー フローにリンクするにはどうすればよいですか?
-**サインアップまたはサインイン** ユーザー フローを (ローカル アカウントで) 作成すると、エクスペリエンスの最初のページに **[パスワードを忘れた場合]** リンクが表示されます。 このリンクをクリックしても、パスワード リセット ユーザー フローは自動的にはトリガーされません。 
-
-代わりに、エラー コード **`AADB2C90118`** がアプリに返されます。 アプリは、特定のパスワード リセット ユーザー フローを呼び出すことによって、このエラー コードを処理する必要があります。 詳細については、[ユーザー フローをリンクする方法を示すサンプル](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)を参照してください。
-
-### <a name="should-i-use-a-sign-up-or-sign-in-user-flow-or-a-sign-up-user-flow-and-a-sign-in-user-flow"></a>サインアップまたはサインイン ユーザー フローと、サインアップ ユーザー フローおよびサインイン ユーザー フローのどちらを使用すればよいですか?
-**サインアップ ポリシー** ユーザー フローおよび**サインイン** ユーザー フローより、**サインアップまたはサインイン** ユーザー フローを使用することをお勧めします。  
-
-**サインアップまたはサインイン** ユーザー フローは、**サインイン** ユーザー フローより多くの機能を備えています。 また、ページ UI のカスタマイズを使用したり、ローカライズのより適切なサポートを受けたりすることもできます。 
-
-ユーザー フローをローカライズする必要がなく、必要なのはブランドのマイナーなカスタマイズ機能だけであり、それにパスワード リセットを組み込みたい場合は、**サインイン** ユーザー フローをお勧めします。
+メール アドレスは、ユーザー フローの一部として必要な場合があります。 ユーザーがソーシャル ID プロバイダーを使用して認証する場合、メール アドレスは **otherMails** プロパティに格納されます。 ローカル アカウントがユーザー名に基づいている場合、メール アドレスは強力な認証の詳細プロパティに格納されます。 ローカル アカウントがメール アドレスに基づいている場合、メール アドレスは **signInNames** プロパティに格納されます。
+ 
+これらのいずれの場合でも、メール アドレスが検証される保証はありません。 テナント管理者は、ローカル アカウントの基本ポリシーで電子メールの検証を無効にできます。 メール アドレスの検証が有効になっている場合でも、アドレスがソーシャル ID プロバイダーから提供されているもので、変更されていない場合は、検証されません。
+ 
+**otherMails** プロパティと **signInNames** プロパティのみが Active Directory Graph API を介して公開されます。 強力な認証の詳細プロパティ内のメール アドレスは使用できません。
 
 ## <a name="next-steps"></a>次の手順
-* [トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)
-* [コンシューマーのサインアップ時の電子メール検証の無効化](active-directory-b2c-reference-disable-ev.md)
+
+推奨されるユーザー フローを作成する手順については、[チュートリアル:ユーザー フローの作成](tutorial-create-user-flows.md)の指示に従います。
+
 

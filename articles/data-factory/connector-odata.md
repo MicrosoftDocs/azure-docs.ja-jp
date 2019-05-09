@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 349d3a6eacf22a0ce3f842dd30df19964cdf7f23
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337327"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550418"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 
@@ -35,7 +34,7 @@ OData ストアから、サポートされている任意のシンク データ 
 具体的には、この OData コネクタは以下をサポートします。
 
 - OData バージョン 3.0 および 4.0。
-- 次の認証のいずれかを使用したデータのコピー。**匿名**、**基本**、**Windows**、**AAD サービス プリンシパル**、**マネージド サービス ID**。
+- 次の認証のいずれかを使用したデータのコピー。**匿名**、**基本**、**Windows**、**AAD サービス プリンシパル**、**Azure リソースのマネージド ID**。
 
 ## <a name="get-started"></a>作業開始
 
@@ -49,9 +48,9 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは **OData** に設定する必要があります。 |[はい] |
-| url | OData サービスのルート URL。 |[はい] |
-| authenticationType | OData ソースに接続するために使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**Windows**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 ユーザー ベースの OAuth はサポートされていません。 | [はい] |
+| type | **type** プロパティは **OData** に設定する必要があります。 |はい |
+| url | OData サービスのルート URL。 |はい |
+| authenticationType | OData ソースに接続するために使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**Windows**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 ユーザー ベースの OAuth はサポートされていません。 | はい |
 | userName | 基本認証または Windows 認証を使用する場合は、**userName** を指定します。 | いいえ  |
 | password | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ  |
 | servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | いいえ  |
@@ -71,7 +70,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         },
         "connectVia": {
@@ -114,7 +113,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "<endpoint of on-premises OData source>",
+            "url": "<endpoint of OData source>",
             "authenticationType": "Windows",
             "userName": "<domain>\\<user>",
             "password": {
@@ -138,7 +137,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "<endpoint of on-premises OData source>",
+            "url": "<endpoint of OData source>",
             "authenticationType": "AadServicePrincipal",
             "servicePrincipalId": "<service principal id>",
             "aadServicePrincipalCredentialType": "ServicePrincipalKey",
@@ -147,7 +146,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
                 "value": "<service principal key>"
             },
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
-            "aadResourceId": "<AAD resource>"
+            "aadResourceId": "<AAD resource URL>"
         }
     },
     "connectVia": {
@@ -165,7 +164,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "<endpoint of on-premises OData source>",
+            "url": "<endpoint of OData source>",
             "authenticationType": "AadServicePrincipal",
             "servicePrincipalId": "<service principal id>",
             "aadServicePrincipalCredentialType": "ServicePrincipalCert",
@@ -198,8 +197,8 @@ OData からデータをコピーするには、データセットの **type** �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | [はい] |
-| path | OData リソースへのパス。 | [はい] |
+| type | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | はい |
+| path | OData リソースへのパス。 | はい |
 
 **例**
 
@@ -233,8 +232,8 @@ OData からデータをコピーするには、コピー アクティビティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティは **RelationalSource** に設定する必要があります。 | [はい] |
-| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**メモ**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ  |
+| type | コピー アクティビティのソースの **type** プロパティは **RelationalSource** に設定する必要があります。 | はい |
+| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**メモ**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ  |
 
 **例**
 
@@ -275,9 +274,9 @@ OData からデータをコピーする場合は、OData のデータ型と Azur
 | OData のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
-| Edm.Boolean | ブール値 |
+| Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | Datetime |
+| Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |
@@ -287,7 +286,7 @@ OData からデータをコピーする場合は、OData のデータ型と Azur
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | String |
-| Edm.Time | timespan |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]

@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 814c3ebec326ab1c17f4fea7f11b2bacaa6b42d9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 92db27aa486936d53c2e2e1c92db7d728b7d99c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997610"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091836"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを構成する
 
@@ -29,6 +29,8 @@ Azure Portal を使用して、バックエンド サーバーに仮想マシン
 > * バックエンド サーバーとして使用される仮想マシンの作成
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -76,12 +78,12 @@ Export-PfxCertificate \
 4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
 5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
-    - *myVNet* - 仮想ネットワークの名前です。
-    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
-    - *myAGSubnet* - サブネットの名前です。
-    - *10.0.0.0/24* - サブネットのアドレス空間です。
+   - *myVNet* - 仮想ネットワークの名前です。
+   - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
+   - *myAGSubnet* - サブネットの名前です。
+   - *10.0.0.0/24* - サブネットのアドレス空間です。
 
-    ![Create virtual network](./media/create-ssl-portal/application-gateway-vnet.png)
+     ![Create virtual network](./media/create-ssl-portal/application-gateway-vnet.png)
 
 6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
 7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
@@ -132,7 +134,7 @@ Export-PfxCertificate \
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -143,17 +145,17 @@ Export-PfxCertificate \
       -Location EastUS
     ```
 
-3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 その名前および AzureRmVMExtension の VMName として「*myVM2*」を入力します。
+3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 その名前および Set-AzVMExtension の VMName として「*myVM2*」を入力します。
 
 ### <a name="add-backend-servers"></a>バックエンド サーバーの追加
 
-3. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
-4. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGateayBackendPool]** をクリックします。
-5. **[ターゲットの追加]** をクリックして、作成した各仮想マシンをバックエンド プールに追加します。
+1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
+1. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** をクリックします。
+1. **[ターゲットの追加]** をクリックして、作成した各仮想マシンをバックエンド プールに追加します。
 
     ![バックエンド サーバーの追加](./media/create-ssl-portal/application-gateway-backend.png)
 
-6. **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 

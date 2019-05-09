@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 126c0d63a7d59b76361a25844575ee6556a475b1
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 652591fc4539e6f19c0606c1502609a823327f2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002078"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811020"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
-[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)のグラフの注釈により、新しいビルドのデプロイ先やその他の重要なイベントが示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 注釈は、[Azure DevOps Services ビルド システム](https://docs.microsoft.com/azure/devops/pipelines/tasks/)により自動で作成されます。 [PowerShell から作成する](#create-annotations-from-powershell)ことにより、任意のイベントにフラグを設定する注釈を作成することもできます。
+[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)のグラフの注釈により、新しいビルドのデプロイ先やその他の重要なイベントが示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 注釈は、[Azure DevOps Services ビルド システム](https://docs.microsoft.com/azure/devops/pipelines/tasks/)により自動で作成されます。 PowerShell から作成することにより、任意のイベントにフラグを設定する注釈を作成することもできます。
 
 > [!NOTE]
-> この記事には、非推奨の**クラシック メトリック エクスペリエンス**が反映されています。 現在、注釈は、クラシック エクスペリエンスと**[ブック](../../application-insights/app-insights-usage-workbooks.md)** においてのみ使用できます。 現在のメトリック エクスペリエンスについて詳しくは、[こちらの記事](../../azure-monitor/platform/metrics-charts.md)をご覧ください。
+> この記事には、非推奨の**クラシック メトリック エクスペリエンス**が反映されています。 現在、注釈は、クラシック エクスペリエンスと**[ブック](../../azure-monitor/app/usage-workbooks.md)** においてのみ使用できます。 現在のメトリック エクスペリエンスについて詳しくは、[こちらの記事](../../azure-monitor/platform/metrics-charts.md)をご覧ください。
 
 ![サーバー応答時間と明確な相関関係のある注釈の例](./media/annotations/00.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "54002078"
 
 Azure DevOps Services リリース テンプレートごとに別個の API キーを取得する必要があります。
 
-1. [Microsoft Azure Portal](https://portal.azure.com) にサインインし、アプリケーションを監視する Application Insights リソースを開きます  (まだリソースを作成していない場合は、[この時点で作成します](../../application-insights/app-insights-overview.md))。
+1. [Microsoft Azure Portal](https://portal.azure.com) にサインインし、アプリケーションを監視する Application Insights リソースを開きます  (まだリソースを作成していない場合は、[この時点で作成します](../../azure-monitor/app/app-insights-overview.md))。
 2. **[API アクセス]** を開き、**Application Insights Id** をコピーします。
    
     ![portal.azure.com で、Application Insights リソースを開き、[設定] を選択します。 [API アクセス] を開きます。 アプリケーション ID をコピーする](./media/annotations/20.png)

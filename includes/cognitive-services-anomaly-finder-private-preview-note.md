@@ -7,15 +7,15 @@ manager: cgrounlun
 ms.service: cognitive-services
 ms.technology: anomaly-finder
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 03/21/2019
 ms.author: nitinme
 ms.custom: include file
-ms.openlocfilehash: 984190176b75c932dcced2c846832428213df32c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1dab9b0e23b5fe574f9b4506fdcad510d378bfef
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50973869"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494650"
 ---
 > [!NOTE]
-> Anomaly Finder はプライベート プレビューに入りました。 詳しくは[Anomaly Finder プライベート プレビューのドキュメント](https://aka.ms/AnomalyFinderPrivatePreview)をご覧ください。 Anomaly Finder プライベート プレビューに参加するには、[お問い合わせください](mailto:kenshoteam@microsoft.com)。
+> Anomaly Detector API (パブリック プレビュー中) は Anomaly Finder ラボの後継です。 既存の Anomaly Finder ラボは 2019 年 4 月 30 日に廃止される予定です。 この時点までに Anomaly Detector に移行することをお勧めします。 詳細については、[Anomaly Detector API のドキュメント](../articles/cognitive-services/anomaly-detector/index.yml)をご覧ください。 

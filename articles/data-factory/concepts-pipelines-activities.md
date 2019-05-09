@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: ca64c87a0211ae00218493fe7bfddcbbb81a032a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997939"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-create-pipelines.md)
 > * [現在のバージョン](concepts-pipelines-activities.md)
 
@@ -55,7 +54,7 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop ストリーミング](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Machine Learning アクティビティ: バッチ実行とリソース更新](transform-data-using-machine-learning.md) | Azure VM
+[Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) | Azure VM
 [ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [カスタム コード](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -97,13 +96,13 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 
 タグ | 説明 | データ型 | 必須
 --- | ----------- | ---- | --------
-name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 140 文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> | String | はい
+name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数:140</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> | String | はい
 description  | パイプラインの用途を説明するテキストを指定します。 | String | いいえ 
 activities | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、「[アクティビティ JSON](#activity-json)」のセクションを参照してください。 | Array | はい
 parameters | **parameters** セクションでは、パイプライン内に 1 つ以上のパラメーターを定義できるので、パイプラインの再利用に柔軟性を持たせることができます。 | List | いいえ 
 
 ## <a name="activity-json"></a>アクティビティ JSON
-**activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 アクティビティには、主に実行アクティビティと制御アクティビティの 2 種類があります。
+**activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 アクティビティには、主に次の 2 種類があります:実行アクティビティと制御アクティビティ。
 
 ### <a name="execution-activities"></a>実行アクティビティ
 実行アクティビティには、[データ移動アクティビティ](#data-movement-activities)と[データ変換アクティビティ](#data-transformation-activities)が含まれます。 これらのアクティビティには、次のような最上位構造があります。
@@ -130,7 +129,7 @@ parameters | **parameters** セクションでは、パイプライン内に 1 �
 
 タグ | 説明 | 必須
 --- | ----------- | ---------
-name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 55 文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li></ul>
+name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数:55</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li></ul>
 description  | アクティビティの用途を説明するテキスト。 | はい
 type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | はい
 linkedServiceName | アクティビティで使用される、リンクされたサービスの名前。<br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 | HDInsight アクティビティ、Azure Machine Learning バッチ スコアリング アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ"
@@ -168,6 +167,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
     }
 }
 ```
+
 JSON での名前 | 説明 | 使用できる値 | 必須
 --------- | ----------- | -------------- | --------
 timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | いいえ。 既定のタイムアウトは 7 日間です。
@@ -194,7 +194,7 @@ secureOutput | true に設定すると、アクティビティからの出力が
 
 タグ | 説明 | 必須
 --- | ----------- | --------
-name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数: 55 文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li><ul>
+name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数:55</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li><ul>
 description  | アクティビティの用途を説明するテキスト。 | はい
 type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | はい
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に応じて異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ 
@@ -203,16 +203,16 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ### <a name="activity-dependency"></a>アクティビティの依存関係
 アクティビティの依存関係では、後続のアクティビティが前のアクティビティにどのように依存するかを定義するので、次のタスクの実行を続行するかどうかの条件を決めることができます。 さまざまな依存関係の条件を使用して、1 つのアクティビティを 1 つ以上の前のアクティビティに依存させることができます。
 
-さまざまな依存関係の条件には、Succeeded、Failed、Skipped、Completed があります。
+依存関係の条件には次のものがあります:Succeeded、Failed、Skipped、Completed。
 
 たとえば、パイプラインに Activity A -> Activity B がある場合、次のようなさまざまなシナリオが考えられます。
 
-- Activity B が Activity A に対する **succeeded** の依存関係の条件を持つ場合: Activity A の最終的な状態が succeeded の場合にのみ Activity B が実行されます
-- Activity B が Activity A に対する **failed** の依存関係の条件を持つ場合: Activity A の最終的な状態が failed の場合にのみ Activity B が実行されます
-- Activity B が Activity A に対する **completed** の依存関係の条件を持つ場合: Activity A の最終的な状態が succeeded か failed の場合に Activity B が実行されます
-- Activity B が Activity A に対する **skipped** の依存関係の条件を持つ場合: Activity A の最終的な状態が skipped の場合に Activity B が実行されます。 Activity X -> Activity Y -> Activity Z のシナリオで、各アクティビティが前のアクティビティが成功した場合のみ実行される場合、skipped が発生します。 Activity X が失敗した場合、Activity Y が実行されることはないので、Activity Y の状態は “Skipped” になります。 同様に、Activity Z の状態も “Skipped” になります。
+- Activity B が Activity A に対する **succeeded** の依存関係の条件を持つ場合:Activity A の最終的な状態が succeeded の場合にのみ Activity B が実行されます
+- Activity B が Activity A に対する **failed** の依存関係の条件を持つ場合:Activity A の最終的な状態が failed の場合にのみ Activity B が実行されます
+- Activity B が Activity A に対する **completed** の依存関係の条件を持つ場合:Activity A の最終的な状態が succeeded か failed の場合に Activity B が実行されます
+- Activity B が Activity A に対する **skipped** の依存関係の条件を持つ場合:Activity A の最終的な状態が skipped の場合に Activity B が実行されます。 Activity X -> Activity Y -> Activity Z のシナリオで、各アクティビティが前のアクティビティが成功した場合のみ実行される場合、skipped が発生します。 Activity X が失敗した場合、Activity Y が実行されることはないので、Activity Y の状態は “Skipped” になります。 同様に、Activity Z の状態も “Skipped” になります。
 
-#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>例: Activity 2 は Activity 1 の成功に依存している
+#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>例:Activity 2 は Activity 1 の成功に依存している
 
 ```json
 {

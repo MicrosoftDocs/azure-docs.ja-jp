@@ -5,15 +5,15 @@ services: cosmos-db
 author: roygara
 ms.service: cosmos-db
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 04/05/2019
 ms.author: rogarana
-ms.component: cosmosdb-table
-ms.openlocfilehash: 219b5aa3c1f280ce02d2579f3fe2cc7ca7da490d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.subservice: cosmosdb-table
+ms.openlocfilehash: 840c2793928816c6346e2039a38678585f8e0bc7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125787"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273126"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,20 +32,27 @@ Azure Table Storage は NoSQL データストアであり、これを使用す�
 
 このハウツー記事では、作業の完了後に簡単に削除できるように、新しいリソース グループに新しい Azure Storage アカウントを作成する方法について説明します。 既存のストレージ アカウントを使用したい場合はそうしてもかまいません。
 
-例を実行するには、Azure PowerShell モジュール バージョン 4.4.0 以降が必要です。 PowerShell ウィンドウで、`Get-Module -ListAvailable AzureRM` を実行して、バージョンを確認します。 何も表示されない場合や、アップグレードが必要な場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
+例を実行するには、Az PowerShell モジュール `Az.Storage (1.1.0 or greater)` および `Az.Resources (1.2.0 or greater)` が必要です。 PowerShell ウィンドウで、`Get-Module -ListAvailable Az*` を実行して、バージョンを確認します。 何も表示されない場合や、アップグレードが必要な場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
-Azure PowerShell をインストールまたは更新した後は、エンティティを管理するコマンドを含む **AzureRmStorageTable** モジュールをインストールする必要があります。 このモジュールをインストールするには、PowerShell を管理者として実行し、**Install-Module** コマンドを使用します。
+> [!IMPORTANT]
+> PowerShell からこの Azure 機能を使用するには、`Az` モジュールがインストールされている必要があります。 `AzTable` の現在のバージョンは、以前の AzureRM モジュールと互換性がありません。
+> 必要に応じて、[Az モジュールの最新のインストール手順](/powershell/azure/install-az-ps)に従ってください。
+
+Azure PowerShell をインストールまたは更新した後は、エンティティを管理するコマンドを含む **AzTable** モジュールをインストールする必要があります。 このモジュールをインストールするには、PowerShell を管理者として実行し、**Install-Module** コマンドを使用します。
+
+> [!IMPORTANT]
+> モジュール名の互換性の理由から、PowerShell ギャラリーではこれと同じモジュールが古い名前 `AzureRmStorageTables` でまだ公開されています。 このドキュメントでは、新しい名前のみを参照します。
 
 ```powershell
-Install-Module AzureRmStorageTable
+Install-Module AzTable
 ```
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Add-AzAccount` コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。
 
 ```powershell
-Connect-AzureRmAccount
+Add-AzAccount
 ```
 
 ## <a name="retrieve-list-of-locations"></a>場所の一覧を取得する
@@ -53,28 +60,28 @@ Connect-AzureRmAccount
 使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 これらの例では、**eastus** を使用しています。 後で使用するために、この値を変数 **location** に保存します。
 
 ```powershell
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location
 $location = "eastus"
 ```
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/New-AzureRmResourceGroup) コマンドでリソース グループを作成します。 
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 将来使用するために、リソース グループ名を変数に保存します。 この例では、*pshtablesrg* という名前のリソース グループを *eastus* リージョンに作成しています。
 
 ```powershell
 $resourceGroup = "pshtablesrg"
-New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
+New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-## <a name="create-storage-account"></a>[ストレージ アカウントの作成]
+## <a name="create-storage-account"></a>ストレージ アカウントの作成
 
-[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) を利用し、ローカル冗長ストレージ (LRS) で標準の汎用ストレージ アカウントを作成します。 使用されるストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントで作業するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。
+[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) を使用して、ローカル冗長ストレージ (LRS) で標準の汎用ストレージ アカウントを作成します。 必ず一意のストレージ アカウント名を指定してください。 次に、ストレージ アカウントを表すコンテキストを取得します。 このコンテキストは、ストレージ アカウントで作業するときに参照できます。ご自身の資格情報を繰り返し入力する必要はありません。
 
 ```powershell
 $storageAccountName = "pshtablestorage"
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -Location $location `
   -SkuName Standard_LRS `
@@ -85,40 +92,51 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-new-table"></a>新しいテーブルを作成する
 
-テーブルを作成するには、[New-AzureStorageTable](/powershell/module/azure.storage/New-AzureStorageTable) コマンドレットを使用します。 この例では、テーブル名として `pshtesttable` を使用しています。
+テーブルを作成するには、[New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) コマンドレットを使用します。 この例では、テーブル名として `pshtesttable` を使用しています。
 
 ```powershell
 $tableName = "pshtesttable"
-New-AzureStorageTable –Name $tableName –Context $ctx
+New-AzStorageTable –Name $tableName –Context $ctx
 ```
 
 ## <a name="retrieve-a-list-of-tables-in-the-storage-account"></a>ストレージ アカウントのテーブルの一覧を取得する
 
-[Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable) を使用して、ストレージ アカウントのテーブルの一覧を取得します。
+[Get-AzStorageTable](/powershell/module/az.storage/Get-AzureStorageTable) を使用して、ストレージ アカウントのテーブルの一覧を取得します。
 
 ```powershell
-Get-AzureStorageTable –Context $ctx | select Name
+Get-AzStorageTable –Context $ctx | select Name
 ```
 
 ## <a name="retrieve-a-reference-to-a-specific-table"></a>特定のテーブルへの参照を取得する
 
-テーブルに対して操作を実行するには、その特定のテーブルに対する参照が必要になります。 [Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable) を使用して、参照を取得します。 
+テーブルに対して操作を実行するには、その特定のテーブルに対する参照が必要になります。 [Get-AzStorageTable](/powershell/module/az.storage/Get-AzureStorageTable) を使用して、参照を取得します。
 
 ```powershell
-$storageTable = Get-AzureStorageTable –Name $tableName –Context $ctx
+$storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
+```
+
+## <a name="reference-cloudtable-property-of-a-specific-table"></a>特定のテーブルの参照 CloudTable プロパティ
+
+> [!IMPORTANT]
+> **AzTable** PowerShell モジュールを使用する場合は、必ず CloudTable を使用する必要があります。 **Get AzTableTable** コマンドを呼び出して、このオブジェクトへの参照を取得します。 また、テーブルがまだ存在しない場合は、このコマンドでテーブルが作成されます。
+
+**AzTable** を使用してテーブルに対する操作を実行するには、特定のテーブルの CloudTable プロパティへの参照が必要です。
+
+```powershell
+$cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
 ```
 
 [!INCLUDE [storage-table-entities-powershell-include](../../../includes/storage-table-entities-powershell-include.md)]
 
 ## <a name="delete-a-table"></a>テーブルを削除する
 
-テーブルを削除するには、[Remove-AzureStorageTable](/powershell/module/azure.storage/Remove-AzureStorageTable) を使用します。 このコマンドレットを実行すると、テーブルと、そのすべてのデータが削除されます。
+テーブルを削除するには、[Remove-AzStorageTable](/powershell/module/az.storage/Remove-AzStorageTable) を使用します。 このコマンドレットを実行すると、テーブルと、そのすべてのデータが削除されます。
 
 ```powershell
-Remove-AzureStorageTable –Name $tableName –Context $ctx
+Remove-AzStorageTable –Name $tableName –Context $ctx
 
 # Retrieve the list of tables to verify the table has been removed.
-Get-AzureStorageTable –Context $Ctx | select Name
+Get-AzStorageTable –Context $Ctx | select Name
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
@@ -126,7 +144,7 @@ Get-AzureStorageTable –Context $Ctx | select Name
 このハウツー記事に従って最初に新しいリソース グループとストレージ アカウントを作成している場合は、リソース グループを削除することで、この練習で作成したすべてのアセットを削除できます。 このコマンドを実行すると、リソース グループと、そのグループに含まれるすべてのリソースが削除されます。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -143,8 +161,8 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 詳細については、次の記事を参照してください。
 
-* [Storage PowerShell コマンドレット](/powershell/module/azurerm.storage#storage)
+* [Storage PowerShell コマンドレット](/powershell/module/az.storage#storage)
 
-* [PowerShell を使用した Azure Storage テーブルの操作](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/)
+* [PowerShell - AzureRmStorageTable/AzTable PS モジュール v2.0 からの Azure テーブルの操作](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: f232ee89993998eb25ecce73e9c2ac8e08f3198b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7ea7cbf4526528eb481b6125b006d0c29d86deb2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094112"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001080"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>ダッシュボードで主なコスト メトリックを表示する
 

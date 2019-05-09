@@ -13,22 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 58c7261e3082311e4ce9d04cb39f688bc8f04bb6
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: b5da253c699c895c61df14ff50062a99e82d6913
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901002"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544672"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
-
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-previous-gen.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
+## <a name="older-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
+
+[!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
 ## <a name="other-sizes"></a>その他のサイズ
 
@@ -39,7 +41,6 @@ ms.locfileid: "37901002"
 - [GPU](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 
-
 ## <a name="next-steps"></a>次の手順
-[Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 
+[Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

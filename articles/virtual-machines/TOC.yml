@@ -13,6 +13,8 @@ items:
     href: workloads/oracle/oracle-considerations.md
   - name: SAP
     href: workloads/sap/get-started.md
+  - name: メインフレームのホスト変更
+    href: workloads/mainframe-rehosting/overview.md
 - name: クラシック デプロイ
   items:
   - name: クラシック デプロイメントを使用した Linux VM
@@ -27,9 +29,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=compute
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 25155f7bbb64ba8e18cc7a18265e29f936fe2479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7f253c1ed2b4910e18acd65367cd8e0e10574c0d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994481"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737758"

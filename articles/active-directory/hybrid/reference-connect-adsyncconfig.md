@@ -1,21 +1,23 @@
 ---
-title: 'Azure AD Connect: ADSyncConfig PowerShell リファレンス | Microsoft Docs'
+title: Azure AD Connect:ADSyncConfig PowerShell リファレンス | Microsoft Docs
 description: このドキュメントでは、ADSyncConfig.psm1 PowerShell モジュールの参照情報を示します。
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
-ms.component: hybrid
+ms.date: 01/24/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d135dfbddf5a603adc09683244292aa9116b4e04
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.topic: reference
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670069"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162392"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell リファレンス
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:ADSyncConfig PowerShell リファレンス
 次のドキュメントでは、Azure AD Connect に含まれる ADSyncConfig.psm1 PowerShell モジュールの参照情報を示します。
 
 
@@ -111,7 +113,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
@@ -284,7 +286,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
@@ -451,7 +453,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
@@ -613,7 +615,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
@@ -774,7 +776,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
@@ -895,7 +897,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
@@ -1060,7 +1062,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
@@ -1129,7 +1131,7 @@ Accept wildcard characters: False
 
 #### <a name="-credential"></a>-Credential
 ADConnectorAccountDN アカウントに対するアクセス許可を制限するために必要な権限を持つ管理者資格情報。 これは通常、企業またはドメインの管理者です。 アカウント参照の失敗を回避するには、管理者アカウントの完全修飾ドメイン名を使用します。
-例: CONTOSO\admin
+例:CONTOSO\admin
 
 ```yaml
 Type: PSCredential
@@ -1191,7 +1193,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
@@ -1215,7 +1217,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ### <a name="description"></a>Description
 Set-ADSyncUnifiedGroupWritebackPermissions 関数は、次を含む必要なアクセス許可を AD 同期アカウントに付与します。
 1.
-すべてのオブジェクトの種類またはサブ オブジェクトの汎用の読み取り/書き込み、削除、ツリーの削除および子の作成\削除
+すべてのグループ オブジェクトの種類またはサブ オブジェクトの汎用の読み取り/書き込み、削除、ツリーの削除および子の作成\削除
 
 これらのアクセス許可は、フォレスト内のすべてのドメインに適用されます。
 必要に応じて ADobjectDN パラメーターに DistinguishedName を指定し、これらのアクセス許可をその AD オブジェクトのみに設定できます (サブ オブジェクトへの継承を含む)。
@@ -1353,7 +1355,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
@@ -1396,4 +1398,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。

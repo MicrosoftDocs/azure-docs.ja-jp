@@ -5,18 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 29daa447be051af3df86ba9211bc2e4871d8c71e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b56993b9ad03f2ab50fe3954ab5e8855d0d8bc0f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965107"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770019"
 ---
 # <a name="azure-management---monitoring"></a>Azure の管理 - 監視
 
@@ -52,13 +52,3 @@ Azure の管理には、その一部として監視が含まれています。  
 ## <a name="migrate"></a>移行 
 移行とは、現在オンプレミスで実行されているワークロードを Azure クラウドに切り替えることを指します。  [Azure Migrate](../migrate/migrate-overview.md) は、オンプレミスの仮想マシンを Azure に移行する場合の適合性 (パフォーマンスベースのサイズとコストの見積もりなど) を評価するうえで役に立ちます。  Azure Site Recovery は、[オンプレミス](../site-recovery/migrate-tutorial-on-premises-azure.md)または[アマゾン ウェブ サービス](../site-recovery/migrate-tutorial-aws-azure.md)から仮想マシンを実際に移行する際に役に立ちます。  [Azure Database Migration](../dms/dms-overview.md) は、複数のデータベース ソースを Azure データ プラットフォームに移行する際に便利です。
 
-
-## <a name="operations-management-suite"></a>Operations Management Suite
-Azure の管理に関する以前のテクニカル ドキュメントには、Operations Management Suite (OMS) に関する内容が含まれていました。OMS は、Azure の管理に使用する次のサービスをバンドルとしてまとめたものです。
-
-- Azure Automation
-- Azure Backup
-- Log Analytics
-- Site Recovery
-
-Microsoft では現在、Azure の管理に関与するサービスが増えたことを受けて、テクニカル ドキュメントから OMS に関する記述の削除を進めています。 OMS に含まれるサービスに変更はありません。Azure のアプリケーションとリソースの管理では、それぞれのサービスが依然として重要な役割を担っています。 今後は、実行が必要な管理タスクと、各タスクの実行を担うさまざまな Azure サービスに集中できるようになります。

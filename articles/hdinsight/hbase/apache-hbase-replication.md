@@ -9,20 +9,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112536"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
-Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で [Apache HBase](http://hbase.apache.org/) レプリケーションを設定する方法について説明します。
+Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で [Apache HBase](https://hbase.apache.org/) レプリケーションを設定する方法について説明します。
 
 クラスターのレプリケーションでは、ソース プッシュの手法が使用されます。 HBase クラスターは、ソースまたはターゲットになることも、両方のロールを同時に満たすこともできます。 レプリケーションは非同期です。 レプリケーションの目的は、最終的な一貫性です。 レプリケーションが有効になった列ファミリに対する編集をソースが受け取ると、その編集はすべてのターゲット クラスターに伝達されます。 クラスター間でデータがレプリケートされるときは、ソース クラスターとそのデータを既に消費しているすべてのクラスターが追跡されて、レプリケーション ループが防止されます。
 
-このチュートリアルでは、ソースとターゲット間のレプリケーションを設定します。 他のクラスター トポロジについては、[Apache HBase のリファレンス ガイド](http://hbase.apache.org/book.html#_cluster_replication)を参照してください。
+このチュートリアルでは、ソースとターゲット間のレプリケーションを設定します。 他のクラスター トポロジについては、[Apache HBase のリファレンス ガイド](https://hbase.apache.org/book.html#_cluster_replication)を参照してください。
 
 次に示すのは、単一の仮想ネットワークでの HBase レプリケーションの使用例です。
 
@@ -69,7 +69,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| 場所 | 米国西部 |
+| Location | 米国西部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet1 |
 | アドレス空間プレフィックス | 10.1.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -86,7 +86,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| 場所 | 米国東部 |
+| Location | 米国東部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet2 |
 | アドレス空間プレフィックス | 10.2.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -121,7 +121,7 @@ Bind をインストールするには、次の手順に従います。
 
     `sshuser` を、DNS 仮想マシンの作成時に指定した SSH ユーザー アカウントに置き換えます。
 
-    > [!NOTE]
+    > [!NOTE]  
     > `ssh` ユーティリティは、さまざまな方法で取得できます。 Linux、Unix、および macOS では、オペレーティング システムの一部として提供されます。 Windows を使用している場合は、次のオプションのいずれかを検討してください。
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
@@ -162,7 +162,7 @@ Bind をインストールするには、次の手順に従います。
     };
     ```
     
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > `goodclients` セクションの値を、2 つの仮想ネットワークの IP アドレス範囲に置き換えます。 このセクションは、この DNS サーバーが受け入れる要求の転送元アドレスを定義します。
 
     このファイルを編集するには、次のコマンドを使用します。
@@ -183,7 +183,7 @@ Bind をインストールするには、次の手順に従います。
 
         vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__です。 この値を保存します。これは後で使用します。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__ です。 この値を保存します。これは後で使用します。
 
     他の DNS サーバーの DNS サフィックスも見つけておく必要があります。 次の手順で必要になります。
 
@@ -197,7 +197,7 @@ Bind をインストールするには、次の手順に従います。
     };
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` を、別の仮想ネットワークの DNS サフィックスに置き換えます。 フォワーダー IP は、他の仮想ネットワーク内の DNS サーバーのプライベート IP アドレスです。
 
     このファイルを編集するには、次のコマンドを使用します。
@@ -221,7 +221,7 @@ Bind をインストールするには、次の手順に従います。
     nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` を、他のネットワーク内の DNS 仮想マシンの完全修飾ドメイン名 (FQDN) に置き換えます。
     >
     > `10.2.0.4` を、他の仮想ネットワーク内のカスタム DNS サーバーの __内部 IP アドレス__ に置き換えます。
@@ -245,7 +245,7 @@ Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用
 
 1. [Azure Portal](https://portal.azure.com) で、仮想ネットワークを選択し、__[DNS サーバー]__ を選択します。
 
-2. __[カスタム]__ を選択し、カスタム DNS サーバーの__内部 IP アドレス__を入力します。 最後に、__[保存]__ を選択します。
+2. __[カスタム]__ を選択し、カスタム DNS サーバーの __内部 IP アドレス__ を入力します。 最後に、__[保存]__ を選択します。
 
 6. vnet1 の DNS サーバー仮想マシンを開き、**[再起動]** をクリックします。  DNS 構成が有効であることを確認するには、仮想ネットワーク内のすべての仮想マシンを再起動する必要があります。
 7. 手順を繰り返して、vnet2 のカスタムの DNS サーバーを構成します。
@@ -258,7 +258,7 @@ sudo service bind9 status
 
 ## <a name="create-apache-hbase-clusters"></a>Apache HBase クラスターを作成する
 
-2 つの仮想ネットワークのそれぞれに、次の構成の [Apache HBase](http://hbase.apache.org/) クラスターを作成します。
+2 つの仮想ネットワークのそれぞれに、次の構成の [Apache HBase](https://hbase.apache.org/) クラスターを作成します。
 
 - **リソース グループ名**: 仮想ネットワークの作成時と同じリソース グループ名を使用します。
 - **クラスターの種類**:hbase
@@ -274,7 +274,7 @@ sudo service bind9 status
 
 クラスターをレプリケートする場合は、レプリケートするテーブルを指定する必要があります。 このセクションでは、ソース クラスターにデータを読み込みます。 次のセクションで、2 つのクラスター間のレプリケーションを有効にします。
 
-**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[HDInsight の Apache HBase を使用する方法に関する Apache HBase チュートリアル](apache-hbase-tutorial-get-started-linux.md)の指示に従います。
+**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[Apache HBase のチュートリアル:HDInsight の Apache HBase の使用を開始する方法](apache-hbase-tutorial-get-started-linux.md)に関するページの指示に従います。
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
@@ -288,16 +288,15 @@ sudo service bind9 status
 4. ページの上部にある **[新規で送信]** を選択します。
 5. 次の情報を選択するか入力します。
 
-  1. **名前**:「**Enable replication**」と入力します。
-  2. **バッシュ スクリプト URI**:「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」を入力します。
-  3.  **ヘッド**:これが選択されていることを確認します。 他のノード タイプをオフにします。
-  4. **パラメーター**:次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
+   1. **名前**:「**Enable replication**」と入力します。
+   2. **バッシュ スクリプト URI**:「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」を入力します。
+   3. **ヘッド**:これが選択されていることを確認します。 他のノード タイプをオフにします。
+   4. **パラメーター**:次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    >[!note]
-    >
-    > ソースと宛先の両方のクラスター DNS 名に FQDN ではなくホスト名を使用します。
+      > [!NOTE]
+      > ソースと宛先の両方のクラスター DNS 名に FQDN ではなくホスト名を使用します。
 
 6. **作成**を選択します。 このスクリプトの実行には、少し時間がかかます (特に **-copydata** 引数を使用する場合)。
 

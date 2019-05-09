@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Face API を使用してリモート画像内の顔を検出してフレームに収める、シンプルな Python スクリプトを作成します。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: 1e35d650f6fc99bff5bf49e517e2b38fcdc58dde
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e4b762d6f36f8682162160be6f42b8691e4b2ca3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077003"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870250"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>クイック スタート: 画像内の顔を検出してフレームに収める Python スクリプトの作成
 

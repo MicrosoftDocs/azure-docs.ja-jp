@@ -3,24 +3,26 @@ title: Azure の Update Management ソリューション
 description: この記事では、Azure Update Management ソリューションを使用して Windows および Linux コンピューターの更新プログラムを管理する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 04/09/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 39e8c06228381143a6f4975e4d6415799ce16d43
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342393"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426491"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
-Azure Automation の Update Management ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
+Azure Automation の Update Management ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーで、Windows コンピューターと Linux コンピューターに対してオペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
 仮想マシンの Update Management は、Azure Automation アカウントから直接有効にすることができます。 Automation アカウントから仮想マシンの Update Management を有効にする方法については、[複数の仮想マシンの更新管理](manage-update-multi.md)に関するページを参照してください。 また、Azure portal の仮想マシン ページから仮想マシンの Update Management を有効にすることもできます。 このシナリオは、[Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) および [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) の仮想マシンに対して使用できます。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="solution-overview"></a>ソリューションの概要
 
@@ -33,13 +35,13 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 次の図は、動作とデータ フローの概念図です。ワークスペース内の接続された Windows Server と Linux コンピューターすべてがこのソリューションによってどのように評価され、セキュリティ更新プログラムが適用されるかを示しています。
 
-![Update Management プロセスのフロー](media/automation-update-management/update-mgmt-updateworkflow.png)
+![Update Management プロセスのフロー](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Update Management を使用して、同じテナント内の複数のサブスクリプションにマシンをネイティブにオンボードできます。
 
 CVE がリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2 ～ 3 時間かかります。  Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 ～ 15 時間かかります。
 
-コンピューターが更新プログラムのコンプライアンスを確認するためにスキャンを完了した後、エージェントによって情報が Azure Log Analytics に一括転送されます。 Windows コンピューターでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
+コンピューターが更新プログラムのコンプライアンスを確認するためにスキャンを完了した後、エージェントによって情報が Azure Monitor ログに一括転送されます。 Windows コンピューターでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
 
 このスキャン スケジュールに加えて、MMA の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムのコンプライアンスを確認するためのスキャンが開始されます。
 
@@ -50,9 +52,9 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 > [!NOTE]
 > サービスに正しく報告するためには、Update Management で、特定の URL とポートを有効にする必要があります。 これらの要件の詳細については、[Hybrid Worker のためのネットワーク計画](automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
-更新が必要なコンピューターへのソフトウェア更新プログラムのデプロイとインストールに、スケジュールされたデプロイを使用できます。 Windows コンピューターの場合、"*オプション*" に分類されている更新プログラムはデプロイの範囲に含まれません。 デプロイの範囲には、必須の更新プログラムのみが含まれています。 
+更新が必要なコンピューターへのソフトウェア更新プログラムのデプロイとインストールに、スケジュールされたデプロイを使用できます。 Windows コンピューターの場合、"*オプション*" に分類されている更新プログラムはデプロイの範囲に含まれません。 デプロイの範囲には、必須の更新プログラムのみが含まれています。
 
-スケジュールされたデプロイでは、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索に基づいて[コンピューター グループ](../azure-monitor/platform/computer-groups.md)を選択します。 また、スケジュールを指定するときは、更新プログラムのインストールを許可する期間を承認し、設定します。
+スケジュールされたデプロイでは、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索に基づいて[コンピューター グループ](../azure-monitor/platform/computer-groups.md)を選択します。 また、スケジュールを指定するときは、更新プログラムのインストールを許可する期間を承認し、設定します。 この期間は、メンテナンス期間と呼ばれます。 再起動が必要な場合、適切な再起動オプションを選択していれば、再起動のために 10 分間のメンテナンス期間が予約されます。 パッチ適用に予想よりも時間がかかり、メンテナンス期間の残りが 10 分を切った場合、再起動は行われません。
 
 更新プログラムは、Azure Automation の Runbook によってインストールされます。 これらの Runbook は表示できません。また、これらは構成不要です。 更新プログラムのデプロイを作成すると、対象に含めたコンピューターに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。 このマスター Runbook は、必須の更新プログラムをインストールする子 Runbook を各エージェントで開始します。
 
@@ -70,7 +72,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
 |Windows Server 2008 R2 SP1 以降 (Windows Server 2012 および 2016 を含む)    |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。         |
+|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux での分類の更新](#linux-2)に関するページを参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Ubuntu 14.04 LTS、16.04 LTS、18.04 (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
@@ -86,15 +88,15 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 ### <a name="client-requirements"></a>クライアントの要件
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
 Windows エージェントは、WSUS サーバーと通信するように構成するか、Microsoft Update にアクセスできる必要があります。 System Center Configuration Manager と Update Management を統合して使用できます。 統合シナリオの詳細については、「[System Center Configuration Manager と Update Management の統合](oms-solution-updatemgmt-sccmintegration.md#configuration)」を参照してください。 [Windows エージェント](../azure-monitor/platform/agent-windows.md)が必要です。 Azure 仮想マシンのオンボードを実行すると、このエージェントは自動的にインストールされます。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
 Linux コンピューターには、更新リポジトリへのアクセスが必要です。 プライベートまたはパブリックの更新リポジトリが使用できます。 Update Management と対話するには、TLS 1.1 または TLS 1.2 が必要です。 このソリューションでは、Linux 用 Log Analytics エージェントが複数の Azure Log Analytics ワークスペースにレポートする構成はサポートされていません。
 
-Linux 用 Log Analytics エージェントをインストールして最新バージョンをダウンロードする方法について詳しくは、「[Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux)」(Operations Management Suite エージェント for Linux) をご覧ください。 Windows 用 Log Analytics エージェントをインストールする方法について詳しくは、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agent.md)に関するページをご覧ください。
+Linux 用 Log Analytics エージェントをインストールして最新バージョンをダウンロードする方法の詳細については、[Linux 用 Log Analytics エージェント](https://github.com/microsoft/oms-agent-for-linux)に関するページを参照してください。 Windows 用 Log Analytics エージェントをインストールする方法の詳細については、[Microsoft Monitoring Agent for Windows](../log-analytics/log-analytics-windows-agent.md) に関するページを参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -120,35 +122,47 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * 更新プログラムの展開 MP
 
-ソリューション管理パックの更新方法の詳細については、「[Operations Manager を Log Analytics に接続する](../azure-monitor/platform/om-agents.md)」を参照してください。
+> [!NOTE]
+> ワークスペースに関連付けられるように管理グループ レベルでエージェントが構成されている Operations Manager 1807 管理グループがある場合、それらを表示するための現在の回避策としては、**Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** ルールで **IsAutoRegistrationEnabled** を **True** にオーバーライドします。
+
+ソリューション管理パックの更新方法の詳細については、[Azure Monitor ログへの Operations Manager の接続](../azure-monitor/platform/om-agents.md)に関するページを参照してください。
 
 > [!NOTE]
-> Operations Manger エージェントを使用しているシステムを Update Management によって完全に管理できるようにするには、エージェントを Microsoft Monitoring Agent に更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)に関する記事を参照してください。
+> Operations Manger エージェントを使用しているシステムを Update Management によって完全に管理できるようにするには、エージェントを Microsoft Monitoring Agent に更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)に関する記事を参照してください。 Operations Manager を使用する環境では、System Center Operations Manager 2012 R2 UR 14 以降を実行している必要があります。
 
+## <a name="onboard"></a>Update Management の有効化
+
+システムへの修正プログラムの適用を開始するには、Update Management ソリューションを有効にする必要があります。 Update Management にマシンをオンボードする方法は多数あります。 以下に、推奨およびサポートされている、ソリューションにオンボードする方法を示します。
+
+* [仮想マシンから](automation-onboard-solutions-from-vm.md)
+* [複数のマシンを参照することから](automation-onboard-solutions-from-browse.md)
+* [お使いの Automation アカウントから](automation-onboard-solutions-from-automation-account.md)
+* [Azure Automation Runbook によって](automation-onboard-solutions.md)
+  
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure 以外のマシンが配布準備済みであることを確認する
 
-直接接続されたマシンが Log Analytics と通信していることを確認するには、数分経ってから、次のログ検索を実行します。
+直接接続されたマシンが Azure Monitor ログと通信していることを確認するには、数分経ってから、次のログ検索を実行します。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
-```
+```loganalytics
 Heartbeat
 | where OSType == "Linux" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
-```
+```loganalytics
 Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Windows コンピューターでは、次の情報を調べて、Log Analytics とエージェントの接続を確認できます。
+Windows コンピューターでは、次の情報を調べて、Azure Monitor ログとエージェントの接続を確認できます。
 
-1. [コントロール パネル] から **[Microsoft Monitoring Agent]** を開きます。 **[Azure Log Analytics]** タブで、エージェントに "**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されていることを確認します。
+1. [コントロール パネル] から **[Microsoft Monitoring Agent]** を開きます。 **[Azure Log Analytics]** タブで、エージェントに"**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されます。
 2. Windows イベント ログを開きます。 **アプリケーションとサービス ログ\Operations Manager** に移動して、ソースの **[サービス コネクタ]** でイベント ID 3000 および 5002 を検索します。 これらのイベントは、コンピューターが Log Analytics ワークスペースに登録され、構成を受信していることを示しています。
 
-エージェントが Log Analytics と通信できず、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されている場合は、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。 ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認する方法については、[Windows エージェントのネットワーク構成](../azure-monitor/platform/agent-windows.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関する記事を参照してください。
+エージェントが Azure Monitor ログと通信できず、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されている場合は、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。 ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認する方法については、[Windows エージェントのネットワーク構成](../azure-monitor/platform/agent-windows.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関する記事を参照してください。
 
 > [!NOTE]
 > Linux システムがプロキシまたは Log Analytics ゲートウェイと通信するよう構成されており、このソリューションの配布準備を行っている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、*proxy.conf* のアクセス許可を更新します。
@@ -158,7 +172,7 @@ Windows コンピューターでは、次の情報を調べて、Log Analytics �
 
 新しく追加された Linux エージェントは、評価が完了した後、状態が "**更新済み**" と表示されます。 このプロセスには最大で 6 時間かかります。
 
-Operations Manager 管理グループが Log Analytics と通信していることを確認する方法については、[Operations Manager と Log Analytics の統合の検証](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics)に関する記事を参照してください。
+Operations Manager 管理グループが Azure Monitor ログと通信していることを確認する方法については、[Operations Manager と Azure Monitor ログの統合の検証](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)に関するページを参照してください。
 
 ## <a name="data-collection"></a>データ収集
 
@@ -168,9 +182,9 @@ Operations Manager 管理グループが Log Analytics と通信しているこ�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント |[はい] |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |[はい] |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br/>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| Windows エージェント |はい |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |はい |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |はい |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br/>Operations Manager エージェントから Azure Monitor ログへの直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 
@@ -178,7 +192,9 @@ Operations Manager 管理グループが Log Analytics と通信しているこ�
 
 管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
 
-ダッシュボードに管理対象コンピューターの更新されたデータが表示されるまでに、30 分～ 6 時間かかる場合があります。
+管理対象のコンピューターの更新されたデータがダッシュボードに表示されるまでに、30 分～ 6 時間かかる場合があります。
+
+Update Management を使用しているマシンでの Azure Monitor ログの平均データ使用量は、1 か月あたり約 25 MB です。 この値は概数にすぎず、環境によって異なる可能性があります。 お使いの環境を監視し、実際に必要な正確な使用量を確認することをお勧めします。
 
 ## <a name="viewing-update-assessments"></a>更新の評価を表示する
 
@@ -192,7 +208,7 @@ Automation アカウントで **[Update Management]** をクリックすると�
 
 ## <a name="install-updates"></a>更新プログラムをインストールする
 
-ご利用のワークスペースにある Linux コンピューターと Windows コンピューターのすべてで更新プログラムが評価されたら、"*更新プログラムのデプロイ*" を作成して、必要な更新プログラムをインストールできます。 更新プログラムのデプロイとは、1 台以上のコンピューターに対して、必要な更新プログラムをスケジュールに従ってインストールすることです。 デプロイの範囲に含めるコンピューターまたはコンピューター グループと、デプロイの日時を指定します。 コンピューター グループの詳細については、[Log Analytics のコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください。
+ご利用のワークスペースにある Linux コンピューターと Windows コンピューターのすべてで更新プログラムが評価されたら、"*更新プログラムのデプロイ*" を作成して、必要な更新プログラムをインストールできます。 更新プログラムのデプロイとは、1 台以上のコンピューターに対して、必要な更新プログラムをスケジュールに従ってインストールすることです。 デプロイの範囲に含めるコンピューターまたはコンピューター グループと、デプロイの日時を指定します。 コンピューター グループの詳細については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください。
 
  更新プログラムのデプロイにコンピューター グループを含めると、スケジュールの作成時にグループ メンバーシップが 1 回だけ評価されます。 その後で加えられたグループへの変更は反映されません。 このような[動的グループ](#using-dynamic-groups)の使用を回避するため、これらのグループはデプロイ時に解決され、クエリによって定義されます。
 
@@ -205,12 +221,12 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 新しい更新プログラムのデプロイを作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ウィンドウが開きます。 次の表で説明されているプロパティの値を入力し、**[作成]** をクリックします。
 
-| プロパティ | [説明] |
+| プロパティ | Description |
 | --- | --- |
 | Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
 | 更新するグループ (プレビュー)|サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳しくは、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページをご覧ください。|
-| 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
+| 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
 |更新プログラムの分類|必要な更新プログラムの分類すべてを選択します|
 |更新プログラムの包含/除外|**[包含/除外]** ページが開きます。 含めるまたは除外する更新プログラムは別のタブに表示されます。 包含を処理する方法について詳しくは、[包含の動作](automation-update-management.md#inclusion-behavior)に関するページをご覧ください。 |
 |スケジュール設定|開始する時刻を選択し、繰り返しの設定として、[1 回] または [定期的] のいずれかを選択します|
@@ -222,7 +238,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 ### <a name="multi-tenant"></a>テナント間の更新プログラムのデプロイ
 
-修正プログラムを適用する必要がある Update Management に報告する別の Azure テナントにマシンが存在する場合は、次の対処法を使用して、スケジュールを設定する必要があります。 スケジュールは、[New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) コマンドレットと `-ForUpdate` スイッチを使用して作成できます。[New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+修正プログラムを適用する必要がある Update Management に報告する別の Azure テナントにマシンが存在する場合は、次の対処法を使用して、スケジュールを設定する必要があります。 スケジュールは、[New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) コマンドレットと `-ForUpdate` スイッチを使用して作成できます。[New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) コマンドレットを使用する際、`-NonAzureComputer` パラメーターに他のテナントのマシンを渡すことができます。 以下の例は、その方法を示しています。
 
 ```azurepowershell-interactive
@@ -230,9 +246,9 @@ $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$sched = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName <automationAccountName> -Schedule $sched -Windows -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="view-missing-updates"></a>不足している更新プログラムを表示する
@@ -251,7 +267,7 @@ REST API から更新プログラムのデプロイを表示する方法につ�
 
 次の表は、Update Management の更新プログラムの分類と、各分類の定義を示します。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 |分類  |説明  |
 |---------|---------|
@@ -264,7 +280,7 @@ REST API から更新プログラムのデプロイを表示する方法につ�
 |ツール     | 1 つまたは複数のタスクを完了するのに役立つユーティリティまたは機能です。        |
 |更新プログラム     | 現在インストールされているアプリケーションまたはファイルに対する更新プログラムです。        |
 
-### <a name="linux"></a> Linux
+### <a name="linux"></a>Linux
 
 |分類  |説明  |
 |---------|---------|
@@ -279,7 +295,7 @@ sudo yum -q --security check-update
 
 CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法はありません。 現時点では、独自の方法で分類データを使用するお客様には、できる範囲内のサポートのみを提供しています。
 
-## <a name="firstparty-predownload"></a>ファースト パーティの修正プログラム適用と事前ダウンロード
+## <a name="firstparty-predownload"></a>詳細設定
 
 Update Management は、Windows の更新プログラムのダウンロードとインストールに Windows Update を使用しています。 そのため、Windows Update で使用される多くの設定を尊重しています。 Windows 以外の更新プログラムを有効にする設定を使用している場合、Update Management では、それらの更新プログラムも管理されます。 更新プログラムの展開が行われる前の更新プログラムのダウンロードを有効にすると、更新プログラムの展開が速くなり、メンテナンス期間を超過する可能性が低くなります。
 
@@ -293,6 +309,15 @@ Update Management は、Windows の更新プログラムのダウンロードと
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
 $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
+```
+
+### <a name="disable-automatic-installation"></a>自動インストールを無効化する
+
+Azure VM では、更新プログラムの自動インストールが既定で有効になっています。 そのため、更新プログラムは、Update Management によってインストールされるようにユーザーがスケジュールする前に、インストールされる可能性があります。 この動作は、`NoAutoUpdate` レジストリ キーを `1` に設定すると無効化できます。 次の PowerShell スニペットは、この操作を行う 1 つの方法を示しています。
+
+```powershell
+$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
+Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 ```
 
 ### <a name="enable-updates-for-other-microsoft-products"></a>他の Microsoft 製品の更新プログラムを有効にする
@@ -330,8 +355,8 @@ Hybrid Runbook Worker で必要なポートの詳細については、[ハイブ
 
 Azure Portal で提供されている詳細情報に加え、ログに対する検索を実行できます。 ソリューション ページで **[Log Analytics]** を選択します。 **[ログ検索]** ウィンドウが開きます。
 
-また、[Log Analytics の検索 API のドキュメント](
-https://dev.loganalytics.io/)を参照して、クエリをカスタマイズし、さまざまなクライアントから使用する方法などを学ぶこともできます。
+クエリをカスタマイズする方法や、さまざまなクライアントから使用する方法などについては、[Log Analytics の検索 API のドキュメント](
+https://dev.loganalytics.io/)を参照してください。
 
 ### <a name="sample-queries"></a>サンプル クエリ
 
@@ -339,7 +364,7 @@ https://dev.loganalytics.io/)を参照して、クエリをカスタマイズし
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>単一の Azure VM 評価クエリ (Windows)
 
-VMUUID 値を、クエリの対象である仮想マシンの VM GUID に置き換えます。 Log Analytics で次のクエリを実行することで、使用する必要がある VMUUID を確認できます。`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+VMUUID 値を、クエリの対象である仮想マシンの VM GUID に置き換えます。 Azure Monitor ログで次のクエリを実行することで、使用する必要がある VMUUID を確認できます。 `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>不足している更新プログラムの概要
 
@@ -368,7 +393,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>単一の Azure VM 評価クエリ (Linux)
 
-Linux のディストリビューションによっては、Azure Resource Manager に由来する VMUUID 値と、Log Analytics に格納されている値との間で[エンディアン](https://en.wikipedia.org/wiki/Endianness)が一致しない場合があります。 次のクエリは、いずれかのエンディアンでの一致をチェックします。 結果を適切に返すために、VMUUID 値を GUID のビッグエンディアン形式とリトルエンディアン形式に置き換えます。 Log Analytics で次のクエリを実行することで、使用する必要がある VMUUID を確認できます。`Update | where Computer == "<machine name>"
+Linux のディストリビューションによっては、Azure Resource Manager に由来する VMUUID 値と、Azure Monitor ログに格納されている値との間で[エンディアン](https://en.wikipedia.org/wiki/Endianness)が一致しない場合があります。 次のクエリは、いずれかのエンディアンでの一致をチェックします。 結果を適切に返すために、VMUUID 値を GUID のビッグエンディアン形式とリトルエンディアン形式に置き換えます。 Azure Monitor ログで次のクエリを実行することで、使用する必要がある VMUUID を確認できます。 `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>不足している更新プログラムの概要
@@ -434,8 +459,8 @@ on SourceComputerId
 on SourceComputerId
 | extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
 | summarize computersBySeverity=count() by WorstMissingUpdateSeverity)
-| summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
-| summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeeedOtherUpdatesCount=sum(computersNeeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
+| summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
+| summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeedOtherUpdatesCount=sum(computersNeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
 | extend allComputersCount=assessedComputersCount+notAssessedComputersCount
 
 
@@ -540,14 +565,14 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-## <a name="using-dynamic-groups"></a>動的グループの使用 (プレビュー)
+## <a name="using-dynamic-groups"></a>動的グループの使用
 
-Update Management では、Azure VM の動的グループを更新プログラムのデプロイの対象にする機能が提供されています。 これらのグループはクエリによって定義され、更新プログラムのデプロイが開始するときに、そのグループのメンバーが評価されます。 クエリを定義するときに、次の項目をまとめて使用して動的グループを設定できます。
+Update Management では、Azure VM の動的グループを更新プログラムのデプロイの対象にする機能が提供されています。 これらのグループはクエリによって定義され、更新プログラムのデプロイが開始するときに、そのグループのメンバーが評価されます。 動的なグループは、クラシック VM では動作しません。 クエリを定義するときに、次の項目をまとめて使用して動的グループを設定できます。
 
 * サブスクリプション
 * リソース グループ
-* 場所
-* タグ
+* Locations
+* Tags
 
 ![グループを選択する](./media/automation-update-management/select-groups.png)
 
@@ -565,7 +590,7 @@ PC、サーバー、モバイル デバイスを管理するために System Cen
 
 更新プログラムの包含では、適用する特定の更新プログラムを指定できます。 包含されている修正プログラムまたはパッケージがインストールされます。 修正プログラムまたはパッケージが包含されていて、分類も選択されていると、包含されるアイテムと分類に一致するアイテムの両方がインストールされます。
 
-包含より除外の方が優先されることを知っておく必要があります。 たとえば、除外ルール `*` を定義した場合、修正プログラムまたはパッケージはすべて除外されるためインストールされません。 Linux マシンでは、包含されているパッケージに除外された依存パッケージがある場合、パッケージはインストールされません。
+包含より除外の方が優先されることを知っておく必要があります。 たとえば、除外ルール `*` を定義した場合、修正プログラムまたはパッケージはすべて除外されるためインストールされません。 除外されたパッチは、マシンに不足しているものとして表示されます。 Linux マシンでは、包含されているパッケージに除外された依存パッケージがある場合、パッケージはインストールされません。
 
 ## <a name="patch-linux-machines"></a>Linux マシンのパッチ
 
@@ -589,11 +614,14 @@ Update Management は更新プログラムの強化をクラウドで実行す�
 
 ただし、Update Management には関連更新プログラムに関する追加情報があるため、そのマシンは引き続き "非対応" として報告されることがあります。
 
-更新プログラムの分類ごとの更新プログラムのデプロイは CentOS では既定では動作しません。 SUSE で '他の更新プログラム' *のみ*を分類として選択すると、zypper (パッケージ マネージャー) に関連するセキュリティ更新プログラムもインストールされるか、またはその依存関係がまず必要になる場合があります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行する必要があります。 確認するには、更新プログラムのログを調べてください。
+更新プログラムの分類ごとの更新プログラムのデプロイは CentOS では既定では動作しません。 CentOS 用の更新プログラムを正しく展開するには、更新プログラムが確実に適用されるように、すべての分類を選択します。 SUSE で '他の更新プログラム' *のみ*を分類として選択すると、zypper (パッケージ マネージャー) に関連するセキュリティ更新プログラムもインストールされるか、またはその依存関係がまず必要になる場合があります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行する必要があります。 確認するには、更新プログラムのログを調べてください。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="remove-a-vm-for-update-management"></a>Update Management のための VM を削除する
 
-Update Management のトラブルシューティング方法については、[Update Management のトラブルシューティング](troubleshoot/update-management.md)に関するページを参照してください。
+Update Management から VM を削除するには:
+
+* Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
+* [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -602,7 +630,8 @@ Update Management のトラブルシューティング方法については、[U
 > [!div class="nextstepaction"]
 > [Azure Windows VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)
 
-* [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラム データを確認します。
+* [Azure Monitor ログ](../log-analytics/log-analytics-log-searches.md)のログ検索を使用して、詳細な更新データを確認します。
 * 更新プログラムのデプロイの状態に関する[アラートを作成](automation-tutorial-update-management.md#configure-alerts)します。
 
 * REST API を使用して Update Management を操作する方法については、「[Software Update Configurations](/rest/api/automation/softwareupdateconfigurations)」(ソフトウェア更新プログラムの構成) をご覧ください。
+* Update Management のトラブルシューティング方法については、[Update Management のトラブルシューティング](troubleshoot/update-management.md)に関するページを参照してください。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 218fc33390575a3df96d0b7d7696b3085c38c8f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263895"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56751483"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -41,7 +41,7 @@ ms.locfileid: "51263895"
 
 ## <a name="before-you-start"></a>開始する前に
 
-デバイス用のコードを作成する前に、リモート監視ソリューション アクセラレータをデプロイし、そのソリューションに新しい物理デバイスを追加します。
+デバイス用のコードを作成する前に、リモート監視ソリューション アクセラレータをデプロイし、そのソリューションに新しい実在のデバイスを追加します。
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをデプロイする
 
@@ -56,13 +56,13 @@ ms.locfileid: "51263895"
 > [!NOTE]
 > ソリューションにデバイスを既に追加している場合は、この手順を省略して構いません。 ただし、次の手順では、デバイスの接続文字列が必要です。 デバイスの接続文字列は、[Azure Portal](https://portal.azure.com) から、または [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI ツールを使用して取得できます。
 
-デバイスがソリューション アクセラレータに接続するには、有効な資格情報を使用して IoT Hub に対してデバイス自身の ID を証明する必要があります。 ソリューションにデバイスを追加するときに、これらの資格情報を含むデバイスの接続文字列を保存できます。 このチュートリアルの後半で、クライアント アプリケーションにデバイスの接続文字列を含めます。
+デバイスがソリューション アクセラレータに接続するには、有効な資格情報を使用して IoT Hub に対してデバイス自身の ID を証明する必要があります。 ソリューションにデバイスを追加するときに、これらの資格情報を含むデバイスの接続文字列を保存する機会が与えられます。 このチュートリアルの後半で、クライアント アプリケーションにデバイスの接続文字列を含めます。
 
-デバイスをリモート監視ソリューションに追加するには、ソリューションの **[デバイス]** ページで次の手順を実行します。
+デバイスをリモート監視ソリューションに追加するには、ソリューションの **[デバイス エクスプローラー]** ページで次の手順を実行します。
 
-1. **[+ 新規デバイス]** を選択し、**[デバイスの種類]** で **[物理]** を選択します。
+1. **[+ 新規デバイス]** を選択し、**[デバイスの種類]** で **[実際]** を選択します。
 
-    ![物理デバイスを追加する](media/iot-suite-selector-connecting/devicesprovision.png)
+    ![実デバイスの追加](media/iot-suite-selector-connecting/devicesprovision.png)
 
 1. デバイス ID として「**Physical-chiller**」と入力します。 **[対称キー]** オプションと **[キーの自動生成]** オプションを選択します。
 
@@ -72,7 +72,7 @@ ms.locfileid: "51263895"
 
     ![資格情報の取得](media/iot-suite-selector-connecting/credentials.png)
 
-これで、物理デバイスをリモート監視ソリューション アクセラレータに追加して、デバイスの接続文字列をメモできました。 以降のセクションでは、デバイスの接続文字列を使用してソリューションに接続するクライアント アプリケーションを実装します。
+これで、実在のデバイスをリモート監視ソリューション アクセラレータに追加して、デバイスの接続文字列をメモできました。 以降のセクションでは、デバイスの接続文字列を使用してソリューションに接続するクライアント アプリケーションを実装します。
 
 クライアント アプリケーションでは、組み込みの **Chiller** デバイス モデルが実装されます。 ソリューション アクセラレータのデバイス モデルは、デバイスについて次の情報を指定します。
 

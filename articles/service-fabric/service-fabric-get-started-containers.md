@@ -3,8 +3,8 @@ title: Azure Service Fabric コンテナー アプリケーションを作成す
 description: Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。 Python アプリケーションで Docker イメージを作成して、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: jpconnock
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,26 +12,31 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/18/2018
-ms.author: twhitney
-ms.openlocfilehash: 587ba52a1a30d187268119567b84d2dd8e471b8d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 01/25/2019
+ms.author: aljo
+ms.openlocfilehash: 2cf5bf26dbe18d7b4c6e3b1a93aa38d7748dc5a3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300593"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59049493"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
+
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
+既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、ローカル マシン上で実行している Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
 
 > [!NOTE]
 > この記事は Windows 開発環境に適用されます。  Service Fabric クラスター ランタイムと Docker ランタイムが同じ OS で実行されている必要があります。  Linux クラスターで Windows コンテナーを実行することはできません。
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
+
 * 次のものを実行している開発コンピューター。
   * Visual Studio 2015 または Visual Studio 2017。
   * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
@@ -41,10 +46,10 @@ ms.locfileid: "51300593"
 
   この記事では、クラスター ノードで実行されている Windows Server with Containers のバージョン (ビルド) を、お使いの開発コンピューターのバージョンと一致させる必要があります。 これは、お使いの開発用コンピューターで Docker イメージをビルドしており、コンテナー OS のバージョンとデプロイ先のホスト OS のバージョンとの間に互換性の制約があるからです。 詳細については、「[Windows Server コンテナーの OS とホスト OS の互換性](#windows-server-container-os-and-host-os-compatibility)」を参照してください。 
   
-  クラスターに必要な Windows Server with Containers のバージョンを確認するには、開発用コンピューターで Windows コマンド プロンプトから `ver` コマンドを実行します。
+クラスターに必要な Windows Server with Containers のバージョンを確認するには、開発用コンピューターで Windows コマンド プロンプトから `ver` コマンドを実行します。
 
-  * バージョンに *x.x.14323.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServer 2016-Datacenter-with-Containers* を選択します。 また、Party Cluster に参加して [Service Fabric を無料で試す](https://aka.ms/tryservicefabric)こともできます。
-  * バージョンに *x.x.16299.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* を選択します。 ただし、パーティ クラスターを使用することはできません。
+* バージョンに *x.x.14323.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServer 2016-Datacenter-with-Containers* を選択します。
+  * バージョンに *x.x.16299.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* を選択します。
 
 * Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。
 
@@ -57,6 +62,7 @@ ms.locfileid: "51300593"
 > 
 
 ## <a name="define-the-docker-container"></a>Docker コンテナーを定義する
+
 Docker Hub にある [Python イメージ](https://hub.docker.com/_/python/)を基にしてイメージをビルドします。
 
 Dockerfile で Docker コンテナーを指定します。 Dockerfile は、コンテナー内で環境をセットアップし、実行するアプリを読み込み、ポートを割り当てるための手順で構成されています。 Dockerfile はイメージを作成する `docker build` コマンドへの入力です。
@@ -150,7 +156,7 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 docker inspect my-web-site
 ```
 
-実行中のコンテナーに接続します。 Web ブラウザーでその IP アドレスを開きます ("http://172.31.194.61" など)。 "Hello World!" という見出しが ブラウザーに表示されます。
+実行中のコンテナーに接続します。 Web ブラウザーでその IP アドレスを開きます ("http:\//172.31.194.61" など)。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 コンテナーを停止するには、次を実行します。
 
@@ -166,6 +172,7 @@ docker rm my-web-site
 
 <a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>コンテナー レジストリにイメージをプッシュする
+
 コンテナーが開発コンピューターで実行されることを確認したら、イメージを Azure Container Registry のレジストリにプッシュします。
 
 [レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してコンテナー レジストリにログインするには、``docker login`` を実行します。
@@ -257,6 +264,7 @@ Service Fabric は、エンドポイントを定義することによって、�
 > 適用可能なプロパティ値を持つ追加の PortBinding 要素を宣言することで、サービスの追加の PortBinding を追加できます。
 
 ## <a name="configure-container-registry-authentication"></a>コンテナー レジストリの認証を構成する
+
 コンテナー レジストリの認証は、ApplicationManifest.xml ファイルの `ContainerHostPolicies` に `RepositoryCredentials` を追加することによって構成します。 myregistry.azurecr.io コンテナー レジストリのアカウントとパスワードを追加することで、サービスがコンテナー イメージをリポジトリからダウンロードできるようになります。
 
 ```xml
@@ -288,9 +296,9 @@ $clustername = "mycluster"
 
 $subscriptionId = "subscription ID"
 
-Login-AzureRmAccount
+Login-AzAccount
 
-Select-AzureRmSubscription -SubscriptionId $subscriptionId
+Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Create a self signed cert, export to PFX file.
 New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject $subjectname -Provider 'Microsoft Enhanced Cryptographic Provider v1.0' `
@@ -299,10 +307,10 @@ New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEnciphermen
 # Import the certificate to an existing key vault. The key vault must be enabled for deployment.
 $cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
 
-Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
+Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
 
 # Add the certificate to all the VMs in the cluster.
-Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
+Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
 ```
 パスワードを暗号化するには、[Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) コマンドレットを使用します。
 
@@ -330,6 +338,64 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 </ServiceManifestImport>
 ```
 
+### <a name="configure-cluster-wide-credentials"></a>クラスター全体の資格情報を構成する
+
+6.3 ランタイム以降、Service Fabric では、アプリケーションから既定のリポジトリ資格情報として使用できるクラスター全体の資格情報を構成できるようになりました。
+
+`true` または `false` の値を指定した `UseDefaultRepositoryCredentials` 属性を ApplicationManifest.xml の `ContainerHostPolicies` に追加することで、この機能を有効または無効にすることができます。
+
+```xml
+<ServiceManifestImport>
+    ...
+    <Policies>
+        <ContainerHostPolicies CodePackageRef="Code" UseDefaultRepositoryCredentials="true">
+            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
+        </ContainerHostPolicies>
+    </Policies>
+    ...
+</ServiceManifestImport>
+```
+
+Service Fabric では、`Hosting` セクションの ClusterManifest に指定できる既定のリポジトリ資格情報が使用されます。  `UseDefaultRepositoryCredentials` が `true` の場合、Service Fabric で ClusterManifest から次の値が読み取られます。
+
+* DefaultContainerRepositoryAccountName (文字列)
+* DefaultContainerRepositoryPassword (文字列)
+* IsDefaultContainerRepositoryPasswordEncrypted (ブール値)
+* DefaultContainerRepositoryPasswordType (文字列) --- 6.4 ランタイム以降でサポートされています
+
+ClusterManifestTemplate.json ファイルの `Hosting` セクション内に追加できる内容の例を次に示します。 `Hosting` セクションは、クラスターの作成時、または構成をアップグレードするときに後で追加できます。 詳細については、[Service Fabric クラスター設定の変更](service-fabric-cluster-fabric-settings.md)と [Service Fabric アプリケーションのシークレット管理](service-fabric-application-secret-management.md)に関するページを参照してください。
+
+```json
+"fabricSettings": [
+    ...,
+    {
+        "name": "Hosting",
+        "parameters": [
+          {
+            "name": "EndpointProviderEnabled",
+            "value": "true"
+          },
+          {
+            "name": "DefaultContainerRepositoryAccountName",
+            "value": "someusername"
+          },
+          {
+            "name": "DefaultContainerRepositoryPassword",
+            "value": "somepassword"
+          },
+          {
+            "name": "IsDefaultContainerRepositoryPasswordEncrypted",
+            "value": "false"
+          },
+          {
+            "name": "DefaultContainerRepositoryPasswordType",
+            "value": "PlainText"
+          }
+        ]
+      },
+]
+```
+
 ## <a name="configure-isolation-mode"></a>分離モードの構成
 Windows では、コンテナーの 2 つの分離モード (プロセスおよび Hyper-V) がサポートされます。 プロセス分離モードでは、同じホスト コンピューターで実行されているすべてのコンテナーがホストとカーネルを共有します。 Hyper-V 分離モードでは、各 Hyper-V コンテナーとコンテナー ホスト間でカーネルが分離されます。 分離モードは、アプリケーション マニフェスト ファイルの `ContainerHostPolicies` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 Windows Server ホスト上での既定値は、プロセス分離モードです。 Windows 10 ホストでサポートされているのは、HYPER-V 分離モードのみなので、コンテナーはその分離モードの設定に関係なく、HYPER-V 分離モードで実行されます。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
@@ -342,7 +408,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
    >
 
 ## <a name="configure-resource-governance"></a>リソース管理を構成する
-[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 リソースの制限は、Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み) の各リソースに対して設定できます。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
+[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 次のリソースのリソースの制限を設定できます。Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み)。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
 
 ```xml
 <ServiceManifestImport>
@@ -359,7 +425,7 @@ Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https:
 
 ![HealthCheckHealthy][3]
 
-![HealthCheckUnealthyApp][4]
+![HealthCheckUnhealthyApp][4]
 
 ![HealthCheckUnhealthyDsp][5]
 
@@ -386,14 +452,15 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 
 **[発行]** をクリックします。
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、 http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![エラー][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、 http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![Error][1]
 
 ```Ready``` 状態になったら、アプリケーションの準備は完了しています。![準備完了][2]
 
 ブラウザーを開き、 http://containercluster.westus2.cloudapp.azure.com:8081 に移動します。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ## <a name="clean-up"></a>クリーンアップ
-クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-cluster-delete.md)を検討してください。 [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
+
+クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-cluster-delete.md)を検討してください。
 
 コンテナー レジストリにイメージをプッシュした後は、開発コンピューターからローカルのイメージを削除できます。
 
@@ -466,8 +533,8 @@ VM 上の基になる OS がビルド 16299 (バージョン 1709) である場�
 <ServiceManifest Name="Guest1Pkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          The UseImplicitHost attribute indicates this is a guest service. -->
@@ -493,7 +560,7 @@ VM 上の基になる OS がビルド 16299 (バージョン 1709) である場�
 
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -513,8 +580,8 @@ VM 上の基になる OS がビルド 16299 (バージョン 1709) である場�
 <ApplicationManifest ApplicationTypeName="MyFirstContainerType"
                      ApplicationTypeVersion="1.0.0"
                      xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                     xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>
@@ -557,10 +624,12 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>コンテナーを強制終了するまでの期間を構成する
 
-サービスの削除 (または別のノードへの移動) が開始された後でコンテナーが削除されるまでにランタイムが待機する期間を構成できます。 期間を構成すると、`docker stop <time in seconds>` コマンドがコンテナーに送信されます。  詳細については、[docker stop](https://docs.docker.com/engine/reference/commandline/stop/) の説明を参照してください。 待機する期間は `Hosting` セクションで指定します。 次のクラスター マニフェストのスニペットは、待機間隔を設定する方法を示しています。
+サービスの削除 (または別のノードへの移動) が開始された後でコンテナーが削除されるまでにランタイムが待機する期間を構成できます。 期間を構成すると、`docker stop <time in seconds>` コマンドがコンテナーに送信されます。  詳細については、[docker stop](https://docs.docker.com/engine/reference/commandline/stop/) の説明を参照してください。 待機する期間は `Hosting` セクションで指定します。 `Hosting` セクションは、クラスターの作成時、または構成をアップグレードするときに後で追加できます。 次のクラスター マニフェストのスニペットは、待機間隔を設定する方法を示しています。
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -569,7 +638,8 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
           },
           ...
         ]
-}
+    }
+]
 ```
 既定の期間は 10 秒に設定されています。 この構成は動的であるため、クラスター上の構成のみをアップグレードするだけでタイムアウトが更新されます。 
 
@@ -580,7 +650,9 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -594,7 +666,8 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
           ...
           }
         ]
-} 
+    } 
+]
 ```
 
 削除してはならないイメージは `ContainerImagesToSkip` パラメーターに指定することができます。  
@@ -605,7 +678,9 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 Service Fabric ランタイムはコンテナー イメージのダウンロードと抽出に 20 分を割り当てており、これは大部分のコンテナー イメージにとって十分な時間です。 大きなイメージの場合、またはネットワーク接続の速度が遅い場合、イメージのダウンロードおよび抽出が中止されるまでの待機時間を長くすることが必要になる場合があります。 このタイムアウトは、次のスニペットに示すように、クラスター マニフェストの **Hosting** セクションの **ContainerImageDownloadTimeout** 属性を使用して設定できます。
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -613,7 +688,8 @@ Service Fabric ランタイムはコンテナー イメージのダウンロー�
               "value": "1200"
           }
         ]
-}
+    }
+]
 ```
 
 
@@ -633,7 +709,9 @@ Service Fabric ランタイムの 6.2 バージョン以降では、カスタム
  
 
 ```json
-{ 
+"fabricSettings": [
+    ...,
+    { 
         "name": "Hosting", 
         "parameters": [ 
           { 
@@ -641,13 +719,22 @@ Service Fabric ランタイムの 6.2 バージョン以降では、カスタム
             "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
           } 
         ] 
-} 
-
+    } 
+]
 ```
 
 ## <a name="next-steps"></a>次の手順
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
+* Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
+* GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-containers)を確認します。
+
+[1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
+[2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png
+[3]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
+[4]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
+[5]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png
+c-host-app-in-a-container.md) チュートリアル。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
 * GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-containers)を確認します。
 

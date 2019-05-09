@@ -3,7 +3,7 @@ title: チュートリアル - Azure の Linux 仮想マシンに MEAN スタッ
 description: このチュートリアルでは、Azure 内の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a223cb9be7c381c2f64648b32ef9bca69ebeddb5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: eac10cd735ae16cf1c7c6d6987a3b53060caa1cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465683"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315829"
 ---
-# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure 内の Linux 仮想マシンに MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
 
 このチュートリアルでは、Azure 内の Linux 仮想マシン (VM) に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを実装する方法について説明します。 MEAN スタックを作成することで、データベースに書籍を追加したり、データベースの書籍を削除したり、一覧表示したりすることが可能になります。 学習内容は次のとおりです。
 
@@ -42,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-linux-vm"></a>Linux VM の作成
 
-[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成し、[az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) コマンドで Linux VM を作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](https://docs.microsoft.com/cli/azure/group) コマンドでリソース グループを作成し、[az vm create](https://docs.microsoft.com/cli/azure/vm) コマンドで Linux VM を作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、Azure CLI を使用して *myResourceGroupMEAN* という名前のリソース グループを *eastus* に作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、SSH キーと共に *myVM* という名前の VM も作成します。 特定のキーのセットを使用するには、--ssh-key-value オプションを使用します。
 
@@ -91,13 +91,13 @@ sudo apt-get install -y nodejs
 ```
 
 ## <a name="install-mongodb-and-set-up-the-server"></a>MongoDB のインストールとサーバーの設定
-[MongoDB](http://www.mongodb.com) は、柔軟性の高い JSON のようなドキュメントにデータを格納します。 データベースのフィールドはドキュメントごとに異なる場合があり、時間の経過と共にデータ構造を変更することもできます。 このアプリケーションの例では、書籍の名前、ISBN 番号、著者、ページ数の情報が格納されている MongoDB に書籍のレコードを追加します。 
+[MongoDB](https://www.mongodb.com) は、柔軟性の高い JSON のようなドキュメントにデータを格納します。 データベースのフィールドはドキュメントごとに異なる場合があり、時間の経過と共にデータ構造を変更することもできます。 このアプリケーションの例では、書籍の名前、ISBN 番号、著者、ページ数の情報が格納されている MongoDB に書籍のレコードを追加します。 
 
 1. VM にて、SSH を使用して開いた bash シェルを使用して、MongoDB のキーを設定します。
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
 2. このキーを使用して、パッケージ マネージャーを更新します。
@@ -134,7 +134,7 @@ sudo apt-get install -y nodejs
 
 6. *Books* という名前のフォルダーを作成し、このフォルダーに、Web サーバーの構成が含まれる *server.js* というファイルを追加します。
 
-    ```node.js
+    ```javascript
     var express = require('express');
     var bodyParser = require('body-parser');
     var app = express();
@@ -149,7 +149,7 @@ sudo apt-get install -y nodejs
 
 ## <a name="install-express-and-set-up-routes-to-the-server"></a>Express のインストールとサーバーへのルートの設定
 
-[Express](https://expressjs.com) は、最小限かつ柔軟性の高い Node.js の Web アプリケーション フレームワークで、Web アプリケーションとモバイル アプリケーションの機能を提供します。 このチュートリアルでは、Express を使用して、MongoDB データベースとの書籍情報の送受信を行います。 [Mongoose](http://mongoosejs.com) は、アプリケーション データのモデリングを行う簡単かつスキーマ ベースのソリューションを提供します。 このチュートリアルでは、Mongoose を使用して、書籍のスキーマをデータベースに提供します。
+[Express](https://expressjs.com) は、最小限かつ柔軟性の高い Node.js の Web アプリケーション フレームワークで、Web アプリケーションとモバイル アプリケーションの機能を提供します。 このチュートリアルでは、Express を使用して、MongoDB データベースとの書籍情報の送受信を行います。 [Mongoose](https://mongoosejs.com) は、アプリケーション データのモデリングを行う簡単かつスキーマ ベースのソリューションを提供します。 このチュートリアルでは、Mongoose を使用して、書籍のスキーマをデータベースに提供します。
 
 1. Express と Mongoose をインストールします。
 
@@ -159,7 +159,7 @@ sudo apt-get install -y nodejs
 
 2. *Books* フォルダーで *apps* というフォルダーを作成し、Express のルートが定義された *routes.js* というファイルを追加します。
 
-    ```node.js
+    ```javascript
     var Book = require('./models/book');
     module.exports = function(app) {
       app.get('/book', function(req, res) {
@@ -201,7 +201,7 @@ sudo apt-get install -y nodejs
 
 3. *apps* フォルダーで *models* というフォルダーを作成し、書籍モデルの構成が定義された *book.js* というファイルを追加します。  
 
-    ```node.js
+    ```javascript
     var mongoose = require('mongoose');
     var dbHost = 'mongodb://localhost:27017/test';
     mongoose.connect(dbHost);
@@ -223,7 +223,7 @@ sudo apt-get install -y nodejs
 
 1. ディレクトリを *Books* (`cd ../..`) まで戻したら、*public* というフォルダーを作成し、コントローラーの構成が定義された *script.js* というファイルを追加します。
 
-    ```node.js
+    ```javascript
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http) {
       $http( {
@@ -324,7 +324,7 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Web ブラウザーを開いて、VM 用に記録したアドレスに移動します。 たとえば、*http://13.72.77.9:3300* です。 次のようなページが表示されます。
+2. Web ブラウザーを開いて、VM 用に記録したアドレスに移動します。 ここでは *http:\//13.72.77.9:3300* としています。 次のようなページが表示されます。
 
     ![書籍のレコード](media/tutorial-mean/meanstack-init.png)
 

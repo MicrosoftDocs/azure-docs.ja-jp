@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Yodeck の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Yodeck の統合 | Microsoft Docs
 description: Azure Active Directory と Yodeck の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: b2c8dccb-eeb0-4f4d-a24d-8320631ce819
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: b017efd2c170f543041dcb35a3a3d040389d1dac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7564710b282c7e2ac586980896a28c00bcb2fe80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436796"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872604"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>チュートリアル: Azure Active Directory と Yodeck の統合
+# <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>チュートリアル:Azure Active Directory と Yodeck の統合
 
 このチュートリアルでは、Yodeck と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -199,7 +200,7 @@ Yodeck の場合、プロビジョニングは手動で行います。
 
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    c. **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
+    c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
 
     d. 組織の要件に従って、適切な **[アカウントのアクセス許可]** オプションを選択します。
     
@@ -240,7 +241,7 @@ Yodeck の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Yodeck] タイルをクリックすると、Yodeck アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

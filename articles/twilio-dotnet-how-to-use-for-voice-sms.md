@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 254128d212dec3e6f51a98dc4435894e08377eb0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955226"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58762896"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure から音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細とアプリケーションで音声と SMS を使用する方法については、「 [次の手順](#NextSteps) 」を参照してください。
@@ -30,7 +30,7 @@ Twilio は、開発者がアプリケーションに音声、VoIP、およびメ
 **Twilio Voice** を使用すると、アプリケーションで音声通話の発着信処理を行うことができます。 **Twilio SMS** を使用すると、アプリケーションで SMS メッセージの送受信を行うことができます。 **Twilio Client** では、任意の電話、タブレット、またはブラウザーから VoIP 通話を行うことができ、WebRTC がサポートされています。
 
 ## <a id="Pricing"></a>Twilio の料金および特別プラン
-Azure ユーザーには、[特別プラン](https://www.twilio.com/azure)として、Twilio アカウントをアップグレードする際に、$10 の Twilio クレジットが提供されます。 この Twilio クレジットは、任意の Twilio 使用に対して利用できます。$10 のクレジットは、約 1,000 件の SMS メッセージの送信、または最大で 1,000 分の受信音声に相当します (ご利用の電話番号の場所と、メッセージまたは通話の相手の場所に応じて異なります)。 この Twilio クレジットを利用するには、[ahoy.twilio.com/azure](https://ahoy.twilio.com/azure) にアクセスします。
+Azure ユーザーには、[特別プラン](https://www.twilio.com/azure)として、Twilio アカウントをアップグレードする際に、$10 の Twilio クレジットが提供されます。 この Twilio クレジットは、任意の Twilio 使用に対して利用できます。$10 のクレジットは、約 1,000 件の SMS メッセージの送信、または最大で 1,000 分の受信音声に相当します (ご利用の電話番号の場所と、メッセージまたは通話の相手の場所に応じて異なります)。 この Twilio クレジットを引き換えるには、[twilio.com/azure](https://twilio.com/azure) にアクセスします。
 
 Twilio は、従量課金制サービスです。 セットアップ料金は不要で、いつでもアカウントを閉じることができます。 詳細については、 [Twilio の料金のページ](https://www.twilio.com/voice/pricing)をご覧ください。
 

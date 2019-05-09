@@ -3,20 +3,20 @@ title: Azure Data Lake Storage Gen1 のディザスター リカバリーのガ�
 description: Azure Data Lake Storage Gen1 のディザスター リカバリーのガイダンス
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 44c1dc3e3f6c2c9af52a6e9c9320d4a8ba63b4d0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127110"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58878113"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 内のデータに対するディザスター リカバリーのガイダンス
 

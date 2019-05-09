@@ -1,18 +1,17 @@
 ---
 title: Azure Cosmos DB SDK を使用してストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出す方法
 description: Azure Cosmos DB SDK を使用してストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出す方法について説明します
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/08/2018
 ms.author: mjbrown
-ms.openlocfilehash: d06a1efd1b706d242cbc5af9e93b3d08c84c575e
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: d3ab0f78cc59c94a95aac6c067ad185476502f6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411144"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998605"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する方法
 
@@ -424,7 +423,7 @@ client.CreateItem(container_link, item, { 'postTriggerInclude': 'trgPostUpdateMe
 次のコードは、.NET SDK を使用してユーザー定義関数を登録する方法を示しています。
 
 ```csharp
-string udfId = "udfTax";
+string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
@@ -440,7 +439,7 @@ await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
-var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000"));
+var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000"));
 
 foreach (var result in results)
 {
@@ -454,7 +453,7 @@ foreach (var result in results)
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-String udfId = "udfTax";
+String udfId = "Tax";
 UserDefinedFunction udf = new UserDefinedFunction();
 udf.setId(udfId);
 udf.setBody(new String(Files.readAllBytes(Paths.get(String.format("..\\js\\%s.js", udfId)))));
@@ -466,7 +465,7 @@ UserDefinedFunction createdUDF = client.createUserDefinedFunction(containerLink,
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-Observable<FeedResponse<Document>> queryObservable = client.queryDocuments(containerLink, "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000", new FeedOptions());
+Observable<FeedResponse<Document>> queryObservable = client.queryDocuments(containerLink, "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000", new FeedOptions());
 final CountDownLatch completionLatch = new CountDownLatch(1);
 queryObservable.subscribe(
         queryResultPage -> {
@@ -492,7 +491,7 @@ completionLatch.await();
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const udfId = "udfTax";
+const udfId = "Tax";
 await container.userDefinedFunctions.create({
     id: udfId,
     body: require(`../js/${udfId}`)
@@ -502,7 +501,7 @@ await container.userDefinedFunctions.create({
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const sql = "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000";
+const sql = "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000";
 const {result} = await container.items.query(sql).toArray();
 ```
 
@@ -515,7 +514,7 @@ with open('../js/udfTax.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
-            'id': 'trgPostUpdateMetadata',
+            'id': 'Tax',
             'serverScript': file_contents,
         }
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
@@ -525,7 +524,7 @@ udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000'))
+results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5ddee0ca94535688a0634ef8575f3aedad649a43
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 811ed6dde4ed98222bdd2589d8d6fdd8e0f64ce8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037500"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176720"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する 
+
 エンコード ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 [Azure Queue Storage](../../storage/storage-dotnet-how-to-use-queues.md) に通知を配信するように Media Services を構成し、 この Queue Storage から通知を取得することで、ジョブの進行状況を監視します。 
 
 キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。 Queue Storage メッセージング アーキテクチャは、信頼性と拡張性に優れています。 Queue Storage のメッセージのポーリングには、他のメソッドを使用することをお勧めします。
@@ -338,7 +339,7 @@ namespace JobNotification
 }
 ```
 
-上の例では、次の出力が生成されました。値は異なる場合があります。
+前の例では、次の出力が生成されました。値は異なる場合があります。
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

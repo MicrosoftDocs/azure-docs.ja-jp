@@ -3,24 +3,25 @@ title: Teams からの Azure AD アプリケーション プロキシ アプリ�
 description: Azure AD アプリケーション プロキシを使用して、Microsoft Teams からオンプレミス アプリケーションにアクセスします。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 83f32cc18f1237d5d28e8340177fd6e2fae4e173
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 660d05146e82ab85136cac715b56cb1ee89b002f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133640"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210953"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams からのオンプレミス アプリケーションへのアクセス
 

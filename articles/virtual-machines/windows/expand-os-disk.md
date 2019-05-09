@@ -15,12 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
-ms.openlocfilehash: 097aa128affb6a7ac0770c861ab70ec9d04e2d98
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.subservice: disks
+ms.openlocfilehash: bd863a8ddd9e2277b628673d2146efd8c458c319
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319117"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979498"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
 
@@ -36,6 +37,10 @@ ms.locfileid: "49319117"
 > ディスクを拡張した後、大きいディスクを活用するには、[OS 内のボリュームを拡張する](#expand-the-volume-within-the-os)必要があります。
 > 
 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
+
 ## <a name="resize-a-managed-disk"></a>マネージド ディスクのサイズを変更する
 
 管理者モードで Powershell ISE または Powershell ウィンドウを開き、次の手順に従います。
@@ -43,8 +48,8 @@ ms.locfileid: "49319117"
 1. リソース管理モードで Microsoft Azure アカウントにサインインし、次のようにサブスクリプションを選択します。
    
    ```powershell
-   Connect-AzureRmAccount
-   Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
+   Connect-AzAccount
+   Select-AzSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. リソース グループ名と VM 名を次のように設定します。
    
@@ -55,19 +60,19 @@ ms.locfileid: "49319117"
 3. 次のように、VM への参照を取得します。
    
    ```powershell
-   $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 4. 次のように、ディスクのサイズを変更する前に VM を停止します。
    
     ```Powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+    Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 5. マネージド OS ディスクへの参照を取得します。 マネージド OS ディスクのサイズを目的の値に設定し、次のようにディスクを更新します。
    
    ```Powershell
-   $disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
+   $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
    $disk.DiskSizeGB = 1023
-   Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
+   Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
    ```   
    > [!WARNING]
    > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、2,048 GB です  (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の動作に使用できるのは、最初の 2,048 GB の領域のみです)。
@@ -76,7 +81,7 @@ ms.locfileid: "49319117"
 6. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了した後、VM を再起動します。
    
    ```Powershell
-   Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   Start-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 
 これで終了です。 VM に RDP で接続し、[コンピューターの管理] \(または [ディスクの管理]) を開いて、新しく割り当てた領域を使用してドライブを拡張します。
@@ -88,8 +93,8 @@ ms.locfileid: "49319117"
 1. リソース管理モードで Microsoft Azure アカウントにサインインし、次のようにサブスクリプションを選択します。
    
    ```Powershell
-   Connect-AzureRmAccount
-   Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
+   Connect-AzAccount
+   Select-AzSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. リソース グループ名と VM 名を次のように設定します。
    
@@ -100,18 +105,18 @@ ms.locfileid: "49319117"
 3. 次のように、VM への参照を取得します。
    
    ```Powershell
-   $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 4. 次のように、ディスクのサイズを変更する前に VM を停止します。
    
     ```Powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+    Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 5. アンマネージド OS ディスクのサイズを目的の値に設定し、次のように VM を更新します。
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
-   Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
+   Update-AzVM -ResourceGroupName $rgName -VM $vm
    ```
    
    > [!WARNING]
@@ -122,7 +127,7 @@ ms.locfileid: "49319117"
 6. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了した後、VM を再起動します。
    
    ```Powershell
-   Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   Start-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 
 
@@ -134,30 +139,30 @@ ms.locfileid: "49319117"
 **マネージド ディスク**
 
 ```Powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
-$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-$disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
+$vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+Stop-AzVM -ResourceGroupName $rgName -Name $vmName
+$disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
 $disk.DiskSizeGB = 1023
-Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
-Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
+Start-AzVM -ResourceGroupName $rgName -Name $vmName
 ```
 
 **非管理対象ディスク**
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
-$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+$vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+Stop-AzVM -ResourceGroupName $rgName -Name $vmName
 $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
-Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
-Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+Update-AzVM -ResourceGroupName $rgName -VM $vm
+Start-AzVM -ResourceGroupName $rgName -Name $vmName
 ```
 
 ## <a name="resizing-data-disks"></a>データ ディスクのサイズを変更する
@@ -167,7 +172,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 **マネージド ディスク**
 
 ```powershell
-$disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.DataDisks[0].Name
+$disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.DataDisks[0].Name
 $disk.DiskSizeGB = 1023
 ```
 
@@ -186,7 +191,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 **マネージド ディスク**
 
 ```powershell
-(Get-AzureRmDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
+(Get-AzDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```
 
 **アンマネージド ディスク**

@@ -1,18 +1,18 @@
 ---
-author: dominicbetts
+author: robinsh
+ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: dobett
-ms.openlocfilehash: 4dc1cc3dfbd16e5881e1a7102b7c63c0484c8a52
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 682b550182f299dc99e55b61f08f31bb4ff0a8f0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164262"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59052058"
 ---
 > [!div class="op_single_selector"]
-> * [Azure Portal](../articles/iot-hub/iot-hub-configure-file-upload.md)
+> * [Azure ポータル](../articles/iot-hub/iot-hub-configure-file-upload.md)
 > * [PowerShell](../articles/iot-hub/iot-hub-configure-file-upload-powershell.md)
 > * [CLI](../articles/iot-hub/iot-hub-configure-file-upload-cli.md)
 

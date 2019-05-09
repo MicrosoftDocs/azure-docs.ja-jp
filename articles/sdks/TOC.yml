@@ -1,26 +1,19 @@
-items:
 - name: Azure SDK
   href: index.yml
   items:
-  - name: .NET SDK
-    href: /dotnet/azure/?view=azure-dotnet
-  - name: Java SDK
-    href: /java/azure/
-  - name: Node SDK
-    href: /javascript/azure/
-  - name: Python SDK
-    href: /python/azure/
-  - name: Ruby SDK
-    href: https://rubygems.org/gems/azure
-  - name: PHP SDK
-    href: /azure/app-service-web/app-service-web-get-started-php
-  - name: Xamarin
-    href: https://azure.microsoft.com/features/xamarin
-  - name: Go
-    href: /go/azure/
-ms.openlocfilehash: fb4c864a326800fc83619e03736e3422f9984d79
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545929"
+    - name: .NET SDK
+      href: /dotnet/azure/?view=azure-dotnet
+    - name: Java SDK
+      href: /java/azure/
+    - name: Node SDK
+      href: /javascript/azure/
+    - name: Python SDK
+      href: /python/azure/
+    - name: Ruby SDK
+      href: 'https://rubygems.org/gems/azure'
+    - name: PHP SDK
+      href: /azure/app-service-web/app-service-web-get-started-php
+    - name: Xamarin
+      href: 'https://azure.microsoft.com/features/xamarin'
+    - name: Go
+      href: /go/azure/

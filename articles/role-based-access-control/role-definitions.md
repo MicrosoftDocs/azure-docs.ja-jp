@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC のロール定義の概要 | Microsoft Docs
-description: Azure のリソースの詳細なアクセス管理を行うためのロールベースのアクセス制御 (RBAC) のロール定義について説明します。
+title: Azure リソースの RBAC のロール定義の概要 | Microsoft Docs
+description: Azure リソースの詳細なアクセス管理を行うためのロールベースのアクセス制御 (RBAC) のロール定義について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715772"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58804532"
 ---
-# <a name="understand-role-definitions"></a>ロール定義について
+# <a name="understand-role-definitions-for-azure-resources"></a>Azure リソースのロール定義の概要
 
-ロールのしくみを理解しようとしている場合、または独自の[カスタム ロール](custom-roles.md)を作成している場合は、ロールの定義方法を理解すると便利です。 この記事では、ロール定義の詳細について説明し、いくつかの例を示します。
+ロールのしくみを理解しようとしている場合、または独自の [Azure リソースのカスタム ロール](custom-roles.md)を作成している場合は、ロールの定義方法を理解すると便利です。 この記事では、ロール定義の詳細について説明し、いくつかの例を示します。
 
 ## <a name="role-definition-structure"></a>ロール定義の構造
 
@@ -59,27 +59,23 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 
 ```json
 {
-    "Name":  "Contributor",
-    "Id":  "b24988ac-6180-42a0-ab88-20f7382dd24c",
-    "IsCustom":  false,
-    "Description":  "Lets you manage everything except access to resources.",
-    "Actions":  [
-                    "*"
-                ],
-    "NotActions":  [
-                       "Microsoft.Authorization/*/Delete",
-                       "Microsoft.Authorization/*/Write",
-                       "Microsoft.Authorization/elevateAccess/Action"
-                   ],
-    "DataActions":  [
-
-                    ],
-    "NotDataActions":  [
-
-                       ],
-    "AssignableScopes":  [
-                             "/"
-                         ]
+  "Name": "Contributor",
+  "Id": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "IsCustom": false,
+  "Description": "Lets you manage everything except access to resources.",
+  "Actions": [
+    "*"
+  ],
+  "NotActions": [
+    "Microsoft.Authorization/*/Delete",
+    "Microsoft.Authorization/*/Write",
+    "Microsoft.Authorization/elevateAccess/Action"
+  ],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/"
+  ]
 }
 ```
 
@@ -101,29 +97,25 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 - コンテナーのストレージ BLOB の書き込み
 - キュー内のメッセージの削除
 
-以下は、[ストレージ BLOB データ閲覧者 (プレビュー)](built-in-roles.md#storage-blob-data-reader-preview) ロール定義で、`Actions` プロパティと `DataActions` プロパティ両方の操作が含まれています。 このロールでは、BLOB コンテナーおよび基になる BLOB データを読み取ることができます。
+以下は、[ストレージ BLOB データ閲覧者](built-in-roles.md#storage-blob-data-reader)ロール定義で、`Actions` プロパティと `DataActions` プロパティ両方の操作が含まれています。 このロールでは、BLOB コンテナーおよび基になる BLOB データを読み取ることができます。
 
 ```json
 {
-    "Name":  "Storage Blob Data Reader (Preview)",
-    "Id":  "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
-    "IsCustom":  false,
-    "Description":  "Allows for read access to Azure Storage blob containers and data",
-    "Actions":  [
-                    "Microsoft.Storage/storageAccounts/blobServices/containers/read"
-                ],
-    "NotActions":  [
-
-                   ],
-    "DataActions":  [
-                        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-                    ],
-    "NotDataActions":  [
-
-                       ],
-    "AssignableScopes":  [
-                             "/"
-                         ]
+  "Name": "Storage Blob Data Reader",
+  "Id": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "IsCustom": false,
+  "Description": "Allows for read access to Azure Storage blob containers and data",
+  "Actions": [
+    "Microsoft.Storage/storageAccounts/blobServices/containers/read"
+  ],
+  "NotActions": [],
+  "DataActions": [
+    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+  ],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/"
+  ]
 }
 ```
 
@@ -133,18 +125,18 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 
 ### <a name="data-operations-example"></a>データ操作例
 
-管理操作とデータ操作の動作方法の理解を深めるために、具体例を考えてみましょう。 Alice はサブスクリプション スコープで[所有者](built-in-roles.md#owner)ロールに割り当てられています。 Bob はストレージ アカウント スコープで[ストレージ BLOB データ共同作成者 (プレビュー)](built-in-roles.md#storage-blob-data-contributor-preview) ロールに割り当てられています。 この例を次の図に示します。
+管理操作とデータ操作の動作方法の理解を深めるために、具体例を考えてみましょう。 Alice はサブスクリプション スコープで[所有者](built-in-roles.md#owner)ロールに割り当てられています。 Bob はストレージ アカウント スコープで[ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールに割り当てられています。 この例を次の図に示します。
 
 ![ロールベースのアクセス制御が管理操作とデータ操作の両方をサポートするように拡張されます](./media/role-definitions/rbac-management-data.png)
 
-Alice の[所有者](built-in-roles.md#owner)ロールおよび Bob の[ストレージ BLOB データ共同作成者 (プレビュー)](built-in-roles.md#storage-blob-data-contributor-preview) ロールは次のアクションを実行できます。
+Alice の[所有者](built-in-roles.md#owner)ロールおよび Bob の[ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールは次のアクションを実行できます。
 
 Owner
 
 &nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-ストレージ BLOB データ共同作成者 (プレビュー)
+ストレージ BLOB データ共同作成者
 
 &nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -155,23 +147,33 @@ Owner
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Alice にはサブスクリプション スコープにワイルドカード (`*`) アクションがあるため、Alice のアクセス許可は継承され、すべての管理アクションを実行できます。 ただし、Alice はデータ操作を実行することはできません。 たとえば既定では、Alice はコンテナー内の BLOB を読み取ることはできませんが、コンテナーを読み取り、書き込み、および削除することは可能です。
+Alice にはサブスクリプション スコープにワイルドカード (`*`) アクションがあるため、Alice のアクセス許可は継承され、すべての管理アクションを実行できます。 Alice は、コンテナーの読み取り、書き込み、および削除を行うことができます。 ただし、Alice は追加の手順を経ずにデータ操作を実行することはできません。 たとえば、既定では、Alice はコンテナー内の BLOB を読み取ることができません。 BLOB を読み取るには、Alice はストレージ アクセス キーを取得し、それを使用して BLOB にアクセスする必要があります。
 
-Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プレビュー)](built-in-roles.md#storage-blob-data-contributor-preview) ロールで指定された `Actions` および `DataActions` のみに制限されます。 Bob はロールに基づいて、管理操作とデータ操作の両方を実行できます。 たとえば、Bob は指定されたストレージ アカウントのコンテナーを読み取り、書き込み、および削除でき、また BLOB も読み取り、書き込み、および削除できます。
+Bob のアクセス許可は[ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールで指定された `Actions` および `DataActions` のみに制限されます。 Bob はロールに基づいて、管理操作とデータ操作の両方を実行できます。 たとえば、Bob は指定されたストレージ アカウントのコンテナーを読み取り、書き込み、および削除でき、また BLOB も読み取り、書き込み、および削除できます。
+
+ストレージの管理とデータ プレーンのセキュリティの詳細については、「[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)」を参照してください。
 
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>RBAC を使用してデータ操作をサポートするツール
 
 データ操作を表示し、操作するには、正しいバージョンのツールまたは SDK が必要です。
 
-| ツール  | Version  |
+| ツール  | バージョン  |
 |---------|---------|
-| [Azure PowerShell](/powershell/azure/install-azurerm-ps) | 5.6.0 以降 |
+| [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 以降 |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 以降 |
 | [Azure for .NET](/dotnet/azure/) | 2.8.0 プレビュー以降 |
 | [Azure SDK for Go](/go/azure/azure-sdk-go-install) | 15.0.0 以降 |
 | [Azure for Java](/java/azure/) | 1.9.0 以降 |
 | [Azure for Python](/python/azure) | 0.40.0 以降 |
 | [Azure SDK for Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 以降 |
+
+REST API でデータ操作を確認して使用するには、次のバージョン以降に **api-version** パラメーターを設定する必要があります。
+
+- 2018-01-01-preview
+
+Azure portal では、ユーザーが Azure AD のプレビュー エクスペリエンスを介して、キューおよび BLOB コンテナーの内容を参照および管理することもできます。 キューまたは BLOB コンテナーの内容を表示および管理するには、ストレージ アカウントの [概要] にある **[Azure AD プレビューを使用してデータを探索します]** をクリックします。
+
+![Azure AD プレビューを使用してキューおよび BLOB コンテナーを探索する](./media/role-definitions/rbac-dataactions-browsing.png)
 
 ## <a name="actions"></a>Actions
 
@@ -225,10 +227,10 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 | ネットワーク リソース グループでのみ割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | すべてのスコープの割り当てにロールを使用できる | `"/"` |
 
-カスタム ロールの `AssignableScopes` について詳しくは、[カスタム ロール](custom-roles.md)に関する記事をご覧ください。
+カスタム ロールの `AssignableScopes` の詳細については、[Azure リソースのカスタム ロール](custom-roles.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [組み込みのロール](built-in-roles.md)
-* [カスタム ロール](custom-roles.md)
+* [Azure リソースの組み込みロール](built-in-roles.md)
+* [Azure リソースのカスタム ロール](custom-roles.md)
 * [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)

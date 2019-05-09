@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: c378043a9e10a0aed5344ac3182af6163d217c7b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 4c948668e355b87026240588c6fac11d86e355b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140470"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006573"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>パフォーマンスによるトラフィック ルーティング方法の構成
 
@@ -24,7 +24,7 @@ ms.locfileid: "50140470"
 
 ##  <a name="to-configure-performance-routing-method"></a>パフォーマンスによるトラフィック ルーティング方法を構成するには
 
-1. ブラウザーから [Azure Portal](http://portal.azure.com) にサインインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free/)にサインアップできます。 
+1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free/)にサインアップできます。 
 2. ポータルの検索バーで、**Traffic Manager プロファイル**を検索し、ルーティング方法を構成するプロファイル名をクリックします。
 3. **[Traffic Manager プロファイル]** ブレードで、構成に追加するクラウド サービスと Web サイトの両方があることを確認します。
 4. **[設定]** セクションで **[構成]** をクリックして、**[構成]** ブレードで次のように実行します。

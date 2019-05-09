@@ -1,19 +1,20 @@
 ---
 title: Azure IoT Hub デバイス ツインの使用 (Java) | Microsoft Docs
 description: Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Java 用 Azure IoT device SDK を使用してデバイス アプリを実装し、タグの追加と IoT Hub のクエリを実行するサービス アプリを実装します。
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
-ms.author: dobett
-ms.openlocfilehash: a938e5d872d2c1602f7ce898f0d14e3e04feb759
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: bfb111b07db105190fc59f21b3255c2ea2b1471c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312568"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081017"
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -73,7 +74,7 @@ ms.locfileid: "53312568"
     ```
 
     > [!NOTE]
-    > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
 
 5. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
@@ -233,7 +234,7 @@ ms.locfileid: "53312568"
     ```
 
     > [!NOTE]
-    > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
 
 4. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
@@ -293,18 +294,18 @@ ms.locfileid: "53312568"
     * IoT Hub と通信するデバイス クライアントを作成します。
     * デバイス ツインのプロパティを格納する **Device** オブジェクトを作成します。
 
-    ```java
-    DeviceClient client = new DeviceClient(connString, protocol);
+      ```java
+      DeviceClient client = new DeviceClient(connString, protocol);
 
-    // Create a Device object to store the device twin properties
-    Device dataCollector = new Device() {
+      // Create a Device object to store the device twin properties
+      Device dataCollector = new Device() {
       // Print details when a property value changes
       @Override
       public void PropertyCall(String propertyKey, Object propertyValue, Object context) {
         System.out.println(propertyKey + " changed to " + propertyValue);
       }
-    };
-    ```
+      };
+      ```
 
 10. 報告されるプロパティ **connectivityType** を作成して IoT Hub に送信する次のコードを **main** メソッドに追加します。
 
@@ -340,9 +341,9 @@ ms.locfileid: "53312568"
 
 1. **main** メソッドのシグネチャを変更し、下の例外を追加します。
 
-    ```java
-    public static void main(String[] args) throws URISyntaxException, IOException
-    ```
+     ```java
+     public static void main(String[] args) throws URISyntaxException, IOException
+     ```
 
 1. `simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 205ba822b1221de34f3ee1ae25974a406f2013cb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: c200ca98f2a5ea32886ec12d3e732af6598254f7
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438100"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337614"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -128,7 +128,7 @@ Sqoop では、MapReduce を使用してデータのインポートとエクス�
 
 Apache Flume は、大量のログ データを効率的に収集、集計、および移動するために使用できる信頼性の高い分散サービスです。 Flume には、データ フローのストリーミングに基づくシンプルで柔軟性のあるアーキテクチャがあります。 Flume は、堅牢でフォールト トレラントであり、チューニング可能な信頼性メカニズムと多数のフェールオーバーと回復メカニズムを備えています。 Flume は、オンライン分析アプリケーションで使用できるシンプルな拡張可能データ モデルを使用しています。
 
-Apache Flume は、Azure HDInsight では使用できません。  オンプレミスの Hadoop インストールでは、Flume を使用して、Azure Storage Blob または Azure Data Lake Storage にデータを送信できます。  詳細については、[HDInsight での Apache Flume の使用](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)に関する記事を参照してください。
+Apache Flume は、Azure HDInsight では使用できません。  オンプレミスの Hadoop インストールでは、Flume を使用して、Azure Storage Blob または Azure Data Lake Storage にデータを送信できます。  詳細については、[HDInsight での Apache Flume の使用](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)に関する記事を参照してください。
 
 ## <a name="transform"></a>変換
 
@@ -138,3 +138,4 @@ Apache Flume は、Azure HDInsight では使用できません。  オンプレ�
 
 * [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [ETL ツールとして Apache Hive を使用する](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

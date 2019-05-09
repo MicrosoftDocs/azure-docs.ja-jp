@@ -1,22 +1,22 @@
 ---
-title: 'PowerShell: Azure Data Lake Storage Gen1 をアドオン ストレージとして使用する Azure HDInsight クラスター | Microsoft Docs'
+title: PowerShell:Azure Data Lake Storage Gen1 をアドオン ストレージとして使用する Azure HDInsight クラスター | Microsoft Docs
 services: data-lake-store,hdinsight
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 0fa4a4c1586957dabf1c849fdb897a479c4f8db3
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: f78ad8d58bb1bc760a31b792b44a4a39ed25e1f3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957414"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58880102"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を (追加のストレージとして) 使用する HDInsight クラスターを作成する
 
@@ -50,6 +50,9 @@ PowerShell を使用して、Data Lake Storage Gen1 を使用するように HDI
 * クラスター上でテスト ジョブを実行する
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
@@ -65,25 +68,25 @@ Data Lake Storage Gen1 アカウントを作成するには、次の手順に従
 1. デスクトップで、新しい Azure PowerShell ウィンドウを開き、次のスニペットを入力します。 ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
 
         # Log in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
    > [!NOTE]
-   > Data Lake Storage Gen1 リソース プロバイダーの登録時に `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Storage Gen1 のホワイトリストに登録されていない可能性があります。 こちらの[手順](data-lake-store-get-started-portal.md)に従って Data Lake Storage Gen1 で Azure サブスクリプションを有効にしていることを確認してください。
+   > Data Lake Storage Gen1 リソース プロバイダーの登録時に `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Storage Gen1 のホワイトリストに登録されていない可能性があります。 こちらの[手順](data-lake-store-get-started-portal.md)に従って Data Lake Storage Gen1 で Azure サブスクリプションを有効にしていることを確認してください。
    >
    >
 2. Data Lake Storage Gen1 アカウントは、Azure リソース グループに関連付けられます。 まず、Azure リソース グループを作成します。
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     出力は次のように表示されます。
 
@@ -96,7 +99,7 @@ Data Lake Storage Gen1 アカウントを作成するには、次の手順に従
 3. Data Lake Storage Gen1 アカウントを作成します。 指定するアカウント名には、小文字と数字のみを含める必要があります。
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     出力は次のように表示されます。
 
@@ -118,7 +121,7 @@ Data Lake Storage Gen1 アカウントを作成するには、次の手順に従
 5. Data Lake Storage Gen1 にいくつかのサンプル データをアップロードします。 このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。
 
         $myrootdir = "/"
-        Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
+        Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1 へのロールベースのアクセスの認証を設定する
@@ -164,7 +167,7 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
 
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzureRmADApplication `
+        $application = New-AzADApplication `
             -DisplayName "HDIADL" `
             -HomePage "https://contoso.com" `
             -IdentifierUris "https://mycontoso.com" `
@@ -175,13 +178,13 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
         $applicationId = $application.ApplicationId
 2. アプリケーション ID を使用してサービス プリンシパルを作成します。
 
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
 3. Data Lake Storage Gen1 フォルダーおよび HDInsight クラスターからアクセスするファイルへのアクセス権をサービス プリンシパルに付与します。 次のスニペットは、Data Lake Storage Gen1 アカウントのルート (サンプル データ ファイルをコピーした場所) およびファイル自体へのアクセスを提供します。
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Data Lake Storage Gen1 を追加のストレージとして使用する HDInsight Linux クラスターを作成する
 
@@ -189,20 +192,20 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
 
 1. 最初に、サブスクリプションのテナント ID を取得します。 この情報は後で必要になります。
 
-        $tenantID = (Get-AzureRmContext).Tenant.TenantId
+        $tenantID = (Get-AzContext).Tenant.TenantId
 2. このリリースでは、Hadoop クラスターの場合、Data Lake Storage Gen1 はクラスターの追加のストレージとしてのみ使用できます。 既定のストレージは、Azure Storage BLOB (WASB) のままです。 そのため、クラスターに必要なストレージ アカウントとストレージ コンテナーを最初に作成します。
 
         # Create an Azure storage account
         $location = "East US 2"
-        $storageAccountName = "<StorageAcccountName>"   # Provide a Storage account name
+        $storageAccountName = "<StorageAccountName>"   # Provide a Storage account name
 
-        New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
 
         # Create an Azure Blob Storage container
         $containerName = "<ContainerName>"              # Provide a container name
-        $storageAccountKey = (Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
-        $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-        New-AzureStorageContainer -Name $containerName -Context $destContext
+        $storageAccountKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
+        $destContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+        New-AzStorageContainer -Name $containerName -Context $destContext
 3. HDInsight クラスターを作成します。 次のコマンドレットを使用します。
 
         # Set these variables
@@ -211,7 +214,7 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
+        New-AzHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
 
     コマンドレットが正常に完了すると、クラスターの詳細を一覧表示する出力が表示されます。
 
@@ -268,7 +271,7 @@ Data Lake Storage Gen1 を使用するように HDInsight クラスターを構�
 
 ## <a name="see-also"></a>関連項目
 * [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [ポータル: Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [ポータル:Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

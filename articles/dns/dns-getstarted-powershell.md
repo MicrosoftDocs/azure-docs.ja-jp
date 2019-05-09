@@ -5,16 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 07/16/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: e5801e9ed512a32d793f7b4b71be86174f656ab0
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 75ac8a45eb49ac5c4ec3b39667542f4f454a9954
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089980"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110326"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Azure DNS ゾーンとレコードを作成する
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure DNS ゾーンとレコードを作成する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 このクイック スタートでは、Azure PowerShell を使用して最初の DNS ゾーンとレコードを作成します。 これらの手順は、[Azure portal](dns-getstarted-portal.md) または [Azure CLI](dns-getstarted-cli.md) を使用して実行することもできます。 
 
@@ -31,23 +33,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 DNS ゾーンを作成する前に、DNS ゾーンが含まれるリソース グループを作成します。
 
 ```powershell
-New-AzureRMResourceGroup -name MyResourceGroup -location "eastus"
+New-AzResourceGroup -name MyResourceGroup -location "eastus"
 ```
 
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-DNS ゾーンは、 `New-AzureRmDnsZone` コマンドレットを使用して作成します。 次の例では、*MyResourceGroup* というリソース グループに *contoso.com* という DNS ゾーンを作成します。 この例の値を実際の値に置き換えて、DNS ゾーンを作成できます。
+DNS ゾーンは、 `New-AzDnsZone` コマンドレットを使用して作成します。 次の例では、*MyResourceGroup* というリソース グループに *contoso.xyz* という DNS ゾーンを作成します。 この例の値を実際の値に置き換えて、DNS ゾーンを作成できます。
 
 ```powershell
-New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
+New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
 ```
 
 ## <a name="create-a-dns-record"></a>DNS レコードの作成
 
-レコード セットは、`New-AzureRmDnsRecordSet` コマンドレットを使用して作成します。 下の例では、リソース グループ "MyResourceGroup" で DNS ゾーン "contoso.com" に相対名 "www" を持つレコードを作成します。 レコード セットの完全修飾名は、"www.contoso.com" になります。 また、レコードの種類は "A"、IP アドレスは "1.2.3.4"、TTL は 3,600 秒です。
+レコード セットは、`New-AzDnsRecordSet` コマンドレットを使用して作成します。 下の例では、リソース グループ "MyResourceGroup" で DNS ゾーン "contoso.xyz" に相対名 "www" を持つレコードを作成します。 レコード セットの完全修飾名は、"www.contoso.xyz" になります。 レコードの種類は "A"、IP アドレスは "10.10.10.10"、TTL は 3,600 秒です。
 
 ```powershell
-New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4")
+New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.10.10.10")
 ```
 
 ## <a name="view-records"></a>レコードの表示
@@ -55,36 +57,47 @@ New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceG
 ゾーンで DNS レコードを表示するには、次を使用します。
 
 ```powershell
-Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup
+Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup
 ```
 
+## <a name="test-the-name-resolution"></a>名前解決をテストする
 
-## <a name="update-name-servers"></a>ネーム サーバーの更新
+テスト DNS ゾーンを作成し、その中にテスト "A" レコードを含めたので、*nslookup* という名前のツールを使用して、名前解決をテストできます。 
 
-DNS ゾーンとレコードを正しく設定したら、Azure DNS ネーム サーバーを使用するようにドメイン名を構成する必要があります。 これにより、インターネット上の他のユーザーが DNS レコードを検索できるようになります。
+**DNS 名前解決をテストするには:**
 
-ゾーンのネーム サーバーを指定するには、`Get-AzureRmDnsZone` コマンドレットを使用します。
+1. 次のコマンドレットを実行して、ゾーン用のネーム サーバーの一覧を取得します。
 
-```powershell
-Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
+   ```azurepowershell
+   Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -RecordType ns
+   ```
 
-Name                  : contoso.com
-ResourceGroupName     : myresourcegroup
-Etag                  : 00000003-0000-0000-b40d-0996b97ed101
-Tags                  : {}
-NameServers           : {ns1-01.azure-dns.com., ns2-01.azure-dns.net., ns3-01.azure-dns.org., ns4-01.azure-dns.info.}
-NumberOfRecordSets    : 3
-MaxNumberOfRecordSets : 5000
-```
+1. 前の手順の出力から、いずれかのネーム サーバーの名前をコピーします。
 
-このネーム サーバーは、ドメイン名レジストラー (ドメイン名を購入した場所) で構成する必要があります。 レジストラーにより、ドメインのネーム サーバーを設定するオプションが提供されます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
+1. コマンド プロンプトを開いて、次のコマンドを実行します。
+
+   ```
+   nslookup www.contoso.xyz <name server name>
+   ```
+
+   例: 
+
+   ```
+   nslookup www.contoso.xyz ns1-08.azure-dns.com.
+   ```
+
+   次のような画面が表示されます。
+
+   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+
+ホスト名 **www\.contoso.xyz** は、構成したとおり、**10.10.10.10** に名前解決されています。 この結果で、名前解決が正常に機能していることを確認できます。
 
 ## <a name="delete-all-resources"></a>すべてのリソースの削除
 
 不要になった場合、リソース グループを削除することで、このクイック スタートで作成したすべてのリソースを削除できます。
 
 ```powershell
-Remove-AzureRMResourceGroup -Name MyResourceGroup
+Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

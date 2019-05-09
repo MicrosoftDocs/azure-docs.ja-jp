@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ce748be7f11d440e656e4af5cdd3cee3bbc9e313
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7d881454eb857080f1178f228a1f7bec36cae178
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302151"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527423"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム: 例外管理 | 対応策 
+# <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム:例外管理 | 対応策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF- serviceDebug ノードを構成ファイルに含めない](#servicedebug)</li><li>[WCF- serviceMetadata ノードを構成ファイルに含めない](#servicemetadata)</li></ul> |
@@ -71,7 +71,7 @@ ms.locfileid: "43302151"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | MVC 5、MVC 6 |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET Web API での例外処理](http://www.asp.net/web-api/overview/error-handling/exception-handling)、[ASP.NET Web API でのモデル検証](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **参照**              | [ASP.NET Web API での例外処理](https://www.asp.net/web-api/overview/error-handling/exception-handling)、[ASP.NET Web API でのモデル検証](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **手順** | 既定では、ASP.NET Web API でキャッチされなかったほとんどの例外が、状態コード `500, Internal Server Error` を伴った HTTP 応答に変換されます。|
 
 ### <a name="example"></a>例
@@ -179,7 +179,7 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-ASP.Net Web API での例外処理とモデルの検証の詳細については、「参照」セクションのリンクを参照してください。 
+ASP.NET Web API での例外処理とモデルの検証の詳細については、「参照」セクションのリンクを参照してください。 
 
 ## <a id="messages"></a>エラー メッセージ内のセキュリティの詳細を公開しない
 
@@ -201,7 +201,7 @@ ASP.Net Web API での例外処理とモデルの検証の詳細については�
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET エラー ページ設定の編集ダイアログ ボックス](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **手順** | <p>ASP.NET アプリケーションでエラーが生じ、HTTP/1.x 500 内部サーバー エラーが発生した場合、または機能構成 (要求フィルターなど) が原因でページが表示されない場合、エラー メッセージが生成されます。 管理者は、アプリケーションでクライアントにわかりやすいメッセージを表示するか、クライアントに詳細なエラー メッセージを表示するか、localhost のみに詳細なエラー メッセージを表示するかを選択できます。 web.config 内の <customErrors> タグには 3 つのモードがあります。</p><ul><li>**On:** カスタム エラーが有効になるように指定します。 defaultRedirect 属性が指定されていない場合、ユーザーには一般的なエラーが表示されます。 リモート クライアントとローカル ホストにカスタム エラーが表示されます。</li><li>**Off**: カスタム エラーが無効になるように指定します。 リモート クライアントとローカル ホストに詳細な ASP.NET エラーが表示されます。</li><li>**RemoteOnly:** カスタム エラーがリモート クライアントにのみ表示されることと、ASP.NET エラーがローカル ホストにのみ表示されることを指定します。 これが既定値です。</li></ul><p>アプリケーション/サイトの `web.config` ファイルを開き、タグに `<customErrors mode="RemoteOnly" />` または `<customErrors mode="On" />` が定義されていることを確認します。</p>|
+| **手順** | <p>ASP.NET アプリケーションでエラーが生じ、HTTP/1.x 500 内部サーバー エラーが発生した場合、または機能構成 (要求フィルターなど) が原因でページが表示されない場合、エラー メッセージが生成されます。 管理者は、アプリケーションでクライアントにわかりやすいメッセージを表示するか、クライアントに詳細なエラー メッセージを表示するか、localhost のみに詳細なエラー メッセージを表示するかを選択できます。 web.config 内の `<customErrors>` タグには 3 つのモードがあります。</p><ul><li>**On:** カスタム エラーが有効になるように指定します。 defaultRedirect 属性が指定されていない場合、ユーザーには一般的なエラーが表示されます。 リモート クライアントとローカル ホストにカスタム エラーが表示されます。</li><li>**Off:** カスタム エラーが無効になるように指定します。 リモート クライアントとローカル ホストに詳細な ASP.NET エラーが表示されます。</li><li>**RemoteOnly:** カスタム エラーがリモート クライアントにのみ表示されることと、ASP.NET エラーがローカル ホストにのみ表示されることを指定します。 これが既定値です。</li></ul><p>アプリケーション/サイトの `web.config` ファイルを開き、タグに `<customErrors mode="RemoteOnly" />` または `<customErrors mode="On" />` が定義されていることを確認します。</p>|
 
 ## <a id="deployment"></a>IIS の deployment メソッドを retail に設定する
 

@@ -4,18 +4,19 @@ titleSuffix: Azure Cosmos DB
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 3 です。
 author: johnpapa
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 462d0ea036ee50a3eea6812d87772bba9559125c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.reviewer: sngun
+ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788584"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158705"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Angular を使用して UI を構築する
 
@@ -416,7 +417,7 @@ ms.locfileid: "53788584"
 
 2. Visual Studio Code で **heroes.components.ts** に戻ります。 `constructor(private heroService: HeroService) {}` という行 (13 行目) の `HeroService` に表示されている赤色の下線に注目してください。 `HeroService` をクリックすると、コード ブロックの左側に電球アイコンが表示されます。 電球をクリックして **[Import HeroService from "./hero.service ".]\(HeroService を "./hero.service " からインポートします。\)**  または **[Import HeroService from "/app/hero.service ".]\(HeroService を "/app/hero.service " からインポートします。\)** をクリックします。
 
-    電球をクリックすると、2 行目に新しいコード行が挿入されます。 2 行目で /app/hero.service フォルダーが参照されている場合は、ローカル フォルダーの hero ファイル (./hero.serivce) を参照するように変更してください。 変更後の 2 行目は、次のようになります。
+    電球をクリックすると、2 行目に新しいコード行が挿入されます。 2 行目で /app/hero.service フォルダーが参照されている場合は、ローカル フォルダーの hero ファイル (./hero.service) を参照するように変更してください。 変更後の 2 行目は、次のようになります。
     
     ```javascript
     import { HeroService } from "./hero.service"

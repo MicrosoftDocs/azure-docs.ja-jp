@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c9c575f42e6c8730b9404c62fb60e710d9d3bc80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26578875"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093332"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -33,8 +33,8 @@ StorSimple デバイス マネージャー サービスは Azure Portal の拡�
 
 StorSimple ボリュームは、次のいずれかです。
 
-* **ローカル固定ボリューム**: これらのボリュームのデータは、常にローカル StorSimple デバイスに残ります。
-* **階層化ボリューム**: これらのボリュームのデータは、クラウドにあふれる場合があります。
+* **ローカル固定ボリューム**:これらのボリュームのデータは、常にローカル StorSimple デバイスに残ります。
+* **階層化ボリューム**:これらのボリュームのデータは、クラウドにあふれる場合があります。
 
 アーカイブ ボリュームは、階層化ボリュームの一種です。 アーカイブ ボリュームでより大きな重複除去チャンク サイズを使用すると、デバイスはより大きなデータのセグメントをクラウドに転送できます。
 
@@ -120,9 +120,9 @@ StorSimple ボリュームは、次のいずれかです。
       
        8100 デバイスに 8.5 TB (許容される最大サイズ) のローカル固定のボリュームをプロビジョニングすると、デバイスで使用可能なローカル領域がすべて使い果たされます。 この時点で、階層化されたボリュームのワーキング セットをホストするためのローカル領域がデバイスになくなるため、階層化されたボリュームを以後作成できなくなります。 既存の階層化されたボリュームも、使用可能な領域に影響します。 たとえば、約 106 TB のボリュームが既に階層化されている 8100 デバイスがある場合、ローカル固定されたボリュームに使用できるのは 4 TB の領域のみになります。
 
-    6. **[接続済みのホスト]** フィールドで矢印をクリックします。 **[接続済みホスト]** ブレードで、既存の ACR を選択するか、新しい ACR を追加します。 新しい ACR を選択する場合は、ACR の**名前**を指定し、Windows ホストの **iSCSI 修飾名** (IQN) を入力します。 IQN がない場合は、「 [Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。 **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
+    6. **[接続済みのホスト]** フィールドで矢印をクリックします。 **[接続済みホスト]** ブレードで、既存の ACR を選択するか、新しい ACR を追加します。 新しい ACR を選択する場合は、ACR の**名前**を指定し、Windows ホストの **iSCSI 修飾名** (IQN) を入力します。 IQN がない場合は、「Windows Server ホストの IQN の取得」を参照してください。 **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
 
-        ![Click Create](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
+        ![Create をクリックしてください。](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
 新しいボリュームが使用できるようになります。
 
@@ -235,7 +235,7 @@ StorSimple ボリュームは、次のいずれかです。
    * 種類を **[階層化]** に変更し、このボリュームをアーカイブ データ用に使用する場合は、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。
    * ローカル固定ボリュームを階層化ボリュームとして構成している場合や、_その逆_ の構成をしている場合は、次のメッセージが表示されます。
    
-    ![ボリュームの種類の変更に関するメッセージ](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![ボリュームの種類の変更に関するメッセージ](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
 7. **[保存]** をクリックして変更を保存します。 確認を求めるメッセージが表示されたら、**[はい]** をクリックして変換プロセスを開始します。 
 
@@ -325,7 +325,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 4. **[保存]** をクリックし、確認を求められたら、**[はい]** をクリックします。 Azure Portal には、ボリュームの更新についての通知が表示され、その後、ボリュームが正常に更新された後、成功についてのメッセージが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [StorSimple ボリュームを複製する](storsimple-8000-clone-volume-u2.md)方法について説明します。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。

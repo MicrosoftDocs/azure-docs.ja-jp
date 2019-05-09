@@ -4,22 +4,23 @@ description: Azure Active Directory と NetSuite の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dafa0864-aef2-4f5e-9eac-770504688ef4
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 05e565d58faefbfc80815635afa38595177ad353
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ab329574ef425e8133ac746c185050efcc8bc15a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807467"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59261447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル:Azure Active Directory と NetSuite の統合
 
@@ -131,7 +132,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
     
     | Name | ソース属性 | 
     | ---------------| --------------- |
-    | アカウント  | `account id` |
+    | account  | `account id` |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -172,19 +173,19 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
 1. ブラウザーで新しいタブを開き、NetSuite の会社のサイトに管理者としてサインインします。
 
-2. ページの上部にあるツール バーで、 **[セットアップ]** をクリックして、 **[会社]** に移動し、 **[機能の有効化]** をクリックします。
+2. ページの上部にあるツール バーで、**[セットアップ]** をクリックして、**[会社]** に移動し、**[機能の有効化]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-3. ページの中央にあるツール バーで、 **[SuiteCloud]** をクリックします。
+3. ページの中央にあるツール バーで、**[SuiteCloud]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-4.  **[Manage Authentication]\(認証の管理\)** セクションで、 **[SAML シングル サインオン]** を選択して、NetSuite での SAML シングル サインオン オプションを有効にします。
+4. **[Manage Authentication]\(認証の管理)** セクションで、**[SAML シングル サインオン]** を選択して、NetSuite での SAML シングル サインオン オプションを有効にします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-5. ページの上部にあるツール バーで、 **[セットアップ]** をクリックします。
+5. ページの上部にあるツール バーで、**[セットアップ]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-setup.png)
 
@@ -278,7 +279,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -325,7 +326,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

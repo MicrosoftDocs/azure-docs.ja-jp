@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Translator Text REST API を使用して、文の長さ (文字数) を調べる方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/24/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d7ba50bf57a5c7f88f4380c4874d6053f07082e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d6f9ac2d0b7aa2365d0391841e6d6fb0369a9693
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992604"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727045"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>クイック スタート: クイック スタート: Translator Text API と Python を使用して文の長さを調べる
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`breaksentence` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`breaksentence` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 このサンプルでは、指定されたテキストの言語を設定するために、`params` を使用しています。 `breaksentence` ルートに必ずしも `params` は必要ありません。 要求に含めなかった場合、指定されたテキストの言語の検出を API が試み、その情報が信頼度スコアと一緒に応答として返されます。
 

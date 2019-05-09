@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: c9f0707f6d24ba899c89bf19066994ae860a69d5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620989"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58916656"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
 この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 スタートアップ タスクを使用して、ロールを開始する前の操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
@@ -68,12 +68,12 @@ ms.locfileid: "39620989"
 
 *AppCmd.exe* を呼び出した後、**errorlevel** を確認することをお勧めします。これは、*AppCmd.exe* への呼び出しを *.cmd* ファイルでラップすると簡単に実行できます。 既知の **errorlevel** 応答が検出された場合は無視するか、その応答を返すことができます。
 
-*AppCmd.exe* によって返される errorlevel は winerror.h ファイルに一覧表示されています。[MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx) で確認することもできます。
+*AppCmd.exe* によって返される errorlevel は winerror.h ファイルに一覧表示されています。[MSDN](/windows/desktop/Debug/system-error-codes--0-499-) で確認することもできます。
 
 ### <a name="example-of-managing-the-error-level"></a>エラー レベルの管理の例
 この例では *Web.config* に JSON 用の圧縮セクションと圧縮エントリを追加し、エラー処理とログ記録を示します。
 
-ここに示す [EndPoints] ファイルの関連セクションでは、[executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
+ここに示す [EndPoints] ファイルの関連セクションでは、[executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -93,7 +93,7 @@ REM   *** Add a compression section to the Web.config file. ***
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
-REM   batch file were executed twice. This can occur and must be accounted for in a Azure startup
+REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
 IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
@@ -186,7 +186,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 これにより、Web ロールが初期化されるたびに **startup.cmd** バッチ ファイルが実行され、必要な **ipSecurity** セクションのロックが解除されます。
 
-最後に、お使いの Web ロールの [web.config](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) ファイルの **system.webServer セクション** を変更し、次の例に示すようにアクセス許可が付与された IP アドレスの一覧を追加します。
+最後に、お使いの Web ロールの [web.config](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) ファイルの **system.webServer セクション** を変更し、次の例に示すようにアクセス許可が付与された IP アドレスの一覧を追加します。
 
 このサンプル構成では、定義した 2 つ以外のすべての IP についてサーバーへのアクセスを **許可** します。
 
@@ -293,7 +293,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-ローカル ストレージ フォルダーには Azure SDK から [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) メソッドを使用してアクセスできます。
+ローカル ストレージ フォルダーには Azure SDK から [GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) メソッドを使用してアクセスできます。
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;

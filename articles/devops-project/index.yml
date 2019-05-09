@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 19e4fbed8f8ea9b051ffb493b0c6b9a1f4eb48b3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162379"
 documentType: LandingData
 title: Azure DevOps Projects
 metadata:
-  document_id: 
+  document_id: null
   title: Azure DevOps Projects のドキュメント - クイック スタートとチュートリアル
-  meta.description: 
+  meta.description: null
   services: devops-project
   author: mlearned
   manager: douge
@@ -24,58 +18,58 @@ abstract:
   description: Azure DevOps Projects により、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: _img\video-devops-project.png
       width: 250
-    title: DevOps Projects による CI/CD の作成に関するビデオ (8:53)
-    href: https://channel9.msdn.com/Events/Connect/2017/T174/player/
+    title: 'DevOps Projects による CI/CD の作成に関するビデオ (8:53)'
+    href: 'https://channel9.msdn.com/Events/Connect/2017/T174/player/'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 任意の種類のアプリを作成して、選択した Azure サービスにデプロイする方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: media\logo_net.svg
-      text: .NET
-      href: /azure/devops-project/azure-devops-project-aspnet-core
-    - image:
-        src: media\logo_nodejs.svg
-      text: Node.js
-      href: /azure/devops-project/azure-devops-project-nodejs
-    - image:
-        src: media\logo_java.svg
-      text: Java
-      href: /azure/devops-project/azure-devops-project-java
-    - image:
-        src: media\logo_python.svg
-      text: Python
-      href: /azure/devops-project/azure-devops-project-python
-    - image:
-        src: media\logo_php.svg
-      text: PHP
-      href: /azure/devops-project/azure-devops-project-php
-    - image:
-        src: media\logo_ruby.svg
-      text: Ruby
-      href: /azure/devops-project/azure-devops-project-ruby
-    - image:
-        src: media\logo_gopher.svg
-      text: Go
-      href: /azure/devops-project/azure-devops-project-go
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: DevOps Projects を使用してリリース パイプラインを作成する方法について説明します
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 任意の種類のアプリを作成して、選択した Azure サービスにデプロイする方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media\logo_net.svg
+            text: .NET
+            href: /azure/devops-project/azure-devops-project-aspnet-core
+          - image:
+              src: media\logo_nodejs.svg
+            text: Node.js
+            href: /azure/devops-project/azure-devops-project-nodejs
+          - image:
+              src: media\logo_java.svg
+            text: Java
+            href: /azure/devops-project/azure-devops-project-java
+          - image:
+              src: media\logo_python.svg
+            text: Python
+            href: /azure/devops-project/azure-devops-project-python
+          - image:
+              src: media\logo_php.svg
+            text: PHP
+            href: /azure/devops-project/azure-devops-project-php
+          - image:
+              src: media\logo_ruby.svg
+            text: Ruby
+            href: /azure/devops-project/azure-devops-project-ruby
+          - image:
+              src: media\logo_gopher.svg
+            text: Go
+            href: /azure/devops-project/azure-devops-project-go
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/devops-project/azure-devops-project-github">GitHub で独自のコードを使用する</a>
-    - html: <a href="/azure/devops-project/azure-devops-project-vms">Azure Virtual Machines に ASP.NET アプリをデプロイする</a>
-    - html: <a href="/azure/devops-project/azure-devops-project-sql-database">ASP.NET アプリと Azure SQL データベースをデプロイする</a>
-    - html: <a href="/azure/devops-project/azure-devops-project-aks">Azure Container Service と Kubernetes にアプリをデプロイする</a>
-    - html: <a href="/azure/devops-project/azure-devops-project-service-fabric">Azure Service Fabric にアプリをデプロイする</a>
+      - type: paragraph
+        text: DevOps Projects を使用してリリース パイプラインを作成する方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/devops-project/azure-devops-project-github">GitHub で独自のコードを使用する</a>
+          - html: <a href="/azure/devops-project/azure-devops-project-vms">Azure Virtual Machines に ASP.NET アプリをデプロイする</a>
+          - html: <a href="/azure/devops-project/azure-devops-project-sql-database">ASP.NET アプリと Azure SQL データベースをデプロイする</a>
+          - html: <a href="/azure/devops-project/azure-devops-project-aks">Azure Container Service と Kubernetes にアプリをデプロイする</a>
+          - html: <a href="/azure/devops-project/azure-devops-project-service-fabric">Azure Service Fabric にアプリをデプロイする</a>

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のよく寄せられる質問 (FAQ) | Microso
 description: Azure Active Directory B2C についてよく寄せられる質問 (FAQ)。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 7a30aecc3cc2259072ea33ae018c371a1f05741a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842953"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795119"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -64,7 +64,7 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 * **バナー ロゴ**:右下に表示されます。
 * **背景色**:上部に表示されます。
 
-    ![カスタマイズされた検証電子メールのスクリーンショット](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+    ![カスタマイズされた確認メールのスクリーンショット](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
 電子メールの署名には、最初に Azure AD B2C テナントを作成したときに指定した Azure AD B2C テナントの名前が含まれます。 名前は次の手順を使用して変更できます。
 
@@ -80,10 +80,10 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 Azure AD Graph API を使用して、移行ツールを作成できます。 詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C のローカル アカウントに使用されるパスワード ユーザー フローはどのようなものですか。
-Azure AD B2C のローカル アカウントのパスワード ユーザー フローは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ユーザー フローでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、 [Azure AD のパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx) に関するページを参照してください。 アカウントのロックアウトとパスワードについては、「[Azure Active Directory B2C: 脅威の管理](active-directory-b2c-reference-threat-management.md)」を参照してください。
+Azure AD B2C のローカル アカウントのパスワード ユーザー フローは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ユーザー フローでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、 [Azure AD のパスワード ポリシー](/previous-versions/azure/jj943764(v=azure.100)) に関するページを参照してください。 アカウントのロックアウトとパスワードについては、「[Azure Active Directory B2C: 脅威の管理](active-directory-b2c-reference-threat-management.md)」を参照してください。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
-いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 ユーザーの移行には、[Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用することを検討してください。  詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。
+いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 ユーザーの移行には、[Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用することを検討してください。  詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>アプリで Azure AD B2C ページを iFrame 内で開くことはできますか。
 いいえ。セキュリティ上の理由から、Azure AD B2C ページを iFrame 内で開くことはできません。  このサービスは、iFrame を禁止するためにブラウザーと通信します。  一般のセキュリティ コミュニティと OAUTH2 仕様では、ID エクスペリエンスに iFrame を使用しないことを推奨しています。これは、クリックジャッキングの危険があるためです。
@@ -113,7 +113,8 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを削除する方法はありますか。
 Azure AD B2C テナントを削除するには、次の手順に従います。
 
-1. Azure AD B2C テナントのポリシーをすべて削除します。
+1. Azure AD B2C テナントのユーザー フロー (ポリシー) をすべて削除します。
+1. Azure AD B2C テナントで登録したすべてのアプリケーションを削除します。
 1. ここで、サブスクリプション管理者として [Azure Portal](https://portal.azure.com/) にサインインします。 (Azure へのサインアップに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントを使用します)。
 1. 削除する Azure AD B2C テナントに切り替えます。
 2. 左側の Active Directory メニューに移動します。

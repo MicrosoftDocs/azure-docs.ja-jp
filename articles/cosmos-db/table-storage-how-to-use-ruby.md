@@ -1,20 +1,20 @@
 ---
 title: Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: 7ddf9c3ef848537cb68dce043bb22680439e9cd5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+author: wmengmsft
+ms.author: wmeng
+ms.reviewer: sngun
+ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877929"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036258"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -94,9 +94,9 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>エンティティを更新する
 既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **update_entity():** 既存のエンティティを、置換することで更新します。
+* **update_entity():** 既存のエンティティを置換することで更新します。
 * **merge_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。
-* **insert_or_merge_entity():** 既存のエンティティを、置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **insert_or_merge_entity():** 既存のエンティティを置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 * **insert_or_replace_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
 次の例は、**update_entity()** を使用してエンティティを更新する方法を示しています。

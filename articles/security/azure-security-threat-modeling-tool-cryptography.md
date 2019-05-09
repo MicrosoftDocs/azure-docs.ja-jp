@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887104"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム: 暗号化 | 軽減策 
+
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Web アプリケーション** | <ul><li>[承認済みの対称ブロック暗号とキー長のみを使用する](#cipher-length)</li><li>[対称暗号に承認済みのブロック暗号モードと初期化ベクトルを使用する](#vector-ciphers)</li><li>[承認済みの非対称アルゴリズム、キー長、パディングを使用する](#padding)</li><li>[承認済みの乱数ジェネレーターを使用する](#numgen)</li><li>[対称ストリーム暗号は使用しない](#stream-ciphers)</li><li>[承認済みの MAC/HMAC/キー付きハッシュ アルゴリズムを使用する](#mac-hash)</li><li>[承認済みの暗号化ハッシュ関数のみを使用する](#hash-functions)</li></ul> |
@@ -29,7 +30,7 @@ ms.locfileid: "52844653"
 | **IoT デバイス** | <ul><li>[IoT デバイスで暗号化キーを安全に保存する](#keys-iot)</li></ul> | 
 | **IoT クラウド ゲートウェイ** | <ul><li>[IoT Hub に対する認証用に十分な長さのランダムな対称キーを生成する](#random-hub)</li></ul> | 
 | **Dynamics CRM モバイル クライアント** | <ul><li>[PIN の使用を要求し、リモート ワイプを許可するデバイス管理ポリシーが設定されていることを確認する](#pin-remote)</li></ul> | 
-| **Dynamics CRM Outlook クライアント** | <ul><li>[PIN/パスワード/自動ロックを要求し、すべてのデータを暗号化する (Bitlocker など) デバイス管理ポリシーが設定されていることを確認する](#bitlocker)</li></ul> | 
+| **Dynamics CRM Outlook クライアント** | <ul><li>[PIN/パスワード/自動ロックを要求し、すべてのデータを暗号化する (BitLocker など) デバイス管理ポリシーが設定されていることを確認する](#bitlocker)</li></ul> | 
 | **Identity Server** | <ul><li>[Identity Server を使用するときは、署名キーがロールオーバーされていることを確認する](#rolled-server)</li><li>[Identity Server で暗号強度が高いクライアント ID とクライアント シークレットが使用されていることを確認する](#client-server)</li></ul> | 
 
 ## <a id="cipher-length"></a>承認済みの対称ブロック暗号とキー長のみを使用する
@@ -96,7 +97,7 @@ ms.locfileid: "52844653"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、承認済みのメッセージ認証コード (MAC) アルゴリズムまたはハッシュ ベース メッセージ認証コード (HMAC) アルゴリズムのみを使用する必要があります。</p><p>メッセージ認証コード (MAC) はメッセージに添付される情報の一部です。MAC により、メッセージの受信者は、秘密キーを使用して送信元の信頼性とメッセージの整合性を確認することが可能になります。 基になるすべてのハッシュ アルゴリズムまたは対称暗号化アルゴリズムも使用が承認されていれば、ハッシュ ベースの MAC ([HMAC](http://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) または[ブロック暗号ベースの MAC](http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) の使用が許容されます。現時点では、これには HMAC-SHA2 関数 (HMAC-SHA256、HMAC-SHA384、HMAC-SHA512) と、ブロック暗号ベースの MAC である CMAC/OMAC1 および OMAC2 (これらは AES に基づいています) が含まれます。</p><p>プラットフォームの互換性を確保するために、HMAC-SHA1 の使用が許容される場合もありますが、この手順の例外を申請し、組織の暗号委員会のレビューを受ける必要があります。 HMAC を 128 ビット未満に切り捨てることは許可されていません。 顧客独自の方法を使用したキーとデータのハッシュは承認されておらず、使用前に組織の暗号委員会によるレビューを受ける必要があります。</p>|
+| **手順** | <p>製品では、承認済みのメッセージ認証コード (MAC) アルゴリズムまたはハッシュ ベース メッセージ認証コード (HMAC) アルゴリズムのみを使用する必要があります。</p><p>メッセージ認証コード (MAC) はメッセージに添付される情報の一部です。MAC により、メッセージの受信者は、秘密キーを使用して送信元の信頼性とメッセージの整合性を確認することが可能になります。 基になるすべてのハッシュ アルゴリズムまたは対称暗号化アルゴリズムも使用が承認されていれば、ハッシュ ベースの MAC ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) または[ブロック暗号ベースの MAC](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) の使用が許容されます。現時点では、これには HMAC-SHA2 関数 (HMAC-SHA256、HMAC-SHA384、HMAC-SHA512) と、ブロック暗号ベースの MAC である CMAC/OMAC1 および OMAC2 (これらは AES に基づいています) が含まれます。</p><p>プラットフォームの互換性を確保するために、HMAC-SHA1 の使用が許容される場合もありますが、この手順の例外を申請し、組織の暗号委員会のレビューを受ける必要があります。 HMAC を 128 ビット未満に切り捨てることは許可されていません。 顧客独自の方法を使用したキーとデータのハッシュは承認されておらず、使用前に組織の暗号委員会によるレビューを受ける必要があります。</p>|
 
 ## <a id="hash-functions"></a>承認済みの暗号化ハッシュ関数のみを使用する
 
@@ -107,7 +108,7 @@ ms.locfileid: "52844653"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS に準拠している)</li><li>SHA384Cng (FIPS に準拠している)</li><li>SHA256Cng (FIPS に準拠している)</li><li>SHA512Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA512 を使用)</li><li>SHA384Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA384 を使用)</li><li>SHA256Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA256 を使用)</li><li>SHA512CryptoServiceProvider (FIPS に準拠している)</li><li>SHA256CryptoServiceProvider (FIPS に準拠している)</li><li>SHA384CryptoServiceProvider (FIPS に準拠している)</li></ul>| 
+| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS に準拠している)</li><li>SHA384Cng (FIPS に準拠している)</li><li>SHA256Cng (FIPS に準拠している)</li><li>SHA512Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA512 を使用する)</li><li>SHA384Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA384 を使用する)</li><li>SHA256Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA256 を使用する)</li><li>SHA512CryptoServiceProvider (FIPS に準拠している)</li><li>SHA256CryptoServiceProvider (FIPS に準拠している)</li><li>SHA384CryptoServiceProvider (FIPS に準拠している)</li></ul>| 
 
 ## <a id="strong-db"></a>強力な暗号化アルゴリズムを使用してデータベース内のデータを暗号化する
 
@@ -209,7 +210,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **参照**              | 該当なし  |
 | **手順** | PIN の使用を要求し、リモート ワイプを許可するデバイス管理ポリシーが設定されていることを確認します。 |
 
-## <a id="bitlocker"></a>PIN/パスワード/自動ロックを要求し、すべてのデータを暗号化する (Bitlocker など) デバイス管理ポリシーが設定されていることを確認する
+## <a id="bitlocker"></a>PIN/パスワード/自動ロックを要求し、すべてのデータを暗号化する (BitLocker など) デバイス管理ポリシーが設定されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -218,7 +219,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | PIN/パスワード/自動ロックを要求し、すべてのデータを暗号化する (Bitlocker など) デバイス管理ポリシーが設定されていることを確認します。 |
+| **手順** | PIN/パスワード/自動ロックを要求し、すべてのデータを暗号化する (BitLocker など) デバイス管理ポリシーが設定されていることを確認する |
 
 ## <a id="rolled-server"></a>Identity Server を使用するときは、署名キーがロールオーバーされていることを確認する
 

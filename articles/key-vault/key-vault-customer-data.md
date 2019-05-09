@@ -1,24 +1,23 @@
 ---
-title: Azure Key Vault の顧客データ機能 | Microsoft Docs
+title: Azure Key Vault の顧客データ機能 - Azure Key Vault | Microsoft Docs
 description: Key Vault 内の顧客データについて説明します
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 05/22/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 807b8a17570dfdcefa07a42719b7b0b24e4f31d7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 12492fad419fdc703ddabcf2288be282f2fd47be
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297164"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111783"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault の顧客データ機能
 

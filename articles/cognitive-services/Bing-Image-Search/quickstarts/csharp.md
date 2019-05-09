@@ -4,35 +4,31 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、C# を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 9/07/2018
+ms.date: 02/06/2019
 ms.author: aahi
-ms.openlocfilehash: 67dd91d7555ebd1e72cea168fc8b841bf4ed9175
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b48d9a9d8c28173de90ed3d27bc67a383563550d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249517"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551231"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>クイック スタート:Bing Image Search REST API と C# を使用してイメージを検索する
 
-このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな C# アプリケーションは、HTTP の画像検索クエリを API に送信し、返された最初の画像の URL を表示します。
+このクイック スタートでは、Bing Image Search API に検索要求を送信する基本的な方法について説明します。 この C# アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
-
-このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) で入手できます。
+このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 * NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
+* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
@@ -101,16 +97,16 @@ namespace BingSearchApisQuickstart
 
 `BingImageSearch` メソッドで次の手順を実行します。
 
-1. 検索要求の URI を構築します。 文字列に追加する前に、検索用語 `toSearch` の書式を設定する必要がある点に注意してください。
+1. 検索要求の URI を構築します。 検索語句 `SearchTerm` は、書式を設定したうえで文字列に追加する必要があります。
 
     ```csharp
-    static SearchResult BingImageSearch(string toSearch){
+    static SearchResult BingImageSearch(string SearchTerm){
 
-        var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(toSearch);
+        var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(SearchTerm);
     //...
     ```
 
-2. Web 要求を実行し、応答を JSON 文字列として取得します。
+2. Web 要求を送信し、応答を JSON 文字列として取得します。
 
     ```csharp
     WebRequest request = WebRequest.Create(uriQuery);
@@ -156,9 +152,8 @@ namespace BingSearchApisQuickstart
     Console.WriteLine("URL for the first image result: " + firstJsonObj["webSearchUrl"]+"\n");
     ```  
 
-3. 必ずアプリケーション コードからサブスクリプション キーを削除してください。
 
-## <a name="json-response"></a>JSON 応答
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Image Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。
 
@@ -202,7 +197,7 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -214,7 +209,8 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 ## <a name="see-also"></a>関連項目
 
 * [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* Bing Search API シリーズの[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 * [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

@@ -2,18 +2,18 @@
 title: Azure Site Recovery を使用した Hyper-V から Azure へのディザスター リカバリーのトラブルシューティング | Microsoft Docs
 description: Azure Site Recovery を使用した Hyper-V から Azure へのレプリケーションに関するディザスター リカバリーの問題をトラブルシューティングする方法について説明します。
 services: site-recovery
-author: Rajeswari-Mamilla
+author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
-ms.author: ramamill
-ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 04/14/2019
+ms.author: rajanaki
+ms.openlocfilehash: 8bb790571e1499bd45fb8bee27f4f1896046cbc2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844993"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149089"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -28,9 +28,9 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 3. Hyper-V Virtual Machine Management サービスが Hyper-V ホスト上で実行されていることを確認します。
 4. VM への Hyper-V-VMMS\Admin サインインに表示される問題を確認します。 このログは **Applications and Services Logs** > **Microsoft** > **Windows** にあります。
 5. ゲスト VM 上で、WMI が有効になっており、アクセス可能であることを確認します。
-  - 基本的な WMI テスト[について学習します](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)。
-  - WMI を[トラブルシューティングします](https://aka.ms/WMiTshooting)。
-  - WMI スクリプトおよびサービスに関する問題を[トラブルシューティングします](https://technet.microsoft.com/library/ff406382.aspx#H22)。
+   - 基本的な WMI テスト[について学習します](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)。
+   - WMI を[トラブルシューティングします](https://aka.ms/WMiTshooting)。
+   - WMI スクリプトおよびサービスに関する問題を[トラブルシューティングします](https://technet.microsoft.com/library/ff406382.aspx#H22)。
 6. ゲスト VM 上で、最新バージョンの Integration Services が実行されていることを確認します。
     - 最新バージョンを使用していることを[確認します](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - Integration Services を最新の状態に[維持します](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)。
@@ -41,9 +41,9 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 
 1. [最新バージョン](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)の Site Recovery サービスを実行していることを確認します。
 2. レプリケーションが一時停止されているかどうかを確認します。
-  - Hyper-V マネージャー コンソールで VM の正常性状態を確認します。
-  - それが重大である場合は、[VM] > **[レプリケーション]** > **[View Replication Health (レプリケーションの正常性の表示)]** を右クリックします。
-  - レプリケーションが一時停止されている場合は、**[Resume Replication (レプリケーションの再開)]** をクリックします。
+   - Hyper-V マネージャー コンソールで VM の正常性状態を確認します。
+   - それが重大である場合は、[VM] > **[レプリケーション]** > **[View Replication Health (レプリケーションの正常性の表示)]** を右クリックします。
+   - レプリケーションが一時停止されている場合は、**[Resume Replication (レプリケーションの再開)]** をクリックします。
 3. 必要なサービスが実行されていることを確認します。 そうでない場合は、それらを再起動します。
     - VMM なしで Hyper-V をレプリケートしている場合は、次のサービスが Hyper-V ホスト上で実行されていることを確認します。
         - Virtual Machine Management サービス
@@ -65,10 +65,10 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 2. [Deployment Planner プロファイラー](hyper-v-deployment-planner-run.md)を実行します。
 3. このプロファイラーを実行した後、[帯域幅](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)と[ストレージ](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)の推奨事項に従います。
 4. [データ チャーンの制限](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)を確認します。 VM 上のデータ チャーンが高いことが確認できた場合は、次を実行します。
-  - VM が再同期にマークされているかどうかを確認します。
-  - [次の手順](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/)に従って、チャーンのソースを調査します。
-  - チャーンは、HRL ログ ファイルが使用可能なディスク容量の 50% を超えると発生する場合があります。 これが問題である場合は、問題が発生しているすべての VM により多くの記憶域スペースをプロビジョニングします。
-  - レプリケーションが一時停止されていないことを確認します。 一時停止されていると、hrl ファイルへの変更の書き込みが続行されるため、そのサイズの増加につながる場合があります。
+   - VM が再同期にマークされているかどうかを確認します。
+   - [次の手順](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/)に従って、チャーンのソースを調査します。
+   - チャーンは、HRL ログ ファイルが使用可能なディスク容量の 50% を超えると発生する場合があります。 これが問題である場合は、問題が発生しているすべての VM により多くの記憶域スペースをプロビジョニングします。
+   - レプリケーションが一時停止されていないことを確認します。 一時停止されていると、hrl ファイルへの変更の書き込みが続行されるため、そのサイズの増加につながる場合があります。
  
 
 ## <a name="critical-replication-state-issues"></a>レプリケーション状態の重大な問題
@@ -91,17 +91,17 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 
 1. 最新バージョンの Integration Services がインストールされ、実行されていることを確認します。  Hyper-V ホスト上の管理者特権での PowerShell プロンプトからコマンド **get-vm | select Name, State, IntegrationServicesState** を実行することによって、更新プログラムが入手可能かどうかを確認します。
 2. VSS サービスが実行され、正常であることを確認します。
-    - サービスを確認するには、ゲスト VM にサインインします。 次に、管理者のコマンド プロンプトを開き、次のコマンドを実行して、すべての VSS ライタが正常かどうかを確認します。
-        - **Vssadmin list writers**
-        - **Vssadmin list shadows**
-        - **Vssadmin list providers**
-    - 出力を確認します。 ライタが失敗の状態にある場合は、次を実行します。
-        - VM 上のアプリケーション イベント ログに VSS 操作エラーがないかどうかを確認します。
-    - 失敗したライタに関連付けられた次のサービスの再起動を試みます。
-        - ボリューム シャドウ コピー
-         - Azure Site Recovery VSS プロバイダー
-    - これを行った後、数時間待って、アプリ整合性スナップショットが正常に生成されたかどうかを確認します。
-    - 最後の手段として、VM の再起動を試みます。 これにより、無応答の状態にあるサービスが解決されることがあります。
+   - サービスを確認するには、ゲスト VM にサインインします。 次に、管理者のコマンド プロンプトを開き、次のコマンドを実行して、すべての VSS ライタが正常かどうかを確認します。
+       - **Vssadmin list writers**
+       - **Vssadmin list shadows**
+       - **Vssadmin list providers**
+   - 出力を確認します。 ライタが失敗の状態にある場合は、次を実行します。
+       - VM 上のアプリケーション イベント ログに VSS 操作エラーがないかどうかを確認します。
+   - 失敗したライタに関連付けられた次のサービスの再起動を試みます。
+     - ボリューム シャドウ コピー
+       - Azure Site Recovery VSS プロバイダー
+   - これを行った後、数時間待って、アプリ整合性スナップショットが正常に生成されたかどうかを確認します。
+   - 最後の手段として、VM の再起動を試みます。 これにより、無応答の状態にあるサービスが解決されることがあります。
 3. VM 内にダイナミック ディスクが存在しないを確認します。 これは、アプリ整合性スナップショットでサポートされていません。 [ディスクの管理] (diskmgmt.msc) で確認できます。
 
     ![ダイナミック ディスク](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
@@ -115,7 +115,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
         - カウンター:"Write Bytes / Sec"</br>
         - このデータ チャーン レートは、VM またはそのアプリがどれだけビジー状態にあるかに応じて、上昇するか、または高いレベルにとどまります。
         - ソース ディスクの平均データ チャーンは、Site Recovery の標準ストレージで 2 MB/秒です。 [詳細情報](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - さらに、[ストレージのスケーラビリティ ターゲットを確認](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account)できます。
+    - さらに、[ストレージのスケーラビリティ ターゲットを確認](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)できます。
 8. [Deployment Planner](hyper-v-deployment-planner-run.md) を実行します。
 9. [ネットワーク](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)と[ストレージ](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)の推奨事項を確認してください。
 

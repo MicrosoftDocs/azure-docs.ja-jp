@@ -8,12 +8,12 @@ ms.author: jasonh
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 0bade9f393d879123b7b1485052f70924d9c9b9c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045483"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959133"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -41,12 +41,12 @@ ms.locfileid: "43045483"
 
      * **[Stream to an event hub]** (イベント ハブへのストリーム) オプションを選択して、Azure イベント ハブにログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合には、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-     * __[Send to Log Analytics]__ (Log Analytics に送信) を選択して、Log Analytics サービスにデータを送信します。 Log Analytics を使ってログを収集し分析する場合は、このオプションを使用します。
+     * __[Send to Log Analytics]\(Log Analytics に送信\)__ を選択して、Azure Monitor サービスにデータを送信します。 Azure Monitor ログを使ってログを収集し分析する場合は、このオプションを使用します。
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。  要求ログは、すべての API 要求をキャプチャします。 監査ログは、その API 要求によってトリガーされるすべての操作を記録します。
 
    * __[ストレージ アカウントへのアーカイブ]__ で、データを保持する日数を指定します。
 
-   * __[保存]__ の順にクリックします。
+   * [ __Save__] をクリックします。
 
         > [!NOTE]
         > __[保存]__ ボタンをクリックする前に、__[Archive to a storage account]__(ストレージ アカウントへのアーカイブ)、__[Stream to an Event Hub]__(イベント ハブへのストリーム)、または __[Send to Log Analytics]__(Log Analytics に送信) のいずれかを選択する必要があります。
@@ -125,7 +125,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 
 #### <a name="request-log-schema"></a>要求ログのスキーマ
 
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -134,12 +134,12 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | resultType |String |操作の状態。200 など。 |
 | callerIpAddress |String |要求を行うクライアントの IP アドレス |
 | correlationId |String |ロールの ID この値は、関係のあるログ エントリをグループ化する際に使用します |
-| identity |オブジェクト |ログを生成した ID |
+| identity |Object |ログを生成した ID |
 | properties |JSON |詳しくは、次のセクション (「要求ログのプロパティのスキーマ」) をご覧ください |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
 
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
 | Path |String |操作が実行されたパス |
@@ -177,7 +177,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
 
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -195,7 +195,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
 
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | JobId |String |ジョブに割り当てられた ID |
 | JobName |String |ジョブに与えられている名前 |

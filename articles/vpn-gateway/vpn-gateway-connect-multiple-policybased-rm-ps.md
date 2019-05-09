@@ -8,16 +8,18 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
-ms.openlocfilehash: 46555bf121e674b82c0c7dd39f74ee3708fc4439
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3d8a3297fba43004db817e6b077f7b292fb917cb
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850647"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454346"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 
 この記事は、S2S VPN 接続のカスタム IPsec/IKE ポリシーを利用して、複数のオンプレミス ポリシー ベース VPN デバイスに接続するように Azure ルート ベース VPN ゲートウェイを構成するのに役立ちます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about"></a>ポリシー ベースおよびルート ベースの VPN ゲートウェイについて
 
@@ -83,7 +85,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 #### <a name="1-connect-to-your-subscription-and-declare-your-variables"></a>1.サブスクリプションに接続して変数を宣言する
 
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 変数を宣言します。 この演習では、次の変数を使用します。
 
@@ -117,26 +119,26 @@ $LNGIP6        = "131.107.72.22"
 リソース グループを作成します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name $RG1 -Location $Location1
+New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
 
 次の例を使用して、3 つのサブネットを持つ仮想ネットワーク TestVNet1 と VPN ゲートウェイを作成します。 値を代入する場合は、ゲートウェイ サブネットの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
 ```azurepowershell-interactive
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
-$besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-$gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+$fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
+$besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
+$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
 
-New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 
-$gw1pip1    = New-AzureRmPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
-$vnet1      = Get-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
-$subnet1    = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
-$gw1ipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $subnet1 -PublicIpAddress $gw1pip1
+$gw1pip1    = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
+$vnet1      = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
+$subnet1    = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+$gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $subnet1 -PublicIpAddress $gw1pip1
 
-New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance
+New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance
 
-New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
+New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
 ```
 
 ### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>手順 2 - IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する
@@ -148,20 +150,20 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 
 次の例では、以下のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーを作成します。
 * IKEv2:AES256、SHA384、DHGroup24
-* IPsec:AES256、SHA256、PFS24、SA の有効期間 3600 秒および 2048KB
+* IPsec:AES256、SHA256、PFS なし、SA の有効期間 14,400 秒および 102,400,000 KB
 
 ```azurepowershell-interactive
-$ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup PFS24 -SALifeTimeSeconds 3600 -SADataSizeKilobytes 2048
+$ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 ```
 
 #### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2.ポリシー ベースのトラフィックのセレクターと IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する
 S2S VPN 接続を作成し、前の手順で作成した IPsec/IKE ポリシーを適用します。 パラメーター "-UsePolicyBasedTrafficSelectors $True" を追加して、接続でポリシー ベース トラフィック セレクターを有効にします。
 
 ```azurepowershell-interactive
-$vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
-$lng6 = Get-AzureRmLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
+$vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
+$lng6 = Get-AzLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
 
-New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
+New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
 ```
 
 手順が完了したら、S2S VPN 接続は、定義された IPsec/IKE ポリシーを使用し、接続でポリシー ベース トラフィック セレクターを有効にします。 同じ手順を繰り返し、同じ Azure VPN ゲートウェイから追加のオンプレミス ポリシー ベース VPN デバイスへの接続を追加できます。
@@ -175,7 +177,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 ```azurepowershell-interactive
 $RG1          = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 ```
 
 ### <a name="2-check-the-policy-based-traffic-selectors-option"></a>2.ポリシー ベース トラフィック セレクター オプションを確認する
@@ -196,9 +198,9 @@ $connection6.UsePolicyBasedTrafficSelectors
 ```azurepowershell-interactive
 $RG1          = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
 ```
 
 #### <a name="to-disable-usepolicybasedtrafficselectors"></a>UsePolicyBasedTrafficSelectors を無効にするには
@@ -207,9 +209,9 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 ```azurepowershell-interactive
 $RG1          = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
 ```
 
 ## <a name="next-steps"></a>次の手順

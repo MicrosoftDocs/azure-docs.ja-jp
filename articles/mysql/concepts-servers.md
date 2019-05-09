@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: e4bba685ed49e72d00255f386061a0a8f9ec9078
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 565e1bf7a4972e230b3cf56232ebd24519fcab5c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007889"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
 
@@ -37,6 +37,7 @@ Azure Database for MySQL サーバー内には 1 つまたは複数のデータ�
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーへの接続および認証方法
 
 次の要素が、データベースへの安全なアクセスを確保するうえで役に立ちます。
+
 |     |     |
 | :-- | :-- |
 | **認証と権限承認** | Azure Database for MySQL サーバーは、ネイティブ MySQL 認証をサポートしています。 サーバーにはサーバーの管理者ログインで接続し、認証できます。 |

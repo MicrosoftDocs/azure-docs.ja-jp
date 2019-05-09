@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384983"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312284"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
@@ -28,16 +28,19 @@ HTTP アプリケーション ルーティング ソリューションを使用�
 
 アドオンによって、[Kubernetes イングレス コントローラー][ingress] と[外部 DNS][external-dns] コントローラーの 2 つのコンポーネントがデプロイされます。
 
-- **イングレス コントローラー**: イングレス コントローラーは、LoadBalancer タイプの Kubernetes サービスを使用することで、インターネットに公開されます。 イングレス コントローラーは、アプリケーションのエンドポイントへのルートを作成する [Kubernetes イングレス リソース][ingress-resource]を監視し、実装します。
-- **外部 DNS コントローラー**: Kubernetes イングレス リソースを監視し、クラスター固有の DNS ゾーンに DNS A レコードを作成します。
+- **イングレス コントローラー**:イングレス コントローラーは、LoadBalancer タイプの Kubernetes サービスを使用することで、インターネットに公開されます。 イングレス コントローラーは、アプリケーションのエンドポイントへのルートを作成する [Kubernetes イングレス リソース][ingress-resource]を監視し、実装します。
+- **外部 DNS コントローラー**:Kubernetes イングレス リソースを監視し、クラスター固有の DNS ゾーンに DNS A レコードを作成します。
 
-## <a name="deploy-http-routing-cli"></a>HTTP ルーティングのデプロイ: CLI
+## <a name="deploy-http-routing-cli"></a>HTTP ルーティングをデプロイする:CLI
 
 HTTP アプリケーションのルーティング アドオンは、AKS クラスターのデプロイ時に、Azure CLI を使用して有効にできます。 これを行うには、`--enable-addons` 引数を付けて [az aks create][az-aks-create] コマンドを使用します。
 
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
+
+> [!TIP]
+> 複数のアドオンを有効にする場合は、各アドオンをコンマで区切って指定してください。 たとえば、HTTP アプリケーションのルーティングと監視を有効にするには、`--enable-addons http_application_routing,monitoring` という形式を使用します。
 
 また、[az aks enable-addons][az-aks-enable-addons] コマンドを使用して、既存の AKS クラスターで HTTP ルーティングを有効にすることもできます。 既存のクラスターで HTTP ルーティングを有効にするには、次の例のように `--addons` パラメーターを追加して *http_application_routing* を指定します。
 
@@ -55,7 +58,7 @@ Result
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
 ```
 
-## <a name="deploy-http-routing-portal"></a>HTTP ルーティングのデプロイ: ポータル
+## <a name="deploy-http-routing-portal"></a>HTTP ルーティングをデプロイする:ポータル
 
 HTTP アプリケーション ルーティング アドオンは、AKS クラスターをデプロイするときに、Azure portal から有効にできます。
 
@@ -174,6 +177,36 @@ HTTP ルーティング ソリューションは、Azure CLI を使用して削�
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
+HTTP アプリケーションのルーティング アドオンが無効になっている場合は、一部の Kubernetes リソースがクラスターに残ることがあります。 これらのリソースには *configMaps* と *secrets* が含まれ、*kube-system* 名前空間で作成されます。 クリーンなクラスターを維持するために、これらのリソースを削除することができます。
+
+次の [kubectl get][kubectl-get] コマンドを使用して、*addon-http-application-routing* リソースを探します。
+
+```console
+kubectl get deployments --namespace kube-system
+kubectl get services --namespace kube-system
+kubectl get configmaps --namespace kube-system
+kubectl get secrets --namespace kube-system
+```
+
+次の出力例は、削除する必要がある configMaps を示しています。
+
+```
+$ kubectl get configmaps --namespace kube-system
+
+NAMESPACE     NAME                                                       DATA   AGE
+kube-system   addon-http-application-routing-nginx-configuration         0      9m7s
+kube-system   addon-http-application-routing-tcp-services                0      9m7s
+kube-system   addon-http-application-routing-udp-services                0      9m7s
+```
+
+リソースを削除するには、[kubectl delete][kubectl-delete] コマンドを使用します。 リソースの種類、リソース名、および名前空間を指定します。 次の例では、以前の configmaps の 1 つを削除します。
+
+```console
+kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
+```
+
+クラスターに残っているすべての *addon-http-application-routing* リソースに対して、前の `kubectl delete` の手順を繰り返します。
+
 ## <a name="troubleshoot"></a>トラブルシューティング
 
 [kubectl logs][kubectl-logs] コマンドを使用して、外部 DNS アプリケーションのアプリケーション ログを表示します。 A および TXT DNS レコードが正常に作成されたことをログで確認してください。
@@ -256,6 +289,7 @@ ingress "party-clippy" deleted
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [ingress-resource]: https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource

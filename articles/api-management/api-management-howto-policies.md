@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 54fbba197f6609731ffaf3ff15143a28e70a955f
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 99f756b5415811b3d4c2ee0167f98b31c905df1a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29712870"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793679"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
 
 Azure API Management (APIM) のポリシーは、発行者がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 ポリシーは、API の要求または応答に対して順に実行される一連のステートメントのコレクションです。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられます。 他にも多数のポリシーが標準で提供されています。
 
-ポリシーは、API コンシューマーとマネージ API の間に配置されたゲートウェイ内で適用されます。 ゲートウェイは、すべての要求を受け取り、通常はそれらの要求をそのまま基底の API に転送します。 ただし、ポリシーを使用すると、受信要求と送信応答の両方に変更を適用できます。
+ポリシーは、API コンシューマーとマネージド API の間に配置されたゲートウェイ内で適用されます。 ゲートウェイは、すべての要求を受け取り、通常はそれらの要求をそのまま基底の API に転送します。 ただし、ポリシーを使用すると、受信要求と送信応答の両方に変更を適用できます。
 
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー][Control flow] ポリシーや[変数の設定][Set variable]ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー][Advanced policies]」と「[ポリシーの式][Policy expressions]」をご覧ください。
 
@@ -59,7 +59,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 </policies> 
 ```
 
-要求の処理中にエラーが発生した場合、`inbound`、`backend`、または `outbound` セクションの残りの手順はスキップされ、実行は `on-error` セクションのステートメントにジャンプします。 `on-error` セクションにポリシー ステートメントを配置することで、`context.LastError` プロパティを使用してエラーを確認し、`set-body` ポリシーを使用してエラーの検査とカスタマイズを行い、エラーが発生した場合の動作を構成できます。 組み込み手順用と、ポリシー ステートメントの処理中に発生する可能性があるエラー用のエラー コードがあります。 詳細については、 [API Management のポリシーにおけるエラー処理](https://msdn.microsoft.com/library/azure/mt629506.aspx)に関するページを参照してください。
+要求の処理中にエラーが発生した場合、`inbound`、`backend`、または `outbound` セクションの残りの手順はスキップされ、実行は `on-error` セクションのステートメントにジャンプします。 `on-error` セクションにポリシー ステートメントを配置することで、`context.LastError` プロパティを使用してエラーを確認し、`set-body` ポリシーを使用してエラーの検査とカスタマイズを行い、エラーが発生した場合の動作を構成できます。 組み込み手順用と、ポリシー ステートメントの処理中に発生する可能性があるエラー用のエラー コードがあります。 詳細については、 [API Management のポリシーにおけるエラー処理](/azure/api-management/api-management-error-handling-policies)に関するページを参照してください。
 
 ## <a name="scopes"> </a>ポリシーの構成方法
 

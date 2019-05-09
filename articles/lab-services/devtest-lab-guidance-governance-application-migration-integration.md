@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978617"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436580"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
 開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。
@@ -62,9 +63,9 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 
 DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ パイプラインを作成します。
 
-- [概要: Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
+- [概要:Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
 - [イメージ ファクトリ – パート 2:Azure Pipelines とファクトリ ラボを設定して VM を作成する](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [イメージ ファクトリ – パート 3: カスタム イメージを保存して複数のラボに配布する](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
+- [イメージ ファクトリ – パート 3:カスタム イメージを保存して複数のラボに配布する](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
 - [ビデオ: Azure DevTest Labs でのカスタム イメージ ファクトリ](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>ネットワーク構成を設定するパターン

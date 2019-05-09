@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 43276aad26bc06400c1bc4b5feaace0d5646c213
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849241"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57866294"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>ターゲットを準備する (VMware から Azure)
 
@@ -21,7 +21,7 @@ ms.locfileid: "52849241"
 ## <a name="prerequisites"></a>前提条件
 
 この記事は以下を前提としています。
-- 物理サーバーを保護するための Recovery Services コンテナーを作成してあること。 Recovery Services コンテナーは [Azure Portal](http://portal.azure.com "Azure Portal") から作成できます。
+- 物理サーバーを保護するための Recovery Services コンテナーを作成してあること。 Recovery Services コンテナーは [Azure Portal](https://portal.azure.com "Azure Portal") から作成できます。
 - 物理サーバーを Azure にレプリケートできるように[オンプレミス環境をセットアップ](physical-azure-disaster-recovery.md)してあること。
 
 ## <a name="prepare-target"></a>ターゲットを準備する

@@ -2,18 +2,18 @@
 title: Azure Backup での System Center Data Protection Manager のトラブルシューティング
 description: System Center Data Protection Manager での問題のトラブルシューティングを行います。
 services: backup
-author: adigan
-manager: shreeshd
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/24/2017
-ms.author: adigan
-ms.openlocfilehash: d3776df8184523999433059e95bc72e1d3abb1c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606445"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55293997"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>System Center Data Protection Manager のトラブルシューティング
 
@@ -22,7 +22,7 @@ ms.locfileid: "34606445"
 System Center Data Protection Manager の最新リリース ノートについては、[System Center のドキュメント](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)を参照してください。 Data Protection Manager のサポートの詳細については、[この一覧](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)を参照してください。
 
 
-## <a name="error-replica-is-inconsistent"></a>エラー: レプリカに整合性がありません
+## <a name="error-replica-is-inconsistent"></a>エラー:レプリカに整合性がありません
 
 レプリカは、以下の理由で整合性が失われることがあります。
 - レプリカ作成ジョブが失敗した。
@@ -42,7 +42,7 @@ System Center Data Protection Manager の最新リリース ノートについ�
 - ディスクが正常であり、レプリカに十分な領域があることを確認します。
 - 同時に実行されている重複するバックアップ ジョブが存在しないことを確認します。
 
-## <a name="error-online-recovery-point-creation-failed"></a>エラー: オンライン回復ポイントを作成できませんでした
+## <a name="error-online-recovery-point-creation-failed"></a>エラー:オンライン回復ポイントを作成できませんでした
 
 この問題を解決するには、次のアクションを実行してください。
 - 最新バージョンの Azure Backup エージェントを使用していることを確認します。
@@ -53,7 +53,7 @@ System Center Data Protection Manager の最新リリース ノートについ�
 - レプリカが存在し、欠落していないことを確認します。
 - レプリカに、Update Sequence Number (USN) ジャーナルを作成するための十分な領域があることを確認します。
 
-## <a name="error-unable-to-configure-protection"></a>エラー: 保護を構成できません
+## <a name="error-unable-to-configure-protection"></a>エラー:保護を構成できません
 
 このエラーは、Data Protection Manager サーバーが、保護されるサーバーに接続できない場合に発生します。 
 
@@ -62,7 +62,7 @@ System Center Data Protection Manager の最新リリース ノートについ�
 - Data Protection Manager サーバーと保護されるサーバーの間に接続 (ネットワーク/ファイアウォール/プロキシ) があることを確認します。
 - SQL Server を保護している場合は、**[ログインのプロパティ]** > **[NT AUTHORITY\SYSTEM]** プロパティで、**sysadmin** 設定が有効になっていることを確認します。
 
-## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>エラー: サーバーが、コンテナー資格情報ファイルに指定されているとおりに登録されていません
+## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>エラー:サーバーが、コンテナー資格情報ファイルに指定されているとおりに登録されていません
 
 このエラーは、Data Protection Manager/Azure Backup Server のデータの回復プロセス中に発生します。 回復プロセスで使用されるコンテナー資格情報ファイルが、Data Protection Manager/Azure Backup Server の Recovery Services コンテナーに含まれていません。
 
@@ -70,7 +70,7 @@ System Center Data Protection Manager の最新リリース ノートについ�
 1. Data Protection Manager/Azure Backup Server が登録されている Recovery Services コンテナーからコンテナー資格情報ファイルをダウンロードします。
 2. ダウンロードした最新のコンテナー資格情報ファイルを使って、コンテナーへのサーバー登録を試みます。
 
-## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>エラー: 回復可能なデータがないか、選択したサーバーは Data Protection Manager サーバーではありません
+## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>エラー:回復可能なデータがないか、選択したサーバーは Data Protection Manager サーバーではありません
 
 このエラーは、次の理由で発生します。
 - Data Protection Manager/Azure Backup Server が、Recovery Services コンテナーに登録されていない。
@@ -81,7 +81,7 @@ System Center Data Protection Manager の最新リリース ノートについ�
 1. 最新の Azure Backup エージェントがインストールされていることを確認します。
 2. 最新のエージェントがインストールされていることを確認したら、1 日待ってから回復プロセスを開始します。 夜間のバックアップ ジョブによって、保護されたすべてのバックアップのメタデータがクラウドにアップロードされます。 このバックアップ データを回復に利用できます。
 
-## <a name="error-provided-encryption-passphrase-doesnt-match-passphrase-for-server"></a>エラー: 指定した暗号化パスフレーズが、サーバーのパスフレーズと一致しません
+## <a name="error-provided-encryption-passphrase-doesnt-match-passphrase-for-server"></a>エラー:指定した暗号化パスフレーズが、サーバーのパスフレーズと一致しません
 
 このエラーは、Data Protection Manager/Azure Backup Server のデータを回復する際の暗号化プロセス中に発生します。 回復プロセスで使用される暗号化パスフレーズが、サーバーの暗号化パスフレーズと一致していません。 その結果、エージェントがデータの暗号化を解除できず、回復が失敗します。
 

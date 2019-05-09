@@ -1,26 +1,26 @@
 ---
 title: パターンの役割
 titleSuffix: Azure Cognitive Services
-description: パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。
+description: パターンを使用すると、正しい形式のテンプレート発話からデータを抽出できます。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 8b66895e1ae37947c995ffc643505d466c42b93b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: d6a2c9d92d79bed3f0e9a9976a64f6e11debba88
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753117"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523276"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>チュートリアル:ロールを使って文脈的に関連するパターンを抽出する
 
-このチュートリアルでは、パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。  パターンを使用するとき、意図に必要な発話の例は少なくなります。
+このチュートリアルでは、パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は[単純なエンティティ](luis-concept-entity-types.md#simple-entity)と[ロール](luis-concept-roles.md)を使用して、出発地や目的地などの関連データを抽出します。  パターンを使用するとき、意図に必要な発話の例は少なくなります。
 
 
 **このチュートリアルで学習する内容は次のとおりです。**
@@ -369,23 +369,10 @@ ms.locfileid: "53753117"
         "label": "neutral",
         "score": 0.5
       }
-}
+   }
     ```
 
 意図スコアは大きく向上し、ロール名がエンティティの応答に含まれるようになりました。
-
-## <a name="hierarchical-entities-versus-roles"></a>階層エンティティとロール
-
-[階層構造のチュートリアル](luis-quickstart-intent-and-hier-entity.md)では、既存の従業員をある建物やオフィスから別の場所へ移動させるとき、**MoveEmployee** の意図が検出されました。 発話の例には移動元の場所と移動先の場所がありましたが、ロールは使用していませんでした。 代わりに、移動元と移動先は階層構造エンティティの子でした。 
-
-このチュートリアルでは、新しい従業員をある都市から別の都市に移動させることについての発話を人事管理アプリが検出します。 これら 2 種類の発話は同じですが、LUIS が持つ異なった能力によって解決されます。
-
-|チュートリアル|発話の例|移動元と移動先の場所|
-|--|--|--|
-|[階層構造 (ロールなし)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349、b-1298|
-|このチュートリアル (ロールあり)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma、Denver|
-
-詳細については、「[ロールと階層エンティティ](luis-concept-roles.md#roles-versus-hierarchical-entities)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

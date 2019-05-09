@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f2f3784ea2cb4a7864faef6a4e49edd7a289afc2
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250566"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189036"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>fMP4 チャンクを生成するエンコーディング タスクを作成する
 

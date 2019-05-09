@@ -8,12 +8,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: 86fdbbacf3e8064afe0aaaaebea1d6ef6c25f9d4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865833"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59046276"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>テンプレートを使用して Azure Firewall をデプロイする
 
@@ -24,6 +24,9 @@ ms.locfileid: "52865833"
 ユーザー定義のルートは、ファイアウォール規則が適用されるファイアウォールを経由する *ServersSubnet* サブネットからのネットワーク トラフィックを指します。
 
 Azure Firewall の詳細については、[Azure portal を使用した Azure Firewall のデプロイと構成](tutorial-firewall-deploy-portal.md)に関するページを参照してください。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-the-template-to-deploy-azure-firewall"></a>テンプレートを使用して Azure Firewall をデプロイする
 
@@ -52,12 +55,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 1. ファイアウォールを使用して作成されたリソースを探索します。 
 
+テンプレートにあるファイアウォールの JSON の構文とプロパティに関する詳細については、[Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)に関する記事を参照してください。
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-リソースが必要なくなった場合は、PowerShell コマンド [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループ、ファイアウォール、およびすべての関連リソースを削除できます。 *MyResourceGroup* という名前のリソース グループを削除するには、次を実行します。 
+リソースが必要なくなった場合は、PowerShell コマンド [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループ、ファイアウォール、およびすべての関連リソースを削除できます。 *MyResourceGroup* という名前のリソース グループを削除するには、次を実行します。 
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name MyResourceGroup
+Remove-AzResourceGroup -Name MyResourceGroup
 ```
 引き続きファイアウォール監視チュートリアルに進む場合は、リソース グループとファイアウォールをまだ削除しないでください。 
 

@@ -7,37 +7,32 @@ ms.reviewer: jasonh
 keywords: Linux での Hadoop コマンド, Hadoop Linux コマンド, Hadoop macOS, ssh Hadoop, ssh Hadoop クラスター
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 04/03/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: bcd550ac8f4b75002648f2e4737a4683349aa45f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ffae3e8c23a30e683db85ad6745ab30cfee93f2e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384634"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283993"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
-[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使って Azure HDInsight の Apache Hadoop に安全に接続する方法について説明します。 
+[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使って Azure HDInsight の Apache Hadoop に安全に接続する方法について説明します。 仮想ネットワークを介した接続については、「[Azure HDInsight 仮想ネットワーク アーキテクチャ](./hdinsight-virtual-network-architecture.md)」および「[Azure Virtual Network を使用した Azure HDInsight の拡張](./hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
 
-HDInsight では Linux (Ubuntu) を Hadoop クラスター内のノードのオペレーティング システムとして使用できます。 次の表に、SSH クライアントを使用して Linux ベースの HDInsight に接続する際に必要なアドレスとポートの情報を示します。
+次の表に、SSH クライアントを使用して HDInsight に接続する際に必要なアドレスとポートの情報を示します。
 
 | Address | ポート | 接続先 |
 | ----- | ----- | ----- |
-| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | エッジ ノード (HDInsight の ML サービス) |
-| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | エッジ ノード (エッジ ノードが存在する場合はその他のクラスターの種類) |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | プライマリ ヘッド ノード |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | セカンダリ ヘッド ノード |
+| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | エッジ ノード (HDInsight の ML サービス) |
+| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | エッジ ノード (エッジ ノードが存在する場合はその他のクラスターの種類) |
 
-> [!NOTE]  
-> `<edgenodename>` をエッジ ノードの名前に置き換えます。
->
-> `<clustername>` をクラスターの名前に置き換えます。
->
-> クラスターにエッジ ノードが含まれている場合は、SSH を使用して__常にエッジ ノードに接続する__ことをお勧めします。 ヘッド ノードは、Hadoop の正常な稼働に不可欠なサービスをホストします。 エッジ ノードは、配置されたもののみを実行します。
->
-> エッジ ノードの使用の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md#access-an-edge-node)に関する記事を参照してください。
+`<clustername>` をクラスターの名前に置き換えます。 `<edgenodename>` をエッジ ノードの名前に置き換えます。 
+
+クラスターにエッジ ノードが含まれている場合は、SSH を使用して __常にエッジ ノードに接続する__ ことをお勧めします。 ヘッド ノードは、Hadoop の正常な稼働に不可欠なサービスをホストします。 エッジ ノードは、配置されたもののみを実行します。 エッジ ノードの使用の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md#access-an-edge-node)に関する記事を参照してください。
 
 > [!TIP]  
 > HDInsight に初めて接続すると、ホストの信頼性を確立できないという警告が SSH クライアントに表示されることがあります。 メッセージが表示されたら、"はい" を選択して、SSH クライアントの信頼済みサーバーの一覧にこのホストを追加してください。
@@ -50,20 +45,15 @@ Linux、Unix、および macOS システムでは、`ssh` コマンドと `scp` 
 
 Microsoft Windows には、既定では SSH クライアントがインストールされていません。 Windows 用の `ssh` クライアントと `scp` クライアントは、次の各パッケージで入手できます。
 
-* OpenSSH クライアント (ベータ):Fall Creators Update で、__[設定]__ > __[アプリと機能]__ > __[オプション機能の管理]__ > __[機能の追加]__ の順に移動して、__[OpenSSH Client](OpenSSH クライアント)__ を選択します。 
+* [OpenSSH クライアント](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse)。 Windows 10 Fall Creators Update で導入されるオプション機能です。
 
-    > [!NOTE]  
-    > この機能を有効にした後 PowerShell で `ssh` コマンドと `scp` コマンドが使用できない場合、ログアウトしてからログインし直してください。
+* [Bash on Ubuntu on Windows 10](https://docs.microsoft.com/windows/wsl/about)。
 
-* [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about):`ssh` コマンドおよび `scp` コマンドは、Bash on Windows のコマンド ラインを介して利用できます。
+* [Azure Cloud Shell](../cloud-shell/quickstart.md)。 Cloud Shell は、ブラウザー内で Bash 環境を提供します。
 
-* [OpenSSH クライアント (ベータ)](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/):Windows 10 Fall Creators Update で導入されるオプション機能です。
+* [Git](https://git-scm.com/)。
 
-* [Azure Cloud Shell](../cloud-shell/quickstart.md):Cloud Shell は、ブラウザーで Bash 環境を提供し、`ssh`、`scp`、およびその他の一般的な Linux コマンドを提供します。
-
-* [Git (https://git-scm.com/)](https://git-scm.com/):`ssh` コマンドおよび `scp` コマンドは、GitBash のコマンド ラインを介して利用できます。
-
-[PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) や [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/) などのグラフィカルな SSH クライアントもいくつか存在します。 これらのクライアントは HDInsight への接続に使用できますが、接続するプロセスは、`ssh` ユーティリティを使用する場合とは異なります。 詳細については、お使いのグラフィカル クライアントに関するドキュメントを参照してください。
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/) や [MobaXterm](https://mobaxterm.mobatek.net/) などのグラフィカルな SSH クライアントもいくつか存在します。 これらのクライアントは HDInsight への接続に使用できますが、接続するプロセスは、`ssh` ユーティリティを使用する場合とは異なります。 詳細については、お使いのグラフィカル クライアントに関するドキュメントを参照してください。
 
 ## <a id="sshkey"></a>認証:SSH キー
 
@@ -71,9 +61,9 @@ SSH キーでは、[公開キー暗号化](https://en.wikipedia.org/wiki/Public-
 
 SSH アカウントがキーを使用してセキュリティ保護されている場合、クライアントは対応する秘密キーを接続時に提供する必要があります。
 
-* ほとんどのクライアントは、__既定のキー__を使用するように構成できます。 たとえば、Linux 環境または Unix 環境では、`ssh` クライアントは `~/.ssh/id_rsa` で秘密キーを探します。
+* ほとんどのクライアントは、__既定のキー__ を使用するように構成できます。 たとえば、Linux 環境または Unix 環境では、`ssh` クライアントは `~/.ssh/id_rsa` で秘密キーを探します。
 
-* __秘密キーへのパス__を指定できます。 `ssh` クライアントでは、秘密キーへのパスを指定するために `-i` パラメーターが使用されます。 たとえば、「 `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net` 」のように入力します。
+* __秘密キーへのパス__ を指定できます。 `ssh` クライアントでは、秘密キーへのパスを指定するために `-i` パラメーターが使用されます。 たとえば、「 `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net` 」のように入力します。
 
 * 異なる複数のサーバーで使用するための __複数の秘密キー__ がある場合は、[ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) などのユーティリティを使用することを検討してください。 `ssh-agent` ユーティリティを使用すると、SSH セッションを確立するときに使用するキーを自動的に選択できます。
 
@@ -88,9 +78,9 @@ SSH アカウントがキーを使用してセキュリティ保護されてい�
 
 キーの作成プロセス中には、情報の入力が求められます。 たとえば、キーが格納されている場所や、パスフレーズを使用するかどうかなどです。 プロセスが完了すると、公開キーと秘密キーの 2 つのファイルが作成されます。
 
-* __公開キー__は、HDInsight クラスターの作成に使用します。 公開キーの拡張子は `.pub` です。
+* __公開キー__ は、HDInsight クラスターの作成に使用します。 公開キーの拡張子は `.pub` です。
 
-* __秘密キー__は、HDInsight クラスターでクライアントを認証するために使用します。
+* __秘密キー__ は、HDInsight クラスターでクライアントを認証するために使用します。
 
 > [!IMPORTANT]  
 > キーはパスフレーズを使用してセキュリティ保護することができます。 パスフレーズは実質的には秘密キーのパスワードです。 だれかが秘密キーを入手したとしても、パスフレーズがないと使用できません。
@@ -99,10 +89,10 @@ SSH アカウントがキーを使用してセキュリティ保護されてい�
 
 | 作成方法 | 公開キーの使用方法 |
 | ------- | ------- |
-| **Azure Portal** | __[クラスター ログインと同じパスワードを使用します]__ チェック ボックスをオフにし、[SSH 認証の種類] で __[公開キー]__ を選択します。 最後に、公開キー ファイルを選択するか、ファイルのテキストの内容を __[SSH 公開キー]__ フィールドに貼り付けます。</br>![HDInsight クラスター作成時の SSH 公開キー ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
-| **Azure PowerShell** | `New-AzureRmHdinsightCluster` コマンドレットの `-SshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。|
-| **Azure クラシック CLI** | `azure hdinsight cluster create` コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
-| **Resource Manager テンプレート** | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
+| Azure ポータル | __[クラスター ログインと同じパスワードを使用します]__ チェック ボックスをオフにし、[SSH 認証の種類] で __[公開キー]__ を選択します。 最後に、公開キー ファイルを選択するか、ファイルのテキストの内容を __[SSH 公開キー]__ フィールドに貼り付けます。</br>![HDInsight クラスター作成時の [SSH 公開キー] ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| Azure PowerShell | [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `-SshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。|
+| Azure CLI | [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
+| Resource Manager テンプレート | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
 
 ## <a id="sshpassword"></a>認証:パスワード
 
@@ -118,10 +108,10 @@ SSH アカウントは、パスワードを使用してセキュリティ保護�
 
 | 作成方法 | パスワードの指定方法 |
 | --------------- | ---------------- |
-| **Azure Portal** | 既定では、SSH ユーザー アカウントには、クラスター ログイン アカウントと同じパスワードがあります。 別のパスワードを使用するには、__[クラスター ログインと同じパスワードを使用します]__ チェック ボックスをオフにし、__[SSH パスワード]__ フィールドにパスワードを入力します。</br>![HDInsight クラスター作成時の SSH パスワード ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
-| **Azure PowerShell** | `New-AzureRmHdinsightCluster` コマンドレットの `--SshCredential` パラメーターを使用して、SSH ユーザー アカウントの名前とパスワードを含む `PSCredential` オブジェクトを渡します。 |
-| **Azure クラシック CLI** | `azure hdinsight cluster create` コマンドの `--sshPassword` パラメーターを使用して、パスワードの値を提供します。 |
-| **Resource Manager テンプレート** | テンプレートを使用したパスワードの使用例については、[SSH パスワードを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) ファイルの `linuxOperatingSystemProfile` 要素は、クラスターの作成時に SSH アカウントの名前とパスワードを Azure に渡すために使用されます。|
+| Azure ポータル | 既定では、SSH ユーザー アカウントには、クラスター ログイン アカウントと同じパスワードがあります。 別のパスワードを使用するには、__[クラスター ログインと同じパスワードを使用します]__ チェック ボックスをオフにし、__[SSH パスワード]__ フィールドにパスワードを入力します。</br>![HDInsight クラスター作成時の [SSH パスワード] ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| Azure PowerShell | [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `--SshCredential` パラメーターを使用して、SSH ユーザー アカウントの名前とパスワードを含む `PSCredential` オブジェクトを渡します。 |
+| Azure CLI | [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドの `--sshPassword` パラメーターを使用して、パスワードの値を提供します。 |
+| Resource Manager テンプレート | テンプレートを使用したパスワードの使用例については、[SSH パスワードを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) ファイルの `linuxOperatingSystemProfile` 要素は、クラスターの作成時に SSH アカウントの名前とパスワードを Azure に渡すために使用されます。|
 
 ### <a name="change-the-ssh-password"></a>SSH パスワードを変更する
 
@@ -131,11 +121,11 @@ SSH ユーザー アカウントのパスワード変更に関する詳細につ
 
 __ドメイン参加済み HDInsight クラスター__ を使用している場合は、SSH ローカル ユーザーと接続した後で `kinit` コマンドを使用する必要があります。 このコマンドを実行すると、ドメイン ユーザーとパスワードの入力が求められ、クラスターに関連付けられた Azure Active Directory ドメインによってセッションが認証されます。
 
-また、ドメイン アカウントを使用して SSH 接続するために、各ドメイン参加ノード (例: ヘッド ノード、エッジ ノード) で Kerberos 認証を有効にすることができます。 これを行うには、sshd 構成ファイルを編集します。
+また、ドメイン アカウントを使用して SSH 接続するために、各ドメイン参加ノード (たとえば、ヘッド ノード、エッジ ノード) で Kerberos 認証を有効にすることができます。 これを行うには、sshd 構成ファイルを編集します。
 ```bash
 sudo vi /etc/ssh/sshd_config
 ```
-コメントを解除し、`KerberosAuthentication` を `yes` に変更します。
+コメントを解除し、`KerberosAuthentication` を次に変更します:  `yes`
 
 ```bash
 sudo service sshd restart
@@ -149,7 +139,7 @@ Kerberos 認証が成功したかどうかを確認するには、常に `klist`
 
 ヘッド ノードとエッジ ノード (存在する場合) には、インターネット経由で、ポート 22 および 23 でアクセスできます。
 
-* __ヘッド ノード__に接続する場合、プライマリ ヘッド ノードに接続するときはポート __22__ を使用し、セカンダリ ヘッド ノードに接続するときはポート __23__ を使用します。 使用する完全修飾ドメイン名は、`clustername-ssh.azurehdinsight.net` です。ここで、`clustername` は実際のクラスターの名前です。
+* __ヘッド ノード__ に接続する場合、プライマリ ヘッド ノードに接続するときはポート __22__ を使用し、セカンダリ ヘッド ノードに接続するときはポート __23__ を使用します。 使用する完全修飾ドメイン名は、`clustername-ssh.azurehdinsight.net` です。ここで、`clustername` は実際のクラスターの名前です。
 
     ```bash
     # Connect to primary head node
@@ -188,7 +178,7 @@ worker ノードと Zookeeper ノードには、インターネットから直�
 
 SSH アカウントが __パスワード__ を使用してセキュリティで保護されている場合は、接続時にパスワードを入力します。
 
-SSH アカウントが __SSH キー__を使用してセキュリティで保護されている場合は、クライアント側で SSH の転送が有効になっていることを確認します。
+SSH アカウントが __SSH キー__ を使用してセキュリティで保護されている場合は、クライアント側で SSH の転送が有効になっていることを確認します。
 
 > [!NOTE]  
 > 別の方法でクラスター内のすべてのノードに直接アクセスするには、Azure 仮想ネットワークに HDInsight をインストールします。 次に、リモート マシンを同じ仮想ネットワーク内に参加させることで、クラスター内のすべてのノードに直接アクセスできます。
@@ -252,7 +242,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 >
 > * [Azure Storage を使用する HDInsight](hdinsight-hadoop-use-blob-storage.md)
 >
-> * [Azure Data Lake Store を使用する HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+> * [Azure Data Lake Storage を使用する HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
 ## <a name="next-steps"></a>次の手順
 

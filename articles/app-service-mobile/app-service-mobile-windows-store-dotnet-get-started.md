@@ -1,5 +1,5 @@
 ---
-title: Mobile Apps で使用する Universal Windows Platform (UWP) を作成する | Microsoft Doc
+title: Azure Mobile Apps で使用するユニバーサル Windows プラットフォーム (UWP) を作成する | Microsoft Docs
 description: このチュートリアルに従って、Azure モバイル アプリ バックエンドを使用して、C#、Visual Basic、または JavaScript で Universal Windows Platform (UWP) アプリの開発を開始します。
 services: app-service\mobile
 documentationcenter: windows
@@ -11,17 +11,17 @@ ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: c8bd6430b362fde81c3133c2c16cf369aa050103
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 289d50fc9d71ee5ea8960fd077e91ef6f68027cb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999369"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771312"
 ---
-# <a name="create-a-windows-app"></a>Create a Windows app (Windows アプリの作成)
+# <a name="create-a-windows-app-with-an-azure-backend"></a>Azure バックエンドを使用して Windows アプリを作成する
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
@@ -38,7 +38,9 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。 このアプリは評価終了後も使用できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* Windows 10。
 * [Visual Studio Community 2017]。
+* UWP アプリ開発に関する知識。 UWP アプリをビルドするための[セットアップ](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)方法については、[UWP のドキュメント](https://docs.microsoft.com/windows/uwp/)を参照してください。
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>新しい Azure Mobile App バックエンドの作成
 
@@ -73,9 +75,9 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 ## <a name="next-steps"></a>次の手順
 
 * [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-   ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
+  ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
 * [アプリへのプッシュ通知の追加](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-   アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
+  アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
 * [アプリのオフライン同期の有効化](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
   モバイル アプリ バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
 

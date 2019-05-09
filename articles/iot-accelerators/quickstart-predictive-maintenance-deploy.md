@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604339"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183358"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>クイック スタート:コネクテッド デバイスの予測メンテナンス分析を実行するクラウドベースのソリューションを試す
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、**[Visual Studio Enterprise]** と **[米国東部]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
 
-**[ソリューションの作成]** をクリックして、デプロイを開始します。 このプロセスを実行するには、少なくとも 5 分かかります。
+**[作成]** をクリックして、デプロイを開始します。 このプロセスを実行するには、少なくとも 5 分かかります。
 
 ![予測メンテナンス ソリューションの詳細](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -50,9 +50,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure サブスクリプションへのデプロイが完了すると、ソリューション タイルに緑色のチェックマークと "**準備完了**" のメッセージが表示されます。 これで、予測メンテナンス ソリューション アクセラレータ ダッシュボードにサインインすることができます。
 
-**[プロビジョニングされたソリューション]** ページで、新しい予測メンテナンス ソリューション アクセラレータをクリックします。 表示されるパネルで、ソリューション アクセラレータに関する情報を確認できます。 **[ソリューション ダッシュボード]** を選択して、予測メンテナンス ソリューション アクセラレータを表示します。
+**[プロビジョニングされたソリューション]** ページで、新しい予測メンテナンス ソリューション アクセラレータをクリックします。
 
-![ソリューション パネル](./media/quickstart-predictive-maintenance-deploy/solutionpanel.png)
+![ソリューション パネル](./media/quickstart-predictive-maintenance-deploy/solution.png)
+
+ 表示されるページで、ソリューション アクセラレータに関する情報を確認できます。 **[Go to your solution accelerator]\(ソリューション アクセラレータに移動\)** を選択して、予測メンテナンス ソリューション アクセラレータを表示します。
+
+![ソリューション パネル](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
 **[同意]** をクリックしてアクセス許可の要求を受け入れると、お使いのブラウザーに予測メンテナンス ソリューションのダッシュボードが表示されます。
 

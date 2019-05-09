@@ -6,16 +6,15 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: baf2f2ed3487bbc8b680a54d86b42d27d76a0ba9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 193d0b25276b90f6047943ded83f2000dd4d3436
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957244"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775715"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する
 
@@ -33,9 +32,9 @@ Bing Local Business Search API では、`localCircularView` または `localMapV
 
 完全なクエリ:
 
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localCircularView=47.6421,-122.13715,5000&appid=0123456789ABCDEF&mkt=en-us&form=monitr
-````
+```
 
 ## <a name="localmapview"></a>localMapView
 
@@ -45,9 +44,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restauran
 
 完全なクエリ:
 
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 - [Local Business Search (Java) のクイック スタート](quickstarts/local-search-java-quickstart.md)

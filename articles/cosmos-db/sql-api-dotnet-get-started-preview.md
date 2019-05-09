@@ -1,20 +1,19 @@
 ---
 title: .NET コンソール アプリケーションをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する (SDK バージョン 3 プレビュー)
 description: SQL API を使用してオンライン データベースと C# コンソール アプリケーションを作成するチュートリアル。
-keywords: NoSQL チュートリアル, オンライン データベース, C# コンソール アプリケーション
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 139d7a13b9f6ce6132bffb798aa41b207ebf7929
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a942f91dfa03eea2d9dc14b4b44e2ef5ee57c1ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317413"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078637"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>.NET コンソール アプリケーションをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する (SDK バージョン 3 プレビュー)
 
@@ -62,14 +61,14 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 1. コンピューターで **Visual Studio 2017** を開きます。
 1. **[ファイル]** メニューで、**[新規]**、**[プロジェクト]** の順に選択します。
 1. **[新しいプロジェクト]** ダイアログで、**[Visual C#]** / **[コンソール アプリ (.NET Framework)]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。
-    ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
+    ![[新しいプロジェクト] ウィンドウのスクリーンショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
 1. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
     
-    ![プロジェクトの右クリック メニューのスクリーン ショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
+    ![プロジェクトの右クリック メニューのスクリーンショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
 1. **[NuGet]** タブの **[参照]** をクリックし、検索ボックスに「**Microsoft.Azure.Cosmos**」と入力します。 プレビューを検索できるように、必ず *[プレリリースを含める]*  を選択してください。
 1. 結果で **Microsoft.Azure.Cosmos** を探し、**[インストール]** をクリックします。
    Azure Cosmos DB SQL API クライアント ライブラリのパッケージ ID は [Microsoft Azure Cosmos DB クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) です。
-   ![Azure Cosmos DB クライアント SDK を見つける NuGet メニューのスクリーン ショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
+   ![Azure Cosmos DB クライアント SDK を見つけるための NuGet メニューのスクリーンショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
     ソリューションの変更の確認に関するメッセージが表示されたら、**[OK]** をクリックします。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** をクリックします。
 
@@ -77,14 +76,16 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 ## <a id="Connect"></a>手順 3: Azure Cosmos DB アカウントに接続する
 1. まず、**Program.cs** ファイルで、C# アプリケーションの先頭にある参照を、以下の参照で置き換えます。
-    ```csharp
-    using System;
-    using System.Threading.Tasks;
-    using System.Configuration;
-    using Microsoft.Azure.Cosmos;
-    using System.Collections.Generic;
-    using System.Net;
-    ```
+
+   ```csharp
+   using System;
+   using System.Threading.Tasks;
+   using System.Configuration;
+   using Microsoft.Azure.Cosmos;
+   using System.Collections.Generic;
+   using System.Net;
+   ```
+
 1. 次に、パブリック クラス ``Program`` に次の定数と変数を追加します。
     ```csharp
     public class Program
@@ -297,7 +298,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
     ```csharp
     /*
         Create the container if it does not exist. 
-        Specifiy "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
+        Specify "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
     */
     private async Task CreateContainer()
     {
@@ -319,20 +320,20 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
         //ADD THIS PART TO YOUR CODE
         await this.CreateContainer();
     }
+    ```
+   **F5** キーを押してアプリケーションを実行します。
 
-Select **F5** to run your application.
+お疲れさまでした。 これで、Azure Cosmos DB コンテナーが作成されました。  
 
-Congratulations! You have successfully created an Azure Cosmos DB container.  
+## <a id="CreateDoc"></a>手順 6: コンテナーに項目を追加する
+項目は、**CosmosItems** クラスの [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) 関数を使用して作成できます。 SQL API を使用すると、項目はドキュメントとして投影されます。これは、ユーザー定義の (任意の) JSON コンテンツです。 これで、Azure Cosmos DB コンテナーに項目を挿入できます。
 
-## <a id="CreateDoc"></a>Step 6: Add items to the container
-An item can be created by using the [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) function of the **CosmosItems** class. When using the SQL API, items are projected as documents, which are user-defined (arbitrary) JSON content. You can now insert an item into your Azure Cosmos DB container.
+まず、この例の Azure Cosmos DB 内に格納するオブジェクトの **Family** クラスを作成する必要があります。 さらに、**Family** 内で使用するサブクラスとして、**Parent**、**Child**、**Pet**、**Address** を作成します。 ドキュメントには、JSON で **id** としてシリアル化される **Id** プロパティが必要であることに注意してください。 
+1. **Ctrl + Shift + A** キーを押して **[新しい項目の追加]** ダイアログを開きます。 新しいクラス **Family.cs** をプロジェクトに追加します。 
 
-First, we need to create a **Family** class that will represent objects stored within Azure Cosmos DB in this sample. We will also create **Parent**, **Child**, **Pet**, **Address** subclasses that are used within **Family**. Note that documents must have an **Id** property serialized as **id** in JSON. 
-1. Select **Ctrl+Shift+A** to open the **Add New Item** dialog. Add a new class **Family.cs** to your project. 
+    ![プロジェクトに新しい Family.cs クラスを追加する画面のスクリーン ショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
 
-    ![Screen shot of adding a new Family.cs class into the project](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
-
-1. Copy and paste the **Family**, **Parent**, **Child**, **Pet**, and **Address** class into **Family.cs**. 
+1. **Family**、**Parent**、**Child**、**Pet**、および **Address** クラスをコピーして **Family.cs** に貼り付けます。 
     ```csharp
     using Newtonsoft.Json;
 
@@ -597,15 +598,15 @@ Azure Cosmos DB では、各コレクションに格納された JSON ドキュ�
         //ADD THIS PART TO YOUR CODE
         await this.ReplaceFamilyItem();
     }
+    ```
+   **F5** キーを押してアプリケーションを実行します。
 
-Select **F5** to run your application.
+お疲れさまでした。 これで、Azure Cosmos DB 項目が置換されました。
 
-Congratulations! You have successfully replaced an Azure Cosmos DB item.
+## <a id="DeleteDocument"></a>手順 9: アイテムを削除する
+ここでは、Azure Cosmos DB 内の項目を削除します。
 
-## <a id="DeleteDocument"></a>Step 9: Delete item
-Now, we will delete an item in Azure Cosmos DB.
-
-1. Copy and paste the **DeleteFamilyItem** method below your **ReplaceFamilyItem** method.
+1. **DeleteFamilyItem** メソッドをコピーして、**ReplaceFamilyItem** メソッドの下に貼り付けます。
     ```csharp
     /*
     Delete an item in the container

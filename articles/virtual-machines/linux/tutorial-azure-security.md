@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ba23e9b8ac79a0a2a3899332bfc373665cf561af
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841168"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593303"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル: Azure Security Center を使用して Linux 仮想マシンを監視する
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Linux 仮想マシンを監視する
 
 Azure リソースのセキュリティの状態は、Azure Security Center で可視化することができます。 Security Center には、包括的なセキュリティ監視機能が備わっています。 他の方法では見過ごされてしまう可能性のある脅威も検出することが可能です。 このチュートリアルでは、Azure Security Center と次の方法について説明します。
  
@@ -65,7 +65,7 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択し、ご利用のサブスクリプションを選択します。
 2. **[セキュリティ ポリシー]** ブレードで **[セキュリティ ポリシー]** を選択します。 
-3. [セキュリティ ポリシー - セキュリティ ポリシー] ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
+3. **[セキュリティ ポリシー - セキュリティ ポリシー]** ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
 4. 設定の選択が完了したら、ブレードの上部にある **[保存]** を選択します。 
 
 ![固有のポリシー](./media/tutorial-azure-security/unique-policy.png)

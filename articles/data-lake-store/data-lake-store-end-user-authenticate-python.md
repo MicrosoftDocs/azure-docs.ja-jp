@@ -1,22 +1,22 @@
 ---
-title: 'エンドユーザー認証: Azure Active Directory を使用した Python と Azure Data Lake Storage Gen1 | Microsoft Docs'
+title: 'エンドユーザー認証: Python から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
 description: Python と Azure Active Directory を使用した Azure Data Lake Storage Gen1 によるエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 1ba7dbd9436a15989564a806a7c8f586c01e5243
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: 8b72604d7e736230911d0a0987b88d372be4ddf3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128071"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58881281"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 による Python を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Python を使用して Data Lake Storage Gen1 を操作するには、3 つの�
 
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールなどが含まれています。
 * `azure-mgmt-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)をご覧ください。
-* `azure-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 ファイルシステム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](http://azure-datalake-store.readthedocs.io/en/latest/)をご覧ください。
+* `azure-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 ファイルシステム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://azure-datalake-store.readthedocs.io/en/latest/)をご覧ください。
 
 モジュールをインストールするには、次のコマンドを使用します。
 

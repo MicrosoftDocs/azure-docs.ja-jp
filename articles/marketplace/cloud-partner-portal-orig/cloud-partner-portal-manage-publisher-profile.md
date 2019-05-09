@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8459866aa192f2364ae52d0d5d68eace693e127e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c73c846db4b22d8c19ccdaa2ec99a3fe7fdadf78
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832685"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076707"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>'Azure Marketplace' と 'AppSource' の発行元プロファイルを管理する
 
@@ -51,6 +51,6 @@ ms.locfileid: "52832685"
 >[!NOTE]
 >有料のマーケットプレイス SKU の発行には、デベロッパー センター アカウントの登録が必須です。
 
-[デベロッパー センター アカウント](~/articles/marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)を持っていない場合は、アカウントを作成できます。 その後、Cloud パートナー ポータルで所有者として登録済みの電子メール アドレスをご利用のプランに追加します。 所有者は、**ユーザー**セクションから、発行プロファイルへの登録済み電子メール アドレスの追加のみが可能です。 次に、同じ電子メール アドレスを使用してポータルにサインインし、デベロッパー センター アカウントをリンクします。
+[デベロッパー センター アカウント](./cloud-partner-portal-dev-center-accounts-registration.md)を持っていない場合は、アカウントを作成できます。 その後、Cloud パートナー ポータルで所有者として登録済みの電子メール アドレスをご利用のプランに追加します。 所有者は、**ユーザー**セクションから、発行プロファイルへの登録済み電子メール アドレスの追加のみが可能です。 次に、同じ電子メール アドレスを使用してポータルにサインインし、デベロッパー センター アカウントをリンクします。
 
 ![発行元プロファイルの詳細 - 発行元プロファイルの説明](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

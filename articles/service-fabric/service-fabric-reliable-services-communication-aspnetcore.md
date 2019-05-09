@@ -4,7 +4,7 @@ description: ステートレス リライアブル サービスおよびステ�
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 8aa4668d-cbb6-4225-bd2d-ab5925a868f2
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: eb020dfd52140375778cf22c6b70e715a7422761
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 5a4b7514005da9e9a998dba014fa0ea6c014397a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310251"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59268519"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric リライアブル サービスでの ASP.NET Core
 
@@ -62,7 +62,7 @@ Service Fabric サービスと ASP.NET をゲスト実行可能ファイルと�
 `Microsoft.ServiceFabric.AspNetCore.*` NuGet パッケージの Kestrel と HttpSys の `ICommunicationListener` 実装は使用パターンが類似していますが、実行されるアクションは各 Web サーバーに応じて多少異なります。 
 
 どちらの通信リスナーも、次の引数を受け取るコンストラクターを提供します。
- - **`ServiceContext serviceContext`**: 実行中のサービスに関する情報を含む `ServiceContext` オブジェクト。
+ - **`ServiceContext serviceContext`**:実行中のサービスに関する情報を含む `ServiceContext` オブジェクト。
  - **`string endpointName`**: ServiceManifest.xml の `Endpoint` 構成の名前。 2 つの通信リスナーが異なるのは主にこの部分です。HttpSys では `Endpoint` 構成が**必要**ですが、Kestrel では必要ありません。
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: `IWebHost` を作成して返すために実装するラムダ。 これにより、ASP.NET Core アプリケーションで通常行う方法で `IWebHost` を構成することができます。 ラムダによって URL が提供されます。この URL は、使用した Service Fabric 統合オプションと提供した `Endpoint` 構成に応じて生成されます。 Web サーバーを起動するために、この URL を変更することも、そのまま使用することもできます。
 
@@ -333,6 +333,123 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
 この構成では、`KestrelCommunicationListener` により、アプリケーション ポートの範囲から未使用のポートが自動的に選択されます。
+
+## <a name="service-fabric-configuration-provider"></a>Service Fabric 構成プロバイダー
+ASP.NET Core でのアプリの構成には、構成プロバイダーで確立したキーと値のペアを使用する必要があります。ASP.NET Core の一般的な構成のサポートの詳細については、「[ASP.NET Core の構成](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/)」を参照してください。
+
+このセクションでは、`Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet パッケージをインポートして、ASP.NET Core の構成に Service Fabric 構成プロバイダーを統合する方法について説明します。
+
+### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration 起動の拡張機能
+`Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet パッケージをインポートしたら、`IConfigurationBuilder` に対し `Microsoft.ServiceFabric.AspNetCore.Configuration` 名前空間に、**AddServiceFabricConfiguration** 拡張機能で ASP.NET Core 構成 API に Service Fabric 構成ソースを登録する必要があります。
+
+```csharp
+using Microsoft.ServiceFabric.AspNetCore.Configuration;
+
+public Startup(IHostingEnvironment env)
+{
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+        .AddServiceFabricConfiguration() // Add Service Fabric configuration settings.
+        .AddEnvironmentVariables();
+    Configuration = builder.Build();
+}
+
+public IConfigurationRoot Configuration { get; }
+```
+
+これで、他のアプリケーション設定と同様に ASP.NET Core サービスが Service Fabric 構成設定にアクセスできるようになります。 たとえば、このオプションのパターンを使用すると、厳密に型指定されたオブジェクトに設定を読み込むことができます。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<MyOptions>(Configuration);  // Strongly typed configuration object.
+    services.AddMvc();
+}
+```
+### <a name="default-key-mapping"></a>既定のキー マッピング
+Service Fabric 構成プロバイダーには、次の関数を使用し、パッケージ名、セクション名、プロパティ名を組み合わせて構成する asp.net core の構成キーが既定で含まれています。
+```csharp
+$"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
+```
+
+たとえば、次の内容の `MyConfigPackage` という名前の構成パッケージがある場合、構成値は ASP.NET Core `IConfiguration` で、キー *MyConfigPackage:MyConfigSection:MyParameter* を介して使用可能になります。
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
+  <Section Name="MyConfigSection">
+    <Parameter Name="MyParameter" Value="Value1" />
+  </Section>  
+</Settings>
+```
+### <a name="service-fabric-configuration-options"></a>Service Fabric の構成オプション
+Service Fabric 構成プロバイダーでは、キー マッピングの既定の動作を変更する `ServiceFabricConfigurationOptions` もサポートしています。
+
+#### <a name="encrypted-settings"></a>暗号化された設定
+Service Fabric では設定の暗号化をサポートしており、Service Fabric 構成プロバイダーでもこれをサポートしています。 既定の原則に安全に従い、暗号化された設定は既定では暗号化解除されません。暗号化された値が ASP.NET Core `IConfiguration` に格納されます。 ただし、ASP.NET Core IConfiguration に格納する値を暗号化解除したい場合、次のように DecryptValue フラグを `AddServiceFabricConfiguration` 拡張機能で false に設定できます。
+
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    var builder = new ConfigurationBuilder()        
+        .AddServiceFabricConfiguration(activationContext, (options) => options.DecryptValue = true); // set flag to decrypt the value
+    Configuration = builder.Build();
+}
+```
+#### <a name="multiple-configuration-packages"></a>複数の構成パッケージ
+Service Fabric では複数の構成パッケージをサポートしています。 パッケージ名は既定で構成キーに含まれています。 `IncludePackageName` フラグを設定すると、既定の動作を変更できます。
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    var builder = new ConfigurationBuilder()        
+        // exclude package name from key.
+        .AddServiceFabricConfiguration(activationContext, (options) => options.IncludePackageName = false); 
+    Configuration = builder.Build();
+}
+```
+#### <a name="custom-key-mapping-value-extraction-and-data-population"></a>カスタム キー マッピング、値の抽出、およびデータ カタログの作成
+Service Fabric 構成プロバイダーでは、既定の動作を変更する上述の 2 つのフラグ以外にも、`ExtractKeyFunc` を使用したキー マッピングのカスタマイズ、および `ExtractValueFunc` を使用した値のカスタム抽出のより高度なシナリオもサポートしています。 Service Fabric 構成から ASP.NET Core 構成へデータを入力するプロセス全体を、`ConfigAction` を使用し変更することもできます。
+
+次の例では、データ入力をカスタマイズする方法を `ConfigAction` を使用して示しています。
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    
+    this.valueCount = 0;
+    this.sectionCount = 0;
+    var builder = new ConfigurationBuilder();
+    builder.AddServiceFabricConfiguration(activationContext, (options) =>
+        {
+            options.ConfigAction = (package, configData) =>
+            {
+                ILogger logger = new ConsoleLogger("Test", null, false);
+                logger.LogInformation($"Config Update for package {package.Path} started");
+
+                foreach (var section in package.Settings.Sections)
+                {
+                    this.sectionCount++;
+
+                    foreach (var param in section.Parameters)
+                    {
+                        configData[options.ExtractKeyFunc(section, param)] = options.ExtractValueFunc(section, param);
+                        this.valueCount++;
+                    }
+                }
+
+                logger.LogInformation($"Config Update for package {package.Path} finished");
+            };
+        });
+  Configuration = builder.Build();
+}
+```
+### <a name="configuration-update"></a>構成の更新
+Service Fabric 構成プロバイダーでは、構成の更新もサポートしており、ASP.NET Core `IOptionsMonitor` を使用して変更通知を受信したり、`IOptionsSnapshot` を使用して構成データを再読み込みすることができます。 詳細については、[ASP.NET Core のオプション](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options)に関するページを参照してください。
+
+これは既定でサポートされており、構成の更新の有効化には、コードを記述する必要はありません。
 
 ## <a name="scenarios-and-configurations"></a>シナリオと構成
 このセクションでは、次のシナリオについて説明すると共に、適切に動作するサービスを実現するうえで必要な Web サーバー、ポート構成、Service Fabric 統合オプション、およびその他の設定について、推奨される組み合わせを示します。

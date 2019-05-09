@@ -2,21 +2,22 @@
 title: アプリケーションに対するユーザーの同意を構成する - Azure Active Directory | Microsoft Docs
 description: ユーザーがアプリケーションのアクセス許可に同意する方法を管理する方法について説明します。 管理者の同意を付与することでユーザー エクスペリエンスを簡素化できます。 これらの方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 991199747f51f379ee6f3efe8009ab9166c33ac7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d35f8b440fe748f91c9e01003fe83a3a5343c8df
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832008"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203728"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する
 ユーザーがアプリケーションのアクセス許可に同意する方法を構成する方法について説明します。 管理者の同意を付与することでユーザー エクスペリエンスを簡素化できます。 この記事では、ユーザーの同意を構成するさまざまな方法を紹介します。 この方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。 
@@ -26,6 +27,8 @@ ms.locfileid: "52832008"
 ## <a name="prerequisites"></a>前提条件
 
 管理者の同意を付与するには、全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者としてサインインする必要があります。
+
+アプリケーションへのアクセスを制限するには、ユーザーの割り当てが必要で、その後、アプリケーションにユーザーまたはグループを割り当てる必要があります。  詳細については、[ユーザーとグループの割り当て方法](methods-for-assigning-users-and-groups.md)に関するページを参照してください。
 
 ## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>Azure portal でエンタープライズ アプリに管理者の同意を付与する
 

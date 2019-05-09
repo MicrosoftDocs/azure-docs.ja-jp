@@ -1,226 +1,205 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Teamwork.com の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Teamwork.com の統合 | Microsoft Docs
 description: Azure Active Directory と Teamwork.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/04/2017
+ms.topic: tutorial
+ms.date: 08-04-2019
 ms.author: jeedes
-ms.openlocfilehash: 6be2c9a17e719fb53ab257af77605c49ffea9e86
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4b0c6fc9ed196a1b3ddd3d8e67887e2340ddbcda
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437476"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563601"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>チュートリアル: Azure Active Directory と Teamwork.com の統合
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>チュートリアル:Azure Active Directory と Teamwork.com の統合
 
 このチュートリアルでは、Teamwork.com と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Teamwork.com と Azure AD の統合には、次の利点があります。
 
-- Teamwork.com にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで Teamwork.com に自動的にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Teamwork.com にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Teamwork.com に自動的にサインイン (シングル サインオン) するように設定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Teamwork.com と Azure AD の統合を構成するには、以下が必要です。
 
-- Azure AD サブスクリプション
-- Teamwork.com でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* Teamwork.com でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Teamwork.com の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Teamwork.com では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-teamworkcom-from-the-gallery"></a>ギャラリーからの Teamwork.com の追加
+
 Azure AD への Teamwork.com の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Teamwork.com を追加する必要があります。
 
 **ギャラリーから Teamwork.com を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[新しいアプリケーション] ボタン][3]
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. 検索ボックスに「**Teamwork.com**」と入力し、結果パネルで **Teamwork.com** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![結果一覧の Teamwork.com](./media/teamwork-tutorial/tutorial_teamwork_addfromgallery.png)
+4. 検索ボックスに「**Teamwork.com**」と入力し、結果パネルで **Teamwork.com** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+
+    ![結果一覧の Teamwork.com](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Teamwork.com で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンが機能するには、Azure AD ユーザーに対応する Teamwork.com ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Teamwork.com の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-Teamwork.com で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Teamwork.com で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Teamwork.com 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Teamwork.com で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Teamwork.com テスト ユーザーの作成](#create-a-teamworkcom-test-user)** - Teamwork.com で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[Teamwork.com のシングル サインオンの構成](#configure-teamworkcom-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Teamwork.com テスト ユーザーの作成](#create-teamworkcom-test-user)** - Teamwork.com で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Teamwork.com アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Teamwork.com で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Teamwork.com で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **Teamwork.com** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Teamwork.com** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/teamwork-tutorial/tutorial_teamwork_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-1. **[Teamwork.com のドメインと URL]** セクションで、次の手順を実行します。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[Teamwork.com のドメインと URL] のシングル サインオン情報](./media/teamwork-tutorial/tutorial_teamwork_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    a. **[サインオン URL]** ボックスに、`https://<company name>.teamwork.com` のパターンを使用して URL を入力します。
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    b. **[識別子]** ボックスに次の URL を入力します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    |||
+    ![[Teamwork.com のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<company name>.teamwork.com`
+
+    b. **[識別子 (エンティティ ID)]** ボックスに、URL として次のように入力します: 
+
+    | | |
     |-|-|
     | `https://teamwork.com/saml`|
     | `https://eu.teamwork.com/saml`|
 
-    > [!NOTE] 
-    > このサインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Teamwork.com サポート チーム](mailto:support@teamwork.com)にお問い合わせください。 
+    > [!NOTE]
+    > このサインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Teamwork.com サポート チーム](mailto:support@teamwork.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](./media/teamwork-tutorial/tutorial_teamwork_certificate.png) 
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-1. **[保存]** ボタンをクリックします。
+6. **[Teamwork.com のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/teamwork-tutorial/tutorial_general_400.png)
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-1. **Teamwork.com** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Teamwork.com サポート チーム](mailto:support@teamwork.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+    a. ログイン URL
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-teamworkcom-single-sign-on"></a>Teamwork.com のシングルサインオンを構成する
+
+**Teamwork.com** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Teamwork.com サポート チーム](mailto:support@teamwork.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/teamwork-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/teamwork-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/teamwork-tutorial/create_aaduser_03.png)
-
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/teamwork-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="create-a-teamworkcom-test-user"></a>Teamwork.com テスト ユーザーの作成
-
-このセクションでは、Teamwork.com で Britta Simon というユーザーを作成します。 [Teamwork.com サポート チーム](mailto:support@teamwork.com)と連携し、Teamwork.com プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Teamwork.com へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Teamwork.com]** の順に選択します。
 
-**Teamwork.com に Britta Simon を割り当てるには、次の手順に従います。**
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で **[Teamwork.com]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![アプリケーションの一覧の Teamwork.com リンク](common/all-applications.png)
 
-1. アプリケーションの一覧で **[Teamwork.com]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の Teamwork.com リンク](./media/teamwork-tutorial/tutorial_teamwork_app.png)  
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+### <a name="create-teamworkcom-test-user"></a>Teamwork.com テスト ユーザーを作成する
 
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションでは、Teamwork.com で Britta Simon というユーザーを作成します。 [Teamwork.com サポート チーム](mailto:support@teamwork.com)と連携し、Teamwork.com プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Teamwork.com のタイルをクリックすると、Teamwork.com アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネル上で [Teamwork.com] タイルをクリックすると、SSO を設定した Teamwork.com に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/teamwork-tutorial/tutorial_general_01.png
-[2]: ./media/teamwork-tutorial/tutorial_general_02.png
-[3]: ./media/teamwork-tutorial/tutorial_general_03.png
-[4]: ./media/teamwork-tutorial/tutorial_general_04.png
-
-[100]: ./media/teamwork-tutorial/tutorial_general_100.png
-
-[200]: ./media/teamwork-tutorial/tutorial_general_200.png
-[201]: ./media/teamwork-tutorial/tutorial_general_201.png
-[202]: ./media/teamwork-tutorial/tutorial_general_202.png
-[203]: ./media/teamwork-tutorial/tutorial_general_203.png
-
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -4,6 +4,7 @@ description: この記事では、Azure Traffic Manager の地理的ルーティ
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1609daa4edbc3db9384941d575c141faaa799fb6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: f033f8e8e686165febdd2262953b2aa871686a12
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138244"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609236"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>地理的トラフィック ルーティング方法で Azure Traffic Manager によって使用される国/リージョン階層
 
@@ -98,7 +99,7 @@ ms.locfileid: "50138244"
 
         - ME(モンテネグロ)
 
-        - MK(マケドニア、旧ユーゴスラビア共和国)
+        - MK(北マケドニア)
 
         - MT(マルタ)
 
@@ -127,6 +128,7 @@ ms.locfileid: "50138244"
         - SM(サンマリノ)
 
         - UA(ウクライナ)
+            - クリミア地域
 
         - VA(バチカン市国)
 

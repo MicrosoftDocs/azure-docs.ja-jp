@@ -12,13 +12,13 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: 86120e65ad6a3b7fab2a5db78a338bed0e277cb8
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 02/12/2019
+ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105796"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>クイック スタート:Azure portal の SQL クエリ エディターを使用した接続とデータの照会
 
@@ -28,7 +28,15 @@ SQL クエリ エディターは、お使いの Azure SQL Database または Azu
 
 このチュートリアルを完了するには、次のものが必要です。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+
+  || 単一データベース |
+  |:--- |:--- |
+  | Create| [ポータル](sql-database-single-database-get-started.md) | 
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | 
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| 
+  |||
 
 > [!NOTE]
 > SQL Server のファイアウォール設定で、**[Azure サービスへのアクセスを許可する]** オプションが **[オン]** に設定されていることを確認します。 このオプションにより、SQL クエリ エディターはデータベースおよびデータ ウェアハウスにアクセスできるようになります。
@@ -57,8 +65,8 @@ SQL クエリ エディターは、お使いの Azure SQL Database または Azu
 Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azure portal と SQL データベースにサインインできます。 お使いの SQL Server の AD 管理者を構成するには、次の手順に従います。
 
 > [!NOTE]
-* 電子メール アカウント (たとえば、outlook.com、gmail.com、yahoo.com など) は、AD 管理者としてまだサポートされていません。 Azure AD でネイティブに作成されたユーザーか、Azure AD にフェデレーションされたユーザーのどちらかを必ず選択します。
-* Azure AD 管理者のサインインは、2 要素認証が有効になっているアカウントでは機能しません。
+> * 電子メール アカウント (たとえば、outlook.com、gmail.com、yahoo.com など) は、AD 管理者としてまだサポートされていません。 Azure AD でネイティブに作成されたユーザーか、Azure AD にフェデレーションされたユーザーのどちらかを必ず選択します。
+> * Azure AD 管理者のサインインは、2 要素認証が有効になっているアカウントでは機能しません。
 
 1. 左側のメニューから **[すべてのリソース]** を選択してから、お使いの SQL Server を選択します。
 

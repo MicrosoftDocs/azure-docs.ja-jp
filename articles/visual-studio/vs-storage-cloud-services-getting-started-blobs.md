@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: d7f832164a41c2107a2cb9fdca3530b1f5d785cb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f1ef06e0275954343c548d0f6937b9c6fbcfd18
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253603"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012121"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス プロジェクト)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -32,7 +32,7 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 * プログラムを使用して BLOB を操作する方法の詳細については、「 [.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
 * Azure Storage の全般的な情報については、「 [Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。
 * Azure Cloud Services の全般的な情報については、「 [Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/)」を参照してください。
-* ASP.NET アプリケーションのプログラミングの詳細については、 [ASP.NET](http://www.asp.net)の Web サイトを参照してください。
+* ASP.NET アプリケーションのプログラミングの詳細については、 [ASP.NET](https://www.asp.net)の Web サイトを参照してください。
 
 ## <a name="access-blob-containers-in-code"></a>コードで BLOB コンテナーにアクセスする
 クラウド サービス プロジェクトでプログラムを使用して BLOB にアクセスするには、次の項目を追加する必要があります (存在しない場合)。

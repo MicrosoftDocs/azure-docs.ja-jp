@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Kantega SSO for Bitbucket の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Kantega SSO for Bitbucket の統合 | Microsoft Docs
 description: Azure Active Directory と Kantega SSO for Bitbucket の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c41cdaaf-0441-493c-94c7-569615b7b1ab
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 6dee106d688d9f9a6ebc6dc26caa6a46db3f6850
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7f24c211e057447782c7fab596c9be73106c552
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823896"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165300"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bitbucket の統合
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>チュートリアル:Azure Active Directory と Kantega SSO for Bitbucket の統合
 
 このチュートリアルでは、Kantega SSO for Bitbucket と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -218,7 +219,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
     c. **[Save]** をクリックします。  
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -250,7 +251,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-kantega-sso-for-bitbucket-test-user"></a>Kantega SSO for Bitbucket テスト ユーザーの作成
 
@@ -282,7 +283,7 @@ Azure AD ユーザーが Bitbucket にログインできるようにするには
     
     c. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
-    d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。  
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。  
 
     e. **[Confirm Password]\(パスワードの確認\)** ボックスに、ユーザーのパスワードを再入力します。
 

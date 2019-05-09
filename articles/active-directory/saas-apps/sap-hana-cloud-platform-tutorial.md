@@ -4,22 +4,23 @@ description: Azure Active Directory と SAP Cloud Platform の間でシングル
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ea4c3928c7bb3ee8250fd7b69ff9646a698fa3b
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b345656b30a9bb182c097a4c9e18d71a293bf420
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809082"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852551"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル:Azure Active Directory と SAP Cloud Platform の統合
 
@@ -252,7 +253,7 @@ SAP Cloud Platform アカウントでアプリケーションの 1 つ以上の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -317,7 +318,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

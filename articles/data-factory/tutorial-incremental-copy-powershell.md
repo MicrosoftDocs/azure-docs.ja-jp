@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 09ba81e4d895afeccf41617039732ae3e72147d7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 568b00007f2c95a5a63c236863f0c599c6b6f86f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972424"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992304"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
@@ -59,9 +58,12 @@ ms.locfileid: "52972424"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * **Azure SQL データベース**。 ソース データ ストアとして使うデータベースです。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を参照してください。
 * **Azure Storage**。 シンク データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合の作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。 adftutorial という名前のコンテナーを作成します。 
-* **Azure PowerShell**。 「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-azurerm-ps)」に記載されている手順に従います。
+* **Azure PowerShell**。 「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-Az-ps)」に記載されている手順に従います。
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL データベースにデータ ソース テーブルを作成する
 1. SQL Server Management Studio を開きます。 **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
@@ -132,7 +134,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次のコマンドを実行して、SQL データベースにストアド プロシージャを作成します。
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -161,7 +163,7 @@ END
 3. Azure リソース グループを作成するには、次のコマンドを実行します。 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
     リソース グループが既に存在する場合は、上書きされないようにすることができます。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
 
@@ -173,10 +175,10 @@ END
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
     ```
-5. データ ファクトリを作成するには、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
+5. データ ファクトリを作成するには、次の **Set-AzDataFactoryV2** コマンドレットを実行します。 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
     ```
 
 以下の点に注意してください。
@@ -213,10 +215,10 @@ END
     ```
 2. PowerShell で ADF フォルダーに切り替えます。
 
-3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureStorageLinkedService を作成します。 次の例では、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡しています。 
+3. **Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureStorageLinkedService を作成します。 次の例では、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡しています。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
     出力例を次に示します。
@@ -247,10 +249,10 @@ END
     ```
 2. PowerShell で ADF フォルダーに切り替えます。
 
-3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureSQLDatabaseLinkedService を作成します。 
+3. **Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureSQLDatabaseLinkedService を作成します。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
     出力例を次に示します。
@@ -288,10 +290,10 @@ END
     ```
     このチュートリアルでは、data_source_table というテーブル名を使用します。 別の名前のテーブルを使用する場合は、その名前に置き換えてください。
 
-2. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット SourceDataset を作成します。
+2. **Set-AzDataFactoryV2Dataset** コマンドレットを実行して、データセット SourceDataset を作成します。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     このコマンドレットの出力例を次に示します。
@@ -331,10 +333,10 @@ END
     > [!IMPORTANT]
     > このスニペットは、BLOB ストレージに adftutorial という名前の BLOB コンテナーがあることを前提としています。 このコンテナーが存在しない場合は作成するか、既存のコンテナーの名前を設定してください。 出力フォルダー `incrementalcopy` は、コンテナーに存在しない場合は自動的に作成されます。 このチュートリアルでは、`@CONCAT('Incremental-', pipeline().RunId, '.txt')` という式を使ってファイル名が動的に生成されます。
 
-2. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット SinkDataset を作成します。
+2. **Set-AzDataFactoryV2Dataset** コマンドレットを実行して、データセット SinkDataset を作成します。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     このコマンドレットの出力例を次に示します。
@@ -367,10 +369,10 @@ END
         }
     }    
     ```
-2.  **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット WatermarkDataset を作成します。
+2.  **Set-AzDataFactoryV2Dataset** コマンドレットを実行して、データセット WatermarkDataset を作成します。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
     ```
 
     このコマンドレットの出力例を次に示します。
@@ -471,7 +473,7 @@ END
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
     
-                        "storedProcedureName": "sp_write_watermark",
+                        "storedProcedureName": "usp_write_watermark",
                         "storedProcedureParameters": {
                             "LastModifiedtime": {"value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}", "type": "datetime" },
                             "TableName":  { "value":"@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}", "type":"String"}
@@ -499,10 +501,10 @@ END
     ```
     
 
-2. **Set-AzureRmDataFactoryV2Pipeline** コマンドレットを実行して、パイプライン IncrementalCopyPipeline を作成します。
+2. **Set-AzDataFactoryV2Pipeline** コマンドレットを実行して、パイプライン IncrementalCopyPipeline を作成します。
     
    ```powershell
-   Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
+   Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
    出力例を次に示します。 
@@ -517,15 +519,15 @@ END
  
 ## <a name="run-the-pipeline"></a>パイプラインを実行する
 
-1. **Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って IncrementalCopyPipeline パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
+1. **Invoke-AzDataFactoryV2Pipeline** コマンドレットを使って IncrementalCopyPipeline パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
+    $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ``` 
-2. **Get-AzureRmDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、*-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
+2. **Get-AzDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、*-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
 
     ```powershell
-    Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
+    Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
     出力例を次に示します。
@@ -610,7 +612,7 @@ END
  
     TableName | WatermarkValue
     --------- | --------------
-    data_source_table   2017-09-05  8:06:00.000
+    data_source_table | 2017-09-05  8:06:00.000
 
 ### <a name="insert-data-into-the-data-source-store-to-verify-delta-data-loading"></a>データ ソース ストアにデータを挿入して差分データの読み込みを検証する
 
@@ -637,15 +639,15 @@ END
     6 | newdata | 2017-09-06 02:23:00.000
     7 | newdata | 2017-09-07 09:01:00.000
     ```
-2. 再度、**Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って IncrementalCopyPipeline パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
+2. **Invoke-AzDataFactoryV2Pipeline** コマンドレットを使って IncrementalCopyPipeline パイプラインを再実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
+    $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. **Get-AzureRmDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、*-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
+3. **Get-AzDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、*-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
 
     ```powershell
-    Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
+    Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
     出力例を次に示します。

@@ -1,6 +1,6 @@
 ---
-title: MySQL を使用して PHP アプリをビルドする - Azure App Service | Microsoft Docs
-description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。
+title: PHP (Laravel) と MySQL - Azure App Service | Microsoft Docs
+description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。 このチュートリアルでは Laravel を使用します。
 services: app-service\web
 documentationcenter: php
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d26f51d05ef97e15c47183e87f44aecec247723c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eddccc9897380e3ff47de49771a617bf6cacc407
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722330"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680504"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>チュートリアル:Azure で PHP と MySQL アプリを構築する
 
@@ -209,7 +209,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 > [アプリで使用する送信 IP アドレスのみを使用する](overview-inbound-outbound-ips.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
-Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](http://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>
@@ -361,7 +361,7 @@ Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/ap
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-PHP [getenv](http://www.php.net/manual/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
+PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
 
 ```php
 'mysql' => [
@@ -394,7 +394,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>仮想アプリケーション パスを設定する
 
-アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく_パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
+アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく _パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
 
 Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;appname>_ プレースホルダーを置き換えます。
 

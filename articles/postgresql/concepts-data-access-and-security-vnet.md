@@ -1,20 +1,17 @@
 ---
-title: Azure Database for PostgreSQL サーバーの vnet サービス エンドポイントの概要 | Microsoft Docs
-description: Azure Database for PostgreSQL サーバーで vnet サービス エンドポイントがどのように機能するかについて説明します。
-services: postgresql
-author: mbolz
+title: Azure Database for PostgreSQL サーバーの vnet サービス エンドポイントの概要
+description: Azure Database for PostgreSQL サーバーで VNET サービス エンドポイントがどのように機能するかについて説明します。
+author: bolzmj
 ms.author: mbolz
-manager: jhubbard
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 5a0181a1430e9de690fe4b4a48aa298db4c024e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433667"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009193"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の Virtual Network のサービス エンドポイントとルールを使用する
 
@@ -26,12 +23,13 @@ ms.locfileid: "53433667"
 
 > [!NOTE]
 > この機能は、Azure Database for PostgreSQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure パブリック クラウドのすべてのリージョンで利用できます。
+> VNet ピアリングでは、トラフィックがサービス エンドポイントを含む共通 VNet Gateway を通過して、ピアにフローするようになっている場合は、ACL/VNet ルールを作成して、Gateway VNet 内の Azure Virtual Machines が Azure Database for PostgreSQL サーバーにアクセスできるようにしてください。
 
 <a name="anch-terminology-and-description-82f" />
 
 ## <a name="terminology-and-description"></a>用語と説明
 
-**仮想ネットワーク:** ユーザーは、Azure サブスクリプションに仮想ネットワークを関連付けることができます。
+**仮想ネットワーク:** ご自分の Azure サブスクリプションに仮想ネットワークを関連付けることができます。
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
@@ -108,6 +106,8 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 ## <a name="limitations"></a>制限事項
 
 Azure Database for PostgreSQL の場合、仮想ネットワーク ルール機能には以下のような制限事項があります。
+
+- Web アプリは、VNet/サブネット内のプライベート IP にマップできます。 サービス エンドポイントが特定の VNet/サブネットから有効化されている場合でも、Web アプリからサーバーへの接続には、VNet/サブネットのソースではなく、Azure のパブリック IP ソースが使用されます。 サーバーに VNet ファイアウォール規則がある場合、Web アプリからそのサーバーへの接続を有効にするには、サーバーで Azure サービスにサーバーへのアクセスを許可する必要があります。
 
 - Azure Database for PostgreSQL のファイアウォールでは、各仮想ネットワーク ルールはサブネットを参照します。 これらの参照されるサブネットはすべて、Azure Database for PostgreSQL がホストされているのと同じ地理的リージョンでホストされている必要があります。
 

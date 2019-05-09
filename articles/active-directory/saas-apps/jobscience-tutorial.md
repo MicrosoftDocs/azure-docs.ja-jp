@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Jobscience の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Jobscience の統合 | Microsoft Docs
 description: Azure Active Directory と Jobscience の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 77282dcc-bbe2-4728-953d-adb4ab6a713b
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 92ff93f9836b1ab8157602569c8171f81b976d6f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8199f106c234e216a0982dc9e51413ccf30ae93a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422673"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199529"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>チュートリアル: Azure Active Directory と Jobscience の統合
+# <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>チュートリアル:Azure Active Directory と Jobscience の統合
 
 このチュートリアルでは、Jobscience と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -46,7 +47,7 @@ Azure AD と Jobscience の統合を構成するには、次のものが必要�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、1 か月の試用版を[無料試用版の提供](https://azure.microsoft.com/pricing/free-trial/)のページで入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -88,7 +89,7 @@ Jobscience で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユ�
 
 Jobscience で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Jobscience テスト ユーザーの作成](#creating-a-jobscience-test-user)** - Jobscience で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -165,7 +166,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Entity Id]\(エンティティ ID\)** ボックスに、「`https://salesforce-jobscience.com`」と入力します。
 
-    d. **[参照]** をクリックして、Azure AD の証明書をアップロードします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[参照]** をクリックして、Azure AD の証明書をアップロードします。
 
     e. **[SAML ID の種類]** として、**[アサーションにはユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
 
@@ -196,7 +197,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
     前の手順で作成した SSO プロファイルをクリックします。 このページには、会社のシングル サインオン URL が表示されます (例: [https://companyname.my.salesforce.com?so=companyid](https://companyname.my.salesforce.com?so=companyid))。    
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -228,7 +229,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-jobscience-test-user"></a>Jobscience テスト ユーザーの作成
 
@@ -261,7 +262,7 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
    
    c. **[Alias]\(別名\)** ボックスに、ユーザーの別名を入力します (この例では brittas)。
 
-   d. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
    e. **[User Name]\(ユーザー名\)** ボックスに、ユーザーのユーザー名 (Brittasimon@contoso.com など) を入力します。
 

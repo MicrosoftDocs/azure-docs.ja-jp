@@ -16,20 +16,22 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: fc0046f16222fe20a7b11901690acccaae382a6c
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d0c38b69d8cb2fda85a85fd27f0a5b26da51b699
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650122"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106207"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>SQL データベースへの App Service アプリの接続
 
 このシナリオでは、Azure SQL データベースと App Service アプリの作成方法について説明します。 作成後、アプリの設定を使用して SQL データベースをアプリにリンクします。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
 ## <a name="sample-script"></a>サンプル スクリプト
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
 
@@ -38,22 +40,22 @@ ms.locfileid: "53650122"
 サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、App Service アプリ、すべての関連リソースなどが削除できます。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | App Service プランを作成します。 |
-| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | App Service アプリを作成します。 |
-| [New-AzureRMSQLServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | SQL Database サーバーを作成します。 |
-| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | SQL Database サーバーのファイアウォール規則を作成します。 |
-| [New-AzureRMSQLDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | データベースまたはエラスティック データベースを作成します。 |
-| [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | App Service アプリの構成を変更します。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | App Service アプリを作成します。 |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | SQL Database サーバーを作成します。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | SQL Database サーバーのファイアウォール規則を作成します。 |
+| [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | データベースまたはエラスティック データベースを作成します。 |
+| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | App Service アプリの構成を変更します。 |
 
 ## <a name="next-steps"></a>次の手順
 

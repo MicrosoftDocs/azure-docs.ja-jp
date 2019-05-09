@@ -1,27 +1,21 @@
 ---
-title: 回帰モデルで回答を予測する - Azure Machine Learning Studio | Microsoft Docs
+title: 回帰モデルで回答を予測する
+titleSuffix: Azure Machine Learning Studio
 description: 初心者向けデータ サイエン ビデオ 4 で、単純な回帰モデルを作成して価格を予測する方法。 線形回帰とターゲット データが含まれます。
-keywords: モデルを作成する,単純なモデル,価格の予測,単純な回帰モデル
 services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
 ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: e2c49b9da215c038cfa47689f11da22b2dffc2dc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.subservice: studio
+ms.topic: conceptual
+author: sdgilley
+ms.author: sgilley
+ms.custom: seodec18
+ms.date: 03/22/2019
+ms.openlocfilehash: 9165e51d07cf97756408c7f73720931abe067bb2
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253591"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371752"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
 ## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4:初心者向けデータ サイエンス シリーズ
@@ -37,8 +31,8 @@ ms.locfileid: "53253591"
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
 *"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
-* ビデオ 1:[データ サイエンスが回答する 5 つの質問](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
-* ビデオ 2:[データ サイエンス用のデータの準備はお済みですか?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+* ビデオ 1: [データ サイエンスが回答する 5 つの質問](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+* ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
 * ビデオ 3:[データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
 * ビデオ 4:単純なモデルで回答を予測する
 * ビデオ 5:[他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
@@ -65,7 +59,7 @@ ms.locfileid: "53253591"
 * さらに、ご覧のとおり、質問に回答するのに **十分な** データがあります。
 
 ## <a name="ask-a-sharp-question"></a>シャープな質問をする
-ここで、"1.35 カラットのダイヤモンドを購入するにはいくらかかりますか" とシャープに質問します。
+ここで、厳しい質問を投げかけます。"1.35 カラットのダイヤモンドを購入するにはいくらかかるか?"
 
 作成したリストには 1.35 カラットのダイヤモンドはありません。そこで、残りのデータを使用して、質問に対する回答を得ます。
 
@@ -96,7 +90,7 @@ ms.locfileid: "53253591"
 "*どの程度か*" という質問に回答しようとしているため、これを "*回帰*" と呼びます。 また、直線を使用しているため、これは *"線形回帰"* です。
 
 ## <a name="use-the-model-to-find-the-answer"></a>モデルを使用して回答を見つける
-では、作成したモデルに "1.35 カラットのダイヤモンドの価格はいくらですか" と質問します。
+これでモデルが用意されたため、質問を出します。1.35 カラットのダイヤモンドはいくらかかるか?
 
 この質問に回答するには、1.35 カラットに見当を付けて垂直方向に直線を描画します。 モデルの線と交差する位置で、水平方向の線をドルの軸に対して見当を付けます。 ちょうど 10,000 に当たります。 できました! これが答えです。1.35 カラットのダイヤモンドは約 10,000 ドルします。
 
@@ -130,8 +124,8 @@ ms.locfileid: "53253591"
 
 ここでは、線形回帰を実行する方法について説明し、データを使用して予測しました。
 
-Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオも必ずご覧ください。
+Microsoft Azure Machine Learning Studio の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](what-is-machine-learning.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

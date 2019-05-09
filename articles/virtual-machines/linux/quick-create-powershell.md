@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: df6f99bfe9f1ae7b79f0f382fdee4fe4f1578bad
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 46ab5cae7514adfc4ec31ad88f5445a09e3c0e6a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407539"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55975298"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート: PowerShell を使用して Azure に Linux 仮想マシンを作成する
+# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Linux 仮想マシンを作成する
 
 Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使って、Linux 仮想マシン (VM) を Azure に展開する方法を示します。 このクイック スタートでは、Canonical の Ubuntu 16.04 LTS マーケットプレース イメージを使用します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
@@ -34,8 +34,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
-
-PowerShell をインストールしてローカルで使用する場合、このクイック スタートでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-ssh-key-pair"></a>SSH キー ペアの作成
 
@@ -53,10 +51,10 @@ Cloud Shell を使用して SSH キーの組を作成した場合、[Cloud Shell
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースの展開と管理に使用する論理コンテナーです。
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースの展開と管理に使用する論理コンテナーです。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
 ## <a name="create-virtual-network-resources"></a>仮想ネットワークのリソースを作成する
@@ -65,12 +63,12 @@ New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ```azurepowershell-interactive
 # Create a subnet configuration
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name "mySubnet" `
   -AddressPrefix 192.168.1.0/24
 
 # Create a virtual network
-$vnet = New-AzureRmVirtualNetwork `
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -Name "myVNET" `
@@ -78,7 +76,7 @@ $vnet = New-AzureRmVirtualNetwork `
   -Subnet $subnetConfig
 
 # Create a public IP address and specify a DNS name
-$pip = New-AzureRmPublicIpAddress `
+$pip = New-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -AllocationMethod Static `
@@ -90,7 +88,7 @@ Azure ネットワーク セキュリティ グループとトラフィック規
 
 ```azurepowershell-interactive
 # Create an inbound network security group rule for port 22
-$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig `
+$nsgRuleSSH = New-AzNetworkSecurityRuleConfig `
   -Name "myNetworkSecurityGroupRuleSSH"  `
   -Protocol "Tcp" `
   -Direction "Inbound" `
@@ -102,7 +100,7 @@ $nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig `
   -Access "Allow"
 
 # Create an inbound network security group rule for port 80
-$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig `
+$nsgRuleWeb = New-AzNetworkSecurityRuleConfig `
   -Name "myNetworkSecurityGroupRuleWWW"  `
   -Protocol "Tcp" `
   -Direction "Inbound" `
@@ -114,18 +112,18 @@ $nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig `
   -Access "Allow"
 
 # Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -Name "myNetworkSecurityGroup" `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して、仮想ネットワーク インターフェイス カード (NIC) を作成します。 仮想 NIC は、VM をサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
+[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想ネットワーク インターフェイス カード (NIC) を作成します。 仮想 NIC は、VM をサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface `
+$nic = New-AzNetworkInterface `
   -Name "myNic" `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
@@ -146,34 +144,34 @@ $securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword)
 
 # Create a virtual machine configuration
-$vmConfig = New-AzureRmVMConfig `
+$vmConfig = New-AzVMConfig `
   -VMName "myVM" `
   -VMSize "Standard_D1" | `
-Set-AzureRmVMOperatingSystem `
+Set-AzVMOperatingSystem `
   -Linux `
   -ComputerName "myVM" `
   -Credential $cred `
   -DisablePasswordAuthentication | `
-Set-AzureRmVMSourceImage `
+Set-AzVMSourceImage `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
   -Skus "16.04-LTS" `
   -Version "latest" | `
-Add-AzureRmVMNetworkInterface `
+Add-AzVMNetworkInterface `
   -Id $nic.Id
 
 # Configure the SSH key
 $sshPublicKey = cat ~/.ssh/id_rsa.pub
-Add-AzureRmVMSshPublicKey `
+Add-AzVMSshPublicKey `
   -VM $vmconfig `
   -KeyData $sshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-これまでに定義した構成を組み合わせて、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) で仮想マシンを作成します。
+これまでに定義した構成を組み合わせて、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して仮想マシンを作成します。
 
 ```azurepowershell-interactive
-New-AzureRmVM `
+New-AzVM `
   -ResourceGroupName "myResourceGroup" `
   -Location eastus -VM $vmConfig
 ```
@@ -182,10 +180,10 @@ VM がデプロイされるまでに数分かかります。 デプロイが完�
 
 ## <a name="connect-to-the-vm"></a>VM に接続します
 
-パブリック IP アドレスを使用して VM との SSH 接続を作成します。 VM のパブリック IP アドレスを確認するには、[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使います。
+パブリック IP アドレスを使用して VM との SSH 接続を作成します。 VM のパブリック IP アドレスを確認するには、[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) コマンドレットを使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
+Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
 SSH キーの組を作成したときと同じ Bash シェル ([Azure Cloud Shell](https://shell.azure.com/bash) またはローカルの Bash シェルなど) を使用して、SSH 接続コマンドをシェルに貼り付け、SSH セッションを作成します。
@@ -217,10 +215,10 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドレットを使って、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name "myResourceGroup"
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>次の手順

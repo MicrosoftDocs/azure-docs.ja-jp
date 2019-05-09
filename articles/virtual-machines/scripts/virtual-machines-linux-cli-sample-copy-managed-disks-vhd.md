@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 66dcb8d38f8c469656d36ff1da1ac03f900069b2
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6252049c2258c391aa4483dd51ec0d9ee766bed0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583138"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727136"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLI を使用してストレージ アカウントにマネージド ディスクをエクスポート/コピーする
 
@@ -44,7 +44,7 @@ ms.locfileid: "53583138"
 | コマンド | メモ |
 |---|---|
 | [az ディスク アクセスの許可](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-grant-access) | 基盤となる VHD ファイルをストレージ アカウントにコピーするか、オンプレミスにダウンロードするために使用される、読み取り専用の SAS を生成します。  |
-| [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy#az_storage_blob_copy_start) | BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします |
+| [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: d29aac52948cddf9d7e274d28735e2c12143b5ca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 405fe71676de311ed7e59ea72798ff4fd2db0f62
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081423"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59280470"
 ---
 # <a name="run-a-notebook-slideshow"></a>ノートブックのスライドショーを実行する
 

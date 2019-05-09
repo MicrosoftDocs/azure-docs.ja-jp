@@ -2,7 +2,7 @@
 title: Durable Functions での永続的オーケストレーション - Azure
 description: Azure Functions の Durable Functions 拡張機能を使用して永続的オーケストレーションを実装する方法について説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7e92b4a10036ceffd2b777e8ce75d58615209fe6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c4adffd457338ffebfd1c9c7727023f82088dc57
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340201"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607740"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 

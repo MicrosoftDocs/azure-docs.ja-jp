@@ -1,33 +1,32 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API の機能のサポートを使用する
 description: MongoDB 3.4 に対して Azure Cosmos DB の MongoDB 用 API で提供される機能サポートについて説明します。
-services: cosmos-db
-author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: bb25cf6ed60317dd5d7266e2f4750c2bb9f4859d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: 168b5cdf4f65992bad886352921e9aaff6d5b09c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790285"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885789"
 ---
-# <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>MongoDB の機能と構文に対する Azure Cosmos DB の MongoDB 用 API のサポート
+# <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB 用 API: サポートされる機能と構文
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の MongoDB 用 API との通信は、オープン ソースで公開されている任意の MongoDB クライアント [ドライバー](https://docs.mongodb.org/ecosystem/drivers)を使って行うことができます。 Azure Cosmos DB の MongoDB 用 API では、MongoDB [ワイヤ プロトコル](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)に従うことにより、既存のクライアント ドライバーを利用できます。
 
 Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB API を活用できます。[グローバル配信](distribute-data-globally.md)、[自動シャーディング](partition-data.md)、可用性や待ち時間の保証、すべてのフィールドの自動インデックス作成、保存時の暗号化、バックアップを始めとする Cosmos DB のエンタープライズ機能も、すべて利用できます。
 
-## <a name="mongodb-protocol-support"></a>MongoDB のプロトコル サポート
+## <a name="protocol-support"></a>プロトコルのサポート
 
-Azure Cosmos DB の MongoDB 用 API は、既定で MongoDB Server バージョン **3.2** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 現在、MongoDB バージョン **3.4** で追加された機能やクエリ演算子は、プレビュー機能として使用できます。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。
+Azure Cosmos DB の MongoDB 用 API は、既定で MongoDB サーバー バージョン **3.2** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 現在、MongoDB バージョン **3.4** で追加された機能やクエリ演算子は、プレビュー機能として使用できます。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。
 
 また、現在、[MongoDB 集計パイプライン](#aggregation-pipeline)も、別個のプレビュー機能として使用できます。
 
-## <a name="mongodb-query-language-support"></a>MongoDB クエリ言語のサポート
+## <a name="query-language-support"></a>クエリ言語のサポート
 
 Azure Cosmos DB の MongoDB 用 API では、MongoDB クエリ言語のコンストラクトが包括的にサポートされています。 以下に、現在サポートされている操作、演算子、ステージ、コマンド、およびオプションの詳細な一覧を示します。
 
@@ -215,22 +214,22 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 
 operator | 例 |
 --- | --- |
-$eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |  | -
-$gt | ``` { "Elevation": { $gt: 4000 } } ``` |  | -
-$gte | ``` { "Elevation": { $gte: 4392 } } ``` |  | -
-$lt | ``` { "Elevation": { $lt: 5000 } } ``` |  | -
-$lte | ``` { "Elevation": { $lte: 5000 } } ``` | | -
-$ne | ``` { "Elevation": { $ne: 1 } } ``` |  | -
-$in | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |  | -
-$nin | ``` { "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } } ``` | | -
-$or | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
-$and | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
-$not | ``` { "Elevation": { $not: { $gt: 5000 } } } ```|  | -
-$nor | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |  | -
-$exists | ``` { "Status": { $exists: true } } ```|  | -
-$type | ``` { "Status": { $type: "string" } } ```|  | -
-$mod | ``` { "Elevation": { $mod: [ 4, 0 ] } } ``` |  | -
-$regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|  | -
+$eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
+$gt | `{ "Elevation": { $gt: 4000 } }` |  | -
+$gte | `{ "Elevation": { $gte: 4392 } }` |  | -
+$lt | `{ "Elevation": { $lt: 5000 } }` |  | -
+$lte | `{ "Elevation": { $lte: 5000 } }` | | -
+$ne | `{ "Elevation": { $ne: 1 } }` |  | -
+$in | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |  | -
+$nin | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` | | -
+$or | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
+$and | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
+$not | `{ "Elevation": { $not: { $gt: 5000 } } }`|  | -
+$nor | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |  | -
+$exists | `{ "Status": { $exists: true } }`|  | -
+$type | `{ "Status": { $type: "string" } }`|  | -
+$mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
+$regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 
 ### <a name="notes"></a>メモ
 
@@ -268,19 +267,22 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 
 ### <a name="geospatial-operators"></a>地理空間演算子
 
-operator | 例 
---- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | [はい]
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | [はい]
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | [はい]
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | [はい]
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | [はい]
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | [はい]
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | [はい]
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | [はい]
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | [はい]
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | [はい]
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | [はい]
+operator | 例 | |
+--- | --- | --- |
+$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | はい |
+$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
+$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
+$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | はい |
+$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
+$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | はい |
+$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | はい |
+$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | はい |
+$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | はい |
+$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | はい |
+$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
+
+## <a name="sort-operations"></a>並べ替え操作
+`findOneAndUpdate` 操作を使用する場合、単一フィールドに対する並べ替え操作はサポートされていますが、複数フィールドに対する並べ替え操作はサポートされていません。
 
 ## <a name="additional-operators"></a>その他の演算子
 
@@ -334,8 +336,8 @@ Cosmos DB では、自動のサーバー側シャーディングがサポート�
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Cosmos DB の MongoDB 用 API と [Studio 3T](mongodb-mongochef.md) を併用する方法を学びます。
-- Azure Cosmos DB の MongoDB 用 API と [Robo 3T](mongodb-robomongo.md) を併用する方法を学びます。
+- Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
+- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学習します。
 - Azure Cosmos DB の MongoDB 用 API が使用されている MongoDB の[サンプル](mongodb-samples.md)を調べます。
 
-<sup>注:この記事は、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明するものです。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は、MongoDB, Inc. とは関係ありません。</sup>
+<sup>注:この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は MongoDB, Inc. には所属していません。</sup>

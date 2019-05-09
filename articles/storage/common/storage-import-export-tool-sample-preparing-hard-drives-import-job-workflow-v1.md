@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527290"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311715"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 このトピックでは、インポート ジョブ用のドライブを準備するプロセスの手順について説明します。  
@@ -31,12 +31,12 @@ ms.locfileid: "39527290"
   
 |ソース|インポート先の仮想ディレクトリまたは BLOB|  
 |------------|-------------------------------------------|  
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovie.ISO|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|https:\//mystorageaccount.blob.core.windows.net/music|  
   
-このマッピングにより、`H:\Video\Drama\GreatMovie.mov` ファイルが `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov` BLOB にインポートされます。  
+このマッピングにより、ファイル `H:\Video\Drama\GreatMovie.mov` は BLOB https:\//mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov にインポートされます。  
   
 次に、必要なハード ドライブの数を決定するために、データのサイズを計算します。  
   
@@ -44,13 +44,13 @@ ms.locfileid: "39527290"
   
 この例では、3-TB のハード ドライブが 2 つあれば十分です。 ただし、ソース ディレクトリ `H:\Video` には 5 TB のデータがあり、1 つのハード ドライブの容量は 3 TB しかないため、Microsoft Azure Import/Export ツールを実行する前に、`H:\Video` を `H:\Video1` と `H:\Video2` の 2 つの小さなディレクトリに分割する必要があります。 この手順により、次のソース ディレクトリが作成されます。  
   
-|Location|サイズ|インポート先の仮想ディレクトリまたは BLOB|  
+|Location|Size|インポート先の仮想ディレクトリまたは BLOB|  
 |--------------|----------|-------------------------------------------|  
-|H:\Video1|2.5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Video2|2.5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|30 GB|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|10 GB|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video1|2.5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Video2|2.5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|30 GB|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovies.ISO|25 GB|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|10 GB|https:\//mystorageaccount.blob.core.windows.net/music|  
   
  `H:\Video` ディレクトリが 2 つのディレクトリに分割されても、これらのディレクトリはストレージ アカウント内の同じインポート先仮想ディレクトリを参照します。 これにより、すべてのビデオ ファイルがストレージ アカウント内の 1 つの `video` コンテナーに保持されます。  
   
@@ -67,7 +67,7 @@ ms.locfileid: "39527290"
   
 さらに、すべてのファイルの次のメタデータを設定できます。  
   
--   **UploadMethod:** Windows Azure Import/Export サービス  
+-   **UploadMethod:** Microsoft Azure Import/Export サービス  
   
 -   **DataSetName:** SampleData  
   
@@ -169,4 +169,4 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 ## <a name="next-steps"></a>次の手順
 
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [頻繁に使用するコマンドのクイック リファレンス](../storage-import-export-tool-quick-reference-v1.md) 
+* [頻繁に使用するコマンドのクイック リファレンス](../storage-import-export-tool-quick-reference-v1.md) 

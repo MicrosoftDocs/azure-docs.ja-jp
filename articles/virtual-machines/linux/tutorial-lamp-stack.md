@@ -3,7 +3,7 @@ title: チュートリアル - Azure 内の Linux 仮想マシンに LAMP を展
 description: このチュートリアルでは、Azure 内の Linux 仮想マシンに LAMP スタックをインストールする方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.author: danlep
-ms.openlocfilehash: 5caed6fba607cb93a6168bded7531bc8bf63b9da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 01/30/2019
+ms.author: cynthn
+ms.openlocfilehash: c69c7055e420ffa64e547f5c3fe53d997cf90168
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970687"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753709"
 ---
-# <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure 内の Linux 仮想マシンに LAMP Web サーバーをインストールする
+# <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに LAMP Web サーバーをインストールする
 
 この記事では、Apache Web サーバー、MySQL、PHP (LAMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 NGINX Web サーバーを実行する場合は、[LEMP スタック](tutorial-lemp-stack.md)チュートリアルを参照してください。 LAMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -50,15 +50,12 @@ CLI をローカルにインストールして使用する場合、このチュ�
 sudo apt update && sudo apt install lamp-server^
 ```
 
-
-パッケージやその他の依存関係をインストールすることが求められます。 メッセージが表示されたら、MySQL のルート パスワードを設定し、Enter キーを押して続行します。 残りの指示に従います。 このプロセスにより、MySQL で PHP を使用するための必要最小限の PHP 拡張機能がインストールされます。 
-
-![MySQL ルート パスワード ページ][1]
+パッケージやその他の依存関係をインストールすることが求められます。 このプロセスにより、MySQL で PHP を使用するための必要最小限の PHP 拡張機能がインストールされます。  
 
 ## <a name="verify-installation-and-configuration"></a>インストールと構成を確認する
 
 
-### <a name="apache"></a>Apache
+### <a name="verify-apache"></a>Apache を確認する
 
 次のコマンドで Apache のバージョンを確認します。
 ```bash
@@ -70,7 +67,7 @@ Apache がインストールされ、VM に対しポート 80 が開かれると
 ![Apache の既定のページ][3]
 
 
-### <a name="mysql"></a>MySQL
+### <a name="verify-and-secure-mysql"></a>MySQL を確認してセキュリティで保護する
 
 次のコマンドを使用して MySQL のバージョンを確認します (大文字の `V` パラメーターに注意)。
 
@@ -78,23 +75,23 @@ Apache がインストールされ、VM に対しポート 80 が開かれると
 mysql -V
 ```
 
-MySQL のインストールのセキュリティ保護を強化するには、`mysql_secure_installation` スクリプトを実行します。 一時的なサーバーをセットアップするだけの場合は、このステップを省略できます。
+MySQL のインストールのセキュリティ保護を強化 (ルートのパスワードを設定するなど) するには、`mysql_secure_installation` スクリプトを実行します。 
 
 ```bash
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
-MySQL のルート パスワードを入力し、環境のセキュリティ設定を構成します。
+必要に応じてValidate Password プラグインを設定することもできます (推奨)。 次に、MySQL のルート ユーザーに使用するパスワードを設定し、その他、環境のセキュリティ設定を構成します。 質問にはすべて "Y" (はい) で答えることをお勧めします。
 
 MySQL の機能 (MySQL データベースの作成、ユーザーの追加、構成設定の変更) を試したい場合は、MySQL にログインします。 このチュートリアルを実行するには、このステップは必要ありません。
 
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 ```
 
 完了したら「`\q`」と入力して、mysql プロンプトを終了します。
 
-### <a name="php"></a>PHP
+### <a name="verify-php"></a>PHP を確認する
 
 次のコマンドで PHP のバージョンを確認します。
 
@@ -114,7 +111,6 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure に LAMP サーバーを展開しました。 以下の方法について学習しました。
@@ -131,6 +127,5 @@ SSL 証明書を使用して Web サーバーをセキュリティ保護する�
 > [!div class="nextstepaction"]
 > [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
 
-[1]: ./media/tutorial-lamp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

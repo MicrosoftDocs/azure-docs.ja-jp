@@ -1,25 +1,24 @@
 ---
-title: Azure Key Vault のキー、シークレット、証明書について
+title: Azure Key Vault のキー、シークレット、証明書について - Azure Key Vault
 description: キー、シークレット、証明書に関する Azure Key Vault の REST インターフェイスと開発者の詳細の概要です。
 services: key-vault
 documentationcenter: ''
-author: BryanLa
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2018
-ms.author: bryanla
-ms.openlocfilehash: 6d158f14afa305dd547392722abb5f81380de31f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.date: 01/07/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384787"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842568"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -36,14 +35,14 @@ Key Vault の一般的な情報については、「[Azure Key Vault とは](/az
 
 以下のセクションでは、Key Vault サービスの実装に該当する一般的な情報を提供します。
 
-###  <a name="supporting-standards"></a>標準のサポート
+### <a name="supporting-standards"></a>標準のサポート
 
 JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryption (JOSE) の仕様は、重要な背景情報です。  
 
--   [JSON Web Key (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [JSON Web Encryption (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [JSON Web Signature (JWS)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>データの種類
 
@@ -60,7 +59,7 @@ JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryp
 -   **Identity** - Azure Active Directory (AAD) からの ID です。  
 -   **IntDate** - 1970-01-01T0:0:0Z UTC から指定された UTC 日時までの秒数を表す JSON 10 進値です。 一般的および UTC 固有の日付/時刻に関する詳細については、RFC3339 をご覧ください。  
 
-###  <a name="objects-identifiers-and-versioning"></a>オブジェクト、識別子、バージョン管理
+### <a name="objects-identifiers-and-versioning"></a>オブジェクト、識別子、バージョン管理
 
 Key Vault に格納されるオブジェクトは、オブジェクトの新しいインスタンスが作成されるたびにバージョン管理されます。 各バージョンには、一意の識別子と URL が割り当てられます。 オブジェクトが最初に作成されるときに、オブジェクトに一意のバージョン識別子が指定され、オブジェクトの現在のバージョンとしてマークされます。 同じオブジェクト名の新しいインスタンスが作成されると、新しいオブジェクトに一意のバージョン識別子が与えられ、現在のバージョンになります。  
 
@@ -85,7 +84,7 @@ Key Vault 内のオブジェクトは、URL を使用して一意に識別され
 
 ## <a name="key-vault-keys"></a>Key Vault のキー
 
-###  <a name="keys-and-key-types"></a>キーとキーの種類
+### <a name="keys-and-key-types"></a>キーとキーの種類
 
 Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして表されます。 基本の JWK/JWA の仕様は、Key Vault の実装に固有のキーの種類も有効にするように拡張されます。 たとえば、HSM ベンダー固有のパッケージを使用してキーをインポートすると、Key Vault HSM でのみ使用できるキーの安全なトランスポートが可能です。  
 
@@ -113,7 +112,7 @@ Key Vault が使う暗号化モジュールは、HSM でもソフトウェアで
 #### <a name="curve-types"></a>曲線の種類
 
 -   **P-256** - NIST 曲線 P-256。[DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) で定義されています。
--   **P-256K** - SEC 曲線 SECP256K1。「[SEC 2:Recommended Elliptic Curve Domain Parameters (SEC 2: 推奨される楕円曲線ドメイン パラメーター)](http://www.secg.org/sec2-v2.pdf)」で定義されています。
+-   **P-256K** - SEC 曲線 SECP256K1。「[SEC 2:Recommended Elliptic Curve Domain Parameters (SEC 2: 推奨される楕円曲線ドメイン パラメーター)](https://www.secg.org/sec2-v2.pdf)」で定義されています。
 -   **P-384** - NIST 曲線 P-384。[DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) で定義されています。
 -   **P-521** - NIST 曲線 P-521。[DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) で定義されています。
 
@@ -167,7 +166,7 @@ Key Vault では EXPORT 操作はサポートされていません。 キーが�
 
 ユーザーは、JWK オブジェクトの key_ops プロパティを使って、キー単位で、Key Vault がサポートする暗号化操作を制限できます。  
 
-JWK オブジェクトについて詳しくは、「[JSON Web Key (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)」をご覧ください。  
+JWK オブジェクトについて詳しくは、「[JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)」をご覧ください。  
 
 ###  <a name="key-attributes"></a>キーの属性
 
@@ -190,7 +189,7 @@ IntDate および他のデータ型について詳しくは、「[データ型](
 
 データ型について詳しくは、「[データ型](#data-types)」をご覧ください。
 
-他の使用可能な属性について詳しくは、「[JSON Web Key (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)」をご覧ください。
+他の使用可能な属性について詳しくは、「[JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)」をご覧ください。
 
 ### <a name="key-tags"></a>キーのタグ
 
@@ -335,7 +334,7 @@ Key Vault 証明書には次の属性があります。
 > [!Note] 
 > Key Vault 証明書の期限が切れると、アドレス指定可能なキーとシークレットは機能しなくなります。  
 
-#### <a name="tags"></a>タグ
+#### <a name="tags"></a>Tags
 
  キーとシークレットのタグに似た、クライアントによって指定されたキーと値のペアのディクショナリです。  
 
@@ -410,10 +409,10 @@ Key Vault では、異なる発行者プロバイダー構成で複数の発行�
 
 証明書のポリシーが自動更新に設定されている場合は、次のイベントで通知が送信されます。  
 
--   証明書更新の前
--   証明書更新の後。証明書が正常に更新されたかどうか、またはエラーが発生して証明書の手動更新が必要かどうかを示します。  
+- 証明書更新の前
+- 証明書更新の後。証明書が正常に更新されたかどうか、またはエラーが発生して証明書の手動更新が必要かどうかを示します。  
 
- 証明書のポリシーが手動更新に設定されている場合 (メールのみ)、証明書を更新する必要があるときに通知が送信されます。  
+  証明書のポリシーが手動更新に設定されている場合 (メールのみ)、証明書を更新する必要があるときに通知が送信されます。  
 
 ### <a name="certificate-access-control"></a>証明書のアクセス制御
 

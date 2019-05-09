@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 68a788205917e87469b432de435e296dcabc350c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 354ffb14eb95e7f09256f337ffea069cff14b226
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001687"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306563"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>チュートリアル:.NET で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法
 
@@ -102,7 +102,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンを作成する
 
-[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。
+[az vm create](/cli/azure/vm) コマンドで VM を作成します。
 
 次の例では、*myVM* という名前の VM を作成し、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 (*~/.ssh*) に配置されます。 代わりに特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
@@ -177,13 +177,6 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 ### <a name="set-up-desired-version-host-package-feed-based-on-operating-system"></a>オペレーティング システムに基づいて、目的のバージョンのホスト パッケージのフィードを設定します
 
 ```
-# Ubuntu 17.10
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-artful-prod artful main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
- 
-# Ubuntu 17.04
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-zesty-prod zesty main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
  
 # Ubuntu 16.04 / Linux Mint 18
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'

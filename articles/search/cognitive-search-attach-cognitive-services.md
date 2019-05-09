@@ -1,68 +1,98 @@
 ---
-title: Cognitive Services をスキルセットをアタッチする - Azure Search
-description: Cognitive Services オールインワン サブスクリプションをコグニティブ スキルセットにアタッチする手順
+title: Cognitive Services リソースをスキルセットにアタッチする - Azure Search
+description: Azure Search で Cognitive Services オールインワン サブスクリプションをコグニティブ エンリッチメント パイプラインにアタッチする手順。
 manager: cgronlun
-author: HeidiSteen
+author: LuisCabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7f604d1b94e51db11e6d6992b7f070d64ae869dd
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317238"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880417"
 ---
-# <a name="associate-cognitive-services-resource-with-a-skillset"></a>Cognitive Services リソースをスキルセットと関連付ける 
+# <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
+
+AI アルゴリズムは、Azure Search のインデックス作成操作での非構造化データの処理に使用される[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)を制御します。 これらのアルゴリズムは、画像分析および光学式文字認識 (OCR) 用の [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) やエンティティ認識、キー フレーズ抽出、その他のエンリッチメント用の [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) などの [Cognitive Services リソース](https://azure.microsoft.com/services/cognitive-services/)に基づきます。
+
+限られた数のドキュメントであれば無料で強化できます。また、有料の Cognitive Services リソースをアタッチすれば、さらに大きくて複雑なワークロードに対応できます。 この記事では、Cognitive Services リソースをコグニティブ スキルセットと関連付けることによって、[Azure Search のインデックス作成](search-what-is-an-index.md)の間にデータを充実させる方法について説明します。
+
+パイプラインが、Cognitive Services APIs と無関係なスキルで構成されている場合は、Cognitive Services リソースをアタッチする必要があります。 そうすることで、1 日あたりのエンリッチメントを少量に制限する **Free** リソースがオーバーライドされます。 Cognitive Services APIs にバインドされていないスキルの料金はかかりません。 これらのスキルには、[カスタム スキル](cognitive-search-create-custom-skill-example.md)、[テキスト マージャー](cognitive-search-skill-textmerger.md)、[テキスト スプリッター](cognitive-search-skill-textsplit.md)、[Shaper](cognitive-search-skill-shaper.md) などがあります。
 
 > [!NOTE]
-> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
+> 2018 年 12 月 21 日より、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができます。 それにより、スキルセットの実行に対して課金できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従来課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格はプレビュー価格で課金され、[Azure Search 価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> [組み込みコグニティブ スキル](cognitive-search-predefined-skills.md)の実行は、[Cognitive Services の従量制価格](https://azure.microsoft.com/pricing/details/cognitive-services)で課金されます。これは、タスクを直接実行した場合と同じ料金です。 画像の抽出は Azure Search の課金対象であり、現在はプレビュー価格で提供されています。 詳細については、「[Azure Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)」のページ、または「[請求体系について](search-sku-tier.md#how-billing-works)」を参照してください。
 
 
-コグニティブ検索では、Azure Search で検索できるように、データを抽出および拡充します。 抽出とエンリッチメントの手順を*コグニティブ スキル*と呼びます。 コンテンツのインデックス作成中に呼び出されるスキルのセットは、*スキルセット*で定義されています。 スキルセットでは、[定義済みのスキル](cognitive-search-predefined-skills.md)またはカスタム スキルを使用できます (詳細については、[カスタム スキルの作成例](cognitive-search-create-custom-skill-example.md)に関するページを参照してください)。
+## <a name="use-free-resources"></a>無料リソースを使用する
 
-この記事では、[Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) リソースをコグニティブ スキルセットに関連付ける方法について説明します。
+コグニティブ検索のチュートリアルとクイック スタートの演習を完了するため、制限された無料の処理オプションを使用することができます。 
 
-選択した Cognitive Services リソースにより、組み込みのコグニティブ スキルが強化されます。 このリソースは、課金目的でも使用されます。 組み込みのコグニティブ スキルを使用して実行したすべてのエンリッチメントは、選択した Cognitive Services リソースに対して課金されます。 これらの操作は、Cognitive Services リソースを使用して同じタスクを実行した場合と同じレートで課金されます。 「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)」を参照してください。
+> [!Important]
+> 2019 年 2 月 1 日からは、**無料 (制限付きのエンリッチメント)** は 1 日あたり 20 ドキュメントに制限されます。 
 
-## <a name="limits-when-no-cognitive-services-resource-is-selected"></a>Cognitive Services リソースが選択されていない場合の制限
-2019 年 2 月 1 日より、Cognitive Services サブスクリプションをスキルセットと関連付けない場合、無料でエンリッチできるドキュメントは少数 (1 日に 20 個のドキュメント) に限られます。 
+1. **データのインポート** ウィザードを開きます。
 
-## <a name="associating-a-cognitive-services-resource-with-a-new-skillset"></a>Cognitive Services リソースを新しいスキルセットと関連付ける
+   ![データのインポート コマンド](media/search-get-started-portal/import-data-cmd2.png "データのインポート コマンド")
 
-1. *[データのインポート]* エクスペリエンスの一環として、データ ソースに接続した後、*[認知検索を追加します]* (省略可能な手順) に移動します。 
+1. データ ソースを選択し、**[認知検索を追加します (省略可能)]** に進みます。 このウィザードの詳細な手順については、[ポータル ツールを使用したインポート、インデックス作成、クエリ](search-get-started-portal.md)に関する記事をご覧ください。
 
-1. *[Cognitive Services をアタッチする]* セクションを展開します。 これにより、Search Service と同じリージョンにあるすべての Cognitive Services リソースが表示されます。 
-![[Cognitive Services をアタッチする] を展開](./media/cognitive-search-attach-cognitive-services/attach1.png "[Cognitive Services をアタッチする] を展開")
+1. **[Cognitive Services をアタッチする]** を展開し、**[無料 (制限付きのエンリッチメント)]** を選択します。
 
-1. 既存の Cognitive Services リソースを選択するか、または *[Create a new Cognitive Services resource]\(新しい Cognitive Services リソースの作成\)* を選択します。 *[Free (Limited Enrichments)]/(無料 (制限付きエンリッチメント)/)* リソースを選択した場合は、少数のドキュメント (1 日に 20 個のドキュメント) のみを無料でエンリッチできます。 *[Create a new Cognitive Services resource]\(新しい Cognitive Services リソースの作成\)* をクリックした場合は、Cognitive Services リソースを作成するための新しいタブが開きます。 
+   ![[Cognitive Services をアタッチする] セクションを展開](./media/cognitive-search-attach-cognitive-services/attach1.png "[Cognitive Services をアタッチする] を展開")
 
-1. 新しいリソースを作成した場合は、*[更新]* をクリックして Cognitive Services リソースのリストを更新し、リソースを選択します。 
-![Cognitive Services リソースを選択](./media/cognitive-search-attach-cognitive-services/attach2.png "Cognitive Services リソースを選択")
+次の **[エンリッチメントの追加]** ステップに進みます。 ポータルで使用可能なスキルの説明については、「[手順 2:コグニティブ スキルを追加する](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline)」(コグニティブ検索クイック スタート) をご覧ください。
 
-1. この操作を完了したら、*[エンリッチメントの追加]* セクションを展開して、データに対して実行する特定のコグニティブ スキルを選択し、フローの残りの部分に進みます。
+## <a name="use-billable-resources"></a>課金対象のリソースを使用する
 
-## <a name="associating-a-cognitive-services-resource-with-an-existing-skillset"></a>Cognitive Services リソースを既存のスキルセットと関連付ける
+1 日のエンリッチメントが 20 を超えるワークロードでは、課金対象の Cognitive Services リソースをアタッチする必要があります。 
 
-1. [サービスの概要] ページで、選 *[スキルセット]* タブを選択します。![[スキルセット] タブ](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "[スキルセット] タブ")
+Cognitive Services APIs を呼び出すスキルに対してのみ課金されます。 [カスタム スキル](cognitive-search-create-custom-skill-example.md)、[テキスト マージャー](cognitive-search-skill-textmerger.md)、[テキスト スプリッター](cognitive-search-skill-textsplit.md)、[Shaper](cognitive-search-skill-shaper.md) スキルなどの API ベースでないスキルは課金されません。
 
-1. 変更するスキルセットを*クリックします*。 すると、スキルセットを編集するためのブレードが開きます。
+1. **データのインポート** ウィザードの **[Cognitive Services をアタッチする]** で、既存のリソースを選択するか、**[新しい Cognitive Services リソースを作成します]** をクリックします。
 
-1. 既存の Cognitive Services リソースを選択するか、または *[Create a new Cognitive Services resource]\(新しい Cognitive Services リソースの作成\)* を選択します。 *[Free (Limited Enrichments)]/(無料 (制限付きエンリッチメント)/)* リソースを選択した場合は、少数のドキュメント (1 日に 20 個のドキュメント) のみを無料でエンリッチできます。 *[Create a new Cognitive Services resource]\(新しい Cognitive Services リソースの作成\)* をクリックした場合は、Cognitive Services リソースを作成するための新しいタブが開きます。 <n/> 
-<img src="./media/cognitive-search-attach-cognitive-services/attach-existing2.png" width="350">
+1. **[新しい Cognitive Services リソースを作成します]** の場合は、新しいタブが開き、リソースを作成できます。 リソースに一意の名前を付けます。
 
-1. 新しいリソースを作成した場合は、*[更新]* をクリックして Cognitive Services リソースのリストを更新し、リソースを選択します。
-1. *[OK]* をクリックして変更を確認します。
+1. 新しい Cognitive Services リソースを作成する場合、お使いの Azure Search リソースと**同じリージョンを選択**します。
 
-## <a name="associating-a-cognitive-services-resource-programmatically"></a>Cognitive Services リソースをプログラムで関連付ける
+1. オールインワン価格レベル **S0** を選択します。 このレベルでは、コグニティブ検索の定義済みスキルの基になる Vision と Language の機能が提供されます。
 
-スキルセットをプログラムで定義する際には、`cognitiveServices` セクションを追加します。 このセクションには、スキルセットと関連付ける Cognitive Services リソースのキーのほか、@odata.type を含める必要があります。これは、"#Microsoft.Azure.Search.CognitiveServicesByKey" に設定する必要があります。 次の例に、このパターンを示します。
+    ![新しい Cognitive Services リソースの作成](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "新しい Cognitive Services リソースの作成")
+
+1. **[作成]** をクリックして、新しい Cognitive Services リソースをプロビジョニングします。 
+
+1. **データのインポート** ウィザードが含まれる前のタブに戻ります。 **[更新]** をクリックして Cognitive Services リソースを表示し、リソースを選択します。
+
+   ![Cognitive Services リソースを選択](./media/cognitive-search-attach-cognitive-services/attach2.png "Cognitive Services リソースを選択")
+
+1. **[エンリッチメントの追加]** セクションを展開して、データに対して実行する特定のコグニティブ スキルを選択し、フローの残りの部分に進みます。 ポータルで使用可能なスキルの説明については、「[手順 2:コグニティブ スキルを追加する](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline)」(コグニティブ検索クイック スタート) をご覧ください。
+
+## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>既存のスキルセットを Cognitive Services リソースにアタッチする
+
+既存のスキルがある場合は、新規または別の Cognitive Services リソースにアタッチできます。
+
+1. **[サービスの概要]** ページで、**[スキルセット]** をクリックします。
+
+   ![スキルセット タブ](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "スキルセット タブ")
+
+1. スキルセットの名前をクリックし、既存のリソースを選択するか、新しいリソースを作成します。 **[OK]** をクリックして変更を確認します。 
+
+   ![スキルセット リソースの一覧](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "スキルセット リソースの一覧")
+
+**[無料 (制限付きのエンリッチメント)]** は 1 日あたり 20 ドキュメントに制限されていること、および **[新しい Cognitive Services リソースを作成します]** は新しい課金対象のリソースをプロビジョニングするために使用することを思い出してください。 新しいリソースを作成した場合は、**[更新]** を選択して Cognitive Services リソースのリストを更新し、リソースを選択します。
+
+## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services をプログラムでアタッチする
+
+プログラムでスキルセットを定義するときは、`cognitiveServices` セクションをスキルセットに追加します。 このセクションで、スキルセットを関連付ける Cognitive Services リソースのキーを追加します。 リソースは Azure Search と同じリージョンに存在する必要があることを思い出してください。 `@odata.type` も追加し、それを `#Microsoft.Azure.Search.CognitiveServicesByKey` に設定します。 
+
+次の例は、このパターンを示しています。 定義の下部にある cognitiveServices セクションに注目してください
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
@@ -91,34 +121,33 @@ Content-Type: application/json
       }
     ],
     "cognitiveServices": {
-        "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey"
+        "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
         "description": "mycogsvcs",
-        "key": "your key goes here"
+        "key": "<your key goes here>"
     }
 }
 ```
-## <a name="example-estimating-the-cost-of-document-cracking-and-enrichment"></a>例:ドキュメント クラッキングおよびエンリッチメントのコストを見積もる
-特定の種類のドキュメントをエンリッチするのにかかるコストを見積もりたい場合があります。 次の演習は参考用ですが、役に立つ場合があります。
 
-1000 個の PDF があり、見積もり上、各ドキュメントが平均 6 ページで構成されているとします。 この演習では、ページごとに 1 つのイメージが含まれるとします。 また、平均で 1 ページあたり約 3,000 文字が含まれるとします。 
+## <a name="example-estimate-costs"></a>例:コストの見積もり
 
-ここで、エンリッチメント パイプラインの一環として、次の手順を実行すると仮定します。
-1. ドキュメント クラッキングの一環として、ドキュメントからコンテンツとイメージを抽出します。
-1. エンリッチメントの一環として、抽出した各ページに対して OCR を実行し、すべてのページのテキストを結合して、すべてのイメージの結合済みのテキスト内の各組織を抽出します。
+コグニティブ検索のインデックス作成に関連するコストを見積もるには、最初に、いくつかの値を得られるように平均的なドキュメントがどのようなものかを想定します。 たとえば、推定のため、次のような近似値を使用します。
 
-ここで、これらのドキュメントのインジェストにかかるコストを見積もってみましょう。
++ 1000 PDF
++ 各 6 ページ
++ 1 ページに 1 画像 (6000 画像)
++ 1 ページあたり 3000 文字
 
-1000 個のドキュメントの場合: 
+画像とテキストの抽出、画像の光学式文字認識 (OCR)、組織の名前付きエンティティ認識を含む各 PDF のドキュメント解読で構成されるパイプラインを想定します。 
 
-1. ドキュメント クラッキング。合計数 6,000 個のイメージが抽出されます。 1000 個のイメージを抽出するたびに $1 かかるとすると、コストは $6.00 になります。
+この演習では、トランザクションあたり最も高い価格を使用します。 段階的価格設定のため、実際のコストはもっと安い可能性があります。 「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services)」を参照してください。
 
-2. これらの 6,000 個の各イメージからテキストを抽出します。 英語では、OCR コグニティブ スキルでは最適なアルゴリズム (DescribeText) が使用されます。 1,000 個のイメージを分析するたびに $2.50 かかるとすると、この手順に対して 15.00 ドルが課金されることになります。
+1. テキストと画像のコンテンツを含むドキュメント解読の場合、現在、テキスト抽出は無料です。 6,000 個の画像については、抽出される 1,000 画像ごとに 1 ドルと想定して、このステップのコストは 6.00 ドルになります。
 
-3. エンティティの抽出では、ページごとに合計 3 つのテキスト レコード (各レコードは 1,000 文字) が含まれます。 3 つのテキスト レコード/ページ * 6,000 ページ = 18,000 個のテキスト レコードとなります。 1000 個のテキスト レコードごとに $2.00 かかるとすると、この手順のコストは $36.00 になります。
+2. 6,000 画像の英語での OCR については、OCR コグニティブ スキルでは最適なアルゴリズム (DescribeText) が使用されます。 1,000 個のイメージを分析するたびに $2.50 かかるとすると、この手順に対して $15.00 が課金されることになります。
 
-すべてを考え合わせると、示されたスキルセットを含むこの種の PDF ドキュメントを 1000 個インジェストするのに、$57.00 が課金されることになります。  この演習では、トランザクションあたりの最も高い価格を想定しているので、価格の変動によって価格が下がる可能性があります。 「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services)」を参照してください。
+3. エンティティの抽出では、ページごとに合計 3 つのテキスト レコードが含まれます。 各レコードは 1,000 文字です。 ページあたり 3 つのテキスト レコード * 6,000 ページ = 18,000 個のテキスト レコードとなります。 1,000 個のテキスト レコードごとに $2.00 かかるとすると、この手順のコストは $36.00 になります。
 
-
+すべてを考え合わせると、示されたスキルセットを含むこの種の PDF ドキュメントを 1,000 個取り込むために約 57.00 ドルが課金されることになります。 
 
 ## <a name="next-steps"></a>次の手順
 + [「Azure Search の価格」ページ](https://azure.microsoft.com/pricing/details/search/)

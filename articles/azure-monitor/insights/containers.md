@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics のコンテナー監視ソリューション | Microsoft Docs
-description: Log Analytics のコンテナー監視ソリューションを使用すると、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。
+title: Azure Monitor のコンテナー監視ソリューション | Microsoft Docs
+description: Azure Monitor のコンテナー監視ソリューションを使用すると、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,20 +11,22 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 6fd614a632945dbcc89c530df54b8416809029d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0a45c84b01cace7e14bd1a945617598c6295631e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194030"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524278"
 ---
-# <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
+# <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor のコンテナー監視ソリューション
 
 ![コンテナーのシンボル](./media/containers/containers-symbol.png)
 
-この記事では、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できる、Log Analytics のコンテナー監視ソリューションを設定して使用する方法について説明します。 Docker は、IT インフラストラクチャへのソフトウェアのデプロイを自動化するコンテナーを作成するために使用されるソフトウェア仮想化システムです。
+この記事では、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できる、Azure Monitor のコンテナー監視ソリューションを設定して使用する方法について説明します。 Docker は、IT インフラストラクチャへのソフトウェアのデプロイを自動化するコンテナーを作成するために使用されるソフトウェア仮想化システムです。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 このソリューションは、どのコンテナーが実行中か、何のコンテナー イメージが実行中か、コンテナーがどこで実行中かを表示します。 コンテナーで使用されるコマンドを示す詳細な監査情報を確認できます。 また、Docker または Windows ホストをリモートで確認しなくても、一元化されたログを表示および検索して、コンテナーのトラブルシューティングを行うことができます。 ホストで余分なリソースを使用しているコンテナーや、ノイズが大きいコンテナーを特定できます。 また、コンテナーについて、CPU、メモリ、ストレージ、ネットワークの使用量とパフォーマンスに関する情報を一元的に確認できます。 Windows を実行しているコンピューターでは、Windows Server、Hyper-V、Docker の各コンテナーのログを一元化して比較できます。 このソリューションは、次のコンテナー オーケストレーターをサポートしています。
 
@@ -36,7 +38,7 @@ ms.locfileid: "53194030"
 
 Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境にデプロイされているワークロードのパフォーマンスを監視する方法については、[Azure Kubernetes サービスの監視](../../azure-monitor/insights/container-insights-overview.md)に関するページを参照してください。 コンテナー監視ソリューションは、そのプラットフォームの監視には対応していません。  
 
-次のダイアグラムは、Log Analytics を使用するさまざまなコンテナー ホストとエージェント間の関係を示しています。
+次のダイアグラムは、Azure Monitor を使用するさまざまなコンテナー ホストとエージェント間の関係を示しています。
 
 ![コンテナー ダイアグラム](./media/containers/containers-diagram.png)
 
@@ -45,9 +47,9 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 始める前に、次の詳細を確認し、前提条件が満たされていることを確認してください。
 
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Docker Orchestrator と OS プラットフォームのコンテナー監視ソリューションのサポート
-次の表は、Log Analytics によるコンテナー インベントリ、パフォーマンス、およびログの Docker オーケストレーションとオペレーティング システムの監視サポートの概要を示しています。   
+次の表は、Azure Monitor によるコンテナー インベントリ、パフォーマンス、およびログの Docker オーケストレーションとオペレーティング システムの監視サポートの概要を示しています。   
 
-| | ACS |  Linux |  Windows | コンテナー<br>インベントリ | イメージ<br>インベントリ | ノード<br>インベントリ | コンテナー<br>[パフォーマンス] | コンテナー<br>Event | Event<br>ログ | コンテナー<br>ログ |
+| | ACS | Linux | Windows | コンテナー<br>インベントリ | Image<br>インベントリ | ノード<br>インベントリ | コンテナー<br>パフォーマンス | コンテナー<br>Event | Event<br>ログ | コンテナー<br>ログ |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -95,22 +97,22 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-1. コンテナー監視ソリューションを Log Analytics ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順に従って追加してください。
+1. コンテナー監視ソリューションを Log Analytics ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[Solutions Gallery からの監視ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順に従って追加してください。
 
 2. Log Analytics エージェントを使って Docker をインストールし､使用します｡ ご使用のオペレーティング システムと Docker Orchestrator に基づいて、次のメソッドを使用してエージェントを構成できます。
-  - スタンドアロン ホストの場合
-    - サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[Log Analytics エージェント for Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) をインストールして構成します。  
-    - CoreOS で、Log Analytics エージェント for Linux を実行することはできません。 代わりに、コンテナー化されたバージョンの Log Analytics エージェント Linux を実行できます。 Azure Government Cloud のコンテナーで作業をしている場合は、[CoreOS を含む Linux コンテナー ホスト](#for-all-linux-container-hosts-including-coreos)または [CoreOS を含む Azure Government Linux コンテナー](#for-all-azure-government-linux-container-hosts-including-coreos)に関する記事をご覧ください。
-    - Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Log Analytics に送信します。 Windows 環境をご利用の場合は、「[Windows コンテナー ホストをインストールして構成する](#install-and-configure-windows-container-hosts)」を確認します。
-  - Docker の複数ホストのオーケストレーションの場合
-    - Red Hat OpenShift 環境がある場合は、｢[Log Analytics エージェント for Red Hat OpenShift を構成する](#configure-an-oms-agent-for-red-hat-openshift)｣をお読みください｡
-    - Kubernetes クラスターで Azure Container Service を使用している場合:
-       - ｢[Log Analytics Linux エージェント for Kubernetes を構成する](#configure-an-oms-linux-agent-for-kubernetes)｣をお読みください｡
-       - ｢[Log Analytics Windows エージェント for Kubernetes を構成する](#configure-an-oms-windows-agent-for-kubernetes)｣をお読みください。
-       - 「[Helm を使用して Linux Kubernetes に Log Analytics エージェントをデプロイする](#use-helm-to-deploy-oms-agent-on-linux-kubernetes)」をお読みください｡
-    - Azure Container Service DC/OS クラスターがある場合は、「[Log Analytics を使用して Azure Container Service DC/OS クラスターを監視する](../../container-service/dcos-swarm/container-service-monitoring-oms.md)」をご覧ください。
-    - Docker Swarm モード環境がある場合、詳細については、「[Log Analytics エージェント for Docker Swarm を構成する](#configure-an-oms-agent-for-docker-swarm)」をご覧ください。
-    - Service Fabric クラスターがある場合は､｢[ Log Analytics を使用してコンテナーを監視する](../../service-fabric/service-fabric-diagnostics-oms-containers.md)｣をご覧ください｡
+   - スタンドアロン ホストの場合
+     - サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[Log Analytics エージェント for Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) をインストールして構成します。  
+     - CoreOS で、Log Analytics エージェント for Linux を実行することはできません。 代わりに、コンテナー化されたバージョンの Log Analytics エージェント Linux を実行できます。 Azure Government Cloud のコンテナーで作業をしている場合は、CoreOS を含む Linux コンテナー ホストまたは CoreOS を含む Azure Government Linux コンテナー ホストに関するセクションを参照してください。
+     - Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Azure Monitor に送信します。 Windows 環境をご利用の場合は、「[Windows コンテナー ホストをインストールして構成する](#install-and-configure-windows-container-hosts)」を確認します。
+   - Docker の複数ホストのオーケストレーションの場合
+     - Red Hat OpenShift 環境がある場合は、「Log Analytics エージェント for Red Hat OpenShift を構成する」を参照してください。
+     - Kubernetes クラスターで Azure Container Service を使用している場合:
+       - ｢[Log Analytics Linux エージェント for Kubernetes を構成する](#configure-a-log-analytics-linux-agent-for-kubernetes)｣をお読みください｡
+       - ｢[Log Analytics Windows エージェント for Kubernetes を構成する](#configure-a-log-analytics-windows-agent-for-kubernetes)｣をお読みください。
+       - Helm を使用して Linux Kubernetes に Log Analytics エージェントをデプロイする方法に関するセクションを参照してください。
+     - Azure Container Service DC/OS クラスターがある場合、詳細については、[Azure Monitor を使用した Azure Container Service DC/OS クラスターの監視](../../container-service/dcos-swarm/container-service-monitoring-oms.md)に関するページを参照してください。
+     - Docker Swarm モード環境がある場合、詳細については、「Log Analytics エージェント for Docker Swarm を構成する」を参照してください。
+     - Service Fabric クラスターがある場合、詳細については、[Azure Monitor を使用したコンテナーの監視](../../service-fabric/service-fabric-diagnostics-oms-containers.md)に関するページを参照してください。
 
 Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
@@ -195,7 +197,7 @@ Red Hat OpenShift に Log Analytics エージェントを追加してコンテ�
 このセクションでは、Log Analytics エージェントを OpenShift デーモン セットとしてインストールするために必要な手順を説明します。  
 
 1. OpenShift のマスター ノードにサインオンし、yaml ファイル [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) を GitHub からマスター ノードにコピーして、値を Log Analytics のワークスペース ID と 主キーに変更します。
-2. 次のコマンドを実行して Log Analytics のプロジェクトを作成し、ユーザー アカウントを設定します。
+2. 次のコマンドを実行して Azure Monitor のプロジェクトを作成し、ユーザー アカウントを設定します。
 
     ```
     oadm new-project omslogging --node-selector='zone=default'
@@ -234,7 +236,7 @@ Red Hat OpenShift に Log Analytics エージェントを追加してコンテ�
 Log Analytics エージェント デーモン セットの yaml ファイルを使用している場合､シークレットを利用して Log Analytics のワークスペース ID と主キーのセキュリティを保護するには、次の手順を実行します。
 
 1. OpenShift のマスター ノードにサインオンして、yaml ファイル [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) とシークレットを生成するスクリプト [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) を GitHub からコピーします。  このスクリプトにより Log Analytics のワークスペース ID と主キーのシークレット yaml ファイルが生成され、秘密情報がセキュリティで保護されます。  
-2. 次のコマンドを実行して Log Analytics のプロジェクトを作成し、ユーザー アカウントを設定します。 シークレットを生成するスクリプトは Log Analytics のワークスペース ID <WSID> と主キー <KEY> を要求し、完了すると ocp-secret.yaml ファイルが作成されます。  
+2. 次のコマンドを実行して Azure Monitor のプロジェクトを作成し、ユーザー アカウントを設定します。 シークレットを生成するスクリプトは Log Analytics のワークスペース ID `<WSID>` と主キー `<KEY>` を要求し、完了すると ocp-secret.yaml ファイルが作成されます。  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  
@@ -363,7 +365,7 @@ omsagent DaemonSet は、シークレットを使用して作成するか使用�
         KEY:    88 bytes
         ```
 
-    5. ``` sudo kubectl create -f omsagent-ds-secrets.yaml ``` を実行して、omsagent daemon-set を作成します。
+    5. ```sudo kubectl create -f omsagent-ds-secrets.yaml``` を実行して、omsagent daemon-set を作成します。
 
 2. 次のように、Log Analytics エージェントの DaemonSet がすでに起動していることを確認します。
 
@@ -407,7 +409,7 @@ Windows Kubernetes の場合は､スクリプトを使用して、ワークス�
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. ``` kubectl create -f omsagentsecret.yaml ``` を実行して、omsagent daemon-set を作成します。
+    3. ```kubectl create -f omsagentsecret.yaml``` を実行して、omsagent daemon-set を作成します。
     4. 確認するには、次のコマンドを実行します。
 
         ```
@@ -474,17 +476,17 @@ Helm を使用して Linux Kubernetes 環境内に Log Analytics エージェン
     LAST DEPLOYED: Tue Sep 19 20:37:46 2017
     NAMESPACE: default
     STATUS: DEPLOYED
- 
+ 
     RESOURCES:
     ==> v1/Secret
     NAME            TYPE    DATA  AGE
     omsagent-msoms  Opaque  3     17m
- 
+ 
     ==> v1beta1/DaemonSet
     NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
     omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
-詳細については、[コンテナー ソリューション Helm チャート](https://aka.ms/omscontainerhelm)に関するページを参照してください。
+   詳細については、[コンテナー ソリューション Helm チャート](https://aka.ms/omscontainerhelm)に関するページを参照してください。
 
 ### <a name="install-and-configure-windows-container-hosts"></a>Windows コンテナー ホストをインストールして構成する
 
@@ -492,37 +494,25 @@ Helm を使用して Linux Kubernetes 環境内に Log Analytics エージェン
 
 #### <a name="preparation-before-installing-windows-agents"></a>Windows エージェントをインストールする前の準備
 
-Windows を実行しているコンピューターにエージェントをインストールする前に、Docker サービスを構成する必要があります。 構成により、Windows エージェントまたは Log Analytics 仮想マシン拡張機能は、エージェントが Docker デーモンにリモートでアクセスできるように Docker TCP ソケットを使用できるようになり、監視用のデータをキャプチャすることが可能になります。
+Windows を実行しているコンピューターにエージェントをインストールする前に、Docker サービスを構成する必要があります。 構成により、Windows エージェントまたは Azure Monitor 仮想マシン拡張機能は、エージェントが Docker デーモンにリモートでアクセスできるように Docker TCP ソケットを使用できるようになり、監視用のデータをキャプチャすることが可能になります。
 
-##### <a name="to-start-docker-and-verify-its-configuration"></a>Docker を起動して構成を確認するには
+##### <a name="to-configure-the-docker-service"></a>Docker サービスを構成するには  
 
-Windows Server の TCP 名前付きパイプのセットアップに必要な手順があります。
+次の PowerShell コマンドを実行して、Windows Server の TCP パイプと名前付きパイプを有効化します。
 
-1. Windows PowerShell で、TCP パイプと名前付きパイプを有効にします。
-
-    ```
-    Stop-Service docker
-    dockerd --unregister-service
-    dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
-    Start-Service docker
-    ```
-
-2. TCP パイプと名前付きパイプ用の構成ファイルを使用して、Docker を構成します。 構成ファイルは C:\ProgramData\docker\config\daemon.json にあります。
-
-    daemon.json ファイルで、以下を実行する必要があります。
-
-    ```
-    {
-    "hosts": ["tcp://0.0.0.0:2375", "npipe://"]
-    }
-    ```
+```
+Stop-Service docker
+dockerd --unregister-service
+dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
+Start-Service docker
+```
 
 Windows コンテナーで使用する Docker デーモン構成の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 
 #### <a name="install-windows-agents"></a>Windows エージェントのインストール
 
-Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合、[Log Analytics への Windows コンピューターの接続](../../azure-monitor/platform/agent-windows.md)に関する記事をご覧ください。 Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](../../azure-monitor/learn/quick-collect-azurevm.md)を使用して Log Analytics に接続します。
+Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合は、[Windows コンピューターの Azure Monitor への接続](../../azure-monitor/platform/agent-windows.md)に関するページを参照してください。 Azure で実行されている仮想マシンの場合は、[仮想マシン拡張機能](../../azure-monitor/learn/quick-collect-azurevm.md)を使用して Azure Monitor に接続します。
 
 Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](../../azure-monitor/learn/quick-collect-azurevm.md)と[オンプレミス環境で Windows を実行するコンピューター](../../azure-monitor/platform/agent-windows.md)のみです。
 
@@ -565,7 +555,7 @@ Azure ポータルから *[ソリューション ギャラリー]* に移動し�
 
 
 ## <a name="monitor-containers"></a>コンテナーの監視
-Log Analytics ポータルでソリューションを有効にすると、コンテナー ホストと、ホストで実行されているコンテナーに関する概要情報が **[コンテナー]** タイルに表示されます。
+Azure portal でソリューションを有効化すると、コンテナー ホストと、ホストで実行されているコンテナーに関する概要情報が **[コンテナー]** タイルに表示されます。
 
 
 ![[コンテナー] タイル](./media/containers/containers-title.png)
@@ -598,11 +588,11 @@ Log Analytics ポータルでソリューションを有効にすると、コン
 
 ![コンテナーの状態](./media/containers/containers-status.png)
 
-[ログ検索] が開き、コンテナーの状態に関する情報が表示されます。
+Log Analytics が開き、コンテナーの状態に関する情報が表示されます。
 
-![コンテナーの [ログ検索]](./media/containers/containers-log-search.png)
+![コンテナーの Log Analytics](./media/containers/containers-log-search.png)
 
-ここで検索クエリを編集して、関心のある情報のみが見つかるように変更できます。 ログ検索の詳細については、「[Log Analytics におけるログの検索](../../azure-monitor/log-query/log-query-overview.md)」を参照してください。
+ここで検索クエリを編集して、関心のある情報のみが見つかるように変更できます。 ログ クエリの詳細については、[Azure Monitor でのログ クエリ](../log-query/log-query-overview.md)に関するページを参照してください。
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>失敗したコンテナーを特定してトラブルシューティングを行う
 
@@ -611,14 +601,16 @@ Log Analytics ポータルでソリューションを有効にすると、コン
 ### <a name="to-find-failed-containers"></a>失敗したコンテナーを特定するには
 1. **[コンテナーの状態]** エリアをクリックします。  
    ![コンテナーの状態](./media/containers/containers-status.png)
-2. [ログ検索] が開き、次のようにコンテナーの状態が表示されます。  
+2. Log Analytics が開き、次のようにコンテナーの状態が表示されます。  
    ![コンテナーの状態](./media/containers/containers-log-search.png)
-3. 次に、失敗したコンテナーの集計値をクリックして、追加情報を表示します。 **[表示数を増やす]** を展開してイメージ ID を表示します。  
+3. Failed 行を展開し、[+] をクリックして、クエリにその条件を追加します。 その後、クエリで Summarize 行をコメント アウトします。
+   ![失敗したコンテナー](./media/containers/containers-state-failed-select.png)  
+1. クエリを実行し、結果内の行を展開して、イメージ ID を表示します。  
    ![失敗したコンテナー](./media/containers/containers-state-failed.png)  
-4. 次に、検索クエリに以下を入力します。 `ContainerInventory <ImageID>` により、停止したイメージと失敗したイメージのサイズと数など、イメージに関する詳細が表示されます。  
+1. ログ クエリに以下を入力します。 `ContainerImageInventory | where ImageID == <ImageID>` により、停止したイメージと失敗したイメージのサイズと数など、イメージに関する詳細が表示されます。  
    ![失敗したコンテナー](./media/containers/containers-failed04.png)
 
-## <a name="search-logs-for-container-data"></a>コンテナー データのログの検索
+## <a name="query-logs-for-container-data"></a>コンテナー データのログをクエリする
 特定のエラーのトラブルシューティングを実行する際には、環境のどこでそのエラーが発生しているのかを確認すると役立つ場合があります。 次のログの種類は、目的の情報を返すクエリを作成するうえで役立ちます。
 
 
@@ -632,42 +624,23 @@ Log Analytics ポータルでソリューションを有効にすると、コン
 - **KubePodInventory_CL** – クラスター階層に関する情報を把握したいときに使用します。
 
 
-### <a name="to-search-logs-for-container-data"></a>コンテナー データのログを検索するには
+### <a name="to-query-logs-for-container-data"></a>コンテナー データのログをクエリするには
 * 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"` を検索します。  
     ![Ubuntu コンテナーの検索](./media/containers/search-ubuntu.png)
 
-  **[名前]** の横にあるコンテナーの名前と、それらのログを検索します。 この例では `ContainerLog | where Name == "cranky_stonebreaker"` です。
+  結果内の任意の行を展開すると、そのコンテナーの詳細が表示されます。
 
-**パフォーマンス情報の表示**
 
-クエリの作成を始めたばかりの段階では、何が可能かを先に確認しておくと効率的です。 たとえば、すべてのパフォーマンス データを確認するには、次の検索クエリを入力して広範なクエリを試してみてください。
-
-```
-Perf
-```
-
-![コンテナーのパフォーマンス](./media/containers/containers-perf01.png)
-
-表示されているパフォーマンス データのスコープを特定のコンテナーに制限するには、その名前をクエリの右側に入力します。
-
-```
-Perf <containerName>
-```
-
-そうすると、個々のコンテナーについて収集されたパフォーマンス メトリックの一覧が表示されます。
-
-![コンテナーのパフォーマンス](./media/containers/containers-perf03.png)
-
-## <a name="example-log-search-queries"></a>検索クエリの例
+## <a name="example-log-queries"></a>ログ クエリの例
 クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[サンプル クエリ]** エリアで試すと、より高度なクエリを作成しやすくなります。
 
 ![コンテナーのクエリ](./media/containers/containers-queries.png)
 
 
-## <a name="saving-log-search-queries"></a>ログ検索クエリの保存
-クエリの保存は、Log Analytics の標準的な機能です。 クエリを保存しておけば、後で使えるように、便利なクエリを取っておくことができます。
+## <a name="saving-log-queries"></a>ログ クエリの保存
+クエリの保存は、Azure Monitor の標準的な機能です。 クエリを保存しておけば、後で使えるように、便利なクエリを取っておくことができます。
 
 作成したクエリが便利であることがわかったら、**[ログ検索]** ページの上部にある [お気に入り] をクリックして保存してください。 後で **[マイ ダッシュボード]** ページで簡単にアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
-* [ログを検索](../../azure-monitor/log-query/log-query-overview.md) して、詳細なコンテナー データ レコードを確認します。
+* [ログをクエリ](../log-query/log-query-overview.md)して、詳細なコンテナー データ レコードを確認します。

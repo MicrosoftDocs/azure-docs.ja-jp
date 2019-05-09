@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b53ece6cd2e61fa6f6340b7bda3021ee7d9d767c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 56c45bf6db79ded64574a44399712951e82c1c3e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139709"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472407"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>分析用のストレージ環境にデータを読み込む
 

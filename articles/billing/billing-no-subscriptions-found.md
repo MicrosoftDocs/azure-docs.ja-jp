@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: cef34d4e22732c2d718daf7ce10c23b25ff4649d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 094d79026a55e651a1f67a5047dff20c769c359a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081304"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881114"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターにおける「サブスクリプションが見つかりません」のサインイン エラー
 
@@ -56,4 +56,4 @@ ms.locfileid: "53081304"
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

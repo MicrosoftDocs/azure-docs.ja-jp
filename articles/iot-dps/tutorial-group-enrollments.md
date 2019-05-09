@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 6447061e79946abf8070daf29eeb57bad7b6fa55
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8e926c3ff7c3d7abc9467291e9b1de77781f664e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184969"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805055"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 
@@ -32,7 +32,7 @@ ms.locfileid: "53184969"
 
 1. マシンに `git` がインストールされ、コマンド ウィンドウからアクセスできる環境変数に追加されていることを確認します。 **Git Bash** (ローカル Git リポジトリと対話する際に使用するコマンドライン アプリ) など、インストールする各種 `git` ツールの最新バージョンについては、[Software Freedom Conservancy の Git クライアント ツール](https://git-scm.com/download/)に関するページを参照してください。 
 
-1. [こちらの証明書の概要](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)に従ってテスト証明書を作成します。
+1. こちらの[証明書の概要](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)に従ってテスト証明書を作成します。
 
     > [!NOTE]
     > この手順には [OpenSSL](https://www.openssl.org/) が必要です。OpenSSL をソースからビルドしてインストールするか、または[サード パーティ](https://wiki.openssl.org/index.php/Binaries) ([例](https://sourceforge.net/projects/openssl/)) からダウンロードしてインストールしてください。 "_ルート証明書_"、"_中間証明機関の証明書_"、"_デバイス証明書_" が既にある場合は、この手順を省略してかまいません。
@@ -40,13 +40,13 @@ ms.locfileid: "53184969"
 
     1. 最初の 2 つの手順の作業を行って、"_ルート証明書_" と "_中間証明機関の証明書_" を作成します。
 
-    1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Provisioning Service を開きます。
+    1. Azure Portal にサインインし、左側のメニューにある **[すべてのリソース]** ボタンをクリックしてプロビジョニング サービスを開きます。
 
         1. Device Provisioning Service の概要ブレードで **[証明書]** を選択し、上部の **[追加]** ボタンをクリックします。
 
         1. **[証明書の追加]** に次の情報を入力します。
             - 一意の証明書名を入力します。
-            - 先ほど作成した **_RootCA.pem_** ファイルを選択します。
+            - 作成した **_RootCA.pem_** ファイルを選択します。
             - 作業が完了したら、**[保存]** をクリックします。
 
            ![証明書を追加する](./media/tutorial-group-enrollments/add-certificate.png)
@@ -68,7 +68,7 @@ ms.locfileid: "53184969"
 ## <a name="create-a-device-enrollment-entry"></a>デバイス登録エントリを作成する
 
 1. コマンド プロンプトを開きます。 Java SDK コード サンプルの GitHub リポジトリを複製します。
-    
+
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
@@ -77,11 +77,11 @@ ms.locfileid: "53184969"
 
     1. 次のように、ポータルからプロビジョニング サービスの `[Provisioning Connection String]` を追加します。
 
-        1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスに移動します。 
+        1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスに移動します。
 
         1. **[共有アクセス ポリシー]** を開き、*EnrollmentWrite* アクセス許可を持つポリシーを選択します。
-    
-        1. **主キーの接続文字列**をコピーします。 
+
+        1. **主キーの接続文字列**をコピーします。
 
             ![ポータルからプロビジョニング接続文字列を取得する](./media/tutorial-group-enrollments/provisioning-string.png)  
 
@@ -91,7 +91,9 @@ ms.locfileid: "53184969"
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    1. テキスト エディターで **_RootCA.pem_** ファイルを開きます。 次のように、**[Root Cert]\(ルート証明書\)** の値をパラメーター **PUBLIC_KEY_CERTIFICATE_STRING** に割り当てます。
+    1. テキスト エディターで、中間署名証明書ファイルを開きます。 `PUBLIC_KEY_CERTIFICATE_STRING` 値を中間署名証明書の値で更新します。
+
+        Bash シェルを使用してデバイス証明書を生成した場合は、*./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、*./Intermediate1.pem* が中間証明書ファイルになります。
 
         ```java
         private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -108,14 +110,14 @@ ms.locfileid: "53184969"
                 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
                 "-----END CERTIFICATE-----\n";
         ```
- 
+
     1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスにリンクされている IoT Hub に移動します。 ハブの **[概要]** タブを開き、**[ホスト名]** をコピーします。 この **[ホスト名]** を *IOTHUB_HOST_NAME* パラメーターに割り当てます。
 
         ```java
         private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
         ```
 
-    1. サンプル コードの内容を確認します。 このコードでは、X.509 デバイスのグループ登録を作成、更新、照会、および削除しています。 ポータルで登録が成功したことを確認するには、_ServiceEnrollmentGroupSample.java_ ファイルの末尾にある次のコード行を一時的にコメント アウトします。
+    1. サンプル コードの内容を確認します。 このコードは、X.509 デバイスのグループ登録を作成、更新、照会、および削除します。 ポータルで登録が成功したことを確認するには、_ServiceEnrollmentGroupSample.java_ ファイルの末尾にある次のコード行を一時的にコメント アウトします。
 
         ```java
         // ************************************** Delete info of enrollmentGroup ***************************************
@@ -123,7 +125,7 @@ ms.locfileid: "53184969"
         provisioningServiceClient.deleteEnrollmentGroup(enrollmentGroupId);
         ```
 
-    1. ファイル _ServiceEnrollmentGroupSample.java_ を保存します。 
+    1. ファイル _ServiceEnrollmentGroupSample.java_ を保存します。
 
 1. コマンド ウィンドウを開き、フォルダー **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** に移動します。
 
@@ -144,12 +146,11 @@ ms.locfileid: "53184969"
 
     ![登録が正常に完了](./media/tutorial-group-enrollments/enrollment.png) 
 
-1. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** をクリックします。 X.509 デバイスのグループは、自動生成された *GROUP NAME* という名前で **[登録グループ]** タブに表示されます。 
-
+1. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** をクリックします。 X.509 デバイスのグループは、自動生成された *GROUP NAME* という名前で **[登録グループ]** タブに表示されます。
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
-1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、_ID スコープ_と _Provisioning Service のグローバル エンドポイント_をメモします。
+1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、"_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
 
     ![サービス情報](./media/tutorial-group-enrollments/extract-dps-endpoints.png)
 
@@ -159,36 +160,79 @@ ms.locfileid: "53184969"
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-X509-sample
     ```
 
-1. 登録グループの情報を次のように入力します。
+1. `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` を編集して、前に書き留めておいた "_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" を含めます。
 
-    - `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` を編集して、メモした _ID スコープ_と _Provisioning Service のグローバル エンドポイント_を含めます。 **_{deviceName}-public.pem_** ファイルを開いて、この値を "_クライアント証明書_" として追加します。**_{deviceName}-all.pem_** ファイルを開いて、_-----BEGIN PRIVATE KEY-----_ から _-----END PRIVATE KEY-----_ までのテキストをコピーします。  これを "_クライアント証明書の秘密キー_" として使います。
+    ```java
+    private static final String idScope = "[Your ID scope here]";
+    private static final String globalEndpoint = "[Your Provisioning Service Global Endpoint here]";
+    private static final ProvisioningDeviceClientTransportProtocol PROVISIONING_DEVICE_CLIENT_TRANSPORT_PROTOCOL = ProvisioningDeviceClientTransportProtocol.HTTPS;
+    private static final int MAX_TIME_TO_WAIT_FOR_REGISTRATION = 10000; // in milli seconds
+    private static final String leafPublicPem = "<Your Public PEM Certificate here>";
+    private static final String leafPrivateKey = "<Your Private PEM Key here>";
+    ```
 
-        ```java
-        private static final String idScope = "[Your ID scope here]";
-        private static final String globalEndpoint = "[Your Provisioning Service Global Endpoint here]";
-        private static final ProvisioningDeviceClientTransportProtocol PROVISIONING_DEVICE_CLIENT_TRANSPORT_PROTOCOL = ProvisioningDeviceClientTransportProtocol.HTTPS;
-        private static final String leafPublicPem = "<Your Public PEM Certificate here>";
-        private static final String leafPrivateKey = "<Your Private PEM Key here>";
-        ```
+1. パブリックおよびプライベートのデバイス証明書を使用して、`leafPublicPem` および `leafPrivateKey` 変数を更新します。
 
-        - 次の形式で証明書とキーを含めます。
-            
-            ```java
-            private static final String leafPublicPem = "-----BEGIN CERTIFICATE-----\n" +
-                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                "+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                "-----END CERTIFICATE-----\n";
-            private static final String leafPrivateKey = "-----BEGIN PRIVATE KEY-----\n" +
-                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                "XXXXXXXXXX\n" +
-                "-----END PRIVATE KEY-----\n";
-            ```
+    PowerShell を使用してデバイス証明書を生成した場合、ファイル mydevice * にはそのデバイスの公開キー、秘密キー、および PFX が含まれています。
 
-1. サンプルをビルドします。 ターゲット フォルダーに移動し、作成した jar ファイルを実行します。
+    Bash シェルを使用してデバイス証明書を生成した場合は、./certs/new-device.cert.pem に公開キーが含まれています。 デバイスの秘密キーは、./private/new-device.key.pem ファイルにあります。
+
+    公開キー ファイルを開き、その値で `leafPublicPem` 変数を更新します。 _----- BEGIN PRIVATE KEY -----_ から _----- END PRIVATE KEY -----_ までのテキストをコピーします。
+
+    ```java
+    private static final String leafPublicPem = "-----BEGIN CERTIFICATE-----\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "-----END CERTIFICATE-----\n";
+    ```
+
+    秘密キー ファイルを開き、その値で `leafPrivatePem` 変数を更新します。 _----- BEGIN RSA PRIVATE KEY -----_ から _----- END RSA PRIVATE KEY -----_ までのテキストをコピーします。
+
+    ```java
+    private static final String leafPrivateKey = "-----BEGIN RSA PRIVATE KEY-----\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "-----END RSA PRIVATE KEY-----\n";
+    ```
+
+1. 中間証明書の `leafPrivateKey` のすぐ下に、新しい変数を追加します。 この新しい変数に、`intermediateKey` という名前を付けます。 それに、中間署名証明書の値を設定します。
+
+    Bash シェルを使用してデバイス証明書を生成した場合は、*./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、*./Intermediate1.pem* が中間証明書ファイルになります。
+
+    ```java
+    private static final String intermediateKey = "-----BEGIN CERTIFICATE-----\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+        "-----END CERTIFICATE-----\n";
+    ```
+
+1. `main` 関数で、`securityProviderX509` の初期化の前に、`intermediateKey` を `signerCertificates` コレクションに追加します。
+
+    ```java
+    public static void main(String[] args) throws Exception
+    {
+        ...
+
+        try
+        {
+            ProvisioningStatus provisioningStatus = new ProvisioningStatus();
+
+            // Add intermediate certificate as part of the certificate key chain.
+            signerCertificates.add(intermediateKey);
+
+            SecurityProvider securityProviderX509 = new SecurityProviderX509Cert(leafPublicPem, leafPrivateKey, signerCertificates);
+    ```
+
+1. 変更内容を保存し、サンプルをビルドします。 ターゲット フォルダーに移動し、作成した jar ファイルを実行します。
 
     ```cmd/sh
     mvn clean install

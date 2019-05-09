@@ -1,5 +1,6 @@
 ---
-title: Azure Portal を使用した Azure DDoS Protection Standard の管理 | Microsoft Docs
+title: Azure Portal を使用した Azure DDoS Protection Standard の管理
+titlesuffix: Azure Virtual Network
 description: Azure Monitor で Azure DDoS Protection Standard テレメトリを使用して攻撃を軽減する方法について説明します。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 39525c7e25e247504429ea36210986a5e3300cc1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 32c4516c7dc68b04826b362d34841160936d682d
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537176"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244521"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
@@ -46,7 +47,7 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
     |Name           | myDdosProtectionPlan                              |
     |サブスクリプション   | サブスクリプションを選択します。                         |
     |リソース グループ | **[新規作成]** を選択し、「*myResourceGroup*」と入力します |
-    |場所       | 米国東部                                           |
+    |Location       | 米国東部                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>新しい仮想ネットワークに対して DDoS を有効にする
 
@@ -59,7 +60,7 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
     | Name            | myVirtualNetwork                                             |
     | サブスクリプション    | サブスクリプションを選択します。                                    |
     | リソース グループ  | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します |
-    | 場所        | 米国東部                                                      |
+    | Location        | 米国東部                                                      |
     | DDos Protection | **[DDos Protection]** で **[Standard]** を選択し、**[myDdosProtectionPlan]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。|
 
 仮想ネットワークに対して DDoS Standard が有効になっている場合、仮想ネットワークを別のリソース グループまたはサブスクリプションに移動することはできません。 DDoS Standard が有効になっている仮想ネットワークを移動する必要がある場合は、まず DDoS Standard を無効にし、仮想ネットワークを移動してから、DDoS Standard を有効にします。 移動後に、仮想ネットワーク内のすべての保護されたパブリック IP アドレスの自動調整されたポリシーしきい値がリセットされます。
@@ -158,7 +159,7 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 
     - **ストレージ アカウントへのアーカイブ**:データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
     - **イベント ハブへのストリーム配信**:ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **Log Analytics への送信**:ログを Azure Log Analytics サービスに書き込みます。 このオプションについて詳しくは、[Log Analytics で使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[Log Analytics への送信]**:Azure Monitor サービスにログを書き込みます。 このオプションについて詳しくは、[Azure Monitor ログで使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
 増分レポートと攻撃の軽減策後のレポートには、両方とも次のフィールドが含まれます。
 - 攻撃ベクトル
@@ -180,7 +181,7 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 
     - **ストレージ アカウントへのアーカイブ**:データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
     - **イベント ハブへのストリーム配信**:ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **Log Analytics への送信**:ログを Azure Log Analytics サービスに書き込みます。 このオプションについて詳しくは、[Log Analytics で使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[Log Analytics への送信]**:Azure Monitor サービスにログを書き込みます。 このオプションについて詳しくは、[Azure Monitor ログで使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 1. Azure analytics ダッシュボードでフロー ログ データを表示するには、 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip からサンプル ダッシュボードをインポートします。
 
 フロー ログには次のフィールドがあります。 

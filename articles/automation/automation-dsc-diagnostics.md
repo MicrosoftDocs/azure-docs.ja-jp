@@ -1,24 +1,27 @@
 ---
-title: Log Analytics への Azure Automation State Configuration レポート データの転送
-description: この記事では、Desired State Configuration (DSC) レポート データを Azure Automation State Configuration から Log Analytics に送信して、詳しい情報を入手し、きめ細かい管理を実現する方法について説明します。
+title: Azure Monitor ログへの Azure Automation State Configuration レポート データの転送
+description: この記事では、Desired State Configuration (DSC) レポート データを Azure Automation State Configuration から Azure Monitor ログに送信して、詳しい情報を入手し、きめ細かい管理を実現する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88805f26869ad75830cef1aa074cd90cb947e76f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 0dad74f75fd7b73e7dab0b2dddbdfda193d5b2ec
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681740"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445799"
 ---
-# <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Log Analytics への Azure Automation State Configuration レポート データの転送
+# <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Monitor ログへの Azure Automation State Configuration レポート データの転送
 
-Azure Automation State Configuration では、Desired State Configuration (DSC) ノードの状態データを Log Analytics ワークスペースに送信できます。 Azure Portal または PowerShell を使用して、ノード構成内のノードや個々の DSC リソースのコンプライアンス ステータスを確認できます。 Log Analytics では、次のことが可能です。
+Azure Automation State Configuration は、ノード状態のデータを 30 日間保持します。
+このデータを長期間保持したい場合は、ノード状態のデータを Log Analytics ワークスペースに送信することができます。
+Azure Portal または PowerShell を使用して、ノード構成内のノードや個々の DSC リソースのコンプライアンス ステータスを確認できます。
+Azure Monitor ログを使用すると、次のことを行うことができます。
 
 - 管理対象ノードや個々のリソースのコンプライアンスに関する情報を取得する
 - コンプライアンス ステータスに基づいた電子メールまたは警告をトリガーする
@@ -26,41 +29,43 @@ Azure Automation State Configuration では、Desired State Configuration (DSC) 
 - Automation アカウント間でのコンプライアンス ステータスを関連付ける
 - ノードの経時的なコンプライアンス履歴を視覚化する
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-Log Analytics への Automation State Configuration レポートの送信を開始するには、次のものが必要です。
+Azure Monitor ログへの Automation State Configuration レポートの送信を開始するには、次のものが必要です。
 
 - 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/overview) (v2.3.0)。
 - Azure Automation アカウント。 詳しくは、「[Azure Automation の概要](automation-offering-get-started.md)」をご覧ください。
-- **Automation &amp;amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Log Analytics の起動と開始](../log-analytics/log-analytics-get-started.md)」を参照してください。
+- **Automation &amp;amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの概要](../log-analytics/log-analytics-get-started.md)に関するページを参照してください。
 - 1 つ以上の Azure Automation State Configuration ノード。 詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 
-## <a name="set-up-integration-with-log-analytics"></a>Log Analytics との統合のセットアップ
+## <a name="set-up-integration-with-azure-monitor-logs"></a>Azure Monitor ログとの統合を設定する
 
-Azure Automation DSC から Log Analytics へのデータのインポートを開始するには、次の手順を実行します。
+Azure Automation DSC から Azure Monitor ログへのデータのインポートを開始するには、次の手順を実行します。
 
-1. PowerShell で Azure アカウントにログインします。 「[Azure PowerShell でのログイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)」をご覧ください。
+1. PowerShell で Azure アカウントにログインします。 「[Azure PowerShell でのログイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)」をご覧ください。
 1. 次の PowerShell コマンドを実行して、Automation アカウントの _ResourceId_ を取得します (Automation アカウントが 1 つ以上ある場合は、構成するアカウントの _ResourceID_ を選択します)。
 
-  ```powershell
-  # Find the ResourceId for the Automation Account
-  Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
-  ```
+   ```powershell
+   # Find the ResourceId for the Automation Account
+   Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+   ```
 
 1. 次の PowerShell コマンドを実行して、Log Analytics ワークスペースの _ResourceId_ を取得します (ワークスペースが 1 つ以上ある場合は、構成するワークスペースの _ResourceID_ を選択します)。
 
-  ```powershell
-  # Find the ResourceId for the Log Analytics workspace
-  Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
-  ```
+   ```powershell
+   # Find the ResourceId for the Log Analytics workspace
+   Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+   ```
 
 1. 次の PowerShell コマンドを実行します。`<AutomationResourceId>` と `<WorkspaceResourceId>` はそれぞれ前の手順で取得した _ResourceId_ の値と置き換えます。
 
-  ```powershell
-  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
-  ```
+   ```powershell
+   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
+   ```
 
-Azure Automation State Configuration から Log Analytics へのデータのインポートを停止するには、次の PowerShell コマンドを実行します。
+Azure Automation State Configuration から Azure Monitor ログへのデータのインポートを停止するには、次の PowerShell コマンドを実行します。
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
@@ -68,7 +73,7 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 
 ## <a name="view-the-state-configuration-logs"></a>State Configuration ログを表示する
 
-Automation State Configuration データ用に Log Analytics との統合をセットアップすると、Automation アカウントの **[DSC ノード]** ブレードに **[ログ検索]** ボタンが表示されます。 **[ログ検索]** ボタンをクリックすると、DSC ノード データのログが表示されます。
+Automation State Configuration データ用に Azure Monitor ログとの統合を設定すると、Automation アカウントの **[DSC ノード]** ブレードに **[ログ検索]** ボタンが表示されます。 **[ログ検索]** ボタンをクリックすると、DSC ノード データのログが表示されます。
 
 ![[ログ検索] ボタン](media/automation-dsc-diagnostics/log-search-button.png)
 
@@ -78,7 +83,8 @@ Automation State Configuration データ用に Log Analytics との統合をセ�
 
 操作のデータを確認するには、一覧からその操作をクリックします。
 
-また、ログは Log Analytics で検索することで確認できます。 「[ログ検索を使用してデータを探す](../log-analytics/log-analytics-log-searches.md)」をご覧ください。
+また、Azure Monitor ログを検索してログを表示することもできます。
+「[ログ検索を使用してデータを探す](../log-analytics/log-analytics-log-searches.md)」をご覧ください。
 State Configuration のログを検索するには、次のクエリを入力します。`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
 
 操作名でクエリの検索結果を絞り込むこともできます。 次に例を示します。`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
@@ -89,7 +95,7 @@ State Configuration のログを検索するには、次のクエリを入力し
 
 アラート ルールを作成するには、まずアラートを呼び出す State Configuration レポートのレコードに対するログ検索を作成します。 **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックし、アラート ルールを作成して構成します。
 
-1. Log Analytics の [Overview (概要)] ページで、**[Log Search (ログ検索)]** をクリックします。
+1. Log Analytics ワークスペースの [概要] ページで、**[ログ]** をクリックします。
 1. クエリ フィールドに次のように入力して、アラートに対するログ検索クエリを作成します。`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。  
@@ -98,10 +104,10 @@ State Configuration のログを検索するには、次のクエリを入力し
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>すべてのノードで失敗した DSC リソースを検索する
 
-Log Analytics を使用する利点の 1 つは、ノード間で失敗したチェックを検索できることです。
+Azure Monitor ログを使用する利点の 1 つは、失敗したチェックをノードを越えて検索できることです。
 失敗した DSC リソースのすべてのインスタンスを見つけるには、次のようにします。
 
-1. Log Analytics の [Overview (概要)] ページで、**[Log Search (ログ検索)]** をクリックします。
+1. Log Analytics ワークスペースの [概要] ページで、**[ログ]** をクリックします。
 1. クエリ フィールドに次のように入力して、アラートに対するログ検索クエリを作成します。`Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>DSC ノードの状態の履歴を表示する
@@ -113,13 +119,13 @@ Log Analytics を使用する利点の 1 つは、ノード間で失敗したチ
 
 これにより、ノードの状態が時系列でグラフに表示されます。
 
-## <a name="log-analytics-records"></a>Log Analytics のレコード
+## <a name="azure-monitor-logs-records"></a>Azure Monitor ログのレコード
 
-Azure Automation の診断から、Log Analytics に 2 つのカテゴリーのレコードが作成されます。
+Azure Automation からの診断により、Azure Monitor ログに 2 つのカテゴリーのレコードが作成されます。
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscNodeStatusData |
@@ -131,7 +137,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | HostName_s | 管理対象ノードの名前。 |
 | IPAddress | 管理対象ノードの IPv4 アドレス。 |
 | Category | DscNodeStatus |
-| リソース | Azure Automation アカウントの名前。 |
+| Resource | Azure Automation アカウントの名前。 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | NodeId_g |管理対象ノードを識別する GUID。 |
 | DscReportId_g |レポートを識別する GUID。 |
@@ -139,7 +145,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | ReportStartTime_t |レポートが最後に開始された日時。 |
 | ReportEndTime_t |レポートが完了した日時。 |
 | NumberOfResources_d |ノードに適用された構成で呼び出された DSC ソース。 |
-| SourceSystem | Log Analytics がデータを収集する方法。 Azure 診断の場合、常に *Azure* です。 |
+| SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure Diagnostics の場合、常に *Azure* です。 |
 | ResourceId |Azure Automation アカウントを指定します。 |
 | ResultDescription | この操作の説明。 |
 | SubscriptionId | Automation アカウントの Azure サブスクリプション ID (GUID) です。 |
@@ -150,14 +156,14 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscResourceStatusData|
 | ResultType |リソースが準拠しているかどうか。 |
 | NodeName_s |管理対象ノードの名前。 |
 | Category | DscNodeStatus |
-| リソース | Azure Automation アカウントの名前。 |
+| Resource | Azure Automation アカウントの名前。 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | NodeId_g |管理対象ノードを識別する GUID。 |
 | DscReportId_g |レポートを識別する GUID。 |
@@ -170,7 +176,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | ErrorCode_s | リソースが失敗した場合のエラー コード。 |
 | ErrorMessage_s |リソースが失敗した場合のエラー メッセージ。 |
 | DscResourceDuration_d |DSC リソースの実行時間 (秒)。 |
-| SourceSystem | Log Analytics がデータを収集する方法。 Azure 診断の場合、常に *Azure* です。 |
+| SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure Diagnostics の場合、常に *Azure* です。 |
 | ResourceId |Azure Automation アカウントを指定します。 |
 | ResultDescription | この操作の説明。 |
 | SubscriptionId | Automation アカウントの Azure サブスクリプション ID (GUID) です。 |
@@ -181,12 +187,12 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 
 ## <a name="summary"></a>まとめ
 
-Automation State Configuration のデータを Log Analytics に送信し、次の対応を行うことで、Automation State Configuration のノードの状態をより理解できるようになります。
+Automation State Configuration のデータを Azure Monitor ログに送信し、次の対応を行うことで、Automation State Configuration のノードの状態をより理解できるようになります。
 
 - 問題が発生した場合に通知するアラートの設定
 - カスタム ビューと検索クエリを使用した Runbook の結果、Runbook ジョブの状態、その他の関連する主要な指標やメトリックの視覚化。  
 
-Log Analytics によって、Automation State Configuration のデータの状態をさらに詳しく把握でき、インシデントにより迅速に対処できるようになります。
+Azure Monitor ログによって、Automation State Configuration のデータの状態をさらに詳しく把握でき、インシデントにより迅速に対処できるようになります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -196,5 +202,5 @@ Log Analytics によって、Automation State Configuration のデータの状�
 - PowerShell コマンドレットのリファレンスについては、[Azure Automation State Configuration のコマンドレット](/powershell/module/azurerm.automation/#automation)に関するページをご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 - 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ](automation-dsc-cd-chocolatey.md)」をご覧ください。
-- 各種検索クエリの作成方法と、Log Analytics での Automation State Configuration ログの確認方法の詳細については、[Log Analytics でのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
-- Log Analytics とデータ収集ソースの詳細については、「[Log Analytics における Azure Storage データの収集について](../azure-monitor/platform/collect-azure-metrics-logs.md)」をご覧ください。
+- 各種検索クエリの作成方法と、Azure Monitor ログでの Automation State Configuration ログの確認方法の詳細については、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
+- Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページをご覧ください。

@@ -9,12 +9,12 @@ author: brjohnstmsft
 ms.author: brjohnst
 manager: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 326a449d3992d22a4be2d365061c99ef8b13aef9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314229"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453492"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Azure Search の結果をトリミングするためのセキュリティ フィルター
 

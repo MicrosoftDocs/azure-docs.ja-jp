@@ -1,45 +1,44 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4753a989a672e6048e7f754b04edb116e405272a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238015"
 documentType: LandingData
-title: Azure Blueprints のドキュメント
+title: Azure Blueprints サービスのドキュメント
 metadata:
   title: Azure Blueprints のドキュメント - チュートリアル、API リファレンス
   description: Azure Blueprint は、Azure 環境でアーティファクトを作成、定義、デプロイするために使用する Azure のサービスです。
-  services: blueprints
   author: DCtheGeek
   manager: carmonm
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 10/30/2018
+  ms.date: 03/26/2019
   ms.author: dacoulte
 abstract:
-  description: Azure Blueprint は、ポリシー、ロール ベースのアクセス制御、Azure Resource Manager テンプレートなどのコンポーザブルな成果物を使用して、繰り返し可能な方法でクラウド環境をデプロイおよび更新する際に役立ちます。
+  description: Azure Blueprints は、コンポーザブルな成果物 (リソース、ロールベースのアクセス制御、ポリシーをプロビジョニングするための Azure Resource Manager テンプレートなど) を使用して、繰り返し可能な方法でクラウド環境をデプロイおよび更新する際に役立ちます。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure でブループリント定義の作成、割り当て、管理を行う方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: ./media/portal.svg
-      text: Azure Portal
-      href: create-blueprint-portal.md
-    - image:
-        src: ./media/rest.svg
-      text: REST API
-      href: create-blueprint-rest-api.md
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Azure でブループリント定義の作成、割り当て、管理を行う方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure Portal
+              src: ./media/portal.svg
+            text: Azure Portal
+            href: create-blueprint-portal.md
+          - image:
+              alt: REST
+              src: ./media/rest.svg
+            text: REST
+            href: create-blueprint-rest-api.md
+  - title: リファレンス
     items:
-    - title: REST API
-      html: <p><a href="/rest/api/blueprints/">ブループリント</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
+          - title: Languages
+            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK for .NET</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/blueprints/">API リファレンス</a></p>

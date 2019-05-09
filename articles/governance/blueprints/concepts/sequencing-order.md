@@ -1,24 +1,23 @@
 ---
 title: デプロイ シーケンス順序について
-description: ブループリントが経過するライフサイクルと各ステージの詳細について説明します。
-services: blueprints
+description: ブループリント定義が経過するライフサイクルと各ステージの詳細について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/12/2018
+ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: bd12aabf0ca8f82261e6b3c677d7306ee46c4171
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308619"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59266190"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
-Azure ブループリントでは、ブループリントの割り当てを処理するときに、**シーケンス順序**を使用してリソースの作成順序を決定します。 この記事では、次の概念について説明します。
+Azure Blueprints では、ブループリント定義の割り当てを処理するときに、**シーケンス順序**を使用してリソースの作成順序を決定します。 この記事では、次の概念について説明します。
 
 - 使用される既定のシーケンス順序
 - 順序をカスタマイズする方法
@@ -30,7 +29,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 ## <a name="default-sequencing-order"></a>既定のシーケンス順序
 
-ブループリントに成果物をデプロイする順序を指定するディレクティブが含まれていない場合、またはそのディレクティブが null の場合は、次の順序が使用されます。
+ブループリント定義に成果物をデプロイする順序を指定するディレクティブが含まれていない場合、またはそのディレクティブが null の場合は、次の順序が使用されます。
 
 - サブスクリプション レベルの**ロールの割り当て**成果物が、成果物の名前で並べ替えられます
 - サブスクリプション レベルの**ポリシーの割り当て**成果物が、成果物の名前で並べ替えられます
@@ -45,16 +44,14 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 ## <a name="customizing-the-sequencing-order"></a>シーケンス順序のカスタマイズ
 
-大規模なブループリントを作成するときは、リソースを特定の順序で作成することが必要になる場合があります。 このシナリオの最も一般的な使用パターンは、ブループリントにいくつかの Azure Resource Manager テンプレートが含まれている場合です。 ブループリントでは、シーケンス順序を定義することで、このパターンを処理します。
+大規模なブループリント定義を作成するときは、リソースを特定の順序で作成することが必要になる場合があります。 このシナリオの最も一般的な使用パターンは、ブループリント定義にいくつかの Azure Resource Manager テンプレートが含まれている場合です。 ブループリントでは、シーケンス順序を定義することで、このパターンを処理します。
 
-この順序は、JSON 内で `dependsOn` プロパティを定義することで実現します。 (リソース グループの) ブループリントと成果物オブジェクトでのみ、このプロパティがサポートされます。 `dependsOn` は、特定の成果物が作成される前に作成する必要がある成果物の名前で構成される文字列配列です。
+この順序は、JSON 内で `dependsOn` プロパティを定義することで実現します。 このプロパティは、リソース グループ用のブループリント定義、および成果物オブジェクトによってサポートされています。 `dependsOn` は、特定の成果物が作成される前に作成する必要がある成果物の名前で構成される文字列配列です。
 
-> [!NOTE]
-> **リソース グループ**成果物は `dependsOn` プロパティをサポートしますが、任意の成果物の種類によって `dependsOn` のターゲットにすることはできません。
+### <a name="example---ordered-resource-group"></a>例 - 順序指定されたリソース グループ
 
-### <a name="example---blueprint-with-ordered-resource-group"></a>例 - リソース グループの順序で並べたブループリント
-
-このブループリントの例には、`dependsOn` の値を宣言することでカスタムのシーケンス順序を定義されたリソース グループと、標準のリソース グループの両方が含まれています。 この場合、**assignPolicyTags** という名前の成果物が、**ordered-rg** リソース グループの前に処理されます。 **standard-rg** は、既定のシーケンス順序ごとに処理されます。
+このブループリント定義の例には、`dependsOn` の値を宣言することでカスタムのシーケンス順序を定義されたリソース グループと、標準のリソース グループの両方が含まれています。 この場合、**assignPolicyTags** という名前の成果物が、**ordered-rg** リソース グループの前に処理されます。
+**standard-rg** は、既定のシーケンス順序ごとに処理されます。
 
 ```json
 {
@@ -104,6 +101,42 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 }
 ```
 
+### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>例 - リソース グループに依存するサブスクリプション レベルのテンプレート成果物
+
+この例は、サブスクリプション レベルでデプロイされた Resource Manager テンプレートを対象とし、リソース グループに依存します。 既定の順序付けでは、サブスクリプション レベルの成果物は、任意のリソース グループとそのリソース グループの子成果物の前に作成されます。 リソース グループは、次のようにブループリント定義で定義されます。
+
+```json
+"resourceGroups": {
+    "wait-for-me": {
+        "metadata": {
+            "description": "Resource Group that is deployed prior to the subscription level template artifact"
+        }
+    }
+}
+```
+
+**wait-for-me** リソース グループに依存するサブスクリプション レベルのテンプレート成果物は、次のように定義されます。
+
+```json
+{
+    "properties": {
+        "template": {
+            ...
+        },
+        "parameters": {
+            ...
+        },
+        "dependsOn": ["wait-for-me"],
+        "displayName": "SubLevelTemplate",
+        "description": ""
+    },
+    "kind": "template",
+    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "subtemplateWaitForRG"
+}
+```
+
 ## <a name="processing-the-customized-sequence"></a>カスタマイズされたシーケンスの処理
 
 作成プロセスでは、トポロジカル ソートを使用して、ブループリント成果物の依存関係グラフが作成されます。 この確認により、リソース グループと成果物の各レベルの依存関係がサポートされます。
@@ -112,8 +145,8 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](lifecycle.md)を参照する
-- [静的および動的パラメーター](parameters.md)の使い方
-- [ブループリントによるリソース ロック](resource-locking.md)の使い方
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [ブループリントのライフサイクル](lifecycle.md)を参照する。
+- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
+- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

@@ -1,25 +1,18 @@
 ---
 title: Azure Resource Health の FAQ | Microsoft Docs
 description: Azure Resource Health の概要
-services: Resource health
-documentationcenter: dev-center-name
-author: BernardoAMunoz
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
+author: stephbaron
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.date: 01/29/2019
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: BernardoAMunoz
-ms.openlocfilehash: 1e22c62c291909bb4079ebaf389cfbd15ae9d8d5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: b4062b3f0bc389de4403ac81b56688508f5ea50e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42146204"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579565"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -38,9 +31,9 @@ Resource Health では、[リソースの種類](resource-health-checks-resource
 
 ## <a name="what-does-each-of-the-health-status-mean"></a>正常性状態はそれぞれ何を意味しますか。
 正常性状態には次の 3 種類があります。
-- 使用可能: このリソースに影響を与える可能性のある既知の問題は、この Azure プラットフォームにはありません。
-- 使用不可: リソースに影響を与えている問題が Resource Health によって検出されました。
-- 不明: リソースの正常性に関する情報の受信が停止されているため、リソースの正常性を Resource Health で判断できません。 
+- 使用可能:このリソースに影響を与える可能性のある既知の問題は、この Azure プラットフォームにはありません
+- 使用不可:リソースに影響を与えている問題が Resource Health によって検出されました
+- 不明:リソースの正常性に関する情報の受信が停止されているため、リソースの正常性を Resource Health で判断できません。 
 
 ## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>不明な状態とはどういう状態ですか。 リソースに何か問題がありますか。
 正常性状態が "不明" に設定されるのは、Resource Health で特定のリソースに関する情報の受信が停止されているときです。 この状態はリソースの状態を明確に示しているわけではありませんが、問題が発生している場合は、Azure の問題を示している可能性があります。
@@ -57,7 +50,7 @@ Resource Health では、[リソースの種類](resource-health-checks-resource
 ポータルでは、ユーザーが開始したアクションは青の通知アイコンを使用して表示されますが、計画的および計画外のイベントは赤色の警告アイコンを使用して表示されます。 詳細については、[Resource Health の概要](Resource-health-overview.md)に関するページを参照してください。  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Resource Health をユーザー固有の監視ツールと統合できますか。
-Resource Health は、リソースに影響を与える Azure サービスの問題を診断し、軽減するために設計されたサービスです。 Resource Health API を使用してプログラムで正常性状態を取得することができますが、メトリックを使用してリソースを監視することをお勧めします。 問題が検出されると、Resource Health を利用して根本原因を特定し、その解決手順を知ることができます。 メトリックを使用してリソースを確認する方法については、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) に関するページを参照してください。
+Resource Health では、アクティビティ ログ ベースのアラートに対して[プレビュー サポート](resource-health-alert-arm-template-guide.md)が提供されます。 アクティビティ ログ アラートでは、[アクション グループ](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/action-groups)を使用して、アラートがトリガーされたことをユーザーに通知します。 アクション グループでは、メール、SMS、Webhook、ITSM アクションなどのさまざまな通知チャネルがサポートされています。
 
 ## <a name="where-do-i-find-resource-health"></a>Resource Health はどこにありますか。
 Azure Portal にログインした後、複数の方法で Resource Health にアクセスできます。
@@ -74,13 +67,7 @@ Resource Health でサポートされている正常性チェックとリソー�
 リソースの状態を確認するには、正常性状態のすぐ下にある **[Report incorrect health status (不適切な正常性状態を報告)]** をクリックします。 レポートを送信する前に、現在の正常性状態が正しくないと思われる理由の詳細を、必要に応じて入力することができます。
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>Resource Health はすべての Azure リージョンで利用できますか。 
-Resource Health は、次のリージョンを除くすべての Azure geo で利用できます。
-- 米国政府バージニア州
-- US Gov アイオワ
-- US DoD East
-- US DoD Central
-- ドイツ中部
-- ドイツ北東部
+Resource Health はすべての Azure geo で利用できます。
 
 ## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Resource Health は Azure の状態や Service Health ダッシュボードと何が違うのでしょうか。
 Resource Health の方が、Azure の状態や Service Health ダッシュボードと比べて具体的な細かい情報が得られます。

@@ -3,8 +3,8 @@ title: CI/CD を使用して Azure Service Fabric クラスターへコンテナ
 description: このチュートリアルでは、Visual Studio Azure DevOps を使用して、Azure Service Fabric コンテナー アプリケーションの継続的インテグレーションと継続的配置をセットアップする方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: twhitney
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 2320aaf2d502280a29562a49dfff1e4e9244d079
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 37305f27203986ce2e3d06276b5169ffd9b41287
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872970"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668808"
 ---
-# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
 
 このチュートリアルはシリーズの第 2 部です。Visual Studio と Azure DevOps を使用して、Azure Service Fabric コンテナー アプリケーションの継続的インテグレーションと継続的配置を設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、「[Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする](service-fabric-host-app-in-a-container.md)」で作成されたアプリケーションを例として使用します。
 

@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub ジョブについて | Microsoft Docs
 description: 開発者ガイド - IoT Hub に接続されている複数のデバイスで実行するジョブのスケジュール設定。 ジョブはタグと必要なプロパティを更新でき、複数のデバイス上でダイレクト メソッドを呼び出すことができます。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: dobett
-ms.openlocfilehash: b9ad7a0e1947c9ca95b343a443688e976c306f95
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: aacb0ab69dad45f9ca7655daaae0c2acff0403f5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884226"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59044374"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 
@@ -119,22 +119,22 @@ ContinuationToken は、応答から提供されます。
 | **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO 8601)。 |
 | **endTime** |IoT Hub が提供するジョブの完了時の日付 (ISO 8601)。 ジョブが 'completed' 状態に達した後でのみ有効です。 |
 | **type** |ジョブの種類: |
-| | **scheduledUpdateTwin**: 必要なプロパティまたはタグを更新するために使用するジョブ。 |
-| | **scheduledDeviceMethod**: デバイス ツインでデバイス メソッドを呼び出すために使用するジョブ。 |
+| | **scheduledUpdateTwin**: 必要なプロパティまたはタグのセットを更新するために使用するジョブ。 |
+| | **scheduledDeviceMethod**: デバイス ツインのセットに対してデバイス メソッドを呼び出すために使用するジョブ。 |
 | **status** |ジョブの現在の状態。 状態の可能値: |
-| | **pending**: スケジュールが設定され、ジョブ サービスによって選択されるために待機しています。 |
+| | **pending**: スケジュールが設定され、ジョブ サービスによって選択されるのを待機しています。 |
 | | **scheduled**: 将来の時刻のスケジュールが設定されています。 |
 | | **running**: 現在アクティブなジョブです。 |
-| | **canceled**: ジョブは取り消されました。 |
-| | **failed**: ジョブは失敗しました。 |
-| | **completed**: ジョブは完了しています。 |
+| | **canceled**: ジョブが取り消されました。 |
+| | **failed**: ジョブが失敗しました。 |
+| | **completed**: ジョブが完了しました。 |
 | **deviceJobStatistics** |ジョブの実行に関する統計情報。 |
 | | **deviceJobStatistics** プロパティ: |
 | | **deviceJobStatistics.deviceCount**: ジョブ内のデバイスの数。 |
 | | **deviceJobStatistics.failedCount**: ジョブが失敗したデバイスの数。 |
 | | **deviceJobStatistics.succeededCount**: ジョブが成功したデバイスの数。 |
 | | **deviceJobStatistics.runningCount**: 現在ジョブが実行中であるデバイスの数。 |
-| | **deviceJobStatistics.pendingCount**: ジョブの実行が保留中であるデバイスの数。 |
+| | **deviceJobStatistics.pendingCount**: 現在ジョブの実行が保留されているデバイスの数。 |
 
 ### <a name="additional-reference-material"></a>参考資料
 

@@ -3,8 +3,8 @@ title: Azure Service Fabric コンテナー サービスのネットワーク �
 description: Azure Service Fabric によってサポートされるさまざまなネットワーク モードを設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: 55f388ed15167c5bc7262e194e09e4a92ba50af4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.author: aljo, subramar
+ms.openlocfilehash: 6f14b3184cabd1dfd84f04260f6b8c831037cbcf
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866068"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668128"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -30,12 +30,12 @@ ms.locfileid: "52866068"
 コンテナー サービスが再起動するか、クラスター内の別のノードに移動すると、IP アドレスが変わります。 このため、動的に割り当てられる IP アドレスを使ってコンテナー サービスを検出することはお勧めしません。 サービスの検出には、Service Fabric ネーム サービスまたは DNS サービスのみを使う必要があります。 
 
 >[!WARNING]
->Azure では、仮想ネットワークごとに全部で 4,096 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 4,096 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。
+>Azure では、仮想ネットワークごとに全部で 65,356 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 65,356 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。 さらに、ロード バランサーなどの他の依存関係には、考慮すべきその他の[制限](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)があります。 現在、ノードあたり最大 50 個の IP アドレスをテストして、安定性が証明されています。 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Open ネットワーク モードを設定する
 
-1. Azure Resource Manager テンプレートを設定します。 **fabricSettings** セクションで、DNS サービスと IP プロバイダーを有効にします。 
+1. Azure Resource Manager テンプレートを設定します。 クラスター リソースの **fabricSettings** セクションで、DNS サービスと IP プロバイダーを有効にします。 
 
     ```json
     "fabricSettings": [
@@ -58,15 +58,6 @@ ms.locfileid: "52866068"
                     ]
                 },
                 {
-                    "name":  "Trace/Etw", 
-                    "parameters": [
-                    {
-                            "name": "Level",
-                            "value": "5"
-                    }
-                    ]
-                },
-                {
                     "name": "Setup",
                     "parameters": [
                     {
@@ -77,8 +68,10 @@ ms.locfileid: "52866068"
                 }
             ],
     ```
+    
+2. 仮想マシン スケール セット リソースのネットワーク プロファイルのセクションを設定します。 これにより、複数の IP アドレスをクラスターの各ノード上に構成できます。 次の例は、Windows/Linux Service Fabric クラスター用にノードごとに 5 つの IP アドレスを設定します。 各ノードのポートで 5 つのサービス インスタンスがリッスンできます。 Azure Load Balancer から 5 つの IP にアクセスできるようにするには、次に示すように、Azure Load Balancer バックエンド アドレス プールに 5 つの IP を登録します。  また、変数セクション内のテンプレート上部に変数を追加する必要があります。
 
-2. 複数の IP アドレスをクラスターの各ノードに構成できるように、ネットワーク プロファイル セクションを設定します。 次の例は、Windows/Linux Service Fabric クラスター用にノードごとに 5 つの IP アドレスを設定します。 各ノードのポートで 5 つのサービス インスタンスがリッスンできます。 Azure Load Balancer から 5 つの IP にアクセスできるようにするには、次に示すように、Azure Load Balancer バックエンド アドレス プールに 5 つの IP を登録します。
+    次のコード セクションを変数に追加します。
 
     ```json
     "variables": {
@@ -97,6 +90,11 @@ ms.locfileid: "52866068"
         "lbHttpProbeID0": "[concat(variables('lbID0'),'/probes/FabricHttpGatewayProbe')]",
         "lbNatPoolID0": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]"
     }
+    ```
+    
+    次のコード セクションを仮想マシン スケール セット リソースに追加します。
+
+    ```json   
     "networkProfile": {
                 "networkInterfaceConfigurations": [
                   {
@@ -205,7 +203,7 @@ ms.locfileid: "52866068"
    |Setting |値 | |
    | --- | --- | --- |
    |優先順位 |2000 | |
-   |Name |Custom_Dns  | |
+   |名前 |Custom_Dns  | |
    |ソース |VirtualNetwork | |
    |宛先 | VirtualNetwork | |
    |Service | DNS (UDP/53) | |
@@ -216,7 +214,7 @@ ms.locfileid: "52866068"
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <ApplicationManifest ApplicationTypeName="NodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ApplicationManifest ApplicationTypeName="NodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
       <Description>Calculator Application</Description>
       <Parameters>
         <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>

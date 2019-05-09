@@ -3,19 +3,19 @@ title: リファレンス - Azure Active Directory B2C の信頼フレームワ�
 description: Azure Active Directory B2C のカスタム ポリシーと Identity Experience Framework に関するトピック。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.subservice: B2C
+ms.openlocfilehash: 8debab073d65cd64303d2f395b73a3a04e8105b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185781"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166868"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Azure AD B2C Identity Experience Framework で信頼フレームワークを定義する
 
@@ -49,8 +49,7 @@ TF は Open Identity Exchange (OIX) の信頼フレームワーク モデルの�
     - 参加者によって提供または要求される保証のレベル (LOA)。たとえば、デジタル ID 情報の信頼性に関する信頼評価値の順序付けされたセット。
     - 参加者によって提供または要求される保護のレベル (LOP)。たとえば、関係者コミュニティの参加者が扱うデジタル ID 情報の保護に関する信頼評価値の順序付けされたセット。
 
-- 
-  **参加者によって提供または要求されるデジタル ID 情報についての説明**。
+- **参加者によって提供または要求されるデジタル ID 情報についての説明**。
 
 - **デジタル ID 情報の作成と使用、および LOA と LOP の測定に関する技術ポリシー。このような文書化されたポリシーには、通常、以下のようなカテゴリが含まれています。**
     - ID 証明ポリシー。例: *個人の ID 情報がどれだけ詳細に審査されているか。*

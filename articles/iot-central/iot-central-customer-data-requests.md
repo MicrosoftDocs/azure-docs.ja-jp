@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bb5e263b0332f957b4e7f4a928ccd53f639bcd9c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2952008ca788a620f2b558d5997aeebd59196b7a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629407"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314570"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -33,7 +33,7 @@ Microsoft Enterprise Services を使用すると、システム生成ログと�
 
 ## <a name="deleting-customer-data"></a>顧客データの削除
 
-ユーザー データを削除する機能は、IoT Central の管理ページでのみ提供されます。 アプリケーション管理者は、削除するユーザーを選択し、アプリケーションの右上隅の **[削除]** をクリックするとレコードを削除できます。 アプリケーション管理者は、対象のアプリケーションとの関連がなくなった個々のアカウントも削除できます。
+ユーザー データを削除する機能は、IoT Central の管理ページでのみ提供されます。 アプリケーション管理者は、削除するユーザーを選択し、アプリケーションの右上隅の **[削除]** を選択するとレコードを削除できます。 アプリケーション管理者は、対象のアプリケーションとの関連がなくなった個々のアカウントも削除できます。
 
 ユーザーが削除されると、そのユーザーには以後アラートが電子メールで送信されなくなります。 ただし、ユーザーの電子メール アドレスは、構成された各アラートから個別に削除する必要があります。
 

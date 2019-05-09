@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 5baa392d098b0b0e40986bc426c88785db025a29
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255297"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59276883"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>ノートブック内からパッケージをインストールする
 

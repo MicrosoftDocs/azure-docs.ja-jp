@@ -6,17 +6,18 @@ keywords: クリップ;サブクリップ;エンコード;メディア
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6a479218ff8bd5addf4273b23c06380859e0ea08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ec8cd06be78bbd8df0bca390696e736c3a6ee075
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782901"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002632"
 ---
-# <a name="loading-assets-into-azure-media-clipper"></a>Azure Media Clipper への資産の読み込み
+# <a name="loading-assets-into-azure-media-clipper"></a>Azure Media Clipper への資産の読み込み  
+
 資産は、次の 2 つの方法で Azure Media Clipper に読み込むことができます。
 1. 資産のライブラリに静的に渡す
 2. API を使用して資産のリストを動的に生成する
@@ -136,7 +137,7 @@ Clipper にビデオを動的に読み込んで、エンド ユーザーが資�
     // - take: int value used for pagination in the back-end that allows defining the number of assets to include in the response.
     // - type: ('filter', 'asset') value that will be used in the back-end to filter assets by type.
     //
-    // Returns: a Promise object that, when resolved, retuns an object containing an array of assets (input contract)
+    // Returns: a Promise object that, when resolved, returns an object containing an array of assets (input contract)
     //          that satisfies the filter parameters, plus optionally the total types of files available:
     // {
     //  total: 100,

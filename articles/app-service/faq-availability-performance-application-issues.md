@@ -16,13 +16,17 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721565"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565965"
 ---
+> [!NOTE]
+> 以下のガイドラインのいくつかは、Windows または Linux App Services でのみ有効な場合があります。 たとえば、Linux App Services は既定で 64 ビット モードで動作します。
+>
+
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
 この記事では、[Azure App Service の Web アプリ機能](https://azure.microsoft.com/services/app-service/web/)でのアプリケーション パフォーマンスの問題に関するよくあるご質問 (FAQ) への回答を示します。
@@ -43,7 +47,7 @@ CPU 使用量が多い一部のシナリオでは、アプリが実際により�
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>PowerShell を使用して App Service Web アプリを自動化するにはどうすればよいですか?
 
-PowerShell コマンドレットを使用すると、App Service Web アプリを管理および維持できます。 ブログの投稿「[Automate web apps hosted in Azure App Service by using PowerShell (PowerShell を使用して Azure App Service でホストされた Web アプリを自動化する)](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)」では、Azure Resource Manager ベースの PowerShell コマンドレットを使用して一般的なタスクを自動化する方法について説明しています。 このブログの投稿にはまた、さまざまな Web アプリ管理タスクのサンプル コードも含まれています。 すべての App Service Web アプリ コマンドレットの説明と構文については、「[AzureRM.Websites](https://docs.microsoft.com/powershell/module/azurerm.websites/?view=azurermps-4.0.0)」を参照してください。
+PowerShell コマンドレットを使用すると、App Service Web アプリを管理および維持できます。 ブログの投稿「[Automate web apps hosted in Azure App Service by using PowerShell (PowerShell を使用して Azure App Service でホストされた Web アプリを自動化する)](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)」では、Azure Resource Manager ベースの PowerShell コマンドレットを使用して一般的なタスクを自動化する方法について説明しています。 このブログの投稿にはまた、さまざまな Web アプリ管理タスクのサンプル コードも含まれています。 すべての App Service Web アプリ コマンドレットの説明と構文については、「[Az.Websites](/powershell/module/az.websites)」を参照してください。
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Web アプリのイベント ログを表示するにはどうすればよいですか?
 
@@ -113,7 +117,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 10. **Web.config** を選択します。
 11. system.webServer で、この構成を追加します (特定の URL をキャプチャする場合)。
 
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*api*" />
@@ -129,7 +133,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
     </tracing>
     ```
 12. 低速なパフォーマンスの問題をトラブルシューティングするには、この構成を追加します (キャプチャ要求が 30 秒を超える場合)。
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*" />

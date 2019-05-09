@@ -4,22 +4,27 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用したイメージの配色の検出に関連する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d0cb6ca751c844846288e8fe26f6ae542e89831
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 6b25da9b2569b0185d41684c45a22a3eb3377511
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339494"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313077"
 ---
-# <a name="detecting-color-schemes"></a>配色の検出
+# <a name="detect-color-schemes-in-images"></a>イメージ内の配色を検出する
 
-Computer Vision では、イメージから色を抽出します。 次に、前景のドミナント カラー、背景のドミナント カラー、イメージ全体のドミナント カラーの 3 種類のコンテキストで色が分析されます。 これらは 12 色のドミナント アクセント カラーにグループ分けされます。 そのアクセント カラーは、黒、青、茶色、灰色、緑、オレンジ、ピンク、紫、赤、青緑、白、黄色です。 Computer Vision が、イメージから抽出された色を分析し、イメージの最も鮮やかな色を表すアクセント カラーをドミナント カラーと彩度の組み合わせでビューアーに返します。 イメージの色に応じて、シンプルな白黒またはアクセント カラーが 16 進数のカラー コードで返される場合があります。 Computer Vision でも、イメージが白黒であるかどうかを示すブール値を返します。
+Computer Vision では、イメージ内のカラーが分析され、前景のドミナント カラー、背景のドミナント カラー、およびイメージ全体の一連のドミナント カラーの 3 種類の属性が利用できます。 返されるカラーは、黒、青、茶色、灰色、緑、オレンジ、ピンク、紫、赤、青緑、白、黄色のセットに属しています。 
+
+Computer Vision では、ドミナント カラーと彩度の組み合わせに基づき、イメージ内で最も鮮やかなカラーを表すアクセント カラーも抽出されます。 アクセント カラーは、16 進数の HTML カラー コードとして返されます。 
+
+Computer Vision では、イメージが白黒であるかどうかを示すブール値も返されます。
 
 ## <a name="color-scheme-detection-examples"></a>配色の検出の例
 
@@ -47,31 +52,31 @@ Computer Vision では、イメージから色を抽出します。 次に、前
 
 ### <a name="dominant-color-examples"></a>ドミナント カラーの例
 
-次の表は、Computer Vision によって返されるイメージの例それぞれの前景、背景、イメージのドミナント カラーを示しています。
+次の表は、各イメージ例について返された前景のカラー、背景のカラー、およびイメージのカラーを示しています。
 
-| イメージ | ドミナント カラー |
+| Image | ドミナント カラー |
 |-------|-----------------|
-|![Vision Analyze 花](./Images/flower.png)| 前景: 黒<br/>背景: 白<br/>色: 黒、白、緑|
-![Vision Analyze 鉄道の駅](./Images/train_station.png) | 前景: 黒<br/>背景: 黒<br/>色: 黒 |
+|![白い花と緑の背景](./Images/flower.png)| 前景:黒<br/>背景:白<br/>色:黒、白、緑|
+![駅を通過中の電車](./Images/train_station.png) | 前景:黒<br/>背景:黒<br/>色:黒 |
 
 ### <a name="accent-color-examples"></a>アクセント カラーの例
 
- 次の表は、Computer Vision によって返されるイメージの例それぞれのアクセント カラーを 16 進数の HTML カラー値で示しています。
+ 次の表は、各イメージ例について返されたアクセント カラーを 16 進数の HTML カラー値で示したものです。
 
-| イメージ | アクセント カラー |
+| Image | アクセント カラー |
 |-------|--------------|
-|![屋外の山](./Images/mountain_vista.png) | #BB6D10 |
-|![Vision Analyze 花](./Images/flower.png) | #C6A205 |
-|![Vision Analyze 鉄道の駅](./Images/train_station.png) | #474A84 |
+|![日没時に山頂の岩の上に立っている人物](./Images/mountain_vista.png) | #BB6D10 |
+|![白い花と緑の背景](./Images/flower.png) | #C6A205 |
+|![駅を通過中の電車](./Images/train_station.png) | #474A84 |
 
 ### <a name="black--white-detection-examples"></a>白黒の検出の例
 
-次の表は、Computer Vision によって返されるイメージの例それぞれが白黒であるかどうかを示しています。
+次の表は、イメージ例における Computer Vision の白黒の評価を示しています。
 
-| イメージ | 白黒かどうか |
+| Image | 白黒かどうか |
 |-------|----------------|
-|![Vision Analyze ビル](./Images/bw_buildings.png) | true |
-|![Vision Analyze 家の庭](./Images/house_yard.png) | false |
+|![マンハッタンのビル群の白黒写真](./Images/bw_buildings.png) | true |
+|![青い家と前庭](./Images/house_yard.png) | false |
 
 ## <a name="next-steps"></a>次の手順
 

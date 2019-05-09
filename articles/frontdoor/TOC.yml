@@ -1,83 +1,100 @@
-items:
 - name: Front Door Service のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure Front Door Service とは
-    href: front-door-overview.md
+    - name: Azure Front Door Service とは
+      href: front-door-overview.md
 - name: クイック スタート
   items:
-  - name: Front Door を作成する
-    href: quickstart-create-front-door.md
+    - name: Front Door を作成する
+      href: quickstart-create-front-door.md
 - name: チュートリアル
   items:
-  - name: Front Door にカスタム ドメインを追加する
-    href: front-door-custom-domain.md
-  - name: カスタム ドメインに対する HTTPS の有効化
-    href: front-door-custom-domain-https.md
-  - name: フロント ドアに geo フィルタリング ポリシーを設定する
-    href: front-door-tutorial-geo-filtering.md
+    - name: Front Door にカスタム ドメインを追加する
+      href: front-door-custom-domain.md
+    - name: カスタム ドメインに対する HTTPS の有効化
+      href: front-door-custom-domain-https.md
+    - name: フロント ドアに geo フィルタリング ポリシーを設定する
+      href: front-door-tutorial-geo-filtering.md
 - name: サンプル
   items:
-  - name: リソース マネージャーのテンプレート
-    href: front-door-quickstart-template-samples.md
+    - name: リソース マネージャーのテンプレート
+      href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
-  - name: アプリケーション層のセキュリティ
-    href: front-door-application-security.md
-  - name: バック エンドとバックエンド プール
-    href: front-door-backend-pool.md
-  - name: Front Door でのキャッシュ
-    href: front-door-caching.md
-  - name: geo フィルタリング
-    href: front-door-geo-filtering.md
-  - name: 正常性プローブ
-    href: front-door-health-probes.md
-  - name: Front Door が要求のルーティングと一致する仕組み
-    href: front-door-route-matching.md
-  - name: HTTP/2 のサポート
-    href: front-door-http2.md
-  - name: HTTP ヘッダー プロトコルのサポート
-    href: front-door-http-headers-protocol.md
-  - name: Azure のアプリケーション配信スイートでの負荷分散
-    href: front-door-lb-with-azure-app-delivery-suite.md
-  - name: 監視
-    href: front-door-diagnostics.md
-  - name: ルーティング アーキテクチャ
-    href: front-door-routing-architecture.md
-  - name: トラフィックのルーティング方法
-    href: front-door-routing-methods.md
-  - name: URL 書き換え
-    href: front-door-url-rewrite.md
+    - name: バック エンドとバックエンド プール
+      href: front-door-backend-pool.md
+    - name: Front Door でのキャッシュ
+      href: front-door-caching.md
+    - name: geo フィルタリング
+      href: front-door-geo-filtering.md
+    - name: 正常性プローブ
+      href: front-door-health-probes.md
+    - name: Front Door が要求のルーティングと一致する仕組み
+      href: front-door-route-matching.md
+    - name: HTTP/2 のサポート
+      href: front-door-http2.md
+    - name: HTTP ヘッダー プロトコルのサポート
+      href: front-door-http-headers-protocol.md
+    - name: Azure のアプリケーション配信スイートでの負荷分散
+      href: front-door-lb-with-azure-app-delivery-suite.md
+    - name: 監視
+      href: front-door-diagnostics.md
+    - name: ルーティング アーキテクチャ
+      href: front-door-routing-architecture.md
+    - name: トラフィックのルーティング方法
+      href: front-door-routing-methods.md
+    - name: URL 書き換え
+      href: front-door-url-rewrite.md
+    - name: WAF
+      items:
+        - name: 概要
+          href: waf-overview.md
+        - name: カスタム規則
+          href: waf-front-door-custom-rules.md
+        - name: ポリシー設定
+          href: waf-front-door-policy-settings.md
+        - name: 監視およびログ記録
+          href: waf-front-door-monitor.md
 - name: ハウツー ガイド
   items:
-  - name: トラブルシューティング
-    items:
-    - name: ルーティングの問題のトラブルシューティング
-      href: front-door-troubleshoot-routing.md
-    - name: 許可された証明機関
-      href: front-door-troubleshoot-allowed-ca.md
+    - name: トラブルシューティング
+      items:
+        - name: ルーティングの問題のトラブルシューティング
+          href: front-door-troubleshoot-routing.md
+        - name: 許可された証明機関
+          href: front-door-troubleshoot-allowed-ca.md
+    - name: WAF の構成
+      items:
+        - name: WAF ポリシーの構成 - ポータル
+          href: waf-front-door-create-portal.md
+        - name: WAF ポリシーの構成 - Azure PowerShell
+          href: waf-front-door-custom-rules-powershell.md
+        - name: カスタム応答コードの構成
+          href: waf-front-door-configure-custom-response-code.md
+        - name: WAF の速度制限の構成 - Azure PowerShell
+          href: waf-front-door-rate-limit-powershell.md
+- name: FAQ
+  items:
+    - name: Front Door に関する FAQ
+      href: front-door-faq.md
+    - name: WAF に関する FAQ
+      href: waf-faq.md
 - name: リファレンス
   items:
-  - name: Azure CLI
-    href: /cli/azure/ext/front-door/
-  - name: Azure PowerShell
-    href: /powershell/module/azurerm.frontdoor
-  - name: REST API
-    href: /rest/api/frontdoor
+    - name: Azure CLI
+      href: /cli/azure/ext/front-door/
+    - name: Azure PowerShell
+      href: /powershell/module/az.frontdoor
+    - name: REST API
+      href: /rest/api/frontdoor
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/frontdoor/
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: 612eb843ebdc4d26d2308dcc2ff66ad99379300b
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085616"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/frontdoor/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=frontdoor'

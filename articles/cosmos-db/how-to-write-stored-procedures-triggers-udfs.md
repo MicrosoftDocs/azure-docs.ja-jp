@@ -6,18 +6,21 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: d38cc37a23e954ad172e2c59a7b815fbd24b0d89
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411145"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59268416"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
 Azure Cosmos DB では、統合された JavaScript 言語によるトランザクション実行が可能なため、開発者は、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を記述できます。 Azure Cosmos DB で SQL API を使用するとき、ストアド プロシージャ、トリガー、および UDF を JavaScript 言語で定義できます。 JavaScript でロジックを記述し、データベース エンジン内でロジックを実行することができます。 トリガー、ストアド プロシージャ、および UDF は、[Azure portal](https://portal.azure.com/)、[Azure Cosmos DB のJavaScript 言語統合クエリ API](javascript-query-api.md)、[Cosmos DB SQL API クライアント SDK](sql-api-dotnet-samples.md) を使用して作成および実行できます。 
 
 ストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出すには、これを登録する必要があります。 詳細については、[Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を操作する方法](how-to-use-stored-procedures-triggers-udfs.md)に関する記事を参照してください。
+
+> [!NOTE]
+> パーティション分割されたコンテナーの場合、ストアド プロシージャを実行するとき、要求オプションにパーティション キー値を指定する必要があります。 ストアド プロシージャは常に 1 つのパーティション キーに範囲設定されます。 別のパーティション キー値を持つ項目は、ストアド プロシージャから認識できません。 このことはトリガーにも該当します。
 
 ## <a id="stored-procedures"></a>ストアド プロシージャを記述する方法
 
@@ -96,7 +99,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 'SELECT * FROM Players p where p.id  = "' + playerId1 + '"';
+    var filterQuery = 
+    {     
+        'query' : 'SELECT * FROM Players p where p.id = @playerId1',
+        'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
+    };
+            
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -104,7 +112,11 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 'SELECT * FROM Players p where p.id = "' + playerId2 + '"';
+            var filterQuery2 = 
+            {     
+                'query' : 'SELECT * FROM Players p where p.id = @playerId2',
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+            };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
                     if (err2) throw new Error("Error" + err2.message);
@@ -267,7 +279,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-ここで重要なのは、Azure Cosmos DB でのトリガーのトランザクション実行です。 このポストトリガーは、Azure Cosmos DB 項目の作成で使用される同じトランザクションの一部として実行されます。 したがって、(たとえば、メタデータ 項目を更新できないという理由で) ポストトリガーの実行中に例外を受け取る場合、トランザクション全体が失敗してロールバックされます。 したがって、Azure Cosmos DB 項目が作成され、例外が返されます。
+ここで重要なのは、Azure Cosmos DB でのトリガーのトランザクション実行です。 ポストトリガーは、基になる項目自体と同じトランザクションの一部として実行されます。 ポストトリガーの実行中に例外が発生すると、トランザクション全体が失敗します。 コミットされたものすべてがロールバックされ、例外が返されます。
 
 プリトリガーを登録して呼び出す方法の例については、[プリトリガー](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)と[ポストトリガー](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)に関する記事を参照してください。 
 
@@ -277,9 +289,9 @@ function updateMetadataCallback(err, items, responseOptions) {
 
 ```json
 {
-   name = "Satya Nadella",
-   country = "USA",
-   income = 70000
+   "name": "Satya Nadella",
+   "country": "USA",
+   "income": 70000
 }
 ```
 

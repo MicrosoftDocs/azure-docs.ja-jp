@@ -4,22 +4,23 @@ description: Azure Active Directory と AppDynamics の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 25fd1df0-411c-4f55-8be3-4273b543100f
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e2620a40eb4998d8d5e97108208731d679e004d6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d6b8edf2627ade23fc6d1125afbabc34a1d9d21b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>チュートリアル:Azure Active Directory と AppDynamics の統合
 
@@ -129,29 +130,29 @@ AppDynamics で Azure AD シングル サインオンを構成するには、次
 
 ### <a name="configure-appdynamics-single-sign-on"></a>AppDynamics のシングル サインオンを構成する
 
-7. 別の Web ブラウザーのウィンドウで、管理者として AppDynamics 企業サイトにログインします。
+1. 別の Web ブラウザーのウィンドウで、管理者として AppDynamics 企業サイトにログインします。
 
-8. 上部にあるツールバーで **[Settings]**、**[Administration]** の順にクリックします。
+1. 上部にあるツールバーで **[Settings]**、**[Administration]** の順にクリックします。
 
     ![Administration](./media/appdynamics-tutorial/ic790216.png "Administration")
 
-9. **[Authentication Provider]** タブをクリックします。
+1. **[Authentication Provider]** タブをクリックします。
 
     ![Authentication Provider](./media/appdynamics-tutorial/ic790224.png "Authentication Provider")
 
-10. **[Authentication Provider]** セクションで、次の手順を実行します。
+1. **[Authentication Provider]** セクションで、次の手順を実行します。
 
-    ![SAML の構成](./media/appdynamics-tutorial/ic790225.png "SAML の構成")
+   ![SAML の構成](./media/appdynamics-tutorial/ic790225.png "SAML の構成")
 
-    a. **[Authentication Provider]** として、**[SAML]** を選択します。
+   a. **[Authentication Provider]** として、**[SAML]** を選択します。
 
-    b. **[ログイン URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+   b. **[ログイン URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    c. **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+   c. **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-    d. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[証明書]** テキストボックスに貼り付けます。
+   d. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[証明書]** テキストボックスに貼り付けます。
 
-    e. **[Save]** をクリックします。
+   e. **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -171,7 +172,7 @@ AppDynamics で Azure AD シングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -221,7 +222,7 @@ AppDynamics で Azure AD シングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

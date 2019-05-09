@@ -4,25 +4,25 @@ titleSuffix: Azure Machine Learning service
 description: この攻略ガイドでは、Azure Machine Learning のリソースにおけるさまざまなクォータと、さらに多くのクォータを表示および要求する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b868e20ebb1054864116957fd671a17e2d980c0a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083854"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904645"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
 
 他の Azure サービスと同様に、Azure Machine Learning サービスに関連付けられている特定のリソースにも制限があります。 これらの制限は、作成できるワークスペースの数の上限から、モデルのトレーニングや推論に使用される実際の基盤となるコンピューティングに対する制限まで、多岐にわたります。 この記事では、サブスクリプションのさまざまな Azure リソースに対して事前に構成された制限に関する詳細について説明します。また、リソースの種類ごとにクォータの拡張を要求する便利なリンクも含まれています。 これらの制限は、不正による予算超過を防ぎ、Azure の容量の制約を尊重するために設けられています。
 
-実稼働環境のワークロードに対して Azure ML リソースの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、クラスターのノード数がターゲットとして指定した数に満たない場合は、サブスクリプションの Azure Machine Learning コンピューティング コアの制限に達している可能性があります。 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、オンライン カスタマー サポートに申請 (無料) してください。 Azure の容量の制約があるため、次の表に示されている上限の値を超える制限の引き上げはできません。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。 
+実稼働環境のワークロードに対して Azure Machine Learning service リソースの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、クラスターのノード数がターゲットとして指定した数に満たない場合は、ご使用のサブスクリプションの Azure Machine Learning コンピューティング コアの制限に達している可能性があります。 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、オンライン カスタマー サポートに申請 (無料) してください。 Azure の容量の制約があるため、次の表に示されている上限の値を超える制限の引き上げはできません。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 
 ## <a name="special-considerations"></a>特別な考慮事項
 
@@ -34,19 +34,19 @@ ms.locfileid: "53083854"
 
 ## <a name="default-resource-quotas"></a>既定のリソース クォータ
 
-ここでは、Azure サブスクリプション内のさまざまなリソースの種類ごとのクォータ制限の内訳を示します。 
+ここでは、Azure サブスクリプション内のさまざまなリソースの種類ごとのクォータ制限の内訳を示します。
 
 > [!Important]
 > 制限は変更されることがあります。 最新の制限は、すべての Azure のサービス レベルのクォータ [ドキュメント](https://docs.microsoft.com/azure/azure-subscription-service-limits/)で見つかります。
 
-### <a name="virtual-machines"></a>仮想マシン 
+### <a name="virtual-machines"></a>仮想マシン
 サービス全体で、またはスタンドアロンの方法で、Azure サブスクリプションでプロビジョニングできる仮想マシンの数には制限があります。 この制限はリージョン レベルで、コアの合計数とファミリ ベースの両方に適用されます。
 
 仮想マシンのコアには、リージョンの合計の制限だけでなく、別に適用されるリージョンのサイズ シリーズ (Dv2、F など) ごとの制限もあることに注意してください。 たとえば、米国東部で VM のコア上限が 30、A シリーズのコア上限が 30、D シリーズのコア上限が 30 のサブスクリプションがあるとします。 このサブスクリプションでは、30 の A1 VM、30 の D1 VM、または合計コア数が 30 を超えないこの 2 つの組み合わせ (例: 10 の A1 VM と 20 の D1 VM) のデプロイが許可されます。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-クォータ制限の詳細および最新のリストについては、[こちら](https://docs.microsoft.com/azure/azure-subscription-service-limits#subscription-limits-1)の Azure 全体のクォータの記事を確認してください。
+クォータ制限の詳細および最新のリストについては、[こちら](https://docs.microsoft.com/azure/azure-subscription-service-limits)の Azure 全体のクォータの記事を確認してください。
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning コンピューティング
 Azure Machine Learning コンピューティングでは、サブスクリプションのリージョンごとに許可されるコアの数と一意のコンピューティング リソースの数の両方に対して、既定のクォータ制限があります。 このクォータは上記の VM コア クォータとは別で、コアの制限は 2 つのリソースの種類間で現在共有されていません。
@@ -91,8 +91,8 @@ Azure portal を使用すると、仮想マシン、ストレージ、ネット�
 
 1. サブスクリプションの一覧から、検索するクォータのサブスクリプションを選択します。
 
-   特に Azure Machine Learning コンピューティングのクォータの表示については、**1 つの注意点があります**。 前述のように、サブスクリプションではクォータはコンピューティング クォータとは切り離されています。 
-   
+   特に Azure Machine Learning コンピューティングのクォータの表示については、**1 つの注意点があります**。 前述のように、サブスクリプションではクォータはコンピューティング クォータとは切り離されています。
+
 1. 左側のウィンドウで、 **[Machine Learning サービス]** を選択して、表示された一覧からいずれかのワークスペースを選択します。
 
 1. 次のブレードの **[Support + troubleshooting]\(サポート + トラブルシューティング\) セクション**で、**[Usage + quotas]\(使用量 + クォータ\)** を選択して、現在のクォータ制限と使用状況を表示します。

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091045"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000548"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -41,12 +41,13 @@ Azure Stream Analytics を使用するときは、出力でパーティション
 -   Azure Functions
 -   Azure テーブル
 -   Blob Storage (パーティション キーを明示的に設定できます)
--   CosmosDB (パーティション キーを明示的に設定する必要があります)
--   EventHub (パーティション キーを明示的に設定する必要があります)
+-   Cosmos DB (パーティション キーを明示的に設定する必要があります)
+-   Event Hubs (パーティション キーを明示的に設定する必要があります)
 -   IoT Hub (パーティション キーを明示的に設定する必要があります)
 -   Service Bus
+- オプションのパーティション分割を使用した SQL および SQL Data Warehouse: 詳細については、[Azure SQL Database への出力](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)に関するページを参照してください。
 
-PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割はサポートされません。 ただし、[このセクション](#multi-step-query-with-different-partition-by-values)の説明に従って入力をパーティション分割することはできます 
+Power BI では、パーティション分割がサポートされていません。 ただし、[このセクション](#multi-step-query-with-different-partition-by-values)の説明に従って入力をパーティション分割することはできます 
 
 パーティションの詳細については、次の記事をご覧ください。
 
@@ -115,9 +116,9 @@ PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割
 
 ### <a name="query-using-non-partitioned-output"></a>パーティション分割されていない出力を使用したクエリ
 * 次の内容を入力します。8 個のパーティションがあるイベント ハブ
-* 出力:PowerBI
+* 出力:Power BI
 
-現在、PowerBI 出力ではパーティション分割をサポートしていません。 そのため、このシナリオは驚異的並列ではありません。
+現在、Power BI 出力ではパーティション分割がサポートされていません。 そのため、このシナリオは驚異的並列ではありません。
 
 ### <a name="multi-step-query-with-different-partition-by-values"></a>PARTITION BY 値が異なる複数ステップのクエリ
 * 次の内容を入力します。8 個のパーティションがあるイベント ハブ

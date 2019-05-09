@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: 同期中のエラーのトラブルシューティング | Microsoft Docs'
+title: Azure AD Connect:同期中のエラーのトラブルシューティング | Microsoft Docs
 description: Azure AD Connect の同期中に発生したエラーのトラブルシューティングを行う方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 2209d5ce-0a64-447b-be3a-6f06d47995f8
 ms.service: active-directory
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2ba74961eb549afd2fcf7c10f2d8b981e389a2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250472"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845095"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -30,7 +31,7 @@ Azure AD Connect の最新バージョン \(2016 年 8 月以降\) では、同�
 
 2016 年 9 月 1 日以降、[Azure Active Directory Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) 機能がすべての "*新しい*" Azure Active Directory テナントに対して既定で有効になります。 この機能は既存のテナントについても数か月のうちに自動的に有効になります。
 
-Azure AD Connect は、同期を保つディレクトリに対して 3 種類の操作 (インポート、同期、エクスポート) を実行します。 エラーは、どの操作でも発生する可能性があります。 この記事では、主に、Azure AD へのエクスポート中のエラーについて説明します。
+Azure AD Connect は、同期を保つディレクトリに対して 3 種類の操作を実行します。インポート、同期、エクスポートです。 エラーは、どの操作でも発生する可能性があります。 この記事では、主に、Azure AD へのエクスポート中のエラーについて説明します。
 
 ## <a name="errors-during-export-to-azure-ad"></a>Azure AD へのエクスポート中のエラー
 この後のセクションで、Azure AD コネクタを使用した Azure AD へのエクスポート操作中に発生するさまざまな種類の同期エラーについて説明します。 このコネクタは、"contoso.*onmicrosoft.com*" という形式の名前で識別されます。
@@ -71,19 +72,19 @@ Azure Active Directory スキーマでは、次の属性について複数のオ
 
 #### <a name="example-case"></a>事例:
 1. **Bob Smith** は、オンプレミス Active Directory (*contoso.com*) と同期されている、Azure Active Directory のユーザーです。
-2. Bob Smith の **UserPrincipalName** は **bobs@contoso.com** として設定されています。
+2. Bob Smith の **UserPrincipalName** は **bobs\@contoso.com** として設定されています。
 3. **"abcdefghijklmnopqrstuv=="** は **SourceAnchor** です。これは、オンプレミス Active Directory の Bob Smith の **objectGUID** (すなわち Azure Active Directory の Bob Smith の **immutableId**) を使用して Azure AD Connect によって計算されます。
 4. Bob には、**proxyAddresses** 属性に次の値もあります。
    * smtp: bobs@contoso.com
    * smtp: bob.smith@contoso.com
-   * **smtp: bob@contoso.com**
+   * **smtp: bob\@contoso.com**
 5. 新しいユーザー **Bob Taylor** がオンプレミス Active Directory に追加されます。
-6. Bob Taylor の **UserPrincipalName** は **bobt@contoso.com** として設定されています。
+6. Bob Taylor の **UserPrincipalName** は **bobt\@contoso.com** として設定されています。
 7. **"abcdefghijkl0123456789==""** は **sourceAnchor** です。これは、オンプレミス Active Directory の Bob Taylor の **objectGUID** を使用して Azure AD Connect によって計算されます。 Bob Taylor のオブジェクトはまだ Azure Active Directory に同期されません。
 8. Bob Taylor には、proxyAddresses 属性に次の値もあります。
    * smtp: bobt@contoso.com
    * smtp: bob.taylor@contoso.com
-   * **smtp: bob@contoso.com**
+   * **smtp: bob\@contoso.com**
 9. 同期中に、Azure AD Connect はオンプレミス Active Directory への Bob Taylor の追加を認識し、同じ変更を行うように Azure AD に依頼します。
 10. Azure AD は、最初に完全一致を実行します。 つまり、immutableId が "abcdefghijkl0123456789==" と等しいオブジェクトがないかどうか検索します。 Azure AD の他のオブジェクトにはその immutableId がないため、完全一致は失敗します。
 11. 次に、Azure AD は、Bob Taylor のあいまい一致を試みます。 つまり、proxyAddresses が smtp: bob@contoso.com など 3 つの値と等しいオブジェクトがないか検索します。
@@ -115,8 +116,8 @@ Azure AD が 2 つのオブジェクトのあいまい一致を試行すると�
 * メール対応セキュリティ グループが Office 365 で作成されます。 管理者は、ProxyAddresses 属性の値が Office 365 グループと同じ新しいユーザーまたは連絡先をオンプレミス ADに追加します (まだ Azure AD に同期されません)。
 
 #### <a name="example-case"></a>事例
-1. 管理者が、税部門のために新しいメール対応セキュリティ グループを Office 365 に作成し、電子メール アドレスを tax@contoso.com と設定します。 このグループには、**smtp: tax@contoso.com** の ProxyAddresses 属性値が割り当てられています。
-2. 新しいユーザーが Contoso.com に加わり、そのユーザーのアカウントが proxyAddress を **smtp: tax@contoso.com** としてオンプレミスに作成されます。
+1. 管理者が、税部門のために新しいメール対応セキュリティ グループを Office 365 に作成し、電子メール アドレスを tax@contoso.com と設定します。 このグループには、**smtp: tax\@contoso.com** の ProxyAddresses 属性値が割り当てられています。
+2. 新しいユーザーが Contoso.com に加わり、そのユーザーのアカウントが proxyAddress を **smtp: tax\@contoso.com** としてオンプレミスに作成されます。
 3. Azure AD Connect が新しいユーザー アカウントを同期するとき、"ObjectTypeMismatch" エラーが生成されます。
 
 #### <a name="how-to-fix-objecttypemismatch-error"></a>ObjectTypeMismatch エラーを修正する方法
@@ -142,16 +143,16 @@ Azure AD Connect が新しいオブジェクトの追加または既存のオブ
 
 #### <a name="example-case"></a>事例:
 1. **Bob Smith** は、オンプレミス Active Directory (contoso.com) と同期されている、Azure Active Directory のユーザーです。
-2. Bob Smith のオンプレミスでの **UserPrincipalName** は **bobs@contoso.com** として設定されています。
+2. Bob Smith のオンプレミスでの **UserPrincipalName** は **bobs\@contoso.com** として設定されています。
 3. Bob には、**proxyAddresses** 属性に次の値もあります。
    * smtp: bobs@contoso.com
    * smtp: bob.smith@contoso.com
-   * **smtp: bob@contoso.com**
+   * **smtp: bob\@contoso.com**
 4. 新しいユーザー **Bob Taylor** がオンプレミス Active Directory に追加されます。
-5. Bob Taylor の **UserPrincipalName** は **bobt@contoso.com** として設定されています。
+5. Bob Taylor の **UserPrincipalName** は **bobt\@contoso.com** として設定されています。
 6. **Bob Taylor** には、**ProxyAddresses** 属性に次の値もあります。i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
 7. Bob Taylor のオブジェクトは Azure AD と正常に同期されます。
-8. 管理者は Bob Taylor の **ProxyAddresses** 属性を次の値で更新することにしました。i. **smtp: bob@contoso.com**
+8. 管理者は Bob Taylor の **ProxyAddresses** 属性を次の値で更新することにしました。i. **smtp: bob\@contoso.com**
 9. Azure AD は、Bob Taylor の Azure AD 内のオブジェクトを上記の値で更新しようとしますが、この ProxyAddresses 値は既に Bob Smith に割り当てられているため、操作は "AttributeValueMustBeUnique" エラーで失敗します。
 
 #### <a name="how-to-fix-attributevaluemustbeunique-error"></a>AttributeValueMustBeUnique エラーを修正する方法
@@ -185,7 +186,7 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 これにより、ユーザーの UserPrincipalName のサフィックスがあるフェデレーション ドメインから別のフェデレーション ドメインに変更された場合に **"FederatedDomainChangeError"** 同期エラーが発生することになります。
 
 #### <a name="scenarios"></a>シナリオ
-同期されたユーザーで、オンプレミスの UserPrincipalName のサフィックスが、あるフェデレーション ドメインから別のフェデレーション ドメインに変更されました。 たとえば、*UserPrincipalName = bob@contoso.com* が *UserPrincipalName = bob@fabrikam.com* に変更されました。
+同期されたユーザーで、オンプレミスの UserPrincipalName のサフィックスが、あるフェデレーション ドメインから別のフェデレーション ドメインに変更されました。 たとえば、*UserPrincipalName = bob\@contoso.com* が *UserPrincipalName = bob\@fabrikam.com* に変更されました。
 
 #### <a name="example"></a>例
 1. Contoso.com のアカウントである Bob Smith が、新しいユーザーとして UserPrincipalName bob@contoso.com で Active Directory に追加されます。
@@ -194,7 +195,7 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 4. Bob の userPrincipalName は更新されず、"FederatedDomainChangeError" 同期エラーが発生します。
 
 #### <a name="how-to-fix"></a>修正方法
-ユーザーの UserPrincipalName サフィックスが bob@**contoso.com** から bob@**fabrikam.com** に更新され、**contoso.com** と **fabrikam.com** のどちらも**フェデレーション ドメイン**の場合、次の手順に従って同期エラーを修正します。
+ユーザーの UserPrincipalName サフィックスが bob@**contoso.com** から bob\@**fabrikam.com** に更新され、**contoso.com** と **fabrikam.com** のどちらも**フェデレーション ドメイン**の場合、次の手順に従って同期エラーを修正します。
 
 1. Azure AD 内のユーザーの UserPrincipalName を bob@contoso.com から bob@contoso.onmicrosoft.com に更新します。 次の PowerShell コマンドを Azure AD PowerShell Module で使用できます。`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. 次の同期サイクルで同期の試行を許可します。 このとき、同期が成功して、Bob の UserPrincipalName が予期したとおり bob@fabrikam.com に更新されます。

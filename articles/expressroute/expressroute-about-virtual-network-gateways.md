@@ -5,18 +5,20 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: dcae78e507597ae2b7f79cc1d6cbb326ee535696
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d9c607114d6c6c56c25303a88dcc11f4ab804eb4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076595"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404350"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>ExpressRoute 用の仮想ネットワーク ゲートウェイについて
 仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックの送信に使用されます。 仮想ネットワーク ゲートウェイは、ExpressRoute トラフィックまたは VPN トラフィックに使用できます。 この記事では、ExpressRoute 用の仮想ネットワーク ゲートウェイに注目し、SKU、SKU の推定パフォーマンス、およびゲートウェイの種類に関する情報が含まれています。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="gateway-types"></a>ゲートウェイの種類
 
@@ -31,7 +33,7 @@ ms.locfileid: "53076595"
 ## <a name="gwsku"></a>ゲートウェイの SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-ゲートウェイをより強力なゲートウェイ SKU にアップグレードする場合、ほとんどの場合 "Resize-AzureRmVirtualNetworkGateway" PowerShell コマンドレットを使用できます。 これは、Standard および HighPerformance SKU へのアップグレードの場合でも機能します。 ただし、UltraPerformance SKU へのアップグレードでは、ゲートウェイを再作成する必要があります。 ゲートウェイの再作成によりダウンタイムが発生します。
+ゲートウェイをより強力なゲートウェイ SKU にアップグレードする場合、ほとんどの場合 "Resize-AzVirtualNetworkGateway" PowerShell コマンドレットを使用できます。 これは、Standard および HighPerformance SKU へのアップグレードの場合でも機能します。 ただし、UltraPerformance SKU へのアップグレードでは、ゲートウェイを再作成する必要があります。 ゲートウェイの再作成によりダウンタイムが発生します。
 
 ### <a name="aggthroughput"></a>ゲートウェイ SKU の推定パフォーマンス
 次の表は、ゲートウェイの種類と、予測されるパフォーマンスを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
@@ -62,7 +64,7 @@ Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイす
 
 | **クラシック** | **Resource Manager** |
 | --- | --- |
-| [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network#networking) |
+| [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>次の手順

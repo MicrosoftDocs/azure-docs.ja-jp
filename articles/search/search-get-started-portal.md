@@ -1,23 +1,29 @@
 ---
-title: Azure portal を使用したインデックス作成とクエリのクイック スタート チュートリアル - Azure Search
-description: このクイック スタート チュートリアルでは、Azure portal と組み込みのサンプル データを使用して Azure Search のインデックスを生成します。 フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索などについて確認します。
+title: クイック スタート:Azure portal でのインデックスの作成、読み込み、およびクエリの実行 - Azure Search
+description: Azure portal のデータ インポート ウィザードと組み込みのサンプル データを使用して、初めてのインデックスを Azure Search に作成し、クエリを実行します。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001789"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59282663"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>クイック スタート:ポータルのビルトイン ツールを使用した Azure Search のインポート、インデックス作成、クエリ
+> [!div class="op_single_selector"]
+> * [ポータル](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Postman](search-fiddler.md)
+> * [C#](search-create-index-dotnet.md)
+>*
 
 Azure Search の概念をすばやく把握するために、Azure portal のビルトイン ツールをお試しください。 ウィザードとエディターは .NET および REST API と完全には対応していませんが、コーディングなしの導入ですぐに開始でき、サンプル データに対する興味深いクエリを数分以内に記述できます。
 
@@ -34,13 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Search サービスを作成](search-create-service-portal.md)するか、または現在のサブスクリプションから既存のサービスを見つけます。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. Azure Search サービスのサービス ダッシュボードを開きます。 サービス タイルをダッシュボードにピン留めしていない場合、次の手順でサービスを検索します。
-
-   * ジャンプ バーで、左側のナビゲーション ウィンドウの **[すべてのサービス]** をクリックします。
-   * 検索ボックスに「*search*」と入力し、サブスクリプションの検索関連サービスの一覧を取得します。 **[Search サービス]** をクリックします。 サービスが一覧に表示されます。
+[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
 
 ### <a name="check-for-space"></a>領域の確認
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 サービス ダッシュボードのセクションには、既に存在するインデックス、インデクサー、データ ソースの数が表示されます。 
 
-![インデックス、インデックス、データソースの一覧][media/search-get-started-portal/tiles-indexers-datasources2.png]
+![インデックス、インデクサー、およびデータソースの一覧](media/search-get-started-portal/tiles-indexers-datasources2.png)
 
 ## <a name="create-index"></a>インデックスの作成とデータの読み込み
 
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="step-3---configure-index"></a>手順 3 - インデックスを構成する
 
-通常、インデックスの作成はコード ベースの作業であり、データの読み込み前に完了しています。 ただし、このチュートリアルで示すように、ウィザードではクロール可能なデータ ソースを想定して、基本インデックスを生成できます。 インデックスには少なくとも、名前とフィールド コレクションが必要です。さらに、各ドキュメントを一意に識別するためのドキュメント キーとして、いずれかのフィールドがマークされている必要があります。 さらに、オートコンプリートやクエリ候補が必要な場合は、言語アナライザーまたはサジェスターを指定できます。
+通常、インデックスの作成はコード ベースの作業であり、データの読み込み前に完了しています。 ただし、このチュートリアルで示すように、ウィザードではクロール可能なデータ ソースを想定して、基本インデックスを生成できます。 インデックスには少なくとも、名前とフィールド コレクションが必要です。さらに、各ドキュメントを一意に識別するためのドキュメント キーとして、いずれかのフィールドがマークされている必要があります。 さらに、オートコンプリートやクエリ候補が必要な場合は、言語アナライザーまたは suggester を指定できます。
 
 フィールドには、データ型と属性があります。 上部に並んだチェック ボックスは、フィールドがどのように使用されるかを制御する "*インデックスの属性*" です。
 
@@ -94,15 +94,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ストレージ要件は、選択の結果によって変わりません。 たとえば、複数のフィールドで **[取得可能]** 属性を設定した場合、ストレージ要件は上昇しません。
 
-既定では、ウィザードは一意の識別子のデータ ソースをキー フィールドの基準としてスキャンします。 文字列は、取得可能かつ検索可能です。 整数は、取得可能、フィルター可能、ソート可能、ファセット可能です。
+既定では、ウィザードは一意の識別子のデータ ソースをキー フィールドの基準としてスキャンします。 "*文字列*" は、**取得可能**かつ**検索可能**です。 "*整数*" は、**取得可能**、**フィルター可能**、**ソート可能**、**ファセット可能**です。
 
-1. 既定値をすべてそのまま使用します。
+1. 既定値を受け入れます。 
 
-  ![生成された realestate インデックス](media/search-get-started-portal/realestateindex2.png)
+   既存の realestate データ ソースを使用してウィザードを 2 回目に再実行した場合は、インデックスが既定の属性で構成されることはありません。 以降のインポートでは、属性を手動で選択する必要があります。
+
+   ![生成された realestate インデックス](media/search-get-started-portal/realestateindex2.png)
 
 2. 次のページに進みます。
 
-  ![次のページでインデクサーを作成](media/search-get-started-portal/next-button-create-indexer.png)
+   ![次のページでインデクサーを作成](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>手順 4 - インデクサーを構成する
 
@@ -124,9 +126,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="view-the-index"></a>インデックスの表示
 
-**[インデックス]** 一覧には、ウィザードで作成した *realestate-us-sample* インデックスを含む既存のインデックスが表示されます。
+メイン サービス ページには、Azure Search サービスで作成されたリソースへのリンクがあります。  作成したインデックスを表示するには、リンクの一覧の **[インデックス]** をクリックします。 
 
-この一覧から、インデックス スキーマを表示し、必要に応じて新しいフィールドを追加できますが、既存のフィールドを変更することはできません。 既存のフィールドは、Azure Search における物理的表現を含んでいるため、コード内でも編集することはできません。 既存のフィールドを根本的に変えるには、インデックスを新たに作成して、元のインデックスは削除します。
+   ![サービスのダッシュボードのインデックスの一覧](media/search-get-started-portal/indexes-list.png)
+
+この一覧で、作成した *realestate-us-sample* インデックスをクリックすると、インデックス スキーマが表示されます。 また、必要に応じて新しいフィールドを追加できます。 
+
+**[フィールド]** タブには、インデックス スキーマが表示されます。 一覧を下までスクロールし、新しいフィールドを入力します。 ほとんどの場合、既存のフィールドを変更することはできません。 既存のフィールドは、Azure Search における物理的表現を含んでいるため、コード内でも編集することはできません。 既存のフィールドを根本的に変えるには、インデックスを新たに作成して、元のインデックスは削除します。
 
    ![サンプル インデックスの定義](media/search-get-started-portal/sample-index-def.png)
 
@@ -137,6 +143,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="query-index"></a> Search エクスプローラーを使用してクエリを実行する
 
 この時点で検索インデックスは、ビルトインの [**Search エクスプローラー**](search-explorer.md)のクエリ ページを使って照会する準備が整っています。 このページには、任意のクエリ文字列をテストできるよう検索ボックスが備わっています。
+
+**Search エクスプローラー**は、[REST API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
 
 > [!TIP]
 > [Azure Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から 次の手順のデモをご覧いただけます。
@@ -150,11 +158,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
-3. 検索バーで次のクエリ文字列を入力して、**[検索]** をクリックします。
+3. 検索バーで次のクエリ文字列を貼り付けて、**[検索]** をクリックします。
 
-    > [!NOTE]
-    > **Search エクスプローラー**は [REST API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を処理する機能のみを備えています。 Search エクスプローラーは、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文に加え、[ドキュメント検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作で使用できるすべての検索パラメーターを受け取ります。
-    >
+   ![クエリ文字列と検索ボタン](media/search-get-started-portal/search-explorer-query-string-example.png)
 
 ## <a name="example-queries"></a>クエリの例
 
@@ -222,7 +228,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 ### <a name="fuzzy-search"></a> あいまい検索を試す
 
-既定では、シアトル地域の "Samammish" 高原を検索しようとして「*samamish*」と入力するなど、検索語のスペルを間違うと、通常の検索では一致しません。 次の例では、検索結果が 1 件も返されません。
+既定では、シアトル地域の "Sammamish" 高原を検索しようとして「*samamish*」と入力するなど、検索語のスペルを間違うと、通常の検索では一致しません。 次の例では、検索結果が 1 件も返されません。
 
 #### <a name="example-misspelled-term-unhandled-searchsamamish"></a>例 (検索語のスペルミス非対応): `search=samamish`
 

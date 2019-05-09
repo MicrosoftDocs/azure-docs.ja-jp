@@ -1,21 +1,22 @@
 ---
-title: Windows 認証と Azure MFA Server | Microsoft Docs
+title: Windows 認証と Azure MFA Server - Azure Active Directory
 description: Windows 認証と Azure Multi-Factor Authentication Server のデプロイ。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: b61ecf1019442b29a4cf8120dbdd7ce9c1b4a51a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 36172850c345fc190c3326413f2883dc2b070e98
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160088"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367900"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 認証と Azure Multi-Factor Authentication Server
 
@@ -28,9 +29,10 @@ Azure Multi-Factor Authentication Server の [Windows 認証] セクションを
 > [!NOTE]
 > この機能は Windows Server 2012 R2 上のターミナル サービスのセキュリティを保護しません。
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Windows 認証を使用してアプリケーションを保護するには、次の手順に従います。
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Windows 認証を使用してアプリケーションを保護するには、次の手順に従います
+
 1. Azure Multi-Factor Authentication Server で、[Windows 認証] アイコンをクリックします。
-   ![Windows 認証](./media/howto-mfaserver-windows/windowsauth.png)
+   ![MFA サーバーでの Windows 認証](./media/howto-mfaserver-windows/windowsauth.png)
 2. **[Windows 認証を有効にする]** チェック ボックスをオンにします。 既定では、このボックスはオフになっています。
 3. [アプリケーション] タブでは、管理者が Windows 認証を使用する 1 つ以上のアプリケーションを構成できます。
 4. サーバーまたはアプリケーションを選択し、サーバーまたはアプリケーションが有効になっているかどうかを指定します。 Click **OK**.

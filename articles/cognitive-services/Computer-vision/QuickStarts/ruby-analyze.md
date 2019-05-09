@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Ruby で Computer Vision API を使用して画像を分析します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c40f611ad1789a1de6413a02d662d975113354a4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8ae2cd5f3a866b2d026ad4f3babc89bc9af68dc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582849"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904492"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Ruby を使用してリモート画像を分析する
 
@@ -178,10 +178,6 @@ puts response.body
 }
 
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

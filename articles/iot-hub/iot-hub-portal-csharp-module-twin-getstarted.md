@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub モジュール ID とモジュール ツイン (ポータルと .NET) の概要 | Microsoft Docs
 description: モジュール ID を作成し、ポータルと .NET を使用してモジュール ツインを更新する方法について説明します。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.author: dobett
-ms.openlocfilehash: 00b093b5567d85e7f12373020dfaa5f3ca7b0530
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 75b86ea028a500b6b358c468a1d10a830db01b6a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514402"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283751"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>ポータルと .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -24,18 +24,18 @@ ms.locfileid: "51514402"
 
 このチュートリアルでは、次の事項について説明します。
 
-1. モジュール ID をポータルで作成する方法。 
+1. モジュール ID をポータルで作成する方法。
 
 2. .NET デバイス SDK を使用して、モジュール ツインをデバイスから更新する方法。
 
 > [!NOTE]
-> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、「[Azure IoT SDK][lnk-hub-sdks]」を参照してください。
+> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 >
 
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -51,13 +51,13 @@ ms.locfileid: "51514402"
 
 ## <a name="create-a-module-identity-in-the-portal"></a>モジュール ID をポータルで作成する
 
-1 つのデバイス ID 内には、最大 20 個のモジュール ID を作成できます。 上部の **[Add Module Identity]\(モジュール ID の追加\)** ボタンクリックして、最初のモジュール ID を **myFirstModule** という名前で作成します。 
+1 つのデバイス ID 内には、最大 20 個のモジュール ID を作成できます。 上部の **[Add Module Identity]\(モジュール ID の追加\)** ボタンクリックして、最初のモジュール ID を **myFirstModule** という名前で作成します。
 
-  ![[デバイスの詳細]][9]
+  ![[デバイスの詳細]](./media/iot-hub-portal-csharp-module-twin-getstarted/create-module-id.png)
 
 保存し、作成したモジュール ID をクリックします。 モジュール ID の詳細が表示されます。 [Connection string - Primary Key]\(接続文字列 – 主キー\) の値をコピーします。 これは、次のセクション (デバイス上でモジュールを設定するセクション) で使用します。
 
-  ![[デバイスの詳細]][12]
+  ![[デバイスの詳細]](./media/iot-hub-portal-csharp-module-twin-getstarted/module-details.png)
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>.NET デバイス SDK を使用してモジュール ツインを更新する
 
@@ -67,19 +67,19 @@ IoT Hub 内にモジュール ID が正常に作成されたら、 シミュレ�
 
 Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを既存のソリューションに追加します。 .NET Framework のバージョンが 4.6.1 以降であることを確認します。 プロジェクトの名前を **UpdateModuleTwinReportedProperties** に設定します。
 
-  ![Visual Studio プロジェクトを作成する][13]
+  ![Visual Studio プロジェクトを作成する](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
 
 ## <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>最新の Azure IoT Hub .NET デバイス SDK をインストールする
 
-モジュール ID とモジュール ツインはパブリック プレビュー中です。 これらは、IoT Hub プレリリース デバイス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 最新のバージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
+モジュール ID とモジュール ツインはパブリック プレビュー中です。 これらは、IoT Hub プレリリース デバイス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 最新のバージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。
 
-  ![Azure IoT Hub .NET service SDK V1.16.0-preview-005 をインストールする][14]
+  ![Azure IoT Hub .NET service SDK V1.16.0-preview-005 をインストールする](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
 ## <a name="get-your-module-connection-string"></a>モジュールの接続文字列を取得する
 
-[Azure portal][lnk-portal] にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
+[Azure portal](https://portal.azure.com/) にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が正常に作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
 
-  ![Azure Portal モジュールの詳細][15]
+  ![Azure Portal モジュールの詳細](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
 
 ## <a name="create-updatemoduletwinreportedproperties-console-app"></a>UpdateModuleTwinReportedProperties コンソール アプリを作成する
 
@@ -159,26 +159,12 @@ private static void ConnectionStatusChangeHandler(ConnectionStatus status, Conne
 
 ## <a name="run-the-apps"></a>アプリの実行
 
-これで、アプリを実行する準備が整いました。 Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** をクリックします。 コンソール アプリの動作として、**[マルチ スタートアップ プロジェクト]** を選択し、**[起動する]** を選択します。 次に、F5 キーを押して、両方のアプリケーションを実行します。 
+これで、アプリを実行する準備が整いました。 Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** をクリックします。 コンソール アプリの動作として、**[マルチ スタートアップ プロジェクト]** を選択し、**[起動する]** を選択します。 次に、F5 キーを押して、両方のアプリケーションを実行します。
 
 ## <a name="next-steps"></a>次の手順
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 
-* [.NET バックアップおよび .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要][lnk-csharp-csharp-getstarted]
-* [IoT Edge の概要][lnk-iot-edge]
+* [.NET バックアップおよび .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要](iot-hub-csharp-csharp-module-twin-getstarted.md)
 
-
-<!-- Images. -->
-[9]:./media/iot-hub-portal-csharp-module-twin-getstarted/create-module-id.JPG
-[12]:./media/iot-hub-portal-csharp-module-twin-getstarted/module-details.JPG
-[13]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG
-[14]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png
-[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-portal]: https://portal.azure.com/
-
-[lnk-csharp-csharp-getstarted]: iot-hub-csharp-csharp-module-twin-getstarted.md
-[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
+* [IoT Edge の概要](../iot-edge/tutorial-simulate-device-linux.md)

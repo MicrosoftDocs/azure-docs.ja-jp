@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 44cbea8cc40f83ed5fdd2863da0cb0a01e8dc2b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c0583f67d2351d05f877d0ebc1f29cea9e52c5eb
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091062"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311989"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>Go を使用して Event Hubs にイベントを送信する
 
@@ -111,7 +111,7 @@ for {
 
 // 2. send messages within program
 ctx = context.Background()
-hub.Send(ctx, eventhubs.NewEventFromString("hello Azure!")
+hub.Send(ctx, eventhubs.NewEventFromString("hello Azure!"))
 ```
 
 ## <a name="extras"></a>追加
@@ -123,7 +123,7 @@ info, err := hub.GetRuntimeInformation(ctx)
 if err != nil {
     log.Fatalf("failed to get runtime info: %s\n", err)
 }
-log.Printf("got partition IDs: %s\n, info.PartitionIDs)
+log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 ```
 
 アプリケーションを実行してイベントをイベント ハブに送信します。 

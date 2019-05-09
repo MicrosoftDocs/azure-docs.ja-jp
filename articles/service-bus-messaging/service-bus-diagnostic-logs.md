@@ -4,23 +4,23 @@ description: Service Bus の診断ログを設定する方法について説明�
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: 7f50d6f6417764a20125f85398dd9cbf93f3a4a1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542112"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216341"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 
@@ -46,7 +46,7 @@ Azure Service Bus の 2 種類のログを表示できます。
 
     ![診断ログの状態を変更する](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Log Analytics など)。
+5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Monitor ログなど)。
 
 6.  新しい診断設定を保存します。
 

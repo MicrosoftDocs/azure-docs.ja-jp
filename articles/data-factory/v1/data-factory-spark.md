@@ -10,17 +10,16 @@ ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2c00e42284783439b0a01f6ba6bab31be053b1c9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736412"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015816"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -46,7 +45,7 @@ Spark アクティビティは、Data Factory でサポートされる[データ
 > - Spark アクティビティでは、Azure Data Lake Store をプライマリ ストレージとして使用する HDInsight Spark クラスターはサポートされません。
 > - Spark アクティビティは、既存の (自分の) HDInsight Spark クラスターのみをサポートします。 オンデマンド HDInsight のリンクされたサービスはサポートされません。
 
-## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>チュートリアル: Spark アクティビティを使用してパイプラインを作成する
+## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>チュートリアル:Spark アクティビティを含むパイプラインを作成する
 Spark アクティビティで Data Factory パイプラインを作成する一般的な手順を次に示します。 
 
 * データ ファクトリを作成します。
@@ -74,7 +73,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 1. **[新しいデータ ファクトリ]** ブレードで、**[名前]** フィールドに「**SparkDF**」と入力します。
 
    > [!IMPORTANT]
-   > Azure Data Factory の名前はグローバルに一意にする必要があります。 "データ ファクトリ名 SparkDF は利用できません" というエラーが発生した場合は、データ ファクトリの名前を変更します。 たとえば、yournameSparkDFdate を使用し、もう一度データ ファクトリを作成します。 名前付け規則の詳細については、[Data Factory: 名前付け規則](data-factory-naming-rules.md)に関するページをご覧ください。
+   > Azure Data Factory の名前はグローバルに一意にする必要があります。 "データ ファクトリ名 SparkDF は利用できません" というエラーが発生した場合は、データ ファクトリの名前を変更します。 たとえば、yournameSparkDFdate を使用し、もう一度データ ファクトリを作成します。 名前付け規則の詳細については、[Data Factory の名前付け規則](data-factory-naming-rules.md)に関するページを参照してください。
 
 1. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。
 
@@ -122,7 +121,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON エディターで、次の手順を実行します。
 
-    a. HDInsight Spark クラスターの URI を指定します。 たとえば、「 `https://<sparkclustername>.azurehdinsight.net/`」のように入力します。
+    a. HDInsight Spark クラスターの URI を指定します。 (例: `https://<sparkclustername>.azurehdinsight.net/`)。
 
     b. Spark クラスターにアクセスするユーザーの名前を指定します。
 
@@ -329,12 +328,12 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| name | パイプラインのアクティビティの名前。 | [はい] |
+| name | パイプラインのアクティビティの名前。 | はい |
 | description | アクティビティの動作を説明するテキスト。 | いいえ  |
-| type | このプロパティは HDInsightSpark に設定する必要があります。 | [はい] |
-| linkedServiceName | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | [はい] |
-| rootPath | BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名の大文字と小文字は区別されます。 | [はい] |
-| entryFilePath | Spark コード/パッケージのルート フォルダーへの相対パス。 | [はい] |
+| type | このプロパティは HDInsightSpark に設定する必要があります。 | はい |
+| linkedServiceName | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | はい |
+| rootPath | BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名の大文字と小文字は区別されます。 | はい |
+| entryFilePath | Spark コード/パッケージのルート フォルダーへの相対パス。 | はい |
 | className | アプリケーションの Java/Spark のメイン クラス。 | いいえ  |
 | arguments | Spark プログラムのコマンドライン引数の一覧です。 | いいえ  |
 | proxyUser | Spark プログラムの実行を偽装するユーザー アカウント。 | いいえ  |
@@ -349,8 +348,8 @@ HDInsight のリンクされたサービスによって参照される Blob Stor
 
 | Path | 説明 | 必須 | type |
 | ---- | ----------- | -------- | ---- |
-| . | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | [はい] | フォルダー |
-| &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | [はい] | ファイル |
+| にも掲載されています。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | フォルダー |
+| &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | はい | ファイル |
 | ./jars | このフォルダーのすべてのファイルがアップロードされ、クラスターの Java classpath に配置されます。 | いいえ  | フォルダー |
 | ./pyFiles | このフォルダーのすべてのファイルがアップロードされ、クラスターの PYTHONPATH に配置されます。 | いいえ  | フォルダー |
 | ./files | このフォルダーのすべてのファイルがアップロードされ、Executor 作業ディレクトリに配置されます。 | いいえ  | フォルダー |

@@ -2,18 +2,18 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションの更新
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、AKS にデプロイされている既存のアプリケーションを新しいバージョンのアプリケーション コードで更新する方法について説明します。
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: ed4a65e9e4e579277866bdafda67eb577a76bbfe
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5415778713261fbb3e57695573c8486cb32da781
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714816"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756131"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの更新
 
@@ -65,7 +65,7 @@ docker-compose up --build -d
 
 ## <a name="test-the-application-locally"></a>ローカルでアプリケーションをテストする
 
-更新後のコンテナー イメージに変更内容が反映されていることを確認するために、ローカル Web ブラウザーで http://localhost:8080 を開きます。
+更新後のコンテナー イメージに変更内容が反映されていることを確認するために、ローカル Web ブラウザーで `http://localhost:8080` を開きます。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -73,7 +73,7 @@ docker-compose up --build -d
 
 ## <a name="tag-and-push-the-image"></a>イメージにタグを付けてプッシュする
 
-更新したイメージを正しく使用するために、*azure-vote-front* イメージに ACR レジストリのログイン サーバー名のタグを付けます。 [az acr list](/cli/azure/acr#az_acr_list) コマンドを使用して、ログイン サーバー名を取得します。
+更新したイメージを正しく使用するために、*azure-vote-front* イメージに ACR レジストリのログイン サーバー名のタグを付けます。 [az acr list](/cli/azure/acr) コマンドを使用して、ログイン サーバー名を取得します。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -172,5 +172,5 @@ kubectl get service azure-vote-front
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
-[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-login]: /cli/azure/acr
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -1,74 +1,77 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e4bd3de3dee3219619c0146eb0e455cd9b25c59e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840972"
 documentType: LandingData
 title: Azure データ エクスプローラーのドキュメント
 metadata:
   title: Azure Data Explorer のドキュメント - クイック スタート、チュートリアル、言語、API リファレンス
   description: Azure データ エクスプローラーは、アドホック ビッグ データ クエリに最適化されたログ分析クラウド プラットフォームです。
-  author: mgblythe
-  ms.author: mblythe
+  author: orspod
+  ms.author: orspodek
   ms.service: data-explorer
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 03/24/2019
 abstract:
-  description: <p>Azure データ エクスプローラーは、ログおよびテレメトリ データのためのスケーラビリティに優れた高速データ探索サービスです。 最新のソフトウェアによって生成される多数のデータ ストリームを処理できるので、データを収集、保存、分析できます。 Azure データ エクスプローラーは、Web サイト、アプリケーション、IoT デバイスなどのデータ ソースの大量の多様なデータの分析に最適です。</p><p>Microsoft が提供するクイック スタート、チュートリアル、リファレンス コンテンツを利用して、Azure データ エクスプローラーの使用方法を学習してください。</p>
+  description: <p>Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使うと、多種多様なデータを収集、格納、分析することによって、製品の改良、カスタマー エクスペリエンスの強化、デバイスの監視、操作の向上を実現できます。</p><p>Microsoft が提供するクイック スタート、チュートリアル、リファレンス コンテンツを利用して、Azure データ エクスプローラーの使用方法を学習してください。</p>
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: 'Azure データ エクスプローラーとは (19:47)'
+    href: 'https://youtu.be/D_AJk2lAepw'
+    width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure データ エクスプローラーをプロビジョニングして使用する方法を学習します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: クラスターとデータベースを作成する
-      href: /azure/data-explorer/create-cluster-database-portal
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Event Hubs からストリーミング データを取り込む
-      href: /azure/data-explorer/ingest-data-event-hub
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Web UI を使用してデータを照会する
-      href: /azure/data-explorer/web-query-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: Python を使用してキューに登録されたデータを取り込む
-      href: /azure/data-explorer/python-ingest-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: Python を使用してデータを照会する
-      href: /azure/data-explorer/python-query-data
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: エンド ツー エンド ソリューションを構築する方法を学習します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Azure データ エクスプローラーをプロビジョニングして使用する方法を学習します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: クラスターとデータベースを作成する
+            href: /azure/data-explorer/create-cluster-database-portal
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Event Hubs からストリーミング データを取り込む
+            href: /azure/data-explorer/ingest-data-event-hub
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Web UI を使用してデータを照会する
+            href: /azure/data-explorer/web-query-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: Python を使用してキューに登録されたデータを取り込む
+            href: /azure/data-explorer/python-ingest-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: Python を使用してデータを照会する
+            href: /azure/data-explorer/python-query-data
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/data-explorer/visualize-power-bi">Power BI で Azure データ エクスプローラーからデータを視覚化する</a>
-- title: 無料の Pluralsight ビデオ トレーニング
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: エンド ツー エンド ソリューションを構築する方法を学習します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/data-explorer/visualize-power-bi">Power BI で Azure データ エクスプローラーからデータを視覚化する</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
     items:
-    - title: Azure データ エクスプローラーのクエリ言語
-      href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-      image:
-        src: /azure/data-explorer/media/index/logo-pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure データ エクスプローラーのクエリ言語
+            href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+            image:
+              src: /azure/data-explorer/media/index/logo-pluralsight.svg
+              href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+  - title: リファレンス
     items:
-    - title: 言語および API
-      html: <p><a href="https://aka.ms/kustolangref">クエリ言語、管理コマンド、API</a>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 言語および API
+            html: '<p><a href="https://aka.ms/kustolangref">クエリ言語、管理コマンド、API</a>'

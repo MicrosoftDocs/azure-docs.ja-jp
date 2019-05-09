@@ -3,8 +3,8 @@ title: Azure Monitor の Azure Active Directory 監査ログ スキーマを解�
 description: Azure Monitor (プレビュー) で使用する Azure AD 監査ログ スキーマについて説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 12/14/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 28e1ab1f950cf16e096946ffdef343504460e70f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4832776dee7c478996bcfc2a903a6d8e2a3c4426
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543684"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436967"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Azure Monitor の Azure AD 監査ログ スキーマを解釈する (プレビュー)
 

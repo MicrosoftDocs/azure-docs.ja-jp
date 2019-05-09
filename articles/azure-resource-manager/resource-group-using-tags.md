@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: a517597c2c4586b59594415f2361e3e4166d4c5a
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: bc89b8d830e364c70fef5a5959d4da85c517a5ee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299658"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764935"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
 
@@ -29,14 +29,20 @@ ms.locfileid: "51299658"
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
+## <a name="policies"></a>ポリシー
+
+[Azure Policy](../governance/policy/overview.md) を使用して、タグ付けのルールと規則を強制できます。 ポリシーを作成することで、組織の必要なタグに準拠しないサブスクリプションにリソースがデプロイされるというシナリオを回避します。 タグの適用や非準拠リソースの検索を手動で行う代わりに、デプロイ時に必要なタグを自動的に適用するポリシーを作成できます。 次のセクションでは、タグのポリシーの例を示します。
+
+[!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
+
 ## <a name="powershell"></a>PowerShell
 
-この記事の例では、バージョン 6.0 以降の Azure PowerShell が必要です。 バージョン 6.0 以降をご使用でない場合は、[バージョンを更新](/powershell/azure/install-azurerm-ps)してください。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 *リソース グループ*の既存のタグを表示するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-(Get-AzureRmResourceGroup -Name examplegroup).Tags
+(Get-AzResourceGroup -Name examplegroup).Tags
 ```
 
 このスクリプトは次の形式を返します。
@@ -51,31 +57,31 @@ Environment                    Test
 *特定のリソース ID に該当するリソース*の既存のタグを表示するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-(Get-AzureRmResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
+(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
 ```
 
 *特定の名前とリソース グループに該当するリソース*の既存のタグを表示するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-(Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
+(Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
 *特定のタグが付いたリソース グループ*を取得するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-(Get-AzureRmResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
+(Get-AzResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
 ```
 
 *特定のタグが付いたリソース*を取得するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-(Get-AzureRmResource -Tag @{ Dept="Finance"}).Name
+(Get-AzResource -Tag @{ Dept="Finance"}).Name
 ```
 
 *特定のタグ名が付いたリソース*を取得するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-(Get-AzureRmResource -TagName Dept).Name
+(Get-AzResource -TagName Dept).Name
 ```
 
 リソースまたはリソース グループにタグを適用するたびに、そのリソースまたはリソース グループの既存のタグが上書きされます。 したがって、リソースまたはリソース グループに既存のタグがあるかどうかに基づいて、異なるアプローチを使用する必要があります。
@@ -83,51 +89,51 @@ Environment                    Test
 *既存のタグのないリソース グループ*にタグを追加するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-Set-AzureRmResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
+Set-AzResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
 ```
 
 *既存のタグがあるリソース グループ*にタグを追加するには、既存のタグを取得して新しいタグを追加し、タグを適用し直します。
 
 ```azurepowershell-interactive
-$tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
+$tags = (Get-AzResourceGroup -Name examplegroup).Tags
 $tags.Add("Status", "Approved")
-Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
+Set-AzResourceGroup -Tag $tags -Name examplegroup
 ```
 
 *既存のタグのないリソース*にタグを追加するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-$r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
+$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+Set-AzResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
 ```
 
 *既存のタグがあるリソース*にタグを追加するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-$r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
+$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
 $r.Tags.Add("Status", "Approved")
-Set-AzureRmResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
+Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-*リソースにある既存のタグを保持せずに*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+"*リソース上にある既存のタグを保持せずに*"、リソース グループのすべてのタグをそのリソースに適用するには、次のスクリプトを使用します。
 
 ```azurepowershell-interactive
-$groups = Get-AzureRmResourceGroup
+$groups = Get-AzResourceGroup
 foreach ($g in $groups)
 {
-    Get-AzureRmResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
+    Get-AzResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
 }
 ```
 
-*リソースにある重複しない既存のタグを保持して*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+"*リソース上にある重複しない既存のタグを保持したうえで*"、リソース グループのすべてのタグをそのリソースに適用するには、次のスクリプトを使用します。
 
 ```azurepowershell-interactive
-$group = Get-AzureRmResourceGroup "examplegroup"
-if ($group.Tags -ne $null) {
-    $resources = Get-AzureRmResource -ResourceGroupName $group.ResourceGroupName
+$group = Get-AzResourceGroup "examplegroup"
+if ($null -ne $group.Tags) {
+    $resources = Get-AzResource -ResourceGroupName $group.ResourceGroupName
     foreach ($r in $resources)
     {
-        $resourcetags = (Get-AzureRmResource -ResourceId $r.ResourceId).Tags
+        $resourcetags = (Get-AzResource -ResourceId $r.ResourceId).Tags
         if ($resourcetags)
         {
             foreach ($key in $group.Tags.Keys)
@@ -137,11 +143,11 @@ if ($group.Tags -ne $null) {
                     $resourcetags.Add($key, $group.Tags[$key])
                 }
             }
-            Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
+            Set-AzResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
         }
         else
         {
-            Set-AzureRmResource -Tag $group.Tags -ResourceId $r.ResourceId -Force
+            Set-AzResource -Tag $group.Tags -ResourceId $r.ResourceId -Force
         }
     }
 }
@@ -150,7 +156,7 @@ if ($group.Tags -ne $null) {
 すべてのタグを削除するには、空のハッシュ テーブルを渡します。
 
 ```azurepowershell-interactive
-Set-AzureRmResourceGroup -Tag @{} -Name examplegroup
+Set-AzResourceGroup -Tag @{} -Name examplegroup
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -216,7 +222,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-*リソースにある既存のタグを保持せずに*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+"*リソース上にある既存のタグを保持せずに*"、リソース グループのすべてのタグをそのリソースに適用するには、次のスクリプトを使用します。
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -232,7 +238,7 @@ do
 done
 ```
 
-*リソースにある既存のタグを保持したうえで*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+"*リソースにある既存のタグを保持したうえで*"、リソース グループのすべてのタグをそのリソースに適用するには、次のスクリプトを使用します。
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -272,8 +278,5 @@ REST API の操作については、「 [Azure Billing REST API Reference (Azure
 
 ## <a name="next-steps"></a>次の手順
 
-* カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。 定義するポリシーには、すべてのリソースが特定のタグに値が指定されていることが必要になる場合があります。 詳細については、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」を参照してください。
-* リソースのデプロイ時に Azure PowerShell を使用する方法の概要については、「[Azure リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
-* リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」をご覧ください。
-* ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](resource-group-portal.md)」をご覧ください。  
-* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。
+* すべてのリソースの種類で、タグがサポートされるわけではありません。 リソースの種類にタグを適用することができるかどうかを確認するには、[Azure リソースに対するタグのサポート](tag-support.md)に関する記事を参照してください。
+* ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](manage-resource-groups-portal.md)」をご覧ください。  

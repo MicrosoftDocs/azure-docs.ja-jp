@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7e9ce598dbd8987ab32747f5fa9d14646ed4ee71
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 9e05e4eab8bd3c307334b62df00dc03e56ce60ad
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164077"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727589"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする
 このチュートリアルでは、Azure Pipelines を使用して、Azure Stream Analytics ジョブの継続的インテグレーションと継続的配置を設定する方法について説明します。 
@@ -120,7 +120,7 @@ Web ブラウザーを開き、[Azure DevOps](https://app.vsaex.visualstudio.com
     |サブスクリプション  |  サブスクリプションを選択します。   |
     |Action  |  リソース グループを作成または更新します。   |
     |リソース グループ  |  リソース グループ名を入力します。   |
-    |テンプレート  | <実際のソリューション パス>\bin\Debug\Deploy\\<実際のプロジェクト名>.JobTemplate.json   |
+    |Template  | <実際のソリューション パス>\bin\Debug\Deploy\\<実際のプロジェクト名>.JobTemplate.json   |
     |Template parameters  | <実際のソリューション パス>\bin\Debug\Deploy\\<実際のプロジェクト名>.JobTemplate.parameters.json   |
     |テンプレート パラメーターのオーバーライド  | オーバーライドするテンプレート パラメーターをテキスト ボックスに入力します。 例えば、–storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre) です。 このプロパティは省略可能です。ただし、主要なパラメーターがオーバーライドされない場合、ビルドでエラーが発生します。    |
     

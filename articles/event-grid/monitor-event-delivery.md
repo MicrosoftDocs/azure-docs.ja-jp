@@ -2,18 +2,18 @@
 title: Azure Event Grid メッセージ配信の監視
 description: Azure Event Grid メッセージの配信を監視する方法について説明します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2018
-ms.author: tomfitz
-ms.openlocfilehash: 625f3e228bb28c85e68fb592914fb2191baf3e4e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 01/22/2019
+ms.author: spelluru
+ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626991"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464818"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
 
@@ -37,8 +37,8 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 
 * **[配信成功]**: イベントは正常にサブスクリプションのエンドポイントに配信され、2xx 応答を受信しました。
 * **[配信失敗]**: イベントはサブスクリプションのエンドポイントに送信されましたが、4xx または 5xx 応答を受信しました。
-* **[Expired Events]\(イベントの有効期限切れ\)**: イベントは配信されず、すべての再試行が送信済みになりました。 イベントは破棄されました。
-* **[Matched Events]\(イベント照合済み\)**: トピックのイベントがイベント サブスクリプションと一致しました。
+* **[期限切れのイベント]**: イベントは配信されず、すべての再試行が送信済みになりました。 イベントは破棄されました。
+* **[一致するイベント]**: トピックにあるイベントがイベント サブスクリプションと一致しました。
 
 ## <a name="event-subscription-status"></a>イベント サブスクリプションの状態
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6af6eb0dd6473b9fe947f7cc4939da4e0cbc77cb
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dd84f9b3b68d7a34903241caed7f1f93e685fb57
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718510"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482525"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル:マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
@@ -77,7 +77,7 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>データベースへのアクセスを ID に許可する
 
-次に、Cloud Shell 内で [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) コマンドを使用して、データベースへのアクセスをアプリのマネージド ID に許可します。 次のコマンドで、*\<server_name>* と <principalid_from_last_step> を置き換えます。 *\<admin_user>* には管理者名を入力します。
+次に、Cloud Shell 内で [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest) コマンドを使用して、データベースへのアクセスをアプリのマネージド ID に許可します。 次のコマンドで、*\<server_name>* と <principalid_from_last_step> を置き換えます。 *\<admin_user>* には管理者名を入力します。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
@@ -97,7 +97,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 Visual Studio で、パッケージ マネージャー コンソールを開き、NuGet パッケージ [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) を追加します。
 
-```PowerShell
+```powershell
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.1.0-preview
 ```
 

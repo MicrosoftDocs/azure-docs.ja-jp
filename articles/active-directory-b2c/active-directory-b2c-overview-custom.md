@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシー | Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/20/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a1457b2aa571b58502b7d819eb3bcf142c10dac1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725065"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417935"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシー
 
@@ -29,10 +29,10 @@ ms.locfileid: "52725065"
 |-|-------------------|-----------------|
 | 対象ユーザー | ID の専門知識を持つ、または持たないすべてのアプリケーション開発者。 | ID のプロフェッショナル、システム インテグレータ、コンサルタント、社内の ID チーム。 こうしたユーザーは、OpenIDConnect フローに慣れており、ID プロバイダーや要求ベースの認証を理解しています。 |
 | 構成方法 | ユーザー フレンドリなユーザー インターフェイス (UI) を備えた Azure portal。 | XML ファイルを直接編集して Azure portal にアップロードします。 |
-| UI のカスタマイズ | HTML と CSS を含む完全な UI のカスタマイズ。<br><br>カスタム文字列による多言語サポート。 | 同じ |
+| UI のカスタマイズ | HTML、CSS、および JavaScript を含む完全な UI のカスタマイズ。<br><br>カスタム文字列による多言語サポート。 | 同じ |
 | 属性のカスタマイズ | 標準属性とカスタム属性。 | 同じ |
 | トークンおよびセッション管理 | カスタム トークンおよび複数のセッション オプション。 | 同じ |
-| [ID プロバイダー] | 定義済みのローカル プロバイダーまたはソーシャル プロバイダー。 | 標準ベースの OIDC、OAUTH、SAML。 |
+| [ID プロバイダー] | 定義済みのローカル プロバイダーまたはソーシャル プロバイダー、およびほとんどの OIDC ID プロバイダー (Azure Active Directory テナントとのフェデレーションなど)。 | 標準ベースの OIDC、OAUTH、SAML。  REST API との統合を使用して認証を行うことも可能です。 |
 | ID タスク | ローカル アカウントまたはさまざまなソーシャル アカウントによるサインアップまたはサインイン。<br><br>セルフサービスのパスワード リセット。<br><br>プロファイルの編集。<br><br>Multi-Factor Authentication。<br><br>トークンとセッションのカスタマイズ。<br><br>アクセス トークンのフロー。 | カスタム ID プロバイダーを使用したユーザー フローと同じタスクの実行、またはカスタム スコープの使用。<br><br>登録時に別のシステムでユーザー アカウントをプロビジョニング。<br><br>独自の電子メール サービス プロバイダを使用して、ウェルカム メールを送信。<br><br>Azure AD B2C の外部のユーザー ストアを使用。<br><br>ユーザーが指定した情報を信頼できるシステムで検証 (API を使用)。 |
 
 ## <a name="policy-files"></a>ポリシー ファイル

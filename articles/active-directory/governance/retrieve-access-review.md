@@ -1,6 +1,6 @@
 ---
-title: Azure AD のアクセス レビューの結果を取得する | Microsoft Docs
-description: Azure Active Directory アクセス レビューの結果を取得する方法について説明します。
+title: アクセス レビューでグループまたはアプリケーションのアクセス レビュー結果を取得する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory アクセス レビューでグループ メンバーまたはアプリケーション アクセスのアクセス レビュー結果を取得する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,20 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 299e7884311466a34f020735de895ea2ad9945ce
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eae4bafb3eefcee2785c784030d7be8dde66988e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607552"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578713"
 ---
-# <a name="retrieve-access-review-results"></a>アクセス レビュー結果の取得
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションのアクセス レビュー結果を取得する
 
-管理者は、アプリケーションに割り当てられているユーザーまたはグループのメンバーに対する[アクセス レビューを Azure Active Directory (Azure AD) を使用して作成](create-access-review.md)することができます。  **全体管理者**、**ユーザー アカウント管理者**、**セキュリティ管理者**、または**セキュリティ閲覧者**の各役割に属するユーザーは、アクセス レビューの結果を閲覧することができます。  そのいずれかの役割にユーザーを割り当てるには、特権ロール管理者が Azure AD PIM を使用して、その役割をアクティブにする資格がある人物としてユーザーを設定するか、全体管理者が永続的に[ユーザーを役割に割り当て](../fundamentals/active-directory-users-assign-role-azure-portal.md)ます。
+管理者は、アプリケーションに割り当てられているユーザーまたはグループのメンバーに対する[アクセス レビューを Azure Active Directory (Azure AD) を使用して作成](create-access-review.md)することができます。  **グローバル管理者**、**ユーザー管理者**、**セキュリティ管理者**、または**セキュリティ閲覧者** の各役割に属するユーザーは、アクセス レビューの結果を閲覧することができます。  そのいずれかの役割にユーザーを割り当てるには、特権ロール管理者が Azure AD PIM を使用して、その役割をアクティブにする資格がある人物としてユーザーを設定するか、グローバル管理者が永続的に [ユーザーを役割に割り当て](../fundamentals/active-directory-users-assign-role-azure-portal.md) ます。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -54,7 +55,7 @@ ms.locfileid: "45607552"
 - [Azure AD のアクセス レビューでユーザー アクセスを管理する](manage-user-access-with-access-reviews.md)
 - [Azure AD のアクセス レビューでゲスト アクセスを管理する](manage-guest-access-with-access-reviews.md)
 - [Azure AD アクセス レビューに使用するプログラムとコントロールを管理する](manage-programs-controls.md)
-- [グループのメンバーまたはアプリケーションへのアクセスのアクセス レビューを作成する](create-access-review.md)
+- [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 - [Azure AD 管理者ロールに含まれるユーザーのアクセス レビューを作成する](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0cd3d3044623e2265a4ef5f817ed41258e63ae1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995528"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106459"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
 
@@ -122,7 +122,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 ストレージ エクスプ ローラーが既にインストールされていて、このクイックスタートで使用するストレージ アカウントに接続されている場合は、このセクションをスキップしてください。
 
-2. [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択し、**[次へ]** を選択します。
+1. [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択し、**[次へ]** を選択します。
 
     ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
@@ -140,13 +140,13 @@ Azure Functions では、入力および出力バインディングによって�
  
 1. **[アカウント キー]** の横にある表示/非表示アイコンをクリックして値を表示し、**[アカウント キー]** の値をコピーして、ストレージ エクスプローラーの **[アカウント キー]** ボックスに貼り付けます。
   
-3. **[次へ] > [接続]** の順に選択します。
+1. **[次へ] > [接続]** の順に選択します。
 
    ![ストレージ資格情報を貼り付けて接続します。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
 ### <a name="examine-the-output-queue"></a>出力キューを確認する
 
-4. ストレージ エクスプローラーで、このクイックスタートに使用するストレージ アカウントを選択します。
+1. ストレージ エクスプローラーで、このクイックスタートに使用するストレージ アカウントを選択します。
 
 1. **[キュー]** ノードを展開して、**outqueue** という名前のキューを選択します。 
 
@@ -154,7 +154,7 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![ストレージ エクスプローラーに表示されたキュー メッセージ](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-2. 関数を再度実行すると、キューに新しいメッセージが表示されます。  
+1. 関数を再度実行すると、キューに新しいメッセージが表示されます。  
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -162,6 +162,6 @@ Azure Functions では、入力および出力バインディングによって�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、既存の関数に出力バインディングを追加しました。 Queue Storage へのバインディングの詳細については、「[Azure Functions における Storage キュー バインド](functions-bindings-storage-queue.md)」を参照してください。 
+このクイックスタートでは、既存の関数に出力バインディングを追加しました。 Queue Storage へのバインディングの詳細については、「[Azure Functions における Storage キュー バインド](functions-bindings-storage-queue.md)」を参照してください。
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps-2.md)]

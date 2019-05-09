@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 588bd5b3edeadb841de54691cf30916dd18c0982
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4ff3f129838a43bd7684dc10e1653dab969e9c1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087008"
 ---
-# <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Contoso の移行: Azure App Service、Traffic Manager、および Azure MySQL を使用して Contoso Linux サービス デスク アプリを複数のリージョンにリファクターする
+# <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Contoso の移行: Azure App Service、Traffic Manager、Azure MySQL を使用して複数のリージョンに Contoso Linux サービス デスク アプリをリファクターする
 
 この記事では、Contoso が GitHub と統合された Azure App Service と Azure MySQL にオンプレミスの 2 階層 Linux サービス デスク アプリ (osTicket) を移行することによって、それをリファクタリングする方法を示します。
 
@@ -22,20 +22,20 @@ ms.locfileid: "49093003"
 
 **記事** | **詳細** | **状態**
 --- | --- | ---
-[記事 1: 概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
-[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | 使用可能
-[記事 3: Azure への移行の対象となるオンプレミスのリソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
+[記事 1:概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
+[記事 2: Azure インフラストラクチャをデプロイする](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | 使用可能
+[記事 3: Azure への移行についてオンプレミスのリソースを評価する](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
 [記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
-[記事 5: Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
-[記事 6: Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel360 アプリを移行します。 Contoso は、Site Recovery を使用してアプリの VM を移行します。 Contoso は、Database Migration Service を使用して、AlwaysOn 可用性グループで保護されている SQL Server クラスターにアプリのデータベースを移行します。 | 使用可能 
-[記事 7: Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Azure Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を行います | 使用可能
-[記事 8: Azure VM と Azure MySQL への Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Azure Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行します。 | 使用可能
-[記事 9: Azure Web Apps および Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
-記事 10: Azure Web Apps と Azure MySQL での Linux アプリのリファクター | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | この記事の内容は次のとおりです。
-[記事 11: Azure DevOps Services での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
-[記事 12: Azure コンテナーと Azure SQL データベースでのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
-[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel360 アプリをリビルドします。 | 使用可能
-[記事 14: Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
+[記事 5:Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
+[記事 6:Azure VM 上および SQL Server AlwaysOn 可用性グループ内でアプリをリホストする](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel360 アプリを移行します。 Contoso は、Site Recovery を使用してアプリの VM を移行します。 Contoso は、Database Migration Service を使用して、AlwaysOn 可用性グループで保護されている SQL Server クラスターにアプリのデータベースを移行します。 | 使用可能 
+[記事 7:Azure VM での Linux アプリのリホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Azure Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を行います | 使用可能
+[記事 8:Linux アプリを Azure VM 上と Azure MySQL 上でリホストする](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Azure Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行します。 | 使用可能
+[記事 9: Azure Web Apps と Azure SQL Database でアプリをリファクタリングする](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
+記事 10:Azure Web Apps と Azure MySQL で Linux アプリをリファクタリングする | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | この記事の内容は次のとおりです。
+[記事 11:Azure DevOps Services で TFS をリファクタリングする](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
+[記事 12: Azure Containers と Azure SQL Database でアプリを再構築する](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
+[記事 13:Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel360 アプリをリビルドします。 | 使用可能
+[記事 14:Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
 
 この記事で Contoso は、2 階層の Linux Apache MySQL PHP (LAMP) サービスデスク アプリ (osTicket) を Azure に移行します。 このオープンソース アプリを使用したい場合は、[GitHub](https://github.com/osTicket/osTicket) からダウンロードできます。
 
@@ -44,9 +44,9 @@ ms.locfileid: "49093003"
 
 IT リーダーシップ チームは、ビジネス パートナーと密接に連絡を取り合い、彼らが何を達成しようとしているのかを理解しました。
 
-- **ビジネスの成長に対処**: Contoso は成長し続けており、新しい市場に進出しつつあります。 そのため顧客サービス担当者を追加する必要があります。 
-- **スケーリング**: Contoso は、事業規模が拡大したときに、顧客サービス担当者を追加できるように、ソリューションを構築する必要があります。
-- **回復性の向上**: 過去にシステムで発生した問題は、内部ユーザーのみに影響していました。 新しいビジネス モデルでは、外部ユーザーも影響を受けるため、Contoso は、アプリを常時稼働させる必要があります。
+- **ビジネスの成長への対応**: Contoso は成長し続けており、新しい市場に進出しつつあります。 そのため顧客サービス担当者を追加する必要があります。 
+- **スケール**:Contoso は、事業規模が拡大したときに、顧客サービス担当者を追加できるように、ソリューションを構築する必要があります。
+- **回復性の向上**:過去にシステムで発生した問題は、内部ユーザーのみに影響していました。 新しいビジネス モデルでは、外部ユーザーも影響を受けるため、Contoso は、アプリを常時稼働させる必要があります。
 
 ## <a name="migration-goals"></a>移行の目標
 
@@ -109,7 +109,7 @@ Contoso は、次のようにして移行プロセスを完了します。
 **サービス** | **説明** | **コスト**
 --- | --- | ---
 [Mobile Apps](https://azure.microsoft.com/services/app-service/) | このサービスでは、Web サイト向けの Azure PaaS サービスを使用してアプリケーションを実行およびスケーリングします。  | 価格は、インスタンスのサイズと必要な機能に基づきます。 [詳細情報](https://azure.microsoft.com/pricing/details/app-service/windows/)。
-[Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) | DNS を使用して、Azure、外部 Web サイト、またはサービスにユーザーを送るロード バランサー。 | 価格は、受信した DNS クエリの数と監視対象のエンドポイントの数に基づきます。 | [詳細情報](https://azure.microsoft.com/pricing/details/traffic-manager/)。
+[Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) | DNS を使用して、Azure、外部 Web サイト、またはサービスにユーザーを送るロード バランサー。 | 価格は、受信した DNS クエリの数と監視対象のエンドポイントの数に基づきます。 [詳細情報](https://azure.microsoft.com/pricing/details/traffic-manager/)。
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) | データベースは、オープン ソースの MySQL Server エンジンに基づいています。 これは、アプリの開発とデプロイに向けたサービスとしての、フルマネージドのエンタープライズ対応コミュニティ MySQL データベースです。 | 価格は、コンピューティング、ストレージ、およびバックアップ要件に基づきます。 [詳細情報](https://azure.microsoft.com/pricing/details/mysql/)。
 
  
@@ -129,17 +129,17 @@ Contoso は、次のようにして移行プロセスを完了します。
 Contoso は、次のようにして移行を完了します。
 
 > [!div class="checklist"]
-> * **ステップ 1: Azure App Services をプロビジョニングする**: Contoso 管理者は、プライマリ リージョンとセカンダリ リージョンに Web Apps をプロビジョニングします。
-> * **ステップ 2: Traffic Manager を設定する**: トラフィックのルーティングと負荷分散を行う Traffic Manager を Web アプリの前に設定します。
-> * **ステップ 3: MySQL をプロビジョニングする**: Azure で、Azure MySQL データベースのインスタンスをプロビジョニングします。
-> * **ステップ 4: データベースを移行する**: MySQL Workbench を使用してデータベースを移行します。 
-> * **ステップ 5: GitHub を設定する**: アプリの Web サイト/コード用のローカル GitHub リポジトリを設定します。
-> * **ステップ 6: Web アプリをデプロイする**: GitHub から Web アプリをデプロイします。
+> * **手順 1:Azure App Services をプロビジョニングする**:Contoso 管理者は、プライマリ リージョンとセカンダリ リージョンに Web Apps をプロビジョニングします。
+> * **手順 2:Traffic Manager を設定する**:トラフィックのルーティングと負荷分散を行う Traffic Manager を Web アプリの前に設定します。
+> * **手順 3:MySQL をプロビジョニングする**:Azure で、Azure MySQL データベースのインスタンスをプロビジョニングします。
+> * **手順 4:データベースを移行する**:MySQL Workbench を使用してデータベースを移行します。 
+> * **手順 5:GitHub を設定する**:アプリの Web サイト/コード用のローカル GitHub リポジトリを設定します。
+> * **手順 6:Web アプリをデプロイする**:GitHub から Web アプリをデプロイします。
 
 
 
 
-## <a name="step-1-provision-azure-app-services"></a>ステップ 1: Azure App Services をプロビジョニングする
+## <a name="step-1-provision-azure-app-services"></a>手順 1:Azure App Services をプロビジョニングする
 
 Contoso 管理者は、Azure App Services を使用する 2 つの Web アプリを (各リージョンに 1 つずつ) プロビジョニングします。
 
@@ -163,11 +163,11 @@ Contoso 管理者は、Azure App Services を使用する 2 つの Web アプリ
 
 **さらにサポートが必要な場合**
 
-- 「[Web Apps の概要](https://docs.microsoft.com/azure/app-service/app-service-web-overview)」を参照します。
+- 「[Web Apps の概要](https://docs.microsoft.com/azure/app-service/overview)」を参照します。
 - 「[Azure App Service on Linux の概要](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)」を参照します。
 
 
-## <a name="step-2-set-up-traffic-manager"></a>ステップ 2: Azure Traffic Manager を設定する
+## <a name="step-2-set-up-traffic-manager"></a>手順 2:Traffic Manager を設定する
 
 Contoso 管理者は、受信 Web 要求を osTicket Web 層で実行中の Web Apps に送る Traffic Manager を設定します。
 
@@ -188,7 +188,7 @@ Contoso 管理者は、受信 Web 要求を osTicket Web 層で実行中の Web 
 - 「[Traffic Manager の概要](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)」を参照します。
 - [優先順位の高いエンドポイントへのトラフィックのルーティング](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-priority-routing-method)に関する記事を参照します。
  
-## <a name="step-3-provision-azure-database-for-mysql"></a>ステップ 3: Azure Database for MySQL をプロビジョニングする
+## <a name="step-3-provision-azure-database-for-mysql"></a>手順 3:Azure Database for MySQL をプロビジョニングする
 
 Contoso 管理者は、MySQL データベース インスタンスを、プライマリの米国東部 2 リージョン内にプロビジョニングします。
 
@@ -212,7 +212,7 @@ Contoso 管理者は、MySQL データベース インスタンスを、プラ�
 
 
 
-## <a name="step-4-migrate-the-database"></a>ステップ 4: データベースを移行する
+## <a name="step-4-migrate-the-database"></a>手順 4:データベースを移行する
 
 Contoso 管理者は、MySQL ツールでバックアップと復元を使用して、データベースを移行します。 MySQL Workbench をインストールし、OSTICKETMYSQL からデータベースをバックアップして、Azure Database for MySQL Server に復元します。
 
@@ -259,7 +259,7 @@ Contoso 管理者は、MySQL ツールでバックアップと復元を使用し
     ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench10.png)
 
 
-## <a name="step-5-set-up-github"></a>ステップ 5: GitHub を設定する
+## <a name="step-5-set-up-github"></a>手順 5:GitHub を設定する
 
 Contoso 管理者は、新しいプライベート GitHub リポジトリを作成し、Azure MySQL の osTicket データベースへの接続を設定します。 次に、Azure Web Apps とアプリを読み込みます。  
 
@@ -292,7 +292,7 @@ Contoso 管理者は、新しいプライベート GitHub リポジトリを作�
 
     ![GitHub](./media/contoso-migration-refactor-linux-app-service-mysql/github7.png)
 
-## <a name="step-6-configure-the-web-apps"></a>ステップ 6: Web アプリを構成する
+## <a name="step-6-configure-the-web-apps"></a>手順 6:Web アプリを構成する
 
 移行プロセスの最後のステップとして、Contoso 管理者は、Web アプリと osTicket Web サイトを構成します。
 

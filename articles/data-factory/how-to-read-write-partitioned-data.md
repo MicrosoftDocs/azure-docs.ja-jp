@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f2d780900a0cd24f2d70499573a4055dc836ae0b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091051"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013572"
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法
 
@@ -180,5 +179,5 @@ Data Factory バージョン 1 では、次の例に示すように、**partitio
 
 ## <a name="next-steps"></a>次の手順
 
-パイプラインを含むデータ ファクトリを作成する方法の完全なチュートリアルについては、「[クイック スタート: データ ファクトリを作成する](quickstart-create-data-factory-powershell.md)」を参照してください。 
+パイプラインを含むデータ ファクトリを作成する方法の完全なチュートリアルについては、「[クイック スタート:データ ファクトリを作成する](quickstart-create-data-factory-powershell.md)」を参照してください。 
 

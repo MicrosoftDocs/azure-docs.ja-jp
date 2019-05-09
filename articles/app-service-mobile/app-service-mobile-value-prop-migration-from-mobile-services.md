@@ -11,15 +11,15 @@ ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 365f00ced38a1ddc20df211121fba43efff8ea87
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8a0bf1c39977d1659d398fce7c4bb3ae0024c88a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29460414"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771142"
 ---
 # <a name="getting-started"> </a>Mobile Services の使用時に App Service はどのように役立つか
 ## <a name="overview"></a>概要

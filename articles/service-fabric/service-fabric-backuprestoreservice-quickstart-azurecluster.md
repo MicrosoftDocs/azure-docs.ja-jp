@@ -4,7 +4,7 @@ description: アプリケーションデータの定期バックアップを可�
 services: service-fabric
 documentationcenter: .net
 author: hrushib
-manager: timlt
+manager: chackdan
 editor: hrushib
 ms.assetid: FAA58600-897E-4CEE-9D1C-93FACF98AD1C
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 57848a7a4d8e627e952a9f46d438b073c73d833a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4d4bc69f00f86bc81c353ef0cc40f37f000ba6c4
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725864"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670440"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元 
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Service Fabric は、複数のノードの状態をレプリケートして、�
 - データの破損を引き起こすサービスのバグ。 これは、サービス コードのアップグレードにより、Reliable Collection に不正なデータが書き込まれ始めると起こる可能性があります。 このような場合は、コードとデータの両方を、以前の状態に復元する必要があります。
 - オフライン データ処理 データを生成するサービスと切り離されて行われるビジネス インテリジェンスのために、データのオフライン処理を用意しておけば便利です。
 
-Service Fabric には、ポイントインタイムの[バックアップと復元](service-fabric-reliable-services-backup-restore.md)を行う API が組み込まれています。 アプリケーション開発者は、これらの API を使用して、サービスの状態を定期的にバックアップできます。 さらに、サービス管理者が特定の時点 (アプリケーションをアップグレードする前など) にサービスの外部からバックアップをトリガーすることを望んでいるのであれば、開発者は、バックアップ (および復元) を API としてサービスから公開する必要があります。 バックアップの管理には、追加コストが発生します。 たとえば、完全バックアップに続けて、30 分ごとに 5 回の増分バックアップを実行するとします。 完全バックアップを実行した後、その前に実行された増分バックアップを削除できます。 このアプローチではコードを追加する必要であり、それによってアプリケーションの開発中に追加コストが発生します。
+Service Fabric には、ポイントインタイムの[バックアップと復元](service-fabric-reliable-services-backup-restore.md)を行う API が組み込まれています。 アプリケーション開発者は、これらの API を使用して、サービスの状態を定期的にバックアップできます。 さらに、サービス管理者が特定の時点 (アプリケーションをアップグレードする前など) にサービスの外部からバックアップをトリガーすることを望んでいるのであれば、開発者は、バックアップ (および復元) を API としてサービスから公開する必要があります。 バックアップの管理には、追加コストが発生します。 たとえば、完全バックアップに続けて、30 分ごとに 5 回の増分バックアップを実行したい場合があるとします。 完全バックアップを実行した後、その前に実行された増分バックアップを削除できます。 このアプローチではコードを追加する必要であり、それによってアプリケーションの開発中に追加コストが発生します。
 
 Service Fabric のバックアップと復元サービスを使用すると、ステートフル サービスに格納された情報を簡単かつ自動的にバックアップできます。 定期的にアプリケーション データをバックアップすることは、データが失われたりサービスを利用できなくなったりしないように保護するために不可欠です。 Service Fabric には、オプションで提供されるバックアップと復元サービスがあります。このサービスを使用すると、追加のコードを記述することなく、ステートフルな Reliable Services の定期的なバックアップを構成できます (Actor Services も対象になります)。 これまでに実行したバックアップも簡単に復元できます。 
 
@@ -57,7 +57,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 ## <a name="prerequisites"></a>前提条件
 * Service Fabric のバージョンが 6.2 以降の Fabric クラスター。 クラスターは、Windows Server 上に設定されている必要があります。 Azure リソース テンプレートを使用して Service Fabric クラスターを作成する手順については、こちらの[記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得または作成する方法については、[こちらの記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
-* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 Net Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
+* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 .NET Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
 * アプリケーションのバックアップを保存するための Azure ストレージ アカウントを作成します。
 
 ## <a name="enabling-backup-and-restore-service"></a>バックアップと復元サービスの有効化
@@ -150,6 +150,9 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestor
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
+> [!IMPORTANT]
+> 実行時間の問題のため、アイテム保持ポリシーのリテンション期間を確実に 24 日未満に構成します。そうしないと、バックアップ復元サービスがレプリカのフェールオーバー後にクォーラム損失になる場合があります。
+
 ### <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 アプリケーションのデータ保護要件を満たすバックアップ ポリシーを定義した後、そのポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
 
@@ -228,8 +231,10 @@ FailureError            :
 
 ## <a name="limitation-caveats"></a>制限事項/注意事項
 - PowerShell コマンドレットが組み込まれた Service Fabric はありません。
-- Service Fabric CLI はサポートされません。
 - Linux 上の Service Fabric クラスターはサポートされません。
+
+## <a name="known-issues"></a>既知の問題
+- リテンション期間を確実に 24 日未満に構成します。 
 
 ## <a name="next-steps"></a>次の手順
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)

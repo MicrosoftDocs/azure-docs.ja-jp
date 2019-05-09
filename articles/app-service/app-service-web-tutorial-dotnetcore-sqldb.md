@@ -1,5 +1,5 @@
 ---
-title: SQL Database を使用して .NET Core アプリをビルドする - Azure App Service | Microsoft Docs
+title: ASP.NET Core と SQL Database - Azure App Service | Microsoft Docs
 description: SQL Database に接続された .NET Core アプリを Azure App Service で動作させる方法について説明します。
 services: app-service\web
 documentationcenter: dotnet
@@ -11,17 +11,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/11/2018
+ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0b4549323b64b0f6210a228ea6cb5ca301839ec8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c83e14d65b30775f0dad54ab9ade1a7bed5ac821
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721854"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548869"
 ---
-# <a name="tutorial-build-a-net-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service で .NET Core および SQL Database のアプリを作成する
+# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 App Service on _Linux_ にデプロイするには、[Azure App Service on Linux での .NET Core および SQL Database のアプリの作成](./containers/tutorial-dotnetcore-sqldb-app.md)に関する記事をご覧ください。
@@ -367,11 +367,42 @@ git push azure master
 
 既存のすべての To Do 項目がまだ表示されています。 .NET Core アプリを再発行しても、SQL Database の既存のデータは消失しません。 また、Entity Framework Core Migrations によって変更されるのはデータ スキーマのみであり、既存のデータはそのまま残されます。
 
+## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
+
+Azure App Service で ASP.NET Core アプリが稼動している間、コンソールのログをパイプ処理で Cloud Shell に渡すことができます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
+
+サンプル プロジェクトは既に、[Azure における ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure)に関するページのガイダンスに従っています。ただし、次の 2 つの変更を構成に加えています。
+
+- *DotNetCoreSqlDb.csproj* で `Microsoft.Extensions.Logging.AzureAppServices` への参照を追加しています。
+- *Startup.cs* で `loggerFactory.AddAzureWebAppDiagnostics()` を呼び出します。
+
+App Service で ASP.NET Core の[ログ レベル](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level)を、既定のレベルである `Warning` から `Information` に設定するには、Cloud Shell から [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) コマンドを使用します。
+
+```azurecli-interactive
+az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
+```
+
+> [!NOTE]
+> プロジェクトのログ レベルは、*appsettings.json* で、あらかじめ `Information` に設定されています。
+> 
+
+ログのストリーミングを開始するには、Cloud Shell で [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) コマンドを使用します。
+
+```azurecli-interactive
+az webapp log tail --name <app_name> --resource-group myResourceGroup
+```
+
+ログのストリーミングが開始されたら、ブラウザーで Azure アプリを最新の情報に更新して、Web トラフィックを取得します。 ターミナルにパイプされたコンソール ログが表示されます。 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
+
+任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` キーを押します。
+
+ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NET Core でのログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging)」を参照してください。
+
 ## <a name="manage-your-azure-app"></a>Azure アプリを管理する
 
-[Azure portal](https://portal.azure.com) に移動して、作成したアプリを表示します。
+[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを表示します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 

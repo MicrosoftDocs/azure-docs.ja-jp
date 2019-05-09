@@ -3,7 +3,7 @@ title: Azure Application オファーの前提条件 | Microsoft Docs
 description: Azure Marketplace で Azure アプリケーション オファーを発行するための前提条件。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,21 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 1fe847bd0cdceec7eccab8218ccf787d8f4366ba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195822"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007164"
 ---
 # <a name="azure-application-prerequisites"></a>Azure アプリケーションの前提条件
 
-この記事では、Azure Marketplace でマネージド アプリケーション オファーを発行するための技術面/ビジネス面の前提条件について説明します。
+この記事では、Azure Marketplace でマネージド アプリケーション オファーを発行するための技術面/ビジネス面の前提条件について説明します。  まだ完了していない場合は、次の情報源を確認します。
+- SKU の種類に応じて、次のいずれかを確認します: 「[Azure アプリケーション: ソリューション テンプレートのオファー発行ガイド](../../marketplace-solution-templates.md)」または「[Azure アプリケーション: マネージド アプリケーション オファーの発行ガイド](../../marketplace-managed-apps.md)」
+- [Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)に関するビデオ
+
 
 ## <a name="technical-requirements"></a>技術的な要件
 
@@ -37,11 +40,12 @@ ms.locfileid: "53195822"
 * UI 定義を作成する<br>
 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。 この記事では、createUiDefinition.json ファイルの主要な概念について説明します。 Azure ポータルは、このファイルを使用して、マネージド アプリケーションを作成するためのユーザー インターフェイスを生成します。
 
+
 ## <a name="business-requirements"></a>ビジネス要件
 
 ビジネス要件には、次の手続き、契約、法律に関する義務が含まれます。
 
-* 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「クラウド マーケットプレース パブリッシャーになる」の手順に従ってください。
+* 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](../../become-publisher.md)」の手順に従ってください。
 
 >[!NOTE]
 >Microsoft デベロッパー センター登録アカウントと同じアカウントを使用して、Cloud パートナー ポータルにサインインする必要があります。 複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。 このアカウントは、個々のサービスまたはオファーに固有のものにしないでください。
@@ -54,6 +58,7 @@ ms.locfileid: "53195822"
 * Microsoft Azure Marketplace 参加ポリシーと発行者契約の条項に同意する必要があります。
 * Microsoft Azure Web サイト使用条件、Microsoft のプライバシーに関する声明、Microsoft Azure 認定プログラム契約に従う必要があります。
 
+
 ## <a name="publishing-requirements"></a>発行要件
 
 新しい Azure アプリケーション オファーを発行するには、次の前提条件を満たす必要があります。
@@ -61,11 +66,13 @@ ms.locfileid: "53195822"
 * メタデータの使用準備ができていること。 次の一覧 (一部) は、このメタデータの例を示すものです。
   * タイトル
   * (HTML 形式) での説明
-  * PNG 形式のロゴ画像であり、40 x 40 ピクセル、90 x 90 ピクセル、115 x 115 ピクセル、255 x 115 ピクセルの固定サイズがあります。
-* 利用規約とプライバシー ポリシー
-* ドキュメント
+  * PNG 形式で次の固定画像サイズのロゴ画像:40 x 40 ピクセル、90 x 90 ピクセル、115 x 115 ピクセル、255 x 115 ピクセル。
+* "*利用規約*" と "*プライバシー ポリシー*" に関するドキュメント
+* アプリケーションのドキュメント
 * サポートの連絡先
+
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure アプリケーション オファーを作成する](./cpp-create-offer.md) 
+すべての要件を満たしたら、[Azure アプリケーション オファーを作成](./cpp-create-offer.md)する準備ができます。 
+ 

@@ -3,7 +3,7 @@ title: チュートリアル-Azure Service Fabric Mesh で実行されている�
 description: このチュートリアルでは、Service Fabric Mesh で実行されているアプリケーションを削除する方法について説明し、リソースを削除します。
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/15/2018
-ms.author: ryanwi
+ms.date: 01/11/2019
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9b72ca2a166e805d960eab47835f449e0f5b991e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: adc5b96f29f610c63bcfa24a3b5f761c04d41d5b
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889516"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339671"
 ---
-# <a name="tutorial-remove-an-application-and-resources"></a>チュートリアル: アプリケーションとリソースを削除します
+# <a name="tutorial-remove-an-application-and-resources"></a>チュートリアル:アプリケーションとリソースを削除する
 
 このチュートリアルは、シリーズの第 4 部です。 [Service Fabric Mesh に対し事前に展開されていた](service-fabric-mesh-tutorial-template-deploy-app.md)実行中のアプリケーションを削除する方法について説明します。 
 

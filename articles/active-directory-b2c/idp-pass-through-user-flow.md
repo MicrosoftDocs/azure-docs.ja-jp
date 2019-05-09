@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のユーザー フローを通じてアクセ
 description: Azure Active Directory B2C のユーザー フローを通じて、OAuth2.0 ID プロバイダーのアクセス トークンを要求として渡す方法について学習します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 79ac2ee327c53012097bf6130deba676edcf785a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.subservice: B2C
+ms.openlocfilehash: fd0f8241c07f603089b896dcfc9ece29f1e33d1c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637057"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428206"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す
 
@@ -24,12 +24,12 @@ ms.locfileid: "52637057"
 
 Azure Active Directory (Azure AD) B2C の[ユーザー フロー](active-directory-b2c-reference-policies.md)は、ご自身のアプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 ジャーニーが開始されると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 ユーザー フローで要求を有効にして、Azure AD B2C に登録するアプリケーションにそのトークンを渡します。
 
-Azure AD B2C は現在、[Facebook](active-directory-b2c-setup-fb-app.md) や [Google](active-directory-b2c-setup-goog-app.md) などの [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) ID プロバイダーのアクセス トークンのみを渡すことができます。 その他すべての ID プロバイダーについては、要求が空で返されます。
+Azure AD B2C では、[OAuth 2.0](active-directory-b2c-reference-oauth-code.md) および [OpenID Connect](active-directory-b2c-reference-oidc.md) ID プロバイダーのアクセス トークンを渡すことがサポートされています。 その他すべての ID プロバイダーについては、要求が空で返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
 - 対象のアプリケーションが [v2 のユーザー フロー](user-flow-versions.md) を使用している。
-- 対象のユーザー フローが OAuth 2.0 ID プロバイダーを使用して構成されている。
+- ユーザー フローが OAuth 2.0 または OpenID Connect の ID プロバイダーを使用して構成されている。
 
 ## <a name="enable-the-claim"></a>要求を有効にする
 

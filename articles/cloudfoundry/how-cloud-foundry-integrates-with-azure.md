@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7cbffdd40e574c7e906a9388b70ca9d32fd84649
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406145"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550175"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) は、クラウド プロバイダーの IaaS プラットフォーム上で動作する PaaS プラットフォームです。 各クラウド プロバイダーに、一貫性のあるアプリケーション デプロイ エクスペリエンスを提供します。 また、エンタープライズ グレードの HA、スケーラビリティ、および低コストで、さまざまな Azure サービスと統合することもできます。
-[Cloud Foundry には 6 つのサブシステム](https://docs.cloudfoundry.org/concepts/architecture/) (ルーティング、認証、アプリケーション ライフ サイクル管理、サービス管理、メッセージング、監視) があり、オンラインで柔軟にスケーリングすることができます。 各サブシステムについて、対応する Azure サービスを利用するように Cloud Foundry を構成することができます。 
+以下を含め、[Cloud Foundry には 6 つのサブシステム](https://docs.cloudfoundry.org/concepts/architecture/)があります。これらはオンラインで柔軟にスケールできます。ルーティング、認証、アプリケーション ライフ サイクル管理、サービス管理、メッセージング、および監視です。 各サブシステムについて、対応する Azure サービスを利用するように Cloud Foundry を構成することができます。 
 
 ![Azure 統合アーキテクチャでの Cloud Foundry](media/CFOnAzureEcosystem-colored.png)
 
@@ -46,10 +46,10 @@ Azure 可用性ゾーンは、VM のセットを 2 つ以上のデータ セン�
 [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) は、SSL オフロード、エンド ツー エンド SSL、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティなど、レイヤー 7 のさまざまな負荷分散機能を提供します。 [Application Gateway は、Open Source Cloud Foundry で構成](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway)することができます。 PCF については、POC テストの [PCF 2.1 リリース ノート](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway)を確認してください。
 
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
-Azure Load Balancer は、レイヤー 4 のロード バランサーです。 負荷分散セット内のサービスのインスタンス間でトラフィックを分散するために使用されます。 標準バージョンには、基本バージョンに加えて、[高度な機能](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が用意されています。 例 1。 バックエンド プールの上限が、100 から 1,000 VM に上げられました。  2. エンドポイントで、1 つの可用性セットだけではなく複数の可用性セットをサポートできるようになりました。  手順 3. HA ポート、より豊富な監視データなど、追加の機能があります。Azure 可用性ゾーンに移行する場合は、標準ロード バランサーが必要です。 新たにデプロイする場合は、Azure Standard Load Balancer で始めることをお勧めします。 
+Azure Load Balancer は、レイヤー 4 のロード バランサーです。 負荷分散セット内のサービスのインスタンス間でトラフィックを分散するために使用されます。 標準バージョンには、基本バージョンに加えて、[高度な機能](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が用意されています。 例 1。 バックエンド プールの上限が、100 から 1,000 VM に上げられました。  2. エンドポイントで、1 つの可用性セットだけではなく複数の可用性セットをサポートできるようになりました。  手順 3. HA ポート、より豊富な監視データなど、追加の機能があります。 Azure 可用性ゾーンに移行する場合は、標準ロード バランサーが必要です。 新たにデプロイする場合は、Azure Standard Load Balancer で始めることをお勧めします。 
 
 ## <a name="3-authentication"></a>手順 3.Authentication 
-[Cloud Foundry User Account and Authentication](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) は、CF とそのさまざまなコンポーネントの中心的な ID 管理サービスです。 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 既定では、Cloud Foundry 認証には UAA が使用されます。 高度なオプションとして、UAA は外部ユーザー ストアとして Azure AD もサポートしています。 Azure AD ユーザーは、Cloud Foundry アカウントなしで、LDAP ID を使用して Cloud Foundry にアクセスすることができます。 PCF で UAA 用に Azure AD を構成するには、[こちらの手順](http://docs.pivotal.io/p-identity/1-6/azure/index.html)に従ってください。
+[Cloud Foundry User Account and Authentication](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) は、CF とそのさまざまなコンポーネントの中心的な ID 管理サービスです。 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 既定では、Cloud Foundry 認証には UAA が使用されます。 高度なオプションとして、UAA は外部ユーザー ストアとして Azure AD もサポートしています。 Azure AD ユーザーは、Cloud Foundry アカウントなしで、LDAP ID を使用して Cloud Foundry にアクセスすることができます。 PCF で UAA 用に Azure AD を構成するには、[こちらの手順](https://docs.pivotal.io/p-identity/1-6/azure/index.html)に従ってください。
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4.Cloud Foundry ランタイム システムのデータ ストレージ
 Cloud Foundry には、Azure blobstore または Azure MySQL/PostgreSQL サービスをアプリケーション ランタイム システム ストレージ用に使用するための広範な拡張性があります。
@@ -69,10 +69,12 @@ User Account and Authentication 用のデータベース。 ユーザー認証�
 Azure のサービス ブローカーは、Azure サービスへのアプリケーションのアクセスを管理するために、一貫性のあるインターフェイスを提供します。 新しい [Open Service Broker for Azure プロジェクト](https://github.com/Azure/open-service-broker-azure)は、Cloud Foundry、OpenShift、および Kubernetes にわたってアプリケーションにサービスを提供するために、単一の単純な方法を提供します。 PCF でのデプロイの手順については、[Azure Open Service Broker for PCF タイル](https://network.pivotal.io/products/azure-open-service-broker-pcf/)を参照してください。
 
 ## <a name="6-metrics-and-logging"></a>6.メトリックとログ
-Azure Log Analytics Nozzle は Cloud Foundry コンポーネントであり、[Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) から [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) にメトリックを転送します。 Nozzle を使用すると、複数のデプロイにわたる CF のシステム正常性とパフォーマンスのメトリックを収集、表示、および分析することができます。
-Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics Nozzle をデプロイし、Azure Log Analytics コンソールからデータにアクセスする方法を確認するには、[こちら](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle)をクリックしてください。 
+Azure Log Analytics Nozzle は Cloud Foundry コンポーネントであり、[Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) から [Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)にメトリックを転送します。 Nozzle を使用すると、複数のデプロイにわたる CF のシステム正常性とパフォーマンスのメトリックを収集、表示、および分析することができます。
+Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics Nozzle をデプロイし、Azure Monitor ログ コンソールからデータにアクセスする方法を確認するには、[こちら](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle)をクリックしてください。 
 > [!NOTE]
-> PCF 2.0 からは、既定では VM の BOSH 正常性メトリックが Loggregator Firehose に転送され、Azure Log Analytics コンソールに統合されます。
+> PCF 2.0 からは、既定では VM の BOSH 正常性メトリックが Loggregator Firehose に転送され、Azure Monitor ログ コンソールに統合されます。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="7-cost-saving"></a>7.コストの削減
 ### <a name="cost-saving-for-devtest-environments"></a>開発/テスト環境でのコスト削減
@@ -85,7 +87,7 @@ Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが�
 現在、すべての CF VM は、環境が通常は無期限に稼働状態であっても、"オンデマンド" 料金を使用して課金されます。 しかし、1 年または 3 年の期間で VM 容量を予約し、45 から 65% の割引を受けることができるようになりました。 割引は、環境を変更せずに、課金システムに適用されます。 詳細については、[Azure の予約のしくみ](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>より小さいサイズのマネージド Premium ディスク: 
 マネージド ディスクでは、Premium と Standard の両方のディスクで、P4 (32 GB) や P6 (64 GB) などのより小さいディスク サイズがサポートされています。 ワークロードが小さい場合は、標準の Premium ディスクをマネージド Premium ディスクに移行して、コストを節約することができます。
-#### <a name="utilizing-azure-first-party-services"></a>Azure ファースト パーティ サービスの使用: 
+#### <a name="use-azure-first-party-services"></a>Azure ファースト パーティ サービスの使用: 
 Azure のファースト パーティ サービスの利点を活用すると、前のセクションで説明した HA と信頼性の他に、長期的な管理コストも削減することができます。 
 
 Pivotal は、PCF ユーザー向けに [Small Footprint ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) の提供を開始しました。コンポーネントは、4 つの VM だけに配置され、最大で 2,500 のアプリケーション インスタンスを実行します。 評価版は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) を通じて利用できるようになりました。

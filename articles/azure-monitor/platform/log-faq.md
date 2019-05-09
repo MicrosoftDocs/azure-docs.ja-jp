@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d062108dbb27095e978b4973cb7bc5172a4d814
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186278"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002343"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 
@@ -49,13 +52,13 @@ A:現在、カスタム フィールドの抽出はクラシック ログ エク
 
 A:リスト ビューは新しいログではご利用いただけません。 結果テーブルの各レコードの左側に矢印があります。 この矢印をクリックすると、そのレコードの詳細が表示されます。 
 
-### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>Q. クエリを実行した後、推奨されるフィルターのリストが表示されますが、一部のフィルターが含まれていません。 残りのフィルターを表示するにはどうすればよいですか? 
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>Q. クエリの実行後、推奨されるフィルターの一覧が使用できるようになります。 どうすればフィルターを表示できますか? 
 
-A:現在表示されるのは、新しいフィルター実装のプレビューです。 現在、これは完全な結果セットに基づいており、UI のレコードの上限数 (10,000) によって制限されません。 現時点では、これが最もよく使用されているフィルターのリストであり、フィルターごとに最も一般的な値が 10 個表示されます。 
+A:左ウィンドウで [フィルター] をクリックすると、新しいフィルター実装のプレビューが表示されます。 現在、これは完全な結果セットに基づいており、UI のレコードの上限数 (10,000) によって制限されません。 現時点では、これが最もよく使用されているフィルターのリストであり、フィルターごとに最も一般的な値が 10 個表示されます。 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>Q. エラーが発生する理由:VM からドリルインした後、ログに "このサブスクリプションのリソース プロバイダー 'Microsoft.Insights' を登録してこのクエリを有効にしてください" というエラーが表示されるのはなぜですか? 
 
-A:既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md#portal)」を参照してください。
+A:既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)」を参照してください。
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>Q. VM ページからログにアクセスするときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
 
@@ -63,13 +66,13 @@ A:VM ログを表示するには、VM ログを格納するワークスペース
 
 ### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>Q. OMS ポータルで自分のワークスペースにはアクセスできますが、Azure portal で "アクセス権がありません" というエラーが表示されるのはなぜですか?  
 
-A:Azure でワークスペースにアクセスするには、Azure のアクセス許可が割り当てられている必要があります。 場合によっては、適切なアクセス許可がないことがあります。 このような場合は、管理者が Azure のアクセス許可を付与する必要があります。詳細については、「[OMS ポータルの Azure への移行](/../../azure-monitor/platform/oms-portal-transition.md)」を参照してください。
+A:Azure でワークスペースにアクセスするには、Azure のアクセス許可が割り当てられている必要があります。 場合によっては、適切なアクセス許可がないことがあります。 このような場合は、管理者が Azure のアクセス許可を付与する必要があります。詳細については、「[OMS ポータルの Azure への移行](oms-portal-transition.md)」を参照してください。
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>Q. ログでビュー デザイナー エントリを表示できないのはなぜですか? 
 A:ビュー デザイナーは、共同作成者以上のアクセス許可が割り当てられているユーザーのみがログで使用できます。
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>Q. Azure の外部で引き続き Analytics ポータルを使用できますか?
-A. できます。Azure でのログのページと、高度な分析ポータルは同じコードに基づいています。 Log Analytics は Azure Monitor の機能として統合され、より統一した監視エクスペリエンスが提供されます。 URL https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName} を使用して引き続き Analytics ポータルにアクセスできます。
+A. できます。Azure でのログのページと、高度な分析ポータルは同じコードに基づいています。 Log Analytics は Azure Monitor の機能として統合され、より統一した監視エクスペリエンスが提供されます。 次の URL を使用して引き続き Analytics ポータルにアクセスできます: https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
 
 
 
@@ -150,7 +153,7 @@ A:データ収集が停止したときに通知を受けるには、[新しい�
 既存の[アクション グループ](../../azure-monitor/platform/action-groups.md)を指定するか、アクション グループを新たに作成して、ログ アラートが条件に一致する場合に、ハートビートが 15 分以上なければ通知が送られるようにします。
 
 ## <a name="configuration"></a>構成
-### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Azure 診断 (WAD) からの読み取りに使用されるテーブル/BLOB コンテナーの名前は変更できますか?
+### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Azure Diagnostics (WAD) からの読み取りに使用されるテーブル/BLOB コンテナーの名前は変更できますか?
 
 A. いいえ。Azure ストレージ内の任意のテーブルまたはコンテナーから読み取ることは現在不可能です。
 
@@ -168,7 +171,7 @@ Log Analytics へのトラフィックには、パブリックピアリング Ex
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>Q. 既存の Log Analytics ワークスペースを別の Log Analytics ワークスペース/Azure サブスクリプションに移動するためのシンプルで簡単な方法はありますか?
 
-A. `Move-AzureRmResource` コマンドレットを使用すると、Log Analytics ワークスペースを移動できるほか、Automation アカウントを Azure サブスクリプション間で移動することもできます。 詳細については、「[Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx)」を参照してください。
+A. `Move-AzResource` コマンドレットを使用すると、Log Analytics ワークスペースを移動できるほか、Automation アカウントを Azure サブスクリプション間で移動することもできます。 詳細については、「[Move-AzResource](https://msdn.microsoft.com/library/mt652516.aspx)」を参照してください。
 
 この変更は、Azure ポータルで行うこともできます。
 
@@ -219,7 +222,7 @@ A. 無料プランには、1 つのワークスペースにつき 1 日 500 MB �
 
 Log Analytics エージェントは、小さなフットプリントを保証するように設計されました。 データ量は、有効にしているソリューションによって異なります。 [[使用状況]](../../azure-monitor/platform/data-usage.md) ページでデータ量に関する詳細情報を見つけたり、ソリューションごとの内訳を確認したりできます。
 
-詳しくは、OMS エージェントのリソース使用率 (フットプリント) の評価結果が示されている[お客様のブログ](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)をご覧ください。
+詳しくは、OMS エージェントのリソース使用率 (フットプリント) の評価結果が示されている[お客様のブログ](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)をご覧ください。
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>Q. データを Log Analytics に送信するときに、どれくらいのネットワーク帯域幅が Microsoft Management Agent (MMA) によって使用されますか?
 

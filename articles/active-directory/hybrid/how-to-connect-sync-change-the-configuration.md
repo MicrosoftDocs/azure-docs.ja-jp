@@ -4,23 +4,24 @@ description: Azure AD Connect Sync の構成に変更する方法について説
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6579e2ced3742eb1a70ccca96b9608fc6da628ee
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122979"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成に変更を加える
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -293,7 +294,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | オフ | プライマリの |
+    | 式 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | オフ | プライマリの |
 
 7. **[追加]** をクリックして受信方向の規則を作成します。
 
@@ -348,8 +349,8 @@ Active Directory のスキーマと Azure AD コネクタのスキーマに新�
    3. ポップアップ ダイアログ ボックスで **[フル インポート]** を選択し、**[OK]** をクリックします。
    4. 操作が完了するのを待ちます。
 
-    > [!NOTE]
-    > インポート対象の属性のリストにソース属性が既に追加されている場合、オンプレミス AD コネクタでのフル インポートはスキップしてかまいません。 つまり、この記事の「[手順 2: オンプレミス AD コネクタのスキーマにソース属性を追加する」](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema)の間に何も変更する必要がなかった場合です。
+      > [!NOTE]
+      > インポート対象の属性のリストにソース属性が既に追加されている場合、オンプレミス AD コネクタでのフル インポートはスキップしてかまいません。 つまり、この記事の「[手順 2: オンプレミス AD コネクタのスキーマにソース属性を追加する」](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema)の間に何も変更する必要がなかった場合です。
 
 2. **Azure AD コネクタ**で **[フル インポート]** を実行します。
 
@@ -401,5 +402,5 @@ Active Directory のスキーマと Azure AD コネクタのスキーマに新�
 
 **概要トピック**
 
-* [Azure AD Connect 同期: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

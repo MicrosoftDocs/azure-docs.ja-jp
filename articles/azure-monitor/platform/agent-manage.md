@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 50d5fd4efaf9accf48a76d6cde2fdb37cac9c5a0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: de27d5c4fd65515e25319f9e7ac3eafc4110b137
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193843"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481568"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
-Log Analytics 用の Windows または Linux エージェントを最初に配置した後、エージェントを再構成したり、ライフ サイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
+Azure Monitor で Log Analytics Windows または Linux エージェントを最初にデプロイした後、エージェントを再構成したり、ライフ サイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
 
 ## <a name="adding-or-removing-a-workspace"></a>ワークスペースの追加または削除
 
@@ -39,7 +39,7 @@ Log Analytics 用の Windows または Linux エージェントを最初に配�
 
 #### <a name="remove-a-workspace-using-powershell"></a>PowerShell を使用してワークスペースを削除する
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 $mma.RemoveCloudWorkspace($workspaceId)
@@ -48,7 +48,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="add-a-workspace-in-azure-commercial-using-powershell"></a>PowerShell を使用して Azure 商用クラウドにワークスペースを追加する
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -58,7 +58,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="add-a-workspace-in-azure-for-us-government-using-powershell"></a>PowerShell を使用してAzure US Government クラウドにワークスペースを追加する
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -77,7 +77,7 @@ $mma.ReloadConfiguration()
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
-    次の例のような状態が返される必要があります。
+    次の例のような状態が返されるはずです。
 
     `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
 
@@ -87,12 +87,15 @@ $mma.ReloadConfiguration()
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -X`
 
-3. 別のワークスペースに登録するには、`/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` コマンドを実行します
+3. 別のワークスペースに登録するには、次のコマンドを実行します。
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]`
+    
 4. 変更が有効になったことを確認するには、次のコマンドを実行します。
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
-    次の例のような状態が返される必要があります。
+    次の例のような状態が返されるはずです。
 
     `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
 
@@ -112,9 +115,9 @@ $mma.ReloadConfiguration()
 
 #### <a name="update-settings-using-powershell"></a>PowerShell を使用して設定を更新する
 
-次の PowerShell コード例をコピーし、環境に固有の情報を使用して更新し、PS1 ファイル名拡張子を付けて保存します。 Log Analytics サービスに直接接続する各コンピューターでスクリプトを実行します。
+次の PowerShell コード例をコピーし、環境に固有の情報を使用して更新し、PS1 ファイル名拡張子を付けて保存します。 Azure Monitor で Log Analytics ワークスペースに直接接続する各コンピューターでスクリプトを実行します。
 
-```PowerShell
+```powershell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))
 
 # First we get the Health Service configuration object. We need to determine if we
@@ -166,13 +169,13 @@ Linux コンピューターがプロキシ サーバーまたは Log Analytics �
 3. **[プログラムと機能]** で、**[Microsoft Monitoring Agent]** をクリックし、**[アンインストール]** をクリックし、**[はい]** をクリックします。
 
 >[!NOTE]
->**MMASetup-\<platform\>.exe** をダブルクリックして、エージェント セットアップ ウィザードを実行することもできます。このファイルは、Azure ポータルでワークスペースからダウンロードできます。
+>**MMASetup-\<platform\>.exe** をダブルクリックして、エージェント セットアップ ウィザードを実行することもできます。このファイルは、Azure portal でワークスペースからダウンロードできます。
 
 #### <a name="uninstall-from-the-command-line"></a>コマンドラインからアンインストールする
 ダウンロードしたエージェント ファイルは、IExpress で作成された自己完結型インストール パッケージです。 パッケージにはエージェントとサポート ファイルのセットアップ プログラムが含まれており、次の例に示すようにコマンドラインを使用して正しくアンインストールするためには、それらを抽出する必要があります。
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
-2. 管理者特権でのコマンド プロンプトからエージェント インストール ファイルを抽出するには、`extract MMASetup-<platform>.exe` を実行します。ファイルの抽出先のパスを指定するように求められます。 `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` 引数を渡すことでパスを指定することもできます。 IExpress がサポートするコマンドライン スイッチの詳細について、[IExpress のコマンド ライン スイッチ](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) に関する記事を参照し、ニーズに合うようにコード例を更新してください。
+2. 管理者特権でのコマンド プロンプトからエージェント インストール ファイルを抽出するには、`extract MMASetup-<platform>.exe` を実行します。ファイルの抽出先のパスを指定するように求められます。 `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` 引数を渡すことでパスを指定することもできます。 IExpress がサポートするコマンドライン スイッチの詳細について、[IExpress のコマンド ライン スイッチ](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)に関する記事を参照し、ニーズに合うようにコード例を更新してください。
 3. プロンプトで、`%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` を入力します。
 
 ### <a name="linux-agent"></a>Linux エージェント
@@ -203,8 +206,8 @@ System Center Operations Manager 管理グループに報告するように Linu
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. `/etc/opt/omi/conf/omiserver.conf`
-2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します (例: `httpsport=1270`)。
+1.  `/etc/opt/omi/conf/omiserver.conf`
+2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します  (例: `httpsport=1270`)。
 3. `sudo /opt/omi/bin/service_control restart` で OMI サーバーを再起動します。
 
 ## <a name="next-steps"></a>次の手順

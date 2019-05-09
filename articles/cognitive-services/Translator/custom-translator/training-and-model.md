@@ -1,56 +1,56 @@
 ---
-title: トレーニングとモデルとは - Custom Translator
+title: What is training and model? - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: モデルは、特定の言語ペアの翻訳を提供するシステムです。 適切なトレーニングの成果がモデルです。 モデルをトレーニングする際は、互いに重複のない 3 つのデータ セットが必要となります。トレーニング データセット、チューニング データセット、テスト データセットです。
+description: A model is the system, which provides translation for a specific language pair. The outcome of a successful training is a model. When training a model, three mutually exclusive data sets are required training dataset, tuning dataset, and testing dataset.
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.openlocfilehash: e681d40a56bc481fce5a114513a579465ba07c85
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: adc78b176afb0a43a7e1e3a7bb882282a914761d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626907"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57783076"
 ---
-# <a name="what-are-trainings-and-models"></a>トレーニングとモデルとは
+# <a name="what-are-trainings-and-models"></a>What are trainings and models?
 
-モデルは、特定の言語ペアの翻訳を提供するシステムです。
-適切なトレーニングの成果がモデルです。 モデルをトレーニングする際は、互いに重複のない 3 つのデータ セットが必要となります。トレーニング データセット、チューニング データセット、テスト データセットです。 ディクショナリ データを与えることもできます。
+A model is the system, which provides translation for a specific language pair.
+The outcome of a successful training is a model. When training a model, three mutually exclusive data sets are required: training dataset, tuning dataset, and testing dataset. Dictionary data can also be provided.
 
-トレーニングをキューに追加するときにトレーニング データだけを入力した場合、チューニング データセットとテスト データセットは、Custom Translator によって自動的にアセンブルされます。 お客様のトレーニング データから 5,000 文が除外され、それぞれ 2,500 文を使用して、チューニング セットとテスト セットがアセンブルされます。
+If only training data is provided when queuing a training, Custom Translator will automatically assemble tuning and testing datasets. It will exclude 5,000 sentences from your training data and use 2,500 each to assemble a tuning and testing sets.
 
-## <a name="training-dataset-for-custom-translator"></a>Custom Translator のトレーニング データセット
+## <a name="training-dataset-for-custom-translator"></a>Training dataset for Custom Translator
 
-トレーニング セットに含まれているドキュメントは、Custom Translator によってモデル構築のベースとして使用されます。 トレーニングの実行中、これらのドキュメントに存在する文がアライン (またはペアリング) されます。 トレーニング ドキュメントのセットは自由に構成することができます。 1 つのモデルには、関連性がほとんどないと考えられるドキュメントを含めることができます。 さらに、別のモデルではそれらを除外することによって、[BLEU (Bilingual Evaluation Understudy) スコア](what-is-bleu-score.md)への影響を確認します。 チューニング セットとテスト セットを一定に保つ限り、トレーニング セットの構成は自由に試すことができます。 このアプローチは、お客様の翻訳システムの品質を調整する方法として効果的です。
+Documents included in training set are used by the Custom Translator as the basis for building your model. During training execution, sentences that are present in these documents are aligned (or paired). You can take liberties in composing your set of training documents. You can include documents that you believe are of tangential relevance in one model. Again exclude them in another to see the impact in [BLEU (Bilingual Evaluation Understudy) score](what-is-bleu-score.md). As long as you keep the tuning set and test set constant, feel free to experiment with the composition of the training set. This approach  is an effective way to modify the quality of your translation system.
 
-プロジェクト内で複数のトレーニングを実行して、すべてのトレーニングを対象に [BLEU スコア](what-is-bleu-score.md)を比較することができます。 比較のために複数回トレーニングを実行するときは必ず、毎回同じチューニング データとテスト データを指定してください。 また結果は、[[Testing]\(テスト\)](how-to-view-system-test-results.md) タブから手動で検証するようにしてください。
+You can run multiple trainings within a project and compare the [BLEU scores](what-is-bleu-score.md) across all training runs. When you are running multiple trainings for comparison, ensure same tuning/ test data is specified each time. Also make sure to also inspect the results manually in the [“Testing”](how-to-view-system-test-results.md) tab.
 
-## <a name="tuning-dataset-for-custom-translator"></a>Custom Translator のチューニング データセット
+## <a name="tuning-dataset-for-custom-translator"></a>Tuning dataset for Custom Translator
 
-このセットに含まれている並列ドキュメントは、最適な結果が得られるよう翻訳システムをチューニングするために Custom Translator によって使用されます。
+Parallel documents included in this set are used by the Custom Translator to tune the translation system for optimal results.
 
-チューニング セットは、翻訳システムのあらゆるパラメーターと重みを最適な値に調整する目的でトレーニング中に使用されます。 チューニング セットは慎重に選んでください。チューニング セットは、将来翻訳しようとするドキュメントの内容を代表するものであることが必要です。 チューニング セットは、生成される翻訳の品質に大きく影響します。 チューニングを行うことで、お客様がチューニング データセットに含めたサンプルに最も近い翻訳が、翻訳システムによって提供されるようになります。 チューニング セットに 2,500 を超える文は必要ありません。 最適な翻訳品質を確保するために、最も代表的な文を厳選して、チューニング セットを手動で選ぶことをお勧めします。
+The tuning set is used during training to adjust all parameters and weights of the translation system to the optimal values. Choose your tuning set carefully: the tuning set should be representative of the content of the documents you intend to translate in the future. The tuning set has a major influence on the quality of the translations produced. Tuning enables the translation system to provide translations that are closest to the samples you provide in the tuning dataset. You do not need more than 2500 sentences as tuning set. For optimal translation quality, it is recommended to select the tuning set manually by choosing the most representative selection of sentences.
 
-チューニング セットを作成する際は、意味を成す代表的な長さの文を、将来的に翻訳対象となる文から選んでください。 また、翻訳対象となる語句を、将来的に想定される翻訳に近い分布で含んだ文を選ぶことも必要です。 実際には、文の長さが 8 語から 18 語のときに最適な結果が得られます。こうした文には、語形変化を示すのに十分なコンテキストが含まれており、また句の長さも、意味を備えつつ、複雑になりすぎることがないためです。
+When creating your tuning set, choose sentences that are a meaningful and representative length of the future sentences that you expect to translate. You should also choose sentences that have words and phrases that you intend to translate in the approximate distribution that you expect in your future translations. In practice, a sentence length of 8 to 18 words will produce the best results, because these sentences contain enough context to show inflection and provide a phrase length that is significant, without being overly complex.
 
-チューニング セットに使用すべき文の種類を適切に言い表すと、散文、つまり実際の流暢な文章です。 表のセル、詩、箇条書き、句読点のみの文、数字は、文 (通常の言語) としてふさわしくありません。
+A good description of the type of sentences to use in the tuning set is prose: actual fluent sentences. Not table cells, not poems, not lists of things, not only punctuation, or numbers in a sentence - regular language.
 
-お客様がチューニング データ セットを手動で選択する場合は、そこにトレーニング データやテスト データと同じ文が混ざらないようにしてください。 チューニング セットは翻訳の品質に大きく影響するため、文は慎重に選ぶようにしてください。
+If you manually select your tuning data set, it should not have any of the same sentences as your training and testing data. The tuning set has a significant impact on the quality of the translations - choose the sentences carefully.
 
-チューニング セットに何を選べばよいかわからない場合は、単にトレーニング セットを選択すれば、Custom Translator によって自動的にチューニング セットが選択されます。 Custom Translator によってチューニング セットが自動的に選択される際には、バイリンガルのトレーニング ドキュメントから文のサブセットがランダムに使用され、それらの文がトレーニング マテリアルそのものから除外されます。
+If you are not sure what to choose for your tuning set, just select the training set and let Custom Translator select your tuning set for you. When you let the Custom Translator choose the tuning set automatically, it will use a random subset of sentences from your bilingual training documents and exclude these sentences from the training material itself.
 
-## <a name="testing-dataset-for-custom-translator"></a>Custom Translator のテスト データセット
+## <a name="testing-dataset-for-custom-translator"></a>Testing dataset for Custom Translator
 
-テスト セットに含まれている並列ドキュメントは、BLEU (Bilingual Evaluation Understudy) スコアの計算に使用されます。 このスコアは、お客様の翻訳システムの品質を示します。 実際、このトレーニングの結果として翻訳システムから得られた翻訳がテスト データ セット内の基準文とどの程度一致しているかは、このスコアから判別できます。
+Parallel documents included in the testing set are used to compute the BLEU (Bilingual Evaluation Understudy) score. This score indicates the quality of your translation system. This score actually tells you how closely the translations done by the translation system resulting from this training match the reference sentences in the test data set.
 
-BLEU スコアは、自動翻訳と基準翻訳との間の差分を測定した値です。 その値の範囲は 0 から 100 です。 スコア 0 は、基準文に含まれる語が、1 つも翻訳に出現しないことを示します。 スコア 100 は、自動翻訳が基準文と完全に一致すること、つまり同じ語がまったく同じ位置に出現することを示します。 お客様が受け取るスコアは、テスト セットの文すべての BLEU スコアを平均した値です。
+The BLEU score is a measurement of the delta between the automatic translation and the reference translation. Its value ranges from 0 to 100. A score of 0 indicates that not a single word of the reference appears in the translation. A score of 100 indicates that the automatic translation exactly matches the reference: the same word is in the exact same position. The score you receive is the BLEU score average for all sentences of the testing set.
 
-テスト セットには、ターゲット言語の文が、言語ペアの対応するソース言語の文に対して最も望ましい翻訳であるような並列ドキュメントを含める必要があります。 チューニング セットを構成するために使用したのと同じ基準を使用してかまいません。 ただしテスト セットは、翻訳システムの品質には影響しません。 お客様のために BLEU スコアを生成するためだけに使用され、それ以外に使用されることはありません。
+The test set should include parallel documents where the target language sentences are the most desirable translations of the corresponding source language sentences in the pair. You may want to use the same criteria you used to compose the tuning set. However, the testing set has no influence over the quality of the translation system. It is used exclusively to generate the BLEU score for you, and for nothing else.
 
-テスト セットに 2,500 を超える文は必要ありません。 お客様がシステムにテスト セットを自動的に選択させる場合は、バイリンガルのトレーニング ドキュメントから文のサブセットがランダムに使用され、それらの文がトレーニング マテリアルそのものから除外されます。
+You don't need more than 2,500 sentences as the testing set. When you let the system choose the testing set automatically, it will use a random subset of sentences from your bilingual training documents, and exclude these sentences from the training material itself.
 
-モデル内の [テスト] タブに移動すると、テスト セットのカスタム翻訳を表示したり、それらをお客様のテスト セット内の翻訳と比較したりすることができます。
+You can view the custom translations of the testing set, and compare them to the translations provided in your testing set, by navigating to the test tab within a model.

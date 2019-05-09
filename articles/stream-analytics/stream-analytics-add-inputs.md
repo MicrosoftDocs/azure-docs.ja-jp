@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 0475318ce983b98951fb9cd5d24a5bc4452b1f1e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 408a77dd5409f8604a059d3bc7f37ffe1e3d6ba2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970112"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855369"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics の入力について
 
@@ -27,7 +27,7 @@ Stream Analytics は優れた統合機能を備えていて、入力として次
 
 これらの入力ソースは、Stream Analytics ジョブと同じ Azure サブスクリプションに存在していても、異なるサブスクリプションに存在していてもかまいません。
 
-Stream Analytics ジョブへの入力の作成、編集、テストは、[Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput)、[.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)、[Visual Studio](stream-analytics-tools-for-visual-studio-install.md) を使用して行えます。
+Stream Analytics ジョブへの入力の作成、編集、テストは、[Azure portal](stream-analytics-quick-create-portal.md#configure-job-input)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput)、[.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)、[Visual Studio](stream-analytics-tools-for-visual-studio-install.md) を使用して行えます。
 
 ## <a name="stream-and-reference-inputs"></a>ストリームと参照入力
 データがそのデータ ソースにプッシュされると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。 入力は 2 つのタイプであるデータ ストリーム入力と参照データ入力に分けられます。

@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: 6b74d83de0495e3436c9bef623a827e8a1496767
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343301"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785327"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する
 
@@ -35,7 +35,7 @@ Azure Monitor のクラシック メトリック アラートには、メトリ�
 
 6. アラートが発生したときに管理者と共同管理者に電子メール通知が送信されるようにするには、**[メールの所有者]** を選択します。
 
-7. アラートが発生したときに、他の電子メール アドレスにも通知を送信する場合は、**[追加する管理者の電子メール]** フィールドにそのアドレスを入力します。 複数の電子メール アドレスは、*email@contoso.com;email2@contoso.com* のようにセミコロンで区切ります。
+7. アラートが発生したときに、他の電子メール アドレスにも通知を送信する場合は、**[追加する管理者の電子メール]** フィールドにそのアドレスを入力します。 複数のメール アドレスは、*email\@contoso.com;email2\@contoso.com* のようにセミコロンで区切ります。
 
 8. **[webhook]** フィールドに、アラートが発生したときに呼び出す webhook の有効な URI を入力します。
 
@@ -85,47 +85,49 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="with-powershell"></a>PowerShell の場合
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 このセクションでは、PowerShell コマンドを使用してクラシック メトリック アラートを作成、表示、管理する方法を示します。この記事の例では、クラシック メトリック アラート用の Azure Monitor コマンドレットを使用する方法を示しています。
 
-1. コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、[PowerShell をインストールして構成する方法](/powershell/azure/overview)に関するページを参照してください。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://docs.microsoft.com/powershell/module/azurerm.insights)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
+1. コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、[PowerShell をインストールして構成する方法](/powershell/azure/overview)に関するページを参照してください。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://docs.microsoft.com/powershell/module/az.applicationinsights)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
 
 2. まず、Azure サブスクリプションにログインします。
 
-    ```PowerShell
-    Connect-AzureRmAccount
+    ```powershell
+    Connect-AzAccount
     ```
 
 3. サインイン画面が表示されます。 アカウントにサインインすると、アカウント、テナント ID、既定のサブスクリプション ID が表示されます。 すべての Azure コマンドレットは、既定のサブスクリプションのコンテキストで動作します。 アクセスできるサブスクリプションのリストを表示するには、次のコマンドを使用します。
 
-    ```PowerShell
-    Get-AzureRmSubscription
+    ```powershell
+    Get-AzSubscription
     ```
 
 4. 作業コンテキストを別のサブスクリプションに変更するには、次のコマンドを使用します。
 
-    ```PowerShell
-    Set-AzureRmContext -SubscriptionId <subscriptionid>
+    ```powershell
+    Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
 5. リソース グループのすべてのクラシック メトリック アラート ルールを取得できます。
 
-    ```PowerShell
-    Get-AzureRmAlertRule -ResourceGroup montest
+    ```powershell
+    Get-AzAlertRule -ResourceGroup montest
     ```
 
 6. クラシック メトリック アラート ルールの詳細を表示できます
 
-    ```PowerShell
-    Get-AzureRmAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
+    ```powershell
+    Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
 7. ターゲット リソースに設定されたすべてのアラート ルールを取得できます。 たとえば、VM に設定されたすべてのアラート ルールを取得します。
 
-    ```PowerShell
-    Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
+    ```powershell
+    Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. クラシック アラート ルールは、PowerShell で作成できなくなっています。 アラート ルールを作成するには、新しい [Add-azurermmetricalertrule](https://docs.microsoft.com/powershell/module/azurerm.insights/add-azurermmetricalertrule?view=azurermps-6.13.0) コマンドを使用する必要があります。
+8. クラシック アラート ルールは、PowerShell で作成できなくなっています。 アラート ルールを作成するには、新しい "[Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule)" コマンドを使用する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

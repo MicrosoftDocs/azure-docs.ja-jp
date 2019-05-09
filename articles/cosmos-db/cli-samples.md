@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3d8ba7c89f320344081ed8f3a722883c3234fa90
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.reviewer: sngun
+ms.openlocfilehash: a6348024d4e84c27610f1294f916cca9a851b6b9
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810986"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034201"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure CLI サンプル
 

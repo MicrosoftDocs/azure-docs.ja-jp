@@ -4,23 +4,23 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# と Computer Vision API を使って、画像内の印刷されたテキストを抽出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0ee15ca96bcf19a85741e3e4ba01d8513576832d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 1fb9804addece1700a69b79edc99520174af6eee
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579619"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308691"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と C&#35; を使用して印刷されたテキストを抽出する (OCR)
 
-このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
+このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 機能を使って画像内の印字されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
@@ -254,7 +254,7 @@ namespace CSHttpClientSample
 
 ## <a name="next-steps"></a>次の手順
 
-Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する、基本的な Windows アプリケーションについて詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する、基本的な Windows アプリケーションについて詳細を確認します。
 
 > [!div class="nextstepaction"]
-> [Computer Vision API C&#35; チュートリアル](../Tutorials/CSharpTutorial.md)
+> [Computer Vision API の C# のチュートリアル](../Tutorials/CSharpTutorial.md)

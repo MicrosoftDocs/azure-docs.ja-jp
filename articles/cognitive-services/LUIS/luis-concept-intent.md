@@ -1,22 +1,22 @@
 ---
-title: ユーザーの意図
+title: 意図
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 意図は、ユーザーが実行しようとしているタスクまたはアクションを表します。 ユーザーの発話で表明される目的や目標です。
+description: 1 つの意図は、ユーザーが実行しようとしているタスクまたはアクションを表します。 ユーザーの発話で表明される目的や目標です。 ユーザーがアプリケーションで実行しようとしているアクションに対応する、意図のセットを定義します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a6343d9bd2009ee2c16f0cca3118e5653faa4c07
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138689"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371113"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>LUIS アプリにおける意図の概念
 
@@ -57,8 +57,12 @@ ms.locfileid: "53138689"
 
 [事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)には、発話を伴う意図があります。  
 
-## <a name="none-intent-is-fallback-for-app"></a>None 意図はアプリで代替用として使用できる
-**None** 意図は、汎用的な意図または代替用の意図です。 LUIS にアプリ ドメイン (サブジェクト領域) 内で重要でない発話を学習させるために使用します。 **None** 意図は、アプリケーション内の発話の合計の 10 から 20% の間に収める必要があります。 空白のままにしないでください。 
+## <a name="none-intent"></a>None 意図
+
+**None** 意図はすべてのアプリにとって重要で、ゼロ発話を含めることはできません。
+
+### <a name="none-intent-is-fallback-for-app"></a>None 意図はアプリで代替用として使用できる
+**None** 意図は、汎用的な意図または代替用の意図です。 LUIS にアプリ ドメイン (サブジェクト領域) 内で重要でない発話を学習させるために使用します。 **None** 意図は、アプリケーション内の発話の合計の 10 から 20% の間に収める必要があります。 None は空のままにしないでください。 
 
 ### <a name="none-intent-helps-conversation-direction"></a>None 意図は会話の方向付けに役立つ
 発話が None 意図として予測され、その予測を使用してチャットボットに返されると、ボットは、さらに質問を重ねたり、有意義な選択ができるようにユーザーを方向付けるメニューをチャットボット内で提供したりすることができます。 
@@ -76,6 +80,12 @@ None 意図に残されているのはどのような種類の発話でしょう
 
 ## <a name="negative-intentions"></a>負の意図 
 "自動車が**ほしい**" と "自動車が**ほしくない**" など、負と正の意図を判断する必要がある場合、2 つの意図 (正と負を 1 つずつ) を作成し、それぞれに適した発話を追加できます。 または、1 つの意図を作成して、正と負の 2 つの異なる用語をエンティティとしてマークすることもできます。  
+
+## <a name="intents-and-patterns"></a>意図とパターン
+
+発話の例があり、その一部または全体を正規表現として定義できる場合は、[正規表現エンティティ](luis-concept-entity-types.md#regular-expression-entity)を[パターン](luis-concept-patterns.md)と組み合わせて使用することを検討してください。 
+
+正規表現エンティティを使用すると、パターンと一致するデータ抽出が保証されます。 パターン マッチングでは、正確な意図が返されることが保証されます。 
 
 ## <a name="intent-balance"></a>意図のバランス
 アプリ ドメインの意図は、各意図の間で発話のバランスが取れている必要があります。 ある意図では 10 の発話、別の意図では 500 の発話を用意するようなことはしないでください。 これではバランスが崩れています。 このような状況では、500 の発話が用意されている意図を見直して、意図の多くを[パターン](luis-concept-patterns.md)に再構成できるかどうかを確認します。 
@@ -96,6 +106,8 @@ None 意図に残されているのはどのような種類の発話でしょう
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>非常に多くの意図を持つアプリに関するヘルプの要求
 意図の数を減らしたり、意図を複数のアプリに分割できない場合は、サポートにお問い合わせください。 Azure サブスクリプションにサポート サービスが含まれている場合は、[Azure のテクニカル サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 
+
+
 
 ## <a name="next-steps"></a>次の手順
 

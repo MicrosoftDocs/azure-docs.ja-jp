@@ -1,21 +1,22 @@
 ---
-title: Azure AI Gallery からデータを管理する - Azure Machine Learning Studio | Microsoft Docs
+title: Azure AI Gallery からデータを管理する
+titleSuffix: Azure Machine Learning Studio
 description: インターフェイスまたは AI Gallery Catalog API を使用して、Azure AI Gallery から製品内ユーザー データをエクスポートおよび削除することができます。 この記事では、その方法について説明します。
 services: machine-learning
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 05/25/2018
-ms.openlocfilehash: 2fc2d8a21a4090a02822607eac1695ed192eac27
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.reviewer: jmartens, mldocs
+ms.openlocfilehash: 44ff2a5b723c086604acf39e9f975deb53759ae1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250248"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648111"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure AI Gallery からの製品内ユーザー データの表示と削除
 
@@ -35,7 +36,7 @@ Azure AI Gallery の Web サイト UI を使用して公開した項目を表示
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>AI Gallery Catalog API を使用してデータを表示する
 
-https://catalog.cortanaanalytics.com/entities からアクセスでき、AI Gallery Catalog API を使用して収集されたデータをプログラムで表示することができます。 データを表示するには、作成者 ID が必要です。 Catalog API を使用して一覧にないエンティティを表示するには、アクセス トークンが必要です。
+ https://catalog.cortanaanalytics.com/entities からアクセスでき、AI Gallery Catalog API を使用して収集されたデータをプログラムで表示することができます。 データを表示するには、作成者 ID が必要です。 Catalog API を使用して一覧にないエンティティを表示するには、アクセス トークンが必要です。
 
 Catalog の応答は JSON 形式で返されます。
 
@@ -44,7 +45,7 @@ Catalog の応答は JSON 形式で返されます。
 
 1.  [Azure AI Gallery](https://gallery.azure.ai/) にサインインします。
 2.  右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
-3.  アドレス バーの URL には、`authorId=` の後に英数字の ID が表示されます。 たとえば、次のような URL があるとします。`https://gallery.cortanaintelligence.com/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+3.  アドレス バーの URL には、`authorId=` の後に英数字の ID が表示されます。 たとえば、次のような URL があるとします。`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     この場合、作成者 ID は `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA` となります。
 
@@ -79,7 +80,7 @@ Catalog API を使用して一覧にないエンティティを表示するに�
 
 Catalog API には、[AI Gallery Web サイト](https://gallery.azure.ai/)で直接表示することもできる、Azure AI Gallery に公開されたエンティティに関する情報が格納されます。 
 
-公開されたエンティティを表示するには、`[AuthorId]` を、上記の「[作成者 ID を取得する](#get-an-author-ID)」で取得した作成者 ID に置き換えて、以下の URL にアクセスします。
+公開されたエンティティを表示するには、`[AuthorId]` を、上記の「[作成者 ID を取得する](#get-an-author-id)」で取得した作成者 ID に置き換えて、以下の URL にアクセスします。
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 

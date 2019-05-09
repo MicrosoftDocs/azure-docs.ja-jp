@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
-ms.date: 10/04/2018
+ms.subservice: manage
+ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: fdc45f6f1fbbb4580b71a46740fa51278b869ec0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 141112b8b6b44706a750d8a97780e018d96a5006
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889312"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890792"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のメモリおよびコンカレンシーの制限
 Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。 詳細について確認し、ワークロード管理計画にこれらの機能を適用するには、「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 
@@ -70,7 +70,7 @@ Gen1 のサービス レベルは、DW100 から DW6000 の範囲となってい
 | DW6000            | 60            | 1                              | 1440                           |
 
 ## <a name="concurrency-maximums"></a>コンカレンシーの最大値
-各クエリを効率的に実行するために十分なリソースが提供されるよう、SQL Data Warehouse は各クエリにコンカレンシー スロットを割り当てることで、リソース使用率を追跡します。 システムは、十分な数の[コンカレンシー スロット](resource-classes-for-workload-management.md#concurrency-slots)が利用できるようになるまで、クエリをキューに入れて待機させます。 コンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
+各クエリを効率的に実行するために十分なリソースが提供されるよう、SQL Data Warehouse は各クエリにコンカレンシー スロットを割り当てることで、リソース使用率を追跡します。 システムは、重要度とコンカレンシー スロットに基づいて、クエリをキューに入れます。 十分な数のコンカレンシー スロットが利用できるようになるまで、クエリはキュー内で待機します。 [重要度](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)とコンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
 
 ### <a name="gen2"></a>Gen2
  
@@ -78,7 +78,7 @@ Gen1 のサービス レベルは、DW100 から DW6000 の範囲となってい
 
 次の表は、[静的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレント クエリ数とコンカレンシー スロット数を示しています。  
 
-| Service Level | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Service Level | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | staticrc10 で使用されるスロット数 | staticrc20 で使用されるスロット数 | staticrc30 で使用されるスロット数 | staticrc40 で使用されるスロット数 | staticrc50 で使用されるスロット数 | staticrc60 で使用されるスロット数 | staticrc70 で使用されるスロット数 | staticrc80 で使用されるスロット数 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -133,7 +133,7 @@ Gen1 のサービス レベルは、DW100 から DW6000 の範囲となってい
 
 次の表は、**Gen1** の[静的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレンシー クエリ数とコンカレンシー スロット数を示しています。
 
-| サービス レベル | 同時クエリの最大数 | 最大コンカレンシー スロット数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| サービス レベル | 同時クエリの最大数 | 最大コンカレンシー スロット数 | staticrc10 で使用されるスロット数 | staticrc20 で使用されるスロット数 | staticrc30 で使用されるスロット数 | staticrc40 で使用されるスロット数 | staticrc50 で使用されるスロット数 | staticrc60 で使用されるスロット数 | staticrc70 で使用されるスロット数 | staticrc80 で使用されるスロット数 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
 | DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
@@ -156,7 +156,7 @@ Gen1 のサービス レベルは、DW100 から DW6000 の範囲となってい
 
 次の表は、**Gen1** の[動的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレンシー クエリ数とコンカレンシー スロット数を示しています。
 
-| サービス レベル | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | smallrc | mediumrc | largerc | xlargerc |
+| サービス レベル | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | smallrc で使用されるスロット数 | mediumrc で使用されるスロット数 | largerc で使用されるスロット数 | xlargerc で使用されるスロット数 |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
 | DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
 | DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |

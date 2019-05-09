@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4999868170b73493f601f06e114a233a0f88fa35
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 35814de74fa03f9969cdd48882a5f672cfe306a1
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444221"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418070"
 ---
 リモート デスクトップ接続を作成すると、VNet にデプロイされている VM に接続できます。 VM に接続できるかどうかを初めて確認する際に最も良い方法は、その VM のコンピューター名ではなく、プライベート IP アドレスを使って接続してみることです。 この方法であれば、名前の解決が適切に構成されているかではなく、VM に接続できるかどうかをテストすることができます。
 
@@ -24,8 +24,8 @@ ms.locfileid: "53444221"
    - PowerShell を使用する場合: 以下の例に示したコマンドを使用すると、リソース グループに含まれる VM とプライベート IP アドレスの一覧が表示されます。 このコマンドは、使用前に変更を加える必要はありません。
 
      ```powershell
-     $VMs = Get-AzureRmVM
-     $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
+     $VMs = Get-AzVM
+     $Nics = Get-AzNetworkInterface | Where VirtualMachine -ne $null
 
      foreach($Nic in $Nics)
      {

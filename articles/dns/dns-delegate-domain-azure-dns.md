@@ -5,18 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a952eb679810f36008425ae5daacc4261db50c77
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999616"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779778"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>チュートリアル:Azure DNS でドメインをホストする
 
-Azure DNS を使用して DNS ドメインをホストし、DNS レコードを管理することができます。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 
+Azure DNS を使用して DNS ドメインをホストし、DNS レコードを管理することができます。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
 ドメイン contoso.net をドメイン名登録業者から購入し、その後 Azure DNS で contoso.net という名前のゾーンを作成するとします。 自分がドメインの所有者であるので、ドメインのネーム サーバー (NS) レコードを構成するオプションが登録業者から提供されます。 登録業者は NS レコードを .net の親ゾーンに格納します。 インターネット ユーザーが世界のどこにいても、contoso.net 内の DNS レコードを解決しようとした時点で、Azure DNS ゾーン内のドメインに転送されます。
 
@@ -32,6 +32,12 @@ Azure DNS を使用して DNS ドメインをホストし、DNS レコードを�
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
+## <a name="prerequisites"></a>前提条件
+
+Azure DNS 内でホストすることができ、テストに使用できるドメイン名が必要です。 このドメインに対するフル コントロールが必要となります。 フル コントロールには、このドメインのネーム サーバー (NS) レコードを設定する権限が含まれます。
+
+このチュートリアルで使用するドメインの例は contoso.net ですが、独自のドメイン名を使用してください。
+
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
 1. Azure ポータルにサインインします。
@@ -43,9 +49,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    | **設定** | **値** | **詳細** |
    |---|---|---|
-   |**名前**|[ドメイン名] |購入したドメイン名。 このチュートリアルでは、例として contoso.net を使用します。|
+   |**Name**|[ドメイン名] |購入したドメイン名。 このチュートリアルでは、例として contoso.net を使用します。|
    |**サブスクリプション**|<該当するサブスクリプション>|ゾーンの作成先となるサブスクリプションを選択します。|
-   |**[リソース グループ]**|**[新規作成]**: contosoRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。<br>リソース グループの場所は、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。|
+   |**リソース グループ**|**[新規作成]**: contosoRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。<br>リソース グループの場所は、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。|
    |**場所**|米国東部||
 
 ## <a name="retrieve-name-servers"></a>ネーム サーバーの取得

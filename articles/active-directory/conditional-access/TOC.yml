@@ -1,71 +1,74 @@
-items:
 - name: 条件付きアクセスのドキュメント
   href: index.yml
 - name: ユーザーとグループ
   items:
-  - name: 条件付きアクセスとは
-    href: overview.md
+    - name: 条件付きアクセスとは
+      href: overview.md
 - name: クイック スタート
   items:
-  - name: 特定のアプリで MFA を必須にする
-    href: app-based-mfa.md
-  - name: 使用条件への同意を必須にする
-    href: require-tou.md
-  - name: セッションのリスクが検出されたときにアクセスをブロックする
-    href: app-sign-in-risk.md
+    - name: 特定のアプリで MFA を必須にする
+      href: app-based-mfa.md
+    - name: 使用条件への同意を必須にする
+      href: require-tou.md
+    - name: セッションのリスクが検出されたときにアクセスをブロックする
+      href: app-sign-in-risk.md
 - name: チュートリアル
   items:
-  - name: クラシック MFA ポリシーの移行
-    href: policy-migration-mfa.md
+    - name: クラシック MFA ポリシーの移行
+      href: policy-migration-mfa.md
 - name: 概念
-  items:
-  - name: ベースラインの保護
-    href: baseline-protection.md
-  - name: 条件
-    href: conditions.md
-  - name: 場所の条件
-    href: location-condition.md
-  - name: コントロール
-    href: controls.md
-  - name: What if ツール
-    href: what-if-tool.md
   expanded: false
-- name: ハウツー ガイド
   items:
-  - name: ベスト プラクティス
-    href: best-practices.md
-  - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
-    href: untrusted-networks.md
-  - name: マネージド デバイスを必須にする
-    href: require-managed-devices.md
-  - name: 承認済みクライアント アプリを必須にする
-    href: app-based-conditional-access.md
-  - name: Exchange Online と SharePoint Online へのアクセスを制御する
-    href: conditional-access-for-exo-and-spo.md
-  - name: クラシック ポリシーを移行する
-    href: policy-migration.md
+    - name: ベースラインの保護
+      href: baseline-protection.md
+    - name: 条件
+      href: conditions.md
+    - name: 場所の条件
+      href: location-condition.md
+    - name: コントロール
+      href: controls.md
+    - name: サービスの依存関係
+      href: service-dependencies.md
+    - name: What if ツール
+      href: what-if-tool.md
+- name: ハウツー ガイド
   expanded: true
+  items:
+    - name: 条件付きアクセスのデプロイを計画する
+      href: plan-conditional-access.md
+    - name: ベスト プラクティス
+      href: best-practices.md
+    - name: レガシ認証をブロックする
+      href: block-legacy-authentication.md
+    - name: Exchange Online と SharePoint Online へのアクセスを制御する
+      href: conditional-access-for-exo-and-spo.md
+    - name: クラシック ポリシーを移行する
+      href: policy-migration.md
+    - name: 承認済みクライアント アプリを必須にする
+      href: app-based-conditional-access.md
+    - name: アプリの保護ポリシーを必須にする
+      href: app-protection-based-conditional-access.md
+    - name: マネージド デバイスを必須にする
+      href: require-managed-devices.md
+    - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
+      href: untrusted-networks.md
+    - name: 利用規約を必須にする
+      href: terms-of-use.md
 - name: リファレンス
   items:
-  - name: テクニカル リファレンス
-    href: technical-reference.md
+    - name: テクニカル リファレンス
+      href: technical-reference.md
 - name: リソース
   items:
-  - name: Azure フィードバック フォーラム
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: サービスの更新情報
-    href: ../fundamentals/whats-new.md
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 04d8d41dcd87af15d0d3b7e2eb919e71e22b1bf8
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177350"
+    - name: Azure フィードバック フォーラム
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: サービスの更新情報
+      href: ../fundamentals/whats-new.md
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

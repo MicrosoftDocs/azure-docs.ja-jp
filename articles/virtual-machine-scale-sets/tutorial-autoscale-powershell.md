@@ -3,7 +3,7 @@ title: 'チュートリアル: Azure PowerShell を使用したスケール セ�
 description: Azure PowerShell を使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 96b556e9b96118626d4abe0c5ed82a457091ab9a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a87563e54e0d932acefc5bd5808ac49b3cbf30a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232554"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005242"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケーリングする
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
+
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -185,7 +188,7 @@ IpAddress
 52.168.121.216
 ```
 
-最初の VM インスタンスへのリモート接続を作成します。 必要な VM インスタンスの独自のパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。 メッセージが表示されたら、スケール セットを作成するときに使用した資格情報 (サンプル コマンドでは、既定の *azureuser* と *P@ssw0rd!*) を入力します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 次の例では、VM インスタンス *0* に接続します。
+最初の VM インスタンスへのリモート接続を作成します。 必要な VM インスタンスの独自のパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。 メッセージが表示されたら、スケール セットを作成するときに使用した資格情報 (サンプル コマンドでは、既定の *azureuser* と *P\@ssw0rd!*) を入力します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 次の例では、VM インスタンス *0* に接続します。
 
 ```powershell
 mstsc /v 52.168.121.216:50001

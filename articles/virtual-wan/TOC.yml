@@ -21,14 +21,18 @@ items:
     href: virtual-wan-office365-overview.md
 - name: ハウツー ガイド
   items:
+  - name: 仮想ハブから NVA にトラフィックをルーティングする
+    items:
+    - name: Azure ポータル
+      href: virtual-wan-route-table-portal.md
+    - name: Azure PowerShell
+      href: virtual-wan-route-table.md
   - name: 仮想 WAN パートナー - 自動化
     href: virtual-wan-configure-automation-providers.md
-  - name: 仮想ハブから NVA にトラフィックをルーティングする
-    href: virtual-wan-route-table.md
 - name: リファレンス
   items:
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.network#networking
+    href: /powershell/module/az.network#networking
   - name: REST
     href: /rest/api/azure
   - name: Azure CLI
@@ -49,9 +53,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: SLA
     href: https://azure.microsoft.com/support/legal/sla
-ms.openlocfilehash: 77a6049a1b91f499146225f45779d13e06f7f0bf
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 555af48950df4afab512951a7c3ae53e41663427
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018657"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579735"

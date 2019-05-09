@@ -1,6 +1,6 @@
 ---
-title: RBAC と REST API を使用して拒否割り当てを一覧表示する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と REST API を使用してユーザー、グループ、アプリケーションの拒否割り当てを一覧表示する方法について説明します。
+title: REST API を使用して Azure リソースの拒否割り当てを一覧表示する - Azure | Microsoft Docs
+description: Azure リソースのロールベースのアクセス制御 (RBAC) と REST API を使用してユーザー、グループ、アプリケーションの拒否割り当てを一覧表示する方法について説明します。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,19 +12,28 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44c1d3b18bb9bdc63247379fe3f277cb6542f2da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998412"
 ---
-# <a name="list-deny-assignments-using-rbac-and-the-rest-api"></a>RBAC と REST API を使用して拒否割り当てを一覧表示する
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>REST API を使用して Azure リソースの拒否割り当てを一覧表示する
 
-現時点では、拒否割り当ては**読み取り専用**であり、Azure によってのみ設定できます。 独自の拒否割り当てを作成することはできませんが、有効なアクセス許可に影響を与える可能性があるので、拒否割り当てを一覧表示することはできます。 この記事では、RBAC と REST API を使用して拒否割り当てを一覧表示する方法について説明します。
+[拒否割り当て](deny-assignments.md)を使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 この記事では、REST API を使用して拒否割り当てを一覧表示する方法を説明します。
+
+> [!NOTE]
+> 現時点では、Azure Blueprints を使用することが、独自の拒否割り当てを追加する唯一の方法となります。 詳細については、「[Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+拒否割り当てに関する情報を取得するのに必要なものは次のとおりです: 
+
+- ほとんどの [Azure リソースの組み込みロール](built-in-roles.md)に含まれている `Microsoft.Authorization/denyAssignments/read` アクセス許可。
 
 ## <a name="list-a-single-deny-assignment"></a>1 つの拒否割り当てを一覧表示する
 
@@ -95,6 +104,6 @@ ms.locfileid: "46975587"
 
 ## <a name="next-steps"></a>次の手順
 
-- [拒否割り当てについて](deny-assignments.md)
+- [Azure リソースの拒否割り当ての概要](deny-assignments.md)
 - [Azure Active Directory の全体管理者のアクセス権を昇格する](elevate-access-global-admin.md)
 - [Azure REST API リファレンス](/rest/api/azure/)

@@ -9,15 +9,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853292"
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
-SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](http://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されました。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](http://zookeeper.apache.org/)を利用しています。 
+SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](https://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されました。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](https://zookeeper.apache.org/)を利用しています。 
 
 SCP プロジェクトでは、Storm を Windows に移植しただけでなく、Windows エコシステム向けの拡張機能とカスタマイズを追加しました。 拡張機能には .NET 開発者の経験が活かされており、ライブラリが含まれています。カスタマイズには Windows ベースのデプロイメントが含まれています。 
 
@@ -32,7 +32,7 @@ Storm では、アプリケーション トポロジが計算グラフを定義�
 
 SCP では、ベスト エフォート型、"少なくとも 1 回"、および "厳密に 1 回" のデータ処理をサポートします。 分散ストリーミング処理アプリケーションで、データの処理中に、ネットワークの停止、コンピューターの故障、ユーザー コード エラーなどのさまざまなエラーが発生することがあります。"少なくとも 1 回" の処理により、エラーが発生したときに、同じデータを自動的に再生することによって、すべてのデータが 1 回以上処理されるようになります。 "少なくとも 1 回" の処理は、単純で信頼性が高く、多くのアプリケーションに適しています。 ただし、アプリケーションが正確なカウントを必要とする場合は、"少なくとも 1 回" の処理では不十分です。アプリケーション トポロジ内で同じデータが再生される可能性があるためです。 この場合、"厳密に 1 回" の処理を使用すると、データが複数回再生されて処理された場合でも正しい結果になります。
 
-SCP を使用することで、.NET 開発者は、実際に Java 仮想マシン (JVM) を Storm と共に利用して、リアルタイムなデータ処理アプリケーションを開発できます。 .NET と JVM は、TCP ローカル ソケットを経由して通信します。 基本的には、それぞれのスパウトとボルトは .Net と Java のプロセス ペアで、.Net プロセスでユーザー ロジックをプラグインとして実行します。
+SCP を使用することで、.NET 開発者は、実際に Java 仮想マシン (JVM) を Storm と共に利用して、リアルタイムなデータ処理アプリケーションを開発できます。 .NET と JVM は、TCP ローカル ソケットを経由して通信します。 基本的には、それぞれのスパウトとボルトは .NET と Java のプロセス ペアで、.NET プロセスでユーザー ロジックをプラグインとして実行します。
 
 SCP を基にデータ処理アプリケーションを構築するには、次の複数の手順が必要です。
 
@@ -124,7 +124,7 @@ ISCPBatchBolt はトランザクション ボルト用のインターフェイ�
 SCP.NET は、開発者がプログラムに使用できる重要なオブジェクトの簡単なセットも提供しています。 **Context**、**StateStore**、および **SCPRuntime** です。 これらのオブジェクトについては、このセクションでこの後説明します。
 
 ### <a name="context"></a>Context
-Context は、アプリケーションに実行環境を提供します。 各 ISCPPlugin インスタンス (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) には対応する Context インスタンスがあります。 Context が提供する機能は、次の 2 つに分かれています。(1) C\# プロセス全体で使用できる静的部分、(2) 特定の Context インスタンスのみが使用できる動的部分。
+Context は、アプリケーションに実行環境を提供します。 各 ISCPPlugin インスタンス (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) には対応する Context インスタンスがあります。 Context が提供する機能は、2 つの部分に分かれています。(1) C\# プロセス全体で使用できる静的部分と、(2) 特定の Context インスタンスのみが使用できる動的部分です。
 
 ### <a name="static-part"></a>静的部分
     public static ILogger Logger = null;
@@ -228,7 +228,7 @@ SCP アプリケーションでは、 `State` オブジェクトを使用して�
     /// <summary>
     /// Retrieve all states that were previously uncommitted, excluding all aborted states 
     /// </summary>
-    /// <returns>Uncommited States</returns>
+    /// <returns>Uncommitted States</returns>
     public IEnumerable<State> GetUnCommitted();
 
     /// <summary>
@@ -249,7 +249,7 @@ SCP アプリケーションでは、 `State` オブジェクトを使用して�
     /// List all the committed states
     /// </summary>
     /// <returns>Registries contain the Committed State </returns> 
-    public IEnumerable<Registry> Commited();
+    public IEnumerable<Registry> Committed();
 
     /// <summary>
     /// List all the Aborted State in the StateStore
@@ -309,7 +309,7 @@ ISCPBatchBolt では、`parms` の `StormTxAttempt` を取得し、それを使�
 
 一般的には、SCP プラグインは次の 2 つのモードで実行できます。
 
-1. ローカル テスト モード: このモードでは、SCP プラグイン (C\# ユーザー コード) は、開発フェーズ中は Visual Studio 内で実行されます。 このモードでは `LocalContext` を使用し、出力されたタプルをローカル ファイルにシリアル化してメモリに読み取ることができます。
+1. ローカル テスト モード:このモードでは、SCP プラグイン (C\# ユーザー コード) は、開発フェーズ中は Visual Studio 内で実行されます。 このモードでは `LocalContext` を使用し、出力されたタプルをローカル ファイルにシリアル化してメモリに読み取ることができます。
    
         public interface ILocalContext
         {
@@ -317,7 +317,7 @@ ISCPBatchBolt では、`parms` の `StormTxAttempt` を取得し、それを使�
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
-2. 通常モード: このモードでは、SCP プラグインは Storm Java プロセスで起動されます。
+2. 通常モード:このモードでは、SCP プラグインは Storm Java プロセスで起動されます。
    
     次に、SCP プラグインを起動する例を示します。
    
@@ -346,7 +346,7 @@ ISCPBatchBolt では、`parms` の `StormTxAttempt` を取得し、それを使�
         }
 
 ## <a name="topology-specification-language"></a>トポロジ仕様言語
-SCP Topology Specification は、SCP トポロジを記述して構成するためのドメイン固有の言語です。 これは Storm の Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) に基づいており、SCP によって拡張されます。
+SCP Topology Specification は、SCP トポロジを記述して構成するためのドメイン固有の言語です。 これは Storm の Clojure DSL (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) に基づいており、SCP によって拡張されます。
 
 トポロジの仕様は、***runspec*** コマンドを介して Storm クラスターに直接送信されて実行されます。
 
@@ -431,7 +431,7 @@ SCP.NET Context オブジェクトに 2 つのメソッドが追加されまし�
 存在しないストリームに出力すると、ランタイム例外が発生します。
 
 ### <a name="fields-grouping"></a>フィールドのグループ化
-Strom に組み込まれているフィールドのグループ化は、SCP.NET では適切に動作しません。 JVM プロキシ側では、すべてのフィールドのデータ型が実際には byte[] で、フィールドのグループ化では byte[] オブジェクトのハッシュ コードを使用して、グループ化を実行します。 byte[] オブジェクトのハッシュ コードは、このオブジェクトのメモリ内のアドレスです。 そのため、同じコンテンツを共有するが、アドレスが異なる 2 つの byte[] オブジェクトをグループ化することはできません。
+Storm に組み込まれているフィールドのグループ化は、SCP.NET では適切に動作しません。 JVM プロキシ側では、すべてのフィールドのデータ型が実際には byte[] で、フィールドのグループ化では byte[] オブジェクトのハッシュ コードを使用して、グループ化を実行します。 byte[] オブジェクトのハッシュ コードは、このオブジェクトのメモリ内のアドレスです。 そのため、同じコンテンツを共有するが、アドレスが異なる 2 つの byte[] オブジェクトをグループ化することはできません。
 
 SCP.NET はカスタマイズしたグループ化メソッドを追加しました。そのメソッドでは、byte[] のコンテンツを使用してグループ化します。 **SPEC** ファイルでは、構文は次のようになります。
 
@@ -450,7 +450,7 @@ SCP.NET はカスタマイズしたグループ化メソッドを追加しまし
 3. [0,1] は、0 から始まるフィールド ID のハッシュ セットを示しています。
 
 ### <a name="hybrid-topology"></a>ハイブリッド トポロジ
-ネイティブ Storm は Java で記述されています。 さらに、SCP.Net は、C\# 開発者がそれぞれのビジネス ロジックを処理する C\# コードを記述できるように拡張されています。 ただし、C\# のスパウトとボルトだけでなく、Java のスパウトとボルトも含まれるハイブリッド トポロジもサポートしています。
+ネイティブ Storm は Java で記述されています。 さらに、SCP.NET は、C\# 開発者が独自のビジネス ロジックを処理する C\# コードを記述できるように拡張されています。 ただし、C\# のスパウトとボルトだけでなく、Java のスパウトとボルトも含まれるハイブリッド トポロジもサポートしています。
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>spec ファイルでの Java スパウトとボルトの指定
 spec ファイルでは、"scp-spout" と "scp-bolt" を使用して Java スパウトとボルトを指定することもできます。次に例を示します。
@@ -562,7 +562,7 @@ SCP コンポーネントには、Java 側と C\# 側が含まれます。 ネ�
 
 ## <a name="scp-programming-examples"></a>SCP プログラミングの例
 ### <a name="helloworld"></a>HelloWorld
-**HelloWorld** は、SCP.Net を体験できる簡単な例です。 **generator** というスパウトと、**splitter** と **counter** という 2 つのボルトを持つ非トランザクション トポロジを使用します。 **generator** スパウトは、文を無作為に生成し、それらの文を **splitter** に出力します。 **splitter** ボルトは、文を単語に分割し、それらの単語を **counter** ボルトに出力します。 "counter" ボルトはディクショナリを使用して、各単語の出現回数を記録します。
+**HelloWorld** は、SCP.NET を体験できる簡単な例です。 **generator** というスパウトと、**splitter** と **counter** という 2 つのボルトを持つ非トランザクション トポロジを使用します。 **generator** スパウトは、文を無作為に生成し、それらの文を **splitter** に出力します。 **splitter** ボルトは、文を単語に分割し、それらの単語を **counter** ボルトに出力します。 "counter" ボルトはディクショナリを使用して、各単語の出現回数を記録します。
 
 この例には、**HelloWorld.spec** と **HelloWorld\_EnableAck.spec** の 2 つの spec ファイルがあります。 C\# コードでは、Java 側から pluginConf を取得することによって、ACK が有効かどうか確認できます。
 
@@ -573,7 +573,7 @@ SCP コンポーネントには、Java 側と C\# 側が含まれます。 ネ�
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-スパウトでは、ACK が有効な場合、ディクショナリを使用して確認されなかったタプルをキャッシュします。 Fail() が呼び出されると、失敗したタプルが再生されます。
+スパウトでは、ACK が有効な場合、ディクショナリを使用して、確認されなかったタプルをキャッシュします。 Fail() が呼び出されると、失敗したタプルが再生されます。
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {

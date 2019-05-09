@@ -1,46 +1,37 @@
 ---
-title: 'チュートリアル: シングルページ Web アプリを構築する - Bing Visual Search'
+title: " シングルページ Web アプリを構築する - Bing Visual Search"
 titleSuffix: Azure Cognitive Services
-description: シングルページ Web アプリケーションで Bing Visual Search API を使用する方法を示します。
+description: Bing Visual Search API をシングルページ Web アプリケーションに統合する方法を説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
-ms.topic: tutorial
-ms.date: 10/04/2017
+ms.subservice: bing-visual-search
+ms.topic: article
+ms.date: 04/05/2019
 ms.author: aahi
-ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443897"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496558"
 ---
-# <a name="tutorial-visual-search-single-page-web-app"></a>チュートリアル: Visual Search シングルページ Web アプリ
+# <a name="create-a-visual-search-single-page-web-app"></a>Visual Search のシングルページ Web アプリを作成する
 
-Bing Visual Search API は、Bing.com/images に表示される画像の詳細のようなエクスペリエンスを提供します。 Visual Search を使うと、画像を指定して、見た目が似た画像、ショッピング ソース、画像を含む Web ページなど、画像に関する分析情報を取得できます。 
+Bing Visual Search API は、画像に関する分析情報を返します。 画像をアップロードするか、画像の URL を指定することができます。 分析情報とは、視覚的に似ている画像、ショッピング ソース、その画像が含まれる Web ページなどです。 Bing Visual Search API によって返される分析情報は、Bing.com/images に表示される情報と似ています。
 
-このチュートリアルでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+このチュートリアルでは、Bing Image Search API 用にシングルページ Web アプリを拡張する方法について説明します。 そのチュートリアルを見たり、ここで使用されるソース コードを取得したりするには、「[チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)」をご覧ください。
 
-Azure portal でサブスクリプションを開始するには、次の手順に従います。
-1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
-2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
-3. 新しいリソースの名前を [`Name`] に入力します。
-4. `Pay-As-You-Go` サブスクリプションを選択します。
-5. `S9` 価格レベルを選択します。
-6. [`Enable`] をクリックしてサブスクリプションを開始します。
+このアプリケーションの完全なソース コード (Bing Visual Search API を使用するように拡張した後のもの) は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html) で入手できます。
 
-このチュートリアルでは、Bing Image Search チュートリアルのシングルページ Web アプリを拡張しています ([シングルページ Web アプリ](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)に関するページを参照)。 このチュートリアルを開始するための完全なソース コードについては、[シングルページ Web アプリ (ソース コード)](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md) に関するページを参照してください。 このチュートリアルの最終的なソース コードについては、[Visual Search シングルページ Web アプリ](tutorial-bing-visual-search-single-page-app-source.md)に関するページを参照してください。
+## <a name="prerequisites"></a>前提条件
 
-説明するタスクは次のとおりです。
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-> [!div class="checklist"]
-> * 画像の分析情報トークンを使用して Bing Visual Search API を呼び出す
-> * 類似した画像を表示する
+## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Bing Visual Search API を呼び出して応答を処理する
 
-## <a name="call-bing-visual-search"></a>Bing Visual Search を呼び出す
-Bing Image Search のチュートリアルを編集し、スクリプト要素末尾の 409 行目に次のコードを追加します。 このコードは、Bing Visual Search API を呼び出して、結果を表示します。
+Bing Image Search のチュートリアルを編集し、`<script>` 要素の最後 (終了 `</script>` タグの前) に、次のコードを追加します。 次のコードでは、API からの Visual Search の応答を処理し、結果を反復処理して、それらを表示します。
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -70,7 +61,11 @@ function handleVisualSearchResponse(){
         }
     }
 }
+```
 
+次のコードでは、検索要求を API に送信し、イベント リスナーを使用して `handleVisualSearchResponse()` を呼び出します。
+
+```javascript
 function bingVisualSearch(insightsToken){
     let visualSearchBaseURL = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch',
         boundary = 'boundary_ABC123DEF456',
@@ -87,8 +82,8 @@ function bingVisualSearch(insightsToken){
     let requestBody = startBoundary + newLine;
     requestBody += bodyHeader;
     requestBody += JSON.stringify(postBody) + newLine + newLine;
-    requestBody += endBoundary + newLine;       
-    
+    requestBody += endBoundary + newLine;
+
     let request = new XMLHttpRequest();
 
     try {
@@ -105,14 +100,16 @@ function bingVisualSearch(insightsToken){
 ```
 
 ## <a name="capture-insights-token"></a>分析情報トークンをキャプチャする
-次のコードを 151 行目の `searchItemsRenderer` オブジェクトに追加します。 このコードは、クリックされたときに `bingVisualSearch` 関数を呼び出す **find similar** リンクを追加します。 この関数は引数として imageInsightsToken を受け取ります。
+
+次のコードを `searchItemsRenderer` オブジェクトに追加します。 このコードは、クリックされたときに `bingVisualSearch` 関数を呼び出す **find similar** リンクを追加します。 この関数は引数として `imageInsightsToken` を受け取ります。
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
 ```
 
 ## <a name="display-similar-images"></a>類似した画像を表示する
-次の HTML コードを 601 行目に追加します。 このマークアップ コードは、Bing Visual Search API 呼び出しの結果の表示に使用される要素を追加します。
+
+次の HTML コードを 601 行目に追加します。 このマークアップ コードでは、Bing Visual Search API 呼び出しの結果を表示するための要素が追加されます。
 
 ``` html
 <div id="insights">
@@ -126,5 +123,4 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Visual Search シングルページ Web アプリのソース](tutorial-bing-visual-search-single-page-app-source.md)
-> [Bing Visual Search API リファレンス](https://aka.ms/bingvisualsearchreferencedoc)
+> [チュートリアル:C# 用の Bing Visual Search SDK で画像をトリミングする](tutorial-visual-search-crop-area-results.md)

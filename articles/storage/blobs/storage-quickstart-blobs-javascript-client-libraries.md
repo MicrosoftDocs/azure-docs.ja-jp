@@ -9,17 +9,17 @@ ms.service: storage
 ms.author: tamram
 ms.date: 11/14/2018
 ms.topic: quickstart
-ms.component: blobs
-ms.openlocfilehash: c72cd83af2b06b19b285d3c939c0d45b995464d9
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.subservice: blobs
+ms.openlocfilehash: a5433284d9722ce907b962be7ba437ef32ad819c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711484"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245382"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>クイック スタート: ブラウザーで JavaScript と HTML を使用して BLOB をアップロード、一覧表示、および削除する
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>クイック スタート:ブラウザーで JavaScript と HTML を使用して BLOB をアップロード、一覧表示、および削除する
 
 このクイック スタートでは、すべてブラウザー内で実行されるコードを使用して BLOB を管理する方法を示します。 ここで使用されている方法は、必要なセキュリティ対策を使用して BLOB ストレージ アカウントへの保護されたアクセスを確保する方法を示しています。 このクイック スタートを完了するには、[Azure サブスクリプション](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)が必要です。
 
@@ -251,7 +251,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > このコード サンプルを動作させるには、*blobName* に文字列値を指定する必要があります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-このクイック スタートで作成したリソースをクリーンアップするには、[Azure Portal](https://portal.azure.com) に戻り、ストレージ アカウントを選択します。 選択後、**[概要] > [ストレージ アカウントの削除]** の順に移動して、ストレージ アカウントを削除することができます。
+このクイック スタートで作成したリソースをクリーンアップするには、[Azure Portal](https://portal.azure.com) に戻り、ストレージ アカウントを選択します。 選択後、**[概要]、[ストレージ アカウントの削除]** の順に移動して、ストレージ アカウントを削除できます。
 
 ## <a name="next-steps"></a>次の手順
 サンプルを調べて、BLOB をダウンロードする方法と、ファイルのアップロード中に進行状況を報告する方法について学習します。

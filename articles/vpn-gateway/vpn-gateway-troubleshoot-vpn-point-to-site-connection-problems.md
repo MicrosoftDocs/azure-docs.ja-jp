@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2018
+ms.date: 04/11/2018
 ms.author: genli
-ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994175"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492381"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -31,7 +31,7 @@ ms.locfileid: "52994175"
 
 VPN クライアントを使用して Azure 仮想ネットワークに接続しようとすると、次のエラー メッセージが表示されます。
 
-**この拡張認証プロトコルで使用できる証明書が見つかりませんでした。(エラー 798)**
+**この拡張認証プロトコルで使用できる証明書が見つかりませんでした。 (エラー 798)**
 
 ### <a name="cause"></a>原因
 
@@ -45,7 +45,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 2. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | 場所 |
+    | 証明書 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -58,13 +58,42 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 > [!NOTE]
 > クライアント証明書をインポートする際は、**[秘密キーの保護を強力にする]** オプションを選択しないでください。
 
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>リモート サーバーが応答していないため、お使いのコンピューターと VPN サーバーの間のネットワーク接続を確立できませんでした
+
+### <a name="symptom"></a>症状
+
+Windows で IKEv2 を使用し、Azure 仮想ネットワークに接続しようとすると、次のエラー メッセージが表示されます。
+
+**リモート サーバーが応答していないため、お使いのコンピューターと VPN サーバーの間のネットワーク接続を確立できませんでした**
+
+### <a name="cause"></a>原因
+ 
+ Windows のバージョンで IKE 断片化がサポートされていない場合にこの問題が発生します
+ 
+### <a name="solution"></a>解決策
+
+IKEv2 は、Windows 10 および Windows Server 2016 でサポートされています。 ただし、IKEv2 を使用するには、更新プログラムをインストールして、ローカルでレジストリ キーの値を設定する必要があります。 Windows 10 以前の OS バージョンはサポートされておらず、それらのバージョンで使用できるのは SSTP のみになります。
+
+Windows 10 または Windows Server 2016 を IKEv2 用に準備するには:
+
+1. 更新プログラムをインストールします。
+
+   | OS バージョン | Date | 数/リンク |
+   |---|---|---|---|
+   | Windows Server 2016<br>Windows 10 バージョン 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10 バージョン 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | Windows 10 バージョン 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   |  |  |  |  |
+
+2. レジストリ キーの値を設定します。 レジストリの "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD キーを作成するか、または 1 に設定します。
+
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN クライアント エラー:予期していない、または形式が間違ったメッセージを受信しました
 
 ### <a name="symptom"></a>症状
 
 VPN クライアントを使用して Azure 仮想ネットワークに接続しようとすると、次のエラー メッセージが表示されます。
 
-**予期されない、または形式が間違ったメッセージを受信しました。(エラー 0x80090326)**
+**予期していない、または形式が間違ったメッセージを受信しました。 (エラー 0x80090326)**
 
 ### <a name="cause"></a>原因
 
@@ -93,7 +122,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 1. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | 場所 |
+    | 証明書 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -107,7 +136,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 次のエラー メッセージが表示されます。
 
-**ファイル ダウンロード エラー。ターゲット URI が指定されていません。**
+**ファイル ダウンロード エラー。 ターゲット URI が指定されていません。**
 
 ### <a name="cause"></a>原因 
 
@@ -123,7 +152,7 @@ VPN ゲートウェイの種類は **VPN** で、VPN の種類は **RouteBased**
 
 VPN クライアントを使用して Azure 仮想ネットワークに接続しようとすると、次のエラー メッセージが表示されます。
 
-**カスタム スクリプト (ルーティング テーブルを更新するため) の実行に失敗しました。(Error 8007026f)**
+**カスタム スクリプト (ルーティング テーブルを更新するため) の実行に失敗しました。 (エラー 8007026f)**
 
 ### <a name="cause"></a>原因
 
@@ -156,7 +185,7 @@ VPN クライアント構成パッケージを抽出し、.cer ファイルを�
 
 Azure Portal で VPN ゲートウェイの変更を保存しようとすると、次のエラー メッセージが表示されます。
 
-**仮想ネットワーク ゲートウェイ &lt;*ゲートウェイ名*&gt; を保存できませんでした。証明書 &lt;*証明書 ID*&gt; のデータが無効です。**
+**仮想ネットワーク ゲートウェイ &lt;*ゲートウェイ名*&gt; を保存できませんでした。 証明書 &lt;*証明書 ID*&gt; のデータが無効です。**
 
 ### <a name="cause"></a>原因 
 
@@ -203,7 +232,7 @@ Azure Portal で VPN ゲートウェイの変更を保存しようとすると�
 
 VPN クライアント構成パッケージをダウンロードしようとすると、次のエラー メッセージが表示されます。
 
-**ファイルをダウンロードできませんでした。エラーの詳細: エラー 503。サーバーがビジーです。**
+**ファイルをダウンロードできませんでした。 エラーの詳細: エラー 503。 サーバーがビジーです。**
  
 ### <a name="solution"></a>解決策
 
@@ -217,7 +246,7 @@ VPN クライアント構成パッケージをダウンロードしようとす�
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、ポイント対サイト パッケージをすべてのクライアントに再デプロイします。
+この問題を解決するには、すべてのクライアントでポイント対サイト パッケージを再ダウンロードして再デプロイします。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一度に接続する VPN クライアントが多すぎる
 

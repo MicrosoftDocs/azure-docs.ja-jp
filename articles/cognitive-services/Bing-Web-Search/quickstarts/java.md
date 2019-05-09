@@ -4,34 +4,33 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Java を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f56d64151f36216652c21067d5f3c64270ca266c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8282838f778516e31080960400e5b1435f0b5673
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260975"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57866328"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>クイック スタート:Bing Web Search REST API と Java を使用して Web を検索する
 
-このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Java アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを実行するには、以下のものが必要です。
 
 * [JDK 7 または 8](https://aka.ms/azure-jdks)
 * [Gson ライブラリ](https://github.com/google/gson)
 * サブスクリプション キー
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-import-dependencies"></a>プロジェクトの作成と依存関係のインポート
 
@@ -56,7 +55,7 @@ Maven を使用している場合は、`POM.xml` で Gson を宣言します。 
 <dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
-    <version>2.8.1</version>
+    <version>2.8.5</version>
 </dependency>
 ```
 
@@ -74,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>変数の定義
 
-このコードは、`subscriptionKey`、`host`、`path`、および `searchTerm` を設定します。 エンドポイントが正しいことを確認し、`subscriptionKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
+このコードは、`subscriptionKey`、`host`、`path`、および `searchTerm` を設定します。 エンドポイントが正しいことを確認し、`subscriptionKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。 前述のように、忘れずにこのコードを `BingWebSearch` クラスに追加してください。
 
 ```java
 // Enter a valid subscription key.
@@ -186,8 +185,8 @@ class SearchResults{
 最後の手順で、コードをコンパイルし、実行します。 コマンドは次のとおりです。
 
 ```powershell
-javac BingWebSearch.java -classpath ./gson-2.8.1.jar -encoding UTF-8
-java -cp ./gson-2.8.1.jar BingWebSearch
+javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
+java -cp ./gson-2.8.5.jar BingWebSearch
 ```
 
 作成したコードをサンプル コードと比較したい場合は、[GitHub で利用できるサンプル コード](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java)を参照してください。

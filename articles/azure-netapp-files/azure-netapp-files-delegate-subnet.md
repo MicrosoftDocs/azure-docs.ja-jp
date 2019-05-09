@@ -11,25 +11,26 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: b-juche
-ms.openlocfilehash: 8ec41c6db8c8e5c62d15dc0638762f2649c637b8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1cac267be026d0e472db9a7a321f5fff6ab3e917
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631653"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434774"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>サブネットを Azure NetApp Files に委任する 
 
 サブネットを Azure NetApp Files に委任する必要があります。   ボリュームを作成する際は、委任されたサブネットを指定する必要があります。
 
-## <a name="about-this-task"></a>このタスクについて
+## <a name="considerations"></a>考慮事項
 * 新しいサブネットを作成するウィザードでは、既定で /24 ネットワーク マスクになっており、251 個の使用可能な IP アドレスが提供されます。 /28 ネットワーク マスクを使用すると、16 個の使用可能な IP アドレスが提供され、このサービスにはそれで十分です。
-* 委任されたサブネット内のネットワーク セキュリティ グループまたはサービス エンドポイントを指定することはできません。 そうした場合、サブネットの委任が失敗します。
 * 各 Azure 仮想ネットワーク (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。
-* ピアリングされた仮想ネットワークからボリュームへのアクセスは、現在はサポートされていません。
+* 委任されたサブネット内のネットワーク セキュリティ グループまたはサービス エンドポイントを指定することはできません。 そうした場合、サブネットの委任が失敗します。
+* グローバルにピアリングされた仮想ネットワークからボリュームへのアクセスは、現在はサポートされていません。
+* Azure NetApp Files に委任されたサブネットのアドレス プレフィックス (宛先) を使用して、VM サブネットに[ユーザー定義のカスタム ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)を作成することはサポートされていません。これは VM の接続に影響を及ぼします。
 
 ## <a name="steps"></a>手順 
 1.  Azure portal で **[仮想ネットワーク]** ブレードに移動し、Azure NetApp Files のために使用する仮想ネットワークを選択します。    

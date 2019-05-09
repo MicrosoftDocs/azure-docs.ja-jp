@@ -3,19 +3,19 @@ title: Apache Kafka アプリからイベント ハブを使用する - Azure Ev
 description: この記事では、Azure Event Hubs での Apache Kafka のサポートに関する情報を提供します。
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: shvija
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 1c484b6418fd5a453713bc464fff690ef444f109
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8bf381e7c66e06bbaa140ed865f0f7c9b4f001af
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091188"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452345"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0 以降](https://kafka.apache.org/documentation/)をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。  
@@ -31,7 +31,7 @@ Kafka と Event Hubs は、概念的にはほぼ同じものです。これら�
 | Kafka での概念 | Event Hubs での概念|
 | --- | --- |
 | クラスター | 名前空間 |
-| トピック | Event Hubs |
+| トピック | イベント ハブ |
 | Partition | Partition|
 | コンシューマー グループ | コンシューマー グループ |
 | offset | offset|
@@ -76,6 +76,4 @@ Kafka 機能用 Event Hubs では、あるプロトコルで書き込みを、�
 - [Kafka 対応イベント ハブへの Akka Streams の接続](event-hubs-kafka-akka-streams-tutorial.md)
 - [GitHub 上でサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
 
- 
- 
 

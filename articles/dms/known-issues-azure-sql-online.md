@@ -2,25 +2,28 @@
 title: Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項に関する記事 | Microsoft Docs
 description: Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 816b67488acc567d81bf1916735d13c0e480fe5d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 04/09/2019
+ms.openlocfilehash: 1a8f46c74693b00fd8e30b1e1a78d90111dea08b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719559"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520750"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項
 
 ここでは、SQL Server から Azure SQL Database へのオンライン移行に関する既知の問題点と制限事項について説明します。
+
+> [!IMPORTANT]
+> SQL Server から Azure SQL Database へのオンライン移行では、SQL_variant データ型の移行はサポートされていません。
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>テンポラル テーブルの移行はサポートされていません
 
@@ -28,8 +31,10 @@ ms.locfileid: "53719559"
 
 ソース データベースが 1 つ以上のテンポラル テーブルで構成されている場合、"全体のデータの読み込み" 操作中にデータベースの移行が失敗し、次のメッセージが表示されることがあります。
 
-{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"データベースの移行エラー", "errorEvents":"["Capture functionalities could not be set. (キャプチャ機能を設定できません。) RetCode:SQL_ERROR SqlState:42000 NativeError:13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line:1 Column: -1 "]" }
- 
+```
+{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
+```
+
  ![テンポラル テーブルのエラーの例](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **対処法**
@@ -62,17 +67,20 @@ ms.locfileid: "53719559"
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
- 2. 移行するテーブルを指定する **[Configure migration settings]\(移行設定の構成\)** ブレードからこれらのテーブルを除外します。
+2. 移行するテーブルを指定する **[Configure migration settings]\(移行設定の構成\)** ブレードからこれらのテーブルを除外します。
 
- 3. 移行アクティビティを再実行します。
+3. 移行アクティビティを再実行します。
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>"全体のデータの読み込み" または "増分データ同期" 中のスキーマ内のアクティブ トリガーに関する各種の整合性違反による移行エラー
 
 **対処法**
+
 1. 次のクエリを使用して、ソース データベースで現在アクティブなトリガーを検索します。
+
      ```
      select * from sys.triggers where is_disabled =0
      ```
+
 2. 「[DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)」に記載されている手順を使用して、ソース データベースのトリガーを無効にします。
 
 3. 移行アクティビティを再実行します。
@@ -84,12 +92,12 @@ ms.locfileid: "53719559"
 ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。 
 
 ``` 
-SELECT max(len(ColumnName)) as LEN from TableName
+SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
 **対処法**
 
-32 KB を超える LOB 列がある場合は、エンジニアリング チーム ([dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)) に相談してください。
+32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
 ### <a name="issues-with-timestamp-columns"></a>タイムスタンプ列に関する問題
 
@@ -99,9 +107,9 @@ DMS は、ソースのタイムスタンプ値を移行しません。代わり�
 
 **対処法**
 
-DMS でソース テーブルに格納されている正確なタイムスタンプ値を移行する必要がある場合は、エンジニアリング チーム ([dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)) に相談してください。
+DMS でソース テーブルに格納されている正確なタイムスタンプ値を移行する必要がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
-### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>データ移行エラーが発生した場合、データベースの詳細な状態ブレードに詳細が表示されません。
+### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>データ移行エラーが発生した場合、データベースの詳細な状態ブレードに詳細が表示されません。
 
 **症状:**
 

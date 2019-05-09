@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430172"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58881088"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -158,7 +158,7 @@ ms.locfileid: "49430172"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "49430172"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -235,7 +235,6 @@ ms.locfileid: "49430172"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -249,7 +248,7 @@ ms.locfileid: "49430172"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -343,7 +342,7 @@ ms.locfileid: "49430172"
 これらの構成によって、tempdb はシステム ドライブが提供するよりも多くの領域を使用ができます。 非永続ドライブの D:\ は、(A シリーズの VM を除き) I/O 待機時間とスループットが優れています。 適切な tempdb のサイズを決定するために、既存のシステムの tempdb のサイズを確認します。 
 
 >[!NOTE]
-> 作成した D:\ ドライブ上のフォルダーに tempdb データ ファイルとログ ファイルを配置する場合は、VM を再起動した後にフォルダーが存在することを確認する必要があります。 VM の再起動後に D:\ ドライブは新たに初期化されるので、すべてのファイルおよびディレクトリ構造は消去されます。SQL Server サービスの開始前に D:\ ドライブ上の最終的なディレクトリ構造を再作成する可能性については、[こちらの記事](http://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)を参照してください。
+> 作成した D:\ ドライブ上のフォルダーに tempdb データ ファイルとログ ファイルを配置する場合は、VM を再起動した後にフォルダーが存在することを確認する必要があります。 VM の再起動後に D:\ ドライブは新たに初期化されるので、すべてのファイルおよびディレクトリ構造は消去されます。SQL Server サービスの開始前に D:\ ドライブ上の最終的なディレクトリ構造を再作成する可能性については、[こちらの記事](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)を参照してください。
 
 SQL Server と SAP データベースを実行し、D:\ ドライブに tempdb データと tempdb ログ ファイルを配置する VM 構成は次のようになります。
 
@@ -383,7 +382,7 @@ SQL Server 2014 以降では、Azure Blob ストアの周囲に VHD の "ラッ�
 * 前述の別の Azure Storage アカウントに VHD を分散させることについての考慮事項は、このデプロイ方法の場合にも適用されます。 Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。
 * VM のストレージ I/O クォータを考慮する代わりに、SQL Server のデータとログ ファイルを表すストレージ BLOB に対するトラフィックが、特定の VM の種類の VM のネットワーク帯域幅に反映されます。 具体的な VM の種類のネットワークとストレージの帯域幅については、記事「[Azure の Windows 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)」を参照してください。
 * ネットワーク クォータを介してファイル I/O をプッシュすると、主にストレージ クォータが孤立し、VM の全体の帯域幅が部分的にしか使用されません。
-* Azure Premium Storage がさまざまなディスク サイズに対して持っている IOPS と I/O スループットのパフォーマンス目標は適用されません。 たとえ、作成した BLOB が Azure Premium Storage 上にある場合でもそうです。 目標については、記事「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets)」を参照してください。 Azure Premium Storage に格納されている BLOB に SQL Server のデータ ファイルとログ ファイルを直接配置した結果のパフォーマンスの特性は、Azure Premium Storage 上の VHD と異なる場合があります。
+* Azure Premium Storage がさまざまなディスク サイズに対して持っている IOPS と I/O スループットのパフォーマンス目標は適用されません。 たとえ、作成した BLOB が Azure Premium Storage 上にある場合でもそうです。 目標については、記事「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)」を参照してください。 Azure Premium Storage に格納されている BLOB に SQL Server のデータ ファイルとログ ファイルを直接配置した結果のパフォーマンスの特性は、Azure Premium Storage 上の VHD と異なる場合があります。
 * Azure Premium Storage ディスクで使用できるホスト ベースのキャッシュは、SQL Server データ ファイルを Azure BLOB に直接デプロイするときには使用できません。
 * M シリーズの VM では、Azure Write Accelerator を使用して SQL Server トランザクション ログ ファイルに対してミリ秒未満の書き込みをサポートすることはできません。 
 
@@ -423,7 +422,7 @@ Azure でのさまざまな SQL Server のバックアップ方法について�
 この方法の機能の詳細については、次の記事を参照してください。
 
 - SQL Server 2014: [SQL Server 2014 Virtual Machines の自動バックアップ (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
-- SQL Server 2016/2017: [Azure Virtual Machines の自動バックアップ v2 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
+- SQL Server 2016 および 2017: [Azure Virtual Machines の自動バックアップ v2 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
 ドキュメントを読むと、新しい SQL Server リリースでは機能が向上していることがわかります。 SQL Server の自動バックアップの詳細については、記事「[Microsoft Azure への SQL Server マネージド バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017)」を参照してください。 理論上のバックアップ サイズの制限は 12 TB です。  自動バックアップは、最大 12 TB のバックアップ サイズに適している方法です。 複数の BLOB が並行して書き込まれるため、100 MB/秒を超えるスループットが期待できます。 
  
@@ -450,7 +449,7 @@ Azure Marketplace の SQL Server イメージは SAP NetWeaver アプリケー�
 
 * 管理者として Windows コマンド ウィンドウを開きます。
 * ディレクトリを C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012 に変更します。
-* 次のコマンドを実行します。Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name` /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
+* 次のコマンドを実行します。Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> は、ギャラリーを使用して最初に VM をデプロイするときに Administrator アカウントとして定義されたアカウントです。
 
 処理にかかるのは、わずか数分間です。 この手順で正しい結果が得られるかどうかを確認するには、次の手順を実行します。

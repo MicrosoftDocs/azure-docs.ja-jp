@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 21689cf7fe3df7ca7e362ba49824fadd5daaa3ea
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 1c812a77429e13ea39b2f4946043c13e10aaf097
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888775"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993744"
 ---
 # <a name="add-html-markers-to-the-map"></a>マップに HTML マーカーを追加する
 
@@ -68,20 +68,11 @@ HTML マーカーの利点の 1 つは、CSS を使用して達成できる優�
 
 ## <a name="add-mouse-events-to-html-markers"></a>マウス イベントを HTML マーカーに追加する
 
-これらのサンプルは、標準の JavaScript イベントをマーカーの HTML コンテンツに追加することで、マウス イベントを HTML マーカーに追加する方法を示しています。 
-
-マーカーの `htmlContent` が DOM 要素 (div、img など) の場合は、イベントを直接追加することができます。 
+これらのサンプルは、マウスおよびドラッグ イベントを HTML マーカーに追加する方法を示しています。
 
 <br/>
 
 <iframe height='500' scrolling='no' title='マウス イベントを HTML マーカーに追加する' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/RqOKRz/'>Adding Mouse Events to HTML Markers</a>」Pen を表示します。
-</iframe>
-
-`htmlContent` が文字列 (つまり 既定など) の場合は、DOM 要素を作成し、それに innerHTML として文字列を追加し、htmlContent として DOM 要素を追加します。 `htmlContent` がテンプレート化された文字列の場合は、まず文字列内の `{text}` 値と `{color}` 値を検索して置換する必要があります。
-
-<br/>
-
-<iframe height='500' scrolling='no' title='マウス イベントを既定の HTML マーカーに追加する' src='//codepen.io/azuremaps/embed/ZmZLBa/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZmZLBa/'>Adding Mouse Events to default HTML Marker</a>」Pen を表示します。
 </iframe>
 
 ## <a name="next-steps"></a>次の手順

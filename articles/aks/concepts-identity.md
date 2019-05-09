@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 0af3133a1f9a903874c25bf34af0fbf99da8af14
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3432ba671431c25b7cd9ee58decc638861e884c3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380927"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000676"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -75,7 +75,9 @@ ClusterRoleBinding は、ユーザーにロールをバインドするのと同�
 
 Azure AD と Kubernetes の RBAC の使用を開始するには、「[Azure Active Directory と Azure Kubernetes Service を統合する][aks-aad]」を参照してください。
 
-Kubernetes と AKS の中心概念に関する追加情報については、次の記事を参照してください。
+関連するベスト プラクティスについては、[AKS の認証と承認に関するベスト プラクティス][operator-best-practices-identity]に関する記事を参照してください。
+
+Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
 - [Kubernetes/AKS クラスターとワークロード][aks-concepts-clusters-workloads]
 - [Kubernetes/AKS のセキュリティ][aks-concepts-security]
@@ -92,9 +94,10 @@ Kubernetes と AKS の中心概念に関する追加情報については、次�
 [openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
-[aks-aad]: aad-integration.md
+[aks-aad]: azure-ad-integration-cli.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[operator-best-practices-identity]: operator-best-practices-identity.md

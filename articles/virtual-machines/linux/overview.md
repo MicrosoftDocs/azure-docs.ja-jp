@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 96daacef134ca60cb497907a770c83a4bba24a5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956026"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008949"
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
 Microsoft Azure は、分析、仮想マシン、データベース、モバイル、ネットワーク、ストレージ、Web など、多様なパブリック クラウド サービスを一元化した集合体として成長し続け、さまざまなソリューションのホストとして理想的な形態となっています。  Microsoft Azure のスケーラブルなコンピューティング プラットフォームによって、必要なときに使用した分だけを支払う料金体系が実現され、オンプレミスのハードウェアに投資する必要がありません。  貴社の顧客のニーズに応えるうえで必要なレベルにまでソリューションをいつでもスケールアップまたはスケールアウトできる柔軟性が Azure にはあります。
@@ -59,7 +59,7 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 * [Azure テンプレート](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure は Linux ディストリビューションの多くで、 [cloud-init](http://cloud-init.io/) のサポートを展開しています。  現在、既定で有効になっている cloud-init で、Canonical の Ubuntu VM がデプロイされています。  RedHat の RHEL、CentOS、Fedora は cloud-init をサポートしますが、現在、RedHat で保持される Azure のイメージに cloud-init はインストールされていません。  RedHat family OS で cloud-init を使用するには、インストールされている cloud-init でカスタム イメージを作成する必要があります。
+Azure は Linux ディストリビューションの多くで、 [cloud-init](https://cloud-init.io/) のサポートを展開しています。  現在、既定で有効になっている cloud-init で、Canonical の Ubuntu VM がデプロイされています。  RedHat の RHEL、CentOS、Fedora は cloud-init をサポートしますが、現在、RedHat で保持される Azure のイメージに cloud-init はインストールされていません。  RedHat family OS で cloud-init を使用するには、インストールされている cloud-init でカスタム イメージを作成する必要があります。
 
 * [Azure Linux VM 上で cloud-init を使用する](using-cloud-init.md)
 
@@ -72,7 +72,7 @@ Azure サブスクリプションにはそれぞれ既定のクォータ制限�
 Microsoft はパートナーと連携し、利用可能なイメージが Azure ランタイム用に更新、最適化されたことを確認します。  Azure パートナーの詳細については、次のリンクを参照してください。
 
 * [Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md)
-* SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
+* SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES?tab=Overview)
 * Red Hat - [Azure Marketplace - Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical - [Azure Marketplace - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian - [Azure Marketplace - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)

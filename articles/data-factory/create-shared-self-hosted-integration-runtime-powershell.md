@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 22dbe9b29059ff351cd1937f72f6dc742b24c690
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: f038510c20e70c9d6b9dc8e396d9a15beb7270ca
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993894"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444624"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>PowerShell を使用して Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 
@@ -31,9 +30,11 @@ ms.locfileid: "53993894"
 
 ## <a name="prerequisites"></a>前提条件 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 
 
-- **Azure PowerShell**。 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0)」に記載されている手順に従います。 PowerShell を使用してスクリプトを実行し、他のデータ ファクトリと共有できるセルフホステッド統合ランタイムを作成できます。 
+- **Azure PowerShell**。 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」に記載されている手順に従います。 PowerShell を使用してスクリプトを実行し、他のデータ ファクトリと共有できるセルフホステッド統合ランタイムを作成できます。 
 
 > [!NOTE]  
 > 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)」ページで目的のリージョンを選択してください。
@@ -66,8 +67,8 @@ ms.locfileid: "53993894"
 1. サインインしてサブスクリプションを選択します。 サインインして Azure サブスクリプションを選択するには、スクリプトに次のコードを追加します。
 
     ```powershell
-    Connect-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+    Connect-AzAccount
+    Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
 1. リソース グループとデータ ファクトリを作成します。
@@ -75,16 +76,16 @@ ms.locfileid: "53993894"
     > [!NOTE]  
     > この手順は省略可能です。 既にデータ ファクトリがある場合は、この手順をスキップしてください。 
 
-    [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
+    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
 
     ```powershell
-    New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
+    New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
     ```
 
     Data Factory を作成するには、次のコマンドを実行します。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
+    Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
                              -Location $DataFactoryLocation `
                              -Name $SharedDataFactoryName
     ```
@@ -97,7 +98,7 @@ ms.locfileid: "53993894"
 次のコマンドを実行して、セルフホステッド統合ランタイムを作成します。
 
 ```powershell
-$SharedIR = Set-AzureRmDataFactoryV2IntegrationRuntime `
+$SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
     -ResourceGroupName $ResourceGroupName `
     -DataFactoryName $SharedDataFactoryName `
     -Name $SharedIntegrationRuntimeName `
@@ -110,7 +111,7 @@ $SharedIR = Set-AzureRmDataFactoryV2IntegrationRuntime `
 次のコマンドを実行して、セルフホステッド統合ランタイムの認証キーを取得します。
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntimeKey `
+Get-AzDataFactoryV2IntegrationRuntimeKey `
     -ResourceGroupName $ResourceGroupName `
     -DataFactoryName $SharedDataFactoryName `
     -Name $SharedIntegrationRuntimeName
@@ -134,7 +135,7 @@ Get-AzureRmDataFactoryV2IntegrationRuntimeKey `
 > この手順は省略可能です。 共有先のデータ ファクトリが既にある場合は、この手順をスキップしてください。
 
 ```powershell
-$factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
+$factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Location $DataFactoryLocation `
     -Name $LinkedDataFactoryName
 ```
@@ -146,7 +147,7 @@ $factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 > この手順はスキップしないでください。
 
 ```powershell
-New-AzureRMRoleAssignment `
+New-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId ` #MSI of the Data Factory with which it needs to be shared
     -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' ` #This is the Contributor role
     -Scope $SharedIR.Id
@@ -157,7 +158,7 @@ New-AzureRMRoleAssignment `
 次のコマンドを実行して、リンクされたセルフホステッド統合ランタイムを作成します。
 
 ```powershell
-Set-AzureRmDataFactoryV2IntegrationRuntime `
+Set-AzDataFactoryV2IntegrationRuntime `
     -ResourceGroupName $ResourceGroupName `
     -DataFactoryName $LinkedDataFactoryName `
     -Name $LinkedIntegrationRuntimeName `
@@ -173,7 +174,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime `
 共有された統合ランタイムからデータ ファクトリのアクセス権を取り消すには、次のコマンドを実行します。
 
 ```powershell
-Remove-AzureRMRoleAssignment `
+Remove-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId `
     -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
     -Scope $SharedIR.Id
@@ -182,7 +183,7 @@ Remove-AzureRMRoleAssignment `
 既存のリンクされた統合ランタイムを削除するには、共有された統合ランタイムに対して次のコマンドを実行します。
 
 ```powershell
-Remove-AzureRmDataFactoryV2IntegrationRuntime `
+Remove-AzDataFactoryV2IntegrationRuntime `
     -ResourceGroupName $ResourceGroupName `
     -DataFactoryName $SharedDataFactoryName `
     -Name $SharedIntegrationRuntimeName `

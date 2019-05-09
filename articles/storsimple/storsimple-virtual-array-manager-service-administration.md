@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109900"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091870"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array を管理する
 ![セットアップ プロセス フロー](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -53,17 +53,17 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple デバイス マネージャーのワークフロー
 | 目的の操作 | 実行する手順 |
-| --- | --- | --- |
-| サービスを作成する</br>サービスの削除</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスをデプロイする](storsimple-virtual-array-manage-service.md) |
+| --- | --- |
+| サービスの作成</br>サービスの削除</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスをデプロイする](storsimple-virtual-array-manage-service.md) |
 | アクティビティ ログを表示する |[StorSimple サービスの概要を使用する](storsimple-virtual-array-service-summary.md) |
 | 仮想アレイを非アクティブ化する</br>仮想アレイを削除する |[仮想アレイを非アクティブ化または削除する](storsimple-virtual-array-deactivate-and-delete-device.md) |
 | ディザスター リカバリーとデバイスのフェールオーバー</br>フェールオーバーの前提条件</br>事業継続とディザスター リカバリー (BCDR)</br>ディザスター リカバリー時のエラー |[StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー](storsimple-virtual-array-failover-dr.md) |
 | 共有やボリュームをバックアップする</br>手動バックアップの取得</br>バックアップのスケジュールを変更する</br>既存のバックアップを表示する |[StorSimple Virtual Array をバックアップする](storsimple-virtual-array-backup.md) |
 | バックアップ セットから共有を複製する</br>バックアップ セットからボリュームを複製する</br>項目レベルの回復 (ファイル サーバーのみ) |[StorSimple Virtual Array のバックアップから複製する](storsimple-virtual-array-clone.md) |
-| ストレージ アカウントについて</br>ストレージ アカウントの追加</br>ストレージ アカウントの編集</br>ストレージ アカウントの削除 |[StorSimple Virtual Array のストレージ アカウントを管理する](storsimple-virtual-array-manage-storage-accounts.md) |
+| ストレージ アカウントについて</br>ストレージ アカウントの追加</br>ストレージ アカウントの編集</br>ストレージ アカウントを削除する |[StorSimple Virtual Array のストレージ アカウントを管理する](storsimple-virtual-array-manage-storage-accounts.md) |
 | アクセス制御レコードについて</br>アクセス制御レコードの追加または変更 </br>アクセス制御レコードの削除 |[StorSimple Virtual Array のアクセス制御レコードを管理する](storsimple-virtual-array-manage-acrs.md) |
 | ジョブの詳細を表示する |[StorSimple Virtual Array ジョブを管理する](storsimple-virtual-array-manage-jobs.md) |
-| アラート設定を構成する</br>アラート通知を受け取る</br>Manage alerts</br>アラートを確認する |[StorSimple Virtual Array のアラートを表示し、管理する](storsimple-virtual-array-manage-alerts.md) |
+| アラート設定の構成</br>アラート通知を受け取る</br>Manage alerts</br>アラートを確認する |[StorSimple Virtual Array のアラートを表示し、管理する](storsimple-virtual-array-manage-alerts.md) |
 | デバイス管理者のパスワードを変更する |[StorSimple Virtual Array デバイス管理者パスワードを変更する](storsimple-virtual-array-change-device-admin-password.md) |
 | ソフトウェアの更新プログラムをインストールする |[Virtual Array を更新する](storsimple-virtual-array-install-update.md) |
 
@@ -76,6 +76,6 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Web UI とその使用方法については、「 [StorSimple Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」をご覧ください。
 

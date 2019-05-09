@@ -49,7 +49,7 @@ items:
   - name: Azure CLI
     href: /cli/azure/managedapp
   - name: PowerShell
-    href: /powershell/module/azurerm.resources
+    href: /powershell/module/az.resources
   - name: REST
     href: /rest/api/resources/
   - name: ユーザー インターフェイスの関数
@@ -75,7 +75,7 @@ items:
         href: microsoft-common-textblock.md
       - name: TextBox
         href: microsoft-common-textbox.md
-    - name: コンピューティング
+    - name: Compute
       items:
       - name: CredentialsCombo
         href: microsoft-compute-credentialscombo.md
@@ -103,11 +103,13 @@ items:
     href: https://azure.microsoft.com/pricing/details/managed-applications/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
+  - name: Resource Manager テンプレートのベスト プラクティス
+    href: https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-managedapps
-ms.openlocfilehash: b74cfed4f0208a1b70980d34284fd7f9ff207ca4
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e5ed2bab25c8140d12517e4757c028a7c6dd85d9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801559"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402016"

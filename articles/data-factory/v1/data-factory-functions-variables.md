@@ -9,17 +9,16 @@ ms.assetid: b6b3c2ae-b0e8-4e28-90d8-daf20421660d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b4d9a684c2c21ed9ec00b04963432f9ebcff7493
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048456"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523938"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]
@@ -28,6 +27,7 @@ ms.locfileid: "37048456"
 この記事では、Azure Data Factory でサポートされている関数および変数に関する情報を提供します。
 
 ## <a name="data-factory-system-variables"></a>Data Factory のシステム変数
+
 | 変数名 | 説明 | オブジェクトのスコープ | JSON のスコープと使用事例 |
 | --- | --- | --- | --- |
 | WindowStart |現在のアクティビティ実行ウィンドウの時間間隔の開始 |activity |<ol><li>データ選択クエリを指定します。 [データ移動アクティビティ](data-factory-data-movement-activities.md) の記事で参照されているコネクタの記事を参照してください。</li> |
@@ -59,7 +59,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 
 1. データ選択クエリを指定する ( [データ移動アクティビティ](data-factory-data-movement-activities.md) の記事で参照されているコネクタの記事を参照してください。
    
-   データ選択クエリと、アクティビティおよびデータセットの他のプロパティの場合、Data Factory 関数を呼び出す構文は **$$<function>** です。  
+   データ選択クエリと、アクティビティおよびデータセットの他のプロパティの場合、Data Factory 関数を呼び出す構文は **$$\<関数>** です。  
 2. アクティビティ入力コレクションで、Data Factory 関数を使用して入力の依存関係を指定する。
    
     入力の依存関係式を指定する場合、$$ は不要です。     
@@ -78,26 +78,26 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 ### <a name="functions"></a>Functions
 次の表は、Azure Data Factory の全関数の一覧です。
 
-| カテゴリ | 関数 | parameters | 説明 |
+| Category | Function | parameters | 説明 |
 | --- | --- | --- | --- |
-| Time |AddHours(X,Y) |X: DateTime  <br/><br/>Y: int |指定した時刻 X に Y 時間を追加します。 <br/><br/>例: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Time |AddMinutes(X,Y) |X: DateTime  <br/><br/>Y: int |X に Y 分を追加します。<br/><br/>例: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X: DateTime  |X の時間コンポーネントで表される時間の開始時刻を取得します。 <br/><br/>例: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
-| 日付 |AddDays(X,Y) |X: DateTime <br/><br/>Y: int |X に Y 日を追加します。 <br/><br/>例: 9/15/2013 12:00:00 PM + 2 days = 9/17/2013 12:00:00 PM<br/><br/>Y を負数に指定して、日数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
-| 日付 |AddMonths(X,Y) |X: DateTime <br/><br/>Y: int |X に Y か月を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`<br/><br/>Y を負数に指定して、月数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
-| 日付 |AddQuarters(X,Y) |X: DateTime  <br/><br/>Y: int |X に Y * 3 か月を追加します。<br/><br/>例: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
-| 日付 |AddWeeks(X,Y) |X: DateTime <br/><br/>Y: int |X に Y * 7 日を追加します。 <br/><br/>例: 9/15/2013 12:00:00 PM + 1 week = 9/22/2013 12:00:00 PM<br/><br/>Y を負数に指定して、週数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
-| 日付 |AddYears(X,Y) |X: DateTime <br/><br/>Y: int |X に Y 年を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Y を負数に指定して、年数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
-| 日付 |Day(X) |X: DateTime  |X の日付コンポーネントを取得します。<br/><br/>例: `Day of 9/15/2013 12:00:00 PM is 9`. |
-| 日付 |DayOfWeek(X) |X: DateTime  |X の曜日コンポーネントを取得します。<br/><br/>例: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
-| 日付 |DayOfYear(X) |X: DateTime  |X の年コンポーネントで表される、その年の日付を取得します。<br/><br/>次に例を示します。<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
-| 日付 |DaysInMonth(X) |X: DateTime  |パラメーター X の月コンポーネントで表される、その月の日数を取得します。<br/><br/>例: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
-| 日付 |EndOfDay(X) |X: DateTime  |X の日 (日コンポーネント) の終了を表す日時を取得します。<br/><br/>例: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
-| 日付 |EndOfMonth(X) |X: DateTime  |パラメーター X の月コンポーネントで表される月の終了を取得します。 <br/><br/>例: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (9 月の終了を表す日時) |
-| 日付 |StartOfDay(X) |X: DateTime  |パラメーター X の日コンポーネントで表される日の開始を取得します。<br/><br/>例: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| Datetime |From(X) |X: String |文字列 X を日時にパースします。 |
-| Datetime |Ticks(X) |X: DateTime  |パラメーター X の ticks プロパティを取得します。1 ティックは 100 ナノ秒です。 このプロパティの値は、0001 年 1 月 1 日深夜 12:00:00 以降の経過時間のティック数を表しています。 |
-| テキスト |Format(X) |X: String 変数 |テキストを書式設定します (`\\'` の組み合わせを使用して `'` 文字をエスケープします)。|
+| Time |AddHours(X,Y) |X:DateTime <br/><br/>Y: int |指定した時刻 X に Y 時間を追加します。 <br/><br/>例: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Time |AddMinutes(X,Y) |X:DateTime <br/><br/>Y: int |X に Y 分を追加します。<br/><br/>例: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Time |StartOfHour(X) |X:DateTime |X の時間コンポーネントで表される時間の開始時刻を取得します。 <br/><br/>例: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Date |AddDays(X,Y) |X:DateTime<br/><br/>Y: int |X に Y 日を追加します。 <br/><br/>例:9/15/2013 12:00:00 PM + 2 days = 9/17/2013 12:00:00 PM<br/><br/>Y を負数に指定して、日数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
+| Date |AddMonths(X,Y) |X:DateTime<br/><br/>Y: int |X に Y か月を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`<br/><br/>Y を負数に指定して、月数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
+| Date |AddQuarters(X,Y) |X:DateTime <br/><br/>Y: int |X に Y * 3 か月を追加します。<br/><br/>例: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| Date |AddWeeks(X,Y) |X:DateTime<br/><br/>Y: int |X に Y * 7 日を追加します。 <br/><br/>例:9/15/2013 12:00:00 PM + 1 week = 9/22/2013 12:00:00 PM<br/><br/>Y を負数に指定して、週数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
+| Date |AddYears(X,Y) |X:DateTime<br/><br/>Y: int |X に Y 年を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Y を負数に指定して、年数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
+| 日付 |Day(X) |X:DateTime |X の日付コンポーネントを取得します。<br/><br/>例: `Day of 9/15/2013 12:00:00 PM is 9`. |
+| Date |DayOfWeek(X) |X:DateTime |X の曜日コンポーネントを取得します。<br/><br/>例: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
+| Date |DayOfYear(X) |X:DateTime |X の年コンポーネントで表される、その年の日付を取得します。<br/><br/>次に例を示します。<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| Date |DaysInMonth(X) |X:DateTime |パラメーター X の月コンポーネントで表される、その月の日数を取得します。<br/><br/>例: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
+| Date |EndOfDay(X) |X:DateTime |X の日 (日コンポーネント) の終了を表す日時を取得します。<br/><br/>例: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
+| Date |EndOfMonth(X) |X:DateTime |パラメーター X の月コンポーネントで表される月の終了を取得します。 <br/><br/>例: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (9 月の終了を表す日時) |
+| Date |StartOfDay(X) |X:DateTime |パラメーター X の日コンポーネントで表される日の開始を取得します。<br/><br/>例: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
+| DateTime |From(X) |X:String |文字列 X を日時にパースします。 |
+| DateTime |Ticks(X) |X:DateTime |パラメーター X の ticks プロパティを取得します。1 ティックは 100 ナノ秒です。 このプロパティの値は、0001 年 1 月 1 日深夜 12:00:00 以降の経過時間のティック数を表しています。 |
+| Text |Format(X) |X:文字列変数 |テキストを書式設定します (`\\'` の組み合わせを使用して `'` 文字をエスケープします)。|
 
 > [!IMPORTANT]
 > 別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。 例: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6))。 この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。 
@@ -154,7 +154,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample",
+                    "storedProcedureName": "usp_sample",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                     }

@@ -4,7 +4,7 @@ description: C# と .NET Core 2.0 を使用して、Service Fabric アプリケ�
 services: service-fabric
 documentationcenter: csharp
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 5a96d21d-fa4a-4dc2-abe8-a830a3482fb1
 ms.service: service-fabric
@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: e917119e2d0f9b7b5cfa9ea145cc6e540486ac66
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 04163bea8f4c1247f42b65c35c2b82910e623bc9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052598"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661379"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
 > [!div class="op_single_selector"]
-> * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
 > * [Java - Linux (プレビュー)](service-fabric-create-your-first-linux-application-with-java.md)
 > * [C# - Linux (プレビュー)](service-fabric-create-your-first-linux-application-with-csharp.md)
 >
@@ -45,19 +44,19 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
    nvm install node 
    ```
-2. NPM からマシンに [Yeoman](http://yeoman.io/) テンプレート ジェネレーターをインストールします。
+2. NPM からマシンに [Yeoman](https://yeoman.io/) テンプレート ジェネレーターをインストールします。
 
-  ```bash
-  npm install -g yo
-  ```
+   ```bash
+   npm install -g yo
+   ```
 3. NPM から Service Fabric Yeoman C# アプリケーション ジェネレーターをインストールします。
 
-  ```bash
-  npm install -g generator-azuresfcsharp
-  ```
+   ```bash
+   npm install -g generator-azuresfcsharp
+   ```
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 直前の手順でインストールした C# 用の Service Fabric [Yeoman](http://yeoman.io/) ジェネレーターを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
+Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 直前の手順でインストールした C# 用の Service Fabric [Yeoman](https://yeoman.io/) ジェネレーターを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
 
 1. ターミナルで、コマンド「`yo azuresfcsharp`」を入力してスキャフォールディングの構築を開始します。
 2. アプリケーションに名前を付けます。

@@ -4,22 +4,23 @@ description: Azure Active Directory と Workplace by Facebook の間でシング
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 30f2ee64-95d3-44ef-b832-8a0a27e2967c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: da016d95891df97f8f5074277a37a3deb4df4016
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 27173c8beeecf2be43e80f59df8907952734c06b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973606"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>チュートリアル:Azure Active Directory と Workplace by Facebook の統合
 
@@ -117,7 +118,7 @@ Workplace by Facebook で Azure AD シングル サインオンを構成する�
 
     ![[Workplace by Facebook のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<instancename>.facebook.com` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<instancename>.facebook.com`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://www.facebook.com/company/<instanceID>` という形式で URL を入力します。
 
@@ -142,31 +143,38 @@ Workplace by Facebook で Azure AD シングル サインオンを構成する�
 
 1. 別の Web ブラウザーのウィンドウで、Workplace by Facebook 企業サイトに管理者としてログインします。
   
-   > [!NOTE]
-   > SAML 認証プロセスの一環として、Azure AD にパラメーターを渡すために Workplace が最大サイズ 2.5 KBのクエリ文字列を使用する可能性があります。
+    > [!NOTE]
+    > SAML 認証プロセスの一環として、Azure AD にパラメーターを渡すために Workplace が最大サイズ 2.5 KBのクエリ文字列を使用する可能性があります。
 
-2. **管理パネル**で、**[セキュリティ]** タブに移動し、**認証**します。
+2. **管理パネル**で、**[セキュリティ]** タブに移動します。
 
-3. **[SAML Authentication]\(SAML 認証\)** で、ドロップダウン リストの一覧から **[SSO Only]\(SSO のみ\)** を選択します。
+    ![管理パネル](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-4. Azure Portal の **[Workplace by Facebook の構成]** セクションからコピーした値を対応するフィールドに入力します。
+3. **[認証]** タブで **[シングル サインオン (SSO)]** を選択し、次の手順を実行します。
 
-    * **[SAML URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
-    * **[SAML Issuer URL]\(SAML 発行者の URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
-    * **[SAML Logout redirect]\(SAML ログアウト リダイレクト\)** (オプション) に、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
-    * Azure Portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
+    ![[認証] タブ](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-5. **[基本的な SAML 構成]** セクションに一覧表示されている [Audience URL]\(対象 URL\)、[Recipient URL]\(受信側 URL\)、[ACS (Assertion Consumer Service) URL] の入力が必要になる場合もあります。
+    a. **[SAML URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-6. セクションの下部にスクロールし、**[Test SSO]\(SSO のテスト\)** をクリックします。 これにより、Azure AD ログイン ページで表示されるポップアップ ウィンドウが表示されます。 通常どおり資格情報を入力して認証を行います。
+    b. **[SAML Issuer URL]\(SAML 発行者の URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+
+    c. **[SAML Logout redirect]\(SAML ログアウト リダイレクト\)** (オプション) に、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+
+    d. Azure Portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
+
+    e. インスタンスの **[Audience URL]\(対象 URL\)** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
+
+    f. インスタンスの **[Recipient URL]\(受信者 URL\)** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
+
+    g. セクションの下部にスクロールし、**[Test SSO]\(SSO のテスト\)** をクリックします。 これにより、Azure AD ログイン ページで表示されるポップアップ ウィンドウが表示されます。 通常どおり資格情報を入力して認証を行います。
 
     **トラブルシューティング:** Azure AD から返された電子メール アドレスが、ログインに使用した Workplace アカウントと同じであることを確認してください。
 
-7. テストが正常に完了したら、ページの下部にスクロールして **[保存]** をクリックします。
+    h. テストが正常に完了したら、ページの下部にスクロールして **[保存]** をクリックします。
 
-8. Workplace を使用しているすべてのユーザーに、認証用の Azure AD ログイン ページが表示されるようになりました。
+    i. Workplace を使用しているすべてのユーザーに、認証用の Azure AD ログイン ページが表示されるようになりました。
 
-9. **SAML ログアウト リダイレクト (オプション)** -
+4. **SAML ログアウト リダイレクト (オプション)** -
 
     必要に応じて、Azure AD のログアウト ページの指定に使用される SAML ログアウト URL を構成できます。 この設定が有効に構成されている場合は、ユーザーに対して Workplace ログアウト ページが表示されなくなります。 代わりに、SAML ログアウト リダイレクトの設定に追加された URL にユーザーがリダイレクトされるようになります。
 
@@ -197,7 +205,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -249,7 +257,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

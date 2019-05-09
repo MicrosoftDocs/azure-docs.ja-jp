@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 03/12/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 52051ea221a3d49d86cc6b95e020e1075ce8cba2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275552"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121708"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -33,38 +33,63 @@ ASE の送信依存関係は、ほぼすべて、背後に静的アドレスが�
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>ASE に合わせて Azure Firewall を構成する 
 
-Azure Firewall を使用して ASE からの送信をロックする手順は次のとおりです。
+Azure Firewall を使用して既存の ASE からのエグレスをロックダウンする手順は次のとおりです。
 
-1. ASE が展開されている、または展開される予定の VNet に Azure Firewall を作成します。 [Azure Firewall のドキュメント](https://docs.microsoft.com/azure/firewall/)
-2. Azure Firewall UI から、App Service Environment FQDN タグを選択します
-3. インターネットの次ホップがある [App Service Environment 管理アドレス]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。
-4. インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。
-5. 0.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall であるルートを追加します。
-6. Azure SQL と Azure Storage に到達する ASE サブネットのサービス エンドポイントを作成します。
-7. 作成したルート テーブルを ASE サブネットに割り当てます。
+1. ASE サブネット上の SQL、Storage、Event Hub へのサービス エンドポイントを有効にします。 これを行うには、ネットワーク ポータル、[サブネット] の順に移動し、[サービス エンドポイント] ドロップダウンから [Microsoft.EventHub]、[Microsoft.SQL]、[Microsoft.Storage] を選択します。 Azure SQL に対するサービス エンドポイントを有効にした場合、お使いのアプリの Azure SQL の依存関係もすべて、サービス エンドポイントで構成する必要があります。 
+
+   ![サービス エンドポイントの選択][2]
+  
+1. ASE が存在する VNet に AzureFirewallSubnet という名前のサブネットを作成します。 「[Azure Firewall のドキュメント](https://docs.microsoft.com/azure/firewall/)」の指示に従って Azure Firewall を作成します。
+1. Azure Firewall UI の [ルール]、[アプリケーション ルール コレクション] から、[アプリケーション ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [FQDN タグ] セクションで、名前を指定し、[ソース アドレス] を「*」に設定して、FQDN タグとして App Service Environment と Windows Update を選択します。 
+   
+   ![アプリケーション ルールの追加][1]
+   
+1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [ルール] セクションで、名前を指定し、**[任意]** を選択して、[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを「123」を設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。
+
+   ![NTP ネットワーク ルールの追加][3]
+
+1. インターネットの次ホップがある [App Service Environment 管理アドレス]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。 インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。 0.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall プライベート IP アドレスである仮想アプライアンス ルートを追加します。 
+
+   ![ルート テーブルの作成][4]
+   
+1. 作成したルート テーブルを ASE サブネットに割り当てます。
+
+#### <a name="deploying-your-ase-behind-a-firewall"></a>ファイアウォールの内側に ASE をデプロイする
+
+ファイアウォールの内側に ASE をデプロイする手順は、Azure Firewall を使用して既存の ASE を構成する手順と同じです。ただし、例外として、ASE サブネットを作成してから前の手順に従う必要があります。 既存のサブネットに ASE を作成するには、[Resource Manager テンプレートを使用した ASE の作成](https://docs.microsoft.com/azure/app-service/environment/create-from-template)に関するドキュメントで説明されているように、Resource Manager テンプレートを使用する必要があります。
 
 ## <a name="application-traffic"></a>アプリケーション トラフィック 
 
 上記の手順で、ASE が問題なく動作するようになります。 ただし、実際のアプリケーションのニーズに合わせて構成する必要があります。 Azure Firewall を使用して構成された ASE 内のアプリケーションには 2 つの問題があります。  
 
-- アプリケーション依存関係の FQDN を Azure Firewall またはルート テーブルに追加する必要があります
-- 非対称ルーティングの問題を回避するために、トラフィックの送信元のアドレスに対してルートを作成する必要があります
+- アプリケーションの依存関係を Azure Firewall またはルート テーブルに追加する必要がある。 
+- 非対称ルーティングの問題を回避するために、アプリケーションのトラフィック用にルートを作成する必要がある。
 
 アプリケーションに依存関係がある場合は、それらを Azure Firewall に追加する必要があります。 その他すべてに関する HTTP/HTTPS トラフィックとネットワークのルールを許可するようにアプリケーション ルールを作成します。 
 
 アプリケーション要求トラフィックの送信元であるアドレス範囲がわかっている場合は、そのアドレス範囲を ASE サブネットに割り当てられているルート テーブルに追加することができます。 アドレス範囲が大きい場合や指定されていない場合は、Application Gateway などのネットワーク アプライアンスを使用して、ルート テーブルに追加するアドレスを 1 つ指定することができます。 ILB ASE に合わせて Application Gateway を構成する方法の詳細については、[ILB ASE を Application Gateway と統合する方法](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)に関するページを参照してください。
 
+![ASE と Azure Firewall の接続フロー][5]
 
+この Application Gateway の使用は、システムの構成方法の一例にすぎません。 このパスに従わなかった場合は、ASE サブネット ルート テーブルへのルートの追加が必要になります。その結果、Application Gateway に送信された応答トラフィックはそこに直接送られます。 
+
+## <a name="logging"></a>ログの記録 
+
+Azure Firewall は、Azure Storage、Event Hub、または Azure Monitor ログにログを送信できます。 お使いのアプリをサポート対象の送信先と統合するには、Azure Firewall ポータルの [診断ログ] に移動し、目的の送信先のログを有効にします。 Azure Monitor ログと統合すると、Azure Firewall に送信されたすべてのトラフィックのログを確認できます。 拒否されているトラフィックを表示するには、Log Analytics ワークスペース ポータルの [ログ] を開き、次のようなクエリを入力します 
+
+    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+ 
+Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に非常に役立ちます。 Azure Monitor ログについて詳しくは、「[Azure Monitor でログ データを分析する](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)」をご覧ください
+ 
 ## <a name="dependencies"></a>依存関係
 
-Azure App Service には多くの外部依存関係があります。 それらはいくつかの主要分野に分類することができます。
+次の情報が必要なのは、Azure Firewall 以外のファイアウォール アプライアンスを構成する場合のみです。 
 
-- 送信ネットワーク トラフィックをロックする場合は、サービス エンドポイント対応サービスにサービス エンドポイントを設定する必要があります。
-- IP アドレス エンドポイントは、ドメイン名を使用してアドレスが指定されていません。 これは、すべての HTTPS トラフィックがドメイン名を使用することを想定しているファイアウォール デバイスの場合に問題になる可能性があります。 IP アドレス エンドポイントは、ASE サブネットに設定されているルート テーブルに追加する必要があります。
+- サービス エンドポイント対応のサービスは、サービス エンドポイントを使用して構成する必要があります。
+- IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています
 - FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
 - ワイルドカード HTTP/HTTPS エンドポイントは、いくつかの修飾子に基づき、ASE によって異なる依存関係になります。 
 - Linux の依存関係は、ASE に Linux アプリをデプロイする場合にのみ考慮する必要があります。 Linux アプリを ASE に展開していない場合は、これらのアドレスをファイアウォールに追加する必要はありません。 
-
 
 #### <a name="service-endpoint-capable-dependencies"></a>サービス エンドポイント対応の依存関係 
 
@@ -72,21 +97,24 @@ Azure App Service には多くの外部依存関係があります。 それら�
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Azure KeyVault |
+| Azure Event Hub |
 
+#### <a name="ip-address-dependencies"></a>IP アドレスの依存関係
 
-#### <a name="ip-address-dependencies"></a>IP アドレスの依存関係 
+| エンドポイント | 詳細 |
+|----------| ----- |
+| \*:123 | NTP クロック チェック。 トラフィックは、ポート 123 上の複数のエンドポイントでチェックされます |
+| \*:12000 | このポートは、一部のシステム監視に使用されています。 ブロックされている場合、一部の問題はトリアージが難しくなりますが、ASE は引き続き動作します |
+| 40.77.24.27:80 | ASE の問題の監視とアラート通知に必要 |
+| 40.77.24.27:443 | ASE の問題の監視とアラート通知に必要 |
+| 13.90.249.229:80 | ASE の問題の監視とアラート通知に必要 |
+| 13.90.249.229:443 | ASE の問題の監視とアラート通知に必要 |
+| 104.45.230.69:80 | ASE の問題の監視とアラート通知に必要 |
+| 104.45.230.69:443 | ASE の問題の監視とアラート通知に必要 |
+| 13.82.184.151:80 | ASE の問題の監視とアラート通知に必要 |
+| 13.82.184.151:443 | ASE の問題の監視とアラート通知に必要 |
 
-| エンドポイント |
-|----------|
-| 40.77.24.27:443 |
-| 13.82.184.151:443 |
-| 13.68.109.212:443 |
-| 13.90.249.229:443 |
-| 13.91.102.27:443 |
-| 104.45.230.69:443 |
-| 168.62.226.198:12000 |
-
+Azure Firewall を使用すると、FQDN タグで構成された以下のものすべてが自動的に取得されます。 
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS の依存関係 
 
@@ -116,9 +144,11 @@ Azure App Service には多くの外部依存関係があります。 それら�
 |csc3-2009-2.crl.verisign.com:80 |
 |crl.verisign.com:80 |
 |ocsp.verisign.com:80 |
+|cacerts.digicert.com:80 |
 |azperfcounters1.blob.core.windows.net:443 |
 |azurewatsonanalysis-prod.core.windows.net:443 |
-|global.metrics.nsatc.net:80   |
+|global.metrics.nsatc.net:80 |
+|global.metrics.nsatc.net:443 |
 |az-prod.metrics.nsatc.net:443 |
 |antares.metrics.nsatc.net:443 |
 |azglobal-black.azglobal.metrics.nsatc.net:443 |
@@ -132,6 +162,7 @@ Azure App Service には多くの外部依存関係があります。 それら�
 |schemas.microsoft.com:443 |
 |management.core.windows.net:443 |
 |management.core.windows.net:80 |
+|management.azure.com:443 |
 |www.msftconnecttest.com:80 |
 |shavamanifestcdnprod1.azureedge.net:443 |
 |validation-v2.sls.microsoft.com:443 |
@@ -152,12 +183,6 @@ Azure App Service には多くの外部依存関係があります。 それら�
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
-|grmdsprod\*mini\*.servicebus.windows.net:443 |
-|grmdsprod\*lini\*.servicebus.windows.net:443 |
-|grsecprod\*mini\*.servicebus.windows.net:443 |
-|grsecprod\*lini\*.servicebus.windows.net:443 |
-|graudprod\*mini\*.servicebus.windows.net:443 |
-|graudprod\*lini\*.servicebus.windows.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux の依存関係 
 
@@ -173,3 +198,9 @@ Azure App Service には多くの外部依存関係があります。 それら�
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
 
+<!--Image references-->
+[1]: ./media/firewall-integration/firewall-apprule.png
+[2]: ./media/firewall-integration/firewall-serviceendpoints.png
+[3]: ./media/firewall-integration/firewall-ntprule.png
+[4]: ./media/firewall-integration/firewall-routetable.png
+[5]: ./media/firewall-integration/firewall-topology.png

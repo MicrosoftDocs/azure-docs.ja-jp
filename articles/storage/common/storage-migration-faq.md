@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.component: common
-ms.openlocfilehash: 85f93e15cfce1d44567c48c6c6f4b38c42dfb296
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.subservice: common
+ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416394"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310848"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -54,10 +54,10 @@ Automation スクリプトは、ストレージ コンテンツの操作では�
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
 
-    - `/Source`: ソース ストレージ アカウントの URI (コンテナーまで) を入力します。  
-    - `/Dest`: ターゲット ストレージ アカウントの URI (コンテナーまで) を入力します。  
-    - `/SourceKey`: ソース ストレージ アカウントの主キーを入力します。 Azure ポータルからこのキーをコピーするには、ストレージ アカウントを選択します。  
-    - `/DestKey`: ターゲット ストレージ アカウントの主キーを入力します。 ポータルからこのキーをコピーするには、ストレージ アカウントを選択します。
+    - `/Source`:ソース ストレージ アカウントの URI (コンテナーまで) を指定します。  
+    - `/Dest`:ターゲット ストレージ アカウントの URI (コンテナーまで) を指定します。  
+    - `/SourceKey`:ソース ストレージ アカウントの主キーを指定します。 Azure ポータルからこのキーをコピーするには、ストレージ アカウントを選択します。  
+    - `/DestKey`:ターゲット ストレージ アカウントの主キーを指定します。 ポータルからこのキーをコピーするには、ストレージ アカウントを選択します。
 
 このコマンドを実行すると、コンテナー ファイルがターゲット ストレージ アカウントに移動されます。
 
@@ -118,6 +118,8 @@ Azure ファイル共有を使用します。
 
 **マネージド ディスクを別のストレージ アカウントに移動するにはどうすればよいですか?**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 次の手順に従います。
 
 1.  マネージド ディスクの接続先の仮想マシンを停止します。
@@ -125,15 +127,15 @@ Azure ファイル共有を使用します。
 2.  次の Azure PowerShell スクリプトを実行して、マネージド ディスク VHD をエリア間でコピーします。
 
     ```
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
-    Select-AzureRmSubscription -SubscriptionId <ID>
+    Select-AzSubscription -SubscriptionId <ID>
 
-    $sas = Grant-AzureRmDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
+    $sas = Grant-AzDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
 
-    $destContext = New-AzureStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
+    $destContext = New-AzStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
 
-    Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
+    Start-AzStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
     ```
 
 3.  VHD のコピー先である別のリージョンの VHD ファイルを使用して、マネージド ディスクを作成します。 これを行うには、次の Azure PowerShell スクリプトを実行します。  
@@ -151,9 +153,9 @@ Azure ファイル共有を使用します。
 
     $storageType = 'StandardLRS'
 
-    $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
+    $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
 
-    $osDisk = New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+    $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ``` 
 
 マネージド ディスクから仮想マシンをデプロイする方法の詳細については、[CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1) を参照してください。
@@ -164,7 +166,7 @@ Azure ファイル共有を使用します。
 
 **ストレージ アカウントのセカンダリ ロケーションからヨーロッパ リージョンに変更するにはどうすればよいですか?**
 
-ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 セカンダリ リージョンの選択はプライマリ リージョンに基づいており、変更することはできません。 詳しくは、「[Geo-redundant storage (GRS): Cross-regional replication for Azure Storage](storage-redundancy.md)」(地理冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション) をご覧ください。
+ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 セカンダリ リージョンの選択はプライマリ リージョンに基づいており、変更することはできません。 詳しくは、「[geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy.md)」をご覧ください。
 
 **Azure Storage Service Encryption (SSE) の詳細はどこで入手できますか?**  
   
@@ -234,7 +236,7 @@ Premium Storage は、Azure ファイル共有では使用できません。
 
 **クラシック ストレージ アカウントから Azure Resource Manager ストレージ アカウントに移行するにはどうすればよいですか?**
 
-**Move-AzureStorageAccount** コマンドレットを使用できます。 このコマンドレットには複数の手順 (検証、準備、コミット) があります。 移行する前に、移行を検証できます。
+**Move-AzStorageAccount** コマンドレットを使用できます。 このコマンドレットには複数の手順 (検証、準備、コミット) があります。 移行する前に、移行を検証できます。
 
 仮想マシンがある場合は、ストレージ アカウントのデータを移行する前に追加の手順を実行する必要があります。 詳細については、「[Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)」をご覧ください。
 
@@ -270,17 +272,17 @@ Azure CLI をご利用いただけます。
 
 **レプリケートされたストレージ アカウント (ZRS、GRS、または読み取り GRS など) の場合、セカンダリ リージョンに格納されているデータにアクセスする方法は?**
 
--   ZRS または GRS を使用している場合は、フェールオーバーが発生しない限り、セカンダリ リージョンのデータにアクセスすることはできません。 フェールオーバー プロセスの詳細については、「[Storage のフェールオーバーが発生した場合](storage-disaster-recovery-guidance.md#what-to-expect-if-a-storage-failover-occurs)」をご覧ください。
+-   ゾーン冗長ストレージまたは geo 冗長ストレージ を使用している場合は、セカンダリ リージョンへのフェールオーバーを開始していない限り、そのリージョンのデータにアクセスすることはできません。 フェールオーバー プロセスの詳細については、「[Disaster recovery and storage account failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー))](storage-disaster-recovery-guidance.md)」を参照してください。
 
 -   読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 次のいずれかの方法を使用します。  
       
-    - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 例:   
+    - **AzCopy**:**-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 例:   
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS トークン**: SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+    - **SAS トークン**:SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
-**ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https://mystorageaccountname.blob.core.windows.net/images/image.gif" を "https://www.contoso.com/images/image.gif" として表示するにはどうすればよいですか?**
+**ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" を "https:\//www.contoso.com/images/image.gif" と表示するにはどうすればよいですか?**
 
 カスタム ドメインを使用するストレージ アカウントでは、SSL は現在サポートされていません。
 ただし、HTTPS 以外のカスタム ドメインはご利用いただけます。 詳細については、「[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。

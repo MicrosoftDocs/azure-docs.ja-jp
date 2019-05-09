@@ -1,81 +1,75 @@
-items:
 - name: データ サイエンス仮想マシンのドキュメント
   href: index.yml
+  items: null
 - name: 概要
   items:
-  - name: データ サイエンス VM とは
-    href: overview.md
-  - name: ディープ ラーニング VM とは
-    href: deep-learning-dsvm-overview.md
-  - name: geo AI データ サイエンス VM とは
-    href: geo-ai-dsvm-overview.md
+    - name: データ サイエンス VM とは
+      href: overview.md
+    - name: ディープ ラーニング VM とは
+      href: deep-learning-dsvm-overview.md
+    - name: geo AI データ サイエンス VM とは
+      href: geo-ai-dsvm-overview.md
+- name: クイック スタート
   expanded: true
-- name: 作業開始
   items:
-  - name: Windows データ サイエンス VM の作成
-    href: provision-vm.md
-  - name: Ubuntu データ サイエンス VM の作成
-    href: dsvm-ubuntu-intro.md
-  - name: CentOS データ サイエンス VM の作成
-    href: linux-dsvm-intro.md
-  - name: ディープ ラーニング VM の作成
-    href: provision-deep-learning-dsvm.md
-  - name: geo AI データ サイエンス VM の作成
-    href: provision-geo-ai-dsvm.md
-- name: 方法
+    - name: Windows データ サイエンス VM の作成
+      href: provision-vm.md
+    - name: Ubuntu データ サイエンス VM の作成
+      href: dsvm-ubuntu-intro.md
+    - name: CentOS データ サイエンス VM の作成
+      href: linux-dsvm-intro.md
+    - name: ディープ ラーニング VM の作成
+      href: provision-deep-learning-dsvm.md
+    - name: geo AI データ サイエンス VM の作成
+      href: provision-geo-ai-dsvm.md
+- name: 概念
   items:
-  - name: Windows データ サイエンス VM の使用
-    href: vm-do-ten-things.md
-  - name: Linux データ サイエンス VM の使用
-    href: linux-dsvm-walkthrough.md
-  - name: ディープ ラーニング VM の使用
-    href: use-deep-learning-dsvm.md
-  - name: geo AI データ サイエンス VM の使用
-    href: use-geo-ai-dsvm.md
-- name: エンタープライズ向けのガイダンス
+    - name: DSVM の検出
+      href: dsvm-tools-overview.md
+    - name: ディープ ラーニングと AI のフレームワーク
+      href: dsvm-deep-learning-ai-frameworks.md
+    - name: ML とデータ サイエンスのツール
+      href: dsvm-ml-data-science-tools.md
+    - name: Languages
+      href: dsvm-languages.md
+    - name: 開発ツール
+      href: dsvm-tools-development.md
+    - name: データ取り込みツール
+      href: dsvm-tools-ingestion.md
+    - name: データの探索と視覚化のツール
+      href: dsvm-tools-explore-and-visualize.md
+    - name: データ プラットフォーム
+      href: dsvm-data-platforms.md
+    - name: サンプルとチュートリアル
+      href: dsvm-samples-and-walkthroughs.md
+- name: ハウツー ガイド
   items:
-  - name: 概要
-    href: dsvm-enterprise-overview.md
-  - name: スケーリング
-    href: dsvm-pools.md
-  - name: Active Directory の統合
-    href: dsvm-common-identity.md
-  - name: リソースのアクセス資格情報のセキュリティ保護
-    href: dsvm-secure-access-keys.md
-- name: リファレンス
-  items:
-  - name: DSVM の検出
-    href: dsvm-tools-overview.md
-  - name: ディープ ラーニングと AI のフレームワーク
-    href: dsvm-deep-learning-ai-frameworks.md
-  - name: ML とデータ サイエンスのツール
-    href: dsvm-ml-data-science-tools.md
-  - name: Languages
-    href: dsvm-languages.md
-  - name: 開発ツール
-    href: dsvm-tools-development.md
-  - name: データ取り込みツール
-    href: dsvm-tools-ingestion.md
-  - name: データの探索と視覚化のツール
-    href: dsvm-tools-explore-and-visualize.md
-  - name: データ プラットフォーム
-    href: dsvm-data-platforms.md
-  - name: サンプルとチュートリアル
-    href: dsvm-samples-and-walkthroughs.md
-  expanded: true
+    - name: Windows データ サイエンス VM の使用
+      href: vm-do-ten-things.md
+    - name: Linux データ サイエンス VM の使用
+      href: linux-dsvm-walkthrough.md
+    - name: ディープ ラーニング VM の使用
+      href: use-deep-learning-dsvm.md
+    - name: geo AI データ サイエンス VM の使用
+      href: use-geo-ai-dsvm.md
+    - name: エンタープライズ向けのガイダンス
+      items:
+        - name: 概要
+          href: dsvm-enterprise-overview.md
+        - name: スケーリング
+          href: dsvm-pools.md
+        - name: Active Directory 統合
+          href: dsvm-common-identity.md
+        - name: リソースのアクセス資格情報のセキュリティ保護
+          href: dsvm-secure-access-keys.md
 - name: リソース
   items:
-  - name: R 開発者ガイド
-    href: ../r-developers-guide.md
-  - name: ブログ
-    href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
-  - name: MSDN フォーラム
-    href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/search?q=dsvm
-ms.openlocfilehash: e1617f3f5c36a5b006003e2f375dfac4143af7cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032566"
+    - name: R 開発者ガイド
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide
+      maintainContext: true
+    - name: ブログ
+      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
+    - name: MSDN フォーラム
+      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=dsvm'

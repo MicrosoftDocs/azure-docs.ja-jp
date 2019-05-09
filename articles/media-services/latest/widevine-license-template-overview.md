@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bd09205d4bdc60891044728cf0dcafa092ae9846
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c6fc363a7ab9de215647e371a9d3c846f8688bd5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377448"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548715"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要 
 
@@ -118,12 +118,12 @@ Media Services には、Widevine ライセンスを構成するためのクラ�
 
 この方法は、エラーが発生しやすい可能性があります。 「[定義が必要なクラスと JSON へのシリアル化](#classes)」で説明されているその他の方法を使用することをお勧めします。
 
-    ```csharp
-    ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration = new ContentKeyPolicyWidevineConfiguration
-    {
-        WidevineTemplate = @"{""allowed_track_types"":""SD_HD"",""content_key_specs"":[{""track_type"":""SD"",""security_level"":1,""required_output_protection"":{""hdcp"":""HDCP_V2""}}],""policy_overrides"":{""can_play"":true,""can_persist"":true,""can_renew"":false}}"
-    };
-    ```
+```csharp
+ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration = new ContentKeyPolicyWidevineConfiguration
+{
+    WidevineTemplate = @"{""allowed_track_types"":""SD_HD"",""content_key_specs"":[{""track_type"":""SD"",""security_level"":1,""required_output_protection"":{""hdcp"":""HDCP_V2""}}],""policy_overrides"":{""can_play"":true,""can_persist"":true,""can_renew"":false}}"
+};
+```
 
 ### <a id="classes"></a>定義が必要なクラスと JSON へのシリアル化
 
@@ -131,36 +131,36 @@ Media Services には、Widevine ライセンスを構成するためのクラ�
 
 次の例では、Widevine JSON スキーマにマップするクラスの定義の例を示します。 それらのクラスを JSON 文字列にシリアル化する前に、クラスをインスタンス化できます。  
 
-    ```csharp
-    public class PolicyOverrides
-    {
-        public bool CanPlay { get; set; }
-        public bool CanPersist { get; set; }
-        public bool CanRenew { get; set; }
-        public int RentalDurationSeconds { get; set; }    //Indicates the time window while playback is permitted. A value of 0 indicates that there is no limit to the duration. Default is 0.
-        public int PlaybackDurationSeconds { get; set; }  //The viewing window of time after playback starts within the license duration. A value of 0 indicates that there is no limit to the duration. Default is 0.
-        public int LicenseDurationSeconds { get; set; }   //Indicates the time window for this specific license. A value of 0 indicates that there is no limit to the duration. Default is 0.
-    }
+```csharp
+public class PolicyOverrides
+{
+    public bool CanPlay { get; set; }
+    public bool CanPersist { get; set; }
+    public bool CanRenew { get; set; }
+    public int RentalDurationSeconds { get; set; }    //Indicates the time window while playback is permitted. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    public int PlaybackDurationSeconds { get; set; }  //The viewing window of time after playback starts within the license duration. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    public int LicenseDurationSeconds { get; set; }   //Indicates the time window for this specific license. A value of 0 indicates that there is no limit to the duration. Default is 0.
+}
 
-    public class ContentKeySpec
-    {
-        public string TrackType { get; set; }
-        public int SecurityLevel { get; set; }
-        public OutputProtection RequiredOutputProtection { get; set; }
-    }
+public class ContentKeySpec
+{
+    public string TrackType { get; set; }
+    public int SecurityLevel { get; set; }
+    public OutputProtection RequiredOutputProtection { get; set; }
+}
 
-    public class OutputProtection
-    {
-        public string HDCP { get; set; }
-    }
+public class OutputProtection
+{
+    public string HDCP { get; set; }
+}
 
-    public class WidevineTemplate
-    {
-        public string AllowedTrackTypes { get; set; }
-        public ContentKeySpec[] ContentKeySpecs { get; set; }
-        public PolicyOverrides PolicyOverrides { get; set; }
-    }
-    ```
+public class WidevineTemplate
+{
+    public string AllowedTrackTypes { get; set; }
+    public ContentKeySpec[] ContentKeySpecs { get; set; }
+    public PolicyOverrides PolicyOverrides { get; set; }
+}
+```
 
 #### <a name="configure-the-license"></a>ライセンスの構成
 

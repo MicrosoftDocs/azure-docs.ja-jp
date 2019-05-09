@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の iOS アプリケーションで AppAuth �
 description: この記事では、Azure Active Directory B2C と AppAuth を使用してユーザー ID の管理とユーザーの認証を行う iOS アプリを作成する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 3c7eace7c643286575e2625cb81f84d858bbaa8f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842274"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172750"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C:iOS アプリケーションを使用してサインインする
 
@@ -29,7 +29,7 @@ Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect と�
 ここで紹介する構成サンプルは OAuth2 や OpenID Connect に精通している読者を想定しており、それ以外の方にとっては、あまり参考にならない可能性があります。 その場合は、 [対応プロトコルについて簡単に解説したこちらの記事](active-directory-b2c-reference-protocols.md)に目を通すことをお勧めします。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してから先に進んでください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](tutorial-create-tenant.md) してから先に進んでください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 次に、B2C ディレクトリにアプリを作成する必要があります。 アプリを登録すると、Azure AD がアプリと安全に通信するために必要な情報が提供されます。 モバイル アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
@@ -39,13 +39,11 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * カスタム スキーマを使用する**リダイレクト URI** を設定します (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)。 この URI は後で必要になります。
 
 ## <a name="create-your-user-flows"></a>ユーザー フローを作成する
-Azure AD B2C では、すべてのユーザー エクスペリエンスが[ユーザー フロー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ユーザー フローについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、このユーザー フローを作成します。 ユーザー フローを作成するときは、必ず次のようにします。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが[ユーザー フロー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリケーションには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 ユーザー フローを作成するときは、必ず次のようにします。
 
 * **[サインアップ属性]** で、属性 **[表示名]** を選択します。  他の属性を選択することもできます。
 * **[アプリケーション クレーム]** で、要求の**表示名**と**ユーザーのオブジェクト ID** を選択します。 他の要求を選択することもできます。
 * ユーザー フローの作成後、各ユーザー フローの **[名前]** をコピーしておきます。 ユーザー フローを保存するときに、ユーザー フロー名の先頭に `b2c_1_` が付加されます。  ユーザー フロー名は後で必要になります。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 ユーザー フローを作成したら、アプリを構築できます。
 

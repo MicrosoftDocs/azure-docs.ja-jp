@@ -2,59 +2,48 @@
 title: Azure Site Recovery を使用してオンプレミスのマシンを Azure に移行する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して、オンプレミスのマシンを Azure に移行する方法について説明します。
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5023171c4f943b7e698a0b6bbcadef209965e2df
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789248"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59357978"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
-[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、ビジネス継続性およびディザスター リカバリー (BCDR) の目的でオンプレミス マシンや Azure VM のディザスター リカバリーを管理よび調整する他に、オンプレミス マシンを Azure に移行するためにも Site Recovery を使用できます。
+
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、オンプレミスのマシンを Azure に移行する方法について説明します。 一般に、Site Recovery は、オンプレミスのマシンと Azure VM のディザスター リカバリーを管理および調整するために使用します。 ただし、移行のために使用することもできます。 移行の場合は、1 つの例外を除いてディザスター リカバリーと同じ手順を使用します。 移行では、最後の手順として、オンプレミス サイトからマシンをフェールオーバーします。 ディザスター リカバリーとは異なり、移行シナリオでは、オンプレミスにフェールバックすることはできません。
 
 
-このチュートリアルでは、オンプレミスの VM と物理サーバーを Azure に移行する方法を説明します。 このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、オンプレミスの VM と物理サーバーを Azure に移行する方法を説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * レプリケーションの目標を選ぶ
-> * ソース環境とターゲット環境をセットアップする
+> * 移行のソース環境とターゲット環境を設定する
 > * レプリケーション ポリシーを設定する
 > * レプリケーションを有効にする
 > * テスト移行を実行して、すべて想定どおりに動作していることを確認する
 > * Azure へのワンタイム フェールオーバーを実行する
 
-これは、シリーズ 3 番目のチュートリアルです。 このチュートリアルでは、前のチュートリアルで以下のタスクがすでに完了していることを前提としています。
 
-1. [Azure を準備する](tutorial-prepare-azure.md)
-2. オンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) または [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) サーバーを準備する。
-
-開始する前に、ディザスター リカバリーのために [VMware](vmware-azure-architecture.md) または [Hyper-V](hyper-v-azure-architecture.md) アーキテクチャを確認しておくと役立ちます。
+> [!TIP]
+> Azure Migrate サービスで、VMware VM を Azure に移行するための新しいエージェントレス エクスペリエンスのプレビューが提供されるようになりました。 [詳細についてはこちらをご覧ください](https://aka.ms/migrateVMs-signup)。
 
 
-## <a name="prerequisites"></a>前提条件
+## <a name="before-you-start"></a>開始する前に
 
-準仮想化ドライバーによってエクスポートされたデバイスはサポートされません。
+準仮想化ドライバーによってエクスポートされたデバイスは、サポートされないことに注意してください。
 
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
+## <a name="prepare-azure-and-on-premises"></a>Azure とオンプレミスを準備する
 
-1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-2. **[リソースの作成]** > **[監視 + 管理]** > **[Backup and Site Recovery]** の順にクリックします。
-3. **[名前]** に、フレンドリ名 **ContosoVMVault** を指定します。 複数のサブスクリプションがある場合は、適切なものを選択します。
-4. リソース グループ **ContosoRG** を作成します。
-5. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。
-6. ダッシュボードからコンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]**、**[作成]** の順にクリックします。
-
-   ![新しいコンテナー](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
-
-新しいコンテナーは、**[ダッシュボード]** の **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに追加されます。
-
+1. [こちらの記事](tutorial-prepare-azure.md)の説明に従って Azure を準備します。 この記事で説明されているのはディザスター リカバリー用の準備手順ですが、この手順は移行にも有効です。
+2. オンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) または [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) サーバーを準備する。 物理マシンを移行する場合は、何も準備する必要はありません。 [サポート マトリックス](vmware-physical-azure-support-matrix.md)を確認するだけでかまいません。
 
 
 ## <a name="select-a-replication-goal"></a>レプリケーションの目標を選ぶ
@@ -70,9 +59,11 @@ ms.locfileid: "53789248"
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
 
-- VMware VM のソース環境を[設定します](vmware-azure-tutorial.md#set-up-the-source-environment)。
-- 物理サーバーのソース環境を[設定します](physical-azure-disaster-recovery.md#set-up-the-source-environment)。
-- Hyper-V VM のソース環境を[設定します](hyper-v-azure-tutorial.md#set-up-the-source-environment)。
+**シナリオ** | **詳細**
+--- | --- 
+VMware | [ソース環境](vmware-azure-set-up-source.md)を設定し、[構成サーバー](vmware-azure-deploy-configuration-server.md)を設定します。
+物理マシン | ソース環境と構成サーバーを[設定](physical-azure-set-up-source.md)します。
+Hyper-V | [ソース環境](hyper-v-azure-tutorial.md#set-up-the-source-environment)を設定します<br/><br/> System Center VMM と共にデプロイされた Hyper-V 用に[ソース環境](hyper-v-vmm-azure-tutorial.md#set-up-the-source-environment)を設定します。
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 
@@ -80,20 +71,26 @@ ms.locfileid: "53789248"
 
 1. **[インフラストラクチャの準備]** > **[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
 2. Resource Manager デプロイ モデルを指定します。
-3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
+3. Azure のリソースが Site Recovery によって確認されます。
+    - VMware VM または物理サーバーを移行する場合は、フェールオーバー後に作成されたときに Azure VM がデプロイされる Azure ネットワークがあることが Site Recovery によって確認されます。
+    - Hyper-V VM を移行する場合は、互換性のある Azure ストレージ アカウントとネットワークがあるかどうかが Site Recovery によって確認されます。
+4. System Center VMM によって管理されている Hyper-V VM を移行する場合は、[ネットワーク マッピング](hyper-v-vmm-azure-tutorial.md#configure-network-mapping)を設定します。
 
 ## <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する
 
-- VMware VM の[レプリケーション ポリシーを設定します](vmware-azure-tutorial.md#create-a-replication-policy)。
-- 物理サーバーの[レプリケーション ポリシーを設定します](physical-azure-disaster-recovery.md#create-a-replication-policy)。
-- Hyper-V VM の[レプリケーション ポリシーを設定します](hyper-v-azure-tutorial.md#set-up-a-replication-policy)。
-
+**シナリオ** | **詳細**
+--- | --- 
+VMware | VMware VM の[レプリケーション ポリシー](vmware-azure-set-up-replication.md)を設定します。
+物理マシン | 物理マシンの[レプリケーション ポリシー](physical-azure-disaster-recovery.md#create-a-replication-policy)を設定します。
+Hyper-V | [レプリケーション ポリシー](hyper-v-azure-tutorial.md#set-up-a-replication-policy)を設定します<br/><br/> System Center VMM と共にデプロイされた Hyper-V の[レプリケーション ポリシー](hyper-v-vmm-azure-tutorial.md#set-up-a-replication-policy)を設定します。
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
-- VMware VM の [レプリケーションを有効にします](vmware-azure-tutorial.md#enable-replication)。
-- 物理サーバーの[レプリケーションを有効にします](physical-azure-disaster-recovery.md#enable-replication)。
-- [VMM を使用](hyper-v-vmm-azure-tutorial.md#enable-replication)するか、または [VMM を使用せずに](hyper-v-azure-tutorial.md#enable-replication)、Hyper-V VM のレプリケーションを有効にします。
+**シナリオ** | **詳細**
+--- | --- 
+VMware | VMware VM の [レプリケーションを有効にします](vmware-azure-enable-replication.md)。
+物理マシン | 物理マシンの[レプリケーションを有効にします](physical-azure-disaster-recovery.md#enable-replication)。
+Hyper-V | [Enable replication](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> System Center VMM と共にデプロイされた Hyper-V の[レプリケーションを有効にします](hyper-v-vmm-azure-tutorial.md#enable-replication)。
 
 
 ## <a name="run-a-test-migration"></a>テスト移行を実行する
@@ -112,10 +109,10 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 5. 想定どおりに Azure VM が Azure に表示されることを確認します。
 6. **[レプリケートされたアイテム]** で [VM] > **[移行の完了]** を右クリックします。 次の処理が実行されます。
 
-    - 移行プロセスが終了し、AWS VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
-    - この手順でレプリケーション データがクリーンアップされます。 移行した VM は削除されません。
+   - 移行プロセスが終了し、オンプレミス VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
+   - この手順でレプリケーション データがクリーンアップされます。 移行した VM は削除されません。
 
-    ![移行の完了](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![移行の完了](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]
@@ -127,7 +124,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 
 マシンが Azure に移行された後に、多くの手順を完了する必要があります。
 
-[復旧計画]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)における組み込みの自動化スクリプト機能を使用して、移行プロセスの一環として、いくつかの手順を自動化できます。   
+[復旧計画](site-recovery-runbook-automation.md)における組み込みの自動化スクリプト機能を使用して、移行プロセスの一環として、いくつかの手順を自動化できます。   
 
 
 ### <a name="post-migration-steps-in-azure"></a>Azure での移行後の手順
@@ -135,10 +132,10 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 - データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。 
 - Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
 - [Azure VM エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)では、Azure ファブリック コントローラーと VM の対話を管理します。 Azure Backup、Site Recovery、および Azure Security など、一部の Azure サービスでは必須です。
-    - VMware マシンおよび物理サーバーを移行する場合、モビリティ サービス インストーラーによって Windows マシン上で利用できる Azure VM エージェントがインストールされます。 Linux VM 上で、フェールオーバー後にエージェントをインストールすることをお勧めします。 a
+    - VMware マシンおよび物理サーバーを移行する場合、モビリティ サービス インストーラーによって Windows マシン上で利用できる Azure VM エージェントがインストールされます。 Linux VM 上で、フェールオーバー後にエージェントをインストールすることをお勧めします。
     - Azure VM をセカンダリ リージョンに移行している場合、移行前に、VM 上に Azure VM エージェントがプロビジョニングされる必要があります。
     - Hyper-V VM を Azure に移行している場合、移行後に Azure VM 上に Azure VM エージェントをインストールします。
-- VM から任意の Site Recovery プロバイダー/エージェントを手動で削除します。 VMware VM または物理サーバーを移行する場合、Azure VM から [モビリティ サービスをアンインストール][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] します。
+- VM から任意の Site Recovery プロバイダー/エージェントを手動で削除します。 VMware VM または物理サーバーを移行する場合は、モビリティ サービスを VM からアンインストールしてください。
 - 復元性の向上:
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細情報]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細情報](azure-to-azure-quickstart.md)。
@@ -158,8 +155,13 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 - Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。
 
 
+
+
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、オンプレミス VM を Azure VM に移行しました。 Azure VM のセカンダリ Azure リージョンに[ディザスター リカバリーを設定](azure-to-azure-replicate-after-migration.md)できるようになりました。
+このチュートリアルでは、オンプレミス VM を Azure VM に移行しました。 Now
+
+> [!div class="nextstepaction"]
+> Azure VM のセカンダリ Azure リージョンへの[ディザスター リカバリーを設定](azure-to-azure-replicate-after-migration.md)します。
 
   

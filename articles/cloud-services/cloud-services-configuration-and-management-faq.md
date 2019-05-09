@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386997"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259586"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -109,7 +109,7 @@ CSR は単なるテキスト ファイルです。 必ずしも、最終的に�
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>"Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。
 
-この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、こちらのアドバイザリ (https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731) をご覧ください。
+この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、[こちらのアドバイザリ](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)をご覧ください。
 
 詳細については、次の記事を参照してください。
 - [クラウド サービスのスタートアップ タスクを構成して実行する方法](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -141,9 +141,9 @@ csdef および cscfg のアップロード先に blob またはローカルを�
 * [IIS Logs stop writing in Cloud Service](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/) (IIS ログがクラウド サービスで書き込みを停止する)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Cloud Services の WAD ログ記録を有効にする方法を教えてください。
-Windows Azure 診断 (WAD) ログ記録は、次のオプションを使用して有効にできます。
+Windows Azure Diagnostics (WAD) ログ記録は、次のオプションを使用して有効にできます。
 1. [Visual Studio から有効にする](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [.Net コードを使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+2. [.NET コードを使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [PowerShell を使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
 クラウド サービスの現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。
@@ -208,7 +208,7 @@ Windows 10 と Windows Server 2016 は、クライアントとサーバー側の
 この処理を完了すると、次のいずれかの方法を使用して、HTTP/2 が有効かどうかを確認できるようになります。
 
 - IIS ログでプロトコルのバージョンを有効にして、IIS ログを確認します。 ログには HTTP/2 が表示されます。 
-- Internet Explorer/Edge で F12 Developer Tool を有効にして、[ネットワーク] タブに切り替えてプロトコルを確認します。 
+- Internet Explorer/Microsoft Edge で F12 Developer Tool を有効にして、[ネットワーク] タブに切り替えてプロトコルを確認します。 
 
 詳細については、「[HTTP/2 on IIS](https://blogs.iis.net/davidso/http2)」(IIS 上の HTTP/2) を参照してください。
 
@@ -240,15 +240,15 @@ Azure サブスクリプションには、使用できるコアの数に制限�
 
 Cloud Services のメモリ メトリックに基づく自動スケールは、現在サポートされていません。 
 
-この問題を回避するには、Application Insights を使うことができます。 自動スケールは、メトリック ソースとして Application Insights をサポートし、"Memory" のようなゲスト メトリックに基づいてロール インスタンスの数をスケーリングできます。  クラウド サービスのプロジェクト パッケージ ファイル (*.cspkg) で Application Insights を構成し、サービスで Azure 診断拡張機能を有効にしてこの機能を実装する必要があります。
+この問題を回避するには、Application Insights を使うことができます。 自動スケールは、メトリック ソースとして Application Insights をサポートし、"Memory" のようなゲスト メトリックに基づいてロール インスタンスの数をスケーリングできます。  クラウド サービスのプロジェクト パッケージ ファイル (*.cspkg) で Application Insights を構成し、サービスで Azure Diagnostics 拡張機能を有効にしてこの機能を実装する必要があります。
 
 Application Insights でカスタム メトリックを利用してクラウド サービスに自動スケールを構成する方法について詳しくは、「[Azure でのカスタム メトリックによる自動スケールの概要](../azure-monitor/platform/autoscale-custom-metric.md)」をご覧ください
 
-クラウド サービスの Application Insights に Azure 診断を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)」をご覧ください
+クラウド サービスの Application Insights に Azure Diagnostics を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)」をご覧ください
 
 Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)」をご覧ください
 
-Cloud Services 用に Azure 診断ログを有効にする方法について詳しくは、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)」をご覧ください
+Cloud Services 用に Azure Diagnostics ログを有効にする方法について詳しくは、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)」をご覧ください
 
 ## <a name="generic"></a>ジェネリック
 

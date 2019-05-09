@@ -3,25 +3,26 @@ title: Azure Portal によるデバイスの管理 | Microsoft Docs
 description: Azure Portal を使用してデバイスを管理する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
-ms.openlocfilehash: 0497cba4cae66e63f710c9678f6d87c2f9fb8fb1
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 516a2d3b0f81bcef1ed636be9d1da9a270cc7069
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515084"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520022"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Azure portal を使用してデバイスを管理する方法
 
@@ -82,7 +83,7 @@ Azure Portal を使ってデバイスを管理するには、デバイスが Azu
 
 - **[デバイス間での設定とアプリ データの同期が許可されるユーザー]** - 既定では、この設定は **[なし]** に設定されています。 特定のユーザーまたはグループ、あるいは [すべて] を選択すると、ユーザーの設定とアプリ データを Windows 10 デバイス間で同期させることができます。 Windows 10 の同期のしくみの詳細を学習してください。
 このオプションは、Azure AD Premium や Enterprise Mobility Suite (EMS) などの製品を通じて使用できる Premium 機能です。
- 
+
 
 
 
@@ -118,7 +119,7 @@ Azure Portal を使ってデバイスを管理するには、デバイスが Azu
 
 ## <a name="device-management-tasks"></a>デバイス管理タスク
 
-グローバル管理者は、登録済みまたは参加済みデバイスを管理することができます。 Intune サービス管理者は次のことができます。
+グローバル管理者またはクラウド デバイス管理者は、登録済みまたは参加済みデバイスを管理することができます。 Intune サービス管理者は次のことができます。
  
 - デバイスを更新する  - たとえば、デバイスを有効化/無効化するなどといった日常の操作
 
@@ -150,7 +151,7 @@ Intune 管理者の場合は、**Microsoft Intune** としてマークされて�
 
 **解説:**
 
-- デバイスを有効/無効にするには、Azure AD のグローバル管理者である必要があります。 
+- デバイスを有効/無効にするには、Azure AD のグローバル管理者またはクラウド デバイス管理者である必要があります。 
 - デバイスを無効にすると、デバイスは Azure AD で正常に認証されなくなり、それによってデバイスは、デバイス CA または WH4B 資格情報の使用によって保護されている Azure AD リソースにアクセスできなくなります。 
 
 

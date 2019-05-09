@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 568d63f984980e91b4dc059211dcf0eaceb73820
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d182d23bf4b3f4dc1ed42a737e8fe8b753c035ae
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164230"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340740"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -26,7 +26,7 @@ Apache HBase は、データ損失を防ぐための複数の方法をサポー�
 * スナップショット
 * レプリケーション
 
-> [!NOTE]
+> [!NOTE]  
 > Apache Phoenix はそのメタデータを HBase テーブルに保存するため、HBase システム カタログ テーブルのバックアップ時にメタデータがバックアップされます。
 
 以下のセクションでは、これらの各方法の使用シナリオについて説明します。
@@ -35,7 +35,7 @@ Apache HBase は、データ損失を防ぐための複数の方法をサポー�
 
 この方法を使用すると、テーブルまたは列ファミリのサブセットを選択できなくても、すべての HBase データをコピーします。 後述の方法では、さらに制御しやすくなります。
 
-HDInsight の HBase では、クラスターの作成時に選択された既定のストレージとして Azure Storage Blob または Azure Data Lake Store を使用します。 どちらの場合も、HBase はそのデータ ファイルとメタデータ ファイルを次のパスに保存します。
+HDInsight の HBase では、クラスターの作成時に選択された既定のストレージ (Azure Storage BLOB または Azure Data Lake Storage のどちらか) を使用します。 どちらの場合も、HBase はそのデータ ファイルとメタデータ ファイルを次のパスに保存します。
 
     /hbase
 
@@ -45,7 +45,7 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
     wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
     ```
 
-* Azure Data Lake Store では、クラスターのプロビジョニング時に指定したルート パスに `hbase` フォルダーがあります。 通常、このルート パスには `clusters` フォルダーがあり、HDInsight クラスターにちなんだ名前のサブフォルダーが含まれています。
+* Azure Data Lake Storage では、クラスターのプロビジョニング時に指定したルート パスの下に `hbase` フォルダーが存在します。 通常、このルート パスには `clusters` フォルダーがあり、HDInsight クラスターにちなんだ名前のサブフォルダーが含まれています。
 
     ```
     /clusters/<clusterName>/hbase
@@ -57,7 +57,7 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
 * 現在のストレージの場所を指す新しい HDInsight インスタンスを作成します。 新しいインスタンスは、既存のすべてのデータを使用して作成されます。
 
-* `hbase` フォルダーを別の Azure Storage Blob コンテナーまたは Data Lake Store の場所にコピーしてから、そのデータを含む新しいクラスターを開始します。 Azure Storage の場合は [AzCopy](../../storage/common/storage-use-azcopy.md) を使用し、Data Lake Store の場合は [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) を使用します。
+* `hbase` フォルダーを別の Azure Storage BLOB コンテナーまたは Data Lake Storage の場所にコピーしてから、そのデータで新しいクラスターを起動します。 Azure Storage の場合は [AzCopy](../../storage/common/storage-use-azcopy.md) を使用し、Data Lake Storage の場合は [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) を使用します。
 
 ## <a name="export-then-import"></a>エクスポート後にインポートする
 
@@ -75,7 +75,11 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
-Azure Data Lake Store の構文は次のとおりです。
+Azure Data Lake Storage Gen2 では、構文は次のとおりです。
+
+    abfs://<containername>@<accountname>.dfs.core.windows.net/<path>
+
+Azure Data Lake Storage Gen1 では、構文は次のとおりです。
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 
@@ -117,7 +121,7 @@ CopyTable ユーティリティでは、コピーする行の時間範囲を指�
 
 CopyTable は、コピー先テーブルにコピーされる、コピー元テーブルの内容全体をスキャンします。 これにより、CopyTable の実行中は HBase クラスターのパフォーマンスが低下する可能性があります。
 
-> [!NOTE]
+> [!NOTE]  
 > テーブル間でのデータのコピーを自動化するには、GitHub の [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) リポジトリにある `hdi_copy_table.sh` スクリプトを参照してください。
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Apache ZooKeeper クォーラム リストを手動で収集する

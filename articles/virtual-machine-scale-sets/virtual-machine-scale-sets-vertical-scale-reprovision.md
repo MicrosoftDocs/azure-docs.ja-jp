@@ -13,16 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: 6cd42675fa70f338fd4e1223d6a48bf8c6773915
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3846815dabdc9e351f3d8449feb88affb9c6efdb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579313"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001203"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
+
 この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 スケール セットにない VM の垂直方向のスケーリングについては、「[Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 *スケール アップ*および*スケール ダウン*とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 この動作を、*スケール アウト*および*スケール イン*とも呼ばれる、VM の数がワークロードに応じて変更される[水平方向のスケーリング](virtual-machine-scale-sets-autoscale-overview.md)と比較してください。
@@ -42,16 +43,52 @@ ms.locfileid: "53579313"
 4. Webhook 通知を使用して、仮想マシン スケール セットにアラートを追加します。
 
 > [!NOTE]
-> 垂直方向の自動スケールは、特定の VM のサイズ範囲内でのみ実行できます。 スケールを決める前に各サイズの仕様を比較してください (大きな数値が必ずしも大きな VM サイズを示すとは限りません)。 次のようなサイズのペアの間でスケールの設定を選択できます。
+> 最初の仮想マシンのサイズによっては、スケーリングできるサイズが制限される場合があります。これは、その仮想マシンがデプロイされているクラスターの空き容量によるものです。 この記事で使用される公開済みの Automation Runbook では、このケースのみを扱い、VM のサイズ ペアを超えない範囲でのみスケーリングします。 つまり、Standard_D1v2 仮想マシンが急に Standard_G5 にスケールアップしたり、Basic_A0 にスケールダウンしたりすることはありません。 また、制約付きの仮想マシンのサイズのスケールアップ/スケールダウンはサポートされていません。 次のようなサイズのペアの間でスケールの設定を選択できます。
 > 
 > | VM サイズのスケーリングのペア |  |
 > | --- | --- |
-> | Standard_A0 |Standard_A11 |
-> | Standard_D1 |Standard_D14 |
-> | Standard_DS1 |Standard_DS14 |
-> | Standard_D1v2 |Standard_D15v2 |
+> | Basic_A0 |Basic_A4 |
+> | Standard_A0 |Standard_A4 |
+> | Standard_A5 |Standard_A7 |
+> | Standard_A8 |Standard_A9 |
+> | Standard_A10 |Standard_A11 |
+> | Standard_A1_v2 |Standard_A8_v2 |
+> | Standard_A2m_v2 |Standard_A8m_v2  |
+> | Standard_B1s |Standard_B2s |
+> | Standard_B1ms |Standard_B8ms |
+> | Standard_D1 |Standard_D4 |
+> | Standard_D11 |Standard_D14 |
+> | Standard_DS1 |Standard_DS4 |
+> | Standard_DS11 |Standard_DS14 |
+> | Standard_D1_v2 |Standard_D5_v2 |
+> | Standard_D11_v2 |Standard_D14_v2 |
+> | Standard_DS1_v2 |Standard_DS5_v2 |
+> | Standard_DS11_v2 |Standard_DS14_v2 |
+> | Standard_D2_v3 |Standard_D64_v3 |
+> | Standard_D2s_v3 |Standard_D64s_v3 |
+> | Standard_DC2s |Standard_DC4s |
+> | Standard_E2_v3 |Standard_E64_v3 |
+> | Standard_E2s_v3 |Standard_E64s_v3 |
+> | Standard_F1 |Standard_F16 |
+> | Standard_F1s |Standard_F16s |
+> | Standard_F2sv2 |Standard_F72sv2 |
 > | Standard_G1 |Standard_G5 |
 > | Standard_GS1 |Standard_GS5 |
+> | Standard_H8 |Standard_H16 |
+> | Standard_H8m |Standard_H16m |
+> | Standard_L4s |Standard_L32s |
+> | Standard_L8s_v2 |Standard_L80s_v2 |
+> | Standard_M8ms  |Standard_M128ms |
+> | Standard_M32ls  |Standard_M64ls |
+> | Standard_M64s  |Standard_M128s |
+> | Standard_M64  |Standard_M128 |
+> | Standard_M64m  |Standard_M128m |
+> | Standard_NC6 |Standard_NC24 |
+> | Standard_NC6s_v2 |Standard_NC24s_v2 |
+> | Standard_NC6s_v3 |Standard_NC24s_v3 |
+> | Standard_ND6s |Standard_ND24s |
+> | Standard_NV6 |Standard_NV24 |
+> | Standard_NV6s_v2 |Standard_NV24s_v2 |
 > 
 > 
 
@@ -61,6 +98,7 @@ ms.locfileid: "53579313"
 * [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>サブスクリプションに Azure Automation の垂直スケールの Runbook をインポートする
+
 仮想マシン スケール セットの垂直方向へのスケーリングに必要な Runbook は、Azure Automation Runbook ギャラリーに既に公開されています。 Runbook をサブスクリプションにインポートするには、次の記事の手順に従ってください。
 
 * [Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](../automation/automation-runbook-gallery.md)
@@ -74,6 +112,7 @@ Runbook のメニューから、[ギャラリーの参照] オプションを選
 ![Runbook ギャラリー][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Webhook を Runbook に追加する
+
 Runbook をインポートしたら、仮想マシン スケール セットからのアラートによって Webhook がトリガーされるように、Runbook に追加します。 Runbook で Webhook を作成する方法の詳細は、次の記事を参照してください。
 
 * [Azure Automation Webhook](../automation/automation-webhooks.md)
@@ -84,11 +123,12 @@ Runbook をインポートしたら、仮想マシン スケール セットか�
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>仮想マシン スケール セットにアラートを追加する
+
 仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」をご覧ください。
 
-```
-$actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
-$actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
+```powershell
+$actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
+$actionWebhook = New-AzAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
 $threshold = <value-of-the-threshold>
 $rg = <resource-group-name>
 $id = <resource-id-to-add-the-alert-to>
@@ -99,7 +139,7 @@ $timeWindow = <time-window-in-hh:mm:ss-format>
 $condition = <condition-for-the-threshold> # Other valid values are LessThanOrEqual, GreaterThan, GreaterThanOrEqual
 $description = <description-for-the-alert>
 
-Add-AzureRmMetricAlertRule  -Name  $alertName `
+Add-AzMetricAlertRule  -Name  $alertName `
                             -Location  $location `
                             -ResourceGroup $rg `
                             -TargetResourceId $id `
@@ -123,6 +163,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 * [Azure Monitor クロスプラットフォーム CLI のクイック スタート サンプル](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>まとめ
+
 この記事では、簡単な垂直スケーリングの例を示しました。 これらの構成要素 (Automation アカウント、Runbook、Webhook、アラート) を使用して、さまざまなイベントを、カスタマイズされた一連のアクションで接続できます。
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960159"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100413"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Azure VM での RDP 一般エラーのトラブルシューティング
 
@@ -65,7 +65,7 @@ RDP リスナーの構成が正しくありません。
 
 ### <a name="serial-console"></a>シリアル コンソール
 
-#### <a name="step-1-turn-on-remote-desktop"></a>手順 1: リモート デスクトップをオンにする
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>手順 1:Serial console で CMD インスタンスを開く
 
 1. **[サポートとトラブルシューティング]** > **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して [[シリアル コンソール]](serial-console-windows.md) にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
 
@@ -77,7 +77,7 @@ RDP リスナーの構成が正しくありません。
    ch -si 1
    ```
 
-#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>手順 2: RDP レジストリ キーの値を確認する
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>手順 2:RDP レジストリ キーの値を確認する
 
 1. ポリシーによって RDP が無効になっていることを確認します。
 
@@ -164,17 +164,17 @@ RDP リスナーの構成が正しくありません。
 
 まだ問題が発生する場合には手順 2. に進みます。
 
-#### <a name="step-2-enable-remote-desktop-services"></a>手順 2: リモート デスクトップ サービスを有効化する
+#### <a name="step-2-enable-remote-desktop-services"></a>手順 2:リモート デスクトップ サービスを有効にする
 
 詳しくは、「[Azure VM でリモート デスクトップ サービスが起動しない](troubleshoot-remote-desktop-services-issues.md)」をご覧ください。
 
-#### <a name="step-3-reset-rdp-listener"></a>手順 3: RDP リスナーをリセットする
+#### <a name="step-3-reset-rdp-listener"></a>手順 3:RDP リスナーをリセットする
 
 詳しくは、「[Remote Desktop disconnects frequently in Azure VM](troubleshoot-rdp-intermittent-connectivity.md)」(Azure VM でリモート デスクトップの接続が頻繁に切れる) をご覧ください。
 
 ### <a name="offline-repair"></a>オフラインでの修復
 
-#### <a name="step-1-turn-on-remote-desktop"></a>手順 1: リモート デスクトップをオンにする
+#### <a name="step-1-turn-on-remote-desktop"></a>手順 1:リモート デスクトップをオンにする
 
 1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。
@@ -229,16 +229,16 @@ RDP リスナーの構成が正しくありません。
 
       Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
   
-7. 復旧 VM からディスクをデタッチします。
-8. [そのディスクから新しい VM を作成します](../windows/create-vm-specialized.md)。
+1. 復旧 VM からディスクをデタッチします。
+1. [そのディスクから新しい VM を作成します](../windows/create-vm-specialized.md)。
 
 まだ問題が発生する場合には手順 2. に進みます。
 
-#### <a name="step-2-enable-remote-desktop-services"></a>手順 2: リモート デスクトップ サービスを有効化する
+#### <a name="step-2-enable-remote-desktop-services"></a>手順 2:リモート デスクトップ サービスを有効にする
 
 詳しくは、「[Azure VM でリモート デスクトップ サービスが起動しない](troubleshoot-remote-desktop-services-issues.md)」をご覧ください。
 
-#### <a name="step-3-reset-rdp-listener"></a>手順 3: RDP リスナーをリセットする
+#### <a name="step-3-reset-rdp-listener"></a>手順 3:RDP リスナーをリセットする
 
 詳しくは、「[Remote Desktop disconnects frequently in Azure VM](troubleshoot-rdp-intermittent-connectivity.md)」(Azure VM でリモート デスクトップの接続が頻繁に切れる) をご覧ください。
 

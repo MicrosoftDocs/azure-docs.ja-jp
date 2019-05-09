@@ -408,7 +408,7 @@ az vm extension delete \
 | --- | --- | --- |
 | Linux 用カスタム スクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します。 |[Linux 用カスタム スクリプト拡張機能](custom-script-linux.md) |
 | VM アクセス拡張機能 |Azure 仮想マシンへのアクセスを回復します。 |[VM アクセス拡張機能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
-| Azure 診断拡張機能 |Azure 診断を管理します |[Azure 診断拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Azure Diagnostics 拡張機能 |Azure Diagnostics を管理します |[Azure 診断拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します。 |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>次の手順

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: fac56117c4c70e2735580abb52d05e008d660003
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: eaeb2b4decc7da4caa75cb2af68829b4bf7ce64d
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089418"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563848"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics ジョブ モニターをプログラムで作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "53089418"
 
 ## <a name="prerequisites"></a>前提条件
 
-このプロセスを開始する前に、次を用意する必要があります。
+このプロセスを開始する前に、以下の前提条件を満たしている必要があります。
 
 * Visual Studio 2017 または 2015
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/) のダウンロードとインストール
@@ -75,50 +75,47 @@ ms.locfileid: "53089418"
    ```
 5. 認証ヘルパー メソッドを追加します。
 
-```csharp   
-     public static string GetAuthorizationHeader()
-   
+   ```csharp   
+   public static string GetAuthorizationHeader()
+   {
+      AuthenticationResult result = null;
+      var thread = new Thread(() =>
+      {
+         try
          {
-             AuthenticationResult result = null;
-             var thread = new Thread(() =>
-             {
-                 try
-                 {
-                     var context = new AuthenticationContext(
-                         ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
-                         ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+             var context = new AuthenticationContext(
+                ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
+                ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+             result = context.AcquireToken(
+                 resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+                 clientId: ConfigurationManager.AppSettings["AsaClientId"],
+                 redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
+                 promptBehavior: PromptBehavior.Always);
+         }
+         catch (Exception threadEx)
+         {
+             Console.WriteLine(threadEx.Message);
+         }
+     });
+
+     thread.SetApartmentState(ApartmentState.STA);
+     thread.Name = "AcquireTokenThread";
+     thread.Start();
+     thread.Join();
    
-                     result = context.AcquireToken(
-                         resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
-                         clientId: ConfigurationManager.AppSettings["AsaClientId"],
-                         redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-                         promptBehavior: PromptBehavior.Always);
-                 }
-                 catch (Exception threadEx)
-                 {
-                     Console.WriteLine(threadEx.Message);
-                 }
-             });
-   
-             thread.SetApartmentState(ApartmentState.STA);
-             thread.Name = "AcquireTokenThread";
-             thread.Start();
-             thread.Join();
-   
-             if (result != null)
-             {
-                 return result.AccessToken;
-             }
-   
-             throw new InvalidOperationException("Failed to acquire token");
+     if (result != null)
+     {
+         return result.AccessToken;
      }
-```
+         throw new InvalidOperationException("Failed to acquire token");
+   }
+   ```
 
 ## <a name="create-management-clients"></a>管理クライアントの作成
 
 次のコードは、必要な変数と管理クライアントをセットアップします。
 
-```csharp
+   ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
 
@@ -136,14 +133,14 @@ ms.locfileid: "53089418"
     StreamAnalyticsManagementClient(aadTokenCredentials, resourceManagerUri);
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
-```
+   ```
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>既存の Stream Analytics ジョブに対する監視の有効化
 
-次のコードは、**既存の** Stream Analytics ジョブに対して監視を有効にします。 コードの最初の部分では、Stream Analytics サービスに対して GET 要求を実行して、特定の Stream Analytics ジョブに関する情報を取得します。 コードの後半部分では、GET 要求で取得した *Id* プロパティをパラメーターとして PUT メソッドが Insights サービスに送信され、Stream Analytics ジョブの監視を有効にします。
+次のコードは、**既存の** Stream Analytics ジョブに対して監視を有効にします。 コードの最初の部分では、Stream Analytics サービスに対して GET 要求を実行して、特定の Stream Analytics ジョブに関する情報を取得します。 コードの後半部分では、GET 要求で取得した *ID* プロパティを PUT メソッド用のパラメーターとして使用します。これにより、PUT 要求が Insights サービスに送信され、Stream Analytics ジョブの監視が有効になります。
 
->[!WARNING]
->Azure Portal から、または次のコードを使用してプログラムにより、別の Stream Analytics ジョブの監視を有効にしている場合、**前に監視を有効にしたときに使用したのと同じストレージ アカウント名を指定することをお勧めします。**
+> [!WARNING]
+> Azure Portal から、または次のコードを使用してプログラムにより、別の Stream Analytics ジョブの監視を有効にしている場合、**前に監視を有効にしたときに使用したのと同じストレージ アカウント名を指定することをお勧めします。**
 > 
 > ストレージ アカウントは、特定のジョブ自体ではなく、Stream Analytics ジョブを作成したリージョンに関連付けられます。
 > 
@@ -152,24 +149,24 @@ ms.locfileid: "53089418"
 > 次のコードにある `<YOUR STORAGE ACCOUNT NAME>` の置き換えに使用するストレージ アカウント名は、監視を有効にする Stream Analytics ジョブと同じサブスクリプション内にあるストレージ アカウントにする必要があります。
 > 
 > 
-```csharp
-    // Get an existing Stream Analytics job
-    JobGetParameters jobGetParameters = new JobGetParameters()
-    {
-        PropertiesToExpand = "inputs,transformation,outputs"
-    };
-    JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
-
-    // Enable monitoring
-    ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
-    {
-            Properties = new ServiceDiagnosticSettings()
-            {
-                StorageAccountName = "<YOUR STORAGE ACCOUNT NAME>"
-            }
-    };
-    insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
-```
+>    ```csharp
+>    // Get an existing Stream Analytics job
+>     JobGetParameters jobGetParameters = new JobGetParameters()
+>     {
+>         PropertiesToExpand = "inputs,transformation,outputs"
+>     };
+>     JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
+>
+>    // Enable monitoring
+>    ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
+>    {
+>            Properties = new ServiceDiagnosticSettings()
+>           {
+>               StorageAccountName = "<YOUR STORAGE ACCOUNT NAME>"
+>           }
+>    };
+>   insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
+>   ```
 
 
 ## <a name="get-support"></a>サポートを受ける
@@ -183,4 +180,3 @@ ms.locfileid: "53089418"
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

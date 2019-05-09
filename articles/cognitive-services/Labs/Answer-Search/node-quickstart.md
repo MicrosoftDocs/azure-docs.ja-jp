@@ -1,22 +1,22 @@
 ---
-title: 'クイック スタート: Project Answer Search、Node'
+title: クイック スタート:Project Answer Search (Node)
 description: Node で Project Answer Search の使用を開始します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 1afd029803fc7d2709a9a9abe840db6d7f52498d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c44be9779cf2b856ac2f5e9e017fd9d1040a018b
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465748"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294044"
 ---
-# <a name="quickstart-project-answer-search-with-node"></a>クイック スタート: Node での Project Answer Search
+# <a name="quickstart-project-answer-search-with-node"></a>クイック スタート:Project Answer Search (Node)
 
 次の Node の例では、ヨセミテ国立公園に関する情報を問い合わせるクエリを作成します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "49465748"
 
 このデモの完全なコードを次に示します。
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -52,7 +52,7 @@ let path = '/answerSearch/v7.0/search';
 let mkt = 'en-us';
 let q = 'Yosemite National Park';
 
-let params = '?q=' + encodeURI(q) + '&mkt=en-us';
+let params = '?q=' + encodeURI(q) + '&mkt= + mkt;
 
 let response_handler = function (response) {
     let body = '';
@@ -85,7 +85,7 @@ let Search = function () {
 
 Search();
 
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 - [C# のコード例](c-sharp-quickstart.md)

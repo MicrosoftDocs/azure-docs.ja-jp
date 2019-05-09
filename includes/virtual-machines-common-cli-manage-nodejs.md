@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 682288338d66f1006e9f1d7f3d6d30f822626425
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: a4c9ec133b3686a92cec7e7c8d4552c1302e3074
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227245"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125140"
 ---
 Resource Manager のコマンドとテンプレートで Azure CLI を使用して、リソース グループを使用する Azure リソースとワークロードをデプロイするには、Azure のアカウントが必要です。 アカウントがない場合、 [ここから無料の Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
@@ -31,7 +31,7 @@ Resource Manager のコマンドとテンプレートで Azure CLI を使用し�
 > 
 
 | タスク | リソース マネージャー |
-| --- | --- | --- |
+| --- | --- |
 | 最も基本的な VM の作成 |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure vm image list` コマンドから `image-urn` を取得します。 例については[こちらの記事](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。) |
 | Linux VM の作成 |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
 | Windows VM の作成 |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |
@@ -44,7 +44,7 @@ Resource Manager のコマンドとテンプレートで Azure CLI を使用し�
 | VM の削除 |`azure vm delete [options] <resource_group> <name>` |
 | VM のキャプチャ |`azure vm capture [options] <resource_group> <name>` |
 | ユーザー イメージからの VM の作成 |`azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>` |
-| 専用ディスクからの VM の作成 |`azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
+| 専用ディスクからの VM の作成 |`azure  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
 | VM へのデータ ディスクの追加 |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
 | VM からのデータ ディスクの削除 |`azure  vm disk detach [options] <resource-group> <vm-name> <lun>` |
 | VM への一般的な拡張機能の追加 |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |

@@ -1,0 +1,44 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Data Catalog のドキュメント
+metadata:
+  title: Azure Data Catalog のドキュメント - チュートリアル、API リファレンス
+  meta.description: 'Learn how to set up a data catalog where your organization can find, understand, and consume data sources. Tutorials, API reference, and other documentation.'
+  services: data-catalog
+  author: JasonWHowell
+  ms.author: jasonh
+  ms.service: data-catalog
+  ms.topic: landing-page
+  ms.date: 04/05/2019
+abstract:
+  description: Data Catalog を使用して、組織やチームがデータ ソースを検出、把握、活用する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、登録されたデータ ソースをデータ コンシューマーが検索し、領域の専門家によって提供される知識を取得できるデータ リポジトリの計画とセットアップの方法を紹介します。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: 初めての Azure データ カタログをデプロイする方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/data-catalog.svg
+            text: Azure ポータル
+            href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Data Catalog で資産を登録、検索、注釈付け、管理、および削除する方法を説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="register-data-assets-tutorial">Azure Data Catalog でのデータ資産の登録</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/datacatalog/">REST API リファレンス</a></p><p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">検索構文リファレンス</a></p>
+          - title: リソース マネージャー
+            html: <p><a href="/azure/templates/microsoft.datacatalog/catalogs">Resource Manager テンプレート</a></p>

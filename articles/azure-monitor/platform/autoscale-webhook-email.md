@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: c655f117009c0c7c682ad92a951edc7e12255bc2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: autoscale
+ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325667"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259297"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
 この記事では、Azure で自動スケール操作に基づいて特定の Web URL を呼び出すことや電子メールを送信することができるようにトリガーを設定する方法について説明します。  
@@ -59,6 +59,7 @@ REST API または Resource Manager テンプレートを使用している場�
       }
     ]
 ```
+
 | フィールド | 必須 | 説明 |
 | --- | --- | --- |
 | operation |はい |値は "Scale" にする必要があります。 |
@@ -70,7 +71,7 @@ REST API または Resource Manager テンプレートを使用している場�
 | properties |はい |値は空 {} にするか、キーと値のペアを指定できます。 |
 
 ## <a name="authentication-in-webhooks"></a>Webhook での認証
-webhook はトークンベースの認証を利用して認証できます。クエリ パラメーターとしてトークン ID を使用し、webhook URI を保存します。 たとえば、 https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue のように指定します。
+webhook はトークンベースの認証を利用して認証できます。クエリ パラメーターとしてトークン ID を使用し、webhook URI を保存します。 https:\//mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue などです
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>自動スケール通知の Webhook ペイロード スキーマ
 自動スケール通知が生成されると、次のメタデータが Webhook ペイロードに含まれます。
@@ -120,3 +121,4 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | oldCapacity |はい |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
 | newCapacity |はい |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
 | Properties |いいえ  |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
+

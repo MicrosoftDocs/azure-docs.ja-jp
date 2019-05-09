@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 72f47794d8798c6d4b7bcc1c75c3c6d4dc41e6a3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434615"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794440"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Azure Monitor での CollectD からのパフォーマンス データの収集に関する情報を提供します。
@@ -112,15 +112,15 @@ Azure Monitor での CollectD データの収集を構成するための基本�
 
 | CollectD メトリックのフィールド | Azure Monitor のフィールド |
 |:--|:--|
-| host | Computer |
-| プラグイン | なし |
-| plugin_instance | インスタンス名<br>**plugin_instance** が *null* である場合、InstanceName="*_Total*" |
-| type | ObjectName |
-| type_instance | CounterName<br>**type_instance** が *null* である場合、CounterName=**blank** |
-| dsnames[] | CounterName |
-| dstypes | なし |
-| values[] | CounterValue |
+| `host` | Computer |
+| `plugin` | なし |
+| `plugin_instance` | インスタンス名<br>**plugin_instance** が *null* である場合、InstanceName="*_Total*" |
+| `type` | ObjectName |
+| `type_instance` | CounterName<br>**type_instance** が *null* である場合、CounterName=**blank** |
+| `dsnames[]` | CounterName |
+| `dstypes` | なし |
+| `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>次の手順
-* [ログ クエリ](../../log-analytics/log-analytics-queries.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
-* [カスタム フィールド](../../log-analytics/log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [カスタム フィールド](custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。

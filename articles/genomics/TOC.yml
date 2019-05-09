@@ -1,41 +1,50 @@
+items:
 - name: Microsoft Genomics のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Microsoft Genomics とは
-      href: overview-what-is-genomics.md
+  - name: Microsoft Genomics とは
+    href: overview-what-is-genomics.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: サンプル Genomics ワークフローの実行
-      href: quickstart-run-genomics-workflow-portal.md
-    - name: 各種入力ファイル形式の使用
-      items:
-        - name: FASTQ ファイルのペア
-          href: quickstart-input-pair-fastq.md
-        - name: BAM ファイル
-          href: quickstart-input-bam.md
-        - name: 複数の FASTQ ファイルまたは BAM ファイル
-          href: quickstart-input-multiple.md
-    - name: アカウント キーではなく SAS トークンを入力する
-      href: quickstart-input-sas.md
+  - name: サンプル Genomics ワークフローの実行
+    href: quickstart-run-genomics-workflow-portal.md
+  expanded: true
+- name: ハウツー ガイド
+  items:
+  - name: 各種入力ファイル形式の使用
+    items:
+    - name: FASTQ ファイルのペア
+      href: quickstart-input-pair-fastq.md
+    - name: BAM ファイル
+      href: quickstart-input-bam.md
+    - name: 複数の FASTQ ファイルまたは BAM ファイル
+      href: quickstart-input-multiple.md
+  - name: アカウント キーではなく SAS トークンを入力する
+    href: quickstart-input-sas.md
 - name: リソース
   items:
-    - name: 一般的な質問
-      href: frequently-asked-questions-genomics.md
-    - name: トラブルシューティング ガイド
-      href: troubleshooting-guide-genomics.md
-    - name: サポート要求を提出する
-      href: file-support-ticket-genomics.md
-    - name: バージョンのリリース履歴
-      href: version-release-history-genomics.md
-    - name: ビジネス継続性
-      href: business-continuity-genomics.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/genomics/'
-    - name: 利用可能なリージョン
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: サポート オプション
-      href: 'https://azure.microsoft.com/support/options/'
+  - name: 一般的な質問
+    href: frequently-asked-questions-genomics.md
+  - name: トラブルシューティング ガイド
+    href: troubleshooting-guide-genomics.md
+  - name: サポート要求を提出する
+    href: file-support-ticket-genomics.md
+  - name: バージョンのリリース履歴
+    href: version-release-history-genomics.md
+  - name: ビジネス継続性
+    href: business-continuity-genomics.md
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=cognitive-services
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/genomics/
+  - name: 利用可能なリージョン
+    href: https://azure.microsoft.com/regions/services/
+  - name: サポート オプション
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: aaeaa293d6ceed3281db2cde59ada94d44ddc217
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446732"

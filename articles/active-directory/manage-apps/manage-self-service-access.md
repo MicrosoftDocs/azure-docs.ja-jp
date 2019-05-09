@@ -3,23 +3,24 @@ title: セルフ サービス アプリケーションの割り当ての構成�
 description: セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
-ms.author: barbkess
-ms.openlocfilehash: 1876ff0cea2e46f8159b9ffb24de72a6272b3a79
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 346d7249d4dd755fc794cd3d9d5be8b32195ef90
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077082"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210375"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>セルフ サービス アプリケーションの割り当ての構成方法
 

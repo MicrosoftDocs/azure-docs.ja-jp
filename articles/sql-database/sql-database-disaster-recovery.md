@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 889f8f597b0b744ea5fe6ef2f5c82f2d09629607
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605213"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540484"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 
@@ -33,12 +33,19 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 > [!NOTE]
 > ゾーン冗長の Premium または Business Critical データベースやプールを使用している場合は、回復プロセスが自動化され、このガイドの残りの部分は適用されません。
 
+> [!NOTE]
+> プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 また、セカンダリ データベースは、プライマリと同じコンピューティング サイズ (DTU または仮想コア) で作成することを強くお勧めします。 詳細については、「[プライマリ データベースのアップグレードまたはダウングレード](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database)」を参照してください。
+
+> [!NOTE]
+> 1 つまたは複数のフェールオーバー グループを使用して、複数のデータベースのフェールオーバーを管理します。
+> 既にある geo レプリケーションのリレーションシップをこのフェールオーバー グループに追加する場合は、その geo セカンダリが、プライマリと同じサービス レベルおよびコンピューティング サイズで構成されていることを確認してください。 詳細については、「[自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする](sql-database-auto-failover-group.md)」を参照してください。
+
 ## <a name="prepare-for-the-event-of-an-outage"></a>障害に備える
 
 フェールオーバー グループまたは geo 冗長バックアップのいずれかを使用して、他のデータ領域に適切に復旧するには、必要な場合に備えて、サーバーを、他のデータ センターが停止したときに新しいプライマリ サーバーとして使用できるように準備する必要があります。また、スムーズに復旧できるように、明確に定義された手順を文書化およびテストする必要もあります。 この準備手順を次に示します。
 
-- 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 geo リストアの場合は、通常、データベースが配置されているリージョンの[ペア リージョン](../best-practices-availability-paired-regions.md)にあるサーバーです。 これにより、geo 復元操作中の余分なトラフィック コストを排除できます。
-- ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルのファイアウォール規則を特定し、必要に応じて定義します。
+- 他のリージョンで、新しいプライマリ サーバーとして使用する SQL Database サーバーを特定します。 geo リストアの場合は、通常、データベースが配置されているリージョンの[ペア リージョン](../best-practices-availability-paired-regions.md)にあるサーバーです。 これにより、geo 復元操作中の余分なトラフィック コストを排除できます。
+- ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルの IP ファイアウォール規則を特定し、必要に応じて定義します。
 - 新しいプライマリ サーバーにユーザーをリダイレクトする方法を決めます。たとえば、接続文字列を変更したり、DNS エントリを変更したりすることでリダイレクトできます。
 - 新しいプライマリ サーバーのマスター データベースに必要なログインを特定し、必要に応じて作成します。また、マスター データベースにあるこれらのログインに、適切なアクセス許可が付与されていることを確認します (ある場合)。 詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
 - 更新して新しいプライマリ データベースにマップする必要があるアラート ルールを特定します。
@@ -73,6 +80,7 @@ geo レプリケートされたセカンダリ データベースへのフェー
 
 - [Azure ポータルを使用して、geo レプリケートされたセカンダリ サーバーにフフェールオーバーする](sql-database-geo-replication-portal.md)
 - [PowerShell を使用したセカンダリ サーバーへのフェールオーバー](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [Transact-SQL (T-SQL) を使用したセカンダリ サーバーへのフェールオーバー](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
 
 ## <a name="recover-using-geo-restore"></a>geo リストアを使用した復旧
 

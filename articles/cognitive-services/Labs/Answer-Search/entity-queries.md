@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Project Answer Search エンティティ クエリ'
+title: クイック スタート:Project Answer Search エンティティ クエリ
 titlesuffix: Azure Cognitive Services
 description: Project Answer Search を使ったエンティティ クエリ
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 09af064a1c072996171e6afa4f043e84f18612b4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c9f2a476353b1807bbb1c8c13dc8b8e2cdbb4ae4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467414"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544462"
 ---
-# <a name="quickstart-query-for-entities"></a>クイック スタート: エンティティのクエリ
+# <a name="quickstart-query-for-entities"></a>クイック スタート:エンティティのクエリ
 
 クエリで特定の人物、場所、または物に関する情報が要求された場合には、応答に `entities` の回答を含めることができます。  クエリでは常に Web ページが返されます。これに対して、[事実](fact-queries.md)と[エンティティ](entity-queries.md)が返されるかどうかはクエリによって異なります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "49467414"
 -   Attraction 
  
 応答に含まれるエンティティの種類を指定するときは、ビル・ゲイツに関するクエリに示したように、`entityTypeHints` フィールドを使用します。
-````
+```
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
         "entityPresentationInfo": {
@@ -44,13 +44,13 @@ ms.locfileid: "49467414"
         },
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
-````
+```
 次に示したのは、スペース ニードルのクエリです。
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
-````
+```
 応答には、`entities` 回答が含まれています。 `entityScenario` フィールドと `entityTypeHints` フィールドに注目してください。 
-````
+```
   "entities": {
     "value": [
       {
@@ -62,7 +62,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
             "mustBeCloseToContent": true,
             "license": {
               "name": "CC-BY-SA",
-              "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+              "url": "https://creativecommons.org/licenses/by-sa/3.0/"
             },
             "licenseNotice": "Text under CC-BY-SA license"
           },
@@ -71,13 +71,13 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
             "targetPropertyName": "description",
             "mustBeCloseToContent": true,
             "text": "Wikipedia",
-            "url": "http://en.wikipedia.org/wiki/Space_Needle"
+            "url": "https://en.wikipedia.org/wiki/Space_Needle"
           },
           {
             "_type": "ContractualRules/MediaAttribution",
             "targetPropertyName": "image",
             "mustBeCloseToContent": true,
-            "url": "http://en.wikipedia.org/wiki/Space_Needle"
+            "url": "https://en.wikipedia.org/wiki/Space_Needle"
           }
         ],
         "webSearchUrl": "https://www.bing.com/entityexplore?q\u003dSpace+Needle\u0026filters\u003dsid:%22f8dd5b08-206d-2554-6e4a-893f51f4de7e%22\u0026elv\u003dAXXfrEiqqD9r3GuelwApulpmymQx!ODfuQu*veOQHkvP0!Zbvi5F5tVcMSDJvDEWiQWwrdueYTtIszgj03oFQHykYYLYgq3q5!Sf00QxXGIS",
@@ -88,10 +88,10 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
           "provider": [
             {
               "_type": "Organization",
-              "url": "http://en.wikipedia.org/wiki/Space_Needle"
+              "url": "https://en.wikipedia.org/wiki/Space_Needle"
             }
           ],
-          "hostPageUrl": "http://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg",
+          "hostPageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg",
           "width": 110,
           "height": 110,
           "sourceWidth": 152,
@@ -108,19 +108,19 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
       }
     ]
   },
-````
+```
 
 クエリでは、必要があれば一覧を返すことができます。
 
 **クエリ:** 次のクエリは、絶滅危惧種の一覧を検索するものです。
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
-````
+```
 
 **応答:** 応答には、表形式の値として表示できる整形されたリストが含まれています。
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -217,7 +217,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
     ]
   },
 
-````
+```
 
 
 ## <a name="next-steps"></a>次の手順

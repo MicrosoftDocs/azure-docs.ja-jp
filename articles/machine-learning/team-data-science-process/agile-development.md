@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ee8e3e3ef33a8b09b92d4dfc262fce26dd60abb3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: adf713fc3f875168f99b302b0a9affef88e8414f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134405"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457685"
 ---
 # <a name="agile-development-of-data-science-projects"></a>データ サイエンス プロジェクトのアジャイル開発
 

@@ -5,15 +5,15 @@ services: site-recovery
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 11/27/2018
+ms.topic: conceptual
+ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: eaf18cf7d7a5f150d3400e133bf0703bb03e7b8f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f20818f0b899eede9fff05d71e98c8bffb94b0a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845979"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784502"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>フェールオーバー後にパブリック IP アドレスを設定する
 
@@ -44,7 +44,7 @@ Azure Resource Manager では、 パブリック IP アドレスは、独自の�
 Azure Traffic Manager により DNS レベルのエンドポイント間のルーティングが可能になり、DR シナリオへの[RTOをドライブダウン](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations)して、アシストできます。 
 
 Traffic Manager でのフェールオーバーシナリオの詳細については:
-1. Traffic Manager による[オンプレミス Azure フェールオーバー](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) 
+1. Traffic Manager による[オンプレミスから Azure へのフェールオーバー](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) 
 2. Traffic Manager による[Azure フェールオーバー](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) 
 
 セットアップは次のとおりです。

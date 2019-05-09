@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: f4456200d6f497a87424f12a23034dbff00c75aa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 646b862733e8727c9c8729f1ac038fa88cfa0580
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26373943"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443182"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する
 
@@ -62,10 +62,10 @@ ms.locfileid: "26373943"
 開始する前に、次の要件が満たされていることを確認します。
 
 *   Azure PowerShell がインストールされている。 Azure PowerShell モジュールをインストールするには、次の手順を実行します。
-    * Windows 環境では、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)」の手順に従います。 StorSimple の Windows Server ホストに Azure PowerShell をインストールできます (Windows Server ホストを使用している場合)。
-    * Linux または MacOS 環境では、「[macOS および Linux での Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurermps-maclinux?view=azurermps-4.4.0)」の手順に従います。
+    * Windows 環境では、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)」の手順に従います。 StorSimple の Windows Server ホストに Azure PowerShell をインストールできます (Windows Server ホストを使用している場合)。
+    * Linux または MacOS 環境では、「[macOS および Linux での Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux)」の手順に従います。
 
-Azure PowerShell の使用方法の詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.4.0)」をご覧ください。
+Azure PowerShell の使用方法の詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 ### <a name="run-azure-powershell-script"></a>Azure PowerShell スクリプトの実行
 
@@ -77,7 +77,7 @@ Azure PowerShell の使用方法の詳細については、「[Azure PowerShell 
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. 前の手順で作成したフォルダーに [NuGet CLI をダウンロード](http://www.nuget.org/downloads)します。 _nuget.exe_ にはさまざまなバージョンがあります。 SDK に対応するバージョンを選択します。 各ダウンロード リンクは、_.exe_ ファイルを直接ポイントします。 ブラウザーから実行するのではなく、ファイルを右クリックしてコンピューターに保存してください。
+2. 前の手順で作成したフォルダーに [NuGet CLI をダウンロード](https://www.nuget.org/downloads)します。 _nuget.exe_ にはさまざまなバージョンがあります。 SDK に対応するバージョンを選択します。 各ダウンロード リンクは、_.exe_ ファイルを直接ポイントします。 ブラウザーから実行するのではなく、ファイルを右クリックしてコンピューターに保存してください。
 
     次のコマンドを実行して、スクリプトをダウンロードし、前に作成した同じフォルダーに格納することもできます。
     
@@ -174,6 +174,6 @@ PS C:\Scripts\StorSimpleSDKTools>
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)。

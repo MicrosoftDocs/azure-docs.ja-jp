@@ -4,32 +4,32 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Computer Vision API を使って、画像から手書きテキストを抽出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 38e0b243b79975fa0cf6b5bb9a8a64c144289b15
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aa2c29a5b2becad75bae0f9ca9f88ab25a35d17f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582883"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883260"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Python を使用して手書きテキストを抽出する
 
-このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API と[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API を使うと、画像内の手書きテキストを検出し、認識した文字をコンピューターで扱うことができる文字ストリームに抽出することができます。
 
 > [!IMPORTANT]
-> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、テキスト認識メソッドは、`Operation-Content` 応答ヘッダー フィールドの値に URI を返します。 その後、[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを表したこの URI を呼び出して、ステータスをチェックすると共に、テキスト認識メソッドの呼び出しの結果を返します。
+> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、バッチ読み取りメソッドでは、`Operation-Content` 応答ヘッダー フィールドの値に URI が返されます。 その後、[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API を表したこの URI を呼び出して、状態をチェックし、バッチ読み取りメソッドの呼び出しの結果を返すことができます。
 
 このクイック スタートは、[MyBinder](https://mybinder.org) 上で Jupyter Notebook を使い、ステップ バイ ステップで実行することができます。 Binder を起動するには、次のボタンを選択します。
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/try/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -72,11 +72,10 @@ assert subscription_key
 # this region.
 vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
 
-text_recognition_url = vision_base_url + "recognizeText"
+text_recognition_url = vision_base_url + "read/core/asyncBatchAnalyze"
 
 # Set image_url to the URL of an image that you want to analyze.
-image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" + \
-    "Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg"
+image_url = "https://upload.wikimedia.org/wikipedia/commons/d/dd/Cursive_Writing_on_Notebook_paper.jpg"
 
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
 # Note: The request parameter changed for APIv2.
@@ -100,17 +99,18 @@ while (poll):
     response_final = requests.get(
         response.headers["Operation-Location"], headers=headers)
     analysis = response_final.json()
+    print(analysis)
     time.sleep(1)
-    if ("recognitionResult" in analysis):
+    if ("recognitionResults" in analysis):
         poll= False 
     if ("status" in analysis and analysis['status'] == 'Failed'):
         poll= False
 
 polygons=[]
-if ("recognitionResult" in analysis):
+if ("recognitionResults" in analysis):
     # Extract the recognized text, with bounding boxes.
     polygons = [(line["boundingBox"], line["text"])
-        for line in analysis["recognitionResult"]["lines"]]
+        for line in analysis["recognitionResults"][0]["lines"]]
 
 # Display the image and overlay it with the extracted text.
 plt.figure(figsize=(15, 15))
@@ -123,7 +123,6 @@ for polygon in polygons:
     patch    = Polygon(vertices, closed=True, fill=False, linewidth=2, color='y')
     ax.axes.add_patch(patch)
     plt.text(vertices[0][0], vertices[0][1], text, fontsize=20, va="top")
-_ = plt.axis("off")
 ```
 
 ## <a name="examine-the-response"></a>結果の確認
@@ -405,10 +404,6 @@ _ = plt.axis("off")
   }
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

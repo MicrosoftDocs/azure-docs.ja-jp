@@ -13,18 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: jdial
-ms.openlocfilehash: 7c35961894cbc8fb33f15b36910021f8ad38fac8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: cddf6526a798195e3e3091af766fee28791ac522
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976394"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795482"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 
 PowerShell で NSG フロー ログのエントリを読み取る方法を説明します。
 
 NSG フロー ログは[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) のストレージ アカウントに保存されます。 ブロック BLOB は小規模なブロックで構成されます。 各ログは、1 時間ごとに生成される個別のブロック BLOB です。 新しいログが 1 時間ごとに生成され、ログは最新データを保持した新しいエントリで数分ごとに更新されます。 この記事では、フロー ログの一部を読み取る方法を説明します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>シナリオ
 
@@ -53,10 +56,10 @@ function Get-NSGFlowLogCloudBlockBlob {
 
     process {
         # Retrieve the primary storage account key to access the NSG logs
-        $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
+        $StorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
 
         # Setup a new storage context to be used to query the logs
-        $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+        $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
         # Container name used by NSG flow logs
         $ContainerName = "insights-logs-networksecuritygroupflowevent"
@@ -65,7 +68,7 @@ function Get-NSGFlowLogCloudBlockBlob {
         $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${NSGResourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${NSGName}/y=$($logTime.Year)/m=$(($logTime).ToString("MM"))/d=$(($logTime).ToString("dd"))/h=$(($logTime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
 
         # Gets the storage blog
-        $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
+        $Blob = Get-AzStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
         # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
         $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
@@ -185,6 +188,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 ## <a name="next-steps"></a>次の手順
 
-NSG フロー ログを表示するその他の方法については、「[オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)」を参照してください。
+[Elastic Stack の使用](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[Grafana の使用](network-watcher-nsg-grafana.md)、[Graylog の使用](network-watcher-analyze-nsg-flow-logs-graylog.md)に関する記事を参照し、NSG フロー ログの表示方法の詳細を理解します。 BLOB を直接使用して各種のログ分析コンシューマーを出力するためのオープン ソースの Azure 関数アプローチについては、[Azure Network Watcher NSG Flow Logs Connector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector) に関するページを参照してください。
 
 BLOB ストレージの詳細については、[Azure Functions における Blob Storage のバインディング](../azure-functions/functions-bindings-storage-blob.md)に関するページを参照してください。

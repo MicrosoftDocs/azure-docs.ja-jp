@@ -10,15 +10,15 @@ ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 68ae5628d8b6aeeec6c1549e3d29d48bc8906a2d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2e0a4b51e9140b9b3c0032980b7c6cd5a4d55638
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994199"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761397"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Azure での Xamarin.Forms アプリの作成
 

@@ -8,17 +8,16 @@ ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: ac0e1945e75ee7aea346c103a671b4a47b9e5994
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048616"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017618"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]
@@ -43,27 +42,27 @@ Data Management Gateway とその使用方法の詳細については、次の�
 ### <a name="enhancements-"></a>強化された機能
 - ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 それぞれの DNS エントリは、Azure Portal ([Data Factory] - > [作成およびデプロイ] - > [ゲートウェイ] - > [serviceUrls]) で見つかります (JSON)。
 - HDFS コネクタでは、SSL 検証のスキップを許可することで、自己署名公開証明書がサポートされるようになりました。
-- 修正済み: (クロック スキューによる) 更新中のゲートウェイ オフラインの問題。
+- 修正済み:(クロック スキューによる) 更新中のゲートウェイ オフラインの問題
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>強化された機能
 -   ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 詳細については、こちらをご覧ください。
 -   1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです (以前は 195 GB に制限されていました)。
--   修正済み: コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
--   修正済み: べき等性を利用して Document DB からオンプレミス SQL Server にコピーするときの範囲外のインデックスの問題。
--   修正済み: コピー ウィザードで、SQL クリーンアップ スクリプトがオンプレミス SQL Server で機能しない問題。
--   修正済み: 末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
+-   修正済み:コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
+-   修正済み:べき等性を利用して Document DB からオンプレミス SQL Server にコピーするときの範囲外のインデックスの問題。
+-   修正済み:コピー ウィザードで、SQL クリーンアップ スクリプトがオンプレミス SQL Server で機能しない問題。
+-   修正済み:末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>強化された機能
-- 修正済み: ゲートウェイ コンピューターの再起動時に資格情報が見つからない問題。
-- 修正済み: バックアップ ファイルを使用したゲートウェイの復元時の登録に関する問題。
+- 修正済み:ゲートウェイ コンピューターの再起動時に資格情報が見つからない問題。
+- 修正済み:バックアップ ファイルを使用したゲートウェイの復元時の登録に関する問題。
 
 
 ## <a name="2762401"></a>2.7.6240.1
 ### <a name="enhancements-"></a>強化された機能
-- 修正済み: ソースである Oracle から 10 進数の null 値が正しく読み取られない問題。
+- 修正済み:ソースである Oracle から 10 進数の null 値が正しく読み取られない問題。
 
 ## <a name="2661922"></a>2.6.6192.2
 ### <a name="whats-new"></a>新機能

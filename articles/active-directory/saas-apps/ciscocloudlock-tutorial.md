@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 1fe0db2f0c7fea4b24cc23aaa52deb16376012b2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a556b38ca4947b71555ba7b023607b392900bdaf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092011"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>チュートリアル:Azure Active Directory と The Cloud Security Fabric の統合
 
@@ -164,7 +165,7 @@ The Cloud Security Fabric で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-the-cloud-security-fabric-test-user"></a>The Cloud Security Fabric テスト ユーザーの作成
 

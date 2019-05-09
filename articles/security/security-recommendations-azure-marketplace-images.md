@@ -4,23 +4,23 @@ description: この記事では、Marketplace に含まれるイメージにつ�
 services: security
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: barbkess
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: 9c02dc386852a32814669d38df6260822a5e4f99
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: fa521b81c95f7c0556b082e5487848ef4d7ecaf7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308796"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111393"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace イメージのセキュリティに関する推奨事項
 
-各ソリューションは、次のセキュリティ構成の推奨事項に従うことをお勧めします。 そうすれば、Azure Marketplace のパートナー ソリューション イメージのセキュリティを高いレベルに維持するのに役立ちます。
+各ソリューションで、次のセキュリティ構成の推奨事項に従うことをお勧めします。 そうすることで、Azure Marketplace のパートナー ソリューション イメージのセキュリティを高いレベルに維持することができます。
 
 これらの推奨事項は、Azure Marketplace にイメージを持たない組織にも役に立つ場合があります。 会社の Windows および Linux のイメージの構成を、次の表のガイドラインに照らして確認できます。
 
@@ -41,7 +41,7 @@ ms.locfileid: "53308796"
 | セキュリティ                                                     | Bash/Shell 履歴エントリをクリアする必要があります。                                                                                                                                                                                                                                             |
 | ネットワーク                                                   | SSH Server を既定で含めるようにします。 次のオプションを使って、SSH キープアライブを sshd 構成に設定します。ClientAliveInterval 180                                                                                                                                                        |
 | ネットワーク                                                   | イメージにカスタム ネットワーク構成を含めることはできません。 resolv.conf を削除します。`rm /etc/resolv.conf`                                                                                                                                                                                |
-| Deployment                                                   | 最新の Azure Linux エージェントをインストールします。 </br> - エージェントは、RPM または Deb パッケージを使ってインストールする必要があります。  </br> - 手動インストール プロセスを使うこともできますが、インストーラー パッケージを優先することをお勧めします。 </br> - GitHub リポジトリから手動でエージェントをインストールする場合は、最初に `waagent` ファイルを `/usr/sbin` にコピーし、root として実行します。 </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>エージェントの構成ファイルは `/etc/waagent.conf` に格納されます。    |
+| Deployment                                                   | 最新の Azure Linux エージェントをインストールします。 </br> - エージェントは、RPM または Deb パッケージを使ってインストールする必要があります。  </br> - 手動インストール プロセスを使うこともできますが、インストーラー パッケージを優先することをお勧めします。 </br> - GitHub リポジトリから手動でエージェントをインストールする場合は、最初に `waagent` ファイルを `/usr/sbin` にコピーし、root として実行します。 </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>エージェントの構成ファイルは `/etc/waagent.conf` に配置されます。    |
 | Deployment                                                   | 必要な場合には Azure サポートがパートナーにシリアル コンソール出力を提供でき、クラウド ストレージからの OS ディスクのマウントに適切なタイムアウトを提供できることを確認します。 イメージでは、次のパラメーターをカーネル ブート ラインに追加する必要があります。`console=ttyS0 earlyprintk=ttyS0 rootdelay=300` |
 | Deployment                                                   | OS ディスクにスワップ パーティションがないこと。 Linux エージェントは、ローカル リソース ディスクへのスワップの作成を要求できます。         |
 | Deployment                                                   | OS ディスクに単一のルート パーティションを作成することをお勧めします。      |

@@ -4,25 +4,26 @@ titlesuffix: Azure Cognitive Services
 description: Speech Service と統合するアプリケーションを作成するときの疑問や問題に対するヘルプやサポートを入手する方法について説明します
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468060"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358046"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
-Speech Service の機能を調べ始めたばかりですか。 アプリケーションに新しい機能を実装しているのですか。 ここでは、開発者がヘルプを入手するためのヒントを示します。
+Speech Services の機能を調べ始めたばかりですか。 アプリケーションに新しい機能を実装しているのですか。 ここでは、開発者がヘルプを入手するためのヒントを示します。
 
 > [!div class="checklist"]
 > * *Azure Cognitive Services* の新たな開発情報を随時確認し、*Speech Service* に関連する最新ニュースを検索します。
+> * リリース ノートには、すべてのリリースの情報が含まれています。
 > * 問題がコミュニティで話題に上がっていないかどうかや、実装しようとしている機能が既存のドキュメントで既に説明されていないかどうかを、検索して確認します。
 > * 十分な答えが見つからない場合は、*Stack Overflow* で質問を投稿します。
 > * GitHub のサンプルに関する問題の場合は、*GitHub* で問題を提起します。
@@ -30,7 +31,11 @@ Speech Service の機能を調べ始めたばかりですか。 アプリケー�
 
 ## <a name="stay-informed"></a>最新情報を入手
 
-Cognitive Services に関するニュースは、[Cognitive Services ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)から収集できます。 Speech Service 関連の最新情報については、[Speech service ブログ](https://azure.microsoft.com/blog/tag/speech-service/)をチェックしてください。
+Cognitive Services に関するニュースは、[Cognitive Services ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)から収集できます。 Speech Services 関連の最新情報については、[Speech Services ブログ](https://azure.microsoft.com/blog/tag/speech-service/)をチェックしてください。
+
+## <a name="release-notes"></a>リリース ノート
+
+[リリース ノート](https://aka.ms/csspeech/whatsnew)は、新しいリリースが使用可能になるとすぐに更新されます。 ノートには、新機能、改善、バグ修正に関する情報が含まれます。
 
 ## <a name="search"></a>Search
 
@@ -50,7 +55,7 @@ Cognitive Services に関するニュースは、[Cognitive Services ブログ](
 
 Azure ユーザーは、Azure portal でサポート要求を作成し、管理できます。
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [米国政府機関向け Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow に質問を投稿する
@@ -59,13 +64,13 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 
 検索で問題に対する回答が見つからない場合は、Stack Overflow に新しい質問を提出します。 質問を作成するときは、次のタグのいずれかを使います。
 
-|コンポーネント/区分  |タグ  |
+|コンポーネント/区分  |Tags  |
 |---------|---------|
-|音声認識 |[[microsoft-cognitive+speech-to-text]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|音声合成 |[[microsoft-cognitive+text-to-speech]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|音声翻訳 |[[microsoft-cognitive+translation]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|音声意図 |[[microsoft-cognitive+luis]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|音声認識 |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|音声合成 |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|音声翻訳 |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|音声意図 |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
 > Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。  

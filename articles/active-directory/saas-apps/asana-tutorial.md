@@ -4,22 +4,23 @@ description: Azure Active Directory と Asana の間でシングル サインオ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: c37f98604ad10116698434888d137ef88d00d2e4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 73f6126d6bf172a35a284e92b65b1c3ef449949e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972058"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904135"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>チュートリアル:Azure Active Directory と Asana の統合
 
@@ -158,7 +159,7 @@ Asana を使用して Azure AD シングル サインオンを構成するには
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -203,7 +204,7 @@ Asana を使用して Azure AD シングル サインオンを構成するには
 
     ![Azure AD のテスト ユーザーの作成](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. ユーザーの電子メール アドレス (例: **britta.simon@contoso.com**) をテキスト ボックスに入力し、**[Invite]\(招待\)** を選択します。
+2. ユーザーの電子メール アドレス (例: **britta.simon\@contoso.com**) をテキスト ボックスに入力し、**[招待]** を選択します。
 
 3. **[Send Invite (招待の送信)]** をクリックします。 新しいユーザーの電子メール アカウントに電子メールが届きます。 ユーザーは、アカウントを作成し、確認する必要があります。
 
@@ -217,8 +218,8 @@ Asana を使用して Azure AD シングル サインオンを構成するには
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-* [[ユーザー プロビジョニングの構成]](asana-provisioning-tutorial.md)
+- [[ユーザー プロビジョニングの構成]](asana-provisioning-tutorial.md)

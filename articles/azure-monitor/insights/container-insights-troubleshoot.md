@@ -11,21 +11,35 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/30/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 5a9211abdbc4c9ea7907dfac00d449317dd13089
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: db4b468c03d93b073067083f4fae1ec86c70dde8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190749"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577051"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor のトラブルシューティング
 
 コンテナー用 Azure Monitor を使用して Azure Kubernetes Service (AKS) クラスターの監視を構成するとき、データの収集またはレポート作成を妨げる問題が発生する可能性があります。 この記事では、お問い合わせの多い問題とトラブルシューティングの手順について詳しく説明します。
 
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>オンボードまたは更新操作中の承認エラー
+コンテナーに対して Azure Monitor を有効にするか、またはメトリックの収集をサポートするようにクラスターを更新しているときに、*The client <user's Identity>' with object id '<user's objectId>' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope* のようなエラーが表示されることがあります。
+
+オンボードまたは更新プロセス中に、クラスター リソースに対する **[監視メトリック パブリッシャー]** ロールの割り当ての付与が試行されます。 コンテナーに対して Azure Monitor を有効にするためのプロセス、またはメトリックの収集をサポートするための更新を開始するユーザーは、AKS クラスター リソースのスコープに対する **Microsoft.Authorization/roleAssignments/write** アクセス許可にアクセスできる必要があります。 このアクセス許可へのアクセスが付与されるのは、**[所有者]** および **[ユーザー アクセスの管理者]** 組み込みロールのメンバーだけです。 セキュリティ ポリシーできめ細かなレベルのアクセス許可を割り当てる必要がある場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を表示し、それを必要なユーザーに割り当てることをお勧めします。 
+
+また、次の手順を実行することによって、Azure Portal からこのロールを手動で付与することもできます。
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+2. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Kubernetes**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Kubernetes]** を選択します。
+3. Kubernetes クラスターの一覧から選択します。
+2. 左側のメニューから、**[アクセス制御 (IAM)]** をクリックします。
+3. **[+ 追加]** を選択してロールの割り当てを追加し、**[監視メトリック パブリッシャー]** ロールを選択し、**[選択]** ボックスに「**AKS**」と入力して、サブスクリプションで定義されたクラスターのサービス プリンシパルに関してのみ結果をフィルター処理します。 そのクラスターに固有の一覧から選択します。
+4. **[保存]** を選択して、ロールの割り当てを完了します。 
+
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>コンテナー用 Azure Monitor が有効になっているが、情報がレポートされない
-コンテナー用 Azure Monitor が正しく有効化され、構成されているにもかかわらず、状態情報を表示できない場合、または Log Analytics ログ クエリから結果が返されない場合は、次の手順に従って問題を診断します。 
+コンテナー用 Azure Monitor が正しく有効にされ、構成されているにもかかわらず、状態情報を表示できない場合、またはログ クエリから結果が返されない場合は、次の手順に従って問題を診断します。 
 
 1. 次のコマンドを実行して、エージェントの状態を確認します。 
 
@@ -98,7 +112,7 @@ ms.locfileid: "53190749"
 | エラー メッセージ  | Action |  
 | ---- | --- |  
 | エラー メッセージ: `No data for selected filters`  | 新しく作成したクラスターの監視データ フローの確立に時間がかかる場合があります。 クラスターのデータが表示されるまで、少なくとも 10 ～ 15 分お待ちください。 |   
-| エラー メッセージ: `Error retrieving data` | Azure Kubenetes Service クラスターが正常性とパフォーマンスの監視用に設定される間に、クラスターと Azure Log Analytics ワークスペースの間に接続が確立されます。 Log Analytics ワークスペースは、クラスターのすべての監視データを格納するために使用されます。 Log Analytics ワークスペースが削除されるか失われると、このエラーが発生する可能性があります。 [アクセスの管理](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information)に関する記事を参照して、ワークスペースが使用可能かどうかを確認してください。 ワークスペースがない場合は、コンテナー用 Azure Monitor にクラスターを再オンボードする必要があります。 再オンボードするには、クラスターに対する監視を[無効](container-insights-optout.md)にしてから、コンテナーの Azure Monitor を再び[有効](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster)にする必要があります。 |  
+| エラー メッセージ: `Error retrieving data` | Azure Kubenetes Service クラスターが正常性とパフォーマンスの監視用に設定される間に、クラスターと Azure Log Analytics ワークスペースの間に接続が確立されます。 Log Analytics ワークスペースは、クラスターのすべての監視データを格納するために使用されます。 Log Analytics ワークスペースが削除されるか失われると、このエラーが発生する可能性があります。 [アクセスの管理](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json#view-workspace-details)に関する記事を参照して、ワークスペースが使用可能かどうかを確認してください。 ワークスペースがない場合は、コンテナー用 Azure Monitor にクラスターを再オンボードする必要があります。 再オンボードするには、クラスターに対する監視を[無効](container-insights-optout.md)にしてから、コンテナーの Azure Monitor を再び[有効](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster)にする必要があります。 |  
 | az aks cli でコンテナーの Azure Monitor を追加した後の `Error retrieving data` | `az aks cli` を使用してオンボードすると、コンテナーの Azure Monitor が正しくオンボードされない可能性があります。 ソリューションがオンボードされているかどうかを確認します。 そのためには、Log Analytics ワークスペースに移動し、左側のウィンドウで **[ソリューション]** を選択して、ソリューションが使用可能かどうかを確認します。 この問題を解決するには、[コンテナー用の Azure Monitor をデプロイする方法](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json)に関する記事の手順に従ってソリューションを再デプロイする必要があります |  
 
 問題の診断を助けるために提供されているトラブルシューティング スクリプトを、[こちら](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)で利用できます。  

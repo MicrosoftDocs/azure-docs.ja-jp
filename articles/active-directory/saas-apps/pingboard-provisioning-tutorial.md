@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Pingboard を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Pingboard を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Pingboard に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -8,22 +8,23 @@ writer: asmalser-msft
 manager: sakula
 ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: e96ea7d212f1a34bb6d10f8c49a15e1b34bfc469
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2ab7f58c3061044583baf9db73e193966d7d4eb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348958"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59280334"
 ---
-# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル: Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル:Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure Active Directory (Azure AD) から Pingboard にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するために実行する必要がある手順について説明します。
 
@@ -31,11 +32,11 @@ ms.locfileid: "44348958"
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure AD テナント
-*   Pingboard テナント ([Pro アカウント](https://pingboard.com/pricing)) 
-*   管理者アクセス許可がある Pingboard のユーザー アカウント 
+* Azure AD テナント
+* Pingboard テナント ([Pro アカウント](https://pingboard.com/pricing))
+* 管理者アクセス許可がある Pingboard のユーザー アカウント
 
-> [!NOTE] 
+> [!NOTE]
 > Azure AD プロビジョニング統合では、ご利用のアカウントから使用できる [Pingboard API](https://pingboard.docs.apiary.io/#) が必要です。
 
 ## <a name="assign-users-to-pingboard"></a>Pingboard へのユーザーの割り当て
@@ -68,7 +69,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![Pingboard のプロビジョニング](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
-    
+
 1. **[管理者資格情報]** セクションで、次の手順を使用します。
 
     a. **[テナントの URL]** に「`https://your_domain.pingboard.com/scim/v2`」と入力します。"your_domain" は、実際のドメインに置き換えてください。
@@ -85,7 +86,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** に入力し、 その下のチェック ボックスをオンにします。
 
-1. **[保存]** を選択します。 
+1. **[保存]** を選択します。
 
 1. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Pingboard]\(Azure Active Directory ユーザーを Pingboard に同期する\)** を選びます。
 

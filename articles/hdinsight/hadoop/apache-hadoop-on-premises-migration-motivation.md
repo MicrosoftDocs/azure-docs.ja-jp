@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 94dec611a04819580696133c48db66da1ea9c463
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 73a2f0754cafaa5da09ebd437ecd62813296ffd9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000430"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890081"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -54,7 +54,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 
 - **カスタム ツールまたはサードパーティ製のアプリケーションによる拡張機能** - HDInsight クラスターは、インストールされているコンポーネントを使用して拡張したり、Azure Marketplace から[ワンクリック](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 展開を使用することによって他のビッグ データ ソリューションと統合したりできます。
 
-- **管理と監視が容易に** - Azure HDInsight は  [Azure Log Analytics](../hdinsight-hadoop-oms-log-analytics-tutorial.md)  と統合することによって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。
+- **管理と監視が容易に** - Azure HDInsight は  [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md) と統合することによって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。
 
 - **他の Azure サービスとの統合** - HDInsight は、好評を博している以下の Azure サービスと簡単に統合できます。
 
@@ -103,7 +103,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |マスター ノード構成|m/y、cpu、ディスクなど|
 |データ ノード構成|m/y、cpu、ディスクなど|
 |エッジ ノード構成|m/y、cpu、ディスクなど|
-|HDFS の暗号化?|[はい]|
+|HDFS の暗号化?|はい|
 |高可用性|HDFS HA、Metastore HA|
 |ディザスター リカバリー/バックアップ|クラスターのバックアップ?|  
 |クラスターに依存するシステム|SQL Server、Teradata、Power BI、MongoDB|
@@ -169,8 +169,8 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |---|---|---|
 |**質問**|**例**|**回答**|
 | 優先リージョン|米国東部||
-|VNet を推奨しますか?|[はい]||
-|HA / DR が必要?|[はい]||
+|VNet を推奨しますか?|はい||
+|HA / DR が必要?|はい||
 |他のクラウド サービスと統合しますか?|ADF、CosmosDB||
 |**トピック**: **データの移動**  |||
 |初期読み込みの基本設定|DistCp、データ ボックス、ADF WANDisco||
@@ -179,25 +179,25 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |**トピック**: **監視とアラート** |||
 |Azure 監視とアラートまたは統合サード パーティ監視の使用|Azure 監視とアラートの使用||
 |**トピック**: **セキュリティ設定** |||
-|プライベートな保護済みのデータ パイプラインですか?|[はい]||
-|ドメイン参加済みクラスター (ESP) ですか?|     [はい]||
-|クラウドへのオンプレミス AD Sync ですか?|     [はい]||
+|プライベートな保護済みのデータ パイプラインですか?|はい||
+|ドメイン参加済みクラスター (ESP) ですか?|     はい||
+|クラウドへのオンプレミス AD Sync ですか?|     はい||
 |いいえ。 同期する AD ユーザー数|          100||
-|パスワードをクラウドに同期しますか?|    [はい]||
-|クラウドのみのユーザー?|                 [はい]||
+|パスワードをクラウドに同期しますか?|    はい||
+|クラウドのみのユーザー?|                 はい||
 |MFA が必要ですか?|                       いいえ || 
-|データの承認要件ですか?|  [はい]||
-|ロール ベースのアクセス制御?|        [はい]||
-|監査が必要ですか?|                  [はい]||
-|保存データの暗号化ですか?|          [はい]||
-|転送中のデータの暗号化ですか?|       [はい]||
+|データの承認要件ですか?|  はい||
+|ロール ベースのアクセス制御?|        はい||
+|監査が必要ですか?|                  はい||
+|保存データの暗号化ですか?|          はい||
+|転送中のデータの暗号化ですか?|       はい||
 |**トピック**: **再アーキテクチャの設定** |||
 |1 つのクラスターまたは特定のクラスターの種類|特定のクラスターの種類||
 |併置されたストレージまたはリモート ストレージのどちらを指定するか?|リモート ストレージ||
 |データをリモートに保管するときにクラスター サイズを小さくするか?|クラスター サイズを小さくする||
 |単一の大型クラスターではなく複数の小さいクラスターを使用するか?|複数の小さいクラスターを使用する||
-|リモート メタストアを使用するか?|[はい]||
-|異なるクラスター間でメタストアを共有するか?|[はい]||
+|リモート メタストアを使用するか?|はい||
+|異なるクラスター間でメタストアを共有するか?|はい||
 |ワークロードを分解するか?|Hive ジョブを Spark ジョブに置き換える||
 |データのオーケストレーションに ADF を使用するか?|いいえ ||
 |IaaS で HDInsight または Hortonworks Data Platform のどちらを指定するか?|HDInsight||

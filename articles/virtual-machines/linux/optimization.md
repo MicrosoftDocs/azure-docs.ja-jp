@@ -16,24 +16,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.subservice: disks
+ms.openlocfilehash: 30d153863a20dcdddc702ee5a37c34a2938d7446
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977572"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327371"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
 
 ## <a name="prerequisites"></a>前提条件
-このトピックでは、利用中の Azure サブスクリプション ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)のサインアップ) が既にあり、VM を Azure サブスクリプションにプロビジョニング済みであることを前提としています。 [VM を作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する前に、最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされていることを確認し、[az login](/cli/azure/reference-index#az_login) を使用して Azure サブスクリプションにログインしておく必要があります。
+このトピックでは、利用中の Azure サブスクリプション ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)のサインアップ) が既にあり、VM を Azure サブスクリプションにプロビジョニング済みであることを前提としています。 [VM を作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する前に、最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされていることを確認し、[az login](/cli/azure/reference-index) を使用して Azure サブスクリプションにログインしておく必要があります。
 
 ## <a name="azure-os-disk"></a>Azure OS ディスク
 Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、**/dev/sdb** は一時ディスクを表します。  メインの OS ディスク (**/dev/sda**) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>サイズとパフォーマンスの目標に向けたディスクの追加
-VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 1 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 5,000 IOPS です。  Premium Storage ディスクの詳細については、[Premium Storage: Azure VM の高パフォーマンス ストレージ](../windows/premium-storage.md)に関する記事をご覧ください。
+VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 1 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 5,000 IOPS です。
 
 キャッシュ設定が **ReadOnly** または **None** に設定されている Premium Storage ディスクで最高レベルの IOPS を実現するには、Linux でファイル システムをマウントするときに**バリア**を無効にする必要があります。 Premium Storage ディスクでこれらのキャッシュ設定を使用する場合は、ディスクへの書き込みの耐久性が保証されるため、バリアは必要ありません。
 
@@ -130,9 +131,8 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ## <a name="next-steps"></a>次の手順
 最適化に関するあらゆる話題と同様に、それぞれの変更の前後にテストを行って、その変更の影響を評価する必要があります。  最適化は段階的なプロセスであり、環境内のコンピューターごとに結果は異なります。  ある構成に効果があっても、それが他の構成に効果があるとは限りません。
 
-関連リソースへの便利なリンクは次のとおりです。 
+関連リソースへの便利なリンクは次のとおりです。
 
-* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](premium-storage.md)
 * [Azure Linux エージェント ユーザー ガイド](../extensions/agent-linux.md)
 * [Azure Linux VM 上での MySQL のパフォーマンスを最適化する](classic/optimize-mysql.md)
 * [Linux でのソフトウェア RAID の構成](configure-raid.md)

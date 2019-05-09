@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ec79f6a9b255d44e66b901a0aae263c8dbbf2863
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248250"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149862"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs でのクォータと制限のスケール
 お気づきかもしれませんが、DevTest Labs での作業時に、一部の Azure リソースに一定の既定の制限があります。これは、DevTest Labs サービスに影響する場合があります。 これらの制限は、**クォータ**と呼ばれます。
@@ -28,7 +28,7 @@ ms.locfileid: "51248250"
 
 各 Azure リソースは、そのクォータ制限に達するまで使用できます。 各サブスクリプションには個別のクォータが設けられ、サブスクリプションごとに使用状況が追跡されます。
 
-たとえば、各サブスクリプションの既定のクォータが 20 コアだとします。 ラボにそれぞれ 4 コアを備えた VM を作成する場合、作成できる VM の数は 5 つのみです。 
+たとえば、各サブスクリプションの既定のクォータが 20 コアだとします。 ラボにそれぞれ 4 コアを備えた VM を作成する場合、作成できる VM の数は 5 つのみです。
 
 Azure リソースの最も一般的な一部のクォータについては、[Azure サブスクリプションとサービスの制限](https://docs.microsoft.com/azure/azure-subscription-service-limits)に関する記事をご覧ください。 ラボで最も一般的に使用されるリソース、またクォータが発生する可能性のあるリソースには、VM コア、パブリック IP アドレス、ネットワーク インターフェイス、マネージド ディスク、RBAC ロール割り当て、ExpressRoute 回線などがあります。
 
@@ -67,4 +67,4 @@ Azure サポートに問い合わせてクォータの引き上げを要求す�
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>次の手順
-* [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/Samples)を検索します。
+* [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)を検索します。

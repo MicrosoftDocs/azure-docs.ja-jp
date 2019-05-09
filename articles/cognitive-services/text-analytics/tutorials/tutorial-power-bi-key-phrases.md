@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Text Analytics と Power BI'
+title: チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 titleSuffix: Azure Cognitive Services
 description: Text Analytics を使用して Power BI に格納されているテキストからキー フレーズを抽出する方法について説明します。
 services: cognitive-services
-author: luiscabrer
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: luisca
-ms.openlocfilehash: fe6bc384e4190cd17df00ddf285701db8c4199a6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 24767f73e3e1409f81262ad57f3fd5152a4ec319
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733331"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003470"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル: Power BI を Text Analytics Cognitive Service と統合する
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 
 Microsoft Power BI Desktop は、データへの接続、データの変換、およびデータの視覚化を実行できる無料のアプリケーションです。 Microsoft Azure Cognitive Services の一部である Text Analytics サービスは、自然言語処理を提供します。 それは、与えられた未加工の構造化されていないテキストから、最も重要なフレーズの抽出、センチメントの分析、およびブランドなどのよく知られているエンティティの識別を行うことができます。 これらのツールを組み合わせることで、ユーザーが話している内容とそれに対する感情をすばやく確認できます。
 
@@ -89,12 +89,12 @@ Power BI Desktop で、**[ホーム]** リボンを選択します。 **[外部�
 ## <a name="understand-the-api"></a>API を理解する
 <a name="UnderstandingAPI"></a>
 
-Text Analytics サービスの [Key Phrases API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) は、HTTP 要求ごとに最大 1,000 個のテキスト ドキュメントを処理できます。 Power BI では一度に 1 レコードずつ処理する方が好まれるため、このチュートリアルでは、API の各呼び出しには 1 つのドキュメントのみが含まれます。 Key Phrases API では、処理されるドキュメントごとに次のフィールドが必要です。
+Text Analytics サービスの [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) は、HTTP 要求ごとに最大 1,000 個のテキスト ドキュメントを処理できます。 Power BI では一度に 1 レコードずつ処理する方が好まれるため、このチュートリアルでは、API の各呼び出しには 1 つのドキュメントのみが含まれます。 Key Phrases API では、処理されるドキュメントごとに次のフィールドが必要です。
 
 | | |
 | - | - |
 | `id`  | 要求内のこのドキュメントの一意の識別子。 応答にもこのフィールドが含まれます。 そのため、複数のドキュメントを処理する場合、抽出されたキー フレーズを元のドキュメントと簡単に関連付けることができます。 このチュートリアルでは、要求ごとに 1 つのドキュメントのみを処理するため、各要求の `id` 値が同じになるようにハード コーディングできます。|
-| `text`  | 処理されるテキスト。 このフィールドの値は、[前のセクション](#PreparingData)で作成した `Merged` 列に基づきます。それには、結合された subject の行と comment のテキストが含まれています。 Key Phrases API では、このデータの文字数の上限は約 5,000 文字です。|
+| `text`  | 処理されるテキスト。 このフィールドの値は、[前のセクション](#PreparingData)で作成した `Merged` 列に基づきます。それには、結合された subject の行と comment のテキストが含まれています。 Key Phrases API では、このデータの文字数の上限は約 5,120 文字です。|
 | `language` | ドキュメントの記述に使用されている自然言語を表すコード。 サンプル データのすべてのメッセージは英語で記述されているため、このフィールドの値である `en` はハード コーディングできます。|
 
 ## <a name="create-a-custom-function"></a>カスタム関数を作成する
@@ -120,7 +120,7 @@ Power BI Desktop で、クエリ エディター ウィンドウにいること�
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -223,7 +223,7 @@ Microsoft Azure で提供されている Cognitive Services の 1 つである T
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -240,7 +240,7 @@ in  sentiment
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -254,7 +254,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -274,7 +274,7 @@ in  language
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -291,10 +291,10 @@ in  keyphrases
 Text Analytics サービス、Power Query M 式言語、または Power BI の詳細について学習します。
 
 > [!div class="nextstepaction"]
-> [Text Analytics API リファレンス](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Power Query M リファレンス](//msdn.microsoft.com/library/mt211003.aspx)
+> [Power Query M リファレンス](https://msdn.microsoft.com/library/mt211003.aspx)
 
 > [!div class="nextstepaction"]
-> [Power BI のドキュメント](//powerbi.microsoft.com/documentation/powerbi-landing-page/)
+> [Power BI のドキュメント](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 58d1d47b548569f7542e24bd09a41299f12e496e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 3e1738c3e5acbe63faf1d614e2435088efd8c4d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787887"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014777"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイック スタートでは、PHP を使って、Azure Blob Storage のコンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法を説明します。 
@@ -24,7 +24,7 @@ ms.locfileid: "53787887"
 
 次の追加の前提条件がインストールされていることを確認してください。
 
-* [PHP](http://php.net/downloads.php)
+* [PHP](https://php.net/downloads.php)
 * [Azure Storage SDK for PHP](https://github.com/Azure/azure-storage-php)
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
@@ -74,7 +74,7 @@ This is the content of the blob uploaded: Hello Azure!
 ```
 表示されるボタンを押すと、サンプル プログラムによってストレージ コンテナーとファイルが削除されます。 続行する前に、サーバーのフォルダーで 2 つのファイルをチェックします。 それらを開いて、同じであるかどうか確認します。
 
-[Azure Storage Explorer](http://storageexplorer.com) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。 
+[Azure Storage Explorer](https://storageexplorer.com) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。 
 
 ファイルを確認した後、任意のキーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、example.rb ファイルを開いてコードを確認します。 
 

@@ -1,4 +1,17 @@
-### <a name="troubleshoot-azure-diagnostics"></a>Azure 診断のトラブルシューティング
+---
+author: mgoedtel
+ms.service: log-analytics
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: magoedte
+ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505864"
+---
+### <a name="troubleshoot-azure-diagnostics"></a>Azure Diagnostics のトラブルシューティング
 
 次のエラー メッセージが表示される場合は、Microsoft.insights リソース プロバイダーが登録されていません。
 
@@ -19,6 +32,6 @@
 
 PowerShell で次のエラー メッセージが表示された場合は、PowerShell のバージョンを更新する必要があります。
 
-`Set-AzureRmDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
+`Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-「[Azure PowerShell コマンドレットの使用開始](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)」の記事に書かれている手順に従い、PowerShell のバージョンを November 2016 (v2.3.0) 以降のリリースに更新してください。
+お使いの Azure PowerShell バージョンを更新し、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関する記事で説明されている手順に従ってください。

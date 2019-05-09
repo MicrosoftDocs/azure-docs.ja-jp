@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: e287741fd6643c2eba192a9e29f46219faf520ec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 28ecac39d991754cfadeb87479c336a6c6086fd7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111746"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532689"
 ---
 Azure Portal でデータ エクスプローラー ツールを使用してデータベースとコレクションを作成できるようになりました。 
 
@@ -29,12 +29,12 @@ Azure Portal でデータ エクスプローラー ツールを使用してデ�
     ---|---|---
     データベース ID|タスク|新しいデータベースの名前として*タスク*を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。
     コレクション ID|項目|新しいコレクションの名前として*項目*を入力します。 コレクション ID には、データベース名と同じ文字要件があります。
-    パーティション キー| <Your partition key>| */userid* などのパーティション キーを入力します。
+    パーティション キー| `<Your partition key>`| */userid* などのパーティション キーを入力します。
     スループット|400 RU|スループットを 400 要求ユニット (RU/秒) に変更します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。 
     
     上記の設定に加え、必要に応じて、このコレクション用に**一意なキー**を追加できます。 この例では、このフィールドを空のままにしましょう。 一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コレクションの作成中に一意キー ポリシーを作成すると、パーティション キーごとに 1 つ以上の値の一意性が保証されます。 詳細については、記事「[Azure Cosmos DB における一意なキー](../articles/cosmos-db/unique-keys.md)」を参照してください。
     
-    Click **OK**.
+    **OK** をクリックします。
 
     新しいデータベースとコレクションがデータ エクスプローラーに表示されます。
 

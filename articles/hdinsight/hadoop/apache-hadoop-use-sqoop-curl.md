@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7b657d11e829d636063639e26a90d671a5d1473
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ad716e2ef5e597424c860378e7a63d5c2de53f54
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438355"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834559"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>HDInsight 上の Hadoop で Curl を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -68,19 +68,19 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-d** - `-G` が使用されていないため、要求は既定で POST メソッドになります。 `-d` は要求で送信されるデータ値を指定します。
+   * **-d** - `-G` が使用されていないため、要求は既定で POST メソッドになります。 `-d` は要求で送信されるデータ値を指定します。
 
-        * **user.name** : コマンドを実行するユーザー
+       * **user.name** : コマンドを実行するユーザー
 
-        * **command** : 実行する Sqoop コマンド。
+       * **command** : 実行する Sqoop コマンド。
 
-        * **statusdir** : ジョブのステータスが書き込まれるディレクトリ
+       * **statusdir** : ジョブのステータスが書き込まれるディレクトリ
 
-    このコマンドは、ジョブのステータスの確認に使用できるジョブ ID を返します。
+     このコマンドは、ジョブのステータスの確認に使用できるジョブ ID を返します。
 
-        ```json
-        {"id":"job_1415651640909_0026"}
-        ```
+       ```json
+       {"id":"job_1415651640909_0026"}
+       ```
 
 3. ジョブのステータスを確認するには、次のコマンドを使用します。 **JOBID** を前の手順で返された値に置き換えます。 たとえば、戻り値が `{"id":"job_1415651640909_0026"}` の場合、**JOBID** は `job_1415651640909_0026` になります。
 

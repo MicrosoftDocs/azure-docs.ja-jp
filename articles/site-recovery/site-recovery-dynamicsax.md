@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838142"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879783"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定 
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定   
 
 
 
@@ -92,7 +92,7 @@ Dynamics AX クライアントと Application Object Server VM 用に、Site Rec
 
 * 静的 IP を使用している場合は、VM に割り当てる IP を **[ターゲット IP]** テキスト ボックスに指定します。
 
-    ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
+    ![ネットワーク設定](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5.復旧計画の作成

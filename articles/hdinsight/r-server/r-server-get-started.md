@@ -9,21 +9,21 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 0811f0e115545a37b6c570c436900a8548adae61
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087586"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML サービスの概要
 
-Azure HDInsight を使用すると、ML サービス クラスターを作成できます。 このオプションにより、R スクリプトで Spark と MapReduce を使用して、分散計算を実行できます。 この記事では、HDInsight 上で ML サービス クラスターを作成する方法と、分散 R 計算での Spark の使用方法を示す R スクリプトを実行する方法を学習します。
+Azure HDInsight を使用すると、ML サービス クラスターを作成できます。 このオプションにより、R スクリプトで [Apache Spark](https://spark.apache.org/) と [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) を使用して、分散計算を実行できます。 この記事では、HDInsight 上で ML サービス クラスターを作成する方法と、分散 R 計算での Spark の使用方法を示す R スクリプトを実行する方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**: このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 詳細については、[Microsoft Azure 無料試用版の入手](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関する記事を参照してください。
-* **Secure Shell (SSH) クライアント**: SSH クライアントを使用して、HDInsight クラスターにリモート接続し、クラスター上でコマンドを直接実行します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* **Azure サブスクリプション**:このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 詳細については、[Microsoft Azure 無料試用版の入手](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関する記事を参照してください。
+* **Secure Shell (SSH) クライアント**:SSH クライアントは、HDInsight クラスターにリモート接続し、そのクラスター上でコマンドを直接実行するために使用されます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
@@ -31,28 +31,28 @@ Azure HDInsight を使用すると、ML サービス クラスターを作成で
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[リソースの作成]** > **[データ + 分析]** > **[HDInsight]** の順にクリックします。
+2. **[+ リソースの作成]** > **[Analytics]** > **[HDInsight]** に移動します。
 
 3. **[基本]** から次の情報を入力します。
 
-    * **[クラスター名]**: HDInsight クラスターの名前。
-    * **[サブスクリプション]**: 使用するサブスクリプションを選択します。
-    * **[クラスター ログイン ユーザー名]** と **[クラスター ログイン パスワード]**: HTTPS 経由でクラスターにアクセスする場合のログイン。 これらの資格情報を使用して、Ambari Web UI や REST API などのサービスにアクセスします。
-    * **[Secure Shell (SSH) username (Secure Shell (SSH) ユーザー名)]**: SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
-    * **[リソース グループ]**: クラスターが作成されるリソース グループ。
-    * **[場所]**: クラスターが作成される Azure リージョン。
+    * **クラスター名**:HDInsight クラスターの名前。
+    * **サブスクリプション**:使用するサブスクリプションを選択します。
+    * **クラスター ログイン ユーザー名**および**クラスター ログイン パスワード**:HTTPS 経由でクラスターにアクセスする場合のログイン。 これらの資格情報を使用して、Apache Ambari Web UI や REST API などのサービスにアクセスします。
+    * **Secure Shell (SSH) ユーザー名**:SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
+    * **リソース グループ**:クラスターが作成されるリソース グループ。
+    * **[場所]**:クラスターが作成される Azure リージョン。
 
         ![クラスターの基本情報](./media/r-server-get-started/clustername.png)
 
 4. **[クラスターの種類]** を選択し、**[クラスターの構成]** セクションで次の値を設定します。
 
-    * **[クラスターの種類]**: ML サービス
+    * **クラスターの種類**:ML サービス
 
-    * **[オペレーティング システム]**: Linux
+    * **[オペレーティング システム]**:Linux
 
-    * **[バージョン]**: ML Server 9.3 (HDI 3.6)。 ML Server 9.3 のリリース ノートは、[docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server) でご確認いただけます。
+    * **バージョン**:ML Server 9.3 (HDI 3.6)。 ML Server 9.3 のリリース ノートは、[docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server) でご確認いただけます。
 
-    * **[R Studio community edition for ML Server]\(ML Server の R Studio コミュニティ エディション)**: このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。 この IDE をインストールしない場合は、チェック ボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、ポータルでクラスターのアプリケーション ブレードに RStudio Server へのアクセス用の URL が提供されます。
+    * **ML Server の R Studio コミュニティ エディション**:このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。 この IDE をインストールしない場合は、チェック ボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、ポータルでクラスターのアプリケーション ブレードに RStudio Server へのアクセス用の URL が提供されます。
 
         ![クラスターの基本情報](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -66,7 +66,7 @@ Azure HDInsight を使用すると、ML サービス クラスターを作成で
 
     ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/clustersummary.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > クラスターの作成には最大で 20 分かかります。
 
 <a name="connect-to-rstudio-server"></a>
@@ -78,16 +78,17 @@ HDInsight クラスターの一部として RStudio Server Community Edition を
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **方法 2** - Azure Portal で ML サービス クラスターを開き、**[クイック リンク]** の **[ML Services Dashboards]\(ML サービス ダッシュボード\)** をクリックします。
+* **方法 2** - Azure portal を使用します。
+  ポータルから:
+  1. 左側のメニューから **[すべてのサービス]** を選択します。
+  2. **[ANALYTICS]** で **[HDInsight クラスター]** を選択します。
+  3. **[HDInsight クラスター]** ページから、ご自身のクラスター名を選択します。
+  4. **[ML Services ダッシュボード]** から **[R Studio server]\(R Studio サーバー\)** を選択します。 
 
-     ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/dashboard-quick-links.png)
+     ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-    **[クラスター ダッシュボード]** から **[R Studio サーバー]** をクリックします。
-
-    ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/r-studio-server-dashboard.png)
-
-   > [!IMPORTANT]
-   > どちらの方法でも、初めてログインするときは認証を 2 回行う必要があります。  最初の認証プロンプトでは、"*クラスター管理者のユーザー ID*" と "*パスワード*" を入力します。 2 回目の認証プロンプトでは、"*SSH ユーザー ID*" と "*パスワード*" を入力します。 以降のログインでは、SSH 資格情報のみが求められます。
+     > [!IMPORTANT]  
+     > どちらの方法でも、初めてログインするときは認証を 2 回行う必要があります。  最初の認証プロンプトでは、"*クラスター管理者のユーザー ID*" と "*パスワード*" を入力します。 2 回目の認証プロンプトでは、"*SSH ユーザー ID*" と "*パスワード*" を入力します。 以降のログインでは、SSH 資格情報のみが求められます。
 
 接続後の画面は、次のスクリーンショットのようになります。
 
@@ -221,7 +222,7 @@ HDInsight の ML サービス クラスターの作成操作は、SDK および 
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](../hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](../hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

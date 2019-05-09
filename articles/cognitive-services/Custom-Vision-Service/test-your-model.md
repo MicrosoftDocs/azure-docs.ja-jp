@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: イメージをテストし、それを使ってモデルを再トレーニングする方法について説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 5830257cf246e059cbccb654462f709df981e06b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d516cee81aef66ec58399cb5ff23c89db16bf2ab
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367952"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350438"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Custom Vision Service を使用したモデルのテストと再トレーニング
 
@@ -39,17 +39,17 @@ ms.locfileid: "46367952"
 
 以前に送信したイメージをトレーニングに使用するには、次の手順に従います。
 
-1. 分類子に送信したイメージを表示するには、[Custom Vision Web ページ](https://customvision.ai)を開き、__[Predictions]__(予測) タブを選択します。
+1. 分類器に送信したイメージを表示するには、[Custom Vision Web ページ](https://customvision.ai)を開き、__[Predictions]__(予測) タブを選択します。
 
     ![予測タブのイメージ](./media/test-your-model/predictions-tab.png)
 
     > [!TIP]
     > 既定のビューには、現在のイテレーションのイメージが表示されます。 __[Iteration]__(イテレーション) ドロップ ダウン フィールドを使用すると、以前のイテレーションで送信されたイメージを表示できます。
 
-2. イメージの上にポインターを置き、分類子が予測したタグを表示します。
+2. イメージの上にポインターを置き、分類器が予測したタグを表示します。
 
     > [!TIP]
-    > イメージは、最も分類子に貢献したイメージが一番上になるように順位付けされます。 異なる並べ替えを選択するには、__[Sort]__(並べ替え) セクションを使用します。
+    > イメージは、最も分類器に貢献したイメージが一番上になるように順位付けされます。 異なる並べ替えを選択するには、__[Sort]__(並べ替え) セクションを使用します。
 
     トレーニング データにイメージを追加するには、イメージとタグを選択してから __[保存して閉じる]__ を選択します。 イメージは __[Predictions]__(予測) から削除され、トレーニング イメージに追加されます。 __[Training Images]__(トレーニング イメージ) タブを選択すると、これを表示できます。
 
@@ -59,4 +59,4 @@ ms.locfileid: "46367952"
 
 ## <a name="next-steps"></a>次の手順
 
-[分類子の改善](getting-started-improving-your-classifier.md)
+[分類器の改善](getting-started-improving-your-classifier.md)

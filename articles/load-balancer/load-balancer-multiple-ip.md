@@ -1,5 +1,5 @@
 ---
-title: Azure における複数の IP 構成での負荷分散
+title: 複数の IP 構成での負荷分散 - Azure portal
 titlesuffix: Azure Load Balancer
 description: プライマリ IP 構成とセカンダリ IP 構成の間の負荷分散。
 services: load-balancer
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: e6aff89fe45220e1642a91e6a2d31a9da422fdea
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163533"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856124"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -62,7 +62,7 @@ ms.locfileid: "53163533"
 
 仮想ネットワーク内の各 VM に、次のようにセカンダリ NIC の IP 構成を追加します。  
 
-1. Azure Portal にアクセスします: http://portal.azure.com Azure のアカウントを使用してサインインします。
+1. Azure Portal にアクセスします: https://portal.azure.com Azure のアカウントを使用してサインインします。
 
 2. 画面の左上にある **[リソース グループ]** を選択します。 次に、VM が配置されているリソース グループ (たとえば、**contosofabrikam**) を選択します。 すべてのリソースと VM の NIC の一覧が表示される **[リソース グループ]** ウィンドウが表示されます。
 
@@ -86,7 +86,7 @@ ms.locfileid: "53163533"
 
 次のように構成のロード バランサーを作成します。
 
-1. Azure Portal にアクセスします: http://portal.azure.com Azure のアカウントを使用してサインインします。
+1. Azure Portal にアクセスします: https://portal.azure.com Azure のアカウントを使用してサインインします。
 
 2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。 次に、**[作成]** を選択します。
 
@@ -106,15 +106,15 @@ ms.locfileid: "53163533"
 
 2. 次のように両方の Web サイト (contoso.com と fabrikam.com) の 2 つのパブリック IP アドレス (**PublicIP1** と **PublicIP2**) を構成します。
 
-    1. フロントエンド IP アドレスの名前を入力します。
+   1. フロントエンド IP アドレスの名前を入力します。
 
-    2. **[リソース グループ]** で、VM の既存のリソース グループ (たとえば、**contosofabrikam**) を選択します。
+   2. **[リソース グループ]** で、VM の既存のリソース グループ (たとえば、**contosofabrikam**) を選択します。
 
-    3. **[場所]** で VM と同じ場所を選択します。
+   3. **[場所]** で VM と同じ場所を選択します。
 
-    4. **[OK]** を選択します。
+   4. **[OK]** を選択します。
 
-    パブリック IP アドレスが作成されると、 **[パブリック IP アドレス]** に表示されます。
+      パブリック IP アドレスが作成されると、 **[パブリック IP アドレス]** に表示されます。
 
 3. <a name="step3-3"></a>ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**ロード バランサー**」と入力して、**[Load Balancer]** を選択します。 
 
@@ -194,4 +194,4 @@ ms.locfileid: "53163533"
 
 ## <a name="next-steps"></a>次の手順
 - Azure で負荷分散サービスを組み合わせて使う方法について詳しくは、「[Azure で負荷分散サービスを使用する](../traffic-manager/traffic-manager-load-balancing-azure.md)」をご覧ください。
-- 各種ログを使って、ロード バランサーの管理やトラブルシューティングを行う方法については、「[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md)」を参照してください。
+- 各種ログを使って、ロード バランサーの管理やトラブルシューティングを行う方法については、[Azure Load Balancer の Azure Monitor ログ](../load-balancer/load-balancer-monitor-log.md)に関するページを参照してください。

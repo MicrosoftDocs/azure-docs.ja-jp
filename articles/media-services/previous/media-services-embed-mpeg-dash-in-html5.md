@@ -2,7 +2,7 @@
 title: DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み | Microsoft Docs
 description: このトピックでは、DASH.js を使用した HTML5 アプリケーションに MPEG-DASH アダプティブ ストリーミング ビデオを埋め込む方法を説明します。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2b0e6bf643f55e1809b29def7766c58b59f4bb50
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783381"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522437"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み  
+
 ## <a name="overview"></a>概要
 MPEG DASH は、高品質なアダプティブ ビデオ ストリーミング出力を配信する必要がある開発者に多くのメリットを提供する、ビデオ コンテンツのアダプティブ ストリーミングの ISO 標準です。 MPEG DASH では、ネットワークが混雑すると、ビデオ ストリームが自動的に低解像度に調整されます。 これにより、プレーヤーが次に再生する数秒分をダウンロードする間 (バッファリング)、視聴者に「一時停止された」状態のビデオが表示される可能性が減少します。 ネットワークの混雑が緩和されると、ビデオ プレーヤーは高品質ストリームに戻ります。 この機能は必要な帯域幅に対応するもので、結果的にビデオの開始時間が高速化されます。 つまり、最初の数秒は高速にダウンロードされる低品質のセグメントで再生され、十分なコンテンツがバッファリングされると、より高い品質にステップアップします。
 
@@ -54,7 +55,7 @@ Dash.js は JavaScript で記述された、オープン ソースの MPEG-DASH 
 ```
 
 ## <a name="adding-the-dashjs-player"></a>DASH.js プレーヤーの追加
-dash.js リファレンス実装をアプリケーションに追加するには、dash.js プロジェクトの 1.0 リリースから dash.all.js ファイルを入手する必要があります。 このファイルはアプリケーションの JavaScript フォルダーに保存します。 このファイルは、必要なすべての dash.js コードを 1 つのファイルにまとめることのできる便利なファイルです。 dash.js リポジトリを参照すると、個別のファイルやテスト コードなどさまざまな情報が見つかりますが、dash.js の使用のみが目的であれば、必要になるのは dash.all.js ファイルのみです。
+dash.js リファレンス実装をアプリケーションに追加するには、最新バージョンの dash.js プロジェクトから dash.all.js ファイルを入手する必要があります。 このファイルはアプリケーションの JavaScript フォルダーに保存します。 このファイルは、必要なすべての dash.js コードを 1 つのファイルにまとめることのできる便利なファイルです。 dash.js リポジトリを参照すると、個別のファイルやテスト コードなどさまざまな情報が見つかりますが、dash.js の使用のみが目的であれば、必要になるのは dash.all.js ファイルのみです。
 
 dash.js プレーヤーをアプリケーションを追加するには、basicPlayer.html のヘッド セクションにスクリプト タグを追加します。
 
@@ -85,7 +86,7 @@ dash.js プレーヤーをアプリケーションを追加するには、basicP
 
 プレーヤーがビデオを再生する準備ができていることを確認するため、MediaPlayer クラスの startup() 関数が呼び出されます。 特に、その関数では、すべての必要な (コンテキストで定義されたとおりの) クラスが正常に読み込まれたことを確認できます。 プレイヤーの準備が整ったら、attachView() 関数を使用して、ビデオ要素をアタッチします。 スタートアップ関数により、MediaPlayer がビデオ ストリームを要素に挿入し、必要に応じて、再生をコントロールすることもできます。
 
-MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオについて通知します。 作成した setupVideo() 関数は、ページを完全に読み込んだ後に実行する必要があります。 この操作は、Body 要素の OnLoad イベントを使用して行います。 <body> 要素を次に変更します。
+MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオについて通知します。 作成した setupVideo() 関数は、ページを完全に読み込んだ後に実行する必要があります。 この操作は、Body 要素の OnLoad イベントを使用して行います。 `<body>` 要素を次に変更します。
 
 ```html
     <body onload="setupVideo()">

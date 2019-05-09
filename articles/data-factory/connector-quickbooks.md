@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 51a48576b56413e0e779a49829a6eccaa0266a57
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8f5e3958588a597bde04ae1c8e4873006b281458
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076105"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992214"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Data Factory を使用して QuickBooks Online からデータをコピーする (プレビュー)
 
@@ -47,13 +46,13 @@ QuickBooks のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、**QuickBooks** に設定する必要があります | [はい] |
-| endpoint | QuickBooks Online サーバーのエンドポイント。 (つまり、quickbooks.api.intuit.com)  | [はい] |
-| companyId | 承認する QuickBooks の会社の会社 ID。 企業 ID を検索する方法については、「[How do I find my Company ID? (会社 ID の検索方法)](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)」を参照してください。 | [はい] |
-| consumerKey | OAuth 1.0 認証用のコンシューマー キー。 | [はい] |
-| consumerSecret | OAuth 1.0 認証用のコンシューマー シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| accessToken | OAuth 1.0 認証のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| accessTokenSecret | OAuth 1.0 認証のアクセス トークン シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、**QuickBooks** に設定する必要があります | はい |
+| endpoint | QuickBooks Online サーバーのエンドポイント。 (つまり、quickbooks.api.intuit.com)  | はい |
+| companyId | 承認する QuickBooks の会社の会社 ID。 企業 ID を検索する方法については、「[How do I find my Company ID? (会社 ID の検索方法)](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)」を参照してください。 | はい |
+| consumerKey | OAuth 1.0 認証用のコンシューマー キー。 | はい |
+| consumerSecret | OAuth 1.0 認証用のコンシューマー シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| accessToken | OAuth 1.0 認証のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| accessTokenSecret | OAuth 1.0 認証のアクセス トークン シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 
 **例:**
@@ -93,8 +92,9 @@ QuickBooks Online からデータをコピーするには、データセット�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **QuickBooksObject** に設定する必要があります | [はい] |
+| type | データセットの type プロパティは **QuickBooksObject** に設定する必要があります | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
+
 **例**
 
 ```json
@@ -121,7 +121,7 @@ QuickBooks Online からデータをコピーするには、コピー アクテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **QuickBooksSource** に設定する必要があります | [はい] |
+| type | コピー アクティビティのソースの type プロパティは **QuickBooksSource** に設定する必要があります | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM "Bill" WHERE Id = '123'"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

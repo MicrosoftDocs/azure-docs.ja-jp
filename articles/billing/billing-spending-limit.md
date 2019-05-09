@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
-ms.openlocfilehash: b4f38d80bfddc342d83a3552efe5d4a60cf6350f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.author: banders
+ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680125"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845374"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
 
@@ -86,4 +86,4 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

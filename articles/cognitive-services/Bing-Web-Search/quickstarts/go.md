@@ -4,26 +4,24 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Go を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 97b9a75802441a9360291d334b9920366a1c9450
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843885"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>クイック スタート:Bing Web Search REST API と Go を使用して Web を検索する
 
-このクイック スタートを使用すると、10 分未満で、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
+このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Go アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Go で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
@@ -34,6 +32,8 @@ ms.locfileid: "53255637"
 * サブスクリプション キー
 
 このクイック スタートでは、**コア** ライブラリだけが必要であり、外部との依存関係はありません。  
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
 ## <a name="create-a-project-and-import-core-libraries"></a>プロジェクトの作成とコア ライブラリのインポート
 
@@ -309,7 +309,7 @@ func main() {
 
 ## <a name="sample-response"></a>応答のサンプル  
 
-Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、`BingAnswer` 構造体を使用して書式設定され、`result.Name` と `result.URL` を表示します。
+Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、`BingAnswer` 構造体を使用して書式設定されており、`result.Name` と `result.URL` が表示されています。
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

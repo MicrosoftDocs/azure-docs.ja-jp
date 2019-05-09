@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 51dce1680be5f5f4387c2ba02827195bcdbe9b48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e20161147aa16456e31aff2bd3cc6337c3690e89
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998327"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789925"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN のリアルタイム アラート
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このドキュメントでは、Microsoft Azure CDN のリアルタイム アラートについて説明します。 この機能は、CDN プロファイル内のエンドポイントのパフォーマンスに関するリアルタイムの通知を提供します。  次の条件に基づいて、電子メール アラートまたは HTTP アラートを設定することができます。
 
 * 帯域幅
 * 状態コード
 * キャッシュの状態
-* 接続
+* Connections
 
 ## <a name="creating-a-real-time-alert"></a>リアルタイム アラートの作成
 1. [Azure Portal](https://portal.azure.com) で、CDN プロファイルに移動します。
@@ -65,7 +65,7 @@ ms.locfileid: "22998327"
    > 
 8. **[メトリック]**、**[演算子]**、および **[トリガー値]** を選択して、監視する**式**を作成します。
    
-   * **[メトリック]** では、監視条件の種類を選択します。  **[Bandwidth Mbps (帯域幅 Mbps)]** は、メガビット/秒単位の使用帯域幅の量です。  **[合計接続数]** は、エッジ サーバーへの同時 HTTP 接続の数です。  さまざまなキャッシュ ステータスとステータス コードの定義については、「[Azure CDN Cache Status Codes (Azure CDN のキャッシュ ステータス コード)](https://msdn.microsoft.com/library/mt759237.aspx)」と「[Azure CDN HTTP Status Codes (Azure CDN の HTTP ステータス コード)](https://msdn.microsoft.com/library/mt759238.aspx)」を参照してください
+   * **[メトリック]** では、監視条件の種類を選択します。  **[Bandwidth Mbps (帯域幅 Mbps)]** は、メガビット/秒単位の使用帯域幅の量です。  **[合計接続数]** は、エッジ サーバーへの同時 HTTP 接続の数です。  さまざまなキャッシュ ステータスとステータス コードの定義については、「[Azure CDN Cache Status Codes (Azure CDN のキャッシュ ステータス コード)](/previous-versions/azure/mt759237(v=azure.100))」と「[Azure CDN HTTP Status Codes (Azure CDN の HTTP ステータス コード)](/previous-versions/azure/mt759238(v=azure.100))」を参照してください
    * **[演算子]** は、メトリックとトリガー値の間のリレーションシップを確立する算術演算子です。
    * **[トリガー値]** は、通知の送信前に満たす必要があるしきい値です。
      
@@ -107,8 +107,8 @@ ms.locfileid: "22998327"
     > 
 13. **[保存]** ボタンをクリックして、アラートの構成を保存します。  手順 5 で **[有効な警告]** をオンにした場合は、ここでアラートがアクティブになります。
 
-## <a name="next-steps"></a>次のステップ
-* [Azure CDN のリアルタイム統計情報](cdn-real-time-stats.md)
-* [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-* [使用量パターン](cdn-analyze-usage-patterns.md)
+## <a name="next-steps"></a>次の手順
+*  [Azure CDN のリアルタイム統計情報](cdn-real-time-stats.md)
+*  [詳細な HTTP レポート](cdn-advanced-http-reports.md)
+*  [使用量パターン](cdn-analyze-usage-patterns.md)
 

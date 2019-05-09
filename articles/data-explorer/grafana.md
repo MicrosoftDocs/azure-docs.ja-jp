@@ -1,19 +1,18 @@
 ---
-title: Grafana で Azure Data Explorer のデータを視覚化する
+title: Grafana を使用して Azure Data Explorer のデータを視覚化する
 description: この記事では、Azure Data Explorer を Grafana のデータ ソースとして設定し、サンプル クラスターのデータを視覚化する方法について説明します。
-services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: 5a9684605de9af1cd9006810d595ae846db01661
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976772"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59048318"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Grafana で Azure Data Explorer のデータを視覚化する
 
@@ -23,7 +22,7 @@ Grafana は、データのクエリを実行して視覚化し、視覚化に基
 
 この記事の手順を完了するには、以下が必要です。
 
-* お使いのオペレーティング システムに対応する [Grafana バージョン 5.3.0 以降](http://docs.grafana.org/installation/)。
+* お使いのオペレーティング システムに対応する [Grafana バージョン 5.3.0 以降](https://docs.grafana.org/installation/)。
 
 * Grafana の [Azure Data Explorer プラグイン](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation)。
 
@@ -122,7 +121,7 @@ Azure Data Explorer を Grafana のデータ ソースとして構成するに�
 
 1. Azure portal で、Azure Data Explorer クラスターに移動し、**[クエリ]** を選択します。
 
-    ![クエリ](media/grafana/query.png)
+    ![Query](media/grafana/query.png)
 
 1. クエリ ウィンドウで次のコマンドを実行します。 Azure portal または CLI で取得したアプリケーション ID とテナント ID を使用します。
 

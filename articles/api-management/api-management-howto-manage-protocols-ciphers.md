@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2018
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: a55d16a35b5eec1af2b24d02e158905493615999
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 91b6cd64a42319b2a5307919c2efe6bc8e5dcd64
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441114"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983202"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Azure API Management でプロトコルと暗号を管理する
 
@@ -39,11 +39,9 @@ Azure API Management では、3DES 暗号と同様にクライアントとバッ
 ## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>TLS プロトコルと 3DES 暗号を管理する方法
 
 1. Azure portal で **API Management インスタンス**に移動します。
-2. メニューで **[SSL]** を選択します。  
-    ![APIM でプロトコルおよび暗号を管理する - メニュー](./media/api-management-howto-manage-protocols-ciphers/api-management-menu.png)
+2. メニューから **[プロトコル設定]** を選択します。  
 3. プロトコルまたは暗号を有効または無効にします。
 4. **[Save]** をクリックします。 変更は 1 時間以内に適用されます。  
-    ![APIM でプロトコルおよび暗号を管理する - 保存](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers-save.png)
 
 ## <a name="next-steps"></a>次の手順
 

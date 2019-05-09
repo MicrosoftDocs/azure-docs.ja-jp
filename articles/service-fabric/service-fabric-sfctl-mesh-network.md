@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl mesh network のコマンドについて�
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 8828605241d55ac6f9ce789ccc55c30f2cd36434
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: feec5c4796c025c1707b4eb93bfe34b8d384ef3a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283498"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669182"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
 メッシュ ネットワーク リソースを取得および削除します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
-| 削除 | ネットワーク リソースを削除します。 |
+| delete | ネットワーク リソースを削除します。 |
 | list | すべてのネットワーク リソースを一覧表示します。 |
 | show | 指定した名前のネットワーク リソースを取得します。 |
 
@@ -51,7 +51,7 @@ ms.locfileid: "53283498"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-mesh-network-list"></a>sfctl mesh network list
 すべてのネットワーク リソースを一覧表示します。
@@ -66,7 +66,7 @@ ms.locfileid: "53283498"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-mesh-network-show"></a>sfctl mesh network show
 指定した名前のネットワーク リソースを取得します。
@@ -87,7 +87,7 @@ ms.locfileid: "53283498"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 
 ## <a name="next-steps"></a>次の手順

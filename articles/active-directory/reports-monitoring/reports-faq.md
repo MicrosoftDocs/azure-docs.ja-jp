@@ -3,24 +3,25 @@ title: Azure Active Directory レポートに関する FAQ | Microsoft Docs
 description: Azure Active Directory レポートに関するよく寄せられる質問。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 98a1dd3fb3fd733cc17ac9c6ccf9d0dfc77737e1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6fc90d62f889bfd9f439a7e8955f049c6c979746
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868023"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437443"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
@@ -28,17 +29,17 @@ ms.locfileid: "52868023"
 
 ## <a name="getting-started"></a>使用の開始 
 
-**Q:現在 https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用しており、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
+**Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
 
-**A:**[API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査と**と**サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
+**A:** [API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査と**と**サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
 
---- 
+---
 
-**Q:現在 https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
+**Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
 
-**A:** [Identity Protection リスク イベント API](../identity-protection/graph-get-started.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク イベントが 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、要した作業により、既存の MS Graph への投資が拡大され、この新しい標準プラットフォームへの移行開始が促進されます。
+**A:**  [Identity Protection リスク イベント API](../identity-protection/graph-get-started.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク イベントが 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、要した作業により、既存の MS Graph への投資が拡大され、この新しい標準プラットフォームへの移行開始が促進されます。
 
---- 
+---
 
 **Q:Premium ライセンスはどうすれば取得できますか。**
 
@@ -78,7 +79,7 @@ ms.locfileid: "52868023"
 | サインイン               | 該当なし           | 30 日             | 30 日             |
 | Azure MFA の使用状況        | 30 日       | 30 日             | 30 日             |
 
---- 
+---
 
 **Q:自分のタスクを完了した後、アクティビティ データが表示されるまでどのぐらい時間がかかりますか。**
 
@@ -88,7 +89,7 @@ ms.locfileid: "52868023"
 
 **Q:Azure portal を通じて Office 365 のアクティビティ ログ情報を取得できますか。**
 
-**A:** Office 365 のアクティビティ ログと Azure AD アクティビティ ログではディレクトリ リソースの大部分が共有されていますが、Office 365 のアクティビティ ログをすべて閲覧する場合は、Office 365 管理センターにアクセスして Office 365 アクティビティ ログ情報を取得する必要があります。
+**A:** Office 365 のアクティビティ ログと Azure AD アクティビティ ログではディレクトリ リソースの大部分が共有されていますが、Office 365 のアクティビティ ログをすべて閲覧する場合は、[Microsoft 365 管理センター](https://admin.microsoft.com) にアクセスして Office 365 アクティビティ ログ情報を取得する必要があります。
 
 ---
 
@@ -114,7 +115,7 @@ ms.locfileid: "52868023"
 
 **Q:Azure portal でサインインまたはユーザーにリスクのフラグが付けられた理由はどうすれば調べることができますか。**
 
-**A:****Azure AD Premium** サブスクリプションをお持ちの場合は、**[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク イベントに関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になる危険なイベント情報は確認できません。
+**A:** **Azure AD Premium** サブスクリプションをお持ちの場合は、 **[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク イベントに関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になる危険なイベント情報は確認できません。
 
 ---
 
@@ -139,24 +140,27 @@ ms.locfileid: "52868023"
 **Q:始めにどうすればよいですか。**
 
 **A:** 作業を開始するには:
-    * [Azure portal](https://portal.azure.com) でサインイン レポートに移動します。 
-    * トラブルシューティングを行うサインインをクリックします。
-    * **[条件付きアクセス]** タブに移動します。このタブでは、サインインに影響を与えたすべてのポリシーと各ポリシーの結果を確認できます。 
+
+* [Azure portal](https://portal.azure.com) でサインイン レポートに移動します。
+* トラブルシューティングを行うサインインをクリックします。
+* **[条件付きアクセス]** タブに移動します。このタブでは、サインインに影響を与えたすべてのポリシーと各ポリシーの結果を確認できます。 
     
 **Q:条件付きアクセスの状態として表示されるすべての値を教えてください。**
 
 **A:** 条件付きアクセスの状態には、次の値が表示される可能性があります。
-    * **適用されていません**:スコープ内にユーザーとアプリがある CA ポリシーがなかったことを意味します。 
-    * **成功**:スコープ内にユーザーとアプリがある CA ポリシーがあり、CA ポリシーが正常に満たされたことを意味します。 
-    * **失敗**:スコープ内にユーザーとアプリがある CA ポリシーがあり、CA ポリシーが満たされなかったことを意味します。 
+
+* **適用されていません**:スコープ内にユーザーとアプリがある CA ポリシーがなかったことを意味します。 
+* **成功**:スコープ内にユーザーとアプリがある CA ポリシーがあり、CA ポリシーが正常に満たされたことを意味します。 
+* **失敗**:スコープ内にユーザーとアプリがある CA ポリシーがあり、CA ポリシーが満たされなかったことを意味します。 
     
 **Q:条件付きアクセス ポリシーの結果として表示されるすべての値を教えてください。**
 
 **A:** 条件付きアクセス ポリシーには、次の結果が表示される可能性があります。
-    * **成功**:ポリシーは正常に満たされました。
-    * **失敗**:ポリシーは満たされませんでした。
-    * **適用されていません**:ポリシー条件が満たされていなかった可能性があります。
-    * **無効**:無効状態のポリシーのためです。 
+
+* **成功**:ポリシーは正常に満たされました。
+* **失敗**:ポリシーは満たされませんでした。
+* **適用されていません**:ポリシー条件が満たされていなかった可能性があります。
+* **無効**:無効状態のポリシーのためです。 
     
 **Q:すべてのサインイン レポートのポリシー名が CA のポリシー名と一致しません。なぜですか?**
 

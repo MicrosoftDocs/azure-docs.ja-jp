@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 75f8e5605b84b21abf92cd77a71793dbceb4a62b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: common
+ms.openlocfilehash: 26670a739bca03a2c9bbe6617cf433c730a7489e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139044"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473818"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 

@@ -1,13 +1,10 @@
 ---
-title: Azure ルート テーブルの作成、変更、削除 | Microsoft Docs
+title: Azure ルート テーブルを作成、変更、削除する
+titlesuffix: Azure Virtual Network
 description: ルート テーブルの作成、変更、削除の方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 790d327be27dae0c963c37e6e55f1721bf571c80
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c9846f78e05d598844d12819cef3e948caf2704d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222116"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889700"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
@@ -28,11 +25,13 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 
 ## <a name="before-you-begin"></a>開始する前に
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 1.0.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
@@ -47,8 +46,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table create](/cli/azure/network/route-table/route#az_network_route_table_create)
-- PowerShell: [New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable)
+- Azure CLI: [az network route-table create](/cli/azure/network/route-table/route)
+- PowerShell:[New-AzRouteTable](/powershell/module/az.network/new-azroutetable)
 
 ## <a name="view-route-tables"></a>ルート テーブルの表示
 
@@ -56,24 +55,24 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table list](/cli/azure/network/route-table/route#az_network_route_table_list)
-- PowerShell: [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable)
+- Azure CLI: [az network route-table list](/cli/azure/network/route-table/route)
+- PowerShell:[Get-AzRouteTable](/powershell/module/az.network/get-azroutetable)
 
 ## <a name="view-details-of-a-route-table"></a>ルート テーブルの詳細の表示
 
 1. ポータルの上部にある検索ボックスに、「*ルート テーブル*」と入力します。 検索結果に **[ルート テーブル]** が表示されたら、それを選択します。
 2. 詳細を表示するルート テーブルを一覧から選択します。 **[設定]** では、ルート テーブル内の**ルート**と、ルート テーブルが関連付けられている**サブネット**を確認できます。
 3. Azure の一般的な設定の詳細については、次の情報を参照してください。
-    *   [アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
-    *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
+    *   [アクセス制御 (IAM)](../role-based-access-control/overview.md)
     *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
+    *   [Automation スクリプト](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **コマンド**
 
-- Azure CLI: [az network route-table show](/cli/azure/network/route-table/route#az_network_route_table_show)
-- PowerShell: [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable)
+- Azure CLI: [az network route-table show](/cli/azure/network/route-table/route)
+- PowerShell:[Get-AzRouteTable](/powershell/module/az.network/get-azroutetable)
 
 ## <a name="change-a-route-table"></a>ルート テーブルの変更
 
@@ -82,8 +81,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table update](/cli/azure/network/route-table/route#az_network_route_table_update)
-- PowerShell: [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable)
+- Azure CLI: [az network route-table update](/cli/azure/network/route-table/route)
+- PowerShell:[Set-AzRouteTable](/powershell/module/az.network/set-azroutetable)
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>サブネットへのルート テーブルの関連付け
 
@@ -99,8 +98,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
-- PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
+- Azure CLI: [az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest)
+- PowerShell:[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>サブネットからのルート テーブルの関連付けの解除
 
@@ -114,8 +113,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
-- PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
+- Azure CLI: [az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest)
+- PowerShell:[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)
 
 ## <a name="delete-a-route-table"></a>ルート テーブルの削除
 
@@ -127,8 +126,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table delete](/cli/azure/network/route-table/route#az_network_route_table_delete)
-- PowerShell: [Remove-AzureRmRouteTable](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermroutetable?view=azurermps-6.8.1) 
+- Azure CLI: [az network route-table delete](/cli/azure/network/route-table/route)
+- PowerShell:[Remove-AzRouteTable](/powershell/module/az.network/remove-azroutetable)
 
 ## <a name="create-a-route"></a>ルートの作成
 
@@ -146,8 +145,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table route create](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
-- PowerShell: [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
+- Azure CLI: [az network route-table route create](/cli/azure/network/route-table/route?view=azure-cli-latest)
+- PowerShell:[New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)
 
 ## <a name="view-routes"></a>ルートの表示
 
@@ -159,8 +158,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table route list](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
-- PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
+- Azure CLI: [az network route-table route list](/cli/azure/network/route-table/route?view=azure-cli-latest)
+- PowerShell:[Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig)
 
 ## <a name="view-details-of-a-route"></a>ルートの詳細の表示
 
@@ -171,8 +170,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_show)
-- PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
+- Azure CLI: [az network route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest)
+- PowerShell:[Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig)
 
 ## <a name="change-a-route"></a>ルートの変更
 
@@ -184,8 +183,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table route update](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_update)
-- PowerShell: [Set-AzureRmRouteConfig](/powershell/module/azurerm.network/set-azurermrouteconfig)
+- Azure CLI: [az network route-table route update](/cli/azure/network/route-table/route?view=azure-cli-latest)
+- PowerShell:[Set-AzRouteConfig](/powershell/module/az.network/set-azrouteconfig)
 
 ## <a name="delete-a-route"></a>ルートの削除
 
@@ -197,8 +196,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
-- PowerShell: [Remove-AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
+- Azure CLI: [az network route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest)
+- PowerShell:[Remove-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig)
 
 ## <a name="view-effective-routes"></a>有効なルートの表示
 
@@ -212,8 +211,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
-- PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) 
+- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic?view=azure-cli-latest)
+- PowerShell:[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="validate-routing-between-two-endpoints"></a>2 つのエンドポイント間のルーティングの検証
 
@@ -229,14 +228,14 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 **コマンド**
 
-- Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
-- PowerShell: [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 
+- Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest)
+- PowerShell:[Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop)
 
 ## <a name="permissions"></a>アクセス許可
 
 ルート テーブルとルートに関するタスクを実行するには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-| アクションを表示します。                                                          |   Name                                                  |
+| Action                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft.Network/routeTables/read                              |   ルート テーブルの読み取り                                    |
 | Microsoft.Network/routeTables/write                             |   ルート テーブルの作成または更新                        |

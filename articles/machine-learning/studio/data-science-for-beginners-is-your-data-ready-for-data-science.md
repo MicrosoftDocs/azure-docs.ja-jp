@@ -1,27 +1,21 @@
 ---
-title: データの評価 - Azure Machine Learning Studio | Microsoft Docs
+title: データの評価
+titleSuffix: Azure Machine Learning Studio
 description: データ サイエンスを準備するためにデータが満たす必要のある 4 つの条件。 このビデオでは、基本的なデータの評価を支援する具体的な例を説明しています。
-keywords: 関連性のあるデータ,データの評価,データの準備,データの条件,データの準備
 services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
 ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: 2a9101ed510c617df81f422aea92ca1ef2b28cd8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.subservice: studio
+ms.topic: conceptual
+author: sdgilley
+ms.author: sgilleye
+ms.custom: seodec18
+ms.date: 03/22/2019
+ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261230"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370348"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ
@@ -106,8 +100,8 @@ ms.locfileid: "53261230"
 
 関連性があり、連続していて、正確で、かつ十分なデータがあれば、ある程度高品質なデータ サイエンスを実行するために必要なすべての材料が揃っています。
 
-Microsoft Azure Machine Learning の "*初心者向けデータ サイエンス*" の他の 4 つのビデオも必ずご覧ください。
+Microsoft Azure Machine Learning Studio の "*初心者向けデータ サイエンス*" の他の 4 つのビデオも必ずご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](what-is-machine-learning.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

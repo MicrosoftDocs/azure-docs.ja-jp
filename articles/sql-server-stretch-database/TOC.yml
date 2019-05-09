@@ -1,0 +1,56 @@
+- name: SQL Server Stretch Database のドキュメント
+  href: index.md
+- name: 概要
+  items:
+    - name: Stretch Database とは
+      href: /sql/sql-server/stretch-database/stretch-database
+    - name: 制限とブロックの問題
+      href: /sql/sql-server/stretch-database/limitations-for-stretch-database
+- name: 作業の開始
+  items:
+    - name: データベースとテーブルを特定する
+      href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
+    - name: ウィザードを実行する
+      href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
+- name: 方法
+  items:
+    - name: 有効化
+      items:
+        - name: データベース有効にする
+          href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-database
+        - name: テーブルを有効にする
+          href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-table
+        - name: 移行する行を選択する
+          href: /sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database
+    - name: 管理
+      items:
+        - name: データ移行を監視する
+          href: /sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database
+        - name: 移行を一時停止および再開する
+          href: /sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database
+        - name: 管理とトラブルシューティング
+          href: /sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database
+        - name: バックアップ
+          href: /sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database
+        - name: 復元
+          href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
+        - name: Strech Database を無効にする
+          href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data
+- name: リファレンス
+  items:
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=sql-server-database'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: ブログ
+      href: 'https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/sql-server-stretch-database/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=sql-server-stretch-database'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-server-stretch-database'

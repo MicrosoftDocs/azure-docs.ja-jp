@@ -4,7 +4,7 @@ description: " Azure Security Center でユーザー データを管理する方
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 35868545c46acb65ba487c546b66d8834bcb81a7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fcec410df631a58b76878a4cb327ca2fb04a2105
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543191"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117857"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
 この記事では、Azure Security Center でユーザー データを管理する方法について説明します。 ユーザー データの管理には、データへのアクセス、削除、またはエクスポート機能が含まれます。
@@ -68,25 +68,25 @@ Security Center のユーザーは、アラート インシデントを削除で
 
 - Azure portal からコピーを実行する
 - Azure REST API 呼び出しの GET HTTP: を実行する
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
+  ```
 
 アカウント管理者のロールが割り当てられている Security Center のユーザーは、IP アドレスを含む [Just In Time ポリシー](security-center-just-in-time.md)をエクスポートできます。
 
 - Azure portal からコピーを実行する
 - Azure REST API 呼び出しの GET HTTP: を実行する
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
+  ```
 
 アカウント管理者は、次の方法でアラートの詳細をエクスポートできます。
 
 - Azure portal からコピーを実行する
 - Azure REST API 呼び出しの GET HTTP: を実行する
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
+  ```
 
 詳細については、[セキュリティ アラートの取得 (GET コレクション)](https://msdn.microsoft.com/library/mt704050.aspx) に関するページを参照してください。
 

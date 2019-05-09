@@ -1,8 +1,7 @@
 ---
 title: MQ サーバーに接続する - Azure Logic Apps | Microsoft Docs
 description: Azure またはオンプレミスの MQ サーバーと Azure Logic Apps を使用して、メッセージを送信および取得します
-author: valthom
-manager: jeconnoc
+author: valrobb
 ms.author: valthom
 ms.date: 06/01/2017
 ms.topic: article
@@ -11,52 +10,52 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 6b34bd7b286ca3b206c611343217c90e0d57fbfb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167883"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>MQ コネクタを使用してロジック アプリから IBM MQ サーバーに接続する 
+# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>MQ コネクタを使用してロジック アプリから IBM MQ サーバーに接続する
 
-Microsoft Connector for MQ は、オンプレミスの、または Azure 内の MQ サーバーに保管されているメッセージの送信と取得を行います。 このコネクタには、TCP/IP ネットワーク経由でリモート IBM MQ サーバーと通信する Microsoft MQ クライアントが含まれています。 このドキュメントは、MQ コネクタを使用するためのスターター ガイドです。 まずキューの 1 つのメッセージを参照することから始め、次いでその他のアクションを試してみるようお勧めします。    
+Microsoft Connector for MQ は、オンプレミスの、または Azure 内の MQ サーバーに保管されているメッセージの送信と取得を行います。 このコネクタには、TCP/IP ネットワーク経由でリモート IBM MQ サーバーと通信する Microsoft MQ クライアントが含まれています。 このドキュメントは、MQ コネクタを使用するためのスターター ガイドです。 まずキューの 1 つのメッセージを参照することから始め、次いでその他のアクションを試してみるようお勧めします。
 
 MQ コネクタには、次のアクションがあります。 トリガーはありません。
 
--   IBM MQ サーバーから削除しないで 1 つのメッセージを参照する
--   IBM MQ サーバーから削除しないで一群のメッセージを参照する
--   1 つのメッセージを受信し、IBM MQ サーバーから削除する
--   一群のメッセージを受信し、IBM MQ サーバーから削除する
--   IBM MQ サーバーに 1 つのメッセージを送信する 
+- IBM MQ サーバーから削除しないで 1 つのメッセージを参照する
+- IBM MQ サーバーから削除しないで一群のメッセージを参照する
+- 1 つのメッセージを受信し、IBM MQ サーバーから削除する
+- 一群のメッセージを受信し、IBM MQ サーバーから削除する
+- IBM MQ サーバーに 1 つのメッセージを送信する
 
 ## <a name="prerequisites"></a>前提条件
 
 * オンプレミスの MQ サーバーを使用している場合は、ご使用のネットワーク内のサーバーに[オンプレミスのデータ ゲートウェイをインストール](../logic-apps/logic-apps-gateway-install.md)します。 MQ サーバーが一般に公開されている、または Azure 内で使用できる場合、データ ゲートウェイは使用されない、または不要です。
 
     > [!NOTE]
-    > MQ コネクタが動作するには、オンプレミスのデータ ゲートウェイがインストールされているサーバーに .Net Framework 4.6 もインストールする必要があります。
+    > MQ コネクタが動作するには、オンプレミスのデータ ゲートウェイがインストールされているサーバーに .NET Framework 4.6 もインストールする必要があります。
 
 * オンプレミスのデータ ゲートウェイ用に Azure リソースを作成します (「[データ ゲートウェイ接続を設定する](../logic-apps/logic-apps-gateway-connection.md)」)。
 
 * 正式にサポートされている以下のバージョンの IBM WebSphere MQ:
-   * MQ 7.5
-   * MQ 8.0
+    * MQ 7.5
+    * MQ 8.0
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します
 
-1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。 
+1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
 2. **[名前]** (例: MQTestApp)、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** (オンプレミスのデータ ゲートウェイ接続が設定されている場所を使用) を入力します。 **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** を選択します。  
 ![ロジック アプリの作成](media/connectors-create-api-mq/Create_Logic_App.png)
 
 ## <a name="add-a-trigger"></a>トリガーの追加
 
 > [!NOTE]
-> MQ コネクタにはトリガーがありません。 そのため、**繰り返し**トリガーなどの別のトリガーを使って、ロジック アプリを開始します。 
+> MQ コネクタにはトリガーがありません。 そのため、**繰り返し**トリガーなどの別のトリガーを使って、ロジック アプリを開始します。
 
 1. **Logic Apps デザイナー**が表示され、一般的なトリガーの一覧で **[繰り返し]** を選択します。
-2. 繰り返しトリガーで **[編集]** を選択します。 
-3. **[頻度]** を **[日]** に、**[間隔]** を **[7]** に設定します。 
+2. 繰り返しトリガーで **[編集]** を選択します。
+3. **[頻度]** を **[日]** に、**[間隔]** を **[7]** に設定します。
 
 ## <a name="browse-a-single-message"></a>1 つのメッセージの参照
 1. **[+ New step]\(+ 新しいステップ\)**、**[アクションの追加]** の順に選択します。
@@ -66,9 +65,9 @@ MQ コネクタには、次のアクションがあります。 トリガーは�
 3. 既存の MQ 接続がない場合は、次の手順に従って接続を作成します。  
 
     1. **[オンプレミスのデータ ゲートウェイ経由で接続]** を選択し、MQ サーバーのプロパティを入力します。  
-    **[サーバー]** には、MQ サーバーの名前を入力するか、IP アドレスに続けてコロンとポート番号を入力します。 
+    **[サーバー]** には、MQ サーバーの名前を入力するか、IP アドレスに続けてコロンとポート番号を入力します。
     2. **[ゲートウェイ]** ドロップダウンには、構成済みの既存のゲートウェイ接続が一覧表示されます。 ゲートウェイを選択します。
-    3. 入力し終えたら **[作成]** を選択します。 接続は次のようになります。   
+    3. 入力し終えたら **[作成]** を選択します。 接続は次のようになります。  
     ![接続のプロパティ](media/connectors-create-api-mq/Connection_Properties.png)
 
 4. アクションのプロパティでは、次のことができます。  

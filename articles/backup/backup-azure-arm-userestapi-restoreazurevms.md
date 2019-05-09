@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 68c611b08524b5fc037598bafe46d75b3293886d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289499"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100211"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -127,9 +127,9 @@ X-Powered-By: ASP.NET
 
 ディスクの復元のトリガーは、*POST* 要求です。 ディスクの復元操作について詳しくは、["復元のトリガー" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger) に関するページをご覧ください。
 
-````http
+```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
-````
+```
 
 `{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)のように構成されています。 `{fabricName}` は "Azure" であり、`{recoveryPointId}` は[上](#example-response)で説明したように復旧ポイントの `{name}` フィールドです。
 
@@ -147,7 +147,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 次の要求本文では、ディスク復元のトリガーに必要なプロパティが定義されています。
 
-````json
+```json
 {
   "properties": {
     "objectType": "IaasVMRestoreRequest",
@@ -163,13 +163,13 @@ Azure VM バックアップからのディスクの復元をトリガーする�
     }
   }
 }
-````
+```
 
 ### <a name="response"></a>Response
 
 ディスク復元のトリガーは、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
-それは 2 つの応答を返します。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
+これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
 |Name  |type  |説明  |
 |---------|---------|---------|
@@ -243,7 +243,7 @@ X-Powered-By: ASP.NET
 
 次の要求本文では、仮想マシン復元トリガーに必要なプロパティが定義されています。
 
-````json
+```json
 {
   "parameters": {
         "subscriptionId": "00000000-0000-0000-0000-000000000000",
@@ -275,7 +275,7 @@ X-Powered-By: ASP.NET
       }
     }
 }
-````
+```
 
 [前に説明したディスクの復元](#response)と同じように、応答を処理する必要があります。
 

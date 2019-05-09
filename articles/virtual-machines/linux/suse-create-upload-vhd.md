@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 5aa998ef7af157f84a3985fdb458c2800f2575f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2b0c01ee4b1d1bc5ce83fc0afc309abfcf25f33e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249372"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996698"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE 仮想マシンの準備
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -49,7 +49,7 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
         # sudo zypper update
 5. SLES リポジトリから Azure Linux エージェントをインストールします。
    
-        # sudo zypper install WALinuxAgent
+        # sudo zypper install python-azure-agent
 6. chkconfig で waagent が "on" に設定されていることを確認し、設定されていない場合は自動起動するために有効にします。
    
         # sudo chkconfig waagent on
@@ -114,7 +114,7 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
     コマンドによって "No repositories defined..." が返された場合は、次のコマンドを実行してこれらのリポジトリを追加します。
    
         # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
-        # sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
+        # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
     "`zypper lr`" コマンドをもう一度実行してリポジトリが追加されたことを確認できます。 更新したリポジトリのいずれかが有効になっていない場合は、次のコマンドを使用して有効にします。
@@ -140,7 +140,7 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
 7. "/etc/sysconfig/network/dhcp" ファイルを編集して、次のように `DHCLIENT_SET_HOSTNAME` パラメーターを変更することをお勧めします。
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **重要:** "/etc/sudoers" で、次の行をコメント アウトするか削除する必要があります (ある場合)。
+8. **重要:**"/etc/sudoers" で、次の行をコメント アウトするか削除する必要があります (ある場合)。
    
      Defaults targetpw   # ask for the password of the target user i.e. root ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
 9. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。

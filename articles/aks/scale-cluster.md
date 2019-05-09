@@ -1,84 +1,105 @@
 ---
 title: Azure Kubernetes Service (AKS) クラスターのスケーリング
-description: Azure Kubernetes Service (AKS) クラスターのスケーリング。
+description: Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする方法について説明します。
 services: container-service
-author: gabrtv
-manager: jeconnoc
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/15/2017
-ms.author: gamonroy
-ms.custom: mvc
-ms.openlocfilehash: 577fff2e659759647ffc7e96158ebcbe5a88ab25
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 01/10/2019
+ms.author: iainfoulds
+ms.openlocfilehash: 558a3b6dc15293ab9a0895aa4f9f709ba2d0a51f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934694"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214625"
 ---
-# <a name="scale-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのスケーリング
+# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする
 
-AKS クラスターをさまざまな数のノードに容易にスケーリングできます。  目的のノードの数を選択し、`az aks scale` コマンドを実行します。  スケール ダウンの際、実行中のアプリケーションへの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます][kubernetes-drain]。  スケール アップの際、ノードが Kubernetes クラスターによって `Ready` としてマークされるまで、`az` コマンドは待機します。
+アプリケーションに必要なリソースが変化した場合は、AKS クラスターを手動でスケーリングし、異なる数のノードを実行できます。 スケール ダウンするときには、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます][kubernetes-drain]。 スケール アップするときには、ノードが Kubernetes クラスターによって `Ready` としてマークされるまで、`az` コマンドは待機します。
 
 ## <a name="scale-the-cluster-nodes"></a>クラスター ノードのスケーリング
 
-`az aks scale` コマンドを使用してクラスター ノードをスケーリングします。 次の例では、*myAKSCluster* という名前のクラスターを単一のノードにスケーリングします。
+最初に、[az aks show][az-aks-show] コマンドを使用してノードプールの*名前*を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノードプール名を取得します。
 
 ```azurecli-interactive
-az aks scale --name myAKSCluster --resource-group myResourceGroup --node-count 1
+az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-出力:
+次の出力例は、*name* が *nodepool1* であることを示しています。
+
+```console
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
+
+[
+  {
+    "count": 1,
+    "maxPods": 110,
+    "name": "nodepool1",
+    "osDiskSizeGb": 30,
+    "osType": "Linux",
+    "storageProfile": "ManagedDisks",
+    "vmSize": "Standard_DS2_v2"
+  }
+]
+```
+
+`az aks scale` コマンドを使用してクラスター ノードをスケーリングします。 次の例では、*myAKSCluster* という名前のクラスターを単一のノードにスケーリングします。 前のコマンドの *--nodepool-name* に、*nodepool1* などの独自のノードプール名を指定します。
+
+```azurecli-interactive
+az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
+```
+
+次の出力例は、*agentPoolProfiles* セクションに示されているように、クラスターが正常に 1 つのノードにスケーリングされたことを示しています。
 
 ```json
 {
-  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "properties": {
-    "accessProfiles": {
-      "clusterAdmin": {
-        "kubeConfig": "..."
-      },
-      "clusterUser": {
-        "kubeConfig": "..."
-      }
-    },
-    "agentPoolProfiles": [
-      {
-        "count": 1,
-        "dnsPrefix": null,
-        "fqdn": null,
-        "name": "myAKSCluster",
-        "osDiskSizeGb": null,
-        "osType": "Linux",
-        "ports": null,
-        "storageProfile": "ManagedDisks",
-        "vmSize": "Standard_D2_v2",
-        "vnetSubnetId": null
-      }
-    ],
-    "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.7.7",
-    "linuxProfile": {
-      "adminUsername": "azureuser",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "..."
-          }
-        ]
-      }
-    },
-    "provisioningState": "Succeeded",
-    "servicePrincipalProfile": {
-      "clientId": "e70c1c1c-0ca4-4e0a-be5e-aea5225af017",
-      "keyVaultSecretRef": null,
-      "secret": null
+  "aadProfile": null,
+  "addonProfiles": null,
+  "agentPoolProfiles": [
+    {
+      "count": 1,
+      "maxPods": 110,
+      "name": "nodepool1",
+      "osDiskSizeGb": 30,
+      "osType": "Linux",
+      "storageProfile": "ManagedDisks",
+      "vmSize": "Standard_DS2_v2",
+      "vnetSubnetId": null
+    }
+  ],
+  "dnsPrefix": "myAKSClust-myResourceGroup-19da35",
+  "enableRbac": true,
+  "fqdn": "myaksclust-myresourcegroup-19da35-0d60b16a.hcp.eastus.azmk8s.io",
+  "id": "/subscriptions/<guid>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
+  "kubernetesVersion": "1.9.11",
+  "linuxProfile": {
+    "adminUsername": "azureuser",
+    "ssh": {
+      "publicKeys": [
+        {
+          "keyData": "[...]"
+        }
+      ]
     }
   },
+  "location": "eastus",
+  "name": "myAKSCluster",
+  "networkProfile": {
+    "dnsServiceIp": "10.0.0.10",
+    "dockerBridgeCidr": "172.17.0.1/16",
+    "networkPlugin": "kubenet",
+    "networkPolicy": null,
+    "podCidr": "10.244.0.0/16",
+    "serviceCidr": "10.0.0.0/16"
+  },
+  "nodeResourceGroup": "MC_myResourceGroup_myAKSCluster_eastus",
+  "provisioningState": "Succeeded",
   "resourceGroup": "myResourceGroup",
+  "servicePrincipalProfile": {
+    "clientId": "[...]",
+    "secret": null
+  },
   "tags": null,
   "type": "Microsoft.ContainerService/ManagedClusters"
 }
@@ -96,3 +117,4 @@ AKS のデプロイと管理の詳細を AKS チュートリアルで確認し�
 
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
+[az-aks-show]: /cli/azure/aks#az-aks-show

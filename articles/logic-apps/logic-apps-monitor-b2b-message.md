@@ -1,6 +1,6 @@
 ---
-title: Log Analytics を使用して B2B メッセージを監視する - Azure Logic Apps | Microsoft Docs
-description: Azure Log Analytics を使用して、統合アカウントと Azure Logic Apps の AS2、X12、および EDIFACT メッセージを監視し、診断ログを設定します
+title: Azure Monitor ログを使用して B2B メッセージを監視する - Azure Logic Apps | Microsoft Docs
+description: Azure Monitor ログを使用して、統合アカウントと Azure Logic Apps の AS2、X12、および EDIFACT メッセージを監視し、診断ログを設定します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,25 +9,27 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534878"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195168"
 ---
-# <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Azure Logic Apps で Azure Log Analytics を使用して B2B メッセージを監視する
+# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Azure Logic Apps で Azure Monitor ログを使用して Azure B2B メッセージを監視する
 
-統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が相互にメッセージを交換できるようになります。 この通信が予想通りに動作していることを確認するために、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して、AS2、X12、および EDIFACT メッセージを監視して、統合アカウントの診断ログを設定できます。 このサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援し、深いデバッグを行うためのランタイムの詳細とイベントの収集を実行します。 また、Azure Storage や Azure Event Hubs などの[他のサービスでこのデータ](#extend-diagnostic-data)を使用することもできます。
+統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が相互にメッセージを交換できるようになります。 この通信が予想どおりに動作していることを確認するために、[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を使用して、AS2、X12、および EDIFACT メッセージを監視し、統合アカウントの診断ログを設定できます。 このサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援し、深いデバッグを行うためのランタイムの詳細とイベントの収集を実行します。 また、Azure Storage や Azure Event Hubs などの他のサービスでこのデータを使用することもできます。
 
 > [!NOTE]
 > このページには、[2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md) Microsoft Operations Management Suite (OMS) への言及がまだ残っている可能性がありますが、可能な場合には、これらの手順を Azure Log Analytics で置き換えてください。 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 * 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](quickstart-create-first-logic-app-workflow.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
 
-* 上記の要件を満たしたら、Log Analytics を使用して B2B 通信を監視および追跡するために使用する Log Analytics ワークスペースも必要になります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
+* 上記の要件を満たしたら、Azure Monitor ログを使用して B2B 通信を監視および追跡するために使用する Log Analytics ワークスペースも必要になります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
 
 * ロジック アプリにリンクされた統合アカウント。 [ロジック アプリにリンクする統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)に関する記事を参照してください。
 
@@ -47,7 +49,7 @@ ms.locfileid: "53534878"
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 統合アカウントに関連付けられている Azure サブスクリプション | 
-   | **[リソース グループ]** | <*Azure-resource-group-name*> | 統合アカウントの Azure リソース グループ | 
+   | **リソース グループ** | <*Azure-resource-group-name*> | 統合アカウントの Azure リソース グループ | 
    | **リソースの種類** | **統合アカウント** | ログを有効にする Azure リソースの種類 | 
    | **リソース** | <*integration-account-name*> | ログを有効にする Azure リソースの名前 | 
    ||||  
@@ -71,9 +73,9 @@ ms.locfileid: "53534878"
 
    例:  
 
-   ![診断データをログに送信できるように Log Analytics を設定する](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![診断データをログに送信できるように Azure Monitor ログを設定する](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. 次に、[Log Analytics で B2B メッセージを追跡するための設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)を行います。
+1. 次に、[Azure Monitor ログで B2B メッセージを追跡するための設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)を行います。
 
 <a name="azure-monitor-service"></a>
 
@@ -89,7 +91,7 @@ ms.locfileid: "53534878"
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 統合アカウントに関連付けられている Azure サブスクリプション | 
-   | **[リソース グループ]** | <*Azure-resource-group-name*> | 統合アカウントの Azure リソース グループ | 
+   | **リソース グループ** | <*Azure-resource-group-name*> | 統合アカウントの Azure リソース グループ | 
    | **リソースの種類** | **統合アカウント** | ログを有効にする Azure リソースの種類 | 
    | **リソース** | <*integration-account-name*> | ログを有効にする Azure リソースの名前 | 
    ||||  
@@ -113,13 +115,13 @@ ms.locfileid: "53534878"
 
    例:  
 
-   ![診断データをログに送信できるように Log Analytics を設定する](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![診断データをログに送信できるように Azure Monitor ログを設定する](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. 次に、[Log Analytics で B2B メッセージを追跡するための設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)を行います。
+1. 次に、[Azure Monitor ログで B2B メッセージを追跡するための設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)を行います。
 
 ## <a name="use-diagnostic-data-with-other-services"></a>診断データを他のサービスで使用する
 
-Azure Log Analytics と併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。 
+Azure Monitor ログと併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。 
 
 * [Azure 診断ログを Azure Storage にアーカイブする](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Azure 診断ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -144,6 +146,6 @@ Azure では、次の種類の追跡スキーマをサポートしています�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Log Analytics で B2B メッセージを追跡する](../logic-apps/logic-apps-track-b2b-messages-omsportal.md " で B2B メッセージを追跡する")
+* [Azure Monitor ログで B2B メッセージを追跡する](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "Azure Monitor ログで B2B メッセージを追跡する")
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 

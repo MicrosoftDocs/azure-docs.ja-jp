@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77c67c491b3157103b267864417678c83326814c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e29f36897dd52fcb09456768a799209a385d74fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141154"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444499"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Process のデータの取得と理解のステージ
 
@@ -66,9 +66,9 @@ TDSP には、データの視覚化と概要レポートの準備に役立つ、
 ## <a name="artifacts"></a>アーティファクト
 このステージでの成果物を以下に示します。
 
-   * [データ品質レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/DataSummaryReport.md): このレポートには、データの概要、各属性とターゲットの関係、変数のランクなどが含まれます。 TDSP の一部として提供される [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) ツールを使用すると、CSV ファイルやリレーショナル テーブルなどの任意の表形式のデータ セットで、このレポートをすばやく生成できます。 
+   * [データ品質レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): このレポートには、データの概要、各属性とターゲットの関係、変数のランクなどが含まれます。 TDSP の一部として提供される [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) ツールを使用すると、CSV ファイルやリレーショナル テーブルなどの任意の表形式のデータ セットで、このレポートをすばやく生成できます。 
    * **ソリューション アーキテクチャ**: ソリューション アーキテクチャは、モデルの構築後に、新しいデータでのスコア付けや予測の実行に使用されるデータ パイプラインのダイアグラムまたは説明です。 また、新しいデータに基づきモデルを再トレーニングするためのパイプラインも、これに含まれます。 TDSP ディレクトリ構造テンプレートを使用する場合は、[プロジェクト](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) ディレクトリにドキュメントを格納します。
-   * **チェックポイント判定**: 特徴エンジニアリングとモデルの構築を本格的に開始する前に、プロジェクトを再評価し、期待される値がそのプロジェクトを続行するために十分であるかどうかを判断できます。 たとえば、先に進む準備ができている、さらに多くのデータを収集する必要がある、質問に回答するためのデータが存在しないためプロジェクトを破棄するといった判断ができます。
+   * **チェックポイント判定**:特徴エンジニアリングとモデルの構築を本格的に開始する前に、プロジェクトを再評価し、期待される値がそのプロジェクトを続行するために十分であるかどうかを判断できます。 たとえば、先に進む準備ができている、さらに多くのデータを収集する必要がある、質問に回答するためのデータが存在しないためプロジェクトを破棄するといった判断ができます。
 
 ## <a name="next-steps"></a>次の手順
 

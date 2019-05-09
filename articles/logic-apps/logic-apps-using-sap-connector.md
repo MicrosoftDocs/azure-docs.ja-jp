@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 1738f02d28a4eb9ff5cbb51c73bc50ddf3c9a68b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231340"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887087"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
-この記事では、SAP ERP Central Component (ECC) コネクタを使用し、Logic Apps 内からオンプレミス SAP リソースにアクセスする方法を紹介します。 SAP ECC コネクタでは、Intermediate Document (IDoc)、Business Application Programming Interface (BAPI)、Remote Function Call (RFC) を介し、SAP Netweaver ベースのシステムとの間でメッセージやデータが統合されます。
+この記事では、SAP ERP Central Component (ECC) コネクタを使用し、Logic Apps 内からオンプレミス SAP リソースにアクセスする方法を紹介します。 コネクタは、オンプレミスの ECC と S/4 HANA の両方のシステムで動作します。 SAP ECC コネクタでは、Intermediate Document (IDoc)、Business Application Programming Interface (BAPI)、Remote Function Call (RFC) を介し、SAP Netweaver ベースのシステムとの間でメッセージやデータが統合されます。
 
-SAP ECC コネクタでは <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .Net Connector (NCo) ライブラリ</a>が使用され、次のような動作が行われます。
+SAP ECC コネクタでは <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .NET Connector (NCo) ライブラリ</a>が使用され、次のような動作が行われます。
 
 - **SAP に送信する**: SAP システムに tRFC で IDoc を送信したり、BAPI 関数を呼び出したりします。
 - **SAP から受信する**: SAP システムから tRFC で IDoc や BAPI 関数呼び出しを受信します。
@@ -38,7 +38,7 @@ SAP コネクタは、[オンプレミスのデータ ゲートウェイ](https:
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
-* SAP システムへのアクセスに使用するロジック アプリとそのロジック アプリのワークフローを開始するトリガー。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
+* SAP システムへのアクセスに使用するロジック アプリとそのロジック アプリのワークフローを開始するトリガー。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 * <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP アプリケーション サーバー</a>または <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP メッセージ サーバー</a>。
 
@@ -71,7 +71,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 1. [Azure portal](https://portal.azure.com) で空のロジック アプリを作成し、ロジック アプリ デザイナーを開きます。 
 
-2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、**[要求 - HTTP 要求の受信時]** というトリガーを選択します。
+2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、**[要求 - HTTP 要求の受信時]** を選択します。
 
    ![HTTP 要求トリガーの追加](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -92,7 +92,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![アクションを追加する](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. 検索ボックスに、フィルターとして「sap」と入力します。 アクションの一覧から、**[Send message to SAP]\(SAP にメッセージを送信する\)** を選択します。
+2. 検索ボックスに、フィルターとして「sap」と入力します。 アクションの一覧から、次のアクションを選択します。**[Send message to SAP]\(SAP にメッセージを送信する\)**
   
    ![SAP 送信アクションの選択](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
@@ -159,7 +159,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. ロジック アプリ デザイナーで、SAP アクションの下に表示される **[新しいステップ]** > **[アクションの追加]** を順に選択します。
 
-2. 検索ボックスに、フィルターとして「応答」と入力します。 アクションの一覧から、**[要求 - 応答]** アクションを選択します。
+2. 検索ボックスに、フィルターとして「応答」と入力します。 アクションの一覧から、次のアクションを選択します。**[要求と応答]**
 
 3. **[本文]** ボックス内をクリックして、動的コンテンツ リストを表示します。 このリストの **[Send to SAP]\(SAP に送信\)** で、**[本文]** フィールドを選択します。 
 
@@ -269,7 +269,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. Azure portal で空のロジック アプリを作成して、ロジック アプリ デザイナーを開きます。 
 
-2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、**[要求 - HTTP 要求の受信時]** というトリガーを選択します。
+2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、**[要求 - HTTP 要求の受信時]** を選択します。
 
    ![HTTP 要求トリガーの追加](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -286,7 +286,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![アクションを追加する](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. 検索ボックスに、フィルターとして「sap」と入力します。 アクションの一覧から **[スキーマの生成]** を選択します。
+2. 検索ボックスに、フィルターとして「sap」と入力します。 アクションの一覧から、次のアクションを選択します。**[スキーマの生成]**
   
    ![SAP 送信アクションの選択](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
@@ -343,7 +343,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 任意で、BLOB、ストレージ、統合アカウントなど、リポジトリにある生成済みのスキーマをダウンロードしたり、保存したりできます。 統合アカウントの場合、他の XML アクションでこの上ない操作性が与えられます。そこで、この例では、Azure Resource Manager コネクタを使用し、同じロジック アプリ用の統合アカウントにスキーマをアップロードする方法を示します。
 
-1. ロジック アプリ デザイナーのトリガーの下で **[新しいステップ]**、**[アクションの追加]** の順に選択します。 検索ボックスに、フィルターとして「resource manager」と入力します。 **[Create or update a resource]\(リソースの作成または更新\)** を選択します。
+1. ロジック アプリ デザイナーのトリガーの下で **[新しいステップ]**、**[アクションの追加]** の順に選択します。 検索ボックスに、フィルターとして「resource manager」と入力します。 このアクションを選択: **[Create or update a resource]\(リソースの作成または更新\)**
 
    ![Azure Resource Manager アクションの選択](media/logic-apps-using-sap-connector/select-arm-action.png) 
 

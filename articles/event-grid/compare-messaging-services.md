@@ -2,19 +2,19 @@
 title: Azure メッセージングの比較 - Event Grid、Event Hubs、Service Bus
 description: Azure Event Grid、Event Hubs、および Service Bus の 3 つの Azure メッセージング サービスについて説明します。 さまざまなシナリオでどのサービスを使うべきか、お勧めします。
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 12/07/2018
-ms.author: tomfitz
+ms.date: 01/30/2019
+ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166525"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540807"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure メッセージング サービスの中から選択する - Azure Event Grid、Event Hubs、および Service Bus
 
@@ -34,7 +34,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 イベントは、状態または状態変更の軽量の通知です。 イベントの発行元は、イベントの処理方法に関して何も予測していません。 通知の処理方法はイベントの処理者が決定します。 イベントは、個別の単位またはシリーズの一部になることができます。
 
-個別のイベントは、状態の変更を報告し、対応可能です。 処理者が次の手順を実行するために必要なのは、何かが起こったことを知ることだけです。 イベント データには、発生した事象に関する情報は含まれますが、イベントをトリガーしたデータは含まれていません。 たとえば、あるイベントは、ファイルが作成されたことを処理者に通知します。 このイベントにファイルに関する一般情報が含まれることはありますが、ファイル自体は含まれません。 個別のイベントは、スケーリングする必要がある[サーバーレス](http://azure.com/serverless) ソリューションに最適です。
+個別のイベントは、状態の変更を報告し、対応可能です。 処理者が次の手順を実行するために必要なのは、何かが起こったことを知ることだけです。 イベント データには、発生した事象に関する情報は含まれますが、イベントをトリガーしたデータは含まれていません。 たとえば、あるイベントは、ファイルが作成されたことを処理者に通知します。 このイベントにファイルに関する一般情報が含まれることはありますが、ファイル自体は含まれません。 個別のイベントは、スケーリングする必要がある[サーバーレス](https://azure.com/serverless) ソリューションに最適です。
 
 一連のイベントは、状態を報告し、分析可能です。 イベントは、時間順に並べられ、相互に関連付けられています。 処理者は、一連のイベントを分析して、何が起こったかを知る必要があります。
 
@@ -77,7 +77,7 @@ Azure Event Hubs は、ビッグ データのパイプラインです。 テレ�
 
 ### <a name="service-bus"></a>Service Bus
 
-Service Bus は、従来のエンタープライズ アプリケーションを対象としています。 これらのエンタープライズ アプリケーションは、トランザクション、順序付け、重複の検出、瞬間的な整合性を必要とします。 Service Bus を使用すると、クラウドネイティブ アプリケーションでビジネス プロセスに対する信頼性の高い状態遷移管理を実現できます。 損失や重複が許されない高価値のメッセージを処理する場合は、Azure Service Bus を使用してください。 Service Bus は、ハイブリッド クラウド ソリューション全体で安全性の高い通信を容易にします。そして、既存のオンプレミス システムをクラウド ソリューションに接続できます。
+Service Bus は、従来のエンタープライズ アプリケーションを対象としています。 これらのエンタープライズ アプリケーションは、トランザクション、順序付け、重複の検出、瞬間的な整合性を必要とします。 Service Bus を使用すると、[クラウドネイティブ](https://azure.microsoft.com/overview/cloudnative/) アプリケーションでビジネス プロセスに対する信頼性の高い状態遷移管理を実現できます。 損失や重複が許されない高価値のメッセージを処理する場合は、Azure Service Bus を使用してください。 Service Bus は、ハイブリッド クラウド ソリューション全体で安全性の高い通信を容易にします。そして、既存のオンプレミス システムをクラウド ソリューションに接続できます。
 
 Service Bus はブローカー メッセージング システムです。 使用側がメッセージを受信する準備ができるまで、メッセージを "ブローカー" (キューなど) に格納します。
 
@@ -97,9 +97,10 @@ Service Bus はブローカー メッセージング システムです。 使�
 ![データ ストリーミングの概要](./media/compare-messaging-services/overview.png)
 
 ## <a name="next-steps"></a>次の手順
+次の記事を参照してください。 
 
-* Azure のメッセージング サービスの詳細については、ブログ記事「[Events, Data Points, and Messages - Choosing the right Azure messaging service for your data (イベント、データ ポイント、メッセージ - データに適した Azure メッセージング サービスの選択)](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)」を参照してください。
-* Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
-* Event Grid の概要については、[Event Grid を使用したカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関するページを参照してください。
-* Event Hubs の概要については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」を参照してください。
-* Service Bus の概要については、「[Azure Portal を使用して Service Bus 名前空間を作成する](../service-bus-messaging/service-bus-create-namespace-portal.md)」を参照してください。
+- [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data (イベント、データ ポイント、メッセージ - データに適した Azure メッセージング サービスの選択)](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)
+- [Storage キューと Service Bus キューの比較](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+- Event Grid の概要については、[Event Grid を使用したカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関するページを参照してください。
+- Event Hubs の概要については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」を参照してください。
+- Service Bus の概要については、「[Azure Portal を使用して Service Bus 名前空間を作成する](../service-bus-messaging/service-bus-create-namespace-portal.md)」を参照してください。

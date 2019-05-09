@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 63fdf9cf24c7e412533f15ff0701bc8fb481602a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240615"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864976"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Azure VM から非管理対象 VM イメージを作成する方法
 
@@ -29,11 +29,10 @@ ms.locfileid: "51240615"
 
 この記事では、ストレージ アカウントを使用し、Azure PowerShell を使用して、一般化された Azure VM のイメージを作成する方法について説明します。 その後、そのイメージを使用して、別の VM を作成できます。 イメージには、仮想マシンに接続された OS ディスクやデータ ディスクが含まれます。 イメージには仮想ネットワーク リソースは含まれないため、新しい VM を作成するときにこれらのリソースを設定する必要があります。 
 
-## <a name="prerequisites"></a>前提条件
-Azure PowerShell Version 1.0.x 以降がインストールされている必要があります。 PowerShell がインストールされていない場合、インストール手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="generalize-the-vm"></a>VM の汎用化 
-このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 VM の一般化とは、特に重要なこととして、すべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 VM の一般化とは、特に重要なこととして、すべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -42,7 +41,7 @@ Azure PowerShell Version 1.0.x 以降がインストールされている必要�
 > 
 > 
 
-`sudo waagent -deprovision+user` を使用して Linux VM を一般化してから、PowerShell を使用して VM をキャプチャすることもできます。 CLI を使用して VM をキャプチャする方法については、「[How to generalize and capture a Linux virtual machine using the Azure CLI (Azure CLI を使用して Linux 仮想マシンを一般化およびキャプチャする方法)](../linux/capture-image.md)」を参照してください。
+`sudo waagent -deprovision+user` を使用して Linux VM を一般化してから、PowerShell を使用して VM をキャプチャすることもできます。 CLI を使用して VM をキャプチャする方法については、[Azure CLI を使用して Linux 仮想マシンを一般化およびキャプチャする方法](../linux/capture-image.md)に関するページを参照してください。
 
 
 1. Windows 仮想マシンへのサインイン
@@ -63,19 +62,19 @@ Azure PowerShell Version 1.0.x 以降がインストールされている必要�
 1. Azure PowerShell を開き、Azure アカウントにサインインします。
    
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
    
     Azure アカウント資格情報を入力するためのポップアップ ウィンドウが開きます。
 2. 使用可能なサブスクリプションのサブスクリプション ID を取得します。
    
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 3. このサブスクリプション ID を使用して、適切なサブスクリプションを設定します。
    
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
+    Select-AzSubscription -SubscriptionId "<subscriptionID>"
     ```
 
 ## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>VM の割り当てを解除して、一般化状態に設定
@@ -87,19 +86,19 @@ Azure PowerShell Version 1.0.x 以降がインストールされている必要�
 1. VM リソースの割り当てを解除します。
    
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName>
+    Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
     Azure Portal で VM の *[状態]* が **[停止済み]** から **[停止済み (割り当て解除)]** に変わります。
 2. 仮想マシンの状態を **[一般化]** に設定します。 
    
     ```powershell
-    Set-AzureRmVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
+    Set-AzVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
     ```
 3. VM の状態を確認します。 VM の **[OSState/generalized (OS の状態/一般化)]** セクションの **[DisplayStatus (ステータス表示)]** が **[VM が汎用化されました]** に設定されています。  
    
     ```powershell
-    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
+    $vm = Get-AzVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
     $vm.Statuses
     ```
 
@@ -108,7 +107,7 @@ Azure PowerShell Version 1.0.x 以降がインストールされている必要�
 次のコマンドを使用して、非管理対象仮想マシン イメージを宛先のストレージ コンテナー内に作成します。 イメージは、元の仮想マシンと同じストレージ アカウントに作成されます。 `-Path` パラメーターは、ソース VM の JSON テンプレートのコピーをローカル コンピューターに保存します。 `-DestinationContainerName` パラメーターは、イメージを格納するコンテナーの名前です。 コンテナーが存在しない場合、コンテナーは自動的に作成されます。
    
 ```powershell
-Save-AzureRmVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
+Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -DestinationContainerName <destinationContainerName> -VHDNamePrefix <templateNamePrefix> `
     -Path <C:\local\Filepath\Filename.json>
 ```
@@ -138,14 +137,14 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubnet"
-    $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+    $singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
 2. 仮想ネットワークを作成します。 次の例では、アドレス プレフィックス **10.0.0.0/16** で **myVnet** という名前の仮想ネットワークを場所 **West US** に作成します。  
    
     ```powershell
     $location = "West US"
     $vnetName = "myVnet"
-    $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
+    $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
 
@@ -156,14 +155,14 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
    
     ```powershell
     $ipName = "myPip"
-    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
+    $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
 2. NIC を作成します。 この例では、**myNic** という名前の NIC を作成します。 
    
     ```powershell
     $nicName = "myNic"
-    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location `
+    $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location `
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
@@ -175,12 +174,12 @@ RDP を使用して VM にログインできるようにするには、ポート
 ```powershell
 $nsgName = "myNsg"
 
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
     -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
 
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
     -Name $nsgName -SecurityRules $rdpRule
 ```
 
@@ -189,7 +188,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 変数を作成して、仮想ネットワークの作成を完了します。 
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>VM の作成
@@ -228,33 +227,33 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
     $skuName = "Standard_LRS"
 
     # Get the storage account where the uploaded image is stored
-    $storageAcc = Get-AzureRmStorageAccount -ResourceGroupName $rgName -AccountName $storageAccName
+    $storageAcc = Get-AzStorageAccount -ResourceGroupName $rgName -AccountName $storageAccName
 
     # Set the VM name and size
-    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
+    $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $vmSize
 
     #Set the Windows operating system configuration and add the NIC
-    $vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName `
+    $vm = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName `
         -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-    $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
+    $vm = Add-AzVMNetworkInterface -VM $vm -Id $nic.Id
 
     # Create the OS disk URI
     $osDiskUri = '{0}vhds/{1}-{2}.vhd' `
         -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
 
     # Configure the OS disk to be created from the existing VHD image (-CreateOption fromImage).
-    $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri `
+    $vm = Set-AzVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri `
         -CreateOption fromImage -SourceImageUri $imageURI -Windows
 
     # Create the new VM
-    New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
+    New-AzVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 作成の確認
 完了したら、[Azure Portal](https://portal.azure.com) で **[参照]** > **[仮想マシン]** にアクセスするか、次の PowerShell コマンドを使用して、新しく作成された VM を確認します。
 
 ```powershell
-    $vmList = Get-AzureRmVM -ResourceGroupName $rgName
+    $vmList = Get-AzVM -ResourceGroupName $rgName
     $vmList.Name
 ```
 

@@ -1,6 +1,6 @@
 ---
-title: PowerShell サンプル - モニター - スケーリング - SQL エラスティック プール - Azure SQL Database | Microsoft Docs
-description: Azure SQL Database の SQL エラスティック プールを監視し、スケーリングするための Azure PowerShell サンプル スクリプト
+title: PowerShell サンプル - 監視 - スケール - エラスティック プール - Azure SQL Database | Microsoft Docs
+description: Azure SQL Database のエラスティック プールを監視およびスケールするための Azure PowerShell サンプル スクリプト
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,50 +11,51 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 879c651aa18687bd5c2378879594cfa312763e93
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 03/12/2019
+ms.openlocfilehash: 5e4887c3b736c13977d50cb395a9ac7661815d0d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600949"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59356597"
 ---
-# <a name="use-powershell-to-monitor-and-scale-a-sql-elastic-pool-in-azure-sql-database"></a>PowerShell を使用し、Azure SQL Database の SQL エラスティック プールを監視し、スケーリングする
+# <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database のエラスティック プールを監視およびスケールする
 
 この PowerShell のサンプル スクリプトは、エラスティック プールのパフォーマンス メトリックを監視し、そのエラスティック プールを上位のコンピューティング サイズにスケーリングして、パフォーマンス メトリックの 1 つに警告ルールを作成します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは AZ PowerShell 1.4.0 以降が必要になります。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=16-17 "Monitor and scale single SQL Database")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=17-18 "Monitor and scale a single SQL Database")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
- [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | 論理サーバー内にエラスティック プールを作成します。 |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | 単一のデータベースまたはプールされたデータベースとして論理サーバーにデータベースを作成します。 |
-| [Get-AzureRmMetric](/powershell/module/azurerm.insights/get-azurermmetric) | データベース サイズの使用量に関する情報を表示します。|
-| [Add-AzureRMMetricAlertRule](/powershell/module/azurerm.insights/add-azurermmetricalertrule) | メトリックベースのアラート ルールを追加または更新します。 |
-| [Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool) | エラスティック プールのプロパティを更新します。 |
-| [Add-AzureRMMetricAlertRule](/powershell/module/azurerm.insights/add-azurermmetricalertrule) | DTU を今後自動的に監視するアラート ルールを設定します。 |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+ [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースまたはエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | エラスティック プールを作成します。 |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 単一データベースまたはエラスティック プール内のデータベースを作成します。 |
+| [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) | データベース サイズの使用量に関する情報を表示します。|
+| [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | メトリックベースのアラート ルールを追加または更新します。 |
+| [Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool) | エラスティック プールのプロパティを更新します。 |
+| [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | DTU を今後自動的に監視するアラート ルールを設定します。 |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
 ## <a name="next-steps"></a>次の手順

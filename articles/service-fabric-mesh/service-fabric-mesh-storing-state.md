@@ -3,18 +3,18 @@ title: Azure Service Fabric Mesh の状態ストレージ オプション | Micr
 description: Azure Service Fabric Mesh 上で実行されている Service Fabric Mesh アプリケーションに状態を確実に格納する方法について説明します。
 services: service-fabric-mesh
 keywords: ''
-author: rwike77
-ms.author: ryanwi
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: ecdb36af786d96a5b343d11cd689642d59528445
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888536"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337579"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric を使用した状態の管理
 
@@ -30,7 +30,7 @@ Service Fabric Mesh を使用することにより、新しいアプリケーシ
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 
-Service Fabric Reliable Volume は、コンテナーにローカル ボリュームをマウントするために使用される Docker ボリューム ドライバーです。 読み取りと書き込みはローカル操作であり、高速です。 データはセカンダリ ノードにレプリケートされるため、可用性が高くなります。 フェールオーバーも高速です。 コンテナーがクラッシュすると、データのコピーが既にあるノードにフェールオーバーします。 例については、[Service Fabric Reliable Volume を使用してアプリをデプロイする方法](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/counter)に関するページを参照してください。
+Service Fabric Reliable Volume は、コンテナーにローカル ボリュームをマウントするために使用される Docker ボリューム ドライバーです。 読み取りと書き込みはローカル操作であり、高速です。 データはセカンダリ ノードにレプリケートされるため、可用性が高くなります。 フェールオーバーも高速です。 コンテナーがクラッシュすると、データのコピーが既にあるノードにフェールオーバーします。 例については、[Service Fabric Reliable Volume を使用してアプリをデプロイする方法](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)に関するページを参照してください。
 
 ### <a name="azure-files-volume"></a>Azure Files Volume
 

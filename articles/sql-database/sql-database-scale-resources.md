@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1c83ebd0153e7a28365317b02d3debbe43d976f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601578"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471669"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>最小限のダウンタイムでデータベースのリソースを動的にスケーリングする
 
@@ -54,9 +54,9 @@ Azure SQL Database には、[DTU ベースの購入モデル](sql-database-servi
 
 Azure SQL Database の 3 種類すべてに、データベースを動的にスケーリングする何らかの機能があります。
 
-- [Azure SQL Single Database](sql-database-single-database-scale.md) では[DTU](sql-database-dtu-resource-limits-single-databases.md) モデルまたは[仮想コア](sql-database-vcore-resource-limits-single-databases.md) モデルを使って、各データベースに割り当てられる最大リソース量を定義できます。
-- [Azure SQL Managed Instance](sql-database-managed-instance.md) は[仮想コア](sql-database-managed-instance.md#vcore-based-purchasing-model) モードを使い、インスタンスに割り当てられる最大 CPU コア数と最大ストレージ量を定義できます。 インスタンス内のすべてのデータベースが、インスタンスに割り当てられたリソースを共有します。
-- [Azure SQL エラスティック プール](sql-database-elastic-pool-scale.md)を使用すると、プール内のデータベースのグループごとの最大リソース制限を定義できます。
+- [単一データベース](sql-database-single-database-scale.md)では、[DTU](sql-database-dtu-resource-limits-single-databases.md) モデルまたは[仮想コア](sql-database-vcore-resource-limits-single-databases.md) モデルを使って、各データベースに割り当てられる最大リソース量を定義できます。
+- [マネージド インスタンス](sql-database-managed-instance.md)では[仮想コア](sql-database-managed-instance.md#vcore-based-purchasing-model) モードが使用されており、インスタンスに割り当てられる最大 CPU コア数と最大ストレージ量を定義できます。 インスタンス内のすべてのデータベースが、インスタンスに割り当てられたリソースを共有します。
+- [エラスティック プール](sql-database-elastic-pool-scale.md)を使用すると、プール内のデータベースのグループごとの最大リソース制限を定義できます。
 
 ## <a name="alternative-scale-methods"></a>別のスケーリング方法
 

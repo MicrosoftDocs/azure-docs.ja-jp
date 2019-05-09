@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 56f1769d601df6292decc46c9470768eac29102c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 522b9743af28dedb2aec5682a1ae95b9d52ad2d9
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249079"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446450"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen1 へのデータの読み込み
 
@@ -26,10 +26,10 @@ Azure Data Factory は、フル マネージドのクラウドベースのデー
 
 Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む際に次の利点があります。
 
-* **簡単にセットアップ**: 直感的なウィザードが示す 5 つの手順に従うだけです。スクリプトは必要ありません。
-* **豊富なデータ ストアのサポート**: オンプレミスとクラウド ベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。 詳しい一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+* **簡単なセットアップ**: 直感的なウィザードが示す 5 つの手順に従うだけです。スクリプトは必要ありません。
+* **豊富なデータ ストアのサポート**: オンプレミスとクラウドベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。 詳しい一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
 * **セキュリティとコンプライアンスへの準拠**: データは HTTPS または ExpressRoute 経由で転送されます。 グローバル サービスの存在により、データが地理的な境界を越えることはありません。
-* **高パフォーマンス**: 最大 1 GB/s の速度で Data Lake Storage Gen1 にデータを読み込みます。 詳しくは、[コピー アクティビティのパフォーマンス](copy-activity-performance.md)に関する記事をご覧ください。
+* **ハイ パフォーマンス**: 最大 1 GB/s の速度で Data Lake Storage Gen1 にデータを読み込みます。 詳しくは、[コピー アクティビティのパフォーマンス](copy-activity-performance.md)に関する記事をご覧ください。
 
 この記事では、Data Factory のデータのコピー ツールを使用して "_Amazon S3 から Data Lake Storage Gen1 にデータを読み込む_" 方法を示します。 その他の種類のデータ ストアからデータをコピーする場合も、同様の手順で実行できます。
 
@@ -38,24 +38,25 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/)を作成してください。
-* Data Lake Storage Gen1 アカウント: Data Lake Storage Gen1 アカウントがない場合は、「[Data Lake Storage Gen1 アカウントの作成](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)」の手順を参照してください。
+* Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* Data Lake Storage Gen1 アカウント: Data Lake Storage Gen1 アカウントがない場合は、「[Data Lake Storage Gen1 アカウントを作成する](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)」の手順を参照してください。
 * Amazon S3: この記事では、Amazon S3 からデータをコピーする方法を示します。 同様の手順に従うことによって、その他のデータ ストアも使用できます。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
 1. 左側のメニューで、**[リソースの作成]** > **[分析]** > **[データ ファクトリ]** を選択します。
    
-   ![新しいデータ ファクトリの作成](./media/load-data-into-azure-data-lake-store/new-azure-data-factory-menu.png)
+   ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. **[新しいデータ ファクトリ]** ページで、次の画像に示されているフィールドの値を指定します。 
       
    ![[新しいデータ ファクトリ] ページ](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **名前**: Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSG1Demo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
-    * **サブスクリプション**: データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ**: ドロップダウン リストから既存のリソース グループを選択するか、**[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-    * **バージョン**: **[V2]** を選択します。
-    * **場所**: データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Storage Gen1、Azure Storage、Azure SQL Database などがあります。
+    * **名前**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSG1Demo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、**[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+    * **バージョン**:**[V2]** を選択します。
+    * **場所**:データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Storage Gen1、Azure Storage、Azure SQL Database などがあります。
 
 3. **作成**を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
@@ -85,7 +86,7 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
    2. **[シークレット アクセス キー]** の値を指定します。
    3. **[完了]** を選択します。
    
-     ![Amazon S3 アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![Amazon S3 アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. 新しい接続が表示されます。 **[次へ]** を選択します。
    

@@ -1,23 +1,23 @@
 ---
 title: 'クイック スタート: 音声を認識する (C++ (Windows)) - Speech Services'
 titleSuffix: Azure Cognitive Services
-description: Windows デスクトップで C++ と Speech Service SDK を使用して音声を認識する方法について説明します
+description: Windows デスクトップで C++ と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 60897e1fac607ebd5bfe7e7c35a43c249f7c71e2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a3fe14436a569a8354e4bfd58a9ba164881d8fe2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878683"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート: Windows 上で C++ と Speech SDK を使用して音声を認識する
+# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート:Windows 上で C++ と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "53722127"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Speech サービス サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、[Sppech サービスを無料で試す](get-started.md)ための記事を参照してください。
+このクイック スタートを完了するには、Speech Services サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、「[Speech Service を無料で試す](get-started.md)」を参照してください。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -53,7 +53,7 @@ ms.locfileid: "53722127"
 
    ![[デバッグの開始] オプションが強調表示された Visual Studio アプリケーションのスクリーン ショット](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. コンソール ウィンドウが表示され、何か言うように求められます。 英語の語句または文を読み上げます。 音声が Speech サービスに送信されてテキストに変換され、同じウィンドウに表示されます。
+1. コンソール ウィンドウが表示され、何か言うように求められます。 英語の語句または文を読み上げます。 音声が Speech Services に送信されてテキストに変換され、同じウィンドウに表示されます。
 
    ![認識が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-cpp-windows-08-console-output-release.png)
 

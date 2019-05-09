@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 01/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 99ea221dcd236d3e8c42aec25d651b5fda2ae1d1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ba0ecda0ec24bf0a07acbf1bf5bfef494c3eabdd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887431"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57836931"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 

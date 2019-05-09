@@ -3,24 +3,25 @@ title: カスタム開発されたアプリケーションへのサインイン�
 description: Azure AD で開発したアプリケーションにサインインできなくなる一般的なエラー
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 2dade35b05a07b649282ae00bb6fee354adcd195
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f4365c87f0028fe3a9c4ba35f40599359eb1455f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845489"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259127"
 ---
 # <a name="problems-signing-in-to-an-custom-developed-application"></a>カスタム開発されたアプリケーションへのサインインに関する問題
 
@@ -38,7 +39,7 @@ ms.locfileid: "52845489"
 
 [Azure AD 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 
-[同意およびアプリと Azure AD との統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications>)<br>
+[同意およびアプリと Azure AD との統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
 [Azure AD v2.0 収束済みアプリの同意およびアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 

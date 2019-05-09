@@ -4,7 +4,7 @@ description: この記事では、Azure の運用環境ネットワークの監�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 59f54487d89aee199e35e741ac4683d4784818a0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 88bc76116392140c533f67402642c68d714227c0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172485"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108214"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure インフラストラクチャの監視   
 

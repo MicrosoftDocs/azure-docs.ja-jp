@@ -11,23 +11,23 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 55798af8d8e2b50614a3eee51b330c5b4fa0f918
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 4e1ea3d822c8b032617b7f202f1c176aeb966210
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409578"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436780"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure Service Bus と Azure Event Grid の統合の例
 
 Azure 関数とロジック アプリはどちらも、Azure Event Grid からのイベントの受信に基づいてメッセージを受信します。この記事では、Azure 関数とロジック アプリの設定方法について説明します。 次の作業を行います。
  
-* Event Grid からのイベントの初期フローをデバッグして確認するための、簡単な[テスト Azure 関数](#test-function-setup)を作成します。 この手順は、他の作業を行うかどうかに関係なく実行します。
-* Event Grid イベントに基づいて [Azure Service Bus メッセージを受信して処理する Azure 関数](#receive-messages-using-azure-function)を作成します。
-* [Azure App Service の Logic Apps 機能](#receive-messages-using-azure-logic-app)を利用します。
+* Event Grid からのイベントの初期フローをデバッグして確認するための、簡単なテスト Azure 関数を作成します。 この手順は、他の作業を行うかどうかに関係なく実行します。
+* Event Grid イベントに基づいて Azure Service Bus メッセージを受信して処理する Azure 関数を作成します。
+* Azure App Service の Logic Apps 機能を利用します。
 
 作成する例では、Service Bus トピックに 2 つのサブスクリプションがあることを前提としています。 また、一方の Service Bus サブスクリプションについてのみ、イベントを送信するように Event Grid サブスクリプションが作成されていることを前提とします。 
 

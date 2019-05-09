@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: 8b1a4bbb100fc4db1323f530808a8d01bd8f30ce
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858879"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -30,7 +30,7 @@ ms.locfileid: "53582441"
 
 ## <a name="open-ftp-dashboard"></a>FTP ダッシュボードを開く
 
-[Azure Portal](https://portal.azure.com) でアプリの[リソース ページ](../azure-resource-manager/resource-group-portal.md#manage-resources)を開きます。
+[Azure Portal](https://portal.azure.com) でアプリの[リソース ページ](../azure-resource-manager/manage-resources-portal.md#manage-resources)を開きます。
 
 FTP ダッシュボードを開くには、**[デプロイ センター]** > **[FTP]** > **[ダッシュボード]** の順にクリックします。
 
@@ -43,6 +43,14 @@ FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エ�
 ![FTP 情報のコピー](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
 アプリごとに一意であるため、**アプリの資格情報**を使用してデプロイすることをお勧めします。 ただし、**[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
+
+> [!NOTE]
+> ユーザーレベルの資格情報を使用した FTP または FTPS エンドポイントの認証には、次の形式のユーザー名が必要です。 
+>
+>`<app-name>\<user-name>`
+>
+> ユーザーレベルの資格情報は、特定のリソースではなく、ユーザーにリンクされているため、適切なアプリのエンドポイントに対してサインイン アクションを実行するには、ユーザー名はこの形式でなければなりません。
+>
 
 ## <a name="deploy-files-to-azure"></a>ファイルを Azure にデプロイする
 
@@ -58,7 +66,6 @@ FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エ�
 > - web.config の生成 ([Node.js の例はこちら](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
 > ローカル コンピューターでこれらの必要なファイルを手動生成した後、アプリと共にデプロイします。
->
 >
 
 ## <a name="enforce-ftps"></a>FTPS を強制する

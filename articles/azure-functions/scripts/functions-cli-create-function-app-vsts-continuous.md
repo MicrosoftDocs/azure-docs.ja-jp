@@ -9,12 +9,12 @@ ms.date: 07/03/2018
 ms.topic: sample
 ms.service: azure-functions
 ms.custom: mvc
-ms.openlocfilehash: 17e33e3c0e6b06266025a7f0e6403789c9468a16
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7fe68090773902248dbcdd63fbbdbbdb06b307cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852391"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-azure-devops"></a>関数アプリを作成して Azure DevOps から関数コードをデプロイする
 
@@ -45,7 +45,7 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、ストレージ アカウント、関数アプリ、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |

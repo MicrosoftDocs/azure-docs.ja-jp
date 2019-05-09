@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: fd553e4cb669d712bc4458ca55864b09a9160862
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.subservice: blobs
+ms.openlocfilehash: c155cc6844b4730b6e3627f7e3239f583c7b7957
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399428"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250927"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure PowerShell サンプル
 

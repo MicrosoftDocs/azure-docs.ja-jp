@@ -1,19 +1,19 @@
 ---
 title: Azure の Ansible モジュールとバージョンのマトリックス
 description: Azure の Ansible モジュールとバージョンのマトリックス
-ms.service: ansible
+ms.service: azure
 keywords: Ansible, ロール, マトリックス, バージョン, Azure, DevOps
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: accb7b84793b9fc98bc20f1637ec30f97a7f4a87
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f2f1dccfd5b91205d0673c2b82ad7cfa673f61f6
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962082"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791819"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible モジュールとバージョンのマトリックス
 
@@ -21,7 +21,7 @@ ms.locfileid: "52962082"
 Ansible には多数のモジュールが付属しています。これらのモジュールは、リモート ホストで直接実行することも、プレイブックを介して実行することもできます。
 この記事では、仮想マシン、ネットワーク、コンテナー サービスなどの Azure クラウド リソースをプロビジョニングできる Azure 用 Ansible モジュールの一覧を示します。 これらのモジュールは、Ansible の正式なリリースから入手するか、Microsoft が公開している次のプレイブック ロールから入手できます。
 
-| Azure 用 Ansible モジュール                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | [Ansible のロール](#introduction-to-azurepreviewmodule) | 
+| Azure 用 Ansible モジュール                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible のロール | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|-------------------------------------| 
 | **Compute**                    |           |                          |                          |                            |                                | 
 | azure_rm_availabilityset                    | はい          | はい                         | はい          | はい          | はい                                 | 

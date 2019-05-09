@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: 08009ca7f9faaa75e593670c22cf864c12236e8b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9fea914fdf9b025fd5d38219a6bfc81b4a9cc584
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412644"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450305"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure での新しい Linux 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -63,9 +63,9 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 
 **解決策:**
 
-これらのエラーを解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で [現在の VHD からイメージをキャプチャし直します](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
+これらのエラーの両方を解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>問題: カスタム/ ギャラリー/ マーケットプレース イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求されている VM サイズをサポートできないか、要求に対応するための使用可能な空き領域がないクラスターに固定されている場合に発生します。
 
 **原因 1:** クラスターが要求された VM サイズをサポートできない。

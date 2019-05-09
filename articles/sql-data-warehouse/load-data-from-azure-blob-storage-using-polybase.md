@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み | Microsoft Docs'
+title: チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み | Microsoft Docs
 description: このチュートリアルでは、Azure Portal と SQL Server Management Studio を使って、ニューヨークのタクシー データをパブリックな Azure BLOB から Azure SQL Data Warehouse に読み込みます。
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
-ms.date: 09/12/2018
-ms.author: cakarst
+ms.subservice: implement
+ms.date: 03/27/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: b9c42f5b0fc6fb9468d8fd0a1c34270d1734391a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579921"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620191"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル: Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
 このチュートリアルでは、PolyBase を使って、ニューヨークのタクシー データをパブリックな Azure BLOB から Azure SQL Data Warehouse に読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
 
@@ -80,7 +80,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 6. **[パフォーマンス レベル]** をクリックし、データ ウェアハウスが Gen1 または Gen2 のいずれであるかということと、Data Warehouse ユニットの数を指定します。 
 
-7. このチュートリアルでは、SQL Data Warehouse の **[Gen1]** を選択します。 スライダーは、既定で **[DW1000c]** に設定されています。  上下に動かしてどうなるか試してみてください。 
+7. このチュートリアルでは、SQL Data Warehouse の **[Gen2]** を選択します。 スライダーは、既定で **[DW1000c]** に設定されています。  上下に動かしてどうなるか試してみてください。 
 
     ![パフォーマンスを構成する](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 

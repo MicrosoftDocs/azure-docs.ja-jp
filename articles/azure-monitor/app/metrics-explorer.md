@@ -10,17 +10,20 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/08/2017
+ms.date: 01/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: aaa34d27e73c1691e69ea2f6860226639217f0c6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004739"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817119"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights を使用したメトリックの探索
 [Application Insights][start] のメトリックとは、アプリケーションからのテレメトリとして送信される測定値とイベントの数を表します。 メトリックは、パフォーマンスの問題を検出し、アプリケーションの利用に関する傾向を把握するのに役立ちます。 さまざまな標準メトリックが用意されているほか、独自にカスタムのメトリックとイベントを作成することもできます。
+
+> [!NOTE]
+> この記事では、現在非推奨で、最終的に廃止されるクラシック メトリック エクスプローラー エクスペリエンスについて説明します。 [この記事](../platform/metrics-charts.md)で説明されている新しいエクスペリエンスを確認することをお勧めします。
 
 メトリックとイベントの数は、合計、平均、カウントなどの集計値のグラフに表示されます。
 
@@ -193,18 +196,18 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
     グラフごとに異なるフィルターを設定する場合は、それぞれ異なるブレードでグラフを作成し、個別のお気に入りとして保存します。 その場合、グラフを並べて表示できるように、グラフをダッシュボードに固定できます。
 * メトリックで定義されていないプロパティでグラフをグループ化すると、グラフに何も表示されなくなります。 "group by" をクリアするか、別のグループ化プロパティを選択してみます。
-* パフォーマンス データ (CPU、IO レートなど) は、Java Web サービス、Windows デスクトップ アプリ、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](../../azure-monitor/app/monitor-performance-live-website-now.md)、[Azure Cloud Services](../../application-insights/app-insights-overview.md) で使用できます。 Azure Web サイトでは利用できません。
+* パフォーマンス データ (CPU、IO レートなど) は、Java Web サービス、Windows デスクトップ アプリ、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](../../azure-monitor/app/monitor-performance-live-website-now.md)、[Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md) で使用できます。 Azure Web サイトでは利用できません。
 
 ## <a name="video"></a>ビデオ
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>次の手順
-* [Application Insights による使用状況の監視](../../application-insights/app-insights-usage-overview.md)
+* [Application Insights による使用状況の監視](../../azure-monitor/app/usage-overview.md)
 * [診断検索の使用](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 
 [alerts]: ../../azure-monitor/app/alerts.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md

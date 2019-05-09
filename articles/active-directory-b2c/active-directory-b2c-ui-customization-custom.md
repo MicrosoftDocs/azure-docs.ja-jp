@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でカスタム ポリシーを使用してア
 description: Azure Active Directory B2C でカスタム ポリシーを使用してユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: cc96da060a7a91e0e3118c436a93bdafca3b0372
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: B2C
+ms.openlocfilehash: 7463a61945524672c5124966db2464c036559db7
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633012"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571330"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -86,7 +86,7 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 5. **$root** をクリックして、新しいコンテナーを開きます。
 6. **[アップロード]** をクリックします。
 7. **[ファイルの選択]** の横にあるフォルダー アイコンをクリックします。
-8. 先ほど「[ページ UI のカスタマイズ](#the-page-ui-customization-feature)」セクションで作成した **customize-ui.html** に移動します。
+8. 先ほど「ページ UI のカスタマイズ」セクションで作成した **customize-ui.html** に移動します。
 9. **[アップロード]** をクリックします。
 10. アップロードした customize-ui.html BLOB を選択します。
 11. **[URL]** の横にある **[コピー]** をクリックします。
@@ -97,7 +97,7 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 次の手順を実行して、クロス オリジン リソース共有用に Blob Storage を構成します。
 
 1. メニューで **[CORS]** を選択します。
-2. **[許可されるオリジン]** には、`your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `fabrikam.b2clogin.com` 」のように入力します。 テナント名を入力するときは、すべて小文字を使用する必要があります。
+2. **[許可されるオリジン]** には、`https://your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `https://fabrikam.b2clogin.com` 」のように入力します。 テナント名を入力するときは、すべて小文字を使用する必要があります。
 3. **[許可されたメソッド]** に、`GET` と `OPTIONS` を両方選択します。
 4. **[許可されたヘッダー]** に、アスタリスク (*) を入力します。
 5. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
@@ -121,7 +121,7 @@ UI のカスタマイズを構成するには、**ContentDefinition** とその�
 3. 拡張ファイルを開きます。 たとえば、*TrustFrameworkExtensions.xml* です。 **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
 4. コピーした **ContentDefinitions** 要素の内容全体を **BuildingBlocks** 要素の子として貼り付けます。 
 5. コピーした XML で `Id="api.signuporsignin"` を含む **ContentDefinition** 要素を検索します。
-6. **LoadUri** の値を、ストレージにアップロードした HTML ファイルの URL に変更します。 たとえば、「 https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html 」のように入力します。
+6. **LoadUri** の値を、ストレージにアップロードした HTML ファイルの URL に変更します。 たとえば、「 `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 」のように入力します。
     
     カスタム ポリシーは次のようになります。
 
@@ -175,7 +175,7 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 | *unified.html* | このファイルは、統合されたサインアップ ページまたはサインイン ページのテンプレートとして使用します。 |
 | *updateprofile.html* | このファイルは、プロファイルの更新ページのテンプレートとして使用します。 |
 
-「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
+「サインアップまたはサインイン カスタム ポリシーを変更する」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
 
 | コンテンツ定義 ID | 説明 | 
 |-----------------------|-------------|

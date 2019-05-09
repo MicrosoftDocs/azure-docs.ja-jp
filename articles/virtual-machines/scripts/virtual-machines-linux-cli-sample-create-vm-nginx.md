@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - NGINX がインストール�
 description: Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50a6bc40dbc79242e7c64bbc2082baeac224ba2e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 5aa682af11744389739a539e900924ed93a3bbd6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467924"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691152"
 ---
 # <a name="create-a-vm-with-nginx"></a>NGINX がインストールされた VM の作成
 
@@ -63,11 +63,11 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 仮想マシンを作成します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
-| [az vm open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | 受信トラフィックを許可するネットワーク セキュリティ グループ規則を作成します。 このサンプルでは、HTTP トラフィック用にポート 80 を開きます。 |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | VM に仮想マシン拡張機能を追加して実行します。 このサンプルでは、カスタム スクリプト拡張機能を使用して NGINX をインストールします。|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
+| [az vm open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 受信トラフィックを許可するネットワーク セキュリティ グループ規則を作成します。 このサンプルでは、HTTP トラフィック用にポート 80 を開きます。 |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | VM に仮想マシン拡張機能を追加して実行します。 このサンプルでは、カスタム スクリプト拡張機能を使用して NGINX をインストールします。|
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

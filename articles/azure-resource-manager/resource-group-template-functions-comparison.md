@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 364a271d84f9abfe99c7c674a6c504ce94318ac9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359711"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268706"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの比較関数
 
@@ -31,6 +31,8 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [less](#less)
 * [lessOrEquals](#lessorequals)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="equals"></a>equals
 `equals(arg1, arg2)`
 
@@ -38,7 +40,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 1 番目の値。 |
 | arg2 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 2 番目の値。 |
@@ -135,10 +137,10 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 | Name | type | 値 |
 | ---- | ---- | ----- |
-| checkInts | ブール値 | True |
-| checkStrings | ブール値 | True |
-| checkArrays | ブール値 | True |
-| checkObjects | ブール値 | True |
+| checkInts | Bool | True |
+| checkStrings | Bool | True |
+| checkArrays | Bool | True |
+| checkObjects | Bool | True |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -149,7 +151,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json 
 ```
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)では、[not](resource-group-template-functions-logical.md#not) と **equals** を使用します。
@@ -173,7 +175,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | Name | type | 値 |
 | ---- | ---- | ----- |
-| checkNotEquals | ブール値 | True |
+| checkNotEquals | Bool | True |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -184,7 +186,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json 
 ```
 
 ## <a name="greater"></a>greater
@@ -194,7 +196,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |大きいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |大きいかどうかを比較する 2 番目の値。 |
@@ -248,8 +250,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | Name | type | 値 |
 | ---- | ---- | ----- |
-| checkInts | ブール値 | False |
-| checkStrings | ブール値 | True |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -260,7 +262,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json 
 ```
 
 ## <a name="greaterorequals"></a>greaterOrEquals
@@ -270,7 +272,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以上かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以上かどうかを比較する 2 番目の値。 |
@@ -324,8 +326,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | Name | type | 値 |
 | ---- | ---- | ----- |
-| checkInts | ブール値 | False |
-| checkStrings | ブール値 | True |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -336,7 +338,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
 ## <a name="less"></a>less
@@ -346,7 +348,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |小さいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |小さいかどうかを比較する 2 番目の値。 |
@@ -400,8 +402,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | Name | type | 値 |
 | ---- | ---- | ----- |
-| checkInts | ブール値 | True |
-| checkStrings | ブール値 | False |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -412,7 +414,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json 
 ```
 
 ## <a name="lessorequals"></a>lessOrEquals
@@ -422,7 +424,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以下かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以下かどうかを比較する 2 番目の値。 |
@@ -476,8 +478,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | Name | type | 値 |
 | ---- | ---- | ----- |
-| checkInts | ブール値 | True |
-| checkStrings | ブール値 | False |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -488,7 +490,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
 ```
 
 ## <a name="next-steps"></a>次の手順

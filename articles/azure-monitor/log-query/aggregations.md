@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリの集計 | Microsoft Docs
-description: ご自身のデータの分析に役立つ方法を提供する Log Analytics クエリの集計関数について説明します。
+title: Azure Monitor ログ クエリの集計 | Microsoft Docs
+description: データ分析のための便利な手段となる Azure Monitor ログ クエリの集計関数について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f5ecd68c1538fb9e21345221aa22c28217002271
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185751"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267344"
 ---
-# <a name="aggregations-in-log-analytics-queries"></a>Log Analytics クエリの集計
+# <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの集計
 
 > [!NOTE]
 > このレッスンを完了する前に、[Analytics ポータルの概要](get-started-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-この記事では、ご自身のデータの分析に役立つ方法を提供する Log Analytics クエリの集計関数について説明します。 これらの関数はすべて、入力テーブルの集計結果が含まれるテーブルを生成する `summarize` 演算子で機能します。
+この記事では、データ分析のための便利な手段となる Azure Monitor ログ クエリの集計関数について説明します。 これらの関数はすべて、入力テーブルの集計結果が含まれるテーブルを生成する `summarize` 演算子で機能します。
 
 ## <a name="counts"></a>カウント
 
@@ -147,7 +147,7 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-Log Analytics クエリ言語の使用については、他のレッスンを参照してください。
+Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)
 - [日付と時刻の操作](datetime-operations.md)

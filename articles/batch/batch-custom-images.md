@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: lahugh
-ms.openlocfilehash: b296dce0a83971626c8e66ddc314c4d1e07d8602
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840369"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752128"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>カスタム イメージを使用して仮想マシンのプールを作成する 
 
@@ -69,7 +69,7 @@ Azure では、Azure VM の OS とデータ ディスクのスナップショッ
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>1 つ以上のスナップショットからイメージを作成する
 
-スナップショットからマネージド イメージを作成するには、[az image create](/cli/azure/image#az_image_create) コマンドなどの Azure コマンドライン ツールを使用します。 イメージを作成する際には、OS ディスクのスナップショットを指定し、必要に応じて 1 つ以上のデータ ディスク スナップショットを指定することができます。
+スナップショットからマネージド イメージを作成するには、[az image create](/cli/azure/image) コマンドなどの Azure コマンドライン ツールを使用します。 イメージを作成する際には、OS ディスクのスナップショットを指定し、必要に応じて 1 つ以上のデータ ディスク スナップショットを指定することができます。
 
 ## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>ポータルでカスタム イメージからプールを作成する
 

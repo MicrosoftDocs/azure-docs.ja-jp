@@ -1,56 +1,49 @@
-items:
 - name: 概要
   href: Home.md
 - name: 作業の開始
+  expanded: true
   href: GetStarted/GetStarted.md
   items:
-  - name: REST
-    href: GetStarted/GetStartedREST.md
-  - name: クライアント ライブラリ
-    href: GetStarted/GetStartedClientLibraries.md
-    items:
-    - name: C# デスクトップ ライブラリ
-      href: GetStarted/GetStartedCSharpDesktop.md
-    - name: C# サービス ライブラリ
-      href: GetStarted/GetStartedCSharpServiceLibrary.md
-    - name: JavaScript ライブラリ
-      href: GetStarted/GetStartedJSWebsockets.md
-    - name: Android 用 Java ライブラリ
-      href: GetStarted/GetStartedJavaAndroid.md
-    - name: iOS 用 Objective-C ライブラリ
-      href: GetStarted/Get-Started-ObjectiveC-iOS.md
-  expanded: true
+    - name: REST
+      href: GetStarted/GetStartedREST.md
+    - name: クライアント ライブラリ
+      href: GetStarted/GetStartedClientLibraries.md
+      items:
+        - name: 'C# デスクトップ ライブラリ'
+          href: GetStarted/GetStartedCSharpDesktop.md
+        - name: 'C# サービス ライブラリ'
+          href: GetStarted/GetStartedCSharpServiceLibrary.md
+        - name: JavaScript ライブラリ
+          href: GetStarted/GetStartedJSWebsockets.md
+        - name: Android 用 Java ライブラリ
+          href: GetStarted/GetStartedJavaAndroid.md
+        - name: iOS 用 Objective-C ライブラリ
+          href: GetStarted/Get-Started-ObjectiveC-iOS.md
 - name: サンプル
   href: samples.md
 - name: 概念
   href: concepts.md
 - name: ハウツー ガイド
   items:
-  - name: サービスを使用するための認証
-    href: How-to/how-to-authentication.md
-  - name: 認識モードの選択
-    href: How-to/how-to-choose-recognition-mode.md
-  - name: オーディオ ストリームのチャンク転送
-    href: How-to/how-to-chunked-transfer.md
+    - name: サービスを使用するための認証
+      href: How-to/how-to-authentication.md
+    - name: 認識モードの選択
+      href: How-to/how-to-choose-recognition-mode.md
+    - name: オーディオ ストリームのチャンク転送
+      href: How-to/how-to-chunked-transfer.md
 - name: リファレンス
   items:
-  - name: Microsoft 音声 WebSocket プロトコル
-    href: API-Reference-REST/websocketprotocol.md
-  - name: Text to Speech API リファレンス
-    href: API-Reference-REST/BingVoiceOutput.md
-  - name: サポートされている言語
-    href: API-Reference-REST/supportedlanguages.md
+    - name: Microsoft 音声 WebSocket プロトコル
+      href: API-Reference-REST/websocketprotocol.md
+    - name: Text to Speech API リファレンス
+      href: API-Reference-REST/BingVoiceOutput.md
+    - name: サポートされている言語
+      href: API-Reference-REST/supportedlanguages.md
 - name: トラブルシューティング
   href: troubleshooting.md
 - name: リソース
   items:
-  - name: サポート
-    href: support.md
-  - name: ナレッジ ベース
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127980-bing-speech
-ms.openlocfilehash: 2dc88ad5e2598d27c4d2d0d84ee66a83259fb32d
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35415369"
+    - name: サポート
+      href: support.md
+    - name: ナレッジ ベース
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127980-bing-speech'

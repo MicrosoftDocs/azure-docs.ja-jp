@@ -4,20 +4,20 @@ description: 古いデータをホット層からクール層およびアーカ�
 services: storage
 author: yzheng-msft
 ms.service: storage
-ms.topic: article
-ms.date: 11/04/2018
+ms.topic: conceptual
+ms.date: 3/20/2019
 ms.author: yzheng
-ms.component: common
-ms.openlocfilehash: 5c77d7d8f1ce3b4a13e497d461244aae5b34d08c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: e6f4f1feb5c1c78e78ff5d71b08a0e8a40537d13
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631364"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803265"
 ---
-# <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Azure Blob Storage のライフサイクルの管理 (プレビュー)
+# <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
-データ セットには一意のライフサイクルがあります。 ライフサイクルの早い段階で、一部のデータに頻繁にアクセスされます。 しかし、データが古くなるとアクセスの必要性が急激に低下します。 また、クラウド内で使用されず、格納された後もほとんどアクセスされないデータもあります。 データには、作成後数日または数か月で失効するものがあります。また、ライフサイクルにわたってアクティブに読み取られ、変更されるデータ セットもあります。 Azure Blob Storage のライフサイクル管理 (プレビュー) には、GPv2 および BLOB ストレージ アカウント用に豊富なルールベース ポリシーが用意されています。 このポリシーを使用して、適切なアクセス層にデータを移行します。または、データのライフサイクルの終了時に期限切れにします。
+データ セットには一意のライフサイクルがあります。 ライフサイクルの早い段階で、一部のデータに頻繁にアクセスされます。 しかし、データが古くなるとアクセスの必要性が急激に低下します。 また、クラウド内で使用されず、格納された後もほとんどアクセスされないデータもあります。 データには、作成後数日または数か月で失効するものがあります。また、ライフサイクルにわたってアクティブに読み取られ、変更されるデータ セットもあります。 Azure Blob Storage のライフサイクル管理には、GPv2 および BLOB ストレージ アカウントのための豊富な、ルール ベースのポリシーが用意されています。 このポリシーを使用して、適切なアクセス層にデータを移行します。または、データのライフサイクルの終了時に期限切れにします。
 
 ライフサイクル管理ポリシーによって、以下を行えます。
 
@@ -34,73 +34,53 @@ ms.locfileid: "53631364"
 
 ## <a name="pricing"></a>価格 
 
-プレビュー段階のライフサイクル管理機能は無料です。 お客様には、[List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) および [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
+ライフサイクル管理機能は無料です。 お客様には、[List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) および [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 削除操作は無料です。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
-## <a name="register-for-preview"></a>プレビューの利用登録 
-パブリック プレビューに登録するには、この機能をサブスクリプションに登録するための要求を送信する必要があります。 要求は通常 2 週間以内に承認されます。 承認されると、次のリージョンのすべての既存および新規 GPv2 または BLOB ストレージ アカウントには、以下の機能が含まれます。米国西部 2、米国中西部、米国東部 2、および西ヨーロッパで使用できます。 プレビューでサポートされるのは、ブロック BLOB のみです。 ほとんどのプレビューと同様、この機能は GA に達するまで実稼働ワークロードに使用しないでください。
-
-要求を送信するには、次の PowerShell または CLI コマンドを実行します。
-
-### <a name="powershell"></a>PowerShell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-要求を送信するには:
-
-```powershell
-Register-AzProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage 
-```
-登録承認状態は、次のコマンドで確認できます。
-```powershell
-Get-AzProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage
-```
-承認され、適切に登録されていると、以前の要求を送信したときに、*登録済み*状態を受け取ります。
-
-### <a name="azure-cli"></a>Azure CLI
-
-要求を送信するには: 
-```cli
-az feature register --namespace Microsoft.Storage --name DLM
-```
-登録承認状態は、次のコマンドで確認できます。
-```cli
-az feature show --namespace Microsoft.Storage --name DLM
-```
-承認され、適切に登録されていると、以前の要求を送信したときに、*登録済み*状態を受け取ります。
+## <a name="regional-availability"></a>リージョン別の提供状況 
+ライフサイクル管理機能は、すべてのパブリック Azure リージョンで使用できます。 
 
 
 ## <a name="add-or-remove-a-policy"></a>ポリシーを追加または削除する 
 
-ポリシーを追加、編集、または削除するには、Azure portal、[PowerShell](https://www.powershellgallery.com/packages/Az.Storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/ext/storage-preview/storage/account/management-policy?view=azure-cli-latest#ext-storage-preview-az-storage-account-management-policy-create)、[REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/createorupdate)、または [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2) の言語のクライアント ツールを使用することができます。 
+Azure Portal、[Azure PowerShell](https://github.com/Azure/azure-powershell/releases)、Azure CLI、[REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies)、またはクライアント ツールを使用して、ポリシーを追加、編集、または削除できます。 この記事では、ポータルと PowerShell の方法を使用してポリシーを管理する方法について説明します。  
+
+> [!NOTE]
+> ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 例外を指定することで、これらの要求のブロックを解除することができます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
 
 ### <a name="azure-portal"></a>Azure ポータル
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[すべてのリソース]** を選択し、ストレージ アカウントを選択します。
+2. **[すべてのリソース]** を選択してから、ストレージ アカウントを選択します。
 
-3. ポリシーを表示または変更するには、Blob service の下にグループ化された **[ライフサイクル管理 (プレビュー)]** を選択します。
+3. **[Blob service]** で、**[Lifecycle management]\(ライフサイクル管理)** を選択してポリシーを表示または変更します。
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$rules = '{ ... }' 
+#Install the latest module
+Install-Module -Name Az -Repository PSGallery 
 
-Set-AzStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName] -StorageAccountName [storageAccountName] -Policy $rules 
+#Create a new action object
 
-Get-AzStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName] -StorageAccountName [storageAccountName]
+$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 2555
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 90
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -SnapshotAction Delete -daysAfterCreationGreaterThan 90
+
+# Create a new filter object
+# PowerShell automatically sets BlobType as “blockblob” because it is the only available option currently
+$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd 
+
+#Create a new rule object
+#PowerShell automatically sets Type as “Lifecycle” because it is the only available option currently
+$rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+
+#Set the policy 
+$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
+
 ```
 
-### <a name="azure-cli"></a>Azure CLI
-
-```
-az account set --subscription "[subscriptionName]”
-az extension add --name storage-preview
-az storage account management-policy show --resource-group [resourceGroupName] --account-name [accountName]
-```
-
-> [!NOTE]
-ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 例外を指定することで、これらの要求のブロックを解除することができます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
 
 ## <a name="policy"></a>ポリシー
 
@@ -108,10 +88,10 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "rule1",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {...}
     },
@@ -125,27 +105,27 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 ```
 
 
-ポリシーでは、次の 2 つのパラメーターが必要です。
+ポリシーはルールのコレクションです。
 
 | パラメーター名 | パラメーターのタイプ | メモ |
 |----------------|----------------|-------|
-| version        | `x.x` として表される文字列 | プレビューのバージョン番号は 0.5 です。 |
-| 規則          | ルール オブジェクトの配列 | 各ポリシーには少なくとも 1 つのルールが必要です。 プレビュー段階では、ポリシーごとに最大 4 つのルールを指定できます。 |
+| rules          | ルール オブジェクトの配列 | ポリシーには少なくとも 1 つのルールが必要です。 ポリシーでは最大 100 のルールを定義できます。|
 
-ポリシー内の各ルールでは、次の 3 つのパラメーターが必要です。
+ポリシー内の各ルールには、次のいくつかのパラメーターがあります。
 
-| パラメーター名 | パラメーターのタイプ | メモ |
-|----------------|----------------|-------|
-| Name           | String | ルール名には、英数字の任意の組み合わせを含めることができます。 ルール名は大文字と小文字が区別されます。 名前は、ポリシー内で一意にする必要があります。 |
-| type           | 列挙型の値 | プレビューで有効な値は `Lifecycle` です。 |
-| 定義     | ライフサイクル ルールを定義するオブジェクト | 各定義は、フィルター セットとアクション セットで構成されます。 |
+| パラメーター名 | パラメーターのタイプ | メモ | 必須 |
+|----------------|----------------|-------|----------|
+| name           | String |ルール名には最大 256 の英数字を含めることができます。 ルール名は大文字と小文字が区別されます。  名前は、ポリシー内で一意にする必要があります。 | True |
+| enabled | Boolean | ルールを一時的に無効にすることを許可する省略可能なブール値。 設定されていない場合、既定値は true です。 | False | 
+| type           | 列挙型の値 | 現在の有効な種類は `Lifecycle` です。 | True |
+| definition     | ライフサイクル ルールを定義するオブジェクト | 各定義は、フィルター セットとアクション セットで構成されます。 | True |
 
 ## <a name="rules"></a>ルール
 
 各ルール定義には、フィルター セットとアクション セットが含まれます。 [フィルター セット](#rule-filters)は、コンテナー内の特定のオブジェクト セットまたはオブジェクト名にルール アクションを制限します。 [アクション セット](#rule-actions)は、階層化または削除アクションをオブジェクトのフィルター処理されたセットに適用します。
 
 ### <a name="sample-rule"></a>ルールのサンプル
-次のサンプル ルールは、`container1/foo` だけでアクションが実行されるように、アカウントをフィルター処理します。 `container1` 内に存在し、**かつ**、`foo` で始まるすべてのオブジェクトに対し、以下のアクションが実行されます。 
+次のサンプル ルールは、`container1` 内に存在し、**かつ** `foo` で始まるオブジェクトに対してアクションを実行するようにアカウントをフィルター処理します。  
 
 - BLOB を最後に変更されたときから 30 日後にクール層に階層化する
 - BLOB を最後に変更されたときから 90 日後にアーカイブ層に階層化する
@@ -154,11 +134,11 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 ```json
 {
-  "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "ruleFoo", 
-      "type": "Lifecycle", 
+      "name": "ruleFoo",
+      "enabled": true,
+      "type": "Lifecycle",
       "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
@@ -185,29 +165,29 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 フィルターを使用すると、ルール アクションをストレージ アカウント内の BLOB のサブセットに限定できます。 複数のフィルターが定義されている場合、すべてのフィルターで論理 `AND` が実行されます。
 
-プレビュー段階で有効なフィルターは次のとおりです。
+有効なフィルターには、次のものが含まれます。
 
 | フィルター名 | フィルターの種類 | メモ | 必須 |
 |-------------|-------------|-------|-------------|
-| blobTypes   | 定義済みの列挙型の値の配列。 | プレビュー リリースでは、`blockBlob` のみがサポートされています。 | [はい] |
-| prefixMatch | プレフィックスを照合する文字列の配列。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、"https://myaccount.blob.core.windows.net/container1/foo/..." の下にあるすべての BLOB をルールに一致させたい場合、prefixMatch は "`container1/foo`" です。 | prefixMatch を定義していない場合、ルールはアカウント内のすべての BLOB に適用されます。 | いいえ  |
+| blobTypes   | 定義済みの列挙型の値の配列。 | 現在のリリースでは `blockBlob` をサポートしています。 | はい |
+| prefixMatch | プレフィックスを照合する文字列の配列。 各ルールで最大 10 個のプレフィックスを定義できます。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、"https://myaccount.blob.core.windows.net/container1/foo/..." の下にあるすべての BLOB をルールに一致させたい場合、prefixMatch は "`container1/foo`" です。 | prefixMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。  | いいえ  |
 
 ### <a name="rule-actions"></a>ルールのアクション
 
-アクションは、実行条件が満たされるとフィルター処理された BLOB に適用されます。
+実行条件が満たされている場合、アクションはフィルター処理された BLOB に適用されます。
 
-ライフサイクル管理のプレビューでは、BLOB の階層化と削除、および BLOB スナップショットの削除がサポートされています。 BLOB または BLOB スナップショットの各ルールに対して 1 つ以上のアクションを定義します。
+ライフサイクル管理では、BLOB の階層化と削除、および BLOB スナップショットの削除がサポートされています。 BLOB または BLOB スナップショットの各ルールに対して 1 つ以上のアクションを定義します。
 
 | Action        | ベース BLOB                                   | スナップショット      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 現在ホット層にある BLOB をサポートします         | サポートされていません |
 | tierToArchive | 現在ホット層またはクール層にある BLOB をサポートします | サポートされていません |
-| 削除        | サポートされています                                   | サポートされています     |
+| delete        | サポートされています                                   | サポートされています     |
 
 >[!NOTE] 
-同じ BLOB に複数のアクションを定義した場合、ライフサイクル管理によって最も低コストのアクションが BLOB に適用されます。 たとえば、`delete` アクションは `tierToArchive` アクションよりも低コストです。 `tierToArchive` アクションは `tierToCool` アクションよりも低コストです。
+>同じ BLOB に複数のアクションを定義した場合、ライフサイクル管理によって最も低コストのアクションが BLOB に適用されます。 たとえば、`delete` アクションは `tierToArchive` アクションよりも低コストです。 `tierToArchive` アクションは `tierToCool` アクションよりも低コストです。
 
-プレビューでは、アクションの実行条件は古さに基づいています。 ベース BLOB では、最終変更時刻を使用して古さが追跡されます。BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
+実行条件は、古さに基づいています。 ベース BLOB では、最終変更時刻を使用して古さが追跡されます。BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
 
 | アクションの実行条件 | 条件値 | 説明 |
 |----------------------------|-----------------|-------------|
@@ -223,24 +203,23 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 ```json
 {
-  "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "agingRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "container1/foo", "container2/bar" ]
-          },
-          "actions": {
-            "baseBlob": {
-              "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-              "tierToArchive": { "daysAfterModificationGreaterThan": 90 }
-            }
+      "name": "agingRule",
+      "enabled": true,
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "container1/foo", "container2/bar" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
+            "tierToArchive": { "daysAfterModificationGreaterThan": 90 }
           }
-        }      
+        }
+      }
     }
   ]
 }
@@ -248,27 +227,26 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 ### <a name="archive-data-at-ingest"></a>取り込み時にデータをアーカイブする 
 
-また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 このようなデータは、取り込んだ後即座にアーカイブします。 次のライフサイクル ポリシーは、取り込み時にデータをアーカイブするように構成されています。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB を即座にアーカイブ層に移行します。 即時の移行は、最終変更時刻後の 0 日後に BLOB に作用することによって実現されます。
+また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 次のライフサイクル ポリシーは、取り込まれたデータをアーカイブするように構成されています。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB をアーカイブ層に移行します。 この移行は、最終変更時刻の 0 日後に BLOB を処理することによって実現されます。
 
 ```json
 {
-  "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "archiveRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "archivecontainer" ]
-          },
-          "actions": {
-            "baseBlob": { 
-                "tierToArchive": { "daysAfterModificationGreaterThan": 0 }
-            }
+      "name": "archiveRule",
+      "enabled": true,
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "archivecontainer" ]
+        },
+        "actions": {
+          "baseBlob": {
+              "tierToArchive": { "daysAfterModificationGreaterThan": 0 }
           }
-        }      
+        }
+      }
     }
   ]
 }
@@ -281,22 +259,21 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 ```json
 {
-  "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "expirationRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ]
-          },
-          "actions": {
-            "baseBlob": {
-              "delete": { "daysAfterModificationGreaterThan": 365 }
-            }
+      "name": "expirationRule",
+      "enabled": true,
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "delete": { "daysAfterModificationGreaterThan": 365 }
           }
-        }      
+        }
+      }
     }
   ]
 }
@@ -308,30 +285,29 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 ```json
 {
-  "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "snapshotRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "activedata" ]
-          },
-          "actions": {            
-            "snapshot": {
-              "delete": { "daysAfterCreationGreaterThan": 90 }
-            }
+      "name": "snapshotRule",
+      "enabled": true,
+      "type": "Lifecycle",      
+    "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "activedata" ]
+        },
+        "actions": {
+          "snapshot": {
+            "delete": { "daysAfterCreationGreaterThan": 90 }
           }
-        }      
+        }
+      }
     }
   ]
 }
 ```
 ## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>FAQ - 新しいポリシーを作成しましたが、アクションがすぐに実行されないのはなぜですか? 
 
-ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 新しいポリシーを設定した場合、一部のアクション (階層化や削除など) が開始されて実行されるまでに、最大で 24 時間がかかることがあります。  
+ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 ポリシーを構成した後、一部のアクション (階層化や削除など) を初めて実行するために最大 24 時間かかる場合があります。  
 
 ## <a name="next-steps"></a>次の手順
 

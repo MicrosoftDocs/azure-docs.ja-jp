@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database と SQL Data Warehouse への Azure トラフィックの転送 | Microsoft Docs
-description: この文書では、Azure 内外からの Azure SQL Database と SQL Data Warehouse の接続アーキテクチャについて説明します。
+description: このドキュメントでは、Azure 内外からのデータベース接続のための Azure SQL の接続アーキテクチャを説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,35 +11,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 04/03/2019
+ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435720"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799271"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
 この記事では Azure SQL Database および SQL Data Warehouse の接続アーキテクチャのほか、さまざまなコンポーネントがどのように機能し、トラフィックが Azure SQL インスタンスに送信されるか説明します。 これらの接続コンポーネントが機能し、Azure 内外からクライアントが接続する Azure SQL Database または SQL Data Warehouse にネットワーク トラフィックが送信されます。 この記事では、接続方法を変更するためのスクリプト サンプルと、既定の接続設定の変更に関連する考慮事項も提供します。
-
-> [!IMPORTANT]
-> **[今後の変更] Azure SQL サーバーへのサービス エンドポイントの接続の場合、`Default` の接続動作が `Redirect` に変わります。**
->
-> 変更は、一足先に 2019 年 11 月 10 日からブラジル南部と西ヨーロッパのリージョンで有効になります。 その他のすべてのリージョンでの変更は、2019 年 1 月 2 日から有効になります。
->
-> サービス エンドポイントを通じた接続が、この変更の結果として既存の環境で切断しないようにするために、以下の操作にテレメトリを使用します。
-> - 変更前にサービス エンドポイントからアクセスされたサーバーを検出した場合、接続タイプを `Proxy` に切り替えます。
-> - 他のすべてのサーバーについては、接続タイプを `Redirect` に切り替えます。
->
-> サービス エンドポイントのユーザーは、次のシナリオでも影響を受ける可能性があります。 
-> - アプリケーションがめったに既存のサーバーに接続しないため、テレメトリがこれらのアプリケーションに関する情報を取得しなかった場合 
-> - サービス エンドポイント接続の既定の動作が `Proxy` であるとしたときに、自動デプロイ ロジックが論理サーバーを作成する場合 
->
-> Azure SQL server へのサービス エンドポイント接続を確立できず、この変更による影響を受けていると思われる場合は、接続の種類が明示的に `Redirect` に設定されていることを確認します。 この場合は、ポート 11000 から 12000 の SQL [サービス タグ](../virtual-network/security-overview.md#service-tags)に所属する、リージョン内の Azure IP アドレスに対して VM ファイアウォール ルールおよびネットワーク セキュリティ グループ (NSG) を開く必要があります。 これがオプションでない場合、明示的にサーバーを `Proxy` に切り替えます。
-
-> [!NOTE]
-> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
 
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 
@@ -57,7 +39,7 @@ ms.locfileid: "53435720"
 
 Azure SQL Database は、SQL Database サーバーの接続ポリシー設定について次の 3 つのオプションをサポートしています。
 
-- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。 接続を有効にするには、ポート 1433 上の Azure SQL Database ゲートウェイの IP アドレスだけでなく、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、11000 から 12000 のポートのリージョン内のすべての Azure IP アドレスに対する送信ファイアウォール ルールを、クライアントで許可する必要があります。 パケットはデータベースに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
+- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。 接続を有効にするには、ポート 1433 上の Azure SQL Database ゲートウェイの IP アドレスだけでなく、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、11000 から 11999 のポートのリージョン内のすべての Azure IP アドレスに対する送信ファイアウォール ルールを、クライアントで許可する必要があります。 パケットはデータベースに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
 - **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシされます。 接続を有効にするには、Azure SQL Database ゲートウェイの IP アドレスのみ (通常はリージョンあたり 2 つの IP アドレス) を許可する送信ファイアウォール規則がクライアントに必要です。 このモードを選択すると、ワークロードの性質によっては待機時間が長くなり、スループットが低下する可能性があります。 最短の待機時間と最高のスループットを実現するために、`Proxy` 接続ポリシーではなく `Redirect` 接続ポリシーを強くお勧めします。
 - **既定:** これは、明示的に接続ポリシーを `Proxy` または `Redirect` に変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 有効なポリシーは、接続が Azure (`Redirect`) 内か Azure (`Proxy`) の外部かによって変わります。
 
@@ -86,7 +68,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | ブラジル南部 | 104.41.11.5 | |
 | カナダ中部 | 40.85.224.249 | |
 | カナダ東部 | 40.86.226.166 | |
-| 米国中央部 | 23.99.160.139 | 13.67.215.62 |
+| 米国中部 | 23.99.160.139 | 13.67.215.62 |
 | 中国東部 1 | 139.219.130.35 | |
 | 中国東部 2 | 40.73.82.1 | |
 | 中国北部 1 | 139.219.15.17 | |
@@ -108,10 +90,8 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | 北ヨーロッパ | 191.235.193.75 | 40.113.93.91 |
 | 米国中南部 | 23.98.162.75 | 13.66.62.124 |
 | 東南アジア | 23.100.117.95 | 104.43.15.0 |
-| 英国北部 | 13.87.97.210 | |
-| 英国南部 1 | 51.140.184.11 | |
-| 英国南部 2 | 13.87.34.7 | |
-| 英国西部 | 51.141.8.11 | |
+| 英国南部 | 51.140.184.11 | |
+| 英国西部 | 51.141.8.11| |
 | 米国中西部 | 13.78.145.25 | |
 | 西ヨーロッパ | 191.237.232.75 | 40.68.37.158 |
 | 米国西部 1 | 23.99.34.75 | 104.42.238.205 |
@@ -129,30 +109,33 @@ Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変�
 
 ## <a name="script-to-change-connection-settings-via-powershell"></a>接続の設定を変更する PowerShell のスクリプト
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> このスクリプトは [Azure PowerShell モジュール](/powershell/azure/install-azurerm-ps)を必要とします。
->
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
+> [!IMPORTANT]
+> このスクリプトは [Azure PowerShell モジュール](/powershell/azure/install-az-ps)を必要とします。
 
 次の PowerShell スクリプトは、接続ポリシーの変更方法を示しています。
 
 ```powershell
 # Get SQL Server ID
-$sqlserverid=(Get-AzureRmSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
+$sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
 
 # Set URI
 $id="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy
-(Get-AzureRmResource -ResourceId $id).Properties.connectionType
+(Get-AzResource -ResourceId $id).Properties.connectionType
 
 # Update connection policy
-Set-AzureRmResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
+Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
 ## <a name="script-to-change-connection-settings-via-azure-cli"></a>接続の設定を変更する Azure CLI のスクリプト
 
 > [!IMPORTANT]
-> このスクリプトは [Azure CLI ](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を必要とします。
+> このスクリプトは [Azure CLI ](https://docs.microsoft.com/cli/azure/install-azure-cli) を必要とします。
 
 次の CLI スクリプトは、接続ポリシーの変更方法を示しています。
 

@@ -6,16 +6,17 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f212e2555b6097912628791635a539bc488d4979
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413168"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672408"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>JavaScript での Speech Recognition API の利用
 
@@ -41,7 +42,7 @@ Speech API は、Cognitive Services の一部です。 無料試用版のサブ�
 
 ### <a name="open-the-sample-directly"></a>サンプルを直接開く
 
-上記のようにサブスクリプション キーを取得します。 その後、[サンプルへのリンク](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html)を開きます。 これにより、既定のブラウザーでページが読み込まれます ([htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) を使用してレンダリングされます)。
+上記のようにサブスクリプション キーを取得します。 その後、 [サンプルへのリンク](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html)  を開きます。 これにより、既定のブラウザーでページが読み込まれます ([htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) を使用してレンダリングされます)。
 
 ### <a name="open-the-sample-from-a-local-copy"></a>ローカル コピーからサンプルを開く
 

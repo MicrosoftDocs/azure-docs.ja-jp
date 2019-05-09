@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
+ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 2592c81947f48c10891fe920647612d5c30af64f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 271da0a6ff443fcee28bc870821f4222b3018c91
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989083"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576873"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -95,7 +95,7 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 既に強力な worker ノードを使ってパッケージを実行している場合、**AzureSSISMaxParallelExecutionsPerNode** の値を大きくすると、統合ランタイムの全体的なスループットが上がる可能性があります。 Standard_D1_v2 ノードでは、ノードあたり 1 ～ 4 の並列実行がサポートされています。 その他のすべての種類のノードでは、ノードあたり 1 ～ 8 の並列実行がサポートされています。
 パッケージのコストと、worker ノードの次の構成に基づいて、適切な値を予測できます。 詳しくは、「[汎用仮想マシンのサイズ](../virtual-machines/windows/sizes-general.md)」をご覧ください。
 
-| サイズ             | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク パフォーマンス (Mbps) |
+| Size             | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク パフォーマンス (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 2 / 2x500                         | 2/750                                        |
 | Standard\_D2\_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 4 / 4x500                         | 2/1,500                                       |

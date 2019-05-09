@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) を使用してアプリに対話型の検索と絞り込みを追加します。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: overview
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6f744815b9b2670ddf9b2a873956715a3964bcd6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f979e05c62f5df0574196d1c9bdc755c7893b78
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242406"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546588"
 ---
 # <a name="knowledge-exploration-service"></a>Knowledge Exploration Service
 
@@ -25,7 +25,7 @@ KES を使用して学術発表の分野で対話型検索インターフェイ�
 
 ![AcademicAutoComplete](AutoComplete.png)
 
-KES は、Cognitive Services プレビューから Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration](https://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration) です。
+KES は、Cognitive Services プレビューから Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [https://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration](https://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration) です。
 
 ## <a name="reference"></a>リファレンス
 

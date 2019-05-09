@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: b02ab403c82fd781af72c3b1f08e843c3fc770e3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 3bd2361547a8210ae287eabaa67b60e8ba1f26e3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094945"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738149"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Microsoft を利用したビジネスのプロモーション  
 Microsoft には、パートナー (利用者) をサポートし、マーケットプレイスのネットショップでのアプリまたはオファーの販売を簡単にするという目標があります。 マーケットプレイスでプログラムおよびリソースを一覧表示して、マーケットプレイス上でそれらにアクセスします。 
@@ -40,4 +40,4 @@ MPN では、次のトピックのガイダンスを提供しています。
 | クラウド プラットフォーム コンピテンシーを獲得する | コンピテンシーを獲得することで、他の Microsoft パートナー間で自社を差別化できます。 また、技術的な専門知識や、顧客の成功事例を説明するうえでも役立ちます。 コンピテンシーは、Co-Sell など、多くの重要なパートナー プログラムの前提条件となっています。<ul> <li>クラウド プラットフォーム コンピテンシーの詳細については、クラウド プラットフォーム コンピテンシーのページ ([partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency)) を参照してください。</li> </ul> |  
 | Co-Sell の準備が整う | この Co-Sell の準備プログラムでは、パートナーは対象顧客の営業案件およびアカウント計画で Microsoft の販売者および他のパートナーと直接連携することができます。 ソリューションは、販売者のソリューション カタログ内に Microsoft 販売者に向けて表示されます。 Microsoft 販売者は、パートナーとコラボレートし、ビジネスを連携的に成功させることで報酬を得ます。<ul> <li>Co-Sell の準備の詳細については、「ビジネスを推進する」ページ ([partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business)) を参照してください。</li> </ul> |  
 
----  
+---

@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: f220aee3fa0d9a79723383fc31fec0eed2554bb4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833688"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796547"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -60,7 +60,7 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 
-2. **[Azure への接続]** ボタンをクリックします。
+2. **[アカウントの新規作成]** ボタンをクリックします。
 
     ![Azure への接続](./media/create-account/connect-to-azure.png)
 
@@ -92,11 +92,12 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
 
 7. 新しいアカウントを表示します。
 
-    ![Video Indexer アカウント](./media/create-account/vi-account.png)
-
 ## <a name="connect-to-azure-manually-advanced-option"></a>Azure に手動で接続する (上級者向けオプション)
 
 Azure への接続に失敗する場合は、手動で接続して問題の解決を試みることができます。
+
+> [!NOTE]
+> Video Indexer アカウント、それと接続している Media Services アカウント、同じ Media Services アカウントに接続されている Azure ストレージ アカウントの 3 つのアカウントは、同じリージョン内に置くことを強くお勧めします。
 
 ### <a name="create-and-configure-a-media-services-account"></a>Media Services アカウントの作成と構成
 

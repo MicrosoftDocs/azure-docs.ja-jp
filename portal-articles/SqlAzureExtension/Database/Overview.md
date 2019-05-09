@@ -6,24 +6,24 @@ author: sewatson
 manager: lwelicki
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/27/2017
-ms.author: sewatson
-ms.openlocfilehash: b41b4b7d302b0f3c528fa424627b4446a5e2c0ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/09/2019
+ms.author: ninarn
+ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61244461"
 ---
 # <a name="sql-database-documentation"></a>SQL Database のドキュメント
 
-Azure SQL Database とは、Microsoft SQL Server エンジンを使用したサービスとしてのリレーショナル データベースです。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
+Azure SQL Database は、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、汎用のサービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたクラウド データベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
 
 ## <a name="5-minute-quickstarts"></a>5 分間のクイック スタート
 
-SQL データベースの作成、SQL Management Studio を使用した SQL データベースの管理、C#、Java、Python、Node.js、Ruby での SQL データベースを使用した開発の方法について説明します。
+Azure SQL Database により、Azure portal、Azure CLI、Azure PowerShell を使用して基本的な管理タスクを簡単に実行することができます。 次のクイック スタート サンプルを使用して基本的な管理タスクを実行する方法を学習します。
 
-- [Azure Portal](/azure/sql-database/sql-database-get-started-portal)
+- [Azure Portal](/azure/sql-database/sql-database-single-database-get-started)
 - [Azure PowerShell](/azure/sql-database/sql-database-get-started-powershell)
 - [Azure CLI](/azure/sql-database/sql-database-get-started-cli)
 
@@ -31,8 +31,9 @@ SQL データベースの作成、SQL Management Studio を使用した SQL デ�
 
 SQL DB を使用してデータベースを作成、管理、移行する方法について説明します。
 
-- [新しい SQL データベースのスキーマを作成および設計する](/azure/sql-database/sql-database-design-first-database)
-- [既存の SQL Server データベースを移行して Azure SQL Database を使用する](/azure/sql-database/sql-database-migrate-your-sql-server-database)
+- クイック スタート ガイドを使用して、[単一データベース](/azure/sql-database/sql-database-single-database-quickstart-guide)の使用を開始する
+- [SSMS](/azure/sql-database/sql-database-design-first-database) または [.NET](/azure/sql-database/sql-database-design-first-database-csharp) を使用して新しい単一データベースのスキーマを作成および設計する
+- [Database Migration Assistant](/azure/dms/tutorial-sql-server-to-azure-sql) を使用するか、[BACPAC ファイルをインポート](/azure/sql-database/sql-database-import)して、既存のデータベースを Azure に移行する
 - [SQL Database をセキュリティ保護する](/azure/sql-database/sql-database-security-tutorial)
 - [SQL Database のパフォーマンスを向上させる](/azure/sql-database/sql-database-performance-tutorial)
 - [SQL DB を使用してマルチテナント SaaS アプリケーションを実装する](/azure/sql-database/sql-database-multi-tenant-application)
@@ -41,7 +42,7 @@ SQL DB を使用してデータベースを作成、管理、移行する方法�
 
 - [.NET を使用した開発](https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
 
-## <a name="samples"></a>サンプル 
+## <a name="samples"></a>サンプル
 
 一般的なタスクを管理するためのスクリプトを探します。
 

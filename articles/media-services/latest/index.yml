@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fdda67921db38b912679d27bf5a8c897775ad82b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137992"
 documentType: LandingData
 title: Azure Media Services v3 のドキュメント
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Media Services v3 のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: Media Services を使用してビデオをオンデマンドでストリーミングし、ライブ データをブロードキャストし、ビデオを分析する方法を説明します。 チュートリアルや API リファレンスなどを提供します。
+  description: Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
   services: media-services
   author: Juliako
   manager: femila
@@ -18,79 +12,117 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10-15-2018
+  ms.date: 04/12/2019
   ms.author: juliako
 abstract:
-  description: Media Services v3 を使用してビデオをオンデマンドでストリーミングし、ライブ データをブロードキャストし、ビデオを分析する方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。 <br/> SDK は <a href="https://aka.ms/ams-v3-rest-sdk">Media Services v3 OpenAPI の仕様 (Swagger)</a> に基づいています。
+  description: 'Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。 <br/> SDK は <a href="https://aka.ms/ams-v3-rest-sdk">Media Services v3 OpenAPI の仕様 (Swagger)</a> に基づいています。'
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Media Services アカウントを作成し、ビデオのエンコードを開始して、Azure Media Player を使用してビデオを再生する方法を説明します。
-  - type: list
-    style: icon48
+  - title: null
     items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: ビデオ ファイルのストリーミング
-      href: /azure/media-services/latest/stream-files-dotnet-quickstart
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Media Services v3 を使用して、オンデマンドでのファイルのストリーミング、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。
-  - type: list
-    style: icon48
+      - type: list
+        style: cards
+        className: cardImageOuter
+        items:
+          - title: 概念についての説明
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">クラウドのアップロードとストレージ</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Encoding</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">監視</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">メディア分析</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">パッケージ化</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">保護</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">ライブ ストリーミング</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Player クライアント</a></p>'
+          - title: v3 API を使用した開発
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">REST を使用した開発</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">SDK を使用した開発</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Java を使用して接続する</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">.NET を使用して接続する</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Node.js を使用して接続する</a></p>'
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: ビデオのアップロード、エンコード、ストリーミング
-      href: /azure/media-services/latest/stream-files-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-live.svg
-      text: ライブ ブロードキャスト
-      href: /azure/media-services/latest/stream-live-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: ビデオの分析
-      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 'API を使用して Media Services v3 でビデオ ストリーミング、ライブ ブロードキャスト、ビデオの分析を行う方法を示すサンプル:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: Media Services アカウントを作成し、ビデオのエンコード、パッケージ化、ストリーム配信を開始する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/dotnet.svg
+            text: .NET を使用したエンコードとストリーム配信
+            href: /azure/media-services/latest/stream-files-dotnet-quickstart
+          - image:
+              src: media/index/cli.svg
+            text: CLI を使用したエンコードとストリーム配信
+            href: /azure/media-services/latest/stream-files-cli-quickstart
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js を使用したエンコードとストリーム配信
+            href: /azure/media-services/latest/stream-files-nodejs-quickstart
+  - title: ステップバイステップのチュートリアル
     items:
-    - image:
-        src: media/index/cli.svg
-      text: Azure CLI
-      href: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services
-    - image:
-        src: media/index/rest.svg
-      text: REST と Postman
-      href: https://github.com/Azure-Samples/media-services-v3-rest-postman
-    - image:
-        src: media/index/logo_dotnet_core.svg
-      text: .NET Core と Visual Studio Code
-      href: https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials
-    - image:
-        src: media/index/dotnet.svg
-      text: Visual Studio での .NET
-      href: https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node .js
-      href: https://github.com/Azure-Samples/media-services-v3-node-tutorials
-- title: リファレンス
-  items:
-  - type: paragraph
-    text: ''
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: チュートリアルでは、オンデマンド ビデオおよびライブ ビデオをジャストインタイムで安全にパッケージ化する方法のほか、統合 Azure CDN の機能を使用してスケーリングを行う方法について説明します。
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 1
+        items:
+          - image:
+              src: media/index/dotnet.svg
+            html: <p>このチュートリアルでは、ローカルのビデオ ファイルをアップロードし、そのファイルをエンコードして、エンコードされたコンテンツをストリーム配信します。<p/>
+            href: /azure/media-services/latest/stream-files-tutorial-with-api
+            title: アップロードされたファイルのエンコードとビデオのストリーム配信
+          - image:
+              src: media/index/dotnet.svg
+            html: <p>このチュートリアルでは、ライブ イベントに向けた設定方法について説明します。 その後、.NET を使用してライブ イベントのパススルー タイプを作成する方法について説明します。</p>
+            href: /azure/media-services/latest/stream-live-tutorial-with-api
+            title: ライブ ブロードキャスト
+          - image:
+              src: media/index/dotnet.svg
+            html: <p>このチュートリアルでは、Azure Media Services API を使用してビデオを分析する方法について説明します。</p>
+            href: /azure/media-services/latest/analyze-videos-tutorial-with-api
+            title: ビデオの分析
+          - image:
+              src: media/index/dotnet.svg
+            html: <p>AES-128 を使用してコンテンツを動的に暗号化するよう Media Services API シリーズを構成して使用する方法について説明します。</p>
+            href: /azure/media-services/latest/protect-with-aes128
+            title: AES-128 を使用した動的な暗号化
+          - image:
+              src: media/index/dotnet.svg
+            html: <p>マルチ DRM (PlayReady、Widevine、FairPlay) を使用してコンテンツを動的に暗号化するよう Media Services API シリーズを構成して使用する方法について説明します。</p>
+            href: /azure/media-services/latest/protect-with-drm
+            title: マルチ DRM を使用した動的な暗号化
+          - image:
+              src: media/index/rest.svg
+            html: <p>このチュートリアルでは、リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する方法を説明します。</p>
+            href: /azure/media-services/latest/stream-files-tutorial-with-rest
+            title: リモート ファイルのエンコードとビデオのストリーム配信
+  - title: サンプル
     items:
-    - html: <a href="https://aka.ms/ams-v3-cli-ref">Azure CLI</a>
-    - html: <a href="https://aka.ms/ams-v3-rest-ref">REST</a>
-    - html: <a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>
-    - html: <a href="https://aka.ms/ams-v3-java-ref">Java</a>
-    - html: <a href="https://aka.ms/ams-v3-python-ref">Python</a>
-    - html: <a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>
+      - type: paragraph
+        text: 次の GitHub サンプルでは、API を使用して Media Services v3 でビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を示します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/cli.svg
+            text: Azure CLI
+            href: 'https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services'
+          - image:
+              src: media/index/rest.svg
+            text: REST と Postman
+            href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
+          - image:
+              src: media/index/logo_dotnet_core.svg
+            text: .NET Core と Visual Studio Code
+            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials'
+          - image:
+              src: media/index/dotnet.svg
+            text: Visual Studio での .NET
+            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials'
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node .js
+            href: 'https://github.com/Azure-Samples/media-services-v3-node-tutorials'
+  - title: リファレンス
+    items:
+      - type: paragraph
+        text: ''
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://aka.ms/ams-v3-cli-ref">Azure CLI</a>'
+          - html: '<a href="https://aka.ms/ams-v3-rest-ref">REST</a>'
+          - html: '<a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>'
+          - html: '<a href="https://aka.ms/ams-v3-java-ref">Java</a>'
+          - html: '<a href="https://aka.ms/ams-v3-python-ref">Python</a>'
+          - html: '<a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>'

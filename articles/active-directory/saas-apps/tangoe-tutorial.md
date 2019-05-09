@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Tangoe Command Premium Mobile の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Tangoe Command Premium Mobile の統合 | Microsoft Docs
 description: Azure Active Directory と Tangoe Command Premium Mobile の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 2b0b544c-9c2c-49cd-862b-ec2ee9330126
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a477d8e10b9be4aa90cc80341c787facaabc520
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8c9f410fa890df7aac3c3bf4d89468b92e69ba38
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438751"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883234"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>チュートリアル: Azure Active Directory と Tangoe Command Premium Mobile の統合
+# <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>チュートリアル:Azure Active Directory と Tangoe Command Premium Mobile の統合
 
 このチュートリアルでは、Tangoe Command Premium Mobile と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -74,7 +75,7 @@ Azure AD への Tangoe Command Premium Mobile の統合を構成するには、�
 
 1. 検索ボックスに「**Tangoe Command Premium Mobile**」と入力して、結果パネルで **Tangoe Command Premium Mobile** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-    ![ギャラリーからの Tangoe Command Premium Mobile の追加 ](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
+    ![ギャラリーからの Tangoe Command Premium Mobile の追加](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構成し、テストします。
@@ -136,7 +137,7 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
    - **サインアウト URL**
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -210,7 +211,7 @@ Tangoe Command Premium Mobile アプリケーションでは、シングル サ�
 
 このセクションでは、アクセス パネルを使用して Azure AD の SSO 構成をテストします。
 
-アクセス パネルで [Tangoe Command Premium Mobile] タイルをクリックすると、自動的に Tangoe Command Premium Mobile アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [Tangoe Command Premium Mobile] タイルをクリックすると、自動的に Tangoe Command Premium Mobile アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

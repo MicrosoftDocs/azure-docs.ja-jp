@@ -5,21 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a1fa4d58cefa82e70c036d697957254531042b9c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb2555cdc163ee0f88149248b9e7d83a51d34a1b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30196904"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444222"
 ---
-1. [ポータル](http://portal.azure.com)で、仮想ネットワーク ゲートウェイを作成する Resource Manager 仮想ネットワークに移動します。
-2. VNet のページの **[設定]** セクションで、**[サブネット]** をクリックして [サブネット] ページを展開します。
-3. **[サブネット]** ページで **[+ゲートウェイ サブネット]** をクリックして、**[サブネットの追加]** ページを開きます。
+1. [Azure portal](http://portal.azure.com) で、仮想ネットワーク ゲートウェイを作成する Resource Manager 仮想ネットワークを選択します。
 
-  ![ゲートウェイ サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsub.png "ゲートウェイ サブネットの追加")
-4. サブネットの **[名前]** には、"GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値を実際の構成要件に合わせて調整し、ページの下部にある **[OK]** をクリックしてサブネットを作成します。
+2. 仮想ネットワークのページの **[設定]** セクションで、**[サブネット]** を選択して **[サブネット]** ページを展開します。
 
-  ![サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "サブネットの追加")
+3. **[サブネット]** ページで **[ゲートウェイ サブネット]** を選択して **[サブネットの追加]** ページを開きます。
+
+   ![ゲートウェイ サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsub.png "ゲートウェイ サブネットの追加")
+
+4. サブネットの **[名前]** には、*GatewaySubnet* という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値を実際の構成要件に合わせて調整し、**[OK]** を選択してサブネットを作成します。
+
+   ![サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "サブネットの追加")

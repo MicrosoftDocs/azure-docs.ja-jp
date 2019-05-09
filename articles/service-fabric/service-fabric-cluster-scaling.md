@@ -3,8 +3,8 @@ title: Azure Service Fabric クラスターのスケーリング | Microsoft Doc
 description: Azure Service Fabric クラスターのスケールインまたはスケールアウトと、スケールアップまたはスケールダウンについて説明します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
-ms.author: ryanwi
-ms.openlocfilehash: 1410d61fed2dc98f5fa657541c3863e09b803166
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.author: aljo
+ms.openlocfilehash: b55516b48f805da9288799e11a4066cbd4483006
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321785"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661974"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric クラスターのスケーリング
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 クラスターには、場合によっては数千のノードを含めることができます。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -81,7 +81,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 あるノードの種類についてスケールアップまたはスケールダウンを行うプロセスは、ノードの種類がプライマリ以外であるかプライマリであるかによって異なります。
 
 ### <a name="scaling-non-primary-node-types"></a>種類がプライマリ以外のノードのスケーリング
-必要なリソースを持つ新しいノードの種類を作成します。  実行するサービスの配置に関する制約を、新しいノードの種類を含むように更新します。  クラスターの信頼性が影響を受けないように、古いノードの種類のインスタンス数を徐々に (一度に 1 つずつ) 0 まで減らします。  サービスは、古い種類のノードのコミッショニングが解除されるのにつれて次第に新しい種類のノードに移行されます。
+必要なリソースを持つ新しいノードの種類を作成します。  実行するサービスの配置に関する制約を、新しいノードの種類を含むように更新します。  クラスターの信頼性が影響を受けないように、古いノードの種類のインスタンス数を徐々に (一度に 1 つずつ) 0 まで減らします。  サービスは、古い種類のノードが使用停止されるのにつれ、しだいに新しい種類のノードに移行されます。
 
 ### <a name="scaling-the-primary-node-type"></a>種類がプライマリのノードのスケーリング
 種類がプライマリ ノードである VM SKU は変更しないことをお勧めします。 より多くのクラスター容量が必要な場合は、さらにインスタンスを追加することをお勧めします。 
@@ -92,5 +92,5 @@ Azure クラスターをスケーリングするときには、次のガイド�
 * [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。
 * [Azure クラスターをスケールインまたはスケールアウト](service-fabric-tutorial-scale-cluster.md)します。
 * fluent Azure コンピューティング SDK を使用して [Azure クラスターをプログラムでスケーリングします](service-fabric-cluster-programmatic-scaling.md)。
-* [スタンドアロン クラスターをスケールインまたはスケールアウト](service-fabric-cluster-windows-server-add-remove-nodes.md)します。
+* [スタンドアロン クラスターのスケールインまたはスケールアウトします](service-fabric-cluster-windows-server-add-remove-nodes.md)。
 

@@ -7,8 +7,10 @@ items:
     href: traffic-manager-overview.md
 - name: クイック スタート
   items:
-  - name: Traffic Manager プロファイルの作成
+  - name: Traffic Manager プロファイルの作成 - ポータル
     href: quickstart-create-traffic-manager-profile.md
+  - name: Traffic Manager プロファイルの作成 - PowerShell
+    href: quickstart-create-traffic-manager-profile-powershell.md
 - name: チュートリアル
   items:
   - name: トラフィックをルーティングして待ち時間を削減する
@@ -23,6 +25,8 @@ items:
     href: tutorial-traffic-manager-weighted-endpoint-routing.md
   - name: ユーザーのサブネットに基づいてトラフィックをルーティングする
     href: tutorial-traffic-manager-subnet-routing.md
+  - name: Traffic Manager のエイリアス レコード
+    href: ../dns/tutorial-alias-tm.md?toc=%2fazure%2ftraffic-manager%2ftoc.json
 - name: サンプル
   items:
   - name: Azure CLI
@@ -78,6 +82,8 @@ items:
     href: traffic-manager-load-balancing-azure.md
   - name: Traffic Manager のパフォーマンスの測定
     href: traffic-manager-performance-considerations.md
+  - name: Azure App Service の Web アプリの診断ログの有効化
+    href: traffic-manager-diagnostic-logs.md
   - name: Azure PowerShell を使用して Traffic Manager を管理する
     href: traffic-manager-powershell-arm.md
   - name: インターネット ドメインが Traffic Manager を指すように指定する
@@ -91,19 +97,21 @@ items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=traffic-manager
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.trafficmanager
+    href: /powershell/module/az.trafficmanager
   - name: Azure CLI
     href: /cli/azure/network/traffic-manager
   - name: Java
     href: /java/api/com.microsoft.azure.management.trafficmanager
   - name: Node.js
-    href: http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/
+    href: https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/
   - name: Ruby
     href: http://www.rubydoc.info/gems/azure_mgmt_traffic_manager
   - name: Python
     href: http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html
   - name: REST
     href: https://msdn.microsoft.com/library/mt163667.aspx
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.network/trafficmanagerprofiles
 - name: 関連項目
   items:
   - name: Application Gateway
@@ -132,9 +140,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla/traffic-manager/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=traffic-manager
-ms.openlocfilehash: 3ae9f33143ec29b028a7d4fffc5f97477baa3a4a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: cca0930c6314f15dfd33a32bd6f5cb5ad6da0134
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457220"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785710"

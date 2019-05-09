@@ -3,22 +3,22 @@ title: クイック スタート - Azure Active Directory B2C を使用したデ
 description: Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル ASP.NET デスクトップ アプリケーションを実行します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 2e60ede7ca6a1030f689f97ad9fe38a4705126a8
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: 161c1ec72b14f4cc1b2517a0dc6282f0548575b3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725957"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182304"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定 
+# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定 
 
 Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリケーションは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。 このクイック スタートでは、WPF (Windows Presentation Foundation) デスクトップ アプリケーションにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32cd3b9eb60a6d12c71be047740fa96ffdd56310
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094158"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731939"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
 
@@ -43,7 +43,7 @@ ms.locfileid: "49094158"
 この記事には簡易版があります。Azure VM の概要、テスト、評価については、「[CLI を使用した Azure VM のカスタム イメージの作成](tutorial-custom-images.md)」でも説明しています。
 
 
-## <a name="step-1-deprovision-the-vm"></a>手順 1: VM のプロビジョニングを解除する
+## <a name="step-1-deprovision-the-vm"></a>手順 1:VM のプロビジョニングを解除する
 まず Azure VM エージェントで VM のプロビジョニングを解除し、マシン固有のファイルとデータを削除します。 ソース Linux VM で `-deprovision+user` パラメーターを指定して `waagent` コマンドを実行します。 詳細については、「[Azure Linux エージェント ユーザー ガイド](../extensions/agent-linux.md)」をご覧ください。
 
 1. SSH クライアントを使って Linux VM に接続します。
@@ -58,10 +58,10 @@ ms.locfileid: "49094158"
 3. 「**y**」と入力して続行します。 `-force` パラメーターを追加すると、この確認手順を省略できます。
 4. コマンドが完了したら、**exit** を入力して SSH クライアントを閉じます。
 
-## <a name="step-2-create-vm-image"></a>手順 2. VM イメージを作成する
+## <a name="step-2-create-vm-image"></a>手順 2:VM イメージを作成する
 Azure CLI を使用し、一般化されたものとして VM を設定し、イメージをキャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
 
-1. [az vm deallocate](/cli/azure/vm#deallocate) で、プロビジョニングを解除した VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
+1. [az vm deallocate](/cli/azure/vm) で、プロビジョニングを解除した VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
    
     ```azurecli
     az vm deallocate \
@@ -69,7 +69,7 @@ Azure CLI を使用し、一般化されたものとして VM を設定し、イ
       --name myVM
     ```
 
-2. [az vm generalize](/cli/azure/vm#generalize) を使用して VM の状態を一般化に設定します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を一般化として設定します。
+2. [az vm generalize](/cli/azure/vm) を使用して VM の状態を一般化に設定します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を一般化として設定します。
    
     ```azurecli
     az vm generalize \
@@ -90,8 +90,8 @@ Azure CLI を使用し、一般化されたものとして VM を設定し、イ
    >
    > イメージをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、`--zone-resilient true` パラメーターを含める必要があります。
 
-## <a name="step-3-create-a-vm-from-the-captured-image"></a>手順 3: キャプチャしたイメージから VM を作成する
-[az vm create](/cli/azure/vm#az_vm_create) で、作成したイメージを使用して VM を作成します。 次の例では、*myImage* という名前のイメージから *myVMDeployed* という名前の VM を作成します。
+## <a name="step-3-create-a-vm-from-the-captured-image"></a>手順 3:キャプチャしたイメージから VM を作成する
+[az vm create](/cli/azure/vm) で、作成したイメージを使用して VM を作成します。 次の例では、*myImage* という名前のイメージから *myVMDeployed* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -124,7 +124,7 @@ az vm create \
 ```
 
 
-## <a name="step-4-verify-the-deployment"></a>手順 4: デプロイを検証する
+## <a name="step-4-verify-the-deployment"></a>手順 4:デプロイを検証する
 
 作成した仮想マシンに SSH を使用して接続し、デプロイを検証し、新しい VM の使用を開始します。 SSH を介して接続するには、[az vm show](/cli/azure/vm#az-vm-show) を実行して、VM の IP アドレスか FQDN を見つけます。
 

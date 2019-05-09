@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: e25cdd0677efce0ea8d40ad1c8ae07a5d071a67f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969791"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566007"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -160,7 +159,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次のコマンドを実行して、SQL データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -176,6 +175,11 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Azure SQL データベースにデータ型と新たなストアド プロシージャを作成する
 次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型を SQL データベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。
 
+作業工程を簡単に始められるように、差分データをテーブル変数を介して渡すこのようなストアド プロシージャを直接使用し、それらを宛先ストアにマージします。 テーブル変数には、"多数" の差分行 (100 を超える行) が格納されることが想定されていない点に注意してください。  
+
+多数の差分行を宛先ストアにマージする必要がある場合は、まずコピー アクティビティを使用してすべての差分データを宛先ストアの一時的な "ステージング" テーブルにコピーしてから、テーブル変数を使用せずに独自のストアド プロシージャを構築し、"ステージング" テーブルから "最終的な" テーブルにマージすることをお勧めします。 
+
+
 ```sql
 CREATE TYPE DataTypeforCustomerTable AS TABLE(
     PersonID int,
@@ -185,7 +189,7 @@ CREATE TYPE DataTypeforCustomerTable AS TABLE(
 
 GO
 
-CREATE PROCEDURE sp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
+CREATE PROCEDURE usp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
 AS
 
 BEGIN
@@ -208,7 +212,7 @@ CREATE TYPE DataTypeforProjectTable AS TABLE(
 
 GO
 
-CREATE PROCEDURE sp_upsert_project_table @project_table DataTypeforProjectTable READONLY
+CREATE PROCEDURE usp_upsert_project_table @project_table DataTypeforProjectTable READONLY
 AS
 
 BEGIN
@@ -288,7 +292,7 @@ END
    ![統合ランタイムのセットアップ - 完了](./media/tutorial-incremental-copy-multiple-tables-portal/click-finish-integration-runtime-setup.png)
 1. 統合ランタイムの一覧に **MySelfHostedIR** が含まれていることを確認します。
 
-       ![Integration runtimes - list](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtimes-list.png)
+    ![統合ランタイム - 一覧](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtimes-list.png)
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、オンプレミスの SQL Server データベースと SQL データベースに対するリンクされたサービスを作成します。 
@@ -487,11 +491,12 @@ END
 1. **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** で **[SinkDataset]** を選択します。 
         
     ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-1. **[パラメーター]** タブに切り替えて、次の手順を実行します。
+1. 次の手順を実行します。
 
-    1. **[Sink Stored Procedure Name]\(シンク ストアド プロシージャ名\)** プロパティに「`@{item().StoredProcedureNameForMergeOperation}`」と入力します。
-    1. **[Sink Table Type]\(シンク テーブル型\)** プロパティに「`@{item().TableType}`」と入力します。
-    1. **[Sink Dataset]\(シンク データセット\)** セクションで、**[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
+    1. **[データセット]** プロパティで、**[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
+    1. **[ストアド プロシージャ名]** プロパティに「`@{item().StoredProcedureNameForMergeOperation}`」と入力します。
+    1. **[テーブルの種類]** プロパティに「`@{item().TableType}`」と入力します。
+
 
         ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **コピー** アクティビティを**ストアド プロシージャ** アクティビティに接続します。 
@@ -505,13 +510,13 @@ END
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。
 
-    1. **[ストアド プロシージャ名]** に `sp_write_watermark` を選択します。 
+    1. **[ストアド プロシージャ名]** に `usp_write_watermark` を選択します。 
     1. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     1. 各パラメーターの値を次のように指定します。 
 
-        | Name | type | 値 | 
+        | Name | Type | 値 | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | Datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
@@ -536,13 +541,13 @@ END
             "TABLE_NAME": "customer_table",
             "WaterMark_Column": "LastModifytime",
             "TableType": "DataTypeforCustomerTable",
-            "StoredProcedureNameForMergeOperation": "sp_upsert_customer_table"
+            "StoredProcedureNameForMergeOperation": "usp_upsert_customer_table"
         },
         {
             "TABLE_NAME": "project_table",
             "WaterMark_Column": "Creationtime",
             "TableType": "DataTypeforProjectTable",
-            "StoredProcedureNameForMergeOperation": "sp_upsert_project_table"
+            "StoredProcedureNameForMergeOperation": "usp_upsert_project_table"
         }
     ]
     ```
@@ -640,13 +645,13 @@ VALUES
             "TABLE_NAME": "customer_table",
             "WaterMark_Column": "LastModifytime",
             "TableType": "DataTypeforCustomerTable",
-            "StoredProcedureNameForMergeOperation": "sp_upsert_customer_table"
+            "StoredProcedureNameForMergeOperation": "usp_upsert_customer_table"
         },
         {
             "TABLE_NAME": "project_table",
             "WaterMark_Column": "Creationtime",
             "TableType": "DataTypeforProjectTable",
-            "StoredProcedureNameForMergeOperation": "sp_upsert_project_table"
+            "StoredProcedureNameForMergeOperation": "usp_upsert_project_table"
         }
     ]
     ```

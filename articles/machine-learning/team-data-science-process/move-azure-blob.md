@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a37c19ac0d3c053644b2f1f970ef9f84eac2f1df
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ca5a75ec61a0f75b3a008762561fed8231fce33d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139859"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453758"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Azure Blob Storage との間のデータの移動
 

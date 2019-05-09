@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Reviewsnap の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Reviewsnap の統合 | Microsoft Docs
 description: Azure Active Directory と Reviewsnap の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: b00fb373-2b31-4dcf-84ce-abc29e4c639c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8c66985c7a1d9084ab2a264b1ba799b1fdfa3b0f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 24f4983f2ba1567241a6dfc6231a4925805947cd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448416"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58878436"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>チュートリアル: Azure Active Directory と Reviewsnap の統合
+# <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>チュートリアル:Azure Active Directory と Reviewsnap の統合
 
 このチュートリアルでは、Reviewsnap と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -110,8 +111,7 @@ Reviewsnap で Azure AD のシングル サインオンを構成してテスト�
 
     a. **[識別子]** ボックスに次の URL を入力します。`https://app.reviewsnap.com`
 
-    b. **[応答 URL]** ボックスに、`https://app.reviewsnap.com/auth/saml/callback?namespace=<CUSTOMER_NAMESPACE>
-` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://app.reviewsnap.com/auth/saml/callback?namespace=<CUSTOMER_NAMESPACE>` のパターンを使用して URL を入力します。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
@@ -170,7 +170,7 @@ Reviewsnap で Azure AD のシングル サインオンを構成してテスト�
  
 ### <a name="create-a-reviewsnap-test-user"></a>Reviewsnap テスト ユーザーの作成
 
-このセクションでは、Reviewsnap で Britta Simon というユーザーを作成します。 [Reviewsnap サポート チーム](mailto:support@reviewsnap.com)と連携して、Reviewsnap プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Reviewsnap で Britta Simon というユーザーを作成します。  [Reviewsnap サポート チーム](mailto:support@reviewsnap.com)と連携して、Reviewsnap プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -207,7 +207,7 @@ Reviewsnap で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Reviewsnap] タイルをクリックすると、自動的に Reviewsnap アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

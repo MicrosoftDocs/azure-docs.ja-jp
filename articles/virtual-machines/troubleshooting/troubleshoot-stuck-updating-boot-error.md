@@ -3,7 +3,7 @@ title: Azure VM の起動が Windows Update で停止する | Microsoft Docs
 description: Windows Update で Azure VM の起動が停止しているときに問題のトラブルシューティングを行う方法について説明します。
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genli
+author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 2d42d2014432b72f35e9b0d9543fe499a6ab721b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 7c516781f7d0c80dc7185585a29278820ab9a46e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355313"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777568"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM の起動が Windows Update で停止する
 
 この記事では、仮想マシン (VM) が起動中に Windows Update の段階で停止する場合の問題の解決を支援します。 
 
 > [!NOTE] 
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
 
- ## <a name="symptom"></a>症状
+## <a name="symptom"></a>症状
 
  Windows VM が起動しません。 [[ブート診断]](../troubleshooting/boot-diagnostics.md) ウィンドウでスクリーンショットを調べると、起動が更新プロセスで停止していることがわかります。 表示されるメッセージの例を次に示します。
 
@@ -47,16 +47,16 @@ ms.locfileid: "49355313"
 
 1. バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。 
 2. [復旧 VM に OS ディスクを接続します](troubleshoot-recovery-disks-portal-windows.md)。
-3. 復旧 VM に OS ディスクが接続されたら、**ディスク マネージャー**を開き、**オンライン**になっていることを確認します。 \Windows フォルダーを保持している接続された OS ディスクに割り当てられているドライブ文字をメモしておきます。 ディスクが暗号化されている場合は、このドキュメントの次の手順に進む前にディスクを復号化します。
+3. OS ディスクが復旧 VM に接続されたら、**diskmgmt.msc** を実行して [ディスクの管理] を開き、接続されたディスクが **[オンライン]** になっていることを確認します。 \Windows フォルダーを保持している接続された OS ディスクに割り当てられているドライブ文字をメモしておきます。 ディスクが暗号化されている場合は、このドキュメントの次の手順に進む前にディスクを復号化します。
 
-3. 接続された OS ディスク上にある更新プログラム パッケージの一覧を取得します。
+4. 管理者特権でのコマンド プロンプト インスタンス ([管理者として実行]) を開きます。 次のコマンドを実行して、接続された OS ディスク上にある更新プログラム パッケージの一覧を取得します。
 
         dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
 
     たとえば、接続された OS ディスクがドライブ F の場合は、次のコマンドを実行します。
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-4. C:\temp\Patch_level.txt ファイルを開き、下から順に読み取ります。 **インストールの保留中**または**アンインストールの保留中**状態にある更新プログラムを特定します。  更新状態のサンプルを次に示します。
+5. C:\temp\Patch_level.txt ファイルを開き、下から順に読み取ります。 **インストールの保留中**または**アンインストールの保留中**状態にある更新プログラムを特定します。  更新状態のサンプルを次に示します。
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -64,7 +64,7 @@ ms.locfileid: "49355313"
     Release Type : Security Update
     Install Time :
     ```
-5. 問題の原因となっている更新プログラムを削除します。
+6. 問題の原因となっている更新プログラムを削除します。
     
     ```
     dism /Image:<Attached OS disk>:\ /Remove-Package /PackageName:<PACKAGE NAME TO DELETE>
@@ -72,10 +72,10 @@ ms.locfileid: "49355313"
     例: 
 
     ```
-    dism /Image:F:\ /Remove-Package /Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
+    dism /Image:F:\ /Remove-Package /PackageName:Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     ```
 
     > [!NOTE] 
     > パッケージのサイズに応じて、DISM ツールではアンインストールの処理に時間がかかります。 通常、プロセスは 16 分以内に完了します。
 
-6. OS ディスクの接続を解除してから、[OS ディスクを使用して VM を再構築](troubleshoot-recovery-disks-portal-windows.md)します。 
+7. [OS ディスクを切断して、VM を再作成します](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk)。 その後、問題が解決されているかどうかを確認します。

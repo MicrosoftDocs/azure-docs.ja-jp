@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と Ruby を使って、画像からサムネイルを生成します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e666c9371b4f38f20c5835b06d7b9959ad5718ad
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: bc0941175538c36190999e8c6d191fb8c3701c2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578717"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839629"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-ruby-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と Ruby を使用したサムネイルの生成
 
@@ -77,10 +77,6 @@ end
 ## <a name="examine-the-response"></a>結果の確認
 
 成功応答は、サムネイル画像データを表すバイナリ データとして返されます。 要求が失敗した場合、応答がコンソール ウィンドウに表示されます。 失敗した要求の応答には、原因の特定につながるエラー コードとメッセージが格納されています。
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

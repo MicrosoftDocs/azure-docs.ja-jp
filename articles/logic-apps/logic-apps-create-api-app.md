@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895857"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
@@ -25,11 +25,11 @@ Azure Logic Apps が提供する [100 以上の組み込みコネクタ](../conn
 * 仕事または個人的な作業の管理にサービスを利用する顧客を支援する。
 * サービスが届く範囲を拡大する。サービスを見つけやすくする。サービスの用途を拡大する。
 
-基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](http://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 [Azure App Service](../app-service/app-service-web-overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
+基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 [Azure App Service](../app-service/overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
 
 カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する[*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する[*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
 
-API は [Azure App Service](../app-service/app-service-web-overview.md) でホストできます。Azure App Service は、高い拡張性と容易な API ホスティングを提供するサービスとしてのプラットフォーム (PaaS) です。
+API は [Azure App Service](../app-service/overview.md) でホストできます。Azure App Service は、高い拡張性と容易な API ホスティングを提供するサービスとしてのプラットフォーム (PaaS) です。
 
 > [!TIP] 
 > API は Web アプリとしてデプロイできますが、API アプリとしてデプロイすることを検討してください。クラウドやオンプレミスで API を構築、ホスト、利用するとき、作業が簡単になります。 API のコードを変更する必要はありません。コードを API アプリにデプロイするだけです。 たとえば、次の言語で作成された API アプリをビルドする方法について確認してください。 
@@ -41,11 +41,11 @@ API は [Azure App Service](../app-service/app-service-web-overview.md) でホ�
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](http://github.com/logicappsio)または[ブログ](https://aka.ms/logicappsblog)をご覧ください。
+> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](https://github.com/logicappsio)または[ブログ](https://aka.ms/logicappsblog)をご覧ください。
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>カスタム API とカスタム コネクタの違い
 
-カスタム API と[カスタム コネクタ](../logic-apps/custom-connector-overview.md)は、プラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](http://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 また、これらの API とコネクタは HTTP エンドポイント経由で通信する REST API であるため、カスタム API とコネクタの構築には、.NET、Java、Node.js など、任意の言語を利用できます。
+カスタム API と[カスタム コネクタ](../logic-apps/custom-connector-overview.md)は、プラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 また、これらの API とコネクタは HTTP エンドポイント経由で通信する REST API であるため、カスタム API とコネクタの構築には、.NET、Java、Node.js など、任意の言語を利用できます。
 
 カスタム API を使用すると、コネクタではない API を呼び出すことができ、HTTP + Swagger、Azure API Management、または App Services で呼び出せるエンドポイントを提供できます。 カスタム コネクタはカスタム API と同じように動作しますが、次の属性も備えています。
 
@@ -63,7 +63,7 @@ API は [Azure App Service](../app-service/app-service-web-overview.md) でホ�
 
 ## <a name="helpful-tools"></a>便利なツール
 
-API の操作やパラメーターを説明する [Swagger ドキュメント](http://swagger.io/specification/)も API に含まれるとき、カスタム API はロジック アプリと最も効果的に連動します。
+API の操作やパラメーターを説明する [Swagger ドキュメント](https://swagger.io/specification/)も API に含まれるとき、カスタム API はロジック アプリと最も効果的に連動します。
 [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) のようなライブラリの多くは、Swagger ファイルを自動的に生成できます。 表示名やプロパティの種類などに関して Swagger ファイルに注釈を付けるために、[TRex](https://github.com/nihaue/TRex) を利用することもできます。Swagger ファイルとロジック アプリが効果的に連動します。
 
 <a name="actions"></a>
@@ -104,9 +104,9 @@ API が従う手順を API の観点から説明すると次のようになり�
    
    `202 ACCEPTED` 応答には次のヘッダーを含める必要があります。
    
-   * *必須*: ロジック アプリ エンジンが API のジョブの状態を確認できる URL の絶対パスを指定する `location` ヘッダー。
+   * *必須*:ロジック アプリ エンジンが API のジョブの状態を確認できる URL の絶対パスを指定する `location` ヘッダー
 
-   * *任意*: 待機時間を秒単位で指定する `retry-after` ヘッダー。この時間が経過しないとエンジンは `location` URL にジョブの状態を確認できません。 
+   * *省略可能*: 待機時間を秒単位で指定する `retry-after` ヘッダー。この時間が経過しないとエンジンは `location` URL にジョブの状態を確認できません。 
 
      既定では、エンジンは 20 秒ごとに確認します。 別の時間間隔を指定するには、`retry-after` ヘッダーと次のポーリングまでの秒数を追加します。
 
@@ -134,9 +134,9 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 
 このパターンでは、コントローラーに `subscribe` と `unsubscribe` という 2 つのエンドポイントを設定します。
 
-*  `subscribe` エンドポイント: ワークフローで API のアクションまで実行が到達すると、ロジック アプリ エンジンは `subscribe` エンドポイントを呼び出します。 この手順では、ロジック アプリは API が保存するコールバック URL を作成し、作業の完了時に API からコールバックが届くまで待機します。 API は URL に HTTP POST でコールバックし、ロジック アプリの入力として返すコンテンツやヘッダーがあれば、それを渡します。
+*  `subscribe` エンドポイント:ワークフローで API のアクションまで実行が到達すると、ロジック アプリ エンジンは `subscribe` エンドポイントを呼び出します。 この手順では、ロジック アプリは API が保存するコールバック URL を作成し、作業の完了時に API からコールバックが届くまで待機します。 API は URL に HTTP POST でコールバックし、ロジック アプリの入力として返すコンテンツやヘッダーがあれば、それを渡します。
 
-* `unsubscribe` エンドポイント: ロジック アプリの実行が取り消された場合、ロジック アプリ エンジンは `unsubscribe` エンドポイントを呼び出します。 API はコールバック URL を登録解除し、プロセスがあれば必要に応じて停止できます。
+* `unsubscribe` エンドポイント:ロジック アプリの実行が取り消された場合、ロジック アプリ エンジンは `unsubscribe` エンドポイントを呼び出します。 API はコールバック URL を登録解除し、プロセスがあれば必要に応じて停止できます。
 
 ![webhook アクション パターン](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -176,7 +176,7 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 | 要求に `triggerState` が含まれていますか? | API 応答 | 
 | -------------------------------- | -------------| 
 | いいえ  | HTTP `202 ACCEPTED` 状態と `location` ヘッダーを返します。ヘッダーの `triggerState` を現在の時刻に設定し、`retry-after` 間隔を 15 秒に設定します。 | 
-| [はい] | `triggerState` の `DateTime` 後に追加されたファイルがないか、サービスに確認します。 | 
+| はい | `triggerState` の `DateTime` 後に追加されたファイルがないか、サービスに確認します。 | 
 ||| 
 
 | 見つかったファイルの数 | API 応答 | 
@@ -196,9 +196,9 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 webhook トリガーは、サービス エンドポイントで新しいデータまたはイベントを待ち受ける*プッシュ トリガー*です。 新しいデータまたはあるイベントが指定の条件を満たす場合、トリガーが発動し、ロジック アプリ インスタンスが作成されます。このインスタンスはデータを入力として処理します。
 webhook トリガーはこのトピックの前半で説明した [webhook アクション](#webhook-actions)に似た動作をします。`subscribe` エンドポイントと `unsubscribe` エンドポイントで設定されます。 
 
-* `subscribe` エンドポイント: ロジック アプリに webhook トリガーを追加し、保存するとき、ロジック アプリ エンジンは `subscribe` エンドポイントを呼び出します。 この手順により、API が保存するコールバック URL をロジック アプリが作成します。 新しいデータまたはあるイベントが指定の条件を満たす場合、API は URL に HTTP POST でコールバックします。 コンテンツ ペイロードとヘッダーは入力としてロジック アプリに渡されます。
+* `subscribe` エンドポイント:ロジック アプリに webhook トリガーを追加し、保存するとき、ロジック アプリ エンジンは `subscribe` エンドポイントを呼び出します。 この手順により、API が保存するコールバック URL をロジック アプリが作成します。 新しいデータまたはあるイベントが指定の条件を満たす場合、API は URL に HTTP POST でコールバックします。 コンテンツ ペイロードとヘッダーは入力としてロジック アプリに渡されます。
 
-* `unsubscribe` エンドポイント: webhook が発動するか、ロジック アプリ全体が削除されると、ロジック アプリ エンジンは `unsubscribe` エンドポイントを呼び出します。 API はコールバック URL を登録解除し、プロセスがあれば必要に応じて停止できます。
+* `unsubscribe` エンドポイント:webhook が発動するか、ロジック アプリ全体が削除されると、ロジック アプリ エンジンは `unsubscribe` エンドポイントを呼び出します。 API はコールバック URL を登録解除し、プロセスがあれば必要に応じて停止できます。
 
 ![webhook トリガー パターン](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

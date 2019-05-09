@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.date: 4/9/2019
+ms.author: ramamill
+ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253682"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59362159"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>追加のプロセス サーバーによるフェールバックのスケール
 
@@ -24,8 +24,8 @@ ms.locfileid: "53253682"
 
 VMware レプリケーションのために[容量計画](site-recovery-plan-capacity-vmware.md)を実行したことを確認してください。 これは、追加のプロセス サーバーをどのように、いつデプロイする必要があるかを識別する助けとなります。
 
->[!NOTE]
-複製された Process Server コンポーネントの使用はサポートされていません。 PS スケールアウトごとに、この記事の手順に従います。
+> [!NOTE]
+> 複製された Process Server コンポーネントの使用はサポートされていません。 PS スケールアウトごとに、この記事の手順に従います。
 
 ### <a name="sizing-requirements"></a>サイズ変更の要件 
 
@@ -51,16 +51,16 @@ VMware レプリケーションのために[容量計画](site-recovery-plan-cap
 
 次のように、プロセス サーバーのインストール ファイルをダウンロードします。
 
-1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
+1. Azure Portal にさサインインし、Recovery Services コンテナーを参照します。
 2. **[Site Recovery インフラストラクチャ]** > **[VMware and Physical Machines] (VMware と物理マシン)** > **[構成サーバー]** ([For VMware & Physical Machines] \(VMware および物理マシン) の下) に移動します。
 3. 構成サーバーを選択して、サーバーの詳細に移動します。 次に、**[+ プロセス サーバー]** をクリックします。
 4. **[プロセス サーバーの追加]** >  **[プロセス サーバーのデプロイ先を選択してください]** で、**[スケールアウト プロセス サーバーをオンプレミスにデプロイします]** を選択します。
 
-  ![[サーバーの追加] ページ](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+   ![[サーバーの追加] ページ](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. **[Download the Microsoft Azure Site Recovery Unified Setup]** (Microsoft Azure Site Recovery 統合セットアップのダウンロード) をクリックします。 これで最新バージョンのインストール ファイルがダウンロードされます。
 
-  > [!WARNING]
-  プロセス サーバーのインストール バージョンは、実行している構成サーバーのバージョンと同じ、またはそれより前である必要があります。 バージョンの互換性を確保する簡単な方法は、構成サーバーをインストールまたは更新するために最近使用したものと同じインストーラーを使用することです。
+   > [!WARNING]
+   > プロセス サーバーのインストール バージョンは、実行している構成サーバーのバージョンと同じ、またはそれより前である必要があります。 バージョンの互換性を確保する簡単な方法は、構成サーバーをインストールまたは更新するために最近使用したものと同じインストーラーを使用することです。
 
 ## <a name="install-from-the-ui"></a>UI からインストールする
 

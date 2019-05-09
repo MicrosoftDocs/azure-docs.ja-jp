@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: iainfou
-ms.openlocfilehash: 691decb88188a428edfeab1ea9e99c48876b6d9f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111352"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496176"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
 
@@ -36,10 +36,10 @@ Azure Kubernetes Service (AKS) でクラスターを作成して管理する際�
 
 | ユース ケース | ボリューム プラグイン | 読み取り/書き込み (1 回のみ) | 読み取り専用 (複数回) | 読み取り/書き込み (複数回) |
 |----------|---------------|-----------------|----------------|-----------------|
-| 共有構成       | Azure Files   | [はい] | はい | [はい] |
-| 構造化されたアプリ データ        | Azure ディスク   | [はい] | いいえ   | いいえ   |
-| アプリ データ、読み取り専用で共有 | [dysk (プレビュー)][dysk] | [はい] | [はい] | いいえ   |
-| 非構造化データ、ファイル システム操作 | [BlobFuse (プレビュー)][blobfuse] | [はい] | はい | [はい] |
+| 共有構成       | Azure Files   | はい | はい | はい |
+| 構造化されたアプリ データ        | Azure ディスク   | はい | いいえ   | いいえ   |
+| アプリ データ、読み取り専用で共有 | [dysk (プレビュー)][dysk] | はい | はい | いいえ   |
+| 非構造化データ、ファイル システム操作 | [BlobFuse (プレビュー)][blobfuse] | はい | はい | はい |
 
 AKS のボリュームに対して提供される、2 つの主な種類のストレージが、Azure ディスクまたは Azure ファイルでサポートされます。 セキュリティを向上させるため、両方の種類のストレージでは既定で Azure Storage Service Encryption (SSE) が使用され、保存データが暗号化されます。 ディスクは現在、AKS ノード レベルで Azure Disk Encryption を使用して暗号化することはできません。
 
@@ -91,9 +91,9 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 ## <a name="secure-and-back-up-your-data"></a>データをセキュリティで保護してバックアップする
 
-**ベスト プラクティス ガイダンス** - Heptio Ark や Azure Site Recovery など、ご利用のストレージの種類に適したツールを使って、データをバックアップします。 それらのバックアップの整合性とセキュリティを確認します。
+**ベスト プラクティス ガイダンス** - Velero や Azure Site Recovery など、ご利用のストレージの種類に適したツールを使って、データをバックアップします。 それらのバックアップの整合性とセキュリティを確認します。
 
-アプリケーションでディスク上またはファイル内に保持されているデータを格納して使用する場合、定期的にそのデータのバックアップまたはスナップショットを作成する必要があります。 Azure ディスクでは、組み込みのスナップショット テクノロジを使用できます。 スナップショット操作を実行する前に、アプリケーションでディスクにフラッシュ書き込みを行うためのフックが必要になる場合があります。 [Heptio Ark][heptio-ark] では、追加のクラスター リソースおよび構成と共に永続ボリュームをバックアップできます。 [アプリケーションから状態を削除][remove-state]できない場合は、永続ボリュームからデータをバックアップし、復元操作を定期的にテストしてデータの整合性と必要なプロセスを確認します。
+アプリケーションでディスク上またはファイル内に保持されているデータを格納して使用する場合、定期的にそのデータのバックアップまたはスナップショットを作成する必要があります。 Azure ディスクでは、組み込みのスナップショット テクノロジを使用できます。 スナップショット操作を実行する前に、アプリケーションでディスクにフラッシュ書き込みを行うためのフックが必要になる場合があります。 [Velero][velero] では、追加のクラスター リソースおよび構成と共に永続ボリュームをバックアップできます。 [アプリケーションから状態を削除][remove-state]できない場合は、永続ボリュームからデータをバックアップし、復元操作を定期的にテストしてデータの整合性と必要なプロセスを確認します。
 
 データ バックアップのさまざまな方法の制限事項、またスナップショットを作成する前にデータを静止する必要がある場合の制限事項を理解します。 データ バックアップで、クラスター デプロイのアプリケーション環境を必ずしも復元できるとは限りません。 このようなシナリオの詳細については、[AKS での事業継続とディザスター リカバリーのベスト プラクティス][best-practices-multi-region]に関するページを参照してください。
 
@@ -102,7 +102,7 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 この記事では、AKS のストレージのベスト プラクティスに重点を置きました。 Kubernetes のストレージの基本について詳しくは、[AKS におけるアプリケーションのストレージの概念][aks-concepts-storage]に関するページを参照してください。
 
 <!-- LINKS - External -->
-[heptio-ark]: https://github.com/heptio/ark
+[velero]: https://github.com/heptio/velero
 [dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 

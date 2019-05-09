@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8b2d409ceb6f659a078f48ba71f0f4c72663f6f0
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002095"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003584"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -28,7 +28,7 @@ ms.locfileid: "54002095"
 * 「難しい設定なしで」動く標準の製品利用統計情報モジュールは、多くの場合、機密データをサービスに送信しません。 製品利用統計情報は、負荷指標、パフォーマンス指標、利用率指標、例外レポート、その他の診断データに関連します。 診断レポートに表示される主なユーザー データは URL ですが、いかなる場合も、アプリは URL にプレーンテキストで機密データを入力するべきではありません。
 * 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。 (この拡張機能は Application Insights の優れた機能です。)手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。 アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに徹底したレビュー プロセスを適用してください。
 * アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。 データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。 
-* データは米国またはヨーロッパの [Microsoft Azure](https://azure.com) サーバーに保管されます。 (ただし、アプリは、場所を問わず実行できます)。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 転送中は暗号化されます。サーバーに保管されているときは暗号化されません。
+* データは米国またはヨーロッパの [Microsoft Azure](https://azure.com) サーバーに保管されます。 (ただし、アプリは、場所を問わず実行できます)。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 これは、転送中および保存時に暗号化されます。
 
 この記事の残りの部分では、以上の答えについてもっと詳しく説明します。 設計は自己完結型であり、直近のチームに入っていない同僚にも見せることができます。
 
@@ -41,7 +41,7 @@ Application Insights サービスは製品利用統計情報を保存し、分�
 
 Application Insights サービスから、たとえば、データベースや外部ツールにデータをエクスポートできます。 サービスから取得した特別なキーを各ツールに提供します。 キーは必要に応じて取り消すことができます。 
 
-Application Insights SDK はさまざまなアプリケーション タイプに利用できます。独自の J2EE サーバー、ASP.NET サーバー、Azure にホストされている Web サービス、Web クライアント (Web ページで実行されるコード)、デスクトップのアプリとサービス、デバイス アプリ (Windows Phone、iOS、Android) などです。 これらはすべて同じサービスに製品利用統計情報を送信します。
+Application Insights SDK はさまざまなアプリケーション タイプに利用できます。独自の Java EE サーバー、ASP.NET サーバー、または Azure にホストされている Web サービス、Web クライアント (Web ページで実行されるコード)、デスクトップのアプリとサービス、デバイス アプリ (Windows Phone、iOS、Android) などです。 これらはすべて同じサービスに製品利用統計情報を送信します。
 
 ## <a name="what-data-does-it-collect"></a>どのようなデータが収集されますか。
 ### <a name="how-is-the-data-is-collected"></a>データはどのような方法で収集されますか。
@@ -51,7 +51,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
   
   * それぞれの SDK にはさまざまな [モジュール](../../azure-monitor/app/configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
   * デプロイ時に SDK をインストールする場合、標準のモジュールに加え、その API を利用し、独自の製品利用統計情報を送信できます。 このカスタム製品利用統計情報にあらゆるデータを含め、送信できます。
-* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、 [J2EE サーバー](../../azure-monitor/app/java-agent.md) にそのようなエージェントがあります。
+* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、[Java EE サーバー](../../azure-monitor/app/java-agent.md)にそのようなエージェントがあります。
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md) は Microsoft が実行するプロセスであり、定期的な間隔で要求を Web アプリに送信します。 結果は Application Insights サービスに送信されます。
 
 ### <a name="what-kinds-of-data-are-collected"></a>どのような種類のデータが収集されますか。
@@ -87,7 +87,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
 
-[デバッグ スナップショット](../../application-insights/app-insights-snapshot-debugger.md)は 7 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
+[デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)は 7 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 お客様と、組織アカウントを持っている場合はチーム メンバーが、データを見ることができます。 
@@ -118,9 +118,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 コードを他のプロジェクトと共有する場合は、インストルメンテーション キーを必ず削除してください。
 
 ## <a name="is-the-data-encrypted"></a>データは暗号化されますか。
-現時点で、サーバー内では暗号化されません。
-
-データをデータ センター間で移動するときは、すべてのデータが暗号化されます。
+すべてのデータが、保存時とデータ センター間での移動時に暗号化されます。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>アプリケーションから Application Insights サーバーに送信されるときにデータは暗号化されますか。
 はい。ポータルからほぼすべての SDK (Web サーバー、デバイス、HTTPS Web ページを含みます) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。
@@ -129,12 +127,9 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 はい。特定のテレメトリ チャネルは、エンドポイントに到達できない場合、データをローカルで保持します。 どのフレームワークおよびテレメトリ チャネルが影響を受けるかを以下で確認してください。
 
-
 ローカル ストレージを利用するテレメトリ チャネルは、アプリケーションを実行している特定のアカウントに制限される TEMP または APPDATA ディレクトリ内に一時ファイルを作成します。 これは、エンドポイントが一時的に使用できなくなったか、または調整制限に達した場合に発生する可能性があります。 この問題が解決されると、テレメトリ チャネルは、すべての新しいデータおよび保持されているデータの送信を再開します。
 
-
-この保持されているデータは**暗号化されない**ため、プライベート データの収集を無効にするようにデータ収集ポリシーを再構築することを強くお勧めします。 (詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。)
-
+この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 (詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。)
 
 顧客がこのディレクトリを特定のセキュリティ要件で構成する必要がある場合は、フレームワークごとに構成できます。 アプリケーションを実行しているプロセスにこのディレクトリへの書き込みアクセス権があることを確認してください。ただし、意図しないユーザーによってテレメトリが読み取られることを防ぐために、このディレクトリが保護されていることも確認してください。
 
@@ -148,7 +143,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 
 構成ファイルを使用する場合:
-```
+```xml
 <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
     <StorageFolder>D:\NewTestFolder</StorageFolder>
 </TelemetryChannel>
@@ -158,12 +153,12 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 - 構成ファイルから ServerTelemetryChannel を削除します。
 - 構成に次のスニペットを追加します。
-```
-ServerTelemetryChannel channel = new ServerTelemetryChannel();
-channel.StorageFolder = @"D:\NewTestFolder";
-channel.Initialize(TelemetryConfiguration.Active);
-TelemetryConfiguration.Active.TelemetryChannel = channel;
-```
+  ```csharp
+  ServerTelemetryChannel channel = new ServerTelemetryChannel();
+  channel.StorageFolder = @"D:\NewTestFolder";
+  channel.Initialize(TelemetryConfiguration.Active);
+  TelemetryConfiguration.Active.TelemetryChannel = channel;
+  ```
 
 ### <a name="netcore"></a>NetCore
 
@@ -171,7 +166,7 @@ TelemetryConfiguration.Active.TelemetryChannel = channel;
 
 次のコード スニペットは、 `Startup.cs`  クラスの `ConfigureServices()`  メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
 
-```
+```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
@@ -202,7 +197,7 @@ Application Insight エンドポイントへのデータの転送時のセキュ
 |.NET | サポートされています。構成はバージョンによって異なります。 | .NET 4.7 およびそれ以前のバージョンの詳細な構成情報については、[これらの手順](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)を参照してください。  |
 |Status Monitor | サポートされています。構成が必要です | Status Monitor は、TLS 1.2 をサポートするために [OS 構成](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET 構成](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)に依存します。
 |Node.js |  サポートされています。v10.5.0 では構成が必要な場合があります。 | アプリケーションに固有の構成については、[公式の Node.js TLS/SSL ドキュメント](https://nodejs.org/api/tls.html)を使用してください。 |
-|Java | サポートされています。JDK の TLS 1.2 のサポートは、[JDK 6 更新プログラム 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) および [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) で追加されました。 | JDK 8 では、[既定で TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default) が使用されます。  |
+|Java | サポートされています。JDK の TLS 1.2 のサポートは、[JDK 6 更新プログラム 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) および [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) で追加されました。 | JDK 8 では、[既定で TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default) が使用されます。  |
 |Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。  | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
 | Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
 | Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
@@ -239,6 +234,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 SDK はプラットフォームごとに異なり、インストールできるコンポーネントは複数あります  ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>さまざまなシナリオで送信されるデータのクラス
+
 | 操作 | 収集されるデータのクラス (次の表を参照) |
 | --- | --- |
 | [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Session<br/>users |
@@ -254,6 +250,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [他のプラットフォームの SDK][platforms] については、該当するドキュメントを参照してください。
 
 #### <a name="the-classes-of-collected-data"></a>収集されるデータのクラス
+
 | 収集されるデータのクラス | 含まれるデータ (網羅的なリストではありません) |
 | --- | --- |
 | **Properties** |**コードによって決まる任意のデータ** |
@@ -297,5 +294,5 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [platforms]: ../../azure-monitor/app/platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 

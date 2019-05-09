@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: cd3fdec0e50d64af28306034e6e1086e67526b7d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251055"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007329"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array への Update 0.4 のインストール
 
@@ -48,7 +48,7 @@ ms.locfileid: "51251055"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをダウンロードするには
 
-1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) に移動します。
+1. Internet Explorer を起動し、[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) に移動します。
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 

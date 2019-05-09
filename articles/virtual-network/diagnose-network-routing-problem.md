@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: 695d5f1507f766cf0a2ad96d7dcd25f45f98c20e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6864e282319bc5a0539c4c94f3062dcab7315970
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994719"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652248"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>仮想マシンのルーティングに関する問題を診断する
 
@@ -49,17 +49,19 @@ VM に接続しようとしましたが、接続に失敗します。 VM に接�
     前の図に示した例では、一覧のルートは、Azure が各サブネットに対して作成する既定のルートです。 一覧には少なくともこれらのルートがありますが、別の仮想ネットワークとのピアリングや、Azure VPN ゲートウェイを通じたオンプレミスのネットワークへの接続など、仮想ネットワークに対して有効にした機能によっては追加のルートがある場合があります。 各ルート、およびネットワーク インターフェイスに対して表示される他のルートについて詳しくは、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md)」をご覧ください。 一覧に多数のルートがある場合は、**[ダウンロード]** を選択すると、ルートの一覧を .csv ファイルで簡単にダウンロードできます。
 
 有効なルートは前の手順の VM を通じて表示されますが、以下を通じて有効なルートを表示することもできます。
-- **個々のネットワーク インターフェイス**: [ネットワーク インターフェイス設定の表示](virtual-network-network-interface.md#view-network-interface-settings)方法をご確認ください。
-- **個々のルート テーブル**: [ルート テーブルの表示](manage-route-table.md#view-details-of-a-route-table)方法をご確認ください。
+- **個々のネットワーク インターフェイス**:[ネットワーク インターフェイスの表示](virtual-network-network-interface.md#view-network-interface-settings)方法をご確認ください。
+- **個々のルート テーブル**:[ルート テーブルの表示](manage-route-table.md#view-details-of-a-route-table)方法をご確認ください。
 
-## <a name="diagnose-using-powershell"></a>PowerShell を使用した診断
+## <a name="diagnose-using-powershell"></a>PowerShell を使用して診断する
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.0.1 以降が必要です。 コンピューターで `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Login-AzureRmAccount` を実行して Azure にログインする必要もあります。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) を使用してネットワーク インターフェイスの有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* というネットワーク インターフェイスの有効なルートを取得します。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、Azure PowerShell モジュール、バージョン 1.0.0 以降が必要です。 コンピューターで `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Connect-AzAccount` を実行して Azure にログインする必要もあります。
+
+[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) を使用してネットワーク インターフェイスの有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* というネットワーク インターフェイスの有効なルートを取得します。
 
 ```azurepowershell-interactive
-Get-AzureRmEffectiveRouteTable `
+Get-AzEffectiveRouteTable `
   -NetworkInterfaceName myVMVMNic `
   -ResourceGroupName myResourceGroup `
   | Format-Table
@@ -70,7 +72,7 @@ Get-AzureRmEffectiveRouteTable `
 ネットワーク インターフェイスの名前がわからなくても、ネットワーク インターフェイスが接続されている VM の名前がわかっている場合は、次のコマンドで VM に接続されているすべてのネットワーク インターフェイスの ID が返されます。
 
 ```azurepowershell-interactive
-$VM = Get-AzureRmVM -Name myVM `
+$VM = Get-AzVM -Name myVM `
   -ResourceGroupName myResourceGroup
 $VM.NetworkProfile
 ```
@@ -116,7 +118,7 @@ az vm show \
 - 定義した任意のカスタム ルートを含むルート テーブルが、ネットワーク インターフェイスが存在するサブネットに関連付けられていることを確認します。 [サブネットへのルート テーブルの関連付け](manage-route-table.md#associate-a-route-table-to-a-subnet)の方法をご確認ください。
 - デプロイした Azure VPN ゲートウェイやネットワーク仮想アプライアンスなどのデバイスが動作していることを確認します。 Network Watcher の [VPN 診断](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json)機能を使用して、Azure VPN ゲートウェイの問題を特定します。
 
-通信の問題が解決しない場合は、「[考慮事項](#considerations)」と「[追加の診断](#additional-dignosis)」をご覧ください。
+通信の問題が解決しない場合は、「[考慮事項](#considerations)」と「追加の診断」をご覧ください。
 
 ## <a name="considerations"></a>考慮事項
 

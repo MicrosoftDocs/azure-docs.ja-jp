@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad37a9e6cc13ef8bd805fe025806d37d17a857c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1b27ea761d19eb494895daceff699b2b604eccea
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656331"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797328"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
@@ -157,7 +157,7 @@ ms.locfileid: "34656331"
 [deploy-template-portal]:../../../resource-group-template-deploy.md#deploy-with-the-preview-portal
 [deploy-template-powershell]:../../../resource-group-template-deploy.md#deploy-with-powershell
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:../../virtual-machines-windows-sap-get-started.md
 [getting-started-dbms]:../../virtual-machines-windows-sap-get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -171,7 +171,7 @@ ms.locfileid: "34656331"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [ha-guide]:high-availability-guide.md
 
@@ -180,7 +180,7 @@ ms.locfileid: "34656331"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
+[msdn-set-Azvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
 [planning-guide]:planning-guide.md
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff 
@@ -379,7 +379,7 @@ ms.locfileid: "34656331"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -390,7 +390,7 @@ ms.locfileid: "34656331"
 [virtual-machines-windows-attach-disk-portal]:../../virtual-machines-windows-attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/resource-group-overview.md
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
-[virtual-machines-azurerm-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
+[virtual-machines-Az-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md 
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md
@@ -454,6 +454,8 @@ ms.locfileid: "34656331"
 > [!NOTE]
 > この機能は、Azure Resource Manager デプロイ モデルでのみ使用できます。
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide]に関するページでの説明、およびこのダイアグラムに表示されているとおり、1 つの SAP ASCS/SCS インスタンスに使用される WSFC クラスターが構成済みである。
 
@@ -471,7 +473,7 @@ ms.locfileid: "34656331"
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[Azure Resource Manager のネットワークの制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロント エンド IP」を参照してください。
+ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -513,7 +515,7 @@ ms.locfileid: "34656331"
 次のパラメーターを使用して、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成することができます。
 
 | 新しい SAP ASCS/SCS 仮想ホスト名 | 関連付けられる IP アドレス |
-| --- | --- | --- |
+| --- | --- |
 |pr5-sap-cl |10.0.0.50 |
 
 次のスクリーンショットのとおり、新しいホスト名と IP アドレスが DNS Manager に表示されます。
@@ -535,7 +537,7 @@ DNS エントリを作成する手順は、メインの [Windows VM 上の SAP N
 
 ```powershell
 
-# Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
+# Select-AzSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 Clear-Host
 $ResourceGroupName = "SAP-MULTI-SID-Landscape"      # Existing resource group name
 $VNetName = "pr2-vnet"                        # Existing virtual network name
@@ -546,54 +548,54 @@ $VMNames = "pr2-ascs-0","pr2-ascs-1"          # Existing cluster virtual machine
 $SAPInstanceNumber = 50                       # SAP ASCS/SCS instance number: must be a unique value for each cluster
 [int]$ProbePort = "623$SAPInstanceNumber"     # Probe port: must be a unique value for each IP and load balancer
 
-$ILB = Get-AzureRmLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName
 
 $count = $ILB.FrontendIpConfigurations.Count + 1
 $FrontEndConfigurationName ="lbFrontendASCS$count"
 $LBProbeName = "lbProbeASCS$count"
 
 # Get the Azure VNet and subnet
-$VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName
-$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
+$VNet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName
+$Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
 
 # Add second front-end and probe configuration
 Write-Host "Adding new front end IP Pool '$FrontEndConfigurationName' ..." -ForegroundColor Green
-$ILB | Add-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id
-$ILB | Add-AzureRmLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 10  | Set-AzureRmLoadBalancer
+$ILB | Add-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id
+$ILB | Add-AzLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 10  | Set-AzLoadBalancer
 
 # Get new updated configuration
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 # Get new updated LP FrontendIP COnfig
-$FEConfig = Get-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
-$HealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
+$FEConfig = Get-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
+$HealthProbe  = Get-AzLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
 # Add new back-end configuration into existing ILB
 $BackEndConfigurationName  = "backendPoolASCS$count"
 Write-Host "Adding new backend Pool '$BackEndConfigurationName' ..." -ForegroundColor Green
-$BEConfig = Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB | Set-AzureRmLoadBalancer
+$BEConfig = Add-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB | Set-AzLoadBalancer
 
 # Get new updated config
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
 # Assign VM NICs to backend pool
-$BEPool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
+$BEPool = Get-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
 foreach($VMName in $VMNames){
-        $VM = Get-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VMName
+        $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
         $NICName = ($VM.NetworkInterfaceIDs[0].Split('/') | select -last 1)        
-        $NIC = Get-AzureRmNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName                
+        $NIC = Get-AzNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName                
         $NIC.IpConfigurations[0].LoadBalancerBackendAddressPools += $BEPool
         Write-Host "Assigning network card '$NICName' of the '$VMName' VM to the backend pool '$BackEndConfigurationName' ..." -ForegroundColor Green
-        Set-AzureRmNetworkInterface -NetworkInterface $NIC
-        #start-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VM.Name
+        Set-AzNetworkInterface -NetworkInterface $NIC
+        #start-AzVM -ResourceGroupName $ResourceGroupName -Name $VM.Name
 }
 
 
 # Create load-balancing rules
 $Ports = "445","32$SAPInstanceNumber","33$SAPInstanceNumber","36$SAPInstanceNumber","39$SAPInstanceNumber","5985","81$SAPInstanceNumber","5$SAPInstanceNumber`13","5$SAPInstanceNumber`14","5$SAPInstanceNumber`16"
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
-$FEConfig = get-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
-$BEConfig = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
-$HealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$FEConfig = get-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
+$BEConfig = Get-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
+$HealthProbe  = Get-AzLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
 Write-Host "Creating load balancing rules for the ports: '$Ports' ... " -ForegroundColor Green
 
@@ -602,12 +604,12 @@ foreach ($Port in $Ports) {
         $LBConfigrulename = "lbrule$Port" + "_$count"
         Write-Host "Creating load balancing rule '$LBConfigrulename' for the port '$Port' ..." -ForegroundColor Green
 
-        $ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $HealthProbe -Protocol tcp -FrontendPort  $Port -BackendPort $Port -IdleTimeoutInMinutes 30 -LoadDistribution Default -EnableFloatingIP   
+        $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $HealthProbe -Protocol tcp -FrontendPort  $Port -BackendPort $Port -IdleTimeoutInMinutes 30 -LoadDistribution Default -EnableFloatingIP   
 }
 
-$ILB | Set-AzureRmLoadBalancer
+$ILB | Set-AzLoadBalancer
 
-Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
+Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
 スクリプトが実行された後は、次のスクリーンショットのように、Azure Portal で結果を確認できます。
@@ -668,6 +670,6 @@ Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$IL
 
 ## <a name="next-steps"></a>次の手順
 
-- [ネットワークの制限: Azure Resource Manager][networking-limits-azure-resource-manager]
+- [ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure Load Balancer の複数 VIP][load-balancer-multivip-overview]
 - [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide]

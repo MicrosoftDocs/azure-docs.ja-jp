@@ -3,17 +3,17 @@ title: Azure デバイス プロビジョニングにおけるデバイスの概
 description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のデバイス プロビジョニングの概念を説明します。
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 354ef48f7935536864cde9dc0d9a130fa5aeb865
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2904da863707c5f653d774b0a480cc48c95c8d1c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972863"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785334"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub デバイス プロビジョニング サービスのデバイスの概念
 

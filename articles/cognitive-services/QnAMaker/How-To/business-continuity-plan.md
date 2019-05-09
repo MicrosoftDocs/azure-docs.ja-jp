@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: ビジネス継続性計画の主な目的は、回復性に優れたナレッジ ベース エンドポイントを作成し、そのナレッジ ベース エンドポイントを使用するボットまたはアプリケーションにダウン タイムが発生しないようにすることです。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: 10d3809de590a79b6efa86e3d55fbbe535ea13b6
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: ad4f10b3b59e71ca31f1b27879c4b60157f0a46c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413117"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881360"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>QnA Maker サービスのビジネス継続性計画を作成する
 

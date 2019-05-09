@@ -1,59 +1,54 @@
 ---
 title: ExpressRoute Direct の構成 - Azure CLI | Microsoft Docs
-description: この記事は、Azure CLI (プレビュー) を使用して ExpressRoute Direct を構成するのに役立ちます
+description: この記事は、Azure CLI を使用して ExpressRoute Direct を構成するのに役立ちます
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 2/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 285b429f565f8a2c7f8c20756f076e631223b10f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c4998712d77771a5600c06183a76254548289372
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080084"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli-preview"></a>Azure CLI (プレビュー) の使用による ExpressRoute Direct の構成
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
 Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 詳しくは、[ExpressRoute Direct の接続](expressroute-erdirect-about.md)に関する記事をご覧ください。
-
-> [!IMPORTANT]
-> ExpressRoute Direct は現在プレビューの段階です。
->
-> ExpressRoute Direct パブリック プレビューは、サービス レベル アグリーメントなしで提供されます。 ExpressRoute Direct プレビューは、実稼働用のワークロードに対しては使用しないでください。 機能によっては、サポートされないものや、機能制限されているものや、すべての Azure の場所で使用できないものがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 ## <a name="resources"></a>リソースを作成する
 
 1. Azure にサインインして、ExpressRoute を含むサブスクリプションを選択します。 ExpressRoute Direct リソースおよび ExpressRoute 回線は、同じサブスクリプション内にある必要があります。 Azure CLI で、次のコマンドを実行します。
 
-  ```azurecli
-  az login
-  ```
+   ```azurecli
+   az login
+   ```
 
-  アカウントのサブスクリプションを確認します。 
+   アカウントのサブスクリプションを確認します。 
 
-  ```azurecli
-  az account list 
-  ```
+   ```azurecli
+   az account list 
+   ```
 
-  ExpressRoute 回線を作成するサブスクリプションを選択します。
+   ExpressRoute 回線を作成するサブスクリプションを選択します。
 
-  ```azurecli
-  az account set --subscription "<subscription ID>"
-  ```
+   ```azurecli
+   az account set --subscription "<subscription ID>"
+   ```
 
 2. ExpressRoute Direct がサポートされるすべての場所を一覧表示します。
     
-  ```azurecli
-  az network express-route port location list
-  ```
+   ```azurecli
+   az network express-route port location list
+   ```
 
-  **出力例**
+   **出力例**
   
-  ```azurecli
-  [
+   ```azurecli
+   [
    {
     "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
     "availableBandwidths": [],
@@ -109,64 +104,64 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
     "tags": null,
     "type": "Microsoft.Network/expressRoutePortsLocations"
    }
-  ]
-  ```
+   ]
+   ```
 3. 上記の手順で示されている場所のいずれかに使用可能な帯域幅があるかどうかを確認します。
 
-  ```azurecli
-  az network express-route port location show -l "Equinix-Ashburn-DC2"
-  ```
+   ```azurecli
+   az network express-route port location show -l "Equinix-Ashburn-DC2"
+   ```
 
-  **出力例**
+   **出力例**
 
-  ```azurecli
-  {
-  "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
-  "availableBandwidths": [
+   ```azurecli
+   {
+   "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
+   "availableBandwidths": [
     {
       "offerName": "100 Gbps",
       "valueInGbps": 100
     }
-  ],
-  "contact": "support@equinix.com",
-  "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Ashburn-DC2",
-  "location": null,
-  "name": "Equinix-Ashburn-DC2",
-  "provisioningState": "Succeeded",
-  "tags": null,
-  "type": "Microsoft.Network/expressRoutePortsLocations"
-  }
-  ```
+   ],
+   "contact": "support@equinix.com",
+   "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Ashburn-DC2",
+   "location": null,
+   "name": "Equinix-Ashburn-DC2",
+   "provisioningState": "Succeeded",
+   "tags": null,
+   "type": "Microsoft.Network/expressRoutePortsLocations"
+   }
+   ```
 4. 上記の手順で選択した場所に基づく ExpressRoute Direct リソースを作成します。
 
-  ExpressRoute Direct では、QinQ と Dot1Q 両方のカプセル化がサポートされます。 QinQ を選択した場合、各 ExpressRoute 回線に S-Tag が動的に割り当てられ、ExpressRoute Direct リソース全体で一意になります。 回線上の各 C-Tag は、その回線で一意である必要がありますが、ExpressRoute Direct リソース全体では、その必要はありません。  
+   ExpressRoute Direct では、QinQ と Dot1Q 両方のカプセル化がサポートされます。 QinQ を選択した場合、各 ExpressRoute 回線に S-Tag が動的に割り当てられ、ExpressRoute Direct リソース全体で一意になります。 回線上の各 C-Tag は、その回線で一意である必要がありますが、ExpressRoute Direct リソース全体では、その必要はありません。  
 
-  Dot1Q カプセル化を選択した場合、ExpressRoute Direct リソース全体で C-Tag (VLAN) が一意になるように管理する必要があります。  
+   Dot1Q カプセル化を選択した場合、ExpressRoute Direct リソース全体で C-Tag (VLAN) が一意になるように管理する必要があります。  
 
-  > [!IMPORTANT]
-  > ExpressRoute Direct ではカプセル化の種類を 1 つしか選択できません。 ExpressRoute Direct リソースを作成した後は、カプセル化の種類を変更することはできません。
-  > 
+   > [!IMPORTANT]
+   > ExpressRoute Direct ではカプセル化の種類を 1 つしか選択できません。 ExpressRoute Direct リソースを作成した後は、カプセル化の種類を変更することはできません。
+   > 
  
-  ```azurecli
-  az network express-route port create -n $name -g $RGName --bandwidth 100 gbps  --encapsulation QinQ | Dot1Q --peering-location $PeeringLocationName -l $AzureRegion 
-  ```
+   ```azurecli
+   az network express-route port create -n $name -g $RGName --bandwidth 100 gbps  --encapsulation QinQ | Dot1Q --peering-location $PeeringLocationName -l $AzureRegion 
+   ```
 
-  > [!NOTE]
-  > **Encapsulation** 属性を **Dot1Q** に設定することもできます。 
-  >
+   > [!NOTE]
+   > **Encapsulation** 属性を **Dot1Q** に設定することもできます。 
+   >
 
-  **出力例**
+   **出力例**
 
-  ```azurecli
-  {
-  "allocationDate": "Wednesday, October 17, 2018",
-  "bandwidthInGbps": 100,
-  "circuits": null,
-  "encapsulation": "Dot1Q",
-  "etag": "W/\"<etagnumber>\"",
-  "etherType": "0x8100",
-  "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
-  "links": [
+   ```azurecli
+   {
+   "allocationDate": "Wednesday, October 17, 2018",
+   "bandwidthInGbps": 100,
+   "circuits": null,
+   "encapsulation": "Dot1Q",
+   "etag": "W/\"<etagnumber>\"",
+   "etherType": "0x8100",
+   "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
+   "links": [
     {
       "adminState": "Disabled",
       "connectorType": "LC",
@@ -195,19 +190,19 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
       "routerName": "tst-09xgmr-cis-2",
       "type": "Microsoft.Network/expressRoutePorts/links"
     }
-  ],
-  "location": "westus",
-  "mtu": "1500",
-  "name": "Contoso-Direct",
-  "peeringLocation": "Equinix-Ashburn-DC2",
-  "provisionedBandwidthInGbps": 0.0,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "Contoso-Direct-rg",
-  "resourceGuid": "02ee21fe-4223-4942-a6bc-8d81daabc94f",
-  "tags": null,
-  "type": "Microsoft.Network/expressRoutePorts"
-  }  
-  ```
+   ],
+   "location": "westus",
+   "mtu": "1500",
+   "name": "Contoso-Direct",
+   "peeringLocation": "Equinix-Ashburn-DC2",
+   "provisionedBandwidthInGbps": 0.0,
+   "provisioningState": "Succeeded",
+   "resourceGroup": "Contoso-Direct-rg",
+   "resourceGuid": "02ee21fe-4223-4942-a6bc-8d81daabc94f",
+   "tags": null,
+   "type": "Microsoft.Network/expressRoutePorts"
+   }  
+   ```
 
 ## <a name="state"></a>リンクの AdminState を変更する
 
@@ -215,26 +210,26 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
 
 1. リンクを **[Enabled]\(有効\)** に設定します。 この手順を繰り返して、各リンクを **[有効]** に設定します。
 
-  Links[0] はプライマリ ポート、Links[1] はセカンダリ ポートです。
+   Links[0] はプライマリ ポート、Links[1] はセカンダリ ポートです。
 
-  ```azurecli
-  az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
-  ```
-  ```azurecli
-  az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
-  ```
-  **出力例**
+   ```azurecli
+   az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
+   ```
+   ```azurecli
+   az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
+   ```
+   **出力例**
 
-  ```azurecli
-  {
-  "allocationDate": "Wednesday, October 17, 2018",
-  "bandwidthInGbps": 100,
-  "circuits": null,
-  "encapsulation": "Dot1Q",
-  "etag": "W/\"<etagnumber>\"",
-  "etherType": "0x8100",
-  "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
-  "links": [
+   ```azurecli
+   {
+   "allocationDate": "Wednesday, October 17, 2018",
+   "bandwidthInGbps": 100,
+   "circuits": null,
+   "encapsulation": "Dot1Q",
+   "etag": "W/\"<etagnumber>\"",
+   "etherType": "0x8100",
+   "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
+   "links": [
     {
       "adminState": "Enabled",
       "connectorType": "LC",
@@ -263,21 +258,21 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
       "routerName": "tst-09xgmr-cis-2",
       "type": "Microsoft.Network/expressRoutePorts/links"
     }
-  ],
-  "location": "westus",
-  "mtu": "1500",
-  "name": "Contoso-Direct",
-  "peeringLocation": "Equinix-Ashburn-DC2",
-  "provisionedBandwidthInGbps": 0.0,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "Contoso-Direct-rg",
-  "resourceGuid": "<resourceGUID>",
-  "tags": null,
-  "type": "Microsoft.Network/expressRoutePorts"
-  }
-  ```
+   ],
+   "location": "westus",
+   "mtu": "1500",
+   "name": "Contoso-Direct",
+   "peeringLocation": "Equinix-Ashburn-DC2",
+   "provisionedBandwidthInGbps": 0.0,
+   "provisioningState": "Succeeded",
+   "resourceGroup": "Contoso-Direct-rg",
+   "resourceGuid": "<resourceGUID>",
+   "tags": null,
+   "type": "Microsoft.Network/expressRoutePorts"
+   }
+   ```
 
-  `AdminState = “Disabled”` を使用して、同じ手順でポートを停止させます。
+   `AdminState = “Disabled”` を使用して、同じ手順でポートを停止させます。
 
 ## <a name="circuit"></a>回線を作成する
 

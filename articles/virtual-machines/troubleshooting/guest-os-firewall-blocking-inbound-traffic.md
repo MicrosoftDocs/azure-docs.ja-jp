@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134439"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213113"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM のゲスト OS のファイアウォールがインバウンド トラフィックをブロックしている
 
@@ -142,7 +142,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
 
 #### <a name="mitigation-1"></a>対応策 1
 
- [ゲスト OS 上でファイアウォール規則の有効と無効を切り替える方法に関するドキュメント]()を参照してください。
+ [ゲスト OS 上のファイアウォール規則を有効または無効にする方法](enable-disable-firewall-rule-guest-os.md)に関するページを参照してください。
 
 #### <a name="mitigation-2"></a>対応策 2
 

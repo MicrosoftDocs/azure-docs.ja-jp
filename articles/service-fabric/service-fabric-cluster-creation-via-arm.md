@@ -4,7 +4,7 @@ description: Azure で Azure Resource Manager を使用してセキュリティ�
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
 ms.service: service-fabric
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 94ff3aca84eb27df5171df2a7a3b2b0f708a1d24
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 52623183139be2b8ac6b12d3adca64e72de932d3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624230"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050324"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure ポータル](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -34,6 +34,9 @@ ms.locfileid: "51624230"
 
 運用ワークロードを実行するための運用クラスターを展開する場合は、最初に「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」を読むことをお勧めします。
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件 
 この記事では、Service Fabric RM PowerShell または Azure CLI モジュールを使用してクラスターを展開します。
 
@@ -41,7 +44,7 @@ ms.locfileid: "51624230"
 * [Azure CLI バージョン 2.0 以降][azure-CLI]
 
 Service Fabric のモジュールのリファレンス ドキュメントは以下をご覧ください。
-* [AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric)
+* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [az SF CLI モジュール](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -49,8 +52,8 @@ Service Fabric のモジュールのリファレンス ドキュメントは以�
 この記事のコマンドを実行する前に、Azure にサインインします。
 
 ```powershell
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId <subscriptionId>
+Connect-AzAccount
+Set-AzContext -SubscriptionId <subscriptionId>
 ```
 
 ```azurecli
@@ -71,7 +74,7 @@ az account set --subscription $subscriptionId
 次のコマンドでは、Windows または Linux のクラスターを作成できます。どちらかの OS を指定する必要があります。 次の PowerShell/CLI コマンドでは、指定した *CertificateOutputFolder* に証明書も出力されます。ただし、証明書フォルダーはあらかじめ作成しておく必要があります。 このコマンドは、VM SKU など他のパラメーターも受け取ります。
 
 > [!NOTE]
-> 次の PowerShell コマンドは、バージョン 6.1 より新しい Azure Resource Manager PowerShell でのみ動作します。 Azure Resource Manager PowerShell の現在のバージョンを確認するには、PowerShell コマンド "Get-Module AzureRM" を実行します。 Azure Resource Manager PowerShell のバージョンをアップグレードするには、[こちらのリンク](/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0)に従ってください。 
+> 次の PowerShell コマンドを Azure PowerShell `Az` モジュールで使用できます。 Azure Resource Manager PowerShell の現在のバージョンを確認するには、PowerShell コマンド "Get-Module Az" を実行します。 Azure Resource Manager PowerShell のバージョンをアップグレードするには、[こちらのリンク](/powershell/azure/install-Az-ps)に従ってください。 
 >
 >
 
@@ -89,7 +92,7 @@ $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
 ```
 
 Azure CLI を使用してクラスターを展開します。
@@ -143,7 +146,7 @@ $certOutputFolder="c:\certificates"
 $parameterFilePath="c:\mytemplates\mytemplateparm.json"
 $templateFilePath="c:\mytemplates\mytemplate.json"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Azure CLI を使用してクラスターを展開します。
@@ -167,10 +170,10 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 クラスターのセキュリティ保護に使用する証明書を持っている場合は、次のコマンドを使用してクラスターを作成します。
 
-CA で署名された証明書で、他の用途にも使用する予定がある場合は、Key Vault 専用のリソース グループを用意することをお勧めします。 Key Vault は専用のリソース グループに配置することをお勧めします。 そうすることで、必要なキーとシークレットを失うことなく、コンピューティング リソース グループやストレージ リソース グループを削除することができます (Service Fabric クラスターのあるリソース グループを含む)。 **Key Vault を持つリソース グループは、それを使用するクラスターと*同じリージョンにある必要があります*。**
+CA で署名された証明書で、他の用途にも使用する予定がある場合は、Key Vault 専用のリソース グループを用意することをお勧めします。 Key Vault は専用のリソース グループに配置することをお勧めします。 そうすることで、必要なキーとシークレットを失うことなく、コンピューティング リソース グループやストレージ リソース グループを削除することができます (Service Fabric クラスターのあるリソース グループを含む)。 **Key Vault を持つリソース グループは、それを使用するクラスターと同じリージョンにある必要があります**。**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>モジュールに付属する既定の 5 ノードと 1 ノード タイプのテンプレートを使用する
-ここで使用されているテンプレートは、[Azure サンプル: Windows テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)と [Ubuntu テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)のページで入手できます。
+使用されているテンプレートは、[Azure サンプル: Windows テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)および [Ubuntu テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)で入手できます。
 
 PowerShell を使用してクラスターを展開します。
 
@@ -184,7 +187,7 @@ $vmpassword=("Password!4321" | ConvertTo-SecureString -AsPlainText -Force)
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 ```
 
 Azure CLI を使用してクラスターを展開します。
@@ -237,7 +240,7 @@ $parameterFilePath="c:\mytemplates\mytemplateparm.json"
 $templateFilePath="c:\mytemplates\mytemplate.json"
 $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
 ```
 
 Azure CLI を使用してクラスターを展開します。
@@ -264,13 +267,13 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 PowerShell を使用してクラスターを展開します。
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Azure CLI を使用してクラスターを展開します。
@@ -289,8 +292,10 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ## <a name="next-steps"></a>次の手順
 この時点では、セキュリティで保護されたクラスターが Azure で実行されています。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。
 
+テンプレートを使用するための JSON の構文とプロパティについては、[Microsoft.ServiceFabric/clusters のテンプレート リファレンス](/azure/templates/microsoft.servicefabric/clusters)に関するページを参照してください。
+
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
-[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template
+[customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

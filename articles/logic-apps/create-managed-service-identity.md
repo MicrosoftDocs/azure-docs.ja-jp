@@ -8,19 +8,21 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
-ms.date: 10/05/2018
-ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 03/29/2019
+ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725150"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010551"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする
 
-サインインすることなく他の Azure Active Directory (Azure AD) テナント内のリソースへのアクセスと ID の認証を行うために、ロジック アプリは、資格情報やシークレットではなく [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 この記事では、ロジック アプリのためにシステム割り当てのマネージド ID を作成して使用する方法を示します。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
+サインインすることなく他の Azure Active Directory (Azure AD) テナント内のリソースへのアクセスと ID の認証を行うために、ロジック アプリは、資格情報やシークレットではなく [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 この記事では、ロジック アプリのためにシステム割り当てのマネージド ID を設定して使用する方法を示します。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 > [!NOTE]
+> ロジック アプリでは、マネージド ID をサポートするコネクタでのみマネージド ID を使用できます。 現時点では、HTTP コネクタのみがマネージド ID をサポートしています。
+>
 > 現在、システム割り当てのマネージド ID は、各 Azure サブスクリプションで最大 10 個までのロジック アプリ ワークフローに割り当てることができます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -29,40 +31,42 @@ ms.locfileid: "52725150"
 
 * システム割り当てのマネージド ID を使用するロジック アプリ。 ロジック アプリをお持ちでない場合は、[初めてのロジック アプリ ワークフローを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-<a name="create-identity"></a>
+<a name="enable-identity"></a>
 
-## <a name="create-managed-identity"></a>マネージド ID の作成
+## <a name="enable-managed-identity"></a>マネージド ID の有効化
 
-ロジック アプリ用のシステム割り当てのマネージド ID は、Azure portal、Azure Resource Manager テンプレート、または Azure PowerShell から作成または有効化できます。 
+システム割り当てマネージド ID の場合、その ID を手動で作成する必要はありません。 ロジック アプリのシステム割り当て ID を設定するには、次の方法を使用できます。 
+
+* [Azure ポータル](#azure-portal) 
+* [Azure Resource Manager のテンプレート](#template) 
+* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
+
+<a name="azure-portal"></a>
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure portal から、ロジック アプリ用のシステム割り当てのマネージド ID を有効にするには、目的のロジック アプリのワークフロー設定で、**[Azure Active Directory に登録する]** 設定をオンにします。
+Azure portal から、ロジック アプリ用のシステム割り当てのマネージド ID を有効にするには、目的のロジック アプリの ID 設定で、**[システム割り当て済み]** 設定をオンにします。
 
 1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. 次の手順に従います。 
+1. ロジック アプリのメニューの **[設定]** で、**[ID]** を選択します。 
 
-   1. ロジック アプリのメニューの **[設定]** で、**[ワークフロー設定]** を選択します。 
+1. **[システム割り当て済み]** > **[状態]** で、**[オン]** を選択します。 次に、**[保存]** > **[はい]** を選択します。
 
-   1. **[マネージド サービス ID]** > 
-    **[Azure Active Directory に登録する]** の下で **[オン]** を選択します。
+   ![マネージド ID 設定をオンにする](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
-   1. 完了したら、ツールバーで **[保存]** を選択します。
+   これでロジック アプリに、Azure Active Directory に登録された、システム割り当てのマネージド ID が割り当てられました。
 
-      ![マネージド ID 設定をオンにする](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
+   ![オブジェクト ID の GUID](./media/create-managed-service-identity/object-id.png)
 
-      これでロジック アプリに、これらのプロパティと値を持ち、Azure Active Directory に登録された、システム割り当てのマネージド ID が割り当てられました。
+   | プロパティ | 値 | 説明 | 
+   |----------|-------|-------------| 
+   | **オブジェクト ID** | <*identity-resource-ID*> | Azure AD テナント内のロジック アプリのシステム割り当てのマネージド ID を表すグローバル一意識別子 (GUID) | 
+   ||| 
 
-      ![プリンシパル ID とテナント ID の GUID](./media/create-managed-service-identity/principal-tenant-id.png)
+<a name="template"></a>
 
-      | プロパティ | 値 | 説明 | 
-      |----------|-------|-------------| 
-      | **プリンシパル ID** | <*principal-ID*> | Azure AD テナント内のロジック アプリを表すグローバル一意識別子 (GUID) | 
-      | **テナント ID** | <*Azure-AD-tenant-ID*> | ご使用のロジック アプリが現在メンバーとなっている Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ロジック アプリ インスタンスと同じ名前を持ちます。 | 
-      ||| 
-
-### <a name="deployment-template"></a>デプロイ テンプレート
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
 ロジック アプリなどの Azure リソースの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)を利用できます。 テンプレートを使ってロジック アプリ用のシステム割り当てマネージド ID を作成するには、デプロイ テンプレートで、ロジック アプリのワークフロー定義に `"identity"` 要素と `"type"` プロパティを追加します。 
 
@@ -109,7 +113,7 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 | プロパティ | 値 | 説明 | 
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Azure AD テナント内のロジック アプリを表すグローバル一意識別子 (GUID) | 
+| **principalId** | <*principal-ID*> | Azure AD テナント内のロジック アプリを表すグローバル一意識別子 (GUID)。"オブジェクト ID" や次のように表示されることもあります。 `objectID` | 
 | **tenantId** | <*Azure-AD-tenant-ID*> | ロジック アプリが現在メンバーとなっている Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ロジック アプリ インスタンスと同じ名前を持ちます。 | 
 ||| 
 
@@ -146,15 +150,27 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 システム割り当てのマネージド ID を使用してロジック アプリを設定し、必要なリソースへのアクセスをその ID に割り当てたら、認証のためにその ID を使用できるようになっています。 たとえば、ロジック アプリでそのリソースに HTTP の要求や呼び出しを送信できるようにする HTTP アクションを使用できます。 
 
-1. ロジック アプリで、**HTTP** アクションを追加します。 
+1. ロジック アプリで、**HTTP** アクションを追加します。
 
 1. 呼び出すリソースの要求**メソッド**と **URI** の場所など、そのアクションに必要な詳細を提供します。
 
-1. HTTP アクションで、**[詳細オプションの表示]** を選択します。 
+   たとえば、[Azure AD をサポートする次の Azure サービスのいずれかで](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) Azure Active Directory (Azure AD) 認証を使用しているとします。 
+   **[URI]** ボックスに、その Azure サービスのエンドポイント URL を入力します。 
+   つまり、Azure Resource Manager を使用している場合、**[URI]** プロパティにこの値を入力します。
 
-1. **[認証]** リストから、**[マネージド サービス ID]** を選択し、表示された **[対象ユーザー]** プロパティを次のように設定します。
+   `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
-   ![[マネージド サービス ID] を選択](./media/create-managed-service-identity/select-managed-service-identity.png)
+1. HTTP アクションで、**[詳細オプションの表示]** を選択します。
+
+1. **[認証]** 一覧から、**[マネージド ID]** を選択します。 この認証を選択後、**[対象ユーザー]** プロパティが既定のリソース ID 値で表示されます。
+
+   ![[マネージド ID] を選択します](./media/create-managed-service-identity/select-managed-service-identity.png)
+
+   > [!IMPORTANT]
+   > 
+   > **[対象ユーザー]** プロパティで、リソース ID 値は、必須の末尾のスラッシュも含めて Azure AD で予想される値に正確に一致している必要があります。 
+   > これらのリソース ID 値は、この [Azure AD をサポートする Azure サービスについて説明する表](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)で確認できます。 
+   > たとえば、Azure Resoruce Manager のリソース ID を使用している場合、URI の末尾にスラッシュがあることを確認します。
 
 1. ご希望の方法でロジック アプリのビルドを続行します。
 
@@ -162,27 +178,25 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 ## <a name="remove-managed-identity"></a>マネージド ID の削除
 
-Azure portal、Azure Resource Manager デプロイ テンプレート、または Azure PowerShell から ID を作成した方法と同様の手順に従えば、ロジック アプリでシステム割り当てのマネージド ID を無効にできます。 
+Azure portal、Azure Resource Manager デプロイ テンプレート、または Azure PowerShell から ID を設定した方法と同様の手順に従えば、ロジック アプリでシステム割り当てのマネージド ID を無効にできます。
 
 ロジック アプリを削除すると、Azure によってロジック アプリのシステム割り当て ID が Azure AD から自動的に削除されます。
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-1. ロジック アプリ デザイナーでロジック アプリを開きます。
+Azure portal から、ロジック アプリ用のシステム割り当てのマネージド ID を削除するには、目的のロジック アプリの ID 設定で、**[システム割り当て済み]** 設定をオフにします。
 
-1. 次の手順に従います。 
+1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-   1. ロジック アプリのメニューの **[設定]** で、**[ワークフロー設定]** を選択します。 
-   
-   1. **[マネージド サービス ID]** の下の **[Azure Active Directory に登録する]** プロパティを **[オフ]** にします。
+1. ロジック アプリのメニューの **[設定]** で、**[ID]** を選択します。 
 
-   1. 完了したら、ツールバーで **[保存]** を選択します。
+1. **[システム割り当て済み]** > **[状態]** で、**[オフ]** を選択します。 次に、**[保存]** > **[はい]** を選択します。
 
-      ![マネージド ID 設定をオフにする](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
+   ![マネージド ID 設定をオフにする](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
 
 ### <a name="deployment-template"></a>デプロイ テンプレート
 
-Azure Resource Manager デプロイ テンプレートを使用してロジック アプリのシステム割り当てマネージド ID を作成した場合は、`"identity"` 要素の `"type"` プロパティを `"None"` に設定します。 このアクションにより、プリンシパル ID も Azure AD から削除されます。 
+Azure Resource Manager デプロイ テンプレートを使用してロジック アプリのシステム割り当てマネージド ID を作成した場合は、`"identity"` 要素の `"type"` プロパティを `"None"` に設定します。 このアクションにより、プリンシパル ID も Azure AD から削除されます。
 
 ```json
 "identity": {
@@ -194,4 +208,3 @@ Azure Resource Manager デプロイ テンプレートを使用してロジッ�
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
-

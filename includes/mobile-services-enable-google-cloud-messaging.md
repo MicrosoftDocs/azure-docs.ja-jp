@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ae84b5fd5647ef6c54006c0411e334b14173392e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836525"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488044"
 ---
 1. [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager)に移動し、Google アカウントの資格情報でサインインします。 
 2. ツールバーの **[プロジェクトの作成]** を選択します。 
    
     ![新しいプロジェクトの作成](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. **[プロジェクト名]** にプロジェクトの名前を入力し、**[作成]** をクリックします。
-4. ツールバーの **[通知]** ボタンを選択し、一覧から自分のプロジェクトを選択します。 プロジェクトのダッシュ ボードが表示されます。 URL "https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>" を使ってダッシュボードに直接アクセスすることもできます。
+4. ツールバーの **[通知]** ボタンを選択し、一覧から自分のプロジェクトを選択します。 プロジェクトのダッシュ ボードが表示されます。 URL "`https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`" を使用してダッシュボードに直接アクセスすることもできます。
 
     ![[通知] でプロジェクトを選択する](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
 5. ダッシュボードの **[プロジェクト情報]** タイルにある**プロジェクト番号**をメモしておきます。 
@@ -51,5 +51,5 @@ ms.locfileid: "33836525"
 
     ![API キーをコピーする](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。 プロジェクト ダッシュボードに戻るには、URL "https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>" を使用します。
+    この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。 プロジェクト ダッシュボードに戻るには、URL "`https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`" を使用します。
 

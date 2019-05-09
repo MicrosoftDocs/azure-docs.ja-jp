@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、事前構築済みの意図とエンティティをアプリに追加して、意図の予測の取得とデータの抽出を迅速化します。 発話に事前構築済みエンティティのラベルを付ける必要はありません。 このエンティティは自動的に検出されます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 804224898f90aa9af587d6d5b4b80c6afcfa586d
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754987"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086617"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>チュートリアル:一般的な意図とエンティティを識別する
 
@@ -51,17 +51,17 @@ LUIS には、ユーザーの一般的な意図を使用する際に役立つ事
 
 1. `Utilities` を検索します。 
 
-    [ ![検索ボックスに「Utilities」と入力された事前構築済み意図ダイアログのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
+    [![検索ボックスに「Utilities」と入力された事前構築済み意図ダイアログのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
 
 1. 次の意図を選択し、**[完了]** をクリックします。 
 
-    * Utilities.Cancel
-    * Utilities.Confirm
-    * Utilities.Help
-    * Utilities.StartOver
-    * Utilities.Stop
+   * Utilities.Cancel
+   * Utilities.Confirm
+   * Utilities.Help
+   * Utilities.StartOver
+   * Utilities.Stop
 
-    これらの意図は、ユーザーがいる場所やユーザーがしてほしいことを会話の中で判定するのに役立ちます。 
+     これらの意図は、ユーザーがいる場所やユーザーがしてほしいことを会話の中で判定するのに役立ちます。 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>一般的な種類のデータを抽出するのに役立つ事前構築済みエンティティを追加する
@@ -74,12 +74,12 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 1. 事前構築済みエンティティの一覧から 次のエンティティを選択し、**[完了]** を選択します。
 
-    * **[PersonName](luis-reference-prebuilt-person.md)** 
-    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
+   * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-    ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
+     ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-    これらのエンティティを使用すると、クライアント アプリケーションに名前および場所の認識を追加できます。
+     これらのエンティティを使用すると、クライアント アプリケーションに名前および場所の認識を追加できます。
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する 
 
@@ -168,7 +168,7 @@ LUIS アプリ の使用法の詳細については、以下をご覧くださ�
 
 * 「[How to train (トレーニング方法)](luis-how-to-train.md)」
 * [発行方法](luis-how-to-publish-app.md)
-* 「[How to test in LUIS portal (LUIS ポータルでのテスト方法)](luis-interactive-test.md)」
+* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,310 +1,353 @@
 ---
-title: Azure SQL Database の単一データベースをセキュリティで保護する | Microsoft Docs
-description: Azure SQL Database の単一データベースをセキュリティで保護するための手法と機能について説明します。
+title: Azure SQL Database の単一データベースまたはプールされたデータベースをセキュリティで保護する | Microsoft Docs
+description: Azure SQL Database の単一データベースまたはプールされたデータベースをセキュリティで保護するための手法と機能について説明するチュートリアルです。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/17/2018
-ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/08/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558636"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496439"
 ---
-# <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>チュートリアル: Azure SQL Database の単一データベースをセキュリティで保護する
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>チュートリアル:単一データベースまたはプールされたデータベースをセキュリティで保護する
 
-SQL Database は、次を実行して Azure SQL の単一データベース内のデータをセキュリティで保護します。
-
-- ファイアウォール規則を使用したデータベースへのアクセスの制限
-- ユーザーに ID の入力を求める認証メカニズムの使用
-- ロールベースのメンバーシップとアクセス許可による、データに対する認可
-- 行レベルのセキュリティ
-- 動的データ マスク
-
-さらに、SQL Database は、高度な監視、監査、および脅威検出機能も備えています。
-
-> [!IMPORTANT]
-> Azure SQL Database は、ネットワーク セキュリティ規則とプライベート エンドポイントを使用して、Managed Instance 内のデータベースをセキュリティで保護します。 詳細については、「[Azure SQL Database Managed Instance](sql-database-managed-instance-index.yml)」および「[Azure SQL Database Managed Instance の接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)」を参照してください。
-
-いくつかの簡単な手順に従うだけで、悪意のあるユーザーや未承認のアクセスからデータベースを今まで以上に強力に保護できるようになります。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> - Azure Portal でサーバーにサーバーレベルのファイアウォール規則を設定する
-> - SSMS を利用し、データベースにデータベースレベルのファイアウォール規則を設定する
-> - セキュリティで保護された接続文字列を使用してデータベースに接続する
-> - Azure SQL の Azure Active Directory 管理者を構成する
-> - ユーザー アクセスを管理する
-> - 暗号化でデータを保護する
-> - SQL Database の監査を有効にする
-> - SQL Database の脅威の検出を有効にする
+> - サーバーレベルとデータベースレベルのファイアウォール規則を作成する
+> - Azure Active Directory (AD) 管理者を構成する
+> - SQL 認証、Azure AD 認証、セキュリティで保護された接続文字列を使用して、ユーザー アクセスを管理する
+> - Advanced Data Security、監査、データ マスク、暗号化などのセキュリティ機能を有効にする
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+Azure SQL Database では、次の操作を行うことで、単一データベースまたはプールされたデータベース内のデータをセキュリティで保護できます。
+
+- ファイアウォール規則を使用したアクセス制限
+- ID の入力を求める認証メカニズムの使用
+- ロールベースのメンバーシップとアクセス許可による認可の使用
+- セキュリティ機能の有効化
+
+> [!NOTE]
+> マネージド インスタンス上の Azure SQL データベースは、[Azure SQL Database Managed Instance](sql-database-managed-instance-index.yml) と[接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)に関するページに記載されているように、ネットワーク セキュリティ規則とプライベート エンドポイントを使用してセキュリティで保護されます。
+
+詳細については、[Azure SQL Database のセキュリティの概要](/azure/sql-database/sql-database-security-index)と[機能](sql-database-security-overview.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下のものが必要です。
+このチュートリアルを完了するには、前提条件として次のものが必要です。
 
-- 最新バージョンの [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) がインストールされていること。
-- Microsoft Excel がインストールされていること。
-- Azure SQL のサーバーとデータベースが作成されていること - 「[Azure ポータルで Azure SQL データベースを作成する](sql-database-get-started-portal.md)」、「[Azure CLI を使用して単一の Azure SQL データベースを作成する](sql-database-cli-samples.md)」、「[PowerShell を使用して単一の Azure SQL データベースを作成する](sql-database-powershell-samples.md)」を参照してください。
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- Azure SQL サーバーと Azure SQL データベース
+  - [Azure portal](sql-database-single-database-get-started.md)、[CLI](sql-database-cli-samples.md)、または [PowerShell](sql-database-powershell-samples.md) を使用して作成します
 
-> [!NOTE]
-> このチュートリアルでは、Azure Active Directory を既に構成しているか、または初期の Azure Active Directory マネージド ドメインを使用していることを前提にしています。 さまざまなシナリオでの Azure Active Directory の構成については、[オンプレミス ID と Azure Active Directory の統合](../active-directory/hybrid/whatis-hybrid-identity.md)、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)、[Windows Server Active Directory とのフェデレーションに対する Microsoft Azure の現在のサポート](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[Azure AD ディレクトリの管理](../active-directory/fundamentals/active-directory-administer.md)、[Windows PowerShell を使用した Azure AD の管理](/powershell/azure/overview?view=azureadps-2.0)のそれぞれに関するページ、および「[ハイブリッド ID で必要なポートとプロトコル](../active-directory/hybrid/reference-connect-ports.md)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+このチュートリアルのすべての手順は、[Azure portal](https://portal.azure.com/) にサインインして行います
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
+## <a name="create-firewall-rules"></a>ファイアウォール規則を作成する
 
-SQL データベースは、ファイアウォールによって保護されます。 既定では、サーバーとサーバー内部のデータベースに対する接続は、他の Azure サービスからの接続を除き、すべて拒否されます。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](sql-database-firewall-configure.md)」を参照してください。
+SQL データベースは、Azure 内のファイアウォールによって保護されます。 既定では、サーバーとデータベースに対する接続は、他の Azure サービスからの接続を除き、すべて拒否されます。 詳細については、[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](sql-database-firewall-configure.md)に関するページを参照してください。
 
-最も安全な構成は、[Azure サービスへのアクセスを許可] をオフにしておくことです。 Azure VM またはクラウド サービスからデータベースに接続する必要がある場合は、[予約済み IP (クラシック デプロイ)](../virtual-network/virtual-networks-reserved-public-ip.md) を作成し、予約済み IP アドレスだけにファイアウォール経由のアクセスを許可する必要があります。 [Resource Manager](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) デプロイ モデルを使用している場合は、専用のパブリック IP アドレスがリソースに割り当てられるので、この IP アドレスにファイアウォール経由のアクセスを許可する必要があります。
-
-サーバーが特定の IP アドレスからの接続を許可するように、次の手順に従って、[SQL Database のサーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)を作成します。
+最も安全な構成は、**[Azure サービスへのアクセスを許可]** を **[オフ]** にしておくことです。 次に、Azure VM やクラウド サービスなど、接続する必要があるリソース用に[予約済み IP (クラシック デプロイ)](../virtual-network/virtual-networks-reserved-public-ip.md) を作成し、その IP アドレスだけにファイアウォール経由のアクセスを許可します。 [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) デプロイ モデルを使用している場合は、リソースごとに専用のパブリック IP アドレスが必要です。
 
 > [!NOTE]
-> 前のチュートリアルまたはクイックスタートのいずれかを利用して Azure でサンプル データベースを作成しているとき、それらのチュートリアルで利用した IP アドレスと同じアドレスを持つコンピューターでこのチュートリアルを実行している場合、サーバーレベルのファイアウォール規則が既に作成されているため、この手順を省略できます。
+> SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、管理者によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 
-1. 左側のメニューで **[SQL データベース]** をクリックし、**[SQL データベース]** ページで、ファイアウォール規則を構成するデータベースをクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20170313.database.windows.net** など) や追加の構成オプションが表示されます。
+### <a name="set-up-sql-database-server-firewall-rules"></a>SQL Database サーバーのファイアウォール規則を設定する
 
-      ![サーバーのファイアウォール規則](./media/sql-database-security-tutorial/server-firewall-rule.png)
+サーバーレベルの IP ファイアウォール規則は、同じ SQL Database サーバー内のすべてのデータベースに適用されます。
 
-2. 前の画像に示されているように、ツール バーの **[サーバー ファイアウォールの設定]** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
+サーバーレベルのファイアウォール規則を設定する手順は次のとおりです。
 
-3. ツール バーの **[クライアント IP の追加]** をクリックして、ポータルへの接続に使用されているコンピューターのパブリック IP アドレスを追加するか、ファイアウォール規則を手動で入力し、**[保存]** をクリックします。
+1. Azure portal で、左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
 
-      ![サーバーのファイアウォール規則の設定](./media/sql-database-security-tutorial/server-firewall-rule-set.png)
+    ![サーバーのファイアウォール規則](./media/sql-database-security-tutorial/server-name.png)
 
-4. **[OK]** をクリックしてから、**[X]** をクリックして **[ファイアウォール設定]** ページを閉じます。
+    > [!NOTE]
+    > チュートリアルの後の手順で使用するために、完全修飾サーバー名 (*yourserver.database.windows.net* など) をコピーしておいてください。
+
+1. **[概要]** ページで、**[サーバー ファイアウォールの設定]** を選択します。 データベース サーバーの **[ファイアウォール設定]** ページが開きます。
+
+   1. ツール バーの **[クライアント IP の追加]** を選択し、現在の IP アドレスを新しいファイアウォール規則に追加します。 この規則は、単一の IP アドレスまたは一定範囲の IP アドレスに対して、ポート 1433 を開くことができます。 **[保存]** を選択します。
+
+      ![サーバーのファイアウォール規則の設定](./media/sql-database-security-tutorial/server-firewall-rule2.png)
+
+   1. **[OK]** を選択し、**[ファイアウォール設定]** ページを閉じます。
 
 これで、指定した IP アドレスまたは IP アドレスの範囲を使用して、サーバー内の任意のデータベースに接続できるようになりました。
 
-> [!NOTE]
-> SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
->
+> [!IMPORTANT]
+> 既定では、**[Azure サービスへのアクセスを許可]** により、すべての Azure サービスで SQL Database ファイアウォール経由のアクセスが有効になります。 すべての Azure サービスに対してアクセスを無効にするには、**[オフ]** を選択します。
 
-## <a name="create-a-database-level-firewall-rule-using-ssms"></a>SSMS を使用してデータベースレベルのファイアウォール規則を作成する
+### <a name="setup-database-firewall-rules"></a>データベースのファイアウォール規則の設定
 
-データベース レベルのファイアウォール規則では、同じ論理サーバー内の異なるデータベースに対して別のファイアウォール設定を作成したり、移植可能な (つまり、フェールオーバー中に SQL サーバーに格納されるのではなく、データベースに従う) ファイアウォール規則を作成したりできます。 データベースレベルのファイアウォール規則の構成は、Transact-SQL ステートメントを使用して、最初のサーバーレベルのファイアウォール規則を構成した後にのみ行うことができます。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](sql-database-firewall-configure.md)」を参照してください。
+データベースレベルのファイアウォール規則は、個々のデータベースのみに適用されます。 サーバーのフェールオーバーの間、これらの規則はデータベースに保持されます。 データベースレベルのファイアウォール規則は、サーバーレベルのファイアウォール規則を構成した後にのみ、Transact-SQL (T-SQL) ステートメントを使用して構成することができます。
 
-データベース固有のファイアウォール規則を作成するには、次の手順に従います。
+データベースレベルのファイアウォール規則を設定する手順は次のとおりです。
 
 1. [SQL Server Management Studio](./sql-database-connect-query-ssms.md) などを使用して、データベースに接続します。
 
-2. オブジェクト エクスプローラーで、ファイアウォール規則を追加するデータベースを右クリックし、**[新しいクエリ]** をクリックします。 データベースに接続された空のクエリ ウィンドウが開きます。
+1. **オブジェクト エクスプローラー**でデータベースを右クリックし、**[新しいクエリ]** を選択します。
 
-3. クエリ ウィンドウで、IP アドレスをパブリック IP アドレスに変更し、次のクエリを実行します。
+1. クエリ ウィンドウで次のステートメントを追加し、その IP アドレスをお使いのパブリック IP アドレスに変更します。
 
     ```sql
     EXECUTE sp_set_database_firewall_rule N'Example DB Rule','0.0.0.4','0.0.0.4';
     ```
 
-4. ツール バーの **[実行]** をクリックして、ファイアウォール規則を作成します。
+1. ツール バー上で **[実行]** を選択して、ファイアウォール規則を作成します。
 
-## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>安全な接続文字列を利用し、データベースにアプリケーションを接続する方法を表示する
+> [!NOTE]
+> [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) コマンドを使用して、SSMS でサーバーレベルのファイアウォール規則を作成することもできます。ただし、*master* データベースに接続する必要があります。
 
-クライアント アプリケーションと SQL Database の間に暗号化された安全な接続を確立するには、接続文字列を次のように構成する必要があります。
+## <a name="create-an-azure-ad-admin"></a>Azure AD 管理者を作成する
 
-- 暗号化接続を要求する
-- サーバー証明書を信頼しない
+適切な Azure Active Directory (AD) マネージド ドメインを使用していることを確認します。 AD ドメインを選択するには、Azure portal の右上隅を使用します。 このプロセスでは、Azure SQL データベースまたはデータ ウェアハウスをホストしている SQL サーバーと Azure AD の両方に同じサブスクリプションが使用されていることを確認します。
 
-そうすることで、トランスポート層セキュリティ (TLS) を使用して接続が確立され、中間者攻撃のリスクが軽減されます。 次のスクリーンショットで ADO.net の場合が示されているように、サポートされているクライアント ドライバー用の SQL Database の正しく構成されている接続文字列を Azure Portal から取得できます。 TLS と接続の詳細については、[TLS に関する考慮事項](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)に関するセクションを参照してください。
+   ![choose-ad](./media/sql-database-security-tutorial/8choose-ad.png)
 
-1. 左側のメニューの **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
+Azure AD 管理者を設定する手順は次のとおりです。
 
-2. データベースの **[概要]** ページで、**[データベース接続文字列の表示]** をクリックします。
+1. Azure portal の **[SQL Server]** ページで、**[Active Directory 管理者]** を選択します。次に、**[管理者の設定]** を選択します。
 
-3. 完全な **ADO.NET** 接続文字列を確認します。
+    ![Active Directory を選択する](./media/sql-database-security-tutorial/admin-settings.png)  
 
-    ![ADO.NET の接続文字列](./media/sql-database-security-tutorial/adonet-connection-string.png)
+    > [!IMPORTANT]
+    > このタスクは、"会社の管理者" または "全体管理者" として実行する必要があります。
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Azure SQL Database サーバーの Azure Active Directory 管理者をプロビジョニングする
+1. **[管理者の追加]** ページで、AD ユーザーまたはグループを探して、**[選択]** を選択します。 Active Directory のすべてのメンバーとグループが一覧表示されます。グレー表示されているエントリは、Azure AD 管理者としてサポートされていません。 「[Azure AD の機能と制限事項](sql-database-aad-authentication.md#azure-ad-features-and-limitations)」を参照してください。
 
-Azure Portal で Azure SQL サーバーの Azure Active Directory 管理者をプロビジョニングします。
+    ![管理者の選択](./media/sql-database-security-tutorial/admin-select.png)
 
-1. [Azure Portal](https://portal.azure.com/) の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 既定の Azure AD として適切な Active Directory を選択します。 この手順では、サブスクリプションに関連付けられている Active Directory を Azure SQL Server とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします  (Azure SQL Server は、Azure SQL Database または Azure SQL Data Warehouse をホストしている可能性があります)。
+    > [!IMPORTANT]
+    > ロールベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。
 
-    ![choose-ad](./media/sql-database-aad-authentication/8choose-ad.png)
+1. **[Active Directory 管理者]** ページの上部にある **[保存]** を選択します。
 
-2. **[SQL Server]** ページで **[Active Directory 管理者]** を選択し、**[Active Directory 管理者]** ページで **[管理者の設定]** を選択します。![Active Directory を選択する](./media/sql-database-aad-authentication/select-active-directory.png)  
+    管理者を変更する処理には数分かかる場合があります。 新しい管理者が **[Active Directory 管理者]** ボックスに表示されます。
 
-   > [!IMPORTANT]
-   > このタスクは、"会社の管理者" または "全体管理者" として実行する必要があります。
+> [!NOTE]
+> Azure AD 管理者を設定する場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証ユーザーとして *master* データベースに存在していてはなりません。 存在していると、セットアップが失敗して変更がロールバックされ、その管理者名が既に存在していることが示されます。 SQL Server 認証ユーザーは Azure AD に属していないため、Azure AD 認証を使用してこのユーザーに接続しようとしても失敗します。
 
-3. **[管理者の追加]** ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。 [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](sql-database-aad-authentication.md)」の「**Azure AD の機能と制限事項**」セクションでサポートされている管理者の一覧を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。
-    ![管理者を選択する](./media/sql-database-aad-authentication/select-admin.png)  
+Azure AD の構成の詳細については、次のページを参照してください。
 
-4. **[Active Directory 管理者]** ページの上部にある **[保存]** を選択します。
-    ![管理者を保存する](./media/sql-database-aad-authentication/save-admin.png)
+- [オンプレミス ID と Azure AD の統合](../active-directory/hybrid/whatis-hybrid-identity.md)
+- [Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)
+- [Microsoft Azure での Windows Server AD とのフェデレーションのサポート](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Azure AD ディレクトリの管理](../active-directory/fundamentals/active-directory-administer.md)
+- [PowerShell による Azure AD の管理](/powershell/azure/overview?view=azureadps-2.0)
+- [ハイブリッド ID で必要なポートとプロトコル](../active-directory/hybrid/reference-connect-ports.md)
 
-管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 **[Active Directory 管理者]** ボックスに新しい管理者が表示されます。
+## <a name="manage-database-access"></a>データベース アクセスを管理する
 
-   > [!NOTE]
-   > Azure AD 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証ユーザーとして仮想マスター データベースに既に存在していてはいけません。 存在する場合、Azure AD 管理者のセットアップは失敗します。その作成をロールバックされ、そのような管理者 (名前) が既に存在していることが示されます。 そのような SQL Server 認証ユーザーは Azure AD に属していないため、Azure AD 認証を使用してサーバーに接続しようとしても失敗します。
+データベースにユーザーを追加するか、セキュリティで保護された接続文字列でのユーザー アクセスを許可することにより、データベース アクセスを管理します。 接続文字列は、外部アプリケーションの場合に便利です。 詳細については、[Azure SQL のアクセスの制御](sql-database-control-access.md)と [AD 認証](sql-database-aad-authentication.md)に関するページを参照してください。
 
-## <a name="creating-database-users"></a>データベース ユーザーの作成
+ユーザーを追加するには、データベース認証の種類を選択します。
 
-ユーザーを作成する前に、まず、Azure SQL Database でサポートされている 2 種類の認証のうちいずれかを選択する必要があります。
+- **SQL 認証**: ログインにユーザー名とパスワードを使用します。サーバー内の特定のデータベースのコンテキストでのみ有効です。
 
-**SQL 認証**。論理サーバー内の特定のデータベースのコンテキストでのみ有効であるログインとユーザーのユーザー名とパスワードを使用します。
+- **Azure AD 認証**: Azure AD によって管理される ID を使用します。
 
-**Azure Active Directory 認証**。Azure Active Directory によって管理されているユーザー ID を使用します。
+### <a name="sql-authentication"></a>SQL 認証
 
-### <a name="create-a-user-using-sql-authentication"></a>SQL 認証を使用してユーザーを作成する
+SQL 認証を使用するユーザーを追加する手順は次のとおりです。
 
-SQL 認証を使用してユーザーを作成するには、次の手順に従います。
+1. [SQL Server Management Studio](./sql-database-connect-query-ssms.md) などを使用して、データベースに接続します。
 
-1. [SQL Server Management Studio](./sql-database-connect-query-ssms.md) などを使用して、サーバー管理者の資格情報でデータベースに接続します。
+1. **オブジェクト エクスプローラー**でデータベースを右クリックし、**[新しいクエリ]** を選択します。
 
-2. オブジェクト エクスプローラーで、新しいユーザーを追加するデータベースを右クリックし、**[新しいクエリ]** をクリックします。 選択したデータベースに接続されている空のクエリ ウィンドウが開きます。
-
-3. クエリ ウィンドウに次のクエリを入力します。
+1. クエリ ウィンドウで、次のコマンドを入力します。
 
     ```sql
     CREATE USER ApplicationUser WITH PASSWORD = 'YourStrongPassword1';
     ```
 
-4. ツール バーの **[実行]** をクリックして、ユーザーを作成します。
+1. ツール バーの **[実行]** を選択して、ユーザーを作成します。
 
-5. 既定では、ユーザーはデータベースに接続できますが、データを読み取ったり書き込んだりするアクセス許可は付与されていません。 新しく作成したユーザーにこれらのアクセス許可を付与するには、新しいクエリ ウィンドウで次の 2 つのコマンドを実行します。
+1. 既定では、ユーザーはデータベースに接続できますが、データを読み取ったり書き込んだりするアクセス許可は付与されていません。 これらのアクセス許可を付与するには、新しいクエリ ウィンドウで次のコマンドを実行します。
 
     ```sql
     ALTER ROLE db_datareader ADD MEMBER ApplicationUser;
     ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
     ```
 
-新しいユーザーの作成のような管理者タスクを実行する必要がない場合は、データベースに接続するために、これらの非管理者アカウントをデータベース レベルで作成することをお勧めします。 Azure Active Directory を使用して認証を行う方法については、[Azure Active Directory のチュートリアル](./sql-database-aad-authentication-configure.md)を参照してください。
+> [!NOTE]
+> 新規ユーザーの作成などの管理者タスクを実行する必要がない場合は、データベース レベルで非管理者アカウントを作成します。
 
-### <a name="create-a-user-using-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用してユーザーを作成する
+### <a name="azure-ad-authentication"></a>Azure AD 認証
 
-Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成することが必要です。 Azure AD の ID に基づく包含データベース ユーザーは、master データベースにログインを持たないデータベース ユーザーで、そのデータベースに関連付けられている Azure AD ディレクトリの ID にマップされています。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成する必要があります。 包含データベース ユーザーは、データベースに関連付けられている Azure AD ディレクトリの ID にマップされていて、*master* データベース内にログイン情報がありません。 Azure AD の ID は、個々のユーザーまたはグループに対応しています。 詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」と、Azure AD を使用して認証する方法に関する [Azure AD チュートリアル](./sql-database-aad-authentication-configure.md)を参照してください。
 
 > [!NOTE]
-> Azure Portal を使用して、データベース ユーザー (管理者を除く) を作成することはできません。 RBAC ロールは、SQL Server、SQL Database、または SQL Data Warehouse には反映されません。 Azure RBAC ロールは Azure リソースの管理に使用され、データベースのアクセス許可には適用されません。 たとえば、 **SQL Server 共同作成者** ロールでは、SQL Database または SQL Data Warehouse に接続するためのアクセス権は付与されません。 Transact-SQL ステートメントを使用して、アクセス許可をデータベースで直接付与する必要があります。
-> [!WARNING]
-> T-SQL CREATE LOGIN および CREATE USER ステートメントにユーザー名として含まれているコロン `:` やアンパサンド `&` などの特殊文字はサポートされていません。
+> Azure portal を使用してデータベース ユーザー (管理者を除く) を作成することはできません。 Azure RBAC ロールは、SQL サーバー、データベース、データ ウェアハウスには反映されません。 これらは Azure リソースの管理のみに使用され、データベースのアクセス許可には適用されません。
+>
+> たとえば、"*SQL Server 共同作成者*" ロールでは、データベースやデータ ウェアハウスに接続するためのアクセス権は付与されません。 このアクセス許可は、T-SQL ステートメントを使用して、データベース内で付与する必要があります。
 
-1. 少なくとも **ALTER ANY USER** アクセス許可を持つ Azure Active Directory アカウントを使用して Azure SQL Server に接続します。
-2. オブジェクト エクスプローラーで、新しいユーザーを追加するデータベースを右クリックし、**[新しいクエリ]** をクリックします。 選択したデータベースに接続されている空のクエリ ウィンドウが開きます。
+> [!IMPORTANT]
+> コロン `:` やアンパサンド `&` などの特殊文字は、T-SQL の `CREATE LOGIN` ステートメントと `CREATE USER` ステートメントのユーザー名ではサポートされていません。
 
-3. クエリ ウィンドウで、次のクエリを入力し、`<Azure_AD_principal_name>` を Azure AD グループの Azure AD ユーザーまたは表示名の目的のユーザー プリンシパル名に変更します。
+Azure AD 認証でユーザーを追加する手順は次のとおりです。
+
+1. 少なくとも *ALTER ANY USER* アクセス許可を持つ Azure AD アカウントを使用して、目的の Azure SQL サーバーに接続します。
+
+1. **オブジェクト エクスプローラー**でデータベースを右クリックし、**[新しいクエリ]** を選択します。
+
+1. クエリ ウィンドウで、次のコマンドを入力し、`<Azure_AD_principal_name>` を Azure AD ユーザーのプリンシパル名または Azure AD グループの表示名に変更します。
 
    ```sql
    CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
    ```
 
-   > [!NOTE]
-   > データベースのメタデータでは、Azure AD ユーザーはタイプ E (EXTERNAL_USER) 、グループはタイプ X (EXTERNAL_GROUPS) でマークされます。 詳細については、「[sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql)」を参照してください。
+> [!NOTE]
+> データベースのメタデータでは、Azure AD ユーザーはタイプ `E (EXTERNAL_USER)`、Azure AD グループはタイプ `X (EXTERNAL_GROUPS)` でマークされます。 詳細については、「[sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql)」を参照してください。
 
-## <a name="protect-your-data-with-encryption"></a>暗号化でデータを保護する
+### <a name="secure-connection-strings"></a>セキュリティで保護された接続文字列
 
-Azure SQL Database の Transparent Data Encryption (TDE) では、保存データを自動的に暗号化します。暗号化されたデータベースにアクセスするアプリケーションを変更する必要はありません。 新しく作成されたデータベースの場合、TDE は既定でオンです。 データベースの TDE を有効にするには、または TDE がオンになっていることを確認するには、次の手順を行います。
+クライアント アプリケーションと SQL データベースの間に暗号化された安全な接続を確立するには、接続文字列を次のように構成する必要があります。
 
-1. 左側のメニューの **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
+- 暗号化接続を要求する
+- サーバー証明書を信頼しない
 
-2. **[Transparent Data Encryption]** をクリックして、TDE の構成ページを開きます。
+トランスポート層セキュリティ (TLS) を使用して接続が確立され、中間者攻撃のリスクが軽減されます。 接続文字列はデータベースごとに利用可能で、ADO.NET、JDBC、ODBC、PHP などのクライアント ドライバーをサポートするように事前構成されます。 TLS と接続の詳細については、[TLS に関する考慮事項](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)に関するセクションを参照してください。
 
-    ![Transparent Data Encryption](./media/sql-database-security-tutorial/transparent-data-encryption-enabled.png)
+セキュリティで保護された接続文字列をコピーする手順は次のとおりです。
 
-3. 必要に応じて、**[データの暗号化]** をオンにし、**[保存]** をクリックします。
+1. Azure portal で、左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
 
-暗号化プロセスは、バックグラウンドで開始されます。 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) を使用して SQL Database に接続し、[sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) ビューの encryption_state 列に対してクエリを実行することで、進行状況を監視できます。 状態 3 は、データベースが暗号化されていることを示します。
+1. **[概要]** ページで、**[データベース接続文字列の表示]** を選択します。
 
-## <a name="enable-sql-database-auditing-if-necessary"></a>必要に応じて、SQL Database の監査を有効にする
+1. [ドライバー] タブを選択し、完全な接続文字列をコピーします。
 
-Azure SQL Database の監査では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 監査により、規制に対するコンプライアンスの維持、データベース活動の理解、セキュリティ違反の疑いを示す差異や異常に対する洞察が容易になります。 SQL データベースの既定の監査ポリシーを作成するには、次の手順に従います。
+    ![ADO.NET の接続文字列](./media/sql-database-security-tutorial/connection.png)
 
-1. 左側のメニューの **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
+## <a name="enable-security-features"></a>セキュリティ機能の有効化
 
-2. [設定] ブレードで、**[監査と脅威の検出]** を選択します。 サーバーレベルの監査が無効になっていること、およびこのコンテキストからサーバーの監査設定を表示または変更することができる **[サーバー設定を表示]** リンクがあることに注目してください。
+Azure SQL Database は、Azure portal を使用してアクセスされるセキュリティ機能を提供します。 これらの機能は、データベースとサーバーの両方で利用可能です。ただし、データ マスクは例外で、データベースのみで利用可能です。 詳細については、[Advanced Data Security](sql-database-advanced-data-security.md)、[監査](sql-database-auditing.md)、[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)、[透過的なデータ暗号化](transparent-data-encryption-azure-sql.md)に関するページを参照してください。
 
-    ![監査ブレード](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
+### <a name="advanced-data-security"></a>Advanced Data Security
 
-3. サーバー レベルで指定されたものと異なる種類 (または場所) の監査を有効にする必要がある場合には、[監査] を**オン**にして、**BLOB** 監査タイプを選択します。 サーバーの BLOB 監査が有効になっている場合、データベース構成監査とサーバー BLOB 監査が並行して存在します。
+Advanced Data Security 機能は、潜在的な脅威の発生を検出し、異常なアクティビティがあればセキュリティのアラートを送信します。 ユーザーは、監査機能を使用して、こうした疑わしいイベントを調査し、そのイベントがデータベース内のデータへのアクセス、侵害、悪用かどうかを判断できます。 また、脆弱性評価を含めたセキュリティ概要や、データの検出と分類ツールも提供されます。
 
-    ![監査を有効化](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
+> [!NOTE]
+> 脅威の一例として SQL インジェクションがあります。これは、攻撃者がアプリケーションの入力に悪意のある SQL を挿入するプロセスです。 これにより、アプリケーションが知らないうちに悪意のある SQL を実行し、攻撃者がデータベース内のデータにアクセスして侵害や変更を行えるようになります。
 
-4. **[容量の詳細]** を選択して [監査ログの容量] ブレードを開きます。 ログを保存する Azure Storage アカウントと古いログを削除するタイミングを指定するリテンション期間を選択し、一番下にある **[OK]** をクリックします。
+Advanced Data Security を有効にするには:
 
-   > [!TIP]
-   > 監査レポートのテンプレートを最大限活用するには、すべての監査済みデータベースに同じストレージ アカウントを使用してください。
+1. Azure portal で、左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
 
-5. **[Save]** をクリックします。
+1. **[概要]** ページで、**[サーバー名]** リンクを選択します。 データベース サーバーのページが開きます。
+
+1. **[SQL サーバー]** ページで **[セキュリティ]** セクションを探し、**[Advanced Data Security]** を選択します。
+
+   1. **[Advanced Data Security]** で **[オン]** を選択して、この機能を有効にします。 脆弱性評価の結果を保存するためのストレージ アカウントを選択します。 次に、**[保存]** を選択します。
+
+      ![ナビゲーション ウィンドウ](./media/sql-database-security-tutorial/threat-settings.png)
+
+      電子メールを構成して、セキュリティのアラート、ストレージの詳細、脅威検出の種類を受信することもできます。
+
+1. 目的のデータベースの **[SQL データベース]** ページに戻り、**[セキュリティ]** セクションの **[Advanced Data Security]** を選択します。 ここには、データベースのさまざまなセキュリティ インジケーターがあります。
+
+    ![脅威の状態](./media/sql-database-security-tutorial/threat-status.png)
+
+異常なアクティビティが検出されると、そのイベントの情報が電子メールで届きます。 これには、アクティビティの性質、データベース、サーバー、イベントの発生時点、考えられる原因、推奨アクションが含まれていて、潜在的な脅威を調査してその影響を軽減することができます。 このような電子メールを受信したら、**[Azure SQL Auditing Log]\(Azure SQL 監査ログ\)** リンクを選択して Azure portal を起動し、そのイベントの時点に関連する監査レコードを確認します。
+
+   ![脅威の検出の電子メール](./media/sql-database-security-tutorial/threat-email.png)
+
+### <a name="auditing"></a>監査
+
+監査機能は、データベース イベントを追跡し、Azure Storage の監査ログ、Azure Monitor ログ、またはイベント ハブのいずれかにイベントを書き込みます。 監査により、規制に対するコンプライアンスの維持、データベース アクティビティの把握、セキュリティ侵害の可能性がある差異や異常に対する分析が容易になります。
+
+監査を有効にする手順は次のとおりです。
+
+1. Azure portal で、左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
+
+1. **[セキュリティ]** セクションで、**[監査]** を選択します。
+
+1. **[監査]** の設定で、次の値を設定します。
+
+   1. **[監査]** を **[オン]** に設定します。
+
+   1. **[監査ログの保存先]** として、次のいずれかを選択します。
+
+       - **[ストレージ]**: イベント ログが保存され、*.xel* ファイルとしてダウンロードできる Azure ストレージ アカウント。
+
+          > [!TIP]
+          > 監査レポートのテンプレートを最大限活用するには、すべての監査済みデータベースに同じストレージ アカウントを使用してください。
+
+       - **[Log Analytics]**: クエリや詳細な分析のために、イベントが自動的に保存されます。
+
+           > [!NOTE]
+           > 分析、カスタムのアラート ルール、Excel や Power BI のエクスポートなどの高度な機能をサポートするには、**Log Analytics ワークスペース**が必要です。 ワークスペースがない場合は、クエリ エディターのみを使用できます。
+
+       - **[イベント ハブ]**: イベントをルーティングして、他のアプリケーションで使用できるようにします。
+
+   1. **[保存]** を選択します。
+
+      ![監査設定](./media/sql-database-security-tutorial/audit-settings.png)
+
+1. これで、**[監査ログの表示]** を選択してデータベース イベントのデータを表示できるようになりました。
+
+    ![監査レコード](./media/sql-database-security-tutorial/audit-records.png)
 
 > [!IMPORTANT]
-> 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[SQL データベースの監査](sql-database-auditing.md)」をご覧ください。
->
+> PowerShell や REST API を使用して監査イベントをさらにカスタマイズする方法については、[SQL Database の監査](sql-database-auditing.md)に関するページを参照してください。
 
-## <a name="enable-sql-database-threat-detection"></a>SQL Database の脅威の検出を有効にする
+### <a name="dynamic-data-masking"></a>動的データ マスク
 
-脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、発生する可能性のある脅威をユーザーが検出して対応できるようにします。 ユーザーは、SQL Database の監査を使って疑わしいイベントを調査し、データベース内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。 脅威の検出を使用するとデータベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
-たとえば、脅威の検出は、SQL インジェクションの可能性を示す特定の異常なデータベース アクティビティを検出します。 SQL インジェクションはインターネットでの一般的な Web アプリケーションのセキュリティの問題の 1 つであり、データ駆動型アプリケーションの攻撃に使用されます。 攻撃者は、アプリケーションの脆弱性を利用してアプリケーションの入力フィールドに悪意のある SQL ステートメントを挿入し、データベースのデータを侵害または変更します。
+データ マスク機能は、データベース内の機密データを自動的に隠します。
 
-1. 監視する SQL データベースの構成ブレードに移動します。 [設定] ブレードで、**[監査と脅威の検出]** を選択します。
+データ マスクを有効にする手順は次のとおりです。
 
-    ![ナビゲーション ウィンドウ](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
-2. **[監査と脅威の検出]** 構成ブレードで、監査を **[ON]** にすると、脅威の検出の設定が表示されます。
+1. Azure portal で、左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
 
-3. 脅威の検出を **[ON]** にします。
+1. **[セキュリティ]** セクションで、**[動的データ マスク]** を選択します。
 
-4. 異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取る電子メールのリストを構成します。
+1. **[動的データ マスク]** の設定で、**[マスクの追加]** を選択してマスクの規則を追加します。 使用可能なデータベース スキーマ、テーブル、選択元の列は自動的に設定されます。
 
-5. **[監査と脅威の検出]** ブレードの **[保存]** をクリックして、新規または更新済みの監査と脅威の検出のポリシーを保存します。
+    ![マスクの設定](./media/sql-database-security-tutorial/mask-settings.png)
 
-    ![ナビゲーション ウィンドウ](./media/sql-database-security-tutorial/td-turn-on-threat-detection.png)
+1. **[保存]** を選択します。 これで、選択した情報はプライバシー保護のためマスクされます。
 
-    異常なデータベース アクティビティが検出されると、電子メールで通知を受け取ります。 電子メールでは、異常なアクティビティの特徴、データベース名、サーバー名、イベントの時刻など、疑わしいセキュリティ イベントについての情報が提供されます。 さらに、データベースへの潜在的な脅威の考えられる原因および調査や緩和のための推奨されるアクションについての情報も提供されます。 以下の手順では、このような電子メールを受信した場合の対処について説明します。
+    ![マスクの例](./media/sql-database-security-tutorial/mask-query.png)
 
-    ![脅威の検出の電子メール](./media/sql-database-threat-detection-get-started/4_td_email.png)
+### <a name="transparent-data-encryption"></a>透過的なデータ暗号化
 
-6. 電子メールの **[Azure SQL 監査ログ]** リンクをクリックすると、Azure Portal が起動され、疑わしいイベントの時刻前後の関連する監査レコードが表示されます。
+暗号化機能では、保存データが自動的に暗号化されます。暗号化されたデータベースにアクセスするアプリケーションの変更は必要ありません。 新しいデータベースの場合、暗号化は既定で有効になっています。 SSMS と [Always Encrypted](sql-database-always-encrypted.md) 機能を使用してデータを暗号化することもできます。
 
-    ![監査レコード](./media/sql-database-threat-detection-get-started/5_td_audit_records.png)
+暗号化を有効化または確認する手順は次のとおりです。
 
-7. 監査レコードをクリックすると、SQL ステートメント、エラーの理由、クライアントの IP など、疑わしいデータベース アクティビティについての詳細が表示されます。
+1. Azure portal で、左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
 
-    ![レコードの詳細](./media/sql-database-security-tutorial/6_td_audit_record_details.png)
+1. **[セキュリティ]** セクションで、**[透過的なデータ暗号化]** を選択します。
 
-8. [監査レコード] ブレードの **[Excel で開く]** をクリックすると、あらかじめ構成されている Excel テンプレートが開き、疑わしいイベントの時刻前後の監査ログがインポートされて詳細な分析が実行されます。
+1. 必要に応じて、**[データの暗号化]** を **[オン]** に設定します。 **[保存]** を選択します。
 
-    > [!NOTE]
-    > Excel 2010 以降では、Power Query と**高速結合**の設定が必要です。
+    ![Transparent Data Encryption](./media/sql-database-security-tutorial/encryption-settings.png)
 
-    ![Excel でレコードを開く](./media/sql-database-threat-detection-get-started/7_td_audit_records_open_excel.png)
-
-9. **[高速結合]** の設定を構成するには、**[POWER QUERY]** リボン タブの **[オプション]** を選択して [オプション] ダイアログ ボックスを表示します。 [プライバシー] セクションを選択し、2 番目のオプション [プライバシー レベルを無視し、可能であればパフォーマンスを向上させる] をオンにします。
-
-    ![Excel の高速結合](./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png)
-
-10. SQL 監査ログをロードするには、[設定] タブのパラメーターが正しく設定されていることを確認してから、データのリボンを選択し、[すべて更新] ボタンをクリックします。
-
-    ![Excel のパラメーター](./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png)
-
-11. **[SQL 監査ログ]** シートに結果が表示されます。このシートでは、検出された異常なアクティビティを詳細に分析し、アプリケーションでのセキュリティ イベントの影響を軽減できます。
+> [!NOTE]
+> 暗号化の状態を確認するには、[SSMS](./sql-database-connect-query-ssms.md) を使用してデータベースに接続し、[sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) ビューの `encryption_state` 列にクエリを実行します。 状態 `3` は、データベースが暗号化されていることを示します。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、いくつかの簡単な手順に従うだけで、悪意のあるユーザーや未承認のアクセスからデータベースを今まで以上に強力に保護する方法を学習しました。  以下の方法について学習しました。
+このチュートリアルでは、いくつかの簡単な手順を使ってデータベースのセキュリティを向上させる方法について説明しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
-> - サーバーまたはデータベースのファイアウォール規則を設定する
-> - セキュリティで保護された接続文字列を使用してデータベースに接続する
-> - Azure SQL の Azure Active Directory 管理者を構成する
-> - ユーザー アクセスを管理する
-> - 暗号化でデータを保護する
-> - SQL Database の監査を有効にする
-> - SQL Database の脅威の検出を有効にする
+> - サーバーレベルとデータベースレベルのファイアウォール規則を作成する
+> - Azure Active Directory (AD) 管理者を構成する
+> - SQL 認証、Azure AD 認証、セキュリティで保護された接続文字列を使用して、ユーザー アクセスを管理する
+> - Advanced Data Security、監査、データ マスク、暗号化などのセキュリティ機能を有効にする
 
-次のチュートリアルに進み、geo 分散型データベースを実装する方法を学習してください。
+次のチュートリアルに進み、地理的分散の実装方法を学習してください。
 
 > [!div class="nextstepaction"]
 >[地理的に分散したデータベースの実装](sql-database-implement-geo-distributed-database.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012660"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095162"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple デバイスの CHAP の構成
 
@@ -53,8 +53,8 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
    1. CHAP イニシエーターのユーザー名を指定します。
    2. CHAP イニシエーターのパスワードを指定します。
       
-    > [!IMPORTANT]
-    > CHAP のユーザー名は 233 文字未満にする必要があります。 CHAP のパスワードは 12 ～ 16 文字にする必要があります。 ユーザー名やパスワードをそれより長くすると、Windows ホストで認証エラーとなります。
+      > [!IMPORTANT]
+      > CHAP のユーザー名は 233 文字未満にする必要があります。 CHAP のパスワードは 12 ～ 16 文字にする必要があります。 ユーザー名やパスワードをそれより長くすると、Windows ホストで認証エラーとなります。
    
    3. パスワードを確認入力します。
 

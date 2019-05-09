@@ -3,8 +3,8 @@ title: Azure PowerShell スクリプトのサンプル - RDP のユーザー名�
 description: Azure PowerShell スクリプトのサンプル - 特定のノード型のすべての Service Fabric クラスター ノードの RDP ユーザー名とパスワードを更新します。
 services: service-fabric
 documentationcenter: ''
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,18 +13,20 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: ff9cfabc4ac7b759a916ddaaeb3f4c95ceecd452
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1528ce03f548c70d20d8f7af0238019305f01f2e
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30177833"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660818"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>クラスター内の VM の管理者のユーザー名とパスワードを更新します。
 
 Service Fabric クラスター内の各[ノード型](../service-fabric-cluster-nodetypes.md)は仮想マシン スケール セットです。 このサンプル スクリプトは、特定のノード型のクラスター仮想マシンの管理者のユーザー名およびパスワードを更新します。  管理者のパスワードは変更可能なスケール セット プロパティではないため、スケール セットに VMAccessAgent 拡張機能を追加します。  ユーザー名とパスワードの変更は、スケール セット内のすべてのノードに適用されます。 必要に応じてパラメーターをカスタマイズします。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールします。 
 
@@ -34,13 +36,13 @@ Service Fabric クラスター内の各[ノード型](../service-fabric-cluster-
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは次のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは以下のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) | クラスター ノード型 (仮想マシン スケール セット) のプロパティの取得   |
-| [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension)| 仮想マシン スケール セットに拡張機能を追加します。|
-| [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)|仮想マシン スケール セットの状態を、ローカル VMSS オブジェクトの状態に更新します。|
+| [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | クラスター ノード型 (仮想マシン スケール セット) のプロパティの取得   |
+| [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| 仮想マシン スケール セットに拡張機能を追加します。|
+| [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|仮想マシン スケール セットの状態を、ローカル VMSS オブジェクトの状態に更新します。|
 
 ## <a name="next-steps"></a>次の手順
 

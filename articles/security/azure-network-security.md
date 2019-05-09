@@ -4,7 +4,7 @@ description: クラウドベースのコンピューティング サービスに
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405975"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121589"
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -90,7 +90,7 @@ VNet を相互に接続できるため、一方の VNet に接続されている
 
 - **ピアリング:** 同じ Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。 ピアリングについて詳しくは、「[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)」をご覧ください。
 
- ![ピアリング](media/azure-network-security/azure-network-security-fig-3.png)
+  ![ピアリング](media/azure-network-security/azure-network-security-fig-3.png)
 
 - **VNet 間接続:** 同じまたは異なる Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を有効にします。 ピアリングとは異なり、VNet 間での帯域幅は制限されます。これは、トラフィックが Azure VPN ゲートウェイを通過する必要があるためです。
 
@@ -161,9 +161,9 @@ VNet は、自身のネットワークと Azure の間のプライベート ネ�
 
 オンプレミス ネットワークを VNet に接続するには、次のオプションを組み合わせて使用します。
 
-- **ポイント対サイト仮想プライベート ネットワーク (VPN):** ネットワークに接続されている 1 台の PC と VNet の間で確立されます。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 この接続は、SSTP プロトコルを使用して、PC と VNet の間にインターネット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、ポイント対サイト VPN の待ち時間は予測できません。
+- **ポイント対サイト仮想プライベート ネットワーク (VPN)**:ネットワークに接続されている 1 台の PC と VNet の間で確立されます。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 この接続は、SSTP プロトコルを使用して、PC と VNet の間にインターネット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、ポイント対サイト VPN の待ち時間は予測できません。
 
-- **サイト間 VPN:** VPN デバイスと Azure VPN ゲートウェイの間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが VNet にアクセスできます。 この接続は IPsec/IKE VPN で、オンプレミスのデバイスと Azure VPN ゲートウェイの間にインターケット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、サイト間接続の待ち時間は予測できません。
+- **サイト間 VPN**:VPN デバイスと Azure VPN Gateway の間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが VNet にアクセスできます。 この接続は IPsec/IKE VPN で、オンプレミスのデバイスと Azure VPN ゲートウェイの間にインターケット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、サイト間接続の待ち時間は予測できません。
 
 - **Azure ExpressRoute:** ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 トラフィックがインターネットを経由しないため、ExpressRoute 接続の待ち時間は予測可能です。 ここまでに説明したすべての接続オプションについて詳しくは、「[接続トポロジの図](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
@@ -183,11 +183,11 @@ VM ロール インスタンスと Cloud Services ロール インスタンス�
 
 Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートをオーバーライドできます。
 
-- **ユーザー定義ルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事をご覧ください。
+- **ユーザー定義のルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含む、カスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事をご覧ください。
 
 - **BGP のルート:** Azure VPN ゲートウェイまたは ExpressRoute 接続を使用して VNet をオンプレミス ネットワークに接続する場合、BGP ルートを VNet に伝達できます。
 
-### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>ハイブリッド インターネット接続: オンプレミス ネットワークへの接続
+### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>ハイブリッド インターネット接続:オンプレミス ネットワークに接続する
 オンプレミス ネットワークを VNet に接続するには、次のオプションを組み合わせて使用します。
 
 -   インターネット接続
@@ -276,19 +276,19 @@ NSG は 5 つのタプルを使用してトラフィックを評価します (�
 
 -   [送信元と送信先のポート](https://technet.microsoft.com/library/dd197515)
 
--   プロトコル: [伝送制御プロトコル (TCP)](https://technet.microsoft.com/library/cc940037.aspx) または[ユーザー データグラム プロトコル (UDP)](https://technet.microsoft.com/library/cc940034.aspx)
+-   プロトコル:[伝送制御プロトコル (TCP)](https://technet.microsoft.com/library/cc940037.aspx) または[ユーザー データグラム プロトコル (UDP)](https://technet.microsoft.com/library/cc940034.aspx)
 
 これは、単一の VM と VM のグループ間のアクセス、単一の VM からもう 1 つの単一の VM へのアクセス、または全サブネット間のアクセスを制御できることを意味します。 ここでも、これは単純なステートフル パケット フィルター処理であり、フル パケット検査ではないことに注意する必要があります。 ネットワーク セキュリティ グループにはプロトコルの検証やネットワーク レベルの IDS または IPS 機能はありません。
 
 NSG には認識しておく必要があるいくつかのルールが組み込まれています。 次のとおりです。
 
--   **特定の仮想ネットワーク内のすべてのトラフィックを許可する:** 同じ Azure Virtual Network 上のすべての VM は相互に通信できます。
+-   **特定の仮想ネットワークの内部ですべてのトラフィックを許可する:** 同じ Azure Virtual Network 上のすべての VM は互いに通信できます。
 
 -   **Azure の負荷分散の受信を許可する:** このルールは、すべての送信元アドレスからすべての送信先アドレスへの Azure Load Balancer のトラフィックを許可します。
 
 -   **すべての受信を拒否する:** このルールは、明示的に許可したインターネットからのトラフィック ソーシングをすべてブロックします。
 
--   **インターネットに送信されるすべてのトラフィックを許可する:** このルールは、インターネットへの接続を開始すること VM に許可します。 これらの接続を開始しない場合は、これらのルールをブロックするまたは強制的なトンネリングを適用するルールを作成する必要があります。
+-   **インターネットに送信されるすべてのトラフィックを許可する:** このルールは VM がインターネットへの接続を開始することを許可します。 これらの接続を開始しない場合は、これらのルールをブロックするまたは強制的なトンネリングを適用するルールを作成する必要があります。
 
 #### <a name="system-routes-and-user-defined-routes"></a>システム ルートとユーザー定義のルート
 
@@ -318,19 +318,19 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 以下のセクションでは、Azure Virtual Network のルーティング テーブルおよびルートの現在の制限を一覧表示します。
 
--   各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
+- 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
 
- -  **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ
+  -  **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ
 
- - **オンプレミス ルート:** Azure VPN ゲートウェイへ
+  - **オンプレミス ルート:** Azure VPN ゲートウェイへ
 
- -  **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
+  -  **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
 
--   ユーザー定義ルートをリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを、ご使用の VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
+- ユーザー定義ルートをリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを、ご使用の VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
 
--   仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
+- 仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
 
--   強制トンネリングは、動的ルーティング VPN ゲートウェイ (静的ゲートウェイではない) を持つ VNet に関連付ける必要があります。
+- 強制トンネリングは、動的ルーティング VPN ゲートウェイ (静的ゲートウェイではない) を持つ VNet に関連付ける必要があります。
 
 - ExpressRoute の強制トンネリングは、このメカニズムを使用して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定のルートを通知することで有効化されます。
 
@@ -393,7 +393,7 @@ Application Gateway の WAF は検出モードや保護モードで実行でき�
 
 JSON 形式のログはお客様のストレージ アカウントに直接入ります。 これらのログは完全に制御可能で、独自のアイテム保持ポリシーを適用できます。
 
-また、[Azure ログ統合](https://aka.ms/AzLog)を使用してそれらのログを独自の分析システムに取り込むこともできます。 WAF のログは [Log Analytics](../log-analytics/log-analytics-overview.md) にも統合されており、Log Analytics を使用して洗練されたきめ細かなクエリを実行できます。
+また、[Azure ログ統合](https://aka.ms/AzLog)を使用してそれらのログを独自の分析システムに取り込むこともできます。 WAF のログは [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)にも統合されており、Azure Monitor ログを使用して洗練されたきめ細かなクエリを実行できます。
 
 #### <a name="azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF)
 
@@ -507,7 +507,7 @@ Azure にはネットワーク セキュリティのイベントを監視、保�
 
 -   ネットワーク リソース レベルの監視
 
--   Log Analytics
+-   Azure Monitor ログ
 
 ### <a name="network-watcher"></a>Network Watcher
 
@@ -597,17 +597,17 @@ Network Watcher には[診断ログ](https://docs.microsoft.com/azure/network-wa
 
 #### <a name="diagnostic-logs"></a>診断ログ
 
-定期イベントおよび自然発生イベントがネットワーク リソースにより作成され、ストレージ アカウント内に記録されるか、イベント ハブまたは Log Analytics へ送信されます。 こうしたログから、リソースの正常性に関する詳細が得られます。 これらのログは、Power BI および Log Analytics などのツールで確認できます。 診断ログを確認する方法については、[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) に関するページを参照してください。
+定期イベントおよび自然発生イベントがネットワーク リソースにより作成され、ストレージ アカウント内に記録されるか、イベント ハブまたは Azure Monitor ログへ送信されます。 こうしたログから、リソースの正常性に関する詳細が得られます。 これらのログは、Power BI や Azure Monitor ログなどのツールで確認できます。 診断ログを確認する方法については、[Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)に関するページを参照してください。
 
 診断ログは、[ロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)、ルーティング、および [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) で利用できます。
 
 Network Watcher には診断ログ ビューが用意されています。 このビューには、診断ログをサポートするすべてのネットワーク リソースが表示されます。 このビューから、ネットワーク リソースの有効化および無効化を手軽に素早く行うことができます。
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
+[Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)は、可用性やパフォーマンスの維持を目的としてクラウド環境とオンプレミス環境を監視する Azure のサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
 
-Log Analytics には、ネットワークを監視することを目的とした次のソリューションが用意されています。
+Azure Monitor ログには、ネットワークを監視することを目的とした次のソリューションが用意されています。
 
 -   ネットワーク パフォーマンス モニター (NPM)
 
@@ -627,7 +627,7 @@ Log Analytics には、ネットワークを監視することを目的とした
 -   多層アプリケーションの各種階層をホストするサブネット間
 
 
-#### <a name="azure-application-gateway-analytics-in-log-analytics"></a>Log Analytics の Azure Application Gateway 分析
+#### <a name="azure-application-gateway-analytics-in-azure-monitor-logs"></a>Azure Monitor ログの Azure Application Gateway 分析
 
 Application Gateway に関しては、次のログがサポートされます。
 
@@ -641,18 +641,18 @@ Application Gateway に関しては、次のメトリックがサポートされ
 
 -   5 分間のスループット
 
-#### <a name="azure-network-security-group-analytics-in-log-analytics"></a>Log Analytics の Azure ネットワーク セキュリティ グループ分析
+#### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure Monitor ログの Azure ネットワーク セキュリティ グループ分析
 
 [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)に関しては、次のログがサポートされます。
 
-- **NetworkSecurityGroupEvent:**: MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
+- **NetworkSecurityGroupEvent:** MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 
-- **NetworkSecurityGroupRuleCounter:** トラフィックを許可または拒否するために各 NSG ルールが適用された回数に関するエントリが含まれます。
+- **NetworkSecurityGroupRuleCounter:** トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
 ## <a name="next-steps"></a>次の手順
 セキュリティについて詳しくは、セキュリティについて掘り下げた次のトピックをご覧ください。
 
--   [ネットワーク セキュリティ グループ (NSG) のためのログ分析](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [ネットワーク セキュリティ グループ (NSG) の Azure Monitor ログ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
 
 -   [クラウドの分断を促進するネットワークの革新](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

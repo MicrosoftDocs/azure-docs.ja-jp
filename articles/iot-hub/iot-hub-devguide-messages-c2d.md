@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub の cloud-to-device メッセージの理解 | Microsoft Docs
 description: 開発者ガイド - IoT Hub での cloud-to-device メッセージの使用方法。 メッセージのライフサイクル、および構成オプションについて説明します。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: dobett
-ms.openlocfilehash: 3f137ea80dc67bb075f34846e5563fb72c72b69a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585647"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010244"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>cloud-to-device メッセージを IoT Hub から送信する
 
@@ -127,10 +127,10 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 | プロパティ                  | 説明 | 範囲と既定値 |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | C2D メッセージの TTL の既定値。 | 最大 2D の ISO_8601 書式による間隔 (最小 1 分)。 既定値: 1 時間。 |
-| maxDeliveryCount          | デバイスごとの C2D キューの最大配信数。 | 1 ～ 100。 既定値: 10。 |
-| feedback.ttlAsIso8601     | サービス宛てのフィードバックのメッセージの保有期間。 | 最大 2D の ISO_8601 書式による間隔 (最小 1 分)。 既定値: 1 時間。 |
-| feedback.maxDeliveryCount |フィードバック キューの最大配信数。 | 1 ～ 100。 既定値: 100。 |
+| defaultTtlAsIso8601       | C2D メッセージの TTL の既定値。 | 最大 2D の ISO_8601 書式による間隔 (最小 1 分)。 既定値は1 時間。 |
+| maxDeliveryCount          | デバイスごとの C2D キューの最大配信数。 | 1 ～ 100。 既定値は10. |
+| feedback.ttlAsIso8601     | サービス宛てのフィードバックのメッセージの保有期間。 | 最大 2D の ISO_8601 書式による間隔 (最小 1 分)。 既定値は1 時間。 |
+| feedback.maxDeliveryCount |フィードバック キューの最大配信数。 | 1 ～ 100。 既定値は100。 |
 
 これらの構成オプションを設定する方法の詳細については、[IoT ハブの作成](iot-hub-create-through-portal.md)に関する記事をご覧ください。
 

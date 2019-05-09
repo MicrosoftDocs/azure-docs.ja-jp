@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f1515af1ef61bc40ae91e3e5b43154f92bc89ae4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f158e08f0f882801dc488721013e9705ea4ff738
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725374"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448311"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight で WebHCat から受信したエラーの説明と解決策
 
@@ -29,7 +29,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 > [!IMPORTANT]  
 > このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。 解決策に値が変更可能であることが示されている場合は、次のどちらかの方法で値を変更する必要があります。
 
-* **Windows** クラスターの場合:スクリプト アクションを使用して、クラスターの作成時に値を構成します。 詳細については、 [スクリプト アクションの開発](hdinsight-hadoop-script-actions.md)に関するページを参照してください。
+* **Windows** クラスターの場合:スクリプト アクションを使用して、クラスターの作成時に値を構成します。 詳細については、 [スクリプト アクションの開発](hdinsight-hadoop-script-actions-linux.md)に関するページを参照してください。
 
 * **Linux** クラスターの場合:Apache Ambari (Web または REST API) を使用して値を変更します。 詳細については、「[Apache Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)」を参照してください
 
@@ -70,7 +70,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 | --- | --- |
 | ジョブ履歴クリーナーによってジョブの詳細がクリーンアップされた。 |ジョブ履歴の既定の保有期間は 7 日間です。 既定の保持期間は、`mapreduce.jobhistory.max-age-ms` を修正することで変更できます。 詳細については、「[構成の変更](#modifying-configuration)」を参照してください。 |
 | フェールオーバーによってジョブが強制終了した。 |最大で 2 分間にわたってジョブの送信を再試行してください。 |
-| 無効なジョブ ID が使用された。 |ジョブ ID が正しいことを確認してください。 |
+| 無効なジョブ ID が使用された |ジョブ ID が正しいことを確認してください |
 
 ## <a name="bad-gateway"></a>Bad gateway
 
@@ -80,7 +80,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 | --- | --- |
 | WebHCat プロセス内で内部ガベージ コレクションが行われている。 |ガベージ コレクションが終了するまで待つか、または WebHCat サービスを再起動します。 |
 | ResourceManager サービスからの応答の待機中にタイムアウトが発生した。 このエラーは、アクティブなアプリケーションの数が構成された最大値 (既定値は 10,000) に達した場合に発生することがあります。 |現在実行中のジョブが完了するまで待つか、または `yarn.scheduler.capacity.maximum-applications`を変更して同時実行ジョブの制限値をより大きな値にします。 詳細については、「[構成の変更](#modifying-configuration)」セクションをご覧ください。 |
-| `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 |*すべて*のジョブの詳細を取得しないでください。 代わりに、`jobid` を使用して、特定のジョブ ID より大きいジョブの詳細のみを取得してください。または、`Fields` を使用しないでください。 |
+| `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 |*すべて*のジョブの詳細を取得しないでください。 代わりに、`jobid` を使用して、特定のジョブ ID より大きいジョブの詳細のみを取得してください。 または、`Fields` を使用しないでください。 |
 | ヘッドノードのフェールオーバー中に WebHCat サービスがダウンした。 |2 分待ってから操作をやり直してください。 |
 | WebHCat を通じて送信された 500 個を超えるジョブが保留中になっている。 |現在保留中のジョブが完了するのを待ってから、次のジョブを送信します。 |
 

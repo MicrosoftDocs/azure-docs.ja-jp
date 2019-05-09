@@ -1,20 +1,21 @@
 ---
 title: Azure Cosmos DB での変更フィード プロセッサ ライブラリの操作
 description: Azure Cosmos DB 変更フィード プロセッサ ライブラリの使用。
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: eee80563a838e6d453278735abf96fa5a6996f19
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: rimman
+ms.reviewer: sngun
+ms.openlocfilehash: cf03233c6a92b7fd1b782f8128787bfda5582f7d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835507"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243197"
 ---
-# <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>Azure Cosmos DB 変更フィード プロセッサ ライブラリの使用
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ 
 
 [Azure Cosmos DB 変更フィード プロセッサ ライブラリ](sql-api-sdk-dotnet-changefeed.md)を使用すると、複数のコンシューマーにイベント処理を分散させることができます。 このライブラリで、並列で実行されている複数のパーティションと複数のスレッド全体の変更の読み取りが簡単になります。
 

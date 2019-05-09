@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9ec502f63df23bab311a45972e31e6df13fa9281
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 856d03b1ecc1c7a3bd527eb265061f9a305d8f50
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792976"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315635"
 ---
 # <a name="about-migration"></a>移行について
 

@@ -5,28 +5,28 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 04/05/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9589281654b74df8527bb7bcf58b0700482c3fed
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 334859aecf3a5f7a5678c0af656c6837d5661dac
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408971"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59270865"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
-クライアント アプリケーションとツールが Analysis Services サーバーに接続するためには、クライアント ライブラリが必要です。 
+クライアント アプリケーションとツールが Analysis Services サーバーに接続するためには、クライアント ライブラリが必要です。 Power BI Desktop、Excel、SQL Server Management Studio (SSMS)、SQL Server Data Tools (SSDT) などの Microsoft クライアント アプリケーションでは、3 つのクライアント ライブラリがすべてインストールされ、通常のアプリケーションの更新プログラムと共に更新されます。 場合によっては、新しいバージョンのクライアント ライブラリをインストールする必要があります。 カスタム クライアント アプリケーションでも、クライアント ライブラリがインストールされている必要があります。
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>最新のクライアント ライブラリのダウンロード (Windows インストーラー)  
 
 |ダウンロード  |製品バージョン  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.2.183      |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.2.183      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.8.0.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.8.0.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.15.26    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.15.26      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.17.1.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.17.1.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO と ADOMD (NuGet パッケージ)
 
@@ -34,8 +34,8 @@ Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント �
 
 |Package  | 製品バージョン  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.8.0.0    |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.8.0.0     |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.17.1     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.17.1      |
 
 NuGet パッケージ アセンブリの AssemblyVersion は、セマンティック バージョニングであるMAJOR.MINOR.PATCH に従います。 NuGet 参照では、(MSI のインストールの結果として得られる) GAC 内に別のバージョンがある場合でも、必要なバージョンが読み込まれます。 PATCH は、リリースごとにインクリメントされます。 AMO と ADOMD のバージョンは常に同期されます。
 
@@ -66,7 +66,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 
  ADOMD.NET は、Analysis Services データの照会に使用されるマネージド データ クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 
   
- データベースに接続する際、3 つのライブラリの接続文字列プロパティは、どれも似ています。 [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) を使用して ADOMD.NET 用に定義するほぼすべての接続文字列が、AMO と Analysis Services OLE DB Provider (MSOLAP) でも機能します。 詳細については、「[接続文字列プロパティ &#40;Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services)」を参照してください。  
+ データベースに接続する際、3 つのライブラリの接続文字列プロパティは、どれも似ています。 [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) を使用して ADOMD.NET 用に定義するほぼすべての接続文字列が、AMO と Analysis Services OLE DB Provider (MSOLAP) でも機能します。 詳細については、「[接続文字列プロパティ &#40;Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services)」を参照してください。  
 
   
 ##  <a name="bkmk_LibUpdate"></a>クライアント ライブラリのバージョンを確認する方法   

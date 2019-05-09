@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e3fb703d49b97b7e8fa4136f8cd49fed20ee12a9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720718"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901918"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>クラウド データベースにまたがる分散トランザクション
+
 Azure SQL Database (SQL DB) のエラスティック データベース トランザクションは、SQL DB 内の複数のデータベースにまたがるトランザクションを実行する機能です。 SQL DB の Elastic Database トランザクションは、.NET アプリケーションから ADO .NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。 ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) をご覧ください。
 
 従来、このようなシナリオをオンプレミスで実現するためには通常、Microsoft 分散トランザクション コーディネーター (MSDTC) が必要でした。 Azure における PaaS (Platform-as-a-Service) アプリケーションでは MSDTC が利用できないため、分散トランザクションの調整機能が SQL DB に直接統合されました。 アプリケーションは、任意の SQL Database に接続して分散トランザクションを開始できます。すると、いずれかのデータベースによって分散トランザクションが透過的に調整されます。そのようすを示したのが次の図です。 
@@ -27,6 +28,7 @@ Azure SQL Database (SQL DB) のエラスティック データベース トラ�
   ![エラスティック データベース トランザクションを使用した Azure SQL Database での分散トランザクション ][1]
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
+
 SQL DB のエラスティック データベース トランザクションの特長は、複数の異なる SQL Database に格納されているデータに対して不可分な変更をアプリケーションから実行できることです。 プレビュー版では、C# と .NET によるクライアント側の開発に重点が置かれています。 T-SQL を使用したサーバー側の開発も今後予定されています。  
 エラスティック データベース トランザクションが想定しているシナリオは次のとおりです。
 
@@ -35,6 +37,7 @@ SQL DB のエラスティック データベース トランザクションの�
   エラスティック データベース トランザクションは、2 フェーズ コミットを使用することで、データベース間のトランザクションの原子性を確保しています。 1 回のトランザクションの中で同時に扱うデータベースが 100 個未満のトランザクションには、この方法が適しています。 これらの制限に強制力はありませんが、制限を超えたときにエラスティック データベース トランザクションのパフォーマンスと成功率に生じる影響を見込んでおくことが必要です。
 
 ## <a name="installation-and-migration"></a>インストールと移行
+
 SQL DB のエラスティック データベース トランザクションに必要な機能は、.NET ライブラリ System.Data.dll と System.Transactions.dll に対する更新プログラムを通じて提供されます。 これらの DLL によって、必要なときに確実に 2 フェーズ コミットが適用され、原子性が確保されます。 エラスティック データベース トランザクションを使ったアプリケーションを開発するには、 [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) 以降のバージョンをインストールしてください。 それより前のバージョンの .NET framework を実行していると、分散トランザクションへの昇格に失敗して例外が発生します。
 
 インストール作業が完了すると、System.Transactions の分散トランザクション API と SQL DB への接続を使用できるようになります。 これらの API を使った MSDTC アプリケーションが既に存在する場合は、4.6.1 Framework のインストール後、単に .NET 4.6 の既存のアプリケーションを再ビルドしてください。 プロジェクトのターゲット フレームワークが .NET 4.6 である場合は、新しい Framework バージョンの最新の DLL が自動的に使用され、分散トランザクション API 呼び出しと SQL DB への接続に成功します。
@@ -42,7 +45,9 @@ SQL DB のエラスティック データベース トランザクションに�
 エラスティック データベース トランザクションを使用するために MSDTC をインストールする必要はありません。 エラスティック データベース トランザクションは、SQL DB 内で直接管理されます。 SQL DB での分散トランザクションには MSDTC のデプロイが不要であるため、クラウドのシナリオが大幅に単純化されます。 エラスティック データベース トランザクションと必須の .NET Framework をクラウド アプリケーションと併せて Azure にデプロイする方法については、セクション 4 で詳しく説明しています。
 
 ## <a name="development-experience"></a>開発環境
+
 ### <a name="multi-database-applications"></a>マルチデータベース アプリケーション
+
 次のサンプル コードは、.NET System.Transactions を使ったなじみ深いプログラミング技法によって記述しています。 TransactionScope クラスは、.NET でアンビエント トランザクションを確立するものです。 ("アンビエント トランザクション" とは現在のスレッドで実行されているトランザクションです。)TransactionScope 内で開かれたすべての接続はトランザクションに参加します。 複数の異なるデータベースが参加した場合、そのトランザクションは自動的に分散トランザクションに昇格されます。 トランザクションの最終的な結果は、スコープの完了 (コミットを意味する) を設定することによって制御します。
 
     using (var scope = new TransactionScope())
@@ -67,6 +72,7 @@ SQL DB のエラスティック データベース トランザクションに�
     }
 
 ### <a name="sharded-database-applications"></a>シャード化されたデータベース アプリケーション
+
 SQL DB のエラスティック データベース トランザクションで、分散トランザクションの調整を行うこともできます。この場合、スケール アウトされたデータ層に使用する接続は、エラスティック データベース クライアント ライブラリの OpenConnectionForKey メソッドを使用して開きます。 たとえば、複数の異なるシャーディング キー値に対する変更で、トランザクションの一貫性を保証するとします。 異なるシャーディング キー値を持ったシャードに対する接続は、OpenConnectionForKey を使って取得することができます。 一般に、トランザクションの保証に分散トランザクションが伴うように、異なるシャードへの接続が取得されます。 次のコード サンプルに、この方法を示します。 ここでは、エラスティック データベース クライアント ライブラリのシャード マップを shardmap という変数で表しています。
 
     using (var scope = new TransactionScope())
@@ -92,6 +98,7 @@ SQL DB のエラスティック データベース トランザクションで�
 
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Azure Cloud Services の .NET インストール
+
 Azure には、.NET アプリケーションをホストするためのいくつかのサービスが用意されています。 さまざまなサービスを比較するには、「 [Azure App Service、Cloud Services、および Virtual Machines の比較](../app-service/overview-compare.md)」をご覧ください。 サービスのゲスト OS がエラスティック トランザクションに必要な .NET 4.6.1 より小さい場合は、ゲスト OS を 4.6.1 にアップグレードする必要があります。 
 
 Azure App Services では、ゲスト OS のアップグレードは現在サポートされていません。 Azure Virtual Machines では、単に VM にログインし、最新の .NET Framework のインストーラーを実行します。 Azure Cloud Services では、新しいバージョンの .NET のインストールをデプロイのスタートアップ タスクに含める必要があります。 その概念と手順については、「 [クラウド サービスのロールに .NET をインストールする](../cloud-services/cloud-services-dotnet-install-dotnet.md)」を参照してください。  
@@ -118,15 +125,21 @@ Azure App Services では、ゲスト OS のアップグレードは現在サポ
     </Startup>
 
 ## <a name="transactions-across-multiple-servers"></a>複数のサーバーにまたがるトランザクション
-エラスティック データベース トランザクションは、Azure SQL Database の複数の論理サーバーに対して実行できます。 トランザクションが論理サーバーの境界を超えた場合、参加するサーバーが最初に双方向の通信リレーションシップに入る必要があります。 通信リレーションシップが確立されると、2 つのサーバーのいずれのデータベースも、もう一方のサーバーのデータベースを使用してエラスティック トランザクションに参加できます。 2 つの論理サーバーにまたがるトランザクションでは、論理サーバーの任意のペア用に通信リレーションシップが用意されている必要があります。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
+エラスティック データベース トランザクションは、Azure SQL Database のさまざまな SQL Database サーバーでサポートされています。 トランザクションが SQL Database サーバーの境界を超える場合、参加するサーバーが最初に双方向の通信リレーションシップに入る必要があります。 通信リレーションシップが確立されると、2 つのサーバーのいずれのデータベースも、もう一方のサーバーのデータベースを使用してエラスティック トランザクションに参加できます。 2 つの SQL Database サーバーにまたがるトランザクションでは、SQL Database サーバーの任意のペア用に通信リレーションシップが用意されている必要があります。
 
 次の PowerShell コマンドレットを使って、エラスティック データベースのトランザクション用のサーバー間通信リレーションシップを管理できます。
 
-* **New-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL DB で 2 つの論理サーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
-* **Get-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
-* **Remove-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップを削除します。 
+* **New-AzSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL Database で 2 つの SQL Database サーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
+* **Get-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
+* **Remove-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップを削除します。 
 
 ## <a name="monitoring-transaction-status"></a>トランザクションの状態の監視
+
 現在実行されているエラスティック データベース トランザクションの状態と進行状況は、SQL DB の動的管理ビュー (DMV) を使用して監視します。 トランザクションに関連したすべての DMV は、SQL DB の分散トランザクションにとって重要となります。 対応する DMV の一覧については、「[トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)」を参照してください。
 
 次の DMV が特に重要となります。
@@ -136,6 +149,7 @@ Azure App Services では、ゲスト OS のアップグレードは現在サポ
 * **sys.dm\_tran\_locks**:実行中のトランザクションによって現在保持されているロックの情報が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms190345.aspx)をご覧ください。
 
 ## <a name="limitations"></a>制限事項
+
 SQL DB のエラスティック データベース トランザクションには現在、次の制限が適用されます。
 
 * サポートされるトランザクションの対象は、SQL DB 内のデータベースに限られます。 その他の [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) リソース プロバイダーや SQL DB 以外のデータベースがエラスティック データベース トランザクションに参加することはできません。 つまり、オンプレミス SQL Server と Azure SQL Database にまたがってエラスティック データベース トランザクションを実行することはできません。 オンプレミスの分散トランザクションについては、引き続き MSDTC をご利用ください。 
@@ -143,10 +157,8 @@ SQL DB のエラスティック データベース トランザクションに�
 * WCF サービスをまたがるトランザクションはサポートされません。 たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。 トランザクション スコープ内にこの呼び出しを囲い込むと、 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)として失敗します。
 
 ## <a name="next-steps"></a>次の手順
+
 質問がある場合は、[SQL Database のフォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
-
-
-

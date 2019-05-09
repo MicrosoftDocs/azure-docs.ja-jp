@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: a87f3861a74bbc7a482423d5f2a2f1b859f83a10
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: 371632a28d22583f8b206e4d8b9d2b6b4e510ab0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604431"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563951"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用して Azure SQL Database のパフォーマンスを監視する
 
@@ -549,7 +549,7 @@ FROM sys.dm_db_resource_stats;
 Azure SQL Database では、各サーバーの **master** データベースの **sys.resource_stats** ビューにアクティブなデータベース別のリソース利用情報が公開されます。 テーブルのデータは 5 分おきに集計されます。 Basic、Standard、Premium のサービス レベルでは、データをテーブルに表示するのに 5 分を超える時間がかかる可能性があります。このため、このデータはほぼリアルタイムの分析よりも過去の分析に役に立ちます。 **sys.resource_stats** ビューに照会すると、データベースの最近の履歴が表示され、選択した予約で必要なときに望ましいパフォーマンスが発揮されたかどうかを検証できます。
 
 > [!NOTE]
-> 次の例で **sys.resource_stats** に照会するためには、論理 SQL データベース サーバーの **master** データベースに接続する必要があります。
+> 次の例で **sys.resource_stats** に照会するには、ご使用の SQL Database サーバーの **master** データベースに接続する必要があります。
 
 次の例は、このビューのデータが表示されているところです。
 

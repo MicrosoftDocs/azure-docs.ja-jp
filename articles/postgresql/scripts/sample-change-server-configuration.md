@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: c570982fed746b01f5a8c15edb94bdeac679b248
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6b5a855c8db5cb87f313e14c42396ae70b407e61
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545612"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692207"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL サーバーの構成を一覧表示および更新する
 このサンプル CLI スクリプトは、Azure Database for PostgreSQL サーバーのすべての利用可能な構成パラメーターと、許容値を一覧表示し、*log_retention_days* を既定値以外の値に設定します。
@@ -35,12 +35,12 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 
 | **コマンド** | **メモ** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) | データベースをホストする PostgreSQL サーバーを作成します。 |
-| [az postgres server configuration list](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) | Azure Database for PostgreSQL サーバーの構成を一覧表示します。 |
-| [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) | Azure Database for PostgreSQL サーバーの構成を更新します。 |
-| [az postgres server configuration show](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_show) | Azure Database for PostgreSQL サーバーの構成を表示します。 |
-| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az postgres server create](/cli/azure/postgres/server) | データベースをホストする PostgreSQL サーバーを作成します。 |
+| [az postgres server configuration list](/cli/azure/postgres/server/configuration) | Azure Database for PostgreSQL サーバーの構成を一覧表示します。 |
+| [az postgres server configuration set](/cli/azure/postgres/server/configuration) | Azure Database for PostgreSQL サーバーの構成を更新します。 |
+| [az postgres server configuration show](/cli/azure/postgres/server/configuration) | Azure Database for PostgreSQL サーバーの構成を表示します。 |
+| [az group delete](/cli/azure/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)

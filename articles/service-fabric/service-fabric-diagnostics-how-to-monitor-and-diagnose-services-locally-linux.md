@@ -4,7 +4,7 @@ description: ローカルの Linux 開発用コンピューターで Service Fab
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309163"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58659748"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 
@@ -35,7 +35,7 @@ ms.locfileid: "53309163"
 
 ## <a name="debugging-service-fabric-java-applications"></a>Service Fabric の Java アプリケーションのデバッグ
 
-Java アプリケーションの場合は、 [複数のログ記録フレームワーク](http://en.wikipedia.org/wiki/Java_logging_framework) を利用できます。 `java.util.logging` は JRE の既定のオプションであるため、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。 以降では、 `java.util.logging` フレームワークを構成する方法について説明します。
+Java アプリケーションの場合は、 [複数のログ記録フレームワーク](https://en.wikipedia.org/wiki/Java_logging_framework) を利用できます。 `java.util.logging` は JRE の既定のオプションであるため、 [GitHub のコード例](https://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。 以降では、 `java.util.logging` フレームワークを構成する方法について説明します。
 
 java.util.logging を使用すると、アプリケーションのログを、メモリ、出力ストリーム、コンソール、ファイル、またはソケットにリダイレクトできます。 これらのそれぞれのオプションに対して、フレームワークで既定のハンドラーが既に提供されています。 `app.properties` ファイルを作成すると、すべてのログをローカル ファイルにリダイレクトするようにアプリケーションのファイル ハンドラーを構成できます。
 
@@ -51,7 +51,7 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-`app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.propertes` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
+`app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.properties` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
@@ -64,7 +64,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。 /var/log/syslog の syslog のログを表示できます。
 
-詳細については、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。
+詳細については、 [GitHub のコード例](https://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Service Fabric の C# アプリケーションのデバッグ
@@ -74,7 +74,7 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
 
 最初の手順では、メモリ、出力ストリーム、またはコンソール ファイルにログを書き込むことができるように、System.Diagnostics.Tracing を含めます。  EventSource を使用したログ記録の場合は、project.json に、次のプロジェクトを追加します。
 
-```
+```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 

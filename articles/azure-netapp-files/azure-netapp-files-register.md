@@ -11,21 +11,21 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 11/21/2018
+ms.topic: conceptual
+ms.date: 01/04/2018
 ms.author: b-juche
-ms.openlocfilehash: ff28429ba81a97ca85364364a2a432e39aaad380
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 86c016a5dbcc0d78378e59bc6b3606ddf2c54f64
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414291"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122337"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
 Azure NetApp Files を使用する前には、Azure NetApp Files サービスに加入するためのリクエストを送信する必要があります。  加入後、サービスを使用するための登録を行います。
 
 ## <a name="request-to-enroll-in-the-service"></a>サービスに加入するためのリクエスト
-パブリック プレビュー プログラムに参加していて、Microsoft.NetApp リソース プロバイダーにアクセスするためのホワイトリストに登録されている必要があります。 パブリック プレビュー プログラムへの参加の詳細については、[Azure NetApp Files パブリック プレビューのサインアップ ページ](http://aka.ms/anfsignup)をご覧ください。 
+パブリック プレビュー プログラムに参加していて、Microsoft.NetApp リソース プロバイダーにアクセスするためのホワイトリストに登録されている必要があります。 パブリック プレビュー プログラムへの参加の詳細については、[Azure NetApp Files パブリック プレビューのサインアップ ページ](https://aka.ms/nfspublicpreview)をご覧ください。 
 
 
 ## <a name="register-the-netapp-resource-provider"></a>NetApp リソース プロバイダーの登録
@@ -61,7 +61,7 @@ Azure NetApp Files を使用する前には、Azure NetApp Files サービスに
     
         az provider show --namespace Microsoft.NetApp
 
-  コマンドの出力は次のようになります。
+   コマンドの出力は次のようになります。
    
         {
         "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",

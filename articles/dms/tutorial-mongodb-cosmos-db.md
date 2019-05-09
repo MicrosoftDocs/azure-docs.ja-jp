@@ -1,25 +1,25 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して MongoDB を Azure Cosmos DB Mongo API にオフラインで移行する | Microsoft Docs
-description: Azure Database Migration Service を使用して、オンプレミスの MongoDB から Azure Cosmos DB Mongo API にオフラインで移行する方法について学習します。
+title: チュートリアル:Azure Database Migration Service を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する | Microsoft Docs
+description: Azure Database Migration Service を使用して、オンプレミスの MongoDB から Azure Cosmos DB の MongoDB 用 API にオフラインで移行する方法について学習します。
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/11/2018
-ms.openlocfilehash: 4651c9afab99577622af71297e1fb6465a20097f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 04/03/2019
+ms.openlocfilehash: 68cf4561d24a84c5aacefbe5fbd11bcd7e0576aa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713099"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878555"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-mongo-api-offline-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB Mongo API にオフラインで移行する
-Azure Database Migration Service を使用して、MongoDB のオンプレミスまたはクラウドのインスタンスから Azure Cosmos DB Mongo API に、データベースのオフライン (1 回限り) の移行を実行できます。
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
+Azure Database Migration Service を使用して、MongoDB のオンプレミスまたはクラウドのインスタンスから Azure Cosmos DB の MongoDB 用 API に、データベースのオフライン (1 回限り) の移行を実行できます。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -28,13 +28,22 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 > * 移行を実行する。
 > * 移行を監視する。
 
-このチュートリアルでは、Azure Database Migration Service を使用して、Azure 仮想マシンでホストされている MongoDB 内の **Wingtips** データセットを、MongoDB API の Azure Cosmos DB に移行します。 MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb)」をご覧ください。
+このチュートリアルでは、Azure Database Migration Service を使用して、Azure 仮想マシンでホストされている MongoDB 内のデータセットを、Azure Cosmos DB の MongoDB 用 API に移行します。 MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下を実行する必要があります。
-- [Azure Cosmos DB for MongoDB API アカウントを作成します](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
-- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
-- Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、次の通信ポートがブロックされていないことを確認します。443、53、9354、445、12000。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)」を参照してください。
+- [Azure Cosmos DB の MongoDB 用 API アカウントを作成します](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
+- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNET) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
+
+    > [!NOTE]
+    > VNET のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用した場合、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    > - ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
+    > - ストレージ エンドポイント
+    > - サービス バス エンドポイント
+    >
+    > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
+
+- VNET のネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します: 443、53、9354、445、12000。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)」を参照してください。
 - Azure Database Migration Service がソース MongoDB サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 27017 が使用されています。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 
@@ -66,7 +75,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
 5. 既存の仮想ネットワーク (VNET) を選択するか、新しい VNET を作成します。
 
-    この VNET が Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL Database インスタンスへのアクセスを提供します。
+    この VNET が Azure Database Migration Service に、ソース MongoDB インスタンスとターゲット Azure Cosmos DB アカウントへのアクセスを提供します。
 
     Azure portal で VNET を作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)に関する記事を参照してください。
 
@@ -100,10 +109,10 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 ## <a name="specify-source-details"></a>ソース詳細を指定する
 1. **[ソースの詳細]** 画面で、ソース MongoDB サーバーの接続の詳細を指定します。
     
-   また、接続文字列モードを使用し、移行するコレクション データをダンプしたブログ ストア ファイル コンテナーの場所を指定できます。
+   また、接続文字列モードを使用し、移行するコレクション データをダンプした BLOB ストア ファイル コンテナーの場所を指定できます。
 
    > [!NOTE]
-   > また、Azure Database Migration Service では、BSON ドキュメントまたは JSON ドキュメントを Azure Cosmos DB Mongo API のコレクションに移行することもできます。
+   > また、Azure Database Migration Service では、BSON ドキュメントまたは JSON ドキュメントを Azure Cosmos DB の MongoDB 用 API のコレクションに移行することもできます。
     
    DNS の名前解決ができない場合は、IP アドレスを使用することもできます。
 
@@ -112,7 +121,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 2. **[保存]** を選択します。
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
-1. **[移行のターゲットの詳細]** 画面で、ターゲットの Azure Cosmos DB アカウントの接続の詳細を指定します。これは、MongoDB データの移行先である、事前プロビジョニング済みの Azure Cosmos DB MongoDB アカウントです。
+1. **[移行のターゲットの詳細]** 画面で、ターゲットの Azure Cosmos DB アカウントの接続の詳細を指定します。これは、MongoDB データの移行先である、事前プロビジョニング済みの Azure Cosmos DB の MongoDB 用 API アカウントです。
 
     ![ターゲット詳細を指定する](media/tutorial-mongodb-to-cosmosdb/dms-specify-target.png)
 
@@ -163,7 +172,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
 ## <a name="verify-data-in-cosmos-db"></a>Cosmos DB でデータを確認する
 
-- 移行が完了した後、Azure Cosmos DB for MongoDB API アカウントを調べて、すべてのコレクションが正常に移行されたことを確認できます。
+- 移行が完了した後、Azure Cosmos DB アカウントを調べて、すべてのコレクションが正常に移行されたことを確認できます。
 
     ![アクティビティの状態 - 完了](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 

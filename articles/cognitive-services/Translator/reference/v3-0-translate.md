@@ -3,19 +3,19 @@ title: Translator Text API の Translate メソッド
 titleSuffix: Azure Cognitive Services
 description: Translator Text API の Translate メソッドを使用します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f69fd7af23c360edc208561f915bd351c3fd373c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956986"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608437"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -38,55 +38,55 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>説明</th>
   <tr>
     <td>api-version</td>
-    <td>"*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
+    <td>"<em>必須のパラメーター</em>"。<br/>クライアントによって要求される API のバージョン。 値は <code>3.0</code> とする必要があります。</td>
   </tr>
   <tr>
     <td>from</td>
-    <td>"*省略可能なパラメーター*"。<br/>入力テキストの言語を指定します。 `translation` スコープを使用して[サポートされている言語](./v3-0-languages.md)を検索することにより、翻訳することができるソース言語を確認します。 `from` パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を指定します。 <code>translation</code> スコープを使用して[サポートされている言語](./v3-0-languages.md)を検索することにより、翻訳することができるソース言語を確認します。 <code>from</code> パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>"*必須のパラメーター*"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`translation` スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。 たとえば、ドイツ語に翻訳するには `to=de` を使用します。<br/>クエリ文字列内でパラメーターを繰り返すことにより、同時に複数の言語に翻訳することができます。 たとえば、ドイツ語とイタリア語に翻訳するには、`to=de&to=it` を使用します。</td>
+    <td>"<em>必須のパラメーター</em>"。<br/>出力テキストの言語を指定します。 ターゲット言語は、<code>translation</code> スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。 たとえば、ドイツ語に翻訳するには <code>to=de</code> を使用します。<br/>クエリ文字列内でパラメーターを繰り返すことにより、同時に複数の言語に翻訳することができます。 たとえば、ドイツ語とイタリア語に翻訳するには、<code>to=de&to=it</code> を使用します。</td>
   </tr>
   <tr>
     <td>textType</td>
-    <td>*省略可能なパラメーター*。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は `plain` (既定値) または `html` です。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は <code>plain</code> (既定値) または <code>html</code> です。</td>
   </tr>
   <tr>
     <td>category</td>
-    <td>*省略可能なパラメーター*。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、[Custom Translator](../customization.md) でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 既定値は `general` です。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、[Custom Translator](../customization.md) でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール プロジェクトからこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td>*省略可能なパラメーター*。<br/>翻訳での不適切な表現の処理方法を指定します。 指定できる値は `NoAction` (既定値)、`Marked`、または `Deleted` です。 不適切な表現の処理方法を理解するには、[不適切な表現の処理](#handle-profanity)に関するセクションを参照してください。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>翻訳での不適切な表現の処理方法を指定します。 指定できる値は <code>NoAction</code> (既定値)、<code>Marked</code>、または <code>Deleted</code> です。 不適切な表現の処理方法を理解するには、[不適切な表現の処理](#handle-profanity)に関するセクションを参照してください。</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td>*省略可能なパラメーター*。<br/>翻訳での不適切な表現のマーキング方法を指定します。 指定できる値は `Asterisk` (既定値) または `Tag` です。 不適切な表現の処理方法を理解するには、[不適切な表現の処理](#handle-profanity)に関するセクションを参照してください。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>翻訳での不適切な表現のマーキング方法を指定します。 指定できる値は <code>Asterisk</code> (既定値) または <code>Tag</code> です。 不適切な表現の処理方法を理解するには、[不適切な表現の処理](#handle-profanity)に関するセクションを参照してください。</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td>*省略可能なパラメーター*。<br/>ソース テキストから翻訳済みテキストへのアライメント プロジェクションを含めるかどうかを指定します。 指定できる値は `true` または `false` (既定値) です。 </td>
+    <td><em>省略可能なパラメーター</em>。<br/>ソース テキストから翻訳済みテキストへのアライメント プロジェクションを含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。 </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td>*省略可能なパラメーター*。<br/>入力テキストと翻訳済みテキストに対して文の境界を含めるかどうかを指定します。 指定できる値は `true` または `false` (既定値) です。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>入力テキストと翻訳済みテキストに対して文の境界を含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。</td>
   </tr>
   <tr>
     <td>suggestedFrom</td>
-    <td>*省略可能なパラメーター*。<br/>入力テキストの言語を識別できない場合のフォールバック言語を指定します。 `from` パラメーターが省略されている場合は、言語自動検出が適用されます。 検出に失敗した場合は、`suggestedFrom` 言語と見なされます。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>入力テキストの言語を識別できない場合のフォールバック言語を指定します。 <code>from</code> パラメーターが省略されている場合は、言語自動検出が適用されます。 検出に失敗した場合は、<code>suggestedFrom</code> 言語と見なされます。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*省略可能なパラメーター*。<br/>入力テキストのスクリプトを指定します。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>入力テキストのスクリプトを指定します。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*省略可能なパラメーター*。<br/>翻訳済みテキストのスクリプトを指定します。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>翻訳済みテキストのスクリプトを指定します。</td>
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>"*省略可能なパラメーター*"。<br/>カスタム システムが存在しない場合に、サービスが一般的なシステムにフォールバックできるかどうかを指定します。 指定できる値は `true` (既定値) または `false` です。<br/><br/>`allowFallback=false` は、要求によって指定された `category` 向けにトレーニングされているシステムのみを翻訳で使用することを指定します。 言語 X から言語 Y への翻訳で、中心言語 E を経由するチェーン処理が必要な場合、チェーン内のすべてのシステム (X->E と E->Y) はカスタムであり、同じカテゴリを持っている必要があります。 特定のカテゴリを持つシステムが見つからない場合、要求は 400 状態コードを返します。 `allowFallback=true` は、カスタム システムが存在しない場合は、サービスが一般的なシステムにフォールバックできることを指定します。
+    <td>"<em>省略可能なパラメーター</em>"。<br/>カスタム システムが存在しない場合に、サービスが一般的なシステムにフォールバックできるかどうかを指定します。 指定できる値は <code>true</code> (既定値) または <code>false</code> です。<br/><br/><code>allowFallback=false</code> は、要求によって指定された <code>category</code> 向けにトレーニングされているシステムのみを翻訳で使用することを指定します。 言語 X から言語 Y への翻訳で、中心言語 E を経由するチェーン処理が必要な場合、チェーン内のすべてのシステム (X->E と E->Y) はカスタムであり、同じカテゴリを持っている必要があります。 特定のカテゴリを持つシステムが見つからない場合、要求は 400 状態コードを返します。 <code>allowFallback=true</code> は、カスタム システムが存在しない場合は、サービスが一般的なシステムにフォールバックできることを指定します。
 </td>
   </tr>
 </table> 
@@ -97,20 +97,20 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_One authorization_<br/>_header_</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
+    <td>認証ヘッダー</td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。<code>application/json</code></td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/>要求本文の長さです。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 `ClientTraceId` という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。</td>
+    <td><em>省略可能</em>。<br/>要求を一意に識別する、クライアントで生成された GUID。 <code>ClientTraceId</code> という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。</td>
   </tr>
 </table> 
 
@@ -126,7 +126,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 次の制限事項が適用されます。
 
-* 配列に含めることができる要素は、最大でも 25 個です。
+* 配列に含めることができる要素は、最大でも 100 個です。
 * 要求に含めるテキスト全体では、スペースも含めて 5,000 文字を超えてはなりません。
 
 ## <a name="response-body"></a>応答本文
@@ -209,7 +209,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   </tr>
   <tr>
     <td>408</td>
-    <td>リソースが見つからないため、要求を処理できませんでした。 詳細なエラー メッセージを確認してください。 カスタムの `category` を使用している場合は、大抵は要求を処理するためにカスタム翻訳システムをまだ利用できないことを示しています。 要求は、待機期間 (例: 1 分) 後に再試行する必要があります。</td>
+    <td>リソースが見つからないため、要求を処理できませんでした。 詳細なエラー メッセージを確認してください。 カスタムの <code>category</code> を使用している場合は、大抵は要求を処理するためにカスタム翻訳システムをまだ利用できないことを示しています。 要求は、待機期間 (例: 1 分) 後に再試行する必要があります。</td>
   </tr>
   <tr>
     <td>429</td>
@@ -217,13 +217,15 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   </tr>
   <tr>
     <td>500</td>
-    <td>予期しないエラーが発生しました。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
+    <td>予期しないエラーが発生しました。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー <code>X-RequestId</code> からの要求識別子、要求ヘッダー <code>X-ClientTraceId</code> からのクライアント識別子を添えてその旨をご報告ください。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
+    <td>サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー <code>X-RequestId</code> からの要求識別子、要求ヘッダー <code>X-ClientTraceId</code> からのクライアント識別子を添えてその旨をご報告ください。</td>
   </tr>
 </table> 
+
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
 
 ## <a name="examples"></a>例
 
@@ -374,28 +376,28 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   <th width="20%">ProfanityAction</th>
   <th>Action</th>
   <tr>
-    <td>`NoAction`</td>
+    <td><code>NoAction</code></td>
     <td>これは既定の動作です。 不適切な表現はソースからターゲットに渡されます。<br/><br/>
-    **ソースの例 (日本語)**: 彼はジャッカスです。<br/>
-    **翻訳の例 (英語)**: He is a jackass.
+    <strong>ソースの例 (日本語)</strong>: 彼はジャッカスです。<br/>
+    <strong>翻訳の例 (英語)</strong>: He is a jackass.
     </td>
   </tr>
   <tr>
-    <td>`Deleted`</td>
+    <td><code>Deleted</code></td>
     <td>不適切な単語は、置換されずに出力から削除されます。<br/><br/>
-    **ソースの例 (日本語)**: 彼はジャッカスです。<br/>
-    **翻訳の例 (英語)**: He is a.
+    <strong>ソースの例 (日本語)</strong>: 彼はジャッカスです。<br/>
+    <strong>翻訳の例 (英語)</strong>: He is a.
     </td>
   </tr>
   <tr>
-    <td>`Marked`</td>
-    <td>不適切な単語は、出力ではマーカーに置き換えられます。 マーカーは `ProfanityMarker` パラメーターによって異なります。<br/><br/>
-`ProfanityMarker=Asterisk` の場合、不適切な単語は `***` に置き換えられます。<br/>
-    **ソースの例 (日本語)**: 彼はジャッカスです。<br/>
-    **翻訳の例 (英語)**: He is a \*\*\*.<br/><br/>
-`ProfanityMarker=Tag` の場合、不適切な単語は XML タグ &lt;profanity&gt; および &lt;/profanity&gt; によって囲まれます。<br/>
-    **ソースの例 (日本語)**: 彼はジャッカスです。<br/>
-    **翻訳の例 (英語)**: He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.
+    <td><code>Marked</code></td>
+    <td>不適切な単語は、出力ではマーカーに置き換えられます。 マーカーは <code>ProfanityMarker</code> パラメーターによって異なります。<br/><br/>
+<code>ProfanityMarker=Asterisk</code> の場合、不適切な単語は <code>***</code> に置き換えられます。<br/>
+    <strong>ソースの例 (日本語)</strong>: 彼はジャッカスです。<br/>
+    <strong>翻訳の例 (英語)</strong>: He is a \*\*\*.<br/><br/>
+<code>ProfanityMarker=Tag</code> の場合、不適切な単語は XML タグ &lt;profanity&gt; および &lt;/profanity&gt; によって囲まれます。<br/>
+    <strong>ソースの例 (日本語)</strong>: 彼はジャッカスです。<br/>
+    <strong>翻訳の例 (英語)</strong>: He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.
   </tr>
 </table> 
 
@@ -404,7 +406,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 # <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 ---
@@ -426,7 +428,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 # <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 ---

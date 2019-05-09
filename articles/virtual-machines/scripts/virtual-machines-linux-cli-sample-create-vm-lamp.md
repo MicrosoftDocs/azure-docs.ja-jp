@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 1764fc15a888fbe15cc14b990721240d1baf3c40
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ff4c41ff6428ba6ef88473508830ec8545be8778
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29851668"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731106"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>負荷分散された仮想マシン スケール セットでの LAMP スタックのデプロイ
 
@@ -53,14 +53,14 @@ az group delete -n myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az_vmss_create) | 仮想マシンスケール セットを作成します。 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | 負荷分散エンドポイントを追加します。 |
-| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#az_vmss_extension_set) | 仮想マシンのデプロイ時にカスタム スクリプトを実行する拡張機能を作成します。 |
-| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#az_vmss_update_instances) | 拡張機能をスケール セットに適用する前にデプロイされた VM インスタンスで、カスタム スクリプトを実行します。 |
-| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) | VM インスタンスを追加してスケール セットをスケール アップします。 デプロイ時に、カスタム スクリプトでこれらが実行されます。 |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_list) | サンプルで作成された VM の IP アドレスを取得します。 |
-| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_show) | ロード バランサーで使用されるフロントエンド ポートおよびバックエンド ポートを取得します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | 仮想マシンスケール セットを作成します。 |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | 負荷分散エンドポイントを追加します。 |
+| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension) | 仮想マシンのデプロイ時にカスタム スクリプトを実行する拡張機能を作成します。 |
+| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss) | 拡張機能をスケール セットに適用する前にデプロイされた VM インスタンスで、カスタム スクリプトを実行します。 |
+| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss) | VM インスタンスを追加してスケール セットをスケール アップします。 デプロイ時に、カスタム スクリプトでこれらが実行されます。 |
+| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | サンプルで作成された VM の IP アドレスを取得します。 |
+| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | ロード バランサーで使用されるフロントエンド ポートおよびバックエンド ポートを取得します。 |
 
 ## <a name="next-steps"></a>次の手順
 

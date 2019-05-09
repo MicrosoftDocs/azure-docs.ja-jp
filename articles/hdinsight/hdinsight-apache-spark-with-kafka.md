@@ -10,24 +10,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0687ec94af60d3683d3f129eff2bad8fb97d786
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 5f4b7994ad5061c64021f3625f42ac028cbee859
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165804"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653409"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
 [Apache Spark](https://spark.apache.org/) を使用して、HDInsight 上の [Apache Kafka](https://kafka.apache.org/) に対して [DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) による送信または受信ストリーミングを行う方法について説明します。 この例では、Spark クラスター上で実行する [Jupyter Notebook](https://jupyter.org/) を使用します。
 
-> [!NOTE]
+> [!NOTE]  
 > このドキュメントの手順では、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループを作成します。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
 >
 > このドキュメントの手順を完了したら、余分に課金されないようにするためにクラスターは削除してください。
 
-> [!IMPORTANT]
-> この例では DStreams を使用します。DStreams は古い Spark ストリーミング テクノロジです。 新しい Spark ストリーミング機能を使用する例については、[Kafka を使った Spark 構造化ストリーミング](hdinsight-apache-kafka-spark-structured-streaming.md)に関するドキュメントを参照してください。
+> [!IMPORTANT]  
+> この例では DStreams を使用します。DStreams は古い Spark ストリーミング テクノロジです。 新しい Spark ストリーミング機能を使用する例については、[Apache Kafka を使った Spark 構造化ストリーミング](hdinsight-apache-kafka-spark-structured-streaming.md)に関するドキュメントを参照してください。
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
@@ -35,7 +35,7 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 
 ![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Kafka 自体は仮想ネットワーク内の通信に制限されていますが、クラスターの SSH や Ambari などの他のサービスにはインターネット経由でアクセスすることができます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
 
 Azure 仮想ネットワーク、Kafka、および Spark クラスターは手動で作成できますが、Azure Resource Manager テンプレートを使用する方が簡単です。 次の手順に従って、Azure 仮想ネットワーク、Kafka クラスター、および Spark クラスターを Azure サブスクリプションにデプロイします。
@@ -46,7 +46,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     
     Azure Resource Manager テンプレートは、**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
 
-    > [!WARNING]
+    > [!WARNING]  
     > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
     このテンプレートは、Kafka と Spark の両方の HDInsight 3.6 クラスターを作成します。
@@ -77,7 +77,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 ![vnet とクラスターのリソース グループ概要](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 各 HDInsight クラスターの名前が **spark-BASENAME** および **kafka-BASENAME** であることに注目してください。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。
 
 ## <a name="use-the-notebooks"></a>ノートブックを使用する

@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: 単一ページの Web アプリを作成する - Bing Web Search API'
+title: チュートリアル:単一ページの Web アプリを作成する - Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: この単一ページのアプリは、Bing Web Search API を使用して、単一ページのアプリで関連する検索結果を取得、解析、および表示する方法を示しています。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: aahi
-ms.openlocfilehash: b94e6f70d4a28dc59ddaa62cfad55c6c8383b761
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 6c28b02d68239bac658954caf447b6ff738c1b65
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161924"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881243"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル: Bing Web Search API を使用して単一ページの Web アプリを作成する
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
 
 この単一ページのアプリは、Bing Web Search API から検索結果を取得、解析、および表示する方法を示しています。 このチュートリアルでは、定型の HTML と CSS を使用し、JavaScript コードに焦点を当てています。 HTML、CSS、および JS ファイルとクイック スタート手順は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) に掲載されています。
 

@@ -3,20 +3,21 @@ title: ユーザーのプロファイル情報を追加または更新する - A
 description: Azure Active Directory でのユーザーのプロファイルに画像やジョブの詳細などの情報を追加する手順。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 04/11/2019
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: 0e03d882df61755faf283aa67427beeec17c8c05
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094731"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548048"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。
@@ -25,7 +26,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 ご覧のとおり、ユーザーを作成するときに追加する情報より、ユーザー プロファイルの方が情報が多いです。 この追加情報は、すべて組織が必要に応じて追加することができるオプションです。
 
 ## <a name="to-add-or-change-profile-information"></a>プロファイル情報を追加または変更する
-1. [Azure portal](https://portal.azure.com/) にディレクトリの全体管理者またはユーザー管理者としてサインインします。
+1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
 
 2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ にします。
 
@@ -39,7 +40,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 
     - **プロファイルの画像。** ユーザー アカウントのサムネイル画像を選択します。 この画像は、Azure Active Directory と myapps.microsoft.com ページなどのユーザーの個人ページに表示されます。
 
-    - **ID。** 結婚後の姓または変更したユーザー名などのアカウントに関連する任意の情報を追加します。 
+    - **ID。** 結婚後の姓など、ユーザーの ID 値を追加または追加の ID 値を更新します。 名と姓の値とは別に、この名前を設定することができます。 たとえば、イニシャル、会社名を含める場合や、表示される名前の順序を変更する場合に使用できます。 別の例として、名前が ‘Chris Green’ である 2 人のユーザーが存在する場合、ID 文字列を使用して、それらの名前を 'Chris B. Green' 'Chris R. Green (Contoso)' に設定することができます。
 
     - **ジョブ情報。** ユーザーの役職、部署またはマネージャーなど、仕事に関係する任意の情報を追加します。
 

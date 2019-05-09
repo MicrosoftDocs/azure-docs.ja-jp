@@ -3,7 +3,7 @@ title: Azure で SQL Server 仮想マシンに接続する (クラシック) | M
 description: Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。 このトピックでは、クラシック デプロイ モデルを使用します。 シナリオは、ネットワーク構成とクライアントの場所によって異なります。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.assetid: 416948af-454f-4cfe-8fd2-7cf971cbd3e9
@@ -13,14 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
-ms.author: jroth
+ms.author: mathoma
+ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: e986440edc0b683d1b1cd49207a355dac060c53d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 51694ca085e131150217ffb3fbac9830980108cb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "29398320"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733520"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Azure での SQL Server 仮想マシンへの接続 (クラシック デプロイ)
 > [!div class="op_single_selector"]
@@ -33,7 +34,7 @@ ms.locfileid: "29398320"
 このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスへ接続する方法について説明します。 ここでは、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介してから、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](../sql/virtual-machines-windows-sql-connect.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](../sql/virtual-machines-windows-sql-connect.md)に関する記事をご覧ください。
 
 ## <a name="connection-scenarios"></a>接続のシナリオ
 クライアントから仮想マシンで実行されている SQL Server に接続する方法は、クライアントの場所と、マシンやネットワークの構成によって異なります。 これらのシナリオは、次のとおりです。
@@ -48,7 +49,7 @@ ms.locfileid: "29398320"
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>同一クラウド サービス内の SQL Server に接続する方法
-同じクラウド サービス内で複数の仮想マシンを作成できます。 このような仮想マシンのシナリオについては、「 [仮想マシンを仮想ネットワークまたはクラウド サービスと接続する方法](../classic/connect-vms-classic.md#connect-vms-in-a-standalone-cloud-service)」を参照してください。 このシナリオでは、ある仮想マシン上のクライアントから、同じクラウド サービス内の別の仮想マシンで実行されている SQL Server に接続しようとする場合を取り上げます。
+同じクラウド サービス内で複数の仮想マシンを作成できます。 このような仮想マシンのシナリオについては、「 [仮想マシンを仮想ネットワークまたはクラウド サービスと接続する方法](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service)」を参照してください。 このシナリオでは、ある仮想マシン上のクライアントから、同じクラウド サービス内の別の仮想マシンで実行されている SQL Server に接続しようとする場合を取り上げます。
 
 このシナリオでは、VM の**名前** (ポータル内では **[コンピューター名]** または **[ホスト名]** とも表示されます) を使用して接続できます。 この名前は、作成時に VM に指定した名前です。 たとえば、SQL VM に **mysqlvm**という名前を付けた場合、同じクラウド サービス内のクライアント VM では次のような文字列を使用して接続できます。
 
@@ -63,7 +64,7 @@ ms.locfileid: "29398320"
 
     "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-この接続文字列でクライアントからインターネット経由での接続は有効になりますが、すべてのユーザーが SQL Server に接続できるわけではありません。 外部のクライアントは、ユーザー名とパスワードを修正する必要があります。 セキュリティを強化するために、既知のポート 1433 を仮想マシンのパブリック エンドポイントに使用しないでください。 また可能であれば、エンドポイントに ACL を追加して、許可されたクライアントのみにトラフィックを制限することを検討してください。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
+この接続文字列でクライアントからインターネット経由での接続は有効になりますが、すべてのユーザーが SQL Server に接続できるわけではありません。 外部のクライアントは、ユーザー名とパスワードを修正する必要があります。 セキュリティを強化するために、既知のポート 1433 を仮想マシンのパブリック エンドポイントに使用しないでください。 また可能であれば、エンドポイントに ACL を追加して、許可されたクライアントのみにトラフィックを制限することを検討してください。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)」を参照してください。
 
 > [!NOTE]
 > この手法を使用して SQL Server と通信すると、Azure データセンターから送信されるすべてのデータには、通常の [送信データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/)が適用されます。

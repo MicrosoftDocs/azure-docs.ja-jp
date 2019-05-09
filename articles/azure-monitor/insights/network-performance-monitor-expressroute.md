@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.openlocfilehash: 50819e1378187dda126f25298d8a2ac0a1b815c5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d0819b57307fc037b3be6ab04ed9ec6c8720a618
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188777"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103589"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター
 
@@ -55,7 +55,7 @@ NSG の詳細については、 [ネットワーク セキュリティ グル�
 
     ![ExpressRoute Monitor の構成](media/network-performance-monitor-expressroute/expressroute-configure.png)
  
- 検出が完了した後、検出されたプライベート ピアリング接続がテーブルに一覧表示されます。 これらのピアリングの監視は、最初は無効状態になっています。 
+   検出が完了した後、検出されたプライベート ピアリング接続がテーブルに一覧表示されます。 これらのピアリングの監視は、最初は無効状態になっています。 
 
 ### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>ExpressRoute ピアリング接続の監視を有効にする 
 
@@ -118,23 +118,12 @@ Network Performance Monitor は、いくつかの回線接続の問題を診断�
 
 | 通知コード (ログ) | 説明 |
 | --- | --- |
-| 5101 | Microsoft Edge サブインターフェイスの待機時間が長くなっています。 |
-| 5102 | Microsoft Edge サブインターフェイスはパッケージを削除しています。 | 
-| 5103 | ExpressRoute ゲートウェイは正常な状態ではありません。 | 
-| 5201 | サービス プロバイダーのリンクの待機時間が長くなっています。 |
-| 5202 | 意図した ExpressRoute 回線からパケットが送られていません。 |
-| 5301 | ユーザーのエッジ ルーターの待機時間が長くなっています。 | 
-| 5302 | 待機時間は、お客様の環境のデバイス/リンクが原因です。 ExpressRoute 回線に問題はないように思われます。 | 
 | 5501 | ExpressRoute 回線のセカンダリ接続をスキャンできません。 |
 | 5502 | ExpressRoute 回線のプライマリ接続をスキャンできません。 |
 | 5503 | ワークスペースに関連付けられたサブスクリプションに回線が見つかりませんでした。 | 
-| 5506 | 使用率がその上限に近づいています。 | 
-| 5507 | 使用率が不足しています。 |
 | 5508 | トラフィックがパスの回線を通っているかどうか確認できません。 |
 | 5510 | トラフィックは目的の回線を通っていません。 | 
 | 5511 | トラフィックは目的の仮想ネットワークを通っていません。 | 
-| 5512 | トラフィックが目的の回線を通っているかどうか確認できません。 |
-
 
 **回線がダウンしている。** Network Performance Monitor は、オンプレミスのリソースと Azure 仮想ネットワーク間の接続が失われるとすぐに通知します。 この通知により、ユーザーからエスカレーションを受ける前に予防的なアクションを実行し、ダウンタイムを短縮できます。
 

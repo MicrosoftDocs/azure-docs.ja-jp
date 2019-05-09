@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 622cdd36a1ecf582c4cdb883b12753ee2a75d50e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855000"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098629"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -21,11 +21,11 @@ Azure Kubernetes Service (AKS) でクラスターを管理するにあたって�
 このベスト プラクティス記事では、AKS でのビジネス継続性とディザスター リカバリーを計画するうえでの考慮事項について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-* [複数リージョンでの AKS クラスターについて計画する](#region-planning)
-* [Azure Traffic Manager を使用して、トラフィックを複数のクラスター間でルーティングする](#ingress-traffic)
-* [コンテナー イメージのレジストリに geo レプリケーションを使用する](#container-registry)
-* [複数のクラスター間でのアプリケーション状態について計画する](#managing-application-state)
-* [複数のリージョン間でストレージをレプリケートする](#storage)
+> * 複数リージョンでの AKS クラスターについて計画する
+> * Azure Traffic Manager を使用して、トラフィックを複数のクラスター間でルーティングする
+> * コンテナー イメージのレジストリに geo レプリケーションを使用する
+> * 複数のクラスター間でのアプリケーション状態について計画する
+> * 複数のリージョン間でストレージをレプリケートする
 
 ## <a name="plan-for-multi-region-deployment"></a>複数リージョンへのデプロイを計画する
 
@@ -38,7 +38,7 @@ AKS クラスターは、1 つのリージョンにデプロイされます。 �
 * [Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * 利用する地域に対して、相互にペアになった 2 つのリージョンを選択しましょう。 これらのリージョンでは、プラットフォームの更新が調整され、必要に応じて復旧作業の優先順位が付けられます。
 * サービスの可用性レベル (ホット/ホット、ホット/ウォーム、ホット/コールド)
-  * 両方のリージョンを同時に実行する場合、一方のリージョンをトラフィック処理用に "*準備できた*" 状態にするのか、それとも一方のリージョンはトラフィック処理までに時間のかかる状態で待機させるのかを検討しましょう。
+  * 両方のリージョンを同時に実行する場合、一方のリージョンをトラフィック処理を開始する "*準備ができた*" 状態にするのか、それとも一方のリージョンはトラフィック処理を準備する時間が必要な状態にするのかを検討しましょう。
 
 AKS リージョンの可用性とリージョンのペアは、複合的に考慮する必要があります。 AKS クラスターは、リージョンのディザスター リカバリーを連携的に管理するよう設計された、ペアのリージョンにデプロイするようにしましょう。 たとえば、AKS は "*米国東部*" と "*米国西部*" で利用できますが、 これらのリージョンもやはり、ペアになっています。 AKS の BC/DR 戦略を作成する際には、これら 2 つのリージョンを使用することをお薦めします。
 
@@ -62,7 +62,7 @@ Traffic Manager は、DNS 参照を実行し、ユーザーに対して最も適
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>Azure Front Door を使用したレイヤー 7 のアプリケーション ルーティング
 
-Azure Traffic Manager では、DNS (レイヤー 3) を使ってトラフィックが整理されます。 [Azure Front Door (プレビュー)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) を使用すると、HTTP/HTTPS (レイヤー 7) のルーティング オプションが利用できます。 Front Door で提供される追加機能には、SSL 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティが含まれます。
+Azure Traffic Manager では、DNS (レイヤー 3) を使ってトラフィックが整理されます。 [Azure Front Door (現在プレビュー段階にあります)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) を使用すると、HTTP/HTTPS (レイヤー 7) のルーティング オプションを利用できます。 Front Door で提供される追加機能には、SSL 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティが含まれます。
 
 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
 

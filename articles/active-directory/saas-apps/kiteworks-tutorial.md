@@ -4,22 +4,23 @@ description: Azure Active Directory と Kiteworks の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f7984aaf-ab1f-4a85-9646-a9523f5275d9
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 986640c6af07c5a7ad85cfe8ca1f3d5b8a8aae84
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 73c352c0d60bc8dca969092210e9cff0a733765a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845996"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>チュートリアル:Azure Active Directory と Kiteworks の統合
 
@@ -151,7 +152,7 @@ Kiteworks で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[IDP Entity ID]\(IDP エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
-    d. **[Single Sign-On Service URL]\(シングル サインオン サービス URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Single Sign-On Service URL]\(シングル サインオン サービス URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. **[Single Logout Service URL]\(シングル ログアウト サービス URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
@@ -160,7 +161,7 @@ Kiteworks で Azure AD のシングル サインオンを構成してテスト�
     g. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -192,7 +193,7 @@ Kiteworks で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-kiteworks-test-user"></a>Kiteworks テスト ユーザーの作成
 

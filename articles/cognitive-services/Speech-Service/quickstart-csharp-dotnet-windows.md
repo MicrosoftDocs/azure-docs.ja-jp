@@ -4,24 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: このガイドでは、.NET framework for Windows と Speech SDK を使用して音声変換コンソール アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: f5b33f0710070ff71ab52a1798773fe97965ef34
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719066"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59008749"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>クイック スタート:.NET Framework (Windows) 用 Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 このガイドでは、.NET framework for Windows と Speech SDK を使用して音声変換コンソール アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
+
+簡単なデモ (以下に示されているように Visual Studio プロジェクトを自身で構築しない):
+
+最新の [Cognitive Services Speech SDK サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk)を GitHub から取得します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +37,7 @@ ms.locfileid: "53719066"
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-[!INCLUDE [Create project ](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
+[!INCLUDE [Create project](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -41,7 +45,7 @@ ms.locfileid: "53719066"
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. `YourSubscriptionKey` という文字列を探し、実際の Speech Service のサブスクリプション キーに置き換えます。
+1. `YourSubscriptionKey` という文字列を探し、実際の Speech Services のサブスクリプション キーに置き換えます。
 
 1. `YourServiceRegion` という文字列を探し、実際のサブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。 たとえば、無料試用版を使用している場合、リージョンは `westus` になります。
 
@@ -57,7 +61,7 @@ ms.locfileid: "53719066"
 
     ![[デバッグの開始] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "アプリのデバッグの開始")
 
-1. コンソール ウィンドウが表示され、何か話すように求められます。 何か英語で話してみてください。 音声が Speech Service に送信されて、リアルタイムにテキストに変換されます。 その結果はコンソールに出力されます。
+1. コンソール ウィンドウが表示され、何か話すように求められます。 何か英語で話してみてください。 音声が Speech Services に送信されて、リアルタイムにテキストに変換されます。 その結果はコンソールに出力されます。
 
     ![正常に認識された後のコンソールの出力のスクリーンショット](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "正常に認識された後のコンソールの出力")
 

@@ -4,21 +4,21 @@ description: Azure Media Indexer を使用すると、メディア ファイル�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 03/19/2019
 ms.author: adsolank;juliako;
-ms.openlocfilehash: ae06f397fd0ed3f1a1b5ebbdc418abc02789fe91
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6a798d0f33ba4d1960f07e670e6e71916f68eff1
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785681"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258272"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
 ## <a name="overview"></a>概要
@@ -87,7 +87,7 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 * 日本語 [JaJp]
 * ロシア語 [RuRu]
 * 英語 (英国) [EnGb]
-* スペイン語 (メキシコ) [EsMx] 
+* スペイン語 (メキシコ) [EsMx] 
 
 ## <a name="supported-file-types"></a>サポートされるファイルの種類
 
@@ -301,5 +301,5 @@ namespace IndexContent
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

@@ -1,25 +1,17 @@
 ---
 title: Azure Resource Health でサポートされるリソースの種類 |Microsoft Docs
 description: Azure Resource Health でサポートされるリソースの種類
-services: Resource health
-documentationcenter: ''
 author: stephbaron
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
-ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Supportability
-ms.date: 11/15/2018
 ms.author: stbaron
-ms.openlocfilehash: 3abf0268a7a6f84e5c26efc5643d048216fc2215
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.topic: conceptual
+ms.service: service-health
+ms.date: 01/29/2019
+ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163040"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620752"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -59,10 +51,15 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>この仮想マシンをホストするサーバーは稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li></ul>|
 
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
+|実行されるチェック|
+|---|
+|<ul><li>パイプラインの実行エラーがあるか</li><li>Data Factory をホストしているクラスターは正常か</li></ul>|
+
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |実行されるチェック|
 |---|
-|<ul><li>ユーザーに Data Lake Analytics ジョブの送信またはリストに関する問題が発生しているか</li><li>Data Lake Analytics ジョブを完了できず、システム エラーが発生しているか</li></ul>|
+|<ul><li>ユーザーに Data Lake Analytics ジョブの送信またはリストに関する問題が発生しているか</li><li>システム エラーが原因で Data Lake Analytics ジョブを完了できないか</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
@@ -70,8 +67,27 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>ユーザーに Data Lake Store へのデータのアップロードに関する問題が発生しているか</li><li>ユーザーに Data Lake Store からのデータのダウンロードに関する問題が発生しているか</li></ul>|
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
+## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
+|実行されるチェック|
+|---|
+|<ul><li>データベース移行サービスのプロビジョニングに失敗したか</li><li>非アクティブであることまたはユーザー要求が原因でデータベース移行サービスが停止したか</li></ul>|
 
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+|実行されるチェック|
+|---|
+|<ul><li>メンテナンスのためにサーバーが利用不可状態になっているか</li><li>再構成のためにサーバーが利用不可状態になっているか</li></ul>|
+
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+|実行されるチェック|
+|---|
+|<ul><li>メンテナンスのためにサーバーが利用不可状態になっているか</li><li>再構成のためにサーバーが利用不可状態になっているか</li></ul>|
+
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+|実行されるチェック|
+|---|
+|<ul><li>メンテナンスのためにサーバーが利用不可状態になっているか</li><li>再構成のためにサーバーが利用不可状態になっているか</li></ul>|
+
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |実行されるチェック|
 |---|
 |<ul><li>IoT ハブが稼働しているか</li></ul>|
@@ -81,15 +97,40 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>Azure Cosmos DB サービスが利用できないために処理されていないデータベースまたはコレクションの要求があるか</li><li>Azure Cosmos DB サービスが利用できないために処理されていないドキュメントの要求があるか</li></ul>|
 
+## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/namespaces
+|実行されるチェック|
+|---|
+|<ul><li>Event Hubs 名前空間でユーザーによって生成されたエラーが発生しているか</li><li>Event Hubs 名前空間は現在アップグレード中か</li></ul>|
+
+## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
+|実行されるチェック|
+|---|
+|<ul><li>コア サービスは HDInsight クラスターで使用できるか</li><li>HDInsight クラスターは保存中の BYOK 暗号化のキーにアクセスできるか</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |実行されるチェック|
 |---|
 |<ul><li>Azure KeyVault プラットフォームの問題が原因でキー コンテナーへの要求が失敗するか</li><li>顧客によって行われた要求が多すぎるためにキー コンテナーへの要求がスロットルされているか</li></ul>|
 
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
+|実行されるチェック|
+|---|
+|<ul><li>Application Gateway のパフォーマンスが低下しているか</li><li>Application Gateway を利用できるか</li></ul>|
+
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |実行されるチェック|
 |---|
 |<ul><li>VPN トンネルが接続されているか</li><li>接続に構成の競合があるか</li><li>事前共有キーは正しく構成されているか</li><li>VPN でオンプレミスのデバイスにアクセスできるか</li><li>IPSec/IKE セキュリティ ポリシーに不一致があるか</li><li>S2S VPN 接続が正しくプロビジョニングされているか、障害が発生した状態にあるか</li><li>VNET-to-VNET 接続が正しくプロビジョニングされているか、障害が発生した状態にあるか</li></ul>|
+
+## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+|実行されるチェック|
+|---|
+|<ul><li>ExpressRoute 回線は正常か</li></ul>|
+
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
+|実行されるチェック|
+|---|
+|<ul><li>Front Door バックエンドが正常性プローブに対してエラーを返しているか</li><li>構成変更が遅延しているか</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |実行されるチェック|
@@ -99,7 +140,12 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
 |実行されるチェック|
 |---|
-|<ul><li> 名前空間で、登録、インストール、送信などのランタイム操作を実行できるか</li></ul>|
+|<ul><li>名前空間で、登録、インストール、送信などのランタイム操作を実行できるか</li></ul>|
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
+|実行されるチェック|
+|---|
+|<ul><li>ワークスペースのインデックス付けの遅延があるか</li></ul>|
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |実行されるチェック|
@@ -109,12 +155,17 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |実行されるチェック|
 |---|
-|<ul><li>ホスト OS が稼働しているか</li><li>データ センターの外部から workspaceCollection にアクセスできるか</li><li>PowerBI リソース プロバイダーを利用できるか</li><li>PowerBI サービスが適切な地域で利用できるか</li></ul>|
+|<ul><li>ホスト OS が稼働しているか</li><li>データ センターの外部から workspaceCollection にアクセスできるか</li><li>Power BI リソース プロバイダーを利用できるか</li><li>Power BI サービスを適切なリージョンで利用できるか</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |実行されるチェック|
 |---|
 |<ul><li>クラスターで診断操作を実行できるか</li></ul>|
+
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
+|実行されるチェック|
+|---|
+|<ul><li>ユーザーによって生成された Service Bus エラーをお客様が経験しているか</li><li>Service Bus 名前空間のアップグレードが原因で、ユーザーが一時的なエラーの増加を経験しているか</li></ul>|
 
 ## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
 |実行されるチェック|

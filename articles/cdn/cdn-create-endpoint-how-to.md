@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a3fd85d1dbcba769f47e537e0231f63110752492
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 296f1df9175f4595274a57ed936282abb73da18b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093682"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525111"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの作成
 この記事では、既存の CDN プロファイルに [Azure Content Delivery Network (CDN)](cdn-overview.md) エンドポイントを作成するためのすべての設定について説明します。 プロファイルとエンドポイントを作成すると、顧客へのコンテンツ配信を開始することができます。 プロファイルとエンドポイント作成のクイック スタートについては、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。
@@ -44,7 +44,7 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
    
     ![[エンドポイントの追加] ページ](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. **[名前]** に、新しい CDN エンドポイントの一意の名前を入力します。 この名前は、ドメイン _<endpointname>_.azureedge.net でキャッシュされたリソースにアクセスする際に使用します。
+3. **[名前]** に、新しい CDN エンドポイントの一意の名前を入力します。 この名前は、ドメイン _\<endpointname>_.azureedge.net でキャッシュされたリソースにアクセスする際に使用します。
 
 4. **[配信元の種類]** には、次のいずれかの配信元の種類を選択します。 
    - **[ストレージ]**: Azure Storage 用
@@ -62,12 +62,12 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
    > Azure Storage や Web Apps など、配信元の種類によっては、ホスト ヘッダーを配信元のドメインに合わせる必要があります。 ホスト ヘッダーがそのドメインと異なっていることをご利用の配信元で要求される場合以外は、既定値をそのまま使用してください。
    > 
     
-8. **[プロトコル]** と **[配信元ポート]** に、配信元サーバーのリソースへのアクセスに使用するプロトコルとポートを指定します。 少なくとも 1 つのプロトコル (HTTP または HTTPS) を選択する必要があります。 HTTPS コンテンツには、CDN によって提供されたドメイン (_<endpointname>_.azureedge.net) を使用してアクセスします。 
+8. **[プロトコル]** と **[配信元ポート]** に、配信元サーバーのリソースへのアクセスに使用するプロトコルとポートを指定します。 少なくとも 1 つのプロトコル (HTTP または HTTPS) を選択する必要があります。 HTTPS コンテンツには、CDN によって提供されたドメイン (_\<endpointname>_.azureedge.net) を使用してアクセスします。 
    
    > [!NOTE]
    > **[配信元のポート]** の値によって決定されるのは、エンドポイントが配信元サーバーから情報を取得するときに使用されるポートのみです。 エンドポイントそのものは、**[配信元ポート]** の値に関係なく、エンド クライアントが既定の HTTP ポートと HTTPS ポート (80 と 443) を介してのみ利用できます。  
    > 
-   > **Azure CDN from Akamai** プロファイルのエンドポイントでは、配信元ポートの TCP ポート範囲全体が許可されません。 使用できない配信元ポートの一覧については、「 [Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](https://msdn.microsoft.com/library/mt757337.aspx)」を参照してください。  
+   > **Azure CDN from Akamai** プロファイルのエンドポイントでは、配信元ポートの TCP ポート範囲全体が許可されません。 使用できない配信元ポートの一覧については、「 [Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](/previous-versions/azure/mt757337(v=azure.100))」を参照してください。  
    > 
    > Azure CDN カスタム ドメインの HTTPS サポートは、**Azure CDN from Akamai** 製品ではサポートされていません。 詳細については、[Azure CDN カスタム ドメインの HTTPS を構成する方法](cdn-custom-ssl.md)に関するページを参照してください。
     

@@ -6,24 +6,23 @@ items:
   - name: Azure Machine Learning サービスの概要
     displayName: AML services overview
     href: overview-what-is-azure-ml.md
-  - name: サービスのしくみ
-    displayName: architecture concepts definitions
-    href: concept-azure-machine-learning-architecture.md
-  - name: Workbench に起きていること
-    displayName: desktop ui
+  - name: Workbench の変更点
+    displayName: desktop ui Workbench upgrade update transfer
     href: overview-what-happened-to-workbench.md
-  - name: リリース ノート
-    displayName: what's new issues bugs
-    href: azure-machine-learning-release-notes.md
   expanded: true
+- name: セットアップ
+  items:
+  - name: ワークスペースの作成
+    displayName: install sdk workspace
+    href: setup-create-workspace.md
 - name: クイック スタート
   items:
-  - name: 作業の開始 - ポータル
-    displayName: install sdk workspace
-    href: quickstart-get-started.md
-  - name: 作業の開始 - Python
-    displayName: create workspace install sdk
-    href: quickstart-create-workspace-with-python.md
+  - name: クラウドのノートブックを使用した実験
+    displayName: workspace
+    href: quickstart-run-cloud-notebook.md
+  - name: ローカルのノートブックを使用した実験
+    displayName: workspace, install, sdk
+    href: quickstart-run-local-notebook.md
 - name: チュートリアル
   items:
   - name: 画像の分類 (MNIST データ)
@@ -36,112 +35,152 @@ items:
   - name: 回帰 (ニューヨーク市のタクシー データ)
     items:
     - name: 1. モデリング用にデータを準備する
+      displayName: data prep
       href: tutorial-data-prep.md
     - name: 2. ML モデルを自動トレーニングする
       displayName: automl, automated, auto ml,
       href: tutorial-auto-train-models.md
 - name: サンプル
-  displayName: example, examples, jupyter, azure notebooks, python, notebook, github
+  displayName: example, examples, Jupyter, azure notebooks, python, notebook, GitHub
   href: samples-notebooks.md
 - name: 概念
   items:
+  - name: サービスのしくみ
+    displayName: architecture concepts definitions
+    href: concept-azure-machine-learning-architecture.md
   - name: 自動化された機械学習
     displayName: automl, auto ml
     href: concept-automated-ml.md
   - name: モデル管理
     displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
+  - name: モデルの解釈可能性
+    displayName: explainability
+    href: machine-learning-interpretability-explainability.md
   - name: FPGA による高速化
     href: concept-accelerate-with-fpgas.md
   - name: 機械学習パイプライン
     href: concept-ml-pipelines.md
+  - name: セキュリティ
+    items:
+    - name: エンタープライズ セキュリティの概要
+      displayName: authorization authentication encryption
+      href: concept-enterprise-security.md
+    - name: ユーザーとロールを管理する
+      href: how-to-assign-roles.md
+    - name: 仮想ネットワークの使用
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: SSL を使用して Web サービスをセキュリティで保護する
+      href: how-to-secure-web-service.md
 - name: ハウツー ガイド
   items:
   - name: ワークスペースを管理する
-    href: how-to-manage-workspace.md
+    items:
+    - name: ワークスペースにポータルを使用する
+      href: how-to-manage-workspace.md
+    - name: Resource Manager テンプレートを使用する
+      href: how-to-create-workspace-template.md
   - name: 開発環境をセットアップする 
     items:
     - name: 開発環境を構成する
-      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm, Databricks, ADB
+      displayName: local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB
       href: how-to-configure-environment.md
     - name: Visual Studio Code 拡張機能
-      displayName: Visual Studio Code, vscode, tools, ai, vs
+      displayName: Visual Studio Code, VSCode, tools, ai, vs
       items:
       - name: 作業開始
         href: how-to-vscode-tools.md
       - name: トレーニングとデプロイ
         href: how-to-vscode-train-deploy.md
-  - name: データを準備する
-    displayName: data prep, etl, elt, data preparation
+  - name: データの処理
+    displayName: data prep, ETL, ELT, data preparation
     items:
-    - name: データを読み込む
-      href: how-to-load-data.md
-    - name: データを変換する
-      href: how-to-transform-data.md
-    - name: データを書き込む
-      href: how-to-write-data.md
+    - name: データの探索と準備
+      displayName: data prep, ETL, ELT, data preparation
+      items:
+      - name: データを読み込む
+        href: how-to-load-data.md
+      - name: データを変換する
+        href: how-to-transform-data.md
+      - name: データを書き込む
+        href: how-to-write-data.md
+  - name: データストアのデータを取得する
+    displayName: blob get fileshare access storage
+    href: how-to-access-data.md
   - name: モデルをトレーニングする
     items:
     - name: トレーニング環境をセットアップする
-      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, Databricks, data lake, lake, hdi, hdinsights
+      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight
       href: how-to-set-up-training-targets.md
-    - name: トレーニング中のデータにアクセスする
-      href: how-to-access-data.md
     - name: トレーニングでの推定器の作成
       href: how-to-train-ml-models.md
     - name: PyTorch の使用
       href: how-to-train-pytorch.md
-    - name: Tensorflow の使用
+    - name: TensorFlow と Keras の使用
       href: how-to-train-tensorflow.md
     - name: ハイパーパラメーターを調整する
       displayName: parameter
       href: how-to-tune-hyperparameters.md
-    - name: 実験とメトリックを追跡する
+  - name: 実験の追跡と監視
+    items:
+    - name: 実行の開始、監視、または取り消し
+      displayName: cancel, fail, status, child run
+      href: how-to-manage-runs.md
+    - name: トレーニング実行のメトリックを記録する
       href: how-to-track-experiments.md
   - name: 機械学習の自動化
     displayName: automl, auto ml
     items:
-    - name: 自動トレーニングを構成する
+    - name: 自動化された ML を使用する (Python)
+      displayName: SDK automl
       href: how-to-configure-auto-train.md
     - name: リモート コンピューティング ターゲットを使用する
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
+    - name: 予測モデルを自動トレーニングする
+      displayName: time series
+      href: how-to-auto-train-forecast.md
   - name: ONNX モデル
-    items:
-    - name: Create and deploy
-      href: how-to-build-deploy-onnx.md
+    href: how-to-build-deploy-onnx.md
   - name: モデルをデプロイする
     items:
-    - name: モデルをデプロイする場所
+    - name: デプロイする場所と方法
       displayName: publish azure kubernetes azure container instances
       href: how-to-deploy-and-where.md
     - name: FPGA
       href: how-to-deploy-fpga-web-service.md
     - name: トラブルシューティング
       href: how-to-troubleshoot-deployment.md
-    - name: SSL でセキュリティ保護する
-      href: how-to-secure-web-service.md
   - name: Web サービスを使用する
     items:
     - name: リアルタイムで使用する
-      displayName: create client consume
+      displayName: create client consume request response synchronous
       href: how-to-consume-web-service.md
     - name: バッチ予測を実行する
+      displayName: score scoring asynchronous consume pipeline
       href: how-to-run-batch-predictions.md
   - name: Web サービスを監視する
     items:
     - name: モデルのデータを収集して評価する
+      displayName: track production
       href: how-to-enable-data-collection.md
     - name: Application Insights での監視
       href: how-to-enable-app-insights.md
   - name: 最初のパイプラインの作成
     href: how-to-create-your-first-pipeline.md
+  - name: ログの有効化
+    displayName: logging
+    href: how-to-enable-logging.md
   - name: リソース クォータを管理する
     displayName: limits
     href: how-to-manage-quotas.md
   - name: Machine Learning CLI の使用
-    displayName: cli command line command-line az ci/cd automate automated
+    displayName: cli extension command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
+  - name: データをエクスポートおよび削除する
+    displayName: GDPR
+    href: how-to-export-delete-data.md
 - name: リファレンス
   items:
   - name: Machine Learning SDK
@@ -155,6 +194,9 @@ items:
     href: https://aka.ms/aml-monitoring-sdk
 - name: リソース
   items:
+  - name: リリース ノート
+    displayName: what's new issues bugs
+    href: azure-machine-learning-release-notes.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: 価格
@@ -164,215 +206,16 @@ items:
   - name: 既知の問題
     displayName: bugs errors troubleshoot
     href: resource-known-issues.md
-  - name: サポートを受ける
-    href: support-for-aml-services.md
-  - name: データをエクスポートおよび削除する
-    displayName: gdpr
-    href: how-to-export-delete-data.md
-  - name: 非推奨のドキュメント
-    items:
-    - name: Workbench からの移行
-      displayName: Workbench upgrade update transfer
-      href: how-to-migrate.md
-    - name: アカウント データのエクスポートまたは削除 (非推奨)
-      href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Workbench のクイック スタート (非推奨)
-      href: ../desktop-workbench/quickstart-installation.md
-    - name: チュートリアル 1:データを準備する
-      href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
-    - name: チュートリアル 2:モデルを構築する
-      href: ../desktop-workbench/tutorial-classifying-iris-part-2.md
-    - name: チュートリアル 3:モデルをデプロイする
-      href: ../desktop-workbench/tutorial-classifying-iris-part-3.md
-    - name: チュートリアル 4:高度なデータ準備
-      href: ../desktop-workbench/tutorial-bikeshare-dataprep.md
-    - name: モデル管理の概要
-      href: ../desktop-workbench/model-management-overview.md
-    - name: 上位の CLI タスク
-      href: ../desktop-workbench/cli-for-azure-machine-learning.md
-    - name: Workbench の使用
-      items:
-      - name: Python IDE での作業
-        href: ../desktop-workbench/how-to-configure-your-IDE.md
-      - name: Jupyter Notebook の使用
-        href: ../desktop-workbench/how-to-use-jupyter-notebooks.md
-      - name: Git リポジトリとの統合
-        href: ../desktop-workbench/using-git-ml-project.md
-      - name: TDSP 使用したプロジェクトの構造化
-        href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
-      - name: ローミングとコラボレーション
-        href: ../desktop-workbench/roaming-and-collaboration.md
-    - name: IDE 拡張機能の使用
-      items:
-      - name: Visual Studio Tools for AI の使用
-        href: ../desktop-workbench/quickstart-visual-studio-tools.md
-      - name: Visual Studio Code Tools for AI の使用
-        href: ../desktop-workbench/quickstart-visual-studio-code-tools.md
-    - name: Azure IoT Edge AI ツールキットの使用
-      href: ../desktop-workbench/use-azure-iot-edge-ai-toolkit.md
-    - name: コンピューティング環境の構成
-      items:
-      - name: 実験の構成
-        href: ../desktop-workbench/experimentation-service-configuration.md
-      - name: DSVM および HDI Spark クラスターの作成
-        href: ../desktop-workbench/how-to-create-dsvm-hdi.md
-      - name: GPU を使用したトレーニング
-        href: ../desktop-workbench/how-to-use-gpu.md
-    - name: データの取得と理解
-      items:
-      - name: データ ソースを追加する
-        href: ../desktop-workbench/data-source-wizard.md
-      - name: データ準備ガイド
-        href: ../desktop-workbench/data-prep-getting-started.md
-      - name: 高度なデータ準備
-        href: ../desktop-workbench/data-prep-user-guide.md
-      - name: データ準備のための変換
-        href: ../desktop-workbench/data-prep-appendix3-supported-transforms.md
-        items:
-        - name: 列の結合の例
-          href: ../desktop-workbench/data-prep-combine-columns-by-example.md
-        - name: 列の派生の例
-          href: ../desktop-workbench/data-prep-derive-column-by-example.md
-        - name: 列の分割の例
-          href: ../desktop-workbench/data-prep-split-column-by-example.md
-        - name: JSON の展開
-          href: ../desktop-workbench/data-prep-expand-json.md
-    - name: モデルの開発
-      items:
-      - name: CLI を使用したあやめの分類
-        href: ../desktop-workbench/tutorial-iris-azure-cli.md
-      - name: 実行履歴とモデル メトリックの追跡
-        href: ../desktop-workbench/how-to-use-run-history-model-metrics.md
-      - name: 精度が最適な実行の検索
-        href: ../desktop-workbench/how-to-find-best-accuracy-cli.md
-      - name: ファイルの読み取りと書き込み
-        href: ../desktop-workbench/how-to-read-write-files.md
-      - name: MMLSpark ライブラリの使用
-        href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: モデルのデプロイと使用
-      items:
-      - name: モデル管理の設定
-        href: ../desktop-workbench/deployment-setup-configuration.md
-      - name: クラスターとサービスのスケーリング
-        href: ../desktop-workbench/how-to-scale-clusters.md
-      - name: MLC クラスターでの SSL の有効化
-        href: ../desktop-workbench/how-to-setup-ssl-on-mlc.md
-      - name: Web サービスのデプロイ
-        href: ../desktop-workbench/model-management-service-deploy.md
-      - name: コンテナーのカスタマイズ
-        href: ../desktop-workbench/model-management-custom-container.md
-      - name: IoT Edge デバイスへのデプロイ
-        href: ../desktop-workbench/deploy-to-iot-edge-device.md
-      - name: Web サービスを使用する
-        href: ../desktop-workbench/model-management-consumption.md
-      - name: モデル データの収集
-        href: ../desktop-workbench/how-to-use-model-data-collection.md
-      - name: デプロイ トラブルシューティング ガイド
-        href: ../desktop-workbench/how-to-deploy-troubleshooting-guide.md
-    - name: 古い例
-      items:
-      - name: ドキュメント コレクションの分析
-        href: ../desktop-workbench/scenario-document-collection-analysis.md
-      - name: Q & A 照合
-        href: ../desktop-workbench/scenario-qna-matching.md
-      - name: 予測的なメンテナンス
-        href: ../desktop-workbench/scenario-predictive-maintenance.md
-      - name: 航空画像の分類
-        href: ../desktop-workbench/scenario-aerial-image-classification.md
-      - name: 数テラバイトのデータを活用したサーバー ワークロードの予測
-        href: ../desktop-workbench/scenario-big-data.md
-      - name: エネルギー需要の時系列予測
-        href: ../desktop-workbench/scenario-time-series-forecasting.md
-      - name: ハイパーパラメーターの分散チューニング
-        href: ../desktop-workbench/scenario-distributed-tuning-of-hyperparameters.md
-      - name: 顧客離れ予測
-        href: ../desktop-workbench/scenario-churn-prediction.md
-      - name: ディープ ラーニングによる感情分析
-        href: ../desktop-workbench/scenario-sentiment-analysis-deep-learning.md
-      - name: 生体エンティティの認識 - TDSP プロジェクト
-        href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
-      - name: 米国の収益の分類 - TDSP プロジェクト
-        href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
-      - name: CNTK を使用した画像の分類
-        href: ../desktop-workbench/scenario-image-classification-using-cntk.md
-      - name: 予測メンテナンスのためのディープ ラーニング
-        href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
-    - name: 古い参照
-      items:
-      - name: データ準備のための Python 拡張機能
-        href: ../desktop-workbench/data-prep-python-extensibility-overview.md
-      - name: サポートされるデータ ソース
-        href: ../desktop-workbench/data-prep-appendix2-supported-data-sources.md
-      - name: データ ソースとして Azure Cosmos DB を読み込む
-        href: ../desktop-workbench/data-prep-load-azure-cosmos-db.md
-      - name: サポートされるインスペクター
-        href: ../desktop-workbench/data-prep-appendix4-supported-inspectors.md
-      - name: サポートされるデータ変換先
-        href: ../desktop-workbench/data-prep-appendix5-supported-destinations.md
-      - name: 実行環境とデータ環境のサポートされる組み合わせ
-        href: ../desktop-workbench/data-prep-supported-runtime-data-environments.md
-      - name: Python のフィルター式のサンプル
-        href: ../desktop-workbench/data-prep-appendix6-sample-filter-expressions-python.md
-      - name: Python のカスタム データ フロー変換のサンプル
-        href: ../desktop-workbench/data-prep-appendix7-sample-transform-data-flow-python.md
-      - name: Python の変換元接続のサンプル
-        href: ../desktop-workbench/data-prep-appendix8-sample-source-connections-python.md
-      - name: Python の変換先接続のサンプル
-        href: ../desktop-workbench/data-prep-appendix9-sample-destination-connections-python.md
-      - name: Python の列変換のサンプル
-        href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
-      - name: データ準備実行 API
-        href: ../desktop-workbench/data-prep-python-execution-api.md
-      - name: 実験サービス構成
-        href: ../desktop-workbench/experimentation-service-configuration-reference.md
-      - name: ロギング API
-        href: ../desktop-workbench/reference-logging-api.md
-      - name: 実験サービス テンプレート
-        href: ../desktop-workbench/experimentation-service-template.md
-      - name: モデル管理 API
-        href: ../desktop-workbench/model-management-api-reference.md
-      - name: モデル管理 CLI
-        href: ../desktop-workbench/model-management-cli-reference.md
-      - name: モデル データ収集 API
-        href: ../desktop-workbench/model-data-collection-api-reference.md
-    - name: ドメイン パッケージ
-      href: ../desktop-workbench/reference-python-package-overview.md
-      items:
-      - name: Computer Vision パッケージ (非推奨)
-        items:
-        - name: パッケージのインストール
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision
-        - name: モデリングとデプロイ
-          items:
-          - name: 画像の分類
-            href: ../desktop-workbench/how-to-build-deploy-image-classification-models.md
-          - name: オブジェクトの検出
-            href: ../desktop-workbench/how-to-build-deploy-object-detection-models.md
-          - name: 画像の類似性
-            href: ../desktop-workbench/how-to-build-deploy-image-similarity-models.md
-          - name: モデルの精度の向上
-            href: ../desktop-workbench/how-to-improve-accuracy-for-computer-vision-models.md
-      - name: 予測パッケージ (非推奨)
-        items:
-        - name: 概要およびインストール
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview
-        - name: 予測モデルの構築とデプロイ
-          href: ../desktop-workbench/how-to-build-deploy-forecast-models.md
-      - name: FPGA アクセラレーション パッケージ
-        href: reference-fpga-package-overview.md
-      - name: テキスト分析パッケージ
-        items:
-        - name: 概要とインストール (非推奨)
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
-        - name: テキスト分類モデルの構築とデプロイ
-          href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
-    - name: FAQ
-      href: ../desktop-workbench/frequently-asked-questions.md
-    - name: 以前の問題
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 4af9d970fe07370200d9c6472366ea3dab16a76c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+  - name: ユーザー フォーラム
+    href: https://aka.ms/aml-forum-service
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-machine-learning
+  - name: Microsoft の ML 製品の比較
+    href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
+    maintainContext: true
+ms.openlocfilehash: 647c949a8f999a34963ddfa49f1df8a1606a1295
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079223"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521769"

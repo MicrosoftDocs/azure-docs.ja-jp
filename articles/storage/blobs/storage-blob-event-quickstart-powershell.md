@@ -7,14 +7,14 @@ ms.author: dastanfo
 ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
-ms.component: blobs
+ms.subservice: blobs
 ms.custom: seodec18
-ms.openlocfilehash: c7c8fd487bef0da7da84a23e18a4e999645106b3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3e1a482cc59d951fbe6b25fcf0bfc4a967222839
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076425"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246417"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>クイック スタート: PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする
 
@@ -28,14 +28,16 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 ## <a name="setup"></a>セットアップ
 
-この記事では、Azure PowerShell の最新バージョンを実行している必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+この記事では、Azure PowerShell の最新バージョンを実行している必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従って認証を行います。
+`Connect-AzAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従って認証を行います。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 この例では、**westus2** を使って、全体で使用される 1 つの変数に選択肢を格納しています。
@@ -48,27 +50,27 @@ $location = "westus2"
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドでリソース グループを作成します。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。
 
 次の例では、**gridResourceGroup** という名前のリソース グループを **westus2** の場所に作成します。  
 
 ```powershell
 $resourceGroup = "gridResourceGroup"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
 Blob Storage のイベントは、汎用 v2 ストレージ アカウントおよび BLOB ストレージ アカウントで使用できます。 **汎用 v2** ストレージ アカウントでは、BLOB、ファイル、キュー、テーブルをはじめとするすべてのストレージ サービスに対するすべての機能がサポートされます。 **BLOB ストレージ アカウント**とは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
-[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) を使って LRS レプリケーションで Blob Storage アカウントを作成し、使用するストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントで作業するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。 この例では、ローカル冗長ストレージ(LRS) を使って、**gridstorage** と呼ばれるストレージ アカウントを作成します。 
+[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) を使って LRS レプリケーションで Blob Storage アカウントを作成し、使用するストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントで作業するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。 この例では、ローカル冗長ストレージ(LRS) を使って、**gridstorage** と呼ばれるストレージ アカウントを作成します。 
 
 > [!NOTE]
 > このスクリプトで提供されている名前に数個のランダムな文字を追加する必要があるので、ストレージ アカウント名はグローバル名前空間にあります。
 
 ```powershell
 $storageName = "gridstorage"
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageName `
   -Location $location `
   -SkuName Standard_LRS `
@@ -87,7 +89,7 @@ $ctx = $storageAccount.Context
 ```powershell
 $sitename="<your-site-name>"
 
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -ResourceGroupName $resourceGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" `
   -siteName $sitename `
@@ -105,10 +107,10 @@ New-AzureRmResourceGroupDeployment `
 どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したストレージ アカウントをサブスクライブし、Web アプリからの URL をイベント通知のエンドポイントとして渡します。 Web アプリのエンドポイントには、サフィックス `/api/updates/` が含まれている必要があります。
 
 ```powershell
-$storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
+$storageId = (Get-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
 $endpoint="https://$sitename.azurewebsites.net/api/updates"
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -EventSubscriptionName gridBlobQuickStart `
   -Endpoint $endpoint `
   -ResourceId $storageId
@@ -124,11 +126,11 @@ Web アプリをもう一度表示し、その Web アプリにサブスクリ�
 
 ```powershell
 $containerName = "gridcontainer"
-New-AzureStorageContainer -Name $containerName -Context $ctx
+New-AzStorageContainer -Name $containerName -Context $ctx
 
 echo $null >> gridTestFile.txt
 
-Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
+Set-AzStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 Web アプリを表示して、送信したイベント確認します。
@@ -164,7 +166,7 @@ Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Co
 このストレージ アカウントとイベント サブスクリプションを使用して作業を続ける場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

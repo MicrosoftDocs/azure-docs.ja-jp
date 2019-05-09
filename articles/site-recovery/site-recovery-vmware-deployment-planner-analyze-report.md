@@ -1,18 +1,18 @@
 ---
 title: VMware から Azure へのディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する | Microsoft Docs
 description: この記事では、Azure への VMware ディザスター リカバリーについて、Azure Site Recovery Deployment Planner によって生成されるレポートを分析する方法を説明します。
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 995c4bbbde87315e92c182fbc91b58ee34cda04e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 3/20/2019
+ms.author: mayg
+ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839553"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286348"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する
 
@@ -42,6 +42,9 @@ ms.locfileid: "52839553"
 
 ## <a name="recommendations"></a>Recommendations
 
+>[!Note]
+>マネージド ディスクに直接レプリケートする場合は、ストレージ アカウントの数に関する推奨値を無視します。
+
 VMware to Azure レポートの [Recommendations]\(推奨事項\) シートには、[Desired RPO]\(必要な RPO\) の選択内容に応じて、次の情報が表示されます。
 
 ![Recommendations for VMware to Azure レポート](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
@@ -65,7 +68,7 @@ VMware to Azure レポートの [Recommendations]\(推奨事項\) シートに�
 
 **[Incompatible Virtual Machines]\(不適合仮想マシン\)**: プロファイリングされた VM のうち、Site Recovery を使用した保護に適合しない VM の数です。 不適合の理由については、「Incompatible VMs (不適合 VM)」セクションで取り上げます。 プロファイリングされなかった VM の名前が VMListFile に含まれている場合、それらの VM は、不適合 VM の数から除外されます。 そのような VM は、[Incompatible VMs (不適合 VM)] セクションの最後に [Data not found (データが見つかりません)] として列挙されます。
 
-**[Desired RPO]\(必要な RPO\)**: 必要な回復ポイントの目標 (分単位) です。 次の 3 とおりの RPO 値についてレポートが生成されます: 15 分 (既定値)、30 分、および 60 分。 シートの右上にある [Desired RPO (必要な RPO)] ボックスの一覧での選択に応じて、レポートされる推奨帯域幅が変化します。 *-DesiredRPO* パラメーターに独自の値を指定してレポートを生成した場合、[Desired RPO (必要な RPO)] ボックスの一覧には、その独自の値が既定値として表示されます。
+**[Desired RPO]\(必要な RPO\)**: 必要な回復ポイントの目標 (分単位) です。 次の 3 つの RPO 値についてレポートが生成されます: 15 分 (既定値)、30 分、および 60 分。 シートの右上にある [Desired RPO (必要な RPO)] ボックスの一覧での選択に応じて、レポートされる推奨帯域幅が変化します。 *-DesiredRPO* パラメーターに独自の値を指定してレポートを生成した場合、[Desired RPO (必要な RPO)] ボックスの一覧には、その独自の値が既定値として表示されます。
 
 ### <a name="required-network-bandwidth-mbps"></a>必要なネットワーク帯域幅 (Mbps)
 
@@ -156,6 +159,9 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 ## <a name="vm-storage-placement"></a>VM-Storage placement (VM<->ストレージの配置)
 
+>[!Note]
+>マネージド ディスクに直接レプリケートする場合は、ストレージ アカウントの数について心配する必要はありません。 ストレージについては、ストレージの種類 (Standard または Premium) に関する推奨事項のみを使用します。 同じ型がマネージド ディスクに適用されます。
+
 ![VM-Storage placement (VM<->ストレージの配置)](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
 **[Disk Storage Type]\(ディスク ストレージの種類\)**: **[VMs to Place]\(配置する VM\)** 列に示されている該当 VM をすべてレプリケートするために使用される Standard または Premium のストレージ アカウントです。
@@ -177,7 +183,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[VM 名]**: レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされたディスク (VMDK) もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
 
-**[VM Compatibility]\(VM 適合性\)**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Azure Premium Storage](https://aka.ms/premium-storage-workload) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 例: 
+**[VM Compatibility]\(VM 適合性\)**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Premium SSD](../virtual-machines/windows/disks-types.md) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 例: 
 * 128 GB 未満の場合は P10
 * 128 ～ 256 GB の場合は P15
 * 256 ～ 512 GB の場合は P20
@@ -273,7 +279,7 @@ Premium P10 または P15 ディスク | 8 KB  | 2 MB/秒 | (ディスクあた�
 Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |  (ディスクあたり) 336 GB
 Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスクあたり) 672 GB
 Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
-Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |10 MB/s | (ディスクあたり) 842 GB
+Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 | 20 MB/秒 | (ディスクあたり) 1,684 GB
 
 **ソース データ変更頻度** | **上限**
 ---|---

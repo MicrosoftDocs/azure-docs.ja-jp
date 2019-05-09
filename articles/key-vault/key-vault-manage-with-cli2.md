@@ -1,25 +1,24 @@
 ---
-title: CLI を使用した Azure Key Vault の管理 | Microsoft Docs
+title: CLI を使用した Azure Key Vault の管理 - Azure Key Vault | Microsoft Docs
 description: この記事を活用し、Azure CLI を使用した Key Vault での一般的なタスクを自動化します
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256455"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115625"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
 
@@ -104,7 +103,7 @@ Azure クロスプラット フォーム コマンド ライン インターフ�
 Azure リソース マネージャーを使用すると、すべての関連するリソースが 1 つのリソース グループ内に作成されます。 既存のリソース グループでキー コンテナーを作成できます。 新しいリソース グループを使用する場合、リソース グループを新規作成できます。
 
 ```azurecli
-az group create -n 'ContosoResourceGroup' -l 'East Asia'
+az group create -n "ContosoResourceGroup" -l "East Asia"
 ```
 
 最初のパラメーターはリソース グループ名で、2 番目のパラメーターは場所です。 利用可能なすべての場所の一覧を取得するには、次のように入力します。
@@ -128,12 +127,12 @@ az provider register -n Microsoft.KeyVault
 **東アジア**を拠点とするリソース グループ **ContosoResourceGroup** に **ContosoKeyVault** という名前の資格情報コンテナーを新規作成するには、次のように入力します。 
 
 ```azurecli
-az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East Asia"
 ```
 
 このコマンドの出力は、作成したキー コンテナーのプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
-* **name**: この例では、名前は ContosoKeyVault です。 この名前を他の Key Vault コマンドに使用できます。
+* **name**:この例では、名前は ContosoKeyVault です。 この名前を他の Key Vault コマンドに使用できます。
 * **vaultUri**: この例では、URI は https://contosokeyvault.vault.azure.net です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。 現在のところ、誰も承認されていません。
@@ -143,21 +142,21 @@ Azure アカウントは、この Key Vault ですべての操作の実行が許
 Azure Key Vault でソフトウェアで保護されたキーを作成する場合は、`az key create` コマンドを使用します。
 
 ```azurecli
-az keyvault key create --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey' --protection software
+az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
 ```
 
-.pem ファイルに既存のキーがある場合は、Azure Key Vault にアップロードできます。 ソフトウェアまたは HSM でキーを保護することを選択できます。 次を使用し、.pem ファイルからキーをインポートし、ソフトウェアでそれを保護します。
+.pem ファイルに既存のキーがある場合は、Azure Key Vault にアップロードできます。 ソフトウェアまたは HSM でキーを保護することを選択できます。 この例では、.pem ファイルからキーをインポートし、パスワード "hVFkk965BuUv" を使用してソフトウェアでそれを保護します。
 
 ```azurecli
-az keyvault key import --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey' --pem-file './softkey.pem' --pem-password 'Pa$$w0rd' --protection software
+az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
 作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、常に現在のバージョンを取得します。 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] を使用し、この特定のバージョンを取得します。 たとえば、**https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** です。 
 
-資格情報コンテナーにシークレットを追加します (SQLPassword という名前のパスワードで、Azure Key Vault に Pa$$w0rd 値を設定)。 
+資格情報コンテナーにシークレットを追加します (SQLPassword という名前のパスワードで、Azure Key Vault に "hVFkk965BuUv" の値を設定)。 
 
 ```azurecli
-az keyvault secret set --vault-name 'ContosoKeyVault' --name 'SQLPassword' --value 'Pa$$w0rd'
+az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
 その URI を使用し、このパスワードを参照します。 **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用して常に最新バージョンを取得し、 https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] を使用してこの特定のバージョンを取得します。 たとえば、**https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** です。
@@ -165,7 +164,7 @@ az keyvault secret set --vault-name 'ContosoKeyVault' --name 'SQLPassword' --val
 .pem または .pfx を使用して資格情報コンテナーに証明書をインポートします。
 
 ```azurecli
-az keyvault certificate import --vault-name 'ContosoKeyVault' --file 'c:\cert\cert.pfx' --name 'ContosoCert' --password 'Pa$$w0rd'
+az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "hVFkk965BuUv"
 ```
 
 それでは、作成したキー、シークレット、または証明書を見てみましょう。
@@ -173,19 +172,19 @@ az keyvault certificate import --vault-name 'ContosoKeyVault' --file 'c:\cert\ce
 * キーを表示するには、次のように入力します。 
 
 ```azurecli
-az keyvault key list --vault-name 'ContosoKeyVault'
+az keyvault key list --vault-name "ContosoKeyVault"
 ```
 
 * シークレットを表示するには、次のように入力します。 
 
 ```azurecli
-az keyvault secret list --vault-name 'ContosoKeyVault'
+az keyvault secret list --vault-name "ContosoKeyVault"
 ```
 
 * 証明書を表示するには、次のように入力します。 
 
 ```azurecli
-az keyvault certificate list --vault-name 'ContosoKeyVault'
+az keyvault certificate list --vault-name "ContosoKeyVault"
 ```
 
 ## <a name="registering-an-application-with-azure-active-directory"></a>Azure Active Directory にアプリケーションを登録する
@@ -204,7 +203,7 @@ Azure Active Directory にアプリケーションを登録する手順の詳細
 Azure Active Directory にアプリケーションを登録するには:
 
 ```azurecli
-az ad sp create-for-rbac -n "MyApp" --password 'Pa$$w0rd' --skip-assignment
+az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 
@@ -215,63 +214,65 @@ az ad sp create-for-rbac -n "MyApp" --password 'Pa$$w0rd' --skip-assignment
 たとえば、資格情報コンテナー名が ContosoKeyVault で、アプリケーションの appID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed の場合、アプリケーションの暗号化を解除し、資格情報コンテナー内のキーで署名することを承認するには、次のコマンドを実行します。
 
 ```azurecli
-az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --key-permissions decrypt sign
+az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --key-permissions decrypt sign
 ```
 
 同じアプリケーションを認証し、資格情報コンテナーのシークレットを読み取るには、次のコマンドを実行します。
 
 ```azurecli
-az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
+az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
 ## <a name="bkmk_KVperCLI"></a> キー コンテナーの高度なアクセス ポリシーを設定する
 
-[az keyvault update](/cli/azure/keyvault#az-keyvault-update) を使用し、キー コンテナーの高度なポリシーを有効にします。 
+[az keyvault update](/cli/azure/keyvault#az-keyvault-update) を使用し、キー コンテナーの高度なポリシーを有効にします。
 
  Key Vault のデプロイを有効にする: 資格情報コンテナーからシークレットとして保存されている証明書を取得することを仮想マシンに許可します。
+
  ```azurecli
- az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-deployment 'true'
- ``` 
+ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
+ ```
 
 Key Vault のディスク暗号化を有効にする: Azure Disk Encryption に資格情報コンテナーを使用するときに必須です。
 
  ```azurecli
- az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-disk-encryption 'true'
+ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"
  ```  
 
-Key Vault のテンプレート デプロイを有効にする: 資格情報コンテナーからシークレットを取得することをリソース マネージャーに許可します。
- ```azurecli 
- az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
+Key Vault のテンプレートのデプロイを有効にする: Resource Manager がコンテナーからシークレットを取得することを許可します。
+
+```azurecli 
+ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
  ```
 
 ## <a name="working-with-hardware-security-modules-hsms"></a>ハードウェア セキュリティ モジュール (HSM) を使用する
 
-さらに安心感を高めたい場合には、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 HSM は、FIPS 140-2 レベル 2 で検証済みです。 この要件が自分に当てはまらない場合は、このセクションをスキップし、 [Key Vault と関連するキーとシークレットを削除する](#delete-the-key-vault-and-associated-keys-and-secrets)に進んでください。
+さらに安心感を高めたい場合には、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 HSM は、FIPS 140-2 レベル 2 で検証済みです。 この要件が自分に当てはまらない場合は、このセクションをスキップし、「Key Vault と関連するキーとシークレットを削除する」に進んでください。
 
 これらの HSM で保護されたキーを作成するには、HSM で保護されたキーをサポートする資格情報コンテナーのサブスクリプションが必要です。
 
 資格情報コンテナーを作成するときに、'sku' パラメーターを追加します。
 
 ```azurecli
-az keyvault create --name 'ContosoKeyVaultHSM' --resource-group 'ContosoResourceGroup' --location 'East Asia' --sku 'Premium'
+az keyvault create --name "ContosoKeyVaultHSM" --resource-group "ContosoResourceGroup" --location "East Asia" --sku "Premium"
 ```
 
 この資格情報コンテナーには、ソフトウェアで保護されたキー (前述のとおり) と HSM で保護されたキーを追加できます。 HSM で保護されたキーを作成するには、Destination パラメーターを 'HSM' に設定します。
 
 ```azurecli
-az keyvault key create --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --protection 'hsm'
+az keyvault key create --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --protection "hsm"
 ```
 
 次のコマンドを使用して、自分のコンピューターの .pem ファイルからキーをインポートできます。 このコマンドでは、Key Vault サービスでキーを HSM にインポートします。
 
 ```azurecli
-az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --pem-file '/.softkey.pem' --protection 'hsm' --pem-password 'PaSSWORD'
+az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --pem-file "/.softkey.pem" --protection "hsm" --pem-password "PaSSWORD"
 ```
 
 次のコマンドは、“bring your own key" (BYOK) パッケージをインポートします。 これを使用すると、ローカルの HSM でキーを生成し、これを Key Vault サービスで HSM に転送でき、キーは HSM の境界内から出ることはありません。
 
 ```azurecli
-az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --byok-file './ITByok.byok' --protection 'hsm'
+az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --byok-file "./ITByok.byok" --protection "hsm"
 ```
 
 この BYOK パッケージを生成する方法の詳細な手順については、「 [Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md)」をご覧ください。
@@ -281,13 +282,13 @@ az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSM
 キー コンテナーと、そのキーまたはシークレットが不要になった場合は、次の `az keyvault delete` コマンドを使用してキー コンテナーを削除できます。
 
 ```azurecli
-az keyvault delete --name 'ContosoKeyVault'
+az keyvault delete --name "ContosoKeyVault"
 ```
 
 または、Key Vault やそのグループに含まれる他のすべてのリソースを含む、Azure リソース グループ全体を削除できます。
 
 ```azurecli
-az group delete --name 'ContosoResourceGroup'
+az group delete --name "ContosoResourceGroup"
 ```
 
 ## <a name="miscellaneous-azure-cross-platform-command-line-interface-commands"></a>Azure クロスプラットフォーム コマンドライン インターフェイスの各種コマンド
@@ -297,31 +298,31 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 このコマンドは、すべてのキーと選択したプロパティを表形式で一覧表示します。
 
 ```azurecli
-az keyvault key list --vault-name 'ContosoKeyVault'
+az keyvault key list --vault-name "ContosoKeyVault"
 ```
 
 このコマンドは、指定されたキーのプロパティの完全な一覧を表示します。
 
 ```azurecli
-az keyvault key show --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey'
+az keyvault key show --vault-name "ContosoKeyVault" --name "ContosoFirstKey"
 ```
 
 このコマンドは、すべてのシークレットの名前と選択したプロパティを表形式で一覧表示します。
 
 ```azurecli
-az keyvault secret list --vault-name 'ContosoKeyVault'
+az keyvault secret list --vault-name "ContosoKeyVault"
 ```
 
 特定のキーを削除する方法の例です。
 
 ```azurecli
-az keyvault key delete --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey'
+az keyvault key delete --vault-name "ContosoKeyVault" --name "ContosoFirstKey"
 ```
 
 特定のシークレットを削除する方法の例です。
 
 ```azurecli
-az keyvault secret delete --vault-name 'ContosoKeyVault' --name 'SQLPassword'
+az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
 ```
 
 ## <a name="next-steps"></a>次の手順

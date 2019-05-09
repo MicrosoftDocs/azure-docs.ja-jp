@@ -2,17 +2,17 @@
 title: Azure Application Gateway のカスタム エラー ページを作成する
 description: この記事では、Application Gateway のカスタム エラー ページを作成する方法について示します。
 services: application-gateway
-author: amitsriva
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 2/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2f76347105743538e9fc1d7588ecb949f2675696
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071027"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301606"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway のカスタム エラー ページを作成する
 
@@ -34,6 +34,7 @@ Application Gateway では、既定のエラー ページを表示する代わ�
 - **両方** - リスナー レベルで定義されているカスタム エラー ページは、グローバル レベルで設定されているページよりも優先されます。
 
 カスタム エラー ページを作成するには、以下が必要です。
+
 - HTTP 応答状態コード。
 - エラー ページの対応する保存先。 
 - その場所にパブリックでアクセスできる Azure ストレージ BLOB。
@@ -59,5 +60,19 @@ Application Gateway では、既定のエラー ページを表示する代わ�
 4. 特定のエラー状態コード用の公的にアクセス可能な BLOB URL を指定し、**[保存]** をクリックします。 これで、カスタム エラー ページで Application Gateway が構成されます。
 
    ![Application Gateway のエラー コード](media/custom-error/ag-error-codes.png)
+
+## <a name="azure-powershell-configuration"></a>Azure PowerShell 構成
+
+Azure PowerShell を使用して、カスタム エラー ページを構成できます。 たとえば、グローバル カスタム エラー ページは次のようになります。
+
+`$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+また、リスナー レベルのエラー ページは次のようになります。
+
+`$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+詳しくは、「[Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0)」および「[Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)」をご覧ください。
+
 ## <a name="next-steps"></a>次の手順
+
 Application Gateway 診断の詳細については、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」を参照してください。

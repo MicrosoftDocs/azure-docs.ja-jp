@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bc0afcf1ac7d9e7a777d850e1b6df7b915837f3a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956876"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435135"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>iOS モバイル アプリでオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -101,7 +101,7 @@ Mobile Apps のオフライン データ同期機能を使用すると、エン�
 
           if error != nil {
               // A real application would handle various errors like network conditions,
-              // server conflicts, etc via the MSSyncContextDelegate
+              // server conflicts, etc. via the MSSyncContextDelegate
               print("Error: \(error!.description)")
 
               // We will discard our changes and keep the server's copy for simplicity
@@ -200,8 +200,8 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 | id | String、必須のマーク |リモート ストア内のプライマリ キー |
 | complete | Boolean | To Do 項目フィールド |
 | text |String |To Do 項目フィールド |
-| createdAt | 日付 | (省略可能) **createdAt** システム プロパティにマップします。 |
-| updatedAt | 日付 | (省略可能) **updatedAt** システム プロパティにマップします。 |
+| createdAt | Date | (省略可能) **createdAt** システム プロパティにマップします。 |
+| updatedAt | Date | (省略可能) **updatedAt** システム プロパティにマップします。 |
 | version | String | (省略可能) 競合の検出に使用され、バージョンにマップします。 |
 
 ## <a name="setup-sync"></a>アプリケーションの同期動作を変更する

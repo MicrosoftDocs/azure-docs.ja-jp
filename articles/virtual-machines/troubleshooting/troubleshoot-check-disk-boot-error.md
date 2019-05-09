@@ -3,7 +3,7 @@ title: Azure VM 起動時のファイル システムのチェック | Microsoft
 description: VM の起動時にファイル システムのチェック中と表示される問題を解決する方法 | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 91285fd3bf42158068040833146377cb6c48e4e8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 51a97443f6b9ba2a37fa2db708b8520a9c450000
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412489"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776446"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Azure VM の起動時に "ファイル システムをチェックしています" と表示される
 
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のある "ファイル システムをチェックしています" エラーについて説明します。
 
 > [!NOTE] 
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
 
 ## <a name="symptom"></a>症状 
 

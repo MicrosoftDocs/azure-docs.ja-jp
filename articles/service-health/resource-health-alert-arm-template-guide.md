@@ -1,25 +1,17 @@
 ---
 title: Resource Manager テンプレートを使用して Azure Resource Health アラートを構成する | Microsoft Docs
 description: Azure リソースが利用不可になったときに通知するアラートをプログラムで作成します。
-author: shawntabrizi
-manager: scotthit
-editor: ''
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
+author: stephbaron
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
 ms.date: 9/4/2018
-ms.author: shtabriz
-ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184102"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047519"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -27,30 +19,35 @@ ms.locfileid: "53184102"
 
 Azure Resource Health では、Azure リソースの現在および過去の正常性状態に関する情報が持続的に通知されます。 Azure Resource Health アラートでは、これらのリソースの正常性状態が変化すると、ほぼリアルタイムで通知できます。 Resource Health アラートをプログラムで作成すると、ユーザーは通知を一括で作成およびカスタマイズできます。
 
+> [!NOTE]
+> Resource Health アラートは、現在プレビューの段階です。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このページの指示に従うには、事前にいくつかの項目を設定する必要があります。
 
-1. [Azure PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`) をインストールする必要があります。
+1. [Azure PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-Az-ps)をインストールする必要があります
 2. 通知を行うよう構成された[アクション グループを作成または再利用する](../azure-monitor/platform/action-groups.md)必要があります。
 
 ## <a name="instructions"></a>Instructions
 1. PowerShell を使用し、アカウントを使用して Azure にログインし、操作するサブスクリプションを選択します。
 
-        Login-AzureRmAccount
-        Select-AzureRmSubscription -Subscription <subscriptionId>
+        Login-AzAccount
+        Select-AzSubscription -Subscription <subscriptionId>
 
-    > `Get-AzureRmSubscription` を使用すると、アクセスできるサブスクリプションを一覧表示できます。
+    > `Get-AzSubscription` を使用すると、アクセスできるサブスクリプションを一覧表示できます。
 
 2. アクション グループの完全な Azure Resource Manager ID を検索して保存します。
 
-        (Get-AzureRmActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
 3. Resource Health アラートの Resource Manager テンプレートを `resourcehealthalert.json` として作成して保存します ([次の詳細を参照](#resource-manager-template-for-resource-health-alerts))。
 
 4. このテンプレートを使用して、新しい Azure Resource Manager デプロイを作成します。
 
-        New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
 5. アラート名と、先ほどコピーしたアクション グループのリソース ID の入力を求めるメッセージが表示されます。
 
@@ -167,7 +164,7 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
 ],
 ```
 
-次に例を示します。`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+例:  `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Azure portal に移動し、Azure リソースを表示しているときに URL を確認して、この文字列を取得できます。
 

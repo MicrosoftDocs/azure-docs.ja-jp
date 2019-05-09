@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2018
-ms.author: cwatson
+ms.author: banders
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0e4c7ca6776e2016bf0d34d856c4c2332a0bece0
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7d41e9b7774bf8840db9e729d3aa9371f5bac04f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858016"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>私の Azure for Students サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。
 
@@ -57,4 +57,4 @@ Azure for Students サブスクリプションを誤って取り消してしま�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

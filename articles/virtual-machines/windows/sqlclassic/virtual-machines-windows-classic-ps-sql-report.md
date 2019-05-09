@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233084"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650276"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 このトピックでは、Azure 仮想マシンで SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。 このドキュメントの手順では、仮想マシンを手動で作成する手順と、VM で Reporting Services を構成する Windows PowerShell スクリプトを組み合わせて使用しています。 構成スクリプトでは、HTTP または HTTPS のファイアウォール ポートを開きます。
 
@@ -38,12 +38,12 @@ ms.locfileid: "51233084"
   
   * サブスクリプションのコアの上限を確認するには、Azure Portal の左側のウィンドウで [設定] をクリックし、上部のメニューの [使用状況] をクリックします。
   * コア クォータを増やすには、 [Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 VM サイズについては、「 [Azure の仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
-* **Windows PowerShell スクリプト**: このトピックは、Windows PowerShell の使用方法に関する基本的な知識があることを前提としています。 Windows PowerShell の使用方法の詳細については、次のトピックをご覧ください。
+* **Windows PowerShell スクリプト**:このトピックは、Windows PowerShell の使用方法に関する基本的な知識があることを前提としています。 Windows PowerShell の使用方法の詳細については、次のトピックをご覧ください。
   
   * [Starting Windows PowerShell on Windows Server (Windows Server での Windows PowerShell の起動)](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell)
   * [Getting Started with Windows PowerShell (Windows PowerShell の概要)](https://technet.microsoft.com/library/hh857337.aspx)
 
-## <a name="step-1-provision-an-azure-virtual-machine"></a>手順 1: Azure 仮想マシンをプロビジョニングする
+## <a name="step-1-provision-an-azure-virtual-machine"></a>手順 1:Azure 仮想マシンをプロビジョニングする
 1. Azure Portal にアクセスします。
 2. 左側のウィンドウで、 **[Virtual Machines]** をクリックします。
    
@@ -62,8 +62,8 @@ ms.locfileid: "51233084"
 6. **[仮想マシンの構成]** ページで、以下のフィールドを編集します。
    
    * **バージョンのリリース日**が複数存在する場合は、最新バージョンを選択します。
-   * **[仮想マシンの名前]**: このマシン名は、次の構成ページで既定のクラウド サービス DNS 名としても使用されます。 DNS 名は、Azure サービス全体で一意であることが必要です。 VM の用途を示すコンピューター名で VM を構成するよう考慮してください  (例: ssrsnativecloud)。
-   * **[階層]**: Standard
+   * **[仮想マシン名]**: このマシン名は、次の構成ページで既定のクラウド サービス DNS 名としても使用されます。 DNS 名は、Azure サービス全体で一意であることが必要です。 VM の用途を示すコンピューター名で VM を構成するよう考慮してください  (例: ssrsnativecloud)。
+   * **レベル**:Standard
    * **[サイズ]** : SQL Server のワークロードに推奨される VM サイズは A3 です。 VM をレポート サーバーとしてのみ使用する場合、レポート サーバーで大規模なワークロードが発生しないのであれば、VM サイズは A2 で十分です。 VM の価格については、「 [Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」をご覧ください。
    * **[新しいユーザー名]**: 指定した名前が VM の管理者として作成されます。
    * **[新しいパスワード]** と **[確認]**: このパスワードは、新しい管理者アカウントに使用されるので、強力なパスワードを使用することをお勧めします。
@@ -71,20 +71,20 @@ ms.locfileid: "51233084"
 7. 次のページでは、以下のフィールドを編集します。
    
    * **[クラウド サービス]**: **[新しいクラウド サービスの作成]** を選択します。
-   * **[クラウド サービス DNS 名]**: VM に関連付けられるクラウド サービスのパブリック DNS 名です。 既定の名前は、VM 名として入力した名前です。 このトピックの後の手順で信頼済み SSL 証明書を作成する場合、この DNS 名が証明書の **[発行先]** の値に使用されます。
-   * **[リージョン/アフィニティ グループ/Virtual Network]**: エンド ユーザーに最も近いリージョンを選択します。
+   * **クラウド サービス DNS 名**:これは、VM に関連付けられるクラウド サービスのパブリック DNS 名です。 既定の名前は、VM 名として入力した名前です。 このトピックの後の手順で信頼済み SSL 証明書を作成する場合、この DNS 名が証明書の **[発行先]** の値に使用されます。
+   * **リージョン/アフィニティ グループ/仮想ネットワーク**:エンド ユーザーに最も近いリージョンを選択してください。
    * **[ストレージ アカウント]**: 自動的に生成されたストレージ アカウントを使用します。
-   * **[可用性セット]**: ありません。
+   * **可用性セット**:なし。
    * **[エンドポイント]**: **[リモート デスクトップ]** エンドポイントと **[PowerShell]** エンドポイントを保持し、環境に応じて HTTP または HTTPS エンドポイントを追加します。
      
-     * **[HTTP]**: 既定のパブリック ポートとプライベート ポートは **80** です。 80 以外のプライベート ポートを使用する場合は、HTTP スクリプトの **$HTTPport = 80** を変更します。
-     * **[HTTPS]**: 既定のパブリック ポートとプライベート ポートは **443** です。 セキュリティのベスト プラクティスとして、プライベート ポートを変更し、そのプライベート ポートを使用するようにファイアウォールとレポート サーバーを構成することをお勧めします。 エンドポイントの詳細については、「 [仮想マシンに対してエンドポイントを設定する方法](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。 443 以外のポートを使用する場合は、HTTPS スクリプトの **$HTTPsport = 443** パラメーターを変更します。
+     * **HTTP**:既定のパブリック ポートとプライベート ポートは **80** です。 80 以外のプライベート ポートを使用する場合は、HTTP スクリプトの **$HTTPport = 80** を変更します。
+     * **HTTPS**:既定のパブリック ポートとプライベート ポートは **443** です。 セキュリティのベスト プラクティスとして、プライベート ポートを変更し、そのプライベート ポートを使用するようにファイアウォールとレポート サーバーを構成することをお勧めします。 エンドポイントの詳細については、「 [仮想マシンに対してエンドポイントを設定する方法](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。 443 以外のポートを使用する場合は、HTTPS スクリプトの **$HTTPsport = 443** パラメーターを変更します。
    * [次へ] をクリックします。 ![[次へ]](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. ウィザードの最後のページでは、既定の **[VM エージェントのインストール]** が選択されている状態のままにしておきます。 このトピックの手順では、VM エージェントを使用しませんが、この VM を保持する場合は、VM エージェントと拡張機能により CM を機能強化することができます。  VM エージェントの詳細については、「[VM エージェントと拡張機能 - パート 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/)」をご覧ください。 インストールされ、実行されている既定の拡張機能の 1 つに "BGINFO" 拡張機能があります。この機能により、内部 IP やドライブの空き領域などのシステム情報が VM デスクトップに表示されます。
 9. [完了] をクリックします。 ![Ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. プロビジョニング処理の実行中、VM の **[状態]** に **[開始中 (プロビジョニング)]** と表示されます。VM がプロビジョニングされ、使用準備が完了すると、**[実行中]** と表示されます。
 
-## <a name="step-2-create-a-server-certificate"></a>手順 2: サーバー証明書を作成する
+## <a name="step-2-create-a-server-certificate"></a>手順 2:サーバー証明書を作成する
 > [!NOTE]
 > レポート サーバーで HTTPS を使用する必要がない場合は、**手順 2 をスキップ**し、「**スクリプトを使用してレポート サーバーと HTTP を構成する**」に進んでください。 HTTP スクリプトを使用すると、レポート サーバーが迅速に構成され、レポート サーバーの使用準備が完了します。
 
@@ -124,13 +124,13 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
       
        たとえば、次の図では、VM 名が **ssrsnativecloud** で、ユーザー名が **testuser** です。
       
-       ![VM 名が含まれたログイン](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. Mmc.exe を実行します。 詳細については、「 [方法: MMC スナップインを使用して証明書を参照する](https://msdn.microsoft.com/library/ms788967.aspx)」をご覧ください。
+       ![ログインには VM 名が含まれる](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+   2. Mmc.exe を実行します。 詳細については、[方法:MMC スナップインを使用して証明書を参照する](https://msdn.microsoft.com/library/ms788967.aspx)」を参照してください。
    3. コンソール アプリケーションの **[ファイル]** メニューで、**[証明書]** スナップインを追加します。メッセージが表示されたら、**[コンピューター アカウント]** を選択し、**[次へ]** をクリックします。
    4. 管理対象として **[ローカル コンピューター]** を選択し、**[完了]** をクリックします。
    5. **[OK]** をクリックし、**[証明書 - 個人]** ノードを展開して、**[証明書]** をクリックします。 証明書の名前は VM の DNS 名に基づいており、 **cloudapp.net**で終わります。 証明書の名前を右クリックし、 **[コピー]** をクリックします。
    6. **[信頼されたルート証明機関]** ノードを展開し、**[証明書]** を右クリックして、**[貼り付け]** をクリックします。
-   7. 検証するために、 **[信頼されたルート証明機関]** で証明書の名前をダブルクリックし、エラーがないことと、追加した証明書であることを確認します。 このトピックに用意されている HTTPS スクリプトを使用してレポート サーバーを構成する場合、スクリプトのパラメーターとして証明書の **[拇印]** の値が必要となります。 **拇印の値を取得するには**、次の手順を実行します。 「 [スクリプトを使用してレポート サーバーと HTTPS を構成する](#use-script-to-configure-the-report-server-and-HTTPS)」には、拇印を取得するための PowerShell サンプルも用意されています。
+   7. 検証するために、 **[信頼されたルート証明機関]** で証明書の名前をダブルクリックし、エラーがないことと、追加した証明書であることを確認します。 このトピックに用意されている HTTPS スクリプトを使用してレポート サーバーを構成する場合、スクリプトのパラメーターとして証明書の **[拇印]** の値が必要となります。 **拇印の値を取得するには**、次の手順を実行します。 「 [スクリプトを使用してレポート サーバーと HTTPS を構成する](#use-script-to-configure-the-report-server-and-https)」には、拇印を取得するための PowerShell サンプルも用意されています。
       
       1. 証明書の名前 (例: ssrsnativecloud.cloudapp.net) をダブルクリックします。
       2. **[詳細]** タブをクリックします。
@@ -141,7 +141,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 自己署名 SSL 証明書を使用している場合は、証明書の名前が VM のホスト名と既に一致しています。 したがって、マシンの DNS は既にグローバルに登録されており、どのクライアントからでもアクセスできます。
 
-## <a name="step-3-configure-the-report-server"></a>手順 3: レポート サーバーを構成する
+## <a name="step-3-configure-the-report-server"></a>手順 3:レポート サーバーを構成する
 ここでは、Reporting Services ネイティブ モードのレポート サーバーとして VM を構成する手順を説明します。 レポート サーバーは、次のいずれかの方法を使用して構成できます。
 
 * スクリプトを使用してレポート サーバーを構成する
@@ -149,7 +149,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 詳しい手順については、「 [仮想マシンへの接続と Reporting Services 構成マネージャーの起動](virtual-machines-windows-classic-ps-sql-bi.md#connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager)」をご覧ください。
 
-**認証に関する注意:** Windows 認証が推奨される認証方法であり、Reporting Services の既定の認証方法です。 VM 上で構成されているユーザーだけが Reporting Services にアクセスでき、Reporting Services ロールに割り当てられます。
+**認証に関する注意:** Windows 認証が推奨される認証方法であり、Reporting Services の既定の認証となります。 VM 上で構成されているユーザーだけが Reporting Services にアクセスでき、Reporting Services ロールに割り当てられます。
 
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>スクリプトを使用してレポート サーバーと HTTP を構成する
 Windows PowerShell スクリプトを使用してレポート サーバーを構成するには、次の手順を実行します。 この構成には、HTTPS ではなく HTTP が含まれます。
@@ -160,7 +160,7 @@ Windows PowerShell スクリプトを使用してレポート サーバーを構
    
     たとえば、次の図では、VM 名が **ssrsnativecloud** で、ユーザー名が **testuser** です。
    
-    ![VM 名が含まれたログイン](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![ログインには VM 名が含まれる](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. VM で、管理者特権を使用して **Windows PowerShell ISE** を開きます。 PowerShell ISE は、Windows Server 2012 に既定でインストールされています。 標準の Windows PowerShell ウィンドウではなく、ISE を使用することをお勧めします。ISE では、スクリプトを貼り付けて変更してから、スクリプトを実行できます。
 3. Windows PowerShell ISE で、**[表示]** メニューをクリックし、**[スクリプト ウィンドウの表示]** をクリックします。
 4. 次のスクリプトをコピーし、Windows PowerShell ISE のスクリプト ウィンドウに貼り付けます。
@@ -283,7 +283,7 @@ Windows PowerShell スクリプトを使用してレポート サーバーを構
 6. 現在、このスクリプトは Reporting Services 用に構成されています。 Reporting Services でこのスクリプトを実行する場合は、Get-WmiObject ステートメントで、名前空間のパスのバージョン部分を "v11" に変更します。
 7. スクリプトを実行します。
 
-**検証**: レポート サーバーの基本的な機能が動作していることを確認するには、このトピックで後述する「 [構成を確認する](#verify-the-configuration) 」をご覧ください。
+**検証**:レポート サーバーの基本的な機能が動作していることを確認するには、このトピックで後述する「[構成を確認する](#verify-the-configuration)」セクションをご覧ください。
 
 ### <a name="use-script-to-configure-the-report-server-and-https"></a>スクリプトを使用してレポート サーバーと HTTPS を構成する
 Windows PowerShell を使用してレポート サーバーを構成するには、次の手順を実行します。 この構成には、HTTP ではなく HTTPS が含まれます。
@@ -294,7 +294,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
    
     たとえば、次の図では、VM 名が **ssrsnativecloud** で、ユーザー名が **testuser** です。
    
-    ![VM 名が含まれたログイン](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![ログインには VM 名が含まれる](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. VM で、管理者特権を使用して **Windows PowerShell ISE** を開きます。 PowerShell ISE は、Windows Server 2012 に既定でインストールされています。 標準の Windows PowerShell ウィンドウではなく、ISE を使用することをお勧めします。ISE では、スクリプトを貼り付けて変更してから、スクリプトを実行できます。
 3. スクリプトの実行を有効にするには、次の Windows PowerShell コマンドを実行します。
    
@@ -483,7 +483,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 9. 現在、このスクリプトは Reporting Services 用に構成されています。 Reporting Services でこのスクリプトを実行する場合は、Get-WmiObject ステートメントで、名前空間のパスのバージョン部分を "v11" に変更します。
 10. スクリプトを実行します。
 
-**検証**: レポート サーバーの基本的な機能が動作していることを確認するには、このトピックで後述する「 [構成を確認する](#verify-the-connection) 」をご覧ください。 証明書バインドを確認するには、管理者特権でコマンド プロンプトを開き、次のコマンドを実行します。
+**検証**:レポート サーバーの基本的な機能が動作していることを確認するには、このトピックで後述する「構成を確認する」セクションをご覧ください。 証明書バインドを確認するには、管理者特権でコマンド プロンプトを開き、次のコマンドを実行します。
 
     netsh http show sslcert
 
@@ -505,7 +505,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 5. 左側のウィンドウで、 **[Web サービス URL]** をクリックします。
 6. 既定では、RS は HTTP ポート 80 で構成され、IP は "すべて割り当て" に設定されます。 HTTPS を追加するには、次の手順を実行します。
    
-   1. **[SSL 証明書]** で、使用する証明書を選択します。たとえば、[VM 名].cloudapp.net を選択します。 証明書が表示されない場合、VM に証明書をインストールして信頼する方法については、「**手順 2: サーバー証明書を作成する**」をご覧ください。
+   1. **[SSL 証明書]** で、使用する証明書を選択します。たとえば、[VM 名].cloudapp.net を選択します。 証明書がリストされない場合は、「**手順 2:サーバー証明書を作成する**」セクションを参照し、VM に証明書をインストールして信頼する方法を確認してください。
    2. **[SSL ポート]** で 443 を選択します。 VM で別のプライベート ポートを使用して HTTPS プライベート エンドポイントを構成した場合は、ここでその値を使用します。
    3. **[適用]** をクリックし、処理が完了するまで待ちます。
 7. 左側のウィンドウで、 **[データベース]** をクリックします。
@@ -520,7 +520,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 8. 左側のウィンドウで、 **[レポート マネージャー URL]** をクリックします。 **[仮想ディレクトリ]** を既定の **[Reports]** のままにし、**[適用]** をクリックします。
 9. **[終了]** をクリックして、Reporting Services 構成マネージャーを閉じます。
 
-## <a name="step-4-open-windows-firewall-port"></a>手順 4: Windows ファイアウォール ポートを開く
+## <a name="step-4-open-windows-firewall-port"></a>手順 4:Windows ファイアウォール ポートを開く
 > [!NOTE]
 > いずれかのスクリプトを使用してレポート サーバーを構成した場合は、このセクションをスキップしてかまいません。 スクリプトにファイアウォール ポートを開く手順が含まれていました。 既定のポートは、HTTP では 80、HTTPS では 443 です。
 > 
@@ -573,24 +573,24 @@ HTTPS のプライベート ポートを 443 以外で構成した場合は、�
 ## <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>レポートを作成して Azure 仮想マシンに発行するには
 Microsoft Azure 仮想マシンでホストされているレポート サーバーに、オンプレミスのコンピューターから既存のレポートを発行する際に使用できるオプションの一部を次に示します。
 
-* **RS.exe スクリプト**: RS.exe スクリプトを使用して、既存のレポート サーバーから Microsoft Azure 仮想マシンにレポート アイテムをコピーします。 詳細については、「 [レポート サーバー間でコンテンツを移行するサンプル Reporting Services rs.exe スクリプト](https://msdn.microsoft.com/library/dn531017.aspx)」の「ネイティブ モードからネイティブ モード (Microsoft Azure Virtual Machine)」をご覧ください。
-* **レポート ビルダー**: 仮想マシンには、ClickOnce バージョンの Microsoft SQL Server レポート ビルダーが含まれています。 仮想マシンでレポート ビルダーを初めて起動するときは、次の手順を実行します。
+* **RS.exe スクリプト**:RS.exe スクリプトを使用して、既存のレポート サーバーから Microsoft Azure 仮想マシンにレポート アイテムをコピーします。 詳細については、「 [レポート サーバー間でコンテンツを移行するサンプル Reporting Services rs.exe スクリプト](https://msdn.microsoft.com/library/dn531017.aspx)」の「ネイティブ モードからネイティブ モード (Microsoft Azure Virtual Machine)」をご覧ください。
+* **レポート ビルダー**:仮想マシンには、ClickOnce バージョンの Microsoft SQL Server レポート ビルダーが含まれています。 仮想マシンでレポート ビルダーを初めて起動するときは、次の手順を実行します。
   
   1. 管理者特権でブラウザーを起動します。
   2. 仮想マシン上のレポート マネージャーを参照し、リボンの **[レポート ビルダー]** をクリックします。
      
      詳細については、「 [レポート ビルダーのインストール、アンインストール、およびサポート](https://technet.microsoft.com/library/dd207038.aspx)」をご覧ください。
-* **SQL Server Data Tools: VM**: SQL Server 2012 で VM を作成した場合、SQL Server Data Tools が仮想マシンにインストールされます。このツールを使用して、仮想マシンで**レポート サーバー プロジェクト**とレポートを作成できます。 SQL Server Data Tools では、仮想マシン上のレポート サーバーにレポートを発行できます。
+* **SQL Server Data Tools:VM**:SQL Server 2012 で VM を作成した場合、SQL Server Data Tools が仮想マシンにインストールされます。このツールを使用して、仮想マシンで**レポート サーバー プロジェクト**とレポートを作成できます。 SQL Server Data Tools では、仮想マシン上のレポート サーバーにレポートを発行できます。
   
     SQL Server 2014 で VM を作成した場合は、SQL Server Data Tools - BI for Visual Studio をインストールできます。 詳細については、「
   
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
   * [SQL Server Data Tools and SQL Server Business Intelligence (SSDT-BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
-* **SQL Server Data Tools: Remote**: ローカル コンピューター上の SQL Server Data Tools で、Reporting Services レポートを含む Reporting Services プロジェクトを作成します。 Web サービス URL に接続するようにプロジェクトを構成します。
+* **SQL Server Data Tools:Remote**:ローカル コンピューター上の SQL Server Data Tools で、Reporting Services レポートを含む Reporting Services プロジェクトを作成します。 Web サービス URL に接続するようにプロジェクトを構成します。
   
     ![SSRS プロジェクトの SSDT プロジェクト プロパティ](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
-* **スクリプトの使用**: スクリプトを使用して、レポート サーバーのコンテンツをコピーします。 詳細については、「 [レポート サーバー間でコンテンツを移行するサンプル Reporting Services rs.exe スクリプト](https://msdn.microsoft.com/library/dn531017.aspx)」をご覧ください。
+* **スクリプトの使用**:スクリプトを使用して、レポート サーバーのコンテンツをコピーします。 詳細については、「 [レポート サーバー間でコンテンツを移行するサンプル Reporting Services rs.exe スクリプト](https://msdn.microsoft.com/library/dn531017.aspx)」をご覧ください。
 
 ## <a name="minimize-cost-if-you-are-not-using-the-vm"></a>VM を使用していない場合にコストを最小限に抑える
 > [!NOTE]

@@ -3,21 +3,21 @@ title: Azure SQL Database Premium RS サービス レベルの廃止 | Microsoft
 description: Premium RS サービス レベルは廃止される予定であり、そのサポートは終了される予定です。移行オプションを参照してください。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 98b1072dc560de79e40fc4f802203459633dda28
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 02/07/2019
+ms.openlocfilehash: f8fc1f7e338f69b42df69d9a8983e8ce3bb409e3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440159"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59359633"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database Premium RS サービス レベル (プレビュー) の廃止 - 移行のオプション
 
@@ -70,10 +70,10 @@ Microsoft の価格およびドキュメントと共にこの記事のガイダ�
 
 |**現在利用しているのが以下の場合**|**相当する仮想コアベースの以下に移行**|**相当する DTU ベースの以下に移行**|
 |---|---|---|
-|Premium RS 1|(プレビュー) ハイパースケール 1 仮想コア (Gen 4) または Business Critical 1 仮想コア (Gen 4)|Premium 1|
-|Premium RS 2|(プレビュー) ハイパースケール 2 仮想コア (Gen 4) または Business Critical 2 仮想コア (Gen 4)|Premium 2|
-|Premium RS 4|(プレビュー) ハイパースケール 4 仮想コア (Gen 4) または Business Critical 4 仮想コア (Gen 4)|Premium 4
-|Premium RS 6|(プレビュー) ハイパースケール 6 仮想コア (Gen 4) または Business Critical 6 仮想コア (Gen 4)|Premium 6|
+|Premium RS 1|(プレビュー) ハイパースケール 1 仮想コア (Gen4) または Business Critical 1 仮想コア (Gen4)|Premium 1|
+|Premium RS 2|(プレビュー) ハイパースケール 2 仮想コア (Gen4) または Business Critical 2 仮想コア (Gen4)|Premium 2|
+|Premium RS 4|(プレビュー) ハイパースケール 4 仮想コア (Gen4) または Business Critical 4 仮想コア (Gen4)|Premium 4
+|Premium RS 6|(プレビュー) ハイパースケール 6 仮想コア (Gen4) または Business Critical 6 仮想コア (Gen4)|Premium 6|
 
 |**現在利用しているのが以下の場合**|**相当する仮想コアベースの以下に移行**|**相当する DTU ベースの以下に移行**|
 |---|---|---|

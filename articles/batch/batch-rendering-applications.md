@@ -1,17 +1,18 @@
 ---
-title: Batch のレンダリング アプリケーション
+title: レンダリング アプリケーション - Azure Batch
 description: 事前インストールされている Batch のレンダリング アプリケーション
 services: batch
+ms.service: batch
 author: laurenhughes
 ms.author: lahugh
-ms.date: 12/11/2018
+ms.date: 03/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7cc19c8def9e162c752efab776d0b6f5118bfde2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 84b2ca30f1ccd49e18e2f9d42133f8672d3f8ad6
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320950"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496022"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>VM イメージをレンダリングするために事前インストールされているアプリケーション
 
@@ -21,7 +22,7 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 
 一部のアプリケーションは Windows でのみサポートされますが、ほとんどは Windows と Linux の両方でサポートされます。
 
-## <a name="applications-on-centos-7-rendering-nodes"></a>CentOS 7 レンダリング ノード上のアプリケーション
+## <a name="applications-on-centos-7-rendering-images"></a>CentOS 7 レンダリング イメージのアプリケーション
 
 * Autodesk Maya I/O 2017 Update 5 (cut 201708032230)
 * Autodesk Maya I/O 2018 Update 2 (cut 201711281015)
@@ -31,7 +32,29 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 * Chaos Group V-Ray for Maya 2018 (バージョン 3.60.04)
 * Blender (2.68)
 
-## <a name="applications-on-windows-server-2016-rendering-nodes"></a>Windows Server 2016 レンダリング ノード上のアプリケーション
+## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>最新の Windows Server 2016 レンダリング イメージのアプリケーション
+
+次の一覧は、Windows Server 2016、バージョン 1.3.4 レンダリング イメージに適用されます。
+
+* Autodesk Maya I/O 2017 Update 5 (バージョン 17.4.5459)
+* Autodesk Maya I/O 2018 Update 4 (バージョン 18.4.0.7622)
+* Autodesk 3ds Max I/O 2019 Update 1 (バージョン 21.2.0.2219)
+* Autodesk 3ds Max I/O 2018 Update 4 (バージョン 20.4.0.4254)
+* Autodesk Arnold for Maya 2017 (Arnold バージョン 5.2.0.1) MtoA-3.1.0.1-2017
+* Autodesk Arnold for Maya 2018 (Arnold バージョン 5.2.0.1) MtoA-3.1.0.1-2018
+* Autodesk Arnold for 3ds Max (Arnold バージョン 5.0.2.4)(バージョン 1.2.926)
+* Chaos Group V-Ray for Maya 2018 (バージョン 3.52.03)
+* Chaos Group V-Ray for 3ds Max 2018 (バージョン 3.60.02)
+* Chaos Group V-Ray for Maya 2019 (バージョン 3.52.03)
+* Chaos Group V-Ray for 3ds Max 2019 (バージョン 4.10.01)
+* Blender (2.79)
+
+> [!NOTE]
+> Chaos Group V-ray for 3ds Max 2019 (バージョン 4.10.01) では、V-Ray に破壊的変更があります。 以前のバージョン (バージョン 3.60.02) を使用する場合は、Windows Server 2016、バージョン 1.3.2 レンダリング ノードを使用してください。
+
+## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>以前の Windows Server 2016 レンダリング イメージのアプリケーション
+
+次の一覧は、Windows Server 2016、バージョン 1.3.2 レンダリング イメージに適用されます。
 
 * Autodesk Maya I/O 2017 Update 5 (バージョン 17.4.5459)
 * Autodesk Maya I/O 2018 Update 4 (バージョン 18.4.0.7622)  
@@ -40,8 +63,8 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 * Autodesk Arnold for Maya 2017 (Arnold バージョン 5.2.0.1) MtoA-3.1.0.1-2017
 * Autodesk Arnold for Maya 2018 (Arnold バージョン 5.2.0.1) MtoA-3.1.0.1-2018
 * Autodesk Arnold for 3ds Max (Arnold バージョン 5.0.2.4)(バージョン 1.2.926)
-* Chaos Group V-Ray for Maya (バージョン 3.52.03)
-* Chaos Group V-Ray for 3ds Max (バージョン 3.60.02)
+* Chaos Group V-Ray for Maya 2019 (バージョン 3.52.03)
+* Chaos Group V-Ray for 3ds Max 2018 (バージョン 3.60.02)
 * Blender (2.79)
 
 ## <a name="next-steps"></a>次の手順

@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: b4ed878b19b2eebe01c9888388949600e85c56e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 075f86b24e2915d9689db8097889a830bade74c5
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792984"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149361"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Azure への VMware レプリケーションのソース環境を設定する
 
@@ -24,7 +24,7 @@ ms.locfileid: "53792984"
 この記事は、既に以下の操作を行っていることを前提としています。
 
 - [Azure Site Recovery Deployment Planner](site-recovery-deployment-planner.md) を使用して、デプロイを計画した。 これにより、毎日のデータ変化率に基づいて十分な帯域幅を割り当て、必要な復旧ポイント目標 (RPO) を満たすことができます。
-- [Azure Portal](http://portal.azure.com) で[リソースを設定する](tutorial-prepare-azure.md)。
+- [Azure Portal](https://portal.azure.com) で[リソースを設定する](tutorial-prepare-azure.md)。
 - [オンプレミスの VMware 設定する](vmware-azure-tutorial-prepare-on-premises.md) (自動検出のための専用アカウントを含む)。
 
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
@@ -58,18 +58,18 @@ Open Virtualization Application (OVA) テンプレートを使用し、構成サ
 - C:\Program Files\Microsoft Azure Site Recovery Provider
 - C:\Program Files\Microsoft Azure Site Recovery Configuration Manager 
 - C:\Program Files\Microsoft Azure Site Recovery Error Collection Tool 
- - C:\thirdparty
- - C:\Temp
- - C:\strawberry
- - C:\ProgramData\MySQL
- - C:\Program Files (x86)\MySQL
- - C:\ProgramData\ASR
- - C:\ProgramData\Microsoft Azure Site Recovery
- - C:\ProgramData\ASRLogs
- - C:\ProgramData\ASRSetupLogs
- - C:\ProgramData\LogUploadServiceLogs
- - C:\inetpub
- - ASR サーバー インストール ディレクトリ。 例: E:\Program Files (x86)\Microsoft Azure Site Recovery
+  - C:\thirdparty
+  - C:\Temp
+  - C:\strawberry
+  - C:\ProgramData\MySQL
+  - C:\Program Files (x86)\MySQL
+  - C:\ProgramData\ASR
+  - C:\ProgramData\Microsoft Azure Site Recovery
+  - C:\ProgramData\ASRLogs
+  - C:\ProgramData\ASRSetupLogs
+  - C:\ProgramData\LogUploadServiceLogs
+  - C:\inetpub
+  - ASR サーバー インストール ディレクトリ。 例: E:\Program Files (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>ウイルス対策ソフトウェアがスケールアウト プロセス サーバー/マスター ターゲットでアクティブな場合
 

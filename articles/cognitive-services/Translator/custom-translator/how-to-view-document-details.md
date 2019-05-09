@@ -5,16 +5,16 @@ description: ドキュメント一覧ページには、ワークスペースの�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: how to edit a model
-ms.openlocfilehash: fe108831f173eb31af79a2f8e5f7faf57015c38a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.topic: conceptual
+ms.openlocfilehash: d380c8bcdcb4954901df0b460269493c5be0a6de
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626975"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777390"
 ---
 # <a name="view-document-details"></a>ドキュメントの詳細の表示
 
@@ -22,7 +22,7 @@ ms.locfileid: "51626975"
 
 個々のドキュメントをクリックすると、ドキュメントの詳細ページが表示されます。 ドキュメント詳細ページには、ドキュメントから抽出された文の一覧が表示されます。
 
-- 既定では、"ソース" 言語がドロップダウン フィールドで選択されていますが、ターゲット言語の文を表示するように切り替えることができます。 
+- 既定では、"ソース" 言語がドロップダウン フィールドで選択されていますが、ターゲット言語の文を表示するように切り替えることができます。
 - 既定では、1 ページに 20 個の文が表示されます。 改ページ コントロールを使用してページを切り替えることができます。
 
 ![ドキュメントの詳細](media/how-to/how-to-view-document-details.png)

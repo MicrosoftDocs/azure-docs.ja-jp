@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 manager: vitavor
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
-ms.openlocfilehash: 9bb8d74b012b25ca959cdb87b8a3d5e4284b6497
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2d45ce524ff9f544605867ff6596d82f090a8f1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000792"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 
@@ -31,7 +31,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、_[Host] Percentage CPU_ および _[Guest] Memory percentage_ に対応します。
 
 > [!NOTE]
-> 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn は、Log Analytics VM 拡張機能と互換性がありません。
+> 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn は、Azure Monitor ログの VM 拡張機能と互換性がありません。
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>拡張メトリックが有効になっているかどうかを確認する
 
@@ -46,7 +46,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 
 標準的なメトリックは、ホスト コンピューターのメトリックです。 _[Host] Percentage CPU_ メトリックは 1 つの例です。 ゲスト VM にも基本的なメトリックがあり、それらは拡張メトリックとも呼ばれます。 拡張メトリックの例としては、_[Guest] Memory percentage_ や _[Guest] Memory available_ などがあります。
 
-拡張メトリックを有効にするのは簡単です。 VM ごとに、ゲスト レベルの監視を有効にします。 ゲスト レベルの監視を有効にすると、Azure 診断エージェントが VM にインストールされます。 既定では、拡張メトリックの基本セットが追加されます。 以降のプロセスは、クラシック VM と通常の VM、および Windows VM と Linux VM で同じです。
+拡張メトリックを有効にするのは簡単です。 VM ごとに、ゲスト レベルの監視を有効にします。 ゲスト レベルの監視を有効にすると、Azure Diagnostics エージェントが VM にインストールされます。 既定では、拡張メトリックの基本セットが追加されます。 以降のプロセスは、クラシック VM と通常の VM、および Windows VM と Linux VM で同じです。
 
 Azure と Linux のゲスト レベルの監視では、どちらもストレージ アカウントが必要なことに留意してください。 ゲスト レベルの監視を有効にするときに、既存のストレージ アカウントを選択しなかった場合は、アカウントが作成されます。
 
@@ -56,7 +56,7 @@ Azure と Linux のゲスト レベルの監視では、どちらもストレー
 2. **[監視]** で **[診断設定]** を選択します。
 3. [診断設定] ページで、**[ゲスト レベルの監視を有効にする]** をクリックします。  
     ![[概要] ページでゲスト レベルの監視を有効にする](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
-4. 数分で、VM に Azure 診断エージェントがインストールされます。 メトリックの基本セットが追加されます。 ページを更新します。 追加されたパフォーマンス カウンターが [概要] タブに表示されます。
+4. 数分で、VM に Azure Diagnostics エージェントがインストールされます。 メトリックの基本セットが追加されます。 ページを更新します。 追加されたパフォーマンス カウンターが [概要] タブに表示されます。
 5. [監視] で **[メトリック]** を選びます。
 6. In the metrics chart under **[メトリック名前空間]** の	メトリックのグラフで、**[ゲスト (クラシック)]** を選択します。
 7. メトリックの一覧で、ゲスト VM で使用できるすべてのパフォーマンス カウンターを確認できます。  

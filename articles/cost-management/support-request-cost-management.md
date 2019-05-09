@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/18/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 4118e0bb0e42a1eec707b2fdb6682333400e2e1a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: df86c3723a16a0ed6d090e940684a5a1737aeae5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175949"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Cloudyn のサポート リクエストを作成する
 

@@ -6,20 +6,20 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 99c9a86d130989e8c62a948e440b35c928b42299
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134100"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879856"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure BLOB Storage 間でデータを移動する
-Azure ストレージ エクスプローラーは、Windows、MacOS、Linux で Azure Storage のデータを操作できる Microsoft の無料ツールです。 このトピックでは、Azure ストレージ エクスプローラーを使用して Azure BLOB ストレージからデータをアップロードおよびダウンロードする方法について説明します。 このツールは、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。
+Azure ストレージ エクスプローラーは、Windows、MacOS、Linux で Azure Storage のデータを操作できる Microsoft の無料ツールです。 このトピックでは、Azure ストレージ エクスプローラーを使用して Azure BLOB ストレージからデータをアップロードおよびダウンロードする方法について説明します。 このツールは、 [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/)のページからダウンロードできます。
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -36,7 +36,7 @@ Azure ストレージ エクスプローラーは、Windows、MacOS、Linux で 
 
 * Azure サブスクリプションを設定するには、 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 * ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。 ストレージ アカウントのアクセス キーをメモしておきます。Azure ストレージ エクスプローラー ツールでアカウントに接続する際に、このキーが必要になります。
-* Azure ストレージ エクスプローラー ツールは、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。 インストール時に既定値をそのまま使用します。
+* Azure ストレージ エクスプローラー ツールは、 [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/)のページからダウンロードできます。 インストール時に既定値をそのまま使用します。
 
 <a id="explorer"></a>
 

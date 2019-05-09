@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2299dd6c723aa3059c293170c655918e5236ca0e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138162"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652282"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP クライアント サービスが無効になっているために Azure 仮想マシンに RDP で接続できない
 
@@ -27,7 +27,6 @@ ms.locfileid: "53138162"
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>現象
-
 Azure 内の VM で DHCP クライアント サービスが無効になっているために、その VM に対して RDP 接続を行うことができません。 Azure portal で[ブート診断](../troubleshooting/boot-diagnostics.md)のスクリーンショットを確認すると、VM は正常に起動し、ログイン画面で資格情報を待っていることがわかります。 イベント ビューアーを使用して、VM でイベント ログをリモートで表示します。 DHCP クライアント サービスが開始していないか、または開始に失敗していることがわかります。 ログのサンプルを次に示します。
 
 **ログ名**:システム </br>
@@ -62,8 +61,8 @@ DHCP クライアント サービスが VM で実行されていません。
 
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
 
-1. [シリアル コンソールに接続し、CMD インスタンスを開きます](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](reset-network-interface.md)」をご覧ください。
+1. [シリアル コンソールに接続し、CMD インスタンスを開きます](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。
+バージョンを参照)。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](reset-network-interface.md)」をご覧ください。
 2. ネットワーク インターフェイスで DHCP が無効になっているかどうかを確認します。
 
         sc query DHCP
@@ -95,10 +94,10 @@ DHCP クライアント サービスが VM で実行されていません。
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>アクセス拒否エラーのために DHCP クライアント サービスが停止される
 
-1. [シリアル コンソール](serial-console-windows.md#)に接続し、PowerShell インスタンスを開きます。
+1. [シリアル コンソール](serial-console-windows.md)に接続し、PowerShell インスタンスを開きます。
 2. 次のスクリプトを実行して、プロセス モニター ツールをダウンロードします。
 
-   ```
+   ```powershell
    remove-module psreadline
    $source = "https://download.sysinternals.com/files/ProcessMonitor.zip"
    $destination = "c:\temp\ProcessMonitor.zip"
@@ -167,6 +166,7 @@ DHCP クライアント サービスが VM で実行されていません。
 3. リモート デスクトップを使用して VM に接続してみます。
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP クライアント サービスがクラッシュまたはハングする
+
 1. サービスの状態が**開始中**または**停止中**のままになっている場合は、サービスを停止してみます。
 
         sc stop DHCP
@@ -205,5 +205,3 @@ DHCP クライアント サービスが VM で実行されていません。
 ## <a name="next-steps"></a>次の手順
 
 まだ支援が必要な場合は、問題を解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-
-

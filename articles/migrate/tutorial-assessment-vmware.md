@@ -4,15 +4,15 @@ description: Azure Migrate サービスを使って Azure に移行するため�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8971bba1e25a8e87ed57463dcc9b013fea56a0ff
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976836"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490322"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **VMware**:移行する予定の VM は、バージョン 5.5、6.0、または 6.5 を実行している vCenter Server で管理される必要があります。 また、コレクター VM を展開するには、バージョン 5.0 以降を実行している 1 つの ESXi ホストが必要です。
+- **VMware**:移行する予定の VM は、バージョン 5.5、6.0、6.5、または 6.7 を実行している vCenter Server で管理される必要があります。 また、コレクター VM をデプロイするには、バージョン 5.5 以降を実行している 1 つの ESXi ホストが必要です。
 - **vCenter Server アカウント**:vCenter Server にアクセスするには、読み取り専用アカウントが必要です。 Azure Migrate はこのアカウントを使ってオンプレミスの VM を検出します。
 - **アクセス許可**:vCenter Server 上で、.OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。
 
@@ -56,9 +56,10 @@ Azure Migrate は、評価対象の VM を自動的に検出するために、VM
 4. 新しいリソース グループを作成します。
 5. プロジェクトを作成する地理的な場所を指定して、**[作成]** をクリックします。 Azure Migrate プロジェクトは、次の地域でのみ作成できます。 ただし、対象となる任意の Azure の場所について移行を計画することもできます。 プロジェクトのために指定した地理的な場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。
 
-**地理的な場所** | **保存場所**
+**[地理的な場所]** | **保存先**
 --- | ---
 Azure Government | 米国政府バージニア州
+アジア | 東南アジア
 ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
 米国 | 米国東部または米国中西部
 
@@ -77,7 +78,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     > [!NOTE]
     > 1 回限りの検出アプライアンスは推奨されなくなりました。この方法は、パフォーマンス データ ポイントの可用性と収集された平均パフォーマンス カウンターの vCenter Server の統計設定に依存しており、その結果、Azure への移行のために VM のサイズが小さくなったためです。
 
-    **すぐに効果を実感:** 連続検出アプライアンスでは、検出が完了すると (VM の数によっては数時間かかります)、すぐに評価を作成できます。 検出を開始するとパフォーマンス データ コレクションが開始されるため、即時の満足を求める場合は、評価でサイズ設定基準を*オンプレミス*として選択する必要があります。 パフォーマンスベースの評価では、信頼できるサイズの推奨を得るには、検出を開始してから少なくとも 1 日待つことをお勧めします。
+    **迅速な評価:** 連続検出アプライアンスでは、検出が完了すると (VM の数によっては数時間かかります)、すぐに評価を作成できます。 検出を開始するとパフォーマンス データ コレクションが開始されるため、迅速な評価を求める場合は、評価のサイズ設定基準として*オンプレミス*を選択する必要があります。 パフォーマンスベースの評価では、信頼できるサイズの推奨を得るには、検出を開始してから少なくとも 1 日待つことをお勧めします。
 
     アプライアンスはパフォーマンス データのみを継続的に収集し、オンプレミス環境での構成の変更 (つまり VM の追加、削除、ディスクの追加) は検出されません。 オンプレミス環境で構成の変更がある場合は、次の操作を行って、変更をポータルに反映することができます。
 
@@ -101,6 +102,14 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 3. 生成されたハッシュは、次の設定と一致する必要があります。
 
 #### <a name="continuous-discovery"></a>継続的な検出
+
+  OVA バージョン 1.0.10.11 の場合
+
+  **アルゴリズム** | **ハッシュ値**
+    --- | ---
+    MD5 | 5f6b199d8272428ccfa23543b0b5f600
+    SHA1 | daa530de6e8674a66a728885a7feb3b0a2e8ccb0
+    SHA256 | 85da50a21a7a6ca684418a87ccc1dd4f8aab30152c438a17b216ec401ebb3a21
 
   OVA バージョン 1.0.10.9 の場合
 
@@ -170,24 +179,27 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 3. デスクトップにある **[Run collector]\(コレクターの実行\)** ショートカットをクリックします。
 4. コレクター UI の上部バーの **[Check for updates]\(更新プログラムの確認\)** をクリックし、コレクターが最新のバージョンで実行されていることを確認します。 ない場合は、リンクから最新のアップグレード パッケージをダウンロードしてコレクターを更新することもできます。
 5. Azure Migrate Collector で、**[Set Up Prerequisites]\(前提条件の設定\)** を開きます。
-    - 予定している移行先の Azure クラウド (Azure Global または Azure Government) を選択します。
-    - ライセンス条項に同意し、サード パーティの情報を確認します。
-    - VM がインターネットにアクセスできることをコレクターがチェックします。
-    - VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]\(プロキシの設定\)** をクリックし、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。 インターネット接続要件については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites)をご覧ください。コレクターがアクセスする URL の一覧については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls)をご覧ください。
+   - 予定している移行先の Azure クラウド (Azure Global または Azure Government) を選択します。
+   - ライセンス条項に同意し、サード パーティの情報を確認します。
+   - VM がインターネットにアクセスできることをコレクターがチェックします。
+   - VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]\(プロキシの設定\)** をクリックし、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。 インターネット接続要件については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites)をご覧ください。コレクターがアクセスする URL の一覧については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)をご覧ください。
 
-      > [!NOTE]
-      > プロキシのアドレスを、 http://ProxyIPAddress または http://ProxyFQDN の形式で入力する必要があります。 サポートされるのは HTTP プロキシのみです。 インターセプトするプロキシがあるときに、プロキシ証明書をインポートしていない場合は、初回のインターネット接続は失敗することがあります。プロキシ証明書を信頼された証明書としてコレクター VM にインポートすることでこの問題を修正する方法については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity-with-intercepting-proxy)を参照してください。
+     > [!NOTE]
+     > プロキシのアドレスを、http:\//ProxyIPAddress または http:\//ProxyFQDN の形式で入力する必要があります。 サポートされるのは HTTP プロキシのみです。 インターセプトするプロキシがあるときに、プロキシ証明書をインポートしていない場合は、初回のインターネット接続は失敗することがあります。プロキシ証明書を信頼された証明書としてコレクター VM にインポートすることでこの問題を修正する方法について、[詳細を学習](https://docs.microsoft.com/azure/migrate/concepts-collector)してください。
 
-    - コレクター サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
-    - VMware PowerCLI をダウンロードしてインストールします。
+   - コレクター サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
+   - VMware PowerCLI をダウンロードしてインストールします。
 
 6. **[Specify vCenter Server details]\(vCenter Server 詳細の指定\)** で、次の操作を行います。
     - vCenter サーバーの名前 (FQDN) または IP アドレスを指定します。
     - **[ユーザー名]** と **[パスワード]** で、コレクターが vCenter サーバーの VM を検出するために使用する読み取り専用の資格情報を指定します。
     - **[コレクション スコープ]** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、指定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1,500 台を超えないようにします。 大規模な環境を検出する方法の詳細については、[こちら](how-to-scale-assessment.md)を参照してください。
 
+       > [!NOTE]
+       > **[コレクション スコープ]** では、ホストとクラスターのフォルダーのみが一覧表示されます。 VM のフォルダーをコレクション スコープとして直接選択することはできません。 ただし、個々の VM へのアクセス権を持つ vCenter アカウントを使用して、検出できます。 VM のフォルダーを検出する方法については、[こちらを参照](https://docs.microsoft.com/azure/migrate/how-to-scale-assessment#set-up-permissions)してください。
+
 7. **[Specify migration project]\(移行プロジェクトの指定\)** で、ポータルからコピーした Azure Migrate プロジェクトの ID とキーを指定します。 ID とキーをコピーしなかった場合は、コレクター VM から Azure Portal を開きます。 プロジェクトの **[概要]** ページで、**[マシンの検出]** をクリックして値をコピーします。  
-8. **[View collection progress]\(収集の進行状況を表示)** で、検出の状態を監視します。 Azure Migrate Collector によって収集されるデータの詳細については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected)を参照してください。
+8. **[View collection progress]\(収集の進行状況を表示)** で、検出の状態を監視します。 Azure Migrate Collector によって収集されるデータの詳細については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)を参照してください。
 
 > [!NOTE]
 > コレクターは、オペレーティング システムの言語およびコレクター インターフェイスの言語として、"英語 (米国)" のみをサポートしています。

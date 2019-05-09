@@ -4,7 +4,7 @@ description: このドキュメントでは、仮想マシン、コンピュー�
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f5ce7f62-7b12-4bc0-b418-4a2f9ec49ca1
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: b77e814f9f339dff4539a04ab8b492e9777abe0d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537649"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104823"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Azure Security Center リソースの推奨事項を理解する
 
@@ -43,7 +43,7 @@ ms.locfileid: "53537649"
 | [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md) |VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
 | [脆弱性の修復](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |VM にインストールされている脆弱性評価ソリューションによって検出された、システムとアプリケーションの脆弱性を確認できます。 |
 
-### <a name="app-services"></a>App Services
+### App Service<a name="app-services"></a>
 | 推奨 | 説明 |
 | --- | --- |
 | App Service には HTTPS 経由でのみアクセスできるようにする | App Service へのアクセスを HTTPS 経由のみに制限することをお勧めします。 |

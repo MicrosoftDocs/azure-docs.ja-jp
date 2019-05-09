@@ -7,16 +7,16 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 1d199275d6c17dff72c020bd3a9807f50af8af1e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: ''
+ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544041"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371471"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
-この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics への送信を自動的に開始できます。
+この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics ワークスペースへの送信を自動的に開始できます。
 
 > [!WARNING]
 > ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -40,7 +40,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 ## <a name="non-compute-resource-template"></a>非コンピューティング リソース テンプレート
 非コンピューティング リソースの場合、次の 2 つの手順を実行する必要があります。
 
-1. パラメーター BLOB に、ストレージ アカウント名、イベント ハブ承認規則 ID、Log Analytics ワークスペース ID のパラメーターを追加します (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Log Analytics へのログの送信を有効にするため)。
+1. パラメーター BLOB に、ストレージ アカウント名、イベント ハブ承認規則 ID、Log Analytics ワークスペース ID のパラメーターを追加します (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Azure Monitor へのログの送信を有効にするため)。
    
     ```json
     "settingName": {
@@ -134,7 +134,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
     },
     "testUri": {
       "type": "string",
-      "defaultValue": "http://azure.microsoft.com/status/feed/"
+      "defaultValue": "https://azure.microsoft.com/status/feed/"
     },
     "settingName": {
       "type": "string",
@@ -254,7 +254,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 ## <a name="compute-resource-template"></a>コンピューティング リソース テンプレート
 コンピューティング リソース (Virtual Machine や Service Fabric など) で診断を有効にするには、次の手順を実行する必要があります。
 
-1. VM のリソース定義に Azure 診断の拡張機能を追加します。
+1. VM のリソース定義に Azure Diagnostics の拡張機能を追加します。
 2. パラメーターとしてストレージ アカウントおよびイベント ハブを指定します。
 3. すべての XML 文字を正しくエスケープして、WADCfg XML ファイルの内容を XMLCfg プロパティに追加します。
 
@@ -268,4 +268,5 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 ## <a name="next-steps"></a>次の手順
 * [Azure 診断ログの詳細を確認する](../../azure-monitor/platform/diagnostic-logs-overview.md)
 * [Azure 診断ログを Event Hubs にストリーミングする](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
+
 

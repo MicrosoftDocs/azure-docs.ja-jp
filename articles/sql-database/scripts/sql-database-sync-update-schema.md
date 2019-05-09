@@ -9,29 +9,30 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: allenwux
 ms.author: xiwu
-ms.reviewer: douglasl
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/10/2018
-ms.openlocfilehash: f0e23371bc615283c48e5ed14ac08edc93802efc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 96f5cf6bb8ad6cd87b933f08add6e25c4f4ec766
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717861"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485189"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell を使用して、既存の同期グループの同期スキーマを更新する
 
 この PowerShell の例では、既存の SQL データ同期の同期グループの同期スキーマを更新します。 複数のテーブルを同期しているときは、同期スキーマの効率的な更新にこのスクリプトが役立ちます。 この例では、**UpdateSyncSchema** スクリプトの使用方法を示します。このスクリプトは、GitHub で [UpdateSyncSchema.ps1](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/sql-data-sync/UpdateSyncSchema.ps1) として入手できます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは AZ PowerShell 1.4.0 以降が必要になります。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](../sql-database-sync-data.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> Azure SQL データ同期は、現時点では Azure SQL Database Managed Instance をサポート**していません**。
+> 現在のところ、Azure SQL データ同期では、Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -74,13 +75,13 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscription_id> -ResourceGroupName <resou
 
 **UpdateSyncSchema** スクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [Get-AzureRmSqlSyncGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlsyncgroup) | 同期グループについての情報を返します。 |
-| [Update-AzureRmSqlSyncGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/update-azurermsqlsyncgroup) | 同期グループを更新します。 |
-| [Get-AzureRmSqlSyncMember](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlsyncmember) | 同期メンバーについての情報を返します。 |
-| [Get-AzureRmSqlSyncSchema](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlsyncschema) | 同期スキーマについての情報を返します。 |
-| [Update-AzureRmSqlSyncSchema](https://docs.microsoft.com/powershell/module/azurerm.sql/update-azurermsqlsyncschema) | 同期スキーマを更新します。 |
+| [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | 同期グループについての情報を返します。 |
+| [Update-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | 同期グループを更新します。 |
+| [Get-AzSqlSyncMember](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncmember) | 同期メンバーについての情報を返します。 |
+| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | 同期スキーマについての情報を返します。 |
+| [Update-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | 同期スキーマを更新します。 |
 |||
 
 ## <a name="next-steps"></a>次の手順
@@ -99,7 +100,7 @@ SQL データ同期の詳細については、以下を参照してください�
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](sql-database-sync-data-between-azure-onprem.md)
 -   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](../sql-database-data-sync-agent.md)
 -   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](../sql-database-best-practices-data-sync.md)
--   監視 - [Log Analytics による SQL データ同期の監視](../sql-database-sync-monitor-oms.md)
+-   監視 - [Azure Monitor ログによる SQL データ同期の監視](../sql-database-sync-monitor-oms.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](../sql-database-troubleshoot-data-sync.md)
 -   同期スキーマの更新
     -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](../sql-database-update-sync-schema.md)

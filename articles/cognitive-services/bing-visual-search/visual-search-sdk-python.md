@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Visual Search SDK の Python コンソール アプリケーションの設定。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: 91fddb6da12817428fef009e8720a37534a64f24
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 970b3e7e8e45e5d5249fb5a45c966d9395b130a0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743614"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884156"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>クイック スタート:Bing Visual Search SDK for Python を使用して画像に関する分析情報を取得する
 
@@ -42,7 +42,7 @@ ms.locfileid: "53743614"
     import http.client, urllib.parse
     import json
     import os.path
-    from azure.cognitiveservices.search.visualsearch import VisualSearchAPI
+    from azure.cognitiveservices.search.visualsearch import VisualSearchClient
     from azure.cognitiveservices.search.visualsearch.models import (
         VisualSearchRequest,
         CropArea,
@@ -63,7 +63,7 @@ ms.locfileid: "53743614"
 3. クライアントのインスタンス化
 
     ```python
-    var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"))
+    var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"))
     ```
 
 ## <a name="send-the-search-request"></a>検索要求を送信する

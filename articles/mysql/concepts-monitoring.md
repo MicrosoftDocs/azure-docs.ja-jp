@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: de339fbab3d360507a77708816b5fccdca80a7d1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9dcb79e7f4ebd43da3f6c6fd35fa0707898d7ec8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544755"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111006"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -23,7 +23,7 @@ ms.locfileid: "53544755"
 これらのメトリックは、Azure Database for MySQL に使用できます。
 
 |メトリック|メトリックの表示名|単位|説明|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
 |memory_percent|メモリの割合|Percent|使用されているメモリの割合|
 |io_consumption_percent|IO の割合|Percent|使用されている IO の割合|
@@ -41,7 +41,7 @@ ms.locfileid: "53544755"
 |backup_storage_used|使用済みバックアップ ストレージ|Bytes|使用されているバックアップ ストレージの量。|
 
 ## <a name="server-logs"></a>サーバー ログ
-サーバーで低速クエリ ログを有効にできます。 これらのログは、OMS Log Analytics、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログ記録の詳細については、 [サーバー ログ](concepts-server-logs.md)に関するページをご覧ください。
+サーバーで低速クエリ ログを有効にできます。 これらのログは、Azure Monitor ログ、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログ記録の詳細については、 [サーバー ログ](concepts-server-logs.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。

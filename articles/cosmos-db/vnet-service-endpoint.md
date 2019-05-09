@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 5f3ee4e5af32ff0ea90d8807c65d14ddce417e7b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.reviewer: sngun
+ms.openlocfilehash: 672c62c440708f8e949d67d545bee2179c6066b2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626084"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58894937"
 ---
-# <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>仮想ネットワークから Azure Cosmos DB リソースへのアクセス
+# <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) から Azure Cosmos DB にアクセスする
 
-Azure Cosmos アカウントは、仮想ネットワーク (VNET) の特定のサブネットからのアクセスのみを許可するように構成することができます。 [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)が仮想ネットワーク内のサブネット上の Azure Cosmos DB にアクセスできるようにすることで、そのサブネットからのトラフィックは、サブネットと仮想ネットワークの ID を使用して Azure Cosmos DB に送信されます。 Azure Cosmos DB サービス エンドポイントが有効になると、Azure Cosmos アカウントにサブネットを追加することで、サブネットへのアクセスを制限できます。
+Azure Cosmos アカウントは、仮想ネットワーク (VNet) の特定のサブネットからのアクセスのみを許可するように構成することができます。 [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)が仮想ネットワーク内のサブネット上の Azure Cosmos DB にアクセスできるようにすることで、そのサブネットからのトラフィックは、サブネットと仮想ネットワークの ID を使用して Azure Cosmos DB に送信されます。 Azure Cosmos DB サービス エンドポイントが有効になると、Azure Cosmos アカウントにサブネットを追加することで、サブネットへのアクセスを制限できます。
 
-既定で、有効な承認トークンと共に要求が送信される場合、任意のソースから Azure Cosmos アカウントにアクセスできます。 VNET 内に 1 つまたは複数のサブネットを追加した場合、それらのサブネットから送信された要求のみが有効な応答を受け取ります。 その他のソースから送信された要求は、404 (見つかりません) 応答を受け取ります。 
+既定で、有効な承認トークンと共に要求が送信される場合、任意のソースから Azure Cosmos アカウントにアクセスできます。 VNet 内に 1 つまたは複数のサブネットを追加した場合、それらのサブネットから送信された要求のみが有効な応答を受け取ります。 その他のソースから送信された要求は、403 (禁止) 応答を受け取ります。 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -33,14 +34,14 @@ Azure Cosmos アカウントに対して、仮想ネットワーク サービス
 
 ### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>仮想ネットワーク ACL と IP ファイアウォールは要求または接続を拒否しますか。 
 
-IP ファイアウォールまたは仮想ネットワークのアクセス規則が追加されると、許可されたソースからの要求のみが有効な応答を受け取ります。 他の要求は 404 (見つかりません) で拒否されます。 Azure Cosmos アカウントのファイアウォールを接続レベルのファイアウォールと区別することが重要です。 ソースからは引き続きサービスに接続できます。また、接続自体は拒否されません。
+IP ファイアウォールまたは仮想ネットワークのアクセス規則が追加されると、許可されたソースからの要求のみが有効な応答を受け取ります。 他の要求は 403 (禁止) で拒否されます。 Azure Cosmos アカウントのファイアウォールを接続レベルのファイアウォールと区別することが重要です。 ソースからは引き続きサービスに接続できます。また、接続自体は拒否されません。
 
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>サブネット上の Azure Cosmos DB に対してサービス エンドポイントを有効にすると、要求がブロックされ始めました。 なぜでしょうか?
 
 Azure Cosmos DB 用のサービス エンドポイントがサブネット上で有効になると、アカウントに到達するトラフィックのソースが、パブリック IP から、仮想ネットワークとサブネットに切り替わります。 IP ベースのファイアウォールのみが Azure Cosmos アカウントに設定されている場合、サービスで有効なサブネットからのトラフィックは IP ファイアウォール規則と一致しなくなるため、拒否されるようになります。 IP ベースのファイアウォールから仮想ネットワーク ベースのアクセス制御にシームレスに移行するための手順を実行してください。
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>ピアリングされた仮想ネットワークも Azure Cosmos アカウントにアクセスできますか。 
-Azure Cosmos アカウントに追加された仮想ネットワークとそのサブネットのみがアクセスできます。 ピアリングされた仮想ネットワーク内のサブネットをアカウントに追加するまで、ピアリングされた VNET はアカウントにアクセスできません。
+Azure Cosmos アカウントに追加された仮想ネットワークとそのサブネットのみがアクセスできます。 ピアリングされた仮想ネットワーク内のサブネットをアカウントに追加するまで、ピアリングされた VNet はアカウントにアクセスできません。
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>1 つの Cosmos アカウントにアクセスできるサブネットの最大数はいくつですか。 
 現在、Azure Cosmos アカウントには最大 64 のサブネットを使用できます。
@@ -51,8 +52,11 @@ Azure Cosmos アカウントに追加された仮想ネットワークとその�
 ### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>ネットワーク セキュリティ グループ (NSG) の規則を更新する必要はありますか。 
 NSG 規則は、仮想ネットワークを使用したサブネットとの接続を制限するために使用されます。 Azure Cosmos DB のサービス エンドポイントをサブネットに追加する場合、Azure Cosmos アカウントのために NSG で送信接続を開く必要はありません。 
 
-### <a name="are-service-endpoints-available-for-all-vnets"></a>サービス エンドポイントはすべての VNET に使用できますか。
+### <a name="are-service-endpoints-available-for-all-vnets"></a>サービス エンドポイントはすべての VNet に使用できますか。
 いいえ。サービス エンドポイントを有効にすることができるのは Azure Resource Manager 仮想ネットワークのみです。 従来の仮想ネットワークはサービス エンドポイントをサポートしていません。
+
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Azure Cosmos DB のサービス エンドポイント アクセスが有効になっているときに "パブリック Azure データセンター内からの接続を受け入れる" ことはできますか?  
+これは、Azure Data Factory、Azure Search、または特定の Azure リージョンにデプロイされるサービスのような他の Azure ファースト パーティ サービスによって Azure Cosmos DB アカウントがアクセスされる場合にのみ必要です。
 
 
 ## <a name="next-steps"></a>次の手順

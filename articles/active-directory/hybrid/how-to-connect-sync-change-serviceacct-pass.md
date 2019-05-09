@@ -5,23 +5,24 @@ services: active-directory
 keywords: Azure AD 同期サービス アカウント, パスワード
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/31/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a0cdaa54d0da58a02cbe9fcda36cbaff6b1fab4a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 15d0d537a23e21eeda3b284e7ec706cde2b443e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184901"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014085"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Azure AD Connect 同期サービス アカウントのパスワードの変更
 Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
@@ -45,7 +46,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 次のようなエラーが表示されます。
 
 - Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、暗号化キーを取得できないため、"<strong>ローカル コンピューターで Microsoft Azure AD Sync サービスを開始できませんでした。詳細情報はシステム イベント ログを参照してください。これが Microsoft 以外のサービスである場合は、サービス ベンダーに問い合わせてください。その際、サービス固有のエラー コードが -21451857952 であることを伝えてください</strong>" というエラーが表示され失敗します。
-- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、*"**The server encryption key cannot be accessed.**"* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
+- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、*"The server encryption key cannot be accessed."* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
 
 これらのエラーが表示されないようにするために、パスワードの変更時には「[Azure AD Connect 同期の暗号化キーの破棄](#abandoning-the-azure-ad-connect-sync-encryption-key)」の手順に従ってください。
  

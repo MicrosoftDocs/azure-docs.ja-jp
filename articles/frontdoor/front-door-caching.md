@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 97c02726c7e359195c6bf4ea793404562f2acccf
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e022a7661997d231e291a4d09611bb6e95bee262
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001925"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528324"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Azure Front Door Service でのキャッシュ
 次のドキュメントは、キャッシュを有効にしたルーティング規則を使用して Front Door の動作を指定します。
@@ -100,9 +100,9 @@ Front Door でのキャッシュの消去では、大文字と小文字が区別
 
 ## <a name="cache-expiration"></a>キャッシュの有効期限
 キャッシュに項目が格納される期間を判断するために、次のヘッダーの順序が使用されます。</br>
-1. Cache-Control: s-maxage=<seconds>
-2. Cache-Control: maxage=<seconds>
-3. Expires: <http-date>
+1. Cache-Control: s-maxage=\<seconds>
+2. Cache-Control: maxage=\<seconds>
+3. Expires: \<http-date>
 
 応答がキャッシュされないことを示す Cache-Control 応答ヘッダー (Cache-Control: private、Cache-Control: no-cache、Cache-Control: no-store など) は受け入れられます。 ただし、POP で処理中の同じ URL の複数の要求がある場合、それらは応答を共有する場合があります。
 

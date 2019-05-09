@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Azure REST API と Python を使用して画像内の顔を検出する'
+title: クイック スタート:Azure REST API と Python を使用して画像から顔を検出する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と Python を使用して、画像内の顔を検出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/09/2018
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: d2a98226895bbe5996785ca4726f20df9b98ffdd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: b8ca320b802ea81604aab08ee3aeb39df5781afd
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683612"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630020"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート: Face REST API と Python を使用して画像内の顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート:Face REST API と Python を使用して画像から顔を検出する
 
 このクイック スタートでは、Azure Face REST API と Python を使用して、画像内の人の顔を検出します。 このスクリプトでは、顔を囲むフレームを描き、画像の上に性別と年齢の情報をスーパーインポーズします。
 
@@ -35,6 +35,224 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このクイック スタートは、[MyBinder](https://mybinder.org) の Jupyter ノートブックとして実行できます。 Binder を起動するには、次のボタンを選択します。 次に、ノートブック内の手順に従います。
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
+
+## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
+
+または、次の手順を使用してコマンド ラインからこのクイック スタートを実行することもできます。
+
+1. テキスト エディターに次のコードをコピーします。
+1. 必要に応じて、コードに次の変更を加えます。
+    1. `subscription_key` 値を、サブスクリプション キーに置き換えます。
+    1. 必要に応じて、`face_api_url` 値を、サブスクリプション キーを取得した Azure リージョンの Face API リソースのエンドポイント URL に置き換えます。
+    1. 必要に応じて、`image_url` 値を、分析したい別の画像の URL に置き換えます。
+1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `detect-face.py` 」のように入力します。
+1. コマンド プロンプト ウィンドウを開きます。
+1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python detect-face.py` 」のように入力します。
+
+```python
+import requests
+
+subscription_key = None
+assert subscription_key
+
+face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect'
+
+image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
+
+headers = { 'Ocp-Apim-Subscription-Key': subscription_key }
+    
+params = {
+    'returnFaceId': 'true',
+    'returnFaceLandmarks': 'false',
+    'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
+}
+
+response = requests.post(face_api_url, params=params, headers=headers, json={"url": image_url})
+print(json.dumps(response.json()))
+```
+
+## <a name="examine-the-response"></a>結果の確認
+
+成功応答が JSON で返されます。
+
+```json
+[
+  {
+    "faceId": "e93e0db1-036e-4819-b5b6-4f39e0f73509",
+    "faceRectangle": {
+      "top": 621,
+      "left": 616,
+      "width": 195,
+      "height": 195
+    },
+    "faceAttributes": {
+      "smile": 0,
+      "headPose": {
+        "pitch": 0,
+        "roll": 6.8,
+        "yaw": 3.7
+      },
+      "gender": "male",
+      "age": 37,
+      "facialHair": {
+        "moustache": 0.4,
+        "beard": 0.4,
+        "sideburns": 0.1
+      },
+      "glasses": "NoGlasses",
+      "emotion": {
+        "anger": 0,
+        "contempt": 0,
+        "disgust": 0,
+        "fear": 0,
+        "happiness": 0,
+        "neutral": 0.999,
+        "sadness": 0.001,
+        "surprise": 0
+      },
+      "blur": {
+        "blurLevel": "high",
+        "value": 0.89
+      },
+      "exposure": {
+        "exposureLevel": "goodExposure",
+        "value": 0.51
+      },
+      "noise": {
+        "noiseLevel": "medium",
+        "value": 0.59
+      },
+      "makeup": {
+        "eyeMakeup": true,
+        "lipMakeup": false
+      },
+      "accessories": [],
+      "occlusion": {
+        "foreheadOccluded": false,
+        "eyeOccluded": false,
+        "mouthOccluded": false
+      },
+      "hair": {
+        "bald": 0.04,
+        "invisible": false,
+        "hairColor": [
+          {
+            "color": "black",
+            "confidence": 0.98
+          },
+          {
+            "color": "brown",
+            "confidence": 0.87
+          },
+          {
+            "color": "gray",
+            "confidence": 0.85
+          },
+          {
+            "color": "other",
+            "confidence": 0.25
+          },
+          {
+            "color": "blond",
+            "confidence": 0.07
+          },
+          {
+            "color": "red",
+            "confidence": 0.02
+          }
+        ]
+      }
+    }
+  },
+  {
+    "faceId": "37c7c4bc-fda3-4d8d-94e8-b85b8deaf878",
+    "faceRectangle": {
+      "top": 693,
+      "left": 1503,
+      "width": 180,
+      "height": 180
+    },
+    "faceAttributes": {
+      "smile": 0.003,
+      "headPose": {
+        "pitch": 0,
+        "roll": 2,
+        "yaw": -2.2
+      },
+      "gender": "female",
+      "age": 56,
+      "facialHair": {
+        "moustache": 0,
+        "beard": 0,
+        "sideburns": 0
+      },
+      "glasses": "NoGlasses",
+      "emotion": {
+        "anger": 0,
+        "contempt": 0.001,
+        "disgust": 0,
+        "fear": 0,
+        "happiness": 0.003,
+        "neutral": 0.984,
+        "sadness": 0.011,
+        "surprise": 0
+      },
+      "blur": {
+        "blurLevel": "high",
+        "value": 0.83
+      },
+      "exposure": {
+        "exposureLevel": "goodExposure",
+        "value": 0.41
+      },
+      "noise": {
+        "noiseLevel": "high",
+        "value": 0.76
+      },
+      "makeup": {
+        "eyeMakeup": false,
+        "lipMakeup": false
+      },
+      "accessories": [],
+      "occlusion": {
+        "foreheadOccluded": false,
+        "eyeOccluded": false,
+        "mouthOccluded": false
+      },
+      "hair": {
+        "bald": 0.06,
+        "invisible": false,
+        "hairColor": [
+          {
+            "color": "black",
+            "confidence": 0.99
+          },
+          {
+            "color": "gray",
+            "confidence": 0.89
+          },
+          {
+            "color": "other",
+            "confidence": 0.64
+          },
+          {
+            "color": "brown",
+            "confidence": 0.34
+          },
+          {
+            "color": "blond",
+            "confidence": 0.07
+          },
+          {
+            "color": "red",
+            "confidence": 0.03
+          }
+        ]
+      }
+    }
+  }
+]
+```
 
 ## <a name="next-steps"></a>次の手順
 

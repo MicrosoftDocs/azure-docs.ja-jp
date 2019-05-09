@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 3888242f0379cc97bbe511e49a31a0f7eb8c5372
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164846"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889087"
 ---
-<!--author=SharS last changed: 1/14/2016 -->
-
 > [!NOTE]
 > SharePoint 用 StorSimple アダプターの RBS 構成を変更する際は、Domain Admins グループに属しているユーザー アカウントでログオンする必要があります。 さらに、サーバーの全体管理と同じホストで実行されているブラウザーから構成ページにアクセスする必要があります。
 > 
@@ -115,7 +113,7 @@ ms.locfileid: "50164846"
    > [!WARNING]
    > RBS を有効にしていない場合は、コンテンツ データベースを StorSimple デバイスに移行することはお勧めしません。 このような構成はテストされていません。
    
-9. 次の「 [ガベージ コレクションを構成する](#configure-garbage-collection)」に進みます。
+9. 次のステップへ進みます:[ガベージ コレクションを構成する](#configure-garbage-collection)。
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx

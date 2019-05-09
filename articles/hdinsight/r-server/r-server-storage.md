@@ -9,33 +9,33 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 466cb9ea116030d3f6ee6b41809011dae9acc00b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011206"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523394"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure Storage ソリューション
 
 HDInsight 上の ML Services には、分析結果を含んだオブジェクトや、データ、コードを永続化するためのさまざまなストレージ ソリューションがあります。 その例を次に示します。
 
 - [Azure BLOB](https://azure.microsoft.com/services/storage/blobs/)
-- [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)
+- [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Azure File Storage](https://azure.microsoft.com/services/storage/files/)
 
 ご自身の HDInsight クラスターで、複数の Azure ストレージ アカウント (またはコンテナー) にアクセスすることもできます。 Azure File Storage は、エッジ ノード用としての利便性に優れたデータ ストレージです。このストレージを選択した場合、Azure Storage ファイル共有を Linux ファイル システムなどにマウントすることができます。 ただし Azure ファイル共有は、サポートされている オペレーティング システム (Windows や Linux など) を使用している任意のシステムでマウントし、使用することができます。 
 
-HDInsight で Hadoop クラスターを作成するときに、**Azure ストレージ** アカウントまたは **Data Lake Store** を指定します。 そのアカウントの特定のストレージ コンテナーが、作成したクラスターのファイル システム (Hadoop 分散ファイル システムなど) を保持します。 詳しい情報とガイダンスについては、次のドキュメントを参照してください。
+HDInsight で Apache Hadoop クラスターを作成するときに、**Azure ストレージ** アカウントまたは **Data Lake Storage** のどちらかを指定します。 そのアカウントの特定のストレージ コンテナーが、作成したクラスターのファイル システム (Hadoop 分散ファイル システムなど) を保持します。 詳しい情報とガイダンスについては、次のドキュメントを参照してください。
 
 - [HDInsight での Azure Storage の使用](../hdinsight-hadoop-use-blob-storage.md)
-- [Azure HDInsight クラスターで Data Lake Store を使用する](../hdinsight-hadoop-use-data-lake-store.md)
+- [Azure HDInsight クラスターで Data Lake Storage を使用する](../hdinsight-hadoop-use-data-lake-store.md)
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>ML Services クラスターで Azure BLOB ストレージ アカウントを使用する
 
 次の手順は、ML Services クラスターを作成するときに複数のストレージ アカウントを指定した場合に、ML Services クラスターでのデータ アクセスと操作に対して、どのようにセカンダリ アカウントを使用するかを説明します。 ここでは、ストレージ アカウント **storage1** と、**container1** と呼ばれる既定のコンテナー、および **storage2** と **container2** を想定しています。
 
-> [!WARNING]
+> [!WARNING]  
 > パフォーマンス上の理由から、HDInsight クラスターは、指定したプライマリ ストレージ アカウントと同じデータ センターに作成されます。 HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
 ### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>HDInsight で ML Services を使って既定のストレージを使用する
@@ -95,36 +95,36 @@ R コードで、名前ノード参照が **storage2** ストレージ アカウ
 
 ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasb://container2@storage2.blob.core.windows.net` を指しています。 これは、先ほど指定した**名前ノード**です。
 
-次のように、**storage2** で /user/RevoShare/<SSH username> ディレクトリを構成する必要があります。
+次のように、**storage2** で `/user/RevoShare/<SSH username>` ディレクトリを構成する必要があります。
 
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
-## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>ML Services で Azure Data Lake Store を使用する 
+## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>ML Services クラスターで Azure Data Lake Storage を使用する 
 
-ご自身の HDInsight クラスターで Data Lake Store を使用するには、使用する各 Azure Data Lake Store にご自身のクラスター アクセスを付与する必要があります。 既定のストレージ (または追加のストア) として Azure Data Lake Store アカウントを使用する HDInsight クラスターを Azure Portal で作成する方法については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
+ご自身の HDInsight クラスターで Data Lake Storage を使用するには、使用する各 Azure Data Lake Storage にご自身のクラスター アクセスを付与する必要があります。 既定のストレージ (または追加のストレージ) として Azure Data Lake Storage アカウントを使用する HDInsight クラスターを Azure portal で作成する方法については、[Azure portal を使用して、Data Lake Storage を使用する HDInsight クラスターを作成する方法](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。
 
-その後、(前の手順で説明した) セカンダリ Azure ストレージ アカウントと同じように、このストアを R スクリプトで使用します。
+その後、(前の手順で説明した) セカンダリ Azure ストレージ アカウントと同じように、このストレージを R スクリプトで使用します。
 
-### <a name="add-cluster-access-to-your-azure-data-lake-stores"></a>Azure Data Lake Store へのクラスター アクセスの追加
-HDInsight クラスターに関連付けられている Azure Active Directory (Azure AD) サービス プリンシパルを使用して、Data Lake Store にアクセスします。
+### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Azure Data Lake Storage へのクラスター アクセスの追加
+HDInsight クラスターに関連付けられている Azure Active Directory (Azure AD) サービス プリンシパルを使用して、Data Lake Storage にアクセスします。
 
 1. HDInsight クラスターを作成するときに、**[データ ソース]** タブの **[クラスター AAD ID]** を選択します。
 
 2. **[クラスター AAD ID]** ダイアログ ボックスの **[AD サービス プリンシパルの選択]** で、**[新規作成]** を選択します。
 
-サービス プリンシパルに名前を付けてパスワードを設定したら、**[ADLS アクセスを管理する]** をクリックして、サービス プリンシパルをご自身の Data Lake Store と関連付けます。
+サービス プリンシパルに名前を付けてパスワードを設定したら、**[ADLS アクセスを管理する]** をクリックして、サービス プリンシパルをご自身の Data Lake Storage と関連付けます。
 
-また、クラスター作成後に 1 つ以上の Data Lake Store アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Store の Azure Portal エントリを開き、**[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
+また、クラスター作成後に 1 つ以上の Data Lake Storage アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Storage の Azure portal エントリを開き、**[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
 
-### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Store にアクセスする方法
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Storage Gen1 にアクセスする方法
 
-Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の ML Services クラスターで Store を使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
+Data Lake Storage Gen1 へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の ML Services クラスターでストレージを使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
 
 
-    # Point to the ADL store (e.g. ADLtest)
+    # Point to the ADL Storage (e.g. ADLtest)
     myNameNode <- "adl://rkadl1.azuredatalakestore.net"
     myPort <- 0
 
@@ -143,7 +143,7 @@ Data Lake Store へのアクセスを付与したら、Azure セカンダリ ス
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-次に示すコマンドは、RevoShare ディレクトリを含む Data Lake Store アカウントを構成し、前の例のサンプル .csv ファイルを追加します。
+次に示すコマンドは、RevoShare ディレクトリを含む Data Lake Storage Gen1 アカウントを構成し、前の例のサンプル .csv ファイルを追加します。
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
@@ -170,6 +170,6 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight 上の ML サービス クラスターの概要](r-server-overview.md)
-* [Hadoop での ML サービス クラスターの使用開始](r-server-get-started.md)
+* [Apache Hadoop での ML サービス クラスターの使用開始](r-server-get-started.md)
 * [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
-
+* [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

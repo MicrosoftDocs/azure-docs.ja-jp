@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
-ms.openlocfilehash: 81327c083b9517974780ac73284259b4408c2890
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 01acdf23c3113c3c4d185263b5cab75f3efd34a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001651"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
-この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。
+この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Hyper-V マネージャーからの Red Hat ベースの仮想マシンの準備
 
@@ -340,7 +340,7 @@ ms.locfileid: "51262218"
 1. qcow2 イメージを VHD 形式に変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
 >
 
 
@@ -489,7 +489,7 @@ ms.locfileid: "51262218"
 1. qcow2 イメージを VHD 形式に変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
 >
 
 
@@ -517,7 +517,7 @@ ms.locfileid: "51262218"
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>VMware からの Red Hat ベースの仮想マシンの準備
 ### <a name="prerequisites"></a>前提条件
-このセクションでは、VMware に RHEL の仮想マシンが既にインストールされていると仮定します。 VMware にオペレーティング システムをインストールする方法の詳細については、[VMware のゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
+このセクションでは、VMware に RHEL の仮想マシンが既にインストールされていると仮定します。 VMware にオペレーティング システムをインストールする方法の詳細については、[VMware のゲスト オペレーティング システムのインストール ガイド](https://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
 
 * Linux オペレーティング システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 必要な場合は、LVM または RAID をデータ ディスク上で使用できます。
 * オペレーティング システム ディスクでスワップ パーティションを構成しないでください。 一時的なリソース ディスク上にスワップ ファイルを作成するよう Linux エージェントを構成できます。 この詳細については、次の手順を参照してください。
@@ -616,7 +616,7 @@ ms.locfileid: "51262218"
 1. 仮想マシンをシャットダウンし、VMDK ファイルを .vhd ファイルに変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
 >
 
 
@@ -730,7 +730,7 @@ ms.locfileid: "51262218"
 1. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
 >
 
 

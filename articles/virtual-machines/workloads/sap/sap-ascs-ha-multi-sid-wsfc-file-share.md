@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e21357eeb795a26874cddb90b4d3a6303b83ac0
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189635"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540144"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -48,7 +48,7 @@ ms.locfileid: "43189635"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -196,10 +196,10 @@ ms.locfileid: "43189635"
 
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
-> ![Windows][Logo_Windows] Windows
+> ![ Windows][Logo_Windows]  Windows
 >
 
-[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能が 2016 年 9 月にリリースされました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。
+[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できます。 
 
 SAP がデプロイされている場合は、内部ロード バランサーを使って SAP Central Services (ASCS/SCS) インスタンスの Windows クラスター構成を作成できます。
 
@@ -213,14 +213,16 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 >
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
+> このドキュメントで紹介されている構成を [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) で使用することはまだサポートされていません
+> 
 
-ロード バランサーの制限について詳しくは、「[ネットワークの制限 - Azure Resource Manager][networking-limits-azure-resource-manager]」でロード バランサーごとのプライベート フロントエンド IP に関する説明をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。 Azure Load Balancer の Basic SKU の代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用することも検討してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 次の図に示すように、**ファイル共有**を使って 1 つの SAP ASCS/SCS インスタンスに使う WSFC クラスターを構成済みであることが必要です。
 
-![図 1: 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS][sap-ha-guide-figure-8007]
+![図 1:2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS][sap-ha-guide-figure-8007]
 
 _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS_
 
@@ -235,11 +237,11 @@ _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 
 次の例のように、複数の SAP Advanced Business Application Programming (ASCS) または SAP Java (SCS) クラスター化インスタンスを同じ WSFC クラスター内にインストールすることが目標です。 
 
-![図 2: 2 つのクラスターの SAP マルチ SID 構成][sap-ha-guide-figure-8008]
+![図 2:2 つのクラスターの SAP マルチ SID 構成][sap-ha-guide-figure-8008]
 
 _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 
-追加の **SAP \<SID2>** システムのインストールは、1 つの <SID> システムのインストールと同じです。 ASCS/SCS クラスターとファイル共有 SOFS クラスターでは、さらに 2 つの準備手順が必要です。
+追加の **SAP \<SID2>** システムのインストールは、1 つの \< SID> システムのインストールと同じです。 ASCS/SCS クラスターとファイル共有 SOFS クラスターでは、さらに 2 つの準備手順が必要です。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>SAP マルチ SID シナリオのインフラストラクチャを準備する
 
@@ -259,9 +261,9 @@ _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>既存の SAP グローバル ホストを使って SOFS クラスターでインフラストラクチャを準備する
 
-1 番目の SAP <SID1> システムの既存の \<SAPGlobalHost> と Volume1 を再利用できます。
+1 番目の SAP \<SID1> システムの既存の \<SAPGlobalHost> と Volume1 を再利用できます。
 
-![図 3: マルチ SID の SOFS は SAP グローバル ホスト名と同じ][sap-ha-guide-figure-8014]
+![図 3:マルチ SID の SOFS は SAP グローバル ホスト名と同じ][sap-ha-guide-figure-8014]
 
 _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ_
 
@@ -269,7 +271,7 @@ _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ
 >第 2 の**SAP \<SID2>** システムには、同じ Volume1 と同じ **\<SAPGlobalHost>** ネットワーク名を使います。
 >さまざまな SAP システムの共有名として **SAPMNT** を既に設定してあるので、**\<SAPGlobalHost>** ネットワーク名を再利用するには、同じ **Volume1** を使う必要があります。
 >
-><SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です。
+>\<SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です
 >
 
 \<SID2> システムの場合は、SAP グローバル ホスト ..\SYS\..  フォルダーを SOFS クラスターに準備する必要があります。
@@ -277,7 +279,7 @@ _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ
 \<SID2> インスタンスの SAP グローバル ホストを準備するには、次の PowerShell スクリプトを実行します。
 
 
-```PowerShell
+```powershell
 ##################
 # SAP multi-SID
 ##################
@@ -327,13 +329,13 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 2 つ目の SOFS を構成できます (たとえば、2 つ目の SOFS クラスター ロールを **\<SAPGlobalHost2>** に設定し、2 つ目の **\<SID2>** に異なる **Voulme2** を設定します)。
 
-![図 4: マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ][sap-ha-guide-figure-8015]
+![図 4:マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ][sap-ha-guide-figure-8015]
 
 _**図 4:** マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ_
 
 \<SAPGlobalHost2> で 2 つ目の SOFS ロールを作成するには、次の PowerShell スクリプトを実行します。
 
-```PowerShell
+```powershell
 # Create SOFS with SAP Global Host Name 2
 $SAPGlobalHostName = "sapglobal2"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
@@ -341,11 +343,11 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 2 つ目の **Volume2** を作成します。 次の PowerShell スクリプトを実行します。
 
-```PowerShell
+```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![図 5: マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ][sap-ha-guide-figure-8016]
+![図 5:フェールオーバー クラスター マネージャーでの 2 つ目の Volume2][sap-ha-guide-figure-8016]
 
 _**図 5:** フェールオーバー クラスター マネージャーでの 2 つ目の Volume2_
 
@@ -353,7 +355,7 @@ _**図 5:** フェールオーバー クラスター マネージャーでの 2 
 
 次の PowerShell スクリプトを実行します。
 
-```PowerShell
+```powershell
 # Create a folder for <SID2> on a second Volume2 and set file security
 $SAPSID = "PR2"
 $DomainName = "SAPCLUSTER"
@@ -396,50 +398,58 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 **saoglobal2** SOFS クラスター グループを右クリックして、**[ファイル共有の追加]** を選びます。
 
-![図 6: [ファイル共有の追加] ウィザードを起動する][sap-ha-guide-figure-8017]
+![図 6:[ファイル共有の追加] ウィザードを起動する][sap-ha-guide-figure-8017]
 
-_**図 6:** [ファイル共有の追加] ウィザードを起動する_
-
-<br>
-![図 7: [SMB 共有 - 簡易] を選ぶ][sap-ha-guide-figure-8018]
-
-_**図 7:** [SMB 共有 - 簡易] を選ぶ_
+_**図 6:**[ファイル共有の追加] ウィザードを起動する_
 
 <br>
-![図 8: "sapglobalhost2" を選んで Volume2 のパスを指定する][sap-ha-guide-figure-8019]
 
-_**図 8:** "sapglobalhost2" を選んで Volume2 のパスを指定する_
+![図 7:[SMB 共有 - 簡易] を選ぶ][sap-ha-guide-figure-8018]
+
+_**図 7:**[SMB 共有 - 簡易] を選ぶ_
 
 <br>
-![図 9: ファイルの共有名を "sapmnt" に設定する][sap-ha-guide-figure-8020]
+
+![図 8:"sapglobalhost2" を選んで Volume2 のパスを指定する][sap-ha-guide-figure-8019]
+
+_**図 8:**"sapglobalhost2" を選んで Volume2 のパスを指定する_
+
+<br>
+
+![図 9:ファイルの共有名を "sapmnt" に設定する][sap-ha-guide-figure-8020]
 
 _**図 9:** ファイルの共有名を "sapmnt" に設定する_
 
 <br>
-![図 10: すべての設定を無効にする][sap-ha-guide-figure-8021]
+
+![図 10:すべての設定を無効にする][sap-ha-guide-figure-8021]
 
 _**図 10:** すべての設定を無効にする_
 
 <br>
+
 ファイルと sapmnt 共有に対する*フル コントロール* アクセス許可を以下に割り当てます。
 * **SAP_\<SID>_GlobalAdmin** ドメイン ユーザー グループ
 * ASCS/SCS クラスター ノード **ascs-1$** および **ascs-2$** のコンピューター オブジェクト
 
-![図 11: ユーザー グループとコンピューター アカウントにフル コントロール アクセス許可を割り当てる][sap-ha-guide-figure-8022]
+![図 11:ユーザー グループとコンピューター アカウントにフル コントロール アクセス許可を割り当てる][sap-ha-guide-figure-8022]
 
 _**図 11:** ユーザー グループとコンピューター アカウントに "フル コントロール" を割り当てる_
 
 <br>
-![図 12: [作成] を選ぶ][sap-ha-guide-figure-8023]
 
-_**図 12:** [作成] を選ぶ_
+![図 12:[作成] を選択する][sap-ha-guide-figure-8023]
+
+_**図 12:**[作成] を選ぶ_
 
 <br>
-![図 13: sapglobal2 ホストと Volume2 にバインドされた 2 つ目の sapmnt が作成される][sap-ha-guide-figure-8024]
+
+![図 13:sapglobal2 ホストと Volume2 にバインドされた 2 つ目の sapmnt が作成される][sap-ha-guide-figure-8024]
 
 _**図 13:** sapglobal2 ホストと Volume2 にバインドされた 2 つ目の sapmnt が作成される_
 
 <br>
+
 ## <a name="install-sap-netweaver-multi-sid"></a>SAP NetWeaver マルチ SID をインストールする
 
 ### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>SAP \<SID2> ASCS/SCS インスタンスと ERS インスタンスをインストールする
@@ -451,7 +461,7 @@ DBMS と SAP アプリケーション サーバーを、既に説明したとお
 
 ## <a name="next-steps"></a>次の手順
 
-* [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする][sap-official-ha-file-share-document]: HA ファイル共有向け公式 SAP ガイドライン
+* [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする][sap-official-ha-file-share-document]:HA ファイル共有向け公式 SAP ガイドライン
 
 * [Windows Server 2016 での記憶域スペース ダイレクト][s2d-in-win-2016]
 

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: a36c5cfc977920f43b7f73e3e7cf9176de7c1f8a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867088"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463023"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケール アウト
 **Elastic Database** ツールを使用すると、Azure SQL Database を簡単にスケールアウトできます。 これらのツールと機能では、**Azure SQL Database** のデータベースのリソースを使用して、トランザクションのワークロードに対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。
@@ -67,8 +67,8 @@ ms.locfileid: "52867088"
 ## <a name="sharding"></a>シャーディング
 *"シャーディング"* は、同じ構造を持つ大量のデータを数多くの独立したデータベースに分散する手法です。 この手法は、エンド ユーザーまたは企業向けにサービスとしてのソフトウェア (SAAS) 製品をサービスで作成するクラウド開発者の間でよく知られています。 これらのエンド カスタマーは、多くの場合、"テナント" と呼ばれます。 シャーディングは、次のような理由で必要になります。  
 
-* データの合計数が多すぎて、単一のデータベースの制約に適合しない
-* ワークロード全体のトランザクションのスループットが 1 つのデータベースの能力を超えている
+* データの合計数が多すぎて、個別のデータベースの制約に適合しない
+* ワークロード全体のトランザクションのスループットが個別のデータベースの能力を超えている
 * テナントを互いに物理的に独立させる必要があり、テナントごとに別個のデータベースが必要になる
 * コンプライアンス、パフォーマンス、または地政学上の理由から、データベースの異なる部分を異なる地理的場所に配置することが必要になる
 

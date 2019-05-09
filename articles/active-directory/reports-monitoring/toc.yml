@@ -9,7 +9,7 @@ items:
     href: overview-monitoring.md
 - name: クイック スタート
   items:
-  - name: レポート
+  - name: Reports
     items:
     - name: サインイン レポートのダウンロード
       href: quickstart-download-sign-in-report.md
@@ -26,12 +26,10 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: レポート
+  - name: Reports
     items:
     - name: 証明書によるレポート API へのアクセス
       href: tutorial-access-api-with-certificates.md
-    - name: サインイン ログをダウンロードするスクリプトの生成
-      href: tutorial-signin-logs-download-script.md
   - name: 監視
     items:
     - name: ログをイベント ハブにストリーミングする
@@ -40,7 +38,7 @@ items:
       href: tutorial-integrate-activity-logs-with-splunk.md
 - name: 概念
   items:
-  - name: レポート
+  - name: Reports
     items:
     - name: 監査ログ
       href: concept-audit-logs.md
@@ -60,7 +58,7 @@ items:
       href: concept-activity-logs-azure-monitor.md
 - name: ハウツー ガイド
   items:
-  - name: レポート
+  - name: Reports
     items:
     - name: アクティビティ レポートの検出
       href: howto-find-activity-reports.md
@@ -74,14 +72,16 @@ items:
       href: howto-configure-prerequisites-for-reporting-api.md
   - name: 監視
     items:
-    - name: アクティビティ ログと Log Analytics の統合
+    - name: アクティビティ ログと Azure Monitor ログの統合
       href: howto-integrate-activity-logs-with-log-analytics.md
-    - name: Log Analytics でのアクティビティ ログの分析
+    - name: Azure Monitor ログでのアクティビティ ログの分析
       href: howto-analyze-activity-logs-log-analytics.md
-    - name: Azure AD 用の Log Analytics ビューのインストールと使用
+    - name: Azure AD 用のログ分析ビューのインストールと使用
       href: howto-install-use-log-analytics-views.md
     - name: アクティビティ ログと SumoLogic の統合
       href: howto-integrate-activity-logs-with-sumologic.md
+    - name: アクティビティ ログと ArcSight の統合
+      href: howto-integrate-activity-logs-with-arcsight.md
   - name: トラブルシューティング
     items:
     - name: 見つからない監査データ
@@ -95,7 +95,7 @@ items:
   expanded: true
 - name: リファレンス
   items:
-  - name: レポート
+  - name: Reports
     items:
     - name: 監査ログの API リファレンス
       href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit
@@ -118,9 +118,9 @@ items:
     - name: サインイン ログのスキーマ
       href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: 4763477baca827eca93f05356dd92249f4c0e63c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 746e3834189b9c0c478f7bbcd8b72e6760c288f6
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276607"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293772"

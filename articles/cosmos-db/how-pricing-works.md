@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: rimman
-ms.openlocfilehash: 44c561386b00ca60dc537360145ea62177b6d5d6
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 997a80ed1a8089c5255292f23bc5dacf8a6cb0e7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263387"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452628"
 ---
-# <a name="pricing-model-of-azure-cosmos-db"></a>Azure Cosmos DB の価格モデル 
+# <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB の価格モデル 
 
 Azure Cosmos DB の価格モデルにより、コストの管理と計画が合理化されます。 Azure Cosmos DB では、プロビジョニング済みのスループットと、消費されたストレージに対して支払います。
 
@@ -26,11 +26,11 @@ Azure Cosmos DB の価格モデルにより、コストの管理と計画が合�
 
 1 秒あたりの[要求ユニット数](request-units.md) (RU/秒) で指定されるプロビジョニング済みスループットにより、コンテナーまたはデータベース内のデータの読み取りおよび書き込みが可能です。 [データベースまたはコンテナーに対してスループットをプロビジョニングする](set-throughput.md)ことができます。 ワークロードのニーズに基づいて、いつでもスループットをスケールアップ/ダウンできます。 Azure Cosmos DB の価格は弾力的であり、データベースまたはコンテナーに対して構成するスループットに比例します。 スループットとストレージの最小値とスケールの増分により、小規模コンテナーから大規模コンテナーまですべてのセグメントの顧客に価格と弾力性の完全な範囲が提供されます。 各データベースまたはコンテナーについて、100 RU/秒単位でプロビジョニングされたスループット (最低 400 RU/秒) と、ストレージ消費量 (GB) に対し、時間単位で課金されます。 プロビジョニング済みスループットとは異なり、ストレージは使用量ベースで課金されます。 つまり、前もってストレージを予約する必要はありません。 使用したストレージに対してのみ課金されます。
 
-詳しくは、[Cosmos DB の価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)と「[Understanding your Cosmos DB bill](understand-your-bill.md)」(Cosmos DB の課金の概要) をご覧ください。
+詳しくは、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」ページと「[Azure Cosmos DB の課金内容の理解](understand-your-bill.md)」をご覧ください。
 
-Azure Cosmos DB の価格モデルは、すべての API について同じです。 詳しくは、「[How Cosmos DB pricing model is cost-effective for customers](total-cost-ownership.md)」(Cosmos DB の価格モデルがお客様にとっていかにコスト効率がよいか) をご覧ください。 SLA を保証するためにデータベースまたはコンテナーで最低限必要なスループットがあり、プロビジョニング済みスループットは 100 RU/秒あたり 6 ドルで増減できます。
+Azure Cosmos DB の価格モデルは、すべての API について同じです。 詳しくは、[Azure Cosmos DB の価格モデルがお客様にとっていかにコスト効率がよいか](total-cost-ownership.md)に関する記事をご覧ください。 SLA を保証するためにデータベースまたはコンテナーで最低限必要なスループットがあり、プロビジョニング済みスループットは 100 RU/秒あたり 6 ドルで増減できます。
 
-現在、データベース ベースとコンテナー ベース両方のスループットの最低価格は、24 ドル/月です (最新の情報については [Cosmos DB の価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください)。 ワークロードで複数のコンテナーを使用する場合は、データベース レベルのスループットを使用することで、コストについて最適化できます。これは、データベース レベルのスループットを使用すると、1 つのデータベースに任意の数のコンテナーを作成し、コンテナー間でスループットを共有できるためです。 次の表は、プロビジョニング済みスループットと異なるエンティティ別のコストをまとめたものです。
+現在、データベース ベースとコンテナー ベース両方のスループットの最低価格は、24 ドル/月です (最新の情報については「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」ページをご覧ください)。 ワークロードで複数のコンテナーを使用する場合は、データベース レベルのスループットを使用することで、コストについて最適化できます。これは、データベース レベルのスループットを使用すると、1 つのデータベースに任意の数のコンテナーを作成し、コンテナー間でスループットを共有できるためです。 次の表は、プロビジョニング済みスループットと異なるエンティティ別のコストをまとめたものです。
 
 |**エンティティ**  | **最小スループットとコスト** |**スケール増分とコスト** |**プロビジョニングの予約範囲** |
 |---------|---------|---------|-------|
@@ -45,7 +45,7 @@ Azure Cosmos DB では、開発者向けに無料のオプションがいくつ�
 
 * **Azure 無料アカウント**:Azure の [Free レベル](https://azure.microsoft.com/free/)では、最初の 30 日間に使用できる 200 ドルの Azure クレジットと 12 か月の無料サービス (数に制限あり) が提供されます。 詳細については、[Azure 無料アカウント](../billing/billing-avoid-charges-free-account.md)に関するページをご覧ください。 Azure Cosmos DB は Azure 無料アカウントの一部です。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、5 GB のストレージと 400 RU のプロビジョニング済みスループットが 1 年間提供されます。 
 
-* **Azure Cosmos DB を無料で試す**:Azure Cosmos DB では、Azure Cosmos DB を無料で試すアカウントを使用することで、時間制限をのあるエクスペリエンスが提供されます。 Azure Cosmos DB アカウントを作成して、データベースとコレクションを作成し、クイック スタートとチュートリアルを使用してサンプル アプリケーションを実行できます。 Azure アカウントをサブスクライブしたり、クレジット カードを使用したりせずに、サンプル アプリケーションを実行できます。 [Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)では、Azure Cosmos DB が 1 か月間提供され、何回でもアカウントを更新できます。
+* **Azure Cosmos DB を無料で試す**:Azure Cosmos DB では、Azure Cosmos DB を無料で試すアカウントを使用することで、時間制限をのあるエクスペリエンスが提供されます。 Azure Cosmos DB アカウントを作成して、データベースとコレクションを作成し、クイック スタートとチュートリアルを使用してサンプル アプリケーションを実行できます。 Azure アカウントをサブスクライブしたり、クレジット カードを使用したりせずに、サンプル アプリケーションを実行できます。 「[Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」では、Azure Cosmos DB が 1 か月間提供され、何回でもアカウントを更新できます。
 
 * **Azure Cosmos DB エミュレーター**:Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 エミュレーターは無料で提供され、クラウド サービスとほとんど同じです。 Azure Cosmos DB エミュレーターを使用すると、ローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 運用環境に移行する前に、ローカル環境でエミュレーターを使用してアプリケーションを開発できます。 エミュレーターでのアプリケーションの機能に満足した後で、クラウドの Azure Cosmos DB アカウントを使用するように切り替えると、コストを大幅に削減できます。 エミュレーターについて詳しくは、[開発とテストへの Azure Cosmos DB の使用](local-emulator.md)に関する記事をご覧ください。
 
@@ -60,12 +60,11 @@ Azure Cosmos DB の[予約容量](cosmos-db-reserved-capacity.md)は、リソー
 Azure Cosmos DB リソースのコストの最適化について詳しくは、以下の記事をご覧ください。
 
 * [開発とテストのための最適化](optimize-dev-test.md)について確認する
-
-* [Cosmos DB の請求書の概要](understand-your-bill.md)について確認する
-* [スループット コストの最適化](optimize-cost-throughput.md)について確認する
-* [ストレージ コストの最適化](optimize-cost-storage.md)について確認する
-* [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)について確認する
-* [クエリのコストの最適化](optimize-cost-queries.md)について確認する
+* [Azure Cosmos DB の課金内容の確認](understand-your-bill.md)の詳細について学習します
+* [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
+* [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
+* [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
+* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
 * [複数リージョンの Cosmos アカウント コストの最適化](optimize-cost-regions.md)について確認する
-* [Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)について確認する
-* [Cosmos DB エミュレーター](local-emulator.md)について確認する
+* [Azure Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)について確認する
+* [Azure Cosmos DB Emulator](local-emulator.md) について確認する

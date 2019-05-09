@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 20a921a0248fdb8a3856e27ad5e2620f7adb70de
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 244779e647c4b184b036b1a5ea77aac199be5994
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962137"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59269403"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -158,7 +157,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次のコマンドを実行して、SQL データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -172,7 +171,12 @@ END
 ```
 
 ### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Azure SQL データベースにデータ型と新たなストアド プロシージャを作成する
-次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型を SQL データベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。
+次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型を SQL データベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。 
+
+作業工程を簡単に始められるように、差分データをテーブル変数を介して渡すこのようなストアド プロシージャを直接使用し、それらを宛先ストアにマージします。 テーブル変数には、"多数" の差分行 (100 を超える行) が格納されることが想定されていない点に注意してください。  
+
+多数の差分行を宛先ストアにマージする必要がある場合は、まずコピー アクティビティを使用してすべての差分データを宛先ストアの一時的な "ステージング" テーブルにコピーしてから、テーブル変数を使用せずに独自のストアド プロシージャを構築し、"ステージング" テーブルから "最終的な" テーブルにマージすることをお勧めします。 
+
 
 ```sql
 CREATE TYPE DataTypeforCustomerTable AS TABLE(
@@ -183,7 +187,7 @@ CREATE TYPE DataTypeforCustomerTable AS TABLE(
 
 GO
 
-CREATE PROCEDURE sp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
+CREATE PROCEDURE usp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
 AS
 
 BEGIN
@@ -206,7 +210,7 @@ CREATE TYPE DataTypeforProjectTable AS TABLE(
 
 GO
 
-CREATE PROCEDURE sp_upsert_project_table @project_table DataTypeforProjectTable READONLY
+CREATE PROCEDURE usp_upsert_project_table @project_table DataTypeforProjectTable READONLY
 AS
 
 BEGIN
@@ -223,7 +227,7 @@ END
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-azurerm-ps)」の手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+「[Azure PowerShell のインストールおよび構成](/powershell/azure/azurerm/install-azurerm-ps)」の手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定してコマンドを実行します。 例: `"adfrg"`。 
@@ -268,7 +272,7 @@ END
     The specified Data Factory name 'ADFIncMultiCopyTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者または所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください (「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
@@ -614,7 +618,7 @@ END
                             "type": "SqlServerStoredProcedure",
                             "typeProperties": {
     
-                                "storedProcedureName": "sp_write_watermark",
+                                "storedProcedureName": "usp_write_watermark",
                                 "storedProcedureParameters": {
                                     "LastModifiedtime": {
                                         "value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}",
@@ -681,13 +685,13 @@ END
                 "TABLE_NAME": "customer_table",
                 "WaterMark_Column": "LastModifytime",
                 "TableType": "DataTypeforCustomerTable",
-                "StoredProcedureNameForMergeOperation": "sp_upsert_customer_table"
+                "StoredProcedureNameForMergeOperation": "usp_upsert_customer_table"
             },
             {
                 "TABLE_NAME": "project_table",
                 "WaterMark_Column": "Creationtime",
                 "TableType": "DataTypeforProjectTable",
-                "StoredProcedureNameForMergeOperation": "sp_upsert_project_table"
+                "StoredProcedureNameForMergeOperation": "usp_upsert_project_table"
             }
         ]
     }

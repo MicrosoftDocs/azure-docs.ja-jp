@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: 09de0a3aa0303e169d0b90690016909b29dc4a9b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190970"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194080"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -34,17 +34,17 @@ Azure は送信元ネットワーク アドレス変換 (SNAT) を使用して�
 [送信シナリオ](#scenarios)は複数あります。 必要に応じて、これらのシナリオを組み合わせることができます。 これらを注意深く確認して、実際のデプロイメント モデルとアプリケーション シナリオに適用される際の機能、制約、パターンを把握してください。 また、[これらのシナリオを管理する](#snatexhaust)ためのガイダンスを確認してください。
 
 >[!IMPORTANT] 
->Standard Load Balancer では、発信接続に新しい機能が導入され、動作が変更されています。   たとえば、内部の Standard Load Balancer が存在し、異なる手順を実行する必要がある場合、[シナリオ 3](#defaultsnat) は存在しません。   このドキュメント全体をよく読み、SKU 間の全体的な概念と相違点を理解してください。
+>Standard Load Balancer および Standard パブリック IP では、アウトバウンド接続に新しい機能とさまざまな動作が導入されています。  これらは Basic SKU と同じではありません。  Standard SKU を操作するときにアウトバウンド接続が必要な場合は、Standard パブリック IP アドレスまたは Standard パブリック Load Balancer で明示的に定義する必要があります。  これには、内部 Standard Load Balancer を使用する場合のアウトバウンド接続の作成が含まれます。  Standard パブリック Load Balancer では常にアウトバウンド規則を使用することをお勧めします。  [シナリオ 3](#defaultsnat) は、Standard SKU では利用できません。  つまり、内部 Standard Load Balancer が使用されているときに、アウトバウンド接続が必要な場合、バックエンド プール内の VM に対してアウトバウンド接続を作成する手順を行う必要があります。  アウトバウンド接続のコンテキストでは、単一スタンドアロン VM、可用性セット内のすべての VM、VMSS のすべてのインスタンスがグループとして動作します。 つまり、可用性セット内の単一 VM が Standard SKU に関連付けられている場合、この可用性セット内のすべての VM インスタンスが、Standard SKU に関連付けられている場合と同じ規則に従って動作するようになります。個々のインスタンスが直接関連付けられていない場合でも同様です。  このドキュメント全体をよく読み、全体的な概念を理解し、SKU 間の違いについて [Standard Load Balancer](load-balancer-standard-overview.md) を確認し、[アウトバウンド規則](load-balancer-outbound-rules-overview.md)を確認してください。  アウトバウンド規則を使用することで、アウトバウンド接続のすべての側面を細かく制御できます。
 
 ## <a name="scenarios"></a>シナリオの概要
 
 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用している場合、Azure Load Balancer と関連するリソースは明示的に定義されます。  現在 Azure には、Azure Resource Manager リソースの送信接続を実現するのに 3 つの異なる方法があります。 
 
-| シナリオ | 方法 | IP プロトコル | 説明 |
-| --- | --- | --- | --- |
-| [1.インスタンス レベル パブリック IP アドレスを含む VM (ロード バランサーあり、またはなし)](#ilpip) | SNAT (ポート マスカレードは不使用) | TCP、UDP、ICMP、ESP | インスタンスの NIC の IP 構成に割り当てられたパブリック IP が Azure によって使用されます。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 |
-| [2.VM に関連付けられたパブリック ロード バランサー (インスタンスにインスタンス レベルのパブリック IP アドレスなし)](#lb) | ロード バランサー フロントエンドを使用したポート マスカレード (PAT) による SNAT | TCP、UDP |Azure によってパブリック ロード バランサー フロントエンドのパブリック IP アドレスが複数のプライベート IP アドレスと共有されます。 Azure では、フロントエンドのエフェメラル ポートが PAT に使用されます。 |
-| [3.スタンドアロン VM (ロード バランサーなし、インスタンス レベルのパブリック IP アドレスなし)](#defaultsnat) | ポート マスカレード (PAT) による SNAT | TCP、UDP | Azure によって自動的に SNAT 用のパブリック IP アドレスが指定され、このパブリック IP アドレスが可用性セットの複数のプライベート IP アドレスと共有されてから、このパブリック IP アドレスのエフェメラル ポートが使用されます。 このシナリオは、前のシナリオのフォールバックです。 可視性と制御が必要は場合は推奨されません。 |
+| SKU | シナリオ | 方法 | IP プロトコル | 説明 |
+| --- | --- | --- | --- | --- |
+| Standard、Basic | [1.インスタンス レベル パブリック IP アドレスを含む VM (ロード バランサーあり、またはなし)](#ilpip) | SNAT (ポート マスカレードは不使用) | TCP、UDP、ICMP、ESP | インスタンスの NIC の IP 構成に割り当てられたパブリック IP が Azure によって使用されます。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 Standard Load Balancer を使用する場合は、[アウトバウンド規則](load-balancer-outbound-rules-overview.md)を使って、アウトバウンド接続を明示的に定義する必要があります |
+| Standard、Basic | [2.VM に関連付けられたパブリック ロード バランサー (インスタンスにインスタンス レベルのパブリック IP アドレスなし)](#lb) | ロード バランサー フロントエンドを使用したポート マスカレード (PAT) による SNAT | TCP、UDP |Azure によってパブリック ロード バランサー フロントエンドのパブリック IP アドレスが複数のプライベート IP アドレスと共有されます。 Azure では、フロントエンドのエフェメラル ポートが PAT に使用されます。 |
+| なし、または Basic | [3.スタンドアロン VM (ロード バランサーなし、インスタンス レベルのパブリック IP アドレスなし)](#defaultsnat) | ポート マスカレード (PAT) による SNAT | TCP、UDP | Azure によって自動的に SNAT 用のパブリック IP アドレスが指定され、このパブリック IP アドレスが可用性セットの複数のプライベート IP アドレスと共有されてから、このパブリック IP アドレスのエフェメラル ポートが使用されます。 このシナリオは、前のシナリオのフォールバックです。 可視性と制御が必要は場合は推奨されません。 |
 
 VM がパブリック IP アドレス空間で Azure の外部のエンドポイントと通信しないようにする場合、必要に応じてネットワーク セキュリティ グループ (NSG) を使用してアクセスをブロックできます。 NSG の使用の詳細については、「[送信接続の防止](#preventoutbound)」で説明します。 送信アクセスがない仮想ネットワークの設計、実装、および管理のガイダンスについては、この記事の範囲外です。
 
@@ -68,9 +68,9 @@ VM に割り当てられたパブリック IP は (1 対多ではなく) 1 対 1
 
 SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり事前に割り当てられます。 これは有限のリソースであり、不足する可能性があります。 これらがどのように[消費される](#pat)のかを理解することが重要です。 この消費のための設計と移行を必要に応じて行う方法については、[SNAT 不足の管理](#snatexhaust)に関するセクションを確認してください。
 
-[複数のパブリック IP アドレスが Load Balancer Basic に関連付けられている](load-balancer-multivip-overview.md)場合、それらのパブリック IP アドレスはどれも[送信フローの候補](#multivipsnat)になり、その 1 つがランダムに選択されます。  
+[複数のパブリック IP アドレスが Load Balancer Basic に関連付けられている](load-balancer-multivip-overview.md)場合、それらのパブリック IP アドレスはどれもアウトバウンド フローの候補になり、その 1 つがランダムに選択されます。  
 
-Load Balancer Basic で送信接続の正常性を監視するために、[Load Balancer の Log Analytics](load-balancer-monitor-log.md) と、[SNAT ポート不足メッセージを監視するためのアラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用できます。
+Load Balancer Basic でアウトバウンド接続の正常性を監視するために、[Load Balancer 用の Azure Monitor ログ](load-balancer-monitor-log.md)と、SNAT ポート不足メッセージを監視するための[アラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用できます。
 
 ### <a name="defaultsnat"></a>シナリオ 3:インスタンス レベルのパブリック IP アドレスがないスタンドアロン VM
 
@@ -91,9 +91,9 @@ SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり�
 
 ### <a name="multife"></a>送信フローの複数のフロントエンド
 
-#### <a name="load-balancer-standard"></a>Load Balancer Standard
+#### <a name="standard-load-balancer"></a>Standard Load Balancer
 
-[複数の (パブリック) IP フロントエンド](load-balancer-multivip-overview.md)が存在する場合、Load Balancer Standard は発信フローのすべての候補を同時に使用します。 発信接続に対して負荷分散ルールが有効になっている場合、各フロントエンドは使用できる事前割当 SNAT ポートの数を増やします。
+[複数の (パブリック) IP フロントエンド](load-balancer-multivip-overview.md)が存在する場合、Standard Load Balancer では、発信フローのすべての候補が同時に使用されます。 発信接続に対して負荷分散ルールが有効になっている場合、各フロントエンドは使用できる事前割当 SNAT ポートの数を増やします。
 
 新しい負荷分散ルール オプションを使用して、発信接続にフロントエンド IP アドレスが使用されないようにすることができます。
 
@@ -164,7 +164,7 @@ SNAT ポートは Azure によって各 VM の NIC の IP 構成に事前に割�
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> [複数フロントエンド](load-balancer-multivip-overview.md)で Standard Load Balancer を使用する場合、[フロントエンド IP アドレスごとに、前の表に記載されている使用可能な SNAT ポート数を増やします](#multivipsnat)。 たとえば、それぞれ個別のフロントエンド IP アドレスを使用する 2 つの負荷分散規則を持つ、50 個の VM のバックエンド プールでは、IP 構成ごとに 2048 (2x 1024) 個の SNAT ポートが使用されます。 詳細については、[複数のフロントエンド](#multife)に関するセクションを参照してください。
+> [複数フロントエンド](load-balancer-multivip-overview.md)で Standard Load Balancer を使用する場合、フロントエンド IP アドレスごとに、前の表に記載されている使用可能な SNAT ポート数を増やします。 たとえば、それぞれ個別のフロントエンド IP アドレスを使用する 2 つの負荷分散規則を持つ、50 個の VM のバックエンド プールでは、IP 構成ごとに 2048 (2x 1024) 個の SNAT ポートが使用されます。 詳細については、[複数のフロントエンド](#multife)に関するセクションを参照してください。
 
 利用できる SNAT ポートの数が、そのままフローの数に変換されるわけではないことに注意してください。 複数の一意の送信先に単一の SNAT ポートを再利用できます。 ポートは、フローを一意にするために必要な場合にのみ消費されます。 設計と軽減策のガイダンスについて、[この有限のリソースを管理する方法](#snatexhaust)に関するセクション、および [PAT](#pat) について説明しているセクションを参照してください。
 
@@ -257,7 +257,8 @@ NSG が AZURE_LOADBALANCER 既定タグからのヘルス プローブ要求を�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Load Balancer](load-balancer-overview.md) について詳しく学習する。
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
+- Standard パブリック Load Balancer の[アウトバウンド規則](load-balancer-outbound-rules-overview.md)の詳細を確認する。
+- [Load Balancer](load-balancer-overview.md) について詳しく学習する。
 - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)の詳細を確認する。
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。

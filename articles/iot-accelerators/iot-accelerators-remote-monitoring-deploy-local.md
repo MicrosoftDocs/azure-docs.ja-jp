@@ -6,20 +6,20 @@ manager: hegate
 ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/25/2018
+ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: fdb9b6c09e81ce29d2587fb0faca1aa80d28ea38
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287610"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309981"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、Visual Studio でマイクロ サービスを実行する方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、Visual Studio でマイクロ サービスを実行する方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
 
 リモート監視ソリューション アクセラレータをローカル コンピューター上の Docker で実行する場合、[リモート監視ソリューション アクセラレータをローカルでデプロイする - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md) に関するページを参照してください。
 
@@ -36,7 +36,7 @@ ms.locfileid: "51287610"
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/)
-* [Nginx](http://nginx.org/en/download.html)
+* [Nginx](https://nginx.org/en/download.html)
 * [Node.js v8](https://nodejs.org/) - このソフトウェアは、スクリプトが Azure リソースを作成するために使用する PCS CLI の前提条件です。 Node.js v10 は使用しないでください。
 
 > [!NOTE]
@@ -48,16 +48,9 @@ ms.locfileid: "51287610"
 
 このセクションでは、リモート監視マイクロサービスを実行します。 Web UI をネイティブで実行し、Docker でデバイス シミュレーション サービスを実行し、Visual Studio でマイクロサービスを実行します。
 
-### <a name="run-the-web-ui"></a>Web UI を実行する
-
-この手順では、Web UI を開始します。 リポジトリのローカル コピーにある **webui** フォルダーに移動し、次のコマンドを実行します。
-
-```cmd
-npm install
-npm start
-```
-
 ### <a name="run-the-device-simulation-service"></a>デバイス シミュレーション サービスを実行する
+
+新しいコマンド プロンプト ウィンドウを開いて、前のセクションで **start.cmd** スクリプトによって設定された環境変数にアクセスできることを確認します。
 
 デバイス シミュレーション サービス用の Docker コンテナーを起動するには、次のコマンドを実行します。 このサービスは、リモート監視ソリューション用のデバイスをシミュレートします。
 
@@ -94,18 +87,29 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 1. リソースの一覧で **[Stream Analytics ジョブ]** をクリックします。
 1. Stream Analytics ジョブの **[概要]** ページで、**[開始]** ボタンをクリックします。 次に、**[開始]** をクリックしてジョブをすぐに開始します。
 
+### <a name="run-the-web-ui"></a>Web UI を実行する
+
+この手順では、Web UI を開始します。 新しいコマンド プロンプト ウィンドウを開いて、**start.cmd** スクリプトによって設定された環境変数にアクセスできることを確認します。 リポジトリのローカル コピーにある **webui** フォルダーに移動し、次のコマンドを実行します。
+
+```cmd
+npm install
+npm start
+```
+
+起動が完了すると、ブラウザーに **http:\//localhost:3000/dashboard** ページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
+
 ### <a name="configure-and-run-nginx"></a>NGINX を構成および実行する
 
 ローカル コンピューターで実行されているマイクロサービスと Web アプリケーションをリンクするリバース プロキシ サーバーを設定します。
 
-* **webui\scripts\localhost** フォルダーから **nginx.conf** ファイルを **nginx\conf** インストール ディレクトリにコピーします。
+* リポジトリのローカル コピーにある **webui\scripts\localhost** フォルダーから **nginx.conf** ファイルを **nginx\conf** インストール ディレクトリにコピーします。
 * **nginx** を実行します。
 
-**nginx** の実行の詳細については、[nginx for Windows](http://nginx.org/en/docs/windows.html) を参照してください。
+**nginx** の実行の詳細については、[nginx for Windows](https://nginx.org/en/docs/windows.html) を参照してください。
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 
-リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで [http://localhost:9000](http://localhost:9000) に移動します。
+リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで http:\//localhost:9000 に移動します。
 
 ## <a name="clean-up"></a>クリーンアップ
 

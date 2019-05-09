@@ -26,6 +26,10 @@ items:
       href: data-box-gateway-system-requirements.md
     - name: 制限を理解する
       href: data-box-gateway-limits.md
+    - name: セキュリティの概要
+      href: data-box-gateway-security.md
+    - name: ユース ケースを確認する
+      href: data-box-gateway-use-cases.md
   - name: 方法
     items:
     - name: 管理
@@ -38,11 +42,15 @@ items:
         href: data-box-gateway-manage-bandwidth-schedules.md
       - name: アクセス、電源、接続性
         href: data-box-gateway-manage-access-power-connectivity-mode.md
+      - name: PowerShell から
+        href: data-box-gateway-connect-powershell-interface.md
+    - name: 監視
+      href: data-box-gateway-monitor.md
     - name: トラブルシューティング
       href: data-box-gateway-troubleshoot.md
   - name: リリース ノート
     items:
-    - name: プレビュー
+    - name: 一般公開
       href: data-box-gateway-release-notes.md
 - name: Data Box Edge
   items:
@@ -66,10 +74,36 @@ items:
     items:
     - name: 要件を確認する
       href: data-box-edge-system-requirements.md
+    - name: 制限を理解する
+      href: data-box-edge-limits.md
+    - name: セキュリティの概要
+      href: data-box-edge-security.md
+    - name: 仕様の確認
+      href: data-box-edge-technical-specifications-compliance.md
   - name: 方法
     items:
+    - name: コンピューティングの管理
+      href: data-box-edge-manage-compute.md
     - name: C# モジュールの開発
       href: data-box-edge-create-iot-edge-module.md
+    - name: 共有の管理
+      href: data-box-edge-manage-shares.md
+    - name: ユーザーの管理
+      href: data-box-edge-manage-users.md
+    - name: 帯域幅スケジュールの管理
+      href: data-box-edge-manage-bandwidth-schedules.md
+    - name: 電源、アクセス、接続の管理
+      href: data-box-edge-manage-access-power-connectivity-mode.md
+    - name: PowerShell を通じた管理
+      href: data-box-edge-connect-powershell-interface.md
+    - name: トラブルシューティング
+      href: data-box-edge-troubleshoot.md
+    - name: 監視
+      href: data-box-edge-monitor.md
+  - name: リリース ノート
+    items:
+    - name: 一般公開
+      href: data-box-gateway-release-notes.md
 - name: リソース
   items:
   - name: Data Box Edge C# モジュールのサンプル (.NET)
@@ -78,9 +112,9 @@ items:
     href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: dd349fb32ae6d360d1fbf986fe0642503939ce69
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f601de8c731354c6d01cfdc6de60115904a37d07
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514505"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679621"

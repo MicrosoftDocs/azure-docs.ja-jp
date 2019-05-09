@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0d56d901ca932f044ef71ef2bc24933bcf18c24a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384201"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544587"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -72,10 +72,10 @@ HDInsight 3.4 と 3.5 のもう 1 つの重要な違いは `JAVA_HOME` が Java 
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ...
@@ -134,7 +134,7 @@ Linux ベースの HDInsight クラスターは、クラスター内でアクテ
 
 ### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
-クラスターにインストールするコンポーネントに、Apache Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure Storage または Data Lake Store のいずれかを使用します。 両方ともデータを保持する HDFS 互換ファイル システムを提供します (、クラスターが削除された場合でも)。 HDFS の代わりに WASB または ADL を使用するように、インストールするコンポーネントを構成しなければならない場合があります。
+クラスターにインストールするコンポーネントに、Apache Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure Storage または Data Lake Storage のいずれかを使用します。 両方ともデータを保持する HDFS 互換ファイル システムを提供します (、クラスターが削除された場合でも)。 HDFS の代わりに WASB または ADL を使用するように、インストールするコンポーネントを構成しなければならない場合があります。
 
 ほとんどの操作では、ファイル システムを指定する必要はありません。 たとえば、次の場合 giraph-examples.jar ファイルがローカル ファイル システムからクラスター ストレージにコピーされます。
 
@@ -142,7 +142,7 @@ Linux ベースの HDInsight クラスターは、クラスター内でアクテ
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Data Lake Store には `adl:///example/jars`、Azure Storage には `wasb:///example/jars` を指定します。
+この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Azure Data Lake Storage Gen1 の場合は `adl:///example/jars`、Data Lake Storage Gen2 の場合は`abfs:///example/jars`、Azure Storage の場合は `wasb:///example/jars` です。
 
 ### <a name="bPS7"></a>STDOUT および STDERR に情報を書き込む
 
@@ -163,7 +163,7 @@ echo "Getting ready to install Foo"
 >&2 echo "An error occurred installing Foo"
 ```
 
-これは、代わりに、STDOUT に書き込まれた情報を　STDERR (2) にリダイレクトします。 IO リダイレクトの詳細については、「[http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)」を参照してください。
+これは、代わりに、STDOUT に書き込まれた情報を　STDERR (2) にリダイレクトします。 IO リダイレクトの詳細については、「[https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)」を参照してください。
 
 スクリプト アクションによってログに記録される情報の表示の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
@@ -274,21 +274,21 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * クラスターに関連付けられている __Azure Storage アカウント__。
 
-* クラスターに関連付けられている__追加のストレージ アカウント__。
+* クラスターに関連付けられている __追加のストレージ アカウント__。
 
 * __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 
-* HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+* HDInsight クラスターに関連付けられている __Azure Data Lake Storage アカウント__。 HDInsight での Azure Data Lake Storage の使用の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
     > [!NOTE]  
-    > HDInsight が Data Lake Store へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
+    > HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
 
 スクリプトによって使用されるリソースも公開されている必要があります。
 
-Azure Storage account または Azure Data Lake Store にファイルを格納すると、Azure ネットワーク内の両方で高速アクセスが可能になります。
+Azure Storage account または Azure Data Lake Storage にファイルを格納すると、Azure ネットワーク内の両方で高速アクセスが可能になります。
 
 > [!NOTE]  
-> スクリプトの参照に使用する URI 形式は、使用されるサービスによって異なります。 HDInsight クラスターに関連付けられているストレージ アカウントの場合は、`wasb://` または `wasbs://` を使用します。 パブリックに読み取り可能な URI の場合は、`http://` または `https://` を使用します。 Data Lake Store の場合は、`adl://` を使用します。
+> スクリプトの参照に使用する URI 形式は、使用されるサービスによって異なります。 HDInsight クラスターに関連付けられているストレージ アカウントの場合は、`wasb://` または `wasbs://` を使用します。 パブリックに読み取り可能な URI の場合は、`http://` または `https://` を使用します。 Data Lake Storage の場合は、`adl://` を使用します。
 
 ### <a name="checking-the-operating-system-version"></a>オペレーティング システム バージョンの確認
 
@@ -299,10 +299,10 @@ Azure Storage account または Azure Data Lake Store にファイルを格納�
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ```
@@ -332,9 +332,7 @@ fi
 Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。 その他のスクリプト アクションの例については、次のリンクを参照してください。
 
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)
-* [HDInsight クラスターに Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 * [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
-* [HDInsight クラスターでの Mono のインストールまたはアップグレード](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -351,7 +349,7 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 > [!NOTE]  
 > CRLF 行の終わりが LF に変更されるという点で、次のコマンドはほぼ同等です。 システムで使用できるユーティリティに基づいて、いずれかを選択します。
 
-| コマンド | メモ |
+| command | メモ |
 | --- | --- |
 | `unix2dos -b INFILE` |元のファイルは .BAK 拡張子でバックアップされます |
 | `tr -d '\r' < INFILE > OUTFILE` |OUTFILE には改行が LF のみのバージョンが含まれます |
@@ -370,6 +368,6 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 ## <a name="seeAlso"></a>次のステップ
 
-*  [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
+* [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
 * [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。

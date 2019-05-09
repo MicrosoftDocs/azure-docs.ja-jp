@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: d881a5c0f994b627b4c7c3da362672b3b887cd5e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a094369d467b3b1f3d5fe93f870dccc9eae7519c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996151"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547213"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(非推奨) Datadog を使用した Azure Container Service DC/OS クラスターの監視
 
@@ -23,7 +23,7 @@ ms.locfileid: "52996151"
 この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Datadog エージェントをデプロイする方法について説明します。 この構成を行うには、Datadog のアカウントが必要です。 
 
 ## <a name="prerequisites"></a>前提条件
-Azure Container Service によって構成されたクラスターを[デプロイ](container-service-deployment.md)して[接続](../container-service-connect.md)してください。 [Marathon UI](container-service-mesos-marathon-ui.md)の詳細を確認してください。 [http://datadoghq.com](http://datadoghq.com) に移動して、Datadog アカウントを設定します。 
+Azure Container Service によって構成されたクラスターを[デプロイ](container-service-deployment.md)して[接続](../container-service-connect.md)してください。 [Marathon UI](container-service-mesos-marathon-ui.md)の詳細を確認してください。 [https://datadoghq.com](https://datadoghq.com) に移動して、Datadog アカウントを設定します。 
 
 ## <a name="datadog"></a>Datadog
 Datadog は監視サービスです。Azure コンテナー サービス クラスター内のコンテナーから監視データを収集することができます。 Datadog には、コンテナー内の特定のメトリックを表示できる Docker 統合ダッシュボードがあります。 コンテナーから収集されたメトリックは、CPU、メモリ、ネットワーク、I/O 別に整理されます。 メトリックは Datadog によってコンテナーとイメージに分割されます。 CPU 使用率の UI の例を以下に示します。

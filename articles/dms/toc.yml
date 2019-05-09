@@ -1,0 +1,96 @@
+- name: Database Migration Service のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Database Migration Service (DMS) とは
+      href: dms-overview.md
+- name: クイック スタート
+  items:
+    - name: サービスの作成 - ポータル
+      href: quickstart-create-data-migration-service-portal.md
+- name: チュートリアル
+  items:
+    - name: オフラインで SQL Server を Azure SQL DB に移行する
+      href: tutorial-sql-server-to-azure-sql.md
+    - name: オンラインで SQL Server を Azure SQL DB に移行する
+      href: tutorial-sql-server-azure-sql-online.md
+    - name: オフラインで SQL Server を Azure SQL DB Managed Instance に移行する
+      href: tutorial-sql-server-to-managed-instance.md
+    - name: オンラインで SQL Server を Azure SQL DB Managed Instance に移行する
+      href: tutorial-sql-server-managed-instance-online.md
+    - name: オンラインで RDS SQL Server を Azure SQL DB または Azure SQL DB Managed Instance に移行する
+      href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+    - name: オンラインで MySQL を Azure DB for MySQL に移行する
+      href: tutorial-mysql-azure-mysql-online.md
+    - name: オンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
+      href: tutorial-postgresql-azure-postgresql-online.md
+    - name: オフラインで MongoDB を Azure Cosmos DB Mongo API に移行する
+      href: tutorial-mongodb-cosmos-db.md
+    - name: オンラインで MongoDB を Azure Cosmos DB Mongo API に移行する
+      href: tutorial-mongodb-cosmos-db-online.md
+- name: ハウツー ガイド
+  items:
+    - name: PowerShell を使用して SQL Server から Azure SQL DB に移行する
+      href: howto-sql-server-to-azure-sql-powershell.md
+    - name: PowerShell を使用して SQL Server から Azure SQL DB MI に移行する
+      href: howto-sql-server-to-azure-sql-mi-powershell.md
+    - name: 移行アクティビティの監視
+      href: how-to-monitor-migration-activity.md
+    - name: SSIS パッケージを Azure に移行する
+      href: how-to-migrate-ssis-packages.md
+- name: リソース
+  items:
+    - name: データベース移行シナリオの状態
+      href: resource-scenario-status.md
+    - name: 前提条件の概要
+      href: pre-reqs.md
+    - name: Azure SQL DB Managed Instance への移行のネットワーク トポロジ
+      href: resource-network-topologies.md
+    - name: 既知の問題
+      items:
+        - name: 既知の問題 - Azure SQL DB へのオンライン移行
+          href: known-issues-azure-sql-online.md
+        - name: 既知の問題 - Azure DB for MySQL へのオンライン移行
+          href: known-issues-azure-mysql-online.md
+        - name: 既知の問題 - Azure DB for PostgreSQL へのオンライン移行
+          href: known-issues-azure-postgresql-online.md
+    - name: ビデオ
+      items:
+        - name: データベース移行ガイドを使用する
+          href: 'https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/'
+        - name: 移行プロセスおよび推奨されるツールまたはサービス
+          href: 'https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/'
+        - name: 前提条件に対応して DMS インスタンスを作成する
+          href: 'https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/'
+        - name: SQL Server 2008 を Azure SQL Database Managed Instance に移行する
+          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/'
+        - name: PostgreSQL を Azure Database for PostgreSQL に移行する
+          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/'
+        - name: オンライン移行を監視してカットオーバーを実行する
+          href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
+        - name: Oracle を Azure SQL Database に移行する
+          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
+        - name: MongoDB を Azure Cosmos DB に移行する
+          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'
+    - name: ツールとガイダンス
+      items:
+        - name: データ移行シナリオに利用できるサービスとツール
+          href: dms-tools-matrix.md
+        - name: データベース移行ガイド
+          href: 'https://aka.ms/datamigration'
+        - name: Data Migration Assistant
+          href: 'https://aka.ms/dma'
+        - name: SQL Server Migration Assistant
+          href: 'https://aka.ms/ssma'
+        - name: Database Experimentation Assistant
+          href: 'https://aka.ms/dea-docs'
+    - name: よく寄せられる質問
+      href: faq.md
+    - name: UserVoice のフィードバック
+      href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
+    - name: 価格
+      href: 'https://aka.ms/dms-pricing'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=database-migration'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'

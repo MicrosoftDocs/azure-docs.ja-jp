@@ -1,20 +1,19 @@
 ---
 title: Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: e6bae31f0e3558f274ee638c380e69c15b7c3889
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 6b8b2d2d035183861f367c9425ec54d1c9babf34
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079315"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286552"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -475,7 +474,7 @@ try
         TableQuery.from(CustomerEntity.class)
         .select(new String[] {"Email"});
 
-    // Define a Entity resolver to project the entity to the Email value.
+    // Define an Entity resolver to project the entity to the Email value.
     EntityResolver<String> emailResolver = new EntityResolver<String>() {
         @Override
         public String resolve(String PartitionKey, String RowKey, Date timeStamp, HashMap<String, EntityProperty> properties, String etag) {

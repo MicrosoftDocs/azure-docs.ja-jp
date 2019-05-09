@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990737"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>C 言語用 Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 
-この記事では、C 言語用 Device Provisioning Service クライアント SDK で各種の[構成証明メカニズム](concepts-security.md#attestation-mechanism)を使用する方法について説明します。物理デバイスとシミュレーターのどちらを使用してもかまいません。 このプロビジョニング サービスは、X **.** 509 とトラステッド プラットフォーム モジュール (TPM) の 2 種類の構成証明メカニズムでの認証をサポートします。
+この記事では、C 言語用 Device Provisioning Service クライアント SDK で各種の[構成証明メカニズム](concepts-security.md#attestation-mechanism)を使用する方法について説明します。物理デバイスとシミュレーターのどちらを使用してもかまいません。 このプロビジョニング サービスは、次の 2 種類の構成証明メカニズムでの認証をサポートします: X.509 とトラステッド プラットフォーム モジュール (TPM)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "49319254"
 
 - [トラステッド プラットフォーム モジュール (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM は、ほとんどの Windows ベースのデバイス プラットフォームと一部の Linux/Ubuntu ベースのデバイス向けの代表的な標準です。 デバイスの製造元は、製造するデバイスでこれらの OS のいずれかが稼働している場合や、代表的な標準を求めている場合に、この構成証明メカニズムを選択できます。 TPM チップを使用すると、各デバイスの Device Provisioning Service への個別登録のみが可能です。 開発向けの場合、Windows または Linux の開発マシンで TPM シミュレーターを使用できます。
 
-- [X.509](https://cryptography.io/en/latest/x509/): X.509 証明書は、"[ハードウェア セキュリティ モジュール (HSM)](concepts-security.md#hardware-security-module)" と呼ばれる比較的新しいチップに格納することができます。 また、X.509 証明書を実装する RIoT チップまたは DICE チップ上での作業が Microsoft 内で現在進められています。 X.509 チップを使用すると、ポータルでデバイスの一括登録を実行できます。 また、X.509 チップは、embedOS などの Windows 以外の特定の OS もサポートしています。 開発のために、Device Provisioning Service クライアント SDK は、X.509 デバイス シミュレーターをサポートしています。 
+- [X.509](https://cryptography.io/en/latest/x509/):X.509 証明書は、[ハードウェア セキュリティ モジュール (HSM)](concepts-security.md#hardware-security-module) と呼ばれる比較的新しいチップに格納することができます。 また、X.509 証明書を実装する RIoT チップまたは DICE チップ上での作業が Microsoft 内で現在進められています。 X.509 チップを使用すると、ポータルでデバイスの一括登録を実行できます。 また、X.509 チップは、embedOS などの Windows 以外の特定の OS もサポートしています。 開発のために、Device Provisioning Service クライアント SDK は、X.509 デバイス シミュレーターをサポートしています。 
 
 詳細については、IoT Hub Device Provisioning Service の[セキュリティの概念](concepts-security.md)と[自動プロビジョニングの概念](/azure/iot-dps/concepts-auto-provisioning)を参照してください。
 
@@ -96,16 +96,16 @@ cmake -Ddps_auth_type=tpm_simulator ..
     ctest -C "debug" -V
     ```
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 - Windows で SDK をビルドするには、次の手順に従ってプロジェクト ファイルを生成します。
-    - "開発者コマンド プロンプト for VS2015" を開きます。
-    - リポジトリのルートで次の CMake コマンドを実行します。
-      ```
-      cd azure-iot-sdk-c
-      mkdir cmake
-      cd cmake
-      cmake -G "Visual Studio 14 2015" ..
-      ```
+  - "開発者コマンド プロンプト for VS2015" を開きます。
+  - リポジトリのルートで次の CMake コマンドを実行します。
+    ```
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    cmake -G "Visual Studio 14 2015" ..
+    ```
     このコマンドでは x86 ライブラリがビルドされます。 x64 用にビルドするために、cmake ジェネレーターの引数を変更します。 
     ```
     cmake .. -G "Visual Studio 14 2015 Win64"

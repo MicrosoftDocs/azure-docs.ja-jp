@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 7a3468d9a0d128bd51ae742189e60bb8e2af6c0e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 96d88fafd6824ed85f1d91bab59374b3490a55b2
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50128984"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736500"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions の Event Grid トリガーのローカル デバッグ
 
@@ -62,7 +62,7 @@ ngrok http -host-header=localhost 7071
 
 *ngrok* が実行されたときに生成される **HTTPS** URL をコピーします。 この値は、Event Grid イベント エンドポイントを構成するときに使用されます。
 
- ## <a name="add-a-storage-event"></a>ストレージ イベントを追加する
+## <a name="add-a-storage-event"></a>ストレージ イベントを追加する
 
 Azure portal を開き、ストレージ アカウントに移動し、**[イベント]** オプションをクリックします。
 

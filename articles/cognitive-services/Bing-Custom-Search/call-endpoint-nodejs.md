@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js を使用して、Bing Custom Search インスタンスに検索結果を要求します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 03/04/2018
 ms.author: aahi
-ms.openlocfilehash: 3af35a9aea9115971d1fbd251da3fbaddb011c5f
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 65b0e6e9fb6f04d4536b642fe58da4e6c0f1aa69
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555797"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336583"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Custom Search エンドポイントを呼び出す
 

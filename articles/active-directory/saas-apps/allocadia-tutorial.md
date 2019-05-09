@@ -1,263 +1,240 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Allocadia の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Allocadia の統合 | Microsoft Docs
 description: Azure Active Directory と Allocadia の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: c415fc55-6dc1-49f2-a8a2-2fc6e3790d65
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/23/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a25fbd4daaa4d1fb09d788ba7ab61392ffb100f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ab731bf7526521f6c091d2cd7d7d296636f76f67
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043916"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855990"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>チュートリアル: Azure Active Directory と Allocadia の統合
+# <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>チュートリアル:Azure Active Directory と Allocadia の統合
 
 このチュートリアルでは、Allocadia と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Allocadia と Azure AD の統合には、次の利点があります。
 
-- Allocadia にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Allocadia にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+* Allocadia にアクセスするユーザーを Azure AD で管理できます。
+* ユーザーが自分の Azure AD アカウントを使用して Allocadia に自動的にサインイン (シングル サインオン) するように設定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Allocadia と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Allocadia でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Allocadia のシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Allocadia の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Allocadia では、**IDP** Initiated SSO がサポートされます
+* Allocadia では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-allocadia-from-the-gallery"></a>ギャラリーからの Allocadia の追加
+
 Azure AD への Allocadia の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Allocadia を追加する必要があります。
 
 **ギャラリーから Allocadia を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Active Directory][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[アプリケーション]][2]
-    
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[アプリケーション]][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. [検索] ボックスに、「 **Allocadia**」と入力します。
+4. 検索ボックスに「**Allocadia**」と入力し、結果ウィンドウで **[Allocadia]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/allocadia-tutorial/tutorial_allocadia_search.png)
+     ![結果一覧の Allocadia](common/search-new-app.png)
 
-5. 結果ウィンドウで **[Allocadia]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-    ![Azure AD のテスト ユーザーの作成](./media/allocadia-tutorial/tutorial_allocadia_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" という名前のテスト ユーザーに基づいて、Allocadia で Azure AD のシングル サインオンを構成およびテストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Allocadia ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Allocadia の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-Allocadia で、Azure AD での **[ユーザー名]** の値を **[ユーザー名]** の値として割り当てることによってリンク関係を確立します。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Allocadia で Azure AD のシングル サインオンを構成およびテストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Allocadia 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Allocadia で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Allocadia テスト ユーザーの作成](#creating-an-allocadia-test-user)** - Azure AD でのユーザーにリンクされた、Allocadia での Britta Simon の対応するユーザーを作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Allocadia シングル サインオンの構成](#configure-allocadia-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Allocadia のテスト ユーザーの作成](#create-allocadia-test-user)** - Allocadia で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、Allocadia アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Allocadia で Azure AD のシングル サインオンを構成するには、次の手順を実行します。**
+Allocadia で Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. Azure Portal の **[Allocadia]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **[Allocadia]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![Configure single sign-on][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-3. **[Allocadia Domain and URLs] \(Allocadia のドメインと URL)** セクションで、次の手順を実行します。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    a. **[識別子]** テキスト ボックスに、次のパターンを使用して URL を入力します。 
-       
-     テスト環境の場合 - `https://na2standby.allocadia.com`
-    
-     運用環境の場合 - `https://na2.allocadia.com`
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    b. **[応答 URL]** ボックスに、次の形式で URL を入力します。 
-    
-     テスト環境の場合 - `https://na2standby.allocadia.com/allocadia/saml/SSO`
-    
-     運用環境の場合 - `https://na2.allocadia.com/allocadia/saml/SSO`
+4. **[SAML でシングル サインオンをセットアップします]** ページで、次の手順を実行します。
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Allocadia サポート チーム](mailTo:support@allocadia.com)に問い合わせてください。
+    ![[Allocadia のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-4. Allocadia アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットは、この構成の例を示しています。 
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_attributes.png)
-    
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
-    
-    | 属性名 | 属性値 |
-    | ------------------- | -------------------- |    
+    テスト環境の場合 - `https://na2standby.allocadia.com`
+
+    運用環境の場合 - `https://na2.allocadia.com`
+
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+
+    テスト環境の場合 - `https://na2standby.allocadia.com/allocadia/saml/SSO`
+
+    運用環境の場合 - `https://na2.allocadia.com/allocadia/saml/SSO`
+
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Allocadia クライアント サポート チーム](mailto:support@allocadia.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+
+5. Allocadia アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+
+    ![image](common/edit-attribute.png)
+
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+
+    | Name | ソース属性|
+    | ------------------- | -------------------- |
     | firstname | User.givenname |
     | lastname | User.surname |
     | email | User.mail |
-    
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    | | |
 
-    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_attribute_04.png)
+    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_attribute_05.png)
+    c. **[名前空間]** は空白のままにします。
 
-    c. **[値]** 一覧から、その行に対して表示される値を入力します。
- 
-    d. **[OK]** をクリックします。
+    d. [ソース] として **[属性]** を選択します。
 
+    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
+    f. **[OK]** をクリックします。
 
-6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+    g. **[Save]** をクリックします。
 
-    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_certificate.png) 
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-7. **[保存]** ボタンをクリックします。
+8. **[Allocadia のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
-    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_general_400.png)
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-8. **Allocadia** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [Allocadia サポート チーム](mailTo:support@allocadia.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+    a. ログイン URL
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+    b. Azure AD 識別子
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    c. ログアウト URL
+
+### <a name="configure-allocadia-single-sign-on"></a>Allocadia のシングル サインオンの構成
+
+**Allocadia** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Allocadia サポート チーム](mailto:support@allocadia.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/allocadia-tutorial/create_aaduser_01.png) 
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/allocadia-tutorial/create_aaduser_02.png) 
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/allocadia-tutorial/create_aaduser_03.png) 
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/allocadia-tutorial/create_aaduser_04.png) 
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="creating-an-allocadia-test-user"></a>Allocadia テスト ユーザーの作成
 
-アプリケーションは、ジャストインタイム ユーザー プロビジョニングをサポートします。 認証の後、アプリケーションでユーザーが自動的に作成されます。
-
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Allocadia へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200] 
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Allocadia]** の順に選択します。
 
-**Britta Simon を Allocadia に割り当てるには、次の手順を実行します。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で **[Allocadia]** を選択します。
 
-    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_app.png) 
+    ![アプリケーション一覧の Allocadia のリンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![ユーザーの割り当て][202] 
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+
+### <a name="create-allocadia-test-user"></a>Allocadia のテスト ユーザーの作成
+
+このセクションでは、Britta Simon というユーザーを Allocadia に作成します。 Allocadia では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Allocadia にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Allocadia のタイルをクリックすると、自動的に Allocadia アプリケーションにサインオンします。
-アクセス パネルの詳細については、「[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください
+アクセス パネル上で [Allocadia] タイルをクリックすると、SSO を設定した Allocadia に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/allocadia-tutorial/tutorial_general_01.png
-[2]: ./media/allocadia-tutorial/tutorial_general_02.png
-[3]: ./media/allocadia-tutorial/tutorial_general_03.png
-[4]: ./media/allocadia-tutorial/tutorial_general_04.png
-
-[100]: ./media/allocadia-tutorial/tutorial_general_100.png
-
-[200]: ./media/allocadia-tutorial/tutorial_general_200.png
-[201]: ./media/allocadia-tutorial/tutorial_general_201.png
-[202]: ./media/allocadia-tutorial/tutorial_general_202.png
-[203]: ./media/allocadia-tutorial/tutorial_general_203.png
-
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 982ed4533c34cd4a6613d289ef4712001977538f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d67c3e452da05c626721d4c3144e612e6f9e0af4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436220"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338446"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache DataFu Pig を使用する
 
@@ -90,7 +90,9 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
 >
 > * クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用します。 たとえば、「 `register wasb:///example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
 >
-> * クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用します。 たとえば、「 `register adl://home/example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
+> * クラスターで Azure Data Lake Store Gen2 を使用する場合は、`abfs://` パスを使用します。 たとえば、「 `register abfs://home/example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
+>
+> * クラスターで Azure Data Lake Store Gen1 を使用する場合は、`adl://` パスを使用します。 たとえば、「 `register adl://home/example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
 
 通常は、DataFu の関数にエイリアスを定義します。 次の例では、`SHA` のエイリアスを定義しています。
 

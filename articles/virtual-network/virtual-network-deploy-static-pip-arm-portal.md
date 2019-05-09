@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9b6db45e38267c70adef3f5a341b8b918b9e78fb
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 42e035b9dca6168fe77e6982505692cf18bfcb40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106425"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
@@ -71,7 +71,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     ![パブリック IP アドレスの表示](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
-仮想マシンのオペレーティング システム内の IP アドレス設定は変更しないでください。 オペレーティング システムは、Azure のパブリック IP アドレスを認識しません。 プライベート IP アドレスの設定をオペレーティング システムに追加できますが、必要でない限り、この操作は行わないことをお勧めします。必要な場合は、[オペレーティング システムへのプライベート IP アドレスの追加](virtual-network-network-interface-addresses.md#private)に関する記事を読んだ後で行うことをお勧めします。
+> 仮想マシンのオペレーティング システム内の IP アドレス設定は変更しないでください。 オペレーティング システムは、Azure のパブリック IP アドレスを認識しません。 プライベート IP アドレスの設定をオペレーティング システムに追加できますが、必要でない限り、この操作は行わないことをお勧めします。必要な場合は、[オペレーティング システムへのプライベート IP アドレスの追加](virtual-network-network-interface-addresses.md#private)に関する記事を読んだ後で行うことをお勧めします。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

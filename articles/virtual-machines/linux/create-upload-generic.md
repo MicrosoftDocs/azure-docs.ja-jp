@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235974"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105524"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -152,7 +152,7 @@ Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行
 * [scsi_sysfs: __scsi_remove_device の二重実行を保護する](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
 ## <a name="the-azure-linux-agent"></a>Azure Linux エージェント
-[Azure Linux エージェント](../extensions/agent-linux.md) `waagent` は Azure で Linux 仮想マシンをプロビジョニングします。 [Linux Agent GitHub リポジトリ](https://github.com/Azure/WALinuxAgent)で、最新バージョンの取得、問題の報告、プル リクエストの提出が行うことができます。
+[Azure Linux エージェント](../extensions/agent-linux.md) `waagent` は Azure で Linux 仮想マシンをプロビジョニングします。 [Linux Agent GitHub リポジトリ](https://github.com/Azure/WALinuxAgent)で、最新バージョンの取得、問題の報告、pull request の提出が行うことができます。
 
 * Linux エージェントは、Apache 2.0 ライセンス下でリリースされています。 数多くのディストリビューションでは、このエージェント用の RPM パッケージや deb パッケージを既に提供しているため、これらのパッケージを簡単にインストールし、更新できます。
 * Azure Linux エージェントには、Python v2.6 以上が必要です。
@@ -172,13 +172,13 @@ Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行
     ```
     クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
-2. Azure Linux エージェントをインストールします。
+1. Azure Linux エージェントをインストールします。
   
     Azure Linux エージェントは、Azure で Linux イメージをプロビジョニングするために必要です。  多くのディストリビューションでは、このエージェントを RPM または Deb パッケージとして提供しています (パッケージは、通常 WALinuxAgent または walinuxagent と呼ばれます)。  このエージェントは、 [Linux エージェント ガイド](../extensions/agent-linux.md)の手順に従って手動でもインストールできます。
 
-3. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  この構成が通常の既定です。
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  この構成が通常の既定です。
 
-4. OS ディスクにスワップ領域を作成しないでください。
+1. OS ディスクにスワップ領域を作成しないでください。
   
     Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。 ローカル リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空になることがあります。 Azure Linux エージェントのインストール後に (上記の手順 2)、/etc/waagent.conf にある次のパラメーターを必要に応じて変更します。
     ```  
@@ -188,15 +188,15 @@ Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: Set this to your desired size.
     ```
-* 次のコマンドを実行して仮想マシンをプロビジョニング解除します。
+1. 次のコマンドを実行して仮想マシンをプロビジョニング解除します。
   
-    ```
-    sudo waagent -force -deprovision
-    export HISTSIZE=0
-    logout
-    ```  
-  > [!NOTE]
-  > Virtualbox では、`waagent -force -deprovision` の実行後に次のエラーが表示される場合があります: `[Errno 5] Input/output error`。 このエラー メッセージは重要ではないため、無視してかまいません。
+     ```
+     sudo waagent -force -deprovision
+     export HISTSIZE=0
+     logout
+     ```  
+   > [!NOTE]
+   > Virtualbox では、`waagent -force -deprovision` の実行後に次のエラーが表示される場合があります: `[Errno 5] Input/output error`。 このエラー メッセージは重要ではないため、無視してかまいません。
 
 * 仮想マシンをシャットダウンし、Azure に VHD をアップロードします。
 

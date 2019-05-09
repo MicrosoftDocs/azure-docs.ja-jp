@@ -14,45 +14,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 47f02c008a0498492af3503d90fda8ff6e2eefa8
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: cc4fb07874015112791ef2eaf9c39b31b690006c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142201"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978665"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>複数の NIC を持つ Windows 仮想マシンの作成と管理
 Azure の仮想マシン (VM) は、複数の仮想ネットワーク インターフェイス カード (NIC) を持つことができます。 一般的なシナリオは、フロントエンドとバックエンドの接続に異なるサブネットを使用する場合です。 VM 上の複数の NIC を複数のサブネットに関連付けることはできますが、それらのサブネットはすべて同じ仮想ネットワーク (vNet) 内に存在する必要があります。 この記事では、複数の NIC を持つ VM を作成する方法について説明します。 既存の VM に NIC を追加するまたはそこから NIC を削除する方法についても説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
 ## <a name="prerequisites"></a>前提条件
-[最新バージョンの Azure PowerShell がインストールおよび構成](/powershell/azure/overview)されていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-a-vm-with-multiple-nics"></a>複数 NIC を持つ VM の作成
 まず、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *EastUs* に作成します。
 
 ```powershell
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
 ### <a name="create-virtual-network-and-subnets"></a>仮想ネットワークとサブネットの作成
 一般的なシナリオでは、仮想ネットワークが 2 つ以上のサブネットを持ちます。 一方のサブネットがフロントエンド トラフィック用で、他方がバックエンド トラフィック用です。 両方のサブネットに接続するには、VM 上で複数の NIC を使用します。
 
-1. [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用して 2 つの仮想ネットワーク サブネットを定義します。 次の例では、*mySubnetFrontEnd* と *mySubnetBackEnd* のサブネットを定義します。
+1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して 2 つの仮想ネットワーク サブネットを定義します。 次の例では、*mySubnetFrontEnd* と *mySubnetBackEnd* のサブネットを定義します。
 
     ```powershell
-    $mySubnetFrontEnd = New-AzureRmVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
+    $mySubnetFrontEnd = New-AzVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
         -AddressPrefix "192.168.1.0/24"
-    $mySubnetBackEnd = New-AzureRmVirtualNetworkSubnetConfig -Name "mySubnetBackEnd" `
+    $mySubnetBackEnd = New-AzVirtualNetworkSubnetConfig -Name "mySubnetBackEnd" `
         -AddressPrefix "192.168.2.0/24"
     ```
 
-2. [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークとサブネットを作成します。 次の例では、*myVnet* という名前の仮想ネットワークを作成します。
+2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークとサブネットを作成します。 次の例では、*myVnet* という名前の仮想ネットワークを作成します。
 
     ```powershell
-    $myVnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" `
+    $myVnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
         -Location "EastUs" `
         -Name "myVnet" `
         -AddressPrefix "192.168.0.0/16" `
@@ -61,17 +61,17 @@ New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 
 ### <a name="create-multiple-nics"></a>複数の NIC の作成
-[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して、2 つの NIC を作成します。 1 つをフロントエンド サブネットに、もう 1 つをバックエンド サブネットにアタッチします。 次の例では、*myNic1* と *myNic2* という名前の NIC を作成します。
+[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して、2 つの NIC を作成します。 1 つをフロントエンド サブネットに、もう 1 つをバックエンド サブネットにアタッチします。 次の例では、*myNic1* と *myNic2* という名前の NIC を作成します。
 
 ```powershell
 $frontEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetFrontEnd'}
-$myNic1 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+$myNic1 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic1" `
     -Location "EastUs" `
     -SubnetId $frontEnd.Id
 
 $backEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetBackEnd'}
-$myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+$myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic2" `
     -Location "EastUs" `
     -SubnetId $backEnd.Id
@@ -88,39 +88,39 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     $cred = Get-Credential
     ```
 
-2. [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) を使用して VM を定義します。 次の例では、*myVM* という名前の VM を定義し、2 つ以上の NIC をサポートする VM サイズを使用しています (*Standard_DS3_v2*)。
+2. [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) を使用して VM を定義します。 次の例では、*myVM* という名前の VM を定義し、2 つ以上の NIC をサポートする VM サイズを使用しています (*Standard_DS3_v2*)。
 
     ```powershell
-    $vmConfig = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
+    $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
     ```
 
-3. [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) と [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) を使用して、残りの VM 構成を作成します。 次の例では、Windows Server 2016 の VM を作成します。
+3. [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) と [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) を使用して、残りの VM 構成を作成します。 次の例では、Windows Server 2016 の VM を作成します。
 
     ```powershell
-    $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig `
+    $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `
         -Windows `
         -ComputerName "myVM" `
         -Credential $cred `
         -ProvisionVMAgent `
         -EnableAutoUpdate
-    $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig `
+    $vmConfig = Set-AzVMSourceImage -VM $vmConfig `
         -PublisherName "MicrosoftWindowsServer" `
         -Offer "WindowsServer" `
         -Skus "2016-Datacenter" `
         -Version "latest"
    ```
 
-4. 以前に作成した 2 つの NIC を [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) にアタッチします。
+4. 以前に作成した 2 つの NIC を [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) にアタッチします。
 
     ```powershell
-    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
-    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
+    $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
+    $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。
+5. [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成します。
 
     ```powershell
-    New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
+    New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
     ```
 
 6. [複数の NIC 用のオペレーティング システムの構成](#configure-guest-os-for-multiple-nics)に関する記事の手順を完了して、セカンダリ NIC の OS へのルートを追加します。
@@ -128,34 +128,34 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
 ## <a name="add-a-nic-to-an-existing-vm"></a>既存の VM への NIC の追加
 既存の VM に仮想 NIC を追加するには、この VM の割り当てを解除し、仮想 NIC を追加してから、VM を起動します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。 必要な場合は、[VM のサイズを変更できます](resize-vm.md)。
 
-1. [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* 内の *myVM* という VM の割り当てを解除します。
+1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* 内の *myVM* という VM の割り当てを解除します。
 
     ```powershell
-    Stop-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
+    Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. [Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm) を使用して、VM の既存の構成を取得します。 次の例では、*myResourceGroup* の *myVM* という名前の VM の情報を取得します。
+2. [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して、VM の既存の構成を取得します。 次の例では、*myResourceGroup* の *myVM* という名前の VM の情報を取得します。
 
     ```powershell
-    $vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
+    $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. 次の例では、*mySubnetBackEnd* にアタッチされる *myNic3* という名前の [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して、仮想 NIC を作成します。 この仮想 NIC は、[Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) を使用して、*myResourceGroup* の *myVM* という名前の VM にアタッチされます。
+3. 次の例では、*mySubnetBackEnd* にアタッチされる *myNic3* という名前の [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想 NIC を作成します。 この仮想 NIC は、[Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) を使用して、*myResourceGroup* の *myVM* という名前の VM にアタッチされます。
 
     ```powershell
     # Get info for the back end subnet
-    $myVnet = Get-AzureRmVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
+    $myVnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
     $backEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetBackEnd'}
 
     # Create a virtual NIC
-    $myNic3 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+    $myNic3 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
         -Name "myNic3" `
         -Location "EastUs" `
         -SubnetId $backEnd.Id
 
     # Get the ID of the new virtual NIC and add to VM
-    $nicId = (Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" -Name "MyNic3").Id
-    Add-AzureRmVMNetworkInterface -VM $vm -Id $nicId | Update-AzureRmVm -ResourceGroupName "myResourceGroup"
+    $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "MyNic3").Id
+    Add-AzVMNetworkInterface -VM $vm -Id $nicId | Update-AzVm -ResourceGroupName "myResourceGroup"
     ```
 
     ### <a name="primary-virtual-nics"></a>プライマリ仮想 NIC
@@ -170,13 +170,13 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     $vm.NetworkProfile.NetworkInterfaces[1].Primary = $false
     
     # Update the VM state in Azure
-    Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroup"
+    Update-AzVM -VM $vm -ResourceGroupName "myResourceGroup"
     ```
 
-4. [Start-AzureRmVm](/powershell/module/azurerm.compute/start-azurermvm) を使用して VM を起動します。
+4. [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) を使用して VM を起動します。
 
     ```powershell
-    Start-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+    Start-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
 5. [複数の NIC 用のオペレーティング システムの構成](#configure-guest-os-for-multiple-nics)に関する記事の手順を完了して、セカンダリ NIC の OS へのルートを追加します。
@@ -184,38 +184,38 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
 ## <a name="remove-a-nic-from-an-existing-vm"></a>既存の VM からの NIC の削除
 既存の VM から仮想 NIC を削除するには、この VM の割り当てを解除し、仮想 NIC を削除してから、VM を起動します。
 
-1. [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* 内の *myVM* という VM の割り当てを解除します。
+1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* 内の *myVM* という VM の割り当てを解除します。
 
     ```powershell
-    Stop-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
+    Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. [Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm) を使用して、VM の既存の構成を取得します。 次の例では、*myResourceGroup* の *myVM* という名前の VM の情報を取得します。
+2. [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して、VM の既存の構成を取得します。 次の例では、*myResourceGroup* の *myVM* という名前の VM の情報を取得します。
 
     ```powershell
-    $vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
+    $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) を使用して、NIC 削除についての情報を取得します。 次の例では、*myNic3* に関する情報を取得します。
+3. [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface) を使用して、NIC 削除についての情報を取得します。 次の例では、*myNic3* に関する情報を取得します。
 
     ```powershell
     # List existing NICs on the VM if you need to determine NIC name
     $vm.NetworkProfile.NetworkInterfaces
 
-    $nicId = (Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
+    $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. [Remove-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface) を使用して NIC を削除してから [Update-AzureRmVm](/powershell/module/azurerm.compute/update-azurermvm) を使用して VM を更新します。 次の例では、前記の手順で `$nicId` が取得した *myNic3* を削除します。
+4. [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) を使用して NIC を削除してから [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) を使用して VM を更新します。 次の例では、前記の手順で `$nicId` が取得した *myNic3* を削除します。
 
     ```powershell
-    Remove-AzureRmVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
-        Update-AzureRmVm -ResourceGroupName "myResourceGroup"
+    Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
+        Update-AzVm -ResourceGroupName "myResourceGroup"
     ```   
 
-5. [Start-AzureRmVm](/powershell/module/azurerm.compute/start-azurermvm) を使用して VM を起動します。
+5. [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) を使用して VM を起動します。
 
     ```powershell
-    Start-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
+    Start-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>テンプレートを使用した複数の NIC の作成

@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 2e5b90f36a6dc5c88db3f6f449c911d22de680b1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976802"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149021"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
@@ -22,7 +22,7 @@ ms.locfileid: "53976802"
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、次のものが既にあることを前提としています。
-- Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
+- Recovery Services コンテナー ([Azure Portal](https://portal.azure.com "Azure Portal") 内)。
 - 構成サーバーをインストールするための物理コンピューター。
 - 構成サーバーをインストールしているコンピューターで TLS 1.0 を無効にした場合は、TLS 1.2 が有効になっていることを確認し、(強力な暗号化を無効にした) コンピューターに .NET Framework バージョン 4.6 以降がインストールされていることを確認します。 [詳細情報](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "53976802"
 
 1. **[ソースの準備]** で、構成サーバーがない場合は **[+ 構成サーバー]** をクリックして追加します。
 
-  ![Set up source](./media/physical-azure-set-up-source/plus-config-srv.png)
+   ![Set up source](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
 5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。

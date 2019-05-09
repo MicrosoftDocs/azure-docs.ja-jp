@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 49b5978fd647a4667503676528120a36495021c6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08d6d0c31e1cff799e952c50bae3446e41477aba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730402"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104571"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>アプリごとのスケーリングを使って Azure App Service で高密度ホスティングを実現する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 App Service のアプリをスケーリングするときは、そのアプリを実行する [App Service プラン](overview-hosting-plans.md)をスケーリングするのが既定の方法です。 同じ App Service プランでアプリを複数実行している場合には、スケールアウトしたインスタンスのそれぞれがプラン内のアプリをすべて実行することになります。
 
 App Service プラン レベルでは、"*アプリごとのスケーリング*" を有効にすることができます。 アプリごとのスケーリングを使うと、アプリがそのホストとなる App Service プランとは無関係にスケーリングされます。 これにより、App Service プランを 10 個のインスタンスにスケーリングしながら、5 個のインスタンスだけを使用するようにアプリを設定することが可能になります。
@@ -33,20 +36,20 @@ App Service プラン レベルでは、"*アプリごとのスケーリング*"
 
 ## <a name="per-app-scaling-using-powershell"></a>PowerShell を使用したアプリごとのスケーリング
 
-プランの作成時にアプリごとのスケーリングを有効にする場合には、```New-AzureRmAppServicePlan``` コマンドレットに ```-PerSiteScaling $true``` パラメーターを渡します。
+プランの作成時にアプリごとのスケーリングを有効にする場合には、```New-AzAppServicePlan``` コマンドレットに ```-PerSiteScaling $true``` パラメーターを渡します。
 
 ```powershell
-New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
+New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -Location $Location `
                             -Tier Premium -WorkerSize Small `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-```Set-AzureRmAppServicePlan```コマンドレットに `-PerSiteScaling $true` パラメーターを渡すことで、既存の App Service プランによるアプリごとのスケーリングを有効にします。
+```Set-AzAppServicePlan```コマンドレットに `-PerSiteScaling $true` パラメーターを渡すことで、既存の App Service プランによるアプリごとのスケーリングを有効にします。
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
-Set-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup `
+Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
    -Name $AppServicePlan -PerSiteScaling $true
 ```
 
@@ -56,13 +59,13 @@ Set-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup `
 
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
-$newapp = Get-AzureRmWebApp -ResourceGroupName $ResourceGroup -Name $webapp
+$newapp = Get-AzWebApp -ResourceGroupName $ResourceGroup -Name $webapp
     
 # Modify the NumberOfWorkers setting to the desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
     
 # Post updated app back to azure
-Set-AzureRmWebApp $newapp
+Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]

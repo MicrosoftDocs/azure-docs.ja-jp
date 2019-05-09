@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: b21c378d58590e33c7b6aeffe627ce5602074fa2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 42da285fbb55df43959506996bcde9cf547c2a22
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524622"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439267"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 
@@ -70,7 +70,7 @@ K:\Temp\FavoriteVideo.ISO,favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\my
 
 さらに、すべてのファイルの次のメタデータを設定できます。
 
-* **UploadMethod:** Windows Azure Import/Export サービス
+* **UploadMethod:** Microsoft Azure Import/Export サービス
 * **DataSetName:** SampleData
 * **CreationDate:** 10/1/2013
 
@@ -112,7 +112,7 @@ K:\Temp\FavoriteVideo.ISO,favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\my
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset-1.csv /DataSet:dataset-1.csv /logdir:F:\logs
 ```
 
-データをさらに追加する必要がある場合は、別のデータセット ファイル (Initialdataset と同じ形式) を作成します。
+データをさらに追加する必要がある場合は、別のデータセット ファイル (初期データセットと同じ形式) を作成します。
 
 **2 番目のセッション:**
 

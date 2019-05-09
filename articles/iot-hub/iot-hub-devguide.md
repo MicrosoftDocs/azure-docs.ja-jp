@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub の開発者ガイド | Microsoft Docs
 description: Azure IoT Hub 開発者ガイドには、エンドポイント、セキュリティ、ID レジストリ、デバイス管理、ダイレクト メソッド、デバイス ツイン、ファイルのアップロード、ジョブ、IoT Hub のクエリ言語、およびメッセージングの説明が含まれています。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: dobett
-ms.openlocfilehash: ecbec614bd0d1b043faf6ad002b05d4acdcc4ab4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041749"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450993"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub 開発者ガイド
 

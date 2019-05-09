@@ -1,26 +1,26 @@
 ---
-title: 'Azure Active Directory Domain Services: マネージド ドメインを管理する | Microsoft Docs'
+title: Azure Active Directory Domain Services:マネージド ドメインを管理する | Microsoft Docs
 description: Azure Active Directory Domain Services マネージド ドメインを管理する
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: dab1547ca17acaeda3cb168d78b342661ebe4615
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f1e3272bd8f0d353a7bf817d7f79d2d596277caa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230480"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173827"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインを管理する
 この記事では、Azure Active Directory (AD) ドメイン サービスのマネージド ドメインを管理する方法について説明します。

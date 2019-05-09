@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: e1545e830ac04000920c3881486b2add79744201
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d76a644de8cb55da5e743e482d14946d371c3dfe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548869"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867237"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -61,7 +61,7 @@ Azure Database for MySQL では、サーバーの過去の特定時点まで遡�
 
 3. [復元] フォームに必要な情報を入力します。
 
-   ![Azure Database for MySQL - 情報の復元 ](./media/howto-restore-server-portal/3-restore.png)
+   ![Azure Database for MySQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
    - **復元ポイント**:復元先の特定の時点を選択します。
    - **対象サーバー**:新しいサーバーの名前を指定します。
    - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。

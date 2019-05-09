@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 ストレージ アカウントを作成す�
 description: Azure portal、Azure PowerShell、または Azure CLI を使用して、Data Lake Storage Gen2 にアクセスできる新しいストレージ アカウントを作成する方法をすばやく学習します
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: d093dbe50cb76faedc463603edc459b22dda4fba
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2eb57268aece081423b6b0beaa314a244b6fdd8f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628240"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456008"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
@@ -76,14 +76,14 @@ Azure Portal でリソース グループを作成するには、次の手順に
 5. リソース グループの場所を選択します。
 6. **[作成]** ボタンをクリックします。  
 
-   ![Azure Portal でのリソース グループの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
+   ![Azure portal でのリソース グループの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントを作成する
 
 Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
 > [!NOTE]
-> 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。 現在ソブリン クラウドでは利用できません。
+> 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。
 
 1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[すべてのサービス]** を選択します。 次に、下へスクロールして **[ストレージ]** の **[ストレージ アカウント]** を選択します。 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
 2. 先ほど作成した**サブスクリプション**と**リソース グループ**を選択します。
@@ -93,10 +93,10 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 6. ストレージ アカウントを作成するサブスクリプションを選択します。
 7. **[次へ] > [詳細]** の順に選択します。
 8. **[セキュリティ]** および **[仮想ネットワーク]** フィールド下の値は既定の設定のままにします。
-9. **[Data Lake Storage Gen2 (preview)]\(Data Lake Storage Gen2 (プレビュー)\)** セクションで、**[Hierarchical namespace]\(階層構造の名前空間\)** を **[有効]** に設定します。
+9. **[Data Lake Storage Gen2]** セクションで、**[階層構造の名前空間]** を **[有効]** に設定します。
 10. **[確認および作成]** をクリックして、ストレージ アカウントを作成します。
 
-    ![Azure Portal でのストレージ アカウントの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
+    ![Azure portal でのストレージ アカウントの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
 
 これで、ご自身のストレージ アカウントがポータルで作成されました。
 
@@ -125,11 +125,8 @@ PowerShell を使用して Data Lake Storage Gen2 を操作するには、モジ
 Az.Storage モジュールのインストール
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -RequiredVersion 0.7.0 -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
 ```
-
-> [!NOTE]
-> Azure Powershell Az モジュールは、Powershell の Azure サービスを操作する場合に推奨されるモジュールです。 詳細については、「[新しい Azure PowerShell Az モジュールの概要](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)」を参照してください。
 
 ### <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションへのログイン
 
@@ -144,7 +141,7 @@ Login-AzAccount
 PowerShell で新しいリソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用します。 
 
 > [!NOTE]
-> 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。 現在ソブリン クラウドでは利用できません。
+> 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -195,7 +192,7 @@ CLI を使用して Data Lake Storage Gen2 と対話するには、お使いの�
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-Azure CLI で新しいリソース グループを作成するには、[az group create](/cli/azure/group#az_group_create) コマンドを使用します。
+Azure CLI で新しいリソース グループを作成するには、[az group create](/cli/azure/group) コマンドを使用します。
 
 ```azurecli-interactive
 az group create `
@@ -204,11 +201,11 @@ az group create `
 ```
 
 > [!NOTE]
-> > 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。 現在ソブリン クラウドでは利用できません。
+> > 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントを作成する
 
-ローカル冗長ストレージを使用して汎用 v2 ストレージ アカウントを Azure CLI から作成するには、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用します。
+ローカル冗長ストレージを使用して汎用 v2 ストレージ アカウントを Azure CLI から作成するには、[az storage account create](/cli/azure/storage/account) コマンドを使用します。
 
 ```azurecli-interactive
 az storage account create `
@@ -222,7 +219,7 @@ az storage account create `
 
 ### <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-リソース グループと関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用します。
+リソース グループと関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[az group delete](/cli/azure/group) コマンドを使用します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

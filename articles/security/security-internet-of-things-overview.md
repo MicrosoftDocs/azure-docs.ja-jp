@@ -4,7 +4,7 @@ description: " Azure IoT (モノのインターネット) サービスには、�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 1473c8dd-8669-48fb-86db-b3c50e2eaf59
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 41e422d0808cafb45b182c5f0a6bb7176a35516f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: db1c2b9c852479b9af3674f6c5e1f1135ee289f1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35758622"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114079"
 ---
 # <a name="internet-of-things-security-overview"></a>モノのインターネットのセキュリティの概要
 Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。 このエンタープライズ クラスのサービスを使用すると、次の操作を実行できます。
@@ -45,7 +45,7 @@ IoT のセキュリティ アーキテクチャについて詳しくは、「 [�
 
 * [セキュリティの第一歩は脅威モデル](/azure/iot-fundamentals/iot-security-architecture#security-starts-with-a-threat-model)
 * [IoT のセキュリティ](/azure/iot-fundamentals/iot-security-architecture#security-in-iot)
-* [Azure IoT リファレンス アーキテクチャの脅威のモデル化](/azure/iot-fundamentals/iot-security-architecture#threat-modeling-the-azure-iot-reference-architecture)
+* [Azure IoT リファレンス アーキテクチャの脅威のモデル化](/azure/iot-fundamentals/iot-security-architecture)
 
 ## <a name="security-from-the-ground-up"></a>徹底的なセキュリティ
 IoT は、世界各地の企業に固有のセキュリティ、プライバシー、およびコンプライアンスの課題をもたらします。 ソフトウェアとその実装方法に関する問題が発生した場合、従来のサイバー テクノロジとは異なり、IoT ではサイバーおよび物理世界が融合すると何が起こるかが懸念されます。 IoT ソリューションを保護するには、デバイスの安全なプロビジョニング、デバイスとクラウド間の安全な接続、処理中および保管中のクラウドでの安全なデータ保護を確実に行う必要があります。 ただし、そのような機能には、リソースが限られたデバイス、デプロイの地理的分散、およびソリューション内の多数のデバイスという問題が伴います。

@@ -1,23 +1,24 @@
 ---
-title: Azure Active Directory B2C の承認コード フロー | Microsoft Docs
+title: 承認コード フロー - Azure Active Directory B2C | Microsoft Docs
 description: Azure AD B2C と OpenID Connect 認証プロトコルを使用して Web アプリをビルドする方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/19/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: c6d976869f2a068c393a643bb97cae2f7ac1a470
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 4ee67f07965036a71151d7b6a5092b9a76d94999
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843191"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428688"
 ---
-# <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C:OAuth 2.0 承認コード フロー
+# <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 承認コード フロー
+
 OAuth 2.0 認証コード付与を利用して、デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えることができます。 Azure Active Directory B2C (Azure AD B2C) で導入された OAuth 2.0 を利用することで、サインアップ、サインイン、その他の ID 管理タスクをモバイル アプリとデスクトップ アプリに追加できます。 この記事は言語に依存しません。 この記事では、オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
 
 OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](https://tools.ietf.org/html/rfc6749)で規定されています。 Web アプリケーションやネイティブにインストールされるアプリケーションを含め、多くの[アプリケーションの種類](active-directory-b2c-apps.md)で認証と承認を行う際にこのフローを利用できます。 OAuth 2.0 承認コード フローを利用して、[承認サーバー](active-directory-b2c-reference-protocols.md)で保護されているリソースにアクセスするために使用できる、アプリケーション用のアクセス トークンと更新トークンを安全に取得できます。  クライアントは、更新トークンを使用して、アクセス トークンの期限が切れた後 (通常は 1 時間後)、新しいアクセス (および更新) トークンを取得できます。
@@ -27,7 +28,7 @@ OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.
 > [!NOTE]
 > Azure AD B2C を利用して Web アプリに ID 管理を追加するには、OAuth 2.0 ではなく、[OpenID Connect](active-directory-b2c-reference-oidc.md) を使用してください。
 
-Azure AD B2C は、単純な認証と承認以上のことができるように標準の OAuth 2.0 プロトコルを拡張したものです。 これには、[ユーザー フロー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ユーザー フローと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをアプリケーションに追加できます。 この記事では、OAuth 2.0 とユーザー フローを使用して、ネイティブ アプリケーションにこれらの各エクスペリエンスを導入する方法について説明します。 Web API にアクセスするためのアクセス トークンを取得する方法についても説明します。
+Azure AD B2C は、単純な認証と承認以上のことができるように標準の OAuth 2.0 プロトコルを拡張したものです。 これには、[ユーザー フロー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ユーザー フローと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをアプリケーションに追加できます。 OAuth 2.0 プロトコルを使用する ID プロバイダーとしては、[Amazon](active-directory-b2c-setup-amzn-app.md)、[Azure Active Directory](active-directory-b2c-setup-oidc-azure-active-directory.md)、[Facebook](active-directory-b2c-setup-fb-app.md)、[GitHub](active-directory-b2c-setup-github-app.md)、[Google](active-directory-b2c-setup-goog-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md) などがあります。
 
 この記事の HTTP 要求例では、サンプルの Azure AD B2C ディレクトリ **fabrikamb2c.onmicrosoft.com** を使用します。 また、サンプル アプリケーションとユーザー フローも使用します。 それらの値を利用して、要求を試すことができます。または、独自の値で置き換えることもできます。
 [独自の Azure AD B2C ディレクトリ、アプリケーション、ユーザー フローの取得方法](#use-your-own-azure-ad-b2c-directory)について学習してください。

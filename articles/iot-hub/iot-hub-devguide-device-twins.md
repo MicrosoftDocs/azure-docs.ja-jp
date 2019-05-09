@@ -1,18 +1,19 @@
 ---
 title: Azure IoT Hub デバイス ツインについて | Microsoft Docs
 description: 開発者ガイド - デバイス ツインを使用して、IoT Hub とデバイス間で状態と構成を同期する
-author: fsautomata
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: elioda
-ms.openlocfilehash: 7f66c87322aadafaa7167dff4190de6d08e5d18d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 883e81572218e39d84ad8793423b02468d49d00a
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338415"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294061"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -179,44 +180,44 @@ ms.locfileid: "53338415"
 
 * **ツイン通知の受信** この操作は、ソリューション バックエンドでツインが変更されたときに通知できるようにします。 そのためには、IoT ソリューションでルートを作成し、データ ソースの値を *twinChangeEvents* に設定する必要があります。 既定では、このようなルートは事前に存在しません。このため、ツイン通知は送信されません。 変化率が高すぎる場合、または内部エラーなどの理由のために、IoT Hub はすべての変更を含む 1 つの通知のみを送信する場合があります。 そのため、アプリケーションに信頼性の高い監査とすべての中間状態のログ記録が必要な場合は、device-to-cloud メッセージを使用する必要があります。 ツイン通知メッセージには、プロパティおよび本文が含まれます。
 
-   - Properties
+  - Properties
 
-   | Name | 値 |
-   | --- | --- |
-   $content-type | application/json |
-   $iothub-enqueuedtime |  通知が送信された時刻 |
-   $iothub-message-source | twinChangeEvents |
-   $content-encoding | utf-8 |
-   deviceId | デバイスの ID |
-   hubName | IoT Hub の名前 |
-   operationTimestamp | 操作の [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) タイムスタンプ |
-   iothub-message-schema | deviceLifecycleNotification |
-   opType | "replaceTwin" または "updateTwin" |
+    | Name | 値 |
+    | --- | --- |
+    $content-type | application/json |
+    $iothub-enqueuedtime |  通知が送信された時刻 |
+    $iothub-message-source | twinChangeEvents |
+    $content-encoding | utf-8 |
+    deviceId | デバイスの ID |
+    hubName | IoT Hub の名前 |
+    operationTimestamp | 操作の [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) タイムスタンプ |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | "replaceTwin" または "updateTwin" |
 
-   メッセージのシステム プロパティには、`$` シンボルが付きます。
+    メッセージのシステム プロパティには、`$` シンボルが付きます。
 
-   - 本文
+  - 本文
         
-   このセクションには、すべてのツイン変更が JSON 形式で含まれています。 修正プログラムと同じ形式を使用しますが、すべてのツイン セクション (タグ、properties.reported、properties.desired) を含めることができ、"$metadata" 要素を含みます。 たとえば、次のように入力します。
+    このセクションには、すべてのツイン変更が JSON 形式で含まれています。 修正プログラムと同じ形式を使用しますが、すべてのツイン セクション (タグ、properties.reported、properties.desired) を含めることができ、"$metadata" 要素を含みます。 たとえば、次のように入力します。
 
-   ```json
-   {
-       "properties": {
-           "desired": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           },
-           "reported": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           }
-       }
-   }
-   ```
+    ```json
+    {
+      "properties": {
+          "desired": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          },
+          "reported": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          }
+      }
+    }
+    ```
 
 上述の操作はすべて[オプティミスティック コンカレンシー](iot-hub-devguide-device-twins.md#optimistic-concurrency)をサポートしており、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」で定義されているとおり、**ServiceConnect** アクセス許可を必要とします。
 
@@ -309,7 +310,7 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
             "telemetryConfig": {
                 "sendFrequency": "5m",
                 "status": "success"
-            }
+            },
             "batteryLevel": "55%",
             "$metadata": {
                 "telemetryConfig": {
@@ -318,7 +319,7 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
                         "$lastUpdated": "2016-03-31T16:35:48.789Z"
                     },
                     "$lastUpdated": "2016-03-31T16:35:48.789Z"
-                }
+                },
                 "batteryLevel": {
                     "$lastUpdated": "2016-04-01T16:35:48.789Z"
                 },
@@ -382,4 +383,4 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [デバイス ツインの使用方法](iot-hub-node-node-twin-getstarted.md)
 * [デバイス ツインのプロパティの使用方法](tutorial-device-twins.md)
-* [VS Code 用 Azure IoT Hub Toolkit を使用したデバイス管理](iot-hub-device-management-iot-toolkit.md)
+* [VS Code 用の Azure IoT Tools を使用したデバイス管理](iot-hub-device-management-iot-toolkit.md)

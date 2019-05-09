@@ -3,19 +3,19 @@ title: Data Lake Storage Gen1 に関するデータ シナリオ | Microsoft Doc
 description: Data Lake Storage Gen1 (旧称 Azure Data Lake Store) でのデータの取り込み、処理、ダウンロード、視覚化に使用するさまざまなシナリオとツールについて説明します。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 64c7985508ed7f03b32340cbb2c78de61242f7e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: twooley
+ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984281"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58878759"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Data Lake Storage Gen1 を使用してビッグ データの要件に対応する
 
@@ -38,7 +38,7 @@ ms.locfileid: "46984281"
 ### <a name="ad-hoc-data"></a>アドホック データ
 これは、ビッグ データ アプリケーションのプロトタイプ作成に使用される小規模なデータ セットを表します。 アドホック データの取り込み方法は、データ ソースに応じてさまざまです。
 
-| [データ ソース] | 取り込みに使用するツール |
+| データ ソース | 取り込みに使用するツール |
 | --- | --- |
 | ローカル コンピューター |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage BLOB |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight クラスター上で実行されている DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |

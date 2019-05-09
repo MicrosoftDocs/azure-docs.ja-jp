@@ -3,8 +3,8 @@ title: Azure Security Center の脅威インテリジェンス レポート | Mi
 description: このドキュメントでは、調査に Azure Security Center の脅威インテリジェンス レポートを使用し、セキュリティ アラートに関する詳しい情報を確認する方法を説明します。
 services: security-center
 documentationcenter: na
-author: terrylan
-manager: mbaldwin
+author: rkarlin
+manager: barbkess
 editor: ''
 ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
-ms.author: yurid
-ms.openlocfilehash: f0c1588633f548b740e6b9f6a7a3121ef791500a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: ba5ab7ce85933545a41f23e2ecd913acbb7e72d1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234257"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112735"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center の脅威インテリジェンス レポート
 このドキュメントでは、セキュリティ アラートが生成される原因となった脅威に関して詳しい情報を確認するにあたり、Azure Security Center の脅威インテリジェンス レポートがどのような点で役に立つかを説明します。
@@ -48,10 +48,10 @@ Security Center には、攻撃の種類に応じて 3 種類の脅威レポー�
 * **キャンペーン レポート**: 主に特定の攻撃キャンペーンの詳細を取り扱うレポートです。
 * **脅威概要レポート**: 前の 2 つのレポートの全項目を確認できるレポートです。
 
-この種の情報は、[インシデント対応](security-center-incident-response.md)プロセスにおいて継続的に調査を実施し、攻撃元、攻撃者の動機、この問題の影響を今後軽減するための方策を把握する際に非常に便利です。
+この種の情報は、[インシデント対応](security-center-incident-response.md)プロセスにおいて継続的に調査を実施し、攻撃元、攻撃者の動機、この問題の影響を今後軽減するための方策を把握するために利用できます。
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>脅威インテリジェンス レポートにアクセスする方法
-現在の警告は、 **[セキュリティ アラート]** タイルで確認できます。 各警告の詳細を確認するには、Azure Portal を開いて以下の手順に従ってください。
+現在の警告は、 **[セキュリティ アラート]** タイルで確認できます。 各警告の詳細を確認するには、Azure portal を開いて以下の手順に従ってください。
 
 1. [セキュリティ センター] ダッシュボードには **[セキュリティの警告]** タイルが表示されます。
 2. タイルをクリックして、**[セキュリティ アラート]** ブレードを開くと、アラートに関する詳細が表示されます。そこで、さらに詳しい情報を確認したいセキュリティ アラートをクリックします。
@@ -59,7 +59,7 @@ Security Center には、攻撃の種類に応じて 3 種類の脅威レポー�
     ![セキュリティのアラート](./media/security-center-threat-report/security-center-threat-report-fig1.png)
 3. この場合、**[Suspicious process executed (不審なプロセスの実行)]** ブレードが表示され、アラートに関して以下の図に示すような詳細が表示されます。
 
-    ![セキュリティ アラートの詳細](./media/security-center-threat-report/security-center-threat-report-fig2.png)
+    ![Security alert details](./media/security-center-threat-report/security-center-threat-report-fig2.png)
 4. 各セキュリティ アラートに関して表示される情報の量は、アラートの種類に応じて変わります。 **[レポート]** フィールドには、脅威インテリジェンス レポートへのリンクがあります。 リンクをクリックしてください。PDF ファイルが別のブラウザー ウィンドウで表示されます。
 
    ![Storage の選択](./media/security-center-threat-report/security-center-threat-report-fig3.png)

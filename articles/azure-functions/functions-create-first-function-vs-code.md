@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633760"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490535"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Visual Studio Code を使用した初めての関数の作成
 
@@ -27,7 +27,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ![Visual Studio プロジェクトの Azure Functions コード](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-現在、この拡張機能では、C#、JavaScript、Java 関数がサポートされています。 この記事の手順は、Azure Functions プロジェクト用に選択した言語によって異なる場合があります。 この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
+現在、この拡張機能では、C#、JavaScript、Java 関数が完全にサポートされており、Python のサポートはプレビュー段階です。 この記事の手順は、Azure Functions プロジェクト用に選択した言語によって異なる場合があります。 この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,11 +39,11 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 * 選択した言語に固有の要件をインストールします。
 
-    | Language | 内線番号 |
+    | 言語 | 拡張機能 |
     | -------- | --------- |
     | **C#** | [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
+    | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 以降](https://maven.apache.org/) |
+    | **JavaScript** | [Node 8.0 以降](https://nodejs.org/)  |
 
     \* Core Tools でも必要です。
 
@@ -55,7 +55,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ## <a name="create-an-http-triggered-function"></a>HTTP によってトリガーされる関数の作成
 
-1. **[Azure: Functions]** で [関数の作成] アイコンを選択します。
+1. **[Azure:Functions]** で [関数の作成] アイコンを選択します。
 
     ![関数を作成する](./media/functions-create-first-function-vs-code/create-function.png)
 
@@ -93,7 +93,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
     ![ブラウザーでの関数 localhost の応答](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
 
-1. デバッグを停止するには、Shift キーを押しながら F1 キーを押します。
+1. デバッグを停止するには、Shift キーを押しながら F5 キーを押します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 
@@ -115,12 +115,10 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="next-steps"></a>次の手順
 
-Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 特定の言語での関数の開発の詳細については、[JavaScript](functions-reference-node.md)、[.NET](functions-dotnet-class-library.md)、または [Java](functions-reference-java.md) の言語リファレンス ガイドをご覧ください。
-
-次に、Azure Functions Core Tools を使用した、ターミナルまたはコマンド プロンプトからのローカルでの テストとデバッグの詳細を確認します。
+Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 Azure Functions Core Tools を使用した、[ターミナルまたはコマンド プロンプトからのローカルでの テストとデバッグ](functions-run-local.md)の詳細を確認することもできます。
 
 > [!div class="nextstepaction"]
-> [ローカルでコーディングしてテストする](functions-run-local.md)
+> [Application Insights との統合を有効にする](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Visual Studio Code 用 Azure Functions 拡張機能]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

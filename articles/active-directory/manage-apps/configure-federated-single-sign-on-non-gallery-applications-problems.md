@@ -3,23 +3,24 @@ title: ギャラリー以外のアプリケーションのフェデレーショ�
 description: Azure AD アプリケーション ギャラリーの一覧にないカスタム SAML アプリケーションにフェデレーション シングル サインオンを構成するときに発生することがある一般的な問題の一部に対処します
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: ef020e968f88e9976651b5ea22039e42e651db28
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ecbb097dd3cb3e3fdd6b365b059f7703668f07e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355688"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092601"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 
@@ -45,23 +46,23 @@ Azure AD は、選択した値に基づく NameID 属性 (ユーザー識別子)
 
 Azure AD からアプリケーションのメタデータまたは証明書をダウンロードするには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
+5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
    * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
-6.  シングル サインオンを構成したアプリケーションを選択します。
+6. シングル サインオンを構成したアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
+7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
 
-8.  **[SAML 署名証明書]** セクションに移動して、**[ダウンロード]** 列の値をクリックします。 アプリケーションでシングル サインオンを構成するために何が必要かに応じて、メタデータ XML または証明書をダウンロードするオプションが表示されます。
+8. **[SAML 署名証明書]** セクションに移動して、**[ダウンロード]** 列の値をクリックします。 アプリケーションでシングル サインオンを構成するために何が必要かに応じて、メタデータ XML または証明書をダウンロードするオプションが表示されます。
 
 Azure AD には、メタデータを取得する URL は用意されていません。 メタデータは、XML ファイルとしてのみ取得できます。
 

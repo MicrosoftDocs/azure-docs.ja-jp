@@ -9,29 +9,28 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 16275ddc4d4ad85bdac54244ceeec568603fdfef
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112101"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267125"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマ マッピング
 この記事では、Azure Data Factory のコピー アクティビティが、データ コピーの実行時にソース データからシンク データへのスキーマ マッピングとデータ型のマッピングをどのように行うかについて説明します。
 
 ## <a name="column-mapping"></a>列マッピング
 
-既定では、[明示的な列マッピング](#explicit-column-mapping)が構成されていない限り、コピー アクティビティは**ソース データをシンクに列名でマッピングします**。 具体的には、コピー アクティビティは次のことを行います。
+列マッピングは、表形式の整形データ間でデータをコピーするときに適用されます。 既定では、[明示的な列マッピング](#explicit-column-mapping)が構成されていない限り、コピー アクティビティは**ソース データをシンクに列名でマッピングします**。 具体的には、コピー アクティビティは次のことを行います。
 
 1. ソースからデータを読み取り、ソース スキーマを特定する
 
     * メタデータを含むデータベース/ファイル (Avro/ORC/Parquet/ヘッダー付きのテキスト) など、データ ストア内の定義済みのスキーマを持つデータ ソースや、ファイル形式のデータ ソースの場合、ソース スキーマはクエリの結果またはファイル メタデータから抽出されます。
-    * Azure テーブル/Cosmos DB など、柔軟なスキーマを持つデータ ソースの場合、ソース スキーマはクエリの結果から推測されます。 データセット内に "structure" を指定することによって、それを上書きできます。
-    * ヘッダーのないテキスト ファイルの場合は、パターン "Prop_0"、"Prop_1"、... で既定の列名が生成されます。データセット内に "structure" を指定することによって、それを上書きできます。
+    * Azure テーブル/Cosmos DB など、柔軟なスキーマを持つデータ ソースの場合、ソース スキーマはクエリの結果から推測されます。 データセット内に "structure" を構成することによって、それを上書きできます。
+    * ヘッダーのないテキスト ファイルの場合は、パターン "Prop_0"、"Prop_1"、... で既定の列名が生成されます。データセット内に "structure" を構成することによって、それを上書きできます。
     * Dynamics ソースの場合は、データセットの "structure" セクション内にスキーマ情報を指定する必要があります。
 
 2. 指定されている場合は、明示的な列マッピングを適用します。
@@ -135,11 +134,86 @@ ms.locfileid: "37112101"
 }
 ```
 
-列マッピングの指定に `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` の構文を使用していた場合は、それはそのままサポートされます。
+列マッピングの指定に `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` の構文を使用している場合は、引き続きそのままサポートされます。
 
 **列マッピングのフロー:**
 
 ![列マッピングのフロー](./media/copy-activity-schema-and-type-mapping/column-mapping-sample.png)
+
+## <a name="schema-mapping"></a>スキーマ マッピング
+
+スキーマ マッピングは、階層形式の整形データと表形式の整形データ間でデータをコピーするときに適用されます。たとえば、MongoDB/REST からテキスト ファイルにコピーしたり、SQL から Azure Cosmos DB の MongoDB 用 API にコピーしたりする場合です。 コピー アクティビティの `translator` セクションでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | コピー アクティビティのトランスレーターの type プロパティは**TabularTranslator** に設定する必要があります。 | はい |
+| schemaMapping | キーと値のペアのコレクション。**ソース側からシンク側**へのマッピングの関係を表します。<br/>- **Key:** ソースを表します。 **表形式のソース**の場合、データセットの構造に定義された列名を指定します。**階層構造のソース**の場合、抽出とマッピングの対象となる各フィールドの JSON パス式を指定します。<br/>- **Value:** シンクを表します。 **表形式のシンク**の場合、データセットの構造に定義された列名を指定します。**階層構造のシンク**の場合、抽出とマッピングの対象となる各フィールドの JSON パス式を指定します。 <br/> 階層構造のデータで、ルート オブジェクトの直下のフィールドの場合、JSON パスはルートの $ から記述します。`collectionReference` プロパティによって選択された配列内のフィールドの場合、JSON パスは配列要素から記述します。  | はい |
+| collectionReference | 同じパターンを持つ**配列フィールド内**のオブジェクトからのデータの反復処理と抽出を行って、オブジェクトごとの行ごとに変換する場合は、その配列の JSON のパスを指定してクロス適用を行います。 このプロパティは、階層形式のデータがソースであるときにのみサポートされます。 | いいえ  |
+
+**例: MongoDB から SQL にコピーする:**
+
+たとえば、次の内容が含まれる MongoDB ドキュメントがあるとします。 
+
+```json
+{
+    "id": {
+        "$oid": "592e07800000000000000000"
+    },
+    "number": "01",
+    "date": "20170122",
+    "orders": [
+        {
+            "prod": "p1",
+            "price": 23
+        },
+        {
+            "prod": "p2",
+            "price": 13
+        },
+        {
+            "prod": "p3",
+            "price": 231
+        }
+    ],
+    "city": [ { "name": "Seattle" } ]
+}
+```
+
+配列 *(order_pd and order_price)* 内のデータをフラット化し、共通のルート情報 *(number, date, and city)* とクロス結合させることで Azure SQL テーブルに次の形式でコピーする場合は、
+
+| orderNumber | orderDate | order_pd | order_price | city |
+| --- | --- | --- | --- | --- |
+| 01 | 20170122 | P1 | 23 | シアトル |
+| 01 | 20170122 | P2 | 13 | シアトル |
+| 01 | 20170122 | P3 | 231 | シアトル |
+
+次のコピー アクティビティの JSON サンプルとしてスキーマ マッピング ルールを構成します。
+
+```json
+{
+    "name": "CopyFromMongoDBToSqlAzure",
+    "type": "Copy",
+    "typeProperties": {
+        "source": {
+            "type": "MongoDbV2Source"
+        },
+        "sink": {
+            "type": "SqlSink"
+        },
+        "translator": {
+            "type": "TabularTranslator",
+            "schemaMapping": {
+                "orderNumber": "$.number", 
+                "orderDate": "$.date", 
+                "order_pd": "prod", 
+                "order_price": "price",
+                "city": " $.city[0].name"
+            },
+            "collectionReference":  "$.orders"
+        }
+    }
+}
+```
 
 ## <a name="data-type-mapping"></a>データ型のマッピング
 
@@ -152,10 +226,10 @@ ms.locfileid: "37112101"
 
 ### <a name="supported-data-types"></a>サポートされているデータ型
 
-Data Factory は、次の中間データ型をサポートしています。[データセット構造](concepts-datasets-linked-services.md#dataset-structure)の構成で型情報を指定するときは、次の値を指定できます。
+Data Factory は次の中間データ型をサポートしています。[データセット構造](concepts-datasets-linked-services.md#dataset-structure)の構成で型情報を構成するときは、次の値を指定できます。
 
 * Byte[]
-* ブール
+* Boolean
 * DateTime
 * Datetimeoffset
 * Decimal
@@ -186,7 +260,7 @@ Data Factory は、次の中間データ型をサポートしています。[デ
 
 次のシナリオでは、データセット内に "structure" が推奨されます。
 
-* ヘッダーのないテキスト ファイルからのコピー (入力データセット)。 明示的な列マッピングを指定する代わりに、対応するシンク列に合わせたテキスト ファイルの列名を指定できます。
+* ヘッダーのないテキスト ファイルからのコピー (入力データセット)。 明示的な列マッピングを構成する代わりに、対応するシンク列に合わせたテキスト ファイルの列名を指定できます。
 * 柔軟なスキーマを持つデータ ストア (Azure テーブル/Cosmos DB (入力データセット) など) からのコピー。これは、アクティビティの実行ごとに上部の行に基づいてコピー アクティビティにスキーマを推測させることなく、予測されるデータ (列) がコピーされることを保証するためです。
 
 

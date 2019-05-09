@@ -1,10 +1,10 @@
 ---
-title: Azure Service Fabric - Log Analytics での監視の設定 | Microsoft Docs
-description: Azure Service Fabric クラスターを監視するために Log Analytics を使用したイベントの視覚化と分析を設定する方法について説明します。
+title: Azure Service Fabric - Azure Monitor ログでの監視の設定 | Microsoft Docs
+description: イベントを視覚化および分析するように Azure Monitor ログを設定して Azure Service Fabric クラスターを監視する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,21 +12,26 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 00fc04afd26da2ef5741eec308835bb8c897c26b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ba4d25c749a1c1b99559ce4033fe90d671701d66
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077343"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046480"
 ---
-# <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
+# <a name="set-up-azure-monitor-logs-for-a-cluster"></a>クラスターに Azure Monitor ログを設定する
 
-クラスター レベルのイベントを監視する手段として、Microsoft は Log Analytics を推奨しています。 Log Analytics ワークスペースは、Azure Resource Manager、PowerShell、Azure Marketplace のいずれかを使用して設定できます。 将来のためにデプロイの更新された Resource Manager テンプレートを保持している場合は、同じテンプレートを使って Log Analytics 環境を設定します。 診断が有効な状態でデプロイされているクラスターが既にある場合は、Marketplace を使用したほうが簡単にデプロイを行えます。 デプロイ先のアカウントにサブスクリプション レベルのアクセス許可がない場合は、PowerShell または Resource Manager テンプレートを使ってデプロイします。
+クラスター レベルのイベントを監視する手段として、Microsoft は Azure Monitor ログを推奨しています。 Log Analytics ワークスペースは、Azure Resource Manager、PowerShell、Azure Marketplace のいずれかを使用して設定できます。 将来のために、デプロイの更新された Resource Manager テンプレートを保持している場合は、同じテンプレートを使って Azure Monitor ログ環境を設定します。 診断が有効な状態でデプロイされているクラスターが既にある場合は、Marketplace を使用したほうが簡単にデプロイを行えます。 デプロイ先のアカウントにサブスクリプション レベルのアクセス許可がない場合は、PowerShell または Resource Manager テンプレートを使ってデプロイします。
 
 > [!NOTE]
-> クラスターを監視するように Log Analytics を設定するには、クラスター レベルまたはプラットフォーム レベルのイベントを確認できるように診断を有効にする必要があります。 詳細については、[Windows クラスターで診断を設定する方法](service-fabric-diagnostics-event-aggregation-wad.md)に関するページおよび [Linux クラスターで診断を設定する方法](service-fabric-diagnostics-event-aggregation-lad.md)に関するページを参照してください。
+> クラスターを監視するように Azure Monitor ログを設定するには、クラスターレベルまたはプラットフォーム レベルのイベントを表示するために診断を有効にする必要があります。 詳細については、[Windows クラスターで診断を設定する方法](service-fabric-diagnostics-event-aggregation-wad.md)に関するページおよび [Linux クラスターで診断を設定する方法](service-fabric-diagnostics-oms-syslog.md)に関するページを参照してください。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Azure Marketplace を使用して Log Analytics ワークスペースをデプロイする
 
@@ -36,7 +41,7 @@ ms.locfileid: "53077343"
 
 2. 「**Service Fabric Analytics**」を検索します。 表示されるリソースを選択します。
 
-3. **作成**を選択します。
+3. **作成** を選択します。
 
     ![Marketplace の Service Fabric Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -44,10 +49,10 @@ ms.locfileid: "53077343"
 
 5. 完了したら、Service Fabric Analytics 作成ウィンドウの下部にある **[作成]** をもう一度選択します。 新しいワークスペースが **[OMS ワークスペース]** に表示されていることを確認します。 この操作では、作成したワークスペースにソリューションが追加されます。
 
-Windows を使っている場合は、次の手順に進み、クラスター イベントが格納されているストレージ アカウントに Log Analytics を接続します。 
+Windows を使っている場合は、次の手順に進み、クラスター イベントが格納されているストレージ アカウントに Azure Monitor ログを接続します。 
 
 >[!NOTE]
->Linux クラスターではこのエクスペリエンスを有効にすることはまだできません。 
+>Service Fabric Analytics ソリューションは、Windows クラスターでのみサポートされます。 Linux クラスターの場合は、[Linux クラスターに Azure Monitor ログを設定する方法](service-fabric-diagnostics-oms-syslog.md)に関する記事を参照してください。  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Log Analytics ワークスペースをクラスターに接続する 
 
@@ -65,14 +70,14 @@ Windows を使っている場合は、次の手順に進み、クラスター �
 
 7. **[OK]** を選択し、ワークスペースをクラスターのログに接続します。
 
-    ![Log Analytics にストレージ アカウント ログを追加する](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Azure Monitor ログにストレージ アカウント ログを追加する](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
 現在、アカウントがワークスペースのデータ ソースのストレージ アカウント ログに表示されているはずです。
 
 これで、クラスターのプラットフォームとアプリケーション ログ テーブルに正しく接続されている Log Analytics ワークスペースに Service Fabric Analytics ソリューションが追加されていることになります。 同じ方法でソースをワークスペースに追加できます。
 
 
-## <a name="deploy-log-analytics-with-azure-resource-manager"></a>Azure Resource Manager を使用して Log Analytics を展開する
+## <a name="deploy-azure-monitor-logs-with-azure-resource-manager"></a>Azure Resource Manager を使用して Azure Monitor ログをデプロイする
 
 Resource Manager テンプレートを使用してクラスターをデプロイすると、テンプレートは新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションをそのワークスペースに追加し、適切なストレージ テーブルからデータを読み取るように構成します。
 
@@ -85,47 +90,47 @@ Resource Manager テンプレートを使用してクラスターをデプロイ
 * これらのテーブルからイベントを読み取るように Log Analytics ワークスペースを構成する
 
 
-テンプレートを Resource Manager アップグレードとしてクラスターにデプロイするには、AzureRM PowerShell モジュールで `New-AzureRmResourceGroupDeployment` API を使用します。 以下はコマンド例です。
+テンプレートを Resource Manager アップグレードとしてクラスターにデプロイするには、Azure PowerShell モジュールで `New-AzResourceGroupDeployment` API を使用します。 以下はコマンド例です。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
+New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
 ``` 
 
 Azure Resource Manager は、このコマンドが既存のリソースに対する更新であると検出します。 既存のデプロイで使用されているテンプレートと、指定された新しいテンプレートの間の変更点だけを処理します。
 
-## <a name="deploy-log-analytics-with-azure-powershell"></a>Azure PowerShell を使用して Log Analytics をデプロイする
+## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Azure PowerShell を使用して Azure Monitor ログをテプロイする
 
-`New-AzureRmOperationalInsightsWorkspace` コマンドを使って、PowerShell で Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1) がインストールされていることを確認します。 このスクリプトを使って、新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
+`New-AzOperationalInsightsWorkspace` コマンドを使って、PowerShell から Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) がインストールされていることを確認します。 このスクリプトを使って、新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
 
-```PowerShell
+```powershell
 
-$SubscriptionName = "<Name of your subscription>"
+$SubID = "<subscription ID>"
 $ResourceGroup = "<Resource group name>"
 $Location = "<Resource group location>"
 $WorkspaceName = "<Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId $SubID 
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId $SubID 
 
 # Create the resource group if needed
 try {
-    Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
 } catch {
-    New-AzureRmResourceGroup -Name $ResourceGroup -Location $Location
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
 }
 
-New-AzureRmOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
-Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
+Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
 
 ```
 
-終了したら、前のセクションの手順に従い、Log Analytics を適切なストレージ アカウントに接続します。
+終了したら、前のセクションの手順に従い、Azure Monitor ログを適切なストレージ アカウントに接続します。
 
-PowerShell を使って、他のソリューションを追加したり、Log Analytics ワークスペースに他の変更を行うこともできます。 詳しくは、「[PowerShell を使用した Log Analytics の管理](../azure-monitor/platform/powershell-workspace-configuration.md)」をご覧ください。
+PowerShell を使って、他のソリューションを追加したり、Log Analytics ワークスペースに他の変更を行うこともできます。 詳しくは、「[PowerShell を使用した Azure Monitor ログの管理](../azure-monitor/platform/powershell-workspace-configuration.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 * お使いのノードに [Log Analytics エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
-* Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
-* [Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/platform/view-designer.md)
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能の詳細を確認します
+* [Azure Monitor ログのビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/platform/view-designer.md)

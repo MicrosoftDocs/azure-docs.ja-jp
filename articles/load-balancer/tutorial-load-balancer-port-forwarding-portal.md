@@ -5,21 +5,22 @@ description: このチュートリアルでは、Azure Load Balancer を使用�
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/18
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e3431ff7ee6991e5af3ecab0e734cc587009dcde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273529"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007510"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>チュートリアル: ポータルを使用して Azure Load Balancer のポート フォワーディングを構成する
 
@@ -43,25 +44,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 まず、複数の VM にトラフィックを分散できるパブリック Standard ロード バランサ―を作成します。 Standard ロード バランサ―でサポートされるのは Standard パブリック IP アドレスだけです。 Standard ロード バランサ―を作成するときに、新しい Standard パブリック IP アドレスも作成します。これがロード バランサーのフロントエンドとして構成され、既定で **LoadBalancerFrontEnd** という名前になります。 
 
-1. ポータルの左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。
-   
-1. **[ロード バランサーの作成]** ウィンドウで次の値を入力または選択します。
-   
-   - **[名前]**: 「*MyLoadBalancer*」と入力します。
-   - **[種類]**: **[パブリック]** を選択します。 
-   - **[SKU]**: **[Standard]** を選択します。
-   - **[パブリック IP アドレス]**: **[新規作成]** を選択して、フィールドに「*MyPublicIP*」と入力します。
-   - **[パブリック IP アドレスの構成]** > **[可用性ゾーン]**: **[ゾーン冗長]** を選択します。
-   - **ResourceGroup**:**[新規作成]** を選択してから「*MyResourceGroupLB*」と入力し、**[OK]** を選択します。 
-   - **[場所]**: **[西ヨーロッパ]** を選択します。 
-     
-     >[!NOTE]
-     >お客様のロード バランサーとそのすべてのリソースは、必ず Availability Zones がサポートされている場所に作成してください。 詳細については、「[可用性ゾーンをサポートしているリージョン](../availability-zones/az-overview.md#regions-that-support-availability-zones)」を参照してください。 
-   
-1. **作成**を選択します。
-   
-![ロード バランサーの作成](./media/tutorial-load-balancer-port-forwarding-portal/1-load-balancer.png)
+1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
 
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
+    | Name                   | *myLoadBalancer*                                   |
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | Type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Standard]** を選択します。                          |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 |
+    | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
+    |可用性ゾーン| **[ゾーン冗長]** を選択します。    |
+     
+    >[!NOTE]
+     >お客様のロード バランサーとそのすべてのリソースは、必ず Availability Zones がサポートされている場所に作成してください。 詳細については、「[可用性ゾーンをサポートしているリージョン](../availability-zones/az-overview.md#services-support-by-region)」を参照してください。 
+
+3. **[確認と作成]** タブで、**[作成]** をクリックします。  
+  
 ## <a name="create-and-configure-back-end-servers"></a>バックエンド サーバーを作成して構成する
 
 2 つの仮想マシンを含んだ仮想ネットワークを作成し、お客様のロード バランサーのバックエンド プールに VM を追加します。 
@@ -72,11 +74,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 1. **[仮想ネットワークの作成]** ウィンドウで、以下の値を入力または選択します。
    
-   - **[名前]**: 「*MyVNet*」と入力します。
+   - **[名前]**:「*MyVNet*」と入力します。
    - **ResourceGroup**:**[既存の選択]** ドロップ ダウンから **[MyResourceGroupLB]** を選択します。 
    - **[サブネット]** > **[名前]**: 「*MyBackendSubnet*」と入力します。
    
-1. **作成**を選択します。
+1. **作成** を選択します。
 
    ![仮想ネットワークの作成](./media/tutorial-load-balancer-port-forwarding-portal/2-load-balancer-virtual-network.png)
 
@@ -95,7 +97,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。 
    
    以下が選択されていることを確認します。
-   - **[仮想ネットワーク]**: **MyVNet**
+   - **[仮想ネットワーク]**:**MyVNet**
    - **[サブネット]**: **MyBackendSubnet**
    
 1. **[パブリック IP]** で **[新規作成]** を選択し、**[パブリック IP アドレスの作成]** ページで **[Standard]** を選択して、**[OK]** を選択します。 
@@ -189,7 +191,7 @@ VM に対してインバウンド インターネット (HTTP) 接続を許可�
    - **[名前]**: 「*MyHealthProbe*」と入力します。
    - **[プロトコル]**: ドロップダウンから **[HTTP]** を選択します。 
    - **[ポート]**: 「*80*」と入力します。 
-   - **[パス]**: 既定の URI の */* を受け入れます。 この値は任意の別の URI に置き換えることができます。 
+   - **[パス]**: 既定の URI の */* をそのまま使用します。 この値は任意の別の URI に置き換えることができます。 
    - **[間隔]**: 「*15*」と入力します。 [間隔] は、プローブの試行の間隔を示す秒数です。
    - **[異常のしきい値]**: 「*2*」と入力します。 この値は、プローブの連続する失敗回数です (この回数を超えると、VM は異常と見なされます)。
    
@@ -212,13 +214,13 @@ VM に対してインバウンド インターネット (HTTP) 接続を許可�
    - **[名前]**: 「*MyLoadBalancerRule*」と入力します。
    - **[プロトコル]**: **[TCP]** を選択します。
    - **[ポート]**: 「*80*」と入力します。
-   - **[バックエンド ポート]**: 「*80*」と入力します。
+   - **[バックエンド ポート]**:「*80*」と入力します。
    - **[バックエンド プール]**: **[MyBackendPool]** を選択します。
    - **[正常性プローブ]**: **[MyHealthProbe]** を選択します。 
    
 1. **[OK]** を選択します。
    
-  ![ロード バランサー規則の追加](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
+   ![ロード バランサー規則の追加](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
 
 ## <a name="create-an-inbound-nat-port-forwarding-rule"></a>受信 NAT ポート フォワーディング規則を作成する
 

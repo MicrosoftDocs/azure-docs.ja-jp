@@ -4,17 +4,17 @@ description: Azure Automation Runbook の作成方法について説明します
 services: automation
 author: csand-msft
 ms.author: csand
-ms.date: 12/14/2017
+ms.date: 02/05/2019
 ms.topic: quickstart
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 4aafff81957943fc19f0f6d2fce8a41f7be58d16
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 2f6dcbba8da314798b2e8de12a9fc5bf55f67a4a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34056263"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750275"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する
 
@@ -22,9 +22,9 @@ Azure を使用して Azure Automation Runbook を作成することができま
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure にサインインします( https://portal.azure.com )。
+https://portal.azure.com で Azure にサインインします
 
 ## <a name="create-runbook"></a>Runbook を作成する
 
@@ -102,3 +102,4 @@ Runbook が公開されると、概要ページが表示されます。
 
 > [!div class="nextstepaction"]
 > [Automation の方法 - Runbook の種類](./automation-runbook-types.md)
+

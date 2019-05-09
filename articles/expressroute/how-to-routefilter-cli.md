@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: 94bdd4819d750f4c26c93a88cc6982a60583171c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cfd9f4c52d3ddddd944186a833cba48e6ca76182
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079298"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527967"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft ピアリングにルート フィルターを構成する: Azure CLI
 
@@ -103,13 +103,13 @@ az network route-filter rule list-service-communities
 
 ルート フィルターで使用する BGP コミュニティ値をリストアップします。 たとえば Dynamics 365 サービスの BGP コミュニティ値は 12076:5040 です。
 
-## <a name="filter"></a>手順 2: ルート フィルターとフィルター ルールを作成する
+## <a name="filter"></a>手順 2:ルート フィルターとフィルター ルールを作成する
 
 ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。
 
 ### <a name="1-create-a-route-filter"></a>1.ルート フィルターを作成する
 
-まず、ルート フィルターを作成します。 "az network route-filter create" コマンドで作成されるのはルート フィルター リソースだけです。 このリソースを作成した後、自分でルールを作成し、ルート フィルター オブジェクトにアタッチする必要があります。 ルート フィルター リソースを作成するには、次のコマンドを実行します。
+まず、ルート フィルターを作成します。 `az network route-filter create` コマンドで作成されるのはルート フィルター リソースだけです。 このリソースを作成した後、自分でルールを作成し、ルート フィルター オブジェクトにアタッチする必要があります。 ルート フィルター リソースを作成するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup

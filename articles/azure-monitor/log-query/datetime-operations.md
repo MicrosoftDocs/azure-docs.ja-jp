@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリでの日時値の操作 | Microsoft Docs
-description: Log Analytics クエリで日時のデータを操作する方法について説明します。
+title: Azure Monitor ログ クエリでの日時値の操作 | Microsoft Docs
+description: Azure Monitor ログ クエリで日時のデータを操作する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: e922e2c18ebb87783bf0ed229ce7107c4577c994
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885346"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009006"
 ---
-# <a name="working-with-date-time-values-in-log-analytics-queries"></a>Log Analytics クエリでの日時値の操作
+# <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの日時値の操作
 
 > [!NOTE]
 > このレッスンを完了する前に、[Analytics ポータルの概要](get-started-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-この記事では、Log Analytics クエリで日時のデータを操作する方法について説明します。
+この記事では、Azure Monitor ログ クエリで日時のデータを操作する方法について説明します。
 
 
 ## <a name="date-time-basics"></a>日時の基本
-Log Analytics クエリ言語では、主に 2 つのデータ型が (datetime と timespan) が日付と時刻に関連付けられています。 日付はすべて UTC で表されています。 複数の datetime 形式がサポートされていますが、ISO8601 形式をお勧めします。 
+Kusto クエリ言語では、主要な 2 つのデータ型 (datetime と timespan) が日付と時刻に関連付けられています。 日付はすべて UTC で表されています。 複数の datetime 形式がサポートされていますが、ISO8601 形式をお勧めします。 
 
 timespan を表現するには、10 進数の後に時間単位を続けます。
 
@@ -45,7 +45,7 @@ timespan を表現するには、10 進数の後に時間単位を続けます�
 |microsecond | マイクロ秒  |
 |tick        | ナノ秒   |
 
-datetime を作成するには、`todatetime` 演算子を使用して文字列をキャストします。 たとえば、特定の期間に送信される VM ハートビートを確認するには、時間の範囲の指定に便利な [between 演算子](/azure/kusto/query/betweenoperator)を使用できます。
+datetime を作成するには、`todatetime` 演算子を使用して文字列をキャストします。 たとえば、特定の期間に送信される VM ハートビートを確認するには、`between` 演算子を使用して時間範囲を指定します。
 
 ```Kusto
 Heartbeat
@@ -82,7 +82,7 @@ Heartbeat
 ```
 
 ## <a name="converting-time-units"></a>時間単位の変換
-datetime または timespan を既定以外の時間単位で表せると便利です。 たとえば、過去 30 分間のエラー イベントを確認しているときに、イベントがどのくらい前に発生したかを示す計算列が必要だとします。
+datetime または timespan を既定以外の時間単位で表したい場合があります。 たとえば、過去 30 分間のエラー イベントを確認しているときに、イベントがどのくらい前に発生したかを示す計算列が必要だとします。
 
 ```Kusto
 Event
@@ -91,7 +91,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-_timeAgo_ 列に "00:09:31.5118992" などの値が含まれていることがわかります。これは書式が hh:mm:ss.fffffff であることを意味します。 これらの値を、開始時刻からの時間 (分) の _numver_ に設定する場合は、その値を "1 分" で除算するだけです。
+`timeAgo` 列には "00:09:31.5118992" などの値が含まれていることがわかります。これは書式が hh:mm:ss.fffffff であることを意味します。 これらの値を、開始時刻からの時間 (分) の `numver` に設定する場合は、その値を "1 分" で除算します。
 
 ```Kusto
 Event
@@ -103,7 +103,7 @@ Event
 
 
 ## <a name="aggregations-and-bucketing-by-time-intervals"></a>集計と期間でのバケット
-さらに、特定の時間グレインで、特定の期間にわたる統計値を取得しなければならないシナリオも、非常によく見られます。 この場合は、`bin` 演算子を、summarize 句の一部として使用できます。
+さらに、特定の時間グレインで、特定の期間にわたる統計値を取得しなければならないシナリオもよく見られます。 このシナリオでは、`bin` 演算子を、summarize 句の一部として使用できます。
 
 次のクエリを使用すると、過去 30 分間に発生したイベント数を 5 分ごとに取得できます。
 
@@ -113,7 +113,8 @@ Event
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
 ```
 
-これにより次のテーブルが生成されます。  
+このクエリでは、次のテーブルが生成されます。  
+
 |TimeGenerated(UTC)|events_count|
 |--|--|
 |2018-08-01T09:30:00.000|54|
@@ -131,7 +132,7 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-これにより次の結果が生成されます。
+このクエリでは、次の結果が生成されます。
 
 |timestamp|count_|
 |--|--|
@@ -139,7 +140,7 @@ Event
 |2018-07-29T00:00:00.000|12,315|
 |2018-07-30T00:00:00.000|16,847|
 |2018-07-31T00:00:00.000|12,616|
-|2018-08-01T00:00:00.000|5,416  |
+|2018-08-01T00:00:00.000|5,416|
 
 
 ## <a name="time-zones"></a>タイム ゾーン
@@ -157,11 +158,11 @@ Event
 | データ型の変換 | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
 | ビン サイズへの値を四捨五入 | [bin](/azure/kusto/query/binfunction) |
 | 特定の日付または時刻を取得 | [ago](/azure/kusto/query/agofunction) [now](/azure/kusto/query/nowfunction)   |
-| 値の一部を取得 | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweek) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| 値を基準にして日付を取得  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
+| 値の一部を取得 | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
+| 相対日付値の取得  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>次の手順
-Log Analytics クエリ言語の使用については、他のレッスンをご覧ください。
+Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)
 - [集計関数](aggregations.md)

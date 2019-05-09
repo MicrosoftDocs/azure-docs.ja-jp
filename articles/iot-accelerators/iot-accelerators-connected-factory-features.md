@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: af2a2c84f9eb420a7ca9a8bd5909cbf856d29a5e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183222"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>コネクテッド ファクトリ IoT ソリューション アクセラレータとは
 

@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: b8623acc9d29f083e34c7fa7494e866317146802
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252560"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59006576"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Android)
 
@@ -35,13 +35,17 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-
 * Android Studio (https://developer.android.com/studio/)。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。
 
 * この記事のサンプルでは、Android SDK 27 を使用しています。
 
-* このクイック スタートでは、2 つのサンプル アプリケーションが必要です ([Device SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)と [Service SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample))。 どちらのサンプルも、GitHub 上の azure-iot-samples-java リポジトリに含まれています。 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリをダウンロードまたは複製してください。
+* 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
+   ```azurecli-interactive
+   az extension add --name azure-cli-iot-ext
+   ```
+
+* このクイック スタートでは、2 つのサンプル アプリケーションが必要です ([Device SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)と [Service SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample))。 どちらのサンプルも、GitHub 上の azure-iot-samples-java リポジトリに含まれています。 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリをダウンロードまたは複製してください。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -55,21 +59,20 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-   **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
    **MyAndroidDevice**:この値は、登録済みデバイスに付けられた名前です。 示されているように、MyAndroidDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create \
       --hub-name YourIoTHubName --device-id MyAndroidDevice
     ```
 
 2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
-   **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -91,7 +94,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 次のようなサービス接続文字列をメモしておきます。
@@ -116,11 +119,18 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
 3. Android Studio で、**[File]\(ファイル\)** > **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
 
+   > [!NOTE]
+   > プロジェクトの同期に失敗した場合、次のいずれかの理由が原因として考えられます。
+   >
+   > * プロジェクトで参照されている Android Gradle プラグインと Gradle のバージョンが、ご使用の Android Studio のバージョンに対して古い。 [こちらの手順](https://developer.android.com/studio/releases/gradle-plugin)に従って、実際の環境に合った正しいバージョンのプラグインと Gradle を参照、インストールしてください。
+   > * Android SDK のライセンス契約に署名していない。 ビルド出力に書かれている手順に従ってライセンス契約に署名し、SDK をダウンロードしてください。
+
+
 4. ビルドが完了したら、**[Run]\(実行\)** > **[Run 'app']\(<アプリ> の実行\)** をクリックします。 物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
 
 5. アプリが読み込まれたら、**[Start]\(開始\)** ボタンをクリックして、IoT ハブへの利用統計情報の送信を開始します。
 
-    ![アプリケーション](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![Application](media/quickstart-send-telemetry-android/sample-screenshot.png)
 
 利用統計情報の送信間隔を実行時に更新するためには、サービス SDK サンプルを実行している間、物理デバイスまたはエミュレーター上でこのアプリを実行状態にしておく必要があります。
 
@@ -131,7 +141,7 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
 1. Azure Cloud Shell を使用して、次のコマンドを実行して接続し、お使いの IoT ハブからのメッセージを読み取ります。
 
-   **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
@@ -163,6 +173,13 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
     ```
 
 3. Android Studio で、**[File]\(ファイル\)** > **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
+
+   > [!NOTE]
+   > プロジェクトの同期に失敗した場合、次のいずれかの理由が原因として考えられます。
+   >
+   > * プロジェクトで参照されている Android Gradle プラグインと Gradle のバージョンが、ご使用の Android Studio のバージョンに対して古い。 [こちらの手順](https://developer.android.com/studio/releases/gradle-plugin)に従って、実際の環境に合った正しいバージョンのプラグインと Gradle を参照、インストールしてください。
+   > * Android SDK のライセンス契約に署名していない。 ビルド出力に書かれている手順に従ってライセンス契約に署名し、SDK をダウンロードしてください。
+
 
 4. ビルドが完了したら、**[Run]\(実行\)** > **[Run 'app']\(<アプリ> の実行\)** をクリックします。 単独の物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
 

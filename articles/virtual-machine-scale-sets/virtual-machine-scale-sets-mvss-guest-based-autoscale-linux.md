@@ -26,7 +26,7 @@ ms.locfileid: "53438338"
 
 VM とスケール セットから収集される Azure のメトリックには、ホスト VM から収集されるメトリックと、ゲスト VM から収集されるメトリックの 2 種類があります。 一般には、標準的な CPU、ディスク、ネットワーク メトリックを使用している場合、ホスト メトリックはおそらく適合します。 ただし、メトリックの選択の幅を大きくする必要がある場合は、おそらくゲスト メトリックの方が適切です。 2 つの違いを見てみましょう。
 
-ホスト メトリックの方が単純で確実です。 ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure 診断の拡張機能](../virtual-machines/windows/extensions-diagnostics-template.md)か、[Linux 版の Azure 診断の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../azure-monitor/platform/metrics-supported.md)を、よく使用されるゲスト メトリックについては[こちら](../azure-monitor/platform/autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な最小のスケール セットのテンプレート](./virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
+ホスト メトリックの方が単純で確実です。 ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure Diagnostics の拡張機能](../virtual-machines/windows/extensions-diagnostics-template.md)か、[Linux 版の Azure Diagnostics の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../azure-monitor/platform/metrics-supported.md)を、よく使用されるゲスト メトリックについては[こちら](../azure-monitor/platform/autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な最小のスケール セットのテンプレート](./virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
 
 ## <a name="change-the-template-definition"></a>テンプレートの定義を変更する
 

@@ -8,17 +8,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 9098e8e6af76ed14ad42d5fe5917fcd36097c222
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6f531a814255b9171ff1767ede379bbd4f4a19b3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103287"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578171"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [現在のバージョン](connector-amazon-simple-storage-service.md)
 
@@ -28,7 +28,10 @@ ms.locfileid: "53103287"
 
 Amazon S3 から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。
+具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。 S3 への要求を認証するために [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) が使用されます。
+
+>[!TIP]
+>この Amazon S3 コネクタを使用し、[Google Cloud Storage](connector-google-cloud-storage.md) など、**あらゆる S3 対応プロバイダー**からデータをコピーできます。 リンクされているサービスの構成で、対応するサービスの URL を指定します。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -41,7 +44,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 ## <a name="getting-started"></a>使用の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
 
 以下のセクションで、Amazon S3 に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -51,13 +54,17 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AmazonS3** に設定する必要があります。 | [はい] |
-| accessKeyId | シークレット アクセス キーの ID。 |[はい] |
-| secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| type | type プロパティは **AmazonS3** に設定する必要があります。 | はい |
+| accessKeyId | シークレット アクセス キーの ID。 |はい |
+| secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| serviceUrl | 公式の Amazon S3 サービス以外の S3 対応ストレージ プロバイダーからデータをコピーする場合、カスタム S3 エンドポイントを指定します。 たとえば、Google Cloud Storage からデータをコピーするには、`https://storage.googleapis.com` と指定します。 | いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
+>[!TIP]
+>公式の Amazon S3 サービス以外の S3 対応ストレージからデータをコピーする場合、カスタム S3 サービス URL を指定します。
+
 >[!NOTE]
->IAM アカウントが Amazon S3 からデータをコピーするには、このコネクタにアクセス キーが必要です。 [一時的なセキュリティ資格情報](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)はサポートされていません。
+>IAM アカウントが Amazon S3 からデータをコピーするには、このコネクタにアクセス キーが必要です。 [一時的なセキュリティ資格情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)はサポートされていません。
 >
 
 たとえば次のようになります。
@@ -70,8 +77,8 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
         "typeProperties": {
             "accessKeyId": "<access key id>",
             "secretAccessKey": {
-                    "type": "SecureString",
-                    "value": "<secret access key>"
+                "type": "SecureString",
+                "value": "<secret access key>"
             }
         },
         "connectVia": {
@@ -90,9 +97,9 @@ Amazon S3 からデータをコピーするには、データセットの type �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**AmazonS3Object** |[はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**AmazonS3Object** |はい |
 | bucketName | S3 バケットの名前。 ワイルドカード フィルターはサポートされていません。 |はい (Copy/Lookup アクティビティの場合)、いいえ (GetMetadata アクティビティの場合) |
-| key | 指定されたバケットの下にある S3 オブジェクト キーの**名前またはワイルドカード フィルター**です。 "prefix" プロパティが指定されていないときにのみ適用されます。 <br/><br/>ワイルドカード フィルターがサポートされているのは、フォルダー部分ではなくファイル名部分に関してのみです。 使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- 例 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ  |
+| key | 指定されたバケットの下にある S3 オブジェクト キーの**名前またはワイルドカード フィルター**です。 "prefix" プロパティが指定されていないときにのみ適用されます。 <br/><br/>ワイルドカード フィルターは、フォルダー部分とファイル名部分の両方に対してサポートされます。 使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- 例 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 実際のフォルダー/ファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ  |
 | prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 "key" プロパティが指定されていないときにのみ適用されます。 |いいえ  |
 | version | S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |いいえ  |
 | modifiedDatetimeStart | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。| いいえ  |
@@ -172,7 +179,7 @@ Amazon S3 からデータをコピーするには、コピー アクティビテ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**FileSystemSource** |[はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**FileSystemSource** |はい |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 
 **例:**
@@ -206,5 +213,17 @@ Amazon S3 からデータをコピーするには、コピー アクティビテ
     }
 ]
 ```
+
+### <a name="folder-and-file-filter-examples"></a>フォルダーとファイル フィルターの例
+
+このセクションでは、ワイルドカード フィルターを使用した結果のフォルダーのパスとファイル名の動作について説明します。
+
+| バケット | key | recursive | ソースのフォルダー構造とフィルターの結果 (太字のファイルが取得されます)|
+|:--- |:--- |:--- |:--- |
+| バケット | `Folder*/*` | false | バケット<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| バケット | `Folder*/*` | true | バケット<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| バケット | `Folder*/*.csv` | false | バケット<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| バケット | `Folder*/*.csv` | true | バケット<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

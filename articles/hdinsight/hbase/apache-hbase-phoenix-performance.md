@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: ff194ef7f5ae609eba5334eb5c66db02d660ab08
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049633"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653307"
 ---
-# <a name="phoenix-performance-best-practices"></a>Phoenix のパフォーマンスのベスト プラクティス
+# <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix のパフォーマンスに関するベスト プラクティス
 
-Phoenix のパフォーマンスにとって最も重要な側面は、その基になる HBase を最適化することです。 Phoenix では、HBase に基づくリレーショナル データ モデルを作成し、SQL クエリをスキャンなどの HBase の操作に変換します。 テーブル スキーマの設計、主キーのフィールドの選択および順序、インデックスの使用のいずれも、Phoenix のパフォーマンスに影響を及ぼします。
+[Apache Phoenix](https://phoenix.apache.org/) のパフォーマンスにとって最も重要な側面は、その基になる [Apache HBase](https://hbase.apache.org/) を最適化することです。 Phoenix では、HBase に基づくリレーショナル データ モデルを作成し、SQL クエリをスキャンなどの HBase の操作に変換します。 テーブル スキーマの設計、主キーのフィールドの選択および順序、インデックスの使用のいずれも、Phoenix のパフォーマンスに影響を及ぼします。
 
 ## <a name="table-schema-design"></a>テーブル スキーマの設計
 
@@ -225,9 +225,9 @@ explain で表示されるプランの結果の項目に関する詳細な一覧
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-こちらに関する詳細とその他のオプションについては、[Phoenix の文法](http://phoenix.apache.org/language/index.html#options)に関するページを参照してください。
+これらのオプションの詳細については、[Apache Phoenix の文法](https://phoenix.apache.org/language/index.html#options)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Phoenix のチューニング ガイド](https://phoenix.apache.org/tuning_guide.html)
-* [セカンダリ インデックス](http://phoenix.apache.org/secondary_indexing.html)
+* [Apache Phoenix のチューニング ガイド](https://phoenix.apache.org/tuning_guide.html)
+* [セカンダリ インデックス](https://phoenix.apache.org/secondary_indexing.html)

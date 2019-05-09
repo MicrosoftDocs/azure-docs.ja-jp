@@ -11,17 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: c99fb3362af888d576f14940113bb49ccb7a1f08
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191310"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540773"
 ---
-# <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
-[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Azure Monitor の Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
 
 * 価格レベルの設定を含むワークスペースの作成 
 * ソリューションの追加
@@ -39,10 +42,10 @@ ms.locfileid: "53191310"
 ## <a name="api-versions"></a>API のバージョン
 次の表は、この例で使用されているリソースの API バージョンの一覧です。
 
-| リソース | リソースの種類 | API バージョン |
-|:---|:---|:---|:---|
+| Resource | リソースの種類 | API バージョン |
+|:---|:---|:---|
 | ワークスペース   | workspaces    | 2017-03-15-preview |
-| Search      | savedSearches | 2017-03-15-preview |
+| Search      | savedSearches | 2015-03-20 |
 | データ ソース | datasources   | 2015-11-01-preview |
 | 解決策    | solutions     | 2015-11-01-preview |
 
@@ -54,9 +57,9 @@ ms.locfileid: "53191310"
 * 場所 - 既定値は米国東部
 * SKU - 既定値は、2018 年 4 月の価格モデルでリリースされた新しい 1 GB あたりの価格レベル
 
->[!WARNING]
->新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。 
->
+> [!NOTE]
+>新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。  
+>[2018 年 4 月より前の価格モデル](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model)のサブスクリプションがある場合、**スタンドアロン**価格レベルを指定できます。これは、2018 年 4 月の価格モデルのサブスクリプションと、新価格でのサブスクリプションの両方に対して行えます。 新しい価格モデルを採用したサブスクリプション内のワークスペースの場合、価格レベルは **PerGB2018** に設定されます。 
 
 ### <a name="create-and-deploy-template"></a>テンプレートの作成とデプロイ
 
@@ -64,7 +67,7 @@ ms.locfileid: "53191310"
 
     ```json
     {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspaceName": {
@@ -101,7 +104,7 @@ ms.locfileid: "53191310"
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
@@ -122,7 +125,7 @@ ms.locfileid: "53191310"
    * PowerShell の場合は、テンプレートがあるフォルダーから以下のコマンドを使用します。
    
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
         ```
 
    * コマンド ラインの場合は、テンプレートがあるフォルダーから以下のコマンドを使用します。
@@ -145,7 +148,7 @@ ms.locfileid: "53191310"
 6. Linux コンピューターからの syslog イベントの収集
 7. Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
 8. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
-9. Azure 診断によってストレージ アカウントに書き込まれた IIS ログとWindows イベント ログの収集
+9. Azure Diagnostics によってストレージ アカウントに書き込まれた IIS ログとWindows イベント ログの収集
 
 ```json
 {
@@ -218,7 +221,7 @@ ms.locfileid: "53191310"
   },
   "resources": [
     {
-      "apiVersion": "2017-03-15-preview",
+      "apiVersion": "2015-11-01-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -230,7 +233,7 @@ ms.locfileid: "53191310"
       },
       "resources": [
         {
-          "apiVersion": "2017-03-15-preview",
+          "apiVersion": "2015-03-20",
           "name": "VMSS Queries2",
           "type": "savedSearches",
           "dependsOn": [
@@ -379,7 +382,7 @@ ms.locfileid: "53191310"
           }
         },
         {
-          "apiVersion": "2015-11-01-preview",
+          "apiVersion": "2015-03-20",
           "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('workspaceName'))]",
           "type": "storageinsightconfigs",
           "dependsOn": [
@@ -500,7 +503,7 @@ ms.locfileid: "53191310"
 
 #### <a name="powershell"></a>PowerShell
 ```powershell
-New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
+New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>コマンド ライン

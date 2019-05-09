@@ -5,24 +5,25 @@ keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, Azure AD, 信頼、AA
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
-manager: mtillman
-ms.component: hybrid
+manager: daveba
+ms.subservice: hybrid
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432056"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446641"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する
 
@@ -104,7 +105,7 @@ Azure AD Connect は、Azure AD 信頼が常に推奨の要求規則セットで
 
 Azure AD Connect バージョン 1.1.873.0 以降では、Azure AD 信頼の設定に変更が加えられるたびに、Azure AD 信頼設定のバックアップが作成されます。 Azure AD 信頼設定のバックアップは、**%ProgramData%\AADConnect\ADFS** に作成されます。 ファイル名の形式は次のようになります: AadTrust-&lt;date&gt;-&lt;time&gt;.txt (たとえば、AadTrust-20180710-150216.txt)
 
-![Azure AD 信頼のバックアップ例のスナップショット](./media/how-to-connect-azure-ad-trust/backup.png)
+![Azure AD 信頼のバックアップ例のスクリーンショット](./media/how-to-connect-azure-ad-trust/backup.png)
 
 発行変換規則は、次のような手順で復元できます
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシーでのセルフ �
 description: Azure Active Directory B2C のカスタム ポリシーでは、セルフ アサート技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 262c4e622d7ef915e59f29c8f4272e488acaeccf
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.subservice: B2C
+ms.openlocfilehash: dcc94daeb19174b85fface05222f8842e9544adf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166913"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188866"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -23,9 +23,9 @@ ms.locfileid: "47166913"
 
 ユーザーが入力を提供する Azure Active Directory (Azure AD) B2Cのすべての操作は、セルフ アサート技術プロファイルです。 たとえば、サインアップ ページ、サインイン ページ、またはパスワードのリセット ページ。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
-**プロトコル**要素の**名前**の属性を`Proprietary`に設定する必要があります。 セルフ アサートのために**ハンドラー**属性は、Azure AD B2C で使用されるプロトコル ハンドラーのアセンブリの完全修飾名を含める必要があります。 `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+**Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 セルフ アサートのために**ハンドラー**属性は、Azure AD B2C で使用されるプロトコル ハンドラーのアセンブリの完全修飾名を含める必要があります。 `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 次の例は、電子メールのサインアップ用のセルフ アサート技術プロファイルを示しています。
 
@@ -34,7 +34,7 @@ ms.locfileid: "47166913"
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 ```
-
+ 
 ## <a name="input-claims"></a>入力要求
 
 セルフ アサート技術プロファイルでは、**InputClaims**と**InputClaimsTransformations**要素を使用して、セルフ アサートのページ (出力要求) に表示される要求の値を事前入力することができます。 たとえば、プロファイルの編集ポリシーでは、ユーザージャーニーはまず Azure AD B2C ディレクトリ サービスからユーザー プロファイルを読み取り、セルフ アサート技術プロファイルは、ユーザー プロファイルに格納されているユーザー データで入力要求を設定します。 これらの要求はユーザー プロファイルから収集され、後で既存のデータを編集できるユーザーに提示されます。
@@ -55,7 +55,7 @@ ms.locfileid: "47166913"
 
 **OutputClaims** 要素には、ユーザーからのデータの収集に提示される要求の一覧が含まれています。 いくつかの値を持つ出力要求を事前に設定するには、以前に説明した入力要求を使用します。 要素は、既定値を含めることもできます。 **OutputClaims** 内の要求の順序は、Azure AD B2C が画面に要求を表示する順序を制御します。 要求が以前に設定されてない場合にのみ **DefaultValue** 属性が有効になります。 ただし、ユーザーが値を空のままにしても以前のオーケストレーション ステップで今まで設定されていた場合、既定値は有効になりません。 既定値の使用を強制するには、 **AlwaysUseDefaultValue** 属性を`true`に設定します。 特定の出力要求の値を提供するようにユーザーを強制するには、 **OutputClaims** 要素の**必要な**の属性を`true`に設定します。
 
-**OutputClaims** コレクションの **ClaimType** 内の要素は、 `TextBox`または`DropdownSingleSelect`など Azure AD B2C がサポートする任意のユーザー入力タイプに **UserInputType** 要素を設定する必要があります。 または、 **OutputClaim** 要素は、**DefaultValue** を設定する必要があります。
+**OutputClaims** コレクションの **ClaimType** 内の要素は、 `TextBox`または`DropdownSingleSelect`など Azure AD B2C がサポートする任意のユーザー入力タイプに **UserInputType** 要素を設定する必要があります。 または、 **OutputClaim** 要素は、**DefaultValue** を設定する必要があります。  
 
 **OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成したりするために使用される **OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
@@ -119,7 +119,7 @@ ms.locfileid: "47166913"
 
 ## <a name="validation-technical-profiles"></a>検証技術プロファイル
 
-検証技術プロファイルは、参照元の技術プロファイルの出力要求の一部またはすべてを検証するために使用されます。 検証技術プロファイルの入力要求は、セルフ アサート技術プロファイルの出力要求に表示される必要があります。 検証技術プロファイルは、ユーザー入力を検証し、ユーザーにエラーを返すことができます。
+検証技術プロファイルは、参照元の技術プロファイルの出力要求の一部またはすべてを検証するために使用されます。 検証技術プロファイルの入力要求は、セルフ アサート技術プロファイルの出力要求に表示される必要があります。 検証技術プロファイルは、ユーザー入力を検証し、ユーザーにエラーを返すことができます。 
 
 検証技術プロファイルは、[Azure Active Directory](active-directory-technical-profile.md) や [REST API](restful-technical-profile.md) 技術プロファイルなど、ポリシー内の任意の技術プロファイルである場合があります。 前の例では、`LocalAccountSignUpWithLogonEmail`技術プロファイルは、signinName がディレクトリに存在しないことを検証します。 検証されていない場合、検証技術プロファイルは、ローカル アカウントを作成し、objectId、authenticationSource、新規ユーザーを返します。 `SelfAsserted-LocalAccountSignin-Email`技術プロファイルは、`login-NonInteractive`検証技術プロファイルを呼び出してユーザーの資格情報を検証します。
 
@@ -133,7 +133,7 @@ ms.locfileid: "47166913"
 | setting.showCancelButton | いいえ  | [キャンセル] ボタンが表示されます。 指定できる値は `true` (既定値) または `false` です。 |
 | setting.operatingMode | いいえ  | サインイン ページのために、このプロパティは、入力検証とエラー メッセージなど [ユーザー名] フィールドの動作を制御します。 期待される値は`Username`または`Email`です。 |
 | ContentDefinitionReferenceId | はい | [コンテンツ定義](contentdefinitions.md)の識別子は、この技術プロファイルに関連付けられています。 |
-| EnforceEmailVerification | いいえ  | サインアップまたはプロファイルの編集のために、電子メールの検証を強制します。 指定できる値は `true`(既定値) または`false`です。 |
+| EnforceEmailVerification | いいえ  | サインアップまたはプロファイルの編集のために、電子メールの検証を強制します。 指定できる値は `true`(既定値) または`false`です。 | 
 | setting.showSignupLink | いいえ  | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.retryLimit | いいえ  | ユーザーが検証技術プロファイルに対してチェックされたデータを提供しようとする回数を制御します。 たとえば、ユーザーは既に存在するアカウントでサインアップしようとし、制限に達するまで試行し続けます。
 | SignUpTarget | いいえ  | サインアップ対象交換識別子。 ユーザーがサインアップ ボタンをクリックすると、Azure AD B2C は、指定された交換識別子を実行します。 |
@@ -141,3 +141,16 @@ ms.locfileid: "47166913"
 ## <a name="cryptographic-keys"></a>暗号化キー
 
 **CryptographicKeys** 要素は使用されません。
+
+
+
+
+
+
+
+
+
+
+
+
+

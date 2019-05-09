@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 4983854a14a6efe9214692dc677dedeada73933b
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296799"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454509"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API Management インスタンスの容量
 
@@ -33,6 +33,8 @@ ms.locfileid: "36296799"
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + APIM インスタンス。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="what-is-capacity"></a>容量の概要
 
@@ -66,7 +68,7 @@ ms.locfileid: "36296799"
   
 ![容量メトリック](./media/api-management-capacity/capacity-metric.png)  
 
-1. [Azure portal](https://portal.azure.com/) で、APIM インスタンスに移動します。
+1. [Azure ポータル](https://portal.azure.com/)で、APIM インスタンスに移動します。
 2. **[メトリック (プレビュー)]** を選択します。
 3. 紫色のセクションから、使用できるメトリックから **[容量]** メトリックを選択し、既定の **[平均]** 集計のままにします。
 

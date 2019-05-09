@@ -2,24 +2,24 @@
 title: Azure Kubernetes Service (AKS) および Terraform を使用して Kubernetes クラスターを作成する
 description: Azure Kubernetes Service と Terraform を使用して Kubernetes クラスターを作成する方法を示すチュートリアル
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 仮想マシン, azure, kubernetes
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: d723eea6fff54b3a2f90478fcb209df76a6a776e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872919"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009093"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service および Terraform を使用して Kubernetes クラスターを作成する
 [Azure Kubernetes Service (AKS)](/azure/aks/) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
 
-このチュートリアルでは、[Terraform](http://terraform.io) と AKS を使用して [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) クラスターを作成する際に次のタスクを実行する方法を学びます。
+このチュートリアルでは、[Terraform](https://terraform.io) と AKS を使用して [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) クラスターを作成する際に次のタスクを実行する方法を学びます。
 
 > [!div class="checklist"]
 > * HCL (HashiCorp 言語) を使用した Kubernetes クラスターの定義
@@ -28,16 +28,16 @@ ms.locfileid: "52872919"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **Terraform の構成**: [Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の手順に従ってください。
+- **Terraform の構成**:[Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の指示に従ってください
 
-- **Azure サービス プリンシパル**: 「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 appId、displayName、password、および tenant の値を書き留めます。
+- **Azure サービス プリンシパル**:「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 appId、displayName、password、および tenant の値を書き留めます。
 
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
 最初の手順では、演習のために、Terraform 構成ファイルを保持するディレクトリを作成します。
 
-1. [Azure ポータル](http://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview) を開きます。 前に環境を選択しなかった場合、環境として **Bash** を選択します。
 
@@ -352,7 +352,7 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
     !["terraform plan" の結果例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. `terraform apply` コマンドを実行して、プランを適用し、Kubernetes クラスターを作成します。 Kubernetes クラスターを作成するプロセスに数分間かかり、Cloud Shell セッションがタイムアウトになる場合があります。Cloud Shell セッションがタイムアウトした場合は、「[Cloud Shell タイムアウトから復旧する](#recover-from-a-dloud-shell-timeout)」セクションの手順に従ってチュートリアルを完了できます。
+1. `terraform apply` コマンドを実行して、プランを適用し、Kubernetes クラスターを作成します。 Kubernetes クラスターを作成するプロセスに数分間かかり、Cloud Shell セッションがタイムアウトになる場合があります。Cloud Shell セッションがタイムアウトした場合は、「Cloud Shell タイムアウトから復旧する」セクションの手順に従ってチュートリアルを完了できます。
 
     ```bash
     terraform apply out.plan
@@ -362,7 +362,7 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
     !["terraform apply" の結果例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. Azure Portal で、左側のメニューの **[すべてのサービス]** を選択すると、新しい Kubernetese クラスターに対して作成されたリソースが表示されます。
+1. Azure portal で、左側のメニューの **[すべてのサービス]** を選択すると、新しい Kubernetes クラスターに対して作成されたリソースが表示されます。
 
     ![Cloud Shell のプロンプト](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 

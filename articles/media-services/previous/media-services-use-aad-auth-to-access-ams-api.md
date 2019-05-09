@@ -11,25 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 320afdb1e4f71150680e9bed6a4c1c9955c99936
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230626"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58802492"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス
- 
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス  
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+
 Azure Media Services API は RESTful API です。 この API を使って、メディア リソースに対して操作を実行できます。そのためには、REST API または公開されているクライアント SDK を使用します。 Azure Media Services には、Microsoft .NET 用の Media Services クライアント SDK が用意されています。 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 
 
 Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../../active-directory/fundamentals/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。  
 
-> [!IMPORTANT]
-> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に非推奨となる予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
-
 このドキュメントでは、REST API または .NET API を使用して Media Services API にアクセスする方法の概要を説明します。
+
+> [!NOTE]
+> Access Control 承認は 2018 年 6 月 1 日に非推奨となりました。
 
 ## <a name="access-control"></a>アクセス制御
 
@@ -71,20 +74,20 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 1. ユーザーに資格情報の入力を求めます。
 2. 次のパラメーターが含まれた Azure AD アクセス トークンを要求します。  
 
-    * Azure AD テナント エンドポイント。
+   * Azure AD テナント エンドポイント。
 
-        テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
-    * Media Services リソース URI。 
+       テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
+   * Media Services リソース URI。 
 
-        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例:https://rest.media.azure.net)。
+       この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net)。
 
-    * Media Services (ネイティブ) アプリケーション クライアント ID。
-    * Media Services (ネイティブ) アプリケーション リダイレクト URI。
-    * REST Media Services のリソース URI。
+   * Media Services (ネイティブ) アプリケーション クライアント ID。
+   * Media Services (ネイティブ) アプリケーション リダイレクト URI。
+   * REST Media Services のリソース URI。
         
-        この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
+       この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
 
-    これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、ユーザー認証オプションの使用について参照してください。
+     これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、ユーザー認証オプションの使用について参照してください。
 
 3. Azure AD アクセス トークンがクライアントに送信されます。
 4. クライアントが、Azure AD アクセス トークンを使用して要求を Azure Media REST API に送信します。
@@ -113,20 +116,20 @@ Azure AD アプリケーションを作成した後、次の設定の値を取�
     
 1. 中間層アプリ (Web API または Web アプリケーション) が、次のパラメーターが含まれた Azure AD アクセス トークンを要求します。  
 
-    * Azure AD テナント エンドポイント。
+   * Azure AD テナント エンドポイント。
 
-        テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
-    * Media Services リソース URI。 
+       テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
+   * Media Services リソース URI。 
 
-        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例:https://rest.media.azure.net)。
+       この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net)。
 
-    * REST Media Services のリソース URI。
+   * REST Media Services のリソース URI。
 
-        この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
+       この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
 
-    * Azure AD アプリケーションの値 (クライアント ID と クライアント シークレット)。
+   * Azure AD アプリケーションの値 (クライアント ID と クライアント シークレット)。
     
-    これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、サービス プリンシパル認証オプションの使用について参照してください。
+     これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、サービス プリンシパル認証オプションの使用について参照してください。
 
 2. Azure AD アクセス トークンが中間層アプリに送信されます。
 4. 中間層アプリが、Azure AD トークンを使用して要求を Azure Media REST API に送信します。
@@ -138,9 +141,9 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-例外: "リモート サーバーがエラーを返しました: (401) 未承認"
+例外:"リモート サーバーがエラーを返しました: (401) 許可されていません"
 
-解決策: Media Services REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの共同作成者ロールまたは所有者ロールが付与されている必要があります。 詳細については、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」セクションを参照してください。
+解決方法:Media Services REST 要求が成功するには、呼び出し元のユーザーは、アクセスしようとしている Media Services アカウントの共同作成者または所有者ロールである必要があります。 詳細については、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」セクションを参照してください。
 
 ## <a name="resources"></a>リソース
 

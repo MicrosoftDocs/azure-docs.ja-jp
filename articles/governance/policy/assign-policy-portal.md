@@ -1,7 +1,6 @@
 ---
-title: 準拠していないリソースを識別するポリシーを作成する
+title: 準拠していないリソースに対するポリシーを作成する
 description: この記事では、ポリシー定義を作成して、準拠していないリソースを特定する手順について説明します。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/06/2018
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ddf30f6a7bc00be9ac24952adf0ba41e6151bd10
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 42e8e7bdd52dcb8f236d94e7f931c91cd21605fd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311169"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59278957"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>準拠していないリソースを識別するためのポリシー割り当てを作成する
 
@@ -31,15 +30,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
-   ![ポリシーを検索する](./media/assign-policy-portal/search-policy.png)
+   ![[すべてのサービス] で [ポリシー] を検索する](./media/assign-policy-portal/search-policy.png)
 
 1. Azure Policy ページの左側にある **[割り当て]** を選択します。 割り当ては、特定のスコープ内で実行するように割り当てられたポリシーです。
 
-   ![割り当ての選択](./media/assign-policy-portal/select-assignments.png)
+   ![ポリシーの概要ページから [割り当て] ページを選択する](./media/assign-policy-portal/select-assignments.png)
 
 1. **[ポリシー - 割り当て]** ページの上部で **[ポリシーの割り当て]** を選択します。
 
-   ![ポリシー定義を割り当てる](./media/assign-policy-portal/select-assign-policy.png)
+   ![[割り当て] ページでポリシー定義を割り当てる](./media/assign-policy-portal/select-assign-policy.png)
 
 1. **[ポリシーの割り当て]** ページで、**[スコープ]** を選択します。その際、省略記号をクリックし、管理グループまたはサブスクリプションを選択します。 任意でリソース グループを選択します。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。  次に、**[スコープ]** ページの下部にある **[選択]** をクリックします。
 
@@ -71,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ページの左側にある **[コンプライアンス]** を選択します。 次に、作成した "**Managed Disks を使用していない VM の監査**" ポリシー割り当てを見つけます。
 
-![ポリシーのコンプライアンス](./media/assign-policy-portal/policy-compliance.png)
+![ポリシーのコンプライアンスのページのコンプライアンスの詳細](./media/assign-policy-portal/policy-compliance.png)
 
 この新しい割り当てに準拠していない既存のリソースがある場合、**[準拠していないリソース]** の下に表示されます。
 
@@ -94,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. "**Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)**" ポリシーの割り当てを右クリックし、**[割り当ての削除]** を選択します。
 
-   ![割り当てを削除する](./media/assign-policy-portal/delete-assignment.png)
+   ![コンプライアンスのページから割り当てを削除する](./media/assign-policy-portal/delete-assignment.png)
 
 ## <a name="next-steps"></a>次の手順
 

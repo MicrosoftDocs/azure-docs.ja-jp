@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: d266ee48a4248584ae22a9ba678d516fe28cd712
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 59f88d54d3542738f1a500c8c476995eb1535ecf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259717"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006489"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](https://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](https://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。
@@ -214,19 +214,18 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 |    |           |
 | ------------- | ------------- |
 | 紹介   | ディープ ラーニング フレームワーク      |
-| サポートされている DSVM エディション      |  Linux     |
+| サポートされている DSVM エディション      | Linux     |
 | DSVM での構成/インストール方法  | PyTorch は、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) にインストールされています。  |
 | サンプルへのリンク      | サンプル Jupyter ノートブックが含まれています。また、サンプルは /dsvm/samples/pytorch でも見つけることができます。      |
 | DSVM 上の関連ツール      | Torch      |
-| 使用/実行方法 |
-* ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている PyTorch ディレクトリを開きます。  |
+| 使用/実行方法 |* ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている PyTorch ディレクトリを開きます。  |
 
 ## <a name="mxnet-model-server"></a>MXNet モデル サーバー
 
 |    |           |
 | ------------- | ------------- |
 | 紹介   | MXNet および ONNX モデルの HTTP エンドポイントを作成するサーバー      |
-| サポートされている DSVM エディション      |  Linux     |
+| サポートされている DSVM エディション      | Linux     |
 | DSVM での構成/インストール方法  | _mxnet-model-server_ は端末で利用可能   |
 | サンプルへのリンク      | [[MXNet Model Server] (MXNet モデル サーバー) ページ](https://github.com/awslabs/mxnet-model-server)で、最新のサンプルを探す    |
 | DSVM 上の関連ツール      | MXNet      |
@@ -236,7 +235,7 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 |    |           |
 | ------------- | ------------- |
 | 紹介   | TensorFlow モデルで推論を実行するサーバー      |
-| サポートされている DSVM エディション      |  Linux     |
+| サポートされている DSVM エディション      | Linux     |
 | DSVM での構成/インストール方法  | _tensorflow_model_server_ は端末で利用可能   |
 | サンプルへのリンク      | サンプルは[オンラインで](https://www.tensorflow.org/serving/)利用可能      |
 | DSVM 上の関連ツール      | TensorFlow      |

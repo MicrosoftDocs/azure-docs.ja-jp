@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 5f6908a80a467e1a8a12d61be2f67cbe70cce8a0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.subservice: common
+ms.openlocfilehash: 47ecfc2ae1352ad24b5cfd7fc39bca26bae09df7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275640"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457787"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 

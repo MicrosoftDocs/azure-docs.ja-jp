@@ -5,15 +5,15 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 11/11/2018
+ms.date: 02/21/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 513d9a3a044daacd84b810e4795522c2bd6763f8
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 79af6512e9ce3d3f897be216ee3626c5d4fbcf1d
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616573"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56741452"
 ---
 ## <a name="create-a-media-services-account"></a>Media Services アカウントを作成する
 
@@ -29,19 +29,20 @@ az group create --name amsResourceGroup --location westus2
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-Media Services アカウントの作成では、Azure Storage アカウント リソースの名前を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 
+Media Services アカウントの作成では、Azure Storage アカウント リソースの名前を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 Media Services で使用されるストレージ アカウントの使用方法について詳しくは、「[ストレージ アカウント](../articles/media-services/latest/storage-account-concept.md)」をご覧ください。
 
 1 つの**プライマリ** ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数の **セカンダリ** ストレージ アカウントを持つことができます。 Media Services は、**汎用 v2** (GPv2) アカウントまたは**汎用 v1** (GPv1) アカウントをサポートします。 BLOB のみのアカウントを**プライマリ**として使用することはできません。 ストレージ アカウントについて詳しくは、「[Azure Storage アカウントの種類](../articles/storage/common/storage-account-options.md)」をご覧ください。 
 
-Media Services で使用されるストレージ アカウントの使用方法について詳しくは、「[ストレージ アカウント](../articles/media-services/latest/storage-account-concept.md)」をご覧ください。
-
+この例では、General Purpose v2、Standard LRS アカウントを作成します。 ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 ただし、運用環境用の SKU を選択する場合は、ビジネス継続性のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。 詳細については、[ストレージ アカウント](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)に関するページを参照してください。
+ 
 Media Services アカウントに関連付けるストレージ アカウントは、以下のコマンドで作成します。 以下のスクリプトの `storageaccountforams` は、実際の値に置き換えてください。 アカウント名は 24 文字未満にする必要があります。
 
 ```azurecli
 az storage account create --name storageaccountforams \  
---kind StorageV2 \
---sku Standard_RAGRS \
---resource-group amsResourceGroup
+  --kind StorageV2 \
+  --sku Standard_LRS \
+  -l westus2 \
+  -g amsResourceGroup
 ```
 
 ### <a name="create-a-media-services-account"></a>Media Services アカウントを作成する
@@ -49,5 +50,7 @@ az storage account create --name storageaccountforams \
 新しい Media Services アカウントは、以下の Azure CLI コマンドで作成します。 `amsaccount` と `storageaccountforams` には、実際のストレージ アカウントに割り当てた値を、`amsResourceGroup` には、リソース グループに割り当てた値を指定してください。
 
 ```azurecli
-az ams account create --name amsaccount --resource-group amsResourceGroup --storage-account storageaccountforams
+az ams account create --name amsaccount \
+  -l westus2 \
+  -g amsResourceGroup --storage-account storageaccountforams
 ```

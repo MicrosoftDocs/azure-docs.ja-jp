@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 73997345895bc54f54db1d66c0c6c24c24153dd2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d2b06d044f68972ef72dd9b53401980e84ef779f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267844"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440932"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
 
@@ -43,21 +42,23 @@ Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度な�
 | あいまいグループ化変換とあいまい参照変換  | Azure-SSIS IR Enterprise Edition には、あいまいグループ化変換とあいまい参照変換がプレインストールされています。 これらのコンポーネントは、参照データの格納用に SQL Server と Azure SQL Database の両方をサポートします。 |
 | 用語抽出変換と用語参照変換 | Azure-SSIS IR Enterprise Edition には、用語抽出変換と用語参照変換がプレインストールされています。 これらのコンポーネントは、参照データの格納用に SQL Server と Azure SQL Database の両方をサポートします。 |
 
-## <a name="instructions"></a>このサンプルについての指示
+## <a name="instructions"></a>Instructions
 
-1.  [Azure PowerShell (バージョン 5.4 以降)](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) をダウンロードしてインストールします。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、**Edition** パラメーターの値として **Enterprise** を指定して `Set-AzureRmDataFactoryV2IntegrationRuntime` を実行します。 スクリプトのサンプルを次に示します。
+1.  [Azure PowerShell](/powershell/azure/install-az-ps)をダウンロードしてインストールします。
+
+2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、**Edition** パラメーターの値として **Enterprise** を指定して `Set-AzDataFactoryV2IntegrationRuntime` を実行します。 スクリプトのサンプルを次に示します。
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"
 
-    Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
+    Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
                                                -Name $MyAzureSsisIrName
                                                -ResourceGroupName $MyResourceGroupName
                                                -Edition $MyAzureSsisIrEdition
 
-    Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
+    Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
                                                  -Name $MyAzureSsisIrName
                                                  -ResourceGroupName $MyResourceGroupName
     ```

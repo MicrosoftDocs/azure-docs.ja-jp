@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: スマートフォン アプリから Custom Decision Service API を呼び出す方法。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: slivkins
-ms.openlocfilehash: e7df982c178bff19dcad8df1ba42a5a97904cd4c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 0e5c99aae61fb927ea7f101bab74d661a747f88b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365019"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870012"
 ---
 # <a name="call-api-from-an-app"></a>アプリから API を呼び出す
 

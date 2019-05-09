@@ -10,19 +10,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: b0152056dcb8716a407e022d2b30c48e6b534b2a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6588690629d2e266469a4b8ea533c5650f3fc0ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074572"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890884"
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Geo 人工知能データ サイエンス仮想マシンの概要
 
@@ -44,7 +44,7 @@ Geo AI データ サイエンス VM は、ESRI と Microsoft によって共同�
 
 Microsoft の[データ サイエンス仮想マシン (DSVM)](overview.md) は、Azure で広く使用されている実験およびモデリング環境であり、AI、機械学習、およびデータ サイエンス ツールのホストとして機能します。 これらのプラットフォームやツールはすべて事前構成されており、すぐに使用することができます。 
 
-データ サイエンス VM の予測機能に、Azure Cloud のスケーラビリティや [ESRI](http://www.esri.com) の地理空間分析ソフトウェアを組み合わせれば、データ サイエンティストや地理的空間アナリストがデータから新たなインテリジェンスを取得し、新たな機会を特定するための、生産性に優れたプラットフォームを提供できます。 
+データ サイエンス VM の予測機能に、Azure Cloud のスケーラビリティや [ESRI](https://www.esri.com) の地理空間分析ソフトウェアを組み合わせれば、データ サイエンティストや地理的空間アナリストがデータから新たなインテリジェンスを取得し、新たな機会を特定するための、生産性に優れたプラットフォームを提供できます。 
 
 
 ## <a name="next-steps"></a>次の手順

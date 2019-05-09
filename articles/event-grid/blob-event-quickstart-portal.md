@@ -3,18 +3,18 @@ title: Azure Blob Storage イベントを Web エンドポイントに送信す�
 description: Azure Event Grid と Azure portal を使用して BLOB ストレージ アカウントを作成し、そのイベントをサブスクライブします。 Webhook にイベントを送信します。
 services: event-grid
 keywords: ''
-author: tfitzmac
-ms.author: tomfitz
+author: spelluru
+ms.author: spelluru
 ms.date: 10/17/2018
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 6fd48ecd6def6a4fcd56751b6a137f75b16896ef
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a0043ca886bf6c92ab26d76b3678bf8a2764846a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086965"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098527"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>クイック スタート: Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする
 
@@ -48,7 +48,7 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 
@@ -104,8 +104,8 @@ BLOB ストレージのイベントをトリガーするには、ファイルを
 
 1. 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 Web アプリを表示して、BLOB 作成イベントが受信されたことを確認します。 
 
-  ```json
-  {
+   ```json
+   {
     "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
     "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
     "eventType": "Microsoft.Storage.BlobCreated",
@@ -127,8 +127,8 @@ BLOB ストレージのイベントをトリガーするには、ファイルを
     },
     "dataVersion": "",
     "metadataVersion": "1"
-  }
-  ```
+   }
+   ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

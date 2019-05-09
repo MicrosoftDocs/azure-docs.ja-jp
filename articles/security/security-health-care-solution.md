@@ -4,7 +4,7 @@ description: " この記事では、Azure サービスおよび機能を構成�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 7e5b082d-dc9c-4d4f-b3f1-75edcdafbd8f
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: e91a55f3fc5923545b6855a31514afb4a62bc361
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 060c176b97966816d421ddbe0d8017ad8558710a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540977"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113849"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Azure を使用して安全な医療ソリューションを設計するための実用ガイド
 Azure への移行を検討している医療業界のスタートアップ、システム インテグレーター (SI)、独立系ソフトウェア ベンダー (ISV)、および医療機関からは、コンプライアンス義務を果たすセキュリティ制御を組み込むうえで役に立つガイダンスが求められています。

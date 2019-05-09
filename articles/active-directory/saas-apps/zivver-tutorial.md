@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ZIVVER の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ZIVVER の統合 | Microsoft Docs
 description: Azure Active Directory と ZIVVER の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 64cb7ea0-df6c-4963-84d8-6f435980e2de
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: b86a797fe092eccb097c6fbb34f1de7ee341c418
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 753b6a99a3e9720f813a6820d475c7ce63571f53
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055781"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187289"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>チュートリアル: Azure Active Directory と ZIVVER の統合
+# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>チュートリアル:Azure Active Directory と ZIVVER の統合
 
 このチュートリアルでは、ZIVVER と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -123,7 +124,7 @@ ZIVVER で Azure AD のシングル サインオンを構成してテストす�
 6. **ZIVVER** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [ZIVVER サポート チーム](https://support.zivver.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -155,7 +156,7 @@ ZIVVER で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-zivver-test-user"></a>ZIVVER テスト ユーザーの作成
 
@@ -196,7 +197,7 @@ ZIVVER で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [ZIVVER] タイルをクリックすると、ZIVVER アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

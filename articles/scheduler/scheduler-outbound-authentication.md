@@ -47,9 +47,9 @@ Scheduler では、これらの認証モデルがサポートされています�
 | 要素 | 必須 | 説明 |
 |---------|----------|-------------|
 | **authentication** (親要素) | SSL クライアント証明書を使用するための認証オブジェクト |
-| **type** | [はい] | 認証の種類。 SSL クライアント証明書の場合、値 `ClientCertificate`を使用します。 |
-| **pfx** | [はい] | Base64 でエンコードされた PFX ファイルのコンテンツ |
-| **password** | [はい] | PFX ファイルにアクセスするためのパスワード |
+| **type** | はい | 認証の種類。 SSL クライアント証明書の場合、値 `ClientCertificate`を使用します。 |
+| **pfx** | はい | Base64 でエンコードされた PFX ファイルのコンテンツ |
+| **password** | はい | PFX ファイルにアクセスするためのパスワード |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>応答本文 - クライアント証明書 
@@ -167,9 +167,9 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 | 要素 | 必須 | 説明 |
 |---------|----------|-------------|
 | **authentication** (親要素) | 基本認証を使用するための認証オブジェクト | 
-| **type** | [はい] | 認証の種類。 基本認証の場合、値 `Basic`を使用します。 | 
-| **username** | [はい] | 認証するユーザー名 | 
-| **password** | [はい] | 認証するパスワード |
+| **type** | はい | 認証の種類。 基本認証の場合、値 `Basic`を使用します。 | 
+| **username** | はい | 認証するユーザー名 | 
+| **password** | はい | 認証するパスワード |
 |||| 
 
 ### <a name="response-body---basic"></a>応答本文 - 基本
@@ -284,12 +284,12 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 | 要素 | 必須 | 説明 |
 |---------|----------|-------------|
-| **authentication** (親要素) | [はい] | ActiveDirectoryOAuth 認証を使用するための認証オブジェクト |
-| **type** | [はい] | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 |
-| **tenant** | [はい] | Azure AD テナントのテナント ID です。 Azure AD テナントのテナント ID を確認するには、Azure PowerShell で `Get-AzureAccount` を実行します。 |
-| **audience** | [はい] | この値は `https://management.core.windows.net/` に設定されます。 | 
-| **clientId** | [はい] | Azure AD アプリケーションのクライアント識別子 | 
-| **secret** | [はい] | トークンを要求しているクライアントのシークレット | 
+| **authentication** (親要素) | はい | ActiveDirectoryOAuth 認証を使用するための認証オブジェクト |
+| **type** | はい | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 |
+| **tenant** | はい | Azure AD テナントのテナント ID です。 Azure AD テナントのテナント ID を確認するには、Azure PowerShell で `Get-AzureAccount` を実行します。 |
+| **audience** | はい | この値は `https://management.core.windows.net/` に設定されます。 | 
+| **clientId** | はい | Azure AD アプリケーションのクライアント識別子 | 
+| **secret** | はい | トークンを要求しているクライアントのシークレット | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>応答本文 - Active Directory OAuth

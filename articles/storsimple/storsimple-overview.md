@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 946b5a568d98367daec0244968b962618f22ae76
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038509"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326928"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 ## <a name="overview"></a>概要
@@ -36,7 +36,7 @@ StorSimple では、 [ストレージ階層化](#automatic-storage-tiering) を�
 ## <a name="why-use-storsimple"></a>StorSimple を使用する理由
 次の表には、Microsoft Azure StorSimple の長所をいくつかまとめてあります。
 
-| Feature | 長所 |
+| 機能 | 長所 |
 | --- | --- |
 | 透過的な統合 |iSCSI プロトコルを使用して、ユーザーに意識させることなくデータ ストレージ設備を連結します。 データは、その保存先がクラウドであれ、データ センターであれ、リモート サーバーであれ、すべて同じ場所に保存されているように見えます。 |
 | ストレージ コストの削減 |現在の需要と照らして妥当な量のローカル ストレージまたはクラウド ストレージを割り当て、必要なときにのみクラウド ストレージを拡張します。 また、重複するデータを排除 (重複除去) したり圧縮を使用したりすることによって、ストレージの要件と費用を削減します。 |
@@ -92,7 +92,7 @@ StorSimple を使用して、物理的なハイブリッド ストレージ デ�
 * クラウド アプライアンスは、クラウド内に無制限に作成でき、必要に応じてオン/オフを切り替えることができます。
 * 障害復旧、開発、テストなどのシナリオでオンプレミスの環境をシミュレーションし、アイテムレベルでバックアップから復旧できます。
 
-StorSimple Cloud Appliance は 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。 8010 デバイスの最大容量は 30 TB です。 Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。 (ローカル層では、Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。)Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。 Premium Storage の詳細については、「 [Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../virtual-machines/windows/premium-storage.md)」を参照してください。
+StorSimple Cloud Appliance は 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。 8010 デバイスの最大容量は 30 TB です。 Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。 (ローカル層では、Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。)Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。
 
 StorSimple Cloud Appliance の詳細については、[Azure での StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)に関する記事を参照してください。
 
@@ -214,8 +214,8 @@ Microsoft Azure StorSimple は、重複除去とデータ圧縮を使用して�
 | 仮想化 |仮想マシン |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | Database |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | ビデオの監視 |ビデオの監視 |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 2 以降 |
-| Backup |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
-| Backup |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
+| バックアップ |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
+| バックアップ |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
 
 *はい&#42; - ソリューション ガイドラインと制限事項を適用する必要があります。*
 

@@ -4,24 +4,25 @@ description: Azure AD Connect の Synchronization Service Manager の [操作] �
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 97a26565-618f-4313-8711-5925eeb47cdc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92de95cb3192fb9f551bea631ef878070f9173cf
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310321"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195296"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Sync Service Manager の [操作] タブの使用
 

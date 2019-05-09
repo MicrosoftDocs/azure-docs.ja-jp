@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory にある非管理対象ディレクトリ (シャドウ テナント) を管理者が引き継ぐ | Microsoft Docs
+title: 管理者による非管理対象ディレクトリの引き継ぎ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory にある非管理対象ディレクトリ (シャドウ テナント) の DNS ドメイン名を引き継ぐ方法です。
 services: active-directory
 documentationcenter: ''
@@ -7,22 +7,24 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.custom: it-pro
-ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: it-pro;seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837173"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202488"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
-この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure のセルフサービス サインアップについて](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)」をご覧ください。
+
+この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)」をご覧ください
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>非管理対象ディレクトリを引き継ぐ方法を決定する
 管理者の引き継ぎのプロセスでは、「[カスタム ドメイン名を Azure Active Directory に追加する](../fundamentals/add-custom-domain.md)」で説明されているように、所有権を証明できます。 次のセクションでは管理者エクスペリエンスを詳細に説明しますが、概要を以下に示します。
@@ -41,37 +43,37 @@ Office 365 など SharePoint と OneDrive が搭載されている一部の製�
 
 3. Power BI からの確認の電子メールで、**[Yes, that's me]\(はい、私です\)** を選びます。
 
-4. Power BI ユーザー アカウントで、[Office 365 管理センター](https://portal.office.com/adminportal/Home)にサインインします。 管理されていないテナントで既に確認済みのドメイン名の **[管理者になる]**  に誘導するメッセージを受信します。 **[Yes, I want to be the admin]\(はい、管理者になります\)** を選択します。
+4. Power BI ユーザー アカウントで、[Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。 管理されていないテナントで既に確認済みのドメイン名の **[管理者になる]**  に誘導するメッセージを受信します。 **[Yes, I want to be the admin]\(はい、管理者になります\)** を選択します。
   
-  ![[管理者になる] の最初のスクリーン ショット](./media/domains-admin-takeover/become-admin-first.png)
+   ![[管理者になる] の最初のスクリーン ショット](./media/domains-admin-takeover/become-admin-first.png)
   
 5. TXT レコードを追加して、ドメイン名のレジストラーでドメイン名 **fourthcoffee.xyz** を所有していることを証明します。 この例では、GoDaddy.com になります。
   
-  ![ドメイン名の txt レコードを追加する](./media/domains-admin-takeover/become-admin-txt-record.png)
+   ![ドメイン名の txt レコードを追加する](./media/domains-admin-takeover/become-admin-txt-record.png)
 
 DNS TXT レコードがドメイン名のレジストラーで確認済みの場合、Azure AD テナントを管理できます。
 
 上記の手順を完了すると、Office 365 の Fourth Coffee テナントのグローバル管理者になります。 お使いの他の Azure サービスとドメイン名を統合するには、ドメイン名を Office 365 から削除して、Azure の別の管理対象テナントに追加できます。
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Azure AD の管理対象テナントにドメイン名を追加する 
+### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Azure AD の管理対象テナントにドメイン名を追加する
 
-1. [Office 365 管理センター](https://portal.office.com/adminportal/Home)を開きます。
-2. **[ユーザー]** タブを選択し、カスタム ドメイン名を使用していない *user@fourthcoffeexyz.onmicrosoft.com* のような名前で、新しいユーザー アカウントを作成します。 
+1. [Microsoft 365 管理センター](https://admin.microsoft.com)を開きます。
+2. **[ユーザー]** タブを選択し、カスタム ドメイン名を使用していない *user\@fourthcoffeexyz.onmicrosoft.com* のような名前で、新しいユーザー アカウントを作成します。 
 3. 新しいユーザー アカウントに Azure AD テナントのグローバル管理者特権が付与されていることを確認します。
-4. Office 365 管理センターで **[ドメイン]** タブを開き、ドメイン名を選択して **[削除]** を選びます。 
+4. Microsoft 365 管理センターで **[ドメイン]** タブを開き、ドメイン名を選択して **[削除]** を選択します。 
   
-  ![Office 365 からドメイン名を削除する](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![Office 365 からドメイン名を削除する](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. 削除されたドメイン名を参照しているユーザーまたはグループが Office 365 にある場合、.onmicrosoft.com ドメインに名前を変更する必要があります。 ドメイン名を強制的に削除した場合、すべてのユーザーの名前が自動的に変更されます。この例では、*user@fourthcoffeexyz.onmicrosoft.com* になります。
+5. 削除されたドメイン名を参照しているユーザーまたはグループが Office 365 にある場合、.onmicrosoft.com ドメインに名前を変更する必要があります。 ドメイン名を強制的に削除した場合、すべてのユーザーの名前が自動的に変更されます。この例では、*user\@fourthcoffeexyz.onmicrosoft.com* になります。
   
 6. Azure AD テナントのグローバル管理者であるアカウントを使って、[Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
   
 7. **[カスタム ドメイン名]** を選択してドメイン名を追加します。 DNS TXT レコードを入力して、ドメイン名の所有権を確認する必要があります。 
   
-  ![Azure AD に追加されたドメイン](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
+   ![Azure AD に追加済みと確認されたドメイン](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Office 365 テナントに割り当てられているライセンスを所有する、Power BI または Azure Rights Management サービスのユーザーは、ドメイン名が削除された場合、ダッシュ ボードを保存しておく必要があります。 *user@fourthcoffee.xyz* ではなく、*user@fourthcoffeexyz.onmicrosoft.com* のようなユーザー名でサインインする必要があります。
+> Office 365 テナントに割り当てられているライセンスを所有する、Power BI または Azure Rights Management サービスのユーザーは、ドメイン名が削除された場合、ダッシュ ボードを保存しておく必要があります。 *user\@fourthcoffee.xyz* ではなく、*user\@fourthcoffeexyz.onmicrosoft.com* のようなユーザー名でサインインする必要があります。
 
 ## <a name="external-admin-takeover"></a>外部管理者の引き継ぎ
 
@@ -131,46 +133,47 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 ### <a name="powershell-example"></a>PowerShell の例
 
 1. セルフ サービス プランに対応するために使用された資格情報を使用して Azure AD に接続します。
-  ````
+   ```powershell
     Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred
-  ````
+   ```
 2. ドメイン一覧を、次のコマンドレットで取得します。
   
-  ````
+   ```powershell
     Get-MsolDomain
-  ````
+   ```
 3. 次のように Get-MsolDomainVerificationDns コマンドレットを実行してチャレンジを作成します。
-  ````
+   ```powershell
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
     For example:
   
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
-  ````
+   ```
 
 4. このコマンドから返される値 (チャレンジ) をコピーします。 例: 
-  ````
+   ```powershell
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
-  ````
+   ```
 5. パブリック DNS 名前空間で、前の手順でコピーした値を含む DNS txt レコードを作成します。 このレコードの名前は親ドメインの名前です。このリソース レコードを Windows Server の DNS ロールを使用して作成する場合は、[レコード名] を空のままにして、テキスト ボックスに値を貼り付けます。
 6. 次のように Confirm-MsolDomain コマンドレットを実行してチャレンジを確認します。
   
-  ````
+   ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
-  ````
+   ```
   
-  例: 
+   例: 
   
-  ````
+   ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
-  ````
+   ```
 
 チャレンジがクリアされると、エラーなしでプロンプトに戻ります。
 
 ## <a name="next-steps"></a>次の手順
+
 * [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
 * [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)

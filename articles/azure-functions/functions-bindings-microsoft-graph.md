@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301018"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997553"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -63,7 +63,7 @@ Visual Studio を使用している場合は、[この記事の前半で説明�
 
 ### <a name="configuring-authentication--authorization"></a>認証と承認の構成
 
-この記事で説明するバインドでは、ID を使用する必要があります。 これにより、Microsoft Graph でアクセス許可と監査の相互作用を適用できます。 ID には、アプリケーションにアクセスするユーザー、またはアプリケーションそのものを指定できます。 この ID を構成するには、Azure Active Directory で [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)を設定します。 また、関数で必要なリソースのアクセス許可を要求する必要があります。
+この記事で説明するバインドでは、ID を使用する必要があります。 これにより、Microsoft Graph でアクセス許可と監査の相互作用を適用できます。 ID には、アプリケーションにアクセスするユーザー、またはアプリケーションそのものを指定できます。 この ID を構成するには、Azure Active Directory で [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)を設定します。 また、関数で必要なリソースのアクセス許可を要求する必要があります。
 
 > [!Note] 
 > Microsoft Graph の拡張機能は、Azure AD 認証のみをサポートします。 ユーザーは、職場または学校のアカウントでログインする必要があります。
@@ -226,7 +226,8 @@ module.exports = function (context, req) {
 
 トークンは、常に文字列としてコードに表示されます。
 
-
+> [!Note]
+> `userFromId`、`userFromToken`、`userFromRequest` オプションのいずれかを使用してローカルで開発するときは、必要なトークンを[手動で取得](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857)し、呼び出し元のクライアント アプリケーションから `X-MS-TOKEN-AAD-ID-TOKEN` 要求ヘッダーで指定できます。
 
 
 <a name="excel-input"></a>
@@ -359,6 +360,7 @@ module.exports = function (context, req) {
 ### <a name="excel-input---usage"></a>Excel の入力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
@@ -521,6 +523,7 @@ module.exports = function (context, req) {
 ### <a name="excel-output---usage"></a>Excel の出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
@@ -663,6 +666,7 @@ module.exports = function (context, req) {
 ### <a name="file-input---usage"></a>ファイルの入力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
@@ -670,7 +674,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- string
+- 文字列
 - Microsoft.Graph.DriveItem
 
 
@@ -810,6 +814,7 @@ module.exports = function (context, req) {
 #### <a name="file-output---usage"></a>ファイルの出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
@@ -817,7 +822,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- string
+- 文字列
 - Microsoft.Graph.DriveItem
 
 
@@ -959,6 +964,7 @@ module.exports = function (context, req) {
 ### <a name="outlook-output---usage"></a>Outlook の出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザーとしてのメールの送信|
@@ -966,7 +972,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- string
+- 文字列
 - カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
 
 
@@ -981,7 +987,7 @@ Webhook を使用すると、Microsoft Graph でのイベントに応答でき�
 - [Microsoft Graph webhook サブスクリプションの入力バインド](#webhook-input)を使用すると、既存のサブスクリプションを一覧表示し、必要に応じて更新できます。
 - [Microsoft Graph webhook サブスクリプションの出力バインド](#webhook-output)を使用すると、webhook サブスクリプションを作成または削除できます。
 
-バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions)をご覧ください。
+バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)をご覧ください。
 
 webhook について詳しくは、「[Microsoft Graph の Webhooks での作業]」をご覧ください。
 
@@ -1396,7 +1402,7 @@ module.exports = function (context, req) {
 ### <a name="webhook-output---usage"></a>webhook の出力 - 使用方法
 
 バインドは、.NET 関数に次の種類を公開します。
-- string
+- 文字列
 - Microsoft.Graph.Subscription
 
 
@@ -1420,7 +1426,7 @@ module.exports = function (context, req) {
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#app-identity-refresh---c-script-example)
-* [JavaScript](#app-identity-refresh---javascript-example)
+* JavaScript
 
 ### <a name="app-identity-refresh---c-script-example"></a>アプリケーション ID の更新 - C# スクリプトの例
 

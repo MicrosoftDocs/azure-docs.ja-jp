@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 395b0cadf3ba3313a9a1304d9244f1fe72a8209c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016880"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175983"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -39,10 +39,10 @@ Kubernetes スケジューラでは、テイントと容認を使用して、ノ
 ポッドを AKS クラスターにデプロイするときは、容認とテイントが一致している場合にのみ、ノードでポッドがスケジュールされます。 たとえば、GPU をサポートするノード用のノードプールが AKS クラスターにあるものとします。 *gpu* などの名前と、スケジュールのための値を定義します。 この値を *NoSchedule* に設定した場合、ポッドで適切な容認が定義されていない場合、そのノードをポッドにスケジュールすることはできません。
 
 ```console
-kubectl taint node aks-nodepool1 gpu:NoSchedule
+kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-ノードにテイントを適用したら、そのノードでのスケジュールを許可する容認をポッドの仕様で定義します。 次の例では、前のステップでノードに適用したテイントを許容するための `key: gpu` と `effect: NoSchedule` を定義しています。
+ノードにテイントを適用したら、そのノードでのスケジュールを許可する容認をポッドの仕様で定義します。 次の例では、前のステップでノードに適用したテイントを許容するための `sku: gpu` と `effect: NoSchedule` を定義しています。
 
 ```yaml
 kind: Pod
@@ -61,9 +61,9 @@ spec:
       cpu: 4.0
       memory: 16Gi
   tolerations:
-  - key: "gpu"
+  - key: "sku"
     operator: "Equal"
-    value: "value"
+    value: "gpu"
     effect: "NoSchedule"
 ```
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 449c65d0ed746664b75bf8775dda695f569b3eb0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228387"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003125"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
@@ -47,7 +47,7 @@ Windows PowerShell for StorSimple には、次のいずれかの方法でアク�
 
 ## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Windows PowerShell for StorSimple にデバイスのシリアル コンソール経由で接続する
 
-Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウンロードする](http://www.putty.org/) か、類似するターミナル エミュレーション ソフトウェアをダウンロードする必要があります。 Microsoft Azure StorSimple デバイスにアクセスするように PuTTY を明確に構成する必要があります。 次のトピックで、PuTTy の構成方法とデバイスへの接続方法の詳細な手順について説明します。 シリアル コンソールのさまざまなメニュー オプションについても説明します。
+Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウンロードする](https://www.putty.org/) か、類似するターミナル エミュレーション ソフトウェアをダウンロードする必要があります。 Microsoft Azure StorSimple デバイスにアクセスするように PuTTY を明確に構成する必要があります。 次のトピックで、PuTTy の構成方法とデバイスへの接続方法の詳細な手順について説明します。 シリアル コンソールのさまざまなメニュー オプションについても説明します。
 
 ### <a name="putty-settings"></a>PuTTY 設定
 
@@ -61,7 +61,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
    | キーボードの項目 | Select |
    | --- | --- |
    | Backspace key |Control-? (127) |
-   | Home and End keys |標準 |
+   | Home and End keys |Standard |
    | Function keys and keypad |ESC[n~ |
    | Initial state of cursor keys |Normal |
    | Initial state of numeric keypad |Normal |
@@ -110,8 +110,8 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
    * 更新プログラムを適用する
    * 修正プログラムをインストールする
 
-    > [!NOTE]
-    > これは、デバイス管理者パスワードを忘れてしまい、オプション 1 またはオプション 2 を使用して接続できない場合に推奨するオプションです。
+     > [!NOTE]
+     > これは、デバイス管理者パスワードを忘れてしまい、オプション 1 またはオプション 2 を使用して接続できない場合に推奨するオプションです。
 
 4. **Change language**。このオプションでは、Windows PowerShell インターフェイスでの表示言語を変更できます。 サポートされている言語は、英語、日本語、ロシア語、フランス語、韓国語、スペイン語、イタリア語、ドイツ語、中国語、およびポルトガル語 (ブラジル) です。
 
@@ -159,7 +159,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 
 Windows PowerShell for StorSimple では、コマンドレット ヘルプを利用できます。 このヘルプのオンラインの最新バージョンも利用できます。これを使用して、システム上のヘルプを更新できます。
 
-このインターフェイスでのヘルプの取得は、Windows PowerShell での操作に似ています。また、ほとんどのヘルプ関連コマンドレットで機能します。 Windows PowerShell のヘルプは、TechNet ライブラリの「[Windows PowerShell を使用したスクリプト](https://go.microsoft.com/fwlink/?LinkID=108518)」でオンライン検索できます。
+このインターフェイスでのヘルプの取得は、Windows PowerShell での操作に似ています。また、ほとんどのヘルプ関連コマンドレットで機能します。 Windows PowerShell のヘルプは、次の TechNet ライブラリでオンライン検索できます: [Windows PowerShell を使用したスクリプト](https://go.microsoft.com/fwlink/?LinkID=108518)。
 
 Windows PowerShell インターフェイスで取得できるヘルプの種類の簡単な説明を、ヘルプの更新方法も含めて次に示します。
 

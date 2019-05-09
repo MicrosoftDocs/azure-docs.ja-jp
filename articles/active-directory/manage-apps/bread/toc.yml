@@ -1,29 +1,22 @@
-items:
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
   items:
-  - name: Active Directory
-    tocHref: /azure/active-directory/saas-apps/
-    topicHref: /azure/active-directory/index
-    items:
-    - name: アプリケーションの管理
+    - name: Active Directory
       tocHref: /azure/active-directory/saas-apps/
-      topicHref: /azure/active-directory/manage-apps/index
+      topicHref: /azure/active-directory/index
+      items:
+        - name: アプリケーションの管理
+          tocHref: /azure/active-directory/saas-apps/
+          topicHref: /azure/active-directory/manage-apps/index
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
   items:
-  - name: Active Directory
-    tocHref: /azure/active-directory/fundamentals/
-    topicHref: /azure/active-directory/index
-    items:
-    - name: アプリケーションの管理
+    - name: Active Directory
       tocHref: /azure/active-directory/fundamentals/
-      topicHref: /azure/active-directory/manage-apps/index
-ms.openlocfilehash: e05a4ebaf0d27196bef326bc3e1d3c72e748c1ed
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580975"
+      topicHref: /azure/active-directory/index
+      items:
+        - name: アプリケーションの管理
+          tocHref: /azure/active-directory/fundamentals/
+          topicHref: /azure/active-directory/manage-apps/index

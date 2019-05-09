@@ -3,24 +3,25 @@ title: Azure AD ギャラリー アプリケーションへのユーザー プ�
 description: 既に Azure AD アプリケーション ギャラリーに一覧表示されているアプリケーションにユーザー プロビジョニングを構成するときの一般的な問題をトラブルシューティングする方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: fe96ecc0ba6904819f0262a2f470e37203a7952e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e74519bf2eeb31a700c2fb02cbf3b94702449427
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355791"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218093"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題 
 
@@ -30,7 +31,7 @@ Azure Portal を使ってエンタープライズ アプリケーションの[�
 
 SAML ベースのシングル サインオンも同じアプリケーションに対して構成されている場合、エラーの最も可能性の高い原因は、証明書と資格情報に対して Azure AD 内部で設定されているアプリケーションごとストレージ上限を超えたことです。
 
-現在、アプリケーションの単一のインスタンスに関連付けられているすべての証明書、シークレット トークン、資格情報、および関連構成データの Azure AD での最大ストレージ容量は 1 キロバイトです (Azure AD のサービス プリンシパル レコードとも呼ばれるます)。
+現在、アプリケーションの単一のインスタンスに関連付けられているすべての証明書、シークレット トークン、資格情報、および関連構成データの Azure AD での最大ストレージ容量は 1024 バイトです (Azure AD のサービス プリンシパル レコードとも呼ばれるます)。
 
 SAML ベースのシングル サインオンが構成されている場合、SAML トークンの署名に使われる証明書がここに格納され、通常、領域の 50% 以上を消費します。
 

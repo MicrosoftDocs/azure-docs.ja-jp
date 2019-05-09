@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ccc5aa116d2f01b601e6b6b9aad456110b764856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 50b223e428c8f0b1f0c26e7c73e79a503a7c0121
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985728"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211055"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 
@@ -34,7 +35,7 @@ OAuth2 の暗黙的な許可は、OAuth2 仕様のセキュリティ問題を最
 
 典型的な [OAuth2 認証コード付与](https://tools.ietf.org/html/rfc6749#section-1.3.1) は、2 つの別個のエンドポイントを使用する認証付与です。 承認エンドポイントはユーザーによる操作の段階で使用され、その結果、承認コードが生成されます。 続いて、このコードをアクセス トークン (多くの場合は更新トークンも) と交換するために、トークン エンドポイントがクライアントによって使用されます。 Web アプリケーションは、承認サーバーがクライアントを認証できるように、トークン エンドポイントに独自のアプリケーション資格情報を示す必要があります。
 
-[OAuth2 の暗黙的な許可](https://tools.ietf.org/html/rfc6749#section-1.3.2)は、他の認証付与のバリアントです。 トークン エンドポイントにアクセスしたり、クライアントを認証したりすることなく、クライアントがアクセス トークン ([OpenId Connect](http://openid.net/specs/openid-connect-core-1_0.html) を使用する場合は id_token) を承認エンドポイントから直接取得できるようにします。 このバリアントは、Web ブラウザーで実行される JavaScript ベースのアプリケーションを想定したものです。元の OAuth2 仕様では、トークンは URI フラグメントとして返されます。 これにより、クライアントの JavaScript コードでトークン ビットを使用できるようになりますが、サーバーへのリダイレクトには含まれないことが保証されます。 ブラウザーを使用してトークンを返すと、承認エンドポイントから直接リダイレクトされます。 これには、クロス オリジン呼び出しに関する要件がなくなるという利点もあります。クロス オリジン呼び出しは、JavaScript アプリケーションがトークン エンドポイントにアクセスしなければならない場合に必要になるものです。
+[OAuth2 の暗黙的な許可](https://tools.ietf.org/html/rfc6749#section-1.3.2)は、他の認証付与のバリアントです。 トークン エンドポイントにアクセスしたり、クライアントを認証したりすることなく、クライアントがアクセス トークン ([OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html) を使用する場合は id_token) を承認エンドポイントから直接取得できるようにします。 このバリアントは、Web ブラウザーで実行される JavaScript ベースのアプリケーションを想定したものです。元の OAuth2 仕様では、トークンは URI フラグメントとして返されます。 これにより、クライアントの JavaScript コードでトークン ビットを使用できるようになりますが、サーバーへのリダイレクトには含まれないことが保証されます。 ブラウザーを使用してトークンを返すと、承認エンドポイントから直接リダイレクトされます。 これには、クロス オリジン呼び出しに関する要件がなくなるという利点もあります。クロス オリジン呼び出しは、JavaScript アプリケーションがトークン エンドポイントにアクセスしなければならない場合に必要になるものです。
 
 OAuth2 の暗黙的な許可の重要な特性は、このフローでクライアントに更新トークンが返されないという事実です。 これが必要ではなく、実際にはセキュリティ上の問題になりうることを次のセクションで説明します。
 
@@ -61,7 +62,7 @@ JavaScript ベースのアプローチを最大限に活用するアプリケー
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>暗黙的な許可に適切なアプリ
 
-暗黙的な許可には他の許可よりも多くのリスクがあるため、注意を払う必要がある領域が詳しく解説されています。 たとえば、「[Misuse of Access Token to Impersonate Resource Owner in Implicit Flow][OAuth2-Spec-Implicit-Misuse]」(暗黙的フローでの偽装リソース所有者に対するアクセス トークンの誤用)、「[OAuth 2.0 Threat Model and Security Considerations][OAuth2-Threat-Model-And-Security-Implications]」(OAuth 2.0 の脅威モデルとセキュリティの考慮事項) などがあります。 ただし、よりリスクが高いプロファイルは、多くの場合、リモート リソースによってブラウザーに対して処理されるアクティブ コードを実行するアプリケーションを有効にしなければならないという事実に起因します。 SPA アーキテクチャを計画していて、バックエンド コンポーネントがない場合、または JavaScript を使用して Web API を呼び出そうとしている場合は、トークンの取得に暗黙的フローを使用することをお勧めします。
+暗黙的な付与は他の付与よりリスクが大きくなります。また、注意を払うべき領域が詳しく記録されます (たとえば、「[Misuse of Access Token to Impersonate Resource Owner in Implicit Flow][OAuth2-Spec-Implicit-Misuse]」 (暗黙的フローでの偽装リソース所有者に対するアクセス トークンの誤用) や「[OAuth 2.0 Threat Model and Security Considerations][OAuth2-Threat-Model-And-Security-Implications]」 (OAuth 2.0 の脅威モデルとセキュリティの考慮事項))。 ただし、よりリスクが高いプロファイルは、多くの場合、リモート リソースによってブラウザーに対して処理されるアクティブ コードを実行するアプリケーションを有効にしなければならないという事実に起因します。 SPA アーキテクチャを計画していて、バックエンド コンポーネントがない場合、または JavaScript を使用して Web API を呼び出そうとしている場合は、トークンの取得に暗黙的フローを使用することをお勧めします。
 
 アプリケーションがネイティブ クライアントの場合は、暗黙的フローはあまり向いていません。 ネイティブ クライアントのコンテキストには Azure AD のセッション Cookie がないので、アプリケーションには存続期間の長いセッションを維持する手段がありません。 つまり、アプリケーションは新しいリソースのアクセス トークンを取得する場合、繰り返しユーザーに求めることになります。
 

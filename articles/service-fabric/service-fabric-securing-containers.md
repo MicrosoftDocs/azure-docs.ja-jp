@@ -3,8 +3,8 @@ title: Azure Service Fabric で実行されているコンテナーに証明書�
 description: Service Fabric コンテナー サービスに証明書ファイルをインポートする方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: d49c16741f581b2ad09dc173e8380fdf77391dbe
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo, subramar
+ms.openlocfilehash: ac461c0d512a5a58ce687623a53e99eeeca399e5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299063"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663606"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric で実行されているコンテナーに証明書ファイルをインポートする
 
-証明書を指定して、コンテナー サービスをセキュリティで保護することができます。 Service Fabric には、コンテナー内のサービスから、Windows または Linux クラスター (バージョン 5.7 以降) のノードにインストールされている証明書にアクセスできるしくみがあります。 この証明書は、クラスターのすべてのノードの LocalMachine にインストールする必要があります。 次のスニペットのように、証明書情報は `ContainerHostPolicies` タグのアプリケーション マニフェストで提供されます。
+証明書を指定して、コンテナー サービスをセキュリティで保護することができます。 Service Fabric には、コンテナー内のサービスから、Windows または Linux クラスター (バージョン 5.7 以降) のノードにインストールされている証明書にアクセスできるしくみがあります。 この証明書は、クラスターのすべてのノードの LocalMachine 下の証明書ストアにインストールする必要があります。 証明書に対応する秘密キーが利用可能、アクセス可能、および (Windows 上で) エクスポート可能である必要があります。 次のスニペットのように、証明書情報は `ContainerHostPolicies` タグのアプリケーション マニフェストで提供されます。
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -31,7 +31,7 @@ ms.locfileid: "51299063"
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
 
-Windows クラスターの場合、アプリケーションの起動時に、ランタイムは証明書を読み取り、各証明書の PFX ファイルとパスワードを生成します。 次の環境変数を使用して、コンテナー内のこの PFX ファイルとパスワードにはアクセスすることができます。 
+Windows クラスターでは、アプリケーションの起動時にランタイムが、参照されている各証明書とそれに対応する秘密キーを、ランダム生成パスワードによってセキュリティで保護される PFX ファイルにエクスポートします。 PFX ファイルとパスワード ファイルには、コンテナー内で次の環境変数を使用してそれぞれアクセスできます。 
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PFX
 * Certificates_ServicePackageName_CodePackageName_CertName_Password

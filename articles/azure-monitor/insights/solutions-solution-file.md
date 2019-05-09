@@ -7,19 +7,19 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae310ac35afed06881eb85fabc92d68e256ca5e7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189780"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526369"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -42,7 +42,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
 
     {
-       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
        "contentVersion": "1.0",
        "parameters": {  },
        "variables": {  },
@@ -53,7 +53,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ## <a name="parameters"></a>parameters
 [パラメーター](../../azure-resource-manager/resource-group-authoring-templates.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
 
-ユーザーが [Azure Marketplace](solutions.md#install-a-management-solution) または Azure クイック スタート テンプレートから管理ソリューションをインストールすると、[Log Analytics ワークスペースと Automation アカウント](solutions.md#log-analytics-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
+ユーザーが [Azure Marketplace](solutions.md#install-a-monitoring-solution) または Azure クイック スタート テンプレートから管理ソリューションをインストールすると、[Log Analytics ワークスペースと Automation アカウント](solutions.md#log-analytics-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
 
 
 サンプル パラメーターを次に示します。  
@@ -83,7 +83,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 >
 >
 
-| パラメーター | type | 説明 |
+| パラメーター | Type | 説明 |
 |:--- |:--- |:--- |
 | accountName |string |Azure automation アカウント名。 |
 | pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
@@ -213,7 +213,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 形式での、Log Analytics ワークスペースの ID。 |
+| workspaceResourceId |*\<リソース グループ ID>/プロバイダー/Microsoft.OperationalInsights/ワークスペース/\<ワークスペース名\>* という形式の Log Analytics ワークスペースの ID。 |
 | referencedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
 | containedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
 
@@ -229,13 +229,6 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 | product |ソリューションを特定する一意の文字列。 |
 | publisher |ソリューションの発行者。 |
 
-
-
-## <a name="sample"></a>サンプル
-ソリューション リソースを含むソリューション ファイルのサンプルは、次の場所で確認できます。
-
-- [Automation リソース](solutions-resources-automation.md#sample)
-- [検索とアラート リソース](solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>次の手順

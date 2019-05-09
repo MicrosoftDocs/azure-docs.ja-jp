@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 627729ef4f2b6a8df96d9e3b794a1ba24143b4d7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 1245255e65412f9bbcba3c8d9caa76b9ffd2dcc3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132671"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453044"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
 **Microsoft Azure Machine Learning 自動化データ パイプライン チート シート** は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。

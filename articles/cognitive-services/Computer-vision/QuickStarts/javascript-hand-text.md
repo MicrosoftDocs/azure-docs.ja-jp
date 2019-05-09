@@ -4,26 +4,26 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、JavaScript と Computer Vision API を使って、画像から手書きテキストを抽出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a917d7c778d74e7381d7e2897c644173703e7864
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 887e3b24a061225c2b4adbfdc5e5696ed268e349
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579466"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540353"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>クイック スタート:Computer Vision で REST API および JavaScript を使用して手書きテキストを抽出する
 
-このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API と[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API を使うと、画像内の手書きテキストを検出し、認識した文字をコンピューターで扱うことができる文字ストリームに抽出することができます。
 
 > [!IMPORTANT]
-> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、テキスト認識メソッドは、`Operation-Content` 応答ヘッダー フィールドの値に URI を返します。 その後、[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを表したこの URI を呼び出して、ステータスをチェックすると共に、テキスト認識メソッドの呼び出しの結果を返します。
+> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、バッチ読み取りメソッドは、`Operation-Content` 応答ヘッダー フィールドの値に URI を返します。 その後、[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) メソッドを表したこの URI を呼び出して、状態をチェックし、バッチ読み取りメソッドの呼び出しの結果を返すことができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
@@ -38,7 +38,7 @@ Computer Vision のサブスクリプション キーが必要です。 「[サ�
 1. テキスト エディターに次のコードをコピーします。
 1. 必要に応じて、コードに次の変更を加えます。
     1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
-    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
+    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
     1. 必要に応じて、手書きのテキストを抽出したい別の画像の URL で、`inputImage` コントロールの `value` 属性の値を置き換えます。
 1. `.html` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-handwriting.html` 」のように入力します。
 1. ブラウザー ウィンドウを開きます。
@@ -50,7 +50,7 @@ Computer Vision のサブスクリプション キーが必要です。 「[サ�
 <html>
 <head>
     <title>Handwriting Sample</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
 
@@ -72,7 +72,7 @@ Computer Vision のサブスクリプション キーが必要です。 「[サ�
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
+            "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
         // Request parameter.
         var params = {
@@ -198,276 +198,100 @@ Image to read:
 ```json
 {
   "status": "Succeeded",
-  "recognitionResult": {
-    "lines": [
-      {
-        "boundingBox": [
-          2,
-          52,
-          65,
-          46,
-          69,
-          89,
-          7,
-          95
-        ],
-        "text": "dog",
-        "words": [
-          {
-            "boundingBox": [
-              0,
-              59,
-              63,
-              43,
-              77,
-              86,
-              3,
-              102
-            ],
-            "text": "dog"
-          }
-        ]
-      },
-      {
-        "boundingBox": [
-          6,
-          2,
-          771,
-          13,
-          770,
-          75,
-          5,
-          64
-        ],
-        "text": "The quick brown fox jumps over the lazy",
-        "words": [
-          {
-            "boundingBox": [
-              0,
-              4,
-              92,
-              5,
-              77,
-              71,
-              0,
-              71
-            ],
-            "text": "The"
-          },
-          {
-            "boundingBox": [
-              74,
-              4,
-              189,
-              5,
-              174,
-              72,
-              60,
-              71
-            ],
-            "text": "quick"
-          },
-          {
-            "boundingBox": [
-              176,
-              5,
-              321,
-              6,
-              306,
-              73,
-              161,
-              72
-            ],
-            "text": "brown"
-          },
-          {
-            "boundingBox": [
-              308,
-              6,
-              387,
-              6,
-              372,
-              73,
-              293,
-              73
-            ],
-            "text": "fox"
-          },
-          {
-            "boundingBox": [
-              382,
-              6,
-              506,
-              7,
-              491,
-              74,
-              368,
-              73
-            ],
-            "text": "jumps"
-          },
-          {
-            "boundingBox": [
-              492,
-              7,
-              607,
-              8,
-              592,
-              75,
-              478,
-              74
-            ],
-            "text": "over"
-          },
-          {
-            "boundingBox": [
-              589,
-              8,
-              673,
-              8,
-              658,
-              75,
-              575,
-              75
-            ],
-            "text": "the"
-          },
-          {
-            "boundingBox": [
-              660,
-              8,
-              783,
-              9,
-              768,
-              76,
-              645,
-              75
-            ],
-            "text": "lazy"
-          }
-        ]
-      },
-      {
-        "boundingBox": [
-          2,
-          84,
-          783,
-          96,
-          782,
-          154,
-          1,
-          148
-        ],
-        "text": "Pack my box with five dozen liquor jugs",
-        "words": [
-          {
-            "boundingBox": [
-              0,
-              86,
-              94,
-              87,
-              72,
-              151,
-              0,
-              149
-            ],
-            "text": "Pack"
-          },
-          {
-            "boundingBox": [
-              76,
-              87,
-              164,
-              88,
-              142,
-              152,
-              54,
-              150
-            ],
-            "text": "my"
-          },
-          {
-            "boundingBox": [
-              155,
-              88,
-              243,
-              89,
-              222,
-              152,
-              134,
-              151
-            ],
-            "text": "box"
-          },
-          {
-            "boundingBox": [
-              226,
-              89,
-              344,
-              90,
-              323,
-              154,
-              204,
-              152
-            ],
-            "text": "with"
-          },
-          {
-            "boundingBox": [
-              336,
-              90,
-              432,
-              91,
-              411,
-              154,
-              314,
-              154
-            ],
-            "text": "five"
-          },
-          {
-            "boundingBox": [
-              419,
-              91,
-              538,
-              92,
-              516,
-              154,
-              398,
-              154
-            ],
-            "text": "dozen"
-          },
-          {
-            "boundingBox": [
-              547,
-              92,
-              701,
-              94,
-              679,
-              154,
-              525,
-              154
-            ],
-            "text": "liquor"
-          },
-          {
-            "boundingBox": [
-              696,
-              94,
-              800,
-              95,
-              780,
-              154,
-              675,
-              154
-            ],
-            "text": "jugs"
-          }
-        ]
-      }
-    ]
-  }
+  "recognitionResults": [
+    {
+      "page": 1,
+      "clockwiseOrientation": 349.59,
+      "width": 3200,
+      "height": 3200,
+      "unit": "pixel",
+      "lines": [
+        {
+          "boundingBox": [202,618,2047,643,2046,840,200,813],
+          "text": "Our greatest glory is not",
+          "words": [
+            {
+              "boundingBox": [204,627,481,628,481,830,204,829],
+              "text": "Our"
+            },
+            {
+              "boundingBox": [519,628,1057,630,1057,832,518,830],
+              "text": "greatest"
+            },
+            {
+              "boundingBox": [1114,630,1549,631,1548,833,1114,832],
+              "text": "glory"
+            },
+            {
+              "boundingBox": [1586,631,1785,632,1784,834,1586,833],
+              "text": "is"
+            },
+            {
+              "boundingBox": [1822,632,2115,633,2115,835,1822,834],
+              "text": "not"
+            }
+          ]
+        },
+        {
+          "boundingBox": [420,1273,2954,1250,2958,1488,422,1511],
+          "text": "but in rising every time we fall",
+          "words": [
+            {
+              "boundingBox": [423,1269,634,1268,635,1507,424,1508],
+              "text": "but"
+            },
+            {
+              "boundingBox": [667,1268,808,1268,809,1506,668,1507],
+              "text": "in"
+            },
+            {
+              "boundingBox": [874,1267,1289,1265,1290,1504,875,1506],
+              "text": "rising"
+            },
+            {
+              "boundingBox": [1331,1265,1771,1263,1772,1502,1332,1504],
+              "text": "every"
+            },
+            {
+              "boundingBox": [1812, 1263, 2178, 1261, 2179, 1500, 1813, 1502],
+              "text": "time"
+            },
+            {
+              "boundingBox": [2219, 1261, 2510, 1260, 2511, 1498, 2220, 1500],
+              "text": "we"
+            },
+            {
+              "boundingBox": [2551, 1260, 3016, 1258, 3017, 1496, 2552, 1498],
+              "text": "fall"
+            }
+          ]
+        },
+        {
+          "boundingBox": [1612, 903, 2744, 935, 2738, 1139, 1607, 1107],
+          "text": "in never failing ,",
+          "words": [
+            {
+              "boundingBox": [1611, 934, 1707, 933, 1708, 1147, 1613, 1147],
+              "text": "in"
+            },
+            {
+              "boundingBox": [1753, 933, 2132, 930, 2133, 1144, 1754, 1146],
+              "text": "never"
+            },
+            {
+              "boundingBox": [2162, 930, 2673, 927, 2674, 1140, 2164, 1144],
+              "text": "failing"
+            },
+            {
+              "boundingBox": [2703, 926, 2788, 926, 2790, 1139, 2705, 1140],
+              "text": ",",
+              "confidence": "Low"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 

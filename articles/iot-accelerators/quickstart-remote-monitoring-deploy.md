@@ -7,20 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608359"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58792503"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>クイック スタート:クラウドベースのリモート監視ソリューションを試す
 
 このクイック スタートでは、Azure IoT リモート監視ソリューション アクセラレータをデプロイする方法を紹介しています。 クラウドベースのこのソリューションでは、**[ダッシュボード]** ページを使用して、シミュレートされたデバイスをマップ上に視覚化します。また、**[メンテナンス]** ページを使用して、シミュレートされた冷却装置デバイスからの圧力アラートに応答します。 このソリューション アクセラレータは、独自に実装を行う際の出発点として、または学習用ツールとしてご利用ください。
 
 初期デプロイでは、Contoso という名前の会社のソリューション アクセラレータが構成されます。 Contoso では、異なる物理環境にデプロイされた冷却装置など、さまざまな種類のデバイスをオペレーターが管理しています。 冷却装置デバイスは、温度、湿度、および圧力テレメトリをリモート監視ソリューション アクセラレータに送信します。
+
+このクイック スタートでは、テストとデモンストレーションの目的で、コストを最小限に抑えることができるソリューション アクセラレータの **Basic** バージョンをデプロイします。 デプロイできる異なるバージョンの詳細については、「[Basic デプロイと Standard デプロイ](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments)」を参照してください。
 
 このクイック スタートを完了するには、アクティブな Azure サブスクリプションが必要です。
 
@@ -36,16 +38,14 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 ![リモート監視の選択](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-**[Create Remote Monitoring solution]\(リモート監視ソリューションの作成\)** ページで、**[Basic]** デプロイを選択します。 しくみについて学ぶ、またはデモを実行するためにソリューション アクセラレータをデプロイする場合、**[Basic]** を選択すると費用を最小限に抑えられます。
-
-言語として **[.NET]** を選択します。 Java と .NET の実装は、同じ機能を備えています。
+**[デプロイ オプション]** として **[C# Microservices]\(C# マイクロサービス\)** を選択します。 Java と C# の実装は、同じ機能を備えています。
 
 リモート監視ソリューション アクセラレータの一意の**ソリューション名**を入力します。 このクイック スタートでは、**contoso-rm** という名前を使用します。
 
 ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは**米国東部**を使用します。
 **[Visual Studio Enterprise]** を選択できますが、そのためには[全体管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
 
-デプロイを開始するには、**[ソリューションの作成]** をクリックします。 このプロセスを実行するには、少なくとも 5 分かかります。
+デプロイを開始するには、**[作成]** をクリックします。 このプロセスを実行するには、少なくとも 5 分かかります。
 
 ![リモート監視ソリューションの詳細](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 ![新しいソリューションの選択](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-表示されるパネルで、リモート監視ソリューション アクセラレータに関する情報を確認できます。 **[ソリューション ダッシュボード]** を選択して、リモート監視ソリューション アクセラレータを表示します。
+表示されるパネルで、リモート監視ソリューション アクセラレータに関する情報を確認できます。 **[Go to your solution accelerator]\(ソリューション アクセラレータに移動\)** を選択して、リモート監視ソリューション アクセラレータを表示します。
 
 ![ソリューション パネル](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -111,7 +111,7 @@ Contoso のオペレーターは、ソリューション ダッシュボード�
 
 **[ジョブ]** パネルで、**[Run method]\(実行メソッド\)**、**[EmergencyValveRelease]** メソッドの順に選択します。 ジョブ名 **ChillerPressureRelease** を追加し、**[適用]** をクリックします。 これらの設定により、すぐに実行されるジョブが作成されます。
 
-ジョブの状態を確認するには、**[メンテナンス]** ページに戻り、**ジョブ** ビューでジョブの一覧を確認します。 場合によっては、冷却装置で弁の圧力を解放するジョブが実行されたことを確認できるまでに数秒待つ必要があります。
+ジョブの状態を確認するには、**[メンテナンス]** ページに戻り、**ジョブ** ビューでジョブの一覧を確認します。 場合によっては、ジョブが実行されたことを確認できるまでに数秒待つ必要があります。
 
 [![ジョブ ビューに表示されたジョブの状態](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 
@@ -135,6 +135,9 @@ Contoso のオペレーターは、ソリューション ダッシュボード�
 
 ![ソリューションを削除する](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
+
+![ソリューションを削除する](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)
+
 ## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、リモート監視ソリューション アクセラレータをデプロイし、既定の Contoso デプロイのシミュレートされたデバイスを使用して監視タスクを完了しました。
@@ -142,4 +145,4 @@ Contoso のオペレーターは、ソリューション ダッシュボード�
 シミュレートされたデバイスを使ったソリューション アクセラレータについて詳しくは、引き続き次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: IoT デバイスの監視](iot-accelerators-remote-monitoring-monitor.md)
+> [チュートリアル:IoT デバイスの監視](iot-accelerators-remote-monitoring-monitor.md)

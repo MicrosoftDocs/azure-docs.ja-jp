@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: a8ac01850c090b36a5b9d896f6de6c122edfbcaa
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: files
+ms.openlocfilehash: f353c9952d9ccec0f279d6bd98bf5db215758559
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628427"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524546"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用した Azure ファイル共有の作成および管理 
 このガイドでは、PowerShell を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 ストレージ アカウントは、Azure ファイル共有またはその他のストレージ リソース (BLOB やキューなど) のデプロイに使用できるストレージの共有プールです。 ストレージ アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。
 
-この例では、[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用してストレージ アカウントを作成します。 ストレージ アカウントの名前は *mystorageaccount<random number>* で、そのストレージ アカウントへの参照は変数 **$storageAcct** に格納されます。 ストレージ アカウント名は一意である必要があります。そのため、`Get-Random` を使用し、名前に数を追加して一意にします。 
+この例では、[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用してストレージ アカウントを作成します。 ストレージ アカウントの名前は *mystorageaccount\<random number>* で、そのストレージ アカウントへの参照は変数 **$storageAcct** に格納されます。 ストレージ アカウント名は一意である必要があります。そのため、`Get-Random` を使用し、名前に数を追加して一意にします。 
 
 ```azurepowershell-interactive 
 $storageAcct = New-AzStorageAccount `
@@ -51,7 +51,7 @@ $storageAcct = New-AzStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
-これで、最初の Azure ファイル共有を作成できます。 ファイル共有は、[New-AzStorageShare](/powershell/module/azure.storage/new-AzStorageshare) コマンドレットを使用して作成できます。 この例では、`myshare` という名前の共有を作成します。
+これで、最初の Azure ファイル共有を作成できます。 ファイル共有は、[New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) コマンドレットを使用して作成できます。 この例では、`myshare` という名前の共有を作成します。
 
 ```azurepowershell-interactive
 New-AzStorageShare `
@@ -81,7 +81,7 @@ SMB を使用してファイル共有をマウントするには、お使いの 
 次の例は、Azure PowerShell モジュールを使用してファイル REST プロトコルで Azure ファイル共有を操作する方法を示しています。 
 
 #### <a name="create-directory"></a>ディレクトリを作成する
-Azure ファイル共有のルートで *myDirectory* という名前の新しいディレクトリを作成するには、[New-AzStorageDirectory](/powershell/module/azure.storage/new-AzStoragedirectory) コマンドレットを使用します。
+Azure ファイル共有のルートで *myDirectory* という名前の新しいディレクトリを作成するには、[New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) コマンドレットを使用します。
 
 ```azurepowershell-interactive
 New-AzStorageDirectory `
@@ -91,7 +91,7 @@ New-AzStorageDirectory `
 ```
 
 #### <a name="upload-a-file"></a>ファイルをアップロードする
-[Set-AzStorageFileContent](/powershell/module/azure.storage/set-AzStoragefilecontent) コマンドレットを使用してファイルをアップロードする方法を示すには、最初に PowerShell Cloud Shell のスクラッチ ドライブ内に、アップロードするファイルを作成する必要があります。 
+[Set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent) コマンドレットを使用してファイルをアップロードする方法を示すには、最初に PowerShell Cloud Shell のスクラッチ ドライブ内に、アップロードするファイルを作成する必要があります。 
 
 この例では、スクラッチ ドライブ上の新しいファイルに現在の日付と時間を挿入してから、そのファイルをファイル共有にアップロードします。
 
@@ -109,19 +109,19 @@ Set-AzStorageFileContent `
 
 PowerShell をローカルで実行している場合、`C:\Users\ContainerAdministrator\CloudDrive\` を実際のマシンに存在するパスに置き換える必要があります。
 
-ファイルのアップロード後、[Get-AzStorageFile](/powershell/module/Azure.Storage/Get-AzStorageFile) コマンドレットを使用して、ファイルが Azure ファイル共有にアップロードされたことを確認できます。 
+ファイルのアップロード後、[Get-AzStorageFile](/powershell/module/Az.Storage/Get-AzStorageFile) コマンドレットを使用して、ファイルが Azure ファイル共有にアップロードされたことを確認できます。 
 
 ```azurepowershell-interactive
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDirectory" 
 ```
 
 #### <a name="download-a-file"></a>ファイルをダウンロードする
-[Get-AzStorageFileContent](/powershell/module/azure.storage/get-AzStoragefilecontent) コマンドレットを使用して、アップロードしたばかりのファイルのコピーを Cloud Shell のスクラッチ ドライブにダウンロードできます。
+[Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) コマンドレットを使用して、アップロードしたばかりのファイルのコピーを Cloud Shell のスクラッチ ドライブにダウンロードできます。
 
 ```azurepowershell-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists because you've run this example before.
-Remove-Item 
-    `-Path "C:\Users\ContainerAdministrator\CloudDrive\SampleDownload.txt" `
+Remove-Item `
+     -Path "C:\Users\ContainerAdministrator\CloudDrive\SampleDownload.txt" `
      -Force `
      -ErrorAction SilentlyContinue
 
@@ -139,7 +139,7 @@ Get-ChildItem -Path "C:\Users\ContainerAdministrator\CloudDrive"
 ``` 
 
 #### <a name="copy-files"></a>ファイルのコピー
-よくあるタスクの 1 つとして、1 つのファイル共有から別のファイル共有へのファイルのコピー、または Azure BLOB ストレージ コンテナーとの間でのコピーがあります。 この機能を実行するために、新しい共有を作成し、[Start-AzStorageFileCopy](/powershell/module/azure.storage/start-AzStoragefilecopy) コマンドレットを使用して先ほどアップロードしたファイルをその新しい共有にコピーできます。 
+よくあるタスクの 1 つとして、1 つのファイル共有から別のファイル共有へのファイルのコピー、または Azure BLOB ストレージ コンテナーとの間でのコピーがあります。 この機能を実行するために、新しい共有を作成し、[Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) コマンドレットを使用して先ほどアップロードしたファイルをその新しい共有にコピーできます。 
 
 ```azurepowershell-interactive
 New-AzStorageShare `
@@ -173,7 +173,7 @@ Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "myD
 - NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)
 - Linux システム用の[論理ボリューム マネージャー (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) スナップショット
 - macOS 用の [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) スナップショット。 
- 共有の共有スナップショットは、ファイル共有の PowerShell オブジェクトに `Snapshot` メソッドを使用して作成できます。ファイル共有は、[Get-AzStorageShare](/powershell/module/azure.storage/get-AzStorageshare) コマンドレットを使用して取得します。 
+ 共有の共有スナップショットは、ファイル共有の PowerShell オブジェクトに `Snapshot` メソッドを使用して作成できます。ファイル共有は、[Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) コマンドレットを使用して取得します。 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name "myshare"
@@ -213,7 +213,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>共有スナップショットの削除
-`$snapshot` 参照を `-Share` パラメーターに含めた変数で [Remove-AzStorageShare](/powershell/module/azure.storage/remove-AzStorageshare) コマンドレットを使用すると、共有スナップショットを削除できます。
+`$snapshot` 参照を `-Share` パラメーターに含めた変数で [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) コマンドレットを使用すると、共有スナップショットを削除できます。
 
 ```azurepowershell-interactive
 Remove-AzStorageShare -Share $snapshot

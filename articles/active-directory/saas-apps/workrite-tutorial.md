@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Workrite の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Workrite の統合 | Microsoft Docs
 description: Azure Active Directory と Workrite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 2a5c2956-a011-4d5c-877b-80679b6587b5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: dd6a58656d91ff8dacbba36050198cba19f4d1e2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cb64debca10cf7be6e2e328a1f401f125b67d940
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437989"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447168"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル: Azure Active Directory と Workrite の統合
+# <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル:Azure Active Directory と Workrite の統合
 
 このチュートリアルでは、Workrite と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -130,7 +131,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 1. **Workrite** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Workrite サポート チーム](mailto:support@workrite.co.uk)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -183,7 +184,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 1. **[Create User]** ダイアログで、次の手順に従います。
    
-    ![[ユーザーの作成] ダイアログ][402]
+    ![ユーザー ダイアログの作成][402]
     
     a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 

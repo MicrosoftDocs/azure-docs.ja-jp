@@ -3,27 +3,26 @@ title: Azure Data Factory の統合ランタイム | Microsoft Docs
 description: Azure Data Factory の統合ランタイムについて。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: nabhishek
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
-ms.author: jingwang
-ms.openlocfilehash: 7f8eacf11f2333abc348efaa82c92ecbe05136ef
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.author: abnarain
+ms.openlocfilehash: d63ede800f7e60db44072234f5ec74910e4c70f2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966179"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59275410"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
 
-- **データ移動**:パブリック ネットワーク内のデータ ストアとプライベート ネットワーク (オンプレミスまたは仮想プライベート ネットワーク) 内のデータ ストアの間でデータを移動します。 組み込みコネクタ、形式の変換、列のマッピング、パフォーマンスとスケーラビリティに優れたデータ転送に関するサポートを提供します。
+- **データ移動**:パブリック ネットワーク内のデータ ストアとプライベート ネットワーク (オンプレミスまたは仮想プライベート ネットワーク) 内のデータ ストアをまたいでデータをコピーします。 組み込みコネクタ、形式の変換、列のマッピング、パフォーマンスとスケーラビリティに優れたデータ転送に関するサポートを提供します。
 - **アクティビティのディスパッチ**:Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server などのさまざまなコンピューティング サービスで実行される変換アクティビティをディスパッチして監視します。
 - **SSIS パッケージの実行**:マネージド Azure コンピューティング環境で SQL Server Integration Services (SSIS) パッケージをネイティブに実行します。
 
@@ -52,7 +51,7 @@ Azure-SSIS | SSIS パッケージの実行 | SSIS パッケージの実行
 Azure 統合ランタイムにより、次のことが可能になります。
 
 - クラウドのデータ ストア間でコピー アクティビティを実行する
-- パブリック ネットワーク内で次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ、HDInsight Pig アクティビティ、HDInsight MapReduce アクティビティ、HDInsight Spark アクティビティ、HDInsight Streaming アクティビティ、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.Net カスタム アクティビティ、Web アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
+- パブリック ネットワーク内で次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ、HDInsight Pig アクティビティ、HDInsight MapReduce アクティビティ、HDInsight Spark アクティビティ、HDInsight Streaming アクティビティ、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.NET カスタム アクティビティ、Web アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR のネットワーク環境
 Azure 統合ランタイムは、誰でもアクセス可能なエンドポイントを使用して、パブリック ネットワーク内のデータ ストアやコンピューティング サービスへの接続をサポートします。 Azure Virtual Network 環境にはセルフホステッド統合ランタイムを使用します。
@@ -70,7 +69,7 @@ Azure IR の作成と構成については、ハウツー ガイドで Azure IR 
 セルフホステッド IR により、次のことが可能になります。
 
 - クラウドのデータ ストアとプライベート ネットワーク内のデータ ストアの間でコピー アクティビティを実行する。
-- オンプレミスまたは Azure Virtual Network 内のコンピューティング リソースに対して次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ (BYOC)、HDInsight Pig アクティビティ (BYOC)、HDInsight MapReduce アクティビティ (BYOC)、HDInsight Spark アクティビティ (BYOC)、HDInsight Streaming アクティビティ (BYOC)、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.Net カスタム アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
+- オンプレミスまたは Azure Virtual Network 内のコンピューティング リソースに対して次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ (BYOC-Bring Your Own Cluster)、HDInsight Pig アクティビティ (BYOC)、HDInsight MapReduce アクティビティ (BYOC)、HDInsight Spark アクティビティ (BYOC)、HDInsight Streaming アクティビティ (BYOC)、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.NET カスタム アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
 
 > [!NOTE] 
 > SAP Hana や MySQL などの独自ドライバーを必要とするデータ ストアをサポートするには、セルフホステッド統合ランタイムを使用します。詳細については、「[supported data stores (サポートされるデータ ストア)](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

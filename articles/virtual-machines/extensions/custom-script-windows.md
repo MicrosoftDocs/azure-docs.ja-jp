@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 1370f541f8913d86db948a3165d6660a8cd66528
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 520ff1dfeefc8cca66710745012ee54b550a19a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963506"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097925"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -31,7 +31,7 @@ ms.locfileid: "52963506"
 ## <a name="prerequisites"></a>前提条件
 
 > [!NOTE]  
-> カスタム スクリプト拡張機能を使用してそのパラメーターと同じ VM で Update-AzureRmVM を実行することは、自身を待機することになるので行わないでください。  
+> カスタム スクリプト拡張機能を使用してそのパラメーターと同じ VM で Update-AzVM を実行することは、自身を待機することになるため行わないでください。  
 >   
 > 
 
@@ -110,24 +110,24 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 | Name | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | string |
-| type | CustomScriptExtension | string |
+| publisher | Microsoft.Compute | 文字列 |
+| type | CustomScriptExtension | 文字列 |
 | typeHandlerVersion | 1.9 | int |
 | fileUris (例) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp (例:) | 123456789 | 32 ビットの整数 |
-| commandToExecute (例) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
-| storageAccountName (例) | examplestorageacct | string |
-| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| commandToExecute (例) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 文字列 |
+| storageAccountName (例) | examplestorageacct | 文字列 |
+| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 文字列 |
 
 >[!NOTE]
 >これらのプロパティ名では大文字と小文字が区別されます。 展開の問題を回避するには、次のような名前を使います。
 
 #### <a name="property-value-details"></a>プロパティ値の詳細
- * `commandToExecute`: (**必須**、文字列) 実行するエントリ ポイント スクリプト。 コマンドにパスワードなどの機密情報が含まれている場合、または fileUris が機密の場合は、代わりにこのフィールドを使用します。
-* `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
-* `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
-* `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
-* `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー。
+* `commandToExecute`: (**必須**、文字列) 実行するエントリ ポイント スクリプト。 コマンドにパスワードなどの機密情報が含まれている場合、または fileUris が機密の場合は、代わりにこのフィールドを使用します。
+  * `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
+  * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
+  * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
+  * `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー。
 
 パブリックまたはプロテクトのいずれかの設定に、次の値を設定することができます。拡張機能では、パブリックおよびプロテクトの両方の設定に以下の値が設定された場合、構成が拒否されます。
 * `commandToExecute`
@@ -145,10 +145,10 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-`Set-AzureRmVMCustomScriptExtension` コマンドを使用して、カスタム スクリプト拡張機能を既存の仮想マシンに追加できます。 詳細については、「[Set-AzureRmVMCustomScriptExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension)」をご覧ください。
+`Set-AzVMCustomScriptExtension` コマンドを使用して、カスタム スクリプト拡張機能を既存の仮想マシンに追加できます。 詳細については、[Set-AzVMCustomScriptExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension) を参照してください。
 
 ```powershell
-Set-AzureRmVMCustomScriptExtension -ResourceGroupName myResourceGroup `
+Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
     -VMName myVM `
     -Location myLocation `
     -FileUri myURL `
@@ -173,7 +173,7 @@ $storagekey = "1234ABCD"
 $ProtectedSettings = @{"storageAccountName" = $storageaccname; "storageAccountKey" = $storagekey; "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File 1_Add_Tools.ps1"};
 
 #run command
-Set-AzureRmVMExtension -ResourceGroupName myRG `
+Set-AzVMExtension -ResourceGroupName myRG `
     -Location myLocation ` 
     -VMName myVM ` 
     -Name "buildserver1" ` 
@@ -190,7 +190,7 @@ Set-AzureRmVMExtension -ResourceGroupName myRG `
 ```powershell
 $ProtectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
  
-Set-AzureRmVMExtension -ResourceGroupName myRG 
+Set-AzVMExtension -ResourceGroupName myRG 
     -Location myLocation ` 
     -VMName myVM ` 
     -Name "serverUpdate" 
@@ -213,7 +213,7 @@ Set-AzureRmVMExtension -ResourceGroupName myRG
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell モジュールを使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、次のコマンドを実行します。
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 拡張機能の実行の出力は、ターゲット仮想マシンの次のディレクトリ内のファイルにログ記録されます。

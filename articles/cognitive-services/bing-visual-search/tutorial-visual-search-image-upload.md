@@ -4,22 +4,22 @@ titleSuffix: Azure Cognitive Services
 description: Bing に画像をアップロードしてその画像の分析情報を取得してから、応答を解析および表示するプロセスを解説します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: 23e6d044a1c08fb585e01d61a97deaf87e24cbb9
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0963c61027358c2c8e971533052631de28994b57
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743104"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491085"
 ---
-# <a name="tutorial-uploading-images-to-the-bing-visual-search-api"></a>チュートリアル:Bing Visual Search API に画像をアップロードする
+# <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>チュートリアル:Bing Visual Search API に画像をアップロードする
 
-Bing Visual Search API を使用すると、アップロードする画像と似ている画像を Web で検索することができます。 このチュートリアルを使用して、画像を API に送信し、返される分析情報を Web ページ内に表示できる Web アプリケーションを構築します。 このアプリケーションは、API を使用するための [Bing の利用と表示の要件](./use-and-display-requirements.md)すべてに準拠していないことに注意してください。
+Bing Visual Search API を使用すると、アップロードする画像と似ている画像を Web で検索することができます。 このチュートリアルを使用して、画像を API に送信し、返される分析情報を Web ページ内に表示できる Web アプリケーションを構築します。 このアプリケーションは、API を使用するための [Bing の利用と表示の要件](../bing-web-search/use-display-requirements.md)すべてに準拠していないことに注意してください。
 
 このサンプルのソース コード全体は、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchUploadImage.html) で入手できます。
 
@@ -30,13 +30,13 @@ Bing Visual Search API を使用すると、アップロードする画像と似
 > * Web アプリケーションの画像検索結果を表示します。
 > * API によって提供されるさまざまな分析情報を探索します。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-structure-the-webpage"></a>Web ページを作成して構造を設定する
 
-Bing に画像を送信し、分析情報を取得して表示する HTML ページを作成します。 任意のエディターまたは IDE で、`uploaddemo.html` という名前のファイルを作成します。 次の基本的な HTML 構造をファイルに追加します。
+Bing Visual Search API に画像を送信し、分析情報を受信して表示する HTML ページを作成します。 任意のエディターまたは IDE で、"uploaddemo.html" という名前のファイルを作成します。 次の基本的な HTML 構造をファイルに追加します。
 
 ```html
 <!DOCTYPE html>
@@ -47,14 +47,14 @@ Bing に画像を送信し、分析情報を取得して表示する HTML ペー
 
     <body>
     </body>
-</html>      
+</html>
 ```
 
-要求を行うために必要なすべての情報をユーザーが提供する要求セクションと、分析情報が表示される応答セクションにページを分けます。 次の `<div>` タグを `<body>` に追加します。 `<hr>` タグによって、要求セクションと応答セクションが視覚的に区切られます。
+要求に必要なすべての情報をユーザーが提供する要求セクションと、分析情報が表示される応答セクションにページを分けます。 次の `<div>` タグを `<body>` に追加します。 `<hr>` タグによって、要求セクションと応答セクションが視覚的に区切られます。
 
 ```html
 <div id="requestSection"></div>
-<hr />      
+<hr />
 <div id="responseSection"></div>
 ```
 
@@ -67,12 +67,11 @@ Bing に画像を送信し、分析情報を取得して表示する HTML ペー
 
 ## <a name="get-the-upload-file"></a>アップロード ファイルを取得する
 
-アップロードする画像をユーザーに選択させるために、アプリケーションでは type 属性を `file` に設定した `<input>` タグを使用しています。 アプリケーションで Bing を使用して検索結果を取得することを UI で明確にする必要があります。 
+アップロードする画像をユーザーに選択させるために、アプリケーションでは type 属性を `file` に設定した `<input>` タグを使用しています。 アプリケーションで Bing を使用して検索結果を取得することを UI で明確にする必要があります。
 
-次の `<div>` を requestSection div に追加します。 ファイル入力は、任意の画像タイプ (.jpg、.gif、.png など) の 1 つのファイルを受け入れます。 `onchange` イベントは、ユーザーがファイルを選択したときに呼び出されるハンドラーを指定します。
+次の `<div>` を `requestSection` `<div>` に追加します。 ファイル入力は、任意の画像タイプ (.jpg、.gif、.png など) の 1 つのファイルを受け入れます。 `onchange` イベントは、ユーザーがファイルを選択したときに呼び出されるハンドラーを指定します。
 
 `<output>` タグは、選択された画像のサムネイルを表示するために使用されます。
-
 
 ```html
 <div>
@@ -84,9 +83,9 @@ Bing に画像を送信し、分析情報を取得して表示する HTML ペー
 </div>
 ```
 
-## <a name="create-a-file-handler"></a>ファイル ハンドラーを作成する 
+## <a name="create-a-file-handler"></a>ファイル ハンドラーを作成する
 
-アップロードする画像内で読み取りを行うことができるハンドラー関数を作成します。 ハンドラーは、`FileList` オブジェクト内のファイルを反復処理するときに、選択されたファイルが画像ファイルであり、サイズが 1 MB 以下であることを確認する必要があります。 画像が大きい場合は、アップロードする前にサイズを減らす必要があります。 ハンドラーによって、最終的に画像のサムネイルが表示されます。
+アップロードする画像内で読み取りを行うことができるハンドラー関数を作成します。 ハンドラーは、`FileList` オブジェクト内のファイルを反復処理するときに、選択されたファイルが画像ファイルであり、サイズが 1 MB 以下であることを確認する必要があります。 画像が大きい場合は、アップロードする前にサイズを減らす必要があります。 最後に、ハンドラーによって画像のサムネイルが表示されます。
 
 ```javascript
 function handleFileSelect(selector) {
@@ -148,7 +147,7 @@ function handleFileSelect(selector) {
 
 画像とサブスクリプション キーがあれば、Bing Visual Search を呼び出して画像の分析情報を取得することができます。 このチュートリアルの呼び出しでは、既定の市場 (`en-us`) とセーフ サーチ値 (`moderate`) を使用します。
 
-このアプリケーションには、これらの値を変更するオプションがあります。 次の `<div>` をサブスクリプション キーの div の下に追加します。 アプリケーションでは `<select>` タグを使用して、市場とセーフ サーチの値のドロップダウン リストを提供します。 どちらのリストにも既定値が表示されます。
+このアプリケーションには、これらの値を変更するオプションがあります。 次の `<div>` をサブスクリプション キーの `<div>` の下に追加します。 アプリケーションでは `<select>` タグを使用して、市場とセーフ サーチの値のドロップダウン リストを提供します。 どちらのリストにも既定値が表示されます。
 
 ```html
 <div>
@@ -210,9 +209,9 @@ function handleFileSelect(selector) {
 </div>
 ```
 
-## <a name="add-search-options-to-the-webpage"></a>検索オプションを Web ページに追加する 
+## <a name="add-search-options-to-the-webpage"></a>検索オプションを Web ページに追加する
 
-アプリケーションでは、[Query options] リンクによって制御される折りたたみ可能 div でリストを非表示にします。 [Query options] リンクをクリックすると div が展開し、クエリ オプションの確認と変更ができます。 [Query options] リンクをもう一度クリックすると、div が折りたたまれて非表示になります。 [Query options] リンクの onclick ハンドラーを次に示します。 ハンドラーは、div が展開されているか、それとも折りたたまれているかを制御します。 このハンドラーを `<script>` セクションに追加します。 ハンドラーはデモ内のすべての折りたたみ可能 div で使用されます。
+アプリケーションでは、[Query options] リンクによって制御される折りたたみ可能 `<div>` でリストを非表示にします。 [Query options] リンクをクリックすると `<div>` が展開し、クエリ オプションの確認と変更ができます。 [Query options] リンクをもう一度クリックすると、`<div>` が折りたたまれて非表示になります。 次のスニペットは、[Query options] リンクの `onclick` ハンドラーを示しています。 ハンドラーは、`<div>` が展開されているか、それとも折りたたまれているかを制御します。 このハンドラーを `<script>` セクションに追加します。 ハンドラーはデモ内のすべての折りたたみ可能 `<div>` セクションで使用されます。
 
 ```javascript
 // Contains the toggle state of divs.
@@ -234,26 +233,26 @@ function expandCollapse(divToToggle) {
 }
 ```
 
-## <a name="call-the-onclick-handler"></a>onclick ハンドラーを呼び出す
+## <a name="call-the-onclick-handler"></a>`onclick` ハンドラーを呼び出す
 
-次の `"Get insights"` ボタンを、本文内の options div の下に追加します。 このボタンを使用して呼び出しを開始できます。 ボタンがクリックされると、カーソルが待機状態を示す回転カーソルに変化し、onclick ハンドラーが呼び出されます。
+次の `"Get insights"` ボタンを、本文内の options `<div>` の下に追加します。 このボタンを使用して呼び出しを開始できます。 ボタンがクリックされると、カーソルが待機状態を示す回転カーソルに変化し、`onclick` ハンドラーが呼び出されます。
 
 ```html
 <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-ボタンの onclick ハンドラー `handleQuery()` を `<script>` タグに追加します。 
+ボタンの `onclick` ハンドラー `handleQuery()` を `<script>` タグに追加します。
 
 ## <a name="handle-the-query"></a>クエリを処理する
 
-ハンドラー `handleQuery()` は、サブスクリプション キーが存在していて 32 文字の長さであること、また画像が選択されていることを確認します。 また、以前のクエリからの分析情報があれば消去します。 その後、`sendRequest()` 関数を呼び出して、呼び出しを行います。
+ハンドラー `handleQuery()` によって、サブスクリプション キーの存在と 32 文字の長さが確保され、画像が確実に選択されます。 また、以前のクエリからの分析情報があれば消去します。 その後、`sendRequest()` 関数を呼び出して、呼び出しを行います。
 
 ```javascript
 function handleQuery() {
     var subscriptionKey = document.getElementById('key').value;
 
     // Make sure user provided a subscription key and image.
-    // For this demo, the user provides the key but typically you'd 
+    // For this demo, the user provides the key but typically you'd
     // get it from secured storage.
     if (subscriptionKey.length !== 32) {
         alert("Subscription key length is not valid. Enter a valid key.");
@@ -285,7 +284,7 @@ function handleQuery() {
 
 ## <a name="send-the-search-request"></a>検索要求を送信する
 
-`sendRequest()` 関数は、エンドポイント URL をフォーマットし、Ocp-Apim-Subscription-Key ヘッダーをサブスクリプション キーに設定し、アップロードする画像のバイナリを追加し、応答ハンドラーを指定し、呼び出しを実行します。 
+`sendRequest()` 関数では、エンドポイント URL をフォーマットし、`Ocp-Apim-Subscription-Key` ヘッダーをサブスクリプション キーに設定し、アップロードする画像のバイナリを追加し、応答ハンドラーを指定し、呼び出しを実行します。
 
 ```javascript
 function sendRequest(file, key) {
@@ -307,7 +306,7 @@ function sendRequest(file, key) {
 
 ## <a name="get-and-handle-the-api-response"></a>API の応答を取得して処理する
 
-`handleResponse()` 関数は Bing Visual Search の呼び出しからの応答を処理します。 呼び出しが成功した場合、この関数は、分析情報を含む個別のタグに JSON 応答を解析します。 次に、検索結果をページに追加します。 その後、アプリケーションによって、データが表示される量を管理するために、折りたたみ可能 div がタグごとに作成されます。 ハンドラーを `<script>` セクションに追加します。
+`handleResponse()` 関数は Bing Visual Search の呼び出しからの応答を処理します。 呼び出しが成功した場合、この関数は、分析情報を含む個別のタグに JSON 応答を解析します。 次に、検索結果をページに追加します。 その後、アプリケーションによって、データが表示される量を管理するために、折りたたみ可能 `<div>` がタグごとに作成されます。 ハンドラーを `<script>` セクションに追加します。
 
 ```javascript
 function handleResponse() {
@@ -323,7 +322,7 @@ function handleResponse() {
     document.getElementById('responseSection').appendChild(h4);
     buildTagSections(tags);
 
-    document.body.style.cursor = 'default'; // reset the wait curor set by query insights button
+    document.body.style.cursor = 'default'; // reset the wait cursor set by query insights button
 }
 ```
 
@@ -337,7 +336,7 @@ function parseResponse(json) {
 
     for (var i =0; i < json.tags.length; i++) {
         var tag = json.tags[i];
-        
+
         if (tag.displayName === '') {
             dict['Default'] = JSON.stringify(tag);
         }
@@ -352,7 +351,7 @@ function parseResponse(json) {
 
 ### <a name="build-a-tag-section"></a>タグ セクションを構築する
 
-`buildTagSections()` 関数は、解析された JSON タグを反復処理し、`buildDiv()` 関数を呼び出して各タグの div を構築します。 各タグはリンクとして表示されます。 リンクがクリックされると、タグが展開し、そのタグに関連付けられた分析情報が表示されます。 リンクをもう一度クリックすると、そのセクションは折りたたまれます。
+`buildTagSections()` 関数では、解析された JSON タグを反復処理し、`buildDiv()` 関数を呼び出して各タグの `<div>` を構築します。 各タグはリンクとして表示されます。 リンクがクリックされると、タグが展開し、そのタグに関連付けられた分析情報が表示されます。 リンクをもう一度クリックすると、そのセクションは折りたたまれます。
 
 ```javascript
 function buildTagSections(tags) {
@@ -391,7 +390,7 @@ function buildDiv(tags, tag) {
 
 ## <a name="display-the-search-results-in-the-webpage"></a>検索結果を Web ページに表示する
 
-`buildDiv()` 関数は addDivContent 関数を呼び出して、各タグの折りたたみ可能 div の内容を構築します。
+`buildDiv()` 関数では `addDivContent` 関数を呼び出して、各タグの折りたたみ可能 `<div>` の内容を構築します。
 
 タグの内容には、そのタグに対する応答からの JSON が含まれます。 最初は JSON の先頭から 100 文字だけが表示されますが、JSON 文字列をクリックしてすべての JSON を表示することができます。 もう一度クリックすると、JSON 文字列は再び 100 文字に折りたたまれます。
 
@@ -472,10 +471,10 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>さまざまなアクションの分析情報を表示する
 
-次の関数では、さまざまなアクションの分析情報が表示されます。 関数によって、クリックできる画像またはクリックできるリンクが提供され、クリックすると画像の詳細情報が含まれる Web ページが表示されます。 このページは、Bing.com または画像の元の Web サイトでホストされています。 分析情報のすべてはこのアプリケーションでは表示されません。 分析情報のすべての利用可能フィールドを確認するには、[Bing Visual Search リファレンス](https://aka.ms/bingvisualsearchreferencedoc)を参照してください。
+次の関数では、さまざまなアクションの分析情報が表示されます。 関数によって、クリックできる画像またはクリックできるリンクが提供され、クリックすると画像の詳細情報が含まれる Web ページが表示されます。 このページは、Bing.com または画像の元の Web サイトでホストされています。 分析情報のすべてはこのアプリケーションでは表示されません。 分析情報のすべての利用可能フィールドを確認するには、「[Images - Visual Search (画像 - Visual Search)](https://aka.ms/bingvisualsearchreferencedoc)」リファレンスを参照してください。
 
 > [!NOTE]
-> ページには最低限の分析情報を表示する必要があります。 詳しくは、[Bing の利用と表示の要件](./use-and-display-requirements.md)に関するページをご覧ください。
+> ページには最低限の分析情報を表示する必要があります。 詳細については、「[Bing Search API の利用と表示の要件](../bing-web-search/use-display-requirements.md)」を参照してください。
 
 ### <a name="relatedimages-insights"></a>RelatedImages 分析情報
 
@@ -485,8 +484,8 @@ function addDivContent(div, tag, json) {
     function addRelatedImages(div, images) {
         var length = (images.length > 10) ? 10 : images.length;
 
-        // Set the title to the website that hosts the image. The title displays 
-        // when the user hovers over the image. 
+        // Set the title to the website that hosts the image. The title displays
+        // when the user hovers over the image.
 
         // Make the image clickable. If the user clicks the image, they're taken
         // to the image in Bing.com.
@@ -571,7 +570,7 @@ function addDivContent(div, tag, json) {
 
 ```javascript
     // Display links to the first 10 recipes. Include the recipe's rating,
-    // if available. 
+    // if available.
     // TODO: Add 'more' link in case the user wants to see all of them.
     function addRecipes(div, recipes) {
         var length = (recipes.length > 10) ? 10 : recipes.length;
@@ -628,11 +627,11 @@ function addDivContent(div, tag, json) {
 
 ### <a name="products-insights"></a>Products 分析情報
 
-`addProducts()` 関数では、`Products` アクションの一覧を反復処理し、それぞれについて `<img>` タグを外部の `<div>` に追加することで、返されるショッピング結果のリンクが作成されます。
+`addProducts()` 関数では、`Products` アクションの一覧を反復処理し、それぞれについて `<img>` タグを外部の `<div>` に追加することで、返される製品の結果のリンクが作成されます。
 
 ```javascript
 
-    // Display the first 10 related products. Display a clickable image of the 
+    // Display the first 10 related products. Display a clickable image of the
     // product that takes the user to Bing.com search results for the product.
     // If there are any offers associated with the product, provide links to the offers.
     // TODO: Add 'more' link in case the user wants to see all of them.
@@ -719,7 +718,7 @@ function addDivContent(div, tag, json) {
     }
 ```
 
-`addImageWithWebSearchUrl()` 関数では、div のクリックできる画像が表示され、ユーザーがクリックすると Bing.com 上の検索結果が表示されます。 
+`addImageWithWebSearchUrl()` 関数では、`<div>` のクリックできる画像が表示され、ユーザーがクリックすると Bing.com 上の検索結果が表示されます。
 
 ```javascript
     function addImageWithWebSearchUrl(div, image, action) {
@@ -742,7 +741,7 @@ function addDivContent(div, tag, json) {
 
 ```html
         <style>
-            
+
             .thumb {
                 height: 75px;
                 border: 1px solid #000;
@@ -773,4 +772,5 @@ function addDivContent(div, tag, json) {
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル: ImageInsightsToken を使って以前の検索から似た画像を見つける](./tutorial-visual-search-insights-token.md)。
+>[!div class="nextstepaction"]
+> [チュートリアル:ImageInsightsToken を使用して以前の検索から似た画像を見つける](./tutorial-visual-search-insights-token.md)

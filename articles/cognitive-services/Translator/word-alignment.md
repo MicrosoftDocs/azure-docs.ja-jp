@@ -3,20 +3,20 @@ title: 単語アラインメント - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Translator Text API から単語アラインメント情報を受信します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/21/2019
 ms.author: v-jansko
 ms.custom: seodec18
-ms.openlocfilehash: 74e26d4bb9b9c901524a85248dbf7f9d6ead5e95
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cc795d6b164a97351ec8806c6b7c8bed0c0c1266
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091477"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793991"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>単語アラインメント情報を受信する方法
 

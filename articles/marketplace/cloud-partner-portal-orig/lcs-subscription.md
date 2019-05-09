@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c0109839144775e9064db4f8396f19688fcc13e8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9ea04a4df55bfe26f292305a75696d423db52328
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308636"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792799"
 ---
 # <a name="lcs-subscription"></a>LCS サブスクリプション
 

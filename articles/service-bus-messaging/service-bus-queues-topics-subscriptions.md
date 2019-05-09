@@ -3,18 +3,19 @@ title: Azure Service Bus のメッセージング キュー、トピック、サ
 description: Service Bus メッセージング エンティティの概要です。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: spelluru
-ms.openlocfilehash: c4899db41f9c60bf6efb40c4d53aaa35f22ad275
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: aschhab
+ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312886"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847033"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
 
@@ -40,7 +41,7 @@ Service Bus のメッセージング機能の中核を形成するメッセー�
 
 ### <a name="receive-modes"></a>受信モード
 
-Service Bus がメッセージを受信する 2 つの異なるモードを指定できます (*ReceiveAndDelete* または *PeekLock*)。 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、受信は単発の操作です。つまり、Service Bus は要求を受信すると、メッセージを読み取り中としてマークしてアプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このシナリオを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus がメッセージを読み取り中としてマークするため、アプリケーションは、再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージを見落とすことになります。
+Service Bus がメッセージを受信する 2 つの異なるモードを指定できます。*ReceiveAndDelete* または *PeekLock* です。 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、受信は単発の操作です。つまり、Service Bus は要求を受信すると、メッセージを読み取り中としてマークしてアプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このシナリオを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus がメッセージを読み取り中としてマークするため、アプリケーションは、再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージを見落とすことになります。
 
 [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、メッセージの受信処理は 2 段階になります。これにより、メッセージが失われることを許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにそのメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) を呼び出して受信処理の第 2 段階を完了します。 Service Bus は、**CompleteAsync** の呼び出しを確認すると、メッセージを読み取り済みとしてマークします。
 

@@ -1,20 +1,19 @@
 ---
 title: Azure Cosmos DB でテーブル データのクエリを実行する方法
 description: Azure Cosmos DB でテーブル データのクエリを実行する方法を学習する
-services: cosmos-db
-author: kanshiG
-ms.author: govindk
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: e0a22256637792f5b84a346c54a79ee314f92e8e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.reviewer: sngun
+ms.openlocfilehash: 28e9b420f3abc972e047af72e1b5bc755e7f9d2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601799"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001641"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル:Table API を使って Azure Cosmos DB に対するクエリを実行する
 
@@ -79,7 +78,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 | パーティション キー | 行キー | 電子メール | PhoneNumber |
 | --- | --- | --- | --- |
-| Ben |Smith | Ben@contoso.com| 425-555-0102 |
+| Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
 ## <a name="query-by-using-linq"></a>LINQ を使用したクエリ 
 LINQ を使用してクエリを実行することもできます。これは、対応する OData クエリ式に変換されます。 .NET SDK を使用してクエリを作成する方法の例を次に示します。

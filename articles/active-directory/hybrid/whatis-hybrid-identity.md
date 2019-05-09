@@ -4,22 +4,23 @@ description: Azure AD Connect は、オンプレミスのディレクトリと A
 keywords: Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 11/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1e85ab5eb0d8c96fb4c90332a2fbc41d216369f7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 536edcf74bff6f89dade4a713c40c9bef12e18af
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098969"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881806"
 ---
-# <a name="what-is-hybrid-identity"></a>ハイブリッド ID とは 
+# <a name="what-is-hybrid-identity"></a>ハイブリッド ID とは
 
 今日、ビジネスや企業ではますます、オンプレミスのアプリケーションとクラウド アプリケーションが混在して使用されるようになっています。  ユーザーは、オンプレミスおよびクラウドの両方のアプリケーションへのアクセス権を必要とします。 この要件は、難易度の高いシナリオになっています。 
 
@@ -29,7 +30,7 @@ Microsoft の ID ソリューションは、オンプレミスおよびクラウ
 
 - **[パスワード ハッシュの同期 (PHS)](whatis-phs.md)**  
 - **[パススルー認証 (PTA)](how-to-connect-pta.md)**  
-- **[フェデレーション](whatis-fed.md)** 
+- **[フェデレーション (AD FS)](whatis-fed.md)** 
 
 これらの認証方法でも、[シングル サインオン](how-to-connect-sso.md)機能が提供されます。  シングル サインオンでは、ユーザーが企業ネットワークに接続される会社のデバイスを使用するときに、自動的にサインインを行います。
 
@@ -42,14 +43,14 @@ Microsoft の ID ソリューションは、オンプレミスおよびクラウ
 |必要事項|PHS および SSO<sup>1</sup>| PTA と SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |新しいユーザー、連絡先、およびオンプレミスの Active Directory で作成したグループ アカウントを自動的にクラウドに同期|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|テナントを Office 365 ハイブリッド シナリオにセット アップ|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|ユーザーがオンプレミスのパスワードを使用してサインインしたりクラウド サービスにアクセスしたりすることを有効化|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|企業の資格情報を使用したシングル サインオンの実装|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)|  
-|クラウドにパスワード ハッシュを保存しないことを確認| |![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|クラウドの多要素認証ソリューションを有効化| |![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|オンプレミスの Multi-factor Authentication ソリューションを有効化| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|ユーザー<sup>4</sup>のスマートカード認証をサポート| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|Office ポータル および Windows 10 デスクトップにパスワードの有効期限通知を表示| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|テナントを Office 365 ハイブリッド シナリオ用にセット アップする。|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|ユーザーがオンプレミスのパスワードを使用してサインインしたりクラウド サービスにアクセスしたりすることを有効化する。|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|企業の資格情報を使用したシングル サインオンを実装する。|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)|  
+|クラウドにパスワード ハッシュが保存されないようにする。| |![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|クラウドベースの多要素認証ソリューションを有効化する。|![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|オンプレミスの Multi-factor Authentication ソリューションを有効化する。| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|ユーザーのスマートカード認証をサポートする。<sup>4</sup>| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|Office ポータル および Windows 10 デスクトップにパスワードの有効期限通知を表示する。| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
 
 > <sup>1</sup> シングル サインオンによるパスワード ハッシュ同期。 
 > 

@@ -4,23 +4,23 @@ titleSuffix: Azure Cognitive Services
 description: Bing Web Search API から検索結果をページングする方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.author: erhopf
-ms.openlocfilehash: e98407dface348dfdbc99a1146d50c46f3bb03a7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.author: aahi
+ms.openlocfilehash: 68b99e7f0763f46c705a1ff2ba3a0e90216429c2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739245"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878597"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Bing Web Search API から結果をページングする方法
 
-Web Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリに関連する可能性がある結果の総数のサブセットです。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#totalestimatedmatches) フィールドにアクセスします。  
+Web Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリに関連する可能性がある結果の総数のサブセットです。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) フィールドにアクセスします。  
 
 次の例は、Web 回答に含まれる `totalEstimatedMatches` フィールドを示しています。  
 

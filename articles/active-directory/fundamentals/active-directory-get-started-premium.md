@@ -3,21 +3,22 @@ title: Premium エディションにサインアップする方法 - Azure Activ
 description: Azure Active Directory Premium エディションにサインアップする方法の手順。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 23778a56cfa6440442bd7aab67c5441094a633ae
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073994"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287062"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Azure Active Directory Premium エディションにサインアップする
 Azure Active Directory (Azure AD) Premium エディションを購入して、お使いの Azure サブスクリプションと関連付けることができます。 新しい Azure サブスクリプションを作成する必要がある場合は、ライセンス プランと Azure AD サービス アクセスをアクティブにする必要もあります。
@@ -39,7 +40,7 @@ Active Directory Premium 1 または Premium 2 にサインアップする前に
 Azure または Office 365 のサブスクライバーである場合、Azure Active Directory Premium Edition をオンラインでご購入いただけます。 詳細な手順については、「[How to Purchase Azure Active Directory Premium - Existing Customers (Azure Active Directory Premium を購入する方法 - 既存のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)」または「[How to Purchase Azure Active Directory Premium - New Customers (Azure Active Directory Premium を購入する方法 - 新規のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)」をご覧ください。
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Enterprise Mobility + Security ライセンス プランを使用してサインアップする
-Enterprise Mobility + Security は Azure AD Premium、Azure Information Protection、および Microsoft Intune で構成されるスイートです。 EMS ライセンスを既にお持ちの場合は、次のいずれかのライセンス オプションを使って Azure AD の使用を開始できます。
+Enterprise Mobility + Security は、Azure AD Premium、Azure Information Protection、および Microsoft Intune で構成されるスイートです。 EMS ライセンスを既にお持ちの場合は、次のいずれかのライセンス オプションを使って Azure AD の使用を開始できます。
 
 EMS の詳細については、[Enterprise Mobility + Security の Web サイト](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)をご覧ください。
 
@@ -64,17 +65,17 @@ EMS の詳細については、[Enterprise Mobility + Security の Web サイト
 ### <a name="to-activate-your-license-plan"></a>ライセンス プランをアクティブ化するには、次の手順を実行します。
 - サインアップした後に Microsoft から受信した確認の電子メールを開き、**[サインイン]** または **[サインアップ]** のどちらかをクリックします。
    
-    ![[サインイン]](media/active-directory-get-started-premium/MOLSEmail.png)
+    ![サインインおよびサインアップ用のリンクを含む確認メール](media/active-directory-get-started-premium/MOLSEmail.png)
 
     - **[サインイン]**。 既存のテナントがある場合は、このリンクをクリックし、既存の管理者アカウントを使ってサインインします。 ライセンスがアクティブ化されているテナント上で、グローバル管理者になっている必要があります。
 
     - **[サインアップ]**。 **[アカウント プロファイルの作成]** ページを開いて、自分のライセンス プラン用に新しい Azure AD テナントを作成する場合は、このリンクを選択します。
 
-        ![[アカウント プロファイルの作成]](media/active-directory-get-started-premium/MOLSAccountProfile.png)
+        ![サンプル情報を含む [アカウント プロファイルの作成] ページ](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
 完了したら、テナントに対してライセンス プランをアクティブ化したことへの謝意を示した確認ボックスが表示されます。
 
-![確認](media/active-directory-get-started-premium/MOLSThankYou.png)
+![謝意が示された確認ボックス](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>Azure AD アクセスをアクティブ化する
 新しい Azure AD Premium ライセンスを既存のサブスクリプションに追加している場合は、あらかじめ Azure AD アクセスがアクティブ化されている必要があります。 それ以外の場合は、**ウェルカム メール**を受信した後で Azure AD アクセスをアクティブ化する必要があります。  
@@ -88,11 +89,11 @@ EMS の詳細については、[Enterprise Mobility + Security の Web サイト
 
 1. **[ウェルカム メール]** を開いて、**[サインイン]** をクリックします。
    
-    ![ウェルカム メール](media/active-directory-get-started-premium/AADEmail.png)
+    ![サインイン用リンクが強調表示されたウェルカム メール](media/active-directory-get-started-premium/AADEmail.png)
 
 2. 正常にサインインした後は、モバイル デバイスを使用して 2 段階認証へ進みます。
    
-    ![Mobile verification](media/active-directory-get-started-premium/SignUppage.png)
+    ![モバイル認証による 2 段階認証のページ](media/active-directory-get-started-premium/SignUppage.png)
 
 通常、アクティブ化のプロセスにかかる時間は数分のみで、その後は、お使いの Azure AD テナントを使用できるようになります。 
 

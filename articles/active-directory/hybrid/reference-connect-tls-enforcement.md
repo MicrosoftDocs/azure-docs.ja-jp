@@ -1,25 +1,26 @@
 ---
-title: 'Azure AD Connect: Azure Active Directory Connect に対する TLS 1.2 の強制 | Microsoft Docs'
+title: Azure AD Connect:Azure Active Directory Connect に対する TLS 1.2 の強制 | Microsoft Docs
 description: この記事では、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧を示します
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 657fe308217f93fbca847dd068a46fdb7713f1d4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ff4e170f8f5d8e30004b94bbcfdb0ca3e8c3e04d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669979"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189176"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>Azure AD Connect に対する TLS 1.2 の強制
 

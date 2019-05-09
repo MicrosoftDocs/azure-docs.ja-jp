@@ -5,17 +5,17 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
-ms.topic: how-to
-ms.component: monitor and tune
+ms.subservice: performance
+ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385534"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903865"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Gen2 キャッシュを監視する方法
 Gen2 ストレージ アーキテクチャでは、Gen2 データ ウェアハウス用に設計された NVMe ベースの SSD に搭載されているキャッシュ内で、最も頻繁に照会される列ストア セグメントを自動的に階層化します。 キャッシュに常駐しているセグメントをクエリが取得すると、より優れたパフォーマンスが実現します。 この記事では、ワークロードが Gen2 キャッシュを最適に活用しているかどうかを判断することで、パフォーマンスが遅いクエリを監視し、トラブルシューティングする方法について説明します。  
@@ -47,7 +47,7 @@ Gen2 キャッシュをトラブルシューティングするための主要な
 
 **シナリオ 4:** クエリが遅かったのは、コールド キャッシュが存在していたことが原因だった可能性があります。 現在稼働中のデータ セットがキャッシュされるように、クエリを再実行することを検討してください。 
 
-**重要: キャッシュヒット率またはキャッシュ使用率がワークロードの再実行後にも更新されない場合、稼働中のセットは既にメモリに常駐している可能性があります。クラスター化された列ストア テーブルのみがキャッシュされることに注意してください。**
+**重要:キャッシュヒット率またはキャッシュ使用率がワークロードの再実行後にも更新されない場合、稼働中のセットは既にメモリに常駐している可能性があります。クラスター化された列ストア テーブルのみがキャッシュされることに注意してください。**
 
 ## <a name="next-steps"></a>次の手順
 一般的なクエリのパフォーマンス チューニングの詳細については、「[クエリの実行の監視](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution)」を参照してください。
@@ -62,11 +62,11 @@ Gen2 キャッシュをトラブルシューティングするための主要な
 [Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->
-[sys.dm_pdw_dms_workers]: http://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: http://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: http://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: http://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: http://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
+[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
+[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
+[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
+[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
+[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
+[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
+[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
 [LABEL]: https://msdn.microsoft.com/library/ms190322.aspx

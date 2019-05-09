@@ -1,26 +1,26 @@
 ---
 title: 'クイック スタート: Node.js で Azure Cache for Redis を使用する方法 | Microsoft Docs'
 description: このクイック スタートでは、Node.js と node_redis で Azure Cache for Redis を使用する方法について説明します。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: v-lincan
 ms.assetid: 06fddc95-8029-4a8d-83f5-ebd5016891d9
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cff742688c307becf4bf87cced15036b25fa10c8
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 739f0bd6381e872b5f989f9ecb4dd97fdbdb52c9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554624"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238098"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート: Node.js で Azure Cache for Redis を使用する方法
 
@@ -42,7 +42,7 @@ Azure Cache for Redis を使用すると、Microsoft によって管理されて
 
     npm install redis
 
-このチュートリアルでは、[node_redis](https://github.com/mranney/node_redis) を使用します。 他の Node.js クライアントを使用する例については、 [Node.js Redis クライアント](http://redis.io/clients#nodejs)に関するセクションに記載されている Node.js クライアントの個々のドキュメントを参照してください。
+このチュートリアルでは、[node_redis](https://github.com/mranney/node_redis) を使用します。 他の Node.js クライアントを使用する例については、 [Node.js Redis クライアント](https://redis.io/clients#nodejs)に関するセクションに記載されている Node.js クライアントの個々のドキュメントを参照してください。
 
 
 ## <a name="create-a-cache"></a>キャッシュの作成
@@ -77,7 +77,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 
 *redistest.js* という名前の新しいスクリプト ファイルを作成します。
 
-次の例の JavaScript をファイルに追加します。 このコードでは、キャッシュ ホスト名とキー環境変数を使用して Azure Cache for Redis のインスタンスに接続する方法を示しています。 コードでは、キャッシュ内の文字列値の格納および取得も行います。 `PING` および `CLIENT LIST` コマンドも実行されます。 Redis と [node_redis](https://github.com/mranney/node_redis) クライアントを使用する他の例については、[http://redis.js.org/](http://redis.js.org/) を参照してください。
+次の例の JavaScript をファイルに追加します。 このコードでは、キャッシュ ホスト名とキー環境変数を使用して Azure Cache for Redis のインスタンスに接続する方法を示しています。 コードでは、キャッシュ内の文字列値の格納および取得も行います。 `PING` および `CLIENT LIST` コマンドも実行されます。 Redis と [node_redis](https://github.com/mranney/node_redis) クライアントを使用する他の例については、[https://redis.js.org/](https://redis.js.org/) を参照してください。
 
 ```js
 var redis = require("redis");

@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: ed6c21762fed331e2f11378ec9b6d91cba9bec11
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250867"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431200"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Azure DevTest Labs インフラストラクチャをスケールアップする
 エンタープライズ規模で DevTest Labs を実装する前には、いくつかの重要な意思決定ポイントがあります。 これらの意思決定ポイントを高いレベルで理解することは、将来の設計上の決定を抱えている組織に役立ちます。 ただし、これらのポイントが、組織の概念実証の開始を妨げないようにする必要があります。 初期のスケール アップ計画には、重要な領域が 3 つあります。
@@ -66,4 +67,4 @@ DevTest Labs での概念実証には、責任が定義されたプライマリ 
 - **DevTest Labs ユーザー** – DevTest Labs ユーザーは、ラボ内で仮想マシンを作成して使用することができます。 これらのユーザーは、自分が作成する VM に対して最小限の管理機能をいくつか持ってします (自分の VM の開始/停止/削除/構成)。 ユーザーは、他のユーザーの VM は管理できません。
 
 ## <a name="next-steps"></a>次の手順
-このシリーズの次の記事「[Azure DevTest Labs の実装を調整する](devtest-lab-guidance-orchestrate-implementation.md)」を参照してください
+このシリーズの次の記事をご覧ください。[Azure DevTest Labs の実装を調整する](devtest-lab-guidance-orchestrate-implementation.md)

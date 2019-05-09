@@ -3,19 +3,19 @@ title: テキストを変換する - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Translator Text API を使用してテキストを変換します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9586ffac2fc1f4d3e0a03d0e20052ad16b88cbe9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1319b7191d9b192897e1e8ab4900239bd9230bce
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684787"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789354"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>TransformText メソッドの使用方法
 
@@ -30,7 +30,7 @@ TransformText メソッドは、ソーシャル メディア用のテキスト�
 
 | パラメーター | 説明 |
 |:---|:---|
-| Authorization header (Authorization ヘッダー) | **必須**: アプリケーションを識別するために使用される HTTP ヘッダー。 キーとして "Authorization" を、値として "Bearer" + " " + アクセス トークンを使用します。 詳細については、ここを参照してください。|
+| Authorization header (Authorization ヘッダー) | **必須**: アプリケーションを識別するために使用される HTTP ヘッダー。 次のキーを使用:“Authorization” と値:"Bearer" + " " + アクセス トークン。 詳細については、ここを参照してください。|
 | language | **必須**: 言語コードを表す文字列。 このパラメーターは、言語名として **en** を指定する英語のみをサポートしています。|
 | category | **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション **general** のみをサポートしています。|
 | sentence | **必須**: 修正する文。 |
@@ -40,14 +40,14 @@ TransformText メソッドは、ソーシャル メディア用のテキスト�
 戻り値で、変換後の文が提供されます。
 
 > [!div class="tabbedCodeSnippets"]
-```json
-GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); TransformTextResponse
-{
-int ec;            // A positive number representing an error condition
-string em;         // A descriptive error message
-string sentence;   // transformed text
-}
-```
+> ```json
+> GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); TransformTextResponse
+> {
+> int ec;            // A positive number representing an error condition
+> string em;         // A descriptive error message
+> string sentence;   // transformed text
+> }
+> ```
 
 ## <a name="example"></a>例
 
@@ -72,7 +72,7 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             AdmAccessToken admToken;
             string headerValue;
             //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
-            //Refer obtaining AccessToken (http://msdn.microsoft.com/library/hh454950.aspx)
+            //Refer obtaining AccessToken (https://msdn.microsoft.com/library/hh454950.aspx)
             AdmAuthentication admAuth = new AdmAuthentication("clientID", "client secret");
 
             try
@@ -104,7 +104,7 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             string language = "en";
             string domain = "general";
             //Keep appId parameter blank as we are sending access token in authorization header.
-            string url = string.Format("http://api.microsofttranslator.com/V3/json/TransformText?sentence={0}&category={1}&language={2}",textToTransform,domain,language); ;
+            string url = string.Format("https://api.microsofttranslator.com/V3/json/TransformText?sentence={0}&category={1}&language={2}",textToTransform,domain,language); ;
             TransformTextResponse transformTextResponse= new TransformTextResponse();
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.Headers.Add("Authorization", authToken);

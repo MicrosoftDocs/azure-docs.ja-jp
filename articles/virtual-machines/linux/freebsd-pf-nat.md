@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 8400fa12e8776834f71740f809df18753291601f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8cfa1696a18925e9e9e8b96299f1255875e85aa8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992311"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727265"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>FreeBSD のパケット フィルターを使用してAzure 内にセキュア ファイアウォールを作成する方法
 この記事では、一般的な Web サーバー シナリオで、Azure Resource Manager テンプレートを通して FreeBSD の パケット フィルターを使用することで、NAT ファイアウォールをデプロイする方法について説明します。
@@ -35,13 +35,13 @@ Azure Resource Manager テンプレートは、PF を使用して NAT/リダイ�
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Azure CLI を使用してデプロイする
-最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `West US` の場所に作成します。
+最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしている必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `West US` の場所に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) テンプレートをデプロイします。 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) を同じパスにダウンロードし、独自のリソース値 (`adminPassword`、`networkPrefix``domainNamePrefix` など) を定義します。 
+次に、[az group deployment create](/cli/azure/group/deployment) を使用して [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) テンプレートをデプロイします。 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) を同じパスにダウンロードし、独自のリソース値 (`adminPassword`、`networkPrefix``domainNamePrefix` など) を定義します。 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \

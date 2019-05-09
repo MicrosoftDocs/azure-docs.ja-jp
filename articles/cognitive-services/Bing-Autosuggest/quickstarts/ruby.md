@@ -1,71 +1,84 @@
 ---
-title: 'クイック スタート: Bing Autosuggest API (Ruby)'
+title: クイック スタート:Bing Autosuggest REST API と Ruby で検索クエリの候補を表示する
 titlesuffix: Azure Cognitive Services
 description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jaswel
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 643b9173b57b9f8e8596fe6a8b49358d34297b97
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: c7ba0fd34c789735cd92c25a728aec346dc88fcc
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831179"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009746"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>Ruby での Bing Autosuggest API のクイック スタート 
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>クイック スタート:Bing Autosuggest REST API と Ruby で検索クエリの候補を表示する
 
-この記事では、Ruby で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
+このクイック スタートでは、Bing Autosuggest API を呼び出して JSON 応答を取得するための基礎を学ぶことができます。 このシンプルな Ruby アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは Ruby で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[Ruby 2.4](https://www.ruby-lang.org/en/downloads/) 以降が必要です。
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) 以降
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Autosuggest API v7** を取得している必要があります。 このクイックスタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>Autosuggest の結果を取得する
+## <a name="create-a-new-application"></a>新しいアプリケーションを作成する
 
-1. 適当な IDE で新しい Ruby プロジェクトを作成します。
-2. 下記のコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+1. お気に入りの IDE またはエディターで新しい Ruby ファイルを作成します。 以下の要件を追加してください。
 
-```ruby
-require 'net/https'
-require 'uri'
-require 'json'
+    ```ruby
+    require 'net/https'
+    require 'uri'
+    require 'json'
+    ```
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+2. API ホストとパス、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、検索クエリの一部に対応する変数を作成します。
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'enter key here'
+    ```ruby
+    subscriptionKey = 'enter your key here'
+    host = 'https://api.cognitive.microsoft.com'
+    path = '/bing/v7.0/Suggestions'
+    mkt = 'en-US'
+    query = 'sail'
+    ```
 
-host = 'https://api.cognitive.microsoft.com'
-path = '/bing/v7.0/Suggestions'
+3. `?mkt=` パラメーターに市場コードを付加し、`&q=` パラメーターに目的のクエリを付加して、パラメーター文字列を作成します。 次に、API ホスト、パス、およびパラメーター文字列を組み合わせることで、要求 URI を構成します。
 
-mkt = 'en-US'
-query = 'sail'
+    ```ruby
+    params = '?mkt=' + mkt + '&q=' + query
+    uri = URI (host + path + params)
+    ```
 
-params = '?mkt=' + mkt + '&q=' + query
-uri = URI (host + path + params)
+## <a name="create-and-send-an-api-request"></a>API 要求を作成して送信する
 
-request = Net::HTTP::Get.new(uri)
-request['Ocp-Apim-Subscription-Key'] = subscriptionKey
+1. お使いの URI によって要求を作成し、`Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加します。
+    
+    ```ruby
+    request = Net::HTTP::Get.new(uri)
+    request['Ocp-Apim-Subscription-Key'] = subscriptionKey
+    ```
 
-response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request (request)
-end
+2. 要求を送信して、応答を保存します。
+    
+    ```ruby
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        http.request (request)
+    end
+    ```
 
-puts JSON::pretty_generate (JSON (response.body))
-```
+3. JSON の応答を出力します。
+    
+    ```ruby
+    puts JSON::pretty_generate (JSON (response.body))
+    ```
 
-### <a name="response"></a>Response
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。
 
@@ -136,7 +149,7 @@ puts JSON::pretty_generate (JSON (response.body))
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Autosuggest チュートリアル](../tutorials/autosuggest.md)
+> [単一ページの Web アプリの作成](../tutorials/autosuggest.md)
 
 ## <a name="see-also"></a>関連項目
 

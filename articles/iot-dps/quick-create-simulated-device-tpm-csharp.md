@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f574c85252614fd24734657affe3264d72130dd3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 9ec8f8f1c6e1d1b806c5d965d3c2287027885c44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901588"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -37,7 +37,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>開発環境の準備 
 
-1. お使いのコンピューターに [.Net Core 2.1 SDK 以降](https://www.microsoft.com/net/download/windows)がインストールされていることを確認します。 
+1. お使いのマシンに [.NET Core 2.1 SDK 以降](https://www.microsoft.com/net/download/windows)がインストールされていることを確認します。 
 
 1. マシンに `git` がインストールされ、コマンド ウィンドウからアクセスできる環境変数に追加されていることを確認します。 **Git Bash** (ローカル Git リポジトリと対話する際に使用するコマンドライン アプリ) など、インストールする各種 `git` ツールの最新バージョンについては、[Software Freedom Conservancy の Git クライアント ツール](https://git-scm.com/download/)に関するページを参照してください。 
 
@@ -78,14 +78,14 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 4. Azure Portal の Device Provisioning Service の概要ブレードで、**[登録を管理します]** を選択します。 **[個別登録]** タブを選択し、上部にある **[個別登録の追加]** ボタンをクリックします。 
 
 5. **[Add Enrollment] (登録の追加)** で、次の情報を入力します。
-    - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
-    - 書き留めておいた TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。
-    - 必要に応じて、プロビジョニング サービスにリンクされた IoT ハブを選択します。
-    - 一意のデバイス ID を入力します。 サンプル出力に提案されているデバイス ID を入力するか、独自の ID を入力することができます。 独自の ID を使用する場合は、デバイスに名前を付ける際に機密データを含めないようにしてください。 
-    - **[デバイス ツインの初期状態]** をデバイスの目的の初期構成で更新します。
-    - 作業が完了したら、**[保存]** をクリックします。 
+   - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
+   - 書き留めておいた TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。
+   - 必要に応じて、プロビジョニング サービスにリンクされた IoT ハブを選択します。
+   - 一意のデバイス ID を入力します。 サンプル出力に提案されているデバイス ID を入力するか、独自の ID を入力することができます。 独自の ID を使用する場合は、デバイスに名前を付ける際に機密データを含めないようにしてください。 
+   - **[デバイス ツインの初期状態]** をデバイスの目的の初期構成で更新します。
+   - 作業が完了したら、**[保存]** をクリックします。 
 
-    ![ポータルのブレードにデバイス登録情報を入力します。](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
+     ![ポータルのブレードにデバイス登録情報を入力します。](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 

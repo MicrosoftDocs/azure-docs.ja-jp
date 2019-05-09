@@ -10,17 +10,17 @@ tags: azure-service-management
 ms.assetid: 65e14579-86cf-4d29-a6ac-547ccbd743bd
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6aedfa3f0ef65fdb1b663db8637b648e685e31be
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 74940f3b89237233acd575aa5df441163e00d178
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321479"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000944"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>証明書認証 (クラシック) を使用してポイント対サイト接続を構成する
 
@@ -69,9 +69,9 @@ ms.locfileid: "53321479"
    - **[リソース グループ]**: 「*TestRG*」と入力します。 リソース グループが存在しない場合は、**[新規作成]** を選択します。
    - **[場所]**: 一覧から **[米国東部]** を選択します。
 
- - **[VPN 接続] の設定**
-   - **[接続の種類]**: **[ポイント対サイト]** を選択します。
-   - **[クライアント アドレス空間]**: 「*172.16.201.0/24*」と入力します。 このポイント対サイト接続を使用して VNet に接続する VPN クライアントは、指定されたプールから IP アドレスを受信します。
+  - **[VPN 接続] の設定**
+    - **[接続の種類]**: **[ポイント対サイト]** を選択します。
+    - **[クライアント アドレス空間]**: 「*172.16.201.0/24*」と入力します。 このポイント対サイト接続を使用して VNet に接続する VPN クライアントは、指定されたプールから IP アドレスを受信します。
 
 - **[Gateway configuration subnet] (ゲートウェイ構成サブネット) の設定**
    - **[名前]**: 「*GatewaySubnet*」が自動入力されます。
@@ -89,7 +89,7 @@ ms.locfileid: "53321479"
 
 まだ仮想ネットワーク (VNet) がない場合は、作成してください。 スクリーンショットは例として示されています。 サンプルの値は必ず実際の値に変更してください。 Azure Portal を使用して VNet を作成するには、以下の手順に従ってください。
 
-1. [Azure Portal](http://portal.azure.com) にサインインし、**[リソースの作成]** を選択します。 **[新規]** ページが開きます。 
+1. [Azure Portal](https://portal.azure.com) にサインインし、**[リソースの作成]** を選択します。 **[新規]** ページが開きます。 
 
 2. **[Marketplace を検索]** フィールドに「*仮想ネットワーク*」と入力し、返された一覧から **[仮想ネットワーク]** を選択します。 **[仮想ネットワーク]** ページが開きます。
 
@@ -121,26 +121,26 @@ ms.locfileid: "53321479"
 
 2. 仮想ネットワークのページで **[概要]** を選択し、**[VPN 接続]** セクションで **[ゲートウェイ]** を選択します。
 
-  ![クリックしてゲートウェイを作成する](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png)
+   ![クリックしてゲートウェイを作成する](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png)
 3. **[新しい VPN 接続]** ページで、**[ポイント対サイト]** を選択します。
 
-  ![接続の種類 (ポイント対サイト)](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
+   ![接続の種類 (ポイント対サイト)](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
 4. **[クライアント アドレス空間]** で、VPN クライアントが接続時に IP アドレスを受信する IP アドレス範囲を追加します。 接続元のオンプレミスの場所や、接続先の VNet と重複しないプライベート IP アドレス範囲を使用します。 自動入力された範囲は、使用するプライベート IP アドレス範囲で上書きすることができます。 この例は、自動入力された範囲を示しています。 
 
-  ![クライアント アドレス空間](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
+   ![クライアント アドレス空間](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
 5. **[ゲートウェイをすぐに作成する]** をオンにし、**[ゲートウェイの構成 (オプション)]** を選択して **[ゲートウェイの構成]** ページを開きます。
 
-  ![[ゲートウェイの構成 (オプション)] を選択する](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
+   ![[ゲートウェイの構成 (オプション)] を選択する](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
 
 6. **[ゲートウェイの構成]** ページから、**[サブネット]** を選択してゲートウェイ サブネットを追加します。 /29 という小さなゲートウェイ サブネットを作成できます。 ただし、少なくとも /28 または /27 を選択することによって、さらに多くのアドレスを含むより大きなサブネットを作成することをお勧めします。 そうすることにより、将来必要になる可能性がある追加の構成に対応できる十分なアドレスが確保されます。 ゲートウェイ サブネットを使用する場合は、ゲートウェイ サブネットにネットワーク セキュリティ グループ (NSG) を関連付けないようにしてください。 このサブネットにネットワーク セキュリティ グループを関連付けると、VPN ゲートウェイが期待どおりに機能しなくなる可能性があります。 **[OK]** を選択してこの設定を保存します。
 
-  ![GatewaySubnet の追加](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
+   ![GatewaySubnet の追加](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
 7. ゲートウェイの **[サイズ]** を選択します。 このサイズは、ご使用の仮想ネットワーク ゲートウェイの SKU です。 Azure Portal では、既定の SKU は **[Default]** です。 ゲートウェイ SKU の詳細については、[VPN ゲートウェイ の設定](vpn-gateway-about-vpn-gateway-settings.md#gwsku)に関するページを参照してください。
 
-  ![ゲートウェイのサイズ](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
+   ![ゲートウェイのサイズ](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
 8. ゲートウェイの **[ルーティングの種類]** を選択します。 P2S 構成には、**動的**なルーティングの種類が必要です。 このページの構成を完了したら、**[OK]** を選択します。
 
-  ![ルーティングの種類の構成](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
+   ![ルーティングの種類の構成](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
 
 9. **[新しい VPN 接続]** ページで、ページの一番下にある **[OK]** を選択して、仮想ネットワーク ゲートウェイの作成を開始します。 選択したゲートウェイ SKU によっては、VPN ゲートウェイの完了に最大 45 分かかることがあります。
  
@@ -164,11 +164,11 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 1. VNet のページの **[VPN 接続]** セクションで、クライアントのグラフィックを選択して **[ポイント対サイト VPN 接続]** ページを開きます。
 
-  ![クライアント](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png)
+   ![クライアント](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png)
 
 2. **[ポイント対サイト VPN 接続]** ページで、**[証明書の管理]** を選択して **[証明書]** ページを開きます。
 
-  ![[証明書] ページ](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png)
+   ![[証明書] ページ](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png)
 
 1. **[証明書]** ページで、**[アップロード]** を選択して **[証明書のアップロード]** ページを開きます。
 
@@ -176,7 +176,7 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 4. フォルダーのグラフィックを選択して .cer ファイルを参照します。 ファイルを選択し、**[OK]** を選択します。 アップロードされた証明書が **[証明書]** ページに表示されます。
 
-  ![証明書のアップロード](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png)
+   ![証明書のアップロード](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png)
 
 
 ## <a name="configure-the-client"></a>クライアントの構成
@@ -191,10 +191,10 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 2. **[ポイント対サイト VPN 接続]** ページから、インストール先のクライアント オペレーティング システムに対応するダウンロード パッケージを選択します。
 
-  * 64 ビット クライアントの場合は、**[VPN クライアント (64 ビット)]** を選択します。
-  * 32 ビット クライアントの場合は、**[VPN クライアント (32 ビット)]** を選択します。
+   * 64 ビット クライアントの場合は、**[VPN クライアント (64 ビット)]** を選択します。
+   * 32 ビット クライアントの場合は、**[VPN クライアント (32 ビット)]** を選択します。
 
-  ![VPN クライアント構成パッケージのダウンロード](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
+   ![VPN クライアント構成パッケージのダウンロード](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
 
 3. パッケージが生成されたら、それをダウンロードしてクライアント コンピューターにインストールします。 SmartScreen ポップアップが表示された場合は、**[詳細]**、**[実行]** の順に選択します。 パッケージを保存して、他のクライアント コンピューターにインストールすることもできます。
 
@@ -226,7 +226,7 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 1. VPN 接続がアクティブであることを確認します。 クライアント コンピューターで管理者特権でのコマンド プロンプトを開き、**ipconfig/all** を実行します。
 2. 結果を表示します。 受信した IP アドレスが、VNet の作成時に指定したポイント対サイト接続アドレス範囲内のアドレスのいずれかであることに注意してください。 結果は、次の例のようになります。
 
-  ```
+   ```
     PPP adapter VNet1:
         Connection-specific DNS Suffix .:
         Description.....................: VNet1
@@ -237,7 +237,7 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
         Subnet Mask.....................: 255.255.255.255
         Default Gateway.................:
         NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 ## <a name="connect-to-a-virtual-machine"></a>仮想マシンへの接続
 
@@ -249,7 +249,7 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 ### <a name="to-add-a-trusted-root-certificate"></a>信頼されたルート証明書を追加するには
 
-信頼されたルート証明書 .cer ファイルを最大 20 個まで Azure に追加できます。 手順については、[ルート証明書 .cer ファイルのアップロード](#upload-the-root-certificate-.cer-file)に関するページを参照してください。
+信頼されたルート証明書 .cer ファイルを最大 20 個まで Azure に追加できます。 手順については、ルート証明書 .cer ファイルのアップロードに関するページを参照してください。
 
 ### <a name="to-remove-a-trusted-root-certificate"></a>信頼されたルート証明書を削除するには
 
@@ -290,7 +290,7 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 ## <a name="next-steps"></a>次の手順
 
-- 接続が完了したら、仮想ネットワークに仮想マシンを追加できます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 
+- 接続が完了したら、仮想ネットワークに仮想マシンを追加できます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。 
 
 - ネットワークと Linux 仮想マシンに関する詳細を理解するには、[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/network-overview.md)に関するページを参照してください。
 

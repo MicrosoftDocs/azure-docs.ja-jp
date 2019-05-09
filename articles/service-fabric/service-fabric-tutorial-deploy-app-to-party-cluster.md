@@ -3,7 +3,7 @@ title: Azure で Service Fabric アプリをクラスターにデプロイする
 description: Visual Studio でアプリケーションをクラスターにデプロイする方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: msfussell
 editor: ''
 ms.assetid: ''
@@ -12,23 +12,23 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
-ms.author: ryanwi,mikhegn
+ms.date: 01/14/2019
+ms.author: aljo,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: fe6df20d294a3b1802d396085c36a6587dc45730
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 451cfde133955b987b97bc2447724d2e00010892
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249083"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667380"
 ---
-# <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル: Azure のクラスターに Service Fabric アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric アプリケーションをクラスターにデプロイする
 
 このチュートリアルは、シリーズの第 2 部です。 Azure の新しいクラスターに Azure Service Fabric アプリケーションをデプロイする方法を示します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-> * パーティ クラスターを作成する。
+> * クラスターを作成する。
 > * Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする。
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
@@ -49,91 +49,77 @@ ms.locfileid: "51249083"
 
 ## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
 
-[このチュートリアル シリーズの第 1 部](service-fabric-tutorial-create-dotnet-app.md)で投票サンプル アプリケーションをビルドしていない場合は、ダウンロードすることができます。 コマンド ウィンドウで次のコードを実行して、サンプル アプリのリポジトリをローカル マシンに複製します。
+[このチュートリアル シリーズの第 1 部](service-fabric-tutorial-create-dotnet-app.md)で投票サンプル アプリケーションをビルドしていない場合は、ダウンロードすることができます。 コマンド ウィンドウで次のコードを実行して、サンプル アプリケーションのリポジトリをお客様のローカル コンピューターに複製します。
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart 
 ```
 
-## <a name="publish-to-a-service-fabric-cluster"></a>Service Fabric クラスターに発行する
+管理者として実行している Visual Studio でアプリケーションを開き、アプリケーションをビルドします。
 
-これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。 [Service Fabric クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。
+## <a name="create-a-cluster"></a>クラスターの作成
 
-このチュートリアルでは、Visual Studio を使用して投票アプリケーションを Service Fabric クラスターにデプロイするために、次の 2 つのオプションがあります。
+アプリケーションの準備ができたので、Service Fabric クラスターを作成して、アプリケーションをクラスターにデプロイします。 [Service Fabric クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。
 
-* 試用版 (パーティ) クラスターに発行します。 
-* サブスクリプションで既存のクラスターに発行します。 [Azure portal](https://portal.azure.com) で [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) または [Azure CLI](./scripts/cli-create-cluster.md) スクリプトを使用するか、[Azure Resource Manager テンプレート](service-fabric-tutorial-create-vnet-and-windows-cluster.md)から、Service Fabric クラスターを作成することができます。
+このチュートリアルでは、Visual Studio IDE で新しい 3 ノードのテスト クラスターを作成してから、そのクラスターにアプリケーションを発行します。 運用クラスターの作成については、[クラスターの作成と管理に関するチュートリアル](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を参照してください。 [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) スクリプトまたは [Azure CLI](./scripts/cli-create-cluster.md) スクリプトを使用するか、あるいは [Azure Resource Manager テンプレート](service-fabric-tutorial-create-vnet-and-windows-cluster.md)をベースにして、以前に [Azure portal](https://portal.azure.com) を使用して作成した既存のクラスターにアプリケーションをデプロイすることもできます。
 
 > [!NOTE]
-> 多くのサービスは、リバース プロキシを使用して相互に通信します。 Visual Studio で作成されたクラスターとパーティ クラスターでは、既定でリバース プロキシが有効です。 既存のクラスターを使用する場合、[クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md)必要があります。
+> 投票アプリケーション、およびその他の多くのアプリケーションでは、サービス間の通信に Service Fabric リバース プロキシが使用されます。 Visual Studio で作成されたクラスターでは、既定でリバース プロキシが有効になっています。 既存のクラスターにデプロイする場合、投票アプリケーションが動作するためには、[クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md)必要があります。
 
 
-### <a name="find-the-voting-web-service-endpoint-for-your-azure-subscription"></a>Azure サブスクリプションの投票 Web サービス エンドポイントを見つける
+### <a name="find-the-votingweb-service-endpoint"></a>VotingWeb サービス エンドポイントを見つける
 
-投票アプリケーションを自分の Azure サブスクリプションに発行する場合は、フロントエンド Web サービスのエンドポイントを見つけます。 パーティ クラスターを使用する場合は、自動的に開かれる投票サンプルを使用してポート 8080 に接続します。 パーティ クラスターのロード バランサーで構成する必要はありません。
-
-フロントエンド Web サービスは、特定のポートでリッスンしています。 Azure でアプリケーションがクラスターにデプロイされると、クラスターとアプリケーションの両方が Azure ロード バランサーの背後で実行します。 クラスターの Azure ロード バランサーのルールを使用してアプリケーション ポートが開かれている必要があります。 開かれているポートは、受信トラフィックを Web サービスに送信します。 ポートは、**VotingWeb/PackageRoot/ServiceManifest.xml** ファイルの **Endpoint** 要素にあります。 たとえば、ポート 8080 です。
+投票アプリケーションのフロントエンド Web サービスは、特定のポートでリッスンしています ([このチュートリアル シリーズの第 1 部](service-fabric-tutorial-create-dotnet-app.md)の手順に従っている場合は 8080)。 Azure でアプリケーションがクラスターにデプロイされると、クラスターとアプリケーションの両方が Azure ロード バランサーの背後で実行します。 Azure ロード バランサーで、規則を使用してアプリケーション ポートが開かれている必要があります。 規則に従って、インバウンド トラフィックがロード バランサー経由で Web サービスに送信されます。 ポートは、**VotingWeb/PackageRoot/ServiceManifest.xml** ファイルの **Endpoint** 要素にあります。 
 
 ```xml
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
 ```
 
-Azure サブスクリプションの場合は、[PowerShell スクリプト](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)を介して Azure の負荷分散ルールを使用するか、[Azure portal](https://portal.azure.com) でこのクラスターのロード バランサーを介して、このポートを開きます。
+サービス エンドポイントをメモしておきます。これは後の手順で必要になります。  既存のクラスターにデプロイする場合は、[PowerShell スクリプト](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)を使用して Azure ロード バランサーに負荷分散規則とプローブを作成するか、または [Azure portal](https://portal.azure.com) でこのクラスターのロード バランサーを介して、このポートを開きます。
 
-### <a name="join-a-party-cluster"></a>パーティ クラスターに参加する
+### <a name="create-a-test-cluster-in-azure"></a>Azure でテスト クラスターを作成する
+ソリューション エクスプローラーで、**[Voting]** を右クリックし、**[発行]** を選択します。
 
-> [!NOTE]
->  Azure サブスクリプション内の独自のクラスターにアプリケーションを発行するには、「[Visual Studio を使用してアプリケーションを発行する](#publish-the-application-by-using-visual-studio)」セクションに進んでください。 
+**[接続のエンドポイント]** で、**[新しいクラスターの作成]** を選択します。  既存のクラスターにデプロイする場合は、一覧でクラスターのエンドポイントを選択します。  [Service Fabric クラスターの作成] ダイアログ ボックスが開きます。
 
-パーティー クラスターは、Azure でホストされ、Service Fabric チームによって実行される期間限定の無料 Service Fabric クラスターです。 だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 このクラスターでは、ノード間のセキュリティと、クライアントとノード間のセキュリティの両方に、単一の自己署名証明書が使用されます。
+**[クラスター]** タブで、**クラスター名** (たとえば、"mytestcluster") を入力します。お客様のサブスクリプションを選択し、クラスターのリージョン (たとえば、"米国中南部") を選択します。クラスター ノードの数 (テスト クラスターには 3 つのノードをお勧めします) を入力し、リソース グループ (たとえば、"mytestclustergroup") を入力します。 **[次へ]** をクリックします。
 
-サインインし、[Windows クラスターに参加](https://aka.ms/tryservicefabric)します。 PFX 証明書をコンピューターにダウンロードするには、**[PFX]** リンクを選択します。 **[How to connect to a secure Party cluster?]\(セキュリティで保護されたパーティ クラスターに接続する方法\)** リンクを選択して、証明書のパスワードをコピーします。 証明書、証明書のパスワード、**[接続のエンドポイント]** の値は、次の手順で使用します。
+![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-![PFX と接続エンドポイント](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
+**[証明書]** タブで、クラスター証明書のパスワードと出力パスを入力します。 自己署名証明書は PFX ファイルとして作成され、指定した出力パスに保存されます。  証明書は、ノード間のセキュリティと、クライアントとノード間のセキュリティの両方に使用されます。  自己署名証明書は運用クラスターには使用しないでください。  この証明書は、クラスターによる認証とアプリケーションのデプロイのために Visual Studio によって使用されます。 お客様のコンピューターの CurrentUser\My certificate store に PFX をインストールするために、**[証明書のインポート]** を選択します。  **[次へ]** をクリックします。
 
-> [!Note]
-> 1 時間あたりに使用可能なパーティ クラスターの数には制限があります。 パーティ クラスターへのサインアップ時にエラーが発生する場合は、少し待ってからやり直してください。 または、[.NET アプリのデプロイ](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application)のチュートリアルに記載されている手順に従って、Azure サブスクリプションに Service Fabric クラスターを作成し、アプリケーションをデプロイすることもできます。 Azure サブスクリプションをまだお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成できます。
->
+![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-Windows マシンで、**CurrentUser\My** 証明書ストアに PFX をインストールします。
+**[VM の詳細]** タブで、クラスター管理者アカウントの**ユーザー名**と**パスワード**を入力します。  クラスター ノードの**仮想マシン イメージ**を選択し、各クラスター ノードの**仮想マシン サイズ**を選択します。  **[詳細]** タブをクリックします。
 
-```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
+![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
+**[ポート]** に、前の手順の VotingWeb サービス エンドポイントを入力します (たとえば、8080)。  クラスターが作成されると、トラフィックをクラスターに転送するためにこれらのアプリケーション ポートが Azure ロード バランサーで開かれます。  **[作成]** をクリックしてクラスターを作成します。これには数分かかります。
 
-   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
-Thumbprint                                Subject
-----------                                -------
-3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
-```
+## <a name="publish-the-application-to-the-cluster"></a>アプリケーションをクラスターに発行する
 
-次の手順のために拇印を覚えておいてください。
+新しいクラスターの準備ができたら、Visual Studio から投票アプリケーションを直接デプロイできます。
 
-> [!Note]
-> 既定では、Web フロントエンド サービスは、ポート 8080 で着信トラフィックをリッスンするよう構成されています。 ポート 8080 は、パーティ クラスターで開かれています。 アプリケーションのポートを変更する必要がある場合は、パーティ クラスターで開かれているポートのいずれかに変更してください。
->
+ソリューション エクスプローラーで、**[Voting]** を右クリックし、**[発行]** を選択します。 **[発行]** ダイアログ ボックスが表示されます。
 
-### <a name="publish-the-application-by-using-visual-studio"></a>Visual Studio を使用してアプリケーションを発行する
+**[接続のエンドポイント]** で、お客様が前の手順で作成したクラスターのエンドポイントを選択します   (たとえば、"mytestcluster.southcentral.cloudapp.azure.com:19000")。 **[詳細な接続パラメーター]** を選択した場合、証明書情報は自動的に入力されます。  
+![Service Fabric アプリケーションを発行する](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
-これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。
+**[発行]** を選択します。
 
-1. ソリューション エクスプローラーで **[投票]** を右クリックします。 **[発行]** をクリックします。 **[発行]** ダイアログ ボックスが表示されます。
+アプリケーションがデプロイされたら、ブラウザーを開き、クラスター アドレスとそれに続けて「**:8080**」を入力します。 他のポートが構成されている場合は、そのポートを入力します。 例: `http://mytestcluster.southcentral.cloudapp.azure.com:8080`。 Azure のクラスターでアプリケーションが実行されていることがわかります。 投票 Web ページで、投票オプションの追加や削除を試します。さらに、これらのオプションの 1 つ以上に投票してみます。
 
-2. パーティ クラスター ページまたは Azure サブスクリプションの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 例: `zwin7fh14scd.westus.cloudapp.azure.com:19000`。 **[詳細な接続パラメーター]** を選択します。  **FindValue** と **ServerCertThumbprint** の値が、前の手順でインストールしたパーティ クラスターの証明書または Azure サブスクリプションに一致する証明書の拇印に一致していることを確認します。
-
-    ![Service Fabric アプリケーションを発行する](./media/service-fabric-quickstart-dotnet/publish-app.png)
-
-    クラスター内の各アプリケーションには、一意の名前が必要です。 パーティ クラスターはパブリックの共有環境であるため、既存のアプリケーションと競合している可能性があります。 名前の競合が発生している場合は、Visual Studio プロジェクトの名前を変更し、もう一度デプロイします。
-
-3. **[発行]** を選択します。
-
-4. クラスター内の投票アプリケーションにアクセスするには、ブラウザーを開き、クラスター アドレスの後に「**: 8080**」と入力します。 他のポートが構成されている場合は、そのポートを入力します。 例: `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`。 Azure のクラスターでアプリケーションが実行されていることがわかります。 投票 Web ページで、投票オプションの追加や削除を試します。さらに、これらのオプションの 1 つ以上に投票してみます。
-
-    ![Service Fabric の投票サンプル](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
+![Service Fabric の投票サンプル](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 
 
 ## <a name="next-steps"></a>次の手順
+チュートリアルのこの部分で学習した内容は次のとおりです。
+
+> [!div class="checklist"]
+> * クラスターを作成する。
+> * Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする。
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]

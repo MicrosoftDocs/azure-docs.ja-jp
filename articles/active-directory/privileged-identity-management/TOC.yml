@@ -1,102 +1,93 @@
-items:
 - name: Privileged Identity Management のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure AD PIM とは
-    href: pim-configure.md
+    - name: Azure AD PIM とは
+      href: pim-configure.md
 - name: 概念
   items:
-  - name: サブスクリプションの要件
-    href: subscription-requirements.md
-  - name: 管理できるディレクトリ ロール
-    href: pim-roles.md
-  - name: 特権アクセスのセキュリティ保護
-    href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
-  - name: MFA と PIM
-    href: pim-how-to-require-mfa.md
-  - name: 概要のダッシュボード
-    href: pim-resource-roles-overview-dashboards.md
-  - name: 電子メール通知
-    href: pim-email-notifications.md
-  - name: 割り当ての種類
-    href: pim-resource-roles-eligible-visibility.md
-  - name: Microsoft Graph API
-    href: pim-apis.md
+    - name: ライセンスの要件
+      href: subscription-requirements.md
+    - name: 管理できないロール
+      href: pim-roles.md
+    - name: 特権アクセスのセキュリティ保護
+      href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: MFA と PIM
+      href: pim-how-to-require-mfa.md
+    - name: 概要のダッシュボード
+      href: pim-resource-roles-overview-dashboards.md
+    - name: 電子メール通知
+      href: pim-email-notifications.md
+    - name: Microsoft Graph API
+      href: pim-apis.md
 - name: ハウツー ガイド
-  items:
-  - name: PIM の使用を開始する
-    href: pim-getting-started.md
-  - name: ロールをアクティブ化する
-    items:
-    - name: 自分のディレクトリ ロールをアクティブ化する
-      href: pim-how-to-activate-role.md
-    - name: 自分のリソース ロールをアクティブ化する
-      href: pim-resource-roles-activate-your-roles.md
-  - name: PIM を構成する
-    items:
-    - name: セキュリティ ウィザード
-      href: pim-security-wizard.md
-    - name: Azure リソースを見つける
-      href: pim-resource-roles-discover-resources.md
-    - name: PIM を管理する他のユーザーにアクセス権を付与する
-      href: pim-how-to-give-access-to-pim.md
-    - name: サブスクリプションの管理を有効化する
-      href: pim-resource-roles-enable-subscription-management.md
-  - name: ディレクトリ ロールを管理する
-    items:
-    - name: ロールを割り当てる
-      href: pim-how-to-add-role-to-user.md
-    - name: 要求の承認
-      href: azure-ad-pim-approval-workflow.md
-    - name: ロール設定を構成する
-      href: pim-how-to-change-default-settings.md
-    - name: アラートを構成する
-      href: pim-how-to-configure-security-alerts.md
-    - name: 監査履歴を表示する
-      href: pim-how-to-use-audit-log.md
-  - name: リソース ロールを管理する
-    items:
-    - name: ロールを割り当てる
-      href: pim-resource-roles-assign-roles.md
-    - name: 外部ユーザーを招待する
-      href: pim-resource-roles-external-users.md
-    - name: 要求の承認
-      href: pim-resource-roles-approval-workflow.md
-    - name: ロールを拡張または更新する
-      href: pim-resource-roles-renew-extend.md
-    - name: ロール設定を構成する
-      href: pim-resource-roles-configure-role-settings.md
-    - name: アラートを構成する
-      href: pim-resource-roles-configure-alerts.md
-    - name: アクセス権を持つユーザーを表示する
-      href: azure-pim-resource-rbac.md
-    - name: 監査履歴を表示する
-      href: pim-resource-roles-use-the-audit-log.md
-    - name: カスタム ロールを使用する
-      href: pim-resource-roles-custom-role-policy.md
-  - name: アクセスのレビュー
-    items:
-    - name: ディレクトリ ロール
-      items:
-      - name: 自分のディレクトリ ロールを確認する
-        href: pim-how-to-perform-security-review.md
-      - name: アクセス レビューを開始する
-        href: pim-how-to-start-security-review.md
-      - name: アクセス レビューを完了する
-        href: pim-how-to-complete-review.md
-    - name: リソース ロール
-      items:
-      - name: 自分のリソース ロールを確認する
-        href: pim-resource-roles-perform-access-review.md
-      - name: アクセス レビューを開始する
-        href: pim-resource-roles-start-access-review.md
-      - name: アクセス レビューを完了する
-        href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 235d0444428072aa10558989904b92222e6fdbd1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723365"
+  items:
+    - name: PIM をデプロイする
+      href: pim-deployment-plan.md
+    - name: PIM の使用を開始する
+      href: pim-getting-started.md
+    - name: ロールをアクティブ化する
+      items:
+        - name: Azure AD ロールをアクティブ化する
+          href: pim-how-to-activate-role.md
+        - name: 自分の Azure リソース ロールをアクティブにする
+          href: pim-resource-roles-activate-your-roles.md
+    - name: PIM を構成する
+      items:
+        - name: セキュリティ ウィザード
+          href: pim-security-wizard.md
+        - name: Azure リソースを見つける
+          href: pim-resource-roles-discover-resources.md
+        - name: PIM を管理する他のユーザーにアクセス権を付与する
+          href: pim-how-to-give-access-to-pim.md
+        - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
+          href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: Azure AD ロールの管理
+      items:
+        - name: ロールを割り当てる
+          href: pim-how-to-add-role-to-user.md
+        - name: 要求の承認
+          href: azure-ad-pim-approval-workflow.md
+        - name: ロール設定を構成する
+          href: pim-how-to-change-default-settings.md
+        - name: アラートを構成する
+          href: pim-how-to-configure-security-alerts.md
+        - name: 監査履歴を表示する
+          href: pim-how-to-use-audit-log.md
+    - name: Azure リソース ロールの管理
+      items:
+        - name: ロールを割り当てる
+          href: pim-resource-roles-assign-roles.md
+        - name: 外部ユーザーを招待する
+          href: pim-resource-roles-external-users.md
+        - name: 要求の承認
+          href: pim-resource-roles-approval-workflow.md
+        - name: ロールを拡張または更新する
+          href: pim-resource-roles-renew-extend.md
+        - name: ロール設定を構成する
+          href: pim-resource-roles-configure-role-settings.md
+        - name: アラートを構成する
+          href: pim-resource-roles-configure-alerts.md
+        - name: アクティビティと監査履歴を表示する
+          href: azure-pim-resource-rbac.md
+        - name: カスタム ロールを使用する
+          href: pim-resource-roles-custom-role-policy.md
+    - name: アクセスのレビュー
+      items:
+        - name: Azure AD ロール
+          items:
+            - name: Azure AD ロールのレビュー
+              href: pim-how-to-perform-security-review.md
+            - name: アクセス レビューを開始する
+              href: pim-how-to-start-security-review.md
+            - name: アクセス レビューを完了する
+              href: pim-how-to-complete-review.md
+        - name: Azure リソース ロール
+          items:
+            - name: 自分の Azure リソース ロールを確認する
+              href: pim-resource-roles-perform-access-review.md
+            - name: アクセス レビューを開始する
+              href: pim-resource-roles-start-access-review.md
+            - name: アクセス レビューを完了する
+              href: pim-resource-roles-complete-access-review.md

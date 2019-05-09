@@ -3,18 +3,18 @@ title: アマゾン ウェブ サービスへの VM のデプロイの自動化
 description: この記事は、Azure Automation を使用して、Amazon Web Service VM の作成を自動化する方法を示します
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f49adf006e8d55337220fad9ee84de65209880b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 348c28f6a2d72048e34f117e802abf243597b458
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193483"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425222"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation シナリオ - AWS 仮想マシンのプロビジョニング
 この記事では、Azure Automation を利用して仮想マシンを Amazon Web Service (AWS) サブスクリプションにプロビジョニングし、その VM に特別な名前を付ける方法 (AWS では "タグ付け" と呼びます) について説明します。
@@ -25,7 +25,7 @@ ms.locfileid: "34193483"
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Amazon Web Services PowerShell モジュールをデプロイする
 VM プロビジョニング Runbook は、AWS PowerShell モジュールを利用して処理を実行します。 次の手順を実行して、AWS サブスクリプションの資格情報で構成した Automation アカウントにモジュールを追加してください。  
 
-1. Web ブラウザーを開き、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AWSPowerShell/)に移動し、**[Deploy to Azure Automation (Azure Automation にデプロイする)]** ボタンをクリックします。<br><br> ![AWS PS モジュールのインポート](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+1. Web ブラウザーを開き、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AWSPowerShell/)に移動し、**[Deploy to Azure Automation (Azure Automation にデプロイする)]** ボタンをクリックします。<br><br> ![AWS PS モジュールのインポート](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
 2. Azure ログイン ページが表示され、認証が終わると Azure Portal に移動し、次のページが表示されます。<br><br> ![[モジュールのインポート] ページ](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. 使用する Automation アカウントを選択し、**[OK]** をクリックしてデプロイを開始します。
 
@@ -41,11 +41,11 @@ VM プロビジョニング Runbook は、AWS PowerShell モジュールを利�
 AWS PowerShell モジュールのデプロイが終わったら、PowerShell スクリプトを使用して AWS への仮想マシンのプロビジョニングを自動化する Runbook を作成できます。 次の手順は、Azure Automation でネイティブ PowerShell スクリプトを利用する方法を示しています。  
 
 > [!NOTE]
-> このスクリプトに関する他のオプションと情報については、 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-AwsVM/DisplayScript)を参照してください。
+> このスクリプトに関する他のオプションと情報については、 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-AwsVM/)を参照してください。
 > 
 
 1. PowerShell セッションを開き、次のように入力して、PowerShell ギャラリーから PowerShell スクリプト New-AwsVM をダウンロードします。<br>
-   ```
+   ```powershell
    Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
@@ -60,11 +60,12 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
     > 
     > * この Runbook には、パラメーターの既定値が多数含まれています。 すべての既定値に目を通して適宜変更してください。
     > * AWS 資格情報を **AWScred**以外の資格情報資産の名前で保存している場合は、スクリプトの 57 行をその名前で更新する必要があります。  
-    > * PowerShell の AWS CLI コマンドを使用する場合、特にこのサンプル Runbook では、AWS リージョンを指定する必要があります。 指定しなかった場合、コマンドレットは失敗します。 詳細については、AWS Tools for PowerShell ドキュメントの AWS トピック「 [Specify AWS Region (AWS リージョンを指定する)](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) 」を参照してください。  
+    > * PowerShell の AWS CLI コマンドを使用する場合、特にこのサンプル Runbook では、AWS リージョンを指定する必要があります。 指定しなかった場合、コマンドレットは失敗します。 詳細については、AWS Tools for PowerShell ドキュメントの AWS トピック「 [Specify AWS Region (AWS リージョンを指定する)](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) 」を参照してください。  
     >
 
 7. AWS サブスクリプションからイメージ名の一覧を取得するため、PowerShell ISE を起動し、AWS PowerShell モジュールをインポートします。 ISE 環境の **Get-AutomationPSCredential** を **AWScred = Get-Credential** に置き換えることで、AWS に対する認証を実行します。 これにより、資格情報の入力を求めるプロンプトが表示され、ユーザー名として**アクセス キー ID** を、パスワードとして**シークレット アクセス キー**を指定できます。 次の例を見てください。  
 
+        ```powershell
         #Sample to get the AWS VM available images
         #Please provide the path where you have downloaded the AWS PowerShell module
         Import-Module AWSPowerShell
@@ -78,7 +79,8 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
         Set-DefaultAWSRegion -Region $AwsRegion
    
         Get-EC2ImageByName -ProfileName AWSProfile
-
+        ```
+        
     次の出力が返されます。<br><br>
    ![AWS イメージの取得](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
 8. Runbook で **$InstanceType**として参照される Automation 変数に、いずれかのイメージ名をコピーして貼り付けます。 この例では、無料の AWS 階層型サブスクリプションを使用しているため、サンプル Runbook では **t2.micro** を使用します。  
@@ -103,4 +105,5 @@ Runbook のテストに進む前に、確認する必要がある事柄がいく
 * PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 * PowerShell スクリプトのサポート機能の詳細については、「 [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+
 

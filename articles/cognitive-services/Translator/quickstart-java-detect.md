@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストの言語を検出する (Java) - Translator Text API'
+title: クイック スタート:テキストの言語を検出する (Java) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: d810b282936db1a31cdeb0133ce3c5bf0059850b
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: c7e56043e8ec6e8764800d4437ee071d33d79d5e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58178035"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>クイック スタート: Translator Text API と Java を使用してテキストの言語を検出する
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>クイック スタート:Translator Text API と Java を使用してテキストの言語を検出する
 
 このクイック スタートでは、Java と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 
@@ -173,7 +173,15 @@ public static void main(String[] args) {
 gradle build
 ```
 
+ビルドが完了したら、次のコマンドを実行します。
+
+```console
+gradle run
+```
+
 ## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [

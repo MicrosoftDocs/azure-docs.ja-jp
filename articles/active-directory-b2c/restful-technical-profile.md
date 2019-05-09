@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで RESTful 技
 description: Azure Active Directory B2C 内のカスタム ポリシーで RESTful 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 930cdddd8a9e039fa9c29a348a0a66eb25d254fe
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: 7ff14af756a55ccc6bbf40dd39d49c5168f4af1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382900"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076328"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 - **検証技術プロファイル** - 検証技術プロファイルは、RESTful サービスを呼び出します。 検証技術プロファイルでは、ユーザー体験を続ける前に、ユーザーが入力したデータを検証します。 検証技術プロファイルにより、エラー メッセージが自己宣言されたページに表示され、出力要求で返されます。
 - **要求の交換** - RESTful サービスへの呼び出しは、オーケストレーションの手順を経て行われます。 このシナリオでは、エラー メッセージを表示するためのユーザー インターフェイスはありません。 REST API がエラーを返す場合、ユーザーは、エラー メッセージがある証明書利用者アプリケーションにリダイレクトで戻されます。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
 **Protocol** 要素の **Name** 属性は、`Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
@@ -200,7 +200,7 @@ public class ResponseContent
 - [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](active-directory-b2c-custom-rest-api-netfw.md) 
 - [HTTP 基本認証を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [クライアント証明書を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [チュートリアル: ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)
+- [チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」をご覧ください
 
  
 

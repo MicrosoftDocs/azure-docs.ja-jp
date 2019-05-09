@@ -1,5 +1,5 @@
 ---
-title: Azure 診断 1.0 構成スキーマ
+title: Azure Diagnostics 1.0 構成スキーマ
 description: この記事は、Azure SDK 2.4 以前を Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、または Cloud Services と共に使用している場合にのみ該当します。
 services: azure-monitor
 author: rboucher
@@ -8,27 +8,27 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 333fec5b9459979d7735f0dd292d7367d86353fe
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325526"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492721"
 ---
-# <a name="azure-diagnostics-10-configuration-schema"></a>Azure 診断 1.0 構成スキーマ
+# <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1.0 構成スキーマ
 > [!NOTE]
-> Azure 診断は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
+> Azure Diagnostics は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 >
 
-Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
+Azure Diagnostics は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
 
-Azure 診断構成ファイルは、診断モニターを初期化するときに使用される値を定義します。 このファイルは、診断モニターの開始時に、診断構成設定を初期化するときに使用されます。  
+Azure Diagnostics 構成ファイルは、診断モニターを初期化するときに使用される値を定義します。 このファイルは、診断モニターの開始時に、診断構成設定を初期化するときに使用されます。  
 
- 既定では、Azure 診断構成スキーマ ファイルは `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` ディレクトリにインストールされます。 `<version>` は、インストールされている [Azure SDK](http://www.windowsazure.com/develop/downloads/) バージョンで置き換えてください。  
+ 既定では、Azure Diagnostics 構成スキーマ ファイルは `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` ディレクトリにインストールされます。 `<version>` は、インストールされている [Azure SDK](https://www.windowsazure.com/develop/downloads/) バージョンで置き換えてください。  
 
 > [!NOTE]
->  診断構成ファイルは、通常、スタートアップ プロセスの初期段階で診断データ収集が必要なスタートアップ タスクで使用されます。 Azure 診断の詳細については、「[Azure 診断を使用したログ データの収集](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7)」を参照してください。  
+>  診断構成ファイルは、通常、スタートアップ プロセスの初期段階で診断データ収集が必要なスタートアップ タスクで使用されます。 Azure Diagnostics の詳細については、「[Azure Diagnostics を使用したログ データの収集](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7)」を参照してください。  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>診断構成ファイルの例  
  一般的な診断構成ファイルの例を次に示します。  
@@ -101,7 +101,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:
 
-|Attribute  |type   |必須| 既定値 | 説明|  
+|Attribute  |Type   |必須| 既定値 | 説明|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|duration|省略可能 | PT1M| 診断モニターが診断構成変更をポーリングする間隔を指定します。|  
 |**overallQuotaInMB**|unsignedInt|省略可能| 4000 MB。 値を指定した場合、その容量を超えることはできません |すべてのログ バッファーに割り当てられたファイル システム ストレージの合計量。|  
@@ -109,11 +109,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs 要素  
 基になる診断インフラストラクチャによって生成されるログのバッファー構成を定義します。
 
-親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。  
+親要素:DiagnosticMonitorConfiguration 要素。  
 
 属性:
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilter**|string|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
@@ -122,11 +122,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="logs-element"></a>Logs 要素  
  基本的な Azure ログのバッファー構成を定義します。
 
- 親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。  
+ 親要素:DiagnosticMonitorConfiguration 要素。  
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilter**|string|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
@@ -135,12 +135,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="directories-element"></a>Directories 要素  
 定義できるファイル ベースのログのバッファー構成を定義します。
 
-親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。  
+親要素:DiagnosticMonitorConfiguration 要素。  
 
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferPeriod**|duration|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
@@ -148,11 +148,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="crashdumps-element"></a>CrashDumps 要素  
  クラッシュ ダンプ ディレクトリを定義します。
 
- 親要素:[Directories 要素](#Directories)。  
+ 親要素:Directories 要素。  
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**container**|string|ディレクトリの内容を転送するコンテナーの名前。|  
 |**directoryQuotaInMB**|unsignedInt|省略可能。 ディレクトリの最大サイズをメガバイト単位で指定します。<br /><br /> 既定値は 0 です。|  
@@ -160,11 +160,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs 要素  
  失敗した要求ログ ディレクトリを定義します。
 
- 親要素: [Directories 要素](#Directories)。  
+ 親要素: Directories 要素。  
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**container**|string|ディレクトリの内容を転送するコンテナーの名前。|  
 |**directoryQuotaInMB**|unsignedInt|省略可能。 ディレクトリの最大サイズをメガバイト単位で指定します。<br /><br /> 既定値は 0 です。|  
@@ -172,11 +172,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ##  <a name="iislogs-element"></a>IISLogs 要素  
  IIS ログ ディレクトリを定義します。
 
- 親要素: [Directories 要素](#Directories)。  
+ 親要素: Directories 要素。  
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**container**|string|ディレクトリの内容を転送するコンテナーの名前。|  
 |**directoryQuotaInMB**|unsignedInt|省略可能。 ディレクトリの最大サイズをメガバイト単位で指定します。<br /><br /> 既定値は 0 です。|  
@@ -184,16 +184,16 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasources-element"></a>DataSources 要素  
  0 個以上の追加のログ ディレクトリを定義します。
 
- 親要素:[Directories 要素](#Directories)。
+ 親要素:Directories 要素。
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration 要素  
  監視するログ ファイルのディレクトリを定義します。
 
- 親要素:[DataSources 要素](#DataSources)。
+ 親要素:DataSources 要素。
 
 属性:
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**container**|string|ディレクトリの内容を転送するコンテナーの名前。|  
 |**directoryQuotaInMB**|unsignedInt|省略可能。 ディレクトリの最大サイズをメガバイト単位で指定します。<br /><br /> 既定値は 0 です。|  
@@ -201,11 +201,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="absolute-element"></a>Absolute 要素  
  省略可能な環境変数の展開を使用して監視するディレクトリの絶対パスを定義します。
 
- 親要素:[DirectoryConfiguration Element](#DirectoryConfiguration)。  
+ 親要素:DirectoryConfiguration 要素。  
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**path**|string|必須。 監視するディレクトリの絶対パス。|  
 |**expandEnvironment**|ブール値|必須。 **true** に設定した場合は、このパスの環境変数が展開されます。|  
@@ -213,11 +213,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="localresource-element"></a>LocalResource 要素  
  サービス定義で定義されているローカル リソースの相対パスを定義します。
 
- 親要素:[DirectoryConfiguration Element](#DirectoryConfiguration)。  
+ 親要素:DirectoryConfiguration 要素。  
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**name**|string|必須。 監視するディレクトリを含むローカル リソースの名前。|  
 |**relativePath**|string|必須。 監視するローカル リソースの相対パス。|  
@@ -225,12 +225,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="performancecounters-element"></a>PerformanceCounters 要素  
  収集するパフォーマンス カウンターのパスを定義します。
 
- 親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。
+ 親要素:DiagnosticMonitorConfiguration 要素。
 
 
  属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferPeriod**|duration|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
@@ -238,11 +238,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration 要素  
  収集するパフォーマンス カウンターを定義します。
 
- 親要素:[PerformanceCounters 要素](#PerformanceCounters)。  
+ 親要素:PerformanceCounters 要素。  
 
  属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|string|必須。 収集するパフォーマンス カウンターのパス。|  
 |**sampleRate**|duration|必須。 パフォーマンス カウンターを収集する頻度。|  
@@ -250,11 +250,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="windowseventlog-element"></a>WindowsEventLog 要素  
  監視するイベント ログを定義します。
 
- 親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。
+ 親要素:DiagnosticMonitorConfiguration 要素。
 
   属性:
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilter**|string|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
@@ -263,10 +263,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasource-element"></a>DataSource 要素  
  監視するイベント ログを定義します。
 
- 親要素:[WindowsEventLog 要素](#windowsEventLog)。  
+ 親要素:WindowsEventLog 要素。  
 
  属性:
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**name**|string|必須。 収集するログを指定するための XPath 式。|  
+

@@ -4,20 +4,20 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: a7a2c921d2bb0f77579c48d0608eb0d195e83ca1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ced83b83c2d64ba5c4816f378c66dae9f4210391
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078924"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874483"
 ---
-# <a name="glossary"></a>用語集
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 
 ## <a name="active-version"></a>アクティブなバージョン
@@ -74,7 +74,7 @@ LUIS のコンテキストでは、**ドメイン**はナレッジの一領域�
 
 ## <a name="endpoint"></a>エンドポイント
 
-[LUIS エンドポイント](https://aka.ms/luis-endpoint-apis) URL は、[LUIS アプリ](#luis-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリとアプリ ID のリージョンが含まれています。 エンドポイントは、お使いのアプリの **[[Keys and endpoints]\(キーとエンドポイント\)](luis-how-to-manage-keys.md)** ページにあります。また、[Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API からエンドポイント URL を取得することもできます。
+[LUIS エンドポイント](https://aka.ms/luis-endpoint-apis) URL は、[LUIS アプリ](#luis-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリとアプリ ID のリージョンが含まれています。 エンドポイントは、お使いのアプリの **[[Keys and endpoints]\(キーとエンドポイント\)](luis-how-to-azure-subscription.md)** ページにあります。また、[Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API からエンドポイント URL を取得することもできます。
 
 たとえば、エンドポイントは次のようになります。
 
@@ -177,7 +177,7 @@ LUIS クォータとは、[Azure サブスクリプション レベル](https://
 
 ## <a name="subscription-key"></a>サブスクリプション キー
 
-サブスクリプション キーは、[ユーザーが Azure で作成した](luis-how-to-azure-subscription.md) LUIS サービスに関連付けられた**エンドポイント** キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS](luis-reference-regions.md) Web サイトの [**[Keys and endpoints]\(キーとエンドポイント\)** ページ](luis-how-to-manage-keys.md)の一番下にあるエンドポイント URL の中で確認できます。 これは、**subscription-key** の名前/値ペアの値です。
+サブスクリプション キーは、[ユーザーが Azure で作成した](luis-how-to-azure-subscription.md) LUIS サービスに関連付けられた**エンドポイント** キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS](luis-reference-regions.md) Web サイトの [**[Keys and endpoints]\(キーとエンドポイント\)** ページ](luis-how-to-azure-subscription.md)の一番下にあるエンドポイント URL の中で確認できます。 これは、**subscription-key** の名前/値ペアの値です。
 
 ## <a name="test"></a>テスト
 

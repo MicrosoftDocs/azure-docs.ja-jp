@@ -7,14 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: 137d8e1c1477d5b9c88cecc39316d62a79a4cab8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873928"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997381"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 DNS ゾーンと DNS レコードは、重要なリソースです。 DNS ゾーンはもちろんのこと、DNS レコードが 1 つ削除されただけで、サービス全体が停止する可能性があります。  そのため、DNS ゾーンと DNS レコードは、承認されていない変更や意図しない変更が加えられないように保護する必要があります。
 
@@ -38,7 +40,7 @@ RBAC アクセス許可の割り当ては、[Azure Portal](../role-based-access-
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../role-based-access-control/role-assignments-cli.md)こともできます。
@@ -62,7 +64,7 @@ Azure RBAC のルールは、サブスクリプション、リソース グル�
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../role-based-access-control/role-assignments-cli.md)こともできます。
@@ -84,7 +86,7 @@ RBAC のレベルにはもう 1 つあります。 Contoso Corporation のメー
 
 ```azurepowershell
 # Grant permissions to a specific record set
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../role-based-access-control/role-assignments-cli.md)こともできます。
@@ -140,7 +142,7 @@ Contoso Corporation が顧客アカウントごとの CNAME レコードをゾ�
 
 ```azurepowershell
 # Create new role definition based on input file
-New-AzureRmRoleDefinition -InputFile <file path>
+New-AzRoleDefinition -InputFile <file path>
 ```
 
 また、Azure CLI を使用して作成することもできます。
@@ -172,7 +174,7 @@ Azure Resource Manager は、RBAC に加えて、別のタイプのセキュリ�
 
 ```azurepowershell
 # Lock a DNS zone
-New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
+New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
 現時点では、Azure CLI では Azure リソース ロックの構成はサポートされていません。
@@ -188,7 +190,7 @@ New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceN
 
 ```azurepowershell
 # Lock a DNS record set
-New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
 ```
 
 ### <a name="protecting-against-zone-deletion"></a>ゾーンの削除に対する保護
@@ -203,7 +205,7 @@ Azure DNS ゾーンを削除すると、ゾーン内のレコード セットも
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 意図せずゾーンが削除されることを防ぐもう 1 つの方法として、カスタム ロールを使用し、ゾーンの管理に使われるオペレーター アカウントとサービス アカウントにゾーンの削除アクセス許可が付与されないようにするという方法があります。 ゾーンの削除が必要な場合は、まずゾーンの削除アクセス許可を付与 (誤ったゾーンを削除しないように、ゾーン スコープでのアクセス許可を付与) し、次にゾーンを削除するという、2 段階の削除操作を強制することができます。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: f231fa7624a2babea2a3d91076ad0348b3c9e976
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540381"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812074"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>チュートリアル:Azure Time Series Insights JavaScript クライアント ライブラリを調べる
 
@@ -147,7 +147,7 @@ TSI Client ライブラリ API は、集計式を頻繁に使用します。 集
    | `splitByObject`   | 分割用に使用する文字列プロパティ (省略可能 – null にすることができます)。 | `{property: 'Station', type: 'String'}` |
    | `color`         | レンダリングするオブジェクトの色。 | `'pink'` |
    | `alias`           | 集計式のフレンドリ名。 | `'Factory3Temperature'` |
-   | `contextMenuActions` | 視覚化時に時系列オブジェクトにバインドするアクションの配列 (省略可能)。 | 詳しくは、「高度な機能」セクションの「[ポップアップ コンテキスト メニュー](#popup-context-menus)」をご覧ください。 |
+   | `contextMenuActions` | 視覚化時に時系列オブジェクトにバインドするアクションの配列 (省略可能)。 | 詳しくは、「高度な機能」セクションの「ポップアップ コンテキスト メニュー」をご覧ください。 |
 
 3. `TsiClient.Server` API を使用して TSI クエリを呼び出し、集計データを要求します。
 
@@ -260,7 +260,7 @@ TSI クライアント ライブラリは、利用する価値がありそうな
 
 ブラシは、ズームや調査などのアクションの定義で、時間範囲を特定するために使用されます。
 
-ブラシを説明するためのコードは、前の「[ポップアップ コンテキスト メニュー](#popup-context-menus-section)」の "Line Chart with Context Menu to Create Pie/Bar Chart" の例に示されています。
+ブラシを説明するためのコードは、前の「ポップアップ コンテキスト メニュー」の「円/棒グラフを作成するためのコンテキスト メニューを含む折れ線グラフ」の例に示されています。
 
 1. ブラシのアクションは、コンテキスト メニューとよく似ており、ブラシに一連のカスタム アクションを定義します。 各アクションには、1 つ以上の要素を含む配列が含まれています。 各要素は、1 つのコンテキスト メニュー項目を定義しています。
    - `name`:メニュー項目 "Print parameters to console" に使用されるテキストです。

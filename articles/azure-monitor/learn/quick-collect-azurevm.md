@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 2c756e9e2944895cc493aa56d1dd20254e5d8ea0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e135c7fa9907d218ed32b6bdb0fd60da0ecf1851
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188510"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084710"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Azure Virtual Machines に関するデータの収集
 [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) は、詳細な分析と相関のために、Azure Virtual Machines およびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  
@@ -36,13 +36,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 2. **[作成]** をクリックし、次の項目について選択します。
 
-  * 新しい **Log Analytics ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
-  * 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
-  * **[リソース グループ]** では、1 つ以上の Azure Virtual Machines を含む既存のリソース グループを選択します。  
-  * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
-  * 2018 年 4 月 2 日より後に作成された新しいサブスクリプションでワークスペースを作成した場合は、自動的に "*1 GB あたり*" の価格プランが使用され、価格レベルを選択するためのオプションは利用できなくなります。  4 月 2 日より前に作成された既存のサブスクリプションのワークスペースを作成している場合、または既存の EA 登録に関連付けられたサブスクリプションに対してワークスペースを作成している場合は、希望の価格レベルを選択します。  特定のレベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
+   * 新しい **Log Analytics ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
+   * 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
+   * **[リソース グループ]** では、1 つ以上の Azure Virtual Machines を含む既存のリソース グループを選択します。  
+   * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
+   * 2018 年 4 月 2 日より後に作成された新しいサブスクリプションでワークスペースを作成した場合は、自動的に "*1 GB あたり*" の価格プランが使用され、価格レベルを選択するためのオプションは利用できなくなります。  4 月 2 日より前に作成された既存のサブスクリプションのワークスペースを作成している場合、または既存の EA 登録に関連付けられたサブスクリプションに対してワークスペースを作成している場合は、希望の価格レベルを選択します。  特定のレベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
   
-        ![Create Log Analytics resource blade](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Log Analytics リソース ブレードの作成](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
 
 3. **[Log Analytics ワークスペース]** ウィンドウで必要な情報を入力したら、**[OK]** をクリックします。  
 

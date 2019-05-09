@@ -3,21 +3,22 @@ title: よくあるご質問 (FAQ) - Azure Active Directory | Microsoft Docs
 description: Azure と Azure Active Directory、パスワード管理、およびアプリケーション アクセスに関する一般的な質問とその回答です。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: a3571ff24c36b7f2129f60348414d4d178ef30d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f602b5f9809e5bbe0b1efb52cfa66877a31a2170
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084095"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183341"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -87,7 +88,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 - - -
 **Q:Azure AD には、所属する組織のユーザーのためのセルフサービス ポータルが用意されていますか?**
 
-**A:** はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](https://myapps.microsoft.com)が用意されています。 Office 365 を利用している方は、これと同じ機能の多くを Office 365 ポータルで使用できます。
+**A:** はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](https://myapps.microsoft.com)が用意されています。 Office 365 を利用している方は、これと同じ機能の多くを [Office 365 ポータル](https://portal.office.com)で使用できます。
 
 詳細については、「[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください。
 

@@ -4,7 +4,7 @@ items:
 - name: 概要
   items:
   - name: Azure Backup とは
-    href: backup-introduction-to-azure-backup.md
+    href: backup-overview.md
 - name: クイック スタート
   items:
   - name: VM のバックアップ - ポータル
@@ -34,16 +34,30 @@ items:
     href: backup-rm-template-samples.md
 - name: 概念
   items:
-  - name: FAQ
+  - name: サポート マトリックス
     items:
-    - name: Recovery Services コンテナーに関する FAQ
+    - name: Azure Backup のサポート マトリックス
+      href: backup-support-matrix.md
+    - name: Azure VM のバックアップに関するサポート マトリックス
+      href: backup-support-matrix-iaas.md
+    - name: DPM/Azure Backup Server (MABS) のサポート マトリックス
+      href: backup-support-matrix-mabs-dpm.md
+    - name: MARS エージェントのサポート マトリックス
+      href: backup-support-matrix-mars-agent.md
+  - name: よく寄せられる質問 (FAQ)
+    items:
+    - name: FAQ - Recovery Services コンテナー
       href: backup-azure-backup-faq.md
-    - name: Azure VM バックアップに関する FAQ
+    - name: FAQ - Azure VM のバックアップ
       href: backup-azure-vm-backup-faq.md
-    - name: Azure Backup エージェントを使用したファイル フォルダー バックアップに関する FAQ
+    - name: FAQ - MARS エージェント
       href: backup-azure-file-folder-backup-faq.md
-    - name: バックアップ コンテナーの自動アップグレードに関する FAQ
-      href: backup-upgrade-backup-vault.md
+    - name: FAQ - Azure Files のバックアップ
+      href: backup-azure-files-faq.md
+    - name: FAQ - Azure VM 上の SQL Server データベースのバックアップ
+      href: faq-backup-sql-server.md
+  - name: Backup のアーキテクチャ
+    href: backup-architecture.md
   - name: ロールベースのアクセス制御
     href: backup-rbac-rs-vault.md
   - name: ハイブリッド バックアップのセキュリティ
@@ -54,6 +68,8 @@ items:
     href: backup-azure-backup-server-import-export-.md
   - name: テープ ライブラリからの移行
     href: backup-azure-backup-cloud-as-tape.md
+  - name: Azure の一般的なセキュリティ属性
+    href: backup-security-attributes.md
 - name: 方法
   items:
   - name: Azure Backup Server
@@ -100,45 +116,39 @@ items:
     items:
     - name: Azure ファイル共有のバックアップ
       href: backup-azure-files.md
-    - name: Azure ファイル共有のバックアップに関する FAQ
-      href: backup-azure-files-faq.md
-  - name: Azure VM
+  - name: Azure VM のバックアップ
     items:
-    - name: VM を準備する
+    - name: Azure VM バックアップについて
+      href: backup-azure-vms-introduction.md
+    - name: Azure Backup のインスタント リストアを使用して Azure VM をバックアップおよび復元する
+      href: backup-instant-restore-capability.md
+    - name: Azure VM のバックアップ
       items:
-      - name: Resource Manager でデプロイされた VM の準備
-        href: backup-azure-arm-vms-prepare.md
-      - name: Linux VM のアプリケーション整合性バックアップ
-        href: backup-azure-linux-app-consistent.md
-    - name: 環境を計画する
-      items:
-      - name: VM のバックアップ インフラストラクチャの計画
-        href: backup-azure-vms-introduction.md
-    - name: VM をバックアップする
-      items:
-      - name: Recovery Services コンテナーへの Azure VM のバックアップ
-        href: backup-azure-vms-first-look-arm.md
-      - name: 暗号化された VM のバックアップ
-        href: backup-azure-vms-encryption.md
-      - name: VM 作成中の VM バックアップの有効化
+      - name: Azure VM の作成時にバックアップを有効にする
         href: backup-during-vm-creation.md
-      - name: VM バックアップ スタック V2 へのアップグレード
-        href: backup-upgrade-to-vm-backup-stack-v2.md
-    - name: VM の管理と監視
+      - name: VM 設定から Azure VM をバックアップする
+        href: backup-azure-vms-first-look-arm.md
+      - name: コンテナーを設定して Azure VM のバックアップを有効にする
+        href: backup-azure-arm-vms-prepare.md
+      - name: 暗号化された Azure VM をバックアップする
+        href: backup-azure-vms-encryption.md
+      - name: Linux を実行中の Azure VM のアプリ整合性バックアップを構成する
+        href: backup-azure-linux-app-consistent.md
+    - name: Azure VM のバックアップを管理および監視する
       items:
-      - name: Azure Portal での Azure VM のバックアップの管理
+      - name: Azure VM のバックアップを管理する
         href: backup-azure-manage-vms.md
       - name: Azure VM のバックアップに関するアラートの監視
         href: backup-azure-monitor-vms.md
-    - name: VM からのデータの復元
+    - name: Azure VM の復元
       items:
+      - name: ポータルで Azure VM を復元する
+        href: backup-azure-arm-restore-vms.md
       - name: Azure VM のバックアップからのファイルの回復
         href: backup-azure-restore-files-from-vm.md
-      - name: Azure Portal での VM の復元
-        href: backup-azure-arm-restore-vms.md
       - name: 暗号化された VM の復元
         href: backup-azure-vms-encryption.md
-      - name: 暗号化された VM の Key Vault のキーとシークレットの復元
+      - name: 暗号化された VM の Key Vault のキーとシークレットを復元する
         href: backup-azure-restore-key-secret.md
   - name: Azure Backup のレポートを構成する
     items:
@@ -152,7 +162,7 @@ items:
       href: backup-azure-central-reporting-updates.md
   - name: Data Protection Manager
     items:
-    - name: Azure Portal での DPM ワークロードの準備
+    - name: Azure portal での DPM ワークロードの準備
       href: backup-azure-dpm-introduction.md
     - name: DPM を使った Exchange Server のバックアップ
       href: backup-azure-backup-exchange-server.md
@@ -164,14 +174,16 @@ items:
       href: backup-azure-backup-sharepoint.md
   - name: Azure PowerShell の使用
     items:
-    - name: Azure Portal での Azure VM
+    - name: Azure portal での Azure VM
       href: backup-azure-vms-automation.md
-    - name: Azure Portal での DPM
+    - name: Azure portal での DPM
       href: backup-dpm-automation.md
-    - name: Azure Portal での Windows Server
+    - name: Azure portal での Windows Server
       href: backup-client-automation.md
     - name: Azure portal での Azure ファイル共有
       href: backup-azure-afs-automation.md
+    - name: Azure VM バックアップ内の SQL
+      href: backup-azure-sql-automation.md
   - name: Azure Backup REST API の使用
     items:
     - name: Recovery Services コンテナーの作成
@@ -184,10 +196,16 @@ items:
       href: backup-azure-arm-userestapi-restoreazurevms.md
     - name: Azure Backup ジョブの管理
       href: backup-azure-arm-userestapi-managejobs.md
-  - name: Azure VM での SQL
+  - name: Azure VM 上の SQL Server データベースのバックアップ
     items:
-    - name: Azure での SQL データベースのバックアップ
+    - name: Azure VM での SQL Server Backup について
       href: backup-azure-sql-database.md
+    - name: Azure VM での SQL Server データベースのバックアップ
+      href: backup-sql-server-database-azure-vms.md
+    - name: Azure VM での SQL Server データベースの復元
+      href: restore-sql-database-azure-vm.md
+    - name: バックアップした SQL Server データベースの管理
+      href: manage-monitor-sql-database-backup.md
   - name: Windows Server
     items:
     - name: Windows Server のファイルとフォルダーのバックアップ
@@ -206,10 +224,10 @@ items:
       href: backup-azure-recovery-services-vault-overview.md
     - name: Backup コンテナーを Recovery Services コンテナーにアップグレードする
       href: backup-azure-upgrade-backup-to-recovery-services.md
-    - name: Recovery Services コンテナーを移動する
-      href: backup-azure-move-recovery-services-vault.md
     - name: Recovery Services コンテナーを削除する
       href: backup-azure-delete-vault.md
+    - name: Recovery Services コンテナーを移動する
+      href: backup-azure-move-recovery-services-vault.md
   - name: トラブルシューティング
     items:
     - name: Azure VM
@@ -228,6 +246,12 @@ items:
       href: troubleshoot-azure-files.md
     - name: SQL Server
       href: backup-sql-server-azure-troubleshoot.md
+  - name: Azure Backup ワークロードの監視
+    items:
+    - name: Azure ポータルの使用
+      href: backup-azure-monitoring-built-in-monitor.md
+    - name: Azure Monitor の使用
+      href: backup-azure-monitoring-use-azuremonitor.md
 - name: リファレンス
   items:
   - name: .NET
@@ -235,11 +259,13 @@ items:
   - name: Azure CLI
     href: /cli/azure/backup?view=azure-cli-latest
   - name: PowerShell
-    href: /powershell/module/azurerm.recoveryservices.backup
+    href: /powershell/module/az.recoveryservices
   - name: REST - Backup
     href: /rest/api/backup/
   - name: REST - Recovery Services コンテナー
     href: /rest/api/recoveryservices/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.recoveryservices/allversions
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -254,9 +280,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: dfa3bca01fc237aa62cc893e707aa08b9055dd7d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9fa6548951ca06a8568a00bbafe5c24518923ab
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104814"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681082"

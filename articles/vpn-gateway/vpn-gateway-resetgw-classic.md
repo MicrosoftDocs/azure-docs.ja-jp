@@ -2,25 +2,17 @@
 title: IPsec トンネルを再確立するための Azure VPN Gateway のリセット | Microsoft Docs
 description: この記事では、Azure VPN Gateway をリセットして IPsec トンネルを再確立する方法を紹介します。 この記事は、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方の VPN ゲートウェイに適用されます。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
+ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: d23ed383bee3346cfbb20c6935dd3630e137c179
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573905"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118801"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway のリセット
 
@@ -55,18 +47,20 @@ Azure Portal を使用して Resource Manager VPN Gateway をリセットでき�
 1. [Azure Portal](https://portal.azure.com) を開いて、リセットする Resource Manager 仮想ネットワーク ゲートウェイに移動します。
 2. 仮想ネットワーク ゲートウェイのブレードで、[リセット] をクリックします。
 
-  ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+   ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. [リセット] ブレードで、**[リセット]** ボタンをクリックします。
 
 ## <a name="ps"></a>PowerShell
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager デプロイ モデル
 
-ゲートウェイをリセットするためのコマンドレットは **Reset-AzureRmVirtualNetworkGateway** です。 リセットを実行する前に [Resource Manager PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)の最新版があることを確認します。 次の例では、TestRG1 リソース グループの VNet1GW という名前の仮想ネットワーク ゲートウェイをリセットします。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+ゲートウェイをリセットするコマンドレットは **Reset-AzVirtualNetworkGateway** です。 リセットを実行する前に [PowerShell Az コマンドレット](https://docs.microsoft.com/powershell/module/az.network)の最新バージョンがあることを確認します。 次の例では、TestRG1 リソース グループの VNet1GW という名前の仮想ネットワーク ゲートウェイをリセットします。
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
-Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
+$gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
+Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
 結果:
@@ -94,7 +88,7 @@ StatusCode     : OK
 
 ## <a name="cli"></a>Azure CLI
 
-ゲートウェイをリセットするには [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway#az_network_vnet_gateway_reset) コマンドを使用します。 次の例では、TestRG5 リソース グループの VNet5GW という名前の仮想ネットワーク ゲートウェイをリセットします。
+ゲートウェイをリセットするには [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway) コマンドを使用します。 次の例では、TestRG5 リソース グループの VNet5GW という名前の仮想ネットワーク ゲートウェイをリセットします。
 
 ```azurecli
 az network vnet-gateway reset -n VNet5GW -g TestRG5

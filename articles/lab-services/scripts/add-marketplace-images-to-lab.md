@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: a3a007bf19a28e6f361837856f83a191a761ef9b
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: e099a29a198d43bf8d00487ab45e2648479aedbe
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247416"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194779"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>PowerShell を使用して、Azure DevTest Labs でラボにマーケットプレース イメージを追加します。
 
 このサンプル PowerShell スクリプトは、Azure DevTest Labs でラボにマーケットプレース イメージを追加します。 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -36,12 +38,12 @@ ms.locfileid: "43247416"
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | 指定したパラメーターに基づいて、リソースを検索します。 |
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | リソースを取得します。 |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | リソースを変更します。 |
-| [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | リソースを作成します。 |
+| Find-AzResource | 指定したパラメーターに基づいて、リソースを検索します。 |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | リソースを取得します。 |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | リソースを変更します。 |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
 
 ## <a name="next-steps"></a>次の手順
 

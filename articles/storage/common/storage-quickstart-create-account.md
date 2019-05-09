@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 5086c0758e7c535b65c877917dc790dafa46f763
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.subservice: common
+ms.openlocfilehash: ebe23c606d95baa6c79c668fc929177c8bc37e44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994724"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862949"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -55,6 +55,10 @@ Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash �
 
 Azure CLI はローカルにインストールして使用することもできます。 このクイックスタートでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
+# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+
+なし。
+
 ---
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
@@ -80,6 +84,10 @@ CLI のローカル インストールにログインするには、ログイン
 ```cli
 az login
 ```
+
+# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+
+該当なし
 
 ---
 
@@ -170,6 +178,33 @@ az storage account create \
 |geo 冗長ストレージ (GRS)     |Standard_GRS         |
 |読み取りアクセス geo 冗長ストレージ (GRS)     |Standard_RAGRS         |
 
+# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+
+Azure PowerShell または Azure CLI を使用して Resource Manager テンプレートをデプロイし、ストレージ アカウントを作成できます。 このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-storage-account-create/)からのものです。 スクリプトを実行するには、**[使ってみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、**[貼り付け]** を選択します。
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the location (i.e. centralus):" &&
+read location &&
+az group create --name $resourceGroupName --location "$location" &&
+az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+テンプレートを作成する方法を学習するには、以下をご覧ください。
+
+- [Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)。
+- [ストレージ アカウント テンプレート リファレンス](/azure/templates/microsoft.storage/allversions)。
+- [その他のストレージ アカウント テンプレート サンプル](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)。
+
 ---
 
 利用可能なレプリケーション オプションの詳細については、[ストレージのレプリケーション オプション](storage-redundancy.md)に関するページを参照してください。
@@ -202,6 +237,21 @@ Remove-AzResourceGroup -Name $resourceGroup
 az group delete --name storage-quickstart-resource-group
 ```
 
+# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+
+リソース グループとそれに関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、Azure PowerShell または Azure CLI を使用します。
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName
+```
+
 ---
 
 ## <a name="next-steps"></a>次の手順
@@ -222,5 +272,10 @@ az group delete --name storage-quickstart-resource-group
 
 > [!div class="nextstepaction"]
 > [Azure CLI を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-cli.md)
+
+# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+
+> [!div class="nextstepaction"]
+> [Azure portal を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-portal.md)
 
 ---

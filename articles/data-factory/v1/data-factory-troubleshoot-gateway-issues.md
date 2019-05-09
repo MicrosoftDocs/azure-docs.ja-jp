@@ -8,17 +8,16 @@ ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9453099af8d9be21a97808733ffa8f8bfe5a364a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047566"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119345"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -139,7 +138,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 このエラーは、インターネット リソースにアクセスするために HTTP プロキシを必要とする環境にゲートウェイが配置されている場合や、プロキシの認証パスワードが変更されているにもかかわらずゲートウェイでその情報が更新されていない場合に発生します。
 
 #### <a name="resolution"></a>解決策
-この記事の[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)セクションの手順に従い、Data Management Gateway Configuration Manager でプロキシ設定を構成します。
+この記事のプロキシ サーバーに関する考慮事項セクションの手順に従い、Data Management Gateway Configuration Manager でプロキシ設定を構成します。
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>ゲートウェイはオンラインだが機能が制限されている
 ### <a name="1-problem"></a>1.問題点
@@ -169,9 +168,9 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 #### <a name="resolution"></a>解決策
 次の手順に従って、ゲートウェイをオンラインに戻します。
 
-1. ゲートウェイ コンピューターと会社のファイアウォールで IP アドレスの送信規則を許可します。 IP アドレスは、Windows イベント ログで調べることができます (ID = 401): アクセス許可 XX.XX.XX.XX:9350 で禁止されている方法でソケットにアクセスしようとしました。
-* ゲートウェイのプロキシ設定を構成します。 詳細については、「[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)」のセクションを参照してください。
-* ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、「[ポートとファイアウォール](#ports-and-firewall)」のセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
+1. ゲートウェイ コンピューターと会社のファイアウォールで IP アドレスの送信規則を許可します。 Windows イベント ログ (ID == 401) の"An attempt was made to access a socket in a way forbidden by its access permissions XX.XX.XX.XX:9350 (アクセス許可 XX.XX.XX.XX:9350 によって禁止されている方法でソケットへのアクセスが試みられました)" というメッセージから、IP アドレスを検出できます。
+1. ゲートウェイのプロキシ設定を構成します。 詳細については、プロキシ サーバーに関する考慮事項セクションを参照してください。
+1. ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、ポートとファイアウォールのセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
 
 ### <a name="3-problem"></a>手順 3.問題点
 次のエラーが表示されます。
@@ -185,7 +184,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 次の手順に従って、ゲートウェイをオンラインに戻します。
 
 1. 数分待ちます。エラーが解決すると、接続が自動的に回復します。
-* エラーが解決しない場合は、ゲートウェイ サービスを再起動してください。
+1. エラーが解決しない場合は、ゲートウェイ サービスを再起動してください。
 
 ## <a name="failed-to-author-linked-service"></a>リンクされたサービスを作成できない
 ### <a name="problem"></a>問題点
@@ -283,6 +282,6 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
 1. Windows **イベント ビューアー**を起動します。
 2. **[アプリケーションとサービス ログ]** > **[Data Management Gateway]** フォルダーでログを見つけます。
 
- ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べます。
+   ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べます。
 
 ![Data Management Gateway - イベント ビューアーに表示されたログ](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

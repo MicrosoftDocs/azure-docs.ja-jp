@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: aad5b2d2e451f33a3f4f365fa0702eef5d698e4e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c27244af6da01163fa9ab554b6b9c1d9c99bab23
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104575"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>StorSimple 5000-7000 シリーズのデータを Azure File Sync に移行する
 
@@ -57,7 +57,7 @@ AFS への移行中は、次の点を考慮する必要があります。
 - ローカルにキャッシュされたご自身のデータを保持できるだけのローカル ストレージがホストにある。
 - Azure File Sync のデプロイに使用する Azure サブスクリプションへの所有者レベルのアクセス。所有者または管理者レベルのアクセス許可がない場合、ご自身の同期グループに対してクラウド エンドポイントを作成すると、問題が発生する可能性があります。
 - 同期対象の Azure ファイル共有を持つ [General Purpose v2 ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-overview)へのアクセス。 詳しくは、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)」をご覧ください。
- - [Azure ファイル共有を作成](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share#create-file-share-through-the-azure-portal)する方法。
+  - [Azure ファイル共有を作成](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)する方法。
 
 ## <a name="migration-process"></a>移行プロセス
 
@@ -87,7 +87,7 @@ StorSimple ボリュームで構成された Windows ファイル共有を Azure
     別の Windows Server ホストを使用している場合は、この手順をスキップして、次の手順に進みます。 AFS に同じ Windows ファイル サーバーを使用している場合は、ここで数分間のダウンタイムが発生します。 
     - **ダウンタイム開始** - "*手順 1F.*" で作成したサーバー エンドポイントを削除します。 
     - 今後データを配置するパスで新しいサーバー エンドポイントを作成します。
-    - サーバー エンドポイントが正常として表示されたら (数分かかる場合があります)、データはこの新しい場所に表示されます。 これで、この新しい場所からファイルを提供するように Windows Server ホストを構成できます。 - **ダウンタイム終了**。
+    - サーバー エンドポイントが正常として表示されたら (数分かかる場合があります)、データはこの新しい場所に表示されます。 これで、この新しい場所からファイルを提供するように Windows Server ホストを構成できます。 -**ダウンタイム終了**。
 5.  Azure File Sync に別の Windows ファイル サーバーを使用している場合、ダウンタイムは発生しません。 
     - StorSimple デバイスの代わりにキャッシュとして使用する準備ができているローカル ストレージのパスで別のサーバー エンドポイントを追加します。 
     - 数分後、新しいサーバーでファイルを確認できます。 お使いの StorSimple デバイスからホスト上のこの新しい場所に、いつでも自由に切り替えることができます。

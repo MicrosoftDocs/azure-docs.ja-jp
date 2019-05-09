@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 7c5030a80ead7e84526e01aa3a8a4a75ee2b276a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079999"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
 
@@ -162,14 +162,14 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
    ![新しいイベント サブスクリプションを作成する](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. 次の値でイベント サブスクリプションを作成します。 
-    * **[イベントの種類]**:[すべてのイベントの種類を購読します] をオフにして、メニューから **[デバイスの作成完了]** を選択します。
-    * **[エンドポイントの詳細]**:[エンドポイントのタイプ] として **[Web Hook]** を選択し、[エンドポイントの選択] をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
+   * **[イベントの種類]**:[すべてのイベントの種類を購読します] をオフにして、メニューから **[デバイスの作成完了]** を選択します。
+   * **[エンドポイントの詳細]**:[エンドポイントのタイプ] として **[Web Hook]** を選択し、[エンドポイントの選択] をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
 
-    ![エンドポイントの URL を選択する](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
+     ![エンドポイントの URL を選択する](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-    * **[イベント サブスクリプションの詳細]**:わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します
+   * **[イベント サブスクリプションの詳細]**:わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します
 
-  終了すると、フォームは次の例のようになります。 
+   終了すると、フォームは次の例のようになります。 
 
     ![サンプルのイベント サブスクリプション フォーム](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
@@ -177,8 +177,8 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 6. 次のフィルターを作成します。
 
-  * **次で始まるサブジェクト**:ビル 1 でのデバイス イベントでフィルター処理するため、「`devices/Building1_`」と入力します。
-  * **次で終わるサブジェクト**:温度に関するデバイス イベントでフィルター処理するため、「`_Temperature`」と入力します。
+   * **次で始まるサブジェクト**:ビル 1 でのデバイス イベントでフィルター処理するため、「`devices/Building1_`」と入力します。
+   * **次で終わるサブジェクト**:温度に関するデバイス イベントでフィルター処理するため、「`_Temperature`」と入力します。
 
 5. **[作成]** を選び、イベント サブスクリプションを保存します。
 

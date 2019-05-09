@@ -1,6 +1,6 @@
 ---
-title: Azure の予約における Windows ソフトウェアのコスト | Microsoft Docs
-description: Azure 予約 VM インスタンスのコストに含まれない Windows ソフトウェア メーターについて説明します。
+title: Azure の予約ソフトウェアのコスト | Microsoft Docs
+description: Azure Reserved VM Instance のコストに含まれないソフトウェアのメーターについて説明します。
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2018
-ms.author: cwatson
-ms.openlocfilehash: 6ec1d0e1b8a768dd61a42c8e9284a93aee3c9337
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/30/2019
+ms.author: banders
+ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392536"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58918724"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれない Windows ソフトウェアのコスト
+# <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれないソフトウェアのコスト
 
-予約仮想マシン インスタンスに Azure ハイブリッド使用特典がない場合、以下のセクションに記載されている Windows ソフトウェアの測定に関して料金が発生します。
+ご使用の予約仮想マシン インスタンスに Azure ハイブリッド特典がない場合、以下のセクションに記載されているソフトウェアのメーターに関して料金が発生します。
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>予約のコストに含まれない Windows ソフトウェアの測定
 
@@ -50,7 +50,23 @@ ms.locfileid: "47392536"
 | 904c5c71-1eb7-43a6-961c-d305a9681624 | 占有 - Windows Svr (256 コア) | B シリーズを除くすべて |
 | 6fdab81b-4284-4df9-8939-c237cc7462fe | 占有 - Windows Svr (96 コア) | B シリーズを除くすべて |
 
-これらのメーターごとのコストは、Azure RateCard API を使用して取得できます。 Azure メーターの料金を取得する方法については、「[Get price and metadata information for resources used in an Azure subscription (Azure サブスクリプションで使用されるリソースの料金とメタデータ情報を取得する)](https://msdn.microsoft.com/library/azure/mt219004)」を参照してください。
+## <a name="cloud-services-software-meters-not-included-in-reservation-cost"></a>予約のコストに含まれないクラウド サービス ソフトウェアのメーター
+
+| MeterId | 使用状況ファイルにおける MeterName |
+| ------- | ------------------------|
+|ac9d47ff-ff68-4afc-a145-0c321cf8d0d5|Cloud Services 1 vCPU ライセンス|
+|e0434559-19ee-4132-9c46-05ad4044f3f7|Cloud Services 2 vCPU ライセンス|
+|6ecc834e-39b3-48b3-8d10-cc5626bacb66|Cloud Services 4 vCPU ライセンス|
+|13103090-ca72-4825-ab12-7f16c4931d95|Cloud Services 8 vCPU ライセンス|
+|ecd2bb6e-45a5-49aa-a58b-3947ba21c364|Cloud Services 16 vCPU ライセンス|
+|de2c7f1d-06dc-4b16-bc8b-c2ec5f4c8aee|Cloud Services 20 vCPU ライセンス|
+|ca1af837-4b35-47f5-8d14-b1988149c4ca|Cloud Services 32 vCPU ライセンス|
+|dc72ee45-2ab7-4698-b435-e2cf10d1f9f6|Cloud Services 64 vCPU ライセンス|
+|7a803026-244c-4659-834c-11e6b2d6b76f|Cloud Services 80 vCPU ライセンス|
+
+## <a name="rates-for-azure-meters"></a>Azure メーターの料金
+
+これらのメーターごとのコストは、Azure RateCard API を使用して取得できます。 Azure メーターの料金を取得する方法については、「[Get price and metadata information for resources used in an Azure subscription (Azure サブスクリプションで使用されるリソースの料金とメタデータ情報を取得する)](/previous-versions/azure/reference/mt219004(v=azure.100))」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure の予約の詳細については、次の記事を参照してください。
@@ -62,9 +78,6 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-
-
-
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

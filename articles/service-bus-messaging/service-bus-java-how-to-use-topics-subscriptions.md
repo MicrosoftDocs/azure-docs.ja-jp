@@ -3,90 +3,39 @@ title: Java で Azure Service Bus トピックを使用する方法 | Microsoft 
 description: Azure で Service Bus のトピックとサブスクリプションを使用する方法を説明します。
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
 ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 09/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 501d15ebbb373c100dd735e97bebf2f085a9579e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 04/15/2019
+ms.author: aschhab
+ms.openlocfilehash: 0771656358503afc91bab7523d0c835e0050c2bc
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241320"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607877"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Java で Service Bus のトピックとサブスクリプションを使用する方法
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-このクイック スタートでは、以下の手順を実行します。 
-
-- Azure portal を使用してトピックを作成する
-- Azure portal を使用してトピック用に 3 つのサブスクリプションを作成する
-- トピックにメッセージを送信する Java コードを書く
-- サブスクリプションからメッセージを受信する Java コードを書く
+このクイック スタートでは、Service Bus トピックにメッセージを送信し、サブスクリプションからそのトピックにメッセージを受信する Java コードを記述します。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free)してください。
-- [Azure SDK for Java][Azure SDK for Java]。 
-
-## <a name="what-are-service-bus-topics-and-subscriptions"></a>Service Bus トピックとサブスクリプションとは
-Service Bus のトピックとサブスクリプションは、メッセージ通信の *発行/サブスクライブ* モデルをサポートします。 トピックとサブスクリプションを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者の役割を果たすトピックを介してメッセージをやり取りすることになります。
-
-![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
-
-各メッセージが 1 つのコンシューマーによって処理される Service Bus キューとは異なり、トピックとサブスクリプションは、発行/サブスクライブ パターンを使用して "1 対多" 形式の通信を行います。 複数のサブスクリプションを 1 つのトピックに登録できます。 トピックに送信されたメッセージはサブスクリプションに渡され、各サブスクリプションで独立して処理できます。 トピックにとってのサブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。 トピックに対するフィルター ルールをサブスクリプション単位で登録することもできます。この場合、トピックに送信されるどのメッセージをどのトピック サブスクリプションで受信するかのフィルター処理や制限が可能になります。
-
-Service Bus のトピックとサブスクリプションを使用すると、多数のユーザーとアプリケーションの間でやり取りされる膨大な数のメッセージを処理することもできます。
-
-## <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
-
-Service Bus のメッセージング名前空間は一意のスコープ コンテナーを提供します。このコンテナーは、1 つ以上のキュー、トピック、サブスクリプションを作成する[完全修飾ドメイン名](https://wikipedia.org/wiki/Fully_qualified_domain_name)によって参照されます。 次の例では、新規または既存の[リソース グループ](/azure/azure-resource-manager/resource-group-portal)に Service Bus メッセージング名前空間を作成します。
-
-1. ポータルの左側のナビゲーション ウィンドウで、**[+ リソースの作成]** をクリックし、**[Enterprise Integration]**、**[Service Bus]** の順にクリックします。
-2. **[名前空間の作成]** ダイアログで、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
-3. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Standard または Premium) を選択します。
-4. **[サブスクリプション]** フィールドで、名前空間を作成する Azure サブスクリプションを選択します。
-5. **[リソース グループ]** フィールドで、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。      
-6. **[場所]** で、名前空間をホストする国またはリージョンを選択します。
-7. **Create** をクリックしてください。 これで、システムによってサービス名前空間が作成され、有効になります。 システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
-
-  ![namespace](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>管理資格情報の取得
-
-新しい名前空間を作成すると、Shared Access Signature (SAS) の初期規則が自動的に生成され、あらゆる角度から名前空間を完全に制御することを可能にするプライマリ キーとセカンダリ キーのペアが関連付けられます。 初期規則をコピーするには、次の手順を実行します。
-
-1. **[すべてのリソース]** で、新しく作成した名前空間の名前をクリックします。
-2. 名前空間ウィンドウで、**[共有アクセス ポリシー]** をクリックします。
-3. **[共有アクセス ポリシー]** 画面で、**[RootManageSharedAccessKey]** をクリックします。
-4. **[ポリシー: RootManageSharedAccessKey]** ウィンドウで、**[プライマリ接続文字列]** の横にある **[コピー]** ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
-
-    ![connection-string](./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png)
-5. 前の手順を繰り返し、**[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。
-
-## <a name="create-a-topic"></a>トピックを作成する 
-Service Bus トピックを作成するには、作成する名前空間を指定します。 次の例は、ポータルでトピックを作成する方法を示しています。
-
-1. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は **[すべてのサービス]** をクリックします)。
-2. トピックを作成する名前空間をクリックします。
-3. 名前空間ウィンドウで **[トピック]** をクリックし、**[トピック]** ウィンドウで **[+ トピック]** をクリックします。
-4. トピックの**名前**に「**BasicTopic**」と入力し、他の値は既定値のままにします。
-5. ウィンドウの下部にある **[作成]** をクリックします。
-
-
-## <a name="create-subscriptions-for-the-topic"></a>トピックのサブスクリプションを作成する
-1. 作成した**トピック**を選択します。
-2. **[+ サブスクリプション]** をクリックし、サブスクリプション名に「**Subscription1**」と入力して、他のすべての値は既定値のままにします。
-3. 前の手順をさらに 2 回繰り返して、「**Subscription2**」および「**Subscription3**」というサブスクリプションを作成します。
-
+1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+2. 「[Quickstart:Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md)」(クイック スタート: Azure portal を使用して Service Bus トピックとその中に含まれるサブスクリプションを作成する) の手順に従って、次のタスクを実行します:
+    1. Service Bus **名前空間**を作成します。
+    2. **接続文字列**を取得します。
+    3. 名前空間の**トピック**を作成します。
+    4. 名前空間のトピックへの**サブスクリプションを 3 つ**作成します。
+3. [Azure SDK for Java][Azure SDK for Java]。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 このサンプルを作成する前に、[Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
@@ -509,7 +458,7 @@ Message sending: Id = 9
 ## <a name="next-steps"></a>次の手順
 詳細については、「[Service Bus のキュー、トピック、サブスクリプション][Service Bus queues, topics, and subscriptions]」を参照してください。
 
-[Azure SDK for Java]: http://azure.microsoft.com/develop/java/
+[Azure SDK for Java]: https://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter

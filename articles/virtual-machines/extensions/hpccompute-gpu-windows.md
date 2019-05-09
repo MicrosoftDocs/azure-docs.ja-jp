@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/5/2018
+ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 2a29cae6e7f391dfee75e89ea91525268db3fa62
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971965"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619927"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 
@@ -35,9 +35,9 @@ NVIDIA GPU ドライバーを [Linux の N シリーズ VM](hpccompute-gpu-linux
 
 この拡張機能は､次の OS に対応しています｡
 
-| ディストリビューション | Version |
+| ディストリビューション | バージョン |
 |---|---|
-| Windows 10 | コア |
+| Windows 10 (バージョン 1803 まで)| コア |
 | Windows Server 2016 | コア |
 | Windows Server 2012R2 | コア |
 
@@ -71,11 +71,11 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 
 ### <a name="properties"></a>Properties
 
-| Name | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverWindows | string |
+| publisher | Microsoft.HpcCompute | 文字列 |
+| type | NvidiaGpuDriverWindows | 文字列 |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -112,7 +112,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Set-AzureRmVMExtension
+Set-AzVMExtension
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Location "southcentralus" `
@@ -144,7 +144,7 @@ az vm extension set `
 拡張機能のデプロイ状態に関するデータは、Azure portal から取得することも、Azure PowerShell、Azure CLI を使用して取得することもできます。 特定の VM の拡張機能のデプロイ状態を確認するには、次のコマンドを実行します。
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 ```azurecli

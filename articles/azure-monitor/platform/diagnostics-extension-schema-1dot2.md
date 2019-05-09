@@ -1,5 +1,5 @@
 ---
-title: Azure 診断拡張機能 1.2 の構成スキーマ
+title: Azure Diagnostics 拡張機能 1.2 の構成スキーマ
 description: この記事は、Azure SDK 2.5 を Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、または Cloud Services と共に使用している場合にのみ該当します。
 services: azure-monitor
 author: rboucher
@@ -8,31 +8,31 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 322cd75fe9198bae459e7c22bed794f583d13363
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325611"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59496490"
 ---
-# <a name="azure-diagnostics-12-configuration-schema"></a>Azure 診断 1.2 構成スキーマ
+# <a name="azure-diagnostics-12-configuration-schema"></a>Azure Diagnostics 1.2 構成スキーマ
 > [!NOTE]
-> Azure 診断は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
+> Azure Diagnostics は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 >
 
-Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
+Azure Diagnostics は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
 
 このスキーマは、診断モニターの開始時に、診断構成設定を初期化するために使用できる値を定義します。  
 
 
  次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。  
 
-```PowerShell  
+```powershell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
- Azure の診断の詳細については、[Azure Cloud Services での診断の有効化](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/)に関するページをご覧ください。  
+ Azure Diagnostics の詳細については、[Azure Cloud Services での診断の有効化](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/)に関するページをご覧ください。  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>診断構成ファイルの例  
  一般的な診断構成ファイルの例を次に示します。  
@@ -100,29 +100,29 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |------------------|-----------------|  
 |**WadCfg**|必須。 収集するテレメトリ データの構成設定。|  
 |**StorageAccount**|データを格納する Azure ストレージ アカウントの名前。 Set-AzureServiceDiagnosticsExtension コマンドレットを実行するときに、パラメーターとして指定することもできます。|  
-|**LocalResourceDirectory**|監視エージェントがイベント データの格納に使用する仮想マシンのディレクトリ。 設定しない場合は、既定のディレクトリが使用されます。<br /><br /> worker/Web ロールの場合: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 仮想マシンの場合: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必須属性は次のとおりです。<br /><br /> -                      **path** - Azure 診断で使用するシステム上のディレクトリ。<br /><br /> -                      **expandEnvironment** - 環境変数をパス名で展開するかどうかを制御します。|  
+|**LocalResourceDirectory**|監視エージェントがイベント データの格納に使用する仮想マシンのディレクトリ。 設定しない場合は、既定のディレクトリが使用されます。<br /><br /> worker/Web ロールの場合: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 仮想マシンの場合: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必須属性は次のとおりです。<br /><br /> -                      **path** - Azure Diagnostics で使用するシステム上のディレクトリ。<br /><br /> -                      **expandEnvironment** - 環境変数をパス名で展開するかどうかを制御します。|  
 
 ## <a name="wadcfg-element"></a>WadCFG 要素  
 収集するテレメトリ データの構成設定を定義します。 次の表で、子要素について説明します。  
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**DiagnosticMonitorConfiguration**|必須。 オプションの属性は次のとおりです。<br /><br /> -                     **overallQuotaInMB** - Azure 診断によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 5120 MB です。<br /><br /> -                     **useProxyServer** - IE 設定で設定したプロキシ サーバー設定を使用するように Azure 診断を構成します。|  
-|**CrashDumps**|クラッシュ ダンプの収集を有効にします。 オプションの属性は次のとおりです。<br /><br /> -                     **containerName** - クラッシュ ダンプの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。<br /><br /> -                     **crashDumpType** - 小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように Azure 診断を構成します。<br /><br /> -                     **directoryQuotaPercentage** - VM でクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
-|**DiagnosticInfrastructureLogs**|Azure 診断によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
-|**Directories**|ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**DiagnosticMonitorConfiguration**|必須。 オプションの属性は次のとおりです。<br /><br /> -                     **overallQuotaInMB** - Azure Diagnostics によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 5120 MB です。<br /><br /> -                     **useProxyServer** - Azure Diagnostics を、IE 設定で設定されたプロキシ サーバー設定を使用するように構成します。|  
+|**CrashDumps**|クラッシュ ダンプの収集を有効にします。 オプションの属性は次のとおりです。<br /><br /> -                     **containerName** - クラッシュ ダンプの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。<br /><br /> -                     **crashDumpType** - 小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように Azure Diagnostics を構成します。<br /><br /> -                     **directoryQuotaPercentage** - VM でクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
+|**DiagnosticInfrastructureLogs**|Azure Diagnostics によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**Directories**|ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 |**EtwProviders**|EventSource や ETW マニフェスト ベースのプロバイダーからの ETW イベントの収集を構成します。|  
-|**メトリック**|この要素により、高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。 必須属性: <br /><br /> **resourceId** - これは、Azure 診断のデプロイ先とする仮想マシンのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。|  
-|**PerformanceCounters**|パフォーマンス カウンターの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
-|**WindowsEventLog**|Windows イベント ログの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**メトリック**|この要素により、高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。 必須属性: <br /><br /> **resourceId** - これは、Azure Diagnostics のデプロイ先とする仮想マシンのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。|  
+|**PerformanceCounters**|パフォーマンス カウンターの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**WindowsEventLog**|Windows イベント ログの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 
 ## <a name="crashdumps-element"></a>CrashDumps 要素  
  クラッシュ ダンプの収集を有効にします。 次の表で、子要素について説明します。  
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**CrashDumpConfiguration**|必須。 必須属性: <br /><br /> **processName** - Azure 診断でクラッシュ ダンプを収集するプロセスの名前。|  
-|**crashDumpType**|Azure 診断を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
+|**CrashDumpConfiguration**|必須。 必須属性: <br /><br /> **processName** - Azure Diagnostics でクラッシュ ダンプを収集するプロセスの名前。|  
+|**crashDumpType**|Azure Diagnostics を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
 |**directoryQuotaPercentage**|VM でのクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
 
 ## <a name="directories-element"></a>Directories 要素  
@@ -154,8 +154,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性: <br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
-|**EtwManifestProviderConfiguration**|必須属性: <br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性: <br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**EtwManifestProviderConfiguration**|必須属性: <br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 要素  
  [EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 次の表で、子要素について説明します。  
@@ -178,7 +178,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**MetricAggregation**|必須属性: <br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**MetricAggregation**|必須属性: <br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 要素  
  パフォーマンス カウンターの収集を有効にします。 次の表で、子要素について説明します。  
@@ -200,3 +200,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |要素名|説明|  
 |------------------|-----------------|  
 |**DataSource**|収集する Windows イベント ログ。 必須属性: <br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例: <br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|
+

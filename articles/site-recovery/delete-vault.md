@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 7dc1be1316d833d4a37a8b46bf0145089bb3ae22
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b5d035308c50525449edf47131c4a6a8c62b750b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839129"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784762"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Services コンテナーを削除する
 
 依存関係により、Azure Site Recovery コンテナーが削除できない場合があります。 実行する必要のあるアクションは、サイトの回復シナリオによって異なります。 Azure Backup で使用されているコンテナーを削除するには、「[Azure のバックアップ コンテナーを削除する](../backup/backup-azure-delete-vault.md)」を参照してください。
 
-
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="delete-a-site-recovery-vault"></a>Site Recovery コンテナーを削除する 
 コンテナーを削除するには、シナリオに応じた推奨手順に従ってください。
@@ -65,12 +65,12 @@ ms.locfileid: "52839129"
 
 保護された項目がある場合でも、Site Recovery コンテナーを削除するには、次のコマンドを使用します。
 
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
-    Select-AzureRmSubscription -SubscriptionName "XXXXX"
+    Select-AzSubscription -SubscriptionName "XXXXX"
 
-    $vault = Get-AzureRmRecoveryServicesVault -Name "vaultname"
+    $vault = Get-AzRecoveryServicesVault -Name "vaultname"
 
-    Remove-AzureRmRecoveryServicesVault -Vault $vault
+    Remove-AzRecoveryServicesVault -Vault $vault
 
-[Get-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault?view=azurermps-6.0.0) と [Remove-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/remove-azurermrecoveryservicesvault?view=azurermps-6.0.0) の詳細をご覧ください。
+[Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault) と [Remove-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) の詳細をご覧ください。

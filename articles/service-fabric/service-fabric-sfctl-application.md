@@ -4,7 +4,7 @@ description: Service Fabric CLI- sfctl application のコマンドについて�
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 0f608dc89d3a9bc8914fc9be142c442246ce13b5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d4fec5d8131d269d3df229360066452c37a92430
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278544"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665544"
 ---
 # <a name="sfctl-application"></a>sfctl application
 アプリケーションおよびアプリケーションの種類を作成、削除、および管理します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | create | 指定された説明を使用して、Service Fabric アプリケーションを作成します。 |
-| 削除 | 既存の Service Fabric アプリケーションを削除します。 |
+| delete | 既存の Service Fabric アプリケーションを削除します。 |
 | deployed | Service Fabric ノードにデプロイされたアプリケーションに関する情報を取得します。 |
 | deployed-health | Service Fabric ノードにデプロイされたアプリケーションの正常性に関する情報を取得します。 |
 | deployed-list | Service Fabric ノードにデプロイされたアプリケーションの一覧を取得します。 |
@@ -96,7 +96,7 @@ ms.locfileid: "53278544"
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-deployed"></a>sfctl application deployed
 Service Fabric ノードにデプロイされたアプリケーションに関する情報を取得します。
@@ -120,7 +120,7 @@ Service Fabric ノードにデプロイされたアプリケーションに関�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-deployed-health"></a>sfctl application deployed-health
 Service Fabric ノードにデプロイされたアプリケーションの正常性に関する情報を取得します。
@@ -146,7 +146,7 @@ Service Fabric ノードにデプロイされたアプリケーションの正�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-deployed-list"></a>sfctl application deployed-list
 Service Fabric ノードにデプロイされたアプリケーションの一覧を取得します。
@@ -171,7 +171,7 @@ Service Fabric ノードにデプロイされたアプリケーションの一�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-health"></a>sfctl application health
 Service Fabric アプリケーションの正常性を取得します。
@@ -197,7 +197,7 @@ Service Fabric アプリケーションの正常性の状態を返します。 �
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-info"></a>sfctl application info
 Service Fabric アプリケーションの情報を取得します。
@@ -220,7 +220,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-list"></a>sfctl application list
 Service Fabric クラスター内に作成されているアプリケーションのうち、指定したフィルターに一致するものの一覧を取得します。
@@ -246,7 +246,7 @@ Service Fabric クラスターで作成済みまたは作成中のアプリケ�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-load"></a>sfctl application load
 Service Fabric アプリケーションの負荷情報を取得します。
@@ -268,7 +268,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-manifest"></a>sfctl application manifest
 アプリケーションの種類を記述するマニフェストを取得します。
@@ -291,7 +291,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-provision"></a>sfctl application provision
 外部ストアの .sfpkg パッケージまたはイメージ ストアのアプリケーション パッケージを使って、Service Fabric アプリケーションの種類をプロビジョニングするか、クラスターに登録します。
@@ -318,7 +318,7 @@ Service Fabric アプリケーションの種類をクラスターにプロビ�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-report-health"></a>sfctl application report-health
 Service Fabric アプリケーションの正常性レポートを送信します。
@@ -348,7 +348,7 @@ Service Fabric アプリケーションの正常性レポートを送信しま�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-type"></a>sfctl application type
 指定した名前と完全に一致する Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。
@@ -374,7 +374,7 @@ Service Fabric クラスターでプロビジョニングされた、または�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-type-list"></a>sfctl application type-list
 Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。
@@ -399,7 +399,7 @@ Service Fabric クラスターでプロビジョニングされた、または�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-unprovision"></a>sfctl application unprovision
 Service Fabric アプリケーションの種類をクラスターから削除または登録解除します。
@@ -423,7 +423,7 @@ Service Fabric アプリケーションの種類をクラスターから削除�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-upgrade"></a>sfctl application upgrade
 Service Fabric クラスターで、アプリケーションのアップグレードを開始します。
@@ -460,7 +460,7 @@ Service Fabric クラスターで、アプリケーションのアップグレ�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-upgrade-resume"></a>sfctl application upgrade-resume
 Service Fabric クラスターで、アプリケーションのアップグレードを再開します。
@@ -483,7 +483,7 @@ Service Fabric アプリケーションの監視対象外の手動アップグ�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-upgrade-rollback"></a>sfctl application upgrade-rollback
 Service Fabric クラスター内で現在進行中のアプリケーションのアップグレードのロールバックを開始します。
@@ -505,7 +505,7 @@ Service Fabric クラスター内で現在進行中のアプリケーション�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-upgrade-status"></a>sfctl application upgrade-status
 このアプリケーションで実行された最新のアップグレードの詳細を取得します。
@@ -527,7 +527,7 @@ Service Fabric クラスター内で現在進行中のアプリケーション�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-application-upload"></a>sfctl application upload
 Service Fabric アプリケーション パッケージをイメージ ストアにコピーします。
@@ -550,7 +550,7 @@ Service Fabric アプリケーション パッケージをイメージ ストア
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 
 ## <a name="next-steps"></a>次の手順

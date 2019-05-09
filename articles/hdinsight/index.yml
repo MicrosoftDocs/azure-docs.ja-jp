@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 52f96a97aaf4ced4cf7b0e1170014f327ff6e192
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975801"
 documentType: LandingData
 title: Azure HDInsight のドキュメント
 metadata:
@@ -15,79 +9,79 @@ metadata:
   ms.author: hrasheed
   ms.service: hdinsight
   ms.topic: landing-page
-  ms.date: 10/18/2018
+  ms.date: 03/26/2019
 abstract:
-  description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントでは、Apache Hadoop、Apache Spark、Apache Hive、Apache LLAP、Apache Kafka、Apache Storm、Microsoft Machine Learning Server といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、フル マネージドの、全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
+  description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントでは、Apache Hadoop、Apache Spark、Apache Hive、Apache LLAP、Apache Kafka、Apache Storm、Microsoft Machine Learning Server といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、全範囲に対応した、オープンソースのエンタープライズ向けマネージド分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: HDInsight での Apache Kafka (17:19)
-    href: https://azure.microsoft.com/resources/videos/azure-friday-apache-kafka-on-hdinsight-ga/
+    title: 'HDInsight での Apache Kafka (17:19)'
+    href: 'https://azure.microsoft.com/resources/videos/azure-friday-apache-kafka-on-hdinsight-ga/'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: HDInsight クラスターを作成し、ジョブを実行する方法について説明します。
-  - type: list
-    style: icon64
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: media/index/hadoop_r.svg
-      text: Apache Hadoop
-      href: /azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal
-    - image:
-        src: media/index/spark_r.svg
-      text: Apache Spark
-      href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql-use-portal
-    - image:
-        src: media/index/kafka_r.svg
-      text: Apache Kafka
-      href: /azure/hdinsight/kafka/apache-kafka-get-started
-    - image:
-        src: media/index/hbase_r.svg
-      text: Apache HBase
-      href: /azure/hdinsight/hbase/apache-hbase-tutorial-get-started-linux
-    - image:
-        src: media/index/hive_r.svg
-      text: Interactive Query
-      href: /azure/hdinsight/interactive-query/apache-interactive-query-get-started
-    - image:
-        src: media/index/storm_r.svg
-      text: Apache Storm
-      href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
-    - image:
-        src: media/index/ml-server_r.svg
-      text: ML サービス
-      href: /azure/hdinsight/r-server/r-server-get-started
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure HDInsight の使用方法をさまざまなシナリオで説明します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: HDInsight クラスターを作成し、ジョブを実行する方法について説明します。
+      - type: list
+        style: icon64
+        items:
+          - image:
+              src: media/index/hadoop_r.svg
+            text: Apache Hadoop
+            href: /azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal
+          - image:
+              src: media/index/spark_r.svg
+            text: Apache Spark
+            href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql-use-portal
+          - image:
+              src: media/index/kafka_r.svg
+            text: Apache Kafka
+            href: /azure/hdinsight/kafka/apache-kafka-get-started
+          - image:
+              src: media/index/hbase_r.svg
+            text: Apache HBase
+            href: /azure/hdinsight/hbase/apache-hbase-tutorial-get-started-linux
+          - image:
+              src: media/index/hive_r.svg
+            text: Interactive Query
+            href: /azure/hdinsight/interactive-query/apache-interactive-query-get-started
+          - image:
+              src: media/index/storm_r.svg
+            text: Apache Storm
+            href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
+          - image:
+              src: media/index/ml-server_r.svg
+            text: ML サービス
+            href: /azure/hdinsight/r-server/r-server-get-started
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: Apache Hadoop&#58; <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">ETL 操作を実行する</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">オンデマンド クラスターを作成する</a>
-    - html: Apache Spark&#58; <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">対話型のクエリを実行する</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">データを視覚化する</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">機械学習</a>
-    - html: Apache Kafka&#58; <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Kafka を使った構造化ストリーミング</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">HDInsight の Storm で使用する</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Kafka の Producer API と Consumer API を使用する</a>
-    - html: Apache HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">VNET に HBase クラスターを作成する</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Apache Phoenix を使用する</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Spark に接続する</a>
-    - html: 対話型クエリ&#58;<a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">直接クエリを使用して Power BI に接続する</a>
-    - html: Apache Storm&#58; <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Java で Storm のトポロジを作成する</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">HDInsight 上に Storm のトポロジをデプロイする</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Storm から Data Lake Storage に書き込む</a>
-    - html: ML サービス &#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">R Tools for Visual Studio を使用する</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Azure HDInsight の使用方法をさまざまなシナリオで説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: 'Apache Hadoop&#58; <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">ETL 操作を実行する</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">オンデマンド クラスターを作成する</a>'
+          - html: 'Apache Spark&#58; <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">対話型のクエリを実行する</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">データを視覚化する</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">機械学習</a>'
+          - html: 'Apache Kafka&#58; <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Kafka を使った構造化ストリーミング</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">HDInsight の Storm で使用する</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Kafka の Producer API と Consumer API を使用する</a>'
+          - html: 'Apache HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">VNET に HBase クラスターを作成する</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Apache Phoenix を使用する</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Spark に接続する</a>'
+          - html: '対話型クエリ&#58;<a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">直接クエリを使用して Power BI に接続する</a>'
+          - html: 'Apache Storm&#58; <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Java で Storm のトポロジを作成する</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">HDInsight 上に Storm のトポロジをデプロイする</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Storm から Data Lake Storage に書き込む</a>'
+          - html: 'ML サービス &#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">R Tools for Visual Studio を使用する</a>'
+  - title: リファレンス
     items:
-    - title: ツール
-      html: <p><a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin">HDInsight IntelliJ ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin">HDInsight Eclipse ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode">HDInsight VSCode ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started">HDInsight Visual Studio ツール</a></p>
-    - title: コマンド ライン
-      html: <p><a href="/powershell/module/azurerm.hdinsight">Azure PowerShell</a></p>
-    - title: 言語
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight">.NET (Hadoop)</a></p><p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p><p><a href="https://archive.codeplex.com/?p=hadoopsdk">.NET (Avro)</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/hdinsight/">REST API</a></p><p><a href="https://docs.microsoft.com/rest/api/hdinsightspark/">REST API (Spark)</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: ツール
+            html: '<p><a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin">HDInsight IntelliJ ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin">HDInsight Eclipse ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode">HDInsight VSCode ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started">HDInsight Visual Studio ツール</a></p>'
+          - title: コマンド ライン
+            html: <p><a href="/powershell/module/az.hdinsight">Azure PowerShell</a></p>
+          - title: 言語
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight">.NET (Hadoop)</a></p><p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/hdinsight/">REST API</a></p><p><a href="https://docs.microsoft.com/rest/api/hdinsightspark/">REST API (Spark)</a></p>'

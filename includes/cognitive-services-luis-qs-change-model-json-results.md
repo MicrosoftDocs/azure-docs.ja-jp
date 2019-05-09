@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: ec178827a2f27a4566f509fe76b58e451329efd4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 15047b9782ea86b91ba78e0d745c67892fdc8b76
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044151"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56741597"
 ---
 サンプルの発話の追加に対する `response` 配列は、サンプルの発話それぞれが成功したか失敗したかを `hasError` プロパティで示しています。 次の JSON 応答は、両方の発話が正常に追加されたことを示しています。 
 

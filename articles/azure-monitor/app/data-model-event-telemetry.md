@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 0f294b25bda39b44ea577f70bf63c61a4ce43093
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8e519e5a5e5fe6b893fa5663e1426630f46f885f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002146"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118406"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>イベント テレメトリ:Application Insights データ モデル
 
-アプリケーションで発生したイベントを表すイベント テレメトリ項目を作成できます ([Application Insights](../../application-insights/app-insights-overview.md))。 通常は、ボタンのクリックや注文のチェックアウトなどのユーザーの操作です。 初期化や構成の更新などのアプリケーション ライフ サイクル イベントの場合もあります。 
+アプリケーションで発生したイベントを表すイベント テレメトリ項目を作成できます ([Application Insights](../../azure-monitor/app/app-insights-overview.md))。 通常は、ボタンのクリックや注文のチェックアウトなどのユーザーの操作です。 初期化や構成の更新などのアプリケーション ライフ サイクル イベントの場合もあります。 
 
 意味的には、イベントは、要求に相関付けられる場合と、関連付けられない場合があります。 ただし、適切に使用すれば、イベント テレメトリは、要求やトレースよりも重要になります。 イベントはビジネス テレメトリを表しているため、独立したより緩やかな[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)の対象にする必要があります。
 

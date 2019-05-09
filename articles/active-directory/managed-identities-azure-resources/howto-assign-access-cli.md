@@ -3,23 +3,24 @@ title: Azure CLI を使用して Azure リソースにマネージド ID アク�
 description: Azure CLI を使用して、1 つのリソースにマネージド ID を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
-ms.author: daveba
-ms.openlocfilehash: 25d92c6c8c03f277b4219cd7d2a83afbb81e2b10
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2fb16b1762f1e5330cf058c37a6b7e0f008eb447
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081372"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443715"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる
 

@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 2aa25004fb9c2e914cd8c669095953e174686197
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051765"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998707"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行アクティビティ
 パイプラインの実行アクティビティを使用すると、Data Factory のパイプラインが別のパイプラインを呼び出すことができます。
@@ -60,13 +59,14 @@ ms.locfileid: "37051765"
 ```
 
 ## <a name="type-properties"></a>型のプロパティ
+
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | パイプラインの実行アクティビティの名前。 | String | [はい]
-type | **ExecutePipeline** に設定する必要があります。 | String | [はい]
-pipeline | このパイプラインが呼び出す依存パイプラインへのパイプライン参照。 パイプライン参照オブジェクトには、**referenceName** と **type** の 2 つのプロパティがあります。 ReferenceName プロパティは、参照パイプラインの名前を指定します。 type プロパティを PipelineReference に設定する必要があります。 | PipelineReference | [はい]
+name | パイプラインの実行アクティビティの名前。 | String | はい
+type | 次のように設定する必要があります。**ExecutePipeline**。 | String | はい
+pipeline | このパイプラインが呼び出す依存パイプラインへのパイプライン参照。 パイプライン参照オブジェクトには、**referenceName** と **type** の 2 つのプロパティがあります。 ReferenceName プロパティは、参照パイプラインの名前を指定します。 type プロパティを PipelineReference に設定する必要があります。 | PipelineReference | はい
 parameters | 呼び出されたパイプラインに渡されるパラメーター | パラメーター名を引数値にマップする JSON オブジェクト | いいえ 
-waitOnCompletion | 依存パイプラインの実行が終了するまでアクティビティの実行を待機するかどうかを定義します。 | 既定値は false です。 | ブール | いいえ 
+waitOnCompletion | 依存パイプラインの実行が終了するまでアクティビティの実行を待機するかどうかを定義します。 既定値は false です。 | Boolean | いいえ 
 
 ## <a name="sample"></a>サンプル
 このシナリオでは、次の 2 つのパイプラインがあります。
@@ -93,7 +93,7 @@ waitOnCompletion | 依存パイプラインの実行が終了するまでアク�
               "value": "@pipeline().parameters.masterSourceBlobContainer",
               "type": "Expression"
             },
-            "sinkBlobCountainer": {
+            "sinkBlobContainer": {
               "value": "@pipeline().parameters.masterSinkBlobContainer",
               "type": "Expression"
             }
@@ -245,7 +245,7 @@ waitOnCompletion | 依存パイプラインの実行が終了するまでアク�
           "value": "@pipeline().parameters.masterSourceBlobContainer",
           "type": "Expression"
         },
-        "sinkBlobCountainer": {
+        "sinkBlobContainer": {
           "value": "@pipeline().parameters.masterSinkBlobContainer",
           "type": "Expression"
         }

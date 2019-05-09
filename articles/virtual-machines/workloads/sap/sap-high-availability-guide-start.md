@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdf6a1ecf71229dd2b641e2711a5f445e88f7afb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7de46a534ea7920bcae4a5b2a3316117f090a7bf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658436"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265068"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -49,13 +49,18 @@ ms.locfileid: "34658436"
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
 [sap-suse-ascs-ha-setting-ha-nfs]:high-availability-guide-suse.md#setting-up-a-highly-available-nfs-server
+[sap-suse-ascs-ha-setting-ha-anf]:high-availability-guide-suse-netapp-files.md#setting-up-the-azure-netapp-files-infrastructure
 [sap-suse-ascs-ha-sap-installation]:high-availability-guide-suse.md#prepare-for-sap-netweaver-installation
+[sap-suse-ascs-ha-sap-installation-anf]:high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation
+[sap-rhel-ascs-ha]:high-availability-guide-rhel.md
+[high-availability-guide-rhel-glusterfs]:high-availability-guide-rhel-glusterfs.md
+[high-availability-guide-rhel-pacemaker]:high-availability-guide-rhel-pacemaker.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -191,8 +196,8 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
     > SAP のインストールには、Azure Resource Manager デプロイ モデルを使用することを強くお勧めします。 クラシック デプロイ モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
     >
 * 次の環境での SAP の高可用性
-  * **Windows Server フェールオーバー クラスター (WSFC)** を使用する ![Windows][Logo_Windows] **Windows**
-  * **Linux クラスター フレームワーク**を使用する ![Linux][Logo_Linux] **Linux**
+  * ![Windows][Logo_Windows]  **Windows**。**Windows Server フェールオーバー クラスター (WSFC)** を使用
+  * ![Linux][Logo_Linux] **Linux**。**Linux クラスター フレームワーク**を使用
 
 これらの記事では、SAP Central Services (ASCS/SCS) やデータベース管理システム (DBMS) などの単一障害点 (SPOF) コンポーネントを保護する方法を学習します。 SAP アプリケーション サーバーなどの Azure での 冗長コンポーネントについても学びます。
 
@@ -211,22 +216,32 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 
 **概要:** ここに挙げる記事では、SAP インストールの準備として Azure インフラストラクチャをデプロイするときの手順について説明します。 Azure インフラストラクチャのデプロイを簡単にするために、プロセス全体を自動化する SAP Azure Resource Manager テンプレートを使用します。
 
-**更新日:** 2017 年 10 月
+**更新日:** 2019 年 3 月
 
-* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP (A)SCS インスタンスの**共有ディスク**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP ASCS/SCS インスタンスの**共有ディスク**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP (A)SCS インスタンスの**ファイル共有**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-file-share]
+* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP ASCS/SCS インスタンスの**ファイル共有**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-file-share]
 
-* ![Linux][Logo_Linux] [SAP (A)SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-suse-ascs-ha-setting-ha-nfs]
+* ![Linux][Logo_Linux] [SAP ASCS/SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-suse-ascs-ha-setting-ha-nfs]
+
+* ![Linux][Logo_Linux] [Azure NetApp ファイルがある SAP ASCS/SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-suse-ascs-ha-setting-ha-anf]
+
+* ![RHEL][Logo_Linux] [SAP ASCS/SCS の高可用性のための Azure インフラストラクチャの準備 - RHEL で GlusterFS を設定する][high-availability-guide-rhel-glusterfs]
+
+* ![RHEL][Logo_Linux] [SAP ASCS/SCS の高可用性のための Azure インフラストラクチャの準備 - RHEL で Pacemaker を設定する][high-availability-guide-rhel-pacemaker]
 
 ## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Azure への SAP NetWeaver 高可用性システムのインストール
 
 **概要:** ここに挙げる記事では、Azure の Windows Server フェールオーバー クラスタリング クラスターと Linux Cluster Framework における高可用性 SAP システムのインストールと構成の手順例について説明します。
 
-**更新日:** 2017 年 10 月
+**更新日:** 2019 年 3 月
 
-* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP (A)SCS インスタンスの**共有ディスク**を使用した SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP ASCS/SCS インスタンスの**共有ディスク**を使用した SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-shared-disk]
 
-* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターと SAP (A)SCS インスタンスの**ファイル共有**を使用した SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-file-share]
+* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスの**ファイル共有**を使用した SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-file-share]
 
-* ![Linux][Logo_Linux] [SAP (A)SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP NetWeaver HA のインストール][sap-suse-ascs-ha-sap-installation]
+* ![Linux][Logo_Linux] [SAP ASCS/SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP NetWeaver HA のインストール][sap-suse-ascs-ha-sap-installation]
+
+* ![Linux][Logo_Linux] [Azure NetApp Files がある SAP ASCS/SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP NetWeaver HA のインストール][sap-suse-ascs-ha-sap-installation-anf]
+
+* ![RHEL][Logo_Linux] [RHEL の高可用性の構成での SAP NetWeaver ASCS/SCS のインストール][sap-rhel-ascs-ha]

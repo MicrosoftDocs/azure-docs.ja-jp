@@ -1,21 +1,20 @@
 ---
 title: サンプル - ストレージ アカウントおよび仮想マシンに対して許可されている SKU
-description: このサンプル ポリシーは、承認された SKU がストレージ アカウントと仮想マシンで使用されていることが要件です。
-services: azure-policy
+description: このサンプル ポリシー定義は、承認された SKU の使用をストレージ アカウントと仮想マシンに要求します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 801f8464dc3733a1eb0574455b52865d2f79e8d6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313804"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59274571"
 ---
-# <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>ストレージ アカウントおよび仮想マシンに対して許可されている SKU
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>サンプル - ストレージ アカウントおよび仮想マシンに対して許可されている SKU
 
 このポリシーは、承認された SKU がストレージ アカウントと仮想マシンで使用されていることが要件です。 組み込みのポリシーを使用して、承認された SKU を確認します。 承認された仮想マシンの SKU の配列と、承認されたストレージ アカウントの SKU の配列を指定します。
 
@@ -29,19 +28,19 @@ ms.locfileid: "53313804"
 
 ## <a name="deploy-with-the-portal"></a>ポータルでのデプロイ
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![ポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
 $policydefinitions = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.definitions.json"
 $policysetparameters = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.parameters.json"
 
-$policyset= New-AzureRmPolicySetDefinition -Name "skus-for-multiple-types" -DisplayName "Allowed SKUs for Storage Accounts and Virtual Machines" -Description "This policy allows you to speficy what skus are allowed for storage accounts and virtual machines" -PolicyDefinition $policydefinitions -Parameter $policysetparameters 
+$policyset= New-AzPolicySetDefinition -Name "skus-for-multiple-types" -DisplayName "Allowed SKUs for Storage Accounts and Virtual Machines" -Description "This policy allows you to speficy what skus are allowed for storage accounts and virtual machines" -PolicyDefinition $policydefinitions -Parameter $policysetparameters 
  
-New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentName> -Scope <scope>  -LISTOFALLOWEDSKUS_1 <VM SKUs> -LISTOFALLOWEDSKUS_2 <Storage Account SKUs>
+New-AzPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentName> -Scope <scope>  -LISTOFALLOWEDSKUS_1 <VM SKUs> -LISTOFALLOWEDSKUS_2 <Storage Account SKUs>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>PowerShell でのデプロイをクリーンアップする
@@ -49,8 +48,8 @@ New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentNam
 ポリシーの割り当てと定義を削除するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name <assignmentName>
-Remove-AzureRmPolicySetDefinitions -Name "skus-for-multiple-types"
+Remove-AzPolicyAssignment -Name <assignmentName>
+Remove-AzPolicySetDefinitions -Name "skus-for-multiple-types"
 ```
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ

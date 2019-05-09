@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5767399189e4ed5168fbcc083ef9b4830cac1421
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138978"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835086"
 ---
 # <a name="feature-engineering-in-data-science"></a>データ サイエンスにおける特徴エンジニアリング
 この記事では、特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。 このプロセスの説明に使用されている例は、Azure Machine Learning Studio から引用しています。 
@@ -46,7 +46,7 @@ ms.locfileid: "53138978"
 
 まず Azure Machine Learning から始めると、Studio で提供されているサンプルを使用して最も簡単にこのプロセスを具体的に把握できます。 次に、2 つの例を示します。
 
-* ターゲット値が既知の場合の教師あり実験における、 [レンタル自転車の数の予測](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) の回帰の例
+* ターゲット値が既知の場合の教師あり実験における、 [レンタル自転車の数の予測](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) の回帰の例
 *  [特徴ハッシュ](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>例 1:回帰モデルに時間的な特徴を追加する

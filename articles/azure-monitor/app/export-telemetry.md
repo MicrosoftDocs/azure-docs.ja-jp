@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c93b23e3b06afe754ea1ca2472806d26c70f4c92
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973266"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307821"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -27,11 +27,21 @@ ms.locfileid: "53973266"
 * メトリック ブレードや検索ブレードの上部にある [エクスポート] ボタンを使用すると、テーブルやグラフを Excel のスプレッドシートに転送できます。
 
 * [Analytics](../../azure-monitor/app/analytics.md) にはテレメトリ用の強力なクエリ言語があります。 結果をエクスポートすることもできます。
-* [Power BI でデータを探索](../../application-insights/app-insights-export-power-bi.md)する場合は、連続エクスポートを使用せずに実行できます。
+* [Power BI でデータを探索](../../azure-monitor/app/export-power-bi.md )する場合は、連続エクスポートを使用せずに実行できます。
 * [データ アクセス REST API](https://dev.applicationinsights.io/) を使用すると、テレメトリにプログラムでアクセスすることができます。
-* [PowerShell を使用して連続エクスポート](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0)の設定にアクセスすることもできます。
+* [PowerShell を使用して連続エクスポート](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)の設定にアクセスすることもできます。
 
 連続エクスポートによってストレージ (必要な期間の保持が可能) にコピーされたデータは、通常の[リテンション期間](../../azure-monitor/app/data-retention-privacy.md)が過ぎるまで引き続き Application Insights で使用できます。
+
+## <a name="continuous-export-advanced-storage-configuration"></a>連続エクスポートの高度なストレージ構成
+
+連続エクスポートでは、次の Azure のストレージ機能または構成は**サポートされません**。
+
+* [VNET/Azure Storage ファイアウォール](https://docs.microsoft.com/azure/storage/common/storage-network-security)と Azure BLOB ストレージの併用。
+
+* Azure Blob Storage 向けの[不変ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)。
+
+* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
 ## <a name="setup"></a>連続エクスポートを作成する
 1. アプリの Application Insights リソースで、[連続エクスポート] を開き、**[追加]** を選択します。
@@ -71,14 +81,14 @@ ms.locfileid: "53973266"
 ## <a name="analyze"></a> 取得されるイベント
 エクスポートされたデータは、お客様のアプリケーションから受け取った未加工のテレメトリですが、クライアントの IP アドレスから計算された位置データが追加されます。
 
-[サンプリング](../../application-insights/app-insights-sampling.md) によって破棄されたデータは、エクスポートされるデータに含まれません。
+[サンプリング](../../azure-monitor/app/sampling.md) によって破棄されたデータは、エクスポートされるデータに含まれません。
 
 他の計算メトリックは含まれません。 たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
 
 データには、セットアップ済みのすべての[可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)の結果も含まれます。
 
 > [!NOTE]
-> **サンプリング。** アプリケーションで大量のデータを送信すると、サンプリング機能が動作して、生成されたテレメトリのごく一部だけが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../application-insights/app-insights-sampling.md)
+> **サンプリング。** アプリケーションで大量のデータを送信すると、サンプリング機能が動作して、生成されたテレメトリのごく一部だけが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -140,7 +150,7 @@ Where
 大規模なコード サンプルについては、「[worker ロールの使用][exportasa]」をご覧ください。
 
 ## <a name="delete"></a>古いデータの削除
-必要に応じて古いデータを削除するなどしてストレージ容量を管理する責任があることに注意してください。
+ストレージ容量の管理と古いデータの削除は、必要に応じて自分で行う必要があります。
 
 ## <a name="if-you-regenerate-your-storage-key"></a>ストレージ キーを再生成する場合
 ストレージのキーを変更した場合、連続エクスポートは動作しなくなります。 Azure アカウントに通知が表示されます。
@@ -194,4 +204,4 @@ Where
 <!--Link references-->
 
 [exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md

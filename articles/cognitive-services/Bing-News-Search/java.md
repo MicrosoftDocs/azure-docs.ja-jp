@@ -4,111 +4,107 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Java を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9933f1c54e6081ed3f1004712543610a7883736b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aa90eef5a0888da5a702e5efed489fa37a39a7c2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260958"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861971"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>クイック スタート:Java と Bing News Search REST API を使用してニュース検索を実行する
 
-この記事では、Azure 上の Microsoft Cognitive Services の一部である Bing Search API の使用方法を示します。 この記事では Java を使用しますが、この API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。 
+このクイック スタートを使用すると、Bing News Search API への最初の呼び出しを行い、JSON 応答を表示することができます。 このシンプルな Java アプリケーションは、新しい検索クエリを API に送信してその応答を表示します。
 
-このコード例は、Java 7 でコンソール アプリケーションとして実行するように作成されています。
+このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)を参照してください。
+このサンプルのソース コードは、[GitHub で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java)入手できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。 「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+* [Java Development Kit(JDK) 7 または 8](https://aka.ms/azure-jdks)
 
-## <a name="bing-news-search"></a>Bing News Search
+* [Gson ライブラリ](https://github.com/google/gson)
 
-[Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
 
-1. [gson ライブラリ](https://github.com/google/gson)をダウンロードまたはインストールします。
-2. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成します。
-3. 次に示すコードを追加します。
-4. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-5. プログラムを実行します。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-```java
-import java.net.*;
-import java.util.*;
-import java.io.*;
-import javax.net.ssl.HttpsURLConnection;
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- *
- * Once you have compiled or downloaded gson-2.8.1.jar, assuming you have placed it in the
- * same folder as this file (BingNewsSearch.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac BingNewsSearch.java -classpath .;gson-2.8.1.jar -encoding UTF-8
- * java -cp .;gson-2.8.1.jar BingNewsSearch
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-public class BingNewsSearch {
+1. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成し、以下のライブラリをインポートします。
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```java
+    import java.net.*;
+    import java.util.*;
+    import java.io.*;
+    import javax.net.ssl.HttpsURLConnection;
+    import com.google.gson.Gson;
+    import com.google.gson.GsonBuilder;
+    import com.google.gson.JsonObject;
+    import com.google.gson.JsonParser;
+    ```
 
-    // Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "enter key here";
+2. 新しいクラスを作成し、API エンドポイント、サブスクリプション キー、検索用語の変数を記述します。
 
-    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-    // search APIs.  In the future, regional endpoints may be available.  If you
-    // encounter unexpected authorization errors, double-check this value against
-    // the endpoint for your Bing Web search instance in your Azure dashboard.
-    static String host = "https://api.cognitive.microsoft.com";
-    static String path = "/bing/v7.0/news/search";
-
-    static String searchTerm = "Microsoft";
-
+    ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
-        // construct URL of search request (endpoint + query string)
+        static String subscriptionKey = "enter key here";
+        static String host = "https://api.cognitive.microsoft.com";
+        static String path = "/bing/v7.0/news/search";
+        static String searchTerm = "Microsoft";
+    //...
+    }
+    ```
+
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>検索要求を構築して JSON 応答を受信する
+
+1. 最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 検索用語は、要求に付加する前に URL エンコードする必要があるので注意してください。
+
+    ```java
+    public static SearchResults SearchNews (String searchQuery) throws Exception {
+        // construct the search request URL (in the form of URL + query string)
         URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
         HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
         connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-        // receive JSON body
-        InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
-
-        // construct result object for return
-        SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-
-        // extract Bing-related HTTP headers
-        Map<String, List<String>> headers = connection.getHeaderFields();
-        for (String header : headers.keySet()) {
-            if (header == null) continue;      // may have null key
-            if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
-                results.relevantHeaders.put(header, headers.get(header).get(0));
-            }
-        }
-
-        stream.close();
-        return results;
     }
+    ```
 
+2. Bing News Search API から JSON 応答を受信し、結果オブジェクトを構築します。
+
+    ```java
+    // receive JSON body
+    InputStream stream = connection.getInputStream();
+    String response = new Scanner(stream).useDelimiter("\\A").next();
+    // construct result object for return
+    SearchResults results = new SearchResults(new HashMap<String, String>(), response);
+    ```
+
+## <a name="process-the-json-response"></a>JSON 応答を処理する
+
+1. Bing 関連の HTTP ヘッダーを JSON 本文から分離し、ストリームを閉じて API の応答を返します。
+    ```java
+    // extract Bing-related HTTP headers
+    Map<String, List<String>> headers = connection.getHeaderFields();
+    for (String header : headers.keySet()) {
+        if (header == null) continue;      // may have null key
+        if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
+            results.relevantHeaders.put(header, headers.get(header).get(0));
+        }
+    }
+    stream.close();
+    return results;
+    ```
+
+2. JSON を解析して再シリアル化するためのメソッドを作成します。
+    ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
         JsonParser parser = new JsonParser();
@@ -116,39 +112,23 @@ public class BingNewsSearch {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
     }
+    ```
 
-    public static void main (String[] args) {
-        try {
-            System.out.println("Searching the Web for: " + searchTerm);
-
-            SearchResults result = SearchNews(searchTerm);
-
-            System.out.println("\nRelevant HTTP Headers:\n");
-            for (String header : result.relevantHeaders.keySet())
-                System.out.println(header + ": " + result.relevantHeaders.get(header));
-
-            System.out.println("\nJSON Response:\n");
-            System.out.println(prettify(result.jsonResponse));
-        }
-        catch (Exception e) {
-            e.printStackTrace(System.out);
-            System.exit(1);
-        }
+3. アプリケーションのメイン メソッドで、検索メソッドを呼び出して結果を表示します。
+    ```csharp
+   public static void main (String[] args) {
+       System.out.println("Searching the Web for: " + searchTerm);
+       SearchResults result = SearchNews(searchTerm);
+    
+       System.out.println("\nRelevant HTTP Headers:\n");
+       for (String header : result.relevantHeaders.keySet())
+             System.out.println(header + ": " + result.relevantHeaders.get(header));  
+    System.out.println("\nJSON Response:\n");
+    System.out.println(prettify(result.jsonResponse));
     }
-}
+    ```
 
-// Container class for search results encapsulates relevant headers and JSON data
-class SearchResults{
-    HashMap<String, String> relevantHeaders;
-    String jsonResponse;
-    SearchResults(HashMap<String, String> headers, String json) {
-        relevantHeaders = headers;
-        jsonResponse = json;
-    }
-}
-```
-
-**応答**
+## <a name="json-response"></a>JSON 応答
 
 成功した応答は、次の例に示すように JSON で返されます。
 
@@ -247,8 +227,4 @@ class SearchResults{
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ニュースのページング](paging-news.md)
-> [装飾マーカーを使用してテキストを強調表示する](hit-highlighting.md)
-> [Web でのニュースの検索](search-the-web.md)   
-> [試してみる](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+> [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 2bf059b9ebf73f6ea801b8e5a5440baa2e6c19c4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d0375713c4881c0b73b91fc07bda3ceac2dbc620
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249610"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093492"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Azure DevTest Labs で Azure Marketplace イメージの設定を構成する
 DevTest Labs では、実際のラボで使用する Azure Marketplace イメージの構成方法に応じて、Azure Marketplace イメージに基づく VM を作成することができます。 この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法を説明します。 これにより、チームだけが必要な Marketplace イメージにアクセスできるようになります。 
@@ -36,7 +36,7 @@ DevTest Labs では、実際のラボで使用する Azure Marketplace イメー
    * イメージは Azure Resource Manager を使用して VM をプロビジョニングする、 **かつ**
    * イメージは追加のライセンス プランの購入を必要としない。
      
-    イメージの使用を許可しない場合、または使用できるようにするイメージを指定する場合は、 **[いいえ]** を選択します。
+     イメージの使用を許可しない場合、または使用できるようにするイメージを指定する場合は、 **[いいえ]** を選択します。
      
      ![すべての Marketplace イメージを VM のベース イメージとして使用できるようにするオプション](./media/devtest-lab-configure-marketplace-images/allow-all-marketplace-images.png)
 7. 前の手順で **[いいえ]** を選択した場合は、**[Allowed images (許可するイメージ)] の [すべて選択]** チェック ボックスが有効になります。 
@@ -44,7 +44,7 @@ DevTest Labs では、実際のラボで使用する Azure Marketplace イメー
    * Azure Marketplace イメージの対応するチェック ボックスをオンにすると、VM の作成に使用するイメージが個別に選択されます。
    * どの Azure Marketplace イメージもラボでの使用を許可しない場合は、一覧で何も選択しないでください。
    
-    ![どの Azure Marketplace イメージを VM のベース イメージとして使用できるようにするかを指定できる](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
+     ![どの Azure Marketplace イメージを VM のベース イメージとして使用できるようにするかを指定できる](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

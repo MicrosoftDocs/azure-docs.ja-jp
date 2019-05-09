@@ -10,16 +10,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 23b627d480acf7bbbff7ade2ba6e596a57a15327
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 85113a5007a171459b831684f584773ba4328b94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079948"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Azure Portal を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure Portal を使用して [複数の Web サイト](application-gateway-multi-site-overview.md)のホスティングを構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
+[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure Portal を使用して [複数の Web サイト](application-gateway-multi-site-overview.md)のホスティングを構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.fabrikam.com* の例を使用します。
 
 この記事では、次のことについて説明します。
 
@@ -46,20 +46,20 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 3. 次のアプリケーション ゲートウェイの値を入力します。
 
-    - *myAppGateway* - アプリケーション ゲートウェイの名前です。
-    - *myResourceGroupAG* - 新しいリソース グループの名前です。
+   - *myAppGateway* - アプリケーション ゲートウェイの名前です。
+   - *myResourceGroupAG* - 新しいリソース グループの名前です。
 
-    ![新しいアプリケーション ゲートウェイの作成](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
+     ![新しいアプリケーション ゲートウェイの作成](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
 
 4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
 5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
-    - *myVNet* - 仮想ネットワークの名前です。
-    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
-    - *myAGSubnet* - サブネットの名前です。
-    - *10.0.0.0/24* - サブネットのアドレス空間です。
+   - *myVNet* - 仮想ネットワークの名前です。
+   - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
+   - *myAGSubnet* - サブネットの名前です。
+   - *10.0.0.0/24* - サブネットのアドレス空間です。
 
-    ![Create virtual network](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
+     ![Create virtual network](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
 
 6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
 7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
@@ -96,6 +96,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 ### <a name="install-iis"></a>IIS のインストール
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. 対話型シェルを開いて、**PowerShell** に設定されていることを確認します。
 
     ![カスタム拡張機能のインストール](./media/application-gateway-create-multisite-portal/application-gateway-extension.png)
@@ -104,7 +106,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -115,7 +117,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
       -Settings $publicSettings
     ```
 
-3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzureRmVMExtension の VMName の値として、*fabrikamVM* という名前を入力します。
+3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzVMExtension の VMName の値として、*fabrikamVM* という名前を入力します。
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>仮想マシンでのバックエンド プールの作成
 
@@ -134,11 +136,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 1. **[リスナー]**、**[マルチサイト]** の順にクリックします。
 2. 次のリスナーの値を入力します。
     
-    - *contosoListener* - リスナーの名前です。
-    - *www.contoso.com* - このホスト名の例をドメイン名に置き換えます。
+   - *contosoListener* - リスナーの名前です。
+   - *www\.contoso.com* - このホスト名の例をドメイン名に置き換えます。
 
 3. Click **OK**.
-4. *fabrikamListener* という名前を使用して 2 番目のリスナーを作成し、2 番目のドメイン名を使用します。 この例では、*www.fabrikam.com* が使用されています。
+4. *fabrikamListener* という名前を使用して 2 番目のリスナーを作成し、2 番目のドメイン名を使用します。 この例では、*www\.fabrikam.com* が使用されています。
 
 ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
 

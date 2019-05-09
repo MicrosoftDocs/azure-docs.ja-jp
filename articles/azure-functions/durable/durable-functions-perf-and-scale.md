@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341170"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58895751"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -49,9 +49,18 @@ Durable Functions では、タスク ハブごとに複数の "*コントロー�
 
 コントロール キューには、さまざまな種類のオーケストレーション ライフサイクル メッセージが含まれます。 たとえば、[オーケストレーター コントロール メッセージ](durable-functions-instance-management.md)、アクティビティ関数の "*応答*" メッセージ、タイマー メッセージがあります。 1 回のポーリングで 32 個のメッセージがコントロール キューからデキューされます。 これらのメッセージには、ペイロード データと、対象となるオーケストレーション インスタンスなどのメタデータが含まれています。 デキューされた複数のメッセージが同じオーケストレーション インスタンスを対象としている場合、それらはバッチとして処理されます。
 
+### <a name="queue-polling"></a>キューのポーリング
+
+Durable Task 拡張機能は、アイドル状態のキューのポーリングがストレージ トランザクション コストに与える影響を軽減するために、ランダムな指数バックオフ アルゴリズムを実装します。 メッセージが見つかると、このランタイムはすぐに別のメッセージがないか確認します。メッセージが見つからないときは、一定期間待ってから再試行します。 その後の試行でもキュー メッセージを取得できなかった場合は、最大待ち時間 (既定で 30 秒間) に達するまで待ち時間は増加し続けます。
+
+最大ポーリング遅延は、[host.json ファイル](../functions-host-json.md#durabletask)内の `maxQueuePollingInterval` プロパティを使用して構成できます。 この値を高く設定するほど、メッセージ処理の待機時間が長くなる可能性があります。 長い処理時間が予期されるのは、非アクティブ期間の後のみになります。 低い値に設定すると、ストレージ トランザクションの増加により、ストレージ コストが上昇する可能性があります。
+
+> [!NOTE]
+> Azure Functions Consumption プランおよび Premium プランで実行しているとき、[Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) は、それぞれのコントロールと作業項目キューを 10 秒に 1 回ポーリングします。 この追加のポーリングは、関数アプリをアクティブにしてスケーリングの決定を行うタイミングを判別するために必要です。 この記事の執筆時点では、この 10 秒の間隔は定数であり、構成することはできません。
+
 ## <a name="storage-account-selection"></a>ストレージ アカウントの選択
 
-Durable Functions で使用されるキュー、テーブル、BLOB は、構成済みの Azure ストレージ アカウントによって作成されます。 使用するアカウントは、**host.json** ファイルの `durableTask/azureStorageConnectionStringName` 設定を使用して指定できます。
+Durable Functions で使用されるキュー、テーブル、BLOB は、構成済みの Azure Storage アカウントに作成されます。 使用するアカウントは、**host.json** ファイルの `durableTask/azureStorageConnectionStringName` 設定を使用して指定できます。
 
 ### <a name="functions-1x"></a>Functions 1.x
 

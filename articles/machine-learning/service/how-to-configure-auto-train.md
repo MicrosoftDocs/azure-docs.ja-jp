@@ -7,16 +7,16 @@ ms.author: nilesha
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3dedf5de1ac2c88a9a00fd5f62e0663b840c0fd9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 87e1e57a969fc5e65302dcce44231773f7e74b3a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438525"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548832"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>自動機械学習の実験を構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "53438525"
 
 自動機械学習で使用できる構成オプション:
 
-* 実験の種類を選択する:分類、回帰、または予測
+* 実験の種類を選択する:分類、回帰、または時系列予測
 * データ ソース、形式、およびデータのフェッチ
 * コンピューティング先を選択する: ローカルまたはリモート
 * 自動機械学習の実験の設定
@@ -35,31 +35,32 @@ ms.locfileid: "53438525"
 * モデルを登録して展開する
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
-実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。 
+実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。
 
-自動機械学習の機能は一般提供されていますが、**予測機能はまだパブリック プレビュー段階にあります**。
+自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。 DNN アルゴリズムはトレーニング中に使用できますが、自動 ML は DNN モデルをビルドしません。
 
-自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。
-
-分類 | 回帰 | 予測
+分類 | 回帰 | 時系列予測
 |-- |-- |--
 [ロジスティック回帰](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[C のサポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)|[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
-[Linear SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)|[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Linear SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[C のサポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#classification)|
-[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN 分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN 線形分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
+[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
 
 ## <a name="data-source-and-format"></a>データ ソースと形式
 自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、scikit-learn でサポートされているデータ形式に読み込むことができます。 次のものにデータを読み込めます。
 * Numpy 配列 X (特徴) と y (ターゲット変数、ラベルとも呼ばれます)
-* Pandas データフレーム 
+* Pandas データフレーム
 
 次に例を示します。
 
@@ -67,7 +68,7 @@ ms.locfileid: "53438525"
 
     ```python
     digits = datasets.load_digits()
-    X_digits = digits.data 
+    X_digits = digits.data
     y_digits = digits.target
     ```
 
@@ -75,9 +76,9 @@ ms.locfileid: "53438525"
 
     ```python
     import pandas as pd
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    df = df.drop(["Label"], axis=1) 
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    df = df.drop(["Label"], axis=1)
     df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     ```
 
@@ -88,18 +89,18 @@ ms.locfileid: "53438525"
 `get_data` の例を以下に示します。
 
 ```python
-%%writefile $project_folder/get_data.py 
-import pandas as pd 
-from sklearn.model_selection import train_test_split 
-from sklearn.preprocessing import LabelEncoder 
-def get_data(): # Burning man 2016 data 
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    le = LabelEncoder() 
-    le.fit(df["Label"].values) 
-    y = le.transform(df["Label"].values) 
-    df = df.drop(["Label"], axis=1) 
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42) 
+%%writefile $project_folder/get_data.py
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+def get_data(): # Burning man 2016 data
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    le = LabelEncoder()
+    le.fit(df["Label"].values)
+    y = le.transform(df["Label"].values)
+    df = df.drop(["Label"], axis=1)
+    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     return { "X" : df, "y" : y }
 ```
 
@@ -111,13 +112,13 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 `get_data` スクリプトは次のものを返すことができます。
 
-キー | type |    相互に排他的 | 説明
+キー | Type | 相互に排他的    | 説明
 ---|---|---|---
 X | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |  トレーニングするすべての機能
 y | Pandas データフレームまたは Numpy 配列 |   label   | トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。
 X_valid | Pandas データフレームまたは Numpy 配列   | data_train、label | "_省略可能_" 検証するすべての機能。 指定しない場合、X はトレーニング間で分割されて検証されます
 y_valid |   Pandas データフレームまたは Numpy 配列 | data_train、label | "_省略可能_" 検証するラベル データ。 指定しない場合、y はトレーニング間で分割されて検証されます
-sample_weight | Pandas データフレームまたは Numpy 配列 |   data_train、label、columns| "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します 
+sample_weight | Pandas データフレームまたは Numpy 配列 |   data_train、label、columns| "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します
 sample_weight_valid | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |    "_省略可能_" 各検証サンプルの重み値。 指定しない場合、sample_weight はトレーニング間で分割されて検証されます
 data_train |    Pandas データフレーム |  X、y、X_valid、y_valid |    トレーニングするすべてのデータ (機能 + ラベル)
 label | string  | X、y、X_valid、y_valid |  data_train 内のどの列がラベルを表すか
@@ -136,7 +137,8 @@ cv_splits_indices   | 整数の配列 ||  "_省略可能_" クロス検証用に
 >* フィルター処理
 >* カスタム Python 変換
 
-データ準備 SDK の詳細については、[モデル化のためのデータの準備方法に関する記事](how-to-load-data.md)をご覧ください。 データ準備 SDK を使用したデータの読み込みの例を次に示します。 
+データ準備 SDK の詳細については、[モデル化のためのデータの準備方法に関する記事](how-to-load-data.md)をご覧ください。
+データ準備 SDK を使用したデータの読み込みの例を次に示します。
 ```python
 # The data referenced here was pulled from `sklearn.datasets.load_digits()`.
 simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
@@ -155,11 +157,11 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 
 ### <a name="k-folds-cross-validation"></a>K フォールド クロス検証
 
-`n_cross_validations` の設定を使用して、クロス検証の数を指定します。 トレーニング データ セットは、等しいサイズの `n_cross_validations` 個のフォールドにランダムに分割されます。 各クロス検証ラウンドの間に、フォールドの 1 つが、残りのフォールドでトレーニングされたモデルの検証に使用されます。 各フォールドが検証セットとして 1 回使用されるまで、このプロセスが `n_cross_validations` ラウンドに対して繰り返されます。 すべての `n_cross_validations` ラウンドの平均スコアがレポートされ、対応するモデルがトレーニング データ セット全体で再トレーニングされます。
+`n_cross_validations` の設定を使用して、クロス検証の数を指定します。 トレーニング データ セットは、等しいサイズの `n_cross_validations` 個のフォールドにランダムに分割されます。 各クロス検証ラウンドの間に、フォールドの 1 つが、残りのフォールドでトレーニングされたモデルの検証に使用されます。 各フォールドが検証セットとして 1 回使用されるまで、このプロセスが `n_cross_validations` ラウンドに対して繰り返されます。 すべての `n_cross_validations` ラウンドの平均スコアがレポートされ、対応するモデルがトレーニング データ セット全体で再トレーニングされます。 
 
 ### <a name="monte-carlo-cross-validation-aka-repeated-random-sub-sampling"></a>モンテカルロ クロス検証 (別名: 反復ランダム サブサンプリング)
 
-`validation_size` を使用して検証に使用する必要があるトレーニング データセットの割合を指定し、`n_cross_validations` を使用してクロス検証の数を指定します。 各クロス検証ラウンドの間に、サイズ `validation_size` のサブセットが、残りのデータでトレーニングされたモデルの検証にランダムに選択されます。 最後に、すべての `n_cross_validations` ラウンドの平均スコアが報告されて、対応するモデルがトレーニング データ セットが全体で再トレーニングされます。
+`validation_size` を使用して検証に使用する必要があるトレーニング データセットの割合を指定し、`n_cross_validations` を使用してクロス検証の数を指定します。 各クロス検証ラウンドの間に、サイズ `validation_size` のサブセットが、残りのデータでトレーニングされたモデルの検証にランダムに選択されます。 最後に、すべての `n_cross_validations` ラウンドの平均スコアが報告されて、対応するモデルがトレーニング データ セットが全体で再トレーニングされます。 モンテカルロは時系列予測ではサポートされていません。
 
 ### <a name="custom-validation-dataset"></a>カスタム検証データセット
 
@@ -171,13 +173,13 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 *   ローカル デスクトップやラップトップなどのローカル コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。
 *   クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
 
-ローカルとリモートのコンピューティング先を使用したノートブックの例については、[GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl)をご覧ください。
+ローカルとリモートのコンピューティング先を使用したノートブックの例については、[GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)をご覧ください。
 
-<a name='configure-experiment'/>
+<a name='configure-experiment'></a>
 
 ## <a name="configure-your-experiment-settings"></a>実験の設定を構成する
 
-自動機械学習の実験を構成するために使用できるオプションがいくつかあります。 これらのパラメーターは、`AutoMLConfig` オブジェクトをインスタンス化することによって設定します。
+自動機械学習の実験を構成するために使用できるオプションがいくつかあります。 これらのパラメーターは、`AutoMLConfig` オブジェクトをインスタンス化することによって設定します。 パラメーターの完全な一覧については、「[AutoMLConfig クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)」をご覧ください。  
 
 次に例をいくつか示します。
 
@@ -189,52 +191,37 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
-        X=X, 
+        blacklist_models='XGBoostClassifier',
+        X=X,
         y=y,
         n_cross_validations=2)
     ```
 2.  次の例は、100 回のイテレーションの後で終了するように設定された回帰実験です。各イテレーションは、5 個の検証クロス フォールドで 600 秒続きます。
 
-    ````python
+    ```python
     automl_regressor = AutoMLConfig(
         task='regression',
         max_time_sec=600,
         iterations=100,
+        whitelist_models='kNN regressor'
         primary_metric='r2_score',
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=5)
-    ````
+    ```
 
-次の表では、実験に使用できるパラメーター設定とその既定値の一覧を示します。
+3 つの異なる `task` パラメーター値では、適用するアルゴリズムのリストを決定します。  使用可能なアルゴリズムを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。 サポートされるモデルの一覧は、[SupportedAlgorithms クラス](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)で見つけることができます。
 
-プロパティ |  説明 | 既定値
---|--|--
-`task`  |機械学習の問題の種類を指定します。 次の値を使用できます <li>分類</li><li>回帰</li><li>予測</li>    | なし |
-`primary_metric` |モデルの構築で最適化したいメトリック。 たとえば、primary_metric として精度を指定すると、自動機械学習は最大精度のモデルを探します。 実験ごとに指定できる primary_metric は 1 つのみです。 次の値を使用できます <br/>**分類**:<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**回帰**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score  </li> | 分類の場合: accuracy <br/>回帰の場合: spearman_correlation <br/> |
-`experiment_exit_score` |   primary_metric に対するターゲット値を設定できます。 primary_metric ターゲットを満たすモデルが見つかると、自動機械学習はイテレーションを停止し、実験は終了します。 この値が設定されていない場合 (既定)、自動機械学習の実験はイテレーションで指定されている回数だけ実行を続けます。 double 値を受け取ります。 ターゲットに達しない場合は、自動機械学習はイテレーションで指定されている回数になるまで続行されます。| なし
-`iterations` |イテレーションの最大数。 各イテレーションは、パイプラインになるトレーニング ジョブと同じです。 パイプラインは、データの前処理とモデルです。 高品質のモデルを得るには、250 以上を使用します    | 100
-`max_concurrent_iterations`|    並列で実行するイテレーションの最大回数。 この設定は、リモート コンピューティングに対してのみ機能します。|   1
-`max_cores_per_iteration`   | 1 つのパイプラインのトレーニングに使用されるコンピューティング ターゲット上のコアの数を示します。 アルゴリズムが複数のコアを使用できる場合は、これによりマルチコア マシンでのパフォーマンスが向上します。 -1 に設定すると、マシンで利用可能なすべてのコアを使用できます。|  1
-`iteration_timeout_minutes` |   特定のイテレーションにかかる時間 (分) を制限します。 イテレーションが指定した時間を超えると、そのイテレーションはキャンセルされます。 設定しないと、イテレーションは完了するまで実行を続けます。 |   なし
-`n_cross_validations`   |クロス検証の分割の数| なし
-`validation_size`   |すべてのトレーニング サンプルの割合として設定する検証のサイズ。|  なし
-`preprocess` | True または False <br/>True を指定すると、実験は入力に対して前処理を実行できます。 前処理のサブセットを次に示します<li>不足データ:不足データの補完 - 平均での数値、ほとんどの発生でのテキスト </li><li>カテゴリ値:データ型が数値で、一意の値の数が 5% 未満の場合、ワンホット エンコードに変換します </li><li>その他。完全なリストについては [GitHub リポジトリ](https://aka.ms/aml-notebooks)を確認</li><br/>注: データが疎の場合は、preprocess = true を使用できません |  False | 
-`blacklist_models`  | 自動機械学習の実験で試すアルゴリズムには、さまざまなものがあります。 特定のアルゴリズムを実験から除外するように構成します。 アルゴリズムがデータセットに対してうまく動作しないことがわかっている場合に役立ちます。 アルゴリズムを除外すると、コンピューティング リソースとトレーニング時間を節約できます。<br/>分類に使用できる値<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回帰に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>予測に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   なし
-`whitelist_models`  | 自動機械学習の実験で試すアルゴリズムには、さまざまなものがあります。 特定のアルゴリズムを実験に含めるように構成します。 アルゴリズムが自分のデータセットに対してうまく動作することがわかっている場合に役立ちます。 <br/>分類に使用できる値<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回帰に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>予測に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  なし
-`verbosity` |ログのレベルを制御します。INFO は最も詳細で、CRITICAL は最小限です。 詳細レベルは、Python ロギング パッケージで定義されているものと同じ値を取ります。 使用できる値は、以下のとおりです。<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li> 
-`X` | トレーニングするすべての機能 |  なし
-`y` |   トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。|  なし
-`X_valid`|"_省略可能_" 検証するすべての機能。 指定しない場合、X はトレーニング間で分割されて検証されます |   なし
-`y_valid`   |"_省略可能_" 検証するラベル データ。 指定しない場合、y はトレーニング間で分割されて検証されます    | なし
-`sample_weight` |   "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します |   なし
-`sample_weight_valid`   |   "_省略可能_" 各検証サンプルの重み値。 指定しない場合、sample_weight はトレーニング間で分割されて検証されます   | なし
-`run_configuration` |   RunConfiguration オブジェクト。  リモート実行に使用されます。 |なし
-`data_script`  |    get_data メソッドを含むファイルへのパス。  リモート実行に必要です。   |なし
-`model_explainability` | "_省略可能_" True または False <br/>  True を指定すると、実験でイテレーションごとに特徴の重要度が計算されます。 特定のイテレーションで explain_model() メソッドを使用して、実験の完了後にそのイテレーションの特徴の重要度を必要に応じて計算することもできます。 | False
-`enable_ensembling`|他のすべてのイテレーションの完了後に、アンサンブル イテレーションを有効にするフラグを設定します。| True 
-`ensemble_iterations`|最後のアンサンブルに含める適合したパイプラインを選択するイテレーションの数。| 15
-`experiment_timeout_minutes`| 実験全体の実行にかけられる時間 (分) を制限します | なし
+## <a name="primary-metric"></a>主要メトリック
+上記の例で示されているように、主要メトリックでは、最適化のためのモデル トレーニング時に使用されるメトリックを決定します。 選択できる主要メトリックは、選択したタスクの種類によって決定されます。 使用できるメトリックの一覧を次に示します。
+
+|分類 | 回帰 | 時系列予測
+|-- |-- |--
+|accuracy| spearman_correlation | spearman_correlation
+|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
+|average_precision_score_weighted | r2_score | r2_score
+|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
+|precision_score_weighted |
 
 ## <a name="data-pre-processing-and-featurization"></a>データの前処理と特徴付け
 
@@ -251,6 +238,46 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
     * 一意の値がほとんどない数値特徴は、カテゴリ特徴に変換されます。
     * カテゴリ特徴のカーディナリティに応じて、ラベル エンコードまたは (ハッシュ) ワンホット エンコードを実行します。
 
+## <a name="ensemble-models"></a>アンサンブル モデル
+アンサンブル学習では、1 つのモデルを使用するのではなく、多くのモデルを組み合わせることによって、機械学習の結果と予測パフォーマンスが改善されます。 自動化された機械学習を使用する場合は、[並び変えられたアンサンブルの初期化を含む Caruana アンサンブル選択アルゴリズム](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)を使用してアンサンブル モデルをトレーニングすることができます。 アンサンブル イテレーションは、実行の最後のイテレーションとして表示されます。
+
+## <a name="time-series-forecasting"></a>時系列予測
+時系列予測タスクの種類には、定義する追加のパラメータがあります。
+1. time_column_name - 日付/時系列を含むトレーニング データの列の名前を定義する必須パラメーターです。 
+1. max_horizon - トレーニング データの周期性に基づいて予測する時間の長さを定義します。 たとえば、1 日の時間グレインのトレーニング データがある場合は、モデルをトレーニングする日数を定義します。
+1. grain_column_names - トレーニング データに個々の時系列データを含む列の名前を定義します。 たとえば、店舗ごとに特定のブランドの売上を予測している場合は、店舗とブランドの列をグレインの列として定義します。
+
+以下で使用されているこれらの設定の例を参照してください。ノートブックの例は[ここ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)で入手可能です。
+
+```python
+# Setting Store and Brand as grains for training.
+grain_column_names = ['Store', 'Brand']
+nseries = data.groupby(grain_column_names).ngroups
+
+# View the number of time series data with defined grains
+print('Data contains {0} individual time-series.'.format(nseries))
+```
+
+```python
+time_series_settings = {
+    'time_column_name': time_column_name,
+    'grain_column_names': grain_column_names,
+    'drop_column_names': ['logQuantity'],
+    'max_horizon': n_test_periods
+}
+
+automl_config = AutoMLConfig(task='forecasting',
+                             debug_log='automl_oj_sales_errors.log',
+                             primary_metric='normalized_root_mean_squared_error',
+                             iterations=10,
+                             X=X_train,
+                             y=y_train,
+                             n_cross_validations=5,
+                             path=project_folder,
+                             verbosity=logging.INFO,
+                             **time_series_settings)
+```
+
 ## <a name="run-experiment"></a>実験を実行する
 
 実験を送信して実行し、モデルを生成します。 モデルを生成するには、`AutoMLConfig` を `submit` メソッドに渡します。
@@ -263,6 +290,12 @@ run = experiment.submit(automl_config, show_output=True)
 >最初に依存関係が新しいマシンにインストールされます。  出力が表示されるまで、最大で 10 分間かかる場合があります。
 >`show_output` を `True` に設定すると、コンソールに出力が表示されます。
 
+## <a name="exit-criteria"></a>終了基準 
+実験を完了するために定義できるオプションがいくつかあります。
+1. 基準なし - 終了パラメータを定義しない場合、実験は、主なメトリックでそれ以上の進歩が見られなくなるまで続けられます。 
+1. イテレーションの数 - 実行する実験のイテレーションの数を定義します。 オプションで iteration_timeout_minutes を追加して、イテレーションあたりの制限時間を分単位で定義できます。
+1. しばらくして終了 - 設定で experiment_timeout_minutes を使用すると、実験を継続して実行する時間を分単位で定義できます。
+1. スコアに達した後に終了 - experiment_exit_score を使用すると、主なメトリックに基づくスコアに達した後に実験を完了するよう選択できます。
 
 ## <a name="explore-model-metrics"></a>モデル メトリックを探索する
 結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[モデルの追跡と評価](how-to-track-experiments.md#view-run-details)に関するセクションをご覧ください。
@@ -271,8 +304,8 @@ run = experiment.submit(automl_config, show_output=True)
 ### <a name="classification-metrics"></a>分類メトリック
 分類タスクの各イテレーションで、次のメトリックが保存されます。
 
-|主要メトリック|説明|計算|追加のパラメーター
---|--|--|--|--|
+|メトリック|説明|計算|追加のパラメーター
+--|--|--|--|
 AUC_Macro| AUC は、受信者操作特徴曲線の下の領域です。 Macro は、クラスごとの AUC の算術平均です。  | [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC は、受信者操作特徴曲線の下の領域です。 Micro は、各クラスの真陽性と偽陽性を組み合わせることでグローバルに計算されます| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
 AUC_Weighted  | AUC は、受信者操作特徴曲線の下の領域です。 重み付けは各クラスのスコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
@@ -294,11 +327,11 @@ recall_score_micro|再現率は、あるクラスに実際に存在し、正し�
 recall_score_weighted|再現率は、あるクラスに実際に存在し、正しくラベル付けされている要素の割合です。 重み付けは各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|重み付けされた精度は、それぞれの例に対して指定された重みが、その例の true クラス内の true インスタンスの割合に一致する精度です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight は、ターゲット内の各要素に対して、そのクラスの割合が等しいベクターです|
 
-### <a name="regression-and-forecasting-metrics"></a>回帰メトリックと予測メトリック
+### <a name="regression-and-time-series-forecasting-metrics"></a>回帰メトリックと時系列予測メトリック
 回帰タスクまたは予測タスクの各イテレーションで、次のメトリックが保存されます。
 
-|主要メトリック|説明|計算|追加のパラメーター
---|--|--|--|--|
+|メトリック|説明|計算|追加のパラメーター
+--|--|--|--|
 explained_variance|説明分散は、ある数学的モデルが、提供されたデータ セットのバリエーションに占める割合です。 エラーの分散に対する元データの分散の減少の割合です。 エラーの平均が 0 の場合は、説明分散と同じです。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|なし|
 r2_score|R2 は、平均を出力するベースライン モデルと比較した、決定係数または二乗誤差の減少の割合です。 エラーの平均が 0 の場合は、説明分散と同じです。|[計算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|なし|
 spearman_correlation|スピアマンの相関は、2 つのデータセット間の関係の単調性に対するノンパラメトリック測定です。 ピアソンの相関とは異なり、スピアマンの相関は両方のデータセットが正規分布していることを想定しません。 他の相関係数と同様に、-1 と +1 の間で変化し、0 は相関関係がないことを示します。 相関係数が -1 または +1 の場合は、完全に単調な関係であることを示します。 正の相関関係は、x、y ともに増加することを示します。 負の相関関係は、x が増加すると y は減少することを示します。|[計算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|なし|
@@ -321,31 +354,31 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
 *   実験の完了後に、任意のイテレーションで `explain_model` メソッドを使用します。
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import explain_model
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         explain_model(fitted_model, X_train, X_test)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-*   すべてのイテレーションに対する特徴の重要度を確認するには、AutoMLConfig で `model_explainability` フラグを `True` に設定します。  
+*   すべてのイテレーションに対する特徴の重要度を確認するには、AutoMLConfig で `model_explainability` フラグを `True` に設定します。
 
-    ```
+    ```python
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  primary_metric = 'AUC_weighted',
                                  max_time_sec = 12000,
                                  iterations = 10,
                                  verbosity = logging.INFO,
-                                 X = X_train, 
+                                 X = X_train,
                                  y = y_train,
                                  X_valid = X_test,
                                  y_valid = y_test,
@@ -355,22 +388,22 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
     これを実行すると、retrieve_model_explanation メソッドを使用して特定のイテレーションの特徴の重要度を取得できます。
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         retrieve_model_explanation(best_run)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの Jupyter ウィジェットを使用して表示することもできます。 グラフの詳細については、[Azure ML ノートブックのサンプルに関する記事](samples-notebooks.md)ご覧ください。
+Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの Jupyter ウィジェットを使用して表示することもできます。 グラフの詳細については、[Azure Machine Learning service ノートブックのサンプルに関する記事](samples-notebooks.md)をご覧ください。
 
 ```python
 from azureml.widgets import RunDetails
@@ -382,4 +415,4 @@ RunDetails(local_run).show()
 
 [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 
-[自動機械学習を利用して分類モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。 
+[自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。

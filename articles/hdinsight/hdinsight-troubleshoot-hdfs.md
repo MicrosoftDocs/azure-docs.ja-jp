@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d3ae15193b5e2d759825e60f880dea4355329837
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fca763d04cc8cbf22d1578b18d504ec3ce9656d9
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407054"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993027"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop HDFS のトラブルシューティング
 
@@ -23,7 +23,7 @@ Apache Ambari で Hadoop 分散ファイル システム (HDFS) ペイロード�
 
 ### <a name="issue"></a>問題
 
-HDInsight クラスター内から Azure Blob Storage または Azure Data Lake Store を使用するのではなく、コマンド ラインおよびアプリケーション コードからローカル HDFS にアクセスする。   
+HDInsight クラスター内から Azure Blob Storage または Azure Data Lake Storage を使用するのではなく、コマンド ラインおよびアプリケーション コードからローカル HDFS にアクセスする。   
 
 ### <a name="resolution-steps"></a>解決手順
 

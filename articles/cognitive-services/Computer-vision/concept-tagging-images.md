@@ -1,23 +1,24 @@
 ---
-title: イメージへのタグ付け - Computer Vision
+title: コンテンツ タグを画像に適用する - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用したイメージへのタグ付けに関連する概念。
+description: Computer Vision API の画像タグ付け機能に関連する概念について説明します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 7e9181b6e805a768ca5dd8ed558b8feea45f22d3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960909"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311071"
 ---
-# <a name="tagging-images"></a>イメージへのタグ付け
+# <a name="applying-content-tags-to-images"></a>コンテンツ タグの画像への適用
 
 Computer Vision では、数千個の認識可能なオブジェクト、生物、風景、動作に基づいて、タグが返されます。 タグが不明瞭な場合や、常識的でない場合は、API 応答により、既知の設定のコンテキストでタグの意味を明確にするための "ヒント" が示されます。 タグは分類として整理されず、継承階層は存在しません。 一連のコンテンツ タグでは、完全な文章で書式設定された人間が判読できる言語として表示されるイメージの "説明" の基礎が形成されます。 現時点では、イメージの説明でサポートされている言語は英語のみであることに注意してください。
 
@@ -27,7 +28,7 @@ Computer Vision では、数千個の認識可能なオブジェクト、生物�
 
 次の JSON 応答は、サンプル イメージで検出された視覚的特徴のタグを付けるときに、Computer Vision から返される内容を示します。
 
-![House_Yard](./Images/house_yard.png)。
+![青い家と前庭](./Images/house_yard.png)。
 
 ```json
 {

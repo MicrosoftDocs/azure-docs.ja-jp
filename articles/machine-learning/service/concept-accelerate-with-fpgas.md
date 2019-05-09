@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Azure 上の FPGA を使用してモデルとディープ ニューラル ネットワークを高速化する方法を説明します。 この記事では、Field-programmable Gate Arrays (FPGA) の概要と、Azure の FPGA にモデルをデプロイしたときに Azure Machine Learning service によってリアルタイムの人工知能 (AI) が提供される方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
-ms.date: 10/24/2018
+ms.date: 1/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bc08025f070fb31d83fed26bfec00cec11cee061
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 716de6d491be753c5c32c0a2774404140010f72c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313634"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823316"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>FPGA および Project Brainwave とは?
 
@@ -39,7 +39,7 @@ FPGA には、プログラミング可能なロジック ブロックの配列�
 
 ## <a name="project-brainwave-on-azure"></a>Azure 上での Project Brainwave
 
-[Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) は Microsoft のハードウェア アーキテクチャです。 リアルタイムの AI 計算を高速化するためにデータ サイエンティストや開発者が使用する、Intel の FPGA デバイスをベースにしています。 この FPGA 対応のアーキテクチャでは、パフォーマンス、柔軟性、スケールが提供され、Azure で使用できます。
+[Project Brainwave](https://www.microsoft.com/en-us/research/project/project-brainwave/) は Microsoft のハードウェア アーキテクチャです。 リアルタイムの AI 計算を高速化するためにデータ サイエンティストや開発者が使用する、Intel の FPGA デバイスをベースにしています。 この FPGA 対応のアーキテクチャでは、パフォーマンス、柔軟性、スケールが提供され、Azure で使用できます。
 
 FPGA によって、リアルタイムの推論要求に関して短い待機時間を達成できるようになります。 非同期の要求 (バッチ処理) は必要ありません。 バッチ処理では、処理の必要なデータが多くなるため待機時間は長くなる場合があります。 ニューラル処理ユニットの Project Brainwave の実装にバッチ処理は必要ないので、待機時間は CPU および GPU プロセッサと比較して何倍も短くなる場合があります。
 

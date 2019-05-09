@@ -1,18 +1,18 @@
 ---
 title: Bulk Executor ライブラリを使った Azure Cosmos DB での一括インポートとデータ更新
 description: Bulk Executor ライブラリによって提供される一括インポート API と一括更新 API を通じて、Azure Cosmos DB で一括操作を実行します。
-services: cosmos-db
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: e3b77ce28e5c3a236abcd9a22e643428b53ed0a6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: e0176af0ce77e9306f6f0031122f8ba8a7b27e61
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834810"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038282"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB Bulk Executor ライブラリの概要
  

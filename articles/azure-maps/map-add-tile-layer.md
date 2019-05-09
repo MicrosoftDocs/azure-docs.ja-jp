@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 57cde41bf65c370f86ebc57a39e917b95721ca81
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 3a773c24993d229f20df698113ff7535fea634ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52893072"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170039"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 
@@ -24,7 +24,7 @@ ms.locfileid: "52893072"
 
 * X、Y、ズーム表記 - ズーム レベルに基づいた、タイル グリッド内のタイルの列 (x)、行 (x) の位置です。
 * quadkey 表記 - x、y、ズーム情報を組み合わせて、タイルの一意の識別子である 1 つの文字列値にします。
-* 境界ボックス - 境界ボックス座標を使用して、[Web マッピング サービス (WMS)](http://www.opengeospatial.org/standards/wms) で一般的に使用されている `{west},{south},{east},{north}` の形式で画像を指定することができます。
+* 境界ボックス - 境界ボックス座標を使用して、[Web マッピング サービス (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されている `{west},{south},{east},{north}` の形式で画像を指定することができます。
 
 > [!TIP]
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) は、マップ上で大規模なデータ セットを視覚化する場合に適しています。 画像からタイル レイヤーを生成できるだけでなく、ベクター データもタイル レイヤーとしてレンダリングできます。 ベクター データをタイル レイヤーとしてレンダリングすることで、マップ コントロールでは、タイルが表すベクター データよりもはるかにファイル サイズの小さいタイルを読み込むだけで済みます。 この手法は、何百万行ものデータをマップにレンダリングする必要がある場合によく使われています。
@@ -40,7 +40,7 @@ ms.locfileid: "52893072"
 
 ## <a name="add-a-tile-layer"></a>タイル レイヤーを追加する
 
- このサンプルは、x、y、ズーム タイル システムを使用するタイルのセットを指すタイル レイヤーを作成する方法を示しています。 このタイル レイヤーのソースは、[アイオワ州立大学の Iowa Environmental Mesonet](http://mesonet.agron.iastate.edu/ogc/) の気象レーダー オーバーレイです。
+ このサンプルは、x、y、ズーム タイル システムを使用するタイルのセットを指すタイル レイヤーを作成する方法を示しています。 このタイル レイヤーのソースは、[アイオワ州立大学の Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) の気象レーダー オーバーレイです。
 
 <br/>
 
@@ -68,7 +68,7 @@ ms.locfileid: "52893072"
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayeroptions?view=azure-iot-typescript-latest)
+> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest)
 
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 

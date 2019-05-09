@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 11651c2721756a4f750a5a5e78f86fdbd363fb9d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954039"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462591"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Azure CDN でカスタム HTTPS を有効にするために許可された認証機関
 
@@ -37,9 +37,6 @@ ms.locfileid: "49954039"
 - AME Infra CA 01
 - AME Infra CA 02
 - Ameroot
-- AP Root CA
-- AP Root Certificate Authority 2013
-- AP Root Certificate Authority 2014
 - APCA-DM3P
 - Autopilot Root CA
 - Baltimore CyberTrust Root
@@ -70,8 +67,8 @@ ms.locfileid: "49954039"
 - GlobalSign Root CA
 - Go Daddy Root Certificate Authority - G2
 - Go Daddy Secure Certificate Authority - G2
+- QuoVadis Root CA2 G3
 - RapidSSL RSA CA 2018
-- Root Agency
 - Symantec Class 3 EV SSL CA - G3
 - Symantec Class 3 Secure Server CA - G4
 - Symantec Enterprise Mobile Root for Microsoft

@@ -6,15 +6,15 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 11/08/2018
+ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7dd7612817f83fe713759965fc28f6f86a0d624a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d6d850fa8f896809318be77529e10abddaf6ea9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602530"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173823"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル:IoT デバイスの監視
 

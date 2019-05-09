@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: eeb0fe5b19f23e101eab9393dca64e1e13bf6922
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c1a4313f9a8174b9ea6e6cff694b9a0a9cf395d1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188923"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538155"
 ---
 # <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>チュートリアル:Azure コンテナー レジストリをデプロイし、コンテナー イメージをプッシュする
 
@@ -217,12 +217,12 @@ v1
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
-[nodejs]: http://nodejs.org
+[nodejs]: https://nodejs.org
 
 <!-- LINKS - Internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-repository-list]: /cli/azure/acr/repository#az-acr-list
+[az-acr-repository-list]: /cli/azure/acr/repository
 [az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
 [az-acr-show]: /cli/azure/acr#az-acr-show
 [az-group-create]: /cli/azure/group#az-group-create

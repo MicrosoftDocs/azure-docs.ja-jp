@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 85db38fef5e69c4de855f8cb6d54151496faebbe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090246"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588722"
 ---
 # <a name="clean-up-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブの削除
 
-Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SDK for .Net または REST API を使用して簡単に削除できます。
+Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SDK for .Net または REST API を使用して簡単に削除できます。 削除した Stream Analytics ジョブは復旧できません。
 
 >[!NOTE] 
 >Azure Stream Analytics ジョブを停止すると、Event Hubs または Azure SQL Database などの入力および出力ストレージのみでデータが永続化されます。 Azure からデータを削除する必要がある場合は、Stream Analytics ジョブの入力と出力のリソースの削除処理を実行してください。
@@ -47,7 +47,9 @@ Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SD
 
 ## <a name="stop-or-delete-a-job-using-powershell"></a>PowerShell を使用してジョブを停止または削除する
 
-PowerShell を使用してジョブを停止するには、[Stop-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob?view=azurermps-5.7.0) コマンドレットを使用します。 PowerShell を使用してジョブを削除するには、[Remove-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/Remove-AzureRmStreamAnalyticsJob?view=azurermps-5.7.0) コマンドレットを使用します。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+PowerShell を使用してジョブを停止するには、[Stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) コマンドレットを使用します。 PowerShell を使用してジョブを削除するには、[Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) コマンドレットを使用します。
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Azure SDK for .NET を使用してジョブを停止または削除する
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
@@ -17,14 +17,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: c7d1665eece966053f52e118bb0d6f7f5ec4cba6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e5085acad8a82394340892a3a67a3d1e5d85384b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957865"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442173"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>方法: Android で ADAL を使用してクロス アプリ SSO を有効にする
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>方法:Android で ADAL を使用してクロス アプリ SSO を有効にする
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -108,7 +109,7 @@ Android では、アカウント セレクターがアプリケーションの�
 2. 新しいリダイレクト URI を確立し、アプリとアプリ登録の両方に提供します。
 3. Android マニフェストで適切なアクセス許可をセットアップします。
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>手順 1: アプリケーションでブローカー モードを有効にする
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>手順 1:アプリケーションでブローカー モードを有効にする
 
 ブローカーを使用するアプリケーションの機能は、認証インスタンスの "設定" または初期セットアップを作成すると有効になります。 アプリでこれを実行するには:
 
@@ -116,7 +117,7 @@ Android では、アカウント セレクターがアプリケーションの�
 AuthenticationSettings.Instance.setUseBroker(true);
 ```
 
-#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>手順 2: URI スキームで新しいリダイレクト URL を確立する
+#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>手順 2:URL スキームで新しいリダイレクト URI を確立する
 
 返された資格情報トークンを適切なアプリケーションが確実に受信するようにするには、Android オペレーティング システムが検証できるような方法でアプリケーションにコールバックする必要があります。 Android のオペレーティング システムは、Google Play ストアの証明書のハッシュを使用します。 この証明書のハッシュは、悪意のあるアプリケーションが偽装することはできません。 ブローカー アプリケーションの URI と併せて、Microsoft は、トークンが正しいアプリケーションに返されるようにしています。 アプリケーションに登録するには、一意のリダイレクト URI が必要です。
 
@@ -128,9 +129,9 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 このリダイレクト URI は、[Azure Portal](https://portal.azure.com/) を使用して、アプリ登録に登録できます。 Azure AD のアプリ登録の詳細については、「[Integrating with Azure Active Directory (Azure Active Directory との統合)](active-directory-how-to-integrate.md)」を参照してください。
 
-#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>手順 3: アプリケーションで適切なアクセス許可をセットアップする
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>手順 3:アプリケーションで適切なアクセス許可をセットアップする
 
-Android のブローカー アプリケーションは、Android OS のアカウント マネージャー機能を使用して、複数のアプリケーションにわたって資格情報を管理します。 Android でブローカーを使用するには、アプリ マニフェストが AccountManager アカウントを使用するためのアクセス許可を持っている必要があります。 アクセス許可の詳細については、[こちら](http://developer.android.com/reference/android/accounts/AccountManager.html)のアカウント マネージャーについての Google ドキュメントを参照してください。
+Android のブローカー アプリケーションは、Android OS のアカウント マネージャー機能を使用して、複数のアプリケーションにわたって資格情報を管理します。 Android でブローカーを使用するには、アプリ マニフェストが AccountManager アカウントを使用するためのアクセス許可を持っている必要があります。 アクセス許可の詳細については、[こちら](https://developer.android.com/reference/android/accounts/AccountManager.html)のアカウント マネージャーについての Google ドキュメントを参照してください。
 
 特に、以下のアクセス許可が必要です。
 
@@ -142,8 +143,8 @@ MANAGE_ACCOUNTS
 
 ### <a name="youve-configured-sso"></a>SSO の構成の終了
 
-これで、Identity SDK が自動的に複数のアプリケーションにわたって資格情報を共有し、デバイスにブローカーがあればそれを呼び出すようになります。
+これで、ID SDK が自動的に複数のアプリケーションにわたって資格情報を共有し、デバイスにブローカーがあればそれを呼び出すようになります。
 
 ## <a name="next-steps"></a>次の手順
 
-* [シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)の詳細
+* [シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)の詳細について説明します

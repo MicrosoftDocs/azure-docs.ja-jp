@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c8ead3dc34faefce0f113dee2074960fddfa11a1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 15c559bb8b357b7776c101f88db8316b05edb677
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144593"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213162"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure アプリケーション: マネージド アプリケーション オファーの発行ガイド
+# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure アプリケーション:マネージド アプリケーション オファーの発行ガイド
 
 マネージド アプリケーションは、Marketplace でソリューションを発行するための 1 つの手段です。 このガイドでは、このオファーの要件について説明します。 
 
@@ -41,17 +41,19 @@ ms.locfileid: "43144593"
 |顧客の Azure サブスクリプションにデプロイされている | マネージド アプリが顧客のサブスクリプションにデプロイされていて、サード パーティによって管理できる必要があります。 | 
 |請求/メータリング    |  リソースが顧客の Azure サブスクリプションでプロビジョニングされます。 従量課金制 (PAYGO) の仮想マシンが Microsoft 経由で顧客とトランザクション処理され、顧客の Azure サブスクリプション (PAYGO) により課金されます 
 ライセンス持ち込みの場合、Microsoft が顧客サブスクリプションで生じるインフラストラクチャ コストを請求し、ユーザーが顧客に対して直接ソフトウェア ライセンス料金を処理します。        |
-|Azure と互換性がある仮想ハード ディスク (VHD)    |   VM は、Windows または Linux 上に構築されている必要があります。<ul> <li>Linux VHD の作成の詳細については、[docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based) の「Azure と互換性のある VHD の作成 (Linux ベース)」セクションを参照してください。</li> <li>Windows VHD の作成の詳細については、[docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based) の「Azure と互換性のある VHD の作成 (Windows ベース)」セクションを参照してください。</li> </ul>      |
+|Azure と互換性がある仮想ハード ディスク (VHD)    |   VM は、Windows または Linux 上に構築されている必要があります。<ul> <ul> <li>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。</li> <li>Windows VHD の作成の詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」を参照してください。</li> </ul> |
 
 >[!NOTE]
 > 管理対象アプリは、Marketplace から展開できる必要があります。 顧客の通信に懸念がある場合、リード共有を有効にした後、興味を持つ顧客に連絡するようにしてください。  
 
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 まだ行っていない場合は、 
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)する
+- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させる
+- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。

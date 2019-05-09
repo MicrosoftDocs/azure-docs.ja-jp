@@ -8,15 +8,15 @@ ms.author: jehunte
 ms.date: 04/11/2018
 ms.topic: tutorial
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6ff8bccc7037782b2709340312f0602b4cd7ab1f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2cce925f4b3e1acc6c93019615b81983a5c95f6f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834334"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815894"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Azure マシンと Azure 以外のマシンにインストールされているソフトウェアを検出する
 
@@ -58,8 +58,10 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペースは、インベントリのような機能およびサービスによって生成されるデータを収集するために使用されます。
 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。
-ソリューションが有効になると、VM にインストールされているソフトウェアと変更に関する情報が Log Analytics に送られます。
+ソリューションが有効になると、VM にインストールされているソフトウェアと変更に関する情報が Azure Monitor ログに送られます。
 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
 ## <a name="onboard-a-vm"></a>VM の配布準備
@@ -101,7 +103,7 @@ Automation アカウント内から、**[構成管理]** の **[インベント�
 
 ## <a name="search-inventory-logs-for-installed-software"></a>インストールされているソフトウェアのインベントリ ログを検索する
 
-インベントリは、Log Analytics に送信されるログ データを生成します。 クエリを実行してログを検索するには、**[インベントリ]** ウィンドウの上部にある **[Log Analytics]** ウィンドウを選択します。
+インベントリは、Azure Monitor ログに送信されるログ データを生成します。 クエリを実行してログを検索するには、**[インベントリ]** ウィンドウの上部にある **[Log Analytics]** ウィンドウを選択します。
 
 インベントリ データは、型 **ConfigurationData** に格納されます。
 次のサンプル Log Analytics クエリは、Publisher が "Microsoft Corporation" と等しいインベントリの結果を返します。
@@ -113,11 +115,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Log Analytics でのログ ファイルの実行と検索については、[Azure Log Analytics ](../azure-monitor/log-query/log-query-overview.md) に関するページを参照してください。
+Azure Monitor ログでのログ ファイルの実行と検索については、[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
 
 ### <a name="single-machine-inventory"></a>1 台のマシンのインベントリ
 
-1 台のマシンのソフトウェア インベントリを表示するには、Azure VM リソース ページから [インベントリ] にアクセスするか、Log Analytics でフィルターを使用して対応するマシンを表示します。
+1 台のマシンのソフトウェア インベントリを表示するには、Azure VM リソース ページから [インベントリ] にアクセスするか、Azure Monitor ログでフィルターを使用して対応するマシンを表示します。
 次の例の Log Analytics クエリは、ContosoVM という名前のマシンのソフトウェア一覧を返します。
 
 ```loganalytics

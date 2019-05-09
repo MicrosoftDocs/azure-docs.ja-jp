@@ -3,19 +3,19 @@ title: ローカライズ - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの Localization 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e9442302b8d15a3a6a4c9fe148b48845b3535204
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44383001"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187557"
 ---
 # <a name="localization"></a>ローカライズ
 
@@ -73,7 +73,7 @@ ms.locfileid: "44383001"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | はい | ローカライズされたリソースを一意に識別するために使用される識別子。 |
+| Id | はい | ローカライズされたリソースを一意に識別するために使用される識別子。 |
 
 **LocalizedResources** 要素には、次の要素が含まれています。
 
@@ -104,7 +104,7 @@ ms.locfileid: "44383001"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| 項目 | 0:n | ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (ドロップダウン リストの値など) を定義します。 |
+| Item | 0:n | ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (ドロップダウン リストの値など) を定義します。 |
 
 **Item** 要素には、次の属性が含まれています。
 
@@ -222,7 +222,7 @@ ms.locfileid: "44383001"
 
 各 **LocalizedResources** 要素には、複数の **LocalizedString** 要素を持つすべての必要な **LocalizedStrings** 要素と、複数の **LocalizedCollection** 要素を持つ **LocalizedCollections** 要素が含まれています。  次の例では、サインアップ ページの英語のローカライズ追加します。 
 
-注: この例では、`Gender` と `City` の要求の種類を参照しています。 この例を使用するには、これらの要求を定義してください。 詳細については、[ClaimsSchema](claimsschema.md)を参照してください。
+注:この例では、`Gender` と `City` の要求の種類を参照しています。 この例を使用するには、これらの要求を定義してください。 詳細については、[ClaimsSchema](claimsschema.md)を参照してください。
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">

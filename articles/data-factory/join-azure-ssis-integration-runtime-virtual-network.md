@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/08/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1afd98026a2aad552258b636ba078ca4f9bd2d58
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723144"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618143"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 以下のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワークに参加させます。 
@@ -27,7 +26,7 @@ ms.locfileid: "52723144"
 
 - Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance で SQL Server Integration Services (SSIS) のカタログ データベースをホストしている。 
 
- Azure Data Factory では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS 統合ランタイムを参加させることができます。 
+  Azure Data Factory では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS 統合ランタイムを参加させることができます。 
 
 > [!IMPORTANT]
 > クラシック仮想ネットワークは現在非推奨とされているため、代わりに Azure Resource Manager 仮想ネットワークを使用してください。  既にクラシック仮想ネットワークを使っている場合は、できるだけ早期に Azure Resource Manager 仮想ネットワークを使用するよう切り替えてください。
@@ -74,15 +73,19 @@ Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加さ
 
 -   仮想ネットワークのリソース グループが、特定の Azure ネットワーク リソースを作成および削除できることを確認します。 「[リソース グループの要件](#resource-group)」をご覧ください。 
 
+Azure-SSIS IR に必要な接続を示す図を次に示します。
+
+![Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
+
 ### <a name="perms"></a> 必要なアクセス許可
 
 Azure-SSIS 統合ランタイムを作成するユーザーは、次のアクセス許可を持っている必要があります。
 
 - SSIS IR を Azure Resource Manager 仮想ネットワークに参加させようとしている場合は、次の 2 つのオプションがあります。
 
-  - 組み込みの*ネットワーク共同作成者*ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ *Microsoft.Network/\** アクセス許可が備わっています。
+  - 組み込みの*ネットワーク共同作成者*ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ _Microsoft.Network/\*_ アクセス許可が備わっています。
 
-  - 必要な *Microsoft.Network/virtualNetworks/\*/join/action* アクセス許可のみを含むカスタム ロールを作成してください。 
+  - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 
 
 - SSIS IR をクラシック仮想ネットワークに参加させようとしている場合は、組み込みの*従来の仮想マシン共同作成者*ロールを使用することをお勧めします。 そうしない場合は、仮想ネットワークに参加するためのアクセス許可を含むカスタム ロールを定義する必要があります。
 
@@ -107,7 +110,7 @@ Azure-SSIS 統合ランタイムによって参加した仮想ネットワーク
 ### <a name="nsg"></a> ネットワーク セキュリティ グループ
 Azure-SSIS 統合ランタイムが使用するサブネットにネットワーク セキュリティ グループ (NSG) を実装する必要がある場合は、次のポートを受信/送信トラフィックが通過できるようにします。 
 
-| 方向 | トランスポート プロトコル | ソース | 送信元ポート範囲 | 宛先 | 送信先ポート範囲 | 説明 |
+| Direction | トランスポート プロトコル | ソース | 送信元ポート範囲 | 宛先 | 送信先ポート範囲 | 説明 |
 |---|---|---|---|---|---|---|
 | 受信 | TCP | AzureCloud<br/>(またはインターネットなどのより大きなスコープ) | * | VirtualNetwork | 29876、29877 (IR を Azure Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS 統合ランタイムのノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
 | 送信 | TCP | VirtualNetwork | * | AzureCloud<br/>(またはインターネットなどのより大きなスコープ) | 443 | 仮想ネットワークの Azure-SSIS 統合ランタイムのノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
@@ -132,11 +135,11 @@ Azure-SSIS 統合ランタイムが使用するサブネットにネットワー
 
 ### <a name="resource-group"></a> リソース グループの要件
 -   Azure SSIS IR では、仮想ネットワークと同じリソース グループ下に特定のネットワーク リソースを作成する必要があります。 これらのリソースとして、次が挙げられます。
-    -   Azure ロード バランサー。*<Guid>-azurebatch-cloudserviceloadbalancer* という名前で使用される。
-    -   Azure パブリック IP アドレス。*<Guid>-azurebatch-cloudservicepublicip* という名前で使用される。
-    -   ネットワーク ワーク セキュリティ グループ。*<Guid>-azurebatch-cloudservicenetworksecuritygroup* という名前で使用される。 
+    -   Azure ロード バランサー。*\<Guid>-azurebatch-cloudserviceloadbalancer* という名前で使用される。
+    -   Azure パブリック IP アドレス。*\<Guid>-azurebatch-cloudservicepublicip* という名前で使用される。
+    -   ネットワーク ワーク セキュリティ グループ。*\<Guid>-azurebatch-cloudservicenetworksecuritygroup* という名前で使用される。 
 
--   仮想ネットワークが属するリソース グループまたはサブスクリプションでリソース ロックがないことを確認します。 読み取り専用ロックまたは削除ロックのどちらかを構成した場合、IR の開始と停止は失敗またはハングする可能性があります。 
+-   仮想ネットワークが属するリソース グループまたはサブスクリプションでリソース ロックがないことを確認します。 読み取り専用ロックまたは削除ロックのどちらかを構成した場合、IR の開始と停止は失敗または応答停止するおそれがあります。 
 
 -   仮想ネットワークが属するリソース グループまたはサブスクリプション下に次のリソースが作成されるのを妨げる Azure ポリシーがないことを確認します。 
     -   Microsoft.Network/LoadBalancers 
@@ -277,6 +280,8 @@ Azure-SSIS IR を仮想ネットワークに参加させる前に、仮想ネッ
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="configure-a-virtual-network"></a>仮想ネットワークを構成する
 Azure-SSIS IR を仮想ネットワークに参加させる前に、仮想ネットワークを構成する必要があります。 Azure-SSIS 統合ランタイムが仮想ネットワークを参加させるための仮想ネットワークのアクセス許可/設定を自動的に構成するには、次のスクリプトを追加します。
 
@@ -286,16 +291,16 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     # Register to the Azure Batch resource provider
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
-    while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
+    $BatchObjectId = (Get-AzADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+    while(!(Get-AzResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
     Start-Sleep -s 10
     }
     if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
     {
         # Assign the VM contributor role to Microsoft.Batch
-        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+        New-AzRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
     }
 }
 ```
@@ -323,7 +328,7 @@ $SubnetName = "<the name of subnet in your virtual network>"
 仮想ネットワークに参加させる前に、Azure-SSIS 統合ランタイムを停止します。 このコマンドは、そのすべてのノードを解放し、課金を停止します。
 
 ```powershell
-Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Stop-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                             -DataFactoryName $DataFactoryName `
                                             -Name $AzureSSISName `
                                             -Force 
@@ -336,25 +341,25 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     # Register to the Azure Batch resource provider
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
-    while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
+    $BatchObjectId = (Get-AzADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+    while(!(Get-AzResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
         Start-Sleep -s 10
     }
     if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
     {
         # Assign VM contributor role to Microsoft.Batch
-        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+        New-AzRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
     }
 }
 ```
 
 ### <a name="configure-the-azure-ssis-ir"></a>Azure-SSIS IR を構成する
-仮想ネットワークに参加するように Azure-SSIS 統合ランタイムを構成するのには、`Set-AzureRmDataFactoryV2IntegrationRuntime` コマンドを実行します。 
+仮想ネットワークに参加するように Azure-SSIS 統合ランタイムを構成するのには、`Set-AzDataFactoryV2IntegrationRuntime` コマンドを実行します。 
 
 ```powershell
-Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                            -DataFactoryName $DataFactoryName `
                                            -Name $AzureSSISName `
                                            -Type Managed `
@@ -366,7 +371,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName
 Azure-SSIS 統合ランタイムを起動するには、次のコマンドを実行します。 
 
 ```powershell
-Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                              -DataFactoryName $DataFactoryName `
                                              -Name $AzureSSISName `
                                              -Force

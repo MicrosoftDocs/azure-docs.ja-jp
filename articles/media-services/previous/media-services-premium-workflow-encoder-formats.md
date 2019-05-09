@@ -6,41 +6,41 @@ documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
-ms.assetid: b197fce8-3b9b-4189-8d08-486810c0426f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/19/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 337ee0edc3d6e644415b2b3f7524d829d0e3c692
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 25f32750b612bb66f23eb19c378f7935689f3a73
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246468"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258617"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>メディア エンコーダー プレミアム ワークフローの形式とコーデック
+
 > [!NOTE]
 > プレミアム エンコーダーに関するご質問は、電子メールで mepd@microsoft.com までお送りください。
 > 
 > このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。 
-> 
-> 
 
 このドキュメントには、以前のパブリック プレビュー バージョンの **メディア エンコーダー プレミアム ワークフロー** でサポートされる入力ファイルおよび出力ファイルの形式とコーデックの一覧が含まれています。
 
-[Media Encoder Premium Worflow の入力の形式とコーデック](#input_formats)
+[メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック](#input_formats)
 
-[Media Encoder Premium Worflow の出力の形式とコーデック](#output_formats)
+メディア エンコーダー Premium ワークフローの出力形式とコーデック
 
 **メディア エンコーダー プレミアム ワークフロー** では、 [この](#closed_captioning) セクションで説明されているクローズド キャプションがサポートされています。 
 
 ## <a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
+
 次のセクションに、このメディア プロセッサの入力としてサポートされたコーデックとファイル形式の一覧を示します。
 
 ### <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
+
 * Adobe® Flash® F4V
 * MXF/SMPTE 377M
 * GXF
@@ -51,6 +51,7 @@ ms.locfileid: "50246468"
 * AVI (非圧縮 8-bit/10-bit)
 
 ### <a name="input-video-codecs"></a>入力ビデオ コーデック
+
 * AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む)
 * Avid DNxHD (MXF)
 * DVCPro/DVCProHD (MXF)
@@ -61,6 +62,7 @@ ms.locfileid: "50246468"
 * Windows Media ビデオ/VC-1
 
 ### <a name="input-audio-codecs"></a>入力オーディオ コーデック
+
 * AES (SMPTE 331M および 302M、AES3-2003)
 * Dolby® E
 * Dolby® Digital (AC3)
@@ -71,9 +73,11 @@ ms.locfileid: "50246468"
 * WAV/PCM
 
 ## <a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
+
 次のセクションに、このメディア プロセッサからの出力としてサポートされたコーデックとファイル形式の一覧を示します。
 
 ### <a name="output-containerfile-formats"></a>出力コンテナー/ファイル形式
+
 * Adobe® Flash® F4V
 * MXF (OP1a、XDCAM および AS02)
 * DPP (AS11 を含む)
@@ -85,6 +89,7 @@ ms.locfileid: "50246468"
 * MPEG TS 
 
 ### <a name="output-video-codecs"></a>出力ビデオ コーデック
+
 * AVC (H.264、8-bit、最大ハイ プロファイル、レベル 5.2、4K Ultra HD、AVC Intra)
 * Avid DNxHD (MXF)
 * DVCPro/DVCProHD (MXF)
@@ -92,8 +97,13 @@ ms.locfileid: "50246468"
 * MPEG-1
 * Windows Media ビデオ/VC-1
 * JPEG サムネール作成
+* HEVC (8 ビットおよび 10 ビットの H.265、メインおよびメイン 10 プロファイル)
+
+  HDR 10 のサポートは特定のシナリオでのみ提供されています。詳細については、mepd@microsoft.com にお問い合わせください
+
 
 ### <a name="output-audio-codecs"></a>出力オーディオ コーデック
+
 * AES (SMPTE 331M および 302M、AES3-2003)
 * Dolby® Digital (AC3)
 * Dolby® Digital Plus (E-AC3) 最大 7.1
@@ -106,6 +116,7 @@ ms.locfileid: "50246468"
 >Dolby® Digital (AC3) にエンコードする場合、出力は、ISO MP4 ファイルにのみ書き込むことができます。
 
 ## <a id="closed_captioning"></a>クローズド キャプションのサポート
+
 取り込み側時は、 **メディア エンコーダー プレミアム ワークフロー** で次がサポートされます。
 
 1. SCC ファイル
@@ -122,14 +133,18 @@ ms.locfileid: "50246468"
 5. SRT サブタイトル ファイル
 6. DVB サブタイトル ストリーム
 
-注: 上記の出力形式のすべてが、Azure Media Services のストリーミングを通じた配信でサポートされているわけではありません。
+> [!NOTE]
+> Azure Media Services のストリーミングによる配信で、上記の出力形式のすべてがサポートされているわけではありません。
 
 ## <a name="known-issues"></a>既知の問題
+
 入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。 
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

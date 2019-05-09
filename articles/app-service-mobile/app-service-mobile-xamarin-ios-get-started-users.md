@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: 31e02cd931b3c9ab2cc55a540841969488c0c5f7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 132909931291daf3aefddd5e1a44273050d98e06
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997514"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326172"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Xamarin.iOS アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "52997514"
 
 認証をセキュリティで保護するには、アプリ用の新しい URL スキームの定義が必要になります。 これによって、認証プロセスが完了すると認証システムからアプリにリダイレクトできます。 このチュートリアル全体を通して、URL スキーム _appname_ を使用します。 ただし、選択したあらゆる URL スキームを使用できます。 URL スキームは、モバイル アプリに対して一意である必要があります。 サーバー側でリダイレクトを有効にするには、以下の手順に従います。
 
-1. [Azure Portal] で、App Service を選択します。
+1. [Azure Portal](https://portal.azure.com/) で、App Service を選択します。
 
 2. **[認証/承認]** メニュー オプションをクリックします。
 
@@ -48,9 +48,9 @@ ms.locfileid: "52997514"
 ## <a name="restrict-permissions-to-authenticated-users"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-&nbsp;&nbsp;4. Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターを使用してクライアント プロジェクトを実行します。 アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。 デバッガーのコンソールに、エラーが記録されます。 Visual Studio では、[出力] ウィンドウでエラーを確認する必要があります。
+* Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターを使用してクライアント プロジェクトを実行します。 アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。 デバッガーのコンソールに、エラーが記録されます。 Visual Studio では、[出力] ウィンドウでエラーを確認する必要があります。
 
-&nbsp;&nbsp;この許可されない問題は、アプリが認証されていないユーザーとしてモバイル アプリのバックエンドにアクセスしようとするために発生します。 *TodoItem* テーブルは認証が必要になっています。
+    この許可されない問題は、認証されていないユーザーとしてモバイル アプリのバックエンドにアプリがアクセスしようとするために発生します。 *TodoItem* テーブルは今すぐ認証が必要です。
 
 次に、認証されたユーザーで Mobile App のバックエンドからリソースを要求するように、クライアント アプリを更新します。
 
@@ -58,67 +58,82 @@ ms.locfileid: "52997514"
 ここでは、データを表示する前にログイン画面を表示するようにアプリケーションを変更します。 アプリケーションが起動したときには、App Service には接続されず、データも表示されません。 ユーザーが最初に更新操作を実行した後で、ログイン画面が表示されます。ログインに成功すると、Todo 項目の一覧が表示されます。
 
 1. クライアント プロジェクトで **QSTodoService.cs** ファイルを開き、次の using ステートメントと、QSTodoService クラスへのアクセサーを持つ `MobileServiceUser` を追加します。
- 
-        using UIKit;
-       
-        // Logged in user
-        private MobileServiceUser user;
-        public MobileServiceUser User { get { return user; } }
+
+    ```csharp
+    using UIKit;
+
+    // Logged in user
+    private MobileServiceUser user;
+    public MobileServiceUser User { get { return user; } }
+    ```
+
 2. 次の定義を使用して、**QSTodoService** に **Authenticate** という新しいメソッドを追加します。
 
-        public async Task Authenticate(UIViewController view)
+    ```csharp
+    public async Task Authenticate(UIViewController view)
+    {
+        try
         {
-            try
-            {
-                AppDelegate.ResumeWithURL = url => url.Scheme == "zumoe2etestapp" && client.ResumeWithURL(url);
-                user = await client.LoginAsync(view, MobileServiceAuthenticationProvider.Facebook, "{url_scheme_of_your_app}");
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine (@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
-            }
+            AppDelegate.ResumeWithURL = url => url.Scheme == "{url_scheme_of_your_app}" && client.ResumeWithURL(url);
+            user = await client.LoginAsync(view, MobileServiceAuthenticationProvider.Facebook, "{url_scheme_of_your_app}");
         }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine (@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
+        }
+    }
+    ```
 
-    >[AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上の **LoginAsync** に渡される値を_MicrosoftAccount_、_Twitter_、_Google_、または _WindowsAzureActiveDirectory_ のいずれかに変更します。
+    > [!NOTE]
+    > Facebook 以外の ID プロバイダーを使用している場合は、上の **LoginAsync** に渡される値を_MicrosoftAccount_、_Twitter_、_Google_、または _WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **QSTodoListViewController.cs**を開きます。 **ViewDidLoad** のメソッド定義を変更して、終わり近くにある **RefreshAsync()** の呼び出しを削除します。
-   
-        public override async void ViewDidLoad ()
-        {
-            base.ViewDidLoad ();
-   
-            todoService = QSTodoService.DefaultService;
-            await todoService.InitializeStoreAsync();
-   
-            RefreshControl.ValueChanged += async (sender, e) => {
-                await RefreshAsync();
-            }
-   
-            // Comment out the call to RefreshAsync
-            // await RefreshAsync();
+
+    ```csharp
+    public override async void ViewDidLoad ()
+    {
+        base.ViewDidLoad ();
+
+        todoService = QSTodoService.DefaultService;
+        await todoService.InitializeStoreAsync();
+
+        RefreshControl.ValueChanged += async (sender, e) => {
+            await RefreshAsync();
         }
+
+        // Comment out the call to RefreshAsync
+        // await RefreshAsync();
+    }
+    ```
+
 4. **User** プロパティが null の場合は認証を行うようにメソッド **RefreshAsync** を変更します。 メソッド定義の最初に次のコードを追加します。
-   
-        // start of RefreshAsync method
+
+    ```csharp
+    // start of RefreshAsync method
+    if (todoService.User == null) {
+        await QSTodoService.DefaultService.Authenticate(this);
         if (todoService.User == null) {
-            await QSTodoService.DefaultService.Authenticate(this);
-            if (todoService.User == null) {
-                Console.WriteLine("couldn't login!!");
-                return;
-            }
+            Console.WriteLine("couldn't login!!");
+            return;
         }
-        // rest of RefreshAsync method
+    }
+    // rest of RefreshAsync method
+    ```
+
 5. **AppDelegate.cs** を開き、次のメソッドを追加します。
 
-        public static Func<NSUrl, bool> ResumeWithURL;
+    ```csharp
+    public static Func<NSUrl, bool> ResumeWithURL;
 
-        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
-        {
-            return ResumeWithURL != null && ResumeWithURL(url);
-        }
+    public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+    {
+        return ResumeWithURL != null && ResumeWithURL(url);
+    }
+    ```
+
 6. **Info.plist** ファイルを開き、**[詳細設定]** セクションの **[URL の種類]** に移動します。 次に、URL の種類の **[識別子]** および **[URL スキーマ]** を構成して、**[Add URL Type]\(URL の種類の追加\)** をクリックします。 **[URL スキーマ]** は {url_scheme_of_your_app} と同じにする必要があります。
 7. Mac ホストまたは Visual Studio for Mac に接続している Visual Studio で、デバイスまたはエミュレーターをターゲットとしているクライアント プロジェクトを実行します。 アプリケーションにデータが表示されないことを確認します。
-   
+
     項目の一覧をプルダウンして更新操作を実行すると、ログイン画面が表示されます。 有効な資格情報を正しく入力すると、Todo 項目の一覧が表示され、データを更新できるようになります。
 
 <!-- URLs. -->

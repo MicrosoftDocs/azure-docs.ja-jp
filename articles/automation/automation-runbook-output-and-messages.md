@@ -3,18 +3,18 @@ title: Azure Automation での Runbook の出力とメッセージ
 description: Azure Automation で Runbook から出力とエラー メッセージを作成および取得する方法を説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc1ef2a3ab09ec5b86d1dc0b4c139afd43ba356d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969126"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487670"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 ほとんどの Azure Automation Runbook は、何らかの形式の出力があります。 この出力には、ユーザーへのエラー メッセージや別の Runbook で使用することを目的とした複雑なオブジェクトなどがあります。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](/powershell/module/microsoft.powershell.core/about/about_redirection) が提供されます。 Azure Automation は、これらの各ストリームで異なる動作をします。 Runbook を作成するときに、それぞれの使用方法のベスト プラクティスに従ってください。
@@ -35,7 +35,7 @@ ms.locfileid: "52969126"
 
 出力ストリームへのデータの書き込みは、 [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) を使用するか、Runbook の行にオブジェクトを配置することで実行できます。
 
-```PowerShell
+```powershell
 #The following lines both write an object to the output stream.
 Write-Output –InputObject $object
 $object
@@ -46,7 +46,7 @@ Runbook に含まれている関数から出力ストリームに書き込むと
 
 次のサンプル Runbook で考えてみましょう。
 
-```PowerShell
+```powershell
 Workflow Test-Runbook
 {
   Write-Verbose "Verbose outside of function" -Verbose
@@ -90,7 +90,7 @@ Runbook を発行したら、それを開始する前に、詳細ストリーム
 
 次のサンプル Runbook は、文字列オブジェクトを出力し、その出力の型宣言が含まれています。 Runbook が特定の型の配列を出力する場合でも、型の配列ではなく、型を指定してください。
 
-```PowerShell
+```powershell
 Workflow Test-Runbook
 {
   [OutputType([string])]
@@ -126,7 +126,7 @@ Workflow Test-Runbook
 
 警告またはエラー メッセージを作成するには、[Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) または [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) コマンドレットを使用します。 アクティビティによってストリームに書き込むことができる場合もあります。
 
-```PowerShell
+```powershell
 #The following lines create a warning message and then an error message that will suspend the runbook.
 
 $ErrorActionPreference = "Stop"
@@ -141,7 +141,7 @@ Write-Error –Message "This is an error message that will stop the runbook beca
 
 詳細メッセージを作成するには、 [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) コマンドレットを使用します。
 
-```PowerShell
+```powershell
 #The following line creates a verbose message.
 
 Write-Verbose –Message "This is a verbose message."
@@ -160,7 +160,7 @@ Windows PowerShell では [ユーザー設定変数](https://technet.microsoft.c
 
 次の表は、Runbook で使用できるユーザー設定変数と、それらの有効値と既定値を示しています。 この表には、Runbook で有効な値のみが含まれています。 Windows PowerShell を Azure Automation の外部で使用する場合は、ユーザー設定変数で有効なその他の値があります。
 
-| 可変 | 既定値 | 有効な値 |
+| 可変 | Default value | 有効な値 |
 |:--- |:--- |:--- |
 | WarningPreference |Continue |Stop<br>Continue<br>SilentlyContinue |
 | ErrorActionPreference |Continue |Stop<br>Continue<br>SilentlyContinue |
@@ -183,7 +183,7 @@ Windows Powershell では、 [Get-AzureAutomationJobOutput](https://docs.microso
 
 次の例は、サンプル Runbook を開始し、完了するまで待機します。 完了すると、その出力ストリームがジョブから収集されます。
 
-```PowerShell
+```powershell
 $job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
   –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 
@@ -220,8 +220,8 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
    
    ![グラフィカル作成の [ログとトレース] ページ](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
-Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 Log Analytics では、次のことが可能です。
+### <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor ログ
+Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 Azure Monitor ログを使用すると、次のことを行うことができます。
 
 * Automation ジョブに関する情報を得る 
 * Runbook ジョブの状態 (失敗、中断など) に基づいて電子メールまたはアラートをトリガーする 
@@ -229,9 +229,10 @@ Automation からは、Runbook ジョブの状態とジョブ ストリームを
 * Automation アカウントをまたいでジョブどうしを関連付ける 
 * ジョブの履歴を時系列で視覚化する    
 
-Log Analytics との統合を構成して、ジョブ データを収集、操作、および関連付けする方法の詳細については、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
+Azure Monitor ログとの統合を構成して、ジョブ データを収集、操作、および関連付けする方法の詳細については、[Automation から Azure Monitor ログへのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)
 * 子 Runbook を設計および使用する方法については、「 [Azure Automation での子 Runbook](automation-child-runbooks.md)
+
 

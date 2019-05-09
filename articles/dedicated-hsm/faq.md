@@ -2,23 +2,23 @@
 title: よく寄せられる質問 - Azure 専用 HSM | Microsoft Docs
 description: Azure 専用 HSM に関するさまざまなトピックに対応したよく寄せられる質問
 services: dedicated-hsm
-author: barclayn
-manager: mbaldwin
+author: johncdawson
+manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: concepts
-ms.date: 12/11/2018
+ms.topic: conceptual
+ms.date: 4/15/2019
 ms.author: barclayn
-ms.openlocfilehash: 44507e919b7ed827eb3c08101a04849faf92293c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310286"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608865"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -58,9 +58,28 @@ Microsoft によってプロビジョニングされると、Gemalto から HSM 
 
 Microsoft は、専用 HSM サービス経由で Gemalto SafeNet Luna Network HSM のみを提供しており、ユーザーが提供するデバイスをホストすることはできません。
 
-### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>Q: Azure 専用 HSM は PIN/ETF 機能をサポートするか、あるいは PCI HSM v1 または v2 認定の要件を満たしていますか。
+### <a name="q-does-azure-dedicated-hsm-support-payment-pinetf-features"></a>Q:Azure Dedicated HSM は、支払い (PIN/ETF) 機能をサポートしますか。
 
-Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) デバイスを使用します。 これらのデバイスは、支払い HSM 固有の機能 (PIN や ETF など) または認定をサポートしていません。 Azure 専用 HSM サービスでの支払い HSM の将来のサポートを希望する場合は、下のフィードバックを提供してください。
+Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) デバイスを使用します。 これらのデバイスは、支払い HSM 固有の機能 (PIN や ETF など) または認定をサポートしていません。 Azure Dedicated HSM サービスでの支払い HSM の将来のサポートを希望する場合は、Microsoft アカウント担当者までその旨をお知らせください。
+
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Q:どの Azure リージョンで Dedicated HSM を使用できますか。
+
+2019 年 3 月下旬の時点では、Dedicated HSM は次に示す 14 のリージョンで使用できます。 追加のリージョンについては計画中であり、お客様の Microsoft アカウント担当者を介して検討することができます。
+
+* 米国東部
+* 米国東部 2
+* 米国西部
+* 米国中南部
+* 東南アジア
+* 東アジア
+* 北ヨーロッパ
+* 西ヨーロッパ
+* 英国南部
+* 英国西部
+* カナダ中部
+* カナダ東部
+* オーストラリア東部
+* オーストラリア南東部
 
 ## <a name="interoperability"></a>相互運用性
 
@@ -136,7 +155,11 @@ Azure 専用 HSM は、移行のシナリオに最適です。 つまり、既�
 
 Microsoft は HSM に対して、管理制御または暗号制御を行うことはできません。 Microsoft では、温度やコンポーネントの正常性などの基本のテレメトリを取得するために、シリアル ポート接続経由で監視レベルのアクセス権を保持しています。 これにより、Microsoft では、正常性の問題に関する事前通知を提供しています。 必要に応じて、お客様はこのアカウントを無効にできます。
 
-### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Q: Microsoft または Microsoft の担当者は、ユーザーの専用 HSM 内のキーにアクセスできますか。
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>Q:Microsoft で使われている "tenantadmin" アカウントとは何ですか。SafeNet HSM で管理者ユーザーは "admin" であるのに慣れています。
+
+HSM デバイスには、既定の管理者ユーザーと通常の既定のパスワードが付属しています。 Microsoft は、デバイスがプール内でお客様によるプロビジョニングを待っている間、既定のパスワードが使用されるのを望みませんでした。 これは、弊社の厳密なセキュリティ要件を満たしません。 このため、プロビジョニング時に破棄される強力なパスワードが設定されています。 また、プロビジョニング時には、"tenantadmin" という名前の管理者ロールで、新しいユーザーが作成されます。 このユーザーには既定のパスワードが設定されており、お客様は、新しくプロビジョニングされたデバイスに初めてログインするときに、最初のアクションとしてこれを変更します。 このプロセスにより、高度なセキュリティが確保され、お客様に対する唯一の管理制御という約束が維持されます。 お客様がそのアカウントの使用を希望される場合、"tenantadmin" ユーザーを使って管理者ユーザーのパスワードをリセットできることに注意する必要があります。 
+
+### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Q:Microsoft または Microsoft の担当者は、ユーザーの専用 HSM 内のキーにアクセスできますか。
 
 いいえ。 お客様に割り当てられている専用 HSM に格納されたキーに対しては、Microsoft はアクセス権を保持しません。
 
@@ -162,27 +185,27 @@ HSM およびパーティションの管理には、Gemalto のHSM クライア�
 
 ## <a name="high-availability"></a>高可用性
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Q: 同じリージョン内で、または複数のリージョンにまたがって高可用性を構成できますか。
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Q:同じリージョン内で、または複数のリージョンにまたがって高可用性を構成できますか。
 
-はい。 高可用性の構成とセットアップは、Gemalto が提供する HSM クライアント ソフトウェアで実行されます。 同一リージョン内またはリージョン間での同じ VNET または別の VNET からの HSM や、サイト対サイトまたはポイント ツー ポイントの VPN を使用して VNET に接続されているオンプレミス HSM は、同じ高可用性の構成に追加できます。
+はい。 高可用性の構成とセットアップは、Gemalto が提供する HSM クライアント ソフトウェアで実行されます。 同一リージョン内またはリージョン間での同じ VNET または別の VNET からの HSM や、サイト対サイトまたはポイント ツー ポイントの VPN を使用して VNET に接続されているオンプレミス HSM は、同じ高可用性の構成に追加できます。 これによってキー マテリアルのみが同期し、ロールなど特定の構成項目は同期されないことに注意する必要があります。
 
-### <a name="can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>自分のオンプレミス ネットワークから Azure 専用 HSM を使った高可用性グループに、HSM を追加することはできますか。
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Q:自分のオンプレミス ネットワークから Azure 専用 HSM を使った高可用性グループに、HSM を追加することはできますか。
 
 はい。 HSM が SafeNet Luna ネットワーク HSM 7 の高可用性の要件を満たしている必要があります。
 
-### <a name="can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>オンプレミス ネットワークから Azure 専用 HSM を使った高可用性グループに、Luna 5/6 HSM を追加することはできますか。
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Q:オンプレミス ネットワークから Azure 専用 HSM を使った高可用性グループに、Luna 5/6 HSM を追加することはできますか。
 
 いいえ。
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>Q: 1 つの単一アプリケーションから同じ高可用性構成にいくつの HSM を追加できますか。
 
-16.
+メンバー数が 16 の HA グループに対して非常に厳しいテストを行い、すばらしい結果が出ています。
 
 ## <a name="support"></a>サポート
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>Q: 専用 HSM サービスの SLA とはどういうものですか。
 
-現時点では、専用 HSM サービスに対して提供されている SLA はありません。 Microsoft では、デバイスへのネットワーク レベルのアクセスを保証しているため、標準の Azure ネットワーク SLA が適用されます。
+専用 HSM サービスで保証されている特定の稼働時間はありません。 Microsoft では、デバイスへのネットワーク レベルのアクセスを保証しているため、標準の Azure ネットワーク SLA が適用されます。
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>Q: Azure 専用 HSM で使用される HSM はどのように保護されていますか。
 
@@ -198,15 +221,19 @@ Azure データセンターにおいて、物理上および手続き上のセ�
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>Q: 専用 HSM のサポートを受けるにはどのようにしたらよいですか。
 
-他のすべての Azure サービスのサポートを受ける場合と同じ方法です。 必要な場合、Azure サポート チームは状況に応じて Gemalto サポートに連携します。
+サポートはマイクロソフトと Gemalto の両方で提供されます。  ハードウェアまたはネットワーク アクセスの問題がある場合は、マイクロソフトにサポート リクエストを出してください。HSM 構成、ソフトウェア、およびアプリケーション開発の問題がある場合は、Gemalto にサポート リクエストを出してください。 問題が不明な場合は、マイクロソフトにサポート リクエストを出してください。その後、必要に応じて Gemalto が対応できます。 
 
-### <a name="q-how-do-i-get-access-to-dedicated-hsm-client-software-documentation-firmware-images"></a>Q: 専用 HSM クライアントのソフトウェア、ドキュメント、ファームウェア イメージへのアクセスを取得するにはどのようにしたらよいですか。
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>Q:SafeNet Luna 7 HSM のクライアント ソフトウェア、ドキュメント、統合ガイダンスへのアクセスを取得するにはどうすればよいですか。
 
-HSM クライアント ソフトウェア、ドキュメント、OS/ファームウェア イメージへのアクセスを取得するには、お客様が直接、Gemalto と連携する必要があります。
+サービスに登録すると、Gemalto カスタマー サポート ポータルに登録するための Gemalto カスタマー ID が提供されます。 これによって、すべてのソフトウェアとドキュメントにアクセスできるようになり、Gemalto に直接サポート リクエストを出せるようになります。
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>Q: セキュリティの脆弱性が検出され、Gemalto によって修正プログラムがリリースされた場合は、誰が OS/ファームウェアのアップグレードまたはプログラム修正に責任を負いますか。
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>Q:セキュリティの脆弱性が検出され、Gemalto によって修正プログラムがリリースされた場合は、誰が OS/ファームウェアのアップグレードまたはプログラム修正に責任を負いますか。
 
 Microsoft では、お客様に割り当てられている HSM に接続することはできません。 お客様が HSM をアップグレードして、修正プログラムを適用する必要があります。
+
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Q:HSM を再起動する必要が生じたらどうすればよいですか。
+
+ HSM にはコマンドラインの再起動オプションがあります。ハード リブート オプションを使用する必要があることに注意してください。 なんらかの理由で失敗した場合は、マイクロソフトにサポート リクエストを出してください。デバイスを物理的に再起動することができます。 
 
 ## <a name="cryptography-and-standards"></a>暗号化と標準
 
@@ -246,7 +273,7 @@ Microsoft では、お客様に割り当てられている HSM に接続する�
 
 専用 HSM サービスでは、SafeNet Luna ネットワーク HSM 7 アプライアンスをプロビジョニングします。 これらのアプライアンスでは、FIPS 140-2 レベル 3 の検証済み HSM を使用します。 また、展開されている既定の構成、オペレーティング システム、およびファームウェアも、FIPS 検証済みになっています。 FIPS 140-2 レベル 3 に準拠するために、何らかの操作を行う必要はありません。
 
-### <a name="how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>HSM のプロビジョニングが解除されたときに、すべてのキー マテリアルが消去されていることをユーザーが確認するには、どうしたらよいですか?
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Q:HSM のプロビジョニングが解除されたときに、すべてのキー マテリアルが消去されていることをユーザーが確認するには、どうしたらよいですか?
 
 プロビジョニング解除を要求する前に、Gemalto が提供する HSM クライアント ツールを使用して、お客様が HSM をゼロ埋めしておく必要があります。
 
@@ -262,15 +289,13 @@ Microsoft では、お客様に割り当てられている HSM に接続する�
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>Q: 専用 HSM では、いくつのパーティションを作成できますか。
 
-使用される HSM の指定モデルに基づいて、10 個のパーティションが利用可能です。
+使用される SafeNet Luna HSM 7 モデル A790 には、サービス料金に 10 個のパーティションのライセンスが含まれます。 デバイスのパーティションの制限は 100 個です。この制限を上回るパーティションを追加すると、余分なライセンス コストが発生し、デバイスに新しいライセンス ファイルのインストールする必要があります。
 
-### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>Q: 専用 HSM では、いくつのキーをサポートできますか。
+### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>Q:専用 HSM では、いくつのキーをサポートできますか。
 
-キーの最大数を以下に示します。 非対称キーを使用している場合は、これらの数がキーのペアにも適用されます。
+キーの最大数は使用可能なメモリの機能です。 使用中の SafeNet Luna 7 モデル A790 の目盛りは 32MB です。 非対称キーを使用している場合は、次の数がキーのペアにも適用されます。
 
 * RSA-2048 - 19,000
 * ECC-P256 - 91,000
-* AES-256 - 218,000
 
 キー生成のテンプレートに設定された特定のキー属性とパーティション数に応じて、キャパシティは変化します。
-

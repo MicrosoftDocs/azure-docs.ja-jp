@@ -2,18 +2,18 @@
 title: Hyper-V VM の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する |Microsoft Docs
 description: この記事では、Hyper-V の Azure へのディザスター リカバリーのために、Azure Site Recovery Deployment Planner によって生成されるコスト見積もりレポートを確認する方法を説明します。
 services: site-recovery
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: eaccbc93fa1e78132527798dcef27babc8a2cc09
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 4/9/2019
+ms.author: mayg
+ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845027"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59359038"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
 
@@ -56,7 +56,7 @@ Azure のコンピューティング、ストレージ、ネットワークの�
 
 **[Network]\(ネットワーク\)**:必要な DR に関する ExpressRoute とサイト間 VPN のコスト。 
 
-**[ASR license]\(ASR ライセンス\)**:すべての適合 VM に関する Site Recovery のライセンス コスト。 Detailed cost analysis (詳細コスト分析) テーブルに VM を手動で入力した場合、その VM に関して生じる Site Recovery のライセンス コストも対象となります。
+**Azure Site Recovery ライセンス**:すべての適合 VM に関する Site Recovery のライセンス コスト。 Detailed cost analysis (詳細コスト分析) テーブルに VM を手動で入力した場合、その VM に関して生じる Site Recovery のライセンス コストも対象となります。
 
 ### <a name="overall-dr-costs-by-states"></a>Overall DR costs by states (状態ごとの総 DR コスト)
 DR コストの合計は、レプリケーションと DR ドリルという 2 種類の状態に基づいて分類されます。
@@ -157,7 +157,7 @@ VM を手動で追加するには、次の手順に従います。
 
 **[Total DR-Drill cost (average)]\(合計 DR ドリル コスト (平均)\)**:DR ドリルのコンピューティング コストとストレージ コスト。
 
-**[ASR license cost]\(ASR ライセンス コスト\)**:Site Recovery のライセンス コスト。
+**Azure Site Recovery のライセンス コスト**:Site Recovery のライセンス コスト。
 
 ## <a name="supported-target-regions"></a>サポートされるターゲット リージョン
 Site Recovery Deployment Planner では、以下の Azure リージョンに関してコスト見積もりを実行できます。 該当するリージョンがここに記載されていない場合は、料金が最も近いリージョンをどれか選んで使用してください。

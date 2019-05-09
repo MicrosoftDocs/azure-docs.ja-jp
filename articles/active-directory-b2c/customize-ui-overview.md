@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でのユーザー インターフェイスの
 description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/07/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 94f7239bdcdc5ddc91f3ed8b49b59378309711e8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 767e64d4d53702ede7b55edc747366ab3d32ae4d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844959"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996101"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて
 
@@ -24,27 +24,43 @@ Azure Active Directory (Azure AD) B2C によってアプリケーションに提
 これらの操作性のニーズに基づき、さまざまな方法でアプリケーションの UI をカスタマイズします。 例: 
 
 - [ユーザー フロー](active-directory-b2c-reference-policies.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集といった操作を提供している場合、[Azure portal を使用して UI をカスタマイズ](tutorial-customize-ui.md)します。
+- v2 のユーザー フローを使用している場合は、[ページ レイアウト テンプレート](#page-layout-templates)を使用して、さらにカスタマイズを行うことなく、ユーザー フロー ページの外観を変更できます。 たとえば、オーシャン ブルーやスレート グレーのテーマをユーザー フローのすべてのページに適用できます。
 - サインインのみ、それに付随するパスワード リセット ページ、確認メールを提供している場合、[Azure AD サインイン ページ](../active-directory/fundamentals/customize-branding.md)の場合と同じカスタマイズ手順を使用します。
 - 顧客がサインイン前にプロファイルを編集しようとすると、Azure AD サインイン ページのカスタマイズに使用した同じ手順でカスタマイズするページにリダイレクトされます。
 - [カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集をアプリケーションで提供している場合、[ポリシー ファイルを使用して UI をカスタマイズ](active-directory-b2c-ui-customization-custom.md)します。
 - 顧客の決定に基づく動的コンテンツを提供する必要がある場合、クエリ文字列で送信されたパラメーターに基づいて[ページの内容を変更できるカスタム ポリシー](active-directory-b2c-ui-customization-custom-dynamic.md)を使用します。 たとえば、Web やモバイル アプリケーションから渡されるパラメーターに基づき、Azure AD B2C のサインアップまたはサインイン ページの背景イメージが変化します。
+- Azure AD B2C の[ユーザー フロー](user-flow-javascript-overview.md)または[カスタム ポリシー](page-contract.md)で、JavaScript のクライアント側コードを有効にすることができます。
 
 Azure AD B2C によって、顧客のブラウザーでコードが実行され、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる最新の手法が使用されます。 実行時、コンテンツは、ユーザー フローまたはポリシーで指定された URL から読み込まれます。 URL はページごとに指定します。 URL から読み込まれたコンテンツが Azure AD B2C から挿入された HTML フラグメントに統合され、顧客に表示されます。
 
-開始前に、次のガイダンスを確認します。
+独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズするときは、始める前に次のガイダンスを確認してください。
 
 - Azure AD B2C によって HTML コンテンツがページに統合されます。 Azure AD B2C によって提供される既定のコンテンツをコピーしたり、変更したりしないでください。 HTML コンテンツは最初から構築し、既定のコンテンツはあくまで参考としての利用にとどめることをお勧めします。
-- セキュリティ上の理由から、コンテンツに JavaScript を含めることはできません。
+- カスタム コンテンツに JavaScript を含めることができるようになりました。
 - サポートされているブラウザーのバージョン: 
-    - Internet Explorer 11、10、Edge
+    - Internet Explorer 11、10、Microsoft Edge
     - Internet Explorer 8 と 9 (サポートに制限あり)
     - Google Chrome 42.0 以降
     - Mozilla Firefox 38.0 以降
 - HTML に form タグが含まれていないことを確認してください。含まれている場合、Azure AD B2C から挿入された HTML によって生成された POST 操作が妨げられます。
 
+## <a name="page-layout-templates"></a>ページ レイアウト テンプレート
+
+v2 のユーザー フローでは、既定のページの見た目をよくし、独自のカスタマイズの適切なベースとして使用できる、デザイン済みのテンプレートを選択できます。
+
+左側のメニューで、**[カスタマイズ]** の **[ページ レイアウト]** を選択します。 次に、**[テンプレート (プレビュー)]** を選択します。
+
+![ページ レイアウト テンプレートを選択する](media/customize-ui-overview/template.png)
+
+一覧からテンプレートを選択します。 たとえば、**[オーシャン ブルー]** テンプレートでは、次のレイアウトがユーザー フロー ページに適用されます。
+
+![オーシャン ブルー テンプレート](media/customize-ui-overview/ocean-blue.png)
+
+テンプレートを選択すると、選択したレイアウトがユーザー フローのすべてのページに適用されて、各ページの URI が **[カスタム ページ URI]** フィールドに表示されます。
+
 ## <a name="where-do-i-store-ui-content"></a>UI コンテンツはどこに保存しますか。
 
-[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)、Web サーバー、CDN、AWS S3、ファイル共有システムなど、任意の場所で UI コンテンツをホストできます。 重要な点は、CORS が有効になっている公開 HTTPS エンドポイントでコンテンツがホストされていることです。 コンテンツに指定するとき、絶対 URL を使用する必要があります。
+独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズするときは、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)、Web サーバー、CDN、AWS S3、ファイル共有システムなど、任意の場所で UI コンテンツをホストできます。 重要な点は、CORS が有効になっている公開 HTTPS エンドポイントでコンテンツがホストされていることです。 コンテンツに指定するとき、絶対 URL を使用する必要があります。
 
 ## <a name="how-do-i-get-started"></a>開始するには?
 

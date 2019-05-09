@@ -1,24 +1,24 @@
 ---
-title: 言語サポート - Speech Service API
+title: 言語サポート - Speech Services
 titleSuffix: Azure Cognitive Services
 description: Azure Speech Services では、音声翻訳に加え、音声テキスト変換と音声合成変換のためのさまざまな言語がサポートされます。 この記事では、サービスによってサポートされている言語の包括的な一覧を示します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342099"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58803106"
 ---
-# <a name="language-and-region-support-for-speech-service-api"></a>Speech Service API の言語と地域のサポート
+# <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート
 
 さまざまな言語が Speech Services 機能のためにサポートされています。 以下の表は、言語サポートの概要を示します。
 
@@ -31,31 +31,31 @@ Microsoft の音声認識 API では、次の言語がサポートされてい�
  ar-EG | アラビア語 (エジプト)、現代標準 | いいえ  | はい | いいえ 
  ca-ES | カタルニア語 (スペイン) | いいえ  | いいえ  | いいえ 
  da-DK | デンマーク語 (デンマーク) | いいえ  | いいえ  | いいえ 
- de-DE | ドイツ語 (ドイツ) | [はい] | [はい] | いいえ 
- en-AU | 英語 (オーストラリア) | いいえ  | 可能  | [はい]
- en-CA | 英語 (カナダ) | いいえ  | 可能  | [はい]
- en-GB | 英語 (イギリス) | いいえ  | 可能  | [はい]
- en-IN | 英語 (インド) | [はい] | はい | [はい]
- en-NZ | 英語 (ニュージーランド) | いいえ  | 可能  | [はい]  
- en-US | 英語 (米国) | [はい] | はい | [はい]
- es-ES | スペイン語 (スペイン) | [はい] | [はい] | いいえ 
+ de-DE | ドイツ語 (ドイツ) | はい | はい | いいえ 
+ en-AU | 英語 (オーストラリア) | いいえ  | 可能  | はい
+ en-CA | 英語 (カナダ) | いいえ  | 可能  | はい
+ en-GB | 英語 (イギリス) | いいえ  | 可能  | はい
+ en-IN | 英語 (インド) | はい | はい | はい
+ en-NZ | 英語 (ニュージーランド) | いいえ  | 可能  | はい  
+ en-US | 英語 (米国) | はい | はい | はい
+ es-ES | スペイン語 (スペイン) | はい | はい | いいえ 
  es-MX | スペイン語 (メキシコ) | いいえ  | はい | いいえ 
  fi-FI | フィンランド語 (フィンランド) | いいえ  | いいえ  | いいえ 
  fr-CA | フランス語 (カナダ) | いいえ  | はい | いいえ 
- fr-FR | フランス語 (フランス) | [はい] | [はい] | いいえ 
+ fr-FR | フランス語 (フランス) | はい | はい | いいえ 
  hi-IN | ヒンディー語 (インド) | いいえ  | はい | いいえ 
- it-IT | イタリア語 (イタリア) | [はい] | [はい] | いいえ 
+ it-IT | イタリア語 (イタリア) | はい | はい | いいえ 
  ja-JP | 日本語 (日本) | いいえ  | はい | いいえ 
  ko-KR | 韓国語 (韓国) | いいえ  | はい | いいえ 
  nb-NO | ノルウェー語 (ブークモール) (ノルウェー) | いいえ  | いいえ  | いいえ 
  nl-NL | オランダ語 (オランダ) | いいえ  | はい | いいえ 
  pl-PL | ポーランド語 (ポーランド) | いいえ  | いいえ  | いいえ 
- pt-BR | ポルトガル語 (ブラジル) | [はい] | [はい] | いいえ 
+ pt-BR | ポルトガル語 (ブラジル) | はい | はい | いいえ 
  pt-PT | ポルトガル語 (ポルトガル) | いいえ  | はい | いいえ 
- ru-RU | ロシア語 (ロシア) | [はい] | [はい] | いいえ 
+ ru-RU | ロシア語 (ロシア) | はい | はい | いいえ 
  sv-SE | スウェーデン語 (スウェーデン) | いいえ  | いいえ  | いいえ 
- zh-CN | 中国語 (標準、簡体字) | [はい] | [はい] | いいえ 
- zh-HK | 中国語 (標準、繁体字) | いいえ  | はい | いいえ 
+ zh-CN | 中国語 (標準、簡体字) | はい | はい | いいえ 
+ zh-HK | 広東語 (繁体字) | いいえ  | はい | いいえ 
  zh-TW | 中国語 (台湾標準中国語) | いいえ  | はい | いいえ 
  th-TH | タイ語 (タイ) | いいえ  | いいえ  | いいえ 
 
@@ -63,6 +63,9 @@ Microsoft の音声認識 API では、次の言語がサポートされてい�
 ## <a name="text-to-speech"></a>テキスト読み上げ
 
 Text to Speech REST API ではこれらの音声がサポートされ、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
+
+> [!IMPORTANT]
+> 価格は、標準音声、カスタム音声、ニューラル音声ごとに異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)のページを参照してください。
 
 ### <a name="neural-voices-preview"></a>ニューラル音声 (プレビュー)
 
@@ -73,9 +76,18 @@ Text to Speech REST API ではこれらの音声がサポートされ、その�
 ニューラル音声の完全な一覧とリージョン別の提供状況については、[リージョン](regions.md#neural-voices)に関するページを参照してください。
 
 | ロケール | 言語 | 性別 | サービス名のマッピング|
-|--------|----------|---------|--------------------|
+|--------|----------|--------|---------------------|
+| de-DE | ドイツ語 (ドイツ) | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" |
 | en-US | 英語 (米国) | 男性 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" |
 | en-US | 英語 (米国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" |
+| it-IT | イタリア語 (イタリア) | 女性 | "Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" |
+| zh-CN | 中国語 | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" |
+
+> [!IMPORTANT]
+> Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural) は、東南アジア エンドポイント https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 経由でのみ使用できます。
+
+> [!IMPORTANT]
+> Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural) および Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural) は、西ヨーロッパ エンドポイント https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 経由でのみ使用できます。
 
 ### <a name="standard-voices"></a>標準音声
 
@@ -172,26 +184,11 @@ zh-TW | 中国語 (台湾)|女性 | "Microsoft Server Speech Text to Speech Voic
 音声のカスタマイズは、米国英語 (en-US)、本土中国語 (zh-CN)、フランス語 (fr-FR)、ドイツ語 (de-DE)、およびイタリア語 (it-IT) で使用できます。
 
 > [!NOTE]
-> フランス語、ドイツ語、イタリア語の音声トレーニングは、2,000 件以上の発話のデータセットから始まります。 また、中国語-英語 2 か国語モデルは 2,000 以上の発話の初期データ セットでサポートされます。
+> フランス語、ドイツ語、イタリア語の音声トレーニングは、2,000 件以上の発話のデータ セットから始まります。 また、中国語-英語 2 か国語モデルは 2,000 以上の発話の初期データ セットでサポートされます。
 
 ## <a name="speech-translation"></a>音声翻訳
 
-**Speech Translation** API では、音声を音声に翻訳し、音声をテキストに翻訳するために、さまざまな言語をサポートしています。 ソース言語は常に次の音声言語テーブルからのものである必要があります。 使用可能なターゲット言語は、何に翻訳するか (音声かテキストか) によって決まります。 受信した音声は [60 言語](https://www.microsoft.com/translator/business/languages/)以上に翻訳できます。 これらの言語のサブセットは、[音声合成](language-support.md#text-languages)に利用できます。
-
-### <a name="speech-languages"></a>音声言語
-
-| 音声言語   | 言語コード |
-|:----------- |-|
-| アラビア語 (現代標準)      | `ar` |
-| 中国語 (標準)      | `zh` |
-| 英語      | `en` |
-| フランス語      | `fr` |
-| ドイツ語      | `de` |
-| イタリア語      | `it` |
-| 日本語      | `jp` |
-| ポルトガル語 (ブラジル)     | `pt` |
-| ロシア語      | `ru` |
-| スペイン語      |  `es` |
+**Speech Translation** API では、音声を音声に翻訳し、音声をテキストに翻訳するために、さまざまな言語をサポートしています。 ソース言語は、音声テキスト変換言語の表に常に含まれている必要があります。 使用可能なターゲット言語は、何に翻訳するか (音声かテキストか) によって決まります。 受信した音声は [60 言語](https://www.microsoft.com/translator/business/languages/)以上に翻訳できます。 これらの言語のサブセットは、[音声合成](language-support.md#text-languages)に利用できます。
 
 ### <a name="text-languages"></a>テキスト言語
 
@@ -250,7 +247,7 @@ zh-TW | 中国語 (台湾)|女性 | "Microsoft Server Speech Text to Speech Voic
 | スペイン語      | `es`          |
 | スウェーデン語      | `sv`          |
 | タヒチ語      | `ty`          |
-| タミール語      | `ta`          |
+| タミル語      | `ta`          |
 | タイ語      | `th`          |
 | トンガ語      | `to`          |
 | トルコ語      | `tr`          |
@@ -263,5 +260,5 @@ zh-TW | 中国語 (台湾)|女性 | "Microsoft Server Speech Text to Speech Voic
 
 ## <a name="next-steps"></a>次の手順
 
-* [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+* [Speech Services 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
 * [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)

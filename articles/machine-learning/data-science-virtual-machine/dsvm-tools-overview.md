@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 7c51a44f7fcd46e9c15700fe91a4c86afbe02801
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f1a791e7a063c2bf2ae75cb3ca8d4fbdd35ddd90
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100958"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455203"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>データ サイエンス仮想マシンを理解する
 

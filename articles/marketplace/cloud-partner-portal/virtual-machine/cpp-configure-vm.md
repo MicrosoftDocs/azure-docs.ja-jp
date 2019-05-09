@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183473"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833503"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure でホストされる VM を構成する
 
@@ -28,7 +28,8 @@ ms.locfileid: "53183473"
 
 ## <a name="sizing-the-vhds"></a>VHD のサイズ変更
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> オペレーティング システム (および必要に応じてその他のサービス) で事前構成されたいずれかの VM を選択した場合、[仮想マシン SKU タブ](./cpp-skus-tab.md)に記載されている標準の Azure VM サイズが既に選択されています。事前構成された OS でソリューションを始めるのが、推奨されるアプローチです。  ただし、OS を手動でインストールする場合は、VM イメージ内のプライマリ VHD を次のようにサイズ変更する必要があります。
+<!--TD: Check if the following assertion is true. I didn't understand the original content. -->
+オペレーティング システム (および必要に応じてその他のサービス) が事前に構成されているいずれかの VM を選択した場合、[仮想マシン SKU タブ](./cpp-skus-tab.md)に記載されている標準の Azure VM サイズが既に選択されています。事前構成された OS でソリューションを始めるのが、推奨されるアプローチです。  ただし、OS を手動でインストールする場合は、VM イメージ内のプライマリ VHD を次のようにサイズ変更する必要があります。
 
 - Windows の場合、オペレーティング システム VHD は 127 ～ 128 GB の固定形式の VHD として作成する必要があります。 
 - Linux の場合、この VHD は 30 ～ 50 GB の固定形式の VHD として作成する必要があります。
@@ -44,7 +45,7 @@ ms.locfileid: "53183473"
 
 Windows Server 2016 では、**更新プログラムの確認**コマンドを実行します。  それ以外の場合、以前のバージョンの Windows については、[Windows Update から更新プログラムを入手する方法](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)を参照してください。  Windows Update では、最新の重大かつ重要なセキュリティ更新プログラムが自動的にインストールされます。
 
-Linux ディストリビューションの場合、更新プログラムは通常、コマンド ライン ツールまたはグラフィカル ユーティリティによってダウンロードおよびインストールされます。  たとえば Ubuntu Linux では、OS を更新するための [apt-get](http://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) コマンドおよび [Update Manager](http://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) ツールが提供されています。
+Linux ディストリビューションの場合、更新プログラムは通常、コマンド ライン ツールまたはグラフィカル ユーティリティによってダウンロードおよびインストールされます。  たとえば Ubuntu Linux では、OS を更新するための [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) コマンドおよび [Update Manager](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) ツールが提供されています。
 
 
 ## <a name="perform-additional-security-checks"></a>追加のセキュリティ チェックを実行する
@@ -72,7 +73,7 @@ Windows OS ディスクは [sysprep ツール](https://docs.microsoft.com/window
 > [!WARNING]
 >  更新プログラムは自動的に実行されることがあるため、sysprep を一度実行したら、デプロイされるまで VM をオフにする必要があります。  このシャットダウンにより、VHD の OS またはインストール済みサービスに、インスタンス固有の変更を加える操作を回避できます。
 
-sysprep の実行に関する詳細については、「VHD を一般化する手順」(https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)) を参照してください。
+sysprep の実行に関する詳細については、「[VHD を一般化する手順](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)」を参照してください。
 
 ### <a name="linux"></a>Linux
 

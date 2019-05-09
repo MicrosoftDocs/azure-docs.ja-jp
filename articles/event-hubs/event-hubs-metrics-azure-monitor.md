@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor でのメトリック (プレビュー) - Azure Event Hubs | Microsoft Docs
+title: Azure Monitor でのメトリック - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Monitoring を使用して Azure Event Hubs を監視する方法について説明します。
 services: event-hubs
 documentationcenter: .NET
@@ -15,14 +15,14 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 148071d71030638ddec4095ef2e33482327f3db3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b5df69e9670c01b576afe242b39532acb1e1c526
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537922"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58849373"
 ---
-# <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Event Hubs メトリック (プレビュー)
+# <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor での Azure Event Hubs メトリック
 
 Event Hubs メトリックによって、Azure サブスクリプション内の Event Hubs リソースの状態が提供されます。 豊富な一連のメトリック データにより、名前空間レベルだけでなくエンティティ レベルでも、イベント ハブの全体的な正常性を評価できます。 これらの統計はイベント ハブの状態の監視に役立つため、重要になる場合があります。 メトリックはまた、Azure サポートに問い合わせることなく、根本的な問題をトラブルシューティングするのにも役立ちます。
 
@@ -30,7 +30,7 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Operation Management Suite や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/platform/data-collection.md)」をご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Operation Management Suite や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/platform/data-platform.md)」をご覧ください。
 
 メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)で構成されます。
 
@@ -40,7 +40,7 @@ Azure Monitor では、複数の方法でメトリックにアクセスできま
 
 ![正常なメトリックを表示する][1]
 
-また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、**[Metrics (Peview)] (メトリック (プレビュー))** をクリックします。 イベント ハブのスコープにフィルター処理されたメトリックを表示するには、イベント ハブを選択してから、**[Metrics (preview)] (メトリック (プレビュー))** をクリックします。
+また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、**[Metrics]\(メトリック\)** をクリックします。 イベント ハブのスコープにフィルター処理されたメトリックを表示するには、イベント ハブを選択してから、**[Metrics] (メトリック)** をクリックします。
 
 ディメンションをサポートするメトリックの場合は、次の例に示すように、目的のディメンション値でフィルター処理する必要があります。
 
@@ -48,7 +48,7 @@ Azure Monitor では、複数の方法でメトリックにアクセスできま
 
 ## <a name="billing"></a>課金
 
-Azure Monitor でのメトリックの使用は現在、プレビュー段階にある間は無料です。 ただし、メトリック データを取り込む追加のソリューションを使用する場合は、これらのソリューションによって課金される可能性があります。 たとえば、メトリック データを Azure ストレージ アカウントにアーカイブする場合は、Azure Storage によって課金されます。 また、高度な分析のためにメトリック データを Log Analytics にストリーミングする場合は、Azure によっても課金されます。
+Azure Monitor でのメトリックの使用は現在無料です。 ただし、メトリック データを取り込む追加のソリューションを使用する場合は、これらのソリューションによって課金される可能性があります。 たとえば、メトリック データを Azure ストレージ アカウントにアーカイブする場合は、Azure Storage によって課金されます。 また、高度な分析のためにメトリック データを Azure Monitor ログにストリーム配信する場合は、Azure によっても課金されます。
 
 次のメトリックによって、サービスの正常性の概要が提供されます。 
 

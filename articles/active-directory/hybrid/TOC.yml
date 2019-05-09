@@ -14,17 +14,19 @@ items:
     href: tutorial-passthrough-authentication.md
   - name: 単一の AD フォレスト環境をクラウドに統合する
     href: tutorial-federation.md
+  - name: Azure AD Connect 内で AD FS のバックアップとして PHS を設定する
+    href: tutorial-phs-backup.md
   expanded: true
 - name: 概念
   items:
   - name: Azure AD Connect と Connect Health
-    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     items:
     - name: Azure AD Connect と Connect Health とは
       href: whatis-azure-ad-connect.md
     - name: 適切な認証の選択
       href: https://docs.microsoft.com/azure/security/azure-ad-choose-authn
     - name: ID 同期と重複属性の回復性
+      href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
   - name: パスワード ハッシュの同期
     items:
     - name: パスワード ハッシュ同期とは
@@ -189,8 +191,6 @@ items:
       href: how-to-connect-azureadaccount.md
     - name: AD DS コネクタ アカウントのパスワードの変更
       href: how-to-connect-sync-change-addsacct-pass.md
-    - name: ADConnectivityTools PowerShell モジュールとは
-      href: how-to-connect-adconnectivitytools.md
   - name: パススルー認証の管理
     items:
     - name: パススルー認証の概要
@@ -211,6 +211,8 @@ items:
       href: how-to-connect-fed-ssl-update.md
     - name: Azure AD との AD FS の信頼を管理する
       href: how-to-connect-azure-ad-trust.md
+    - name: アプリケーションに対するグループ要求を構成する
+      href: how-to-connect-fed-group-claims.md
     - name: O365 RP のハッシュ アルゴリズムを変更する
       href: how-to-connect-fed-sha256-guidance.md
     - name: SAML 2.0 サーバーを IDP として使用する
@@ -229,6 +231,8 @@ items:
       href: how-to-connect-health-operations.md
     - name: AD FS での Azure AD Connect Health の使用
       href: how-to-connect-health-adfs.md
+    - name: AD FS での Azure AD Connect Health の危険な IP のレポート
+      href: how-to-connect-health-adfs-risky-ip.md
     - name: Azure AD Connect Health for Sync の使用
       href: how-to-connect-health-sync.md
     - name: AD DS での Azure AD Connect Health の使用
@@ -241,12 +245,14 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: Azure AD Connect 同期を管理する
     items:
-    - name: 運用のタスクを管理する
-      href: how-to-connect-sync-operations.md
+    - name: ステージング サーバーとディザスター リカバリー
+      href: how-to-connect-sync-staging-server.md
     - name: 既定の構成の変更するためのベスト プラクティス
       href: how-to-connect-sync-best-practices-changing-default-configuration.md
     - name: 既定の構成の変更
       href: how-to-connect-sync-change-the-configuration.md
+    - name: 既定の規則に加えた変更の修正
+      href: how-to-connect-fix-default-rules.md
     - name: ディレクトリ拡張機能の構成
       href: how-to-connect-sync-feature-directory-extensions.md
     - name: 優先されるデータの場所の構成
@@ -255,6 +261,8 @@ items:
       href: how-to-connect-sync-configure-filtering.md
     - name: スケジューラの管理
       href: how-to-connect-sync-feature-scheduler.md
+    - name: 同期規則の作成とカスタマイズ
+      href: how-to-connect-create-custom-sync-rule.md
     - name: Azure AD Connect 同期サービス マネージャー
       items:
       - name: サービス マネージャーの [操作] タブの管理
@@ -267,6 +275,10 @@ items:
         href: how-to-connect-sync-service-manager-ui-mvsearch.md
   - name: トラブルシューティング
     items:
+    - name: Azure AD Connect 管理エージェントとは
+      href: whatis-aadc-admin-agent.md
+    - name: ADConnectivityTools PowerShell モジュールとは
+      href: how-to-connect-adconnectivitytools.md
     - name: 接続
       href: tshoot-connect-connectivity.md
     - name: 同期中のエラー
@@ -287,6 +299,10 @@ items:
       href: tshoot-connect-recover-from-localdb-10gb-limit.md
     - name: SQL 接続
       href: tshoot-connect-tshoot-sql-connectivity.md
+    - name: 属性の同期
+      href: tshoot-connect-attribute-not-syncing.md
+    - name: インストールに関する問題
+      href: tshoot-connect-install-issues.md
 - name: リファレンス
   items:
   - name: ハイブリッド ID で必要なポートとプロトコル
@@ -325,9 +341,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools リファレンス
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 53da6c08a48f14034e95094ec698f4ec55703466
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: aac9615fde8547493851ba513156ec860c51c13c
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342495"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498283"

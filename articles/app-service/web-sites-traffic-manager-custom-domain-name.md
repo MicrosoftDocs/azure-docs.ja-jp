@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5431372abb9a1157b322a8af4a07ba5fa15d8e8e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b207d9e3123245e5cb7dddb625f7488886591ae5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720462"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089864"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -56,11 +56,9 @@ ms.locfileid: "53720462"
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
 ドメイン プロバイダーによって仕様が異なりますが、カスタム ドメイン名 (**contoso.com** など) "*から*"、Web アプリと統合されている Traffic Manager のドメイン名 (**contoso.trafficmanager.net**) "*に*" マッピングします。
-   
+
 > [!NOTE]
-> レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。 たとえば、**www.contoso.com** を Web アプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。 その後、"www" CNAME レコードに変更を加えることなく、"www.contoso.com" を Web アプリに追加できます。 詳細については、「[カスタム ドメインにおける Web アプリの DNS レコードの作成][CREATEDNS]」をご覧ください。
-> 
-> 
+> レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。 たとえば、**www\.contoso.com** を Web アプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。 その後、"www" CNAME レコードに変更を加えることなく、"www\.contoso.com" を Web アプリに追加できます。 詳細については、「[カスタム ドメインにおける Web アプリの DNS レコードの作成][CREATEDNS]」をご覧ください。
 
 ドメイン プロバイダーで DNS レコードの追加または変更が完了したら、変更を保存します。
 

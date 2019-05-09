@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 78ab6753-877a-4426-92ec-a81675d62a57
 ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: d02f2e474ce97d22a77cf633898819c31d45799c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a7bb26cdfec4042a1963f929f92e5505045124a7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701591"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763301"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Azure Portal を使用した Relay 名前空間の作成
 

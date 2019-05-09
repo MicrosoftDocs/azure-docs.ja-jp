@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: b5d69b8f9f004da93e5bed05b86e46f6e4214d63
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1096c120b4e7731fabd574c4096e70fe02b6272d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081085"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
@@ -20,7 +20,7 @@ ms.locfileid: "52847356"
 
 ポイント対サイト (P2S) VPN ゲートウェイでは、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 P2S VPN は、VNet への接続が必要なクライアントがごく少ない場合に、サイト対サイト VPN の代わりに使用するソリューションとしても便利です。
 
-P2S VPN 接続は、Windows デバイスと Mac デバイスから開始されます。 接続するクライアントでは、次の認証方法を使用できます。
+P2S VPN 接続は、Windows デバイスと Mac デバイスから開始されます。 接続するクライアントでは、次の認証方法を使用できます。 
 
 * RADIUS サーバー
 * VPN Gateway のネイティブ証明書認証
@@ -41,10 +41,12 @@ P2S 接続には、以下のものが必要です。
 * ユーザー認証を処理する RADIUS サーバー。 RADIUS サーバーは、オンプレミスまたは Azure VNet にデプロイできます。
 * VNet に接続する Winodows デバイスの VPN クライアント構成パッケージ。 VPN クライアント構成パッケージには、VPN クライアントが P2S を介して接続するために必要な設定が含まれています。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="aboutad"></a>P2S VPN の Active Directory (AD) ドメイン認証について
 
 AD ドメイン認証では、ユーザーは組織のドメイン資格情報を使用して Azure にサインインできます。 これには AD サーバーと統合する RADIUS サーバーが必要です。 また、組織は既存の RADIUS デプロイを利用することもできます。
- 
+ 
 RADIUS サーバーは、オンプレミスまたは Azure VNet に配置できます。 認証が行われる間、VPN ゲートウェイがパススルーとして機能し、接続するデバイスと RADIUS サーバーの間で認証メッセージを転送します。 重要なのは、VPN ゲートウェイが RADIUS サーバーにアクセスできることです。 RADIUS サーバーがオンプレミスに存在する場合、Azure からオンプレミス サイトへの VPN サイト間接続が必要になります。
 
 RADIUS サーバーは、Active Directory とは別に、その他の外部 ID システムとも統合できます。 これにより、MFA のオプションなど、ポイント対サイト VPN 向けの多数の認証オプションを利用できるようになります。 RADIUS サーバーと統合される ID システムの一覧を取得するには、そのベンダーのドキュメントをご確認ください。
@@ -61,10 +63,6 @@ RADIUS サーバーは、Active Directory とは別に、その他の外部 ID �
 Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
-
-### <a name="sign-in"></a>[サインイン]
-
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
 
 ### <a name="example"></a>値の例
 
@@ -85,7 +83,34 @@ Azure サブスクリプションを持っていることを確認します。 A
 * **DNS サーバー:** VNet の名前解決に利用する DNS サーバーの IP アドレス。 (省略可能)
 * **GW 名:Vnet1GW**
 * **パブリック IP 名:VNet1GWPIP**
-* **VPN の種類:RouteBased** 
+* **VPN の種類:RouteBased**
+
+
+## <a name="signin"></a>サインインと変数の設定
+
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+
+### <a name="declare-variables"></a>変数の宣言
+
+使用する変数を宣言します。 次のサンプルを使用し、必要に応じて独自の値で置き換えます。 演習中の任意の時点で PowerShell/Cloud Shell セッションを閉じた場合は、値をもう一度コピーして貼り付けるだけで、変数を再宣言します。
+
+  ```azurepowershell-interactive
+  $VNetName  = "VNet1"
+  $FESubName = "FrontEnd"
+  $BESubName = "Backend"
+  $GWSubName = "GatewaySubnet"
+  $VNetPrefix1 = "192.168.0.0/16"
+  $VNetPrefix2 = "10.254.0.0/16"
+  $FESubPrefix = "192.168.1.0/24"
+  $BESubPrefix = "10.254.1.0/24"
+  $GWSubPrefix = "192.168.200.0/26"
+  $VPNClientAddressPool = "172.16.201.0/24"
+  $RG = "TestRG"
+  $Location = "East US"
+  $GWName = "VNet1GW"
+  $GWIPName = "VNet1GWPIP"
+  $GWIPconfName = "gwipconf"
+  ```
 
 ## 1.<a name="vnet"></a>リソース グループ、VNet、パブリック IP アドレスの作成
 
@@ -93,33 +118,33 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 1. リソース グループを作成します。
 
-  ```azurepowershell-interactive
-  New-AzureRmResourceGroup -Name "TestRG" -Location "East US"
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name "TestRG" -Location "East US"
+   ```
 2. 仮想ネットワークのサブネット構成を作成し、*FrontEnd*、*BackEnd*、*GatewaySubnet* いう名前を付けます。 これらのプレフィックスは、宣言した VNet アドレス空間に含まれている必要があります。
 
-  ```azurepowershell-interactive
-  $fesub = New-AzureRmVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
-  $besub = New-AzureRmVirtualNetworkSubnetConfig -Name "Backend" -AddressPrefix "10.254.1.0/24"  
-  $gwsub = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "192.168.200.0/24"
-  ```
+   ```azurepowershell-interactive
+   $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
+   $besub = New-AzVirtualNetworkSubnetConfig -Name "Backend" -AddressPrefix "10.254.1.0/24"  
+   $gwsub = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "192.168.200.0/24"
+   ```
 3. 仮想ネットワークを作成します。
 
-  この例では、-DnsServer サーバー パラメーターはオプションです。 値を指定しても新しい DNS サーバーは作成されません。 指定する DNS サーバーの IP アドレスは、VNet から接続するリソースの名前を解決できる DNS サーバーの IP アドレスである必要があります。 この例ではプライベート IP アドレスを使用していますが、これはおそらく実際の DNS サーバーの IP アドレスと一致しません。 実際には独自の値を使用してください。 指定された値は、P2S 接続ではなく、VNet にデプロイするリソースが使用します。
+   この例では、-DnsServer サーバー パラメーターはオプションです。 値を指定しても新しい DNS サーバーは作成されません。 指定する DNS サーバーの IP アドレスは、VNet から接続するリソースの名前を解決できる DNS サーバーの IP アドレスである必要があります。 この例ではプライベート IP アドレスを使用していますが、これはおそらく実際の DNS サーバーの IP アドレスと一致しません。 実際には独自の値を使用してください。 指定された値は、P2S 接続ではなく、VNet にデプロイするリソースが使用します。
 
-  ```azurepowershell-interactive
-  New-AzureRmVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
+   ```
 4. VPN ゲートウェイには、パブリック IP アドレスが必要です。 これにはまず IP アドレスのリソースを要求したうえで、仮想ネットワーク ゲートウェイの作成時にそのリソースを参照する必要があります。 IP アドレスは、VPN ゲートウェイの作成時にリソースに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの "*動的*" 割り当てのみサポートしています。 静的パブリック IP アドレスの割り当てを要求することはできません。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
 
-  動的に割り当てられたパブリック IP アドレスを要求する変数を指定します。
+   動的に割り当てられたパブリック IP アドレスを要求する変数を指定します。
 
-  ```azurepowershell-interactive
-  $vnet = Get-AzureRmVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
-  $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet 
-  $pip = New-AzureRmPublicIpAddress -Name "VNet1GWPIP" -ResourceGroupName "TestRG" -Location "East US" -AllocationMethod Dynamic 
-  $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
-  ```
+   ```azurepowershell-interactive
+   $vnet = Get-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
+   $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet 
+   $pip = New-AzPublicIpAddress -Name "VNet1GWPIP" -ResourceGroupName "TestRG" -Location "East US" -AllocationMethod Dynamic 
+   $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
+   ```
 
 ## 2.<a name="radius"></a>RADIUS サーバーの設定
 
@@ -139,53 +164,53 @@ VPN ゲートウェイを VNet 用に構成して作成します。
 * 選択する [ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)  によっては、VPN ゲートウェイの作成が完了するまでに最大で 45 分かかる場合があります。
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
+New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
 ## 4.<a name="addradius"></a>RADIUS サーバーおよびクライアント アドレス プールの追加
- 
+ 
 * -RadiusServer は名前または IP アドレスで指定できます。 サーバーがオンプレミスに存在する場合に名前を指定すると、VPN ゲートウェイはその名前を解決できない可能性があります。 この場合、サーバーの IP アドレスを指定することをお勧めします。 
 * -RadiusSecret は、RADIUS サーバーで構成したものと一致している必要があります。
-* -VpnCientAddressPool は、接続する VPN クライアントが受け取る IP アドレスの範囲です。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。 また、構成するアドレス プールには十分な広さを確保してください。  
+* -VpnClientAddressPool は、接続する VPN クライアントが受け取る IP アドレスの範囲です。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。 また、構成するアドレス プールには十分な広さを確保してください。  
 
 1. RADIUS シークレットのセキュリティで保護された文字列を作成します。
 
-  ```azurepowershell-interactive
-  $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
-  ```
+   ```azurepowershell-interactive
+   $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
+   ```
 
 2. RADIUS シークレットを入力するように求められます。 入力した文字は表示されず、"*" 文字に置き換えられます。
 
-  ```azurepowershell-interactive
-  RadiusSecret:***
-  ```
+   ```azurepowershell-interactive
+   RadiusSecret:***
+   ```
 3. VPN クライアント アドレス プールと RADIUS サーバー情報を追加します。
 
-  SSTP 構成の場合:
+   SSTP 構成の場合:
 
     ```azurepowershell-interactive
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
+    $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol "SSTP" `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-  IKEv2 構成の場合:
+   IKEv2 構成の場合:
 
     ```azurepowershell-interactive
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
+    $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol "IKEv2" `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-  SSTP と IKEv2 の場合
+   SSTP と IKEv2 の場合
 
     ```azurepowershell-interactive
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
+    $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol @( "SSTP", "IkeV2" ) `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
@@ -200,10 +225,10 @@ VPN クライアント構成を使用すると、デバイスは P2S 接続を�
 
 1. VNet に接続するには、クライアント コンピューターで [VPN 接続] に移動し、作成した VPN 接続を見つけます。 仮想ネットワークと同じ名前が付いています。 ドメインの資格情報を入力して、[接続] をクリックします。 管理者特権を求めるポップアップ メッセージが表示されます。 同意して資格情報を入力します。
 
-  ![Azure への VPN クライアントの接続](./media/point-to-site-how-to-radius-ps/client.png)
+   ![Azure への VPN クライアントの接続](./media/point-to-site-how-to-radius-ps/client.png)
 2. 接続が確立されました。
 
-  ![確立された接続](./media/point-to-site-how-to-radius-ps/connected.png)
+   ![確立された接続](./media/point-to-site-how-to-radius-ps/connected.png)
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Mac の VPN クライアントから接続する
 
@@ -216,8 +241,8 @@ VPN クライアント構成を使用すると、デバイスは P2S 接続を�
 1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、 *ipconfig/all*を実行します。
 2. 結果を表示します。 受信した IP アドレスが、構成に指定したポイント対サイト VPN クライアント アドレス プール内のアドレスのいずれかであることに注意してください。 結果は次の例のようになります。
 
-  ```
-  PPP adapter VNet1:
+   ```
+   PPP adapter VNet1:
       Connection-specific DNS Suffix .:
       Description.....................: VNet1
       Physical Address................:
@@ -227,7 +252,7 @@ VPN クライアント構成を使用すると、デバイスは P2S 接続を�
       Subnet Mask.....................: 255.255.255.255
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 P2S 接続のトラブルシューティングについては、「[トラブルシューティング: Azure ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)」をご覧ください。
 
@@ -243,4 +268,4 @@ P2S 接続のトラブルシューティングについては、「[トラブル
 
 ## <a name="next-steps"></a>次の手順
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。

@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ae50581404dceb7b59b2ca145207f7d4ade23440
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b522b0bd641d0147518843b11be4cd3a1430ae20
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309248"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59265340"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Azure Notebook プロジェクトでデータ ファイルを操作する
 
@@ -42,13 +42,13 @@ ms.locfileid: "53309248"
 
 1. **[アップロード]** コマンドを選択してから、**[From URL]\(URL から\)** または **[From computer]\(コンピューターから\)** のいずれかを選択し、インポートするデータに関する必要な詳細を入力します。
 
-    - **[From URL]\(URL から\)**: **[ファイル URL]** フィールドに送信元アドレスを入力し、**[ファイル名]** フィールドにプロジェクトのノートブックに割り当てるファイル名を入力します。 次に、**[+ ファイルの追加]** を選択してアップロード リストに URL を追加します。 その他にも URL があればこのプロセスを繰り返し、**[完了]** を選択します。
+   - **[From URL]\(URL から\)**: **[ファイル URL]** フィールドに送信元アドレスを入力し、**[ファイル名]** フィールドにプロジェクトのノートブックに割り当てるファイル名を入力します。 次に、**[+ ファイルの追加]** を選択してアップロード リストに URL を追加します。 その他にも URL があればこのプロセスを繰り返し、**[完了]** を選択します。
 
-    ![[URL] ポップアップからのアップロード](media/quickstarts/upload-from-url-popup.png)
+     ![[URL] ポップアップからのアップロード](media/quickstarts/upload-from-url-popup.png)
 
-    - **[From computer]\(コンピューターから\)**:ポップアップにファイルをドラッグ アンド ドロップするか、**[ファイルの選択]** を選択し、インポートするデータ ファイルを参照して選択します。 ファイルのオープンやそのデータの解析はノートブックのコードで行うため、任意の数、種類、形式のファイルを削除したり、選択したりできます。
+   - **[From computer]\(コンピューターから\)**:ポップアップにファイルをドラッグ アンド ドロップするか、**[ファイルの選択]** を選択し、インポートするデータ ファイルを参照して選択します。 ファイルのオープンやそのデータの解析はノートブックのコードで行うため、任意の数、種類、形式のファイルを削除したり、選択したりできます。
 
-    ![コンピューターからアップロードする場合のポップアップ](media/quickstarts/upload-from-computer-popup.png)
+     ![コンピューターからアップロードする場合のポップアップ](media/quickstarts/upload-from-computer-popup.png)
 
 1. インポート後、ファイルはプロジェクト ダッシュボードに表示され、格納されているフォルダーへの相対パス名を使用してノートブック コードからアクセスできます。
 

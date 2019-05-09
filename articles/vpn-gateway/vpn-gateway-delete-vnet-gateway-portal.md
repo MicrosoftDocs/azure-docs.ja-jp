@@ -1,5 +1,5 @@
 ---
-title: '仮想ネットワーク ゲートウェイの削除: Azure Portal: Resource Manager | Microsoft ドキュメント'
+title: 仮想ネットワーク ゲートウェイの削除:Azure portal:Resource Manager | Microsoft Docs
 description: Resource Manager デプロイ モデルで、Azure Portal を使用して仮想ネットワーク ゲートウェイを削除します。
 services: vpn-gateway
 documentationcenter: na
@@ -7,12 +7,13 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 78af43510e5fc2bed38e109a546944d4a649241c
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.topic: conceptual
+ms.openlocfilehash: 387b4e982772f22453876e1ea8b9e7c4039601c4
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984113"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790579"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>ポータルを使用して仮想ネットワーク ゲートウェイを削除する
 
@@ -60,5 +61,5 @@ ms.locfileid: "49984113"
 リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、Resource Manager デプロイ モデルに該当します。
 
 1. **[すべてのリソース]** でリソース グループを見つけ、クリックしてブレードを開きます。
-2. **[削除]** をクリックします。 [削除] ブレードに関連するリソースを表示します。 これらのリソースをすべて削除することを確認します。 削除しない場合は、この記事の上部にある、「[VPN ゲートウェイの削除](#deletegw)」のステップに従ってください。
+2. **[削除]** をクリックします。 [削除] ブレードに関連するリソースを表示します。 これらのリソースをすべて削除することを確認します。 削除しない場合は、この記事の上部にある「VPN ゲートウェイの削除」の手順を実行してください。
 3. 続行するには、削除するリソース グループの名前を入力し、**[削除]** をクリックします。

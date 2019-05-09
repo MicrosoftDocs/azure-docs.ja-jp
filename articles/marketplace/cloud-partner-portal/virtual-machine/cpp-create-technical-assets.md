@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pbutlerm
-ms.openlocfilehash: da3e7e44ed1ad0698392ba1afcb59887ffbc53fe
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639137"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59050103"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>出品する仮想マシンの技術資産を作成する
 
@@ -35,8 +35,9 @@ VM イメージには、1 個のオペレーティング システム ディス�
 > どのオペレーティング システムを使っているかにかかわらず、SKU に必要な最小数のデータ ディスクのみを追加します。 顧客はデプロイ時にイメージの一部であるディスクを削除できませんが、デプロイ中またはデプロイ後にいつでもディスクを追加できます。 
 
 > [!IMPORTANT]
-> *新しいイメージ バージョンでディスク数を変更しないでください。* イメージでデータ ディスクを再構成する必要がある場合は、新しい SKU を定義します。 異なるディスク数で新しいバージョンのイメージを発行すると、自動スケール、ARM テンプレートを使用したソリューションの自動デプロイなどのシナリオで、その新しいバージョンに基づく新しいデプロイが破損する可能性があります。
+> *新しいイメージ バージョンでディスク数を変更しないでください。*  イメージでデータ ディスクを再構成する必要がある場合は、新しい SKU を定義します。 異なるディスク数で新しいバージョンのイメージを発行すると、自動スケール、ARM テンプレートを使用したソリューションの自動デプロイなどのシナリオで、その新しいバージョンに基づく新しいデプロイが破損する可能性があります。
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="fundamental-technical-knowledge"></a>技術的な知識の基礎
 
@@ -58,7 +59,7 @@ VHD と VM の管理に役立つ次のスクリプト環境のいずれか一方
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     *   拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     *   拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 

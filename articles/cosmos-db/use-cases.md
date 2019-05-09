@@ -1,18 +1,17 @@
 ---
 title: Azure Cosmos DB の一般的なユース ケースとシナリオ
 description: Azure Cosmos DB の上位 5 つのユース ケースとして、ユーザーが生成したコンテンツ、イベントのログ記録、カタログ データ、ユーザー設定のデータ、およびモノのインターネット (IoT) について説明します。
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.openlocfilehash: f49f56d57de6cdcb7c5e9b557ed897d17a6bf7fb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 935c6ff03485c2b8e4d3e2f3df51c740ec1e8371
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079179"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043296"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -27,7 +26,7 @@ ms.locfileid: "53079179"
 ## <a name="introduction"></a>はじめに
 [Azure Cosmos DB](../cosmos-db/introduction.md) は、Microsoft のグローバルに分散されたデータベース サービスです。 このサービスは、顧客が任意の数の地理的リージョン間でスループットとストレージを弾力的に (かつ独立して) スケーリングできるように設計されています。 Azure Cosmos DB は、スループット、待機時間、可用性、整合性を含む包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/)を提供するための、今日の市場で最初のグローバルに分散されたデータベース サービスです。 
 
-Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](https://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [MongoDB API](mongodb-introduction.md)、[SQL API](documentdb-introduction.md)、[Gremlin API](graph-introduction.md)、[Tables API](table-introduction.md) を含むデータ アクセス用の多数の API を、ネイティブおよび拡張可能な方法でサポートします。 
+Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](https://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)、[SQL API](documentdb-introduction.md)、[Gremlin API](graph-introduction.md)、[Table API](table-introduction.md) を含むデータ アクセス用の多くの API を、ネイティブおよび拡張可能な方法でサポートします。 
 
 Azure Cosmos DB を、グローバルな展開を視野に入れた高性能アプリケーションに最適なものにしている属性のいくつかを次に示します。
 

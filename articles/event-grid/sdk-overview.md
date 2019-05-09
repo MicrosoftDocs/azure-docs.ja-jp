@@ -2,18 +2,18 @@
 title: Azure Event Grid SDK
 description: Azure Event Grid の SDK について説明します。 これらの SDK は、管理、発行、および使用の機能を提供します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 06/29/2018
-ms.author: tomfitz
-ms.openlocfilehash: 3c085074863aa166a5766116b6c63b7dc341ad96
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.date: 01/19/2019
+ms.author: spelluru
+ms.openlocfilehash: 7f05665f4bcc5449c1a81fa24582b333b0a944e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173755"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>管理と発行のための Event Grid SDK
 
@@ -46,4 +46,4 @@ Event Grid の SDK を使うと、プログラムでリソースの管理やイ�
 * アプリケーションの例については、[Event Grid のコード サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid)に関するページを参照してください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure CLI での Event Grid コマンドについては、[Azure CLI](/cli/azure/eventgrid) のページをご覧ください。
-* PowerShell での Event Grid コマンドについては、[PowerShell](/powershell/module/azurerm.eventgrid) のページをご覧ください。
+* PowerShell での Event Grid コマンドについては、[PowerShell](/powershell/module/az.eventgrid) のページをご覧ください。

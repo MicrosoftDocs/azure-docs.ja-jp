@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fe2b509b62884c1cea554bc8dc5df25489205264
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d61874a57801a6c02af885cab6a97ed38da1deb1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966960"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487925"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 
@@ -54,20 +54,20 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
+   - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+   - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
-    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 4. **[バージョン]** として **[V1]** を選択します。
 5. データ ファクトリの **場所** を選択します。 Data Factory でサポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他の場所に配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。
 8. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
 
-    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
+     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
    
-    ![データ ファクトリのホーム ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+     ![データ ファクトリのホーム ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. **[作成およびデプロイ]** タイルをクリックして、Data Factory エディターを起動します。
 
     ![Data Factory エディター](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-editor.png)
@@ -165,7 +165,9 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ## <a name="azure-powershell"></a>Azure PowerShell
 このセクションでは、Azure PowerShell を使用して、SSIS パッケージを呼び出すストアド プロシージャ アクティビティを含む Data Factory パイプラインを作成します。
 
-[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。
 次の手順では、データ ファクトリを作成する方法を説明します。 このデータ ファクトリにストアド プロシージャ アクティビティを含むパイプラインを作成します。 ストアド プロシージャ アクティビティが SSISDB データベース内でストアド プロシージャを実行して、SSIS パッケージを実行します。
@@ -180,7 +182,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 2. Azure リソース グループを作成するには、次のコマンドを実行します。 
 
     ```powershell
-    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'eastus'
+    $ResGrp = New-AzResourceGroup $resourceGroupName -location 'eastus'
     ``` 
     リソース グループが既に存在する場合、上書きしないようお勧めします。 `$ResourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。 
 3. データ ファクトリ名の変数を定義します。 
@@ -192,10 +194,10 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     $DataFactoryName = "ADFTutorialFactory";
     ```
 
-5. データ ファクトリを作成するには、$ResGrp 変数の Location および ResourceGroupName プロパティを使用して、次の **New-AzureRmDataFactory** コマンドレットを実行します。 
+5. データ ファクトリを作成するには、$ResGrp 変数の Location および ResourceGroupName プロパティを使用して、次の **New-AzDataFactory** コマンドレットを実行します。 
     
     ```powershell       
-    $df = New-AzureRmDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
+    $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
     ```
 
 以下の点に注意してください。
@@ -227,16 +229,16 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
         }
     ```
 2. **Azure PowerShell** で **C:\ADF\RunSSISPackage** フォルダーに切り替えます。
-3. **New-AzureRmDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービス **AzureSqlDatabaseLinkedService** を作成します。 
+3. **New-AzDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービスを作成します。**AzureSqlDatabaseLinkedService** を作成します。 
 
     ```powershell
-    New-AzureRmDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
+    New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
 ### <a name="create-an-output-dataset"></a>出力データセットの作成
 この出力データセットは、パイプラインのスケジュールを開始するダミーのデータセットです。 頻度は [時間] に設定され、間隔は 1 に設定されています。 したがって、パイプラインは、パイプラインの開始時刻から終了時刻までの間に 1 時間に 1 回実行されます。 
 
-1. 次の内容を含む OuputDataset.json ファイルを作成します。 
+1. 次のような内容の OutputDataset.json ファイルを作成します。 
     
     ```json
     {
@@ -252,10 +254,10 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
         }
     }
     ```
-2. **New-AzureRmDataFactoryDataset** コマンドレットを実行してデータセットを作成します。 
+2. **New-AzDataFactoryDataset** コマンドレットを実行して、データセットを作成します。 
 
     ```powershell
-    New-AzureRmDataFactoryDataset $df -File ".\OutputDataset.json"
+    New-AzDataFactoryDataset $df -File ".\OutputDataset.json"
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>ストアド プロシージャ アクティビティを含むパイプラインを作成する 
@@ -294,24 +296,24 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     }    
     ```
 
-2. パイプライン **RunSSISPackagePipeline** を作成するには、**New-AzureRmDataFactoryPipeline** コマンドレットを実行します。
+2. パイプライン **RunSSISPackagePipeline** を作成するには、**New-AzDataFactoryPipeline** コマンドレットを実行します。
 
     ```powershell
-    $DFPipeLine = New-AzureRmDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
+    $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
     ```
 
 ### <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
 
-2. **Get-AzureRmDataFactorySlice** を実行し、output dataset** のすべてのスライスの詳細を表示します。これは、パイプラインの出力データセットです。
+1. **Get-AzDataFactorySlice** を実行し、output dataset** のすべてのスライスの詳細を表示します。これは、パイプラインの出力データセットです。
 
-    ```PowerShell
-    Get-AzureRmDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
+    ```powershell
+    Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     ここで指定した StartDateTime がパイプライン JSON で指定されている開始時刻と同じであることに注意してください。 
-3. **Get-AzureRmDataFactoryRun** を実行して、特定のスライスに関するアクティビティの実行の詳細を取得します。
+1. **Get-AzDataFactoryRun** を実行して、特定のスライスに関するアクティビティの実行の詳細を取得します。
 
-    ```PowerShell
-    Get-AzureRmDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
+    ```powershell
+    Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
 
     スライスが**準備完了**状態または**失敗**状態になるまで、このコマンドレットを実行し続けることができます。 

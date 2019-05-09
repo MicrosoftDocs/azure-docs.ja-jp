@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ea162cbf26ee853551dbac6b36a21b27fb1ca783
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092030"
 documentType: LandingData
 title: Team Data Science Process のドキュメント
 metadata:
@@ -13,7 +7,7 @@ metadata:
   services: machine-learning
   author: cjgronlund
   ms.service: machine-learning
-  ms.component: team-data-science-process
+  ms.subservice: team-data-science-process
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
@@ -22,24 +16,24 @@ metadata:
 abstract:
   description: Team Data Science Process は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 TDSP を通じて、チームのコラボレーションと学習の効果を高めることができます。 これには、データ サイエンスへの取り組みを円滑に導入できるよう支援する Microsoft をはじめとする業界の各企業から、ベスト プラクティスと構造を抽出することが含まれます。 分析プログラムの利点を完全に実現できるよう企業を支援するのがその目標です。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Team Data Science Process について学習します。
-  - type: list
-    style: unordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: <a href="overview">概要</a>
-    - html: <a href="lifecycle">ライフサイクル</a>
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Team Data Science Process をさまざまなシナリオで使用する方法を学習します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Team Data Science Process について学習します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="overview">概要</a>
+          - html: <a href="lifecycle">ライフサイクル</a>
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="walkthroughs-spark">PySpark と Scala を使用した Spark</a>
-    - html: <a href="walkthroughs-hdinsight-hadoop">HDInsight Hadoop での Hive の使用</a>
-    - html: <a href="walkthroughs-azure-data-lake">Azure Data Lake での U-SQL の使用</a>
-    - html: <a href="walkthroughs-sql-server">SQL Server での R、Python、T-SQL の使用</a>
-    - html: <a href="walkthroughs-sql-data-warehouse">SQL DW での T-SQL と Python の使用</a>
+      - type: paragraph
+        text: Team Data Science Process をさまざまなシナリオで使用する方法を学習します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="walkthroughs-spark">PySpark と Scala を使用した Spark</a>
+          - html: <a href="walkthroughs-hdinsight-hadoop">HDInsight Hadoop での Hive の使用</a>
+          - html: <a href="walkthroughs-azure-data-lake">Azure Data Lake での U-SQL の使用</a>
+          - html: <a href="walkthroughs-sql-server">SQL Server での R、Python、T-SQL の使用</a>
+          - html: <a href="walkthroughs-sql-data-warehouse">SQL DW での T-SQL と Python の使用</a>

@@ -4,7 +4,7 @@ description: 'このトピックでは、Wirecast ライブ エンコーダー�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: e0e41714f6979a9cd699df70498b9c89a44d5ee1
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138958"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890051"
 ---
-# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
+# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -29,7 +29,7 @@ ms.locfileid: "53138958"
 >
 >
 
-この記事では、[Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。  詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+この記事では、[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。  詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。 このツールは、Windows PC でのみ実行されます。 Mac または Linux の場合は、Azure Portal を使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)と[プログラム](media-services-portal-creating-live-encoder-enabled-channel.md)を作成します。
 
@@ -109,7 +109,7 @@ ms.locfileid: "53138958"
    * プロファイル:メイン
    * キー フレームの距離:60 フレーム
 
-    **オーディオ**
+     **オーディオ**
 
    * ターゲットのビットレート:192 kbps
    * サンプル レート:44.100 kHz
@@ -134,7 +134,7 @@ ms.locfileid: "53138958"
 1. **[OK]** を選択します。
 2. メインの **[Wirecast]** 画面で、ビデオとオーディオの入力ソースの準備が整っていることを確認し、左上隅の **[ストリーム]** をクリックします。
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > **[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する**必要があります**。

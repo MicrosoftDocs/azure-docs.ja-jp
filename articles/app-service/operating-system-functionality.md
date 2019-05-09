@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb17748968d0875cae132730a02f490eab966690
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388511"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901787"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
@@ -129,13 +129,11 @@ App Service の各アプリは、"アプリケーション プール ID" と呼�
 
 レジストリへの書き込みアクセスはブロックされます。ユーザーごとのレジストリ キーにも一切アクセスできません。 Azure 環境の場合、アプリが他の仮想マシンへ移行される可能性があるので、レジストリへの書き込みアクセスを前提にしてコードを開発しないでください。 アプリで利用できる唯一の書き込み可能な永続ストレージは、App Service の UNC 共有に格納されるアプリ別のコンテンツ ディレクトリ構造です。 
 
+## <a name="remote-desktop-access"></a>リモート デスクトップ アクセス
+
+App Service では、VM インスタンスへのリモート デスクトップ アクセスは提供されません。
+
 ## <a name="more-information"></a>詳細情報
 
-[Azure Web アプリ サンドボックス](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - App Service の実行環境に関する最新の情報。 このページは、App Service の開発チームによって直接管理されます。
-
-> [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-> 
-> 
-
+[Azure App Service サンドボックス](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - App Service の実行環境に関する最新の情報。 このページは、App Service の開発チームによって直接管理されます。
 

@@ -8,18 +8,18 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 14b51f109ca76661ac10c99d42002dda45bc0500
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 700e8e9fe0dac182d71df8ca66800fa03cf25a2e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318400"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295795"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central でデータをエクスポートする
 
 *このトピックでは、管理者に適用されます。*
 
-この記事では、Azure IoT Central の連続データ エクスポート機能を使用して、自身の **Azure Event Hubs** および **Azure Service Bus** のインスタンスにデータをエクスポートする方法を詳しく説明します。 ウォーム パスの分析情報と分析のため、**測定**、**デバイス**、および**デバイス テンプレート**を自身が指定した場所にエクスポートできます。 これには、Azure Stream Analytics でカスタム ルールをトリガーすること、Azure Logic Apps でカスタム ワークフローをトリガーすること、データを変換し、Azure Functions を介してそれを渡すことが含まれます。 
+この記事では、データを自身の **Azure Event Hubs** および **Azure Service Bus** のインスタンスにエクスポートする Azure IoT Central の継続的データ エクスポート機能の使用方法について説明します。 ウォーム パスの分析情報と分析のため、**測定**、**デバイス**、および**デバイス テンプレート**を自身が指定した場所にエクスポートできます。 これには、Azure Stream Analytics でカスタム ルールをトリガーすること、Azure Logic Apps でカスタム ワークフローをトリガーすること、データを変換し、Azure Functions を介してそれを渡すことが含まれます。 
 
 > [!Note]
 > この場合も、連続データ エクスポートを有効にすると、その時点以降のデータのみが取得されます。 現在は、連続データ エクスポートがオフになっていたときのデータを取得することはできません。 より多くの履歴データを保持するには、連続データ エクスポートを早い段階で有効にしてください。
@@ -28,6 +28,77 @@ ms.locfileid: "53318400"
 ## <a name="prerequisites"></a>前提条件
 
 - ご利用の IoT Central アプリケーションの管理者であること
+
+## <a name="set-up-export-destination"></a>エクスポート先の設定
+
+エクスポート先となる既存の Event Hubs/Service Bus がない場合は、次の手順に従います。
+
+## <a name="create-event-hubs-namespace"></a>Event Hubs 名前空間の作成
+
+1. [Azure portal で新しい Event Hubs 名前空間](https://ms.portal.azure.com/#create/Microsoft.EventHub)を作成します。 詳細については、[Azure Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)を参照してください。
+2. サブスクリプションを選択します。 
+
+    > [!Note] 
+    > これで、ご使用の従量課金制 IoT Central アプリケーションのサブスクリプションとは**異なる**別のサブスクリプションにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
+3. Event Hubs 名前空間にイベント ハブを作成します。 名前空間に移動し、上部の **[+ イベント ハブ]** を選択して、イベント ハブ インスタンスを作成します。
+
+## <a name="create-service-bus-namespace"></a>Service Bus 名前空間の作成
+
+1. [Azure portal で新しい Service Bus 名前空間](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)を作成します。 詳細については、[Azure Service Bus のドキュメント](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)を参照してください。
+2. サブスクリプションを選択します。 
+
+    > [!Note] 
+    > これで、ご使用の従量課金制 IoT Central アプリケーションのサブスクリプションとは**異なる**別のサブスクリプションにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
+
+3. Service Bus 名前空間に移動し、上部の **[+ キュー]** または **[+ トピック]** を選択して、エクスポート先のキューまたはトピックを作成します。
+
+
+## <a name="set-up-continuous-data-export"></a>連続データ エクスポートを設定する
+
+これでデータのエクスポート先となる Event Hubs/Service Bus ができました。次の手順に従って、継続的データ エクスポートを設定します。 
+
+1. ご使用の IoT Central アプリケーションにサインインします。
+
+2. 左側のメニューで、**[継続的データ エクスポート]** を選択します。
+
+    > [!Note]
+    > 左側のメニューに [継続的データ エクスポート] が表示されない場合は、そのアプリの管理者ではありません。 データ エクスポートの設定について、管理者に問い合わせてください。
+
+    ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu.PNG)
+
+3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、**[Azure Event Hubs]** または **[Azure Service Bus]** を選択します。 
+
+    > [!NOTE] 
+    > アプリごとのエクスポートの最大数は 5 です。 
+
+    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new.PNG)
+
+4. ドロップダウン リスト ボックスで、お使いの **Event Hubs 名前空間/Service Bus 名前空間**を選択します。 リスト内の最後のオプション (**[Enter a connection string]\(接続文字列を入力する\)**) を選択することもできます。 
+
+    > [!NOTE] 
+    > ご使用の **IoT Central アプリと同じサブスクリプション**の Storage Account/Event Hubs 名前空間/Service Bus 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、**[Enter a connection string]\(接続文字列を入力する\)** を選択して、手順 5 に進みます。
+
+    > [!NOTE] 
+    > 7 日間の試用版アプリの場合、継続的データ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 7 日間の試用版アプリに関連付けられた Azure サブスクリプションがないのはこのためです。
+
+    ![新しい cde イベント ハブの作成](media/howto-export-data/export_create.PNG)
+
+5. (省略可能) **[Enter a connection string]\(接続文字列を入力する\)** を選択すると、接続文字列を貼り付けるための新しいボックスが表示されます。 次の接続文字列を取得するには:
+    - Event Hubs や Service Bus。Azure portal で名前空間に移動します。
+        - **[設定]** で、**[共有アクセス ポリシー]** を選択します。
+        - 既定の **RootManageSharedAccessKey** を選択するか、新しいポリシーを作成します。
+        - プライマリまたはセカンダリの接続文字列をコピーします。
+ 
+6. ドロップダウン リスト ボックスから、イベント ハブ/キューまたはトピックを選択します。
+
+7. **[Data to export]\(エクスポートするデータ\)** で、エクスポートするデータの種類を **[オン]** に設定して指定します。
+
+6. 継続的データ エクスポートを有効にするには、**[データのエクスポート]** が **[オン]** になっていることを確認します。 **[保存]** を選択します。
+
+  ![連続データ エクスポートを構成する](media/howto-export-data/export_list.PNG)
+
+7. 数分後に、選択したエクスポート先にデータが表示されます。
+
 
 ## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Azure Event Hubs および Azure Service Bus にエクスポートする
 

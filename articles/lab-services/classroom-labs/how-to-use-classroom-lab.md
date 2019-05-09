@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/15/2018
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: b5a55a35dc4baacf8248adad3133220214050eeb
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: bc5c12d4bb92edaafcc9808da8c48106a6e0cbd5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706689"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548043"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボにアクセスする方法
 この記事では、クラスルーム ラボにアクセスし、ラボの VM に接続して、VM を停止する方法について説明します。 
@@ -36,7 +36,7 @@ ms.locfileid: "51706689"
 ## <a name="view-all-the-classroom-labs"></a>すべてのクラスルーム ラボを表示する
 ラボへの登録後は、次の手順に従ってクラスルーム ラボを表示できます。 
 
-1. [https://labs.azure.com](https://labs.azure.com) に移動します。 
+1. [https://labs.azure.com](https://labs.azure.com) に移動します。 Internet Explorer 11 はまだサポートされていないことに注意してください。 
 2. ラボへの登録に使用したユーザー アカウントを使用してサービスにサインインします。 
 3. 自分にアクセス権があるすべてのラボが表示されることを確認します。 
 
@@ -44,12 +44,11 @@ ms.locfileid: "51706689"
 
 ## <a name="connect-to-the-virtual-machine-in-a-classroom-lab"></a>クラスルーム ラボの仮想マシンに接続する
 
-1. VM をまだ起動していない場合は起動し、**[開始]** を選択します。
+1. VM をまだ起動していない場合は起動し、タイルで **[開始]** を選択します。 
 2. アクセスするラボの仮想マシンを表すタイルの **[接続]** を選びます。 
-
-    ![すべてのラボを表示する](../media/how-to-use-classroom-lab/connect-button.png)
-3. RDP ファイル (Windows VM の場合) をハード ディスクに保存して開きます。 
-4. マシンにログインするために教師から提供された**ユーザー名**と**パスワード**を使います。 
+3. 次のいずれかの手順を実行します。 
+   1. **Windows** 仮想マシンの場合は、**RDP** ファイルをハード ディスクに保存します。 仮想マシンに接続するための RDP ファイルを開きます。 マシンにログインするために教師から提供された**ユーザー名**と**パスワード**を使います。 
+   3. **Linux** 仮想マシンの場合は、**[仮想マシンに接続する]** ダイアログ ボックス上で SSH 接続文字列をコピーして保存します。 仮想マシンに接続するには、SSH ターミナル ([Putty](https://www.putty.org/) など) からこの接続文字列を使用します。
 
 ## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>クラスルーム ラボの仮想マシンを停止する
 

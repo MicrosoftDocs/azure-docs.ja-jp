@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 990f300055f7c0c7132dd44271dea73044649fc5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 1d67f981991796b81ba3ab6540631e6d62be8077
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307000"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092170"
 ---
-# <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム: 監査とログ記録 | 対応策 
+# <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム:監査とログ記録 | 対応策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Dynamics CRM**    | <ul><li>[ソリューションにおける機密性の高いエンティティを識別し、変更の監査を実装する](#sensitive-entities)</li></ul> |
@@ -196,7 +196,7 @@ ms.locfileid: "43307000"
 
 ### <a name="example"></a>例
 次の WCF 構成ファイルの `<behavior/>` 要素は、WCF が監査ログへの書き込みに失敗した場合に、アプリケーションへの通知を行わないよう WCF に指示しています。
-````
+```
 <behaviors>
     <serviceBehaviors>
         <behavior name="NewBehavior">
@@ -207,7 +207,7 @@ ms.locfileid: "43307000"
         </behavior>
     </serviceBehaviors>
 </behaviors>
-````
+```
 監査ログに書き込むことができない場合に、必ずプログラムに通知を行うように WCF を構成してください。 プログラムには、監査証跡が保持されていないことを組織に警告するための代替通知スキーマを用意しておく必要があります。 
 
 ## <a id="logging-web-api"></a>監査とログ記録が Web API に適用されていることを確認する

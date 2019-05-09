@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 18b29da34529af290f22a3b88a929a60660dd9ef
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 5ca9a0d5dcbf5b2525f547562b5838ded7441a66
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457597"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551907"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>Anomaly Finder API と Javascript の使用
 
@@ -51,7 +51,7 @@ ms.locfileid: "49457597"
 <html>
 <head>
     <title>Anomaly Detection Javascript Quick Starts</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
 

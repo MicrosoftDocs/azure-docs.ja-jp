@@ -1,23 +1,21 @@
 ---
 title: .NET と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 description: Azure Cosmos DB の MongoDB 用 API に接続してクエリを実行するために使用できる Xamarin コード サンプルについて説明します
-services: cosmos-db
 author: codemillmatt
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.custom: quickstart, xamarin
+ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 456d35666e1475379b7ec90e8683ed47a1946f67
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808963"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588094"
 ---
-# <a name="quickstart-quickstart-build-a-xamarinforms-app-with-net-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: クイック スタート: .NET と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

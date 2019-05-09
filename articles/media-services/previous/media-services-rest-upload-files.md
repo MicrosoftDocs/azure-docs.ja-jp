@@ -4,23 +4,23 @@ description: 資産を作成し、アップロードすることによって、M
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: f63087d107b9db30e2af6273afde7f51f1c72404
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070429"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295115"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする
+# <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする  
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
@@ -52,7 +52,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 Media Services REST API を使用する場合は、次の点を考慮してください。
  
 * Media Services REST API を使用してエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。 <br/>このチュートリアルで使用される Postman コレクションでは、必要なすべてのヘッダーの設定に対応しています。
-* Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
+* Media Services は、ストリーミング コンテンツ (たとえば、 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
 * 名前は 260 文字以内で指定する必要があります。
 * Media Services での処理についてサポートされている最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)の記事を参照してください。
 
@@ -88,7 +88,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
     ```
 4. **[Postman]** ウィンドウの左にある **[1 Get AAD Auth token]\(1 AAD Auth トークンの取得\)** -> **[Get Azure AD Token for Service Principal]\(サービス プリンシパルの Azure AD トークンの取得\)** をクリックします。
 
-    URL 部分には、**AzureADSTSEndpoint** 環境変数が入力されます (このチュートリアルの中で、[コレクション](#configure-the-collection)をサポートする[環境変数](#configure-the-environment)の値を設定しています)。
+    URL 部分には、**AzureADSTSEndpoint** 環境変数が入力されます (このチュートリアルの初めの方で、コレクションをサポートする環境変数の値を設定しています)。
 
     ![ファイルをアップロードする](./media/media-services-rest-upload-files/postment-get-token.png)
 
@@ -96,7 +96,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
     "Access_token" が含まれている応答を確認できます。 "test" スクリプトはこの値を利用して、(前述した) **AccessToken** 環境変数に設定します。 お使いの環境変数を確認すると、現時点でこの変数には、残りの操作で使用されるアクセス トークン (ベアラー トークン) 値が格納されていることがわかります。 
 
-    トークンの有効期限が切れた場合は、もう一度 [Get Azure AD Token for Service Principal]\(サービス プリンシパルの Azure AD トークンの取得\) の手順を行います。 
+    トークンの有効期限が切れた場合は、もう一度 [Get Azure AD Token for Service Principal]\(サービス プリンシパルの Azure AD トークンの取得\) の手順を行います。 
 
 ## <a name="create-an-access-policy-with-write-permission"></a>書き込みのアクセス許可を持つアクセス ポリシーを作成する
 
@@ -122,9 +122,9 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 [資産](https://docs.microsoft.com/rest/api/media/operations/asset)は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。 REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
 
-資産を作成するときに追加できるプロパティの 1 つは **Options** です。 **[なし]** (既定、暗号化は使用されない)、**[StorageEncrypted]** (クライアント側のストレージ暗号化を使って事前に暗号化されたコンテンツに対応)、**[CommonEncryptionProtected]**、または **[EnvelopeEncryptionProtected]** のいずれかの暗号化オプションを指定できます。 暗号化された資産がある場合は、配信ポリシーを構成する必要があります。 詳細については、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
+資産を作成するときに追加できるプロパティの 1 つは **Options** です。 次の暗号化オプションのいずれかを指定できます。**[None]** (既定、暗号化は使用されない)、**[StorageEncrypted]** (クライアント側のストレージ暗号化を使って事前に暗号化されたコンテンツに対応)、**[CommonEncryptionProtected]**、または **[EnvelopeEncryptionProtected]**。 暗号化された資産がある場合は、配信ポリシーを構成する必要があります。 詳細については、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
 
-資産が暗号化されたら、**ContentKey** を作成し、[ContentKey の作成方法](media-services-rest-create-contentkey.md)に関する記事の説明に従ってその資産にリンクする必要があります。 ファイルを資産にアップロードした後、**AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。 **MERGE** HTTP 要求を使用して実行します。 
+資産が暗号化されたら、**ContentKey** を作成し、次の記事の説明に従ってその資産にリンクする必要があります:[ContentKey の作成方法](media-services-rest-create-contentkey.md)。 ファイルを資産にアップロードした後、**AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。 **MERGE** HTTP 要求を使用して実行します。 
 
 この例では、暗号化されていない資産を作成しています。 
 
@@ -156,7 +156,7 @@ SAS URL には次の形式があります。
 いくつかの考慮事項が適用されます。
 
 * 特定の資産に関連付けられている 5 つの一意の Locator を同時に使用することはできません。 詳細については、「Locator」をご覧ください。
-* すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。 これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。 また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。    
+* すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。 これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。 また、StartTime 値は YYYY-MM-DDTHH:mm:ssZ ("2014-05-23T17:53:50Z" など) の DateTime 形式である必要があります。    
 * Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。
 
 ### <a name="create-a-sas-locator"></a>SAS ロケーターを作成する
@@ -188,7 +188,7 @@ SAS URL には次の形式があります。
 1. **+** キーを押して、新しい要求タブを作成します。
 2. **PUT** 操作を選択し、URL に **{{UploadURL}}** を貼り付けます。
 2. **[Authorization]\(承認\)** タブはそのままにしておきます(**[ベアラー トークン]** に設定しないでください)。
-3. **[ヘッダー]** タブで、**[キー] に** "x-ms-blob-type"、**[値] に** "BlockBlob" を指定します。
+3. **[ヘッダー]** タブで、次を指定します:**Key**: "x-ms-blob-type" および **Value**:"BlockBlob"。
 2. **[本文]** タブで、**[バイナリ]** をクリックします。
 4. **MediaFileName** 環境変数に指定した名前のファイルを選択します。
 5. **[送信]** をクリックします。

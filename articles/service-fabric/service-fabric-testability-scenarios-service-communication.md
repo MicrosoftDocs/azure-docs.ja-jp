@@ -1,10 +1,10 @@
 ---
-title: 'Testability: サービス通信 | Microsoft Docs'
+title: 'テスト容易性: サービス通信 | Microsoft Docs'
 description: サービス間通信は、Service Fabric アプリケーションの重要な統合ポイントです。 この記事では、設計の考慮事項とテスト手法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: e3ea537d310d49c934cf6789184f090791cf16a4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211227"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665748"
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric Testability シナリオ: サービス通信
+# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric のテスト容易性シナリオ: サービス通信
 マイクロサービスおよびサービス指向アーキテクチャ スタイルは、Azure Service Fabric に無理なく適用できます。 このような種類の分散アーキテクチャでは、コンポーネント化されたマイクロサービス アプリケーションは、相互に通信する必要がある複数のサービスで構成されることが一般的です。 一般的に、最も単純な場合でも、相互に通信する必要があるステートレス Web サービスとステートフル データ ストレージ サービスが最低限必要です。
 
 各サービスは他のサービスに対してリモート API を公開するため、サービス間の通信はアプリケーションの重要な統合ポイントです。 I/O を伴う一連の API 境界を操作するには、一般的に多少の注意と、テストと検証を十分に行う必要があります。

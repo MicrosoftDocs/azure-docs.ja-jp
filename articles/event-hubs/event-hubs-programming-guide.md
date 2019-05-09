@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138077"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678583"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Azure Event Hubs のプログラミング ガイド
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
@@ -26,8 +26,7 @@ ms.locfileid: "53138077"
 .NET のマネージド API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient][] クラスと [EventData][] クラスになります。 [EventHubClient][] は、イベントがイベント ハブに送信されるときに使われる AMQP 通信チャンネルを提供します。 [EventData][] クラスはイベントを表し、イベント ハブにメッセージを発行するために使用されます。 このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。 その他のプロパティは [EventData][] オブジェクトに追加され、イベント ハブに渡されます。
 
 ## <a name="get-started"></a>作業開始
-
-Event Hubs をサポートする .NET クラスが [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet パッケージ内に用意されています。 Visual Studio ソリューション エクスプローラーまたは Visual Studio の [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)を使用してインストールできます。 これを行うには、 [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) のウィンドウに次のコマンドを入力します。
+Event Hubs をサポートする .NET クラスが [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet パッケージ内に用意されています。 Visual Studio ソリューション エクスプローラーまたは Visual Studio の [パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)を使用してインストールできます。 これを行うには、 [パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) のウィンドウに次のコマンドを入力します。
 
 ```shell
 Install-Package Microsoft.Azure.EventHubs
@@ -92,14 +91,13 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 イベントをバッチ送信すると、スループット向上の役に立ちます。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API を使用して、[SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 呼び出し用のデータ オブジェクトを後で追加できるバッチを作成できます。
 
-単一のバッチは、イベントの 256 KB 制限を超えてはなりません。 また、バッチの各メッセージでは同じ発行元 ID が使用されます。 バッチが最大イベント サイズを超えないようにすることは送信元の責任となります。 超えた場合、クライアント **送信** エラーが生成されます。 ヘルパー メソッド [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) を使用して、バッチが 256 KB を超えないようにします。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API から空の [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) を取得し、[TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) を使用してイベントを追加し、バッチを構築します。 
+単一のバッチは、イベントの 1 MB 制限を超えてはなりません。 また、バッチの各メッセージでは同じ発行元 ID が使用されます。 バッチが最大イベント サイズを超えないようにすることは送信元の責任となります。 超えた場合、クライアント **送信** エラーが生成されます。 ヘルパー メソッド [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) を使用して、バッチが 1 MB を超えないようにします。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API から空の [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) を取得し、[TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) を使用してイベントを追加し、バッチを構築します。 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>非同期送信と大規模送信
 
 イベントは、イベント ハブに非同期に送信されます。 非同期送信を利用すると、クライアントがイベントを送信できる速度が上がります。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)は [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返します。 クライアントで [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) クラスを使用して、クライアント側の再試行オプションを制御できます。
 
 ## <a name="event-consumers"></a>イベント コンシューマー
-
 [EventProcessorHost][] クラスは Event Hubs からのデータを処理します。 .NET プラットフォームでのイベント リーダーを作成するときには、この実装を使用すべきです。 [EventProcessorHost][] はイベント プロセッサ実装のためにスレッドセーフでマルチプロセスの安全なランタイム環境を提供します。さらに、その環境では、チェックポイント処理とパーティション リースの管理が提供されます。
 
 [EventProcessorHost][] クラスを使用するために、[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) を実装できます。 このインターフェイスには 4 つのメソッドが含まれています。
@@ -110,6 +108,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
 イベント処理を開始するには、 [EventProcessorHost][]をインスタンス化し、イベント ハブの適切なパラメーターを提供します。 例: 
+
+> [!NOTE]
+> EventProcessorHost およびその関連クラスは **Microsoft.Azure.EventHubs.Processor** パッケージ内に用意されています。 [この記事](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)の手順に従うか、[パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)のウィンドウで `Install-Package Microsoft.Azure.EventHubs.Processor` コマンドを発行して、パッケージをご自分の Visual Studio プロジェクトに追加します。
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

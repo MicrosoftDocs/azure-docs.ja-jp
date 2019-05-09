@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 42b62c819fd3d26c6ea944f968e0d5956a7f055e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 654c23474ebc96a6873f82f51f969da5c7d2d20c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987460"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343257"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用して Windows VM にポリシーを適用する
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。 この記事では、Azure Resource Manager ポリシーを使用して、組織の Virtual Machines の望ましい行動を定義する方法について説明します。
 
-ポリシーの概要については、「[Azure Policy とは](../../azure-policy/azure-policy-introduction.md)」をご覧ください。
+ポリシーの概要については、「[Azure Policy とは](../../governance/policy/overview.md)」をご覧ください。
 
 ## <a name="permitted-virtual-machines"></a>許可されている仮想マシン
 組織の仮想マシンがアプリケーションと互換性があることを保証するために、許可されるオペレーティング システムを制限することができます。 次のポリシーの例は、Windows Server 2012 R2 Datacenter Virtual Machines の作成のみを許可します。
@@ -251,6 +251,6 @@ ms.locfileid: "46987460"
 ```
 
 ## <a name="next-steps"></a>次の手順
-* (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーを割り当てるには、[Azure Portal を使用したリソース ポリシーの割り当てと管理](../../azure-policy/assign-policy-definition.md)、[PowerShell を使用したポリシーの割り当て](../../azure-policy/assign-policy-definition-ps.md)、または [Azure CLI を使用したポリシーの割り当て](../../azure-policy/assign-policy-definition-cli.md)に関する各ページをご覧ください。
-* リソース ポリシーの概要については、「[Azure Policy とは](../../azure-policy/azure-policy-introduction.md)」をご覧ください。
+* (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーを割り当てるには、[Azure Portal を使用したリソース ポリシーの割り当てと管理](../../governance/policy/assign-policy-portal.md)、[PowerShell を使用したポリシーの割り当て](../../governance/policy/assign-policy-powershell.md)、または [Azure CLI を使用したポリシーの割り当て](../../governance/policy/assign-policy-azurecli.md)に関する各ページをご覧ください。
+* リソース ポリシーの概要については、「[Azure Policy とは](../../governance/policy/overview.md)」をご覧ください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。

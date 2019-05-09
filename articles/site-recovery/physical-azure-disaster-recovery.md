@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 3b06335019cf15cc296c1814ee1fcf5ce50c3949
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: a6be2fbbf946f13213f95b8876cfdddfa2ffbe67
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971851"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329219"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -27,8 +27,6 @@ ms.locfileid: "53971851"
 > * ソース レプリケーション環境とターゲット レプリケーション環境を設定する
 > * レプリケーション ポリシーを作成する
 > * サーバーのレプリケーションを有効にする
-
-このディザスター リカバリー シナリオの[アーキテクチャを確認](concepts-hyper-v-to-azure-architecture.md)する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -80,9 +78,6 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 - Site Recovery は、オンプレミスのマシンを Azure Storage にレプリケートします。 Azure VM は、フェールオーバーの発生後にストレージから作成されます。
 - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
-- このストレージ アカウントには、Standard または [Premium](../virtual-machines/windows/premium-storage.md) を使用できます。
-- Premium アカウントを設定する場合は、ログ データ用の Standard アカウントも別途必要になります。
-
 
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>モビリティ サービスのインストール用のアカウントを準備する

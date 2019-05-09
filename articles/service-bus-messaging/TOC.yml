@@ -12,38 +12,46 @@ items:
   items:
   - name: Service Bus キュー
     items:
-    - name: メッセージの送受信 - PowerShell
-      href: service-bus-quickstart-powershell.md
-    - name: メッセージの送受信 - ポータル
-      href: service-bus-quickstart-portal.md
-    - name: メッセージの送受信 - CLI
-      href: service-bus-quickstart-cli.md
-    - name: メッセージの送受信 - .NET
-      href: service-bus-dotnet-get-started-with-queues.md
-    - name: メッセージの送受信 - Java
-      href: service-bus-java-how-to-use-queues.md
-    - name: メッセージの送受信 - Node.js
-      href: service-bus-nodejs-how-to-use-queues.md
-    - name: メッセージの送受信 - PHP
-      href: service-bus-php-how-to-use-queues.md
-    - name: メッセージの送受信 - Python
-      href: service-bus-python-how-to-use-queues.md
-    - name: メッセージの送受信 - Ruby
-      href: service-bus-ruby-how-to-use-queues.md
+    - name: Service Bus キューを作成する
+      items:
+      - name: Azure ポータル
+        href: service-bus-quickstart-portal.md
+      - name: Azure PowerShell
+        href: service-bus-quickstart-powershell.md
+      - name: Azure CLI
+        href: service-bus-quickstart-cli.md
+    - name: メッセージを送受信する
+      items:
+      - name: .NET
+        href: service-bus-dotnet-get-started-with-queues.md
+      - name: Java
+        href: service-bus-java-how-to-use-queues.md
+      - name: Node.js
+        href: service-bus-nodejs-how-to-use-queues.md
+      - name: PHP
+        href: service-bus-php-how-to-use-queues.md
+      - name: Python
+        href: service-bus-python-how-to-use-queues.md
+      - name: Ruby
+        href: service-bus-ruby-how-to-use-queues.md
   - name: Service Bus トピックとサブスクリプション
     items:
-    - name: メッセージの発行とサブスクライブ - .NET
-      href: service-bus-dotnet-how-to-use-topics-subscriptions.md
-    - name: メッセージの発行とサブスクライブ - Java
-      href: service-bus-java-how-to-use-topics-subscriptions.md
-    - name: メッセージの発行とサブスクライブ - Node.js
-      href: service-bus-nodejs-how-to-use-topics-subscriptions.md
-    - name: メッセージの発行とサブスクライブ - PHP
-      href: service-bus-php-how-to-use-topics-subscriptions.md
-    - name: メッセージの発行とサブスクライブ - Python
-      href: service-bus-python-how-to-use-topics-subscriptions.md
-    - name: メッセージの発行とサブスクライブ - Ruby
-      href: service-bus-ruby-how-to-use-topics-subscriptions.md
+    - name: トピックとサブスクリプションを作成する
+      href: service-bus-quickstart-topics-subscriptions-portal.md
+    - name: メッセージの発行とサブスクライブ
+      items:
+      - name: .NET
+        href: service-bus-dotnet-how-to-use-topics-subscriptions.md
+      - name: Java
+        href: service-bus-java-how-to-use-topics-subscriptions.md
+      - name: Node.js
+        href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+      - name: PHP
+        href: service-bus-php-how-to-use-topics-subscriptions.md
+      - name: Python
+        href: service-bus-python-how-to-use-topics-subscriptions.md
+      - name: Ruby
+        href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: チュートリアル
   items:
   - name: インベントリを更新する - PowerShell
@@ -105,6 +113,8 @@ items:
         href: service-bus-sas.md
     - name: トピック フィルターとアクション
       href: topic-filters.md
+    - name: Standard 名前空間から Premium 名前空間への移行
+      href: service-bus-migrate-standard-premium.md
     - name: パーティション分割されたキューとトピック
       href: service-bus-partitioning.md
     - name: メッセージ セッション
@@ -121,6 +131,8 @@ items:
         href: service-bus-amqp-protocol-guide.md
       - name: AMQP 要求 - 応答ベースの操作
         href: service-bus-amqp-request-response.md
+      - name: AMQP エラー
+        href: service-bus-amqp-troubleshoot.md
     - name: 高度な機能
       items:
       - name: ファイアウォールの使用
@@ -143,8 +155,6 @@ items:
         href: service-bus-auto-forwarding.md
       - name: トランザクション処理
         href: service-bus-transactions.md
-      - name: ペアの名前空間の実装
-        href: service-bus-paired-namespaces.md
     - name: エンドツーエンドのトレースと診断
       href: service-bus-end-to-end-tracing.md
     - name: 多層 Service Bus アプリケーションを構築する
@@ -188,12 +198,22 @@ items:
       href: /dotnet/api/microsoft.azure.servicebus
   - name: Java
     href: /java/api/overview/azure/servicebus
+  - name: Python
+    href: /python/api/overview/azure/servicebus?view=azure-python
   - name: Node.js
     href: /javascript/api/overview/azure/service-bus
+  - name: PHP
+    href: https://github.com/Azure/azure-sdk-for-php
+  - name: Ruby
+    href: https://github.com/Azure/azure-sdk-for-ruby
+  - name: Go
+    href: https://github.com/Azure/azure-service-bus-go
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.servicebus
+    href: /powershell/module/az.servicebus
   - name: REST
     href: /rest/api/servicebus
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.servicebus/allversions
   - name: Quotas (クォータ)
     href: service-bus-quotas.md
   - name: SQLFilter 構文
@@ -216,21 +236,19 @@ items:
     href: https://azure.microsoft.com/pricing/details/service-bus/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
-  - name: 価格の詳細
-    href: service-bus-pricing-billing.md
-  - name: ServiceBus360
-    href: https://www.servicebus360.com/
+  - name: Serverless360
+    href: https://www.serverless360.com/
   - name: サービス バス Explorer
     href: https://github.com/paolosalvatori/ServiceBusExplorer
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=service-bus
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azureservicebus
+    href: https://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: be2f26200cc998f8053bcfe349afc6271557d095
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 51bda2ae37de4cf9865549501b30518fa98c20d6
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271959"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609298"

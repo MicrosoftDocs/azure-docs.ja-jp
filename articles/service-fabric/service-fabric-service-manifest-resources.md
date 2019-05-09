@@ -4,7 +4,7 @@ description: サービス マニフェストにエンドポイント リソー�
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: b5c07c7d142e231c945906d6e75ce16a5bb1d252
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 8707a9cb90afe1bf72f3aef6377f8ada409a1c64
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985983"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667125"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>概要
@@ -61,8 +61,8 @@ HTTP エンドポイントは Service Fabric によって自動的に ACL に登
 <ServiceManifest Name="Stateful1Pkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          This name must match the string used in the RegisterServiceType call in Program.cs. -->
@@ -78,7 +78,7 @@ HTTP エンドポイントは Service Fabric によって自動的に ACL に登
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an
        independently updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -118,8 +118,8 @@ HTTPS で設定する必要がある ApplicationManifest の例を次に示し�
 <ApplicationManifest ApplicationTypeName="Application1Type"
                      ApplicationTypeVersion="1.0.0"
                      xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                     xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <Parameter Name="Stateful1_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="Stateful1_PartitionCount" DefaultValue="1" />
@@ -198,7 +198,7 @@ Parameters に次のように追加します。
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-注: ApplicationParameters に指定する値が空の場合は、ServiceManifest で対応する EndPointName に指定された既定値に戻ります。
+注:ApplicationParameters に指定する値が空の場合は、ServiceManifest で対応する EndPointName に指定された既定値に戻ります。
 
 例: 
 

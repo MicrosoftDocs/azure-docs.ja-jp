@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 69f17b366b2480b34873d8fede223715619d0e66
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 662d958fc7ef6fe5c9d0e61a1d8e48983d10196f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143122"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198798"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory の使用開始 (WebApi プロジェクト)
 

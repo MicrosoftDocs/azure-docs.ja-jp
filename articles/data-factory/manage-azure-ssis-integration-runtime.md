@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 7d4accf7958b93addd1b6d99e2d40a447c32dba9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3c1178a20debc36fbdbbd374eaf9adb6005a93a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956593"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454946"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの再構成
 この記事では、既存の Azure-SSIS 統合ランタイムを再構成する方法について説明します。 Azure Data Factory で Azure-SSIS 統合ランタイム (IR) を作成する場合は、[Azure-SSIS 統合ランタイムの作成](create-azure-ssis-integration-runtime.md)に関する記事を参照してください。  
@@ -41,51 +40,54 @@ Data Factory UI を使用して、Azure-SSIS IR を停止、編集/再構成、�
 3. IR を再起動するには、**[アクション]** 列の **[開始]** ボタンをクリックします。     
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Azure-SSIS 統合ランタイムのインスタンスをプロビジョニングして開始した後、`Stop` - `Set` - `Start` PowerShell コマンドレットを順番に実行して、Azure-SSIS 統合ランタイムを再構成できます。 たとえば、次の PowerShell スクリプトは、Azure-SSIS 統合ランタイムのインスタンスに割り当てられているノードの数を 5 に変更します。
 
 ### <a name="reconfigure-an-azure-ssis-ir"></a>Azure-SSIS IR の再構成
 
-1. 最初に、[Stop-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/stop-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) コマンドレットを使用して Azure-SSIS 統合ランタイムを停止します。 このコマンドは、そのすべてのノードを解放し、課金を停止します。
+1. 最初に、[Stop-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/stop-Azdatafactoryv2integrationruntime) コマンドレットを使用して Azure-SSIS 統合ランタイムを停止します。 このコマンドは、そのすべてのノードを解放し、課金を停止します。
 
     ```powershell
-    Stop-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
+    Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
     ```
-2. 次に、[Set-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) コマンドレットを使用して Azure-SSIS IR を再構成します。 次のサンプル コマンドは、Azure-SSIS 統合ランタイムを 5 つのノードにスケールアウトします。
+2. 次に、[Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) コマンドレットを使用して Azure-SSIS IR を再構成します。 次のサンプル コマンドは、Azure-SSIS 統合ランタイムを 5 つのノードにスケールアウトします。
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
+    Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
     ```  
-3. 続いて、[Start-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/start-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) コマンドレットを使用して Azure-SSIS 統合ランタイムを開始します。 このコマンドにより、すべてのノードが SSIS パッケージの実行用に割り当てられます。   
+3. 次に、[Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) コマンドレットを使用して Azure-SSIS 統合ランタイムを開始します。 このコマンドにより、すべてのノードが SSIS パッケージの実行用に割り当てられます。   
 
     ```powershell
-    Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
+    Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
     ```
 
 ### <a name="delete-an-azure-ssis-ir"></a>Azure-SSIS IR の削除
 1. 最初に、データ ファクトリにあるすべての既存 Azure SSIS IR をすべて一覧表示します。
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName -Status
+    Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName -Status
     ```
 2. 次に、データ ファクトリにあるすべての既存 Azure SSIS IR を停止します。
 
     ```powershell
-    Stop-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+    Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
     ```
 3. 次に、データ ファクトリにある既存の Azure SSIS IR を 1 つずつすべて削除します。
 
     ```powershell
-    Remove-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+    Remove-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
     ```
 4. 最後に、データ ファクトリを削除します。
 
     ```powershell
-    Remove-AzureRmDataFactoryV2 -Name $DataFactoryName -ResourceGroupName $ResourceGroupName -Force
+    Remove-AzDataFactoryV2 -Name $DataFactoryName -ResourceGroupName $ResourceGroupName -Force
     ```
 5. 新しいリソース グループを作成していた場合は、そのリソース グループを削除します。
 
     ```powershell
-    Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force 
+    Remove-AzResourceGroup -Name $ResourceGroupName -Force 
     ```
 
 ## <a name="next-steps"></a>次の手順
@@ -93,7 +95,7 @@ Azure-SSIS 統合ランタイムについて詳しくは、以下のトピック
 
 - [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR など、統合ランタイムの一般的な概念について説明されています。 
 - [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md):  この記事では、Azure-SSIS IR を作成し、Azure SQL Database を使って SSIS カタログをホストする手順が説明されています。 
-- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL Database Managed Instance の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
+- [方法:Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)。 この記事では、チュートリアルを基に、Azure SQL Database Managed Instance の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
 - [仮想ネットワークへの Azure-SSIS IR の参加](join-azure-ssis-integration-runtime-virtual-network.md): この記事では、Azure 仮想ネットワークへの Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が仮想ネットワークに参加できるように Azure Portal を使用して仮想ネットワークを構成する手順も説明されています。 
 - [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
  

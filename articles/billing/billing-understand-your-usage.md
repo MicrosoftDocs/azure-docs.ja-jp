@@ -3,8 +3,8 @@ title: Azure の詳細な使用状況を理解する | Microsoft Docs
 description: Azure サブスクリプションの詳細な使用状況 CSV の各セクションを読み、理解する方法について説明します
 services: ''
 documentationcenter: ''
-author: tonguyen10
-manager: tonguyen
+author: bandersmsft
+manager: alherz
 editor: ''
 tags: billing
 ms.service: billing
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: cwatson
-ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: banders
+ms.openlocfilehash: a143fc6d9dbd78ae365f943a00ac9f8492d5e51c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230463"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897148"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Microsoft Azure の詳細な利用料金の用語を理解する 
 
@@ -77,7 +77,7 @@ CSV ファイルの毎日の使用状況セクションには、請求金額に�
 |使用サービス |使用した Azure プラットフォーム サービス |
 |リソース グループ |デプロイされたメーターが実行されるリソース グループ。 <br/><br/>詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。 |
 |インスタンス ID | メーターの識別子。 <br/><br/> 識別子には、メーターの作成時に指定した名前が含まれています。 リソース名または完全修飾リソース ID のいずれかです。 詳細については、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) に関するページを参照してください。 |
-|タグ | ユーザーがメーターに割り当てるタグです。 タグは、課金記録のグループ化に使用できます。<br/><br/>たとえば、タグを使用して、メーターを使用する部門ごとにコストを配分することができます。 タグの生成をサポートするサービスは、仮想マシン、記憶域、および [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) を使用してプロビジョニングされたネットワーク サービスです。 詳細については、[タグを使用した Azure リソースの整理](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)に関するページを参照してください。 |
+|Tags | ユーザーがメーターに割り当てるタグです。 タグは、課金記録のグループ化に使用できます。<br/><br/>たとえば、タグを使用して、メーターを使用する部門ごとにコストを配分することができます。 タグの生成をサポートするサービスは、仮想マシン、記憶域、および [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) を使用してプロビジョニングされたネットワーク サービスです。 詳細については、[タグを使用した Azure リソースの整理](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)に関するページを参照してください。 |
 |追加情報 |サービス固有のメタデータ。 たとえば、仮想マシンのイメージの種類です。 |
 |サービス情報 1 |サブスクリプションでサービスが属しているプロジェクトの名前 |
 |サービス情報 2 |これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです |
@@ -88,5 +88,6 @@ CSV ファイルの毎日の使用状況セクションには、請求金額に�
 ## <a name="external"></a>外部サービスの料金について
 外部サービス (Marketplace 注文とも呼ばれます) は、独立系サービス ベンダーによって提供され、個別に課金されます。 料金は、Azure の請求書には表示されません。 詳細については、「[Azure 外部サービスの課金について](billing-understand-your-azure-marketplace-charges.md)」を参照してください。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?)ください。
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: c5bf69a2ac6a70410339a5696da53169ca87170f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3e7ee293c2c33f169b3a5e4a7bded3190a9dc209
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407220"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443226"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する
 
@@ -66,7 +66,7 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
 3. HDInsight クラスターに接続できることを確認するには、次のいずれかのコマンドを使用します。
 
     ```bash
-    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status)
+    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
     
     ```powershell
@@ -184,10 +184,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
-Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
-
-* [Linux ベースの HDInsight で Apache Ambari ビューを使用して Tez ジョブをデバッグする](../hdinsight-debug-ambari-tez-view.md)
-
 このドキュメントで使用されている REST API の詳細については、「[WebHCat リファレンス](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)」に関するドキュメントをご覧ください。
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
@@ -201,8 +197,7 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 [import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
-[hdinsight-use-oozie]: hdinsight-use-oozie.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
+[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 
 
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a3687a4b8bb4e0d900ee96f52c40352db4e96df6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 600b18997ced80a63b7e86f66bc447ddd7932687
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635563"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310746"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
 
@@ -39,9 +39,9 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
    | フィールド | 値 |
    |:--- |:--- |
-   | Name |MyHDInsightApp |
+   | 名前 |MyHDInsightApp |
    | 説明 |MyHDInsightApp |
-   | Web サイト |https://www.myhdinsightapp.com |
+   | Web サイト |https:\//www.myhdinsightapp.com |
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 

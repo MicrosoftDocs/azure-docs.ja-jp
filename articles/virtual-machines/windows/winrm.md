@@ -1,6 +1,6 @@
 ---
 title: Azure VM の WinRM アクセスの設定 | Microsoft Docs
-description: Resource Manager のデプロイ モデルに作成された Azure 仮想マシンで使用するために WinRM アクセスを設定します。
+description: Resource Manager デプロイ モデルに作成された Azure 仮想マシンで使用するために WinRM アクセスを設定します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,22 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 5fa82dd4a85ff2e62848df0fdc6006922005a84b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 89739aa51748e7bc69fc42b8b745994bbe50e39d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30914547"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309795"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
-## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>Azure サービス管理の WinRM と Azure Resource Manager
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
-
-* Azure Resource Manager の概要については、こちらの[記事](../../azure-resource-manager/resource-group-overview.md)を参照してください。
-* Azure サービス管理と Azure Resource Manager の違いについては、こちらの [記事](../../resource-manager-deployment-model.md)
-
-2 つのスタックで WinRM 構成を設定する場合の主な違いは、VM に証明書をインストールする方法です。 Azure Resource Manager スタックでは、Key Vault リソース プロバイダーが管理するリソースとして証明書がモデル化されます。 そのため、ユーザーは自分の証明書を VM で使用する前に、Key Vault にアップロードする必要があります。
 
 ここでは WinRM 接続を備えた VM のセットアップに必要な手順を説明します。
 
@@ -40,14 +32,16 @@ ms.locfileid: "30914547"
 4. Key Vault の自己署名証明書の URL を取得する
 5. VM を作成するときに、自己署名証明書の URL を参照する
 
-## <a name="step-1-create-a-key-vault"></a>手順 1: Key Vault を作成する
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
+## <a name="step-1-create-a-key-vault"></a>手順 1:Key Vault の作成
 次のコマンドを使用して、Key Vault を作成します
 
 ```
-New-AzureRmKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
+New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>手順 2: 自己署名証明書を作成する
+## <a name="step-2-create-a-self-signed-certificate"></a>手順 2:自己署名証明書の作成
 この PowerShell スクリプトを使用して、自己署名証明書を作成します
 
 ```
@@ -62,7 +56,7 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>手順 3: Key Vault に自己署名証明書をアップロードする
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>手順 3:Key Vault に自己署名証明書をアップロードする
 手順 1 で作成した Key Vault に証明書をアップロードする前に、Microsoft.Compute リソース プロバイダーが理解する形式への変換が必要です。 次の PowerShell スクリプトにより、実行が許可されます
 
 ```
@@ -85,13 +79,11 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>手順 4: Key Vault の自己署名証明書の URL を取得する
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>手順 4:Key Vault の自己署名証明書の URL を取得する
 VM をプロビジョニングするときに、Microsoft.Compute リソース プロバイダーには Key Vault 内部のシークレットへの URL が必要です。 これにより、Microsoft.Compute リソース プロバイダーがシークレットをダウンロードして、VM 上に同様の証明書を作成することができます。
 
 > [!NOTE]
-> シークレットの URL には、バージョンも含める必要があります。 URL の例は次のようになります。https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
-> 
-> 
+> シークレットの URL には、バージョンも含める必要があります。 URL の例を次に示します: https:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>テンプレート
 次のコードを使用して、テンプレートの URL へのリンクを取得する事ができます
@@ -103,7 +95,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 
     $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>手順 5: VM を作成するときに、自己署名証明書の URL を参照する
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>手順 5:VM を作成するときに、自己署名証明書の URL を参照する
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 テンプレートを使用して VM を作成する場合、"secrets" セクションと "WinRM" セクションで証明書を次のように参照します。
 
@@ -144,15 +136,15 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 このテンプレートのソース コードは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
 
 #### <a name="powershell"></a>PowerShell
-    $vm = New-AzureRmVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
+    $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
     $credential = Get-Credential
     $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
-    $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
-    $sourceVaultId = (Get-AzureRmKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
+    $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
+    $sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
     $CertificateStore = "My"
-    $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
+    $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6-connecting-to-the-vm"></a>手順 6 - VM に接続する
+## <a name="step-6-connecting-to-the-vm"></a>手順 6:VM に接続する
 VM に接続する前に、WinRM リモート管理のためにコンピューターが構成されていることを確認する必要があります。 管理者として PowerShell を開始し、次のコマンドを実行して設定を確認します。
 
     Enable-PSRemoting -Force

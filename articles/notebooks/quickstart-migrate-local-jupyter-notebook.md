@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3bd7f895e3cc30c4c5a0496977d65d68c220931f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5ee9970a255928bca9d08111229be6298f20d7b3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084504"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59279280"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>クイック スタート:ローカルの Jupyter ノートブックの移行
 
@@ -30,9 +30,9 @@ ms.locfileid: "53084504"
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Azure Notebooks でプロジェクトを作成する
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、[クイック スタートの Azure Notebooks へのサインイン](quickstart-sign-in-azure-notebooks.md)に関する記事をご覧ください)。
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
-1. パブリック プロファイル ページで、ページの上部にある **[マイ プロジェクト]** を選択します。
+1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
     ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
 
@@ -50,13 +50,13 @@ ms.locfileid: "53084504"
 
    (やはり、ノートブックが GitHub リポジトリにある場合は、「[クイック スタート:ノートブックの複製](quickstart-clone-jupyter-notebook.md)」の手順を代わりにご覧ください)。
 
-    - **[From Computer]\(コンピューターから\)** を使用している場合は、*.ipynb* ファイルをドラッグしてポップアップにドロップするか、**[ファイルの選択]** を選択し、インポートするデータ ファイルを参照して選択します。 **[アップロード]** を選択します。 アップロードされたファイルには、ローカル ファイルと同じ名前が与えられます (*.ipynb_checkpoints* フォルダーの内容をアップロードする必要はありません)。
+   - **[From Computer]\(コンピューターから\)** を使用している場合は、*.ipynb* ファイルをドラッグしてポップアップにドロップするか、**[ファイルの選択]** を選択し、インポートするデータ ファイルを参照して選択します。 **[アップロード]** を選択します。 アップロードされたファイルには、ローカル ファイルと同じ名前が与えられます (*.ipynb_checkpoints* フォルダーの内容をアップロードする必要はありません)。
 
-    ![コンピューターからアップロードする場合のポップアップ](media/quickstarts/upload-from-computer-popup.png)
+     ![コンピューターからアップロードする場合のポップアップ](media/quickstarts/upload-from-computer-popup.png)
 
-    - **[From URL]\(URL から\)** を使用している場合は、**[ファイル URL]** フィールドに送信元アドレスを入力し、**[ファイル名]** フィールドにプロジェクトのノートブックに割り当てるファイル名を入力します。 **[アップロード]** を選択します。 URL が異なる複数のファイルがある場合は、**[+ ファイルの追加]** コマンドを使用して、入力した最初の URL をオンにすると、ポップアップに別のファイルを指定する新しいフィールドが表示されます。
+   - **[From URL]\(URL から\)** を使用している場合は、**[ファイル URL]** フィールドに送信元アドレスを入力し、**[ファイル名]** フィールドにプロジェクトのノートブックに割り当てるファイル名を入力します。 **[アップロード]** を選択します。 URL が異なる複数のファイルがある場合は、**[+ ファイルの追加]** コマンドを使用して、入力した最初の URL をオンにすると、ポップアップに別のファイルを指定する新しいフィールドが表示されます。
 
-    ![URL ポップアップからのアップロード](media/quickstarts/upload-from-url-popup.png)
+     ![URL ポップアップからのアップロード](media/quickstarts/upload-from-url-popup.png)
 
 1. 新しくアップロードしたノートブックを開いて実行し、内容と操作を確認します。 完了したら、**[ファイル]** > **[Halt and close]\(停止して閉じる\)** を選択してノートブックを閉じます。
 

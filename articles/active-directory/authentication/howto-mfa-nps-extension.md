@@ -1,21 +1,22 @@
 ---
-title: Azure MFA 機能を提供するために既存の NPS サーバーを使用する
+title: 既存の NPS サーバーを使用して Azure MFA 機能を提供する - Azure Active Directory
 description: クラウドベースの 2 段階認証機能を既存の認証インフラストラクチャに追加する
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 04/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: f0b13480c06e154b85300f4a8a2f8a84db04c31b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 95d19068e482722bf6cd01e44d27c2719bc419a3
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582379"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564533"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -78,6 +79,12 @@ NPS サーバーは、ポート 80 および 443 を使って次の URL と通�
 * https://adnotifications.windowsazure.com  
 * https://login.microsoftonline.com
 
+さらに、[指定された PowerShell スクリプトを使用してアダプターの設定](#run-the-powershell-script)を行うには、次の URL への接続が必要です。
+
+- https://login.microsoftonline.com
+- https://provisioningapi.microsoftonline.com
+- https://aadcdn.msauth.net
+
 ## <a name="prepare-your-environment"></a>環境を準備する
 
 NPS 拡張機能をインストールする前に、認証トラフィックを処理するように環境を準備する必要があります。
@@ -105,7 +112,7 @@ NPS 用にサーバーを指定したので、VPN ソリューションからの
 2. **[Azure Active Directory]**  >  **[Azure AD Connect]** を選択します。
 3. 同期の状態が **[有効]** であり、最後の同期が 1 時間以内であったことを確認します。
 
-新しい同期を開始する必要がある場合は、「[Azure AD Connect 同期: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)」の手順を使用します。
+新しい同期を開始する必要がある場合は、「[Azure AD Connect 同期: スケジューラ](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)」の手順を使用します。
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>ユーザーが使用できる認証方法を決定する
 
@@ -141,6 +148,14 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 1. Microsoft ダウンロード センターから [NPS 拡張機能をダウンロード](https://aka.ms/npsmfa)します。
 2. 構成するネットワーク ポリシー サーバーにバイナリをコピーします。
 3. *setup.exe* を実行してインストールの指示に従います。 エラーが発生した場合は、前提条件のセクションの 2 つのライブラリが正常にインストールされていることを再確認します。
+
+#### <a name="upgrade-the-nps-extension"></a>NPS 拡張機能のアップグレード
+
+既存の NPS 拡張機能のインストールをアップグレードするときは、基になるサーバーの再起動を回避するために、次の手順を行います。
+
+1. 既存のバージョンをアンインストールする
+1. 新しいインストーラーを実行する
+1. ネットワーク ポリシー サーバー (IAS) サービスを再起動する
 
 ### <a name="run-the-powershell-script"></a>PowerShell スクリプトの実行
 
@@ -206,6 +221,8 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 インストーラーによって証明書ストア内に作成された自己署名証明書を探して、ユーザー **NETWORK SERVICE** が秘密キーへのアクセスを許可されていることを確認します。 この証明書のサブジェクト名は **CN \<tenantid\>, OU = Microsoft NPS Extension** になります。
 
+*AzureMfaNpsExtnConfigSetup.ps1* スクリプトによって生成された自己署名証明書の有効期間も 2 年間です。 証明書がインストールされていることを確認するときは、証明書の有効期限が切れていないことも確認する必要があります。
+
 -------------------------------------------------------------
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>クライアント証明書が Azure Active Directory のテナントに関連付けられていることを確認するにはどうすればよいですか。
@@ -228,7 +245,7 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
 ```
 
-このコマンドを実行したら、C ドライブに移動して、このファイルを見つけてダブルクリックします。 [詳細] に移動して、[サムプリント] までスクロール ダウンし、サーバーにインストールされている証明書のサムプリントとこれを比較します。 証明書のサムプリントが一致する必要があります。
+このコマンドを実行したら、ご利用の C ドライブに移動して、そのファイルを見つけてダブルクリックします。 [詳細] に移動して、[サムプリント] までスクロール ダウンし、サーバーにインストールされている証明書のサムプリントとこれを比較します。 証明書のサムプリントが一致する必要があります。
 
 1 つ以上の証明書が返されている場合は、判読できる形式のタイムスタンプ Valid-From と Valid-Until を使用して、明らかに無関係な証明書を除外することができます。
 
@@ -260,6 +277,14 @@ AD Connect が実行していること、およびユーザーが Windows Active
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>すべての認証が失敗し、ログに HTTP 接続エラーが記録されるのはなぜですか。
 
 NPS 拡張機能を実行しているサーバーから https://adnotifications.windowsazure.com に到達可能であることを確認します。
+
+-------------------------------------------------------------
+
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>有効な証明書があるにもかかわらず認証が機能しないのはなぜですか。
+
+以前のコンピューター証明書が期限切れになり、新しい証明書が生成された場合は、期限切れの証明書をすべて削除する必要があります。 期限切れの証明書があると、NPS 拡張機能の起動で問題が生じる可能性があります。
+
+有効な証明書があるかどうかを確認するには、MMC を使用してローカル コンピューター アカウントの証明書ストアをチェックし、その証明書が有効期限を過ぎていないことを確認してください。 有効な証明書を新しく生成するには、「[PowerShell スクリプトの実行](#run-the-powershell-script)」セクションの手順を再度行います。
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL プロトコルと暗号スイートの管理
 

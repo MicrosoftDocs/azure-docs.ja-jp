@@ -16,12 +16,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: jeconnoc
 ms.custom: seodec18
-ms.openlocfilehash: 90eaf7f57f524cb6e47d9d0f4e160855acd6daf5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 67e4f99046820aa21392ff1238318e1b48bb5354
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633659"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901085"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Azure CLI を使用して継続的なデプロイで App Service アプリを作成する
 
@@ -47,7 +47,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |

@@ -1,22 +1,22 @@
 ---
-title: Linux 上の MySQL を使用して PHP アプリを構築する - Azure App Service | Microsoft Docs
-description: Azure での MySQL データベースへの接続を使用して、PHP アプリを Azure App Service on Linux で動作させる方法について説明します。
+title: Linux 上の PHP (Laravel) と MySQL - Azure App Service | Microsoft Docs
+description: Azure での MySQL データベースへの接続を使用して、PHP アプリを Azure App Service on Linux で動作させる方法について説明します。 このチュートリアルでは Laravel を使用します。
 services: app-service\web
 author: cephalin
-manager: erikre
+manager: jeconnoc
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: php
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0470c12f7965ec5d7e151bb6b03163d6946b83e6
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 6d9ef67f39a67fd06a5b42afe4432b5a0156fead
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743240"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549833"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL アプリを構築する
 
@@ -161,22 +161,22 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL でサーバーを作成します。
 
-次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。 MySQL DB SKU の選択について詳しくは、「[Azure Database for MySQL サーバーの作成](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)」をご覧ください。
+次のコマンドの *\<mysql-server-name>* プレースホルダーを一意のサーバー名に、*\<admin-user>* プレースホルダーをユーザー名に、*\<admin-password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql-server-name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。 MySQL DB SKU の選択について詳しくは、「[Azure Database for MySQL サーバーの作成](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)」をご覧ください。
 
 ```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1
+az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
 ```
 
 MySQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
 ```json
 {
-  "administratorLogin": "<admin_user>",
+  "administratorLogin": "<admin-user>",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql_server_name>.mysql.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
+  "fullyQualifiedDomainName": "<mysql-server-name>.mysql.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>",
   "location": "westeurope",
-  "name": "<mysql_server_name>",
+  "name": "<mysql-server-name>",
   "resourceGroup": "myResourceGroup",
   ...
 }
@@ -187,25 +187,25 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
 
 ```azurecli-interactive
-az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
 > [アプリで使用する送信 IP アドレスのみを使用する](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
-Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+Cloud Shell 内で *\<your-ip-address>* を[ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
 ```azurecli-interactive
-az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>
+az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
 ```
 
 ### <a name="connect-to-production-mysql-server-locally"></a>ローカルに運用 MySQL サーバーに接続する
 
-ターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;admin_user>_ と _&lt;mysql_server_name>_ に指定した値を使用します。 パスワードの入力を求められたら、Azure でデータベースの作成時に指定したパスワードを使用します。
+ターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;admin-user>_ と _&lt;mysql-server-name>_ に指定した値を使用します。 パスワードの入力を求められたら、Azure でデータベースの作成時に指定したパスワードを使用します。
 
 ```bash
-mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
+mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
 ```
 
 ### <a name="create-a-production-database"></a>運用データベースを作成する
@@ -239,7 +239,7 @@ quit
 
 ### <a name="configure-the-database-connection"></a>データベース接続を構成する
 
-リポジトリのルートに _.env.production_ ファイルを作成し、その中に次の変数をコピーします。 プレースホルダー _&lt;mysql_server_name>_ を置き換えます。
+リポジトリのルートに _.env.production_ ファイルを作成し、その中に次の変数をコピーします。 プレースホルダー _&lt;mysql-server-name>_ を置き換えます。
 
 ```txt
 APP_ENV=production
@@ -247,9 +247,9 @@ APP_DEBUG=true
 APP_KEY=SomeRandomString
 
 DB_CONNECTION=mysql
-DB_HOST=<mysql_server_name>.mysql.database.azure.com
+DB_HOST=<mysql-server-name>.mysql.database.azure.com
 DB_DATABASE=sampledb
-DB_USERNAME=phpappuser@<mysql_server_name>
+DB_USERNAME=phpappuser@<mysql-server-name>
 DB_PASSWORD=MySQLAzure2017
 MYSQL_SSL=true
 ```
@@ -271,12 +271,12 @@ _config/database.php_ を開き、次のコードに示すように _sslmode_ �
     ...
     'sslmode' => env('DB_SSLMODE', 'prefer'),
     'options' => (env('MYSQL_SSL')) ? [
-        PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/BaltimoreCyberTrustRoot.crt.pem', 
+        PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/BaltimoreCyberTrustRoot.crt.pem',
     ] : []
 ],
 ```
 
-このチュートリアルでは、便宜上、証明書 `BaltimoreCyberTrustRoot.crt.pem` がリポジトリに用意されています。 
+このチュートリアルでは、便宜上、証明書 `BaltimoreCyberTrustRoot.crt.pem` がリポジトリに用意されています。
 
 ### <a name="test-the-application-locally"></a>ローカルでアプリケーションをテストする
 
@@ -323,10 +323,7 @@ git commit -m "database.php updates"
 
 Laravel アプリケーションは、_/public_ ディレクトリから起動されます。 App Service の既定の PHP Docker イメージでは Apache が使用されていて、Laravel 用に `DocumentRoot` をカスタマイズすることはできません。 ただし、`.htaccess` を使用して、ルート ディレクトリではなく _/public_ を指すようにすべての要求を書き換えることができます。 リポジトリ ルートには、この目的のために既に `.htaccess` が追加されています。 これにより、Laravel アプリケーションをすぐにデプロイできます。
 
-> [!NOTE] 
-> _.htaccess_ の書き換えを行わない場合は、代わりに [カスタム Docker イメージ](quickstart-docker-go.md)を使用して Laravel アプリケーションをデプロイできます。
->
->
+詳細については、「[Change site root (サイトのルートを変更する)](configure-language-php.md#change-site-root)」を参照してください。
 
 ### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
 
@@ -344,13 +341,13 @@ Laravel アプリケーションは、_/public_ ディレクトリから起動�
 
 App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
-次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;mysql_server_name>_ を置き換えます。
+次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;mysql-server-name>_ を置き換えます。
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-PHP [getenv](https://php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
+PHP [getenv](https://php.net/manual/en/function.getenv.php) メソッドを使用して、[アプリ設定](configure-language-php.md#access-environment-variables)にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
 
 ```php
 'mysql' => [
@@ -376,7 +373,7 @@ php artisan key:generate --show
 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、App Service アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;appname>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
 `APP_DEBUG="true"` は、デプロイしたアプリでエラーが発生した場合にデバッグ情報を返すように Laravel に指示します。 運用アプリケーションを実行するときは、`false` に設定してセキュリティを強化します。
@@ -419,12 +416,12 @@ remote: Running deployment command...
 > - `deploy.sh` - カスタム デプロイ スクリプト。 このファイルを確認すると、`npm install` の後で `php composer.phar install` が実行されることがわかります。
 > - `composer.phar` - Composer パッケージ マネージャー。
 >
-> この方法を使用して、App Service に対する Git ベースのデプロイに対して任意の手順を追加できます。 詳細については、「[Custom Deployment Script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
+> この方法を使用して、App Service に対する Git ベースのデプロイに対して任意の手順を追加できます。 詳細については、「[Run Composer (Composer の実行)](configure-language-php.md#run-composer)」を参照してください。
 >
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
-`http://<app_name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
+`http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
 ![Azure App Service で実行される PHP アプリ](./media/tutorial-php-mysql-app/php-mysql-in-azure.png)
 
@@ -572,15 +569,19 @@ git push azure master
 
 タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
 
+## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+
 ## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-[Azure portal](https://portal.azure.com) に移動し、作成したアプリを管理します。
+[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックしてから、Azure アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
 ![Azure アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
 
-アプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
+お客様のアプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
 
 左側のメニューは、アプリを構成するためのページを示しています。
 
@@ -602,7 +603,12 @@ git push azure master
 > * Azure から診断ログをストリーミングする
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md)
+> [チュートリアル:カスタム DNS 名をアプリにマップする](../app-service-web-tutorial-custom-domain.md)
+
+または、他のリソースを参照してください。
+
+> [!div class="nextstepaction"]
+> [PHP アプリの構成](configure-language-php.md)

@@ -3,23 +3,24 @@ title: 要求に対応するアプリ - Azure AD アプリ プロキシ | Micros
 description: ADFS 要求を受け入れてユーザーの安全なリモート アクセスを実現するオンプレミス ASP.NET アプリケーションを発行する方法。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: b8c69ebec2258581954e26dc6181d5f4b57f461c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dc5be2f5bbeb901888edc1e69953fdeb8de566c0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137703"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187136"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>アプリケーション プロキシで要求に対応するアプリケーションを利用する
 [要求に対応するアプリ](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)は、セキュリティ トークン サービス (STS) へのリダイレクトを実行します。 STS は、トークンと引き換えにユーザーの資格情報を要求し、アプリケーションにユーザーをリダイレクトします。 アプリケーション プロキシをこれらのリダイレクトに対応させる方法はいくつかあります。 この記事の手順に従って、要求に対応するアプリのデプロイを構成します。 

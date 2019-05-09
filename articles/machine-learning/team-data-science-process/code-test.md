@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: d8c3bafaa42e68eb7f6b5212c055793a1f2b1137
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 10692fcb720be819dcf94a8ecbc541983ffc8853
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134541"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478034"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process と Azure DevOps Services を使用した Azure でのデータ サイエンス コードのテスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 

@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: fb3fba7fa86027d753be21e028109a5d7ef03efb
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 21204e85adf1c68264ea448360c9e1120567ef3f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722483"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764576"
 ---
 # <a name="what-is-azure-scheduler"></a>Azure Scheduler とは
 

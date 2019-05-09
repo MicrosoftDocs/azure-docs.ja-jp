@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: a46f2b4ed1bb3fc5fff65a627bd3d808ed85ffce
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4e32d2357636cb488d3a58b78b025860da3f74c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091360"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -301,11 +301,11 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 10. **VMware、VirtualBox、または KVM** からイメージをビルドする場合:Hyper-V ドライバーを確実に initramfs に含めます。
 
-   `/etc/dracut.conf`を編集して、コンテンツを追加します。
+    `/etc/dracut.conf`を編集して、コンテンツを追加します。
 
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
 
-   Initramfs を再構築します。
+    Initramfs を再構築します。
 
         # sudo dracut -f -v
 
@@ -316,7 +316,7 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 12. OS ディスクにスワップ領域を作成しないでください。
 
-   Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。 ローカル リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。 Azure Linux Agent のインストール後に (前の手順を参照)、 `/etc/waagent.conf` にある次のパラメーターを正確に変更します。
+    Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。 ローカル リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。 Azure Linux Agent のインストール後に (前の手順を参照)、 `/etc/waagent.conf` にある次のパラメーターを正確に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4

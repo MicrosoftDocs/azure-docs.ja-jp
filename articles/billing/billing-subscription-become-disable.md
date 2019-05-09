@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: cwatson
-ms.openlocfilehash: 14e372ef8de0a3ec82d9a14d026487d72bfa80bd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 2da6a5c93d4bf4fcf8763be47b9eb629b930e3b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583722"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843475"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。
 
@@ -63,4 +63,4 @@ Azure の課金アクティビティの監視および管理については、�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

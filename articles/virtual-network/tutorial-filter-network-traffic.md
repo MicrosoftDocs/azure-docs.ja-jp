@@ -1,14 +1,12 @@
 ---
-title: ネットワーク トラフィックをフィルター処理する - チュートリアル - Azure portal | Microsoft Docs
+title: ネットワーク トラフィックをフィルター処理する - チュートリアル - Azure portal
+titlesuffix: Azure Virtual Network
 description: このチュートリアルでは、ネットワーク セキュリティ グループと Azure portal を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
 ms.topic: tutorial
@@ -16,13 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: 68fdb158a7d4c723bffb54f33203120afb72a8ef
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385399"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019029"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル: Azure portal を使用してネットワーク セキュリティ グループでネットワーク トラフィックをフィルター処理する
 
@@ -116,7 +113,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | ---------               | ---------                                                                                                       |
     | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgWebServers]** を選択します。  |
     | 宛先ポート範囲 | 「80,443」と入力                                                                                                    |
-    | プロトコル                | [TCP] を選択                                                                                                      |
+    | Protocol                | [TCP] を選択                                                                                                      |
     | Name                    | Allow-Web-All                                                                                                   |
 
 3. 手順 2 を繰り返して、次の値を指定します。
@@ -125,7 +122,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | ---------               | ---------                                                                                                       |
     | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgMgmtServers]** を選択します。 |
     | 宛先ポート範囲 | 「3389」と入力                                                                                                      |
-    | プロトコル                | [TCP] を選択                                                                                                      |
+    | Protocol                | [TCP] を選択                                                                                                      |
     | 優先順位                | 「110」と入力                                                                                                       |
     | Name                    | Allow-RDP-All                                                                                                   |
 

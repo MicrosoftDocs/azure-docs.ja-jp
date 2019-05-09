@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Java 用の Bing Web Search SDK を使用する'
+title: クイック スタート:Java 用の Bing Web Search SDK を使用する
 titleSuffix: Azure Cognitive Services
 description: Bing Web Search SDK を使用すると、Java アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 8883a312bf6da4167936e844e75047ae40cac9f3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309307"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863782"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>クイック スタート: Java 用の Bing Web Search SDK を使用する
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>クイック スタート:Java 用の Bing Web Search SDK を使用する
 
 Bing Web Search SDK を使用すると、Java アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 
@@ -25,18 +25,19 @@ Bing Web Search SDK を使用すると、Java アプリケーションに Bing W
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを実行するには、以下のものが必要です。
 
 * [JDK 7 または 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) または普段使用しているビルド オートメーション ツール
 * サブスクリプション キー
 
-## <a name="create-a-project-and-configure-your-pom-file"></a>プロジェクトの作成と POM ファイルの構成
+## <a name="create-a-project-and-set-up-your-pom-file"></a>プロジェクトを作成して POM ファイルを設定する
 
-Maven または普段使用しているビルド オートメーション ツールを使用して、新しい Java プロジェクトを作成します。 Maven を使用している場合は、以下の行を POM ファイルに追加します。 すべての `mainClass` を実際のアプリケーションに置き換えます。
+Maven または普段使用しているビルド オートメーション ツールを使用して、新しい Java プロジェクトを作成します。 Maven を使用している場合は、以下の行を[プロジェクト オブジェクト モデル (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) ファイルに追加します。 すべての `mainClass` を実際のアプリケーションに置き換えます。
 
 ```xml
 <build>
@@ -180,7 +181,7 @@ public static boolean runSample(BingWebSearchAPI client) {
 ```java
 /*
 * WebPages
-* If the search response contains web pages, the first result's name
+* If the search response has web pages, the first result's name
 * and url are printed.
 */
 if (webData != null && webData.webPages() != null && webData.webPages().value() != null &&
@@ -200,7 +201,7 @@ if (webData != null && webData.webPages() != null && webData.webPages().value() 
 }
 /*
  * Images
- * If the search response contains images, the first result's name
+ * If the search response has images, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.images() != null && webData.images().value() != null &&
@@ -220,7 +221,7 @@ if (webData != null && webData.images() != null && webData.images().value() != n
 }
 /*
  * News
- * If the search response contains news articles, the first result's name
+ * If the search response has news articles, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.news() != null && webData.news().value() != null &&
@@ -240,7 +241,7 @@ if (webData != null && webData.news() != null && webData.news().value() != null 
 
 /*
  * Videos
- * If the search response contains videos, the first result's name
+ * If the search response has videos, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.videos() != null && webData.videos().value() != null &&

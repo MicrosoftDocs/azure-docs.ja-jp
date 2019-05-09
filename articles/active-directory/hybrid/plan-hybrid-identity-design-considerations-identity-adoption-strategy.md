@@ -4,24 +4,25 @@ description: 条件を利用してアクセスを制御する Azure Active Direc
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 73d64cac3812d8daf8ac34b93c91338e1dfab88a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999097"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193487"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。

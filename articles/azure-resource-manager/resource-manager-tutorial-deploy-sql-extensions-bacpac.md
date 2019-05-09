@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/06/2018
+ms.date: 04/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 249356644772ae75b12f5c940ff5f9ed49b2c795
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7339c975bf979907bd1f9bbb46546b58ef7ae6e5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995002"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59282357"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
 
@@ -53,23 +53,23 @@ BACPAC ファイルは、[パブリック アクセスが有効な Azure スト�
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用されるテンプレートは、[脅威の検出を備えた Azure SQL サーバーのデプロイ](https://azure.microsoft.com/resources/templates/201-sql-threat-detection-server-policy-optional-db/)と呼ばれます。
+このチュートリアルで使用されているテンプレートは、[Azure Storage アカウント](https://armtutorials.blob.core.windows.net/createsql/azuredeploy.json)に保存されています。 
 
 1. Visual Studio Code から、**[ファイル]**>**[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-sql-threat-detection-server-policy-optional-db/azuredeploy.json
+    https://armtutorials.blob.core.windows.net/createsql/azuredeploy.json
     ```
 3. **[開く]** を選択して、ファイルを開きます。
 
     テンプレートで定義されている 3 つのリソースがあります。
 
-    * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)をご覧ください。
-    * `Microsoft.SQL/servers/securityAlertPolicies` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)をご覧ください。
-    * `Microsoft.SQL.servers/databases`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
+   * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)をご覧ください。
+   * `Microsoft.SQL/servers/securityAlertPolicies` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)をご覧ください。
+   * `Microsoft.SQL.servers/databases`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
 
-    カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+     カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 4. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 
 ## <a name="edit-the-template"></a>テンプレートの編集
@@ -135,21 +135,22 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 デプロイ手順については、「[テンプレートのデプロイ](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」セクションを参照してください。 代わりに次の PowerShell デプロイ スクリプトを使用します。
 
 ```azurepowershell
-$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $adminUsername = Read-Host -Prompt "Enter the SQL admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-New-AzureRmResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
-    -TemplateFile azuredeploy.json
+    -TemplateFile "$HOME/azuredeploy.json"
 ```
 
 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。

@@ -1,25 +1,17 @@
 ---
 title: PagerDuty で Azure サービス正常性アラートを構成する | Microsoft Docs
 description: PagerDuty インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
-author: shawntabrizi
-manager: scotthit
-editor: ''
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
-ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: stephbaron
+ms.author: stbaron
 ms.topic: article
+ms.service: service-health
 ms.date: 11/14/2017
-ms.author: shtabriz
-ms.openlocfilehash: eba81e0d0a5b178aec6f712abaae2b566bc54316
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b78c155fb2f3a13c27f4ff71c4dd37df2dbd2f36
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583451"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883051"
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>PagerDuty でサービス正常性アラートを構成する
 

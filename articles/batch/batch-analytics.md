@@ -2,7 +2,7 @@
 title: Azure 一括分析 | Microsoft Docs
 description: Azure 一括分析のリファレンスです。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 4c81acb282b24bbd899227c4dcc449fed4ba6c7d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: 999c3037196044250b8a12d6b6b380553e58c6ba
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312679"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460184"
 ---
 # <a name="batch-analytics"></a>一括分析
 一括分析のトピックには、Batch サービスのリソースで使用できるイベントとアラートに関するリファレンス情報が含まれています。

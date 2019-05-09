@@ -1,20 +1,19 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET API、SDK、およびリソース'
+title: Azure Cosmos DB は:SQL .NET API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB .NET SDK の各バージョン間の変更など、SQL .NET API と SDK に関するあらゆる詳細を提供します。
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 715d67a30bbf2c6d1f50ed7c10a013c0d421f48b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: sngun
+ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838920"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -31,20 +30,14 @@ ms.locfileid: "53337939"
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
-
-<tr><td>**サンプル**</td><td>[.NET コード サンプル](sql-api-dotnet-samples.md)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
-
-<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)</td></tr>
-
-<tr><td>**現在サポートされているフレームワーク**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
+|**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**サンプル**|[.NET コード サンプル](sql-api-dotnet-samples.md)|
+|**作業開始**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
+|**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
+|**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>リリース ノート
 
@@ -54,6 +47,24 @@ ms.locfileid: "53337939"
 * 最上位レベルの CosmosClient と関連する CosmosDatabases、CosmosContainers、および CosmosItems の各クラスとの間でメソッドが分割される新しいオブジェクト モデルです。 
 * ストリームをサポートします。 
 * 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。 
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+
+* 診断機能の強化
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+
+* 環境変数設定 "POCOSerializationOnly" を追加しました。
+
+* DocumentDB.Spatial.Sql.dll が削除され、Microsoft.Azure.Documents.ServiceInterop.dll に含まれるようになりました
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* StoredProcedure 実行呼び出しに対するフェールオーバー中の再試行ロジックの改善。
+
+* DocumentClientEventSource シングルトンを作成しました。 
+
+* ConnectionPolicy RequestTimeout を守っていない、GatewayAddressCache タイムアウトを修正しました。
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -258,7 +269,7 @@ ms.locfileid: "53337939"
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 * 調整された要求での再試行のサポートを追加しました。  ユーザーは、ConnectionPolicy.RetryOptions プロパティを構成することで、再試行の回数と最大待機時間をカスタマイズできます。
-* すべての DocumenClient プロパティおよびメソッドの署名を定義できる新しい IDocumentClient インターフェイスを追加しました。  また、この変更の一環として、IQueryable と IOrderedQueryable を作成する拡張メソッドを DocumentClient クラス自体のメソッドに変更しました。
+* すべての DocumentClient プロパティおよびメソッドの署名を定義できる新しい IDocumentClient インターフェイスを追加しました。  また、この変更の一環として、IQueryable と IOrderedQueryable を作成する拡張メソッドを DocumentClient クラス自体のメソッドに変更しました。
 * 特定の Azure Cosmos DB エンドポイント URI の ServicePoint.ConnectionLimit を設定する構成オプションを追加しました。  ConnectionPolicy.MaxConnectionLimit を使用して既定値 (50) を変更できます。
 * IPartitionResolver とその実装が非推奨になりました。  IPartitionResolver のサポートは廃止されました。 大量のストレージとスループットを必要とする場合は、パーティション分割コレクションの使用をお勧めします。
 
@@ -350,6 +361,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.3](#2.2.3) |2019 年 2 月 11 日 |--- |
+| [2.2.2](#2.2.2) |2019 年 2 月 5 日 |--- |
+| [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
 | [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |

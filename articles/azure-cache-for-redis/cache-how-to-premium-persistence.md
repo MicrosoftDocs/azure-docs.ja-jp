@@ -1,25 +1,25 @@
 ---
 title: Premium Azure Cache for Redis のデータ永続化の構成方法
 description: Premium レベルの Azure Cache for Redis インスタンス用にデータの永続化を構成して管理する方法について説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
-ms.author: wesmc
-ms.openlocfilehash: d74f552395a80509c76adf70aef0581260126b49
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: de0b2e3ef7b0268540ef4896ade132a297ee88ff
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021687"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233985"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis のデータ永続化の構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Azure Cache for Redis インスタンスで永続化を構成する方法について説明します。
@@ -130,10 +130,10 @@ RDB 永続化の場合も AOF 永続化の場合も、以下のように処理�
 
 * 大きいサイズにスケーリングした場合、影響はありません。
 * 小さいサイズにスケーリングした場合、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定が存在すると、そのデータベースのデータは復元されません。 詳細については、「[スケーリング中に影響を受けるカスタム データベース](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)」を参照してください
-* 小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用します。
+* 小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用します。
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>キャッシュの作成後に RDB バックアップ頻度を変更できますか
-はい、**[Redis データ永続化]** ブレードで RDB 永続化のバックアップ頻度を変更できます。 手順については、「 [Redis の永続化を構成する](#configure-redis-persistence)」をご覧ください。
+はい、**[Redis データ永続化]** ブレードで RDB 永続化のバックアップ頻度を変更できます。 手順については、「Redis の永続化を構成する」をご覧ください。
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>RDB バックアップ頻度を 60 分に設定しているのに、バックアップの間隔が 60 分より長くなるのはなぜですか
 RDB 永続化のバックアップ頻度の間隔は、その前のバックアップ プロセスが正常に完了するまでは開始しません。 バックアップ間隔を 60 分に設定し、バックアップ プロセスが正常に完了するのに 15 分かかる場合、次のバックアップは、前回のバックアップの開始時刻から 75 分経つまで開始しません。

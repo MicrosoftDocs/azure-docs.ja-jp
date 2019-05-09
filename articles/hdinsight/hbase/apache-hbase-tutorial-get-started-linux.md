@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7f162412a099078302bb348dab9ad3171f9e2913
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794500"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199496"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight で Apache HBase の例を使用する
 
@@ -111,7 +111,7 @@ HBase ([クラウド BigTable](https://cloud.google.com/bigtable/) の実装) �
 
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。  詳細については、 [一括読み込み](https://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
-サンプル データ ファイルは、パブリック BLOB コンテナー (*wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*) にあります。  このデータ ファイルの内容は次のとおりです。
+サンプルのデータ ファイルは、パブリック BLOB コンテナー *wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt* にあります。  このデータ ファイルの内容は次のとおりです。
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -175,14 +175,14 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
-2. 次のコマンドを使用して、既存の HBase テーブルを一覧表示します。
+1. 次のコマンドを使用して、既存の HBase テーブルを一覧表示します。
 
     ```bash
     curl -u <UserName>:<Password> \
     -G https://<ClusterName>.azurehdinsight.net/hbaserest/
     ```
 
-3. 次のコマンドを使用して、2 つの列ファミリを含む新しい HBase テーブルを作成します。
+1. 次のコマンドを使用して、2 つの列ファミリを含む新しい HBase テーブルを作成します。
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -194,7 +194,7 @@ REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wik
     ```
 
     スキーマは、JSon 形式で提供されます。
-4. 次のコマンドを使用して、一部のデータを挿入します。
+1. 次のコマンドを使用して、一部のデータを挿入します。
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -212,7 +212,7 @@ REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wik
    * Sm9obiBEb2xl:John Dole
      
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) を使用すると、複数の (バッチ処理された) 値を挿入できます。
-5. 次のコマンドを使用して、1 行を取得します。
+1. 次のコマンドを使用して、1 行を取得します。
    
     ```bash 
     curl -u <UserName>:<Password> \
@@ -247,15 +247,15 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 2. 左側のメニューで **[HBase]** をクリックします。
 3. ページの上部にある **[Quick links (クイック リンク)]** をクリックし、アクティブな Zookeeper ノード リンクをポイントして、**[HBase Master UI]** をクリックします。  UI は別のブラウザー タブで開かれます。
 
-  ![HDInsight HBase Master UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![HDInsight HBase Master UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-  HBase Master UI には次のセクションがあります。
+   HBase Master UI には次のセクションがあります。
 
-  - リージョン サーバー
-  - バックアップ マスター
-  - tables
-  - タスク
-  - ソフトウェア属性
+   - リージョン サーバー
+   - バックアップ マスター
+   - tables
+   - タスク
+   - ソフトウェア属性
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
@@ -272,8 +272,6 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 詳細については、次を参照してください。
 
 * [HDInsight HBase の概要][hdinsight-hbase-overview]:Apache HBase は、Apache Hadoop 上に構築された Apache 用のオープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
-
-[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hbase-reference]: https://hbase.apache.org/book.html#importtsv

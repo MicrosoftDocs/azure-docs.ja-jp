@@ -11,20 +11,22 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: c41420e46a0bd4afbaed96da0e2fb9775d49c6fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 7542e9fa04eb838baca37dbe13f7cdacdfaf041b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606539"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470265"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの監視
+
 [インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium および Business Critical サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。 [DTU ベースのリソース制限 - 単一データベース](sql-database-dtu-resource-limits-single-databases.md)、[DTU ベースのリソース制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)、[仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)、および [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)に関する各ページを参照してください。
 
 この上限を超過すると、挿入操作や更新操作が、単一データベースの場合はエラー 41823 で、エラスティック プールの場合はエラー 41840 で、失敗し始めることがあります。 その場合は、データを削除してメモリを解放するか、データベースのサービス レベルまたはコンピューティング サイズをアップグレードする必要があります。
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>データがインメモリ OLTP ストレージの上限に収まるかどうかを判断する
+
 さまざまなサービス レベルのストレージの上限を確認します。 [DTU ベースのリソース制限 - 単一データベース](sql-database-dtu-resource-limits-single-databases.md)、[DTU ベースのリソース制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)、[仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)、および [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)に関する各ページを参照してください。
 
 メモリ最適化テーブルのメモリ必要量の推定は、Azure SQL Database で SQL Server の要件を推定する場合と同じように行います。 少し時間をとって、[MSDN](https://msdn.microsoft.com/library/dn282389.aspx) でメモリ最適化テーブルのメモリ必要量の推定について確認してください。
@@ -40,10 +42,12 @@ ms.locfileid: "53606539"
 
 または、次のクエリを使用して、インメモリ ストレージの使用率を表示します。
 
+```sql
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
-
+```
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>インメモリ OLTP ストレージが不足する状況を修正する - エラー 41823 および 41840
+
 データベースでインメモリ OLTP ストレージの上限に達すると、INSERT、UPDATE、ALTER、CREATE 操作が、エラー メッセージ 41823 (単一データベースの場合) またはエラー 41840 (エラスティック プールの場合) で失敗します。 どちらのエラーの場合も、アクティブなトランザクションが中止します。
 
 エラー メッセージ 41823 および 41840 は、データベースまたはプールのメモリ最適化テーブルおよびテーブル変数が、インメモリ OLTP ストレージの最大サイズに達したことを示します。

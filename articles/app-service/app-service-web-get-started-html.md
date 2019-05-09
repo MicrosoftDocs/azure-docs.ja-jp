@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 11/20/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ae37befe2ae2220feaf17ae4354b6fc780147f7e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 064466b73e03e9648b78c32b7e6ffcd83defd607
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634237"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079360"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的 HTML Web アプリを作成する
 
@@ -32,22 +32,6 @@ ms.locfileid: "53634237"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="install-web-app-extension-for-cloud-shell"></a>Cloud Shell の Web アプリ拡張機能をインストールする
-
-このクイック スタートを完了するには、[Web アプリ拡張機能](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add)を追加する必要があります。 この拡張機能が既にインストールされている場合は、最新バージョンに更新してください。 Web アプリ拡張機能を更新するには、「`az extension update -n webapp`」と入力します。
-
-Web アプリ拡張機能をインストールするには、次のコマンドを実行します。
-
-```bash
-az extension add --name webapp
-```
-
-拡張機能がインストールされると、Cloud Shell に次の例の情報が表示されます。
-
-```bash
-The installed extension 'webapp' is in preview.
-```
-
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
 Cloud Shell で、クイックスタートのディレクトリを作成し、それに変更します。
@@ -55,7 +39,7 @@ Cloud Shell で、クイックスタートのディレクトリを作成し、�
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。

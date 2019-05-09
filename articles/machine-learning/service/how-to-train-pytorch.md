@@ -4,23 +4,23 @@ titleSuffix: Azure Machine Learning service
 description: PyTorch Estimator を利用して PyTorch モデルの単一ノード トレーニングや分散トレーニングを実行する方法を説明します
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6401c6059d8f72f344021879828b01c9ce77169
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9ae7795381f036bb819ce24554d8cea94ceb5552
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100567"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548553"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して PyTorch モデルをトレーニングする
 
-PyTorch を利用したディープ ニューラル ネットワーク (DNN) トレーニングの場合、Azure Machine Learning には `Estimator` のカスタム `PyTorch` クラスが用意されています。 Azure SDK の `PyTorch` エスティメータを使用すると、Azure コンピューティングでの単一ノード実行と分散実行の両方に対して、PyTorch トレーニング ジョブを簡単に送信することができます。
+PyTorch を利用したディープ ニューラル ネットワーク (DNN) トレーニングの場合、Azure Machine Learning では `Estimator` のカスタム [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) クラスが提供されます。 Azure SDK の `PyTorch` エスティメータを使用すると、Azure コンピューティングでの単一ノード実行と分散実行の両方に対して、PyTorch トレーニング ジョブを簡単に送信することができます。
 
 ## <a name="single-node-training"></a>単一ノードのトレーニング
 `PyTorch` エスティメータによるトレーニングは、[基本 `Estimator`](how-to-train-ml-models.md) を使用する場合と似ているので、最初にハウツー記事を読み、そこで紹介されている概念を理解しておいてください。
@@ -42,10 +42,11 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 ここでは、PyTorch コンストラクターに次のパラメーターを指定します。
+
 パラメーター | 説明
 --|--
 `source_directory` |  トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています
-`script_params` |  <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ
+`script_params` |  <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ。  `script_params` で詳細フラグを指定するには、`<command-line argument, "">` を使用します。
 `compute_target` |  トレーニング スクリプトの実行に使用するリモートのコンピューティング先 (この例では Azure Machine Learning コンピューティング ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) クラスター)
 `entry_script` |  リモート コンピューティングで実行するトレーニング スクリプトのファイルパス (`source_directory` を基準にした相対パス)。 このファイル、およびこのファイルと依存関係があるその他のファイルはすべて、このフォルダーに置かれている必要があります
 `conda_packages` |  トレーニング スクリプトで必要な、conda を使用してインストールする Python パッケージのリスト。 コンストラクターには `pip_packages` という名前のパラメーターもあり、必要な pip パッケージに対して使用できます
@@ -82,6 +83,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 このコードでは、PyTorch コンストラクターに対して次の新しいパラメーターを公開しています。
+
 パラメーター | 説明 | 既定値
 --|--|--
 `node_count` |  トレーニング ジョブに使用するノードの数。 | `1`

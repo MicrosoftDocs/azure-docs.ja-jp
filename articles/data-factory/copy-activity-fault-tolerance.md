@@ -3,25 +3,24 @@ title: Azure Data Factory のコピー アクティビティのフォールト �
 description: 互換性のない行をスキップすることによって Azure Data Factory のコピー アクティビティにフォールト トレランスを追加する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.author: jingwang
-ms.openlocfilehash: 3f207cdb3af3f7e328cd5843053240bbbe15980e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.author: yexu
+ms.openlocfilehash: ef0bb3716a32a0f25b90e74bc44d7291c146b431
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418345"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59267465"
 ---
-# <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [現在のバージョン](copy-activity-fault-tolerance.md)
 
@@ -33,13 +32,13 @@ Azure Data Factory のコピー アクティビティには、ソースとシン
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 コピー アクティビティでは、検出、スキップ、および互換性のないデータのログ記録の 3 つのシナリオをサポートします。
 
-- **ソース データの型とシンクのネイティブ型の間の非互換性**。
+- **ソース データの型とシンクのネイティブ型の間の非互換性**。 
 
-    例: BLOB ストレージ内の CSV ファイルから、INT 型の 3 つの列を含むスキーマ定義を持つ SQL データベースにデータをコピーします。 数値データを含む CSV ファイルの行 (123,456,789 など) はシンク ストアに正常にコピーされます。 ただし、数値以外を含む行 (123,456, abc など) は互換性のない行として検出され、スキップされます。
+    例: Blob Storage 内の CSV ファイルから、INT 型の 3 つの列を含むスキーマ定義を持つ SQL データベースにデータをコピーします。 数値データを含む CSV ファイルの行 (123,456,789 など) はシンク ストアに正常にコピーされます。 ただし、数値以外を含む行 (123,456, abc など) は互換性のない行として検出され、スキップされます。
 
 - **ソースとシンクの間での列数の不一致**。
 
-    例: 6 つの列を含むスキーマ定義とともに、Blob Storage 内の CSV ファイルから SQL データベースにデータをコピーします。 6 つの列を含む CSV ファイルの行が、シンク ストアに正常にコピーされます。 含まれる列の数が 6 つでない CSV ファイルの行は、互換性のないものとして検出され、スキップされます。
+    例: Blob Storage 内の CSV ファイルから、6 つの列を含むスキーマ定義を持つ SQL データベースにデータをコピーします。 6 つの列を含む CSV ファイルの行が、シンク ストアに正常にコピーされます。 含まれる列の数が 6 つでない CSV ファイルの行は、互換性のないものとして検出され、スキップされます。
 
 - **SQL Server/Azure SQL Database/Azure Cosmos DB への書き込み時の主キー違反**。
 
@@ -63,7 +62,7 @@ Azure Data Factory のコピー アクティビティには、ソースとシン
     },
     "enableSkipIncompatibleRow": true,
     "redirectIncompatibleRowSettings": {
-        "linkedServiceName": {
+         "linkedServiceName": {
               "referenceName": "<Azure Storage or Data Lake Store linked service>",
               "type": "LinkedServiceReference"
             },
@@ -73,11 +72,11 @@ Azure Data Factory のコピー アクティビティには、ソースとシン
 ```
 
 プロパティ | 説明 | 使用できる値 | 必須
--------- | ----------- | -------------- | --------
-enableSkipIncompatibleRow | コピー中に互換性のない行をスキップするかどうかを指定します。 | True<br/>False (既定値) | いいえ
-redirectIncompatibleRowSettings | 互換性のない行をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ
-linkedServiceName | スキップされる行が含まれたログを格納する [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) のリンク サービス。 | `AzureStorage` または `AzureDataLakeStore` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
-path | スキップした行を含むログ ファイルのパス。 | 互換性のないデータをログに記録するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
+-------- | ----------- | -------------- | -------- 
+enableSkipIncompatibleRow | コピー中に互換性のない行をスキップするかどうかを指定します。 | True<br/>False (既定値) | いいえ 
+redirectIncompatibleRowSettings | 互換性のない行をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ 
+linkedServiceName | スキップされる行が含まれたログを格納する [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) のリンク サービス。 | `AzureStorage` または `AzureDataLakeStore` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ 
+path | スキップした行を含むログ ファイルのパス。 | 互換性のないデータをログに記録するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ 
 
 ## <a name="monitor-skipped-rows"></a>スキップされた行を監視する
 コピー アクティビティの実行が完了したら、コピー アクティビティの出力で、スキップされた行の数を次のように確認できます。
@@ -95,9 +94,9 @@ path | スキップした行を含むログ ファイルのパス。 | 互換性
         },
 
 ```
-互換性のない行をログに記録するように構成した場合は、パス `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` でログ ファイルを見つけることができます。
+互換性のない行をログに記録するように構成した場合は、パス `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` でログ ファイルを見つけることができます。 
 
-ログ ファイルは、csv のファイル形式のみです。 スキップされた元のデータは、必要に応じて、列区切り記号にコンマを使用して記録されます。 非互換性の根本原因を確認できるように、ログ ファイルの元のソース データに加えて、"ErrorCode" および "ErrorMessage" という 2 つの列を追加しています。 ErrorCode および ErrorMessage は、二重引用符で囲まれます。
+ログ ファイルは、csv のファイル形式のみです。 スキップされた元のデータは、必要に応じて、列区切り記号にコンマを使用して記録されます。 非互換性の根本原因を確認できるように、ログ ファイルの元のソース データに加えて、"ErrorCode" および "ErrorMessage" という 2 つの列を追加しています。 ErrorCode および ErrorMessage は、二重引用符で囲まれます。 
 
 ログ ファイルの内容の例は次のとおりです。
 
@@ -111,3 +110,5 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [コピー アクティビティのパフォーマンス](copy-activity-performance.md)
+
+

@@ -1,19 +1,17 @@
 ---
 title: Advanced Threat Protection - Azure Database for MySQL | Microsoft Docs
 description: 脅威の防止は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
-services: mysql
 author: bolzmj
-manager: kfile
-ms.service: mysql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: dfb4d104d3dfdb3e6ae7466fa3776dd5e7155aa7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.service: mysql
+ms.topic: conceptual
+ms.date: 01/24/2019
+ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046717"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912750"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Azure Database for MySQL の Advanced Threat Protection
 
@@ -22,8 +20,11 @@ Azure Database for MySQL 用の Advanced Threat Protection では、データベ
 Advanced Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) を使ってアクセスおよび管理でき、現在はプレビュー状態です。
 
 > [!NOTE]
-> Advanced Threat Protection の機能は、US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2 の Azure 政府およびソブリン クラウド領域では使用**できません**。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection 機能は、次の Azure 政府およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 >
+
+> [!NOTE]
+> この機能は、Azure Database for MySQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
 
 ## <a name="set-up-threat-detection"></a>脅威検出の設定
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。

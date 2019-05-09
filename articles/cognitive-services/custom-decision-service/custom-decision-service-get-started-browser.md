@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: ブラウザーから直接 Azure Custom Decision Service に API を呼び出すことで、Web ページを最適化する方法。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
-ms.openlocfilehash: 01f75d333e3eea5af35ca57bd44bc76148a481f2
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2b356e2f0fe9235d49dffa7417cd3894059f9caf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867617"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867564"
 ---
 # <a name="call-api-from-a-browser"></a>ブラウザーから API を呼び出す
 

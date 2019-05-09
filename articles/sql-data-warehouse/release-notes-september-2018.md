@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: f8073fd746bc02c23efab914c45c61830942a677
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: bc559a1224aace2ee599c24c8dce07a6d55173fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863714"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 9 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 9 月に導入された新しい機能と変更点について説明します。
@@ -24,6 +24,9 @@ Azure SQL Data Warehouse では、継続的に機能強化を図っています�
 2018 年 4 月、5 倍のパフォーマンス、5 倍のコンピューティング スケール、4 倍のコンカレンシー、無制限のストレージを提供する Azure SQL Data Warehouse Gen2 が、[Microsoft から発表されました](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/)。 Gigaom による「[Data Warehouse in the cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)」(クラウドでのデータ ウェアハウスのベンチマーク) で示されているように、SQL Data Warehouse Gen2 は **Amazon Redshift より 42% 優れています**。
 
 Gen2 は DWU500c の下位エントリ ポイントで一般に利用できるようになり、最新のサービス機能強化をすべて利用して、小規模データ ウェアハウスまたは開発/テスト環境を実行できます。 新しいエントリ ポイントは、[アダプティブ キャッシュ](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/)、[高速データ シャッフル](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/)、[リアルタイム データ ウェアハウス](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/)のサポートなど、Gen2 のすべての機能を備えています。
+
+## <a name="sql-vulnerability-assessment"></a>SQL の脆弱性評価
+[SQL の脆弱性評価 (VA)](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/25/sql-vulnerability-assessment-now-supports-azure-sql-data-warehouse-and-azure-sql-database-managed-instance/) は、データ ウェアハウスを継続的に監視する使いやすいサービスです。 これを利用して、高レベルのセキュリティを常に確保し、組織のポリシーが満たされている状態を維持できます。 また、見つかった問題ごとに、包括的なセキュリティ レポートと実用的な修復の手順が提供されます。 このレポートを利用すると、セキュリティの専門家ではない場合でも、データベースのセキュリティ状況を予防的に管理し、最も影響の大きいアクションに特に注意をすることが簡単にできます。 変更が頻繁に発生し、追跡が困難な動的環境では、攻撃に対してデータ ウェアハウスが脆弱になる可能性がある設定を検出する上で、VA は重要です。
 
 ## <a name="improved-availability-with-query-restartability"></a>クエリの再開可能性による可用性の向上
 クエリの実行中に、問題が発生してクエリが失敗する可能性があります。 ネットワーク停止、ハードウェア障害、その他の切断で中断が発生する可能性があります。 SQL Data Warehouse では、ステップ レベルまたはステートメント レベルの SELECT クエリに対するクエリの再開可能性がサポートされるようになりました。 
@@ -121,7 +124,7 @@ SQL Data Warehouse の概要について学習したので、次は[SQL Data War
 [Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

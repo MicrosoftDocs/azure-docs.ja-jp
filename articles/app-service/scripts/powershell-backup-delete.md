@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d8a3d8f890001138f0582a099021b4537227a337
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: dbe8417e8a26cb222fe52ac7c0284b3956ed65fb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53586411"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106938"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Azure PowerShell を使用して Web のバックアップを削除する
 
@@ -30,6 +30,8 @@ ms.locfileid: "53586411"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/backup-delete/backup-delete.ps1?highlight=1-2,11 "Delete a backup for a web app")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
@@ -37,17 +39,17 @@ ms.locfileid: "53586411"
 サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、Web アプリ、およびすべての関連リソースを削除できます。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [Get-AzureRmWebAppBackupList](/powershell/module/azurerm.websites/get-azurermwebappbackuplist) | Web アプリのバックアップの一覧を取得します。 |
-| [Remove-AzureRmWebAppBackup](/powershell/module/azurerm.websites/remove-azurermwebappbackup) | Web アプリの指定したバックアップを削除します。 |
+| [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Web アプリのバックアップの一覧を取得します。 |
+| [Remove-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Web アプリの指定したバックアップを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,18 +15,18 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: b41366b89a0598d52ae973e2a6d27e60ed548765
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d8baec875c25556f1080cdd105c7fa466ffce74e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634458"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094009"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob ストレージ コンテナーのサイズを計算する
 
 このスクリプトでは、コンテナー内のブロブのサイズを合計して、Azure Blob ストレージ内のコンテナーのサイズを計算します。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,10 +49,10 @@ Remove-AzResourceGroup -Name bloblisttestrg
 
 このスクリプトでは次のコマンドを使用して、Blob ストレージ コンテナーのサイズを計算します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | リソース グループまたはサブスクリプション内の指定された Storage アカウントまたはすべての Storage アカウントを取得します。 |
-| [Get-AzStorageBlob](/powershell/module/azure.storage/get-AzStorageblob) | コンテナー内の BLOB を一覧表示します。 ||
+| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | コンテナー内の BLOB を一覧表示します。 |
 
 ## <a name="next-steps"></a>次の手順
 

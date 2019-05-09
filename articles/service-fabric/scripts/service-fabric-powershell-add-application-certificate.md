@@ -3,8 +3,8 @@ title: Azure PowerShell のサンプル スクリプト - アプリケーショ�
 description: Azure PowerShell のサンプル スクリプト - アプリケーション証明書の Service Fabric クラスターへの追加。
 services: service-fabric
 documentationcenter: ''
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,20 +13,22 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: be097f88f774df9e4a6429af444c6c742737f4c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3d2ab7339a641164a628854c00e22f437b21c3df
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598712"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670457"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>アプリケーション証明書の Service Fabric クラスターへの追加
 
 このサンプル スクリプトは、指定された Azure Key Vault 内に自己署名証明書を作成し、Service Fabric クラスターのすべてのノードにこの証明書をインストールします。 証明書はローカル フォルダーにもダウンロードされます。 ダウンロードされる証明書の名前は、キー コンテナー内の証明書の名前と同じです。 必要に応じてパラメーターをカスタマイズします。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -34,11 +36,11 @@ ms.locfileid: "31598712"
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは次のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは以下のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [Add-AzureRmServiceFabricApplicationCertificate](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) | クラスターを構成する仮想マシン スケール セットに新しいアプリケーション証明書を追加します。  |
+| [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) | クラスターを構成する仮想マシン スケール セットに新しいアプリケーション証明書を追加します。  |
 
 ## <a name="next-steps"></a>次の手順
 

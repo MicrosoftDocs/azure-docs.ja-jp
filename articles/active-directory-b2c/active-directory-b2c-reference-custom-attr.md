@@ -3,25 +3,25 @@ title: Azure Active Directory B2C でカスタム属性を定義する | Microso
 description: 顧客に関する情報を収集するために、Azure Active Directory B2C でアプリケーションのカスタム属性を定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8b32a1eccfc90731d4c3458a0696a8e5900691aa
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: 277a1d5df0e6eb828c4d3c6faed91d55defb4108
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727819"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793182"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム属性を定義する
 
  すべての顧客向けアプリケーションには、収集する必要のある情報についての固有の要件があります。 Azure Active Directory (Azure AD) B2C テナントには、名、姓、市区町村、郵便番号などの属性に格納された組み込みの一連の情報が用意されています。 Azure AD B2C では、各顧客アカウントに関して格納されている一連の属性を拡張できます。 
  
- [Azure portal](https://portal.azure.com/) でカスタム属性を作成し、それらをサインアップ ユーザー フロー、サインアップまたはサインイン ユーザー フロー、プロファイル編集ユーザー フローなどで使用できます。 また、 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md)を使用してこれらの属性を読み書きすることもできます。 Azure AD B2C のカスタム属性では、[Azure AD Graph API ディレクトリ スキーマ拡張機能](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)が使用されます。
+ [Azure portal](https://portal.azure.com/) でカスタム属性を作成し、それらをサインアップ ユーザー フロー、サインアップまたはサインイン ユーザー フロー、プロファイル編集ユーザー フローなどで使用できます。 また、 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md)を使用してこれらの属性を読み書きすることもできます。 Azure AD B2C のカスタム属性では、[Azure AD Graph API ディレクトリ スキーマ拡張機能](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)が使用されます。
 
 ## <a name="create-a-custom-attribute"></a>カスタム属性を作成する
 

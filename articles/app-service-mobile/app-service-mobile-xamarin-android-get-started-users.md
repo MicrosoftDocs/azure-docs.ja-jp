@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 0a2d964d60d13f0e71de5776112a4edbe3cdcc45
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063542"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993926"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Xamarin.Android アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -57,7 +57,7 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
 
 1. **TodoActivity** クラスに次のコードを追加します。
    
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
         private async Task<bool> Authenticate()
         {
@@ -96,7 +96,7 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
     これにより、ユーザーを認証する新しいメソッドと、新しい **[サインイン]** ボタンのメソッド ハンドラーが作成されます。 上記のサンプル コードでは、ユーザーは Facebook ログインを使用して認証されます。 認証されると、ダイアログを使用してユーザー ID が表示されます。
    
    > [!NOTE]
-   > Facebook 以外の ID プロバイダーを使用している場合は、上記の例の **LoginAsync** に渡される値を *MicrosoftAccount*、*Twitter*、*Google*、*WindowsAzureActiveDirectory* のいずれかに変更します。
+   > Facebook 以外の ID プロバイダーを使用している場合は、上の **LoginAsync** に渡される値を*MicrosoftAccount*、*Twitter*、*Google*、または *WindowsAzureActiveDirectory* のいずれかに変更します。
    > 
    > 
 2. **OnCreate** メソッド内の次のコード行を削除またはコメント アウトします。

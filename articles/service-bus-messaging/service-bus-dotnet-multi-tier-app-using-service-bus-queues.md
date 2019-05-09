@@ -3,19 +3,20 @@ title: Azure Service Bus を使用する .NET 多層アプリケーション | M
 description: Service Bus キューを使用して層間で通信する多層アプリケーションを Azure で開発するのに役立つ .NET チュートリアルです。
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: b905feef4d3a5445ba27b92637448443c3bbb4a3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855614"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435526"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
 
@@ -32,7 +33,7 @@ Microsoft Azure 向けアプリケーションは、Visual Studio および無�
 
 このチュートリアルでは、Azure のクラウド サービスで多層アプリケーションを構築して実行します。 フロントエンドは ASP.NET MVC Web ロール、バックエンドは Service Bus キューを使用する worker ロールです。 同じ多層アプリケーションを作成するときに、クラウド サービスではなく Azure Web サイトにデプロイされる Web プロジェクトとしてフロントエンドを実装することもできます。 また、[.NET オンプレミス/クラウド ハイブリッド アプリケーション](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)のチュートリアルを試すこともできます。
 
-次のスクリーン ショットに、完成したアプリケーションを示します。
+次に示すのは完成したアプリケーションのスクリーンショットです。
 
 ![][0]
 

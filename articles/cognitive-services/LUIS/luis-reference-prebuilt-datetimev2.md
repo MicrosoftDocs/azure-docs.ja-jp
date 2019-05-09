@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での datetimeV2 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 0e2353107d6554a8ecbbd2e4d9850f8d8b5fda5c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6b4c3f7445d18ab1548fd63b1f4d12c5901cf949
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165182"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339523"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 
@@ -33,8 +33,8 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
   {
     "entity": "8am on may 2nd 2017",
     "type": "builtin.datetimeV2.datetime",
-    "startIndex": 15,
-    "endIndex": 30,
+    "startIndex": 0,
+    "endIndex": 18,
     "resolution": {
       "values": [
         {

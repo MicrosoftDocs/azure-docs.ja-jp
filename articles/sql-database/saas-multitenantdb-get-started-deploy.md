@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
-ms.date: 04/02/2018
-ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/16/2018
+ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994919"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
 
@@ -66,9 +66,9 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 ### <a name="steps"></a>手順
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** という青いボタンをクリックします。
-    - Wingtip Tickets SaaS デプロイ テンプレートが指定された状態で Azure Portal が開きます。
+   - Wingtip Tickets SaaS デプロイ テンプレートが指定された状態で Azure Portal が開きます。
 
-    [![Deploy to Azure\(Azure にデプロイ\) ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![Deploy to Azure\(Azure にデプロイ\) ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. デプロイに必須のパラメーター値を入力します。
 
@@ -125,9 +125,9 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 中心となる **Events Hub** Web ページには、特定のデプロイのテナントへのリンク一覧が表示されます。 **Events Hub** Web ページや個別の Web アプリを体験するには、次の手順に従います。
 
 1. Web ブラウザーで **Events Hub** を開きます。
-    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(&lt;user&gt; は実際のデプロイのユーザー値に置き換えてください)。*
+   - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(&lt;user&gt; は実際のデプロイのユーザー値に置き換えてください)。*
 
-    ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
+     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. **Events Hub** で **[Fabrikam Jazz Club]** をクリックします。
 
@@ -208,7 +208,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
 ここでデプロイされたリソースの一部が表示されます。
 
-1. [Azure Portal](http://portal.azure.com) で、リソース グループの一覧を参照します。 アプリケーションをデプロイしたときに作成したリソース グループを開きます。
+1. [Azure Portal](https://portal.azure.com) で、リソース グループの一覧を参照します。 アプリケーションをデプロイしたときに作成したリソース グループを開きます。
 
    ![resource group](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
@@ -275,7 +275,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 -->
 
-[link-aka-ms-deploywtp-mtapp-52k]: http://aka.ms/deploywtp-mtapp
+[link-aka-ms-deploywtp-mtapp-52k]: https://aka.ms/deploywtp-mtapp
 
 
 [link-azure-get-started-powershell-41q]: https://docs.microsoft.com/powershell/azure/get-started-azureps
@@ -286,7 +286,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 <!--  Image references.
 
-[image-deploy-to-azure-blue-48d]: http://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
+[image-deploy-to-azure-blue-48d]: https://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
 -->
 
 [image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Azure にデプロイするためのボタン。"

@@ -1,5 +1,5 @@
 ---
-title: Azure Portal での SQL Database アラートの作成 | Microsoft Docs
+title: Azure Portal を使用してアラートと通知を設定する | Microsoft Docs
 description: Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,20 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634611"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855590"
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure Portal を使用して Azure SQL Database および Data Warehouse のアラートを作成する
 
 ## <a name="overview"></a>概要
-この記事では、Azure Portal を使用して SQL Database と Data Warehouse のアラートを設定する方法について説明します。 この記事では、アラート期間を設定するベスト プラクティスも紹介します。    
+この記事では、Azure Portal を使用して SQL Database と Data Warehouse のアラートを設定する方法について説明します。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。 この記事では、アラート期間を設定するベスト プラクティスも紹介します。    
+
+> [!IMPORTANT]
+> この機能は、Managed Instance ではまだ使用できません。 別の方法として、SQL エージェントを使用して、[動的管理ビュー](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)に基づいてあるメトリックに関する電子メール アラートを送信できます。
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 
@@ -56,7 +59,7 @@ ms.locfileid: "53634611"
 4. アラート ルールに**名前**を付けて、**説明**を選択します。この説明は通知電子メールにも表示されます。
 5. 監視する**メトリック**を選択し、メトリックの**条件**と**しきい値**を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として [PT5M] を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間で**平均** 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間で平均 80% を下回ったときにトリガーされます。 CPU 測定は 1 分ごとに発生します。 各アラートが使用するサポートされる間隔と集計タイプを、以下の表で確認してください。ただし、すべてのアラートで平均値が使用されるわけではありません。   
 6. アラートが発生したときに管理者と共同管理者に電子メールが送信されるようにするには、 **[メールの所有者...]** をオンにします。
-7. アラートが発生したときに、他のアドレスにも電子メールを送信して通知する場合は、 **[追加する管理者の電子メール]** フィールドにそのアドレスを入力します。 複数の電子メール アドレスを入力する場合はセミコロンで区切ります- *email@contoso.com;email2@contoso.com*
+7. アラートが発生したときに、他のアドレスにも電子メールを送信して通知する場合は、 **[追加する管理者の電子メール]** フィールドにそのアドレスを入力します。 複数のメール アドレスは、*email\@contoso.com;email2\@contoso.com* のようにセミコロンで区切ります。
 8. **[webhook]** フィールドに、アラートが発生したときに呼び出す webhook の有効な URI を入力します。
 9. 完了したら **[OK]** を選択して、アラートを作成します。   
 
@@ -103,7 +106,6 @@ ms.locfileid: "53634611"
 ||||||               
 | SQL Data Warehouse | cpu_percent | CPU の割合 | 平均 | 10 分 |
 | SQL Data Warehouse | physical_data_read_percent | データ IO の割合 | 平均 | 10 分 |
-| SQL Data Warehouse | storage | 合計データベース サイズ | 最大値 | 10 分 |
 | SQL Data Warehouse | connection_successful | 成功した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | connection_failed | 失敗した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | blocked_by_firewall | ファイアウォールによってブロックされる | 合計 | 10 分 |

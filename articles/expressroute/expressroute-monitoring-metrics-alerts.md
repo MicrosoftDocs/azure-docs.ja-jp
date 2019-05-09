@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d78c110f3317f4dd9f16cbe243aeca437e9890a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108799"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute の監視、メトリック、およびアラート
 
@@ -43,18 +43,18 @@ ms.locfileid: "53091766"
 
 1. アラートを構成するには、**Azure Monitor** に移動し、**[アラート]** をクリックします。
 
-  ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
+   ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
 2. **[+ ターゲットの選択]** をクリックし、ExpressRoute ゲートウェイの接続リソースを選択します。
 
-  ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. アラートの詳細を定義します。
 
-  ![アクション グループ](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
+   ![アクション グループ](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
 4. アクション グループを定義して追加します。
 
-  ![アクション グループの追加](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
+   ![アクション グループの追加](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
 ## <a name="alerts-based-on-each-peering"></a>各ピアリングに基づくアラート
 

@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: e8d880534a39651024b60ef10a9fbadb9e109a4e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 573e6ea857ef17a6160f7e03f52f9c64f903530a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138247"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546628"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
-関数アプリのアプリケーション設定には、その関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 ローカルで実行する場合、これらの設定は[環境変数](functions-run-local.md#local-settings-file)にあります。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
+関数アプリのアプリケーション設定には、その関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 ローカルで実行する場合、これらの設定は、ローカルの[環境変数](functions-run-local.md#local-settings-file)としてアクセスされます。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
@@ -106,7 +106,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 
 ## <a name="functionappeditmode"></a>FUNCTION\_APP\_EDIT\_MODE
 
-有効な値は "readwrite" および "readonly" です。
+Azure portal での編集が有効になっているかどうかを決定します。 有効な値は "readwrite" および "readonly" です。
 
 |キー|値の例|
 |---|------------|
@@ -122,7 +122,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 
 ## <a name="functionsworkerruntime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript)、`java` (Java) です。
+ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、および `python` (Python) です。
 
 |キー|値の例|
 |---|------------|
@@ -179,7 +179,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 
 |キー|値|説明|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル関数内の関数を指すバックエンド URL を使用した呼び出しは、関数に直接送信されるのではなく、Function App の HTTP フロント エンドに戻されるようになります|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、関数に直接送信されるのではなく、Function App の HTTP フロント エンドに戻されるようになります|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|これが既定値です。 ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されるようになります|
 
 
@@ -209,7 +209,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
     }
 }
 ```
-|URL のデコード|入力|出力|
+|URL のデコード|入力|Output|
 |-|-|-|
 |true|myfunction.com/test%2fapi|example.com/test/api
 |false|myfunction.com/test%2fapi|example.com/test%2fapi|

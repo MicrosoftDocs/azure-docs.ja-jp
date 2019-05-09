@@ -4,22 +4,23 @@ description: Azure AD Connect 同期を監視する方法を説明する Azure A
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9811c51485ec30e7fe692c52f4e65cefd93e5cb0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499080"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201824"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。

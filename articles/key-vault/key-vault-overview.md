@@ -3,23 +3,22 @@ title: Azure Key Vault の概要 - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault は、セキュリティで保護されたシークレット ストアとして機能するクラウド サービスです。
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 34af20ee-3fa7-4f28-9d98-6168b1759764
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 80a740e13f5c3a13b7533d75e386a9afa2855085
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 06f1a2b33b177cf667fc2d3c5932f7ff117d2bdc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002248"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195474"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -56,7 +55,7 @@ Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で�
 
 - ストレージ アカウントへのアーカイブ。
 - イベント ハブへのストリーム配信。
-- Log Analytics へのログの送信。
+- Azure Monitor ログにログを送信します。
 
 ユーザーは、ログを管理できます。ユーザーは、アクセスを制限することによってログを保護することができ、不要になったログを削除することもできます。
 
@@ -83,5 +82,5 @@ Key Vault 自体は、ストレージ アカウント、イベント ハブ、�
 
 ## <a name="next-steps"></a>次の手順
 
-- [クイック スタート: CLI を使用した Azure キーコンテナーの作成](quick-create-cli.md)
+- [クイック スタート:CLI を使用した Azure キーコンテナーの作成](quick-create-cli.md)
 - [キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](tutorial-web-application-keyvault.md)

@@ -9,20 +9,19 @@ ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7c6751a0432d66aee0ff3056b212dc1b348e333f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045828"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331539"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB からデータを移動する
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-on-premises-mongodb-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-mongodb.md)
 
@@ -48,9 +47,9 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、オンプレミスの MongoDB データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -58,7 +57,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MongoDB データ ストアからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: MongoDB から Azure BLOB へのデータのコピー](#json-example-copy-data-from-mongodb-to-azure-blob)」をご覧ください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MongoDB データ ストアからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON の使用例: MongoDB から Azure BLOB にデータをコピーする](#json-example-copy-data-from-mongodb-to-azure-blob)」セクションを参照してください。
 
 次のセクションでは、MongoDB ソースに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -67,15 +66,15 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **OnPremisesMongoDb** |[はい] |
-| [サーバー] |MongoDB サーバーの IP アドレスまたはホスト名。 |[はい] |
-| ポート |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
-| authenticationType |Basic または Anonymous。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |はい |
+| server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
+| port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
+| authenticationType |Basic または Anonymous。 |はい |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | password |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |省略可能 (基本認証が使用される場合)。 既定では、管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
-| databaseName |アクセスする MongoDB データベースの名前。 |[はい] |
-| gatewayName |データ ストアにアクセスするゲートウェイの名前。 |[はい] |
+| databaseName |アクセスする MongoDB データベースの名前。 |はい |
+| gatewayName |データ ストアにアクセスするゲートウェイの名前。 |はい |
 | encryptedCredential |ゲートウェイによって暗号化された資格情報。 |省略可能 |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -96,11 +95,11 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
 
 
 
-## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON の使用例: MongoDB から Azure BLOB へのデータのコピー
+## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON の使用例:MongoDB から Azure BLOB にデータをコピーする
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルでは、オンプレミスの MongoDB から Azure Blob Storage にデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
@@ -152,7 +151,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 }
 ```
 
-**MongoDB 入力データセット** external を true に設定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
+**MongoDB の入力データセット:**"external": true の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```json
 {
@@ -174,7 +173,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 **Azure BLOB の出力データセット:**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {
@@ -297,20 +296,20 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 | MongoDB 型 | .NET Framework 型 |
 | --- | --- |
 | Binary |Byte[] |
-| ブール |ブール |
-| 日付 |Datetime |
+| Boolean |Boolean |
+| Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
 | String |String |
 | UUID |Guid |
-| オブジェクト |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
+| Object |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
 
 > [!NOTE]
 > 仮想テーブルを使用した配列に対するサポートの詳細については、下の「 [仮想テーブルを使用した複合型のサポート](#support-for-complex-types-using-virtual-tables) 」セクションをご覧ください。
 
-現時点では、次の MongoDB データ型はサポートされていません: DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined。
+現時点では、次の MongoDB データ型はサポートされていません: DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined
 
 ## <a name="support-for-complex-types-using-virtual-tables"></a>仮想テーブルを使用した複合型のサポート
 Azure Data Factory では、ビルトインの ODBC ドライバーを使用して、MongoDB データベースへの接続や、MongoDB データベースからのデータのコピーを行います。 複数のドキュメントのさまざまな型が含まれた配列やオブジェクトなどの複合型については、ODBC ドライバーによって、対応する仮想テーブルへのデータの再正規化が行われます。 具体的には、テーブルにそのような列が含まれている場合に、ドライバーによって次の仮想テーブルが生成されます。
@@ -318,7 +317,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 * 実テーブルと同じデータ (複合型列を除く) を含む **ベース テーブル**。 ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
 * 複合型列ごとの**仮想テーブル**。入れ子になったデータが展開されます。 仮想テーブルの名前は、実テーブルの名前、区切り文字の "_"、配列またはオブジェクトの名前を使用して付けられます。
 
-仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 詳細については、次の「例」を参照してください。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
+仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。  詳細については、次の「例」を参照してください。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
 
 [コピー ウィザード](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) を使用して、仮想テーブルを含む MongoDB データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。 また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
 
@@ -339,7 +338,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 
 次のテーブルは、例における元の配列を表す仮想テーブルを示しています。 これらのテーブルには、以下が含まれます。
 
-* 元の配列の行に対応する元のプライマリ キー列への参照 (_Id 列を使用)
+* 元の配列の行に対応する元のプライマリ キー列への参照 (_Id 列を使用) 
 * 元の配列内のデータの位置の指定
 * 配列内の各要素の展開されたデータ
 

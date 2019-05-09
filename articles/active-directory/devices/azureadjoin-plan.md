@@ -3,10 +3,10 @@ title: Azure Active Directory (Azure AD) 参加の実装を計画する方法 | 
 description: 環境内に Azure AD 参加済みデバイスを実装するために必要な手順について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
-ms.component: devices
+ms.subservice: devices
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
 ms.workload: identity
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: sandeo
-ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8b59471cd8af02513186fa4437a2249b056cc324
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310373"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518935"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -39,7 +40,7 @@ Azure AD 参加により、ユーザーの生産性とセキュリティを維�
 
 ## <a name="plan-your-implementation"></a>実装の計画
 
-ハイブリッド Azure AD の実装を計画するには、以下を理解する必要があります。
+Azure AD 参加の実装を計画するには、以下を理解する必要があります。
 
 |   |   |
 |---|---|
@@ -113,7 +114,7 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 - **Azure AD**: 追加のセットアップは不要です。
 
-[代替ログイン ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) は、Azure AD 参加済みデバイスではサポートされていません。 ユーザーが代替ログイン ID を使用する場合は、Azure AD 内でそれらのユーザーのプライマリ UPN を使用するように切り替えることを計画してください。
+Azure AD の UPN とは異なるオンプレミスの UPN は、Azure AD 参加済みデバイスでサポートされていません。 お客様のユーザーがオンプレミスの UPN を使用している場合は、Azure AD 内でプライマリ UPN を使用するように切り替えることを計画してください。
 
 
 
@@ -126,6 +127,8 @@ Azure AD 参加:
 - Windows 10 デバイスに対してのみ適用されます。 
 
 - 以前のバージョンの Windows や他のオペレーティング システムには適用されません。 Windows 7/8.1 デバイスを使用している場合は、Windows 10 にアップグレードして Azure AD 参加をデプロイする必要があります。
+
+- FIPS モードの TPM のデバイスではサポートされていません。
  
 **推奨事項:** 更新された機能を利用するために、常に最新の Windows 10 リリースを使用してください。
 
@@ -167,7 +170,7 @@ MDM ソリューションを Azure AD アプリ ギャラリーから入手で�
 
 ### <a name="cloud-based-applications"></a>クラウドベース アプリケーション
 
-Azure AD アプリ ギャラリーにアプリケーションが追加されている場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得できます。 追加の構成は不要です。 ユーザーは Edge と Chrome の両方のブラウザーで SSO を取得できます。 Chrome の場合は、[Windows 10 アカウントの拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をデプロイする必要があります。 
+Azure AD アプリ ギャラリーにアプリケーションが追加されている場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得できます。 追加の構成は不要です。 ユーザーは Microsoft Edge と Chrome の両方のブラウザーで SSO を取得できます。 Chrome の場合は、[Windows 10 アカウントの拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をデプロイする必要があります。 
 
 すべての Win32 アプリケーションが次のようになります。
 
@@ -234,8 +237,8 @@ Azure AD 参加済みデバイスにリモート デスクトップ接続を行�
  
 ||セルフサービス セットアップ|Windows Autopilot|一括登録|
 |---|---|---|---|
-|セットアップにユーザーの操作が必要|[はい]|[はい]|いいえ |
-|IT 部門の作業が必要|いいえ |可能 |[はい]|
+|セットアップにユーザーの操作が必要|はい|はい|いいえ |
+|IT 部門の作業が必要|いいえ |可能 |はい|
 |適用可能なフロー|OOBE と設定|OOBE のみ|OOBE のみ|
 |プライマリ ユーザーに対するローカル管理者権限|既定では、はい|構成可能|いいえ |
 |デバイス OEM のサポートが必要|いいえ |はい|いいえ |

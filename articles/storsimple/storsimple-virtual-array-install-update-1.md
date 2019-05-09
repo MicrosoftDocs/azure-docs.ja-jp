@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 34439268163b4da6ac45af09101f4f609de7e9ee
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013856"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 1.0 をインストールする
 
@@ -66,7 +66,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをダウンロードするには
 
-1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) に移動します。
+1. Internet Explorer を起動し、[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) に移動します。
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 

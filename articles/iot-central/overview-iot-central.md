@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8240cf5beb50ef16aa2bd03415e6bbff9a2f4250
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9fc565996797c90a6d2ac9b3851ac3408f1842c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158144"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183273"
 ---
 <!---
 Purpose of an Overview article: 

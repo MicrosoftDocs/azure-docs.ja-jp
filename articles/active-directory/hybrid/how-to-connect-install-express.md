@@ -1,25 +1,26 @@
 ---
-title: 'Azure AD Connect: 簡単設定を使用した開始 | Microsoft Docs'
+title: Azure AD Connect:簡単設定を使用した開始 | Microsoft Docs
 description: Azure AD Connect のセットアップ ウィザードをダウンロード、インストール、および実行する方法について説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: b6ce45fd-554d-4f4d-95d1-47996d561c9f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 14ed452759aa74abf5eaa2ae37a39f6172889313
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 24143f8c94a294da90be84bacfe633db0cd24f85
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233322"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205658"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>簡単設定を使用した Azure AD Connect の開始
 Azure AD Connect の**簡単設定**は、トポロジのフォレストが 1 つであり、認証に[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合に使います。 **簡単設定** は既定のオプションであり、ごく一般的なデプロイ シナリオで使用されます。 数回クリックするだけで、オンプレミスのディレクトリをクラウドに拡張できます。
@@ -62,7 +63,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 ## <a name="next-steps"></a>次の手順
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](how-to-connect-post-installation.md)ことができます。
 
-インストールの結果有効になった機能については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)、[Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
+インストールの結果有効になった機能について詳しくは、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)、[Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
 
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](how-to-connect-sync-feature-scheduler.md)に関するページを参照してください。
 

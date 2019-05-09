@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の Identity Experience Framework スキーマ
 description: Azure Active Directory B2C の Identity Experience Framework スキーマのブール値要求変換の例
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: c6e9337fb5e336c506fc43e13eeb7fdbfaf636a7
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.subservice: B2C
+ms.openlocfilehash: fea0f8c2c2bcab94202916594e66514f2ec87396
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432564"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180128"
 ---
 # <a name="boolean-claims-transformations"></a>ブール値要求変換
 
@@ -111,7 +111,7 @@ ms.locfileid: "47432564"
 - 入力要求:
     - **inputClaim**: false
     - **valueToCompareTo**: true
-- 結果: エラーがスローされます
+- 結果:エラーがスローされます
 
 ## <a name="notclaims"></a>NotClaims
 

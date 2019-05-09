@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 481340dbab6a2ae7247a53cb78b17f3353edcd00
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345500"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523615"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
 ## <a name="overview"></a>概要 ##
@@ -28,12 +28,12 @@ ms.locfileid: "53345500"
 ## <a name="receiving-an-sms-alert"></a>SMS アラートを受信する
 アクション グループの一部として構成されている SMS の受信者は、アラートがトリガーされたときに SMS を受け取ります。 SMS には、次の情報が含まれています。
 * このアラートの送信先のアクション グループの短い名前
-- アラートのタイトル
+* アラートのタイトル
 
 | 応答 | 説明 |
 | ----- | ----------- |
-| DISABLE <Action Group Short name> | そのアクション グループからのそれ以上の SMS を無効にします |
-| ENABLE <Action Group Short name> | そのアクション グループからの SMS を再度有効にします |
+| DISABLE `<Action Group Short name>` | そのアクション グループからのそれ以上の SMS を無効にします |
+| ENABLE `<Action Group Short name>` | そのアクション グループからの SMS を再度有効にします |
 | STOP | すべてのアクション グループからのそれ以上の SMS を無効にします |
 | START | すべてのアクション グループからの SMS を再度有効にします |
 | HELP | この記事へのリンクが記載された応答がユーザーに送信されます。 |
@@ -45,3 +45,4 @@ ms.locfileid: "53345500"
 [アクティビティ ログのアラートの概要](alerts-overview.md)を把握し、アラートを生成する方法について学習します  
 [SMS レートの制限](alerts-rate-limiting.md)について学習します  
 [アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細について学習します
+

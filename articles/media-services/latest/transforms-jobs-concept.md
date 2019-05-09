@@ -9,20 +9,41 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: e13afe26d06f5b5b2dcf7eddf00f9ee481312b2c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 1c2ec576211741390ef91233101261a7881e4180
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024260"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652214"
 ---
 # <a name="transforms-and-jobs"></a>Transform と Job
- 
-Azure Media Services v3 では､ビデオのエンコードや分析に利用できる､[Transforms](https://docs.microsoft.com/rest/api/media/transforms) というレシピ用のテンプレート形式の新しいワークフロー リソースが導入されています｡ **Transforms** を使用して、ビデオのエンコードや分析を行うための一般的なタスクを構成できます。 各 **Transform** は、ビデオまたはオーディオ ファイルを処理するためのレシピ､すなわちタスクのワークフローの記述です｡ 
 
-各 **Job** は、与えられた入力ビデオまたはオーディオ コンテンツに **Transform** を適用する Azuru Media Services への実際の要求です。 **ジョブ** には、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は､HTTPS URL や SAS URL､あるいは [Media Services Asset](https://docs.microsoft.com/rest/api/media/assets) を使って指定できます｡  
+このトピックでは、[Transform](https://docs.microsoft.com/rest/api/media/transforms) と [Job](https://docs.microsoft.com/rest/api/media/jobs) に関する詳細を示し、これらのエンティティ間の関係について説明します。 次の図では変換/ジョブ ワークフローを示します。
+
+![変換](./media/encoding/transforms-jobs.png)
+
+> [!NOTE]
+> Datetime 型である **Transform** および **Job** のプロパティは、常に UTC 形式です。
+
+## <a name="transforms"></a>変換
+
+**Transform** を使用して、ビデオのエンコードや分析を行うための一般的なタスクを構成できます。 各 **Transform** は、ビデオまたはオーディオ ファイルを処理するためのレシピ､すなわちタスクのワークフローの記述です｡ 1 つの Transform によって複数のルールを適用することができます｡ たとえば､1 つの Transform で各ビデオを指定されたビットレートの MP4 ファイルにエンコードして､そのビデオの先頭フレームからサムネール画像を生成するように指定できます｡ Transform に含めたいルールごとに TransformOutput エントリ 1 つを追加します｡ Transform は､Media Services v3 API を使用して､または公開されている任意の SDK を使用して､Media Services アカウントに作成することができます｡ Media Services v3 の API は Azure Resource Manager によって実行されるため、Resource Manager テンプレートを使用して、Media Services アカウントに Transforms を作成して デプロイすることもできます｡ ロールベースのアクセス制御を使用して､Transforms へのアクセスを管理することができます｡
+
+[Transform](https://docs.microsoft.com/rest/api/media/transforms) エンティティの更新操作は、基になる TransformOutput の記述または優先度を変更することを目的とします。 このような更新は、進行中のすべてのジョブが完了したときに実行することをお勧めします。 レシピを書き直す場合は､新しい Transform を作成する必要があります。
+
+## <a name="jobs"></a>[ジョブ]
+
+各 **Job** は、与えられた入力ビデオまたはオーディオ コンテンツに **Transform** を適用する Azuru Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ **ジョブ** には、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は、HTTPS URL、SAS URL、または[アセット](https://docs.microsoft.com/rest/api/media/assets)を使用して指定できます。  
+
+既に URL 経由でコンテンツにアクセスでき、ソース ファイルを Azure に格納する必要がない場合 (たとえば、S3 からインポートするなど)、[HTTPS からのジョブ入力](job-input-from-http-how-to.md)を使用します。 また、コンテンツは Azure BLOB ストレージ内にあるが、資産の中にファイルがなくてもかまわない場合にも、この方法が適しています。 現時点で、この方法では、入力として 1 ファイルのみをサポートしています。
+ 
+入力コンテンツが既に資産の中にあるか、またはコンテンツがローカル ファイルに格納されている場合は、[ジョブ入力としての資産](job-input-from-local-file-how-to.md)を使用します。 また、入力した資産をストリーミングまたはダウンロード用に公開することを計画している (つまり、ダウンロード用に mp4 を公開すると共に、音声テキスト変換や顔検出も行いたい) 場合にも、適切なオプションになります。 この方法では、複数ファイルの資産をサポートします (たとえば、ローカルにエンコードされた MBR ストリーミング セットなど)。
+ 
+ジョブの進捗状況と状態は､Event Grid でイベントを監視することによって取得できます｡ 詳しくは､｢[EventGrid を使ってイベントを監視する](job-state-events-cli-how-to.md)｣を参照してください｡
+
+ジョブが送信された後、[Job](https://docs.microsoft.com/rest/api/media/jobs) エンティティの更新操作を使用して、*description* および *priority* プロパティを変更できます。 *priority* プロパティの変更は、ジョブがキューに入っている状態の場合にのみ有効です。 ジョブの処理がすでに開始されているか､完了している場合､優先順位の変更は適用されません｡
 
 ## <a name="typical-workflow"></a>一般的なワークフロー
 
@@ -30,6 +51,8 @@ Azure Media Services v3 では､ビデオのエンコードや分析に利用�
 2. その Transform に基づいて Job を送信します。 
 3. Transform を一覧表示します。 
 4. 将来利用する予定のない Transform は削除してください｡ 
+
+### <a name="example"></a>例
 
 すべてのビデオの最初のフレームをサムネイル画像として抽出するとします。実行する手順は次のようになります。 
 
@@ -40,100 +63,21 @@ Azure Media Services v3 では､ビデオのエンコードや分析に利用�
 
 **Transform** でレシピを 1 回作成すると (手順 1)､そのレシピを使って複数のジョブを送信することができます (手順 2)｡
 
-## <a name="transforms"></a>変換
+## <a name="job-error-codes"></a>ジョブ エラー コード
 
-Transform は､v3 の API を直接使用して､あるいは公開されている任意の SDK を使用して､Media Services アカウントに作成することができます｡ Media Services v3 の API は Azure Resource Manager によって実行されるため、Resource Manager テンプレートを使用して、Media Services アカウントに Transforms を作成して デプロイすることもできます｡ ロールベースのアクセス制御を使用して､Transforms へのアクセスを管理することができます｡
+[エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
-### <a name="transform-definition"></a>変換定義
+## <a name="paging"></a>ページング
 
-次の表は、変換のプロパティとその定義を示しています。
+「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
 
-|Name|説明|
-|---|---|
-|ID|リソースの完全修飾リソース ID。|
-|name|リソースの名前。|
-|properties.created |変換の作成時の UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
-|properties.description |変換の省略可能な詳細説明。|
-|properties.lastModified |変換が最後に更新されたときの UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
-|properties.outputs |変換を生成する必要のある 1 つ以上の TransformOutput の配列。|
-|type|リソースの種類。|
+## <a name="configure-media-reserved-units"></a>メディア占有ユニットを構成する
 
-完全な定義については、「[Transforms](https://docs.microsoft.com/rest/api/media/transforms)」(変換) をご覧ください。
+Media Services v3 または Video Indexer によってトリガーされる音声分析と動画分析ジョブでは、お使いのアカウントを 10 個の S3 のメディア占有ユニット (MRU) でプロビジョニングすることを強くお勧めします。 10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
 
-上記のように､Transform を使用して､ビデオを処理する際のレシピまたはルールを作成することができます｡ 1 つの Transform によって複数のルールを適用することができます｡ たとえば､1 つの Transform で各ビデオを指定されたビットレートの MP4 ファイルにエンコードして､そのビデオの先頭フレームからサムネール画像を生成するように指定できます｡ Transform に含めたいルールごとに TransformOutput エントリ 1 つを追加します｡
-
-> [!NOTE]
-> Transforms の定義は Update 操作をサポートしていますが､変更する場合は､事前に処理中のすべてのジョブが完了していることを確認してください｡ 一般に既存の Transform を更新するのは､その記述を変更したり､土台の TransformOutput の優先順位を変更したりしたい場合です｡ レシピを書き直したい場合は､新しい Transform を作成します｡
-
-## <a name="jobs"></a>[ジョブ]
-
-Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信することができます｡ ジョブの進捗状況と状態は､Event Grid でイベントを監視することによって取得できます｡ 詳しくは､｢[EventGrid を使ってイベントを監視する](job-state-events-cli-how-to.md )｣を参照してください｡
-
-### <a name="jobs-definition"></a>ジョブの定義
-
-次の表は、ジョブのプロパティとその定義を示しています。
-
-|Name|説明|
-|---|---|
-|id|リソースの完全修飾リソース ID。|
-|name   |リソースの名前。|
-|properties.correlationData |顧客指定の関連付けデータで (変更不可)､ジョブおよびJobOutput の状態変更の通知の一部として返されます｡ 詳細は、[イベント スキーマ](media-services-event-schemas.md)を参照してください｡<br/><br/>プロパティは､マルチテナントでの Media Services の使用にも利用できます｡ ジョブにはテナント ID を入力できます｡ |
-|properties.created |ジョブを作成した UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式。|
-|properties.description |ジョブに関する顧客指定の説明 (省略可能)｡|
-|properties.input|ジョブに対する入力｡|
-|properties.lastModified    |ジョブが最後に更新された UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式。|
-|properties.outputs|ジョブの出力。|
-|properties.priority    |ジョブの処理の優先順位。 優先順位が高いジョブは、優先順位が低いジョブより前に処理されます。 設定されていない場合、既定値は normal です。|
-|properties.state   |ジョブの現在の状態。|
-|type   |リソースの種類。|
-
-完全な定義については、「[Jobs](https://docs.microsoft.com/rest/api/media/jobs)」(ジョブ) をご覧ください。
-
-> [!NOTE]
-> ジョブの定義は Update 操作をサポートしていますが､ジョブの送信後に変更できるプロパティは説明と優先順位だけです｡ また､優先順位の変更は､そのジョブがキュー状態にある場合にのみ有効です｡ ジョブの処理がすでに開始されているか､完了している場合､優先順位の変更は適用されません｡
-
-### <a name="pagination"></a>改ページ位置の自動修正
-
-Media Services v3 では､Jobs の改ページ位置を変更できます｡
-
-> [!TIP]
-> 常に次のリンクを使用してコレクションを列挙する必要があります。特定のページ サイズに依存しないでください。
-
-クエリ応答に多数の項目が含まれている場合、サービスは "\@odata.nextLink" プロパティを返して結果の次のページを取得します。 この方法を利用して、結果セット全体のページングを実行できます。 ページ サイズを構成することはできません。 
-
-コレクションのページング中にジョブが作成または削除された場合、その変更は返される結果に反映されます (コレクション内の、ダウンロードされていない部分に対する変更の場合)。 
-
-次の C# 例は、アカウント内のすべてのジョブを列挙する方法を示しています。
-
-```csharp            
-List<string> jobsToDelete = new List<string>();
-var pageOfJobs = client.Jobs.List(config.ResourceGroup, config.AccountName, "Encode");
-
-bool exit;
-do
-{
-    foreach (Job j in pageOfJobs)
-    {
-        jobsToDelete.Add(j.Name);
-    }
-
-    if (pageOfJobs.NextPageLink != null)
-    {
-        pageOfJobs = client.Jobs.ListNext(pageOfJobs.NextPageLink);
-        exit = false;
-    }
-    else
-    {
-        exit = true;
-    }
-}
-while (!exit);
-
-```
-
-REST の例については､[Jobs - List](https://docs.microsoft.com/rest/api/media/jobs/list) を参照してください｡
-
+詳細については、「[CLI を使用したメディア処理のスケーリング](media-reserved-units-cli-how-to.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-[ビデオ ファイルのストリーミング](stream-files-dotnet-quickstart.md)
+- [チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
+- [チュートリアル:.NET を使用して Media Services v3 でビデオを分析する](analyze-videos-tutorial-with-api.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9369e076517e295a7d17011e024353614ec8ad46
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320797"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751975"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>エンリッチメント パイプラインにスキルセットを作成する方法
 
@@ -142,11 +142,11 @@ Content-Type: application/json
 
 ## <a name="add-predefined-skills"></a>定義済みのスキルを追加する
 
-最初のスキルを見てみましょう。これは、定義済みの[名前付きエンティティ認識スキル](cognitive-search-skill-named-entity-recognition.md)です。
+最初のスキルを見てみましょう。これは、定義済みの[エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)です。
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -155,7 +155,8 @@ Content-Type: application/json
           "name": "text",
           "source": "/document/content"
         }
-      ],      "outputs": [
+      ],
+      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -228,7 +229,7 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
     }
 ```
 
-この定義は、エンリッチメント プロセスの一環として Web API を呼び出すカスタム スキルです。 名前付きエンティティ認識によって識別される組織ごとに、このスキルでは、Web API を呼び出して、その組織の説明を検索します。 Web API を呼び出すタイミングと受信した情報を送る方法のオーケストレーションは、エンリッチメント エンジンによって内部的に処理されます。 ただし、このカスタム API を呼び出すために必要な初期化は、JSON (URI、httpHeaders、想定される入力など) で提供する必要があります。 エンリッチメント パイプライン用にカスタム Web API を作成する際のガイダンスについては、[カスタム インターフェイスを定義する方法](cognitive-search-custom-skill-interface.md)に関するページを参照してください。
+この定義は、エンリッチメント プロセスの一環として Web API を呼び出す[カスタム スキル](cognitive-search-custom-skill-web-api.md)です。 名前付きエンティティ認識によって識別される組織ごとに、このスキルでは、Web API を呼び出して、その組織の説明を検索します。 Web API を呼び出すタイミングと受信した情報を送る方法のオーケストレーションは、エンリッチメント エンジンによって内部的に処理されます。 ただし、このカスタム API を呼び出すために必要な初期化は、JSON (URI、httpHeaders、想定される入力など) で提供する必要があります。 エンリッチメント パイプライン用にカスタム Web API を作成する際のガイダンスについては、[カスタム インターフェイスを定義する方法](cognitive-search-custom-skill-interface.md)に関するページを参照してください。
 
 "context" フィールドが、アスタリスク付きで ```"/document/organizations/*"``` に設定されていることに注目してください。これは、エンリッチメント ステップが```"/document/organizations"``` の下にある組織 "*ごと*" に呼び出されることを意味します。 
 

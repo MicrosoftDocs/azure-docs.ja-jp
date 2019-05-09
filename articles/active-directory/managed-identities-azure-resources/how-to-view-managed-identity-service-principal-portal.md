@@ -3,23 +3,24 @@ title: Azure portal でマネージド ID のサービス プリンシパルを�
 description: Azure portal でマネージド ID のサービス プリンシパルを表示するための段階的手順。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
-ms.author: daveba
-ms.openlocfilehash: c61220242a5a2ff84204c84b11aa132d00279e49
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5f6139062c4d302284cc653606ae838206d3691a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726597"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444998"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Azure portal でマネージド ID のサービス プリンシパルを表示する
 

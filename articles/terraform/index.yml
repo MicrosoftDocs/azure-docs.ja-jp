@@ -1,17 +1,17 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 802e7e3c7c06c5027e0ff6ba384d1438d0edf010
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8ca48ec812c2c9ea4b6aac814c77f0554bd9ae0a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076146"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765700"
 documentType: LandingData
 title: Azure 上の Terraform のドキュメント
 metadata:
   title: Azure 上の Terraform のドキュメント - チュートリアル、サンプル、リファレンス、リソース
   description: Terraform を使用して、Azure 上の仮想マシンやその他のインフラストラクチャを確実にプロビジョニングする方法について説明します。
   services: terraform
-  ms.service: terraform
+  ms.service: azure
   keywords: Terraform, Azure, DevOps, チュートリアル, サンプル, リファレンス
   author: tomarchermsft
   manager: jeconnoc
@@ -43,12 +43,13 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">AKS と Terraform を使用して Kubernetes クラスターを作成する</a>。
+    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">AKS を使用して Kubernetes クラスターを作成する</a>
+    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-aks-applicationgateway-ingress">AKS を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する</a>
     - html: <a href="/azure/terraform/terraform-vm-msi">Azure Marketplace イメージを使用して、MSI 認証が有効な Terraform VM を作成する</a>。
     - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">Azure Terraform モジュールを使用して負荷分散 VM クラスターを作成する</a>
     - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">Azure Cloud Shell に負荷分散 VM クラスターを作成する</a>
     - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">ネットワークとストレージで VM スケール セットを構成する</a>
-    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">Packer カスタム イメージから VM スケール セットをプロビジョニングする。</a>
+    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">Packer カスタム イメージから VM スケール セットをプロビジョニングする</a>
 - title: サンプル
   items:
   - type: paragraph

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 352444dcb3beace0e1618aadba50b56cdcd9d003
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 951cf377c7e33dd3dd5e13a7b42fa05bec06245d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012371"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
 
@@ -27,6 +27,8 @@ Azure Database for MySQL は、Microsoft クラウドにおける、MySQL Commun
 > * データのクエリを実行する
 > * データの更新
 > * データの復元
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 このチュートリアルのコード ブロックを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに [Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
 
@@ -51,13 +53,13 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 az mysql server create コマンドを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
-次の例は、`westus` にあるリソース グループ `myresourcegroup` に、`mydemoserver` という名前の Azure Database for MySQL サーバーを作成します。 サーバーの管理者ログインの名前は `myadmin` です。 これは、2 つの仮想コアを備えた汎用 Gen 4 サーバーです。 `<server_admin_password>` は独自の値に置き換えます。
+次の例は、`westus` にあるリソース グループ `myresourcegroup` に、`mydemoserver` という名前の Azure Database for MySQL サーバーを作成します。 サーバーの管理者ログインの名前は `myadmin` です。 これは、2 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 `<server_admin_password>` は独自の値に置き換えます。
 
 ```azurecli-interactive
-az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 5.7
+az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 sku-name パラメーターの値は、次の例のように、{価格レベル}\_{コンピューティング世代}\_{仮想コア数} という規約に従います。
-+ `--sku-name B_Gen4_4` は、"Basic、Gen 4、および 4 個の仮想コア" にマップされます。
++ `--sku-name B_Gen5_2` は、"Basic、Gen 5、および 2 個の仮想コア" にマップされます。
 + `--sku-name GP_Gen5_32` は、"汎用、Gen 5、および 32 個の仮想コア" にマップされます。
 + `--sku-name MO_Gen5_2` は、"メモリ最適化、Gen 5、および 2 個の仮想コア" にマップされます。
 
@@ -95,8 +97,8 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
   "resourceGroup": "myresourcegroup",
  "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -182,6 +184,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 ```
 
 `az mysql server restore` コマンドには、次のパラメーターが必要です。
+
 | Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 5de707f3f2e6a82d880363eea91fb8ce644fb3aa
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 0146f6ca610a25e57771fb21436a70acbdd5a5ef
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055047"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481384"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ
  
@@ -92,9 +92,9 @@ ms.locfileid: "47055047"
 2. 選択した分析ストアに合わせて、スクリプト内の $DemoScenario 変数を設定します。 学習目的のため、列ストアなしの SQL データベースの使用をお勧めします。
     - 列ストアを使用せずに SQL データベースを使用するには、**$DemoScenario** = **2** と設定します。
     - 列ストアを使用して SQL データベースを使用するには、**$DemoScenario** = **3** と設定します。  
-3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト (*Deploy-TenantAnalytics<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
+3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト (*Deploy-TenantAnalytics\<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
 
-アプリケーションをデプロイし、対象のテナント データを入力しました。次に、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、**tenants1-mt-\<User\>** サーバーと **catalog-mt-\<User\>** サーバーを接続します。[ログイン] には *developer*、[パスワード] には *P@ssword1* を使用します。
+アプリケーションをデプロイし、対象のテナント データを入力しました。次に、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、**tenants1-mt-\<User\>** サーバーと **catalog-mt-\<User\>** サーバーを接続します。ログイン名として「*developer*」、パスワードとして「*P\@ssword1*」を使用します。
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -121,7 +121,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 1. SSMS で、catalog-mt-\<User\> の **jobaccount** データベースに接続します。
 2. SSMS で *…\Learning Modules\Operational Analytics\Tenant Analytics\TargetGroups.sql* を開きます。 
-3. スクリプトの先頭の @User 変数を変更し、<User> を Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイ時に使用したユーザー値に置き換えます。
+3. スクリプトの先頭の @User 変数を変更し、`<User>` を Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイ時に使用したユーザー値に置き換えます。
 4. **F5** キーを押してスクリプトを実行し、2 つのターゲット グループを作成します。
 
 ### <a name="extract-raw-data-from-all-tenants"></a>すべてのテナントから生データを抽出する
@@ -135,7 +135,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 1. SSMS で、catalog-mt-\<User\> サーバーの **jobaccount** データベースに接続します。
 2. SSMS で *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql* を開きます。
-3. スクリプトの先頭の @User を変更し、<User> を Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイ時に使用したユーザー名に置き換えます。 
+3. スクリプトの先頭の @User を変更し、`<User>` を Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイ時に使用したユーザー名に置き換えます。 
 4. **F5** キーを押してスクリプトを実行します。このスクリプトにより、各テナント データベースからチケット データと顧客データを抽出するジョブが作成され、実行されます。 このジョブはデータを分析ストアに保存します。
 5. tenantanalytics データベースの TicketsRawData テーブルを照会して、テーブルにすべてのテナントのチケット情報が設定されていることを確認します。
 
@@ -170,13 +170,13 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 次の手順に従って、Power BI に接続し、以前に作成したビューをインポートします。
 
 1. Power BI Desktop を起動します。
-2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]** を選択します。
+2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]**  を選択します。
 3. **[データを取得]** ウィンドウで、Azure SQL Database を選択します。
 4. データベース ログイン ウィンドウで、サーバー名 (catalog-mt-\<User\>.database.windows.net) を入力します。 **[データ接続モード]** の **[インポート]** を選択し、[OK] をクリックします。 
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として *developer*、パスワードとして *P@ssword1* を入力します。 **[接続]** をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[接続]** をクリックします。  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 

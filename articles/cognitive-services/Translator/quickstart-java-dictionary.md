@@ -1,352 +1,240 @@
 ---
-title: 'クイック スタート: 翻訳の代替候補を探す、Java - Translator Text API'
+title: クイック スタート:2 か国語辞書で単語を検索する、Java - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Translator Text API と Java を使って、文脈中における用語の例と翻訳の代替候補を探します。
+description: このクイック スタートでは、Java と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 4d828161408a06175c917affb0eef9290b575051
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5c2f85e6417c3185df58e757f9831ef171e39add
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416666"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181896"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-java"></a>クイック スタート: Translator Text REST API を使用して翻訳の代替候補を探す (Java)
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>クイック スタート:Java を使用して 2 か国語辞書で単語を検索する
 
-このクイック スタートでは、Translator Text API を使って、特定の用語の翻訳について考えられる代替候補の情報とそれらの代替候補の用例を探します。
+このクイック スタートでは、Java と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
+
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してください。ただしテキスト エディターでも問題ありません。
+* [JDK 7 以降](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](https://gradle.org/install/)
+* Translator Text の Azure サブスクリプション キー
 
-Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
+## <a name="initialize-a-project-with-gradle"></a>Gradle を使用してプロジェクトを初期化する
 
-## <a name="dictionary-lookup-request"></a>辞書検索要求
+まずは、このプロジェクトの作業ディレクトリを作成しましょう。 コマンド ライン (またはターミナル) から、次のコマンドを実行します。
 
-以下のコードは、[Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) メソッドを使って、単語の翻訳の代替候補を取得します。
+```console
+mkdir alt-translation-sample
+cd alt-translation-sample
+```
 
-1. 任意のコード エディターで新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+次に、Gradle プロジェクトを初期化します。 次のコマンドを実行すると、Gradle の重要なビルド ファイルが作成されます。特に重要なのは `build.gradle.kts` です。これは、アプリケーションを作成して構成するために、実行時に使用されます。 作業ディレクトリから次のコマンドを実行します。
+
+```console
+gradle init --type basic
+```
+
+**DSL** を選択するよう求められたら、**Kotlin** を選択します。
+
+## <a name="configure-the-build-file"></a>ビルド ファイルを構成する
+
+`build.gradle.kts` の場所を特定し、好みの IDE またはテキスト エディターで開きます。 その後、次のビルド構成をコピーします。
+
+```
+plugins {
+    java
+    application
+}
+application {
+    mainClassName = "AltTranslation"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile("com.squareup.okhttp:okhttp:2.5.0")
+    compile("com.google.code.gson:gson:2.8.5")
+}
+```
+
+このサンプルでは、HTTP 要求の処理に OkHttp を使用し、JSON の処理と解析に Gson を使用していることに注意してください。 ビルド構成について詳しくは、「[Creating New Gradle Builds](https://guides.gradle.org/creating-new-gradle-builds/)」(新しい Gradle ビルドの作成) をご覧ください。
+
+## <a name="create-a-java-file"></a>Java ファイルを作成する
+
+サンプル アプリ用のフォルダーを作成しましょう。 作業ディレクトリから、次のコマンドを実行します。
+
+```console
+mkdir -p src\main\java
+```
+
+次に、このフォルダー内に `AltTranslation.java` というファイルを作成します。
+
+## <a name="import-required-libraries"></a>必要なライブラリをインポートする
+
+`AltTranslation.java` を開き、次のインポート ステートメントを追加します。
 
 ```java
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+import com.google.gson.*;
+import com.squareup.okhttp.*;
+```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-/* NOTE: To compile and run this code:
-1. Save this file as DictionaryLookup.java.
-2. Run:
-    javac DictionaryLookup.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar DictionaryLookup
-*/
+## <a name="define-variables"></a>変数の定義
 
-public class DictionaryLookup {
+まず、プロジェクトのパブリック クラスを作成する必要があります。
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+```java
+public class AltTranslation {
+  // All project code goes here...
+}
+```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+次の行を `AltTranslation` クラスに追加します。 `url` には、`api-version` と共に別途 2 つのパラメーターが追加されていることがわかります。 翻訳の入力と出力は、これらのパラメーターを使用して設定します。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) です。
 
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/dictionary/lookup?api-version=3.0";
+```java
+String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+String url = "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es";
+```
 
-    static String params = "&from=en&to=fr";
+## <a name="create-a-client-and-build-a-request"></a>クライアントを作成して要求をビルドする
 
-    static String text = "great";
+次の行を `AltTranslation` クラスに追加して、`OkHttpClient` をインスタンス化します。
 
-    public static class RequestBody {
-        String Text;
+```java
+// Instantiates the OkHttpClient.
+OkHttpClient client = new OkHttpClient();
+```
 
-        public RequestBody(String text) {
-            this.Text = text;
-        }
-    }
+次に、POST 要求をビルドしましょう。 翻訳するテキストは変更してかまいません。
 
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setRequestProperty("X-ClientTraceId", java.util.UUID.randomUUID().toString());
-        connection.setDoOutput(true);
+```java
+// This function performs a POST request.
+public String Post() throws IOException {
+    MediaType mediaType = MediaType.parse("application/json");
+    RequestBody body = RequestBody.create(mediaType,
+            "[{\n\t\"Text\": \"Pineapples\"\n}]");
+    Request request = new Request.Builder()
+            .url(url).post(body)
+            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+            .addHeader("Content-type", "application/json").build();
+    Response response = client.newCall(request).execute();
+    return response.body().string();
+}
+```
 
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
+## <a name="create-a-function-to-parse-the-response"></a>応答を解析するための関数を作成する
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+このシンプルな関数は、Translator Text サービスからの JSON 応答を解析し、整形するものです。
 
-        return response.toString();
-    }
+```java
+// This function prettifies the json response.
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonElement json = parser.parse(json_text);
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
-    public static String DictionaryLookup () throws Exception {
-        URL url = new URL (host + path + params);
+## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-        List<RequestBody> objList = new ArrayList<RequestBody>();
-        objList.add(new RequestBody(text));
-        String content = new Gson().toJson(objList);
+最後に、要求を実行して応答を取得します。 次の行をプロジェクトに追加します。
 
-        return Post(url, content);
-    }
-
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = DictionaryLookup ();
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
+```java
+public static void main(String[] args) {
+    try {
+        AltTranslation altTranslationRequest = new AltTranslation();
+        String response = altTranslationRequest.Post();
+        System.out.println(prettify(response));
+    } catch (Exception e) {
+        System.out.println(e);
     }
 }
 ```
 
-## <a name="dictionary-lookup-response"></a>辞書検索応答
+## <a name="run-the-sample-app"></a>サンプル アプリを実行する
 
-成功した応答は、次の例に示すように JSON で返されます。
+以上で、サンプル アプリを実行する準備が整いました。 コマンド ライン (またはターミナル セッション) で作業ディレクトリのルートに移動して、次のコマンドを実行します。
+
+```console
+gradle build
+```
+
+ビルドが完了したら、次のコマンドを実行します。
+
+```console
+gradle run
+```
+
+## <a name="sample-response"></a>応答のサンプル
 
 ```json
 [
   {
-    "normalizedSource": "great",
-    "displaySource": "great",
+    "normalizedSource": "pineapples",
+    "displaySource": "pineapples",
     "translations": [
       {
-        "normalizedTarget": "grand",
-        "displayTarget": "grand",
-        "posTag": "ADJ",
-        "confidence": 0.2783,
+        "normalizedTarget": "piñas",
+        "displayTarget": "piñas",
+        "posTag": "NOUN",
+        "confidence": 0.7016,
         "prefixWord": "",
         "backTranslations": [
           {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 34358
+            "normalizedText": "pineapples",
+            "displayText": "pineapples",
+            "numExamples": 5,
+            "frequencyCount": 158
           },
           {
-            "normalizedText": "big",
-            "displayText": "big",
-            "numExamples": 15,
-            "frequencyCount": 21770
+            "normalizedText": "cones",
+            "displayText": "cones",
+            "numExamples": 5,
+            "frequencyCount": 13
           },
-...
+          {
+            "normalizedText": "piña",
+            "displayText": "piña",
+            "numExamples": 3,
+            "frequencyCount": 5
+          },
+          {
+            "normalizedText": "ganks",
+            "displayText": "ganks",
+            "numExamples": 2,
+            "frequencyCount": 3
+          }
         ]
       },
       {
-        "normalizedTarget": "super",
-        "displayTarget": "super",
-        "posTag": "ADJ",
-        "confidence": 0.1514,
+        "normalizedTarget": "ananás",
+        "displayTarget": "ananás",
+        "posTag": "NOUN",
+        "confidence": 0.2984,
         "prefixWord": "",
         "backTranslations": [
           {
-            "normalizedText": "super",
-            "displayText": "super",
-            "numExamples": 15,
-            "frequencyCount": 12023
-          },
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 10931
-          },
-...
+            "normalizedText": "pineapples",
+            "displayText": "pineapples",
+            "numExamples": 2,
+            "frequencyCount": 16
+          }
         ]
-      },
-...
-    ]
-  }
-]
-```
-
-## <a name="dictionary-examples-request"></a>辞書の例の要求
-
-以下のコードは、辞書に登録されている用語について、文脈中におけるその使い方の例を [Dictionary Examples](./reference/v3-0-dictionary-examples.md) メソッドを使って取得します。
-
-1. 任意のコード エディターで新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
-
-```java
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
-
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-/* NOTE: To compile and run this code:
-1. Save this file as DictionaryExamples.java.
-2. Run:
-    javac DictionaryExamples.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar DictionaryExamples
-*/
-
-public class DictionaryExamples {
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
-
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/dictionary/examples?api-version=3.0";
-
-    static String params = "&from=en&to=fr";
-
-    static String text = "great";
-    static String translation = "formidable";
-
-    public static class RequestBody {
-        String Text;
-        String Translation;
-
-        public RequestBody(String text, String translation) {
-            this.Text = text;
-            this.Translation = translation;
-        }
-    }
-
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setRequestProperty("X-ClientTraceId", java.util.UUID.randomUUID().toString());
-        connection.setDoOutput(true);
-
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
-
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
-
-        return response.toString();
-    }
-
-    public static String DictionaryExamples () throws Exception {
-        URL url = new URL (host + path + params);
-
-        List<RequestBody> objList = new ArrayList<RequestBody>();
-        objList.add(new RequestBody(text, translation));
-        String content = new Gson().toJson(objList);
-
-        return Post(url, content);
-    }
-
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = DictionaryExamples ();
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
-    }
-}
-```
-
-## <a name="dictionary-examples-response"></a>辞書の例の応答
-
-成功した応答は、次の例に示すように JSON で返されます。
-
-```json
-[
-  {
-    "normalizedSource": "great",
-    "normalizedTarget": "formidable",
-    "examples": [
-      {
-        "sourcePrefix": "You have a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " expression there.",
-        "targetPrefix": "Vous avez une expression ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-      {
-        "sourcePrefix": "You played a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " game today.",
-        "targetPrefix": "Vous avez été ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-...
+      }
     ]
   }
 ]
@@ -358,3 +246,11 @@ public class DictionaryExamples {
 
 > [!div class="nextstepaction"]
 > [GitHub で Java のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=java)
+
+## <a name="see-also"></a>関連項目
+
+* [テキストを翻訳する](quickstart-java-translate.md)
+* [テキストを表記変換する](quickstart-java-transliterate.md)
+* [入力によって言語を識別する](quickstart-java-detect.md)
+* [サポートされている言語の一覧を取得する](quickstart-java-languages.md)
+* [入力から文章の長さを判定する](quickstart-java-sentences.md)

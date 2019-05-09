@@ -3,22 +3,23 @@ title: パスワードのリセット - Azure Active Directory | Microsoft Docs
 description: セルフサービスによるパスワードのリセットを使用して職場または学校のユーザー アカウントへのアクセスを回復する
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: 05a4961938f8a4f7d14c9dbf5041a2d02257b476
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d16b54df5b8392a294036978e0b917ecdb3ce1ca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106681"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184246"
 ---
 # <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
 

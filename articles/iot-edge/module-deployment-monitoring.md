@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100108"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107816"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動デプロイについて
 
@@ -32,7 +32,7 @@ Azure IoT Edge では、IoT Edge デバイスで実行するモジュールを�
 2. IoT Hub サービスが、すべてのターゲット デバイスと通信し、それらを目的のモジュールで構成します。 
 3. IoT Hub サービスでは、IoT Edge デバイスからステータスを取得し、オペレーターが利用可能になるようにします。  たとえば、オペレーターは Edge デバイスが正常に構成されているかどうかや、実行時にモジュールでエラーが発生していないかかどうかを確認することができます。 
 4. ターゲット条件を満たしている新しい IoT Edge デバイスは、随時デプロイ用に構成されます。 たとえば、ワシントン州にあるすべての IoT Edge デバイスがデプロイのターゲットである場合は、新しい IoT Edge デバイスがプロビジョニングされてワシントン州のデバイス グループに追加されると、そのデバイスが自動的に構成されます。 
- 
+ 
 この記事では、デプロイの構成と監視に関係する各コンポーネントについて説明します。 デプロイの作成と更新に関するチュートリアルについては、[IoT Edge モジュールの大規模なデプロイと監視](how-to-deploy-monitor.md)に関するページを参照してください。
 
 ## <a name="deployment"></a>Deployment
@@ -62,7 +62,7 @@ IoT Edge の自動デプロイでは、実行する IoT Edge モジュール イ
 
 ### <a name="target-condition"></a>ターゲット条件
 
-ターゲット条件は、展開の有効期間を通じて継続的に評価されます。 要件を満たす新たなあらゆるデバイスが含まれ、要件を満たさない既存のあらゆるデバイスは削除されます。 サービスがターゲット条件の変化を検出した場合、展開が再アクティブ化されます。 
+ターゲット条件は、デプロイの有効期間を通じて継続的に評価されます。 要件を満たす新たなあらゆるデバイスが含まれ、要件を満たさない既存のあらゆるデバイスは削除されます。 サービスがターゲット条件の変化を検出した場合、展開が再アクティブ化されます。 
 
 たとえば、ターゲット条件が tags.environment = 'prod' であるデプロイ A があるとします。 デプロイの開始時には、10 個の運用環境デバイスが存在します。 モジュールは、これら 10 個のデバイスに正常にインストールされます。 IoT Edge エージェントの状態には、合計デバイス数 10、正常応答数 10、異常応答数 0、保留中応答数 0 と表示されます。 次に、tags.environment = 'prod' を設定したデバイスを 5 個追加します。 サービスは変更を検出し、5 個の新しいデバイスをデプロイを試みると、IoT Edge エージェントの状態は、合計デバイス数 15、正常応答数 10、異常応答数 0、保留中応答数 5 と表示されます。
 

@@ -6,16 +6,17 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341822"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076192"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Bing Speech の WebSocket プロトコル
 
@@ -91,7 +92,7 @@ Content-Length: 0
 
 ### <a name="http-redirection"></a>HTTP リダイレクト
 
-クライアントは、[HTTP プロトコル仕様](http://www.w3.org/Protocols/rfc2616/rfc2616.html)で規定された、標準のリダイレクト メカニズムをサポートしている*必要があります*。
+クライアントは、[HTTP プロトコル仕様](https://www.w3.org/Protocols/rfc2616/rfc2616.html)で規定された、標準のリダイレクト メカニズムをサポートしている*必要があります*。
 
 ### <a name="speech-endpoints"></a>音声認識エンドポイント
 
@@ -99,9 +100,9 @@ Content-Length: 0
 
 | Mode | Path | サービス URI |
 | -----|-----|-----|
-| Interactive | /speech/recognition/interactive/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| 会話 | /speech/recognition/conversation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
-| ディクテーション | /speech/recognition/dictation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
+| Interactive | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| 会話 | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
+| ディクテーション | /speech/recognition/dictation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
 詳しくは、 「[サービス URI](../GetStarted/GetStartedREST.md#service-uri)」をご覧ください。
 
@@ -131,13 +132,13 @@ Content-Length: 0
 
 ### <a name="binary-websocket-messages"></a>バイナリ WebSocket メッセージ
 
-バイナリ WebSocket メッセージは、バイナリのペイロードを伝達します。 Speech Service プロトコルでは、サービスとの間での音声の送受信は、バイナリ WebSocket メッセージを使用して行われます。 その他のメッセージはすべて、テキスト WebSocket メッセージになります。 
+バイナリ WebSocket メッセージは、バイナリのペイロードを伝達します。 Speech Service プロトコルでは、サービスとの間での音声の送受信は、バイナリ WebSocket メッセージを使用して行われます。 その他のメッセージはすべて、テキスト WebSocket メッセージになります。
 
 テキスト WebSocket メッセージと同様、バイナリ WebSocket メッセージはヘッダーと本文のセクションで構成されます。 バイナリ WebSocket メッセージの最初の 2 バイトは、ヘッダー セクションのサイズを 16 ビット整数で示します ([ビッグ エンディアン](https://en.wikipedia.org/wiki/Endianness)順)。 ヘッダー セクションの最小サイズは 0 バイトです。 最大サイズは、8,192 バイトです。 バイナリ WebSocket メッセージのヘッダーに含めるテキストには、[US-ASCII](https://tools.ietf.org/html/rfc20) エンコードを使用する*必要があります*。
 
 バイナリ WebSocket メッセージのヘッダーは、テキスト WebSocket メッセージと同じ形式でエンコードされます。 *名前:値*形式は、シングル キャリッジ リターンの改行ペアで区切られます。 バイナリ WebSocket メッセージでは、ヘッダー *Path* でメッセージのパスを指定する必要があります。 このヘッダーの値は、このドキュメントで後述する、音声認識プロトコル メッセージのいずれかの種類である必要があります。
 
-Speech Service プロトコルでは、テキストとバイナリの両方の WebSocket メッセージが使用されます。 
+Speech Service プロトコルでは、テキストとバイナリの両方の WebSocket メッセージが使用されます。
 
 ## <a name="client-originated-messages"></a>クライアント発のメッセージ
 
@@ -187,7 +188,7 @@ Speech Service では、最善の音声認識機能を提供するため、お�
 Speech Service プロトコル内のすべてのクライアント発メッセージと同様、`speech.config` メッセージには、*X-Timestamp* ヘッダーを含める*必要があります*。 このヘッダーは、メッセージがサービスに送信された、クライアント UTC クロック時刻を記録するものです。 `speech.config` メッセージは特定の音声認識要求には関連付けられて*いない*ので、*X-RequestId* ヘッダーは必要ありません。
 
 #### <a name="message-payload"></a>メッセージ ペイロード
-`speech.config` メッセージのペイロードは、アプリケーションに関する情報を含んだ JSON 構造体です。 次の例は、この情報を示したものです。 クライアントとデバイスのコンテキスト情報は、JSON 構造体の *context* 要素に含まれています。 
+`speech.config` メッセージのペイロードは、アプリケーションに関する情報を含んだ JSON 構造体です。 次の例は、この情報を示したものです。 クライアントとデバイスのコンテキスト情報は、JSON 構造体の *context* 要素に含まれています。
 
 ```JSON
 {
@@ -508,7 +509,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | フィールド | 説明 | 使用法 |
 | ----- | ----------- | ----- |
 | Name | `Connection` | 必須 |
-| ID | この接続要求の *X-ConnectionId* ヘッダーに使用された接続識別子の値 | 必須 |
+| Id | この接続要求の *X-ConnectionId* ヘッダーに使用された接続識別子の値 | 必須 |
 | start | クライアントが接続要求を送信した時刻 | 必須 |
 | End | 接続が正常に確立されたという通知をクライアントが受信した時刻 (エラーが発生した場合は、接続が拒否された時刻や失敗した時刻) | 必須 |
 | Error | 発生したエラーの説明 (発生した場合)。 接続に成功した場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |
@@ -527,7 +528,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | ServerUnavailable | WebSocket アップグレード要求でサービスが HTTP `503 Server Unavailable` ステータス コードを返したため、クライアントがサービスに接続できなかった。 |
 | ServerError | WebSocket アップグレード要求でサービスが `HTTP 500` 内部エラー ステータス コードを返したため、クライアントがサービスに接続できなかった。 |
 | タイムアウト | サービスが応答する前に、クライアントの接続要求がタイムアウトした。 *End* フィールドには、クライアントがタイムアウトし、接続の待機を停止した時刻が記録されます。 |
-| ClientError | 何らかの内部クライアント エラーにより、クライアントが接続を終了した。 | 
+| ClientError | 何らかの内部クライアント エラーにより、クライアントが接続を終了した。 |
 
 ### <a name="metric-microphone"></a>メトリック `Microphone`
 
@@ -636,7 +637,7 @@ Speech Service がクライアントからプロトコル違反を検出した�
 
 #### <a name="incorrect-message-format"></a>不正なメッセージ形式
 
-クライアントがサービスに送信したテキストまたはバイナリ メッセージが、この仕様で指定された正しい形式でエンコードされていない場合は、サービスが接続を終了し、*1007 Invalid Payload Data* ステータス コードを返します。 
+クライアントがサービスに送信したテキストまたはバイナリ メッセージが、この仕様で指定された正しい形式でエンコードされていない場合は、サービスが接続を終了し、*1007 Invalid Payload Data* ステータス コードを返します。
 
 サービスがこのステータス コードを返す理由は、場合によってさまざまです。以下に例を示します。
 

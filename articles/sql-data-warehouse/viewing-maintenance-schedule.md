@@ -6,16 +6,16 @@ author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 6e4a4c01ee73bab3cb4e66a06c0ba0655e3066a0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 61537a4cb8ca1e6e98f2fa04959861eb03480fe9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993248"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247257"
 ---
 # <a name="view-a-maintenance-schedule"></a>メンテナンス スケジュールを表示する 
 

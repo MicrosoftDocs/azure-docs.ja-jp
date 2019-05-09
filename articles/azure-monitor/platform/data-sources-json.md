@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 64f1d7b1437ea018a25db18e5f92bffaac8f7099
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 101719668fee155e84b7a767647a662ca845f0f2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438457"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58848980"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Monitor での Linux 用 Log Analytics エージェントを使用したカスタム JSON データ ソースの収集
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-カスタム JSON データ ソースは、Linux 用 Log Analytics エージェントを使用して [Azure Monitor ログ](data-collection.md)に収集できます。  これらのカスタム データ ソースは、[curl](https://curl.haxx.se/) や [FluentD の 300 を超えるプラグイン](http://www.fluentd.org/plugins/all)のいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
+
+カスタム JSON データ ソースは、Linux 用 Log Analytics エージェントを使用して [Azure Monitor](data-platform.md) に収集できます。  これらのカスタム データ ソースは、[curl](https://curl.haxx.se/) や [FluentD の 300 を超えるプラグイン](https://www.fluentd.org/plugins/all)のいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
+
 
 > [!NOTE]
 > カスタム JSON データには Linux 用 Log Analytics エージェント v1.1.0-217 以降が必要です
@@ -84,8 +86,8 @@ Azure Monitor で JSON データを収集するには、入力プラグイン内
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
-## <a name="output"></a>出力
-データは、レコードの種類が `<FLUENTD_TAG>_CL` の Azure Monitor ログに収集されます。
+## <a name="output"></a>Output
+データは、レコードの種類を `<FLUENTD_TAG>_CL` として、Azure Monitor に収集されます。
 
 たとえば、カスタム タグ `tag oms.api.tomcat` は `tomcat_CL` のレコードの種類を使用して Azure Monitor で収集されます。  次のログ クエリを使用すると、この種類のすべてのレコードを取得できます。
 
@@ -104,4 +106,4 @@ Azure Monitor で JSON データを収集するには、入力プラグイン内
 
 
 ## <a name="next-steps"></a>次の手順
-* [ログ クエリ](../../log-analytics/log-analytics-queries.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 

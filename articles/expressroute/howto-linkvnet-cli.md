@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman,cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ae97fff6a81f437510def1141dd226ad4e67209a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5ddcfe14873d13384b043f7a977dc4f069dbe8dd
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074045"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408260"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -125,7 +125,7 @@ az network express-route auth delete --circuit-name MyCircuit -g ExpressRouteRes
 回線ユーザーは、ピア ID と回線所有者が作成した承認キーを必要とします。 承認キーは GUID です。
 
 ```azurecli
-Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
+Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
 **接続の承認を利用するには**

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: robb
-ms.component: ''
-ms.openlocfilehash: 5fb4e4f754fdac9e72fc9317c7e1ccfa6a08feb2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: ''
+ms.openlocfilehash: fa3293346fee6f6666db01dab5587dd760df84b2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325606"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471008"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor の CLI クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
@@ -208,3 +208,4 @@ az monitor autoscale create --name <settings name> --resource-group <group name>
     --count <# instances> \
     --resource <target resource ID>
 ```
+

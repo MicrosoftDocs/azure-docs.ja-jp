@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: d0ecf6a48735ec2ba1623f97d4760d230a6e6fbf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346711"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266317"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
 > * [Version 1](v1/data-factory-azure-sql-connector.md)
 > * [現在のバージョン](connector-azure-sql-database.md)
 
@@ -36,6 +35,8 @@ Azure SQL Database のデータを、サポートされているシンク デー
 - SQL 認証を使って、およびサービス プリンシパルまたは Azure リソースのマネージド ID で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
 - ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。
 - シンクとして、宛先テーブルにデータを追記する、またはコピー中にカスタム ロジックを使用してストアド プロシージャを起動する。
+
+Azure SQL Database での [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) は現在サポートされていません。 
 
 > [!IMPORTANT]
 > Azure Data Factory Integration Runtime を使ってデータをコピーする場合は、Azure サービスがサーバーにアクセスできるように [Azure SQL Server ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)を構成します。
@@ -54,17 +55,17 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティを **AzureSqlDatabase** に設定する必要があります。 | はい |
-| connectionString | **connectionString** プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| connectionString | **connectionString** プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワード/サービス プリンシパル キーを Azure Key Vault に格納して、それが SQL 認証の場合は接続文字列から `password` 構成をプルすることもできます。 詳しくは、表の下の JSON の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワークにある場合、Azure Integration Runtime またはセルフホステッド IR を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ  |
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
 
 - [SQL 認証](#sql-authentication)
-- [Azure AD アプリケーション トークン認証: サービス プリンシパル](#service-principal-authentication)
-- [Azure AD アプリケーション トークン認証: Azure リソースのマネージド ID](#managed-identity)
+- [Azure AD アプリケーション トークン認証:サービス プリンシパル](#service-principal-authentication)
+- [Azure AD アプリケーション トークン認証:Azure リソースのマネージド ID](#managed-identity)
 
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached." (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
@@ -92,6 +93,35 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 }
 ```
 
+**Azure Key Vault 内のパスワード:** 
+
+```json
+{
+    "name": "AzureSqlDbLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
 サービス プリンシパル ベースの Azure AD アプリケーション トークン認証を使うには、以下の手順のようにします。
@@ -104,7 +134,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 
 1. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者は、Azure AD ユーザーまたは Azure AD グループでなければなりませんが、サービス プリンシパルにはなれません。 このステップは、次のステップで Azure AD ID を使ってサービス プリンシパルの包含データベース ユーザーを作成できるようにするために行われます。
 
-1. サービス プリンシパルの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。
+1. サービス プリンシパルの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。 
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
@@ -148,23 +178,23 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 
 ### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
-データ ファクトリは、特定のデータ ファクトリを表す [Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 このサービス ID を Azure SQL Database の認証に使用できます。 指定されたファクトリは、この ID を使用してデータベースにアクセスし、データを双方向にコピーできます。
+データ ファクトリは、特定のデータ ファクトリを表す [Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 このマネージド ID を Azure SQL Database の認証に使用できます。 指定されたファクトリは、この ID を使用してデータベースにアクセスし、データを双方向にコピーできます。
 
-MSI ベースの Azure AD アプリケーション トークン認証を使うには、以下の手順のようにします。
+マネージド ID 認証を使用するには、次の手順に従います。
 
-1. **Azure AD でグループを作成します。** ファクトリ MSI をグループのメンバーにします。
+1. **Azure AD でグループを作成します。** マネージド ID をグループのメンバーにします。
     
-    1. Azure portal でデータ ファクトリのサービス ID を調べます。 データ ファクトリの **[プロパティ]** に移動します。 サービス ID をコピーします。
+   1. Azure portal でデータ ファクトリのマネージド ID を調べます。 データ ファクトリの **[プロパティ]** に移動します。 サービス ID をコピーします。
     
-    1. [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) モジュールをインストールします。 `Connect-AzureAD` コマンドを使用してサインインします。 次のコマンドを実行してグループを作成し、データ ファクトリ MSI をメンバーとして追加します。
-    ```powershell
-    $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-    Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
-    ```
+   1. [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) モジュールをインストールします。 `Connect-AzureAD` コマンドを使用してサインインします。 次のコマンドを実行し、グループを作成してマネージド ID をメンバーとして追加します。
+      ```powershell
+      $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+      Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
+      ```
     
-1. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者には、Azure AD ユーザーまたは Azure AD グループを使用できます。 MSI を持つグループに管理者ロールを付与する場合は、手順 3 および 4 をスキップします。 管理者には、データベースへのフル アクセスがあります。
+1. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者には、Azure AD ユーザーまたは Azure AD グループを使用できます。 マネージド ID を含むグループに管理者ロールを付与する場合は、手順 3. と手順 4. をスキップします。 管理者には、データベースへのフル アクセスがあります。
 
-1. Azure AD グループの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。
+1. Azure AD グループの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。 
     
     ```sql
     CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
@@ -178,7 +208,7 @@ MSI ベースの Azure AD アプリケーション トークン認証を使う�
 
 1. Azure Data Factory で、**Azure SQL Database のリンクされたサービスを構成します**。
 
-#### <a name="linked-service-example-that-uses-msi-authentication"></a>MSI 認証を使用するリンクされたサービスの例
+**例:**
 
 ```json
 {
@@ -208,7 +238,7 @@ Azure SQL Database をコピー元またはコピー先としてデータをコ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの **type** プロパティは、**AzureSqlTable** に設定する必要があります。 | はい |
-| tableName | リンクされたサービスが参照する Azure SQL Database インスタンスのテーブルまたはビューの名前。 | ソースの場合はいいえ、シンクの場合ははい |
+| tableName | リンクされたサービスが参照する Azure SQL データベース インスタンスのテーブルまたはビューの名前。 | ソースの場合はいいえ、シンクの場合ははい |
 
 #### <a name="dataset-properties-example"></a>データセットのプロパティの例
 
@@ -240,7 +270,7 @@ Azure SQL Database からデータをコピーする場合は、コピー アク
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティを **SqlSource** に設定する必要があります。 | はい |
-| SqlReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. | いいえ  |
+| sqlReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. | いいえ  |
 | sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 | いいえ  |
 | storedProcedureParameters | ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ  |
 
@@ -328,9 +358,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-    select *
-    from dbo.UnitTestSrcTable
-    where dbo.UnitTestSrcTable.stringData != stringData
+     select *
+     from dbo.UnitTestSrcTable
+     where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -343,8 +373,8 @@ Azure SQL Database にデータをコピーする場合は、コピー アクテ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは、**SqlSink** に設定する必要があります。 | はい |
-| writeBatchSize | バッファー サイズが **writeBatchSize** に達したら、SQL テーブルにデータを挿入します。<br/> 使用可能な値は **integer** (行数) です。 | いいえ。 既定値は 10000 です。 |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/> 使用可能な値は **timespan** です。 例: "00:30:00" (30 分)。 | いいえ  |
+| writeBatchSize | SQL テーブルに挿入する**バッチあたりの**行数。<br/> 使用可能な値は **integer** (行数) です。 | いいえ。 既定値は 10000 です。 |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/> 使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ  |
 | preCopyScript | コピー アクティビティがデータを Azure SQL Database に書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ  |
 | sqlWriterStoredProcedureName | ターゲット テーブルにソース データを適用する方法を定義しているストアド プロシージャの名前です。 たとえば、独自のビジネス ロジックを使用してアップサートまたは変換するような場合です。 <br/><br/>このストアド プロシージャは**バッチごとに呼び出されます**。 1 回だけ実行され、ソース データと関係のない操作の場合は、`preCopyScript` プロパティを使います。 たとえば、削除や切り詰めなどの操作です。 | いいえ  |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前と値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ  |
@@ -433,8 +463,8 @@ Azure SQL Database にデータをコピーする場合は、コピー アクテ
 ```sql
 create table dbo.SourceTbl
 (
-    name varchar(100),
-    age int
+       name varchar(100),
+       age int
 )
 ```
 
@@ -443,9 +473,9 @@ create table dbo.SourceTbl
 ```sql
 create table dbo.TargetTbl
 (
-    identifier int identity(1,1),
-    name varchar(100),
-    age int
+       identifier int identity(1,1),
+       name varchar(100),
+       age int
 )
 ```
 
@@ -493,7 +523,7 @@ create table dbo.TargetTbl
 ```
 
 > [!NOTE]
-> ソース テーブルとターゲット テーブルのスキーマが異なります。
+> ソース テーブルとターゲット テーブルのスキーマが異なります。 
 
 ターゲットには ID 列が追加されています。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
@@ -505,7 +535,7 @@ create table dbo.TargetTbl
 
 次の例では、Azure SQL Database 内のテーブルに upsert を行うストアド プロシージャを使用する方法を示します。 入力データと、シンクの **Marketing** テーブルのそれぞれに 3 つの列 (**ProfileID**、**State**、**Category**) があるものとします。 **ProfileID** 列に基づいてアップサートを行い、特定のカテゴリに対してのみ適用します。
 
-#### <a name="output-dataset"></a>出力データセット
+**出力データセット:** "tableName" は、ストアド プロシージャ内の同じテーブル型のパラメーター名である必要があります (次のストアド プロシージャ スクリプトを参照)。
 
 ```json
 {
@@ -524,7 +554,7 @@ create table dbo.TargetTbl
 }
 ```
 
-コピー アクティビティの **SqlSink** セクションを定義します。
+次のように、コピー アクティビティの **SQL シンク** セクションを定義します。
 
 ```json
 "sink": {
@@ -552,7 +582,7 @@ BEGIN
       UPDATE SET State = source.State
   WHEN NOT MATCHED THEN
       INSERT (ProfileID, State, Category)
-      VALUES (source.ProfileID, source.State, source.Category)
+      VALUES (source.ProfileID, source.State, source.Category);
 END
 ```
 
@@ -562,14 +592,11 @@ END
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
     [ProfileID] [varchar](256) NOT NULL,
     [State] [varchar](256) NOT NULL,
-    [Category] [varchar](256) NOT NULL,
+    [Category] [varchar](256) NOT NULL
 )
 ```
 
 ストアド プロシージャ機能は [テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。
-
->[!NOTE]
->ストアド プロシージャを呼び出すことで Money または Smallmoney のデータ型に書き込む場合、値が四捨五入される可能性があります。 緩和するには、Money または Smallmoney の代わりに Decimal として、TVP の対応するデータ型を指定します。
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL Database のデータ型のマッピング
 
@@ -579,7 +606,7 @@ Azure SQL Database をコピー元またはコピー先としてデータをコ�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| bit |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -593,15 +620,15 @@ Azure SQL Database をコピー元またはコピー先としてデータをコ�
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| 数値 |Decimal |
+| numeric |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |Object * |
-| テキスト |String、Char[] |
+| sql_variant |Object |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Byte |
@@ -609,6 +636,9 @@ Azure SQL Database をコピー元またはコピー先としてデータをコ�
 | varbinary |Byte[] |
 | varchar |String、Char[] |
 | xml |xml |
+
+>[!NOTE]
+> 10 進の中間型にマップされるデータ型の場合、現在 ADF では最大 28 の有効桁数をサポートしています。 28 よりも大きな有効桁数のデータがある場合は、SQL クエリで文字列に変換することを検討してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

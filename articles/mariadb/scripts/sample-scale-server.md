@@ -1,21 +1,19 @@
 ---
 title: Azure CLI スクリプト - Azure Database for MariaDB サーバーのスケーリング
 description: このサンプル CLI スクリプトでは、Azure Database for MariaDB サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングします。
-services: mariadb
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
-ms.openlocfilehash: e5f6364992987e5aeb6cb1ccd2055823efae607e
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ef01c38dddee0a74477ef331f935bda2787866df
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585191"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546371"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーの監視とスケーリングを行う
 このサンプル CLI スクリプトでは、単一の Azure Database for MariaDB サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングします。
@@ -43,5 +41,5 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 
 ## <a name="next-steps"></a>次の手順
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
-- 「[Azure Database for MariaDB 用の Azure CLI サンプル](../sample-scripts-azure-cli.md)」にあるその他のスクリプトを試す
-- スケーリングの詳細については、[価格の詳細](../concepts-pricing-tiers.md)に関するページを参照してください。
+- さらに他のスクリプトも試す: [Azure Database for MariaDB 用の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- スケーリングの詳細については、[価格の詳細]\(../concepts-pricing-tiers.md)に関するページを参照してください。

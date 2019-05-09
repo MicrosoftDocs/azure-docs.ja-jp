@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 94728bbc74d1864c76aa801628fcbfb133b97abd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435992"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867203"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
@@ -63,7 +63,7 @@ TDSP におけるライフサイクルの各ステージの目標、タスク、
 
 次の図は、これらの役割 (縦軸) ごとにライフサイクルの各ステージ (横軸) に関連付けられたタスク (青色) とアーティファクト (緑色) をグリッド形式で示したものです。 
 
-[ ![TDSP の役割とタスク](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP のロールとタスク](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>標準プロジェクト構造
 
@@ -77,7 +77,7 @@ Microsoft では、必要なドキュメントとフォルダー構造のテン�
 - モデルのパフォーマンス メトリック (ROC 曲線、MSE など)
 
 
-[ ![TDSP のディレクトリ](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP のディレクトリ](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 このディレクトリ構造は、[GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) から複製することができます。
 
@@ -86,7 +86,7 @@ Microsoft では、必要なドキュメントとフォルダー構造のテン�
 TDSP には、共有の分析およびストレージ インフラストラクチャを管理するうえでの推奨事項が示されています。その例を次に示します。
 
 - データセットを格納するためのクラウド ファイル システム 
-- データベース
+- databases
 - ビッグ データ (Hadoop または Spark) クラスター 
 - Machine Learning サービス 
 
@@ -94,7 +94,7 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 
 以下に示したのは、クラウド分析インフラストラクチャのさまざまな構成要素を共有しながら複数のプロジェクトに取り組むチームの例です。
 
-[ ![TDSP インフラストラクチャ](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP インフラストラクチャ](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>プロジェクト実行のツールとユーティリティ

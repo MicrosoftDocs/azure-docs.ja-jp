@@ -6,21 +6,21 @@ documentationcenter: na
 author: craigshoemaker
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions; cosmos-db
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 362a8f6108ad035c66fe76dae09cf7711dafd070
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5762e934d7735dd9617cefc1f56105823d74312f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344348"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782192"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
-> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択してください: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Version 1](functions-bindings-cosmosdb.md)
 > * [Version 2](functions-bindings-cosmosdb-v2.md)
 
@@ -57,7 +57,7 @@ Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmo
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-[トリガーの例をスキップする](#trigger---attributes)
+トリガーの例をスキップする
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
@@ -93,7 +93,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[トリガーの例をスキップする](#trigger---attributes)
+トリガーの例をスキップする
 
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
@@ -131,7 +131,7 @@ C# スクリプト コードを次に示します。
     }
 ```
 
-[トリガーの例をスキップする](#trigger---attributes)
+トリガーの例をスキップする
 
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
 
@@ -199,7 +199,7 @@ Java コードを次に示します。
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に由来するパラメーター上で `@CosmosDBTrigger` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。
 
 
-[トリガーの例をスキップする](#trigger---attributes)
+トリガーの例をスキップする
 
 ### <a name="trigger---python-example"></a>トリガー - Python の例
 
@@ -274,8 +274,9 @@ Python コードを次に示します。
 |**leaseAcquireInterval**| **LeaseAcquireInterval**| (省略可能) 設定すると、パーティションが既知のホスト インスタンス間で均等に分散されているかどうかを計算するタスクを開始する間隔がミリ秒単位で定義されます。 既定値は 13,000 (13 秒) です。
 |**leaseExpirationInterval**| **LeaseExpirationInterval**| (省略可能) 設定すると、パーティションを表すリースでリースを取得する間隔がミリ秒単位で定義されます。 この間隔内にリースが更新されない場合、リースは期限切れとなり、パーティションの所有権は別のインスタンスに移動します。 既定値は 60,000 (60 秒) です。
 |**leaseRenewInterval**| **LeaseRenewInterval**| (省略可能) 設定すると、インスタンスが現在保持しているパーティションのすべてのリースの更新間隔がミリ秒単位で定義されます。 既定値は 17,000 (17 秒) です。
-|**checkpointFrequency**| **CheckpointFrequency**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に成功した関数呼び出しの後になります。
+|**checkpointFrequency**| **CheckpointFrequency**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に各関数呼び出しの後です。
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (省略可能) 設定すると、関数呼び出しごとに受信するアイテムの最大量がカスタマイズされます。
+|**startFromBeginning**| **StartFromBeginning**| (省略可能) 設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、トリガーが指示されます。 これは、初めてトリガーが起動される場合にのみ機能します。その後の実行では、チェックポイントが既に格納されているためです。 既にリースが作成されているときにこれを `true` に設定しても効果はありません。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -384,6 +385,10 @@ namespace CosmosDBSamplesV2
 #### <a name="http-trigger-look-up-id-from-query-string-c"></a>HTTP トリガー、クエリ文字列からの ID の検索 (C#)
 
 次の例は、単一のドキュメントを取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
+
+>[!NOTE]
+>HTTP クエリ文字列パラメーターは大文字と小文字が区別されます。
+>
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -987,7 +992,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
 
-* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-string-javascript)
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-javascript)
 * [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-javascript)
 * [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-javascript)
 * [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
@@ -1195,7 +1200,7 @@ JavaScript コードを次に示します。
 
 このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
 
-* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-string-python)
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-python)
 * [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-python)
 * [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-python)
 * [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-python)
@@ -1446,29 +1451,253 @@ F# コードを次に示します。
 
 ### <a name="input---java-examples"></a>入力 - Java の例
 
-次の例は、単一のドキュメントを取得する Java 関数を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの ToDoItem ドキュメントの取得に使用されます。
+このセクションには、次の例が含まれています。
 
-Java コードを次に示します。
+* [HTTP トリガー、クエリ文字列からの ID の検索 - String パラメーター](#http-trigger-look-up-id-from-query-string---string-parameter-java)
+* [HTTP トリガー、クエリ文字列からの ID の検索 - POJO パラメーター](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
+* [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-java)
+* [HTTP トリガー、SqlQuery を使用したルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
+* [HTTP トリガー、ルート データからの複数のドキュメントの取得、SqlQuery を使用](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
+
+例では、次のようなシンプルな `ToDoItem` タイプを参照します。
 
 ```java
-@FunctionName("getItem")
-public String cosmosDbQueryById(
-    @HttpTrigger(name = "req",
-                  methods = {HttpMethod.GET},
-                  authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> dummy,
-    @CosmosDBInput(name = "database",
-                      databaseName = "ToDoList",
-                      collectionName = "Items",
-                      leaseCollectionName = "",
-                      id = "{Query.id}"
-                      connectionStringSetting = "AzureCosmosDBConnection") Optional<String> item,
-    final ExecutionContext context
- ) {
-    return item.orElse("Not found");
- }
+public class ToDoItem {
+
+  private String id;
+  private String description;  
+
+  public String getId() {
+    return id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+  
+  @Override
+  public String toString() {
+    return "ToDoItem={id=" + id + ",description=" + description + "}";
+  }
+}
+```
+
+#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>HTTP トリガー、クエリ文字列からの ID の検索 - String パラメーター (Java)
+
+次の例は、単一のドキュメントを取得する Java 関数を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 その ID は、指定されたデータベースとコレクションからドキュメントを (String 形式で) 取得するために使用されます。
+
+```java
+public class DocByIdFromQueryString {
+
+    @FunctionName("DocByIdFromQueryString")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{Query.id}",
+              partitionKey = "{Query.id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            Optional<String> item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("String from the database is " + (item.isPresent() ? item.get() : null));
+
+        // Convert and display
+        if (!item.isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from Cosmos. Alternatively, we can parse the JSON string 
+            // and return an enriched JSON object.
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item.get())
+                          .build();
+        }
+    }
+}
  ```
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に由来する関数パラメーター上で `@CosmosDBInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。
+
+#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP トリガー、クエリ文字列からの ID の検索 - POJO パラメーター (Java)
+
+次の例は、単一のドキュメントを取得する Java 関数を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 その ID は、指定されたデータベースとコレクションからドキュメントを取得するために使用されます。 このドキュメントはその後、前に作成した ```ToDoItem``` POJO のインスタンスに変換され、引数として関数に渡されます。
+
+```java
+public class DocByIdFromQueryStringPojo {
+
+    @FunctionName("DocByIdFromQueryStringPojo")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{Query.id}",
+              partitionKey = "{Query.id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Item from the database is " + item);
+
+        // Convert and display
+        if (item == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item)
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-look-up-id-from-route-data-java"></a>HTTP トリガー、ルート データからの ID の検索 (Java)
+
+次の例は、単一のドキュメントを取得する Java 関数を示しています。 この関数は、ルート パラメーターを使用して検索する ID を指定する HTTP 要求によってトリガーされます。 その ID は、指定されたデータベースとコレクションからドキュメントを取得し、それを ```Optional<String>``` として返すために使用されます。
+
+```java
+public class DocByIdFromRoute {
+
+    @FunctionName("DocByIdFromRoute")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems/{id}")
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{id}",
+              partitionKey = "{id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            Optional<String> item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("String from the database is " + (item.isPresent() ? item.get() : null));
+
+        // Convert and display
+        if (!item.isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from Cosmos. Alternatively, we can parse the JSON string 
+            // and return an enriched JSON object.
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item.get())
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>HTTP トリガー、ルート データからの ID の検索、SqlQuery を使用 (Java)
+
+次の例は、単一のドキュメントを取得する Java 関数を示しています。 この関数は、ルート パラメーターを使用して検索する ID を指定する HTTP 要求によってトリガーされます。 クエリ条件によっては多数のドキュメントが返される可能性があるため、その ID は、指定されたデータベースとコレクションからドキュメントを取得し、結果セットを ```ToDoItem[]``` に変換するために使用されます。
+
+```java
+public class DocByIdFromRouteSqlQuery {
+
+    @FunctionName("DocByIdFromRouteSqlQuery")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems2/{id}") 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              sqlQuery = "select * from Items r where r.id = {id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem[] item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Items from the database are " + item);
+
+        // Convert and display
+        if (item == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item)
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP トリガー、ルート データからの複数のドキュメントの取得、SqlQuery を使用 (Java)
+
+次の例は、複数のドキュメントを取得する Java 関数を示しています。 この関数は、ルート パラメーター ```desc``` を使用して ```description``` フィールドで検索する文字列を指定する HTTP 要求によってトリガーされます。 この検索用語は、指定されたデータベースとコレクションからドキュメントのコレクションを取得し、結果セットを ```ToDoItem[]``` に変換して、それを引数として関数に渡すために使用されます。
+
+```java
+public class DocsFromRouteSqlQuery {
+
+    @FunctionName("DocsFromRouteSqlQuery")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems3/{desc}")
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              sqlQuery = "select * from Items r where contains(r.description, {desc})",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem[] items,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Number of items from the database is " + (items == null ? 0 : items.length));
+
+        // Convert and display
+        if (items == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("No documents found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(items)
+                          .build();
+        }
+    }
+}
+ ```
 
 ## <a name="input---attributes"></a>入力 - 属性
 
@@ -1487,7 +1716,7 @@ public String cosmosDbQueryById(
 |**name**     || 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**databaseName** |**DatabaseName** |ドキュメントを含むデータベース。        |
 |**collectionName** |**CollectionName** | ドキュメントを含むコレクションの名前。 |
-|**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、[バインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)をサポートしています。 **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |
+|**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、[バインド式](./functions-bindings-expressions-patterns.md)をサポートしています。 **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |
 |**sqlQuery**  |**SqlQuery**  | 複数のドキュメントを取得するときに使用する Azure Cosmos DB SQL クエリ。 このプロパティは、次の例のように実行時のバインドをサポートします。`SELECT * FROM c where c.departmentId = {departmentId}` **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。|
 |**connectionStringSetting**     |**ConnectionStringSetting**|Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
 |**partitionKey**|**PartitionKey**|参照用のパーティション キー値を指定します。 バインディング パラメーターを含めることもできます。|
@@ -1498,7 +1727,7 @@ public String cosmosDbQueryById(
 
 C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。
 
-JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript の例](#input---javascript-example)を参照してください。
+JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 JavaScript の例を参照してください。
 
 ## <a name="output"></a>出力
 
@@ -1511,7 +1740,7 @@ Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azur
 * [C#](#output---c-examples)
 * [C# スクリプト (.csx)](#output---c-script-examples)
 * [F#](#output---f-examples)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-examples)
 
 `DocumentClient` を使用した[入力の例](#input---c-examples)も参照してください。
@@ -1884,20 +2113,163 @@ F# コードを次に示します。
 
 ### <a name="output---java-examples"></a>出力 - Java の例
 
+* [キュー トリガー、戻り値を使用したメッセージのデータベースへの保存](#queue-trigger-save-message-to-database-via-return-value-java)
+* [HTTP トリガー、戻り値を使用した 1 つのドキュメントのデータベースへの保存](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [HTTP トリガー、OutputBinding を使用した 1 つのドキュメントのデータベースへの保存](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [HTTP トリガー、OutputBinding を使用した複数のドキュメントのデータベースへの保存](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+
+
+#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>キュー トリガー、戻り値を使用したメッセージのデータベースへの保存 (Java)
+
 次の例は、キュー ストレージのメッセージからのデータを使用して、ドキュメントをデータベースに追加する Java 関数を示しています。
 
 ```java
 @FunctionName("getItem")
-@CosmosDBOutput(name = "database", databaseName = "ToDoList", collectionName = "Items", connectionStringSetting = "AzureCosmosDBConnection")
+@CosmosDBOutput(name = "database", 
+  databaseName = "ToDoList", 
+  collectionName = "Items", 
+  connectionStringSetting = "AzureCosmosDBConnection")
 public String cosmosDbQueryById(
-     @QueueTrigger(name = "msg", queueName = "myqueue-items", connection = "AzureWebJobsStorage") String message,
-     final ExecutionContext context
-)  {
-     return "{ id: " + System.currentTimeMillis() + ", Description: " + message + " }";
+    @QueueTrigger(name = "msg", 
+      queueName = "myqueue-items", 
+      connection = "AzureWebJobsStorage") 
+    String message,
+    final ExecutionContext context)  {
+     return "{ id: \"" + System.currentTimeMillis() + "\", Description: " + message + " }";
    }
 ```
 
-[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に書き込まれるパラメーター上で `@CosmosDBOutput` 注釈を使用します。  注釈パラメーターの型は OutputBinding<T> にする必要があります。T は Java のネイティブ型または POJO のいずれかです。
+#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>HTTP トリガー、戻り値を使用した 1 つのドキュメントのデータベースへの保存 (Java)
+
+次の例は、シグネチャに ```@CosmosDBOutput``` の注釈が付けられ、型 ```String``` の戻り値を持つ Java 関数を示しています。 この関数によって返された JSON ドキュメントは、対応する CosmosDB コレクションに自動的に書き込まれます。
+
+```java
+    @FunctionName("WriteOneDoc")
+    @CosmosDBOutput(name = "database", 
+      databaseName = "ToDoList",
+      collectionName = "Items", 
+      connectionStringSetting = "Cosmos_DB_Connection_String")
+    public String run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+
+        // Parse query parameter        
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        return jsonDocument;
+    }
+```
+
+#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>HTTP トリガー、OutputBinding を使用した 1 つのドキュメントのデータベースへの保存 (Java)
+
+次の例は、```OutputBinding<T>``` 出力パラメーターを使用して CosmosDB にドキュメントを書き込む Java 関数を示しています。 この設定では、```@CosmosDBOutput``` の注釈を付ける必要があるのは関数シグネチャではなく、```outputItem``` パラメーターであることに注意してください。 ```OutputBinding<T>``` を使用すると、関数で CosmosDB にドキュメントを書き込むためのバインディングを利用しながら、関数の呼び出し元に JSON または XML ドキュメントなどの異なる値を返すこともできるようになります。
+
+```java
+    @FunctionName("WriteOneDocOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database", 
+              databaseName = "ToDoList", 
+              collectionName = "Items", 
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            OutputBinding<String> outputItem,
+            final ExecutionContext context) {
+  
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+      
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        // Set outputItem's value to the JSON document to be saved
+        outputItem.setValue(jsonDocument);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Document created successfully.")
+                      .build();
+    }
+```
+
+#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>HTTP トリガー、OutputBinding を使用した複数のドキュメントのデータベースへの保存 (Java)
+
+次の例は、```OutputBinding<T>``` 出力パラメーターを使用して CosmosDB に複数のドキュメントを書き込む Java 関数を示しています。 この設定では、```@CosmosDBOutput``` の注釈を付ける必要があるのは関数シグネチャではなく、```outputItem``` パラメーターであることに注意してください。 出力パラメーター ```outputItem``` には、そのテンプレート パラメーターの型として ```ToDoItem``` オブジェクトの一覧が含まれています。 ```OutputBinding<T>``` を使用すると、関数で CosmosDB にドキュメントを書き込むためのバインディングを利用しながら、関数の呼び出し元に JSON または XML ドキュメントなどの異なる値を返すこともできるようになります。
+
+```java
+    @FunctionName("WriteMultipleDocsOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database", 
+              databaseName = "ToDoList", 
+              collectionName = "Items", 
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            OutputBinding<List<ToDoItem>> outputItem,
+            final ExecutionContext context) {
+  
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+      
+        // Generate documents
+        List<ToDoItem> items = new ArrayList<>();
+
+        for (int i = 0; i < 5; i ++) {
+          // Generate random ID
+          final int id = Math.abs(new Random().nextInt());
+
+          // Create ToDoItem
+          ToDoItem item = new ToDoItem(String.valueOf(id), name);
+          
+          items.add(item);
+        }
+
+        // Set outputItem's value to the list of POJOs to be saved
+        outputItem.setValue(items);
+        context.getLogger().info("Document to be saved: " + items);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Documents created successfully.")
+                      .build();
+    }
+```
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に書き込まれるパラメーター上で `@CosmosDBOutput` 注釈を使用します。  注釈パラメーターの型は ```OutputBinding<T>``` である必要があります。ここで、T は Java のネイティブ型または POJO のどちらかです。
 
 
 ## <a name="output---attributes"></a>出力 - 属性
@@ -1916,7 +2288,7 @@ public String cosmosDbQueryById(
     }
 ```
 
-完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
+完全な例については、「出力 - C# の例」を参照してください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
@@ -1972,8 +2344,8 @@ public String cosmosDbQueryById(
 
 |プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
-|GatewayMode|ゲートウェイ|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
-|プロトコル|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。  両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください| 
+|GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
+|Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。  両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください| 
 |leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。| 
 
 ## <a name="next-steps"></a>次の手順

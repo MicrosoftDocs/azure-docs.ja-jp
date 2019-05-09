@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB のデータへのアクセスをセキュリティで保護する方法
 description: マスター キー、読み取り専用キー、ユーザー、アクセス許可など、Azure Cosmos DB のアクセス制御の概念について説明します。
-services: cosmos-db
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2018
-ms.author: rafats
-ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.author: rimman
+ms.openlocfilehash: 133181fcc76d759a57725df1ff965966f3797399
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878349"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245713"
 ---
-# <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
+# <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
+
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
 
 Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 
@@ -188,7 +188,7 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 そのエンティティが Azure Cosmos DB リソースを閲覧できるようになります。
 
 ## <a name="delete-or-export-user-data"></a>ユーザー データの削除またはエクスポート
-Azure Cosmos DB では、データベースまたはコレクションにあるすべての個人データを、検索、選択、変更、削除することができます。 Azure Cosmos DB には、個人データを検索および削除する API があります。しかし、個人データを消去する API を使用してロジックを定義するのはユーザーの責任です。 各マルチモデル API (SQL API、MongoDB API、Gremlin API、Cassandra API、Table API) では、個人データを検索および削除するメソッドを含む SDK をさまざまな言語で提供しています。 [Time to Live (TTL)](time-to-live.md) 機能を有効にすると、追加のコストの発生なしに、指定した期間後に自動的にデータを削除するようにすることもできます。
+Azure Cosmos DB では、データベースまたはコレクションにあるすべての個人データを、検索、選択、変更、削除することができます。 Azure Cosmos DB には、個人データを検索および削除する API があります。しかし、個人データを消去する API を使用してロジックを定義するのはユーザーの責任です。 各マルチモデル API (SQL、MongoDB、Gremlin、Cassandra、Table) では、個人データを検索および削除するメソッドを含む SDK をさまざまな言語で提供しています。 [Time to Live (TTL)](time-to-live.md) 機能を有効にすると、追加のコストの発生なしに、指定した期間後に自動的にデータを削除するようにすることもできます。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 ms.custom: include file
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.date: 08/17/2018
 ms.author: diberry
-ms.openlocfilehash: 489b2cd890452a62e7d19ce16bd4b72b71c71314
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a65b075e89180441eecfb420130bfd1e47b277a5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53107274"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56741293"
 ---
 チャットボットや他のクライアント アプリケーションで LUIS の予測を受け取るには、アプリをエンドポイントに公開する必要があります。 
 

@@ -3,20 +3,20 @@ title: 'サービス間認証: Python から Azure Active Directory を使用し
 description: Python から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: a51eb8f560d598f86caf57b7b24737b0a3574b68
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: 84b7fac10374c1c8f23d17ad775d522b4cb261e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957223"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58877756"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 に対する Python を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Python を使用して Data Lake Storage Gen1 を操作するには、3 つの�
 
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールなどが含まれています。
 * `azure-mgmt-datalake-store` モジュール。これには、Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)に関するページをご覧ください。
-* `azure-datalake-store` モジュール。これには、Data Lake Storage Gen1 ファイル システム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](http://azure-datalake-store.readthedocs.io/en/latest/)をご覧ください。
+* `azure-datalake-store` モジュール。これには、Data Lake Storage Gen1 ファイル システム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://azure-datalake-store.readthedocs.io/en/latest/)をご覧ください。
 
 モジュールをインストールするには、次のコマンドを使用します。
 

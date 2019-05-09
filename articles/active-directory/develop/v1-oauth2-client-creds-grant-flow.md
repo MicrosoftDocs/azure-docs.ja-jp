@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,13 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d894dd85bda63c724e391193615e91fc5ca51a3f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 74c79dbfb397a8e6d87de75b5468414f2b7adf2b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986153"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191590"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>クライアント資格情報を使用したサービス間の呼び出し (共有シークレットまたは証明書)
 
@@ -53,7 +54,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ## <a name="service-to-service-access-token-request"></a>サービス間のアクセス トークン要求
 クライアント アプリケーションのセキュリティ保護に共有シークレットまたは証明書のどちらを使うかに応じて、2 つのケースがあります。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース: 共有シークレットを使ったアクセス トークン要求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
 | パラメーター |  | 説明 |
@@ -74,7 +75,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース: 証明書を使ったアクセス トークン要求
+### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
 | パラメーター |  | 説明 |
@@ -105,7 +106,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 | パラメーター | 説明 |
 | --- | --- |
 | access_token |要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。 |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について)](http://www.rfc-editor.org/rfc/rfc6750.txt)」(RFC 6750) を参照してください。 |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
 | not_before |アクセス トークンが使用可能になる日時。 日時は 1970-01-01T0:0:0Z UTC から、トークンの有効期間が切れるまでの秒数として表されます。|

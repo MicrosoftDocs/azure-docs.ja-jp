@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Azure portal を使用して Azure Databricks 上で Spark ジョブを実行する | Microsoft Docs'
-description: このクイックスタートでは、Azure Portal を使用して Azure Databricks ワークスペースと Apache Spark クラスターを作成し、Spark ジョブを実行する方法を示します。
+title: クイック スタート:Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する | Microsoft Docs
+description: Azure portal と Azure Data Lake Storage Gen2 ストレージ アカウントを使用して、Azure Databricks 上で Spark ジョブを実行する方法について説明します。
 services: storage
-author: jamesbak
-ms.author: jamesbak
-ms.component: data-lake-storage-gen2
+author: normesta
+ms.author: normesta
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.openlocfilehash: c820d2172c3e38d9d744e645d7c0e8b4749b42cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 02/15/2019
+ms.openlocfilehash: c5c69ded05e5ec6d1df6bd2befb4fe89417bae06
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743376"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226795"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Databricks 上で Spark ジョブを実行する
+# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>クイック スタート:Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する
 
-このクイック スタートでは、Azure Databricks を使って Apache Spark ジョブを実行し、Azure Data Lake Storage Gen2 プレビュー対応のストレージ アカウントに格納されているデータで分析を実行する方法を示します。
+このクイック スタートでは、Azure Databricks を使って Apache Spark ジョブを実行し、Azure Data Lake Storage Gen2 が有効なストレージ アカウントに格納されているデータの分析を実行する方法を示します。
 
 Spark ジョブの一環として、ラジオ チャンネルのサブスクリプション データを分析し、人口統計学的属性に基づく無料/有料使用についての分析情報を取得します。
 
@@ -25,14 +25,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Data Lake Storage Gen2 対応のストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)
+* Data Lake Gen2 ストレージ アカウントを作成する。 「[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
 
-## <a name="set-aside-storage-account-configuration"></a>ストレージ アカウント構成を確保する
+  ストレージ アカウントの名前をテキスト ファイルに貼り付ける。 この情報はすぐに必要になります。
 
-> [!IMPORTANT]
-> このチュートリアルでは、ストレージ アカウント名とアクセス キーにアクセスする必要があります。 Azure portal で、**[すべてのサービス]** を選択して、"*ストレージ*" でフィルター処理します。 **[ストレージ アカウント]** を選択し、このチュートリアル用に作成したアカウントを見つけます。
->
-> **[概要]** で、ストレージ アカウントの**名前**をテキスト エディターにコピーします。 次に、**[アクセス キー]** を選択し、**key1** の値をテキスト エディターにコピーします。この値は両方とも、後のコマンドで必要になります。
+* サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+
+  この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
+
+  :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+
+  > [!IMPORTANT]
+  > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
+
+  :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -48,17 +54,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
 
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
-    |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します        |
+    |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**[リソース グループ]**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
     |**場所**     | **[米国西部 2]** を選択します。 他のパブリック リージョンを選択してもかまいません。        |
     |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
     **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。
 
-3. ワークスペースの作成には数分かかります。 ワークスペース作成時に、ポータルの右側に **[Submitting deployment for Azure Databricks]\(Azure Databricks のデプロイを送信しています\)** タイルが表示されます。 このタイルを表示するために、ダッシュボードを右へスクロールしなければならない場合があります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
+3. ワークスペースの作成には少し時間がかかります。 ワークスペースの作成中、右側に **[Submitting deployment for Azure Databricks]\(Azure Databricks のデプロイを送信しています\)** タイルが表示されます。 場合によっては、タイトルを表示するためにお客様のダッシュボードを右にスクロールする必要があります。 また、スクリーンの上部付近に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
 
     ![Databricks のデプロイのタイル](./media/data-lake-storage-quickstart-create-databricks-account/databricks-deployment-tile.png "Databricks のデプロイのタイル")
 
@@ -77,8 +83,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     以下を除くすべての値は、既定値のままにします。
 
     * クラスターの名前を入力します。
-    * **5.1 (ベータ)** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after 120 minutes of inactivity]\(アクティビティが 120 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    * **5.1** ランタイムを使用してクラスターを作成します。
+    * **[Terminate after 120 minutes of inactivity]** \(アクティビティが 120 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
 4. **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
@@ -100,49 +106,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     **作成**を選択します。
 
-4. Databricks ワークスペースを、お使いの ADLS Gen2 アカウントに接続します。 これを実現するためにサポートされているメカニズムは 3 つあります。OAuth を使用したマウント、OAuth を使用した直接アクセス、および共有キーを使用した直接アクセスです。 
+4. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
 
-    各メカニズムを次の例に示します。 サンプルをテストする際は、サンプル内のブラケットで囲まれているプレースホルダーを必ず実際の値に置き換えてください。
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
-    **OAuth を使用したマウント**     
-        
-    ```scala
-    %python%
-    configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-    
-    dbutils.fs.mount(
-        source = "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/[<directory-name>]",
-        mount_point = "/mnt/<mount-name>",
-        extra_configs = configs)
-    ```
+   ```
 
-    **OAuth を使用した直接アクセス**
+    > [!NOTE]
+    > このコード ブロックでは OAuth を使用して Data Lake Gen2 エンドポイントに直接アクセスしますが、Databricks ワークスペースをお客様の Data Lake Storage Gen2 アカウントに接続する方法は他にもあります。 たとえば、OAuth を使用してファイル システムをマウントしたり、共有キーによる直接アクセスを使用したりできます。 <br>これらの方法の例については、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」を参照してください。
 
-    ```scala
-    spark.conf.set("fs.azure.account.auth.type.<account-name>.dfs.core.windows.net": "OAuth")
-    spark.conf.set("fs.azure.account.oauth.provider.type.<account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id.<account-name>.dfs.core.windows.net": "<service-client-id>")
-    spark.conf.set("fs.azure.account.oauth2.client.secret.<account-name>.dfs.core.windows.net": "<service-credentials>")
-    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net": "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+5. このコード ブロックでは、`storage-account-name`、`application-id`、`authentication-id`、および `tenant-id` のプレースホルダー値を、サービス プリンシパルの作成中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に設定します。
 
-    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
-    ```
-        
-    **共有キーを使用した直接アクセス** 
+    > [!NOTE]
+    > 運用設定では、認証キーを Azure Databricks に格納することを検討してください。 次に、認証キーではなくルック アップ キーをコード ブロックに追加します。 このクイック スタートの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。
 
-    ```scala    
-    spark.conf.set("fs.azure.account.key.<account-name>.dfs.core.windows.net", "<account-key>")
-
-    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
-    ```
-
-5. 最初のセルにコードを入力し、**Shift + Enter** キーを押して実行します。
-
-これで、ストレージ アカウントのファイル システムが作成されます。
+6. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
 ## <a name="ingest-sample-data"></a>サンプル データを取り込む
 
@@ -154,7 +140,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 セル内で **Shift + Enter** キーを押して、コードを実行します。
 
-次に、その下の新しいセルに、次のコードを入力します。ブラケット内の値は前に使用したのと同じ値に置き換えてください。
+次に、その下の新しいセルに次のコードを入力します。ブラケットで囲まれている値は、前に使用したのと同じ値に置き換えてください。
 
     dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
 
@@ -172,7 +158,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
+     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
     )
     ```
 
@@ -218,7 +204,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Databricks クラスターを停止する](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにした場合は、手動で終了しなくても、クラスターは自動的に停止します。 このオプションを設定した場合、クラスターは、指定した時間だけ非アクティブの状態が続いた後に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにした場合は、手動で終了しなくても、クラスターは自動的に停止します。 このオプションを設定した場合、クラスターは、指定した時間だけ非アクティブの状態が続いた後に停止します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,23 +3,24 @@ title: アプリケーションにユーザーを割り当てる方法 | Microso
 description: ユーザーがテナントでアプリケーションに割り当てられる方法について理解します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: 9e27df857d560abdf5b6a54272bb022b6ed466ee
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be36bfeb0991dc4a4b7fce723cadb6b508c0d6a3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079366"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198723"
 ---
 # <a name="how-to-assign-users-to-applications"></a>ユーザーをアプリケーションに割り当てる方法
 
@@ -55,9 +56,9 @@ ms.locfileid: "53079366"
 
 8.  管理者は、[Microsoft Office 365](https://products.office.com/) などのファースト パーティ アプリケーションのライセンスを、ユーザーがメンバーとなっているグループに割り当てます。
 
-9.  [管理者がすべてのユーザーによるアプリケーションの使用に同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)したら、ユーザーはアプリケーションにサインインします。
+9.  [管理者がすべてのユーザーによるアプリケーションの使用に同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)したら、ユーザーはアプリケーションにサインインします。
 
-10. ユーザーはアプリケーションにサインインすることで、[アプリケーションに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)します。
+10. ユーザーはアプリケーションにサインインすることで、[アプリケーションに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)します。
 
 ## <a name="next-steps"></a>次の手順
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

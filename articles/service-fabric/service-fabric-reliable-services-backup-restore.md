@@ -4,7 +4,7 @@ description: Service Fabric のバックアップと復元の概念をまとめ�
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
-manager: timlt
+manager: chackdan
 editor: subramar,zhol
 ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 42aaafd346c6db9d4a8780628319720aa3f28134
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727717"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670130"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors をバックアップおよび復元する
 Azure Service Fabric は高可用性プラットフォームであり、複数のノードに状態を複製し、その高可用性を維持します。  つまり、クラスター内の 1 つのノードに障害が発生した場合でも、サービスは引き続き利用できます。 このプラットフォームに組み込まれている冗長性で十分と考えられますが、(外部ストアに) サービスのデータをバックアップすることが望ましい場合もあります。
@@ -188,13 +188,13 @@ Reliable Actors フレームワークは、Reliable Services 上に構築され�
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo)
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo)
+    {
+    }
     
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```
@@ -203,7 +203,7 @@ class MyCustomActorService : ActorService
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
-   (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
+    (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
 Reliable Actors の既定の状態プロバイダーは `KvsActorStateProvider` です。 増分バックアップは、`KvsActorStateProvider` については既定で無効になっています。 増分バックアップを有効にするには、コンストラクターで適切な設定を指定して `KvsActorStateProvider` を作成した後、次のコード スニペットに示すように、それを ActorService コンストラクターに渡します。
@@ -211,13 +211,13 @@ Reliable Actors の既定の状態プロバイダーは `KvsActorStateProvider` 
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
+    {
+    }
     
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```
@@ -227,7 +227,7 @@ class MyCustomActorService : ActorService
   - レプリカがプライマリになったために完全バックアップを取得していない。
   - 前回のバックアップが行われた後に、ログ レコードの一部が切り捨てられた。
 
-増分バックアップが有効になっている場合、`KvsActorStateProvider` は循環バッファーを使用して自身のログ レコードを管理することはせず、ログ レコードを定期的に切り捨てます。 ユーザーが 45 分間バックアップを行わなかった場合、システムは自動的にログ レコードを切り捨てます。 この間隔は、`KvsActorStateProvider` コンストラクターで `logTrunctationIntervalInMinutes` を指定することによって構成できます (増分バックアップを有効にする場合と同様のやり方です)。 ログ レコードは、プライマリ レプリカの全データを送信して別のレプリカをビルドする必要がある場合にも、切り捨てられる可能性があります。
+増分バックアップが有効になっている場合、`KvsActorStateProvider` は循環バッファーを使用して自身のログ レコードを管理することはせず、ログ レコードを定期的に切り捨てます。 ユーザーが 45 分間バックアップを行わなかった場合、システムは自動的にログ レコードを切り捨てます。 この間隔は、`KvsActorStateProvider` コンストラクターで `logTruncationIntervalInMinutes` を指定することによって構成できます (増分バックアップを有効にする場合と同様のやり方です)。 ログ レコードは、プライマリ レプリカの全データを送信して別のレプリカをビルドする必要がある場合にも、切り捨てられる可能性があります。
 
 バックアップ チェーンから復元を行う際には、Reliable Services と同様、BackupFolderPath に複数のサブディレクトリを含める必要があります。その際、1 つのサブディレクトリに完全バックアップを含め、その他のサブディレクトリに増分バックアップを含めます。 バックアップ チェーンの検証が失敗した場合、復元 API は適切なエラー メッセージと共に FabricException をスローします。 
 

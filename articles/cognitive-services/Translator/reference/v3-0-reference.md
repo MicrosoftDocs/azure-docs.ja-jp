@@ -3,19 +3,19 @@ title: Translator Text API V3.0 リファレンス
 titlesuffix: Azure Cognitive Services
 description: Translator Text API V3.0 のリファレンス ドキュメント。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870405"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58918809"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -33,7 +33,7 @@ Translator Text API のバージョン 3 には、最新の JSON ベースの We
 
 Microsoft Translator のサービスは、複数のデータセンター拠点から提供されます。 現在、それらの拠点は、6 つの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions)に存在します。
 
-* **アメリカ:** 米国西部 2 および米国中西部 
+* **アメリカ合衆国:** 米国西部 2 および米国中西部 
 * **アジア太平洋:** 東南アジアおよび韓国南部
 * **ヨーロッパ:** 北ヨーロッパおよび西ヨーロッパ
 
@@ -51,7 +51,7 @@ Microsoft Translator Text API への要求は、ほとんどの場合、その�
 
 ## <a name="authentication"></a>Authentication
 
-Microsoft Cognitive Services の Translator Text API または [Cognitive Services オールインワン](https://azure.microsoft.com/pricing/details/cognitive-services/)をサブスクライブし、(Azure portal で入手できる) お客様のサブスクリプション キーを使用して認証を行ってください。 
+Microsoft Cognitive Services の Translator Text API または [Cognitive Services マルチサービス](https://azure.microsoft.com/pricing/details/cognitive-services/)をサブスクライブし、(Azure portal で入手できる) お客様のサブスクリプション キーを使用して認証します。 
 
 お客様のサブスクリプションの認証に使用できるヘッダーは 3 つあります。 次の表で、それぞれの使用方法を説明します。
 
@@ -59,7 +59,7 @@ Microsoft Cognitive Services の Translator Text API または [Cognitive Servic
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
 |Authorization|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
-|Ocp-Apim-Subscription-Region|"*Cognitive Services オールインワン サブスクリプションで、オールインワンの秘密鍵を渡す場合に使用します*"。<br/>値は、オールインワン サブスクリプションのリージョンです。 オールインワン サブスクリプションを使用しない場合、この値は省略できます。|
+|Ocp-Apim-Subscription-Region|"*Cognitive Services マルチサービス サブスクリプションで、マルチサービスの秘密鍵を渡す場合に使用します*"。<br/>値は、マルチサービス サブスクリプションのリージョンです。 マルチサービス サブスクリプションを使用しない場合、この値は省略できます。|
 
 ###  <a name="secret-key"></a>秘密鍵
 1 つ目の方法は、`Ocp-Apim-Subscription-Key` ヘッダーを使用した認証です。 単に、`Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` ヘッダーをお客様の要求に追加します。
@@ -89,21 +89,22 @@ Authorization: Bearer <Base64-access_token>
 
 認証トークンは 10 分間有効です。 Translator API に対して複数の呼び出しを行う場合は、このトークンを再利用する必要があります。 ただし、プログラムで、長時間にわたって Translator API に要求を行う場合は、一定間隔 (例: 8 分ごと) でプログラムから新しいアクセス トークンを要求する必要があります。
 
-### <a name="all-in-one-subscription"></a>オールインワン サブスクリプション
+### <a name="multi-service-subscription"></a>マルチサービスのサブスクリプション
 
-最後の認証オプションは、Cognitive Services のオールインワン サブスクリプションを使用する方法です。 この場合、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。 
+最後の認証オプションは、Cognitive Services のマルチサービス サブスクリプションを使用する方法です。 この場合、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。 
 
-オールインワンの秘密鍵を使用するときは、2 つの認証ヘッダーをお客様の要求に含める必要があります。 1 つ目で秘密鍵を渡し、2 つ目でお客様のサブスクリプションに関連付けられているリージョンを指定します。 
-* `Ocp-Api-Subscription-Key`
+マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーをお客様の要求に含める必要があります。 1 つ目で秘密鍵を渡し、2 つ目でお客様のサブスクリプションに関連付けられているリージョンを指定します。 
+* `Ocp-Apim-Subscription-Key`
 * `Ocp-Apim-Subscription-Region`
+
+マルチサービスの Text API サブスクリプションではリージョンが必須です。 マルチサービスのサブスクリプション キーを使用する場合、選択したリージョンでのみテキスト翻訳を使用でき、Azure portal を通してマルチサービスのサブスクリプションにサインアップしたときに選択したリージョンと同じにする必要があります。
+
+利用可能なリージョンは `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`japaneast`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2` です。
 
 クエリ文字列のパラメーター `Subscription-Key` で秘密鍵を渡す場合、クエリ パラメーター `Subscription-Region` でリージョンを指定する必要があります。
 
 ベアラー トークンを使用する場合は、リージョンのエンドポイント (`https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`) からトークンを取得する必要があります。
 
-利用可能なリージョンは `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`japaneast`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2` です。
-
-オールインワンの Text API サブスクリプションではリージョンが必須です。
 
 ## <a name="errors"></a>Errors
 

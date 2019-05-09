@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C を使用して OpenID Connect でのサインアップおよびサインインを設定する | Microsoft Docs
+title: OpenID Connect でのサインアップとサインインを設定する - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C を使用して OpenID Connectでのサインアップおよびサインインを設定する。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e6fc9ded2b3509f9505d88f0ae7ccc790e47b0f2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: de0c866889f15f096bea26915f58cd4e268dfed3
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842766"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428757"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して OpenID Connectでのサインアップおよびサインインを設定する
 
@@ -23,8 +23,7 @@ ms.locfileid: "52842766"
 > この機能はパブリック プレビュー段階にあります。 運用環境で、この機能を使用しないでください。
 
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを安全にサインインさせるために利用されます。 Azure AD B2C では、[Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md) など、このプロトコルを使用するほとんどの ID プロバイダーがサポートされています。 この記事では、カスタム OpenID Connect ID プロバイダーをユーザー フローに追加する方法について説明します。
-
+[OpenID Connect](active-directory-b2c-reference-oidc.md) は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを安全にサインインさせるために利用されます。 Azure AD B2C では、このプロトコルを使用するほとんどの ID プロバイダーがサポートされています。 この記事では、カスタム OpenID Connect ID プロバイダーをユーザー フローに追加する方法について説明します。
 
 ## <a name="add-the-identity-provider"></a>ID プロバイダーの追加
 

@@ -1,0 +1,64 @@
+items:
+- name: Azure App Configuration (プレビュー) のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure App Configuration について
+    href: overview.md
+- name: クイック スタート
+  items:
+  - name: ASP.NET Core アプリを作成する
+    href: quickstart-aspnet-core-app.md
+  - name: .NET Core アプリを作成する
+    href: quickstart-dotnet-core-app.md
+  - name: .NET Framework アプリを作成する
+    href: quickstart-dotnet-app.md
+  - name: Azure 関数の作成
+    href: quickstart-azure-function-csharp.md
+  - name: Java Spring アプリを作成する
+    href: quickstart-java-spring-app.md
+  expanded: true
+- name: チュートリアル
+  items:
+  - name: ASP.NET Core で動的な構成を有効にする
+    href: enable-dynamic-configuration-aspnet-core.md
+  - name: CI/CD パイプラインとの統合
+    href: integrate-ci-cd-pipeline.md
+- name: サンプル
+  items:
+  - name: Azure CLI
+    href: cli-samples.md
+- name: 概念
+  items:
+  - name: キー値ストア
+    href: concept-key-value.md
+  - name: ポイントインタイム スナップショット
+    href: concept-point-time-snapshot.md
+- name: ハウツー ガイド
+  items:
+  - name: Azure マネージド サービス ID と統合する
+    href: howto-integrate-azure-managed-service-identity.md
+  - name: 構成データのインポートまたはエクスポート
+    href: howto-import-export-data.md
+- name: リファレンス
+  items:
+  - name: .NET Core 構成プロバイダー
+    href: https://go.microsoft.com/fwlink/?linkid=2074664
+  - name: .NET Framework 構成プロバイダー
+    href: https://go.microsoft.com/fwlink/?linkid=2074663
+  - name: Java Spring 構成プロバイダー
+    href: https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config
+  - name: .NET Azure SDK
+    href: https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane
+  - name: REST
+    href: https://go.microsoft.com/fwlink/?linkid=2078296
+- name: リソース
+  items:
+  - name: 製品フィードバックの提供
+    href: https://github.com/Azure/AppConfiguration
+ms.openlocfilehash: 74de90cd0e8274f7192b177c41aba165eabbed40
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699612"

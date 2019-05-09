@@ -3,8 +3,8 @@ title: Visual Studio Code で Java Azure Service Fabric アプリケーション
 description: この記事では、Visual Studio Code を使用して Java Service Fabric アプリケーションをビルド、デプロイ、およびデバッグする方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: JimacoMS
-manager: timlt
+author: peterpogorski
+manager: chackdan
 editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 54c94c50f6292694e947d97a10fd6976c14e19df
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: pepogors
+ms.openlocfilehash: 7f60371fb533526ef5bdb154d0c08dface9c0d1f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115470"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667754"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して Java Service Fabric アプリケーションを開発する
 
@@ -52,7 +52,7 @@ VS Code を開きます。  **アクティビティ バー**の [エクスプロ
 ## <a name="build-the-application"></a>アプリケーションのビルド
 
 1. (Ctrl + Shift + P キー) を押して VS Code で**コマンド パレット**を開きます。
-2. **[Service Fabric: Build Application]\(Service Fabric: アプリケーションのビルド\)** コマンドを探して選択します。 ビルドの出力は統合ターミナルに送信されます。
+2. **[Service Fabric:Build Application]\(Service Fabric: アプリケーションのビルド\)** コマンドを探して選択します。 ビルドの出力は統合ターミナルに送信されます。
 
    ![VS Code の [Build Application]\(アプリケーションのビルド\) コマンド](./media/service-fabric-develop-java-applications-with-vs-code/sf-build-application.png)
 
@@ -62,19 +62,19 @@ VS Code を開きます。  **アクティビティ バー**の [エクスプロ
 > [!IMPORTANT]
 > ローカル クラスターへの Java アプリケーションのデプロイは、Windows マシンではサポートされていません。
 
-1. **コマンド パレット**から **[Service Fabric: Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンドを選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
+1. **コマンド パレット**から **[Service Fabric:Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンドを選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
 
    ![VS Code の [Deploy Application]\(アプリケーションのデプロイ) コマンド](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
-4. デプロイが完了したら、ブラウザーを起動して Service Fabric Explorer を開きます (http://localhost:19080/Explorer)。 アプリケーションが実行中であることがわかります。 この処理には時間がかかる場合があります。 
+4. デプロイが完了したら、ブラウザーを起動して Service Fabric Explorer を開きます (`http://localhost:19080/Explorer`)。 アプリケーションが実行中であることがわかります。 この処理には時間がかかる場合があります。 
 
    ![Service Fabric Explorer の Voting アプリケーション](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
 
-4. アプリケーションが実行されていることを確認したら、ブラウザーを起動して http://localhost:8080 のページを開きます。 これはアプリケーションの Web フロントエンドです。 項目を追加し、その項目をクリックして投票することができます。
+4. アプリケーションが実行されていることを確認したら、ブラウザーを起動して `http://localhost:8080` のページを開きます。 これはアプリケーションの Web フロントエンドです。 項目を追加し、その項目をクリックして投票することができます。
 
    ![ブラウザーの Voting アプリケーション](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. クラスターからアプリケーションを削除するには、**コマンド パレット** から **[Service Fabric: Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを選択します。 アンインストール プロセスの出力は統合ターミナルに送信されます。 Service Fabric Explorer を使用して、アプリケーションがローカル クラスターから削除されたことを確認できます。
+5. クラスターからアプリケーションを削除するには、次を選択します: **[Service Fabric: Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンド (**コマンド パレット**から)。 アンインストール プロセスの出力は統合ターミナルに送信されます。 Service Fabric Explorer を使用して、アプリケーションがローカル クラスターから削除されたことを確認できます。
 
 ## <a name="debug-the-application"></a>アプリケーションのデバッグ
 VS Code でアプリケーションをデバッグする場合、ローカル クラスター上でアプリケーションを実行する必要があります。 ブレークポイントをコードに追加することができます。
@@ -105,7 +105,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
 
    ![launch.json のデバッグ設定](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 
-4. **[Service Fabric: Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)**  コマンドを使用して、アプリケーションをローカル クラスターに展開します。 Service Fabric Explorer でアプリケーションが実行されていることを確認します。 これで、アプリケーションをデバッグする準備が整いました。
+4. アプリケーションをローカル クラスターにデプロイするには、次を使用します: **[Service Fabric: Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンド。 Service Fabric Explorer でアプリケーションが実行されていることを確認します。 これで、アプリケーションをデバッグする準備が整いました。
 
 ブレークポイントを設定するには、次の手順を実行します。
 
@@ -119,7 +119,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
 
    ![[Debug (Attach)]\(デバッグ (アタッチ)\) の構成](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 
-3. Web ブラウザーで http://localhost:8080 にアクセスします。 テキスト ボックスに新しい項目を入力し、**[+ 追加]** をクリックします。 ブレークポイントにヒットするはずです。 VS Code の上部にある [デバッグ] ツールバーを使用して、実行の継続、行のステップ オーバー、メソッドへのステップ イン、現在のメソッドからのステップ アウトを行うことができます。 
+3. Web ブラウザーで `http://localhost:8080` にアクセスします。 テキスト ボックスに新しい項目を入力し、**[+ 追加]** をクリックします。 ブレークポイントにヒットするはずです。 VS Code の上部にある [デバッグ] ツールバーを使用して、実行の継続、行のステップ オーバー、メソッドへのステップ イン、現在のメソッドからのステップ アウトを行うことができます。 
    
    ![ブレークポイントのヒット](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-hit.png)
        
@@ -127,7 +127,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
    
    ![デバッガーから切断する](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
        
-5. デバッグが完了したら、**[Service Fabric: Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから Voting アプリケーションを削除できます。 
+5. デバッグが完了したら、**[Service Fabric:Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから Voting アプリケーションを削除できます。 
 
 ## <a name="next-steps"></a>次の手順
 

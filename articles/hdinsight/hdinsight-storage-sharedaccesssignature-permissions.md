@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: d248db787db1e3945fb632c6770d45e4bf9a8f02
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409923"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360998"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -27,6 +27,8 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 > HDInsight には、クラスターの既定のストレージへのフル アクセス権が必要です。
 
 ## <a name="requirements"></a>必要条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Azure サブスクリプション
 * C# または Python。 C# のサンプル コードは、Visual Studio のソリューションとして提供されます。
@@ -160,12 +162,12 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 1. プロンプトから次のコマンドを使用して、Azure サブスクリプションを認証します。
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
-    プロンプトが表示されたら、Azure サブスクリプションのアカウントでログインします。
+    プロンプトが表示されたら、Azure サブスクリプションのアカウントを使用してサインインします。
 
-    アカウントが複数の Azure サブスクリプションに関連付けられている場合は、`Select-AzureRmSubscription` を使用して、使用するサブスクリプションを選択します。
+    アカウントが複数の Azure サブスクリプションに関連付けられている場合は、`Select-AzSubscription` を使用して、使用するサブスクリプションを選択します。
 
 4. プロンプトから、ディレクトリを HDInsightSAS.ps1 ファイルを含む `CreateCluster` ディレクトリに移動します。 次のコマンドを使用してスクリプトを実行します。
 
@@ -175,15 +177,15 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
     このスクリプトを実行すると、リソース グループとストレージ アカウントを作成するときに、PowerShell プロンプトにログ出力されます。 HDInsight クラスターの HTTP ユーザーを入力するように求められます。 このアカウントは、クラスターへの HTTP(S) アクセスのセキュリティを保護するために使用されます。
 
-    Linux ベースのクラスターを作成している場合、SSH ユーザー アカウント名とパスワードを求めるメッセージが表示されます。 このアカウントは、クラスターへのリモート ログインに使用されます。
+    Linux ベースのクラスターを作成している場合、SSH ユーザー アカウント名とパスワードを求めるメッセージが表示されます。 このアカウントは、クラスターへのリモート サインインに使用されます。
 
    > [!IMPORTANT]  
    > HTTP(S) または SSH のユーザー名とパスワードを求められると、次の条件を満たすパスワードを指定する必要があります。
    >
-   > * 10 文字以上にする
-   > * 数字を 1 つ以上含める
-   > * 英数字以外を 1 文字以上含める
-   > * 大文字または小文字を 1 文字以上含める
+   > * 10 文字以上にする。
+   > * 数字を 1 つ以上含める。
+   > * 英数字以外を 1 文字以上含める。
+   > * 大文字または小文字を 1 文字以上含める。
 
 このスクリプトが完了するにはしばらく時間がかかります。通常、約 15 分です。 エラーが発生することなく、このスクリプトが完了すると、クラスターが作成されています。
 
@@ -219,13 +221,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 ## <a name="test-restricted-access"></a>制限付きアクセスをテストする
 
-制限付きアクセスがあることを確認するには、次のメソッドを使用します。
-
-* **Windows ベース** の HDInsight クラスターでは、リモート デスクトップを使用してクラスターに接続します。 詳細については、 [RDP を使用した HDInsight への接続](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)に関する記事をご覧ください。
-
-    接続されたら、デスクトップ上の **[Hadoop コマンド ライン]** アイコンを使用して、コマンド プロンプトを開きます。
-
-* **Linux ベース** の HDInsight クラスターでは、SSH を使用してクラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+アクセスが制限されていることを確認するには、SSH を使用してクラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 クラスターに接続したら、次の手順を使用して、SAS ストレージ アカウント上の項目を読み取りまたは一覧表示のみすることができることを確認します。
 
@@ -279,21 +275,21 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 **現象**: PowerShell スクリプトを使用してクラスターを作成するときに、次のエラー メッセージが表示される場合があります。
 
-    New-AzureRmHDInsightCluster : A task was canceled.
+    New-AzHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
-    +     New-AzureRmHDInsightCluster `
+    +     New-AzHDInsightCluster `
     +     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
+        + CategoryInfo          : NotSpecified: (:) [New-AzHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
 **原因**: クラスターの管理者または HTTP ユーザー、または (Linux ベースのクラスターの場合) SSH ユーザーのパスワードを使用する場合に、このエラーが発生する可能性があります。
 
 **解決策**: 次の条件を満たすパスワードを使用します。
 
-* 10 文字以上にする
-* 数字を 1 つ以上含める
-* 英数字以外を 1 文字以上含める
-* 大文字または小文字を 1 文字以上含める
+* 10 文字以上にする。
+* 数字を 1 つ以上含める。
+* 英数字以外を 1 文字以上含める。
+* 大文字または小文字を 1 文字以上含める。
 
 ## <a name="next-steps"></a>次の手順
 

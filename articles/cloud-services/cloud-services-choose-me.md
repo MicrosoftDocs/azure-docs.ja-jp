@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 309c7275a1e775ed2bd689520ac39501e8bd6052
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857824"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603829"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
-Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/app-service-web-overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
+Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
 
 ![Azure Cloud Services の図](./media/cloud-services-choose-me/diagram.png)
 
@@ -29,9 +29,9 @@ Azure Cloud Services は、[サービスとしてのプラットフォーム](ht
 
 Azure Cloud Services ロールには、次の 2 種類があります。 2 つの唯一の違いは、VM でロールがホストされる方法です。
 
-* **Web ロール**: IIS を使用して自動的にアプリをデプロイおよびホストします。
+* **Web ロール**:IIS を使用して自動的にアプリをデプロイおよびホストします。
 
-* **worker ロール**: IIS を使用せず、アプリをスタンドアロンで実行します。
+* **worker ロール**:IIS を使用せず、アプリをスタンドアロンで実行します。
 
 たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) または [Azure Queue Storage](../storage/common/storage-introduction.md) を使用する可能性があります)。
 

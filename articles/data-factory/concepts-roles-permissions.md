@@ -1,9 +1,6 @@
 ---
 title: Azure Data Factory のロールとアクセス許可 | Microsoft Docs
 description: データ ファクトリの作成および子リソースの操作に必要なロールとアクセス許可について説明します。
-author: douglaslMS
-ms.author: douglasl
-manager: craigg
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,13 +8,15 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
-ms.openlocfilehash: 82c0ec4d114ec198ecba475b247a3c9952a6069a
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 19666eb668dd120c1705c6a62a8ba1abd2321026
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218765"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575717"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -79,7 +78,7 @@ Azure Repos や GitHub に対するアクセス許可は、Data Factory のア�
   このシナリオでは、2 種類のロールの割り当てが必要です。
 
   1. データ ファクトリ レベルで**共同作成者**組み込みロールを割り当てます。
-  2. *Microsoft.Resources/deployments/** のアクセス許可でカスタム ロールを作成します。 このカスタム ロールをリソース グループ レベルのユーザーに割り当てます。
+  2. **Microsoft.Resources/deployments/** のアクセス許可を使用して、カスタム ロールを作成します。 このカスタム ロールをリソース グループ レベルのユーザーに割り当てます。
 
 - ユーザーが PowerShell または SDK からデータ ファクトリを更新できるようにし、Azure portal では更新を行えないようにします。
 

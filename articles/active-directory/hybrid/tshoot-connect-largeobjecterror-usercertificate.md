@@ -4,7 +4,7 @@ description: このトピックでは、userCertificate 属性が原因で発生
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 0882976df898d36f1d5a5ff06e0de5c747613719
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096675"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect の同期: userCertificate 属性が原因で発生した LargeObject エラーの処理
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同期: userCertificate 属性が原因で発生した LargeObject エラーの処理
 
 Azure AD では、**userCertificate** 属性に対して最大制限 **15** の証明書の値が提供されます。 Azure AD Connect が 15 を超える値を持つオブジェクトを Azure AD にエクスポートすると、Azure AD は次のメッセージで **LargeObject** エラーを返します。
 
@@ -33,7 +34,7 @@ LargeObject エラーは、その他の AD 属性が原因で発生する場合�
 
 LargeObject エラーに関するテナント内のオブジェクトの一覧を取得するには、次のメソッドのいずれかを使用します。
 
- * Azure AD Connect Health for Sync でテナントが有効になっている場合、提供される[同期エラー レポート](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview)を参照できます。
+ * Azure AD Connect Health for Sync でテナントが有効になっている場合、提供される[同期エラー レポート](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync)を参照できます。
  
  * 各同期サイクルの最後に送信される、ディレクトリ同期エラーの通知メールには、LargeObject エラーのあるオブジェクトのリストが含まれています。 
  * 最新の [Export to Azure AD] \(Azure AD へのエクスポート) 操作をクリックすると、[Synchronization Service Manager の [操作] タブ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations)に、LargeObject エラーのあるオブジェクトの一覧が表示されます。
@@ -78,9 +79,9 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
 > [!Note]
 > 上記の手順は、組み込みスケジューラが含まれる Azure AD Connect の新しいバージョン (1.1.xxx.x) にのみ適用できます。 Windows タスク スケジューラを使用する Azure AD Connect の以前のバージョン (1.0.xxx.x) を使用しているか、独自のカスタム スケジューラ (一般的ではない) を使用して定期的な同期をトリガーしている場合は、それぞれを無効にする必要があります。
 
-3. [スタート]、[Synchronization Service] の順に移動して、**Synchronization Service Manager** を起動します。
+1. [スタート]、[Synchronization Service] の順に移動して、**Synchronization Service Manager** を起動します。
 
-4. **[操作]** タブに進み、状態が *「進行中」* になっている操作がないことを確認します。
+1. **[操作]** タブに進み、状態が *「進行中」* になっている操作がないことを確認します。
 
 ### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>手順 2. UserCertificate 属性の既存の送信同期規則を検索する
 既存の同期規則が有効になっており、User オブジェクトの userCertificate 属性を Azure AD にエクスポートするように構成されている必要があります。 この同期規則を見つけ、**優先順位**と**スコープ フィルター**の構成を以下のように検索します。

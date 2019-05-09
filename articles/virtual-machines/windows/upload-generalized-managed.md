@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 93d5cbdb44d3014b547141d59ce96cf607276846
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b1ad5aa074a7719dbe6000301c8cd04e6e1ad632
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234614"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984547"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>汎用化した VHD をアップロードして Azure で新しい VM を作成する
 
@@ -32,7 +32,8 @@ ms.locfileid: "51234614"
 
 - VHD を Azure にアップロードする前に、「[Prepare a Windows VHD or VHDX to upload to Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Azure にアップロードする Windows VHD または VHDX を準備する) に従う必要があります。
 - [Managed Disks](managed-disks-overview.md) への移行を開始する前に、「[Plan for the migration to Managed Disks (Managed Disks への移行の計画)](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)」をご確認ください。
-- この記事では、AzureRM モジュール バージョン 5.6 以降が必要です。 バージョンを確認するには ` Get-Module -ListAvailable AzureRM.Compute` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Sysprep を使用してソース VM を一般化する
@@ -65,17 +66,17 @@ VHD を使用して VM のマネージド ディスクを作成する場合は�
 使用できるストレージ アカウントを表示するには、次のように入力します。
 
 ```azurepowershell
-Get-AzureRmStorageAccount | Format-Table
+Get-AzStorageAccount | Format-Table
 ```
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>ストレージ アカウントに VHD をアップロードする
 
-[Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーに VHD をアップロードします。 この例は、*myVHD.vhd* ファイルを *C:\Users\Public\Documents\Virtual hard disks\\*から *myResourceGroup* リソース グループの *mystorageaccount* というストレージ アカウントにアップロードします。 ファイルは *mycontainer* というコンテナーに配置され、新しいファイル名は *myUploadedVHD.vhd* になります。
+[Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーに VHD をアップロードします。 この例は、*myVHD.vhd* ファイルを *C:\Users\Public\Documents\Virtual hard disks\\*から *myResourceGroup* リソース グループの *mystorageaccount* というストレージ アカウントにアップロードします。 ファイルは *mycontainer* というコンテナーに配置され、新しいファイル名は *myUploadedVHD.vhd* になります。
 
 ```powershell
 $rgName = "myResourceGroup"
 $urlOfUploadedImageVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
+Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
     -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
 ```
 
@@ -129,15 +130,15 @@ $imageName = "myImage"
 一般化した OS VHD を使ってイメージを作成します。
 
 ```powershell
-$imageConfig = New-AzureRmImageConfig `
+$imageConfig = New-AzImageConfig `
    -Location $location
-$imageConfig = Set-AzureRmImageOsDisk `
+$imageConfig = Set-AzImageOsDisk `
    -Image $imageConfig `
    -OsType Windows `
    -OsState Generalized `
    -BlobUri $urlOfUploadedImageVhd `
    -DiskSizeGB 20
-New-AzureRmImage `
+New-AzImage `
    -ImageName $imageName `
    -ResourceGroupName $rgName `
    -Image $imageConfig
@@ -150,7 +151,7 @@ New-AzureRmImage `
 
 
 ```powershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
     -ImageName $imageName `

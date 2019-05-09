@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Project Answer Search、Java'
+title: クイック スタート:Project Answer Search (Java)
 titlesuffix: Azure Cognitive Services
 description: Java で Project Answer Search の使用を開始します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 66d5488fa0e8f542327b4150d50e4351af6ade55
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fc0f8519644c5b9f722ab67f2e9d600a0be7960b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469097"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883527"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>クイック スタート: Java での Project Answer Search クエリ
+# <a name="quickstart-project-answer-search-query-in-java"></a>クイック スタート:Java での Project Answer Search クエリ
 この記事では、Java を使用して、Azure 上の Microsoft Cognitive Services の一部である Bing Answer Search API をデモンストレーションします。 API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある REST Web サービスです。
  
 コード例では、最小限の外部依存関係と共に Java を使用しています。  また、Mono を使用して Linux または Mac OS X 上でこのコード例を実行することもできます。
@@ -30,7 +30,7 @@ ms.locfileid: "49469097"
 
 次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"Gibraltar" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
-````
+```
     static String host = "https://api.labs.cognitive.microsoft.com";
     static String path = "/answerSearch/v7.0/search";
 
@@ -46,7 +46,7 @@ ms.locfileid: "49469097"
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>完成したコード
 
@@ -57,7 +57,7 @@ Bing Answer Search API は、Bing 検索エンジンから結果を返します�
 4. subscriptionKey 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 5. プログラムを実行します。
 
-````
+```
 package knowledgeAPI;
 import java.io.InputStream;
 import java.net.*;
@@ -148,7 +148,7 @@ public class KnowledgeSrch {
         }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 - [C# のクイック スタート](c-sharp-quickstart.md)

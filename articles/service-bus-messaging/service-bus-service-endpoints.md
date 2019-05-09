@@ -3,19 +3,20 @@ title: Azure Service Bus の Virtual Network サービス エンドポイント�
 description: 仮想ネットワークに Microsoft.ServiceBus サービス エンドポイントを追加します。
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: clemensv
-ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.author: aschhab
+ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651437"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843571"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Azure Service Bus で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -28,7 +29,7 @@ Service Bus と[仮想ネットワーク (VNet) サービス エンドポイン�
 >[!WARNING]
 > 仮想ネットワーク統合を実装すると、他の Azure サービスが Service Bus と対話するのを防ぐことができます。
 >
-> 仮想ネットワークが実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
+> 仮想ネットワークが実装されているときは、信頼できる Microsoft サービスはサポートされません。
 >
 > 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
 > - Azure Monitor
@@ -47,7 +48,7 @@ Service Bus と[仮想ネットワーク (VNet) サービス エンドポイン�
 
 ## <a name="enable-service-endpoints-with-service-bus"></a>Service Bus でサービス エンドポイントを有効にする
 
-Service Bus で VNet サービス エンドポイントを使用するときの重要な考慮事項は、Standard レベルと Premium レベルの Service Bus 名前空間が混在するアプリケーションではこれらのエンドポイントを有効にしないほうがよい、ということです。 Standard レベルは VNet をサポートせず、エンドポイントは Premium レベルの名前空間のみに限定されることがその理由です。 Standard 名前空間へのトラフィックは VNet によってブロックされます。
+Service Bus で VNet サービス エンドポイントを使用するときの重要な考慮事項は、Standard レベルと Premium レベルの Service Bus 名前空間が混在するアプリケーションではこれらのエンドポイントを有効にしないほうがよい、ということです。 Standard レベルは VNet をサポートせず、エンドポイントは Premium レベルの名前空間のみに限定されることがその理由です。
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet の統合によって有効になる高度なセキュリティのシナリオ 
 
@@ -131,8 +132,8 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
         "type": "Microsoft.ServiceBus/namespaces",
         "location": "[parameters('location')]",
         "sku": {
-          "name": "Standard",
-          "tier": "Standard"
+          "name": "Premium",
+          "tier": "Premium"
         },
         "properties": { }
       },

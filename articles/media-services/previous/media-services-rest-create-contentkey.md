@@ -4,7 +4,7 @@ description: アセットに安全にアクセスできる ContentKey を作成�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4e4d01371733a2292c69174e4cb135e995e5e935
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 84fd4f0971c56d8cf2cdf138ba8ac8ea1a6e07eb
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189100"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293840"
 ---
 # <a name="create-content-keys-with-rest"></a>REST でコンテンツ キーを作成する
 > [!div class="op_single_selector"]

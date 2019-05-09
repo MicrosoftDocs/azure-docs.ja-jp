@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8f83733462e66bc36ecd31bb2767969e24b78d8c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d220922f17f6727acdbfcd5c2feabac6fc2b88d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010591"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 この記事では、一般的なトラブルシューティングの質問を示します。
@@ -36,7 +36,7 @@ ms.locfileid: "52890740"
 | 手動でのスクリプト作成、スクリプト作成ウィザードの使用、または SSMS を介した接続が遅かったり、ハングしたり、エラーが発生したりします。 | ユーザーがマスター データベース内に作成されているかどうかを確認してください。 スクリプト作成オプションでも、エンジンのエディションが "Microsoft Azure SQL Data Warehouse Edition" と設定され、エンジンの種類が "Microsoft Azure SQL Database" であるかどうかを確認してください。 |
 | SSMS でスクリプト生成に失敗する                             | [Generate script for dependent objects]\(依存オブジェクトのスクリプトを生成する\) オプションが [True] に設定されている場合、SQL データ ウェアハウスのスクリプト生成が失敗します。 回避策として、ユーザーは手動で [ツール]、[オプション]、[SQL Server オブジェクト エクスプローラー] の順に選択し、[Generate script for dependent objects]\(依存オブジェクトのスクリプトを生成する\) オプションを [false] に設定する必要があります。 |
 
-## <a name="performance"></a>[パフォーマンス]
+## <a name="performance"></a>パフォーマンス
 | 問題                                                        | 解決策                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | クエリ パフォーマンスのトラブルシューティング                            | 特定のクエリのトラブルシューティングを行う場合は、まず、[クエリを監視する方法][Learning how to monitor your queries]に関する記事をご覧ください。 |
@@ -52,7 +52,7 @@ ms.locfileid: "52890740"
 | メッセージ 40847:サーバーが許容データベース トランザクション単位クォータ 45000 を超えることになるため、操作を実行できませんでした。 | 作成しようとしているデータベースの [DWU][DWU] を減らすか、[クォータの引き上げを要求][request a quota increase]してください。 |
 | 領域使用率の調査                              | システムの領域使用率の詳細については、[テーブルのサイズ][Table sizes]に関するセクションをご覧ください。 |
 | テーブルの管理に関するヘルプ                                    | テーブルの管理については、[テーブルの概要][Overview]に関する記事をご覧ください。  この記事には、[テーブルのデータ型][Data types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブルの統計の管理][Statistics]、[一時テーブル][Temporary]などのより詳細なトピックへのリンクも含まれています。 |
-| Azure Portal で、透過的なデータ暗号化 (TDE) の進行状況バーが更新されません。 | [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) を使用すると、TDE の状態を表示できます。 |
+| Azure Portal で、透過的なデータ暗号化 (TDE) の進行状況バーが更新されません。 | [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) を使用すると、TDE の状態を表示できます。 |
 
 ## <a name="polybase"></a>PolyBase
 | 問題                                           | 解決策                                                   |
@@ -129,6 +129,6 @@ ms.locfileid: "52890740"
 [CAT チームのブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse

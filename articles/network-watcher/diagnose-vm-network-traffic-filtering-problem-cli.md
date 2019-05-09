@@ -17,14 +17,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 4be1fac519ee0a7bcd61bd4cced4d829c275679d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2fd297cbbb3d4471d3f03f0fb098bea395482cf9
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990112"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749178"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>クイック スタート: 仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure CLI
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>クイック スタート:仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure CLI
 
 このクイック スタートでは、仮想マシン (VM) を展開してから、IP アドレスと URL への通信および IP アドレスからの通信をチェックします。 通信障害の原因と解決方法を特定します。
 
@@ -36,13 +36,13 @@ CLI をローカルにインストールして使用することを選択する�
 
 ## <a name="create-a-vm"></a>VM の作成
 
-VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 次の例では、*myVm* という名前の VM を作成します。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 次の例では、*myVm* という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \
@@ -242,7 +242,7 @@ az network nic list-effective-nsg \
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
+不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

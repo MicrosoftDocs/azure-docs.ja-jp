@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Speech ソフトウェア開発キット (SDK) は、音声認識対応のソフトウェア開発を支援します。アプリケーションから SDK を利用することで、Speech サービスの各種機能を利用することができます。 現在、これらの SDK は、音声テキスト変換、音声翻訳、および意図認識へのアクセスを提供しています。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: c962fce8b8b05a977ac7d666a53b93aeda8c5357
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e3374a94848dc4fdc192b941f81700151271c63a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099855"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866799"
 ---
 # <a name="speech-sdk-api-reference"></a>Speech SDK API リファレンス
 

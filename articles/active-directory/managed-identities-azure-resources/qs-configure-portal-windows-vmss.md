@@ -3,23 +3,24 @@ title: 仮想マシン スケール セットで Azure リソースのマネー�
 description: Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: daveba
-ms.openlocfilehash: 0a6440b7fffe1aec26ba4755f21fa2f56935887e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 57f0ec91bd5c72b593d9b28f7d47f691181a6a0f
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377583"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446325"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -58,7 +59,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 3. **[システム割り当て済み]** にある **[状態]** で **[オン]** を選択して、**[保存]** をクリックします。
 
-   ![[構成] ページのスクリーンショット](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
+   ![[構成] ページのスクリーンショット](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>仮想マシン スケール セットからシステム割り当てマネージド ID を削除する
 

@@ -3,8 +3,8 @@ title: Service Fabric CLI スクリプト サンプル - クラスター上の�
 description: Service Fabric CLI スクリプト サンプル - Service Fabric クラスターにプロビジョニングされているアプリケーションを列挙します。
 services: service-fabric
 documentationcenter: ''
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 04/13/2018
-ms.author: twhitney
+ms.author: aljo
 ms.custom: ''
-ms.openlocfilehash: bea88460ecaa093a0719d627e3608fd1d530727b
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 8fd83190f3cf92ef0f88ff0fb2a807e03199a5c1
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070200"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670287"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Service Fabric クラスターで実行されているアプリケーションを列挙する
 

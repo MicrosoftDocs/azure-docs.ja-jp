@@ -9,15 +9,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 8c3eac208a4e1b0fd55e56956035b3fb5a23fc00
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 780d2134aa00f828a614af6938978e24df3534cd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730279"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105113"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -113,12 +113,14 @@ Web アプリの名前は、グローバルに一意である必要がありま�
 
 ## <a name="deploy-web-app-certificate-from-key-vault"></a>Web アプリの証明書を Key Vault からデプロイする
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 テンプレートに SSL バインディングの [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) リソースが含まれ、証明書が Key Vault に格納されている場合、App Service の ID が証明書にアクセスできることを確認する必要があります。
 
 グローバル Azure では、App Service サービス プリンシパルの ID は **abfa0a7c-a6b6-4736-8310-5855508787cd** です。 App Service サービス プリンシパルに Key Vault へのアクセスを許可するには、次を使用します。
 
 ```azurepowershell-interactive
-Set-AzureRmKeyVaultAccessPolicy `
+Set-AzKeyVaultAccessPolicy `
   -VaultName KEY_VAULT_NAME `
   -ServicePrincipalName abfa0a7c-a6b6-4736-8310-5855508787cd `
   -PermissionsToSecrets get `
@@ -138,3 +140,4 @@ Azure Government では、App Service サービス プリンシパルの ID は 
 ## <a name="next-steps"></a>次の手順
 
 * テンプレートを使用して Web アプリをデプロイするチュートリアルについては、「[Azure でマイクロサービスを予測どおりにデプロイする](deploy-complex-application-predictably.md)」を参照してください。
+* テンプレート内のリソースの種類用の JSON 構文とプロパティの詳細については、[Azure Resource Manager テンプレート リファレンス](/azure/templates/)を参照してください。

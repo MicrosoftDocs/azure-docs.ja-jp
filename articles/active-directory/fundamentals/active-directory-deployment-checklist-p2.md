@@ -1,94 +1,103 @@
 ---
-title: Premium P2 ライセンス機能のチェックリスト - Azure Active Directory | Microsoft Docs
-description: 30 日目まで、90 日目まで、およびそれ以降の Azure Active Directory Premium P2 機能のデプロイのためのデプロイ チェックリスト。
+title: Azure AD デプロイ チェックリスト
+description: Azure Active Directory 機能のデプロイ チェックリスト
 services: active-directory
 ms.service: active-directory
-ms.component: ''
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 01/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
-ms.custom: it-pro, seodec18
-ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+manager: daveba
+ms.reviewer: ''
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e9ee0d6fab96c84eee8a520d01d97faddab49f2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078239"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904187"
 ---
-# <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2 ライセンス機能のチェックリスト
+# <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
-組織の Azure Active Directory (Azure AD) をデプロイして、継続的にセキュリティで保護することは困難と感じる場合があります。 この記事では、参考になる一般的なタスクをいくつか示します。 セキュリティ体制を強化するには、通常、30 日、90 日、またはそれを超える期間にわたってこのようなタスクを実行します。 Azure AD を既にデプロイした組織でも、投資による最大のメリットが確実に得られるように、このチェックリストを活用できます。
+組織の Azure Active Directory (Azure AD) をデプロイして、継続的にセキュリティで保護するのは、大変に感じる場合があります。 この記事では、お客様が 30 日間、60 日間、90 日間、またはそれ以上にわたって複数のフェーズでセキュリティ体制の強化を完了するうえで役立つ一般的なタスクを明らかにします。 既に Azure AD をデプロイした組織でも、投資から確実に最大限のメリットを引き出すために、このガイドを利用することができます。
 
-綿密に計画され、実行された ID インフラストラクチャは、認証済みのユーザーおよびデバイスのみから生産性ワークロードとデータへより安全にアクセスするための基礎になります。
+綿密に計画されて作り上げられる ID インフラストラクチャは、既知のユーザーとデバイスのみが、生産性向上のワークロードとデータにセキュリティで保護されたアクセスを行うための道を開きます。
+
+さらに、お客様は自社の [ID セキュリティ スコア](identity-secure-score.md)をチェックし、マイクロソフトのベスト プラクティスにどれだけ整合しているかを確認することができます。 これらの推奨事項を実装する前後にセキュリティ スコアをチェックして、同じ業界の他の企業や、同じ規模の他の組織と比べてどの程度うまくやっているかを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このガイドは、Azure AD Premium P2 ライセンス、Enterprise Mobility + Security E5、Microsoft 365 E5、または同様のライセンス バンドルがあることを前提としています。
+このガイドの推奨事項の多くは、Azure AD Free や Basic で、またはまったくライセンスがなくても、実施することができます。 ライセンスが必要な場合は、タスクを遂行するために最小限どのライセンスが必要であるかを示します。
 
-[Azure AD のライセンス](https://azure.microsoft.com/pricing/details/active-directory/)
+ライセンスに関する追加の情報については、以下のページをご覧ください。
 
-[Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
+* [Azure AD のライセンス](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
+* [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
+* [Azure AD B2B のライセンスに関するガイダンス](../b2b/licensing-guidance.md)
 
-[Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
+## <a name="phase-1-build-a-foundation-of-security"></a>フェーズ 1:セキュリティ基盤の構築
 
-## <a name="plan-and-deploy-day-1-30"></a>計画とデプロイ: 1 ～ 30 日
+このフェーズでは、通常のユーザー アカウントをインポートまたは作成する前に、管理者がベースラインのセキュリティ機能を有効にして、より安全で使いやすい基盤を Azure AD 内に作成します。 この基盤フェーズにより、ユーザーが最初からより安全な状態にあること、およびエンドユーザーに紹介される新しい概念は一度に 1 つだけにする必要があることを確実にします。
 
-- 複数のグローバル管理者を指定する (非常用アカウント)
-   - [Azure AD で緊急アクセス用管理者アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
-- Azure AD Privileged Identity Management (PIM) を有効にしてレポートを表示する
-   - [PIM の使用を開始する](../privileged-identity-management/pim-getting-started.md)
-- 可能な場合、非グローバル管理者ロールを使用する
-   - [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
-- Authentication
-   - [セルフサービスによるパスワードのリセットをロール アウトする](../authentication/howto-sspr-deployment.md)
-   - Azure AD パスワード保護のプレビューをデプロイする
-      - [組織内の不適切なパスワードを排除する](../authentication/concept-password-ban-bad.md)
-      - [Windows Server Active Directory に Azure AD パスワード保護を適用する](../authentication/concept-password-ban-bad-on-premises.md)
-   - アカウント ロックアウト ポリシーを構成する
-      - [Azure Active Directory のスマート ロックアウト](../authentication/howto-password-smart-lockout.md)
-      - [AD FS エクストラネットのロックアウトおよびエクストラネットのスマート ロックアウト](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)
-   - [条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md)
-   - [セルフサービスのパスワード リセットと Azure AD Multi-Factor Authentication の集中型登録 (プレビュー) を有効にする](../authentication/concept-registration-mfa-sspr-converged.md)
-   - [Azure Active Directory Identity Protection を有効にする](../identity-protection/enable.md)
-      - [リスク イベントを使用して Multi-Factor Authentication とパスワードの変更をトリガーする](../authentication/tutorial-risk-based-sspr-mfa.md)
-   - [パスワードのガイダンス](https://www.microsoft.com/research/publication/password-guidance/)
-      - 最低 8 文字長の要件を維持する。必ずしも、長いほど良いわけではない
-      - 文字構成の要件を削除する
-      - [必須になっている定期的なユーザー アカウントのパスワード リセットを削除する](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire)
-- オンプレミス Active Directory からユーザーを同期する
-   - [Azure AD Connect のインストール](../connect/active-directory-aadconnect-select-installation.md)
-   - [パスワード ハッシュ同期の実装](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)
-   - [パスワード ライトバックの実装](../authentication/howto-sspr-writeback.md)
-   - [Azure AD Connect Health の実装](../connect-health/active-directory-aadconnect-health.md)
-- [Azure Active Directory のグループ メンバーシップでユーザーにライセンスを割り当てる](../users-groups-roles/licensing-groups-assign.md)
+| タスク | 詳細 | 必要とされるライセンス |
+| ---- | ------ | ---------------- |
+| [複数のグローバル管理者を指定する](../users-groups-roles/directory-emergency-access.md) | 緊急事態があった場合に使用するため、クラウド専用の永続的なグローバル管理者アカウントを少なくとも 2 つ割り当てます。 これらのアカウントは日常は使用されないもので、長く複雑なパスワードにする必要があります。 | Azure AD Free |
+| [可能な場合は非グローバル管理者ロールを使用する](../users-groups-roles/directory-assign-admin-roles.md) | 管理者には、アクセスする必要がある領域だけに必要なアクセスのみを付与します。 すべての管理者がグローバル管理者である必要はありません。 | Azure AD Free |
+| [管理者ロールの使用の追跡について Privileged Identity Management を有効にする](../privileged-identity-management/pim-getting-started.md) | Privileged Identity Management を有効にして、管理者ロールの使用状況の追跡を開始します。 | Azure AD Premium P2 |
+| [セルフサービスによるパスワードのリセットをロール アウトする](../authentication/howto-sspr-deployment.md) | ユーザーに管理者権限を付与するポリシーを使用して、スタッフによる各自のパスワードのリセットを許可することで、パスワードのリセットに関するヘルプデスクの呼び出しを削減します。 | Azure AD Basic |
+| [組織固有の禁止パスワードのカスタム リストを作成する](../authentication/howto-password-ban-bad-configure.md) | ユーザーが、お客様の組織や分野において一般的な単語や語句を含むパスワードを作成しないようにします。 | Azure AD Basic |
+| [Azure AD のパスワード保護とのオンプレミス統合を有効にする](../authentication/concept-password-ban-bad-on-premises.md) | 禁止パスワード リストをオンプレミスのディレクトリまで拡張して、オンプレミスで設定されるパスワードが、グローバルでテナント固有の禁止パスワード リストにも確実に準拠するようにします。 | Azure AD Premium P1 |
+| [Microsoft のパスワードのガイダンスを有効にする](https://www.microsoft.com/research/publication/password-guidance/) | 設定したスケジュールでのパスワード変更をユーザーに要求することをやめ、複雑さに関する要件を無効にします。ユーザーは自分のパスワードを、より覚えやすく安全な何かのままにしておきやすくなります。 | Azure AD Free |
+| [クラウドベースのユーザー アカウントの定期的なパスワード リセットを無効にする](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期的なパスワード リセットでは、ユーザーに、既存のパスワードを増やすことが推奨されています。 Microsoft のパスワードのガイダンス ドキュメントに記載されたガイドラインを使用し、オンプレミスのポリシーをクラウドのみのユーザーにミラー化します。 | Azure AD Free |
+| [Azure Active Directory のスマート ロックアウトをカスタマイズする](../authentication/howto-password-smart-lockout.md) | オンプレミスの Active Directory ユーザーにレプリケートされないように、クラウド ベースのユーザーからのロックアウトを停止します | Azure AD Basic |
+| [AD FS のエクストラネット スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS のエクストラネット ロックアウトは、ブルート フォース パスワード推測攻撃からの保護を行います。同時に、有効な AD FS ユーザーには引き続き自分のアカウントを使用させます。 | |
+| [条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md) | 条件付きアクセス ポリシーを使用して、機密性の高いアプリケーションにアクセスするときには 2 段階認証を実行するようユーザーに要求します。 | Azure AD Premium P1 |
+| [Azure Active Directory Identity Protection を有効にする](../identity-protection/enable.md) | 組織内のユーザーについて、リスクのあるサインインや侵害された資格情報の追跡を有効にします。 | Azure AD Premium P2 |
+| [リスク イベントを使用して多要素認証とパスワード変更をトリガーする](../authentication/tutorial-risk-based-sspr-mfa.md) | 多要素認証、パスワードのリセット、リスクに基づいたサインインのブロックなどのイベントをトリガーできるオートメーションを有効にします。 | Azure AD Premium P2 |
+| [セルフサービスのパスワード リセットと Azure AD Multi-Factor Authentication の集中型登録 (プレビュー) を有効にする](../authentication/concept-registration-mfa-sspr-converged.md) | Azure Multi-Factor Authentication とセルフ サービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 | Azure AD Premium P1 |
 
-## <a name="plan-and-deploy-day-31-90"></a>計画とデプロイ: 31 ～ 90 日
+## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>フェーズ 2:ユーザーのインポート、同期の有効化、デバイスの管理
 
-- [ゲスト ユーザー アクセスを計画する](../b2b/what-is-b2b.md)
-   - [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../b2b/add-users-administrator.md)
-   - [B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../b2b/allow-deny-list.md)
-   - [Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセス許可する](../b2b/hybrid-cloud-to-on-premises.md)
-- ユーザーのライフサイクル管理の戦略に関する決定を行う
-- [デバイス管理戦略を決定する](../devices/overview.md)
-   - [Azure AD 参加の使用シナリオとデプロイに関する考慮事項](../devices/azureadjoin-plan.md)
-- [組織の Windows Hello for Business を管理する](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization)
+次に、フェーズ 1 で構築した基盤への追加を行います。ユーザーのインポート、同期の有効化、ゲスト アクセスの計画、追加機能のサポートのための準備を行います。
 
-## <a name="plan-and-deploy-day-90-and-beyond"></a>計画とデプロイ: 90 日目以降
+| タスク | 詳細 | 必要とされるライセンス |
+| ---- | ------ | ---------------- |
+| [Azure AD Connect のインストール](../connect/active-directory-aadconnect-select-installation.md) | 既存のオンプレミス ディレクトリのユーザーをクラウドに同期する準備をします。 | Azure AD Free |
+| [パスワード ハッシュ同期の実装](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | パスワード ハッシュを同期し、パスワード変更のレプリケート、不正なパスワードの検出と修正、漏洩した資格情報の報告を行えるようにします。 | Azure AD Premium P1 |
+| [パスワード ライトバックの実装](../authentication/howto-sspr-writeback.md) | クラウドでのパスワードの変更を、オンプレミスの Windows Server Active Directory 環境に書き戻すことを許可します。 | Azure AD Premium P1 |
+| [Azure AD Connect Health の実装](../connect-health/active-directory-aadconnect-health.md) | Azure AD Connect サーバー、AD FS サーバー、およびドメイン コント ローラーについて、正常性に関する重要な統計情報の監視を有効にします。 | Azure AD Premium P1 |
+| [Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て](../users-groups-roles/licensing-groups-assign.md) | ユーザーごとの設定ではなく、グループ別に機能を有効または無効にするライセンス グループを作成することで、時間と労力を節約します。 | |
+| [ゲスト ユーザー アクセスの計画を作成する](../b2b/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 | [Azure AD B2B のライセンスに関するガイダンス](../b2b/licensing-guidance.md) |
+| [デバイス管理戦略を決定する](../devices/overview.md) | デバイスに関して組織が何を許可するかを決定します。 登録か参加か、Bring Your Own Device か会社支給かなどです。 | |
+| [組織に Windows Hello for Business を配置する](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello を使用するパスワードのない認証のための準備を行います | |
 
-- [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md)
-   - [PIM で Azure AD ディレクトリ ロールの設定を構成する](../privileged-identity-management/pim-how-to-change-default-settings.md)
-   - [PIM で Azure AD ディレクトリ ロールを割り当てる](../privileged-identity-management/pim-how-to-add-role-to-user.md)
-- [PIM で Azure AD ディレクトリ ロールのアクセス レビューを完了する](../privileged-identity-management/pim-how-to-start-security-review.md)
-- ユーザーのライフサイクルを総合的に管理する
-   - Azure AD が ID ライフサイクルを管理する方法を備えている
-   - 未承認のアクセスを防ぐために、従業員のアカウント ライフサイクルから手動の手順を削除する
-      - 適切なソース (人事システム) からの ID を Azure AD に同期する。 サポートされている人事システムにリンクする
-      - [動的グループを使用して、部門、役職、リージョン、その他の属性など、人事 (または、信頼できるソース) からの属性に基づいてグループにユーザーを自動的に割り当てる](../users-groups-roles/groups-dynamic-membership.md)
-      - [グループベース アクセス管理のプロビジョニングを使用して、SaaS アプリケーションにユーザーを自動的にプロビジョニングする](../manage-apps/what-is-access-management.md)
+## <a name="phase-3-manage-applications"></a>フェーズ 3: アプリケーションの管理
+
+以前のフェーズを基にした構築を続行するので、移行と Azure AD との統合の候補となるアプリケーションを特定し、それらのアプリケーションのセットアップを完了します。
+
+| タスク | 詳細 | 必要とされるライセンス |
+| ---- | ------ | ---------------- |
+| アプリケーションを特定する | オンプレミス アプリケーション、クラウドの SaaS アプリケーション、その他の基幹業務アプリケーションなど、組織で使用中のアプリケーションを特定します。 これらのアプリケーションの Azure AD での管理が、可能であるか、する必要があるかを判断します。 | ライセンス不要 |
+| [ギャラリーのサポートされている SaaS アプリケーションを統合する](../manage-apps/add-application-portal.md) | Azure AD には、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの一部は、おそらく、Azure portal から直接アクセスできるギャラリーにあります。 | Azure AD Free |
+| [アプリケーション プロキシを使用してオンプレミス アプリケーションを統合する](../manage-apps/application-proxy-add-on-premises-application.md) | アプリケーション プロキシを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 | Azure AD Basic |
+
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>フェーズ 4: 特権 ID の監査、アクセス レビューの完了、ユーザー ライフ サイクルの管理
+
+フェーズ 4 では、管理者が、管理用の最低限の特権を適用し、最初のアクセス レビューを完了し、一般的なユーザー ライフ サイクルのタスクの自動化を有効にします。
+
+| タスク | 詳細 | 必要とされるライセンス |
+| ---- | ------ | ---------------- |
+| [Privileged Identity Management の使用を強制する](../privileged-identity-management/pim-security-wizard.md) | 通常の日常ユーザー アカウントから管理者ロールを削除します。 管理ユーザーにそのロールの使用を認めるのは、多要素認証チェックの成功後、業務上妥当である理由の提示後、指定された承認者からの要求後とします。 | Azure AD Premium P2 |
+| [PIM で Azure AD ディレクトリ ロールのアクセス レビューを完了する](../privileged-identity-management/pim-how-to-start-security-review.md) | セキュリティおよびリーダーシップ チームと協力して、組織のポリシーに基づいて管理アクセスをレビューするアクセス レビュー ポリシーを作成します。 | Azure AD Premium P2 |
+| [動的グループ メンバーシップのポリシーを実装する](../users-groups-roles/groups-dynamic-membership.md) | 動的グループを使用して、部門、役職、リージョン、その他の属性など、人事 (または、信頼できるソース) からの属性に基づいて、グループにユーザーを自動的に割り当てます。 |  |
+| [グループ ベースのアプリケーション プロビジョニングを実装する](../manage-apps/what-is-access-management.md) | グループベース アクセス管理のプロビジョニングを使用して、SaaS アプリケーションのユーザーを自動的にプロビジョニングします。 |  |
+| [ユーザー プロビジョニングとプロビジョニング解除を自動化する](../manage-apps/user-provisioning.md) | 未承認のアクセスを防ぐために、従業員のアカウント ライフサイクルから手動の手順をなくします。 適切なソース (人事システム) からの ID を Azure AD に同期する。 |  |
 
 ## <a name="next-steps"></a>次の手順
+
+[Azure AD のライセンスと価格の詳細](https://azure.microsoft.com/pricing/details/active-directory/)
 
 [ID とデバイスのアクセスの構成](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 

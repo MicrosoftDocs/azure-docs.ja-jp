@@ -1,5 +1,5 @@
 ---
-title: 'VPN Gateway と PowerShell を使用して仮想ネットワークを複数のサイトに接続する: クラシック | Microsoft Docs'
+title: 'VPN Gateway と PowerShell を使用して仮想ネットワークを複数のサイトに接続する: Classic | Microsoft Docs'
 description: VPN Gateway を使用して複数のローカルのオンプレミスのサイトをクラシック仮想ネットワークに接続します。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: c0af4271df0e88354edb717b8d6f4c99ab29e573
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29399374"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994020"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
 
@@ -32,11 +32,11 @@ ms.locfileid: "29399374"
 >
 >
 
-この記事では、PowerShell を使用して、既存の接続がある VPN ゲートウェイにサイト間 (S2S) 接続を追加する方法について説明します。 この種類の構成は、一般に "マルチサイト" 構成と呼ばれます。 この記事の手順は、クラシック デプロイメント モデル (別名、サービス管理) を使用して作成された仮想ネットワークを対象としています。 次の手順は、ExpressRoute/サイト間の共存接続の構成には適用されません。
+この記事では、PowerShell を使用して、既存の接続がある VPN ゲートウェイにサイト間 (S2S) 接続を追加する方法について説明します。 この種類の構成は、一般に "マルチサイト" 構成と呼ばれます。 この記事の手順は、クラシック デプロイ モデル (別名、サービス管理) を使用して作成された仮想ネットワークを対象としています。 次の手順は、ExpressRoute/サイト間の共存接続の構成には適用されません。
 
 ### <a name="deployment-models-and-methods"></a>デプロイメント モデルおよび方法
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 以下の表は、この構成について新しい記事、追加のツールが利用できるようになったら更新されるものです。 記事が利用できるようになったら、表から直接リンクできるようにします。
 
@@ -75,8 +75,8 @@ ms.locfileid: "29399374"
 2. 新しいゲートウェイを構成し、VPN トンネルを作成します。 手順については、[「SKU と VPN の種類の指定](vpn-gateway-howto-site-to-site-classic-portal.md#sku)」を参照してください。 ルーティングの種類として [動的] が指定されていることを確認してください。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>サイト間仮想ネットワークが存在しない場合:
-1. 「[Azure クラシック ポータルでサイト間 VPN 接続を使用して Virtual Network を作成する](vpn-gateway-site-to-site-create.md)」の手順に従って、サイト間仮想ネットワークを作成します。  
-2. 次の手順により動的ルーティング ゲートウェイを構成します。[VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md) 必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
+1. 次の手順を使用してサイト間仮想ネットワークを作成します: [サイト間 VPN 接続を持つ仮想ネットワークの作成](vpn-gateway-site-to-site-create.md)。  
+2. 次の手順により動的ルーティング ゲートウェイを構成します: [VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)。 必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
 
 ## <a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
 次のコマンドを実行して、Azure のネットワーク構成ファイルをエクスポートします。 必要に応じて、ファイルの場所を変更して別の場所にエクスポートすることもできます。
@@ -88,7 +88,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ## <a name="3-open-the-network-configuration-file"></a>手順 3.ネットワーク構成ファイルを開く
 前のステップでダウンロードしたネットワーク構成ファイルを開きます。 任意の xml エディターを使用してください。 ファイルは次のようになります。
 
-        <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+        <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
             <LocalNetworkSites>
               <LocalNetworkSite name="Site1">
@@ -138,7 +138,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ## <a name="4-add-multiple-site-references"></a>4.複数のサイト リファレンスを追加する
 サイト リファレンスの情報を追加または削除する場合、ConnectionsToLocalNetwork/LocalNetworkSiteRef に対して構成の変更を行います。 新しいローカル サイトのリファレンスを追加することで、Azure が新しくトンネルを作成します。 下の例で、ネットワーク構成はシングル サイト接続のものです。 変更が完了したら、ファイルを保存します。
 
-```
+```xml
   <Gateway>
     <ConnectionsToLocalNetwork>
       <LocalNetworkSiteRef name="Site1"><Connection type="IPsec" /></LocalNetworkSiteRef>
@@ -148,7 +148,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
 さらにサイト参照を追加するには (複数サイト構成を作成するには)、次の例に示すように "LocalNetworkSiteRef" 行を追加するだけです。
 
-```
+```xml
   <Gateway>
     <ConnectionsToLocalNetwork>
       <LocalNetworkSiteRef name="Site1"><Connection type="IPsec" /></LocalNetworkSiteRef>

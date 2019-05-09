@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2019
 ms.author: kumud
-ms.openlocfilehash: ea1ef845f55fbdadeea1992e167ef6568572abc9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141715"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369634"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Linux VM の DHCPv6 の構成
 
@@ -54,7 +54,18 @@ Azure Marketplace の一部の Linux 仮想マシン イメージでは、動的
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
+Ubuntu 17.10 以降、既定のネットワーク構成メカニズムは [NETPLAN]( https://netplan.io) です。  インストール/インスタンス化時に、NETPLAN は、/{lib,etc,run}/netplan/*.yaml の場所にある YAML 構成ファイルからネットワーク構成を読み取ります。
 
+構成の各イーサネット インターフェイスに *dhcp6:true* ステートメントを含めてください。  例: 
+  
+        network:
+          version: 2
+          ethernets:
+            eno1:
+              dhcp6: true
+
+初期ブート時に、netplan "ネットワーク レンダラー" は、構成を /run に書き込み、デバイスの制御を指定されたネットワーク デーモンに渡します。NETPLAN の参照情報については、 https://netplan.io/reference を参照してください。
+ 
 ## <a name="debian"></a>Debian
 
 1. */etc/dhcp/dhclient6.conf* ファイルを編集し、次の行を追加します。

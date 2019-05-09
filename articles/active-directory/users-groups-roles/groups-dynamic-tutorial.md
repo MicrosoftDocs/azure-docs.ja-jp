@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory の動的グループ メンバーシップでユーザーを自動的に追加/削除するチュートリアル
+title: 動的グループ メンバーシップによるユーザーの追加と削除 - チュートリアル - Azure Active Directory
 description: このチュートリアルでは、ユーザー メンバーシップの規則を含んだグループを使って、ユーザーを自動的に追加したり削除したりします。
 services: active-directory
 documentationcenter: ''
@@ -8,26 +8,27 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 2119bb60cbdc36f62623ce0db52885e17f3d3006
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.custom: it-pro;seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 93b59a108d5d87479c12174e97713d4c12d84f2e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40209173"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200057"
 ---
-# <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル: グループ メンバーを自動的に追加/削除する
+# <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル:グループ メンバーを自動的に追加/削除する
 
 Azure Active Directory (Azure AD) では、セキュリティ グループまたは Office 365 グループのユーザーを自動的に追加したり削除したりできるので、この作業を必ずしも手動で行う必要はありません。 ユーザーまたはデバイスのいずれかのプロパティが変更されると、Azure AD はテナント内のすべての動的グループ規則を評価し、その変更によってメンバーの追加または削除が必要であるかどうかを確認します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-> * 特定のパートナー企業のゲスト ユーザーが自動的に追加されるグループを作成します。
+> * パートナー企業のゲスト ユーザーが自動的に追加されるグループを作成します。
 > * パートナー固有の機能にゲスト ユーザーがアクセスするためのライセンスをグループに割り当てます。
 > * 補足: ゲスト ユーザーを削除して **[すべてのユーザー]** グループのセキュリティを確保する (社内専用サイトへのアクセス権をメンバー ユーザーに与える場合など)。
 
@@ -35,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-この機能を使うには、テナントの全体管理者に Azure AD Premium ライセンスが 1 つ必要となります。 ライセンスがない場合は、Azure AD の **[ライセンス]** > **[製品]** > **[試用/購入]** を選択してください。
+この機能を使うには、テナントのグローバル管理者に Azure AD Premium ライセンスが 1 つ必要となります。 ライセンスがない場合は、Azure AD の **[ライセンス]** > **[製品]** > **[試用/購入]** を選択してください。
 
 ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありません。 その対象となるすべてのユーザーをカバーできるだけの Azure AD Premium P1 ライセンス数がテナントにあれば済みます。 
 
@@ -43,15 +44,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 まず、全員が単一のパートナー企業に所属するゲスト ユーザーのグループを作成します。 これらのユーザーには特別なライセンスが必要であるため、通常は、そのためのグループを作成した方が効率的です。
 
-1. テナントの全体管理者アカウントで Azure portal (https://portal.azure.com) にサインインします。
+1. テナントのグローバル管理者アカウントで Azure portal (https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]** > **[グループ]** > **[新しいグループ]** の順に選択します。
-  ![新しいグループの選択コマンド](./media/groups-dynamic-tutorial/new-group.png)
+   ![新しいグループを開始するためのコマンドを選択](./media/groups-dynamic-tutorial/new-group.png)
 3. **[グループ]** ブレードで次の操作を行います。
   
-  * グループの種類として **[セキュリティ]** を選択します。
-  * グループの名前と説明として「`Guest users Contoso`」を入力します。
-  * **[メンバーシップの種類]** を **[動的ユーザー]** に変更します。
-  * **[動的クエリの追加]** を選択します。
+   * グループの種類として **[セキュリティ]** を選択します。
+   * グループの名前と説明として「`Guest users Contoso`」を入力します。
+   * **[メンバーシップの種類]** を **[動的ユーザー]** に変更します。
+   * **[動的クエリの追加]** を選択します。
   
 4. **[高度なルール]** を選択し、**[高度なルール]** ボックスに次のように入力します。`(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`
 5. **[クエリの追加]** を選択してブレードを閉じます。
@@ -85,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]
 > * ゲスト ユーザーのグループを作成する
 > * 新しいグループにライセンスを割り当てる

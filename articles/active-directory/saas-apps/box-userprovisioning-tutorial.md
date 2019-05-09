@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Box を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Box を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory と Box の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 1c959595-6e57-4954-9c0d-67ba03ee212b
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 3dac1d18a021c8d6c1b6e3db370c60b9aa782f1c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cd7826455624ca4a84d668455f522cbde411ac8b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625353"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163189"
 ---
-# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル: Box を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル:Box を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Box にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Box と Azure AD で実行する必要がある手順について説明します。
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9fac565922a6dd36608455456c66ff2fe940557a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6acffc5056f916f2e05c7a0fd3eb325fd89a9e4b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680414"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117053"
 documentType: LandingData
 title: Azure の専用 HSM のドキュメント
 metadata:
@@ -12,7 +12,7 @@ metadata:
   meta.description: Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
   services: dedicated-hsm
   author: barclayn
-  manager: mbaldwin
+  manager: barbkess
   layout: LandingPage
   ms.assetid: 
   ms.service: dedicated-hsm

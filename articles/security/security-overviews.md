@@ -4,7 +4,7 @@ description: この記事では、さまざまな Azure リソースに対する
 services: azure-security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/16/2018
 ms.author: tomsh
-ms.openlocfilehash: b4af979ba23e5ef4d009ce2d808dacdffca2c4ec
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 853dd89f4df59338a4f520106bff70d67cbab2a3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498098"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116288"
 ---
 # <a name="azure-security-technical-overviews"></a>Azure セキュリティの技術的な概要
 

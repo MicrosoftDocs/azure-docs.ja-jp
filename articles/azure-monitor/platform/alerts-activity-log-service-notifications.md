@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: b22ecb9d8948a77df43f47cd9fd218be4319d06e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583733"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092232"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -37,7 +37,7 @@ Azure でサービス正常性通知を Azure サブスクリプションに送�
 
 Azure Resource Manager テンプレートを使用したサービス正常性通知アラートの構成方法の詳細については、[Resource Manager テンプレート](alerts-activity-log.md)に関するページを参照してください。
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Azure portal を使用するアラートと新しいアクション グループ
 1. [ポータル](https://portal.azure.com)で、**[サービス正常性]** を選択します。
 
     ![[サービス正常性] サービス](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -86,7 +86,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 >
 >
 
-## <a name="create-an-alert-on-a-service-health-notification-for-an-existing-action-group-by-using-the-azure-portal"></a>Azure Portal を使用して既存のアクション グループのサービス正常性通知に関するアラートを作成する
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Azure portal を使用する既存のアクション グループでのアラート
 
 1. 前のセクションの手順 1. から 7. に従って、サービス正常性通知を作成します。 
 
@@ -96,7 +96,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 数分以内にアラートがアクティブになり、作成時に指定した条件に基づいてトリガーが開始されます。
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-resource-manager-templates"></a>Resource Manager テンプレートを使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用するアラートと新しいアクション グループ
 
 電子メール ターゲットを使ってアクション グループを作成し、ターゲット サブスクリプションのすべてのサービス正常性通知を有効にする例を次に示します。
 

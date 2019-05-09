@@ -2,17 +2,17 @@
 title: Azure Data Catalog へのアクセスをセキュリティで保護する方法
 description: この記事では、データ カタログとそのデータ資産をセキュリティで保護する方法について説明します。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9d80eddffaf376b6f6f0090dce74a4884b291531
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6c09b509399647f4cacbc96427200da5a1b00ac9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405531"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010754"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>データ カタログとデータ資産へのアクセスをセキュリティで保護する方法
 > [!IMPORTANT]
@@ -23,7 +23,7 @@ Azure Data Catalog では、データ カタログにアクセスできるユー
 ## <a name="catalog-users-and-permissions"></a>カタログのユーザーとアクセス許可
 ユーザーまたはグループにデータ カタログへのアクセスを提供し、アクセス許可を設定するには、次のようにします。
 
-1. [データ カタログのホーム ページ](http://www.azuredatacatalog.com)のツールバーで、**[設定]** をクリックします。
+1. [データ カタログのホーム ページ](https://www.azuredatacatalog.com)のツールバーで、**[設定]** をクリックします。
 
     ![データ カタログ - 設定](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 2. [設定] ページで、**[カタログ ユーザー]** セクションを展開します。

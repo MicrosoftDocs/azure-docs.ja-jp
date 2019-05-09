@@ -1,0 +1,62 @@
+- name: Scheduler のドキュメント
+  href: index.md
+- name: 概要
+  items:
+    - name: Azure Scheduler とは
+      href: scheduler-intro.md
+- name: 作業開始
+  items:
+    - name: ジョブの作成と管理 - ポータル
+      href: scheduler-get-started-portal.md
+    - name: Scheduler から Logic Apps への移行
+      href: migrate-from-scheduler-to-logic-apps.md
+- name: 概念
+  items:
+    - name: 概念、用語、およびエンティティ
+      href: scheduler-concepts-terms.md
+- name: ハウツー ガイド
+  items:
+    - name: 計画と設計
+      items:
+        - name: プランと課金
+          href: scheduler-plans-billing.md
+        - name: 制限、クォータ、および既定値
+          href: scheduler-limits-defaults-errors.md
+        - name: 高可用性と信頼性
+          href: scheduler-high-availability-reliability.md
+    - name: 開発
+      items:
+        - name: 複雑なスケジュールと高度な繰り返しの作成
+          href: scheduler-advanced-complexity.md
+        - name: スケジュールの作成と管理 - Azure PowerShell
+          href: scheduler-powershell-reference.md
+    - name: セキュリティ保護
+      items:
+        - name: 発信呼び出しを認証する
+          href: scheduler-outbound-authentication.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.scheduler
+    - name: REST API
+      href: /rest/api/scheduler
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.scheduler/allversions
+- name: リソース
+  items:
+    - name: Azure Scheduler のロードマップ
+      href: 'https://azure.microsoft.com/updates/?product=scheduler'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/updates/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-scheduler'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/scheduler/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=scheduler'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=scheduler'

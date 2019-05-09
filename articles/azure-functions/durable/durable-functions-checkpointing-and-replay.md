@@ -2,7 +2,7 @@
 title: Durable Functions でのチェックポイントと再生 - Azure
 description: Azure Functions の Durable Functions 拡張機能でチェックポイントと再生がどのように動作するかを説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5d2cf4d76ce6f44cb31f05d45f2ccbceccbe9c10
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339367"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607351"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions でのチェックポイントと再生 - (Azure Functions)
 
@@ -79,7 +79,7 @@ Durable Task Framework は、`await` (C#) または `yield` (JavaScript) ステ�
 完了すると、Azure Table Storage の上記の関数の履歴は次のようになります (わかりやすくするために一部省略されています)。
 
 | PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | Name             | 結果                                                    | Status |
-|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------|
+|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |

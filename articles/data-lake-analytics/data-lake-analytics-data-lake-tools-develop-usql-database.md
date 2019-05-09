@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 4518011fbeaefbb32403f5b37e434e7315beffa0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734926"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59490395"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL データベース プロジェクトを使った Azure Data Lake 用 U-SQL データベースの開発
 
 U-SQL データベースは、非構造化データに対する構造化ビューと、テーブル内で管理された構造化データに対する構造化ビューを提供します。 また、構造化データとカスタム コードを整理するための一般的なメタデータ カタログ システムを提供します。 データベースは、これらの関連オブジェクトをグループ化する概念です。
 
-詳細については、[U-SQL データベースおよびデータ定義言語 (DDL)](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/data-definition-language-ddl-statements-u-sql) を参照してください。 
+詳細については、[U-SQL データベースおよびデータ定義言語 (DDL)](/u-sql/data-definition-language-ddl-statements) を参照してください。 
 
 U-SQL データベース プロジェクトは、開発者が高速かつ簡単に U-SQL データベースの開発、管理、および配置を行えるようにする Visual Studio のプロジェクトの一種です。
 
@@ -100,8 +100,8 @@ Visual Studio で、U-SQL データベース プロジェクトまたは .usqldb
 
 U-SQL プロジェクトから、U-SQL データベース プロジェクトを参照できます。 この参照は、2 つのワークロードに影響します。
 
-- *プロジェクトのビルド*: U-SQL スクリプトをビルドする前に、参照先のデータベース環境が設定されます。 
-- *(local-project) アカウントに対するローカル実行*: U-SQL スクリプトを実行する前に、参照先のデータベース環境が (local-project) アカウントに配置されます。 [ローカル実行と、(local-machine) アカウントと (local-project) アカウントの違いについては、こちらを参照してください](data-lake-analytics-data-lake-tools-local-run.md)。
+- *プロジェクトのビルド*:U-SQL スクリプトをビルドする前に、参照先のデータベース環境が設定されます。 
+- *(local-project) アカウントに対するローカル実行*:U-SQL スクリプトを実行する前に、参照先のデータベース環境が (local-project) アカウントにデプロイされます。 [ローカル実行と、(local-machine) アカウントと (local-project) アカウントの違いについては、こちらを参照してください](data-lake-analytics-data-lake-tools-local-run.md)。
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>U-SQL データベース参照の追加方法
 

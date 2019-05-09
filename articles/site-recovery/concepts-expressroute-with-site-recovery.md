@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/8/2019
 ms.author: mayg
-ms.openlocfilehash: 60da5d4e80a7465d02926066298a5dc63afb1de7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f8179f5e647039737a59afdd04d345bf465acfdf
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875180"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726347"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -38,7 +38,7 @@ ExpressRoute のルーティング ドメインの詳細と比較については
 
 Azure Site Recovery により、オンプレミスの [HYPER-V 仮想マシン](hyper-v-azure-architecture.md)、[VMware 仮想マシン](vmware-azure-architecture.md)、および[物理サーバー](physical-azure-architecture.md)のディザスター リカバリーと Azure への移行が可能になります。 オンプレミスから Azure へのすべてのシナリオで、レプリケーション データは Azure Storage アカウントに送信され、格納されます。 レプリケーション中に仮想マシンの料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。
 
-Site Recovery は、パブリック エンドポイント経由で Azure Storage にデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使用するために、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 仮想マシンまたはサーバーが Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。 プライベート ピアリングを介したレプリケーションはサポートされていません。
+Site Recovery は、パブリック エンドポイント経由で Azure Storage にデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使用するために、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering) (新規作成では非推奨) または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションのための[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も確実に満たされるようにします。 仮想マシンまたはサーバーが Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。 プライベート ピアリングを介したレプリケーションはサポートされていません。
 
 組み合わせたシナリオは次の図のように表されます。![ExpressRoute を使用してオンプレミスから Azure へ](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
@@ -55,5 +55,5 @@ Azure VM のディザスター リカバリーの場合、既定では、レプ�
 ## <a name="next-steps"></a>次の手順
 - [ExpressRoute 回線](../expressroute/expressroute-circuit-peerings.md)について詳しく学習する。
 - [ExpressRoute ルーティング ドメイン](../expressroute/expressroute-circuit-peerings.md#peeringcompare)について詳しく学習する。
-- [ExpressRoute の場所](../expressroute/expressroute-locations.md)について詳しく学習します。
-- [ExpressRoute を使用した Azure 仮想マシン](azure-vm-disaster-recovery-with-expressroute.md)のディザスター リカバリーについて詳しく学習します。
+- [ExpressRoute の場所](../expressroute/expressroute-locations.md)について詳しく学習する。
+- [ExpressRoute を使用した Azure 仮想マシン](azure-vm-disaster-recovery-with-expressroute.md)のディザスター リカバリーについて詳しく学習する。

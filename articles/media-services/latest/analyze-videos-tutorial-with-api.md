@@ -1,5 +1,5 @@
 ---
-title: Media Services を使用してビデオを分析する - Azure | Microsoft Docs
+title: .NET を使用して Media Services でビデオを分析する - Azure | Microsoft Docs
 description: Azure Media Services を使用してビデオを分析するには、このチュートリアルの手順に従います。
 services: media-services
 documentationcenter: ''
@@ -9,26 +9,24 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 12/08/2018
+ms.date: 03/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 42ffecec896265f99a8f1f0b43b47c1988a493d6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6508e90f76a374d628fdd5032c475e4dde8ffa78
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133895"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351781"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>チュートリアル:API を使用して Media Services v3 でビデオを分析する
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>チュートリアル:.NET を使用して Media Services v3 でビデオを分析する
 
 このチュートリアルでは、Azure Media Services を使用したビデオの分析について説明します。 記録されたビデオまたはオーディオ コンテンツに関する詳細な分析情報を得る必要のある多くのシナリオがあります。 たとえば、より高い顧客満足度を実現するため、組織は音声テキスト変換処理を実行して、カスタマー サポートの記録をインデックスとダッシュボードを含む検索可能なカタログに変換できます。 その後、一連の一般的なクレームとそのソース、各種の有益な情報など、ビジネスの分析情報を取得することができます。
 
 このチュートリアルでは、次の操作方法について説明します。    
 
 > [!div class="checklist"]
-> * Media Services アカウントを作成する
-> * Media Services API にアクセスする
-> * サンプル アプリの構成
+> * このトピックで説明されているサンプル アプリをダウンロードする
 > * 指定されたビデオを分析するコードを調べる
 > * アプリの実行
 > * 出力を調べる
@@ -39,15 +37,10 @@ ms.locfileid: "53133895"
 ## <a name="prerequisites"></a>前提条件
 
 - Visual Studio がインストールされていない場合は、[Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) を入手できます。
-- CLI をローカルにインストールして使用します。この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+- [Media Services アカウントを作成する](create-account-cli-how-to.md)<br/>Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
+- 「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
 
-    現在、一部の [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
-
-- [Media Services アカウントを作成する](create-account-cli-how-to.md)
-
-    Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
-
-## <a name="download-the-sample"></a>サンプルのダウンロード
+## <a name="download-and-configure-the-sample"></a>サンプルをダウンロードして構成する
 
 次のコマンドを使って、.NET サンプルが含まれる GitHub リポジトリを、お使いのコンピューターに複製します。  
 
@@ -57,7 +50,7 @@ ms.locfileid: "53133895"
 
 サンプルは [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) フォルダーにあります。
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+ダウンロードしたプロジェクトに含まれる [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) を開きます。 [API へのアクセス](access-api-cli-how-to.md)に関するページで取得した資格情報の値に置き換えます。
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>指定されたビデオを分析するコードを調べる
 
@@ -65,15 +58,15 @@ ms.locfileid: "53133895"
 
 サンプルは、次のアクションを実行します。
 
-1. ビデオを分析する変換とジョブを作成します。
-2. 入力アセットを作成し、そこにビデオをアップロードします。 アセットは、ジョブの入力として使用されます。
+1. ビデオを分析する**変換**と**ジョブ**を作成します。
+2. 入力**アセット**を作成し、そこにビデオをアップロードします。 アセットは、ジョブの入力として使用されます。
 3. ジョブの出力を格納する出力アセットを作成します。 
 4. ジョブを送信します。
 5. ジョブの状態を確認します。
 6. ジョブの実行から生成されるファイルをダウンロードします。 
 
 > [!NOTE]
-> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。
+> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](media-reserved-units-cli-how-to.md)に関するページを参照してください。
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 
@@ -132,6 +125,11 @@ Event Grid は、高可用性、一貫したパフォーマンス、および動
 **Job** には通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態を取得します。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
+
+
+### <a name="job-error-codes"></a>ジョブ エラー コード
+
+[エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
 ### <a name="download-the-result-of-the-job"></a>ジョブの結果をダウンロードする
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5afc434ccd7a41c6fa1f4fec300941458c84889e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 25eb111871bbe3b18f59b0d6c123c72f3e55c859
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629573"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737112"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 
@@ -40,8 +40,10 @@ ms.locfileid: "53629573"
 
 ## <a name="powershell"></a>PowerShell
 
-新しいサーバーの作成時に Administrator パラメーターを指定して、[New-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver) コマンドレットを使用します。 <br>
-既存のサーバーに対する Administrator パラメーターを変更して、[Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver) コマンドレットを使用します。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+新しいサーバーの作成時に Administrator パラメーターを指定するには、[New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) コマンドレットを使用します。 <br>
+既存のサーバーに対する Administrator パラメーターを変更するには、[Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) コマンドレットを使用します。
 
 ## <a name="rest-api"></a>REST API
 

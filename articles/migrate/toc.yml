@@ -21,6 +21,14 @@ items:
     href: concepts-dependency-visualization.md
 - name: ハウツー ガイド
   items:
+  - name: 移行のベスト プラクティス
+    items:
+    - name: 移行後のセキュリティと管理のベスト プラクティス
+      href: migrate-best-practices-security-management.md
+    - name: 移行後のネットワーキングのベスト プラクティス
+      href: migrate-best-practices-networking.md
+    - name: 移行後のコストとサイズ変更のベスト プラクティス
+      href: migrate-best-practices-costs.md
   - name: Contoso 移行シリーズ
     items:
     - name: 1. Contoso 移行の概要
@@ -43,7 +51,7 @@ items:
       href: contoso-migration-refactor-web-app-sql.md
     - name: 10. Contoso - Azure Web Apps と Azure MySQL で Linux アプリをリファクタリングする
       href: contoso-migration-refactor-linux-app-service-mysql.md
-    - name: 11. Contoso - TFS を VSTS に移行する
+    - name: 11. Contoso - Azure DevOps Services に TFS を移行する
       href: contoso-migration-tfs-vsts.md
     - name: 12. Contoso - Azure Containers と Azure SQL Database でアプリを再構築する
       href: contoso-migration-rearchitect-container-sql.md
@@ -63,6 +71,8 @@ items:
     href: how-to-modify-assessment.md
   - name: 評価後のマシンの移行
     href: how-to-get-migration-tool.md
+  - name: 多数の VM の移行の自動化
+    href: how-to-migrate-at-scale.md
   - name: Azure Migrate のトラブルシューティング
     href: troubleshooting-general.md
 - name: リソース
@@ -71,21 +81,23 @@ items:
     href: resources-faq.md
   - name: REST API
     href: https://docs.microsoft.com/rest/api/migrate/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.migrate/allversions
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/azure-migrate/
   - name: UserVoice
-    href: http://aka.ms/AzureMigrateUservoice
+    href: https://aka.ms/AzureMigrateUservoice
   - name: フォーラム
-    href: http://aka.ms/AzureMigrateForum
+    href: https://aka.ms/AzureMigrateForum
   - name: ブログ
     href: https://azure.microsoft.com/blog/tag/azure-migrate/
   - name: Azure Migrate
     href: https://azure.microsoft.com/migrate
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: b87dd452598b1fb9b34c4b1af755e12c83938fb2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d07d8e94f15dc6ba549d96c5950931963e5bbfc9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837663"

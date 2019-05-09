@@ -1,75 +1,125 @@
 ---
 title: '回帰モデルのチュートリアル: データを準備する'
 titleSuffix: Azure Machine Learning service
-description: このチュートリアルの最初の部分では、Azure ML SDK を使用して回帰モデリングのために Python でデータを準備する方法を説明します。
+description: このチュートリアルの最初の部分では、Azure Machine Learning SDK を使用して回帰モデリングのために Python でデータを準備する方法を説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: tutorial
-author: cforbe
-ms.author: cforbe
+author: sihhu
+ms.author: MayMSFT
 ms.reviewer: trbye
-ms.date: 12/04/2018
+ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d20ff1fabfb73c899153cf42bb6f2d7a8f233e21
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5c1c00fec5f56fc81b2cb73404728b214b5aaf3f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314688"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698359"
 ---
-# <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル: 回帰モデリングのためにデータを準備する
+# <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
-このチュートリアルでは、Azure Machine Learning Data Prep SDK を使用して回帰モデルのためにデータを準備する方法を説明します。 さまざまな変換を実行して、ニューヨーク市のタクシーの 2 つの異なるデータ セットをフィルター処理して結合します。 このチュートリアルの最終目標は、利用時刻、曜日、乗客数、座標など、データの特徴についてモデルをトレーニングすることで、タクシー移動のコストを予測することです。 このチュートリアルは、2 部構成のチュートリアル シリーズの第 1 部です。
+このチュートリアルでは、[Azure Machine Learning Data Prep SDK for Python](https://aka.ms/data-prep-sdk) を使用して回帰モデルのためにデータを準備する方法を説明します。 さまざまな変換を実行して、2 つの異なる NYC タクシー データ セットをフィルター処理して結合します。
+
+このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。 このチュートリアル シリーズを完了すると、データの特徴についてモデルをトレーニングして、タクシー移動のコストを予測できます。 これらの特徴には、乗車日時、乗客数、乗車場所が含まれます。
 
 このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
-> * Python 環境を設定してパッケージをインポートする
-> * フィールド名が異なる 2 つのデータセットを読み込む
-> * データをクレンジングして異常を除く
-> * インテリジェント変換を使用してデータを変換し、新しい特徴を作成する
-> * 回帰モデルで使用するためにデータフロー オブジェクトを保存する
+> * Python 環境を設定してパッケージをインポートする。
+> * フィールド名が異なる 2 つのデータセットを読み込む。
+> * データをクレンジングして異常を除く。
+> * インテリジェント変換を使用してデータを変換し、新しい特徴を作成する。
+> * 回帰モデルで使用するためにデータフロー オブジェクトを保存する。
 
-[Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) を使用して、Python でデータを準備することができます。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="get-the-notebook"></a>ノートブックを入手する
+「[開発環境を設定する](#start)」にスキップしてノートブックの手順を読むか、以下の手順に従ってノートブックを入手し、Azure Notebooks または独自のノートブック サーバーで実行します。 ノートブックを実行するには、以下のものが必要です。
 
-便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb)として提供されています。 `regression-part1-data-prep.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
+* 以下のものがインストールされている Python 3.6 ノートブック サーバー。
+    * Azure Machine Learning Data Prep SDK for Python
+* チュートリアル ノートブック
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+以下のいずれかのセクションから、これらすべての前提条件を入手します。
 
-## <a name="import-packages"></a>パッケージをインポートする
+* [Azure Notebooks](#azure) を使用する
+* [独自のノートブック サーバー](#server)を使用する
 
-まず SDK をインポートします。
+### <a name="azure"></a>Azure Notebooks を使用する: クラウド上の無料の Jupyter Notebook
 
+Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](https://notebooks.azure.com/) には Azure Machine Learning Data Prep SDK が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
+
+以下の手順を完了したら、**Getting Started** プロジェクトの **tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
+
+次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  手順を完了したら、**tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
+
+1. [[Azure Machine Learning Python のクイック スタート](quickstart-run-local-notebook.md)](setup-create-workspace.md#python)にあるインストール手順を完了して、Miniconda 環境を作成します。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
+1. `pip install azureml-dataprep` を使用して、Data Prep SDK を環境にインストールします。
+1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. 複製したディレクトリから、Notebook サーバーを起動します。
+
+    ```shell
+    jupyter notebook
+    ```
+
+## <a name="start"></a>開発環境を設定する
+
+Python Notebook で、開発作業に関するすべての設定を行うことができます。 設定の一環として次のことを行います。
+
+* SDK のインストール
+* Python パッケージをインポートする
+
+### <a name="install-and-import-packages"></a>パッケージをインストールしてインポートする
+
+必要なパッケージがまだない場合は、次のコマンドを使用してそれらをインストールします。
+
+```shell
+pip install "azureml-dataprep[pandas]>=1.1.0,<1.2.0"
+```
+
+SDK をインポートします。
 
 ```python
 import azureml.dataprep as dprep
 ```
 
+> [!IMPORTANT]
+> 必ず最新バージョンをインストールしてください。 バージョン番号が 1.1.0 より低いと、このチュートリアルは正しく機能しません。
+
 ## <a name="load-data"></a>データを読み込む
 
-ニューヨーク市のタクシーの 2 つの異なるデータ セットをデータフロー オブジェクトにダウンロードします。  これらのデータセットに含まれるフィールドは少し異なっています。 メソッド `auto_read_file()` によって、入力ファイルの種類が自動的に認識されます。
-
+2 つの異なる NYC タクシー データ セットをデータフロー オブジェクトにダウンロードします。 これらのデータセットには、若干異なるフィールドがあります。 `auto_read_file()` メソッドによって、入力ファイルの種類が自動的に認識されます。
 
 ```python
+from IPython.display import display
 dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
 green_path = "/".join([dataset_root, "green-small/*"])
 yellow_path = "/".join([dataset_root, "yellow-small/*"])
 
-green_df = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
-# auto_read_file will automatically identify and parse the file type, and is useful if you don't know the file type
-yellow_df = dprep.auto_read_file(path=yellow_path)
+green_df_raw = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
+# auto_read_file automatically identifies and parses the file type, which is useful when you don't know the file type.
+yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 
-display(green_df.head(5))
-display(yellow_df.head(5))
+display(green_df_raw.head(5))
+display(yellow_df_raw.head(5))
 ```
+
+`Dataflow` オブジェクトはデータフレームに類似しており、データに対して遅延評価される一連の不変の操作を表します。 操作は、異なる変換を呼び出して、利用可能なメソッドをフィルター処理することで追加できます。 `Dataflow` に対する操作の追加の結果は常に、新しい `Dataflow` オブジェクトです。
 
 ## <a name="cleanse-data"></a>データをクレンジングする
 
-ここでは、すべてのデータフローに適用されるショートカット変換をいくつかの変数に設定します。 変数 `drop_if_all_null` は、すべてのフィールドが null のレコードを削除するために使用されます。 変数 `useful_columns` は、各データフローに保持されている列の説明の配列を保持します。
+ここでは、すべてのデータフローに適用されるショートカット変換をいくつかの変数に設定します。 `drop_if_all_null` 変数は、すべてのフィールドが null のレコードを削除するために使用されます。 `useful_columns` 変数は、各データフローに保持されている列の説明の配列を保持します。
 
 ```python
 all_columns = dprep.ColumnSelector(term=".*", use_regex=True)
@@ -80,11 +130,11 @@ useful_columns = [
 ]
 ```
 
-まず最初にグリーン タクシーのデータを処理して、イエロー タクシーのデータと結合できる有効な形式にします。 一時的なデータフロー `tmp_df` を作成します。 作成したショートカット変換変数を使用して、`replace_na()`、`drop_nulls()` および `keep_columns()` 関数を呼び出します。 さらに、データフレームのすべての列の名前を、`useful_columns` の名前と一致するように変更します。
+まず最初にグリーン タクシーのデータを処理して、イエロー タクシーのデータと結合できる有効な形式にします。 作成したショートカット変換変数を使用して、`replace_na()`、`drop_nulls()`、`keep_columns()` 関数を呼び出します。 さらに、データフレーム内のすべての列の名前を、`useful_columns` 変数の名前と一致するように変更します。
 
 
 ```python
-tmp_df = (green_df
+green_df = (green_df_raw
     .replace_na(columns=all_columns)
     .drop_nulls(*drop_if_all_null)
     .rename_columns(column_pairs={
@@ -103,7 +153,7 @@ tmp_df = (green_df
         "Trip_distance": "distance"
      })
     .keep_columns(columns=useful_columns))
-tmp_df.head(5)
+green_df.head(5)
 ```
 
 <div>
@@ -209,17 +259,10 @@ tmp_df.head(5)
 </table>
 </div>
 
-前の手順で、`tmp_df` に対して実行した変換で `green_df` 変数を上書きします。
+イエロー タクシーのデータで、同じ変換手順を実行します。 これらの関数によって、データ セットから null データが確実に削除されます。これにより、機械学習モデルの精度が向上します。
 
 ```python
-green_df = tmp_df
-```
-
-イエロー タクシーのデータに対して同じ変換の手順を実行します。
-
-
-```python
-tmp_df = (yellow_df
+yellow_df = (yellow_df_raw
     .replace_na(columns=all_columns)
     .drop_nulls(*drop_if_all_null)
     .rename_columns(column_pairs={
@@ -244,20 +287,18 @@ tmp_df = (yellow_df
         "trip_distance": "distance"
     })
     .keep_columns(columns=useful_columns))
-tmp_df.head(5)
+yellow_df.head(5)
 ```
 
-ここでも `tmp_df` で `yellow_df` を上書きし、さらにグリーン タクシーのデータに対して `append_rows()` 関数を呼び出して、イエロー タクシーのデータを付加し、新しく結合されたデータフレームを作成します。
-
+グリーン タクシーのデータで `append_rows()` 関数を呼び出して、イエロー タクシーのデータを追加します。 新しく結合されたデータフレームが作成されます。
 
 ```python
-yellow_df = tmp_df
 combined_df = green_df.append_rows([yellow_df])
 ```
 
-### <a name="convert-types-and-filter"></a>型を変換してフィルター処理する 
+### <a name="convert-types-and-filter"></a>型を変換してフィルター処理する
 
-乗車と降車の座標に関する概要の統計を調べて、データがどのように分散しているかを確認します。 まず、`TypeConverter` オブジェクトを定義して、lat/long フィールドを 10 進型に変更します。 次に、`keep_columns()` 関数を呼び出して、lat/long フィールドのみに出力を限定し、`get_profile()` を呼び出します。
+乗車と降車の座標に関する概要の統計を調べて、データがどのように分散しているかを確認します。 まず、`TypeConverter` オブジェクトを定義して、緯度と経度のフィールドを 10 進型に変更します。 次に、`keep_columns()` 関数を呼び出して、緯度と経度のフィールドのみに出力を制限し、`get_profile()` 関数を呼び出します。 これらの関数呼び出しによって、緯度と経度のフィールドのみを示す、データフローの圧縮されたビューが作成されます。これにより、欠落している座標または範囲外の座標を評価するのが容易になります。
 
 
 ```python
@@ -269,7 +310,7 @@ combined_df = combined_df.set_column_types(type_conversions={
     "dropoff_latitude": decimal_type
 })
 combined_df.keep_columns(columns=[
-    "pickup_longitude", "pickup_latitude", 
+    "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
 ]).get_profile()
 ```
@@ -281,7 +322,7 @@ combined_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>type</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -401,15 +442,15 @@ combined_df.keep_columns(columns=[
 
 
 
-概要の統計出力から、欠落している座標やニューヨーク市に存在しない座標があることがわかります。 列のフィルター コマンドを `filter()` 関数で組み合わせ、各フィールドの下限と上限を定義することで、フィルターを使用して市外の座標を除外します。 その後、`get_profile()` を再び呼び出して、変換を確認します。
+概要の統計出力から、欠落している座標やニューヨーク市に存在しない座標があることがわかります (これは主観的な分析により判断されます)。 市外の場所を指す座標をフィルターで除外します。 列のフィルターのコマンドを `filter()` 関数内で組み合わせ、各フィールドの下限と上限を定義します。 その後、もう一度 `get_profile()` 関数を呼び出して、変換を確認します。
 
 
 ```python
-tmp_df = (combined_df
+latlong_filtered_df = (combined_df
     .drop_nulls(
         columns=["pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude"],
         column_relationship=dprep.ColumnRelationship(dprep.ColumnRelationship.ANY)
-    ) 
+    )
     .filter(dprep.f_and(
         dprep.col("pickup_longitude") <= -73.72,
         dprep.col("pickup_longitude") >= -74.09,
@@ -420,8 +461,8 @@ tmp_df = (combined_df
         dprep.col("dropoff_latitude") <= 40.88,
         dprep.col("dropoff_latitude") >= 40.53
     )))
-tmp_df.keep_columns(columns=[
-    "pickup_longitude", "pickup_latitude", 
+latlong_filtered_df.keep_columns(columns=[
+    "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
 ]).get_profile()
 ```
@@ -433,7 +474,7 @@ tmp_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>type</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -551,22 +592,13 @@ tmp_df.keep_columns(columns=[
   </tbody>
 </table>
 
-
-
-`tmp_df` に対して行った変換で `combined_df` を上書きします。
-
-
-```python
-combined_df = tmp_df
-```
-
 ### <a name="split-and-rename-columns"></a>列を分割して名前を変更する
 
-`store_forward` 列のデータ プロファイルを見てください。
+`store_forward` 列のデータ プロファイルを見てください。 このフィールドは、タクシーが移動後にサーバーに接続できなかったことが理由で移動データがメモリに格納され、後で接続されたときにそれがサーバーに転送された場合に `Y` になるブール値フラグです。
 
 
 ```python
-combined_df.keep_columns(columns='store_forward').get_profile()
+latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
 ```
 
 
@@ -576,7 +608,7 @@ combined_df.keep_columns(columns='store_forward').get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>type</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -627,29 +659,29 @@ combined_df.keep_columns(columns='store_forward').get_profile()
 
 
 
-`store_forward` のデータ プロファイル出力では、データの整合性がなく、欠落値や null 値があることに気が付きます。 `replace()` 関数と `fill_nulls()` 関数を使用して、どちらのケースでもこれらの値を文字列 "N" で置き換えます。
+`store_forward` 列のデータ プロファイル出力では、データの整合性がなく、欠落値や null 値があることが示されていることに注意してください。 `replace()` 関数と `fill_nulls()` 関数を使用して、これらの値を文字列 "N" に置換します。
 
 
 ```python
-combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
+replaced_stfor_vals_df = latlong_filtered_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-今度は、`distance` フィールドに対してもう 1 つの `replace` 関数を実行します。 これにより、`.00` として不適切に表示されていた距離の値の書式が変更され、また null 値があればゼロで埋められます。 `distance` フィールドは数値形式に変換します。
+`distance` フィールドに対して `replace` 関数を実行します。 この関数により、間違って `.00` と示されている距離の値の書式が変更されるほか、null 値があればゼロで埋められます。 `distance` フィールドは数値形式に変換します。 これらの不適切なデータ ポイントは、タクシーのデータ収集システム内の異常であると考えられます。
 
 
 ```python
-combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
-combined_df = combined_df.to_number(["distance"])
+replaced_distance_vals_df = replaced_stfor_vals_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
+replaced_distance_vals_df = replaced_distance_vals_df.to_number(["distance"])
 ```
 
-乗車と降車の日時を、それぞれ日付と時刻の列に分割します。 `split_column_by_example()` を使用して分割を実行します。 このケースでは、`split_column_by_example()` の省略可能な `example` パラメーターが省略されます。 したがって、この関数では、分割位置がデータに基づいて自動的に判別されます。
+乗車と降車の日時の値を、それぞれの日付と時刻の列に分割します。 分割を行うには `split_column_by_example()` 関数を使用します。 このケースでは、`split_column_by_example()` 関数の省略可能な `example` パラメーターが省略されます。 そのため、この関数では、分割位置がデータに基づいて自動的に判別されます。
 
 
 ```python
-tmp_df = (combined_df
+time_split_df = (replaced_distance_vals_df
     .split_column_by_example(source_column="pickup_datetime")
     .split_column_by_example(source_column="dropoff_datetime"))
-tmp_df.head(5)
+time_split_df.head(5)
 ```
 
 <div>
@@ -779,41 +811,39 @@ tmp_df.head(5)
 </table>
 </div>
 
-
-`split_column_by_example()` で生成された列の名前をわかりやすい名前に変更します。
-
+`split_column_by_example()` 関数によって生成された列名を、わかりやすい名前に変更します。
 
 ```python
-tmp_df_renamed = (tmp_df
+renamed_col_df = (time_split_df
     .rename_columns(column_pairs={
         "pickup_datetime_1": "pickup_date",
         "pickup_datetime_2": "pickup_time",
         "dropoff_datetime_1": "dropoff_date",
         "dropoff_datetime_2": "dropoff_time"
     }))
-tmp_df_renamed.head(5)
+renamed_col_df.head(5)
 ```
 
-実行された変換で `combined_df` を上書きしてから、`get_profile()` を呼び出して、すべての変換が行われた後の概要統計全体を表示します。
-
+`get_profile()` 関数を呼び出して、すべてのクレンジング手順後の概要の統計情報全体を表示します。
 
 ```python
-combined_df = tmp_df_renamed
-combined_df.get_profile()
+renamed_col_df.get_profile()
 ```
 
 ## <a name="transform-data"></a>データを変換する
 
-乗車と降車の日付を、さらに曜日、日、月に分割します。 曜日を取得するには、`derive_column_by_example()` 関数を使用します。 この関数は、パラメーターとして、入力データと必要な出力を定義するサンプル オブジェクトの配列を取得します。 関数によって、必要な変換が自動的に判別されます。 乗車と降車の列について、example パラメーターは使用せずに `split_column_by_example()` 関数を使用して、時、分、秒に分割します。
+乗車と降車の日付をさらに曜日、日、月の値に分割します。 曜日の値を取得するには、`derive_column_by_example()` 関数を使用します。 この関数は、入力データと優先される出力を定義するサンプル オブジェクトの配列のパラメーターを取得します。 この関数によって、優先される変換が自動的に判別されます。 乗車と降車の時刻の列については、example パラメーターは使用せずに `split_column_by_example()` 関数を使用して、時刻を時、分、秒に分割します。
 
-これらの新しい特徴が生成されたら、新たに生成された特徴を優先するため、`drop_columns()` を使用して元のフィールドを削除します。 残りすべてのフィールドの名前を正確な説明になるように変更します。
+新しい機能を生成した後は、新しく生成された機能が優先されるため、`drop_columns()` 関数を使用して元のフィールドを削除します。 残りのフィールド名を、わかりやすい説明に変更します。
+
+この方法でデータを変換して新しい時間ベースの特徴を作成すると、機械学習モデルの精度が向上します。 たとえば、曜日について新しい特徴を生成することは、その曜日とタクシー料金の価格との間に関係を確立するのに役に立ちます。この価格は多くの場合、需要が多いことが理由で一定の曜日で高くなっています。
 
 
 ```python
-tmp_df = (combined_df
+transformed_features_df = (renamed_col_df
     .derive_column_by_example(
-        source_columns="pickup_date", 
-        new_column_name="pickup_weekday", 
+        source_columns="pickup_date",
+        new_column_name="pickup_weekday",
         example_data=[("2009-01-04", "Sunday"), ("2013-08-22", "Thursday")]
     )
     .derive_column_by_example(
@@ -821,17 +851,17 @@ tmp_df = (combined_df
         new_column_name="dropoff_weekday",
         example_data=[("2013-08-22", "Thursday"), ("2013-11-03", "Sunday")]
     )
-          
+
     .split_column_by_example(source_column="pickup_time")
     .split_column_by_example(source_column="dropoff_time")
-    # the following two split_column_by_example calls reference the generated column names from the above two calls
+    # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
     .split_column_by_example(source_column="pickup_time_1")
     .split_column_by_example(source_column="dropoff_time_1")
     .drop_columns(columns=[
-        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time", 
+        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time",
         "pickup_date_1", "dropoff_date_1", "pickup_time_1", "dropoff_time_1"
     ])
-          
+
     .rename_columns(column_pairs={
         "pickup_date_2": "pickup_month",
         "pickup_date_3": "pickup_monthday",
@@ -845,7 +875,7 @@ tmp_df = (combined_df
         "dropoff_time_2": "dropoff_second"
     }))
 
-tmp_df.head(5)
+transformed_features_df.head(5)
 ```
 
 <div>
@@ -999,21 +1029,23 @@ tmp_df.head(5)
 </table>
 </div>
 
-上記のデータで、派生した変換から生成された乗車と降車の日付と時刻の構成要素が正しいことを確認します。 `pickup_datetime` 列と `dropoff_datetime` 列はもはや必要ないため削除します。
+このデータでは、派生した変換から生成された乗車と降車の日付と時刻の構成要素が正しいことが示されていることに注意してください。 `pickup_datetime` 列と `dropoff_datetime` 列は必要なくなったため削除します (時間、分、秒など、より細かい時間の特徴の方がモデルのトレーニングに役立ちます)。
 
 
 ```python
-tmp_df = tmp_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
+processed_df = transformed_features_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
 ```
 
 型の推定機能を使用して、各フィールドのデータ型を自動的に調べ、推定結果を表示します。
 
 
 ```python
-type_infer = tmp_df.builders.set_column_types()
+type_infer = processed_df.builders.set_column_types()
 type_infer.learn()
 type_infer
 ```
+
+`type_infer` の結果の出力は次のようになります。
 
     Column types conversion candidates:
     'pickup_weekday': [FieldType.STRING],
@@ -1034,47 +1066,47 @@ type_infer
     'dropoff_latitude': [FieldType.DECIMAL],
     'cost': [FieldType.DECIMAL]
 
-推定結果はデータに基づき正確です。ここで、データフローに型変換を適用します。
+推定結果は、データに基づいた正しい内容のようです。 ここで、データフローに型の変換を適用します。
 
 
 ```python
-tmp_df = type_infer.to_dataflow()
-tmp_df.get_profile()
+type_converted_df = type_infer.to_dataflow()
+type_converted_df.get_profile()
 ```
 
-データフローをパッケージ化する前に、データ セットに対して最終的なフィルターを 2 つ実行します。 不適切なデータ ポイントを排除するために、`cost` と `distance` の両方がゼロより大きいレコードという条件でデータフローをフィルター処理します。
+データフローをパッケージ化する前に、データ セットに対して最終的なフィルターを 2 つ実行します。 不適切にキャプチャされたデータ ポイントを排除するために、`cost` 変数と `distance` 変数の値両方がゼロより大きいレコードという条件でデータフローをフィルター処理します。 コストまたは距離がゼロのデータ ポイントが、予測の精度を狂わせる主な外れ値を表すので、この手順によって、機械学習モデルの精度が大幅に向上します。
 
 ```python
-tmp_df = tmp_df.filter(dprep.col("distance") > 0)
-tmp_df = tmp_df.filter(dprep.col("cost") > 0)
+final_df = type_converted_df.filter(dprep.col("distance") > 0)
+final_df = final_df.filter(dprep.col("cost") > 0)
 ```
 
-この時点で、データフロー オブジェクトが完全に変換され、機械学習モデルで使用するための準備が整いました。 SDK にはオブジェクトのシリアル化機能が含まれており、次のように使用されます。
+これで、データフロー オブジェクトが完全に変換され、機械学習モデルで使用するための準備が整いました。 SDK にはオブジェクトのシリアル化機能が含まれており、次のコードに示されるように使用されます。
 
 ```python
 import os
-file_path = os.path.join(os.getcwd(), "dflows.dprep")
 
-dflow_prepared = tmp_df
-package = dprep.Package([dflow_prepared])
-package.save(file_path)
+file_path = os.path.join(os.getcwd(), "dflows.dprep")
+final_df.save(file_path)
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-続けてチュートリアルの第 2 部に進まない場合には、現在のディレクトリにあるファイル `dflows.dprep` を削除します (ローカルで実行しているか Azure Notebooks を使用しているかにかかわらず)。 第 2 部に進む場合は、現在のディレクトリに `dflows.dprep` が必要です。
+チュートリアルの第 2 部に進むには、現在のディレクトリにある **dflows.dprep** ファイルが必要です。
+
+第 2 部に進む予定がない場合は、現在のディレクトリにある **dflows.dprep** ファイルを削除します。 実行場所がローカルの場合でも [Azure Notebooks](https://notebooks.azure.com/) の場合でも、このファイルは削除してください。
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルの第 1 部では次を行いました。
 
 > [!div class="checklist"]
-> * 開発環境を設定する
-> * データ セットを読み込んでクレンジングする
-> * スマート変換を使用して例に基づいてロジックを予測する
-> * 機械学習トレーニング用にデータセットをマージしてパッケージ化する
+> * 開発環境を設定する。
+> * データ セットを読み込んでクレンジングする。
+> * スマート変換を使用して例に基づいてロジックを予測する。
+> * 機械学習トレーニング用にデータセットをマージしてパッケージ化する。
 
-チュートリアル シリーズの次の部分で、このトレーニング データを使用する準備ができました。
+これで、チュートリアルの第 2 部でトレーニング データを使用する準備ができました。
 
 > [!div class="nextstepaction"]
-> [チュートリアル 2: 回帰モデルをトレーニングする](tutorial-auto-train-models.md)
+> [チュートリアル (第 2 部): 回帰モデルをトレーニングする](tutorial-auto-train-models.md)

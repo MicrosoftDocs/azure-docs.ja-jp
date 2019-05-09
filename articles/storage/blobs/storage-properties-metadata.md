@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2641e1653e14a7c101d95b02b8a5af71ceb9fdc6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398176"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58916582"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>プロパティおよびメタデータを設定および取得する
 
@@ -20,15 +20,14 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 
 * **システムのプロパティ**: システムのプロパティは、各ストレージ リソースに存在します。 このようなプロパティには、読み取りまたは設定可能なものもありますが、読み取り専用のものもあります。 実際には、システムのプロパティの一部は、特定の標準 HTTP ヘッダーに対応しています。 Azure Storage クライアント ライブラリでは、これらのプロパティが保持されます。
 
-* **ユーザー定義のメタデータ**: ユーザー定義のメタデータは、Azure Storage リソースを指定する 1 つまたは複数の名前と値のペアで構成されます。 メタデータを使用して、リソースで追加の値を格納できます。 メタデータ値は独自の目的にのみ使用され、リソースの動作には影響しません。
+* **ユーザー定義のメタデータ**: ユーザー定義のメタデータは、Azure Storage リソースに対して指定する 1 つまたは複数の名前と値のペアで構成されます。 メタデータを使用して、リソースで追加の値を格納できます。 メタデータ値は独自の目的にのみ使用され、リソースの動作には影響しません。
 
 ストレージ リソースのプロパティとメタデータの値を取得するには、2 つの手順が必要です。 これらの値を読み取るには、**FetchAttributes** または **FetchAttributesAsync** メソッドを呼び出して値を明示的に取得しておく必要があります。 リソース上で **Exists** または **ExistsAsync** メソッドを呼び出している場合は例外です。 これらのメソッドのいずれかを呼び出すと、Azure Storage は、見た目ではわかりませんが **Exists** メソッドの呼び出しの一部として、適切な **FetchAttributes** メソッドを呼び出します。
 
 > [!IMPORTANT]
 > 生成されていないストレージ リソースのプロパティまたはメタデータの値がある場合、コードが **FetchAttributes** または **FetchAttributesAsync** メソッドを呼び出すことを確認します。
 >
-> メタデータ名/値ペアには、ASCII 文字のみが含まれている可能性があります。 メタデータ名/値ペアは有効な HTTP ヘッダーです。HTTP ヘッダーを管理するすべての制約に準拠する必要があります。 非 ASCII 文字を含む名前と値には URL エンコードまたは Base64 エンコードを使用することをお勧めします。
->
+> メタデータ名/値ペアは有効な HTTP ヘッダーです。HTTP ヘッダーに適用されるすべての制約に準拠する必要があります。 メタデータ名は有効な HTTP ヘッダー名でなければならず、ASCII 文字のみを含むことができます。また、大文字と小文字が区別されないものとして扱う必要があります。 非 ASCII 文字を含むメタデータ値は、Base64 エンコードまたは URL エンコードである必要があります。
 
 ## <a name="setting-and-retrieving-properties"></a>プロパティの設定と取得
 プロパティ値を取得するには、BLOB またはコンテナーで **FetchAttributesAsync** メソッドを呼び出してプロパティを設定した後、値を読み取ります。

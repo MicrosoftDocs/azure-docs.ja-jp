@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: /azure/iot-fundamentals
 - name: Azure Digital Twins
   href: index.yml
 - name: 概要
@@ -107,6 +105,8 @@ items:
     href: https://docs.westcentralus.azuresmartspaces.net/management/swagger
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/digital-twins/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
   - name: Azure Digital Twins グラフ ビューアー
     href: https://github.com/Azure/azure-digital-twins-graph-viewer
   - name: スタック オーバーフロー
@@ -119,9 +119,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: ビデオ
     href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: 92d60cbe1de8d8f2b36d67e1a7ff2999a45e1a8e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0a76dbffc41106af5df540d29c1d7171f1506202
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102225"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664864"

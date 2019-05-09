@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: bf78ac6bce23b739ed661929f6fe90eddc9b4d94
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090780"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000492"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Apache Kafka 対応イベント ハブの作成
 

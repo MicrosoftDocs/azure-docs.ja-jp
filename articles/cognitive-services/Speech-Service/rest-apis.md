@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Speech to Text REST API と Text to Speech REST API の使用方法について説明します。 この記事では、認可のオプションとクエリのオプション、さらに要求を構築する方法と応答を受信する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0ce33f20d44ac284655569ff66825533650b9d9c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338892"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998947"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
@@ -33,8 +33,8 @@ Speech to Text REST API または Text to Speech REST API に対して要求を�
 
 | サポートされている Authorization ヘッダー | 音声テキスト変換 | テキスト読み上げ |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | [はい] | いいえ  |
-| Authorization:ベアラ | [はい] | [はい] |
+| Ocp-Apim-Subscription-Key | はい | いいえ |
+| Authorization:ベアラー | はい | はい |
 
 `Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 例: 
 
@@ -66,7 +66,7 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-応答の本文には、Java Web トークン (JWT) 形式のアクセス トークンが格納されます。
+応答の本文には、JSON Web トークン (JWT) 形式のアクセス トークンが格納されます。
 
 #### <a name="powershell-sample"></a>PowerShell のサンプル
 
@@ -272,7 +272,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Speech Service のサブスクリプション キー。 | このヘッダーと `Authorization` のどちらかが必須となります。 |
 | `Authorization` | 単語 `Bearer` が前に付いた認証トークン。 詳細については、[認証](#authentication)に関するページをご覧ください。 | このヘッダーと `Ocp-Apim-Subscription-Key` のどちらかが必須となります。 |
-| `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codec=audio/pcm; samplerate=16000` と `audio/ogg; codec=audio/pcm; samplerate=16000` です。 | 必須 |
+| `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codecs=audio/pcm; samplerate=16000` と `audio/ogg; codecs=opus` です。 | 必須 |
 | `Transfer-Encoding` | オーディオを個別のファイルとしてではなくチャンク データとして送信することを指定します。 このヘッダーは、オーディオ データをチャンクにする場合にのみ使用してください。 | 省略可能 |
 | `Expect` | チャンク転送を使用する場合、`Expect: 100-continue` を送信します。 Speech Service は最初の要求を確認し、追加のデータを待ちます。| オーディオのチャンク データを送信する場合は必須となります。 |
 | `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Service からは、結果が JSON 形式で返されます。 指定しない場合、一部の Web 要求フレームワークでは互換性のない既定値が提供されるため、常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
@@ -296,7 +296,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codecs=audio/pcm; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
@@ -330,7 +330,7 @@ Expect: 100-continue
     request.Method = "POST";
     request.ProtocolVersion = HttpVersion.Version11;
     request.Host = host;
-    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
     request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
     request.AllowWriteStreamBuffering = false;
 
@@ -440,6 +440,9 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 * 音声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
 * リージョン別の提供状況については、[リージョン](regions.md#text-to-speech)に関するページを参照してください。
 
+> [!IMPORTANT]
+> 料金は、標準音声、カスタム音声、ニューラル音声によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページをご覧ください。
+
 ### <a name="request-headers"></a>要求ヘッダー
 
 この表は、音声テキスト変換要求の必須のヘッダーと省略可能なヘッダーの一覧です。
@@ -453,23 +456,27 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 
 ### <a name="audio-outputs"></a>オーディオ出力
 
-以下に示したのは、それぞれの要求の `X-Microsoft-OutputFormat` ヘッダーで送信することができるオーディオ形式の一覧です。 それぞれビットレートとエンコードの種類が含まれています。 Speech Service では、24 kHz と 16 kHz のオーディオ出力がサポートされます。
+以下に示したのは、それぞれの要求の `X-Microsoft-OutputFormat` ヘッダーで送信することができるオーディオ形式の一覧です。 それぞれビットレートとエンコードの種類が含まれています。 Speech Service では、24 kHz、16 kHz、および 8 kHz のオーディオ出力がサポートされます。
 
 |||
 |-|-|
 | `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-mulaw` | `riff-16khz-16bit-mono-pcm` |
-| `audio-16khz-128kbitrate-mono-mp3` | `audio-16khz-64kbitrate-mono-mp3` |
-| `audio-16khz-32kbitrate-mono-mp3`  | `raw-24khz-16bit-mono-pcm` |
-| `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3` |
-| `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3` |
+| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
+| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
+| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
+| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
+| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
+| `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
 > 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ただし、24 khz の音声は `audio-16khz-16kbps-mono-siren` や `riff-16khz-16kbps-mono-siren` の出力形式をサポートしていません。
 
 ### <a name="request-body"></a>要求本文
 
-テキストは、HTTP `POST` 要求の本文として送信されます。 プレーン テキスト (ASCII または UTF-8) または[音声合成マークアップ言語](speech-synthesis-markup.md) (SSML) 形式 (UTF-8) を使用できます。 プレーン テキストの要求は、Speech Service の既定の音声と言語を使用します。 SSML では、音声と言語を指定することができます。
+各 `POST` 要求の本文は[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として送信されます。 SSML では、テキスト読み上げサービスによって返される合成音声の声と言語を選択できます。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
+
+> [!NOTE]
+> カスタムの音声を使用する場合は、プレーン テキスト (ASCII または UTF-8) として要求の本文を送信できます。
 
 ### <a name="sample-request"></a>要求のサンプル
 

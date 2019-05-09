@@ -2,35 +2,35 @@
 title: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング - Azure HDInsight
 description: HDInsight クラスターの処理速度が遅いとき、または処理が失敗したときに、診断とトラブルシューティングを行います。
 services: hdinsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 03/19/2019
+ms.openlocfilehash: 685731aee9396efbfa9f7bb554ec7ce20270935f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410280"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314741"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
 
-HDInsight クラスターの実行が遅い場合、または HDInsight クラスターがエラー コードで失敗した場合は、複数のトラブルシューティング オプションがあります。 ジョブの実行時間が予想より長い場合、または一般に応答時間が遅い場合は、クラスターが実行しているサービスなど、クラスターからのアップストリームに障害が存在する可能性があります。 ただし、これらの速度低下の最も一般的な原因は、不十分なスケーリングです。 新しい HDInsight クラスターを作成するときは、適切な[仮想マシン サイズ](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)を選びます。
+HDInsight クラスターの実行が遅い場合、または HDInsight クラスターがエラー コードで失敗した場合は、複数のトラブルシューティング オプションがあります。 ジョブの実行時間が予想より長い場合、または一般に応答時間が遅い場合は、クラスターが実行しているサービスなど、クラスターからのアップストリームに障害が存在する可能性があります。 ただし、これらの速度低下の最も一般的な原因は、不十分なスケーリングです。 新しい HDInsight クラスターを作成する際は、適切な[仮想マシン サイズ](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)を選択してください。
 
 クラスターの速度低下または失敗を診断するには、関連付けられている Azure サービス、クラスターの構成、ジョブの実行情報など、環境のあらゆる側面に関する情報を収集します。 別のクラスターでエラー状態を再現してみると診断に役立ちます。
 
-* ステップ 1:問題に関するデータを収集する
-* ステップ 2:HDInsight クラスターの環境を検証する 
-* ステップ 3:クラスターの正常性を表示する
-* ステップ 4:環境のスタックとバージョンを確認する
-* ステップ 5:クラスターのログ ファイルを調べる
-* ステップ 6:構成設定を確認する
-* ステップ 7:別のクラスターで障害を再現する 
+* 手順 1:問題に関するデータを収集する。
+* 手順 2:HDInsight クラスターの環境を検証する。
+* 手順 3:クラスターの正常性を表示する。
+* 手順 4:環境のスタックとバージョンを確認する。
+* 手順 5:クラスターのログ ファイルを調べる。
+* 手順 6:構成設定を確認する。
+* 手順 7:別のクラスターで障害を再現する。
 
-## <a name="step-1-gather-data-about-the-issue"></a>ステップ 1:問題に関するデータを収集する
+## <a name="step-1-gather-data-about-the-issue"></a>手順 1:問題に関するデータを収集する
 
 HDInsight では、クラスターに関する問題の識別とトラブルシューティングに使うことができる多くのツールが提供されています。 以下の手順では、これらのツールについて説明し、問題の特定に関する推奨事項を示します。
 
@@ -57,13 +57,12 @@ Azure Portal は次の情報を提供できます。
 
 ![HDInsight、Azure Portal の情報](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Azure クラシック CLI を使うこともできます。
+[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使うこともできます。
 
+```azurecli
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 もう 1 つのオプションは、PowerShell を使うことです。 詳細については、[Azure PowerShell を使用した HDInsight での Apache Hadoop クラスターの管理](hdinsight-administer-use-powershell.md)に関するページを参照してください。
 
@@ -73,10 +72,10 @@ Azure クラシック CLI を使うこともできます。
 
 ### <a name="service-details"></a>サービスの詳細
 
-* オープン ソース ライブラリのリリース バージョンを確認します
-* [Azure サービスの停止](https://azure.microsoft.com/status/)を確認します 
-* Azure サービスの使用制限を確認します 
-* Azure Virtual Network のサブネット構成を確認します 
+* オープンソース ライブラリのリリース バージョンを確認します。
+* [Azure サービスの停止](https://azure.microsoft.com/status/)を確認します。  
+* Azure サービスの使用制限を確認します。 
+* Azure Virtual Network のサブネット構成を確認します。  
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Ambari UI でクラスターの構成設定を表示する
 
@@ -88,7 +87,7 @@ Apache Ambari の Web UI と REST API を使って、HDInsight クラスター�
 
 #### <a name="check-for-azure-service-outages"></a>Azure サービスの停止を確認する
 
-HDInsight は複数の Azure サービスに依存しています。 Azure HDInsight 上で仮想サーバーを実行し、データとスクリプトを Azure Blob Storage または Azure Data Lake Store に保存し、Azure Table Storage のログ ファイルにインデックスを作成します。 珍しいことですがこれらのサービスが中断すると、HDInsight で問題が発生する可能性があります。 クラスターで予期しないパフォーマンスの低下や障害が発生した場合は、[Azure の状態ダッシュボード](https://azure.microsoft.com/status/)を確認します。 各サービスの状態がリージョン別に一覧表示されます。 お使いのクラスターのリージョンだけでなく、関連するサービスのリージョンも確認してください。
+HDInsight は複数の Azure サービスに依存しています。 Azure HDInsight 上で仮想サーバーを実行し、データとスクリプトを Azure Blob Storage または Azure Data Lake Storage に保存し、Azure Table Storage のログ ファイルにインデックスを作成します。 珍しいことですがこれらのサービスが中断すると、HDInsight で問題が発生する可能性があります。 クラスターで予期しないパフォーマンスの低下や障害が発生した場合は、[Azure の状態ダッシュボード](https://azure.microsoft.com/status/)を確認します。 各サービスの状態がリージョン別に一覧表示されます。 お使いのクラスターのリージョンだけでなく、関連するサービスのリージョンも確認してください。
 
 #### <a name="check-azure-service-usage-limits"></a>Azure サービスの使用制限を確認する
 
@@ -124,7 +123,7 @@ Apache Hive、Apache Pig、または Apache Sqoop ジョブが失敗する一般
 これは、ゲートウェイ ノードからの汎用メッセージであり、最も一般的な障害状態コードです。 考えられる原因の 1 つは、アクティブなヘッド ノードで WebHCat サービスがダウンしていることです。 この可能性を確認するには、次の CURL コマンドを使います。
 
 ```bash
-$ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
+curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
 ```
 
 Ambari では、WebHCat サービスがダウンしているホストを示すアラートが表示されます。 そのホストのサービスを再起動することにより、WebHCat サービスのバックアップを試みることができます。
@@ -153,7 +152,7 @@ HDInsight ゲートウェイは、2 分より長くかかっている応答を�
 WebHCat で 10 個より多くのソケットが開かれていて負荷がかかっている場合、新しいソケット接続の確立に時間がかかり、タイムアウトになる可能性があります。 WebHCat との間のネットワーク接続の一覧を表示するには、現在アクティブなヘッド ノードで `netstat` を使います。
 
 ```bash
-$ netstat | grep 30111
+netstat | grep 30111
 ```
 
 30111 は、WebHCat がリッスンしているポートです。 開いているソケットの数は 10 未満でなければなりません。
@@ -161,7 +160,7 @@ $ netstat | grep 30111
 開いているソケットがない場合、前記のコマンドは結果を生成しません。 Templeton が稼働していてポート 30111 でリッスンしているかどうかを確認するには、次のコマンドを使います。
 
 ```bash
-$ netstat -l | grep 30111
+netstat -l | grep 30111
 ```
 
 ##### <a name="yarn-level-timeout"></a>YARN レベルのタイムアウト
@@ -190,9 +189,9 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
 これらの問題を診断するには:
 
-    1. トラブルシューティングを行う UTC 時間の範囲を決定します
-    2. `webhcat.log` の適切なファイルを選びます
-    3. その期間中の WARN メッセージと ERROR メッセージを探します
+1. トラブルシューティングを行う UTC 時間の範囲を決定します
+2. `webhcat.log` の適切なファイルを選びます
+3. その期間中の WARN メッセージと ERROR メッセージを探します
 
 #### <a name="other-webhcat-failures"></a>WebHCat のその他の障害
 
@@ -215,8 +214,6 @@ Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ペー�
 ## <a name="step-5-examine-the-log-files"></a>ステップ 5:ログ ファイルを調べる
 
 HDInsight クラスターを構成する多くのサービスとコンポーネントから、多くの種類のログが生成されます。 [WebHCat ログファイル](#check-your-webhcat-service)については既に説明しました。 以下のセクションでは、クラスターに関する問題の絞り込みの調査で他に役立つ可能性がある他のいくつかのログ ファイルについて説明します。
-
-![HDInsight のログ ファイルの例](./media/hdinsight-troubleshoot-failed-cluster/logs.png)
 
 * HDInsight クラスターは複数のノードで構成され、そのほとんどのタスクは送信されたジョブを実行することです。 ジョブは同時に実行されますが、ログ ファイルは結果を順番にしか表示できません。 HDInsight は新しいタスクを実行するとき、最初に完了していない他のタスクを終了します。 このアクティビティはすべて、`stderr` ファイルと `syslog` ファイルに記録されます。
 
@@ -259,7 +256,7 @@ HDInsight クラスターは、Hadoop、Hive、HBase などの関連サービス
 1. 障害が発生したクラスターと同じ構成で新しいテスト クラスターを作成します。
 2. 最初のジョブ ステップをテスト クラスターに送信します。
 3. ステップの処理が完了したら、ステップのログ ファイルでエラーを調べます。 テスト クラスターのマスター ノードに接続し、そこのログ ファイルを表示します。 ステップのログ ファイルは、ステップがしばらく実行して終了または失敗した後でのみ表示されます。
-4. 最初のステップが成功した場合は、次のステップを実行します。 エラーが発生した場合は、ログ ファイルでエラーを調査します。 コードにエラーがあった場合は、修正をして、ステップを再実行します。 
+4. 最初のステップが成功した場合は、次のステップを実行します。 エラーが発生した場合は、ログ ファイルでエラーを調査します。 コードにエラーがあった場合は、修正をして、ステップを再実行します。
 5. すべてのステップがエラーなしで実行されるようになるまで続けます。
 6. テスト クラスターのデバッグが完了したら、クラスターを削除します。
 
@@ -267,6 +264,6 @@ HDInsight クラスターは、Hadoop、Hive、HBase などの関連サービス
 
 * [Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight ログの分析](hdinsight-debug-jobs.md)
-* [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Linux ベースの HDInsight への Apache Hadoop YARN アプリケーションのサインインにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [HDInsight における Apache Spark クラスターの既知の問題](hdinsight-apache-spark-known-issues.md)

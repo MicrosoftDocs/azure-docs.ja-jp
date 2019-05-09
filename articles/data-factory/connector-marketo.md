@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8c3210a560c079f66cd21dbb30be4a4b823a6502
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078210"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148834"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Marketo からデータをコピーする (プレビュー)
 
@@ -34,7 +33,7 @@ Marketo から、サポートされている任意のシンク データ スト�
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
 >[!NOTE]
->この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](http://developers.marketo.com/rest-api/)があることに注意してください。 次のようなエラーが発生することがあります。"Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Max rate limit '100' exceeded with in '20' secs (606) ('20' 秒以内の最大レート制限 '100' を超過した時間がありました (606))"、または "Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Concurrent access limit '10' reached (615) (同時アクセス制限 '10' に達しました (615))"。この場合には、サービスへの要求の数を減らすために、同時コピー アクティビティ実行を削減することを検討してください。
+>この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](https://developers.marketo.com/rest-api/)があることに注意してください。 次のようなエラーが発生することがあります。"Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Max rate limit '100' exceeded with in '20' secs (606) ('20' 秒以内の最大レート制限 '100' を超過した時間がありました (606))"、または "Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Concurrent access limit '10' reached (615) (同時アクセス制限 '10' に達しました (615))"。この場合には、サービスへの要求の数を減らすために、同時コピー アクティビティ実行を削減することを検討してください。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -48,10 +47,10 @@ Marketo のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**Marketo** | [はい] |
-| endpoint | Marketo サーバーのエンドポイント。 (つまり、123-ABC-321.mktorest.com)  | [はい] |
-| clientId | Marketo サービスのクライアント ID。  | [はい] |
-| clientSecret | Marketo サービスのクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**Marketo** | はい |
+| endpoint | Marketo サーバーのエンドポイント。 (つまり、123-ABC-321.mktorest.com)  | はい |
+| clientId | Marketo サービスのクライアント ID。  | はい |
+| clientSecret | Marketo サービスのクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -67,8 +66,8 @@ Marketo のリンクされたサービスでは、次のプロパティがサポ
             "endpoint" : "123-ABC-321.mktorest.com",
             "clientId" : "<clientId>",
             "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
+                "type": "SecureString",
+                "value": "<clientSecret>"
             }
         }
     }
@@ -83,7 +82,7 @@ Marketo からデータをコピーするには、データセットの type プ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**MarketoObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**MarketoObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -112,7 +111,7 @@ Marketo からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**MarketoSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**MarketoSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Activitiy_Types"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

@@ -1,92 +1,123 @@
 ---
-title: 'クイック スタート: Bing Autosuggest API (Node.js)'
+title: クイック スタート:Bing Autosuggest REST API と Node.js によって検索クエリの候補を表示する
 titlesuffix: Azure Cognitive Services
-description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
+description: Bing Autosuggest API を使用して手軽に検索語句の候補をリアルタイムで表示する方法について説明します。
 services: cognitive-services
-author: v-jaswel
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 498953625907aad85d8ea5999905cad21bf245da
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: b8f7fbe386400babac033de0efbaaabbe8832397
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829989"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010091"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-nodejs"></a>Node.js での Bing Autosuggest API のクイック スタート
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>クイック スタート:Bing Autosuggest REST API と Node.js によって検索クエリの候補を表示する
 
-この記事では、Node.js で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、推奨されるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
+このクイック スタートでは、Bing Autosuggest API を呼び出して JSON 応答を取得するための基礎を学ぶことができます。 このシンプルな Node.js アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには [Node.js 6](https://nodejs.org/en/download/) が必要です。
+* [Node.js 6](https://nodejs.org/en/download/) 以降
 
-**Bing Autosuggest API v7** を使用するには [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)が必要です。 このクイックスタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>Autosuggest の結果を取得する
+## <a name="create-a-new-application"></a>新しいアプリケーションを作成する
 
-1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 下記のコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と https の要件を設定します。
+    
+    ```javascript
+    'use strict';
+    
+    let https = require ('https');
+    ```
 
-```javascript
-'use strict';
+2. API エンドポイントのホストとパスの変数、サブスクリプション キー、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、および検索用語に対応する変数を作成します。
 
-let https = require ('https');
+    ```javascript
+    // Replace the subscriptionKey string value with your valid subscription key.
+    let subscriptionKey = 'enter key here';
+    
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/Suggestions';
+    
+    let mkt = 'en-US';
+    let query = 'sail';
+    ```
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+## <a name="construct-the-search-request-and-query"></a>検索要求とクエリを構築します。
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'enter key here';
+1. `mkt=` パラメーターに市場コードを、`q=` パラメーターに目的のクエリを付加して、クエリのパラメーター文字列を作成します。
 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/Suggestions';
+    ```javascript 
+    let params = '?mkt=' + mkt + '&q=' + query;
+    ```
 
-let mkt = 'en-US';
-let query = 'sail';
+2. `get_suggestions()` という関数を作成します。 最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 検索語句は、URL エンコードしたうえで API に送信する必要があります。
 
-let params = '?mkt=' + mkt + '&q=' + query;
-
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-    let body_ = JSON.parse (body);
-    let body__ = JSON.stringify (body_, null, '  ');
-        console.log (body__);
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
-
-let get_suggestions = function () {
-  let request_params = {
-    method : 'GET',
-    hostname : host,
-    path : path + params,
-    headers : {
-      'Ocp-Apim-Subscription-Key' : subscriptionKey,
+    ```javascript
+    let get_suggestions = function () {
+      let request_params = {
+        method : 'GET',
+        hostname : host,
+        path : path + params,
+        headers : {
+          'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+      };
+    //...
     }
-  };
+    ```
 
-  let req = https.request (request_params, response_handler);
-  req.end ();
-}
+    1. 同じ関数の中で、要求ライブラリを使用してクエリを API に送信します。 `response_handler` は次のセクションで定義します。
+    
+        ```javascript
+        //...
+        let req = https.request(request_params, response_handler);
+        req.end();
+        ```
 
-get_suggestions ();
-```
+## <a name="create-a-search-handler"></a>検索ハンドラーを作成する
 
-### <a name="response"></a>Response
+1. HTTP 呼び出し `response` をパラメーターとして受け取る `response_handler` という名前の関数を定義します。 この関数内で次の手順を実行します。
+    
+    1. JSON 応答の本文を含む変数を定義します。  
+
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
+
+    2. **data** フラグが呼び出されたときに応答の本文を格納する
+        
+        ```javascript
+        response.on ('data', function (d) {
+        body += d;
+        });
+        ```
+
+    3. **end** フラグがシグナル化されると、`JSON.parse()` および `JSON.stringify()` を使用して応答を出力します。
+    
+        ```javascript
+        response.on ('end', function () {
+        let body_ = JSON.parse (body);
+        let body__ = JSON.stringify (body_, null, '  ');
+            console.log (body__);
+        });
+        response.on ('error', function (e) {
+            console.log ('Error: ' + e.message);
+        });
+        ```
+
+2. `get_suggestions()` を呼び出して、Bing Autosuggest API へ要求を送信します。
+
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -157,9 +188,7 @@ get_suggestions ();
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Autosuggest チュートリアル](../tutorials/autosuggest.md)
-
-## <a name="see-also"></a>関連項目
+> [単一ページの Web アプリの作成](../tutorials/autosuggest.md)
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

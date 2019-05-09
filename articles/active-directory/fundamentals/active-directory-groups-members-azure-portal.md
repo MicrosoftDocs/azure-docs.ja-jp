@@ -3,21 +3,22 @@ title: グループ メンバーを追加または削除する - Azure Active Di
 description: Azure Active Directory を使用してグループに対してメンバーを追加または削除する方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 42b80b53ca7c860143f1de1005a609b3e921e650
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3dafdf4c67e8d3d74109b3879fb0deacd79b1774
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076156"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182240"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Azure Active Directory を使用してグループのメンバーを追加または削除する
 Azure Active Directory を使用して、グループのメンバーの追加と削除を続けることができます。

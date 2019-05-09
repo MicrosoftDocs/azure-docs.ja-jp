@@ -1,6 +1,6 @@
 ---
 title: Azure のための HTTPS 経由での Windows リモート管理 | Microsoft Docs
-description: 。
+description: にも掲載されています。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: v-miclar
@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1a341bf36842e49faf8e39f4056232c97cc4232c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 99c41dc010ae589cc43c093646fd1c05c1333f7e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195977"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265126"
 ---
 # <a name="windows-remote-management-over-https"></a>HTTPS 経由での Windows リモート管理
 
 このセクションでは、PowerShell を使用してリモートで管理およびデプロイできるように、Azure でホストされる Windows ベースの VM を構成する方法について説明します。  PowerShell のリモート操作を有効にするには、ターゲット VM が Windows リモート管理 (WinRM) HTTPS エンドポイントを公開する必要があります。  PowerShell のリモート操作について詳しくは、「[Running Remote Commands](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6)」(リモート コマンドの実行) をご覧ください。  WinRM について詳しくは、「[Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal)」(Windows リモート管理) をご覧ください。
 
-Azure の "クラシック" アプローチ (Azure Service Manager Portal または非推奨の Azure Service Management API (https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))) のいずれかを使用して VM を作成した場合は、WinRM エンドポイントが自動的に構成されます。  一方、次の "最新の" Azure アプローチのいずれかを使用して VM を作成した場合は、VM は HTTPS 経由の WinRM 用に構成 "*されません*"。  
+Azure の "クラシック" アプローチ (Azure Service Manager Portal または非推奨の [Azure Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))) のいずれかを使用して VM を作成した場合は、WinRM エンドポイントが自動的に構成されます。  一方、次の "最新の" Azure アプローチのいずれかを使用して VM を作成した場合は、VM は HTTPS 経由の WinRM 用に構成 "*されません*"。  
 
 - [Azure portal](https://portal.azure.com/) を使用。通常は「[Azure と互換性のある VHD の作成](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)」セクションで説明されているように承認済みのベースから
 - [Azure Resource Manager テンプレートを使用](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)

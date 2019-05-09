@@ -1,0 +1,29 @@
+items:
+- name: Azure サポート要求を作成する方法
+  href: how-to-create-azure-support-request.md
+- name: サポート リクエストのファイルのアップロード
+  href: how-to-use-file-uploader.md
+- name: サポート リクエストを作成して管理するためのアクセス権
+  href: create-manage-support-requests-using-access-control.md
+- name: クォータの引き上げのリクエスト
+  href: resource-manager-core-quotas-request.md
+- name: リージョンまたは SKU に関するサブスクリプションの問題のトラブルシューティング
+  href: sku-series-unavailable.md
+- name: リファレンス
+  items:
+  - name: Azure CLI
+    href: /cli/azure
+  - name: Azure PowerShell
+    href: /powershell/azure
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 31120ea857d0e080bc9629d781ac2cdd73d31bc0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340916"

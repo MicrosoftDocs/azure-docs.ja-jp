@@ -1,21 +1,19 @@
 ---
 title: グラフの BulkExecutor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 description: BulkExecutor ライブラリを使って、Azure Cosmos DB Gremlin API コンテナーにグラフ データを大量にインポートする方法を説明します。
-services: cosmos-db
-keywords: グラフ, Gremlin, 一括, BulkExecutor, 移行, データ, cosmosdb, cosmos, データベース, インポート
 author: luisbosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
+ms.subservice: cosmosdb-graph
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: lbosq
-ms.custom: mvc
-ms.openlocfilehash: d5a25bd7cab68f77a37b14ba41bf3cc832c2125f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: 5e88602aa3b983e1533248253d53967f39e6b5eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836714"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837526"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>グラフの BulkExecutor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 
@@ -157,6 +155,6 @@ Setting|説明
 3. グラフ データベースにクエリを実行して結果を評価します。 `ShouldCleanupOnFinish` オプションが true に設定されている場合、データベースは自動的に削除されます。
 
 ## <a name="next-steps"></a>次の手順
-* Nuget パッケージの詳細と Bulk Executor .Net ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-dot-net.md)に関するページを参照してください。 
+* Nuget パッケージの詳細と Bulk Executor .NET ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-dot-net.md)に関するページを参照してください。 
 * BulkExecutor の使用をさらに最適化するためには、「[パフォーマンスに関するヒント](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips)」を参照してください。
 * この名前空間に定義されているクラスとメソッドの詳細については、[BulkExecutor.Graph のリファレンス記事](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet)を参照してください。

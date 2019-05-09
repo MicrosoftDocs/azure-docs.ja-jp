@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 55cb1eee1c0319f9b1037476da208de377e0c47b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c2f6a614524f0dfb242db11618fda94ce57e6e6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111533"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -94,8 +94,8 @@ Load Balancer リソースはオブジェクトであり、その中では、ユ
 
     仮想ネットワーク内のプライベート IP アドレスから、インターネット上のパブリック IP アドレスへのすべての送信フローは、Load Balancer のフロントエンド IP アドレスに変換できます。 パブリック フロントエンドが負荷分散規則によってバックエンドの VM に関連付けられていると、Azure は送信接続がパブリック フロントエンドの IP アドレスに自動的に変換されるようにプログラムします。
 
-    * フロントエンドを別のサービス インスタンスに動的にマップできるため、サービスのアップグレードやディザスター リカバリーが簡単にできます。
-    * 容易なアクセス制御リスト (ACL) の管理。 フロントエンド IP で表わされる ACL は、サービスをスケールアップ、スケールダウン、または再デプロイしても変更されません。  送信接続をマシンより少ない数の IP アドレスに変換すると、ホワイトリストの作業負荷を軽減できます。
+  * フロントエンドを別のサービス インスタンスに動的にマップできるため、サービスのアップグレードやディザスター リカバリーが簡単にできます。
+  * 容易なアクセス制御リスト (ACL) の管理。 フロントエンド IP で表わされる ACL は、サービスをスケールアップ、スケールダウン、または再デプロイしても変更されません。  送信接続をマシンより少ない数の IP アドレスに変換すると、ホワイトリストの作業負荷を軽減できます。
 
     詳しくは、[送信接続](load-balancer-outbound-connections.md)に関するページをご覧ください。
 
@@ -153,7 +153,13 @@ Load Balancer は、Basic と Standard 両方の SKU をサポートし、シナ
 *図: パブリック ロード バランサーと内部ロード バランサーの両方を使った、多層アプリケーションの負荷分散*
 
 ## <a name="pricing"></a>価格
-Standard Load Balancer の使用には、構成済みの負荷分散規則の数と、処理された受信および送信データの量に基づいて課金されます。 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)に関するページをご覧ください。
+
+Standard Load Balancer の使用量は課金されます。
+
+- 構成されている負荷分散規則とアウトバウンド規則の数 (インバウンド NAT 規則はルールの総数にカウントされません)
+- 規則に関係なくインバウンドとアウトバウンドで処理されたデータの量 
+
+Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)に関するページをご覧ください。
 
 Basic Load Balancer は無料で提供されます。
 

@@ -5,18 +5,18 @@ description: C# を使用して、Language Understanding (LUIS) と統合され�
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cjgronlund
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 113e5769ee6a58785a46182064684bea5825c12c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 028c06924e41606ba1d4e0b15fe26f2b7270db3c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138934"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960303"
 ---
 # <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>チュートリアル: Bot Framework 4.x と Azure Web アプリ ボットを使用した C# の LUIS ボット
 C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成することができます。 このボットは、HomeAutomation アプリを使用してボット ソリューションを実装します。 このボットは、[Bot Framework バージョン](https://github.com/Microsoft/botbuilder-js) v4 と Azure [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/)で作成します。
@@ -50,8 +50,8 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     |ボット名|リソース名|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
     |サブスクリプション|サブスクリプション ボットを作成するサブスクリプション。|プライマリ サブスクリプション。
     |リソース グループ|Azure リソースの論理グループ|このボットで使用するすべてのリソースを格納する新しいグループを作成し、グループに `luis-csharp-bot-resource-group` という名前を付けます。|
-    |場所|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
-    |[価格レベル] |サービス要求の制限と課金に使用されます。|`F0` は無料レベルです。
+    |Location|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
+    |価格レベル |サービス要求の制限と課金に使用されます。|`F0` は無料レベルです。
     |アプリの名前|この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (humanresourcesbot.azurewebsites.net など)。|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
     |ボット テンプレート|Bot Framework の設定 - 次の表を参照|
     |LUIS アプリの場所|LUIS リソース リージョンと同じである必要があります|`westus`|
@@ -66,7 +66,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     
 5. **作成**を選択します。 これによって、ボット サービスが作成され、Azure にデプロイされます。 このプロセスの一環として、`luis-csharp-bot-XXXX` という LUIS アプリが作成されます。 この名前は、前のセクションのボットとアプリの名前に基づいています。
 
-    [ ![Web アプリ ボットの作成](./media/bfv4-csharp/create-web-app-service.png) ](./media/bfv4-csharp/create-web-app-service.png#lightbox)
+    [![Web アプリ ボットの作成](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
 6. このブラウザー タブは開いたままにしておきます。 LUIS ポータルを使用したどの手順でも、新しいブラウザー タブを開きます。新しいボット サービスがデプロイされたら、次のセクションに進みます。
 
@@ -106,7 +106,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 3. **[ボットのソース コードをダウンロードする]** を選択します。 
 
-    [ ![基本ボットの Web アプリ ボットのソース コードのダウンロード](../../../includes/media/cognitive-services-luis/bfv4/download-code.png) ](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![基本ボットの Web アプリ ボットのソース コードのダウンロード](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
 4. ソース コードが圧縮されている場合は、コードをダウンロードするリンクを示すメッセージが表示されます。 リンクを選択します。 
 
@@ -205,7 +205,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 2. ボット エミュレーターで、プロジェクトのルートにある *.bot ファイルを選択します。 この `.bot` ファイルには、メッセージに対するボットの URL エンドポイントが含まれています。
 
-    [ ![Bot emulator v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png) ](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
+    [![Bot emulator v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
 
 3. 「**[Web アプリ ボットをダウンロードする](#download-the-web-app-bot)**」セクションの手順 1 で Azure Bot Service の [アプリケーションの設定] からコピーした、ボット シークレットを入力します。 これにより、エミュレーターが `.bot` ファイル内の暗号化されたフィールドにアクセスできるようになります。
 
@@ -213,7 +213,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 4. ボット エミュレーターで、`Hello` と入力し、基本ボットの適切な返答を取得します。
 
-    [ ![エミュレーターでの基本ボットの返答](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png) ](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
+    [![エミュレーターでの基本ボットの返答](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png)](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
 
 ## <a name="modify-bot-code"></a>ボットのコードを変更する 
 
@@ -301,6 +301,7 @@ Azure Bot Service は、Bot Framework SDK を使用します。 SDK と Bot Fram
 
 Azure ボット サービスを作成し、ボット シークレットと `.bot` ファイル パスをコピーし、コードの zip ファイルをダウンロードしました。 事前構築済みの HomeAutomation ドメイン LUIS アプリを、新しい Azure Bot Service の一部として作成した LUIS アプリに追加してから、アプリを再度トレーニングして発行しました。 コード プロジェクトを抽出し、環境ファイル (`.env`) を作成して、ボット シークレットと `.bot` ファイル パスを設定しました。 bot.js ファイルで、2 つの新しい意図を処理するコードを追加しました。 その後、ボット エミュレーターでボットをテストし、新しい意図の 1 つの発話に対する LUIS の返答を設定しました。 
 
+会話型ボットのある他の[サンプル](https://github.com/Microsoft/AI)を確認してください。 
 
 > [!div class="nextstepaction"]
 > [LUIS でカスタム ドメインをビルドする](luis-quickstart-intents-only.md)

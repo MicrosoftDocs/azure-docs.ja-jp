@@ -1,21 +1,23 @@
 ---
-title: Azure Active Directory での B2B コラボレーション用の SaaS アプリの構成 | Microsoft Docs
+title: B2B コラボレーション用の SaaS アプリの構成 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: 78f34183b30f8ea9fe44ddaf2b57b237cbb09749
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+manager: daveba
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c7a652ab4283321c5934b32fdc5478bb5d79e4a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985764"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293132"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B コラボレーション用の SaaS アプリの構成
 
@@ -36,37 +38,37 @@ Azure Active Directory (Azure AD) B2B コラボレーションは、Azure AD と
 
 1. Dropbox Business アプリを Azure AD に追加するには、左側のウィンドウで **[エンタープライズ アプリケーション]** を選択し、**[追加]** をクリックします。
 
-  ![[エンタープライズ アプリケーション] ページの [追加] ボタン](media/configure-saas-apps/add-dropbox.png)
+   ![[エンタープライズ アプリケーション] ページの [追加] ボタン](media/configure-saas-apps/add-dropbox.png)
 
 2. **[アプリケーションの追加]** ウィンドウで検索ボックスに「**dropbox**」と入力し、結果の一覧で **[Dropbox for Business]** を選択します。
 
-  ![[アプリケーションの追加] ページで "dropbox" を検索する](media/configure-saas-apps/add-app-dialog.png)
+   ![[アプリケーションの追加] ページで "dropbox" を検索する](media/configure-saas-apps/add-app-dialog.png)
 
 3. **[シングル サインオン]** ページの左側のウィンドウで **[シングル サインオン]** を選択し、**[ユーザー識別子]** ボックスに「**user.mail**」と入力します  (既定では、UPN に設定されます)。
 
-  ![アプリのシングル サインオンの構成](media/configure-saas-apps/configure-app-sso.png)
+   ![アプリのシングル サインオンの構成](media/configure-saas-apps/configure-app-sso.png)
 
 4. Dropbox の構成に使用する証明書をダウンロードするには、**[DropBox の構成]** を選択し、一覧の **[SAML Single Sign On Service URL (SAML シングル サインオン サービス URL)]** を選択します。
 
-  ![Dropbox 構成の証明書のダウンロード](media/configure-saas-apps/download-certificate.png)
+   ![Dropbox 構成の証明書のダウンロード](media/configure-saas-apps/download-certificate.png)
 
 5. **[シングル サインオン]** ページのサインオン URL を使用して Dropbox にサインインします。
 
-  ![Dropbox のサインイン ページ](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![Dropbox のサインイン ページを示すスクリーンショット](media/configure-saas-apps/sign-in-to-dropbox.png)
 
 6. メニューで **[管理コンソール]** を選択します。
 
-  ![Dropbox メニューの [管理コンソール] リンク](media/configure-saas-apps/dropbox-menu.png)
+   ![Dropbox メニューの [管理コンソール] リンク](media/configure-saas-apps/dropbox-menu.png)
 
 7. **[Authentication (認証)]** ダイアログ ボックスで **[More (詳細)]** を選択し、証明書をアップロードしてから、**[Sign in URL (サインイン URL)]** ボックスに SAML シングル サインオン URL を入力します。
 
-  ![折りたたまれた [Authentication (認証)] ダイアログ ボックスの [More (詳細)] リンク](media/configure-saas-apps/dropbox-auth-01.png)
+   ![折りたたまれた [Authentication (認証)] ダイアログ ボックスの [More (詳細)] リンク](media/configure-saas-apps/dropbox-auth-01.png)
 
-  ![展開された [Authentication (認証)] ダイアログ ボックスの [Sign in URL (サインイン URL)] リンク](media/configure-saas-apps/paste-single-sign-on-URL.png)
+   ![展開された [Authentication (認証)] ダイアログ ボックスの [Sign in URL (サインイン URL)] リンク](media/configure-saas-apps/paste-single-sign-on-URL.png)
 
 8. Azure Portal で自動ユーザー セットアップを構成するには、左側のウィンドウで **[プロビジョニング]** を選択し、**[プロビジョニング モード]** ボックスで **[自動]** を選択して、**[承認]** を選択します。
 
-  ![Azure Portal での自動ユーザー プロビジョニングの構成](media/configure-saas-apps/set-up-automatic-provisioning.png)
+   ![Azure Portal での自動ユーザー プロビジョニングの構成](media/configure-saas-apps/set-up-automatic-provisioning.png)
 
 Dropbox アプリでゲストまたはメンバー ユーザーがセットアップされると、ユーザーは Dropbox から個別の招待を受け取ります。 Dropbox のシングル サインオンを使用するには、招待されたユーザーが招待のリンクをクリックして、招待に応じる必要があります。
 
@@ -77,22 +79,22 @@ SAML プロトコルに基づくフェデレーションを使用して、ユー
 
 2. 次の順序で、シングル サインオンを構成します。
 
-  ![Box のシングル サインオンを構成する](media/configure-saas-apps/configure-box-sso.png)
+   ![シングル サインオンの構成設定を示すスクリーンショット](media/configure-saas-apps/configure-box-sso.png)
 
- a. **[サインオン URL]** ボックスで、サインオン URL が Azure Portal で Box 用に適切に設定されていることを確認します。 この URL は、Box.com テナントの URL です。 名前付け規則 (*https://.box.com*) に従う必要があります。  
- **[識別子]** はこのアプリには該当しませんが、必須フィールドとして表示されます。
+   a. **[サインオン URL]** ボックスで、サインオン URL が Azure Portal で Box 用に適切に設定されていることを確認します。 この URL は、Box.com テナントの URL です。 名前付け規則 (*https://.box.com*) に従う必要があります。  
+   **[識別子]** はこのアプリには該当しませんが、必須フィールドとして表示されます。
 
- b. **[ユーザー識別子]** ボックスに、「**user.mail**」と入力します (ゲスト アカウントの SSO 用)。
+   b. **[ユーザー識別子]** ボックスに、「**user.mail**」と入力します (ゲスト アカウントの SSO 用)。
 
- c. **[SAML 署名証明書]** で、**[新しい証明書の作成]** をクリックします。
+   c. **[SAML 署名証明書]** で、**[新しい証明書の作成]** をクリックします。
 
- d. Box.com テナントが Azure AD を ID プロバイダーとして使用するようにする構成を開始するには、メタデータ ファイルをダウンロードし、ローカル ドライブに保存します。
+   d. Box.com テナントが Azure AD を ID プロバイダーとして使用するようにする構成を開始するには、メタデータ ファイルをダウンロードし、ローカル ドライブに保存します。
 
- e. メタデータ ファイルを Box サポート チームに転送します。このチームが、シングル サインオンの構成を行ってくれます。
+   e. メタデータ ファイルを Box サポート チームに転送します。このチームが、シングル サインオンの構成を行ってくれます。
 
 3. Azure AD 自動ユーザー セットアップの場合は、左側のウィンドウで **[プロビジョニング]** を選択し、**[承認する]** を選択します。
 
-  ![Box への接続を Azure AD に承認する](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+   ![Box への接続を Azure AD に承認する](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
 Dropbox での招待されるユーザーのように、Box での招待されるユーザーも、Box アプリからの招待に応じる必要があります。
 

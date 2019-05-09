@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53027923"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551545"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
@@ -57,17 +57,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
- Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
-
-| 発行元 | プラン | SKU | Version | cloud-init 対応
-|:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |16.04 LTS |latest |はい | 
-|Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
-|CoreOS |CoreOS |安定版 |latest |はい |
-|OpenLogic |CentOS |7-CI |latest |preview |
-|RedHat |RHEL |7-RAW-CI |latest |preview |
-
-Azure の cloud-init について詳しくは、次のページをご覧ください。
+Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 Azure の cloud-init について詳しくは、次のページをご覧ください。
 
 - [Azure での Linux 仮想マシンに対する cloud-init のサポート](../articles/virtual-machines/linux/using-cloud-init.md)
 - [cloud-init を使用した VM 構成の自動化に関するチュートリアル](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
@@ -80,7 +70,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 以下の項目について説明します。
 
-- [基本的な DSC 構成を作成する](https://msdn.microsoft.com/powershell/dsc/quickstart)。
+- [基本的な DSC 構成を作成する](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart)。
 - [DSC プル サーバーを構成する](https://msdn.microsoft.com/powershell/dsc/pullserver)。
 - [Linux 用の DSC を使用する](https://msdn.microsoft.com/powershell/dsc/lnxgettingstarted)。
 

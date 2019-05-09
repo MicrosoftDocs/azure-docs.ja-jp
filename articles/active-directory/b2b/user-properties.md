@@ -1,25 +1,27 @@
 ---
-title: Azure Active Directory B2B コラボレーション ユーザーのプロパティ | Microsoft Docs
-description: Azure Active Directory B2B コラボレーション ユーザーのプロパティは構成できます
+title: B2B ゲスト ユーザーのプロパティ - Azure Active Directory | Microsoft Docs
+description: 招待に応じる前と後の Azure Active Directory B2B ゲスト ユーザーのプロパティと状態
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/5/2018
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996622"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257605"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
-Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユーザーは、UserType = Guest のユーザーです。 このゲスト ユーザーは通常、パートナー組織に属しており、既定では招待側のディレクトリ内で制限された権限を付与されています。
+この記事では、招待に応じる前と後の Azure Active Directory (Azure AD) 内の B2B ゲスト ユーザー オブジェクトのプロパティと状態について説明します。 Azure AD 企業間 (B2B) コラボレーション ユーザーは、UserType = Guest のユーザーです。 このゲスト ユーザーは通常、パートナー組織に属しており、既定では招待側のディレクトリ内で制限された権限を付与されています。
 
 招待側の組織のニーズに応じて、Azure AD B2B コラボレーション ユーザーは、以下のいずれかのアカウント状態になります。
 
@@ -31,7 +33,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 - 状態 4:ホスト組織の Azure AD に所属し、UserType = Guest で、資格情報はホスト組織によって管理されています。
 
-  ![招待元のイニシャルの表示](media/user-properties/redemption-diagram.png)
+  ![ユーザーの 4 つの状態を示す図](media/user-properties/redemption-diagram.png)
 
 
 ここで、Azure AD B2B コラボレーション ユーザーが Azure AD でどのように見えるかを見てみましょう。
@@ -40,7 +42,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 状態 1 アカウントと状態 2 アカウントは、ゲスト ユーザー自身の資格情報を使用して共同作業するようにゲスト ユーザーを招待した結果です。 招待が最初にゲスト ユーザーに送信されると、アカウントがディレクトリに作成されます。 認証はゲスト ユーザーの ID プロバイダーによって実行されるため、このアカウントには関連付けられた資格情報はありません。 ディレクトリ内のゲスト ユーザー アカウントの **[ソース]** プロパティは **[ユーザーが招待されました]** に設定されています。 
 
-![オファーに応じる前](media/user-properties/before-redemption.png)
+![招待に応じる前のユーザー プロパティを示すスクリーンショット](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>招待に応じた後
 
@@ -86,7 +88,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 ## <a name="filter-for-guest-users-in-the-directory"></a>ディレクトリのゲスト ユーザーのフィルター処理
 
-![ゲスト ユーザーのフィルター処理](media/user-properties/filter-guest-users.png)
+![ゲスト ユーザーのフィルターを示すスクリーンショット](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>UserType の変換
 PowerShell を使用して、UserType をメンバーからゲストに、またはその逆に変換できます。 ただし、UserType プロパティはユーザーと組織の関係を表しています。 そのため、このプロパティは、ユーザーと組織の関係が変化した場合にのみ変更するようにします。 ユーザーの関係が変化した場合に、ユーザー プリンシパル名 (UPN) を変更する必要はありますか。 また、同じリソースへのアクセス権を引き続きユーザーに持たせる必要がありますか。 メールボックスを割り当てる必要があるか、などの疑問です。 PowerShell を使用してアトミック アクティビティとして UserType を変更することはお勧めしません。 また、PowerShell を使用してこのプロパティを変更できなくなる場合に備えて、この値には依存しないことをお勧めします。
@@ -96,10 +98,10 @@ PowerShell を使用して、UserType をメンバーからゲストに、また
 
 既定の制限を無効にして、会社のディレクトリのゲスト ユーザーにメンバー ユーザーと同じアクセス許可を持たせることができます。
 
-![ゲスト ユーザー制限の削除](media/user-properties/remove-guest-limitations.png)
+![ユーザー設定の [外部ユーザー] オプションを示すスクリーンショット](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
-はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳しくは、「[Office 365 グループのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示することはできますか?**」をご覧ください。 
+はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?**」を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 

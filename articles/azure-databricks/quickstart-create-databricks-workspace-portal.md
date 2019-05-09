@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3a58a34271562b127735a4682046a7b646d0c085
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259547"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010519"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Databricks で Spark ジョブを実行する
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Databricks で Spark ジョブを実行する
 
 このクイックスタートでは、Azure Databricks ワークスペースと、そのワークスペース内の Apache Spark クラスターを作成する方法を示します。 最後に、Databricks クラスターで Spark ジョブを実行する方法を説明します。 Azure Databricks の詳細については、「[Azure Databricks とは](what-is-azure-databricks.md)」を参照してください。
 
@@ -43,11 +43,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
     
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
-    |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します        |
+    |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**[リソース グループ]**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
     |**場所**     | **[米国東部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
@@ -74,11 +74,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     以下を除くすべての値は、既定値のままにします。
 
-    * クラスターの名前を入力します。
-    * この記事では、**4.0** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+   * クラスターの名前を入力します。
+   * この記事では、**4.0** ランタイムを使用してクラスターを作成します。
+   * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
     
-    **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
+     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
 クラスターの作成について詳しくは、[Azure Databricks での Spark クラスターの作成に関するページ](https://docs.azuredatabricks.net/user-guide/clusters/create.html)をご覧ください。
 
@@ -89,12 +89,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. このサンプル JSON データ ファイルを [GitHub から](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)ローカル コンピューターにダウンロードします。 右クリックし、名前を付けて、生ファイルをローカルに保存します。
 
 2. まだストレージ アカウントがない場合は、作成します。
-    - Azure Portal で、**[リソースの作成]** を選択します。 **[ストレージ]** カテゴリを選択し、**[ストレージ アカウント]** を選択します
-    - ストレージ アカウントに一意の名前を指定してください。
-    - **アカウントの種類**を選択します。**Blob Storage**
-    - **リソース グループ**名を選択します。 Databricks ワークスペースを作成したのと同じリソース グループを使用します。
+   - Azure Portal で、**[リソースの作成]** を選択します。 **[ストレージ]** カテゴリを選択し、**[ストレージ アカウント]** を選択します
+   - ストレージ アカウントに一意の名前を指定してください。
+   - **アカウントの種類**を選択します。**Blob Storage**
+   - **リソース グループ**名を選択します。 Databricks ワークスペースを作成したのと同じリソース グループを使用します。
     
-    詳細については、[Azure Blob ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。
+     詳細については、[Azure Blob ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。
 
 3. Blob ストレージ アカウントにストレージ コンテナーを作成し、サンプル json ファイルをコンテナーにアップロードします。 ファイルのアップロードには、Azure portal または [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用することができます。
 
@@ -130,21 +130,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次のスニペットで、`{YOUR CONTAINER NAME}`、`{YOUR STORAGE ACCOUNT NAME}`、および `{YOUR STORAGE ACCOUNT ACCESS KEY}` を Azure Storage アカウントの適切な値に置き換えてください。 スニペットをノートブックの空のセルに貼り付け、Shift + Enter キーを押してコードのセルを実行します。
 
-    * **DBFS を使用してストレージ アカウントにマウントする (推奨)**。 このスニペットでは、Azure Storage アカウントのパスが `/mnt/mypath` にマウントされています。 そのため、今後 Azure Storage アカウントにアクセスする場合は、完全なパスを指定する必要はありません。 単に `/mnt/mypath` を使用することができます。
+   * **DBFS を使用してストレージ アカウントにマウントする (推奨)**。 このスニペットでは、Azure Storage アカウントのパスが `/mnt/mypath` にマウントされています。 そのため、今後 Azure Storage アカウントにアクセスする場合は、完全なパスを指定する必要はありません。 単に `/mnt/mypath` を使用することができます。
 
-          dbutils.fs.mount(
-            source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
-            mountPoint = "/mnt/mypath",
-            extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
+         dbutils.fs.mount(
+           source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
+           mountPoint = "/mnt/mypath",
+           extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
 
-    * **ストレージ アカウントに直接アクセスする**
+   * **ストレージ アカウントに直接アクセスする**
 
-          spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
+         spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
 
-    ストレージ アカウント キーを取得する方法については、「[ストレージ アクセス キーの管理](../storage/common/storage-account-manage.md#access-keys)」を参照してください。
+     ストレージ アカウント キーを取得する方法については、「[ストレージ アクセス キーの管理](../storage/common/storage-account-manage.md#access-keys)」を参照してください。
 
-    > [!NOTE]
-    > Azure Databricks 上の Spark クラスターで Azure Data Lake Store を使うこともできます。 方法については、[Azure Databricks での Data Lake Store の使用に関するページ](https://go.microsoft.com/fwlink/?linkid=864084)をご覧ください。
+     > [!NOTE]
+     > Azure Databricks 上の Spark クラスターで Azure Data Lake Store を使うこともできます。 方法については、[Azure Databricks での Data Lake Store の使用に関するページ](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)をご覧ください。
 
 4. SQL ステートメントを実行し、サンプルの JSON データ ファイル **small_radio_json.json** のデータを使って、一時テーブルを作成します。 次のスニペットでは、プレースホルダーの値をコンテナー名およびストレージ アカウント名に置き換えます。 スニペットをノートブックのコード セルに貼り付けて、Shift + Enter キーを押します。 スニペットの `path` は、Azure ストレージ アカウントにアップロードしたサンプルの JSON ファイルの場所を示します。
 
@@ -183,12 +183,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![棒グラフをカスタマイズする](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "棒グラフをカスタマイズする")
 
-    * **[Keys]\(キー\)** を **gender** に設定します。
-    * **[Series groupings]\(系列グループ\)** を **level** に設定します。
-    * **[Values]\(値\)** を **level** に設定します。
-    * **[Aggregation]\(集計\)** を **[COUNT]\(個数\)** に設定します。
+   * **[Keys]\(キー\)** を **gender** に設定します。
+   * **[Series groupings]\(系列グループ\)** を **level** に設定します。
+   * **[Values]\(値\)** を **level** に設定します。
+   * **[Aggregation]\(集計\)** を **[COUNT]\(個数\)** に設定します。
 
-    **[Apply]** をクリックします。
+     **[Apply]** をクリックします。
 
 9. 出力は、次のスクリーンショットのようなビジュアル表現になります。
 
@@ -200,7 +200,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Databricks クラスターを停止する](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
 ## <a name="next-steps"></a>次の手順
 

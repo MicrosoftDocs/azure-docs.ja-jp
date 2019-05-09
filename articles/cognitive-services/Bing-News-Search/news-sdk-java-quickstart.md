@@ -4,40 +4,45 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Bing News Search SDK for Java を使ってニュースを検索し、応答を処理します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 02/16/2018
+ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 056d75a1039e805786b14aa19c896bda78d04150
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 648e1701154c725a0645bd520045238030a71ea9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108697"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-java"></a>クイック スタート:Bing News Search SDK (Java)
+# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>クイック スタート:Bing News Search SDK for Java でニュースを検索する
 
-Bing News Search SDK には、ニュースのクエリと結果の解析に関する REST API 機能が用意されています。  **[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。 
+このクイック スタートを使用して、Bing News Search SDK for Java を使ったニュース検索を始めましょう。 Bing News Search には、ほとんどのプログラミング言語に対応した REST API がありますが、SDK を使用すれば、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) にあります。
 
-[Java Bing News Search SDK サンプルのソース コード](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)は、Git Hub で入手できます。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="application-dependencies"></a>アプリケーションの依存関係
-**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。 Maven、Gradle、または別の依存関係管理システムを使用して Bing News Search SDK の依存関係をインストールします。 Maven POM ファイルには、次の宣言が必要です。
-```
-  <dependencies>
+Maven、Gradle、または別の依存関係管理システムを使用して Bing News Search SDK の依存関係をインストールします。 Maven POM ファイルには、次の宣言が必要です。
+
+```xml
+    <dependencies>
     <dependency>
         <groupId>com.microsoft.azure.cognitiveservices</groupId>
         <artifactId>azure-cognitiveservices-newssearch</artifactId>
         <version>0.0.1-beta-SNAPSHOT</version>
     </dependency>
-  </dependencies>
+    </dependencies>
 ```
-## <a name="news-search-client"></a>News Search クライアント
-クラスの実装にインポートを追加します。
-```
+
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
+
+## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
+
+普段使用している IDE またはエディターで新しい Java プロジェクトを作成し、以下のライブラリをインポートします。
+
+```java
 import com.microsoft.azure.cognitiveservices.newssearch.*;
 import com.microsoft.azure.cognitiveservices.newssearch.implementation.NewsInner;
 import com.microsoft.azure.cognitiveservices.newssearch.implementation.NewsSearchAPIImpl;
@@ -49,244 +54,88 @@ import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
 ```
-**NewsSearchAPIImpl** クライアントを実装します。これには、**ServiceClientCredentials** クラスのインスタンスが必要です。
-```
-public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
-    return new NewsSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
-            new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                    builder.addNetworkInterceptor(
-                            new Interceptor() {
-                                @Override
-                                public Response intercept(Chain chain) throws IOException {
-                                    Request request = null;
-                                    Request original = chain.request();
-                                    // Request customization: add request headers.
-                                    Request.Builder requestBuilder = original.newBuilder()
-                                            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-                                    request = requestBuilder.build();
-                                    return chain.proceed(request);
-                                }
-                            });
-                }
-            });
-}
 
+## <a name="create-a-search-client-and-store-credentials"></a>検索クライアントの作成と資格情報の格納
 
-```
-1 つのクエリ "Quantum Computing" でニュースを検索します。 *market* および *count* パラメーターを使用して検索のフィルター処理を実行します。 結果の数を確認します。 最初のニュース結果に関する情報 (名前、URL、公開日、説明、提供元の名前、推定一致数の合計) を出力します。
-```
-public static void newsSearch(String subscriptionKey)
-{
-    NewsSearchAPIImpl client = getClient(subscriptionKey);
+1. 新しい `NewsSearchAPIImpl` 検索クライアントを返す `getClient()` というメソッドを作成します。 新しい `NewsSearchAPIImpl` オブジェクトの第 1 パラメーターとしてエンドポイントを追加し、さらに資格情報を格納するための新しい `ServiceClientCredentials` オブジェクトを追加します。
 
-    try
+    ```java
+    public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
+        return new NewsSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
+                new ServiceClientCredentials() {
+                });
+    }
+    ```
+
+2. `ServiceClientCredentials` オブジェクトを作成するには、`applyCredentialsFilter()` 関数をオーバーライドします。 このメソッドに `OkHttpClient.Builder` を渡し、ビルダーの `addNetworkInterceptor()` メソッドを使用して、SDK 呼び出しのための資格情報を作成します。
+
+    ```java
+    new ServiceClientCredentials() {
+        @Override
+        public void applyCredentialsFilter(OkHttpClient.Builder builder) {
+            builder.addNetworkInterceptor(
+                    new Interceptor() {
+                        @Override
+                        public Response intercept(Chain chain) throws IOException {
+                            Request request = null;
+                            Request original = chain.request();
+                            // Request customization: add request headers.
+                            Request.Builder requestBuilder = original.newBuilder()
+                                    .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+                            request = requestBuilder.build();
+                            return chain.proceed(request);
+                        }
+                    });
+        }
+    });
+    ```
+
+## <a name="send-and-receive-a-search-request"></a>検索要求の送信と受信
+
+1. `getClient()` を呼び出すメソッドを作成し、Bing News Search サービスに検索要求を送信します。 *market* パラメーターと *count* パラメーターで検索にフィルターを適用し、最初のニュース結果に関する情報 (名前、URL、公開日、説明、提供元の名前、検索の推定一致数の合計) を出力します。
+
+    ```java
+    public static void newsSearch(String subscriptionKey)
     {
-        NewsInner newsResults = client.searchs().list("Quantum  Computing", null, null, null,
+        NewsSearchAPIImpl client = getClient(subscriptionKey);
+        String searchTerm = "Quantum Computing";
+    
+        NewsInner newsResults = client.searchs().list(searchTerm, null, null, null,
                 null, null, 100, null, "en-us",
                 null, null, null, null, null,
                 null, null);
-
-        System.out.println("\r\nSearch news for query \"Quantum  Computing\" with market and count");
-
-        if (newsResults == null)
-        {
-            System.out.println("Didn't see any news result data..");
-        }
-        else
-        {
-            if (newsResults.value().size() > 0)
-            {
-                NewsArticle firstNewsResult = newsResults.value().get(0);
-
-                System.out.println(String.format("TotalEstimatedMatches value: %d", newsResults.totalEstimatedMatches()));
-                System.out.println(String.format("News result count: %d", newsResults.value().size()));
-                System.out.println(String.format("First news name: %s", firstNewsResult.name()));
-                System.out.println(String.format("First news url: %s", firstNewsResult.url()));
-                System.out.println(String.format("First news description: %s", firstNewsResult.description()));
-                System.out.println(String.format("First news published time: %s", firstNewsResult.datePublished()));
-                System.out.println(String.format("First news provider: %s", firstNewsResult.provider().get(0).name()));
-            }
-            else
-            {
-                System.out.println("Couldn't find news results!");
-            }
-        }
-    }
-
-    catch (Exception ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-}
-
-```
-"Artificial Intelligence" (人工知能) に関する最近のニュースを検索します。 *freshness* および *sortBy* パラメーターを使用して検索のフィルター処理を実行します。 結果の数を確認します。 最初のニュース結果に関する情報 (名前、URL、公開日、説明、提供元の名前、推定一致数の合計) を出力します。
-```
-/**
- * Search recent news for (Artificial Intelligence) with the freshness and sortBy parameters.
- * Verify the number of results. Print the totalEstimatedMatches, name, url, description,
- * published time, and provider name for the first news result.
- * @param subscriptionKey cognitive services subscription key
- */
-public static void newsSearchWithFilters(String subscriptionKey)
-{
-    NewsSearchAPIImpl client = getClient(subscriptionKey);
-
-    try
-    {
-        NewsInner newsResults = client.searchs().list("Artificial Intelligence", null, null, null, null, null,
-                    null, Freshness.WEEK, "en-us", null, null, null,
-                    null, "Date", null, null);
-        System.out.println("\r\nSearch most recent news for query \"Artificial Intelligence\" with freshness and sortBy");
-
-        if (newsResults == null)
-        {
-            System.out.println("Didn't see any news result data..");
-        }
-        else
-        {
-            if (newsResults.value().size() > 0)
-            {
-                NewsArticle firstNewsResult = newsResults.value().get(0);
-
-                System.out.println(String.format("TotalEstimatedMatches value: %d", newsResults.totalEstimatedMatches()));
-                System.out.println(String.format("News result count: %d", newsResults.value().size()));
-                System.out.println(String.format("First news name: %s", firstNewsResult.name()));
-                System.out.println(String.format("First news url: %s", firstNewsResult.url()));
-                System.out.println(String.format("First news description: %s", firstNewsResult.description()));
-                System.out.println(String.format("First news published time: %s", firstNewsResult.datePublished()));
-                System.out.println(String.format("First news provider: %s", firstNewsResult.provider().get(0).name()));
-            }
-            else
-            {
-                System.out.println("Couldn't find news results!");
-            }
-        }
-    }
-
-    catch (Exception ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-}
-
-```
-*映画とテレビのエンターテインメント* トピックに関するニュースの **category** (カテゴリ) を検索し、*セーフ サーチ*機能を使用します。 結果の数を確認します。 最初のニュース結果について、カテゴリ、名前、URL、説明、公開日、提供元の名前を出力します。
-```
-/**
- * Search the news category for (movie and TV entertainment) with safe search. Verify the number of results. 
- * Print the category, name, url, description, published time, and provider name for the first news result.
- * @param subscriptionKey cognitive services subscription key
- */
-public static void newsCategory(String subscriptionKey)
-{
-    NewsSearchAPIImpl client = getClient(subscriptionKey);
-
-    try
-    {
-        NewsInner newsResults = client.categorys().list(null, null, null, null, null, "Entertainment_MovieAndTV",
-                null, null, "en-us", null, null, SafeSearch.STRICT,
-                null, null, null);
-        System.out.println("\r\nSearch category news for movie and TV entertainment with safe search");
-
-        if (newsResults == null)
-        {
-            System.out.println("Didn't see any news result data..");
-        }
-        else
-        {
-            if (newsResults.value().size() > 0)
-            {
-                NewsArticle firstNewsResult = newsResults.value().get(0);
-
-                System.out.println(String.format("News result count: %d", newsResults.value().size()));
-                //System.out.println(String.format("First news category: %d", firstNewsResult.category()));
-                System.out.println(String.format("First news name: %s", firstNewsResult.name()));
-                System.out.println(String.format("First news url: %s", firstNewsResult.url()));
-                System.out.println(String.format("First news description: %s", firstNewsResult.description()));
-                System.out.println(String.format("First news published time: %s", firstNewsResult.datePublished()));
-                System.out.println(String.format("First news provider: %s", firstNewsResult.provider().get(0).name()));
-            }
-            else
-            {
-                System.out.println("Couldn't find news results!");
-            }
-        }
-    }
-
-    catch (Exception ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage()
-        );
-    }
-}
-
-```
-トレンドのニュース トピックを検索します。 結果の数を確認します。 最初のニュース結果について、名前、クエリ テキスト、Web 検索 URL、およびニュース検索の URL を出力します。
-```
-public static void trendingTopics(String subscriptionKey)
-{
-    NewsSearchAPIImpl client = getClient(subscriptionKey);
-
-    try
-    {
-        TrendingTopicsInner trendingTopics = client.trendings().list(null, null, null, null, null, null,
-                "en-us", null, null, null, null, null, null, null);
-        System.out.println("\r\nSearch news trending topics in Bing");
-
-        if (trendingTopics == null)
-        {
-            System.out.println("Didn't see any news trending topics..");
-        }
-        else
-        {
-            if (trendingTopics.value().size() > 0)
-            {
-                NewsTopic firstTopic = trendingTopics.value().get(0);
-
-                System.out.println(String.format("Trending topics count: %s", trendingTopics.value().size()));
-                System.out.println(String.format("First topic name: %s", firstTopic.name()));
-                System.out.println(String.format("First topic query: %s", firstTopic.query().text()));
-                System.out.println(String.format("First topic image url: %s", firstTopic.image().url()));
-                System.out.println(String.format("First topic webSearchUrl: %s", firstTopic.webSearchUrl()));
-                System.out.println(String.format("First topic newsSearchUrl: %s", firstTopic.newsSearchUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find news trending topics!");
-            }
-        }
-    }
-
-    catch (Exception ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-}
-```
-コードを実行するための main 関数が含まれるクラスに、この記事で説明するメソッドを追加します。
-```
-package javaNewsSDK;
-import com.microsoft.azure.cognitiveservices.newssearch.*;
-
-public class NewsSearchSDK {
     
+        if (newsResults.value().size() > 0)
+        {
+            NewsArticle firstNewsResult = newsResults.value().get(0);
+    
+            System.out.println(String.format("TotalEstimatedMatches value: %d", newsResults.totalEstimatedMatches()));
+            System.out.println(String.format("News result count: %d", newsResults.value().size()));
+            System.out.println(String.format("First news name: %s", firstNewsResult.name()));
+            System.out.println(String.format("First news url: %s", firstNewsResult.url()));
+            System.out.println(String.format("First news description: %s", firstNewsResult.description()));
+            System.out.println(String.format("First news published time: %s", firstNewsResult.datePublished()));
+            System.out.println(String.format("First news provider: %s", firstNewsResult.provider().get(0).name()));
+        }
+        else
+        {
+            System.out.println("Couldn't find news results!");
+        }
+    
+    }
+    
+    ```
 
+2. 検索メソッドを `main()` メソッドに追加してコードを実行します。
+
+    ```java 
     public static void main(String[] args) {
         String subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
-        NewsSearchSDK.newsSearch("YOUR-SUBSCRIPTION-KEY");
-        NewsSearchSDK.newsSearchWithFilters("YOUR-SUBSCRIPTION-KEY");
-        NewsSearchSDK.newsCategory("YOUR-SUBSCRIPTION-KEY");
-        NewsSearchSDK.trendingTopics("YOUR-SUBSCRIPTION-KEY");
+        NewsSearchSDK.newsSearch(subscriptionKey);
     }
+    ```
 
-    // Include the methods described in this article.
-}
-```
 ## <a name="next-steps"></a>次の手順
 
-[Cognitive Services の Java 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-
-
+> [!div class="nextstepaction"]
+> [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

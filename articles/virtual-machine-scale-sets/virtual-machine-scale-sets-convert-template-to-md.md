@@ -25,7 +25,7 @@ ms.locfileid: "53339877"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>スケール セット テンプレートをマネージド ディスク スケール セット テンプレートに変換する
 
-Resource Manager テンプレートを基にマネージド ディスクを使用しないスケール セットを作成している場合、マネージド ディスクを使用するようにそのテンプレートを変更することができます。 この記事では、「[Azure Quickstart Templates (Azure クイック スタート テンプレート)](https://github.com/Azure/azure-quickstart-templates)」ページ (コミュニティにより運営されている、サンプルの Resource Manager テンプレートを集めたリポジトリ) に登録されているプル要求の例を使用して、マネージド ディスクの使用方法を示します。 完全なプル要求については、[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) で確認できます。diff の関連する部分と説明を以下に示します。
+Resource Manager テンプレートを基にマネージド ディスクを使用しないスケール セットを作成している場合、マネージド ディスクを使用するようにそのテンプレートを変更することができます。 この記事では、「[Azure Quickstart Templates (Azure クイック スタート テンプレート)](https://github.com/Azure/azure-quickstart-templates)」ページ (コミュニティにより運営されている、サンプルの Resource Manager テンプレートを集めたリポジトリ) に登録されている Pull Request の例を使用して、マネージド ディスクの使用方法を示します。 完全な Pull Request、[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) で確認できます。diff の関連する部分と説明を以下に示します。
 
 ## <a name="making-the-os-disks-managed"></a>OS ディスクを管理ディスクにする
 

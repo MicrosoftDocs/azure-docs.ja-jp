@@ -1,19 +1,19 @@
 ---
-title: VMware VM と物理サーバーの Azure へのディザスター リカバリーのためにモビリティ サービスをインストールする | Microsoft Docs
-description: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーするために、モビリティ サービス エージェントをインストールする方法について説明します。
+title: VMware VM と物理サーバーを Azure にディザスター リカバリーするために、プッシュ インストールでモビリティ サービスをインストールできるようにソース マシンを準備する | Microsoft Docs
+description: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーするために、プッシュ インストールでモビリティ エージェントをインストールできるようお使いのサーバーを準備する方法を説明します。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 30b177578464653499cdcde8cacf65defa5548ef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846914"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418671"
 ---
-# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのディザスター リカバリーのためにモビリティ サービスをインストールする
+# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
 
 [Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM と物理サーバーのためのディザスター リカバリーを設定するとき、オンプレミスの VMware VM と物理サーバーごとに [Site Recovery モビリティ サービス](vmware-physical-mobility-service-overview.md)をインストールします。  このモビリティ サービスによって、コンピューター上のデータ書き込みがキャプチャされ、Site Recovery プロセス サーバーに転送されます。
 
@@ -60,8 +60,12 @@ ms.locfileid: "52846914"
 12. 作成したアカウントを追加します。
 13. コンピューターのレプリケーションを有効にするときに使用する資格情報を入力します。
 
+## <a name="anti-virus-on-replicated-machines"></a>レプリケートされるマシンでのウイルス対策
+
+レプリケートするマシンでウイルス対策ソフトウェアがアクティブに実行されている場合は、モビリティ サービスのインストール フォルダーをウイルス対策の操作から除外してください (*C:\ProgramData\ASR\agent*)。 これにより、レプリケーションが意図したとおりに動作することが保証されます。
+
 ## <a name="next-steps"></a>次の手順
 
-モビリティ サービスがインストールされたら、Azure portal で、**[+ レプリケート]** を選択し、これらの VM の保護を開始します。 [VMware VM](vmware-azure-enable-replication.md) および[物理サーバー](physical-azure-disaster-recovery.md#enable-replication)でレプリケーションを有効にする方法についてさらに学習します。
+モビリティ サービスがインストールされたら、Azure portal で、**[+ レプリケート]** を選択し、これらの VM の保護を開始します。 [VMware VM]\(vmware-azure-enable-replication.md) および[物理サーバー](physical-azure-disaster-recovery.md#enable-replication)でレプリケーションを有効にする方法についてさらに学習します。
 
 

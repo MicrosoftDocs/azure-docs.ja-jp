@@ -4,16 +4,16 @@ description: Windows と Windows Server で Azure ファイル共有を使用す
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 5e36a41c1678ac38c7ebee5b47fd88076fa3fb70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: files
+ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629698"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59048845"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -24,21 +24,22 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 | Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | [はい] | [はい] |
-| Windows 10<sup>1</sup> | SMB 3.0 | [はい] | [はい] |
-| Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | [はい] | [はい] |
-| Windows Server 2016    | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows 8.1            | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows Server 2012 R2 | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows Server 2012    | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows 7              | SMB 2.1     | [はい]                   | いいえ                    |
-| Windows Server 2008 R2 | SMB 2.1     | [はい]                   | いいえ                    |
+| Windows Server 2019    | SMB 3.0 | はい | はい |
+| Windows 10<sup>1</sup> | SMB 3.0 | はい | はい |
+| Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | はい | はい |
+| Windows Server 2016    | SMB 3.0     | はい                   | はい                  |
+| Windows 8.1            | SMB 3.0     | はい                   | はい                  |
+| Windows Server 2012 R2 | SMB 3.0     | はい                   | はい                  |
+| Windows Server 2012    | SMB 3.0     | はい                   | はい                  |
+| Windows 7              | SMB 2.1     | はい                   | いいえ                    |
+| Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                    |
 
 <sup>1</sup>Windows 10 バージョン 1507、1607、1703、1709、1803、1809。  
 <sup>2</sup>Windows Server バージョン 1709 および 1803。
 
 > [!Note]  
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。
+
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -47,20 +48,22 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 * **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 次の PowerShell コードは、AzureRM PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resoure-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
+* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)確認できます。
 
-    ```PowerShell
+    次の PowerShell コードは、Azure PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
+
+    ```powershell
     $resourceGroupName = "<your-resource-group-name>"
     $storageAccountName = "<your-storage-account-name>"
 
-    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
     # already logged in.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
     # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
     ```
 
     接続に成功した場合、次の出力結果が表示されます。
@@ -85,9 +88,9 @@ Windows Server や Linux Samba サーバー、NAS デバイスをホストとす
 SMB ファイル共有が想定されている基幹業務 (LOB) アプリケーションを Azure にリフトアンドシフトする一般的なパターンは、専用の Windows ファイル サーバーを Azure VM で実行する代わりとして Azure ファイル共有を使うことです。 基幹業務アプリケーションで Azure ファイル共有を使うための移行に関して、その作業を成功させるうえで重要な考慮事項があります。多くの基幹業務アプリケーションは、VM の管理者アカウントではなく、制限されたシステム アクセス許可を与えられた専用のサービス アカウントのコンテキストで実行されるということです。 そのため、Azure ファイル共有の資格情報をマウント/保存する際は、自分の管理者アカウントからではなく、必ずサービス アカウントのコンテキストから行う必要があります。
 
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>Azure ファイル共有の資格情報を Windows で保持する  
-ストレージ アカウントの資格情報は、[cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) ユーティリティを使って Windows 内に保持することができます。 つまり Azure ファイル共有に UNC パスでアクセスしたり Azure ファイル共有をマウントしたりする際に、資格情報を指定する必要はありません。 ストレージ アカウントの資格情報を保存するには、次の PowerShell コマンドを実行します。`<your-storage-account-name>` と `<your-resoure-group-name>` は、実際の値に置き換えてください。
+ストレージ アカウントの資格情報は、[cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) ユーティリティを使って Windows 内に保持することができます。 つまり Azure ファイル共有に UNC パスでアクセスしたり Azure ファイル共有をマウントしたりする際に、資格情報を指定する必要はありません。 ストレージ アカウントの資格情報を保存するには、次の PowerShell コマンドを実行します。`<your-storage-account-name>` と `<your-resource-group-name>` は、実際の値に置き換えてください。
 
-```PowerShell
+```powershell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 
@@ -101,13 +104,13 @@ $storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupN
 # cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
 # Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
 # clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command "cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)"
+Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
+    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
 ```
 
 ストレージ アカウントの資格情報が cmdkey ユーティリティによって保存されたことを確認するには、次のように list パラメーターを使用します。
 
-```PowerShell
+```powershell
 cmdkey /list
 ```
 
@@ -128,7 +131,7 @@ User: AZURE\<your-storage-account-name>
 
 別のユーザーの資格情報をマシンに保存するのはごく簡単です。アカウントにログインする際、単純に次の PowerShell コマンドを実行します。
 
-```PowerShell
+```powershell
 $password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
 Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
@@ -141,7 +144,7 @@ Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
 ### <a name="mount-the-azure-file-share-with-powershell"></a>PowerShell を使用した Azure ファイル共有のマウント
 Azure ファイル共有をマウントするには、管理者特権ではない通常の PowerShell セッションから次のコマンドを実行します。 `<your-resource-group-name>`、`<your-storage-account-name>`、`<your-file-share-name>`、`<desired-drive-letter>` は、忘れずに適切な情報に置き換えてください。
 
-```PowerShell
+```powershell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 $fileShareName = "<your-file-share-name>"
@@ -172,7 +175,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 
 次のPowerShell コマンドレットを使えば、必要に応じて Azure ファイル共有のマウントを解除できます。
 
-```PowerShell
+```powershell
 Remove-PSDrive -Name <desired-drive-letter>
 ```
 
@@ -252,7 +255,7 @@ Windows で Azure ファイル共有をマウントするには、ポート 445 
 
 監査を有効にするには、管理者特権の PowerShell セッションから次のコマンドレットを実行します。
 
-```PowerShell
+```powershell
 Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
@@ -261,7 +264,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 
 Windows Server インスタンスから SMB 1 を削除するには、管理者特権の PowerShell セッションから次のコマンドレットを実行します。
 
-```PowerShell
+```powershell
 Remove-WindowsFeature -Name FS-SMB1
 ```
 
@@ -275,7 +278,7 @@ Remove-WindowsFeature -Name FS-SMB1
 
 Windows クライアントから SMB 1 を削除するには、管理者特権の PowerShell セッションから次のコマンドレットを実行します。
 
-```PowerShell
+```powershell
 Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ```
 
@@ -288,7 +291,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 
 次の PowerShell コマンドレットを使って簡単に実行することもできます。
 
-```PowerShell
+```powershell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
 ```
 
@@ -303,5 +306,5 @@ SMB 1 を無効にするには、このレジストリ キーを作成した後�
 ## <a name="next-steps"></a>次の手順
 Azure Files の詳細については、次のリンクをご覧ください。
 - [Azure Files のデプロイの計画](storage-files-planning.md)
-* [FAQ](../storage-files-faq.md)
-* [Windows 上でのトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)      
+- [FAQ](../storage-files-faq.md)
+- [Windows 上でのトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)      

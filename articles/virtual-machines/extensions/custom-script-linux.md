@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 87d15f7b351f2b8b6a8c010651d82faa66b28918
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 19637a1fe49550d0ed7aea7e3a596f1f77f5984b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276467"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082043"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
 
-カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合します。 また、Azure CLI、PowerShell、Azure Portal、または Azure Virtual Machines REST API を使って実行することもできます。
+カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合します。 また、Azure CLI、PowerShell、または Azure Virtual Machines REST API を使って実行することもできます。
 
 この記事では、Azure CLI からカスタム スクリプト拡張機能を使う方法と、Azure Resource Manager テンプレートを使って拡張機能を実行する方法について説明します。 また、Linux システムでのトラブルシューティング手順も示します。
 
@@ -110,21 +110,21 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 | Name | 値/例 | データ型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute.Extensions | string |
-| type | CustomScript | string |
+| publisher | Microsoft.Compute.Extensions | 文字列 |
+| type | CustomScript | 文字列 |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (例) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (例) | python MyPythonScript.py <my-param1> | string |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
+| commandToExecute (例) | python MyPythonScript.py <my-param1> | 文字列 |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 文字列 |
 | skipDos2Unix (例:) | false | ブール値 |
 | timestamp (例:) | 123456789 | 32 ビットの整数 |
-| storageAccountName (例) | examplestorageacct | string |
-| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (例) | examplestorageacct | 文字列 |
+| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 文字列 |
 
 ### <a name="property-value-details"></a>プロパティ値の詳細
 * `skipDos2Unix`: (省略可能、ブール値) スクリプトベースのファイル URL またはスクリプトの dos2unix 変換を省略します。
 * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
- * `commandToExecute`: (スクリプトが設定されていない場合は**必須**、文字列)  スクリプトの実行のエントリ ポイント。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
+  * `commandToExecute`: (スクリプトが設定されていない場合は**必須**、文字列)  スクリプトの実行のエントリ ポイント。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
 * `script`: (commandToExecute が設定されていない場合は**必須**、文字列) /bin/sh によって実行される、base64 でエンコードされた (または GZip 圧縮された) スクリプト。
 * `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
 * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。

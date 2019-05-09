@@ -3,18 +3,18 @@ title: クイック スタート - Hello World を Azure Service Fabric Mesh に
 description: このクイック スタートでは、Service Fabric Mesh アプリケーションを Azure Service Fabric mesh にデプロイする方法について説明します。
 services: service-fabric-mesh
 keywords: SEO チャンプを確認せずに、キーワードを追加または編集しないでください。
-author: rwike77
-ms.author: ryanwi
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 4be24b00c3ac4ffadf7eafdc7397f59113ec03b2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088365"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336985"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>クイック スタート: Service Fabric Mesh に Hello World をデプロイする
 
@@ -87,7 +87,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
 ```
 
-## <a name="see-the-application-logs"></a>アプリケーション ログの確認
+## <a name="see-the-application-logs"></a>アプリケーション ログを表示する
 
 `az mesh code-package-log get` コマンドを使用して、デプロイ済みのアプリケーションのログを確認します。
 
@@ -113,5 +113,5 @@ Service Fabric Mesh アプリケーションの作成とデプロイについて
 [sfm-app-browser]: ./media/service-fabric-mesh-quickstart-deploy-container/HelloWorld.png
 
 <!-- Links / Internal -->
-[az-group-delete]: /cli/azure/group#az_group_delete
+[az-group-delete]: /cli/azure/group
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

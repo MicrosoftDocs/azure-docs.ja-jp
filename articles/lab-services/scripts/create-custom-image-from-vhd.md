@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 19b7c3c6018ec56b056761c336bc56c8b63b47a2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2d0cc4012adf2c17b2f7a2e769f2d666b158a8c8
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636404"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734729"
 ---
 # <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>PowerShell を使用して、Azure Lab Services で VHD ファイルからカスタム イメージを作成する
 
 この PowerShell のサンプル スクリプトは、Azure Lab Services で VHD ファイルからカスタム イメージを作成します。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 * **ラボ** 。 スクリプトを実行するには、既存のラボが必要です。 
@@ -36,11 +38,11 @@ ms.locfileid: "34636404"
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | リソースを取得します。 |
-| [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Azure ストレージ アカウントのアクセス キーを取得します。 |
-| [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) | リソース グループに Azure デプロイを追加します。 |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | リソースを取得します。 |
+| [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Azure ストレージ アカウントのアクセス キーを取得します。 |
+| [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | リソース グループに Azure デプロイを追加します。 |
 
 ## <a name="next-steps"></a>次の手順
 

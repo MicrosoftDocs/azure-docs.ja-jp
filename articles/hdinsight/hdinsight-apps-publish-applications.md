@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653919"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814195"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
 Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/marketplace-publishers-guide.md)に関する記事を参照してください。
@@ -75,9 +75,9 @@ Marketplace へのアプリケーションの発行は、2 段階の手順で実
 * スクリプトがノードでサービスを開始する場合は、サービスを確実に監視し、ノードの再起動時にサービスが自動的に開始されるように構成します。
 
 ## <a name="package-the-application"></a>アプリケーションのパッケージ化
-HDInsight アプリケーションのインストールに必要なすべてのファイルを含んだ .zip ファイルを作成します。 .zip ファイルを使用して[アプリケーションを発行](#publish-application)します。 .zip ファイルには、次のファイルが含まれます。
+HDInsight アプリケーションのインストールに必要なすべてのファイルを含んだ .zip ファイルを作成します。 .zip ファイルを使用してアプリケーションを発行します。 .zip ファイルには、次のファイルが含まれます。
 
-* [createUiDefinition.json](#define-application)
+* createUiDefinition.json
 * mainTemplate.json (サンプルについては、「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。)
 * 必要なすべてのスクリプト
 
@@ -94,7 +94,7 @@ HDInsight アプリケーションを発行するには:
 5. **[Define some Topologies to get Started]\(いくつかのトポロジを定義して開始する\)** を選択します。 ソリューション テンプレートは、作成したすべてのトポロジの「親」となります。 1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。 プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。 
 6. トポロジ名を入力し、**[+]** を選択します。
 7. 新しいバージョンを入力し、**[+]** を選択します。
-8. [アプリケーションのパッケージ化](#package-application)の際に、作成した .zip ファイルをアップロードします。  
+8. アプリケーションのパッケージ化の際に、作成した .zip ファイルをアップロードします。  
 9. **[Request Certification]\(証明書の要求\)** を選択します。 Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
 ## <a name="next-steps"></a>次の手順

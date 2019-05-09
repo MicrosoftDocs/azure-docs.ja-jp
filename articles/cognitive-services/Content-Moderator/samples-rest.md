@@ -1,23 +1,23 @@
 ---
 title: コード サンプル - Content Moderator (C#)
 titlesuffix: Azure Cognitive Services
-description: アプリケーションで Content Moderator を使用する
+description: アプリケーションから REST API 呼び出しを通じて Content Moderator を使用します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: sample
-ms.date: 01/10/2018
+ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: cf259842091e0b3ee6127f9139cfc325687e8676
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 9448cb2279b78143007f460c17427d91dfa397c7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343131"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878376"
 ---
-# <a name="rest-api-samples-in-c"></a>C# での REST API のサンプル
+# <a name="content-moderator-rest-samples-in-c"></a>Content Moderator REST サンプル (C#)
 
 次の一覧は、Azure Content Moderator の API を使用して構築されたコード サンプルへのリンクです。
 

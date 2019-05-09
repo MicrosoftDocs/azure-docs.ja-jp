@@ -4,23 +4,23 @@ titlesuffix: Azure Cognitive Services
 description: この記事では、ボットの会話機能を強化するクラウド ベースの API、Azure Project Personality Chat の概要を示します。
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: personality-chat
+ms.subservice: personality-chat
 ms.topic: overview
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 865815862be4a2250347f782985e0bce87780197
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c7f7a8c65717acd5a19e92b7e0437dc4b8628909
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220536"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867088"
 ---
 # <a name="what-is-project-personality-chat"></a>Project Personality Chat とは
 
-Project Personality Chat は、選択された異なる性格に一致する短い会話を処理することにより、ボットの会話能力を強化します。 Personality Chat は、意図分類子を使用して一般的な短い会話の意図を識別し、性格に応じた応答を生成します。 ボットは、意図と信頼スコアに基づき、精選された編集ベースから最適な応答を選択するか、ディープ ニューラル ネットワーク (DNN) を使用してリアルタイムに応答を生成します。 ペルソナは、3 つの既定から選択できます。 ペルソナのモデルは、選択された性格に最も近い応答を返します。
+Project Personality Chat は、選択された異なる性格に一致する短い会話を処理することにより、ボットの会話能力を強化します。 Personality Chat は、意図分類器を使用して一般的な短い会話の意図を識別し、性格に応じた応答を生成します。 ボットは、意図と信頼スコアに基づき、精選された編集ベースから最適な応答を選択するか、ディープ ニューラル ネットワーク (DNN) を使用してリアルタイムに応答を生成します。 ペルソナは、3 つの既定から選択できます。 ペルソナのモデルは、選択された性格に最も近い応答を返します。
 
 一般的な短い会話によるクエリ用のカスタマイズ可能な編集リストが使用できます。 Microsoft Bot Framework SDK を使用すると、これを簡単に統合することができます。 この SDK を使うと、これらを最初から記述するコストや時間を節約できます。
 
@@ -28,7 +28,7 @@ Project Personality Chat は、選択された異なる性格に一致する短�
 
 Project Personality Chat ラボ ページと使用可能なデモとのチャットをご覧ください。また、サービスが使用可能な場合は、早期アクセスを要求できます。
 現在は、Microsoft Bot Framework SDK を使用して、ボットにカスタマイズ可能な編集専用のライブラリを統合することもできます。 <br>
-[サンプル: Personality Chat をボットに統合する](https://github.com/Microsoft/BotBuilder-PersonalityChat/) <br>
+[サンプル:Personality Chat をボットに統合する](https://github.com/Microsoft/BotBuilder-PersonalityChat/) <br>
 [Personality Chat ライブラリを試してみる](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp)
 
 ## <a name="generating-responses-using-neural-networks"></a>ニューラル ネットワークを使用して応答を生成する
@@ -53,7 +53,7 @@ Personality Chat は、ディープ ラーニング モデルを使用して、�
 
 ## <a name="small-talk-intent-understanding"></a>短い会話の意図を解釈する
 
-短い会話の意図に対して確実に応答できるように、Personality Chat には意図分類子があります。 この分類子がタスクや情報クエリを妨害することはありません。 高レベルのチャット分類子は、クエリの意図が短い会話なのか、単なるおしゃべりなのかを判断します。 これは、構文ベースの分類子とセマンティック ベースの分類子によって行われ、そのスコアを組み合わせて判断します。 意図のトレーニングは、会話データ (正の意図のサンプル) と検索およびタスクのクエリ (負の意図のサンプル) を使用して行われます。
+短い会話の意図に対して確実に応答できるように、Personality Chat には意図分類器があります。 この分類器がタスクや情報クエリを妨害することはありません。 高レベルのチャット分類器は、クエリの意図が短い会話なのか、単なるおしゃべりなのかを判断します。 これは、構文ベースの分類器とセマンティック ベースの分類器によって行われ、そのスコアを組み合わせて判断します。 意図のトレーニングは、会話データ (正の意図のサンプル) と検索およびタスクのクエリ (負の意図のサンプル) を使用して行われます。
 
 その他のサブ意図分類子は、短い会話のサブ分類を識別する際に使用されます。これは、あいさつ、苦情、意見など、サービスが応答する短い会話の種類を制限するために使用されます。 こういったディープ ラーニング分類子は、畳み込み深層構造セマンティック モデル (CDSSM) を使って、すべてのクエリをベクトルに変換します。 トレーニングには、サブ意図用に精選された数万のクエリを使用します。 その後、分類子は、ベクトル空間で最も近い一致を検索することで、クエリと既存の識別済み意図クラスのマッチングを行います。
 

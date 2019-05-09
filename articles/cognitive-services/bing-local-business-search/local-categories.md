@@ -6,16 +6,15 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: aec45e94e2cbec9093cdb72c896dabc633f118b2
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: b96c4e0ebfb12f48917febcc8ad623de18758935
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748562"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773685"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Bing Local Business Search API の検索カテゴリ
 
@@ -99,7 +98,7 @@ Bing Local Business Search API では、ユーザーの場所に近い結果に�
 
 次の JSON 応答の例には、より大きなシアトル地区の 3 つの病院が含まれています。
 
-````json
+```json
 BingAPIs-TraceId: 68AFB51807C6485CAB8AAF20E232EFFF
 BingAPIs-SessionId: F89E7B8539B34BF58AAF811485E83B20
 X-MSEdge-ClientID: 1C44E64DBFAA6BCA1270EADDBE7D6A22
@@ -214,7 +213,7 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
       }
    }
 }
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 - [地理的検索境界](specify-geographic-search.md)

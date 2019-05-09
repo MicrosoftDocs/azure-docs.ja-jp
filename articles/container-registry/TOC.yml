@@ -7,13 +7,15 @@ items:
     href: container-registry-intro.md
 - name: クイック スタート
   items:
-  - name: Container Registry - CLI
+  - name: コンテナー レジストリの作成 - CLI
     href: container-registry-get-started-azure-cli.md
-  - name: Container Registry - ポータル
+  - name: コンテナー レジストリの作成 - ポータル
     href: container-registry-get-started-portal.md
-  - name: Container Registry - PowerShell
+  - name: コンテナー レジストリの作成 - PowerShell
     href: container-registry-get-started-powershell.md
-  - name: Event Grid を使用したイベント - CLI
+  - name: イメージのビルドと実行 - CLI
+    href: container-registry-quickstart-task-cli.md
+  - name: Event Grid へのイベントの送信 - CLI
     href: container-registry-event-grid-quickstart.md
   expanded: true
 - name: チュートリアル
@@ -56,34 +58,41 @@ items:
       href: container-registry-get-started-docker-cli.md
     - name: リポジトリの表示
       href: container-registry-repositories.md
+    - name: コンテナー イメージのインポート
+      href: container-registry-import-images.md
+    - name: コンテナー イメージのロック
+      href: container-registry-image-lock.md
     - name: コンテナー イメージの削除
       href: container-registry-delete.md
-    - name: コンテンツの信頼 (プレビュー)
-      href: container-registry-content-trust.md
     - name: クラシック レジストリのアップグレード
       href: container-registry-upgrade.md
     - name: ACR webhook の使用
       href: container-registry-webhook.md
     - name: Helm Chart リポジトリ (プレビュー)
       href: container-registry-helm-repos.md
-  - name: Authentication
+  - name: セキュリティと認証
     items:
+    - name: 仮想ネットワークでのアクセスの制限 (プレビュー)
+      href: container-registry-vnet.md
     - name: 認証の概要
       href: container-registry-authentication.md
-    - name: サービス プリンシパルの認証
-      href: container-registry-auth-service-principal.md
-    - name: Azure Container Instances
-      href: container-registry-auth-aci.md
-    - name: Azure Kubernetes Service (AKS)
-      href: container-registry-auth-aks.md
+      items:
+      - name: サービス プリンシパルの認証
+        href: container-registry-auth-service-principal.md
+      - name: マネージド ID の認証
+        href: container-registry-authentication-managed-identity.md
+      - name: Azure Container Instances からの認証
+        href: container-registry-auth-aci.md
+      - name: Azure Kubernetes Service (AKS) からの認証
+        href: container-registry-auth-aks.md
+    - name: コンテンツの信頼 (プレビュー)
+      href: container-registry-content-trust.md
   - name: ビルドと修正プログラム
     items:
     - name: ACR タスク
       href: container-registry-tasks-overview.md
-    - name: 複数ステップのタスク (プレビュー)
+    - name: 複数ステップのタスク
       href: container-registry-tasks-multi-step.md
-    - name: 複数ステップのタスクの参照 (プレビュー)
-      href: container-registry-tasks-reference-yaml.md
   - name: レジストリと他の Azure サービス
     items:
     - name: Azure Container Instances
@@ -99,7 +108,7 @@ items:
   - name: REST
     href: /rest/api/containerregistry
   - name: PowerShell
-    href: /powershell/module/azurerm.containerregistry#container_registry
+    href: /powershell/module/az.containerregistry
   - name: .NET
     href: /dotnet/api/overview/azure/containerregistry
   - name: Python
@@ -110,6 +119,8 @@ items:
     href: /javascript/api/overview/azure/container-registry
   - name: Resource Manager テンプレート
     href: /azure/templates/microsoft.containerregistry/registries
+  - name: 'ACR タスク: YAML'
+    href: container-registry-tasks-reference-yaml.md
   - name: webhook スキーマ
     href: container-registry-webhook-reference.md
   - name: Event Grid スキーマ
@@ -128,12 +139,12 @@ items:
   - name: 製品フィードバックの提供
     href: https://feedback.azure.com/forums/903958-azure-container-registry
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-container-registry
+    href: https://stackoverflow.com/questions/tagged/azure-container-registry
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 5bc20f974591586926c79f2c6438666f21b04fa5
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 987b70f527afe9b9d09eeef70c7fa706c3e58932
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752445"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787651"

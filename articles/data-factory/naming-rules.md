@@ -9,16 +9,15 @@ ms.assetid: bc5e801d-0b3b-48ec-9501-bb4146ea17f1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: cfab1a82c7da0ad596c9989e5a9f3ed800c58e4a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: c02a9393de72b827b7e38b52d06589f042d581b0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389312"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024775"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - 名前付け規則
 次の表に、Data Factory アーティファクトの名前付け規則を示します。

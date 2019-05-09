@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 52bbf93d73af281f3959e056a4d5b959e7286cb5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590332"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022291"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,13 +60,13 @@ SAP Business Warehouse (BW) のリンクされたサービスでは、次のプ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **SapBw** に設定する必要があります。 | [はい] |
-| [サーバー] | SAP BW インスタンスが存在するサーバーの名前。 | [はい] |
-| systemNumber | SAP BW システムのシステムの数。<br/>使用できる値: 文字列として表される 2 桁の 10 進数。 | [はい] |
-| clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | [はい] |
-| userName | SAP サーバーにアクセスできるユーザーの名前。 | [はい] |
-| password | ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
+| type | type プロパティは、次のように設定する必要があります:**SapBw** | はい |
+| server | SAP BW インスタンスが存在するサーバーの名前。 | はい |
+| systemNumber | SAP BW システムのシステムの数。<br/>使用できる値: 文字列として表される 2 桁の 10 進数。 | はい |
+| clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | はい |
+| userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |
+| password | ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
 
@@ -126,8 +125,8 @@ SAP BW からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
-| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
+| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | はい |
 
 **例:**
 
@@ -185,7 +184,7 @@ SAP BW からデータをコピーするとき、SAP BW のデータ型から Az
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |
-| ユニット | String |
+| UNIT | String |
 | DATS | String |
 | NUMC | String |
 | TIMS | String |

@@ -3,20 +3,20 @@ title: チュートリアル:Azure Database Migration Service を使用して My
 description: Azure Database Migration Service を使用して、オンプレミスの MySQL から Azure Database for MySQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: 52346e25c0b0e1b1b0c0befb6b5285f66b9a95d7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 04/16/2019
+ms.openlocfilehash: b39ce138677fc8933b62bd999f20abc21c0ae690
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724574"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617956"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの MySQL インスタンスから [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**Employees** サンプル データベースを MySQL 5.7 のオンプレミス インスタンスから Azure Database for MySQL に移行します。
@@ -40,8 +40,17 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 - [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6 または 5.7 をダウンロードしてインストールします。 オンプレミスの MySQL のバージョンは、Azure Database for MySQL の バージョンと一致している必要があります。 たとえば、MySQL 5.6 は Azure Database for MySQL 5.6 にのみ移行でき、5.7 にアップグレードすることはできません。
 - [Azure Database for MySQL でインスタンスを作成します](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)。 Azure Portal を使用したデータベースの接続と作成方法の詳細については、「[MySQL Workbench を使用した接続とデータの照会](https://docs.microsoft.com/azure/mysql/connect-workbench)」を参照してください。  
-- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
-- Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、通信ポート 443、53、9354、445、12000 がブロックされていないことを確認します。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)」を参照してください。
+- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNET) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
+
+    > [!NOTE]
+    > VNET のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用した場合、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    > - ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
+    > - ストレージ エンドポイント
+    > - サービス バス エンドポイント
+    >
+    > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
+ 
+- VNET のネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します: 443、53、9354、445、12000。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)」を参照してください。
 - [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 - Azure Database Migration Service がソース MySQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 3306 が使用されています。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
@@ -112,6 +121,9 @@ SET group_concat_max_len = 8192;
         
 クエリの結果内の外部キー削除 (2 列目) を実行して、外部キーを削除します。
 
+> [!IMPORTANT]
+> また、移行エラーを防ぐために、DEFINER ステートメントは必ずスキーマから削除してください。
+
 データにトリガー (insert または update トリガー) が含まれている場合は、ソースからのデータのレプリケート前に先立って、ターゲットにデータの整合性が適用されます。 移行時はターゲットのすべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを有効にすることをお勧めします。
 
 ターゲット データベース内のトリガーを無効にするには、次のコマンドを使用します。
@@ -144,7 +156,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
 4. 既存の仮想ネットワーク (VNET) を選択するか、新しい VNET を作成します。
 
-    この VNET が Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL Database インスタンスへのアクセスを提供します。
+    この VNET が Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL データベース インスタンスへのアクセスを提供します。
 
     Azure portal で VNET を作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)に関する記事を参照してください。
 
@@ -170,7 +182,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
      ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-mysql-to-azure-mysql-online/dms-instance-search.png)
  
 3. **[+ 新しい移行プロジェクト]** を選択します。
-4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[MySQL]** を選択した後、**[対象サーバーの種類]** テキスト ボックスで **[AzureDbForMySQL]** を選択します。
+4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[MySQL]** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **[AzureDbForMySQL]** を選択します。
 5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
 
     ![Database Migration Service プロジェクトを作成する](media/tutorial-mysql-to-azure-mysql-online/dms-create-project4.png)

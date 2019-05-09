@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f1dd8c4c5e38547492887425bb5732d87d5f8071
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045886"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017465"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>ソース データセット列を変換先のデータセット列にマップする
 > [!NOTE]

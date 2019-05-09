@@ -8,16 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f0ce189ebbec6991a1ec316219d45b96cc85f202
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 78bd077b5491b093510b9c55bf7b5a42ee9cb578
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845945"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787600"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、System Center Virtual Machine Manager クラウドの Hyper-V VM をセカンダリ オンプレミス サイトの Virtual Machine Manager クラウドにレプリケートする手順を自動化する方法について説明します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,31 +61,31 @@ Azure PowerShell を使用する準備が整っていることを確認します
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
-        Connect-AzureRmAccount #-Credential $Cred
+        Connect-AzAccount #-Credential $Cred
 2. サブスクリプションとサブスクリプション ID の一覧を取得します。 Recovery Services コンテナーを作成するサブスクリプションの ID をメモします。 
 
-        Get-AzureRmSubscription
+        Get-AzSubscription
 3. コンテナーのサブスクリプションを設定します。
 
-        Set-AzureRmContext –SubscriptionID <subscriptionId>
+        Set-AzContext –SubscriptionID <subscriptionId>
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 1. Azure Resource Manager リソース グループを作成します (まだ存在しない場合)。
 
-        New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
+        New-AzResourceGroup -Name #ResourceGroupName -Location #location
 2. 新しい Recovery Services コンテナーを作成します。 後ほど使用できるように、このコンテナー オブジェクトを変数に格納します。 
 
-        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
+        $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
-    コンテナー オブジェクトは、作成後に Get-AzureRMRecoveryServicesVault コマンドレットを使用して取得できます。
+    コンテナー オブジェクトは、作成後に Get-AzRecoveryServicesVault コマンドレットを使用して取得できます。
 
 ## <a name="set-the-vault-context"></a>コンテナーのコンテキストを設定する
 1. 既存のコンテナーを取得します。
 
-       $vault = Get-AzureRmRecoveryServicesVault -Name #vaultname
+       $vault = Get-AzRecoveryServicesVault -Name #vaultname
 2. コンテナーのコンテキストを設定します。
 
-       Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+       Set-AzSiteRecoveryVaultSettings -ARSVault $vault
 
 ## <a name="install-the-site-recovery-provider"></a>Site Recovery プロバイダーをインストールする
 1. Virtual Machine Manager マシンで、次のコマンドを実行してディレクトリを作成します。
@@ -124,7 +126,7 @@ Azure PowerShell を使用する準備が整っていることを確認します
         $AuthPort = "8083"  #specify the port number that will be used for replication traffic on Hyper-V hosts
         $InitialRepMethod = "Online" #options are "Online" or "Offline"
 
-        $policyresult = New-AzureRmSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
+        $policyresult = New-AzSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
 
     > [!NOTE]
     > Virtual Machine Manager クラウドには、複数バージョンの Windows Server を実行する Hyper-V ホストを含めることができますが、レプリケーション ポリシーはオペレーティング システムの特定のバージョン用です。 さまざまなオペレーティング システムでさまざまなホストを実行している場合は、システムごとに個別のレプリケーション ポリシーを作成してください。 たとえば、Windows Server 2012 で実行されているホストが 5 台、Windows Server 2012 R2 で実行されているホストが 3 台ある場合は、2 つのレプリケーション ポリシーを作成します。 オペレーティング システムの種類ごとに 1 つずつ作成します。
@@ -132,19 +134,19 @@ Azure PowerShell を使用する準備が整っていることを確認します
 2. プライマリ保護コンテナー (プライマリ Virtual Machine Manager クラウド) と復旧保護コンテナー (復旧 Virtual Machine Manager クラウド) を取得します。
 
        $PrimaryCloud = "testprimarycloud"
-       $primaryprotectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloud;  
+       $primaryprotectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $PrimaryCloud;  
 
        $RecoveryCloud = "testrecoverycloud"
-       $recoveryprotectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $RecoveryCloud;  
+       $recoveryprotectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $RecoveryCloud;  
 3. フレンドリ名を使用して、作成したレプリケーション ポリシーを取得します。
 
-       $policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $policyname
+       $policy = Get-AzSiteRecoveryPolicy -FriendlyName $policyname
 4. 保護コンテナー (Virtual Machine Manager クラウド) とレプリケーション ポリシーの関連付けを開始します。
 
-       $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
+       $associationJob  = Start-AzSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
 5. ポリシー関連付けジョブが完了するのを待ちます。 ジョブが完了したかどうかを確認するには、次の PowerShell スニペットを使用します。
 
-       $job = Get-AzureRmSiteRecoveryJob -Job $associationJob
+       $job = Get-AzSiteRecoveryJob -Job $associationJob
 
        if($job -eq $null -or $job.StateDescription -ne "Completed")
        {
@@ -164,12 +166,12 @@ Azure PowerShell を使用する準備が整っていることを確認します
 ##  <a name="configure-network-mapping"></a>ネットワーク マッピングの構成
 1. このコマンドを使用して、現在のコンテナーのサーバーを取得します。 このコマンドで、$Servers 配列変数に Site Recovery サーバーが格納されます。
 
-        $Servers = Get-AzureRmSiteRecoveryServer
+        $Servers = Get-AzSiteRecoveryServer
 2. このコマンドを実行して、ソース Virtual Machine Manager サーバー用とターゲット Virtual Machine Manager サーバー用のネットワークを取得します。
 
-        $PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]        
+        $PrimaryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[0]        
 
-        $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
+        $RecoveryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[1]
 
     > [!NOTE]
     > ソース Virtual Machine Manager サーバーは、サーバー配列で 1 つ目または 2 つ目として指定できます。 Virtual Machine Manager サーバー名を確認し、ネットワークを適切に取得します。
@@ -177,7 +179,7 @@ Azure PowerShell を使用する準備が整っていることを確認します
 
 3. このコマンドレットは、プライマリ ネットワークと復旧ネットワークの間のマッピングを作成します。 これは $PrimaryNetworks の最初の要素として、プライマリ ネットワークを指定します。 これは $RecoveryNetworks の最初の要素として、復旧ネットワークを指定します。
 
-        New-AzureRmSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
+        New-AzSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
 
 
 ## <a name="enable-protection-for-vms"></a>VM の保護を有効にする
@@ -185,13 +187,13 @@ Azure PowerShell を使用する準備が整っていることを確認します
 
 1. 保護を有効にするには、次のコマンドを実行して保護コンテナーを取得します。
 
-          $PrimaryProtectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloudName
+          $PrimaryProtectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $PrimaryCloudName
 2. 次のように、保護エンティティ (VM) を取得します。
 
-           $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
+           $protectionEntity = Get-AzSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
 3. VM のレプリケーションを有効にします。
 
-          $jobResult = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
+          $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
 
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 
@@ -199,24 +201,24 @@ Azure PowerShell を使用する準備が整っていることを確認します
 
 1. VM がフェールオーバーする VM を取得します。
 
-       $Servers = Get-AzureRmSiteRecoveryServer
-       $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
+       $Servers = Get-AzSiteRecoveryServer
+       $RecoveryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[1]
 
 2. テスト フェールオーバーを実行します。
 
    単一の VM の場合:
 
-        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -FriendlyName $VMName -ProtectionContainer $PrimaryprotectionContainer
+        $protectionEntity = Get-AzSiteRecoveryProtectionEntity -FriendlyName $VMName -ProtectionContainer $PrimaryprotectionContainer
 
-        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -VMNetwork $RecoveryNetworks[1]
+        $jobIDResult =  Start-AzSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -VMNetwork $RecoveryNetworks[1]
     
    復旧計画の場合:
 
         $recoveryplanname = "test-recovery-plan"
 
-        $recoveryplan = Get-AzureRmSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
+        $recoveryplan = Get-AzSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
 
-        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan -VMNetwork $RecoveryNetworks[1]
+        $jobIDResult =  Start-AzSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan -VMNetwork $RecoveryNetworks[1]
 
 操作の完了を確認するには、「[アクティビティを監視する](#monitor-activity)」の手順を実行します。
 
@@ -226,33 +228,33 @@ Azure PowerShell を使用する準備が整っていることを確認します
 
    単一の VM の場合:
 
-        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
+        $protectionEntity = Get-AzSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
 
-        $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
+        $jobIDResult =  Start-AzSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
    復旧計画の場合:
 
         $recoveryplanname = "test-recovery-plan"
 
-        $recoveryplan = Get-AzureRmSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
+        $recoveryplan = Get-AzSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
 
-        $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan
+        $jobIDResult =  Start-AzSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan
 
 2. 計画外のフェールオーバーを実行します。
 
    単一の VM の場合:
         
-        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
+        $protectionEntity = Get-AzSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
 
-        $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
+        $jobIDResult =  Start-AzSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
    復旧計画の場合:
 
         $recoveryplanname = "test-recovery-plan"
 
-        $recoveryplan = Get-AzureRmSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
+        $recoveryplan = Get-AzSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
 
-        $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
+        $jobIDResult =  Start-AzSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
 ## <a name="monitor-activity"></a>アクティビティを監視する
 フェールオーバー アクティビティを監視するには、次のコマンドを使用します。 ジョブ間の処理が終了するまで待ちます。
@@ -276,4 +278,4 @@ Azure PowerShell を使用する準備が整っていることを確認します
 
 ## <a name="next-steps"></a>次の手順
 
-Site Recovery と Resource Manager PowerShell コマンドレットの詳細については、[こちら](/powershell/module/azurerm.recoveryservices.backup/#recovery)を参照してください。
+Site Recovery と Resource Manager PowerShell コマンドレットの詳細については、[こちら](/powershell/module/az.recoveryservices)を参照してください。

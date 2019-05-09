@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
@@ -15,14 +15,15 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: f6f804ea9121d1728e31f1e694280e841f4b7f4e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f72cbd719cea585144be3757f0791a74bde452ab
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946546"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416770"
 ---
-# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>クイック スタート: Azure Active Directory による Node.JS Web API のセキュリティ保護
+# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>クイック スタート:Azure Active Directory による Web API のセキュリティ保護
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -44,21 +45,20 @@ ms.locfileid: "46946546"
 
 ```Shell
 {
-  "name": "node-aad-demo",
+  "name": "active-directory-webapi-nodejs",
   "version": "0.0.1",
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
     "passport": "0.4.0",
-    "passport-azure-ad": "3.0.8",
-    "restify": "6.0.1",
-    "restify-plugins": "1.6.0"
+    "passport-azure-ad": "4.0.0",
+    "restify": "7.7.0"
   }
 }
 ```
 
-`package.json` が作成されたら、コマンド プロンプトで `npm install` を実行して、パッケージの依存関係をインストールします。 
+`package.json` が作成されたら、コマンド プロンプトで `npm install` を実行して、パッケージの依存関係をインストールします。
 
 #### <a name="configure-the-project-to-use-active-directory"></a>Active Directory を使用するようにプロジェクトを構成する
 
@@ -106,16 +106,16 @@ module.exports.credentials = {
 
 ### <a name="implement-the-server"></a>サーバーの実装
 
-[passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) モジュールの特徴は、[OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) と[ベアラー](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy)の 2 つの認証方式があることです。 この記事で実装されるサーバーでは、API エンドポイントの保護にベアラー方式を使用しています。
+[passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) モジュールでは、2 つの認証方式がサポートされています。それは、[OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) と[ベアラー](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy)です。 この記事で実装されるサーバーでは、API エンドポイントの保護にベアラー方式を使用しています。
 
-### <a name="step-1-import-dependencies"></a>手順 1: 依存関係のインポート
+### <a name="step-1-import-dependencies"></a>手順 1:依存関係のインポート
 
 `app.js` という名前の新しいファイルを作成し、次のテキストを貼り付けます。
 
 ```JavaScript
 const
       restify = require('restify')
-    , restifyPlugins = require('restify-plugins')
+    , restifyPlugins = require ('restify').plugins
     , passport = require('passport')
     , BearerStrategy = require('passport-azure-ad').BearerStrategy
     , config = require('./config')
@@ -126,13 +126,13 @@ const
 
 このセクションのコードでは、
 
-- Restify サーバーを設定するために `restify` モジュールと `restify-plugins` モジュールが参照されます。
+- Restify サーバーを設定するために `restify` モジュールと plugins モジュールが参照されます。
 - `passport` モジュールと `passport-azure-ad` モジュールが、Azure AD との通信を担当します。
 - 変数 `config` は、前の手順で作成した `config.js` ファイルの値で初期化されます。
 - ユーザー トークンがセキュリティで保護されたエンドポイントに渡されるときに、これらを保存するために `authenticatedUserTokens` に配列が作成されます。
 - `serverPort` は、プロセスの環境のポートまたは構成ファイルのいずれかから定義されます。
 
-### <a name="step-2-instantiate-an-authentication-strategy"></a>手順 2: 認証方式のインスタンス化
+### <a name="step-2-instantiate-an-authentication-strategy"></a>手順 2:認証方式のインスタンス化
 
 エンドポイントをセキュリティで保護するには、現在の要求が認証されたユーザーからのものかどうかを判定する方式を指定する必要があります。 ここで、変数 `authenticatonStrategy` は `passport-azure-ad` `BearerStrategy` クラスのインスタンスです。 次のコードを `require` ステートメントの後ろに追加します。
 
@@ -161,19 +161,19 @@ const authenticationStrategy = new BearerStrategy(config.credentials, (token, do
 passport.use(authenticationStrategy);
 ```
 
-### <a name="step-3-server-configuration"></a>手順 3: サーバーの構成
+### <a name="step-3-server-configuration"></a>手順 3:サーバー構成
 
 認証方式を定義したら、次は Restify サーバーを設定します。いくつかの基本的な設定とともに、セキュリティのために Passport を使用するように設定します。
 
 ```JavaScript
-const server = restify.createServer({ name: 'Azure Active Directroy with Node.js Demo' });
+const server = restify.createServer({ name: 'Azure Active Directory with Node.js Demo' });
 server.use(restifyPlugins.authorizationParser());
 server.use(passport.initialize());
 server.use(passport.session());
 ```
 このサーバーは初期化されて Authorization ヘッダーを解析するように構成された後に、Passport を使用するように設定されます。
 
-### <a name="step-4-define-routes"></a>手順 4: ルートの定義
+### <a name="step-4-define-routes"></a>手順 4:ルートの定義
 
 次に、ルートを定義し、Azure AD でどれをセキュリティ保護するかを決定します。 このプロジェクトには、ルート レベルがオープンで、`/api` ルートが認証を要求するように設定されている 2 つのルートが含まれています。
 
@@ -221,7 +221,7 @@ curl -isS -X GET http://127.0.0.1:3000/
 
 ```shell
 HTTP/1.1 200 OK
-Server: Azure Active Directroy with Node.js Demo
+Server: Azure Active Directory with Node.js Demo
 Content-Type: application/json
 Content-Length: 49
 Date: Tue, 10 Oct 2017 18:35:13 GMT
@@ -240,7 +240,7 @@ curl -isS -X GET http://127.0.0.1:3000/api
 
 ```shell
 HTTP/1.1 401 Unauthorized
-Server: Azure Active Directroy with Node.js Demo
+Server: Azure Active Directory with Node.js Demo
 WWW-Authenticate: token is not found
 Date: Tue, 10 Oct 2017 16:22:03 GMT
 Connection: keep-alive

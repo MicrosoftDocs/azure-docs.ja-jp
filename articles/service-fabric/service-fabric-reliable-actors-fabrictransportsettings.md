@@ -4,35 +4,35 @@ description: Azure Service Fabric アクターの通信の設定を構成する�
 services: Service-Fabric
 documentationcenter: .net
 author: suchiagicha
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: aa4339fa1fe4b21369004e748492ee71cbe6d616
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b6cff24e5a7812a88673d80476819e51e6f5da35
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052141"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667635"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors の FabricTransport 設定を構成する
 
 構成できる設定を以下に示します。
-- C#: [FabricTransportRemotingSettings](
-https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
-- Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
+- C#:[FabricTransportRemotingSettings](
+https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- Java:[FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
 次の方法で FabricTransport の既定の構成を変更できます。
 
 ## <a name="assembly-attribute"></a>Assembly 属性
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute)属性は、アクター クライアントおよびアクター サービス アセンブリに適用する必要があります。
+[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN)属性は、アクター クライアントおよびアクター サービス アセンブリに適用する必要があります。
 
 次の例では、FabricTransport OperationTimeout 設定の既定値を変更する方法を示します。
 
@@ -83,7 +83,7 @@ settings.xml ファイルに TransportSettings セクションを追加します
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
-  <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
     <Section Name="TransportSettings">
       <Parameter Name="SecurityCredentialsType" Value="X509" />
       <Parameter Name="OperationTimeoutInSeconds" Value="300" />
@@ -99,41 +99,41 @@ settings.xml ファイルに TransportSettings セクションを追加します
   </Settings>
    ```
 
-  * セカンダリ証明書を使ってアクター サービス/クライアントのセキュリティを確保するように FabricTransport 設定を構成する。
+* セカンダリ証明書を使ってアクター サービス/クライアントのセキュリティを確保するように FabricTransport 設定を構成する。
   セカンダリ証明書の情報は、CertificateFindValuebySecondary というパラメーターを追加することで追加できます。
   リスナーの TransportSettings の例を次に示します。
 
-    ```xml
-    <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-    <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
-    <Parameter Name="CertificateFindValuebySecondary" Value="h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
-    <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
-     クライアントの TransportSettings の例を次に示します。
+  ```xml
+  <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
+  <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
+  <Parameter Name="CertificateFindValuebySecondary" Value="h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
+  <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```
+   クライアントの TransportSettings の例を次に示します。
 
-    ```xml
-   <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-    <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
-    <Parameter Name="CertificateFindValuebySecondary" Value="a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
-    <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662,h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
-    * サブジェクト名を使ってアクター サービス/クライアントのセキュリティを確保するように FabricTransport 設定を構成する。
+  ```xml
+  <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
+  <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+  <Parameter Name="CertificateFindValuebySecondary" Value="a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+  <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662,h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```
+  * サブジェクト名を使ってアクター サービス/クライアントのセキュリティを確保するように FabricTransport 設定を構成する。
     ユーザーは FindBySubjectName として findType を指定し、CertificateIssuerThumbprints 値と CertificateRemoteCommonNames 値を追加する必要があります。
-  リスナーの TransportSettings の例を次に示します。
+    リスナーの TransportSettings の例を次に示します。
 
-     ```xml
+    ```xml
     <Section Name="TransportSettings">
     <Parameter Name="SecurityCredentialsType" Value="X509" />
     <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
@@ -145,16 +145,16 @@ settings.xml ファイルに TransportSettings セクションを追加します
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
     ```
-  クライアントの TransportSettings の例を次に示します。
+    クライアントの TransportSettings の例を次に示します。
 
-    ```xml
-     <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
-    <Parameter Name="CertificateFindValue" Value="CN = WinFabric-Test-SAN1-Bob" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateRemoteCommonNames" Value="WinFabric-Test-SAN1-Alice" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
+  ```xml
+   <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
+  <Parameter Name="CertificateFindValue" Value="CN = WinFabric-Test-SAN1-Bob" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateRemoteCommonNames" Value="WinFabric-Test-SAN1-Alice" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```

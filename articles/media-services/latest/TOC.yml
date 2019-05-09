@@ -1,206 +1,279 @@
-items:
 - name: Media Services のドキュメント
   href: ./index.yml
 - name: 概要
   items:
-  - name: Media Services について
-    href: media-services-overview.md
+    - name: Media Services について
+      href: media-services-overview.md
 - name: クイック スタート
-  items:
-  - name: .NET を使用したビデオ ファイルのストリーミング
-    href: stream-files-dotnet-quickstart.md
   expanded: true
+  items:
+    - name: ビデオ ファイルのストリーミング - .NET
+      href: stream-files-dotnet-quickstart.md
+    - name: ビデオ ファイルのストリーム配信 - CLI
+      href: stream-files-cli-quickstart.md
+    - name: ビデオ ファイルのストリーム配信 - Node.js
+      href: stream-files-nodejs-quickstart.md
 - name: チュートリアル
   items:
-  - name: リモート ファイルのエンコードとビデオのストリーミング – REST
-    href: stream-files-tutorial-with-rest.md
-  - name: アップロードされたファイルのエンコードとビデオのストリーミング – .NET
-    href: stream-files-tutorial-with-api.md
-  - name: ライブ ストリーム配信 - .NET
-    href: stream-live-tutorial-with-api.md
-  - name: ビデオの分析 - .NET
-    href: analyze-videos-tutorial-with-api.md
-  expanded: true
-- name: サンプル
-  items:
-  - name: Azure のコード サンプル
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3
-  - name: Azure CLI
-    href: cli-samples.md
-- name: 概念
-  items:
-  - name: アカウント
-    items:
-    - name: v2 から v3 への移行
-      href: migrate-from-v2-to-v3.md
-    - name: クォータと制限
-      href: limits-quotas-constraints.md
-    - name: ストレージ アカウント
-      href: storage-account-concept.md
-  - name: エンティティ
-    href: entities-overview.md
-    items:
-    - name: アカウントとアセットのフィルター
-      href: filters-dynamic-manifest-overview.md
-    - name: アセット
-      href: assets-concept.md
-    - name: コンテンツ キー ポリシー
-      href: content-key-policy-concept.md
-    - name: LiveEvent と LiveOutput
-      href: live-events-outputs-concept.md
-    - name: ストリーミング エンドポイント
-      href: streaming-endpoint-concept.md
-    - name: ストリーミング ロケーター
-      href: streaming-locators-concept.md
-    - name: ストリーミング ポリシー
-      href: streaming-policy-concept.md
-    - name: Transform と Job
-      href: transforms-jobs-concept.md
-  - name: コンテンツのエンコード
-    href: encoding-concept.md
-    items:
-    - name: Media Encoder Standard の形式
-      href: media-encoder-standard-formats.md
-    - name: Autogen アダプティブ ビットレート ラダー
-      href: autogen-bitrate-ladder.md
-  - name: Event Grid イベントの処理
-    href: reacting-to-media-services-events.md
-  - name: コンテンツの保護
-    items:
-    - name: 概要
-      href: content-protection-overview.md
-    - name: アクセス制御を使用したマルチ DRM システム
-      href: design-multi-drm-system-with-access-control.md
-  - name: コンテンツの分析
-    href: analyzing-video-audio-files-concept.md
-  - name: ライブ イベントのストリーミング
-    href: live-streaming-overview.md
-    items:
-    - name: おすすめのライブ エンコーダー
-      href: recommended-on-premises-live-encoders.md
-    - name: クラウド DVR の使用
-      href: live-event-cloud-dvr.md
-    - name: 機能の比較
-      href: live-event-types-comparison.md
-    - name: 状態と課金
-      href: live-event-states-billing.md
-    - name: Latency
-      href: live-event-latency.md
-  - name: Azure Media Player
-    href: use-azure-media-player.md
-- name: ハウツー ガイド
-  items:
-  - name: 作業開始
-    items:
-    - name: アカウントの作成 - CLI
-      href: create-account-cli-how-to.md
-    - name: API へのアクセス - CLI
-      href: access-api-cli-how-to.md
-    - name: メディア占有ユニットのスケーリング - CLI
-      href: media-reserved-units-cli-how-to.md
-  - name: Postman を構成する
-    href: media-rest-apis-with-postman.md
-  - name: コンテンツをアップロードする
-    items:
-    - name: HTTP(s) から - .NET
-      href: job-input-from-http-how-to.md
-    - name: ローカル ファイルから - .NET
-      href: job-input-from-local-file-how-to.md
-    - name: ローカル ファイルから - REST
-      href: upload-files-rest-how-to.md
-  - name: コンテンツのエンコード
-    items:
-    - name: 変換プリセットのカスタマイズ - .NET
-      href: customize-encoder-presets-how-to.md
-  - name: Event Grid の使用
-    items:
-    - name: イベントの監視 - ポータル
-      href: monitor-events-portal-how-to.md
-    - name: イベントの監視 - CLI
-      href: job-state-events-cli-how-to.md
-  - name: コンテンツの保護
-    items:
+    - name: リモート ファイルのエンコードとビデオのストリーミング – REST
+      displayName: 'encoding, job, transform'
+      href: stream-files-tutorial-with-rest.md
+    - name: アップロードされたファイルのエンコードとビデオのストリーミング – .NET
+      displayName: 'encode, encoding, job, transform'
+      href: stream-files-tutorial-with-api.md
+    - name: ライブ ストリーム配信 - .NET
+      href: stream-live-tutorial-with-api.md
+    - name: ビデオの分析 - .NET
+      displayName: 'job, transform'
+      href: analyze-videos-tutorial-with-api.md
     - name: AES-128 動的暗号化 - .NET
       href: protect-with-aes128.md
-    - name: DRM 動的暗号化 - .NET
-      href: protect-with-drm.md
-    - name: iOS 用のオフラインの FairPlay
-      href: offline-fairplay-for-ios.md
-    - name: Android 用のオフラインの Widevine
-      href: offline-widevine-for-android.md
-    - name: Windows 10 用のオフラインの PlayReady
-      href: offline-plaready-streaming-for-windows-10.md
-  - name: フィルターの作成
-    items:
-    - name: .NET の場合
-      href: filters-dynamic-manifest-dotnet-howto.md
-    - name: REST の場合
-      href: filters-dynamic-manifest-rest-howto.md
-    - name: CLI の場合
-      href: filters-dynamic-manifest-cli-howto.md
+- name: サンプル
+  items:
+    - name: Azure のコード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
+    - name: Azure CLI
+      href: cli-samples.md
+- name: 概念
+  href: concepts-overview.md
+  items:
+    - name: クラウドのアップロードとストレージ
+      items:
+        - name: Storage
+          href: storage-account-concept.md
+        - name: アセット
+          href: assets-concept.md
+    - name: エンコード
+      items:
+        - name: 概要
+          href: encoding-concept.md
+          displayName: Presets
+        - name: Transform と Job
+          href: transforms-jobs-concept.md
+        - name: Media Encoder Standard の形式
+          displayName: 'containers, codecs'
+          href: media-encoder-standard-formats.md
+        - name: Autogen アダプティブ ビットレート ラダー
+          href: autogen-bitrate-ladder.md
+        - name: コンテンツに対応したエンコード
+          href: cae-experimental.md
+    - name: メディア分析
+      items:
+        - name: 概要
+          href: analyzing-video-audio-files-concept.md
+          displayName: Presets
+        - name: Transform と Job
+          href: transforms-jobs-concept.md
+    - name: パッケージ化、デリバリー、保護
+      items:
+        - name: 梱包
+          items:
+            - name: 動的パッケージ
+              displayName: packager
+              href: dynamic-packaging-overview.md
+            - name: 動的マニフェスト
+              href: filters-dynamic-manifest-overview.md
+            - name: フィルター
+              href: filters-concept.md
+        - name: コンテンツ保護
+          items:
+            - name: ストリーミング プロトコルと暗号化の種類
+              displayName: Dynamic encryption
+              href: content-protection-overview.md
+            - name: アクセス制御を使用したマルチ DRM システム
+              href: design-multi-drm-system-with-access-control.md
+            - name: DRM ライセンス
+              items:
+                - name: PlayReady ライセンス テンプレート
+                  href: playready-license-template-overview.md
+                - name: Widevine ライセンス テンプレート
+                  href: widevine-license-template-overview.md
+                - name: FairPlay ライセンスの要件
+                  href: fairplay-license-overview.md
+        - name: ストリーミング エンドポイント/配信元
+          displayName: 'origins, cdn'
+          href: streaming-endpoint-concept.md
+        - name: ストリーミング ロケーター
+          displayName: URLs
+          href: streaming-locators-concept.md
+        - name: ストリーミング ポリシー
+          href: streaming-policy-concept.md
+        - name: コンテンツ キー ポリシー
+          href: content-key-policy-concept.md
+    - name: ライブ ストリーミング
+      items:
+        - name: 概要
+          href: live-streaming-overview.md
+        - name: ライブ イベントとライブ出力
+          href: live-events-outputs-concept.md
+        - name: おすすめのライブ エンコーダー
+          href: recommended-on-premises-live-encoders.md
+        - name: クラウド DVR の使用
+          displayName: archive
+          href: live-event-cloud-dvr.md
+        - name: 機能の比較
+          href: live-event-types-comparison.md
+        - name: 状態と課金
+          href: live-event-states-billing.md
+        - name: Latency
+          href: live-event-latency.md
+    - name: 監視
+      items:
+        - name: Event Grid を使用したイベント
+          href: reacting-to-media-services-events.md
+        - name: Event Grid スキーマ
+          href: media-services-event-schemas.md
+        - name: メトリックと診断ログ
+          href: media-services-metrics-diagnostic-logs.md
+        - name: 診断ログのスキーマ
+          href: media-services-diagnostic-logs-schema.md
+    - name: Player クライアント
+      items:
+        - name: Azure Media Player
+          href: use-azure-media-player.md
+    - name: v3 API シリーズを使用した開発
+      href: media-services-apis-overview.md
+      items:
+        - name: エンティティのページング、フィルター、並べ替え
+          href: entities-overview.md
+        - name: RBAC
+          href: rbac-overview.md
+    - name: v2 から v3 への移行ガイダンス
+      href: migrate-from-v2-to-v3.md
+- name: ハウツー ガイド
+  items:
+    - name: 作業開始
+      items:
+        - name: アカウントの作成 - CLI
+          href: create-account-cli-how-to.md
+        - name: API へのアクセス - CLI
+          href: access-api-cli-how-to.md
+        - name: メディア占有ユニットのスケーリング - CLI
+          href: media-reserved-units-cli-how-to.md
+        - name: REST を使用した開発
+          items:
+            - name: Postman を使用して接続する
+              href: media-rest-apis-with-postman.md
+        - name: SDK を使用した開発
+          href: developers-guide.md
+          items:
+            - name: Java を使用して接続する
+              href: configure-connect-java-howto.md
+            - name: .NET を使用して接続する
+              href: configure-connect-dotnet-howto.md
+            - name: Node.js を使用して接続する
+              href: configure-connect-nodejs-howto.md
+            - name: Python を使用して接続する
+              href: configure-connect-python-howto.md
+    - name: コンテンツをアップロードする
+      items:
+        - name: HTTPS から - .NET
+          displayName: upload
+          href: job-input-from-http-how-to.md
+        - name: ローカル ファイルから - .NET
+          displayName: upload
+          href: job-input-from-local-file-how-to.md
+        - name: ローカル ファイルから - REST
+          displayName: upload
+          href: upload-files-rest-how-to.md
+    - name: コンテンツのエンコード
+      items:
+        - name: ジョブ入力としての HTTPS - .NET
+          displayName: 'encode, encoding'
+          href: job-input-from-http-how-to.md
+        - name: ジョブ入力としてのローカル ファイル - .NET
+          displayName: 'encode, encoding'
+          href: job-input-from-local-file-how-to.md
+        - name: カスタム変換を使用してエンコードする
+          items:
+            - name: .NET の場合
+              href: customize-encoder-presets-how-to.md
+            - name: CLI の場合
+              href: custom-preset-cli-howto.md
+            - name: REST の場合
+              href: custom-preset-rest-howto.md
+    - name: Event Grid の使用
+      items:
+        - name: イベントの監視 - ポータル
+          href: monitor-events-portal-how-to.md
+        - name: イベントの監視 - CLI
+          href: job-state-events-cli-how-to.md
+    - name: コンテンツの保護
+      items:
+        - name: コンテンツ キー ポリシーの取得 - .NET
+          href: get-content-key-policy-dotnet-howto.md
+        - name: DRM 動的暗号化 - .NET
+          href: protect-with-drm.md
+        - name: iOS 用のオフラインの FairPlay
+          href: offline-fairplay-for-ios.md
+        - name: Android 用のオフラインの Widevine
+          href: offline-widevine-for-android.md
+        - name: Windows 10 用のオフラインの PlayReady
+          href: offline-plaready-streaming-for-windows-10.md
+    - name: フィルターの作成
+      items:
+        - name: .NET の場合
+          href: filters-dynamic-manifest-dotnet-howto.md
+        - name: REST の場合
+          href: filters-dynamic-manifest-rest-howto.md
+        - name: CLI の場合
+          href: filters-dynamic-manifest-cli-howto.md
 - name: リファレンス
   items:
-  - name: OpenAPI の仕様 (Swagger)
-    href: https://aka.ms/ams-v3-rest-sdk
-  - name: SDK/ツール
-    items:
+    - name: OpenAPI の仕様 (Swagger)
+      href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: REST
-      href: https://aka.ms/ams-v3-rest-ref
+      href: 'https://aka.ms/ams-v3-rest-ref'
     - name: Azure CLI
-      href: https://aka.ms/ams-v3-cli-ref
-    - name: .NET
-      href: https://aka.ms/ams-v3-dotnet-ref
-    - name: Java
-      href: https://aka.ms/ams-v3-java-ref
-    - name: Python
-      href: https://aka.ms/ams-v3-python-ref
-    - name: Node.js
-      href: https://aka.ms/ams-v3-nodejs-ref
-    - name: Go
-      href: https://aka.ms/ams-v3-go-ref
-  - name: Event Grid スキーマ
-    href: media-services-event-schemas.md
-  - name: DRM ライセンス
-    items:
-    - name: PlayReady ライセンス テンプレート
-      href: playready-license-template-overview.md
-    - name: Widevine ライセンス テンプレート
-      href: widevine-license-template-overview.md
-    - name: FairPlay ライセンスの要件
-      href: fairplay-license-overview.md
+      href: 'https://aka.ms/ams-v3-cli-ref'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://aka.ms/ams-v3-dotnet-ref'
+        - name: Java
+          href: 'https://aka.ms/ams-v3-java-ref'
+        - name: Python
+          href: 'https://aka.ms/ams-v3-python-ref'
+        - name: Node.js
+          href: 'https://aka.ms/ams-v3-nodejs-ref'
+        - name: Go
+          href: 'https://aka.ms/ams-v3-go-ref'
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.media/allversions
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=web-mobile
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/media-services/
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/regions/services/
-  - name: ビデオ
-    href: https://azure.microsoft.com/resources/videos/index/?services=media-services
-  - name: OpenAPI の仕様 (Swagger)
-    href: https://aka.ms/ams-v3-rest-sdk
-  - name: SDK/ツール
-    items:
-    - name: Azure CLI
-      href: https://aka.ms/ams-v3-cli
-    - name: .NET
-      href: https://aka.ms/ams-v3-dotnet-sdk
-    - name: Java
-      href: https://aka.ms/ams-v3-java-sdk
-    - name: Python
-      href: https://aka.ms/ams-v3-python-sdk
-    - name: Node.js
-      href: https://aka.ms/ams-v3-nodejs-sdk
-    - name: Ruby
-      href: https://aka.ms/ams-v3-ruby-sdk
-  - name: リリース ノート
-    href: release-notes.md
-  - name: FAQ
-    href: frequently-asked-questions.md
-ms.openlocfilehash: c168b5d2097e8fe1d6e79e271f8ff84af48cb049
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121636"
+    - name: Azure Media Services コミュニティ
+      displayName: 'forums, twitter, feedback'
+      href: media-services-community.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
+    - name: OpenAPI の仕様 (Swagger)
+      href: 'https://aka.ms/ams-v3-rest-sdk'
+    - name: SDK/ツール
+      items:
+        - name: Azure CLI
+          href: 'https://aka.ms/ams-v3-cli'
+        - name: .NET
+          href: 'https://aka.ms/ams-v3-dotnet-sdk'
+        - name: Java
+          href: 'https://aka.ms/ams-v3-java-sdk'
+        - name: Python
+          href: 'https://aka.ms/ams-v3-python-sdk'
+        - name: Node.js
+          href: 'https://aka.ms/ams-v3-nodejs-sdk'
+        - name: Ruby
+          href: 'https://aka.ms/ams-v3-ruby-sdk'
+    - name: AMSE
+      href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
+    - name: リリース ノート
+      href: release-notes.md
+    - name: クォータと制限
+      href: limits-quotas-constraints.md
+    - name: FAQ
+      href: frequently-asked-questions.md
+    - name: Azure のクラウドとリージョン
+      href: azure-clouds-regions.md

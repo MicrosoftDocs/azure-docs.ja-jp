@@ -2,18 +2,18 @@
 title: Azure Data Catalog でデータ資産を管理する
 description: この記事では、Azure Data Catalog に登録されたデータ資産の可視性と所有権を制御する方法について重点的に説明しています。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 46af78dae6d5c1607f56d36732adce5e677e0c65
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 0b155a5cdfa1c540e1cfb92147f6ebc7f88dd929
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407640"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000642"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Azure Data Catalog でデータ資産を管理する
 ## <a name="introduction"></a>はじめに

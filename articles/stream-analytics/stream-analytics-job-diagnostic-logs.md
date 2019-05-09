@@ -7,61 +7,87 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: db3c9874676e3240f6896c1e1ff8f873360c20d5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090824"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247156"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
 
-Azure Stream Analytics ジョブは予期せず処理を停止することがあります。 このため、この種のイベントのトラブルシューティングを行えることが重要です。 このようなイベントは、予期しないクエリ結果、デバイスへの接続、または予期しないサービス停止によって引き起こされる可能性があります。 Stream Analytics の診断ログは、問題が発生した際にその原因を特定し、復旧時間を短縮するのに役立ちます。
+Azure Stream Analytics ジョブは予期せず処理を停止することがあります。 このため、この種のイベントのトラブルシューティングを行えることが重要です。 障害は、予期しないクエリ結果、デバイスへの接続、または予期しないサービス停止によって引き起こされる可能性があります。 Stream Analytics の診断ログは、問題が発生した際にその原因を特定し、復旧時間を短縮するのに役立ちます。
 
 ## <a name="log-types"></a>ログの種類
 
-Stream Analytics には 2 種類のログがあります。 
-* [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (常に有効)。 アクティビティ ログでは、ジョブで実行される操作の洞察が得られます。
-* [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (構成可能)。 診断ログでは、ジョブで発生するあらゆるイベントに関して豊富な洞察が得られます。 診断ログはジョブの作成時に開始され、ジョブが削除されると終了します。 ジョブの更新時とジョブの実行中のイベントがログの対象です。
+Stream Analytics には 2 種類のログがあります。
+
+* [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (常に有効) では、ジョブで実行される操作の分析情報が得られます。
+
+* [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (構成可能) では、ジョブで発生するあらゆるイベントに関して豊富な分析情報が得られます。 診断ログはジョブの作成時に開始され、ジョブが削除されると終了します。 ジョブの更新時とジョブの実行中のイベントがログの対象です。
 
 > [!NOTE]
-> Azure Storage、Azure Event Hubs、Azure Log Analytics などのサービスを使用して、問題となったデータを分析できます。 これらのサービスでは、価格モデルに基づいて料金が発生します。
->
+> Azure Storage、Azure Event Hubs、Azure Monitor ログなどのサービスを使用して、問題となったデータを分析できます。 これらのサービスでは、価格モデルに基づいて料金が発生します。
 
-## <a name="turn-on-diagnostics-logs"></a>診断ログの有効化
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-既定では、診断ログは**オフ**になっています。 診断ログを有効にするには、次の手順を実行します。
+## <a name="debugging-using-activity-logs"></a>アクティビティ ログを使用したデバッグ
 
-1.  Azure Portal にサインインし、[ストリーミング ジョブ] ブレードに移動します。 **[監視]** の下の **[診断ログ]** を選択します。
+アクティビティ ログは既定で有効になっていて、Stream Analytics ジョブで実行される操作の高度な分析情報が得られます。 ジョブに影響を与える問題の根本原因を見つけるには、アクティビティ ログに含まれている情報が役立ちます。 Stream Analytics でアクティビティ ジョブを使用するためには、次の手順を実行します。
+
+1. Azure portal にサインインし、**[概要]** で **[アクティビティ ログ]** を選択します。
+
+   ![Stream Analytics アクティビティ ログ](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
+
+2. 実行された操作の一覧を確認できます。 ジョブが失敗する原因となったすべての操作には、赤い情報バブルが表示されます。
+
+3. 操作をクリックすると、その概要ビューが表示されます。 多くの場合、ここにある情報は制限されています。 操作の詳細を表示するには、**JSON** をクリックします。
+
+   ![Stream Analytics アクティビティ ログ操作の概要](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
+
+4. JSON の **[プロパティ]** セクションまで下へスクロールして、失敗した操作の原因となったエラーの詳細を表示します。 この例では、失敗は範囲外の緯度値からのランタイム エラーが原因でした。
+
+   ![JSON エラーの詳細](./media/stream-analytics-job-diagnostic-logs/error-details.png)
+
+5. JSON のエラー メッセージに基づいて是正措置を取ることができます。 この例では、-90 度から 90 度の間の緯度値をクエリに追加する必要があることを確認します。
+
+6. 根本原因を特定するのにアクティビティ ログのエラー メッセージが役に立たない場合は、診断ログを有効にして Azure Monitor ログを使用します。
+
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>Azure Monitor ログへの診断データの送信
+
+診断ログを有効にして Azure Monitor ログに送信することを、強くお勧めします。 既定では、診断ログは**オフ**になっています。 診断ログを有効にするには、次の手順を実行します。
+
+1.  Azure portal にサインインして、Stream Analytics ジョブに移動します。 **[監視]** の下の **[診断ログ]** を選択します。 次に、**[診断を有効にする]** を選択します。
 
     ![ブレードを使った診断ログへの移動](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  **[診断を有効にする]** を選択します。
+2.  **[診断設定]** で **[名前]** を作成し、**[Log Analytics への送信]** の横にあるチェック ボックスをオンにします。 次に、既存の **Log Analytics ワークスペース**を追加するか、新規作成します。 **[ログ]** で **[実行]** と **[作成]**、および **[メトリック]** で **[AllMetrics]** のチェック ボックスをオンにします。 **[Save]** をクリックします。
 
-    ![Stream Analytics 診断ログを有効にする](./media/stream-analytics-job-diagnostic-logs/turn-on-diagnostic-logs.png)
+    ![診断ログの設定](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3.  **[診断設定]** ページの **[状態]** を **[オン]** に選択します。
+3. Stream Analytics ジョブが開始すると、診断ログが Log Analytics ワークスペースにルーティングされます。 Log Analytics ワークスペースに移動して、**[全般]** セクションで **[ログ]** を選択します。
 
-    ![診断ログの状態の変更](./media/stream-analytics-job-diagnostic-logs/save-diagnostic-log-settings.png)
+   ![[全般] セクションの Azure Monitor ログ](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
-4.  目的のアーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Log Analytics)。 次に、収集するログのカテゴリを選択します (実行、作成)。 
+4. 語句の検索、傾向の把握、パターンの分析、およびデータに基づいた分析情報の提供を行う、[独自のクエリを記述](../azure-monitor/log-query/get-started-portal.md)することができます。 たとえば、“The streaming job failed (ストリーミング ジョブが失敗しました)” というメッセージが含まれている診断ログのみをフィルター処理するクエリを記述できます。 Azure Stream Analytics からの診断ログは、**AzureDiagnostics** テーブルに格納されます。
 
-5.  新しい診断構成を保存します。
+   ![診断のクエリと結果](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-query.png)
 
-診断構成が有効になるまで約 10 分かかります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ページに表示されます。
+5. 適切なログを検索するクエリがある場合は、**[保存]** を選択して保存し、名前とカテゴリを入力します。 その後、**[新しいアラート ルール]** を選択することでアラートを作成できます。 次に、アラートの条件を指定します。 **[条件]** を選択し、このカスタム ログ検索を評価するしきい値と頻度を入力します。  
 
-![ブレードを使った診断ログへの移動 - アーカイブ ターゲット](./media/stream-analytics-job-diagnostic-logs/view-diagnostic-logs-page.png)
+   ![診断ログ検索クエリ](./media/stream-analytics-job-diagnostic-logs/search-query.png)
 
-診断の構成の詳細については、「[Azure リソースからの診断データの収集と使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)」を参照してください。
+6. アラート ルールを作成する前に、アクション グループを選択し、名前や説明などのアラートの詳細を指定します。 さまざまなジョブの診断ログを、同じ Log Analytics ワークスペースにルーティングすることができます。 これにより、すべてのジョブで機能するアラートを 1 回設定することができます。  
 
 ## <a name="diagnostics-log-categories"></a>診断ログのカテゴリ
 
 現時点では、取得する診断ログのカテゴリは次の 2 つです。
 
-* **作成**。 ジョブ作成操作に関連するログ イベントを取得します (ジョブの作成、入出力の追加と削除、クエリの追加と更新、ジョブの開始と停止)。
-* **実行**。 ジョブの実行中に発生したイベントを取得します。
+* **作成**:ジョブ作成操作 (ジョブの作成、入出力の追加と削除、クエリの追加と更新、ジョブの開始と停止など) に関連するログ イベントを取得します。
+
+* **実行**:ジョブの実行中に発生したイベントを取得します。
     * 接続エラー
     * データ処理エラー。次のエラーが含まれます。
         * クエリ定義に準拠していないイベント (フィールドの種類と値の不一致、フィールドの不足など)
@@ -80,7 +106,7 @@ category | ログのカテゴリ (**実行**または**作成**のいずれか)�
 operationName | ログに記録される操作の名前。 例: **Send Events:SQL Output write failure to mysqloutput**。
 status | 操作の状態。 たとえば、**失敗**または**成功**。
 level | ログ レベル。 たとえば、**エラー**、**警告**、または**情報**。
-properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、次のセクションを参照してください。
+properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、この記事の次のセクションを参照してください。
 
 ### <a name="execution-log-properties-schema"></a>実行ログ プロパティのスキーマ
 

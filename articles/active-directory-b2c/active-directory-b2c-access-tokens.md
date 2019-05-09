@@ -3,21 +3,21 @@ title: Azure Active Directory B2C でのアクセス トークンの要求 | Mic
 description: この記事では、クライアント アプリケーションをセットアップし、アクセス トークンを取得する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.subservice: B2C
+ms.openlocfilehash: 0ea781188e40d6389da8188379d792c922d3bdca
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015351"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768345"
 ---
-# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: アクセス トークンの要求
+# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C:アクセス トークンの要求
 
 アクセス トークン (Azure AD B2C からの応答では **access\_token** として示されます) とは、 [承認サーバー](active-directory-b2c-reference-protocols.md)によってセキュリティ保護されているリソース (Web API など) にアクセスするためにクライアントが使用できるセキュリティ トークンの形式です。 アクセス トークンは [JWT](active-directory-b2c-reference-tokens.md) として表され、対象となるリソース サーバーと、付与されるサーバーへのアクセス許可に関する情報が含まれます。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。
 
@@ -78,8 +78,15 @@ API を構成してスコープを発行したら、Azure Portal を使用して
 > [!NOTE]
 > 現在、カスタム ドメインとアクセス トークンの併用はサポートされていません。 要求 URL には、tenantName.onmicrosoft.com ドメインを使用する必要があります。
 
+次の例では、これらの値を置き換えます。
+
+- `<tenant-name>` - Azure AD B2C テナントの名前。
+- `<policy-name>` - カスタム ポリシーまたはユーザー フローの名前。
+- `<application-ID>` - 登録したクライアント アプリケーションのアプリケーション識別子。
+- `<redirect-uri>` - クライアント アプリケーションを登録したときに入力した**リダイレクト URI**。
+
 ```
-https://<tenantName>.b2clogin.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?client_id=<application-ID>&nonce=anyRandomValue&redirect_uri=<redirect_uri>&scope=https%3A%2F%2F<tenant-name>.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 同じ要求で複数のアクセス許可を取得するには、1 つの **scope** パラメーターに複数のエントリをスペースで区切って追加します。 例: 
@@ -105,7 +112,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread%20openid%20offline_ac
 
 OpenID Connect 標準では、いくつかの特別な "scope" 値を指定します。 次の特別なスコープは、"ユーザーのプロファイルにアクセスする" ためのアクセス許可を表します。
 
-* **openid**: ID トークンを要求します。
+* **openid**: ID トークンを要求します
 * **offline\_access**: 更新トークンを要求します ([認証コード フロー](active-directory-b2c-reference-oauth-code.md)を使用)。
 
 `/authorize` 要求の `response_type` パラメーターに `token` が含まれる場合、`scope` パラメーターには、付与されるリソース スコープ (`openid` と `offline_access` 以外) を少なくとも 1 つ含める必要があります。 含まれていない場合、`/authorize` 要求はエラーで終了します。

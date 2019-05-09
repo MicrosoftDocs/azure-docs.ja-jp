@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Bing Image Search API に送信する検索クエリのカスタマイズについて説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.assetid: C2862E98-8BCC-423B-9C4A-AC79A287BE38
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: conceptual
-ms.date: 8/8/2018
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 5d850b7b95c15137f70a0d343f97171ec2d2f753
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b2d142783146edcaf40125ce58e43fe001909412
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256980"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337653"
 ---
 # <a name="send-queries-to-the-bing-image-search-api"></a>Bing Image Search API にクエリを送信する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 5952c602a90568a9ce9e71dfa2c0dd383aed4e16
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915373"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569979"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
@@ -33,7 +33,7 @@ ms.locfileid: "30915373"
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Azure Marketplace から Windows 10 イメージをデプロイする 
 PowerShell、CLI、および Azure Resource Manager テンプレートでのデプロイについては、Windows 10 イメージを次の発行元、プラン、SKU で見つけることができます。
 
-| OS  |      発行元      |  プラン | SKU |
+| OS  |      発行元      |  プラン | Sku |
 |:----------|:-------------:|:------|:------|
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
@@ -62,32 +62,32 @@ if($adminAccount.Disabled)
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限で Windows 10 をデプロイする
-[最新の Azure PowerShell がインストールおよび構成](/powershell/azure/overview)されていることを確認します。 VHD が準備できたら、次のように `Add-AzureRmVhd` コマンドレットを使用して、その VHD を Azure Storage アカウントにアップロードします。
+[最新の Azure PowerShell がインストールおよび構成](/powershell/azure/overview)されていることを確認します。 VHD が準備できたら、次のように `Add-AzVhd` コマンドレットを使用して、その VHD を Azure Storage アカウントにアップロードします。
 
 ```powershell
-Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
+Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
     -Destination "https://mystorageaccount.blob.core.windows.net/vhds/myvhd.vhd"
 ```
 
 
 **Azure Resource Manager テンプレートを使用してデプロイする** Resource Manager テンプレートでは、`licenseType` の追加パラメーターを指定できます。 [Azure Resource Manager テンプレートの作成](../../resource-group-authoring-templates.md)で詳細を確認できます。 VHD を Azure にアップロードした後、コンピューティング プロバイダーの一部としてライセンスの種類を含めるように Resource Manager テンプレートを編集し、テンプレートを通常どおりデプロイします。
 ```json
-"properties": {  
-   "licenseType": "Windows_Client",
-   "hardwareProfile": {
+"properties": {
+    "licenseType": "Windows_Client",
+    "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
-   }
+    }
 ```
 
-**PowerShell を使用してデプロイする** Windows Server VM を PowerShell を使用してデプロイする場合、`-LicenseType` の追加パラメーターを指定できます。 VHD を Azure にアップロードした後、`New-AzureRmVM` を使って VM を作成し、ライセンスの種類を次のように指定します。
+**PowerShell を使用してデプロイする** Windows Server VM を PowerShell を使用してデプロイする場合、`-LicenseType` の追加パラメーターを指定できます。 VHD を Azure にアップロードした後、`New-AzVM` を使って VM を作成し、ライセンスの種類を次のように指定します。
 ```powershell
-New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
+New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
 ## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>VM がライセンスの特典を利用していることを確認する
-VM を PowerShell または Resource Manager のいずれかのデプロイ方法によってデプロイした後、次のように `Get-AzureRmVM` を使用してライセンスの種類を確認します。
+VM を PowerShell または Resource Manager のいずれかのデプロイ方法によってデプロイした後、次のように `Get-AzVM` を使用してライセンスの種類を確認します。
 ```powershell
-Get-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
+Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
 適切なライセンス タイプが指定された Windows 10 の場合、出力は次の例のようになります。

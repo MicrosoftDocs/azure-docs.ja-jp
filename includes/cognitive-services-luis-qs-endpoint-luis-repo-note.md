@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 ms.custom: include file
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: ced597ea74fc2bcb35211fc2a22af6086694b3c7
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: ed1baef31d91ea09e48e6c9b4b2b402818675d1d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429994"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56278056"
 ---
 > [!NOTE]
-> 完成したソリューションは、[**LUIS-Samples** の GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/)から入手できます。
+> 完全なソリューションは、[**cognitive-services-language-understanding** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/)から入手できます。

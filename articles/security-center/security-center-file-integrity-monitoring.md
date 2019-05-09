@@ -3,23 +3,23 @@ title: Azure Security Center のファイルの整合性の監視 | Microsoft Do
 description: " Azure Security Center のファイルの整合性の監視を有効にする方法を説明します。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: MBaldwin
-editor: ''
+author: monhaber
+manager: barbkess
+editor: monhaber
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
-ms.author: rkarlin
-ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 03/13/2019
+ms.author: monhaber
+ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338534"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901587"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -31,20 +31,17 @@ Security Center のファイルの整合性の監視では、Windows ファイ�
 
 - ファイルとレジストリの作成と削除
 - ファイルの変更 (ファイル サイズ、アクセス制御リスト、およびコンテンツのハッシュの変更)
-- レジストリの変更 (サイズ、アクセス制御リスト、種類、およびコンテンツ)
+- レジストリの変更 (サイズ、アクセス制御リスト、種類、およびコンテンツの変更)
 
 Security Center が監視することをお勧めする、FIM を簡単に有効にすることができるエンティティがあります。 独自の FIM ポリシーまたは監視するエンティティを定義することもできます。 このチュートリアルでは、その実行方法を示します。
 
 > [!NOTE]
-> ファイルの整合性の監視 (FIM) 機能は、Windows コンピューター、Linux コンピューター、および VM で動作し、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
-FIM は、Log Analytics ワークスペースにデータをアップロードします。 データ料金は、アップロードするデータの量に基づいて適用されます。 詳細については、「[Log Analytics の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」をご覧ください。
->
->
+> ファイルの整合性の監視 (FIM) 機能は、Windows コンピューター、Linux コンピューター、および VM で動作し、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。 FIM は、Log Analytics ワークスペースにデータをアップロードします。 データ料金は、アップロードするデータの量に基づいて適用されます。 詳細については、「[Log Analytics の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」をご覧ください。
+
+FIM は、Azure Change Tracking ソリューションを使用して、ユーザーの環境内の変更を追跡して識別します。 ファイルの整合性の監視を有効にすると、種類が**ソリューション**である **Change Tracking** リソースを使用できるようになります。 データ収集の頻度の詳細については、Azure Change Tracking の「[変更の追跡データ収集の詳細](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)」を参照してください。
 
 > [!NOTE]
-> FIM は、Azure Change Tracking ソリューションを使用して、ユーザーの環境内の変更を追跡して識別します。 ファイルの整合性の監視を有効にすると、種類がソリューションである **Change Tracking** リソースを使用できるようになります。 **Change Tracking** リソースを削除すると、Security Center のファイルの整合性の監視機能が無効になります。
->
->
+> **Change Tracking** リソースを削除すると、Security Center のファイルの整合性の監視機能も無効になります。
 
 ## <a name="which-files-should-i-monitor"></a>どのファイルを監視する必要があるか
 監視するファイルを選択するときは、システムとアプリケーションにとって重要なファイルを考慮する必要があります。 計画なしで変更されることがないファイルを選択することを検討してください。 アプリケーションまたはオペレーティング システムによって頻繁に変更されるファイル (ログ ファイルやテキスト ファイルなど) を選択すると、多数のノイズの発生によって攻撃が識別が困難になります。
@@ -88,7 +85,7 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 4. FIM を有効にするには、**[ファイルの整合性の監視を適用する]** を選択します。
 
 > [!NOTE]
-> 設定はいつでも変更できます。 詳細については、「[監視対象エンティティを編集する](security-center-file-integrity-monitoring.md#edit-monitored-items)」を参照してください。
+> 設定はいつでも変更できます。 詳細については、以降の「監視対象エンティティを編集する」を参照してください。
 >
 >
 
@@ -134,15 +131,15 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 
 1. **ファイルの整合性の監視ダッシュ ボード**に戻り、**[設定]** を選択します。
 
-  ![設定][11]
+   ![設定][11]
 
-  **[ワークスペースの構成]** を開くと 3 つのタブが表示されます:**[Windows レジストリ]**、**[Windows ファイル]**、および **[Linux ファイル]**。 各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 表示されるエンティティごとに、Security Center は、FIM が有効になっている (true) か有効になっていない (false) かを識別します。  エンティティを編集することで、FIM を有効または無効にすることができます。
+   **[ワークスペースの構成]** を開くと 3 つのタブが表示されます:**[Windows レジストリ]**、**[Windows ファイル]**、および **[Linux ファイル]**。 各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 表示されるエンティティごとに、Security Center は、FIM が有効になっている (true) か有効になっていない (false) かを識別します。  エンティティを編集することで、FIM を有効または無効にすることができます。
 
-  ![ワークスペースの構成][12]
+   ![ワークスペースの構成][12]
 
-2. IdentityProtection を選択します。 この例では、[Windows レジストリ] の項目を選択しています。 **[Edit for Change Tracking]\(変更追跡を行うための編集\)** が開きます。
+2. ID 保護を選択します。 この例では、[Windows レジストリ] の項目を選択しています。 **[Edit for Change Tracking]\(変更追跡を行うための編集\)** が開きます。
 
-  ![[Edit for Change Tracking]\(変更追跡を行うための編集\)][13]
+   ![[Edit for Change Tracking]\(変更追跡を行うための編集\)][13]
 
 **[Edit for Change Tracking]\(変更追跡を行うための編集\)** では、以下を実行できます。
 
@@ -155,11 +152,11 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 1. **ファイルの整合性の監視ダッシュボード**に戻り、上部にある **[設定]** を選択します。 **[ワークスペースの構成]** が開きます。
 2. **[ワークスペースの構成]** で、追加するエンティティの種類のタブを選択します:[Windows レジストリ]、[Windows ファイル]、または [Linux ファイル]。 この例では、**[Linux ファイル]** が選択されています。
 
-  ![監視する新しい項目を追加する][14]
+   ![監視する新しい項目を追加する][14]
 
 3. **[追加]** を選択します。 **[Edit for Change Tracking]\(変更追跡を行うための追加\)** が開きます。
 
-  ![要求された情報の入力][15]
+   ![要求された情報の入力][15]
 
 4. **[追加]** ページで、要求された情報を入力し、**[保存]** を選択します。
 
@@ -167,19 +164,19 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 1. **ファイルの整合性の監視**ダッシュボードに戻ります。
 2. FIM が現在有効になっているワークスペースを選択します。 [有効化] ボタンまたは [アップグレード プラン] ボタンが表示されていなければ、そのワークスペースの FIM は有効になっています。
 
-  ![FIM が有効になっているワークスペースの選択][16]
+   ![FIM が有効になっているワークスペースの選択][16]
 
 3. [ファイルの整合性の監視] で、**[設定]** を選択します。
 
-  ![[設定] の選択][17]
+   ![[設定] の選択][17]
 
 4. **[ワークスペースの構成]** で、**[有効化]** が [True] に設定されているグループを選択します。
 
-  ![ワークスペースの構成][18]
+   ![ワークスペースの構成][18]
 
 5. **[Edit for Change Tracking]\(変更追跡を行うための編集\)** ウィンドウで、**[有効化]** を [False] に設定します。
 
-  ![[有効化] を False に設定][19]
+   ![[有効化] を False に設定][19]
 
 6. **[保存]** を選択します。
 
@@ -198,7 +195,7 @@ FIM を無効にすることができます。 FIM は、Azure Change Tracking �
 2. ワークスペースを選択します。
 3. **[ファイルの整合性の監視]** で、**[無効化]** を選択します。
 
-  ![FIM を無効にする][20]
+   ![FIM を無効にする][20]
 
 4. 無効にするには、**[削除]** を選択します。
 

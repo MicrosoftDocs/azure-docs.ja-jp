@@ -1,21 +1,20 @@
 ---
 title: サンプル - 課金タグ ポリシーのイニシアティブ
-description: このサンプル ポリシー セットでは、コスト センターと製品名に対して指定したタグ値を要求します。
-services: azure-policy
+description: このサンプル ポリシー定義セットは、コスト センターと製品名に対して指定したタグ値を要求します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 1929cb7287460557cf815b62bd5d31ffe38ab161
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9d9a3a5af304c1080d1d43b9bbfbafe2554a9844
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318020"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59275013"
 ---
-# <a name="billing-tags-policy-initiative"></a>課金タグ ポリシーのイニシアティブ
+# <a name="sample---billing-tags-policy-initiative"></a>サンプル - 課金タグ ポリシーのイニシアティブ
 
 このポリシーは、コスト センターと製品名に対して指定したタグの値を使用することが要件です。 組み込みのポリシーを使用して、必要なタグを強制的に適用します。 タグに対して必須の値を指定します。
 
@@ -29,19 +28,19 @@ ms.locfileid: "53318020"
 
 ## <a name="deploy-with-the-portal"></a>ポータルでのデプロイ
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![ポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
 $policydefinitions = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.definitions.json"
 $policysetparameters = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.parameters.json"
 
-$policyset= New-AzureRmPolicySetDefinition -Name "multiple-billing-tags" -DisplayName "Billing Tags Policy Initiative" -Description "Specify cost Center tag and product name tag" -PolicyDefinition $policydefinitions -Parameter $policysetparameters
+$policyset= New-AzPolicySetDefinition -Name "multiple-billing-tags" -DisplayName "Billing Tags Policy Initiative" -Description "Specify cost Center tag and product name tag" -PolicyDefinition $policydefinitions -Parameter $policysetparameters
 
-New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentname> -Scope <scope>  -costCenterValue <required value for Cost Center tag> -productNameValue <required value for product Name tag>
+New-AzPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentname> -Scope <scope>  -costCenterValue <required value for Cost Center tag> -productNameValue <required value for product Name tag>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>PowerShell でのデプロイをクリーンアップする
@@ -49,7 +48,7 @@ New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentnam
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="apply-tags-to-existing-resources"></a>既存のリソースにタグを適用する
@@ -57,11 +56,11 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 ポリシーを割り当てたら、既存のすべてのリソースへの更新をトリガーし、追加したタグのポリシーを強制的に適用することができます。 次のスクリプトを実行すると、リソースに存在していたその他のタグがすべて保持されます。
 
 ```azurepowershell-interactive
-$resources = Get-AzureRmResource -ResourceGroupName 'ExampleGroup'
+$resources = Get-AzResource -ResourceGroupName 'ExampleGroup'
 
 foreach ($r in $resources) {
     try {
-        Set-AzureRmResource -Tags ($a = if ($r.Tags -eq $NULL) { @{} } else {$r.Tags}) -ResourceId $r.ResourceId -Force -UsePatchSemantics
+        Set-AzResource -Tags ($a = if ($r.Tags -eq $NULL) { @{} } else {$r.Tags}) -ResourceId $r.ResourceId -Force -UsePatchSemantics
     }
     catch {
         Write-Host $r.ResourceId + "can't be updated"

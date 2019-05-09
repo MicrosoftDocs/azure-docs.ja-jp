@@ -3,8 +3,8 @@ title: Azure で Service Fabric 上に .NET アプリを作成する | Microsoft
 description: このチュートリアルでは、ASP.NET Core のフロントエンドとリライアブル サービスのステートフルなバックエンドを含むアプリケーションを作成し、クラスターにアプリケーションをデプロイする方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2018
-ms.author: ryanwi
+ms.date: 01/14/2019
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 097cb554523a9e75b265ca16e79769daf0a49b40
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078496"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665799"
 ---
-# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
+# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル:ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 
 このチュートリアルは、シリーズの第 1 部です。  ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。 投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)し、「[投票のサンプル アプリケーションの概要](#walkthrough_anchor)」に進むことができます。  必要に応じて、このチュートリアルの[ビデオ ウォークスルー](https://channel9.msdn.com/Events/Connect/2017/E100)をご覧になることもできます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "49078496"
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [Visual Studio 2017](https://www.visualstudio.com/) バージョン 15.5 以降をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
@@ -187,7 +187,7 @@ ASP.NET アプリの既定のレイアウトである **Views/Shared/_Layout.csh
 
 ```html
 <!DOCTYPE html>
-<html ng-app="VotingApp" xmlns:ng="http://angularjs.org">
+<html ng-app="VotingApp" xmlns:ng="https://angularjs.org">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -326,8 +326,6 @@ VotingWeb フロントエンド サービスが作成されると、Visual Studi
 
 また、Voting プロジェクトの Application URL プロパティ値を更新し、アプリケーションをデバッグするときに正しいポートに対して Web ブラウザーが開くようにします。  ソリューション エクスプローラーで、**Voting** プロジェクトを選択し、**[アプリケーション URL]** プロパティを「**8080**」に更新します。
 
-![アプリケーションの URL](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
-
 ### <a name="deploy-and-run-the-voting-application-locally"></a>Voting アプリケーションをローカルにデプロイして実行する
 Voting アプリケーションを実行してデバッグできる状態になりました。 Visual Studio で、**F5** キーを押してアプリケーションをローカルの Service Fabric クラスターにデバッグ モードでデプロイします。 Visual Studio を**管理者**として開いていない場合、アプリケーションは失敗します。
 
@@ -454,12 +452,7 @@ namespace VotingData.Controllers
 
 Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。 1 つのアプリケーション内に、TCP 経由でアクセス可能なサービスが含まれる場合があります。 そのほかにも、HTTP REST API を使用してアクセスできるサービスや、Web ソケットを介してアクセスできるサービスが含まれる場合があります。 使用可能なオプションとトレードオフについては、[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)に関する記事を参照してください。
 
-このチュートリアルでは、[ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) と [Service Fabric リバース プロキシ](service-fabric-reverseproxy.md)を使用して、VotingWeb フロントエンド Web サービスがバックエンドの VotingData サービスと通信できるようにします。 リバース プロキシは、ポート 19081 を使用するように既定で構成され、このチュートリアルで動作するはずです。 ポートは、クラスターをセットアップするために使用される ARM テンプレートで設定されます。 使用されているポートを確認するには、**Microsoft.ServiceFabric/clusters** リソースでクラスター テンプレートを調べるか、またはクラスターのマニフェストで HttpApplicationGatewayEndpoint 要素を調べます。
-
-> [!NOTE]
-> リバース プロキシがサポートされるのは、Windows 8 以降または Windows Server 2012 以降を実行しているクラスターでのみです。
-
-<u>Microsoft.ServiceFabric/clusters reverseProxyEndpointPort リソース</u>
+このチュートリアルでは、[ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) と [Service Fabric リバース プロキシ](service-fabric-reverseproxy.md)を使用して、VotingWeb フロントエンド Web サービスがバックエンドの VotingData サービスと通信できるようにします。 リバース プロキシは、ポート 19081 を使用するように既定で構成され、このチュートリアルで動作するはずです。 リバース プロキシ ポートは、クラスターを設定するために使用される Azure Resource Manager テンプレートで設定されます。 どのポートが使用されているかを確認するには、 **Microsoft.ServiceFabric/clusters**リソースから、クラスター テンプレートをご覧ください: 
 
 ```json
 "nodeTypes": [
@@ -472,13 +465,10 @@ Service Fabric は、Reliable Services との通信方法において完全な�
           }
         ],
 ```
-ローカル Service Fabric クラスター マニフェストで HttpApplicationGatewayEndpoint 要素を確認するには:
-1. ブラウザー ウィンドウを開き、 http://localhost:19080 に移動します。
-2. **[マニフェスト]** をクリックします。
+ローカル開発クラスターで使用されているリバース プロキシ ポートを確認するには、ローカル Service Fabric クラスター マニフェスト内の **HttpApplicationGatewayEndpoint** 要素を確認します。
+1. ブラウザー ウィンドウを開き、http:\//localhost:19080 に移動して Service Fabric Explorer ツールを開きます。
+2. **[クラスター] -> [マニフェスト]** を選択します。
 3. HttpApplicationGatewayEndpoint 要素のポートをメモします。 既定では、これは 19081 のはずです。 19081 ではない場合は、次の VotesController.cs コードの GetProxyAddress メソッドで、ポートを変更する必要があります。
-
-
-
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 
@@ -622,31 +612,31 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 
 コードでどのような処理が実行されているのかを確認するには、次の手順に従います。
 
-1. **VotingWeb\VotesController.cs** ファイルを開き、Web API の **Put** メソッド (63 行目) にブレークポイントを設定します。
+1. **VotingWeb\VotesController.cs** ファイルを開き、Web API の **Put** メソッド (72 行目) にブレークポイントを設定します。
 
-2. **VotingData\VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (53 行目) にブレークポイントを設定します。
+2. **VotingData\VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (54 行目) にブレークポイントを設定します。
 
 3. **F5** キーを押して、デバッグ モードでアプリケーションを開始します。
 
 4. ブラウザーに戻り、投票の選択肢をクリックするか、新しい選択肢を追加します。 Web フロントエンドの API コントローラーで 1 つ目のブレークポイントに到達します。
     
 
-    1. ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
+   1. ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
 
-    ![投票フロントエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
+      ![投票フロントエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-    2. 最初に、バックエンド サービスの ReverseProxy の URL を構築します **(1)**。
-    3. 次に、HTTP PUT 要求を ReverseProxy に送信します **(2)**。
-    4. 最後に、バックエンド サービスからの応答をクライアントに返します **(3)**。
+   2. 最初に、バックエンド サービスの ReverseProxy の URL を構築します **(1)**。
+   3. 次に、HTTP PUT 要求を ReverseProxy に送信します **(2)**。
+   4. 最後に、バックエンド サービスからの応答をクライアントに返します **(3)**。
 
 5. **F5** キーを押して続行します。
-    1. 今度は、バックエンド サービスのブレークポイントに到達します。
+   1. 今度は、バックエンド サービスのブレークポイントに到達します。
 
-    ![投票バックエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
+      ![投票バックエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
-    2. メソッド **(1)** の先頭行では、`StateManager` を使用して信頼性の高いディクショナリ (`counts`) を取得または追加します。
-    3. 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
-    4. トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
+   2. メソッド **(1)** の先頭行では、`StateManager` を使用して信頼性の高いディクショナリ (`counts`) を取得または追加します。
+   3. 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
+   4. トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
 6. **F5** キーを押して続行します。
 
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。

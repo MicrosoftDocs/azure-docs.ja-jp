@@ -8,14 +8,14 @@ manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 08/14/2018
+ms.date: 01/14/2019
 ms.author: eamono
-ms.openlocfilehash: 9da40508c6f8fec1122ab116786ed726b576a639
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d0764131f0e7e321a87ed383636606b2124ef7d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106704"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173772"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>チュートリアル: Azure Automation を Event Grid および Microsoft Teams と統合する
 
@@ -31,6 +31,8 @@ ms.locfileid: "53106704"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 このチュートリアルを行うには、Azure Event Grid のサブスクリプションからトリガーされる Runbook を保持するために [Azure Automation アカウント](../automation/automation-offering-get-started.md)が必要です。
 

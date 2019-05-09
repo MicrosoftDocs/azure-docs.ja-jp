@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 12b12ff6a6dc616ec3bb592f54862535b1318e49
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: b3ffc9794967f44708d8330d4dc5d5de11b794d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247319"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079181"
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>SQL Data Warehouse のサポート チケットを作成する方法
 SQL Data Warehouse で問題が発生した場合は、サポート チケットを作成してください。エンジニアリング チームがサポートいたします。
@@ -35,8 +35,8 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
      
      Premier サポート プランを持っている場合は、[Microsoft Premier オンライン ポータル][Microsoft Premier online portal]でも SQL Data Warehouse 関連の問題を連絡できます。  サポートの範囲、応答時間、価格など各プランの詳細については、[Azure サポート プラン][Azure support plan]に関するページを参照してください。Azure のサポートに関してよく寄せられる質問については、「[Azure サポートに関する FAQ][Azure support FAQs]」を参照してください。  
         
-    ![[基本] ブレード](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
-    ![[基本] ブレード 1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
+     ![[基本] ブレード](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
+     ![[基本] ブレード 1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
 4. **[問題]** ブレードに入力します。
     ![Problem_blade](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_3.PNG)
    
@@ -46,7 +46,7 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
    > 
    
 5. **連絡先情報**を入力します。
-![Contact_information](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_4.PNG)
+   ![Contact_information](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_4.PNG)
 
     
 6. **[作成]** をクリックしてサポート要求を送信します。

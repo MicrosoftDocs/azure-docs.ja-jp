@@ -11,20 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 549194ce1dcab5cd449c60c934421b3bea154d6a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015689"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577018"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>キャッシュを追加して Azure API Management のパフォーマンスを向上させる
 
 API Management では、応答のキャッシュ用に操作を構成できます。 応答のキャッシュを行うと、API の遅延、帯域幅の消費、頻繁に変更されないデータの Web サービスの負荷が大幅に小さくなります。
- 
+
 キャッシュの詳細については、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」と「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
 ![キャッシュ ポリシー](media/api-management-howto-cache/cache-policies.png)
@@ -59,7 +59,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 6. 画面の上部の **[デザイン]** タブを選択します。
 7. **[受信処理]** セクションで、**[</>]** アイコンをクリックします。
 
-    ![コード エディター](media/api-management-howto-cache/code-editor.png) 
+    ![コード エディター](media/api-management-howto-cache/code-editor.png)
 
 8. **inbound** 要素で、次のポリシーを追加します。
 
@@ -76,7 +76,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
     **[期間]** は、キャッシュに入れられた応答の有効期間を指定します。 この例では、間隔は **20** 秒です。
 
 > [!TIP]
-> 外部キャッシュを使用している場合は、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、キャッシュ ポリシーの `cache-preference` 属性を指定する必要がある場合があります。 詳しくは、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」をご覧ください。
+> 外部キャッシュを使用している場合は、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、キャッシュ ポリシーの `caching-type` 属性を指定する必要がある場合があります。 詳しくは、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」をご覧ください。
 
 ## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
 動作中のキャッシュを確認するには、開発者ポータルから操作を呼び出します。

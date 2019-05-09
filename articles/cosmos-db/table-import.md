@@ -3,17 +3,17 @@ title: Azure Cosmos DB の Table API アカウントに既存のデータを移�
 description: Azure Cosmos DB の Azure Table API アカウントに、オンプレミスまたはクラウドのデータを移行またはインポートする方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: b2256f16d284cb079231e271a7fc06c25c381c8a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137686"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58876819"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
 
@@ -43,7 +43,7 @@ ms.locfileid: "53137686"
 
    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
-```
+   ```
 
 コマンドのオプションは次のとおりです。
 
@@ -51,6 +51,8 @@ ms.locfileid: "53137686"
     /OverwriteErrorLog: Optional. Overwrite error log file
     /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
     /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
+    /EnableCosmosTableLog: Optional. Direct the log to a cosmos table account. If set, this defaults to destination account connection string unless /CosmosTableLogConnectionString is also provided. This is useful if multiple instances of DT are being run simultaneously.
+    /CosmosTableLogConnectionString: Optional. ConnectionString to direct the log to a remote cosmos table account. 
 
 ### <a name="command-line-source-settings"></a>コマンドラインのソース設定
 

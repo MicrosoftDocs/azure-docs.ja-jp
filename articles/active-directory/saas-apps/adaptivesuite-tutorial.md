@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Adaptive Insights の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Adaptive Insights の統合 | Microsoft Docs
 description: Azure Active Directory と Adaptive Insights の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 74f38ef3043cfa0e6df40c264b72cc5eae38544e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d42c86ec262cd9d3d3db3035d252429e44c1208f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430291"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884882"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>チュートリアル: Azure Active Directory と Adaptive Insights の統合
+# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>チュートリアル:Azure Active Directory と Adaptive Insights の統合
 
 このチュートリアルでは、Adaptive Insights と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -118,7 +119,7 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
     >[!NOTE]
     > [識別子 (エンティティ ID)] と [応答 URL] の値は、Adaptive Insights の **[SAML SSO 設定]** ページから取得できます。
  
-5. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書(Base64)** をダウンロードして、コンピューターに保存します。
+5. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書 (Base64)** をダウンロードし、コンピューターに保存します。
 
     ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certficate.png) 
 
@@ -184,13 +185,13 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     ![image](./media/adaptivesuite-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/adaptivesuite-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
@@ -255,7 +256,7 @@ Azure AD ユーザーが Adaptive Insights にログインできるようにす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Adaptive Insights] タイルをクリックすると、自動的に Adaptive Insights アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

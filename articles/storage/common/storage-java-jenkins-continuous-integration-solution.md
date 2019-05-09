@@ -5,15 +5,16 @@ ms.topic: article
 ms.author: tarcher
 author: tarcher
 services: devops
+ms.service: storage
 custom: jenkins
 ms.date: 07/31/2018
-ms.component: common
-ms.openlocfilehash: 040f7ef8d9b50998ac2b84ed9d4e3712f4ed5835
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 8ea80d557185f4489a96384b77ddd2519e7bd049
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246873"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992169"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用
 
@@ -39,7 +40,7 @@ Blob service を使用してアジャイル開発のビルド アーティファ
   
     Jenkins CI ソリューションがない場合には、次の方法によって Jenkins CI ソリューションを実行できます。
   
-  1. Java が有効なコンピューターで、<http://jenkins-ci.org> から jenkins.war をダウンロードします。
+  1. Java が有効なコンピューターで、<https://jenkins-ci.org> から jenkins.war をダウンロードします。
   2. コマンド プロンプトを開いて jenkins.war が格納されているフォルダーに移動し、次のコマンドを実行します。
      
       `java -jar jenkins.war`
@@ -47,7 +48,7 @@ Blob service を使用してアジャイル開発のビルド アーティファ
   3. ブラウザーで `http://localhost:8080/` を開いて Jenkins ダッシュボードを開きます。ここで、Azure Storage プラグインをインストールおよび構成できます。
      
       通常の Jenkins CI ソリューションであればサービスとして実行されるように設定しますが、このチュートリアルではコマンド ラインで Jenkins.war を実行するだけで十分です。
-* Azure アカウント。 Azure アカウントには、<http://www.azure.com> でサインアップできます。
+* Azure アカウント。 Azure アカウントには、<https://www.azure.com> でサインアップできます。
 * Azure ストレージ アカウント。 まだストレージ アカウントを取得していない場合には、「 [ストレージ アカウントを作成する](../common/storage-quickstart-create-account.md)」に記載の手順に従って作成できます。
 * 以降では、Jenkins CI のビルド アーティファクトで Blob service をリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Jenkins CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
 
@@ -117,7 +118,7 @@ Jenkins で Blob service を使用するには、Azure Storage プラグイン�
 1. ジョブ構成の **[Build]\(ビルド\)** セクションで **[Add build step]\(ビルド ステップを追加する\)** を選択し、**[Download from Azure Blob storage]\(Azure Blob Storage からダウンロードする\)** を選択します。
 2. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
 3. **[Container name]** では、ダウンロードする BLOB が格納されているコンテナーの名前を指定します。 環境変数を使用できます。
-4. **[Blob name]** には BLOB 名を指定します。 環境変数を使用できます。 また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。 たとえば「**project\***」と入力すると、名前が「**project**」で始まる BLOB がすべて指定されます。
+4. **[Blob name]** には BLOB 名を指定します。 環境変数を使用できます。 また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。 たとえば「**project\\***」と入力すると、名前が "**project**" で始まる BLOB がすべて指定されます。
 5. [省略可能] **[Download path]** では、Jenkins を実行しているコンピューター上のパスを指定します。 Azure BLOB ストレージのファイルはこのパスにダウンロードされます。 環境変数も使用できます( **[Download path]** に値を入力しない場合、Azure BLOB ストレージのファイルは、ジョブのワークスペースにダウンロードされます)。
 
 Azure BLOB ストレージからダウンロードする項目が他にもある場合は、追加のビルド手順を作成できます。
@@ -127,10 +128,10 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 ## <a name="components-used-by-the-blob-service"></a>Blob service が使用するコンポーネント
 このセクションでは、Blob service コンポーネントの概要を説明します。
 
-* **ストレージ アカウント**: Azure Storage にアクセスするときは必ずストレージ アカウントを使用します。 ストレージ アカウントは、BLOB にアクセスするための最高レベルの名前空間です。 アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB (テラバイト) 未満である限り無制限です。
-* **コンテナー**: コンテナーは、一連の BLOB をグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。
-* **BLOB** : 任意の種類およびサイズのファイルです。 Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。 ほとんどのファイルはブロック BLOB です。 1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。 このチュートリアルでは、 ブロック BLOB を使用します。 もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。 BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
-* **URL 形式**: BLOB は、次の URL 形式を使用してアドレス指定できます。
+* **[ストレージ アカウント]**: Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントは、BLOB にアクセスするための最高レベルの名前空間です。 アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB (テラバイト) 未満である限り無制限です。
+* **コンテナー**:コンテナーは、BLOB のセットをグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。
+* **BLOB**:任意の種類およびサイズのファイルです。 Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。 ほとんどのファイルはブロック BLOB です。 1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。 このチュートリアルでは、 ブロック BLOB を使用します。 もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。 BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
+* **URL 形式**:BLOB は、次の URL 形式を使用してアドレス指定できます。
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   

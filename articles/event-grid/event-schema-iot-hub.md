@@ -8,14 +8,14 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 5fcd7c10002e7e1ae9683fdd89d3af14a1500050
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143575"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449191"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT Hub 用の Azure Event Grid イベント スキーマ
 

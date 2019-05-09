@@ -1,5 +1,5 @@
 ---
-title: Azure Log Analytics での Active Directory 環境の最適化 | Microsoft Docs
+title: Azure Monitor で Active Directory 環境を最適化する | Microsoft Docs
 description: Active Directory 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価します。
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 063cedc679c3365e6352549e78c75ecff903cae7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3b5da6c9046fc694bd5eb0f55cf031b82b6d0103
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193010"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370535"
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Log Analytics で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure Monitor で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
 ![AD 正常性チェックのシンボル](./media/ad-assessment/ad-assessment-symbol.png)
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Active Directory 正常性チェック ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事では、潜在的な問題の修正措置を実行できるように、ソリューションをインストールして使用します。
 
@@ -40,22 +42,22 @@ Active Directory 正常性チェック ソリューションを使用して、�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Active Directory 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4.5.2 以降がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Log Analytics サービスに使用されます。
+* Active Directory 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4.5.2 以降がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。
 * このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、および Windows Server 2016 を実行するドメイン コントローラーをサポートしています。
 * Azure Portal で Azure Marketplace から Active Directory 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  さらに手動で構成する必要はありません。
 
   > [!NOTE]
-  > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの Log Analytics サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
+  > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの Azure Monitor に送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
   >
   >
 
-評価対象のドメインのメンバーであるドメイン コントローラーに対して正常性チェックを実行するには、エージェントと、次のサポートされるいずれかの方法を使用して Log Analytics に接続できる必要があります。
+評価対象のドメインのメンバーであるドメイン コントローラーに対して正常性チェックを実行するには、エージェントが存在し、次のサポートされるいずれかの方法を使用して Azure Monitor に接続できる必要があります。
 
 1. ドメイン コントローラーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) をインストールします。
-2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、監視グループが Log Analytics サービスと統合されていない場合は、ドメイン コントローラーを Log Analytics とマルチホームしてデータを収集し、サービスに転送して、Operations Manager で引き続き監視することができます。  
-3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
+2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、監視グループが Azure Monitor と統合されていない場合は、ドメイン コントローラーを Azure Monitor とマルチホームしてデータを収集し、サービスに転送して、Operations Manager で引き続き監視することができます。  
+3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
-Operations Manager 管理グループに報告するドメイン コントローラー上のエージェントはデータを収集し、割り当てられている管理サーバーに転送します。このデータは、管理サーバーから Log Analytics サービスに直接送信されます。  データは Operations Manager データベースに書き込まれません。  
+Operations Manager 管理グループに報告するドメイン コントローラー上のエージェントではデータが収集されて、割り当てられている管理サーバーに転送されます。このデータは、管理サーバーから Azure Monitor に直接送信されます。  データは Operations Manager データベースに書き込まれません。  
 
 ## <a name="active-directory-health-check-data-collection-details"></a>Active Directory 正常性チェックのデータ収集の詳細
 
@@ -73,7 +75,7 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 - ファイル レプリケーション サービス (NTFRS) API
 - カスタム C# コード
 
-データはドメイン コントローラーで収集され、7 日ごとに Log Analytics に転送されます。  
+データはドメイン コントローラーで収集され、7 日ごとに Azure Monitor に転送されます。  
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>推奨事項の優先順位設定方法について
 提供されるすべての推奨事項には、推奨事項の相対的な重要度を示す重み付け値が与えられます。 最も重要な 10 個の推奨事項のみが表示されます。
@@ -107,30 +109,33 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-3. Azure Portal の Log Analytics ワークスペースの **[概要]** タイルをクリックします。
-4. **[概要]** ページで、**[Active Directory 正常性チェック]** タイルをクリックします。
-5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
-6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![正常性チェックの推奨事項の画像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
-7. **[推奨する解決方法]** で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]** として表示されます。
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
+1. **[概要]** ページで、**[Active Directory 正常性チェック]** タイルをクリックします。
+1. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
+1. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![正常性チェックの推奨事項の画像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
+1. **[推奨する解決方法]** で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]** として表示されます。
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
-無視する推奨事項がある場合は、Log Analytics が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
+無視する推奨事項がある場合は、Azure Monitor が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>無視する推奨事項を識別するには
-1. Azure Portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** タイルをクリックします。
-2. 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
+[!INCLUDE [azure-monitor-log-queries](../../../includes/azure-monitor-log-queries.md)]
 
-    ```
-    ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
-    ```
-    ログ検索のクエリを示すスクリーン ショットを次に示します。<br><br> ![失敗した推奨事項](./media/ad-assessment/ad-failed-recommendations.png)
+次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
 
-3. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
+```
+ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
+```
+
+ログ クエリのスクリーンショットを次に示します。<br><br> ![失敗した推奨事項](media/ad-assessment/ad-failed-recommendations.png)
+
+無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt テキスト ファイルを作成および使用するには
 1. IgnoreRecommendations.txt という名前のファイルを作成します。
-2. Log Analytics に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
-3. Log Analytics に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
+2. Azure Monitor に無視させる各推奨事項の RecommendationId を 1 行に 1 つずつ貼り付けるか入力した後、ファイルを保存して閉じます。
+3. Azure Monitor に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
    * Microsoft Monitoring Agent がインストールされたコンピューター (直接または Operations Manager 経由で接続されている) - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
    * Operations Manager 2012 R2 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
    * Operations Manager 2016 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
@@ -138,7 +143,7 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 ### <a name="to-verify-that-recommendations-are-ignored"></a>推奨事項が無視されていることを確認するには
 次回スケジュールされている正常性チェックが実行した後は、既定では 7 日おきで、推奨事項が *Ignored* とマークされ、ダッシュボードには表示されません。
 
-1. 次のログ検索クエリを使用して、無視されるすべての推奨事項の一覧を表示します。
+1. 次のログ クエリを使用して、無視されるすべての推奨事項の一覧を表示できます。
 
     ```
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
@@ -177,11 +182,11 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 
 *上位 10 個の推奨事項しか表示されないのはなぜですか?*
 
-* タスクの一覧を余すことなく完全に提供するのでなく、まず優先的な推奨事項への対処に重点を置くことをお勧めしています。 優先的な推奨事項に対処すると、追加の推奨事項が表示されます。 詳細な一覧を確認する場合は、ログ検索を使用してすべての推奨事項を表示することができます。
+* タスクの一覧を余すことなく完全に提供するのでなく、まず優先的な推奨事項への対処に重点を置くことをお勧めしています。 優先的な推奨事項に対処すると、追加の推奨事項が表示されます。 詳細な一覧を確認する場合は、ログ クエリを使用してすべての推奨事項を表示することができます。
 
 *推奨事項を無視する方法はありますか?*
 
 * はい。前のセクション「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics のログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用して、詳細な Active Directory 正常性チェック データと推奨事項を分析する方法を学びます。
+* [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な AD の正常性チェック データと推奨事項を分析する方法を学びます。

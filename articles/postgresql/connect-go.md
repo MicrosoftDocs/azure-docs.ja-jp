@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 026913e8afbc1eca5742e21d28ed65c1f1f04d96
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 802d7f200f43c690978f05e2d66be81bd2635e1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549522"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838835"
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Go 言語を使った接続とデータの照会
 このクイックスタートでは、[Go](https://golang.org/) 言語 (golang) で記述されたコードを使用して、Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Go を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
@@ -85,7 +85,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
  ![Azure Database for PostgreSQL サーバーの名前](./media/connect-go/1-connection-string.png)
 
 ## <a name="build-and-run-go-code"></a>Go コードのビルドと実行 
-1. Golang コードを書くには、Microsoft Windows のメモ帳、Ubuntu の [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) や [Nano](https://www.nano-editor.org/)、macOS の TextEdit などのプレーンテキスト エディターを使用できます。 充実した対話的な開発環境 (IDE) の方が好ましい場合は、Jetbrains の [Gogland](https://www.jetbrains.com/go/)、Microsoft の [Visual Studio Code](https://code.visualstudio.com/)、または [Atom](https://atom.io/) をお試しください。
+1. Golang コードを書くには、Microsoft Windows のメモ帳、Ubuntu の [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) や [Nano](https://www.nano-editor.org/)、macOS の TextEdit などのプレーンテキスト エディターを使用できます。 充実した対話的な開発環境 (IDE) の方が好ましい場合は、Jetbrains の [Gogland](https://www.jetbrains.com/go/)、Microsoft の [Visual Studio Code](https://code.visualstudio.com/)、または [Atom](https://atom.io/) をお試しください。
 2. 以下のセクションからテキスト ファイルに Golang コードを貼り付け、\*.go というファイル拡張子でプロジェクト フォルダーに保存します。たとえば、Windows の場合は `%USERPROFILE%\go\src\postgresqlgo\createtable.go` に、Linux の場合は `~/go/src/postgresqlgo/createtable.go` に保存します。
 3. コード内で `HOST`、`DATABASE`、`USER`、および `PASSWORD` の定数を見つけて、サンプルの値を独自の値で置き換えます。  
 4. コマンド プロンプトまたは Bash シェルを起動します。 ディレクトリをプロジェクト フォルダーに変更します。 たとえば Windows の場合、「`cd %USERPROFILE%\go\src\postgresqlgo\`」と入力します。 Linux の場合は、「`cd ~/go/src/postgresqlgo/`」と入力します。 前述した一部の IDE 環境では、シェル コマンドを必要とせずに、デバッグとランタイムの機能が提供されています。

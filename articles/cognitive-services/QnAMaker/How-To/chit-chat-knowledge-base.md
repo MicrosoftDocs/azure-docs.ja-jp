@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: ボットに個人的なおしゃべりを追加すると、KB を作成するときにより会話的で魅力的なものになります。 QnA Maker を使用すると、定義済みの最上位のおしゃべりのセットを、KB に簡単に追加することができます。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 7c54628faba4a3d7a89c1944e2f434a83035707b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081764"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858044"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>ナレッジ ベースにおしゃべりを追加する
 

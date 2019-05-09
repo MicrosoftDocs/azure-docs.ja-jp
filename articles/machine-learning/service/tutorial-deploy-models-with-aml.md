@@ -4,19 +4,18 @@ titleSuffix: Azure Machine Learning service
 description: このチュートリアルでは、Azure Machine Learning サービスを使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをデプロイする方法について説明します。 このチュートリアルは、2 部構成のシリーズの 2 番目です。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
-ms.date: 09/24/2018
+author: sdgilley
+ms.author: sgilley
+ms.date: 01/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d93eadd1053cfbc88b2d0748f2f22e359694baa7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: a8f3a5c6a1c7adaff620f8675fcffa4018eb9874
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133095"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>チュートリアル:Azure Container Instances に画像分類モデルをデプロイする
 
@@ -33,23 +32,18 @@ ms.locfileid: "53579653"
 > * Container Instances にモデルをデプロイする。
 > * デプロイしたモデルをテストする。
 
-Container Instances は運用環境のデプロイに最適ではありませんが、ワークフローをテストして理解するには適しています。 スケーラブルな運用環境のデプロイの場合は、Azure Kubernetes Service の使用を検討してください。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関するページを参照してください。
-
-## <a name="get-the-notebook"></a>ノートブックを入手する
-
-便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb)として提供されています。 Azure Notebooks 内または自分の Jupyter Notebook サーバー内で、`tutorials/img-classification-part2-deploy.ipynb` ノートブックを実行します。
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+Container Instances は、ワークフローをテストして理解するうえで優れたソリューションです。 スケーラブルな運用環境のデプロイの場合は、Azure Kubernetes Service の使用を検討してください。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関するページを参照してください。
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.2 を使用してテストされました。
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.8 を使用してテストされました。
 
 ## <a name="prerequisites"></a>前提条件
+[開発環境の設定](#start)に関するセクションに進み、ノートブックの手順に目を通してください。  
 
-次のノートブックでモデルのトレーニングを行います。[チュートリアル (パート 1): Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。  
+ノートブックを実行するにはまず、「[チュートリアル (パート 1): Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。   次に、同じノートブック サーバーを使用して **tutorials/img-classification-part2-deploy.ipynb** ノートブックを実行します。
 
 
-## <a name="set-up-the-environment"></a>環境をセットアップする
+## <a name="start"></a>環境をセットアップする
 
 まずテスト環境を設定します。
 
@@ -78,13 +72,16 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```python
 from azureml.core import Workspace
 from azureml.core.model import Model
-
+import os 
 ws = Workspace.from_config()
 model=Model(ws, 'sklearn_mnist')
-model.download(target_dir = '.')
-import os 
+
+model.download(target_dir=os.getcwd(), exist_ok=True)
+
 # verify the downloaded model file
-os.stat('./sklearn_mnist_model.pkl')
+file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+
+os.stat(file_path)
 ```
 
 ## <a name="test-the-model-locally"></a>ローカルでモデルをテストする
@@ -100,12 +97,12 @@ os.stat('./sklearn_mnist_model.pkl')
 
 ```python
 from utils import load_data
+import os
 
+data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-
-X_test = load_data('./data/test-images.gz', False) / 255.0
-y_test = load_data('./data/test-labels.gz', True).reshape(-1)
-
+X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
+y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>テスト データを予測する
@@ -116,7 +113,7 @@ y_test = load_data('./data/test-labels.gz', True).reshape(-1)
 import pickle
 from sklearn.externals import joblib
 
-clf = joblib.load('./sklearn_mnist_model.pkl')
+clf = joblib.load( os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
 y_hat = clf.predict(X_test)
 ```
 
@@ -214,7 +211,8 @@ def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
     # make prediction
     y_hat = model.predict(data)
-    return json.dumps(y_hat.tolist())
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
 ```
 
 <a name="make-myenv"></a>
@@ -314,10 +312,10 @@ n = 30
 sample_indices = np.random.permutation(X_test.shape[0])[0:n]
 
 test_samples = json.dumps({"data": X_test[sample_indices].tolist()})
-test_samples = bytes(test_samples, encoding = 'utf8')
+test_samples = bytes(test_samples, encoding='utf8')
 
 # predict using the deployed model
-result = json.loads(service.run(input_data=test_samples))
+result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
@@ -343,13 +341,10 @@ plt.show()
 
 ![結果を示すグラフィック](./media/tutorial-deploy-models-with-aml/results.png)
 
-![結果](./media/tutorial-deploy-models-with-aml/results.png)
-
 また、生の HTTP 要求を送信して Web サービスをテストすることもできます。
 
 ```python
 import requests
-import json
 
 # send a random row from the test set to score
 random_index = np.random.randint(0, len(X_test)-1)
@@ -382,6 +377,8 @@ service.delete()
 
 ## <a name="next-steps"></a>次の手順
 
-+ [Azure Machine Learning service のすべてのデプロイ オプション](how-to-deploy-and-where.md)について学習します。 オプションには、Azure Container Instances、Azure Kubernetes Service、FPGA、Azure IoT Edge などがあります。
-
-+ Azure Machine Learning service でモデルに最適なアルゴリズムが自動的に選択されて調整される方法を確認します。 また、そのモデルは自動的に構築されます。 [アルゴリズムの自動選択](tutorial-auto-train-models.md)に関するチュートリアルを試します。 
++ [Azure Machine Learning service のすべてのデプロイ オプション](how-to-deploy-and-where.md)について学習します。
++ [Web サービス用のクライアントを作成](how-to-consume-web-service.md)する方法について学習します。
++  [大量のデータの予測](how-to-run-batch-predictions.md)を非同期的に行います。
++ [Application Insights を使用して Azure Machine Learning のモデルを監視](how-to-enable-app-insights.md)します。
++ [アルゴリズムの自動選択](tutorial-auto-train-models.md)に関するチュートリアルを試します。 

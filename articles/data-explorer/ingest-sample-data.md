@@ -1,26 +1,25 @@
 ---
 title: Azure のデータ エクスプローラーにサンプル データを取り込む
 description: Azure のデータ エクスプローラーに気象関連のサンプル データ (負荷) を取り込む方法を説明します。
-services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7fdd32f9263b4d1694a0516a98b681ba8744ab6b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394580"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59050630"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Azure のデータ エクスプローラーにサンプル データを取り込む
 
 この記事では、Azure のデータ エクスプローラー データベースにサンプル データ (負荷) を取り込む方法を示します。 [データを取り込む方法はいくつかあります](ingest-data-overview.md)｡ 今回は、テスト目的に適した基本的なアプローチに注目します。
 
 > [!NOTE]
-> [クイック スタート: Azure のデータ エクスプローラーの Python ライブラリを使用してデータを取り込む](python-ingest-data.md) を終えている場合､サンプル データはすでにあります｡
+> 「[クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)」を終えている場合､サンプル データは既にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,6 +56,11 @@ ms.locfileid: "49394580"
 
 ## <a name="next-steps"></a>次の手順
 
-[クエリを作成する](write-queries.md)
+> [!div class="nextstepaction"]
+> [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
 
-[Azure のデータ エクスプローラーへのデータの取り込み](ingest-data-overview.md)
+> [!div class="nextstepaction"]
+> [クエリを作成する](write-queries.md)
+
+> [!div class="nextstepaction"]
+> [Azure のデータ エクスプローラーへのデータの取り込み](ingest-data-overview.md)

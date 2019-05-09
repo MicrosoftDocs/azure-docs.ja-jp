@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: billgib
+ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 14183475fcca0e12c56f009f105e77aaf11b0c98
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 12/18/2018
+ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878076"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>共有マルチテナント SQL データベースを使用している SaaS アプリケーションでのスキーマの管理
 
@@ -53,7 +53,7 @@ ms.locfileid: "53315216"
 - Azure PowerShell がインストールされている必要があります。 詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 > [!NOTE]
-> このチュートリアルでは、限定プレビューに含まれる Azure SQL Database サービスの機能 ([Elastic Database ジョブ](sql-database-elastic-database-client-library.md)) を使用します。 このチュートリアルを実行する場合、サブスクリプション ID を *SaaSFeedback@microsoft.com* までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、*SaaSFeedback@microsoft.com* にお問い合わせください。
+> このチュートリアルでは、限定プレビューに含まれる Azure SQL Database サービスの機能 ([Elastic Database ジョブ](sql-database-elastic-database-client-library.md)) を使用します。 このチュートリアルを実行する場合、ご使用のサブスクリプション ID を *SaaSFeedback\@microsoft.com* までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、*SaaSFeedback\@microsoft.com* にお問い合わせください。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS スキーマ管理パターンの概要
 
@@ -84,7 +84,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 #### <a name="prepare"></a>準備
 
-各テナントのデータベースの **VenueTypes** テーブルには、一連の会場タイプが含まれています。 各会場タイプは、会場で開催できるイベントの種類を定義します。 これらの会場タイプは、テナント イベント アプリに表示される背景画像に対応しています。  この演習では、すべてのデータベースに更新をデプロイして、*Motorcycle Racing* と *Swimming Club* の 2 つの会場タイプを追加します。
+各テナントのデータベースの **VenueTypes** テーブルには、一連の会場タイプが含まれています。 各会場タイプは、会場で開催できるイベントの種類を定義します。 これらの会場タイプは、テナント イベント アプリに表示される背景画像に対応しています。  この演習では、すべてのデータベースに更新をデプロイして、2 つの会場タイプ*Motorcycle Racing* と *Swimming Club* を追加します。
 
 最初に、各テナント データベースに含まれている会場の種類を確認します。 SQL Server Management Studio (SSMS) でテナント データベースの 1 つに接続し、VenueTypes テーブルを調べます。  このテーブルは、データベース ページからアクセスする Azure Portal のクエリ エディターでクエリを実行することもできます。
 

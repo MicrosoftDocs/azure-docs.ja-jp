@@ -1,27 +1,29 @@
 ---
-title: Azure Active Directory B2B コラボレーションの API とカスタマイズ | Microsoft Docs
+title: B2B コラボレーションの API とカスタマイズ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: reference
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: a2a869c04034f8ca38e80e1bf10518d22e38bcbc
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 17b472b647dd27306ca95345e49dfeb3aee60665
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286998"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793387"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
 多くのお客様から、組織に最適な方法で招待の処理をカスタマイズできるようにしてほしいという要望がありました。 API を使用すると、そのようにすることができます。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>招待 API の機能
+
 API には次の機能が用意されています。
 
 1. "*任意の*" 電子メール アドレスで外部ユーザーを招待できます。
@@ -43,7 +45,7 @@ API には次の機能が用意されています。
     "sendInvitationMessage": true
     ```
 
-  受信者へのカスタマイズ可能なメッセージを付けることができます。
+   受信者へのカスタマイズ可能なメッセージを付けることができます。
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
@@ -57,7 +59,7 @@ API には次の機能が用意されています。
     "sendInvitationMessage": false
     ```
 
-  この場合は、招待に応じるための URL を API から受け取り、それを電子メール テンプレート、IM、またはその他の任意の配布方法に埋め込むことができます。
+   この場合は、招待に応じるための URL を API から受け取り、それを電子メール テンプレート、IM、またはその他の任意の配布方法に埋め込むことができます。
 
 6. 最後に、管理者である場合は、ユーザーをメンバーとして招待することができます。
 
@@ -67,21 +69,25 @@ API には次の機能が用意されています。
 
 
 ## <a name="authorization-model"></a>承認モデル
+
 API は、以下の承認モードで実行できます。
 
 ### <a name="app--user-mode"></a>アプリ + ユーザー モード
+
 このモードでは、API を使用するユーザーは、B2B 招待を作成できるアクセス許可を付与されている必要があります。
 
 ### <a name="app-only-mode"></a>アプリのみモード
+
 アプリのみのコンテキストで招待を成功させるには、アプリに User.Invite.All スコープが必要です。
 
 詳しくは、 https://developer.microsoft.com/graph/docs/authorization/permission_scopes をご覧ください
 
 
 ## <a name="powershell"></a>PowerShell
+
 PowerShell を使用して、簡単に外部ユーザーを組織に追加および招待できます。 次のコマンドレットを使用して招待を作成します。
 
-```
+```powershell
 New-AzureADMSInvitation
 ```
 
@@ -101,7 +107,8 @@ New-AzureADMSInvitation
 
 **Filter** オプションを使用して、**UserState** で結果をフィルター処理できます。 次の例では、保留中の招待を持っているユーザーのみを表示するように結果をフィルター処理する方法を示しています。 表示するプロパティを指定するための **Format-List** オプションも示しています。 
  
-```
+
+```powershell
 Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
 ```
 
@@ -118,4 +125,3 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 - [B2B コラボレーションの招待メールの要素](invitation-email-elements.md)
 - [B2B コラボレーションの招待の利用](redemption-experience.md)
 - [招待を使用せずに B2B コラボレーション ユーザーを追加する](add-user-without-invite.md)
-

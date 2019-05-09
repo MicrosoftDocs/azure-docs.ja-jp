@@ -7,18 +7,18 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: f29adb500401c9f5d6e177a0740ce54719c36a34
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253206"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893454"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
-Video Indexer API でビデオをアップロードするときは、3 つのアップロード オプションがあります。 
+Video Indexer API でビデオをアップロードする場合、次のアップロード オプションがあります。 
 
 * URL からビデオをアップロードする方法 (推奨) と、
 * 要求本文のバイト配列としてビデオ ファイルを送信する方法です。
@@ -26,15 +26,18 @@ Video Indexer API でビデオをアップロードするときは、3 つのア
 
 この記事では、[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行う方法について説明します。 この記事のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 <br/>この記事では、API の出力を変更および処理するために API で設定できるいくつかのパラメーターについても説明します。
 
-ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[Azure サブスクリプションと Azure Media Services アカウント](connect-to-azure.md)に接続する Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
 
 ## <a name="uploading-considerations"></a>アップロードに関する考慮事項
-    
+
 - URL に基づいてビデオをアップロードする場合 (推奨)、エンドポイントは TLS 1.2 (またはそれ以降) を使用してセキュリティで保護する必要があります。
-- URL オプションでのアップロード サイズは、10 GB に制限されます
-- バイト配列オプションでのアップロード サイズは、2 GB に制限されます 
+- URL オプションでのアップロード サイズは、30 GB に制限されます
+- ほとんどのブラウザーでは、URL の長さは 2,000 文字に制限されています
+- バイト配列オプションでのアップロード サイズは、2 GB に制限されます
 - バイト配列オプションでは 30 分後にタイムアウトします
 - `videoURL` パラメーターに指定する URL はエンコードする必要があります
+- Media Services アセットのインデックス作成には、URL からのインデックス作成と同じ制限が適用されます
+- Video Indexer では、1 つのファイルの最大時間制限は 4 時間です
 
 > [!Tip]
 > .NET Framework バージョン 4.6.2 以上を使用することをお勧めします。 これは、それ以前の .NET Framework では既定で TLS 1.2 に設定されていないためです。
@@ -56,22 +59,22 @@ Video Indexer API でビデオをアップロードするときは、3 つのア
 - インデックス状態の変更: 
     - プロパティ:    
     
-        |Name|説明|
+        |名前|説明|
         |---|---|
         |id|ビデオ ID|
         |state|ビデオの状態|  
     - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - ビデオで特定された人物:
-    - Properties
+  - Properties
     
-        |Name|説明|
-        |---|---|
-        |id| ビデオ ID|
-        |faceId|ビデオ インデックスに表示される顔 ID|
-        |knownPersonId|顔モデル内で一意の人物 ID|
-        |personName|人物の名前|
+      |名前|説明|
+      |---|---|
+      |id| ビデオ ID|
+      |faceId|ビデオ インデックスに表示される顔 ID|
+      |knownPersonId|顔モデル内で一意の人物 ID|
+      |personName|人物の名前|
         
-     - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>メモ
 
@@ -172,7 +175,7 @@ public async Task Sample()
     var uploadRequestResult = await client.PostAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos?{queryParams}", content);
     var uploadResult = await uploadRequestResult.Content.ReadAsStringAsync();
 
-    // get the video id from the upload result
+    // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
     Debug.WriteLine("Uploaded");
     Debug.WriteLine("Video ID:");

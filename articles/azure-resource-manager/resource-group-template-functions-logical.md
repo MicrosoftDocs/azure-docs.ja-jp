@@ -4,22 +4,20 @@ description: Azure Resource Manager テンプレートで論理値を判定す�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2018
+ms.date: 04/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9065c6bc71a153ae94ddc20d5b41a152094fc111
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164789"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470153"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの論理関数
 
@@ -32,20 +30,22 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [or](#or)
 
 ## <a name="and"></a>and
-`and(arg1, arg2)`
 
-両方のパラメーター値が true かどうかを確認します。
+`and(arg1, arg2, ...)`
+
+すべてのパラメーター値が true かどうかを確認します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |ブール値 |true かどうかを確認する最初の値。 |
 | arg2 |はい |ブール値 |true かどうかを確認する 2 番目の値。 |
+| 残りの引数 |いいえ  |ブール値 |true かどうかを確認する追加の引数。 |
 
 ### <a name="return-value"></a>戻り値
 
-両方の値が true の場合は **True** を、それ以外の場合は **False** を返します。
+すべての値が true の場合は **True** を、それ以外の場合は **False** を返します。
 
 ### <a name="examples"></a>例
 
@@ -75,32 +75,21 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 前の例からの出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
-| andExampleOutput | ブール値 | False |
-| orExampleOutput | ブール値 | True |
-| notExampleOutput | ブール値 | False |
-
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 ## <a name="bool"></a>bool
+
 `bool(arg1)`
 
 パラメーターをブール値に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |ブール値に変換する値。 |
 
@@ -139,35 +128,24 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
-| trueString | ブール値 | True |
-| falseString | ブール値 | False |
-| trueInt | ブール値 | True |
-| falseInt | ブール値 | False |
-
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
-```
+| trueString | Bool | True |
+| falseString | Bool | False |
+| trueInt | Bool | True |
+| falseInt | Bool | False |
 
 ## <a name="if"></a>if
+
 `if(condition, trueValue, falseValue)`
 
 条件が true か false かに基づいて値を返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| condition |はい |ブール値 |true かどうかを確認する値。 |
+| condition |はい |ブール値 |true か false かどうかを確認する値。 |
 | trueValue |はい | string、int、object、または array |条件が true の場合に返される値。 |
 | falseValue |はい | string、int、object、または array |条件が false の場合に返される値。 |
 
@@ -177,49 +155,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="remarks"></a>解説
 
-この関数を使用して、条件付きでリソース プロパティを設定することができます。 次の例はテンプレート全体ではありませんが、条件付きでの可用性セットの設定に関連する部分を示しています。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        ...
-        "availabilitySet": {
-            "type": "string",
-            "allowedValues": [
-                "yes",
-                "no"
-            ]
-        }
-    },
-    "variables": {
-        ...
-        "availabilitySetName": "availabilitySet1",
-        "availabilitySet": {
-            "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
-        }
-    },
-    "resources": [
-        {
-            "condition": "[equals(parameters('availabilitySet'),'yes')]",
-            "type": "Microsoft.Compute/availabilitySets",
-            "name": "[variables('availabilitySetName')]",
-            ...
-        },
-        {
-            "apiVersion": "2016-03-30",
-            "type": "Microsoft.Compute/virtualMachines",
-            "properties": {
-                "availabilitySet": "[if(equals(parameters('availabilitySet'),'yes'), variables('availabilitySet'), json('null'))]",
-                ...
-            }
-        },
-        ...
-    ],
-    ...
-}
-```
+条件が **True** の場合、true の値のみが評価されます。 条件が **False** の場合、false の値のみが評価されます。 **if** 関数の場合、条件付きで有効な式のみを含めることができます。 たとえば、1 つの条件の下で存在し、他の条件下では存在しないリソースを参照できます。 条件付きでの式の評価の例については、次のセクションを参照してください。
 
 ### <a name="examples"></a>例
 
@@ -250,32 +186,69 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | yesOutput | String | はい |
 | noOutput | String | × |
-| objectOutput | オブジェクト | { "test": "value1" } |
+| objectOutput | Object | { "test": "value1" } |
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+次の[テンプレート例](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)では、条件付きで有効な式限定で、この関数を使用する方法を示しています。
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "logAnalytics": {
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "resources": [
+        {
+            "condition": "[greaterOrEquals(parameters('logAnalytics'), '0')]",
+            "name": "[concat(parameters('vmName'),'/omsOnboarding')]",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2017-03-30",
+            "properties": {
+                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                "type": "MicrosoftMonitoringAgent",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "workspaceId": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), reference(parameters('logAnalytics'), '2015-11-01-preview').customerId, json('null'))]"
+                },
+                "protectedSettings": {
+                    "workspaceKey": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), listKeys(parameters('logAnalytics'), '2015-11-01-preview').primarySharedKey, json('null'))]"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "mgmtStatus": {
+            "type": "string",
+            "value": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), 'Enabled monitoring for VM!', 'Nothing to enable')]"
+        }
+    }
+}
 ```
 
 ## <a name="not"></a>not
+
 `not(arg1)`
 
 ブール値をその反対の値に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |ブール値 |変換する値。 |
 
@@ -311,23 +284,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
-| andExampleOutput | ブール値 | False |
-| orExampleOutput | ブール値 | True |
-| notExampleOutput | ブール値 | False |
-
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)では、**not** と [equals](resource-group-template-functions-comparison.md#equals) を使用します。
 
@@ -347,37 +308,27 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
-| checkNotEquals | ブール値 | True |
-
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
+| checkNotEquals | Bool | True |
 
 ## <a name="or"></a>or
-`or(arg1, arg2)`
 
-どちらかのパラメーター値が true かどうかを確認します。
+`or(arg1, arg2, ...)`
+
+いずれかのパラメーター値が true かどうかを確認します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |ブール値 |true かどうかを確認する最初の値。 |
 | arg2 |はい |ブール値 |true かどうかを確認する 2 番目の値。 |
+| 残りの引数 |いいえ  |ブール値 |true かどうかを確認する追加の引数。 |
 
 ### <a name="return-value"></a>戻り値
 
-どちらかの値が true の場合は **True** を返し、そうでない場合は **False** を返します。
+いずれかの値が true の場合は **True** を返し、そうでない場合は **False** を返します。
 
 ### <a name="examples"></a>例
 
@@ -407,27 +358,16 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
-| andExampleOutput | ブール値 | False |
-| orExampleOutput | ブール値 | True |
-| notExampleOutput | ブール値 | False |
-
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 ## <a name="next-steps"></a>次の手順
+
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
-* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
 

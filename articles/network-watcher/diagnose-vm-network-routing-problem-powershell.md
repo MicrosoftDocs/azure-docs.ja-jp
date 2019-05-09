@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: f793a201b3fbf57ac2f420c4f4e57a230bc11468
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6624ded670ef506dfef225a8b595da2e5ea19427
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299026"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794405"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>仮想マシンのネットワーク ルーティングに関する問題を診断する - Azure PowerShell
 
@@ -30,22 +30,26 @@ ms.locfileid: "38299026"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、この記事では AzureRM PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカルにインストールして使用する場合、この記事では Azure PowerShell `Az` モジュールが必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+
+
 
 ## <a name="create-a-vm"></a>VM の作成
 
-VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) を使用して Azure リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 この手順の実行時に、資格情報の入力を求められます。 入力した値は、VM のユーザー名とパスワードとして構成されます。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 この手順の実行時に、資格情報の入力を求められます。 入力した値は、VM のユーザー名とパスワードとして構成されます。
 
 ```azurepowershell-interactive
-$vM = New-AzureRmVm `
+$vM = New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVm" `
     -Location "East US"
@@ -57,20 +61,20 @@ VM の作成には数分かかります。 VM が作成されて、PowerShell �
 
 Network Watcher を使用してネットワーク通信をテストするには、最初にテスト対象の VM が含まれるリージョンにおいて Network Watcher を有効にしてから、Network Watcher の次ホップ機能を使用して通信をテストする必要があります。
 
-## <a name="enable-network-watcher"></a>Network Watcher を有効にする
+## <a name="enable-network-watcher"></a>ネットワーク ウォッチャーを有効にする
 
-米国東部リージョンで Network Watcher を既に有効にしてある場合は、[Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher) を使ってそのネットワーク ウォッチャーを取得します。 次の例では、*NetworkWatcherRG* リソース グループ内にある *NetworkWatcher_eastus* という名前の既存のネットワーク ウォッチャーを取得しています。
+米国東部リージョンで Network Watcher を既に有効にしてある場合は、[Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) を使ってそのネットワーク ウォッチャーを取得します。 次の例では、*NetworkWatcherRG* リソース グループ内にある *NetworkWatcher_eastus* という名前の既存のネットワーク ウォッチャーを取得しています。
 
 ```azurepowershell-interactive
-$networkWatcher = Get-AzureRmNetworkWatcher `
+$networkWatcher = Get-AzNetworkWatcher `
   -Name NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-米国東部リージョンでネットワーク ウォッチャーをまだ有効にしていない場合は、[New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher) を使って、米国東部リージョンにネットワーク ウォッチャーを作成します。
+米国東部リージョンで Network Watcher をまだ有効にしていない場合は、[New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) を使って、米国東部リージョンにネットワーク ウォッチャーを作成します。
 
 ```azurepowershell-interactive
-$networkWatcher = New-AzureRmNetworkWatcher `
+$networkWatcher = New-AzNetworkWatcher `
   -Name "NetworkWatcher_eastus" `
   -ResourceGroupName "NetworkWatcherRG" `
   -Location "East US"
@@ -78,12 +82,12 @@ $networkWatcher = New-AzureRmNetworkWatcher `
 
 ### <a name="use-next-hop"></a>次ホップの使用
 
-Azure では、既定の接続先へのルートを自動的に作成します。 既定のルートをオーバーライドするカスタム ルートを作成できます。 場合によっては、カスタム ルートが通信の失敗の原因になることがあります。 VM からのルーティングをテストするには、[Get AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) コマンドを使用して、トラフィックが特定のアドレスに送信されるときの次のルーティング ホップを特定します。
+Azure では、既定の接続先へのルートを自動的に作成します。 既定のルートをオーバーライドするカスタム ルートを作成できます。 場合によっては、カスタム ルートが通信の失敗の原因になることがあります。 VM からのルーティングをテストするには、[Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) コマンドを使用して、トラフィックが特定のアドレスに送信されるときの次のルーティング ホップを特定します。
 
-VM から www.bing.com の IP アドレスの 1 つへの送信通信をテストします。
+VM から www.bing.com のいずれかの IP アドレスへの送信通信をテストします。
 
 ```azurepowershell-interactive
-Get-AzureRmNetworkWatcherNextHop `
+Get-AzNetworkWatcherNextHop `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $VM.Id `
   -SourceIPAddress 192.168.1.4 `
@@ -95,7 +99,7 @@ Get-AzureRmNetworkWatcherNextHop `
 VM から 172.31.0.100 への送信通信をテストします。
 
 ```azurepowershell-interactive
-Get-AzureRmNetworkWatcherNextHop `
+Get-AzNetworkWatcherNextHop `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $VM.Id `
   -SourceIPAddress 192.168.1.4 `
@@ -106,10 +110,10 @@ Get-AzureRmNetworkWatcherNextHop `
 
 ## <a name="view-details-of-a-route"></a>ルートの詳細の表示
 
-さらに詳細にルーティングを分析するには、[Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) コマンドを使用してネットワーク インターフェイスの有効なルートを確認します。
+さらに詳細にルーティングを分析するには、[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) コマンドを使用してネットワーク インターフェイスの有効なルートを確認します。
 
 ```azurepowershell-interactive
-Get-AzureRmEffectiveRouteTable `
+Get-AzEffectiveRouteTable `
   -NetworkInterfaceName myVm `
   -ResourceGroupName myResourceGroup |
   Format-table
@@ -127,14 +131,14 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-前の出力からわかるように、**AaddressPrefix** が **0.0.0.0/0** であるルートは、**インターネット**の次ホップを持つ他のルート アドレス プレフィックス内のアドレスを送信先としていないすべてのトラフィックをルーティングします。 出力でもわかるように、アドレス 172.31.0.100 を含む、172.16.0.0/12 プレフィックスへの既定のルートがあるにも関わらず、**[nextHopType]** は **[なし]** になっています。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由が発生しない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合は、ルートの **[nextHopType]** を **[仮想ネットワーク]** に変更します。 **[nextHopType]** として **[仮想ネットワーク]** にチェック マークが表示されます。
+前の出力からわかるように、**AddressPrefix** が **0.0.0.0/0** であるルートでは、**インターネット**の次ホップを持つ他のルート アドレス プレフィックス内のアドレスを送信先としていないすべてのトラフィックがルーティングされます。 出力でもわかるように、アドレス 172.31.0.100 を含む、172.16.0.0/12 プレフィックスへの既定のルートがあるにも関わらず、**[nextHopType]** は **[なし]** になっています。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由が発生しない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合は、ルートの **[nextHopType]** を **[仮想ネットワーク]** に変更します。 **[nextHopType]** として **[仮想ネットワーク]** にチェック マークが表示されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要なくなったら、[Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
+必要なくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

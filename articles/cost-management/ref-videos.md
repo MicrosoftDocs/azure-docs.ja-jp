@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 13d1548e9b9c721d44c8d5af99bfdcc691c4866d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f531bdb80be34cb3228042588ecd4c338b003ed0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100618"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173959"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>Cloudyn のチュートリアル トレーニング ビデオ
 

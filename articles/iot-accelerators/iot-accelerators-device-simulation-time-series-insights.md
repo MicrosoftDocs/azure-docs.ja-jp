@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights を使用してデバイス シミュレーション テレメトリを視覚化する | Microsoft Docs
+title: Time Series Insights を使用してデバイス シミュレーション テレメトリを視覚化する - Azure | Microsoft Docs
 description: Time Series Insights 環境を構成して、デバイス シミュレーション ソリューション アクセラレータによって生成されたテレメトリを調査および分析する方法について説明します。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 49cecca4e5ebef9f43fdda16cfa1fdc2ad7b6f94
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: aea02cbde32d9485bd49ec39a6f300021c6ef927
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382881"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597700"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する
 

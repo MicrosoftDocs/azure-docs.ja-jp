@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: ff8508db55b04d2c55158b5846325d0c13665048
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f25d87c7c557404071d777f4efcf22e53886d96d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542749"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242622"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql"></a>Azure Kubernetes Service と Azure Database for PostgreSQL を接続する
 
@@ -32,6 +32,14 @@ AKS クラスターで高速ネットワークが有効になっているかど�
 6. VM の **[ネットワーク]** タブに移動します。
 7. **[高速ネットワーク]** が "有効" になっていることを確認します。
 
+または、Azure CLI で、次の 2 つのコマンドを使用します。
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
+```
+出力は、AKS が作成する、ネットワーク インターフェイスを含む生成されたリソース グループになります。 名前 "nodeResourceGroup" を利用し、次のコマンドで使用します。 **EnableAcceleratedNetworking** は、true または false のいずれかになります。
+```azurecli
+az network nic list --resource-group nodeResourceGroup -o table
+```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
 [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) を使用すると、Kubernetes または Cloud Foundry から Azure サービスを直接プロビジョニングできます。 これは Azure 用の [Open Service Broker API](https://www.openservicebrokerapi.org/) 実装です。

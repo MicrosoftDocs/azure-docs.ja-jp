@@ -1,6 +1,6 @@
 ---
 title: Durable Functions のシングルトン - Azure
-description: Azure Functions の Durable Functons 拡張機能でシングルトンを使用する方法
+description: Azure Functions の Durable Functons 拡張機能でシングルトンを使用する方法。
 services: functions
 author: cgillum
 manager: jeconnoc
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4832a48489a043493639bdedd6c6adf3c828de11
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: aca7aa30744c79cefd3c7704a8fde1df203b2c9d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434700"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198985"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions のシングルトン オーケストレーター (Azure Functions)
 
@@ -91,7 +91,7 @@ modules.exports = async function(context, req) {
 > JavaScript でローカルに開発する場合は、環境変数 `WEBSITE_HOSTNAME` を `localhost:<port>` に設定する必要があります。たとえば、 `DurableOrchestrationClient` のメソッドを使用するには、`localhost:7071` に設定します。 この要件の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-js/issues/28)に関するページを参照してください。
 
 > [!NOTE]
-> このサンプルには潜在的な競合状態があります。 **HttpStartSingle** の 2 つのインスタンスが同時に実行されると、結果として、シングルトンの 2 つの異なるインスタンスが作成され、一方がもう一方を上書きします。 これは、要件によっては望ましくない副作用になる可能性があります。 このため、このトリガー関数を同時に 2 つの要求で実行できないようにすることが重要です。
+> このサンプルには潜在的な競合状態があります。 **HttpStartSingle** の 2 つのインスタンスが同時に実行された場合、両方の関数呼び出しで成功が報告されますが、実際に開始するのは 1 つのオーケストレーション インスタンスだけです。 これは、要件によっては望ましくない副作用になる可能性があります。 このため、このトリガー関数を同時に 2 つの要求で実行できないようにすることが重要です。
 
 オーケストレーター関数の 実装の詳細は、実際は問題ではありません。 開始して完了する通常のオーケストレーター関数でも、永久に実行される関数 (つまり、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)) でも可能です。 重要な点は、インスタンスが 1 度に 1 つだけ実行されていることです。
 

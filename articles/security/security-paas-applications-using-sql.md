@@ -4,7 +4,7 @@ description: 'PaaS の Web アプリケーションとモバイル アプリケ�
 services: security
 documentationcenter: na
 author: techlake
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 72d5ec09becc1f1d9e23e284e18bcc037ccb3072
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 22db43413b5c752decf6785a75dff22ff4a68039
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452481"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109370"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Azure で PaaS データベースを保護するベスト プラクティス
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights - タイム シリーズ モデル | Microsoft Docs
+title: Azure Time Series Insights プレビューでのタイム シリーズ モデル | Microsoft Docs
 description: Azure Time Series Insights のタイム シリーズ モデルについて。
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ead7a9a71c0afe72736bef8796107cae42009f1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6126a9d56059435be32299bcd1f03050f031f81b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278187"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507819"
 ---
 # <a name="time-series-model"></a>タイム シリーズ モデル
 
@@ -41,15 +41,15 @@ ms.locfileid: "53278187"
 
 タイム シリーズ モデルには、次の 3 つの主要コンポーネントがあります。
 
-* タイム シリーズ モデルの "*種類*" イタリックのマーキング抜け
-* タイム シリーズ モデルの "*階層*" イタリックのマーキング抜け
-* タイム シリーズ モデルの "*インスタンス*" イタリックのマーキング抜け
+* タイム シリーズ モデルの "*型*"
+* タイム シリーズ モデルの "*階層*"
+* タイム シリーズ モデルの "*インスタンス*"
 
-## <a name="time-series-model-types"></a>タイム シリーズ モデルの種類
+## <a name="time-series-model-types"></a>タイム シリーズ モデルの型
 
-タイム シリーズ モデルの "*種類*" は、計算を行うための変数や数式を定義するのに役立ちます。 種類は、特定の Time Series Insights インスタンスに関連付けられます。 1 つの種類は、1 つまたは複数の変数を持つことができます。 たとえば、Time Series Insights インスタンスの種類が "*温度センサー*" の場合は、その種類を、"*平均温度*"、"*最低温度*"、"*最高温度*" という変数から構成することもできます。 Time Series Insights にデータが最初に送信される際には、既定の種類を作成します。 既定の種類は、モデル設定から取得したり更新することができます。 既定の種類には、イベントの数をカウントする変数が含まれています。
+タイム シリーズ モデルの "*型*" は、計算を行うための変数や数式を定義するのに役立ちます。 型は、特定の Time Series Insights インスタンスに関連付けられます。 1 つの型は、1 つまたは複数の変数を持つことができます。 たとえば、Time Series Insights インスタンスの型が "*温度センサー*" の場合は、その型を、"*平均温度*"、"*最低温度*"、"*最高温度*" という変数から構成することができます。 Time Series Insights はデータが最初に送信される際に、既定の型を作成します。 既定の型は、モデル設定から取得したり更新することができます。 既定の型には、イベントの数をカウントする変数が含まれています。
 
-## <a name="time-series-model-type-json-example"></a>タイム シリーズ モデルの種類の JSON サンプル
+## <a name="time-series-model-type-json-example"></a>タイム シリーズ モデルの型の JSON サンプル
 
 サンプル:
 
@@ -72,13 +72,13 @@ ms.locfileid: "53278187"
         }
     }
 }
-``````
+```
 
 タイム シリーズ モデルの種類について詳しくは、[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)をご覧ください。
 
-## <a name="variables"></a>variables
+## <a name="variables"></a>変数
 
-Time Series Insights の種類には変数があります。これは、イベントからの値に対する名前付き計算です。 Time Series Insights の変数の定義には、数式と計算の規則が含まれます。 変数の定義には、"*種類*"、"*値*"、"*フィルター*"、"*削減*"、および "*境界*" が含まれます。 変数は、タイム シリーズ モデル内の種類の定義に保存されます。クエリ API を通じて変数をインラインで指定すると、保存されている定義をオーバーライドすることができます。
+Time Series Insights の型には変数があります。これは、イベントからの値に対する名前付き計算です。 Time Series Insights の変数の定義には、数式と計算の規則が含まれます。 変数の定義には、"*種類*"、"*値*"、"*フィルター*"、"*削減*"、および "*境界*" が含まれます。 変数は、タイム シリーズ モデル内の型の定義に保存されます。クエリ API を通じて変数をインラインで指定すると、保存されている定義をオーバーライドすることができます。
 
 次の表は、変数の定義の凡例です。
 
@@ -101,7 +101,7 @@ Time Series Insights の種類には変数があります。これは、イベ�
 
 ### <a name="variable-aggregation"></a>変数の集計
 
-変数の集計関数を使用すると、一部の計算が実行可能になります。 Time Series Insights では、通常の集計がサポートされています (つまり、"*最小*"、"*最大*"、"*平均*"、"*合計*"、"*カウント*")。
+変数の集計関数を使用すると、一部の計算が実行可能になります。 Time Series Insights では、通常の集計がサポートされています ("*最小*"、"*最大*"、"*平均*"、"*合計*"、"*カウント*")。
 
 ## <a name="time-series-model-hierarchies"></a>タイム シリーズ モデルの階層
 
@@ -136,7 +136,7 @@ Time Series Insights の種類には変数があります。これは、イベ�
  H1 = [“building”, “floor”, “room”]
 ```
 
-階層の属性と値は、"*インスタンス フィールド*" に応じて、次の表のように表示されます。 
+階層の属性と値は、"*インスタンス フィールド*" に応じて、次の表のように表示されます。
 
 | タイム シリーズ ID | インスタンス フィールド |
 | --- | --- |
@@ -144,17 +144,19 @@ Time Series Insights の種類には変数があります。これは、イベ�
 | ID2 | "building" = "1000", "room" = "55" |
 | ID3 | "floor" = "10" |
 | ID4 | "building" = "1000", "floor" = "10"  |
-| ID5 | |
+| ID5 | "building"、"floor"、"room" のどれも設定されていない |
 
-上記の例の場合、ID1 は UI/UX で階層 H1 の一部として表示され、残りの階層は、指定されたデータ階層に一致しないため、"*親のないインスタンス*" に分類されます。
+上記の例の場合、ID1 と ID4 は Azure Time Series Insights エクスプローラーで階層 H1 の一部として表示され、残りの階層は、指定されたデータ階層に一致しないため、"*親のないインスタンス*" に分類されます。
 
 ## <a name="time-series-model-instances"></a>タイム シリーズ モデルのインスタンス
 
-インスタンスは、タイム シリーズ自体を表します。 ほとんどの場合、*deviceId* または *assetId* が、環境内での資産の一意識別子となります。 インスタンスには説明情報が関連付けられます。これは、インスタンス プロパティと呼ばれます。 インスタンス プロパティには、少なくとも階層情報が含まれます。 製造元、運営元、前回のサービス データなど、有用な説明データを含めることもできます。
+インスタンスは、タイム シリーズ自体を表します。 ほとんどの場合、*deviceId* または *assetId* が、環境内での資産の一意識別子となります。 インスタンスには説明情報が関連付けられます。これは、インスタンス プロパティと呼ばれます。 インスタンス プロパティには、少なくとも階層情報が含まれます。 製造元、運用者、最終保守日など、有用な説明データを含めることもできます。
 
-インスタンスは、"*timeSeriesId*"、"*typeId*"、"*hierarchyId*"、および "*instanceFields*" によって定義されます。 各インスタンスは、1 つの "*種類*" だけにマップし、1 つまたは複数の階層を持ちます。 インスタンスは、階層からすべてのプロパティを継承します。*instanceFields* を追加して、インスタンス プロパティの定義を拡張することもできます。
+インスタンスは、*typeId*、*timeSeriesId*、*name*、*description*、*hierarchyIds*、および *instanceFields* によって定義されます。 各インスタンスは、1 つの "*種類*" だけにマップし、1 つまたは複数の階層を持ちます。 インスタンスは、階層からすべてのプロパティを継承します。*instanceFields* を追加して、インスタンス プロパティの定義を拡張することもできます。
 
-*instanceFields* は、インスタンスと、インスタンスを定義する静的データのプロパティです。 これらによって、階層プロパティや非階層プロパティの値が定義されます。また、検索操作を実行するためのインデックスを作成することもできます。
+*instanceFields* は、インスタンスのプロパティと、インスタンスを定義する任意の静的データです。 これらによって、階層プロパティや非階層プロパティの値が定義されます。また、検索操作を実行するためのインデックスを作成することもできます。
+
+*name* プロパティは、オプションであり、大文字小文字が区別されます。 *name* は、使用できない場合、既定でタイム シリーズ ID になります。 *name* を指定しても、タイム シリーズ ID も Well で使用可能になります (エクスプローラーのチャートの下のグリッド)。 
 
 ## <a name="time-series-model-instance-json-example"></a>タイム シリーズ モデルのインスタンスの JSON サンプル
 
@@ -164,6 +166,7 @@ Time Series Insights の種類には変数があります。これは、イベ�
 {
     "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
     "timeSeriesId": ["sampleTimeSeriesId"],
+    "name": "sampleName",
     "description": "Sample Instance",
     "hierarchyIds": [
         "1643004c-0a84-48a5-80e5-7688c5ae9295"

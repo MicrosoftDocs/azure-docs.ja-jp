@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: a4c683f6f3a1b321b786569999edac67cfb41892
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 27f327493fbf3d7856b9488ecd0dd2509976ccfc
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083497"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657140"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Couchbase からデータをコピーする (プレビュー)
 
@@ -45,8 +44,8 @@ Couchbase のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Couchbase** | [はい] |
-| connectionString | Couchbase に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります: **Couchbase** | はい |
+| connectionString | Couchbase に接続するための ODBC 接続文字列。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 資格証明文字列を Azure Key Vault に格納して、接続文字列から `credString` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
@@ -58,8 +57,37 @@ Couchbase のリンクされたサービスでは、次のプロパティがサ�
         "type": "Couchbase",
         "typeProperties": {
             "connectionString": {
+                "type": "SecureString",
+                "value": "Server=<server>; Port=<port>;AuthMech=1;CredString=[{\"user\": \"JSmith\", \"pass\":\"access123\"}, {\"user\": \"Admin\", \"pass\":\"simba123\"}];"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**例: Azure Key Vault への資格証明文字列の格納**
+
+```json
+{
+    "name": "CouchbaseLinkedService",
+    "properties": {
+        "type": "Couchbase",
+        "typeProperties": {
+            "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>; Port=<port>;AuthMech=1;CredString=[{\"user\": \"JSmith\", \"pass\":\"access123\"}, {\"user\": \"Admin\", \"pass\":\"simba123\"}];"
+                 "value": "Server=<server>; Port=<port>;AuthMech=1;"
+            },
+            "credString": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -78,7 +106,7 @@ Couchbase からデータをコピーするには、データセットの type �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **CouchbaseTable** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります: **CouchbaseTable** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 
@@ -108,7 +136,7 @@ Couchbase からデータをコピーするには、コピー アクティビテ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **CouchbaseSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **CouchbaseSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

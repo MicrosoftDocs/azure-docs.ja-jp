@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: bdbb9d7c8b129642616a934dcc3d226434e69a03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0779ca2083691949821999322a3d732aed7b2694
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558976"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760769"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -50,13 +50,13 @@ ms.locfileid: "53558976"
 
 ### <a name="c-example"></a>C# の例
 
-次の例では、分の値が 5 で割り切れる値である時刻ごとに実行される [C# 関数](functions-dotnet-class-library.md)を示します (例: 関数が 18:57:00 に開始された場合、次の実行は 19:00:00 です)。
+次の例では、分の値が 5 で割り切れる値である時刻ごとに実行される [C# 関数](functions-dotnet-class-library.md)を示します (例: 関数が 18:57:00 に開始された場合、次の実行は 19:00:00 です)。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) オブジェクトが関数に渡されます。
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -66,7 +66,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ### <a name="c-script-example"></a>C# スクリプトの例
 
-次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。
+次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) オブジェクトが関数に渡されます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -84,7 +84,7 @@ C# スクリプト コードを次に示します。
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -94,7 +94,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 ### <a name="f-example"></a>F# の例
 
-次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使われる [F# スクリプト関数](functions-reference-fsharp.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。
+次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使われる [F# スクリプト関数](functions-reference-fsharp.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) オブジェクトが関数に渡されます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -119,7 +119,7 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
 
 ### <a name="javascript-example"></a>JavaScript の例
 
-次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。
+次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 [タイマー オブジェクト](#usage)が関数に渡されます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -138,7 +138,7 @@ JavaScript コードを次に示します。
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    if(myTimer.isPastDue)
+    if (myTimer.IsPastDue)
     {
         context.log('Node is running late!');
     }
@@ -201,7 +201,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ## <a name="usage"></a>使用法
 
-タイマー トリガー関数が呼び出されると、[タイマー オブジェクト](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)が関数に渡されます。 次の JSON は、タイマー オブジェクトの 1 つの表現例です。 
+タイマー トリガー関数が呼び出されると、タイマー オブジェクトが関数に渡されます。 次の JSON は、タイマー オブジェクトの 1 つの表現例です。
 
 ```json
 {
@@ -277,7 +277,7 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 
 `WEBSITE_TIME_ZONE` を使用すると、夏時間などの特定のタイムゾーンでの時間変更に対応するように、時刻が調整されます。 
 
-## <a name="timespan"></a>timespan
+## <a name="timespan"></a>TimeSpan
 
  `TimeSpan` は、App Service プランで実行している関数アプリに対してのみ使うことができます。
 

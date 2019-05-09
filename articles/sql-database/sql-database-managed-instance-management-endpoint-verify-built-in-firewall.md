@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: carlrab
+ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: d7b781a2cfcf17285b105a104588fe1569dffe4b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 774455a2901782ef52b213c6a13c17636e28b1a4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345356"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788107"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>Managed Instance のビルトイン ファイアウォールを検証する
 

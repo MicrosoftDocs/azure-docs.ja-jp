@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991739"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309809"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(非推奨) Marathon REST API を使用した DC/OS コンテナー管理
 
@@ -30,7 +30,7 @@ DC/OS はクラスター化されたワークロードをデプロイし、ス�
 * [Azure コンテナー サービス クラスターに接続する](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>DC/OS API にアクセスする
-Azure Container Service クラスターに接続したら、 http://localhost:local-port を通じて DC/OS と関連の REST API にアクセスできます。 このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。 たとえば、Marathon エンドポイントには、`http://localhost/marathon/v2/` で始まる URI でアクセスできます。 
+Azure Container Service クラスターに接続したら、http:\//localhost:local-port を通じて DC/OS と関連の REST API にアクセスできます。 このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。 たとえば、Marathon エンドポイントには、http:\//localhost/marathon/v2/ で始まる URI でアクセスできます。 
 
 さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
 
@@ -123,9 +123,7 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 トンネル接続から次のコマンドを実行して、アプリケーションをスケールアウトします。
 
 > [!NOTE]
-> URI は、 http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
-> 
-> 
+> URI は、http:\//localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http:\//localhost/marathon/v2/apps/nginx になります。
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -182,15 +180,13 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 次のコマンドを実行してアプリケーションをスケールアウトします。
 
 > [!NOTE]
-> URI は、 http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
-> 
-> 
+> URI は、http:\//localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http:\//localhost/marathon/v2/apps/nginx になります。
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)
+* [Mesos HTTP エンドポイントの詳細](https://mesos.apache.org/documentation/latest/endpoints/)
 * [Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

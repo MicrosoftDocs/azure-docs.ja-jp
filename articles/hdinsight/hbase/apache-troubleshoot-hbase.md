@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 37a8882653ffede121d2e2cd3f3357741d8d641a
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651607"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361933"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache HBase のトラブルシューティング
 
@@ -344,7 +344,7 @@ HMaster times out with a fatal exception similar to "java.io.IOException: Timedo
 
 ### <a name="issue"></a>問題
 
-リージョン サーバーでの再起動の失敗は、ベスト プラクティスに従うことで防ぐことができます。 HBase リージョン サーバーの再起動を予定しているときは、負荷の大きいワークロード アクティビティを一時停止することをお勧めします。 シャットダウンの進行中に、アプリケーションが引き続きリージョン サーバーに接続していると、リージョン サーバーの再起動操作が数分遅れます。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase: テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)に関するページを参照してください。
+リージョン サーバーでの再起動の失敗は、ベスト プラクティスに従うことで防ぐことができます。 HBase リージョン サーバーの再起動を予定しているときは、負荷の大きいワークロード アクティビティを一時停止することをお勧めします。 シャットダウンの進行中に、アプリケーションが引き続きリージョン サーバーに接続していると、リージョン サーバーの再起動操作が数分遅れます。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase:テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) に関するページを参照してください。
 
 Apache Ambari UI から HBase リージョン サーバー上での再起動操作を開始すると、リージョン サーバーが停止しても、すぐには再起動していないことがすぐにわかります。 
 
@@ -367,7 +367,7 @@ Apache Ambari UI から HBase リージョン サーバー上での再起動操�
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-強制シャットダウンにより、リージョン サーバー プロセスが停止されても、プロセスに関連付けられているポートが解放されない場合があります。 この状況により、次のログに示すように、リージョン サーバーの起動時に AddressBindException が発生する可能性があります。 これは、リージョン サーバーが起動に失敗したワーカー ノードの /var/log/hbase ディレクトリにある region-server.log で確認できます。 
+   強制シャットダウンにより、リージョン サーバー プロセスが停止されても、プロセスに関連付けられているポートが解放されない場合があります。 この状況により、次のログに示すように、リージョン サーバーの起動時に AddressBindException が発生する可能性があります。 これは、リージョン サーバーが起動に失敗したワーカー ノードの /var/log/hbase ディレクトリにある region-server.log で確認できます。 
 
    ```apache
 

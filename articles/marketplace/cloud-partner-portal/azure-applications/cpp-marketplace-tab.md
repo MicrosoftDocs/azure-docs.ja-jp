@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74b21a9dd8faa8eb35aa8a2ef738bd6303e4cdd7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1203f33458c83bbde7a263022b78563bad183143
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195806"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870739"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure アプリケーションの [Marketplace] タブ
 
@@ -57,7 +57,7 @@ ms.locfileid: "53195806"
 |       Small             |        PNG 形式の 40 x 40 ピクセル           |
 |       Medium             |        PNG 形式の 90 x 90 ピクセル           |
 |       Large             |        PNG 形式の 115 x 115 ピクセル         |
-|       ワイド             |        PNG 形式の 255 x 115 ピクセル           |
+|       Wide             |        PNG 形式の 255 x 115 ピクセル           |
 |       ヒーロー             |        PNG 形式の 815 x 290 ピクセル 省略可能。 **注:** Hero アイコンはアップロード後に削除できません。           |
 |       スクリーンショット (最大 5 つ)             |        スクリーンショットは製品の詳細ページに表示されます。 アプリ自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 たとえば、アーキテクチャ ダイアグラムやユース ケースの例を表示できます。 スクリーンショットは任意です。SKU あたり 5 枚に制限されています。 スクリーンショットを追加するには:<ul><li>**[+ スクリーンショットを追加]** を選択し、[スクリーンショット] ウィンドウを開きます。</li><li>**[名前]** - 名前/タイトルを入力します (最大長は 100 文字)。</li><li>**[アップロード]** - 画像をアップロードします。 PNG 形式にする必要があります。サイズは 533 x 324 ピクセルです。</li></ul>           |
 |        ビデオの追加            |        ビデオは製品の詳細ページに表示されます。 アプリケーション自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 ビデオを追加するには: <ul><li>**[+ ビデオの追加]** を選択し、[ビデオ] ウィンドウを開きます。</li><li>**[名前]** - 名前/タイトルを入力します (最大長は 100 文字)。</li><li>**[リンク]** – ビデオをホストしているサイト (YouTube や Vimeo) の URL を入力します。</li><li>**[サムネイル]** – サムネイルをアップロードします。 PNG 形式にする必要があります。サイズは 533 x 324 ピクセルです。</li></ul>          |
@@ -66,7 +66,7 @@ ms.locfileid: "53195806"
 
 Marketplace 検索結果の例が次の画面キャプチャです。
 
-![Marketplace のオファー検索結果 ](./media/azureapp-marketplace-example-browse.png)
+![Marketplace のオファー検索結果](./media/azureapp-marketplace-example-browse.png)
 
 検索結果のオファーのタイルを顧客がクリックすると、次の画像のようにオファーが Marketplace に表示されます。
 

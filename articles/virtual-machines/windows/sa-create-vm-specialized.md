@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: da1fa2b182888e623f8df734c9119e208433e2bd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 90d1d752481ada33c038ab563f6bd0d3bf5fad08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012711"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086804"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
 
@@ -29,18 +29,12 @@ Powershell を使用して、OS ディスクとして特殊化された非管理
 
 2 つのオプションがあります。
 * [VHD をアップロードする](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [既存の Azure VM の VHD をコピーする](sa-create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
+* [既存の Azure VM の VHD をコピーする](sa-create-vm-specialized.md#option-2-copy-the-vhd-from-an-existing-azure-vm)
 
-## <a name="before-you-begin"></a>開始する前に
-PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
-
-```powershell
-Install-Module AzureRM.Compute 
-```
-詳しくは、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>オプション 1: 特殊化された VHD をアップロードする
+## <a name="option-1-upload-a-specialized-vhd"></a>オプション 1:特殊化された VHD をアップロードする
 
 Hyper-V などのオンプレミスの仮想化ツールを使用して作成された特殊化された VM、または別のクラウドからエクスポートされた VM から VHD をアップロードできます。
 
@@ -58,39 +52,39 @@ Hyper-V などのオンプレミスの仮想化ツールを使用して作成さ
 使用できるストレージ アカウントを表示するには、次のように入力します。
 
 ```powershell
-Get-AzureRmStorageAccount
+Get-AzStorageAccount
 ```
 
-既存のストレージ アカウントを使用する場合は、「[VM イメージのアップロード](#upload-the-vm-vhd-to-your-storage-account)」セクションに進みます。
+既存のストレージ アカウントを使用する場合は、「VM イメージのアップロード」セクションに進みます。
 
 ストレージ アカウントを作成する場合は、次の手順に従います。
 
 1. ストレージ アカウントを作成するリソース グループ名が必要です。 サブスクリプションのすべてのリソース グループを検索するには、次のように入力します。
    
     ```powershell
-    Get-AzureRmResourceGroup
+    Get-AzResourceGroup
     ```
 
     **myResourceGroup** という名前のリソース グループを**米国西部**リージョンで作成するには、次のように入力します。
 
     ```powershell
-    New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
+    New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. [New-AzureStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、このリソース グループに **mystorageaccount** というストレージ アカウントを作成します。
+2. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、このリソース グループに **mystorageaccount** というストレージ アカウントを作成します。
    
     ```powershell
-    New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
+    New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
         -SkuName "Standard_LRS" -Kind "Storage"
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>ストレージ アカウントに VHD をアップロードする
-[Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーにイメージをアップロードします。 この例では、ファイル **myVHD.vhd** を`"C:\Users\Public\Documents\Virtual hard disks\"`から **myResourceGroup** リソース グループの **mystorageaccount** というストレージ アカウントにアップロードします。 ファイルは **mycontainer** というコンテナーに配置され、新しいファイル名は **myUploadedVHD.vhd** になります。
+[Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーにイメージをアップロードします。 この例では、ファイル **myVHD.vhd** を`"C:\Users\Public\Documents\Virtual hard disks\"`から **myResourceGroup** リソース グループの **mystorageaccount** というストレージ アカウントにアップロードします。 ファイルは **mycontainer** というコンテナーに配置され、新しいファイル名は **myUploadedVHD.vhd** になります。
 
 ```powershell
 $rgName = "myResourceGroup"
 $urlOfUploadedImageVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
+Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
     -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
 ```
 
@@ -112,24 +106,24 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 このコマンドは、ネットワーク接続や VHD ファイルのサイズによっては、完了に時間がかかることがあります。
 
 
-## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>オプション 2 : 既存の Azure VM から VHD をコピーする
+## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>オプション 2:既存の Azure VM から VHD をコピーする
 
 別のストレージ アカウントに VHD をコピーして、新しい重複 VM を作成するときに使用できます。
 
 ### <a name="before-you-begin"></a>開始する前に
 次のことを確認してください。
 
-* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[すべてのサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、作成できます。 
+* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[すべてのサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、作成できます。 
 * [AzCopy ツール](../../storage/common/storage-use-azcopy.md)をダウンロードしてインストール済みであること。 
 
 ### <a name="deallocate-the-vm"></a>VM の割り当てを解除する
 VM の割り当てを解除して、コピーする VHD を解放します。 
 
-* **Portal**: **[仮想マシン]** > **[myVM]** > [停止] の順にクリックします。
-* **Powershell**: [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM を停止 (割り当て解除) します。
+* **ポータル**:**[仮想マシン]** > **[myVM]** > [停止] の順にクリックします。
+* **Powershell**:[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM を停止 (割り当て解除) します。
 
 ```powershell
-Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
+Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
 Azure Portal で VM の **[状態]** が **[停止済み]** から **[停止済み (割り当て解除)]** に変わります。
@@ -139,21 +133,21 @@ Azure Portal で VM の **[状態]** が **[停止済み]** から **[停止済�
 
 Azure Portal または Azure PowerShell を使用して URL を取得できます。
 
-* **Portal**: **>****[すべてのサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[BLOB]** の順にクリックすると、コピー元の VHD ファイルはおそらく **vhds** コンテナー内にあります。 コンテナーの **[プロパティ]** をクリックし、**URL** というラベルのテキストをコピーします。 コピー元およびコピー先の両方のコンテナーの URL が必要です。 
-* **Powershell**: [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM に関する情報を取得します。 その結果の **Storage profile** セクションで **Vhd Uri** を探します。 URI の最初の部分はコンテナーの URL、最後の部分は VM の OS VHD 名です。
+* **ポータル**:**>****[すべてのサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[BLOB]** の順にクリックすると、コピー元の VHD ファイルはおそらく **vhds** コンテナー内にあります。 コンテナーの **[プロパティ]** をクリックし、**URL** というラベルのテキストをコピーします。 コピー元およびコピー先の両方のコンテナーの URL が必要です。 
+* **Powershell**:[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM に関する情報を取得します。 その結果の **Storage profile** セクションで **Vhd Uri** を探します。 URI の最初の部分はコンテナーの URL、最後の部分は VM の OS VHD 名です。
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
 ## <a name="get-the-storage-access-keys"></a>ストレージ アクセス キーを取得する
 コピー元とコピー先のストレージ アカウントのアクセス キーを探します。 アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
 
-* **Portal**: **[すべてのサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
-* **Powershell**: [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) を使用して、リソース グループ **myResourceGroup** 内にあるストレージ アカウント **mystorageaccount** のストレージ キーを取得します。 **key1** のラベルが付いているキーをコピーします。
+* **ポータル**:**[すべてのサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
+* **Powershell**:[Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) を使用して、リソース グループ **myResourceGroup** 内にあるストレージ アカウント **mystorageaccount** のストレージ キーを取得します。 **key1** のラベルが付いているキーをコピーします。
 
 ```powershell
-Get-AzureRmStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
+Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
 ```
 
 ### <a name="copy-the-vhd"></a>VHD をコピーする
@@ -208,29 +202,29 @@ Elapsed time:            00.00:13:07
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubNet"
-    $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+    $singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
 2. vNet を作成します。 この例では、仮想ネットワーク名を **myVnetName**、場所を **米国西部**、仮想ネットワークのアドレス プレフィックスを **10.0.0.0/16** に設定します。 
    
     ```powershell
     $location = "West US"
     $vnetName = "myVnetName"
-    $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
+    $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>ネットワーク セキュリティ グループと RDP 規則の作成
-RDP を使用して VM にログインできるようにするには、ポート 3389 で RDP アクセスを許可するセキュリティ規則が必要です。 新しい VM の VHD は既存の特殊化された VM から作成されたため、VM が作成された後は、RDP を使用してログオンするアクセス許可が付与されていたソースの仮想マシンから既存のアカウントを使用できます。
-関連付けられるネットワーク インターフェイスを作成する前に、これを完了する必要があります。  
-この例では、NSG の名前を **myNsg** に設定し、RDP 規則の名前を **myRdpRule** に設定します。
+   ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>ネットワーク セキュリティ グループと RDP 規則の作成
+   RDP を使用して VM にログインできるようにするには、ポート 3389 で RDP アクセスを許可するセキュリティ規則が必要です。 新しい VM の VHD は既存の特殊化された VM から作成されたため、VM が作成された後は、RDP を使用してログオンするアクセス許可が付与されていたソースの仮想マシンから既存のアカウントを使用できます。
+   関連付けられるネットワーク インターフェイスを作成する前に、これを完了する必要があります。  
+   この例では、NSG の名前を **myNsg** に設定し、RDP 規則の名前を **myRdpRule** に設定します。
 
 ```powershell
 $nsgName = "myNsg"
 
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
     -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
     -Name $nsgName -SecurityRules $rdpRule
     
 ```
@@ -244,14 +238,14 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
    
     ```powershell
     $ipName = "myIP"
-    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
+    $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
 2. NIC を作成します。 この例では、NIC 名を **myNicName** に設定しています。 また、この手順では、この NIC で以前に作成したネットワーク セキュリティ グループを利用します。
    
     ```powershell
     $nicName = "myNicName"
-    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
+    $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName `
     -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
     ```
 
@@ -260,13 +254,13 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 この例では、VM 名を "myVM" に、VM のサイズを "Standard_A2" に設定します。
 ```powershell
 $vmName = "myVM"
-$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A2"
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize "Standard_A2"
 ```
 
 ### <a name="add-the-nic"></a>NIC の追加
     
 ```powershell
-$vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+$vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
     
     
@@ -281,14 +275,14 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
     
     ```powershell
     $osDiskName = $vmName + "osDisk"
-    $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption attach -Windows
+    $vm = Set-AzVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption attach -Windows
     ```
 
-省略可能: VM に接続する必要のあるデータ ディスクがある場合は、データ VHD の URL と、適切な論理ユニット番号 (Lun) を使用してデータ ディスクを追加します。
+省略可能:VM に接続する必要のあるデータ ディスクがある場合は、データ VHD の URL と、適切な論理ユニット番号 (Lun) を使用してデータ ディスクを追加します。
 
 ```powershell
 $dataDiskName = $vmName + "dataDisk"
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
+$vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
 ストレージ アカウントを使用する場合、データ ディスクおよびオペレーティング システム ディスクの URL は `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd` のようになります。 ポータルでこれを見つけるには、ターゲット ストレージ コンテナーを参照し、コピーしたオペレーティング システムまたはデータ VHD をクリックして、URL の内容をコピーします。
@@ -300,7 +294,7 @@ $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lu
 
 ```powershell
 #Create the new VM
-New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
+New-AzVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
 このコマンドが成功した場合は、次のような出力が表示されます。
@@ -316,7 +310,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 新しく作成された VM は、[Azure Portal](https://portal.azure.com)の **[すべてのサービス]** の >  **[仮想マシン]**、または次の PowerShell コマンドで確認できます。
 
 ```powershell
-$vmList = Get-AzureRmVM -ResourceGroupName $rgName
+$vmList = Get-AzVM -ResourceGroupName $rgName
 $vmList.Name
 ```
 

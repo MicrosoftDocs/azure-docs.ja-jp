@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 03b8dd9bd0a7acc63fdae66330904142384429a8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 53b2c2945062ef348104e24a352895a14eed1a04
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794211"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314843"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
 
@@ -49,13 +49,13 @@ VM にスナップショットがないことと、フェールバック中に�
 
 **[保護されているアイテム]** で、**[レプリケートされたアイテム]** をクリックし、VM をクリックします。
 
-2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
+1. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
 
-3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、およびマネージド ディスクの設定を変更できます。
+1. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、およびマネージド ディスクの設定を変更できます。
 
-4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
+1. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
 
-5. **[ディスク]** で、VM のオペレーティング システム ディスクとデータ ディスクに関する情報を確認できます。
+1. **[ディスク]** で、VM のオペレーティング システム ディスクとデータ ディスクに関する情報を確認できます。
 
 ## <a name="failover-to-azure"></a>Azure へのフェールオーバー
 

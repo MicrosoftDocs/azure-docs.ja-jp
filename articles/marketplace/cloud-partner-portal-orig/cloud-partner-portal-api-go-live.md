@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7d643f0c7885e64636a107d22ce332b1ba9371c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807229"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594680"
 ---
 <a name="go-live"></a>Go Live
 =======
@@ -31,18 +31,18 @@ ms.locfileid: "48807229"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **名前**      |   **説明**                                                           | **データの種類** |
+|  **Name**      |   **説明**                                                           | **データの種類** |
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | 取得するオファーの発行元 ID (例: `contoso`)       |  String       |
 | offerId        | 取得するオファーのオファー ID                                   |  String       |
-| api-version    | API の最新バージョン                                                   |  日付         |
+| api-version    | API の最新バージョン                                                   |  Date         |
 |  |  |  |
 
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**       |     **値**       |
+|  **Name**       |     **値**       |
 |  ---------      |     ----------      |
 | Content-Type    | `application/json`  |
 | Authorization   | `Bearer YOUR_TOKEN` |
@@ -59,7 +59,7 @@ ms.locfileid: "48807229"
 
 ### <a name="response-header"></a>応答ヘッダー
 
-|  **名前**             |      **値**                                                            |
+|  **Name**             |      **値**                                                            |
 |  --------             |      ----------                                                           |
 | Operation-Location    |  操作の現在の状態を確認するためのクエリに使用する URL            |
 |  |  |
@@ -67,7 +67,7 @@ ms.locfileid: "48807229"
 
 ### <a name="response-status-codes"></a>応答状態コード
 
-| **コード** |  ** 説明 **                                                                        |
+| **コード** |  **説明**                                                                        |
 | -------- |  ----------------                                                                        |
 |  202     | `Accepted` - 要求は正常に受け入れられました。 応答には、操作の状態を追跡するための場所が含まれています。 |
 |  400     | `Bad/Malformed request` - 追加のエラー情報が応答本文に含まれます。 |

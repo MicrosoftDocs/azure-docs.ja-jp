@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b290cada86401d91313939a7673998810cb82551
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3ac7d8cc4705fe1b6e80f1e0c7e26d847d761cf6
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51028143"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54357008"
 ---
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
 
@@ -21,7 +21,7 @@ ms.locfileid: "51028143"
 
     ![発行先の選択](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
-    **[Run from Zip]\(Zip から実行\)** を有効にすると、Azure の関数アプリはデプロイ パッケージから直接実行されます。 詳細については、「[Run your Azure Functions from a package file](../articles/azure-functions/run-functions-from-deployment-package.md)」(パッケージ ファイルから Azure Functions を実行する) を参照してください。
+    **[Run from Zip]\(Zip から実行\)** を有効にすると、Azure の関数アプリは読み取り専用モードになり、デプロイ パッケージから直接実行されます。 詳細については、「[Run your Azure Functions from a package file](../articles/azure-functions/run-functions-from-deployment-package.md)」(パッケージ ファイルから Azure Functions を実行する) を参照してください。
      
     >[!CAUTION]
     >**[既存のものを選択]** を選択すると、Azure の既存の関数アプリ内のすべてのファイルがローカル プロジェクトのファイルによって上書きされます。 このオプションは、既存の関数アプリへの更新を再発行する場合にのみ使用します。

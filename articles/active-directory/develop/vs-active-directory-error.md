@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 82449c3a8154142a64aa264f72d2dec75fe2f23c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a6f151251d76965cf1bc86216eac15a08f1adbc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143462"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679110"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 
@@ -27,7 +28,7 @@ Azure Active Director 接続済みサービスが以前の認証コードを検�
 
 ## <a name="project-types"></a>プロジェクトの種類
 
-接続済みサービスは、プロジェクトに適切な認証ロジックを挿入できるように、開発しているプロジェクトの種類を確認します。 プロジェクトに `ApiController` から派生したコントローラーが含まれている場合は、WebAPI プロジェクトと見なされます。 プロジェクトに `MVC.Controller` から派生したコントローラーしか含まれていない場合は、MVC プロジェクトと見なされます。 接続済みサービスでは他の種類のプロジェクトはサポートされません。
+接続済みサービスは、プロジェクトに適切な認証ロジックを挿入できるように、開発しているプロジェクトの種類を確認します。 プロジェクトに `ApiController` から派生したコントローラーが含まれている場合、プロジェクトは WebAPI プロジェクトと見なされます。 プロジェクトに `MVC.Controller` から派生したコントローラーしか含まれていない場合は、MVC プロジェクトと見なされます。 接続済みサービスでは他の種類のプロジェクトはサポートされません。
 
 ## <a name="compatible-authentication-code"></a>互換性のある認証コード
 
@@ -59,7 +60,7 @@ MVC プロジェクトで Windows 認証を検出するために、接続済み�
 ```xml
 <configuration>
     <system.web>
-        <span style="background-color: yellow"><authentication mode="Windows" /></span>
+        <authentication mode="Windows" />
     </system.web>
 </configuration>
 ```
@@ -69,7 +70,7 @@ Web API プロジェクトで Windows 認証を検出するために、接続済
 ```xml
 <Project>
     <PropertyGroup>
-        <span style="background-color: yellow"><IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication></span>
+        <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     </PropertyGroup>
 </Project>
 ```
@@ -78,7 +79,7 @@ Web API プロジェクトで Windows 認証を検出するために、接続済
 
 ```xml
 <packages>
-    <span style="background-color: yellow"><package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+    <package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" />
 </packages>
 ```
 
@@ -87,7 +88,7 @@ Web API プロジェクトで Windows 認証を検出するために、接続済
 ```xml
 <configuration>
     <appSettings>
-        <span style="background-color: yellow"><add key="ida:Realm" value="***" /></span>
+        <add key="ida:Realm" value="***" />
     </appSettings>
 </configuration>
 ```

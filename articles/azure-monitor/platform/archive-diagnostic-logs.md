@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: bc3ee549a4219441b657b89bef56d35dfac6626a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: logs
+ms.openlocfilehash: 82aaa573c55748daf62b620cdd82561bae6af492
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547492"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629351"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -33,7 +33,7 @@ ms.locfileid: "53547492"
 
 ## <a name="diagnostic-settings"></a>診断設定
 
-以下のいずれかの方法で診断ログをアーカイブするには、特定のリソースの **[診断設定]** を定義する必要があります。 リソースの診断設定では、アーカイブ先に送信されるログとメトリック データのカテゴリ (ストレージ アカウントまたは Event Hubs 名前空間、または Log Analytics) を定義します。 また、ストレージ アカウントに格納される各ログ カテゴリおよびメトリック データのイベントに関して、リテンション期間ポリシー (保持する日数) を定義します。 リテンション期間ポリシーが 0 に設定されている場合は、各ログ カテゴリのイベントが無制限に (つまり、いつまでも) 保存されます。 そうでない場合は、リテンション期間ポリシーを 1 ～ 2,147, 483,647 までの範囲の任意の日数にすることができます。 [診断設定の詳細については、こちらを参照してください](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 
+以下のいずれかの方法で診断ログをアーカイブするには、特定のリソースの **[診断設定]** を定義する必要があります。 リソースの診断設定では、アーカイブ先に送信されるログとメトリック データのカテゴリ (ストレージ アカウントまたは Event Hubs 名前空間、または Log Analytics ワークスペース) を定義します。 また、ストレージ アカウントに格納される各ログ カテゴリおよびメトリック データのイベントに関して、リテンション期間ポリシー (保持する日数) を定義します。 リテンション期間ポリシーが 0 に設定されている場合は、各ログ カテゴリのイベントが無制限に (つまり、いつまでも) 保存されます。 そうでない場合は、リテンション期間ポリシーを 1 ～ 2,147, 483,647 までの範囲の任意の日数にすることができます。 [診断設定の詳細については、こちらを参照してください](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 
 
 > [!NOTE]
 > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
@@ -68,13 +68,15 @@ ms.locfileid: "53547492"
 
 ## <a name="archive-diagnostic-logs-via-azure-powershell"></a>Azure PowerShell を使用して診断ログをアーカイブする
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ```
-Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
+Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
-| resourceId |はい |診断設定の対象となるリソースの ID。 |
+| ResourceId |はい |診断設定の対象となるリソースの ID。 |
 | StorageAccountId |いいえ  |診断ログの保存先となるストレージ アカウントのリソース ID。 |
 | Categories |いいえ  |有効にするログ カテゴリのコンマ区切りのリスト。 |
 | Enabled |はい |このリソースに対する診断が有効であるか無効であるかを示すブール値。 |
@@ -151,9 +153,9 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| ResourceId |影響を受けるリソースのリソース ID。 |
+| resourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| カテゴリ |イベントのログ カテゴリ。 |
+| category |イベントのログ カテゴリ。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]
@@ -165,3 +167,4 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 * [診断ログの Event Hubs 名前空間へのストリーミング](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Azure Monitor による Azure Active Directory ログのアーカイブ](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [診断ログの詳細の参照](../../azure-monitor/platform/diagnostic-logs-overview.md)
+

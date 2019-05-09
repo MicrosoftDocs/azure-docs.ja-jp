@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker は、ユーザーの自然言語の質問にカスタムの機械学習インテリジェンスを適用して最適な回答を提供する、クラウドベースの API サービスです。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: bd859183a13e0f8a21cdd2eabb464b718e949464
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212218"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59257231"
 ---
 # <a name="what-is-qna-maker"></a>QnA Maker とは
 
@@ -66,10 +66,9 @@ QnA Maker のアーキテクチャは、次の 2 つのコンポーネントで�
 
 ## <a name="service-highlights"></a>サービスの概要
 
-- [FAQ ボットを作成する](https://aka.ms/qnamaker-docs-create-faqbot)ための完全な**非コード** エクスペリエンスです。
+- ナレッジ ベースから[ボットを作成する](../Quickstarts/create-publish-knowledge-base.md#create-a-bot)ための完全な**非コード** エクスペリエンスです。
 - **予測のための帯域幅調整はありません**。 トランザクションの数ではなく、サービスのホストに対して課金されます。 詳しくは、[料金に関するページ](https://aka.ms/qnamaker-docs-pricing)をご覧ください。
 - **必要に応じてスケーリング**できます。 実際のシナリオに適した個々のコンポーネントの適切な SKU を選択できます。 QnA Maker サービスの[容量の選択](https://aka.ms/qnamaker-docs-capacity)方法をご覧ください。
-- **完全なデータ コンプライアンス**です。 予測サービス コンポーネントは、Azure サブスクリプションとそのコンプライアンス境界内にデプロイされます。
 
 
 ## <a name="next-steps"></a>次の手順

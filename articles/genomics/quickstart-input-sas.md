@@ -1,24 +1,26 @@
 ---
-title: ストレージ アカウント キーではなく SAS を使用してワークフローを送信する - Microsoft Genomics
+title: Shared Access Signature を使用してワークフローを送信する - Microsoft Genomics
 titleSuffix: Azure
-description: このクイックスタートでは、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
+description: この記事では、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 9a22e4bb0949544e18237e789ca807e57ed59abf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 7c51a0934457a2fcc03f9be1535712e97ac91a1e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733499"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451384"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを Microsoft Genomics に送信する 
 
-このクイックスタートでは、ストレージ アカウント キーの代わりに [Shared Access Signature (SAS) ](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を含む config.txt ファイルを使用して Microsoft Genomics サービスにワークフローを送信する方法について説明します。 この機能は、config.txt ファイルでストレージ アカウント キーを表示できる状態にすることにセキュリティ上の懸念がある場合に役立ちます。 この記事では、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローの送信に成功した場合、このクイックスタートを進める準備ができています。 
+この記事では、ストレージ アカウント キーの代わりに [Shared Access Signature (SAS) ](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を含む config.txt ファイルを使用して Microsoft Genomics サービスにワークフローを送信する方法について説明します。 この機能は、config.txt ファイルでストレージ アカウント キーを表示できる状態にすることにセキュリティ上の懸念がある場合に役立ちます。 
+
+この記事では、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローを正常に送信したら、この記事を読み進める準備は完了です。 
 
 ## <a name="what-is-a-sas"></a>SAS とは
 [shared access signature (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS を使用すると、アカウント キーを共有することなく、ストレージ アカウントのリソースへのアクセス権を付与できます。 これは、アプリケーションで Shared Access Signature を使用する際の重要な点になります。SAS は、アカウント キーを損なうことなく、ストレージ リソースを共有する安全な方法です。
@@ -32,12 +34,12 @@ Microsoft Genomics サービスに送信される各ワークフローには、�
 
 入力ファイルの SAS には、次のプロパティが必要です。
 1.  範囲 (アカウント、コンテナー、BLOB): BLOB
-2.  有効期限: 今から 48 時間
+2.  有効期限: 今から 48 時間後
 3.  アクセス許可: 読み取り
 
 出力コンテナーの SAS には、次のプロパティが必要です。
 1.  範囲 (アカウント、コンテナー、BLOB): コンテナー
-2.  有効期限: 今から 48 時間
+2.  有効期限: 今から 48 時間後
 3.  アクセス許可: 読み取り、書き込み、削除
 
 
@@ -49,14 +51,14 @@ SAS トークンを作成するには、Azure Storage Explorer を使用する�
 
 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、Azure Storage に保存したリソースを管理するツールです。  Azure Storage Explorer の使用方法については、[こちら](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を参照してください。
 
-入力ファイルの SAS は特定の入力ファイル (BLOB) に範囲を設定する必要があります。 SAS トークンを作成するには、[こちらの手順](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer#work-with-shared-access-signatures)に従ってください。 SAS を作成すると、クエリ文字列を含む完全な URL とクエリ文字列が表示され、画面からコピーできるようになります。
+入力ファイルの SAS は特定の入力ファイル (BLOB) に範囲を設定する必要があります。 SAS トークンを作成するには、[こちらの手順](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に従ってください。 SAS を作成すると、クエリ文字列を含む完全な URL とクエリ文字列が表示され、画面からコピーできるようになります。
 
  ![Genomics SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS Storage Explorer")
 
 
-### <a name="set-up-create-a-sas-programattically"></a>設定: SAS をプログラムで作成する
+### <a name="set-up-create-a-sas-programmatically"></a>設定: SAS をプログラムで作成する
 
-Azure Storage SDK を使用して SAS を作成する場合は、[.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage)、[Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage#work-with-shared-access-signatures) など、複数の言語について説明されている既存のドキュメントを参照してください。 
+Azure Storage SDK を使用して SAS を作成する場合は、[.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage)、[Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) など、複数の言語について説明されている既存のドキュメントを参照してください。 
 
 SDK を使用せずに SAS を作成するには、SAS の認証に必要なすべての情報を含め、SAS クエリ文字列を直接構築することができます。 これらの[手順](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas)では、SAS クエリ文字列のコンポーネントとその構成方法について詳しく説明されています。 必要な SAS 署名は、これらの[手順](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples)で説明されているように、BLOB/コンテナー認証情報を使用して HMAC を生成して作成されます。
 

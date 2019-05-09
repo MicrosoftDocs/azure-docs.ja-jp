@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bad431c8958f7d381bb9c0410caa3a57c6e75c19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111080"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810543"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual Array をデプロイする - Hyper-V でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -37,7 +37,7 @@ ms.locfileid: "23111080"
 開始する前に次の点を確認します。
 
 * [StorSimple Virtual Array のポータルの準備](storsimple-virtual-array-deploy1-portal-prep.md)に関するページの手順がすべて完了していること。
-* Azure Portal から Hyper-V の仮想アレイのイメージをダウンロードしていること。 詳細については、[StorSimple Virtual Array 用ポータルの準備ガイド](storsimple-virtual-array-deploy1-portal-prep.md)の「**手順 3: 仮想アレイのイメージをダウンロードする**」を参照してください。
+* Azure Portal から Hyper-V の仮想アレイのイメージをダウンロードしていること。 詳細については、「**手順 3: 仮想アレイのイメージをダウンロードする**」([StorSimple Virtual Array 用ポータルの準備ガイド](storsimple-virtual-array-deploy1-portal-prep.md)) を参照してください。
 
   > [!IMPORTANT]
   > StorSimple Virtual Array で実行されているソフトウェアは、StorSimple デバイス マネージャー サービスでのみ使用できます。
@@ -67,7 +67,7 @@ ms.locfileid: "23111080"
 
 これらの各手順を以下のセクションで説明します。
 
-## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>手順 1: ホスト システムが仮想アレイの最小要件を満たしていることを確認する
+## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>手順 1:ホスト システムが仮想アレイの最小要件を満たしていることを確認する
 仮想アレイを作成するには、次が必要です。
 
 * Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 SP1 にインストールされた Hyper-V ロール。
@@ -80,7 +80,7 @@ ms.locfileid: "23111080"
 * ネットワーク インターフェイス 1 つ。
 * システム データ用の 500 GB の仮想ディスク。
 
-## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>手順 2: ハイパーバイザーで仮想アレイをプロビジョニングする
+## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>手順 2:ハイパーバイザーで仮想アレイをプロビジョニングする
 ハイパーバイザーでデバイスをプロビジョニングするには、次の手順を実行します。
 
 #### <a name="to-provision-a-virtual-array"></a>仮想アレイをプロビジョニングするには
@@ -118,7 +118,7 @@ ms.locfileid: "23111080"
 11. 最小要件を満たすには、4 コアが必要です。 4 つの仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. **[設定]** ページの左側のウィンドウで **[プロセッサ]** をクリックします。 右側のウィンドウで、 **[仮想プロセッサの数]** を 4 (またはそれ以上) に設定します。 **[適用]** をクリックします。
+12. **[設定]** ページの左側のウィンドウで **[プロセッサ]** をクリックします。 右側のウィンドウで、 **[仮想プロセッサの数]** を 4 (またはそれ以上) に設定します。 **[Apply]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
 13. 最小要件を満たすには、500 GB の仮想データ ディスクを追加する必要もあります。 **[設定]** ページで次の操作を行います。
@@ -150,7 +150,7 @@ ms.locfileid: "23111080"
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
-## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>手順 3: 仮想アレイを起動し、IP アドレスを取得する
+## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>手順 3:仮想アレイを起動し、IP アドレスを取得する
 仮想アレイを起動して、そのアレイに接続するには、次の手順を実行します。
 
 #### <a name="to-start-the-virtual-array"></a>仮想アレイを起動するには
@@ -205,7 +205,7 @@ ms.locfileid: "23111080"
        >
        >
 
-デバイスが最小構成要件を満たしていない場合は、バナー テキストに次のエラーが表示されます (下記参照)。 最小要件を満たすだけのリソースにコンピューターが対応できるように、デバイスの構成を変更します。 その後、再起動し、デバイスに接続します。 「[手順 1: ホスト システムが仮想アレイの最小要件を満たしていることを確認する](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)」で、最小構成要件を確認してください。
+デバイスが最小構成要件を満たしていない場合は、バナー テキストに次のエラーが表示されます (下記参照)。 最小要件を満たすだけのリソースにコンピューターが対応できるように、デバイスの構成を変更します。 その後、再起動し、デバイスに接続します。 最小構成要件については、「手順 1:ホスト システムが仮想アレイの最小要件を満たしていることを確認する」を参照してください。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 
@@ -214,6 +214,6 @@ ms.locfileid: "23111080"
 * 診断テストを実行して [Web UI のセットアップのトラブルシューティング](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)を行う。
 * [ログ パッケージを生成してログ ファイルを表示する](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
 * [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)

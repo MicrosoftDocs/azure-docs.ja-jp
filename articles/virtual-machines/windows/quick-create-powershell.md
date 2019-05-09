@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/04/2018
+ms.date: 01/22/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e797b801395bf4971bfb91a8ce4b35a710ea578
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 44da9bc528883b2686adca6f4310212d785847d8
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816203"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981487"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>クイック スタート: PowerShell を使用して Azure に Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Windows 仮想マシンを作成する
 
-Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使って、Windows Server 2016 を実行する仮想マシン (VM) を Azure に展開する方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
+Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使って、Windows Server 2016 を実行する仮想マシン (VM) を Azure に展開する方法を示します。 また、VM に RDP 接続し、IIS Web サーバーをインストールして、動作中の VM を表示します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -35,24 +35,23 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 各リソースの名前を指定すると、それらがまだ存在していない場合は、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) コマンドレットによって作成されます。
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 各リソースの名前を指定すると、それらがまだ存在していない場合は、`New-AzVM` コマンドレットによって作成されます。
 
-メッセージが表示されたら、VM に対するログオン資格情報として使うユーザー名とパスワードを入力します。
+メッセージが表示されたら、VM のサインイン資格情報として使用するユーザー名とパスワードを入力します。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVM" `
     -Location "East US" `
@@ -67,10 +66,10 @@ New-AzureRmVm `
 
 展開が完了した後、RDP で VM に接続します。 VM の動作を確認するために、IIS Web サーバーがインストールされます。
 
-VM のパブリック IP アドレスを確認するには、[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使います。
+VM のパブリック IP アドレスを確認するには、[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) コマンドレットを使用します。
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
+Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
 次のコマンドを使って、お使いのローカル コンピューターからリモート デスクトップ セッションを作成します。 IP アドレスは、実際の VM のパブリック IP アドレスに置き換えてください。 
@@ -101,10 +100,10 @@ IIS をインストールし、VM のポート 80 をインターネットから
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドレットを使って、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

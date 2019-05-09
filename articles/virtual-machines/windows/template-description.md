@@ -13,20 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d234e7f8a6005722a33a797f2b8ae6a1e1f4b98b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987698"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327767"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
 この記事では、仮想マシンに適用される、Azure Resource Manager テンプレートの側面について説明します。 仮想マシンを作成するための完全なテンプレートについては、この記事では説明しません。完全なテンプレートには、ストレージ アカウント、ネットワーク インターフェイス、パブリック IP アドレス、および仮想ネットワークのリソース定義が必要です。 これらのリソースをまとめて定義できる方法の詳細については、「[Resource Manager テンプレートのチュートリアル](../../azure-resource-manager/resource-manager-template-walkthrough.md)」を参照してください。
 
 VM リソースを含め、[ギャラリーにはテンプレート](https://azure.microsoft.com/documentation/templates/?term=VM)が多数あります。 テンプレートに含めることができるすべての要素をここで説明するわけではありません。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 次の例では、指定された数の VM を作成するためのテンプレートの典型的なリソース セクションを示しています。
 
@@ -162,9 +164,10 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 最新の API バージョンを取得するには、次の方法を使用してください。
 
-- REST API - [すべてのリソース プロバイダーの一覧を表示する](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
-- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+- REST API - [すべてのリソース プロバイダーの一覧を表示する](https://docs.microsoft.com/rest/api/resources/providers)
+- PowerShell - [Get AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider)
+
 
 ## <a name="parameters-and-variables"></a>パラメーターと変数
 
@@ -287,7 +290,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 
 ## <a name="disks-and-images"></a>ディスクとイメージ
    
-Azure では、vhd ファイルは[ディスクまたはイメージ](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を表すことができます。 vhd ファイルのオペレーティング システムは、特定の VM に特化している場合はディスクと呼ばれます。 vhd ファイルのオペレーティング システムが、多くの VM の作成に使用されるように一般化されている場合は、イメージと呼ばれます。   
+Azure では、vhd ファイルは[ディスクまたはイメージ](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を表すことができます。 vhd ファイルのオペレーティング システムは、特定の VM に特化している場合はディスクと呼ばれます。 vhd ファイルのオペレーティング システムが、多くの VM の作成に使用されるように一般化されている場合は、イメージと呼ばれます。   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>プラットフォーム イメージから新しい仮想マシンと新しいディスクを作成する
 
@@ -372,7 +375,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 ],
 ```
 
-## <a name="extensions"></a>拡張機能
+## <a name="extensions"></a>Extensions
 
 [拡張機能](extensions-features.md)は個別のリソースですが、VM に密接に関係しています。 拡張機能は、VM の子リソース、または個別のリソースとして追加できます。 次の例は、VM に追加される[診断の拡張機能](extensions-diagnostics-template.md)を示しています。
 
@@ -436,19 +439,19 @@ VM にインストールできる拡張機能は多数ありますが、最も�
 }
 ```
 
-start.ps1 スクリプトは、多くの構成タスクを実行できます。 たとえば、この例で VM に追加されるデータ ディスクは、初期化されていないため、カスタム スクリプトを使用して初期化することができます。 実行するスタートアップ タスクが複数ある場合は、start.ps1 ファイルを使用して、Azure Storage 内の他の PowerShell スクリプトを呼び出すことができます。 この例では PowerShell を使用しますが、使用しているオペレーティング システムで利用可能なスクリプト方法であれば使用できます。
+start.ps1 スクリプトは、多くの構成タスクを実行できます。 たとえば、この例で VM に追加されるデータ ディスクは、初期化されていないため、カスタム スクリプトを使用して初期化することができます。 実行するスタートアップ タスクが複数ある場合は、start.ps1 ファイルを使用して、Azure Storage 内の他の PowerShell スクリプトを呼び出すことができます。 例では PowerShell を使用していますが、お使いのオペレーティング システム上で利用可能な任意のスクリプト手法を使用してかまいません。
 
 インストールした拡張機能の状態は、ポータルの [拡張機能] の設定で確認できます。
 
 ![拡張機能の状態の確認](./media/template-description/virtual-machines-show-extensions.png)
 
-また、**Get-AzureRmVMExtension** PowerShell コマンド、**vm extension get** Azure CLI コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
+また、**Get-AzVMExtension** PowerShell コマンド、**vm extension get** Azure CLI コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
 
 ## <a name="deployments"></a>デプロイメント
 
 テンプレートをデプロイすると、Azure では、グループとしてデプロイしたリソースが追跡され、このデプロイされたグループに自動的に名前が割り当てられます。 デプロイの名前は、テンプレートの名前と同じです。
 
-デプロイ内のリソースの状態が気になる場合は、次のように、Azure Portal の [リソース グループ] ブレードを使用できます。
+デプロイ内のリソースの状態が気になる場合は、Azure portal でリソース グループを表示します。
 
 ![デプロイ情報の取得](./media/template-description/virtual-machines-deployment-info.png)
     
@@ -459,3 +462,4 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 - 「[Azure Resource Manager のテンプレートの作成](../../resource-group-authoring-templates.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](ps-template.md)」を使用して作成したテンプレートをデプロイします。
 - 作成した VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+- テンプレート内のリソースの種類の JSON 構文とプロパティについては、[Azure Resource Manager テンプレート リファレンス](/azure/templates/)を参照してください。

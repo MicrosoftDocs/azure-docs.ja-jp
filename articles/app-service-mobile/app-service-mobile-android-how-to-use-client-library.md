@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/07/2019
 ms.author: crdun
-ms.openlocfilehash: 5052ec73114c040a4c140d258b197fdde58f6667
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409328"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732117"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -53,20 +53,28 @@ Azure Mobile Apps SDK for Android では、タブレットとスマートフォ�
 
 2 つの **build.gradle** ファイルを変更します。
 
-1. 次のコードを、"*プロジェクト*" レベルの **build.gradle** ファイルの *buildscript* タグ内に追加します。
+1. 次のコードを、"*プロジェクト*" レベルの **build.gradle** ファイルに追加します。
 
-    ```text
+    ```gradle
     buildscript {
         repositories {
             jcenter()
+            google()
+        }
+    }
+
+    allprojects {
+        repositories {
+            jcenter()
+            google()
         }
     }
     ```
 
 2. 次のコードを、"*モジュール アプリ*" レベルの **build.gradle** ファイルの *dependencies* タグ内に追加します。
 
-    ```text
-    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
+    ```gradle
+    implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
     現在の最新バージョンは 3.4.0 です。 サポートされているバージョンの一覧については、[Bintray][14] を参照してください。
@@ -427,7 +435,7 @@ List<ToDoItem> result = mToDoTable
 テーブル内のすべてのレコードを取得するには、コードを実装して、すべてのページを反復処理します。
 
 ```java
-List<MyDataModel> results = new List<MyDataModel>();
+List<MyDataModel> results = new ArrayList<>();
 int nResults;
 do {
     int currentCount = results.size();
@@ -496,7 +504,7 @@ List<ToDoItem> results = mToDoTable
 
 前のコードの *listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。 次のコードではチェック ボックスおよび関連テキストを指定し、リストの項目ごとに 1 回インスタンス化しています。 このレイアウトでは **id** フィールドが表示されないため、さらに複雑なレイアウトで、表示する追加のフィールドを指定します。 このコードは、**row_list_to_do.xml** ファイルに含まれています。
 
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -520,7 +528,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 アダプターの **getView** メソッドをオーバーライドします。 例: 
 
-```
+```java
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -959,7 +967,7 @@ customtabs にプロジェクトを構成する必要もあります。  まず�
 
 **redirectUriScheme** を、アプリケーションの `build.gradle` ファイルに追加します。
 
-```text
+```gradle
 android {
     buildTypes {
         release {
@@ -974,17 +982,17 @@ android {
 }
 ```
 
-最後に、`build.gradle` ファイルの依存関係一覧に `com.android.support:customtabs:23.0.1` を追加します。
+最後に、`build.gradle` ファイルの依存関係一覧に `com.android.support:customtabs:28.0.0` を追加します。
 
-```text
+```gradle
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.code.gson:gson:2.3'
-    compile 'com.google.guava:guava:18.0'
-    compile 'com.android.support:customtabs:23.0.1'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.code.gson:gson:2.3'
+    implementation 'com.google.guava:guava:18.0'
+    implementation 'com.android.support:customtabs:28.0.0'
+    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
 }
 ```
 
@@ -1076,7 +1084,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 1. [Active Directory ログイン用の App Service の構成方法][22]に関するチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 2. build.gradle ファイルを変更して以下の定義を追加し、ADAL をインストールします。
 
-    ```
+    ```gradle
     repositories {
         mavenCentral()
         flatDir {
@@ -1091,11 +1099,11 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
         exclude 'META-INF/MSFTSIG.SF'
     }
     dependencies {
-        compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile('com.microsoft.aad:adal:1.1.1') {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation('com.microsoft.aad:adal:1.16.1') {
             exclude group: 'com.android.support'
-        } // Recent version is 1.1.1
-        compile 'com.android.support:support-v4:23.0.0'
+        } // Recent version is 1.16.1
+        implementation 'com.android.support:support-v4:28.0.0'
     }
     ```
 
@@ -1188,7 +1196,7 @@ mClient = new MobileServiceClient("https://myappname.azurewebsites.net");
 mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
     @Override
     public OkHttpClient createOkHttpClient() {
-        OkHttpClient client = new OkHttpClinet();
+        OkHttpClient client = new OkHttpClient();
         client.setReadTimeout(60, TimeUnit.SECONDS);
         client.setWriteTimeout(60, TimeUnit.SECONDS);
         return client;
@@ -1281,7 +1289,7 @@ FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {
 client.setGsonBuilder(
     MobileServiceClient
         .createMobileServiceGsonBuilder()
-        .setFieldNamingStrategy(namingStategy)
+        .setFieldNamingStrategy(namingStrategy)
 );
 ```
 

@@ -5,24 +5,24 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e8167361f3b541b613d453ade473880ec97a56dc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134813"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731463"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>データ サイエンス タスクの実行: 探索、モデリング、およびデプロイ
 
 通常のデータ サイエンス タスクには、データの探索、モデリング、およびデプロイが含まれます。 この記事では、**インタラクティブなデータ探索、分析、レポート作成 (IDEAR)** と**自動モデリングおよびレポート作成 (AMAR)** のユーティリティを使用して、インタラクティブなデータ探索、データ分析、レポート作成、およびモデル作成などの複数のデータ サイエンス タスクを完了する方法を示します。 また、次のようなさまざまなツールキットやデータ プラットフォームを使用して運用環境にモデルをデプロイするための選択肢を示します。
 
 - [Azure Machine Learning](../service/index.yml)
-- [ML サービスを使用した SQL Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
+- [ML サービスを使用した SQL Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 

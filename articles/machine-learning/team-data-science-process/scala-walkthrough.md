@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf4e65b95211fc03ea4a319fd4e503396b893522
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135149"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855939"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Scala および Azure 上の Spark を使用したデータ サイエンス
 この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
@@ -26,9 +26,9 @@ ms.locfileid: "53135149"
 
 モデリング プロセスには、テスト データ セットでのトレーニングと評価、および適切な精度評価基準が必要です。 この記事では、これらのモデルを Azure BLOB ストレージに保存する方法と、その予測パフォーマンスをスコア付けして評価する方法について説明します。 また、より高度なトピックとして、クロス検証およびハイパーパラメーター スイープを使用してモデルを最適化する方法についても説明します。 ここで使用しているデータは、GitHub で公開されている 2013 年の NYC タクシーの営業と料金のデータセットから抽出したサンプルです。
 
-[Scala](http://www.scala-lang.org/)は Java 仮想マシン ベースの言語であり、オブジェクト指向の概念と関数型言語の概念を統合したものです。 クラウドでの分散処理に適したスケーラブルな言語であり、Azure Spark クラスターで実行されます。
+[Scala](https://www.scala-lang.org/)は Java 仮想マシン ベースの言語であり、オブジェクト指向の概念と関数型言語の概念を統合したものです。 クラウドでの分散処理に適したスケーラブルな言語であり、Azure Spark クラスターで実行されます。
 
-[Spark](http://spark.apache.org/) は、ビッグ データ分析アプリケーションのパフォーマンスを高めるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 [spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) パッケージでは、実用的な機械学習パイプラインの作成および調整に役立つデータ フレームを基盤とする、高レベルの API 一式が提供されます。 [MLlib](http://spark.apache.org/mllib/) はスケーラブルな Spark の機械学習ライブラリであり、これにより分散環境でもモデリング機能を使用できます。
+[Spark](https://spark.apache.org/) は、ビッグ データ分析アプリケーションのパフォーマンスを高めるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 [spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) パッケージでは、実用的な機械学習パイプラインの作成および調整に役立つデータ フレームを基盤とする、高レベルの API 一式が提供されます。 [MLlib](https://spark.apache.org/mllib/) はスケーラブルな Spark の機械学習ライブラリであり、これにより分散環境でもモデリング機能を使用できます。
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) は、Azure でホストされるオープンソースの Spark サービスです。 Spark クラスターの Jupyter Scala Notebook もサポートされており、Spark SQL の対話型クエリを実行して、Azure BLOB ストレージに保管されているデータを変換、フィルター処理、視覚化することができます。 この記事でソリューションを提供したり、関連するプロットを表示してデータを視覚化したりする Scala コード スニペットは、Spark クラスターにインストールされた Jupyter Notebook で実行されます。 各トピックのモデリング手順には、各種モデルをトレーニング、評価、保存、および使用する方法を示すコードも含まれています。
 
@@ -368,7 +368,7 @@ Spark ML や MLlib のツリーベースのモデリング関数では、ビン�
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>カテゴリの特徴のインデックス作成とワンホット エンコードを実行する
 MLlib のモデリング関数と予測関数では、特徴のカテゴリ入力データを使用する前に、データのインデックスを作成するか、データをエンコードする必要があります。 ここでは、モデリング関数への入力用に、カテゴリの特徴のインデックスを作成するか、特徴をエンコードする方法について説明します。
 
-モデルの応じて、さまざまな方法でモデルのインデックス化またはエンコードを実行する必要があります。 たとえば、ロジスティック回帰モデルと線形回帰モデルでは、ワンホット エンコードを行う必要があります。 特徴に 3 つのカテゴリがある場合は、3 つの特徴列に展開できます。 各列には、観測のカテゴリに応じて 0 または 1 が含まれます。 MLlib には、ワンホット エンコードを実行する [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。 このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。 このエンコードにより、特徴を数値化する必要があるアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
+モデルの応じて、さまざまな方法でモデルのインデックス化またはエンコードを実行する必要があります。 たとえば、ロジスティック回帰モデルと線形回帰モデルでは、ワンホット エンコードを行う必要があります。 特徴に 3 つのカテゴリがある場合は、3 つの特徴列に展開できます。 各列には、観測のカテゴリに応じて 0 または 1 が含まれます。 MLlib には、ワンホット エンコードを実行する [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。 このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。 このエンコードにより、特徴を数値化する必要があるアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
 
 ここでは、例を示すために文字列である 4 つの変数だけを変換します。 数値で表される他の変数 (weekday など) で、カテゴリ変数としてインデックスを作成することもできます。
 
@@ -853,7 +853,7 @@ Python matplotlib を使用してプロットを作成します。
 ### <a name="create-a-gbt-regression-model"></a>GBT 回帰モデルを作成する
 次に、Spark ML の `GBTRegressor()` 関数を使用して GBT 回帰モデルを作成し、テスト データでモデルを評価します。
 
-[勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT は、回帰および分類に使用できます。 カテゴリの特徴を処理可能ですが特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類設定でも使用できます。
+[勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT は、回帰および分類に使用できます。 カテゴリの特徴を処理可能ですが特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類設定でも使用できます。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

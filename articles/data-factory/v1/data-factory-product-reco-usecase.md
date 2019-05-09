@@ -9,17 +9,16 @@ ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a940b1d2184961d907f72ad072270dad3571e844
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229255"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540132"
 ---
 # <a name="use-case---product-recommendations"></a>使用事例 - 製品に関する推奨事項
 Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。  このスイートの詳細については、 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) のページを参照してください。 このドキュメントでは、Azure ユーザーが Azure Data Factory と他の Cortana Intelligence コンポーネント サービスを使用して、既に解決および実装している一般的な使用事例について説明します。
@@ -51,7 +50,7 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 
 オンライン小売業者の Web では、毎日 GB 単位の未加工の Web ログ ファイルが半構造ファイルとして生成されます。 未加工の Web ログ ファイルと、顧客および製品のカタログ情報は、Data Factory のグローバルにデプロイされたサービスとしてのデータ移動機能を使用して、Azure BLOB ストレージに定期的に取り込まれます。 長期保存のために、1 日の未加工のログ ファイルは (年月別に) 分割され、BLOB ストレージに保存されます。  [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) は、未加工のログ ファイルを分割し、BLOB ストレージに保存し、取り込んだログを Hive および Pig スクリプトを使用して処理するために使用されます。 その後、分割された Web ログ データは、機械学習推奨システムに必要な入力を抽出するために処理され、個人用に設定された製品推奨が生成されます。
 
-この例の機械学習に使用されている推奨システムは、 [Apache Mahout](http://mahout.apache.org/)製のオープン ソースの機械学習推奨プラットフォームです。  任意の [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) またはカスタム モデルをシナリオに適用することができます。  Mahout モデルは、全体的な使用パターンに基づいて Web サイトのアイテム間の類似性を推測し、個々のユーザーに基づいて個人用に設定された推奨を生成するために使用されます。
+この例の機械学習に使用されている推奨システムは、 [Apache Mahout](https://mahout.apache.org/)製のオープン ソースの機械学習推奨プラットフォームです。  任意の [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) またはカスタム モデルをシナリオに適用することができます。  Mahout モデルは、全体的な使用パターンに基づいて Web サイトのアイテム間の類似性を推測し、個々のユーザーに基づいて個人用に設定された推奨を生成するために使用されます。
 
 最後に、個人用に設定された製品の推奨事項の結果セットは、リレーショナル データ マートに移動され、小売業者の Web サイトに使用されます。  また、別のアプリケーションで BLOB ストレージから結果セットに直接アクセスしたり、別の消費者と使用事例のために他のストアに結果セットを移動したりすることもできます。
 

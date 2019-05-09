@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 0579b1e21e714e25e197cb5abf46793a38978d06
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 355fe134939b26c51d6e03368f782845628a6b96
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755671"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738898"
 ---
 クライアント アプリケーションは、発話がアプリケーションにとって無意味または不適切なものでないかどうかを把握する必要があります。 **None** 意図は、発話がクライアント アプリケーションから返答できないものであるかどうかを判断するための作成プロセスの一部として、各アプリケーションに追加されます。
 

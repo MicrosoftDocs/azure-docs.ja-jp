@@ -1,20 +1,18 @@
 ---
 title: SQL API 用の Azure Cosmos DB グローバル分散チュートリアル
 description: SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
-services: cosmos-db
-keywords: グローバル分散
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: rafats
-ms.custom: mvc
-ms.openlocfilehash: 8bef38aca9c14dbddb30b57871267490bc03e00f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.author: rimman
+ms.reviewer: sngun
+ms.openlocfilehash: 19e0dd8a60155272f2e338c760db409d20a9f755
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863484"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157243"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
 
@@ -94,7 +92,7 @@ SDK はコードに変更を加えることなく使用できます。 この場
 
 NodeJS/Javascript のコード例を以下に示します。 Python と Java では同じパターンを使用します。
 
-```java
+```JavaScript
 // Creating a ConnectionPolicy object
 var connectionPolicy = new DocumentBase.ConnectionPolicy();
 
@@ -108,7 +106,7 @@ connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
 ```
 
-## <a name="rest"></a>REST
+## <a name="rest"></a>REST ()
 データベース アカウントが複数リージョンで利用できるようになったら、クライアントは次の URI に対して GET 要求を実行してその可用性を照会できます。
 
     https://{databaseaccount}.documents.azure.com/

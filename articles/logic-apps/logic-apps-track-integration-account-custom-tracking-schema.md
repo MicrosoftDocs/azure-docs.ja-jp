@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: 68c5d6e68562d4027c102e1bde42c775648e58c4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124845"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192386"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Azure Logic Apps でエンド ツー エンドのワークフローを監視するカスタム追跡スキーマを作成する
 
@@ -84,4 +84,4 @@ B2B プロトコル追跡スキーマ について詳しくは、次のページ
 ## <a name="next-steps"></a>次の手順
 
 * [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報
-* [Log Analytics での B2B メッセージの追跡方法](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報
+* [Azure Monitor ログでの B2B メッセージの追跡](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)について学習します

@@ -1,14 +1,12 @@
 ---
-title: 仮想ネットワークの作成 - クイック スタート - Azure Portal | Microsoft Docs
+title: 仮想ネットワークの作成 - クイック スタート - Azure portal
+titlesuffix: Azure Virtual Network
 description: このクイック スタートでは、Azure Portal を使用した仮想ネットワークの作成について説明します。 仮想ネットワークによって、仮想マシンなどの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: quickstart
@@ -16,13 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: d627d54686cb40714e9e8574ceae56a8900cb45e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269467"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020831"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>クイック スタート:Azure ポータルを使用した仮想ネットワークの作成
 
@@ -38,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[仮想ネットワーク]** の順に選択します。
 
-1. **[仮想ネットワークの作成]** で、次の情報を入力または選択します。
+1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
     | Setting | 値 |
     | ------- | ----- |
@@ -60,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 1. 画面の左上で、**[リソースの作成]** > **[Compute]** > **[Windows Server 2016 Datacenter]** の順に選択します。
 
-1. **[Create a virtual machine - Basics]\(仮想マシンの作成 - Basic\)** で次の情報を入力または選択します。
+1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
     | Setting | 値 |
     | ------- | ----- |
@@ -82,7 +79,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | **コスト削減** |  |
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
 
-1. **[Next : Disks]\(次へ : Disk\)** を選択します。
+1. **[次へ :Disks]\(次へ : Disk\)** を選択します。
 
 1. **[Create a virtual machine - Disks]\(仮想マシンの作成 - Disk\)** で、既定値のままにし、**[Next : Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -98,16 +95,16 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 1. **[Next : Management]\(次へ : 管理\)** を選択します。
 
-1. **[Create a virtual machine - Management]\(仮想マシンの作成 - 管理\)** の **[診断ストレージ アカウント]** で **[新規作成]** を選択します。
+1. **[仮想マシンの作成 - 管理]** の **[診断ストレージ アカウント]** で **[新規作成]** を選択します。
 
-1. **[ストレージ アカウントの作成]** で、以下を選択します。
+1. **[ストレージ アカウントの作成]** に次の情報を入力または選択します。
 
     | Setting | 値 |
     | ------- | ----- |
     | Name | 「*myvmstorageaccount*」と入力します。 |
-    | アカウントの種類 | 既定値 **[(汎用 v1) ストレージ]** のままにします。 |
-    | [パフォーマンス] | 既定値 **[Standard]** をそのまま使用します。 |
-    | レプリケーション | 既定値 **[ローカル冗長ストレージ (LRS)]** をそのまま使用します。 |
+    | アカウントの種類 | 既定値 **[ストレージ (汎用 v1)]** のままにします。 |
+    | パフォーマンス | 既定値 **[標準]** のままにします。 |
+    | レプリケーション | 既定値 **[ローカル冗長ストレージ (LRS)]** のままにします。 |
 
 1. **[OK]** を選択します。
 

@@ -57,7 +57,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ### <a name="parameters"></a>parameters  
   
-|パラメーター|[説明]|  
+|パラメーター|説明|  
 |---------------|-----------------|  
 |appId|アプリケーションの ID。|  
   
@@ -201,7 +201,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ### <a name="parameters"></a>parameters  
   
-|パラメーター|[説明]|  
+|パラメーター|説明|  
 |---------------|-----------------|  
 |subscriptionId|キャンセルするサブスクリプションの ID。|  
 |cancelUrl|サブスクリプション キャンセル URL。|  

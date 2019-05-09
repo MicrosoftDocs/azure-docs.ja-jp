@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 11/16/2018
+ms.date: 02/11/2019
 ms.author: stbaron
-ms.openlocfilehash: 7121087d9d9699a73b88e07599f70e0c7c40c1eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6054b33e4068d36c5bfbb80120086a92a03525c8
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308282"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097510"
 ---
 # <a name="azure-status"></a>Azure の状態
-[Azure の状態](https://azure.microsoft.com/status/)により、Azure サービスの正常性をグローバルに確認できるビューが提供されます。 Azure の状態を利用し、サービスの可用性に関する最新情報を取得できます。 すべてのユーザーが Azure の状態にアクセス可能で、サービスの正常性について報告するすべてのサービスを表示できます。 
+[Azure の状態](https://azure.microsoft.com/status/)により、Azure サービスおよびリージョンの正常性のグローバルなビューが提供されます。 Azure の状態を利用し、サービスの可用性に関する最新情報を取得できます。 Azure の状態を使用すると、そのサービス正常性や、広範囲に影響を与えるインシデントを報告するすべてのサービスを誰でも表示できます。 ただし、現在の Azure ユーザーは、[Azure Service Health](https://aka.ms/azureservicehealth) でパーソナライズされたエクスペリエンスを使用することを強くお勧めします。 Azure Service Health には、すべての停止、今後予定されている計画メンテナンス アクティビティ、およびサービスに関する勧告が含まれています。
 
 ![Azure の状態のページ](./media/azure-status-overview/azure-status.PNG)
 

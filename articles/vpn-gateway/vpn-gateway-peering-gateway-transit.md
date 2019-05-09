@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 0d57e251b241297c461b117edec8fee6316b337b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098034"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492347"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
 
@@ -37,10 +37,9 @@ ms.locfileid: "53098034"
 1. 2 つの仮想ネットワークの両方が Resource Manager デプロイ モデルを使用している
 2. スポーク仮想ネットワークがクラシックであり、ゲートウェイを含むハブ仮想ネットワークが Resource Manager である
 
-> [!IMPORTANT]
-> ゲートウェイ転送は、現時点では、グローバルな仮想ネットワーク ピアリングではサポートされていません。
-
 ## <a name="requirements"></a>必要条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 このドキュメントの例では、次のリソースを作成する必要があります。
 
@@ -106,16 +105,16 @@ $SpokeRM = "Spoke-RM"
 $HubRG   = "HubRG1"
 $HubRM   = "Hub-RM"
 
-$spokermvnet = Get-AzureRmVirtualNetwork -Name $SpokeRM -ResourceGroup $SpokeRG
-$hubrmvnet   = Get-AzureRmVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
+$spokermvnet = Get-AzVirtualNetwork -Name $SpokeRM -ResourceGroup $SpokeRG
+$hubrmvnet   = Get-AzVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
 
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name SpokeRMtoHubRM `
   -VirtualNetwork $spokermvnet `
   -RemoteVirtualNetworkId $hubrmvnet.Id `
   -UseRemoteGateways
 
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name HubRMToSpokeRM `
   -VirtualNetwork $hubrmvnet `
   -RemoteVirtualNetworkId $spokermvnet.Id `
@@ -127,13 +126,13 @@ Add-AzureRmVirtualNetworkPeering `
 操作が Hub-RM 仮想ネットワークのみに適用されることを除いて、手順は Resource Manager の例に似ています。
 
 1. Azure Portal で Hub-RM から Spoke-RM への仮想ネットワーク ピアリングを作成するか、そのように更新します。 Hub-RM 仮想ネットワーク リソースに移動し、[ピア リング]、[追加]の順にクリックします。
-    - 仮想ネットワークのデプロイ モデルとして [クラシック] オプションを設定します。
-    - 対応するサブスクリプションの [Spoke-RM] 仮想ネットワークを選択します
-    - [仮想ネットワーク アクセスを許可する] が [有効] になっていることを確認します。
-    - **[ゲートウェイ転送を許可する]** オプションを設定します。
-    - [OK] をクリックします。
+   - 仮想ネットワークのデプロイ モデルとして [クラシック] オプションを設定します。
+   - 対応するサブスクリプションの [Spoke-RM] 仮想ネットワークを選択します
+   - [仮想ネットワーク アクセスを許可する] が [有効] になっていることを確認します。
+   - **[ゲートウェイ転送を許可する]** オプションを設定します。
+   - [OK] をクリックします。
 
-    ![hubrm-to-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
+     ![hubrm-to-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
 
 2. ピアリングが既に作成されている場合は、ピアリング リソースに移動し、手順 (1) で示したスクリーン ショットのように **[ゲートウェイ転送を許可する]** オプションを有効にします。
 
@@ -151,9 +150,9 @@ Add-AzureRmVirtualNetworkPeering `
 $HubRG   = "HubRG1"
 $HubRM   = "Hub-RM"
 
-$hubrmvnet   = Get-AzureRmVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
+$hubrmvnet   = Get-AzVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
 
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name HubRMToSpokeRM `
   -VirtualNetwork $hubrmvnet `
   -RemoteVirtualNetworkId "/subscriptions/<subscription Id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/Spoke-Classic" `

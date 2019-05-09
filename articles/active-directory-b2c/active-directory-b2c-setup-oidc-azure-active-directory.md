@@ -1,28 +1,28 @@
 ---
-title: Azure Active Directory B2C で Azure Active Directory 組織用のサインインを設定する | Microsoft Docs
+title: Azure Active Directory 組織用のサインインを設定する - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: c48e4696d572b87a4e1553f9d4a2dc9921361388
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: 0da27c5ce872d1b4e1b4c63f6f4207bb5ca4d6ef
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719914"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428076"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
 >[!NOTE]
 > この機能はパブリック プレビュー段階にあります。 運用環境で、この機能を使用しないでください。
 
-この記事では、Azure Active Directory (Azure AD) B2C のユーザー フリーを使用して、特定の Azure Active Directory (Azure AD) 組織のユーザーがサインインできるようにする方法について説明します。
+Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directory-b2c-reference-oauth-code.md)として Azure AD を使用するには、それを表すアプリケーションを作成する必要があります。 この記事では、Azure AD B2C のユーザー フローを使用して、特定の Azure AD 組織のユーザーがサインインできるようにする方法について説明します。
 
 ## <a name="create-an-azure-ad-app"></a>Azure AD アプリの作成
 

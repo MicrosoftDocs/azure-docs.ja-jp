@@ -7,19 +7,20 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 7fb3c1c3e8dbff54802915a69033001cc9378670
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ffb5da8abd9673d4922aeb4854b3dfa80349f284
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262165"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59268332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>チュートリアル:Azure Active Directory と TargetProcess の統合
 
@@ -77,10 +78,11 @@ Azure AD への TargetProcess の統合を構成するには、ギャラリー�
 TargetProcess で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[TargetProcess のテスト ユーザーの作成](#create-targetprocess-test-user)** - TargetProcess で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+2. **[TargetProcess のシングル サインオンの構成](#configure-targetprocess-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[TargetProcess のテスト ユーザーの作成](#create-targetprocess-test-user)** - TargetProcess で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -104,12 +106,12 @@ TargetProcess で Azure AD シングル サインオンを構成するには、�
 
     ![[TargetProcess のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.tpondemand.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.tpondemand.com/`
 
-    b. **[識別子]** ボックスに、`https://<subdomain>.tpondemand.com/` の形式で URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.tpondemand.com/`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。  これらの値を取得するには、[TargetProcess クライアント サポート チーム](mailto:support@targetprocess.com)に連絡してください。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[TargetProcess クライアント サポート チーム](mailto:support@targetprocess.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -125,44 +127,43 @@ TargetProcess で Azure AD シングル サインオンを構成するには、�
 
     c. ログアウト URL
 
-7. **TargetProcess** 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護されたサインイン拡張機能**をインストールする必要があります。
+### <a name="configure-targetprocess-single-sign-on"></a>TargetProcess のシングル サインオンの構成
+
+1. **TargetProcess** 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護されたサインイン拡張機能**をインストールする必要があります。
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-8. ブラウザーに拡張機能を追加した後、**[Setup TargetProcess] \(TargetProcess のセットアップ\)** をクリックすると、TargetProcess アプリケーションに移動します。 そこから、管理者資格情報を提供して TargetProcess にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 9 ～ 13 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、**[Setup TargetProcess] \(TargetProcess のセットアップ\)** をクリックすると、TargetProcess アプリケーションに移動します。 そこから、管理者資格情報を提供して TargetProcess にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 7 が自動化されます。
 
     **アプリケーションを手動で構成する場合は、次の手順を実行します。**
 
-9. 管理者として TargetProcess アプリケーションにサインオンします。
+3. 管理者として TargetProcess アプリケーションにサインオンします。
 
-10. 上部のメニューで **[セットアップ]** をクリックします。
+4. 上部のメニューで **[セットアップ]** をクリックします。
 
     ![セットアップ](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-11. **[設定]** をクリックします。
+5. **[Settings]\(設定\)** タブをクリックします。
 
     ![設定](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-12. **[Single Sign-on]** をクリックします。
+6. **[Single Sign-on]\(シングル サインオン\)** タブをクリックします。
 
     ![シングル サインオンのクリック](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-13. [Single Sign-on] の設定ダイアログで、次の手順を実行します。
+7. [Single Sign-on] の設定ダイアログで、次の手順を実行します。
 
     ![Configure single sign-on](./media/target-process-tutorial/tutorial_target_process_08.png)
 
     a. **[Enable Single Sign-on (シングル サインオンを有効にする)]** をクリックします。
 
-    b. **[サインオン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    b. **[Sign-on URL]\(サインオン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
     c. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[証明書]** ボックスに貼り付けます。
 
     d. **[Enable JIT Provisioning]** をクリックします。
 
     e. **[Save]** をクリックします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -182,7 +183,7 @@ TargetProcess で Azure AD シングル サインオンを構成するには、�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -197,7 +198,7 @@ TargetProcess で Azure AD シングル サインオンを構成するには、�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「**TargetProcess**」と入力して選択します。
+2. アプリケーションの一覧で **[TargetProcess]** を選択します。
 
     ![アプリケーションの一覧の [TargetProcess] リンク](common/all-applications.png)
 
@@ -217,7 +218,7 @@ TargetProcess で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="create-targetprocess-test-user"></a>TargetProcess テスト ユーザーの作成
 
-このセクションの目的は、TargetProcess で Britta Simon というユーザーを作成することです。 TargetProcess では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない TargetProcess ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
+このセクションでは、Britta Simon というユーザーを TargetProcess に作成します。 TargetProcess では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 TargetProcess にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、 [TargetProcess サポート チーム](mailto:support@targetprocess.com)にお問い合わせください。
@@ -232,6 +233,6 @@ TargetProcess で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

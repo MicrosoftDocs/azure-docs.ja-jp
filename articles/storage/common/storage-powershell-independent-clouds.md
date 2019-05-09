@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.subservice: common
+ms.openlocfilehash: 6a3fe8c7235a0cf475f188a3379e372cd777ce8c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140975"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477643"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
 
@@ -23,6 +23,8 @@ ms.locfileid: "42140975"
 * [中国の 21Vianet が運営する Azure China Cloud](http://www.windowsazure.cn/)
 * [Azure German Cloud](../../germany/germany-welcome.md)
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="using-an-independent-cloud"></a>独立したクラウドの使用 
 
 いずれかの独立したクラウドの Azure Storage を使用するには、Azure パブリックではなく、そのクラウドに接続します。 Azure パブリックではなく、いずれかの独立したクラウドを使用するには:
@@ -31,33 +33,33 @@ ms.locfileid: "42140975"
 * 使用可能なリージョンを判断して、そのリージョンを使用します。
 * Azure パブリックとは異なる適切なエンドポイント サフィックスを使用します。
 
-例を実行するには、Azure PowerShell モジュール バージョン 4.4.0 以降が必要です。 PowerShell ウィンドウで、`Get-Module -ListAvailable AzureRM` を実行して、バージョンを確認します。 何も表示されない、またはアップグレードが必要な場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
+例を実行するには、Azure PowerShell モジュール Az バージョン 0.7 以降が必要です。 PowerShell ウィンドウで、`Get-Module -ListAvailable Az` を実行して、バージョンを確認します。 何も表示されない、またはアップグレードが必要な場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-[Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
+[Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
    
 ```powershell
-Get-AzureRmEnvironment
+Get-AzEnvironment
 ```
 
 接続するクラウドにアクセスできるアカウントにサインインし、環境を設定します。 次の例は、Azure Government Cloud を使用するアカウントにサインインする方法を示しています。   
 
 ```powershell
-Connect-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzAccount –Environment AzureUSGovernment
 ```
 
 China Cloud にアクセスするには、**AzureChinaCloud** 環境を使用します。 German Cloud にアクセスするには、**AzureGermanCloud** を使用します。
 
-この時点で、ストレージ アカウントまたは別のリソースを作成する場所の一覧が必要な場合は、選択したクラウドで使用できる場所を [Get AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) でクエリできます。
+この時点で、ストレージ アカウントまたは別のリソースを作成する場所の一覧が必要な場合は、選択したクラウドで使用できる場所を [Get-AzLocation](/powershell/module/az.resources/get-azlocation) でクエリできます。
 
 ```powershell
-Get-AzureRmLocation | select Location, DisplayName
+Get-AzLocation | select Location, DisplayName
 ```
 
 次の表は、German Cloud に対して返される場所を示しています。
 
-|Location | DisplayName |
+|場所 | DisplayName |
 |----|----|
 | germanycentral | ドイツ中部|
 | germanynortheast | ドイツ北東部 | 
@@ -67,14 +69,14 @@ Get-AzureRmLocation | select Location, DisplayName
 
 これらの環境でのエンドポイント サフィックスは、Azure パブリック エンドポイントとは異なります。 たとえば、Azure パブリックでの BLOB エンドポイント サフィックスは **blob.core.windows.net** です。 Government Cloud では、BLOB エンドポイント サフィックスは **blob.core.usgovcloudapi.net** です。 
 
-### <a name="get-endpoint-using-get-azurermenvironment"></a>Get-AzureRMEnvironment を使用してエンドポイントを取得する 
+### <a name="get-endpoint-using-get-azenvironment"></a>Get-AzEnvironment を使用してエンドポイントを取得する 
 
-[Get AzureRMEnvironment](/powershell/module/azurerm.profile/get-azurermenvironment) を使用して、エンドポイント サフィックスを取得します。 エンドポイントは、環境の *StorageEndpointSuffix* プロパティです。 この処理方法を、次のコード スニペットで示します。 これらすべてのコマンドは、"core.cloudapp.net" や "core.cloudapi.de" などを返します。これをストレージ サービスに追加して、このサービスにアクセスします。 たとえば、"queue.core.cloudapi.de" は、German Cloud 内のキュー サービスにアクセスします。
+[Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) を使用してエンドポイントを取得します。 エンドポイントは、環境の *StorageEndpointSuffix* プロパティです。 この処理方法を、次のコード スニペットで示します。 これらすべてのコマンドは、"core.cloudapp.net" や "core.cloudapi.de" などを返します。これをストレージ サービスに追加して、このサービスにアクセスします。 たとえば、"queue.core.cloudapi.de" は、German Cloud 内のキュー サービスにアクセスします。
 
 次のコード スニペットは、すべての環境とそれぞれのエンドポイント サフィックスを取得します。
 
 ```powershell
-Get-AzureRmEnvironment | select Name, StorageEndpointSuffix 
+Get-AzEnvironment | select Name, StorageEndpointSuffix 
 ```
 
 このコマンドは、次の結果を返します。
@@ -86,10 +88,10 @@ Get-AzureRmEnvironment | select Name, StorageEndpointSuffix
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-指定した環境のすべてのプロパティを取得するには、**Get AzureRmEnvironment** を呼び出してクラウドの名前を指定します。 次のコード スニペットは、プロパティの一覧を返します。一覧から **StorageEndpointSuffix** を探します。 次の例は German Cloud に対するものです。
+指定した環境のすべてのプロパティを取得するには、**Get AzEnvironment** を呼び出してクラウドの名前を指定します。 次のコード スニペットは、プロパティの一覧を返します。一覧から **StorageEndpointSuffix** を探します。 次の例は German Cloud に対するものです。
 
 ```powershell
-Get-AzureRmEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud 
 ```
 
 結果は次のようになります。
@@ -111,7 +113,7 @@ Get-AzureRmEnvironment -Name AzureGermanCloud
 ストレージ エンドポイント サフィックス プロパティだけを取得するには、特定のクラウドを取得し、その 1 つのプロパティだけを要求します。
 
 ```powershell
-$environment = Get-AzureRmEnvironment -Name AzureGermanCloud
+$environment = Get-AzEnvironment -Name AzureGermanCloud
 Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
 ```
 
@@ -129,7 +131,7 @@ Storage Endpoint Suffix = core.cloudapi.de
 # Get a reference to the storage account.
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
-$storageAccount = Get-AzureRmStorageAccount `
+$storageAccount = Get-AzStorageAccount `
   -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
   # Output the endpoints.
@@ -157,7 +159,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 この演習用に新しいリソース グループとストレージ アカウントを作成した場合は、リソース グループを削除することですべてのアセットを削除できます。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この場合、作成されたストレージ アカウントとリソース グループ自体が削除されます。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

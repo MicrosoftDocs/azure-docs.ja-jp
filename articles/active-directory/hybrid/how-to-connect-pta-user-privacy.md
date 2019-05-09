@@ -5,23 +5,24 @@ services: active-directory
 keywords: Azure AD Connect パススルー認証, GDPR, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/23/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ef86c9ee00fdd4673774640d33eec93e2ead876d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f1a7b740a6b248a12fa3d95f85f602ef7a8b2fa5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193095"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098061"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>ユーザー プライバシーと Azure Active Directory パススルー認証
 
@@ -106,4 +107,4 @@ Foreach ($file in $files) {
 
 ## <a name="next-steps"></a>次の手順
 * [セキュリティ センターで Microsoft のプライバシー ポリシーを確認する](https://www.microsoft.com/trustcenter)
-- [**トラブルシューティング**](tshoot-connect-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。
+* [**トラブルシューティング**](tshoot-connect-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。

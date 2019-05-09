@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - Azure CLI を使用してカスタム ロールを作成する | Microsoft Docs
-description: Azure CLI を使用してカスタム ロールを作成してみましょう。
+title: チュートリアル - Azure CLI を使用して Azure リソースのカスタム ロールを作成する | Microsoft Docs
+description: Azure CLI を使用して Azure リソースのカスタム ロールを作成してみましょう。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -11,20 +11,20 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/12/2018
+ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 6302ae3bbb97f8f40733074b9d9dc708d10641ca
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: de1805d91f48b5718ecf293c2b8672ba40fb81a9
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322595"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588162"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-cli"></a>チュートリアル: Azure CLI を使用してカスタム ロールを作成する
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する
 
-[組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure CLI を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプション内のすべてを閲覧し、サポート チケットを開くこともできます。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure CLI を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプションの管理プレーンにすべてを表示することができ、サポート チケットを開くこともできます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * カスタム ロールの作成
@@ -38,8 +38,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを完了するには、以下が必要です。
 
-- カスタム ロールを作成するためのアクセス許可 ([所有者](built-in-roles.md#owner)、[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など)
-- ローカルにインストールされた [Azure CLI](/cli/azure/install-azure-cli)
+- [所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など、カスタム ロールを作成するためのアクセス許可
+- [Azure Cloud Shell](../cloud-shell/overview.md) または [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="sign-in-to-azure-cli"></a>Azure CLI へのサインイン
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Microsoft.Support リソース プロバイダー](resource-provider-operations.md#microsoftsupport)の操作一覧を確認します。 アクセス許可の作成に使用できる操作を知るための参考にしてください。
 
-    | 操作 | 説明 |
+    | Operation | 説明 |
     | --- | --- |
     | Microsoft.Support/register/action | サポート リソース プロバイダーに登録します。 |
     | Microsoft.Support/supportTickets/read | サポート チケットの詳細 (ステータス、重大度、連絡先の詳細、やり取りなど) を取得するか、サブスクリプション全体のサポート チケットの一覧を取得します。 |
@@ -61,28 +61,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ReaderSupportRole.json をエディターで開き、次の JSON を追加します。
 
-    各種のプロパティについては、「[カスタム ロール](custom-roles.md)」を参照してください。
+    各種のプロパティについては、「[Azure リソースのカスタム ロール](custom-roles.md)」を参照してください。
 
     ```json
     {
-        "Name":  "",
-        "IsCustom":  true,
-        "Description":  "",
-        "Actions":  [
-    
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/subscriptions/{subscriptionId1}"
-                             ]
+      "Name": "",
+      "IsCustom": true,
+      "Description": "",
+      "Actions": [],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/{subscriptionId1}"
+      ]
     }
     ```
     
@@ -109,25 +101,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ```json
     {
-        "Name":  "Reader Support Tickets",
-        "IsCustom":  true,
-        "Description":  "View everything in the subscription and also open support tickets.",
-        "Actions":  [
-                        "*/read",
-                        "Microsoft.Support/*"
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/subscriptions/00000000-0000-0000-0000-000000000000"
-                             ]
+      "Name": "Reader Support Tickets",
+      "IsCustom": true,
+      "Description": "View everything in the subscription and also open support tickets.",
+      "Actions": [
+        "*/read",
+        "Microsoft.Support/*"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
     }
     ```
     
@@ -221,26 +207,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ```json
     {
-        "Name":  "Reader Support Tickets",
-        "IsCustom":  true,
-        "Description":  "View everything in the subscription and also open support tickets.",
-        "Actions":  [
-                        "*/read",
-                        "Microsoft.Support/*",
-                        "Microsoft.Resources/deployments/*"
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/subscriptions/00000000-0000-0000-0000-000000000000"
-                             ]
+      "Name": "Reader Support Tickets",
+      "IsCustom": true,
+      "Description": "View everything in the subscription and also open support tickets.",
+      "Actions": [
+        "*/read",
+        "Microsoft.Support/*",
+        "Microsoft.Resources/deployments/*"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
     }
     ```
         
@@ -289,4 +269,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure CLI を使用してカスタム ロールを作成する](custom-roles-cli.md)
+> [Azure CLI を使用して Azure リソースのカスタム ロールを作成する](custom-roles-cli.md)

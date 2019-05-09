@@ -1,6 +1,6 @@
 ---
-title: PIM で Azure リソース ロールを割り当てられているユーザーを表示する | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールを割り当てられているユーザーを表示します。
+title: PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールのアクティビティおよび監査履歴を表示します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,55 +12,105 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
-ms.date: 03/30/2018
+ms.subservice: pim
+ms.date: 04/09/2019
 ms.author: rolyon
-ms.openlocfilehash: ce7c96d92938c4e3b4cc0b53271df48350083754
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 74607f6a746558238ead65036d708b515d370035
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465233"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492772"
 ---
-# <a name="view-who-has-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールを割り当てられているユーザーを表示する
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する
 
-組織内の Azure リソースに対するアクセス権を Azure Active Directory Privileged Identity Management (PIM) で管理、制御、監視できます。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure のロールベースのアクセス制御 (RBAC) 機能を利用する Azure portal 内のすべてのリソースで、Azure AD PIM のセキュリティおよびライフサイクル管理機能を利用できます。 
+組織内の Azure リソース ロールのアクティビティ、アクティブ化、および監査履歴を Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で表示できます。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure のロールベースのアクセス制御 (RBAC) 機能を利用する Azure portal 内のすべてのリソースで、PIM のセキュリティおよびライフサイクル管理機能を利用できます。
 
-## <a name="pim-for-azure-resources-helps-resource-administrators"></a>Azure リソース向けの PIM はリソース管理者に便利
+## <a name="view-activity-and-activations"></a>アクティビティとアクティブ化を表示する
 
-- 管理対象の Azure リソースに おいて、ロールが割り当てられているユーザーとグループを確認する
-- サブスクリプション、リソース グループなどのリソース管理のために、オンデマンドで "必要な時に必要な分だけ" のアクセスを有効にする
-- 新しい期限付きの割り当て設定により、割り当てられたユーザー/グループのリソース アクセスを自動的に期限切れにする
-- クイック タスクまたはオンコール スケジュールのために、一時的なリソース アクセスを割り当てる
-- 組み込みまたはカスタム ロールのリソース アクセスのために、多要素認証を適用する 
-- ユーザーのアクティブなセッション中にリソース アクティビティと相関関係のあるリソース アクセスに関するレポートを取得する
-- 新しいユーザーまたはグループがリソース アクセスの割り当てを受けたときや、そのようなユーザーまたはグループが資格のある割り当てをアクティブ化するときにアラートを取得する
+各リソースに対して特定のユーザーが行った操作を確認する場合、指定したアクティブ化期間に関連付けられている Azure リソース アクティビティを表示することができます。
 
-## <a name="view-activation-and-azure-resource-activity"></a>アクティブ化と Azure リソースのアクティビティを表示する
+1. **[Azure AD Privileged Identity Management]** を開きます。
 
-各リソースに対して特定のユーザーが実行した操作を確認する必要がある場合は、指定したアクティブ化期間に関連付けられている Azure リソース アクティビティを表示できます (適格なユーザーに限ります)。 最初に、[メンバー] ビューまたは特定のロールのメンバー一覧からユーザーを選択します。 結果には Azure リソースに対する日別のユーザーの操作と、同一期間の最近のロールのアクティブ化がグラフィカルに表示されます。
+1. **[Azure リソース]** をクリックします。
 
-![](media/azure-pim-resource-rbac/user-details.png)
+1. アクティビティとアクティブ化を表示するリソースをクリックします。
 
-特定のロールのアクティブ化を選択すると、ロールのアクティブ化の詳細とそのユーザーがアクティブな間に発生した、対応する Azure リソース アクティビティが表示されます。
+1. **[ロール]** または **[メンバー]** をクリックします。
 
-![](media/azure-pim-resource-rbac/audits.png)
+1. ユーザーをクリックします。
 
-## <a name="review-who-has-access-in-a-subscription"></a>サブスクリプションでアクセス権を持つユーザーをレビューする
+    日付ごとの Azure リソースに対するユーザー操作のグラフィカル ビューが表示されます。 その同じ期間での最近のロールのアクティブ化も表示されます。
 
-サブスクリプション内のロールの割り当てをレビューするには、左側のナビゲーションから [メンバー] タブを選択するかロールを選択して、メンバーをレビューする特定のロールを選択します。 
+    ![ユーザーの詳細](media/azure-pim-resource-rbac/rbac-user-details.png)
 
-既存のアクセス レビューを表示するには操作バーから [レビュー] を選択し、新しいレビューを作成するには [追加] を選択します。
+1. 特定のロールのアクティブ化をクリックして、詳細およびそのユーザーがアクティブな間に発生した、対応する Azure リソース アクティビティを表示します。
 
-![](media/azure-pim-resource-rbac/owner.png)
+    ![ロールのアクティブ化の選択](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
-アクセス レビューの詳細については、[こちら](pim-how-to-perform-security-review.md)を参照してください
+## <a name="export-role-assignments-with-children"></a>子を含むロールの割り当てをエクスポートする
 
->[!NOTE]
-現時点で、レビューはサブスクリプションのリソースでのみサポートされています。
+コンプライアンス要件により、ロールの割り当ての完全な一覧を監査担当者に提供しなければならない場合があります。 PIM を使用すると、特定のリソースでロールの割り当て (すべての子リソースのロールの割り当てを含む) のクエリを実行することができます。 以前は、管理者がサブスクリプションに対するロールの割り当ての完全な一覧を取得するのは困難で、特定のリソースごとにロールの割り当てをエクスポートする必要がありました。 PIM を使用すると、サブスクリプション内のアクティブかつ対象となるすべてのロールの割り当て (すべてのリソース グループとリソースに対するロールの割り当てを含む) についてクエリを実行できます。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure リソース]** をクリックします。
+
+1. サブスクリプションなど、ロールの割り当てをエクスポートするリソースをクリックします。
+
+1. **[メンバー]** をクリックします。
+
+1. **[エクスポート]** をクリックして [メンバーシップのエクスポート] ウィンドウを開きます。
+
+    ![[メンバーシップのエクスポート] ウィンドウ](media/azure-pim-resource-rbac/export-membership.png)
+
+1. **[すべてのメンバーのエクスポート]** をクリックして、すべてのロールの割り当てを CSV ファイルでエクスポートします。
+
+    ![CSV ファイルのエクスポート](media/azure-pim-resource-rbac/export-csv.png)
+
+## <a name="view-resource-audit-history"></a>リソースの監査履歴を表示する
+
+リソースの監査では、リソースのすべてのロール アクティビティのビューが提供されます。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure リソース]** をクリックします。
+
+1. 監査履歴を表示するリソースをクリックします。
+
+1. **[リソースの監査]** をクリックします。
+
+1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
+
+    ![リソースの監査のフィルター](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+
+1. **[監査の種類]** で **[アクティブ化 (割り当て済み + アクティブ化済み)]** を選択します。
+
+    ![アクティビティの詳細](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+
+1. **[操作]** の下で、ユーザーの **[(アクティビティ)]** をクリックして、そのユーザーの Azure リソースに対するアクティビティの詳細を表示します。
+
+    ![ユーザーのアクティビティの詳細](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+
+## <a name="view-my-audit"></a>自分の監査を表示する
+
+自分の監査を使用すると、個人のロール アクティビティを表示できます。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure リソース]** をクリックします。
+
+1. 監査履歴を表示するリソースをクリックします。
+
+1. **[自分の監査]** をクリックします。
+
+1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
+
+    ![個人のロール アクティビティ](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>次の手順
 
 - [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)
 - [PIM で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)
-- [Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)
+- [PIM で Azure AD ロールの監査履歴を表示する](pim-how-to-use-audit-log.md)

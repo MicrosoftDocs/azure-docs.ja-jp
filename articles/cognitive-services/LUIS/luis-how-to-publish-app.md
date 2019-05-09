@@ -4,21 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: アクティブな LUIS アプリの構築とテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/08/2019
 ms.author: diberry
-ms.openlocfilehash: 73788b05cad3abac19b1ef509f1250542d10dba2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 22bed877d853c7023f8efe6bfb3dd21b4aa4c8df
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136649"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873141"
 ---
-# <a name="publish-your-trained-app"></a>トレーニング済みのアプリを発行する
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
 アクティブな LUIS アプリの構築とテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。 
 
@@ -56,14 +56,12 @@ ms.locfileid: "53136649"
 
 Text Analytics キーを指定する必要はなく、Azure アカウントに対するこのサービスの課金はありません。 この設定を確認した後、設定は保持されます。 
 
-センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブな感情を示し、0 に近いほどネガティブな感情を示します。
+センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブなセンチメントを示し、0 に近いほどネガティブな感情を示します。 `positive`、`neutral`、`negative` のセンチメント ラベルは、サポートされているカルチャによって異なります。 現時点では、センチメント ラベルがサポートされているのは英語のみです。 
 
 感情分析での JSON エンドポイントの応答の詳細については、「[Sentiment analysis](luis-concept-data-extraction.md#sentiment-analysis)」(感情分析) をご覧ください。
 
-
-
 ## <a name="next-steps"></a>次の手順
 
-* LUIS に対する Azure サブスクリプションにキーを追加する方法と、Bing Spell Check キーを設定し、結果にすべての意図を含めるする方法については、[キーの管理](./luis-how-to-manage-keys.md)に関するページを参照してください。
+* LUIS に対する Azure サブスクリプションにキーを追加する方法と、Bing Spell Check キーを設定し、結果にすべての意図を含めるする方法については、[キーの管理](./luis-how-to-azure-subscription.md)に関するページを参照してください。
 * テスト コンソールでの発行済みアプリのテスト方法については、[アプリのトレーニングとテスト](luis-interactive-test.md)に関するページをご覧ください。
 

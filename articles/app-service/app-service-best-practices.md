@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 0a3570e8907369d5cefc1197eef60d682659d0ed
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: fc3749a9ebfbf0319a57b471b6fce9f62042ba27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261825"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849782"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)を使用するためのベスト プラクティスを概説します。 
@@ -39,7 +39,7 @@ Web アプリ、データベース、コンテンツやデータを保持する�
 ## <a name="CPUresources"></a>アプリが予想よりも多くの CPU リソースを消費している場合
 監視またはサービスの推奨事項の説明を基に、アプリが予想よりも多くの CPU リソースを消費していること、または CPU スパイクが繰り返し発生していることに気が付いた場合は、App Service プランのスケール アップまたはスケール アウトを検討してください。 アプリケーションがステートフルである場合は、スケール アップが唯一のオプションとなります。一方、アプリケーションがステートレスである場合、スケール アウトにより、柔軟性と拡張性を高めることができます。 
 
-"ステートフル" アプリケーション対 "ステートレス" アプリケーションについて詳しくは、次のビデオをご覧ください:「[Planning a Scalable End-to-End Multi-Tier Application on Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)」(Microsoft Azure Web App でスケーラブルなエンド ツー エンドの多層アプリケーションを計画する)。 App Service のスケール オプションおよび自動スケール オプションについて詳しくは、[Azure App Service での Web アプリのスケーリング](web-sites-scale.md)に関する記事をご覧ください。  
+"ステートフル" アプリケーション対 "ステートレス" アプリケーションについて詳しくは、次のビデオをご覧ください:「[Planning a Scalable End-to-End Multi-Tier Application on Azure App Service (Azure App Service でスケーラブルなエンド ツー エンドの多層アプリケーションを計画する)](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)」。 App Service のスケール オプションおよび自動スケール オプションについて詳しくは、[Azure App Service での Web アプリのスケーリング](web-sites-scale.md)に関する記事をご覧ください。  
 
 ## <a name="socketresources"></a>ソケット リソースを使い果たした場合
 送信 TCP 接続を使い果たしてしまう理由としては、一般的には、使っているライブラリが TCP 接続を再利用するように実装されていないことや、HTTP - Keep-Alive などの上位レベルのプロトコルが使われていないことなどが挙げられます。 App Service プランでアプリによって参照される各ライブラリのドキュメントを再確認し、送信接続が効率的に再利用されるようにコード内でライブラリが構成またはアクセスされるようにしてください。 また、ライブラリのドキュメントのガイダンスに従って適切に作成しリリースするか、接続のリークを防ぐためにクリーンアップを行ってください。 このようなクライアント ライブラリの調査中は、複数のインスタンスにスケール アウトすることで影響を軽減することができます。
@@ -51,8 +51,8 @@ Node.js と多数の送信 http 要求を処理する場合は、HTTP - Keep-Ali
 
 `http` または `https` パッケージの処理例を次に示します。
 
-```
-var request = https.request(options, function(response) {
+```javascript
+const request = https.request(options, function(response) {
     response.on('data', function() { /* do nothing */ });
 });
 ```
@@ -68,7 +68,7 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ## <a name="appbackup"></a>アプリのバックアップが失敗するようになった場合
 アプリのバックアップが失敗する場合は、最も一般的な理由として、無効なストレージ設定と無効なデータベース構成の 2 つが考えられます。 通常、このようなエラーはストレージまたはデータベースのリソースに変更が加えられた場合か、これらのリソースへのアクセス方法が変更された場合 (バックアップ設定で選択したデータベースに関して資格情報が更新された場合など) に発生します。 バックアップは、通常はスケジュールに応じて実行され、ストレージへのアクセス (バックアップしたファイルの出力用) とデータベースへのアクセス (バックアップに含まれる内容のコピーと読み取り用) が必要になります。 これらのリソースのいずれかにアクセスできないと、バックアップは常に失敗します。 
 
-バックアップ エラーが発生した場合は、最新のバックアップ結果を確認してどちらの種類のエラーが発生しているのかを把握します。 ストレージへのアクセス エラーが発生している場合は、バックアップ構成で使用しているストレージ設定を確認し、更新します。 データベースへのアクセス エラーが発生している場合は、アプリ設定に含まれる接続文字列を確認し、更新してから、必要なデータベースが正しく含まれるようにバックアップ構成を更新します。 アプリのバックアップについて詳しくは、[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)に関する記事をご覧ください。
+バックアップ エラーが発生した場合は、最新のバックアップ結果を確認してどちらの種類のエラーが発生しているのかを把握します。 ストレージへのアクセス エラーが発生している場合は、バックアップ構成で使用しているストレージ設定を確認し、更新します。 データベースへのアクセス エラーが発生している場合は、アプリ設定に含まれる接続文字列を確認し、更新してから、必要なデータベースが正しく含まれるようにバックアップ構成を更新します。 アプリのバックアップについて詳しくは、[Azure App Service での Web アプリのバックアップ](manage-backup.md)に関する記事をご覧ください。
 
 ## <a name="nodejs"></a>新しい Node.js アプリを Azure App Service にデプロイする場合
 Node.js アプリ向けの Azure App Service の既定の構成は、最も一般的なアプリのニーズに最も合うように設計されています。 Node.js アプリの構成で、パーソナライズされたチューニングの利点を活用してパフォーマンスの向上または CPU/メモリ/ネットワーク リソースのリソース使用量の最適化を行う場合には、「[Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)」をご覧ください。 この記事では、Node.js アプリでの構成に必要となる可能性のある iisnode 設定について、また、アプリが直面する可能性のあるさまざまなシナリオや問題を説明し、これらの問題に対処する方法が示されています。

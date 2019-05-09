@@ -2,7 +2,7 @@
 title: Durable Functions での外部イベントの処理 - Azure
 description: Azure Functions の Durable Functions 拡張機能で外部イベントを処理する方法について説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 977123459bcf9bb10c6b7ecf5d7a364f60564c48
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: eb024e11b78d13d5ab4544c634acef2ade8141c2
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437080"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608984"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
 
@@ -191,10 +191,10 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-内部的には、`RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) は、待機オーケストレーター関数によって取得されるメッセージをエンキューします。
+内部的には、`RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) は、待機オーケストレーター関数によって取得されるメッセージをエンキューします。 指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージがインメモリ キューに追加されます。 オーケストレーション インスタンスが後でその "*イベント名*" のリッスンを開始した場合、キューにイベント メッセージがあるかどうかを確認します。
 
-> [!WARNING]
-> 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、または指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージは破棄されます。 この動作の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-extension/issues/29)に関するトピックをご覧ください。
+> [!NOTE]
+> 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、イベント メッセージは破棄されます。 この動作の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-extension/issues/29)に関するトピックをご覧ください。 
 
 > [!WARNING]
 > JavaScript でローカルに開発する場合は、環境変数 `WEBSITE_HOSTNAME` を `localhost:<port>` に設定する必要があります。たとえば、 `DurableOrchestrationClient` のメソッドを使用するには、`localhost:7071` に設定します。 この要件の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-js/issues/28)に関するページをご覧ください。

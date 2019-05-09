@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 780247b5cfc70a333bac640f2e478e72f820b1f3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1d886e146e9e18eb735e6f88d2cb2c1a4a472924
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266426"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996880"
 ---
-# <a name="how-to-restore-azure-cosmos-db-data-from-a-backup"></a>バックアップから Azure Cosmos DB データを復元する方法
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Azure Cosmos DB でバックアップからデータを復元する 
 
-データベースまたはコンテナーを誤って削除した場合は、[サポート チケットを申請するか]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)、[Azure サポートに連絡して]( https://azure.microsoft.com/support/options/)、自動オンライン バックアップからデータを復元できます。 Azure サポートは、**Standard**、**Developer、またはそれよりも高度な特定のプランのみで利用可能です。 Azure サポートは、**Basic** プランでは利用できません。 さまざまなサポート プランについては、「[Azure のサポート プラン](https://azure.microsoft.com/support/plans/)」ページを参照してください。 
+データベースまたはコンテナーを誤って削除した場合は、[サポート チケットを申請するか]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)、[Azure サポートに連絡して]( https://azure.microsoft.com/support/options/)、自動オンライン バックアップからデータを復元できます。 Azure サポートは、**Standard**、**Developer**、またはそれよりも高度な特定のプランのみで利用可能です。 Azure サポートは、**Basic** プランでは利用できません。 さまざまなサポート プランについては、「[Azure のサポート プラン](https://azure.microsoft.com/support/plans/)」ページを参照してください。 
 
 バックアップの特定のスナップショットを復元するには、該当のスナップショットのバックアップ サイクル期間中にデータが利用可能であることが、Azure Cosmos DB から求められます。
 
@@ -33,6 +33,11 @@ ms.locfileid: "52266426"
 * 1 つ以上のデータベースが削除された場合は、Azure Cosmos データベース名だけでなく Azure Cosmos アカウントも提示して、同じ名前の新しいデータベースが存在するかどうかを明確にする必要があります。
 
 * 1 つ以上のコンテナーが削除された場合は、Azure Cosmos アカウント名、データベース名、およびコンテナー名を提示する必要があります。 そうすることで、同じ名前のコンテナーが存在するかどうかを明確にします。
+
+* 誤ってデータを削除した場合またはデータが破損した場合は、Azure Cosmos DB チームがバックアップからのデータの復元をサポートできるように、8 時間以内に [Azure サポート](https://azure.microsoft.com/support/options/)に連絡してください。
+  
+  * 誤ってデータベースまたはコンテナーを削除した場合は、重要度 B または重要度 C の Azure サポート ケースを開きます。 
+  * 誤ってコンテナー内でいくつかのドキュメントを削除または破損させた場合は、重要度 A の Azure サポート ケースを開きます。 
 
 データの破損が発生したときに、コンテナー内のドキュメントが変更または削除された場合は、**できるだけ迅速にコンテナーを削除**してください。 コンテナーを削除することで、Azure Cosmos DB でのバックアップの上書きを防止できます。 何らかの理由により削除ができない場合は、できるだけ迅速にチケットを申請する必要があります。 Azure Cosmos アカウント名、データベース名、コレクション名に加えて、データが復元可能な特定の時点を指定する必要があります。 その時点で利用可能な最善のバックアップを特定できるように、できるだけ厳密に示すことが重要です。 また、UTC で時間を指定することも重要です。 
 

@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Azure SQL Data Warehouse へのデータの読み込み | Microsoft Docs'
+title: チュートリアル:Azure SQL Data Warehouse へのデータの読み込み | Microsoft Docs
 description: チュートリアルでは、Azure Portal と SQL Server Management Studio を使って、パブリック Azure Blob から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。
 services: sql-data-warehouse
 author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 57803d6b83b71e65064c4ec701ed5b7e7607321f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 44ad37120034d59161fe3b5f0ed521fc6f630b0f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286935"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454336"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>チュートリアル: Azure SQL Data Warehouse へのデータの読み込み
+# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのデータの読み込み
 
 このチュートリアルでは、PolyBase を使用して、Azure Blob Storage から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
 
@@ -61,7 +61,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
    | ------- | --------------- | ----------- | 
    | **データベース名** | SampleDW | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **[リソース グループ]** | SampleRG | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+   | **リソース グループ** | SampleRG | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
    | **[ソースの選択]** | 空のデータベース | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの 1 つの種類であることに注意してください。|
 
     ![データ ウェアハウスを作成する](media/load-data-wideworldimportersdw/create-data-warehouse.png)

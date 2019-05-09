@@ -1,12 +1,11 @@
 ---
-title: DMZ で使用する Azure サンプル アプリケーション | Microsoft Docs
+title: DMZ で使用する Azure サンプル アプリケーション
+titlesuffix: Azure Virtual Network
 description: トラフィック フローのシナリオをテストするには、DMZ を作成した後で、この簡単な Web アプリケーションをデプロイします。
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: 60340ab7-b82b-40e0-bd87-83e41fe4519c
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 1ccdb8254551d0009a71cc047b8399a539edb8e2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6753b3a76ff5d3e0266f238d8e354943dec694a8
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866852"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480460"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>DMZ で使用するサンプル アプリケーション
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -31,7 +30,7 @@ ms.locfileid: "52866852"
 ## <a name="firewall-rule-to-allow-icmp"></a>ICMP を許可するファイアウォール ルール
 この単純な PowerShell ステートメントを任意の Windows VM で実行することで、ICMP (Ping) トラフィックを許可することができます。 このファイアウォールの更新により、ping プロトコルが Windows ファイアウォールを通過するのを許可して、テストやトラブルシューティングを容易にすることができます (ほとんどの Linux ディストリビューションでは、ICMP が既定でオンになっています)。
 
-```PowerShell
+```powershell
 # Turn On ICMPv4
 New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
@@ -43,14 +42,14 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 このスクリプトでは、次のことが行われます。
 
 1. テストを簡単にするために、ローカル サーバーの Windows ファイアウォールで IMCPv4 (Ping) を開きます。
-2. IIS と .Net Framework v4.5 をインストールします。
+2. IIS と .NET Framework v4.5 をインストールします。
 3. ASP.NET Web ページと Web.config ファイルを作成します。
 4. 既定のアプリケーション プールを変更して、ファイルへのアクセスを容易にます。
 5. 管理者アカウントとパスワードに [匿名ユーザー] を設定します。
 
 この PowerShell スクリプトは、RDP が IIS01 に転送されるときに、ローカルに実行する必要があります。
 
-```PowerShell
+```powershell
 # IIS Server Post Build Config Script
 # Get Admin Account and Password
     Write-Host "Please enter the admin account information used to create this VM:" -ForegroundColor Cyan
@@ -62,7 +61,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 
 # Install IIS
-    Write-Host "Installing IIS and .Net 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
+    Write-Host "Installing IIS and .NET 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
     add-windowsfeature Web-Server, Web-WebServer, Web-Common-Http, Web-Default-Doc, Web-Dir-Browsing, Web-Http-Errors, Web-Static-Content, Web-Health, Web-Http-Logging, Web-Performance, Web-Stat-Compression, Web-Security, Web-Filtering, Web-App-Dev, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Net-Ext, Web-Net-Ext45, Web-Asp-Net45, Web-Mgmt-Tools, Web-Mgmt-Console
 
 # Create Web App Pages
@@ -95,9 +94,9 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
           <br />
           The following sections show:
           <ul style="margin-top: 0px;">
-            <li> Local Server Time - Shows if this page is or isnt cached anywhere</li>
+            <li> Local Server Time - Shows if this page is or isn''t cached anywhere</li>
             <li> File Output - Shows that the web server is reaching AppVM01 on the backend subnet and successfully returning content</li>
-            <li> Image from the Internet - Doesnt really show anything, but it made me happy to see this when the app worked</li>
+            <li> Image from the Internet - Doesn''t really show anything, but it made me happy to see this when the app worked</li>
           </ul>
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>Local Web Server Time</b>: <asp:Label runat="server" ID="lblTime" /></div>
@@ -106,7 +105,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>Image File Linked from the Internet</b>:<br />
             <br />
-            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
+            <img src="https://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
         </div>
       </form>
     </body>
@@ -153,16 +152,16 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 2. Web サイト用のディレクトリを作成します。
 3. この Web ページによってリモートでアクセスされるテキスト ファイルを作成します。
 4. ディレクトリおよびファイルに対するアクセス許可を [匿名] に設定して、アクセスを許可します。
-5. [IE セキュリティ強化の構成] をオフにして、このサーバーから簡単に参照できるようにします。 
+5. [IE セキュリティ強化の構成] をオフにして、このサーバーから簡単に参照できるようにします。
 
 > [!IMPORTANT]
 > **ベスト プラクティス**: 運用サーバーでは [IE セキュリティ強化の構成] をオフにしないでください。運用サーバーから Web を閲覧することは一般的にお勧めできません。 さらに、匿名アクセス用にファイル アクセスを開くことはお勧めできませんが、ここでは、便宜上、開いています。
-> 
-> 
+>
+>
 
 この PowerShell スクリプトは、RDP が AppVM01 に転送されるときに、ローカルに実行する必要があります。 PowerShell は、正常に実行されるように、管理者として実行する必要があります。
 
-```PowerShell
+```powershell
 # AppVM01 Server Post Build Config Script
 # PowerShell must be run as Administrator for Net Share commands to work
 

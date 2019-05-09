@@ -3,19 +3,19 @@ title: Azure Active Directory B2C カスタム ポリシーでの技術プロフ
 description: Azure Active Directory B2C 内のカスタム ポリシーで技術プロファイルがどのように使用されるかについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: faf3cc6c333ee8f8757ec24ecc8ea8299657c4a7
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.subservice: B2C
+ms.openlocfilehash: ff54b76e8a2de752eaafdb1eb3a98fa95293f106
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578486"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151551"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -106,7 +106,7 @@ ms.locfileid: "51578486"
 </TechnicalProfile>
 ```
 
-技術プロファイルには、別の技術プロファイルを含めたり、継承したりすることができます。別の技術プロファイルにはまた別の技術プロファイルを含めることができます。 レベルの数に制限はありません。 ビジネス要件に応じて、ご自分のユーザー体験で、ユーザー ソーシャル アカウントが存在しない場合にエラーを発生させる **AAD-UserReadUsingAlternativeSecurityId**、またはエラーを発生させない **AAD-UserReadUsingAlternativeSecurityId-NoError** を呼び出すことができます。
+技術プロファイルには、別の技術プロファイルを含めたり、継承したりすることができます。別の技術プロファイルにはまた別の技術プロファイルを含めることができます。 レベルの数に制限はありません。 ユーザー体験では、ビジネス要件に応じて、ユーザー ソーシャル アカウントが存在しない場合にエラーを発生させる **AAD-UserReadUsingAlternativeSecurityId**、またはエラーを発生させない **AAD-UserReadUsingAlternativeSecurityId-NoError** を呼び出すことができます。
 
 
 

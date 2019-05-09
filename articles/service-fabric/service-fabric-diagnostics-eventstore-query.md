@@ -3,8 +3,8 @@ title: Azure Service Fabric クラスターで EventStore API を使用してク
 description: Azure Service Fabric EventStore API を使用してプラットフォーム イベントのクエリを実行する方法について説明します
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
-manager: timlt
+author: srrengar
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/29/2018
-ms.author: dekapur
-ms.openlocfilehash: 556b3375a0f5d138255ba4c46b034894b1037da0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 02/25/2019
+ms.author: srrengar
+ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722328"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58879949"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>クラスター イベントに対して EventStore API のクエリを実行する
 
@@ -121,7 +121,7 @@ Body:
 
 [Service Fabric クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)を介して EventStore のクエリをプログラムで実行することもできます。
 
-Service Fabric クライアントを設定したら、次のように EventStore にアクセスしてイベントのクエリを実行できます: ` sfhttpClient.EventStore.<request>`
+Service Fabric クライアントを設定したら、次のように EventStore にアクセスしてイベントのクエリを実行できます: `sfhttpClient.EventStore.<request>`
 
 `GetClusterEventListAsync` 関数を使用して、`2018-04-03T18:00:00Z` と `2018-04-04T18:00:00Z` の間のすべてのクラスター イベントを要求する例を次に示します。
 

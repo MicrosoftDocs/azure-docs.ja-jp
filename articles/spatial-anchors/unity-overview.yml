@@ -1,0 +1,36 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Unity での Azure Spatial Anchors を使用した構築
+metadata:
+  document_id: null
+  title: Azure Spatial Anchors Unity の概要 | Microsoft Docs
+  meta.description: Learn how Azure Spatial Anchors can be used within Unity Apps.
+  services: azure-spatial-anchors
+  author: rgarcia
+  manager: vicenterivera
+  ms.service: azure-spatial-anchors
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 02/22/2019
+  ms.author: rgarcia
+sections:
+  - title: null
+    items:
+      - type: paragraph
+        text: 開発者は、Azure Spatial Anchors を使用する複合現実アプリケーションの作成およびデプロイ用に Unity を選択できます。 次のプラットフォームがサポートされています。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
+            text: HoloLens
+            href: 'https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_android.svg'
+            text: Android
+            href: 'https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_ios.svg'
+            text: iOS
+            href: 'https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios'

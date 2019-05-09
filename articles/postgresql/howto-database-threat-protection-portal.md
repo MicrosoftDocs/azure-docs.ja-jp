@@ -1,19 +1,17 @@
 ---
-title: Advanced Threat Protection - Azure Database for PostgreSQL | Microsoft Docs
+title: Advanced Threat Protection - Azure Database for PostgreSQL
 description: 脅威の防止は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
-services: postgresql
 author: bolzmj
-manager: kfile
-ms.service: postgresql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: ab32cc9a4aafd9fc716eff8104fb2b5117f233a9
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.service: postgresql
+ms.topic: conceptual
+ms.date: 01/24/2019
+ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046612"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095097"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 向け Advanced Threat Protection
 
@@ -22,8 +20,11 @@ Azure Database for PostgreSQL 用の Advanced Threat Protection では、デー�
 Advanced Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) を使ってアクセスおよび管理でき、現在はプレビュー状態です。
 
 > [!NOTE]
-> Advanced Threat Protection の機能は、US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2 の Azure 政府およびソブリン クラウド領域では使用**できません**。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection 機能は、次の Azure 政府およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 >
+
+> [!NOTE]
+> この機能は、Azure Database for PostgreSQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
 
 ## <a name="set-up-threat-detection"></a>脅威検出の設定
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。
@@ -57,7 +58,7 @@ Advanced Threat Protection では、アラートが [Azure Security Center](http
 
 **[脅威の防止]** の下の **[セキュリティアラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースに対して検出されたアクティブな SQL 脅威の概要が表示されます。
 
-  ![脅威の防止 ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  ![脅威の防止と ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
 ## <a name="next-steps"></a>次の手順
 

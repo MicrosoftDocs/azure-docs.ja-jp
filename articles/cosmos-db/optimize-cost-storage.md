@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 78c840efebd2e451747e2490fc4d2f363afa9a09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aed32db257ddbc8cb5b8f4af5f27024c23583798
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263257"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892406"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのストレージ コストを最適化する
 
@@ -27,7 +27,7 @@ Azure Cosmos DB では、最適なパフォーマンスとコストの利点を�
 
 ## <a name="optimize-cost-with-indexing"></a>インデックス作成によってコストを最適化する
 
-既定では、データに自動的にインデックスが付けられるので、使用される合計ストレージが増大する可能性があります。 ただし、このオーバーヘッドを低減するために、カスタムのインデックス ポリシーを適用できます。 ポリシーによって調整されていない自動インデックス作成は、アイテムのサイズの約 10 から 20% になります。 インデックス ポリシーを削除またはカスタマイズすることで、書き込みに対して追加のコストは発生せず、追加のスループット容量は必要ありません。 カスタムのインデックス作成ポリシーを構成するには、[Cosmos DB でのインデックス作成](indexing-policies.md)に関するページを参照してください。 前にリレーショナル データベースを使用したことがあれば、"すべてにインデックスを作成" するには、2 倍以上のストレージが必要だと思うかもしれません。 しかし、Azure Cosmos DB での平均的なケースでは、それよりもかなり小さくて済みます。 Azure Cosmos DB は、低ストレージ フットプリント用に設計されているので、自動インデックス作成の場合にも、インデックスのストレージ オーバーヘッドは一般的に低くなります (10 から 20%)。 インデックス作成ポリシーを管理することで、インデックス フットプリントとクエリ パフォーマンスのトレードオフを、よりきめ細かく制御できます。
+既定では、データに自動的にインデックスが付けられるので、使用される合計ストレージが増大する可能性があります。 ただし、このオーバーヘッドを低減するために、カスタムのインデックス ポリシーを適用できます。 ポリシーによって調整されていない自動インデックス作成は、アイテムのサイズの約 10 から 20% になります。 インデックス ポリシーを削除またはカスタマイズすることで、書き込みに対して追加のコストは発生せず、追加のスループット容量は必要ありません。 カスタムのインデックス作成ポリシーを構成するには、[Azure Cosmos DB でのインデックス作成](indexing-policies.md)に関するページを参照してください。 前にリレーショナル データベースを使用したことがあれば、"すべてにインデックスを作成" するには、2 倍以上のストレージが必要だと思うかもしれません。 しかし、Azure Cosmos DB での平均的なケースでは、それよりもかなり小さくて済みます。 Azure Cosmos DB は、低ストレージ フットプリント用に設計されているので、自動インデックス作成の場合にも、インデックスのストレージ オーバーヘッドは一般的に低くなります (10 から 20%)。 インデックス作成ポリシーを管理することで、インデックス フットプリントとクエリ パフォーマンスのトレードオフを、よりきめ細かく制御できます。
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>有効時間および変更フィードによってコストを最適化する
 
@@ -39,7 +39,7 @@ Azure Cosmos DB では、最適なパフォーマンスとコストの利点を�
 
 ## <a name="check-storage-consumed"></a>使用されたストレージを確認する
 
-Azure Cosmos コンテナーのストレージ使用量を確認するには、コンテナーに対して HEAD 要求または GET 要求を実行し、`x-ms-request-quota` ヘッダーと `x-ms-request-usage` ヘッダーを調べます。 または、.Net SDK を使用する場合、[DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)) プロパティと [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティを使用して、使用されたストレージを取得できます。
+Azure Cosmos コンテナーのストレージ使用量を確認するには、コンテナーに対して HEAD 要求または GET 要求を実行し、`x-ms-request-quota` ヘッダーと `x-ms-request-usage` ヘッダーを調べます。 または、.NET SDK を使用する場合、[DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)) プロパティと [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティを使用して、使用されたストレージを取得できます。
 
 ## <a name="using-sdk"></a>SDK の使用
 

@@ -1,22 +1,21 @@
 ---
-title: Apache Kafka の開始 - Azure HDInsight クイック スタート
+title: Azure PowerShell を使用して HDInsight に Apache Kafka を設定する - クイック スタート
 description: このクイックスタートでは、Azure PowerShell を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: mvc,hdinsightactive
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 1dd80cffe64e6c93a0681400d067182f1a74afff
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c86e5faa212fb6458326e00cba02fbe2ea83c8f7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581870"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58850329"
 ---
-# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>クイック スタート:HDInsight クラスターに Apache Kafka を作成する
+# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>クイック スタート:HDInsight クラスター上に Apache Kafka を作成する
 
 [Apache Kafka](https://kafka.apache.org/) は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。 
 
@@ -31,17 +30,19 @@ ms.locfileid: "53581870"
 
 ## <a name="prerequisites"></a>前提条件
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-* Azure PowerShell。 詳しくは、「[Install and Configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)」(Azure PowerShell のインストールと構成) をご覧ください。
+* Azure PowerShell。 詳しくは、「[Install and Configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell のインストールと構成) をご覧ください。
 
 * SSH クライアント このドキュメントの手順では、SSH を使って、クラスターに接続します。
 
     Linux、Unix、および macOS システムでは、既定で `ssh` コマンドが用意されています。 Windows 10 では、次のいずれかの方法を使って、`ssh` コマンドをインストールします。
 
-    * [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) を使います。 Cloud Shell は `ssh` コマンドを提供し、シェル環境として Bash または PowerShell を使うように構成できます。
+  * [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) を使います。 Cloud Shell は `ssh` コマンドを提供し、シェル環境として Bash または PowerShell を使うように構成できます。
 
-    * [Windows Subsystem for Linux をインストールします](https://docs.microsoft.com/windows/wsl/install-win10)。 Microsoft Store から入手可能な Linux ディストリビューションでは、`ssh` コマンドが提供されています。
+  * [Windows Subsystem for Linux をインストールします](https://docs.microsoft.com/windows/wsl/install-win10)。 Microsoft Store から入手可能な Linux ディストリビューションでは、`ssh` コマンドが提供されています。
 
     > [!IMPORTANT]  
     > このドキュメントの手順では、上記のいずれかの SSH クライアントを使っていることを前提としています。 別の SSH クライアントを使っていて、問題が発生した場合は、お使いの SSH クライアントのドキュメントを参照してください。
@@ -50,54 +51,54 @@ ms.locfileid: "53581870"
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-`Login-AzureRmAccount` コマンドレットで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Login-AzAccount` コマンドレットで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、名前と場所の入力を求められた後、新しいリソース グループが作成されます。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、名前と場所の入力を求められた後、新しいリソース グループが作成されます。
 
 ```powershell
 $resourceGroup = Read-Input -Prompt "Enter the resource group name"
 $location = Read-Input -Prompt "Enter the Azure region to use"
 
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-HDInsight 上の Kafka は Azure マネージド ディスクを使って Kafka のデータを格納しますが、クラスターはログなどの情報を格納するために Azure Storage も使います。 新しいストレージ アカウントを作成するには、[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) を使います。
+HDInsight 上の Kafka は Azure マネージド ディスクを使って Kafka のデータを格納しますが、クラスターはログなどの情報を格納するために Azure Storage も使います。 新しいストレージ アカウントを作成するには、[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) を使います。
 
 ```powershell
 $storageName = Read-Host -Prompt "Enter the storage account name"
 
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
         -ResourceGroupName $resourceGroup `
         -Name $storageName `
         -Type Standard_LRS `
         -Location $location
 ```
 
-HDInsight は、BLOB コンテナーにストレージ アカウント内のデータを格納します。 新しいコンテナーを作成するには、[New-AzureStorageContainer](/powershell/module/Azure.Storage/New-AzureStorageContainer) を使います。
+HDInsight は、BLOB コンテナーにストレージ アカウント内のデータを格納します。 新しいコンテナーを作成するには、[New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) を使います。
 
 ```powershell
 $containerName = Read-Host -Prompt "Enter the container name"
 
-$storageKey = (Get-AzureRmStorageAccountKey `
+$storageKey = (Get-AzStorageAccountKey `
                 -ResourceGroupName $resourceGroup `
                 -Name $storageName)[0].Value
-$storageContext = New-AzureStorageContext `
+$storageContext = New-AzStorageContext `
                     -StorageAccountName $storageName `
                     -StorageAccountKey $storageKey
-New-AzureStorageContainer -Name $containerName -Context $storageContext 
+New-AzStorageContainer -Name $containerName -Context $storageContext 
 ```
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka クラスターを作成する
 
-HDInsight クラスターに Apache Kafka を作成するには、[New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster) を使います。
+HDInsight クラスターに Apache Kafka を作成するには、[New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) を使います。
 
 ```powershell
 # Create a Kafka 1.0 cluster
@@ -115,7 +116,7 @@ $disksPerNode=2
 $kafkaConfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 $kafkaConfig.Add("kafka", "1.0")
 
-New-AzureRmHDInsightCluster `
+New-AzHDInsightCluster `
         -ResourceGroupName $resourceGroup `
         -ClusterName $clusterName `
         -Location $location `
@@ -138,7 +139,7 @@ New-AzureRmHDInsightCluster `
 > [!TIP]  
 > `-DisksPerWorkerNode` パラメーターは、HDInsight 上の Kafka のスケーラビリティを構成します。 HDInsight 上の Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Kafka は I/O が多いため、[Azure マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)を使ってノードごとに高いスループットと多くの記憶域を提供します。 
 >
-> マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。 `-WorkerNodeSize` パラメーターを使って、VM の種類を設定することができます。 パラメーターについて詳しくは、「[New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster)」をご覧ください。
+> マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。 `-WorkerNodeSize` パラメーターを使って、VM の種類を設定することができます。 パラメーターの詳細については、「[New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster)」ドキュメントを参照してください。
 
 
 > [!IMPORTANT]  
@@ -333,10 +334,10 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使って、リソース グループ、HDInsight、すべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使って、リソース グループ、HDInsight、すべての関連リソースを削除できます。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 > [!WARNING]  

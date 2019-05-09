@@ -1,5 +1,5 @@
 ---
-title: Azure AD アクセス レビューとは | Microsoft Docs
+title: アクセス レビューとは - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory アクセス レビューを使用すると、組織のガバナンス、リスク管理、コンプライアンスの取り組みを満たすように、グループ メンバーシップとアプリケーションのアクセスを制御することができます。
 services: active-directory
 documentationcenter: ''
@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
-ms.date: 11/19/2018
+ms.subservice: compliance
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: ecaceea42d64ab15676a9cb5a42ee8659e40d517
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1563a023f397999deb5c6abd40843d6a376b0492
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847288"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576124"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD アクセス レビューとは
 
@@ -41,7 +42,7 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 
 ## <a name="when-to-use-access-reviews"></a>アクセス レビューを使用すべきとき
 
-- **特権ロールのユーザーが多すぎるとき:** 管理者アクセス権を持っているユーザーの数、その内で全体管理者の数、管理タスクに割り当てられた後で削除されていない招待ゲストまたはパートナーがいるかどうかを確認するのはよいことです。 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) エクスペリエンスでは、全体管理者などの [Azure AD ディレクトリ ロール](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)またはユーザー アクセス管理者などの [Azure リソース ロール](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)でロール割り当てユーザーを認定できます。
+- **特権ロールのユーザーが多すぎるとき:** 管理者アクセス権を持っているユーザーの数、その内で全体管理者の数、管理タスクに割り当てられた後で削除されていない招待ゲストまたはパートナーがいるかどうかを確認するのはよいことです。 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) エクスペリエンスでは、全体管理者などの [Azure AD ロール](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)またはユーザー アクセス管理者などの [Azure リソース ロール](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)でロール割り当てユーザーを認定できます。
 - **自動化が実行不可能なとき:** セキュリティ グループまたは Office 365 のグループで動的メンバーシップに対するルールを作成できますが、HR データが Azure AD 内にない場合や、ユーザーがグループを離れた後で後任のトレーニングのためにアクセスする必要がある場合はどうしますか。 そのようなときは、そのグループに対してレビューを作成し、まだアクセスを必要とするユーザーが継続的アクセス権を持っていることを確認することができます。
 - **グループが新しい目的に使用されるとき:** Azure AD に同期されるグループがある場合、または営業チーム グループの全員に対して Salesforce アプリケーションを有効にする場合は、異なるリスク コンテンツでグループを使用する前にグループ メンバーシップを確認するようグループ所有者に依頼するとよいことがあります。
 - **ビジネス クリティカルなデータ アクセス:** 特定のリソースでは、監査のため、IT 組織の外部のユーザーに対し、定期的にサインオフして、アクセスが必要な正当な理由を示すよう依頼することが必要な場合があります。
@@ -57,7 +58,7 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 | --- | --- | --- | --- |
 | セキュリティ グループ メンバー</br>Office グループ メンバー | 指定されたレビュー担当者</br>グループ所有者</br>自己レビュー | Azure AD アクセス レビュー</br>Azure AD グループ | アクセス パネル |
 | 接続されたアプリに割り当て | 指定されたレビュー担当者</br>自己レビュー | Azure AD アクセス レビュー</br>azure AD エンタープライズ アプリ (プレビュー) | アクセス パネル |
-| Azure AD ディレクトリ ロール | 指定されたレビュー担当者</br>自己レビュー | Azure AD PIM | Azure ポータル |
+| Azure AD ロール | 指定されたレビュー担当者</br>自己レビュー | Azure AD PIM | Azure ポータル |
 | Azure リソース ロール | 指定されたレビュー担当者</br>自己レビュー | Azure AD PIM | Azure ポータル |
 
 ## <a name="prerequisites"></a>前提条件
@@ -83,27 +84,29 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 
 アクセス レビューを有効にするには、次の手順のようにします。
 
-1. 全体管理者またはユーザー アカウント管理者として、アクセス レビューを使用する [Azure portal](https://portal.azure.com) にサインインします。
+1. グローバル管理者またはユーザー管理者として、アクセス レビューを使用する [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[すべてのサービス]** をクリックして、アクセス レビュー サービスを見つけます。
 
-    ![すべてのサービス - Access reviews](./media/access-reviews-overview/all-services-access-reviews.png)
+1. **[アクセス レビュー]** をクリックします。
 
-1. **[Access reviews]** をクリックします。
-
-    ![アクセス レビューの配布準備](./media/access-reviews-overview/onboard-button.png)
+    ![[すべてのサービス] - [アクセス レビュー]](./media/access-reviews-overview/all-services-access-reviews.png)
 
 1. ナビゲーション リストで、**[配布準備をする]** をクリックして **[アクセス レビューの配布準備]** ページを開きます。
 
+    ![アクセス レビューの配布準備](./media/access-reviews-overview/onboard-button.png)
+
+1. **[作成]** をクリックして、現在のディレクトリでアクセス レビューを有効にします。
+
     ![アクセス レビューの配布準備](./media/access-reviews-overview/onboard-access-reviews.png)
 
-1. **[作成]** をクリックして、現在のディレクトリでアクセス レビューを有効にします。 次にアクセス レビューを開始すると、オプションが有効になります。
+    次にアクセス レビューを開始すると、アクセス レビュー オプションが有効になります。
 
     ![有効になったアクセス レビュー](./media/access-reviews-overview/access-reviews-enabled.png)
 
 ## <a name="next-steps"></a>次の手順
 
-- [グループのメンバーまたはアプリケーションへのアクセスのアクセス レビューを作成する](create-access-review.md)
+- [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 - [Azure AD 管理者ロールに含まれるユーザーのアクセス レビューを作成する](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)
-- [Azure AD アクセス レビューでアクセス レビューを実行する](perform-access-review.md)
-- [アプリケーションにアクセスするユーザーまたはグループのメンバーに対するアクセス レビューを Azure AD で完了する](complete-access-review.md)
+- [グループまたはアプリケーションに対するアクセスのレビュー](perform-access-review.md)
+- [グループまたはアプリケーションに対するアクセス レビューを完了する](complete-access-review.md)

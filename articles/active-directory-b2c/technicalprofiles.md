@@ -3,19 +3,19 @@ title: TechnicalProfiles | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの TechnicalProfiles 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 45ea2a28b4b2fb3d55d7ae949152e6f51b5d3162
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: B2C
+ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566535"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568177"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -85,7 +85,7 @@ ms.locfileid: "51566535"
 | Domain | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
 | DisplayName | 0:1 | ユーザーに表示できる技術プロファイルの名前。 |
 | 説明 | 0:1 | ユーザーに表示できる技術プロファイルの説明。 |
-| プロトコル | 0:1 | 他の利用者との通信に使用されるプロトコル。 |
+| Protocol | 0:1 | 他の利用者との通信に使用されるプロトコル。 |
 | Metadata | 0:1 | トランザクション中にエンドポイントと通信するためにプロトコルによって利用されるキー/値ペアのコレクション。 |
 | InputTokenFormat | 0:1 | 入力トークンの形式。 指定できる値: `JSON`、`JWT`、`SAML11`、または `SAML2`。 `JWT` 値は、IETF 仕様に従って JSON Web トークンを表します。 `SAML11` 値は、OASIS 仕様に従って SAML 1.1 セキュリティ トークンを表します。  `SAML2` 値は、OASIS 仕様に従って SAML 2.0 セキュリティ トークンを表します。 |
 | OutputTokenFormat | 0:1 | 出力トークンの形式。 指定できる値: `JSON`、`JWT`、`SAML11`、または `SAML2`。 |
@@ -97,12 +97,12 @@ ms.locfileid: "51566535"
 | OutputClaimsTransformations | 0:1 | クレーム プロバイダーから要求を受け取った後に実行する必要がある、要求変換に対する定義済みの参照の一覧。 |
 | ValidationTechnicalProfiles | 0:n | 技術プロファイルが検証目的で使用する、他の技術プロファイルへの参照の一覧。 詳細については、「[検証技術プロファイル](validation-technical-profile.md)」を参照してください。|
 | SubjectNamingInfo | 0:1 | サブジェクト名が要求とは別に指定されているトークンのサブジェクト名の生成を制御します。 たとえば、OAuth または SAML です。  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | この技術プロファイルに対するすべての入力要求と出力要求の追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイルで定義する必要があります。 | 
+| IncludeClaimsFromTechnicalProfile | 0:1 | この技術プロファイルに対するすべての入力要求と出力要求の追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイルで定義する必要があります。 |
 | IncludeTechnicalProfile |0:1 | この技術プロファイルに対するすべてのデータの追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイル内に存在する必要があります。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | セッション管理に使用される別の技術プロファイル。 |
 |EnabledForUserJourneys| 0:1 |ユーザー体験で技術プロファイルを実行するかどうかを制御します。  |
 
-### <a name="protocol"></a>プロトコル
+### <a name="protocol"></a>Protocol
 
 **Protocol** 要素には、次の属性が含まれています。
 
@@ -168,7 +168,7 @@ ms.locfileid: "51566535"
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 予想される入力要求の種類。 |
 
-#### <a name="inputclaim"></a>InputClaim 
+#### <a name="inputclaim"></a>InputClaim
 
 **InputClaim** 要素には、次の属性が含まれています。
 
@@ -186,7 +186,7 @@ ms.locfileid: "51566535"
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | 保持する要求の種類。 |
 
-#### <a name="persistedclaim"></a>PersistedClaim 
+#### <a name="persistedclaim"></a>PersistedClaim
 
 **PersistedClaim** 要素には、次の属性が含まれています。
 
@@ -204,7 +204,7 @@ ms.locfileid: "51566535"
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | 予想される出力要求の種類。 |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
@@ -275,12 +275,12 @@ ms.locfileid: "51566535"
 ユーザー体験の **ClaimsProviderSelections** は、クレーム プロバイダー選択オプションの一覧とその順序を定義します。 **EnabledForUserJourneys** 要素を使用して、ユーザーが利用できるクレーム プロバイダーをフィルタリングします。 **EnabledForUserJourneys** 要素には、次の値のいずれかが含まれています。
 
 - **Always**、技術プロファイルを実行します。
-- **Never**、技術プロファイルをスキップします。 
-- **OnClaimsExistence**、技術プロファイルで指定された特定の要求が存在する場合にのみ実行します。 
-- **OnItemExistenceInStringCollectionClaim**、 文字列コレクション要求に項目が存在する場合にのみ実行します。 
+- **Never**、技術プロファイルをスキップします。
+- **OnClaimsExistence**、技術プロファイルで指定された特定の要求が存在する場合にのみ実行します。
+- **OnItemExistenceInStringCollectionClaim**、 文字列コレクション要求に項目が存在する場合にのみ実行します。
 - **OnItemAbsenceInStringCollectionClaim**、文字列コレクション要求に項目が存在しない場合にのみ実行します。
 
-**OnClaimsExistence**、**OnItemExistenceInStringCollectionClaim** または **OnItemAbsenceInStringCollectionClaim** を使用して、以下のメタデータを指定する必要があります: **ClaimTypeOnWhichToEnable** は評価される要求の種類を指定します、**ClaimValueOnWhichToEnable** は比較される値を指定します。
+**OnClaimsExistence**、**OnItemExistenceInStringCollectionClaim** または **OnItemAbsenceInStringCollectionClaim** を使用して、以下のメタデータを指定する必要があります。**ClaimTypeOnWhichToEnable** は評価される要求の種類を指定します、**ClaimValueOnWhichToEnable** は比較される値を指定します。
 
 次の技術プロファイルは、**identityProviders** 文字列コレクションに `facebook.com` という値が含まれている場合にのみ実行されます。
 
@@ -289,22 +289,10 @@ ms.locfileid: "51566535"
   <DisplayName>Unlink Facebook</DisplayName>
 ...
     <Metadata>
-        <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
-        <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
-    </Metadata>        
+      <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
+      <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
+    </Metadata>
 ...
   <EnabledForUserJourneys>OnItemExistenceInStringCollectionClaim</EnabledForUserJourneys>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```
-
-
-
-
-
-
-
-
-
-
-
-

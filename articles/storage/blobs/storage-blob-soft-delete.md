@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
-ms.component: blobs
-ms.openlocfilehash: 7f7071c9f87528eddbfe3d541cd85624e308948f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: blobs
+ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633387"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506127"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
@@ -68,7 +68,7 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 
 次の表では、論理的な削除を有効にしたときに想定される動作の詳細を示します。
 
-| REST API の操作 | リソースの種類 | [説明] | 動作の変更点 |
+| REST API の操作 | リソースの種類 | 説明 | 動作の変更点 |
 |--------------------|---------------|-------------|--------------------|
 | [削除](/rest/api/storagerp/StorageAccounts/Delete) | アカウント | ストレージ アカウントおよびそれに含まれるすべてのコンテナーと BLOB を削除します。                           | 変更はありません。 削除されたアカウントのコンテナーと BLOB は復旧できません。 |
 | [Delete Container](/rest/api/storageservices/delete-container) | コンテナー | コンテナーおよびそれに含まれるすべての BLOB を削除します。 | 変更はありません。 削除されたコンテナーの BLOB は復旧できません。 |
@@ -322,4 +322,4 @@ blockBlob.StartCopy(copySource);
 * [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)
 * [Azure Storage のレプリケーション](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [RA-GRS を使用した高可用性アプリケーションの設計](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure Storage の停止が発生した場合の対処方法](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b9a034db7e039a0974dc61448bbf50f5ccde9b4c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6adad9dfbb5a8e0a41bfbf6595d54c07c4a5dbe1
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880167"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150100"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮形式
 *このトピックが適用されるコネクタは、[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[ファイル システム](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md)、[SFTP](data-factory-sftp-connector.md) です。*
@@ -41,7 +40,7 @@ Azure Data Factory は次のファイル形式をサポートしています。
 | --- | --- | --- | --- |
 | columnDelimiter |ファイル内の列を区切るために使用する文字。 データ内に存在する可能性が低い、出力できないような珍しい文字を使用することを検討します。 たとえば、"\u0001" を指定します。これは、見出しの先頭 (SOH) を表します。 |使用できるのは 1 文字だけです。 **既定**値は**コンマ (,)** です。 <br/><br/>Unicode 文字を使用するには、[Unicode 文字](https://en.wikipedia.org/wiki/List_of_Unicode_characters)に関するページを参照して、対応するコードを取得してください。 |いいえ  |
 | rowDelimiter |ファイル内の行を区切るために使用する文字。 |使用できるのは 1 文字だけです。 読み取り時の**既定**値は **["\r\n"、"\r"、"\n"]** のいずれかになり、書き込み時の既定値は **"\r\n"** になります。 |いいえ  |
-| escapeChar |入力ファイルのコンテンツの列区切り記号をエスケープするために使用する特殊文字。 <br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定することはできません。 |使用できるのは 1 文字だけです。 既定値はありません。 <br/><br/>例: 列区切り記号としてコンマ (,) を使用しているときに、テキストにもコンマ文字を含める必要がある場合 (例: "Hello, world")、エスケープ文字として "$" を定義し、ソースで文字列 "Hello$, world" を使用できます。 |いいえ  |
+| escapeChar |入力ファイルのコンテンツの列区切り記号をエスケープするために使用する特殊文字。 <br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定することはできません。 |使用できるのは 1 文字だけです。 既定値はありません。 <br/><br/>例:列区切り記号としてコンマ (,) を使用しているときに、テキストにもコンマ文字を含める必要がある場合 (例:"Hello, world")、エスケープ文字として "$" を定義し、ソースで文字列 "Hello$, world" を使用できます。 |いいえ  |
 | quoteChar |文字列値の引用に使用する文字。 引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。 このプロパティは、入力と出力の両方のデータセットに適用されます。<br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定することはできません。 |使用できるのは 1 文字だけです。 既定値はありません。 <br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: Hello, world)、引用符文字として " (二重引用符) を定義し、ソースで文字列 "Hello, world" を使用できます。 |いいえ  |
 | nullValue |Null 値を表すために使用する 1 つ以上の文字。 |1 つ以上の文字。 **既定**値は、読み取り時は **"\N" および "NULL"**、書き込み時は **"\N"** です。 |いいえ  |
 | encodingName |エンコード名の指定。 |有効なエンコード名。 詳細については、[Encoding.EncodingName プロパティ](https://msdn.microsoft.com/library/system.text.encoding.aspx)に関するページを参照してください。 例: windows-1250 または shift_jis。 **既定**値は **UTF-8** です。 |いいえ  |
@@ -78,7 +77,7 @@ Azure Data Factory は次のファイル形式をサポートしています。
 ```
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>firstRowAsHeader と skipLineCount を使用するシナリオ
-* ファイル以外のソースからテキスト ファイルにコピーし、スキーマ メタデータ (例: SQL スキーマ) を含むヘッダー行を追加する:  このシナリオでは、出力データセットの `firstRowAsHeader` を True として指定します。
+* ファイル以外のソースからテキスト ファイルにコピーし、スキーマ メタデータ(例:SQL スキーマ) を含むヘッダー行を追加する。 このシナリオでは、出力データセットの `firstRowAsHeader` を True として指定します。
 * ヘッダー行を含むテキスト ファイルから、ファイル以外のシンクにコピーし、その行を削除する:  入力データセットの `firstRowAsHeader` を True として指定します。
 * テキスト ファイルからコピーして、データやヘッダー情報を含まない先頭の数行をスキップする:  `skipLineCount` を指定して、スキップする行数を示します。 ファイルの残りの部分にヘッダー行が含まれている場合は、`firstRowAsHeader` も指定できます。 `skipLineCount` と `firstRowAsHeader` の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
@@ -92,7 +91,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 | filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定**値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ  |
 | jsonNodeReference | 同じパターンを持つ配列フィールド内のオブジェクトからのデータの反復処理と抽出を行う場合は、その配列の JSON のパスを指定します。 このプロパティは、JSON ファイルからデータをコピーするときにのみサポートされます。 | いいえ  |
 | jsonPathDefinition | カスタマイズされた列名 (先頭が小文字) での列マッピングごとに JSON のパス式を指定します。 このプロパティは JSON ファイルからデータをコピーするときにのみサポートされ、オブジェクトまたは配列からデータを抽出することができます。 <br/><br/> ルート オブジェクトの直下のフィールドの場合、ルートの $ から記述します。`jsonNodeReference` プロパティによって選択された配列内のフィールドの場合、配列要素から記述します。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。 | いいえ  |
-| encodingName |エンコード名の指定。 有効なエンコード名の一覧については、[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) プロパティに関する記事をご覧ください。 例: windows-1250 または shift_jis。 **既定**値は、**UTF-8** です。 |いいえ  |
+| encodingName |エンコード名の指定。 有効なエンコード名の一覧については、[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、**UTF-8** です。 |いいえ  |
 | nestingSeparator |入れ子レベルの分割に使用される文字。 既定値は "." (ドット) です。 |いいえ  |
 
 ### <a name="json-file-patterns"></a>JSON ファイルのパターン
@@ -188,7 +187,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 
 ### <a name="jsonformat-example"></a>JsonFormat の例
 
-**ケース 1: JSON ファイルからのデータのコピー**
+**ケース 1:JSON ファイルからのデータのコピー**
 
 JSON ファイルからデータをコピーするときは、次の 2 つのサンプルを参照してください。 全般的な注意点は次のとおりです。
 
@@ -347,7 +346,7 @@ JSON ファイルからデータをコピーするときは、次の 2 つのサ
 * 同じレベルに重複する名前がある場合、コピー アクティビティでは最後の 1 つが選択されます。
 * プロパティ名では大文字と小文字が区別されます。 名前は同じでも大文字小文字が異なる 2 つのプロパティは、2 つの個別のプロパティとして扱われます。
 
-**ケース 2: JSON ファイルへのデータの書き込み**
+**ケース 2:JSON ファイルへのデータの書き込み**
 
 SQL Database 内に次のテーブルが含まれているとします。
 
@@ -414,7 +413,7 @@ Hive テーブルで Avro 形式を使用するには、 [Apache Hive のチュ�
 
 以下の点に注意してください。  
 
-* [複合データ型](http://avro.apache.org/docs/current/spec.html#schema_complex)はサポートされていません (レコード、列挙型、配列、マップ、共用体、および固定)。
+* [複合データ型](https://avro.apache.org/docs/current/spec.html#schema_complex)はサポートされていません (レコード、列挙型、配列、マップ、共用体、および固定)。
 
 ## <a name="orc-format"></a>ORC 形式
 ORC ファイルを解析するか、ORC 形式でデータを書き込む場合は、`format` `type` プロパティを **OrcFormat** に設定します。 typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。 例:
@@ -434,7 +433,7 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 以下の点に注意してください。
 
 * 複雑なデータ型はサポートされていません (STRUCT、MAP、LIST、UNION)。
-* ORC ファイルには、[圧縮関連のオプション](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)として、NONE、ZLIB、SNAPPY の 3 つがあります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で ORC ファイルに書き込むときは、ORC の既定の動作である ZLIB が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
+* ORC ファイルには、[圧縮関連のオプション](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)として、NONE、ZLIB、SNAPPY の 3 つがあります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で ORC ファイルに書き込むときは、ORC の既定の動作である ZLIB が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
 
 ## <a name="parquet-format"></a>Parquet 形式
 Parquet ファイルを解析するか、Parquet 形式でデータを書き込む場合は、`format` `type` プロパティを **ParquetFormat** に設定します。 typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。 例:
@@ -493,7 +492,7 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 * **level:** 圧縮率です。**Optimal** または **Fastest** を指定できます。
 
   * **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。
-  * **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。
+  * **Optimal**:圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。
 
     詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。
 

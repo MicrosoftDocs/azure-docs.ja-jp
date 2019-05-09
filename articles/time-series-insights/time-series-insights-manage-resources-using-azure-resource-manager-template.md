@@ -11,19 +11,20 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9200b3b8cd85bfd94bbc4c66cccb35b78a97aaff
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 79751dc0de8817c940355e8b64652014b1c67c35
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554692"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59045902"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
 この記事では、Azure Resource Manager テンプレート、PowerShell、Time Series Insights リソースプロバイダーを使用して Time Series Insights リソースを作成し、デプロイする方法について説明します。
 
 Time Series Insights は、次のリソースをサポートしています。
-   | リソース | 説明 |
+
+   | Resource | 説明 |
    | --- | --- |
    | 環境 | Time Series Insights 環境とは、イベント ブローカーから読み取って保存したイベントを論理的にグループ化し、クエリで使用できるようにしたものです。 詳細については、「[Azure Time Series Insights 環境の計画](time-series-insights-environment-planning.md)」を参照してください。 |
    | イベント ソース | イベント ソースとは、イベント ブローカーへの接続を指します。Time Series Insights は、このイベント ブローカーからイベントを読み取って環境に取り込みます。 現在サポートされているイベント ソースは、IoT Hub とイベント ハブです。 |
@@ -34,8 +35,12 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 - [Azure Resource Manager の概要 - テンプレートのデプロイ](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
+- [Microsoft.TimeSeriesInsights のリソースの種類](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 クイックスタート テンプレート [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) が GitHub で公開されています。 このテンプレートを使用して、Time Series Insights 環境、イベント ハブからイベントを読み取るよう構成された子イベント ソース、環境のデータへのアクセス権を付与するアクセス ポリシーを作成できます。 既存のイベント ハブが指定されていない場合は、デプロイ時に 1 つ作成されます。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>PowerShell を使用してクイックスタート テンプレートをローカルにデプロイする
 
@@ -64,7 +69,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "eventHubNamespaceName": {
@@ -108,14 +113,14 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
    | eventSourceDisplayName | ツールやユーザー インターフェイスでイベント ソース名の代わりに表示される省略可能なフレンドリ名。 |
    | eventSourceTimestampPropertyName | イベント ソースのタイムスタンプとして使用されるイベント プロパティ。 TimestampPropertyName に値が指定されていない場合や、null または空の文字列が指定されている場合は、イベントの作成時刻が使用されます。 |
    | eventSourceKeyName | Time Series Insights サービスがイベント ハブに接続するために使用する共有アクセス キーの名前。 |
-   | accessPolicyReaderObjectIds | 環境への閲覧者アクセス権が必要な、Azure AD 内のユーザーまたはアプリケーションのオブジェクト ID の一覧。 サービス プリンシパルの objectId は、**Get AzureRMADUser** コマンドレットまたは **Get AzureRMADServicePrincipal** コマンドレット呼び出すことで取得できます。 Azure AD グループ用のアクセス ポリシーの作成は、まだサポートされていません。 |
-   | accessPolicyContributorObjectIds | 環境への共同作成者アクセス権が必要な、Azure AD 内のユーザーまたはアプリケーションのオブジェクト ID の一覧。 サービス プリンシパルの objectId は、**Get AzureRMADUser** コマンドレットまたは **Get AzureRMADServicePrincipal** コマンドレット呼び出すことで取得できます。 Azure AD グループ用のアクセス ポリシーの作成は、まだサポートされていません。 |
+   | accessPolicyReaderObjectIds | 環境への閲覧者アクセス権が必要な、Azure AD 内のユーザーまたはアプリケーションのオブジェクト ID の一覧。 サービス プリンシパルの objectId は、**Get-AzADUser** コマンドレットまたは **Get-AzADServicePrincipal** コマンドレットを呼び出すことで取得できます。 Azure AD グループ用のアクセス ポリシーの作成は、まだサポートされていません。 |
+   | accessPolicyContributorObjectIds | 環境への共同作成者アクセス権が必要な、Azure AD 内のユーザーまたはアプリケーションのオブジェクト ID の一覧。 サービス プリンシパルの objectId は、**Get-AzADUser** コマンドレットまたは **Get-AzADServicePrincipal** コマンドレットを呼び出すことで取得できます。 Azure AD グループ用のアクセス ポリシーの作成は、まだサポートされていません。 |
 
 たとえば、環境と、既存のイベント ハブからイベントを読み取るイベント ソースを作成するには、次のようなパラメーター ファイルを使用します。 このファイルによって、環境への共同作成者アクセス権を付与する 2 つのアクセス ポリシーも作成されます。
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "eventHubNamespaceName": {
@@ -153,27 +158,27 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 PowerShell プロンプトから、次のコマンドを実行します。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Azure アカウントにログオンするように求められます。 ログオンしたら、次のコマンドを実行して、使用できるサブスクリプションを確認します。
 
 ```powershell
-Get-AzureRMSubscription
+Get-AzSubscription
 ```
 
 このコマンドを実行すると、使用できる Azure サブスクリプションの一覧が返されます。 現在のセッションのサブスクリプションを選択するには、次のコマンドを実行します。 `<YourSubscriptionId>` は、使用する Azure サブスクリプションの GUID に置き換えてください。
 
 ```powershell
-Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
+Set-AzContext -SubscriptionID <YourSubscriptionId>
 ```
 
 ### <a name="set-the-resource-group"></a>リソース グループを設定する
 
-既存のリソース グループがない場合は、**New-AzureRmResourceGroup** コマンドで新しいリソース グループを作成します。 使用するリソース グループの名前と場所を指定します。 例: 
+既存のリソース グループがない場合は、**New-AzResourceGroup** コマンドで新しいリソース グループを作成します。 使用するリソース グループの名前と場所を指定します。 例: 
 
 ```powershell
-New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
+New-AzResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
 成功した場合、新しいリソース グループの概要が表示されます。
@@ -188,38 +193,38 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>展開をテスト
 
-デプロイを検証するには、`Test-AzureRmResourceGroupDeployment` コマンドレットを実行します。 デプロイをテストする場合、デプロイの実行時と同様に、必要なパラメーターを正確に指定します。
+デプロイを検証するには、`Test-AzResourceGroupDeployment` コマンドレットを実行します。 デプロイをテストする場合、デプロイの実行時と同様に、必要なパラメーターを正確に指定します。
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 ### <a name="create-the-deployment"></a>デプロイを作成する
 
-新しいデプロイを作成するには、`New-AzureRmResourceGroupDeployment` コマンドレットを実行し、プロンプトに従って必要なパラメーターを指定します。 パラメーターには、デプロイの名前、リソース グループの名前、テンプレート ファイルのパスまたは URL が含まれます。 **Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。 詳細については、[「増分デプロイと完全デプロイ」](../azure-resource-manager/deployment-modes.md)を参照してください。
+新しいデプロイを作成するには、`New-AzResourceGroupDeployment` コマンドレットを実行し、プロンプトに従って必要なパラメーターを指定します。 パラメーターには、デプロイの名前、リソース グループの名前、テンプレート ファイルのパスまたは URL が含まれます。 **Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。 詳細については、[「増分デプロイと完全デプロイ」](../azure-resource-manager/deployment-modes.md)を参照してください。
 
 次のコマンドを実行すると、PowerShell ウィンドウに 5 つの必須パラメーターを指定するように求められます。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
 ```
 
 代わりにパラメーター ファイルを使用するには、次のコマンドを使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 また、デプロイ コマンドレットを実行するときに、インライン パラメーターを使用することもできます。 コマンドは次のとおりです。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
 [完全](../azure-resource-manager/deployment-modes.md)デプロイを実行するには、**Mode** パラメーターを **Complete** に設定します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ## <a name="verify-the-deployment"></a>デプロイを検証する
@@ -267,7 +272,7 @@ Outputs                 :
 GitHub のクイックスタート テンプレートのホーム ページには、**[Deploy to Azure]\(Azure へのデプロイ\)** ボタンもあります。 このボタンをクリックすると、Azure Portal の [カスタム デプロイ] ページが開きます。 このページで、各パラメーターの値を入力したり、[[必要なパラメーター]](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) テーブルまたは [[省略可能なパラメーター]](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) テーブルから選択したりできます。 設定に値を入力し、**[購入]** ボタンをクリックすると、テンプレートのデプロイが開始されます。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
 ## <a name="next-steps"></a>次の手順

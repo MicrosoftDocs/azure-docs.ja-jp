@@ -10,19 +10,18 @@ ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f3dc27b35f35f3aaa649b03777ff13d385561673
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732228"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535996"
 ---
-# <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用した初めてのデータ ファクトリの作成
+# <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -33,14 +32,14 @@ ms.locfileid: "45732228"
 
 
 > [!NOTE]
-> この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用する場合は、[Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
+> この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 この記事では、[Azure Portal](https://portal.azure.com/) を使用して最初のデータ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
 
 このチュートリアルのパイプラインには、1 つのアクティビティ (Azure HDInsight Hive アクティビティ) が含まれます。 このアクティビティは、入力データを変換して出力データを生成する Hive スクリプトを HDInsight クラスターで実行します。 このパイプラインは、指定した開始時刻と終了時刻の間で、月 1 回実行されるようスケジュールされています。 
 
 > [!NOTE]
-> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Azure Blob Storage から Azure SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Azure Blob Storage から Azure SQL Database にコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
 > 
 > 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、「[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)」を参照してください。
 
@@ -163,7 +162,7 @@ ms.locfileid: "45732228"
 
      c. HDInsight クラスターは、JSON プロパティ (**linkedServiceName**) で指定した BLOB ストレージに既定のコンテナーを作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
 
-     処理されるスライスが多いほど、BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 BLOB ストレージ内のコンテナーを削除するには、[Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用します。
+     処理されるスライスが多いほど、BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 BLOB ストレージ内のコンテナーを削除するには、[Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
      詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
 
@@ -327,7 +326,7 @@ ms.locfileid: "45732228"
 
     パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
 
-    アクティビティ JSON では、**linkedServiceName**: **HDInsightOnDemandLinkedService** で指定された計算で Hive スクリプトが実行されるように指定します。
+    アクティビティ JSON では、**linkedServiceName**:**HDInsightOnDemandLinkedService** で指定された計算で Hive スクリプトが実行されるように指定します。
 
    > [!NOTE]
    > 例で使用されている JSON プロパティの詳細については、[Data Factory のパイプラインとアクティビティ](data-factory-create-pipelines.md)に関するページの「パイプライン JSON」を参照してください。
@@ -434,7 +433,7 @@ ms.locfileid: "45732228"
 * HDInsight Hive アクティビティを持つパイプラインを作成する。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから SQL Database にデータをコピーする方法については、[から SQL Database にデータをコピーする操作のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)のページを参照してください。
+この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから SQL データベースにデータをコピーする方法については、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ## <a name="see-also"></a>関連項目
 | トピック | 説明 |

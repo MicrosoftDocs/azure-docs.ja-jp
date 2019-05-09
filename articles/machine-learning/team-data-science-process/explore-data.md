@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77ff4e524295d7a8c20ee975751116cbe7d52641
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d4d2bc3292926144f13508780885e082f2b1fdc3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133419"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57866311"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Team Data Science Process でのデータの探索
 
@@ -24,7 +24,7 @@ ms.locfileid: "53133419"
 
 以下の記事では、Data Science Process で一般的に使用される 3 つの異なるストレージ環境のデータを探索する方法が説明されています。
 
-* [Pandas](http://pandas.pydata.org/) Python パッケージを使用して、[Azure BLOB コンテナー](explore-data-blob.md)のデータを探索します。
+* [Pandas](https://pandas.pydata.org/) Python パッケージを使用して、[Azure BLOB コンテナー](explore-data-blob.md)のデータを探索します。
 * SQL と、Python などのプログラミング言語を使用して、[SQL Server](explore-data-sql-server.md) のデータを探索します。
 * Hive クエリを使用して、[Hive テーブル](explore-data-hive-tables.md)のデータを探索します。
 

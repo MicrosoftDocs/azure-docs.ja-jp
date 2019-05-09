@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 11/25/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f69babb4520b4829a8cf59e2dac7763471a2db65
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 3b79c75b9846a4f8966a113c6e06fabc25bcf011
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557099"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792609"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Node.js IoT Edge モジュールを開発して、シミュレートされたデバイスにデプロイする
 
@@ -35,8 +35,8 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 Azure IoT Edge デバイス:
 
-* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
-* IoT Edge を Windows で実行している場合、IoT Edge バージョン 1.0.5 では Node.js モジュールがサポートされません。 詳細については、[1.0.5 のリリース ノート](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)を参照してください。 特定のバージョンをインストールする手順については、「[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)」を参照してください。
+* [Linux](quickstart-linux.md) のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+* IoT Edge 用 Node.js モジュールは、Windows コンテナーをサポートしていません。 
 
 クラウド リソース:
 
@@ -45,13 +45,14 @@ Azure IoT Edge デバイス:
 開発リソース:
 
 * [Visual Studio Code](https://code.visualstudio.com/)。 
-* Visual Studio Code 用の [Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
+* Visual Studio Code 用 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [Docker CE](https://docs.docker.com/engine/installation/)。 
+   * Windows デバイス上で開発している場合は、Docker が [Linux コンテナーを使用するように構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)されていることを確認してください。 
 * [Node.js および npm](https://nodejs.org)。 この npm パッケージは、Node.js を使用して配布されます。つまり、Node.js をダウンロードすると、お使いのコンピューターに npm が自動的にインストールされます。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このチュートリアルでは、Visual Studio Code 用の Azure IoT Edge 拡張機能を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
+このチュートリアルでは、Visual Studio Code 用の Azure IoT Tools を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
 
 コンテナー イメージは、Docker と互換性のある任意のレジストリを使用して格納できます。 2 つの一般的な Docker レジストリ サービスは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) と [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) です。 このチュートリアルでは、Azure Container Registry を使用します。 
 
@@ -61,14 +62,14 @@ Azure IoT Edge デバイス:
 
 2. コンテナー レジストリを作成するには、以下の値を指定します。
 
-   | フィールド | 値 | 
+   | フィールド | 値 |
    | ----- | ----- |
    | レジストリ名 | 一意の名前を指定します。 |
    | サブスクリプション | ドロップダウン リストで、サブスクリプションを選択します。 |
    | リソース グループ | IoT Edge のクイック スタートおよびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
    | Location | 近くの場所を選択します。 |
    | 管理者ユーザー | **[有効]** に設定します。 |
-   | SKU | **[Basic]** を選択します。 | **ターミナル**
+   | SKU | **[Basic]** を選択します。 |
 
 5. **作成**を選択します。
 
@@ -77,7 +78,7 @@ Azure IoT Edge デバイス:
 7. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値は、このチュートリアルで後ほどコンテナー レジストリへのアクセスを提供するために使用します。 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge モジュール プロジェクトを作成する
-以下の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、IoT Edge Node.js モジュールを作成する方法を示します。
+以下の手順では、Visual Studio Code と Azure IoT Tools を使用して、IoT Edge Node.js モジュールを作成する方法を示します。
 
 ### <a name="create-a-new-solution"></a>新しいソリューションの作成
 
@@ -103,11 +104,11 @@ Azure IoT Edge デバイス:
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **Node.js モジュール**を選択します。 |
    | Provide a module name (モジュール名の指定) | ご自身のモジュール **NodeModule** に名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 最終的には、\<レジストリ名\>.azurecr.io/nodemodule のような文字列になります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/nodemodule のようになります。 |
  
    ![Docker イメージ リポジトリを指定する](./media/tutorial-node-module/repository.png)
 
-VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。 ソリューション ワークスペースには、最上位の 5 つのコンポーネントが含まれています。 **modules** フォルダーには、モジュール用の Node.js コードと、モジュールをコンテナー イメージとして構築するための Dockerfiles が含まれています。 **\.env** ファイルには、コンテナー レジストリの資格情報が格納されています。 **deployment.template.json** ファイルには、デバイスにモジュールをデプロイするために IoT Edge ランタイムが使用する情報が含まれています。 また、**deployment.debug.template.json** ファイルには、モジュールのデバッグ バージョンが含まれています。 このチュートリアルでは、**\.vscode** フォルダーまたは **\.gitignore** ファイルは編集しません。 
+VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。 ソリューション ワークスペースには、最上位の 5 つのコンポーネントが含まれています。 **modules** フォルダーには、モジュール用の Node.js コードと、モジュールをコンテナー イメージとして構築するための Dockerfiles が含まれています。 **\.env** ファイルには、コンテナー レジストリの資格情報が格納されています。 **deployment.template.json** ファイルには、デバイスにモジュールをデプロイするために IoT Edge ランタイムが使用する情報が含まれています。また、**deployment.debug.template.json** ファイルには、モジュールのデバッグ バージョンが含まれています。 このチュートリアルでは、**\.vscode** フォルダーまたは **\.gitignore** ファイルは編集しません。 
 
 ソリューションの作成時にコンテナー レジストリを指定せず、既定値の localhost:5000 のままにすると、\.env ファイルは作成されません。 
 
@@ -180,27 +181,33 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
     });
     ```
 
-9. このファイルを保存します。
+9. app.js ファイルを保存します。
 
-10. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。 
+10. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。 このファイルは、IoT Edge エージェントにどのモジュール (この場合は **tempSensor** および **NodeModule**) をデプロイするかを指示し、IoT Edge ハブにそれらの間でメッセージをルーティングする方法を指示します。 デプロイ テンプレートで必要なほとんどの情報は Visual Studio Code 拡張機能によって自動的に入力されますが、ソリューションに関してすべての情報が正確であることを確認します。 
 
-   このファイルは、デバイス データをシミュレートする **tempSensor** と、**NodeModule** の 2 つのモジュールを配置するよう `$edgeAgent` に指示します。 IoT Edge の既定のプラットフォームは、VS Code のステータス バーで **amd64** に設定されています。つまり、**NodeModule** は Linux amd64 バージョンのイメージに設定されています。 IoT Edge デバイスのアーキテクチャに応じて、ステータス バーで既定のプラットフォームを **amd64** から **arm32v7** または **windows-amd64** に変更します。 配置マニフェストの詳細については、[IoT Edge モジュールを使用、構成、再利用する方法の確認](module-composition.md)に関するページをご覧ください。 
+   1. IoT Edge の既定のプラットフォームは、VS Code のステータス バーで **amd64** に設定されています。つまり、**NodeModule** は Linux amd64 バージョンのイメージに設定されています。 IoT Edge デバイスのアーキテクチャに応じて、ステータス バーで既定のプラットフォームを **amd64** から **arm32v7** に変更します。 
 
-   このファイルには、ご自身のレジストリの資格情報も含まれています。 テンプレート ファイルには、プレースホルダーにご自身のユーザー名とパスワードが入力されています。 配置マニフェストを生成すると、フィールドは、**.env** に追加した値で更新されます。 
+      ![モジュール イメージ プラットフォームを更新する](./media/tutorial-node-module/image-platform.png)
 
-12. NodeModule モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを `moduleContent` セクションの下部、`$edgeHub` モジュール ツインの後に挿入します。 
+   2. テンプレートで、モジュール名が既定の **SampleModule** という名前ではなく、IoT Edge ソリューションの作成時に変更した正しい名前になっていることを確認します。
+
+   3. IoT Edge エージェントがモジュール イメージを取得できるように、**registryCredentials** セクションには Docker レジストリの認証情報が格納されています。 実際のユーザー名とパスワードの組み合わせは、.env ファイル (Git では無視されます) に格納されます。 まだ行っていない場合は、.env ファイルに資格情報を追加します。  
+
+   4. デプロイ マニフェストの詳細については、「[IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。](module-composition.md)」を参照してください。
+
+11. NodeModule モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを `moduleContent` セクションの下部、`$edgeHub` モジュール ツインの後に挿入します。 
 
    ```json
-       "NodeModule": {
-           "properties.desired":{
-               "TemperatureThreshold":25
-           }
-       }
+     "NodeModule": {
+         "properties.desired":{
+             "TemperatureThreshold":25
+         }
+     }
    ```
 
    ![モジュール ツインをデプロイ テンプレートに追加する](./media/tutorial-node-module/module-twin.png)
 
-13. このファイルを保存します。
+12. deployment.template.json ファイルを保存します。
 
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
@@ -216,9 +223,16 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 2. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。 
 
-ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、新しい **config** フォルダーに `deployment.json` ファイルが生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、ご自身の Node.js コードがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
+ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、新しい **config** フォルダーに `deployment.json` ファイルが生成されます。 次に、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、コードがビルドされ、Node.js コードがコンテナー化されます。そのコンテナーは、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
 
 タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで実行される `docker build` コマンドで確認できます。 イメージ アドレスは、**\<repository\>:\<version\>-\<platform\>** の形式で、`module.json` ファイルの情報から作成されます。 このチュートリアルでは、**registryname.azurecr.io/nodemodule:0.0.1-amd64** になります。
+
+>[!TIP]
+>モジュールをビルドしてプッシュしようとするときにエラーが発生した場合は、次の点を確認してください。
+>* Visual Studio Code からお使いのコンテナー レジストリの資格情報を使用して Docker にサインインしているか。 これらの資格情報は、Azure portal にサインインする際に使用する情報とは異なります。
+>* コンテナー リポジトリは正しいか。 **[modules]** > **[nodemodule]** > **[module.json]** の順に開いて、**[repository]** フィールドを見つけます。 イメージ リポジトリは、**\<registryname\>.azurecr.io/nodemodule** のようになっている必要があります。 
+>* 開発マシンで実行されているものと同じタイプのコンテナーをビルドしているか。 Visual Studio Code の既定のコンテナーは Linux amd64 です。 お使いの開発マシンで Linux arm32v7 コンテナーが実行されている場合は、実際のコンテナーのプラットフォームに合わせて、VS Code ウィンドウ下部の青色のステータス バーでプラットフォームを更新してください。
+>* IoT Edge 用 Node.js モジュールは、Windows コンテナーをサポートしていません。
 
 ## <a name="deploy-and-run-the-solution"></a>ソリューションの配置と実行
 
@@ -255,7 +269,7 @@ IoT ハブに到着したメッセージは、Visual Studio Code を使用して
 2. 特定のデバイスの D2C のメッセージを監視するには、一覧でデバイスを右クリックし、**[Start Monitoring D2C Messages]\(D2C メッセージの監視を開始\)** を選択します。
 3. データの監視を停止するには、コマンド パレットで **Azure IoT Hub:Stop monitoring D2C message** コマンドを実行します。 
 4. モジュール ツインを表示または更新するには、一覧でモジュールを右クリックし、**[Edit module twin]\(モジュール ツインの編集\)** を選択します。 モジュール ツインを更新するには、ツインの JSON ファイルを保存し、編集領域を右クリックして、**[Update Module Twin]\(モジュール ツインの更新\)** を選択します。
-5. Docker ログを表示するには、VS Code 用の [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) をインストールし、ローカルで実行されているモジュールを Docker Explorer で見つけます。 コンテキスト メニューで、**[ログを表示する]** をクリックし、統合ターミナルで表示します。 
+5. Docker ログを表示するには、VS Code 用の [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) をインストールし、ローカルで実行されているモジュールを Docker エクスプローラーで見つけます。 コンテキスト メニューで、**[ログを表示する]** をクリックし、統合ターミナルで表示します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 

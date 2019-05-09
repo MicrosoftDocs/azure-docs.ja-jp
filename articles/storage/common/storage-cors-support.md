@@ -8,16 +8,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530478"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313653"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
-バージョン 2013-08-15 以降の Azure Storage サービスでは、BLOB、Table、Queue、File の各サービスでクロス オリジン リソース共有 (CORS) をサポートしています。 CORS は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーには、Web ページで別のドメインの API を呼び出すことができないようにする[同一呼び出し元ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。CORS を使用すると、あるドメイン (元のドメイン) から別のドメインの API を安全に呼び出すことができます。 CORS について詳しくは、[CORS の仕様](http://www.w3.org/TR/cors/)をご覧ください。
+バージョン 2013-08-15 以降の Azure Storage サービスでは、BLOB、Table、Queue、File の各サービスでクロス オリジン リソース共有 (CORS) をサポートしています。 CORS は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーには、Web ページで別のドメインの API を呼び出すことができないようにする[同一呼び出し元ポリシー](https://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。CORS を使用すると、あるドメイン (元のドメイン) から別のドメインの API を安全に呼び出すことができます。 CORS について詳しくは、[CORS の仕様](https://www.w3.org/TR/cors/)をご覧ください。
 
 CORS ルールは、[Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)、[Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) を呼び出すことによって、各ストレージ サービスに対して個別に設定できます。 サービスに対して CORS ルールを設定した場合、別のドメインからサービスに対して行われた要求が正しく承認されると、指定したルールに従ってその要求を許可するかどうかが評価されます。
 
@@ -29,7 +29,7 @@ CORS ルールは、[Set Blob Service Properties](https://msdn.microsoft.com/lib
 ## <a name="understanding-cors-requests"></a>CORS 要求について
 元のドメインからの CORS 要求は、次の 2 つの異なる要求で構成されている場合があります。
 
-* サービスによって課されている CORS の制限を照会するプレフライト要求。 要求メソッドが [簡単なメソッド](http://www.w3.org/TR/cors/)(つまり、GET、HEAD、POST) でない場合は、プレフライト要求が必要です。
+* サービスによって課されている CORS の制限を照会するプレフライト要求。 要求メソッドが [簡単なメソッド](https://www.w3.org/TR/cors/)(つまり、GET、HEAD、POST) でない場合は、プレフライト要求が必要です。
 * 目的のリソースに対して行う実際の要求。
 
 ### <a name="preflight-request"></a>プレフライト要求
@@ -67,7 +67,7 @@ CORS ルールは、サービス レベルで設定します。そのため、�
 
 CORS ルールに含まれている各要素は次のとおりです。
 
-* **AllowedOrigins**: CORS を使用したストレージ サービスに対する要求が許可される元のドメイン。 元のドメインとは、要求が発行されたドメインです。 元のドメインは、ユーザー エージェントがサービスに送信した元のドメインと、大文字と小文字の違いも含めて正確に一致する必要があります。 また、ワイルドカード文字 '*' を使用して、すべての元のドメインからの CORS を使用した要求を許可することもできます。 上記の例では、ドメイン[http://www.contoso.com](http://www.contoso.com) と [http://www.fabrikam.com](http://www.fabrikam.com) は、CORS を使用してサービスに対する要求を行うことができます。
+* **AllowedOrigins**: CORS を使用したストレージ サービスに対する要求が許可される元のドメイン。 元のドメインとは、要求が発行されたドメインです。 元のドメインは、ユーザー エージェントがサービスに送信した元のドメインと、大文字と小文字の違いも含めて正確に一致する必要があります。 また、ワイルドカード文字 '*' を使用して、すべての元のドメインからの CORS を使用した要求を許可することもできます。 上記の例では、ドメイン http:\//www.contoso.com と http:\//www.fabrikam.com は、CORS を使用してサービスに対する要求を行うことができます。
 * **AllowedMethods**: 元のドメインが CORS 要求で使用できるメソッド (HTTP 要求の動詞)。 上記の例では、PUT 要求と GET 要求のみが許可されます。
 * **AllowedHeaders**: 元のドメインが CORS 要求に指定できる要求ヘッダー。 上記の例では、x-ms-meta-data、x-ms-meta-target、x-ms-meta-abc で始まるすべてのメタデータ ヘッダーが許可されます。 ワイルドカード文字 '*' は、指定したプレフィックスで始まるすべてのヘッダーが許可されることを示しています。
 * **ExposedHeaders**: CORS 要求への応答で送信され、ブラウザーが要求の発行元に公開できる応答ヘッダー。 上記の例では、x-ms-meta で始まるすべてのヘッダーを公開するようブラウザーに指示しています。
@@ -130,9 +130,9 @@ CORS ルールは、次のように評価されます。
 | Request |  |  | Response |  |
 | --- | --- | --- | --- | --- |
 | **メソッド** |**元のドメイン** |**要求ヘッダー** |**ルールの一致** |**結果** |
-| **PUT** |http://www.contoso.com |x-ms-blob-content-type |最初のルール |成功 |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |2 番目のルール |成功 |
-| **GET** |http://www.contoso.com |x-ms-client-request-id |2 番目のルール |失敗 |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |最初のルール |Success |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |2 番目のルール |Success |
+| **GET** |http:\//www.contoso.com |x-ms-client-request-id |2 番目のルール |失敗 |
 
 最初の要求は最初のルールと一致します (元のドメインが許可される元のドメインと一致し、メソッドが許可されるメソッドと一致し、ヘッダーが許可されるヘッダーと一致します)。そのため、成功します。
 
@@ -146,7 +146,7 @@ CORS ルールは、次のように評価されます。
 > 
 
 ## <a name="understanding-how-the-vary-header-is-set"></a>Vary ヘッダーの設定方法について
-*Vary* ヘッダーは、要求を処理するためにサーバーによって選択された条件についてブラウザーまたはユーザー エージェントにアドバイスする一連の要求ヘッダー フィールドで構成された標準 HTTP/1.1 ヘッダーです。 *Vary* ヘッダーは、主にプロキシ、ブラウザー、CDN がキャッシュする際に応答のキャッシュ方法を決定するために使用します。 詳細については、 [Vary ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)の仕様をご覧ください。
+*Vary* ヘッダーは、要求を処理するためにサーバーによって選択された条件についてブラウザーまたはユーザー エージェントにアドバイスする一連の要求ヘッダー フィールドで構成された標準 HTTP/1.1 ヘッダーです。 *Vary* ヘッダーは、主にプロキシ、ブラウザー、CDN がキャッシュする際に応答のキャッシュ方法を決定するために使用します。 詳細については、 [Vary ヘッダー](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)の仕様をご覧ください。
 
 ブラウザーまたは別のユーザー エージェントでは、CORS 要求の応答をキャッシュする際に、元のドメインを許可される元のドメインとしてキャッシュします。 キャッシュがアクティブな間に 2 つ目のドメインがストレージ リソースに対して同じ要求を発行した場合、ユーザー エージェントはキャッシュされている元のドメインを取得します。 2 つ目のドメインはキャッシュされているドメインと一致しないため、要求は失敗します (一致する場合は成功します)。 Azure ストレージでは、要求元のドメインとキャッシュされている **元のドメイン** が異なる場合、Vary ヘッダーを Origin に設定して、サービスに対する後続の CORS 要求を送信するようユーザー エージェントに指示することがあります。
 
@@ -162,7 +162,7 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 前に説明した例に基づいて、Azure ストレージが GET/HEAD 要求にどのように応答するかを次の表に示します。
 
 | Request | アカウントの設定とルールの評価結果 |  |  | Response |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | **要求に Origin ヘッダーが存在する** |**このサービスに CORS ルールが指定されている** |**すべての元のドメインを許可する照合ルール (*) が存在する** |**元のドメインと完全に一致する照合ルールが存在する** |**Origin に設定された Vary にヘッダーが応答に含まれている** |**Access-Control-Allowed-Origin が応答に含まれている: "*"** |**Access-Control-Exposed-Headers が応答に含まれている** |
 | いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |
 | いいえ  |はい |いいえ  |いいえ  |はい |いいえ  |いいえ  |
@@ -184,5 +184,5 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 
 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)
 
-[W3C のクロス オリジン リソース共有の仕様](http://www.w3.org/TR/cors/)
+[W3C のクロス オリジン リソース共有の仕様](https://www.w3.org/TR/cors/)
 

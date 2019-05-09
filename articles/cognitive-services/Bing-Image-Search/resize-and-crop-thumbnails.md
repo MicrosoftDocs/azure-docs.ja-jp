@@ -4,24 +4,24 @@ titleSuffix: Azure Cognitive Services
 description: Bing Image Search API からの応答に含まれるサムネイル画像のサイズを変更し、トリミングします。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: F4FFAE91-A003-4F7C-8E60-83A142485E28
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 3bb360cd95dcbfb95464b2b259dcebfce7065256
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c53b84f31100ab72458ab6fb79b2009450eda15c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256392"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789948"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>サムネイル画像のサイズ変更とトリミング
 
-検索クエリを処理すると、Bing は[応答](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format)の中ですべてのイメージのサムネイル情報を生成します。 この情報は、返されたサムネイルのすべてまたはサブセットを表示するために使用できます。 サブセットを表示する場合、残りのイメージを表示するためのオプションを提供します。
+検索クエリを処理すると、Bing は[応答](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format)の中ですべてのイメージのサムネイル情報を生成します。 この情報は、返されたサムネイルのすべてまたはサブセットを表示するために使用できます。 サブセットを表示する場合は、残りのイメージを表示するためのオプションを指定します。
 
 
 <!-- Removing image until we can replace it with a sanatized version.

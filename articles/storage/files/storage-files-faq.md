@@ -4,15 +4,16 @@ description: Azure Files についてよく寄せられる質問とその回答�
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 10/04/2018
+ms.date: 01/02/2019
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: files
+ms.topic: conceptual
+ms.openlocfilehash: 561c8c9d942210a9bbdc70feff9bc468fa69967e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972084"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995852"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -26,19 +27,19 @@ ms.locfileid: "52972084"
 
 ## <a name="general"></a>全般
 * <a id="why-files-useful"></a>
-**Azure Files にはどのような利点がありますか。**  
+  **Azure Files にはどのような利点がありますか。**  
    Azure Files を使用すると、物理サーバー、デバイス、アプライアンスに伴うオーバーヘッドの管理に縛られることなく、クラウドにファイル共有を作成することができます。 OS 更新プログラムの適用、不良ディスクの交換など、単調な作業は Microsoft が代わって行います。 Azure Files を利用できるシナリオの詳細については、「[Azure Files の適用ケース](storage-files-introduction.md#why-azure-files-is-useful)」をご覧ください。
 
 * <a id="file-access-options"></a>
-**Azure Files でファイルにアクセスするさまざまな方法を挙げてください。**  
-    SMB 3.0 プロトコルを使用してローカル マシンにファイル共有をマウントするか、[Storage Explorer](http://storageexplorer.com/) などのツールを使用してファイル共有内のファイルにアクセスできます。 アプリケーションから、ストレージ クライアント ライブラリ、REST API、PowerShell、または Azure CLI を使用して、Azure ファイル共有内のファイルにアクセスできます。
+  **Azure Files でファイルにアクセスするさまざまな方法を挙げてください。**  
+    SMB 3.0 プロトコルを使用してローカル マシンにファイル共有をマウントするか、[Storage Explorer](https://storageexplorer.com/) などのツールを使用してファイル共有内のファイルにアクセスできます。 アプリケーションから、ストレージ クライアント ライブラリ、REST API、PowerShell、または Azure CLI を使用して、Azure ファイル共有内のファイルにアクセスできます。
 
 * <a id="what-is-afs"></a>
-**Azure File Sync とは何ですか。**  
+  **Azure File Sync とは何ですか。**  
     Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server マシンが Azure ファイル共有の高速キャッシュに変わります。 SMB、ネットワーク ファイル システム (NFS)、ファイル転送プロトコル サービス (FTPS) など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルでアクセスすることができます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
 * <a id="files-versus-blobs"></a>
-**データに Azure Blob Storage ではなく Azure ファイル共有を使用する理由を教えてください。**  
+  **データに Azure Blob Storage ではなく Azure ファイル共有を使用する理由を教えてください。**  
     Azure Files と Azure Blob Storage はどちらも、クラウドに大量のデータを保存する手段として利用できますが、その用途にやや違いがあります。 
     
     Azure Blob Storage は、構造化されていないデータを格納する必要がある大規模なクラウド ネイティブ アプリケーションに役立ちます。 パフォーマンスとスケールを最大限に高めるため、Azure Blob Storage は通常のファイル システムよりも単純なストレージの抽象化です。 Azure Blob Storage には必ず、REST ベースのクライアント ライブラリ経由で (または REST ベースのプロトコルを介して直接) アクセスする必要があります。
@@ -57,42 +58,42 @@ ms.locfileid: "52972084"
     Azure で高パフォーマンスで高可用なファイル サーバーを設定する方法については、「[Deploying IaaS VM Guest Clusters in Microsoft Azure (Microsoft Azure に IaaS VM ゲスト クラスターをデプロイする)](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)」をご覧ください。 Azure Files と Azure Disks の違いに関する詳細な説明については、「[Azure BLOB、Azure Files、Azure Disks の使い分け](../common/storage-decide-blobs-files-disks.md)」をご覧ください。 Azure ディスクの詳細については、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
 * <a id="get-started"></a>
-**Azure Files を使い始めるにはどうしたらよいですか。**  
+  **Azure Files を使い始めるにはどうしたらよいですか。**  
    Azure Files は簡単に使い始めることができます。 まず[ファイル共有を作成](storage-how-to-create-file-share.md)し、お好きなオペレーティング システムでマウントします。 
 
-    * [Windows でのマウント](storage-how-to-use-files-windows.md)
-    * [Linux でのマウント](storage-how-to-use-files-linux.md)
-    * [macOS でのマウント](storage-how-to-use-files-mac.md)
+  * [Windows でのマウント](storage-how-to-use-files-windows.md)
+  * [Linux でのマウント](storage-how-to-use-files-linux.md)
+  * [macOS でのマウント](storage-how-to-use-files-mac.md)
 
-   Azure ファイル共有をデプロイして組織内の運用ファイル共有を置き換える方法についての詳しいガイドは、「[Azure Files のデプロイの計画](storage-files-planning.md)」をご覧ください。
+    Azure ファイル共有をデプロイして組織内の運用ファイル共有を置き換える方法についての詳しいガイドは、「[Azure Files のデプロイの計画](storage-files-planning.md)」をご覧ください。
 
 * <a id="redundancy-options"></a>
-**Azure Files では、どのようなストレージ冗長性オプションがサポートされていますか。**  
+  **Azure Files では、どのようなストレージ冗長性オプションがサポートされていますか。**  
     現在、Azure Files では、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS) がサポートされています。 今後は読み取りアクセス geo 冗長ストレージ (RA-GRS) のサポートを計画していますが、現時点でスケジュールをお伝えすることはできません。
 
 * <a id="tier-options"></a>
-**Azure Files では、どのストレージ層がサポートされていますか。**  
+  **Azure Files では、どのストレージ層がサポートされていますか。**  
     現在 Azure Files でサポートされているのは、標準ストレージ層のみです。 Premium Storage およびクール ストレージのサポートについては、現時点でスケジュールをお伝えすることはできません。 
     
     > [!NOTE]
     > BLOB のみのストレージ アカウントと Premium Storage アカウントからは、Azure ファイル共有を作成できません。
 
 * <a id="give-us-feedback"></a>
-**Azure Files に追加してほしい機能があります。追加できますか。**  
+  **Azure Files に追加してほしい機能があります。追加できますか。**  
     Azure Files チームでは、サービスに関するあらゆるフィードバックをお待ちしています。 [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) で機能のリクエストにご投票ください。 多くの新しい機能を皆様に喜んでいただけることを楽しみにしています。
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
-**Azure File Sync は、どのリージョンでサポートされていますか。**  
+  **Azure File Sync は、どのリージョンでサポートされていますか。**  
     提供されているリージョンの一覧は、Azure File Sync プランニング ガイドの「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」セクションでご覧いただけます。 パブリック リージョン以外のリージョンも含め、今後サポート対象リージョンを拡大していく予定です。
 
 * <a id="cross-domain-sync"></a>
-**同じ同期グループ内にドメイン参加とドメイン非参加のサーバーを保持することはできますか。**  
+  **同じ同期グループ内にドメイン参加とドメイン非参加のサーバーを保持することはできますか。**  
     はい。 異なる Active Directory に属しているサーバー エンドポイントを 1 つの同期グループに含めることは可能です。ドメインに参加していない場合でも同様です。 この構成は技術的には機能するものの、通常の構成としては、お勧めできません。あるサーバー上のファイルやフォルダー用に定義されたアクセス制御リスト (ACL) が、同期グループ内の他のサーバーでは適用できない可能性があるためです。 最良の結果を得るには、同じ Active Directory フォレスト内にあるサーバー間、別の Active Directory フォレスト内にあるものの信頼関係が確立されているサーバー間、またはドメインに属していないサーバー間で同期することをお勧めします。 これらの構成を混在させることは避けるようにしてください。
 
 * <a id="afs-change-detection"></a>
-**SMB またはポータルで Azure ファイル共有に直接ファイルを作成しました。このファイルが同期グループのサーバーに同期されるまでどのくらいの時間がかかりますか。**  
+  **SMB またはポータルで Azure ファイル共有に直接ファイルを作成しました。このファイルが同期グループのサーバーに同期されるまでどのくらいの時間がかかりますか。**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 * <a id="afs-conflict-resolution"></a>**2 つのサーバーで同じファイルがほぼ同時に変更された場合、どうなりますか。**  
@@ -103,67 +104,66 @@ ms.locfileid: "52972084"
     たとえば、CompanyReport.docx で競合が生じたとします。古い方の書き込みが CentralServer で行われた場合、最初の競合で生じるファイルの名前は CompanyReport-CentralServer.docx となります。 2 回目の競合では、CompanyReport-CentralServer-1.docx という名前になります。
 
 * <a id="afs-storage-redundancy"></a>
-**Azure File Sync では、geo 冗長ストレージはサポートされますか。**  
-    はい。Azure Files では、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の両方がサポートされます。 ペアになっているリージョン間で GRS フェールオーバーが発生する場合、新しいリージョンはデータのバックアップとしてのみ扱うことをお勧めします。 Azure File Sync は、新しいプライマリ リージョンで自動的に同期を開始することはありません。 
+  **Azure File Sync では、geo 冗長ストレージはサポートされますか。**  
+    はい。Azure Files では、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の両方がサポートされます。 GRS 用に構成されたアカウントから、ペアになったリージョン間でストレージ アカウントのフェールオーバーを開始する場合は、新しいリージョンをデータのみのバックアップとして扱うことをお勧めします。 Azure File Sync は、新しいプライマリ リージョンで自動的に同期を開始することはありません。 
 
 * <a id="sizeondisk-versus-size"></a>
-**ファイルの "*ディスク上のサイズ*" プロパティが、Azure File Sync を使用した後の "*サイズ*" プロパティと一致しないのはどうしてですか。**  
- 「[クラウドの階層化について](storage-sync-cloud-tiering.md#sizeondisk-versus-size)」を参照してください。
+  **ファイルの "*ディスク上のサイズ*" プロパティが、Azure File Sync を使用した後の "*サイズ*" プロパティと一致しないのはどうしてですか。**  
+  「[クラウドの階層化について](storage-sync-cloud-tiering.md#sizeondisk-versus-size)」を参照してください。
 
 * <a id="is-my-file-tiered"></a>
-**ファイルが階層化されているかどうかは、どうやって判断できますか。**  
- 「[クラウドの階層化について](storage-sync-cloud-tiering.md#is-my-file-tiered)」を参照してください。
+  **ファイルが階層化されているかどうかは、どうやって判断できますか。**  
+  「[クラウドの階層化について](storage-sync-cloud-tiering.md#is-my-file-tiered)」を参照してください。
 
 * <a id="afs-recall-file"></a>**使用したいファイルが階層化されています。ローカルで使用するためにこのファイルをディスクに再現するには、どうすればよいですか。**  
- 「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-recall-file)」を参照してください。
-
+  「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-recall-file)」を参照してください。
 
 * <a id="afs-force-tiering"></a>
-**ファイルまたはディレクトリを強制的に階層化するには、どうすればよいですか。**  
- 「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-force-tiering)」を参照してください。
+  **ファイルまたはディレクトリを強制的に階層化するには、どうすればよいですか。**  
+  「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-force-tiering)」を参照してください。
 
 * <a id="afs-effective-vfs"></a>
-**ボリューム上に複数のサーバー エンドポイントがある場合、*ボリュームの空き領域*はどのように解釈されますか。**  
- 「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-effective-vfs)」を参照してください。
+  **ボリューム上に複数のサーバー エンドポイントがある場合、*ボリュームの空き領域*はどのように解釈されますか。**  
+  「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-effective-vfs)」を参照してください。
 
 * <a id="afs-files-excluded"></a>
-**Azure File Sync によって自動的に除外されるのは、どのファイルまたはフォルダーですか。**  
+  **Azure File Sync によって自動的に除外されるのは、どのファイルまたはフォルダーですか。**  
     Azure File Sync は既定で、次のファイルを除外します。
-    * desktop.ini
-    * thumbs.db
-    * ehthumbs.db
-    * ~$\*.\*
-    * \*.laccdb
-    * \*.tmp
-    * 635D02A9D91C401B97884B82B3BCDAEA.\*
+  * desktop.ini
+  * thumbs.db
+  * ehthumbs.db
+  * ~$\*.\*
+  * \*.laccdb
+  * \*.tmp
+  * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     また、既定で、次のフォルダーも除外します。
 
-    * \System Volume Information
-    * \$RECYCLE.BIN
-    * \SyncShareState
+  * \System Volume Information
+  * \$RECYCLE.BIN
+  * \SyncShareState
 
 * <a id="afs-os-support"></a>
-**Windows Server 2008 R2、Linux、または自分のネットワーク接続ストレージ (NAS) デバイスで Azure File Sync を使用することはできますか。**  
+  **Windows Server 2008 R2、Linux、または自分のネットワーク接続ストレージ (NAS) デバイスで Azure File Sync を使用することはできますか。**  
     現在 Azure File Sync でサポートされるのは、Windows Server 2016 および Windows Server 2012 R2 のみです。 現時点でお伝えできる他の計画はありませんが、お客様の要望に応じてサポートするプラットフォームを増やしていきたいと考えています。 サポート対象としてご希望のプラットフォームがあれば、[Azure Files の UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお寄せください。
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
-**階層化されたファイルがサーバー エンドポイント名前空間の外部に存在するのはなぜですか。**  
-    Azure File Sync エージェント バージョン 3 より前の Azure File Sync は、サーバー エンドポイントと同じボリューム上であってもサーバー エンドポイントの外部に存在する階層化されたファイルの移動をブロックしました。 他のボリュームに対する、コピー操作、階層化されていないファイルの移動、および階層化されたファイルの移動は、影響を受けませんでした。 このような動作の理由は、エクスプローラーおよび他の Windows API による同じボリューム上での移動操作は、(ほとんど) 瞬時の名前変更操作であるという、暗黙の仮定によるものでした。 これは、Azure File Sync がクラウドからデータを呼び戻している間、エクスプローラーや他の移動方法 (コマンド ラインや PowerShell など) が応答しないように見えることを意味します。 [Azure File Sync エージェント バージョン 3.0.12.0](storage-files-release-notes.md#supported-versions) 以降の Azure File Sync では、サーバー エンドポイントの外部にある階層化されたファイルを移動できます。 階層化されたファイルがサーバー エンドポイントの外部で階層化されたファイルとして存在できるようにし、バックグラウンドでファイルを呼び戻すことにより、上で説明したような悪影響を防ぎます。 つまり、同じボリューム上での移動は瞬時であり、移動が完了した後で、ファイルをディスクに呼び戻すためのすべての処理を行います。 
+  **階層化されたファイルがサーバー エンドポイント名前空間の外部に存在するのはなぜですか。**  
+    Azure File Sync エージェント バージョン 3 より前の Azure File Sync は、サーバー エンドポイントと同じボリューム上であってもサーバー エンドポイントの外部に存在する階層化されたファイルの移動をブロックしました。 他のボリュームに対する、コピー操作、階層化されていないファイルの移動、および階層化されたファイルの移動は、影響を受けませんでした。 このような動作の理由は、ファイル エクスプローラーおよび他の Windows の API による同じボリューム上での移動操作は、(ほとんど) 瞬時の名前変更操作であるという、暗黙の仮定によるものでした。 これは、Azure File Sync がクラウドからデータを呼び戻している間、エクスプローラーや他の移動方法 (コマンド ラインや PowerShell など) が応答しないように見えることを意味します。 [Azure File Sync エージェント バージョン 3.0.12.0](storage-files-release-notes.md#supported-versions) 以降の Azure File Sync では、サーバー エンドポイントの外部にある階層化されたファイルを移動できます。 階層化されたファイルがサーバー エンドポイントの外部で階層化されたファイルとして存在できるようにし、バックグラウンドでファイルを呼び戻すことにより、上で説明したような悪影響を防ぎます。 つまり、同じボリューム上での移動は瞬時であり、移動が完了した後で、ファイルをディスクに呼び戻すためのすべての処理を行います。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-**サーバーでの Azure File Sync に関して問題があります (同期、クラウド階層化など)。サーバー エンドポイントを削除して再作成する必要がありますか。**  
+  **サーバーでの Azure File Sync に関して問題があります (同期、クラウド階層化など)。サーバー エンドポイントを削除して再作成する必要がありますか。**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
-**ストレージ同期サービスやストレージ アカウントを別のリソース グループまたはサブスクリプションに移動できますか。**  
+  **ストレージ同期サービスやストレージ アカウントを別のリソース グループまたはサブスクリプションに移動できますか。**  
    はい。ストレージ同期サービスやストレージ アカウントは、既存の Azure AD テナント内の別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
 
     > [!Note]  
     > Azure File Sync では、別の Azure AD テナントへのサブスクリプションの移動がサポートされません。
     
 * <a id="afs-ntfs-acls"></a>
-**Azure File Sync では、Azure Files の格納データと共にディレクトリ レベルまたはファイル レベルの NTFS ACL が保持されますか。**
+  **Azure File Sync では、Azure Files の格納データと共にディレクトリ レベルまたはファイル レベルの NTFS ACL が保持されますか。**
 
     オンプレミスのファイル サーバーから伝達された NTFS ACL は、Azure File Sync によってメタデータとして保持されます。 Azure Files では、Azure File Sync サービスによって管理されているファイル共有へのアクセスに、Azure AD 資格情報による認証を使用することはできません。
     
@@ -182,7 +182,7 @@ ms.locfileid: "52972084"
 * <a id="ad-support-regions"></a>
 **Azure Files での SMB 経由の Azure AD のプレビューは、すべての Azure リージョンで利用できますか。**
 
-    このプレビューは、北ヨーロッパを除くすべてのパブリック リージョンで使用できます。
+    このプレビューは、すべてのパブリック リージョンで使用できます。
 
 * <a id="ad-support-on-premises"></a>
 **Azure Files での SMB 経由の Azure AD 認証 (プレビュー) では、オンプレミス マシンからの Azure AD を使用した認証はサポートされていますか。**
@@ -242,9 +242,15 @@ ms.locfileid: "52972084"
 * <a id="data-compliance-policies"></a>
 **Azure Files ではどのようなデータ コンプライアンス ポリシーがサポートされていますか。**  
 
-   Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスできます。
+   Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/trustcenter/default.aspx)にアクセスできます。
 
 ## <a name="on-premises-access"></a>オンプレミスのアクセス
+
+* <a id="port-445-blocked"></a>
+**Azure Files のマウントに失敗している My ISP または IT blocks Port 445 です。どうすればよいですか。**
+
+    [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)確認できます。 Azure ファイルは、リージョンやデータセンターの外側からは SMB 3.0 (暗号化サポートあり) を使用した接続のみを許可します。 SMB 3.0 プロトコルには、インターネット経由で使用する場合に非常に安全となる、チャネル暗号化などのさまざまなセキュリティ機能が導入されています。 ただし、より古い SMB バージョンで確認された脆弱性の履歴的理由から、ポート 445 がブロックされている可能性もあります。 理想としては、ポートは SMB 1.0 トラフィックに対してのみブロックされ、SMB 1.0 はすべてのクライアントでオフにされる必要があります。
+
 * <a id="expressroute-not-required"></a>
 **Azure Files に接続するためや、Azure File Sync をオンプレミスで使用するために、Azure ExpressRoute を使用する必要はありますか。**  
 
@@ -298,7 +304,7 @@ ms.locfileid: "52972084"
     
     ファイル スナップショット機能が必要な場合は、[Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお知らせください。
 
-* <a id="encypted-snapshots"></a>
+* <a id="encrypted-snapshots"></a>
 **暗号化されたファイル共有の共有スナップショットを作成できますか。**  
     保存時の暗号化を有効にした Azure ファイル共有の共有スナップショットを取得できます。 共有スナップショットから暗号化されたファイル共有に、ファイルを復元できます。 お使いの共有が暗号化されている場合、共有スナップショットも暗号化されます。
 

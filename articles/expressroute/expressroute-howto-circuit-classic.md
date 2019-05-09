@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 0d6d8af9456f5f943eb70b5a63b69e2f7f16a4cb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104239"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59047914"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)
 
@@ -33,6 +33,9 @@ ms.locfileid: "53104239"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>開始する前に
 
 最新バージョンの Azure Service Management (SM) PowerShell モジュールと ExpressRoute モジュールをインストールします。  次の例を使用する場合は、コマンドレットの新しいバージョンがリリースされると、バージョン番号 (この例では、5.1.1) が変わることに注意してください。
@@ -48,25 +51,25 @@ Azure アカウントにサインインするには、次の例を使用しま�
 
 1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzAccount
+   ```
 2. アカウントのサブスクリプションを確認します。
 
-  ```powershell
-  Get-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzSubscription
+   ```
 3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
 
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```powershell
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 
 4. 次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="get-the-status-of-a-circuit"></a>回線の状態を取得する
 

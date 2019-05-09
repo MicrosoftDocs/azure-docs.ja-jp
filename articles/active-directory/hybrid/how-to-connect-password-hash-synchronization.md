@@ -4,20 +4,23 @@ description: パスワード ハッシュ同期のしくみとその設定方法
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 12/06/2018
-ms.component: hybrid
+ms.topic: conceptual
+ms.date: 04/02/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f70c92e4f617ff5c2b652900ce3b803f8609d2f9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+search.appverid:
+- MET150
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078652"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58916378"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -45,7 +48,7 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 ### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>パスワード ハッシュ同期のしくみの詳しい説明
 次のセクションでは、Active Directory と Azure AD の間のパスワード ハッシュ同期のしくみを詳しく説明します。
 
-![パスワードの詳細なフロー](./media/how-to-connect-password-hash-synchronization/arch3.png)
+![パスワードの詳細なフロー](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
 
 1. AD Connect サーバー上のパスワード ハッシュ同期エージェントは、保存されたパスワード ハッシュ (unicodePwd 属性) を 2 分ごとに DC に要求します。  この要求は、DC 間でデータを同期するために使用される標準の [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) レプリケーション プロトコルを介して行われます。 サービス アカウントには、パスワード ハッシュを取得するために、Replicate Directory Changes (ディレクトリの変更のレプリケート) と Replicate Directory Changes All AD (ディレクトリの変更をすべての AD にレプリケート) の権限が必要になります (インストール時に既定で付与されます)。

@@ -3,23 +3,23 @@ title: Azure Service Bus の Premium および Standard メッセージング価
 description: Service Bus の Premium および Standard メッセージング レベル
 services: service-bus-messaging
 documentationcenter: .net
-author: djrosanova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/30/2018
-ms.author: spelluru
-ms.openlocfilehash: 33dda074bd1aeb6b6187ca01347f31219ac86e91
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.topic: conceptual
+ms.date: 03/05/2019
+ms.author: aschhab
+ms.openlocfilehash: 9e9c8918556b7ff003bcfed062ea1e15233b2845
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250205"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761958"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -29,7 +29,7 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 
 次の表に、大まかな違いをいくつか示します。
 
-| Premium | 標準 |
+| Premium | Standard |
 | --- | --- |
 | 高スループット |変わりやすいスループット |
 | 予測可能なパフォーマンス |変わりやすい待機時間 |
@@ -54,6 +54,21 @@ Premium メッセージングでは、パーティション分割されたキュ
 完全に分離されたランタイム環境で Premium メッセージングが実行されるため、Premium 名前空間ではエクスプレス エンティティがサポートされません。 エクスプレス機能の詳細については、[QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティを参照してください。
 
 Standard メッセージングで実行しているコードがあり、それを Premium レベルに移植したい場合は、[EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティが **false** (既定値) に設定されていることを確認します。
+
+## <a name="premium-messaging-resource-usage"></a>Premium メッセージング リソースの使用
+一般に、エンティティに対するどの操作でも、CPU とメモリが使用されます。 これらいくつかの操作を次に示します。 
+
+- キュー、トピック、サブスクリプションに対する CRUD (Create、Retrieve、Update、Delete (作成、取得、更新、削除)) などの管理操作。
+- ランタイム操作 (メッセージの送受信)
+- 操作とアラートの監視
+
+ただし追加の CPU とメモリ使用によりさらに課金されることはありません。 Premium メッセージング レベルでは、メッセージング ユニットの料金は単一です。
+
+CPU とメモリの使用は追跡され、次の理由で表示されます。 
+
+- システム内部に透明性を提供する。
+- 購入したリソースの容量を把握する。
+- スケール アップ/スケール ダウンを判断するのに役立つ容量計画。
 
 ## <a name="get-started-with-premium-messaging"></a>Premium メッセージングを使ってみる
 

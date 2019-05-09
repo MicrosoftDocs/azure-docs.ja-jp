@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 824d3f2402861ed8a54a29c9571654cc581e4c5e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434632"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621534"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Monitor で Linux アプリケーションのパフォーマンス カウンターを収集する 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-この記事では、特定のアプリケーションのパフォーマンス カウンターを Azure Monitor のログに収集するように [Linux 用 Log Analytics エージェント](https://github.com/Microsoft/OMS-Agent-for-Linux)を構成するための詳細について説明します。  この記事に含まれるアプリケーションは次のとおりです。  
+この記事では、特定のアプリケーションのパフォーマンス カウンターを Azure Monitor に収集するように [Linux 用 Log Analytics エージェント](https://github.com/Microsoft/OMS-Agent-for-Linux)を構成することの詳細について説明します。  この記事に含まれるアプリケーションは次のとおりです。  
 
-- [MySQL](#MySQL)
+- [MySQL](#mysql)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
@@ -48,12 +48,12 @@ MySQL OMI 認証ファイルの形式を次に示します
 
 認証ファイル内のエントリを次の表で説明します。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--|:--|
-| ポート | MySQL インスタンスがリッスンしている現在のポートを表します。 ポート 0 は、以降のプロパティが既定のインスタンスに使用されることを指定します。 |
-| バインド アドレス| 現在の MySQL バインド アドレス。 |
+| Port | MySQL インスタンスがリッスンしている現在のポートを表します。 ポート 0 は、以降のプロパティが既定のインスタンスに使用されることを指定します。 |
+| Bind-Address| 現在の MySQL バインド アドレス。 |
 | username| MySQL Server インスタンスを監視するために使用される MySQL ユーザー。 |
-| Base64 でエンコードされたパスワード| Base64 でエンコードされた MySQL 監視ユーザーのパスワード。 |
+| Base64 encoded Password| Base64 でエンコードされた MySQL 監視ユーザーのパスワード。 |
 | AutoUpdate| my.cnf ファイル内の変更を再スキャンし、MySQL OMI プロバイダーがアップグレードされたときに MySQL OMI 認証ファイルを上書きするかどうかを指定します。 |
 
 ### <a name="default-instance"></a>既定のインスタンス
@@ -61,7 +61,7 @@ MySQL OMI 認証ファイルは、1 つの Linux ホスト上での複数の MyS
 
 次の表に、インスタンス設定の例を示します 
 
-| Description | ファイル |
+| 説明 | ファイル |
 |:--|:--|
 | 既定のインスタンスとポート 3308 のインスタンス。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 既定のインスタンスとポート 3308 のインスタンス、および異なるユーザー名とパスワード。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -168,4 +168,4 @@ Azure Monitor にデータを送信するように Linux 用 Log Analytics エ�
 
 ## <a name="next-steps"></a>次のステップ
 * Linux エージェントから[パフォーマンス カウンターを収集します](data-sources-performance-counters.md)。
-* [ログ クエリ](../../log-analytics/log-analytics-queries.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 

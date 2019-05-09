@@ -4,7 +4,7 @@ description: スタンドアロンまたはオンプレミス Azure Service Fabr
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
 ms.service: service-fabric
@@ -12,20 +12,19 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2017
+ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 37859a117c88238089a681e3814c2a52f62bfce4
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: f94a65e469fdb3cee4f02bc5a8f6f5a4a1ea5a16
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412585"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662331"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
-この記事では、ClusterConfig.json ファイルを使用して、スタンドアロン Azure Service Fabric クラスターを構成する方法について説明します。 このファイルを使って、クラスターのノード、セキュリティ構成、およびフォールト ドメインとアップグレード ドメインに関するネットワーク トポロジに関する情報を指定します。
+この記事では、*ClusterConfig.json* ファイルで設定できる、スタンドアロン Azure Service Fabric クラスターの構成設定について説明します。 このファイルを使って、クラスターのノード、セキュリティ構成、およびフォールト ドメインとアップグレード ドメインに関するネットワーク トポロジに関する情報を指定します。  構成設定を変更または追加した後、[スタンドアロン クラスターを作成する](service-fabric-cluster-creation-for-windows-server.md)か、[スタンドアロン クラスターの構成をアップグレードする](service-fabric-cluster-config-upgrade-windows-server.md)かのいずれかを行うことができます。
 
 [スタンドアロンの Service Fabric パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)すると、ClusterConfig.json サンプルも含まれます。 名前に "DevCluster" が含まれているサンプルは、論理ノードを使って、同じマシン上に 3 つのノードすべてが配置されたクラスターを作成します。 これらのノードのうち、少なくとも 1 つのノードをプライマリ ノードとしてマークする必要があります。 この種類のクラスターは、開発環境またはテスト環境で役立ちます。 運用環境クラスターとしてはサポートされていません。 名前に "MultiMachine" が含まれているサンプルでは、それぞれのノードが別々のマシン上に配置された運用環境グレードのクラスターを作成できます。 これらのクラスターのプライマリ ノードの数は、クラスターの[信頼性レベル](#reliability)に基づきます。 リリース 5.7 の API バージョン 05-2017 では、信頼性レベルのプロパティが削除されました。 代わりに、クラスターに最適な信頼性レベルがコードによって計算されます。 バージョン 5.7 以降では、このプロパティの値を設定しないでください。
-
 
 * ClusterConfig.Unsecure.DevCluster.json と ClusterConfig.Unsecure.MultiMachine.json は、それぞれがセキュリティ保護されていないテスト クラスターと運用環境クラスターを作成する方法を示しています。
 
@@ -48,26 +47,27 @@ ms.locfileid: "39412585"
 
 ## <a name="nodes-on-the-cluster"></a>クラスターのノード
 次のスニペットに示すように、nodes セクションを使用して Service Fabric クラスターのノードを構成できます。
-
-    "nodes": [{
-        "nodeName": "vm0",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType0",
-        "faultDomain": "fd:/dc1/r0",
-        "upgradeDomain": "UD0"
-    }, {
-        "nodeName": "vm1",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType1",
-        "faultDomain": "fd:/dc1/r1",
-        "upgradeDomain": "UD1"
-    }, {
-        "nodeName": "vm2",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType2",
-        "faultDomain": "fd:/dc1/r2",
-        "upgradeDomain": "UD2"
-    }],
+```json
+"nodes": [{
+    "nodeName": "vm0",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType0",
+    "faultDomain": "fd:/dc1/r0",
+    "upgradeDomain": "UD0"
+}, {
+    "nodeName": "vm1",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType1",
+    "faultDomain": "fd:/dc1/r1",
+    "upgradeDomain": "UD1"
+}, {
+    "nodeName": "vm2",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType2",
+    "faultDomain": "fd:/dc1/r2",
+    "upgradeDomain": "UD2"
+}],
+```
 
 Service Fabric クラスターには、少なくとも 3 つのノードを含める必要があります。 設定に従って、このセクションにさらに多くのノードを追加できます。 各ノードの構成設定を次の表に示します。
 
@@ -88,57 +88,65 @@ reliabilityLevel の概念を使用して、クラスターのプライマリ �
 ### <a name="diagnostics"></a>診断
 diagnosticsStore セクションでは、次のスニペットに示すように、ノードまたはクラスターの障害に関する診断とトラブルシューティングを可能にするパラメーターを構成できます。 
 
-    "diagnosticsStore": {
-        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
-        "dataDeletionAgeInDays": "7",
-        "storeType": "FileShare",
-        "IsEncrypted": "false",
-        "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
-    }
+```json
+"diagnosticsStore": {
+    "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+    "dataDeletionAgeInDays": "7",
+    "storeType": "FileShare",
+    "IsEncrypted": "false",
+    "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
+}
+```
 
 metadata はクラスターの診断の説明であり、セットアップに従って設定できます。 これらの変数は、ETW トレース ログ、クラッシュ ダンプ、パフォーマンス カウンターの収集に役立ちます。 ETW トレース ログの詳細については、「[Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx)」および「[ETW トレース](https://msdn.microsoft.com/library/ms751538.aspx)」を参照してください。 [クラッシュ ダンプ](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)、[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)など、すべてのログは、マシンの connectionString フォルダーに送信できます。 また、AzureStorage を使用して診断を格納することもできます。 次のサンプル スニペットを参照してください。
 
-    "diagnosticsStore": {
-        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
-        "dataDeletionAgeInDays": "7",
-        "storeType": "AzureStorage",
-        "IsEncrypted": "false",
-        "connectionstring": "xstore:DefaultEndpointsProtocol=https;AccountName=[AzureAccountName];AccountKey=[AzureAccountKey]"
-    }
+```json
+"diagnosticsStore": {
+    "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+    "dataDeletionAgeInDays": "7",
+    "storeType": "AzureStorage",
+    "IsEncrypted": "false",
+    "connectionstring": "xstore:DefaultEndpointsProtocol=https;AccountName=[AzureAccountName];AccountKey=[AzureAccountKey]"
+}
+```
 
 ### <a name="security"></a>セキュリティ
 security セクションは、セキュリティで保護されたスタンドアロン Service Fabric クラスターに必要です。 次のスニペットは、このセクションの一部を示しています。
 
-    "security": {
-        "metadata": "This cluster is secured using X509 certificates.",
-        "ClusterCredentialType": "X509",
-        "ServerCredentialType": "X509",
-        . . .
-    }
+```json
+"security": {
+    "metadata": "This cluster is secured using X509 certificates.",
+    "ClusterCredentialType": "X509",
+    "ServerCredentialType": "X509",
+    . . .
+}
+```
 
 metadata はセキュリティで保護されたクラスターの説明であり、セットアップに従って設定できます。 ClusterCredentialType と ServerCredentialType によって、クラスターとノードが実装するセキュリティの種類が決まります。 これらは、証明書ベースのセキュリティの場合は *X509*、Azure Active Directory ベースのセキュリティの場合は *Windows* に設定されます。 security セクションの残りの部分は、セキュリティの種類に基づきます。 security セクションの残りの部分の記述方法については、[スタンドアロン クラスターの証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)に関する記事または[スタンドアロン クラスターの Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)に関する記事を参照してください。
 
 ### <a name="node-types"></a>ノード タイプ
 nodeTypes セクションでは、クラスターに含まれるノードのタイプを記述します。 次のスニペットに示すように、クラスターにはノード タイプを少なくとも 1 つ指定する必要があります。 
 
-    "nodeTypes": [{
-        "name": "NodeType0",
-        "clientConnectionEndpointPort": "19000",
-        "clusterConnectionEndpointPort": "19001",
-        "leaseDriverEndpointPort": "19002"
-        "serviceConnectionEndpointPort": "19003",
-        "httpGatewayEndpointPort": "19080",
-        "reverseProxyEndpointPort": "19081",
-        "applicationPorts": {
-            "startPort": "20575",
-            "endPort": "20605"
-        },
-        "ephemeralPorts": {
-            "startPort": "20606",
-            "endPort": "20861"
-        },
-        "isPrimary": true
-    }]
+```json
+"nodeTypes": [{
+    "name": "NodeType0",
+    "clientConnectionEndpointPort": "19000",
+    "clusterConnectionEndpointPort": "19001",
+    "leaseDriverEndpointPort": "19002"
+    "serviceConnectionEndpointPort": "19003",
+    "httpGatewayEndpointPort": "19080",
+    "reverseProxyEndpointPort": "19081",
+    "applicationPorts": {
+        "startPort": "20575",
+        "endPort": "20605"
+    },
+    "ephemeralPorts": {
+        "startPort": "20606",
+        "endPort": "20861"
+    },
+    "isPrimary": true
+}]
+```
 
 name は、この特定のノード タイプのフレンドリ名です。 このノード タイプのノードを作成するには、[前述](#nodes-on-the-cluster)のとおり、そのフレンドリ名をそのノードの nodeTypeRef 変数に指定します。 ノード タイプごとに、使用する接続エンドポイントを定義します。 このクラスター内の他のエンドポイントと競合しない限り、これらの接続エンドポイントには任意のポート番号を選択することができます。 マルチノード クラスターでは、[reliabilityLevel](#reliability) に応じて、1 つまたは複数のプライマリ ノードが存在します (つまり、isPrimary が *true* に設定されています)。 プライマリ ノード タイプと非プライマリ ノード タイプの詳細については、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」で nodeTypes と reliabilityLevel の情報を参照してください。 
 
@@ -155,44 +163,53 @@ name は、この特定のノード タイプのフレンドリ名です。 こ�
 ### <a name="log-settings"></a>ログの設定
 fabricSettings セクションでは、Service Fabric のデータとログのルート ディレクトリを設定できます。 これらのディレクトリをカスタマイズできるのは、最初にクラスターを作成するときだけです。 このセクションの次のサンプル スニペットを参照してください。
 
-    "fabricSettings": [{
-        "name": "Setup",
-        "parameters": [{
-            "name": "FabricDataRoot",
-            "value": "C:\\ProgramData\\SF"
-        }, {
-            "name": "FabricLogRoot",
-            "value": "C:\\ProgramData\\SF\\Log"
-    }]
+```json
+"fabricSettings": [{
+    "name": "Setup",
+    "parameters": [{
+        "name": "FabricDataRoot",
+        "value": "C:\\ProgramData\\SF"
+    }, {
+        "name": "FabricLogRoot",
+        "value": "C:\\ProgramData\\SF\\Log"
+}]
+```
 
 非 OS ドライブは FabricDataRoot および FabricLogRoot として使用することをお勧めします。 OS が応答を停止する状況を回避することで、信頼性が向上します。 データ ルートだけをカスタマイズすると、ログ ルートはデータ ルートの 1 つ下のレベルに配置されます。
 
 ### <a name="stateful-reliable-services-settings"></a>ステートフル Reliable Services の設定
 KtlLogger セクションでは、Reliable Services のグローバル構成設定を行うことができます。 これらの設定の詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」を参照してください。 次の例は、ステートフル サービス用に信頼性の高いコレクションを戻すために作成される共有トランザクション ログを変更する方法を示しています。
 
-    "fabricSettings": [{
-        "name": "KtlLogger",
-        "parameters": [{
-            "name": "SharedLogSizeInMB",
-            "value": "4096"
-        }]
+```json
+"fabricSettings": [{
+    "name": "KtlLogger",
+    "parameters": [{
+        "name": "SharedLogSizeInMB",
+        "value": "4096"
     }]
+}]
+```
 
 ### <a name="add-on-features"></a>アドオン機能
 アドオン機能を構成するには、apiVersion を 04-2017 以降に構成し、addonFeatures を次のように構成します。
 
-    "apiVersion": "04-2017",
-    "properties": {
-      "addOnFeatures": [
-          "DnsService",
-          "RepairManager"
-      ]
-    }
+```json
+"apiVersion": "04-2017",
+"properties": {
+    "addOnFeatures": [
+        "DnsService",
+        "RepairManager"
+    ]
+}
+```
 
 ### <a name="container-support"></a>コンテナー サポート
 スタンドアロン クラスターの Windows Server コンテナーと Hyper-V コンテナーの両方でコンテナー サポートを有効にするには、DnsService アドオン機能を有効にする必要があります。
 
-
 ## <a name="next-steps"></a>次の手順
-スタンドアロン クラスターのセットアップに従って ClusterConfig.json ファイル全体を構成したら、クラスターをデプロイできます。 [スタンドアロン Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関するページの手順に従います。 その後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進み、その手順に従います。
+スタンドアロン クラスターの設定に従って *ClusterConfig.json* ファイル全体を構成したら、クラスターをデプロイできます。 [スタンドアロン Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関するページの手順に従います。 
+
+スタンドアロン クラスターをデプロイしている場合、[スタンドアロン クラスターの構成をアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)することもできます。 
+
+[Service Fabric Explorer を使用してクラスターを視覚化](service-fabric-visualizing-your-cluster.md)する方法を説明します。
 

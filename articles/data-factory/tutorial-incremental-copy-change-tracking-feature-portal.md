@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: eaafc8acb73dd48e213d05d953d9ada457c53132
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 41f8769aea841e05887feb6a44511cbf444a7acf
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957267"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449147"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL Database から**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -145,14 +144,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。 
    
-   ![New->DataFactory](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory-menu.png)
+   ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
@@ -258,7 +261,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     1. **[リンクされたサービス]** で **[AzureStorageLinkedService]** を選択します。
     2. **filePath** の**フォルダー**部分として「**adftutorial/incchgtracking**」と入力します。
-    3. **filePath** の**ファイル**部分として「**@CONCAT('Incremental-', pipeline().RunId, '.txt')**」と入力します。  
+    3. **filePath** の**ファイル**部分として「**\@CONCAT('Incremental-', pipeline().RunId, '.txt')**」と入力します。  
 
        ![シンク データセット - 接続](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -370,29 +373,29 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     ![検索アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. **[プロパティ]** ウィンドウで **[設定]** に切り替え、以下の手順を実行します。
 
-    1. **[Source Dataset]\(ソース データセット\)** フィールドで **[SourceDataset]** を選択します。
-    2. **[クエリの使用]** で **[クエリ]** を選択します。 
-    3. **[クエリ]** に次の SQL クエリを入力します。 
+   1. **[Source Dataset]\(ソース データセット\)** フィールドで **[SourceDataset]** を選択します。
+   2. **[クエリの使用]** で **[クエリ]** を選択します。 
+   3. **[クエリ]** に次の SQL クエリを入力します。 
 
-        ```sql
-        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
-        ```
+       ```sql
+       SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
+       ```
 
-    ![検索アクティビティ - 設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![検索アクティビティ - 設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. **[アクティビティ]** ツールボックスで **[データ フロー]** を展開し、パイプライン デザイナー画面に **[コピー]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**IncrementalCopyActivity**」に設定します。 このアクティビティは、直前の変更追跡バージョンと現在の変更追跡バージョンとの間のデータをターゲット データ ストアにコピーします。 
 
     ![コピー アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. **[プロパティ]** ウィンドウで **[ソース]** タブに切り替え、以下の手順を実行します。
 
-    1. **[Source Dataset]\(ソース データセット\)** で **[SourceDataset]** を選択します。 
-    2. **[クエリの使用]** で **[クエリ]** を選択します。 
-    3. **[クエリ]** に次の SQL クエリを入力します。 
+   1. **[Source Dataset]\(ソース データセット\)** で **[SourceDataset]** を選択します。 
+   2. **[クエリの使用]** で **[クエリ]** を選択します。 
+   3. **[クエリ]** に次の SQL クエリを入力します。 
 
-        ```sql
-        select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
-        ```
+       ```sql
+       select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
+       ```
     
-    ![コピー アクティビティ - ソースの設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
+      ![コピー アクティビティ - ソースの設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
 9. **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** フィールドで **[SinkDataset]** を選択します。 
 
     ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
@@ -411,7 +414,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     3. **[ストアド プロシージャのパラメーター]** セクションで、各パラメーターに次の値を指定します。 
 
-        | Name | type | 値 | 
+        | 名前 | Type | 値 | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
@@ -423,9 +426,9 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 15. ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。 
 
     ![検証ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  **[すべて公開]** ボタンをクリックして、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Data Factory サービスに発行します。 **[発行は成功しました]** というメッセージが表示されるまで待機します。 
+16. **[すべて公開]** ボタンをクリックして、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Data Factory サービスに発行します。 **[発行は成功しました]** というメッセージが表示されるまで待機します。 
 
-        ![[発行] ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![[発行] ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>増分コピー パイプラインを実行する
 1. パイプラインのツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
@@ -465,10 +468,10 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
     
 ## <a name="next-steps"></a>次の手順
-次のチュートリアルに進み、Azure 上の Spark クラスターを使ってデータを変換する方法について学習しましょう。
+次のチュートリアルに進んで、LastModifiedDate に基づいて新規ファイルおよび変更されたファイルのみをコピーする方法について学習してください。
 
 > [!div class="nextstepaction"]
->[クラウド内の Spark クラスターを使用してデータを変換する](tutorial-transform-data-spark-portal.md)
+>[lastmodifieddate を基準に新しいファイルをコピーする](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 
 

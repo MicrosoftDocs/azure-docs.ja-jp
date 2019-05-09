@@ -3,19 +3,19 @@ title: ローカライズ文字列 ID - Azure Active Directory B2C |Microsoft Do
 description: Azure Active Directory B2C のカスタム ポリシーに api.signuporsignin の ID を持つコンテンツ定義の ID を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 7619ebf038e164c9e586118c70e34955ca7c4767
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.subservice: B2C
+ms.openlocfilehash: cbc96f7f7c5f8020472708caaead3faff7a26673
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222673"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609219"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -27,13 +27,13 @@ ms.locfileid: "47222673"
 
 次の ID は、`api.signuporsignin`の ID を持つコンテンツ定義に使用されます。
 
-| ID | 既定値 |
+| ID | Default value |
 | -- | ------------- |
 | **local_intro_email** | 自分の既存のアカウントでサインイン |
 | **logonIdentifier_email** | 電子メール アドレス |
 | **requiredField_email** | メール アドレスを入力してください |
 | **invalid_email** | 有効な電子メール アドレスを入力してください |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
 | **local_intro_username** | 自分のユーザー名でサインイン |
 | **logonIdentifier_username** | ユーザー名 |
 | **requiredField_username** | ユーザー名を入力してください |
@@ -81,7 +81,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ## <a name="sign-up-or-sign-in-error-messages"></a>サインアップまたはサインインのエラー メッセージ
 
-| ID | 既定値 |
+| ID | Default value |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | パスワードが正しくありません。 |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | ご利用のアカウントが見つからないようです。 |
@@ -95,7 +95,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 以下は、`api.localaccountsignup`の ID を持つコンテンツ定義、または`api.selfasserted.profileupdate`や`api.localaccountpasswordreset`など、`api.selfasserted`で始まるコンテンツ定義の ID です。
 
-| ID | 既定値 |
+| ID | Default value |
 | -- | ------------- |
 | **ver_sent** | 次の場所に確認コードが送信されました: |
 | **ver_but_default** | 既定値 |
@@ -134,7 +134,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ## <a name="sign-up-and-self-asserted-pages-error-messages"></a>サインアップとセルフ アサート ページ エラー メッセージ
 
-| ID | 既定値 |
+| ID | Default value |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | 指定した ID を持つユーザーは既に存在します。 別の ID を選択してください。 |
 | **UserMessageIfClaimNotVerified** | 要求が確認されていません: {0} |
@@ -157,7 +157,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 以下は、`api.phonefactor`の ID を持つコンテンツ定義用の ID です。 
 
-| ID | 既定値 |
+| ID | Default value |
 | -- | ------------- |
 | **button_verify** | 電話する |
 | **country_code_label** | 国番号 |

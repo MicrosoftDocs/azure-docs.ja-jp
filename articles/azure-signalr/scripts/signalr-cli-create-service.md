@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 8653d8da8b180fb657169523e83a651d822343e4
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 122b175d026101dd4b15be4458e67ddd8a0d92d6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605041"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533189"
 ---
 # <a name="create-a-signalr-service"></a>SignalR Service の作成 
 
@@ -45,7 +45,7 @@ az extension add -n signalr
 
 表内の各コマンドは、それぞれのドキュメントにリンクされています。 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | Azure SignalR Service リソースを作成します。 |
@@ -56,4 +56,4 @@ az extension add -n signalr
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-Azure SignalR Service のその他の CLI サンプル スクリプトについては、[Azure SignalR サービスのドキュメント](../signalr-cli-samples.md)をご覧ください。
+Azure SignalR Service のその他の CLI サンプル スクリプトについては、[Azure SignalR サービスのドキュメント](../signalr-reference-cli.md)をご覧ください。

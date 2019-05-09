@@ -1,5 +1,5 @@
 ---
-title: マイクロサービスを変更して再展開する | Microsoft Docs
+title: マイクロサービスを変更して再展開する - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視のマイクロサービスを変更して再展開する方法を示します
 author: dominicbetts
 ms.author: dobett
@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315759"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004112"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>マイクロサービスをカスタマイズして再展開する
 
-このチュートリアルでは、リモート監視ソリューションの[マイクロサービス](http://azure.com/microservices)を編集し、マイクロサービスのイメージをビルドし、Docker Hub にイメージを展開してから、リモート監視ソリューションでそれを使う方法を示します。 この概念を説明するため、このチュートリアルでは、マイクロサービス API を呼び出して状態メッセージを "Alive and Well" から "New Edits Made Here!" に変更する基本的なシナリオを使います。
+このチュートリアルでは、リモート監視ソリューションの[マイクロサービス](https://azure.com/microservices)を編集し、マイクロサービスのイメージをビルドし、Docker Hub にイメージを展開してから、リモート監視ソリューションでそれを使う方法を示します。 この概念を説明するため、このチュートリアルでは、マイクロサービス API を呼び出して状態メッセージを "Alive and Well" から "New Edits Made Here!" に変更する基本的なシナリオを使います。
 
 リモート監視ソリューションは、Docker Hub からプルされた Docker イメージを使ってビルドされるマイクロサービスを使います。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "53315759"
 
 1. お使いのコンピューターでリモート監視ソリューションがローカルに実行していることを確認してください。
 2. ダウンロードした Postman を探して開きます。
-3. Postman で、[GET] に「 http://localhost:8080/iothubmanager/v1/status」と入力します。
+3. Postman で、[GET] に「`http://localhost:8080/iothubmanager/v1/status`」と入力します。
 4. 返される値では、"Status":"OK:Alive and Well" と表示されます。
 
     ![Postman に表示された Alive and Well メッセージ](./media/iot-accelerators-microservices-example/postman-alive-well.png)
@@ -77,7 +77,7 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
     
     または、Windows では:
     
-    ```
+    ```cmd
     ./build.cmd
     ```
 
@@ -123,13 +123,13 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
 2. 好みのテキスト エディターまたは IDE で、docker-compose.yml を開きます。
 3. 次のコードを見つけます。
 
-    ```docker
+    ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing
     ```
 
     これを次の図のように変更して、変更します。
 
-    ```cmd/sh
+    ```yml
     image: [docker ID]/iothub-manager-dotnet:testing
     ```
 
@@ -144,7 +144,7 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
     ```
 
 3. ダウンロードした Postman を探して開きます。
-4. Postman で、[GET] に「 http://localhost:8080/iothubmanager/v1/status」という要求を入力します。 ここで、"Status":"OK:New Edits Made Here!" と表示されます。
+4. Postman で、[GET] に「`http://localhost:8080/iothubmanager/v1/status`」という要求を入力します。 ここで、"Status":"OK:New Edits Made Here!" と表示されます。
 
 ![Postman に表示された New Edits Made Here メッセージ](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

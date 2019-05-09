@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 367a79b04a8736e2eafb6851b682f2c244e80522
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272288"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439640"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ ARP テーブルから、特定のピアリングに関する IPv4 アドレス�
 続行する前に、あらかじめ次の要件が満たされている必要があります。
 
 * 少なくとも 1 つのピアリングが構成された有効な ExpressRoute 回線。 この回線は、接続プロバイダーによって確実に構成されている必要があります。 この回線に対し、貴社または貴社の接続プロバイダーが少なくとも 1 つのピアリング (Azure プライベート、Azure パブリック、Microsoft) を構成済みであることが必要となります。
-* ピアリング (Azure プライベート、Azure パブリック、Microsoft) の構成に使用する IP アドレス範囲。 貴社側インターフェイスと ExpressRoute 側インターフェイスに対する IP アドレスのマッピングについては、 [ExpressRoute のルーティングの要件](expressroute-routing.md) に関するページに記載された IP アドレス割り当ての例をご覧ください。 ピアリングの構成については、 [ExpressRoute のピアリングの構成](expressroute-howto-routing-classic.md)に関するページをご覧ください。
+* ピアリング (Azure プライベート、Azure パブリック、Microsoft) の構成に使用する IP アドレス範囲。 貴社側インターフェイスと ExpressRoute 側インターフェイスに対する IP アドレスのマッピングについては、「[ExpressRoute のルーティングの要件](expressroute-routing.md)」に記載された IP アドレス割り当ての例をご覧ください。 ピアリングの構成については、 [ExpressRoute のピアリングの構成](expressroute-howto-routing-classic.md)に関するページをご覧ください。
 * 各 IP アドレスで使用するインターフェイスの MAC アドレスに関する情報 (ネットワーク チーム/接続プロバイダーから支給してもらう)。
 * Azure 用の最新の Windows PowerShell モジュール (バージョン 1.50 以降)。
 

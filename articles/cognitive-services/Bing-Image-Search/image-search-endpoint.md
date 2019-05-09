@@ -4,23 +4,25 @@ titleSuffix: Azure Cognitive Services
 description: Bing Image Search API で利用できるエンドポイントの一覧。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 03/04/2019
 ms.author: v-gedod
-ms.openlocfilehash: cb6213bbb27fc1a7086ccecafa7ae7b12040ac0a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: fcae25ea0ef3f48beac6c221a11ca8a91443f7ce
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250622"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336142"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing Image Search API のエンドポイント
 
 **Image Search API** には 3 つのエンドポイントが含まれています。  エンドポイント 1 は、クエリに基づいて Web からの画像を返します。 エンドポイント 2 は [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) を返します。  エンドポイント 3 は注目の画像を返します。
+
 ## <a name="endpoints"></a>エンドポイント
+
 Bing API を使用して画像の結果を取得するには、次のエンドポイントのいずれかに要求を送信します。 ヘッダーと URL パラメーターを使用して、さらに詳細を定義します。
 
 **エンドポイント 1:** `?q=""` によって定義されたユーザーの検索クエリに関連する画像を返します。

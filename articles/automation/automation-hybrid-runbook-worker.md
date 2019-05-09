@@ -3,18 +3,18 @@ title: Azure Automation の Hybrid Runbook Worker
 description: この記事では、ローカル データ センターまたはクラウド プロバイダー内のコンピューターで Runbook を実行できるようにする Azure Automation の機能である Hybrid Runbook Worker のインストールと使用について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d42a9458afa6244e0b6d8e7deb420a8ac49a130f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 55dff6cf073612e3e5473da3a5f1bf722b2ccdbd
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634168"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608556"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する
 
@@ -28,6 +28,9 @@ Azure Automation の Runbook は Azure クラウド プラットフォームで�
 
 Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達した worker がこれを実行します。 ジョブ キューの処理時間は、Hybrid Worker のハードウェア プロファイルと負荷によって異なります。 特定の worker を指定することはできません。 Hybrid Runbook Worker では、Azure サンドボックスが持つ制限の多くが共有されません。 ディスク領域、メモリ、ネットワーク ソケットに関する制限が異なります。 Hybrid Runbook Worker の動作は、Hybrid Runbook Worker 自体のリソースによってのみ制限されます。 また、Hybrid Runbook Worker では、Azure サンドボックスが持つ 180 分の [fair share](automation-runbook-execution.md#fair-share) 時間制限は共有されません。 Azure サンドボックスと Hybrid Runbook Worker のサービス制限について詳しくは、ジョブ[制限](../azure-subscription-service-limits.md#automation-limits)に関するページをご覧ください。
 
+> [!NOTE]
+> Hybrid Runbook Worker は、Azure China ではサポートされていません。
+
 ## <a name="install-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker をインストールする
 
 Hybrid Runbook worker をインストールするプロセスは OS によって異なります。 次の表には、インストールで使用できる方法のリンクが含まれています。
@@ -36,8 +39,8 @@ Windows Hybrid Runbook Worker をインストールして構成するには、2 
 
 |OS  |デプロイのタイプ  |
 |---------|---------|
-| Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
-| Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
+|Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
 > Hybrid Runbook Worker ロールをサポートするサーバーの構成を Desired State Configuration (DSC) を使用して管理するには、サーバーを DSC ノードとして追加する必要があります。 DSC による管理のためのサーバーのオンボードの詳細については、「[Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
@@ -51,13 +54,13 @@ Hybrid Runbook Worker のデプロイを開始する前に、[ネットワーク
 要件に応じて、グループから 1 つ以上の Hybrid Runbook Worker を削除したり、グループを削除することができます。 オンプレミス コンピューターから Hybrid Runbook Worker を削除するには、次の手順を使用します。
 
 1. Azure Portal で、Automation アカウントに移動します。
-2. **[設定]** で、**[キー]** を選択し、**[URL]** と **[プライマリ アクセス キー]** の値をメモします。 この情報は、次の手順に必要です。
+2. **[アカウント設定]** で、**[キー]** を選択し、**[URL]** と **[プライマリ アクセス キー]** の値をメモします。 この情報は、次の手順に必要です。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 管理者モードで PowerShell セッションを開き、次のコマンドを実行します。 削除処理の詳細なログを取得するには、 **-Verbose** スイッチを使用します。
 
-```powershell
+```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
@@ -67,7 +70,9 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
 ```
 
-### <a name="linux"></a> Linux
+### <a name="linux"></a>Linux
+
+Hybrid Runbook Worker で `ls /var/opt/microsoft/omsagent` コマンドを使用して、ワークスペース ID を取得できます。 ディレクトリ内に、名前がワークスペース ID であるフォルダーがあります。
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -81,11 +86,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 グループを削除するには、まず、先ほどの手順を使用して、グループのメンバーであるすべてのコンピューターから Hybrid Runbook Worker を削除する必要があります。 その後、次の手順を使用してグループを削除します。
 
 1. Azure ポータルで Automation アカウントを開きます。
-1. **[プロセス オートメーション]** で **[ハイブリッド Worker グループ]** を選択します。 削除するグループを選択します。 そのグループの [プロパティ] ページが表示されます。
+2. **[プロセス オートメーション]** で **[ハイブリッド Worker グループ]** を選択します。 削除するグループを選択します。 そのグループの [プロパティ] ページが表示されます。
 
    ![[プロパティ] ページ](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-1. 選択したグループの [プロパティ] ページで、**[削除]** を選択します。 メッセージによって、この操作の確認が求められます。 操作を続行する場合は、**[はい]** を選択します。
+3. 選択したグループの [プロパティ] ページで、**[削除]** を選択します。 メッセージによって、この操作の確認が求められます。 操作を続行する場合は、**[はい]** を選択します。
 
    ![Confirmation message](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
@@ -95,9 +100,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>Hybrid Worker ロール
 
-Hybrid Runbook Worker が Log Analytics に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 このアクセスは、Log Analytics に接続するために [Microsoft Monitoring Agent に必要なポートと URL](../azure-monitor/platform/agent-windows.md) に加えて必要です。
+Hybrid Runbook Worker が Azure Automation に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 このアクセスは、Azure Monitor ログに接続するために [Microsoft Monitoring Agent に必要なポートと URL](../azure-monitor/platform/agent-windows.md) に加えて必要です。
 
-エージェントと Log Analytics サービスの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、ハイブリッド worker 用に構成されていることを確認してください。 これを行う方法の詳細については、[Automation Hybrid Worker に向けた Log Analytics ゲートウェイの構成](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers)に関するセクションを参照してください。
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+エージェントと Azure Automation サービスの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 Hybrid Runbook Worker および Automation サービスからの要求のタイムアウトは 30 秒です。 3 回試行した後の要求は失敗します。 ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、ハイブリッド worker 用に構成されていることを確認してください。 これを行う方法の詳細については、[Automation Hybrid Worker に向けた Log Analytics ゲートウェイの構成](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)に関するセクションを参照してください。
 
 Hybrid Runbook Worker ロールが Automation と通信するには、次のポートと URL が必要です。
 
@@ -115,12 +122,14 @@ Hybrid Runbook Worker ロールが Automation と通信するには、次のポ�
 | 米国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | 米国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | 米国東部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
+| 米国西部 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
 | カナダ中部 |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | 西ヨーロッパ |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | 北ヨーロッパ |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | 東南アジア |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | インド中部 |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | 東日本 |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| オーストラリア東部 |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
 | オーストラリア東南部 |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | 米国政府バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
@@ -144,10 +153,8 @@ Hybrid Runbook Worker ロールが Automation と通信するには、次のポ�
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-## <a name="troubleshoot"></a>トラブルシューティング
-
-Hybrid Runbook Worker をトラブルシューティングする方法については、[Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#general)に関する記事を参照してください。
-
 ## <a name="next-steps"></a>次の手順
 
-オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。
+* オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。
+* Hybrid Runbook Worker をトラブルシューティングする方法については、[Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#general)に関する記事を参照してください。
+

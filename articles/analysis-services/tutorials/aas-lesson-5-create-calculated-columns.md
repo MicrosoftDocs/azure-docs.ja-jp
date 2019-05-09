@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services チュートリアル - レッスン 5: 計算列を作成する |Microsoft ドキュメント'
+title: 'Azure Analysis Services チュートリアル - レッスン 5: 計算列を作成する | Microsoft Docs'
 description: この Azure Analysis Services チュートリアル プロジェクトで計算列を作成する方法について説明します。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2d92edd0bda15ecd57a5a29375adae3a51c661c2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bb0a17d4b7e11dd83439d943abf0bdd34ef915ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428132"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187452"
 ---
 # <a name="create-calculated-columns"></a>計算列を作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "49428132"
 このレッスンの推定所要時間: **15 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 4: リレーションシップを作成する](../tutorials/aas-lesson-4-create-relationships.md)」を終えている必要があります。 
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 4: リレーションシップを作成する](../tutorials/aas-lesson-4-create-relationships.md)」を終えている必要があります。 
   
 ## <a name="create-calculated-columns"></a>計算列を作成する  
   
@@ -125,7 +125,7 @@ ProductCategoryName 計算列は､DimProduct テーブルに階層を作成す�
     Margin 計算列は販売ごとの利幅の分析に使用されます｡  
   
 ## <a name="whats-next"></a>次の手順
-[レッスン 6: メジャーを作成する](../tutorials/aas-lesson-6-create-measures.md)
+[レッスン 6: メジャーを作成する](../tutorials/aas-lesson-6-create-measures.md)」を終えている必要があります。
   
   
   

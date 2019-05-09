@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 5df494904dd756ca7ef3a36a48da2224ab2bca81
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386011"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314996"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
@@ -37,13 +37,13 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 > [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に[Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>スクリプト アクションを使用した Hue のインストール
 
-Linux ベースの HDInsight クラスターに Hue をインストールするスクリプトは https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.shにあります。このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Store を使用してクラスターに Hue をインストールできます。
+Linux ベースの HDInsight クラスターに Hue をインストールするスクリプトは https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.shにあります。このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Storage を使用してクラスターに Hue をインストールできます。
 
 このセクションでは、Azure Portal を使ってクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
 
@@ -62,7 +62,7 @@ Linux ベースの HDInsight クラスターに Hue をインストールする�
 
     ![Hue のスクリプト アクション パラメーターを指定する](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "Hue のスクリプト アクション パラメーターを指定する")
 
-   * **[名前]**:スクリプト アクションの表示名を入力します。
+   * **[名前]**:スクリプト アクションのフレンドリ名を入力します。
    * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **[ヘッド]**:このオプションをオンにします。
    * **[ワーカー]**:空白のままにします。
@@ -95,7 +95,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     これは、Hue の Web サイトが配置されているプライマリ ヘッドノードのホスト名です。
-4. ブラウザーを使用して、Hue ポータル (http://HOSTNAME:8888) を開きます。 HOSTNAME は前の手順で取得した名前で置き換えてください。
+4. ブラウザーを使用して、Hue ポータル (http:\//HOSTNAME:8888) を開きます。 HOSTNAME は前の手順で取得した名前で置き換えてください。
 
    > [!NOTE]  
    > 初回ログイン時、Hue ポータルにログインするためのアカウントを作成するように促されます。 ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
@@ -143,7 +143,6 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 ## <a name="next-steps"></a>次の手順
 * [HDInsight クラスターに Apache Giraph をインストールする](hdinsight-hadoop-giraph-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
-* [HDInsight クラスターに Apache Solr をインストールする](hdinsight-hadoop-solr-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。 Solr は、格納されたデータに対して強力な検索操作を実行することができます。
 * [HDInsight クラスターに R をインストールする](hdinsight-hadoop-r-scripts-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに R をインストールします。 R は、統計計算用のオープン ソースの言語および環境です。 R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。 また、広範なグラフィカル機能も提供します。
 
 [powershell-install-configure]: install-configure-powershell-linux.md

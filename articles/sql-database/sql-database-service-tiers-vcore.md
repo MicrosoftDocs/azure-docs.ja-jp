@@ -3,46 +3,46 @@ title: Azure SQL Database サービス - 仮想コア | Microsoft Docs
 description: 仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: sashan, moslake
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 11/27/2018
-ms.openlocfilehash: 4aaaf2e7a918ab91aebd1e1f1f6d166d6cadf19a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 02/07/2019
+ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437070"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59357935"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>仮想コア サービス層、Azure ハイブリッド特典、および移行
 
 仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 ハードウェアの世代を選択することもできます。
 
-- Gen 4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
-- Gen 5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.5  GB/コア、高速 eNVM SSD
+- Gen4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
+- Gen5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.1 GB/コア、高速 eNVM SSD
 
-また、仮想コア モデルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、コストを削減することもできます。
+Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティング リソースをはるかに高くまでスケールアップできます。
 
 > [!NOTE]
-> DTU ベースのサービス レベルの詳細については、[DTU ベースのサービス レベル](sql-database-service-tiers-dtu.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-service-tiers.md)に関するページを参照してください。
+> DTU ベースのサービス レベルの詳細については、[DTU ベースのサービス レベル](sql-database-service-tiers-dtu.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-purchase-models.md)に関するページを参照してください。
 
 ## <a name="service-tier-characteristics"></a>サービス レベルの特性
 
-仮想コア モデルでは、General Purpose と Business Critical の 2 つのサービス レベルが提供されます。 サービス レベルは、さまざまなコンピューティング サイズ、高可用性の設計、障害の分離、ストレージの種類、および IO 範囲によって区別されます。 お客様は、バックアップ用に必要なストレージと保有期間を個別に構成する必要があります。 バックアップ用に必要なストレージと保有期間を個別に構成する必要があります。 Azure portal で、(データベースではなく) [サーバー] > [マネージド バックアップ] > [ポリシーの構成] > [Point In Time Restore Configuration]\(ポイント イン タイム リストア構成\) > [7 - 35 days]\(7 ～ 35 日\) の順に移動します。
+仮想コア モデルでは、General Purpose、Hyperscale、Business Critical の 3 つのサービス レベルが提供されます。 サービス レベルは、さまざまなコンピューティング サイズ、高可用性の設計、障害の分離、ストレージの種類、ストレージのサイズ、IO 範囲によって区別されます。 バックアップ用に必要なストレージと保有期間を個別に構成する必要があります。 Azure portal で、(データベースではなく) [サーバー] > [マネージド バックアップ] > [ポリシーの構成] > [Point In Time Restore Configuration]\(ポイント イン タイム リストア構成\) > [7 - 35 days]\(7 ～ 35 日\) の順に移動します。
 
-次の表は、この 2 つのレベルの違いを把握するうえで役立ちます。
+次の表は、この 3 つのレベルの違いを把握するうえで役立ちます。
 
 ||**汎用**|**Business Critical**|**ハイパースケール (プレビュー)**|
 |---|---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視のスケーラブルでバランスの取れたコンピューティングおよびストレージ オプションを提供します。|IO 要件の高いビジネス アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード|
 |Compute|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|
 |メモリ|Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB | Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB |Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB|
-|Storage|[Premium リモート ストレージ](../virtual-machines/windows/premium-storage.md)の使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 8 TB |ローカル SSD ストレージの使用:<br/>単一データベース:5 GB ～ 1 TB<br/>Managed Instance:32 GB ～ 4 TB |柔軟性が高く、必要に応じて自動拡張されるストレージ。 最大 100 TB のストレージなどをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージ用のローカル SSD ストレージ。 最終的な長期データ ストアとしての Azure リモート ストレージ。 |
+|Storage|リモート ストレージの使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 8 TB |ローカル SSD ストレージの使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 4 TB |柔軟性が高く、必要に応じて自動拡張されるストレージ。 最大 100 TB のストレージなどをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージ用のローカル SSD ストレージ。 最終的な長期データ ストアとしての Azure リモート ストレージ。 |
 |IO スループット (概算)|単一データベース:仮想コアあたり 500 IOPS (最大 7000 IOPS)</br>Managed Instance:[ファイル サイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存|コアあたり 5000 IOPS (最大 200,000 IOPS)|TBD|
 |可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長 HA|?|
 |バックアップ|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージおよび復元のスナップショットベースのバックアップは、高速復旧のためにこのようなスナップショットを使用します。 バックアップは瞬時に行われ、Compute の IO パフォーマンスには影響しません。 復元は非常に高速で、データ操作のサイズにはなりません (数時間 ～ 数日ではなく、分単位で行われます)。|
@@ -59,13 +59,34 @@ ms.locfileid: "53437070"
 > [!IMPORTANT]
 > 必要なコンピューティング能力が仮想コア 1 つ分を下回る場合は、DTU ベースの購入モデルを使用します。
 
-よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
-
 ## <a name="azure-hybrid-benefit"></a>Azure ハイブリッド特典
 
-仮想コアベースの購入モデルでは、[SQL Server 向け Azure ハイブリッド特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、お使いの既存のライセンスを SQL Database の割引料金のライセンスに交換できます。 この Azure 特典では、オンプレミスのソフトウェア アシュアランス付き SQL Server ライセンスを利用することで、オンプレミスの SQL Server ライセンスで Azure SQL Database の料金が最大 30% オフになります。
+仮想コアベースの購入モデルでは、[SQL Server 向け Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、お使いの既存のライセンスを SQL Database の割引料金のライセンスに交換できます。 この Azure 特典では、オンプレミスのソフトウェア アシュアランス付き SQL Server ライセンスを利用することで、オンプレミスの SQL Server ライセンスで Azure SQL Database の料金が最大 30% オフになります。
 
 ![価格](./media/sql-database-service-tiers/pricing.png)
+
+Azure ハイブリッド特典では、SQL データベース エンジン自体については既存の SQL Server ライセンスを使用して、基になる Azure インフラストラクチャについてのみ支払うか (**BasePrice**)、それとも基になるインフラストラクチャと SQL Server ライセンスの両方を支払うか (**LicenseIncluded**) を選択できます。 Azure portal または次の API のいずれかを使用して、ライセンス モデルを選択または変更できます。
+
+- PowerShell を使用してライセンスの種類を設定または更新するには:
+
+  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
+  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
+  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
+
+- Azure CLI を使用してライセンスの種類を設定または更新するには:
+
+  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
+  - [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
+  - [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+
+- REST API を使用してライセンスの種類を設定または更新するには:
+
+  - [データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
+  - [データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)
+  - [Managed Instances - Create Or Update](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
+  - [Managed Instances - Update](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>DTU モデルから仮想コア モデルへの移行
 

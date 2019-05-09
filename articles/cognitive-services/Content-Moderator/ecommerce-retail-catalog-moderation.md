@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: アプリケーションを設定して、指定されたラベルによって製品画像を分析および分類し (Azure Computer Vision と Custom Vision を使用)、好ましくない画像にタグを付けてさらにレビューできるようにします (Azure Content Moderator を使用)。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 09/25/2017
+ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 209fb3bba2b5462caad53d809c46eba0ebf4d836
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547900"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539498"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator を使用して eコマース製品画像をモデレートする
 
@@ -43,7 +43,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-a-review-team"></a>レビュー チームを作成する
 
-[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップしてレビュー チームを作成する方法の手順については、「[クイック スタート: Content Moderator の概要](quick-start.md)」を参照してください。 **[資格情報]** ページの **[チーム ID]** を書き留めておきます。
+[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップしてレビュー チームを作成する方法の手順については、「[Web 上で Content Moderator を試す](quick-start.md)」クイック スタートを参照してください。 **[資格情報]** ページの **[チーム ID]** を書き留めておきます。
 
 ## <a name="create-custom-moderation-tags"></a>カスタム モデレーション タグの作成
 
@@ -61,7 +61,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="define-api-keys-and-endpoints"></a>API キーとエンドポイントの定義
 
-上記のとおり、このチュートリアルでは 3 つのコグニティブ サービスを使用します。そのため、対応する 3 つのキーと API エンドポイントが必要です。 **Program** クラスの次のフィールドを見てください。 
+上記のとおり、このチュートリアルでは 3 つのコグニティブ サービスを使用します。そのため、対応する 3 つのキーと API エンドポイントが必要です。 **Program** クラスの次のフィールドを見てください。
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
@@ -79,19 +79,19 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
-## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags メソッド
+## <a name="evaluatecomputervisiontags-method"></a>EvaluateComputerVisionTags メソッド
 
-次のメソッドでは、画像 URL とお客様の Computer Vision サブスクリプション情報が受け取られ、画像に著名人が存在するかどうかが分析されます。 1 人または複数の著名人が見つかった場合、**ReviewTags** 配列の対応する値が **True** に設定されます。 
+次のメソッドでは、画像 URL とお客様の Computer Vision サブスクリプション情報が受け取られ、画像に著名人が存在するかどうかが分析されます。 1 人または複数の著名人が見つかった場合、**ReviewTags** 配列の対応する値が **True** に設定されます。
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags メソッド
 
-次に、**EvaluateCustomVisionTags** メソッドを見てください。これにより、実際の製品 (ここでは、旗、おもちゃ、ペン) が分類されます。 画像内の旗、おもちゃ、ペン (またはお客様がご自分のカスタム タグとして選択した任意のもの) の存在を検出するために、[分類器の構築方法](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)に関するガイドの手順に従って、お客様独自のカスタム画像分類器を構築します。
+次に、**EvaluateCustomVisionTags** メソッドを見てください。これにより、実際の製品 (ここでは、旗、おもちゃ、ペン) が分類されます。 画像内の旗、おもちゃ、ペン (またはお客様がご自分のカスタム タグとして選択した任意のもの) の存在を検出するために、[分類器の構築方法](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)に関するガイドの手順に従って、お客様独自のカスタム画像分類器を構築します。 この例のいくつかのカテゴリをすばやくトレーニングするために、[GitHub リポジトリ](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)の **sample-images** フォルダーにある画像を使用できます。
 
 ![ペン、おもちゃ、旗のトレーニング画像が含まれた Custom Vision の Web ページ](images/tutorial-ecommerce-custom-vision.PNG)
 
-お客様の分類器をトレーニングできたら、予測キーと予測エンドポイント URL を取得し (これらの取得にヘルプが必要な場合は「[URL と予測キーを取得する](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)」を参照してください)、それらの値をお客様の `CustomVisionKey` フィールドと `CustomVisionUri` フィールドにそれぞれ割り当てます。 メソッドによってこれらの値が使用され、分類器に対してクエリが実行されます。 分類器によって画像内にカスタム タグが 1 つまたは複数見つかった場合、このメソッドによって、**ReviewTags** 配列の対応する値が **True** に設定されます。 
+お客様の分類器をトレーニングできたら、予測キーと予測エンドポイント URL を取得し (これらの取得にヘルプが必要な場合は「[URL と予測キーを取得する](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)」を参照してください)、それらの値をお客様の `CustomVisionKey` フィールドと `CustomVisionUri` フィールドにそれぞれ割り当てます。 メソッドによってこれらの値が使用され、分類器に対してクエリが実行されます。 分類器によって画像内にカスタム タグが 1 つまたは複数見つかった場合、このメソッドによって、**ReviewTags** 配列の対応する値が **True** に設定されます。
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

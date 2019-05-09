@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: cwatson
-ms.openlocfilehash: 43ecc79db977624954109c4565c613e2471cea88
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: banders
+ms.openlocfilehash: a8db4675e01cfb1e48c034eb39b183d72d083508
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312027"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837203"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Azure の無料アカウントに含まれるサービスを作成する
 
@@ -36,4 +36,4 @@ Azure の無料アカウントでは、無料サービス (数に制限あり) �
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

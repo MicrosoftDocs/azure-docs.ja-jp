@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 8f8d021adae1cb25198c53e486fdb50e42ac211b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3c91fd6140b460d29b33e7d9b1fabafbbcf99422
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097915"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406220"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -24,14 +24,19 @@ ms.locfileid: "53097915"
 > 
 > 
 
-この記事では、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。 この構成の手順は、Resource Manager デプロイ モデルを使用して作成され、ExpressRoute 構成で使用される予定の VNet 専用です。 ExpressRoute の仮想ネットワーク ゲートウェイとゲートウェイ構成設定の詳細については、[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](expressroute-about-virtual-network-gateways.md)を参照してください。 
-
+この記事では、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。 この構成の手順は、ExpressRoute 構成用に Resource Manager デプロイ モデルを使用して作成された VNet に適用されます。 詳細については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](expressroute-about-virtual-network-gateways.md)」をご覧ください。
 
 ## <a name="before-beginning"></a>作業を開始する前に
-最新の Azure PowerShell コマンドレットがインストールされていることを確認します。 最新のコマンドレットをインストールしていない場合は、構成手順を開始する前にインストールする必要があります。 詳細については、[Azure PowerShell のインストールおよび構成](/powershell/azure/overview)をご覧ください。
+
+### <a name="working-with-powershell"></a>PowerShell での作業
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[!INCLUDE [working with cloud shell](../../includes/expressroute-cloud-shell-powershell-about.md)]
+
+### <a name="configuration-reference-list"></a>構成参照一覧
 
 [!INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
 
 ## <a name="next-steps"></a>次の手順
 VNet ゲートウェイを作成したので、ExpressRoute 回線に VNet をリンクできるようになりました。 「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
-

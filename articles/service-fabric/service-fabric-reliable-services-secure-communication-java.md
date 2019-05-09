@@ -4,7 +4,7 @@ description: Azure Service Fabric クラスターで実行されている Java R
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: timlt
+manager: chackdan
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: cbefb3ede6d0d1fe21065b49c84db9f4db5dd39c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020815"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667003"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Java サービスでのサービス リモート処理通信をセキュリティで保護する
 > [!div class="op_single_selector"]

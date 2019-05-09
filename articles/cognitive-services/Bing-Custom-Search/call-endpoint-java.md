@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java で Bing Custom Search インスタンスに検索結果を要求します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 65dc4f837a7b5d5cb3f41eacf9833ebd5a601bab
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: fc1c7d2730d68fb8e3b51a39e0cb89b4098418d6
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970952"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337024"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>クイック スタート:Java を使用して Bing Custom Search エンドポイントを呼び出す
 

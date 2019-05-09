@@ -10,20 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: e1edf0ed0c9efcb9f0c81718621706550bf3c4d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 84f2d82ba6103382d7f9ff850bb6f1930ebbeb9b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012005"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58904595"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする
 
-この記事では、リソースの複数のインスタンスを作成するために Azure Resource Manager テンプレートで反復処理する方法について説明します。 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](resource-manager-templates-resources.md#condition)に関する記述を参照してください。
+この記事では、リソースの複数のインスタンスを作成するために Azure Resource Manager テンプレートで反復処理する方法について説明します。 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](resource-group-authoring-templates.md#condition)に関する記述を参照してください。
 
 チュートリアルについては、「[Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」を参照してください。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-iteration"></a>リソースの反復
 
@@ -33,26 +36,26 @@ ms.locfileid: "51012005"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "apiVersion": "2016-01-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": 3
-            }
-        }
-    ],
-    "outputs": {}
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "apiVersion": "2016-01-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": 3
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -85,22 +88,22 @@ ms.locfileid: "51012005"
 ```json
 "parameters": { 
   "org": { 
-     "type": "array", 
-     "defaultValue": [ 
-         "contoso", 
-         "fabrikam", 
-         "coho" 
-      ] 
+    "type": "array", 
+    "defaultValue": [ 
+      "contoso", 
+      "fabrikam", 
+      "coho" 
+    ] 
   }
 }, 
 "resources": [ 
   { 
-      "name": "[concat('storage', parameters('org')[copyIndex()])]", 
-      "copy": { 
-         "name": "storagecopy", 
-         "count": "[length(parameters('org'))]" 
-      }, 
-      ...
+    "name": "[concat('storage', parameters('org')[copyIndex()])]", 
+    "copy": { 
+      "name": "storagecopy", 
+      "count": "[length(parameters('org'))]" 
+    }, 
+    ...
   } 
 ]
 ```
@@ -119,30 +122,30 @@ ms.locfileid: "51012005"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "apiVersion": "2016-01-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": 4,
-                "mode": "serial",
-                "batchSize": 2
-            }
-        }
-    ],
-    "outputs": {}
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "apiVersion": "2016-01-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": 4,
+        "mode": "serial",
+        "batchSize": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
-``` 
+```
 
 mode プロパティでも **parallel** が既定値として使用されます。
 
@@ -164,13 +167,13 @@ mode プロパティでも **parallel** が既定値として使用されます�
   "properties": {
     "storageProfile": {
       "copy": [{
-          "name": "dataDisks",
-          "count": 3,
-          "input": {
-              "lun": "[copyIndex('dataDisks')]",
-              "createOption": "Empty",
-              "diskSizeGB": "1023"
-          }
+        "name": "dataDisks",
+        "count": 3,
+        "input": {
+          "lun": "[copyIndex('dataDisks')]",
+          "createOption": "Empty",
+          "diskSizeGB": "1023"
+        }
       }],
       ...
 ```
@@ -187,22 +190,22 @@ Resource Manager はデプロイ中に `copy` 配列を展開します。 配列
   "properties": {
     "storageProfile": {
       "dataDisks": [
-          {
-              "lun": 0,
-              "createOption": "Empty",
-              "diskSizeGB": "1023"
-          },
-          {
-              "lun": 1,
-              "createOption": "Empty",
-              "diskSizeGB": "1023"
-          },
-          {
-              "lun": 2,
-              "createOption": "Empty",
-              "diskSizeGB": "1023"
-          }
-      }],
+        {
+          "lun": 0,
+          "createOption": "Empty",
+          "diskSizeGB": "1023"
+        },
+        {
+          "lun": 1,
+          "createOption": "Empty",
+          "diskSizeGB": "1023"
+        },
+        {
+          "lun": 2,
+          "createOption": "Empty",
+          "diskSizeGB": "1023"
+        }
+      ],
       ...
 ```
 
@@ -210,27 +213,27 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 
 ```json
 {
-    "name": "string",
-    "type": "Microsoft.Network/loadBalancers",
-    "apiVersion": "2017-10-01",
-    "properties": {
-        "copy": [
-          {
-              "name": "loadBalancingRules",
-              "count": "[length(parameters('loadBalancingRules'))]",
-              "input": {
-                ...
-              }
-          },
-          {
-              "name": "probes",
-              "count": "[length(parameters('loadBalancingRules'))]",
-              "input": {
-                ...
-              }
-          }
-        ]
-    }
+  "name": "string",
+  "type": "Microsoft.Network/loadBalancers",
+  "apiVersion": "2017-10-01",
+  "properties": {
+    "copy": [
+      {
+        "name": "loadBalancingRules",
+        "count": "[length(parameters('loadBalancingRules'))]",
+        "input": {
+          ...
+        }
+      },
+      {
+        "name": "probes",
+        "count": "[length(parameters('loadBalancingRules'))]",
+        "input": {
+          ...
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -238,39 +241,43 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 
 ```json
 {
-    "type": "Microsoft.Network/virtualNetworks",
-    "name": "[concat(parameters('vnetname'), copyIndex())]",
-    "apiVersion": "2018-04-01",
-    "copy":{
-        "count": 2,
-        "name": "vnetloop"
+  "type": "Microsoft.Network/virtualNetworks",
+  "name": "[concat(parameters('vnetname'), copyIndex())]",
+  "apiVersion": "2018-04-01",
+  "copy":{
+    "count": 2,
+    "name": "vnetloop"
+  },
+  "location": "[resourceGroup().location]",
+  "properties": {
+    "addressSpace": {
+      "addressPrefixes": [
+        "[parameters('addressPrefix')]"
+      ]
     },
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "addressSpace": {
-            "addressPrefixes": [
-                "[parameters('addressPrefix')]"
-            ]
-        },
-        "copy": [
-            {
-                "name": "subnets",
-                "count": 2,
-                "input": {
-                    "name": "[concat('subnet-', copyIndex('subnets'))]",
-                    "properties": {
-                        "addressPrefix": "[variables('subnetAddressPrefix')[copyIndex('subnets')]]"
-                    }
-                }
-            }
-        ]
-    }
+    "copy": [
+      {
+        "name": "subnets",
+        "count": 2,
+        "input": {
+          "name": "[concat('subnet-', copyIndex('subnets'))]",
+          "properties": {
+            "addressPrefix": "[variables('subnetAddressPrefix')[copyIndex('subnets')]]"
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
 ## <a name="variable-iteration"></a>変数の反復処理
 
-変数のインスタンスを複数作成するには、variables セクションで `copy` 要素を使用します。 関連する値を持ったオブジェクトのインスタンスを複数作成し、その後、それらの値をリソースのインスタンスに割り当てることがことができます。 copy を使用することで、array プロパティを持ったオブジェクトか、配列を作成できます。 次の例では、両方の方法を示します。
+変数のインスタンスを複数作成するには、variables セクション内で `copy` プロパティを使用します。 `input` プロパティの値から構築された要素の配列を作成します。 `copy` プロパティは、変数内で使用することも、variables セクションの最上位レベルで使用することもできます。 変数の反復処理内で `copyIndex` を使用するときは、反復処理の名前を指定する必要があります。
+
+文字列値の配列を作成する簡単な例については、[配列のコピーのテンプレート](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)を参照してください。
+
+次の例は、動的に構築された要素を持つ配列変数のさまざまな作成方法を示しています。 これを見ると、変数内で copy を使用して、オブジェクトと文字列の配列を作成する方法がわかります。 また、最上位レベルで copy を使用して、オブジェクト、文字列、および整数の配列を作成する方法もわかります。
 
 ```json
 {
@@ -288,18 +295,33 @@ copy 要素は配列であるため、リソースの複数のプロパティを
             "diskSizeGB": "1",
             "diskIndex": "[copyIndex('disks')]"
           }
+        },
+        {
+          "name": "diskNames",
+          "count": 5,
+          "input": "[concat('myDataDisk', copyIndex('diskNames', 1))]"
         }
       ]
     },
     "copy": [
       {
-        "name": "disks-top-level-array",
+        "name": "top-level-object-array",
         "count": 5,
         "input": {
-          "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+          "name": "[concat('myDataDisk', copyIndex('top-level-object-array', 1))]",
           "diskSizeGB": "1",
-          "diskIndex": "[copyIndex('disks-top-level-array')]"
+          "diskIndex": "[copyIndex('top-level-object-array')]"
         }
+      },
+      {
+        "name": "top-level-string-array",
+        "count": 5,
+        "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+      },
+      {
+        "name": "top-level-integer-array",
+        "count": 5,
+        "input": "[copyIndex('top-level-integer-array')]"
       }
     ]
   },
@@ -313,68 +335,100 @@ copy 要素は配列であるため、リソースの複数のプロパティを
       "value": "[variables('disk-array-on-object').disks]",
       "type" : "array"
     },
-    "exampleArray": {
-      "value": "[variables('disks-top-level-array')]",
+    "exampleObjectArray": {
+      "value": "[variables('top-level-object-array')]",
+      "type" : "array"
+    },
+    "exampleStringArray": {
+      "value": "[variables('top-level-string-array')]",
+      "type" : "array"
+    },
+    "exampleIntegerArray": {
+      "value": "[variables('top-level-integer-array')]",
       "type" : "array"
     }
   }
 }
 ```
 
-いずれの方法でも copy 要素は配列であるため、複数の変数を指定できます。 作成する変数ごとにオブジェクトを追加します。
+作成される変数の型は、入力オブジェクトによって決まります。 たとえば、前の例の **top-level-object-array** という名前の変数は、次のものを返します。
 
 ```json
-"copy": [
+[
   {
-    "name": "first-variable",
-    "count": 5,
-    "input": {
-      "demoProperty": "[concat('myProperty', copyIndex('first-variable'))]",
-    }
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
   },
   {
-    "name": "second-variable",
-    "count": 3,
-    "input": {
-      "demoProperty": "[concat('myProperty', copyIndex('second-variable'))]",
-    }
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
   },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  },
+  {
+    "name": "myDataDisk4",
+    "diskSizeGB": "1",
+    "diskIndex": 3
+  },
+  {
+    "name": "myDataDisk5",
+    "diskSizeGB": "1",
+    "diskIndex": 4
+  }
+]
+```
+
+また、**top-level-string-array** という名前の変数は、次のものを返します。
+
+```json
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
 ]
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>ループ内のリソースへの依存
+
 `dependsOn` 要素を使用することで、リソースを別のリソースの後にデプロイするよう指定することが可能です。 ループ内のリソースの集合に依存するリソースをデプロイするには、dependsOn 要素にコピー ループの名前を指定します。 次の例では、仮想マシンをデプロイする前に 3 つのストレージ アカウントをデプロイする方法を示します。 完全な仮想マシン定義は示されていません。 コピー要素の name が `storagecopy` に設定され、Virtual Machines の dependsOn 要素が `storagecopy` に設定されるよう注意してください。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "resources": [
-        {
-            "apiVersion": "2016-01-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": 3
-            }
-        },
-        {
-            "apiVersion": "2015-06-15", 
-            "type": "Microsoft.Compute/virtualMachines", 
-            "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
-            "dependsOn": ["storagecopy"],
-            ...
-        }
-    ],
-    "outputs": {}
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "resources": [
+    {
+      "apiVersion": "2016-01-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": 3
+      }
+    },
+    {
+      "apiVersion": "2015-06-15", 
+      "type": "Microsoft.Compute/virtualMachines", 
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+      "dependsOn": ["storagecopy"],
+      ...
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -388,19 +442,19 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 ```json
 "resources": [
 {
-    "type": "Microsoft.DataFactory/datafactories",
-    "name": "exampleDataFactory",
-    ...
-    "resources": [
+  "type": "Microsoft.DataFactory/datafactories",
+  "name": "exampleDataFactory",
+  ...
+  "resources": [
     {
-        "type": "datasets",
-        "name": "exampleDataSet",
-        "dependsOn": [
-            "exampleDataFactory"
-        ],
-        ...
+      "type": "datasets",
+      "name": "exampleDataSet",
+      "dependsOn": [
+        "exampleDataFactory"
+      ],
+      ...
     }
-}]
+  ]
 ```
 
 複数のデータ セットを作成するには、それをデータ ファクトリの外部に移動します。 データセットは、データ ファクトリと同じレベルである必要がありますが、今までどおりデータ ファクトリの子リソースです。 type および name の各プロパティを使用して、データセットとデータ ファクトリの関係を保存します。 テンプレート内の位置から type を推論できなくなったため、`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` の形式で完全修飾型を指定する必要があります。
@@ -412,21 +466,21 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 ```json
 "resources": [
 {
-    "type": "Microsoft.DataFactory/datafactories",
-    "name": "exampleDataFactory",
-    ...
+  "type": "Microsoft.DataFactory/datafactories",
+  "name": "exampleDataFactory",
+  ...
 },
 {
-    "type": "Microsoft.DataFactory/datafactories/datasets",
-    "name": "[concat('exampleDataFactory', '/', 'exampleDataSet', copyIndex())]",
-    "dependsOn": [
-        "exampleDataFactory"
-    ],
-    "copy": { 
-        "name": "datasetcopy", 
-        "count": "3" 
-    } 
-    ...
+  "type": "Microsoft.DataFactory/datafactories/datasets",
+  "name": "[concat('exampleDataFactory', '/', 'exampleDataSet', copyIndex())]",
+  "dependsOn": [
+    "exampleDataFactory"
+  ],
+  "copy": {
+    "name": "datasetcopy",
+    "count": "3"
+  },
+  ...
 }]
 ```
 
@@ -434,7 +488,7 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 
 次の例は、リソースまたはプロパティの複数のインスタンスを作成するための一般的なシナリオを示しています。
 
-|テンプレート  |説明  |
+|Template  |説明  |
 |---------|---------|
 |[Copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |名前にインデックス番号を含む複数のストレージ アカウントをデプロイします。 |
 |[Serial copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |

@@ -7,21 +7,22 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 03/5/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c4a18fa022304e7ccfb4503cf2e02650555d6d7b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2598bb4deef0c7dae9f5df558ec1054ad02fb2f7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425124"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531115"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
 
@@ -63,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | state |推奨 |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | resource | 推奨 |対象となる Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]**、**[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、**[プロパティ]** をクリックします。 `https://graph.microsoft.com` のような外部リソースである場合もあります。 認証またはトークン要求でこれが必要です。 認証プロンプトの回数を少なくするには、認証要求に配置して、ユーザーから同意を受信できるようにします。 |
 | scope | **ignored** | v1 Azure AD アプリでは、Azure Portal のアプリケーションの **[設定]** の **[必要なアクセス許可]** で、スコープを静的に構成する必要があります。 |
-| prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。<p> 有効な値は次のとおりです。 <p> *login*: 再認証を求めるメッセージがユーザーに表示されます。 <p> *select_account*:ユーザーがアカウントを選択し、シングルサインオンを中断することを促される。 ユーザーでは、既存サインイン アカウントを選択して、記憶されているアカウントの資格情報を入力、またはまったく別のアカウントを一緒に、使用する可能性があります。 <p> *consent*: ユーザーの同意は得られていますが、更新する必要があります。 同意を求めるメッセージがユーザーに表示されます。 <p> *admin_consent*: 組織内のすべてのユーザーを代表して同意するよう求めるメッセージが管理者に表示されます |
+| prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。<p> 有効な値は次のとおりです。 <p> *login*:再認証を求めるメッセージがユーザーに表示されます。 <p> *select_account*:アカウントの選択を求めるメッセージがユーザーに表示され、シングル サインオンが中断されます。 ユーザーでは、既存サインイン アカウントを選択して、記憶されているアカウントの資格情報を入力、またはまったく別のアカウントを一緒に、使用する可能性があります。 <p> *consent*:ユーザーの同意は得られていますが、更新する必要があります。 同意を求めるメッセージがユーザーに表示されます。 <p> *admin_consent*:組織内のすべてのユーザーを代表して同意するよう求めるメッセージが管理者に表示されます |
 | login_hint |省略可能 |ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 多くのアプリでは、`preferred_username` 要求を使用して以前のサインインからユーザー名を抽出しておき、再認証時にこのパラメーターを使用します。 |
 | domain_hint |省略可能 |ユーザーがサインインで使用することになるテナントまたはドメインについてのヒントを指定します。 テナントの登録ドメインが domain_hint の値となります。 テナントがオンプレミスのディレクトリと連動している場合、AAD から、指定されたテナントのフェデレーション サーバーにリダイレクトされます。 |
 | code_challenge_method | 推奨    | `code_challenge` パラメーターの `code_verifier` をエンコードするために使用されるメソッド。 `plain` か `S256` のいずれかを指定できます。 除外されていると、`code_challenge` が含まれている場合、`code_challenge` はプレーンテキストであると見なされます。 Azure AAD v1.0 は、`plain` と `S256` の両方をサポートします。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 |
@@ -144,7 +145,7 @@ grant_type=authorization_code
 | client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 アプリケーション ID は、アプリの登録の設定で表示されます。 |
 | grant_type |必須 |承認コード フローでは `authorization_code` を指定する必要があります。 |
 | code |必須 |前のセクションで取得した `authorization_code` 。 |
-| redirect_uri |必須 |`authorization_code` を取得するために使用したのと同じ `redirect_uri` 値。 |
+| redirect_uri |必須 | クライアント アプリケーションに登録されている `redirect_uri`。 |
 | client_secret |Web アプリで必須、パブリック クライアントでは使用不可 |アプリのために Azure Portal の **[キー]** で作成した、アプリケーションのシークレット。 ネイティブ アプリ (パブリック クライアント) では使用できません。デバイスに client_secret を確実に保存することができないためです。 Web アプリや Web API (すべての機密クライアント) では `client_secret` をサーバー側で安全に保存する機能が備わっているため、これを指定する必要があります。 client_secret は、送信前に URL エンコードされる必要があります。 |
 | resource | 推奨 |対象となる Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]**、**[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、**[プロパティ]** をクリックします。 `https://graph.microsoft.com` のような外部リソースである場合もあります。 認証またはトークン要求でこれが必要です。 認証プロンプトの回数を少なくするには、認証要求に配置して、ユーザーから同意を受信できるようにします。 認証要求とトークン要求の if と resource パラメーターは一致する必要があります。 | 
 | code_verifier | 省略可能 | authorization_code を取得するために使用されたのと同じ code_verifier。 承認コード付与要求で PKCE が使用された場合は必須です。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。   |
@@ -175,7 +176,7 @@ Web API リソースから `invalid_token` エラー コードが返された場
 | パラメーター | 説明 |
 | --- | --- |
 | access_token |署名された JSON Web トークン (JWT) としての要求された[アクセス トークン](access-tokens.md)です。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンに関する詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について (RFC 6750))](https://www.rfc-editor.org/rfc/rfc6750.txt) |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750))](https://www.rfc-editor.org/rfc/rfc6750.txt)」をご覧ください。 |
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
 | resource |Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 |

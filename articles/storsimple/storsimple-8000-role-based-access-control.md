@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: c500725508d2bf9f09279e665871ab286d9e495a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652071"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785386"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple でロールベースのアクセス制御を使用する
 
 この記事では、StorSimple デバイスで Azure ロールベースのアクセス制御 (RBAC) を使用する方法について、簡単に説明します。 RBAC は、Azure の粒度の細かいアクセス管理を提供します。 RBAC を使用して、StorSimple のすべてのユーザーに無制限のアクセス権を与える代わりに、仕事を行うために必要な適切なアクセス権をユーザーに付与します。 Azure でのアクセス管理の基本については、「[Azure ポータルでのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
 
 この記事は、Azure ポータルで Update 3.0 以降を実行している StorSimple 8000 シリーズのデバイスに適用されます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rbac-roles-for-storsimple"></a>StorSimple の RBAC ロール
 
@@ -46,14 +48,14 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 2. Azure にログインします。
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 
 3. 閲覧者ロールを JSON テンプレートとしてコンピューターにエクスポートします。
 
-    ```
-    Get-AzureRMRoleDefinition -Name "Reader"
+    ```powershell
+    Get-AzRoleDefinition -Name "Reader"
 
-    Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+    Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
 4. Visual Studio で JSON ファイルを開きます。 標準的な RBAC ロールは、**Actions**、**NotActions**、**AssignableScopes** という 3 つのメイン セクションで構成されていることがわかります。
@@ -62,7 +64,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
     PowerShell を使用して、利用可能かつサブスクリプションに登録されているすべてのリソース プロバイダーを表示します。
 
-    `Get-AzureRMResourceProvider`
+    `Get-AzResourceProvider`
 
     リソース プロバイダーの管理に利用できるすべての PowerShell コマンドレットを確認することもできます。
 
@@ -72,7 +74,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
     前の考慮事項を念頭に置いて、ファイルを編集します。
 
-    ```
+    ```json
     {
         "Name":  "StorSimple Infrastructure Admin",
         "Id":  "<guid>",
@@ -102,7 +104,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 6. カスタム RBAC ロールを環境にインポートします。
 
-    `New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"`
+    `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
 これで、このロールが **[アクセス制御]** ブレードのロールの一覧に表示されます。
@@ -113,18 +115,24 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Powershell によるカスタム ロールの作成のサンプル出力
 
+```powershell
+Connect-AzAccount
 ```
-PS C:\WINDOWS\system32> Connect-AzureRmAccount
 
+```Output
 Environment           : AzureCloud
 Account               : john.doe@contoso.com
 TenantId              : <tenant_ID>
 SubscriptionId        : <subscription_ID>
 SubscriptionName      : Internal Consumption
 CurrentStorageAccount :
+```
 
-PS C:\WINDOWS\system32> Get-AzureRMRoleDefinition -Name "Reader"
+```powershell
+Get-AzRoleDefinition -Name "Reader"
+```
 
+```Output
 Name             : Reader
 Id               : <guid>
 IsCustom         : False
@@ -132,11 +140,14 @@ Description      : Lets you view everything, but not make any changes.
 Actions          : {*/read}
 NotActions       : {}
 AssignableScopes : {/}
+```
 
-PS C:\WINDOWS\system32> Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+```powershell
+Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"
+```
 
-PS C:\WINDOWS\system32> New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
-
+```Output
 Name             : StorSimple Infrastructure Admin
 Id               : <tenant_ID>
 IsCustom         : True
@@ -148,8 +159,6 @@ Actions          : {Microsoft.StorSimple/managers/alerts/read,
                    Microsoft.StorSimple/managers/devices/alertSettings/read...}
 NotActions       : {}
 AssignableScopes : {/subscriptions/<subscription_ID>/}
-
-PS C:\WINDOWS\system32>
 ```
 
 ## <a name="add-users-to-the-custom-role"></a>カスタム ロールにユーザーを追加する
@@ -188,4 +197,3 @@ PS C:\WINDOWS\system32>
 ## <a name="next-steps"></a>次の手順
 
 [内部ユーザーと外部ユーザーへのカスタム ロールの割り当て](../role-based-access-control/role-assignments-external-users.md)に関する記事で詳細を確認します。
-

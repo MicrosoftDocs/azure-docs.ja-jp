@@ -1,6 +1,6 @@
 ---
-title: PIM を使用するためのサブスクリプションの要件 - Azure | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) を使用するためのサブスクリプションとライセンスの要件を説明します。
+title: PIM を使用するためのライセンスの要件 - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) を使用するためのライセンスの要件について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,54 +12,59 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
-ms.date: 06/01/2017
+ms.subservice: pim
+ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 1554895dcba0c09a3a2e19c284a1cd6f0416cfe1
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190612"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576158"
 ---
-# <a name="subscription-requirements-to-use-pim"></a>PIM を使用するためのサブスクリプションの要件
+# <a name="license-requirements-to-use-pim"></a>PIM を使用するためのライセンスの要件
 
-Azure AD Privileged Identity Management は、Azure AD の Premium P2 エディションに付属しています。 Premium P2 のその他の機能と Premium P1 との違いの詳細については、「[Azure Active Directory のエディション](../active-directory-editions.md)」を参照してください。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用するには、有効なライセンスがディレクトリになければいけません。 さらに、管理者と関連ユーザーにライセンスが割り当てられている必要があります。 この記事では、PIM を使用するためのライセンスの要件について説明します。
 
->[!NOTE]
-Azure Active Directory (Azure AD) Privileged Identity Management のプレビュー版では、テナントでサービスを試用するときにライセンスがチェックされませんでした。  Azure AD Privileged Identity Management が一般公開で利用できるようになったため、2016 年 12 月以降、Privileged Identity Management の使用を継続するには、試用版または有料サブスクリプションがテナントに存在する必要があります。
-  
+## <a name="prerequisites"></a>前提条件
 
-## <a name="confirm-your-trial-or-paid-subscription"></a>試用版または有料サブスクリプションを確認する
+PIM を使用するには、お客様のディレクトリに次のいずれかの有料ライセンスまたは試用版ライセンスが必要です。
 
-組織で試用版を使用しているのか、サブスクリプションを購入済みなのかが不明な場合は、Windows PowerShell V1 の Azure Active Directory モジュールに含まれるコマンドを使用して、テナントにサブスクリプションが存在するかどうかを確認できます。 
-1. PowerShell ウィンドウを開きます。
-2. 「`Connect-MsolService`」を入力して、テナントのユーザーとして認証します。
-3. 「`Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`」を入力します。
+- Azure AD Premium P2
+- Enterprise Mobility + Security (EMS) E5
+- Microsoft 365 M5
 
-このコマンドによって、テナントのサブスクリプションの一覧が取得されます。 行が返されない場合、Azure AD Privileged Identity Management を使用するには、Azure AD Premium P2 の試用版を入手するか、Azure AD Premium P2 サブスクリプションまたは EMS E5 を購入する必要があります。  試用版を入手して Azure AD Privileged Identity Management を使い始めるには、「[Azure AD Privileged Identity Management の使用](pim-getting-started.md)」を参照してください。
+詳細については、「[Azure Active Directory とは](../fundamentals/active-directory-whatis.md)」を参照してください。
 
-このコマンドで行が返され、その行の SkuPartNumber が "AAD_PREMIUM_P2" または "EMSPREMIUM" であり、IsTrial が "True" である場合は、Azure AD Premium P2 の試用版がテナントに存在することになります。  サブスクリプションの状態が有効でなく Azure AD Premium P2 または EMS E5 のサブスクリプションを購入していない場合に、Azure AD Privileged Identity Management を使用し続けるには、Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリプションを購入する必要があります。
+## <a name="which-users-must-have-licenses"></a>ライセンスが必要なユーザー
 
-Azure AD Premium P2 は、[Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)、[Open Volume License プログラム](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)、[Cloud Solution Providers プログラム](https://partner.microsoft.com/cloud-solution-provider)を通してご利用いただけます。 Azure および Office 365 の加入者も、Azure AD Premium P2 をオンラインで購入できます。  Azure AD Premium の価格とオンラインでの注文方法の詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」に掲載されています。
+PIM を操作する管理者または PIM の恩恵を受けるユーザーには、それぞれライセンスが必要です。 たとえば、次のようになります。
 
-## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Azure AD Privileged Identity Management をテナントで使用できない
+- PIM を使用して管理された Azure AD ロールを持つ管理者
+- PIM を使用して管理された Azure リソース ロールを持つ管理者
+- 特権ロール管理者のロールに割り当てられた管理者
+- PIM を使用して管理された Azure AD ロールに対象として割り当てられたユーザー
+- PIM で要求を承認または却下できるユーザー
+- Just-In-Time 割り当てまたは直接割り当て (時間ベース) を使用して Azure リソース ロールに割り当てられたユーザー  
+- アクセス レビューに割り当てられたユーザー
+- アクセス レビューを実行するユーザー
 
-Azure AD Privileged Identity Management は、次の場合にテナントで使用できなくなります。
-- 組織でプレビュー版の Azure AD Privileged Identity Management を使用していて、Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリプションを購入していなかった場合。
-- 組織で使用している Azure AD Premium P2 または EMS E5 の試用期限が切れている場合。
-- 組織で購入したサブスクリプションの有効期限が切れている場合。
+お客様のユーザーにライセンスを割り当てる方法については、「[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)」を参照してください。
 
-Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリプションの有効期限が切れたときや、プレビュー版の Azure AD Privileged Identity Management を使用していた組織が Azure AD Premium P2 または EMS E5 サブスクリプションを入手していない場合は次のようになります。
+## <a name="what-happens-when-a-license-expires"></a>ライセンスの有効期限が切れた場合に発生すること
+
+Azure AD Premium P2、EMS E5、または試用版ライセンスの有効期限が切れた場合、PIM の機能はお客様のディレクトリで利用できなくなります。
 
 - Azure AD ロールへの永続的なロールの割り当てには影響しません。
-- 特権ロールのアクティブ化、特権アクセスの管理、または特権ロールのアクセス レビューの実行のために、Azure Portal の Azure AD Privileged Identity Management 拡張機能と、Azure AD Privileged Identity Management の Graph API コマンドレットおよび PowerShell インターフェイスを利用することはできなくなります。
+- 特権ロールのアクティブ化、特権アクセスの管理、または特権ロールのアクセス レビューの実行のために、Azure portal の PIM サービスと、PIM の Graph API コマンドレットおよび PowerShell インターフェイスを利用することはできなくなります。
 - ユーザーが今後特権ロールをアクティブ化できなくなるため、Azure AD ロールの候補ロールの割り当ては削除されます。
-- Azure AD ロールのすべての実行中のアクセス レビューが終了し、Azure AD Privileged Identity Management の構成設定が削除されます。
-- ロールの割り当てを変更しても、Azure AD Privileged Identity Management から電子メールが送信されなくなります。
+- Azure AD ロールの継続的なアクセス レビューが終了し、PIM 構成設定が削除されます。
+- ロールの割り当てを変更しても、PIM から電子メールが送信されなくなります。
 
 ## <a name="next-steps"></a>次の手順
 
+- [PIM をデプロイする](pim-deployment-plan.md)
 - [PIM の使用を開始する](pim-getting-started.md)
-- [PIM で管理できる Azure AD のディレクトリ ロール](pim-roles.md)
+- [PIM で管理できないロール](pim-roles.md)

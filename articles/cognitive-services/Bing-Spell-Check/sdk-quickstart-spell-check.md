@@ -1,182 +1,102 @@
 ---
-title: 'クイック スタート: Bing Spell Check SDK (C#)'
+title: クイック スタート:Bing Spell Check SDK for C# を使用してスペルをチェックする
 titlesuffix: Azure Cognitive Services
-description: Spell Check SDK コンソール アプリケーションのセットアップ
+description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 01/30/2018
+ms.date: 02/20/2019
 ms.author: v-gedod
-ms.openlocfilehash: 3050bc06c30c29efe7ba5294cbbee2aea1a6055b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3487656f72f315aa15ce003a8dfd279c45d1f992
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311604"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105745"
 ---
-# <a name="quickstart-bing-spell-check-sdk-with-c"></a>クイック スタート: Bing Spell Check SDK (C# を使用)
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>クイック スタート:Bing Spell Check SDK for C# を使用してスペルをチェックする
 
-Bing Spell Check SDK には、スペル チェックに関する REST API の機能が含まれています。
+このクイック スタートを使用して、Bing Spell Check SDK for C# を使ったスペル チェックを始めましょう。 Bing Spell Check には、ほとんどのプログラミング言語に対応した REST API がありますが、SDK を使用すれば、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck) にあります。
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
-**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
 
-Bing Spell Check SDK を使用してコンソール アプリケーションを設定するには、Visual Studio のソリューション エクスプローラーで `Manage NuGet Packages` オプションを参照します。 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` パッケージを追加します。
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) の任意のエディション。
+* Bing Spell Check [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-[SpellCheck SDK パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck/1.2.0)をインストールすると、次の項目を含む依存関係もインストールされます。
+Bing Spell Check SDK をプロジェクトに追加するには、Visual Studio のソリューション エクスプローラーから [`Manage NuGet Packages`] をクリックします。 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` パッケージを追加します。 このパッケージをインストールすると、次の依存関係もインストールされます。
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="spell-check-client"></a>スペル チェック クライアント
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-`SpellCheckClient` クライアントのインスタンスを作成するには、次のディレクティブを追加します。
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-```cs
-using Microsoft.Azure.CognitiveServices.Language.SpellCheck;
-```
+1. Visual Studio で、新しい C# コンソール ソリューションを作成します。 次の `using` ステートメントを追加します。
+    
+    ```csharp
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.CognitiveServices.Language.SpellCheck;
+    using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
+    ```
 
-次に、クライアントをインスタンス化します。
+2. 新しいクラスを作成します。 次に、サブスクリプション キーを受け取ってスペル チェック要求を送信する `SpellCheckCorrection()` という非同期関数を作成します。
 
-```cs
-var client = new SpellCheckClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
-```
+3. 新しい `ApiKeyServiceClientCredentials` オブジェクトを作成してクライアントをインスタンス化します。 
 
-このクライアントを使用してスペル チェックを実行します。
+    ```csharp
+    public static class SpellCheckSample{
+        public static async Task SpellCheckCorrection(string key){
+            var client = new SpellCheckClient(new ApiKeyServiceClientCredentials(key));
+        }
+        //...
+    }
+    ```
 
-```cs
-var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US").Result;
-Console.WriteLine("Correction for Query# \"bill gatas\"");
-```
+## <a name="send-the-request-and-read-the-response"></a>要求を送信して応答を読み取ります。
 
-結果を解析します。
+1. 先ほど作成した関数で、次の手順を実行します。 クライアントを使用してスペル チェック要求を送信します。 チェック対象のテキストを `text` パラメーターに追加し、モードを `proof` に設定します。  
+    
+    ```csharp
+    var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");
+    ```
 
-```cs
-// SpellCheck Results
-if (result?.Body.FlaggedTokens?.Count > 0)
-{
-    // find the first spellcheck result
-    var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
+2. スペル チェック結果が存在する場合、1 つ目の結果を取得します。 スペル ミスとして返された最初の単語 (トークン)、トークンの種類、修正候補の数を出力します。
 
-    if (firstspellCheckResult != null)
-    {
+    ```csharp
+    if (firstspellCheckResult != null){
+        var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
+    
         Console.WriteLine("SpellCheck Results#{0}", result.Body.FlaggedTokens.Count);
         Console.WriteLine("First SpellCheck Result token: {0} ", firstspellCheckResult.Token);
         Console.WriteLine("First SpellCheck Result Type: {0} ", firstspellCheckResult.Type);
         Console.WriteLine("First SpellCheck Result Suggestion Count: {0} ", firstspellCheckResult.Suggestions.Count);
-
-        var suggestions = firstspellCheckResult.Suggestions;
-        if (suggestions?.Count > 0)
-        {
-            var firstSuggestion = suggestions.FirstOrDefault();
-            Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
-            Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
-        }
-        }
-        else
-        {
-            Console.WriteLine("Couldn't get any Spell check results!");
-        }
     }
-    else
-    {
-        Console.WriteLine("Didn't see any SpellCheck results..");
-    }
-```
+    ```
 
-## <a name="complete-console-application"></a>コンソール アプリケーションの全体像
+3. 1 つ目の修正候補が存在する場合はそれを取得し、修正候補のスコアと単語を出力します。 
 
-次のコンソール アプリケーションは、上記のコードを実行します。
+    ```csharp
+            var suggestions = firstspellCheckResult.Suggestions;
 
-```cs
-using System;
-using System.Linq;
-using Microsoft.Azure.CognitiveServices.SpellCheck;
-
-namespace SpellCheckSDK
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var client = new SpellCheckClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
-
-            try
+            if (suggestions?.Count > 0)
             {
-                var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US").Result;
-                Console.WriteLine("Correction for Query# \"bill gatas\"");
-
-                // SpellCheck Results
-                if (result?.Body.FlaggedTokens?.Count > 0)
-                {
-                    // find the first spellcheck result
-                    var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
-
-                    if (firstspellCheckResult != null)
-                    {
-                        Console.WriteLine("SpellCheck Results#{0}", result.Body.FlaggedTokens.Count);
-                        Console.WriteLine("First SpellCheck Result token: {0} ", firstspellCheckResult.Token);
-                        Console.WriteLine("First SpellCheck Result Type: {0} ", firstspellCheckResult.Type);
-                        Console.WriteLine("First SpellCheck Result Suggestion Count: {0} ", firstspellCheckResult.Suggestions.Count);
-
-                        var suggestions = firstspellCheckResult.Suggestions;
-                        if (suggestions?.Count > 0)
-                        {
-                            var firstSuggestion = suggestions.FirstOrDefault();
-                            Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
-                            Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't get any Spell check results!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Didn't see any SpellCheck results..");
-                }
+                var firstSuggestion = suggestions.FirstOrDefault();
+                Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
+                Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
             }
+   }
 
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
+## Next steps
 
-            SpellCheckError("YOUR-ACCESS-KEY");
+> [!div class="nextstepaction"]
+> [Create a single page web-app](tutorials/spellcheck.md)
 
-            Console.WriteLine("Any key to exit...");
-            Console.ReadKey();
-        }
-
-        // This will trigger an error response from the API.
-        public static void SpellCheckError(string subscriptionKey)
-        {
-            var client = new SpellCheckClient(new ApiKeyServiceClientCredentials(subscriptionKey));
-
-            try
-            {
-                var result = client.SpellCheckerAsync(text: "", mode: "proof").Result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Correction for Query# \"empty text field\"");
-
-                if (ex.GetBaseException().GetType() == typeof(Exception) )
-                {
-                    Console.WriteLine("Encountered exception. " + ex.Message);
-                }
-            }
-        }
-    }
-}
-
-```
-
-## <a name="next-steps"></a>次の手順
-
-[Cognitive Services の .NET 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+- [What is the Bing Spell Check API?](overview.md)
+- [Bing Spell Check C# SDK reference guide](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

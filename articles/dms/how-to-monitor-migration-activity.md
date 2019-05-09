@@ -2,21 +2,21 @@
 title: Azure Database Migration Service を使用して移行アクティビティを監視する | Microsoft Docs
 description: Azure Database Migration Service を使用して移行アクティビティを監視する方法について説明します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/14/2018
-ms.openlocfilehash: a7fc48c149d488ab7860513b617b8a5806b1feb6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173857"
 ---
 # <a name="monitor-migration-activity"></a>移行アクティビティの監視
 この記事では、データベース レベルとテーブル レベルの両方で移行の進行状況を監視する方法について説明します。

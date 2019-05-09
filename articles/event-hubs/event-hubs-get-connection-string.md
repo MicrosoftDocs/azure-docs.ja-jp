@@ -3,27 +3,27 @@ title: 接続文字列を取得する - Azure Event Hubs | Microsoft Docs
 description: この記事では、クライアントが Azure Event Hubs への接続に使用できる接続文字列を取得する方法について説明します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 263dba970b015d466b3fd46f390a063e87de2e2c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 02/19/2019
+ms.author: spelluru
+ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093318"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445102"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs の接続文字列の取得
 
-Event Hubs を使用するには、Event Hubs の名前空間を作成する必要があります。 名前空間は、複数の Event Hubs/Kafka トピックを収容できるスコープ コンテナーです。 この名前空間より、一意の [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) が提供されます。 名前空間を作成した後は、Event Hubs との通信に必要な接続文字列を取得できます。
+Event Hubs を使用するには、Event Hubs の名前空間を作成する必要があります。 名前空間は、複数のイベント ハブまたは Kafka トピック用のスコープ コンテナーです。 この名前空間より、一意の [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) が提供されます。 名前空間を作成した後は、Event Hubs との通信に必要な接続文字列を取得できます。
 
 Azure Event Hubs の接続文字列には、次のコンポーネントが埋め込まれています。
 
-* FQDN = 作成した Event Hubs 名前空間の FQDN (これには、Event Hubs 名前空間の名前に続けて servicebus.windows.net が含まれます)
+* FQDN = 作成した Event Hubs 名前空間の FQDN (Event Hubs 名前空間の名前に続けて servicebus.windows.net が含まれます)
 * SharedAccessKeyName = アプリケーションの SAS キーに選んだ名前
 * SharedAccessKey = キーの生成された値。
 
@@ -37,27 +37,29 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 この記事では、接続文字列を取得するさまざまな方法について説明します。
 
 ## <a name="get-connection-string-from-the-portal"></a>ポータルから接続文字列を取得する
+1. [Azure ポータル](https://portal.azure.com)にサインインします。 
+2. 左のナビゲーション メニューから、**[すべてのサービス]** を選択します。 
+3. **[分析]** セクションで **[Event Hubs]** を選択します。 
+4. イベント ハブの一覧で、自分のイベント ハブを選択します。
+6. **[Event Hubs 名前空間]** ページで、左側のメニューの **[共有アクセス ポリシー]** を選択します。
 
-Event Hubs 名前空間を作成したら、下に示すように、ポータルの [概要] セクションで接続文字列を取得できます。
+    ![[共有アクセス ポリシー] メニュー項目](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+7. ポリシーの一覧で**共有アクセス ポリシー**を選択します。 既定のものの名前は次のとおりです: **RootManageSharedAccessPolicy**。 適切なアクセス許可 (読み取り、書き込み) を持つポリシーを追加し、そのポリシーを使用できます。 
 
-![Event Hubs の接続文字列](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+    ![Event Hubs の共有アクセス ポリシー](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
+8. **[接続文字列 - 主キー]** フィールドの隣にある**コピー** ボタンを選択します。 
 
-[概要] セクションの接続文字列のリンクをクリックすると、下の図に示すように、[SAS ポリシー] タブが開きます。
-
-![Event Hubs の SAS ポリシー](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-
-新しい SAS ポリシーを追加して接続文字列を取得するか、既に作成されている既定のポリシーを使用します。 ポリシーを開くと、下の図に示すように、接続文字列が取得されます。
-
-![Event Hubs の接続文字列の取得](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
+    ![Event Hubs - 接続文字列の取得](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Azure PowerShell を使用した接続文字列の取得
-下に示すように、Get-AzureRmEventHubNamespaceKey を使用して、指定するポリシー/ルール名の接続文字列を取得することができます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+以下に示すように、[Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) を使用して、指定するポリシー/ルール名の接続文字列を取得することができます。
 
 ```azurepowershell-interactive
-Get-AzureRmEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
+Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
-
-詳細については、[Azure Event Hubs の PowerShell モジュール](https://docs.microsoft.com/powershell/module/azurerm.eventhub/get-azurermeventhubkey)に関するページを参照してください。
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Azure CLI を使用した接続文字列の取得
 次を使用して、名前空間の接続文字列を取得できます。
@@ -66,7 +68,7 @@ Get-AzureRmEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dumm
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
-詳細については、[Event Hubs の Azure CLI](https://docs.microsoft.com/cli/azure/eventhubs) に関するページを参照してください。
+Event Hubs 用の Azure CLI コマンドについて詳しくは、[Event Hubs 用の Azure CLI](/cli/azure/eventhubs) に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

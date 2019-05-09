@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315809"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537246"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -55,14 +55,14 @@ ms.locfileid: "53315809"
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2017-11-11 
-{  
-    "search": "Spacious, air-condition* +\"Ocean view\"",  
-    "searchFields": "description, title",  
+{
+    "search": "Spacious, air-condition* +\"Ocean view\"",
+    "searchFields": "description, title",
     "searchMode": "any",
-    "filter": "price ge 60 and price lt 300",  
+    "filter": "price ge 60 and price lt 300",
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
- } 
+}
 ~~~~
 
 この要求に対して、検索エンジンは次のことを実行します。
@@ -117,7 +117,7 @@ Spacious,||air-condition*+"Ocean view"
 では、`searchMode=all` と設定したらどうなるでしょうか。 この場合は、空白文字が "and" 演算と解釈されます。 残りの 2 つの語句が両方とも文書に存在したときに初めて一致と見なされます。 最終的にサンプル クエリは次のように解釈されます。 
 
 ~~~~
-+Spacious,+air-condition*+"Ocean view"  
++Spacious,+air-condition*+"Ocean view"
 ~~~~
 
 変更後のクエリ ツリーは次のようになり、一致する文書は 3 つすべてのサブクエリの積集合となります。 
@@ -155,7 +155,7 @@ Spacious,||air-condition*+"Ocean view"
 アナライザーの動作は、[Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) を使ってテストすることができます。 解析したいテキストを入力すると、指定したアナライザーからどのような語句が生成されるかを確認できます。 たとえば、標準アナライザーで "air-condition" というテキストがどのように加工されるかを確認するには、次のように要求します。
 
 ~~~~
-{ 
+{
     "text": "air-condition",
     "analyzer": "standard"
 }
@@ -164,7 +164,7 @@ Spacious,||air-condition*+"Ocean view"
 標準アナライザーは、入力テキストを次の 2 つのトークンに分解します。その際、開始オフセットと終了オフセット (一致部分の強調表示に使用される) やその位置 (フレーズの照合に使用される) など、各種の属性を使ってそれらに注釈を付けます。
 
 ~~~~
-{  
+{
   "tokens": [
     {
       "token": "air",
@@ -195,11 +195,11 @@ Spacious,||air-condition*+"Ocean view"
 ここでいう文書検索とは、一致する語句がインデックスに存在する文書を見つけることです。 この段階は、例を使用するとよくわかります。 まず、次のような単純なスキーマを使用した hotels というインデックスを考えてみましょう。 
 
 ~~~~
-{   
-    "name": "hotels",     
-    "fields": [     
-        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },     
-        { "name": "title", "type": "Edm.String", "searchable": true },     
+{
+    "name": "hotels",
+    "fields": [
+        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "title", "type": "Edm.String", "searchable": true },
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
@@ -208,28 +208,28 @@ Spacious,||air-condition*+"Ocean view"
 さらに、このインデックスには、以下の 4 つの文書が追加されているとします。 
 
 ~~~~
-{ 
+{
     "value": [
-        {         
-            "id": "1",         
-            "title": "Hotel Atman",         
-            "description": "Spacious rooms, ocean view, walking distance to the beach."   
-        },       
-        {         
-            "id": "2",         
-            "title": "Beach Resort",        
-            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."     
-        },       
-        {         
-            "id": "3",         
-            "title": "Playa Hotel",         
+        {
+            "id": "1",
+            "title": "Hotel Atman",
+            "description": "Spacious rooms, ocean view, walking distance to the beach."
+        },
+        {
+            "id": "2",
+            "title": "Beach Resort",
+            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."
+        },
+        {
+            "id": "3",
+            "title": "Playa Hotel",
             "description": "Comfortable, air-conditioned rooms with ocean view."
-        },       
-        {         
-            "id": "4",         
-            "title": "Ocean Retreat",         
+        },
+        {
+            "id": "4",
+            "title": "Ocean Retreat",
             "description": "Quiet and secluded"
-        }    
+        }
     ]
 }
 ~~~~
@@ -327,7 +327,7 @@ title フィールドの場合、*hotel* だけが 2 つの文書 (1 と 3) に�
 search=Spacious, air-condition* +"Ocean view"  
 ~~~~
 ~~~~
-{  
+{
   "value": [
     {
       "@search.score": 0.25610128,
@@ -385,7 +385,7 @@ Azure Search のすべてのインデックスは自動的に複数のシャー�
 
 + サンプル インデックスを構築し、さまざまな検索を試してその結果を確認します。 詳しい手順については、[ポータルでのインデックスの構築と照会](search-get-started-portal.md#query-index)に関するページを参照してください。
 
-+ [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) の例に関するセクションや[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
++ [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) の例に関するセクションや[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
 
 + 検索アプリケーションにおけるランク付けをチューニングする方法については、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
 
@@ -393,7 +393,7 @@ Azure Search のすべてのインデックスは自動的に複数のシャー�
 
 + 特定のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)します。
 
-+ このデモ Web サイトで横並びに表示される[標準アナライザーと英語アナライザーを比較](http://alice.unearth.ai/)してください。 
++ このデモ Web サイトで横並びに表示される[標準アナライザーと英語アナライザーを比較](https://alice.unearth.ai/)してください。 
 
 ## <a name="see-also"></a>関連項目
 

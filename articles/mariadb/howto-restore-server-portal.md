@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cf6d0399c790a42eaf74b3ec339bf8cf67495fb3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 04/15/2019
+ms.openlocfilehash: 23d683fea494ad0509af359d6e49519f2bc6aa99
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548762"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615780"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバーのバックアップと復元を行う方法
 
@@ -63,11 +63,11 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
 
 3. [復元] フォームに必要な情報を入力します。
 
-   ![Azure Database for MariaDB - 情報の復元 ](./media/howto-restore-server-portal/3-restore.png)
-  - **復元ポイント**:復元先の特定の時点を選択します。
-  - **対象サーバー**:新しいサーバーの名前を指定します。
-  - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
-  - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
+   ![Azure Database for MariaDB - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
+   - **復元ポイント**:復元先の特定の時点を選択します。
+   - **対象サーバー**:新しいサーバーの名前を指定します。
+   - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+   - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
 4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
 
@@ -79,7 +79,7 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
 ## <a name="geo-restore"></a>geo リストア
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for MariaDB を使用できる任意のリージョンに作成できます。  
 
-1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。 検索ボックスに「**Azure Database for MariaDB**」と入力して、サービスを検索します。
+1. **[データベース]** > **[Azure Database for MariaDB]** の順に選択します。 検索ボックスに「**MariaDB**」と入力してサービスを検索することもできます。
 
    !["Azure Database for MariaDB" のオプション](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
 

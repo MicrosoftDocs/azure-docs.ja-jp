@@ -6,25 +6,25 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: f595fbb6571c3deaaa0644ba9d62f598181592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: eb8ba7f23de99d333693430d806a8d887c55a678
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106313"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608186"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>クイック スタート:サインインとユーザー ID の設定
 
 サインインしなくても Azure Notebooks を常に表示できますが、ノートブックを実行し、保存されたプロジェクトとノートブックにアクセスし、他のユーザーとノートブックを共有するには、サインインする必要があります。
 
-## <a name="sign-in"></a>[サインイン]
+## <a name="sign-in"></a>サインイン
 
 1. [notebooks.azure.com](https://notebooks.azure.com/) の右上にある **[Sign in]\(サインイン\)** を選択します。
 
@@ -33,6 +33,9 @@ ms.locfileid: "53106313"
 1. 入力を求められたら、Microsoft アカウントか、職場または学校アカウントのメール アドレスを入力して、**[次へ]** を選択します。 アカウントの種類は、「[Your user account for Azure Notebooks (Azure Notebook のユーザー アカウント)](azure-notebooks-user-account.md)」で説明されています。 Microsoft アカウントがない場合、または Azure Notebooks 専用のアカウントにしたい場合は、**[Create one]\(作成\)** を選択します。
 
     ![サインイン プロンプトでの Microsoft アカウント新規作成コマンド](media/accounts/create-new-microsoft-account.png)
+
+    > [!Tip]
+    > 既にアカウントが関連付けられている電子メール アドレスで新しいアカウントを作成しようとすると、「職場または学校のメール アドレスではここにサインアップできません。Gmail や Yahoo! などの個人用メールを使用するか、新しい Outlook メールを取得してください」というメッセージが表示される場合があります。 Use a personal email, such as Gmail or Yahoo!, or get a new Outlook email." その場合は、新しいアカウントを作成せずに仕事用メール アドレスでサインインしてみてください。
 
 1. パスワードを求められたら、入力します。
 
@@ -51,6 +54,9 @@ ms.locfileid: "53106313"
 1. 正常にサインインすると、Azure Notebooks のパブリック プロファイル ページに移動します。そこでは、**[Edit Profile Information]\(プロファイル情報の編集\)** を選択して、情報の残りの部分を入力できます (詳しくは、「[Your profile and user ID (プロファイルとユーザー ID)](azure-notebooks-user-profile.md)」をご覧ください)。
 
     ![Azure Notebooks プロファイル ページの初期表示](media/accounts/profile-page-new.png)
+
+> [!NOTE]
+> "User ID is already in use"\(ユーザー ID は既に使用中です\) というメッセージが表示された場合は、別の ID を試してください。 ユーザー ID はすべての Azure Notebooks アカウントで一意です。また、Azure Notebooks では、Microsoft のブランド名など、特定のユーザー ID が予約されています。
 
 ## <a name="sign-out"></a>サインアウトする
 

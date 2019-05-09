@@ -1,18 +1,17 @@
 ---
 title: Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 description: Azure Cosmos DB 対応の移行ソリューションを提供する Microsoft パートナーのリスト。
-services: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: c241232de33d4371456a374f8bc511211b3e9449
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f3b744f676dd352bb38e5cbca6e532c650617816
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082411"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58880612"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 
@@ -23,34 +22,34 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 |**パートナー**  |**対応分野と強み**  |**サポート対象の国**  |**連絡先**  |
 |---------|---------|---------|---------|
 |![ImanisData][1]   | MongoDB から Azure Cosmos DB への[データ移行](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf)。 <br/> Imanis Data は、グローバル企業がオンプレミスまたはクラウドの MongoDB データベースを Azure Cosmos DB に迅速かつ簡単に移行できるようサポートします。 Imanis Data は、MongoDB データ ストア向けにエージェントレス、永久増分のクラウド移行アプローチを提供します。このアプローチでは移行が簡単で、ダウンタイムを大幅に削減できます。|  USA  |   [Web サイト](http://www.imanisdata.com/)      |
-|![Striim][2]    |  さまざまなデータ ソースから、[Azure Cosmos DB にリアルタイムでデータを移動](https://www.striim.com/striim-for-azure-cosmos-db/)します。 <br/> Striim は、企業のドキュメントやリレーショナル データベース、センサー、ログ ファイルなどのさまざまなオンプレミスのデータ ソースからデータをリアルタイムに収集して Azure Cosmos DB へ移動するプロセスを簡略化します。 |   USA   |  [Web サイト](http://www.striim.com/)       |
+|![Striim][2]    |  さまざまなデータ ソースから、[Azure Cosmos DB にリアルタイムでデータを移動](https://www.striim.com/striim-for-azure-cosmos-db/)します。 <br/> Striim は、企業のドキュメントやリレーショナル データベース、センサー、ログ ファイルなどのさまざまなオンプレミスのデータ ソースからデータをリアルタイムに収集して Azure Cosmos DB へ移動するプロセスをシンプルにします。 |   USA   |  [Web サイト](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>システム インテグレーター パートナー
 
 |**パートナー**  |**対応分野と強み**  |**サポート対象の国**  |**連絡先**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | NoSQL の移行、新しいアプリの開発 | USA | [Web サイト](https://www.10thmagnitude.com/)|
-|![Altoros Development LLC][3]    |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 |   米国、ノルウェー、フィンランド、ベラルーシ、アルゼンチン |  [Web サイト](http://www.altoros.com/)     |
-|![Attunix Redapt][4]     |   NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発      |    USA     |  [Web サイト](http://www.attunix.com/)       |
+|![Altoros Development LLC][3]    |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 |   米国、ノルウェー、フィンランド、ベラルーシ、アルゼンチン |  [Web サイト](https://www.altoros.com/)     |
+|![Attunix Redapt][4]     |   NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発      |    USA     |  [Web サイト](https://www.attunix.com/)       |
 | ![Avanade][26] | 新しいアプリの開発、 <br/> アプリの刷新 (既存のアプリ) | オーストリア、ドイツ、スイス、イタリア、ノルウェー、スペイン、英国 | [Web サイト](https://www.avanade.com/)
-|![Bluemetal Architects][5]     |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    北米、アジア太平洋     |  [Web サイト](http://www.bluemetal.com/)       |
-|![Capax Global LLC][6]     |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    USA     |  [Web サイト](http://www.capaxglobal.com/)       |
+|![Bluemetal Architects][5]     |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    北米、アジア太平洋     |  [Web サイト](https://www.bluemetal.com/)       |
+|![Capax Global LLC][6]     |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    USA     |  [Web サイト](https://www.capaxglobal.com/)       |
 | ![Capgemini][14] | NoSQL の移行、アプリの刷新 (既存のアプリ)、新しいアプリの開発 | 米国、フランス、英国、オランダ、フィンランド  | [Web サイト](https://www.capgemini.com/) | 
-|![Coeo][7]     |   アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 |    英国     |  [Web サイト](http://www.coeo.com/)       |
+|![Coeo][7]     |   アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 |    英国     |  [Web サイト](https://www.coeo.com/)       |
 | ![Cognizant][15] | NoSQL の移行 |米国、カナダ、英国、デンマーク、オランダ、スイス、オーストラリア、日本 | [Web サイト](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL の移行       |    グローバル     |  [Web サイト](http://www.infosys.com/)       |
-| ![Lagash][16] | NoSQL の移行、 <br/> 新しいアプリの開発 | アルゼンチン、チリ、コロンビア、メキシコ| [Web サイト](https://lagash.com/)|
+|![Infosys][8]     |  NoSQL の移行       |    グローバル     |  [Web サイト](https://www.infosys.com/)       |
+| ![Lagash][16] | NoSQL の移行、 <br/> 新しいアプリの開発 | アルゼンチン、チリ、コロンビア、メキシコ| [Web サイト](https://www.lagash.com/)|
 | ![Lambda3 Informatics][17] | NoSQL の移行、 <br/> 新しいアプリの開発 | ブラジル| [Web サイト](https://www.lambda3.com.br/)|
-|![Neal Analytics][9]     |     アプリ開発 (新しいアプリ)    |    USA     |  [Web サイト](http://www.nealanalytics.com/)       |
-|![Pragmatic Works Software Inc][10]    |   NoSQL の移行      |   USA      |  [Web サイト](http://www.pragmaticworks.com/)       |
+|![Neal Analytics][9]     |     アプリ開発 (新しいアプリ)    |    USA     |  [Web サイト](https://www.nealanalytics.com/)       |
+|![Pragmatic Works Software Inc][10]    |   NoSQL の移行      |   USA      |  [Web サイト](https://www.pragmaticworks.com/)       |
 | ![Ricoh Global][18] | NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)| 英国  | [Web サイト](https://www.ricoh.com/)|
 | ![SNP Technologies][19] | NoSQL の移行| US | [Web サイト](https://www.snp.com/)|
 | ![Solidsoft Reply][20] | NoSQL の移行 | クロアチア、スウェーデン、デンマーク、アイルランド、ブルガリア、スロベニア、キプロス、マルタ、リトアニア、チェコ共和国、アイスランド、スイス、リヒテンシュタイン| [Web サイト](https://www.reply.com/solidsoft-reply/)|
 | ![Spanish Point Technologies][21] | NoSQL の移行| アイルランド| [Web サイト](https://www.spanishpoint.ie/)|
 | ![Syone][22] | NoSQL の移行| ポルトガル| [Web サイト](https://www.syone.com/)|
-|![Tallan][11]    |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    USA     |  [Web サイト](http://www.tallan.com/)       |
+|![Tallan][11]    |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    USA     |  [Web サイト](https://www.tallan.com/)       |
 | ![TCS][23] | アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 | 米国、英国、フランス、マレーシア、デンマーク、ノルウェー、スウェーデン| [Web サイト](https://www.tcs.com/)|
-|![VTeamLabs][12]    | NoSQL の移行       |  USA      | [Web サイト](http://www.vteamlabs.com/)       |
+|![VTeamLabs][12]    | NoSQL の移行       |  USA      | [Web サイト](https://www.vteamlabs.com/)       |
 | ![White Duck][24] |NoSQL の移行、 <br/> 新しいアプリの開発 | ドイツ | [Web サイト](https://whiteducksoftware.com/)|
 | ![Xpand IT][25] | 新しいアプリの開発 | ポルトガル、英国| [Web サイト](https://www.xpand-it.com/)|
 

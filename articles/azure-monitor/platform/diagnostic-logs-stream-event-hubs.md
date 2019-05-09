@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 2143ebdddc71973b64b8b77be55b4d0c2b84df64
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578990"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314080"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Azure 診断ログをイベント ハブにストリーミングする
 **[Azure 診断ログ](diagnostic-logs-overview.md)** は、ポータルに組み込まれた [Event Hubs にエクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI を使用して診断設定でイベント ハブ承認規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -83,10 +83,12 @@ ms.locfileid: "53578990"
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
 
-[Azure PowerShell コマンドレット](../../azure-monitor/platform/powershell-quickstart-samples.md)を使用してストリーミングを有効にするには、次のパラメーターを指定して `Set-AzureRmDiagnosticSetting` コマンドレットを使用します。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[Azure PowerShell コマンドレット](../../azure-monitor/platform/powershell-quickstart-samples.md)を使用してストリーミングを有効にするには、次のパラメーターを指定して `Set-AzDiagnosticSetting` コマンドレットを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
 イベント ハブ承認規則 ID は、`{Event Hub namespace resource ID}/authorizationrules/{key name}` という形式の文字列です。たとえば、`/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey` のようになります。 現時点では、PowerShell を使って特定のイベント ハブ名を選択することはできません。
@@ -191,10 +193,11 @@ Event Hubs へのストリーミングをサポートするすべてのリソー
 
 ## <a name="stream-data-from-compute-resources"></a>Compute リソースからのデータのストリーミング
 
-診断ログは、Windows Azure 診断エージェントを使用して Compute リソースからストリーミングすることもできます。 その設定方法については、[この記事を参照してください](../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
+診断ログは、Windows Azure Diagnostics エージェントを使用して Compute リソースからストリーミングすることもできます。 その設定方法については、[この記事を参照してください](../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
 
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Monitor による Azure Active Directory ログのストリーム](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Azure 診断ログの詳細を確認する](diagnostic-logs-overview.md)
 * [Event Hubs の使用](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+

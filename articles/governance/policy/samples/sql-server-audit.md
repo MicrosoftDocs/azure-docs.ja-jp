@@ -1,21 +1,20 @@
 ---
 title: サンプル - SQL Server の監査設定の監査
-description: このサンプル ポリシーでは、SQL サーバーの監査設定を監査します。
-services: azure-policy
+description: このサンプル ポリシー定義は、SQL サーバーの監査設定を auditIfNotExists で監査します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7a9f5779b8a0c853d938734f82f3bd63e7f0a45b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c4510a316760fa948aa39627c9a9c517437b1d77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307871"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790981"
 ---
-# <a name="audit-sql-server-audit-settings"></a>SQL Server の監査設定の監査
+# <a name="sample---audit-sql-server-audit-settings"></a>サンプル - SQL Server の監査設定の監査
 
 このビルトイン ポリシーでは、監査設定が有効になっているかどうかに基づいて SQL Server を監査します。
 
@@ -63,12 +62,12 @@ ms.locfileid: "53307871"
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
-$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9
+$definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9
 
-New-AzureRmPolicyAssignment -name "SQL Audit audit" -PolicyDefinition $definition -PolicyParameter '{"setting": {"value":"enabled"}}' -Scope <scope>
+New-AzPolicyAssignment -name "SQL Audit audit" -PolicyDefinition $definition -PolicyParameter '{"setting": {"value":"enabled"}}' -Scope <scope>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>PowerShell でのデプロイをクリーンアップする
@@ -76,7 +75,7 @@ New-AzureRmPolicyAssignment -name "SQL Audit audit" -PolicyDefinition $definitio
 ポリシーの割り当てを削除するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name "SQL Audit audit" -Scope <scope>
+Remove-AzPolicyAssignment -Name "SQL Audit audit" -Scope <scope>
 ```
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ

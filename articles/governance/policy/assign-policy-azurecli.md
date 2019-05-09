@@ -1,20 +1,19 @@
 ---
-title: Azure CLI を使用して準拠していないリソースを識別するポリシーを作成する
+title: Azure CLI を使用して準拠していないリソースに対するポリシーを作成する
 description: Azure CLI を使用して Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 99e8b782f3f52ed89b5188de19d70cb276a0eb84
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e30308ac2cda643cc0157f5e718157f6599751d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315844"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59283547"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Azure CLI を使用して準拠していないリソースを識別するポリシー割り当てを作成する
 
@@ -65,15 +64,15 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 この新しい割り当てに準拠していないリソースを表示するには、次のコマンドを実行してポリシー割り当て ID を取得します。
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
+$policyAssignment = Get-AzPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
-ポリシー割り当て ID の詳細については、「[Get-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/get-azurermpolicyassignment)」を参照してください。
+ポリシー割り当て ID の詳細については、「[Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment)」を参照してください。
 
 続けて、次のコマンドを実行して、非準拠リソースの ID を取得します。該当するリソース ID が JSON ファイルに出力されます。
 
-```
+```console
 armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 

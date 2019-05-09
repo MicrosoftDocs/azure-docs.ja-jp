@@ -1,21 +1,22 @@
 ---
-title: Azure Batch の コンテナー ワークロード | Microsoft Docs
+title: コンテナー ワークロード - Azure Batch | Microsoft Docs
 description: Azure Batch で コンテナー イメージからアプリケーションを実行する方法について説明します。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 11/19/2018
-ms.author: danlep
-ms.openlocfilehash: 1d915482a3a8b1f6416b50ab52de997a9d33294f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 51037e66ec649fc275a746c9f5316b91d82e186a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262433"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454829"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
@@ -29,16 +30,16 @@ Azure Batch を使用すると、Azure で大量のバッチ コンピューテ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **SDK バージョン**: 次のバージョンの時点で、Batch SDK ではコンテナー イメージをサポートしています。
+* **SDK バージョン**: Batch SDK は、次のバージョンの時点でコンテナー イメージをサポートします。
     * Batch REST API バージョン 2017-09-01.6.0
     * Batch .NET SDK バージョン 8.0.0
     * Batch Python SDK バージョン 4.0
     * Batch Java SDK バージョン 3.0
     * Batch Node.js SDK バージョン 3.0
 
-* **アカウント**: ご使用の Azure サブスクリプションで、Batch アカウントを作成する必要があります。また、必要に応じて、Azure Storage アカウントを作成します。
+* **アカウント**: Azure サブスクリプションで、Batch アカウントを作成する必要があります。また、必要に応じて Azure Storage アカウントを作成します。
 
-* **サポートされている VM イメージ**: コンテナーは、以下の「サポートされている仮想マシン イメージ」セクションで説明するイメージの仮想マシン構成で作成されたプールでのみサポートされます。 カスタム イメージを提供する場合は、次のセクションの注意点と「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の要件を参照してください。 
+* **サポートされている VM イメージ**: コンテナーは、「サポートされている仮想マシン イメージ」のセクションで詳細に説明されているイメージから、仮想マシン構成で作成されたプールでのみサポートされます。 カスタム イメージを提供する場合は、次のセクションの注意点と「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の要件を参照してください。 
 
 ### <a name="limitations"></a>制限事項
 

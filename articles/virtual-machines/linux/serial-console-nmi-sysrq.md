@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: ac3e01756ad66dcb44869556bb103eb20bc2658c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6ca4156c19adbeea72ae268fe62638d40919b08f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221487"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699618"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
@@ -63,7 +63,7 @@ SysReq の構成を永続化するために、次の手順を実行してすべ�
 |``h``  |   ヘルプが表示されます (ここに示された以外のキーでもヘルプが表示されますが、覚えやすいのは ``h`` です :-)
 |``i``  |    init を除いて、SIGKILL をすべてのプロセスに送信します。
 |``j``  |    強制的に、FIFREEZE ioctl によって凍結されるファイルシステムを "ただ解凍します"。
-|``k``  |    Secure Access Key (SAK) によって、現在の仮想コンソール上のすべてのプログラムを強制終了します。 注: SAK セクションにある重要なコメントを参照してください。
+|``k``  |    Secure Access Key (SAK) によって、現在の仮想コンソール上のすべてのプログラムを強制終了します。 注:SAK セクションにある重要なコメントを参照してください。
 |``l``  |    すべてのアクティブな CPU に対するスタック バックトレースを表示します。
 |``m``  |    コンソールに現在のメモリ情報をダンプします。
 |``n``  |    RT タスクを最適化するために使用されます。
@@ -111,7 +111,7 @@ SysRq に関するディストリビューション固有のドキュメント�
 1. 次のコマンドを実行して、sysctl を再起動または更新します。 <br>
     `sysctl -p`
 
-`unknown_nmi_panic`、`panic_on_io_nmi`、および `panic_on_unrecovered_nmi` を含む Linux カーネル構成の詳細については、[/proc/sys/kernel/* のドキュメント](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) を参照してください。 NMI のディストリビューション固有のドキュメントと、Linux を構成して NMI を受信した場合にクラッシュ ダンプを作成する手順については、以下のリンクを参照してください。
+`unknown_nmi_panic`、`panic_on_io_nmi`、および `panic_on_unrecovered_nmi` を含む Linux カーネル構成の詳細については、以下をご覧ください:[/proc/sys/kernel/* のドキュメント](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)。 NMI のディストリビューション固有のドキュメントと、Linux を構成して NMI を受信した場合にクラッシュ ダンプを作成する手順については、以下のリンクを参照してください。
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [カーネル クラッシュ ダンプ](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

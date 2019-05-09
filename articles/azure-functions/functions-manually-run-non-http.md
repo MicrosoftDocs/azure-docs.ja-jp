@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 00a72c8c7fb42c763a8b0bad1fa3914ac27c496f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 61bece83697a4907a7bf3c881003f4da9b0e8a84
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406932"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466884"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP によってトリガーされない関数を手動で実行する
 
@@ -36,6 +36,9 @@ HTTP によってトリガーされない関数を実行するには、関数を
 
 関数を実行する Azure への要求で、関数のマスター キーと共に Postman でこの要求の場所を使用します。
 
+> [!NOTE]
+> ローカルで実行する場合、関数のマスター キーは必要ありません。 `x-functions-key` ヘッダーを省略して、直接[関数を呼び出す](#call-the-function)ことができます。
+
 ## <a name="get-the-functions-master-key"></a>関数のマスター キーを取得する
 
 Azure portal で関数に移動し、**[管理]** をクリックし、**[ホスト キー]** セクションを見つけます。 *_master* 行で **[コピー]** ボタンをクリックして、マスター キーをクリップボードにコピーします。
@@ -51,19 +54,20 @@ Azure portal で関数に移動し、**[管理]** をクリックし、**[ホス
 
 Postman を開き、次の手順を実行します。
 
-1. **[URL] テキスト ボックスに要求の場所**を入力します。 
-2. **[ヘッダー]** タブを**クリック**します。
-3. 最初の **[キー]** に「**x-functions-key**」と入力し、**[値]** ボックスに (クリップボードから) マスター キーを貼り付けます。
-4. 2 番目の **[キー]** に「**Content-Type**」と入力し、**[値]** に「**application/json**」と入力します。
+1. **[URL] テキスト ボックスに要求の場所**を入力します。
+2. HTTP メソッドが **[POST]** に設定されていることを確認します。
+3. **[ヘッダー]** タブを**クリック**します。
+4. 最初の **[キー]** に「**x-functions-key**」と入力し、**[値]** ボックスに (クリップボードから) マスター キーを貼り付けます。
+5. 2 番目の **[キー]** に「**Content-Type**」と入力し、**[値]** に「**application/json**」と入力します。
 
     ![Postman のヘッダーの設定](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-5. **[本文]** タブを**クリック**します。
-6. 要求の本文に「**{ "input": "test" }**」と入力します。
+6. **[本文]** タブを**クリック**します。
+7. 要求の本文に「**{ "input": "test" }**」と入力します。
 
     ![Postman の本文の設定](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-7. **[送信]** をクリックします。
+8. **[送信]** をクリックします。
 
     ![Postman を使用して要求を送信する](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 

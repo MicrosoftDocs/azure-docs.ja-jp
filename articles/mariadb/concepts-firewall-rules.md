@@ -3,24 +3,22 @@ title: Azure Database for MariaDB サーバーのファイアウォール規則
 description: Azure Database for MariaDB サーバーのファイアウォール規則について説明します。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 930e561c1777ccfcb8046c824853ebb12367cee5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 6fb9099ebfe884fc6eee58882ee23e46ba550e13
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248102"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546251"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
 
 ファイアウォールを構成するには、受け入れ可能な IP アドレスの範囲を指定するファイアウォール規則を作成します。 ファイアウォール規則はサーバー レベルで作成できます。
 
-**ファイアウォール規則:** この規則により、クライアントは、Azure Database for MariaDB サーバー全体、つまり、同じ論理サーバー内のすべてのデータベースにアクセスできるようになります。 サーバー レベルのファイアウォール規則を構成するには、Azure Portal または Azure CLI コマンドを使用します。 サーバー レベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
+**ファイアウォール規則**:この規則により、クライアントは、Azure Database for MariaDB サーバー全体、つまり、同じ論理サーバー内のすべてのデータベースにアクセスできるようになります。 サーバー レベルのファイアウォール規則を構成するには、Azure Portal または Azure CLI コマンドを使用します。 サーバー レベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
 
 ## <a name="firewall-overview"></a>ファイアウォールの概要
 既定では、Azure Database for MariaDB サーバーへのすべてのデータベース アクセスが、ファイアウォールによってブロックされます。 他のコンピューターからサーバーの使用を開始するには、サーバー レベルのファイアウォール規則を 1 つ以上指定して、サーバーへのアクセスを有効にする必要があります。 ファイアウォール規則を使用して、インターネットからのアクセスを許可する IP アドレス範囲を指定します。 Azure Portal Web サイト自体へのアクセスは、ファイアウォール規則の影響は受けません。
@@ -55,7 +53,7 @@ Microsoft Azure Database for MariaDB サーバー サービスに期待どおり
 
 * **許可一覧に変更が反映されない:** Azure Database for MariaDB サーバー ファイアウォールの構成に対する変更が反映されるまで最大 5 分の遅延が発生する場合があります。
 
-* **ログインが許可されない、または正しくないパスワードが使用された**: Azure Database for MariaDB サーバーでは、ログインのアクセス許可がないか、使用したパスワードが正しくない場合、Azure Database for MariaDB サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、クライアントに対し、サーバーへの接続を試行する機会のみを提供します。それぞれのクライアントは、必要なセキュリティ資格情報を提供する必要があります。
+* **ログインが許可されない、または正しくないパスワードが使用された:** Azure Database for MariaDB サーバーでは、ログインのアクセス許可がないか、使用したパスワードが正しくない場合、Azure Database for MariaDB サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、クライアントに対し、サーバーへの接続を試行する機会のみを提供します。それぞれのクライアントは、必要なセキュリティ資格情報を提供する必要があります。
 
 * **動的 IP アドレス:** 動的 IP アドレス指定によるインターネット接続を使用しており、ファイアウォールの通過に問題が発生している場合は、次の解決策のいずれかをお試しください。
 

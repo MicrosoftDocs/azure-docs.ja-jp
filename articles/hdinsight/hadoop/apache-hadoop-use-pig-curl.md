@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 52ad40a2521f21efee3b9f98b46c2e2e6343b656
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098306"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>REST を使用して HDInsight 上の Apache Hadoop で Apache Pig ジョブを実行する
 
@@ -58,8 +58,8 @@ Azure HDInsight クラスターに REST 要求を行うことで、Apache Pig La
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-u**:要求の認証に使用するユーザー名とパスワード
-    * **-G**:この要求が GET 要求であることを示します
+   * **-u**:要求の認証に使用するユーザー名とパスワード
+   * **-G**:この要求が GET 要求であることを示します
 
      URL の最初の部分 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** は、すべての要求で同じです。 パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) のステータスを返すことを示します。
 
@@ -71,18 +71,18 @@ Azure HDInsight クラスターに REST 要求を行うことで、Apache Pig La
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-d**:`-G` が使用されていないため、要求は既定で POST メソッドになります。 `-d` は要求で送信されるデータ値を指定します。
+   * **-d**:`-G` が使用されていないため、要求は既定で POST メソッドになります。 `-d` は要求で送信されるデータ値を指定します。
 
-    * **user.name**: コマンドを実行するユーザー
-    * **execute**:実行する Pig Latin ステートメント
-    * **statusdir**:このジョブの状態が書き込まれるディレクトリ
+   * **user.name**: コマンドを実行するユーザー
+   * **execute**:実行する Pig Latin ステートメント
+   * **statusdir**:このジョブの状態が書き込まれるディレクトリ
 
-    > [!NOTE]  
-    > Curl を使用したとき、Pig Latin ステートメントのスペースが `+` に置き換わることに注意してください。
+     > [!NOTE]  
+     > Curl を使用したとき、Pig Latin ステートメントのスペースが `+` に置き換わることに注意してください。
 
-    このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。たとえば、
+     このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。たとえば、
 
-        {"id":"job_1415651640909_0026"}
+       {"id":"job_1415651640909_0026"}
 
 3. ジョブのステータスを確認するには、次のコマンドを使用します。
 

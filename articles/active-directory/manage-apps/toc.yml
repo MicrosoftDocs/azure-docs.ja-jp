@@ -1,292 +1,297 @@
-items:
 - name: アプリケーション管理のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: アプリケーション管理について
-    href: what-is-application-management.md
+    - name: アプリケーション管理について
+      href: what-is-application-management.md
 - name: クイック スタート
-  items:
-  - name: ギャラリー アプリケーションの追加 - ポータル
-    href: add-application-portal.md
-  - name: テナント アプリの表示 - ポータル
-    href: view-applications-portal.md
   expanded: true
+  items:
+    - name: ギャラリー アプリケーションの追加 - ポータル
+      href: add-application-portal.md
+    - name: テナント アプリの表示 - ポータル
+      href: view-applications-portal.md
 - name: チュートリアル
   items:
-  - name: シングル サインオンの構成 - ポータル
-    href: configure-single-sign-on-portal.md
-  - name: オンプレミス アプリの追加 - ポータル
-    href: application-proxy-add-on-premises-application.md
+    - name: シングル サインオンの構成 - ポータル
+      href: configure-single-sign-on-portal.md
+    - name: オンプレミス アプリの追加 - ポータル
+      href: application-proxy-add-on-premises-application.md
 - name: 概念
   items:
-  - name: クラウド アプリの統合の計画
-    items:
-    - name: アプリを追加する際の作業内容
-      href: plan-an-application-integration.md
-    - name: 開発者向けのガイダンス
-      href: developer-guidance-for-integrating-applications.md
-  - name: オンプレミス アプリの統合の計画
-    items:
-    - name: アプリケーション プロキシ
-      href: application-proxy.md
-    - name: コネクタ
-      href: application-proxy-connectors.md
-    - name: コネクタ グループ
-      href: application-proxy-connector-groups.md
-    - name: セキュリティ
-      href: application-proxy-security.md
-    - name: ネットワーク トポロジ
-      href: application-proxy-network-topology.md
-    - name: リモート アクセス ソリューションの比較
-      href: application-proxy-migration.md
-  - name: ユーザーとグループのプロビジョニング
-    items:
-    - name: 自動ユーザー プロビジョニング
-      href: configure-automatic-user-provisioning-portal.md
-    - name: SaaS アプリ
-      href: user-provisioning.md
-    - name: SCIM 対応アプリ
-      href: use-scim-to-provision-users-and-groups.md
-    - name: アプリケーション属性のカスタマイズ
-      href: Customize-application-attributes.md
-    - name: 属性マッピングの式の書き方
-      href: functions-for-customizing-application-data.md
-    - name: スコープ フィルター
-      href: define-conditional-rules-for-provisioning-user-accounts.md
-    - name: 自動ユーザー プロビジョニングについてのレポート
-      href: check-status-user-account-provisioning.md
-    - name: ユーザー プロビジョニングのトラブルシューティング
-      href: application-provisioning-config-problem.md
-  - name: アプリケーションのセキュリティ
-    items:
-    - name: アプリのアクセス オプション
-      href: what-is-access-management.md
-    - name: 証明書署名オプション
-      href: certificate-signing-options.md
-    - name: 証明書の管理
-      href: manage-certificates-for-federated-single-sign-on.md
-    - name: テナント制限
-      href: tenant-restrictions.md
-  - name: シングル サインオン
-    href: what-is-single-sign-on.md
-  - name: エンドユーザーのポータル
-    href: end-user-experiences.md
+    - name: クラウド アプリの統合の計画
+      items:
+        - name: アプリを追加する際の作業内容
+          href: plan-an-application-integration.md
+        - name: 開発者向けのガイダンス
+          href: developer-guidance-for-integrating-applications.md
+    - name: オンプレミス アプリの統合の計画
+      items:
+        - name: アプリケーション プロキシ
+          href: application-proxy.md
+        - name: アプリケーション プロキシのデプロイ計画
+          href: application-proxy-deployment-plan.md
+        - name: Connectors
+          href: application-proxy-connectors.md
+        - name: コネクタ グループ
+          href: application-proxy-connector-groups.md
+        - name: セキュリティ
+          href: application-proxy-security.md
+        - name: ネットワーク トポロジ
+          href: application-proxy-network-topology.md
+        - name: リモート アクセス ソリューションの比較
+          href: application-proxy-migration.md
+    - name: ユーザーとグループのプロビジョニング
+      items:
+        - name: 自動ユーザー プロビジョニング
+          href: configure-automatic-user-provisioning-portal.md
+        - name: SaaS アプリ
+          href: user-provisioning.md
+        - name: SCIM 対応アプリ
+          href: use-scim-to-provision-users-and-groups.md
+        - name: アプリケーション属性のカスタマイズ
+          href: Customize-application-attributes.md
+        - name: 属性マッピングの式の書き方
+          href: functions-for-customizing-application-data.md
+        - name: スコープ フィルター
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: 自動ユーザー プロビジョニングについてのレポート
+          href: check-status-user-account-provisioning.md
+        - name: ユーザー プロビジョニングのトラブルシューティング
+          href: application-provisioning-config-problem.md
+    - name: アプリケーションのセキュリティ
+      items:
+        - name: アプリのアクセス オプション
+          href: what-is-access-management.md
+        - name: 証明書署名オプション
+          href: certificate-signing-options.md
+        - name: 証明書の管理
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: テナント制限
+          href: tenant-restrictions.md
+        - name: SAML トークン暗号化 (プレビュー) の構成
+          href: howto-saml-token-encryption.md
+    - name: シングル サインオン
+      href: what-is-single-sign-on.md
+    - name: エンドユーザーのポータル
+      href: end-user-experiences.md
 - name: ハウツー ガイド
   items:
-  - name: クラウド アプリの統合
-    items:
-    - name: アプリの追加
+    - name: クラウド アプリの統合
       items:
-      - name: アプリの種類の選択
-        href: choose-application-type.md
-      - name: 一般的な問題 - ギャラリー アプリ
-        href: adding-gallery-app-common-problems.md
-      - name: 一般的な問題 - ギャラリー以外のアプリ
-        href: adding-non-gallery-app-common-problems.md
-    - name: 名前またはロゴの変更
-      href: change-name-or-logo-portal.md
-  - name: オンプレミス アプリの統合
-    items:
-    - name: コネクタの構成
-      href: application-proxy-configure-connectors-with-proxy-servers.md
-    - name: 要求に対応するアプリの構成
-      href: application-proxy-configure-for-claims-aware-applications.md
-    - name: コネクタの登録 - サイレント インストール
-      href: application-proxy-register-connector-powershell.md
-    - name: ネイティブ クライアント アプリの構成
-      href: application-proxy-configure-native-client-application.md
-    - name: カスタム ホーム ページの構成
-      href: application-proxy-configure-custom-home-page.md
-    - name: インライン リンクの変換
-      href: application-proxy-configure-hard-coded-link-translation.md
-    - name: ワイルドカードを使用した発行
-      href: application-proxy-wildcard.md
-    - name: 個人データの削除
-      href: application-proxy-remove-personal-data.md
-    - name: カスタム ドメインの構成
-      href: application-proxy-configure-custom-domain.md
-    - name: 構成エラー
-      href: application-proxy-troubleshoot.md
-    - name: 発行に関するチュートリアル
+        - name: アプリの追加
+          items:
+            - name: アプリの種類の選択
+              href: choose-application-type.md
+            - name: 一般的な問題 - ギャラリー アプリ
+              href: adding-gallery-app-common-problems.md
+            - name: 一般的な問題 - ギャラリー以外のアプリ
+              href: adding-non-gallery-app-common-problems.md
+        - name: 名前またはロゴの変更
+          href: change-name-or-logo-portal.md
+    - name: オンプレミス アプリの統合
       items:
-      - name: Cloud App Security との統合
-        href: application-proxy-integrate-with-microsoft-cloud-application-security.md
-      - name: リモート デスクトップとの統合
-        href: application-proxy-integrate-with-remote-desktop-services.md
-      - name: SharePoint との統合
-        href: application-proxy-integrate-with-sharepoint-server.md
-      - name: Teams との統合
-        href: application-proxy-integrate-with-teams.md
-      - name: Tableau との統合
-        href: application-proxy-integrate-with-tableau.md
-      - name: Qlik との統合
-        href: application-proxy-qlik.md
-    - name: アプリケーション プロキシのトラブルシューティング
+        - name: コネクタの構成
+          href: application-proxy-configure-connectors-with-proxy-servers.md
+        - name: 要求に対応するアプリの構成
+          href: application-proxy-configure-for-claims-aware-applications.md
+        - name: コネクタの登録 - サイレント インストール
+          href: application-proxy-register-connector-powershell.md
+        - name: ネイティブ クライアント アプリの構成
+          href: application-proxy-configure-native-client-application.md
+        - name: カスタム ホーム ページの構成
+          href: application-proxy-configure-custom-home-page.md
+        - name: インライン リンクの変換
+          href: application-proxy-configure-hard-coded-link-translation.md
+        - name: Cookie の設定の構成
+          href: application-proxy-configure-cookie-settings.md
+        - name: ワイルドカードを使用した発行
+          href: application-proxy-wildcard.md
+        - name: 個人データの削除
+          href: application-proxy-remove-personal-data.md
+        - name: カスタム ドメインの構成
+          href: application-proxy-configure-custom-domain.md
+        - name: 構成エラー
+          href: application-proxy-troubleshoot.md
+        - name: 発行に関するチュートリアル
+          items:
+            - name: Cloud App Security との統合
+              href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+            - name: リモート デスクトップとの統合
+              href: application-proxy-integrate-with-remote-desktop-services.md
+            - name: SharePoint との統合
+              href: application-proxy-integrate-with-sharepoint-server.md
+            - name: Teams との統合
+              href: application-proxy-integrate-with-teams.md
+            - name: Tableau との統合
+              href: application-proxy-integrate-with-tableau.md
+            - name: Qlik との統合
+              href: application-proxy-qlik.md
+        - name: アプリケーション プロキシのトラブルシューティング
+          items:
+            - name: アプリ ページを表示できない
+              href: application-proxy-page-appearance-broken-problem.md
+            - name: アプリケーション読み込みに時間がかかりすぎる
+              href: application-proxy-page-load-speed-problem.md
+            - name: アプリケーション ページ上のリンクが動作しない
+              href: application-proxy-page-links-broken-problem.md
+            - name: アプリに対して開く必要のあるポート
+              href: application-proxy-connectivity-ports-how-to.md
+            - name: アプリのコネクタ グループに動作するコネクタがない
+              href: application-proxy-connectivity-no-working-connector.md
+            - name: 管理ポータルでの構成
+              href: application-proxy-config-how-to.md
+            - name: アプリに対するシングル サインオンの構成
+              href: application-proxy-config-sso-how-to.md
+            - name: 管理ポータルでのアプリの作成に関する問題
+              href: application-proxy-config-problem.md
+            - name: Kerberos の制約付き委任を構成する
+              href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
+            - name: PingAccess を使用した構成
+              href: application-proxy-back-end-ping-access-how-to.md
+            - name: '"この企業アプリケーションにアクセスできない" というエラー'
+              href: application-proxy-sign-in-bad-gateway-timeout-error.md
+            - name: アプリケーション プロキシ エージェント コネクタのインストール時の問題
+              href: application-proxy-connector-installation-problem.md
+            - name: サインインの問題
+              href: application-sign-in-problem-on-premises-application-proxy.md
+    - name: ユーザー プロビジョニング
       items:
-      - name: アプリ ページを表示できない
-        href: application-proxy-page-appearance-broken-problem.md
-      - name: アプリケーション読み込みに時間がかかりすぎる
-        href: application-proxy-page-load-speed-problem.md
-      - name: アプリケーション ページ上のリンクが動作しない
-        href: application-proxy-page-links-broken-problem.md
-      - name: アプリに対して開く必要のあるポート
-        href: application-proxy-connectivity-ports-how-to.md
-      - name: アプリのコネクタ グループに動作するコネクタがない
-        href: application-proxy-connectivity-no-working-connector.md
-      - name: 管理ポータルでの構成
-        href: application-proxy-config-how-to.md
-      - name: アプリに対するシングル サインオンの構成
-        href: application-proxy-config-sso-how-to.md
-      - name: 管理ポータルでのアプリの作成に関する問題
-        href: application-proxy-config-problem.md
-      - name: Kerberos の制約付き委任を構成する
-        href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
-      - name: PingAccess を使用した構成
-        href: application-proxy-back-end-ping-access-how-to.md
-      - name: "\"この企業アプリケーションにアクセスできない\" というエラー"
-        href: application-proxy-sign-in-bad-gateway-timeout-error.md
-      - name: アプリケーション プロキシ エージェント コネクタのインストール時の問題
-        href: application-proxy-connector-installation-problem.md
-      - name: サインインの問題
-        href: application-sign-in-problem-on-premises-application-proxy.md
-  - name: ユーザー プロビジョニング
-    items:
-    - name: 所要時間
-      href: application-provisioning-when-will-provisioning-finish-specific-user.md
-    - name: 長時間かかる - ギャラリー アプリ
-      href: application-provisioning-when-will-provisioning-finish.md
-    - name: ユーザー プロビジョニングの構成 - ギャラリー アプリ
-      href: application-provisioning-config-how-to.md
-    - name: ユーザー プロビジョニングの構成に関する問題 - ギャラリー アプリ
-      href: application-provisioning-config-problem.md
-    - name: ギャラリー アプリケーションへのユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題
-      href: application-provisioning-config-problem-storage-limit.md
-    - name: ユーザーがプロビジョニングされない - ギャラリー アプリ
-      href: application-provisioning-config-problem-no-users-provisioned.md
-    - name: 間違ったユーザーがプロビジョニングされている - ギャラリー アプリ
-      href: application-provisioning-config-problem-wrong-users-provisioned.md
-  - name: アプリケーション アクセス
-    items:
-    - name: アプリケーションの種類
-      href: application-types.md
-    - name: ユーザーの同意の構成
-      href: configure-user-consent.md
-    - name: ユーザーとグループをアプリに割り当てる方法
-      href: methods-for-assigning-users-and-groups.md
-    - name: アプリへのユーザーの割り当て
-      href: assign-user-or-group-access-portal.md
-    - name: アプリへのユーザーのアクセスを削除する方法
-      href: methods-for-removing-user-access.md
-    - name: 予期しないユーザーが割り当てられる
-      href: ways-users-get-assigned-to-applications.md
-    - name: ユーザーまたはグループのアクセスの削除
-      href: remove-user-or-group-access-portal.md
-    - name: ユーザーに対してアプリを非表示にする
-      href: hide-application-from-user-portal.md
-    - name: ユーザー サインインの無効化
-      href: disable-user-sign-in-portal.md
-    - name: セルフサービス アプリの割り当ての構成
-      href: manage-self-service-access.md
-    - name: ホーム領域検出
-      href: configure-authentication-for-federated-users-portal.md
-  - name: シングル サインオン
-    items:
-    - name: ギャラリー以外のアプリの構成
-      href: configure-single-sign-on-non-gallery-applications.md
-    - name: フェデレーションの構成 - ギャラリー アプリ
-      href: configure-federated-single-sign-on-gallery-applications.md
-    - name: フェデレーションの構成の一般的な問題 - ギャラリー アプリ
-      href: configure-federated-single-sign-on-gallery-applications-problems.md
-    - name: フェデレーションの構成 - ギャラリー以外のアプリ
-      href: configure-federated-single-sign-on-non-gallery-applications.md
-    - name: フェデレーションの構成の一般的な問題 - ギャラリー以外のアプリ
-      href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-    - name: パスワードの構成 - ギャラリー アプリ
-      href: configure-password-single-sign-on-gallery-applications.md
-    - name: パスワードの構成の一般的な問題 - ギャラリー アプリ
-      href: configure-password-single-sign-on-gallery-applications-problems.md
-    - name: パスワードの構成 - ギャラリー以外のアプリ
-      href: configure-password-single-sign-on-non-gallery-applications.md
-    - name: パスワードの構成の一般的な問題 - ギャラリー以外のアプリ
-      href: configure-password-single-sign-on-non-gallery-applications-problems.md
-    - name: アプリケーション プロキシ
+        - name: 所要時間
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: 長時間かかる - ギャラリー アプリ
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: ユーザー プロビジョニングの構成 - ギャラリー アプリ
+          href: application-provisioning-config-how-to.md
+        - name: ユーザー プロビジョニングの構成に関する問題 - ギャラリー アプリ
+          href: application-provisioning-config-problem.md
+        - name: ギャラリー アプリケーションへのユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: ユーザーがプロビジョニングされない - ギャラリー アプリ
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: 間違ったユーザーがプロビジョニングされている - ギャラリー アプリ
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+    - name: アプリケーション アクセス
       items:
-      - name: Kerberos の制約付き委任 (KCD)
-        href: application-proxy-configure-single-sign-on-with-kcd.md
-      - name: パスワード保管
-        href: application-proxy-configure-single-sign-on-password-vaulting.md
-      - name: headers
-        href: application-proxy-configure-single-sign-on-with-ping-access.md
-  - name: アクセス パネル
-    items:
-    - name: ブラウザー拡張機能の管理
-      href: manage-access-panel-browser-extension.md
-    - name: アプリが表示されない
-      href: access-panel-troubleshoot-application-not-appearing.md
-    - name: 予期しないアプリが表示される
-      href: access-panel-troubleshoot-unexpected-application.md
-    - name: サインインできない
-      href: access-panel-troubleshoot-web-sign-in-problem.md
-    - name: ブラウザー拡張機能のインストール時のエラー
-      href: access-panel-extension-problem-installing.md
-    - name: セルフサービス アプリ アクセスの使用方法
-      href: access-panel-manage-self-service-access.md
-    - name: セルフサービス アプリ アクセスの使用時のエラー
-      href: access-panel-troubleshoot-self-service-access.md
-  - name: 移行
-    items:
-    - name: 移行リソース
-      href: migration-resources.md
-    - name: Azure への ADFS アプリの移行
-      href: migrate-adfs-apps-to-azure.md
-  - name: ユーザーのサインインをトラブルシューティングする
-    items:
-    - name: 予期しない同意プロンプト
-      href: application-sign-in-unexpected-user-consent-prompt.md
-    - name: ユーザーの同意エラー
-      href: application-sign-in-unexpected-user-consent-error.md
-    - name: カスタム ポータルからのサインインに関する問題
-      href: application-sign-in-other-problem-deeplink.md
-    - name: アクセス パネルからのサインインに関する問題
-      href: application-sign-in-other-problem-access-panel.md
-    - name: アプリケーションのサインイン ページでのエラー
-      href: application-sign-in-problem-application-error.md
-    - name: パスワード シングル サインオンに関する問題 - ギャラリー以外のアプリ
-      href: application-sign-in-problem-password-sso-non-gallery.md
-    - name: パスワード シングル サインオンに関する問題 - ギャラリー アプリ
-      href: application-sign-in-problem-password-sso-gallery.md
-    - name: Microsoft アプリへのサインインに関する問題
-      href: application-sign-in-problem-first-party-microsoft.md
-    - name: フェデレーション シングル サインオンに関する問題 - ギャラリー以外のアプリ
-      href: application-sign-in-problem-federated-sso-non-gallery.md
-    - name: フェデレーション シングル サインオンに関する問題 - ギャラリー アプリ
-      href: application-sign-in-problem-federated-sso-gallery.md
-    - name: カスタム開発されたアプリに関する問題
-      href: application-sign-in-problem-custom-dev.md
+        - name: アプリケーションの種類
+          href: application-types.md
+        - name: ユーザーの同意の構成
+          href: configure-user-consent.md
+        - name: ユーザーとグループをアプリに割り当てる方法
+          href: methods-for-assigning-users-and-groups.md
+        - name: アプリへのユーザーの割り当て
+          href: assign-user-or-group-access-portal.md
+        - name: アプリへのユーザーのアクセスを削除する方法
+          href: methods-for-removing-user-access.md
+        - name: 予期しないユーザーが割り当てられる
+          href: ways-users-get-assigned-to-applications.md
+        - name: ユーザーまたはグループのアクセスの削除
+          href: remove-user-or-group-access-portal.md
+        - name: ユーザーに対してアプリを非表示にする
+          href: hide-application-from-user-portal.md
+        - name: ユーザー サインインの無効化
+          href: disable-user-sign-in-portal.md
+        - name: セルフサービス アプリの割り当ての構成
+          href: manage-self-service-access.md
+        - name: ホーム領域検出
+          href: configure-authentication-for-federated-users-portal.md
+    - name: シングル サインオン
+      items:
+        - name: ギャラリー以外のアプリの構成
+          href: configure-single-sign-on-non-gallery-applications.md
+        - name: フェデレーションの構成 - ギャラリー アプリ
+          href: configure-federated-single-sign-on-gallery-applications.md
+        - name: フェデレーションの構成の一般的な問題 - ギャラリー アプリ
+          href: configure-federated-single-sign-on-gallery-applications-problems.md
+        - name: フェデレーションの構成 - ギャラリー以外のアプリ
+          href: configure-federated-single-sign-on-non-gallery-applications.md
+        - name: フェデレーションの構成の一般的な問題 - ギャラリー以外のアプリ
+          href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+        - name: パスワードの構成 - ギャラリー アプリ
+          href: configure-password-single-sign-on-gallery-applications.md
+        - name: パスワードの構成の一般的な問題 - ギャラリー アプリ
+          href: configure-password-single-sign-on-gallery-applications-problems.md
+        - name: パスワードの構成 - ギャラリー以外のアプリ
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: パスワードの構成の一般的な問題 - ギャラリー以外のアプリ
+          href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: アプリケーション プロキシ
+          items:
+            - name: Kerberos の制約付き委任 (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: パスワード保管
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: headers
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: SAML SSO
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+    - name: アクセス パネル
+      items:
+        - name: ブラウザー拡張機能の管理
+          href: manage-access-panel-browser-extension.md
+        - name: アプリが表示されない
+          href: access-panel-troubleshoot-application-not-appearing.md
+        - name: 予期しないアプリが表示される
+          href: access-panel-troubleshoot-unexpected-application.md
+        - name: サインインできない
+          href: access-panel-troubleshoot-web-sign-in-problem.md
+        - name: ブラウザー拡張機能のインストール時のエラー
+          href: access-panel-extension-problem-installing.md
+        - name: セルフサービス アプリ アクセスの使用方法
+          href: access-panel-manage-self-service-access.md
+        - name: セルフサービス アプリ アクセスの使用時のエラー
+          href: access-panel-troubleshoot-self-service-access.md
+    - name: 移行
+      items:
+        - name: 移行リソース
+          href: migration-resources.md
+        - name: Azure への ADFS アプリの移行
+          href: migrate-adfs-apps-to-azure.md
+    - name: ユーザーのサインインをトラブルシューティングする
+      items:
+        - name: 予期しない同意プロンプト
+          href: application-sign-in-unexpected-user-consent-prompt.md
+        - name: ユーザーの同意エラー
+          href: application-sign-in-unexpected-user-consent-error.md
+        - name: カスタム ポータルからのサインインに関する問題
+          href: application-sign-in-other-problem-deeplink.md
+        - name: アクセス パネルからのサインインに関する問題
+          href: application-sign-in-other-problem-access-panel.md
+        - name: アプリケーションのサインイン ページでのエラー
+          href: application-sign-in-problem-application-error.md
+        - name: パスワード シングル サインオンに関する問題 - ギャラリー以外のアプリ
+          href: application-sign-in-problem-password-sso-non-gallery.md
+        - name: パスワード シングル サインオンに関する問題 - ギャラリー アプリ
+          href: application-sign-in-problem-password-sso-gallery.md
+        - name: Microsoft アプリへのサインインに関する問題
+          href: application-sign-in-problem-first-party-microsoft.md
+        - name: フェデレーション シングル サインオンに関する問題 - ギャラリー以外のアプリ
+          href: application-sign-in-problem-federated-sso-non-gallery.md
+        - name: フェデレーション シングル サインオンに関する問題 - ギャラリー アプリ
+          href: application-sign-in-problem-federated-sso-gallery.md
+        - name: カスタム開発されたアプリに関する問題
+          href: application-sign-in-problem-custom-dev.md
+- name: リファレンス
+  items:
+    - name: アプリケーション プロキシのバージョン履歴
+      href: application-proxy-release-version-history.md
 - name: リソース
   items:
-  - name: Azure AD のデプロイ計画
-    href: /azure/active-directory/fundamentals/active-directory-deployment-plans?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - name: Azure フィードバック フォーラム
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/active-directory
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=active-directory
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 3d6f161c7011002b8ca8fd1beff82364a9e9d99b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715360"
+    - name: Azure AD のデプロイ計画
+      href: /azure/active-directory/fundamentals/active-directory-deployment-plans?context=azure/active-directory/manage-apps/context/manage-apps-context
+    - name: Azure フィードバック フォーラム
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

@@ -1,26 +1,21 @@
 ---
-title: R を使用して実験を拡張する - Azure Machine Learning Studio | Microsoft Docs
+title: R を使用した実験の拡張
+titleSuffix: Azure Machine Learning Studio
 description: R スクリプトの実行モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張する方法。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 74f08421de893a4fe8916a052f8a32134cd222a5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 8c1292d0d36874892a286d91b1e367c7336b99aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272067"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848798"
 ---
 # <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure Machine Learning Studio:R を使用した実験の拡張 
 [R スクリプトの実行][execute-r-script]モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張できます。
@@ -46,7 +41,7 @@ ms.locfileid: "53272067"
 
 
 <!--
-For convenience, here is the [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
+For convenience, here is the [current full list with version numbers in Excel format](https://az754797.vo.msecnd.net/docs/RPackages.xlsx).
 -->
 
 ## <a name="importing-packages"></a>パッケージをインポートする

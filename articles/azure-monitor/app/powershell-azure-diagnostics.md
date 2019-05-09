@@ -1,6 +1,6 @@
 ---
 title: Azure での PowerShell を使用した Application Insights の設定 | Microsoft Docs
-description: Application Insights にパイプするための Azure 診断の構成を自動化します。
+description: Application Insights にパイプするための Azure Diagnostics の構成を自動化します。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,15 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: 6016d8a8b5a7b50561e703a29bdd76ef89770463
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3c0decaa89b4ecc503157a32fcb1e5b4d249ccfb
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004890"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317783"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Azure Web アプリのための PowerShell を使用した Application Insights の設定
-[Microsoft Azure](https://azure.com) は、[Azure Application Insights](../../application-insights/app-insights-overview.md) に [Azure 診断を送信するように構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[Microsoft Azure](https://azure.com) は、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) に [Azure 診断を送信するように構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
 
 ## <a name="azure-template"></a>Azure テンプレート
 Web アプリが Azure に存在するとき、Azure Resource Manager テンプレートを使用してリソースを作成する場合、resources ノードに次のコードを追加することで Application Insights を構成できます。
@@ -56,9 +59,9 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
     $webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
     $workerrole_diagconfigpath = "MyService.WorkerRole.PubConfig.xml"
 
-    $primary_storagekey = (Get-AzureStorageKey `
+    $primary_storagekey = (Get-AzStorageKey `
      -StorageAccountName "$diagnostics_storagename").Primary
-    $storage_context = New-AzureStorageContext `
+    $storage_context = New-AzStorageContext `
        -StorageAccountName $diagnostics_storagename `
        -StorageAccountKey $primary_storagekey
 
@@ -90,9 +93,9 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
     $diagnostics_storagename = "myservicediagnostics"
     $webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
     $workerrole_diagconfigpath = "MyService.WorkerRole.PubConfig.xml"
-    $primary_storagekey = (Get-AzureStorageKey `
+    $primary_storagekey = (Get-AzStorageKey `
          -StorageAccountName "$diagnostics_storagename").Primary
-    $storage_context = New-AzureStorageContext `
+    $storage_context = New-AzStorageContext `
         -StorageAccountName $diagnostics_storagename `
         -StorageAccountKey $primary_storagekey
 

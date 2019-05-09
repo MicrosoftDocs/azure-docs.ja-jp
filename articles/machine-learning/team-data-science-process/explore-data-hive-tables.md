@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c4d731ad2b94ca662e23e7e48442e396900d68ec
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c9761ade493641b6445cf151424f9598ab25e384
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880094"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Hive クエリを使用して Hive テーブルのデータを探索する
 
@@ -69,5 +69,5 @@ ms.locfileid: "53132295"
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>タクシー乗車データ シナリオのその他のクエリ スクリプト
-[NYC タクシー乗車データ](http://chriswhong.com/open-data/foil_nyc_taxi/)シナリオに固有のクエリの例も、[GitHub リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)に用意されています。 これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
+[NYC タクシー乗車データ](https://chriswhong.com/open-data/foil_nyc_taxi/)シナリオに固有のクエリの例も、[GitHub リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)に用意されています。 これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
 

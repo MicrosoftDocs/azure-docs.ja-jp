@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 3ecbef3b3063ceb413b852f8000b44a85d28d08e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b287a67c470cc1697065838e52916c285a2233a7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142801"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960192"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボ テンプレートを作成し、管理する
 ラボ内のテンプレートは仮想マシンの基本イメージで、すべてのユーザーの仮想マシンがこのイメージに基づいて作成されます。 テンプレート仮想マシンを設定して、ラボ ユーザーに提供する正しい仮想マシンが構成されるようにします。 ラボ ユーザーに表示されるテンプレートの名前と説明を指定できます。 その後、テンプレートを発行し、ラボ ユーザーがテンプレート VM のインスタンスを利用できるようにします。 テンプレートを発行すると、Azure Lab Services がそのテンプレートを使用してラボ内に VM を作成します。 このプロセスで作成される VM の数は、ラボ内で許可されるユーザーの最大数 (ラボの利用ポリシーに設定) と同じです。 すべての仮想マシンの構成は、テンプレートと同じになります。
@@ -72,7 +72,7 @@ ms.locfileid: "50142801"
 
         > [!WARNING]
         > 一度発行すると、再発行することはできません。 
-    2. 後で発行する場合は、**[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「[テンプレートを発行する](#publish-the-template)」セクションを参照してください。
+    2. 後で発行する場合は、**[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「テンプレートを発行する」セクションを参照してください。
 
         ![テンプレートを発行する](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. テンプレートの**発行に関する進行状況**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 
@@ -85,47 +85,48 @@ ms.locfileid: "50142801"
     
     ![クラスルーム ラボのダッシュボード](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 
-## <a name="set-up-a-template-after-creating-a-lab"></a>ラボの作成後、テンプレートを設定する 
-ラボの作成後、テンプレートを設定することもできます。   
+ 
+## <a name="set-or-update-template-title-and-description"></a>テンプレートのタイトルと説明を設定または更新する
+タイトルと説明を初めて設定して後で更新する場合は、次の手順を実行します。 
 
-### <a name="set-template-title-and-description"></a>テンプレートのタイトルと説明を設定する
-1. **[テンプレート]** セクションで、テンプレート用の **[編集]**(鉛筆のアイコン) を選択します。 
-2. **[User view]\(ユーザー ビュー\)** ウィンドウで、テンプレートの**タイトル**を入力します。
-3. テンプレートの**説明**を入力します。
-4. **[保存]** を選択します。
+1. **[テンプレート]** セクションで、テンプレートの**名前**またはテンプレートの**説明**にマウスを移動して選択します。 
+2. テンプレートの**新しい名前**または**新しい説明**を入力し、**Enter** キーを押します。
 
-    ![クラスルーム ラボの説明](../media/how-to-manage-classroom-labs/lab-description.png)
+    ![テンプレートの名前と説明](../media/how-to-create-manage-template/template-name-description.png)
 
-### <a name="set-up-the-template-vm"></a>テンプレート VM を設定する
- テンプレート VM を学生に提供する前に、そのテンプレート VM に接続して必要なソフトウェアをインストールします。 
+## <a name="set-up-or-update-a-template-vm"></a>テンプレート VM を設定または更新する
+ テンプレート VM を学生に提供する前に、そのテンプレート VM に接続して必要なソフトウェアをインストールします。 テンプレート VM を初めて設定する場合、または VM を更新する場合は、次の手順を実行します。 
 
 1. テンプレート仮想マシンの準備が完了するまで待ちます。 準備が完了すると、**[開始]** ボタンが有効になります。 VM を起動するには、**[開始]** を選択します。
 
     ![テンプレート VM を起動する](../media/tutorial-setup-classroom-lab/start-template-vm.png)
-1. VM に接続するには、**[接続]** を選択して指示に従います。 
+1. 警告を確認し、**[開始]** を選択します。 
 
-    ![テンプレート VM に接続する](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
+    ![テンプレートの開始 - 警告](../media/how-to-create-manage-template/start-template-warning.png)
+2. **[テンプレート]** セクションのラボ タイルに状態が表示されます。
+
+    ![テンプレートの開始 - 状態](../media/how-to-create-manage-template/template-start-status.png)
+1. 開始後、VM に接続するには、**[接続]** を選択して指示に従います。 
+
+    ![テンプレート VM への接続または停止](../media/how-to-create-manage-template/connect-stop-vm.png)
 1. 学生がラボの作業を行うために必要なソフトウェア (Visual Studio、Azure Storage Explorer など) をインストールします。 
 2. テンプレート VM から切断 (リモート デスクトップ セッションを終了) します。 
 3. **[停止]** を選択してテンプレート VM を**停止**します。 
 
-    ![テンプレート VM を停止する](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
-
-
-## <a name="publish-the-template"></a>テンプレートを発行する 
+## <a name="publish-the-template-vm"></a>テンプレート VM を発行する  
 ラボの作成時にテンプレートを発行しない場合、後で発行できます。 発行前に、テンプレート VM に接続し、ソフトウェアで更新することをお勧めします。 テンプレートを発行すると、Azure Lab Services がそのテンプレートを使用してラボ内に VM を作成します。 このプロセスで作成される VM の数は、ラボ内で許可されるユーザーの最大数 (ラボの利用ポリシーに設定) と同じです。 すべての仮想マシンの構成は、テンプレートと同じになります。 
 
 1. **[テンプレート]** セクションの **[発行]** を選択します。 
 
     ![テンプレート VM を発行する](../media/tutorial-setup-classroom-lab/public-access.png)
-1. **[Publish the template]\(テンプレートの発行\)** メッセージ ボックスでメッセージを確認し、**[発行]** を選択します。 作成する VM の数 (ラボへのアクセスが許可されるユーザーと同数) によっては、このプロセスにしばらく時間がかかる場合があります。
+1. **[Publish the template]\(テンプレートの発行\)** メッセージ ボックスでメッセージを確認し、**[発行]** を選択します。 作成する VM の数によっては、このプロセスにしばらく時間がかかる場合があります。
     
     > [!IMPORTANT]
     > いったん発行したテンプレートの発行を取り消すことはできません。 ただし、テンプレートは再発行できます。 
-4. **[仮想マシン]** ページに切り替えて、**[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 
+4. テンプレートの状態が **[発行済み]** に変わるまで待ちます。 
 
-    ![仮想マシン](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. VM が作成されるまで待ちます。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
+    ![発行済み状態](../media/how-to-create-manage-template/publish-status.png)
+1. **[仮想マシン]** ページに切り替えて、**[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 VM が作成されるまで待ちます。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
 
     ![仮想マシンが停止済み状態](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -147,7 +148,9 @@ ms.locfileid: "50142801"
     ![再発行成功](../media/how-to-create-manage-template/republish-success.png)
 
 ## <a name="next-steps"></a>次の手順
-Azure Lab Services を使用してラボの設定を開始します。
+次の記事を参照してください。
 
-- [クラスルーム ラボを設定する](how-to-manage-classroom-labs.md)
-- [ラボを設定する](../tutorial-create-custom-lab.md)
+- [管理者としてラボ アカウントを作成および管理する](how-to-manage-lab-accounts.md)
+- [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)
+- [ラボ所有者としてラボの使用を構成および制御する](how-to-configure-student-usage.md)
+- [ラボ ユーザーとしてクラスルーム ラボにアクセスする](how-to-use-classroom-lab.md)

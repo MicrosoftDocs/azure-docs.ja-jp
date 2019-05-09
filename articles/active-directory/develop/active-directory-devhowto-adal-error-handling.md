@@ -7,19 +7,20 @@ author: danieldobalian
 manager: mtillman
 ms.author: celested
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: db1d2f16c6497ce3c14d162a9c354dda995058f6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e92c3b302ab18aaaf20d187d61a488603ce81a7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974784"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178024"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -27,8 +28,8 @@ ms.locfileid: "46974784"
 
 この記事では、ADAL でサポートされている各プラットフォームの特定のケースと、アプリケーションで各ケースを正しく処理する方法について説明します。 エラーのガイダンスは、ADAL API が提供するトークンの取得パターンに基づいて、2 つの大きなカテゴリに分かれています。
 
-- **AcquireTokenSilent**: クライアントはトークンを自動で (UI なし) 取得しようとし、ADAL が失敗した場合は失敗する可能性があります。 
-- **AcquireToken**: クライアントは自動での取得を試みることができますが、サインインが必要な対話型の要求を実行することもできます。
+- **AcquireTokenSilent**:クライアントはトークンを自動で (UI なし) 取得しようとし、ADAL が失敗した場合は失敗する可能性があります。 
+- **AcquireToken**:クライアントは自動での取得を試みることができますが、サインインが必要な対話型の要求を実行することもできます。
 
 > [!TIP]
 > ADAL と Azure AD を使う場合は、すべてのエラーと例外をログに記録することをお勧めします。 ログは、アプリケーションの全体的な正常性を理解するのに役立つだけでなく、より広範な問題をデバッグするときにも重要です。 アプリケーションは特定のエラーから復旧できますが、解決するためにはコード変更が必要な大規模な設計上の問題を示唆している可能性があります。 
@@ -53,8 +54,8 @@ AcquireTokenSilent は、エンド ユーザーにユーザー インターフ�
 
 | ケース | 説明 |
 |------|-------------|
-| **ケース 1**: エラーは対話型のサインインで解決できる | 有効なトークンがないことが原因のエラーの場合は、対話型の要求が必要です。 具体的には、キャッシュ参照と無効/有効期限切れの更新トークンを解決するには AcquireToken 呼び出しが必要です。<br><br>このような場合は、エンド ユーザーにサインインを求める必要があります。 アプリケーションは対話型の要求をすぐに行うか、エンドユーザーの操作 ([サインイン] ボタンを押すなど) の後に行うか、またはそれ以降に行うかを選択できます。 選択は、アプリケーションの目的の動作によって決まります。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。|
-| **ケース 2**: エラーは対話型のサインインで解決できない | ネットワーク エラーと一時的なエラー、またはその他のエラーの場合は、対話型の AcquireToken 要求を実行しても問題は解決しません。 不必要な対話型サインインのプロンプトはエンド ユーザーにストレスを感じさせることもあります。 ADAL は、AcquireTokenSilent エラー発生時にほとんどのエラーについて再試行を自動的に 1 回行います。<br><br>クライアント アプリケーションは後で再試行してみることもできますが、実行するタイミングと方法は、アプリケーションの動作と必要なエンドユーザー エクスペリエンスによって決まります。 たとえば、アプリケーションは数分後に、またはなんらかのエンドユーザー アクションへの応答として AcquireTokenSilent の再試行を行うことができます。 すぐに再試行するとアプリケーションが制限されるため、試行しないでください。<br><br>後続の再試行が同じエラーで失敗しても、クライアントが AcquireToken を使って対話型の要求を行う必要があるということは意味しません。対話型の要求ではエラーは解決されません。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。 |
+| **ケース 1**:エラーは対話型のサインインで解決できる | 有効なトークンがないことが原因のエラーの場合は、対話型の要求が必要です。 具体的には、キャッシュ参照と無効/有効期限切れの更新トークンを解決するには AcquireToken 呼び出しが必要です。<br><br>このような場合は、エンド ユーザーにサインインを求める必要があります。 アプリケーションは対話型の要求をすぐに行うか、エンドユーザーの操作 ([サインイン] ボタンを押すなど) の後に行うか、またはそれ以降に行うかを選択できます。 選択は、アプリケーションの目的の動作によって決まります。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。|
+| **ケース 2**:エラーは対話型のサインインで解決できない | ネットワーク エラーと一時的なエラー、またはその他のエラーの場合は、対話型の AcquireToken 要求を実行しても問題は解決しません。 不必要な対話型サインインのプロンプトはエンド ユーザーにストレスを感じさせることもあります。 ADAL は、AcquireTokenSilent エラー発生時にほとんどのエラーについて再試行を自動的に 1 回行います。<br><br>クライアント アプリケーションは後で再試行してみることもできますが、実行するタイミングと方法は、アプリケーションの動作と必要なエンドユーザー エクスペリエンスによって決まります。 たとえば、アプリケーションは数分後に、またはなんらかのエンドユーザー アクションへの応答として AcquireTokenSilent の再試行を行うことができます。 すぐに再試行するとアプリケーションが制限されるため、試行しないでください。<br><br>後続の再試行が同じエラーで失敗しても、クライアントが AcquireToken を使って対話型の要求を行う必要があるということは意味しません。対話型の要求ではエラーは解決されません。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。 |
 
 ### <a name="net"></a>.NET
 
@@ -187,7 +188,7 @@ AcquireToken エラーを処理する場合、エラー処理は、プラット�
   - On-Behalf-Of を含むすべてのシナリオ
   - On-Behalf-Of 固有のシナリオ
 
-### <a name="error-cases-and-actionable-steps-native-client-applications"></a>エラー ケースと実施可能な手順: ネイティブ クライアント アプリケーション
+### <a name="error-cases-and-actionable-steps-native-client-applications"></a>エラー ケースと実施可能な手順:ネイティブ クライアント アプリケーション
 
 ネイティブ クライアント アプリケーションを構築する場合は、ネットワークの問題、一時的なエラー、その他のプラットフォーム固有のエラーに関連して考慮すべきいくつかのエラー処理ケースがあります。 ほとんどの場合、アプリケーションではすぐに再試行を実行する必要はなく、サインインを求めるエンドユーザー操作を待機します。 
 
@@ -340,7 +341,7 @@ public void onError(Exception e) {
 }]
 ```
 
-### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>エラー ケースと実施可能な手順: リソース API (.NET) を呼び出す Web アプリケーション
+### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>エラー ケースと実施可能な手順:リソース API (.NET) を呼び出す Web アプリケーション
 
 リソースの承認コードを使ったトークンの取得を呼び出す .NET Web アプリを構築する場合、必要なコードは汎用ケースの既定のハンドラーだけです。 
 
@@ -365,7 +366,7 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>エラー ケースと実施可能な手順: シングルページ アプリケーション (adal.js)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>エラー ケースと実施可能な手順:シングル ページ アプリケーション (adal.js)
 
 AcquireToken で adal.js を使ってシングルページ アプリケーションを構築する場合、エラー処理コードは通常のサイレント呼び出しのコードと同様です。 具体的には、adal.js では AcquireToken は UI を決して表示しません。 
 
@@ -586,7 +587,13 @@ window.Logging = {
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。
 
 [![サインイン ボタン][AAD-Sign-In]][AAD-Sign-In]
-<!--Reference style links --> [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md [AAD-Auth-Scenarios]:authentication-scenarios.md [AAD-Dev-Guide]:azure-ad-developers-guide.md [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md [AZURE-portal]: https://portal.azure.com
+<!--Reference style links -->
+
+[AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
+[AAD-Auth-Scenarios]:authentication-scenarios.md
+[AAD-Dev-Guide]:azure-ad-developers-guide.md
+[AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
+[AZURE-portal]: https://portal.azure.com
 
 <!--Image references-->
 [AAD-Sign-In]:./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

@@ -2,20 +2,20 @@
 title: Azure Virtual WAN を使用して Azure へのポイント対サイト接続を作成する | Microsoft Docs
 description: このチュートリアルでは、Azure Virtual WAN を使用して Azure へのポイント対サイト VPN 接続を作成する方法を学習します。
 services: virtual-wan
-author: cherylmc
+author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/29/2018
-ms.author: cherylmc
+ms.date: 02/27/2019
+ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e3d1a79dc7dd775cea71df2f36a5f34d85f3e240
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9fe0c7f7ae0c19833421b647449f0e4100904f5b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261810"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226234"
 ---
-# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>チュートリアル: Azure Virtual WAN (プレビュー) を使用してポイント対サイト接続を作成する
+# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>チュートリアル:Azure Virtual WAN (プレビュー) を使用してポイント対サイト接続を作成する
 
 このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv2) または OpenVPN VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続では、クライアント コンピューターでクライアントを構成する必要があります。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
 
@@ -38,11 +38,13 @@ ms.locfileid: "51261810"
 
 ## <a name="before-you-begin"></a>開始する前に
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>この機能を登録する
 
-Azure Cloud Shell を使用してこの機能を簡単に登録するには、**[TryIt]** をクリックします。
+Azure Cloud Shell を使用してこの機能を簡単に登録するには、**[TryIt]** をクリックします。 PowerShell をローカルで実行する場合は、最新バージョンであることを確認し、**Connect-AzAccount** および **Select-AzSubscription** コマンドを使用してサインインしてください。
 
 >[!NOTE]
 >この機能を登録しないと、それを使用できなくなるか、またはポータルで表示できなくなります。
@@ -52,25 +54,25 @@ Azure Cloud Shell を使用してこの機能を簡単に登録するには、**
 **[TryIt]** をクリックした後、Azure Cloud Shell を開くには、次のコマンドをコピーして貼り付けます。
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
  
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
-機能が登録済みと表示されたら、サブスクリプションを Microsoft.Network 名前空間に再登録します。
+機能が登録済みと表示されたら、サブスクリプションを Microsoft.Network 名前空間に登録します。
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ## <a name="vnet"></a>1.仮想ネットワークの作成
@@ -101,13 +103,13 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 4. ページの上部にある **[+ ポイント対サイトの構成を追加]** をクリックし、**[ポイント対サイトの構成の新規作成]** ページを開きます。
 5. **[ポイント対サイトの構成の新規作成]** ページで次のフィールドを入力します。
 
-  *  **構成名**: 構成の呼称です。
-  *  **トンネルの種類**: トンネルに使用するプロトコル。
-  *  **アドレス プール**: クライアントが割り当てられる IP アドレス プールです。
-  *  **ルート証明書名**: 証明書のわかりやすい名前。
-  *  **ルート証明書データ**: Base-64 でエンコードされた X.509 証明書データです。
+   *  **構成名**: 構成の呼称です。
+   *  **トンネルの種類**: トンネルに使用するプロトコル。
+   *  **アドレス プール**: クライアントが割り当てられる IP アドレス プールです。
+   *  **ルート証明書名**: 証明書のわかりやすい名前。
+   *  **ルート証明書データ**: Base-64 でエンコードされた X.509 証明書データです。
 
-5. **[作成]** をクリックして構成を作成します。
+6. **[作成]** をクリックして構成を作成します。
 
 ## <a name="hub"></a>5.ハブの割り当てを編集する
 
@@ -115,9 +117,10 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 2. ポイント対サイト構成の割り当て先となるハブを選択します。
 3. **[...]** をクリックして、**[仮想ハブを編集する]** を選択します。
 4. **[ポイント対サイト ゲートウェイを含める]** チェック ボックスをオンにします。
-5. **ゲートウェイ スケール ユニット**のほか、クライアントの**アドレス プール**と共に**ポイント対サイト構成**を選択します。
-6. **[Confirm]\(確認\)** をクリックします。 
-7. 操作の完了には最長で 30 分かかる場合があります。
+5. ドロップダウン リストから、**[ゲートウェイ スケール ユニット]** を選択します。
+6. ドロップダウン リストから、作成した**ポイント対サイトの構成**を選択します。
+7. クライアントの**アドレス プール**を構成します。
+8. **[Confirm]\(確認\)** をクリックします。 この操作は、完了するまで最大 30 分かかることがあります。
 
 ## <a name="vnet"></a>6.VNet をハブに接続する
 
@@ -131,6 +134,7 @@ P2S 構成には、リモート クライアントを接続するためのパラ
     * **[ハブ]** - この接続に関連付けるハブを選択します。
     * **[サブスクリプション]** - サブスクリプションを確認します。
     * **[仮想ネットワーク]** - このハブに接続する仮想ネットワークを選択します。 仮想ネットワークに既存の仮想ネットワーク ゲートウェイを設定することはできません。
+4. **[OK]** をクリックして接続を追加します。
 
 ## <a name="device"></a>7.VPN プロファイルをダウンロードする
 
@@ -149,7 +153,7 @@ VPN プロファイルを使用してクライアントを構成します。
 #### <a name="openvpn"></a>OpenVPN
 
 1.  公式 Web サイトから OpenVPN クライアントをダウンロードしてインストールします。
-2.  ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブまたは PowerShell の New-AzureRmVpnClientConfiguration で実行できます。
+2.  ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブまたは PowerShell の New-AzVpnClientConfiguration で実行できます。
 3.  プロファイルを展開します。 メモ帳で OpenVPN フォルダーの vpnconfig.ovpn 構成ファイルを開きます。
 4.  P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 証明書をエクスポートしてエンコードされた公開キーを取得する方法については、こちらを参照してください。
 5.  秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 秘密キーを抽出する方法については、こちらを参照してください。
@@ -168,7 +172,7 @@ VPN プロファイルを使用してクライアントを構成します。
 #### <a name="openvpn"></a>OpenVPN
 
 1.  TunnelBlik などの OpenVPN クライアントを https://tunnelblick.net/downloads.html からダウンロードしてインストールします。 
-2.  ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブまたは PowerShell の New-AzureRmVpnClientConfiguration で実行できます。
+2.  ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブまたは PowerShell の New-AzVpnClientConfiguration で実行できます。
 3.  プロファイルを展開します。 メモ帳で OpenVPN フォルダーの vpnconfig.ovpn 構成ファイルを開きます。
 4.  P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 証明書をエクスポートしてエンコードされた公開キーを取得する方法については、こちらを参照してください。
 5.  秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 秘密キーを抽出する方法については、こちらを参照してください。
@@ -201,10 +205,10 @@ Azure VM とリモート サイト間の通信を監視するための接続を�
 
 ## <a name="cleanup"></a>12.リソースのクリーンアップ
 
-これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
+これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d304a0f43632ab0f33e286b4404e1063ecb437e
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a539e1db4fb86adb9f1fcf1f478e24e5de5edbdb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364354"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983238"
 documentType: LandingData
 title: Azure Functions のドキュメント
 metadata:
@@ -126,4 +126,4 @@ sections:
     - title: REST
       html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
     - title: バインド
-      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">イベント ハブ</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">外部ファイル</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP と webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR Service</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Timer</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 出力バインド</a></p>
+      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">イベント ハブ</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP と webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR Service</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Timer</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 出力バインド</a></p>

@@ -3,21 +3,22 @@ title: ユーザーにディレクトリ ロールを割り当てる - Azure Act
 description: Azure Active Directory を使って、ユーザーに管理者と管理者以外のロールを割り当てる方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: e8646893d6dd57fd3f743f450f438cd962f02b36
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bd26fa53c91c53893c7f326afda5158fa430be1e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095122"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188139"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる
 組織内のユーザーが Azure Active Directory (Azure AD) のリソースを管理するためのアクセス許可を必要としている場合は、ユーザーが実行するアクションに基づいて、Azure AD で適切なロールをユーザーに割り当てる必要があります。

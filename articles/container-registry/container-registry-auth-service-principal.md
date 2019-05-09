@@ -1,18 +1,18 @@
 ---
 title: サービス プリンシパルによる Azure Container Registry 認証
-description: Azure Active Directory サービス プリンシパルを使用して、プライベート コンテナー レジストリ内のイメージへのアクセスを許可する方法を説明します。
+description: Azure Active Directory サービス プリンシパルを使用して、プライベート コンテナー レジストリ内のイメージへのアクセスを提供します。
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 30f0eb04b4b7d07785854e3079bc6656889edec6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5d8904b5906adbdab68989b3a5cf9c3975c23533
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854489"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697587"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>サービス プリンシパルによる Azure Container Registry 認証
 
@@ -20,9 +20,9 @@ Azure Active Directory (Azure AD) サービス プリンシパルを使って、
 
 ## <a name="what-is-a-service-principal"></a>サービス プリンシパルとは
 
-Azure AD の*サービス プリンシパル*は、サブスクリプション内の Azure リソースへのアクセスを提供します。 サービス プリンシパルはサービスのユーザー ID と考えることができます。ここで「サービス」は、リソースへのアクセスが必要なアプリケーション、サービス、またはプラットフォームです。 指定したそれらのリソースのみをスコープとするアクセス権を持つサービス プリンシパルを構成できます。 その後で、サービス プリンシパルの資格情報を使ってそれらのリソースにアクセスするように、アプリケーションまたはサービスを構成できます。
+Azure AD の*サービス プリンシパル*は、サブスクリプション内の Azure リソースへのアクセスを提供します。 サービス プリンシパルはサービスのユーザー ID と考えることができます。ここで「サービス」は、リソースへのアクセスが必要なアプリケーション、サービス、またはプラットフォームです。 指定したそれらのリソースのみをスコープとするアクセス権を持つサービス プリンシパルを構成できます。 その後、サービス プリンシパルの資格情報を使用してそれらのリソースにアクセスするようにアプリケーションまたはサービスを構成します。
 
-Azure Container Registry のコンテキストでは、Azure のプライベート Docker レジストリに対してプル、プッシュとプル、または所有者のアクセス許可を持つ Azure AD サービス プリンシパルを作成できます。
+Azure Container Registry のコンテキストでは、Azure 内のプライベート レジストリに対するプル、プッシュとプル、またはその他のアクセス許可を持つ Azure AD サービス プリンシパルを作成できます。 完全な一覧については、[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)に関するページを参照してください。
 
 ## <a name="why-use-a-service-principal"></a>サービス プリンシパルを使う理由
 
@@ -47,9 +47,7 @@ Azure CLI の以前のサンプル スクリプトを GitHub 上で検索でき�
 
 ## <a name="next-steps"></a>次の手順
 
-コンテナー レジストリへのアクセスが許可されたサービス プリンシパルを持っている場合は、アプリケーションおよびサービスでその資格情報を使ってレジストリと通信できます。
-
-サービス プリンシパルの資格情報を使う個々のアプリケーションの構成はこの記事では取り上げませんが、一部の特定のサービスとプラットフォームの手順については、以下をご覧ください。
+コンテナー レジストリへのアクセスが許可されたサービス プリンシパルを持っている場合は、その資格情報をアプリケーションやサービスから使用して、ヘッドレスでレジストリを操作することができます。 サービス プリンシパルの資格情報は、Azure コンテナー レジストリに対して認証を行うことができるあらゆる Azure サービスから使用できます。 たとえば、次のようになります。
 
 * [Azure Kubernetes Service (AKS) から Azure Container Registry の認証を受ける](container-registry-auth-aks.md)
 * [Azure Container Instances (ACI) から Azure Container Registry の認証を受ける](container-registry-auth-aci.md)

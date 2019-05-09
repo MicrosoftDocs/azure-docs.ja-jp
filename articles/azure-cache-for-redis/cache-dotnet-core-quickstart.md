@@ -1,26 +1,26 @@
 ---
 title: 'クイック スタート: .NET Core アプリを使って Azure Cache for Redis を使用する方法 | Microsoft Docs'
 description: このクイック スタートでは、.NET Core アプリから Azure Redis Cache にアクセスする方法について説明します
-services: azure-cache-for-redis,app-service
+services: cache,app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a253b1d34b134700778152b7ef0b0571190b2511
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: df615b940873cd59341424d0b40a9e399d710126
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896247"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>クイック スタート: .NET Core アプリと Azure Cache for Redis を使用する
 
@@ -38,7 +38,7 @@ ms.locfileid: "53554845"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [.Net SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) 以降。
+* [.NET SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) 以降。
 * StackExchange.Redis クライアントには、[.NET Framework 4 以降](https://www.microsoft.com/net/download/dotnet-framework-runtime)が必要です。
 
 ## <a name="create-a-cache"></a>キャッシュの作成

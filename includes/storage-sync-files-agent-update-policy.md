@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: fa0edaaa3ee785f89faceb51419d360752bb9825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53636005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58052214"
 ---
 Azure File Sync エージェントは、新機能の追加や問題の解決を目的として定期的に更新されます。 Azure File Sync エージェントの更新プログラムを公開されしだい入手できるように Microsoft Update を構成しておくことをお勧めします。
 
 #### <a name="major-vs-minor-agent-versions"></a>エージェントのメジャー バージョンとマイナー バージョン
-* エージェントのメジャー バージョンには、多くの場合、新しい機能が含まれています。メジャー バージョンでは、バージョン番号の先頭部分の数値が増えていきます。 例: *2.\*.\**
-* エージェントのマイナー バージョンは "修正プログラム" とも呼ばれ、メジャー バージョンよりも頻繁にリリースされます。 多くの場合、バグの修正と軽微な機能強化が含まれ、新しい機能は含まれません。 例: *\*.3.\**
+* エージェントのメジャー バージョンには、多くの場合、新しい機能が含まれています。メジャー バージョンでは、バージョン番号の先頭部分の数値が増えていきます。 例: \*2.\*.\*\*
+* エージェントのマイナー バージョンは "修正プログラム" とも呼ばれ、メジャー バージョンよりも頻繁にリリースされます。 多くの場合、バグの修正と軽微な機能強化が含まれ、新しい機能は含まれません。 例: \*\*.3.\*\*
 
 #### <a name="upgrade-paths"></a>アップグレード パス
 Azure File Sync エージェントの更新プログラムのインストールを承認してテストする方法は 4 つあります。 

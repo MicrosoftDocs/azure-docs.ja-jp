@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 895f6ce728ce608184bf6f68be3b73d5dc384d79
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: f2c4c6b8655d5efb993a2dedf536000ac94328c2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52893117"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59281490"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>マップにバブル レイヤーを追加する
 
 この記事では、データ ソースからのポイント データをマップ上のバブル レイヤーにレンダリングする方法について説明します。 バブル レイヤーは、決まったピクセル半径を持つ円としてポイントをマップ上にレンダリングするものです。 
 
 > [!TIP]
-> バブル レイヤーの既定では、データ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', '$type', 'Point']` に設定します。
+> バブル レイヤーの既定では、データ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', ['geometry-type'], 'Point']` に設定します。または、MultiPoint フィーチャーも含める場合は、`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` に設定します。
 
 ## <a name="add-a-bubble-layer"></a>バブル レイヤーを追加する
 
@@ -73,4 +73,7 @@ ms.locfileid: "52893117"
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 
 > [!div class="nextstepaction"]
-> [シンボル レイヤーを追加する](./map-add-pin.md)
+> [シンボル レイヤーを追加する](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: ef360fd56c3530a49c2f36846db34b29ca1cf444
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 3890283f70bfd922d0c436f76b38d7f81d7b8c6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788020"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107020"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトにレプリケートされた Hyper-V VM のフェールオーバーとフェールバック
 
@@ -49,7 +49,7 @@ Hyper-V VM の通常のフェールオーバーまたは計画されたフェー
 - 通常のフェールオーバーは、予期しない停電時に使用します。 このフェールオーバーを実行すると、Site Recovery はセカンダリ サイトに VM を作成し、電源を投入します。 同期されていない保留中のデータによっては、データの損失が発生する可能性があります。
 - 計画されたフェールオーバーは、メンテナンスや想定された停止時に使用できます。 このオプションではデータ損失は発生しません。 計画されたフェールオーバーがトリガーされると、ソース VM がシャット ダウンされます。 同期されていないデータが同期され、フェールオーバーがトリガーされます。 
 - 
-この手順では、通常のフェールオーバーを実行する方法について説明します。
+  この手順では、通常のフェールオーバーを実行する方法について説明します。
 
 
 1. **[設定]** > **[レプリケートされたアイテム]** で、[VM] > **[フェールオーバー]** をクリックします。

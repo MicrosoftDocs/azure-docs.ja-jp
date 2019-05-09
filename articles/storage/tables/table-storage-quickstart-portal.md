@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 77aba022b3e4e8a41fa83e24b5694542fd2ae259
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 052a462da5349b0886d6d99cd59d1a4ce816220f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526531"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462717"
 ---
-# <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>クイック スタート: Azure portal で Azure Storage テーブルを作成する 
+# <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Storage テーブルを作成する 
 
 このクイック スタートでは、Web ベースの Azure portal でテーブルおよびエンティティを作成する方法を示します。 このクイック スタートでは、Azure ストレージ アカウントを作成する方法も示します。
 

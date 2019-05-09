@@ -1,22 +1,22 @@
 ---
-title: 'チュートリアル: Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む'
+title: チュートリアル:Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
 description: このチュートリアルでは、Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル ユーザー データを読み込む方法を示します。
 author: kanshiG
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: govindk
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: fad6d34a3d3712a036e0275717754f75d5314aae
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 68baffea86ce5c877217ec05d477288b71830a42
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863655"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037431"
 ---
-# <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>チュートリアル: Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
+# <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
 
 開発者は、キー/値ペアを使用するアプリケーションを持っていることがあります。 Azure Cosmos DB の Cassandra API アカウントを使用して、キー/値データを格納して管理できます。 このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB の Cassandra API アカウント内のテーブルにサンプル ユーザー データを読み込む方法を示します。 この Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザー所在地などのユーザー データを読み込みます。 
 

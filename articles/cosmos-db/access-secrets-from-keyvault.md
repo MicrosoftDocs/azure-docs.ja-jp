@@ -1,23 +1,24 @@
 ---
 title: Key Vault を使用し Azure Cosmos DB キーを格納してアクセスする
-description: Azure Key Vault を使用し、Azure Cosmos DB の接続文字列、キー、URI を格納し、アクセスします。
-services: cosmos-db
-author: rafats
+description: Azure Key Vault を使用し、Azure Cosmos DB の接続文字列、キー、エンドポイントを格納し、アクセスします。
+author: rimman
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: rafats
-ms.openlocfilehash: f5d494006ebafab37bd10591ad02671e192d73e8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: rimman
+ms.reviewer: sngun
+ms.openlocfilehash: 36b0a2f18cf2917251a87405456980811af1bc3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837394"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242194"
 ---
-# <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Key Vault を使用し Azure Cosmos DB キーを格納してアクセスする
+# <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
 
-アプリケーションで Azure Cosmos DB を使用すると、アプリケーションの構成ファイル内のエンドポイント URI とキーを使用して、データベース、コレクション、ドキュメントにアクセスできます。  ただし、キーと URLをアプリケーション コードに直接入力するのは安全ではありません。すべてのユーザーがクリア テキスト形式で入手できるためです。 セキュリティ保護されたメカニズム URI とキーを提供する必要があります。 ここで Azure Key Vault が、アプリケーション シークレットを安全に格納および管理する際に役立ちます。
+アプリケーションで Azure Cosmos DB を使用すると、アプリケーションの構成ファイル内のエンドポイントとキーを使用して、データベース、コレクション、ドキュメントにアクセスできます。  ただし、キーと URLをアプリケーション コードに直接入力するのは安全ではありません。すべてのユーザーがクリア テキスト形式で入手できるためです。 セキュリティで保護されたメカニズムを通してエンドポイントとキーを提供する必要があります。 ここで Azure Key Vault が、アプリケーション シークレットを安全に格納および管理する際に役立ちます。
 
 Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るためには、次の手順が必要です。
 

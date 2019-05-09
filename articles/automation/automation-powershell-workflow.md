@@ -3,18 +3,18 @@ title: Azure Automation の PowerShell ワークフローについて
 description: この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いと、Automation Runbook に適用できる概念ついて簡単に説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b60e1639a1c32763c4759720fe61b0e571fc9dd1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: c5764c36a646b9639c0eb6463c39b9f014c4272d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437097"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168087"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明
 
@@ -43,7 +43,7 @@ Workflow Test-Workflow
 
 PowerShell ワークフローのコードは PowerShell スクリプト コードとほぼ同じですが、いくつかの重要な変更点があります。  次のセクションでは、ワークフローで実行するための PowerShell スクリプトに対して行う必要がある変更について説明します。
 
-### <a name="activities"></a>アクティビティ
+### <a name="activities"></a>Activities
 
 アクティビティとは、ワークフロー内の特定のタスクです。 スクリプトが 1 つ以上のコマンドで構成されているのと同様に、ワークフローも順番に実行される 1 つ以上のアクティビティで構成されます。 Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。 Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、Windows Workflow Foundation で実行されます。 対応するアクティビティがないコマンドレットの場合、Windows PowerShell ワークフローは [InlineScript](#inlinescript) アクティビティ内のコマンドレットを自動的に実行します。 InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できない一連のコマンドレットがあります。 これらの概念の詳細については、「 [スクリプト ワークフローでのアクティビティの使用](https://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
 
@@ -226,7 +226,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>チェックポイント
 
-*チェックポイント* は、変数の現在の値と、そのポイントに生成された出力を含むワークフローの現在の状態のスナップショットです。 ワークフローがエラーで終了した場合、または中断した場合、次の実行時には、ワークフローの先頭からではなく、最後のチェックポイントから開始されます。  **Checkpoint-Workflow** アクティビティを使用してワークフローにチェックポイントを設定できます。
+*チェックポイント* は、変数の現在の値と、そのポイントに生成された出力を含むワークフローの現在の状態のスナップショットです。 ワークフローがエラーで終了した場合、または中断した場合、次の実行時には、ワークフローの先頭からではなく、最後のチェックポイントから開始されます。  **Checkpoint-Workflow** アクティビティを使用してワークフローにチェックポイントを設定できます。 Azure Automation には[フェア シェア](automation-runbook-execution.md#fair-share)という機能があり、実行時間が 3 時間を超える Runbook は、他の Runbook を実行できるようにアンロードされます。 アンロードされた Runbook は最終的には再び読み込まれ、その Runbook の最新のチェックポイントから再開されます。 最終的には Runbook が確実に完了するようにするには、3 時間未満の実行間隔でチェックポイントを追加する必要があります。 各実行中に新しいチェックポイントが追加され、3 時間後にエラーが原因で Runbook が削除されると、Runbook の再開がいつまでも実行されます。
 
 次のサンプル コードでは、Activity2 の後に例外が発生し、ワークフローが終了します。 ワークフローを再実行すると、設定された最後のチェックポイントの直後に Activity2 があるため、まず Activity2 が実行されます。
 
@@ -296,3 +296,4 @@ workflow CreateTestVms
 ## <a name="next-steps"></a>次の手順
 
 * PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
+

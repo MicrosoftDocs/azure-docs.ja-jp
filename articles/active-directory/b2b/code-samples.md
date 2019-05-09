@@ -1,21 +1,23 @@
 ---
-title: Azure Active Directory B2B コラボレーション コードと PowerShell サンプル | Microsoft Docs
+title: B2B コラボレーション コードと PowerShell サンプル - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: sample
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 9d2fa8ec96f629ff85d785897398bc9af52ab3bc
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: it-pro, seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bdce3e557a7b9ad76b2a4bfe533d1272832ea72f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165761"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088878"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B コラボレーション コードと PowerShell サンプル
 
@@ -24,10 +26,10 @@ ms.locfileid: "49165761"
 
 1. .CSV ファイルを準備します。新しい CSV ファイルを作成して、invitations.csv という名前を付けます。 この例では、ファイルは、C:\data に保存され、次の情報が格納されています。
   
-  Name                  |  InvitedUserEmailAddress
-  --------------------- | --------------------------
-  Gmail B2B 招待者     | b2binvitee@gmail.com
-  Outlook B2B 招待者   | b2binvitee@outlook.com
+   Name                  |  InvitedUserEmailAddress
+   --------------------- | --------------------------
+   Gmail B2B 招待者     | b2binvitee@gmail.com
+   Outlook B2B 招待者   | b2binvitee@outlook.com
 
 
 2. 最新の Azure AD PowerShell を取得します。新しいコマンドレットを使用するには、更新された Azure AD PowerShell モジュールをインストールする必要があります。このモジュールは、[PowerShell モジュールのリリース ページ](https://www.powershellgallery.com/packages/AzureADPreview)からダウンロードできます。
@@ -41,12 +43,12 @@ ms.locfileid: "49165761"
 
 4. PowerShell コマンドレットを実行します。
 
-  ```powershell
-  $invitations = import-csv C:\data\invitations.csv
-  $messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-  $messageInfo.customizedMessageBody = "Hey there! Check this out. I created an invitation through PowerShell"
-  foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InvitedUserDisplayName $email.Name -InviteRedirectUrl https://wingtiptoysonline-dev-ed.my.salesforce.com -InvitedUserMessageInfo $messageInfo -SendInvitationMessage $true}
-  ```
+   ```powershell
+   $invitations = import-csv C:\data\invitations.csv
+   $messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
+   $messageInfo.customizedMessageBody = "Hey there! Check this out. I created an invitation through PowerShell"
+   foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InvitedUserDisplayName $email.Name -InviteRedirectUrl https://wingtiptoysonline-dev-ed.my.salesforce.com -InvitedUserMessageInfo $messageInfo -SendInvitationMessage $true}
+   ```
 
 このコマンドレットは、invitations.csv の電子メール アドレスに招待を送信します。 このコマンドレットの追加機能には、次のようなものがあります。
 - 電子メール メッセージでのテキストのカスタマイズ
@@ -78,7 +80,7 @@ namespace SampleInviteApp
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
  
         /// <summary>
-        ///  Authentication endpoint to get token.
+        ///  Authentication endpoint to get token.
         /// </summary>
         static readonly string EstsLoginEndpoint = "https://login.microsoftonline.com";
  

@@ -6,27 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 11/13/2018
+ms.date: 04/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: cd4d84d6698ddeda2fb00a8452fbe8cd02771e4b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685958"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544570"
 ---
-# <a name="what-is-azure-data-box-edge-preview"></a>Azure Data Box Edge (プレビュー) とは 
+# <a name="what-is-azure-data-box-edge"></a>Azure Data Box Edge とは 
 
 Azure Data Box Edge は、データを処理してネットワーク経由で Azure に送信できるストレージ ソリューションです。 この記事では、Data Box Edge ソリューションの概要、利点、主な機能、このデバイスを配置できるシナリオについて説明します。 
 
 Data Box Edge は、Microsoft 製の物理デバイスを使用して、安全なデータ転送を高速化します。 物理デバイスは構内にあり、NFS プロトコルと SMB プロトコルを使用してデータを書き込みます。 
 
 Data Box Edge は、Data Box Gateway のゲートウェイ機能をすべて備えています。 Data Box には AI 対応のエッジ コンピューティング機能が追加装備されており、Azure ブロック ブロブ、ページ ブロブ、または Azure ファイルに転送する際にデータの分析、処理、またはフィルター処理に役立ちます。  
-
-> [!IMPORTANT]
-> - Data Box Edge はプレビュー段階です。 このサービスに [サインアップ](#sign-up) してください。
-> - このソリューションをデプロイする前に、[プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -70,22 +65,6 @@ Data Box Edge には次の機能があります。
 |回復性     | 組み込まれたネットワークの回復性。        |
 
 
-## <a name="features-and-specifications"></a>機能と仕様
-
-Data Box Edge 物理デバイスには次の機能があります。
-
-| 機能/仕様                                          | 説明              |
-|---------------------------------------------------------|--------------------------|
-| ディメンション   | 幅: 17.25" 奥行: 27.25" 高さ: 1.75"<br>(取っ手と PSU ハンドルを除く)  |            
-| ラック スペース|ラックに収納した場合 1U|
-| ケーブル| 電源ケーブル x 2<br>1 Gbps RJ45 ケーブル x 2<br>10 Gbps SFP x 2 と銅線ケーブル|
-| コンポーネント|組み込み型電源ユニット (PSU) x 2|
-| CPU|10 コア搭載 Intel Xeon プロセッサ x 2  |
-| メモリ| 64 GB RAM|
-| ディスク| NVMe SSD x 8、各ディスクは 1.6 TB <br> 1 つの NVMe SSD に障害が発生すると、システムは機能しなくなります。 |
-| ローカル ストレージの容量| 合計容量 12.8 TB|
-| ネットワーク インターフェイス| 1 GbE インターフェイス x 2 - 1 つは管理用で、ユーザー構成不可であり、初期セットアップに使用されます。 他のインターフェイスはユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>25 GbE インターフェイス x 2 – これらは 10 GbE インターフェイスとしても動作可能です。 これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。 <br> 25 GbE インターフェイス x 2 – これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。|
-
 ## <a name="components"></a>コンポーネント
 
 Data Box Edge ソリューションは、Data Box Edge リソース、Data Box Edge 物理デバイス、ローカル Web UI で構成されています。
@@ -110,36 +89,22 @@ Data Box Edge ソリューションは、Data Box Edge リソース、Data Box E
 Data Box Edge 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じ地域にある必要はありません。
 
 - **リソースの可用性** - このリリースでは、Data Box Edge リソースは次の地域で利用できます。
-    - **米国** - 米国西部と米国東部
+    - **米国** - 米国東部
     - **欧州連合** - 欧州西部
     - **アジア太平洋** - 東南アジア
-
+    
+    Data Box Edge は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
+    
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 
 
     最適なパフォーマンスを得るには、ストレージ アカウントが Data Box データを格納する地域は、デバイスが配置されている場所の近くでなければなりません。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。 
 
 
-## <a name="sign-up"></a>サインアップ
-
-Data Box Edge はプレビュー段階であり、サインアップする必要があります。 Data Box Gateway にサインアップするには、次の手順を実行します。
-
-1. Azure portal ([https://aka.ms/databox-edge](https://aka.ms/databox-edge)) にサインインします。
-
-2. Data Box Edge プレビューに使用するサブスクリプションを選択します。 Data Box Edge リソースを配置する地域を選択します。 Data Box Edge オプションで、**[サインアップ]** をクリックします。
-
-    ![Data Box Edge のサインアップ 3](media/data-box-edge-overview/data-box-edge-sign-up3.png)
-
-3.  データ所在国、時間枠、ターゲットの Azure サービス (データ転送、ネットワーク帯域幅、データ転送頻度) に関する質問に回答します。 **プライバシーと利用規約**を確認し、**[Microsoft はお客様の電子メール アドレスを使用してお客様にご連絡いたします]** に対してチェックボックスを選択します。
-
-    ![Data Box Edge のサインアップ 4](media/data-box-edge-overview/data-box-edge-sign-up4.png)
-
-4. サインアップしてプレビューが有効になると、Data Box Edge を注文できます。
-
 ## <a name="next-steps"></a>次の手順
 
-- [Data Box Edge のシステム要件](https://aka.ms/dbe-docs) を確認する。
-- [Data Box Edge の制限事項](https://aka.ms/dbe-docs) を理解する。
-- Azure portal で [Azure Data Box Edge](https://aka.ms/dbe-docs) を配置する。
+- [Data Box Edge のシステム要件](data-box-edge-system-requirements.md) を確認する。
+- [Data Box Edge の制限事項](data-box-edge-limits.md) を理解する。
+- Azure portal で [Azure Data Box Edge](data-box-edge-deploy-prep.md) を配置する。
 
 
 

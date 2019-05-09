@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 80977c13aa9851ea5df9a15f5b9580dd1a931259
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993010"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569197"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -40,10 +40,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このタスクを実現するためには、次の手順が必要です。
 * [入力としての Event Hubs で Stream Analytics ジョブを作成する](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [Azure Cache for Redis インスタンスを作成する](#create-an-azure-redis-cache-instance)  
-* [Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* Azure Cache for Redis インスタンスを作成する  
+* Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する    
 * [出力としての関数で Stream Analytics ジョブを更新する](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [Azure Cache for Redis の結果を確認する](#check-azure-redis-cache-for-results)  
+* Azure Cache for Redis の結果を確認する  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>入力としての Event Hubs で Stream Analytics ジョブを作成する
 
@@ -63,77 +63,77 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 2. **run.csx** 関数を参照します。 これを以下のコードで更新します  ("\<your Azure Cache for Redis connection string goes here\> (ここに、ご利用の Azure Cache for Redis 接続文字列が入ります)" を前のセクションで取得した Azure Cache for Redis のプライマリ接続文字列に必ず置き換えます)。  
 
-   ```csharp
-   using System;
-   using System.Net;
-   using System.Threading.Tasks;
-   using StackExchange.Redis;
-   using Newtonsoft.Json;
-   using System.Configuration;
+    ```csharp
+    using System;
+    using System.Net;
+    using System.Threading.Tasks;
+    using StackExchange.Redis;
+    using Newtonsoft.Json;
+    using System.Configuration;
 
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
-   {
-      log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    {
+        log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
     
-      // Get the request body
-      dynamic dataArray = await req.Content.ReadAsAsync<object>();
+        // Get the request body
+        dynamic dataArray = await req.Content.ReadAsAsync<object>();
 
-      // Throw an HTTP Request Entity Too Large exception when the incoming batch(dataArray) is greater than 256 KB. Make sure that the size value is consistent with the value entered in the Stream Analytics portal.
+        // Throw an HTTP Request Entity Too Large exception when the incoming batch(dataArray) is greater than 256 KB. Make sure that the size value is consistent with the value entered in the Stream Analytics portal.
 
-      if (dataArray.ToString().Length > 262144)
-      {        
-         return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
-      }
-      var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
-      log.Info($"Connection string.. {connection}");
+        if (dataArray.ToString().Length > 262144)
+        {
+            return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
+        }
+        var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
+        log.Info($"Connection string.. {connection}");
     
-      // Connection refers to a property that returns a ConnectionMultiplexer
-      IDatabase db = connection.GetDatabase();
-      log.Info($"Created database {db}");
+        // Connection refers to a property that returns a ConnectionMultiplexer
+        IDatabase db = connection.GetDatabase();
+        log.Info($"Created database {db}");
     
-      log.Info($"Message Count {dataArray.Count}");
+        log.Info($"Message Count {dataArray.Count}");
 
-      // Perform cache operations using the cache object. For example, the following code block adds few integral data types to the cache
-      for (var i = 0; i < dataArray.Count; i++)
-      {
-        string time = dataArray[i].time;
-        string callingnum1 = dataArray[i].callingnum1;
-        string key = time + " - " + callingnum1;
-        db.StringSet(key, dataArray[i].ToString());
-        log.Info($"Object put in database. Key is {key} and value is {dataArray[i].ToString()}");
+        // Perform cache operations using the cache object. For example, the following code block adds few integral data types to the cache
+        for (var i = 0; i < dataArray.Count; i++)
+        {
+            string time = dataArray[i].time;
+            string callingnum1 = dataArray[i].callingnum1;
+            string key = time + " - " + callingnum1;
+            db.StringSet(key, dataArray[i].ToString());
+            log.Info($"Object put in database. Key is {key} and value is {dataArray[i].ToString()}");
        
-      // Simple get of data types from the cache
-      string value = db.StringGet(key);
-      log.Info($"Database got: {value}");
-      }
+            // Simple get of data types from the cache
+            string value = db.StringGet(key);
+            log.Info($"Database got: {value}");
+        }
 
-      return req.CreateResponse(HttpStatusCode.OK, "Got");
-    }    
+        return req.CreateResponse(HttpStatusCode.OK, "Got");
+    }
 
    ```
 
    Stream Analytics では、関数から "HTTP 要求エンティティが大きすぎる" という例外を受け取ると、Functions に送信するバッチのサイズを削減します。 関数内では、次のコードを使用して、Stream Analytics からサイズ超過のバッチが送信されていないことを確認します。 関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。
 
-   ```csharp
-   if (dataArray.ToString().Length > 262144)
-      {        
-        return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
-      }
+    ```csharp
+    if (dataArray.ToString().Length > 262144)
+        {
+            return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
+        }
    ```
 
 3. 任意のテキスト エディターで、**project.json** という名前の JSON ファイルを作成します。 次のコードを使用し、ローカル コンピューターに保存します。 このファイルには、C# 関数で必要とされる NuGet パッケージの依存関係が含まれています。  
    
-   ```json
-       {
-         "frameworks": {
-             "net46": {
-                 "dependencies": {
-                     "StackExchange.Redis":"1.1.603",
-                     "Newtonsoft.Json": "9.0.1"
-                 }
-             }
-         }
-     }
+    ```json
+    {
+        "frameworks": {
+            "net46": {
+                "dependencies": {
+                    "StackExchange.Redis":"1.1.603",
+                    "Newtonsoft.Json": "9.0.1"
+                }
+            }
+        }
+    }
 
    ```
  
@@ -168,8 +168,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 4. Stream Analytics ジョブを開き、クエリを次の内容に更新します  (出力シンクに異なる名前を付けている場合は、文字列 "saop1" を必ず置き換えます)。  
 
    ```sql
-    SELECT 
-            System.Timestamp as Time, CS1.CallingIMSI, CS1.CallingNum as CallingNum1, 
+    SELECT
+            System.Timestamp as Time, CS1.CallingIMSI, CS1.CallingNum as CallingNum1,
             CS2.CallingNum as CallingNum2, CS1.SwitchNum as Switch1, CS2.SwitchNum as Switch2
         INTO saop1
         FROM CallStream CS1 TIMESTAMP BY CallRecTime

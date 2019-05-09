@@ -2,7 +2,7 @@
 title: Durable Functions での人による操作とタイムアウト - Azure
 description: Azure Functions の Durable Functions 拡張機能で人による操作とタイムアウトを処理する方法について説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: beb6650125bdf7526b8167ba0f076b079e4e84a8
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: cf43e29e967ee6f920eb38feb9c73d70f9621ea4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342869"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609338"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
@@ -118,7 +118,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 
 オーケストレーター関数は、指定された電話番号を受け取ると、すぐにランダムに生成された 4 桁の確認コード (*2168* など) を含む SMS メッセージをその番号に送信します。 その後、関数は 90 秒間応答を待機します。
 
-このコードに応答するには、別の関数内で [`RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances) を使用するか、または上の 202 応答で参照されている **sendEventUrl** HTTP POST webhook を呼び出して `{eventName}` をイベントの名前 `SmsChallengeResponse` に置き換えることができます。
+このコードに応答するには、別の関数内で [`RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript)](durable-functions-instance-management.md) を使用するか、または上の 202 応答で参照されている **sendEventUrl** HTTP POST webhook を呼び出して `{eventName}` をイベントの名前 `SmsChallengeResponse` に置き換えることができます。
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -155,6 +155,9 @@ Content-Length: 145
 ## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
 
 Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
+
+> [!NOTE]
+> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget パッケージをインストールする必要があります。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 

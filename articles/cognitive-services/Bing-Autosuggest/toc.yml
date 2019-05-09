@@ -5,6 +5,9 @@ items:
   items:
   - name: Bing Autosuggest とは
     href: get-suggested-search-terms.md
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
 - name: REST API のクイック スタート
   items:
   - name: C#
@@ -24,14 +27,16 @@ items:
   items:
   - name: 単一ページの Web アプリ
     href: tutorials/autosuggest.md
-  - name: 単一ページの Web アプリ (ソース コード)
-    href: tutorials/autosuggest-source.md
 - name: ハウツー ガイド
   items:
-  - name: 使用と表示の要件
-    href: UseAndDisplayRequirements.md
   - name: v5 から v7 へのアップグレード
     href: bing-autosuggest-upgrade-guide-v5-to-v7.md
+- name: 概念
+  items:
+  - name: 検索語句の提案
+    href: concepts/get-suggestions.md
+  - name: 要求の送信
+    href: concepts/sending-requests.md
 - name: リファレンス
   items:
   - name: Bing Autosuggest API v7
@@ -46,10 +51,11 @@ items:
       href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable
     - name: Go
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
+  - name: 使用と表示の要件
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: リソース
   items:
-  - name: FAQ
-    href: bing-autosuggest-resource-faq.md
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/
   - name: UserVoice
@@ -66,15 +72,13 @@ items:
     href: https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api
   - name: 試してみる
     href: https://azure.microsoft.com/services/cognitive-services/autosuggest/
-  - name: Bing Autosuggest エンドポイント
-    href: autosuggest-endpoint.md
   - name: 言語とリージョンのサポート
     href: language-support.md
   - name: Bing Autosuggest API 用の分析
     href: bing-autosuggest-stats.md
-ms.openlocfilehash: b22fab3676a061b52019060ded02b1a272a66b74
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5e0a0f0734b694a098cc6685e337aa24b41962d5
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792613"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011536"

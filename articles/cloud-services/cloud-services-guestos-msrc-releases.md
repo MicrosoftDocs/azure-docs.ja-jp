@@ -11,17 +11,233 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/12/2018
+ms.date: 3/26/2019
 ms.author: raiye
-ms.openlocfilehash: 19f9584c86993942e949716e14d2190fc5b31ce0
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578775"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500612"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="march-2019-guest-os"></a>2019 年 3 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 19-03 | [4489873] | Internet Explorer | 2.84、3.71、4.64 | 2019 年 3 月 12 日 |
+| Rel 19-03 | [4489907] | 点滅 | 3.71、4.64、5.29、6.5 | 2019 年 3 月 12 日 |
+| Rel 19-03 | [4489885] | Windows セキュリティ | 2.84 | 2019 年 3 月 12 日 |
+| Rel 19-03 | [4489884] | Windows セキュリティ | 3.71 | 2019 年 3 月 12 日 |
+| Rel 19-03 | [4489883] | Windows セキュリティ | 4.64 | 2019 年 3 月 12 日 |
+| Rel 19-03 | [4489882] | Windows 10 セキュリティ | 5.29 | 2019 年 3 月 12 日 |
+| Rel 19-03 | [4489899] | Windows 10 セキュリティ | 6.5 | 2019 年 3 月 12 日 |
+| Rel 19-03 | [4486563] | 2 月のセキュリティ以外のロールアップ | 2.84 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483458] | 2 月のセキュリティ以外のロールアップ .NET 3.x | 2.84 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483455] | 2 月のセキュリティ以外のロールアップ .NET 4.x | 2.84 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4487025] | 2 月のセキュリティ以外のロールアップ | 3.71 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483456] | 2 月のセキュリティ以外のロールアップ .NET 3.x | 3.71 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483454] | 2 月のセキュリティ以外のロールアップ .NET 4.x | 3.71 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4487000] | 2 月のセキュリティ以外のロールアップ | 4.64 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483459] | 2 月のセキュリティ以外のロールアップ .NET 3.x | 4.64 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483453] | 2 月のセキュリティ以外のロールアップ .NET 4.x | 4.64 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4485447] | 2 月のサービス スタック更新プログラム | 5.29 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4486459] | タイムゾーンの更新 | 2.84、3.71、4.64 | 2019 年 2 月 12 日 |
+
+[4489873]: https://support.microsoft.com/kb/4489873
+[4489907]: https://support.microsoft.com/kb/4489907
+[4489885]: https://support.microsoft.com/kb/4489885
+[4489884]: https://support.microsoft.com/kb/4489884
+[4489883]: https://support.microsoft.com/kb/4489883
+[4489882]: https://support.microsoft.com/kb/4489882
+[4489899]: https://support.microsoft.com/kb/4489899
+[4486563]: https://support.microsoft.com/kb/4486563
+[4483458]: https://support.microsoft.com/kb/4483458
+[4483455]: https://support.microsoft.com/kb/4483455
+[4487025]: https://support.microsoft.com/kb/4487025
+[4483456]: https://support.microsoft.com/kb/4483456
+[4483454]: https://support.microsoft.com/kb/4483454
+[4487000]: https://support.microsoft.com/kb/4487000
+[4483459]: https://support.microsoft.com/kb/4483459
+[4483453]: https://support.microsoft.com/kb/4483453
+[4485447]: https://support.microsoft.com/kb/4485447
+[4486459]: https://support.microsoft.com/kb/4486459
+
+## <a name="february-2019-guest-os"></a>2019 年 2 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 19-02 | [4486474] | Internet Explorer | 2.83、3.70、4.63 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4487038] | 点滅 | 3.70、4.63、5.28、6.4 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4486564] | Windows セキュリティ | 2.83 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4483483] | .NET 3.5.1 セキュリティ | 2.83 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4483474] | .NET 4.5.2 セキュリティ | 2.83 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4486993] | Windows セキュリティ | 3.70 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4483481] | .NET 3.5 セキュリティ | 3.70 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4483473] | .NET 4.5.2 セキュリティ | 3.70 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4487028] | Windows セキュリティ | 4.63 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4483484] | .NET 3.5 セキュリティ | 4.63 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4483472] | .NET 4.5.2 セキュリティ | 4.63 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4487026] | Windows セキュリティ | 5.28 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4487044] | Windows セキュリティ | 6.4. | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4483452] | .NET 3.5、4.7.2 セキュリティ | 6.4. | 2019 年 2 月 12 日 |
+| 該当なし | [4480970] | 1 月のセキュリティ以外のロールアップ | 2.83 | 2019 年 1 月 8 日 |
+| 該当なし | [4483483] | 1 月のセキュリティ以外のロールアップ .NET 3.5.1  | 2.83 | 2019 年 1 月 8 日 |
+| 該当なし | [4480059] | 1 月のセキュリティ以外のロールアップ .NET 4.5.2  | 2.83 | 2019 年 1 月 8 日 |
+| 該当なし | [4480975] | 1 月のセキュリティ以外のロールアップ | 3.70 | 2019 年 1 月 8 日 |
+| 該当なし | [4480061] | 1 月のセキュリティ以外のロールアップ .NET 3.5 | 3.70 | 2019 年 1 月 8 日 |
+| 該当なし | [4480058] | 1 月のセキュリティ以外のロールアップ .NET 4.5.2 | 3.70 | 2019 年 1 月 8 日 |
+| 該当なし | [4480963] | 1 月のセキュリティ以外のロールアップ | 4.63 | 2019 年 1 月 8 日 |
+| 該当なし | [4480064] | 1 月のセキュリティ以外のロールアップ .NET 3.5 | 4.63 | 2019 年 1 月 8 日 |
+| 該当なし | [4480057] | 1 月のセキュリティ以外のロールアップ .NET 4.5.2 | 4.63 | 2019 年 1 月 8 日 |
+
+[4486474]: https://support.microsoft.com/kb/4486474
+[4487038]: https://support.microsoft.com/kb/4487038
+[4486564]: https://support.microsoft.com/kb/4486564
+[4483483]: https://support.microsoft.com/kb/4483483
+[4483474]: https://support.microsoft.com/kb/4483474
+[4486993]: https://support.microsoft.com/kb/4486993
+[4483481]: https://support.microsoft.com/kb/4483481
+[4483473]: https://support.microsoft.com/kb/4483473
+[4487028]: https://support.microsoft.com/kb/4487028
+[4483484]: https://support.microsoft.com/kb/4483484
+[4483472]: https://support.microsoft.com/kb/4483472
+[4487026]: https://support.microsoft.com/kb/4487026
+[4487044]: https://support.microsoft.com/kb/4487044
+[4483452]: https://support.microsoft.com/kb/4483452
+[4480970]: https://support.microsoft.com/kb/4480970
+[4483483]: https://support.microsoft.com/kb/4483483
+[4480059]: https://support.microsoft.com/kb/4480059
+[4480975]: https://support.microsoft.com/kb/4480975
+[4480061]: https://support.microsoft.com/kb/4480061
+[4480058]: https://support.microsoft.com/kb/4480058
+[4480963]: https://support.microsoft.com/kb/4480963
+[4480064]: https://support.microsoft.com/kb/4480064
+[4480057]: https://support.microsoft.com/kb/4480057
+
+## <a name="january-2019-guest-os"></a>2019 年 1 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 19-01 | [4480116] | Windows 10 セキュリティ | 6.3 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480961] | Windows 10 セキュリティ | 5.27 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480964] | Windows セキュリティ | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480972] | Windows セキュリティ | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480960] | Windows セキュリティ | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480056] | .NET セキュリティ | 6.3 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480074] | .NET 4.x セキュリティ | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480075] | .NET 4.x セキュリティ | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480076] | .NET 4.x セキュリティ | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480086] | .NET 3.x セキュリティ | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480083] | .NET 3.x セキュリティ | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480085] | .NET 3.x セキュリティ | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480979] | 点滅 | 3.69、4.62、5.27、6.3 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480965] | Internet Explorer | 2.82、3.69、4.62 | 2019 年 1 月 8 日 |
+| 該当なし | [4471318] | 12 月のセキュリティ以外のロールアップ | 2.82 | 2018 年 12 月 11 日 |
+| 該当なし | [4470641] | 12 月のセキュリティ以外のロールアップ .NET 3.x | 2.82 | 2018 年 12 月 11 日 |
+| 該当なし | [4470637] | 12 月のセキュリティ以外のロールアップ .NET 4.x | 2.82 | 2018 年 12 月 11 日 |
+| 該当なし | [4471330] | 12 月のセキュリティ以外のロールアップ | 3.69 | 2018 年 12 月 11 日 |
+| 該当なし | [4470629] | 12 月のセキュリティ以外のロールアップ .NET 3.x | 3.69 | 2018 年 12 月 11 日 |
+| 該当なし | [4470623] | 12 月のセキュリティ以外のロールアップ .NET 4.x | 3.69 | 2018 年 12 月 11 日 |
+| 該当なし | [4471320] | 12 月のセキュリティ以外のロールアップ | 4.62 | 2018 年 12 月 11 日 |
+| 該当なし | [4470630] | 12 月のセキュリティ以外のロールアップ .NET 3.x | 4.62 | 2018 年 12 月 11 日 |
+| 該当なし | [4470622] | 12 月のセキュリティ以外のロールアップ .NET 4.x | 4.62 | 2018 年 12 月 11 日 |
+
+[4480116]: https://support.microsoft.com/kb/4480116
+[4480961]: https://support.microsoft.com/kb/4480961
+[4480964]: https://support.microsoft.com/kb/4480964
+[4480972]: https://support.microsoft.com/kb/4480972
+[4480960]: https://support.microsoft.com/kb/4480960
+[4480056]: https://support.microsoft.com/kb/4480056
+[4480074]: https://support.microsoft.com/kb/4480074
+[4480075]: https://support.microsoft.com/kb/4480075
+[4480076]: https://support.microsoft.com/kb/4480076
+[4480086]: https://support.microsoft.com/kb/4480086
+[4480083]: https://support.microsoft.com/kb/4480083
+[4480085]: https://support.microsoft.com/kb/4480085
+[4480979]: https://support.microsoft.com/kb/4480979
+[4480965]: https://support.microsoft.com/kb/4480965
+[4471318]: https://support.microsoft.com/kb/4471318
+[4470641]: https://support.microsoft.com/kb/4470641
+[4470637]: https://support.microsoft.com/kb/4470637
+[4471330]: https://support.microsoft.com/kb/4471330
+[4470629]: https://support.microsoft.com/kb/4470629
+[4470623]: https://support.microsoft.com/kb/4470623
+[4471320]: https://support.microsoft.com/kb/4471320
+[4470630]: https://support.microsoft.com/kb/4470630
+[4470622]: https://support.microsoft.com/kb/4470622
+
+## <a name="december-2018-guest-os"></a>2018 年 12 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 18-12 | [4471321] | Windows 10 セキュリティ | 5.26 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4471328] | Windows セキュリティ   | 2.81 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4471326] | Windows セキュリティ   | 3.68 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4471322] | Windows セキュリティ   | 4.61 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470600] | .NET 3.x セキュリティ  | 2.81 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470601] | .NET 3.x セキュリティ  | 3.68 | 2018 年 12 月 11 日|
+| Rel 18-12 | [4470602] | .NET 3.x セキュリティ  | 4.61 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470493] | .NET 4.x セキュリティ  | 2.81 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470492] | .NET 4.x セキュリティ  | 3.68 | 2018 年 12 月 11 日 |
+| Rel 18-12 | [4470491] | .NET 4.x セキュリティ  | 4.61| 2018 年 12 月 11 日 |
+| Rel 18-12 | [4471331] | 点滅  | 3.68、4.61、5.26 | 2018 年 12 月 5 日  |
+| Rel 18-12 | [4470199] | Internet Explorer  | 2.81、3.68、4.61 | 2018 年 12 月 11 日 |
+| 該当なし | [4468323] | タイムゾーンの更新    | 2.81、3.68、4.61 | 2018 年 12 月 13 日 |
+| 該当なし | [4467107] | 11 月のセキュリティ以外のロールアップ   | 2.81 | 2018 年 11 月 13 日 |
+| 該当なし | [4467701] | 11 月のセキュリティ以外のロールアップ     | 3.68 | 2018 年 11 月 13 日 |
+| 該当なし | [4467697] | 11 月のセキュリティ以外のロールアップ     | 4.61 | 2018 年 11 月 13 日 |
+
+[4471321]: https://support.microsoft.com/kb/4471321
+[4471328]: https://support.microsoft.com/kb/4471328
+[4471326]: https://support.microsoft.com/kb/4471326
+[4471322]: https://support.microsoft.com/kb/4471322
+[4470600]: https://support.microsoft.com/kb/4470600
+[4470601]: https://support.microsoft.com/kb/4470601
+[4470602]: https://support.microsoft.com/kb/4470602
+[4470493]: https://support.microsoft.com/kb/4470493
+[4470492]: https://support.microsoft.com/kb/4470492
+[4470491]: https://support.microsoft.com/kb/4470491
+[4471331]: https://support.microsoft.com/kb/4471331
+[4470199]: https://support.microsoft.com/kb/4470199
+[4468323]: https://support.microsoft.com/kb/4468323
+[4467107]: https://support.microsoft.com/kb/4467107
+[4467701]: https://support.microsoft.com/kb/4467701
+[4467697]: https://support.microsoft.com/kb/4467697
+
+## <a name="november-2018-guest-os"></a>2018 年 11 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 18-11 | [4466536] | Internet Explorer | 2.80、3.67、4.60 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467694] | 点滅 | 3.67、4.60、5.25 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467106] | Windows セキュリティ | 2.80 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467678] | Windows セキュリティ | 3.67 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467703] | Windows セキュリティ | 4.60 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467691] | Windows 10 セキュリティ | 5.25 | 2018 年 11 月 13 日 |
+| 該当なし | [3173426] | サービス スタック更新プログラム | 3.67 | 2016 年 7 月 12 日 |
+| 該当なし | [4465659] | サービス スタック更新プログラム | 5.25 | 2018 年 11 月 13 日 |
+| 該当なし | [4462923] | 10 月のセキュリティ以外のロールアップ | 2.80 | 2018 年 10 月 9 日 |
+| 該当なし | [4462929] | 10 月のセキュリティ以外のロールアップ | 3.67 | 2018 年 10 月 9 日 |
+| 該当なし | [4462926] | 10 月のセキュリティ以外のロールアップ | 4.60 | 2018 年 10 月 9 日 |
+| 該当なし | [3109976] | アプリケーションの互換性 shim | 4.60 | 2016 年 4 月 12 日 |
+| 該当なし | [4457037] | アプリケーションの互換性 shim | 4.60| 2018 年 6 月 12 日 |
+
+[4466536]: https://support.microsoft.com/kb/4466536
+[4467694]: https://support.microsoft.com/kb/4467694
+[4467106]: https://support.microsoft.com/kb/4467106
+[4467678]: https://support.microsoft.com/kb/4467678
+[4467703]: https://support.microsoft.com/kb/4467703
+[4467691]: https://support.microsoft.com/kb/4467691
+[3173426]: https://support.microsoft.com/kb/3173426
+[4465659]: https://support.microsoft.com/kb/4465659
+[4462923]: https://support.microsoft.com/kb/4462923
+[4462929]: https://support.microsoft.com/kb/4462929
+[4462926]: https://support.microsoft.com/kb/4462926
+[3109976]: https://support.microsoft.com/kb/3109976
+[4457037]: https://support.microsoft.com/kb/4457037
 
 ## <a name="october-2018-guest-os"></a>2018 年 10 月のゲスト OS
 
@@ -44,22 +260,22 @@ ms.locfileid: "51578775"
 | 該当なし | [4457045] | 9 月のセキュリティ以外の .NET 3.5 ロールアップ | 4.59 | 2018 年 9 月 11 日 |
 | 該当なし | [4457036] | 9 月のセキュリティ以外の .NET 4.5.2 ロールアップ | 4.59 | 2018 年 9 月 11 日 |
 
-[4462917]: http://support.microsoft.com/kb/4462917
-[4462915]: http://support.microsoft.com/kb/4462915
-[4462931]: http://support.microsoft.com/kb/4462931
-[4462941]: http://support.microsoft.com/kb/4462941
-[4462930]: http://support.microsoft.com/kb/4462930
-[4462949]: http://support.microsoft.com/kb/4462949
-[4339284]: http://support.microsoft.com/kb/4339284
-[4457144]: http://support.microsoft.com/kb/4457144
-[4457044]: http://support.microsoft.com/kb/4457044
-[4457038]: http://support.microsoft.com/kb/4457038
-[4457135]: http://support.microsoft.com/kb/4457135
-[4457042]: http://support.microsoft.com/kb/4457042
-[4457037]: http://support.microsoft.com/kb/4457037
-[4457129]: http://support.microsoft.com/kb/4457129
-[4457045]: http://support.microsoft.com/kb/4457045
-[4457036]: http://support.microsoft.com/kb/4457036
+[4462917]: https://support.microsoft.com/kb/4462917
+[4462915]: https://support.microsoft.com/kb/4462915
+[4462931]: https://support.microsoft.com/kb/4462931
+[4462941]: https://support.microsoft.com/kb/4462941
+[4462930]: https://support.microsoft.com/kb/4462930
+[4462949]: https://support.microsoft.com/kb/4462949
+[4339284]: https://support.microsoft.com/kb/4339284
+[4457144]: https://support.microsoft.com/kb/4457144
+[4457044]: https://support.microsoft.com/kb/4457044
+[4457038]: https://support.microsoft.com/kb/4457038
+[4457135]: https://support.microsoft.com/kb/4457135
+[4457042]: https://support.microsoft.com/kb/4457042
+[4457037]: https://support.microsoft.com/kb/4457037
+[4457129]: https://support.microsoft.com/kb/4457129
+[4457045]: https://support.microsoft.com/kb/4457045
+[4457036]: https://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>2018 年 9 月のゲスト OS
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -343,7 +559,7 @@ ms.locfileid: "51578775"
 | Rel 17-05 | [4010323] |SHA1 アドバイザリ |2.62、4.42、5.7 | 2017 年 5 月 9 日 |
 | Rel 17-05 | [4022344] |マイクロソフト セキュリティ アドバイザリ |5.7 | 2017 年 5 月 9 日 |
 | Rel 17-05 | [4022345] |マイクロソフト セキュリティ アドバイザリ |5.7 | 2017 年 5 月 9 日 |
-| Rel 17-05 | [4021279] |.Net/ASP.NET Core アドバイザリ |2.62、3.49、4.42、5.7 | 2017 年 5 月 9 日 |
+| Rel 17-05 | [4021279] |.NET /ASP.NET Core アドバイザリ |2.62、3.49、4.42、5.7 | 2017 年 5 月 9 日 |
 | 該当なし | [4012864] |タイムゾーンの更新 |2.62、3.49、4.42 | 2017 年 5 月 9 日 |
 | 該当なし | [4014565] |.NET の 4 月のセキュリティ以外のロールアップ |2.62 | 2017 年 4 月 11 日 |
 | 該当なし | [4014559] |.NET の 4 月のセキュリティ以外のロールアップ |2.62 | 2017 年 4 月 11 日 |
@@ -433,12 +649,12 @@ ms.locfileid: "51578775"
 | 該当なし |[3192321] |トルコにおける DST 使用の終了 |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
 | 該当なし |[3185330] |Windows 7 SP1 および Windows Server 2008 R2 SP1 用の 2016 年 10 月付セキュリティ月例品質ロールアップ |2.57 |2016 年 11 月 8 日 |
 | 該当なし |[3192403] |Windows 7 SP1 および Windows Server 2008 R2 SP1 用の 2016 年 10 月付月例品質ロールアップ プレビュー |2.57 |2016 年 11 月 8 日 |
-| 該当なし |[3177467] |Windows 7 SP1 および Windows Server 2008 R2 SP1 用のサービス スタック更新プログラム: 2016 年 9 月 20 日 |2.57 |2016 年 11 月 8 日 |
+| 該当なし |[3177467] |Windows 7 SP1 および Windows Server 2008 R2 SP1 用の累積的な更新プログラム: 2016 年 9 月 20 日 |2.57 |2016 年 11 月 8 日 |
 | 該当なし |[3185332] |Windows Server 2012 用の 2016 年 10 月付セキュリティ月例品質ロールアップ |3.45 |2016 年 11 月 8 日 |
 | 該当なし |[3192406] |Windows Server 2012 用の 2016 年 10 月付月例品質ロールアップ プレビュー |3.45 |2016 年 11 月 8 日 |
 | 該当なし |[3185331] |Windows 8.1 および Windows Server 2012 R2 用の 2016 年 10 月付セキュリティ月例品質ロールアップ |4.38 |2016 年 11 月 8 日 |
 | 該当なし |[3192404] |Windows 8.1 および Windows Server 2012 R2 用の 2016 年 10 月付月例品質ロールアップ プレビュー |4.38 |2016 年 11 月 8 日 |
-| 該当なし |[3199986] |Windows 10 バージョン 1607 用のサービス スタック更新プログラム: 2016 年 10 月 27 日 |5.3 |2016 年 11 月 8 日 |
+| 該当なし |[3199986] |Windows 10 バージョン 1607 用の累積的な更新プログラム: 2016 年 10 月 27 日 |5.3 |2016 年 11 月 8 日 |
 | 該当なし |[3197954] |Windows 10 バージョン 1607 および Windows Server 2016 用の累積的な更新プログラム: 2016 年 10 月 27 日 |5.3 |2016 年 11 月 8 日 |
 
 ## <a name="october-2016-guest-os"></a>2016 年 10 月のゲスト OS
@@ -546,7 +762,7 @@ ms.locfileid: "51578775"
 | 該当なし |[3133977] |Windows 7 または Windows Server 2008 R2 では、svchost.exe プロセスでサービスがクラッシュするため、BitLocker はドライブを暗号化できません。  |2.51 |2016 年 5 月 10 日 |
 | 該当なし |[3133681] |Windows Server 2012 R2 では、仮想マシンは SCVMM の操作に応答しません  |4.32 |2016 年 5 月 10 日 |
 | 該当なし |[3123245] |更新プログラムによって、Windows Server 2012 R2 のポート枯渇の特定が改善されます  |4.32 |2016 年 5 月 10 日 |
-| 該当なし |[RC4 の無効化] | Microsoft セキュリティ アドバイザリ: RC4 を無効にするための更新プログラム  |4.32、3.39、2.51 |2016 年 5 月 10 日 |
+| 該当なし |[RC4 の無効化] | マイクロソフト セキュリティ アドバイザリ:RC4 を無効にするための更新プログラム  |4.32、3.39、2.51 |2016 年 5 月 10 日 |
 
 ## <a name="april-2016-guest-os"></a>2016 年 4 月のゲスト OS
 | セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -595,7 +811,7 @@ ms.locfileid: "51578775"
 | MS16-005 |[3124584] |リモートでのコードの実行に対処する Windows カーネル モード ドライバー用のセキュリティ更新プログラム |4.28、3.35、2.47 |2016 年 1 月 12 日 |
 | MS16-007 |[3124901] |リモートでのコード実行に対処する Microsoft Windows 用のセキュリティ更新プログラム |4.28、3.35、2.47 |2016 年 1 月 12 日 |
 | MS16-008 |[3124605] |特権の昇格に対処するカーネル用のセキュリティ更新プログラム |4.28、3.35、2.47 |2016 年 1 月 12 日 |
-| マイクロソフト セキュリティ アドバイザリのリビジョン |[2755801] |Internet Explorer での Adobe Flash Player の脆弱性の更新プログラム (パッケージ KB: 未定)  - アドバイザリ プレース ホルダー |4.28、3.35 |2016 年 1 月 12 日 |
+| マイクロソフト セキュリティ アドバイザリのリビジョン |[2755801] |Internet Explorer での Adobe Flash Player の脆弱性の更新プログラム (パッケージ KB: 未定)  - アドバイザリ プレースホルダー |4.28、3.35 |2016 年 1 月 12 日 |
 | マイクロソフト セキュリティ アドバイザリ |[3109853] |TLS 相互運用性を改善する更新プログラム |4.28、3.35 |2016 年 1 月 12 日 |
 | マイクロソフト セキュリティ アドバイザリ |[3123479] |Microsoft ルート証明書プログラムの SHA-1 ハッシュ アルゴリズムの廃止 |4.28、3.35、2.47 |2016 年 1 月 12 日 |
 | マイクロソフト セキュリティ アドバイザリ |[2736233] |ActiveX Kill Bit の更新プログラム |4.28、3.35、2.47 |2016 年 1 月 12 日 |
@@ -674,7 +890,7 @@ ms.locfileid: "51578775"
 | MS15-075 |[3072633] |OLE の脆弱性により、特権が昇格される |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-076 |[3067505] |Windows リモート プロシージャ コールの脆弱性により、特権が昇格される |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-077 |[3077657] |ATM フォント ドライバーの脆弱性により、特権が昇格される |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
-| 該当なし |[3057154] |更新して DES 暗号化の使用を制限する |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
+| NA |[3057154] |更新して DES 暗号化の使用を制限する |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 
 ## <a name="june-2015-guest-os"></a>2015 年 6 月のゲスト OS
 | セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -707,7 +923,7 @@ ms.locfileid: "51578775"
 | MS15-040 |[3045711] |ADFS の脆弱性により、情報漏えいが起こる |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-041 |[3048010] |.NET Framework の脆弱性により、情報漏えいが起こる |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-042 |[3047234] |Windows HYPER-V の脆弱性により、サービスの拒否が起こる |4.20、3.27、2.39 |2015 年 4 月 17 日 |
-| 該当なし |[3045755] |PKU2U 認証を改善する更新プログラム |4.20、3.27、2.39 |2015 年 4 月 17 日 |
+| NA |[3045755] |PKU2U 認証を改善する更新プログラム |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 
 ## <a name="april-2015-guest-os"></a>2015 年 4 月のゲスト OS
 | セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -743,7 +959,7 @@ ms.locfileid: "51578775"
 | MS15-014 |[3004361] |SMB の脆弱性により、セキュリティ機能のバイパスが起こる |4.17、3.24、2.36 |該当なし |
 | MS15-015 |[3031432] |Microsoft Windows の脆弱性により、特権が昇格される |4.17、3.24、2.36 |該当なし |
 | MS15-016 |[3029944] |Microsoft グラフィックス コンポーネントの脆弱性により、情報漏えいが起こる |4.17、3.24、2.36 |該当なし |
-| 該当なし |[3004375] |Windows コマンド ラインの監査を向上させる更新プログラム<p/>**注意**: これはインストールされますが、有効にするレジストリ キーはオフになっています |4.17、3.24、2.36 |該当なし |
+| 該当なし |[3004375] |Windows コマンド ラインの監査を向上させる更新プログラム<p/>**メモ**:これはインストールされますが、有効にするレジストリ キーはオフになっています |4.17、3.24、2.36 |該当なし |
 
 ## <a name="january-2015-guest-os"></a>2015 年 1 月のゲスト OS
 | セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -776,682 +992,682 @@ ms.locfileid: "51578775"
 | 該当なし |[2999802] |点線ではなく実線が Windows で印刷される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2896881] |Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 
-[4457131]: http://support.microsoft.com/kb/4457131
-[4457145]: http://support.microsoft.com/kb/4457145
-[4457140]: http://support.microsoft.com/kb/4457140
-[4457143]: http://support.microsoft.com/kb/4457143
-[4457055]: http://support.microsoft.com/kb/4457055
-[4457030]: http://support.microsoft.com/kb/4457030
-[4457053]: http://support.microsoft.com/kb/4457053
-[4457029]: http://support.microsoft.com/kb/4457029
-[4457056]: http://support.microsoft.com/kb/4457056
-[4457028]: http://support.microsoft.com/kb/4457028
-[4457146]: http://support.microsoft.com/kb/4457146
-[4457426]: http://support.microsoft.com/kb/4457426
-[4343900]: http://support.microsoft.com/kb/4343900
-[4344152]: http://support.microsoft.com/kb/4344152
-[4344149]: http://support.microsoft.com/kb/4344149
-[4343901]: http://support.microsoft.com/kb/4343901
-[4344150]: http://support.microsoft.com/kb/4344150
-[4344148]: http://support.microsoft.com/kb/4344148
-[4343898]: http://support.microsoft.com/kb/4343898
-[4344153]: http://support.microsoft.com/kb/4344153
-[4344147]: http://support.microsoft.com/kb/4344147
+[4457131]: https://support.microsoft.com/kb/4457131
+[4457145]: https://support.microsoft.com/kb/4457145
+[4457140]: https://support.microsoft.com/kb/4457140
+[4457143]: https://support.microsoft.com/kb/4457143
+[4457055]: https://support.microsoft.com/kb/4457055
+[4457030]: https://support.microsoft.com/kb/4457030
+[4457053]: https://support.microsoft.com/kb/4457053
+[4457029]: https://support.microsoft.com/kb/4457029
+[4457056]: https://support.microsoft.com/kb/4457056
+[4457028]: https://support.microsoft.com/kb/4457028
+[4457146]: https://support.microsoft.com/kb/4457146
+[4457426]: https://support.microsoft.com/kb/4457426
+[4343900]: https://support.microsoft.com/kb/4343900
+[4344152]: https://support.microsoft.com/kb/4344152
+[4344149]: https://support.microsoft.com/kb/4344149
+[4343901]: https://support.microsoft.com/kb/4343901
+[4344150]: https://support.microsoft.com/kb/4344150
+[4344148]: https://support.microsoft.com/kb/4344148
+[4343898]: https://support.microsoft.com/kb/4343898
+[4344153]: https://support.microsoft.com/kb/4344153
+[4344147]: https://support.microsoft.com/kb/4344147
 
-[4457131]: http://support.microsoft.com/kb/4457131
-[4457145]: http://support.microsoft.com/kb/4457145
-[4457140]: http://support.microsoft.com/kb/4457140
-[4457143]: http://support.microsoft.com/kb/4457143
-[4457055]: http://support.microsoft.com/kb/4457055
-[4457030]: http://support.microsoft.com/kb/4457030
-[4457053]: http://support.microsoft.com/kb/4457053
-[4457029]: http://support.microsoft.com/kb/4457029
-[4457056]: http://support.microsoft.com/kb/4457056
-[4457028]: http://support.microsoft.com/kb/4457028
-[4457146]: http://support.microsoft.com/kb/4457146
-[4457426]: http://support.microsoft.com/kb/4457426
-[4343900]: http://support.microsoft.com/kb/4343900
-[4344152]: http://support.microsoft.com/kb/4344152
-[4344149]: http://support.microsoft.com/kb/4344149
-[4343901]: http://support.microsoft.com/kb/4343901
-[4344150]: http://support.microsoft.com/kb/4344150
-[4344148]: http://support.microsoft.com/kb/4344148
-[4343898]: http://support.microsoft.com/kb/4343898
-[4344153]: http://support.microsoft.com/kb/4344153
-[4344147]: http://support.microsoft.com/kb/4344147
+[4457131]: https://support.microsoft.com/kb/4457131
+[4457145]: https://support.microsoft.com/kb/4457145
+[4457140]: https://support.microsoft.com/kb/4457140
+[4457143]: https://support.microsoft.com/kb/4457143
+[4457055]: https://support.microsoft.com/kb/4457055
+[4457030]: https://support.microsoft.com/kb/4457030
+[4457053]: https://support.microsoft.com/kb/4457053
+[4457029]: https://support.microsoft.com/kb/4457029
+[4457056]: https://support.microsoft.com/kb/4457056
+[4457028]: https://support.microsoft.com/kb/4457028
+[4457146]: https://support.microsoft.com/kb/4457146
+[4457426]: https://support.microsoft.com/kb/4457426
+[4343900]: https://support.microsoft.com/kb/4343900
+[4344152]: https://support.microsoft.com/kb/4344152
+[4344149]: https://support.microsoft.com/kb/4344149
+[4343901]: https://support.microsoft.com/kb/4343901
+[4344150]: https://support.microsoft.com/kb/4344150
+[4344148]: https://support.microsoft.com/kb/4344148
+[4343898]: https://support.microsoft.com/kb/4343898
+[4344153]: https://support.microsoft.com/kb/4344153
+[4344147]: https://support.microsoft.com/kb/4344147
 
-[4343887]: http://support.microsoft.com/kb/4343887
-[4343899]: http://support.microsoft.com/kb/4343899
-[4343896]: http://support.microsoft.com/kb/4343896
-[4343888]: http://support.microsoft.com/kb/4343888
-[4344177]: http://support.microsoft.com/kb/4344177
-[4344173]: http://support.microsoft.com/kb/4344173
-[4344175]: http://support.microsoft.com/kb/4344175
-[4344172]: http://support.microsoft.com/kb/4344172
-[4344178]: http://support.microsoft.com/kb/4344178
-[4344171]: http://support.microsoft.com/kb/4344171
-[4346742]: http://support.microsoft.com/kb/4346742
-[4346739]: http://support.microsoft.com/kb/4346739
-[4346745]: http://support.microsoft.com/kb/4346745
-[4346408]: http://support.microsoft.com/kb/4346408
-[4343902]: http://support.microsoft.com/kb/4343902
-[4343205]: http://support.microsoft.com/kb/4343205
-[4338818]: http://support.microsoft.com/kb/4338818
-[4019990]: http://support.microsoft.com/kb/4019990
-[4338830]: http://support.microsoft.com/kb/4338830
-[4338421]: http://support.microsoft.com/kb/4338421
-[4338416]: http://support.microsoft.com/kb/4338416
-[4338815]: http://support.microsoft.com/kb/4338815
-[4338424]: http://support.microsoft.com/kb/4338424
-[4338415]: http://support.microsoft.com/kb/4338415
-
-
-[4338814]: http://support.microsoft.com/kb/4338814
-[4338823]: http://support.microsoft.com/kb/4338823
-[4338820]: http://support.microsoft.com/kb/4338820
-[4338824]: http://support.microsoft.com/kb/4338824
-[4345459]: http://support.microsoft.com/kb/4345459
-[4345425]: http://support.microsoft.com/kb/4345425
-[4345424]: http://support.microsoft.com/kb/4345424
-[4345418]: http://support.microsoft.com/kb/4345418
-[4338612]: http://support.microsoft.com/kb/4338612
-[4338602]: http://support.microsoft.com/kb/4338602
-[4338601]: http://support.microsoft.com/kb/4338601
-[4338604]: http://support.microsoft.com/kb/4338604
-[4338613]: http://support.microsoft.com/kb/4338613
-[4338600]: http://support.microsoft.com/kb/4338600
-[4338605]: http://support.microsoft.com/kb/4338605
-[4338832]: http://support.microsoft.com/kb/4338832
-[4284826]: http://support.microsoft.com/kb/4284826
-[4284855]: http://support.microsoft.com/kb/4284855
-[4284815]: http://support.microsoft.com/kb/4284815
-[4339093]: http://support.microsoft.com/kb/4339093
-
-[4284880]: http://support.microsoft.com/kb/4284880
-[4284867]: http://support.microsoft.com/kb/4284867
-[4284846]: http://support.microsoft.com/kb/4284846
-[4284878]: http://support.microsoft.com/kb/4284878
-[4230450]: http://support.microsoft.com/kb/4230450
-[4287903]: http://support.microsoft.com/kb/4287903
-[4103718]: http://support.microsoft.com/kb/4103718
-[4103718]: http://support.microsoft.com/kb/4103718
-[4103730]: http://support.microsoft.com/kb/4103730
-[4103725]: http://support.microsoft.com/kb/4103725
-[4040980]: http://support.microsoft.com/kb/4040980
-[4040977]: http://support.microsoft.com/kb/4040977
-[4095874]: http://support.microsoft.com/kb/4095874
-[4096495]: http://support.microsoft.com/kb/4096495
-[4040975]: http://support.microsoft.com/kb/4040975
-[4095872]: http://support.microsoft.com/kb/4095872
-[4096494]: http://support.microsoft.com/kb/4096494
-[4096416]: http://support.microsoft.com/kb/4096416
-[4040974]: http://support.microsoft.com/kb/4040974
-[4040972]: http://support.microsoft.com/kb/4040972
-[4043763]: http://support.microsoft.com/kb/4043763
-[4095876]: http://support.microsoft.com/kb/4095876
-[4096417]: http://support.microsoft.com/kb/4096417
-[4132216]: http://support.microsoft.com/kb/4132216
-
-[4103721]: http://support.microsoft.com/kb/4103721
-[4103727]: http://support.microsoft.com/kb/4103727 
-[4103723]: http://support.microsoft.com/kb/4103723
-[4103712]: http://support.microsoft.com/kb/4103712
-[4103726]: http://support.microsoft.com/kb/4103726
-[4103715]: http://support.microsoft.com/kb/4103715
-[4095514]: http://support.microsoft.com/kb/4095514
-[4095519]: http://support.microsoft.com/kb/4095519
-[4095512]: http://support.microsoft.com/kb/4095512
-[4095518]: http://support.microsoft.com/kb/4095518
-[4096235]: http://support.microsoft.com/kb/4096235
-[4095515]: http://support.microsoft.com/kb/4095515
-[4095517]: http://support.microsoft.com/kb/4095517
-[4096236]: http://support.microsoft.com/kb/4096236
-[4054856]: http://support.microsoft.com/kb/4054856
-[4103768]: http://support.microsoft.com/kb/4103768
-[4103729]: http://support.microsoft.com/kb/4103729
-[4093118]: http://support.microsoft.com/kb/4093118
-[4093123]: http://support.microsoft.com/kb/4093123
-[4093114]: http://support.microsoft.com/kb/4093114
-[4093137]: http://support.microsoft.com/kb/4093137
-[4093753]: http://support.microsoft.com/kb/4093753
-
-[4093119]: http://support.microsoft.com/kb/4093119
-[4093108]: http://support.microsoft.com/kb/4093108 
-[4093122]: http://support.microsoft.com/kb/4093122
-[4093115]: http://support.microsoft.com/kb/4093115
-[4092946]: http://support.microsoft.com/kb/4092946
-[4093110]: http://support.microsoft.com/kb/4093110
-[4088875]: http://support.microsoft.com/kb/4088875
-[4099950]: http://support.microsoft.com/kb/4099950
-[4088877]: http://support.microsoft.com/kb/4088877
-[4088876]: http://support.microsoft.com/kb/4088876
-
-[4088787]: http://support.microsoft.com/kb/4088787
-[4088776]: http://support.microsoft.com/kb/4088776 
-[4088878]: http://support.microsoft.com/kb/4088878
-[4088880]: http://support.microsoft.com/kb/4088880
-[4088879]: http://support.microsoft.com/kb/4088879
-[4089187]: http://support.microsoft.com/kb/4089187
-[4088785]: http://support.microsoft.com/kb/4088785
-[4074598]: http://support.microsoft.com/kb/4074598
-[4074593]: http://support.microsoft.com/kb/4074593
-[4074594]: http://support.microsoft.com/kb/4074594
-[4074837]: http://support.microsoft.com/kb/4074837
-
-[4074590]: http://support.microsoft.com/kb/4074590
-[4074588]: http://support.microsoft.com/kb/4074588 
-[4074587]: http://support.microsoft.com/kb/4074587
-[4074589]: http://support.microsoft.com/kb/4074589
-[4074597]: http://support.microsoft.com/kb/4074597
-[4074736]: http://support.microsoft.com/kb/4074736
-[4074595]: http://support.microsoft.com/kb/4074595
-[4056894]: http://support.microsoft.com/kb/4056894
-[4056896]: http://support.microsoft.com/kb/4056896
-[4056895]: http://support.microsoft.com/kb/4048958
-[4054176]: http://support.microsoft.com/kb/4054176
-[4054172]: http://support.microsoft.com/kb/4054172
-[4054175]: http://support.microsoft.com/kb/4054175
-[4054171]: http://support.microsoft.com/kb/4054171
-[4054177]: http://support.microsoft.com/kb/4054177
-[4054170]: http://support.microsoft.com/kb/4054170
+[4343887]: https://support.microsoft.com/kb/4343887
+[4343899]: https://support.microsoft.com/kb/4343899
+[4343896]: https://support.microsoft.com/kb/4343896
+[4343888]: https://support.microsoft.com/kb/4343888
+[4344177]: https://support.microsoft.com/kb/4344177
+[4344173]: https://support.microsoft.com/kb/4344173
+[4344175]: https://support.microsoft.com/kb/4344175
+[4344172]: https://support.microsoft.com/kb/4344172
+[4344178]: https://support.microsoft.com/kb/4344178
+[4344171]: https://support.microsoft.com/kb/4344171
+[4346742]: https://support.microsoft.com/kb/4346742
+[4346739]: https://support.microsoft.com/kb/4346739
+[4346745]: https://support.microsoft.com/kb/4346745
+[4346408]: https://support.microsoft.com/kb/4346408
+[4343902]: https://support.microsoft.com/kb/4343902
+[4343205]: https://support.microsoft.com/kb/4343205
+[4338818]: https://support.microsoft.com/kb/4338818
+[4019990]: https://support.microsoft.com/kb/4019990
+[4338830]: https://support.microsoft.com/kb/4338830
+[4338421]: https://support.microsoft.com/kb/4338421
+[4338416]: https://support.microsoft.com/kb/4338416
+[4338815]: https://support.microsoft.com/kb/4338815
+[4338424]: https://support.microsoft.com/kb/4338424
+[4338415]: https://support.microsoft.com/kb/4338415
 
 
-[4056898]: http://support.microsoft.com/kb/4056898
-[4056897]: http://support.microsoft.com/kb/4056897
-[4056899]: http://support.microsoft.com/kb/4056899
-[4056890]: http://support.microsoft.com/kb/4056890 
-[4056892]: http://support.microsoft.com/kb/4056892
-[4054518]: http://support.microsoft.com/kb/4054518
-[4054520]: http://support.microsoft.com/kb/4054520
-[4054519]: http://support.microsoft.com/kb/4054519
-[4051956]: http://support.microsoft.com/kb/4051956
+[4338814]: https://support.microsoft.com/kb/4338814
+[4338823]: https://support.microsoft.com/kb/4338823
+[4338820]: https://support.microsoft.com/kb/4338820
+[4338824]: https://support.microsoft.com/kb/4338824
+[4345459]: https://support.microsoft.com/kb/4345459
+[4345425]: https://support.microsoft.com/kb/4345425
+[4345424]: https://support.microsoft.com/kb/4345424
+[4345418]: https://support.microsoft.com/kb/4345418
+[4338612]: https://support.microsoft.com/kb/4338612
+[4338602]: https://support.microsoft.com/kb/4338602
+[4338601]: https://support.microsoft.com/kb/4338601
+[4338604]: https://support.microsoft.com/kb/4338604
+[4338613]: https://support.microsoft.com/kb/4338613
+[4338600]: https://support.microsoft.com/kb/4338600
+[4338605]: https://support.microsoft.com/kb/4338605
+[4338832]: https://support.microsoft.com/kb/4338832
+[4284826]: https://support.microsoft.com/kb/4284826
+[4284855]: https://support.microsoft.com/kb/4284855
+[4284815]: https://support.microsoft.com/kb/4284815
+[4339093]: https://support.microsoft.com/kb/4339093
+
+[4284880]: https://support.microsoft.com/kb/4284880
+[4284867]: https://support.microsoft.com/kb/4284867
+[4284846]: https://support.microsoft.com/kb/4284846
+[4284878]: https://support.microsoft.com/kb/4284878
+[4230450]: https://support.microsoft.com/kb/4230450
+[4287903]: https://support.microsoft.com/kb/4287903
+[4103718]: https://support.microsoft.com/kb/4103718
+[4103718]: https://support.microsoft.com/kb/4103718
+[4103730]: https://support.microsoft.com/kb/4103730
+[4103725]: https://support.microsoft.com/kb/4103725
+[4040980]: https://support.microsoft.com/kb/4040980
+[4040977]: https://support.microsoft.com/kb/4040977
+[4095874]: https://support.microsoft.com/kb/4095874
+[4096495]: https://support.microsoft.com/kb/4096495
+[4040975]: https://support.microsoft.com/kb/4040975
+[4095872]: https://support.microsoft.com/kb/4095872
+[4096494]: https://support.microsoft.com/kb/4096494
+[4096416]: https://support.microsoft.com/kb/4096416
+[4040974]: https://support.microsoft.com/kb/4040974
+[4040972]: https://support.microsoft.com/kb/4040972
+[4043763]: https://support.microsoft.com/kb/4043763
+[4095876]: https://support.microsoft.com/kb/4095876
+[4096417]: https://support.microsoft.com/kb/4096417
+[4132216]: https://support.microsoft.com/kb/4132216
+
+[4103721]: https://support.microsoft.com/kb/4103721
+[4103727]: https://support.microsoft.com/kb/4103727
+[4103723]: https://support.microsoft.com/kb/4103723
+[4103712]: https://support.microsoft.com/kb/4103712
+[4103726]: https://support.microsoft.com/kb/4103726
+[4103715]: https://support.microsoft.com/kb/4103715
+[4095514]: https://support.microsoft.com/kb/4095514
+[4095519]: https://support.microsoft.com/kb/4095519
+[4095512]: https://support.microsoft.com/kb/4095512
+[4095518]: https://support.microsoft.com/kb/4095518
+[4096235]: https://support.microsoft.com/kb/4096235
+[4095515]: https://support.microsoft.com/kb/4095515
+[4095517]: https://support.microsoft.com/kb/4095517
+[4096236]: https://support.microsoft.com/kb/4096236
+[4054856]: https://support.microsoft.com/kb/4054856
+[4103768]: https://support.microsoft.com/kb/4103768
+[4103729]: https://support.microsoft.com/kb/4103729
+[4093118]: https://support.microsoft.com/kb/4093118
+[4093123]: https://support.microsoft.com/kb/4093123
+[4093114]: https://support.microsoft.com/kb/4093114
+[4093137]: https://support.microsoft.com/kb/4093137
+[4093753]: https://support.microsoft.com/kb/4093753
+
+[4093119]: https://support.microsoft.com/kb/4093119
+[4093108]: https://support.microsoft.com/kb/4093108
+[4093122]: https://support.microsoft.com/kb/4093122
+[4093115]: https://support.microsoft.com/kb/4093115
+[4092946]: https://support.microsoft.com/kb/4092946
+[4093110]: https://support.microsoft.com/kb/4093110
+[4088875]: https://support.microsoft.com/kb/4088875
+[4099950]: https://support.microsoft.com/kb/4099950
+[4088877]: https://support.microsoft.com/kb/4088877
+[4088876]: https://support.microsoft.com/kb/4088876
+
+[4088787]: https://support.microsoft.com/kb/4088787
+[4088776]: https://support.microsoft.com/kb/4088776
+[4088878]: https://support.microsoft.com/kb/4088878
+[4088880]: https://support.microsoft.com/kb/4088880
+[4088879]: https://support.microsoft.com/kb/4088879
+[4089187]: https://support.microsoft.com/kb/4089187
+[4088785]: https://support.microsoft.com/kb/4088785
+[4074598]: https://support.microsoft.com/kb/4074598
+[4074593]: https://support.microsoft.com/kb/4074593
+[4074594]: https://support.microsoft.com/kb/4074594
+[4074837]: https://support.microsoft.com/kb/4074837
+
+[4074590]: https://support.microsoft.com/kb/4074590
+[4074588]: https://support.microsoft.com/kb/4074588
+[4074587]: https://support.microsoft.com/kb/4074587
+[4074589]: https://support.microsoft.com/kb/4074589
+[4074597]: https://support.microsoft.com/kb/4074597
+[4074736]: https://support.microsoft.com/kb/4074736
+[4074595]: https://support.microsoft.com/kb/4074595
+[4056894]: https://support.microsoft.com/kb/4056894
+[4056896]: https://support.microsoft.com/kb/4056896
+[4056895]: https://support.microsoft.com/kb/4048958
+[4054176]: https://support.microsoft.com/kb/4054176
+[4054172]: https://support.microsoft.com/kb/4054172
+[4054175]: https://support.microsoft.com/kb/4054175
+[4054171]: https://support.microsoft.com/kb/4054171
+[4054177]: https://support.microsoft.com/kb/4054177
+[4054170]: https://support.microsoft.com/kb/4054170
 
 
-[4053579]: http://support.microsoft.com/kb/4053579
-[4054517]: http://support.microsoft.com/kb/4054517 
-[4054521]: http://support.microsoft.com/kb/4054521
-[4054522]: http://support.microsoft.com/kb/4054522
-[4054523]: http://support.microsoft.com/kb/4054523
-[4052978]: http://support.microsoft.com/kb/4052978
-[4048951]: http://support.microsoft.com/kb/4048951
-[4048957]: http://support.microsoft.com/kb/4048957
-[4048959]: http://support.microsoft.com/kb/4048959
-[4048958]: http://support.microsoft.com/kb/4048958
-[4049068]: http://support.microsoft.com/kb/4049068
+[4056898]: https://support.microsoft.com/kb/4056898
+[4056897]: https://support.microsoft.com/kb/4056897
+[4056899]: https://support.microsoft.com/kb/4056899
+[4056890]: https://support.microsoft.com/kb/4056890
+[4056892]: https://support.microsoft.com/kb/4056892
+[4054518]: https://support.microsoft.com/kb/4054518
+[4054520]: https://support.microsoft.com/kb/4054520
+[4054519]: https://support.microsoft.com/kb/4054519
+[4051956]: https://support.microsoft.com/kb/4051956
 
 
-[4048953]: http://support.microsoft.com/kb/4048953
-[4048960]: http://support.microsoft.com/kb/4048960 
-[4048962]: http://support.microsoft.com/kb/4048962
-[4048961]: http://support.microsoft.com/kb/4048961
-[4047206]: http://support.microsoft.com/kb/4047206
-[4048951]: http://support.microsoft.com/kb/4048951
-[4041681]: http://support.microsoft.com/kb/4041681
-[4041693]: http://support.microsoft.com/kb/4041693
-[4041690]: http://support.microsoft.com/kb/4041690
-[3191566]: http://support.microsoft.com/kb/3191566
-[3191565]: http://support.microsoft.com/kb/3191565
-[3191564]: http://support.microsoft.com/kb/3191564
+[4053579]: https://support.microsoft.com/kb/4053579
+[4054517]: https://support.microsoft.com/kb/4054517
+[4054521]: https://support.microsoft.com/kb/4054521
+[4054522]: https://support.microsoft.com/kb/4054522
+[4054523]: https://support.microsoft.com/kb/4054523
+[4052978]: https://support.microsoft.com/kb/4052978
+[4048951]: https://support.microsoft.com/kb/4048951
+[4048957]: https://support.microsoft.com/kb/4048957
+[4048959]: https://support.microsoft.com/kb/4048959
+[4048958]: https://support.microsoft.com/kb/4048958
+[4049068]: https://support.microsoft.com/kb/4049068
 
 
-[4041691]: http://support.microsoft.com/kb/4041691 
-[4041678]: http://support.microsoft.com/kb/4041678 
-[4041679]: http://support.microsoft.com/kb/4041679
-[4041687]: http://support.microsoft.com/kb/4041687
-[4040685]: http://support.microsoft.com/kb/4040685
-[4041681]: http://support.microsoft.com/kb/4041681
-[4041690]: http://support.microsoft.com/kb/4041690
-[4041693]: http://support.microsoft.com/kb/4041693
-[4038777]: http://support.microsoft.com/kb/4038777
-[4038799]: http://support.microsoft.com/kb/4038799
-[4038792]: http://support.microsoft.com/kb/4038792
-[4040980]: http://support.microsoft.com/kb/4040980
-[4040979]: http://support.microsoft.com/kb/4040979
-[4040981]: http://support.microsoft.com/kb/4040981
+[4048953]: https://support.microsoft.com/kb/4048953
+[4048960]: https://support.microsoft.com/kb/4048960
+[4048962]: https://support.microsoft.com/kb/4048962
+[4048961]: https://support.microsoft.com/kb/4048961
+[4047206]: https://support.microsoft.com/kb/4047206
+[4048951]: https://support.microsoft.com/kb/4048951
+[4041681]: https://support.microsoft.com/kb/4041681
+[4041693]: https://support.microsoft.com/kb/4041693
+[4041690]: https://support.microsoft.com/kb/4041690
+[3191566]: https://support.microsoft.com/kb/3191566
+[3191565]: https://support.microsoft.com/kb/3191565
+[3191564]: https://support.microsoft.com/kb/3191564
 
-[4038782]: http://support.microsoft.com/kb/4038782
-[4038779]: http://support.microsoft.com/kb/4038779
-[4038786]: http://support.microsoft.com/kb/4038786
-[4038793]: http://support.microsoft.com/kb/4038793
-[4040966]: http://support.microsoft.com/kb/4040966
-[4040960]: http://support.microsoft.com/kb/4040960
-[4040965]: http://support.microsoft.com/kb/4040965
-[4040959]: http://support.microsoft.com/kb/4040959
-[4033988]: http://support.microsoft.com/kb/4033988
-[4040955]: http://support.microsoft.com/kb/4040955
-[4040967]: http://support.microsoft.com/kb/4040967
-[4040958]: http://support.microsoft.com/kb/4040958
-[4036586]: http://support.microsoft.com/kb/4036586
-[4034664]: http://support.microsoft.com/kb/4034664
-[4034665]: http://support.microsoft.com/kb/4034665
-[4034681]: http://support.microsoft.com/kb/4034681
 
-[4034658]: http://support.microsoft.com/kb/4034658
-[4034679]: http://support.microsoft.com/kb/4034679
-[4034672]: http://support.microsoft.com/kb/4034672
-[4034666]: http://support.microsoft.com/kb/4034666
-[4034733]: http://support.microsoft.com/kb/4034733
-[4034664]: http://support.microsoft.com/kb/4034664
-[4034665]: http://support.microsoft.com/kb/4034665
-[4034681]: http://support.microsoft.com/kb/4034681
-[4034668]: http://support.microsoft.com/kb/4034668
-[4034660]: http://support.microsoft.com/kb/4034660
-[4034658]: http://support.microsoft.com/kb/4034658
-[4034674]: http://support.microsoft.com/kb/4034674
-[4025341]: http://support.microsoft.com/kb/4025341
-[4025331]: http://support.microsoft.com/kb/4025331
-[4025336]: http://support.microsoft.com/kb/4025336
+[4041691]: https://support.microsoft.com/kb/4041691
+[4041678]: https://support.microsoft.com/kb/4041678
+[4041679]: https://support.microsoft.com/kb/4041679
+[4041687]: https://support.microsoft.com/kb/4041687
+[4040685]: https://support.microsoft.com/kb/4040685
+[4041681]: https://support.microsoft.com/kb/4041681
+[4041690]: https://support.microsoft.com/kb/4041690
+[4041693]: https://support.microsoft.com/kb/4041693
+[4038777]: https://support.microsoft.com/kb/4038777
+[4038799]: https://support.microsoft.com/kb/4038799
+[4038792]: https://support.microsoft.com/kb/4038792
+[4040980]: https://support.microsoft.com/kb/4040980
+[4040979]: https://support.microsoft.com/kb/4040979
+[4040981]: https://support.microsoft.com/kb/4040981
 
-[4025339]: http://support.microsoft.com/kb/4025337
-[4025337]: http://support.microsoft.com/kb/4025333
-[4025333]: http://support.microsoft.com/kb/4025343
-[4025343]: http://support.microsoft.com/kb/4025376
-[4025252]: http://support.microsoft.com/kb/4025252
-[4025376]: http://support.microsoft.com/kb/4025376
-[4020322]: http://support.microsoft.com/kb/4020322
-[4022719]: http://support.microsoft.com/kb/4022719
-[4022724]: http://support.microsoft.com/kb/4022724
-[4022726]: http://support.microsoft.com/kb/4022726
+[4038782]: https://support.microsoft.com/kb/4038782
+[4038779]: https://support.microsoft.com/kb/4038779
+[4038786]: https://support.microsoft.com/kb/4038786
+[4038793]: https://support.microsoft.com/kb/4038793
+[4040966]: https://support.microsoft.com/kb/4040966
+[4040960]: https://support.microsoft.com/kb/4040960
+[4040965]: https://support.microsoft.com/kb/4040965
+[4040959]: https://support.microsoft.com/kb/4040959
+[4033988]: https://support.microsoft.com/kb/4033988
+[4040955]: https://support.microsoft.com/kb/4040955
+[4040967]: https://support.microsoft.com/kb/4040967
+[4040958]: https://support.microsoft.com/kb/4040958
+[4036586]: https://support.microsoft.com/kb/4036586
+[4034664]: https://support.microsoft.com/kb/4034664
+[4034665]: https://support.microsoft.com/kb/4034665
+[4034681]: https://support.microsoft.com/kb/4034681
 
-[4022722]: http://support.microsoft.com/kb/4022722
-[4022717]: http://support.microsoft.com/kb/4022717
-[4022718]: http://support.microsoft.com/kb/4022718
-[4021558]: http://support.microsoft.com/kb/4021558
-[4022719]: http://support.microsoft.com/kb/4022719
-[4022724]: http://support.microsoft.com/kb/4022724
-[4022726]: http://support.microsoft.com/kb/4022726
-[4022730]: http://support.microsoft.com/kb/4022730
-[4015221]: http://support.microsoft.com/kb/4015221
-[4015583]: http://support.microsoft.com/kb/4015583
-[4015219]: http://support.microsoft.com/kb/4015219
-[4023136]: http://support.microsoft.com/kb/4023136
-[4019264]: http://support.microsoft.com/kb/4019264
-[4014545]: http://support.microsoft.com/kb/4014545
-[4014508]: http://support.microsoft.com/kb/4014508
-[4014511]: http://support.microsoft.com/kb/4014511
-[4014514]: http://support.microsoft.com/kb/4014514
-[4019216]: http://support.microsoft.com/kb/4019216
-[4014503]: http://support.microsoft.com/kb/4014503
-[4014506]: http://support.microsoft.com/kb/4014506
-[4014509]: http://support.microsoft.com/kb/4014509
-[4014513]: http://support.microsoft.com/kb/4014513
-[4019215]: http://support.microsoft.com/kb/4019215
-[4014505]: http://support.microsoft.com/kb/4014505
-[4014507]: http://support.microsoft.com/kb/4014507
-[4014510]: http://support.microsoft.com/kb/4014510
-[4014512]: http://support.microsoft.com/kb/4014512
+[4034658]: https://support.microsoft.com/kb/4034658
+[4034679]: https://support.microsoft.com/kb/4034679
+[4034672]: https://support.microsoft.com/kb/4034672
+[4034666]: https://support.microsoft.com/kb/4034666
+[4034733]: https://support.microsoft.com/kb/4034733
+[4034664]: https://support.microsoft.com/kb/4034664
+[4034665]: https://support.microsoft.com/kb/4034665
+[4034681]: https://support.microsoft.com/kb/4034681
+[4034668]: https://support.microsoft.com/kb/4034668
+[4034660]: https://support.microsoft.com/kb/4034660
+[4034658]: https://support.microsoft.com/kb/4034658
+[4034674]: https://support.microsoft.com/kb/4034674
+[4025341]: https://support.microsoft.com/kb/4025341
+[4025331]: https://support.microsoft.com/kb/4025331
+[4025336]: https://support.microsoft.com/kb/4025336
 
-[4019472]: http://support.microsoft.com/kb/4019472
-[4019263]: http://support.microsoft.com/kb/4019263
-[4019213]: http://support.microsoft.com/kb/4019213
-[4019214]: http://support.microsoft.com/kb/4019214
-[4018271]: http://support.microsoft.com/kb/4018271
-[4010323]: http://support.microsoft.com/kb/4010323
-[4012864]: http://support.microsoft.com/kb/4012864
-[4014565]: http://support.microsoft.com/kb/4014565
-[4014559]: http://support.microsoft.com/kb/4014559
-[4015549]: http://support.microsoft.com/kb/4015549
-[4019990]: http://support.microsoft.com/kb/4019990
-[4014563]: http://support.microsoft.com/kb/4014563
-[4014557]: http://support.microsoft.com/kb/4014557
-[4014545]: http://support.microsoft.com/kb/4014545
-[4014548]: http://support.microsoft.com/kb/4014548
-[4015551]: http://support.microsoft.com/kb/4015551
-[3173424]: http://support.microsoft.com/kb/3173424
-[4014555]: http://support.microsoft.com/kb/4014555
-[4014567]: http://support.microsoft.com/kb/4014567
-[4015550]: http://support.microsoft.com/kb/4015550
-[4013418]: http://support.microsoft.com/kb/4013418
+[4025339]: https://support.microsoft.com/kb/4025337
+[4025337]: https://support.microsoft.com/kb/4025333
+[4025333]: https://support.microsoft.com/kb/4025343
+[4025343]: https://support.microsoft.com/kb/4025376
+[4025252]: https://support.microsoft.com/kb/4025252
+[4025376]: https://support.microsoft.com/kb/4025376
+[4020322]: https://support.microsoft.com/kb/4020322
+[4022719]: https://support.microsoft.com/kb/4022719
+[4022724]: https://support.microsoft.com/kb/4022724
+[4022726]: https://support.microsoft.com/kb/4022726
+
+[4022722]: https://support.microsoft.com/kb/4022722
+[4022717]: https://support.microsoft.com/kb/4022717
+[4022718]: https://support.microsoft.com/kb/4022718
+[4021558]: https://support.microsoft.com/kb/4021558
+[4022719]: https://support.microsoft.com/kb/4022719
+[4022724]: https://support.microsoft.com/kb/4022724
+[4022726]: https://support.microsoft.com/kb/4022726
+[4022730]: https://support.microsoft.com/kb/4022730
+[4015221]: https://support.microsoft.com/kb/4015221
+[4015583]: https://support.microsoft.com/kb/4015583
+[4015219]: https://support.microsoft.com/kb/4015219
+[4023136]: https://support.microsoft.com/kb/4023136
+[4019264]: https://support.microsoft.com/kb/4019264
+[4014545]: https://support.microsoft.com/kb/4014545
+[4014508]: https://support.microsoft.com/kb/4014508
+[4014511]: https://support.microsoft.com/kb/4014511
+[4014514]: https://support.microsoft.com/kb/4014514
+[4019216]: https://support.microsoft.com/kb/4019216
+[4014503]: https://support.microsoft.com/kb/4014503
+[4014506]: https://support.microsoft.com/kb/4014506
+[4014509]: https://support.microsoft.com/kb/4014509
+[4014513]: https://support.microsoft.com/kb/4014513
+[4019215]: https://support.microsoft.com/kb/4019215
+[4014505]: https://support.microsoft.com/kb/4014505
+[4014507]: https://support.microsoft.com/kb/4014507
+[4014510]: https://support.microsoft.com/kb/4014510
+[4014512]: https://support.microsoft.com/kb/4014512
+
+[4019472]: https://support.microsoft.com/kb/4019472
+[4019263]: https://support.microsoft.com/kb/4019263
+[4019213]: https://support.microsoft.com/kb/4019213
+[4019214]: https://support.microsoft.com/kb/4019214
+[4018271]: https://support.microsoft.com/kb/4018271
+[4010323]: https://support.microsoft.com/kb/4010323
+[4012864]: https://support.microsoft.com/kb/4012864
+[4014565]: https://support.microsoft.com/kb/4014565
+[4014559]: https://support.microsoft.com/kb/4014559
+[4015549]: https://support.microsoft.com/kb/4015549
+[4019990]: https://support.microsoft.com/kb/4019990
+[4014563]: https://support.microsoft.com/kb/4014563
+[4014557]: https://support.microsoft.com/kb/4014557
+[4014545]: https://support.microsoft.com/kb/4014545
+[4014548]: https://support.microsoft.com/kb/4014548
+[4015551]: https://support.microsoft.com/kb/4015551
+[3173424]: https://support.microsoft.com/kb/3173424
+[4014555]: https://support.microsoft.com/kb/4014555
+[4014567]: https://support.microsoft.com/kb/4014567
+[4015550]: https://support.microsoft.com/kb/4015550
+[4013418]: https://support.microsoft.com/kb/4013418
 [4022345]: https://technet.microsoft.com/library/security/4022345.aspx
 [4022344]: https://technet.microsoft.com/library/security/4022344.aspx
 [4021279]: https://technet.microsoft.com/library/security/4021279.aspx
 
 
-[4015217]: http://support.microsoft.com/kb/4015217
-[4015546]: http://support.microsoft.com/kb/4015546
-[4015547]: http://support.microsoft.com/kb/4015547
-[4015548]: http://support.microsoft.com/kb/4015548
-[4014661]: http://support.microsoft.com/kb/4014661
-[4014550]: http://support.microsoft.com/kb/4014550
-[4014560]: http://support.microsoft.com/kb/4014560
-[4014562]: http://support.microsoft.com/kb/4014562
-[4014556]: http://support.microsoft.com/kb/4014556
-[4014574]: http://support.microsoft.com/kb/4014574
-[4014564]: http://support.microsoft.com/kb/4014564
-[4014572]: http://support.microsoft.com/kb/4014572
-[4014549]: http://support.microsoft.com/kb/4014549
-[4014566]: http://support.microsoft.com/kb/4014566
-[4014552]: http://support.microsoft.com/kb/4014552
-[4014573]: http://support.microsoft.com/kb/4014573
-[4014558]: http://support.microsoft.com/kb/4014558
-[4015217]: http://support.microsoft.com/kb/4015217
-[4015193]: http://support.microsoft.com/kb/4015193
-[4012215]: http://support.microsoft.com/kb/4012215
-[4012217]: http://support.microsoft.com/kb/4012217
-[4012216]: http://support.microsoft.com/kb/4012216
+[4015217]: https://support.microsoft.com/kb/4015217
+[4015546]: https://support.microsoft.com/kb/4015546
+[4015547]: https://support.microsoft.com/kb/4015547
+[4015548]: https://support.microsoft.com/kb/4015548
+[4014661]: https://support.microsoft.com/kb/4014661
+[4014550]: https://support.microsoft.com/kb/4014550
+[4014560]: https://support.microsoft.com/kb/4014560
+[4014562]: https://support.microsoft.com/kb/4014562
+[4014556]: https://support.microsoft.com/kb/4014556
+[4014574]: https://support.microsoft.com/kb/4014574
+[4014564]: https://support.microsoft.com/kb/4014564
+[4014572]: https://support.microsoft.com/kb/4014572
+[4014549]: https://support.microsoft.com/kb/4014549
+[4014566]: https://support.microsoft.com/kb/4014566
+[4014552]: https://support.microsoft.com/kb/4014552
+[4014573]: https://support.microsoft.com/kb/4014573
+[4014558]: https://support.microsoft.com/kb/4014558
+[4015217]: https://support.microsoft.com/kb/4015217
+[4015193]: https://support.microsoft.com/kb/4015193
+[4012215]: https://support.microsoft.com/kb/4012215
+[4012217]: https://support.microsoft.com/kb/4012217
+[4012216]: https://support.microsoft.com/kb/4012216
 
 
-[4013429]: http://support.microsoft.com/kb/4013429 
-[4012212]: http://support.microsoft.com/kb/4012212 
-[4012213]: http://support.microsoft.com/kb/4012213 
-[4012214]: http://support.microsoft.com/kb/4012214 
-[4012204]: http://support.microsoft.com/kb/4012204 
-[4012864]: http://support.microsoft.com/kb/4012864 
-[3212646]: http://support.microsoft.com/kb/3212646 
-[3205409]: http://support.microsoft.com/kb/3205409 
-[3205401]: http://support.microsoft.com/kb/3205401
-[3211320]: http://support.microsoft.com/kb/3211320
+[4013429]: https://support.microsoft.com/kb/4013429
+[4012212]: https://support.microsoft.com/kb/4012212
+[4012213]: https://support.microsoft.com/kb/4012213
+[4012214]: https://support.microsoft.com/kb/4012214
+[4012204]: https://support.microsoft.com/kb/4012204
+[4012864]: https://support.microsoft.com/kb/4012864
+[3212646]: https://support.microsoft.com/kb/3212646
+[3205409]: https://support.microsoft.com/kb/3205409
+[3205401]: https://support.microsoft.com/kb/3205401
+[3211320]: https://support.microsoft.com/kb/3211320
 
 
 [3216771]: https://technet.microsoft.com/library/security/MS17-004
 
-[3204059]: http://support.microsoft.com/kb/3204059 
-[3204062]: http://support.microsoft.com/kb/3204062 
-[3204066]: http://support.microsoft.com/kb/3204066 
-[3204063]: http://support.microsoft.com/kb/3204063 
-[3205655]: http://support.microsoft.com/kb/3205655 
-[3205642]: http://support.microsoft.com/kb/3205642 
-[3205651]: http://support.microsoft.com/kb/3205651 
-[3199709]: http://support.microsoft.com/kb/3199709 
-[3207328]: http://support.microsoft.com/kb/3207328 
-[3205640]: http://support.microsoft.com/kb/3205640 
-[3197868]: http://support.microsoft.com/kb/3197868 
-[3197877]: http://support.microsoft.com/kb/3197877 
-[3197874]: http://support.microsoft.com/kb/3197874 
+[3204059]: https://support.microsoft.com/kb/3204059
+[3204062]: https://support.microsoft.com/kb/3204062
+[3204066]: https://support.microsoft.com/kb/3204066
+[3204063]: https://support.microsoft.com/kb/3204063
+[3205655]: https://support.microsoft.com/kb/3205655
+[3205642]: https://support.microsoft.com/kb/3205642
+[3205651]: https://support.microsoft.com/kb/3205651
+[3199709]: https://support.microsoft.com/kb/3199709
+[3207328]: https://support.microsoft.com/kb/3207328
+[3205640]: https://support.microsoft.com/kb/3205640
+[3197868]: https://support.microsoft.com/kb/3197868
+[3197877]: https://support.microsoft.com/kb/3197877
+[3197874]: https://support.microsoft.com/kb/3197874
 
-[3199057]: http://support.microsoft.com/kb/3199057 
-[3199172]: http://support.microsoft.com/kb/3199172 
-[3199151]: http://support.microsoft.com/kb/3199151 
-[3193706]: http://support.microsoft.com/kb/3193706 
-[3199120]: http://support.microsoft.com/kb/3199120 
-[3199135]: http://support.microsoft.com/kb/3199135 
-[3199173]: http://support.microsoft.com/kb/3199173 
-[3199647]: http://support.microsoft.com/kb/3199647 
-[3199720]: http://support.microsoft.com/kb/3199720 
-[3193479]: http://support.microsoft.com/kb/3193479 
-[3198467]: http://support.microsoft.com/kb/3198467 
-[3192321]: http://support.microsoft.com/kb/3192321 
-[3185330]: http://support.microsoft.com/kb/3185330 
-[3192403]: http://support.microsoft.com/kb/3192403 
-[3177467]: http://support.microsoft.com/kb/3177467 
-[3185332]: http://support.microsoft.com/kb/3185332 
-[3192406]: http://support.microsoft.com/kb/3192406 
-[3185331]: http://support.microsoft.com/kb/3185331 
-[3192404]: http://support.microsoft.com/kb/3192404 
-[3199986]: http://support.microsoft.com/kb/3199986 
-[3197954]: http://support.microsoft.com/kb/3197954  
+[3199057]: https://support.microsoft.com/kb/3199057
+[3199172]: https://support.microsoft.com/kb/3199172
+[3199151]: https://support.microsoft.com/kb/3199151
+[3193706]: https://support.microsoft.com/kb/3193706
+[3199120]: https://support.microsoft.com/kb/3199120
+[3199135]: https://support.microsoft.com/kb/3199135
+[3199173]: https://support.microsoft.com/kb/3199173
+[3199647]: https://support.microsoft.com/kb/3199647
+[3199720]: https://support.microsoft.com/kb/3199720
+[3193479]: https://support.microsoft.com/kb/3193479
+[3198467]: https://support.microsoft.com/kb/3198467
+[3192321]: https://support.microsoft.com/kb/3192321
+[3185330]: https://support.microsoft.com/kb/3185330
+[3192403]: https://support.microsoft.com/kb/3192403
+[3177467]: https://support.microsoft.com/kb/3177467
+[3185332]: https://support.microsoft.com/kb/3185332
+[3192406]: https://support.microsoft.com/kb/3192406
+[3185331]: https://support.microsoft.com/kb/3185331
+[3192404]: https://support.microsoft.com/kb/3192404
+[3199986]: https://support.microsoft.com/kb/3199986
+[3197954]: https://support.microsoft.com/kb/3197954
 
-[3192887]: http://support.microsoft.com/kb/3192887
-[3192884]: http://support.microsoft.com/kb/3192884
-[3192892]: http://support.microsoft.com/kb/3192892
-[3193227]: http://support.microsoft.com/kb/3193227
-[3196067]: http://support.microsoft.com/kb/3196067
-[3178465]: http://support.microsoft.com/kb/3178465
-[3182203]: http://support.microsoft.com/kb/3182203
-[3185278]: http://support.microsoft.com/kb/3185278
-[3185280]: http://support.microsoft.com/kb/3185280
-[3185279]: http://support.microsoft.com/kb/3185279
-[3194798]: http://support.microsoft.com/kb/3194798
+[3192887]: https://support.microsoft.com/kb/3192887
+[3192884]: https://support.microsoft.com/kb/3192884
+[3192892]: https://support.microsoft.com/kb/3192892
+[3193227]: https://support.microsoft.com/kb/3193227
+[3196067]: https://support.microsoft.com/kb/3196067
+[3178465]: https://support.microsoft.com/kb/3178465
+[3182203]: https://support.microsoft.com/kb/3182203
+[3185278]: https://support.microsoft.com/kb/3185278
+[3185280]: https://support.microsoft.com/kb/3185280
+[3185279]: https://support.microsoft.com/kb/3185279
+[3194798]: https://support.microsoft.com/kb/3194798
 
-[3183038]: http://support.microsoft.com/kb/3183038
-[3185848]: http://support.microsoft.com/kb/3185848
-[3178467]: http://support.microsoft.com/kb/3178467
-[3186973]: http://support.microsoft.com/kb/3186973
-[3178469]: http://support.microsoft.com/kb/3178469
-[3185879]: http://support.microsoft.com/kb/3185879
-[3188733]: http://support.microsoft.com/kb/3188733
-[3188724]: http://support.microsoft.com/kb/3188724
-[3174644]: http://support.microsoft.com/kb/3174644
-[3177723]: http://support.microsoft.com/kb/3177723
-[3179573]: http://support.microsoft.com/kb/3179573
-[3179575]: http://support.microsoft.com/kb/3179575
-[3179574]: http://support.microsoft.com/kb/3179574
+[3183038]: https://support.microsoft.com/kb/3183038
+[3185848]: https://support.microsoft.com/kb/3185848
+[3178467]: https://support.microsoft.com/kb/3178467
+[3186973]: https://support.microsoft.com/kb/3186973
+[3178469]: https://support.microsoft.com/kb/3178469
+[3185879]: https://support.microsoft.com/kb/3185879
+[3188733]: https://support.microsoft.com/kb/3188733
+[3188724]: https://support.microsoft.com/kb/3188724
+[3174644]: https://support.microsoft.com/kb/3174644
+[3177723]: https://support.microsoft.com/kb/3177723
+[3179573]: https://support.microsoft.com/kb/3179573
+[3179575]: https://support.microsoft.com/kb/3179575
+[3179574]: https://support.microsoft.com/kb/3179574
 
-[3177356]: http://support.microsoft.com/kb/3177356
-[3177393]: http://support.microsoft.com/kb/3177393
-[3178466]: http://support.microsoft.com/kb/3178466
-[3179577]: http://support.microsoft.com/kb/3179577
-[3178465]: http://support.microsoft.com/kb/3178465
-[3182248]: http://support.microsoft.com/kb/3182248
-[3165191]: http://support.microsoft.com/kb/3165191
-[3172605]: http://support.microsoft.com/kb/3172605
-[3172614]: http://support.microsoft.com/kb/3172614
-[3172615]: http://support.microsoft.com/kb/3172615
+[3177356]: https://support.microsoft.com/kb/3177356
+[3177393]: https://support.microsoft.com/kb/3177393
+[3178466]: https://support.microsoft.com/kb/3178466
+[3179577]: https://support.microsoft.com/kb/3179577
+[3178465]: https://support.microsoft.com/kb/3178465
+[3182248]: https://support.microsoft.com/kb/3182248
+[3165191]: https://support.microsoft.com/kb/3165191
+[3172605]: https://support.microsoft.com/kb/3172605
+[3172614]: https://support.microsoft.com/kb/3172614
+[3172615]: https://support.microsoft.com/kb/3172615
 
-[3169991]: http://support.microsoft.com/kb/3169991
-[3170005]: http://support.microsoft.com/kb/3170005
-[3170050]: http://support.microsoft.com/kb/3170050
-[3171481]: http://support.microsoft.com/kb/3171481
-[3170048]: http://support.microsoft.com/kb/3170048
-[3171910]: http://support.microsoft.com/kb/3171910
-[3177404]: http://support.microsoft.com/kb/3177404
-[3162835]: http://support.microsoft.com/kb/3162835
-[3156417]: http://support.microsoft.com/kb/3156417
-[3161608]: http://support.microsoft.com/kb/3161608
-[3161609]: http://support.microsoft.com/kb/3161609
-[3161606]: http://support.microsoft.com/kb/3161606
-[3139923]: http://support.microsoft.com/kb/3139923
-
-
-[3141780]: http://support.microsoft.com/kb/3141780
-[3155527]: http://support.microsoft.com/kb/3155527
-[3163649]: http://support.microsoft.com/kb/3163649
-[3163640]: http://support.microsoft.com/kb/3163640
-[3164065]: http://support.microsoft.com/kb/3164065
-[3163622]: http://support.microsoft.com/kb/3163622
-[3164028]: http://support.microsoft.com/kb/3164028
-[3164036]: http://support.microsoft.com/kb/3164036
-[3164038]: http://support.microsoft.com/kb/3164038
-[3167691]: http://support.microsoft.com/kb/3167691
-[3165191]: http://support.microsoft.com/kb/3165191
-[3164302]: http://support.microsoft.com/kb/3164302
-[3160352]: http://support.microsoft.com/kb/3160352
-[2922223]: http://support.microsoft.com/kb/2922223
-[3121255]: http://support.microsoft.com/kb/3121255
-[3125424]: http://support.microsoft.com/kb/3125424
-[3125574]: http://support.microsoft.com/kb/3125574
-[3140245]: http://support.microsoft.com/kb/3140245
-[3146604]: http://support.microsoft.com/kb/3146604
-[3149157]: http://support.microsoft.com/kb/3149157
-[3156416]: http://support.microsoft.com/kb/3156416
-[3156418]: http://support.microsoft.com/kb/3156418
-[3153731]: http://support.microsoft.com/kb/3153731
+[3169991]: https://support.microsoft.com/kb/3169991
+[3170005]: https://support.microsoft.com/kb/3170005
+[3170050]: https://support.microsoft.com/kb/3170050
+[3171481]: https://support.microsoft.com/kb/3171481
+[3170048]: https://support.microsoft.com/kb/3170048
+[3171910]: https://support.microsoft.com/kb/3171910
+[3177404]: https://support.microsoft.com/kb/3177404
+[3162835]: https://support.microsoft.com/kb/3162835
+[3156417]: https://support.microsoft.com/kb/3156417
+[3161608]: https://support.microsoft.com/kb/3161608
+[3161609]: https://support.microsoft.com/kb/3161609
+[3161606]: https://support.microsoft.com/kb/3161606
+[3139923]: https://support.microsoft.com/kb/3139923
 
 
-[3155533]: http://support.microsoft.com/kb/3155533
-[3156764]: http://support.microsoft.com/kb/3156764
-[3156754]: http://support.microsoft.com/kb/3156754
-[3156987]: http://support.microsoft.com/kb/3156987
-[3141083]: http://support.microsoft.com/kb/3141083
-[3154846]: http://support.microsoft.com/kb/3154846
-[3155520]: http://support.microsoft.com/kb/3155520
-[3158222]: http://support.microsoft.com/kb/3158222
-[3156757]: http://support.microsoft.com/kb/3156757
-[3155784]: http://support.microsoft.com/kb/3155784
-[3148851]: http://support.microsoft.com/kb/3148851
-[3133977]: http://support.microsoft.com/kb/3133977
-[3133681]: http://support.microsoft.com/kb/3133681
-[3123245]: http://support.microsoft.com/kb/3123245
+[3141780]: https://support.microsoft.com/kb/3141780
+[3155527]: https://support.microsoft.com/kb/3155527
+[3163649]: https://support.microsoft.com/kb/3163649
+[3163640]: https://support.microsoft.com/kb/3163640
+[3164065]: https://support.microsoft.com/kb/3164065
+[3163622]: https://support.microsoft.com/kb/3163622
+[3164028]: https://support.microsoft.com/kb/3164028
+[3164036]: https://support.microsoft.com/kb/3164036
+[3164038]: https://support.microsoft.com/kb/3164038
+[3167691]: https://support.microsoft.com/kb/3167691
+[3165191]: https://support.microsoft.com/kb/3165191
+[3164302]: https://support.microsoft.com/kb/3164302
+[3160352]: https://support.microsoft.com/kb/3160352
+[2922223]: https://support.microsoft.com/kb/2922223
+[3121255]: https://support.microsoft.com/kb/3121255
+[3125424]: https://support.microsoft.com/kb/3125424
+[3125574]: https://support.microsoft.com/kb/3125574
+[3140245]: https://support.microsoft.com/kb/3140245
+[3146604]: https://support.microsoft.com/kb/3146604
+[3149157]: https://support.microsoft.com/kb/3149157
+[3156416]: https://support.microsoft.com/kb/3156416
+[3156418]: https://support.microsoft.com/kb/3156418
+[3153731]: https://support.microsoft.com/kb/3153731
+
+
+[3155533]: https://support.microsoft.com/kb/3155533
+[3156764]: https://support.microsoft.com/kb/3156764
+[3156754]: https://support.microsoft.com/kb/3156754
+[3156987]: https://support.microsoft.com/kb/3156987
+[3141083]: https://support.microsoft.com/kb/3141083
+[3154846]: https://support.microsoft.com/kb/3154846
+[3155520]: https://support.microsoft.com/kb/3155520
+[3158222]: https://support.microsoft.com/kb/3158222
+[3156757]: https://support.microsoft.com/kb/3156757
+[3155784]: https://support.microsoft.com/kb/3155784
+[3148851]: https://support.microsoft.com/kb/3148851
+[3133977]: https://support.microsoft.com/kb/3133977
+[3133681]: https://support.microsoft.com/kb/3133681
+[3123245]: https://support.microsoft.com/kb/3123245
 [RC4 の無効化]: https://blogs.msdn.microsoft.com/azuresecurity/2016/04/12/azure-cipher-suite-change-removes-rc4-support/
 
 
-[3148531]: http://support.microsoft.com/kb/3148531
-[3148522]: http://support.microsoft.com/kb/3148522
-[3148541]: http://support.microsoft.com/kb/3148541
-[3146706]: http://support.microsoft.com/kb/3146706
-[3143118]: http://support.microsoft.com/kb/3143118
-[3148527]: http://support.microsoft.com/kb/3148527
-[3148528]: http://support.microsoft.com/kb/3148528
+[3148531]: https://support.microsoft.com/kb/3148531
+[3148522]: https://support.microsoft.com/kb/3148522
+[3148541]: https://support.microsoft.com/kb/3148541
+[3146706]: https://support.microsoft.com/kb/3146706
+[3143118]: https://support.microsoft.com/kb/3143118
+[3148527]: https://support.microsoft.com/kb/3148527
+[3148528]: https://support.microsoft.com/kb/3148528
 
 
-[3142015]: http://support.microsoft.com/kb/3142015  
-[3143148]: http://support.microsoft.com/kb/3143148  
-[3143146]: http://support.microsoft.com/kb/3143146  
-[3143081]: http://support.microsoft.com/kb/3143081  
-[3143136]: http://support.microsoft.com/kb/3143136  
-[3140410]: http://support.microsoft.com/kb/3140410  
-[3143141]: http://support.microsoft.com/kb/3143141  
-[3143142]: http://support.microsoft.com/kb/3143142  
-[3143145]: http://support.microsoft.com/kb/3143145  
-[3141780]: http://support.microsoft.com/kb/3141780
+[3142015]: https://support.microsoft.com/kb/3142015
+[3143148]: https://support.microsoft.com/kb/3143148
+[3143146]: https://support.microsoft.com/kb/3143146
+[3143081]: https://support.microsoft.com/kb/3143081
+[3143136]: https://support.microsoft.com/kb/3143136
+[3140410]: https://support.microsoft.com/kb/3140410
+[3143141]: https://support.microsoft.com/kb/3143141
+[3143142]: https://support.microsoft.com/kb/3143142
+[3143145]: https://support.microsoft.com/kb/3143145
+[3141780]: https://support.microsoft.com/kb/3141780
 
-[3134220]: http://support.microsoft.com/kb/3134220
-[3134811]: http://support.microsoft.com/kb/3134811
-[3134228]: http://support.microsoft.com/kb/3134228
-[3136041]: http://support.microsoft.com/kb/3136041
-[3136082]: http://support.microsoft.com/kb/3136082
-[3137893]: http://support.microsoft.com/kb/3137893
-[3133043]: http://support.microsoft.com/kb/3133043
-[3109853]: http://support.microsoft.com/kb/3109853
-[3089662]: http://support.microsoft.com/kb/3089662
-[3104507]: http://support.microsoft.com/kb/3104507
-[3104503]: http://support.microsoft.com/kb/3104503
+[3134220]: https://support.microsoft.com/kb/3134220
+[3134811]: https://support.microsoft.com/kb/3134811
+[3134228]: https://support.microsoft.com/kb/3134228
+[3136041]: https://support.microsoft.com/kb/3136041
+[3136082]: https://support.microsoft.com/kb/3136082
+[3137893]: https://support.microsoft.com/kb/3137893
+[3133043]: https://support.microsoft.com/kb/3133043
+[3109853]: https://support.microsoft.com/kb/3109853
+[3089662]: https://support.microsoft.com/kb/3089662
+[3104507]: https://support.microsoft.com/kb/3104507
+[3104503]: https://support.microsoft.com/kb/3104503
 
-[3124903]: http://support.microsoft.com/kb/3124903
-[3125540]: http://support.microsoft.com/kb/3125540
-[3124584]: http://support.microsoft.com/kb/3124584
-[3124901]: http://support.microsoft.com/kb/3124901
-[3124605]: http://support.microsoft.com/kb/3124605
-[2755801]: http://support.microsoft.com/kb/2755399
-[3109853]: http://support.microsoft.com/kb/3109853
-[3123479]: http://support.microsoft.com/kb/3123479
-[2736233]: http://support.microsoft.com/kb/2736233
+[3124903]: https://support.microsoft.com/kb/3124903
+[3125540]: https://support.microsoft.com/kb/3125540
+[3124584]: https://support.microsoft.com/kb/3124584
+[3124901]: https://support.microsoft.com/kb/3124901
+[3124605]: https://support.microsoft.com/kb/3124605
+[2755801]: https://support.microsoft.com/kb/2755399
+[3109853]: https://support.microsoft.com/kb/3109853
+[3123479]: https://support.microsoft.com/kb/3123479
+[2736233]: https://support.microsoft.com/kb/2736233
 
-[3116180]: http://support.microsoft.com/kb/3116180
-[3116178]: http://support.microsoft.com/kb/3116178
-[3100465]: http://support.microsoft.com/kb/3100465
-[3104503]: http://support.microsoft.com/kb/3104503
-[3116162]: http://support.microsoft.com/kb/3116162
-[3116130]: http://support.microsoft.com/kb/3116130
-[3108669]: http://support.microsoft.com/kb/3108669
-[3119075]: http://support.microsoft.com/kb/3119075
+[3116180]: https://support.microsoft.com/kb/3116180
+[3116178]: https://support.microsoft.com/kb/3116178
+[3100465]: https://support.microsoft.com/kb/3100465
+[3104503]: https://support.microsoft.com/kb/3104503
+[3116162]: https://support.microsoft.com/kb/3116162
+[3116130]: https://support.microsoft.com/kb/3116130
+[3108669]: https://support.microsoft.com/kb/3108669
+[3119075]: https://support.microsoft.com/kb/3119075
 
-[3104517]: http://support.microsoft.com/kb/3104517
-[3100213]: http://support.microsoft.com/kb/3100213
-[3105864]: http://support.microsoft.com/kb/3105864
-[3101722]: http://support.microsoft.com/kb/3101722
-[3104507]: http://support.microsoft.com/kb/3104507
-[3104521]: http://support.microsoft.com/kb/3104521
-[3102939]: http://support.microsoft.com/kb/3102939
-[3081320]: http://support.microsoft.com/kb/3081320
-[3105256]: http://support.microsoft.com/kb/3105256
-[3097966]: http://support.microsoft.com/kb/3097966
+[3104517]: https://support.microsoft.com/kb/3104517
+[3100213]: https://support.microsoft.com/kb/3100213
+[3105864]: https://support.microsoft.com/kb/3105864
+[3101722]: https://support.microsoft.com/kb/3101722
+[3104507]: https://support.microsoft.com/kb/3104507
+[3104521]: https://support.microsoft.com/kb/3104521
+[3102939]: https://support.microsoft.com/kb/3102939
+[3081320]: https://support.microsoft.com/kb/3081320
+[3105256]: https://support.microsoft.com/kb/3105256
+[3097966]: https://support.microsoft.com/kb/3097966
 
-[3096441]: http://support.microsoft.com/kb/3096441
-[3089659]: http://support.microsoft.com/kb/3089659
-[3096443]: http://support.microsoft.com/kb/3096443
-[3096447]: http://support.microsoft.com/kb/3096447
-[3092627]: http://support.microsoft.com/kb/3092627
+[3096441]: https://support.microsoft.com/kb/3096441
+[3089659]: https://support.microsoft.com/kb/3089659
+[3096443]: https://support.microsoft.com/kb/3096443
+[3096447]: https://support.microsoft.com/kb/3096447
+[3092627]: https://support.microsoft.com/kb/3092627
 
-[3088903]: http://support.microsoft.com/kb/3088903
-[3089548]: http://support.microsoft.com/kb/3089548
-[3072595]: http://support.microsoft.com/kb/3072595
-[3089656]: http://support.microsoft.com/kb/3089656
-[3089669]: http://support.microsoft.com/kb/3089669
-[3089657]: http://support.microsoft.com/kb/3089657
-[3091287]: http://support.microsoft.com/kb/3091287
-[3089662]: http://support.microsoft.com/kb/3089662
+[3088903]: https://support.microsoft.com/kb/3088903
+[3089548]: https://support.microsoft.com/kb/3089548
+[3072595]: https://support.microsoft.com/kb/3072595
+[3089656]: https://support.microsoft.com/kb/3089656
+[3089669]: https://support.microsoft.com/kb/3089669
+[3089657]: https://support.microsoft.com/kb/3089657
+[3091287]: https://support.microsoft.com/kb/3091287
+[3089662]: https://support.microsoft.com/kb/3089662
 
-[3082442]: http://support.microsoft.com/kb/3082442
-[3078662]: http://support.microsoft.com/kb/3078662
-[3080348]: http://support.microsoft.com/kb/3080348
-[3080129]: http://support.microsoft.com/kb/3080129
-[3082487]: http://support.microsoft.com/kb/3082487
-[3082458]: http://support.microsoft.com/kb/3082458
-[3060716]: http://support.microsoft.com/kb/3060716
-[3076949]: http://support.microsoft.com/kb/3076949
-[3086251]: http://support.microsoft.com/kb/3086251
+[3082442]: https://support.microsoft.com/kb/3082442
+[3078662]: https://support.microsoft.com/kb/3078662
+[3080348]: https://support.microsoft.com/kb/3080348
+[3080129]: https://support.microsoft.com/kb/3080129
+[3082487]: https://support.microsoft.com/kb/3082487
+[3082458]: https://support.microsoft.com/kb/3082458
+[3060716]: https://support.microsoft.com/kb/3060716
+[3076949]: https://support.microsoft.com/kb/3076949
+[3086251]: https://support.microsoft.com/kb/3086251
 
 
-[3076321]: http://support.microsoft.com/kb/3076321
-[3072604]: http://support.microsoft.com/kb/3072604
-[3073094]: http://support.microsoft.com/kb/3073094
-[3072000]: http://support.microsoft.com/kb/3072000
-[3072631]: http://support.microsoft.com/kb/3072631
-[3068457]: http://support.microsoft.com/kb/3068457
-[3069392]: http://support.microsoft.com/kb/3069392
-[3070102]: http://support.microsoft.com/kb/3070102
-[3072630]: http://support.microsoft.com/kb/3072630
-[3072633]: http://support.microsoft.com/kb/3072633
-[3067505]: http://support.microsoft.com/kb/3067505
-[3077657]: http://support.microsoft.com/kb/3077657
-[3057154]: http://support.microsoft.com/kb/3057154
+[3076321]: https://support.microsoft.com/kb/3076321
+[3072604]: https://support.microsoft.com/kb/3072604
+[3073094]: https://support.microsoft.com/kb/3073094
+[3072000]: https://support.microsoft.com/kb/3072000
+[3072631]: https://support.microsoft.com/kb/3072631
+[3068457]: https://support.microsoft.com/kb/3068457
+[3069392]: https://support.microsoft.com/kb/3069392
+[3070102]: https://support.microsoft.com/kb/3070102
+[3072630]: https://support.microsoft.com/kb/3072630
+[3072633]: https://support.microsoft.com/kb/3072633
+[3067505]: https://support.microsoft.com/kb/3067505
+[3077657]: https://support.microsoft.com/kb/3077657
+[3057154]: https://support.microsoft.com/kb/3057154
 
 [MS15-034]: https://technet.microsoft.com/library/security/MS15-034
 
 [3042553]: https://support.microsoft.com/en-us/kb/3042553/
 
-[3034682]: http://support.microsoft.com/kb/3034682
-[3036220]: http://support.microsoft.com/kb/3036220
-[3000483]: http://support.microsoft.com/kb/3000483
-[3004361]: http://support.microsoft.com/kb/3004361
-[3031432]: http://support.microsoft.com/kb/3031432
-[3029944]: http://support.microsoft.com/kb/3029944
-[3004375]: http://support.microsoft.com/kb/3004375
+[3034682]: https://support.microsoft.com/kb/3034682
+[3036220]: https://support.microsoft.com/kb/3036220
+[3000483]: https://support.microsoft.com/kb/3000483
+[3004361]: https://support.microsoft.com/kb/3004361
+[3031432]: https://support.microsoft.com/kb/3031432
+[3029944]: https://support.microsoft.com/kb/3029944
+[3004375]: https://support.microsoft.com/kb/3004375
 
-[3023266]: http://support.microsoft.com/kb/3023266
-[3020393]: http://support.microsoft.com/kb/3020393
-[3021674]: http://support.microsoft.com/kb/3021674
-[3019978]: http://support.microsoft.com/kb/3019978
-[3022777]: http://support.microsoft.com/kb/3022777
-[3004365]: http://support.microsoft.com/kb/3004365
-[3014029]: http://support.microsoft.com/kb/3014029
-[3019215]: http://support.microsoft.com/kb/3019215
-[3008923]: http://support.microsoft.com/kb/3008923
-[3020393]: http://support.microsoft.com/kb/3020393
+[3023266]: https://support.microsoft.com/kb/3023266
+[3020393]: https://support.microsoft.com/kb/3020393
+[3021674]: https://support.microsoft.com/kb/3021674
+[3019978]: https://support.microsoft.com/kb/3019978
+[3022777]: https://support.microsoft.com/kb/3022777
+[3004365]: https://support.microsoft.com/kb/3004365
+[3014029]: https://support.microsoft.com/kb/3014029
+[3019215]: https://support.microsoft.com/kb/3019215
+[3008923]: https://support.microsoft.com/kb/3008923
+[3020393]: https://support.microsoft.com/kb/3020393
 
-[3013776]: http://support.microsoft.com/kb/3013776
-[3013043]: http://support.microsoft.com/kb/3013043
-[3012712]: http://support.microsoft.com/kb/3012712
-[3004905]: http://support.microsoft.com/kb/3004905
-[3004394]: http://support.microsoft.com/kb/3004394
-[2999323]: http://support.microsoft.com/kb/2999323
-[3013488]: http://support.microsoft.com/kb/3013488
-[3012325]: http://support.microsoft.com/kb/3012325
-[3007054]: http://support.microsoft.com/kb/3007054
-[2999802]: http://support.microsoft.com/kb/2999802
-[2896881]: http://support.microsoft.com/kb/2896881
+[3013776]: https://support.microsoft.com/kb/3013776
+[3013043]: https://support.microsoft.com/kb/3013043
+[3012712]: https://support.microsoft.com/kb/3012712
+[3004905]: https://support.microsoft.com/kb/3004905
+[3004394]: https://support.microsoft.com/kb/3004394
+[2999323]: https://support.microsoft.com/kb/2999323
+[3013488]: https://support.microsoft.com/kb/3013488
+[3012325]: https://support.microsoft.com/kb/3012325
+[3007054]: https://support.microsoft.com/kb/3007054
+[2999802]: https://support.microsoft.com/kb/2999802
+[2896881]: https://support.microsoft.com/kb/2896881
 
-[3032359]: http://support.microsoft.com/kb/3032359
-[3040297]: http://support.microsoft.com/kb/3040297
-[3041836]: http://support.microsoft.com/kb/3041836
-[3032323]: http://support.microsoft.com/kb/3032323
-[3034344]: http://support.microsoft.com/kb/3034344
-[3035132]: http://support.microsoft.com/kb/3035132
-[3038680]: http://support.microsoft.com/kb/3038680
-[3002657]: http://support.microsoft.com/kb/3002657
-[3035126]: http://support.microsoft.com/kb/3035126
+[3032359]: https://support.microsoft.com/kb/3032359
+[3040297]: https://support.microsoft.com/kb/3040297
+[3041836]: https://support.microsoft.com/kb/3041836
+[3032323]: https://support.microsoft.com/kb/3032323
+[3034344]: https://support.microsoft.com/kb/3034344
+[3035132]: https://support.microsoft.com/kb/3035132
+[3038680]: https://support.microsoft.com/kb/3038680
+[3002657]: https://support.microsoft.com/kb/3002657
+[3035126]: https://support.microsoft.com/kb/3035126
 
-[3049563]:http://support.microsoft.com/kb/3049563
-[3057110]:http://support.microsoft.com/kb/3057110
-[3046002]:http://support.microsoft.com/kb/3046002
-[3057134]:http://support.microsoft.com/kb/3057134
-[3055642]:http://support.microsoft.com/kb/3055642
-[3057191]:http://support.microsoft.com/kb/3057191
-[3050514]:http://support.microsoft.com/kb/3050514
-[3057263]:http://support.microsoft.com/kb/3057263
-[3051768]:http://support.microsoft.com/kb/3051768
-[3061518]:http://support.microsoft.com/kb/3061518
+[3049563]:https://support.microsoft.com/kb/3049563
+[3057110]:https://support.microsoft.com/kb/3057110
+[3046002]:https://support.microsoft.com/kb/3046002
+[3057134]:https://support.microsoft.com/kb/3057134
+[3055642]:https://support.microsoft.com/kb/3055642
+[3057191]:https://support.microsoft.com/kb/3057191
+[3050514]:https://support.microsoft.com/kb/3050514
+[3057263]:https://support.microsoft.com/kb/3057263
+[3051768]:https://support.microsoft.com/kb/3051768
+[3061518]:https://support.microsoft.com/kb/3061518
 
-[3038314]:http://support.microsoft.com/kb/3038314
-[3042553]:http://support.microsoft.com/kb/3042553
-[3046306]:http://support.microsoft.com/kb/3046306
-[3046269]:http://support.microsoft.com/kb/3046269
-[3049576]:http://support.microsoft.com/kb/3049576
-[3046482]:http://support.microsoft.com/kb/3046482
-[3045711]:http://support.microsoft.com/kb/3045711
-[3048010]:http://support.microsoft.com/kb/3048010
-[3047234]:http://support.microsoft.com/kb/3047234
-[3045755]:http://support.microsoft.com/kb/3045755
-[3030377]:http://support.microsoft.com/kb/3030377
-[3039976]:http://support.microsoft.com/kb/3039976
+[3038314]:https://support.microsoft.com/kb/3038314
+[3042553]:https://support.microsoft.com/kb/3042553
+[3046306]:https://support.microsoft.com/kb/3046306
+[3046269]:https://support.microsoft.com/kb/3046269
+[3049576]:https://support.microsoft.com/kb/3049576
+[3046482]:https://support.microsoft.com/kb/3046482
+[3045711]:https://support.microsoft.com/kb/3045711
+[3048010]:https://support.microsoft.com/kb/3048010
+[3047234]:https://support.microsoft.com/kb/3047234
+[3045755]:https://support.microsoft.com/kb/3045755
+[3030377]:https://support.microsoft.com/kb/3030377
+[3039976]:https://support.microsoft.com/kb/3039976
 
-[3058515]:http://support.microsoft.com/kb/3058515
-[3033890]:http://support.microsoft.com/kb/3033890
-[3059317]:http://support.microsoft.com/kb/3059317
-[3057839]:http://support.microsoft.com/kb/3057839
-[3062577]:http://support.microsoft.com/kb/3062577
-[3063858]:http://support.microsoft.com/kb/3063858
+[3058515]:https://support.microsoft.com/kb/3058515
+[3033890]:https://support.microsoft.com/kb/3033890
+[3059317]:https://support.microsoft.com/kb/3059317
+[3057839]:https://support.microsoft.com/kb/3057839
+[3062577]:https://support.microsoft.com/kb/3062577
+[3063858]:https://support.microsoft.com/kb/3063858
 
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx

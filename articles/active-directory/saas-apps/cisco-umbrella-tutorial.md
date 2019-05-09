@@ -4,22 +4,23 @@ description: Azure Active Directory と Cisco Cloud の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 675dca98-f119-4463-8350-d6a45d5601e3
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cbf58f7e5553f10087c854428a6a369cbb8c3bf9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9a1b0763e33607367939476ca155040295de864c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>チュートリアル:Azure Active Directory と Cisco Umbrella の統合
 
@@ -78,8 +79,8 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Cisco Umbrella シングル サインオンの構成](#configure-cisco-umbrella-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Cisco Umbrella のテスト ユーザーの作成](#create-cisco-umbrella-test-user)** - Cisco Umbrella で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Cisco Umbrella のテスト ユーザーの作成](#create-cisco-umbrella-test-user)** - Cisco Umbrella で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
@@ -110,7 +111,7 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
     c. **[サインオン URL]** ボックスに、「`https://login.umbrella.com/sso`」と入力します。
 
-4. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
+5. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -128,7 +129,7 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Cisco Umbrella 企業サイトにサインオンします。
 
-2.  メニューの左側で **[Admin]\(管理者\)** をクリックして、**[Authentication]\(認証\)** に移動し、**[SAML]** をクリックします。
+2. メニューの左側で **[Admin]\(管理者\)** をクリックして、**[Authentication]\(認証\)** に移動し、**[SAML]** をクリックします。
 
     ![管理](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_admin.png)
 
@@ -144,10 +145,9 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
     ![次](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-
 6. **[Option A:Upload XML file]\(オプション A: XML ファイルのアップロード\)** で、Azure portal からダウンロードした**フェデレーション メタデータ XML** ファイルをアップロードします。アップロードすると、次の値が自動的に入力されます。**[NEXT]\(次\)** をクリックします。
 
-    ![Choosefile ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
+    ![Choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
 7. **[Validate SAML Configuration]\(SAML 構成の検証\)** セクションで、**[TEST YOUR SAML CONFIGURATION]\(SAML 構成のテスト\)** をクリックします。
 
@@ -155,7 +155,7 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
 8. **[保存]** をクリックします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
@@ -173,7 +173,7 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -215,7 +215,7 @@ Cisco Umbrella の場合、プロビジョニングは手動で行います。
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Cisco Umbrella 企業サイトにサインオンします。
 
-2.  メニューの左側で **[Admin]\(管理者\)** をクリックして、**[Accounts]\(アカウント\)** をクリックします。
+2. メニューの左側で **[Admin]\(管理者\)** をクリックして、**[Accounts]\(アカウント\)** をクリックします。
 
     ![アカウント](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_account.png)
 
@@ -229,7 +229,7 @@ Cisco Umbrella の場合、プロビジョニングは手動で行います。
 
     c. **[Choose Delegated Admin Role]\(代理管理者ロールの選択\)** から自分のロールを選択します。
   
-    d. **[Email address]\(メール アドレス\)** フィールドに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
+    d. **[Email address]\(メール アドレス\)** フィールドに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
     e. **[Password]\(パスワード\)** フィールドにパスワードを入力します。
 
@@ -237,7 +237,7 @@ Cisco Umbrella の場合、プロビジョニングは手動で行います。
 
     g. **[作成]** をクリックします。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -247,7 +247,6 @@ Cisco Umbrella の場合、プロビジョニングは手動で行います。
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

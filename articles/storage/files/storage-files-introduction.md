@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: overview
 ms.date: 07/19/2018
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: ef2930f30bf700ce81a2763a5a96a5d154bda1b5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.subservice: files
+ms.openlocfilehash: 647b1723136edd23f3e58f1c225c9226714d4d97
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008489"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466894"
 ---
 # <a name="what-is-azure-files"></a>Azure Files とは
 Azure Files はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにある Windows、macOS、および Linux に同時にマウントできます。 さらに、高速アクセスするため、Azure File Sync を使用して、データが使用されている場所の近くの Windows サーバーに Azure ファイル共有をキャッシュできます。

@@ -1,6 +1,6 @@
 ---
 title: Kafka が有効なイベント ハブへのストリーム - Azure Event Hubs | Microsoft Docs
-description: この記事では、Kafka プロトコルおよび API を使用して、Azure Event Hubs へストリーミングする方法に関する情報を示します。
+description: この記事では、Kafka のプロトコルおよび API を使用して、Azure Event Hubs にストリーム配信する方法に関する情報を示します。
 services: event-hubs
 author: basilhariri
 ms.author: bahariri
@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.openlocfilehash: d6e293b80df1ab227a3100040a54b189f48d8027
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fec60cdf3fcf24378567ea97dd7922c805cde18
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102811"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542932"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Apache Kafka 用 Event Hubs へのストリーム配信
 このクイック スタートでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を示します。 プロデューサーとコンシューマーを使用して、アプリケーションの構成変更だけで Kafka 対応 Event Hubs と通信する方法を説明します。 Azure Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) がサポートされています。
@@ -28,19 +28,19 @@ ms.locfileid: "53102811"
 * [Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) に関する記事を読む。
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 * [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)
-* Maven バイナリ アーカイブの[ダウンロード](http://maven.apache.org/download.cgi)と[インストール](http://maven.apache.org/install.html)
+* Maven バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
 * [Git](https://www.git-scm.com/)
 * [Kafka 対応 Event Hubs 名前空間](event-hubs-create.md)
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka 対応 Event Hubs 名前空間の作成
 
-1. [Azure portal][Azure portal] にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
 
 2. Event Hubs を検索し、以下に示すオプションを選択します。
     
     ![ポータルでの Event Hubs の検索](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. 一意の名前を指定し、名前空間で Kafka を有効にします。 **Create** をクリックしてください。
+3. 一意の名前を指定し、名前空間で Kafka を有効にします。 **Create** をクリックしてください。 注:Kafka 用 Event Hubs は、Standard および Dedicated レベルの Event Hubs でのみサポートされます。 Basic レベルの Event Hubs では、Kafka の操作に対してトピックの認可エラーが返されます。
     
     ![名前空間の作成](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  

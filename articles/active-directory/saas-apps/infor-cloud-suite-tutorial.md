@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a2f4f843-00d2-4522-a29d-6496cc5a781a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: bed29e213c3a4ed81ec8736d40f33b35d7f069a5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 025a9d7df16b2be5e22104010be057403ce53c25
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52730553"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58880629"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>チュートリアル: Azure Active Directory と Infor CloudSuite の統合
 
@@ -118,7 +119,7 @@ Infor CloudSuite で Azure AD のシングル サインオンを構成してテ�
     
     | | |
     |-|-|
-    | ` http://mingle-sso.inforcloudsuite.com`|
+    | `http://mingle-sso.inforcloudsuite.com`|
     | `http://mingle-sso.se1.inforcloudsuite.com`|
     | `http://mingle-sso.eu1.inforcloudsuite.com`|
     | `http://mingle-sso.se2.inforcloudsuite.com`|
@@ -128,9 +129,9 @@ Infor CloudSuite で Azure AD のシングル サインオンを構成してテ�
 
     | | |
     |-|-|
-    | ` https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2 `|
-    | `https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2 `|
-    | `https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2 `|
+    | `https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2`|
+    | `https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2`|
+    | `https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2`|
     | `https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2`|
     | |
 
@@ -144,7 +145,7 @@ Infor CloudSuite で Azure AD のシングル サインオンを構成してテ�
     |-|-|
     | `https://mingle-portal.inforcloudsuite.com/Tenant-Name/`|
     | `https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/ `|
+    | `https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/`|
     | `https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/`| 
 
     > [!NOTE]
@@ -174,12 +175,12 @@ Infor CloudSuite で Azure AD のシングル サインオンを構成してテ�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d. **作成** を選択します。
 
 ### <a name="creating-infor-cloudsuite-test-user"></a>Infor CloudSuite のテスト ユーザーの作成
 

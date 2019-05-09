@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c119869c47547fd5d91f6ee91fcd772ea5941f46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433256"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010955"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge モジュールの [Marketplace] タブ
 
 
-**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、**[概要]**、**[Marketing Artifacts]\(マーケティングの成果物\)**、**[リードの管理]**、**[法的情報]** の 4 つのセクションに分かれています。
+**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]**、**[Marketing Artifacts]\(マーケティングの成果物\)**、**[Lead Management]\(潜在顧客の管理\)**、**[法的情報]**。
 
 ## <a name="overview"></a>概要
 
@@ -39,7 +39,7 @@ ms.locfileid: "49433256"
 | **タイトル**                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 <!--ADD PICTURE IN ACTION-->|
 | **まとめ**               | プランの短い要約。 最大長は 100 文字です。 <!--ADD PICTURE IN ACTION-->|
 | **Long Summary (長い要約)**          | プランのより長い要約 (**[要約]** と同じでもかまいません)。  最大長は 256 文字です。 <!--ADD PICTURE IN ACTION-->|
-| **説明**           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。<br/> 末尾に*最小ハードウェア要件*の段落が含まれている必要があります。 次に例を示します。 <br/> <p><u>ハードウェアの最小要件:</u> Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ</p>
+| **説明**           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。<br/> 末尾に*最小ハードウェア要件*の段落が含まれている必要があります。 次に例を示します。 <br/> <p><u>最小ハードウェア要件:</u> Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ</p>
 | **Marketing Identifier (マーケティング識別子)**  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  例:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Preview Subscription IDs (プレビュー サブスクリプション ID)** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
 | **役に立つリンク**          | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 10 個設定できます。 少なくともドキュメントへのリンクを 1 つと、[Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)に記載されている互換性のある IoT Edge デバイスへのリンクを 1 つ、追加するようにしてください。 |
@@ -78,7 +78,7 @@ ms.locfileid: "49433256"
 
 ## <a name="marketing-artifacts"></a>マーケティングの成果物
 
-このセクションには、サブセクションとして、**[ロゴ]**、**[スクリーンショット]**、**[ビデオ]** があります。 
+このセクションには、次のサブセクションがあります: **[ロゴ]**、**[スクリーンショット]**、**[ビデオ]**。 
 
 >[!Note]
 >必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。
@@ -94,17 +94,17 @@ ms.locfileid: "49433256"
 | **ワイド**                  | 255 x 115 ピクセルの PNG 形式                                                   |
 | **ヒーロー**                  | 815 x 290 ピクセルの PNG 形式。  オプション。ただし、ヒーロー アイコンはアップロードしたら削除できません。 |
 | *スクリーンショット*  | スクリーンショットは製品の詳細ページに表示されます。 その IoT Edge モジュール自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 たとえば、アーキテクチャ ダイアグラムやユース ケースの例を表示できます。 オプション。ただし、SKU あたり最大 5 つのスクリーンショット。 |
-| **名前**                  | 名前またはタイトル。 最大長は 100 文字です。                             |
+| **Name**                  | 名前またはタイトル。 最大長は 100 文字です。                             |
 | **Image**                 | 画面キャプチャ画像。533 x 324 ピクセルの PNG 形式                                         |
 | *ビデオ*  | ビデオは製品の詳細ページに表示されます。 その IoT Edge モジュール自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 |
-| **名前**                  | 名前またはタイトル。 最大長は 100 文字です。                              |
+| **Name**                  | 名前またはタイトル。 最大長は 100 文字です。                              |
 | **リンク**                  | ビデオの URL。YouTube や Vimeo でホストされます                                        |
 | **サムネイル**             | 533 x 324 ピクセルの PNG 形式                                                           |
 
 
 ### <a name="logo-guidelines"></a>ロゴのガイドライン
 
-<!-- It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 Cloud パートナー ポータルにアップロードされるすべてのロゴは、以下のガイドラインに従っている必要があります。
@@ -160,7 +160,7 @@ As an example, the following hero icon is for the Azure Container Service.
 
 ## <a name="legal"></a>法的情報
 
-このセクションでは、各プランに必須の 2 つの法的ドキュメント (プライバシー ポリシーと利用規約) を指定できます。
+このセクションでは、各オファーに必須の 2 つの法的ドキュメントを指定できます。プライバシー ポリシーと利用規約。
 
 |  **フィールド**                |     **説明**                                                          |
 |  ---------                |     ---------------                                                          |

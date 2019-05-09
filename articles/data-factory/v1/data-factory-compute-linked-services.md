@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053663"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545164"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 > [!NOTE]
@@ -28,11 +28,11 @@ ms.locfileid: "37053663"
 
 次の表は、Data Factory でサポートされているコンピューティング環境と、その環境で実行できるアクティビティの一覧です。 
 
-| Compute 環境                      | アクティビティ                               |
+| Compute 環境                      | Activities                               |
 | ---------------------------------------- | ---------------------------------------- |
 | [オンデマンド Azure HDInsight クラスター](#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning アクティビティ: バッチ実行とリソース更新](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) |
 
@@ -51,7 +51,7 @@ Microsoft では、HDInsight のサポートされるバージョンの一覧を
 2017 年 12 月 15 日以降:
 
 - Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスを使用して、Linux ベースの HDInsight バージョン 3.3 以前のクラスターを作成できなくなります。 
-- 既存の Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスの JSON 定義で、[**osType** や **Version** のプロパティ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1, osType=Windows** から **Version=\<最新の HDI 既定バージョン\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions), osType=Linux** に変更されます。
+- 既存の Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスの JSON 定義で、[**osType** や **Version** のプロパティ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1, osType=Windows** から **Version=\<最新の HDI 既定バージョン\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux** に変更されます。
 
 2018 年 7月 31 日以降:
 
@@ -116,7 +116,7 @@ Data Factory では、データを処理するための Windows ベースまた�
 > [!IMPORTANT]
 > HDInsight クラスターは、JSON **linkedServiceName** で指定した Azure Blob Storage に "*既定のコンテナー*" を作成します。 クラスターが削除されても、HDInsight はこのコンテナーを意図的に削除しません。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスの処理が必要になるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると削除されます。 
 >
-> 処理されるスライスが多いほど、Blob Storage 内のコンテナーも増えます。 ジョブのトラブルシューティング用コンテナーが不要な場合は、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf<your Data Factory name>-<linked service name>-<date and time>` 形式になります。 [Microsoft Storage Explorer](http://storageexplorer.com/) などのツールを使用して、Blob Storage のコンテナーを削除できます。
+> 処理されるスライスが多いほど、Blob Storage 内のコンテナーも増えます。 ジョブのトラブルシューティング用コンテナーが不要な場合は、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf<your Data Factory name>-<linked service name>-<date and time>` 形式になります。 [Microsoft Storage Explorer](https://storageexplorer.com/) などのツールを使用して、Blob Storage のコンテナーを削除できます。
 >
 > 
 
@@ -126,13 +126,13 @@ Data Factory では、データを処理するための Windows ベースまた�
 | type                         | type プロパティを **HDInsightOnDemand** に設定します。 | はい      |
 | clusterSize                  | クラスターの worker とデータ ノードの数です。 HDInsight クラスターは、このプロパティで指定した worker ノードの数に加え、2 つのヘッド ノードを使用して作成されます。 ノードのサイズは Standard_D3 (4 コア) です。 4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 Standard_D3 レベルの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。 | はい      |
 | timeToLive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティの実行が完了したときに、オンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br /><br />たとえば、アクティビティ実行に 6 分かかるときに **timeToLive** が 5 分に設定されている場合、アクティビティの実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティの実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br /><br />オンデマンド HDInsight クラスターの作成は高額な作業です (時間がかかる場合もあります)。 この設定を必要に応じて使用し、オンデマンド HDInsight クラスターを再利用することで、データ ファクトリのパフォーマンスを改善します。<br /><br />**timeToLive** 値を **0** に設定した場合、クラスターは、アクティビティの実行の完了直後に削除されます。 一方、高い値を設定すると、クラスターでは不必要にアイドル状態が維持され、コストの上昇を招きます。 重要なのは、ニーズに合わせて適切な値を設定することです。<br /><br />**timeToLive** 値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | はい      |
-| version                      | HDInsight クラスターのバージョン。 許可されている HDInsight バージョンについては、「[サポートされる HDInsight のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)」を参照してください。 この値が指定されていない場合は、[最新 HDI の既定のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions)が使用されます。 | いいえ        |
+| version                      | HDInsight クラスターのバージョン。 許可されている HDInsight バージョンについては、「[サポートされる HDInsight のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)」を参照してください。 この値が指定されていない場合は、[最新 HDI の既定のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)が使用されます。 | いいえ        |
 | linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、このストレージ アカウントと同じリージョンに作成されます。<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Blob Storage から Data Lake Store にデータをコピーします。 </p> | はい      |
 | additionalLinkedServiceNames | HDInsight のリンクされたサービスの追加ストレージ アカウントを指定します。 ストレージ アカウントは、Data Factory によって自動的に登録されます。 こうしたストレージ アカウントは、HDInsight クラスターと同じリージョンに存在する必要があります。 HDInsight クラスターは、**linkedServiceName** プロパティで指定されているストレージ アカウントと同じリージョンで作成されます。 | いいえ        |
 | osType                       | オペレーティング システムの種類。 使用可能な値は **Linux** と **Windows** です。 この値を指定しない場合は、**Linux** が使用されます。  <br /><br />Linux ベースの HDInsight クラスターを使用することを強くお勧めします。 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 | いいえ        |
 | hcatalogLinkedServiceName    | HCatalog データベースを指定する Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、SQL データベースを metastore として使用して作成されます。 | いいえ        |
 
-#### <a name="example-linkedservicenames-json"></a>例: LinkedServiceNames JSON
+#### <a name="example-linkedservicenames-json"></a>例:LinkedServiceNames JSON
 
 ```json
 "additionalLinkedServiceNames": [
@@ -155,7 +155,7 @@ Data Factory では、データを処理するための Windows ベースまた�
 | stormConfiguration     | HDInsight クラスターに Storm 構成パラメーター (storm-site.xml) を指定します。 | いいえ        |
 | yarnConfiguration      | HDInsight クラスターに YARN 構成パラメーター (yarn-site.xml) を指定します。 | いいえ        |
 
-#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>例: オンデマンド HDInsight クラスター構成と詳細なプロパティ
+#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>例:オンデマンド HDInsight クラスター構成と詳細なプロパティ
 
 ```json
 {
@@ -215,7 +215,7 @@ D4 サイズのヘッド ノードと worker ノードを作成する場合は�
 
 こうしたプロパティに不適切な値を設定すると、次のメッセージが表示される場合があります。
 
-  クラスターを作成できませんでした。 例外: クラスター作成操作を完了できません。 コード '400' で操作が失敗しました。 取り残されたクラスターの状態: 'Error'。 メッセージ: 'PreClusterCreationValidationFailure'。" というエラー メッセージが表示される場合があります。 
+  クラスターを作成できませんでした。 例外:クラスター作成操作を完了できません。 コード '400' で操作が失敗しました。 取り残されたクラスターの状態:'Error'。 メッセージ:'PreClusterCreationValidationFailure'。 
   
 このメッセージが表示された場合は、[仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)に関するページの表に記載されているコマンドレットと API 名を使用していることを確認してください。  
 
@@ -271,7 +271,7 @@ Batch のリンクされたサービスを作成し、仮想マシン (VM) の B
 Batch サービスを初めて利用する場合:
 
 * [Azure Batch の基本](../../batch/batch-technical-overview.md)についてご確認ください。
-* [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットについてご確認ください。 このコマンドレットを使用して、Batch アカウントを作成します。 また、[Azure Portal](../../batch/batch-account-create-portal.md) を使用して、Batch アカウントを作成することもできます。 このコマンドレットの使用の詳細については、[PowerShell を使用した Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)に関するページをご覧ください。
+* [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットについてご確認ください。 このコマンドレットを使用して、Batch アカウントを作成します。 また、[Azure Portal](../../batch/batch-account-create-portal.md) を使用して、Batch アカウントを作成することもできます。 このコマンドレットの使用の詳細については、[PowerShell を使用した Batch アカウントの管理](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)に関するページをご覧ください。
 * [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) コマンドレットについてご確認ください。 このコマンドレットを使用して、Batch プールを作成します。
 
 ### <a name="example"></a>例
@@ -308,7 +308,7 @@ Batch サービスを初めて利用する場合:
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | type プロパティを **AzureBatch** に設定します。 | はい      |
-| .<リージョン名       | Batch アカウントの名前。         | はい      |
+| accountName       | Batch アカウントの名前。         | はい      |
 | accessKey         | Batch アカウントのアクセス キー。  | はい      |
 | poolName          | VM のプールの名前。    | はい      |
 | linkedServiceName | この Batch のリンクされたサービスに関連付けられている、ストレージのリンクされたサービスの名前。 このリンクされたサービスは、アクティビティの実行およびアクティビティの実行ログの保存に必要なステージング ファイルに使用されます。 | はい      |
@@ -346,7 +346,7 @@ Data Lake Analytics のリンクされたサービスを作成して、Data Lake
 | プロパティ                 | 説明                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | type プロパティを **AzureDataLakeAnalytics** に設定します。 | はい                                      |
-| .<リージョン名          | Data Lake Analytics アカウント名です。  | はい                                      |
+| accountName          | Data Lake Analytics アカウント名です。  | はい                                      |
 | dataLakeAnalyticsUri | Data Lake Analytics URI です。           | いいえ                                        |
 | subscriptionId       | Azure サブスクリプション ID です。                    | いいえ <br /><br />(指定されていない場合は、データ ファクトリのサブスクリプションが使用されます)。 |
 | resourceGroupName    | Azure リソース グループ名です。                | いいえ <br /><br /> (指定されていない場合は、データ ファクトリのリソース グループが使用されます)。 |
@@ -366,9 +366,9 @@ Data Lake Analytics のリンクされたサービスについては、サービ
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | アプリケーションのクライアント ID です。     | はい      |
 | servicePrincipalKey | アプリケーションのキーです。           | はい      |
-| テナント              | アプリケーションが配置されているテナントの情報 (ドメイン名またはテナント ID)。 この情報を取得するには、Azure Portal の右上隅にマウス ポインターを移動します。 | はい      |
+| tenant              | アプリケーションが配置されているテナントの情報 (ドメイン名またはテナント ID)。 この情報を取得するには、Azure Portal の右上隅にマウス ポインターを移動します。 | はい      |
 
-**例: サービス プリンシパル認証**
+**例:サービス プリンシパルの認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -395,7 +395,7 @@ Data Lake Analytics のユーザー資格情報認証については、次のプ
 | authorization | Data Factory エディターで、**[承認する]** を選択します。 自動生成された認可 URL をこのプロパティに割り当てる資格情報を入力します。 | はい      |
 | sessionId     | OAuth 認可セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | はい      |
 
-**例: ユーザー資格情報認証**
+**例:ユーザー資格情報認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -418,7 +418,7 @@ Data Lake Analytics のユーザー資格情報認証については、次のプ
 
 認証トークンの有効期限が切れると、次のエラー メッセージが表示される場合があります。 
 
-  資格情報の操作エラー: invalid_grant - AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS70008: 指定されたアクセス権の付与は期限が切れているか、失効しています。 トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ: 2015-12-15 21:09:31Z"
+  資格情報の操作エラー: invalid_grant - AADSTS70002:Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS70008:指定されたアクセス権の付与は期限が切れているか、失効しています。 トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ:2015-12-15 21:09:31Z
 
 次の表は、ユーザー アカウントの種類ごとに有効期限を示しています。 
 

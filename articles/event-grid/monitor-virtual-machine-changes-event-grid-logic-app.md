@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 11/30/2017
-ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 01/12/2019
+ms.openlocfilehash: e735c9773971a4c594c32e9ae29eeb295c32810c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106075"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473709"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>チュートリアル: Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
 
@@ -60,9 +60,9 @@ ms.locfileid: "53106075"
 
    | 設定 | 推奨値 | Description | 
    | ------- | --------------- | ----------- | 
-   | **名前** | *{ロジック アプリ名}* | 一意のロジック アプリ名を指定します。 | 
+   | **Name** | *{ロジック アプリ名}* | 一意のロジック アプリ名を指定します。 | 
    | **サブスクリプション** | *{Azure サブスクリプション}* | このチュートリアルでは、すべてのサービスで同じ Azure サブスクリプションを選択します。 | 
-   | **[リソース グループ]** | *{Azure リソース グループ}* | このチュートリアルでは、すべてのサービスで同じ Azure リソース グループを選択します。 | 
+   | **リソース グループ** | *{Azure リソース グループ}* | このチュートリアルでは、すべてのサービスで同じ Azure リソース グループを選択します。 | 
    | **場所** | *{Azure のリージョン}* | このチュートリアルでは、すべてのサービスで同じ リージョンを選択します。 | 
    | | | 
 

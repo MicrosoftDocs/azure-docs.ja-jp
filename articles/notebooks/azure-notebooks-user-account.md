@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 0d657fcc-26bc-41dd-abf0-3e5cfd66e0e0
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: f95edde6a501cf33c45daccc2dbd2605c077217d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092615"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608012"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>Azure Notebooks のユーザー アカウント
 
@@ -41,6 +41,9 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 持っているかどうかが不明な場合は、アカウント プロンプトで **[作成]** を選択します。 任意のプロバイダーが提供する任意の電子メール アドレスを使用して、新しい Microsoft アカウントを作成できます。
 
 ![新しい Microsoft アカウントを作成するためのコマンド](media/accounts/create-new-microsoft-account.png)
+
+> [!Note]
+> 既にアカウントが関連付けられている電子メール アドレスで新しいアカウントを作成しようとすると、「職場または学校のメール アドレスではここにサインアップできません。Gmail や Yahoo! などの個人用メールを使用するか、新しい Outlook メールを取得してください」というメッセージが表示される場合があります。 Use a personal email, such as Gmail or Yahoo!, or get a new Outlook email." その場合は、新しいアカウントを作成せずに仕事用メール アドレスでサインインしてみてください。
 
 お子様が使用しているアカウントは、Azure Notebooks へのアクセスは既定でブロックされます。 お子様が使用しているアカウントでサインインすると、次のエラーが表示されます。
 

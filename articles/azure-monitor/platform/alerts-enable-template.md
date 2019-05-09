@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
-ms.component: metrics
-ms.openlocfilehash: a5e38f1400b99c6030799121d37721c26e16649c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: metrics
+ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721140"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433035"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
 この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
@@ -186,7 +186,7 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "newStorageAccountName": {
@@ -404,4 +404,5 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 ## <a name="next-steps"></a>次の手順
 * [アラートの詳細を確認します](alerts-overview.md)
 * [診断の設定を追加](../../azure-monitor/platform/diagnostic-logs-stream-template.md) します
+* JSON の構文とプロパティについては、[Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) テンプレート リファレンスをご覧ください。
 

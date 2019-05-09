@@ -1,24 +1,27 @@
 ---
 title: バージョン管理
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Language Understanding (LUIS) でバージョンを使用して変更を管理する方法を学習します。
+description: LUIS のバージョンは、従来のプログラミングのバージョンと似ています。 各バージョンは、アプリのある時点のスナップショットです。 アプリを変更する前に、新しいバージョンを作成してください。 特定のアプリに戻り、アプリの意図と発話を前の状態に戻してみることが簡単になります。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: 3dae1256e93bb15777225ada742539c5a0ebdccc
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015570"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870654"
 ---
-# <a name="versions"></a>バージョン
+# <a name="understand-how-and-when-to-use-a-luis-version"></a>LUIS バージョンを使用する方法とタイミング
+
+LUIS のバージョンは、従来のプログラミングのバージョンと似ています。 各バージョンは、アプリのある時点のスナップショットです。 アプリを変更する前に、新しいバージョンを作成してください。 特定のバージョンに戻り、意図と発話を削除し、前の状態に戻してみるとより簡単です。
+
 [バージョン](luis-how-to-manage-versions.md)を使用して同じアプリの別モデルを作成します。 
 
 ## <a name="version-id"></a>バージョン ID
@@ -32,7 +35,7 @@ ms.locfileid: "53015570"
 
 現在アクティブなバージョンの名前は、左上のパネルのアプリ名の後に表示されます。 
 
-[ ![アクティブなバージョンの変更](./media/luis-concept-version/version-in-nav-bar-inline.png) ](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
+[![アクティブなバージョンの変更](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
 ## <a name="versions-and-publishing-slots"></a>バージョンと公開スロット
 ステージング スロットと運用スロットのどちらかに公開します。 スロットごとで、別のバージョンを公開することも、同じバージョンを公開することもできます。 これは、エンドポイントを介してモデルのバージョン間の変更を確認するときに役立ち、ボットや他の LUIS 呼び出し元アプリケーションで使用できます。 

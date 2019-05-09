@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: e265a46533264bbb1d437edbfe1bbfb3306614ad
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fa7d46d45c350435c0ffba8f3755ad8bea651c3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044825"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088759"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
 
@@ -46,7 +46,7 @@ Azure CLI を使用して、Azure Data Lake Analytics のアカウント、デ�
    az dla -h
    ```
 
-## <a name="manage-accounts"></a>[アカウントの管理]
+## <a name="manage-accounts"></a>アカウントの管理
 
 Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Azure HDInsight とは異なり、ジョブを実行しなければ、Analytics アカウントには課金されません。 ジョブの実行時にのみ課金されます。  詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。  
 
@@ -180,9 +180,9 @@ BLOB ストレージ アカウントを削除するには:
 > [!NOTE]
 > ジョブの既定の優先度は 1000 で、ジョブの並列処理の既定の次数は 1 です。
 > 
-   ```azurecli
-   az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
-   ```
+>    ```azurecli
+>    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
+>    ```
 
 ### <a name="cancel-jobs"></a>ジョブの取り消し
 list コマンドを使用してジョブ ID を検索した後、cancel を使用してそのジョブを取り消します。

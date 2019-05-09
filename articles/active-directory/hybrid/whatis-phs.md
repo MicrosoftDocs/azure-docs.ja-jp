@@ -3,19 +3,20 @@ title: Azure AD とのパスワード ハッシュ同期とは | Microsoft Docs
 description: パスワード ハッシュ同期について説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 12/05/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3e0c13312557503f4c2e1900f3c13eb45912345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f588115e38ded07b79568c91b8d166949b34a886
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110473"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179180"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Azure AD とのパスワード ハッシュ同期とは
 パスワード ハッシュ同期は、ハイブリッド ID を実現するために使用されるサインイン方法の 1 つです。 Azure AD Connect では、オンプレミスの Active Directory インスタンスからクラウドベースの Azure AD インスタンスに、ユーザー パスワードのハッシュを同期します。

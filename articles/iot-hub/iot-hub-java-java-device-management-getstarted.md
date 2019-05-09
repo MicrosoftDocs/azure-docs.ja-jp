@@ -1,19 +1,20 @@
 ---
 title: Azure IoT Hub デバイス管理の開始 (Java) | Microsoft Docs
 description: Azure IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT device SDK for Java を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリを実装し、Azure IoT service SDK for Java を使用して、ダイレクト メソッドを呼び出すサービス アプリを実装します。
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 46b094e8436d74915a1cd5a0ccec402bee03e33b
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 6dcec5b72be8868a83a5760ef95117d3e751bcc3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515286"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538104"
 ---
 # <a name="get-started-with-device-management-java"></a>デバイス管理の開始 (Java)
 
@@ -56,7 +57,7 @@ ms.locfileid: "51515286"
 
 * Maven 3。  <br/> [開発環境の準備](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md)に関するページでは、このチュートリアル用に [Maven](https://maven.apache.org/what-is-maven.html) を Windows または Linux にインストールする方法が説明されています。
 
-* [Node.js のバージョン 0.10.0 以降](http://nodejs.org)。
+* [Node.js のバージョン 0.10.0 以降](https://nodejs.org)。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -100,7 +101,7 @@ ms.locfileid: "51515286"
     ```
 
     > [!NOTE]
-    > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
 
 5. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
@@ -246,7 +247,7 @@ ms.locfileid: "51515286"
     ```
 
     > [!NOTE]
-    > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
 
 4. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 

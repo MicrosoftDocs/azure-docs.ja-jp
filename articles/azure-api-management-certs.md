@@ -7,19 +7,19 @@ author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
-ms.service: na
+ms.service: api-management
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 788ce1f2543b9ed76d718cf01d28292f49594414
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037356"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798623"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure サービス管理証明書のアップロード
 管理証明書を使用することにより、Azure のクラシック デプロイ モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 
@@ -38,7 +38,7 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
 ## <a name="upload-a-management-certificate"></a>管理証明書のアップロード
 管理証明書 (公開キーのみを含んだ .cer ファイル) を作成したら、それをポータルにアップロードできます。 ポータルで証明書が使用可能な場合は、対になる証明書 (秘密キー) を持つすべての人が、Management API を経由して接続し、サブスクリプションに関連付けられているリソースにアクセスすることができます。
 
-1. [Azure Portal](http://portal.azure.com) にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. Azure サービスの一覧の下部にある **[すべてのサービス]** をクリックし、_[全般]_ サービス グループの **[サブスクリプション]** を選択します。
 
     ![サブスクリプション メニュー](./media/azure-api-management-certs/subscriptions_menu.png)
@@ -56,4 +56,4 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
     ![設定](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>次の手順
-サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイ モデル REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。
+サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイ モデル REST API](/azure/#pivot=sdkstools) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。

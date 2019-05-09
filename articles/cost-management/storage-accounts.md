@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 25a8057a1c547e29b209d87d9124a3e019957dd8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f03193253bd8d8a7530d65a552a07d3901887cf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104303"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn 用にストレージ アカウントを構成する
 
@@ -39,13 +39,13 @@ Cloudyn で使用するための Azure ストレージの構成は簡単です�
 2. **[すべてのサービス]** をクリックし、**[ストレージ アカウント]** を選択して、使用するストレージ アカウントまでスクロールしたら、そのアカウントを選択します。
 3. [ストレージ アカウント] ページの **[設定]** で **[アクセス キー]** をクリックします。
 4. [key1] の**ストレージ アカウント名**と**接続文字列**をコピーします。  
-![ストレージ アカウント名と接続文字列をコピーする](./media/storage-accounts/azure-storage-access-keys.png)  
+   ![ストレージ アカウント名と接続文字列をコピーする](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Azure portal から Cloudyn ポータルを開くか、 https://azure.cloudyn.com に移動してサインインします。
 6. 歯車記号をクリックし、**[Reports Storage Management]\(レポートのストレージ管理\)** を選択します。
 7. **[新規追加 +]** をクリックし、Microsoft Azure が選択されていることを確認します。 使用する Azure ストレージ アカウント名を **[名前]** ボックスに貼り付けます。 使用する**接続文字列**を対応するボックスに貼り付けます。 コンテナー名を入力し、**[保存]** をクリックします。  
-![[Add a new report storage]\(新しいレポート ストレージの追加\) ボックスに Azure Storage アカウントの名前と接続文字列を貼り付ける](./media/storage-accounts/azure-cloudyn-storage.png)
+   ![[Add a new report storage]\(新しいレポート ストレージの追加\) ボックスに Azure Storage アカウントの名前と接続文字列を貼り付ける](./media/storage-accounts/azure-cloudyn-storage.png)
 
-  新しい Azure レポート ストレージのエントリがストレージ アカウントの一覧に表示されます。  
+   新しい Azure レポート ストレージのエントリがストレージ アカウントの一覧に表示されます。  
     ![新しい Azure レポート ストレージの一覧のエントリ](./media/storage-accounts/azure-storage-entry.png)
 
 
@@ -67,8 +67,8 @@ Cloudyn のロールまたはユーザーには、バケットに対する PutOb
 4. **[JSON]** タブをクリックします。
 5. 次のポリシーを使用することで、S3 バケットにレポートを保存できます。 次のポリシーの例をコピーして、**[JSON]** タブに貼り付けます。&lt;bucketname&gt; は、実際のバケット名に置き換えます。
 
-  ```json
-{
+   ```json
+   {
     "Version": "2012-10-17",
     "Statement": [
       {
@@ -82,8 +82,8 @@ Cloudyn のロールまたはユーザーには、バケットに対する PutOb
         ]
       }
     ]
-}
-```
+   }
+   ```
 
 6. **[Review policy]\(ポリシーの確認\)** をクリックします。  
     ![情報の例を表示する AWS JSON ポリシー](./media/storage-accounts/aws-policy.png)  
@@ -122,11 +122,11 @@ Cloudyn のロールまたはユーザーには、バケットに対する PutOb
 2. **[Permissions]\(アクセス許可\)** タブを選択し、**[Bucket policy]\(バケット ポリシー\)** をクリックします。
 3. 次のポリシーのサンプルをコピーして貼り付けます。 &lt;bucket\_name&gt; と &lt;Cloudyn\_principle&gt; を、使用するバケットの ARN に置き換えます。 Cloudyn で使用されるロールまたはユーザーの ARN を置き換えます。
 
-  ```
-{
-  "Id": "Policy1485775646248",
-  "Version": "2012-10-17",
-  "Statement": [
+   ```
+   {
+   "Id": "Policy1485775646248",
+   "Version": "2012-10-17",
+   "Statement": [
     {
       "Sid": "SaveReport2S3",
       "Action": [
@@ -140,9 +140,9 @@ Cloudyn のロールまたはユーザーには、バケットに対する PutOb
         ]
       }
     }
-  ]
-}
-```
+   ]
+   }
+   ```
 
 4. バケット ポリシー エディターで、**[Save]\(保存\)** をクリックします。
 

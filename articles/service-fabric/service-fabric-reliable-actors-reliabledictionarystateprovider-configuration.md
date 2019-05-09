@@ -4,22 +4,22 @@ description: Azure Service Fabric の ReliableDictionaryActorStateProvider と�
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 13cf9c148e36201bd8ee81d4072d8b8cd8660bd1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053150"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669403"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors の構成 -- ReliableDictionaryActorStateProvider
 ReliableDictionaryActorStateProvider の既定の構成を変更するには、対象のアクターの Config フォルダーの下にある Visual Studio パッケージ ルートに生成された settings.xml ファイルを変更します。
@@ -39,7 +39,7 @@ ReliableDictionaryActorStateProvider の構成に影響を与えるグローバ�
 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
 ### <a name="configuration-names"></a>構成名
-| Name | 単位 | 既定値 | 解説 |
+| 名前 | 単位 | Default value | 解説 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |キロバイト |8388608 |ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。 このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。 |
 | WriteBufferMemoryPoolMaximumInKB |キロバイト |制限なし |ロガー書き込みバッファー メモリ プールを拡張できる最大サイズ。 |
@@ -84,7 +84,7 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>構成名
-| Name | 単位 | 既定値 | 解説 |
+| 名前 | 単位 | Default value | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソース定義の詳細については、「 [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md) 」を参照してください。 |
@@ -100,7 +100,7 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 ## <a name="sample-configuration-file"></a>サンプル構成ファイル
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Section Name="MyActorServiceReplicatorConfig">
       <Parameter Name="ReplicatorEndpoint" Value="MyActorServiceReplicatorEndpoint" />
       <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>

@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
-ms.openlocfilehash: a8a7514624387d0fc00d32e4d47042e4a3b130f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 41f8a403694eec897ba4a6eb147ab71757d5caa5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444421"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263937"
 ---
-# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI スクリプトの例: 複数の Web サイトを負荷分散する
+# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI スクリプトの例: 複数の Web サイトの負荷分散
 
 この Azure CLI スクリプトのサンプルでは、可用性セットのメンバーである 2 つの仮想マシン (VM) による仮想ネットワークを作成します。 ロード バランサーが、2 つの独立した IP アドレスのトラフィックを 2 つの VM に送信します。 スクリプトを実行した後は、Web サーバー ソフトウェアの VM へのデプロイ、および複数の Web サイトのホストを、それぞれ独自の IP アドレスで行うことができます。
 

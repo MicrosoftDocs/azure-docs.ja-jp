@@ -1,6 +1,6 @@
 ---
-title: Log Analytics のサービス プロバイダー向け機能 | Microsoft Docs
-description: Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。
+title: サービス プロバイダー向け Azure Monitor | Microsoft Docs
+description: Azure Monitor は、マネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV)、およびホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視するのに役立ちます。
 services: log-analytics
 documentationcenter: ''
 author: MeirMen
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.openlocfilehash: ac34cc467cc8ff7d231551683da130c0f7565800
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340540"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756563"
 ---
-# <a name="log-analytics-for-service-providers"></a>サービス プロバイダー向け Log Analytics
-Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。 
+# <a name="azure-monitor-for-service-providers"></a>サービス プロバイダー向け Azure Monitor
+Azure Monitor の Log Analytics ワークスペースは、マネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV)、およびホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視するのに役立ちます。 
 
 特に多くの異なる部署の IT 管理を担当する一元的な IT チームがある大企業では、サービス プロバイダーと多くの類似点を共有します。 このドキュメントでは簡単にするために*サービス プロバイダー* という言葉を使用していますが、企業およびその他のお客様にも同じ機能をご利用いただけます。
 
-[クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) プログラムに参加しているパートナーやサービス プロバイダーにとって、Log Analytics は [Azure CSP サブスクリプション](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)で使用できる Azure サービスの 1 つです。 
+[クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) プログラムに参加しているパートナーやサービス プロバイダーにとって、Azure Monitor の Log Analytics は [Azure CSP サブスクリプション](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)で使用できる Azure サービスの 1 つです。 
 
 ## <a name="architectures-for-service-providers"></a>サービス プロバイダー向けアーキテクチャ
 
@@ -62,7 +62,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 * このアーキテクチャは、エージェント ベースの VM データにのみ適用可能で、PaaS、SaaS、Azure ファブリック データ ソースには対応しません。
 * 顧客間のデータは、単一のワークスペースにマージされると、分離することが困難になる可能性があります。 これを行う唯一の適切な方法は、コンピューターの完全修飾ドメイン名 (FQDN) を使用するか、または Azure サブスクリプション ID を介するというものです。 
 * すべてのお客様からのすべてのデータは、単一の請求書と、同じ保有期間および構成設定を伴う同じリージョンに格納されます。
-* Microsoft Azure 診断や Azure 監査ログなどの Azure のファブリックおよび PaaS サービスは、ワークスペースがリソースと同じテナントにあることを必要とするため、中央のワークスペースにログを送信することができません。
+* Microsoft Azure Diagnostics や Azure 監査ログなどの Azure のファブリックおよび PaaS サービスは、ワークスペースがリソースと同じテナントにあることを必要とするため、中央のワークスペースにログを送信することができません。
 * すべての顧客からのすべての VM エージェントは、同じワークスペース ID とキーを使用して中央のワークスペースで認証されます。 他の顧客を中断せずに特定の顧客からのログをブロックする方法はありません。
 
 
@@ -70,11 +70,11 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 3 番目のアーキテクチャは、2 つのオプションを組み合わせたものです。 これは、ログが各顧客の元でローカルに格納されるという最初の分散アーキテクチャに基づきながら、何らかのメカニズムを使用して、ログの中央のリポジトリを作成します。 ログの一部はレポートと分析のために中央の場所にプルされます。 この一部は、少数のデータ型であることも、日次統計などのアクティビティの概要であることもあります。
 
-Log Analytics に中央の場所を実装するオプションは次の 2 つあります。
+ログを中央の場所に実装するには 2 つの方法があります。
 
 1. 中央ワークスペース:サービス プロバイダーでは、そのテナント内にワークスペースを作成し、[クエリ API](https://dev.loganalytics.io/) を[データ収集 API](../../azure-monitor/platform/data-collector-api.md) と共に利用して、さまざまなワークスペースからこの中央の場所にデータを移動させるスクリプトを使用できます。 スクリプト以外のもう 1 つのオプションは [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) を使用するというものです。
 
-2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics と [Power BI](../../azure-monitor/platform/powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。 
+2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics ワークスペースと [Power BI](../../azure-monitor/platform/powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。 
 
 
 ## <a name="next-steps"></a>次の手順

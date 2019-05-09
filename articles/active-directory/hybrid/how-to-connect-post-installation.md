@@ -1,26 +1,27 @@
 ---
-title: 'Azure AD Connect: 次のステップと Azure AD Connect の管理方法 | Microsoft Docs'
+title: Azure AD Connect:次のステップと Azure AD Connect の管理方法 | Microsoft Docs
 description: Azure AD Connect の既定の構成と運用タスクを拡張する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c18bee36-aebf-4281-b8fc-3fe14116f1a5
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 878b483c1f644bcfe39824766ca5495f111d1864
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 291b3d506993cfea89be072684835c0d4efe75f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306221"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095451"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>次のステップと Azure AD Connect の管理方法
 この記事の操作手順を使用して、組織のニーズや要件を満たすように Azure Active Directory (Azure AD) Connect をカスタマイズします。  
@@ -50,12 +51,16 @@ Azure Portal を使用して、同期の状態を確認します。
 4. ディレクトリ ページの上部にある **[ディレクトリ統合]** を選択します。
 5. **[ローカル Active Directory との統合]** で、最後の同期時刻を確認します。
 
-<center>![ディレクトリ同期時刻](./media/how-to-connect-post-installation/verify.png)</center>
+<center>
+
+![ディレクトリ同期時刻](./media/how-to-connect-post-installation/verify.png)</center>
 
 ## <a name="start-a-scheduled-synchronization-task"></a>スケジュールされた同期タスクを開始する
 同期タスクを実行する必要がある場合は、Azure AD Connect ウィザードをもう一度実行して行うことができます。  Azure AD 資格情報を入力する必要があります。  ウィザードで、**[同期オプションのカスタマイズ]** タスクを選択し、**[次へ]** をクリックして移動します。 最後に、**[初期構成が完了したら、同期処理を開始してください。]** チェック ボックスがオンになっていることをご確認ください。
 
-<center>![同期の開始](./media/how-to-connect-post-installation/startsynch.png)</center>
+<center>
+
+![同期の開始](./media/how-to-connect-post-installation/startsynch.png)</center>
 
 Azure AD Connect 同期スケジューラについて詳しくは、[Azure AD Connect スケジューラ](how-to-connect-sync-feature-scheduler.md)に関する記事をご覧ください。
 

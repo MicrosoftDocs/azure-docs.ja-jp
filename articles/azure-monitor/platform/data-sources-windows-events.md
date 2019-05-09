@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: a8c08eb222595b1531eef850667d3834d568b166
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435805"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522712"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](agent-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -38,7 +38,7 @@ Azure Monitor は、設定で指定されている Windows イベント ログ�
 Azure Monitor は、監視対象のイベントが作成されたときに、選択された重大度に一致する各イベントをそのイベント ログから収集します。  エージェントは、収集元の場所を各イベント ログに記録します。  エージェントは、一定の期間オフラインになった場合、最後に停止した時点からのイベントを収集します。これには、エージェントがオフライン中に作成されたイベントも含まれます。  エージェントがオフラインのときに、未収集のイベントにラップされたイベント ログが上書きされた場合は、これらのイベントが収集されない可能性もあります。
 
 >[!NOTE]
->Azure Monitor は、 *クラシック*または*監査成功*のキーワードおよびキーワード *0xa0000000000000* を含む、イベント ID が 18453 のソース *MSSQLSERVER* から SQL Server によって作成された監査イベントは収集しません。
+>Azure Monitor は、*クラシック*または*監査成功*のキーワードおよびキーワード *0xa0000000000000* を含む、イベント ID が 18453 のソース *MSSQLSERVER* から SQL Server によって作成された監査イベントは収集しません。
 >
 
 ## <a name="windows-event-records-properties"></a>Windows イベント レコードのプロパティ
@@ -54,17 +54,17 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | EventLevelName |テキスト形式で示すイベントの重大度。 |
 | EventLog |イベント収集元のイベント ログの名前。 |
 | ParameterXml |XML 形式でのイベント パラメーターの値。 |
-| ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、この値は AOI-<workspace ID> です。 |
+| ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、この値は `AOI-<workspace ID>` です |
 | RenderedDescription |イベントの説明とパラメーターの値 |
 | Source |イベントのソース。 |
-| SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br>  AzureStorage – Azure Diagnostics |
 | TimeGenerated |イベントが Windows で作成された日付と時刻。 |
 | UserName |イベントのログを記録したアカウントのユーザー名。 |
 
 ## <a name="log-queries-with-windows-events"></a>Windows イベントでのログ クエリ
 次の表は、Windows イベント レコードを取得するログ クエリのさまざまな例を示しています。
 
-| クエリ | 説明 |
+| Query | 説明 |
 |:---|:---|
 | Event |すべての Windows イベント。 |
 | Event &#124; where EventLevelName == "error" |重大度が「エラー」のすべての Windows イベント。 |
@@ -73,6 +73,6 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 
 
 ## <a name="next-steps"></a>次の手順
-* 分析のために他の[データ ソース](agent-data-sources.md)を収集するように Azure Monitor を構成します。
-* [ログ クエリ](../../log-analytics/log-analytics-queries.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
+* 分析のために別の [データ ソース](agent-data-sources.md) を収集するように Log Analytics を構成します。
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * お使いの Windows エージェントから [パフォーマンス カウンターの収集](data-sources-performance-counters.md) を構成します。

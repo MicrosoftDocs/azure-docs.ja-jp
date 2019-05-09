@@ -11,15 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: da876152b55ee626025b6192a5004648a29545dc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604186"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561996"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体のレポート (プレビュー)
+
 1 つの接続ポイントから複数の Azure SQL データベースのレポートを作成するには、 [エラスティック クエリ](sql-database-elastic-query-overview.md)を使用します。 データベースは、行方向にパーティション分割する必要があります ("シャード化" とも呼ばれます)。
 
 既存のデータベースがある場合は、 [スケール アウトされたデータベースへの既存データベースの移行](sql-database-elastic-convert-to-use-elastic-tools.md)に関するページをご覧ください。
@@ -27,6 +28,7 @@ ms.locfileid: "53604186"
 クエリに必要な SQL オブジェクトについては、 [行方向にパーティション分割されたデータベース間のクエリ](sql-database-elastic-query-horizontal-partitioning.md)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
+
 [「エラスティック データベース ツールの概要」に示されているサンプル](sql-database-elastic-scale-get-started.md)をダウンロードして実行します。
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>サンプル アプリケーションを使用してシャード マップ マネージャーを作成する

@@ -6,27 +6,27 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: d26ae755b658ce39df04788b7edeee6da7e20a47
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288094"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852612"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 5 月 
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 5 月に導入された新しい機能と変更点について説明します。 
 
 ## <a name="gen-2-instances"></a>Gen 2 インスタンス
-![alt](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/2528b41b-f09f-45b1-aa65-fc60d562d3bd.png) Azure SQL Data Warehouse コンピューティング最適化 Gen2 層は、クラウド データ ウェアハウスの新しいパフォーマンス基準を設定します。 現在の世代と比較して、クエリ パフォーマンスが最大 5 倍、同時実行性が最大 4 倍、コンピューティング パワーが最大 5 倍に向上しました。 これにより、クラウド データ ウェアハウス サービスの中で最多である 128 の同時クエリを 1 つのクラスターから処理できるようになりました。
+![alt](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/2528b41b-f09f-45b1-aa65-fc60d562d3bd.png) Azure SQL Data Warehouse コンピューティング最適化 Gen2 層は、クラウド データ ウェアハウスの新しいパフォーマンス基準を設定します。 現在の世代と比較して、クエリ パフォーマンスが最大 5 倍、コンカレンシーが最大 4 倍、コンピューティング パワーが最大 5 倍に向上しました。 これにより、クラウド データ ウェアハウス サービスの中で最多である 128 の同時クエリを 1 つのクラスターから処理できるようになりました。
 
 Azure Data のコーポレート バイス プレジデント、Rohan Kumar からのブログでの発表「[Azure SQL Data Warehouse を使用してクラウド分析の質を高める](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/)」を参照してください。
 
 ## <a name="auto-statistics"></a>自動統計
-統計情報は、SQL Data Warehouse のエンジンなどモデル コストベースのオプティマイザーでクエリ プランの生成を最適化するために重要です。 すべてのクエリが事前にわかっている場合、どの統計オブジェクトを作成する必要があるかを判断することができます。 ただし、システムがデータ ウェアハウスのワークロードに特有のアドホック クエリやランダム クエリに直面した場合、システム管理者は作成する必要のある統計情報を予測することが難しいため、クエリ実行計画が最適化されず、クエリ応答時間が長くなる可能性があります。 この問題を軽減する 1 つの方法として、事前にすべてのテーブル列に統計オブジェクトを作成する方法があります。 ただし、このプロセスにはテーブルの読み込み処理中に統計オブジェクトを維持する必要があるため、読み込み時間が長くなるというデメリットがあります。
+統計情報は、SQL Data Warehouse のエンジンなどの先進的なコストベースのオプティマイザーでクエリ プランの生成を最適化するために重要です。 すべてのクエリが事前にわかっている場合、どの統計オブジェクトを作成する必要があるかを判断することができます。 ただし、システムがデータ ウェアハウスのワークロードに特有のアドホック クエリやランダム クエリに直面した場合、システム管理者は作成する必要のある統計情報を予測することが難しいため、クエリ実行計画が最適化されず、クエリ応答時間が長くなる可能性があります。 この問題を軽減する 1 つの方法として、事前にすべてのテーブル列に統計オブジェクトを作成する方法があります。 ただし、このプロセスにはテーブルの読み込み処理中に統計オブジェクトを維持する必要があるため、読み込み時間が長くなるというデメリットがあります。
 
 SQL Data Warehouse では、統計オブジェクトの自動作成がサポートされ、システム管理者や開発者に対して向上した柔軟性、生産性、使いやすさを提供すると同時に、システムが質の高い実行計画とベストな応答時間を継続的に提供できるようになりました。
 
@@ -44,7 +44,7 @@ ALTER DATABASE { database_name } SET { AUTO_CREATE_STATISTICS { OFF | ON } } [;]
 詳細については、「[ALTER DATABASE の SET オプション](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)」の記事を参照してください。
 
 ## <a name="rejected-row-support"></a>拒否された行のサポート
-データ読み込みのパフォーマンスと並列性が高いため、SQL Data Warehouse への[データ読み込みに PolyBase (外部テーブル)](design-elt-data-loading.md) を使用することがよくあります。 PolyBase は、[Azure Data Factory](http://azure.com/adf) を介してデータを読み込む際の既定の読み込みモデルでもあります。 
+データ読み込みのパフォーマンスと並列性が高いため、SQL Data Warehouse への[データ読み込みに PolyBase (外部テーブル)](design-elt-data-loading.md) を使用することがよくあります。 PolyBase は、[Azure Data Factory](https://azure.com/adf) を介してデータを読み込む際の既定の読み込みモデルでもあります。 
 
 SQL Data Warehouse では、[CREATE EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) ステートメントを使用した `REJECTED_ROW_LOCATION` パラメーターを介して、拒否された行の場所を定義することができます。 外部テーブルから [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を実行した後、読み込むことができなかった行はすべて、さらなる調査のためにソースに近いファイルに保存されます。 
 
@@ -144,7 +144,7 @@ SQL Data Warehouse の概要について学習したので、次は[SQL Data War
 [Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

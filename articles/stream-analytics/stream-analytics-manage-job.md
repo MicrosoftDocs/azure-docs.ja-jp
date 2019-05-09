@@ -1,6 +1,6 @@
 ---
 title: 'チュートリアル: Azure portal を使用した Stream Analytics ジョブの作成および管理'
-description: このチュートリアルでは、Azure Stream Analytics を使用して通話ストリームにおける不正な呼び出しを分析する方法について詳しく説明します。
+description: このチュートリアルでは、通話ストリームにおける不正な呼び出しを Azure Stream Analytics を使用して分析する方法を、デモでまるごとお見せします。
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: dfdccaf929aa382c8003bc4c3cc0988a7123bf2d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316014"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523547"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する
 
@@ -56,7 +56,7 @@ Stream Analytics で不正な呼び出しデータ ストリームを分析で�
    |Name     | myEventHubsNS        |  イベント ハブの名前空間を識別する一意の名前。       |
    |サブスクリプション     |   \<該当するサブスクリプション\>      |   イベント ハブを作成する Azure サブスクリプションを選択します。      |
    |リソース グループ     |   MyASADemoRG      |  **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。       |
-   |場所     |   米国西部 2      |    イベント ハブの名前空間をデプロイできる場所です。     |
+   |Location     |   米国西部 2      |    イベント ハブの名前空間をデプロイできる場所です。     |
 
 4. 残りの設定では既定のオプションを使用し、**[作成]** を選択します。
 
@@ -96,7 +96,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 1. [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) ファイルの内容を抽出します。
 2. 任意のテキスト エディターで `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` ファイルを開きます (複数の .config ファイルがあるので、正しいファイルを開くように注意してください)。
 
-3. 構成ファイル内の <appSettings> 要素を次の詳細で更新します。
+3. 構成ファイル内の `<appSettings>` 要素を次の詳細で更新します。
 
    * *EventHubName* キーの値を、接続文字列の EntityPath の値に設定します。
    * *Microsoft.ServiceBus.ConnectionString* キーの値を、EntityPath の値を除いた接続文字列に設定します。
@@ -139,7 +139,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
    |ジョブ名     |  ASATutorial       |   イベント ハブの名前空間を識別する一意の名前。      |
    |サブスクリプション    |  \<該当するサブスクリプション\>   |   ジョブを作成する Azure サブスクリプションを選択します。       |
    |リソース グループ   |   MyASADemoRG      |   **[既存のものを使用]** を選択し、アカウントの新しいリソース グループ名を入力します。      |
-   |場所   |    米国西部 2     |      ジョブをデプロイできる場所。 最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。      |
+   |Location   |    米国西部 2     |      ジョブをデプロイできる場所。 最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。      |
    |ホスティング環境    | クラウド        |     Stream Analytics ジョブは、クラウドまたはエッジにデプロイすることができます。 クラウドでは Azure Cloud にデプロイすることができ、エッジでは IoT エッジ デバイスにデプロイすることができます。    |
    |[ストリーミング ユニット]     |    1       |      ストリーミング ユニットとは、ジョブの実行に必要なコンピューティング リソースのことです。 既定では、この値は 1 に設定されています。 ストリーミング ユニットのスケーリングについては、[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)に関する記事を参照してください。      |
 
@@ -180,7 +180,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 3. **[+ 追加]** > **[Power BI]** の順に選択します。 次に、フォームに次の詳細を入力して、**[承認する]** を選択します。
 
    |**設定**  |**推奨値**  |
-   |---------|---------|---------|
+   |---------|---------|
    |出力エイリアス  |  MyPBIoutput  |
    |データセットの名前  |   ASAdataset  |
    |テーブル名 |  ASATable  |
@@ -244,7 +244,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 2. ジョブ出力の開始時刻に **[現在]** を選択し、**[開始]** を選択します。 通知バーでジョブの状態を確認できます。
 
-3. ジョブが成功したら [Power BI](https://powerbi.com/) に移動し、職場または学校アカウントを使用してサインインします。 Stream Analytics ジョブ クエリによって結果が出力されている場合、作成した *ASAdataset* データセットは **[データセット]** タブにあります。
+3. ジョブが成功したら [Power BI](https://powerbi.com/) に移動し、職場または学校アカウントを使用してサインインします。 Stream Analytics ジョブ クエリによる結果の出力が進行中の場合、作成した *ASAdataset* データセットは **[データセット]** タブにあります。
 
 4. Power BI ワークスペースで **[+ 作成]** を選択し、*Fraudulent Calls* という名前の新しいダッシュボードを作成します。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: genli
-ms.openlocfilehash: 816ad6c0079e9272286cdc072ff71bf15313eb8e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069101"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541572"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS トラブルシューティング ガイド
 
@@ -69,11 +69,11 @@ DNS 名前解決は数段階のプロセスであり、多くの理由で失敗�
 
 1.  Azure DNS で DNS レコードが正しく構成されていることを確認します。 Azure Portal で DNS レコードを見直して、ゾーン名、レコード名、レコードの種類が正しいことを確認します。
 2.  Azure DNS ネーム サーバーで DNS レコードが正しく解決されていることを確認します。
-    - DNS クエリをローカル コンピューターから作成した場合、ネーム サーバーの現在の状態を反映していないキャッシュされた結果が表示されることがあります。  また、企業ネットワークでは DNS プロキシ サーバーを使用していることがよくあるため、DNS クエリが特定のネーム サーバーに送信されないことがあります。  これらの問題を回避するには、[digwebinterface](http://digwebinterface.com) などの Web ベースの名前解決サービスを使用します。
+    - DNS クエリをローカル コンピューターから作成した場合、ネーム サーバーの現在の状態を反映していないキャッシュされた結果が表示されることがあります。  また、企業ネットワークでは DNS プロキシ サーバーを使用していることがよくあるため、DNS クエリが特定のネーム サーバーに送信されないことがあります。  これらの問題を回避するには、[digwebinterface](https://digwebinterface.com) などの Web ベースの名前解決サービスを使用します。
     - Azure Portal の表示に従って、DNS ゾーンに対応した適切なネーム サーバーを必ず指定してください。
     - DNS 名が正しいことを確認し (ゾーン名を含む、完全修飾名を指定する必要があります)、レコードの種類が正しいことを確認します
 3.  DNS ドメイン名が [Azure DNS ネーム サーバーに適切に委任](dns-domain-delegation.md)されていることを確認します。 [DNS 委任を検証できる多数のサード パーティ Web サイト](https://www.bing.com/search?q=dns+check+tool)があります。 このテストは "*ゾーン*" の委任テストであるため、DNS ゾーン名のみを入力し、完全修飾レコード名は入力しないでください。
-4.  上記の手順が完了すると、DNS レコードが正しく解決されるようになります。 これを確認するには、既定のネーム サーバー設定を使用して、[digwebinterface](http://digwebinterface.com) をもう一度使用します。
+4.  上記の手順が完了すると、DNS レコードが正しく解決されるようになります。 これを確認するには、既定のネーム サーバー設定を使用して、[digwebinterface](https://digwebinterface.com) をもう一度使用します。
 
 
 ### <a name="recommended-documents"></a>**推奨されるドキュメント**

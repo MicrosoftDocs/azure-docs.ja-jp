@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse の接続文字列 | Microsoft Docs
 description: SQL Data Warehouse の接続文字列
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: de875731ffd2170f70d8034f0178d61351d86952
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 057e412857feb39069c55bb9905c83dcea7cbd4e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248023"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460371"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の接続文字列
 [ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP]、[JDBC][JDBC] などの各種アプリケーション プロトコルを使用して、SQL Data Warehouse に接続できます。 各プロトコルの接続文字列の例を以下に示します。  接続文字列は、Azure ポータルを使用してビルドすることもできます。  Azure Portal を使用して接続文字列をビルドするには、データベースのブレードに移動して、*[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。

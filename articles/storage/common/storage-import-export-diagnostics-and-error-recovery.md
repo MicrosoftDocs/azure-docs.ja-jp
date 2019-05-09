@@ -7,20 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 2a54752f933b91265d0aa8add61ca0707615931b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 306b94fbe23e0ae92dcd59f7a87b7bb58ef7c3b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526329"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454659"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Azure Import/Export ジョブの診断とエラーからの回復
-Azure Import/Export サービスでは、処理対象の各ドライブについて、関連付けられたストレージ アカウント内にエラー ログが作成されます。 [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) または [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) 操作を呼び出すときに `LogLevel`プロパティを `Verbose` に設定すれば、詳細ログを有効にすることもできます。
+Azure Import/Export サービスでは、処理対象の各ドライブについて、関連付けられたストレージ アカウント内にエラー ログが作成されます。 [Put Job](/rest/api/storageimportexport/jobs) または [Update Job Properties](/rest/api/storageimportexport/jobs) 操作を呼び出すときに `LogLevel`プロパティを `Verbose` に設定すれば、詳細ログを有効にすることもできます。
 
  既定では、ログは `waimportexport` という名前のコンテナーに書き込まれます。 `Put Job` または `Update Job Properties` 操作を呼び出す際に `DiagnosticsPath` プロパティを設定することで、異なる名前を指定できます。 ログは、次の命名規則を使用してブロック BLOB として保存されます: `waies/jobname_driveid_timestamp_logtype.xml`。
 
- ジョブのログの URI は、[Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) 操作を呼び出すことで取得できます。 詳細ログの URI は、各ドライブの `VerboseLogUri` プロパティで返されます (エラー ログの URI は、`ErrorLogUri` プロパティで返されます)。
+ ジョブのログの URI は、[Get Job](/rest/api/storageimportexport/jobs) 操作を呼び出すことで取得できます。 詳細ログの URI は、各ドライブの `VerboseLogUri` プロパティで返されます (エラー ログの URI は、`ErrorLogUri` プロパティで返されます)。
 
 ログ データは、次の問題を特定するために使用できます。
 

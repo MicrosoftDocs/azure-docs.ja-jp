@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0b24c5d2f174c9a656e81d0c85e12b589d7d7799
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808066"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837033"
 ---
 # <a name="appsource-package-preparation"></a>AppSource パッケージの準備
 
@@ -39,8 +39,8 @@ Package Deployer 用のパッケージは AppSource パッケージの一部に�
 
 Package Deployer 用パッケージを作成するには、次の手順を使用します: [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx)。 完了すると、パッケージは次のアセットから構成されます。
 
-1. パッケージ フォルダー: すべてのソリューション、構成データ、フラット ファイル、およびパッケージの内容が含まれています。 _注: 以下の例では、パッケージ フォルダーを "PkgFolder" と想定しています_
-2. dll: アセンブリには、パッケージのカスタム コードが含まれています。 _注: 以下の例では、このファイルを "MicrosoftSample.dll" と想定しています。_
+1. パッケージ フォルダー: すべてのソリューション、構成データ、フラット ファイル、およびパッケージの内容が含まれています。 _注:以下の例では、パッケージ フォルダーを "PkgFolder" と想定しています。_
+2. dll:アセンブリには、ご自分のパッケージ用のカスタム コードが含まれています。 _注:以下の例では、このファイルを "MicrosoftSample.dll" と想定しています。_
 
 ここで、"**Content_Types.xml**" というファイルを作成する必要があります。このファイルには、パッケージの一部であるアセット拡張子のすべてが一覧表示されます。 ファイルのコード例を次に示します。
 
@@ -71,11 +71,11 @@ package.zip を作成する手順:
 
 ![CRMScreenShot2](media/CRMScreenShot2.png)
 
-2. フォルダー内のすべての項目を選択し、右クリックして、[送信先]、[Compressed (zip) folder]\(圧縮 (zip) フォルダー) の順に選択します
+1. フォルダー内のすべての項目を選択し、右クリックして、[送信先]、[Compressed (zip) folder]\(圧縮 (zip) フォルダー) の順に選択します
 
 ![CRMScreenShot3](media/CRMScreenShot3.png)
 
-3. package.zip に名前を変更します
+1. package.zip に名前を変更します
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
@@ -97,7 +97,7 @@ input.xml のコード例を次に示します。 下の表の定義を参照し
         <StartDate>01/01/2016</StartDate>
         <EndDate>01/01/2021</EndDate>
         <SupportedCountries>US,CA</SupportedCountries>
-        <LearnMoreLink>http://www.microsoft.com</LearnMoreLink>
+        <LearnMoreLink>https://www.microsoft.com</LearnMoreLink>
         <Locales>
         <PackageLocale Code="1033" IsDefault="true">
         <Logo>logo32x32.png</Logo>
@@ -117,13 +117,13 @@ input.xml のコード例を次に示します。 下の表の定義を参照し
 |SolutionAnchorName |ソリューション アセットの表示名と説明に使用される Package Deployer におけるソリューション zip ファイルの名前。|
 | StartDate| これは、ソリューション パッケージが利用可能になる日付です。 形式は、MM/DD/YYYY です|
 |EndDate|これは、ソリューション パッケージが利用できなくなる日付です。 形式は、MM/DD/YYYY です |
-|SupportedCountries |これは、このパッケージが表示される国のコンマ区切りのリストです。 現在のすべての国番号の一覧については、オンライン サービスにお問い合わせください。 このドキュメントの作成時点では、リストは次のとおりでした: AE、AL、AM、AO、AR、AT、AU、AZ、BA、BB、BD、BE、BG、BH、BM、BN、BO、BR、BY、CA、CH、CI、CL、CM、CO、CR、CV、CW、CY、CZ、DE、DK、DO、DZ、EC、EE、EG、ES、FI、FR、GB、GE、GH、GR、GT、HK、HN、HR、HU、ID、IE、IL、IN、IQ、IS、IT、JM、JO、JP、KE、KG、KN、KR、KW、KY、KZ、LB、LK、LT、LU、LV、LY、MA、MC、MD、ME、MK、MN、MO、MT、MU、MX、MY、NG、NI、NL、NO、NZ、OM、PA、PE、PH、PK、PL、PR、PS、PT、PY、QA、RO、RS、RU、RW、SA、SE、SG、SI、SK、SN、SV、TH、TM、TN、TR、TT、TW、UA、US、UY、UZ、VE、VI、VN、ZA、ZW |
+|SupportedCountries |これは、このパッケージが表示される国のコンマ区切りのリストです。 現在のすべての国番号の一覧については、オンライン サービスにお問い合わせください。 この記事の作成時点では、一覧は次のとおりでした。AE、AL、AM、AO、AR、AT、AU、AZ、BA、BB、BD、BE、BG、BH、BM、BN、BO、BR、BY、CA、CH、CI、CL、CM、CO、CR、CV、CW、CY、CZ、DE、DK、DO、DZ、EC、EE、EG、ES、FI、FR、GB、GE、GH、GR、GT、HK、HN、HR、HU、ID、IE、IL、IN、IQ、IS、IT、JM、JO、JP、KE、KG、KN、KR、KW、KY、KZ、LB、LK、LT、LU、LV、LY、MA、MC、MD、ME、MK、MN、MO、MT、MU、MX、MY、NG、NI、NL、NO、NZ、OM、PA、PE、PH、PK、PL、PR、PS、PT、PY、QA、RO、RS、RU、RW、SA、SE、SG、SI、SK、SN、SV、TH、TM、TN、TR、TT、TW、UA、US、UY、UZ、VE、VI、VN、ZA、ZW |
 |LearnMoreLink | このパッケージの詳細情報ページの URL。 |
 |Locales|優先ソリューション UX でサポートする UX 言語ごとの、このノードの 1 つのインスタンス。 このノードには、各言語のロケール、ロゴ、および用語について説明する子ノードが含まれます|
-|Locales: PackageLocale.Code|このノードの言語の LCID。 例: 英語 (米国) は 1033|
-|Locales: PackageLocale.IsDefault|これが既定の言語であることを示します。 顧客が選択した UX 言語が利用できない場合、これは、フォールバック言語として使用されます。|
-|Locales: Logo|これは、このパッケージに使用するログです。 アイコンのサイズは 32 x 32 です。 許可されている形式は PNG と JPG です|
-|Locales:Terms: PackageTerm.File|これは、ライセンス条項を含む HTML ドキュメントのファイル名です。|
+|Locales:PackageLocale.Code|このノードの言語の LCID。 例:英語 (米国) は 1033|
+|Locales:PackageLocale.IsDefault|これが既定の言語であることを示します。 顧客が選択した UX 言語が利用できない場合、これは、フォールバック言語として使用されます。|
+|Locales:ロゴ|これは、このパッケージに使用するログです。 アイコンのサイズは 32 x 32 です。 許可されている形式は PNG と JPG です|
+|Locales:Terms:PackageTerm.File|これは、ライセンス条項を含む HTML ドキュメントのファイル名です。|
 
 ログが表示される位置は次のとおりです。
 

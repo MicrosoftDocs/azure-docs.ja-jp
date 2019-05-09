@@ -4,24 +4,26 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用するイメージ サムネイルの生成に関する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/11/2018
 ms.author: pafarley
-ms.openlocfilehash: 7d914f394ecfcf02ed26f41cd8fe2ef799cf6103
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: cea8522a9f3eb8fa98821c1cb08d92a9524d5ce4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876801"
 ---
-# <a name="generating-thumbnails"></a>サムネイルの生成
+# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Computer Vision でのスマート トリミングされたサムネイルの生成
 
 サムネイルは、画像のサイズを縮小したものです。 無駄のないレイアウトしやすい方法で画像やその他のデータを表現するためにサムネイルは使用されます。 Computer Vision API は、画像のサイズ変更にスマート トリミングを併用することで、特定の画像の直感的なサムネイルを作成します。
 
 Computer Vision のサムネイル生成アルゴリズムは次のように動作します。
+
 1. 画像から邪魔な要素を取り除き、"_関心領域_" (画像内の主な被写体が写っている領域) を識別します。
 1. 識別された "_関心領域_" に基づいて、画像をトリミングします。
 1. ターゲットのサムネイルの寸法に合わせて縦横比を変更します。
@@ -40,11 +42,11 @@ Computer Vision のサムネイル生成アルゴリズムは次のように動�
 
 次の表は、Computer Vision で生成される、イメージ例に対する一般的なサムネイルを示しています。 スマート トリミングが有効になっており、ターゲットの高さと幅が 50 ピクセルに指定されたサムネイルが生成されています。
 
-| イメージ | サムネイル |
+| Image | サムネイル |
 |-------|-----------|
-|![屋外の山](./Images/mountain_vista.png) | ![屋外の山のサムネイル](./Images/mountain_vista_thumbnail.png) |
-|![Vision Analyze 花](./Images/flower.png) | ![Vision Analyze 花のサムネイル](./Images/flower_thumbnail.png) |
-|![屋上にいる女性](./Images/woman_roof.png) | ![屋上にいる女性のサムネイル](./Images/woman_roof_thumbnail.png) |
+|![日没時に山頂の岩の上に立っている人物](./Images/mountain_vista.png) | ![屋外の山のサムネイル](./Images/mountain_vista_thumbnail.png) |
+|![白い花と緑の背景](./Images/flower.png) | ![Vision Analyze 花のサムネイル](./Images/flower_thumbnail.png) |
+|![共同住宅の屋上にいる女性](./Images/woman_roof.png) | ![屋上にいる女性のサムネイル](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,22 +4,22 @@ description: Azure Service Fabric のステートフル Reliable Services の診
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 38df214cad01062100c9ae5c045f9d2589b0041a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234835"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527052"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>ステートフル Reliable Services の診断機能
 Azure Service Fabric ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。
@@ -27,7 +27,7 @@ Azure Service Fabric ステートフル Reliable Services の StatefulServiceBas
 ## <a name="eventsource-events"></a>EventSource イベント
 ステートフル Reliable Services の StatefulServiceBase クラスの EventSource 名は、"Microsoft-ServiceFabric-Services" です。 このイベント ソースからのイベントは、サービスを [Visual Studio でデバッグしている](service-fabric-debugging-your-application.md)ときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
 
-EventSource イベントの収集や表示に役立つツールとテクノロジの例には、[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md)、および [Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
+EventSource イベントの収集や表示に役立つツールとテクノロジの例には、[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)、および [Microsoft TraceEvent ライブラリ](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 
 ## <a name="events"></a>events
 | イベント名 | イベント ID | Level | イベントの説明 |
@@ -59,7 +59,7 @@ Service Fabric トランザクション レプリケーターは、特定の一�
 
 Service Fabric TStore は、[Reliable Collections](service-fabric-reliable-services-reliable-collections-internals.md) でキーと値のペアを格納および取得するために使用されるコンポーネントです。
 
-パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。 [Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
+パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。 [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
 
 ### <a name="performance-counter-instance-names"></a>パフォーマンス カウンター インスタンス名
 多数の Reliable Service または Reliable Service パーティションを持つクラスターには、多数のトランザクション レプリケーターのパフォーマンス カウンター インスタンスが含まれます。 これは TStore パフォーマンス カウンターの場合と同様ですが、使用されているリライアブル ディクショナリとリライアブル キューの数も乗算されます。 パフォーマンス カウンター インスタンス名は、パフォーマンス カウンター インスタンスが関連付けられている特定の[パーティション](service-fabric-concepts-partitioning.md)、サービス レプリカ、および TStore の場合の状態プロバイダーを識別するために役立ちます。
@@ -106,7 +106,7 @@ Reliable Services ランタイムでは、`Service Fabric Transactional Replicat
 | --- | --- |
 | トランザクションの開始操作数/秒 | 1 秒あたりに作成された新しい書き込みトランザクションの数。|
 | トランザクション操作数/秒 | 1 秒あたりにリライアブル コレクションで実行される追加/更新/削除操作の数。|
-| Avg.フラッシュ待機時間 (ミリ秒) | 1 秒あたりにトランザクション レプリケーターによってディスクにフラッシュされるバイト数。 |
+| ログのフラッシュ バイト数/秒 | 1 秒あたりにトランザクション レプリケーターによってディスクにフラッシュされるバイト数。 |
 | 調整された操作数/秒 | 調整のため、トランザクション レプリケーターによって 1 秒あたりに拒否される操作の数。 |
 | Avg.コミットあたりのトランザクション ミリ秒 | トランザクションあたりのミリ秒単位での平均コミット遅延時間 |
 | Avg.フラッシュ待機時間 (ミリ秒) | トランザクション レプリケーターによって開始されたディスク フラッシュ操作のミリ秒単位での平均時間 |

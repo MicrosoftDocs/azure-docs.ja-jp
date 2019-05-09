@@ -4,7 +4,7 @@ description: 基本の Java アプリをデプロイして、App Service で Web
 services: app-service\web
 documentationcenter: ''
 author: rmcmurray
-manager: mbaldwin
+manager: routlaw
 editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 45ee4a5310df699e37258996e654c87c88081266
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6bf0562d222bce07f74ef5355ad0e3d6b8844c33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605145"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096624"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
@@ -125,7 +125,7 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
   * **[場所]**: **[西ヨーロッパ]** または現在地付近を選択します。
   * **価格レベル**: 無料オプションを選択します。 機能については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)」をご覧ください。
 
-   ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
+    ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 

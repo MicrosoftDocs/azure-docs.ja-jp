@@ -3,7 +3,7 @@ title: サンプルの Azure インフラストラクチャによるチュート
 description: Azure でのサンプルのインフラストラクチャのデプロイに関する主要な設計と実装のガイドラインについて説明します。
 documentationcenter: ''
 services: virtual-machines-linux
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 794182e3988a353b1e305a36da0475bacdea69b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469852"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002690"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
 この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワークおよびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
@@ -54,7 +54,7 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 
 * Adventure Works Cycles は、プレフィックスとして **[IT ワークロード]-[場所]-[Azure リソース]** を使用します。
   * たとえば、"**azos**" (Azure On-line Store) は IT ワークロード名であり、"**use**" (米国東部 2) は場所です。
-* 仮想ネットワークは、AZOS-USE-VN **[番号]** を使用します。
+* 仮想ネットワークは、AZOS-USE-VN<strong>[番号]</strong> を使用します。
 * 可用性セットは、azos-use-as-**[ロール]** を使用します。
 * 仮想マシン名は、azos-use-vm-**[仮想マシン名]** を使用します。
 
@@ -72,15 +72,15 @@ Adventure Works Cycles では、Azure Managed Disks を使用する必要があ�
 
 Contoso は、Azure ポータルを使用して次の設定でクラウド専用仮想ネットワークを作成しました。
 
-* 名前: AZOS-USE-VN01
-* 場所: East US 2
-* 仮想ネットワークのアドレス空間: 10.0.0.0/8
+* 名前:AZOS-USE-VN01
+* 場所:米国東部 2
+* 仮想ネットワークのアドレス空間:10.0.0.0/8
 * 1 番目のサブネット:
-  * 名前: FrontEnd
-  * アドレス空間: 10.0.1.0/24
+  * 名前:FrontEnd
+  * アドレス空間:10.0.1.0/24
 * 2 番目のサブネット:
-  * 名前: BackEnd
-  * アドレス空間: 10.0.2.0/24
+  * 名前:BackEnd
+  * アドレス空間:10.0.2.0/24
 
 ## <a name="availability-sets"></a>可用性セット
 オンライン ストアの 4 つの階層すべてで高可用性を維持するため、Adventure Works Cycles は次の 4 つの可用性セットを採用しました。

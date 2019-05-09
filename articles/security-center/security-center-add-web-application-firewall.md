@@ -4,7 +4,7 @@ description: このドキュメントでは、Azure Security Center の推奨事
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5e6d7dffb831e4e6541b5ef91cfc4ae4bbe88167
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 63852ccab842f11f30bcbe695206fedf72931911
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343141"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105045"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Azure Security Center で Web アプリケーション ファイアウォールを追加する
 Azure Security Center では、Web アプリケーションを保護するために、Microsoft パートナーの Web アプリケーション ファイアウォール (WAF) を追加することを勧める場合があります。 このドキュメントでは、この推奨事項を適用する方法の例を紹介します。

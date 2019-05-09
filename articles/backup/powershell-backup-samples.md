@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: sample
-ms.date: 09/07/2017
-ms.author: rayne
+ms.date: 01/31/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ccd31f4cda8557a5bbbb954283511991bd0163be
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0fa22ea85d05ef6514c8b7da0d148a3262a1bbc3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878382"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494869"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell のサンプル
 

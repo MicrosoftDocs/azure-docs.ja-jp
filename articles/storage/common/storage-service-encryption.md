@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: a19cdac54fff641f72d0628c7b0d47060baba9b4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.subservice: common
+ms.openlocfilehash: 059091315c378ab6e2bb857e580c02df968b5092
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384124"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457175"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
 Azure Storage Service Encryption for Data at Rest を使用すると、データを保護し、組織のセキュリティとコンプライアンスの要件を満たすことができます。 この機能を使用すると、Azure Storage プラットフォームではデータが Azure Managed Disks、Azure Blob、Queue、Table Storage、または Azure Files に保存される前に自動的に暗号化され、データが取得される前に暗号化が解除されます。 Storage Service Encryption での暗号化、保存時の暗号化、キー管理の処理は、ユーザーにとって透過的に行われます。 Azure Storage プラットフォームに書き込まれるすべてのデータは、現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によって暗号化されます。
@@ -81,7 +81,7 @@ Storage Service Encryption は、既定でストレージ アカウント (ク�
 すべてのリージョンで Storage Service Encryption を使用できます。
 
 **Storage Service Encryption は FIPS 140-2 に準拠していますか?**  
-はい。Storage Service Encryption は FIPS 140-2 に準拠しています。 Storage Service Encryption の下にある暗号化モジュールの詳細については、「[Cryptography API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)」(暗号化 API: 次世代) を参照してください。
+はい。Storage Service Encryption は FIPS 140-2 に準拠しています。 Storage Service Encryption の下にある暗号化モジュールの詳細については、「[Cryptography API: Next Generation (暗号化 API: 次世代)](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)」を参照してください。
 
 **問題やフィードバックの連絡先はどこですか?**  
 Storage Service Encryption に関する問題またはフィードバックは、[ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com) にご連絡ください。

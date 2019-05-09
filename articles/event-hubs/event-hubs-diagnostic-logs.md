@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c32662b446df10649617570c63ce534071ed7d27
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540318"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957523"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
@@ -48,7 +48,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 
     ![診断ログの状態を変更する](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Log Analytics など)。
+5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Monitor ログなど)。
 
 6.  新しい診断設定を保存します。
 

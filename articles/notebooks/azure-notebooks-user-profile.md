@@ -6,25 +6,25 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 7d069d86-660f-4c94-b6e3-0c0f38c52d0e
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: b1010b5376a26a4d33c026be27ce363959954ca2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078873"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59265612"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Azure Notebooks のプロファイルとユーザー ID
 
 機能豊富な共同作業領域の Azure Notebooks 内では、自分のユーザー プロファイルに他のユーザーへのパブリック イメージが示されます。
 
-[![](media/accounts/profile-page.png "Azure Notebooks プロファイル ページ")](media/accounts/profile-page.png#lightbox)
+[![Azure Notebooks プロファイル ページ](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 ユーザー ID は、プロジェクトとノートブックの共有に使用する URL の一部です。 次の一覧はさまざまな URL パターンを示しています。
 
@@ -46,7 +46,7 @@ ms.locfileid: "53078873"
 
 いつでもプロファイル ページで自分のユーザー ID を変更することもできます。
 
-ユーザー ID は、少なくとも 4 つの文字、数字、およびハイフンで構成される必要があります。 他の文字は許可されていません。また、ユーザー ID の先頭または末尾にハイフンを使用したり、複数のハイフンを連続して使用したりすることはできません。
+ユーザー ID は、4 から 6 つのアルファベット、数字、およびハイフンで構成する必要があります。 他の文字は許可されていません。また、ユーザー ID の先頭または末尾にハイフンを使用したり、複数のハイフンを連続して使用したりすることはできません。 ユーザー ID はすべての Azure Notebooks アカウントで一意であるため、"User ID is already in use"\(ユーザー ID は既に使用中です\) というメッセージが表示される場合があります (Microsoft の商標をユーザー ID として使用しようとした場合も、このメッセージが表示されます)。この場合は、他のユーザー ID を選択します。
 
 > [!Important]
 > ID を変更すると、前の ID を使用して共有している可能性がある任意の URL が無効になります。 自分の ID を前の ID に戻して、リンクを再検証することができます。 しかし、それまでの間、別のユーザーが使用されていない ID を要求することができます。
@@ -57,7 +57,7 @@ ms.locfileid: "53078873"
 
 プロファイルを編集するには、自分のプロファイル ページで **[Edit Profile Information]\(プロファイル情報の編集\)** コマンドを使用します。 プロファイルのセクションは次のとおりです。
 
-| セクション | 目次 |
+| Section | 目次 |
 | --- | --- |
 | プロファイル写真 | 自分のプロファイル ページで示されるイメージ。 |
 | アカウント情報 | 表示名、ユーザー ID、およびパブリック電子メール アドレス。 ここでの電子メール アカウントは、他のユーザーにお客様と連絡する手段を提供します。このアカウントは、Azure Notebooks 自体にサインインするために使用する[アカウント](azure-notebooks-user-account.md)とは異なる場合があります。 |

@@ -4,31 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Python で Translator Text API を使った例を紹介しています。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/29/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 8b78ec4e358f654342140df1491e19d3fc62fee7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e455b0167810c6e08853f3bce665cb6f314eec52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181454"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>クイック スタート: Translator Text API と Python を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Python と Translator Text REST API を使用し、GET 要求を行うことによって、サポートされている言語の一覧を取得する方法を説明します。
-
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは以下が必要です。
 
 * Python 2.7.x または 3.x
-* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
@@ -44,27 +41,9 @@ import os, requests, uuid, json
 
 最初のコメントでは、UTF-8 エンコードを使用するように Python インタープリターに指示しています。 次に、必要なモジュールをインポートして、環境変数からのサブスクリプション キーの読み取り、HTTP 要求の作成、一意識別子の作成、Translator Text API から返された JSON 応答の処理を行っています。
 
-## <a name="set-the-subscription-key-base-url-and-path"></a>サブスクリプション キー、ベース URL、パスの設定
+## <a name="set-the-base-url-and-path"></a>ベース URL とパスを設定する
 
-このサンプルでは、環境変数 `TRANSLATOR_TEXT_KEY` から Translator Text のサブスクリプション キーが読み取られるよう試行されます。 環境変数を使い慣れていない場合は、`subscriptionKey` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
-
-このコードをプロジェクトにコピーします。
-
-```python
-# Checks to see if the Translator Text subscription key is available
-# as an environment variable. If you are setting your subscription key as a
-# string, then comment these lines out.
-if 'TRANSLATOR_TEXT_KEY' in os.environ:
-    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
-else:
-    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
-    exit()
-# If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
-```
-
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`languages` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`languages` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 >[!NOTE]
 > エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)」を参照してください。
@@ -77,13 +56,12 @@ constructed_url = base_url + path
 
 ## <a name="add-headers"></a>ヘッダーの追加
 
-要求を認証する最も簡単な方法は、このサンプルで使用している `Ocp-Apim-Subscription-Key` ヘッダーとしてサブスクリプション キーを渡すことです。 または、アクセス トークンのサブスクリプション キーを交換し、アクセス トークンを一緒に `Authorization` ヘッダーとして渡して要求を検証することもできます。 詳細については、[認証](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)に関するページをご覧ください。
+サポートされている言語を取得するための要求では、認証は必要ありません。 `Content-type` を `application/json` に設定し、要求を一意に識別するための `X-ClientTraceId` を追加します。
 
 このコード スニペットをプロジェクトにコピーします。
 
 ```python
 headers = {
-    'Ocp-Apim-Subscription-Key': subscriptionKey,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }
@@ -117,6 +95,8 @@ python get-languages.py
 作成したコードをサンプル コードと比較したい場合は、完全なサンプルを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) から入手できます。
 
 ## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 このサンプルは、実行結果を抜粋したものです。
 

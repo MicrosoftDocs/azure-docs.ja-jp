@@ -1,146 +1,185 @@
 ---
-title: 'クイック スタート: 文の長さを取得する (Java) - Translator Text API'
+title: クイック スタート:文の長さを取得する (Java) - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Java を使って、テキストに含まれる文の長さを調べます。
+description: このクイック スタートでは、Java と Translator Text API を使用して、文の長さを調べる方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 59d3c194f08a8ede6ea2a56f95f7000eafe6c479
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 46507562ab5a31f377b8c3a11902abf9aeccd846
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413242"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176448"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-java"></a>クイック スタート: Translator Text REST API を使用して文の長さを取得する (Java)
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>クイック スタート:Translator Text API と Java を使用して文の長さを調べる
 
-このクイック スタートでは、Translator Text API を使って、テキストに含まれる文の長さを調べます。
+このクイック スタートでは、Java と Translator Text API を使用して、文の長さを調べる方法について説明します。
+
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してください。ただしテキスト エディターでも問題ありません。
+* [JDK 7 以降](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](https://gradle.org/install/)
+* Translator Text の Azure サブスクリプション キー
 
-Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
+## <a name="initialize-a-project-with-gradle"></a>Gradle を使用してプロジェクトを初期化する
 
-## <a name="breaksentence-request"></a>BreakSentence 要求
+まずは、このプロジェクトの作業ディレクトリを作成しましょう。 コマンド ライン (またはターミナル) から、次のコマンドを実行します。
 
-以下のコードは、[BreakSentence](./reference/v3-0-break-sentence.md) メソッドを使ってソース テキストを文に分割します。
+```console
+mkdir length-sentence-sample
+cd length-sentence-sample
+```
 
-1. 任意のコード エディターで新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+次に、Gradle プロジェクトを初期化します。 次のコマンドを実行すると、Gradle の重要なビルド ファイルが作成されます。特に重要なのは `build.gradle.kts` です。これは、アプリケーションを作成して構成するために、実行時に使用されます。 作業ディレクトリから次のコマンドを実行します。
+
+```console
+gradle init --type basic
+```
+
+**DSL** を選択するよう求められたら、**Kotlin** を選択します。
+
+## <a name="configure-the-build-file"></a>ビルド ファイルを構成する
+
+`build.gradle.kts` の場所を特定し、好みの IDE またはテキスト エディターで開きます。 その後、次のビルド構成をコピーします。
+
+```
+plugins {
+    java
+    application
+}
+application {
+    mainClassName = "LengthSentence"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile("com.squareup.okhttp:okhttp:2.5.0")
+    compile("com.google.code.gson:gson:2.8.5")
+}
+```
+
+このサンプルでは、HTTP 要求の処理に OkHttp を使用し、JSON の処理と解析に Gson を使用していることに注意してください。 ビルド構成について詳しくは、「[Creating New Gradle Builds](https://guides.gradle.org/creating-new-gradle-builds/)」(新しい Gradle ビルドの作成) をご覧ください。
+
+## <a name="create-a-java-file"></a>Java ファイルを作成する
+
+サンプル アプリ用のフォルダーを作成しましょう。 作業ディレクトリから、次のコマンドを実行します。
+
+```console
+mkdir -p src/main/java
+```
+
+次に、このフォルダー内に `LengthSentence.java` というファイルを作成します。
+
+## <a name="import-required-libraries"></a>必要なライブラリをインポートする
+
+`LengthSentence.java` を開き、次のインポート ステートメントを追加します。
 
 ```java
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+import com.google.gson.*;
+import com.squareup.okhttp.*;
+```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-/* NOTE: To compile and run this code:
-1. Save this file as BreakSentences.java.
-2. Run:
-    javac BreakSentences.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar BreakSentences
-*/
+## <a name="define-variables"></a>変数の定義
 
-public class BreakSentences {
+まず、プロジェクトのパブリック クラスを作成する必要があります。
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+```java
+public class LengthSentence {
+  // All project code goes here...
+}
+```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+次の行を `LengthSentence` クラスに追加します。 `api-version` と共に、入力言語を定義できることがわかります。 このサンプルでは英語です。
 
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/breaksentence?api-version=3.0";
+```java
+String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
+```
 
-    static String text = "How are you? I am fine. What did you do today?";
+## <a name="create-a-client-and-build-a-request"></a>クライアントを作成して要求をビルドする
 
-    public static class RequestBody {
-        String Text;
+次の行を `LengthSentence` クラスに追加して、`OkHttpClient` をインスタンス化します。
 
-        public RequestBody(String text) {
-            this.Text = text;
-        }
-    }
+```java
+// Instantiates the OkHttpClient.
+OkHttpClient client = new OkHttpClient();
+```
 
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setRequestProperty("X-ClientTraceId", java.util.UUID.randomUUID().toString());
-        connection.setDoOutput(true);
+次に、POST 要求をビルドしましょう。 テキストは変更してかまいません。 テキストはエスケープする必要があります。
 
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
+```java
+// This function performs a POST request.
+public String Post() throws IOException {
+    MediaType mediaType = MediaType.parse("application/json");
+    RequestBody body = RequestBody.create(mediaType,
+            "[{\n\t\"Text\": \"How are you? I am fine. What did you do today?\"\n}]");
+    Request request = new Request.Builder()
+            .url(url).post(body)
+            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+            .addHeader("Content-type", "application/json").build();
+    Response response = client.newCall(request).execute();
+    return response.body().string();
+}
+```
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+## <a name="create-a-function-to-parse-the-response"></a>応答を解析するための関数を作成する
 
-        return response.toString();
-    }
+このシンプルな関数は、Translator Text サービスからの JSON 応答を解析し、整形するものです。
 
-    public static String BreakSentences () throws Exception {
-        URL url = new URL (host + path);
+```java
+// This function prettifies the json response.
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonElement json = parser.parse(json_text);
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
-        List<RequestBody> objList = new ArrayList<RequestBody>();
-        objList.add(new RequestBody(text));
-        String content = new Gson().toJson(objList);
+## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-        return Post(url, content);
-    }
+最後に、要求を実行して応答を取得します。 次の行をプロジェクトに追加します。
 
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = BreakSentences ();
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
+```java
+public static void main(String[] args) {
+    try {
+        LengthSentence lengthSentenceRequest = new LengthSentence();
+        String response = lengthSentenceRequest.Post();
+        System.out.println(prettify(response));
+    } catch (Exception e) {
+        System.out.println(e);
     }
 }
 ```
 
-## <a name="breaksentence-response"></a>BreakSentence 応答
+## <a name="run-the-sample-app"></a>サンプル アプリを実行する
+
+以上で、サンプル アプリを実行する準備が整いました。 コマンド ライン (またはターミナル セッション) で作業ディレクトリのルートに移動して、次のコマンドを実行します。
+
+```console
+gradle build
+```
+
+ビルドが完了したら、次のコマンドを実行します。
+
+```console
+gradle run
+```
+
+## <a name="sample-response"></a>応答のサンプル
 
 成功した応答は、次の例に示すように JSON で返されます。
 
@@ -166,3 +205,12 @@ public class BreakSentences {
 
 > [!div class="nextstepaction"]
 > [GitHub で Java のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=java)
+
+## <a name="see-also"></a>関連項目
+
+* [テキストを翻訳する](quickstart-java-translate.md)
+* [テキストを表記変換する](quickstart-java-transliterate.md)
+* [入力によって言語を識別する](quickstart-java-detect.md)
+* [別の翻訳を取得する](quickstart-java-dictionary.md)
+* [サポートされている言語の一覧を取得する](quickstart-java-languages.md)
+* [入力から文章の長さを判定する](quickstart-java-sentences.md)

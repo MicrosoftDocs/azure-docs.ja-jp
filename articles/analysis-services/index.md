@@ -8,12 +8,12 @@ layout: LandingPage
 ms.service: azure-analysis-services
 ms.topic: landing-page
 ms.date: 02/14/2018
-ms.openlocfilehash: 8e99f0d61b826c79e1458750ae42cc18742ec42a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ec3c45961ac92a505ee565373474ce3dc2fbabcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839612"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60497578"
 ---
 # <a name="analysis-services-documentation"></a>Analysis Services のドキュメント
 
@@ -82,40 +82,40 @@ Analysis Services を使用してデータ モデリングを設定および管�
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>コマンド ライン</h3>
-                        <p><a href="/azure/analysis-services/analysis-services-powershell">PowerShell</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/azure/analysis-services/analysis-services-powershell">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="/rest/api/analysisservices/">REST API リファレンス</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/analysisservices/">REST API リファレンス</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>その他</h3>
-                        <p><a href="https://msdn.microsoft.com/library/gg413422.aspx">DAX</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/mt211003.aspx">Power Query M</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>その他</h3>
+                        <p><a href="https://msdn.microsoft.com/library/gg413422.aspx">DAX</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt211003.aspx">Power Query M</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 

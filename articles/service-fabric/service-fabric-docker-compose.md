@@ -3,8 +3,8 @@ title: Azure Service Fabric Docker Compose デプロイメント プレビュー
 description: Azure Service Fabric では、Service Fabric を使用して既存のコンテナーの調整を容易にするため、Docker Compose 形式を受け入れます。 このサポートは現在プレビューの段階です。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: e4eb26ab91261d1888d3c756d611db1b31801e8f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: aljo, subramar
+ms.openlocfilehash: da86ed9a3e6979bd1dc05aef6ef70c7b8533a8c1
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720236"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661396"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose のデプロイメントのサポート (プレビュー)
 

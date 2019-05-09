@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 50c0c781e7e1c95896a22f0cd71ed20bbad4c2b3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166223"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888829"
 ---
-<!--author=alkohli last changed: 01/20/2017-->
-
 #### <a name="to-create-a-manual-backup"></a>手動でバックアップを作成するには
 
 1. StorSimple デバイス マネージャー サービスに移動し、**[デバイス]** をクリックします。 表形式のデバイス一覧で、デバイスを選択します。 **[設定]、[管理]、[バックアップ ポリシー]** の順に移動します。
@@ -23,7 +21,7 @@ ms.locfileid: "50166223"
 
 3. **[今すぐバックアップ]** ブレードで、次の操作を行います。
 
-    1. **[スナップショットの種類]** ボックスの一覧から、**ローカル** スナップショットと**クラウド** スナップショットのどちらか適切なほうを選択します。 高速なバックアップや復元が必要な場合はローカル スナップショットを選択し、データの回復性が求められる場合はクラウド スナップショットを選択します。
+    1. 適切な**スナップショットの種類**をドロップダウン リストから選択します:**ローカル** スナップショットまたは**クラウド** スナップショット。 高速なバックアップや復元が必要な場合はローカル スナップショットを選択し、データの回復性が求められる場合はクラウド スナップショットを選択します。
 
         ![手動バックアップの作成](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

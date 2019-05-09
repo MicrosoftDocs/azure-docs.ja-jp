@@ -1,7 +1,7 @@
 ---
 title: 'チュートリアル: Event Hubs で仮想ネットワークの統合とファイアウォールを有効にする | Microsoft Docs'
 description: このチュートリアルでは、Event Hubs と仮想ネットワークおよびファイアウォールを統合して、セキュリティで保護されたアクセスを有効にする方法について説明します。
-services: event-hubs-messaging
+services: event-hubs
 author: axisc
 manager: darosa
 ms.author: aschhab
@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: tutorial
 ms.service: event-hubs-messaging
 ms.custom: mvc
-ms.openlocfilehash: bd76d8a7f3f41a8aa6b2e614d37f361a98ac4efd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9eea40a8ad2f08099b2662a0e7539c326d4d143e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53281315"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779047"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>チュートリアル: Event Hubs 名前空間で仮想ネットワークの統合とファイアウォールを有効にする
 
@@ -30,11 +30,11 @@ ms.locfileid: "53281315"
 > * Event Hubs 名前空間でファイアウォール (IP フィルタリング) を設定する方法。
 
 >[!WARNING]
-> 仮想ネットワーク統合を実装すると、他の Azure サービスが Service Bus と対話するのを防ぐことができます。
+> 仮想ネットワーク統合を実装すると、他の Azure サービスが Event Hubs と対話するのを防ぐことができます。
 >
-> 仮想ネットワークが有効になっているときはファースト パーティ統合はサポートされませんが、近日中に使用できるようになります。
+> 仮想ネットワークが有効になっているときはファースト パーティ統合はサポートされません。
 > 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです。
-> * Azure 診断とログ記録
+> * Azure Diagnostics とログ記録
 > * Azure Stream Analytics
 > * Event Grid の統合
 > * Web アプリと関数は仮想ネットワーク上に存在する必要があります。

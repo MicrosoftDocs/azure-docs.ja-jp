@@ -3,30 +3,24 @@ title: Avere vFXT ストレージを構成する - Azure
 description: Avere vFXT for Azure にバックエンド ストレージ システムを追加する方法
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: procedural
-ms.date: 10/31/2018
+ms.topic: conceptual
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 6d35d5cdeafb80a36f910d71393802a3affb4df8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001965"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078815"
 ---
 # <a name="configure-storage"></a>ストレージの構成
 
 この手順では、vFXT クラスター用にバックエンド ストレージ システムを設定します。
 
 > [!TIP]
-> `create-cloudbacked-cluster` プロトタイプ スクリプトを使用して、Avere vFXT クラスターと共に新しい BLOB コンテナーを作成した場合、そのコンテナーは既に使用できるように設定されているので、ストレージを追加する必要はありません。
->
-> ただし、使用する新しい BLOB コンテナーが既定の暗号化キーを使って暗号化されている場合は、データを格納する前に、クラスターからキー回復ファイルをダウンロードするか、新しいキーで既定のキーを置き換える必要があります。 既定のキーはクラスターにしか保存されていないため、クラスターが失われたり使用できなくなったりした場合は取得することができません。
->
-> Avere Control Panel に接続後、**[Settings]\(設定\)** タブをクリックし、**[Core Filer]\(コア ファイラー\)** > **[Cloud Encryption Settings]\(クラウド暗号化の設定\)** を選択します。 **[Local Key Store]\(ローカル キー ストア\)** セクションで、次のオプションのいずれかを選択します。 
-> * 既存のキーの回復ファイルを入手するには、**[Redownload Recovery File]\(回復ファイルの再ダウンロード\)** ボタンを使用します。 回復ファイルは、クラスター管理者のパスワードを使用して暗号化されます。 そのファイルを信頼できる場所に保存してください。 
-> * そのページの **[Generate a New Master Key]\(新しいマスター キーの生成\)** セクションにある手順に従って、自分でコントロールする新しい暗号化キーを作成します。 このオプションを使用すると、一意のパスフレーズを指定できます。その場合、パスフレーズとファイルのペアを検証するために、回復ファイルをアップロードして再ダウンロードする必要があります。
+> Avere vFXT クラスターと共に新しい Azure BLOB コンテナーを作成した場合、そのコンテナーは既に使用できるように設定されているので、ストレージを追加する必要はありません。
 
-`create-minimal-cluster` プロトタイプ スクリプトを使用してクラスターを作成した場合や、ハードウェアまたはクラウド ベースのストレージ システムを新しく追加する場合は、以下の手順に従ってください。
+クラスターと共に新しい BLOB コンテナーを作成しなかった場合や、ハードウェアまたはクラウド ベースのストレージ システムを新しく追加する場合は、以下の手順に従ってください。
 
 主要なタスクは次の 2 つです。
 
@@ -38,17 +32,16 @@ ms.locfileid: "53001965"
 
 ## <a name="create-a-core-filer"></a>コア ファイラーを作成する
 
-"コア ファイラー" とは、バックエンド ストレージ システムを表す vFXT の用語です。 ストレージは、NetApp や Isilon などのハードウェア NAS アプライアンスでも、クラウド オブジェクト ストアでもかまいません。 コア ファイラーについて詳しくは、[Avere のクラスター設定ガイド](http://library.averesystems.com/ops_guide/4_7/settings_overview.html#managing-core-filers)をご覧ください。
+"コア ファイラー" とは、バックエンド ストレージ システムを表す vFXT の用語です。 ストレージは、NetApp や Isilon などのハードウェア NAS アプライアンスでも、クラウド オブジェクト ストアでもかまいません。 コア ファイラーについて詳しくは、[Avere のクラスター設定ガイド](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)をご覧ください。
 
 コア ファイラーを追加するには、コア ファイラーの 2 つの主な種類のいずれかを選択します。
 
   * [NAS コア ファイラー](#nas-core-filer) - NAS コア フィルターを追加する方法について説明します 
-  * [Azure ストレージ アカウント クラウド コア ファイラー](#azure-storage-account-cloud-core-filer) - クラウド コア ファイラーとして Azure Storage アカウントを追加する方法について説明します
+  * [Azure Storage クラウド コア ファイラー](#azure-storage-cloud-core-filer) - クラウド コア ファイラーとして Azure Storage アカウントを追加する方法について説明します
 
 ### <a name="nas-core-filer"></a>NAS コア ファイラー
 
-NAS コア ファイラーとしては、オンプレミスの NetApp や Isilon、またはクラウドの NAS エンドポイントを使用できます。  
-ストレージ システムは、Avere vFXT クラスターに対する信頼性の高い高速接続 (たとえば、1 GBps の ExpressRoute 接続 (VPN ではなく)) を備え、使用される NAS エクスポートにクラスター ルート アクセスを提供する必要があります。
+NAS コア ファイラーとしては、オンプレミスの NetApp や Isilon、またはクラウドの NAS エンドポイントを使用できます。 ストレージ システムは、Avere vFXT クラスターに対する信頼性の高い高速接続 (たとえば、1 GBps の ExpressRoute 接続 (VPN ではなく)) を備え、使用される NAS エクスポートにクラスター ルート アクセスを提供する必要があります。
 
 NAS コア ファイラーを追加する手順を次に示します。
 
@@ -70,7 +63,7 @@ NAS コア ファイラーを追加する手順を次に示します。
   
    * **[Next]\(次へ\)** をクリックして、キャッシュ ポリシーを選択します。 
    * **[Add Filer]\(ファイラーの追加\)** をクリックします。
-   * 詳しくは、Avere クラスター設定ガイドの「[Adding a new NAS core filer](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html)」(新しい NAS コア ファイラーの追加) をご覧ください。
+   * 詳しくは、Avere クラスター設定ガイドの「[Adding a new NAS core filer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html)」(新しい NAS コア ファイラーの追加) をご覧ください。
 
 次に、「[ジャンクションを作成する](#create-a-junction)」に進みます。  
 
@@ -79,7 +72,7 @@ NAS コア ファイラーを追加する手順を次に示します。
 vFXT クラスターのバックエンド ストレージとして Azure Blob Storage を使用するには、コア ファイラーとして追加する空のコンテナーが必要です。
 
 > [!TIP] 
-> ``create-cloudbacked-cluster`` サンプル スクリプトでは、vFXT クラスター作成の一環として、ストレージ コンテナーが作成され、それがコア ファイラーとして定義されて、名前空間ジャンクションが作成されます。 ``create-minimal-cluster`` サンプル スクリプトでは、Azure Storage コンテナーは作成されません。 クラスター作成後に Azure Storage コア ファイラーを作成して構成する必要がないようにするには、``create-cloudbacked-cluster`` スクリプトを使用して vFXT クラスターを展開します。
+> Avere vFXT クラスターを作成するのと同時に BLOB コンテナーを作成することを選択すると、デプロイ テンプレートまたはスクリプトによって、ストレージ コンテナーが作成され、それがコア ファイラーとして定義され、vFXT クラスターの作成の一部として名前空間のジャンクションが作成されます。 テンプレートではほかにも、クラスターの仮想ネットワーク内部にストレージ サービス エンドポイントが作成されます。 
 
 Blob Storage をクラスターに追加するには、次のタスクが必要です。
 
@@ -156,7 +149,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
    * 必要に応じて、**[Encryption type]\(暗号化の種類\)** を **[None]\(なし\)** に設定します。  Azure Storage は既定で暗号化されます。
    * **[Add Filer]\(ファイラーの追加\)** をクリックします。
 
-  詳しくは、Avere クラスター構成ガイドの「[Adding a new cloud core filer](<http://library.averesystems.com/ops_guide/4_7/new_core_filer_cloud.html>)」(新しいクラウド コア ファイラーの追加) をご覧ください。 
+   詳しくは、Avere クラスター構成ガイドの「[Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>)」(新しいクラウド コア ファイラーの追加) をご覧ください。 
 
 ページが更新されるか、または手動でページを更新することもでき、新しいコア ファイラーが表示されます。
 
@@ -168,7 +161,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
 
 たとえば、`/avere/files` を作成して、NetApp コア ファイラーの `/vol0/data` エクスポートと `/project/resources` サブディレクトリにマップできます。
 
-ジャンクションについて詳しくは、[Avere クラスター構成ガイドの名前空間セクション](http://library.averesystems.com/ops_guide/4_7/gui_namespace.html)をご覧ください。
+ジャンクションについて詳しくは、[Avere クラスター構成ガイドの名前空間セクション](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)をご覧ください。
 
 Avere Control Panel 設定インターフェイスで次の手順のようにします。
 

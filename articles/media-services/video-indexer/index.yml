@@ -1,35 +1,52 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c15eba9db8e50cc738d8f0450e5ba543735df6e6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290855"
 documentType: LandingData
-title: Video Indexer のドキュメント
+title: Azure Media Services Video Indexer のドキュメント
 metadata:
-  document_id: 
-  title: Video Indexer のドキュメント | Microsoft Docs
-  meta.description: Learn how about Video Indexer.
+  document_id: null
+  title: Azure Media Services Video Indexer のドキュメント | Microsoft Docs
+  meta.description: Learn about Video Indexer.
   services: media-services
-  author: Juliako
+  author: juliako
   manager: femila
   ms.service: media-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11-19-2018
+  ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Video Indexer には、ビデオから分析情報を簡単に抽出するためのメディア AI テクノロジが組み込まれています。
+  description: Azure Media Services Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されたクラウド アプリケーションです。 Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。<br/>どのような場合に Video Indexer やMedia Services アナライザー プリセットを使用するかについて詳しくは、<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比較のドキュメント</a>をご覧ください。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: video-indexer-overview.md
+            html: <p>Video Indexer には、ビデオから分析情報を簡単に抽出するためのメディア AI テクノロジが組み込まれています。</p>
+            image:
+              src: media/index/AMSIcons-media_servicesV3.svg
+            title: Azure Media Services Video Indexer とは
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: 
-      text: Video Indexer とは
-      href: video-indexer-overview.md
+      - type: paragraph
+        text: Video Indexer Web サイトにサインインして最初のビデオをアップロードします。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/AMSIcons-media_analytics.svg
+            text: 分析情報の抽出
+            href: /azure/media-services/video-indexer/video-indexer-get-started
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Video Indexer API を使用してビデオから分析情報を抽出する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/AMSIcons-media_analytics.svg
+            text: 分析情報の抽出
+            href: /azure/media-services/video-indexer/video-indexer-use-apis

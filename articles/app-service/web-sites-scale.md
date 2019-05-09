@@ -71,7 +71,7 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
    
     ![Scale up the SQL Database backend for your Azure app](./media/web-sites-scale/ScaleDatabase.png)
    
-    SQL Database インスタンス用に、 [[geo レプリケーション]](../sql-database/sql-database-geo-replication-overview.md) を有効にすることもできます。
+    SQL データベース インスタンス用に、 [[geo レプリケーション]](../sql-database/sql-database-geo-replication-overview.md) を有効にすることもできます。
    
     Azure Storage リソースの場合は、**[設定]** > **[構成]** の順にクリックしてストレージ オプションをスケールアップします。
    

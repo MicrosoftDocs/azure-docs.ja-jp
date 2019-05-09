@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e470f9d6f33e8b534be22132881f4806bed85f5d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652866"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078365"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する
 
@@ -131,12 +131,12 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
     このテンプレートでは、次のリソースを作成します。
 
-    * HDInsight 3.6 クラスター上の Kafka。
-    * HDInsight 3.6 クラスター上の Spark 2.2.0。
-    * Azure Virtual Network (HDInsight クラスターを含む)
+   * HDInsight 3.6 クラスター上の Kafka。
+   * HDInsight 3.6 クラスター上の Spark 2.2.0。
+   * Azure Virtual Network (HDInsight クラスターを含む)
 
-    > [!IMPORTANT]  
-    > このチュートリアルで使用する構造化ストリーミング Notebook では、HDInsight 3.6 上に Spark 2.2.0 が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
+     > [!IMPORTANT]  
+     > このチュートリアルで使用する構造化ストリーミング Notebook では、HDInsight 3.6 上に Spark 2.2.0 が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
 
 2. 次の情報に従って、**[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
 
@@ -144,7 +144,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     | --- | --- |
     | サブスクリプション | お使いの Azure サブスクリプション |
     | リソース グループ | リソースが含まれるリソース グループ。 |
-    | 場所 | リソースが作成される Azure リージョン。 |
+    | Location | リソースが作成される Azure リージョン。 |
     | [Spark Cluster Name]\(Spark クラスター名\) | Spark クラスターの名前。 最初の 6 文字は、Kafka クラスターの名前と異なるものにする必要があります。 |
     | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 最初の 6 文字は、Spark クラスターの名前と異なるものにする必要があります。 |
     | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターの管理者ユーザー名。 |

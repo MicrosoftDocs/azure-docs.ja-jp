@@ -1,6 +1,6 @@
 ---
-title: Log Analytics HTTP データ コレクター API | Microsoft Docs
-description: Log Analytics HTTP データ コレクター API を使用すると、REST API を呼び出すことのできるクライアントから POST JSON データを Log Analytics リポジトリに追加できます。 この記事では、この API の使用方法について説明し、さまざまなプログラミング言語を使用してデータを発行する方法の例を紹介します。
+title: Azure Monitor HTTP データ コレクター API | Microsoft Docs
+description: Azure Monitor HTTP データ コレクター API を使用すると、REST API を呼び出すことのできる任意のクライアントから POST JSON データを Log Analytics ワークスペースに追加できます。 この記事では、この API の使用方法について説明し、さまざまなプログラミング言語を使用してデータを発行する方法の例を紹介します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,25 +11,27 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 674a26b9c8eb5fe8f44b416b5296b61c6678d2cd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186176"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264095"
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
-この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
+# <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信 (パブリック プレビュー)
+この記事では、HTTP データ コレクター API を使用して REST API クライアントから Azure Monitor にログ データを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Azure Monitor に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
-> Log Analytics HTTP データ コレクター API は、パブリック プレビュー段階にあります。
+> Azure Monitor HTTP データ コレクター API は、パブリック プレビュー段階にあります。
 
 ## <a name="concepts"></a>概念
-REST API を呼び出すことができる任意のクライアントから、HTTP データ コレクター API を使用して Log Analytics にデータを送信できます。  これは、Azure または別のクラウドから管理データを収集する Azure Automation の Runbookや、Log Analytics を使用してデータを統合して分析するログ分析を使用する他の管理システムが考えられます。
+HTTP データ コレクター API を使用すると、REST API を呼び出すことのできる任意のクライアントから Azure Monitor 内の Log Analytics ワークスペースにログ データを送信できます。  これは、Azure または別のクラウドから管理データを収集する Azure Automation での Runbook や、Azure Monitor を使用してログ データを統合して分析する他の管理システムが考えられます。
 
-Log Analytics リポジトリ内のすべてのデータは、特定の種類のレコードとして保存されます。  HTTP データ コレクター API に送信するデータを、JSON 形式の複数のレコードとして設定します。  データを送信すると、要求ペイロード内の各レコードに対応する個別のレコードがリポジトリ内に作成されます。
+Log Analytics ワークスペース内のすべてのデータは、特定のレコード型のレコードとして保存されます。  HTTP データ コレクター API に送信するデータを、JSON 形式の複数のレコードとして設定します。  データを送信すると、要求ペイロード内の各レコードに対応する個別のレコードがリポジトリ内に作成されます。
 
 
 ![HTTP データ コレクターの概要](media/data-collector-api/overview.png)
@@ -42,27 +44,28 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 ### <a name="request-uri"></a>要求 URI
 | Attribute | プロパティ |
 |:--- |:--- |
-| 方法 |POST |
+| Method |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
-| コンテンツの種類 |application/json |
+| Content type |application/json |
 
 ### <a name="request-uri-parameters"></a>要求 URI のパラメーター
 | パラメーター | 説明 |
 |:--- |:--- |
 | CustomerID |Log Analytics ワークスペースの一意識別子です。 |
-| リソース |API のリソース名は "/api/logs" です。 |
-| API バージョン |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
+| Resource |API のリソース名は "/api/logs" です。 |
+| API Version |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
 
 ### <a name="request-headers"></a>要求ヘッダー
 | ヘッダー | 説明 |
 |:--- |:--- |
-| 承認 |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
-| Log-Type |送信中のデータのレコード型を指定します。 現在、ログの種類でサポートされているのは、アルファベットのみです。 数字や特殊文字はサポートされていません。 このパラメーターのサイズ制限は 100 文字です。 |
+| Authorization |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
+| Log-Type |送信中のデータのレコード型を指定します。 このパラメーターのサイズ制限は 100 文字です。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
-| time-generated-field |データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
+| x-ms-AzureResourceId | データを関連付ける必要がある Azure リソースのリソース ID。 これにより、[_ResourceId](log-standard-properties.md#_resourceid) プロパティに値が設定され、[リソース中心の](manage-access.md#access-modes)クエリにデータを含めることができます。 このフィールドが指定されない場合、リソース中心のクエリにデータは含まれません。 |
+| time-generated-field | データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
 
 ## <a name="authorization"></a>Authorization
-Log Analytics HTTP データ コレクター API への要求には、承認ヘッダーを含める必要があります。 要求を認証するには、その要求を行っているワークスペースの主キーまたはセカンダリ キーのどちらかを使用して、要求に署名する必要があります。 次に、その署名を要求の一部として渡します。   
+Azure Monitor HTTP データ コレクター API への要求には、Authorization ヘッダーを含める必要があります。 要求を認証するには、その要求を行っているワークスペースの主キーまたはセカンダリ キーのどちらかを使用して、要求に署名する必要があります。 次に、その署名を要求の一部として渡します。   
 
 承認ヘッダーの形式を次に示します。
 
@@ -130,11 +133,11 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
 ## <a name="record-type-and-properties"></a>レコードの型とプロパティ
-Log Analytics HTTP データ コレクター API 経由でデータを送信する場合、カスタム レコード型を定義します。 現時点では、他のデータ型およびソリューションによって作成された既存のレコード型にデータを書き込むことはできません。 Log Analytics は受信データを読み取り、入力した値のデータ型に一致するプロパティを作成します。
+Azure Monitor HTTP データ コレクター API 経由でデータを送信する場合、カスタム レコード型を定義します。 現時点では、他のデータ型およびソリューションによって作成された既存のレコード型にデータを書き込むことはできません。 Azure Monitor では受信データを読み取り、入力した値のデータ型に一致するプロパティを作成します。
 
-Log Analytics API への各要求には、レコード型の名前が付いた **Log-Type** ヘッダーを含める必要があります。 サフィックス **_CL** は、カスタム ログと他のログの種類を区別するために、入力した名前の最後に自動的に追加されます。 たとえば、「**MyNewRecordType**」と入力した場合、Log Analytics によって **MyNewRecordType_CL** という型のレコードが作成されます。 これにより、ユーザーが作成した型名と現在または将来の Microsoft ソリューションで提供される型名が競合することはありません。
+データ コレクター API への各要求には、レコード型の名前が付いた **Log-Type** ヘッダーを含める必要があります。 サフィックス **_CL** は、カスタム ログと他のログの種類を区別するために、入力した名前の最後に自動的に追加されます。 たとえば、名前を「**MyNewRecordType**」と入力した場合、Azure Monitor では **MyNewRecordType_CL** という型のレコードが作成されます。 これにより、ユーザーが作成した型名と現在または将来の Microsoft ソリューションで提供される型名が競合することはありません。
 
-プロパティのデータ型を識別するために、Log Analytics によってプロパティ名にサフィックスが追加されます。 プロパティに null 値が含まれる場合、そのプロパティはレコードには含まれません。 次の表に、プロパティのデータ型と対応するサフィックスの一覧を示します。
+プロパティのデータ型を識別するために、Azure Monitor では、プロパティ名にサフィックスを追加します。 プロパティに null 値が含まれる場合、そのプロパティはレコードには含まれません。 次の表に、プロパティのデータ型と対応するサフィックスの一覧を示します。
 
 | プロパティのデータ型 | サフィックス |
 |:--- |:--- |
@@ -144,10 +147,10 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 | Date/time |_t |
 | GUID |_g |
 
-各プロパティに対して Log Analytics が使用するデータ型は、新しいレコードのレコード型が既に存在するかどうかによって異なります。
+Azure Monitor において各プロパティに対して使用されるデータ型は、新しいレコードのレコード型が既に存在するかどうかによって異なります。
 
-* レコード型が存在しない場合、Log Analytics によって新しいレコード型が作成されます。 新しいレコードの各プロパティに対してデータ型を決定するために、Log Analytics では JSON 型推論が使用されます。
-* レコード型が存在する場合、Log Analytics によって、既存のプロパティに基づいて新しいレコードの作成が試みられます。 新しいレコードのプロパティのデータ型が既存の型と一致せず、変換することもできない場合や、存在しないプロパティを含むレコードの場合、Log Analytics によって関連性のあるサフィックスを持つ新しいプロパティが作成されます。
+* レコード型が存在しない場合、Azure Monitor では、新しいレコードの各プロパティのデータ型を判定するために JSON 型の推定を利用して、新しく作成します。
+* レコード型が存在する場合、Azure Monitor では、既存のプロパティに基づいて新しいレコードの作成を試行します。 新しいレコードにおいてプロパティのデータ型が既存の型と一致せず、既存の型に変換することもできない場合や、存在しないプロパティがレコードに含まれる場合、Azure Monitor によって関連性のあるサフィックスを持つ新しいプロパティが作成されます。
 
 たとえば、次のような送信エントリには、**number_d**、**boolean_b**、**string_s** の 3 つのプロパティを持つレコードが作成されます。
 
@@ -157,20 +160,27 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 
 ![サンプル レコード 2](media/data-collector-api/record-02.png)
 
-一方、下記のようなエントリを送信する場合、Log Analytics によって、**boolean_d** および **string_d** という新しいプロパティが作成されます。 これらの値は、既存のデータ型に変換できません。
+しかし、下記のような送信を行った場合、Azure Monitor では、**boolean_d** および **string_d** という新しいプロパティを作成します。 これらの値は、既存のデータ型に変換できません。
 
 ![サンプル レコード 3](media/data-collector-api/record-03.png)
 
-次に、レコード型が作成される前に、下記のようなエントリを送信する場合、Log Analytics によって **number_s**、**boolean_s**、**string_s** という 3 つのプロパティを含むレコードが作成されます。 このエントリでは、初期の値はそれぞれ文字列の形式で指定されています。
+次に、レコード型が作成される前に、下記のようなエントリを送信した場合、Azure Monitor では **number_s**、**boolean_s**、および **string_s** という 3 つのプロパティを含むレコードが作成されます。 このエントリでは、初期の値はそれぞれ文字列の形式で指定されています。
 
 ![サンプル レコード 4](media/data-collector-api/record-04.png)
 
-## <a name="data-limits"></a>データ制限
-Log Analytics データ収集 API に送信するデータに関して制約がいくつかあります。
+## <a name="reserved-properties"></a>予約済みプロパティ
+次のプロパティは予約済みであり、カスタム レコードの種類で使用することはできません。 これらのプロパティ名のいずれかがペイロードに含まれている場合、エラーが表示されます。
 
-* Log Analytics データ コレクター API に送信するデータの上限は 30 MB です。 これは 1 回の送信のサイズ制限です。 1 回の送信のデータ サイズが 30 MB を超える場合は、データを小さなサイズのチャンクに分割し、それらを同時に送信する必要があります。
+- tenant
+
+## <a name="data-limits"></a>データ制限
+Azure Monitor データ収集の API に送信するデータに関しては、いくつかの制約があります。
+
+* Azure Monitor データ コレクター API に対する送信ごとの上限は 30 MB です。 これは 1 回の送信のサイズ制限です。 1 回の送信のデータ サイズが 30 MB を超える場合は、データを小さなサイズのチャンクに分割し、それらを同時に送信する必要があります。
 * フィールド値の上限は 32 KB です。 フィールド値が 32 KB を超えた場合、データは切り捨てられます。
 * 特定の種類のフィールドの推奨される最大数は 50 個です。 これは、使いやすさと検索エクスペリエンスの観点からの実質的な制限です。  
+* Log Analytics ワークスペース内のテーブルでは、最大で 500 列のみがサポートされます (この記事では、フィールドとして参照されます)。 
+* 列名の最大文字数は 500 です。
 
 ## <a name="return-codes"></a>リターン コード
 HTTP 状態コード 200 は、要求が処理するために受信されたことを意味します。 これは、操作が正常に完了したことを示します。
@@ -196,15 +206,10 @@ HTTP 状態コード 200 は、要求が処理するために受信されたこ�
 | 503 |サービス利用不可 |ServiceUnavailable |サービスは現在、要求を受信できません。 要求を再試行してください。 |
 
 ## <a name="query-data"></a>データのクエリを実行する
-Log Analytics HTTP データ コレクター API によって送信されたデータを照会するには、**Type** (指定した **LogType** の値の末尾に **_CL** を追加したもの) でレコードを検索します。 たとえば、**MyCustomLog** を使用した場合、**Type=MyCustomLog_CL** のすべてのレコードが返されます。
-
->[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](../../azure-monitor/log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
-
-> `MyCustomLog_CL`
+Azure Monitor HTTP データ コレクター API によって送信されたデータを照会するには、**Type** (指定した **LogType** の値の末尾に **_CL** を追加したものと同じ) でレコードを検索します。 たとえば、**MyCustomLog** を使用した場合、`MyCustomLog_CL` があるすべてのレコードが返されます。
 
 ## <a name="sample-requests"></a>サンプルの要求
-次のセクションでは、さまざまなプログラミング言語を使用して Log Analytics HTTP データ コレクター API にデータを送信する方法のサンプルを示します。
+以降のセクションでは、さまざまなプログラミング言語を使用して Azure Monitor HTTP データ コレクター API にデータを送信する方法のサンプルを示します。
 
 サンプルごとに、次の手順を実行して承認ヘッダーの変数を設定します。
 
@@ -226,7 +231,7 @@ $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 # Specify the name of the record type that you'll be creating
 $LogType = "MyRecordType"
 
-# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
 $TimeStampField = ""
 
 
@@ -321,10 +326,10 @@ namespace OIAPIExample
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-        // LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of the event type that is being submitted to Azure Monitor
         static string LogName = "DemoExample";
 
-        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
         static string TimeStampField = "";
 
         static void Main()
@@ -466,8 +471,17 @@ def post_data(customer_id, shared_key, body, log_type):
 
 post_data(customer_id, shared_key, body, log_type)
 ```
+## <a name="alternatives-and-considerations"></a>代替手段と考慮事項
+Data Collector API は、自由形式のデータを Azure ログに収集する際のほとんどのニーズに対応しますが、この API の一部の制限を克服するために代替手段が必要になる場合があります。 主な考慮事項を含め、すべてのオプションを以下に示します。
+
+| 代替手段 | 説明 | 最も適しているデータ |
+|---|---|---|
+| [カスタム イベント](https://docs.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Application Insights でのネイティブ SDK ベースのインジェスト | 通常はアプリケーション内で SDK を使用してインストルメント化される Application Insights では、カスタム イベントを使用してカスタム データを送信できます。 | <ul><li> アプリケーション内で生成されるが、SDK によって既定のデータの種類 (要求、依存関係、例外など) のいずれかとして取得されないデータ。</li><li> Application Insights で他のアプリケーション データに最も頻繁に関連付けられるデータ。 </li></ul> |
+| Azure Monitor ログの [Data Collector API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) | Azure Monitor ログの Data Collector API は、データを取り込むための完全に拡張可能な方法です。 JSON オブジェクト形式のデータはすべてここで送信できます。 送信されたデータが処理され、ログ内の他のデータや他の Application Insights データと関連付けるためにログで使用できるようになります。 <br/><br/> データは、ファイルとして Azure BLOB に簡単にアップロードできます。これらのファイルは Azure BLOB で処理され、Log Analytics にアップロードされます。 このようなパイプラインの実装例については、[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)の記事をご覧ください。 | <ul><li> Application Insights 内でインストルメント化されたアプリケーション内で必ずしも生成されるわけではないデータ。</li><li> 例として、ルックアップ テーブル、ファクト テーブル、参照データ、事前に集計された統計などがあります。 </li><li> 他の Azure Monitor データ (Application Insights、ログの他の種類のデータ、Security Center、コンテナー/VM 用 Azure Monitor など) と相互参照されるデータ。 </li></ul> |
+| [Azure データ エクスプローラー](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (ADX) は、Application Insights Analytics と Azure Monitor ログを強化するデータ プラットフォームです。 一般提供 ("GA") が開始されたこのデータ プラットフォームを raw 形式で使用すると、クラスターに対する完全な柔軟性 (RBAC、リテンション率、スキーマなど) が得られます (ただし、管理オーバーヘッドが必要になります)。 ADX には、[CSV、TSV、JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) の各ファイルを含め、多数の[インジェスト オプション](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods)が用意されています。 | <ul><li> Application Insights またはログで他のどのデータにも関連付けられないデータ。 </li><li> Azure Monitor ログで現在提供されていない高度なインジェスト機能や処理機能を必要とするデータ。 </li></ul> |
+
 
 ## <a name="next-steps"></a>次の手順
-- Log Analytics リポジトリから [Log Search API](../../azure-monitor/log-query/log-query-overview.md) を使用してデータを取得する
+- [Log Search API](../log-query/log-query-overview.md) を使用して Log Analytics ワークスペースからデータを取得する
 
-- Log Analytics への Logic Apps ワークフローを使用して [データ コレクター API でデータ パイプラインを作成する](../../azure-monitor/platform/create-pipeline-datacollector-api.md)方法を学ぶ
+- Azure Monitor への Logic Apps ワークフローを使用して[データ コレクター API によってデータ パイプラインを作成する](create-pipeline-datacollector-api.md)方法を学ぶ

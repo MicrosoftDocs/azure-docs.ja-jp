@@ -4,7 +4,7 @@ description: この記事では、物理インフラストラクチャ、セキ�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 69a54640ae3b4e71d7782712ad1764babab7104a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170679"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112046"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure の施設、建物、および物理上のセキュリティ
 Azure は、何千ものオンライン サービスをサポートし、世界中に安全性の高い 100 以上の施設を展開している、[グローバルに分散したデータセンター インフラストラクチャ](https://azure.microsoft.com/global-infrastructure/)から成り立っています。
@@ -41,7 +41,7 @@ Azure リージョンは地域に分かれています。 Azure の地域では�
 Microsoft では、データセンターを地理的に分散させることで、お客様の近隣に配置し、ネットワークの待機時間の低減と、geo 冗長バックアップおよびフェールオーバーを可能にします。
 
 ## <a name="physical-security"></a>物理的なセキュリティ
-Microsoft では、データが保管されている領域への物理アクセスを厳密に制御する手法で、データセンターを設計、構築、および運営しています。 Microsoft では、データの保護の重要性を理解し、お使いのデータを格納しているデータセンターのセキュリティの確保に尽力しています。 Microsoft には、Azur をサポートしている物理的な施設の設計、建設、および運営を一手に引き受けている部門があります。 このチームは、最先端の物理セキュリティの維持に注力しています。
+Microsoft では、データが保管されている領域への物理アクセスを厳密に制御する手法で、データセンターを設計、構築、および運営しています。 Microsoft では、データの保護の重要性を理解し、お使いのデータを格納しているデータセンターのセキュリティの確保に尽力しています。 Microsoft には、Azure をサポートしている物理的な施設の設計、建設、および運営を一手に引き受けている部門があります。 このチームは、最先端の物理セキュリティの維持に注力しています。
 
 Microsoft は、承認されていないユーザーがデータおよびデータセンター リソースへの物理アクセス権を取得するリスクを低減させるために、物理的なセキュリティを階層化する手法を採用しています。 Microsoft によって管理されるデータ センターには、何層ものセキュリティ保護が用意されています。具体的には、施設の周辺、建物の周辺、建物の内部、およびデータセンターの各階で、アクセスの承認を行います。 物理的なセキュリティのレイヤーを次に示します。
 
@@ -72,7 +72,7 @@ Azure インフラストラクチャは、ISO 27001、HIPAA、FedRAMP、SOC 1、
 Azure が準拠しているコンプライアンス標準の完全な一覧については、「[コンプライアンス認証](https://www.microsoft.com/trustcenter/compliance/complianceofferings)」をご覧ください。 
 
 ## <a name="next-steps"></a>次の手順
-Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、次を参照してください。
+Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、以下を参照してください。
 
 - [Azure インフラストラクチャの可用性](azure-infrastructure-availability.md)
 - [Azure 情報システムのコンポーネントと境界](azure-infrastructure-components.md)

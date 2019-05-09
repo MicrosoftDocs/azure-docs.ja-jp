@@ -3,7 +3,7 @@ title: PostgreSQL を Linux VM にセットアップする | Microsoft Docs
 description: Azure の Linux 仮想マシンに PostgreSQL をインストールして構成する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
-ms.author: zarhoads
-ms.openlocfilehash: e794c191737f14fb06351e345f70edb9f7cddb7c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.author: cynthn
+ms.openlocfilehash: 76f1ddeebb173bf19b15753d12e4374e6365bf8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322058"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998993"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure での PostgreSQL のインストールと構成
 PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。 PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンのコンカレンシー制御など、エンタープライズ対応の機能が含まれます。 また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます). 12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
@@ -238,5 +238,5 @@ Postgres データベースを作成します。
 
 
 ## <a name="get-more-information-about-postgresql"></a>PostgreSQL の詳細情報
-PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。 PostgreSQL についてさらに学習するには、 [PostgreSQL の Web サイト](http://www.postgresql.org/)にアクセスしてください。
+PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。 PostgreSQL についてさらに学習するには、 [PostgreSQL の Web サイト](https://www.postgresql.org/)にアクセスしてください。
 

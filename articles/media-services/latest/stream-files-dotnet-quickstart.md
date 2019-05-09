@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: fc8fc1af51332df032e864c84791791a38bc8601
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 3a50d78645630e499b11f012da122b12b026ae6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612222"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857863"
 ---
-# <a name="quickstart-stream-video-files---net"></a>クイック スタート: 動画ファイルをストリーム配信する - .NET
+# <a name="quickstart-stream-video-files---net"></a>クイック スタート:ビデオ ファイルのストリーミング - .NET
 
 このクイック スタートでは、Azure Media Services を利用すると、さまざまなブラウザーおよびデバイスを対象とした動画のエンコードとストリーム配信の開始がいかに容易であるかを示します。 HTTPS URL、SAS URL、または Azure Blob Storage 内に存在するファイルへのパスを使って入力コンテンツを指定できます。
 このトピックのサンプルでは、HTTPS URL を使用してアクセスできるようにするコンテンツをエンコードします。 現在、AMS v3では、HTTPS URLを介したチャンク転送のエンコーディングはサポートされていません。
@@ -34,35 +34,32 @@ ms.locfileid: "51612222"
 ## <a name="prerequisites"></a>前提条件
 
 - Visual Studio がインストールされていない場合は、[Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) を入手できます。
-- CLI をローカルにインストールして使用します。この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+- [Media Services アカウントを作成する](create-account-cli-how-to.md)<br/>Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
+- 「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
 
-    現在、一部の [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
-
-- [Media Services アカウントを作成する](create-account-cli-how-to.md)
-
-## <a name="download-the-sample"></a>サンプルのダウンロード
+## <a name="download-and-configure-the-sample"></a>サンプルをダウンロードして構成する
 
 次のコマンドを使って、ストリーム配信の .NET サンプルが含まれる GitHub リポジトリを、お使いのコンピューターに複製します。  
 
  ```bash
- git clone http://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
+ git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
 
 サンプルは、[EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) フォルダーにあります。
 
+ダウンロードしたプロジェクトに含まれる [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) を開きます。 [API へのアクセス](access-api-cli-how-to.md)に関するページで取得した資格情報の値に置き換えます。
+
 サンプルは、次のアクションを実行します。
 
-1. 変換を作成します (最初に、指定された変換が存在するかどうかを確認します)。 
-2. エンコード ジョブの出力として使用される出力アセットを作成します。
-3. HTTPS の URL に基づいてジョブの入力を作成します。
-4. 前に作成された入力と出力を使用してエンコード ジョブを送信します。
+1. **変換**を作成します (最初に、指定された変換が存在するかどうかを確認します)。 
+2. エンコード **ジョブ**の出力として使用される**出力**アセットを作成します。
+3. HTTPS の URL に基づいて**ジョブ**の入力を作成します。
+4. 前に作成された入力と出力を使用してエンコード **ジョブ**を送信します。
 5. ジョブの状態を確認します。
-6. StreamingLocator を作成します。
+6. **ストリーミング ロケーター**を作成します。
 7. ストリーミング URL を作成します。
 
 サンプル内の各関数の機能について詳しくは、[このソース ファイル](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)のコードを調べて、コメントを参照してください。
-
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
 ## <a name="run-the-sample-app"></a>サンプル アプリを実行する
 
@@ -84,6 +81,8 @@ ms.locfileid: "51612222"
 
 1. Web ブラウザーを開いて、[https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) にアクセスします。
 2. **[URL:]** ボックスに、アプリケーションを実行したときに取得したストリーム配信 URL 値のいずれかを貼り付けます。 
+ 
+     URL は、HLS、Dash、または Smooth 形式で貼り付けることができます。Azure Media Player によって、デバイスでの再生に適切なストリーミング プロトコルに自動的に切り替えられます。
 3. **[Update Player]\(プレーヤーの更新\)** をクリックします。
 
 Azure Media Player はテストには使用できますが、運用環境では使わないでください。 
@@ -103,6 +102,10 @@ az group delete --name amsResourceGroup
 サンプル内の各関数の機能について詳しくは、[このソース ファイル](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)のコードを調べて、コメントを参照してください。
 
 [ファイルのアップロード、エンコード、ストリーム配信](stream-files-tutorial-with-api.md)に関するチュートリアルでは、より高度なストリーム配信の例と詳しい説明が提供されています。 
+
+### <a name="job-error-codes"></a>ジョブ エラー コード
+
+[エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
 ## <a name="multithreading"></a>マルチスレッド
 

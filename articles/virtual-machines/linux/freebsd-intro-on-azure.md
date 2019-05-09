@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e6f284b2a3483b21901dc4ad26bff83b8fcd8848
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f2d3c40352d60d3cc7366aca6f38a8255a7a629
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843021"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302393"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure の FreeBSD の概要
 この記事では、Azure での FreeBSD 仮想マシンの実行の概要を説明します。
@@ -42,7 +42,6 @@ FreeBSD の今後のバージョンについては、最新の機能に対応し
 FreeBSD 仮想マシンのデプロイは、Azure Marketplace から提供されたイメージをAzure Portal で使用する簡単なプロセスです。
 
 - [Azure Marketplace の FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [Azure Marketplace の FreeBSD 11.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
 - [Azure Marketplace の FreeBSD 11.2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>FreeBSD で Azure CLI を使用して FreeBSD VM を作成する
@@ -134,4 +133,4 @@ $ sudo <COMMAND>
 [Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.2 については、Azure 上の FreeBSD VM に対してプロビジョニング エラーが発生するという[既知の問題](https://github.com/Azure/WALinuxAgent/pull/517)が確認されています。 修正プログラムは、[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.3 以降のリリースによってキャプチャされました。 
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111) に移動して、FreeBSD VM を作成します。
+* [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) に移動して、FreeBSD VM を作成します。

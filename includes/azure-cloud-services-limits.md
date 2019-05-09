@@ -4,20 +4,20 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: eb1fe7f83ed83efe078be0aadf26cc7db6f498e2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0b24688b502a40e722d2fcc4436ff1824862f489
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886205"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804484"
 ---
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
-| [デプロイあたりの Web/worker ロール数](../articles/cloud-services/cloud-services-choose-me.md)<sup>1</sup> |25 |25 |
-| [インスタンスの入力エンドポイント](https://msdn.microsoft.com/library/gg557552.aspx#InstanceInputEndpoint) 数 |25 |25 |
-| [入力エンドポイント](https://msdn.microsoft.com/library/gg557552.aspx#InputEndpoint) 数 |25 |25 |
-| [内部エンドポイント](https://msdn.microsoft.com/library/gg557552.aspx#InternalEndpoint) 数 |25 |25 |
+| [デプロイあたりの Web または worker ロール数](../articles/cloud-services/cloud-services-choose-me.md)<sup>1</sup> |25 |25 |
+| デプロイあたりの[インスタンスの入力エンドポイント](/previous-versions/azure/reference/gg557552(v=azure.100)#instanceinputendpoint)数 |25 |25 |
+| デプロイあたりの[入力エンドポイント](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint)数 |25 |25 |
+| デプロイあたりの[内部エンドポイント](/previous-versions/azure/reference/gg557552(v=azure.100)#internalendpoint)数 |25 |25 |
 | デプロイあたりの[ホストされるサービスの証明書数](../articles/cloud-services/cloud-services-certs-create.md#what-are-service-certificates) |199 |199 |
 
-<sup>1</sup>Web/worker ロールの Cloud Service には、それぞれ運用環境用とステージング環境用の 2 つのデプロイを作成することができます。 この制限は、ロールあたりのインスタンス数 (スケール) ではなく、別個のロール (構成) の数を指してることに注意してください。
+<sup>1</sup>Web または worker ロールの Azure Cloud Service には、それぞれ運用環境用とステージング環境用の 2 つのデプロイを作成することができます。 この制限は、個別のロールの数、つまり、構成を示しています。 この制限は、ロールあたりのインスタンスの数、つまり、スケーリングを示しています。
 

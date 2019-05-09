@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08d0221c785fdaeb18fe9a2999d08ded67d1fa91
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: a88ff7c7b889d197e78dddfbb498b7150e08d5ed
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437199"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526811"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
-HDInsight ではビッグ データでの機械学習が可能であるため、大量 (数ペタバイト、場合によっては数エクサバイト) の構造化、非構造化、および高速移動データから貴重な洞察を得る機能が提供されます。 HDInsight には、SparkML と MLlib、R、Hive、Microsoft Cognitive Toolkit などのいくつかの機械学習オプションがあります。
+HDInsight ではビッグ データでの機械学習が可能であるため、大量 (数ペタバイト、場合によっては数エクサバイト) の構造化、非構造化、および高速移動データから貴重な洞察を得る機能が提供されます。 HDInsight には、SparkML と Apache Spark MLlib、R、Apache Hive、および Microsoft Cognitive Toolkit という複数の機械学習オプションが存在します。
 
 ## <a name="sparkml-and-mllib"></a>SparkML と MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) は、Azure でホストされる [Apache Spark](http://spark.apache.org/) のサービスであり、ビッグ データ分析を向上させるためのメモリ内処理をサポートする、統合されたオープンソースの並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 この分散環境にアルゴリズム モデリング機能を提供するスケーラブルな機械学習ライブラリとして、MLlib と SparkML の 2 つがあります。 MLlib には、RDD 上に構築されたオリジナルの API が含まれています。 SparkML は、ML パイプラインを構成するために DataFrames 上に構築されたより高レベルの API を提供する新しいパッケージです。 SparkML はまだ MLlib のすべての機能をサポートしていませんが、Spark の標準の機械学習ライブラリとして MLlib を置き換えています。
+[HDInsight Spark](spark/apache-spark-overview.md) は、Azure でホストされる [Apache Spark](https://spark.apache.org/) のサービスであり、ビッグ データ分析を向上させるためのメモリ内処理をサポートする、統合されたオープンソースの並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 この分散環境にアルゴリズム モデリング機能を提供するスケーラブルな機械学習ライブラリとして、MLlib と SparkML の 2 つが存在します。 MLlib には、RDD 上に構築されたオリジナルの API が含まれています。 SparkML は、ML パイプラインを構成するために DataFrames 上に構築されたより高レベルの API を提供する新しいパッケージです。 SparkML はまだ MLlib のすべての機能をサポートしていませんが、Spark の標準の機械学習ライブラリとして MLlib を置き換えています。
 
 Apache Spark 用の Microsoft Machine Learning ライブラリは [MMLSpark](https://github.com/Azure/mmlspark) です。 このライブラリは、Spark 上でのデータ サイエンティストの生産性を高め、実験の速度を向上させ、さらに非常に大規模なデータセットに対してディープ ラーニングを含む最先端の機械学習手法を活用するように設計されています。 文字列のインデックス作成、機械学習アルゴリズムによって予測されるレイアウトへのデータの強制的な移行、特徴ベクトルのアセンブルなどのスケーラブルな ML モデルを構築する場合、MMLSpark は SparkML の低レベルの API の上に 1 つのレイヤーを提供します。 MMLSpark ライブラリはこれらのタスクや、PySpark でモデルを構築するためのその他の一般的なタスクを簡略化します。
 
@@ -42,13 +42,13 @@ Azure Machine Learning は、予測分析をモデル化するためのツール
 
 ![Microsoft Azure Machine Learning により高度な分析で Hadoop にアクセスできるようにする](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
 
-[Hive クエリ](../machine-learning/team-data-science-process/create-features-hive.md)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング*は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure ML から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/studio/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
+[Hive クエリ](../machine-learning/team-data-science-process/create-features-hive.md)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング*は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure Machine Learning Studio から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/studio/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
 [ディープ ラーニング](https://www.microsoft.com/en-us/research/group/dltc/)は、人間の脳の生物学的プロセスから着想を得た、ニューラル ネットワークを使用する機械学習の 1 分野です。 多くの研究者がディープ ラーニングを、人工知能を拡張するための将来性のあるアプローチとして見ています。 ディープ ラーニングの例には、音声言語翻訳機、画像認識システム、および機械推論があります。
 
-ディープ ラーニングにおける独自の機能の進歩に役立つように、Microsoft は無料で、使いやすい、オープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、ディープ ラーニングを大規模に展開する必要がある世界中の企業や、最新のアルゴリズムと手法に関心がある学生によって、さまざまな Microsoft 製品で使用されています。 
+ディープ ラーニングにおける独自の機能の進歩に役立つように、Microsoft は無料で、使いやすい、オープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、ディープ ラーニングを大規模に展開する必要がある世界中の企業や、最新のアルゴリズムと手法に関心がある学生によって、さまざまな Microsoft 製品で使用されています。
 
 ## <a name="see-also"></a>関連項目
 
@@ -63,5 +63,6 @@ Azure Machine Learning は、予測分析をモデル化するためのツール
 
 ### <a name="deep-learning-resources"></a>ディープ ラーニングのリソース
 
-* [Apache Spark を使用したディープ ラーニング ツールキット](https://blogs.technet.microsoft.com/machinelearning/2017/04/25/using-microsofts-deep-learning-toolkit-with-spark-on-azure-hdinsight-clusters/)
-* [Apache Spark 上で Cognitive Toolkit と Tensorflow を使用した驚異的な並列画像分類](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)
+* [Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する](spark/apache-spark-microsoft-cognitive-toolkit.md)
+* [分散型深層学習用に Azure HDInsight Spark で Caffe を使用する](spark/apache-spark-deep-learning-caffe.md)
+* [Data Science Virtual Machine (DSVM) でのディープ ラーニングおよび AI フレームワーク](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)

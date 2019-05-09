@@ -6,21 +6,21 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 11/15/2018
+ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d23b7c8fa10127094fec67535333ae169f0f38f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599503"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183392"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>チュートリアル:監視ソリューションに接続されているデバイスを構成する
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを構成および管理します。 ソリューション アクセラレータに新しいデバイスを追加し、デバイスを構成します。
 
-Contoso は自社の施設の 1 つを拡大するために、新しい機械を注文しました。 新しい機械が納品されるのを待つ間に、あなたはソリューションの動作をテストするためのシミュレーションを実施したいと考えています。 シミュレーションを実行するために、新しいシミュレートされたエンジン デバイスをリモート監視ソリューション アクセラレータに追加し、このシミュレートされたデバイスが構成の更新に正しく応答することをテストします。 このチュートリアルではシミュレートされたデバイスを使用していますが、デバイス開発者は、[リモート監視ソリューション アクセラレータに接続された物理デバイス](iot-accelerators-connecting-devices.md)にダイレクト メソッドを実装できます。
+Contoso は自社の施設の 1 つを拡大するために、新しい機械を注文しました。 新しい機械が納品されるのを待つ間に、あなたはソリューションの動作をテストするためのシミュレーションを実施したいと考えています。 シミュレーションを実行するために、新しいシミュレートされたエンジン デバイスをリモート監視ソリューション アクセラレータに追加し、このシミュレートされたデバイスが構成の更新に正しく応答することをテストします。 このチュートリアルではシミュレートされたデバイスを使用していますが、デバイス開発者は、[リモート監視ソリューション アクセラレータに接続された実デバイス](iot-accelerators-connecting-devices.md)にダイレクト メソッドを実装できます。
 
 このチュートリアルでは、次のことを行いました。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-a-simulated-device"></a>シミュレートされたデバイスの追加
 
-ソリューションの **[デバイス]** ページに移動して、**[+ 新規デバイス]** をクリックします。
+ソリューションの **[Device Explorer]** ページに移動して、**[+ 新規デバイス]** をクリックします。
 
 [![シミュレートされたデバイスのプロビジョニング](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="test-the-simulated-device"></a>シミュレートされたデバイスのテスト
 
-シミュレートされたエンジン デバイスがテレメトリとレポートのプロパティ値を送信していることをテストするには、**[デバイス]** ページのデバイスの一覧でデバイスを選択します。 エンジンに関するライブ情報が **[デバイスの詳細]** パネルに表示されます。
+シミュレートされたエンジン デバイスがテレメトリとレポートのプロパティ値を送信していることをテストするには、**[Device Explorer]** ページのデバイスの一覧でデバイスを選択します。 エンジンに関するライブ情報が **[デバイスの詳細]** パネルに表示されます。
 
 [![新しくシミュレートされたエンジン デバイスの表示](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="reconfigure-a-device"></a>デバイスの再構成
 
-エンジンの構成プロパティを更新できることをテストするには、**[デバイス]** ページのデバイスの一覧でデバイスを選択します。 次に、**[ジョブ]** をクリックし、**[プロパティ]** を選択します。 [ジョブ] パネルには、選択したデバイスの更新可能なプロパティ値が表示されます。
+エンジンの構成プロパティを更新できることをテストするには、**[Device Explorer]** ページのデバイスの一覧でデバイスを選択します。 次に、**[ジョブ]** をクリックし、**[プロパティ]** を選択します。 [ジョブ] パネルには、選択したデバイスの更新可能なプロパティ値が表示されます。
 
 [![デバイスの再構成](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * Smart Vehicle (スマート車両) チームは、トラックとプロトタイプ作成デバイスを管理します。
 * Smart Building (スマート ビルディング) チームは、冷却装置、エレベーター、エンジンを管理します。
 
-すべてのデバイスを表示するために、**[デバイス]** ページに移動して **[すべてのデバイス]** フィルターを選択します。
+すべてのデバイスを表示するには、**[Device Explorer]** ページに移動して **[すべてのデバイス]** フィルターを選択します。
 
 [![すべてのデバイスを表示する](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-filters"></a>フィルターの作成
 
-タグ値を使用してフィルターを作成できます。 **[デバイス]** ページで、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
+タグ値を使用してフィルターを作成できます。 **[Device Explorer]** ページで、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
 
 [![デバイス グループの管理](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 

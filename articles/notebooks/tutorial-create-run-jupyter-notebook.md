@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106678"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59258536"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
 
@@ -28,9 +28,9 @@ ms.locfileid: "53106678"
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、[クイック スタートの Azure Notebooks へのサインイン](quickstart-sign-in-azure-notebooks.md)に関する記事をご覧ください)。
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
-1. パブリック プロファイル ページで、ページの上部にある **[マイ プロジェクト]** を選択します。
+1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
     ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "53106678"
 
 ## <a name="create-the-data-file"></a>データ ファイルを作成する
 
-ノートブックで作成する線形回帰モデルでは、*cricket_chirps.csv* という名前のプロジェクトのファイルからデータを取得します。 このファイルは、「[GitHub - Azure Notebooks Samples (GitHub - Azure Notebooks サンプル)](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)」からコピーするか、データを直接入力することで作成できます。 以下のセクションでは、両方の方法について説明します。
+ノートブックで作成する線形回帰モデルでは、*cricket_chirps.csv* という名前のプロジェクトのファイルからデータを取得します。 このファイルは、[GitHub の Azure Notebooks サンプル](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)からコピーするか、データを直接入力することで作成できます。 以下のセクションでは、両方の方法について説明します。
 
 ### <a name="upload-the-data-file"></a>データ ファイルをアップロードする
 
@@ -128,7 +128,7 @@ ms.locfileid: "53106678"
 1. 環境設定に *requirements.txt* ファイルがあるので、"Waiting for your container to finish being prepared" (コンテナーの準備が完了するのを待っています) というメッセージが表示されます。 **[OK]** を選択してメッセージを閉じ、ノートブックでの作業を継続できます。ただし、環境が完全に設定されるまで、コード セルを実行することはできません。
 1. 既定で空のコード セルが 1 つ含まれるノートブックが、Jupyter のインターフェイスで開きます。
 
-    [![](media/tutorial/tutorial-new-notebook.png "Azure Notebooks での新しいノートブックの初期表示")](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Azure Notebooks での新しいノートブックの初期表示](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Notebook のインターフェイスをツアーする
 
@@ -144,7 +144,7 @@ ms.locfileid: "53106678"
 (F) ノートブックが信頼されているかどうかを示すインジケーター (既定では**信頼されていません**)。
 (G) ノートブックが実行されているカーネルと、アクティビティ インジケーター。
 
-[![](media/tutorial/tutorial-notebook-ui.png "Jupyter インターフェイスの主な UI 領域")](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Jupyter インターフェイスの主な UI 領域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter では、主な UI 要素の組み込みツアーが提供されています。 ツアーを始めるには、**[Help]\(ヘルプ\)** > **[User Interface Tour]\(ユーザー インターフェイス ツアー\)** コマンドを選択し、ポップアップをクリックします。
 
@@ -181,7 +181,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
     ```markdown
     # Example Linear Regression
 
-    This notebook contains a walkthrough of a simple linear regression. The data, obtained from [college.cengage.com](http://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/frame.html), relates the rate of cricket chirps to temperature from *The Song of Insects*, by Dr. G. W. Pierce, Harvard College Press.
+    This notebook contains a walkthrough of a simple linear regression. The data, obtained from [college.cengage.com](https://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/frame.html), relates the rate of cricket chirps to temperature from *The Song of Insects*, by Dr. G. W. Pierce, Harvard College Press.
 
     In this example we're using the count of chirps per minute as the independent varible to then predict the dependent variable, temperature. In short, we're using a little data science to make ourselves a cricket thermometer. (You could also reverse the data and use temperature to predict the number of chirps, but it's more fun to use crickets as the thermometer itself!)
 
@@ -411,17 +411,13 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Visual Studio Code を使用してノートブックをデバッグする
 
-ノートブックのコード セルが期待どおりに動作しない場合は、コードのバグまたはその他の欠陥が存在する可能性があります。 ただし、`print` ステートメントを使用して変数の値を表示する以外に、Jupyter Notebook ではデバッグ機能は提供されていません。
+ノートブックのコード セルが期待どおりに動作しない場合は、コードのバグまたはその他の欠陥が存在する可能性があります。 ただし、`print` ステートメントを使用して変数の値を表示する以外に、一般的な Jupyter 環境ではデバッグ機能は提供されていません。
 
-さいわい、Visual Studio Code 用の Python 拡張機能では、Jupyter ノートブックを Markdown セルがコメントになった単一のコード ファイルとして直接インポートできます。 その後、Visual Studio Code のデバッガーを使用して、コードのステップ実行、ブレークポイントの設定、状態の確認などを行うことができます。 
+幸いにも、ノートブックの *.ipynb* ファイルをダウンロードし、Python 拡張機能を使用して Visual Studio Code で開くことができます。 この拡張機能は、コメント内に Markdown セルを保持する 1 つのコード ファイルとして、ノートブックを直接インポートします。 ノートブックをインポートした後、Visual Studio Code のデバッガーを使用して、コードのステップ実行、ブレークポイントの設定、状態の確認などを行うことができます。 次のコードを修正したら、Visual Studio Code から *.ipynb* ファイルをエクスポートして、Azure Notebooks に再度アップロードします。
 
-コードを修正した後は、*.ipynb* ファイルを保存し、それを Azure Notebooks にアップロードします。
+詳しくは、Visual Studio Code のドキュメントの [Jupyter ノートブックのデバッグ](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)に関するページをご覧ください。
 
-詳しくは、Visual Studio Code の以下のドキュメントをご覧ください。
-
-- [VS Code での Jupyter Notebook の概要](https://code.visualstudio.com/docs/languages/python#_jupyter-notebooks)
-- [Python チュートリアル - デバッガーを構成して実行する](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger)
-- [編集 - Jupyter のコード セル](https://code.visualstudio.com/docs/python/editing#_jupyter-code-cells)
+また、[Visual Studio Code の Jupyter サポート](https://code.visualstudio.com/docs/python/jupyter-support)に関するページで、Jupyter ノートブック用の Visual Studio Code の追加機能についてもご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

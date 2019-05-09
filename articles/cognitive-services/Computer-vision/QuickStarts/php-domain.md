@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、ドメイン モデルを利用し、PHP と Computer Vision API を使って画像内のランドマークを識別します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 19aa1874a93c4a52f6fc5ff75848c1ca6815db1e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 2c1801296247ace081a34a137fe3f3bea7a55974
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581343"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877022"
 ---
 # <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>クイック スタート:Computer Vision で REST API と PHP を使用してドメイン固有のコンテンツを認識する
 

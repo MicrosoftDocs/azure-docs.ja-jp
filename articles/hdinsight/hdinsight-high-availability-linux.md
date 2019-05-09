@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ca6b072ba81f55802bc01d61ed44b06680cedbb2
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743665"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362001"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight における Apache Hadoop クラスターの可用性と信頼性
 
@@ -111,7 +111,50 @@ Ambari ページにアクセスすると、インストールされているサ�
 
 ![インストールされているサービス](./media/hdinsight-high-availability-linux/services.png)
 
-状態を示すためにサービスの横に表示されるアイコンがあります。 サービスに関連するアラートは、ページの上部にある **[アラート]** リンクを使用して表示できます。 各サービスを選択して、その詳細を表示できます。
+状態を示すためにサービスの横に表示されるアイコンがあります。 サービスに関連するアラートは、ページの上部にある **[アラート]** リンクを使用して表示できます。  Ambari には、いくつかの定義済みのアラートが用意されています。
+
+次のアラートは、クラスターの可用性を監視するのに役立ちます。
+
+| アラート名                               | 説明                                                                                                                                                                                  |
+|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| メトリック監視ステータス                    | このアラートは、監視ステータス スクリプトによって算出されるメトリック監視プロセスのステータスを示します。                                                                                   |
+| Ambari エージェントのハートビート                   | サーバーがエージェントとの接続を失った場合、このアラートがトリガーされます。                                                                                                                        |
+| ZooKeeper サーバー プロセス                 | ZooKeeper サーバー プロセスが稼働していてネットワークをリッスンしていると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                               |
+| IOCache メタデータ サーバーのステータス           | IOCache メタデータ サーバーが稼働していてクライアントの要求に応答していると判断できない場合に、このホスト レベルのアラートがトリガーされます                                                            |
+| JournalNode Web UI                       | JournalNode Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                                 |
+| Spark2 Thrift サーバー                     | Spark2 Thrift サーバーが稼働していると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                |
+| History Server プロセス                   | History Server プロセスが稼働してネットワークをリッスンするように確立できない場合に、このホスト レベルのアラートがトリガーされます。                                                                |
+| History Server Web UI                    | History Server Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                              |
+| ResourceManager Web UI                   | ResourceManager Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                             |
+| NodeManager ヘルスの概要               | 異常な NodeManager がある場合に、このサービス レベルのアラートがトリガーされます                                                                                                                    |
+| App Timeline Web UI                      | App Timeline Server Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                         |
+| DataNode ヘルスの概要                  | 異常な DataNode がある場合に、このサービス レベルのアラートがトリガーされます                                                                                                                       |
+| NameNode Web UI                          | NameNode Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                                    |
+| ZooKeeper フェールオーバー コントローラー プロセス    | ZooKeeper フェールオーバー コントローラー プロセスが稼働していてネットワークをリッスンしていると確認できない場合に、このホスト レベルのアラートがトリガーされます。                                                   |
+| Oozie Server Web UI                      | Oozie Server Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                                |
+| Oozie Server のステータス                      | Oozie Server が稼働していてクライアントの要求に応答していると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                                      |
+| Hive metastore プロセス                   | Hive metastore プロセスが稼働していてネットワークをリッスンしていると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                                 |
+| HiveServer2 プロセス                      | HiveServer が稼働していてクライアントの要求に応答していると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                                        |
+| WebHCat サーバーのステータス                    | Templeton サーバーのステータスが正常でない場合は、このホスト レベルのアラートがトリガーされます。                                                                                                            |
+| 利用可能な ZooKeeper サーバーの割合      | クラスター内でダウンしている ZooKeeper サーバーの数が、設定された重大しきい値を超えている場合は、このアラートがトリガーされます。 これにより、ZooKeeper プロセス チェックの結果が集計されます。     |
+| Spark2 Livy サーバー                       | Livy2 サーバーが稼働していると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                        |
+| Spark2 History Server                    | Spark2 History Server が稼働していると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                               |
+| メトリック コレクターのプロセス                | メトリック コレクターがしきい値と等しい秒数の間、構成されたポートで稼働してリッスンしていることを確認できない場合に、このアラートがトリガーされます。                                 |
+| メトリック コレクター - HBase Master プロセス | メトリック コレクターの HBase Master プロセスが、設定された重大しきい値 (秒) の間、ネットワーク上で稼働してリッスンしていることを確認できない場合に、このアラートがトリガーされます。 |
+| 利用可能なメトリック監視の割合       | 設定されたアラートのしきい値および重大しきい値の間、一定の割合のメトリック監視プロセスがネットワーク上で稼働せず、リッスンしていない場合に、このアラートがトリガーされます。                             |
+| 利用可能な NodeManager の割合           | クラスター内でダウンしている NodeManager の数が、設定された重大しきい値を超えている場合は、このアラートがトリガーされます。 これにより、NodeManager プロセス チェックの結果が集計されます。        |
+| NodeManager ヘルス                       | このホスト レベルのアラートは、NodeManager コンポーネントから利用可能なノードの正常性のプロパティを確認します。                                                                                              |
+| NodeManager Web UI                       | NodeManager Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                                 |
+| NameNode の高可用性のヘルス        | アクティブの NameNode またはスタンバイの NameNode が実行されていない場合に、このサービス レベルのアラートがトリガーされます。                                                                                     |
+| DataNode プロセス                         | 個々の DataNode プロセスが稼働してネットワークをリッスンするように確立できない場合に、このホスト レベルのアラートがトリガーされます。                                                         |
+| DataNode Web UI                          | DataNode Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                                    |
+| 利用可能な JournalNode の割合           | クラスター内でダウンしている JournalNode の数が、設定された重大しきい値を超えている場合は、このアラートがトリガーされます。 これにより、JournalNode プロセス チェックの結果が集計されます。        |
+| 利用可能な DataNode の割合              | クラスター内でダウンしている DataNode の数が、設定された重大しきい値を超えている場合は、このアラートがトリガーされます。 これにより、DataNode プロセス チェックの結果が集計されます。              |
+| Zeppelin サーバーのステータス                   | Zeppelin サーバーが稼働していてクライアントの要求に応答していると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                                   |
+| HiveServer2 Interactive プロセス          | HiveServer Interactive が稼働していてクライアントの要求に応答していると判断できない場合に、このホスト レベルのアラートがトリガーされます。                                                             |
+| LLAP アプリケーション                         | LLAP アプリケーションが稼働していて要求に応答していると判断できない場合に、このアラートがトリガーされます。                                                                                    |
+
+各サービスを選択して、その詳細を表示できます。
 
 サービス ページには、各サービスの状態と構成に関する情報が表示されますが、サービスが実行されているヘッド ノードの情報は表示されません。 この情報を表示するには、ページの上部にある **[ホスト]** リンクを使用します。 このページに、ヘッド ノードを含むクラスター内のホストが表示されます。
 
@@ -205,6 +248,8 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 ## <a name="how-to-configure-the-node-size"></a>ノード サイズの構成方法
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ノードのサイズを選択できるのは、クラスターの作成中のみです。 「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できるまざまな VM サイズの一覧を確認できます。
 
 クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure portal][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure クラシック CLI][azure-cli] を使用してサイズを指定する方法について説明します。
@@ -215,7 +260,7 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 * **Azure クラシック CLI**: `azure hdinsight cluster create` コマンドを使用するときに、`--headNodeSize`、`--workerNodeSize`、および `--zookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
 
-* **Azure PowerShell**:`New-AzureRmHDInsightCluster` コマンドレットを使用するときに、`-HeadNodeVMSize`、`-WorkerNodeSize`、および `-ZookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
+* **Azure PowerShell**:`New-AzHDInsightCluster` コマンドレットを使用するときに、`-HeadNodeVMSize`、`-WorkerNodeSize`、および `-ZookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
 
 ## <a name="next-steps"></a>次の手順
 

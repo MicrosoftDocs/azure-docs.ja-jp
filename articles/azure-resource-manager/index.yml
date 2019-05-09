@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: de92f8d8be6744f7004da4cc662b31a387e8920a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385586"
 documentType: LandingData
 title: Azure 上の Resource Manager のドキュメント
 metadata:
@@ -12,7 +6,7 @@ metadata:
   description: Resource Manager を使用して、ソリューション リソース (グループなど) をデプロイおよび管理したり、一貫性のある繰り返し可能なリソースのデプロイ用にテンプレートを作成したりする方法について説明します。
   services: azure-resource-manager
   ms.service: azure-resource-manager
-  keywords: Resource Manager, azure, devops, チュートリアル, サンプル, リファレンス, ドキュメント
+  keywords: 'Resource Manager, azure, devops, チュートリアル, サンプル, リファレンス, ドキュメント'
   author: mumian
   manager: dougeby
   ms.author: jgao
@@ -21,63 +15,64 @@ metadata:
 abstract:
   description: Resource Manager を使用して、グループなどのソリューション リソースをデプロイ、監視、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソース グループを設定し、一貫性のある繰り返し可能なデプロイ用にテンプレートを作成する方法を紹介します。
 sections:
-- title: クイック スタート
-  items:
-  - type: paragraph
-    text: さまざまなツールを使用して、Azure リソースをデプロイするための Azure Resource Manager テンプレートを作成します。
-  - type: list
-    style: icon48
+  - title: クイック スタート
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure portal を使用してテンプレートを生成する
-      href: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-      text: Visual Studio Code を使用してテンプレートを作成する
-      href: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-      text: Visual Studio を使用してテンプレートを作成する
-      href: https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure リソースをデプロイするための Azure Resource Manager テンプレートを作成する方法を説明します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: さまざまなツールを使用して、Azure リソースをデプロイするための Azure Resource Manager テンプレートを作成します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure portal を使用してテンプレートを生成する
+            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Visual Studio Code を使用してテンプレートを作成する
+            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: Visual Studio を使用してテンプレートを作成する
+            href: 'https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy'
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">Resource Manager テンプレートの活用リファレンス</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">Azure リソースの複数のインスタンスを作成</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">リソースのデプロイ順序の設定</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">使用条件</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">Azure Key Vault の統合</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">リンク済みテンプレートの作成</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">仮想マシン拡張機能のデプロイ</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">SQL 拡張機能のデプロイ</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">テンプレート成果物のセキュリティ保護</a>
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">安全なデプロイ プラクティスの使用</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 一般的なデプロイ タスク用のサンプル構成テンプレート。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Azure リソースをデプロイするための Azure Resource Manager テンプレートを作成する方法を説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">Resource Manager テンプレートの活用リファレンス</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">Azure リソースの複数のインスタンスを作成</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">リソースのデプロイ順序の設定</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">使用条件</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">Azure Key Vault の統合</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">リンク済みテンプレートの作成</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">仮想マシン拡張機能のデプロイ</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">SQL 拡張機能のデプロイ</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">テンプレート成果物のセキュリティ保護</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">安全なデプロイ プラクティスの使用</a>'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot">Troubleshoot template deployments (テンプレート デプロイのトラブルシューティング)</a>'
+  - title: サンプル
     items:
-    - html: <a href="https://azure.microsoft.com/resources/templates/">Azure クイックスタート テンプレート</a>
-    - html: <a href="https://resources.azure.com/">Azure Resource Explorer (プレビュー)</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 一般的なデプロイ タスク用のサンプル構成テンプレート。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure クイックスタート テンプレート</a>'
+          - html: '<a href="https://resources.azure.com/">Azure Resource Explorer (プレビュー)</a>'
+  - title: リファレンス
     items:
-    - title: テンプレート
-      html: <p><a href="/azure/templates/">テンプレート リファレンス</a></p><p><a href="/azure/resource-group-template-functions">テンプレート関数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">UI 定義関数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">UI 定義要素</a></p>
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/azure/">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/resources/">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: テンプレート
+            html: <p><a href="/azure/templates/">テンプレート リファレンス</a></p><p><a href="/azure/resource-group-template-functions">テンプレート関数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">UI 定義関数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">UI 定義要素</a></p>
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
+          - title: Languages
+            html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/resources/">REST API</a></p>

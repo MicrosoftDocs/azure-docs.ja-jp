@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: ganesr;cherylmc
+ms.date: 02/25/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: fae5ad4a9045115c0e7a68b0164593f639824073
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7bd554896d739a567d04e7b978fba72960762805
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111363"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
@@ -21,7 +21,9 @@ ExpressRoute 回線をクラシック デプロイ モデルと Resource Manager
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) があることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* お使いのコンピューターにクラシックおよび Az Azure PowerShell モジュールの両方がローカルにインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 * 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
 * [クラシックから Resource Manager への ExpressRoute 回線の移行](expressroute-move.md)に関する記事に記載されている情報を確認してください。 制限および制約事項について完全に理解していることを確認します。
 * 回路がクラシック デプロイ モデルで完全に動作できることを確認します。
@@ -35,28 +37,28 @@ Azure クラシック環境にサインインし、サービス キーを収集�
 
 1. Azure アカウントにサインインします。
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 2.  適切な Azure サブスクリプションを選択します。
 
-  ```powershell
-  Select-AzureSubscription "<Enter Subscription Name here>"
-  ```
+   ```powershell
+   Select-AzureSubscription "<Enter Subscription Name here>"
+   ```
 
 3. Azure および ExpressRoute 用の PowerShell モジュールをインポートします。
 
-  ```powershell
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
-  ```
+   ```powershell
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
+   ```
 
 4. 次のコマンドレットを使用して、すべての ExpressRoute 回線のサービス キーを取得します。 キーの取得後、Resource Manager デプロイ モデルに移行する回線の**サービス キー**をコピーします。
 
-  ```powershell
-  Get-AzureDedicatedCircuit
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit
+   ```
 
 ### <a name="step-2-sign-in-and-create-a-resource-group"></a>手順 2: サインインし、リソース グループを作成する
 
@@ -64,21 +66,21 @@ Resource Manager 環境にサインインし、新しいリソース グルー�
 
 1. Azure Resource Manager 環境にサインインします。
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzAccount
+   ```
 
 2.  適切な Azure サブスクリプションを選択します。
 
-  ```powershell
-  Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
+   ```
 
 3. 次のスニペットを変更して、新しいリソース グループを作成します (まだリソース グループがない場合)。
 
-  ```powershell
-  New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
-  ```
+   ```powershell
+   New-AzResourceGroup -Name "DemoRG" -Location "West US"
+   ```
 
 ### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>手順 3:Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
@@ -87,10 +89,10 @@ Resource Manager 環境にサインインし、新しいリソース グルー�
 回線を移行するには、次のスニペットを変更して実行します。
 
 ```powershell
-Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
+Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-クラシック モードの場合、ExpressRoute 回線には、リージョンに関連付けられるという概念はありません。 しかし、Resource Manager の場合、すべてのリソースを Azure リージョンにマップする必要があります。 Move-AzureRmExpressRouteCircuit コマンドレットに指定するリージョンは、技術的には任意のリージョンにすることが可能です。 組織化を目的とする場合は、ピアリングの場所を厳密に表すリージョンを選択してください。
+クラシック モードの場合、ExpressRoute 回線には、リージョンに関連付けられるという概念はありません。 しかし、Resource Manager の場合、すべてのリソースを Azure リージョンにマップする必要があります。 Move-AzExpressRouteCircuit コマンドレットに指定するリージョンは、技術的には任意のリージョンにすることが可能です。 組織化を目的とする場合は、ピアリングの場所を厳密に表すリージョンを選択してください。
 
 > [!NOTE]
 > 移行が完了した後は、前のコマンドレットで表示される新しい名前を使用してリソースにアクセスします。 回線の名前は実質的に変更されます。
@@ -104,27 +106,27 @@ Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -L
 
 1. 回線の詳細を取得します。
 
-  ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
-  ```
+   ```powershell
+   $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+   ```
 
 2. [従来の操作の許可] を TRUE に設定します。
 
-  ```powershell
-  $ckt.AllowClassicOperations = $true
-  ```
+   ```powershell
+   $ckt.AllowClassicOperations = $true
+   ```
 
 3. 回線を更新します。 この操作が正常に完了すると、クラシック デプロイ モデルで回線を表示できるようになります。
 
-  ```powershell
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
-  ```
+   ```powershell
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+   ```
 
 4. 次のコマンドレットを実行して、ExpressRoute 回線の詳細を取得します。 表示されたサービス キーを確認できる必要があります。
 
-  ```powershell
-  get-azurededicatedcircuit
-  ```
+   ```powershell
+   get-azurededicatedcircuit
+   ```
 
 5. これで、クラシック VNet についてはクラシック デプロイ モデル コマンドを、Resource Manager VNet については Resource Manager コマンドを使用して、ExpressRoute 回線へのリンクを管理できます。 次の記事では、ExpressRoute 回線へのリンクを管理する方法について説明します。
 
@@ -137,21 +139,21 @@ Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -L
 
 1. ExpressRoute 回線の詳細を取得します。
 
-  ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
-  ```
+   ```powershell
+   $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+   ```
 
 2. [従来の操作の許可] を FALSE に設定します。
 
-  ```powershell
-  $ckt.AllowClassicOperations = $false
-  ```
+   ```powershell
+   $ckt.AllowClassicOperations = $false
+   ```
 
 3. 回線を更新します。 この操作が正常に完了すると、クラシック デプロイ モデルで回線を表示できなくなります。
 
-  ```powershell
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
-  ```
+   ```powershell
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+   ```
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,25 +1,25 @@
 ---
 title: VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する | Microsoft Docs
 description: この記事では、VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する方法について説明します。
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 9dec4314bb99b2cb32d62f40b76591ecb03e4d56
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 4/15/2019
+ms.author: mayg
+ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838752"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565429"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Deployment Planner の実行モード
-このコマンドライン ツール (ASRDeploymentPlanner.exe) は、次の 4 とおりのモードで実行できます。
+このコマンド ライン ツール (ASRDeploymentPlanner.exe) は、次の 3 とおりのモードで実行できます。
 
 1.  [プロファイリング](#profile-vmware-vms)
 2.  [レポートの生成](#generate-report)
@@ -81,7 +81,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Protocol| (省略可) vCenter に接続するためのプロトコル ("http" または "https") を指定します。 既定のプロトコルは https です。|
 | -StorageAccountName | (省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。 |
 | -StorageAccountKey | (省略可) ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] の順に移動します。 |
-| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。 |
+| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China 21Vianet であるときに使用します。 |
 
 
 VM のプロファイリング期間は 7 日間より長くすることをお勧めします。 変更頻度のパターンが 1 か月間で変動する場合は、変更頻度が最大となる週をプロファイル期間とすることをお勧めします。 理想的なプロファイル期間は 31 日で、そうすれば、よりよいアドバイスが得られます。 プロファイリング期間中は ASRDeploymentPlanner.exe が実行状態となります。 ツールには、プロファイリングの時間を日数で入力します。 ツールの簡単なテストや概念実証が目的であれば、プロファイル期間は数時間や数分でもかまいません。 プロファイリング期間として許容される最短時間は 30 分です。
@@ -95,7 +95,7 @@ VM のプロファイリング期間は 7 日間より長くすることをお�
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-既定の設定では、たとえば 1,500 台の VM をプロファイリングする場合に 2 つの VMList.txt ファイルを作成します。 1 つのリストには 1,000 台の VM が含まれており、もう 1 つのリストには 500 台の VM が含まれています。 一方に VMList1.txt を使用し、もう一方に VMList2.txt を使用して、ASR Deployment Planner で 2 つのインスタンスを実行します。 両方の VMList VM のプロファイリング データを格納するために、同じディレクトリ パスを使用できます。
+既定の設定では、たとえば 1,500 台の VM をプロファイリングする場合に 2 つの VMList.txt ファイルを作成します。 1 つのリストには 1,000 台の VM が含まれており、もう 1 つのリストには 500 台の VM が含まれています。 Azure Site Recovery Deployment Planner の 2 つのインスタンスを実行して、一方に VMList1.txt を使用し、もう一方に VMList2.txt を使用します。 両方の VMList VM のプロファイリング データを格納するために、同じディレクトリ パスを使用できます。
 
 ハードウェア構成 (特にレポートを生成するためにツールが実行されるサーバーの RAM サイズ) によっては、メモリ不足で操作が失敗する可能性があることが確認されています。 優れたハードウェアを使用している場合、MaxVMsSupported をより高い値に変更できます。  
 
@@ -136,7 +136,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>レポートの生成
-Deployment Planner ツールでは、デプロイの推奨情報をすべてまとめたマクロ有効 Microsoft Excel ファイル (XLSM ファイル) がレポートの出力結果として生成されます。 このレポートは、指定されたディレクトリに DeploymentPlannerReport_<unique numeric identifier>.xlsm という名前で格納されます。
+Deployment Planner ツールでは、デプロイの推奨情報をすべてまとめたマクロ有効 Microsoft Excel ファイル (XLSM ファイル) がレポートの出力結果として生成されます。 このレポートは、指定されたディレクトリに `DeploymentPlannerReport_<unique numeric identifier>.xlsm` という名前で格納されます。
+
+>[!NOTE]
+>レポートの生成には、Excel 2013 以降がインストールされた Windows PC または Windows Server が必要です。 コストの見積もりを作成するには、このマシンの小数点記号を "." として構成する必要があります。 小数点の記号として "," を設定している場合は、コントロール パネルの [日付、時刻、または数値の形式の変更] に移動し、[追加の設定] に移動して小数点の記号を "." に変更します。
 
 プロファイリングが完了したら、レポート生成モードでツールを実行できます。 次の表は、レポート生成モードでツールを実行するための必須のパラメーターと省略可能なパラメーターの一覧です。
 
@@ -160,13 +163,13 @@ Deployment Planner ツールでは、デプロイの推奨情報をすべてま�
 | -EndDate | (省略可) 終了日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 *EndDate* は *StartDate* と一緒に指定する必要があります。 EndDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -GrowthFactor | (省略可) 増加率 (%)。 既定値は 30% です。 |
 | -UseManagedDisks | (省略可) UseManagedDisks (Yes/No)。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、マネージド ディスクに対して実行されることを想定して計算されます。 |
-|-SubscriptionId |(省略可) サブスクリプションの GUID。 サブスクリプションやそれに関連付けられているオファーに基づき、ターゲット Azure リージョンと通貨を指定して、最新の料金に関するコスト見積もりレポートを生成するには、このパラメーターを使用します。|
+|-SubscriptionId |(省略可) サブスクリプションの GUID。 このパラメーターは、サブスクリプションに基づいた最新の価格、サブスクリプションに関連付けられたプラン、および**指定された通貨**の特定のターゲット Azure リージョンに関するコスト見積もりレポートを生成する必要がある場合に必要なことに注意してください。|
 |-TargetRegion|(省略可) レプリケーション先となる Azure リージョン。 Azure のコストはリージョンによって異なります。そこで、特定のターゲット Azure リージョンでレポートを生成するために、このパラメーターを使用します。<br>WestUS2 または最近使用したターゲット リージョンが既定値となります。<br>「[サポートされるターゲット リージョン](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)」の一覧を参照してください。|
 |-OfferId|(省略可) 指定されたサブスクリプションに関連付けられているオファー。 既定値は MS-AZR-0003P (従量課金制) です。|
 |-Currency|(省略可) 生成されたレポートでコストの表示に使用する通貨。 米ドル ($) または最近使用した通貨が既定値となります。<br>「[サポートされる通貨](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)」の一覧を参照してください。|
 
 既定では、このツールは最大で 1,000 台の VM をプロファイリングしてレポートを生成するよう構成されています。 上限を変更するには、*ASRDeploymentPlanner.exe.config* ファイルの MaxVMsSupported キー値を変更します。
-```
+```xml
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
@@ -189,7 +192,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 
 #### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>例 4:増加率を既定値の 30% から 5% に変更してレポートを生成する
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualzation VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
 
 #### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>例 5:一部のプロファイリング データでレポートを生成する
@@ -204,6 +207,8 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 ```
 
 #### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>例 7:インド ルピーと特定のプラン ID でインド南部 Azure リージョンのレポートを生成する
+
+サブスクリプション ID は、特定の通貨のコスト レポートを生成するために必要なことに注意してください。
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
@@ -214,7 +219,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 すべての VM において、プロファイリング時に収集される読み取り/書き込みの IOPS、書き込み IOPS、データの変更頻度には、既定で 95 パーセンタイル値が使用されます。 そうすることで、レプリケーション先のストレージ アカウントとレプリケーション元の帯域幅の要件を決定する際に、VM の一時的な事象に起因する瞬間的な 100 パーセンタイルを判断から除外することができます。 そのような一時的な事象としては、1 日 1 回実行されるバックアップ ジョブや定期的なデータベース インデックス作成、分析レポート生成アクティビティなど、持続性のない瞬時性イベントが考えられます。
 
 95 パーセンタイル値を使用することで、実際のワークロード特性の真の姿を捉え、それらのワークロードが Azure で実行されている状態でのベストなパフォーマンスを把握することができます。 通常この値を変更する必要はありません。 あえて値を変更する場合 (たとえば 90 パーセンタイルに下げたい場合) は、既定のフォルダーにある構成ファイル *ASRDeploymentPlanner.exe.config* を編集、保存すれば、既にあるプロファイリング データで新しいレポートを生成することができます。
-```
+```xml
 <add key="WriteIOPSPercentile" value="95" />      
 <add key="ReadWriteIOPSPercentile" value="95" />      
 <add key="DataChurnPercentile" value="95" />
@@ -260,7 +265,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 | -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。|
 | -StorageAccountKey | ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] \(クラシック ストレージ アカウントの場合は [プライマリ アクセス キー]) の順に移動します。 |
 | -VMListFile | 使用帯域幅の計算に関して、プロファイリングの対象となる VM のリストを含んだファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 このファイルには、1 行につき 1 つの VM 名または IP アドレスが記述されている必要があります。 このファイルに指定する VM 名は、vCenter サーバー/vSphere ESXi ホスト上の VM 名と一致させる必要があります。<br>たとえば VMList.txt ファイルに、次のように VM を記述することができます。<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。 |
+| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China 21Vianet であるときに使用します。 |
 
 Deployment Planner ツールは、指定されたディレクトリに 64 MB の asrvhdfile<#>.vhd ファイル ("#" はファイルの番号) をいくつか作成します。 これらのファイルをストレージ アカウントにアップロードすることによってスループットが調査されます。 これらのファイルはすべて、スループットの測定後にストレージ アカウントとローカル サーバーから削除されます。 スループットの計算中に何らかの理由でツールが終了した場合、ストレージとローカル サーバーからファイルが削除されません。 この場合は、ファイルを手動で削除する必要があります。
 

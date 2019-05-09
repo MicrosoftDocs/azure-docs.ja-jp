@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: a4e5440a9b8b6ce36d8472463b35201f39d3ac5a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192789"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59005933"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Network Performance Monitor の価格の変更
 
@@ -27,7 +27,7 @@ ms.locfileid: "53192789"
 
 Network Performance Monitor は 3 つのコンポーネントで構成されます。
 * [パフォーマンス モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [サービス エンドポイント モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview#service-endpoint-monitor)
+* [サービス エンドポイント モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
 * [ExpressRoute モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
 以降のセクションで、NPM コンポーネントの価格の変更について説明します。
@@ -38,7 +38,7 @@ Network Performance Monitor は 3 つのコンポーネントで構成されま�
 
 NPM の請求は、以下の 2 つのコンポーネントの使用量と消費量に基づいていました。
 * **ノード数**:すべての代理トランザクションは、ノードで開始して終了します。 ノードはエージェントまたは Microsoft Monitoring Agent とも呼ばれます。
-* **データ量**:さまざまなネットワーク テストの結果は、Azure Log Analytics リポジトリに格納されます。
+* **データ**:さまざまなネットワーク テストの結果は、Log Analytics ワークスペースに格納されます。
 
 古いモデルの請求額は、ノードの数と、生成されるデータの量に基づいて計算されました。 
 
@@ -63,7 +63,7 @@ NPM のパフォーマンス モニター機能は、次の組み合わせに基
 
 **パフォーマンス モニターが生成するデータについては、どのように課金されますか。**
 
-データ インジェスト (Log Analytics へのデータのアップロード、処理、インデックス付け) の料金については、「データ インジェスト」セクションで、Log Analytics の[価格に関するページ](https://azure.microsoft.com/pricing/details/log-analytics/)をご覧ください。 データ保有 (つまり、最初の月を超える、顧客のオプションで保持されるデータ) の料金については、「データ保有期間」セクションの[価格に関するページ](https://azure.microsoft.com/pricing/details/log-analytics/)でもご確認いただけます。
+データ インジェスト (Azure Monitor での Log Analytics ワークスペースへのデータのアップロード、処理、インデックス付け) の料金については、[価格に関するページ](https://azure.microsoft.com/pricing/details/log-analytics/)で、Log Analytics の「データ インジェスト」セクションをご覧ください。 データ保有 (つまり、最初の月を超える、顧客のオプションで保持されるデータ) の料金については、「データ保有期間」セクションの[価格に関するページ](https://azure.microsoft.com/pricing/details/log-analytics/)でもご確認いただけます。
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute モニター

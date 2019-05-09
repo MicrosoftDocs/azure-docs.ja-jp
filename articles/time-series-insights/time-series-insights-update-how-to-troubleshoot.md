@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights プレビュー - 診断とトラブルシューティング | Microsoft Docs
+title: Azure Time Series Insights プレビューでの診断とトラブルシューティング | Microsoft Docs
 description: Azure Time Series Insights プレビューでの診断とトラブルシューティングの方法を説明します。
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e35439c80dea8ac47033464eeb57f7e9859fdcf5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: eb1c302bf1954492ba2a7a78d16fc697fdf4b687
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080439"
 ---
 # <a name="diagnose-and-troubleshoot"></a>診断とトラブルシューティング
 
@@ -43,16 +43,16 @@ ms.locfileid: "53275303"
 
 - イベント ソース キーに必要なアクセス許可がありません。
 
-    * IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
+  * IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
 
     ![構成][3]
 
-    * 上の図に示すように、ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
-    * イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
+  * 上の図に示すように、ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
+  * イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
   
     ![アクセス許可][4]
 
-    * 上の図に示すように、**read** ポリシーと **manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
+  * 上の図に示すように、**read** ポリシーと **manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
 
 - お使いのコンシューマー グループが Time Series Insights 専用ではありません。
 

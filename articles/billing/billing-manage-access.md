@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a15d055505ca0f28ad28b477e90e6fe859cc9ac7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8c2843840790d1e0dbfd4a789775c6c7ceb51a54
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094289"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838257"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
 
@@ -45,7 +45,7 @@ EA のお客様を除くすべてのユーザーは、チームのメンバー�
 
 ### <a name="opt-in"></a> ユーザーに請求書のダウンロードを許可する
 
-アカウント管理者は、チームのメンバーに適切なロールを割り当てた後、Azure portal で請求書をダウンロードするために評価を有効にする必要があります。 2016 年 12 月よりも前の請求書を入手できるのはアカウント管理者のみです。
+アカウント管理者は、ご自分のチームのメンバーに適切なロールを割り当てた後、Azure portal 内で請求書をダウンロードするためのアクセスを有効にする必要があります。 2016 年 12 月よりも前の請求書を入手できるのはアカウント管理者のみです。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. アカウント管理者として、Azure Portal の[[サブスクリプション] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)でサブスクリプションを選択します。
@@ -106,4 +106,4 @@ EA のお客様の場合は、アカウント所有者または部門管理者�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

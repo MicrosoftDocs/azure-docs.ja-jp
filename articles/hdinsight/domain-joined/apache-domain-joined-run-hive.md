@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8effa84c9d7adc14060fb00fae9915a04c1d04cc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435517"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821220"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 Apache Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
@@ -45,7 +45,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 **Ranger ポリシーを作成するには**
 
-1. Ranger 管理 UI を開きます。 「[Apache Ranger 管理 UI への接続](#connect-to-apache-ranager-admin-ui)」をご覧ください。
+1. Ranger 管理 UI を開きます。 「Apache Ranger 管理 UI への接続」をご覧ください。
 2. **[Hive]** で **&lt;クラスター名>_hive** をクリックします。 構成済みの 2 つのポリシーが表示されます。
 3. **[Add New Policy]** をクリックし、次の値を入力します。
 

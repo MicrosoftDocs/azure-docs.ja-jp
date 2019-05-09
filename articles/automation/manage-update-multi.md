@@ -3,18 +3,18 @@ title: 複数の Azure 仮想マシンの更新を管理する
 description: この記事では、Azure 仮想マシンの更新プログラムを管理する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 16fe2d23fdd07f8f150cc010b0a1d232c761c77f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679531"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798674"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -29,7 +29,6 @@ Update Management ソリューションを使用して、Windows と Linux の�
 
 Update Management を使用するには、以下が必要です。
 
-- Azure Automation の実行アカウント。 このアカウントの作成方法については、「[Azure Automation の概要](automation-offering-get-started.md)」を参照してください。
 - サポートされているオペレーティング システムのいずれかがインストールされている仮想マシンまたはコンピューター。
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
@@ -70,13 +69,13 @@ Azure Portal で、Automation アカウントを開き、**[Update Management]**
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Azure 以外の仮想マシンとコンピューターに対して Update Management を有効にする
 
-Azure 以外の Windows 仮想マシンとコンピューターに対して Update Management を有効にする方法については、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agent.md)」を参照してください。
+Azure 以外の Windows 仮想マシンとコンピューターに対して Update Management を有効にする方法については、[Windows コンピューターを Azure の Azure Monitor サービスに接続する](../log-analytics/log-analytics-windows-agent.md)方法に関する記事を参照してください。
 
-Azure 以外の Linux 仮想マシンとコンピューターに対して Update Management を有効にする方法については、「[Linux コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-agent-linux.md)」を参照してください。
+Azure 以外の Linux 仮想マシンとコンピューターに対して Update Management を有効にする方法については、[Linux コンピューターを Azure Monitor ログに接続する](../log-analytics/log-analytics-agent-linux.md)方法に関する記事を参照してください。
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Automation アカウントに接続されているコンピューターを表示する
 
-マシンに対して Update Management を有効にした後、**[コンピューター]** を選択することで、マシンの情報を表示できます。 コンピューターの*マシン名**対応状況*、*環境*、*OS の種類*、*インストール済みの重要なセキュリティの更新プログラム**インストール済みのその他の更新プログラム*、および*更新エージェントの準備状況*の情報を表示できます。
+マシンに対して Update Management を有効にした後、**[コンピューター]** を選択することで、マシンの情報を表示できます。 コンピューターの*マシン名* *対応状況*、*環境*、*OS の種類*、*インストール済みの重要なセキュリティの更新プログラム* *インストール済みのその他の更新プログラム*、および*更新エージェントの準備状況*の情報を表示できます。
 
   ![[コンピューター] タブの表示](./media/manage-update-multi/update-computers-tab.png)
 
@@ -106,14 +105,18 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント |[はい] |Update Management は、Windows エージェントからシステムの更新プログラムに関する情報を収集した後、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |[はい] |Update Management は、Linux エージェントからシステムの更新プログラムに関する情報を収集した後、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |[はい] |Update Management は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
+| Windows エージェント |はい |Update Management は、Windows エージェントからシステムの更新プログラムに関する情報を収集した後、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |はい |Update Management は、Linux エージェントからシステムの更新プログラムに関する情報を収集した後、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |はい |Update Management は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
 | Azure ストレージ アカウント |いいえ  |Azure Storage には、システムの更新プログラムに関する情報は含まれません。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 
-管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 15 分ごとに Windows API が呼び出され、最後の更新時間を照会することで、状態が変化したかどうかが確認されます。 状態が変更された場合、対応スキャンが開始されます。 管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
+コンピューターが更新プログラムのコンプライアンスを確認するためにスキャンを完了した後、エージェントによって情報が Azure Monitor ログに一括転送されます。 Windows コンピューターでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
+
+このスキャン スケジュールに加えて、MMA の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムのコンプライアンスを確認するためのスキャンが開始されます。
+
+Linux コンピューターでは、コンプライアンス スキャンは既定では 3 時間ごとに実行されます。 MMA エージェントを再起動した場合は、コンプライアンス スキャンは 15 分以内に開始されます。
 
 管理対象のコンピューターの更新されたデータがダッシュボードに表示されるまでに、30 分～ 6 時間かかる場合があります。
 
@@ -128,7 +131,7 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 - **[名前]**:更新プログラムの展開を識別する一意の名前を入力します。
 - **[オペレーティング システム]**:**[Windows]** または **[Linux]** を選択します。
 - **[更新するグループ (プレビュー)]**:サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳細については、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページを参照してください。
-- **[更新するマシン]**:保存した検索条件、インポートしたグループを選択するか、[マシン] を選択し、更新するマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 更新プログラムの展開をスケジュールする前にマシンの正常性状態を確認できます。 Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
+- **[更新するマシン]**:保存した検索条件、インポートしたグループを選択するか、[マシン] を選択し、更新するマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 更新プログラムの展開をスケジュールする前にマシンの正常性状態を確認できます。 Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
 
   ![[新しい更新プログラムの展開] ウィンドウ](./media/manage-update-multi/update-select-computers.png)
 
@@ -194,3 +197,4 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 ## <a name="next-steps"></a>次の手順
 
 - ログ、出力、エラーを含む Update Management の詳細については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
+

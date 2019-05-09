@@ -4,25 +4,25 @@ description: Azure Active Directory Domain Services についてよく寄せら�
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: c2f10b1bf3b61577a2b0616be6fa50f7639559ba
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a91c015561ca173412e4d6710d5531a7d084bfd0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158918"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193014"
 ---
-# <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: よく寄せられる質問 (FAQ)
+# <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services:よく寄せられる質問 (FAQ)
 このページでは、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
 
 ## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
@@ -57,7 +57,7 @@ Azure ADドメイン サービスを 構成するか、または管理する際�
 いいえ。 マネージド ドメインは Azure AD Domain Services によって提供されるドメインです。 このドメインに対してドメイン コントローラーをプロビジョニング、構成、または管理する必要はありません。これらの管理作業は Microsoft によるサービスとして提供されます。 そのため、マネージド ドメインに追加のドメイン コント ローラー (読み取り/書き込みも読み取り専用も) を追加することはできません。
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。
-いいえ。 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待されたゲスト ユーザーは、Azure AD Domain Services の管理対象　ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに保存されません。 そのため、Azure AD Domain Services で、これらのユーザーの NTLM と Kerberos のハッシュをマネージド ドメインに同期できません。 その結果、当該ユーザーは、管理対象ドメインにログインすることや、コンピューターを管理対象ドメインに参加させることができません。
+いいえ。 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待されたゲスト ユーザーは、Azure AD Domain Services の管理対象ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに保存されません。 そのため、Azure AD Domain Services で、これらのユーザーの NTLM と Kerberos のハッシュをマネージド ドメインに同期できません。 その結果、当該ユーザーは、管理対象ドメインにログインすることや、コンピューターを管理対象ドメインに参加させることができません。
 
 ## <a name="administration-and-operations"></a>管理と操作
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>リモート デスクトップを使用してマネージド ドメインのドメイン コントローラーに接続できますか。
@@ -73,7 +73,7 @@ Azure ADドメイン サービスを 構成するか、または管理する際�
 いいえ。 Azure AD Domain Services によってサービスされるドメインのグループ メンバーシップは変更できません。 ユーザー属性に対しても同様です。 ただし、Azure AD またはオンプレミスのドメインのいずれかで、グループ メンバーシップまたはユーザー属性を変更できます。 このような変更は、Azure AD Domain Services に自動的に同期されます。
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD ディレクトリに対して行った変更がマネージド ドメインに反映されるまで、どのくらいの時間がかかりますか。
-Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、マネージド ドメインに同期されます。 この同期プロセスはバック グラウンドで実行されます。 1度、初期同期が完了されると、Azure AD で行われた変更が　管理対象　ドメインに反映されるまで、通常は約 20 分かかります。
+Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、マネージド ドメインに同期されます。 この同期プロセスはバック グラウンドで実行されます。 1度、初期同期が完了されると、Azure AD で行われた変更が管理対象ドメインに反映されるまで、通常は約 20 分かかります。
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services によって提供されるマネージド ドメインのスキーマは拡張できますか。
 いいえ。 スキーマは、Microsoft がマネージド ドメインを管理することで管理されます。 Azure AD ドメイン サービスでは、スキーマの拡張機能はサポートされていません。
@@ -84,8 +84,8 @@ Azure AD UI または PowerShell を使用して Azure AD ディレクトリに�
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>マネージド ドメインのパスワード有効期間ポリシーとはどのようなものですか。
 Azure AD Domain Services のマネージド ドメインの既定のパスワード有効期間は 90 日間です。 このパスワード有効期間は、Azure AD で構成されているパスワード有効期間と同期されません。 そのため、ユーザーのパスワードが、マネージド ドメインでは期限切れだが、Azure AD ではまだ有効なことがあります。 このような場合、ユーザーは Azure AD のパスワードを変更する必要があり、この新しいパスワードがマネージド ドメインに同期されます。 また、ユーザー アカウントの "password-does-not-expire" 属性と "user-must-change-password-at-next-logon" 属性は、マネージド ドメインに同期されません。
 
-### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services は、AD アカウントに、 ロックアウトから　保護する機能を提供しますか?
-はい。 管理対象ドメインに、2 分以内に無効なパスワードの試行が5回行われると、ユーザーのアカウントは、30 分ロックアウトされます。 30 分後、ユーザー アカウントは、自動的にロック解除されます。 管理対象ドメインでの無効なパスワードの試行は、 Azure AD のユーザー アカウントをロックしません。 ユーザー アカウントは、Azure AD Domain Services の管理対象　ドメイン内でだけ、ロックアウトされます。
+### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services は、AD アカウントに、 ロックアウトから保護する機能を提供しますか?
+はい。 管理対象ドメインに、2 分以内に無効なパスワードの試行が5回行われると、ユーザーのアカウントは、30 分ロックアウトされます。 30 分後、ユーザー アカウントは、自動的にロック解除されます。 管理対象ドメインでの無効なパスワードの試行は、 Azure AD のユーザー アカウントをロックしません。 ユーザー アカウントは、Azure AD Domain Services の管理対象ドメイン内でだけ、ロックアウトされます。
 
 ## <a name="billing-and-availability"></a>課金と可用性
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD Domain Services は有料のサービスですか。

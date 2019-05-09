@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f2e18db7bd1766901ffb36cc74172f4c8414135c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232889"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652152"
 ---
-# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>チュートリアル: Azure Data Box Disk の開梱、接続、ロック解除
+# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk の開梱、接続、ロック解除
 
 このチュートリアルでは、Azure Data Box Disk の開梱、接続、ロック解除の方法について説明します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "51232889"
 
 開始する前に次の点を確認します。
 
-1. [Azure Data Box Disk の注文に関するチュートリアル](data-box-disk-deploy-ordered.md)を完了していること。
+1. [チュートリアル:Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」を参照してください。
 2. ディスクの受け取りが済んでいて、ポータルでジョブの状態が **[配信済み]** に更新されていること。
 3. Data Box Disk のロック解除ツールをインストールするクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
     - [サポート対象のオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されていること。
@@ -70,7 +70,7 @@ ms.locfileid: "51232889"
 ディスクを接続し、ロックを解除するには、次の手順を実行します。
      
 1. Azure portal で **[全般] > [デバイスの詳細]** に移動します。 
-2. Windows クライアントに対応する Data Box Disk ツールセットをダウンロードします。 このツールセットには、Data Box Disk ロック解除ツール、Data Box Disk 検証ツール、および Data Box Disk 分割コピー ツールの 3 つのツールが含まれています。 
+2. Windows クライアントに対応する Data Box Disk ツールセットをダウンロードします。 このツールセットには、Data Box Disk ロック解除ツール、Data Box Disk 検証ツール、および Data Box Disk 分割コピー ツールの 3 つが含まれています。 
 
     この手順では、Data Box Disk ロック解除ツールのみを使用します。 他の 2 つのツールは後で使用されます。
 
@@ -90,7 +90,7 @@ ms.locfileid: "51232889"
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ``` 
 
-6. `DataBoxDiskUnlock.exe` を実行し、「[ディスクに接続してパスキーを取得する](#Connect-to-disks-and-get-the-passkey)」で取得したパスキーを指定します。 ディスクに割り当てられたドライブ文字が表示されます。 サンプル出力を次に示します。
+6. `DataBoxDiskUnlock.exe` を実行し、「[ディスクに接続してパスキーを取得する](#connect-to-disks-and-get-the-passkey)」で取得したパスキーを指定します。 ディスクに割り当てられたドライブ文字が表示されます。 サンプル出力を次に示します。
 
     ```powershell
     PS C:\WINDOWS\system32> cd C:\DataBoxDiskUnlockTool\DiskUnlock
@@ -170,41 +170,41 @@ ms.locfileid: "51232889"
     
  
 5. 「`y`」を入力してインストールを続行します。 スクリプトによってインストールされるパッケージは次のとおりです。 
-    - **epel リリース** - 次の 3 つのパッケージを含むリポジトリ。 
-    - **dislocker と fuse dislocker** - このユーティリティは、BitLocker で暗号化されたディスクを復号化するのに役立ちます。 
-    - **ntfs-3g** - NTFS ボリュームのマウントに役立つパッケージ。 
+   - **epel リリース** - 次の 3 つのパッケージを含むリポジトリ。 
+   - **dislocker と fuse dislocker** - このユーティリティは、BitLocker で暗号化されたディスクを復号化するのに役立ちます。 
+   - **ntfs-3g** - NTFS ボリュームのマウントに役立つパッケージ。 
  
-    パッケージが正常にインストールされると、ターミナルには、その影響に対する通知が表示されます。     
-    ```
-    Dependency Installed: compat-readline5.x86 64 0:5.2-17.I.el6 dislocker-libs.x86 64 0:0.7.1-8.el6 mbedtls.x86 64 0:2.7.4-l.el6        ruby.x86 64 0:1.8.7.374-5.el6 
-    ruby-libs.x86 64 0:1.8.7.374-5.el6 
-    Complete! 
-    Loaded plugins: fastestmirror, refresh-packagekit, security 
-    Setting up Remove Process 
-    Resolving Dependencies 
-    --> Running transaction check 
-    ---> Package epel-release.noarch 0:6-8 will be erased --> Finished Dependency Resolution 
-    Dependencies Resolved 
-    Package        Architecture        Version        Repository        Size 
-    Removing:  epel-release        noarch         6-8        @extras        22 k 
-    Transaction Summary                                 
-    Remove        1 Package(s) 
-    Installed size: 22 k 
-    Downloading Packages: 
-    Running rpmcheckdebug 
-    Running Transaction Test 
-    Transaction Test Succeeded 
-    Running Transaction 
-    Erasing : epel-release-6-8.noarch 
-    Verifying : epel-release-6-8.noarch 
-    Removed: 
-    epel-release.noarch 0:6-8 
-    Complete! 
-    Dislocker is installed by the script. 
-    OpenSSL is already installed.
-    ```
+     パッケージが正常にインストールされると、ターミナルには、その影響に対する通知が表示されます。     
+     ```
+     Dependency Installed: compat-readline5.x86 64 0:5.2-17.I.el6 dislocker-libs.x86 64 0:0.7.1-8.el6 mbedtls.x86 64 0:2.7.4-l.el6        ruby.x86 64 0:1.8.7.374-5.el6 
+     ruby-libs.x86 64 0:1.8.7.374-5.el6 
+     Complete! 
+     Loaded plugins: fastestmirror, refresh-packagekit, security 
+     Setting up Remove Process 
+     Resolving Dependencies 
+     --> Running transaction check 
+     ---> Package epel-release.noarch 0:6-8 will be erased --> Finished Dependency Resolution 
+     Dependencies Resolved 
+     Package        Architecture        Version        Repository        Size 
+     Removing:  epel-release        noarch         6-8        @extras        22 k 
+     Transaction Summary                                 
+     Remove        1 Package(s) 
+     Installed size: 22 k 
+     Downloading Packages: 
+     Running rpmcheckdebug 
+     Running Transaction Test 
+     Transaction Test Succeeded 
+     Running Transaction 
+     Erasing : epel-release-6-8.noarch 
+     Verifying : epel-release-6-8.noarch 
+     Removed: 
+     epel-release.noarch 0:6-8 
+     Complete! 
+     Dislocker is installed by the script. 
+     OpenSSL is already installed.
+     ```
 
-6. Data Box Disk ロック解除ツールを実行します。 「[ディスクに接続してパスキーを取得する](#Connect-to-disks-and-get-the-passkey)」で取得したパスキーを、Azure portal から指定します。 オプションで、ロックを解除する、BitLocker で暗号化されたボリュームの一覧を指定します。 パスキーとボリュームの一覧は、単一引用符で囲んで指定する必要があります。 
+6. Data Box Disk ロック解除ツールを実行します。 「[ディスクに接続してパスキーを取得する](#connect-to-disks-and-get-the-passkey)」で取得したパスキーを、Azure portal から指定します。 オプションで、ロックを解除する、BitLocker で暗号化されたボリュームの一覧を指定します。 パスキーとボリュームの一覧は、単一引用符で囲んで指定する必要があります。 
 
     次のコマンドを入力します。
  

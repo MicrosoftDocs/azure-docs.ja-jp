@@ -5,21 +5,22 @@ description: このチュートリアルでは、Azure portal を使用して、
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: dd4600d77373894cdc9d6225ae008a8bd677fb59
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262097"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899548"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
 
@@ -40,25 +41,29 @@ ms.locfileid: "53262097"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-a-public-standard-load-balancer-instance"></a>パブリック Standard Load Balancer インスタンスを作成する
 
 Standard Load Balancer では、標準パブリック IP アドレスだけがサポートされています。 ロード バランサーの作成時に新しいパブリック IP を作成すると、自動的に Standard SKU バージョンとして構成されます。 自動的にゾーン冗長にもなります。
 
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。
-2. **[Create a load balancer]\(ロード バランサーの作成\)** ページで、ロード バランサーの以下の値を入力します。
-    - **myLoadBalancer** - ロード バランサーの名前。
-    - **パブリック** - ロード バランサーの種類。
-      - **myPublicIPZonal** - 作成する新しいパブリック IP アドレス。 **[パブリック IP アドレスの選択]** を選択します。 次に **[新規作成]** を選択します。 名前として「**myPublicIP**」を入力します。 SKU は、既定では Standard です。 **[可用性ゾーン]** で、**[ゾーン 1]** を選択します。
-    - **myResourceGroupZLB** - 作成する新しいリソース グループの名前。
-    - **westeurope** - 場所。
-3. **[作成]** を選択して、ロード バランサーを作成します。
-   
-    ![Azure portal を使用してゾーン Standard Load Balancer インスタンスを作成する](./media/tutorial-load-balancer-standard-zonal-portal/create-load-balancer-zonal-frontend.png)
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
 
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupZLB*」と入力します。|
+    | Name                   | *myLoadBalancer*                                   |
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Standard]** を選択します。                          |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 |
+    | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
+    |可用性ゾーン| **[1]** を選択します。    |
+3. **[確認と作成]** タブで、**[作成]** をクリックします。   
 
-## <a name="create-backend-servers"></a>バックエンド サーバーの作成
+   ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
 このセクションでは、仮想ネットワークを作成します。 また、リージョンの同じゾーン (つまり、ゾーン 1) に 2 つの仮想マシンを作成して、ロード バランサーのバックエンド プールに追加します。 次に、ゾーン冗長ロード バランサーをテストするために仮想マシンに IIS をインストールします。 1 つの VM が失敗した場合、同じゾーンの VM の正常性プローブが失敗します。 同じゾーン内の他の VM によって処理されるトラフィックは続行されます。
 
@@ -75,8 +80,8 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
 
 1. 画面の左上で、**[リソースの作成]** を選択します。 [検索] ボックスに「**ネットワーク セキュリティ グループ**」と入力します。 ネットワーク セキュリティ グループ ページで、**[作成]** を選択します。
 2. **[ネットワーク セキュリティ グループの作成]** ページで次の値を入力します。
-    - **myNetworkSecurityGroup** - ネットワーク セキュリティ グループの名前。
-    - **myResourceGroupLBAZ** - 既存のリソース グループの名前。
+   - **myNetworkSecurityGroup** - ネットワーク セキュリティ グループの名前。
+   - **myResourceGroupLBAZ** - 既存のリソース グループの名前。
    
      ![ネットワーク セキュリティ グループの作成](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services 内の LiveEvent の待機時間 | Microsoft Docs
-description: このトピックでは、LiveEvent の待機時間の概要を説明し、低待機時間を設定する方法を示します。
+title: LiveEvent latency in Azure Media Services | Microsoft Docs
+description: This topic gives an overview of LiveEvent latency and shows how to set low latency.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,22 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/16/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: b167d3424d520cf8be515eec9d495164dd9785ab
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 30cd77799837f9b1ef08a9c609e518fd679b9b15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682097"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871424"
 ---
-# <a name="liveevent-latency-in-media-services"></a>Media Services 内の LiveEvent の待機時間
+# <a name="live-event-latency-in-media-services"></a>Live Event latency in Media Services
 
-この記事では、**LiveEvent** に対して低待機時間を設定する方法を示します。 さらに、さまざまなプレーヤーで低待機時間の設定を使用したときの一般的な結果について説明します。 結果は、CDN およびネットワーク待機時間によって異なります。 
+This article shows how to set low latency on a [Live Event](https://docs.microsoft.com/rest/api/media/liveevents). It also discusses typical results that you see when using the low latency settings in various players. The results vary based on CDN and network latency.
 
-新しい **LowLatency** 機能を使用するには、**LiveEvent** の **StreamOptionsFlag** を **LowLatency** に設定します。 ストリームが稼働状態になったら、[Azure Media Player](http://ampdemo.azureedge.net/) (AMP) のデモ ページを使用して、"Low Latency Heuristic Profile" を使用するように再生オプションを設定できます。
+To use the new **LowLatency** feature, you set the **StreamOptionsFlag** to **LowLatency** on the **LiveEvent**. When creating [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) for HLS playback, set [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) to 1. Once the stream is up and running, you can use the [Azure Media Player](https://ampdemo.azureedge.net/) (AMP demo page), and set the playback options to use the "Low Latency Heuristics Profile".
 
-次の .NET の例では、**LiveEvent** に対して **LowLatency** を設定する方法を示しています。
+> [!NOTE]
+> Currently, the LowLatency HeuristicProfile in Azure Media Player is designed for playing back streams in DASH protocol, or HLS with CMAF. If you are targeting MacOS or iOS devices via HLS with TS (for example, `format=m3u8-aapl` or `format=m3u8-aapl-v3`), you should not use this setting because AMP directly uses the native player provided by the OS in this case.
+
+The following .NET example shows how to set **LowLatency** on the **LiveEvent**:
 
 ```csharp
 LiveEvent liveEvent = new LiveEvent(
@@ -34,7 +37,7 @@ LiveEvent liveEvent = new LiveEvent(
             description: "Sample LiveEvent for testing",
             vanityUrl: false,
             encoding: new LiveEventEncoding(
-                        // Set this to Basic to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
+                        // Set this to Standard to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
                         encodingType:LiveEventEncodingType.None, 
                         presetName:null
                     ),
@@ -49,31 +52,31 @@ LiveEvent liveEvent = new LiveEvent(
         );
 ```                
 
-完全な例については次を参照してください:[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
+See the full example: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="liveevents-latency"></a>LiveEvent の待機時間
+## <a name="live-events-latency"></a>Live Events latency
 
-次の表に、Media Services 内の待機時間の一般的な結果を示します (LowLatency フラグが有効になっている場合)。コントリビューション フィードがサービスに到達した時間から、ビューアーがプレーヤーで再生を見た時間までが測定されています。 低待機時間を最適に使用するには、エンコーダーの設定を "画像グループ" (GOP) の長さが 1 秒になるまで調整する必要があります。 高い GOP の長さを使用するときは、帯域幅の消費を最小限に抑えて、同じフレーム レートでのビットレートを減らします。 モーションの少ない動画で特に有効です。
+The following tables show typical results for latency (when the LowLatency flag is enabled) in Media Services, measured from the time the contribution feed reaches the service to when a viewer sees the playback on the player. To use low latency optimally, you should tune your encoder settings down to 1 second "Group Of Pictures" (GOP) length. When using a higher GOP length, you minimize bandwidth consumption and reduce bitrate under same frame rate. It is especially beneficial in videos with less motion.
 
-### <a name="pass-through"></a>パススルー 
+### <a name="pass-through"></a>Pass-through 
 
-||2 秒 GOP の低待機時間が有効|1 秒 GOP の低待機時間が有効|
+||2s GOP low latency enabled|1s GOP low latency enabled|
 |---|---|---|
-|AMP での DASH|10 秒|8 秒|
-|ネイティブ iOS プレーヤーでの HLS|14 秒|10 秒|
+|DASH in AMP|10s|8s|
+|HLS on native iOS player|14s|10s|
 
-### <a name="live-encoding"></a>ライブ エンコード
+### <a name="live-encoding"></a>Live encoding
 
-||2 秒 GOP の低待機時間が有効|1 秒 GOP の低待機時間が有効|
+||2s GOP low latency enabled|1s GOP low latency enabled|
 |---|---|---|
-|AMP での DASH|14 秒|10 秒|
-|ネイティブ iOS プレーヤーでの HLS|18 秒|13 秒|
+|DASH in AMP|14s|10s|
+|HLS on native iOS player|18s|13s|
 
 > [!NOTE]
-> エンドツーエンドの待機時間は、ローカル ネットワークの状態や、CDN キャッシュ レイヤーの導入によって変動する可能性があります。 正しい構成でテストする必要があります。
+> The end-to-end latency can vary depending on local network conditions or by introducing a CDN caching layer. You should test your exact configurations.
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-- [ライブ ストリーミングの概要](live-streaming-overview.md)
-- [ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)
+- [Live streaming overview](live-streaming-overview.md)
+- [Live streaming tutorial](stream-live-tutorial-with-api.md)
 

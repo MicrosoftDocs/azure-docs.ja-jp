@@ -3,17 +3,17 @@ title: Windows IoT Core デバイスを Azure IoT Central アプリケーショ�
 description: デバイス開発者として、MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する方法を学習します。
 author: miriambrus
 ms.author: miriamb
-ms.date: 04/09/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309452"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617854"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -23,80 +23,66 @@ ms.locfileid: "53309452"
 
 この記事の手順を完了するには、次のものが必要です。
 
-1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
-2. Windows 10 IoT Core オペレーティング システムを実行しているデバイス。 このチュートリアルでは、Raspberry Pi を使用します。
+- **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 
+- Windows 10 IoT Core オペレーティング システムを実行しているデバイス。 詳細については、[Windows 10 IoT Core デバイスの設定](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)に関するページを参照してください。
 
-## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
+- [Node.js](https://nodejs.org/) バージョン 8.0.0 以降がインストールされた開発用コンピューター。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Windows IoT Core** デバイス テンプレートが含まれています。 
+## <a name="the-sample-devkits-application"></a>サンプル Devkit アプリケーション
 
-- デバイスの**湿度**、**温度**、**圧力**の測定値を含むテレメトリ。 
-- **ファン速度**を示す設定。
-- デバイス プロパティ**ダイ番号**および**場所**クラウド プロパティを含むプロパティ。
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Windows IoT Core** デバイス テンプレートが含まれています。
 
+- デバイスのテレメトリ測定:**湿度**、**温度**、**圧力**。
+- **ファン速度**を制御するための設定。
+- デバイス プロパティ **Die number** とクラウド プロパティ **Location**。
 
-デバイス テンプレートの構成について詳しくは、「[Windows IoT Core デバイス テンプレートの詳細](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details)」をご覧ください。
+デバイス テンプレートの構成について詳しくは、「[Windows IoT Core デバイス テンプレートの詳細](#device-template-details)」をご覧ください。
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、**Windows IoT Core** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
+Azure IoT Central アプリケーションでは、**Device Explorer** ページを使用して **Windows 10 IoT Core** デバイス テンプレートから実デバイスを追加します。 デバイス接続の詳細 (**[スコープ ID]**、**[デバイス ID]**、**[主キー]**) をメモします。 詳細については、「[接続情報の取得](howto-generate-connection-string.md#get-connection-information)」を参照してください。
 
-### <a name="prepare-the-windows-iot-core-device"></a>Windows IoT Core デバイスを準備する
+## <a name="prepare-the-device"></a>デバイスの準備
 
-Windows IoT Core デバイスを設定するには、「[Windows IoT Core デバイスを設定する](https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)」にあるステップ バイ ステップ ガイドに従ってください。
+デバイスを IoT Central に接続するには、接続文字列が必要です。
 
-### <a name="add-a-real-device"></a>実デバイスの追加
+[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
-ご利用の Azure IoT Central アプリケーションでは、**Windows IoT Core** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を書き留めます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
+デバイスコードで接続文字列にアクセスするには、Windows 10 IoT Core デバイスの `C:\Data\Users\DefaultAccount\Documents\` フォルダーにある **connection.string.iothub** という名前のファイルに保存します。
 
- > [!NOTE]
-   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#getting-device-connection-string)し、チュートリアルの残りを続けてください。
+**connection.string.iothub** をデスクトップ コンピューターからお使いのデバイス上の `C:\Data\Users\DefaultAccount\Documents\` フォルダーにコピーするには、[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) を使用できます。
 
-## <a name="prepare-the-windows-10-iot-core-device"></a>Windows 10 IoT Core デバイスを準備する
+1. Web ブラウザーを使用して、お使いのデバイス上の Windows Device Portal に移動します。
+1. お使いのデバイス上のファイルを参照するには、**[アプリ] > [File explorer]\(ファイル エクスプローラー\)** を選択します。
+1. **User Folders\Documents** に移動します。 次に **connection.string.iothub** ファイルをアップロードします。
 
-### <a name="what-youll-need"></a>必要なもの
+    ![接続文字列のアップロード](media/howto-connect-windowsiotcore/device-portal.png)
 
-Windows 10 IoT Core 物理デバイスを設定するには、まず Windows 10 IoT Core を実行しているデバイスを用意する必要があります。 Windows 10 IoT Core デバイスを設定する方法は、[ここで](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)学習してください。
+## <a name="deploy-and-run"></a>デプロイして実行する
 
-Azure IoT Central と通信できるクライアント アプリケーションも必要になります。 Azure SDK を使用して独自のカスタム アプリケーションを構築し、Visual Studio を使用してそれをデバイスにデプロイするか、または[事前に構築されたサンプル](https://developer.microsoft.com/windows/iot/samples)をダウンロードし、それを単純にデバイスにデプロイして実行することができます。 
+お使いのデバイスにサンプル アプリケーションをデプロイして実行するには、[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) を使用できます。
 
-### <a name="deploying-the-sample-client-application"></a>サンプル クライアント アプリケーションのデプロイ
+1. Web ブラウザーを使用して、お使いのデバイス上の Windows Device Portal に移動します。
+1. **Azure IoT Hub クライアント** アプリケーションをデプロイして実行するには、**[アプリ] > [Quick-run samples]\(サンプルのクイック実行\)** を選択します。 次に **[Azure IoT Hub Client]\(Azure IoT Hub クライアント\)** を選択します。
+1. **[Deploy and run]\(デプロイして実行\)** を選択します。
 
-前の手順のクライアント アプリケーションを準備するために、それを Windows 10 IoT デバイスにデプロイするには:
+    ![デプロイして実行する](media/howto-connect-windowsiotcore/quick-run.png)
 
-**接続文字列が、使用するクライアント アプリケーションのデバイスに格納されていることを確認する**
-* デスクトップで、接続文字列を connection.string.iothub という名前のテキスト ファイルに保存します。
-* このテキスト ファイルをデバイスのドキュメント フォルダーにコピーします。`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
+数分後、お使いの IoT Central アプリケーションのデバイスからテレメトリを表示できます。
 
-それが完了したら、任意のブラウザーに「 http://[device-IP-address]:8080」と入力することによって、[Windows デバイス ポータル](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)を開く必要があります。
+[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) には、デバイスのトラブルシューティングに使用できるツールが含まれています。
 
-そこから、下に示す操作を実行します。
-1. 左側の [アプリ] ノードを展開します。
-2. [Quick-run samples] (サンプルのクイック実行) をクリックします。
-3. [Azure IoT Hub Client] (Azure IoT Hub クライアント) をクリックします。
-4. [デプロイと実行] をクリックします。
+- **[Apps Manager]** ページを使用して、デバイスで実行されているアプリを制御できます。
+- デバイスに接続されているモニターがない場合、**[デバイスの設定]** ページを使用して、デバイスからスクリーン ショットをキャプチャできます。 例: 
 
-![Windows デバイス ポータル上の Azure IoT Hub クライアントの GIF](./media/howto-connect-windowsiotcore/iothubapp.gif)
-
-成功すると、デバイス上でアプリケーションが起動し、次のようになります。
-
-![Azure IoT Hub クライアント アプリのスクリーンショット](./media/howto-connect-windowsiotcore/IoTHubForegroundClientScreenshot.png)
-
-Azure IoT Central では、Raspberry Pi 上で実行されているコードがアプリケーションとどのように対話するかを確認できます。
-
-* 実デバイスの **[Measurements] (測定)** ページで、テレメトリを表示できます。
-* **[プロパティ]** ページで、報告された [Die Number] (サイコロの数字) プロパティの値を表示できます。
-* **[設定]** ページで、電圧やファン速度などの Raspberry Pi 上のさまざまな設定を変更できます。
+    ![アプリのスクリーンショット](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
 ## <a name="download-the-source-code"></a>ソース コードをダウンロードする
 
-クライアント アプリケーションのソース コードを調査したり変更したりする場合は、それを GitHub の[ここ](https://github.com/Microsoft/Windows-iotcore-samples/tree/develop/Samples/Azure/IoTHubClients)からダウンロードできます。 コードを変更する予定がある場合は、使用しているデスクトップ オペレーティング システムの readme ファイル[ここ](https://github.com/Microsoft/Windows-iotcore-samples)の手順に従う必要があります。
+クライアント アプリケーションのソース コードを調査したり変更したりする場合は、それを [Windows-iotcore-samples GitHub リポジトリ](https://github.com/Microsoft/Windows-iotcore-samples/blob/master/Samples/Azure/IoTHubClients)からダウンロードできます。
 
-> [!NOTE]
-> **git** が開発環境にインストールされていない場合は、それを [https://git-scm.com/download](https://git-scm.com/download) からダウンロードできます。
-
-## <a name="windows-iot-core-device-template-details"></a>Windows IoT Core デバイス テンプレートの詳細
+## <a name="device-template-details"></a>デバイス テンプレートの詳細
 
 **サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Windows IoT Core** デバイス テンプレートが含まれています。
 
@@ -112,14 +98,17 @@ Azure IoT Central では、Raspberry Pi 上で実行されているコードが�
 
 数値設定
 
-| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
+| Display name | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
 
-
 ### <a name="properties"></a>Properties
 
-| type            | 表示名 | フィールド名 | データ型 |
+| Type            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| Text            | 場所     | location   | 該当なし       |
+| Text            | Location     | location   | 該当なし       |
+
+## <a name="next-steps"></a>次の手順
+
+ここでは、Raspberry Pi をご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

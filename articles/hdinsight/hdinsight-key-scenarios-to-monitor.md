@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383937"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742475"
 ---
 # <a name="monitor-cluster-performance"></a>クラスター パフォーマンスの監視
 
@@ -77,11 +77,11 @@ ResourceManager UI の左側のメニューから **[Scheduler]** を選択し�
 
 Azure Storage を使用している場合、ストレージに関連する問題の監視の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)」を参照してください。
 
-クラスターのバッキング ストアが Azure Data Lake Store (ADLS) の場合、調整は帯域幅の制限が原因の可能性が高くなります。 このような調整は、タスク ログの調整エラーを監視することで確認できます。 ADLS については、以下の記事の適切なサービスの調整セクションを参照してください。
+クラスターのバッキング ストアが Azure Data Lake Storage (ADLS) の場合、調整は帯域幅の制限が原因の可能性が高くなります。 このような調整は、タスク ログの調整エラーを監視することで確認できます。 ADLS については、以下の記事の適切なサービスの調整セクションを参照してください。
 
-* [HDInsight の Apache Hive と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [HDInsight の MapReduce と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [HDInsight の Apache Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [HDInsight の Apache Hive と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [HDInsight の MapReduce と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [HDInsight の Apache Storm と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>次の手順
 

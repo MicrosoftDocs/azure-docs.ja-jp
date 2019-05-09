@@ -4,21 +4,22 @@ description: 会社が Azure Multi-factor Authentication を構成している�
 services: active-directory
 keywords: azure ディレクトリの使用方法, クラウドの active directory, active directory のチュートリアル
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: 9f602b08e94071a335d0c88377912ea9b53f37b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0749e1acba9f13f9e0e95dfc66f9cf818c752cff
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244442"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165622"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定
 2 段階認証とは、他のユーザーの侵入を困難にすることでアカウントの保護に役立つ追加のセキュリティ手順です。 あなたがこの記事を読んでいるということは、おそらく会社や学校の管理者から Multi-Factor Authentication に関するメールを受け取ったと考えられます。 または、サインインしようとして、追加のセキュリティ確認を設定するように求めるメッセージが表示されたのかもしれません。 その場合は、**自動登録プロセスが完了するまでサインインできません**。
@@ -41,12 +42,12 @@ ms.locfileid: "51244442"
 
 | 連絡方法 | 説明 |
 | --- | --- |
-| [モバイル アプリ](#use-a-mobile-app-as-the-contact-method) |- **確認のための通知を受け取る**。 このオプションは、ユーザーのスマート フォンまたはタブレット上の認証アプリに通知をプッシュします。 通知を確認し、適切である場合は、アプリで **[認証]** を選択するだけです。 会社または学校の場合は、認証する前に PIN を入力する必要があります。<br>- **Use verification code (確認コードを使用)**。 このモードでは、認証アプリは 30 秒ごとに更新される確認コードを生成します。 サインイン インターフェイスに最新の確認コードを入力します。<br>Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。 |
+| [モバイル アプリ](#use-a-mobile-app-as-the-contact-method) |- **確認のための通知を受け取る**。 このオプションは、ユーザーのスマート フォンまたはタブレット上の認証アプリに通知をプッシュします。 通知を確認し、適切である場合は、アプリで **[認証]** を選択するだけです。 会社または学校の場合は、認証する前に PIN を入力する必要があります。<br>- **Use verification code (確認コードを使用)**。 このモードでは、認証アプリは 30 秒ごとに更新される確認コードを生成します。 サインイン インターフェイスに最新の確認コードを入力します。<br>Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594) および [iOS](https://go.microsoft.com/fwlink/?linkid=866594) で利用できます。|
 | [携帯電話呼び出しまたはテキスト](#use-your-mobile-phone-as-the-contact-method) |- **音声通話**はユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。<br>- **テキスト メッセージ**は確認コードを含むテキスト メッセージを送信します。 テキスト内の指示に従って、テキスト メッセージに返信するか、指定された確認コードをサインイン インターフェイスに入力します。 |
 | [会社電話呼び出し](#use-your-office-phone-as-the-contact-method) |ユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。 |
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>連絡方法としてのモバイル アプリの使用
-この方法を使用する場合は、携帯電話またはタブレットに認証アプリをインストールする必要があります。 この記事で説明する手順は、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[iOS](https://go.microsoft.com/fwlink/?Linkid=825073) で利用できる Microsoft Authenticator アプリに基づいています。
+この方法を使用する場合は、携帯電話またはタブレットに認証アプリをインストールする必要があります。 この記事で説明する手順は、[Android](https://go.microsoft.com/fwlink/?Linkid=825072) と [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) で利用できる Microsoft Authenticator アプリに基づいています。
 
 >[!NOTE]
 >Microsoft Authenticator アプリを使用する必要はありません。 既に別の認証子アプリを使用している場合は、それを引き続き使用できます。
@@ -106,4 +107,4 @@ ms.locfileid: "51244442"
 ## <a name="next-steps"></a>次の手順
 * 推奨されるオプションを変更し、[2 段階認証設定を管理します](multi-factor-authentication-end-user-manage-settings.md)
 * 2 段階認証をサポートしていないネイティブ デバイス アプリに[アプリ パスワード](multi-factor-authentication-end-user-app-passwords.md)を設定します。
-* 携帯電話サービスを利用していない場合でも、迅速で安全な認証のために [Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)をご確認ください。
+* 携帯電話サービスを利用していない場合でも、迅速で安全な認証のために [Microsoft Authenticator アプリ](user-help-auth-app-download-install.md)をご確認ください。

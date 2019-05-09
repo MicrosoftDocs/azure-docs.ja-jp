@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Project URL Preview、Java'
+title: クイック スタート:Project URL Preview (Java)
 titlesuffix: Azure Cognitive Services
 description: Java で Project URL Preview の使用を開始するためのスクリプト サンプル。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: cdbed473af04b7a0ba0fd2bba56219d43bf72537
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f4acab2cb4522048f4a78b12ca41161695a31e18
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465714"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259603"
 ---
-# <a name="quickstart-url-preview-with-java"></a>クイック スタート: Java での URL Preview
+# <a name="quickstart-url-preview-with-java"></a>クイック スタート:Java での URL Preview
 
 次の Java の例では、SwiftKey Web サイト (https://swiftkey.com/en) の URL プレビューを作成します。
 
@@ -27,9 +27,9 @@ ms.locfileid: "49465714"
 
 ## <a name="request"></a>Request 
 
-次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"https://swiftkey.com/en" のクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
+次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定して、"https:\//swiftkey.com/en" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
-````
+```
     // construct URL of search request (endpoint + query string)
 
     static String host = "https://api.labs.cognitive.microsoft.com";
@@ -47,7 +47,7 @@ ms.locfileid: "49465714"
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>完成したコード
 
@@ -58,7 +58,7 @@ Bing Answer Search API は、Bing 検索エンジンから結果を返します�
 4. subscriptionKey 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 5. プログラムを実行します。
 
-````
+```
 package UrlPreviewpkg;
 
 import java.net.*;
@@ -165,7 +165,7 @@ class SearchResults{
  }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 - [C# のクイック スタート](csharp.md)

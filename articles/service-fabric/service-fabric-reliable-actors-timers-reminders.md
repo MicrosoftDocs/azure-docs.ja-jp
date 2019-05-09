@@ -4,7 +4,7 @@ description: Service Fabric Reliable Actors のタイマーとアラームの概
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: amanbha
 ms.assetid: 00c48716-569e-4a64-bd6c-25234c85ff4f
 ms.service: service-fabric
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: e43aec6630a4a688ffd6c52a5e5bd711243fa662
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 323de842645cced3c6f490e98112fcbcd184aa64
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206793"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667431"
 ---
 # <a name="actor-timers-and-reminders"></a>アクターのタイマーとアラーム
 アクターは、タイマーまたはアラームを登録することで、自身の定期的な作業をスケジュールできます。 ここでは、タイマーとアラームの使用方法と、これらの違いについて説明します。
 
 ## <a name="actor-timers"></a>アクターのタイマー
-アクターのタイマーは、アクターのランタイムが提供するターンごとの同時実行の保証を、コールバック メソッドが考慮するように、.NET タイマーまたは Java タイマーの単純なラッパーを提供します。
+アクターのタイマーは、アクターのランタイムが提供するターンごとのコンカレンシーの保証を、コールバック メソッドが考慮するように、.NET タイマーまたは Java タイマーの単純なラッパーを提供します。
 
-アクターは、その基本クラスに `RegisterTimer`(C#) または `registerTimer`(Java) および `UnregisterTimer`(C#) または `unregisterTimer`(Java) のメソッドを使用して、タイマーを登録/登録解除できます。 次の例はタイマー API の使用を示します。 API は、.NET タイマーまたは Java タイマーによく似ています。 この例では、タイマーが期限に達すると、アクターのランタイムが `MoveObject`(C#) または `moveObject`(Java) メソッドを呼び出します。 このメソッドは、ターンごとの同時実行を優先することを保証します。 つまり、このコールバックの実行が完了するまで、他のアクター メソッドやタイマーとアラームのコールバックは進行しません。
+アクターは、その基本クラスに `RegisterTimer`(C#) または `registerTimer`(Java) および `UnregisterTimer`(C#) または `unregisterTimer`(Java) のメソッドを使用して、タイマーを登録/登録解除できます。 次の例はタイマー API の使用を示します。 API は、.NET タイマーまたは Java タイマーによく似ています。 この例では、タイマーが期限に達すると、アクターのランタイムが `MoveObject`(C#) または `moveObject`(Java) メソッドを呼び出します。 このメソッドは、ターンごとのコンカレンシーを優先することを保証します。 つまり、このコールバックの実行が完了するまで、他のアクター メソッドやタイマーとアラームのコールバックは進行しません。
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject

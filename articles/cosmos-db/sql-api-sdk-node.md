@@ -1,21 +1,19 @@
 ---
 title: Azure Cosmos DB は:SQL Node.js API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Node.js SDK の各バージョン間の変更など、SQL Node.js API と SDK に関するあらゆる詳細を提供します。
-services: cosmos-db
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08e928143e8e54797869a06f4f7b99fd89cdcacc
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: dech
+ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343991"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033589"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Node.js SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -152,7 +150,7 @@ ms.locfileid: "53343991"
 * 結果の不適切な連結のためにリンクを返していなかった RangePartitionResolver.resolveForRead のバグを修正しました。
 
 ### <a name="1.5.5"/>1.5.5</a>
-* hashPartitionResolver resolveForRead() を修正しました - 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
+* hashParitionResolver resolveForRead() を修正しました: 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
 
 ### <a name="1.5.4"/>1.5.4</a>
 * 問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) を修正します - 専用 HTTPS エージェント: Azure Cosmos DB 目的用のグローバル エージェントが変更されないようにします。 lib のすべての要求に対して、専用エージェントを使用します。

@@ -1,19 +1,20 @@
 ---
 title: .NET を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs
 description: .NET 用 Azure IoT device SDK を使用して、デバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。
-author: fsautomata
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
-ms.author: elioda
-ms.openlocfilehash: 25ec3a158d1eca77a7ca622af9b249789ef3b5e2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: robinsh
+ms.openlocfilehash: afa8a77a1c2eabce11af5730ffc5e7b768983589
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259328"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59046771"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>.NET を使用して IoT Hub でデバイスからクラウドにファイルをアップロードする
 

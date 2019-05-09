@@ -11,15 +11,15 @@ ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 182dada35e0bea7101cc58ff62fde76fbcb8971e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 270f400f78b971e022a59e5e9a04a76dfa929941
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722279"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761163"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
 
@@ -167,9 +167,9 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [Azure Websites、Cloud Services、および Virtual Machines の比較]: ../app-service/overview-compare.md
 [軽量の Web アプリを使用]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure Powershell]: /powershell/azureps-cmdlets-docs
-[Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[PowerShell を接続します]: /powershell/azureps-cmdlets-docs#step-3-connect
-[nodejs.org]: http://nodejs.org/
+[Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[PowerShell を接続します]: /powershell/azureps-cmdlets-docs
+[nodejs.org]: https://nodejs.org/
 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js デベロッパー センター]: https://azure.microsoft.com/develop/nodejs/
 

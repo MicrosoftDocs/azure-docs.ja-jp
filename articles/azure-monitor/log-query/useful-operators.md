@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリでの役に立つ演算子 | Microsoft Docs
-description: Log Analytics クエリのさまざまなシナリオでよく使用される関数です。
+title: Azure Monitor ログ クエリの便利な演算子 | Microsoft Docs
+description: Azure Monitor ログ クエリのさまざまなシナリオで使用する一般的な関数。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 060b1e469a31c335f062ccd332157d13e64f9318
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d11445c3f31f9aced6fdb9783575d10a026de1f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183984"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000150"
 ---
-# <a name="useful-operators-in-log-analytics-queries"></a>Log Analytics クエリでの役に立つ演算子
+# <a name="useful-operators-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの便利な演算子
 
-以下の表では、Log Analytics クエリのさまざまなシナリオでよく使用される関数を示します。
+下の表に、Azure Monitor ログ クエリのさまざまなシナリオで使用する一般的な関数の一部を示します。
 
 ## <a name="useful-operators"></a>便利な演算子
 
@@ -46,4 +46,4 @@ Category                                |関連する分析関数
 
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics でのクエリの記述](get-started-queries.md)に関するレッスンをご覧ください。
+- [Azure Monitor でのログ クエリの記述](get-started-queries.md)に関するレッスンをご覧ください。

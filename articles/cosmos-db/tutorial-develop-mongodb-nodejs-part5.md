@@ -4,19 +4,20 @@ titleSuffix: Azure Cosmos DB
 description: このチュートリアルでは、Express と Angular を使用して Cosmos DB に格納されているデータを管理するための Node.js アプリケーションを構築する方法について説明します。 このパートでは、Mongoose を使用して Azure Cosmos DB に接続します。
 author: johnpapa
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
+ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 03b1f1d5fa1320f08059ed755f6f4f7d1c08d35e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075477"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Mongoose を使用して Cosmos DB に接続する
 
@@ -55,35 +56,35 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 1. 次のコードを **mongo.js** ファイルにコピーします。 このコードでは以下の機能が提供されます。
 
-    * Mongoose を要求する。
-    * Mongo の Promise をオーバーライドして ES6/ES2015 以降のバージョンに組み込まれている基本的な Promise を使用する。
-    * 環境の種類 (ステージング、運用、開発) に応じて特定の動作を設定できる env ファイルを要求する。 そのファイルは、次のセクションで作成します。
-    * MongoDB の接続文字列をインクルードする。その接続文字列は、env ファイルで設定されています。
-    * Mongoose を呼び出す connect 関数を作成する。
+   * Mongoose を要求する。
+   * Mongo の Promise をオーバーライドして ES6/ES2015 以降のバージョンに組み込まれている基本的な Promise を使用する。
+   * 環境の種類 (ステージング、運用、開発) に応じて特定の動作を設定できる env ファイルを要求する。 そのファイルは、次のセクションで作成します。
+   * MongoDB の接続文字列をインクルードする。その接続文字列は、env ファイルで設定されています。
+   * Mongoose を呼び出す connect 関数を作成する。
 
-    ```javascript
-    const mongoose = require('mongoose');
-    /**
+     ```javascript
+     const mongoose = require('mongoose');
+     /**
      * Set to Node.js native promises
-     * Per http://mongoosejs.com/docs/promises.html
+     * Per https://mongoosejs.com/docs/promises.html
      */
-    mongoose.Promise = global.Promise;
+     mongoose.Promise = global.Promise;
 
-    const env = require('./env/environment');
+     const env = require('./env/environment');
 
-    // eslint-disable-next-line max-len
-    const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
+     // eslint-disable-next-line max-len
+     const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
 
-    function connect() {
+     function connect() {
      mongoose.set('debug', true);
      return mongoose.connect(mongoUri, { useMongoClient: true });
-    }
+     }
 
-    module.exports = {
-      connect,
-      mongoose
-    };
-    ```
+     module.exports = {
+     connect,
+     mongoose
+     };
+     ```
     
 1. [エクスプローラー] ウィンドウで、**server** の下に **environment** という名前のフォルダーを作成します。 **environment** フォルダーに、**environment.js** という名前のファイルを作成します。
 
@@ -233,7 +234,7 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 1. Visual Studio Code ですべての変更を保存します。 左側にある **[デバッグ]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) を選択し、**[デバッグ開始]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) を選択します。
 
-1. ここでブラウザーに切り替えます。 **開発者ツール**を開き、**[ネットワーク]** タブを開きます。 http://localhost:3000 に移動すると、このアプリケーションが表示されます。
+1. ここでブラウザーに切り替えます。 **開発者ツール**を開き、**[ネットワーク]** タブを開きます。`http://localhost:3000` に移動すると、このアプリケーションが表示されます。
 
     ![Azure Portal の新しい Azure Cosmos DB アカウント](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 

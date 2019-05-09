@@ -8,17 +8,15 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: 14b849a46701ab19c76ee175717c3715cc89f411
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 02/28/2019
+ms.openlocfilehash: daee7ddd0a09d43132bbcf0f4553601846d31433
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408903"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448235"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
-
-[!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
 Azure HDInsight で Apache Oozie と Apache Hadoop を使用する方法を説明します。 Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Oozie は Hadoop スタックと統合されており、次のジョブをサポートしています。
 
@@ -35,10 +33,19 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **通常の HDInsight クラスター**:詳細については、[Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-> [!IMPORTANT]  
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+* **SSH クライアント**。 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+
+* **Azure SQL Database**。  [Azure portal での Azure SQL Database の作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、`oozietest` という名前のデータベースを使用します。
+
+* **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 `BlobStorage` を使用している場合は、「[ストレージの構成](#storage-configuration)」を参照してください。
+
+## <a name="storage-configuration"></a>ストレージの構成
+使用しているストレージ アカウントの種類が `Storage (general purpose v1)` または `StorageV2 (general purpose v2)` の場合、アクションは必要ありません。  この記事のプロセスにより、少なくとも `/mapreducestaging` に対する出力が生成されます。  既定の Hadoop 構成には、サービス `HDFS`の `core-site.xml` 内の `fs.azure.page.blob.dir` 構成値内に `/mapreducestaging` が含まれます。  この構成により、ディレクトリに対する出力がページ BLOB となります。これは、ストレージ アカウントの種類 `BlobStorage` ではサポートされていません。  この記事で `BlobStorage` を使用するには、`/mapreducestaging` を `fs.azure.page.blob.dir` 構成値から削除します。  構成は [Ambari UI](hdinsight-hadoop-manage-ambari.md) からアクセスすることができます。  そうしないと、`Page blob is not supported for this account type.` というエラー メッセージが表示されます。
+
+> [!NOTE]  
+> この記事で使用されるストレージ アカウントでは[安全な転送](../storage/common/storage-require-secure-transfer.md)が有効になっているため、`wasb` ではなく `wasbs` がこの記事全体で使用されます。
 
 ## <a name="example-workflow"></a>ワークフローの例
 
@@ -46,7 +53,7 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 ![ワークフロー図][img-workflow-diagram]
 
-1. Hive アクションは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。 各データ行は、特定のモバイル デバイスからのアクセスを表します。 レコードの形式は次のテキストのようになります。
+1. Hive アクションは、HiveQL スクリプトを実行して、HDInsight に含まれている `hivesampletable` からレコードを抽出します。 各データ行は、特定のモバイル デバイスからのアクセスを表します。 レコードの形式は次のテキストのようになります。
 
         8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
         23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
@@ -58,20 +65,18 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 2. Sqoop アクションは、新しい Hive テーブルの内容を Azure SQL Database で作成されたテーブルにエクスポートします。 Sqoop の詳細については、[HDInsight での Apache Sqoop の使用][hdinsight-use-sqoop]に関するページを参照してください。
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 
 ## <a name="create-the-working-directory"></a>作業ディレクトリの作成
 
-Oozie では、ジョブに必要なすべてのリソースを同じディレクトリに保存する必要があります。 この例では **wasb:///tutorials/useoozie** を使用します。 このディレクトリを作成するには、次の手順のようにします。
+Oozie では、ジョブに必要なすべてのリソースを同じディレクトリに保存する必要があります。 この例では、`wasbs:///tutorials/useoozie` を使用します。 このディレクトリを作成するには、次の手順のようにします。
 
-1. SSH を使って HDInsight クラスターに接続します。
+1. 次のコードを編集して、`sshuser` をクラスターの SSH ユーザー名に置き換えます。また、`clustername` をクラスター名に置き換えます。  それから、[SSH を使用](hdinsight-hadoop-linux-use-ssh-unix.md)して HDInsight クラスターに接続するコードを入力します。  
 
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
-
-    `sshuser` をクラスターの SSH ユーザー名に置き換えます。 `clustername` をクラスターの名前に置き換えます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. ディレクトリを作成するには、次のコマンドを使用します。
 
@@ -79,16 +84,14 @@ Oozie では、ジョブに必要なすべてのリソースを同じディレ�
     hdfs dfs -mkdir -p /tutorials/useoozie/data
     ```
 
-    > [!NOTE]
-    > `-p` パラメーターを指定すると、すべてのディレクトリがこのパスに作成されます。 **data** ディレクトリは、**useooziewf.hql** スクリプトが使うデータを保持するために使われます。
+    > [!NOTE]  
+    > `-p` パラメーターを指定すると、すべてのディレクトリがこのパスに作成されます。 `data` ディレクトリは、`useooziewf.hql` スクリプトが使うデータを保持するために使われます。
 
-3. Oozie がユーザー アカウントを偽装できるようにするには、次のコマンドを使用します。
+3. 次のコードを編集して、`username` を SSH ユーザー名に置き換えます。  Oozie がユーザー アカウントを偽装できるようにするには、次のコマンドを使用します。
 
     ```bash
     sudo adduser username users
     ```
-
-    `username` を SSH ユーザー名に置き換えます。
 
     > [!NOTE]  
     > ユーザーが既に `users` グループのメンバーであることを示すエラーは無視できます。
@@ -98,11 +101,11 @@ Oozie では、ジョブに必要なすべてのリソースを同じディレ�
 このワークフローでは、Sqoop を使ってデータを SQL データベースにエクスポートするため、SQL データベースとの対話に使う JDBC ドライバーのコピーを提供する必要があります。 JDBC ドライバーを作業ディレクトリにコピーするには、SSH セッションから次のコマンドを使用します。
 
 ```bash
-hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
+hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozie/
 ```
 
-> [!NOTE]  
-> ファイルが既に存在するというメッセージが表示される場合があります。
+> [!IMPORTANT]  
+> `/usr/share/java/` にある実際の JDBC ドライバーを確認します。
 
 ワークフローで他のリソース (MapReduce アプリケーションを含む jar など) を使っている場合は、これらのリソースも追加する必要があります。
 
@@ -127,15 +130,15 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 
     このスクリプトでは、次の 2 つの変数を使用しています。
 
-    * `${hiveTableName}`:作成されるテーブルの名前が格納されます。
+   * `${hiveTableName}`:作成されるテーブルの名前が格納されます。
 
-    * `${hiveDataFolder}`:テーブルのデータ ファイルを保存する場所が格納されます。
+   * `${hiveDataFolder}`:テーブルのデータ ファイルを保存する場所が格納されます。
 
-    ワークフロー定義ファイル (このチュートリアルでは workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
+     ワークフロー定義ファイル (このチュートリアルでは workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
 
-4. エディターを終了するには、Ctrl + X キーを押します。 メッセージが表示されたら、`Y` キーを押してファイルを保存し、ファイル名として「`useooziewf.hql`」と入力して、**Enter** キーを押します。
+4. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。  
 
-5. 次のコマンドを使用して、`useooziewf.hql` を `wasb:///tutorials/useoozie/useooziewf.hql` にコピーします。
+5. 次のコマンドを使用して、`useooziewf.hql` を `wasbs:///tutorials/useoozie/useooziewf.hql` にコピーします。
 
     ```bash
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
@@ -196,7 +199,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
             <arg>1</arg>
             <arg>--input-fields-terminated-by</arg>
             <arg>"\t"</arg>
-            <archive>sqljdbc41.jar</archive>
+            <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
             </sqoop>
         <ok to="end"/>
         <error to="fail"/>
@@ -216,9 +219,9 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
      このワークフローには、`${jobTracker}` などのいくつかのエントリがあります。 これらのエントリは、ジョブ定義で使う値に置き換えます。 ジョブ定義は後で作成します。
 
-     また、Sqoop セクションの `<archive>sqljdbc4.jar</archive>` エントリにも注意してください。 このエントリは、このアクションの実行時にこのアーカイブを Sqoop で使用できるようにすることを Oozie に指示します。
+     また、Sqoop セクションの `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` エントリにも注意してください。 このエントリは、このアクションの実行時にこのアーカイブを Sqoop で使用できるようにすることを Oozie に指示します。
 
-3. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。 
+3. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。  
 
 4. 次のコマンドを使用して、`workflow.xml` ファイルを `/tutorials/useoozie/workflow.xml` にコピーします。
 
@@ -226,15 +229,10 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
     hdfs dfs -put workflow.xml /tutorials/useoozie/workflow.xml
     ```
 
-## <a name="create-the-database"></a>データベースの作成
-
-SQL データベースを作成するには、[SQL データベースの作成](../sql-database/sql-database-get-started.md)に関するドキュメントに記載されている手順に従います。 データベースを作成するときは、データベース名として `oozietest` を使います。 また、データベース サーバーの名前を書き留めておきます。
-
-### <a name="create-the-table"></a>テーブルを作成する
+## <a name="create-a-table"></a>テーブルを作成する
 
 > [!NOTE]  
 > SQL Database に接続してテーブルを作成するには、多くの方法があります。 次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
-
 
 1. 次のコマンドを使用して、FreeTDS を HDInsight クラスターにインストールします。
 
@@ -242,10 +240,10 @@ SQL データベースを作成するには、[SQL データベースの作成](
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. FreeTDS がインストールされた後、次のコマンドを使って、前に作成した SQL データベース サーバーに接続します。
+2. 次のコードを編集して、`<serverName>` を Azure SQL サーバー名に置き換え、`<sqlLogin>` を Azure SQL サーバー ログインに置き換えます。  コマンドを入力して、前提条件の SQL データベースに接続します。  プロンプトでパスワードを入力します。
 
     ```bash
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -P <sqlPassword> -p 1433 -D oozietest
+    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
     ```
 
     出力は次のテキストのようになります。
@@ -267,7 +265,7 @@ SQL データベースを作成するには、[SQL データベースの作成](
     GO
     ```
 
-    `GO` ステートメントを入力すると、前のステートメントが評価されます。 これらのステートメントにより、ワークフローで使われる **mobiledata** という名前のテーブルが作成されます。
+    `GO` ステートメントを入力すると、前のステートメントが評価されます。 これらのステートメントにより、ワークフローで使われる `mobiledata` という名前のテーブルが作成されます。
 
     テーブルが作成されたことを確認するには、次のコマンドを使います。
 
@@ -279,9 +277,9 @@ SQL データベースを作成するには、[SQL データベースの作成](
     次のようなテキストが出力されます。
 
         TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-        oozietest       dbo     mobiledata      BASE TABLE
+        oozietest       dbo             mobiledata      BASE TABLE
 
-4. tsql ユーティリティを終了するには、`1>` プロンプトで「`exit`」と入力します。
+4. `1>` プロンプトで「`exit`」と入力して、tsql ユーティリティを終了します。
 
 ## <a name="create-the-job-definition"></a>ジョブ定義の作成
 
@@ -297,21 +295,23 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
     ```xml
     <name>fs.defaultFS</name>
-    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
+    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
     ```
 
     > [!NOTE]  
-    > HDInsight クラスターで既定のストレージとして Azure Storage を使用する場合、`<value>` 要素の内容は `wasb://`で始まります。 Azure Data Lake Store を使用する場合は、`adl://` で始まります。
+    > HDInsight クラスターで既定のストレージとして Azure Storage を使用する場合、`<value>` 要素の内容は `wasbs://`で始まります。 Azure Data Lake Storage Gen1 を使用する場合は、`adl://` で始まります。 Azure Data Lake Storage Gen2 を使用する場合は、`abfs://` で始まります。
 
     以下の手順で使うため、`<value>` 要素の内容を保存します。
 
-2. Oozie ジョブ定義構成を作成するには、次のコマンドを使います。
+2. 次の xml を以下のように編集します。
 
-    ```bash
-    nano job.xml
-    ```
-
-3. nano エディターが開いたら、ファイルの内容として次の XML を使います。
+    |プレースホルダーの値| 置き換えられた値|
+    |---|---|
+    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 手順 1 で受け取った値。|
+    |admin| admin ではない場合、HDInsight クラスターの自分のログイン名。|
+    |serverName| Azure SQL データベース サーバー名。|
+    |sqlLogin| Azure SQL データベース サーバー ログイン。|
+    |sqlPassword| Azure SQL データベース サーバー ログインのパスワード。|
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -319,7 +319,7 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
         <property>
         <name>nameNode</name>
-        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
+        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
         </property>
 
         <property>
@@ -339,7 +339,7 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
         <property>
         <name>hiveScript</name>
-        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
+        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
         </property>
 
         <property>
@@ -349,12 +349,12 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
         <property>
         <name>hiveDataFolder</name>
-        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
+        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
         </property>
 
         <property>
         <name>sqlDatabaseConnectionString</name>
-        <value>"jdbc:sqlserver://serverName.database.windows.net;user=adminLogin;password=adminPassword;database=oozietest"</value>
+        <value>"jdbc:sqlserver://serverName.database.windows.net;user=sqlLogin;password=sqlPassword;database=oozietest"</value>
         </property>
 
         <property>
@@ -364,28 +364,25 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
         <property>
         <name>user.name</name>
-        <value>YourName</value>
+        <value>admin</value>
         </property>
 
         <property>
         <name>oozie.wf.application.path</name>
-        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
         </property>
     </configuration>
     ```
 
-   * `wasb://mycontainer@mystorageaccount.blob.core.windows.net` のすべてのインスタンスを、以前に取得した既定のストレージの値に置き換えます。
+    このファイル内のほとんどの情報は、workflow.xml ファイルまたは ooziewf.hql ファイルで使われる値 (`${nameNode}` など) を設定するために使われます。  パスが `wasbs` パスの場合は、完全パスを使用する必要があります。 `wasbs:///` だけに短縮しないでください。 `oozie.wf.application.path` エントリでは、workflow.xml ファイルの検索場所を定義します。 このファイルには、このジョブで実行されたワークフローが格納されます。
 
-     > [!WARNING]  
-     > パスが `wasb` パスの場合は、完全パスを使用する必要があります。 `wasb:///` だけに短縮しないでください。
+3. Oozie ジョブ定義構成を作成するには、次のコマンドを使います。
 
-   * `YourName` を、HDInsight クラスターのログイン名に置き換えます。
-   * `serverName`、`adminLogin`、`adminPassword` を、実際の SQL Database の情報に置き換えます。
+    ```bash
+    nano job.xml
+    ```
 
-     このファイル内のほとんどの情報は、workflow.xml ファイルまたは ooziewf.hql ファイルで使われる値 (`${nameNode}` など) を設定するために使われます。
-
-     > [!NOTE]  
-     > `oozie.wf.application.path` エントリでは、workflow.xml ファイルの検索場所を定義します。 このファイルには、このジョブで実行されたワークフローが格納されます。
+4. nano エディターが開いたら、編集した XML をファイルの内容として貼り付けます。
 
 5. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
 
@@ -395,7 +392,6 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
 > [!IMPORTANT]  
 > Oozie コマンドを使うときは、HDInsight ヘッドノードの FQDN を使う必要があります。 この FQDN にはクラスターからのみアクセスできます。クラスターが Azure 仮想ネットワーク上にある場合は、同じネットワークの他のマシンからアクセスできます。
-
 
 1. Oozie サービスの URL を取得するには、次のコマンドを使います。
 
@@ -412,13 +408,12 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
     `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` の部分が Oozie コマンドで使用する URL です。
 
-2. URL の環境変数を作成するには次のコマンドを使うので、すべてのコマンドでこれを入力する必要はありません。
+2. コードを編集して、URL を前に返された URL に置き換えます。 URL の環境変数を作成するには次のコマンドを使うので、すべてのコマンドでこれを入力する必要はありません。
 
     ```bash
     export OOZIE_URL=http://HOSTNAMEt:11000/oozie
     ```
 
-    URL を前に返された URL に置き換えます。
 3. ジョブを送信するには、次のコマンドを使います。
 
     ```bash
@@ -429,14 +424,11 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
     コマンドが完了すると、ジョブの ID が返されます (例: `0000005-150622124850154-oozie-oozi-W`)。 この ID はジョブの管理に使用されます。
 
-4. ジョブのステータスを表示するには、次のコマンドを使います。
+4. 次のコードを編集して、`<JOBID>` を前の手順で返された ID に置き換えます。  ジョブのステータスを表示するには、次のコマンドを使います。
 
     ```bash
     oozie job -info <JOBID>
     ```
-
-    > [!NOTE]  
-    > `<JOBID>` を前の手順で返された ID に置き換えます。
 
     次のテキストのような情報が返されます。
 
@@ -457,21 +449,18 @@ SQL データベースを作成するには、[SQL データベースの作成](
 
     このジョブの状態は `PREP` です。 この状態は、ジョブが作成されたが開始されていないことを示します。
 
-5. ジョブを開始するには、次のコマンドを使います。
+5. 次のコードを編集して、`<JOBID>` を前に返された ID に置き換えます。  ジョブを開始するには、次のコマンドを使います。
 
     ```bash
     oozie job -start JOBID
     ```
 
-    > [!NOTE]  
-    > `<JOBID>` を先ほど返された ID で置き換えます。
+    このコマンドの実行後に状態を確認すると、ジョブが実行中状態になり、ジョブのアクションに関する情報が返されます。  このジョブは完了までに数分かかります。
 
-    このコマンドの実行後に状態を確認すると、ジョブが実行中状態になり、ジョブのアクションに関する情報が返されます。
-
-6. タスクが正常に完了したら、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。
+6. 次のコードを編集して、`<serverName>` を Azure SQL サーバー名に置き換え、`<sqlLogin>` を Azure SQL サーバー ログインに置き換えます。  タスクが正常に完了したら、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
 
     ```bash
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D oozietest
+    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
     ```
 
     `1>` プロンプトで、次のクエリを入力します。
@@ -524,7 +513,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 1. HDInsight クラスターへの SSH トンネルを作成します。 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するページを参照してください。
 
-2. トンネルを作成した後、Web ブラウザーで Ambari Web UI を開きます。 Ambari サイトの URI は `https://CLUSTERNAME.azurehdinsight.net` です。 `CLUSTERNAME` を、Linux ベースの HDInsight クラスターの名前に置き換えます。
+2. トンネルを作成した後、URI `http://headnodehost:8080` を使用して Web ブラウザーで Ambari Web UI を開きます。
 
 3. ページの左側で、**[Oozie]** > **[クイック リンク]** > **[Oozie Web UI]** の順に選びます。
 
@@ -540,11 +529,11 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 6. **[Job Info]\(ジョブの情報\)** タブでは、基本的なジョブ情報とジョブの個々のアクションを確認できます。 上部にあるタブを使って、**[Job Definition]\(ジョブの定義\)** の表示、**[Job Configuration]\(ジョブの構成\)** の表示、**[Job Log]\(ジョブのログ\)** へのアクセス、**[Job DAG]\(ジョブの DAG\)** でジョブの有向非巡回グラフ (DAG) の表示を行うことができます。
 
-   * **[ジョブのログ]**:ジョブのすべてのログを取得するには、**[Get Logs](ログの取得)** ボタンを選びます。ログをフィルター処理するには、**[Enter Search Filter](検索フィルターの入力)** フィールドを使います。
+   * **[ジョブのログ]**:ジョブのすべてのログを取得するには、**[Get Logs]\(ログの取得)** ボタンを選びます。ログをフィルター処理するには、**[Enter Search Filter]\(検索フィルターの入力)** フィールドを使います。
 
        ![ジョブのログ](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
-   * **[Job DAG](ジョブの DAG)**:DAG は、ワークフローで取得されるデータ パスの概要をグラフィックで表したものです。
+   * **[Job DAG]\(ジョブの DAG)**:DAG は、ワークフローで取得されるデータ パスの概要をグラフィックで表したものです。
 
        ![ジョブの DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
 
@@ -576,7 +565,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
     </coordinator-app>
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > `${...}` 変数は、実行時にジョブ定義の値に置き換えられます。 変数は次のとおりです。
     >
     > * `${coordFrequency}`:ジョブのインスタンスが実行される間隔。
@@ -593,9 +582,9 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
     hadoop fs -put coordinator.xml /tutorials/useoozie/coordinator.xml
     ```
 
-4. `job.xml` ファイルを変更するには、次のコマンドを使います。
+4. 以前作成した `job.xml` ファイルを変更するには、次のコマンドを使います。
 
-    ```
+    ```bash
     nano job.xml
     ```
 
@@ -608,23 +597,23 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
         ```xml
         <property>
             <name>workflowPath</name>
-            <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+            <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
         </property>
         ```
 
-       `wasb://mycontainer@mystorageaccount.blob.core.windows` テキストを、job.xml ファイルの他のエントリで使われている値に置き換えます。
+       `wasbs://mycontainer@mystorageaccount.blob.core.windows` テキストを、job.xml ファイルの他のエントリで使われている値に置き換えます。
 
    * コーディネーターが使用する開始時刻、終了時刻、頻度を定義するには、次の XML を追加します。
 
         ```xml
         <property>
             <name>coordStart</name>
-            <value>2017-05-10T12:00Z</value>
+            <value>2018-05-10T12:00Z</value>
         </property>
 
         <property>
             <name>coordEnd</name>
-            <value>2017-05-12T12:00Z</value>
+            <value>2018-05-12T12:00Z</value>
         </property>
 
         <property>
@@ -638,17 +627,15 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
         </property>
         ```
 
-       これらの値によって、開始時刻が 2017 年 5 月 10 日 12:00 PM に、終了時刻が 2017 年 5 月 12 日 12:00 PM に設定されます。 このジョブの実行間隔は、毎日に設定されます。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
+       これらの値によって、開始時刻が 2018 年 5 月 10 日 12:00 PM に、終了時刻が 2018 年 5 月 12 日 12:00 PM に設定されます。 このジョブの実行間隔は、毎日に設定されます。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
 
 5. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
 
-6. ジョブを実行するには、次のコマンドを使用します。
+6. ジョブを提出して開始するには、次のコマンドを使います。
 
-    ```
+    ```bash
     oozie job -config job.xml -run
     ```
-
-    このコマンドにより、ジョブが送信され、開始されます。
 
 7. Oozie Web UI にアクセスし、**[Coordinator Jobs]\(コーディネーター ジョブ\)** タブを選ぶと、次の画像のような情報が表示されます。
 
@@ -683,11 +670,11 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**原因**:**job.xml** ファイルで使われている Azure Blob Storage アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 Blob Storage アドレスは、`wasb://containername@storageaccountname.blob.core.windows.net` という形式にする必要があります。
+**原因**:**job.xml** ファイルで使われている Azure Blob Storage アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 Blob Storage アドレスは、`wasbs://containername@storageaccountname.blob.core.windows.net` という形式にする必要があります。
 
 **解決方法**:ジョブが使う Blob Storage アドレスを変更します。
 
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002:Oozie is not allowed to impersonate &lt;USER&gt; (Oozie は &lt;USER&gt; の偽装を許可されていません)
+### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002:Oozie is not allowed to impersonate &lt;USER&gt; (Oozie は &lt;USER&gt; の偽装を許可されていません)
 
 **現象**:ジョブの状態が **SUSPENDED** に変更されます。 ジョブの詳細に、`RunHiveScript` の状態が **START_MANUAL** と示されます。 アクションを選ぶと、次のエラー メッセージが表示されます。
 
@@ -714,32 +701,30 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 たとえば、このドキュメントのジョブの場合、次の手順に従います。
 
-1. `sqljdbc4.1.jar` ファイルを **/tutorials/useoozie** ディレクトリにコピーします。
+1. `mssql-jdbc-7.0.0.jre8.jar` ファイルを **/tutorials/useoozie** ディレクトリにコピーします。
 
     ```bash
-    hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc41.jar /tutorials/useoozie/sqljdbc41.jar
+    hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
     ```
 
 2. `workflow.xml` を変更して、`</sqoop>` の上の新しい行に次の XML を追加します。
 
     ```xml
-    <archive>sqljdbc41.jar</archive>
+    <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
     ```
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Oozie ワークフローを定義する方法と Oozie ジョブを実行する方法について説明しました。 HDInsight の使用方法について詳しくは、次の記事をご覧ください。
 
-* [HDInsight での時間ベースの Apache Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]
-* [HDInsight での Apache Hadoop ジョブ用データのアップロード][hdinsight-upload-data]
-* [HDInsight の Apache Hadoop での Apache Sqoop の使用][hdinsight-use-sqoop]
-* [HDInsight 上の Apache Hadoop で Apache Hive を使用する][hdinsight-use-hive]
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する][hdinsight-use-pig]
+* [HDInsight で Apache Hadoop ジョブのデータをアップロードする][hdinsight-upload-data]
+* [HDInsight で Apache Sqoop と Apache Hadoop を使用する][hdinsight-use-sqoop]
+* [HDInsight で Apache Hive と Apache Hadoop を使用する][hdinsight-use-hive]
+* [HDInsight で Apache Pig と Apache Hadoop を使用する][hdinsight-use-pig]
 * [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
-[hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
+[hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563
 [azure-data-factory-pig-hive]: ../data-factory/transform-data.md
-[hdinsight-oozie-coordinator-time]: hdinsight-use-oozie-coordinator-time.md
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-use-blob-storage.md
 [hdinsight-get-started]: hdinsight-get-started.md
@@ -757,20 +742,20 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
-[apache-hadoop]: http://hadoop.apache.org/
-[apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
-[apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
+[apache-hadoop]: https://hadoop.apache.org/
+[apache-oozie-400]: https://oozie.apache.org/docs/4.0.0/
+[apache-oozie-332]: https://oozie.apache.org/docs/3.3.2/
 
 [powershell-download]: https://azure.microsoft.com/downloads/
-[powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
+[powershell-about-profiles]: https://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-script]: https://technet.microsoft.com/library/ee176961.aspx
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie/HDI.UseOozie.Workflow.Diagram.png
-[img-preparation-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.Preparation.Output1.png
+[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Workflow.Diagram.png
+[img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

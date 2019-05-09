@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: カスタム検索インスタンスを構成して、Web ページに統合する方法について説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 10/16/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 0c98f75417bbcba13e179502eb1c8b4488b17d78
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558024"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100736"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
 
@@ -49,11 +49,11 @@ Bing Custom Search インスタンスを作成するには:
   
 4. サインイン後、**[New custom search]**(新しいカスタム検索) をクリックします。 **[Create a new custom search instance]**(新しいカスタム検索インスタンスの作成) ウィンドウで、検索で返されるコンテンツの種類を説明するわかりやすい名前を入力します。 名前はいつでも変更できます。  
   
-  ![新しいカスタム検索インスタンスの作成ボックスのスクリーンショット](../media/newCustomSrch.png)  
+   ![新しいカスタム検索インスタンスの作成ボックスのスクリーンショット](../media/newCustomSrch.png)  
   
 5. [OK] をクリックして、URL と、URL のサブページを含めるかどうかを指定します。  
   
-  ![URL 定義ページのスクリーンショット](../media/newCustomSrch1-a.png)  
+   ![URL 定義ページのスクリーンショット](../media/newCustomSrch1-a.png)  
 
 
 ## <a name="add-active-entries"></a>アクティブなエントリの追加
@@ -97,28 +97,28 @@ Bing Custom Search インスタンスを作成するには:
   
 2. レイアウトを選択します。  
   
-  ![ホステッド UI のレイアウト選択手順のスクリーンショット](./media/custom-search-hosted-ui-select-layout.png)  
+   ![ホステッド UI のレイアウト選択手順のスクリーンショット](./media/custom-search-hosted-ui-select-layout.png)  
   
 3. 配色テーマを選択します。  
   
-  ![ホステッド UI の配色テーマ選択のスクリーンショット](./media/custom-search-hosted-ui-select-color-theme.png)  
+   ![ホステッド UI の配色テーマ選択のスクリーンショット](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  より適切に Web アプリと統合するために配色テーマを微調整する必要がある場合は、**[テーマのカスタマイズ]** をクリックします。 すべての配色構成がすべてのレイアウト テーマに適用されるわけではありません。 色を変更するには、対応するテキスト ボックスに色の RGB 16 進数 (たとえば、#366eb8) を入力します。 または、色のボタンをクリックし、適している網掛けをクリックします。 色を選択するときは必ずアクセシビリティを考慮します。
+   より適切に Web アプリと統合するために配色テーマを微調整する必要がある場合は、**[テーマのカスタマイズ]** をクリックします。 すべての配色構成がすべてのレイアウト テーマに適用されるわけではありません。 色を変更するには、対応するテキスト ボックスに色の RGB 16 進数 (たとえば、#366eb8) を入力します。 または、色のボタンをクリックし、適している網掛けをクリックします。 色を選択するときは必ずアクセシビリティを考慮します。
   
-  ![ホステッド UI の配色テーマのカスタマイズのスクリーンショット](./media/custom-search-hosted-ui-customize-color-theme.png)  
+   ![ホステッド UI の配色テーマのカスタマイズのスクリーンショット](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
 4. その他の構成オプションを指定します。  
   
-  ![ホステッド UI のその他の構成手順のスクリーンショット](./media/custom-search-hosted-ui-additional-configurations.png)  
+   ![ホステッド UI のその他の構成手順のスクリーンショット](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  詳細な構成を取得するには、**[Show advanced configurations]\(構成の詳細を表示\)** をクリックします。 これにより、Web 検索オプションに *[リンク先]* などの構成が、[イメージ] および [ビデオ] オプションに *[フィルターを有効にする]* が、[その他] オプションに *[Search box text placeholder]\(検索ボックスのテキスト プレースホルダー\)* が追加されます。
+   詳細な構成を取得するには、**[Show advanced configurations]\(構成の詳細を表示\)** をクリックします。 これにより、Web 検索オプションに *[リンク先]* などの構成が、[イメージ] および [ビデオ] オプションに *[フィルターを有効にする]* が、[その他] オプションに *[Search box text placeholder]\(検索ボックスのテキスト プレースホルダー\)* が追加されます。
 
-  ![ホステッド UI の詳細な構成手順のスクリーンショット](./media/custom-search-hosted-ui-advanced-configurations.png)  
+   ![ホステッド UI の詳細な構成手順のスクリーンショット](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
 5. ドロップダウン リストからサブスクリプション キーを選択します。 または、サブスクリプション キーを手動で入力できます。 キーの取得方法については、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api)」を参照してください。  
   
-  ![ホステッド UI のその他の構成手順のスクリーンショット](./media/custom-search-hosted-ui-subscription-key.png)
+   ![ホステッド UI のその他の構成手順のスクリーンショット](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -140,66 +140,66 @@ Bing Custom Search インスタンスを作成するには:
   
 3. **[新しいプロジェクト]** ウィンドウで、**[Visual C#] / [Web] / [ASP.NET Core Web アプリケーション]** の順に選択し、プロジェクトに名前を付けて **[OK]** をクリックします。  
   
-  ![新しいプロジェクト ウィンドウのスクリーンショット](./media/custom-search-new-project.png)  
+   ![新しいプロジェクト ウィンドウのスクリーンショット](./media/custom-search-new-project.png)  
   
 4. **[新しい ASP.NET Core Web アプリケーション]** ウィンドウで、**[Web アプリケーション]** を選択して **[OK]** をクリックします。  
   
-  ![新しいプロジェクト ウィンドウのスクリーンショット](./media/custom-search-new-webapp.png)  
+   ![新しいプロジェクト ウィンドウのスクリーンショット](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>index.cshtml の編集
 
 1. **[ソリューション エクスプローラー]** で **[ページ]** を展開し、**index.cshtml** をダブルクリックしてこのファイルを開きます。  
   
-  ![ページを展開して index.cshtml を選択したソリューション エクスプローラーのスクリーンショット](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+   ![ページを展開して index.cshtml を選択したソリューション エクスプローラーのスクリーンショット](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
 2. index.cshtml の 7 行目以降をすべてを削除します。  
   
-  ```razor
-  @page
-  @model IndexModel
-  @{
+   ```razor
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }    
-  ```  
+   }    
+   ```  
   
 3. 改行要素とコンテナーとして機能する div を追加します。  
   
-  ```html
-  @page
-  @model IndexModel
-  @{
+   ```html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch"></div>
-  ```  
+   }
+   <br />
+   <div id="customSearch"></div>
+   ```  
   
 4. **[Hosted UI]\(ホステッド UI\)** タブで、**[Consuming the UI]\(UI の使用\)** セクションまで下方向にスクロールします。 *[エンドポイント]* をクリックして、JavaScript スニペットにアクセスします。 また、**[運用]**、**[Hosted UI]\(ホステッド UI\)** タブの順にクリックしてスニペットにアクセスすることもできます。
   
-  <!-- Get new screenshot after prod gets new bits
-  ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
-  -->
+   <!-- Get new screenshot after prod gets new bits
+   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
+   -->
   
 5. script 要素を追加したコンテナーに貼り付けます。  
   
-  ``` html
-  @page
-  @model IndexModel
-  @{
+   ``` html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch">
+   }
+   <br />
+   <div id="customSearch">
       <script type="text/javascript" 
           id="bcs_js_snippet"
           src="https://ui.customsearch.ai /api/ux/rendering-js?customConfig=<YOUR-CUSTOM-CONFIG-ID>&market=en-US&safeSearch=Moderate&version=latest&q=">
       </script>
-  </div>
-  ```  
+   </div>
+   ```  
   
 6. **[ソリューション エクスプローラー]** で **wwwroot** を右クリックし、**[ブラウザーで表示]** をクリックします。  
   
-  ![wwwroot コンテキスト メニューのブラウザーで表示を選択したソリューション エクスプローラーのスクリーンショット](./media/custom-search-webapp-view-in-browser.png)  
+   ![wwwroot コンテキスト メニューのブラウザーで表示を選択したソリューション エクスプローラーのスクリーンショット](./media/custom-search-webapp-view-in-browser.png)  
 
 新しいカスタム検索 Web ページは、次のようになります。
 

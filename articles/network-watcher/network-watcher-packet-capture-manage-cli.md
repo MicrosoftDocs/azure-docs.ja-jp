@@ -1,6 +1,6 @@
 ---
-title: Azure Network Watcher でパケット キャプチャを管理する - Azure CLI | Microsoft Docs
-description: このページでは、Azure CLI を使って Network Watcher のパケット キャプチャ機能を管理する方法を説明します
+title: Manage packet captures with Azure Network Watcher - Azure CLI | Microsoft Docs
+description: This page explains how to manage the packet capture feature of Network Watcher using the Azure CLI
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,69 +14,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 70ec0f1acc54aae7de5f815d62a876ce3d033193
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf03872607546f38d19a280f65f641abf627268b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966905"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857727"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Azure CLI を使用して Azure Network Watcher でパケット キャプチャを管理する
+# <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Manage packet captures with Azure Network Watcher using the Azure CLI
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
-Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーすることができることで、この機能によってパケット キャプチャを手動で、目的のマシン上で実行する負荷が軽減されて、貴重な時間の節約になります。
+Network Watcher packet capture allows you to create capture sessions to track traffic to and from a virtual machine. Filters are provided for the capture session to ensure you capture only the traffic you want. Packet capture helps to diagnose network anomalies both reactively and proactively. Other uses include gathering network statistics, gaining information on network intrusions, to debug client-server communications and much more. By being able to remotely trigger packet captures, this capability eases the burden of running a packet capture manually and on the desired machine, which saves valuable time.
 
-この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (Azure CLI) をインストール](/cli/azure/install-azure-cli)する必要があります。
+To perform the steps in this article, you need to [install the Azure Command-Line Interface for Mac, Linux, and Windows (Azure CLI)](/cli/azure/install-azure-cli).
 
-この記事では、パケット キャプチャで現在利用できるさまざまな管理作業について説明します。
+This article takes you through the different management tasks that are currently available for packet capture.
 
-- [**パケット キャプチャを開始する**](#start-a-packet-capture)
-- [**パケット キャプチャを停止する**](#stop-a-packet-capture)
-- [**パケット キャプチャを削除する**](#delete-a-packet-capture)
-- [**パケット キャプチャをダウンロードする**](#download-a-packet-capture)
+- [**Start a packet capture**](#start-a-packet-capture)
+- [**Stop a packet capture**](#stop-a-packet-capture)
+- [**Delete a packet capture**](#delete-a-packet-capture)
+- [**Download a packet capture**](#download-a-packet-capture)
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="before-you-begin"></a>Before you begin
 
-この記事では、次のリソースがあることを前提としています。
+This article assumes you have the following resources:
 
-- パケット キャプチャを作成するリージョン内の Network Watcher インスタンス
-- パケット キャプチャ拡張機能が有効になっている仮想マシン。
+- An instance of Network Watcher in the region you want to create a packet capture
+- A virtual machine with the packet capture extension enabled.
 
 > [!IMPORTANT]
-> パケット キャプチャを仮想マシン上で実行するにはエージェントが必要です。 エージェントは、拡張機能としてインストールされます。 VM 拡張機能については、[仮想マシン拡張機能とその機能](../virtual-machines/windows/extensions-features.md)に関するページを参照してください。
+> Packet capture requires an agent to be running on the virtual machine. The Agent is installed as an extension. For instructions on VM extensions, visit [Virtual Machine extensions and features](../virtual-machines/windows/extensions-features.md).
 
-## <a name="install-vm-extension"></a>VM 拡張機能をインストールする
+## <a name="install-vm-extension"></a>Install VM extension
 
-### <a name="step-1"></a>手順 1
+### <a name="step-1"></a>Step 1
 
-ゲスト仮想マシンにパケット キャプチャ エージェントをインストールするには、`az vm extension set` コマンドレットを実行します。
+Run the `az vm extension set` cmdlet to install the packet capture agent on the guest virtual machine.
 
-Windows 仮想マシンの場合:
+For Windows virtual machines:
 
 ```azurecli
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentWindows --version 1.4
 ```
 
-Linux 仮想マシンの場合:
+For Linux virtual machines:
 
 ```azurecli
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
-````
+```
 
-### <a name="step-2"></a>手順 2.
+### <a name="step-2"></a>Step 2
 
-エージェントがインストールされていることを確認するために、リソース グループと仮想マシン名を渡して `vm extension show` コマンドレットを実行します。 結果のリストを調べて、エージェントがインストールされていることを確認します。
+To ensure that the agent is installed, run the `vm extension show` cmdlet and pass it the resource group and virtual machine name. Check the resulting list to ensure the agent is installed.
 
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
 ```
 
-以下のサンプルは、`az vm extension show` の実行に対する応答の例です。
+The following sample is an example of the response from running `az vm extension show`
 
 ```json
 {
@@ -98,35 +98,35 @@ az vm extension show --resource-group resourceGroupName --vm-name virtualMachine
 }
 ```
 
-## <a name="start-a-packet-capture"></a>パケット キャプチャを開始する
+## <a name="start-a-packet-capture"></a>Start a packet capture
 
-上記の手順が完了すると、パケット キャプチャ エージェントは仮想マシンにインストールされます。
+Once the preceding steps are complete, the packet capture agent is installed on the virtual machine.
 
-### <a name="step-1"></a>手順 1
+### <a name="step-1"></a>Step 1
 
-次の手順では、Network Watcher インスタンスを取得します。 Network Watcher の名前は、手順 4 で `az network watcher show` コマンドレットに渡されます。
+The next step is to retrieve the Network Watcher instance. TThe name of the Network Watcher is passed to the `az network watcher show` cmdlet in step 4.
 
 ```azurecli
 az network watcher show --resource-group resourceGroup --name networkWatcherName
 ```
 
-### <a name="step-2"></a>手順 2.
+### <a name="step-2"></a>Step 2
 
-ストレージ アカウントを取得します。 このストレージ アカウントは、パケット キャプチャ ファイルの格納に使用されます。
+Retrieve a storage account. This storage account is used to store the packet capture file.
 
 ```azurecli
 azure storage account list
 ```
 
-### <a name="step-3"></a>手順 3.
+### <a name="step-3"></a>Step 3
 
-フィルターを使用して、パケット キャプチャによって格納されるデータを制限できます。 次の例では、いくつかのフィルターを使用してパケット キャプチャを設定します。  最初の 3 つのフィルターは、ローカル IP 10.0.0.3 から宛先ポート 20、80、443 への発信 TCP トラフィックのみを収集します。  最後のフィルターは、UDP トラフィックのみを収集します。
+Filters can be used to limit the data that is stored by the packet capture. The following example sets up a packet capture with several  filters.  The first three filters collect outgoing TCP traffic only from local IP 10.0.0.3 to destination ports 20, 80 and 443.  The last filter collects only UDP traffic.
 
 ```azurecli
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-次の例は、`az network watcher packet-capture create` コマンドレットを実行したときに予想される出力です。
+The following example is the expected output from running the `az network watcher packet-capture create` cmdlet.
 
 ```json
 {
@@ -179,65 +179,65 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 }
 ```
 
-## <a name="get-a-packet-capture"></a>パケット キャプチャを取得する
+## <a name="get-a-packet-capture"></a>Get a packet capture
 
-`az network watcher packet-capture show-status` コマンドレットを実行して、現在実行中または完了したパケット キャプチャの状態を取得します。
+Running the `az network watcher packet-capture show-status` cmdlet, retrieves the status of a currently running, or completed packet capture.
 
 ```azurecli
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-次の例は、`az network watcher packet-capture show-status` コマンドレットからの出力です。 次の例は、StopReason が TimeExceeded でキャプチャが Stopped となった場合の例です。 
+The following example is the output from the `az network watcher packet-capture show-status` cmdlet. The following example is when the capture is Stopped, with a StopReason of TimeExceeded. 
 
 ```
 {
   "additionalProperties": {
     "status": "Succeeded"
   },
-  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
+  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
 cketCaptures/packetCaptureName",
-  "name": "packetCaptureName",
+  "name": "packetCaptureName",
   "packetCaptureError": [],
-  "packetCaptureStatus": "Stopped",
-  "stopReason": "TimeExceeded"
+  "packetCaptureStatus": "Stopped",
+  "stopReason": "TimeExceeded"
 }
 ```
 
-## <a name="stop-a-packet-capture"></a>パケット キャプチャを停止する
+## <a name="stop-a-packet-capture"></a>Stop a packet capture
 
-`az network watcher packet-capture stop` コマンドレットを実行することで、キャプチャ セッションが進行中の場合は停止します。
+By running the `az network watcher packet-capture stop` cmdlet, if a capture session is in progress it is stopped.
 
 ```azurecli
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> このコマンドレットは、現在実行中のキャプチャ セッションまたは既に停止している既存のセッションに対して実行した場合、応答を返しません。
+> The cmdlet returns no response when ran on a currently running capture session or an existing session that has already stopped.
 
-## <a name="delete-a-packet-capture"></a>パケット キャプチャを削除する
+## <a name="delete-a-packet-capture"></a>Delete a packet capture
 
 ```azurecli
 az network watcher packet-capture delete --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> パケット キャプチャを削除しても、ストレージ アカウント内のファイルは削除されません。
+> Deleting a packet capture does not delete the file in the storage account.
 
-## <a name="download-a-packet-capture"></a>パケット キャプチャをダウンロードする
+## <a name="download-a-packet-capture"></a>Download a packet capture
 
-パケット キャプチャ セッションが完了すると、BLOB ストレージまたは VM 上のローカル ファイルにキャプチャ ファイルをアップロードできます。 パケット キャプチャの格納場所は、セッションの作成時に定義されます。 ストレージ アカウントに保存されているこれらのキャプチャ ファイルにアクセスする際の便利なツールが Microsoft Azure Storage Explorer です。このツールは、 http://storageexplorer.com/ からダウンロードできます。
+Once your packet capture session has completed, the capture file can be uploaded to blob storage or to a local file on the VM. The storage location of the packet capture is defined at creation of the session. A convenient tool to access these capture files saved to a storage account is Microsoft Azure Storage Explorer, which can be downloaded here:  https://storageexplorer.com/
 
-ストレージ アカウントが指定されている場合、パケット キャプチャ ファイルは、次の場所にあるストレージ アカウントに保存されます。
+If a storage account is specified, packet capture files are saved to a storage account at the following location:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-[アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
+Learn how to automate packet captures with Virtual machine alerts by viewing [Create an alert triggered packet capture](network-watcher-alert-triggered-packet-capture.md)
 
-[IP フロー検証の確認](diagnose-vm-network-traffic-filtering-problem.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを調べる
+Find if certain traffic is allowed in or out of your VM by visiting [Check IP flow verify](diagnose-vm-network-traffic-filtering-problem.md)
 
 <!-- Image references -->

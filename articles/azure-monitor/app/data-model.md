@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 9d7266e75d863ab5c024217e137566c109e79f70
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997899"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120667"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights Telemetry のデータ モデル
 
-[Azure Application Insights](../../application-insights/app-insights-overview.md) は、アプリケーションのパフォーマンスと使用状況を分析できるように、Web アプリケーションから Azure Portal にテレメトリを送信します。 テレメトリ モデルを標準化して、プラットフォームと言語に依存しない監視を作成できます。 
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、アプリケーションのパフォーマンスと使用状況を分析できるように、Web アプリケーションから Azure Portal にテレメトリを送信します。 テレメトリ モデルを標準化して、プラットフォームと言語に依存しない監視を作成できます。 
 
 Application Insights で収集されたデータは、典型的なアプリケーション実行パターンをモデル化します。
 
@@ -55,5 +55,5 @@ Application Insights データ モデルはシンプルで基本的でありな�
 
 - [カスタム テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md)。
 - [テレメトリの拡張とフィルター処理](../../azure-monitor/app/api-filtering-sampling.md)を行う方法を確認します。
-- [サンプリング](../../application-insights/app-insights-sampling.md)を使用して、データ モデルに基づいてテレメトリの量を最小限に抑えます。
+- [サンプリング](../../azure-monitor/app/sampling.md)を使用して、データ モデルに基づいてテレメトリの量を最小限に抑えます。
 - Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。

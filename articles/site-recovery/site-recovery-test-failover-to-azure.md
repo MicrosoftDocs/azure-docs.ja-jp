@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 19f41256866b42962be36bbb97f5f6d3c06d7fed
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6d8ad71894444b3759e506c50244b592ac1f8aac
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976559"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58904714"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する 
 

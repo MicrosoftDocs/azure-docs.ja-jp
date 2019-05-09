@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) を使用して、カテゴリやパターンがある意図およびエンティティの検出または予測を改善できるアプリ フィーチャーを追加します
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: 39a6ead041b1783a3effcb9659c59ea788cd2bf6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139505"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874887"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>フレーズ リストを使用して単語リストのシグナルをブーストする
 
@@ -27,6 +27,8 @@ LUIS アプリにフィーチャーを追加して、その精度を向上させ
 フレーズ リストは、それらの単語に関する LUIS に対する 2 番目のシグナルとして、アプリ ドメインのボキャブラリを増強します。
 
 ## <a name="add-phrase-list"></a>フレーズ リストの追加
+
+LUIS では、アプリごとに最大 10 のフリーズ リストが許可されています。 
 
 1. **[My Apps]\(マイ アプリ\)** ページでアプリの名前をクリックしてアプリを開き、**[ビルド]** をクリックし、アプリの左パネルで **[Phrase lists]\(フレーズ リスト\)** をクリックします。 
 
@@ -42,7 +44,7 @@ LUIS アプリにフィーチャーを追加して、その精度を向上させ
 
 5. 追加されるフレーズ リストの値が、交換して使用できる代替値である場合、**[These values are interchangeable]\(これらの値は交換可能です\)** をクリックします。
 
-    ![フレーズ リストの提案値 - 代替値の選択ボックス ](./media/luis-add-features/interchangeable.png)
+    ![フレーズ リストの提案値 - 代替値の選択ボックス](./media/luis-add-features/interchangeable.png)
 
 6. **[Save]** をクリックします。 "Cities" フレーズ リストが **[Phrase lists]\(フレーズ リスト\)** ページに追加されます。
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ Python 情報とコード サンプルを提供します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6eb8e265dc415e39f9c8728d32f3deecc2d4e646
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: e732417daada836dc7de58fadf69e8edb4ebcb14
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163805"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244642"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>Python で QnA Maker REST API を使用する方法
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ ms.locfileid: "53163805"
 - [サポート技術情報を削除します。](#Delete)
 - [現在のエンドポイント キーを取得します。](#GetKeys)
 - [現在のエンドポイント キーを再生成します。](#PutKeys)
-- [現在の一連の単語変更を取得します。](#GetAlterations)
-- [現在の一連の単語変更を置換します。](#PutAlterations)
+- [大文字と小文字が区別される、現在の一連の単語変更を取得します。](#GetAlterations)
+- [大文字と小文字が区別される、現在の一連の単語変更を置換します。](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

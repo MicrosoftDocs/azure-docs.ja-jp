@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 15a4ff73476ce54f0617a88e040ac64d7288e9a8
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: fa65b108f3aea79d4417e65d706d42f0bd819f54
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741115"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58880714"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API の調整エラーのトラブルシューティング 
 
@@ -35,7 +35,7 @@ Azure API クライアントで調整エラーが取得された場合、HTTP �
 | ヘッダー                            | 値の書式                           | 例                               | 説明                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | この要求のターゲットを含むリソース バケットまたは操作グループを対象とする調整ポリシーの残りの API 呼び出し数                                                                   |
-| x-ms-request-charge               | ```<count>   ```                             | 1                                     | 適用可能なポリシーの制限でのこの HTTP 要求に対して "課金" される呼び出しカウントの数。 これは、ほとんどの場合 1 になります。 バッチ要求 (仮想マシン スケール セットのスケーリングなど) では、複数のカウントが課金される可能性があります。 |
+| x-ms-request-charge               | ```<count>```                             | 1                                     | 適用可能なポリシーの制限でのこの HTTP 要求に対して "課金" される呼び出しカウントの数。 これは、ほとんどの場合 1 になります。 バッチ要求 (仮想マシン スケール セットのスケーリングなど) では、複数のカウントが課金される可能性があります。 |
 
 
 API 要求は複数の調整ポリシーの対象になる可能性があることに注意してください。 ポリシーごとに個別の `x-ms-ratelimit-remaining-resource` ヘッダーが存在します。 
@@ -79,8 +79,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API 呼び出しレートと調整エラー アナライザー
 プレビュー バージョンのトラブルシューティング機能は、コンピューティング リソース プロバイダーの API に使用できます。 これらの PowerShell コマンドレットは、操作ごとの時間間隔あたりの API 要求レートと操作グループ (ポリシー) ごとの調整違反に関する統計情報を提供します。
--   [Export-AzureRmLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval)
--   [Export-AzureRmLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticthrottledrequests)
+-   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export-AzLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequests)
 
 API 呼び出しの統計情報は、サブスクリプションのクライアントの動作に関する優れた洞察を提供でき、調整の原因となる呼び出しパターンを識別しやすくすることができます。
 

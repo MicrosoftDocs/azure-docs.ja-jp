@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315776"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885946"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -93,7 +93,7 @@ IaaS ソリューションは、オンプレミスの SQL ベースのソリュ�
 
 -   スコープ:ResourceGroup
 
- ### <a name="data-scientist"></a>データ サイエンティスト
+### <a name="data-scientist"></a>データ サイエンティスト
 
 
 データ サイエンティストは、Azure Machine Learning Studio サービスを運用します。 データのインポート、エクスポート、管理を行い、レポートを実行できます。 データ サイエンティストは患者データにアクセスできますが、管理特権はありません。
@@ -272,7 +272,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 **2.Key Vault** が、要求したトークンに関連付けられているシークレットを要求します。
 
-**3. Azure ロールが要求を検証し、Key Vault へのアクセス要求を承認します。
+**3.Azure ロール**が要求を検証し、Key Vault へのアクセス要求を承認します。
 
 **4.Key Vault** がシークレットを返します。この例では、SQL DB 接続文字列です。
 
@@ -359,10 +359,10 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 - [Application Insights](/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスの異常が検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
 ### <a name="azure-alerts"></a>Azure アラート
-- アラートは Azure サービスの監視方法の 1 つであり、データに対する条件を構成できます。 また、アラートの条件が監視データと一致したときに、通知を受け取ることができます。
+- [アラート](/azure/azure-monitor/platform/alerts-metric)は Azure サービスの監視方法の 1 つであり、データに対する条件を構成できます。 また、アラートの条件が監視データと一致したときに、通知を受け取ることができます。
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) は管理サービスのコレクションです。
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
+[Azure Monitor ログ](/azure/operations-management-suite/operations-management-suite-overview)は、管理サービスのコレクションです。
 
 -   Security Center でワークスペースが有効になっています。
 

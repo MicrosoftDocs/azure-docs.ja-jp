@@ -4,27 +4,27 @@ description: この記事では、Azure Media Services REST 呼び出しのた�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 311bc6a67e2b63f6f514da5abacb00e5c3cb434f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 37fd131e570fa9f50df2479503b35407d67410cb
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786321"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311528"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>オンデマンド ストリーミング操作による Postman コレクションのインポート
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>オンデマンド ストリーミング操作による Postman コレクションのインポート 
 
 この記事には、Azure Media Services REST API を呼び出すグループ化された HTTP 要求を含む **Postman** コレクションの定義が含まれています。 Media Services REST API の呼び出しで使用できるように **Postman**を構成する方法については、「[Media Services REST API 呼び出し用の Postman の構成](media-rest-apis-with-postman.md)」チュートリアルを参照してください。
 
-```
+```json
 {
     "info": {
         "name": "Azure Media Services Operations",
@@ -4264,7 +4264,7 @@ ms.locfileid: "33786321"
                                 "MediaProcessors"
                             ]
                         },
-                        "description": "List MediaProcesors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List MediaProcessors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }
@@ -5496,7 +5496,7 @@ ms.locfileid: "33786321"
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"Name\": \"test-streamingendpoint-1\",\n    \"Description\": \"\",\n    \"ScaleUnits\": 0,\n    \"CustomHostNames\": [],\n    \"AccessControl\": null,\n    \"CdnEnabled\": true,\n    \"CdnProfile\": \"AzureMediaStreamingPlatformCdnProfile-StandardVerizon\",\n    \"CdnProvider\": \"StandardVerizon\",\n    \"CacheControl\":{    \n      \"MaxAge\":\"1800\"  \n\t},  \n   \"CrossSiteAccessPolicies\":{    \n      \"ClientAccessPolicy\":\"<access-policy><cross-domain-access><policy><allow-from http-request-headers='*'><domain uri='http://*' /></allow-from><grant-to><resource path='/' include-subpaths='false' /></grant-to></policy></cross-domain-access></access-policy>\",  \n      \"CrossDomainPolicy\":\"<?xml version='1.0'?><!DOCTYPE cross-domain-policy SYSTEM 'http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd'><cross-domain-policy><allow-access-from domain='*' /></cross-domain-policy>\"  \n   }  \n}"
+                            "raw": "{\n    \"Name\": \"test-streamingendpoint-1\",\n    \"Description\": \"\",\n    \"ScaleUnits\": 0,\n    \"CustomHostNames\": [],\n    \"AccessControl\": null,\n    \"CdnEnabled\": true,\n    \"CdnProfile\": \"AzureMediaStreamingPlatformCdnProfile-StandardVerizon\",\n    \"CdnProvider\": \"StandardVerizon\",\n    \"CacheControl\":{    \n      \"MaxAge\":\"1800\"  \n\t},  \n   \"CrossSiteAccessPolicies\":{    \n      \"ClientAccessPolicy\":\"<access-policy><cross-domain-access><policy><allow-from http-request-headers='*'><domain uri='http://*' /></allow-from><grant-to><resource path='/' include-subpaths='false' /></grant-to></policy></cross-domain-access></access-policy>\",  \n      \"CrossDomainPolicy\":\"<?xml version='1.0'?><!DOCTYPE cross-domain-policy SYSTEM 'https://www.macromedia.com/xml/dtds/cross-domain-policy.dtd'><cross-domain-policy><allow-access-from domain='*' /></cross-domain-policy>\"  \n   }  \n}"
                         },
                         "url": {
                             "raw": "{{RESTAPIEndpoint}}/StreamingEndpoints",

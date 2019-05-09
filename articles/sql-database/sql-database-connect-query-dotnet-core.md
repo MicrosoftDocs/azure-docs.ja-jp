@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 5f2c8c2a9a2b21a15aa997ff0cc98860ceec76cc
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 03/25/2019
+ms.openlocfilehash: 460f79eb0679dc7d71bc929e4e790b68bd0f6774
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744838"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447388"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>クイック スタート:.NET Core (C#) を使用して Azure SQL データベースに照会する
 
@@ -27,21 +27,38 @@ ms.locfileid: "53744838"
 
 このチュートリアルには、次のものが必要です。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-- お使いのコンピューターのパブリック IP アドレスに対する[サーバーレベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
+  || 単一データベース | マネージド インスタンス |
+  |:--- |:--- |:---|
+  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |||
 
-- [お使いオペレーティング システム用の .NET Core](https://www.microsoft.com/net/core) がインストールされていること。 
+  > [!IMPORTANT]
+  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
+
+- [お使いオペレーティング システム用の .NET Core](https://www.microsoft.com/net/core) がインストールされていること。
 
 > [!NOTE]
 > このクイック スタートでは、*mySampleDatabase* データベースを使用します。 別のデータベースを使いたい場合は、データベース参照を変更し、C# コードの `SELECT` クエリを変更する必要があります。
 
-
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-#### <a name="get-adonet-connection-information-optional"></a>ADO.NET の接続情報を取得する (省略可能)
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+
+3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+
+## <a name="get-adonet-connection-information-optional"></a>ADO.NET の接続情報を取得する (省略可能)
 
 1. **mySampleDatabase** のページに移動し、**[設定]** で **[接続文字列]** を選択します。
 

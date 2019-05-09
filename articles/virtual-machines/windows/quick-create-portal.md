@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/14/2018
+ms.date: 03/19/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b9997fb1fe86d8ffdb67e74fc053773997fb113
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 08c33068845855fca85f793c21264582be423c2f
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816482"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368115"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで Windows 仮想マシンを作成する
 
 Azure 仮想マシン (VM) は、Azure portal で作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure portal を使用して、Windows Server 2016 を実行する仮想マシン (VM) を Azure にデプロイする方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
@@ -37,7 +37,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
-1. Azure Marketplace リソースの一覧の上にある検索ボックスで **Windows Server 2016 Datacenter** を検索して選択し、**[作成]** を選択します。
+1. **[新規]** ページの **[人気順]** で、**[Windows Server 2016 Datacenter]** を選択します。
 
 1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myResourceGroup*」と入力します。 
 

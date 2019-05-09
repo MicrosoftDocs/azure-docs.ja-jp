@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 8941a7332c19b1a9d5c04abb0e4b03ae83e98016
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e64490517603687684617ce915e0d3f3e35298e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093390"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 
-[Kafka Connect Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) コネクタを使用して HDInsight 上の Apache Kafka と Azure IoT Hub の間でデータを移動します。 このドキュメントでは、クラスター内のエッジ ノードから IoT Hub コネクタを実行する方法を説明します。
+[Apache Kafka Connect Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) コネクタを使用して HDInsight 上の Apache Kafka と Azure IoT Hub の間でデータを移動する方法を学習します。 このドキュメントでは、クラスター内のエッジ ノードから IoT Hub コネクタを実行する方法を説明します。
 
-Kafka Connect API では、Kafka へのデータのプルまたは Kafka から別のシステムへのデータのプッシュを継続的に行うコネクタを実装できます。 [Kafka Connect Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) は、Azure IoT Hub から Kafka にデータをプルするコネクタです。 Kafka から IoT Hub にデータをプッシュすることもことできます。 
+Kafka Connect API では、Kafka へのデータのプルまたは Kafka から別のシステムへのデータのプッシュを継続的に行うコネクタを実装できます。 [Apache Kafka Connect Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) は、Azure IoT Hub から Kafka にデータをプルするコネクタです。 Kafka から IoT Hub にデータをプッシュすることもことできます。 
 
 IoT Hub からプルする場合は、__ソース__ コネクタを使用します。 IoT Hub にプッシュする場合は、__シンク__ コネクタを使用します。 IoT Hub コネクタでは、ソース コネクタとシンク コネクタの両方が提供されます。
 
@@ -48,7 +48,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
 2. HDInsight クラスター上の Kafka のエッジ ノードに .jar ファイルをアップロードするには、次のコマンドを使用します。
 
-    > [!NOTE]
+    > [!NOTE]  
     > `sshuser` を HDInsight クラスターの SSH ユーザー アカウントに置き換えます。 `new-edgenode` をエッジ ノード名に置き換えます。 `clustername` をクラスター名に置き換えます。 エッジ ノード用の SSH エンドポイントについて詳しくは、[HDInsight でのエッジ ノードの使用](../hdinsight-apps-use-edge-node.md#access-an-edge-node)に関するドキュメントをご覧ください。
 
     ```bash
@@ -69,10 +69,10 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
     sudo mv kafka-connect-iothub-assembly*.jar /usr/hdp/current/kafka-broker/libs/
     ```
 
-> [!TIP]
+> [!TIP]  
 > ビルド済みの .jar ファイルを使用している場合に、このドキュメントの残りの手順で問題が発生する場合は、ソースからパッケージをビルドしてみてください。
 >
-> コネクタをビルドするには、[Scala ビルド ツール](http://www.scala-sbt.org/)がある Scala 開発環境が必要です。
+> コネクタをビルドするには、[Scala ビルド ツール](https://www.scala-sbt.org/)がある Scala 開発環境が必要です。
 >
 > 1. コネクタのソースを [https://github.com/Azure/toketi-kafka-connect-iothub/](https://github.com/Azure/toketi-kafka-connect-iothub/) から開発環境にダウンロードします。
 >
@@ -84,7 +84,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 >
 >    このコマンドで、プロジェクトの `target/scala-2.11` ディレクトリに `kafka-connect-iothub-assembly_2.11-0.6.jar` というファイルが作成されます。
 
-## <a name="configure-kafka"></a>Kafka の構成
+## <a name="configure-apache-kafka"></a>Apache Kafka を構成する
 
 エッジ ノードへの SSH 接続から、次の手順を使用して、コネクタをスタンドアロン モードで実行するように Kafka を構成します。
 
@@ -111,7 +111,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
     `wn0-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092,wn1-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092`
 
-4. Zookeeper ノードのアドレスを取得します。 クラスターには複数の Zookeeper ノードがありますが、参照する必要があるのは 1 つか 2 つだけです。 2 つの Zookeeper ノードのアドレスを取得するには、次のコマンドを使用します。
+4. Apache ZooKeeper ノードのアドレスを取得します。 クラスターには複数の Zookeeper ノードがありますが、参照する必要があるのは 1 つか 2 つだけです。 2 つの Zookeeper ノードのアドレスを取得するには、次のコマンドを使用します。
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -127,12 +127,12 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
     * `key.converter=` と `value.converter=` の行を次の値に変更します。
 
-        ```text
+        ```ini
         key.converter=org.apache.kafka.connect.storage.StringConverter
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > この変更により、Kafka に含まれているコンソール プロデューサーを使用してテストすることができます。 他のプロデューサーとコンシューマーには別のコンバーターが必要な場合があります。 他のコンバーター値の使用について、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) をご覧ください。
 
     * ファイルの最後に次のテキストを含む行を追加します。
@@ -141,7 +141,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
         consumer.max.poll.records=10
         ```
 
-        > [!TIP]
+        > [!TIP]  
         > この変更により、一度に 10 個のレコードに限定することによって、シンク コネクタでのタイムアウトを防ぎます。 詳細については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) を参照してください。
 
 6. ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
@@ -168,32 +168,32 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
 1. IoT ハブのイベント ハブ互換エンドポイントとイベント ハブ互換エンドポイント名を取得します。 この情報を取得するには、次のいずれかの方法を使用します。
 
-    * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
+   * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
 
-        1. IoT ハブに移動し、__[エンドポイント]__ を選択します。
-        2. __[組み込みのエンドポイント]__ から、__[イベント]__ を選択します。
-        3. __[プロパティ]__ から、次のフィールドの値をコピーします。
+     1. IoT ハブに移動し、__[エンドポイント]__ を選択します。
+     2. __[組み込みのエンドポイント]__ から、__[イベント]__ を選択します。
+     3. __[プロパティ]__ から、次のフィールドの値をコピーします。
 
-            * __イベント ハブ互換の名前__
-            * __イベント ハブ互換エンドポイント__
-            * __パーティション__
+         * __イベント ハブ互換の名前__
+         * __イベント ハブ互換エンドポイント__
+         * __パーティション__
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > ポータルからのエンドポイント値には、この例では必要のない余分なテキストが含まれていることがあります。 このパターン `sb://<randomnamespace>.servicebus.windows.net/` に一致するテキストを抽出します。
 
-    * __[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
+   * __[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
 
-        ```azure-cli
-        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
-        ```
+       ```azure-cli
+       az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
+       ```
 
-        `myhubname` は、お使いの IoT ハブの名前に置き換えます。 応答は次のテキストのようになります。
+       `myhubname` は、お使いの IoT ハブの名前に置き換えます。 応答は次のテキストのようになります。
 
-        ```text
-        "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
-        "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
-        "Partitions": 2
-        ```
+       ```json
+       "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
+       "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
+       "Partitions": 2
+       ```
 
 2. __共有アクセス ポリシー__ と __キー__ を取得します。 たとえば、__サービス__ キーを使用します。 この情報を取得するには、次のいずれかの方法を使用します。
 
@@ -239,16 +239,16 @@ IoT ハブを使用するようにソースを構成するには、エッジ ノ
 
     エディターで、次のエントリを検索し、変更します。
 
-    * `Kafka.Topic=PLACEHOLDER`: `PLACEHOLDER` を `iotin` に置き換えます。 IoT ハブから受信したメッセージは `iotin` トピックに配置されます。
-    * `IotHub.EventHubCompatibleName=PLACEHOLDER`: `PLACEHOLDER` をイベント ハブ互換の名前に置き換えます。
-    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: `PLACEHOLDER` をイベント ハブ互換エンドポイントに置き換えます。
-    * `IotHub.Partitions=PLACEHOLDER`: `PLACEHOLDER` を前の手順のパーティション数に置き換えます。
-    * `IotHub.AccessKeyName=PLACEHOLDER`: `PLACEHOLDER` を `service` に置き換えます。
-    * `IotHub.AccessKeyValue=PLACEHOLDER`: `PLACEHOLDER` を `service` ポリシーの主キーに置き換えます。
-    * `IotHub.StartType=PLACEHOLDER`: `PLACEHOLDER` を UTC 日付に置き換えます。 この日付は、コネクタがメッセージの検査を開始した日です。 日付の形式は `yyyy-mm-ddThh:mm:ssZ` です。
-    * `BatchSize=100`: `100` を `5` に置き換えます。 この変更により、コネクタは IoT ハブに 5 つの新しいメッセージが入った後にメッセージを Kafka に読み取ります。
+   * `Kafka.Topic=PLACEHOLDER`: を `iotin` で置き換え IoT ハブから受信したメッセージは `iotin` トピックに配置されます。
+   * `IotHub.EventHubCompatibleName=PLACEHOLDER`:`PLACEHOLDER` をイベント ハブ互換の名前に置き換えます。
+   * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`:`PLACEHOLDER` をイベント ハブ互換エンドポイントに置き換えます。
+   * `IotHub.Partitions=PLACEHOLDER`:`PLACEHOLDER` を前の手順のパーティション数に置き換えます。
+   * `IotHub.AccessKeyName=PLACEHOLDER`: を `service` で置き換え
+   * `IotHub.AccessKeyValue=PLACEHOLDER`:`PLACEHOLDER` を `service` ポリシーの主キーに置き換えます。
+   * `IotHub.StartType=PLACEHOLDER`:`PLACEHOLDER` を UTC 日付に置き換えます。 この日付は、コネクタがメッセージの検査を開始した日です。 日付の形式は `yyyy-mm-ddThh:mm:ssZ` です。
+   * `BatchSize=100`: を `5` で置き換え この変更により、コネクタは IoT ハブに 5 つの新しいメッセージが入った後にメッセージを Kafka に読み取ります。
 
-    構成例については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md) をご覧ください。
+     構成例については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md) をご覧ください。
 
 3. 変更を保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
@@ -272,10 +272,10 @@ IoT ハブを使用するようにシンク接続を構成するには、エッ�
 
     エディターで、次のエントリを検索し、変更します。
 
-    * `topics=PLACEHOLDER`: `PLACEHOLDER` を `iotout` に置き換えます。 `iotout` トピックに書き込まれたメッセージが IoT ハブに転送されます。
-    * `IotHub.ConnectionString=PLACEHOLDER`: `PLACEHOLDER` を `service` ポリシーの接続文字列に置き換えます。
+   * `topics=PLACEHOLDER`: を `iotout` で置き換え `iotout` トピックに書き込まれたメッセージが IoT ハブに転送されます。
+   * `IotHub.ConnectionString=PLACEHOLDER`:`PLACEHOLDER` を `service` ポリシーの接続文字列に置き換えます。
 
-    構成例については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) をご覧ください。
+     構成例については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) をご覧ください。
 
 3. 変更を保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
@@ -298,7 +298,7 @@ nnect.IotHubSourceTask:39)
 org.apache.kafka.connect.runtime.WorkerSourceTask:356)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > コネクタが開始されると、複数の警告が表示されることがあります。 これらの警告は、IoT ハブからのメッセージの受信で問題が発生する原因にはなりません。
 
 コネクタを停止するには、__Ctrl+C__ キーを使用します。
@@ -320,7 +320,7 @@ IotHubSinkTask:47)
 t.runtime.WorkerSinkTask:262)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > コネクタが開始されると、複数の警告が表示されることがあります。 これらは無視してかまいません。
 
 コネクタを通じてメッセージを送信するには、次の手順を使用します。
@@ -332,10 +332,10 @@ t.runtime.WorkerSinkTask:262)
     ```
 2. `iotout` トピックにメッセージを送信するには、次のコマンドを使用します。
 
-    > [!WARNING]
+    > [!WARNING]  
     > これは新しい SSH 接続であるため、`$KAFKABROKERS` 変数には情報が含まれていません。 これを設定するには、次のいずれかの方法を使用します。
     >
-    > * 「[Kafka の構成](#configure-kafka)」のセクションの最初の 3 つの手順を使用します。
+    > * [Apache Kafka の構成](#configure-apache-kafka)に関するセクションの最初の 3 つの手順を使用します。
     > * 前の SSH 接続の `echo $KAFKABROKERS` を使用し、次のコマンドの `$KAFKABROKERS` を実際の値に置き換えます。
 
     ```bash
@@ -346,10 +346,10 @@ t.runtime.WorkerSinkTask:262)
 
 3. デバイスにメッセージを送信するには、`kafka-console-producer` の SSH セッションに JSON ドキュメントを貼り付けます。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > `"deviceId"` エントリの値をデバイスの ID に設定する必要があります。 次の例では、デバイスの名前は `fakepi` です。
 
-    ```text
+    ```json
     {"messageId":"msg1","message":"Turn On","deviceId":"fakepi"}
     ```
 
@@ -367,7 +367,7 @@ t.runtime.WorkerSinkTask:262)
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、Kafka Connect API を使用して HDInsight 上のIoT Kafka Connector を開始する方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
+このドキュメントでは、Apache Kafka Connect API を使用して HDInsight 上の IoT Kafka Connector を開始する方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 
-* [HDInsight での Kafka に Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
-* [HDInsight での Kafka に Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
+* [HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
+* [HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)

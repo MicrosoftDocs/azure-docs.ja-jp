@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB Java Async SDK の診断およびトラブルシューティング
 description: クライアント側ログ、他のサード パーティのツールなどの機能を使って、Azure Cosmos DB の問題を特定、診断、およびトラブルシューティングします。
-services: cosmos-db
 author: moderakh
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
-ms.component: cosmosdb-sql
-ms.openlocfilehash: 951c26ea5b5c77cf205e7793834d564889b9a635
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: cosmosdb-sql
+ms.reviewer: sngun
+ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876105"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880077"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Azure Cosmos DB SQL API アカウントで Java Async SDK を使用する場合の問題のトラブルシューティング
 この記事では、Azure Cosmos DB SQL API アカウントで [Java Async SDK](sql-api-sdk-async-java.md) を使用するときの一般的な問題、回避策、診断手順、およびツールについて説明します。
@@ -150,6 +150,40 @@ createObservable
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Azure Cosmos DB エミュレーターへの接続の失敗
 
 Azure Cosmos DB エミュレーターの HTTPS 証明書が自己署名されています。 SDK でエミュレーターを動作させるには、エミュレーター証明書を Java トラスト ストアにインポートします。 詳細については、[Azure Cosmos DB エミュレーター証明書のエクスポート](local-emulator-export-ssl-certificates.md)に関するページを参照してください。
+
+### <a name="dependency-conflict-issues"></a>依存関係の競合の問題
+
+```console
+Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
+```
+
+上記の例外は、RxJava lib (1.2.2 など) の古いバージョンに依存関係があることを示しています。 弊社の SDK は、以前のバージョンの RxJava では使用できない API がある、RxJava 1.3.8 に依存しています。 
+
+このような問題の回避策は、他のどの依存関係が RxJava-1.2.2 に取り込まれ、RxJava-1.2.2 への過渡的な依存関係が除外されるかを識別し、CosmosDB SDK が新しいバージョンを取り込むのを許可することです。
+
+どのライブラリが RxJava 1.2.2 に取り込まれるかを識別するには、プロジェクト pom.xml ファイルの次のコマンドを実行します。
+```bash
+mvn dependency:tree
+```
+詳細については、[maven の依存関係ツリー ガイド](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)を参照してください。
+
+RxJava 1.2.2 のプロジェクトの他の依存関係の過渡的依存関係を識別したら、pom ファイルでその lib に対する依存関係を変更して、それへの RxJava の過渡的依存関係を除外できます。
+
+```xml
+<dependency>
+  <groupId>${groupid-of-lib-which-brings-in-rxjava1.2.2}</groupId>
+  <artifactId>${artifactId-of-lib-which-brings-in-rxjava1.2.2}</artifactId>
+  <version>${version-of-lib-which-brings-in-rxjava1.2.2}</version>
+  <exclusions>
+    <exclusion>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+詳細については、[推移的な依存関係の除外ガイド](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)を参照してください。
 
 
 ## <a name="enable-client-sice-logging"></a>クライアント SDK のログ記録を有効にする

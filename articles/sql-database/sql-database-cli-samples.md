@@ -3,23 +3,33 @@ title: SQL Database の Azure CLI スクリプト サンプル | Microsoft Docs
 description: Azure SQL Database サーバー、エラスティック プール、データベース、ファイアウォールを作成し、管理するための Azure CLI スクリプト サンプル。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: overview-samples, mvc
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 29f0db5fad69322200e2e533bea8ce95e8d4f19d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 02/03/2019
+ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47062524"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59359435"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure CLI サンプル
+
+Azure SQL Database は、<a href="/cli/azure">Azure CLI</a> を使用して構成できます。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+
+## <a name="single-database--elastic-pools"></a>単一データベースとエラスティック プール
 
 次の表には、Azure SQL Database の Azure CLI スクリプト例へのリンクが含まれています。
 
@@ -31,5 +41,19 @@ ms.locfileid: "47062524"
 |**単一のデータベースとエラスティック プールをスケーリングする**||
 | [単一のデータベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、データベースのサイズ情報の問い合わせ後、1 つの Azure SQL データベースが別のコンピューティング サイズにスケーリングします。 |
 | [エラスティック プールをスケーリングする](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、SQL エラスティック プールが別のコンピューティング サイズにスケーリングします。  |
-| [Managed Instance を作成し、管理する](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) | これらの CLI スクリプトは、Azure CLI を使用して Managed Instance を作成し、管理する方法を示しています。 |
 |||
+
+[単一データベースの Azure CLI API](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) に関するセクションを参照してください。
+
+## <a name="managed-instance"></a>マネージド インスタンス
+
+次の表には、Azure SQL Database Managed Instance の Azure CLI スクリプト例へのリンクが含まれています。
+
+| |  |
+|---|---|
+| [マネージド インスタンスを作成する](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/) | この CLI スクリプトでは、マネージド インスタンスの作成方法を紹介します。 |
+| [マネージド インスタンスを更新する](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/) | この CLI スクリプトでは、マネージド インスタンスを更新する方法を紹介します。 |
+| [別のマネージド インスタンスにデータベースを移動する](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | この CLI スクリプトでは、あるインスタンスから別のインスタンスにデータベースのバックアップを復元する方法を紹介します。 |
+|||
+
+詳細については、[マネージド インスタンスの Azure CLI API](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) に関するセクションを参照してください。また、[こちらで他の例](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)もご覧いただけます。

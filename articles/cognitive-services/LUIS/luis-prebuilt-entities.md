@@ -5,18 +5,18 @@ description: LUIS には、日付、時刻、数字、測定値、通貨など�
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9e0d1ae39431ca75b43680981802b82f16703d4d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0cfc4ff58cfeb65f80f9ac5ce2dd532defde5ef8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103933"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119090"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>一般的なデータ型を認識するための作成済みエンティティ
 

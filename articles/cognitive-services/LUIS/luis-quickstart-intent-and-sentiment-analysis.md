@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から取得する方法を示すアプリを作成します。 感情は発話全体から決定されます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: ee50907d7965a66d09dc57113e87edecb1932083
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0e61f6a914c33842f4f42b2e1e4206b370a11dd4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754290"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099037"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>チュートリアル:発話の感情を取得する
 
@@ -61,9 +61,9 @@ ms.locfileid: "53754290"
 
 1. 事前構築済みエンティティの一覧から 次のエンティティを選択し、**[完了]** を選択します。
 
-    * **[PersonName](luis-reference-prebuilt-person.md)** 
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
 
-    ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
+     ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
 
 ## <a name="create-an-intent-to-determine-employee-feedback"></a>意図を作成して従業員のフィードバックを判定する
 
@@ -90,7 +90,7 @@ ms.locfileid: "53754290"
     |Mark Mathews はハーバードでの売り込みを上手くこなしました。|
     |Walter Williams はスタンフォードのプレゼンテーションで大活躍でした。|
 
-    [ ![EmployeeFeedback 意図の発話の例が示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
+    [![EmployeeFeedback 意図の発話の例が示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する 
 
@@ -161,7 +161,7 @@ ms.locfileid: "53754290"
 * 感情分析は、Cognitive Service の [Text Analytics](../Text-Analytics/index.yml) によって提供されます。 この機能は、Text Analytics の[サポートされる言語](luis-language-support.md##languages-supported)に制限されています。
 * 「[How to train (トレーニング方法)](luis-how-to-train.md)」
 * [発行方法](luis-how-to-publish-app.md)
-* 「[How to test in LUIS portal (LUIS ポータルでのテスト方法)](luis-interactive-test.md)」
+* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>次の手順

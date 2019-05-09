@@ -8,12 +8,12 @@ ms.author: jasonh
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.openlocfilehash: 42f22d359f4fd7d6743fa604a2a12340ffe604b8
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c628e4a1caca76cbd52b99c07027d1df97d94ac1
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335301"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232251"
 ---
 # <a name="azure-data-lake-analytics-documentation"></a>Azure Data Lake Analytics のドキュメント
 
@@ -108,7 +108,7 @@ Azure Data Lake Analytics を使用して、大規模なデータ セットに�
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/module/azurerm.datalakeanalytics/">PowerShell</a></p>
+                        <p><a href="/powershell/module/az.datalakeanalytics/">PowerShell</a></p>
                         <p><a href="/cli/azure/dla">Azure CLI</a></p>
                     </div>
                 </div>

@@ -14,16 +14,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 0fae47f248d5662b69a0d1a12c82b7ded33badd6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001985"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993253"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
 
-Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。 このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。 Socket.IO の詳細については、[socket.io](http://socket.io) を参照してください。
+Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。 このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。 Socket.IO の詳細については、[socket.io](https://socket.io) を参照してください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -32,9 +32,9 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 ## <a name="prerequisites"></a>前提条件
 この記事の例を正常に完了するには、次の製品とバージョンがインストールされている必要があります。
 
-* [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
-* [Node.js](https://nodejs.org/download/)
-* [Python version 2.7.10](https://www.python.org/)
+*  [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+*  [Node.js](https://nodejs.org/download/)
+*  [Python version 2.7.10](https://www.python.org/)
 
 ## <a name="create-a-cloud-service-project"></a>クラウド サービス プロジェクトの作成
 次の手順では、Socket.IO アプリケーションをストリーミングするクラウド サービス プロジェクトを作成します。
@@ -62,7 +62,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 
 1. **[複製]** ボタンを使用して、リポジトリのローカル コピーを作成します。 **[ZIP]** ボタンを使用してプロジェクトをダウンロードすることもできます。
    
-   ![ZIP ダウンロード アイコンが強調表示されている状態の https://github.com/LearnBoost/socket.io/tree/master/examples/chat を示すブラウザー ウィンドウ][chat-example-view]
+   ![ZIP ダウンロード アイコンが強調表示されている状態の https://github.com/LearnBoost/socket.io/tree/master/examples/chat を示すブラウザー ウィンドウ](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
 2. ローカル リポジトリのディレクトリ構造を、**examples\\chat** ディレクトリまで移動します。 このディレクトリの内容を、先ほど作成した **C:\\node\\chatapp\\WorkerRole1** ディレクトリにコピーします。
    
    ![アーカイブから展開された examples\\chat ディレクトリの内容を表示しているエクスプローラー][chat-contents]
@@ -84,7 +84,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
          var port = process.env.PORT || 3000;         //Updated
 3. アプリケーションが適切なポートでリッスンするように、メモ帳などのエディターで server.js を開き、次の行の **3000** を **process.env.port** に変更します。
    
-       //app.listen(3000, function () {            //Original
+       //app.listen(3000, function () {            //Original
        app.listen(process.env.port, function () {  //Updated
          var addr = app.address();
          console.log('   app listening on http://' + addr.address + ':' + addr.port);
@@ -109,12 +109,9 @@ Azure エミュレーターでアプリケーションをテストする前に�
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > エミュレーターの起動時に問題が発生した場合 (例: Start-AzureEmulator : 予期しないエラーが発生しました。  詳細: 予期しないエラーが発生しました)、通信オブジェクト System.ServiceModel.Channels.ServiceChannel はフォールト状態にあるため、これを通信に使用することはできません。
-   
-      AzureAuthoringTools v 2.7.1 と AzureComputeEmulator v 2.7 を再インストールし、そのバージョンが一致することを確認します。
-   >
-   >
-
+   > エミュレーターの起動時に問題が発生した場合 (例: Start-AzureEmulator : 予期しないエラーが発生しました。  詳細:予期しないエラーが発生しました)、通信オブジェクト System.ServiceModel.Channels.ServiceChannel は、状態が Faulted であるため通信に使用できません。
+   > 
+   > AzureAuthoringTools v 2.7.1 と AzureComputeEmulator v 2.7 を再インストールし、そのバージョンが一致することを確認します。
 
 2. ブラウザーを開き、**http://127.0.0.1** に移動します。
 3. ブラウザー ウィンドウが開いたら、ニックネームを入力して Enter キーを押します。
@@ -156,7 +153,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 
-[Azure SLA]: http://www.windowsazure.com/support/sla/
+[Azure SLA]: https://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
 [Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/

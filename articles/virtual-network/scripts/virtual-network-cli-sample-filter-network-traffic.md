@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: 427403443de55ddf55c5026af80509e792ab5d97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3eefbcb048799f783dca7471f879d566983e4c51
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980891"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753403"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理のスクリプト サンプル
 
@@ -48,16 +48,16 @@ az group delete --name MyResourceGroup --yes
 
 | コマンド | メモ |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Azure 仮想ネットワークとフロントエンド サブネットを作成します。 |
-| [az network subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | バックエンド サブネットを作成します。 |
-| [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) | NSG をサブネットに関連付けます。 |
-| [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | インターネットから VM にアクセスするためのパブリック IP アドレスを作成します。 |
-| [az network nic create](/cli/azure/network/nic#az_network_nic_create) | 仮想ネットワーク インターフェイスを作成し、それらを仮想ネットワークのフロントエンドおよびバックエンド サブネットに接続します。 |
-| [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | フロントエンドおよびバックエンド サブネットに関連付けられているネットワーク セキュリティ グループ (NSG) を作成します。 |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) |特定のサブネットに対して特定のポートを許可またはブロックする NSG ルールを作成します。 |
-| [az vm create](/cli/azure/vm#az_vm_create) | 仮想マシンを作成し、NIC を各 VM にアタッチします。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。 |
-| [az group delete](/cli/azure/group#az_group_delete) | リソース グループとそれに含まれるすべてのリソースを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az network vnet create](/cli/azure/network/vnet) | Azure 仮想ネットワークとフロントエンド サブネットを作成します。 |
+| [az network subnet create](/cli/azure/network/vnet/subnet) | バックエンド サブネットを作成します。 |
+| [az network vnet subnet update](/cli/azure/network/vnet/subnet) | NSG をサブネットに関連付けます。 |
+| [az network public-ip create](/cli/azure/network/public-ip) | インターネットから VM にアクセスするためのパブリック IP アドレスを作成します。 |
+| [az network nic create](/cli/azure/network/nic) | 仮想ネットワーク インターフェイスを作成し、それらを仮想ネットワークのフロントエンドおよびバックエンド サブネットに接続します。 |
+| [az network nsg create](/cli/azure/network/nsg) | フロントエンドおよびバックエンド サブネットに関連付けられているネットワーク セキュリティ グループ (NSG) を作成します。 |
+| [az network nsg rule create](/cli/azure/network/nsg/rule) |特定のサブネットに対して特定のポートを許可またはブロックする NSG ルールを作成します。 |
+| [az vm create](/cli/azure/vm) | 仮想マシンを作成し、NIC を各 VM にアタッチします。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。 |
+| [az group delete](/cli/azure/group) | リソース グループとそれに含まれるすべてのリソースを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

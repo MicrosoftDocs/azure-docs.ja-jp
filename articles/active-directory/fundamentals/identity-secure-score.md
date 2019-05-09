@@ -5,10 +5,10 @@ services: active-directory
 keywords: ID セキュリティ スコア、Azure AD、会社のリソースへのアクセスのセキュリティ保護
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: overview
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -17,12 +17,13 @@ ms.date: 09/19/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: it-pro
-ms.openlocfilehash: 5a133d0a38852ca3e95e3ae07716c4fbd3c87f5d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8617442c811dc2fe8f961038f35ebcf218a58302
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092086"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163957"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory-public-preview"></a>Azure Active Directory の ID セキュリティ スコアとは (パブリック プレビュー)
 

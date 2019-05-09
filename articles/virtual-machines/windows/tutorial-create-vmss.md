@@ -3,7 +3,7 @@ title: チュートリアル - Azure 内に Windows 用の仮想マシン スケ
 description: このチュートリアルでは、Azure PowerShell で仮想マシン スケール セットを使用して、Windows VM 上に高可用性アプリケーションを作成してデプロイする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 11/07/2018
-ms.author: zarhoads
+ms.date: 11/30/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 561bd71f371be9261686c0a4c34f388ed8324d76
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 90c4db4ac481f3853ca4e8256ce8fdb4c4ae9bd4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284423"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983258"
 ---
-# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>チュートリアル: Azure PowerShell で仮想マシン スケール セットを作成して Windows に高可用性アプリをデプロイする
+# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>チュートリアル:Azure PowerShell で仮想マシン スケール セットを作成して Windows に高可用性アプリをデプロイする
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM 数は、手動でスケーリングすることができます。 また、CPU の使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義することもできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。次の方法について説明します。
 
 > [!div class="checklist"]
@@ -33,10 +33,11 @@ ms.locfileid: "52284423"
 > * スケール セット内のインスタンスの数を増減させる
 > * 自動スケール ルールを作成する
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 6.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
 ## <a name="scale-set-overview"></a>スケール セットの概要
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM は、1 つ以上の*配置グループ*内の論理障害ドメインおよび更新ドメインに配布されます。 配置グループは同じように構成された VM のグループであり、[可用性セット](tutorial-availability-sets.md)に似ています。
@@ -47,10 +48,10 @@ Azure プラットフォーム イメージを使う場合、スケール セッ
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
-[New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) を使用して仮想マシン スケール セットを作成します。 次の例では、*Windows Server 2016 Datacenter* プラットフォーム イメージを使用する *myScaleSet* という名前のスケール セットを作成します。 仮想ネットワーク用の Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を設定できます。
+[New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) を使用して仮想マシン スケール セットを作成します。 次の例では、*Windows Server 2016 Datacenter* プラットフォーム イメージを使用する *myScaleSet* という名前のスケール セットを作成します。 仮想ネットワーク用の Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を設定できます。
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroupScaleSet" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet" `
@@ -77,37 +78,37 @@ $publicSettings = @{
 }
 
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
-            -ResourceGroupName "myResourceGroupScaleSet" `
-            -VMScaleSetName "myScaleSet"
+$vmss = Get-AzVmss `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet"
 
 # Use Custom Script Extension to install IIS and configure basic website
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
-    -Name "customScript" `
-    -Publisher "Microsoft.Compute" `
-    -Type "CustomScriptExtension" `
-    -TypeHandlerVersion 1.8 `
-    -Setting $publicSettings
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
+  -Name "customScript" `
+  -Publisher "Microsoft.Compute" `
+  -Type "CustomScriptExtension" `
+  -TypeHandlerVersion 1.8 `
+  -Setting $publicSettings
 
 # Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzureRmVmss `
-    -ResourceGroupName "myResourceGroupScaleSet" `
-    -Name "myScaleSet" `
-    -VirtualMachineScaleSet $vmss
+Update-AzVmss `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -Name "myScaleSet" `
+  -VirtualMachineScaleSet $vmss
 ```
 
 ## <a name="allow-traffic-to-application"></a>アプリケーションへのトラフィックを許可する
 
-基本的な Web アプリケーションへのアクセスを許可するには、[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) と [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) を使用してネットワーク セキュリティ グループを作成します。 詳細については、「[Azure 仮想マシン スケール セットのネットワーク](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)」を参照してください。
+基本的な Web アプリケーションへのアクセスを許可するには、[New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) と [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) を使用してネットワーク セキュリティ グループを作成します。 詳細については、「[Azure 仮想マシン スケール セットのネットワーク](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)」を参照してください。
 
 ```azurepowershell-interactive
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
-            -ResourceGroupName "myResourceGroupScaleSet" `
-            -VMScaleSetName "myScaleSet"
+$vmss = Get-AzVmss `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet"
 
 #Create a rule to allow traffic over port 80
-$nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+$nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
   -Name myFrontendNSGRule `
   -Protocol Tcp `
   -Direction Inbound `
@@ -119,40 +120,40 @@ $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 
 #Create a network security group and associate it with the rule
-$nsgFrontend = New-AzureRmNetworkSecurityGroup `
+$nsgFrontend = New-AzNetworkSecurityGroup `
   -ResourceGroupName  "myResourceGroupScaleSet" `
   -Location EastUS `
   -Name myFrontendNSG `
   -SecurityRules $nsgFrontendRule
 
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName  "myResourceGroupScaleSet" `
   -Name myVnet
 
 $frontendSubnet = $vnet.Subnets[0]
 
-$frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+$frontendSubnetConfig = Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $vnet `
   -Name mySubnet `
   -AddressPrefix $frontendSubnet.AddressPrefix `
   -NetworkSecurityGroup $nsgFrontend
 
-Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 # Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzureRmVmss `
-    -ResourceGroupName "myResourceGroupScaleSet" `
-    -Name "myScaleSet" `
-    -VirtualMachineScaleSet $vmss
+Update-AzVmss `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -Name "myScaleSet" `
+  -VirtualMachineScaleSet $vmss
 ```
 
 ## <a name="test-your-scale-set"></a>スケール セットのテスト
-スケール セットの動作を確認するには、[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用してロード バランサーのパブリック IP アドレスを取得します。 以下の例では、スケール セットの一部として作成された *myPublicIP* の IP アドレスを表示します。
+スケール セットの動作を確認するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用してロード バランサーのパブリック IP アドレスを取得します。 以下の例では、スケール セットの一部として作成された *myPublicIP* の IP アドレスを表示します。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIPAddress `
-    -ResourceGroupName "myResourceGroupScaleSet" `
-    -Name "myPublicIPAddress" | select IpAddress
+Get-AzPublicIPAddress `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -Name "myPublicIPAddress" | select IpAddress
 ```
 
 このパブリック IP アドレスを Web ブラウザーに入力します。 Web アプリが表示され、ロード バランサーによって負荷分散されたトラフィックの宛先となった VM のホスト名が表示されます。
@@ -166,10 +167,12 @@ Get-AzureRmPublicIPAddress `
 スケール セットのライフサイクルを通じて、1 つ以上の管理タスクを実行する必要がある場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 Azure PowerShell には、これらのタスクを簡単に実行するための方法が用意されています。 一般的なタスクには、次のようなものがあります。
 
 ### <a name="view-vms-in-a-scale-set"></a>スケール セットの VM を表示する
-スケール セット内の VM インスタンスの一覧を表示するには、次のように [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) を使用します。
+スケール セット内の VM インスタンスの一覧を表示するには、次のように [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmVmssVM -ResourceGroupName "myResourceGroupScaleSet" -VMScaleSetName "myScaleSet"
+Get-AzVmssVM `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet"
 ```
 
 次の出力例には、スケール セット内の 2 つの VM インスタンスが示されています。
@@ -181,33 +184,36 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、[Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) に `-InstanceId` パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
+特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
 
 ```azurepowershell-interactive
-Get-AzureRmVmssVM -ResourceGroupName "myResourceGroupScaleSet" -VMScaleSetName "myScaleSet" -InstanceId "1"
+Get-AzVmssVM `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet" `
+  -InstanceId "1"
 ```
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>VM インスタンスを増減させる
-現時点でスケール セットに存在するインスタンスの数を確認するには、[Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) と *sku.capacity* に対するクエリを使います。
+現時点でスケール セットに存在するインスタンスの数を確認するには、[Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) と *sku.capacity* に対するクエリを使います。
 
 ```azurepowershell-interactive
-Get-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
-    -VMScaleSetName "myScaleSet" | `
-    Select -ExpandProperty Sku
+Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet" | `
+  Select -ExpandProperty Sku
 ```
 
-インスタンスの数が表示されたら、[Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) を使って、スケール セット内の仮想マシンの数を手動で増減させることができます。 次の例では、スケール セット内の VM の数を *3* に設定します。
+インスタンスの数が表示されたら、[Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) を使用して、スケール セット内の仮想マシンの数を手動で増やしたり減らしたりできます。 次の例では、スケール セット内の VM の数を *3* に設定します。
 
 ```azurepowershell-interactive
 # Get current scale set
-$scaleset = Get-AzureRmVmss `
+$scaleset = Get-AzVmss `
   -ResourceGroupName "myResourceGroupScaleSet" `
   -VMScaleSetName "myScaleSet"
 
 # Set and update the capacity of your scale set
 $scaleset.sku.capacity = 3
-Update-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
+Update-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
     -Name "myScaleSet" `
     -VirtualMachineScaleSet $scaleset
 ```
@@ -220,14 +226,14 @@ Update-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
 
 ```azurepowershell-interactive
 # Define your scale set information
-$mySubscriptionId = (Get-AzureRmSubscription)[0].Id
+$mySubscriptionId = (Get-AzSubscription)[0].Id
 $myResourceGroup = "myResourceGroupScaleSet"
 $myScaleSet = "myScaleSet"
 $myLocation = "East US"
-$myScaleSetId = (Get-AzureRmVmss -ResourceGroupName $myResourceGroup -VMScaleSetName $myScaleSet).Id 
+$myScaleSetId = (Get-AzVmss -ResourceGroupName $myResourceGroup -VMScaleSetName $myScaleSet).Id 
 
 # Create a scale up rule to increase the number instances after 60% average CPU usage exceeded for a 5-minute period
-$myRuleScaleUp = New-AzureRmAutoscaleRule `
+$myRuleScaleUp = New-AzAutoscaleRule `
   -MetricName "Percentage CPU" `
   -MetricResourceId $myScaleSetId `
   -Operator GreaterThan `
@@ -240,7 +246,7 @@ $myRuleScaleUp = New-AzureRmAutoscaleRule `
   -ScaleActionValue 1
 
 # Create a scale down rule to decrease the number of instances after 30% average CPU usage over a 5-minute period
-$myRuleScaleDown = New-AzureRmAutoscaleRule `
+$myRuleScaleDown = New-AzAutoscaleRule `
   -MetricName "Percentage CPU" `
   -MetricResourceId $myScaleSetId `
   -Operator LessThan `
@@ -253,7 +259,7 @@ $myRuleScaleDown = New-AzureRmAutoscaleRule `
   -ScaleActionValue 1
 
 # Create a scale profile with your scale up and scale down rules
-$myScaleProfile = New-AzureRmAutoscaleProfile `
+$myScaleProfile = New-AzAutoscaleProfile `
   -DefaultCapacity 2  `
   -MaximumCapacity 10 `
   -MinimumCapacity 2 `
@@ -261,7 +267,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
   -Name "autoprofile"
 
 # Apply the autoscale rules
-Add-AzureRmAutoscaleSetting `
+Add-AzAutoscaleSetting `
   -Location $myLocation `
   -Name "autosetting" `
   -ResourceGroup $myResourceGroup `

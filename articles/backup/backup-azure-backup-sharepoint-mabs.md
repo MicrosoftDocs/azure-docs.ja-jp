@@ -2,18 +2,18 @@
 title: Azure Backup サーバーを使用した SharePoint ファームの Azure へのバックアップ
 description: Azure Backup Server を使用して SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 services: backup
-author: pvrk
-manager: shivamg
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: pullabhk
-ms.openlocfilehash: e7407341d7b85c101531c5a005cfd8db0eac2021
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.author: kasinh
+ms.openlocfilehash: 7fa68e11ccac69db9335e589f5048264df9d0a47
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423026"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074983"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint ファームの Azure へのバックアップ
 Microsoft Azure Backup Server (MABS) を使用して SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 また、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -22,8 +22,8 @@ Microsoft Azure Backup Server (MABS) を使用して SharePoint ファームを 
 DPM 用 Azure Backup は、次のシナリオをサポートします。
 
 | ワークロード | バージョン | SharePoint のデプロイ | 保護と回復 |
-| --- | --- | --- | --- | --- | --- |
-| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint  <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
+| --- | --- | --- | --- |
+| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint  <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク復旧ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
 
 ## <a name="before-you-start"></a>開始する前に
 SharePoint ファームを Azure にバックアップする前に、確認する必要がある点がいくつかあります。
@@ -222,14 +222,14 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 4. MABS の **[回復]** タブに表示される SharePoint オブジェクトをクリックして、コンテンツ データベースの構造を取得します。 該当する項目を右クリックし、 **[回復]** をクリックします。
 
     ![MABS の SharePoint 保護 13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
-5. この時点で、 [この記事で前述した回復手順](#restore-a-sharepoint-item-from-disk-using-dpm) に従ってディスクから SharePoint コンテンツ データベースを回復します。
+5. この時点で、この記事で前述した回復手順に従ってディスクから SharePoint コンテンツ データベースを回復します。
 
 ## <a name="faqs"></a>FAQ
-Q: SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br>
-A: はい、元の SharePoint サイトにアイテムを回復できます。
+Q:SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br>
+A:はい、元の SharePoint サイトにアイテムを回復できます。
 
-Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
-A: SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、MABS は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
+Q:SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
+A:SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、MABS は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
 
 ## <a name="next-steps"></a>次の手順
 

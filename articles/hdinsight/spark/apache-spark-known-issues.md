@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: e38aab92dccd096e639df04cc0f4cfec5ccb5bf0
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fd2e253d88d6cddddd35dc75c8b746e906407cb5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650893"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337266"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
 
@@ -68,7 +68,7 @@ HDInsight Spark クラスターは、Spark-Phoenix コネクターをサポー�
 
 **対応策:**
 
-代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)に関するページをご覧ください。
+代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)に関するページをご覧ください。
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter Notebook に関連する問題
 Jupyter Notebook に関連する既知の問題を以下に示します。
@@ -122,7 +122,7 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
 * [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)

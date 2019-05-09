@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8ed645066eef93ae02722858381af77854d7d1eb
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001886"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106340"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法を示します。 
@@ -181,8 +181,8 @@ Application Insights リソースの名前と iKey を取得するには、概�
 > 入力パスが正しく設定されていることを確認するには、Sample 関数を使用します。 失敗した場合:選択したサンプルの時間範囲でストレージにデータがあることを確認します。 入力定義を編集し、ストレージ アカウント、パスのプレフィックス、日付形式が正しく設定されていることを確認します。
 > 
 > 
-## <a name="set-query"></a>クエリの設定
-クエリ セクションを開きます。
+> ## <a name="set-query"></a>クエリの設定
+> クエリ セクションを開きます。
 
 既定のクエリを次のもので置き換えます。
 
@@ -249,7 +249,7 @@ SQL データベースを指定します。
 
 
 ## <a name="related-articles"></a>関連記事
-* [Stream Analytics を使用して Power BI にエクスポートする](../../application-insights/app-insights-export-power-bi.md)
+* [Stream Analytics を使用して Power BI にエクスポートする](../../azure-monitor/app/export-power-bi.md )
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](../../azure-monitor/app/export-data-model.md)
 * [Application Insights での連続エクスポート](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
@@ -260,5 +260,5 @@ SQL データベースを指定します。
 [export]: ../../azure-monitor/app/export-telemetry.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [portal]: https://portal.azure.com/
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 

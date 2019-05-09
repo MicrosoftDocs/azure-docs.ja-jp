@@ -2,18 +2,18 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのスケーリング
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Kubernetes のノードとポッドをスケーリングする方法のほか、ポッドの水平自動スケーリングを導入する方法について説明します。
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 8d07c87a1849a25738c433b7a4c2753b51661947
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2a962b5bdb6eeb139275ea6a7f585b36ff84b61f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722721"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784127"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -158,7 +158,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
 [metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
-[metrics-server]: https://kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
+[metrics-server]: https://v1-12.docs.kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

@@ -4,7 +4,7 @@ description: この記事では、Microsoft による Azure データセンタ�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 9385c6ea8d2a04e9a8595a22e6e2ff7638394b41
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: dc9b4db37e811d8bac6df2d532fd3629d98c9650
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172974"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104770"
 ---
 # <a name="azure-infrastructure-security"></a>Azure インフラストラクチャのセキュリティ
 Microsoft Azure は、Microsoft によって管理および運用されているデータセンター内で実行されます。 これらの地理的に分散したデータセンターは、セキュリティおよび信頼性のための、ISO/IEC 27001:2013 や NIST SP 800-53 などの主要な業界標準に準拠しています。 これらのデータセンターは、Microsoft の運用担当者によって管理および監視されます。 これらの運用担当者には、世界最大のオンライン サービスを週 7 日 24 時間体制の継続性で提供することについての数年にわたる経験があります。
@@ -46,7 +46,7 @@ Microsoft Azure は、Microsoft によって管理および運用されている
 
 - データ
 - エンドポイント
-- アカウント
+- Account
 - アクセス管理
 
 SaaS、PaaS、および IaaS のデプロイにおけるお客様と Microsoft の間の責任の分配を理解するようにしてください。 詳細については、[クラウド コンピューティングの共同責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)に関するページを参照してください。

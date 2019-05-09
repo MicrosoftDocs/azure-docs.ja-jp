@@ -9,56 +9,86 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 04/10/2019
 ms.author: juliako
-ms.openlocfilehash: 26661a213b5df5424bf9ab9ad799345ae35620ea
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d6e5142bec29f58671c553b7b32bb72202cae263
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036769"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544179"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure Media Services v3 のよく寄せられる質問
 
 この記事では、Azure Media Services (AMS) v3 のよく寄せられる質問に対する回答を提供します。
 
-## <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Azure portal を使用して v3 リソースを管理することはできますか?
+## <a name="v3-apis"></a>v3 API
 
-まだありません。 サポートされている SDK のいずれかを使用することができます。 この文書セットのチュートリアルとサンプルを参照してください。
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure Media Services リソースに対してアクションを実行できる Azure のロールは何ですか。 
 
-## <a name="is-there-an-api-for-configuring-media-reserved-units"></a>メディア占有ユニットを構成するための API はありますか?
+「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](rbac-overview.md)」を参照してください。
 
-現時点では、AMS v2 API を使用して、メディア占有ユニットを構成する必要があります ([メディア処理のスケーリング](../previous/media-services-scale-media-processing-overview.md)に関するページの説明に従います)。 
+### <a name="how-do-i-configure-media-reserved-units"></a>メディア占有ユニットの構成方法を教えてください。
 
-**VideoAnalyzerPreset**、**AudioAnalyzerPreset**、またはその両方を使用する場合は、Media Services アカウントを 10 個の S3 メディア占有ユニットに設定します。
+Media Services v3 または Video Indexer によってトリガーされる音声分析と動画分析ジョブでは、お使いのアカウントを 10 個の S3 の MRU でプロビジョニングすることを強くお勧めします。 10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
 
-## <a name="does-v3-asset-have-no-assetfile-concept"></a>V3 資産に AssetFile の概念はないのですか?
+詳細については、「[CLI を使用したメディア処理のスケーリング](media-reserved-units-cli-how-to.md)」を参照してください。
+
+### <a name="what-is-the-recommended-method-to-process-videos"></a>推奨される動画の処理方法は?
+
+[Transform](https://docs.microsoft.com/rest/api/media/transforms) を使用して、ビデオのエンコードや分析を行うための一般的なタスクを構成できます。 各 **Transform** は、ビデオまたはオーディオ ファイルを処理するためのレシピ､すなわちタスクのワークフローの記述です｡ [ジョブ](https://docs.microsoft.com/rest/api/media/jobs)は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ 詳しくは、「[Transform と Job](transforms-jobs-concept.md)」をご覧ください。
+
+### <a name="how-does-pagination-work"></a>改ページはどのように機能しますか?
+
+改ページを使用している場合は、常に次のリンクを使用してコレクションを列挙し、特定のページ サイズには依存しないようにする必要があります。 詳細および例については、[フィルター処理、順序付け、ページング](entities-overview.md)に関するページを参照してください。
+
+## <a name="live-streaming"></a>ライブ ストリーミング 
+
+###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>ライブ ストリーミング中に中断 / 動画またはイメージ スレートを挿入するにはどうすればいいですか?
+
+Media Services v3 のライブ エンコードでは、ライブ ストリーミング中の動画またはイメージ スレートの挿入はまだサポートされていません。 
+
+[ライブ オンプレミス エンコーダー](recommended-on-premises-live-encoders.md)を使用すると、ソースの動画を切り替えることができます。 多くのアプリには、Telestream Wirecast、Switcher Studio (iOS 上)、OBS Studio (無料アプリ) など、ソースを切り替える機能が用意されています。
+
+## <a name="content-protection"></a>コンテンツ保護
+
+### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>JWT トークンを使用してライセンスまたはキーを要求する前に、JWT トークンを入手する方法と入手できる場所を教えてください。
+
+1. 運用環境では、HTTPS 要求時に JWT トークンを発行する Secure Token Services (STS) (Web サービス) が必要です。 テスト環境では、[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) で定義されている **GetTokenAsync** メソッドに示されているコードを使用できます。
+2. プレーヤーは、ユーザーが認証された後、そのようなトークンの要求を STS に対して作成し、それをトークンの値として割り当てる必要があります。 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使用できます。
+
+* 対称キーと非対称キーのどちらかを使用して STS を実行する例については、[https://aka.ms/jwt](https://aka.ms/jwt) を参照してください。 
+* このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、[https://aka.ms/amtest](https://aka.ms/amtest) を参照してください ("player_settings" リンクを展開すると、トークンの入力が表示されます)。
+
+### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>AES 暗号化を使用してビデオをストリームする要求を承認する方法を教えてください。
+
+正しいアプローチは、STS (セキュリティ トークン サービス) を活用することです。
+
+STS では、ユーザー プロファイルに応じて、異なる要求 ("Premium ユーザー"、"Basic ユーザー"、"無料試用ユーザー" など) を追加します。 JWT の要求に応じて、ユーザーには異なるコンテンツが表示されます。 当然ながら、異なるコンテンツ/資産の場合、ContentKeyPolicyRestriction には対応する RequiredClaims があります。
+
+Azure Media Services API シリーズを使用して、ライセンス/キー配信の構成とご自分の資産の暗号化を行います ([このサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)を参照してください)。
+
+詳細については、次を参照してください。
+
+- [コンテンツ保護の概要](content-protection-overview.md)
+- [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)
+
+## <a name="media-services-v2-vs-v3"></a>Media Services v2 対 v3 
+
+### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Azure portal を使用して v3 リソースを管理することはできますか?
+
+現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](developers-guide.md) のいずれかを使用してください。
+
+### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 には AssetFile の概念はありますか?
 
 Storage SDK の依存関係から Media Services を切り離すために、AssetFile は AMS API から削除されました。 現在、Media Services ではなく、Storage でそれに属する情報が保持されます。 
 
-## <a name="where-did-client-side-storage-encryption-go"></a>クライアント側でのストレージ暗号化は利用できなくなったのですか?
+詳細については、「[Media Services v3 に移行する](migrate-from-v2-to-v3.md)」を参照してください。
 
-今後はサーバー側でのストレージ暗号化 (既定で有効) をお勧めします。詳細については、「[Azure Storage Service Encryption for Data at Rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」を参照してください。
+### <a name="where-did-client-side-storage-encryption-go"></a>クライアント側でのストレージ暗号化は利用できなくなったのですか?
 
-## <a name="what-is-the-recommended-upload-method"></a>推奨されるアップロード方法は何ですか?
-
-HTTP(s) の取り込みを使用することをお勧めします。 詳細については、[HTTP(s) の取り込み](job-input-from-http-how-to.md)に関するページを参照してください。
-
-## <a name="how-does-pagination-work"></a>改ページはどのように機能しますか?
-
-Media Services では、OData をサポートするリソースに対する $top はサポートされますが、$top に渡される値は 1000 未満である必要があります (改ページのページ サイズなど)。
-
-これにより、$top を使用して、項目の小さなサンプル (最近使った 100 件の項目など) を取得したり、改ページ位置の自動修正を使用して、すべての項目のページングを行ったりすることができます。 
-
-Media Services では、ユーザーが指定したページ サイズでのデータのページングはサポートされません。
-
-詳細については、「[フィルター処理、順序付け、ページングのサポート](assets-concept.md#filtering-ordering-paging)」を参照してください。
-
-## <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Media Services v3 ではエンティティをどのように取得するのですか?
-
-v3 は、**Azure Resource Manager** 上に構築された管理と操作の両方の機能を公開する、統一された API サーフェスに基づいています。 **Azure Resource Manager** に従って、リソース名は常に一意となります。 そのため、リソース名には一意識別子の文字列 (GUID など) を使用できます。 
+現在、サーバー側のストレージ暗号化 (既定でオンになる) の使用が推奨されるようになりました。 詳細については、「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Media Services v3 の概要](media-services-overview.md)
+[Media Services v3 の概要](media-services-overview.md)

@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub からのデバイスの制御に関するクイック スタート (.NET) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行します。 1 つのアプリケーションは、ハブに接続されたデバイスをリモートで制御できるバックエンド アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/20/2018
-ms.author: dobett
-ms.openlocfilehash: c8ef958b2f39a9271b9fa344f61329d48eccdee4
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.date: 02/22/2019
+ms.openlocfilehash: fc219d9e3e5b365f341b2997804586e67275c1b7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514745"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59046514"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (.NET)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -45,28 +45,33 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 dotnet --version
 ```
 
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
 まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip からサンプル C# プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-dotnet.md)」を完了した場合は、この手順を省略できます。
+前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-dotnet.md)を完了した場合は、この手順を省略できます。
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-dotnet.md)」を完了した場合は、この手順を省略できます。
+前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-dotnet.md)を完了した場合は、この手順を省略できます。
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
-   **MyDotnetDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyDotnetDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **MyDotnetDevice**: 登録するデバイスの名前。 示されているように、**MyDotnetDevice** を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新する必要があります。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create \
       --hub-name YourIoTHubName --device-id MyDotnetDevice
     ```
@@ -93,7 +98,7 @@ dotnet --version
 また、バックエンド アプリケーションがハブに接続してメッセージを取得できるようにするには、お使いの IoT ハブの "_サービス接続文字列_" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 次のようなサービス接続文字列をメモしておきます。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c7aec700a1077bc1a1b56afb5d8d07f47f4c6e8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700374"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663096"
 ---
 # <a name="available-relay-apis"></a>使用可能なリレー API
 
@@ -39,7 +39,7 @@ ms.locfileid: "43700374"
 
 #### <a name="net"></a>.NET
 
-.NET エコシステムには複数のランタイムがあるため、リレーに対して複数の .NET ライブラリが存在します。 .NET Standard ライブラリは、.NET Core または .NET Framework のいずれかを使用して実行できますが、.NET Framework ライブラリについては、.NET Framework 環境でのみ実行できます。 .NET Framework の詳細については、「[フレームワークのバージョン](/dotnet/articles/standard/frameworks#framework-versions)」を参照してください。
+.NET エコシステムには複数のランタイムがあるため、リレーに対して複数の .NET ライブラリが存在します。 .NET Standard ライブラリは、.NET Core または .NET Framework のいずれかを使用して実行できますが、.NET Framework ライブラリについては、.NET Framework 環境でのみ実行できます。 .NET Framework の詳細については、「[フレームワークのバージョン](/dotnet/articles/standard/frameworks)」を参照してください。
 
 .NET Framework ライブラリは WCF プログラミング モデルのみをサポートし、WCF `net.tcp` トランスポートに基づいた専用のバイナリ プロトコルに依存します。 このプロトコルとライブラリは、既存のアプリケーションとの下位互換性のために維持されています。
 

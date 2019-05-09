@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: cherylmc
-ms.openlocfilehash: 008d1dca14f6d1850d7fe13d2e21948c4cd5b4e2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 21676ff329613f792d6570713f044bb7440e58d4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245191"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59045369"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (クラシック) を使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -32,7 +32,10 @@ ms.locfileid: "51245191"
 
 **Azure のデプロイ モデルについて**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
@@ -54,31 +57,31 @@ Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRou
 
 Azure PowerShell に関するより詳細な情報が必要な場合は、[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)に関するページで、お使いのコンピューターを構成して Azure PowerShell モジュールを使用する方法のステップ バイ ステップのガイダンスを参照してください。
 
-### <a name="sign-in"></a>[サインイン]
+### <a name="sign-in"></a>サインイン
 
 Azure アカウントにサインインするには、次の例を使用します。
 
 1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzAccount
+   ```
 2. アカウントのサブスクリプションを確認します。
 
-  ```powershell
-  Get-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzSubscription
+   ```
 3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
 
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```powershell
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 
 4. 次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>同じサブスクリプション内の仮想ネットワークを回線に接続する
 次のコマンドレットを使用して、ExpressRoute 回線に仮想ネットワークをリンクすることができます。 コマンドレットを実行する前に、仮想ネットワーク ゲートウェイが作成されており、リンクの準備ができていることを確認してください。

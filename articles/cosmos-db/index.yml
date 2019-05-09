@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a94039b70ceb1cffabe90df09282f840f45f7d32
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 43740118c4379c3b30843575840a000e89cd820b
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033504"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294996"
 documentType: LandingData
 title: Azure Cosmos DB のドキュメント
 metadata:
@@ -35,11 +35,11 @@ sections:
     columns: 3
     items:
     - href: /azure/cosmos-db/distribute-data-globally/
-      html: <p>グローバル配信、パーティション分割、インデックス作成、およびすべての Azure Cosmos DB API に当てはまるその他の概念について説明します。</p>
+      html: <p>グローバル配信、パーティション分割、プロビジョニング済みスループット、インデックス作成、およびすべての Azure Cosmos DB API シリーズに当てはまるその他の概念について説明します。</p>
       image:
         src: media/index/azure-cosmos-db-icon.png
       title: 概念
-    - href: /azure/cosmos-db/sql-api-introduction/
+    - href: /azure/cosmos-db/sql-api-query-reference/
       html: <p>使い慣れた SQL 構文を使用して、新しい非リレーショナル ドキュメント データベースを構築し、クエリを実行する場合は、SQL API を使用します。</p>
       image:
         src: media/index/sql-api.svg
@@ -102,7 +102,7 @@ sections:
       - href: 
       - href: 
       - href: /azure/cosmos-db/create-sql-api-xamarin-dotnet
-    - title: Azure Cosmos DB の MongoDB 用 API
+    - title: MongoDB 用 API
       values:
       - href: /azure/cosmos-db/create-mongodb-java
       - href: /azure/cosmos-db/create-mongodb-dotnet
@@ -157,12 +157,12 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " スケールを目的とした Azure Cosmos DB データベース アカウントを作成する"
+    - title: " スケーリングに対応した Azure Cosmos データベース アカウントを作成する"
       href: /learn/modules/create-cosmos-db-for-scale/
       image:
         src: /learn/achievements/create-cosmos-db-for-scale.svg
         href: /learn/modules/create-cosmos-db-for-scale/
-    - title: Azure Cosmos DB データベースでデータの挿入とクエリを行う
+    - title: Azure Cosmos データベース内でデータの挿入とクエリを行う
       href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
       image:
         src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg

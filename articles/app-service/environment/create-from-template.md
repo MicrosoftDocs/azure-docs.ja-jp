@@ -14,16 +14,19 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277473"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109896"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
 ## <a name="overview"></a>概要
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Azure App Service Environment (ASE) は、インターネットでアクセス可能なエンドポイントまたは Azure Virtual Network (VNet) の内部アドレスのエンドポイントを使用して作成できます。 内部エンドポイントを使用して作成すると、内部ロード バランサー (ILB) と呼ばれる Azure コンポーネントによってそのエンドポイントが提供されます。 内部 IP アドレスの ASE は、ILB ASE と呼ばれます。 パブリック エンドポイントを持つ ASE は、外部 ASE と呼ばれます。 
 
 ASE は、Azure Portal または Azure Resource Manager テンプレートを使用して作成できます。 この記事では、Resource Manager テンプレートを使用して外部 ASE または ILB ASE を作成するために必要な手順と構文について説明します。 Azure Portal で ASE を作成する方法については、[外部 ASE の作成][MakeExternalASE]に関するページ、または [ILB ASE の作成][MakeILBASE]に関するページをご覧ください。
@@ -60,7 +63,7 @@ ILB ASE を作成する場合は、これらの Resource Manager テンプレー
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 ASE の作成には 1 時間ほどかかります。 続いて、ポータルの、デプロイをトリガーしたサブスクリプションの ASE の一覧に、作成した ASE が表示されます。
@@ -146,7 +149,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 変更を適用するには ASE フロントエンドあたり約 40 分かかります。 たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまでに約 1 時間 20 分かかります。 テンプレートの実行中に、ASE をスケーリングすることはできません。  

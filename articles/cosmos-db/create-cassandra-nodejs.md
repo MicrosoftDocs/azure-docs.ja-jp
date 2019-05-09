@@ -1,23 +1,21 @@
 ---
 title: クイック スタート:Cassandra API (Node.js) - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使って、Node.js でプロファイル アプリケーションを作成する方法を示します
-services: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: e1015331af3b31fa34170db6c1729b8e38bcbd04
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a8698bf74d8be4a57d5928b8be74bcf35cee008f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251057"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586139"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>クイック スタート:Node.js と Azure Cosmos DB で Cassandra アプリを構築する
+# <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>クイック スタート:Node.js SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -72,7 +70,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 * ユーザー名とパスワードの値は、Azure portal の接続文字列ページを使って設定されています。 `path\to\cert` では、X509 証明書へのパスを指定します。 
 
-   ```nodejs
+   ```javascript
    var ssl_option = {
         cert : fs.readFileSync("path\to\cert"),
         rejectUnauthorized : true,
@@ -83,19 +81,19 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 * `client` は、contactPoint の情報で初期化されます。 ContactPoint は、Azure Portal から取得されます。
 
-    ```nodejs
+    ```javascript
     const client = new cassandra.Client({contactPoints: [config.contactPoint], authProvider: authProviderLocalCassandra, sslOptions:ssl_option});
     ```
 
 * `client` は、Azure Cosmos DB の Cassandra API に接続します。
 
-    ```nodejs
+    ```javascript
     client.connect(next);
     ```
 
 * 新しいキースペースが作成されます。
 
-    ```nodejs
+    ```javascript
     function createKeyspace(next) {
         var query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {\'class\': \'NetworkTopologyStrategy\', \'datacenter1\' : \'1\' }";
         client.execute(query, next);
@@ -105,7 +103,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 * 新しいテーブルが作成されます。
 
-   ```nodejs
+   ```javascript
    function createTable(next) {
     var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
         client.execute(query, next);
@@ -115,7 +113,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 * キー/値エンティティが挿入されます。
 
-    ```nodejs
+    ```javascript
     ...
        {
           query: 'INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)',
@@ -127,7 +125,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 * クエリを実行して、すべてのキー値を取得します。
 
-    ```nodejs
+    ```javascript
    var query = 'SELECT * FROM uprofile.user';
     client.execute(query, { prepare: true}, function (err, result) {
       if (err) return next(err);
@@ -140,7 +138,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
     
 * クエリを実行して、キーの値を取得します。
 
-    ```nodejs
+    ```javascript
     function selectById(next) {
         console.log("\Getting by id");
         var query = 'SELECT * FROM uprofile.user where user_id=1';

@@ -7,19 +7,20 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: ad66253d33b2e99f0be79bfaddc86b3274f5cab0
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228047"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258923"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>インメモリ OLTP を使用した SQL Database のアプリケーション パフォーマンスの向上
+
 [インメモリ OLTP](sql-database-in-memory.md) は、[Premium および Business Critical レベル](sql-database-service-tiers-vcore.md)のデータベースで、価格レベルを上げることなくトランザクション処理、データ インジェスト、一時的なデータ シナリオのパフォーマンスを向上させるために使用できます。 
 
 > [!NOTE] 
@@ -28,7 +29,8 @@ ms.locfileid: "51228047"
 
 既存のデータベースでインメモリ OLTP を採用するには、以下の手順に従います。
 
-## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>手順 1: Premium および Business Critical レベルのデータベースを使用していることを確認する
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>手順 1:Premium および Business Critical レベルのデータベースを使用していることを確認する
+
 インメモリ OLTP は、Premium および Business Critical レベルのデータベースでのみサポートされています。 返された結果が (0 ではなく) 1 である場合は、インメモリがサポートされています。
 
 ```
@@ -39,7 +41,7 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>手順 2. インメモリ OLTP に移行するオブジェクトを特定する
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>手順 2:インメモリ OLTP に移行するオブジェクトを特定する
 SSMS には、アクティブなワークロードがあるデータベースに対して実行できる **トランザクション パフォーマンス分析の概要** レポートが用意されています。 このレポートを使用して、インメモリ OLTP への移行の候補となるテーブルとストアド プロシージャを特定できます。
 
 SSMS でこのレポートを生成するには、
@@ -49,7 +51,7 @@ SSMS でこのレポートを生成するには、
 
 詳細については、「 [テーブルまたはストアド プロシージャをインメモリ OLTP に移植する必要があるかどうかの確認](https://msdn.microsoft.com/library/dn205133.aspx)」を参照してください。
 
-## <a name="step-3-create-a-comparable-test-database"></a>手順 3. 比較用のテスト データベースを作成する
+## <a name="step-3-create-a-comparable-test-database"></a>手順 3:比較用のテスト データベースを作成する
 メモリ最適化テーブルに変換するとメリットが得られるテーブルがデータベース内にあるとレポートに記載されていたとします。 このような場合は、まずテストを実施して、指摘された点について確認することをお勧めします。
 
 そのためには、運用データベースのテスト コピーが必要です。 テスト データベースは、運用データベースと同じレベルのサービス層に配置する必要があります。
@@ -65,7 +67,7 @@ SSMS でこのレポートを生成するには、
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>手順 4. テーブルを移行する
+## <a name="step-4-migrate-tables"></a>手順 4:テーブルを移行する
 テストするテーブルのメモリ最適化コピーを作成し、データを入力する必要があります。 次のいずれかを使用して作成できます。
 
 * SSMS の便利なメモリ最適化ウィザード
@@ -105,7 +107,7 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>手順 5 (省略可能). ストアド プロシージャを移行する
+## <a name="step-5-optional-migrate-stored-procedures"></a>手順 5 (省略可能):ストアド プロシージャを移行する
 インメモリ機能では、ストアド プロシージャに変更を加えて、パフォーマンスを向上することもできます。
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>ネイティブ コンパイル ストアド プロシージャに関する考慮事項
@@ -149,7 +151,7 @@ CREATE PROCEDURE schemaname.procedurename
 4. SP_RENAME を使用して、元のストアド プロシージャの名前を変更します。 または、削除します。
 5. 編集した CREATE PROCEDURE T-SQL スクリプトを実行します。
 
-## <a name="step-6-run-your-workload-in-test"></a>手順 6. ワークロードをテスト実行する
+## <a name="step-6-run-your-workload-in-test"></a>手順 6:ワークロードをテスト実行する
 運用データベースで実行するワークロードと同様のワークロードをテスト データベースで実行します。 これにより、テーブルとストアド プロシージャにインメモリ機能を使用したことでパフォーマンスがどれほど向上したかがわかります。
 
 ワークロードの主な属性は次のとおりです。
@@ -161,7 +163,7 @@ CREATE PROCEDURE schemaname.procedurename
 
 ネットワーク待ち時間を最小限に抑えるために、データベースが存在するのと同じ Azure リージョンでテストを実行してください。
 
-## <a name="step-7-post-implementation-monitoring"></a>手順 7. 実装後の監視
+## <a name="step-7-post-implementation-monitoring"></a>手順 7:実装後の監視
 運用環境でインメモリ機能の実装によるパフォーマンスへの影響を監視することを検討してください。
 
 * [インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)

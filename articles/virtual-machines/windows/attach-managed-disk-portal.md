@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 854f457e6731f69c64bf2036840d9e1c18a1cbf2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.subservice: disks
+ms.openlocfilehash: 81fbf650597813baaf6618f82ef55a937f1870d9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075092"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476028"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portal を使用して Windows VM にマネージド データ ディスクを接続する
 

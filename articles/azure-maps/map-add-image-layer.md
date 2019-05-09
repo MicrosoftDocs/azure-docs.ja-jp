@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d36179685e2098455e00186827d35e6de18bf975
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 5396fefca3a60dea7a503f8b4e84cc575753ea30
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52893056"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229117"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>イメージ レイヤーをマップに追加する
 
@@ -31,7 +31,7 @@ ms.locfileid: "52893056"
 
 ## <a name="add-an-image-layer"></a>イメージ レイヤーを追加する
 
-このサンプルは、[1922 年のニュージャージー州ニューアークの地図]((https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg))の画像をマップにオーバーレイする方法を示しています。
+このサンプルは、[1922 年のニュージャージー州ニューアークの地図](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)の画像をマップにオーバーレイする方法を示しています。
 
 <br/>
 
@@ -40,7 +40,7 @@ ms.locfileid: "52893056"
 
 上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-2 つ目のコード ブロックでは、画像の URL と四隅の座標を `[Top Left Corner, Top Right Corner, Bottom Right Conter, Bottom Left Corner]` 形式で渡すことによって [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) を作成しています。
+2 つ目のコード ブロックでは、画像の URL と四隅の座標を `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 形式で渡すことによって [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) を作成しています。
 
 ## <a name="import-a-kml-ground-overlay"></a>KML グラウンド オーバーレイをインポートする
 

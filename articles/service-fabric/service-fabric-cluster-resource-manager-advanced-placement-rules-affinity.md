@@ -4,22 +4,22 @@ description: Service Fabric サービスのアフィニティ設定の概要
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 57abea79a620aa83e16ad4cc2fd78a4294f2b278
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 29377492b90f366227ca7bedf85890b7734ea25f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204857"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663419"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Service Fabric でアフィニティを構成し、使用する
 アフィニティは主に、大規模なモノリシック アプリケーションをクラウドとマイクロサービスの世界に移行しやすくするために提供されるコントロールです。 これはサービスのパフォーマンスを向上させるための最適化としても使用されますが、副作用が伴う場合があります。
@@ -59,6 +59,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 アフィニティは、いくつかの相関スキームのいずれかで表され、2 種類のモードがあります。 アフィニティの最も一般的なモードは、NonAlignedAffinity と呼ばれるものです。 NonAlignedAffinity では、異なるサービスのレプリカまたはインスタンスが同じノード上に配置されます。 もう 1 つのモードは、AlignedAffinity です。 Aligned Affinity を使用できるのはステートフル サービスのみです。 2 つのステートフル サービスを整列したアフィニティが含まれるように構成すると、これらのサービスのプライマリがペアで同じノード上に配置されます。 また、これらのサービスのセカンダリの各ペアも同じノードに配置されます。 ステートフル サービスに対して NonAlignedAffinity を構成することもできます (ただし、あまり一般的ではありません)。 NonAlignedAffinity では、2 つのステートフル サービスの異なるレプリカが同じノードで実行されますが、プライマリは異なるノードになります。
 
 <center>
+
 ![アフィニティのモードとその影響][Image1]
 </center>
 
@@ -69,10 +70,11 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 現在、クラスター リソース マネージャーでは、アフィニティ関係のチェーンをモデル化することはできません。 これは、あるアフィニティの関係で子になっているサービスは、別のアフィニティの関係では親になれないことを意味します。 この種の関係をモデル化するには、実質的にはチェーンではなく、星としてモデル化する必要があります。 チェーンから星に移行するには、最下位の子を子の最初の親にします。 サービスの配置によっては、これを複数回実行する必要があります。 自然な親サービスがない場合は、プレース ホルダーとして機能するサービスを作成する必要があります。 要件によっては、[アプリケーション グループ](service-fabric-cluster-resource-manager-application-groups.md)の調査が必要になる場合があります。
 
 <center>
+
 ![アフィニティの関係のコンテキストにおけるチェーンと星][Image2]
 </center>
 
-アフィニティの関係について注目すべきもう 1 つの点は、方向があるということです。 つまり、アフィニティ ルールでは、子が親と共に配置されることのみが強制されます。 親が子と共に配置されるということではありません。 また、各サービスにそれぞれのライフサイクルがあり、個別に失敗し移動するため、アフィニティ関係を完全なものにしたり、すぐに適用したりできないことにも注意してください。 たとえば、親がクラッシュしたため、突然別のノードにフェールオーバーされたとします。 クラスター リソース マネージャーと Failover Manager では、サービスを提供し続けること、また、整合性と可用性を維持することが優先されるため、最初にフェールオーバーが処理されます。 フェールオーバーが完了すると、アフィニティの関係は損なわれますが、子が親と共に配置されていないことが検出されるまで、クラスター リソース マネージャーでは問題が認識されません。 このようなチェックは定期的に実行されます。 クラスター リソース マネージャーが制約を評価する方法の詳細については、[こちらの記事](service-fabric-cluster-resource-manager-management-integration.md#constraint-types)を参照してください。また、[こちら](service-fabric-cluster-resource-manager-balancing.md)では、こうした制約の評価の頻度を構成する方法を詳しく説明しています。   
+アフィニティの関係について注目すべきもう 1 つの点は、既定では方向があるということです。 つまり、アフィニティ ルールでは、子が親と共に配置されることのみが強制されます。 親が子と共に配置されるということではありません。 そのため、アフィニティの違反があり、何らかの理由で違反を修正する必要がある場合、子を親のノードに移動することはできません。これはたとえ親を子のノードに移動することが違反を修正することになってもです。親が子のノードに移動されることはありません。 構成 [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) を true に設定すると、方向が削除されます。 また、各サービスにそれぞれのライフサイクルがあり、個別に失敗し移動するため、アフィニティ関係を完全なものにしたり、すぐに適用したりできないことにも注意してください。 たとえば、親がクラッシュしたため、突然別のノードにフェールオーバーされたとします。 クラスター リソース マネージャーと Failover Manager では、サービスを提供し続けること、また、整合性と可用性を維持することが優先されるため、最初にフェールオーバーが処理されます。 フェールオーバーが完了すると、アフィニティの関係は損なわれますが、子が親と共に配置されていないことが検出されるまで、クラスター リソース マネージャーでは問題が認識されません。 このようなチェックは定期的に実行されます。 クラスター リソース マネージャーが制約を評価する方法の詳細については、[こちらの記事](service-fabric-cluster-resource-manager-management-integration.md#constraint-types)を参照してください。また、[こちら](service-fabric-cluster-resource-manager-balancing.md)では、こうした制約の評価の頻度を構成する方法を詳しく説明しています。   
 
 
 ### <a name="partitioning-support"></a>パーティション分割のサポート

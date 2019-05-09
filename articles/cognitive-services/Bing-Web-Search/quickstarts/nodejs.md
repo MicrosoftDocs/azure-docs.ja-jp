@@ -4,33 +4,32 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Node.js を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 9/26/2018
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 3d8b323a316dcef10a0d7beb5d1d2dd122b0e2ba
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834491"
 ---
-# <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Bing Web Search REST API と Node.js を使用して Web を検索する
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>クイック スタート:Bing Web Search REST API と Node.js を使用して Web を検索する
 
-このクイック スタートを使用すると、10 分未満で、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Node.js アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを実行するには、以下のものが必要です。
 
 * [Node.js 6](https://nodejs.org/en/download/) 以降
 * サブスクリプション キー
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-required-modules"></a>プロジェクトの作成と必要なモジュールの宣言
 
@@ -45,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>サブスクリプション キーの設定
 
-このコード スニペットは、`AZURE_SUBSCRIPTION_KEY` 環境変数を使用してサブスクリプション キーを格納します。これは、コードのデプロイ時にキーの偶発的な露出を防ぐ優れたやり方です。 [ここをクリック](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)してサブスクリプション キーを調べます。
+このコード スニペットは、`AZURE_SUBSCRIPTION_KEY` 環境変数を使用してサブスクリプション キーを格納します。これは、コードのデプロイ時にキーの偶発的な露出を防ぐ優れたやり方です。 サブスクリプション キーを探すには、[API に関するページ](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)に移動します。
 
 環境変数を使用について詳しくない場合や、このアプリをできるだけ高速に実行しようとしている場合は、`process.env['AZURE_SUBSCRIPTION_KEY']` を、文字列として設定されたサブスクリプション キーに置き換えることができます。
 
@@ -112,7 +111,7 @@ bingWebSearch(query)
 const https = require('https')
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
 if (!SUBSCRIPTION_KEY) {
-  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment varable')
+  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment variable')
 }
 function bingWebSearch(query) {
   https.get({

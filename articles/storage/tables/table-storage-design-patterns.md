@@ -2,18 +2,18 @@
 title: Azure ストレージ テーブルの設計パターン | Microsoft Docs
 description: Azure Table service ソリューションのパターンを使用します。
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
-ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 04/08/2019
+ms.author: tamram
+ms.subservice: tables
+ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238898"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59271630"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -73,7 +73,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 
 * [パーティション内セカンダリ インデックス パターン](#inter-partition-secondary-index-pattern)
 * [複合キー パターン](#compound-key-pattern)
-* [エンティティ グループ トランザクション](#entity-group-transactions)
+* エンティティ グループ トランザクション
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)
 
 ## <a name="inter-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
@@ -128,7 +128,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
 * [パーティション内のセカンダリ インデックス パターン](#intra-partition-secondary-index-pattern)  
 * [複合キー パターン](#compound-key-pattern)  
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>最終的に一貫性のあるトランザクション パターン
@@ -172,7 +172,7 @@ Table サービスと Queue サービスのエラーには一時的なエラー�
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [マージまたは置換](#merge-or-replace)  
 
 > [!NOTE]
@@ -197,11 +197,11 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員エンティティと同じパーティションにインデックス エンティティを作成する。  
 * 別のパーティションまたはテーブルにインデックス エンティティを作成する。  
 
-<u>オプション 1: BLOB ストレージの使用</u>  
+<u>オプション 1:Blob ストレージを使用する</u>  
 
 最初のオプションでは、すべての一意の姓について Blob を作成し、その姓の従業員用の各 Blob には **PartitionKey** (部署) と **RowKey** (従業員 ID) 値が格納されます。 従業員を追加または削除した場合は、関連する BLOB の内容と従業員エンティティの一貫性が最終的に確保されていることを確認する必要があります。  
 
-<u>オプション 2:</u> 同じパーティション内のインデックス エンティティの作成  
+<u>オプション 2:</u>同じパーティション内でインデックス エンティティを作成する  
 
 2 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -212,7 +212,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 次の手順は、2 番目の方法を使用した場合に、新しい従業員を追加するときに従う必要がある手順の概要を示しています。 この例では、Sales 部署で ID が 000152、姓が Jones の従業員を追加します。  
 
 1. **PartitionKey** 値 "Sales" と **RowKey** 値 "Jones"　を持つインデックスのエンティティを取得します。 このエンティティの ETag を、手順 2. で使用するために保存します。  
-2. 新しい従業員エンティティを挿入するエンティティ グループ トランザクション、つまり、バッチ操作 (**PartitionKey** 値 "Sales" と **RowKey** 値 "000152") を作成し、新しい従業員 ID を従業員 ID フィールドに追加することでインデックス エンティティ (**PartitionKey** 値 "Sales" と **RowKey** 値 "Jones") を更新します。 エンティティ グループ トランザクションの詳細については、「 [エンティティ グループ トランザクション](#entity-group-transactions)」をご覧ください。  
+2. 新しい従業員エンティティを挿入するエンティティ グループ トランザクション、つまり、バッチ操作 (**PartitionKey** 値 "Sales" と **RowKey** 値 "000152") を作成し、新しい従業員 ID を従業員 ID フィールドに追加することでインデックス エンティティ (**PartitionKey** 値 "Sales" と **RowKey** 値 "Jones") を更新します。 エンティティ グループ トランザクションの詳細については、「エンティティ グループ トランザクション」をご覧ください。  
 3. オプティミスティック コンカレンシー エラー (他のユーザーがインデックス エンティティを変更したこと) が原因でエンティティ グループ トランザクションが失敗した場合は、手順 1. からまたやり直す必要があります。  
 
 2 番目の方法を使用する場合は、同じような方法で従業員を削除できます。 従業員の姓を変更するのは、3 つのエンティティ (従業員エンティティ、元の姓のインデックス エンティティ、新しい姓のインデックス エンティティ) を更新するエンティティ グループ トランザクションを実行する必要があるため、少し複雑です。 変更を加える前に、各エンティティを取得して、ETag 値を取得する必要があります。その ETag 値を使用して、オプティミスティック コンカレンシーで更新を実行できます。  
@@ -223,7 +223,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 2. EmployeeIDs フィールドで従業員 ID の一覧を解析します。  
 3. 各従業員に関する追加情報(電子メール アドレスなど) が必要な場合は、手順 2 で取得した従業員リストから **PartitionKey** 値 "Sales" と **RowKey** 値を使用して各従業員のエンティティを取得します。  
 
-<u>オプション 3:</u> 別のパーティションまたはテーブルにインデックス エンティティを作成する  
+<u>オプション 3:</u>別のパーティションまたはテーブルにインデックス エンティティを作成する  
 
 3 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -251,7 +251,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 
 * [複合キー パターン](#compound-key-pattern)  
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 
 ## <a name="denormalization-pattern"></a>非正規化パターン
@@ -282,7 +282,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [複合キー パターン](#compound-key-pattern)  
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>複合キー パターン
@@ -325,7 +325,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
 
@@ -394,7 +394,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [エンティティ グループ トランザクション](#entity-group-transactions)
+* エンティティ グループ トランザクション
 * [エンティティの変更](#modifying-entities)  
 
 ## <a name="data-series-pattern"></a>データ系列のパターン
@@ -454,7 +454,7 @@ Table service を使用すると、複数のエンティティを格納して、
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [エンティティ グループ トランザクション](#entity-group-transactions)
+* エンティティ グループ トランザクション
 * [マージまたは置換](#merge-or-replace)
 
 ## <a name="large-entities-pattern"></a>大型エンティティ パターン
@@ -556,7 +556,7 @@ Storage Analytics は内部のバッファーにログ メッセージを保管�
 このセクションでは、ここまでのセクションで説明したパターンを実装する際に念頭に置く必要がある点をいくつか説明します。 このセクションで示したコード例は、ほとんどが C# で書かれ、ストレージ クライアント ライブラリ (本稿執筆時点のバージョンは 4.3.0) を使用しています。  
 
 ## <a name="retrieving-entities"></a>エンティティの取得
-「 [クエリに対応した設計](#design-for-querying)」で説明したように、最も効率的なクエリはポイント クエリです。 ただ、時として多数のエンティティを同時に取得することも必要になります。 このセクションでは、ストレージ クライアント ライブラリを使ってエンティティを取得するときによく使用される方法をいくつか紹介します。  
+「クエリに対応した設計」で説明したように、最も効率的なクエリはポイント クエリです。 ただ、時として多数のエンティティを同時に取得することも必要になります。 このセクションでは、ストレージ クライアント ライブラリを使ってエンティティを取得するときによく使用される方法をいくつか紹介します。  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>ストレージ クライアント ライブラリを使ってポイント クエリを実行する
 ポイント クエリを実行する最も簡単な方法は、次の c# コード スニペットに表示された、**PartitionKey** 値 "Sales" と **RowKey** 値 "212" を持つエンティティを取得する**取得** テーブル操作の使用です。  
@@ -583,27 +583,25 @@ var query = (from employee in employeeQuery
             employee.RowKey.CompareTo("B") >= 0 &&
             employee.RowKey.CompareTo("C") < 0
             select employee).AsTableQuery();
+            
 var employees = query.Execute();  
 ```
 
 パフォーマンスを確保するため、クエリで **RowKey** と **PartitionKey** の両方をどのように指定するか注意してください。  
 
-次のコード サンプルは、Fluent API を使用したのと同等の機能を示しています (一般的な Fluent API の詳細について、 [Fluent API を設計するためのベスト プラクティス](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)を参照してください)。  
+次のコード サンプルは、LINQ 構文を使用しない同等の機能を示しています。  
 
 ```csharp
-TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(
-    TableQuery.CombineFilters(
-    TableQuery.CombineFilters(
-        TableQuery.GenerateFilterCondition(
-    "PartitionKey", QueryComparisons.Equal, "Sales"),
-    TableOperators.And,
-    TableQuery.GenerateFilterCondition(
-    "RowKey", QueryComparisons.GreaterThanOrEqual, "B")
-),
-TableOperators.And,
-TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "C")
-    )
-);
+TableQuery<EmployeeEntity> employeeQuery = 
+    new TableQuery<EmployeeEntity>().Where(
+        TableQuery.CombineFilters(
+            TableQuery.CombineFilters(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales"),
+                TableOperators.And,
+                TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, "B")),
+            TableOperators.And,
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "C")));
+            
 var employees = employeeTable.ExecuteQuery(employeeQuery);  
 ```
 
@@ -622,36 +620,31 @@ Table サービスに対してクエリを実行した場合、一度に返さ�
 ストレージ クライアント ライブラリを使用している場合には、Table service からエンティティが返されるたびに継続トークンが自動で処理されます。 以下の C# コード サンプルではストレージ クライアント ライブラリを使用しているため、Table サービスが応答で返した継続トークンが自動的に処理されます。  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
 var employees = employeeTable.ExecuteQuery(employeeQuery);
 foreach (var emp in employees)
 {
-        ...
+    // ...
 }  
 ```
 
 以下の C# コード サンプルでは、継続トークンの処理を明示的に記述しています。  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
 TableContinuationToken continuationToken = null;
-
 do
 {
-        var employees = employeeTable.ExecuteQuerySegmented(
-        employeeQuery, continuationToken);
+    var employees = employeeTable.ExecuteQuerySegmented(employeeQuery, continuationToken);
     foreach (var emp in employees)
     {
-    ...
+        // ...
     }
+    
     continuationToken = employees.ContinuationToken;
 } while (continuationToken != null);  
 ```
@@ -677,16 +670,15 @@ employeeQuery.TakeCount = 50;
 1 つのエンティティには最大で 255 個のプロパティを格納でき、エンティティの最大サイズは 1 MB です。 テーブルに対してクエリを実行してエンティティを取得する際、すべてのプロパティが必要ない場合は、データの不要な転送を避けることができます (遅延とコストの削減につながります)。 サーバー側のプロジェクションを使えば、必要なプロパティのみを転送できます。 次の例は、クエリによって選択されたエンティティから**電子メール** プロパティ (**PartitionKey**、**RowKey**、**タイムスタンプ**と **ETag** と連動) を取得しています。  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
 List<string> columns = new List<string>() { "Email" };
 TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter).Select(columns);
+    new TableQuery<EmployeeEntity>().Where(filter).Select(columns);
 
 var entities = employeeTable.ExecuteQuery(employeeQuery);
 foreach (var e in entities)
 {
-        Console.WriteLine("RowKey: {0}, EmployeeEmail: {1}", e.RowKey, e.Email);
+    Console.WriteLine("RowKey: {0}, EmployeeEmail: {1}", e.RowKey, e.Email);
 }  
 ```
 
@@ -732,7 +724,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -752,7 +744,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -789,7 +781,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -825,7 +817,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -847,7 +839,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -888,7 +880,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -921,31 +913,29 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 2 番目のオプションは、具体的な POCO エンティティ型の代わりに **DynamicTableEntity** 型  (プロパティ バッグ) の使用です(エンティティを .NET 型にシリアル化および非シリアル化する必要がないため、このオプションはパフォーマンスも向上させます) 。 次の c# コードは、テーブルから潜在的にさまざまな種類の複数のエンティティを取得しますが、すべてのエンティティを **DynamicTableEntity** インスタンスとして返します。 **EntityType** プロパティを使用して各エンティティの種類を決定します。  
 
 ```csharp
-string filter = TableQuery.CombineFilters(
-    TableQuery.GenerateFilterCondition("PartitionKey",
-    QueryComparisons.Equal, "Sales"),
-    TableOperators.And,
+string filter =
     TableQuery.CombineFilters(
-    TableQuery.GenerateFilterCondition("RowKey",
-                    QueryComparisons.GreaterThanOrEqual, "B"),
+        TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales"),
         TableOperators.And,
-        TableQuery.GenerateFilterCondition("RowKey",
-        QueryComparisons.LessThan, "F")
-    )
-);
+        TableQuery.CombineFilters(
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, "B"),
+            TableOperators.And,
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "F")));
+        
 TableQuery<DynamicTableEntity> entityQuery =
     new TableQuery<DynamicTableEntity>().Where(filter);
+    
 var employees = employeeTable.ExecuteQuery(entityQuery);
 
 IEnumerable<DynamicTableEntity> entities = employeeTable.ExecuteQuery(entityQuery);
 foreach (var e in entities)
 {
-EntityProperty entityTypeProperty;
-if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
-{
-    if (entityTypeProperty.StringValue == "Employee")
+    EntityProperty entityTypeProperty;
+    if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
     {
-        // Use entityTypeProperty, RowKey, PartitionKey, Etag, and Timestamp
+        if (entityTypeProperty.StringValue == "Employee")
+        {
+            // use entityTypeProperty, RowKey, PartitionKey, Etag, and Timestamp
         }
     }
 }  
@@ -958,42 +948,43 @@ if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
 {
-
-        TableEntity resolvedEntity = null;
-        if (props["EntityType"].StringValue == "Department")
-        {
+    TableEntity resolvedEntity = null;
+    if (props["EntityType"].StringValue == "Department")
+    {
         resolvedEntity = new DepartmentEntity();
-        }
-        else if (props["EntityType"].StringValue == "Employee")
-        {
+    }
+    else if (props["EntityType"].StringValue == "Employee")
+    {
         resolvedEntity = new EmployeeEntity();
-        }
-        else throw new ArgumentException("Unrecognized entity", "props");
+    }
+    else 
+    {
+        throw new ArgumentException("Unrecognized entity", "props");
+    }
 
-        resolvedEntity.PartitionKey = pk;
-        resolvedEntity.RowKey = rk;
-        resolvedEntity.Timestamp = ts;
-        resolvedEntity.ETag = etag;
-        resolvedEntity.ReadEntity(props, null);
-        return resolvedEntity;
+    resolvedEntity.PartitionKey = pk;
+    resolvedEntity.RowKey = rk;
+    resolvedEntity.Timestamp = ts;
+    resolvedEntity.ETag = etag;
+    resolvedEntity.ReadEntity(props, null);
+    return resolvedEntity;
 };
 
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<DynamicTableEntity> entityQuery =
-        new TableQuery<DynamicTableEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+        
+TableQuery<DynamicTableEntity> entityQuery = new TableQuery<DynamicTableEntity>().Where(filter);
 
 var entities = employeeTable.ExecuteQuery(entityQuery, resolver);
 foreach (var e in entities)
 {
-        if (e is DepartmentEntity)
-        {
-    ...
-        }
-        if (e is EmployeeEntity)
-        {
-    ...
-        }
+    if (e is DepartmentEntity)
+    {
+        // ...
+    }
+    else if (e is EmployeeEntity)
+    {
+        // ...
+    }
 }  
 ```
 
@@ -1001,19 +992,17 @@ foreach (var e in entities)
 エンティティの種類がわからなくても削除はできますが、挿入はできません。 ですが、種類がわからなくても、POCO エンティティ クラスを使用せず、 **DynamicTableEntity** 型を使用して エンティティを更新します。 次のコード サンプルでは、1 つのエンティティを取得し、 **EmployeeCount** プロパティが存在するか、更新前に確認しています。  
 
 ```csharp
-TableResult result =
-        employeeTable.Execute(TableOperation.Retrieve(partitionKey, rowKey));
+TableResult result = employeeTable.Execute(TableOperation.Retrieve(partitionKey, rowKey));
 DynamicTableEntity department = (DynamicTableEntity)result.Result;
 
 EntityProperty countProperty;
-
 if (!department.Properties.TryGetValue("EmployeeCount", out countProperty))
 {
-        throw new
-        InvalidOperationException("Invalid entity, EmployeeCount property not found.");
+    throw new InvalidOperationException("Invalid entity, EmployeeCount property not found.");
 }
+
 countProperty.Int32Value += 1;
-employeeTable.Execute(TableOperation.Merge(department));  
+employeeTable.Execute(TableOperation.Merge(department));
 ```
 
 ## <a name="controlling-access-with-shared-access-signatures"></a>共有アクセス署名でのアクセスを制御する
@@ -1038,23 +1027,20 @@ Table service での SAS トークンの使用について詳しくは、「 [Sh
 ```csharp
 private static void ManyEntitiesQuery(CloudTable employeeTable, string department)
 {
-        string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, department);
-        TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+    string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, department);
+    TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
-        TableContinuationToken continuationToken = null;
-
-        do
-        {
-        var employees = employeeTable.ExecuteQuerySegmented(
-                employeeQuery, continuationToken);
-        foreach (var emp in employees)
+    TableContinuationToken continuationToken = null;
+    do
     {
-        ...
-    }
+        var employees = employeeTable.ExecuteQuerySegmented(employeeQuery, continuationToken);
+        foreach (var emp in employees)
+        {
+            // ...
+        }
+        
         continuationToken = employees.ContinuationToken;
-        } while (continuationToken != null);
+    } while (continuationToken != null);
 }  
 ```
 
@@ -1063,22 +1049,20 @@ private static void ManyEntitiesQuery(CloudTable employeeTable, string departmen
 ```csharp
 private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, string department)
 {
-        string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, department);
-        TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
-        TableContinuationToken continuationToken = null;
-
-        do
-        {
-        var employees = await employeeTable.ExecuteQuerySegmentedAsync(
-                employeeQuery, continuationToken);
+    string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, department);
+    TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
+    
+    TableContinuationToken continuationToken = null;
+    do
+    {
+        var employees = await employeeTable.ExecuteQuerySegmentedAsync(employeeQuery, continuationToken);
         foreach (var emp in employees)
         {
-            ...
+            // ...
         }
+    
         continuationToken = employees.ContinuationToken;
-            } while (continuationToken != null);
+    } while (continuationToken != null);
 }  
 ```
 
@@ -1094,24 +1078,24 @@ private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, strin
 エンティティを非同期的に挿入、更新、削除できます。 次の C# の例は、従業員エンティティを挿入または置換する単純な同期メソッドです。  
 
 ```csharp
-private static void SimpleEmployeeUpsert(CloudTable employeeTable,
-        EmployeeEntity employee)
+private static void SimpleEmployeeUpsert(
+    CloudTable employeeTable,
+    EmployeeEntity employee)
 {
-        TableResult result = employeeTable
-        .Execute(TableOperation.InsertOrReplace(employee));
-        Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
+    TableResult result = employeeTable.Execute(TableOperation.InsertOrReplace(employee));
+    Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
 }  
 ```
 
 このコードを次のように少し変更して、更新が非同期的に実行されるようにすることができます。  
 
 ```csharp
-private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
-        EmployeeEntity employee)
+private static async Task SimpleEmployeeUpsertAsync(
+    CloudTable employeeTable,
+    EmployeeEntity employee)
 {
-        TableResult result = await employeeTable
-        .ExecuteAsync(TableOperation.InsertOrReplace(employee));
-        Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
+    TableResult result = await employeeTable.ExecuteAsync(TableOperation.InsertOrReplace(employee));
+    Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
 }  
 ```
 

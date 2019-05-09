@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: LUIS Authoring API を使用して、CSV 形式の既存のデータからプログラムで LUIS アプリを作成する方法を説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: ff030b9bb9158f3bac0e52a596a2054989301afd
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 314d121e8964ba1cdbb457260826d85bf8505fbc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719607"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883255"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
@@ -117,7 +117,7 @@ LUIS アプリでエンティティと意図が定義されたら、発話を追
 index.js ファイルを開き、ファイルの先頭にあるこれらの値を変更します。
 
 
-```nodejs
+```javascript
 // Change these values
 const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
 const LUIS_appName = "Sample App";

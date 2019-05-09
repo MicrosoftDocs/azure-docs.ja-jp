@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL での高可用性の概念
 description: このトピックでは、Azure Database for MySQL を使用する場合の高可用性の情報を提供します。
-author: jasonwhowell
-ms.author: jasonh
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 70577f32debc526aaccbd79b62dd35e82119e3f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/01/2019
+ms.openlocfilehash: 055727695bfa1ce8a6bb160a7e071c2a161afb3b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548394"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351033"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL での高可用性の概念
 Azure Database for MySQL サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。
@@ -32,5 +32,5 @@ HA モデルと同様に、Azure Database for MySQL がスケールアップま�
 スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。 
 
 ## <a name="next-steps"></a>次の手順
-- サービスの概要については、「 [Azure Database for MySQL の概要](overview.md)」をご覧ください
-- 再試行ロジックの概要については、「[Azure Database for MySQL の一時的な接続エラーに対処する](concepts-connectivity.md)」をご覧ください
+- [一時的な接続エラーへの対処](concepts-connectivity.md)について学習する
+- [読み取りレプリカを使用してデータをレプリケートする](howto-read-replicas-portal.md)方法を学習する

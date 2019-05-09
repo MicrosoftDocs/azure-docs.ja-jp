@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager - FAQ | Microsoft Docs
+title: Azure Traffic Manager - よくあるご質問
 description: この記事では、Traffic Manager に関してよく寄せられる質問に対する回答を示します。
 services: traffic-manager
 documentationcenter: ''
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963574"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788429"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -59,14 +59,7 @@ Traffic Manager は DNS レベルでアプリケーションと統合される�
 「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 DNS 参照が完了すると、クライアントはアプリケーション エンドポイントに Traffic Manager 経由ではなく直接接続します。 そのため、この接続では、任意のアプリケーション プロトコルを使用できます。 監視プロトコルとして TCP を選択すると、アプリケーション プロトコルを使用せずに、Traffic Manager のエンドポイント正常性監視を実行できます。 アプリケーション プロトコルを使用して正常性を検証する場合、エンドポイントは HTTP または HTTPS の GET 要求に応答できる必要があります。
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>"ネイキッド" ドメイン名で Traffic Manager を使用することはできますか。
-
-いいえ。 DNS 標準では、同じ名前を持つ他の DNS レコードと CNAME が共存することは許可されていません。 DNS ゾーンの頂点 (またはルート) には、SOA と権限のある NS レコードという、既存の 2 つの DNS レコードが常に含まれます。 これは、ゾーンの頂点で CNAME レコードを作成すると DNS 標準に違反してしまうことを意味します。
-
-Traffic Manager では、バニティ DNS 名をマッピングするために DNS CNAME レコードが必要です。 たとえば、`www.contoso.com` を Traffic Manager プロファイルの DNS 名 `contoso.trafficmanager.net` にマップします。 また、Traffic Manager プロファイルも、クライアントが接続するエンドポイントを示すために、別の DNS CNAME を返します。
-
-この問題を回避するために、HTTP リダイレクトを使用してトラフィックをネイキッド ドメイン名から別の URL に転送することをお勧めします。これにより、Traffic Manager を使用できるようになります。 たとえば、ネイキッド ドメイン "contoso.com" を使用すると、Traffic Manager の DNS 名を指す CNAME "www.contoso.com" にユーザーをリダイレクトできます。
-
-Traffic Manager におけるネイキッド ドメインの完全サポートは、開発待ちの機能として登録されています。 この機能を要求するためにサポートを登録するには、[コミュニティ フィードバック サイトの投票](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly)で、ぜひ支持を表明してください。
+はい。 Azure Traffic Manager プロファイルを参照するためのドメイン名の頂点に対するエイリアス レコードを作成する方法を確認するには、「[Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](../dns/tutorial-alias-tm.md)」を参照してください。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Traffic Manager では、DNS クエリを処理するときにクライアントのサブネット アドレスは考慮されますか。 
 はい。Traffic Manager は、受信する DNS クエリの送信元 IP アドレス (通常は DNS リゾルバーの IP アドレス) を考慮するだけでなく、地理的なルーティング方法、パフォーマンスによるルーティング方法、およびサブネット ルーティング方法で検索を実行するときに、エンド ユーザーの代わりに要求を行うリゾルバーによるクエリにクライアントのサブネット アドレスが含まれる場合は、そのアドレスも考慮します。  
@@ -316,7 +309,7 @@ Azure Resource Manager では、すべてのリソース グループに対し�
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>各エンドポイントの現在の正常性を確認するには、どうすればよいですか。
 
-各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)、および [クロスプラットフォームの Azure CLI](../cli-install-nodejs.md) を使用して取得することもできます。
+各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.trafficmanager)、および [クロスプラットフォームの Azure CLI](../cli-install-nodejs.md) を使用して取得することもできます。
 
 Azure Monitor を使用すると、エンドポイントの正常性を追跡して、視覚的に表現することもできます。 Azure Monitor の使用方法について詳しくは、[Azure Monitoring のドキュメント](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)をご覧ください。
 
@@ -347,6 +340,7 @@ Traffic Manager では、エンドポイントの指定に IPv4 アドレスま�
 Traffic Manager は、プロファイルに対するクエリを受信すると、まず、指定されたルーティング方法およびエンドポイントの正常性状態に基づいて返される必要があるエンドポイントを特定します。 次に、受信クエリで要求されたレコード タイプと、エンドポイントに関連付けられているレコード タイプを調べたうえで、以下の表に基づいて応答を返します。
 
 複数値以外のルーティング方法のプロファイルの場合:
+
 |受信クエリ要求|    エンドポイントの種類|  提供される応答|
 |--|--|--|
 |ANY |  A/AAAA/CNAME |  ターゲット エンドポイント| 
@@ -357,6 +351,7 @@ Traffic Manager は、プロファイルに対するクエリを受信すると�
 |CNAME |    CNAME | ターゲット エンドポイント|
 |CNAME  |A/AAAA | NODATA |
 |
+
 ルーティング方法が複数値に設定されているプロファイルの場合:
 
 |受信クエリ要求|    エンドポイントの種類 | 提供される応答|

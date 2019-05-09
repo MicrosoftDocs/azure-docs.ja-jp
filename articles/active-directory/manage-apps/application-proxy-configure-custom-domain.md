@@ -3,28 +3,29 @@ title: Azure AD アプリケーション プロキシでのカスタム ドメ�
 description: Azure AD アプリケーション プロキシでカスタム ドメインを管理して、ユーザーがアクセスする場所に関係なくアプリの URL が同じになるようにします。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/31/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b0ad4aa63dbeefce6b55e099fd51d3608ae3abb8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 59663346fce415d73609f09345048ff321f1a234
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133351"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359834"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
-Azure Active Directory アプリケーション プロキシ経由でアプリケーションを公開するとき、離れた場所で作業しているユーザーのために外部 URL を作成します。 この URL には、既定のドメインである *yourtenant-msappproxy.net* が与えられます。 たとえば Expenses という名前のアプリを発行し、テナントの名前が Contoso である場合、外部 URL は https://expenses-contoso.msappproxy.net となります。 独自のドメイン名を使用する場合、アプリケーションのカスタム ドメインを構成します。 
+Azure Active Directory アプリケーション プロキシ経由でアプリケーションを公開するとき、離れた場所で作業しているユーザーのために外部 URL を作成します。 この URL には、既定のドメインである *yourtenant-msappproxy.net* が与えられます。 たとえば Expenses という名前のアプリを発行し、テナントの名前が Contoso である場合、外部 URL は `https://expenses-contoso.msappproxy.net` となります。 独自のドメイン名を使用する場合、アプリケーションのカスタム ドメインを構成します。 
 
 可能な限り、アプリケーションのカスタム ドメインを設定することが推奨されます。 カスタム ドメインには次のような長所があります。
 
@@ -59,7 +60,8 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 6. PFX 証明書をアップロードし、証明書のパスワードを入力します。 
 7. **[保存]** を選択して変更を保存します。 
-8. 新しい外部 URL を msappproxy.net ドメインにリダイレクトする [DNS レコード](../../dns/dns-operations-recordsets-portal.md)を追加します。 
+8. 新しい外部 URL を msappproxy.net ドメインにリダイレクトする [DNS レコード](../../dns/dns-operations-recordsets-portal.md)を追加します。
+9. [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx)コマンドを使用して DNS レコードが正しく構成されていることを確認し、お使いの外部 URL が到達可能で、msapproxy.net ドメインが別名として表示されるかどうかを確かめます。
 
 >[!TIP] 
 >カスタム ドメインごとに証明書を 1 つだけアップロードします。 証明書をアップロードしたら、新しいアプリを公開するとき、カスタム ドメインを選択できます。DNS レコードを除き、追加の構成を行う必要はありません。 

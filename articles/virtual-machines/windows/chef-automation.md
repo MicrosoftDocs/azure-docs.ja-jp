@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: de89756a3f9ef1139e855da16c0343a9919b56cb
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: a973d8dbab18e9ea66afb5ffff83f47c3ad98f93
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012349"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef で Azure 仮想マシンの展開を自動化する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,12 +29,10 @@ Chef は自動化と必要な状態の構成を提供する優れたツールで
 
 Chef は最新のクラウド API リリースで Azure とのシームレスな統合を提供しており、1 つのコマンドで構成状態をプロビジョニングしてデプロイできます。
 
-この記事では、Chef 環境を設定し、Azure 仮想マシンをプロビジョニングした後、ポリシーまたは "CookBook" を作成して、それを Azure 仮想マシンに展開します。
-
-早速始めましょう。
+この記事では、Chef 環境を設定し、Azure 仮想マシンをプロビジョニングした後、ポリシーまたは "Cookbook" を作成して、それを Azure 仮想マシンに展開します。
 
 ## <a name="chef-basics"></a>Chef の基礎
-開始する前に、[Chef の基本的な概念を確認します](http://www.chef.io/chef)。 
+開始する前に、[Chef の基本的な概念を確認します](https://www.chef.io/chef)。
 
 次の図は、大まかな Chef アーキテクチャを示しています。
 
@@ -42,29 +40,37 @@ Chef は最新のクラウド API リリースで Azure とのシームレスな
 
 Chef には、Chef サーバー、Chef クライアント (ノード)、および Chef ワークステーションという 3 つの主要なアーキテクチャ コンポーネントがあります。
 
-Chef サーバーは管理ポイントとなります。Chef サーバーにはホスト型ソリューションとオンプレミスのソリューションの 2 つのオプションがあります。 このチュートリアルではホスト型ソリューションを使用します。
+Chef サーバーは管理ポイントとなります。Chef サーバーにはホスト型ソリューションとオンプレミスのソリューションの 2 つのオプションがあります。
 
 Chef クライアント (ノード) は管理対象のサーバーに置かれるエージェントです。
 
-Chef ワークステーションは管理者用のワークステーションで、ポリシーを作成したり、管理コマンドを実行します。 Chef ワークステーションから **knife** コマンドを実行してインフラストラクチャを管理します。
+Chef ワークステーションは、ポリシーを作成したり、管理コマンドを実行したりする管理者用のワークステーションと Chef ツールのソフトウェア パッケージの両方を指す名前です。
 
-また「Cookbook」と「Recipe」の概念もあります。 これらの概念が、実際に定義して、サーバーに適用するポリシーになります。
+通常、_ワークステーション_ はアクションを実行する場所、_Chef ワークステーション_ はソフトウェア パッケージ用と見なされます。
+たとえば、_Chef ワークステーション_ の一部として knife コマンドをダウンロードしますが、インフラストラクチャを管理するため、_ワークステーション_ から knife コマンドを実行します。
 
-## <a name="preparing-the-workstation"></a>ワークステーションを準備する
-まずはワークステーションを準備します。 ここでは、標準の Windows ワークステーションを使用します。 構成ファイルと Cookbook を保存するディレクトリを作成する必要があります。
+また Chef は、実際に定義して、サーバーに適用するポリシーとなる "Cookbooks" と "Recipes" の概念を使用します。
 
-最初に C:\chef というディレクトリを作成します。
+## <a name="preparing-your-workstation"></a>ワークステーションを準備する
 
-次に 2 個目のディレクトリ c:\chef\cookbooks を作成します。
+まず、Chef 構成ファイルと Cookbook を保存するディレクトリを作成して、ワークステーションを準備します。
 
-Azure 設定ファイルをダウンロードして Chef が Azure のサブスクリプションと通信できるようにする必要があります。
+C:\chef というディレクトリを作成します。
 
-PowerShell Azure の [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) コマンドを使用して、発行設定をダウンロードします。 
+Azure PowerShell [パブリッシュ設定](https://docs.microsoft.com/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information)をダウンロードします。
 
-発行設定ファイルを C:\chef に保存します。
+## <a name="setup-chef-server"></a>Chef サーバーの設定
 
-## <a name="creating-a-managed-chef-account"></a>管理された Chef アカウントの作成
-ホストされる Chef アカウントに [ここ](https://manage.chef.io/signup)からサインアップします。
+このガイドでは、Hosted Chef にサインアップしていることを前提としています。
+
+Chef サーバーを使用していない場合は、次の手順を実行できます。
+
+* [Hosted Chef](https://manage.chef.io/signup) をサインアップします。これは、Chef を開始する最も簡単な方法です。
+* [Chef ドキュメント](https://docs.chef.io/)の[インストール手順](https://docs.chef.io/install_server.html)に従って、Linux ベースのマシンにスタンドアロン Chef サーバーをインストールします。
+
+### <a name="creating-a-hosted-chef-account"></a>Hosted Chef アカウントの作成
+
+ホストされる Chef アカウントに[ここ](https://manage.chef.io/signup)からサインアップします。
 
 サインアップ プロセス中、新しい組織を作成するように尋ねられます。
 
@@ -76,56 +82,124 @@ PowerShell Azure の [Get-AzurePublishSettingsFile](https://docs.microsoft.com/p
 
 > [!NOTE]
 > キーがリセットされるという警告が表示されても、構成済みのインフラストラクチャがまだないため、そのまま進んでかまいません。
-> 
-> 
+>
 
-このスターター キットの zip ファイルには、組織の構成ファイルとキーが含まれています。
+このスターター キットの zip ファイルでは、`.chef` ディレクトリに組織の構成ファイルとユーザー キーが含まれています。
 
-## <a name="configuring-the-chef-workstation"></a>Chef ワークステーションの構成
-chef-starter.zip を C:\chef に展開します。
+`organization-validator.pem` は秘密キーであり、秘密キーは Chef サーバーに保存するべきではないため、個別にダウンロードする必要があります。 [Chef Manage](https://manage.chef.io/) で [Reset Validation Key]\ (検証キーのリセット\) を選択します。これで、別個にダウンロードするためのファイルが提供されます。 ファイルを c:\chef に保存します。
+
+### <a name="configuring-your-chef-workstation"></a>Chef ワークステーションの構成
+
+chef-starter.zip を c:\chef に展開します。
 
 chef-starter\chef-repo\.chef にあるすべてのファイルを c:\chef ディレクトリにコピーします。
 
+c:\Downloads に保存されている場合、`organization-validator.pem` ファイルを c:\chef にコピーします。
+
 これでディレクトリは次の例のようになります。
 
-![][5]
+```powershell
+    Directory: C:\Users\username\chef
 
-c:\chef のルートには Azure パブリッシュ ファイルを含む 4 つのファイルがあります。
+Mode           LastWriteTime    Length Name
+----           -------------    ------ ----
+d-----    12/6/2018   6:41 PM           .chef
+d-----    12/6/2018   5:40 PM           chef-repo
+d-----    12/6/2018   5:38 PM           cookbooks
+d-----    12/6/2018   5:38 PM           roles
+-a----    12/6/2018   5:38 PM       495 .gitignore
+-a----    12/6/2018   5:37 PM      1678 azuredocs-validator.pem
+-a----    12/6/2018   5:38 PM      1674 user.pem
+-a----    12/6/2018   5:53 PM       414 knife.rb
+-a----    12/6/2018   5:38 PM      2341 README.md
+```
 
-PEM ファイルには組織と管理者の通信用秘密キーが含まれ、knife.rb ファイルには knife 構成が含まれています。 knife.rb ファイルを編集する必要があります。
+c:\chef のルートには、5 つのファイルと 4 つのディレクトリがあるはずです (空の chef-repo ディレクトリを含む)。
 
-任意のエディターでファイルを開き、パスから「/../」を削除して「cookbook_path」を変更し、次のようにします。
+### <a name="edit-kniferb"></a>knife.rb の編集
 
-    cookbook_path  ["#{current_dir}/cookbooks"]
+PEM ファイルには組織と、通信用の管理者の秘密キーが含まれ、knife.rb ファイルには knife 構成が含まれています。 knife.rb ファイルを編集する必要があります。
+
+適当なエディターで knife.rb ファイルを開きます。 変更されていないファイルは次のようになります。
+
+```rb
+current_dir = File.dirname(__FILE__)
+log_level           :info
+log_location        STDOUT
+node_name           "mynode"
+client_key          "#{current_dir}/user.pem"
+chef_server_url     "https://api.chef.io/organizations/myorg"
+cookbook_path       ["#{current_dir}/cookbooks"]
+```
+
+knife.rb に以下の情報を追加します。
+
+validation_client_name   "myorg-validator" validation_key           ""#{current_dir}/myorg.pem"
 
 また、Azure パブリッシュ設定ファイルの名前を反映する次の行を追加します。
 
     knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 
+パスから「/../」を削除して「cookbook_path」を変更し、次のようにします。
+
+    cookbook_path  ["#{current_dir}/cookbooks"]
+
+これらの行によって、Knife が c:\chef\cookbooks の cookbook ディレクトリを参照し、Azure 操作中に Azure パブリッシュ設定を使用するようになります。
+
 これで、knife.rb ファイルは次の例のようになります。
 
 ![][6]
 
-これらの行によって、Knife が c:\chef\cookbooks の cookbook ディレクトリを参照し、Azure 操作中に Azure パブリッシュ設定を使用するようになります。
+<!--- Giant problem with this section: Chef 12 uses a config.rb instead of knife.rb
+// However, the starter kit hasn't been updated
+// So, I don't think this will even work on the modern Chef -->
 
-## <a name="installing-the-chef-development-kit"></a>Chef 開発キットのインストール
-次に ChefDK (Chef 開発キット) を[ダウンロードしてインストール](http://downloads.getchef.com/chef-dk/windows)し、Chef Workstation を設定します。
+<!--- update image [6] knife.rb -->
 
-![][7]
+```rb
+knife.rb
+current_dir = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                "mynode"
+client_key               "#{current_dir}/user.pem"
+chef_server_url          "https://api.chef.io/organizations/myorg"
+validation_client_name   "myorg-validator"
+validation_key           ""#{current_dir}/myorg.pem"
+cookbook_path            ["#{current_dir}/cookbooks"]
+knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+```
 
-既定の場所である c:\opscode にインストールします。 このインストールは約 10 分かかります。
+## <a name="install-chef-workstation"></a>Chef ワークステーションのインストール
 
-PATH 変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\yourusername\.chefdk\gem\ruby\2.0.0\bin のエントリが含まれていることを確認します。
+次に、Chef ワークステーションを[ダウンロードして、インストール](https://downloads.chef.io/chef-workstation/)します。
+既定の場所に Chef ワークステーションをインストールします。 このインストールには数分かかる場合があります。
 
-ない場合は必ずこのパスを追加してください。
+デスクトップに "CW PowerShell" が表示されます。これは、Chef 製品とやり取りするのに必要となるツールと一緒に読み込まれる環境です。 CW PowerShell により、`chef` などの従来の Chef CLI コマンドと共に、`chef-run` などの新しいアドホック コマンドが使用できるようになります。 `chef -v` を使用して、Chef ワークステーションと Chef ツールのインストールされているバージョンを確認します。 Chef ワークステーション アプリで [About Chef Workstation]\(Chef ワークステーションについて\) を選択して、ワークステーションのバージョンを確認することもできます。
+
+`chef --version` は、次のように返します。
+
+```
+Chef Workstation: 0.2.29
+  chef-run: 0.2.2
+  Chef Client: 14.6.47x
+  delivery-cli: master (6862f27aba89109a9630f0b6c6798efec56b4efe)
+  berks: 7.0.6
+  test-kitchen: 1.23.2
+  inspec: 3.0.12
+```
 
 > [!NOTE]
-> パスの順序が重要です。 opscode パスの順序が正しくない場合は、問題が生じます。 
-> 
+> パスの順序が重要です。 opscode パスの順序が正しくない場合は、問題が生じます。
+>
 
 続行する前にワークステーションを再起動します。
 
-次に Knife Azure 拡張機能をインストールします。 これで Knife に「Azure プラグイン」が提供されます。
+### <a name="install-knife-azure"></a>Knife Azure のインストール
+
+このチュートリアルでは、Azure Resource Manager を使用して、仮想マシンとやり取りすることを想定しています。
+
+Knife Azure 拡張機能をインストールします。 これで Knife に「Azure プラグイン」が提供されます。
 
 次のコマンドを実行します。
 
@@ -133,8 +207,8 @@ PATH 変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\you
 
 > [!NOTE]
 > –pre 引数は、最新の API セットへのアクセスを提供する Knife Azure プラグインの最新 RC バージョンを、確実に受け取るようにします。
-> 
-> 
+>
+>
 
 さまざまな依存関係も同時にインストールされる場合があります。
 
@@ -146,16 +220,17 @@ PATH 変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\you
 
 すべてが正しく構成されていると、利用できる Azure イメージの一覧がスクロール表示されます。
 
-おめでとうございます。 ワークステーションがセットアップされました。
+おめでとうございます。 これで、ワークステーションがセットアップされました。
 
 ## <a name="creating-a-cookbook"></a>Cookbook の作成
-Cookbookは管理するクライアント上で実行する一連のコマンドを定義するために Chef で使用します。 Cookbook は簡単に作成でき、**chef generate cookbook** コマンドを使用して Cookbook のテンプレートを生成します。 ポリシーで IIS を自動的にデプロイさせるため、Cookbook webserver を呼び出します。
+
+Cookbookは管理するクライアント上で実行する一連のコマンドを定義するために Chef で使用します。 Cookbook は簡単に作成でき、**chef generate cookbook** コマンドを使用して Cookbook のテンプレートを生成します。 この cookbook は、IIS を自動的にデプロイさせる Web サーバー用です。
 
 C:\Chef ディレクトリで次のコマンドを実行します。
 
     chef generate cookbook webserver
 
-これで、ディレクトリ C:\Chef\cookbooks\webserver に一連のファイルが生成されます。 次に、管理する仮想マシンで Chef クライアントに実行させる一連のコマンドを定義する必要があります。
+このコマンドによって、ディレクトリ C:\Chef\cookbooks\webserver に一連のファイルが生成されます。 次に、管理対象の仮想マシンで Chef クライアントに実行させる一連のコマンドを定義します。
 
 コマンドはファイル default.rb に保存されています。 このファイルでは、IIS をインストールして、起動し、wwwroot フォルダーにテンプレートをコピーする一連のコマンドを定義します。
 
@@ -178,13 +253,13 @@ C:\chef\cookbooks\webserver\recipes\default.rb ファイルを変更し、次の
 完了したらファイルを保存します。
 
 ## <a name="creating-a-template"></a>テンプレートの作成
-既に説明したように、default.html ページとして使用するテンプレート ファイルを生成する必要があります。
+この手順では、default.html ページとして使用するテンプレート ファイルを生成します。
 
 次のコマンドを実行してテンプレートを生成します。
 
     chef generate template webserver Default.htm
 
-C:\chef\cookbooks\webserver\templates\default\Default.htm.erb ファイルに移動します。 シンプルな「Hello World」 HTML コードを追加して、ファイルを編集した後、ファイルを保存します。
+`C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` ファイルに移動します。 シンプルな「Hello World」 HTML コードを追加して、ファイルを編集した後、ファイルを保存します。
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>Chef サーバーに Cookbook をアップロードする
 このステップでは、ローカル コンピューターに作成した Cookbook のコピーを、Chef がホストするサーバーにアップロードします。 アップロードが完了すると、Cookbook が **[ポリシー]** タブに表示されます。
@@ -206,10 +281,10 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 
 > [!NOTE]
 > このコマンド ラインでは –tcp-endpoints パラメーターを使用し、エンドポイント ネットワーク フィルター ルールも自動化しています。 ここではポート 80 と 3389 を開き、Web ページと RDP セッションにアクセスできるようにしています。
-> 
-> 
+>
+>
 
-コマンドを実行したら、Azure ポータルに移動し、コンピューターでプロビジョニングが開始することを確認します。
+コマンドを実行したら、Azure portal に移動し、ご使用のマシンでプロビジョニングが開始されることを確認します。
 
 ![][13]
 
@@ -217,15 +292,15 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 
 ![][10]
 
-デプロイメントが完了したら、ポート 80 で Web サービスに接続できるようになります。このポートは knife azure コマンドで仮想マシンをプロビジョニングした際に開きました。 この仮想マシンはクラウド サービスで唯一の仮想マシンであるため、クラウド サービスの URL で接続します。
+デプロイが完了したら、このポートは knife Azure コマンドで仮想マシンをプロビジョニングした際に開くため、ポート 80 で Web サービスに接続できるようになります。 この仮想マシンはこのクラウド サービスで唯一の仮想マシンであるため、クラウド サービスの URL で接続します。
 
 ![][11]
 
-ご覧のように、クリエイティブな html コードにしました。
+この例では、クリエイティブ HTML コードを使用します。
 
-また、ポート 3389 を経由して Azure Portal から RDP セッションを通じて接続できます。
+また、ポート 3389 を経由して Azure portal から RDP セッションを通じて接続できます。
 
-お役に立てれば幸いです。 今すぐ Azure でコードを工夫したインフラストラクチャを始めてください。
+よろしくお願いいたします。 今すぐ Azure でコードを工夫したインフラストラクチャを始めてください。
 
 <!--Image references-->
 [2]: media/chef-automation/2.png

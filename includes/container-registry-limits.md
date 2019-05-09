@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 08/30/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 4021d1ac5a0b3d9d9bf19e9fb7f74952f2471c30
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 844e4a0d2715799b808f2c7630c201f6e792bd63
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "49458845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124424"
 ---
 | リソース | Basic | 標準 | Premium |
-|---|---|---|---|---|
+|---|---|---|---|
 | ストレージ<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | イメージ レイヤーの最大サイズ | 20 GiB | 20 GiB | 50 GiB |
 | 1 分あたりの ReadOps<sup>2、3</sup> | 1,000 | 3,000 | 10,000 |
@@ -27,9 +27,9 @@ ms.locfileid: "49458845"
 | geo レプリケーション | 該当なし | 該当なし | [サポートされています][geo-replication] |
 | コンテンツの信頼 (プレビュー) | 該当なし | 該当なし | [サポートされています][content-trust] |
 
-<sup>1</sup> 指定された容量の上限は、各レベルに "*含まれる*" ストレージの容量です。 これらの制限を超えてイメージを保存する場合は、GiB あたりの追加料金が日単位で課金されます。 詳細については、「[Container Registry の価格][pricing]」を参照してください。
+<sup>1</sup> 指定された容量の上限は、各レベルに "*含まれる*" ストレージの容量です。 これらの制限を超えてイメージを保存する場合は、GiB あたりの追加料金が日単位で課金されます。 詳細については、[Azure Container Registry の価格][pricing]に関するページを参照してください。
 
-<sup>2</sup> *ReadOps*、*WriteOps*、および "*帯域幅*" は最小推定値です。 ACR は、使用状況で必要とするパフォーマンスの向上に努めます。
+<sup>2</sup>*ReadOps*、*WriteOps*、および "*帯域幅*" は最小推定値です。 Azure Container Registry は、使用状況で必要とするパフォーマンスの向上に努めます。
 
 <sup>3</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) は、イメージ内のレイヤー数とマニフェストの取得に基づいて、複数の読み取り操作に変換します。
 

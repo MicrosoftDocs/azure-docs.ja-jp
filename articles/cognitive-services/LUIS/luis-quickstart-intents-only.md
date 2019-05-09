@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ユーザーの意図を予測するカスタム アプリを作成します。 このアプリは、メール アドレスや日付などの発話テキストからさまざまなデータ要素を抽出しないため、最も単純な種類の LUIS アプリです。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 20cd3931488f3d3cf4728b3022316b685da3277a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754262"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593915"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -163,11 +163,15 @@ LUIS ポータルに戻り、ユーザーの発話が、仕事への応募に関
     |ホリデー配送職の書類|
     |シアトルでの新しい経理職に私の履歴書を送信してください。|
     |エンジニアのポストにレジュメを送信して|
-    |タンパでの 求人 234123 への履歴書です。|
+    |職務経歴書です。 求人 234123 への履歴書です。|
 
-    [![ApplyForJob の意図に新しい発話を入力しているスクリーンショット](media/luis-quickstart-intents-only/utterance-applyforjob.png "ApplyForJob の意図に新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+<!--
 
-    現時点ではその意図が正しいことを LUIS が判断できないため、ラベル付きの意図は赤で囲まれています。 アプリをトレーニングすることで、LUIS にその発話が正しい意図であることを指示します。 
+    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+
+    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
+
+-->
 
 ## <a name="train-again"></a>再度のトレーニング
 

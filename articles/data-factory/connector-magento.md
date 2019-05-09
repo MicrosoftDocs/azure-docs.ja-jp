@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 03757aaf13d48730a3061f07ae3138f0aadbdf00
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cecdb9f9af9c5194eb56cfefd63b31348f111980
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077853"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562761"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Magento からデータをコピーする (プレビュー)
 
@@ -45,9 +44,9 @@ Magento のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**Magento** | [はい] |
-| host | Magento インスタンスの URL。 (つまり、192.168.222.110/magento3)  | [はい] |
-| accessToken | Magento のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**Magento** | はい |
+| host | Magento インスタンスの URL。 (つまり、192.168.222.110/magento3)  | はい |
+| accessToken | Magento のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -62,8 +61,8 @@ Magento のリンクされたサービスでは、次のプロパティがサポ
         "typeProperties": {
             "host" : "192.168.222.110/magento3",
             "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
+                "type": "SecureString",
+                "value": "<accessToken>"
             },
             "useEncryptedEndpoints" : true,
             "useHostVerification" : true,
@@ -81,7 +80,7 @@ Magento からデータをコピーするには、データセットの type プ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**MagentoObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**MagentoObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -110,7 +109,7 @@ Magento からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**MagentoSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**MagentoSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Customers"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

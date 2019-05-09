@@ -1,107 +1,122 @@
 ---
-title: API コンソールでコンテンツ モデレーション ジョブを実行する - Content Moderator
+title: REST API コンソールでモデレーション ジョブを使用する - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: API コンソールでコンテンツ モデレーション ジョブを実行する方法を説明します。
+description: Review API のジョブ操作を使用して、Azure Content Moderator で画像コンテンツまたはテキスト コンテンツの徹底的なコンテンツ モデレーション ジョブを開始します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
-ms.topic: conceptual
-ms.date: 08/03/2017
+ms.subservice: content-moderator
+ms.topic: article
+ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7827cee2af2dfc0c1fddc407c1d146dc9a66c514
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227111"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756096"
 ---
-# <a name="start-a-moderation-job-from-the-api-console"></a>API コンソールでモデレーション ジョブを開始する
+# <a name="define-and-use-moderation-jobs-rest"></a>モデレーション ジョブ (REST) を定義して使用する
 
-Review API の[ジョブ操作](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)を使用して、Azure Content Moderator で画像コンテンツまたはテキスト コンテンツの徹底的なコンテンツ モデレーション ジョブを開始します。 
-
-モデレーション ジョブは、Content Moderator Image Moderation API または Text Moderation API を使用してコンテンツをスキャンします。 その後、モデレーション ジョブはワークフロー (レビュー ツールで定義) を使用して、レビュー ツールにレビューを生成します。 
-
-ヒューマン モデレーターが自動割り当てタグと予測データを確認して、最終的なモデレーション意思決定を送信した後で、Review API がすべての情報を API エンドポイントに送信します。
+モデレーション ジョブはコンテンツ モデレーション、ワークフロー、レビューの機能に対するある種のラッパーとして機能します。 このガイドでは、ジョブの REST API を使ってコンテンツ モデレーション ジョブを開始し、レビューする方法を示します。 API の構造を理解すれば、これらの呼び出しを REST と互換性のあるプラットフォームに簡単に移植することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動します。 サインアップしていない場合はサインアップします。 レビュー ツールで、この `Job` 操作で使用する[カスタム ワークフローを定義](Review-Tool-User-Guide/Workflows.md)します。
+- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、またはアカウントを作成します。
+- (省略可能) ジョブで使用するための[カスタム ワークフローを定義](./Review-Tool-User-Guide/Workflows.md)します。既定のワークフローを使用することもできます。
 
-## <a name="use-the-api-console"></a>API コンソールを使用する
-オンライン コンソールを使用して API を試験的に運用するには、次のいくつかの値をコンソールに入力する必要があります。
-    
-- `teamName`: レビュー ツールの資格情報画面の `Id` フィールドを使用します。 
-- `ContentId`: この文字列は API に渡され、コールバックで返されます。 **ContentId** は、内部識別子またはメタデータをモデレーション ジョブの結果に関連付ける際に役立ちます。`Workflowname`: 前のセクションで[作成したワークフロー](Review-Tool-User-Guide/Workflows.md)の名前。
-- `Ocp-Apim-Subscription-Key`: **[設定]** タブにあります。詳細については、[概要](overview.md)に関するページをご覧ください。
+## <a name="create-a-job"></a>ジョブを作成する
 
-**[資格情報]** ウィンドウから API コンソールにアクセスします。
+モデレーション ジョブを作成するには、「[Job - Create](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)」API リファレンス ページに移動し、ご自分の主なリージョンのボタン ([レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の **[資格情報]** ページのエンドポイント URL 内にあります) を選択します。 これにより API コンソールが開始されます。ここで REST API 呼び出しを簡単に構築し実行することができます。
 
-### <a name="navigate-to-the-api-reference"></a>API リファレンスにナビゲートする
-**[資格情報]** ウィンドウで [[API reference]\(API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) を選択します。
+![「Job - Create」ページ上のリージョンの選択](images/test-drive-job-1.png)
 
-  `Job.Create` ページが開きます。
+### <a name="enter-rest-call-parameters"></a>REST 呼び出しパラメーターを入力する
 
-### <a name="select-your-region"></a>リージョンを選択する
-**[Open API testing console]\(API テスト コンソールを開く\)** で、実際の場所に最もあてはまるリージョンを選択します。
-  ![「Job - Create」ページのリージョン選択肢](images/test-drive-job-1.png)
+REST 呼び出しを作成するには、次の値を入力します。
 
-  `Job.Create` API コンソールが開きます。 
+- **teamName**:[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) アカウントの設定時に作成したチーム ID (レビュー ツールの [資格情報] 画面の **[ID]** フィールド内にあります)。
+- **ContentType**: "Image"、"Text"、または "Video" を指定できます。
+- **ContentId**:カスタム識別子の文字列。 この文字列は API に渡され、コールバックで返されます。 これは、内部識別子またはメタデータをモデレーション ジョブの結果に関連付けるために役立ちます。
+- **Workflowname**: 以前に作成したワークフローの名前 (既定のワークフローの場合は "default")。
+- **CallbackEndpoint**: (省略可能) レビューが完了したときにコールバック情報を受信する URL。
+- **Ocp-Apim-Subscription-Key**: Content Moderator のキー。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[設定]** タブ内にあります。
 
-### <a name="enter-parameters"></a>パラメーターを入力する
+### <a name="fill-in-the-request-body"></a>要求本文を入力する
 
-必須のクエリ パラメーターとサブスクリプション キーの値を入力します。 **[要求本文]** ボックスで、スキャンしようとする情報の場所を指定します。 この例では、この[サンプル画像](https://moderatorsampleimages.blob.core.windows.net/samples/sample6.png)を使用します。
+REST 呼び出しの本文には、1 つのフィールド **[ContentValue]** が含まれています。 テキストのモデレーションを行っている場合は未加工のテキストの内容を貼り付け、イメージ/ビデオのモデレーションを行っている場合はイメージまたはビデオの URL を入力します。 サンプル イメージの URL ([https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)) を使用することができます。
 
-  ![[Job - Create]\(Job - Create\) コンソールの [クエリ パラメーター]、[ヘッダー]、および [要求本文] ボックス](images/job-api-console-inputs.PNG)
+![[Job - Create]\(Job - Create\) コンソールの [クエリ パラメーター]、[ヘッダー]、および [要求本文] ボックス](images/job-api-console-inputs.PNG)
 
 ### <a name="submit-your-request"></a>要求を送信する
-**[送信]** を選択します。 ジョブ ID が作成されます。 次の手順で使用するためにコピーします。
 
-  `"JobId": "2018014caceddebfe9446fab29056fd8d31ffe"`
+**[送信]** を選択します。 操作が成功すると、**[応答の状態]** は `200 OK` になり、**[応答のコンテンツ]** ボックスにはジョブの ID が表示されます。 次の手順で使用するためにこの ID をコピーします。
 
-### <a name="open-the-get-job-details-page"></a>[取得] の [ジョブの詳細] ページを開く
-**[取得]** を選択し、リージョンと一致するボタンを選択して API を開きます。
+![[Review - Create]\(Review - Create\) コンソールの [応答のコンテンツ] ボックスに表示されるレビュー ID](images/test-drive-job-3.PNG)
 
-  ![[Job - Create]\(Job - Create\) コンソールの取得結果](images/test-drive-job-4.png)
+## <a name="get-job-status"></a>ジョブの状態の取得
 
-### <a name="review-the-response"></a>応答を確認する
+実行中または完了したジョブの状態と詳細を取得するには、「[Job - Get](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3)」API リファレンス ページに移動し、ご自分のリージョン (キーが管理されているリージョン) のボタンを選択します。
 
-**teamName** と **JobID** の値を入力します。 サブスクリプション キーを入力して、**[送信]** を選択します。 次の応答には、サンプルのジョブ ステータスと詳細が表示されます。
+![「Job - Get」のリージョン選択肢](images/test-drive-region.png)
 
-```
-    {
-        "Id": "2018014caceddebfe9446fab29056fd8d31ffe",
-        "TeamName": "some team name",
-        "Status": "InProgress",
-        "WorkflowId": "OCR",
-        "Type": "Image",
-        "CallBackEndpoint": "",
-        "ReviewId": "",
-        "ResultMetaData": [],
-        "JobExecutionReport": 
-        [
-            {
-            "Ts": "2018-01-07T00:38:26.7714671",
-                "Msg": "Successfully got hasText response from Moderator"
-            },
-            {
-                "Ts": "2018-01-07T00:38:26.4181346",
-                "Msg": "Getting hasText from Moderator"
-            },
-            {
-                "Ts": "2018-01-07T00:38:25.5122828",
-                "Msg": "Starting Execution - Try 1"
-            }
-        ]
+上記のセクションと同様に、REST 呼び出しパラメーターを入力します。 この手順で、**JobId** はジョブを作成するときに受信した一意の ID 文字列です。 **[送信]** を選択します。 操作が成功すると、**[応答の状態]** は `200 OK` になり、**[応答のコンテンツ]** ボックスには次のような JSON 形式のジョブが表示されます。
+
+```json
+{  
+  "Id":"2018014caceddebfe9446fab29056fd8d31ffe",
+  "TeamName":"some team name",
+  "Status":"Complete",
+  "WorkflowId":"OCR",
+  "Type":"Image",
+  "CallBackEndpoint":"",
+  "ReviewId":"201801i28fc0f7cbf424447846e509af853ea54",
+  "ResultMetaData":[  
+    {  
+      "Key":"hasText",
+      "Value":"True"
+    },
+    {  
+      "Key":"ocrText",
+      "Value":"IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n"
     }
+  ],
+  "JobExecutionReport":[  
+    {  
+      "Ts":"2018-01-07T00:38:29.3238715",
+      "Msg":"Posted results to the Callbackendpoint: https://requestb.in/vxke1mvx"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:29.2928416",
+      "Msg":"Job marked completed and job content has been removed"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:29.0856472",
+      "Msg":"Execution Complete"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:26.7714671",
+      "Msg":"Successfully got hasText response from Moderator"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:26.4181346",
+      "Msg":"Getting hasText from Moderator"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:25.5122828",
+      "Msg":"Starting Execution - Try 1"
+    }
+  ]
+}
 ```
 
-## <a name="navigate-to-the-review-tool"></a>レビュー ツールに移動する
-Content Moderator ダッシュボードで、**[確認]** > **[イメージ]** を選択します。 スキャンした画像がヒューマン レビューのために表示されます。
+![「Job - Get」の REST 呼び出しの応答](images/test-drive-job-5.png)
 
-  ![3 人が自転車に乗っているレビュー ツールの画像](images/ocr-sample-image.PNG)
+### <a name="examine-the-new-reviews"></a>新しいレビューを確認する
+
+コンテンツ ジョブの結果、レビューが作成された場合は、これを[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で確認することができます。 **[レビュー]** > **[Image]**/**[Text]**/**[Video]** を (使用したコンテンツに応じて) 選択します。 コンテンツが表示され、人によるレビューが可能な状態になります。 人間のモデレーターが自動割り当てタグと予測データをレビューして、最終的なモデレーション意思決定を送信した後で、ジョブ API がすべての情報を指定されたコールバック エンドポイントに送信します。
 
 ## <a name="next-steps"></a>次の手順
 
-コードで REST API を使用するか、[ジョブに関する .NET のクイック スタート](moderation-jobs-quickstart-dotnet.md) から開始して、アプリケーションと統合します。
+このガイドでは、REST API を使用してコンテンツ モデレーション ジョブの作成とクエリを行う方法について説明しました。 次は、ジョブを [eコマース モデレーション](./ecommerce-retail-catalog-moderation.md) チュートリアルのようなエンドツーエンドのモデレーション シナリオに統合します。

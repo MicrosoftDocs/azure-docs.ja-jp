@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d14f03be3f6d62c201218f5073ba9af61765f55c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7b3b4e0886f561cc66e2c02e4ea354c86b34453c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136445"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904186"
 ---
 # <a name="heading"></a>
 このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。
@@ -36,7 +36,7 @@ ms.locfileid: "53136445"
 SQL Server のデータ ストアの探索に使用できるいくつかのサンプル SQL スクリプトを次に示します。
 
 > [!NOTE]
-> 実用的な例として、[NYC タクシー データセット](http://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
+> 実用的な例として、[NYC タクシー データセット](https://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
 > 
 > 
 
@@ -82,7 +82,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 ### <a name="sql-featurerollout"></a>1 つの列からの特徴の展開
 このセクションでは、テーブル内の 1 つの列を展開して追加の特徴を生成する方法を示します。 この例は、特徴を生成しようとするテーブルに、緯度や経度の列があることを前提としています。
 
-緯度と経度の位置データ (リソースは stackoverflow の「 [How to measure the accuracy of latitude and longitude? (緯度と経度の精度を測定する方法)](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)」) の簡単な概要を次に示します。 これは、Featurize する前に [場所] フィールドを理解するうえで役立ちます。
+緯度と経度の位置データ (リソースは stackoverflow の「 [How to measure the accuracy of latitude and longitude? (緯度と経度の精度を測定する方法)](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)」) の簡単な概要を次に示します。 これは、Featurize する前に [場所] フィールドを理解するうえで役立ちます。
 
 * 記号は、私たちが地球の北半球か南半球、東半球か西半球、それぞれどちらにいるかを示します。
 * 100 の位が 0 でなければ、それは経度を使用していることを示します。緯度ではありません。
@@ -129,10 +129,10 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python の [Pandas ライブラリ](http://pandas.pydata.org/) には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。 次のコードは、SQL Server データベースから返される結果を Pandas データ フレームに読み取ります。
+Python の [Pandas ライブラリ](https://pandas.pydata.org/) には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。 次のコードは、SQL Server データベースから返される結果を Pandas データ フレームに読み取ります。
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
 これで、「[データ サイエンス環境で Azure BLOB データを処理する](data-blob.md)」の記事で扱うとおりに Pandas データ フレームを操作できるようになりました。
 

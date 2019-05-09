@@ -1,22 +1,22 @@
 ---
-title: 'サービス間認証: Azure Data Lake Storage Gen1 と Azure Active Directory | Microsoft Docs'
+title: 'サービス間認証: Azure Active Directory での Azure Data Lake Storage Gen1 の認証 | Microsoft Docs'
 description: Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ec5d469ba0708288881be3d905b492aa8aa4da6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956616"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58884994"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory を使用した Azure Data Lake Storage Gen1 に対するサービス間認証
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-## <a name="step-1-create-an-active-directory-web-application"></a>手順 1: Active Directory Web アプリケーションを作成する
+## <a name="step-1-create-an-active-directory-web-application"></a>手順 1:Active Directory Web アプリケーションを作成する
 
 Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサービス間認証を行う Azure AD Web アプリケーションを作成および構成する方法について説明します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
 
@@ -45,14 +45,14 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 
 ![Web アプリの作成](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "Web アプリの作成")
 
-## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>手順 2: アプリケーション ID、認証キー、テナント ID を取得する
+## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>手順 2:アプリケーション ID、認証キー、テナント ID を取得する
 プログラムによってログインするときは、アプリケーションの ID が必要です。 アプリケーションがその独自の資格情報で動作する場合は、さらに認証キーが必要となります。
 
 * アプリケーションのアプリケーション ID と認証キー (クライアント シークレットとも呼ばれる) を取得する方法については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」を参照してください。
 
 * テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」を参照してください。
 
-## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>手順 3: Azure AD アプリケーションを Azure Data Lake Storage Gen1 アカウントのファイルまたはフォルダーに割り当てる
+## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>手順 3:Azure AD アプリケーションを Azure Data Lake Storage Gen1 アカウントのファイルまたはフォルダーに割り当てる
 
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。 上記で作成した Azure Active Directory アプリケーションに関連付ける Data Lake Storage Gen1 アカウントを開きます。
@@ -85,7 +85,7 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 > 
 >
 
-## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>手順 4: OAuth 2.0 トークン エンドポイントを取得する (Java ベースのアプリケーションのみ)
+## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>手順 4:OAuth 2.0 トークン エンドポイントを取得する (Java ベースのアプリケーションのみ)
 
 1. [Azure Portal](https://portal.azure.com) にサインオンし、左ウィンドウの [Active Directory] をクリックします。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9d3b1c14ce872cd02fc8d4a8c2596d7d1e270895
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754375"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58893709"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする
 
@@ -21,7 +21,7 @@ ms.locfileid: "53754375"
 
 「内部ループ」開発サイクルは、コードの記述、ビルド、およびソース管理にコミットする前のアプリケーションのテストの反復的なプロセスです。 クイック タスクは「内部ループ」をクラウドに拡張し、ビルド成功の検証と、正常にビルドされたイメージのコンテナー レジストリへの自動プッシュを提供します。 イメージは、お使いのレジストリの近くのクラウドにネイティブにビルドされるため、デプロイが高速化されます。
 
-Dockerfile に関する専門知識をすべて、ACR Task に直接転送できます。 ACR Task を使用してクラウドにビルドするために Dockerfile を変更する必要はありません。必要なのはコマンドの実行だけです。
+Dockerfile に関する専門知識をすべて、ACR Task に直接転送できます。 ACR Task を使用してクラウドにビルドするために Dockerfile を変更する必要はありません。必要なのはコマンドの実行だけです。 
 
 このチュートリアルでは、シリーズの第 1 部で次のことを行います。
 
@@ -30,7 +30,7 @@ Dockerfile に関する専門知識をすべて、ACR Task に直接転送でき
 > * Azure でコンテナー イメージをビルドする
 > * コンテナーを Azure Container Instances にデプロイする
 
-以降のチュートリアルでは、コードのコミット時と基本イメージ更新時に自動化されたコンテナー イメージ ビルド用に ACR Task を使用する方法を説明します。
+以降のチュートリアルでは、コードのコミット時と基本イメージ更新時に自動化されたコンテナー イメージ ビルド用に ACR Task を使用する方法を説明します。 ACR タスクでは、[複数ステップ タスク](container-registry-tasks-multi-step.md)を実行することもできます。その場合、YAML ファイルを使用して、複数のコンテナーをビルド、プッシュ、および (必要に応じて) テストする手順を定義します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

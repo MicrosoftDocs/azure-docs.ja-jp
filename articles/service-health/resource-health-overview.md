@@ -1,25 +1,18 @@
 ---
 title: Azure Resource Health の概要 | Microsoft Docs
 description: Azure Resource Health の概要
-services: Resource health
-documentationcenter: ''
 author: stephbaron
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/16/2018
-ms.author: stbaron
-ms.openlocfilehash: 918ff674e57a14f685c7f9ef2aaaca5ca064976e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d2a77e831290aa1ee0fcb6d4addf8f6e90786d52
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012846"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858911"
 ---
 # <a name="azure-resource-health-overview"></a>Azure Resource Health の概要
  

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9414d9c93fe463910ffa6fce72aada6a0d720464
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103957"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816494"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
 
@@ -46,7 +46,7 @@ HTTP セッション経由の Windows PowerShell for StorSimple への接続は�
 
 Azure Portal またはシリアル コンソールを使用してリモート管理を構成できます。 次の手順から選択してください。
 
-* [Azure Portal を使用して HTTP 経由でリモート管理を有効にする](#use-the-azure-classic-portal-to-enable-remote-management-over-http)
+* Azure Portal を使用して HTTP 経由でリモート管理を有効にする
 * [シリアル コンソールを使用して HTTP 経由でリモート管理を有効にする](#use-the-serial-console-to-enable-remote-management-over-http)
 
 リモート管理を有効にした後、次の手順に従ってリモート接続用のクライアントを準備します。
@@ -105,7 +105,7 @@ Azure Portal で、次の手順に従って、HTTP 経由でのリモート管�
 4. 表示されるダイアログ ボックスで、次の操作を行います。
    
    1. ユーザー名を *device_ip\SSAdmin*の形式で入力します。
-   2. セットアップ ウィザードでデバイスを構成したときに設定したデバイスの管理者パスワードを入力します。 既定のパスワードは *Password1*です。
+   2. セットアップ ウィザードでデバイスを構成したときに設定したデバイスの管理者パスワードを入力します。 既定のパスワードは *Password1* です。
 5. 次のコマンドを入力して、デバイスの Windows PowerShell セッションを開始します。
    
      `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
@@ -124,7 +124,7 @@ HTTPS セッション経由での Windows PowerShell for StorSimple への接続
 
 Azure Portal またはシリアル コンソールを使用してリモート管理を構成できます。 次の手順から選択してください。
 
-* [Azure Portal を使用して HTTPS 経由でリモート管理を有効にする](#use-the-azure-classic-portal-to-enable-remote-management-over-https)
+* Azure Portal を使用して HTTPS 経由でリモート管理を有効にする
 * [シリアル コンソールを使用して HTTPS 経由でのリモート管理を有効にする](#use-the-serial-console-to-enable-remote-management-over-https)
 
 リモート管理を有効にした後、次の手順に従ってリモート管理用のホストを準備し、リモート ホストからデバイスに接続します。
@@ -203,7 +203,7 @@ HTTPS セッションを使用するリモート接続のホスト コンピュ�
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>デバイスのシリアル番号をリモート ホストに追加するには
 1. メモ帳を管理者として起動し、\Windows\System32\Drivers\etc にあるホスト ファイルを開きます。
-2. 次の 3 つのエントリを hosts ファイルに追加します。**DATA 0 の IP アドレス**、**コントローラー 0 の固定 IP アドレス**、および**コントローラー 1 の固定 IP アドレス**。
+2. hosts ファイルに**DATA 0 の IP アドレス**、**コントローラー 0 の固定 IP アドレス**、および**コントローラー 1 の固定 IP アドレス**という 3 つのエントリを追加します。
 3. 前に保存したデバイスのシリアル番号を入力します。 次の図に示すように、IP アドレスにマップします。 **コントローラー 0** と**コントローラー 1** の場合は、シリアル番号 (CN 名) の末尾に Controller0 と Controller1 を追加します。
    
     ![hosts ファイルへの CN 名の追加](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)

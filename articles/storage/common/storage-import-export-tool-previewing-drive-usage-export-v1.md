@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 21c0fd9b258100e769172332713769024fb12969
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 53ab1e28c5864b403d52bf5e73f0c5c41b8f18a8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520573"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454744"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>エクスポート ジョブのドライブ使用率のプレビュー
 エクスポート ジョブを作成する前に、エクスポートする一連の BLOB を選択する必要があります。 Microsoft Azure Import/Export サービスを使用すると、BLOB のパスの一覧や BLOB プレフィックスを使用して、選択した BLOB を表すことができます。  
@@ -30,7 +30,7 @@ Import/Export ツールの `PreviewExport` コマンドを使用するときに�
 |**/sn:**<StorageAccountName\>|必須。 エクスポート ジョブのストレージ アカウント名です。|  
 |**/sk:**<StorageAccountKey\>|コンテナー SAS が指定されていない場合のみ必須。 エクスポート ジョブのストレージ アカウントのアカウント キーです。|  
 |**/csas:**<ContainerSas\>|ストレージ アカウント キーが指定されていない場合のみ必須。 エクスポート ジョブでエクスポートされる BLOB を一覧表示するためのコンテナー SAS です。|  
-|**/ExportBlobListFile:**<ExportBlobListFile\>|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|  
+|**/ExportBlobListFile:**<ExportBlobListFile\>|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|  
 |**/DriveSize:**<DriveSize\>|必須。 エクスポート ジョブに使用するドライブのサイズ (*例:* 500 GB、1.5 TB)。|  
 
 ## <a name="command-line-example"></a>コマンドラインの例

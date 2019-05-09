@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 画像に関して Bing Visual Search が返す既定の分析情報の詳細について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: cf0b53d13e65b0815c0501a70570788f7be599b1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883400"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799203"
 ---
 # <a name="default-insights-tag"></a>既定の分析情報タグ
 
@@ -100,7 +100,7 @@ ms.locfileid: "48883400"
 
 ## <a name="pagesincluding-insight"></a>PagesIncluding 分析情報
 
-PagesIncluding 分析情報は、この画像を含む Web ページの一覧を示します。 実際に表示されるのは、Image オブジェクトと、その画像を含む Web ページの URL が設定された `hostPageUrl` フィールドの一覧です。 使用例については、[PagesIncluding の例](./bing-insights-usage.md#pagesincluding-insight-example)を参照してください。 
+PagesIncluding 分析情報は、この画像を含む Web ページの一覧を示します。 実際に表示されるのは、`Image` オブジェクトと、その画像を含む Web ページの URL が設定された `hostPageUrl` フィールドの一覧です。 使用例については、[PagesIncluding 分析情報の例](./bing-insights-usage.md#pagesincluding-insight-example)に関するページを参照してください。
 
 ```json
       {
@@ -166,10 +166,9 @@ ShoppingSources 分析情報は、画像に表示されたアイテムをユー�
       }
 ```
 
-
 ## <a name="moresizes-insight"></a>MoreSizes 分析情報
 
-MoreSizes 分析情報は、Bing がインターネット上で検出した画像のサイズの数 (大きいか小さいか) を示します (`availableSizesCount` フィールドを参照)。
+MoreSizes 分析情報は、Bing がインターネット上で検出した画像サイズの数 (大きいか小さいか) を示します (`availableSizesCount` フィールドを参照)。
 
 ```json
       {
@@ -204,7 +203,7 @@ MoreSizes 分析情報は、Bing がインターネット上で検出した画�
 
 ## <a name="visualsearch-insight"></a>VisualSearch 分析情報
 
-VisualSearch 分析情報は、元の画像と見た目が似ている (元の画像で表示されるコンテンツと類似したコンテンツを含む) 画像の一覧を示します。 使用例については、[VisualSearch の例](./bing-insights-usage.md#visualsearch-insight-example)を参照してください。
+VisualSearch 分析情報は、元の画像と見た目が似ている (元の画像で表示されるコンテンツと類似したコンテンツを含む) 画像の一覧を示します。 使用例については、[VisualSearch 分析情報の例](./bing-insights-usage.md#visualsearch-insight-example)に関するページを参照してください。
 
 ```json
       {
@@ -244,7 +243,7 @@ VisualSearch 分析情報は、元の画像と見た目が似ている (元の�
 
 ## <a name="recipes-insight"></a>Recipes 分析情報
 
-Recipes 分析情報は、画像に表示されている料理のレシピを含む Web ページの一覧を示します。 使用例については、[Recipes の例](./bing-insights-usage.md#recipes-insight-example)を参照してください。
+Recipes 分析情報は、画像に表示されている料理のレシピを含む Web ページの一覧を示します。 使用例については、[Recipes 分析情報の例](./bing-insights-usage.md#recipes-insight-example)に関するページを参照してください。
 
 ```json
       {
@@ -279,7 +278,7 @@ Recipes 分析情報は、画像に表示されている料理のレシピを含
 
 ## <a name="imagebyid-insight"></a>ImageById 分析情報
 
-ImageById 分析情報は、分析情報を要求した画像の `Image` オブジェクトを表示します。
+ImageById 分析情報では、分析情報を要求した画像の `Image` オブジェクトが表示されます。
 
 ```json
       {
@@ -312,10 +311,9 @@ ImageById 分析情報は、分析情報を要求した画像の `Image` オブ�
       },
 ```
 
-
 ## <a name="productvisualsearch-insight"></a>ProductVisualSearch 分析情報
 
-ProductVisualSearch 分析情報は、元の画像に表示される製品と見た目が似ている製品の画像の一覧を示します。 `insightsMetadata` フィールドには、その製品を購入できる場所や製品価格に関する情報が含まれる場合があります。 
+ProductVisualSearch 分析情報は、元の画像に表示される製品と見た目が似ている製品の画像の一覧を示します。 `insightsMetadata` フィールドには、その製品を購入できる場所や製品価格に関する情報が含まれる場合があります。
 
 ```json
       {
@@ -377,11 +375,9 @@ ProductVisualSearch 分析情報は、元の画像に表示される製品と見
       }
 ```
 
-
 ## <a name="relatedsearches-insight"></a>RelatedSearches 分析情報
 
-RelatedSearches 分析情報は、他のユーザーが独自の検索語句を使用して実行した、関連する検索の一覧を示します。 使用例については、[RelatedSearches の例](./bing-insights-usage.md#relatedsearches-insight-example)を参照してください。
-
+RelatedSearches 分析情報は、他のユーザーが独自の検索語句を使用して実行した、関連する検索の一覧を示します。 使用例については、[RelatedSearches 分析情報の例](./bing-insights-usage.md#relatedsearches-insight-example)に関するページを参照してください。
 
 ```json
       {
@@ -402,10 +398,9 @@ RelatedSearches 分析情報は、他のユーザーが独自の検索語句を�
       }
 ```
 
-
 ## <a name="documentlevelsuggestions-insight"></a>DocumentLevelSuggestions 分析情報
 
-DocumentLevelSuggestions 分析情報は、画像のコンテンツに基づいて提案される検索語句の一覧を示します。 
+DocumentLevelSuggestions 分析情報は、画像のコンテンツに基づいて提案される検索語句の一覧を示します。
 
 ```json
       {
@@ -426,10 +421,8 @@ DocumentLevelSuggestions 分析情報は、画像のコンテンツに基づい�
       }
 ```
 
-
-
 ## <a name="next-steps"></a>次の手順
 
-視覚化された分析情報の Bing での表示例を確認します ([Bing 分析情報の使用例](bing-insights-usage.md)に関するページを参照)。
+Bing で視覚化された分析情報がどのように表示されるかについては、[Bing 分析情報の使用例](bing-insights-usage.md)に関するページを参照してください。
 
-実際に要求を送信してみるには、クイック スタートを参照してください。[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
+実際に要求を送信してみるには、クイック スタートを参照してください:[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。

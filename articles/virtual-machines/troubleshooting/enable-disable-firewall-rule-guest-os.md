@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cb2c548a94a91fe9126f684e382e9626adb93dd6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853071"
 ---
-# <a name="enable-or-disable-a-firewall-rule-on-a-azure-vm-guest-os"></a>Azure VM のゲスト OS 上のファイアウォール規則を有効または無効にする
+# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Azure VM のゲスト OS 上のファイアウォール規則を有効または無効にする
 
 この記事では、ゲスト オペレーティング システム ファイアウォールが仮想マシン (VM) で一部のトラフィックをフィルター処理する疑いがある場合のトラブルシューティング用の参照事項を提供します。 これが役立つと言える理由：
 
@@ -107,7 +107,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
     
         次に、文字列で**Active = FALSE**を**Active = TRUE**に変更します：
 
-        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
     
     * ルールを無効にするには、次のレジストリ値を開きます：
     
@@ -115,7 +115,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
         次に、**Active = TRUE**を**Active = FALSE**に変更:
         
-        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
 3.  変更を適用するには VM を再起動します。
 
@@ -154,7 +154,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
         
         次に、**Active = FALSE**を**Active = True**に変更します。
         
-        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
     3.  ルールを無効にするには、次のレジストリ キーを開きます：
 
@@ -162,10 +162,10 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
         次に、**Active = True**を**Active = FALSE**に変更します。
         
-        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
 9.   **BROKENSYSTEM**をハイライトし、メニューから **ファイル** > **Hive のアンロード** を選択します。
 
 10. [システム ディスクをデタッチし、VM を再作成します](troubleshoot-recovery-disks-portal-windows.md)。
 
-11. 問題が解決されているかどうかを確認します。
+11. 問題が解決しているかどうかを確認します。

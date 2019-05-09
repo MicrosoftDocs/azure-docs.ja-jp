@@ -8,19 +8,19 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: b120d50b6b0f72b5977d238866cfdf26fd9be5ff
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 04/19/2019
+ms.openlocfilehash: 8a568302b2fd8ed0140c2ad084495d41cc09ed8f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436893"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994590"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要
 
 これまでに、Azure HDInsight では、単一ユーザーのローカル管理者のみをサポートしていました。これは、小規模なアプリケーション チームや部門に適していました。 Apache Hadoop ベースのワークロードがエンタープライズ部門に普及するに伴い、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御などのエンタープライズ レベルの機能の必要性がますます重要になっています。 
 
-Active Directory ドメインに参加する HDInsight クラスターを、Enterprise セキュリティ パッケージ (ESP) を使用して作成できます。 Azure Active Directory を使って HDInsight クラスターへのログオンを認証できる企業の従業員の一覧を構成できるようになります。 社外のユーザーは、HDInsight クラスターにログオンすることもアクセスすることもできません。 
+Active Directory ドメインに参加する HDInsight クラスターを、Enterprise セキュリティ パッケージ (ESP) を使用して作成できます。 その後、Azure Active Directory を介した認証を通じて HDInsight クラスターにサインインできる企業の従業員の一覧を構成できるようになります。 社外のユーザーは、HDInsight クラスターにサインインすることもアクセスすることもできません。 
 
 エンタープライズ管理者は、[Apache Ranger](https://hortonworks.com/apache/ranger/) を使用して Apache Hive のセキュリティを確保するためのロールベースのアクセス制御 (RBAC) を構成できます。 RBAC を構成すると、必要な内容へのデータ アクセスのみに制限されます。 最後に、管理者は従業員によるデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。 その後、管理者は企業リソースにおいて高度なガバナンスを実現できます。
 
@@ -39,7 +39,7 @@ HDInsight の境界セキュリティは、仮想ネットワークと Azure VPN
 ## <a name="authentication"></a>Authentication
 エンタープライズ管理者は、ESP を使用する HDInsight クラスターを[仮想ネットワーク](https://azure.microsoft.com/services/virtual-network/)に作成できます。 HDInsight クラスターのノードはすべて、企業が管理するドメインに参加することになります。 これは、[Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md) を使用して実現されます。 
 
-この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにログオンできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。 管理者は、これらのエンドポイントを使用してクラスターを操作するユーザーの数の制限を完全に制御できます。
+この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにサインインできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。 管理者は、これらのエンドポイントを使用してクラスターを操作するユーザーの数の制限を完全に制御できます。
 
 ## <a name="authorization"></a>Authorization
 ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにはアクセスできないようにするベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 
@@ -56,7 +56,7 @@ ESP を使用する HDInsight クラスターでは、使い慣れた Apache Ran
 ## <a name="encryption"></a>暗号化
 データの保護は、組織のセキュリティとコンプライアンス要件を満たすために重要です。 許可されていない従業員からデータへのアクセスを制限すると共に、暗号化する必要があります。 
 
-HDInsight クラスターのデータ ストア (Azure BLOB ストレージおよび Azure Data Lake Storage Gen1) はどちらも、保存データの透過的なサーバー側[暗号化](../../storage/common/storage-service-encryption.md)をサポートしています。 セキュリティで保護された HDInsight クラスターは、この保存データのサーバー側暗号化の機能とシームレスに連携します。
+HDInsight クラスターのデータ ストア (Azure BLOB ストレージおよび Azure Data Lake Storage Gen1/Gen2) はどちらも、保存データの透過的なサーバー側[暗号化](../../storage/common/storage-service-encryption.md)をサポートしています。 セキュリティで保護された HDInsight クラスターは、この保存データのサーバー側暗号化の機能とシームレスに連携します。
 
 ## <a name="next-steps"></a>次の手順
 

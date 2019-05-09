@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164417"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59282323"
 ---
 # <a name="create-and-clone-projects"></a>プロジェクトの作成と複製
 
@@ -30,11 +30,11 @@ Azure Notebooks では、Jupyter ノートブックや関連するファイル�
 
 `https://notebooks.azure.com/<userID>/projects` の **[マイ プロジェクト]** は、プロジェクトの表示、管理、および作成を行う場所です。
 
-[![](media/my-projects-dashboard.png "Azure Notebooks の [マイ プロジェクト] ダッシュボード")](media/my-projects-dashboard.png#lightbox)
+[![Azure Notebooks の [マイ プロジェクト] ダッシュボード](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 ダッシュボードで実行できることは、ユーザー ID を所有するアカウントでサインインしているかどうかによって変わります。
 
-| コマンド | 対象 | 説明 |
+| command | 対象 | 説明 |
 | --- | --- | --- |
 | **Run** | Owner | プロジェクト サーバーを起動し、Jupyter でプロジェクト フォルダーを開きます  (さらに一般的な手順では、まずプロジェクト フォルダーに移動して、そこからノートブックを開始します)。 |
 | **ダウンロード** | Anyone | 選択したプロジェクトのコピーを ZIP ファイルとしてダウンロードします。 |
@@ -49,7 +49,7 @@ Azure Notebooks では、Jupyter ノートブックや関連するファイル�
 
 **[共有]** コマンドを使用し、**[埋め込み]** タブを選択すると、"ノートブックの起動" バッジを作成する HTML コードまたはマークダウンをコピーできます。
 
-![ノートブックの起動バッジ ](https://notebooks.azure.com/launch.png)
+![ノートブックの起動バッジ](https://notebooks.azure.com/launch.png)
 
 Azure Notebooks プロジェクトがまだない場合は、次のテンプレートを使用し、適切なユーザー名とリポジトリ名を置き換えることで、GitHub ディレクトリから複製するリンクを作成することができます。
 
@@ -68,9 +68,25 @@ Azure Notebooks プロジェクトがまだない場合は、次のテンプレ�
 | フィールド | 説明 |
 | --- | --- |
 | プロジェクト名 | Azure Notebooks が表示目的で使用する、ご自身のプロジェクトのフレンドリ名。 たとえば、「My Notebook Project」などです。 |
-| プロジェクト ID | プロジェクトの共有に使用するカスタム識別子。URL の一部として使用されます。 この ID には、文字、数字、およびハイフンのみを使用できます。また、30 文字に制限されています。 何を使用すればよいかよくわからない場合は、"my-notebook-project" のように、プロジェクトを小文字にしてスペースをハイフンに変えたバージョンを使用するのが一般的な慣例です (長さの制限に合わせて必要に応じて短くします)。 |
+| プロジェクト ID | プロジェクトの共有に使用するカスタム識別子。URL の一部として使用されます (形式: `https://notebooks.azure.com/<user_id>/projects/<project_id>`)。 この ID には、文字、数字、およびハイフンのみを使用できます。長さは 30 文字に制限されています。また、この ID は[予約済みプロジェクト ID](#reserved-project-ids) にすることはできません。 何を使用すればよいかよくわからない場合は、"my-notebook-project" のように、プロジェクトを小文字にしてスペースをハイフンに変えたバージョンを使用するのが一般的な慣例です (長さの制限に合わせて必要に応じて短くします)。 |
 | パブリック | 設定すると、リンクを持つすべてのユーザーがプロジェクトにアクセスできます。 プライベート プロジェクトを作成する場合、このオプションはオフにします。 |
 | Initialize this project with a README (このプロジェクトを README を含めて初期化する) | 設定すると、プロジェクト内に既定の *README.md* ファイルが作成されます。 *README.md* ファイルは、必要に応じてプロジェクトのドキュメントを用意する場所です。 |
+
+### <a name="reserved-project-ids"></a>予約済みプロジェクト ID
+
+以下の予約語は、そのものはプロジェクト ID としては使用できません。 ただし、これらの予約語は、より長いプロジェクト ID の一部として使用できます。
+
+| | | | | | |
+| --- | --- | --- | --- | --- | --- |
+| about | account | administration | api | blog | classroom |
+| content | dashboard | explore | faq | help | html |
+| home | import | library | management | new | notebook |
+| notebooks | pdf | preview | 価格 | [プロファイル] | 検索 |
+| status | support | テスト | | | |
+
+これらの語のいずれかをプロジェクト ID として使用しようとすると、「**新しいプロジェクトの作成**」および「**プロジェクトの設定**」ポップアップに「Library id is a reserved identifier.(ライブラリ ID は予約済み ID です)」と表示されます。
+
+プロジェクト ID はプロジェクトの URL の一部でもあるため、ad blocker ソフトウェアは「advert」などの特定のキーワードの使用をブロックする可能性があります。 そのような場合は、プロジェクト ID の別の語を使用してください。
 
 ## <a name="import-a-project-from-github"></a>GitHub からプロジェクトをインポートする
 
@@ -81,7 +97,7 @@ Azure Notebooks プロジェクトがまだない場合は、次のテンプレ�
 | GitHub リポジトリ | github.com 上のソース リポジトリの名前。 たとえば、[https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) の Azure Cognitive Services 用に Jupyter ノートブックを複製するには、「Microsoft/cognitive-services-notebooks」と入力します。  |
 | Clone recursively (再帰的に複製する) | GitHub リポジトリには、複数の子リポジトリを含めることができます。 親リポジトリとそのすべての子を複製する場合は、このオプションを設定します。 1 つのリポジトリに複数の子が存在する可能性があるので、必要な場合以外はこのオプションをオフのままにしてください。 |
 | プロジェクト名 | Azure Notebooks が表示目的で使用する、ご自身のプロジェクトのフレンドリ名。 |
-| プロジェクト ID | プロジェクトの共有に使用するカスタム識別子。URL の一部として使用されます。 この ID には、文字、数字、およびハイフンのみを使用できます。 |
+| プロジェクト ID | プロジェクトの共有に使用するカスタム識別子。URL の一部として使用されます (形式: `https://notebooks.azure.com/<user_id>/projects/<project_id>`)。 この ID には、文字、数字、およびハイフンのみを使用できます。長さは 30 文字に制限されています。また、この ID は[予約済みプロジェクト ID](#reserved-project-ids) にすることはできません。 何を使用すればよいかよくわからない場合は、"my-notebook-project" のように、プロジェクトを小文字にしてスペースをハイフンに変えたバージョンを使用するのが一般的な慣例です (長さの制限に合わせて必要に応じて短くします)。 |
 | パブリック | 設定すると、リンクを持つすべてのユーザーがプロジェクトにアクセスできます。 プライベート プロジェクトを作成する場合、このオプションはオフにします。 |
 
 GitHub からリポジトリをインポートすると、その履歴もインポートされます。 ターミナルから標準の Git コマンドを使用して、新しい変更のコミット、GitHub からの変更のプルなどを行うことができます。
@@ -106,8 +122,8 @@ GitHub からリポジトリをインポートすると、その履歴もイン�
 
 - [サンプル ノートブックの調査](azure-notebooks-samples.md)
 - [方法:プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
-- [方法:ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
+- [方法: ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
 - [方法:スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [方法:データ ファイルの操作](work-with-project-data-files.md)
-- [方法:データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [方法:Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [方法: データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
+- [方法: Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)

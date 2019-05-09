@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e021a1b109f735dee16d75c05c26ab35e599a3d9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 61082333afc88abef0a8d8a57d1f1b1d893b6148
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197705"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246197"
 ---
 ### <a name="to-view-local-network-gateways"></a>ローカル ネットワーク ゲートウェイを表示するには
 
-ローカル ネットワーク ゲートウェイの一覧を表示するには、[az network local-gateway list](https://docs.microsoft.com/cli/azure/network/local-gateway#az_network_local_gateway_list) コマンドを使用します。
+ローカル ネットワーク ゲートウェイの一覧を表示するには、[az network local-gateway list](https://docs.microsoft.com/cli/azure/network/local-gateway) コマンドを使用します。
 
 ```azurecli
 az network local-gateway list --resource-group TestRG1
@@ -29,14 +29,14 @@ az network local-gateway list --resource-group TestRG1
 
 ### <a name="to-verify-the-shared-key-values"></a>共有キーの値を確認するには
 
-共有キーの値が VPN デバイスの構成に使用したものと同じ値であることを確認します。 異なる場合は、デバイスの値を使用して接続をもう一度実行するか、返された値でデバイスを更新します。 値は一致する必要があります。 共有キーを表示するには、[az network vpn-connection-list](https://docs.microsoft.com/cli/azure/network/vpn-connection#az_network_vpn_connection_list) を使用します。
+共有キーの値が VPN デバイスの構成に使用したものと同じ値であることを確認します。 異なる場合は、デバイスの値を使用して接続をもう一度実行するか、返された値でデバイスを更新します。 値は一致する必要があります。 共有キーを表示するには、[az network vpn-connection-list](https://docs.microsoft.com/cli/azure/network/vpn-connection) を使用します。
 
 ```azurecli
 az network vpn-connection shared-key show --connection-name VNet1toSite2 --resource-group TestRG1
 ```
 ### <a name="to-view-the-vpn-gateway-public-ip-address"></a>VPN ゲートウェイのパブリック IP アドレスを表示するには
 
-仮想ネットワーク ゲートウェイのパブリック IP アドレスを探すときには、[az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_list) コマンドを使用します。 読みやすいように、この例の出力には書式を設定し、パブリック IP の一覧が表形式で表示されるようにしてあります。
+仮想ネットワーク ゲートウェイのパブリック IP アドレスを探すときには、[az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) コマンドを使用します。 読みやすいように、この例の出力には書式を設定し、パブリック IP の一覧が表形式で表示されるようにしてあります。
 
 ```azurecli
 az network public-ip list --resource-group TestRG1 --output table

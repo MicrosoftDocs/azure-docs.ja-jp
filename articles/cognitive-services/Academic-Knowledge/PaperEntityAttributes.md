@@ -4,31 +4,31 @@ titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API で論文エンティティに使用できる属性について説明します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: ae238a3c3af091b764147fcde8aa2a98986da92e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158892"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437464"
 ---
 # <a name="paper-entity"></a>論文エンティティ
 
 <sub> *次の属性は、論文エンティティに固有です。(Ty = '0') </sub>
 
 
-Name    |説明                                        |type       | [操作]
+Name    |説明                                        |type       | 操作
 ------- | ------------------------------------------------- | --------- | ----------------------------
-ID      |エンティティ ID                                          |Int64      |等しい
+Id      |エンティティ ID                                          |Int64      |等しい
 Ti      |論文のタイトル                                        |String     |Equals、<br/>StartsWith
-L       |"\@@@" で区切られた論文の言語コード            |String     |等しい
+L       | "\@@@" で区切られた論文の言語コード            |String     |等しい
 Y       |論文の年                                         |Int32      |Equals、<br/>IsBetween
-D       |論文の日付                                         |日付       |Equals、<br/>IsBetween
+D       |論文の日付                                         |Date       |Equals、<br/>IsBetween
 CC      |引用数                                     |Int32      |なし  
 ECC     |推定引用数                           |Int32      |なし
 AA.AuN  |著者名                                        |String     |Equals、<br/>StartsWith

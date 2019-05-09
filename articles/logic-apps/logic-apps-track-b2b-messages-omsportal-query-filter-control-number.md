@@ -1,5 +1,5 @@
 ---
-title: Log Analytics で B2B メッセージの追跡クエリを作成する - Azure Logic Apps | Microsoft Docs
+title: Azure Monitor ログで B2B メッセージの追跡クエリを作成する - Azure Logic Apps | Microsoft Docs
 description: Azure Log Analytics で Azure Logic Apps の AS2、X12、EDIFACT メッセージを追跡するクエリを作成する
 services: logic-apps
 ms.service: logic-apps
@@ -9,19 +9,21 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d4a94e75de34bbafd3bc8f1c1a0d1a6817245e5f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995315"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194913"
 ---
-# <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>Azure Log Analytics で Azure Logic Apps の B2B メッセージの追跡クエリを作成する
+# <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Monitor ログで Azure Logic Apps の B2B メッセージの追跡クエリを作成する
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを検索するために、特定の条件に基づいてアクションをフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
+[Azure Monitor ログ](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを検索するには、特定の条件に基づいてアクションをフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
 
 > [!NOTE]
 > このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +31,7 @@ ms.locfileid: "52995315"
 
 * 監視とログが設定されている統合アカウント。 [統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)および[そのアカウントの監視とログを設定する方法](../logic-apps/logic-apps-monitor-b2b-message.md)を参照してください。
 
-* [診断データの Log Analytics への発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)と [Log Analytics でのメッセージ追跡の設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)をまだ行っていない場合は、これらの操作を実行します。
+* [診断データの Azure Monitor ログへの発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)と [Azure Monitor lログでのメッセージ追跡の設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)をまだ行っていない場合は、これらの操作を実行します。
 
 ## <a name="create-queries-with-filters"></a>フィルターを使用するクエリを作成する
 
@@ -53,7 +55,7 @@ ms.locfileid: "52995315"
 1. クエリの編集ボックスで、検索するフィールド名の入力を開始します。 入力を開始すると、クエリ エディターには一致項目と使用できる操作が表示されます。 クエリを作成した後は、**[実行]** を選択するか、Enter キーを押します。
 
    この例では、**LogicAppB2B** に対する一致を検索します。 
-   詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+   詳細については、[Azure Monitor ログでのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
 
    ![クエリ文字列の入力を開始する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/create-query.png)
 

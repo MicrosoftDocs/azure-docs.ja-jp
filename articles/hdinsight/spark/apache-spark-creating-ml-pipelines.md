@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd27438247b801e384b80d96ba288896b4c5aae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dbda20554b119bfb72b939cbeb7f19e0b9093b31
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234224"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597479"
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>Spark 機械学習パイプラインの作成
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark 機械学習パイプラインを作成する
 
-Apache Spark のスケーラブルな Machine Learning ライブラリ (MLlib) は、分散環境にモデリング機能を提供します。 Spark パッケージ [`spark.ml`](http://spark.apache.org/docs/latest/ml-pipeline.html) は、DataFrames 上に構築された一連の高レベルの API です。 これらの API は、実際的な Machine Learning パイプラインの作成および調整に役立ちます。  *Spark Machine Learning* は、古い RDD ベースのパイプライン API ではなく、この MLlib DataFrame ベースの API を参照します。
+Apache Spark のスケーラブルな Machine Learning ライブラリ (MLlib) は、分散環境にモデリング機能を提供します。 Spark パッケージ [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) は、DataFrames 上に構築された一連の高レベルの API です。 これらの API は、実際的な Machine Learning パイプラインの作成および調整に役立ちます。  *Spark Machine Learning* は、古い RDD ベースのパイプライン API ではなく、この MLlib DataFrame ベースの API を参照します。
 
 Machine Learning (ML) パイプラインは、複数の Machine Learning アルゴリズムを 1 つに結合した完全なワークフローです。 データを処理したり、データから学習したりするには多くの手順を要する場合があるため、一連のアルゴリズムが必要になります。 パイプラインは、Machine Learning プロセスの各ステージと順序を定義します。 MLlib では、パイプラインのステージはトランスフォーマーとエスティメーターがそれぞれタスクを実行する、特定の一連のパイプラインステージで表されます。
 
@@ -30,7 +30,7 @@ Machine Learning (ML) パイプラインは、複数の Machine Learning アル�
 
 ## <a name="pipeline-example"></a>パイプラインの例
 
-ML パイプラインの実際的な使用を示すために、この例では、HDInsight クラスター用の既定のストレージ (Azure Storage または Data Lake Store のどちらか) に事前に読み込まれて出荷されるサンプルの `HVAC.csv` データ ファイルを使用します。 このファイルの内容を表示するには、`/HdiSamples/HdiSamples/SensorSampleData/hvac` ディレクトリに移動します。 `HVAC.csv` には、さまざまなビル内の HVAC (*暖房、換気、および空調*) システムのターゲット温度と実際の温度の両方を含む一連の時間が含まれています。 目標は、データ上のモデルをトレーニングし、特定のビルの予測温度を生成することです。
+この例では、ML パイプラインの実際の用途を示すために、HDInsight クラスター用の既定の (Azure Storage または Data Lake Storage のいずれかの) ストレージに事前に読み込まれて出荷されるサンプルの `HVAC.csv` データ ファイルを使用しています。 このファイルの内容を表示するには、`/HdiSamples/HdiSamples/SensorSampleData/hvac` ディレクトリに移動します。 `HVAC.csv` には、さまざまなビル内の HVAC (*暖房、換気、および空調*) システムのターゲット温度と実際の温度の両方を含む一連の時間が含まれています。 目標は、データ上のモデルをトレーニングし、特定のビルの予測温度を生成することです。
 
 次のコードは、次の処理を実行します。
 
@@ -131,4 +131,4 @@ only showing top 20 rows
 
 ## <a name="see-also"></a>関連項目
 
-* [Scala および Azure 上の Spark を使用したデータ サイエンス](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [Scala および Azure 上の Apache Spark を使用したデータ サイエンス](../../machine-learning/team-data-science-process/scala-walkthrough.md)

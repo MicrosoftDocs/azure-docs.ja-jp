@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 715a8e5bab9e5d16b8c0e54298101df856d51a9a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d3182c51ca80a26159e962a6354a53b5283326a2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309861"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343070"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>チュートリアル: Azure CLI を使用した Azure 仮想マシンの管理方法の説明
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>チュートリアル:Azure CLI を使用した Azure 仮想マシンの管理方法の説明
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location "East US"
 
 多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーを Azure Active Directory グループにまとめて使用する方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事では、仮想マシンを管理するための既存のグループを使用するか、またはポータルを使用して [Azure Active Directory グループを作成](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)します。
 
-新しいグループを作成するか、または既存のロールを見つけた後、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、新しい Azure Active Directory グループを割り当てます。
+新しいグループを作成するか、または既存のロールを見つけた後、[az role assignment create](/cli/azure/role/assignment) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、新しい Azure Active Directory グループを割り当てます。
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -71,7 +71,7 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../azure-policy/azure-policy-introduction.md) は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を表示するには、[az policy definition list](/cli/azure/policy/definition#az_policy_definition_list) コマンドを使います。
+[Azure Policy](../../governance/policy/overview.md) は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を表示するには、[az policy definition list](/cli/azure/policy/definition) コマンドを使います。
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -83,7 +83,7 @@ az policy definition list --query "[].[displayName, policyType, name]" --output 
 * 仮想マシンの SKU を制限する。
 * マネージド ディスクを使用しない仮想マシンを監査する。
 
-次の例では、表示名に基づいて 3 つのポリシー定義を取得します。 [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) コマンドを使って、それらの定義をリソース グループに割り当てます。 一部のポリシーについては、許可される値を指定するパラメーター値を提供します。
+次の例では、表示名に基づいて 3 つのポリシー定義を取得します。 [az policy assignment create](/cli/azure/policy/assignment) コマンドを使って、それらの定義をリソース グループに割り当てます。 一部のポリシーについては、許可される値を指定するパラメーター値を提供します。
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -145,7 +145,7 @@ az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --ge
 
 管理ロックを作成または削除するには、`Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、**所有者**と**ユーザー アクセス管理者**にのみこれらのアクションが許可されています。
 
-仮想マシンとネットワーク セキュリティ グループをロックするには、[az lock create](/cli/azure/lock#az_lock_create) コマンドを使います。
+仮想マシンとネットワーク セキュリティ グループをロックするには、[az lock create](/cli/azure/lock) コマンドを使います。
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -177,7 +177,7 @@ Azure リソースに[タグ](../../azure-resource-manager/resource-group-using-
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-仮想マシンにタグを適用するには、[az resource tag](/cli/azure/resource#az_resource_tag) コマンドを使います。 リソースの既存のタグは保持されません。
+仮想マシンにタグを適用するには、[az resource tag](/cli/azure/resource) コマンドを使います。 リソースの既存のタグは保持されません。
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -188,7 +188,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>タグでリソースを見つける
 
-タグの名前と値でリソースを検索するには、[az resource list](/cli/azure/resource#az_resource_list) コマンドを使います。
+タグの名前と値でリソースを検索するには、[az resource list](/cli/azure/resource) コマンドを使います。
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name
@@ -206,7 +206,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-ロックされたネットワーク セキュリティ グループは、そのロックが削除されるまで削除できません。 ロックを解除するには、ロックの ID を取得して、[az lock delete](/cli/azure/lock#az_lock_delete) コマンドに ID を渡します。
+ロックされたネットワーク セキュリティ グループは、そのロックが削除されるまで削除できません。 ロックを解除するには、ロックの ID を取得して、[az lock delete](/cli/azure/lock) コマンドに ID を渡します。
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -220,7 +220,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。 VM への SSH セッションを終了し、次の手順でリソースを削除します。
+必要がなくなったら、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。 VM への SSH セッションを終了し、次の手順でリソースを削除します。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

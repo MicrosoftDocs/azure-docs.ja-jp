@@ -1,29 +1,33 @@
 ---
 title: 顔の検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用した顔の検出に関連する概念。
+description: Computer Vision API の顔検出機能に関連する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
-ms.openlocfilehash: bf358d1e8f60f989ced8db966bbf0a5179fab25b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 1056b8be113d56342aea8f83d5325737f7ecb93b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342315"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308453"
 ---
-# <a name="detecting-faces"></a>顔の検出
+# <a name="face-detection-with-computer-vision"></a>Computer Vision での顔の検出
 
-Computer Vision は、写真の中から人間の顔を検出し、検出された各顔の年齢、性別、四角形を生成します。 Computer Vision は、[[Face]](/azure/cognitive-services/face/) で見つけられる機能のサブセットを提供しており、顔の識別やポーズの検出など、より詳細な分析に Face サービスを使用できます。  
+Computer Vision は、画像内の人間の顔を検出し、検出された各顔の年齢、性別、四角形を生成できます。 
+
+> [!NOTE]
+> この機能は、Azure [Face](/azure/cognitive-services/face/) サービスでも利用できます。 ここでは、顔識別、姿勢検出など、より詳細な顔分析について説明しています。 
 
 ## <a name="face-detection-examples"></a>顔検出の例
 
-最初の例では、人の顔を 1 つ含む画像に対して Computer Vision によって返される JSON 応答を示します。
+次の例では、人の顔を 1 つ含む画像に対して Computer Vision によって返される JSON 応答を示します。
 
 ![Vision Analyze 屋上にいる女性の顔](./Images/woman_roof_face.png)
 
@@ -109,4 +113,4 @@ Computer Vision は、写真の中から人間の顔を検出し、検出され�
 
 ## <a name="next-steps"></a>次の手順
 
-[ドメイン固有のコンテンツの検出](concept-detecting-domain-content.md)についての概念を学習する。
+顔検出機能を使用する方法については、[画像分析](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)のリファレンス ドキュメントを参照してください。

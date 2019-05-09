@@ -8,18 +8,18 @@ ms.service: event-grid
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
-ms.date: 09/18/2018
+ms.date: 01/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: c462334597b41b914b6a0a0e3c8a67ad97e2bd7a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 788d23c7bddd90c1e12a118742c651eb9759529c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295582"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062963"
 ---
 # <a name="azure-resource-manager-templates-for-event-grid"></a>Event Grid 用の Azure Resource Manager テンプレート
 
-次の表は、Event Grid 用の Azure Resource Manager テンプレートのリンク一覧です。
+テンプレートで使用する JSON の構文とプロパティについては、「[Microsoft.EventGrid resource types (Microsoft.EventGrid のリソースの種類)](/azure/templates/microsoft.eventgrid/allversions)」を参照してください。 次の表は、Event Grid 用の Azure Resource Manager テンプレートのリンク一覧です。
 
 | | |
 |-|-|

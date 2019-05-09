@@ -10,24 +10,40 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2018
+ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5f27b34bda930d020461bd5f4f7986091ffd5549
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 92476f9ac48c168c3bbe85d4da49b6afe034c117
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413661"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648658"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
 
 この記事では、Azure CLI と Resource Manager テンプレートを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理に関する概念に精通していない場合は、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。  
 
-デプロイする Resource Manager テンプレートとして、コンピューター上のローカル ファイル、または GitHub などのリポジトリに配置した外部ファイルを使用できます。 この記事でデプロイするテンプレートは、[GitHub のストレージ アカウントのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)として入手できます。
-
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
 Azure CLI がインストールされていない場合は、[Cloud Shell](#deploy-template-from-cloud-shell) を使用できます。
+
+## <a name="deployment-scope"></a>デプロイの範囲
+
+Azure サブスクリプション、またはサブスクリプション内のリソース グループのいずれかを、デプロイの対象として指定できます。 多くの場合、リソース グループをデプロイの対象にします。 サブスクリプション デプロイを使用するのは、サブスクリプション全体にポリシーとロールの割り当てを適用するときです。 また、リソース グループを作成し、それにリソースをデプロイする場合も、サブスクリプション デプロイを使用します。 デプロイの範囲に応じて、異なるコマンドを使用します。
+
+**リソース グループ**にデプロイするには、[az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) を使用します。
+
+```azurecli
+az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
+```
+
+**サブスクリプション**にデプロイするには、[az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create) を使用します。
+
+```azurecli
+az deployment create --location <location> --template-file <path-to-template>
+```
+
+この記事の例では、リソース グループ デプロイを使用します。 サブスクリプション デプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
 ## <a name="deploy-local-template"></a>ローカル テンプレートのデプロイ
 
@@ -56,12 +72,12 @@ az group deployment create \
 "provisioningState": "Succeeded",
 ```
 
-## <a name="deploy-external-template"></a>外部テンプレートのデプロイ
+## <a name="deploy-remote-template"></a>リモート テンプレートのデプロイ
 
 Resource Manager テンプレートは、ローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
 
 外部テンプレートをデプロイするには、**template-uri** パラメーターを使用します。 この例の URI を使用して、GitHub のサンプル テンプレートをデプロイします。
-   
+
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
@@ -84,13 +100,16 @@ az group deployment create --resource-group examplegroup \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>複数のリソース グループまたはサブスクリプションにデプロイする
-
-テンプレートに含まれているリソースはすべて 1 つのリソース グループにデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで、複数のリソース グループまたはサブスクリプションにデプロイしたい状況もあります。 単一のデプロイにデプロイできるリソース グループは 5 つまでです。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](resource-manager-cross-resource-group-deployment.md)」を参照してください。
-
 ## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
 
-失敗したデプロイについては、デプロイ履歴の以前のデプロイが自動的に再デプロイされるように指定できます。 このオプションを使用するには、ご自身のデプロイを履歴で特定できるように、デプロイの名前は一意でなければなりません。 一意の名前が付いていないと、失敗した現在のデプロイによって、履歴にある以前の成功したデプロイが上書きされる可能性があります。 このオプションは、ルート レベルのデプロイでのみ使用できます。 入れ子になったテンプレートのデプロイを再デプロイに使用することはできません。
+この機能は、"*エラー時のロールバック*" とも呼ばれます。 デプロイに失敗した場合、デプロイ履歴から以前に成功したデプロイを自動的に再デプロイすることができます。 再デプロイを指定するには、デプロイ コマンドで `--rollback-on-error` パラメーターを使用します。 この機能は、インフラストラクチャのデプロイに対して既知の正常な状態を取得してあり、それに戻したい場合に便利です。 いくつかの注意事項と制限があります。
+
+- 再デプロイは、以前に実行されたときとまったく同じパラメーターで実行されます。 パラメーターを変更することはできません。
+- 以前のデプロイは、[完全モード](./deployment-modes.md#complete-mode)を使用して実行されます。 以前のデプロイに含まれていなかったリソースはすべて削除され、すべてのリソースの構成は以前の状態に設定されます。 [デプロイ モード](./deployment-modes.md)を完全に理解しておいてください。
+- 再デプロイではリソースのみが影響を受け、データの変更への影響はありません。
+- この機能は、リソース グループのデプロイにおいてのみサポートされ、サブスクリプション レベルのデプロイではサポートされません。 サブスクリプション レベル デプロイについて詳しくは、「[サブスクリプション レベルでリソース グループとリソースを作成する](./deploy-to-subscription.md)」をご覧ください。
+
+このオプションを使用するには、ご自身のデプロイを履歴で特定できるように、デプロイの名前は一意でなければなりません。 一意の名前が付いていないと、失敗した現在のデプロイによって、履歴にある以前の成功したデプロイが上書きされる可能性があります。 このオプションは、ルート レベルのデプロイでのみ使用できます。 入れ子になったテンプレートのデプロイを再デプロイに使用することはできません。
 
 最後に成功したデプロイを再デプロイするには、`--rollback-on-error` パラメーターをフラグとして追加します。
 
@@ -195,7 +214,6 @@ az group deployment create \
   --parameters exampleArray=@arrtest.json
 ```
 
-
 ## <a name="test-a-template-deployment"></a>テンプレートのデプロイをテストする
 
 リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[az group deployment validate](/cli/azure/group/deployment#az-group-deployment-validate) を使用します。 
@@ -248,9 +266,10 @@ az group deployment validate \
 ```
 
 ## <a name="next-steps"></a>次の手順
-* この記事の例では、既定のサブスクリプションのリソース グループにリソースをデプロイしています。 別のサブスクリプションを使用するには、「[Manage multiple Azure subscriptions (複数の Azure サブスクリプションの管理)](/cli/azure/manage-azure-subscriptions-azure-cli)」を参照してください。
-* リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
-* テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」を参照してください。
-* 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
-* SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](resource-manager-cli-sas-token.md)」を参照してください。
-* 複数のリージョン間で、サービスを安全にロールアウトするには、[Azure Deployment Manager](deployment-manager-overview.md) に関する記事を参照してください。
+
+- この記事の例では、既定のサブスクリプションのリソース グループにリソースをデプロイしています。 別のサブスクリプションを使用するには、「[Manage multiple Azure subscriptions (複数の Azure サブスクリプションの管理)](/cli/azure/manage-azure-subscriptions-azure-cli)」を参照してください。
+- リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
+- テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」を参照してください。
+- 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
+- SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](resource-manager-cli-sas-token.md)」を参照してください。
+- 複数のリージョン間で、サービスを安全にロールアウトするには、[Azure Deployment Manager](deployment-manager-overview.md) に関する記事を参照してください。

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: d105968d13960409a60e2fde9c811a042f444d8f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: edb169d131aafd045fdf0f670e1dda87677d57ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848631"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834679"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 
@@ -36,7 +36,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 1. **[保護されたアイテム]** で、**[レプリケートされたアイテム]** をクリックし、マシンを選びます。
 
 2. **[レプリケートされたアイテム]** ウィンドウには、マシンの情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
-3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および[マネージド ディスクの設定](#managed-disk-considerations)を変更できます。
+3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、およびマネージド ディスクの設定を変更できます
 4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
 5. **[ディスク]** で、マシンのオペレーティング システム ディスクとデータ ディスクに関する情報を確認できます。
 

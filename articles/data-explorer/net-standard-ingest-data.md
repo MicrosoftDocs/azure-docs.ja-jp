@@ -1,21 +1,20 @@
 ---
-title: 'クイック スタート: Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む'
+title: クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む
 description: このクイック スタートでは、.NET Standard SDK を使用して Azure Data Explorer にデータを取り込む (読み込む) 方法について説明します。
-services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: e734f11fb3f6a833b8c080deb57b9153c6c12dde
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290690"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59044671"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>クイック スタート: Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む
+# <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む
 
 Azure Data Explorer (ADX) は、ログとテレメトリ データのための高速で非常にスケーラブルなデータ探索サービスです。 ADX では、.NET Standard 用のクライアント ライブラリとして、[取り込みライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard)と[データ ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。 このクイック スタートではまず、テスト クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
 
@@ -100,6 +99,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
                 Tuple.Create("State", "System.String"),
                 Tuple.Create("EventType", "System.String"),
                 Tuple.Create("InjuriesDirect", "System.Int32"),
+                Tuple.Create("InjuriesIndirect", "System.Int32"),
                 Tuple.Create("DeathsDirect", "System.Int32"),
                 Tuple.Create("DeathsIndirect", "System.Int32"),
                 Tuple.Create("DamageProperty", "System.Int32"),
@@ -137,8 +137,10 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
             {
                 new CsvColumnMapping { ColumnName = "StartTime", Ordinal = 0 },
                 new CsvColumnMapping { ColumnName = "EndTime", Ordinal = 1 },
+                new CsvColumnMapping { ColumnName = "EpisodeId", Ordinal = 2 },
                 new CsvColumnMapping { ColumnName = "EventId", Ordinal = 3 },
                 new CsvColumnMapping { ColumnName = "State", Ordinal = 4 },
+                new CsvColumnMapping { ColumnName = "EventType", Ordinal = 5 },
                 new CsvColumnMapping { ColumnName = "InjuriesDirect", Ordinal = 6 },
                 new CsvColumnMapping { ColumnName = "InjuriesIndirect", Ordinal = 7 },
                 new CsvColumnMapping { ColumnName = "DeathsDirect", Ordinal = 8 },
@@ -148,13 +150,13 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
                 new CsvColumnMapping { ColumnName = "Source", Ordinal = 12 },
                 new CsvColumnMapping { ColumnName = "BeginLocation", Ordinal = 13 },
                 new CsvColumnMapping { ColumnName = "EndLocation", Ordinal = 14 },
-                new CsvColumnMapping { ColumnName = "BeginLat", Ordinal = 16 },
-                new CsvColumnMapping { ColumnName = "BeginLon", Ordinal = 17 },
-                new CsvColumnMapping { ColumnName = "EndLat", Ordinal = 18 },
-                new CsvColumnMapping { ColumnName = "EndLon", Ordinal = 19 },
-                new CsvColumnMapping { ColumnName = "EpisodeNarrative", Ordinal = 20 },
-                new CsvColumnMapping { ColumnName = "EventNarrative", Ordinal = 21 },
-                new CsvColumnMapping { ColumnName = "StormSummary", Ordinal = 22 },
+                new CsvColumnMapping { ColumnName = "BeginLat", Ordinal = 15 },
+                new CsvColumnMapping { ColumnName = "BeginLon", Ordinal = 16 },
+                new CsvColumnMapping { ColumnName = "EndLat", Ordinal = 17 },
+                new CsvColumnMapping { ColumnName = "EndLon", Ordinal = 18 },
+                new CsvColumnMapping { ColumnName = "EpisodeNarrative", Ordinal = 19 },
+                new CsvColumnMapping { ColumnName = "EventNarrative", Ordinal = 20 },
+                new CsvColumnMapping { ColumnName = "StormSummary", Ordinal = 21 },
             });
 
     kustoClient.ExecuteControlCommand(command);

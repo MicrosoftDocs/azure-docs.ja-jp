@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744447"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311681"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -150,7 +150,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 2. ヘッド ノードで Ambari に移動し、次のアドレスを参照して、トンネルが動作可能であることを確認します。
 
-    http://headnodehost:8080
+    http:\//headnodehost:8080
 
 3. Ambari 内から **Oozie Web コンソール**にアクセスするには、**[Oozie]**、**[クイック リンク]** の順に選び、**[Oozie Web Console]\(Oozie Web コンソール\)** を選びます。
 
@@ -176,7 +176,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 これで、サンプル データを利用できるようになりました。 ただし、パイプラインには処理用に 2 つの Hive テーブルが必要です。1 つは受信データ用 (`rawFlights`) で、もう 1 つは集約済みデータ用 (`flights`) です。 次のようにして、Ambari でこれらのテーブルを作成します。
 
-1. [http://headnodehost:8080](http://headnodehost:8080) に移動して Ambari にログインします。
+1. http:\///headnodehost:8080 に移動して Ambari にログインします。
 2. サービスの一覧から、**[Hive]** を選びます。
 
     ![Ambari での Hive の選択](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: adc85514c0f4e2f7245a7db6dffbe6b9dc5e6d42
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6e27d00e4b12ade82cfde6b3a4927edc7d69798a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435193"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075818"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>HDInsight 上の Apache Mahout と Linux ベースの Hadoop を使用して映画のリコメンデーションを生成する (SSH)
 
@@ -170,15 +170,15 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     このコマンドは、ユーザー ID 4 に対して生成されたリコメンデーションを表示します。
 
-    * **user-ratings.txt** ファイルを使用して、ユーザーが評価した映画を取得します。
+   * **user-ratings.txt** ファイルを使用して、ユーザーが評価した映画を取得します。
 
-    * **moviedb.txt** ファイルを使用して、映画の名前を取得します。
+   * **moviedb.txt** ファイルを使用して、映画の名前を取得します。
 
-    * **recommendations.txt** を使用して、このユーザーの映画のリコメンデーションを取得します。
+   * **recommendations.txt** を使用して、このユーザーの映画のリコメンデーションを取得します。
 
      このコマンドの出力は次のテキストのように表示されます。
 
-        Seven Years in Tibet (1997), score=5.0   Indiana Jones and the Last Crusade (1989), score=5.0   Jaws (1975), score=5.0   Sense and Sensibility (1995), score=5.0   Independence Day (ID4) (1996), score=5.0   My Best Friend's Wedding (1997), score=5.0   Jerry Maguire (1996), score=5.0   Scream 2 (1997), score=5.0   Time to Kill, A (1996), score=5.0
+       Seven Years in Tibet (1997), score=5.0   Indiana Jones and the Last Crusade (1989), score=5.0   Jaws (1975), score=5.0   Sense and Sensibility (1995), score=5.0   Independence Day (ID4) (1996), score=5.0   My Best Friend's Wedding (1997), score=5.0   Jerry Maguire (1996), score=5.0   Scream 2 (1997), score=5.0   Time to Kill, A (1996), score=5.0
 
 ## <a name="delete-temporary-data"></a>一時データを削除する
 

@@ -3,23 +3,21 @@ title: Azure Traffic Manager のしくみ | Microsoft Docs
 description: この記事は、Traffic Manager でトラフィックをルーティングし、Web アプリケーションの高いパフォーマンスと可用性を実現するしくみを理解するために役立ちます
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
+author: KumudD
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2018
+ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 97ce7fb9d5a99f70e5dd6c81d8c8dd1af343117e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400085"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108867"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
 
@@ -41,13 +39,13 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 この構成を実現するために、次の手順を実行します。
 
 1. 3 つのサービス インスタンスをデプロイします。 各デプロイの DNS 名は "contoso-us.cloudapp.net"、"contoso-eu.cloudapp.net"、および "contoso-asia.cloudapp.net" です。
-2. "contoso.trafficmanager.net" という名前の Traffic Manager プロファイルを作成し、3 つのエンドポイントで "パフォーマンス" トラフィック ルーティング方法を使用するように構成します。
-* DNS CNAME レコードを使用して、"contoso.trafficmanager.net" を参照するようにバニティ ドメイン名 "partners.contoso.com" を構成します。
+1. "contoso.trafficmanager.net" という名前の Traffic Manager プロファイルを作成し、3 つのエンドポイントで "パフォーマンス" トラフィック ルーティング方法を使用するように構成します。
+1. DNS CNAME レコードを使用して、"contoso.trafficmanager.net" を参照するようにバニティ ドメイン名 "partners.contoso.com" を構成します。
 
 ![Traffic Manager の DNS 構成][1]
 
 > [!NOTE]
-> Azure Traffic Manager でバニティ ドメインを使用する場合は、CNAME を使用して、バニティ ドメイン名が、Traffic Manager ドメイン名を指すようにする必要があります。 DNS の標準では、ドメインの "頂点" (またはルート) で CNAME を作成できません。 したがって "contoso.com" ("ネイキッド" ドメインと呼ばれることがあります) の CNAME を作成することはできません。 CNAME は、"contoso.com" ("www.contoso.com" など) の下にあるドメインについてのみ作成できます。 この制限を回避するために、シンプルな HTTP リダイレクトを使用して、"contoso.com" に対する要求を、"www.contoso.com" などの代替名に転送することをお勧めします。
+> Azure Traffic Manager でバニティ ドメインを使用する場合は、CNAME を使用して、バニティ ドメイン名が、Traffic Manager ドメイン名を指すようにする必要があります。 DNS の標準では、ドメインの "頂点" (またはルート) で CNAME を作成できません。 したがって "contoso.com" ("ネイキッド" ドメインと呼ばれることがあります) の CNAME を作成することはできません。 CNAME は、"contoso.com" ("www.contoso.com" など) の下にあるドメインについてのみ作成できます。 この制限を回避するために、DNS ドメインを [Azure DNS](../dns/dns-overview.md) 上にホストし、[エイリアス レコード](../dns/tutorial-alias-tm.md)を使用して Traffic Manager プロファイルを指すことをお勧めします。 または、シンプルな HTTP リダイレクトを使用して、'contoso.com' に対する要求を、'www.contoso.com' などの代替名に転送することもできます。
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Traffic Manager でのクライアントの接続方法
 

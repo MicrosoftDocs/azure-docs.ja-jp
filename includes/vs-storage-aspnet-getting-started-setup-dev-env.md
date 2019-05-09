@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 634143f56bc9134f240ff42b7b5989605c8bffde
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a7c696870e22e1692ca5ed778e47f8e4cc00615a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979307"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59610137"
 ---
 ## <a name="set-up-the-development-environment"></a>開発環境を設定する
 
@@ -37,7 +37,7 @@ ms.locfileid: "45979307"
 
 1. **Solution Explorer** で、プロジェクト名を右クリックします。
 
-2. コンテキスト メニューから、**[追加]** > **[接続済みサービス]** の順に選択します。
+1. コンテキスト メニューから、**[追加]** > **[接続済みサービス]** の順に選択します。
 
 1. **[接続済みサービス]** ダイアログ ボックスで、**[Azure Storage を使用したクラウド ストレージ]** を選択します。
 
@@ -45,8 +45,9 @@ ms.locfileid: "45979307"
 
 1. **[Azure Storage]** ダイアログ ボックスで、このチュートリアルで使用する Azure ストレージ アカウントを選択します。 新しい Azure ストレージ アカウントを作成するには、**[新しいストレージ アカウントの作成]** を選択し、フォームに入力します。 既存のストレージ アカウントを選択するか新しいストレージ アカウントを作成したら、**[追加]** を選択します。 Visual Studio によって Azure Storage 用の NuGet パッケージと **Web.config** へのストレージ接続文字列がインストールされます。
 
+1. **ソリューション エクスプローラー**で **[依存関係]** を右クリックし、**[NuGet パッケージの管理]** を選択して、NuGet パッケージ参照を Microsoft.Azure.ConfigurationManager の最新バージョンに追加します。
+
 > [!TIP]
 > [Azure ポータル](https://portal.azure.com)でのストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)」を参照してください。
 >
 > [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md)、[Azure CLI](../articles/storage/common/storage-azure-cli.md)、または [Azure Cloud Shell](../articles/cloud-shell/overview.md) を使用してストレージ アカウントを作成することもできます。
-

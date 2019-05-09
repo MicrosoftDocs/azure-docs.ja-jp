@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120552"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -23,30 +23,32 @@ ms.locfileid: "48018712"
 
 既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。 この記事では、既定とカスタムの両方の正常性プローブについて説明します。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="default-health-probe"></a>既定の正常性プローブ
 
 カスタム プローブ構成を設定しない場合、アプリケーション ゲートウェイにより既定の正常性プローブが自動で構成されます。 監視は、バックエンド プールに構成済みの IP アドレスに対して HTTP 要求を行うことで実行されます。 既定のプローブでは、バックエンドの http 設定が HTTPS に対応するように構成されている場合、プローブはバックエンドの正常性をテストする際に HTTPS も使用します。
 
-たとえば、バックエンド サーバー A、B、C を使用して ポート 80 で HTTP ネットワーク トラフィックを受信するように、アプリケーション ゲートウェイを構成したとします。 既定の正常性監視では、30 秒ごとにこれら 3 つのサーバーに対して HTTP 応答が正常であるかどうかがテストされます。 正常な HTTP 応答の [状態コード](https://msdn.microsoft.com/library/aa287675.aspx) は、200 から 399 の間です。
+例: バックエンド サーバー A、B、C を使用して ポート 80 で HTTP ネットワーク トラフィックを受信するように、アプリケーション ゲートウェイを構成したとします。 既定の正常性監視では、30 秒ごとにこれら 3 つのサーバーに対して HTTP 応答が正常であるかどうかがテストされます。 正常な HTTP 応答の [状態コード](https://msdn.microsoft.com/library/aa287675.aspx) は、200 から 399 の間です。
 
 サーバー A に対する既定のプローブ チェックが失敗した場合、アプリケーション ゲートウェイはサーバー A をバックエンド プールから削除するため、ネットワーク トラフィックがこのサーバーに送られなくなります。 既定のプローブは、削除後もサーバー A を 30 秒ごとにチェックし続けます。 サーバー A は、既定の正常性プローブからの要求に正常に応答するようになるとバックエンド プールに「正常」として戻され、このサーバーへのトラフィックの送信が再開されます。
 
 ### <a name="probe-matching"></a>プローブの一致
 
-既定では、状態コード 200 の HTTP(S) 応答は正常と見なされます。 カスタム正常性プローブでは、さらに 2 つの一致条件がサポートされます。 一致条件を使用して、正常な応答の構成要素の既定の解釈を必要に応じて変更できます。
+既定では、状態コードが 200 から 399 の HTTP(S) 応答は正常と見なされます。 カスタム正常性プローブでは、さらに 2 つの一致条件がサポートされます。 一致条件を使用して、正常な応答の構成要素の既定の解釈を必要に応じて変更できます。
 
 一致条件は、次のとおりです。 
 
 - **HTTP 応答の状態コードの一致** - ユーザー指定 http 応答コードまたは応答コードの範囲を受け入れるためのプローブの一致条件。 個々のコンマ区切りの応答状態コードまたは状態コードの範囲がサポートされています。
 - **HTTP 応答本文の一致** - HTTP 応答本文をチェックし、ユーザー指定文字列と一致させるプローブの一致条件。 一致ではユーザー指定文字列が応答本文内にあるかどうかのみがチェックされ、完全な正規表現の一致ではありません。
 
-一致条件は `New-AzureRmApplicationGatewayProbeHealthResponseMatch` コマンドレットを使用して指定できます。
+一致条件は `New-AzApplicationGatewayProbeHealthResponseMatch` コマンドレットを使用して指定できます。
 
 例: 
 
-```
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```azurepowershell
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
 一致条件が指定されたら、PowerShell の `-Match` パラメーターを使用してプローブの構成にアタッチできます。
 
@@ -62,7 +64,7 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 > [!NOTE]
 > ポートはバックエンドの HTTP 設定と同じポートです。
 
-既定のプローブは、正常性状態を判断する際に http://127.0.0.1:\<port\> だけをチェックします。 カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、カスタム プローブを使用する必要があります。
+既定のプローブは、正常性状態を判断する際に http:\//127.0.0.1:\<port\> だけをチェックします。 カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、カスタム プローブを使用する必要があります。
 
 ### <a name="probe-intervals"></a>プローブの期間
 
@@ -81,7 +83,7 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 | プローブのプロパティ | 説明 |
 | --- | --- |
 | Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
-| プロトコル |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
+| Protocol |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。 |
 | Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 |
 | interval |プローブの間隔 (秒)。 この値は、2 つの連続するプローブの時間間隔です。 |

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: ba46ba6429640cf29d9abc75055563fb1578d2e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a8a50db5ece242bc00a28e66e21c863388950d6f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129592"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756837"
 ---
 # <a name="tuning-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 のパフォーマンス チューニング
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 は、あらゆる分析シナリオで必要とされる
 
 | ツール               | 設定     | 詳細                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| Powershell       | PerFileThreadCount、ConcurrentFileCount |  [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell) |
+| Powershell       | PerFileThreadCount、ConcurrentFileCount |  [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
 | AdlCopy    | Azure Data Lake Analytics ユニット  |   [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
 | DistCp            | -m (マッパー)   | [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [リンク](../data-factory/copy-activity-performance.md)                          |
@@ -136,7 +136,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 | ワークロード               | タスク数を設定するパラメーター                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
-| [HDInsight の Spark](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
+| [HDInsight 上の Spark](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
 | [HDInsight の Hive](data-lake-store-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
 | [HDInsight の MapReduce](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [HDInsight の Storm](data-lake-store-performance-tuning-storm.md)| <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|

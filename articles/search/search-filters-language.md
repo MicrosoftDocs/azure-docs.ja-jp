@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: aae081232d3633d3f7d8094979764606bf99430d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 695fdfba1573ff97b05f8e8b50a05bef9dbf48de
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311186"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58846149"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Azure Search の言語によるフィルター処理方法 
 
@@ -39,11 +39,11 @@ Azure Search のクエリは、単一のインデックスを対象にしてい�
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> フィールド定義と言語アナライザーを紹介するコード例については、[インデックスの定義 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet#define-your-azure-search-index) と[インデックスの定義 (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api#define-your-azure-search-index-using-well-formed-json) に関するセクションを参照してください。
+> フィールド定義と言語アナライザーを紹介するコード例については、[インデックスの定義 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) と[インデックスの定義 (REST)](search-create-index-rest-api.md) に関するセクションを参照してください。
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
-(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
+(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
 
 ## <a name="constrain-the-query-and-trim-results"></a>クエリの制限と結果のトリミング
 

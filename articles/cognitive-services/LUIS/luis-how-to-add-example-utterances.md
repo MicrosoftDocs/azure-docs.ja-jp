@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 発話の例とは、ユーザーの質問や命令のサンプル テキストです。 Language Understanding (LUIS) に学習させるには、意図に発話の例を追加する必要があります。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 33c941f84952faca1961bb65687b4098b837a2fd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139172"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524261"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>発話の例にエンティティを追加する 
 
@@ -35,21 +35,17 @@ ms.locfileid: "53139172"
 以下の手順では、意図ページの次の発話内でカスタム エンティティを作成してタグを付けます。
 
 ```text
-Does John Smith work in Seattle?
+Are there any SQL server jobs?
 ```
 
-1. 発話から `Seattle` を選択し、シンプル エンティティのラベルを付けます。
+1. 発話から `SQL server` を選択し、シンプル エンティティのラベルを付けます。 エンティティ ドロップダウン ボックスが表示されたら、既存のエンティティを選択するか、新しいエンティティを追加できます。 新しいエンティティを追加するには、テキスト ボックスにその名前として「`Job`」を入力し、**[新しいエンティティの作成]** を選択します。
 
-    [![発話内でシンプル エンティティのテキストを選択したスクリーンショット](./media/luis-how-to-add-example-utterances/hr-create-simple-1.png)](./media/luis-how-to-add-example-utterances/hr-create-simple-1.png)
+    ![エンティティ名を入力したスクリーンショット](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
 
     > [!NOTE]
     > エンティティとしてタグ付けする単語を選択するときは:
     > * 1 つの単語の場合、単純にそれを選択します。 
     > * 2 語以上からなる場合、先頭を選択し、それから末尾を選択します。
-
-1. エンティティ ドロップダウン ボックスが表示されたら、既存のエンティティを選択するか、新しいエンティティを追加できます。 新しいエンティティを追加するには、テキスト ボックスにその名前を入力し、**[新しいエンティティの作成]** を選択します。 
-
-    ![エンティティ名を入力したスクリーンショット](./media/luis-how-to-add-example-utterances/hr-create-simple-2.png)
 
 1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ボックスで、エンティティ名を確認し、エンティティの種類として**シンプル**を選択して、**[完了]** を選択します。
 
@@ -57,14 +53,11 @@ Does John Smith work in Seattle?
 
 ## <a name="add-a-list-entity"></a>リスト エンティティを追加する
 
-リスト エンティティとは、システムにおける関連単語の集まりであり、固定かつ限定的です (テキスト厳密一致)。 
+リスト エンティティとは、システム内の関連語と完全に一致する一連のテキストを表します。 
 
 会社の部門のリストの場合、正規化された値 `Accounting` および `Human Resources` を含めることができます。 正規名にはそれぞれシノニム (類義語) があります。 部門の場合、シノニムとして部門の頭字語、数字、スラングなどを含めることができます。 エンティティを作成するとき、すべての値を知っている必要はありません。 実際にユーザーがシノニムで発話するのを見てから追加できます。
 
-1. 発話の例のリストでは、特定の発話について、新しいリストに含めたい単語または語句を選択します。 次に、上部のテキストボックスにリストの名前を入力し、**[Create new entity]\(新しいエンティティの作成\)** を選択します。   
-
-    ![リスト エンティティ名を入力したスクリーンショット](./media/luis-how-to-add-example-utterances/hr-create-list-1.png)
-
+1. **[Intents]\(意図\)** ページの発話例で、新しいリストに含める単語または語句を選択します。 エンティティのドロップダウンが表示されたら、上部のボックスに新しいリスト エンティティの名前を入力して、**[Create new entity]\(新しいエンティティの作成\)** を選択します。   
 
 1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ボックスで、エンティティの名前を入力し、種類として**リスト**を選択します。 このリスト アイテムのシノニムを追加し、**[完了]** を選択します。 
 
@@ -76,21 +69,15 @@ Does John Smith work in Seattle?
 
 複合エンティティは、既存の**エンティティ**を元に親エンティティとして作成します。 
 
-`Does John Smith work in Seattle?` という発話を想定した場合、複合発話は、1 つの親オブジェクトに含まれる従業員の名前と場所のエンティティ情報を返すことができます。 
+`Does John Smith work in Seattle?` という発話の場合、複合発話は、従業員名 `John Smith` のエンティティ情報と、複合エンティティ内の位置 `Seattle` を返すことができます。 子エンティティは、複合エンティティを作成する前にアプリ内に既に存在し、発話例でマークされている必要があります。
 
-従業員名の John Smith は、事前構築済みの [personName](luis-reference-prebuilt-person.md) エンティティです。 場所の Seattle は、カスタムのシンプル エンティティです。 これら 2 つのエンティティを作成して発話の例でタグ付けしたら、それらのエンティティをラップして複合エンティティにすることができます。 
-
-1. 個々のエンティティをラップして複合エンティティにするには、複合エンティティの発話で**最初**のラベル付きエンティティ (一番左) を選択します。 ドロップダウン リストが表示され、この選択の選択肢が示されます。
+1. 子エンティティをラップして複合エンティティにするには、複合エンティティの発話で**最初**のラベル付きエンティティ (一番左) を選択します。 ドロップダウン リストが表示され、この選択の選択肢が示されます。
 
 1. ドロップダウン リストから **[Wrap composite entity]\(複合エンティティをラップする\)** を選択します。 
 
-    ![[Wrap in composite entity]\(複合エンティティにラップする\) を選択したスクリーンショット](./media/luis-how-to-add-example-utterances/hr-create-composite-1.png)
-
-1. 複合エンティティの最後の単語 (一番右) を選択します。 複合エンティティの後の緑の線にご注意ください。
+1. 複合エンティティの最後の単語 (一番右) を選択します。 複合エンティティの後の緑の線にご注意ください。 これは複合エンティティの視覚的なインジケーターであり、複合エンティティ内の一番左の子エンティティから一番右の子エンティティまでのすべての単語の下に表示されます。
 
 1. ドロップダウン リストで複合エンティティ名を入力します。
-
-    ![ドロップダウン リストで複合エンティティ名を入力する画面のスクリーンショット](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     エンティティが正しくラップされていると、語句全体に緑の下線が付きます。
 
@@ -104,13 +91,13 @@ Does John Smith work in Seattle?
 
 ## <a name="add-hierarchical-entity"></a>階層構造エンティティを追加する
 
+**階層エンティティは最終的に非推奨になります。エンティティのサブタイプを決定するには、階層エンティティではなく、[エンティティ ロール](luis-concept-roles.md)を使用します。**
+
 階層構造エンティティは、文脈から学習され、概念的に関連付けられる部類のエンティティです。 次の例では、エンティティに出発地と到着地が含まれます。 
 
 発話 `Move John Smith from Seattle to Cairo` では、シアトルが出発地で、カイロが到着地です。 いずれの場所も文脈的に異なり、発話の中の単語の順序と選択から学習されます。
 
 1. 意図ページの発話で、`Seattle` を選択し、エンティティ名 `Location` を入力して、キーボードの Enter を押します。
-
-    ![階層構造エンティティのラベルを作成するダイアログ ボックスのスクリーンショット](./media/luis-how-to-add-example-utterances/hr-hier-1.png)
 
 1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ボックスで、**エンティティの種類**として _階層_ を選択し、子として `Origin` と `Destination` を追加して、**[完了]** を選択します。
 
@@ -118,10 +105,14 @@ Does John Smith work in Seattle?
 
 1. 発話の中の単語に親階層構造エンティティのラベルが付けられました。 その単語を子エンティティに割り当てる必要があります。 意図の詳細ページの発話に戻ります。 単語を選択し、選択したエンティティ名をドロップダウン リストから選択し、メニューを右にたどり、正しい子エンティティを選択します。
 
-    ![意図の詳細ページのスクリーンショット (ここで単語を子エンティティに割り当てる)](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
-
     >[!CAUTION]
     >子エンティティ名は、1 つのアプリのエンティティ全体で一意となる必要があります。 2 つの異なる階層構造エンティティには、同じ名前の子エンティティを含めることができません。 
+
+## <a name="add-entitys-role-to-utterance"></a>発話にエンティティのロールを追加する
+
+ロールには、発話のコンテキストによって決定される、エンティティのサブタイプの名前が付けられます。 発話内のエンティティ内をエンティティとしてマークしたり、そのエンティティ内のロールを選択したりできます。 どのエンティティにも、機械学習したカスタム エンティティ (簡易エンティティと複合エンティティ) と、機械学習していないカスタム エンティティ (事前構築済みエンティティ、正規表現エンティティ、リスト エンティティ) が含まれるロールを含めることができます。 
+
+[エンティティ ロールが含まれる発話をマークする方法](tutorial-entity-roles.md)は、ハンズオン チュートリアルでご確認ください。 
 
 ## <a name="entity-status-predictions"></a>エンティティの状態の予測
 
@@ -135,7 +126,7 @@ LUIS ポータルで新しい発話を入力するとき、発話にエンティ
 
 予測に相違がある場合、エンティティ ボックスに赤い感嘆符の付いた **[Entity status]\(エンティティの状態\)** が表示されます。 エンティティの状態と、ラベル付けされたエンティティと予測されたエンティティの間の相違に関する情報を表示するには、**[Entity status]\(エンティティの状態\)** を選択した後、右側の項目を選択します。
 
-![予測の不一致を修正するために正しい項目を選択する画面のスクリーンショット](./media/luis-how-to-add-example-utterances/entity-status.png)
+![[Entity status]\(エンティティの状態\) の選択のスクリーン ショット](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
 
 赤い線は、次のいずれかのときに表示される可能性があります。
 
@@ -153,6 +144,9 @@ LUIS ポータルで新しい発話を入力するとき、発話にエンティ
 |正しくラベル付けされたテキスト|エンティティの青い強調表示、赤い下線|正しくない予測|さまざまな場所と使用方法で、正しくラベル付けされたエンティティを含む発話をさらに提供します。 現在の発話は、これがエンティティであることを LUIS に学習させるのに十分ではないか、または似たエンティティが同じコンテキストで出現しています。 LUIS が混乱しないよう、似たエンティティは 1 つのエンティティに結合する必要があります。 もう 1 つの解決策は、フレーズ リストを追加して単語の重要性を高めることです。 |
 |誤ってラベル付けされたテキスト|エンティティの青い強調表示、赤い下線|正しい予測| さまざまな場所と使用方法で、正しくラベル付けされたエンティティを含む発話をさらに提供します。 
 
+> [!Note]
+> 発話例の行のラベル付き意図の周りに枠が表示される場合、[意図予測エラー](luis-how-to-add-intents.md#intent-prediction-discrepancy-errors)が発生しています。 このエラーは修正する必要があります。 
+
 ## <a name="other-actions"></a>その他のアクション
 
 選択したグループまたは個々のアイテムとして発話の例にアクションを実行できます。 選択した発話の例のグループの場合、リストの上のコンテキスト メニューが変更されます。 単一のアイテムの場合、リストの上のコンテキスト メニューと、発話の各行の末尾に表示される個々のコンテキスト省略記号の両方を使用できます。 
@@ -163,15 +157,13 @@ LUIS ポータルで新しい発話を入力するとき、発話にエンティ
 
 機械学習したエンティティ ラベルを発話から削除するには、発話でそのエンティティを選択します。 次に、エンティティ ドロップダウン ボックスが表示されるのでそこから **[ラベルの削除]** を選択します。
 
-![意図の詳細ページのスクリーンショット、[ラベルの削除] が強調表示されています](./media/luis-how-to-add-example-utterances/remove-label.png) 
-
 ### <a name="add-prebuilt-entity-label"></a>事前構築済みエンティティ ラベルを追加する
 
-事前構築済みエンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 事前構築済みエンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-prebuilt-entity)に関するページを参照してください。
+事前構築済みエンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 事前構築済みエンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app)に関するページを参照してください。
 
 ### <a name="add-regular-expression-entity-label"></a>正規表現エンティティ ラベルを追加する
 
-正規表現エンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 正規表現エンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-regular-expression-entities)に関するページを参照してください。
+正規表現エンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 正規表現エンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts)に関するページを参照してください。
 
 
 ### <a name="create-a-pattern-from-an-utterance"></a>発話からパターンを作成する
@@ -181,7 +173,7 @@ LUIS ポータルで新しい発話を入力するとき、発話にエンティ
 
 ### <a name="add-patternany-entity"></a>pattern.any エンティティを追加する
 
-pattern.any エンティティを LUIS アプリに追加する場合、発話にそのエンティティのラベルを付けることはできません。 pattern.any エンティティはパターンでのみ有効です。 pattern.any エンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-patternany-entities)に関するページを参照してください。
+pattern.any エンティティを LUIS アプリに追加する場合、発話にそのエンティティのラベルを付けることはできません。 pattern.any エンティティはパターンでのみ有効です。 pattern.any エンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities)に関するページを参照してください。
 
 ## <a name="train-your-app-after-changing-model-with-utterances"></a>発話を含むモデルの変更後にアプリをトレーニングする
 

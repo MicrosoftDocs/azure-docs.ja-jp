@@ -1,19 +1,17 @@
 ---
 title: Azure Cosmos DB コネクタ用 Power BI チュートリアル
 description: この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、Cosmos DB および Power BI コネクタを使用してデータを視覚化する方法を説明します。
-keywords: power bi チュートリアル, データの視覚化, power bi コネクタ
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: fa4e6aa1274609ebf990a02d41f63541668d3b37
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137676"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
 
@@ -124,7 +122,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 8. "LatLong" など、新しい列の名前を入力します。
 9. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 Click **OK**.
    
-    DAX 関数など Data Analysis Expressions(DAX) の詳細については、「 [Power BI Desktop における DAX の基本事項](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)」を参照してください。
+    DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
    
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - カスタム列の追加](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 

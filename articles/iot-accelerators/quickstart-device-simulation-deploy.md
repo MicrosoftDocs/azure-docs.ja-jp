@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/28/2018
+ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 12f993f606fc1ef44280142d5acfa2687cd4e043
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0fcd688c9e5164522a482a4375c524a97a48d400
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175626"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>クイック スタート:Azure で IoT デバイス シミュレーションをデプロイして実行する
 
@@ -44,7 +44,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 ボックスをオンにして、デバイス シミュレーション ソリューションで使用する IoT ハブをデプロイします。 シミュレーションが使用する IoT ハブは、後でいつでも変更できます。
 
-**[ソリューションの作成]** をクリックして、ソリューションのプロビジョニングを始めます。 このプロセスを実行するには、少なくとも 5 分かかります。
+**[作成]** をクリックして、ソリューションのプロビジョニングを始めます。 このプロセスを実行するには、少なくとも 5 分かかります。
 
 ![デバイス シミュレーション ソリューションの詳細](./media/quickstart-device-simulation-deploy/createform.png)
 

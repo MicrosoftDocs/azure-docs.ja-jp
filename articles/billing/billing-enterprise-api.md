@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: d2021873b36a55bd36cf500eff168fe7311d944c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 52612419599ef69e7476c660b52f9e6e36946825
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579432"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535401"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
 Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 Enterprise 顧客は、Azure の [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。
@@ -34,7 +34,7 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
 |Authorization| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09| 
 
 ## <a name="consumption-apis"></a>Consumption API
-下記の API では、[こちら](https://consumption.azure.com/swagger/ui/index)の Swagger エンドポイントを使用できます。これによって、API のイントロスペクションが容易になり、[AutoRest](https://github.com/Azure/AutoRest) または [Swagger CodeGen](http://swagger.io/swagger-codegen/) を使用したクライアント SDK の生成機能が有効になります。 2014 年 5 月 1 日以降のデータは、この API で使用できます。 
+下記の API では、[こちら](https://consumption.azure.com/swagger/ui/index)の Swagger エンドポイントを使用できます。これによって、API のイントロスペクションが容易になり、[AutoRest](https://github.com/Azure/AutoRest) または [Swagger CodeGen](https://swagger.io/swagger-codegen/) を使用したクライアント SDK の生成機能が有効になります。 2014 年 5 月 1 日以降のデータは、この API で使用できます。 
 
 * **Balance and Summary** - [Balance and Summary API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) を使用すると、残高、新規購入、Azure Marketplace サービス料金、調整、および超過料金に関する情報の月別サマリーが提供されます。
 

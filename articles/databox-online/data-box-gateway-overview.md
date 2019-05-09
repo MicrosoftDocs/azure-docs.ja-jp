@@ -5,23 +5,20 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f1ab6d955c81ce6f7b141eef42341f43bb379f6
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 340ff99aae9acff49ffdeaa43463521debb16a07
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165319"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797586"
 ---
-# <a name="what-is-azure-data-box-gateway-preview"></a>Azure Data Box Gateway (プレビュー) とは 
+# <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway とは
 
-Azure Data Box Gateway は、Azure にシームレスにデータを送信できるストレージ ソリューションです。 この記事では、Azure Data Box Gateway ソリューションの概要、利点、主な機能、このデバイスを配置できるシナリオについて説明します。 
+Azure Data Box Gateway は、Azure にシームレスにデータを送信できるストレージ ソリューションです。 この記事では、Azure Data Box Gateway ソリューションの概要、利点、主な機能、このデバイスを配置できるシナリオについて説明します。
 
-Data Box Gateway は、仮想化環境またはハイパーバイザーにプロビジョニングされた仮想マシンに基づく仮想デバイスです。 仮想デバイスはオンプレミスに存在し、NFS および SMB プロトコルを使用して仮想デバイスに対するデータを記述します。 デバイスはその後、Azure ブロック blob、ページ blob、または Azure Files にデータを転送します。 
-
-> [!IMPORTANT]
-> Data Box Gateway はプレビュー段階にあります。 このソリューションをデプロイする前に、「[プレビューの使用条件に関するページ](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を確認してください。
+Data Box Gateway は、仮想化環境またはハイパーバイザーにプロビジョニングされた仮想マシンに基づく仮想デバイスです。 仮想デバイスはオンプレミスに存在し、NFS および SMB プロトコルを使用して仮想デバイスに対するデータを記述します。 デバイスはその後、Azure ブロック blob、ページ blob、または Azure Files にデータを転送します。
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -29,17 +26,22 @@ Data Box Gateway は、クラウド アーカイブやディザスター リカ�
 
 - **クラウド アーカイブ** - Data Box Gateway を使用して、セキュリティで保護された効率的な方法で、数百 TB のデータを Azure storage にコピーします。 データはアーカイブのシナリオに合わせて 1 回で取り込んだり継続的に取り込んだりすることができます。
 
-- **データ集計** - データ処理と分析のために複数のソースから Azure Storage の 1 つの場所にデータを集計します。  
+- **継続的なデータ インジェスト** - データ サイズに関係なく、データをデバイスに継続的に取り込んでクラウドにコピーします。 ゲートウェイ デバイスにデータが書き込まれると、デバイスによってデータが Azure Storage にアップロードされます。  
 
-- **オンプレミスのワークロードとの統合** - オンプレミスのワークロードと統合します。これにはクラウド ストレージを使用し、一般的に使用されるファイルについてはローカル アクセスが必要となるバックアップと復元などがあります。 
+- **増分転送に先立つ初期一括転送** - オフライン モードでの一括転送 (初期シード) に Data Box を使用し、ネットワーク経由の増分転送 (継続的なフィード) に Data Box Gateway を使用します。
+
+詳細については、[Azure Data Box Gateway のユース ケース](data-box-gateway-use-cases.md)に関するページを参照してください。
 
 ## <a name="benefits"></a>メリット
 
 Data Box Gateway には次の利点があります。
 
 - **簡単なデータ転送**- ローカル ネットワーク共有で操作するのと同じくらい簡単に、Azure ストレージとの間でデータを転送できます。  
-- **高パフォーマンス** - Azure との間でパフォーマンスの高い転送を実現することにより、ネットワーク データ転送の困難さを解消します。 
-- **高速アクセス** - オンプレミス ファイルに高速にアクセスするために、最新のファイルをキャッシュします。  
+- **高パフォーマンス** - Azure との間でパフォーマンスの高い転送を実現することにより、ネットワーク データ転送の困難さを解消します。
+- **営業時間中の高速アクセスと高速データ インジェスト** - Data Box Gateway は、仮想デバイスのプロビジョニング時にローカル容量サイズとして定義されるローカル キャッシュを搭載しています。 データ ディスクのサイズは、[仮想デバイスの最低要件](data-box-gateway-system-requirements.md#specifications-for-the-virtual-device)に従って指定する必要があります。 ローカル キャッシュには、次の利点があります。
+    - ローカル キャッシュを使用することで、データ インジェストを高速に行うことができます。 ピーク営業時間帯に大量のデータを取り込む際は、このキャッシュにデータを保持して、クラウドにアップロードすることができます。
+    - 特定のしきい値に達するまでは、ローカル キャッシュにより高速な読み取りアクセスが実現されます。 デバイスの使用率が 50% から 60% に達するまでは、そのデバイスからの読み取りアクセスがすべてキャッシュから行われるため、読み取りが高速化されます。 デバイス上の使用領域がこのしきい値を超えると、ローカル ファイルを削除する処理が開始されます。
+ 
 - **制限された帯域幅の使用** - 営業時間のピーク時にネットワークの使用が制限されるように調整されている場合でも、Azure にデータを書き込むことができます。  
 
 ## <a name="key-capabilities"></a>主な機能
@@ -50,7 +52,7 @@ Data Box Gateway には次の機能があります。
 |---------|---------|
 |速度     | 完全に自動化され、高度に最適化されたデータ転送と帯域幅。|
 |サポートされるプロトコル     | データ インジェストのために、標準の SMB プロトコルと NFS プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md)」を参照してください。|
-|データ アクセス     | クラウドでデータをさらに処理するために、クラウド API を使用して、Azure Storage Blob と Azure ファイルからデータを直接アクセスします。|
+|データ アクセス     | デバイスによってデータがクラウドに送信された後は、クラウド API にアクセスすることで直接そのデータに変更を加えることができます。|
 |高速アクセス     | 最近使用されたファイルを高速にアクセスするために、デバイス上でローカル キャッシュを行います。|
 |オフライン アップロード     | 切断モードでは、オフライン アップロードのシナリオに対応します。|
 |データ更新     | ローカル ファイルをクラウドから最新の情報に更新する機能。|
@@ -64,47 +66,39 @@ Data Box Gateway 仮想デバイスの仕様は次のとおりです。
 
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
-| 仮想プロセッサ (コア)   | 最低 4 |            
-| メモリ  | 8 GB 以上|
+| 仮想プロセッサ (コア)   | 最低 4 |
+| メモリ  |8 GB 以上|
 | 可用性|単一ノード|
-| ディスク| OS ディスク: 250 GB  <br> データ ディスク: 最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
-| ネットワーク インターフェイス|1 つ以上の仮想ネットワーク インターフェイス|
+| ディスク|OS ディスク:250 GB <br> データ ディスク:最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
+| ネットワーク インターフェイス |1 つ以上の仮想ネットワーク インターフェイス|
 | ネイティブのファイル共有プロトコル|SMB および NFS  |
-| セキュリティ| デバイスとデータへのアクセスのロックを解除する認証 <br> AES 256 ビット暗号化を使用した移動中のデータの暗号化|
-| 管理| ローカル Web UI - 初期セットアップ、診断、およびデバイスの電源管理 <br> Azure portal - Data Box Gateway デバイスの日々 の管理       |
-
+| セキュリティ|デバイスとデータへのアクセスのロックを解除する認証 <br> AES 256 ビット暗号化を使用した移動中のデータの暗号化|
+| 管理|ローカル Web UI - 初期セットアップ、診断、およびデバイスの電源管理 <br> Azure portal - Data Box Gateway デバイスの日々 の管理       |
 
 ## <a name="components"></a>コンポーネント
 
 Data Box Gateway ソリューションは、Data Box Gateway リソース、Data Box Gateway 仮想デバイス、ローカル Web UI で構成されています。
 
-* **Data Box Gateway 仮想デバイス**: 仮想化環境またはハイパーバイザーにプロビジョニングされた仮想マシンに基づくデバイスで、Azure にデータを送信できます。 
+- **Data Box Gateway 仮想デバイス**: 仮想化環境またはハイパーバイザーにプロビジョニングされた仮想マシンに基づくデバイスで、Azure にデータを送信できます。
     
-* **Data Box Gateway リソース** - さまざまな地理的な場所からアクセスできる Web インターフェイスから、Data Box Gateway デバイスを管理できる、Azure portal でのリソース。 Data Box Gateway リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
+- **Data Box Gateway リソース** - さまざまな地理的な場所からアクセスできる Web インターフェイスから、Data Box Gateway デバイスを管理できる、Azure portal でのリソース。 デバイス、共有、ユーザー、アラートの表示と管理は、Data Box Gateway リソースを使用して行います。 詳細については、[Azure portal を使用した管理](data-box-gateway-manage-shares.md)の方法に関するページを参照してください。
 
-    <!--![The Data Box Gateway service in Azure portal](media/data-box-overview/data-box-Gateway-service1.png)-->
-
-    <!--For more information, go to [Use the Data Box Gateway service to administer your Data Box Gateway device](data-box-gateway-portal-ui-admin.md).-->
-
-* **Data Box ローカル Web UI** - ローカル Web UI を使用して、診断の実行、Data Box Gateway デバイスのシャットダウンと再起動、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
-
-    <!--![The Data Box Gateway local web UI](media/data-box-gateway-overview/data-box-gateway-local-web-ui.png)-->
-
-    <!-- For information about using the web-based UI, go to [Use the web-based UI to administer your Data Box](data-box-gateway-portal-ui-admin.md).-->
-
+- **Data Box ローカル Web UI** - ローカル Web UI を使用して、診断の実行、デバイスのシャットダウンと再起動、サポート パッケージの生成、Microsoft サポートへの連絡とサービス要求の提出を行います。 詳細については、[ローカル Web UI を使用した管理](data-box-gateway-manage-access-power-connectivity-mode.md)の方法に関するページを参照してください。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-Data Box Edge 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じ地域にある必要はありません。
+Data Box Gateway 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じ地域にある必要はありません。
 
-- **リソースの可用性** - このリリースでは、Data Box Edge リソースは次の地域で利用できます。
-    - **米国** - 米国西部と米国東部
+- **リソースの可用性** - このリリースでは、Data Box Gateway リソースは、パブリック クラウドをサポートする次の地域で利用できます。
+    - **米国** - 米国東部
     - **欧州連合** - 欧州西部
     - **アジア太平洋** - 東南アジア
 
-- **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 
+    Data Box Gateway は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
 
-    最適なパフォーマンスを得るには、ストレージ アカウントが Data Box データを格納する地域は、デバイスが配置されている場所の近くでなければなりません。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。 
+- **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。
+
+    最適なパフォーマンスを得るには、ストレージ アカウントが Data Box データを格納する地域は、デバイスが配置されている場所の近くでなければなりません。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -112,7 +106,4 @@ Data Box Edge 物理デバイス、Azure リソース、データ転送先のタ
 - [Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md)を確認する。
 - [Data Box Gateway の制限事項](data-box-gateway-limits.md)を理解する。
 - Azure portal で [Azure Data Box Gateway](data-box-gateway-deploy-prep.md) を配置する。
-
-
-
 

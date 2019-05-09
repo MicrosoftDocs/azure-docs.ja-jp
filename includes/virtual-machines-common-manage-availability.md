@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e6c5f4623f3483dcfb0dde0f55b77161eee2c562
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 42b6dde708e2a1dbda225fd95e3db964267ae48a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035460"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333982"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -41,7 +41,7 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 データセンター内のこのような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 詳細については、「 [Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください。
 
 > [!IMPORTANT]
-> 可用性セット内の仮想マシンが 1 つだけにならないようにしてください。 この構成の VM は、SLA 保証の対象とはならず、単一の VM が[Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) を使用している場合を除き、Azure の計画的メンテナンス イベント時にダウンタイムが発生します。 Premium Storage を使用する単一 の VM では、Azure SLA が適用されます。
+> 可用性セット内の仮想マシンが 1 つだけにならないようにしてください。 この構成の VM は、SLA 保証の対象とはならず、単一の VM が [Azure Premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd) を使用している場合を除き、Azure の計画的メンテナンス イベント時にダウンタイムが発生します。 Premium SSD を使用する単一の VM では、Azure SLA が適用されます。
 
 基盤となる Azure プラットフォームにより、可用性セット内の各仮想マシンに**更新ドメイン**と**障害ドメイン**が割り当てられます。 所定の可用性セットに対して、同時に再起動される仮想マシンのグループと物理ハードウェアを示す、ユーザーが構成できない 5 つの更新ドメインが既定で割り当てられます (その後、最大 20 の更新ドメインを提供できるように Resource Manager のデプロイを増やすことができます)。 1 つの可用性セット内に 5 つ以上の仮想マシンが構成されているとき、6 つ目の仮想マシンは 1 つ目の仮想マシンと同じ更新ドメイン内に配置され、7 つ目は 2 つ目の仮想マシンと同じ更新ドメイン内に配置されるという方法で処理されます。 計画的メンテナンス中は、更新ドメインの再起動が順番に処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみです。 再起動された更新ドメインには、別の更新ドメインでメンテナンスが開始されるまでに、復旧するための時間として 30 分が与えられます。
 
@@ -60,11 +60,15 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
-[管理されていないディスク](../articles/virtual-machines/windows/about-disks-and-vhds.md#types-of-disks)を持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。
+アンマネージド ディスクを持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。
 
 1. **VM に関連付けられているすべてのディスク (OS とデータ) を同じストレージ アカウント内に保持する。**
 2. ストレージ アカウントにさらに VHD を追加する前に、**ストレージ アカウント内の管理されていないディスクの数に関する[制限](../articles/storage/common/storage-scalability-targets.md)を確認する。**
 3. **可用性セット内の VM ごとに個別のストレージ アカウントを使用する。** 同じ可用性セット内の複数の VM でストレージ アカウントを共有しないでください。 上のベスト プラクティスに従っていれば、異なる可用性セットの VM でストレージ アカウントを共有してもかまいません![非管理対象ディスク FD](./media/virtual-machines-common-manage-availability/umd-updated.png)
+
+## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>VM に影響するイベントにプロアクティブに応答するスケジュール化されたイベントを使用する
+
+[スケジュール化されたイベント](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)をサブスクライブすると、VM に影響する可能性のある将来のメンテナンス イベントについて VM に通知されます。 スケジュール化されたイベントを有効にすると、仮想マシンでメンテナンス アクティビティが実行されるまでの時間が最小限になります。 たとえば、VM に影響を与える可能性があるホスト OS の更新プログラムは、影響と、アクションが何も行われない場合にメンテナンスが実行される日時が指定されたイベントとして、キューに登録されます。 スケジュール化されたイベントは、VM に影響を与える可能性がある差し迫ったハードウェア障害が Azure で検出されたときも、キューに登録されます。これにより、復旧をいつ実行するかを決定できます。 お客様は、イベントを使用して、状態の保存やセカンダリへのフェールオーバーなどのタスクを、メンテナンスの前に実行できます。 メンテナンス イベントを適切に処理するロジックを完了した後、未処理のスケジュール化されたイベントを承認して、プラットフォームによるメンテナンスを続行させることができます。
 
 ## <a name="configure-each-application-tier-into-separate-availability-sets"></a>各アプリケーション層に対して別々の可用性セットを構成する
 仮想マシンがすべてほぼ同一で、アプリケーションに対する役割が同じである場合は、アプリケーションの各層に対して別々の可用性セットを構成することをお勧めします。  同じ可用性セットの中に 2 つの異なる層を配置した場合、同じアプリケーション層内にあるすべての仮想マシンを一度に再起動できます。 各層に対する別々の可用性セット内に少なくとも 2 つの仮想マシンを構成することで、各層あたり 1 つ以上の仮想マシンの可用性が確保されます。

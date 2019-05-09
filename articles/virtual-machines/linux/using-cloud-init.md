@@ -15,24 +15,24 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0f7660e8534a74eabe32611c4c01ae5587af7cee
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6dd1dd0ce2395e2b06d80385ffd299835a280526
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188875"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002023"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セット (VMSS) を構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
 
 ## <a name="cloud-init-overview"></a>cloud-init の概要
-[cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 cloud-init は初回起動プロセスの間に呼び出されるので、構成を適用するために追加の手順や必要なエージェントはありません。  `#cloud-config` ファイルの形式を正しく設定する方法について詳しくは、[cloud-init のドキュメント サイト](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)をご覧ください。  `#cloud-config` ファイルは、base64 でエンコードされたテキスト ファイルです。
+[cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 cloud-init は初回起動プロセスの間に呼び出されるので、構成を適用するために追加の手順や必要なエージェントはありません。  `#cloud-config` ファイルの形式を正しく設定する方法について詳しくは、[cloud-init のドキュメント サイト](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)をご覧ください。  `#cloud-config` ファイルは、base64 でエンコードされたテキスト ファイルです。
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
  Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が VM および VM Scale Sets (VMSS) とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
 
-| 発行元 | プラン | SKU | Version | cloud-init 対応 |
+| Publisher | プラン | SKU | Version | cloud-init 対応 |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |latest |はい | 
 |Canonical |UbuntuServer |17.10 |latest |はい | 
@@ -54,7 +54,7 @@ VM の WALA による構成は、VM の最大プロビジョニング時間内�
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>cloud-init 対応の仮想マシンのデプロイ
 cloud-init 対応の仮想マシンのデプロイは簡単であり、デプロイの間に cloud-init が有効なディストリビューションを参照するだけです。  Linux ディストリビューションのメンテナンス担当者は、cloud-init を有効にし、Azure で発行された基本イメージに cloud-init を統合する必要があります。 デプロイするイメージが cloud-init 対応であることを確認した後は、Azure CLI を使ってイメージをデプロイできます。 
 
-このイメージをデプロイする最初のステップは、[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成することです。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+このイメージをデプロイする最初のステップは、[az group create](/cli/azure/group) コマンドでリソース グループを作成することです。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -71,7 +71,7 @@ packages:
 ```
 `ctrl-X` キーを押してファイルを終了し、「`y`」と入力してファイルを保存して、`enter` キーを押して終了時にファイル名を確認します。
 
-最後のステップでは、[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。 
+最後のステップでは、[az vm create](/cli/azure/vm) コマンドで VM を作成します。 
 
 次の例では、*centos74* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*centos74* という名前の VM を作成します。
 
@@ -92,7 +92,7 @@ VM のプロビジョニングが済むと、cloud-init は `--custom-data` で�
 > [!NOTE]
 > モジュールの障害により、cloud-init 全体の致命的な構成エラーが必ず発生するわけではありません。 たとえば、`runcmd` モジュールを使っている場合は、スクリプトが失敗しても、runcmd モジュールが実行されたため、cloud-init はプロビジョニング成功を報告します。
 
-cloud-init のログについて詳しくは、[cloud-init のドキュメント](http://cloudinit.readthedocs.io/en/latest/topics/logging.html)をご覧ください 
+cloud-init のログについて詳しくは、[cloud-init のドキュメント](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)をご覧ください 
 
 ## <a name="next-steps"></a>次の手順
 構成変更の cloud-init の例については、以下のドキュメントをご覧ください。

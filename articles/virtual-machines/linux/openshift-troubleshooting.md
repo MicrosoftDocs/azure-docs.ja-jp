@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 6a4af0efb14d8ad45add906262ffd2121e8b78d0
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: c65e76fb9453e93e856c76f397d187f9ee740fbd
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085833"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540348"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Azure での OpenShift デプロイのトラブルシューティング
 
 OpenShift クラスターが正常にデプロイされない場合は、Azure portal にエラーが出力されます。 この出力が読みにくく、問題を簡単に識別できない場合があります。 この出力にざっと目を通して、終了コード 3、4、または 5 を探してください。 これら 3 つの終了コードの情報を次に示します。
 
 - 終了コード 3: Red Hat サブスクリプション ユーザー名/パスワードまたは組織 ID/ライセンス認証キーが正しくありません
-- 終了コード 4: Red Hat のプール ID が正しくないか、使用権利がありません
+- 終了コード 4: Red Hat のプール ID が正しくないか、エンタイトルメントがありません
 - 終了コード 5: Docker シン プールのボリュームをプロビジョニングできません
 
 他のすべての終了コードについては、ssh 経由でホストに接続して、ログ ファイルを表示してください。
@@ -119,5 +119,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 一部のエラーでは、次のコマンドを使用して詳細を取得することもできます。
 
-1. systemctl status <service>
+1. systemctl status \<service>
 2. journalctl -xe

@@ -3,21 +3,23 @@ title: 個人デバイスを組織のネットワークに登録する - Azure A
 description: 組織の保護されたリソースにアクセスできるように、個人デバイスを組織のネットワークに登録する方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 7126a47bd90168c7d86fe9fcc05fab0a60955063
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.custom: user-help, seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180583"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439742"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>個人デバイスを組織のネットワークに登録する
 個人デバイス (通常は電話またはタブレット) を組織のネットワークに登録します。 デバイスが登録されたら、そのデバイスは組織の制限されたリソースにアクセスできるようになります。
@@ -34,7 +36,7 @@ ms.locfileid: "40180583"
 
 - オプションで、組織の選択に基づいて、Microsoft Intune などのモバイル デバイス管理で自動的に登録されることがあります。 Microsoft Intune での登録の詳細については、[Intune でのデバイスの登録](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)に関するページを参照してください。
 
-- 個人の Microsoft アカウントのユーザー名とパスワードを使用して、サインイン プロセスを実行します。
+- 職場または学校のアカウントのユーザー名とパスワードを使用して、サインイン プロセスを実行します。
 
 ## <a name="to-register-your-windows-device"></a>Windows デバイスを登録するには
 
@@ -44,30 +46,26 @@ ms.locfileid: "40180583"
 
     ![[設定] 画面上の [アカウント]](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. **[Email & accounts] (電子メールとアカウント)** を選択してから、**[Join a Microsoft account] (Microsoft アカウントを参加させる)** を選択します。
+2. **[職場または学校にアクセスする]** を選択し、**[職場または学校にアクセスする]** 画面から **[接続]** を選択します。
 
-    ![[Email & accounts] (電子メールとアカウント) および [Add a Microsoft account] (Microsoft アカウントを追加する) リンク](./media/user-help-register-device-on-network/register-device-email-and-accounts.png)
+    ![[接続] オプションが強調表示された [職場または学校にアクセスする] 画面](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. **[Add your Microsoft account] (Microsoft アカウントを追加する)** 画面で、個人の Microsoft アカウントのメール アドレスを入力します。
+3. **[職場または学校用のアカウントを追加する]** 画面で、職場または学校のアカウントの電子メール アドレスを入力し、**[次へ]** を選択します。 たとえば、「 alain@contoso.com 」のように入力します。
 
-    ![電子メールが表示された [Add your Microsoft account] (Microsoft アカウントを追加する) 画面](./media/user-help-register-device-on-network/register-device-add-accounts.png)
-
-4. **[パスワードの入力]** 画面で、個人の Microsoft アカウントのパスワードを入力し、**[サインイン]** を選択します。
-
-    ![[パスワードの入力] 画面](./media/user-help-register-device-on-network/register-device-enter-password.png)
+4. 職場または学校アカウントでサインインし、**[サインイン]** を選択します。
 
 5. 本人確認要求の承認 (2 段階認証を使用する場合) や Windows Hello の設定 (必要な場合) など、登録プロセスの残りを完了します。
 
-## <a name="to-make-sure-youre-registered"></a>登録されたことを確認するには
+## <a name="to-verify-that-youre-registered"></a>登録されていることを確認するには
 設定を参照することによって、登録されたことを確認できます。
 
 1. **[設定]** を開いてから、**[アカウント]** を選択します。
 
     ![[設定] 画面上の [アカウント]](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. **[Email & accounts] (電子メールとアカウント)** を選択し、個人の Microsoft アカウントが表示されることを確認します。
+2. **[職場または学校にアクセスする]** を選択し、自身の職場または学校のアカウントが表示されていることを確認します。
 
-    ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-register-device-on-network/register-device-verify-account.png)
+    ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 
 ## <a name="next-steps"></a>次の手順
 個人デバイスを組織のネットワークに登録したら、ほとんどのリソースにアクセスできるようになります。

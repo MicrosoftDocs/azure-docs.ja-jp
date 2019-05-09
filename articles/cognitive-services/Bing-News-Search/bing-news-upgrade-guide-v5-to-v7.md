@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 565c0ed877cf4500131f7ad3099f3c7d3f1a1220
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 04c457fba5cb32cc1312ffac2c2f7c1470b5a46b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955039"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878444"
 ---
 # <a name="news-search-api-upgrade-guide"></a>News Search API のアップグレード ガイド
 
@@ -76,7 +76,7 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターをに設定できる可能性のある値として Products が追加されました。 [市場別のカテゴリ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market)に関するページを参照してください。
+- [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターをに設定できる可能性のある値として Products が追加されました。 [市場別のカテゴリ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)に関するページを参照してください。
 
 - 最近の日付から並べられたトレンドのトピックを返す [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) クエリ パラメーターが追加されました。
 

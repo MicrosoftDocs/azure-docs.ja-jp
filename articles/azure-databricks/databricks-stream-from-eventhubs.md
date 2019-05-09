@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する '
+title: 'チュートリアル:Event Hubs を使用してデータを Azure Databricks にストリーム配信する '
 description: Azure Databricks と Event Hubs を使用して、Twitter からストリーミング データを取り込み、ほぼリアルタイムでデータを読み取る方法について説明します。
 services: azure-databricks
 author: lenadroid
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 6e75e549486fb260f3ccbdead7fe1dea02593f3c
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: bc712885169730aa9cbbd8de35b96e645ff1cea2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707148"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087127"
 ---
-# <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
+# <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル:Event Hubs を使用してデータを Azure Databricks にストリーム配信する
 
 このチュートリアルでは、データ インジェスト システムを Azure Databricks に接続し、ほぼリアルタイムで Apache Spark クラスターにデータをストリーム配信します。 Azure Event Hubs を使用してデータ インジェスト システムを設定し、それを Azure Databricks に接続して、届いたメッセージを処理します。 データ ストリームにアクセスするために、Twitter API を使用してツイートを Event Hubs に取り込みます。 Azure Databricks にデータを用意したら、分析ジョブを実行してデータをさらに分析できます。 
 
@@ -39,6 +39,10 @@ ms.locfileid: "51707148"
 > * Event Hubs からツイートを読み取る
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+> [!Note]
+> **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
+> 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,11 +72,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
 
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
-    |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します        |
+    |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**[リソース グループ]**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
     |**場所**     | **[米国東部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
@@ -96,11 +100,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     以下を除くすべての値は、既定値のままにします。
 
-    * クラスターの名前を入力します。
-    * この記事では、**4.0** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+   * クラスターの名前を入力します。
+   * この記事では、**4.0** ランタイムを使用してクラスターを作成します。
+   * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
-    **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
+     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
 ## <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
@@ -124,16 +128,16 @@ Twitter アプリケーションについて取得した値を保存します。
 
 このチュートリアルでは、Twitter API を使用してツイートを Event Hubs に送信します。 さらに、[Apache Spark Event Hubs コネクタ](https://github.com/Azure/azure-event-hubs-spark)を使用して、Azure Event Hubs に対するデータの読み取りと書き込みを行います。 これらの API をクラスターの一部として使用するには、それらをライブラリとして Azure Databricks に追加し、Spark クラスターに関連付けます。 次の手順では、ワークスペースの **[共有]** フォルダーにライブラリを追加する方法について説明します。
 
-1.  Azure Databricks ワークスペースで **[ワークスペース]** を選択し、**[共有]** を右クリックします。 コンテキスト メニューで **[作成]** > **[ライブラリ]** の順に選択します。
+1. Azure Databricks ワークスペースで **[ワークスペース]** を選択し、**[共有]** を右クリックします。 コンテキスト メニューで **[作成]** > **[ライブラリ]** の順に選択します。
 
-    ![[ライブラリの追加] ダイアログ ボックス](./media/databricks-stream-from-eventhubs/databricks-add-library-option.png "[ライブラリの追加] ダイアログ ボックス")
+   ![[ライブラリの追加] ダイアログ ボックス](./media/databricks-stream-from-eventhubs/databricks-add-library-option.png "[ライブラリの追加] ダイアログ ボックス")
 
 2. [新しいライブラリ] ページの **[ソース]** で、**[Maven Coordinate]\(Maven 座標\)** を選択します。 **[座標]** には、追加したいパッケージの座標を入力します。 ここでは、このチュートリアルで使用するライブラリの Maven 座標です。
 
-    * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.1`
-    * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
+   * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.1`
+   * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
 
-    ![Maven 座標を入力する](./media/databricks-stream-from-eventhubs/databricks-eventhub-specify-maven-coordinate.png "Maven 座標を入力する")
+     ![Maven 座標を入力する](./media/databricks-stream-from-eventhubs/databricks-eventhub-specify-maven-coordinate.png "Maven 座標を入力する")
 
 3. **[ライブラリの作成]** を選択します。
 
@@ -367,7 +371,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 ![Databricks クラスターを停止する](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
@@ -384,4 +388,4 @@ Twitter アプリケーションについて取得した値を保存します。
 次のチュートリアルに進み、Azure Databricks と [Microsoft Cognitive Services API](../cognitive-services/text-analytics/overview.md) を使用してストリーム配信されたデータに対して感情分析を実行する方法について学習してください。
 
 > [!div class="nextstepaction"]
->[Azure Databricks を使用した、ストリーミング データに対する感情分析 ](databricks-sentiment-analysis-cognitive-services.md)
+>[Azure Databricks を使用した、ストリーミング データに対する感情分析](databricks-sentiment-analysis-cognitive-services.md)

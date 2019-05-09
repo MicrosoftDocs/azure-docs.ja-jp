@@ -9,30 +9,32 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: dbcb031b49c529bc2b2524cd0984bbef1945d485
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: fa831ad878d214515849787988ccb32f6c57ce20
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164060"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361763"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
-Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成する方法を説明します。 その後、このアプリケーションを Azure HDInsight での HBase で使用します。
+Java で [Apache HBase](https://hbase.apache.org/) アプリケーションを作成する方法を説明します。 その後、このアプリケーションを Azure HDInsight での HBase で使用します。
 
 このドキュメントの手順では、[Apache Maven](https://maven.apache.org/) を使用して、プロジェクトを作成およびビルドします。 Maven は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。
 
-> [!NOTE]
+> [!NOTE]  
 > このドキュメントの手順のテストは、HDInsight 3.6 で行われたものが最新です。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="requirements"></a>必要条件
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * [Java プラットフォーム JDK](https://aka.ms/azure-jdks) 8 以降
 
-    > [!NOTE]
+    > [!NOTE]  
     > HDInsight 3.5 以降では Java 8 が必要です。 以前のバージョンの HDInsight では、Java 7 が必要です。
 
 * [Apache Maven](https://maven.apache.org/)
@@ -49,14 +51,14 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > PowerShell を使用している場合は、`-D` パラメーターを二重引用符で囲む必要があります。
     >
     > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
     このコマンドにより、**artifactID** パラメーターで指定した名前 (この例では **hbaseapp**) のディレクトリが作成されます。このディレクトリには、次の項目が含まれます。
 
-   * **pom.xml**: プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
+   * **pom.xml**: プロジェクト オブジェクト モデル ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
    * **src**:アプリケーションを作成する **main/java/com/microsoft/examples** ディレクトリに含まれるディレクトリです。
 
 3. `src/test/java/com/microsoft/examples/apptest.java` ファイルを削除します。 この例では使用されません。
@@ -78,9 +80,9 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     </dependency>
    ```
 
-    このセクションは、プロジェクトに **hbase-client** および **phoenix-core** コンポーネントが必要であることを示しています。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) を使用して、この依存関係についての詳細を確認できます。
+    このセクションは、プロジェクトに **hbase-client** および **phoenix-core** コンポーネントが必要であることを示しています。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Maven セントラル リポジトリ検索](https://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) を使用して、この依存関係についての詳細を確認できます。
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > hbase-client のバージョン番号は、HDInsight クラスターに付属の Apache HBase のバージョンと一致する必要があります。 次の表を使用して、正しいバージョン番号を調べてください。
 
    | HDInsight クラスターのバージョン | 使用する Apache HBase のバージョン |
@@ -88,7 +90,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
    | 3.2 |0.98.4-hadoop2 |
    | 3.3、3.4、3.5、3.6 |1.1.2 |
 
-    HDInsight のバージョンとコンポーネントの詳細については、「 [HDInsight で使用できる Hadoop コンポーネントの種類を教えてください](../hdinsight-component-versioning.md)」を参照してください。
+    HDInsight のバージョンとコンポーネントの詳細については、[HDInsight で使用できるさまざまな Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)に関するページを参照してください。
 
 3. **pom.xml** ファイルに次のコードを追加します。 このテキストは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
 
@@ -139,10 +141,10 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
     このセクションにより、HBase の構成情報が含まれたリソース (`conf/hbase-site.xml`) が構成されます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > コードを介して構成値を設定することもできます。 `CreateTable` サンプル内のコメントをご覧ください。
 
-    このセクションによって、[Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。 トポロジのコンパイルにはコンパイラ プラグインが使用されます。 シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。 このプラグインは、HDInsight クラスターでの実行時に発生する "ライセンス ファイルの重複" エラーを回避するために使用されます。 maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
+    このセクションによって、[Apache Maven Compiler Plugin](https://maven.apache.org/plugins/maven-compiler-plugin/) と [Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。 トポロジのコンパイルにはコンパイラ プラグインが使用されます。 シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。 このプラグインは、HDInsight クラスターでの実行時に発生する "ライセンス ファイルの重複" エラーを回避するために使用されます。 maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
 
     また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uber jar も生成します。
 
@@ -357,7 +359,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 2. コマンドが完了すると、`hbaseapp/target` ディレクトリに `hbaseapp-1.0-SNAPSHOT.jar` という名前のファイルが格納されます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > `hbaseapp-1.0-SNAPSHOT.jar` ファイルは、uber jar です。 これには、アプリケーションを実行するために必要なすべての依存関係が含まれます。
 
 
@@ -470,32 +472,32 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
 
     # The job definition
-    $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
+    $jobDefinition = New-AzHDInsightMapReduceJobDefinition `
         -JarFile $jarFile `
         -ClassName $className `
         -Arguments $emailRegex
 
     # Get the job output
-    $job = Start-AzureRmHDInsightJob `
+    $job = Start-AzHDInsightJob `
         -ClusterName $clusterName `
         -JobDefinition $jobDefinition `
         -HttpCredential $creds
     Write-Host "Wait for the job to complete ..." -ForegroundColor Green
-    Wait-AzureRmHDInsightJob `
+    Wait-AzHDInsightJob `
         -ClusterName $clusterName `
         -JobId $job.JobId `
         -HttpCredential $creds
     if($showErr)
     {
     Write-Host "STDERR"
-    Get-AzureRmHDInsightJobOutput `
+    Get-AzHDInsightJobOutput `
                 -Clustername $clusterName `
                 -JobId $job.JobId `
                 -HttpCredential $creds `
                 -DisplayOutputType StandardError
     }
     Write-Host "Display the standard output ..." -ForegroundColor Green
-    Get-AzureRmHDInsightJobOutput `
+    Get-AzHDInsightJobOutput `
                 -Clustername $clusterName `
                 -JobId $job.JobId `
                 -HttpCredential $creds
@@ -556,7 +558,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
         $storage = GetStorage -clusterName $clusterName
 
         # Upload file to storage, overwriting existing files if -force was used.
-        Set-AzureStorageBlobContent -File $localPath `
+        Set-AzStorageBlobContent -File $localPath `
             -Blob $destinationPath `
             -force:$force `
             -Container $storage.container `
@@ -565,10 +567,10 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
     function FindAzure {
         # Is there an active Azure subscription?
-        $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+        $sub = Get-AzSubscription -ErrorAction SilentlyContinue
         if(-not($sub))
         {
-            throw "No active Azure subscription found! If you have a subscription, use the Connect-AzureRmAccount cmdlet to login to your subscription."
+            throw "No active Azure subscription found! If you have a subscription, use the Connect-AzAccount cmdlet to login to your subscription."
         }
     }
 
@@ -577,7 +579,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
             [Parameter(Mandatory = $true)]
             [String]$clusterName
         )
-        $hdi = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        $hdi = Get-AzHDInsightCluster -ClusterName $clusterName
         # Does the cluster exist?
         if (!$hdi)
         {
@@ -591,14 +593,14 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
         $resourceGroup = $hdi.ResourceGroup
         $storageAccountName=$hdi.DefaultStorageAccount.split('.')[0]
         $container=$hdi.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
+        $storageAccountKey=(Get-AzStorageAccountKey `
             -Name $storageAccountName `
         -ResourceGroupName $resourceGroup)[0].Value
         # Get the resource group, in case we need that
         $return.resourceGroup = $resourceGroup
         # Get the storage context, as we can't depend
         # on using the default storage context
-        $return.context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+        $return.context = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
         # Get the container, so we know where to
         # find/store blobs
         $return.container = $container

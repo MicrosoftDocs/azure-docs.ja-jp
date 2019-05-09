@@ -14,21 +14,21 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 9ef754e9952bcbd47d668331e906b19ad582b90c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818600"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010564"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Azure 上の Java アプリケーションで Twilio を使用して通話する方法
-次の例では、Azure でホストされる Java Web ページから Twilio を使用して通話する方法を示しています。 次のスクリーン ショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
+次の例では、Azure でホストされる Java Web ページから Twilio を使用して通話する方法を示しています。 次のスクリーンショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
 
 ![Twilio および Java を使用した Azure 通話フォーム][twilio_java]
 
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
-1. Twilio アカウントと認証トークンを取得します。 Twilio を利用し始める前に、[http://www.twilio.com/pricing][twilio_pricing] で価格を検討します。 [https://www.twilio.com/try-twilio][try_twilio] でサインアップできます。 Twilio から提供される API については、[http://www.twilio.com/api][twilio_api] を参照してください。
+1. Twilio アカウントと認証トークンを取得します。 Twilio を利用し始める前に、[https://www.twilio.com/pricing][twilio_pricing] で価格を検討します。 [https://www.twilio.com/try-twilio][try_twilio] でサインアップできます。 Twilio から提供される API については、[https://www.twilio.com/api][twilio_api] を参照してください。
 2. Twilio JAR を入手します。 [https://github.com/twilio/twilio-java][twilio_java_github] で、GitHub のソースをダウンロードして独自の JAR を作成するか、ビルド済み JAR (依存関係あり/なし) をダウンロードすることができます。
    このトピックでのコードは、ビルド済み TwilioJava-3.3.8-with-dependencies JAR を使用して記述されています。
 3. JAR を Java ビルド パスに追加します。
@@ -42,7 +42,7 @@ ms.locfileid: "42818600"
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -88,7 +88,7 @@ ms.locfileid: "42818600"
     import="com.twilio.sdk.resource.factory.*"
     import="com.twilio.sdk.resource.instance.*"
     pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -130,7 +130,7 @@ ms.locfileid: "42818600"
          userText = userText.replace(" ", "%20");
 
          // Create a URL using the Twilio message and the user-entered text.
-         String Url="http://twimlets.com/message";
+         String Url="https://twimlets.com/message";
          Url = Url + "?Message%5B0%5D=" + userText;
 
          // Display the message URL.
@@ -162,7 +162,7 @@ ms.locfileid: "42818600"
     </body>
     </html>
 
-通話を行うだけでなく、makecall.jsp は Twilio エンドポイント、API バージョン、通話状態を表示します。 たとえば、次のスクリーン ショットのようになります。
+通話を行うだけでなく、makecall.jsp は Twilio エンドポイント、API バージョン、通話状態を表示します。 たとえば、次のスクリーンショットのようになります。
 
 ![Twilio および Java を使用した Azure 通話応答][twilio_java_response]
 
@@ -173,7 +173,7 @@ ms.locfileid: "42818600"
 2. TwilioCloud WAR を解凍するように **startup.cmd** を変更します。
 3. アプリケーションをコンピューティング エミュレーター用にコンパイルします。
 4. コンピューティング エミュレーターでデプロイを開始します。
-5. Web ブラウザーを開いて､**http://localhost:8080/TwilioCloud/callform.jsp** を実行します。
+5. ブラウザーを開いて､`http://localhost:8080/TwilioCloud/callform.jsp` を実行します。
 6. フォームで値を入力し、 **[電話をかける]** をクリックして、makecall.jsp で結果を確認します。
 
 Azure にデプロイする準備ができたら、クラウドへのデプロイ用に再コンパイルし、Azure にデプロイして、ブラウザーで http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp を実行します (*your_hosted_name* は実際の値に置き換えてください)。
@@ -183,7 +183,7 @@ Azure 上の Java で Twilio を使用した基本機能を示すために、こ
 
 * Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL Database を使用して、電話番号と通話テキストを保存できます。 Java で Azure Storage BLOB を使用する方法の詳細については、[Java から BLOB Storage サービスを使用する方法に関するページ][howto_blob_storage_java]を参照してください。 
 * **RoleEnvironment.getConfigurationSettings** を使用すると、Twilio アカウント ID と認証トークンは、その値を makecall.jsp 内にハードコーディングするのではなく、デプロイの構成設定から取得できます。 **RoleEnvironment** クラスについては、[JSP での Azure サービス ランタイム ライブラリの使用に関するページ][azure_runtime_jsp]および Azure サービス ランタイム パッケージのドキュメント ([http://dl.windowsazure.com/javadoc][azure_javadoc]) を参照してください。
-* makecall.jsp コードで、Twilio から提供される URL ([http://twimlets.com/message][twimlet_message_url]) を **Url** 変数に設定します。 この URL で、通話の次の動作を Twilio に指示する TwiML (Twilio マークアップ言語) 応答が返されるようにします。 たとえば、返される TwiML 応答に **&lt;Say&gt;** 動詞を含めて、通話受信者に対してテキストが読み上げられるようにできます。 Twilio から提供される URL を使用する代わりに、独自のサービスを作成して Twilio の要求への応答を返すことができます。詳細については、「[Java で音声および SMS 機能に Twilio を使用する方法][howto_twilio_voice_sms_java]」を参照してください。 TwiML の詳細については、[http://www.twilio.com/docs/api/twiml][twiml] で確認できます。**&lt;Say&gt;** を始めとする Twilio の動詞については、[http://www.twilio.com/docs/api/twiml/say][twilio_say] で確認できます。
+* makecall.jsp コードで、Twilio から提供される URL ([https://twimlets.com/message][twimlet_message_url]) を **Url** 変数に設定します。 この URL で、通話の次の動作を Twilio に指示する TwiML (Twilio マークアップ言語) 応答が返されるようにします。 たとえば、返される TwiML 応答に **&lt;Say&gt;** 動詞を含めて、通話受信者に対してテキストが読み上げられるようにできます。 Twilio から提供される URL を使用する代わりに、独自のサービスを作成して Twilio の要求への応答を返すことができます。詳細については、「[Java で音声および SMS 機能に Twilio を使用する方法][howto_twilio_voice_sms_java]」を参照してください。 TwiML の詳細については、[https://www.twilio.com/docs/api/twiml][twiml] で確認できます。**&lt;Say&gt;** を始めとする Twilio の動詞については、[https://www.twilio.com/docs/api/twiml/say][twilio_say] で確認できます。
 * Twilio に関するセキュリティ ガイドライン ([https://www.twilio.com/docs/security][twilio_docs_security]) も参照してください。
 
 Twilio について詳しくは、[https://www.twilio.com/docs][twilio_docs] をご覧ください。
@@ -192,23 +192,23 @@ Twilio について詳しくは、[https://www.twilio.com/docs][twilio_docs] を
 * [Java で音声および SMS 機能に Twilio を使用する方法][howto_twilio_voice_sms_java]
 * [証明書を Java CA 証明書ストアに追加する方法][add_ca_cert]
 
-[twilio_pricing]: http://www.twilio.com/pricing
-[try_twilio]: http://www.twilio.com/try-twilio
-[twilio_api]: http://www.twilio.com/api
+[twilio_pricing]: https://www.twilio.com/pricing
+[try_twilio]: https://www.twilio.com/try-twilio
+[twilio_api]: https://www.twilio.com/api
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-[twilio_java_github]: http://github.com/twilio/twilio-java
-[twimlet_message_url]: http://twimlets.com/message
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api_service]: http://api.twilio.com
+[twilio_java_github]: https://github.com/twilio/twilio-java
+[twimlet_message_url]: https://twimlets.com/message
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api_service]: https://api.twilio.com
 [add_ca_cert]: java-add-certificate-ca-store.md
 [azure_java_eclipse_hello_world]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app 
 [howto_twilio_voice_sms_java]: partner-twilio-java-how-to-use-voice-sms.md
-[howto_blob_storage_java]: http://www.windowsazure.com/develop/java/how-to-guides/blob-storage/
-[howto_sql_azure_java]: http://msdn.microsoft.com/library/windowsazure/hh749029.aspx
-[azure_runtime_jsp]: http://msdn.microsoft.com/library/windowsazure/hh690948.aspx
+[howto_blob_storage_java]: https://www.windowsazure.com/develop/java/how-to-guides/blob-storage/
+[howto_sql_azure_java]: https://msdn.microsoft.com/library/windowsazure/hh749029.aspx
+[azure_runtime_jsp]: https://msdn.microsoft.com/library/windowsazure/hh690948.aspx
 [azure_javadoc]: http://dl.windowsazure.com/javadoc
-[twilio_docs_security]: http://www.twilio.com/docs/security
-[twilio_docs]: http://www.twilio.com/docs
-[twilio_say]: http://www.twilio.com/docs/api/twiml/say
+[twilio_docs_security]: https://www.twilio.com/docs/security
+[twilio_docs]: https://www.twilio.com/docs
+[twilio_say]: https://www.twilio.com/docs/api/twiml/say
 [twilio_java]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaCallForm.jpg
 [twilio_java_response]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaMakeCall.jpg

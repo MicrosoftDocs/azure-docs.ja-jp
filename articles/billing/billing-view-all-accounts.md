@@ -1,6 +1,6 @@
 ---
-title: Azure Portal でのすべての請求先アカウントの表示 | Microsoft Docs
-description: Azure Portal で自分個人および Enterprise Agreement 両方の請求先アカウントを表示する方法を説明します｡
+title: Azure portal での請求先アカウントの表示 | Microsoft Docs
+description: Azure portal で請求先アカウントを表示する方法について説明します。
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -13,35 +13,42 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
-ms.author: cwatson
-ms.openlocfilehash: 769d810eb20b70a955560e6bf2a5b533ea6e55f0
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: banders
+ms.openlocfilehash: 31e4eb1d6493c8de99ac48e09dfb2b8b6481b70a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395527"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854281"
 ---
-# <a name="view-all-your-billing-accounts-in-azure-portal"></a>Azure Portal でのすべての請求先アカウントの表示  
+# <a name="view-your-billing-accounts-in-azure-portal"></a>Azure portal での請求先アカウントの表示  
 
-Azure の請求関係は､請求先アカウントで定義されます｡ 複数の請求先アカウントを持つことができます｡ たとえば､個人的なプロジェクト用に利用する Azure サブスクリプションを持つことができます｡ 組織の Enterprise Agreement 経由で Azure にアクセスすることもできます｡ 自分のすべての請求先アカウントを表示するには､Azure Portal で [Cost Management + Billing](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) に移動します｡
+請求先アカウントは、Azure を使用するために Microsoft と締結した契約ごとに作成されます。 請求先アカウントを使用して、請求書と支払方法を管理し、Azure サービスのコストを追跡します。 複数の請求先アカウントにアクセスできます。 たとえば、個人的なプロジェクトのために Azure にサインアップしたとします。 この場合、組織の Enterprise Agreement または Microsoft Customer Agreement を通じてアクセスすることもできます。 これらのシナリオごとに、個別の請求先アカウントが提供されます。
 
-現在表示できるのは､自分個人と Enterprise Agreement の請求先アカウントだけです｡ 既定では､[Cost Management + Billing](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) ページには個人的な請求先アカウントが表示されます｡ ただし､**Billing accounts** に移動して､アカウントを変更することができます｡
+現在、Azure portal では、次の種類の請求先アカウントがサポートされています。
 
-個人的な請求先アカウントについては､[Azure Portal](https://portal.azure.com) からすべての料金を管理し､表示することができます｡ これに対し Enterprise Agreement アカウントの場合､表示できるのは Azure の予約の購入、残高､過去 1 か月間の料金だけです｡ Enterprise Agreement 機能はプレビュー段階であり､エンタープライズ管理者ロールのユーザーのみ利用できます｡
+- **Microsoft Online Services Program**: Azure Web サイトから Azure にサインアップすると、Microsoft Online Services Program の請求先アカウントが作成されます。 たとえば、[Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)または [Azure 従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0003p/)にサインアップした場合や、[Visual Studio サブスクライバー](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)としてサインアップした場合です。
 
-## <a name="change-billing-account-view"></a>請求先アカウントのビューを変更する 
+- **マイクロソフト エンタープライズ契約**:組織が Azure を使用するために Enterprise Agreement を締結すると、Enterprise Agreement の請求先アカウントが作成されます。 Enterprise Agreement の請求先アカウントの管理者は、部門およびアカウント課金スコープを使用して、組織の請求先を管理および整理します。
 
-1.  [Azure Portal](https://portal.azure.com) にログインします。
+- **Microsoft Customer Agreement**: 組織が Azure を使用するために Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の請求先アカウントが作成されます。 Microsoft Customer Agreement の請求先アカウントの管理者は、課金プロファイルおよび請求書セクション課金スコープを使用して、組織の請求先を管理および整理します。 詳細については、「[Get started with your billing account for Microsoft Customer Agreement (Microsoft Customer Agreement の請求先アカウントの概要)](billing-mca-overview.md)」をご覧ください。
 
-2.  Portalの左側から､**Cost Management + Billing** を選択します｡ 
+## <a name="change-billing-account-view-in-the-azure-portal"></a>Azure portal で請求先アカウントのビューを変更する
 
-3.  既定では､自分個人の請求先アカウントが表示されます (該当する場合)｡ 個人的な請求先アカウントを持っていないか､Enterprise Agreement アカウントに切り替えたい場合は､**Billing accounts** を選択します｡
+スコープとは、ユーザーが請求先を表示および管理する際に使用する、請求先アカウント内のノードです。 たとえば、Microsoft Online Services Program の請求先アカウントのスコープは請求先アカウントだけですが、Enterprise Agreement の請求先アカウントには、請求先アカウント、部門、アカウントの各スコープがあります。 複数の課金スコープにアクセスできる場合、既定では、いずれかのスコープが [Azure Cost Management + Billing (Azure Cost Management + 請求)] ページに表示されます。 スコープを変更するには、次の手順に従います。
 
-4.  アカウントを選択して詳細を表示します｡ Enterprise Agreement では､自身が エンタープライズ 管理者である請求先アカウントが表示されるだけです｡ 今後は､その他の Enterprise Agreement ロールもサポートされる予定です｡
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-    ![請求先アカウント一覧のスクリーンショット](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+2. **[コストの管理と請求]** で検索します。
 
- 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+   ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+3. 左側の **[すべての課金スコープ]** を選択します。
+
+   ![すべての課金スコープを示すスクリーンショット](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+
+4. 詳細を表示するスコープを選択します。
+
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

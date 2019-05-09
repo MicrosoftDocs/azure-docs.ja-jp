@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: aac2a0b102d50c8d3f0506c2cc1469a838706703
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729698"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793857"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 
@@ -29,7 +29,7 @@ Azure App Service は、ほとんどの Web アプリに適しています。 �
 
 Service Fabric は、新しいアプリを作成する場合やマイクロサービス アーキテクチャを使用するように既存のアプリを書き換える場合にお勧めします。 共有プールのマシン上で動作するアプリは、小規模から開始し、必要に応じて数百または数千ものコンピューターを含む非常に大きなスケールまで拡張することができます。 ステートフル サービスによってアプリの状態を一貫して確実に格納することが容易になり、Service Fabric はサービスのパーティション分割、スケーリング、可用性を自動的に管理します。  また、Service Fabric は、Open Web Interface for .NET (OWIN) と ASP.NET Core を使用した Web API もサポートします。  App Service に比べて、Service Fabric は基になるインフラストラクチャへのより細かい制御 (直接アクセス) も提供します。 サーバーにリモート接続したり、サーバーのスタートアップ タスクを構成したりできます。 Cloud Services は、制御の程度と使いやすさにおいて Service Fabric と似ていますが、現在ではレガシ サービスになりつつあり、新しい開発には Service Fabric をお勧めします。
 
-既存のアプリケーションを App Service や Service Fabric で実行するためにはかなりの修正が必要という場合、Virtual Machines を選ぶことで、クラウドへの移行を単純化できる場合があります。 ただし、VM の構成、セキュリティ保護、メンテナンスを正しく行うためには、Azure App Service や Service Fabric と比べて、はるかに時間がかかり、IT に対する豊富な知識と経験が要求されます。 Azure Virtual Machines を選択する場合は、VM 環境に対する修正プログラムの適用、更新、管理に伴って日々発生するメンテナンスの労力を考慮してください。 Azure Virtual Machines は Infrastructure-as-a-Service (IaaS) で、App Service と Service Fabric は Platform-as-a-Service (Paas) です。 
+既存のアプリケーションを App Service や Service Fabric で実行するためにはかなりの修正が必要という場合、Virtual Machines を選ぶことで、クラウドへの移行を単純化できる場合があります。 ただし、VM の構成、セキュリティ保護、メンテナンスを正しく行うためには、Azure App Service や Service Fabric と比べて、はるかに時間がかかり、IT に対する豊富な知識と経験が要求されます。 Azure Virtual Machines を選択する場合は、VM 環境に対する修正プログラムの適用、更新、管理に伴って日々発生するメンテナンスの労力を考慮してください。 Azure Virtual Machines は Infrastructure-as-a-Service (IaaS) で、App Service と Service Fabric は Platform-as-a-Service (Paas) です。
 
 ## <a name="features"></a>機能の比較
 次の表では、最善の選択ができるように、App Service、Cloud Services、Virtual Machines、および Service Fabric の機能を比較しています。 それぞれのホスティング方法に関する最新の SLA 情報については、 [Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)を参照してください。
@@ -53,7 +53,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | 再デプロイなしでの複数インスタンスへのスケールアウト |X |X |X |X |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。マシン間で要求をルーティングするようにロード バランサーを構成し、[可用性セット](../virtual-machines/windows/manage-availability.md) 内に複数の VM インスタンスがあるようにする必要があります。 |
 | SSL のサポート |X |X |X |X |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 |
 | Visual Studio 統合 |X |X |X |X | |
-| リモート デバッグ |X |X |X | | |
+| リモート デバッグ |X |X |X |X | |
 | TFS によるコードのデプロイ |X |X |X |X | |
 |  [Azure Virtual Network](/azure/virtual-network/) |X |X |X |X |「 [Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
 |  [Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |X | |
@@ -78,7 +78,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 * [モバイル クライアント向けの REST API や Web サービスをホストします。](#mobile)
 
 ### <a id="onprem"></a> Web フロント エンドとバックエンド (バックグラウンド処理とデータベース) を組み合わせて、ビジネス アプリケーションをオンプレミスの資産と連係させたいのですが。
-そのような複合的なビジネス アプリケーションには、Azure App Service が最適です。 Azure Websites 向けにアプリケーションを開発することで、負荷分散プラットフォーム上でスケールを自動的に調整し、Active Directory でセキュリティを確保しながら、オンプレミスのリソースに接続することが可能です。 それらのアプリケーションは、ワールドクラスのポータルと API によって簡単に管理できます。さらに、そのアプリケーションが顧客によってどのように利用されているかを、アプリケーション洞察ツールで深く見通すことができます。 [Web ジョブ][Webjobs]機能を使用すると、バックグラウンドのプロセスとタスクを Web 階層の中で実行すると共に、ハイブリッド接続と VNET 機能を使ってオンプレミスのリソースに対して簡単に接続できます。 Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
+そのような複合的なビジネス アプリケーションには、Azure App Service が最適です。 Azure Websites 向けにアプリケーションを開発することで、負荷分散プラットフォーム上でスケールを自動的に調整し、Active Directory でセキュリティを確保しながら、オンプレミスのリソースに接続することが可能です。 それらのアプリケーションは、ワールドクラスのポータルと API によって簡単に管理できます。さらに、そのアプリケーションが顧客によってどのように利用されているかを、アプリケーション洞察ツールで深く見通すことができます。 [Web ジョブ][Webjobs]機能を使用すると、バックグラウンドのプロセスとタスクを Web 階層の中で実行すると共に、ハイブリッド接続と VNet 機能を使ってオンプレミスのリソースに対して簡単に接続できます。 Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
 
 * 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上でアプリケーションを実行し、高い信頼性を確保する。
 * グローバルなデータセンターのネットワークを活かしてスケールを自動的に調整する。
@@ -145,7 +145,7 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 ご利用のオープン ソース フレームワークが App Service でサポートされていない場合は、他の Azure Web ホスティング方法のいずれかで実行できます。 Virtual Machines を使用する場合、Windows または Linux ベースのマシン イメージにソフトウェアをインストールして構成します。
 
 ### <a id="lob"></a>社内ネットワークに接続する必要がある基幹業務アプリケーションがあります。
-基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。 これは、App Service、Service Fabric、Virtual Machines で、 [Azure Virtual Network サービス](/azure/virtual-network/)を使用して実現できます。 App Service 上では、 [VNET 統合機能](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)を使用して、見かけ上、社内ネットワークで動作しているかのように Azure アプリケーションを実行することができます。
+基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。 これは、App Service、Service Fabric、Virtual Machines で、 [Azure Virtual Network サービス](/azure/virtual-network/)を使用して実現できます。 App Service 上では、[VNet 統合機能](/azure/app-service/web-sites-integrate-with-vnet)を使用して、見かけ上、社内ネットワークで動作しているかのように Azure アプリケーションを実行することができます。
 
 ### <a id="mobile"></a>モバイル クライアント向けの REST API や Web サービスをホストします。
 HTTP ベースの Web サービスを使用すると、モバイル クライアントを含めて広範囲のクライアントをサポートすることができます。 ASP.NET Web API のようなフレームワークは、REST サービスを作成および使用しやすくするために Visual Studio と統合されています。  これらのサービスは Web エンドポイントから公開されるため、Azure での Web ホスト手法を使用してこのシナリオをサポートすることができます。 ただし、REST API をホストするためには App Service が適切な選択です。 App Service を使用すると、次のことができます。
@@ -157,8 +157,6 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 > [!NOTE]
 > アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure App Service で有効期間の短いスターター アプリをすぐに無料で作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-> 
-> 
 
 ## <a id="nextsteps"></a> 次のステップ
 3 つの Web ホスティング方法の詳細については、「 [Microsoft Azure の概要](../fundamentals-introduction-to-azure.md)」を参照してください。

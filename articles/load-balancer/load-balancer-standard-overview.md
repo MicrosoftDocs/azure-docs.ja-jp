@@ -5,22 +5,23 @@ description: Azure Standard Load Balancer の機能の概要
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438763"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578528"
 ---
-# <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
+# <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
 
 Azure Load Balancer を使うと、アプリケーションを拡張し、サービスを高可用性にすることができます。 Load Balancer は、受信と送信のどちらのシナリオにも使うことができ、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。 
 
@@ -73,6 +74,9 @@ Standard Load Balancer では、HTTPS アプリケーションを正確に監視
 
 ### <a name="az"></a>可用性ゾーン
 
+>[!IMPORTANT]
+>リージョン固有の情報を含む関連トピックについては、[Availability Zones](../availability-zones/az-overview.md) に関するページを参照してください。
+
 Standard Load Balancer は、可用性ゾーンを利用できるリージョンでの追加機能をサポートします。  これらの機能は、Standard Load Balancer のすべての機能に追加されます。  可用性ゾーンの構成は、パブリックと内部の Standard Load Balancer で利用できます。
 
 可用性ゾーンを備えたリージョンにデプロイされると、非ゾーンのフロントエンドは既定でゾーン冗長になります。   ゾーン冗長フロントエンドは、ゾーンの障害の影響を受けず、すべてのゾーンで同時に専用のインフラストラクチャによって提供されます。 
@@ -89,12 +93,12 @@ Standard Load Balancer は Azure Monitor を通じて多次元メトリックを
 
 | メトリック | 説明 |
 | --- | --- |
-| VIP 可用性 | Load Balancer Standard は、リージョン内から Load Balancer フロントエンドを経て、VM をサポートする SDN スタックに至るまでのデータ パスを継続的に学習します。 正常なインスタンスが保持されていれば、測定ではアプリケーションの負荷分散されたトラフィックと同じパスに従います。 顧客が使用しているデータ パスも検証されます。 測定はアプリケーションには見えないので、他の操作と干渉することはありません。|
-| DIP 可用性 | Load Balancer Standard では、構成設定に従ってアプリケーション エンドポイントの正常性を監視する、分散型の正常性プローブ サービスを使用します。 このメトリックは、Load Balancer プールの個々のインスタンス エンドポイントの集計ビューまたはエンドポイントごとのフィルター ビューを提供します。  正常性プローブ構成で示されているアプリケーションの正常性を、Load Balancer がどのように表示するのかを確認できます。
-| SYN パケット | Load Balancer Standard が TCP 接続を終了したり、TCP または UDP パケット フローと対話したりすることはありません。 フローとハンドシェイクは、常にソースと VM インスタンスの間で発生します。 TCP プロトコルのシナリオのトラブルシューティングを適切に行うために、SYN パケット カウンターを使用して TCP 接続試行の数を把握できます。 このメトリックは、受信済みの TCP SYN パケットの数を報告します。|
-| SNAT 接続 | Load Balancer Standard は、パブリック IP アドレス フロントエンドにマスカレードされた送信フローの数を報告します。 SNAT ポートは有限のリソースです。 このメトリックはアプリケーションが送信フローで SNAT にどれくらい依存しているかを示すことができます。  成功した送信 SNAT フローと失敗した送信 SNAT フローのカウンターがレポートされるので、送信フローの正常性について、トラブルシューティングしたり、理解したりするのに役立てることができます。|
-| バイト カウンター | Load Balancer Standard は、フロントエンドごとに処理されたデータを報告します。|
-| パケット カウンター | Load Balancer Standard は、フロントエンドごとに処理されたパケットを報告します。|
+| VIP 可用性 | Standard Load Balancer は、リージョン内からロード バランサー フロントエンドを経て、VM をサポートする SDN スタックに至るまでのデータ パスを継続的に学習します。 正常なインスタンスが保持されていれば、測定ではアプリケーションの負荷分散されたトラフィックと同じパスに従います。 顧客が使用しているデータ パスも検証されます。 測定はアプリケーションには見えないので、他の操作と干渉することはありません。|
+| DIP 可用性 | Standard Load Balancer では、構成設定に従ってアプリケーション エンドポイントの正常性を監視する、分散型の正常性プローブ サービスが使われます。 このメトリックは、Load Balancer プールの個々のインスタンス エンドポイントの集計ビューまたはエンドポイントごとのフィルター ビューを提供します。  正常性プローブ構成で示されているアプリケーションの正常性を、Load Balancer がどのように表示するのかを確認できます。
+| SYN パケット | Standard Load Balancer は、TCP 接続を終了したり、TCP または UDP のパケット フローと対話したりすることはありません。 フローとハンドシェイクは、常にソースと VM インスタンスの間で発生します。 TCP プロトコルのシナリオのトラブルシューティングを適切に行うために、SYN パケット カウンターを使用して TCP 接続試行の数を把握できます。 このメトリックは、受信済みの TCP SYN パケットの数を報告します。|
+| SNAT 接続 | Standard Load Balancer は、パブリック IP アドレス フロントエンドにマスカレードされた送信フローの数を報告します。 SNAT ポートは有限のリソースです。 このメトリックはアプリケーションが送信フローで SNAT にどれくらい依存しているかを示すことができます。  成功した送信 SNAT フローと失敗した送信 SNAT フローのカウンターがレポートされるので、送信フローの正常性について、トラブルシューティングしたり、理解したりするのに役立てることができます。|
+| バイト カウンター | Standard Load Balancer は、フロントエンドごとに処理されたデータ量を報告します。|
+| パケット カウンター | Standard Load Balancer は、フロントエンドごとに処理されたパケット数を報告します。|
 
 [Standard Load Balancer の診断の詳細な説明](load-balancer-standard-diagnostics.md)に関するページをご覧ください。
 
@@ -202,7 +206,7 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-現在、Load Balancer Standard はすべてのパブリック クラウド リージョンで利用できます。
+現在、Standard Load Balancer はすべてのパブリック クラウド リージョンで利用できます。
 
 ## <a name="sla"></a>SLA
 
@@ -210,7 +214,12 @@ Standard Load Balancer は、99.99% の SLA で利用できます。  詳しく�
 
 ## <a name="pricing"></a>価格
 
-Standard Load Balancer は、構成された負荷分散ルールの数と、処理されたすべてのインバウンドおよびアウトバウンド データの数に基づいて課金される製品です。 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://aka.ms/lbpricing)に関するページをご覧ください。
+Standard Load Balancer の使用量は課金されます。
+
+- 構成されている負荷分散規則とアウトバウンド規則の数 (インバウンド NAT 規則はルールの総数にカウントされません)
+- 規則に関係なくインバウンドとアウトバウンドで処理されたデータの量 
+
+Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)に関するページをご覧ください。
 
 ## <a name="limitations"></a>制限事項
 

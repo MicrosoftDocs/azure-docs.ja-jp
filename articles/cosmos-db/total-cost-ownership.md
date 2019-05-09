@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: a15a704cfba9260daac0cd5edfdf8b4566348628
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.reviewer: sngun
+ms.openlocfilehash: c3a3305197802906077dab330a6b51c1195c6c36
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263447"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58879473"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
 
@@ -27,7 +28,7 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 
 * **価格の優れた価値:** 市場アナリスト、お客様、およびパートナーは、お客様が自ら、または他のベンダーを介してソリューションを実装する際に得られるものと比べてはるかに低い価格で、Azure Cosmos DB によって提供されるすべての機能のより優れた価値を確認しています。 グローバル分散、マルチマスター、明確に定義された直感的な整合性モデル、自動インデックス作成などのデータベース機能は、Azure Cosmos DB で大幅に簡略化され、複雑さ、オーバーヘッド、ダウンタイムはありません。
 
-* **NoSQL DevOps の管理が不要:** Azure Cosmos DB では、DevOps を採用し、デプロイを管理したり、メンテナンス、スケーリング、修正プログラムの適用を行ったりする必要はありせん。 オンプレミスやクラウド インフラストラクチャでホストされている OSS NoSQL クラスターで行うすべてのワークロードを実行できます。
+* **NoSQL DevOps の管理が不要:** Azure Cosmos DB では、DevOps を採用し、デプロイを管理したり、メンテナンス、スケーリング、修正プログラムを適用したりする必要はありせん。 オンプレミスやクラウド インフラストラクチャでホストされている OSS NoSQL クラスターで行うすべてのワークロードを実行できます。
 
 ![Azure Cosmos DB の保有コスト](./media/total-cost-ownership/tco.png)
 

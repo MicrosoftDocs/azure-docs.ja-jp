@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fbc23d53687b908245ffe25bdd418cbe64af080b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835115"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server にデータを移動する
 
@@ -50,7 +50,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 データがフラット ファイル (行と列の形式で配置されている) に存在する場合は、次の方法を使用して Azure の SQL Server VM にデータを移動できます。
 
 1. [コマンド ライン一括コピー ユーティリティ (BCP)](#insert-tables-bcp)
-2. [一括挿入 SQL クエリ ](#insert-tables-bulkquery)
+2. [一括挿入 SQL クエリ](#insert-tables-bulkquery)
 3. [SQL Server のグラフィカル組み込みユーティリティ (インポート/エクスポート、SSIS)](#sql-builtin-utilities)
 
 ### <a name="insert-tables-bcp"></a>コマンド ライン一括コピー ユーティリティ (BCP)
@@ -58,26 +58,29 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 > [!NOTE]
 > **BCP 用のデータの場所**  
-> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。 さまざまなファイル コピー ツール ([AZCopy](../../storage/common/storage-use-azcopy.md)、[Azure ストレージ エクスプローラー](http://storageexplorer.com/)、またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使って、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
+> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。 さまざまなファイル コピー ツール ([AZCopy](../../storage/common/storage-use-azcopy.md)、[Azure ストレージ エクスプローラー](https://storageexplorer.com/)、またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使って、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
 >
 >
 
 1. データベースとテーブルがターゲットの SQL Server データベースで作成されていることを確認します。 以下に、`Create Database` コマンドと `Create Table` コマンドを使用してこれを行う方法の例を示します。
 
-        CREATE DATABASE <database_name>
+```sql
+CREATE DATABASE <database_name>
 
-        CREATE TABLE <tablename>
-        (
-            <columnname1> <datatype> <constraint>,
-            <columnname2> <datatype> <constraint>,
-            <columnname3> <datatype> <constraint>
-        )
-2. bcp がインストールされているマシンのコマンド ラインから次のコマンドを発行して、テーブルのスキーマを記述するフォーマット ファイルを生成します。
+CREATE TABLE <tablename>
+(
+    <columnname1> <datatype> <constraint>,
+    <columnname2> <datatype> <constraint>,
+    <columnname3> <datatype> <constraint>
+)
+```
+
+1. bcp がインストールされているマシンのコマンド ラインから次のコマンドを発行して、テーブルのスキーマを記述するフォーマット ファイルを生成します。
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-3. 次のように bcp コマンドを使用して、データをデータベースに挿入します。 SQL Server が同じマシン上にインストールされていると想定した場合、これはコマンド ラインから動作します。
+1. 次のように bcp コマンドを使用して、データをデータベースに挿入します。 SQL Server が同じマシン上にインストールされていると想定した場合、これはコマンド ラインから動作します。
 
-    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attemp -t \t -r \n`
+    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
 > **BCP 挿入の最適化** こうした挿入を最適化するには、「 [一括インポートを最適化するためのガイドライン](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) 」の記事を参照してください。
 >
@@ -93,40 +96,41 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 次のサンプル PowerShell スクリプトは、bcp を使用した並列挿入を示しています。
 
-    $NO_OF_PARALLEL_JOBS=2
+```powershell
+$NO_OF_PARALLEL_JOBS=2
 
-     Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
-     # Define what each job does
-       $ScriptBlock = {
-           param($partitionnumber)
+Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
+# Define what each job does
+$ScriptBlock = {
+    param($partitionnumber)
 
-           #Explictly using SQL username password
-           bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
+    #Explicitly using SQL username password
+    bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
 
-            #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
-            #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
-      }
-
-
-    # Background processing of all partitions
-    for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
-    {
-      Write-Debug "Submit loading partition # $i"
-      Start-Job $ScriptBlock -Arg $i      
-    }
+    #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
+    #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
+}
 
 
-    # Wait for it all to complete
-    While (Get-Job -State "Running")
-    {
-      Start-Sleep 10
-      Get-Job
-    }
+# Background processing of all partitions
+for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
+{
+    Write-Debug "Submit loading partition # $i"
+    Start-Job $ScriptBlock -Arg $i      
+}
 
-    # Getting the information back from the jobs
-    Get-Job | Receive-Job
-    Set-ExecutionPolicy Restricted #reset the execution policy
 
+# Wait for it all to complete
+While (Get-Job -State "Running")
+{
+    Start-Sleep 10
+    Get-Job
+}
+
+# Getting the information back from the jobs
+Get-Job | Receive-Job
+Set-ExecutionPolicy Restricted #reset the execution policy
+```
 
 ### <a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
 [一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](https://msdn.microsoft.com/library/ms188609)」のトピックで説明されています)。
@@ -135,18 +139,22 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 1. インポートする前に、データを分析して任意のカスタム オプションを設定し、SQL Server データベースの日付などのすべての特別なフィールドが同じ形式になるようにします。 次に、日付形式を年-月-日 (データに年-月-日形式で日付が含まれている場合) に設定する方法の例を示します。
 
-        SET DATEFORMAT ymd;    
-2. 一括インポート ステートメントを使用してデータをインポートする:
+```sql
+SET DATEFORMAT ymd;
+```
+1. 一括インポート ステートメントを使用してデータをインポートする:
 
-        BULK INSERT <tablename>
-        FROM    
-        '<datafilename>'
-        WITH
-        (
-        FirstRow=2,
-        FIELDTERMINATOR =',', --this should be column separator in your data
-        ROWTERMINATOR ='\n'   --this should be the row separator in your data
-        )
+```sql
+BULK INSERT <tablename>
+FROM
+'<datafilename>'
+WITH
+(
+    FirstRow = 2,
+    FIELDTERMINATOR = ',', --this should be column separator in your data
+    ROWTERMINATOR = '\n'   --this should be the row separator in your data
+)
+```
 
 ### <a name="sql-builtin-utilities"></a>
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。
@@ -187,7 +195,7 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 4. 「[ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm) 」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
 
 ### <a name="sql-migration"></a>SQL Database 移行ウィザード
-[SQL Server データベース移行ウィザード](http://sqlazuremw.codeplex.com/) は、2 つの SQL server インスタンス間でデータを移動するための使いやすい方法を提供します。 これにより、ユーザーはソースと移動先テーブル間でデータ スキーマをマップし、列の型と他のさまざまな機能を選択できます。 これは、内部で一括コピー (BCP) を使用します。 次に、SQL データベースの移行ウィザードのようこそ画面のスクリーン ショットを示します。  
+[SQL Server データベース移行ウィザード](https://sqlazuremw.codeplex.com/) は、2 つの SQL server インスタンス間でデータを移動するための使いやすい方法を提供します。 これにより、ユーザーはソースと移動先テーブル間でデータ スキーマをマップし、列の型と他のさまざまな機能を選択できます。 これは、内部で一括コピー (BCP) を使用します。 次に、SQL データベースの移行ウィザードのようこそ画面のスクリーン ショットを示します。  
 
 ![SQL Server 移行ウィザード][2]
 

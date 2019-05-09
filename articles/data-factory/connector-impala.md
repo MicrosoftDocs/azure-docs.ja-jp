@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 81d4fc3032b7b69bb438d28e97b62f483e36018b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f86931aad4eab697e4a0d2dfc47a6d4ff5bfc256
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078074"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565685"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Impala からデータをコピーする (プレビュー)
 
@@ -45,10 +44,10 @@ Impala のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Impala** に設定する必要があります。 | [はい] |
-| host | Impala サーバーの IP アドレスまたはホスト名 (192.168.222.160)。  | [はい] |
+| type | type プロパティを **Impala** に設定する必要があります。 | はい |
+| host | Impala サーバーの IP アドレスまたはホスト名 (192.168.222.160)。  | はい |
 | port | Impala サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 21050 です。  | いいえ  |
-| authenticationType | 使用する認証の種類。 <br/>使用できる値は、**Anonymous**、**SASLUsername**、および **UsernameAndPassword** です。 | [はい] |
+| authenticationType | 使用する認証の種類。 <br/>使用できる値は、**Anonymous**、**SASLUsername**、および **UsernameAndPassword** です。 | はい |
 | username | Impala サーバーへのアクセスに使用するユーザー名。 既定値は anonymous です (SASLUsername を使用するとき)。  | いいえ  |
 | password | ユーザー名に対応するパスワード (UsernameAndPassword を使用するとき)。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | enableSsl | SSL を使用してサーバーへの接続を暗号化するかどうかを指定します。 既定値は **false** です。  | いいえ  |
@@ -71,8 +70,8 @@ Impala のリンクされたサービスでは、次のプロパティがサポ�
             "authenticationType" : "UsernameAndPassword",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             }
         },
         "connectVia": {
@@ -91,7 +90,7 @@ Impala からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**ImpalaObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**ImpalaObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -120,7 +119,7 @@ Impala からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **ImpalaSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは **ImpalaSource** に設定する必要があります。 | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

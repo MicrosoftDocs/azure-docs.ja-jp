@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 03/19/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0621c2d1632dead41463810b9e71ebf0404a8cbe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077751"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282867"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -144,7 +144,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>同じ都市圏に複数の ExpressRoute 回線を配置することはできますか。 同じ仮想ネットワークにリンクすることはできますか。
 
-はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、異なる場所で回線が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回線が同じピアリング場所で作成されている場合は、同じ仮想ネットワークにそれらをリンクすることはできません。 Azure portal または PowerShell/CLI API における各場所の名前は、1 つのピアリング場所を表します。 たとえば、ピアリング場所として "Singapore" と "Singapore2" を選び、それぞれの場所から同じ仮想ネットワークに回線を接続できます。 
+はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、異なる場所で回線が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回路が同じピアリング場所に作成されている場合でも、それらを同じ仮想ネットワークにリンクすることができます。ただし各ピアリング場所で最大 4 つの ExpressRoute 回線までです。 たとえば、ピアリング場所として "Singapore" と "Singapore2" を選び、それぞれの場所から同じ仮想ネットワークに回線を接続できます。 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続するにはどうすればいいですか。
 
@@ -166,7 +166,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>仮想ネットワークを含む複数の Azure サブスクリプションがあります。 個別のサブスクリプション内の仮想ネットワークを 1 つの ExpressRoute 回線に接続できますか。
 
-はい。 最大 10 個の Azure サブスクリプションで、1 つの ExpressRoute 回線を使用することを承認できます。 ExpressRoute Premium 機能を有効にすると、この上限を増やすことができます。
+はい。 回線と同じサブスクリプションまたは異なるサブスクリプションにある最大 10 個の仮想ネットワークを 1 つの ExpressRoute 回線を使用してリンクすることができます。 ExpressRoute Premium 機能を有効にすると、この上限を増やすことができます。
 
 詳細については、「[複数のサブスクリプションの間で ExpressRoute 回線を共有する](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
@@ -244,7 +244,7 @@ ExpressRoute Premium は、次の機能のコレクションです。
 * ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数の増加 (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
 * Office 365 や Dynamics 365 への接続。
 * Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになりました。<br>
-    **例:**
+    **次に例を示します。**
 
     *  西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。 
     *  Microsoft ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
@@ -343,10 +343,10 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 
 * 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
 
-## <a name="expressRouteDirect"></a>ExpressRoute Direct (プレビュー)
+## <a name="expressRouteDirect"></a>ExpressRoute Direct
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
-## <a name="globalreach"></a>Global Reach (プレビュー)
+## <a name="globalreach"></a>Global Reach
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

@@ -1,39 +1,36 @@
 ---
-title: アプリケーション用の Azure AD SSO の構成 | Microsoft Docs
-description: SAML およびパスワード ベースの SSO を使用して、Azure Active Directory にアプリをセルフサービス接続する方法について説明します。
+title: シングル サインオン - 非ギャラリー アプリケーション - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory (Azure AD) の非ギャラリー アプリケーションへのシングル サインオンを構成する
 services: active-directory
-author: barbkess
-documentationcenter: na
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
-ms.devlang: na
+ms.subservice: app-mgmt
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2018
-ms.author: barbkess
+ms.date: 01/08/2019
+ms.author: celested
 ms.reviewer: asmalser,luleon
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd42f6317f684fcc5ad9da94c1b09ab1870ccf76
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4f003ec847ab3777a2174a1078a2d07eb012bb34
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408131"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484100"
 ---
-# <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンを構成する
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Azure Active Directory の非ギャラリー アプリケーションへのシングル サインオンを構成する
 
-この記事では、管理者が *コードを記述せずに*Azure Active Directory アプリケーション ギャラリーに存在しないアプリケーションへのシングル サインオンを構成できるようにする機能について説明します。 この機能は、2015 年 11 月 18 日に技術プレビューでリリースされ、[Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) に含まれています。 コードを使用してカスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、「 [Azure AD の認証シナリオ](../develop/authentication-scenarios.md)」を参照してください。
+この記事では、管理者が *コードを記述せずに*Azure Active Directory アプリケーション ギャラリーに存在しないアプリケーションへのシングル サインオンを構成できるようにする機能について説明します。 コードを使用してカスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、「 [Azure AD の認証シナリオ](../develop/authentication-scenarios.md)」を参照してください。
 
 [この記事](what-is-single-sign-on.md)で説明されているように、Azure Active Directory アプリケーション ギャラリーには、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。 (組織内の IT スペシャリストまたはシステム インテグレーターとして) 接続するアプリケーションを見つけたら、Azure Portal に示される詳細な手順に従って、シングル サインオンを有効にできます。
 
-[Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) ライセンスを所有するお客様も、これらの追加機能を使用できます。
+使用許諾契約書に従ってこれらの機能を使用することもできます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。 
 
-* SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
-*  [パスワードベースの SSO](what-is-single-sign-on.md#password-based-sso)
-* ユーザー プロビジョニング用の SCIM プロトコルを使用するアプリケーションのセルフサービス接続 ([ここで説明](use-scim-to-provision-users-and-groups.md))
-* [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](what-is-single-sign-on.md#linked-sso)での任意のアプリケーションへのリンクの追加機能
+- SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
+-  [パスワードベースの SSO](what-is-single-sign-on.md#password-based-sso)
+- ユーザー プロビジョニング用の SCIM プロトコルを使用するアプリケーションのセルフサービス接続 ([ここで説明](use-scim-to-provision-users-and-groups.md))
+- [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](what-is-single-sign-on.md#linked-sso)での任意のアプリケーションへのリンクの追加機能
 
 これには、使用するが Azure AD アプリケーション ギャラリーにはまだ追加されていない SaaS アプリケーションだけでなく、組織がクラウドまたはオンプレミスで制御対象のサーバーにデプロイしたサードパーティの Web アプリケーションも含まれる場合があります。
 
@@ -82,7 +79,7 @@ Azure AD を設定するには、基本的な SAML 構成を入力します。 �
 
     複数の応答 URL を構成するには、次の PowerShell スクリプトを使用できます。
 
-    ```PowerShell
+    ```powershell
     $sp = Get-AzureADServicePrincipal -SearchString "<Exact App  name>"
     $app = Get-AzureADApplication -SearchString "<Exact app name>"
     Set-AzureADApplication -ObjectId $app.ObjectId -ReplyUrls "<ReplyURLs>"
@@ -127,7 +124,7 @@ Azure AD から、Base64 または未加工形式で証明書をダウンロー�
 
 ### <a name="set-up-target-application"></a>ターゲット アプリケーションを設定する
 
-シングル サインオン用にアプリケーションを構成するには、アプリケーションのドキュメントを探します。 ドキュメントを見つけるには、[SAML ベースのサインオンの構成] ページを最後までスクロールし、**[構成]<application name>** をクリックします。 
+シングル サインオン用にアプリケーションを構成するには、アプリケーションのドキュメントを探します。 ドキュメントを見つけるには、[SAML ベースのサインオンの構成] ページを最後までスクロールし、**[\<アプリケーション名> の構成]** をクリックします。 
 
 必要な値は、アプリケーションによって異なります。 詳細については、アプリケーションの SAML ドキュメントを参照してください。 サインオン サービスとサインアウト サービスの URL の両方が、同じエンドポイント (Azure AD のインスタンスの SAML 要求処理エンドポイント) に解決されます。 SAML エンティティ ID は、アプリケーションに発行される SAML トークンに Issuer として表示される値です。
 

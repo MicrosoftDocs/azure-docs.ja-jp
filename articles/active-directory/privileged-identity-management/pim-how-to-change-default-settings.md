@@ -1,6 +1,6 @@
 ---
-title: PIM で Azure AD ディレクトリ ロールの設定を構成する | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure AD ディレクトリ ロールの設定を構成する方法について説明します。
+title: PIM で Azure AD ロールの設定を構成する - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールの設定を構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,38 +9,39 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
-ms.date: 11/30/2018
+ms.subservice: pim
+ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 87003a053823cfc257a3b6f41699feefadbbcc66
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3cb8944578caf00fac5ca430e411f044a875f6af
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835167"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492279"
 ---
-# <a name="configure-azure-ad-directory-role-settings-in-pim"></a>PIM で Azure AD ディレクトリ ロールの設定を構成する
+# <a name="configure-azure-ad-role-settings-in-pim"></a>PIM で Azure AD ロールの設定を構成する
 
-特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、組織の Azure AD Privileged Identity Management (PIM) をカスタマイズできます。
+特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、組織の Azure Active Directory (Azure AD) Privileged Identity Management (PIM) をカスタマイズできます。
 
 ## <a name="open-role-settings"></a>ロールの設定を開く
 
-次の手順を実行して、Azure AD ディレクトリ ロールの設定を開きます。
+次の手順を実行して、Azure AD ロールの設定を開きます。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure AD ディレクトリ ロール]** をクリックします。
+1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
 1. **[設定]** をクリックします。
 
-    ![Azure AD ディレクトリ ロール - 設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+    ![Azure AD ロール - 設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
 1. **[ロール]** をクリックします。
 
 1. 設定を構成するロールをクリックします。
 
-    ![Azure AD ディレクトリ ロール - ロールの設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+    ![Azure AD ロール - ロールの設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
     各ロールの設定ページでは、複数の設定を構成できます。 これらの設定の影響を受けるのは、**永続的**な割り当てのユーザーではなく、**有資格**の割り当てのユーザーのみです。
 
@@ -97,13 +98,13 @@ ms.locfileid: "52835167"
 
 1. **[承認を要求する]** スイッチを **[有効]** に設定します。 ウィンドウが展開され、承認者を選択できるオプションが表示されます。
 
-    ![Azure AD ディレクトリ ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Azure AD ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     承認者を指定**しない**場合は、特権ロール管理者が既定の承認者になります。 特権ロール管理者が、このロールの**すべて**のアクティブ化要求を承認する必要があります。
 
 1. 承認者を指定するには、**[承認者の選択]** をクリックします。
 
-    ![Azure AD ディレクトリ ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+    ![Azure AD ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
 1. 1 人以上の承認者を選択し、**[選択]** をクリックします。 ユーザーまたはグループを選択することができます。 承認者を 2 人以上にすることをお勧めします。 自己承認は許可されません。
 
@@ -116,5 +117,5 @@ ms.locfileid: "52835167"
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
-- [PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する](pim-how-to-configure-security-alerts.md)
+- [PIM で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
+- [PIM で Azure AD ロールに対するセキュリティ アラートを構成する](pim-how-to-configure-security-alerts.md)

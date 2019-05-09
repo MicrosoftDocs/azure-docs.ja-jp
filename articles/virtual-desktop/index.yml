@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: b9f4cd78288d1b9868a823c5e0ccd0b68b324229
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400239"
+documentType: LandingData
+title: Windows Virtual Desktop プレビューのドキュメント
+metadata:
+  title: Windows Virtual Desktop プレビューのドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  description: Azure 用の Windows Virtual Desktop プレビューは、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
+  author: Heidilohr
+  manager: daveba
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  ms.date: 02/20/2019
+  ms.author: helohr
+abstract:
+  description: 任意のデバイスに仮想デスクトップ エクスペリエンスとリモート アプリを提供します。 Microsoft 365 と Azure を連携させ、ユーザーに唯一のマルチセッション Windows 10 エクスペリエンス (優れたスケーリングと IT コストの削減) を提供します。
+sections:
+- title: 概要
+  items:
+  - type: paragraph
+    text: Windows Virtual Desktop プレビューとその使用方法について説明します。 チュートリアル、操作方法、リファレンス コンテンツなどによって、ホスト プールとテナントを設定し、Windows Virtual Desktop 環境のユーザーにロールを割り当てる方法が示されます。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/virtual-desktop/overview">Windows Virtual Desktop プレビューとは</a>
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Windows Virtual Desktop をインストールして構成する方法のほか、準備ができたときにクライアントに接続する方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Windows Virtual Desktop でテナントを作成する</a>
+    - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Azure Marketplace を使用してホスト プールを作成する</a>
+    - html: <a href="/azure/virtual-desktop/manage-app-groups">Windows Virtual Desktop のアプリ グループを管理する</a>
+    - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>

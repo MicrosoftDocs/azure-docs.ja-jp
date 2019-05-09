@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: scottwhi
 ms.custom: include file
-ms.openlocfilehash: a8d588b186652ab86ee1e8152bd9be08f0f1ef04
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6016b13fe7d3e1f3b673bd2446d2f68b04878cd6
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978688"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193421"
 ---
 Bing Statistics は、Bing Search API に分析情報を提供します。 分析情報には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれています。 Bing Search の有料サブスクリプションで Bing Statistics を有効にするには、[Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)に移動し、有料サブスクリプションを選択して、[Enable Bing Statistics]\(Bing Statistics を有効にする\) をクリックします。 Bing Statistics を有効にすると、サブスクリプションの料金が少し上がります ([価格](https://aka.ms/bingstatisticspricing)に関するページをご覧ください)。
 
@@ -85,7 +85,7 @@ For example, if you don't include the User-Agent header in your calls, the dashb
 
 - **[Response Code Distribution]\(応答コード分布\)**: レポート期間中のすべての呼び出しの HTTP 状態コードです。
 
-- **[Call Origin Distribution]\(呼び出し元分布\)**: ユーザーによって使用されたブラウザーの種類です。 たとえば、Edge、Chrome、Safari、FireFox などです。 ボット、Postman、コンソール アプリからの curl の使用など、ブラウザーの外部からの呼び出しは、[Libraries]\(ライブラリ\) にまとめられます。 呼び出し元は、要求の User-Agent ヘッダーの値を使用して判断されます。 要求に User-Agent ヘッダーが含まれていない場合、Bing は他の信号から呼び出し元の特定を試みます。  
+- **[Call Origin Distribution]\(呼び出し元分布\)**: ユーザーによって使用されたブラウザーの種類です。 たとえば、Microsoft Edge、Chrome、Safari、FireFox などです。 ボット、Postman、コンソール アプリからの curl の使用など、ブラウザーの外部からの呼び出しは、[Libraries]\(ライブラリ\) にまとめられます。 呼び出し元は、要求の User-Agent ヘッダーの値を使用して判断されます。 要求に User-Agent ヘッダーが含まれていない場合、Bing は他の信号から呼び出し元の特定を試みます。  
 
 - **[Safe Search Distribution]\(セーフ サーチの分布\)**: セーフ サーチの値の分布です。 たとえば、オフ、中程度、厳密などです。 `safeSearch` クエリ パラメーターに値が含まれます (指定されている場合)。 指定されていない場合の既定値は中程度です。  
 

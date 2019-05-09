@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストの言語を認識する (Ruby) - Translator Text API'
+title: クイック スタート:テキストの言語を認識する (Ruby) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Ruby で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: ee6792358e6d5852c259b8045f77df24d14a6397
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d3b56b057a33d58bb0572a0e06f6284551f05cc1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644869"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982337"
 ---
-# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-ruby"></a>クイック スタート: Translator Text REST API を使用してテキストの言語を認識する (Ruby)
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-ruby"></a>クイック スタート:Translator Text REST API を使用してテキストの言語を認識する (Ruby)
 
 このクイック スタートでは、Translator Text API を使ってソース テキストの言語を認識します。
 

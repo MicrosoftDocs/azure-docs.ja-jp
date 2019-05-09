@@ -1,10 +1,9 @@
 ---
-title: Azure Traffic Manager の Traffic View | Microsoft Docs
+title: Azure Traffic Manager のトラフィック ビュー
 description: Traffic Manager の Traffic View の概要
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: jeconnoc
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -13,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: d1800fea2212628e7647b5250efa33ebb97957f9
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 70ac4319e2ea0081f7805c2fb936af1310d57d8f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138074"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534942"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager の Traffic View
 
@@ -36,6 +35,8 @@ Traffic View を使用すると、次の情報を把握できます。
 
 Traffic View は、この機能が有効になっているプロファイルで過去 7 日間に受信した着信クエリを Traffic Manager で参照することで機能します。 この着信クエリの情報から、ユーザーの場所を表すために使用される DNS リゾルバーのソース IP がトラフィック ビューによって抽出されます。 これらは、Traffic Manager によって管理される IP アドレスの地理的な情報を使用して DNS リゾルバー レベルの細分性でグループ化され、ユーザー ベース リージョンが作成されます。 Traffic Manager は、クエリのルーティング先の Azure リージョンを参照し、それらのリージョンからユーザーのトラフィック フロー マップを構築します。  
 次の手順では、Traffic Manager は、さまざまなエンド ユーザー ネットワークについて管理されるネットワーク インテリジェンス待機時間テーブルを使用して、ユーザー ベース リージョンを Azure リージョン マッピングに関連付けることで、Azure リージョンへの接続時にそれらのリージョンのユーザーが経験する平均待機時間を把握します。 これらすべての計算は、提示される前にローカル DNS リゾルバー IP レベルごとに結合されます。 この情報は、さまざまな方法で利用することができます。
+
+トラフィック ビュー データの更新頻度は、複数の内部サービス変数によって変わってきます。 ただし、通常、データは 24 時間に 1 回更新されます。
 
 >[!NOTE]
 >トラフィック ビューに記載される待機時間は、エンド ユーザーと、エンド ユーザーが接続した Azure リージョンとの間の代表的な待機時間を表したものであり、DNS ルックアップの待機時間ではありません。 トラフィック ビューでは、ローカル DNS リゾルバーと、クエリがルーティングされる Azure リージョン間の待機時間が可能な限り見積もられ、使用できるデータが十分でない場合、返される待機時間は null になります。 

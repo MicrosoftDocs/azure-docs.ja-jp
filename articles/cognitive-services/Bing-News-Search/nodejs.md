@@ -4,100 +4,89 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Node.js を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 17307aaac531924b02c92ac37151d10bfbc48143
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 86c00242d2d7dbb9441b09dc327e4ee8cbbd729b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252305"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099969"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>クイック スタート:Node.js と Bing News Search REST API を使用してニュース検索を実行する
 
-この記事では、Azure 上の Microsoft Cognitive Services の一部である Bing News Search API の使用方法を示します。 この記事では Node.js を使用しますが、この API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。 
+このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな JavaScript アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
 
-この例は JavaScript で書かれており、Node.js 6 で実行されます。
+このアプリケーションは JavaScript で記述され、Node.js で動作しますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)を参照してください。
+このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+* 最新バージョンの [Node.js](https://nodejs.org/en/download/)。
 
-## <a name="bing-news-search"></a>Bing News Search
+* [JavaScript Request ライブラリ](https://github.com/request/request)
 
-[Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-1. 適切な IDE またはエディターで新しい Node.js プロジェクトを作成します。
-2. 下記のコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
-```javascript
-'use strict';
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-let https = require('https');
+1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と https の要件を設定します。
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```javascript
+    'use strict';
+    let https = require('https');
+    ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'enter key here';
+2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。
+    ```javascript
+    let subscriptionKey = 'enter key here';
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/news/search';
+    let term = 'Microsoft';
+    ```
 
-// Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-// search APIs.  In the future, regional endpoints may be available.  If you
-// encounter unexpected authorization errors, double-check this host against
-// the endpoint for your Bing Search instance in your Azure dashboard.
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/news/search';
+## <a name="handle-and-parse-the-response"></a>応答の処理と解析
 
-let term = 'Microsoft';
+1. HTTP 呼び出し `response` をパラメーターとして受け取る `response_handler` という名前の関数を定義します。 この関数内で、次の手順を実行します。
 
-let response_handler = function (response) {
-    let body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        console.log('\nRelevant Headers:\n');
-        for (var header in response.headers)
-            // header keys are lower-cased by Node.js
-            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                 console.log(header + ": " + response.headers[header]);
-        body = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log('\nJSON Response:\n');
-        console.log(body);
-    });
-    response.on('error', function (e) {
-        console.log('Error: ' + e.message);
-    });
-};
+    1. JSON 応答の本文を含む変数を定義します。  
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
 
-let bing_news_search = function (search) {
-  console.log('Searching news for: ' + term);
-  let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + '?q=' + encodeURIComponent(search),
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+    2. **data** フラグが呼び出されたときに応答の本文を格納する
+        ```javascript
+        response.on('data', function (d) {
+            body += d;
+        });
+        ```
 
-    let req = https.request(request_params, response_handler);
-    req.end();
-}
-bing_news_search(term);
-```
+    3. **end** フラグが通知されたら、JSON とヘッダーを表示することができます。
 
-**応答**
+        ```javascript
+        response.on('end', function () {
+            console.log('\nRelevant Headers:\n');
+            for (var header in response.headers)
+                // header keys are lower-cased by Node.js
+                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                     console.log(header + ": " + response.headers[header]);
+            body = JSON.stringify(JSON.parse(body), null, '  ');
+            console.log('\nJSON Response:\n');
+            console.log(body);
+         });
+        ```
+
+## <a name="json-response"></a>JSON 応答
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -195,8 +184,4 @@ bing_news_search(term);
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ニュースのページング](paging-news.md)
-> [装飾マーカーを使用してテキストを強調表示する](hit-highlighting.md)
-> [Web でのニュースの検索](search-the-web.md)  
-> [試してみる](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+> [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

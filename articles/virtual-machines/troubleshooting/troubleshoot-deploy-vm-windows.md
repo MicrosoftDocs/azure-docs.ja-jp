@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6362b243bff91233c3cd08f26904866dd7be9ebd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5752731f08a7dc9ae8661e698aef9655837c6220
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248879"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540705"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -32,11 +32,7 @@ Azure での仮想マシン (VM) のデプロイに関する問題のトラブ�
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>クラスターが要求された VM サイズをサポートできない
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - VM サイズを小さくして要求を再試行します。
 - 要求した VM のサイズを変更できない場合は、次の手順を実行します。
     - 可用性セットのすべての VM を停止します。 **[リソース グループ]** > 対象とするリソース グループ > **[リソース]** > 対象とする可用性セット > **[仮想マシン]** > 対象とする仮想マシン > **[停止]** の順にクリックします。
@@ -45,11 +41,7 @@ productPesIds="1234, 5678"
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>クラスターに空きリソースがない
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - 後で要求を再試行してください。
 - 新しい VM を別の可用性セットに含めることができる場合
     - VM を (同じリージョンの) 別の可用性セットに作成します。
@@ -124,7 +116,7 @@ VM は、実行されている場合、物理サーバーにデプロイされ�
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>可用性セットに既存のクラシック VM を追加できますか?
 
-はい。 既存のクラシック VM を、新規または既存の可用性セットに追加することができます。 詳細については、「[既存の仮想マシンを可用性セットに追加する](../windows/classic/configure-availability-classic.md#addmachine)」を参照してください。
+はい。 既存のクラシック VM を、新規または既存の可用性セットに追加することができます。 詳細については、「[既存の仮想マシンを可用性セットに追加する](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

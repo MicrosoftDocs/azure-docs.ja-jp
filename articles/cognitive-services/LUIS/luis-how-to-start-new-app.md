@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) Web ページで、アプリケーションを作成し、管理します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 03/28/2019
 ms.author: diberry
-ms.openlocfilehash: ddfee80c67c22c7c6016ed87dc17925c91637d21
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714000"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891431"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 [LUIS](https://www.luis.ai) ポータル内または LUIS オーサリング[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用して LUIS アプリを作成できます。
@@ -56,6 +56,27 @@ LUIS ポータルでは、新しいアプリをいくつかの方法で作成で
     > [!NOTE]
     > カルチャは、アプリケーションを作成した後に変更できません。 
 
+## <a name="import-an-app-from-file"></a>ファイルからアプリをインポートする
+
+1. **[マイ アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** を選択します。
+1. ポップアップ ダイアログで有効なアプリ JSON ファイルを選択し、**[完了]** を選択します。
+
+### <a name="import-errors"></a>インポート エラー
+
+次のエラーが発生する可能性があります。 
+
+* その名前のアプリは既に存在します。 アプリを再インポートし、**オプション名**を新しい名前に設定します。 
+
+## <a name="export-app"></a>アプリのエクスポート
+
+1. **[マイ アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** を選択します。
+1. **[Import new app]\(新しいアプリのインポート\)** ダイアログ ボックスで、LUIS アプリを定義している JSON ファイルを選択します。
+
+## <a name="delete-app"></a>アプリの削除
+
+1. **[マイ アプリ]** ページで、アプリの行の末尾にある 3 つのドット (...) を選択します。
+1. メニューで **[削除]** を選択します。
+1. 確認ウィンドウで **[OK]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

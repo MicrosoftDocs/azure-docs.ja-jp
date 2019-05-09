@@ -5,16 +5,16 @@ description: トレーニングの実行時に、並列ドキュメントに存�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 557cd8d3af0c774d4dd0558d5d25dba8eec07268
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8d2933f6a3bbab792acb708f2a59cad4eb2cabf7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626901"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777160"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>並列ドキュメントの文のペアリングとアライン
 

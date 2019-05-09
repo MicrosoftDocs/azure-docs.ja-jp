@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SAP Business ByDesign の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SAP Business ByDesign の統合 | Microsoft Docs
 description: Azure Active Directory と SAP Business ByDesign の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 82938920-33ba-47cb-b141-511b46d19e66
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: a7a08eb6062f134058bb63f5a3e2a78f661026ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9846fe8078403d064f226c121383fc191397d321
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445215"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201875"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>チュートリアル: Azure Active Directory と SAP Business ByDesign の統合
+# <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>チュートリアル:Azure Active Directory と SAP Business ByDesign の統合
 
 このチュートリアルでは、SAP Business ByDesign と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -147,7 +148,7 @@ SAP Business ByDesign で Azure AD のシングル サインオンを構成し�
    
     ![Configure single sign-on](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
    
-    d. **Assertion Consumer Service URL** を SAML 要求に追加するには、**[Include Assertion Consumer Service URL (Assertion Consumer Service URL を含める)]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Assertion Consumer Service URL** を SAML 要求に追加するには、**[Include Assertion Consumer Service URL (Assertion Consumer Service URL を含める)]** を選択します。
    
     e. **[Activate Single Sign-On (シングル サインオンを有効にする)]** をクリックします。
    
@@ -181,7 +182,7 @@ SAP Business ByDesign で Azure AD のシングル サインオンを構成し�
     k. 変更を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -214,7 +215,7 @@ SAP Business ByDesign で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-sap-business-bydesign-test-user"></a>SAP Business ByDesign のテスト ユーザーの作成
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315725"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58895785"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
-この記事では、Azure Web Apps で実行されている[ノード アプリケーション](app-service-web-get-started-nodejs.md) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
+この記事では、Azure App Service で実行されている[ノード アプリケーション](app-service-web-get-started-nodejs.md) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
 
 > [!WARNING]
 > 運用サイトでトラブルシューティング手順を使用する場合は、注意が必要です。 ステージング スロットなどの運用環境以外のセットアップでアプリのトラブルシューティングを行い、問題が修正されたら、ステージング スロットを運用スロットと交換することをお勧めします。
@@ -44,18 +44,18 @@ ms.locfileid: "53315725"
 
 ### <a name="maxconcurrentrequestsperprocess"></a>maxConcurrentRequestsPerProcess
 
-この設定は、iisnode が各 node.exe に送信する同時要求の最大数を制御します。 Azure Web Apps では、既定値は無制限です。 Azure Web Apps でホストされていない場合、既定値は 1024 になります。 アプリケーションが受け取る要求の数と、アプリケーションが各要求を処理する速度に応じて、この値を構成できます。
+この設定は、iisnode が各 node.exe に送信する同時要求の最大数を制御します。 Azure App Service では、既定値は無制限です。 アプリケーションが受け取る要求の数と、アプリケーションが各要求を処理する速度に応じて、この値を構成できます。
 
 ### <a name="maxnamedpipeconnectionretry"></a>maxNamedPipeConnectionRetry
 
-この設定は、iisnode が node.exe に要求を送信する際に経由する名前付きパイプで接続の作成を再試行する最大回数を制御します。 この設定と namedPipeConnectionRetryDelay を併用することで、iisnode 内の各要求の合計タイムアウトを決定します。 Azure Web Apps では、既定値は 200 です。 合計タイムアウト (秒) = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
+この設定は、iisnode が node.exe に要求を送信する際に経由する名前付きパイプで接続の作成を再試行する最大回数を制御します。 この設定と namedPipeConnectionRetryDelay を併用することで、iisnode 内の各要求の合計タイムアウトを決定します。 Azure App Service では、既定値は 200 です。 合計タイムアウト (秒) = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
 
 ### <a name="namedpipeconnectionretrydelay"></a>namedPipeConnectionRetryDelay
 
 この設定は、iisnode が名前付きパイプ経由で node.exe に要求を送信する場合に、各再試行間で待機する時間 (ミリ秒) を制御します。 既定値は 250 ミリ秒です。
 合計タイムアウト (秒) = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
 
-既定では、Azure Web Apps での iisnode の合計タイムアウトは、200 \* 250 ミリ秒 = 50 秒です。
+既定では、Azure App Service での iisnode の合計タイムアウトは、200 \* 250 ミリ秒 = 50 秒です。
 
 ### <a name="logdirectory"></a>logDirectory
 
@@ -90,7 +90,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-変更を監視する対象となるファイルの一覧です (セミコロン区切り)。 ファイルを変更すると、アプリケーションのリサイクルが発生します。 各エントリは、省略可能なディレクトリ名と必須のファイル名で構成されます。これらの名前は、アプリケーションのメイン エントリ ポイントがあるディレクトリからの相対位置になります。 ワイルドカードは、ファイル名部分のみに使用できます。 既定値は `*.js;web.config` です。
+変更を監視する対象となるファイルの一覧です (セミコロン区切り)。 ファイルを変更すると、アプリケーションのリサイクルが発生します。 各エントリは、省略可能なディレクトリ名と必須のファイル名で構成されます。これらの名前は、アプリケーションのメイン エントリ ポイントがあるディレクトリからの相対位置になります。 ワイルドカードは、ファイル名部分のみに使用できます。 既定値は `*.js;iisnode.yml` です。
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -98,7 +98,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
-既定値は 0 で、この機能が無効であることを意味します。 0 より大きい値を設定すると、iisnode は 'idlePageOutTimePeriod' ミリ秒ごとにすべての子プロセスをページアウトします。 ページアウトの意味を理解するには、こちらの [ドキュメント](https://msdn.microsoft.com/library/windows/desktop/ms682606.aspx)を参照してください。 大量のメモリを消費するため、たまにメモリをディスクにページアウトして RAM の一部を解放する必要があるアプリケーションには、この設定が役立ちます。
+既定値は 0 で、この機能が無効であることを意味します。 0 より大きい値を設定すると、iisnode は 'idlePageOutTimePeriod' ミリ秒ごとにすべての子プロセスをページアウトします。 ページアウトの意味を理解するには、こちらの [ドキュメント](/windows/desktop/api/psapi/nf-psapi-emptyworkingset)を参照してください。 大量のメモリを消費するため、たまにメモリをディスクにページアウトして RAM の一部を解放する必要があるアプリケーションには、この設定が役立ちます。
 
 > [!WARNING]
 > 運用アプリケーションで以下の構成設定を有効にする場合は、注意が必要です。 稼働中の運用アプリケーションでは、これらの設定を有効にしないことをお勧めします。
@@ -118,7 +118,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (実稼働の運用サイトでは有効にしないでください)
 
-この設定は、デバッグ機能を制御します。 iisnode は、node-inspector と統合されています。 この設定を有効にすることで、ノード アプリケーションのデバッグが有効になります。 この設定が有効になると、ノード アプリケーションへの最初のデバッグ要求の際に、iisnode によって、node-inspector ファイルが 'debuggerVirtualDir' ディレクトリに作成されます。 http://yoursite/server.js/debug に要求を送信することによって、node-inspector を読み込むことができます。 デバッグ URL セグメントは、"debuggerPathSegment" 設定で制御できます。 既定では、debuggerPathSegment = 'debug' です。 他のユーザーによる検出が難しくなるように、たとえば GUID に `debuggerPathSegment` を設定できます。
+この設定は、デバッグ機能を制御します。 iisnode は、node-inspector と統合されています。 この設定を有効にすることで、ノード アプリケーションのデバッグが有効になります。 この設定が有効になると、ノード アプリケーションへの最初のデバッグ要求の際に、iisnode によって、node-inspector ファイルが 'debuggerVirtualDir' ディレクトリに作成されます。 `http://yoursite/server.js/debug` に要求を送信することによって、node-inspector を読み込むことができます。 デバッグ URL セグメントは、"debuggerPathSegment" 設定で制御できます。 既定では、debuggerPathSegment = 'debug' です。 他のユーザーによる検出が難しくなるように、たとえば GUID に `debuggerPathSegment` を設定できます。
 
 デバッグの詳細については、[Windows での node.js アプリケーションのデバッグ](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html)に関するページを参照してください。
 
@@ -128,12 +128,12 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 多くのアプリケーションは、通常の操作の一環として、発信接続を行う必要があります。 たとえば、要求を受信すると、ノード アプリケーションは別の場所の REST API に問い合わせて、要求を処理するための情報を取得しようとします。 http または https 呼び出しを行うときに、キープ アライブ エージェントを使用する場合があります。 これらの発信呼び出しを行うときに、キープ アライブ エージェントとして agentkeepalive モジュールを使用できます。
 
-agentkeepalive モジュールは、Azure の Web WebApp VM でソケットが再利用されることを保証します。 送信要求のたびに新しいソケットを作成すると、アプリケーションにオーバーヘッドが追加されます。 アプリケーションでソケットを再利用することで、アプリケーションが VM ごとに割り当てられている maxSockets を超えないことが保証されます。 Azure Web Apps では、agentKeepAlive maxSockets 値を VM あたり合計 160 ソケット (node.exe の 4 つのインスタンス \* インスタンス当たり 40 の maxSockets) に設定することが推奨されています。
+agentkeepalive モジュールは、Azure の Web WebApp VM でソケットが再利用されることを保証します。 送信要求のたびに新しいソケットを作成すると、アプリケーションにオーバーヘッドが追加されます。 アプリケーションでソケットを再利用することで、アプリケーションが VM ごとに割り当てられている maxSockets を超えないことが保証されます。 Azure App Service では、agentKeepAlive maxSockets 値を VM あたり合計 160 ソケット (node.exe の 4 つのインスタンス \* インスタンス当たり 40 の maxSockets) に設定することが推奨されています。
 
 [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 構成の例:
 
 ```nodejs
-var keepaliveAgent = new Agent({
+let keepaliveAgent = new Agent({
     maxSockets: 40,
     maxFreeSockets: 10,
     timeout: 60000,
@@ -147,17 +147,17 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>ノード アプリケーションが消費する CPU が多すぎる
 
-高い CPU 消費率に関する Azure Web Apps からの推奨事項がポータルに表示されている可能性があります。 特定の[メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure Portal ダッシュボード](../application-insights/app-insights-web-monitor-performance.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
+高い CPU 消費率に関する Azure App Service からの推奨事項がポータルに表示されている可能性があります。 特定の[メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure Portal ダッシュボード](../azure-monitor/app/web-monitor-performance.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
 アプリケーションによる CPU の消費量が明らかに多すぎるが、理由を説明できない場合は、ノード アプリケーションをプロファイリングして調べることができます。
 
-#### <a name="profiling-your-node-application-on-azure-web-apps-with-v8-profiler"></a>V8-Profiler を使用した Azure Web Apps のノード アプリケーションのプロファイリング
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>V8-Profiler を使用した Azure App Service のノード アプリケーションのプロファイリング
 
 たとえば、以下のような hello world アプリをプロファイリングするとします。
 
 ```nodejs
-var http = require('http');
+const http = require('http');
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-デバッグ コンソール サイト (https://yoursite.scm.azurewebsites.net/DebugConsole) に移動します。
+デバッグ コンソール サイト (`https://yoursite.scm.azurewebsites.net/DebugConsole`) に移動します。
 
 site/wwwroot ディレクトリに移動します。 次の図のようなコマンド プロンプトが表示されます。
 
@@ -185,12 +185,12 @@ site/wwwroot ディレクトリに移動します。 次の図のようなコマ
 ここで、アプリケーションをプロファイリングするように server.js を編集します。
 
 ```nodejs
-var http = require('http');
-var profiler = require('v8-profiler');
-var fs = require('fs');
+const http = require('http');
+const profiler = require('v8-profiler');
+const fs = require('fs');
 
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
@@ -220,7 +220,7 @@ http.createServer(function (req, res) {
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>ノード アプリケーションで消費されるメモリが多すぎる
 
-アプリケーションの消費メモリ量が多すぎる場合は、Portal にメモリ消費量が多いことに関する Azure Web Apps の通知が表示されます。 特定の[メトリック](web-sites-monitor.md)を監視するようにモニターを設定できます。 [Azure Portal ダッシュボード](../application-insights/app-insights-web-monitor-performance.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
+アプリケーションの消費メモリ量が多すぎる場合は、Portal にメモリ消費量が多いことに関する Azure App Service の通知が表示されます。 特定の[メトリック](web-sites-monitor.md)を監視するようにモニターを設定できます。 [Azure Portal ダッシュボード](../azure-monitor/app/web-monitor-performance.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>node.js のリーク検出とヒープの比較
 
@@ -249,12 +249,12 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 
 ### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>ノード アプリケーションの起動 (コールド スタート) に時間がかかりすぎる
 
-アプリケーションの起動時間が長くなる一般的な原因は、node\_modules 内に多数のファイルがあることです。 アプリケーションは起動時にこれらのファイルのほとんどを読み込もうとします。 既定では、ファイルは Azure Web Apps 上のネットワーク共有に存在するため、多くのファイルの読み込みには時間がかかります。
+アプリケーションの起動時間が長くなる一般的な原因は、node\_modules 内に多数のファイルがあることです。 アプリケーションは起動時にこれらのファイルのほとんどを読み込もうとします。 既定では、ファイルは Azure App Service 上のネットワーク共有に存在するため、多くのファイルの読み込みには時間がかかります。
 このプロセスを高速化するための解決策は、次のようにいくつかあります。
 
 1. npm3 を使用してモジュールをインストールすることによって、依存関係構造がフラットであり、重複する依存関係がないことを確認してください。
 2. node\_modules の遅延読み込みを試し、起動時にすべてのモジュールを読み込まないようにします。 遅延読み込みを行うには、モジュール コードを初めて実行する前に、関数内でモジュールが実際に必要になったときに、require('module') を呼び出す必要があります。
-3. Azure Web Apps には、ローカル キャッシュと呼ばれる機能が用意されています。 この機能は、コンテンツをネットワーク共有から VM 上のローカル ディスクにコピーします。 ファイルはローカルにあるため、node\_modules の読み込み時間は短縮されます。
+3. Azure App Service には、ローカル キャッシュと呼ばれる機能が用意されています。 この機能は、コンテンツをネットワーク共有から VM 上のローカル ディスクにコピーします。 ファイルはローカルにあるため、node\_modules の読み込み時間は短縮されます。
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE の HTTP の状態と副状態
 
@@ -274,13 +274,13 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 | 503 |1002 |実際の理由については、win32 エラー コードを確認してください。要求を node.exe にディスパッチできませんでした。 |
 | 503 |1003 |名前付きパイプがビジー状態です – ノードが CPU を大量に消費しているかどうかを確認してください。 |
 
-NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります。 Azure Web Apps にデプロイされていない場合、この設定の既定値は 4 です。 これは、node.exe が名前付きパイプで同時に受け入れることができる要求は 4 つのみであることを意味します。 Azure Web Apps では、この値は 5000 に設定されています。 Azure Web Apps で実行されるほとんどのノード アプリケーションでは、この値で十分です。 `NODE_PENDING_PIPE_INSTANCES` には大きい値が設定されているため、Azure Web Apps に 503.1003 が表示されることはありません。
+NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります。 Azure App Service では、この値は 5000 に設定されています。 つまり、node.exe では名前付きパイプを使用して同時に 5000 個の要求を受け入れることができます。 Azure App Service で実行されるほとんどのノード アプリケーションでは、この値で十分です。 `NODE_PENDING_PIPE_INSTANCES` には大きい値が設定されているため、Azure App Service に 503.1003 が表示されることはありません。
 
 ## <a name="more-resources"></a>その他のリソース
 
 Azure App Service での node.js アプリケーションの詳細については、以下のリンクを参照してください。
 
-* [Azure で Node.js Web アプリを作成する](app-service-web-get-started-nodejs.md)
+* [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-get-started-nodejs.md)
 * [Azure App Service で Node.js Web アプリをデバッグする方法](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps:Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 02/27/2019
+ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315640"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223820"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database Managed Instance のリソース制限の概要
 
@@ -34,11 +34,13 @@ Managed Instance には、基本のインフラストラクチャとアーキテ
 
 Azure SQL Database Managed Instance は、2 つのハードウェアの世代 (Gen4 と Gen5) でデプロイできます。 ハードウェアの世代には、次の表に示したさまざまな特性があります。
 
-|   | **Gen 4** | **Gen 5** |
+|   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| ハードウェア | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサ、高速 eNVM SSD、仮想コア=1 LP (ハイパー スレッド) |
+| ハードウェア | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、高速 NVMe SSD、仮想コア=1 LP (ハイパー スレッド) |
 | Compute | 8、16、24 の仮想コア | 8、16、24、32、40、64、80 の仮想コア |
 | メモリ | 仮想コアあたり 7 GB | 仮想コアあたり 5.1 GB |
+| インメモリ OLTP メモリ | 仮想コアあたり 3 GB | 仮想コアあたり 2.6 GB |
+| 最大ストレージ容量 (汎用) |  8 TB | 8 TB |
 | 最大ストレージ容量 (Business Critical) | 1 TB (テラバイト) | コアの数に応じて 1 TB、2 TB 、または 4 TB |
 
 ### <a name="service-tier-characteristics"></a>サービス レベルの特性
@@ -48,16 +50,21 @@ Managed Instance には、General Purpose と Business Critical の 2 つのサ�
 | **機能** | **汎用** | **Business Critical** |
 | --- | --- | --- |
 | 仮想コアの数\* | Gen4: 8、16、24<br/>Gen5: 8、16、24、32、40、64、80 | Gen4: 8、16、24、32 <br/> Gen5: 8、16、24、32、40、64、80 |
-| メモリ | Gen4: 56 GB ～ 156 GB<br/>Gen5: 44 GB ～ 440 GB<br/>\*仮想コアの数に比例 | Gen4: 56 GB ～ 156 GB <br/> Gen5: 44 GB ～ 440 GB<br/>\*仮想コアの数に比例 |
-| 最大ストレージ サイズ | 8 TB | Gen4: 1 TB (テラバイト) <br/> Gen 5: <br/>- 8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
+| メモリ | Gen4:56 ～ 168 GB<br/>Gen5:40.8 ～ 408 GB<br/>\*仮想コアの数に比例 | Gen4:56 ～ 168 GB <br/> Gen5:40.8 ～ 408 GB<br/>\*仮想コアの数に比例 |
+| 最大ストレージ サイズ | 8 TB | Gen4:1 TB (テラバイト) <br/> Gen5: <br/>- 8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
 | データベースあたりの最大ストレージ容量 | インスタンスごとの最大ストレージ サイズによって決まります | インスタンスごとの最大ストレージ サイズによって決まります |
 | インスタンスごとの最大データベース数 | 100 | 100 |
 | インスタンスごとの最大データベース ファイル数 | 最大 280 | データベースあたり 32,767 ファイル |
-| IOPS (概算) | ファイルあたり 500 ～ 7500<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 K ～ 110 K (vCore あたり 1375) |
+| データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 ～ 110 K (仮想コアあたり 1,375) |
+| ログ スループット | インスタンスあたり 22 MB/秒 | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 48 MB/秒|
+| データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 仮想コアあたり 24 ～ 48 MB/秒 |
 | IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
-| 最大 tempDB サイズ | 192 ～ 1920 GB (vCore あたり 24 GB) | インスタンスごとの最大ストレージ サイズによって決まります |
+| 最大 tempDB サイズ | 192 ～ 1,920 GB (仮想コアあたり 24 GB) | 制約なし - 最大インスタンス ストレージ サイズにより制限される |
 
-- ユーザー データベースとシステム データベースはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、<a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
+**注**:
+
+- ユーザー データベースとシステム データベースのデータ ファイルおよびログ ファイルのサイズはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、<a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
+- スループットと IOPS も、Managed Instance によって明示的に制限されないページ サイズに依存します。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
@@ -83,6 +90,9 @@ Managed Instance は現在、次の種類のサブスクリプションのみで
 - **サブネットの制限**: マネージド インスタンスが単一リージョンにデプロイされているサブネットの最大数。
 - **インスタンス数の制限**: 単一リージョンにデプロイできるインスタンスの最大数。
 
+> [!Note]
+> これらの制限は既定の設定であり、技術的な制限ではありません。 現在のリージョンでさらに多くの Managed Instance が必要な場合、[Azure portal でサポート リクエスト](#obtaining-a-larger-quota-for-sql-managed-instance)を特別に作成して、これらの制限をオンデマンドで引き上げることができます。 サポート要求を送信せずに、代わりに、別の Azure リージョンに新しい Managed Instance を作成することも可能です。
+
 次の表は、サポートされているサブスクリプションの既定のリージョン制限を示しています。
 
 |サブスクリプションの種類| Managed Instance のサブネットの最大数 | インスタンスの最大数 |GP マネージド インスタンスの最大数*|BC マネージド インスタンスの最大数*|
@@ -97,7 +107,7 @@ Managed Instance は現在、次の種類のサブスクリプションのみで
 
 ** 別のサービス レベルにインスタンスがない場合、1 つのサービス レベルにインスタンスの最大数が適用されます。 GP インスタンスと BC インスタンスを同じサブネット内で共存させることを計画している場合、許可される組み合わせの参考として、次のセクションを利用してください。 単純なルールとしては、サブネットの総数を 3 以内、インスタンス ユニットの総数を 12 以内にする必要があります。
 
-現在のリージョンでさらに多くの Managed Instance が必要な場合、[Azure portal でサポート要求](#obtaining-a-larger-quota-for-sql-managed-instance)を特別に作成して、これらの制限を引き上げることができます。 サポート要求を送信せずに、代わりに、別の Azure リージョンに新しい Managed Instance を作成することも可能です。
+
 
 > [!IMPORTANT]
 > デプロイを計画するときは、Business Critical (BC) インスタンス は (冗長性が追加されているため) 一般的に、General Purpose (GP) インスタンスの 4 倍の大きさの容量を消費することを考慮してください。 そのため、計算では、1 GP インスタンス = 1 インスタンス ユニット、1 BC インスタンス = 4 インスタンス ユニットとなります。 既定の制限に対する消費量分析を簡素化するために、Managed Instance がデプロイされているリージョン内のすべてのサブネットのインスタンス ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。

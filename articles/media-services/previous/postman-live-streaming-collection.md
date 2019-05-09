@@ -4,23 +4,23 @@ description: この記事では、Azure Media Services REST 呼び出しのた�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ea88d6a85fb0b22d12c9d30baf23c33074666568
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 897513abcc9f829f1cbdc315208e4451ae4dbc41
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786381"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311239"
 ---
-# <a name="import-a-postman-collection-with-live-streaming-operations"></a>ライブ ストリーミング操作による Postman コレクションのインポート
+# <a name="import-a-postman-collection-with-live-streaming-operations"></a>ライブ ストリーミング操作による Postman コレクションのインポート 
 
 この記事には、**ライブ ストリーミング** Azure Media Services REST API を呼び出すグループ化された HTTP 要求を含む **Postman** コレクションの定義が含まれています。 Media Services REST API の呼び出しで使用できるように **Postman**を構成する方法については、「[Media Services REST API 呼び出し用の Postman の構成](media-rest-apis-with-postman.md)」チュートリアルを参照してください。
 

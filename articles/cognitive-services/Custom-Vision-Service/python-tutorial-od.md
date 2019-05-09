@@ -1,25 +1,25 @@
 ---
-title: 'クイック スタート: Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する'
+title: クイック スタート:Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する
 titlesuffix: Azure Cognitive Services
 description: Python SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
 services: cognitive-services
 author: areddish
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 11/5/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 1b301f2197b16d8cd74c3cf3616de70f28ac64df
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15c7df52dcc2b9ab6977ee9d67d7997ff8b14287
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874942"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485970"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>クイック スタート: Custom Vision Python SDK を使用して物体検出プロジェクトを作成する
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>クイック スタート:Custom Vision Python SDK を使用して物体検出プロジェクトを作成する
 
-この記事では、Custom Vision SDK と Python を使用して物体検出モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。
+この記事では、Custom Vision SDK と Python を使用して物体検出モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後は、タグ付きのリージョンの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "52874942"
 
 Custom Vision Service SDK for Python をインストールするには、PowerShell で次のコマンドを実行します。
 
-```PowerShell
+```powershell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
@@ -57,11 +57,14 @@ ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
 # Replace with a valid key
 training_key = "<your training key>"
 prediction_key = "<your prediction key>"
+prediction_resource_id = "<your prediction resource id>"
+
+publish_iteration_name = "detectModel"
 
 trainer = CustomVisionTrainingClient(training_key, endpoint=ENDPOINT)
 
 # Find the object detection domain
-obj_detection_domain = next(domain for domain in trainer.get_domains() if domain.type == "ObjectDetection")
+obj_detection_domain = next(domain for domain in trainer.get_domains() if domain.type == "ObjectDetection" and domain.name == "General")
 
 # Create a new project
 print ("Creating project...")
@@ -70,7 +73,7 @@ project = trainer.create_project("My Detection Project", domain_id=obj_detection
 
 ### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
-プロジェクトに分類タグを作成するため、*sample.py* の最後に次のコードを追加します。
+プロジェクト内にオブジェクト タグを作成するため、*sample.py* の最後に次のコードを追加します。
 
 ```Python
 # Make two tags in the new project
@@ -131,9 +134,13 @@ scissors_image_regions = {
     "scissors_20": [ 0.158088237, 0.04047389, 0.6691176, 0.843137264 ]
 }
 ```
+
 さらに、この関連付けのマップを使用して、それぞれのサンプル画像を対応する領域の座標と共にアップロードします。 次のコードを追加します。
 
 ```Python
+# Update this with the path to where you downloaded the images.
+base_image_url = "<path to the images>"
+
 # Go through the data table above and create the images
 print ("Adding images...")
 tagged_images_with_regions = []
@@ -142,23 +149,27 @@ for file_name in fork_image_regions.keys():
     x,y,w,h = fork_image_regions[file_name]
     regions = [ Region(tag_id=fork_tag.id, left=x,top=y,width=w,height=h) ]
 
-    with open("images/fork/" + file_name + ".jpg", mode="rb") as image_contents:
+    with open(base_image_url + "images/fork/" + file_name + ".jpg", mode="rb") as image_contents:
         tagged_images_with_regions.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), regions=regions))
 
 for file_name in scissors_image_regions.keys():
     x,y,w,h = scissors_image_regions[file_name]
     regions = [ Region(tag_id=scissors_tag.id, left=x,top=y,width=w,height=h) ]
 
-    with open("images/scissors/" + file_name + ".jpg", mode="rb") as image_contents:
+    with open(base_image_url + "images/scissors/" + file_name + ".jpg", mode="rb") as image_contents:
         tagged_images_with_regions.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), regions=regions))
 
-
-trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
+upload_result = trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
+if not upload_result.is_batch_successful:
+    print("Image batch upload failed.")
+    for image in upload_result.images:
+        print("Image status: ", image.status)
+    exit(-1)
 ```
 
-### <a name="train-the-project"></a>プロジェクトをトレーニングする
+### <a name="train-the-project-and-publish"></a>プロジェクトをトレーニングして公開する
 
-このコードにより、プロジェクトに最初のイテレーションが作成されて、それが既定のイテレーションに指定されます。 既定のイテレーションは、予測要求に応答するモデルのバージョンを表します。 モデルを再トレーニングするたびに更新する必要があります。
+このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 ```Python
 import time
@@ -170,12 +181,12 @@ while (iteration.status != "Completed"):
     print ("Training status: " + iteration.status)
     time.sleep(1)
 
-# The iteration is now trained. Make it the default project endpoint
-trainer.update_iteration(project.id, iteration.id, is_default=True)
+# The iteration is now trained. Publish it to the project endpoint
+trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, prediction_resource_id)
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-default-prediction-endpoint"></a>既定の予測エンドポイントを取得して使用する
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>予測エンドポイントで公開されたイテレーションを取得して使用する
 
 画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
@@ -187,19 +198,19 @@ from azure.cognitiveservices.vision.customvision.prediction import CustomVisionP
 predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
 
 # Open the sample image and get back the prediction results.
-with open("images/Test/test_od_image.jpg", mode="rb") as test_data:
-    results = predictor.predict_image(project.id, test_data, iteration.id)
+with open(base_image_url + "images/Test/test_od_image.jpg", mode="rb") as test_data:
+    results = predictor.detect_image(project.id, publish_iteration_name, test_data)
 
-# Display the results.
+# Display the results.    
 for prediction in results.predictions:
-    print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
+    print("\t" + prediction.tag_name + ": {0:.2f}% bbox.left = {1:.2f}, bbox.top = {2:.2f}, bbox.width = {3:.2f}, bbox.height = {4:.2f}".format(prediction.probability * 100, prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height))
 ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
 *sample.py* を実行します。
 
-```PowerShell
+```powershell
 python sample.py
 ```
 

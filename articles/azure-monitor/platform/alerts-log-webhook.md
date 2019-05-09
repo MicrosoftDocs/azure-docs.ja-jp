@@ -1,19 +1,19 @@
 ---
 title: Azure Alerts でのログ アラートのための webhook アクション | Microsoft Docs
-description: この記事では、Log Analytics または Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
+description: この記事では、ログ分析ワークスペースまたは Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 4502f7232d2bcfaf4a32a384d24556cd668dc50b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.subservice: alerts
+ms.openlocfilehash: 2307fa985c88608d80400c8951c47b9f20caa1dc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283378"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799305"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alerts-log.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -36,10 +36,10 @@ webhook アクションには、次の表に示すプロパティが必要です
 Webhook には、URL と共に、外部のサービスに送信されるデータである JSON 形式のペイロードが含まれます。  既定では、ペイロードには次の表に示す値が格納されます。このペイロードは、独自のカスタム ペイロードに置き換えることができます。  その場合は、各パラメーターに対して表に示される変数を使用して、カスタム ペイロードにそれらの値を含めることができます。
 
 
-| パラメーター | 可変 | 説明 |
+| パラメーター | 変数 | 説明 |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |アラート ルールの名前。 |
-| severity |#severity |起動されたログ アラートに設定されている重大度。 |
+| Severity |#severity |起動されたログ アラートに設定されている重大度。 |
 | AlertThresholdOperator |#thresholdoperator |アラート ルールのしきい値演算子。  "*Greater than*" または "*Less than*" を使用できます。 |
 | AlertThresholdValue |#thresholdvalue |アラート ルールのしきい値。 |
 | LinkToSearchResults |#linktosearchresults |アラートを作成したクエリからのレコードを返す Analytics ポータルへのリンク。 |
@@ -54,7 +54,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | サブスクリプション ID |#subscriptionid |Application Insights で使用する Azure サブスクリプションの ID。 
 
 > [!NOTE]
-> Analytics セクションで表示するために、LinkToSearchResults により、URL の SearchQuery、Search Interval StartTime、Search Interval EndTime などのパラメーターが Azure portal に渡されます。 Azure portal の URI サイズの上限は約 2,000 文字であり、パラメーター値がこの上限を超えると、アラートで指定されたリンクは "*開きません*"。 ユーザーは手動で詳細を入力して Analytics ポータルで結果を表示したり、[Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) または [Log Analytics REST API](https://dev.loganalytics.io/reference) を使用して結果をプログラミングで取得したりできます。 
+> Analytics セクションで表示するために、LinkToSearchResults により、URL の SearchQuery、Search Interval StartTime、Search Interval EndTime などのパラメーターが Azure portal に渡されます。 Azure portal の URI サイズの上限は約 2,000 文字であり、パラメーター値がこの上限を超えると、アラートで指定されたリンクは "*開きません*"。 ユーザーは手動で詳細を入力して Analytics ポータルで結果を表示したり、[Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) または [Log Analytics REST API](/rest/api/loganalytics/) を使用して結果をプログラミングで取得したりできます。 
 
 たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。  この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
 
@@ -78,14 +78,11 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 ## <a name="sample-payloads"></a>サンプル ペイロード
 このセクションでは、ペイロードが標準の場合やカスタムの場合など、ログ アラートの webhook のサンプル ペイロードを紹介します。
 
-> [!NOTE]
-> 旧バージョンとの互換性を確保するために、Azure Log Analytics を使用するアラートの標準 webhook ペイロードは、[Log Analytics のアラート管理](alerts-metric.md)と同じです。 ただし、[Application Insights](../../application-insights/app-insights-analytics.md) を使用するログ アラートの場合、標準 webhook ペイロードはアクション グループ スキーマに基づいています。
-
 ### <a name="standard-webhook-for-log-alerts"></a>ログ アラートの標準 webhook 
 以下のサンプルはどちらも、2 つの列と 2 つの行のみで構成されたダミー ペイロードを示しています。
 
 #### <a name="log-alert-for-azure-log-analytics"></a>Azure Log Analytics のログ アラート
-以下は、Log Analytics ベースのログ アラートに使用される場合の、*カスタム JSON オプションが含まれていない*標準 webhook アクションのサンプル ペイロードです。
+以下は、ログ分析ベースのアラートに使用される場合の、*カスタム JSON オプションが含まれていない*標準 webhook アクションのサンプル ペイロードです。
 
 ```json
 {
@@ -118,7 +115,11 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     "Description": null,
     "Severity": "Warning"
  }
- ```   
+ ```
+
+> [!NOTE]
+> Log Analytics でログ アラートの [API 設定](alerts-log-api-switch.md)を切り替えていた場合、[重要度] フィールドの値が変化することがあります。
+
 
 #### <a name="log-alert-for-azure-application-insights"></a>Azure Application Insights のログ アラート
 以下は、Application Insights ベースのログ アラートに使用される場合の、*カスタム JSON オプションが含まれていない*標準 webhook のサンプル ペイロードです。
@@ -154,7 +155,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error",
+    "Severity": "3",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
 }
@@ -197,8 +198,9 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 
 
 ## <a name="next-steps"></a>次の手順
-- [Azure Alerts のログ アラート](alerts-unified-log.md)について確認します。
-- [Azure のログ アラートの管理](alerts-log.md)について理解します。
+- [Azure アラートのログ アラート](alerts-unified-log.md)について学習します。
+- [Azure のログ アラートの管理](alerts-log.md)について理解します
 - [Azure でのアクション グループ](action-groups.md)の作成および管理
-- [Application Insights](../../application-insights/app-insights-analytics.md) についてさらに学習します。
-- [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) についてさらに学習します。 
+- [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
+- [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します 
+

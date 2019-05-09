@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436927"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542949"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する
 
@@ -99,7 +99,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 [Swagger の使用方法](how-to-use-swagger.md)の詳細を学習してください。
 
-すべての API 呼び出しでは、[OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) を使用して認証を行う必要があります。 API は、[Microsoft REST API ガイドライン規則](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)に従います。 コレクションを返すほとんどの API は、[OData](http://www.odata.org/getting-started/basic-tutorial/#queryData) のシステム クエリ オプションをサポートしています。
+すべての API 呼び出しでは、[OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) を使用して認証を行う必要があります。 API は、[Microsoft REST API ガイドライン規則](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)に従います。 コレクションを返すほとんどの API は、[OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) のシステム クエリ オプションをサポートしています。
 
 ## <a name="next-steps"></a>次の手順
 

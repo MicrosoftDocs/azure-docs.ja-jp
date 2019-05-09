@@ -1,19 +1,17 @@
 ---
 title: テンプレートを使用した Web アプリのデプロイ - Azure Cosmos DB
 description: Azure Resource Manager テンプレートを使用して、Azure Cosmos DB アカウント、Azure App Service Web Apps、サンプル Web アプリケーションをデプロイする方法について説明します。
-services: cosmos-db, app-service\web
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 8af76c64e755b9c72ae4ebcc223e5f69549b92b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076734"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041018"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
 このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 03/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: b5083a2af335bd40dc55f7f325ac0a4ad125b682
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 37d4c4dbbe623d68edf1de5454d7752a81fc2bd2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384233"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58801885"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -22,228 +22,186 @@ ms.locfileid: "53384233"
 
 Apache Ambari REST API を使用して Azure HDInsight の Apache Hadoop クラスターを管理および監視する方法を説明します。
 
-Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。 Ambari は Linux オペレーティング システムを使用する HDInsight クラスターに含まれています。 Ambari を使用して、クラスターを監視し、構成を変更できます。
-
 ## <a id="whatis"></a>Apache Ambari とは
+[Apache Ambari](https://ambari.apache.org) は、[REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) に支えられた使いやすい Web UI を提供することで、Hadoop クラスターの管理と監視を簡素化します。  Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。
 
-[Apache Ambari](http://ambari.apache.org) では、Hadoop クラスターの管理と監視に使用できる Web UI が提供されています。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
+## <a name="prerequisites"></a>前提条件
+* **HDInsight 上の Hadoop クラスター**。 [Linux 上の HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関する記事をご覧ください。
 
-Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。
+* **Bash on Ubuntu on Windows 10**。  この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。  代わりに、Windows PowerShell を使用することもできます。
 
-## <a name="how-to-use-the-ambari-rest-api"></a>Ambari REST API を使用する方法
+* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) をご覧ください。
 
-> [!IMPORTANT]  
-> このドキュメントの情報と例は、Linux オペレーティング システムを使用する HDInsight クラスターが前提となっています。 詳細については、[HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関する記事を参照してください。
+* **Windows PowerShell**。  代わりに、[Bash](https://www.gnu.org/software/bash/) を使用することもできます。
 
-このドキュメントでは、Bourne シェル (bash) と PowerShell の両方の例を提供しています。 bash の例は GNU Bash バージョン 4.3.11 でテストしましたが、他の Unix シェルでも動作するはずです。 PowerShell の例は PowerShell 5.0 でテストしましたが、PowerShell 3.0 以降で動作するはずです。
+## <a name="base-uri-for-ambari-rest-api"></a>Ambari Rest API のベース URI
 
-__Bourne シェル__ (Bash) を使用する場合は、以下のものをインストールする必要があります。
+ HDInsight の Ambari REST API のベース URI は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` は実際のクラスターの名前です。  URI のクラスター名では、**大文字と小文字が区別**されます。  URI (CLUSTERNAME.azurehdinsight.net) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
 
-* [cURL](https://curl.haxx.se/): cURL は、コマンド ラインから REST API を操作するためのユーティリティです。 このドキュメントでは、Ambari REST API との通信にこれを使用しています。
-
-Bash を使用する場合でも PowerShell を使用する場合でも、[jq](https://stedolan.github.io/jq/) をインストールする必要があります。 Jq は、JSON ドキュメントを操作するためのユーティリティです。 このユーティリティは、**すべての** Bash の例と **1 つ**の PowerShell の例で使用されています。
-
-### <a name="base-uri-for-ambari-rest-api"></a>Ambari Rest API のベース URI
-
-HDInsight の Ambari REST API のベース URI は、 https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME です。ここで、**CLUSTERNAME** はクラスターの名前です。
-
-> [!IMPORTANT]  
-> URI (CLUSTERNAME.azurehdinsight.net) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。 たとえば、クラスター名が `MyCluster` であれば、有効な URI は次のようになります。
-> 
-> `https://mycluster.azurehdinsight.net/api/v1/clusters/MyCluster`
->
-> `https://MyCluster.azurehdinsight.net/api/v1/clusters/MyCluster`
-> 
-> 名前が 2 番目に出現したときの大文字/小文字の指定が正しくないため、次の URI はエラーを返します。
-> 
-> `https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster`
->
-> `https://MyCluster.azurehdinsight.net/api/v1/clusters/mycluster`
-
-### <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentication
 
 HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成中に入力した管理者アカウント名 (既定値は **admin**) とパスワードを使用します。
 
-## <a name="examples-authentication-and-parsing-json"></a>次に例を示します。認証と JSON の解析
+## <a name="examples"></a>例
 
-次の例は、ベース Ambari REST API に対して GET 要求を行う方法を示しています。
+### <a name="setup-preserve-credentials"></a>セットアップ (資格情報の保存)
+各例で再入力しなくて済むように、資格情報を保存します。  クラスター名は別の手順で保存します。
+
+**A.Bash**  
+`PASSWORD` を実際のパスワードに置き換えて、次のスクリプトを編集します。  その後、コマンドを入力します。
 
 ```bash
-curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
-```
+export password='PASSWORD'
+```  
 
-> [!IMPORTANT]  
-> このドキュメントの Bash の例では、次のことが前提条件となっています。
->
-> * クラスターのログイン名は、既定値の `admin` です。
-> * `$CLUSTERNAME` には、クラスターの名前が含まれています。 この値を設定するには、`set CLUSTERNAME='clustername'` を使用します。
-> * プロンプトが表示されたら、クラスター ログイン (管理者) のパスワードを入力してください。
+**B.PowerShell**  
 
 ```powershell
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
-    -Credential $creds
-$resp.Content
+$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
-> [!IMPORTANT]  
-> このドキュメントの PowerShell の例では、次のことが前提条件となっています。
->
-> * `$creds` は、クラスターの管理者ログインとパスワードが含まれている資格情報オブジェクトです。 この値を設定するには、`$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` を使用し、入力を求めるメッセージが表示されたら資格情報を指定します。
-> * `$clusterName` は、クラスターの名前が含まれている文字列です。 この値を設定するには、`$clusterName="clustername"` を使用します。
+### <a name="identify-correctly-cased-cluster-name"></a>大文字と小文字が正しく区別されたクラスター名を確認する
+クラスターの作成方法によっては、クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。  ここでの手順では、実際の大文字小文字の区別を示し、以降のすべての例で使用できるように、それを変数に格納します。
 
-どちらの例も、次の例のような情報で始まる JSON ドキュメントを返します。
+次のスクリプトを編集して、`CLUSTERNAME` を実際のクラスター名に置き換えます。 その後、コマンドを入力します。 (FQDN のクラスター名では、大文字と小文字は区別されません)。
 
-```json
-{
-"href" : "http://10.0.0.10:8080/api/v1/clusters/CLUSTERNAME",
-"Clusters" : {
-    "cluster_id" : 2,
-    "cluster_name" : "CLUSTERNAME",
-    "health_report" : {
-    "Host/stale_config" : 0,
-    "Host/maintenance_state" : 0,
-    "Host/host_state/HEALTHY" : 7,
-    "Host/host_state/UNHEALTHY" : 0,
-    "Host/host_state/HEARTBEAT_LOST" : 0,
-    "Host/host_state/INIT" : 0,
-    "Host/host_status/HEALTHY" : 7,
-    "Host/host_status/UNHEALTHY" : 0,
-    "Host/host_status/UNKNOWN" : 0,
-    "Host/host_status/ALERT" : 0
-    ...
+**A.Bash**  
+
+```bash
+export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
+echo $clusterName
+```  
+
+```powershell
+# Identify properly cased cluster name
+$resp = Invoke-WebRequest -Uri "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" `
+    -Credential $creds -UseBasicParsing
+$clusterName = (ConvertFrom-Json $resp.Content).items.Clusters.cluster_name;
+
+# Show cluster name
+$clusterName
 ```
 
 ### <a name="parsing-json-data"></a>JSON データの解析
 
-次の例は、`jq` を使用して JSON 応答ドキュメントを解析し、結果の `health_report` 情報だけを表示します。
+次の例では、[jq](https://stedolan.github.io/jq/) または [ConvertFrom-Json](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) を使用して、JSON 応答ドキュメントを解析し、結果の `health_report` 情報だけを表示します。
 
 ```bash
-curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME" \
+curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
 | jq '.Clusters.health_report'
-```
-
-PowerShell 3.0 以降では、`ConvertFrom-Json` コマンドレットが用意されています。このコマンドレットは、JSON ドキュメントを、PowerShell で操作しやすいオブジェクトに変換します。 次の例は、`ConvertFrom-Json` を使用して、結果の `health_report` 情報だけを表示します。
+```  
 
 ```powershell
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
-    -Credential $creds
+    -Credential $creds -UseBasicParsing
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
-```
+```   
 
-> [!NOTE]  
-> このドキュメントのほとんどの例では `ConvertFrom-Json` を使用して応答ドキュメントの要素を表示していますが、「[Ambari 構成の更新](#example-update-ambari-configuration)」の例では jq を使用しています。 この例では、jq を使用して、JSON 応答ドキュメントから新しいテンプレートを構築します。
-
-REST API の完全なリファレンスについては、「[Apache Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
-
-## <a name="example-get-the-fqdn-of-cluster-nodes"></a>例:クラスター ノードの FQDN を取得する
+### <a name="example-get-the-fqdn-of-cluster-nodes"></a> クラスター ノードの FQDN を取得する
 
 HDInsight を使用する際は、クラスター ノードの完全修飾ドメイン名 (FQDN) を知ることが必要になる場合があります。 次の例を使用して、クラスター内のさまざまなノードの FQDN を簡単に取得できます。
 
-* **すべてのノード**
+**すべてのノード**  
 
-    ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" \
-    | jq '.items[].Hosts.host_name'
-    ```
+```bash
+curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" \
+| jq '.items[].Hosts.host_name'
+```  
 
-    ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" `
-        -Credential $creds
-    $respObj = ConvertFrom-Json $resp.Content
-    $respObj.items.Hosts.host_name
-    ```
+```powershell
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+$respObj.items.Hosts.host_name
+```
 
-* **ヘッド ノード**
+**ヘッド ノード**  
 
-    ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/NAMENODE" \
-    | jq '.host_components[].HostRoles.host_name'
-    ```
+```bash
+curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/NAMENODE" \
+| jq '.host_components[].HostRoles.host_name'
+```
 
-    ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/NAMENODE" `
-        -Credential $creds
-    $respObj = ConvertFrom-Json $resp.Content
-    $respObj.host_components.HostRoles.host_name
-    ```
+```powershell
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/NAMENODE" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+$respObj.host_components.HostRoles.host_name
+```
 
-* **ワーカー ノード**
+**ワーカー ノード**  
 
-    ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/DATANODE" \
-    | jq '.host_components[].HostRoles.host_name'
-    ```
+```bash
+curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/DATANODE" \
+| jq '.host_components[].HostRoles.host_name'
+```
 
-    ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/DATANODE" `
-        -Credential $creds
-    $respObj = ConvertFrom-Json $resp.Content
-    $respObj.host_components.HostRoles.host_name
-    ```
+```powershell
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/DATANODE" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+$respObj.host_components.HostRoles.host_name
+```
 
-* **Zookeeper ノード**
+**Zookeeper ノード**
 
-    ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
-    | jq '.host_components[].HostRoles.host_name'
-    ```
+```bash
+curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
+| jq ".host_components[].HostRoles.host_name"
+```
 
-    ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" `
-        -Credential $creds
-    $respObj = ConvertFrom-Json $resp.Content
-    $respObj.host_components.HostRoles.host_name
-    ```
+```powershell
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+$respObj.host_components.HostRoles.host_name
+```
 
-## <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>例:クラスター ノードの内部 IP アドレスを取得する
+### <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a> クラスター ノードの内部 IP アドレスを取得する
 
-> [!IMPORTANT]  
-> このセクションの例によって返される IP アドレスは、インターネット経由で直接アクセスすることはできません。 HDInsight クラスターが含まれている Azure Virtual Network 内からだけアクセスできます。
->
-> HDInsight と仮想ネットワークの操作の詳細については、[カスタム Azure Virtual Network による HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページを参照してください。
+このセクションの例によって返される IP アドレスは、インターネット経由で直接アクセスすることはできません。 HDInsight クラスターが含まれている Azure Virtual Network 内からだけアクセスできます。
+
+HDInsight と仮想ネットワークの操作の詳細については、[カスタム Azure Virtual Network による HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページを参照してください。
 
 IP アドレスを検索するには、クラスター ノードの内部完全修飾ドメイン名 (FQDN) が必要です。 FQDN の取得後、ホストの IP アドレスを取得できます。 次の例は、まず、すべてのホスト ノードの FQDN を Ambari に照会し、次に Ambari に各ホストの IP アドレスを照会します。
 
 ```bash
-for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
+for HOSTNAME in $(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" | jq -r '.items[].Hosts.host_name')
 do
-    IP=$(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts/$HOSTNAME" | jq -r '.Hosts.ip')
+    IP=$(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts/$HOSTNAME" | jq -r '.Hosts.ip')
   echo "$HOSTNAME <--> $IP"
 done
-```
-
-> [!TIP]  
-> 前の例では、パスワードを求めるプロンプトが表示されます。 この例では、`curl` コマンドを複数回実行するため、プロンプトが何回も表示されないように、パスワードは `$PASSWORD` と指定します。
+```  
 
 ```powershell
-$uri = "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts"
-$resp = Invoke-WebRequest -Uri $uri -Credential $creds
+$uri = "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" 
+$resp = Invoke-WebRequest -Uri $uri -Credential $creds -UseBasicParsing
 $respObj = ConvertFrom-Json $resp.Content
 foreach($item in $respObj.items) {
     $hostName = [string]$item.Hosts.host_name
     $hostInfoResp = Invoke-WebRequest -Uri "$uri/$hostName" `
-        -Credential $creds
+        -Credential $creds -UseBasicParsing
     $hostInfoObj = ConvertFrom-Json $hostInfoResp 
     $hostIp = $hostInfoObj.Hosts.ip
     "$hostName <--> $hostIp"
 }
 ```
 
-## <a name="example-get-the-default-storage"></a>例:既定のストレージを取得する
+### <a name="get-the-default-storage"></a>既定のストレージを取得する
 
-HDInsight クラスターを作成する場合は、クラスターの既定のストレージとして Azure Storage アカウントまたは Data Lake Store を使用する必要があります。 Ambari を使用すると、クラスターが作成された後にこの情報を取得できます。 たとえば、HDInsight の外部のコンテナーにデータの読み取り/書き込みをする場合です。
+HDInsight クラスターを作成する場合は、クラスターの既定のストレージとして Azure Storage アカウントまたは Data Lake Storage を使用する必要があります。 Ambari を使用すると、クラスターが作成された後にこの情報を取得できます。 たとえば、HDInsight の外部のコンテナーにデータの読み取り/書き込みをする場合です。
 
 以下の例では、クラスターの既定のストレージ構成を取得します。
 
 ```bash
-curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
 | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
 ```
 
 ```powershell
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" `
-    -Credential $creds
+    -Credential $creds -UseBasicParsing
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties.'fs.defaultFS'
 ```
@@ -255,258 +213,237 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 * `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` - この値は、クラスターが既定のストレージとして Azure Storage アカウントを使用していることを示します。 `ACCOUNTNAME` 値は、ストレージ アカウントの名前です。 `CONTAINER` 部分は、ストレージ アカウント内の BLOB コンテナーの名前です。 コンテナーは、クラスターの HDFS 互換ストレージのルートです。
 
-* `adl://home` - この値は、クラスターが既定のストレージとして Azure Data Lake Store を使用していることを示します。
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` - この値は、クラスターが既定のストレージとして Azure Data Lake Storage Gen2 を使用していることを示します。 `ACCOUNTNAME` 値と `CONTAINER` 値は、前述の Azure Storage の場合と同じ意味です。
 
-    Data Lake Store のアカウント名を検索するには、以下の例を使用します。
+* `adl://home` - この値は、クラスターが既定のストレージとして Azure Data Lake Storage Gen1 を使用していることを示します。
+
+    Data Lake Storage のアカウント名を検索するには、以下の例を使用します。
 
     ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+    curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
     | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
     ```
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" `
-        -Credential $creds
+        -Credential $creds -UseBasicParsing
     $respObj = ConvertFrom-Json $resp.Content
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    戻り値は、`ACCOUNTNAME.azuredatalakestore.net` のようになります。ここで、`ACCOUNTNAME` は Data Lake Store アカウントの名前です。
+    戻り値は、`ACCOUNTNAME.azuredatalakestore.net` のようになります。ここで、`ACCOUNTNAME` は Data Lake Storage アカウントの名前です。
 
-    クラスターのストレージが含まれている Data Lake Store 内のディレクトリを検索するには、以下の例を使用します。
+    クラスターのストレージが含まれている Data Lake Storage 内のディレクトリを検索するには、以下の例を使用します。
 
     ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+    curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
     | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
-    ```
+    ```  
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" `
-        -Credential $creds
+        -Credential $creds -UseBasicParsing
     $respObj = ConvertFrom-Json $resp.Content
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    戻り値は、`/clusters/CLUSTERNAME/` のようになります。 この値は、Data Lake Store アカウント内のパスです。 このパスは、クラスターの HDFS 互換ファイル システムのルートです。 
+    戻り値は、`/clusters/CLUSTERNAME/` のようになります。 この値は、Data Lake Storage アカウント内のパスです。 このパスは、クラスターの HDFS 互換ファイル システムのルートです。  
 
 > [!NOTE]  
-> [Azure PowerShell](/powershell/azure/overview) に用意されている `Get-AzureRmHDInsightCluster` コマンドレットも、クラスターのストレージ情報を返します。
+> [Azure PowerShell](/powershell/azure/overview) に用意されている [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) コマンドレットも、クラスターのストレージ情報を返します。
 
 
-## <a name="example-get-configuration"></a>例:構成を取得する
+### <a name="get-all-configurations"></a> すべての構成を取得する
 
-1. クラスターに使用できる構成を取得します。
+クラスターに使用できる構成を取得します。
 
-    ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
-    ```
+```bash
+curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName?fields=Clusters/desired_configs"
+```
 
-    ```powershell
-    $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
-        -Credential $creds
-    $respObj.Content
-    ```
+```powershell
+$respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
+    -Credential $creds -UseBasicParsing
+$respObj.Content
+```
 
-    この例は、クラスターにインストールされているコンポーネントの現在の構成 ( *tag* 値で特定) を含む JSON ドキュメントを返します。 次の例は Spark タイプのクラスターから返されるデータの抜粋です。
+この例は、クラスターにインストールされているコンポーネントの現在の構成 ( *tag* 値で特定) を含む JSON ドキュメントを返します。 次の例は Spark タイプのクラスターから返されるデータの抜粋です。
    
-   ```json
-   "spark-metrics-properties" : {
-       "tag" : "INITIAL",
-       "user" : "admin",
-       "version" : 1
-   },
-   "spark-thrift-fairscheduler" : {
-       "tag" : "INITIAL",
-       "user" : "admin",
-       "version" : 1
-   },
-   "spark-thrift-sparkconf" : {
-       "tag" : "INITIAL",
-       "user" : "admin",
-       "version" : 1
-   }
-   ```
+```json
+"jupyter-site" : {
+  "tag" : "INITIAL",
+  "version" : 1
+},
+"livy2-client-conf" : {
+  "tag" : "INITIAL",
+  "version" : 1
+},
+"livy2-conf" : {
+  "tag" : "INITIAL",
+  "version" : 1
+},
+```
 
-2. 興味のあるコンポーネントの構成を取得します。 次の例では、`INITIAL` を、前の要求から返されるタグ値で置き換えます。
+### <a name="get-configuration-for-specific-component"></a>特定のコンポーネントの構成を取得する
 
-    ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
-    ```
+興味のあるコンポーネントの構成を取得します。 次の例では、`INITIAL` を、前の要求から返されるタグ値で置き換えます。
 
-    ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=core-site&tag=INITIAL" `
-        -Credential $creds
-    $resp.Content
-    ```
+```bash
+curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"
+```
 
-    この例では、`core-site` コンポーネントの現在の構成を含む JSON ドキュメントが返されます。
+```powershell
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" `
+    -Credential $creds -UseBasicParsing
+$resp.Content
+```
 
-## <a name="example-update-configuration"></a>例:構成を更新する
+この例では、`livy2-conf` コンポーネントの現在の構成を含む JSON ドキュメントが返されます。
 
-1. Ambari で "desired configuration (望ましい構成)" として格納される現在の構成を取得します。
+### <a name="update-configuration"></a>構成を更新する
 
-    ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
-    ```
+1. `newconfig.json` を作成します。  
+   変更後、次のコマンドを入力します。
 
-    ```powershell
-    Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
-        -Credential $creds
-    ```
+   * `livy2-conf` を必要なコンポーネントに置き換えます。
+   * `INITIAL` を、「[すべての構成を取得する](#get-all-configurations)」で取得した `tag` の実際の値に置き換えます。
 
-    この例は、クラスターにインストールされているコンポーネントの現在の構成 ( *tag* 値で特定) を含む JSON ドキュメントを返します。 次の例は Spark タイプのクラスターから返されるデータの抜粋です。
-   
-    ```json
-    "spark-metrics-properties" : {
-        "tag" : "INITIAL",
-        "user" : "admin",
-        "version" : 1
-    },
-    "spark-thrift-fairscheduler" : {
-        "tag" : "INITIAL",
-        "user" : "admin",
-        "version" : 1
-    },
-    "spark-thrift-sparkconf" : {
-        "tag" : "INITIAL",
-        "user" : "admin",
-        "version" : 1
-    }
-    ```
-   
-    この一覧から、コンポーネントの名前をコピーする必要があります (たとえば、**spark\_thrift\_sparkconf** と **tag** 値)。
+     **A.Bash**  
+     ```bash
+     curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
+     | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
 
-2. 次のコマンドを使用して、コンポーネントとタグの構成を取得します。
-   
-    ```bash
-    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
-    | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
-    ```
+     ```
 
-    ```powershell
-    $epoch = Get-Date -Year 1970 -Month 1 -Day 1 -Hour 0 -Minute 0 -Second 0
-    $now = Get-Date
-    $unixTimeStamp = [math]::truncate($now.ToUniversalTime().Subtract($epoch).TotalMilliSeconds)
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=spark-thrift-sparkconf&tag=INITIAL" `
-        -Credential $creds
-    $resp.Content | jq --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
-    ```
+     **B. PowerShell**  
+     この PowerShell スクリプトでは、[jq](https://stedolan.github.io/jq/) を使用しています。  実際のパスと [jq](https://stedolan.github.io/jq/) のバージョンを反映するように、次の `C:\HD\jq\jq-win64` を編集します。
 
-    > [!NOTE]  
-    > 構成を取得するコンポーネントとタグで **spark-thrift-sparkconf** と **INITIAL** を置換します。
-   
-    jq を使用して、HDInsight から取得したデータを新しい構成テンプレートに変換します。 具体的には、これらの例では以下の操作を実行します。
-   
-    * 文字列 "version" と日付を含む一意の値が作成され、`newtag` に格納されます。
+     ```powershell
+     $epoch = Get-Date -Year 1970 -Month 1 -Day 1 -Hour 0 -Minute 0 -Second 0
+     $now = Get-Date
+     $unixTimeStamp = [math]::truncate($now.ToUniversalTime().Subtract($epoch).TotalMilliSeconds)
+     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" `
+       -Credential $creds -UseBasicParsing
+     $resp.Content | C:\HD\jq\jq-win64 --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
+     ```
 
-    * 新しい望ましい構成のルート ドキュメントが作成されます。
+     jq を使用して、HDInsight から取得したデータを新しい構成テンプレートに変換します。 具体的には、これらの例では以下の操作を実行します。
 
-    * `.items[]` 配列のコンテンツが取得され、**desired_config** 要素の下に追加されます。
+   * 文字列 "version" と日付を含む一意の値が作成され、`newtag` に格納されます。
 
-    * 新しい構成の送信に必要ないため、`href`、`version`、`Config` の各要素が削除されます。
+   * 新しい望ましい構成のルート ドキュメントが作成されます。
 
-    * 値を `version#################` に指定して `tag` 要素を追加します。 数値部分は現在の日付に基づきます。 構成ごとに一意のタグを与える必要があります。
-     
-    最後に、データが `newconfig.json` ドキュメントに保存されます。 ドキュメントの構造は次の例の構造に似たものになります。
-     
+   * `.items[]` 配列のコンテンツが取得され、**desired_config** 要素の下に追加されます。
+
+   * 新しい構成の送信に必要ないため、`href`、`version`、`Config` の各要素が削除されます。
+
+   * 値を `version#################` に指定して `tag` 要素を追加します。 数値部分は現在の日付に基づきます。 構成ごとに一意のタグを与える必要があります。
+
+     最後に、データが `newconfig.json` ドキュメントに保存されます。 ドキュメントの構造は次の例の構造に似たものになります。
+
      ```json
-    {
-        "Clusters": {
-            "desired_config": {
-            "tag": "version1459260185774265400",
-            "type": "spark-thrift-sparkconf",
-            "properties": {
-                ....
-            },
-            "properties_attributes": {
-                ....
-            }
-        }
-    }
-    ```
+     {
+       "Clusters": {
+         "desired_config": {
+           "tag": "version1552064778014",
+           "type": "livy2-conf",
+           "properties": {
+             "livy.environment": "production",
+             "livy.impersonation.enabled": "true",
+             "livy.repl.enableHiveContext": "true",
+             "livy.server.csrf_protection.enabled": "true",
+               ....
+           },
+         },
+       }
+     }
+     ```
 
-3. `newconfig.json` ドキュメントを開き、`properties` オブジェクトの値を修正/追加します。 次の例では、`"spark.yarn.am.memory"` の値を `"1g"` から `"3g"` に変更します。 また、`"spark.kryoserializer.buffer.max"` も追加し、値を `"256m"` にします。
-   
-        "spark.yarn.am.memory": "3g",
-        "spark.kyroserializer.buffer.max": "256m",
-   
+2. `newconfig.json` を編集します。  
+   `newconfig.json` ドキュメントを開き、`properties` オブジェクトの値を修正/追加します。 次の例では、`"livy.server.csrf_protection.enabled"` の値を `"true"` から `"false"` に変更します。
+
+        "livy.server.csrf_protection.enabled": "false",
+
     変更が完了したら、ファイルを保存します。
 
-4. 次のコマンドを利用し、更新した構成を Ambari に送信します。
-   
+3. `newconfig.json` を送信します。  
+   次のコマンドを利用し、更新した構成を Ambari に送信します。
+
     ```bash
-    curl -u admin -sS -H "X-Requested-By: ambari" -X PUT -d @newconfig.json "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
+    curl -u admin:$password -sS -H "X-Requested-By: ambari" -X PUT -d @newconfig.json "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName"
     ```
 
     ```powershell
     $newConfig = Get-Content .\newconfig.json
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
-        -Credential $creds `
+        -Credential $creds -UseBasicParsing `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body $newConfig
     $resp.Content
-    ```
-   
+    ```  
+
     これらのコマンドは、**newconfig.json** ファイルの内容を新たな望ましい構成としてクラスターに送信します。 要求から、JSON ドキュメントが返されます。 このドキュメントの **versionTag** 要素は、送信したバージョンに一致する必要があります。**configs** オブジェクトには、要求した構成変更が含まれます。
 
-### <a name="example-restart-a-service-component"></a>例:サービス コンポーネントの再起動
+### <a name="restart-a-service-component"></a>サービス コンポーネントの再起動
 
 この時点で Ambari Web UI に、新しい構成を有効にするには Spark サービスを再起動する必要がある旨が表示されます。 次の手順でサービスを再起動します。
 
-1. 次を利用し、Spark サービスのメンテナンス モードを有効にします。
+1. 次のコマンドを使用して、Spark2 サービスのメンテナンス モードを有効にします。
 
     ```bash
-    curl -u admin -sS -H "X-Requested-By: ambari" \
-    -X PUT -d '{"RequestInfo": {"context": "turning on maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}' \
-    "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
+    curl -u admin:$password -sS -H "X-Requested-By: ambari" \
+    -X PUT -d '{"RequestInfo": {"context": "turning on maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}' \
+    "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2"
     ```
 
     ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK" `
-        -Credential $creds `
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2" `
+        -Credential $creds -UseBasicParsing `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
-        -Body '{"RequestInfo": {"context": "turning on maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}'
+        -Body '{"RequestInfo": {"context": "turning on maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}'
     $resp.Content
     ```
-   
+
+2. メンテナンス モードを確認します。  
+
     これらのコマンドは、メンテナンス モードを有効にするサーバーに JSON ドキュメントを送信します。 次の要求を利用すれば、サービスがメンテナンス モードに入っていることを確認できます。
-   
+
     ```bash
-    curl -u admin -sS -H "X-Requested-By: ambari" \
-    "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK" \
+    curl -u admin:$password -sS -H "X-Requested-By: ambari" \
+    "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2" \
     | jq .ServiceInfo.maintenance_state
     ```
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2" `
-        -Credential $creds
+        -Credential $creds -UseBasicParsing
     $respObj = ConvertFrom-Json $resp.Content
     $respObj.ServiceInfo.maintenance_state
     ```
-   
+
     戻り値は `ON` です。
 
-2. 次に、次のコードを利用し、サービスを無効にします。
+3. 次のコマンドを使用して、Spark2 サービスを無効にします。
 
     ```bash
-    curl -u admin -sS -H "X-Requested-By: ambari" \
+    curl -u admin:$password -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}' \
-    "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
+    "https://girouxSpark.azurehdinsight.net/api/v1/clusters/girouxspark/services/SPARK2"
     ```
 
     ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK" `
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2" `
         -Credential $creds `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}'
     $resp.Content
     ```
-    
+
     応答は次の例のようになります。
-   
+
     ```json
     {
         "href" : "http://10.0.0.18:8080/api/v1/clusters/CLUSTERNAME/requests/29",
@@ -516,58 +453,61 @@ $respObj.items.configurations.properties.'fs.defaultFS'
         }
     }
     ```
-    
+
     > [!IMPORTANT]  
-    > この URI で返される `href` 値はクラスター ノードの内部 IP アドレスを利用します。 クラスターの外部からこれを利用するには、`10.0.0.18:8080' 部分をクラスターの FQDN に置換します。 
-    
-    以下のコマンドは、要求の状態を取得します。
+    > この URI で返される `href` 値はクラスター ノードの内部 IP アドレスを利用します。 クラスターの外部からこれを利用するには、`10.0.0.18:8080' 部分をクラスターの FQDN に置換します。  
+
+4. 要求を確認します。  
+    `29` を、前の手順で返された `id` の実際の値に置き換えて、次のコマンドを編集します。  以下のコマンドは、要求の状態を取得します。
 
     ```bash
-    curl -u admin -sS -H "X-Requested-By: ambari" \
-    "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/requests/29" \
+    curl -u admin:$password -sS -H "X-Requested-By: ambari" \
+    "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/requests/29" \
     | jq .Requests.request_status
     ```
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/requests/29" `
-        -Credential $creds
+        -Credential $creds -UseBasicParsing
     $respObj = ConvertFrom-Json $resp.Content
     $respObj.Requests.request_status
     ```
 
     `COMPLETED` の応答は、要求が完了したことを示します。
 
-3. 前の要求が完了したら、次を利用し、サービスを開始します。
+5. 前の要求が完了したら、次のコマンドを使用して Spark2 サービスを開始します。
    
     ```bash
-    curl -u admin -sS -H "X-Requested-By: ambari" \
+    curl -u admin:$password -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}' \
-    "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
+    "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2"
     ```
-   
+
     ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK" `
-        -Credential $creds `
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2" `
+        -Credential $creds -UseBasicParsing `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}'
     ```
+
     これで、サービスが新しい構成を使用するようになりました。
 
-4. 最後に、次を利用し、メンテナンス モードをオフにします。
-   
+6. 最後に、次を利用し、メンテナンス モードをオフにします。
+
     ```bash
-    curl -u admin -sS -H "X-Requested-By: ambari" \
-    -X PUT -d '{"RequestInfo": {"context": "turning off maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}' \
-    "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
+    curl -u admin:$password -sS -H "X-Requested-By: ambari" \
+    -X PUT -d '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}' \
+    "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2"
     ```
 
     ```powershell
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK" `
-        -Credential $creds `
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2" `
+        -Credential $creds -UseBasicParsing `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
-        -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
+        -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
+
     ```
 
 ## <a name="next-steps"></a>次の手順

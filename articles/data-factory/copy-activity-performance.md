@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Data Factory のコピー アクティビティのパフォーマンスとチューニングに関するガイド | Microsoft Docs
 description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
 services: data-factory
@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 7602524675edbf0e3ca96c74a2aba2eac48c417b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 47b9ede2d529f78b14c21f53c6cd18ed691a3df3
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084075"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445840"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-copy-activity-performance.md)
 > * [現在のバージョン](copy-activity-performance.md)
 
@@ -36,9 +35,9 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 この記事では、次の内容について説明します。
 
-* [パフォーマンス参照番号](#performance-reference)
+* [パフォーマンス参照番号](#performance-reference) 
 * [データ統合単位](#data-integration-units)、[並列コピー](#parallel-copy)、[ステージング コピー](#staged-copy)などのさまざまなシナリオにおけるコピーのスループットを高める機能
-* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps)
+* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps) 
 
 > [!NOTE]
 > コピー アクティビティ全般に慣れていない場合は、この記事を読む前に、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
@@ -46,7 +45,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 ## <a name="performance-reference"></a>パフォーマンス リファレンス
 
-参考として、社内テストに基づいて、**1 回のコピー アクティビティの実行**での特定のソースとシンクのペアにおけるコピー スループット (**Mbps 単位**) を次の表に示します。 比較のために、[データ統合単位](#data-integration-units)または[セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime) (複数のノード) の異なる設定によって、コピーのパフォーマンスがどのように変化するかも示しています。
+参考として、社内テストに基づいて、**1 回のコピー アクティビティの実行**での特定のソースとシンクのペアにおけるコピー スループット (**MBps 単位**) を次の表に示します。 比較のために、[データ統合単位](#data-integration-units)または[セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime) (複数のノード) の異なる設定によって、コピーのパフォーマンスがどのように変化するかも示しています。
 
 ![パフォーマンス マトリックス](./media/copy-activity-performance/CopyPerfRef.png)
 
@@ -76,7 +75,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 
 > [!TIP]
-> 使用するデータ統合ユニット (DIU) を増やすと、より高いスループットを実現できます。 たとえば、100 DIU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[データ統合単位](#data-integration-units)」セクションをご覧ください。
+> 使用するデータ統合ユニット (DIU) を増やすと、より高いスループットを実現できます。 たとえば、100 DIU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[データ統合単位](#data-integration-units)」セクションをご覧ください。 
 
 ## <a name="data-integration-units"></a>データ統合単位
 
@@ -135,8 +134,8 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | 任意のソース データ ストアから Azure Table Storage へのデータのコピー |4 |
 | 他のすべてのコピー シナリオ |1 |
 
-[!TIP]
-> ファイル ベースのストア間でデータをコピーするとき、通常は既定の動作 (自動的に決定される) によって最高のスループットが得られます。
+> [!TIP]
+> ファイル ベースのストア間でデータをコピーするとき、通常は既定の動作 (自動的に決定される) によって最高のスループットが得られます。 
 
 データ ストアをホストしているコンピューターの負荷を制御したり、コピーのパフォーマンスをチューニングしたりするには、**parallelCopies** プロパティの値を指定して、既定値をオーバーライドできます。 値は 1 以上の整数でなければなりません。 実行時にコピー アクティビティは、設定された値以下でパフォーマンスが最大になる値を使用します。
 
@@ -193,7 +192,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | --- | --- | --- | --- |
 | **enableStaging** |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
 | **linkedServiceName** |[AzureStorage ](connector-azure-blob-storage.md#linked-service-properties) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスを表します。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
-| **path** |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/>  パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
+| **path** |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/> パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
 | **enableCompression** |データをコピーする前に圧縮するかどうかを指定します。 この設定により、転送するデータの量が減ります。 |False |いいえ  |
 
 >[!NOTE]
@@ -242,20 +241,30 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
 1. **ベースラインを確立する**。 開発フェーズでは、代表的なデータ サンプルに対してコピー アクティビティを使用して、パイプラインをテストします。 [コピー アクティビティの監視](copy-activity-overview.md#monitoring)の後に、実行の詳細とパフォーマンス特性を収集します。
 
-2. **パフォーマンスを診断して最適化する**。 観測したパフォーマンスが予測どおりでない場合は、パフォーマンスのボトルネックを特定する必要があります。 次に、パフォーマンスを最適化して、ボトルネックの影響を除去するか軽減します。 この記事では、パフォーマンスの診断に関する詳細な説明は省略しますが、いくつかの一般的な考慮事項を次に示します。
+2. **パフォーマンスを診断して最適化する**。 観測したパフォーマンスが予測どおりでない場合は、パフォーマンスのボトルネックを特定する必要があります。 次に、パフォーマンスを最適化して、ボトルネックの影響を除去するか軽減します。 
 
-    * パフォーマンス機能:
-      * [並列コピー](#parallel-copy)
-      * [データ統合単位](#data-integration-units)
-      * [ステージング コピー](#staged-copy)
-      * [セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime)
-    * [セルフホステッド統合ランタイム](#considerations-for-self-hosted-integration-runtime)
-    * [ソース](#considerations-for-the-source)
-    * [シンク](#considerations-for-the-sink)
-    * [シリアル化と逆シリアル化](#considerations-for-serialization-and-deserialization)
-    * [圧縮](#considerations-for-compression)
-    * [列マッピング](#considerations-for-column-mapping)
-    * [その他の考慮事項](#other-considerations)
+    場合によっては、ADF でコピー アクティビティを実行すると、次の例に示されているように、[コピー アクティビティの監視ページ](copy-activity-overview.md#monitor-visually)の上部に "**パフォーマンス チューニングに関するヒント**" が直接表示されます。 これにより、特定のコピーの実行で特定されたボトルネックが提示されるだけでなく、コピーのスループットを向上させるために変更すべき点も示されます。 パフォーマンスのチューニングに関するヒントは、現在、Azure SQL Data Warehouse にデータをコピーするときは PolyBase を使用すること、データ ソース側のリソースがボトルネックである場合はAzure Cosmos DB の RU または Azure SQL DB の DTU を増やすこと、不要なステージング済みを削除することといった提案を示しています。パフォーマンスのチューニングのルールも、徐々に強化されていきます。
+
+    **例: パフォーマンスのチューニングに関するヒントを使用した Azure SQL DB へのコピー**
+
+    このサンプルでは、コピーの実行中に ADF が、シンク Azure SQL DB が書き込み操作を遅くする高 DTU 使用率に達したため、より多くの DTU のある Azure SQL DB 層を増やすという提案を通知します。 
+
+    ![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    さらに、いくつかの一般的な考慮事項を次に示します。 この記事では、パフォーマンスの診断に関する詳細な説明は省略します。
+
+   * パフォーマンス機能:
+     * [並列コピー](#parallel-copy)
+     * [データ統合単位](#data-integration-units)
+     * [ステージング コピー](#staged-copy)
+     * [セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime)
+   * [セルフホステッド統合ランタイム](#considerations-for-self-hosted-integration-runtime)
+   * [ソース](#considerations-for-the-source)
+   * [シンク](#considerations-for-the-sink)
+   * [シリアル化と逆シリアル化](#considerations-for-serialization-and-deserialization)
+   * [圧縮](#considerations-for-compression)
+   * [列マッピング](#considerations-for-column-mapping)
+   * [その他の考慮事項](#other-considerations)
 
 3. **構成をデータ セット全体に拡張する**。 実行結果とパフォーマンスに問題がなければ、データ セット全体を網羅するように定義とパイプラインを拡張することができます。
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 03/18/2019
 ms.author: juliako;milangada;
-ms.openlocfilehash: 8f17d5e6d45b678f5c4a0c4318e74a18c42ff0c8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 65b647a375ecbe70f7f29af5b09827f1c34dcd6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035718"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183035"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>.NET SDK を使用してエンコードを拡張する方法
 > [!div class="op_single_selector"]

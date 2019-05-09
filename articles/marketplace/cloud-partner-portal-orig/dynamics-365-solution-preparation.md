@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c1e9c831681867e6a6238159599af39cbab10b7e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 2ea62a826b9f99e264cb1b2242f8d8108453d8e7
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808436"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448773"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Dynamics 365 ソリューションの準備
 
@@ -29,7 +29,7 @@ Dynamics 365 ソリューション システムは、特定のビジネス機能
 
 ![CRMScreenShot1](media/CRMScreenShot1.png)
 
-_**注:** 次のパッケージの例では、ソリューション名を "SampleSolution.zip" と仮定します_
+_**"注:** 次のパッケージの例では、ソリューション名を "SampleSolution.zip" と仮定します"_
 
 新しい ISV は、[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx) で、ソリューションの作成に関する詳細情報を得ることができます。
 

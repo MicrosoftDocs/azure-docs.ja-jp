@@ -1,30 +1,30 @@
 ---
 title: Azure Cache for Redis を監視する方法 | Microsoft Docs
 description: Azure Cache for Redis のインスタンスの正常性とパフォーマンスを監視する方法を学習します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.author: wesmc
-ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.author: yegu
+ms.openlocfilehash: 32d0fb2ba17d322c0a273ebaf0a21d2b3ca0668f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582713"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58849577"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する方法
 Azure Cache for Redis は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) を使用して、キャッシュのインスタンスを監視するための複数のオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視でき、キャッシュ アプリケーションの管理が容易になります。
 
-Azure Cache for Redis インスタンスのメトリックが Redis [INFO](http://redis.io/commands/info) コマンドを約 1 分に 2 回使用して収集され、自動的に 30 日間格納されるため (異なるアイテム保持ポリシーを構成するには、「[キャッシュ メトリックをエクスポートする](#export-cache-metrics)」を参照してください)、それらをメトリック グラフで表示してアラート ルールで評価できます。 各キャッシュ メトリックで使用される各種 INFO コマンドの詳細については、「 [使用可能なメトリックとレポート期間](#available-metrics-and-reporting-intervals)」を参照してください。
+Azure Cache for Redis インスタンスのメトリックが Redis [INFO](https://redis.io/commands/info) コマンドを約 1 分に 2 回使用して収集され、自動的に 30 日間格納されるため (異なるアイテム保持ポリシーを構成するには、「[キャッシュ メトリックをエクスポートする](#export-cache-metrics)」を参照してください)、それらをメトリック グラフで表示してアラート ルールで評価できます。 各キャッシュ メトリックで使用される各種 INFO コマンドの詳細については、「 [使用可能なメトリックとレポート期間](#available-metrics-and-reporting-intervals)」を参照してください。
 
 <a name="view-cache-metrics"></a>
 
@@ -61,7 +61,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>キャッシュ メトリックをエクスポートする
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-collection.md#metrics)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../azure-monitor/platform/archive-diagnostic-logs.md)し、対象のキャッシュ メトリックの **[リテンション期間 (日数)]** ポリシーを指定します。 
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../azure-monitor/platform/archive-diagnostic-logs.md)し、対象のキャッシュ メトリックの **[リテンション期間 (日数)]** ポリシーを指定します。 
 
 対象のキャッシュ メトリックのストレージ アカウントを構成するには:
 
@@ -75,7 +75,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 ![Redis 診断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーミングしたり、Log Analytics に送信したり](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values)できます。
+>キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーム配信したり、Azure Monitor ログに送信したり](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values)できます。
 >
 >
 
@@ -98,7 +98,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 
 | メトリック | 説明 |
 | --- | --- |
-| キャッシュ ヒット数 |指定したレポート期間中に、成功したキー検索の数。 これは Redis [INFO](http://redis.io/commands/info) コマンドの `keyspace_hits` にマッピングされます。 |
+| キャッシュ ヒット数 |指定したレポート期間中に、成功したキー検索の数。 これは Redis [INFO](https://redis.io/commands/info) コマンドの `keyspace_hits` にマッピングされます。 |
 | キャッシュの待機時間 (プレビュー) | キャッシュのノード間待機時間に基づいて計算されるキャッシュの待機時間。 このメトリックはマイクロ秒単位で測定され、"Avg"、"Min"、"Max" という 3 つのディメンションがあります。これらは、指定されたレポート間隔のキャッシュの平均、最短、および最長の待ち時間をそれぞれ表します。 |
 | キャッシュ ミス数 |指定したレポート期間中に、失敗したキー検索の数。 これは Redis INFO コマンドの `keyspace_misses` にマッピングされます。 キャッシュ ミスは必ずしもキャッシュに問題があるということではありません。 たとえば、キャッシュ アサイド プログラミング パターンを使用する場合、アプリケーションはまず項目をキャッシュから検索します。 項目が見つからなかった (キャッシュ ミス) 場合は、データベースから項目を取得して、次回使用するためにキャッシュに追加されます。 キャッシュ ミスは、キャッシュ アサイド プログラミング パターンでは普通の動作です。 キャッシュ ミスの数が予想よりも大きい場合は、キャッシュにデータを入力またはキャッシュからデータを読み取るアプリケーション ロジックを確認してください。 メモリ不足のためにキャッシュからアイテムが削除される場合はキャッシュ ミスとしてカウントされますが、メモリの負荷の監視には `Used Memory` または `Evicted Keys` のメトリックが適しています。 |
 | キャッシュの読み取り |指定したレポート期間中にキャッシュから読み取られた、メガバイト単位での 1 秒あたりのデータ量 (MB/秒)。 この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 **この値は、このキャッシュで使用されるネットワーク帯域幅に対応しています。サーバー側のネットワーク帯域幅の制限に対してアラートを設定する場合は、この `Cache Read` カウンターを使用してアラートを作成します。キャッシュのさまざまな価格レベルとサイズで観測された帯域幅の制限値については、[こちらの表](cache-faq.md#cache-performance)を参照してください。** |

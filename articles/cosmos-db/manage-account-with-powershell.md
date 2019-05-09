@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6dcb5e445c9c294b81de0363f5462b8d21621616
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 01c351ad08399c0b42e831e325b3f818741d1d83
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135290"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58904374"
 ---
-# <a name="create-and-manage-azure-cosmos-db-resources-by-using-powershell"></a>PowerShell を使用した Azure Cosmos DB リソースの作成と管理
+# <a name="manage-azure-cosmos-resources-using-powershell"></a>PowerShell を使用した Azure Cosmos リソースの管理
 
 次のガイドでは、Azure PowerShell を使用して Azure Cosmos DB データベース アカウントの管理を自動化するためのコマンドについて説明します。 また、[複数リージョンのデータベース アカウント][distribute-data-globally]でアカウント キーとフェールオーバー優先度を管理するコマンドについても説明します。 データベース アカウントを更新すると、一貫性ポリシーの変更と、リージョンの追加または削除を行うことができます。 Azure Cosmos DB アカウントのクロスプラットフォーム管理には、[Azure CLI](cli-samples.md)、[リソース プロバイダーの REST API][rp-rest-api]、[Azure Portal](create-sql-api-dotnet.md#create-account) のいずれも使用可能です。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
@@ -35,7 +37,7 @@ ms.locfileid: "53135290"
     $iprangefilter = "<ip-range-filter>"
     $consistencyPolicy = @{"defaultConsistencyLevel"="<default-consistency-level>"; "maxIntervalInSeconds"="<max-interval>"; "maxStalenessPrefix"="<max-staleness-prefix>"}
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
-    New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name>  -Location "<resource-group-location>" -Name <database-account-name> -Properties $CosmosDBProperties
+    New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name>  -Location "<resource-group-location>" -Name <database-account-name> -Properties $CosmosDBProperties
     
 * `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに 1 つである必要があります。
 * `<read-region-location>` データベース アカウントの読み取りリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 よりも大きい値である必要があります。 読み取りリージョンは、データベース アカウントごとに複数あってもかまいません。
@@ -53,7 +55,7 @@ ms.locfileid: "53135290"
     $iprangefilter = ""
     $consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; "maxIntervalInSeconds"=5; "maxStalenessPrefix"=100}
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
-    New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
+    New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>メモ
 * 前の例では、2 つのリージョンでデータベース アカウントを作成します。 単一リージョン (書き込みリージョンとして指定されており、フェールオーバー優先度の値が 0 であるもの) または 3 つ以上のリージョンでデータベース アカウントを作成することも可能です。 詳細については、[複数リージョンのデータベース アカウント][distribute-data-globally]に関する記事を参照してください。
@@ -70,7 +72,7 @@ ms.locfileid: "53135290"
     $iprangefilter = "<ip-range-filter>"
     $consistencyPolicy = @{"defaultConsistencyLevel"="<default-consistency-level>"; "maxIntervalInSeconds"="<max-interval>"; "maxStalenessPrefix"="<max-staleness-prefix>"}
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
-    Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name> -Name <database-account-name> -Properties $CosmosDBProperties
+    Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name> -Name <database-account-name> -Properties $CosmosDBProperties
     
 * `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに 1 つである必要があります。
 * `<read-region-location>` データベース アカウントの読み取りリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 よりも大きい値である必要があります。 読み取りリージョンは、データベース アカウントごとに複数あってもかまいません。
@@ -88,33 +90,33 @@ ms.locfileid: "53135290"
     $iprangefilter = ""
     $consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; "maxIntervalInSeconds"=5; "maxStalenessPrefix"=100}
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
-    Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Properties $CosmosDBProperties
+    Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ## <a id="delete-documentdb-account-powershell"></a>Azure Cosmos DB データベース アカウントを削除する
 
 このコマンドでは、既存の Azure Cosmos DB データベース アカウントを削除できます。
 
-    Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
+    Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
     
 * `<resource-group-name>` 新しい Azure Cosmos DB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
 * `<database-account-name>` 削除する Azure Cosmos DB データベース アカウントの名前。
 
 例:
 
-    Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
+    Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
 ## <a id="get-documentdb-properties-powershell"></a>Azure Cosmos DB データベース アカウントのプロパティを取得する
 
 このコマンドでは、既存の Azure Cosmos DB データベース アカウントのプロパティを取得できます。
 
-    Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
+    Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
 * `<resource-group-name>` 新しい Azure Cosmos DB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
 * `<database-account-name>` Azure Cosmos DB データベース アカウントの名前。
 
 例:
 
-    Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
+    Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
 ## <a id="update-tags-powershell"></a> Azure Cosmos DB データベース アカウントのタグの更新
 
@@ -126,39 +128,39 @@ ms.locfileid: "53135290"
 例:
 
     $tags = @{"dept" = "Finance"; environment = "Production"}
-    Set-AzureRmResource -ResourceType "Microsoft.DocumentDB/databaseAccounts"  -ResourceGroupName "rg-test" -Name "docdb-test" -Tags $tags
+    Set-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts"  -ResourceGroupName "rg-test" -Name "docdb-test" -Tags $tags
 
 ## <a id="list-account-keys-powershell"></a> アカウント キーの一覧表示
 
 Azure Cosmos DB アカウントを作成すると、2 つのマスター アクセス キーが生成されます。これらのアクセス キーは、Azure Cosmos DB アカウントにアクセスする際の認証に使用できます。 2 つのアクセス キーが提供されるので、Azure Cosmos DB アカウントを中断することなくキーを再生成できます。 読み取り専用操作を認証するための読み取り専用キーも使用できます。 2 つの読み取り/書き込みキー (プライマリおよびセカンダリ) と、2 つの読み取り専用キー (プライマリおよびセカンダリ) が存在します。
 
-    $keys = Invoke-AzureRmResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
+    $keys = Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
 * `<resource-group-name>` 新しい Azure Cosmos DB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
 * `<database-account-name>` Azure Cosmos DB データベース アカウントの名前。
 
 例:
 
-    $keys = Invoke-AzureRmResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
+    $keys = Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
 ## <a id="list-connection-strings-powershell"></a> 接続文字列の一覧表示
 
 MongoDB アカウントの場合、MongoDB アプリをデータベース アカウントに接続する接続文字列は、次のコマンドで取得できます。
 
-    $keys = Invoke-AzureRmResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
+    $keys = Invoke-AzResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
 * `<resource-group-name>` 新しい Azure Cosmos DB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
 * `<database-account-name>` Azure Cosmos DB データベース アカウントの名前。
 
 例:
 
-    $keys = Invoke-AzureRmResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
+    $keys = Invoke-AzResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
 ## <a id="regenerate-account-key-powershell"></a> アカウント キーの再生成
 
 接続のセキュリティを高めるために、Azure Cosmos DB アカウントのアクセス キーは定期的に変更する必要があります。 一方のアクセス キーを使用して Azure Cosmos DB アカウントへの接続を維持しながら、もう一方のアクセス キーを再生成できるように、2 つのアクセス キーが割り当てられます。
 
-    Invoke-AzureRmResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"keyKind"="<key-kind>"}
+    Invoke-AzResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"keyKind"="<key-kind>"}
 
 * `<resource-group-name>` 新しい Azure Cosmos DB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
 * `<database-account-name>` Azure Cosmos DB データベース アカウントの名前。
@@ -166,14 +168,14 @@ MongoDB アカウントの場合、MongoDB アプリをデータベース アカ
 
 例:
 
-    Invoke-AzureRmResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"keyKind"="Primary"}
+    Invoke-AzResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"keyKind"="Primary"}
 
 ## <a id="modify-failover-priority-powershell"></a> Azure Cosmos DB データベース アカウントのフェールオーバー優先度の変更
 
 複数リージョンのデータベース アカウントでは、Azure Cosmos DB データベース アカウントが存在するさまざまなリージョンのフェールオーバー優先度を変更できます。 Azure Cosmos DB データベース アカウントでのフェールオーバーの詳細については、[Azure Cosmos DB を使用したデータのグローバル分散][distribute-data-globally]に関する記事をご覧ください。
 
     $failoverPolicies = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0},@{"locationName"="<read-region-location>"; "failoverPriority"=1})
-    Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"failoverPolicies"=$failoverPolicies}
+    Invoke-AzResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"failoverPolicies"=$failoverPolicies}
 
 * `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに 1 つである必要があります。
 * `<read-region-location>` データベース アカウントの読み取りリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 よりも大きい値である必要があります。 読み取りリージョンは、データベース アカウントごとに複数あってもかまいません。
@@ -183,7 +185,7 @@ MongoDB アカウントの場合、MongoDB アプリをデータベース アカ
 例:
 
     $failoverPolicies = @(@{"locationName"="East US"; "failoverPriority"=0},@{"locationName"="West US"; "failoverPriority"=1})
-    Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"failoverPolicies"=$failoverPolicies}
+    Invoke-AzResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"failoverPolicies"=$failoverPolicies}
 
 ## <a name="next-steps"></a>次の手順
 

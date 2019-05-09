@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスの作成中に App Insights を有効にした場合、QnA Maker はすべてのチャット ログとその他のテレメトリを格納します。 サンプル クエリを実行して、App Insights からチャット ログを取得してみましょう。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: tulasim88
-ms.openlocfilehash: f3ca99a92d12acbf880a3a95098a90569e2a0f84
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 02/04/2019
+ms.author: tulasim
+ms.openlocfilehash: 09369e760c654e7e56067e6da02bb772bffa7400
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309401"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960844"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
@@ -36,7 +36,7 @@ ms.locfileid: "53309401"
         requests
         | where url endswith "generateAnswer"
         | project timestamp, id, name, resultCode, duration
-        | parse name with *"/knowledgebases/"KbId"/generateAnswer"
+        | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
         | join kind= inner (
         traces | extend id = operation_ParentId
         ) on id
@@ -57,7 +57,7 @@ ms.locfileid: "53309401"
     //Total Traffic
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer" 
     | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
@@ -70,7 +70,7 @@ ms.locfileid: "53309401"
     requests
     | where timestamp <= endDate and timestamp >=startDate
     | where url endswith "generateAnswer" and name startswith "POST" 
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer" 
     | summarize ChatCount=count() by KbId
 ```
 
@@ -81,7 +81,7 @@ ms.locfileid: "53309401"
     requests
     | where url endswith "generateAnswer"
     | project timestamp, id, name, resultCode, duration
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer"
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
     | join kind= inner (
     traces | extend id = operation_ParentId 
     ) on id
@@ -95,7 +95,7 @@ ms.locfileid: "53309401"
     //Latency distribution of questions
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
     | project timestamp, id, name, resultCode, performanceBucket, KbId
     | summarize count() by performanceBucket, KbId
 ```

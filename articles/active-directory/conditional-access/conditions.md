@@ -4,25 +4,26 @@ description: Azure Active Directory の条件付きアクセスで条件を使�
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/14/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
-ms.openlocfilehash: 90b9a1104dd387c857e4955cabfb121773aedcca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f95fd85b5a0fd9e905b93b9b90f18f963dbf1690
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410074"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518237"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの条件の概要 
 
@@ -152,11 +153,11 @@ ms.locfileid: "53410074"
 
 この条件の一般的なユース ケースには、次のような要件を含むポリシーがあります。
 
-- データをデバイスにダウンロードするモバイル アプリケーションやデスクトップ アプリケーションについて**[マネージド デバイスを必須にする](require-managed-devices.md)**。 同時に、ブラウザー アクセスはすべてのデバイスに許可する。 このシナリオでは、アンマネージド デバイスへのドキュメントの保存と同期が禁止されます。 この方法を使用すると、デバイスが紛失したり盗難にあったりした場合のデータ損失の可能性を低くすることができます。
+- データをデバイスにダウンロードするモバイル アプリケーションやデスクトップ アプリケーションについて **[マネージド デバイスを必須にする](require-managed-devices.md)** 。 同時に、ブラウザー アクセスはすべてのデバイスに許可する。 このシナリオでは、アンマネージド デバイスへのドキュメントの保存と同期が禁止されます。 この方法を使用すると、デバイスが紛失したり盗難にあったりした場合のデータ損失の可能性を低くすることができます。
 
-- Exchange Online へのアクセスに ActiveSync が使用されるアプリについて**[マネージド デバイスを必須にする](require-managed-devices.md)**。
+- Exchange Online へのアクセスに ActiveSync が使用されるアプリについて **[マネージド デバイスを必須にする](require-managed-devices.md)** 。
 
-- Azure AD (他のクライアント) に対する**[レガシ認証をブロックする](block-legacy-authentication.md)**。
+- Azure AD (他のクライアント) に対する **[レガシ認証をブロックする](block-legacy-authentication.md)** 。
 
 - Web アプリからのアクセスはブロックするが、モバイル アプリとデスクトップ アプリからのアクセスは許可する。
 

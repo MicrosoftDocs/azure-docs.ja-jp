@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220127"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652452"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 
-この記事では、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
+この記事では、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](manage-resources-portal.md)」を参照してください。
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
@@ -134,7 +134,8 @@ ms.locfileid: "47220127"
    ![保存されたテンプレートのデプロイ](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
 ## <a name="next-steps"></a>次の手順
-* 監査ログの表示については、「 [Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
-* デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](resource-manager-deployment-operations.md)」を参照してください。
-* デプロイまたはリソース グループからテンプレートを取得するには、「 [既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
-* 複数のリージョン間で、サービスを安全にロールアウトするには、[Azure デプロイ マネージャー](deployment-manager-overview.md)を参照してください。
+
+- 監査ログの表示については、「 [Resource Manager の監査操作](./resource-group-audit.md)」を参照してください。
+- デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](./resource-manager-deployment-operations.md)」を参照してください。
+- デプロイまたはリソース グループからテンプレートをエクスポートするには、[Azure Resource Manager テンプレートのエクスポート](./manage-resource-groups-portal.md#export-resource-groups-to-templates)に関する記事を参照してください。
+- 複数のリージョン間で、サービスを安全にロールアウトするには、[Azure デプロイ マネージャー](./deployment-manager-overview.md)を参照してください。

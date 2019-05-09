@@ -1,20 +1,19 @@
 ---
 title: Microsoft ピアリングにルート フィルターを構成する - ExpressRoute:PowerShell:Azure | Microsoft Docs
 description: この記事では、PowerShell を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します。
-documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c67d4979709fc8e72c560c9071b17f48b309e07d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096298"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110836"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft ピアリングにルート フィルターを構成する:PowerShell
 > [!div class="op_single_selector"]
@@ -25,7 +24,7 @@ ms.locfileid: "53096298"
 
 ルート フィルターとは、Microsoft ピアリングでサポートされるサービスの一部だけを利用する手段です。 この記事の手順を通じて、ExpressRoute 回線にルート フィルターを構成し、管理することができます。
 
-Dynamics 365 サービスと Office 365 サービス (Exchange Online、SharePoint Online、Skype for Business など) および Azure パブリック サービス (ストレージ、SQL DB など) には、Microsoft ピアリングを介してアクセスすることができます。 Azure パブリック サービスはリージョンごとに選択でき、パブリック サービスごとに定義することはできません。 
+Dynamics 365 サービスと Office 365 サービス (Exchange Online、SharePoint Online、Skype for Business など) および Azure パブリック サービス (ストレージ、SQL DB など) には、Microsoft ピアリングを介してアクセスすることができます。 Azure パブリック サービスはリージョンごとに選択でき、パブリック サービスごとに定義することはできません。
 
 ExpressRoute 回線に Microsoft ピアリングを構成してルート フィルターをアタッチすると、これらのサービス用に選択されたすべてのプレフィックスが、確立された BGP セッションを通じてアドバタイズされます。 提供されているサービスをプレフィックスで識別するために、すべてのプレフィックスには BGP コミュニティ値がアタッチされます。 BGP コミュニティ値とサービスのマッピング一覧については、[BGP コミュニティ](expressroute-routing.md#bgp)に関するページを参照してください。
 
@@ -75,6 +74,9 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
 
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ### <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
@@ -84,19 +86,19 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
 昇格された特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。 Azure Cloud Shell を使用している場合は、自動的にサインインされるため、このコマンドレットを実行する必要はありません。
 
 ```azurepowershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 複数の Azure サブスクリプションを所有している場合には、アカウントのサブスクリプションをすべて確認します。
 
 ```azurepowershell-interactive
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 使用するサブスクリプションを指定します。
 
 ```azurepowershell-interactive
-Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
 ## <a name="prefixes"></a>手順 1:一連のプレフィックスと BGP コミュニティ値を取得する
@@ -106,7 +108,7 @@ Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_nam
 Microsoft ピアリング経由でアクセス可能なサービスに関連付けられている一連の BGP コミュニティ値とそれに対応する一連のプレフィックスを取得します。次のコマンドレットを使用してください。
 
 ```azurepowershell-interactive
-Get-AzureRmBgpServiceCommunity
+Get-AzBgpServiceCommunity
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.使用する値をリストアップする
 
@@ -118,10 +120,10 @@ Get-AzureRmBgpServiceCommunity
 
 ### <a name="1-create-a-route-filter"></a>1.ルート フィルターを作成する
 
-まず、ルート フィルターを作成します。 "New-AzureRmRouteFilter" コマンドで作成されるのはルート フィルター リソースだけです。 このリソースを作成した後、自分でルールを作成し、ルート フィルター オブジェクトにアタッチする必要があります。 ルート フィルター リソースを作成するには、次のコマンドを実行します。
+まず、ルート フィルターを作成します。 "New-AzRouteFilter" コマンドで作成されるのはルート フィルター リソースだけです。 このリソースを作成した後、自分でルールを作成し、ルート フィルター オブジェクトにアタッチする必要があります。 ルート フィルター リソースを作成するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
+New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
 ### <a name="2-create-a-filter-rule"></a>2.フィルター ルールを作成する
@@ -129,7 +131,7 @@ New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup
 次の例に示したように、一連の BGP コミュニティ値は、コンマ区切りで指定することができます。 次のコマンドを実行して、新しいルールを作成してください。
  
 ```azurepowershell-interactive
-$rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
+$rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
 ```
 
 ### <a name="3-add-the-rule-to-the-route-filter"></a>手順 3.ルート フィルターにルールを追加する
@@ -137,9 +139,9 @@ $rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -R
 次のコマンドを実行して、ルート フィルターにフィルター ルールを追加します。
  
 ```azurepowershell-interactive
-$routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
 $routefilter.Rules.Add($rule)
-Set-AzureRmRouteFilter -RouteFilter $routefilter
+Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
 ## <a name="attach"></a>手順 3:ルート フィルターを ExpressRoute 回線にアタッチする
@@ -147,9 +149,9 @@ Set-AzureRmRouteFilter -RouteFilter $routefilter
 Microsoft ピアリングのみの場合は、次のコマンドを実行して、ルート フィルターを ExpressRoute 回線にアタッチします。
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 $ckt.Peerings[0].RouteFilter = $routefilter 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ## <a name="tasks"></a>一般的なタスク
@@ -160,24 +162,24 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 1. 次のコマンドを実行して、ルート フィルター リソースを取得します。
 
-  ```azurepowershell-interactive
-  $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
-  ```
+   ```azurepowershell-interactive
+   $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+   ```
 2. 次のコマンドを実行して、ルート フィルター リソースに使用されているルート フィルター ルールを取得します。
 
-  ```azurepowershell-interactive
-  $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
-  $rule = $routefilter.Rules[0]
-  ```
+   ```azurepowershell-interactive
+   $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+   $rule = $routefilter.Rules[0]
+   ```
 
 ### <a name="updateproperties"></a>ルート フィルターのプロパティを更新するには
 
 既にルート フィルターが回線にアタッチされている場合、一連の BGP コミュニティ値が更新されると、必要なプレフィックス アドバタイズの変更が、確立されている BGP セッションを通じて自動的に伝達されます。 ルート フィルターに対する一連の BGP コミュニティ値は、次のコマンドで更新できます。
 
 ```azurepowershell-interactive
-$routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
 $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
-Set-AzureRmRouteFilter -RouteFilter $routefilter
+Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
 ### <a name="detach"></a>ExpressRoute 回線からルート フィルターをデタッチするには
@@ -186,7 +188,7 @@ ExpressRoute 回線からルート フィルターをデタッチした後は、
   
 ```azurepowershell-interactive
 $ckt.Peerings[0].RouteFilter = $null
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="delete"></a>ルート フィルターを削除するには
@@ -194,7 +196,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 削除できるのは、いずれの回線にもアタッチされていないルート フィルターだけです。 削除する前に、ルート フィルターが回線にアタッチされていないことを確認してください。 ルート フィルターを削除するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-Remove-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
+Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 ```
 
 ## <a name="next-steps"></a>次の手順

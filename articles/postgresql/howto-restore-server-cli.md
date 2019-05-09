@@ -1,18 +1,18 @@
 ---
 title: Azure Database for PostgreSQL のサーバーをバックアップして復元する方法
 description: Azure CLI を使用して、Azure Database for PostgreSQL のサーバーをバックアップおよび復元する方法について説明します。
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 93bece582975f5149ea8ab5cb85d4d508613d066
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536357"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349792"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
 
@@ -47,7 +47,7 @@ Azure Database for PostgreSQL サーバーは、復元機能が有効になる�
 サーバーのバックアップのリテンション期間は、次のようにして変更できます。
 
 ```azurecli-interactive
-az postgres server update --name mydemoserver --resource-group myresourcegroup --backup-retention-days 10
+az postgres server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
 上記の例では、mydemoserver のバックアップ リテンション期間が 10 日に変更されます。
@@ -57,7 +57,7 @@ az postgres server update --name mydemoserver --resource-group myresourcegroup -
 ## <a name="server-point-in-time-restore"></a>サーバーのポイントインタイム リストア
 サーバーを以前の状態に復元できます。 復元されたデータは新しいサーバーにコピーされ、既存のサーバーはそのまま残されます。 たとえば、今日の正午にテーブルが誤って削除された場合、正午の直前に復元できます。 その後、不足しているテーブルとデータを、サーバーの復元されたコピーから取得できます。 
 
-サーバーを復元するには、Azure CLI コマンド [az postgres server restore](/cli/azure/postgres/server#az_postgres_server_restore) を使用します。
+サーバーを復元するには、Azure CLI コマンド [az postgres server restore](/cli/azure/postgres/server) を使用します。
 
 ### <a name="run-the-restore-command"></a>復元コマンドを実行する
 
@@ -68,6 +68,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 `az postgres server restore` コマンドには、次のパラメーターが必要です。
+
 | Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
@@ -107,6 +108,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 ```
 
 `az postgres server georestore` コマンドには、次のパラメーターが必要です。
+
 | Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新しいサーバーが属するリソース グループの名前。|

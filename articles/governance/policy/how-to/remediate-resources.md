@@ -1,24 +1,25 @@
 ---
 title: 準拠していないリソースを修復する
 description: このハウツーでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 093b49bea167efb12b941f8f0baff6fbdae5be25
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: fe06e7081e4e3691aeb054985f9f2f3f6dc7d19e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312648"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794992"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
 **deployIfNotExists**に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに対して割り当てポリシーの **deployIfNotExists** 効果を実行するよう Policy に指示することによって行うことができます｡ この記事では、Policy による修復を理解して実行するために必要な手順を示します。
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>修復のセキュリティの仕組み
 
@@ -51,7 +52,7 @@ az role definition list --name 'Contributor'
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmRoleDefinition -Name 'Contributor'
+Get-AzRoleDefinition -Name 'Contributor'
 ```
 
 ## <a name="manually-configure-the-managed-identity"></a>管理対象 ID を手動で設定します。
@@ -70,23 +71,23 @@ Get-AzureRmRoleDefinition -Name 'Contributor'
 ポリシーの割り当て時に管理対象 ID を作成するには､**場所** を定義して､**AssignIdentity** を使用する必要があります｡ 次の例では、組み込みポリシー **Deploy SQL DB transparent data encryption** の定義を取得して､ターゲット リソース グループを設定し、割り当てを作成しています。
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+# Login first with Connect-AzAccount if not using Cloud Shell
 
 # Get the built-in "Deploy SQL DB transparent data encryption" policy definition
-$policyDef = Get-AzureRmPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
+$policyDef = Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
 
 # Get the reference to the resource group
-$resourceGroup = Get-AzureRmResourceGroup -Name 'MyResourceGroup'
+$resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 
 # Create the assignment using the -Location and -AssignIdentity properties
-$assignment = New-AzureRmPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
+$assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
 この結果､`$assignment` 変数には管理対象 ID のプリンシパル ID とともに､ポリシー割り当てを作成するときに返される標準値が含まれます｡ この変数には `$assignment.Identity.PrincipalId` を使ってアクセスできます｡
 
 ### <a name="grant-defined-roles-with-powershell"></a>定義したロールを PowerShell を使って付与する
 
-新しい管理対象 ID に必要なロールを付与するには､Azure Active Directory からレプリケーションを完了しておく必要があります。 次の例では、レプリケーションを完了した後､**roleDefinitionIds** に対して `$policyDef` でポリシー定義を反復処理し､[New-azurermroleassignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用して､新しい管理対象 ID にロールを付与します｡
+新しい管理対象 ID に必要なロールを付与するには､Azure Active Directory からレプリケーションを完了しておく必要があります。 次の例では、レプリケーションを完了した後､**roleDefinitionIds** に対して `$policyDef` でポリシー定義を反復処理し､[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用して､新しい管理対象 ID にロールを付与します｡
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -96,7 +97,7 @@ if ($roleDefinitionIds.Count -gt 0)
 {
     $roleDefinitionIds | ForEach-Object {
         $roleDefId = $_.Split("/") | Select-Object -Last 1
-        New-AzureRmRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
+        New-AzRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
     }
 }
 ```
@@ -115,7 +116,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 編集ページで**割り当て ID** を見つけます｡ 割り当て ID は以下のような ID です。
 
-   ```
+   ```output
    /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
    ```
 
@@ -129,17 +130,19 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ## <a name="create-a-remediation-task"></a>修復タスクを作成する
 
+### <a name="create-a-remediation-task-through-portal"></a>ポータルを通じて修復タスクを作成する
+
 評価では､**deployIfNotExists** 効果を持つポリシー割り当てによって､準拠していないリソースがあるかどうかが判定されます｡ 準拠していないリソースが見つかった場合は、**修復**ページにその詳細が表示されます。 準拠していないリソースがあるポリシーの一覧には、**修復タスク** をトリガーするオプションがあります｡ このオプションは､**deployIfNotExists** テンプレートからデプロイを作成するものです。
 
 **修復タスク** を作成するには､次の手順に従います。
 
 1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
-   ![ポリシーを検索する](../media/remediate-resources/search-policy.png)
+   ![[すべてのサービス] で [ポリシー] を検索する](../media/remediate-resources/search-policy.png)
 
 1. Azure Policy ページの左側にある **[修復]** を選択します。
 
-   ![修復の選択](../media/remediate-resources/select-remediation.png)
+   ![[ポリシー] ページで [修復] を選択する](../media/remediate-resources/select-remediation.png)
 
 1. 準拠していないリソースがある **deployIfNotExists** ポリシー割り当てはすべて､**Policies to remediate**タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーをクリックします。 **新しい修復タスク**ページが開きます。
 
@@ -148,11 +151,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、**[場所]** ドロップダウンを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
 
-   ![修復 - リソースの選択](../media/remediate-resources/select-resources.png)
+   ![修復 - 修復するリソースを選択する](../media/remediate-resources/select-resources.png)
 
 1. リソースのフィルター処理を終えたら、**[修復]** をクリックして、修復タスクを開始します。 **[修復タスク]** タブに対するポリシー コンプライアンス ページが開いて、タスクの進行状況が表示されます｡
 
-   ![修復 - タスクの進行状況](../media/remediate-resources/task-progress.png)
+   ![修復 - 修復タスクの進行状況](../media/remediate-resources/task-progress.png)
 
 1. ポリシー コンプライアンス ページの **[修復タスク]** をクリックすると､進行状況の詳細が表示されます｡ 修復されているリソースの一覧と共に、タスクに使用されたフィルターが表示されます。
 
@@ -161,6 +164,32 @@ if ($roleDefinitionIds.Count -gt 0)
    ![修復 - リソース タスクのコンテキスト メニュー](../media/remediate-resources/resource-task-context-menu.png)
 
 **[修復タスク]** を使ってデプロイされたリソースは、ポリシー コンプライアンス ページの **[デプロイされたリソース]** タブに追加されます。
+
+### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLI を通じて修復タスクを作成する
+
+Azure CLI を使用して**修復タスク** を作成するには、`az policy remediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** ポリシー割り当て ID に置き換えます。
+
+```azurecli-interactive
+# Login first with az login if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+az policy remediation create --name myRemediation --policy-assignment '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+その他の修復コマンドや例については、[az ポリシーの修復](/cli/azure/policy/remediation) コマンドを参照してください。
+
+### <a name="create-a-remediation-task-through-azure-powershell"></a>Azure PowerShell を通じて修復タスクを作成する
+
+Azure PowerShell を使用して**修復タスク** を作成するには、`Start-AzPolicyRemediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** ポリシー割り当て ID に置き換えます。
+
+```azurepowershell-interactive
+# Login first with Connect-AzAccount if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+その他の修復コマンドレットや例については、[Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) モジュールを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

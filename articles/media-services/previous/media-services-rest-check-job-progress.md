@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: dc78dce667bf00dd6e923b86b9859e29e4a5fde6
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a7b61ba05aea817d65e7cac991ad460d708a5ea7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035001"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294163"
 ---
 # <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
 > [!div class="op_single_selector"]
@@ -35,7 +35,6 @@ ms.locfileid: "51035001"
 
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
-
 ## <a name="check-job-progress"></a>ジョブの進行状況をチェックする
 
 要求:
@@ -48,8 +47,6 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     Host: media.windows.net
-
-
 
 応答:
 

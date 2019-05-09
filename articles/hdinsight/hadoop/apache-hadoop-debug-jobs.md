@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 86dbb6137964c00f6b98365e4891538751f17922
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: a035789af08aa4c0d877a06295d9bd6fdedf6844
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438814"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449484"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop のログを分析する
 
-Azure HDInsight 上の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、[HDInsight での Apache Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)に関するページを参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+Azure HDInsight 上の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、[HDInsight での Apache Hadoop クラスターの管理](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts)に関するページを参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
 ## <a name="logs-written-to-azure-tables"></a>Azure テーブルに書き込まれたログ
 
@@ -99,7 +99,7 @@ Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en
     フィルターの作成の詳細については、「 [テーブル デザイナー用のフィルター文字列の作成](../../vs-azure-tools-table-designer-construct-filter-strings.md)」を参照してください。
 
 ## <a name="logs-written-to-azure-blob-storage"></a>Azure Blob Storage に書き込まれたログ
-[Azure テーブルに書き込まれたログ](#log-written-to-azure-tables)は、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。 ただし、これらのテーブルには、問題の発生時にその問題をさらに掘り下げるのに役立つ、タスク レベルのログがありません。 HDInsight クラスターは、この次のレベルの詳細を提供するために、Templeton を使用して送信されるジョブのタスク ログを Blob Storage アカウントに書き込むように構成されています。 実質的に、これは、Microsoft Azure PowerShell コマンドレットまたは .NET Job Submission API を使用して送信されるジョブを意味します。RDP/コマンドライン アクセスを介してクラスターに送信されるジョブではありません。 
+Azure テーブルに書き込まれたログは、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。 ただし、これらのテーブルには、問題の発生時にその問題をさらに掘り下げるのに役立つ、タスク レベルのログがありません。 HDInsight クラスターは、この次のレベルの詳細を提供するために、Templeton を使用して送信されるジョブのタスク ログを Blob Storage アカウントに書き込むように構成されています。 実質的に、これは、Microsoft Azure PowerShell コマンドレットまたは .NET Job Submission API を使用して送信されるジョブを意味します。RDP/コマンドライン アクセスを介してクラスターに送信されるジョブではありません。 
 
 ログを表示するには、「[Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](../hdinsight-hadoop-access-yarn-app-logs-linux.md)」を参照してください。
 
@@ -315,6 +315,5 @@ Azure Portal から、HDInsight HBase クラスター名をクリックし、ク
 
 ## <a name="next-steps"></a>次の手順
 
-* [HDInsight で Apache Ambari ビューを使用して Apache Tez ジョブをデバッグする](../hdinsight-debug-ambari-tez-view.md)
 * [Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Apache Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)

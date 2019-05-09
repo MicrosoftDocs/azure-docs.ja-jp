@@ -9,35 +9,37 @@ ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/13/2018
-ms.openlocfilehash: c41ac2246386b8838d1310a9cd5c03dd0cf5d8e4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b463946402eee40d0de0942eeaf37a6f9ea59990
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244510"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083064"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Visual Studio を使用して Azure Data Lake Analytics アカウントを作成し、[U-SQL](data-lake-analytics-u-sql-get-started.md) でジョブを定義し、Data Lake Analytics サービスにジョブを送信する方法について説明します。 Data Lake Analytics の詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+Azure Data Lake および Stream Analytics ツールには、Azure Data Lake Analytics と Azure Stream Analytics という 2 つの Azure サービスに関する機能が含まれています。 Azure Stream Analytics シナリオの詳細については、[Visual Studio 用 Azure Stream Analytics ツール](../stream-analytics/stream-analytics-tools-for-visual-studio-install.md)に関するページを参照してください。
 
->[!IMPORTANT]
+この記事では、Visual Studio を使用して Azure Data Lake Analytics アカウントを作成し、[U-SQL](data-lake-analytics-u-sql-get-started.md) でジョブを定義して、Data Lake Analytics サービスにジョブを送信する方法について説明します。 Data Lake Analytics の詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+
+> [!IMPORTANT]
 > Microsoft では、Azure Data Lake Tools for Visual Studio バージョン 2.3.3000.4 以降にアップグレードすることをお勧めしています。 以前のバージョンはダウンロードできなくなり、非推奨になっています。 
->
->**必要な操作**
->
->1. Azure Data Lake Tools for Visual Studio 2.3.3000.4 より前のバージョンを使用していないかどうかを確認します。 
->   
->   ![ツールのバージョンを確認する](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-about-data-lake.png)
 > 
->2. バージョンが 2.3.3000.4 より前の場合は、ダウンロード センターにアクセスして、Azure Data Lake Tools for Visual Studio を更新します。 
+> **必要な操作**
+> 
+> 1. Azure Data Lake Tools for Visual Studio 2.3.3000.4 より前のバージョンを使用していないかどうかを確認します。 
+> 
+>    ![ツールのバージョンを確認する](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-about-data-lake.png)
+> 
+> 2. バージョンが 2.3.3000.4 より前の場合は、ダウンロード センターにアクセスして、Azure Data Lake Tools for Visual Studio を更新します。 
 >    - [Visual Studio 2017 の場合](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
 >    - [Visual Studio 2013 および 2015 の場合](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Visual Studio**: Express を除くすべてのエディションがサポートされます。
+* **Visual Studio**:Express を除くすべてのエディションがサポートされます。
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013

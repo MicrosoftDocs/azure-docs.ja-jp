@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 01/03/2019
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: c0672ddb3e6791fae3b9b8c04e9ff98827c9e22f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256733"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58881734"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
@@ -57,7 +57,7 @@ AzCopy を使用して BLOB をダウンロードするいくつかの方法を�
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
-フォルダー `C:\myfolder` が存在しない場合、AzCopy によってフォルダーが作成され、この新しいフォルダーに `abc.txt ` がダウンロードされます。
+フォルダー `C:\myfolder` が存在しない場合、AzCopy によってフォルダーが作成され、この新しいフォルダーに `abc.txt` がダウンロードされます。
 
 ### <a name="download-a-single-blob-from-the-secondary-region"></a>セカンダリ リージョンから 1 つの BLOB をダウンロードする
 
@@ -448,9 +448,9 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.core.windows.net/mytab
 
 オプション `/EntityOperation` は、エンティティをテーブルに挿入する方法を示します。 次のいずれかの値になります。
 
-* `InsertOrSkip`: テーブルにエンティティが存在する場合はスキップし、存在しない場合は新しいエンティティを挿入します。
-* `InsertOrMerge`: テーブルにエンティティが存在する場合はマージし、存在しない場合は新しいエンティティを挿入します。
-* `InsertOrReplace`: テーブルにエンティティが存在する場合は置換し、存在しない場合は新しいエンティティを挿入します。
+* `InsertOrSkip`:テーブルにエンティティが存在する場合はスキップし、存在しない場合は新しいエンティティを挿入します。
+* `InsertOrMerge`:テーブルにエンティティが存在する場合はマージし、存在しない場合は新しいエンティティを挿入します。
+* `InsertOrReplace`:テーブルにエンティティが存在する場合は置換し、存在しない場合は新しいエンティティを挿入します。
 
 インポート シナリオでは、オプション `/PKRS` を指定できません。 同時操作を開始するためにオプション `/PKRS` を指定する必要があるエクスポート シナリオとは違って、テーブルをインポートすると、AzCopy の既定で同時操作が開始されます。 開始される同時操作の既定数は、コア プロセッサの数と同じです。ただし、オプション `/NC` を使用して別の同時操作数を指定できます。 詳細については、コマンド ラインに「 `AzCopy /?:NC` 」と入力してください。
 
@@ -458,7 +458,7 @@ AzCopy は、CSV ではなく、JSON のインポートのみをサポートし�
 
 ### <a name="import-entities-into-a-table-from-blob-storage"></a>Blob Storage からテーブルにエンティティをインポートする
 
-BLOB コンテナーに、Azure Table を表す JSON ファイルと、それに付随するマニフェスト ファイルが含まれるとします。
+BLOB コンテナーに、Azure を表す JSON ファイルと、それに付随するマニフェスト ファイルが含まれるとします。
 
     myaccount_mytable_20140103T112020.manifest
     myaccount_mytable_20140103T112020_0_0_0AF395F1DC42E952.json
@@ -642,13 +642,13 @@ AzCopy は、コンテンツの種類とファイル拡張子のマッピング�
 
 コピー元となるソース データを指定します。 ソースには、ファイル システムのディレクトリ、BLOB コンテナー、BLOB 仮想ディレクトリ、ストレージ ファイル共有、ストレージ ファイルのディレクトリ、または Azure テーブルを指定できます。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="destdestination"></a>/Dest:"destination"
 
 コピー先を指定します。 コピー先には、ファイル システムのディレクトリ、BLOB コンテナー、BLOB 仮想ディレクトリ、ストレージ ファイル共有、ストレージ ファイル ディレクトリ、または Azure テーブルを指定できます。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="patternfile-pattern"></a>/Pattern:"file-pattern"
 
@@ -664,13 +664,13 @@ AzCopy では、/Source が BLOB コンテナーまたは BLOB 仮想ディレ�
 
 ファイル パターンが指定されていない場合に使用される既定のファイル パターンは、*.* です。 また、Azure Storage 上の場所の場合は空のプレフィックスです。 複数のファイル パターンを指定することはサポートされていません。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="destkeystorage-key"></a>/DestKey:"storage-key"
 
 宛先リソースのストレージのアカウント キーを指定します。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="destsassas-token"></a>/DestSAS:"sas-token"
 
@@ -680,13 +680,13 @@ AzCopy では、/Source が BLOB コンテナーまたは BLOB 仮想ディレ�
 
 ソースと宛先がどちらも BLOB の場合は、宛先 BLOB がソース BLOB と同じストレージ アカウント内に存在している必要があります。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="sourcekeystorage-key"></a>/SourceKey:"storage-key"
 
 ソース リソースのストレージのアカウント キーを指定します。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="sourcesassas-token"></a>/SourceSAS:"sas-token"
 
@@ -696,29 +696,29 @@ AzCopy では、/Source が BLOB コンテナーまたは BLOB 仮想ディレ�
 
 ソースがファイル共有またはテーブルの場合は、キーまたは SAS を指定する必要があります。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="s"></a>/S
 
 コピー操作の再帰モードを指定します。 再帰モードでは、AzCopy は指定のファイル パターンに一致するすべての BLOB またはファイル (サブフォルダー内を含む) をコピーします。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="blobtypeblock--page--append"></a>/BlobType:"block" | "page" | "append"
 
 宛先 BLOB がブロック BLOB、ページ BLOB、追加 BLOB のどれであるかを指定します。 このオプションは、BLOB をアップロードする場合にのみ適用されます。 それ以外の場合は、エラーが発生します。 宛先が BLOB で、このオプションが指定されていない場合、既定では AzCopy によってブロック BLOB が作成されます。
 
-**適用対象:** BLOB
+**適用先:** BLOB
 
 ### <a name="checkmd5"></a>/CheckMD5
 
-ダウンロードするデータの MD5 ハッシュを計算し、BLOB に格納されている MD5 ハッシュまたはファイルの Content-MD5 プロパティが計算したハッシュに一致するかどうかを検証します。 MD5 チェックは既定では無効になっているため、MD5 チェックを実行するにはデータのダウンロード時にこのオプションを指定する必要があります。
+ダウンロードするデータの MD5 ハッシュを計算し、BLOB に格納されている MD5 ハッシュまたはファイルの Content-MD5 プロパティが計算したハッシュに一致するかどうかを検証します。 値が一致しない場合、AzCopy によるデータのダウンロードは失敗します。 MD5 チェックは既定では無効になっているため、MD5 チェックを実行するにはデータのダウンロード時にこのオプションを指定する必要があります。
 
-Azure ストレージでは、BLOB またはファイルに対して格納される MD5 ハッシュが最新であることは保証されません。 BLOB またはファイルが変更された場合、MD5 の更新はクライアントの責任で行う必要があります。
+Azure ストレージでは、BLOB またはファイルに対して格納される MD5 ハッシュが最新であることは保証されません。 BLOB またはファイルが変更された場合、MD5 の更新はクライアントの責任で行う必要があります。 ディスク イメージ (マネージドまたはアンマネージド ディスク) の場合、Azure VM では、ディスクの内容が変更されたときに MD5 値は更新されません。このため、ディスク イメージのダウンロード時に /CheckMD5 によってエラーがスローされます。
 
-AzCopy は、Azure BLOB またはファイルをサービスにアップロードした後、常にその Content-MD5 プロパティを設定します。  
+AzCopy v8 では、Azure BLOB またはファイルをサービスにアップロードした後、常に Content-MD5 プロパティが設定されます。  
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="snapshot"></a>/Snapshot
 
@@ -728,7 +728,7 @@ AzCopy は、Azure BLOB またはファイルをサービスにアップロー�
 
 スナップショットは既定ではコピーされません。
 
-**適用対象:** BLOB
+**適用先:** BLOB
 
 ### <a name="vverbose-log-file"></a>/V:[verbose-log-file]
 
@@ -736,7 +736,7 @@ AzCopy は、Azure BLOB またはファイルをサービスにアップロー�
 
 既定では、詳細なログ ファイル名は AzCopyVerbose.log で、 `%LocalAppData%\Microsoft\Azure\AzCopy`に出力されます。 このオプションで既存のファイルの場所を指定すると、そのファイルに詳細なログが追加されます。  
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="zjournal-file-folder"></a>/Z:[journal-file-folder]
 
@@ -754,7 +754,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 以前のバージョンの AzCopy で作成されたジャーナル ファイルによる操作の再開はサポートされていません。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="parameter-file"></a>/@:"parameter-file"
 
@@ -766,13 +766,13 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 複数の応答ファイルを指定できます。 ただし、入れ子になった応答ファイルはサポートされません。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="y"></a>/Y
 
 AzCopy のすべての確認プロンプトを表示しません。 このオプションは、/XO および /XN が指定されていいない場合、データ アップロード シナリオでの書き込み専用 SAS トークンの使用も許可します。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="l"></a>/L
 
@@ -784,30 +784,30 @@ AzCopy のすべての確認プロンプトを表示しません。 このオプ
 
 AzCopy では、このオプションを使用するときに、このソースの場所の LIST および READ アクセス許可が必要です。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="mt"></a>/MT
 
 ダウンロードしたファイルの最後の変更時刻をソースの BLOB またはファイルと同じ値に設定します。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="xn"></a>/XN
 
 新しいソース リソースを除外します。 ソースが最後に変更された時刻が宛先と同じか、それよりも後である場合、リソースはコピーされません。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="xo"></a>/XO
 古いソース リソースを除外します。 ソースが最後に変更された時刻が宛先と同じか、それよりも前である場合、リソースはコピーされません。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="a"></a>/A
 
 Archive 属性が設定済みのファイルのみアップロードします。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="iarashcnetoi"></a>/IA:[RASHCNETOI]
 
@@ -826,7 +826,7 @@ Archive 属性が設定済みのファイルのみアップロードします。
 * O = オフラインのファイル
 * I = インデックス付きでないファイル
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="xarashcnetoi"></a>/XA:[RASHCNETOI]
 
@@ -845,7 +845,7 @@ Archive 属性が設定済みのファイルのみアップロードします。
 * O = オフラインのファイル
 * I = インデックス付きでないファイル
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="delimiterdelimiter"></a>/Delimiter:"delimiter"
 
@@ -855,7 +855,7 @@ BLOB 名で仮想ディレクトリを区切るために使用する区切り文
 
 このオプションは BLOB のダウンロードのみに適用されます。
 
-**適用対象:** BLOB
+**適用先:** BLOB
 
 ### <a name="ncnumber-of-concurrent-operations"></a>/NC:"number-of-concurrent-operations"
 
@@ -865,19 +865,19 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 同時操作の上限は 512 です。
 
-**適用対象:** BLOB、ファイル、テーブル
+**適用先:** BLOB、ファイル、テーブル
 
 ### <a name="sourcetypeblob--table"></a>/SourceType:"Blob" | "Table"
 
 `source` リソースが、ストレージ エミュレーターで実行されている、ローカル開発環境で利用可能な BLOB であると指定します。
 
-**適用対象:** BLOB、テーブル
+**適用先:** BLOB、テーブル
 
 ### <a name="desttypeblob--table"></a>/DestType:"Blob" | "Table"
 
 `destination` リソースが、ストレージ エミュレーターで実行されている、ローカル開発環境で利用可能な BLOB であると指定します。
 
-**適用対象:** BLOB、テーブル
+**適用先:** BLOB、テーブル
 
 ### <a name="pkrskey1key2key3"></a>/PKRS:"key1#key2#key3#..."
 
@@ -893,7 +893,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
   [bb, last-partition-key]
 
-**適用対象:** テーブル
+**適用先:** テーブル
 
 ### <a name="splitsizefile-size"></a>/SplitSize:"file-size"
 
@@ -903,7 +903,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 テーブル データを BLOB にエクスポートする場合、エクスポートされるファイルのサイズが BLOB サイズの上限である 200 GB に達していると、このオプションが指定されていなくても、エクスポートされるファイルが分割されます。
 
-**適用対象:** テーブル
+**適用先:** テーブル
 
 ### <a name="entityoperationinsertorskip--insertormerge--insertorreplace"></a>/EntityOperation:"InsertOrSkip" | "InsertOrMerge" | "InsertOrReplace"
 
@@ -913,7 +913,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 * InsertOrMerge - テーブルにエンティティが存在する場合はマージし、存在しない場合は新しいエンティティを挿入します。
 * InsertOrReplace - テーブルにエンティティが存在する場合は置換し、存在しない場合は新しいエンティティを挿入します。
 
-**適用対象:** テーブル
+**適用先:** テーブル
 
 ### <a name="manifestmanifest-file"></a>/Manifest:"manifest-file"
 
@@ -923,7 +923,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 このオプションは、データ ファイルを検索するためのインポート操作中に必要です。
 
-**適用対象:** テーブル
+**適用先:** テーブル
 
 ### <a name="synccopy"></a>/SyncCopy
 
@@ -933,7 +933,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 このオプションは、ファイルを BLOB ストレージ内またはファイル ストレージ内でコピーする場合や、BLOB ストレージからファイル ストレージ、またはファイル ストレージから BLOB ストレージにコピーする場合に使用できます。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="setcontenttypecontent-type"></a>/SetContentType:"content-type"
 
@@ -943,7 +943,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 このオプションで値を指定しない場合、AzCopy は各 BLOB またはファイルのコンテンツの種類をそのファイルの拡張子に応じて設定します。
 
-**適用対象:** BLOB、ファイル
+**適用先:** BLOB、ファイル
 
 ### <a name="payloadformatjson--csv"></a>/PayloadFormat:"JSON" | "CSV"
 
@@ -951,7 +951,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 このオプションが指定されていない場合、AzCopy では既定で JSON 形式でテーブル データ ファイルがエクスポートされます。
 
-**適用対象:** テーブル
+**適用先:** テーブル
 
 ## <a name="known-issues-and-best-practices"></a>既知の問題とベスト プラクティス
 
@@ -981,7 +981,7 @@ AzCopy はオブジェクトをコピーするときに、既定で .NET MD5 実
 * True - 既定値。AzCopy は .NET MD5 実装を使用します。
 * False – AzCopy は FIPS に準拠している MD5 アルゴリズムを使用します。
 
-Windows では FIPS に準拠しているアルゴリズムが既定で無効になります。 マシンでこのポリシー設定を変更することができます。 [実行] ウィンドウ (Windows+R) で、「secpol.msc」と入力して **[ローカル セキュリティ ポリシー]** ウィンドウを開きます。 **[セキュリティの設定]** ウィンドウで **[セキュリティの設定]**  >  **[ローカル ポリシー]**  >  **[セキュリティ オプション]** に移動します。 **[システム暗号化: 暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う]** ポリシーを探します。 ポリシーをダブルクリックして、**[セキュリティの設定]** 列に表示された値を確認します。
+Windows では FIPS に準拠しているアルゴリズムが既定で無効になります。 マシンでこのポリシー設定を変更することができます。 [実行] ウィンドウ (Windows+R) で、「secpol.msc」と入力して **[ローカル セキュリティ ポリシー]** ウィンドウを開きます。 **[セキュリティの設定]** ウィンドウで **[セキュリティの設定]**  >  **[ローカル ポリシー]**  >  **[セキュリティ オプション]** に移動します。 **[システム暗号化:暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う]** ポリシーを探します。 ポリシーをダブルクリックして、**[セキュリティの設定]** 列に表示された値を確認します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -997,10 +997,10 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 
 ### <a name="azure-storage-blog-posts"></a>Azure Storage に関するブログの投稿:
 * [Azure Storage Data Movement Library プレビューの概要](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [AzCopy: Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy: Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](https://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy - Support for read-access geo-redundant storage (AzCopy - 地理冗長ストレージの読み取りアクセスのサポート)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [AzCopy - Transfer data with restartable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [AzCopy:Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [AzCopy:Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy:Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [AzCopy:Support for read-access geo-redundant storage (AzCopy: geo 冗長ストレージの読み取りアクセスのサポート)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [AzCopy:Transfer data with restartable mode and SAS token (AzCopy: 再起動可能モードまたは SAS トークンを使用したデータの転送)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy:Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy:Uploading/downloading files for Azure Blobs (AzCopy: Azure BLOB に対するファイルのアップロードおよびダウンロード)](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

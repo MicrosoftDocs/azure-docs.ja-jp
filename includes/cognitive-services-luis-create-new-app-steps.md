@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 3d28c12bdcfee9b96f93417b720b2bb90dde9f29
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 589569ac1f7b3ff44880062cee235c3aa4375011
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755664"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738923"
 ---
 1. URL が [https://www.luis.ai](https://www.luis.ai) の LUIS ポータルにサインインします。 
 

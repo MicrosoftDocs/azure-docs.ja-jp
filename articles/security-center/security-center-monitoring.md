@@ -4,7 +4,7 @@ description: この記事は、Azure Security Center でリソースを監視す
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0bbf67f728f7090c89d379f7b63474788d70a46c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 28b4667a9ceb4b3534d85ba28668f06c750e22c5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338602"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112259"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Azure Security Center を使用してセキュリティ体制を強化する
 この記事は、セキュリティ体制を強化するために役立ちます。 リソースのセキュリティを可能な限り厳密にしたり、ポリシーへの準拠を監視したりするには、Azure Security Center の監視機能を使用します。
@@ -49,8 +49,8 @@ ms.locfileid: "53338602"
 ## <a name="see-also"></a>関連項目
 この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure Security Center でセキュリティ設定を構成する方法について説明します。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md):セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md):パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md):このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/):Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md): Azure Security Center でセキュリティ設定を構成する方法について説明します。
+* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
+* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
+* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md): このサービスの使用に関してよく寄せられる質問が記載されています。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9fe644b7cc7d1a13cb9ed2f7016f25b3e346dfb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233176"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313137"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux 用 SMT サーバーの設定
 SAP HANA の L インスタンスは、インターネットに直接接続していません。 このようなユニットをオペレーティング システム プロバイダーに登録し、更新プログラムをダウンロードして適用するのは、簡単なプロセスではありません。 SUSE Linux の場合の解決策は、Azure 仮想マシンに SMT サーバーを設定することです。 仮想マシンは、HANA L インスタンスに接続されている Azure 仮想ネットワークでホストする必要があります。 HANA L インスタンス ユニットは、このような SMT サーバーを使用して登録や更新プログラムのダウンロードを実行できます。 
@@ -84,7 +84,7 @@ Resolving package dependencies...
 ![YAST の SMT のスクリーンショット](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-smtserver にインストールするための選択内容をそのまま使用します。 インストールが完了したら、SMT サーバー構成に移動します。 SUSE Customer Center で先ほど取得した組織の資格情報を入力します。 また、SMT サーバーの URL として、Azure 仮想マシンのホスト名を入力します。 このデモでは、これは https://smtserver です。
+smtserver にインストールするための選択内容をそのまま使用します。 インストールが完了したら、SMT サーバー構成に移動します。 SUSE Customer Center で先ほど取得した組織の資格情報を入力します。 また、SMT サーバーの URL として、Azure 仮想マシンのホスト名を入力します。 このデモでは、これは https:\//smtserver です。
 
 ![SMT サーバー構成のスクリーンショット](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

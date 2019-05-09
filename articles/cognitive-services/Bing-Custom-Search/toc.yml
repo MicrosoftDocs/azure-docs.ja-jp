@@ -5,6 +5,9 @@ items:
   items:
   - name: Bing Custom Search API とは
     href: overview.md
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
   expanded: true
 - name: クイック スタート
   items:
@@ -26,6 +29,8 @@ items:
       items:
       - name: C# の使用
         href: sdk-csharp-quick-start.md
+      - name: Python の使用
+        href: sdk-python-quickstart.md
   expanded: true
 - name: チュートリアル
   items:
@@ -66,7 +71,8 @@ items:
   - name: Bing Custom Video Search API リファレンス
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference
   - name: Bing Search API の利用と表示の要件
-    href: use-and-display-requirements.md
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
   - name: SDK
     items:
     - name: .NET
@@ -105,9 +111,9 @@ items:
     href: endpoint-custom.md
   - name: 言語とリージョンのサポート
     href: language-support.md
-ms.openlocfilehash: d027f3483be960381964071fda7124c79ea31a10
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: eee327b77fa3c0d46d47bb3ac6644fb175249618
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789349"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568892"

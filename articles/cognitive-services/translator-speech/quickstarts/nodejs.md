@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: Node.js での Translator Speech API'
+title: クイック スタート:Translator Speech API (Node.js)
 titlesuffix: Azure Cognitive Services
 description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3db4e242ad630949533823c22a16587daa4f9786
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: b79ca4ed259b561fadc4b7fa644b5c136192bb7f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389702"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671728"
 ---
-# <a name="quickstart-translator-speech-api-with-nodejs"></a>クイック スタート: Node.js での Translator Speech API 
+# <a name="quickstart-translator-speech-api-with-nodejs"></a>クイック スタート:Translator Speech API (Node.js)
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -30,7 +31,7 @@ ms.locfileid: "49389702"
 
 Node.js 用の [Websocket パッケージ](https://www.npmjs.com/package/websocket)をインストールする必要があります。
 
-下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。 このような .wav ファイルは、[Text to Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech) から取得できます。
+下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。 このような .wav ファイルは、[Text to Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) から取得できます。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft Translator Speech API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 
@@ -68,7 +69,7 @@ let uri = host + path + params;
 
 /* The input .wav file is in PCM 16bit, 16kHz, mono format.
 You can obtain such a .wav file using the Text to Speech API. See:
-https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech
+https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis
 */
 let input_path = 'speak.wav';
 
@@ -106,7 +107,7 @@ https://stackoverflow.com/questions/44473868/node-js-fs-writefile-err-returns-nu
 }
 
 function send(connection, filename) {
-    
+
     var myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
         frequency: 100,
         chunkSize: 32000
@@ -135,12 +136,12 @@ function connect() {
     ws.on('connectFailed', function (error) {
         console.log('Connection error: ' + error.toString());
     });
-                            
+
     ws.on('connect', function (connection) {
         console.log('Connected.');
 
         connection.on('message', receive);
-        
+
         connection.on('close', function (reasonCode, description) {
             console.log('Connection closed: ' + reasonCode);
         });
@@ -148,7 +149,7 @@ function connect() {
         connection.on('error', function (error) {
             console.log('Connection error: ' + error.toString());
         });
-        
+
         send(connection, input_path);
     });
 
@@ -169,7 +170,7 @@ connect();
 > [!div class="nextstepaction"]
 > [Translator Speech のチュートリアル](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
 [Translator Speech の概要](../overview.md)
 [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

@@ -2,19 +2,19 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 09/06/2018
-ms.author: raynew
+ms.date: 02/28/2019
+ms.author: mayg
 ms.custom: include file
-ms.openlocfilehash: 2ca4916d48da6fe8a2c061056a1ea0fed9a78bb6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7c682105113dac7c1d457489cf926210ead77993
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44058266"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57343565"
 ---
 1. 統合セットアップ インストール ファイルを実行します。
 2. **[開始する前に]** で **[Install the configuration server and process server]\(構成サーバーとプロセス サーバーをインストールする\)** を選択します。
@@ -43,7 +43,7 @@ ms.locfileid: "44058266"
 9. **[インストール場所]** で、バイナリをインストールしキャッシュを格納する場所を選択します。 選択するドライブには使用可能なディスク領域が 5 GB 以上必要ですが、600 GB 以上の空き領域があるキャッシュ ドライブを使用することをお勧めします。
 
     ![インストール場所](./media/site-recovery-add-configuration-server/combined-wiz8.png)
-10. **[ネットワークの選択]** で、構成サーバーがレプリケーション データを送受信するリスナー (ネットワーク アダプターと SSL ポート) を指定します。 既定では、ポート 9443 がレプリケーション トラフィックの送受信用に使用されます。このポート番号は、実際の環境の要件に合わせて変更できます。 ポート 9443 に加え、ポート 443 も開きます。このポートは、Web サーバーがレプリケーション操作を調整するために使用されます。 ポート 443 はレプリケーション トラフィックの送受信用に使用しないでください。
+10. **[ネットワークの選択]** で、最初に、モビリティ サービスの検出とソース マシンへのプッシュ インストールのために組み込みプロセス サーバーによって使用される NIC を選択し、次に、構成サーバーによって Azure との接続に使用される NIC を選択します。 既定では、ポート 9443 がレプリケーション トラフィックの送受信用に使用されます。このポート番号は、実際の環境の要件に合わせて変更できます。 ポート 9443 に加え、ポート 443 も開きます。このポートは、Web サーバーがレプリケーション操作を調整するために使用されます。 ポート 443 はレプリケーション トラフィックの送受信用に使用しないでください。
 
     ![[ネットワークの選択]](./media/site-recovery-add-configuration-server/combined-wiz9.png)
 

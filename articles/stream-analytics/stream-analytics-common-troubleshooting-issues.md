@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: a2c7ceae342124f06fcfe8dc18b1a69f7176f4e1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0191c56e1140870b1710b48c4fa1189fd92a337b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090977"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521477"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Stream Analytics での一般的な問題とトラブルシューティングの手順
 
@@ -26,7 +26,7 @@ ms.locfileid: "53090977"
 
 ![Azure Stream Analytics ダッシュボードの [入力] タイル](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-詳細な情報を確認するには、診断ログを有効にして警告の詳細を表示します。 間違った形式の入力イベントの場合、実行ログには次のようなメッセージを持つエントリが含まれます。"メッセージ:リソース <blob URI> からの入力イベントを json として逆シリアル化できませんでした"。 
+詳細な情報を確認するには、診断ログを有効にして警告の詳細を表示します。 間違った形式の入力イベントの場合、実行ログには次のようなメッセージを持つエントリが含まれます。"メッセージ:リソース \<blob URI> からの入力イベントを json として逆シリアル化できませんでした。" 
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 

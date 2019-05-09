@@ -5,15 +5,15 @@ services: iot-hub
 ms.service: iot-hub
 author: dominicbetts
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 02/17/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3cdfa74c5f124e57b125399e39b7981b1dfb6d09
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 69fdc6cf678107ef64ea1fe7b819738fd4a4ff4f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43100230"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56740862"
 ---
 ## <a name="customize-and-extend-the-device-management-actions"></a>デバイス管理操作のカスタマイズと拡張を行う
 
@@ -27,10 +27,6 @@ IoT ソリューションでは、定義された一連のデバイス管理パ�
 
 このチュートリアルでは、ダイレクト メソッドを使用して、デバイスのリモート再起動をトリガーしました。 報告されるプロパティを使用してデバイスの最後の再起動時間を報告し、デバイス ツインのクエリを実行してクラウドからデバイスの最後の再起動時間を検出しました。
 
-ファームウェアのリモートでのワイヤレス更新などの IoT Hub による他のデバイス管理パターンを確認するには、次の記事を参照してください。
+IoT Hub およびリモートによるファームウェアのワイヤレス更新などの他のデバイス管理パターンを確認するには、[ファームウェアの更新方法](../articles/iot-hub/tutorial-firmware-update.md)に関するページを参照してください
 
-[チュートリアル: ファームウェアを更新する方法](../articles/iot-hub/tutorial-firmware-update.md)
-
-IoT ソリューションの拡張と複数のデバイスでのメソッドの呼び出しをスケジュールする方法については、「[ジョブのスケジュールとブロードキャスト](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)」チュートリアルを参照してください。
-
-引き続き IoT Hub の使用方法を確認するには、[IoT Edge の使用](../articles/iot-edge/tutorial-simulate-device-linux.md)に関する記事を参照してください。
+IoT ソリューションの拡張と複数のデバイスでのメソッドの呼び出しをスケジュールする方法については、[ジョブのスケジュールとブロードキャスト](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)に関するページを参照してください。

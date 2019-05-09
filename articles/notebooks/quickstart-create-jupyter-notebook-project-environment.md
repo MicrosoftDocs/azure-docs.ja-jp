@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 9e5f4d6f2086048e428f313bc49cc6f599ee1bec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 368bc0402e56479ad8696ca9ed0702f246a670bd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085333"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59262008"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>クイック スタート:カスタム環境でのプロジェクトの作成
 

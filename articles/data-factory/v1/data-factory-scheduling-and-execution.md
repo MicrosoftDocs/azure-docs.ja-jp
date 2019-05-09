@@ -9,17 +9,16 @@ ms.assetid: 088a83df-4d1b-4ac1-afb3-0787a9bd1ca5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: bd8b682e073e86bb824d31d6ebab20a80f807730
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054604"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817430"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 > [!NOTE]
@@ -62,7 +61,7 @@ ms.locfileid: "37054604"
 ## <a name="specify-schedule-for-a-dataset"></a>データセットのスケジュールの指定
 Data Factory パイプラインのアクティビティは 0 個以上の入力**データセット**を受け取り、1 個以上の出力データセットを生成できます。 アクティビティでは、データセット定義の **availability** セクションを使用して、入力データを利用できる、または出力データが生成されるパターンを指定できます。 
 
-**availability** セクションの **frequency** には、時間単位を指定します。 frequency に指定できる値は、Minute、Hour、Day、Week、Month です。 availability セクションの **interval** プロパティには、frequency の乗数を指定します。 たとえば、出力データセットの frequency が Day に、interval が 1 に設定されている場合、出力データが毎日生成されます。 frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします。 
+**availability** セクションの **frequency** には、時間単位を指定します。 frequency の許容値は、Minute、Hour、Day、Week、および Month です。 availability セクションの **interval** プロパティには、frequency の乗数を指定します。 たとえば、出力データセットの frequency が Day に、interval が 1 に設定されている場合、出力データが毎日生成されます。 frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします。 
 
 次の例では、入力データを 1 時間ごとに利用でき、出力データが 1 時間ごとに生成されます (`"frequency": "Hour", "interval": 1`)。 
 
@@ -175,7 +174,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 
 現在のスライスに関連付けられた時間間隔にアクセスするには、データセット JSON で変数 [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) と [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables) を使用します。 同様に、アクティビティ ウィンドウに関連付けられている時間間隔には、WindowStart と WindowEnd を使用してアクセスできます。 アクティビティのスケジュールは、アクティビティの出力データセットのスケジュールと一致する必要があります。 そのため、SliceStart と SliceEnd の値はそれぞれ WindowStart と WindowEnd の値と同じです。 これらの変数の詳細については、[Data Factory の関数およびシステム変数](data-factory-functions-variables.md#data-factory-system-variables)に関する記事を参照してください。  
 
-アクティビティ JSON では、これらの変数をさまざまな目的で使用します。 たとえば、これらの変数を使用して、入出力データセットから時系列データを表すデータ (例: 午前 8 時～午前 9 時) を選択することができます。 この例でも **WindowStart** と **WindowEnd** を使用して、アクティビティ実行の関連データを選択し、適切な **folderPath** を持つ BLOB にコピーします。 **folderPath** は、1 時間ごとに個別のフォルダーを使用するようにパラメーター化されています。  
+アクティビティ JSON では、これらの変数をさまざまな目的で使用します。 たとえば、これらの変数を使用して、入出力データセットから時系列データを表すデータ (例:午前 8 時～午前 9 時) を選択できます。 この例でも **WindowStart** と **WindowEnd** を使用して、アクティビティ実行の関連データを選択し、適切な **folderPath** を持つ BLOB にコピーします。 **folderPath** は、1 時間ごとに個別のフォルダーを使用するようにパラメーター化されています。  
 
 前の例では、入力データセットと出力データセットに指定されているスケジュールは同じです (1 時間ごと)。 アクティビティの入力データセットを異なる頻度で利用できる場合 (15 分ごとなど) でも、アクティビティのスケジュールは出力データセットによって開始されるため、この出力データセットを生成するアクティビティは 1 時間に 1 回実行されます。 詳細については、「[頻度が異なるデータセットのモデル化](#model-datasets-with-different-frequencies)」を参照してください。
 
@@ -187,11 +186,11 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされている頻度</b>は、Minute、Hour、Day、Week、Month です。 |[はい] |該当なし |
-| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>注</b>: Frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |[はい] |該当なし |
+| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
+| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |NA |
 | style |スライスを間隔の始めまたは終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>frequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。 style が StartOfInterval に設定されていると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。 たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 |いいえ  |EndOfInterval |
-| anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/><b>注</b>: AnchorDateTime に頻度より細かい日付部分が含まれている場合、その部分は無視されます。 <br/><br/>たとえば、<b>間隔</b>が<b>時間単位</b> (frequency が Hour で interval が 1) で、<b>AnchorDateTime</b> に<b>分と秒</b>が含まれる場合、AnchorDateTime の<b>分と秒</b>部分は無視されます。 |いいえ  |01/01/0001 |
-| offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/><b>注</b>: anchorDateTime と offset の両方が指定されている場合、結果的にシフトが結合されます。 |いいえ  |該当なし |
+| anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/><b>メモ</b>:AnchorDateTime に frequency より細かい日付部分が含まれている場合、そのより細かい部分は無視されます。 <br/><br/>たとえば、<b>間隔</b>が<b>時間単位</b> (frequency: Hour、interval:1) で、<b>AnchorDateTime</b> に<b>分と秒</b>が含まれる場合、AnchorDateTime の<b>分と秒</b>部分は無視されます。 |いいえ  |01/01/0001 |
+| offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/><b>メモ</b>:anchorDateTime と offset の両方が指定されている場合は、結果としてシフトが結合されます。 |いいえ  |NA |
 
 ### <a name="offset-example"></a>offset 例
 既定では、毎日 (`"frequency": "Day", "interval": 1`) のスライスは UTC 時 12 AM (午前 0 時) に開始します。 開始時刻を 6 AM UTC にするには、次のスニペットに示すようにオフセットを設定します。 
@@ -235,8 +234,8 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 
 | ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ  |該当なし |
-| minimumRows | **Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ  |該当なし |
+| minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ  |NA |
+| minimumRows | **Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ  |NA |
 
 #### <a name="examples"></a>例
 **minimumSizeMB:**
@@ -271,20 +270,20 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 
 | プロパティ | 使用できる値 | 既定値 | 説明 |
 | --- | --- | --- | --- |
-| 同時実行 |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、同時実行の値を大きくするとデータ処理が速くなります。 |
+| コンカレンシー |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |
 | retry |整数<br/><br/>最大値は 10 |0 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
-| timeout |timespan |00:00:00 |アクティビティのタイムアウト。 例： 00:10:00 (タイムアウトが 10 分であることを意味します)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
-| delay |timespan |00:00:00 |スライスのデータ処理を開始する前の遅延時間を指定します。<br/><br/>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。<br/><br/>例: 00:10:00 (10 分の遅延を意味します) |
+| timeout |TimeSpan |00:00:00 |アクティビティのタイムアウト。 例:00:10:00 (10 分のタイムアウトを示す)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
+| delay |TimeSpan |00:00:00 |スライスのデータ処理を開始する前の遅延時間を指定します。<br/><br/>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。<br/><br/>例:00:10:00 (10 分の遅延を示す) |
 | longRetry |整数<br/><br/>最大値: 10 |1 |スライスの実行が失敗になるまでの、長い再試行の回数。<br/><br/>longRetry の試行は longRetryInterval の間隔で行われます。 再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。 Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry になります。<br/><br/>たとえば、アクティビティ ポリシーに次のような設定があるとします。<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>実行するスライスは 1 つだけ (ステータスは Waiting)、アクティビティ実行は毎回失敗するとします。 最初に 3 つの連続する試行があります。 試行するたびに、スライスの状態は Retry になります。 最初の 3 つの試行が終わると、スライスの状態は LongRetry になります。<br/><br/>1 時間 (longRetryInteval の値) が経過した後、再度 3 回連続して試行されます。 その後、スライスの状態は Failed になり、それ以上再試行は行われません。 したがって、全部で 6 回試行されます。<br/><br/>いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。<br/><br/>longRetry は、依存するデータがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。 このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。<br/><br/>注意: longRetry または longRetryInterval に大きい値を設定しないでください。 通常、大きな値は、その他のシステムの問題があることを意味します。 |
-| longRetryInterval |timespan |00:00:00 |長い再試行の間の遅延 |
+| longRetryInterval |TimeSpan |00:00:00 |長い再試行の間の遅延 |
 
 詳細については、[パイプライン](data-factory-create-pipelines.md)に関する記事を参照してください。 
 
 ## <a name="parallel-processing-of-data-slices"></a>データ スライスの並列処理
 パイプラインには過去の開始日を設定できます。 設定した場合、Data Factory によって過去のすべてのデータ スライスが自動的に計算 (バックフィル) され、処理が開始されます。 たとえば、開始日が 2017-04-01 のパイプラインを作成し、現在の日付が 2017-04-10 だとします。 出力データセットのパターンが 1 日ごとの場合、開始日が過去であるため、Data Factory は 2017-04-01 から 2017-04-09 までのすべてのスライスの処理をすぐに開始します。 availability セクションの style プロパティの値が既定では EndOfInterval であるため、2017-04-10 のスライスはまだ処理されません。 executionPriorityOrder の既定値が OldestFirst であるため、最も古いスライスが最初に処理されます。 style プロパティの説明については、「[データセットの可用性](#dataset-availability)」セクションを参照してください。 executionPriorityOrder セクションの説明については、「[アクティビティ ポリシー](#activity-policies)」セクションを参照してください。 
 
-アクティビティ JSON の **policy** セクションに **concurrency** プロパティを設定することで、バックフィルされたデータ スライスが並列で処理されるように構成できます。 このプロパティにより、異なるスライスで実行できる並列アクティビティ実行の数が決定します。 concurrency プロパティの既定値は 1 です。 そのため、既定では、一度に 1 つのスライスが処理されます。 最大値は 10 です。 パイプラインで大量のデータを処理する必要がある場合、同時実行の値を大きくするとデータ処理が速くなります。 
+アクティビティ JSON の **policy** セクションに **concurrency** プロパティを設定することで、バックフィルされたデータ スライスが並列で処理されるように構成できます。 このプロパティにより、異なるスライスで実行できる並列アクティビティ実行の数が決定します。 concurrency プロパティの既定値は 1 です。 そのため、既定では、一度に 1 つのスライスが処理されます。 最大値は 10 です。 パイプラインで大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 
 
 ## <a name="rerun-a-failed-data-slice"></a>失敗したデータ スライスを再実行する
 データ スライスの処理中にエラーが発生した場合、Azure Portal のブレードまたは監視と管理アプリを使用してスライスの処理が失敗した理由を調べることができます。 詳細については、[Azure Portal の各ブレードを使用したパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)に関する記事、または[監視と管理用のアプリ](data-factory-monitor-manage-app.md)に関する記事を参照してください。
@@ -321,19 +320,19 @@ Data Factory の監視および管理ツールを使用すると、失敗した�
 
 ![2 つのパイプラインでのアクティビティの連鎖](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
 
-例については、付録の[順次コピー](#copy-sequentially)に関するセクションを参照してください。
+例については、付録の順次コピーに関するセクションを参照してください。
 
 ## <a name="model-datasets-with-different-frequencies"></a>頻度が異なるデータセットのモデル化
 各サンプルでは、入力および出力データセットとアクティビティ スケジュール ウィンドウの頻度は同じでした。 シナリオによっては、1 つまたは複数の入力の頻度とは異なる頻度で出力を生成できる必要があります。 Data Factory は、このようなシナリオのモデル化をサポートしています。
 
-### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>サンプル 1: 毎時取得できる入力データの出力レポートを 1 日に 1 回生成する
+### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>サンプル 1:毎時取得できる入力データの出力レポートを 1 日に 1 回生成する
 センサーからの入力測定データを Azure BLOB Strage で 1 時間ごとに使用できるシナリオについて考えてみます。 Data Factory の [Hive アクティビティ](data-factory-hive-activity.md)を使用して、1 日の平均値、最大値、最小値など、統計情報を含む日次集計レポートを生成します。
 
 Data Factory を使用して、このシナリオをモデル化する方法を次に示します。
 
 **入力データセット**
 
-特定の日のフォルダーに毎時の入力ファイルが生成されます。 入力の availability は **Hour** に設定されています (frequency: Hour、interval: 1)。
+特定の日のフォルダーに毎時の入力ファイルが生成されます。 入力の availability は **Hour** に設定されています (frequency:Hour、interval:1)。
 
 ```json
 {
@@ -362,7 +361,7 @@ Data Factory を使用して、このシナリオをモデル化する方法を�
 ```
 **出力データセット**
 
-毎日、その日のフォルダーに出力ファイルが 1 つ作成されます。 出力の availability は **Day** に設定されています (frequency: Day、interval: 1)。
+毎日、その日のフォルダーに出力ファイルが 1 つ作成されます。 出力の availability は **Day** に設定されています (frequency:Day、interval:1)。
 
 ```json
 {
@@ -446,14 +445,14 @@ Data Factory を使用して、このシナリオをモデル化する方法を�
 
 毎日の出力スライスは、入力データセットの 24 時間のスライスに依存しています。 Data Factory では、生成する出力スライスと同じ期間に属する入力データ スライスを特定して、これらの依存関係を自動的に計算します。 24 個の入力スライスのいずれかを使用できない場合、Data Factory では入力スライスの準備が完了するまで待機してから、毎日のアクティビティ実行を開始します。
 
-### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>サンプル 2: 式と Data Factory の関数を使用して依存関係を指定する
+### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>サンプル 2:式と Data Factory の関数を使用して依存関係を指定する
 別のシナリオについて考えてみましょう。 2 つの入力データセットを処理する Hive アクティビティがあるとします。 一方のデータセットには毎日新しいデータが入力されますが、もう片方のデータセットでは 1 週間ごとに新しいデータを取得します。 これら 2 つの入力を結合して、毎日 1 つの出力を生成してみましょう。
 
 出力データ スライスの期間に合わせることで処理対象の入力スライスを Data Factory で自動的に特定するという単純な方法では、こうした操作を行うことはできません。
 
 個々のアクティビティ実行で、毎週の入力データセットに対して最新の週のデータ セットが Data Factory に使用されるように指定する必要があります。 この動作を実装するには、次のスニペットに示すように Azure Data Factory の関数を使用します。
 
-**Input1: Azure BLOB**
+**Input1:Azure blob**
 
 最初の入力は、毎日更新される Azure BLOB にします。
 
@@ -483,7 +482,7 @@ Data Factory を使用して、このシナリオをモデル化する方法を�
 }
 ```
 
-**Input2: Azure BLOB**
+**Input2:Azure blob**
 
 Input2 は、毎週更新される Azure BLOB にします。
 
@@ -513,9 +512,9 @@ Input2 は、毎週更新される Azure BLOB にします。
 }
 ```
 
-**Output: Azure BLOB**
+**Output:Azure blob**
 
-毎日、その日のフォルダーに出力ファイルが 1 つ作成されます。 出力の availability は **day** に設定されています (frequency: day、interval: 1)。
+毎日、その日のフォルダーに出力ファイルが 1 つ作成されます。 出力の availability は **day** に設定されています (frequency:Day, interval:1)。
 
 ```json
 {
@@ -607,11 +606,11 @@ Data Factory でサポートされている関数とシステム変数の一覧�
 
 CopyActivity1
 
-Input: Dataset。 出力: Dataset2。
+次の内容を入力します。Dataset。 出力:Dataset2。
 
 CopyActivity2
 
-Input: Dataset2。  出力: Dataset3。
+次の内容を入力します。Dataset2。  出力:Dataset3。
 
 CopyActivity2 は、CopyActivity1 が正常に実行していて、Dataset2 を使用できた場合にのみ実行します。
 
@@ -702,11 +701,11 @@ CopyActivity2 は、CopyActivity1 が正常に実行していて、Dataset2 を�
 
 CopyActivity1
 
-Input: Dataset1。 出力: Dataset2。
+次の内容を入力します。Dataset1。 出力:Dataset2。
 
 CopyActivity2
 
-Inputs: Dataset3、Dataset2。 出力: Dataset4。
+入力:Dataset3、Dataset2。 出力:Dataset4。
 
 ```json
 {

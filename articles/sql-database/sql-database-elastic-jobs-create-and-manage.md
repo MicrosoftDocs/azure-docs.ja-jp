@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 59235a20db5610ff3ace09d94b8726a9dd8cbfb8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: a95b62ab8f639ad38ee3ac9ace4f30b62bd852bf
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876792"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565056"
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>エラスティック ジョブを使用したスケールアウト済み Azure SQL Database の作成と管理 (プレビュー)
 

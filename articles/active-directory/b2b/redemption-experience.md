@@ -3,19 +3,20 @@ title: B2B コラボレーションの招待の利用 - Azure Active Directory |
 description: プライバシー条件への同意など、エンド ユーザー向けの Azure AD B2B コラボレーションの招待の利用エクスペリエンスについて説明します。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: f580c78fa2114905a0ef28f51feee50361717a27
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5e5a8d46f67553cc10bd9cdb31cf64511858948f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435329"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59046497"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -55,7 +56,7 @@ Azure Active Directory (Azure AD) B2B コラボレーションを介してパー
 
 ## <a name="terms-of-use"></a>使用条件
 
-ゲスト ユーザーには、初回利用プロセス中、Azure AD Terms of Use 機能を使用して利用規約を提示することができます。 この機能には、Azure Active Directory の **[管理]** > **[組織の関係]** > **[利用規約]** または **[セキュリティ]** > **[条件付きアクセス]** > **[利用規約]** からアクセスできます。 詳細については、[Azure AD Terms of Use 機能](../governance/active-directory-tou.md)に関するページを参照してください。
+ゲスト ユーザーには、初回利用プロセス中、Azure AD Terms of Use 機能を使用して利用規約を提示することができます。 この機能には、Azure Active Directory の **[管理]** > **[組織の関係]** > **[利用規約]** または **[セキュリティ]** > **[条件付きアクセス]** > **[利用規約]** からアクセスできます。 詳細については、[Azure AD Terms of Use 機能](../conditional-access/terms-of-use.md)に関するページを参照してください。
 
 ![新しい利用規約を示すスクリーンショット](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 

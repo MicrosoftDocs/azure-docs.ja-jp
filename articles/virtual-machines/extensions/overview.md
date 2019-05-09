@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 38f885cc230df6e0edb1e5b5254faf0cd519847a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: a35cba0ab7df80596ba1403765980809635c0249
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451445"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881857"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 仮想マシンの拡張機能とその機能
 Azure 仮想マシン (VM) の拡張機能は、Azure VM でデプロイ後の構成と自動化のタスクを実行する小さなアプリケーションです。ユーザーは既存のイメージを使用でき、後でそれをデプロイの一部としてカスタマイズできるため、カスタムのイメージのビルド作業をなくすことができます。
@@ -55,5 +55,5 @@ CLI または Resource Manager テンプレートで Portal に追加したも�
 * Linux エージェントと拡張機能のしくみの詳細については、「[Linux 用の Azure VM 拡張機能とその機能](features-linux.md)」をご覧ください。
 * Windows ゲスト エージェントと拡張機能のしくみの詳細については、「[Windows 用の Azure VM 拡張機能とその機能](features-windows.md)」を参照してください。  
 * Windows ゲスト エージェントをインストールする場合は、[Azure Windows 仮想マシン エージェントの概要](agent-windows.md)に関するページをご覧ください。  
-* Linux エージェントをインストールする場合は、「[Azure Linux 仮想マシン エージェントの概要](agent-linux.md)」をご覧ください。  
+* Linux エージェントをインストールする場合は、[Azure Linux 仮想マシン エージェントの概要](agent-linux.md)に関するページをご覧ください。  
 

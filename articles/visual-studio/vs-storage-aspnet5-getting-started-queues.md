@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 237294c1bc603402c349f7a56f20c34ed8d210fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8a91614e7dfb804e6a902967ce60f898ed0e54ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140988"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999744"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET Core)
 
@@ -27,7 +27,7 @@ ms.locfileid: "42140988"
 
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 キューの 1 つのメッセージの最大サイズは 64 キロバイト (KB) で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。 プログラムを使用してキューを操作する方法の詳細については、「[.NET を使用して Azure Queue Storage を使用する](../storage/queues/storage-dotnet-how-to-use-queues.md)」もご覧ください。
 
-最初に、ストレージ アカウント内に Azure キューを作成します。 そしてこの記事では、C# でキューを作成する方法と、キュー メッセージの追加、変更、読み取り、および削除などの基本的なキュー操作を実行する方法を示します。  コードでは .NET 用の Azure Storage クライアント ライブラリを使用します。 ASP.NET の詳細については、 [ASP.NET](http://www.asp.net)に関するページを参照してください。
+最初に、ストレージ アカウント内に Azure キューを作成します。 そしてこの記事では、C# でキューを作成する方法と、キュー メッセージの追加、変更、読み取り、および削除などの基本的なキュー操作を実行する方法を示します。  コードでは .NET 用の Azure Storage クライアント ライブラリを使用します。 ASP.NET の詳細については、 [ASP.NET](https://www.asp.net)に関するページを参照してください。
 
 一部の Azure Storage API は非同期であるため、この記事のコードでは非同期メソッドが使用されている前提とします。 詳細については、[非同期プログラミング](https://docs.microsoft.com/dotnet/csharp/async)に関するページをご覧ください。
 
@@ -66,7 +66,7 @@ ASP.NET Core プロジェクトでキューにアクセスするには、Azure Q
 
 ### <a name="create-a-queue-in-code"></a>コードでキューを作成する
 
-コードで Azure キューを作成するには、``CreateIfNotExistsAsync` を呼び出します。
+Azure キューをコードで作成するには、`CreateIfNotExistsAsync` を呼び出します。
 
 ```cs
 // Create the CloudQueue if it does not exist.

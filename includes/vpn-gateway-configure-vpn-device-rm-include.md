@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 886fa6c088f2fbabb3d3ba1cd0b15bbc488784f3
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198113"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418306"
 ---
 **VPN デバイス構成スクリプトをダウンロードするには**
 
@@ -27,7 +27,7 @@ ms.locfileid: "30198113"
 
 - デバイスの構成設定へのリンクについては、「[検証済みの VPN デバイス](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)」を参照してください。 デバイスの構成に関するリンクは、入手できる範囲で記載しています。 最新の構成情報については必ず、デバイスの製造元にご確認ください。 掲載されている一覧は、テスト済みのバージョンを示しています。 一覧にない OS のバージョンでも、適合している可能性があります。 デバイスの製造元に問い合わせて、ご利用の VPN デバイスの OS バージョンが適合しているかどうかを確認してください。
 
-- VPN デバイス構成の概要については、「[Overview of 3rd party VPN device configurations (サード パーティの VPN デバイスの構成の概要)](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md)」を参照してください。
+- VPN デバイス構成の概要については、[VPN デバイス構成の概要](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md)に関する記事をご覧ください。
 
 - デバイス構成サンプルの編集については、[サンプルの編集](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#editing)に関するセクションを参照してください。
 

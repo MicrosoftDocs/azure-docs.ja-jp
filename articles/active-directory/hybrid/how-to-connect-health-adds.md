@@ -4,25 +4,26 @@ description: Azure AD を監視する方法を説明する Azure AD Connect Heal
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 19e3cf15-f150-46a3-a10c-2990702cd700
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 6b1d3b0a780477bdb8b038a5fd02e4374ab02f14
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 73f30f4f16ad879468a424d6e5cbe81e68b7c33d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280148"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217583"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>AD DS での Azure AD Connect Health の使用
-次のドキュメントは、Azure AD Connect Health を使用した Active Directory Domain Services の監視について記述しています。 AD DS のサポートされているバージョンは、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、および Windows Server 2016 です。
+次のドキュメントは、Azure AD Connect Health を使用した Active Directory Domain Services の監視について記述しています。 AD DS のサポートされているバージョンは、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016。
 
 Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「[AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)」を参照してください。
 

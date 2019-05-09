@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: ade53ba29d165b3b33ef25dabda25c4e60022608
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 371cbcc50b574f95e8d9ba4efe79058b2b25a8ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40133646"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58016670"
 ---
 **構成/プロセス サーバー要件**
 
@@ -36,13 +36,24 @@ IIS | - 既存の Web サイトが存在しない <br> - ポート 443 でリッ
 | 
 **ネットワークの設定** | 
 IP アドレスの種類 | 静的 
-インターネットへのアクセス | サーバーは、次の URL にアクセスする必要があります (直接またはプロキシ経由)。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF には次の URL へのアクセスも必要です。 <br> - https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> - https:\//login.live.com  <br> - https:\//auth.gfx.ms <br> - https:\//graph.windows.net <br> - https:\//login.windows.net <br> - https:\//www.live.com <br> - https:\//www.microsoft.com <br> - https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 ポート | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送) 
 NIC の種類 | VMXNET3 (構成サーバーが VMware VM である場合)
- | 
+ |
+**インターネット アクセス** (サーバーは、次の URL にアクセスする必要があります (直接またはプロキシ経由))。|
+\*.backup.windowsazure.com | レプリケートされたデータの転送と調整に使用
+\*.store.core.windows.net | レプリケートされたデータの転送と調整に使用
+\*.blob.core.windows.net | レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用
+\*.hypervrecoverymanager.windowsazure.com | レプリケーション管理操作と調整に使用
+https:\//management.azure.com | レプリケーション管理操作と調整に使用 
+*.services.visualstudio.com | テレメトリの目的で使用 (省略可能)
+time.nist.gov | システム時刻とグローバル時刻間の時刻同期の確認に使用。
+time.windows.com | システム時刻とグローバル時刻間の時刻同期の確認に使用。
+| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF のセットアップでは、次の URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL のダウンロードを完了するためのものです
+|
 **インストールするソフトウェア** | 
 VMware vSphere PowerCLI | VMware 仮想マシン上で構成サーバーが実行されている場合は、[PowerCLI バージョン 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) をインストールする必要があります。
-MYSQL | MySQL をインストールする必要があります。 手動でインストールするか、または Site Recovery によってインストールすることができます。
+MYSQL | MySQL をインストールする必要があります。 手動でインストールするか、または Site Recovery によってインストールすることができます。 (詳細については、「 [設定の構成](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings)」を参照してください)
 
 **構成/プロセス サーバーのサイズ要件**
 

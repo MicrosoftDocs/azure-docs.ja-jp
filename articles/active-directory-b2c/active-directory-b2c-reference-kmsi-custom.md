@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の "サインインしたままにする (KMS
 description: Azure Active Directory B2C で "サインインしたままにする (KMSI)" を設定する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: fcc81c8eb3a34b0bda5d91a1a67dd2e04e052967
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: B2C
+ms.openlocfilehash: a8ad5c3091c3c78aa31dbf38eb6b3032e4dc7662
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967761"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870964"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で "サインインしたままにする (KMSI)" を有効にする
 
@@ -150,11 +150,11 @@ Azure Active Directory (Azure AD) B2C では、Web アプリケーションと�
 2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性を一意の値で更新します。 これがポリシーの名前になります。 たとえば、「 `SignUpOrSignInWithKmsi` 」のように入力します。
 3. **DefaultUserJourney** 要素の **ReferenceId** 属性を、作成した新しいユーザー体験の識別子と一致するように変更します。 たとえば、「 `SignUpOrSignInWithKmsi` 」のように入力します。
 
-    KMSI は、**UserJourneyBehaviors** 要素を使用して構成します。 **KeepAliveInDays** 属性は、ユーザーがサインインしている期間を制御します。 次の例では、KMSI セッションは、ユーザーがサイレント認証を実行する頻度に関係なく `7` 日後に自動的に期限が切れます。 **KeepAliveInDays** の値を `0` に設定すると、KMSI 機能がオフになります。 この値の既定値は `0` です。 **SessionExpiryType** の値が `Rolling` である場合は、ユーザーがサイレント認証を実行するたびに KMSI セッションが `7` 日延長されます。  `Rolling` を選択する場合は、日数を最小限にしておく必要があります。 
+    KMSI は、最初の子要素として **SingleSignOn**、**SessionExpiryType**、および **SessionExpiryInSeconds** を持つ **UserJourneyBehaviors** 要素を使用して構成されます。 **KeepAliveInDays** 属性は、ユーザーがサインインしている期間を制御します。 次の例では、KMSI セッションは、ユーザーがサイレント認証を実行する頻度に関係なく `7` 日後に自動的に期限が切れます。 **KeepAliveInDays** の値を `0` に設定すると、KMSI 機能がオフになります。 この値の既定値は `0` です。 **SessionExpiryType** の値が `Rolling` である場合は、ユーザーがサイレント認証を実行するたびに KMSI セッションが `7` 日延長されます。  `Rolling` を選択する場合は、日数を最小限にしておく必要があります。 
 
     **SessionExpiryInSeconds** の値は、SSO セッションの有効期限の時間を表します。 この値は、KMSI のセッションが期限切れかどうかを確認するために、Azure AD B2C によって内部的に使用されます。 **KeepAliveInDays** の値は、Web ブラウザーでの SSO Cookie の Expires/Max-Age の値を決定します。 **SessionExpiryInSeconds** とは異なり、**KeepAliveInDays** はブラウザーを閉じるときに Cookie がクリアされるのを防ぐために使用されます。 ユーザーは、SSO セッション Cookie が存在し (**KeepAliveInDays** によって制御)、有効期限 (**SessionExpiryInSeconds** によって制御) が切れていない場合にのみ、自動的にサインインできます。 
     
-    ユーザーがサインアップおよびサインイン ページで **[サインインしたままにする]** を有効にしていない場合は、**SessionExpiryInSeconds** で指定された時間が経過するか、ブラウザーを閉じると、セッションの有効期限が切れます。 ユーザーが **[サインインしたままにする]** を有効にしている場合は、**KeepAliveInDays** の値が **SessionExpiryInSeconds** の値より優先され、セッションの有効期限が示されます。 ユーザーは、ブラウザーを閉じて再度開いても、**KeepAliveInDays** の時間内であれば、引き続き自動的にサインインできます。 次の例に示すように、**KeepAliveInDays** の値は比較的長い期間 (7 日間) に設定できますが、**SessionExpiryInSeconds** の値は短期間 (1200 秒) に設定することをお勧めします。
+    ユーザーがサインアップおよびサインイン ページで **[サインインしたままにする]** を有効にしていない場合は、**SessionExpiryInSeconds** で指定された時間が経過するか、ブラウザーを閉じると、セッションの有効期限が切れます。 ユーザーが **[サインインしたままにする]** を有効にしている場合は、**KeepAliveInDays** の値が **SessionExpiryInSeconds** の値より優先され、セッションの有効期限が示されます。 ユーザーがブラウザーを閉じて再度開いた場合でも、**KeepAliveInDays** の時間内であれば、引き続き自動的にサインインできます。 次の例に示すように、**KeepAliveInDays** の値は比較的長い期間 (7 日間) に設定できますが、**SessionExpiryInSeconds** の値は短期間 (1200 秒) に設定することをお勧めします。
 
     ```XML
     <RelyingParty>

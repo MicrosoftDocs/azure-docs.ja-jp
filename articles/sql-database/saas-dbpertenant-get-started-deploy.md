@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 6a5ee991ca21e60e6c2b14d5e3be560183eae4fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: 97570a16c7d87a3c8182909b61c04fde30b3fe9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232904"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000209"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -56,16 +56,16 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 1. Azure Portal で Wingtip Tickets SaaS テナント単位データベース デプロイ テンプレートを開くには、**[Azure にデプロイ]** ボタンを選択します。
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. テンプレートの必要なパラメーターに値を入力します。
 
     > [!IMPORTANT]
     > 一部の認証とサーバー ファイアウォールは、デモンストレーションのために、意図的に保護されていません。 新しいリソース グループを作成することをおすすめします。 既存のリソース グループ、サーバー、またはプールを使用しないでください。 運用環境には、このアプリケーション、スクリプト、およびデプロイされたリソースを使用しないでください。 関連する課金を停止するために、サンプル アプリケーションの操作が終了したら、このリソース グループを削除してください。
 
-    - **[リソース グループ]**: **[新規作成]** を選択し、先ほど選択したリソース グループの一意の名前を指定します。
-    - **[場所]**: ドロップダウン リストから場所を選択します。
-    - **[ユーザー]**: 先ほど選択したユーザー名の値を使用します。
+    - **[リソース グループ]**:**[新規作成]** を選択し、先ほど選択したリソース グループの一意の名前を指定します。
+    - **[場所]**:ドロップダウン リストから場所を選択します。
+    - **User**:先ほど選択したユーザー名の値を使用します。
 
 1. アプリケーションをデプロイします。
 
@@ -129,7 +129,7 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../traffic-
 
     | URL の部分        | 説明       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*スタンドアロン* " アプリ (*-sa*) の実装や "*マルチテナント データベース*" (*-mt*) の実装です。 |
+    | http://events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*単一*" アプリ (*-sa*) の実装や "*マルチテナント データベース*" (*-mt*) の実装です。 |
     | .*&lt;ユーザー&gt;* | この例では *af1*。 |
     | .trafficmanager.net/ | Traffic Manager、ベース URL。 |
     | fabrikamjazzclub | Fabrikam Jazz Club という名前のテナントを識別します。 |
@@ -186,9 +186,9 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../traffic-
 
 4. `$OneTime = $false` の場合、ロード ジェネレーターはバックグラウンド ジョブを開始し、そのまま実行されます。 10 秒ごとにプロビジョニングされた新しいテナントを監視します。 `$OneTime = $true` を設定した場合、ロード ジェネレーターは、バックグラウンド ジョブを開始した後、フォア グラウンドでの実行を停止します。 このチュートリアルでは、`$OneTime = $false` のままにしてください。
 
-  ロード ジェネレーターを停止するか再開するには、Ctrl + C または [操作の停止] (Ctrl + Break) を使用します。
+   ロード ジェネレーターを停止するか再開するには、Ctrl + C または [操作の停止] (Ctrl + Break) を使用します。
 
-  ロード ジェネレーターをフォアグラウンドで実行したままにする場合は、別の PowerShell ISE インスタンスを使用して他の PowerShel スクリプトを実行します。
+   ロード ジェネレーターをフォアグラウンドで実行したままにする場合は、別の PowerShell ISE インスタンスを使用して他の PowerShel スクリプトを実行します。
 
 &nbsp;
 
@@ -221,7 +221,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 ここまでで、テナントのコレクションに対する負荷の実行を開始しました。次は、デプロイされたリソースをいくつか見てみましょう。
 
-1.  [Azure portal](http://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、 **catalog-dpt-&lt;ユーザー&gt;** サーバーを開きます。
+1.  [Azure portal](https://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、 **catalog-dpt-&lt;ユーザー&gt;** サーバーを開きます。
     - カタログ サーバーには 2 つのデータベース **tenantcatalog** と **basetenantdb** (新しいテナントを作成するためにコピーされたテンプレート データベース) が含まれます。
 
    ![データベース](./media/saas-dbpertenant-get-started-deploy/databases.png)
@@ -248,7 +248,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 - **Resource utilization** というラベルが付いた最初のグラフは、プールの eDTU 使用率を示しています。
 - 2 番目のグラフは、プール内のアクティブな上位 5 つのデータベースの eDTU 使用率を示しています。
 
-この 2 つのグラフは、エラスティック プールと SQL Database が予測できない SaaS アプリケーション ワークロードに適していることを示しています。 これらのグラフは、4 つのデータベースがそれぞれ 40 eDTU までバーストしても、50 eDTU プールで問題なくサポートされていることを示しています。 50 eDTU プールは、さらに重いワークロードをサポートできます。 データベースが単一データベースとしてプロビジョニングされた場合は、バーストをサポートするために S2 (50 DTU) が必要になります。 4 つのスタンドアロン S2 データベースのコストは、プールの価格の約 3 倍になります。 実際の環境では、SQL Database のお客様用に最大 500 のデータベースが 200 eDTU のプールで実行されます。 詳細については、[パフォーマンスの監視](saas-dbpertenant-performance-monitoring.md)に関するチュートリアルを参照してください。
+この 2 つのグラフは、エラスティック プールと SQL Database が予測できない SaaS アプリケーション ワークロードに適していることを示しています。 これらのグラフは、4 つのデータベースがそれぞれ 40 eDTU までバーストしても、50 eDTU プールで問題なくサポートされていることを示しています。 50 eDTU プールは、さらに重いワークロードをサポートできます。 データベースが単一データベースとしてプロビジョニングされた場合は、バーストをサポートするために S2 (50 DTU) が必要になります。 4 つの単一 S2 データベースのコストは、プールの価格の約 3 倍になります。 実際の環境では、SQL Database のお客様用に最大 500 のデータベースが 200 eDTU のプールで実行されます。 詳細については、[パフォーマンスの監視](saas-dbpertenant-performance-monitoring.md)に関するチュートリアルを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

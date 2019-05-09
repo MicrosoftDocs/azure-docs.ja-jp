@@ -1,19 +1,18 @@
 ---
 title: Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
 description: パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、Azure Cosmos DB アカウントを監視する方法について説明します。
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fe527e6e9933d25d7f1a16561ce4822d7b9a33ab
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a12e0f567747b67c67f7bc825df1079d852e2f16
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135884"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448240"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
 
@@ -28,7 +27,7 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 
    Azure Portal には、使用可能なコレクション メトリックのスイートが表示されます。 スループット、ストレージ、可用性、待機時間、一貫性の各メトリックは別々のタブに配置されています。 提供されているメトリックの詳細を表示するには、各メトリック ウィンドウの右上にある双方向矢印をクリックします。
 
-   ![メトリック スイートを示す [監視] レンズのスクリーン ショット](./media/monitor-accounts/metrics-suite.png)
+   ![メトリック スイートを示す [監視] レンズのスクリーンショット](./media/monitor-accounts/metrics-suite.png)
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Azure Monitoring を使用してパフォーマンス メトリックを表示する
 1. [Azure Portal](https://portal.azure.com/) で、左側のバーの **[モニター]** をクリックします。
@@ -44,7 +43,7 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
    * 当日の要求数合計
    * ストレージ使用量
    
-   ![要求とストレージ使用状況を示す [監視] レンズのスクリーン ショット](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
+   ![要求とストレージ使用状況を示す [監視] レンズのスクリーンショット](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
 3. **[要求]** タイルの右上にある双方向矢印をクリックすると、詳細な **[メトリック]** ページが開きます。
 4. **[メトリック]** ページには、合計要求数に関する詳細が表示されます。 
 

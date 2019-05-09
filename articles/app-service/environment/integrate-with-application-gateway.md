@@ -15,11 +15,11 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273818"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114197"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する #
 
@@ -73,7 +73,7 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
    c. **[サブスクリプション]** で、App Service Environment の仮想ネットワークが使っているものと同じサブスクリプションを選びます。
 
-   d. **[リソース グループ]** で、リソース グループを作成または選択します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リソース グループ]** で、リソース グループを作成または選択します。
 
    e. **[場所]** で、App Service Environment 仮想ネットワークの場所を選びます。
 
@@ -87,7 +87,7 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
    c. **[IP アドレスの種類]** で、**[パブリック]** を選びます。
 
-   d. **[パブリック IP アドレス]** で、パブリック IP アドレスを選びます。 パブリック IP アドレスがない場合は、ここで作成します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[パブリック IP アドレス]** で、パブリック IP アドレスを選びます。 パブリック IP アドレスがない場合は、ここで作成します。
 
    e. **[プロトコル]** で、**[HTTP]** または **[HTTPS]** を選びます。 HTTPS を構成する場合は、PFX 証明書を提供する必要があります。
 

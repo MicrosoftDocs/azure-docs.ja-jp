@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 12/17/2018
 ms.author: alinast
-ms.openlocfilehash: d2588090ced3e82e63397a416245ca69204f3d87
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583087"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089703"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>クイック スタート: Azure Digital Twins を使用して空き部屋を探す
 
@@ -115,8 +115,8 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 1. このコマンド プロンプトとセンサー データ コマンド プロンプトを並べて確認します。
 
     一方のコマンド プロンプトでは、シミュレートされたモーションと二酸化炭素のデータを 5 秒ごとに Digital Twins に送信します。 もう一方のコマンドではグラフをリアルタイムで読み取り、シミュレートされたランダムなデータに基づいて空気の良い空き部屋を探します。 最後に送信されたセンサー データに基づいて、ほぼリアルタイムで次のどちらかの状況が表示されます。
-    - 空気の良い空き部屋。
-    - 空いていないか、空気の質が悪い部屋。
+   - 空気の良い空き部屋。
+   - 空いていないか、空気の質が悪い部屋。
 
      ![空気の良い空き空間の取得][3]
 
@@ -149,7 +149,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 チュートリアルに進む場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 進まない場合は、このクイック スタートで作成したすべてのリソースを削除してください。
 
 1. サンプル リポジトリのダウンロード時に作成したフォルダーを削除します。
-1. [Azure portal](http://portal.azure.com) の左側のメニューで、**[すべてのリソース]** を選択します。 次に、Digital Twins リソースを選択します。 **[すべてのリソース]** ウィンドウの上部にある **[削除]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のメニューで、**[すべてのリソース]** を選択します。 次に、Digital Twins リソースを選択します。 **[すべてのリソース]** ウィンドウの上部にある **[削除]** を選択します。
 
     > [!TIP]
     > ご自分の Digital Twins インスタンスの削除で問題が発生していた場合は、サービス更新が修正と共にロールアウトされています。 ご自分のインスタンスの削除を再試行してください。

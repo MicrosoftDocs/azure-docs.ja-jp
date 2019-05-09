@@ -3,19 +3,19 @@ title: Translator Text API の Dictionary Lookup メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Dictionary Lookup メソッドを使用します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: b51067b9e854566991d49aeb1ff2b1ad13999a51
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b844ac4018ef768527ca17bd68ca53baaf5d9552
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957744"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578341"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: 辞書検索
 
@@ -56,8 +56,8 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_One authorization_<br/>_header_</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
+    <td>認証ヘッダー</td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>

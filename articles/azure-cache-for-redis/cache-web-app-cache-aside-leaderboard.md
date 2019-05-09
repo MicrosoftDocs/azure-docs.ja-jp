@@ -1,26 +1,26 @@
 ---
 title: キャッシュ アサイド パターンを使用する Web アプリを Azure Cache for Redis で作成するためのチュートリアル | Microsoft Docs
 description: キャッシュ アサイド パターンを使用する Web アプリを Azure Cache for Redis で作成する方法について説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: wesmc
-ms.openlocfilehash: 21f6f729cef6478c190c9e8b872723e4ae67fb1e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020842"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58893743"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル:ASP.NET でキャッシュ アサイド スコアボードを作成する
 
@@ -79,7 +79,7 @@ ms.locfileid: "53020842"
     using System.Data.Entity.SqlServer;
     ```
 
-1. `Team` クラスの定義を次のコード スニペットに置き換えます。このコード スニペットでは、更新された `Team` クラスの定義に加え、その他の Entity Framework の一部のヘルパー クラスの定義が含まれています。 このチュートリアルでは、Entity Framework によるコード ファースト アプローチを使用しています。 このアプローチにより、Entity Framework は、コードからデータベースを作成できます。 このチュートリアルで使用されている Entity Framework の Code First 手法の詳細については、「[新しいデータベースの Code First](https://msdn.microsoft.com/data/jj193542)」を参照してください。
+1. `Team` クラスの定義を次のコード スニペットに置き換えます。このコード スニペットでは、更新された `Team` クラスの定義に加え、その他の Entity Framework の一部のヘルパー クラスの定義が含まれています。 このチュートリアルでは、Entity Framework によるコード ファースト アプローチを使用しています。 このアプローチにより、Entity Framework は、コードからデータベースを作成できます。 このチュートリアルで使用されている Entity Framework の Code First 手法の詳細については、「[新しいデータベースの Code First](/ef/ef6/modeling/code-first/workflows/new-database)」を参照してください。
 
     ```csharp
     public class Team
@@ -520,7 +520,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
     ```csharp
     // POST: Teams/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Create([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
@@ -544,7 +544,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
     ```csharp
     // POST: Teams/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Edit([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)

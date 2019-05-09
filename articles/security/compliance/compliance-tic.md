@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017101"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341720"
 ---
 # <a name="trusted-internet-connections-guidance"></a>信頼できるインターネット接続のガイダンス
 
@@ -49,7 +49,7 @@ DHS の "Trusted Internet Connections (TIC) Reference Architecture Document, Ver
 
 **省庁または機関 (D/A)** の TIC を通過するようにトラフィックをルーティングすることなく、D/A から Azure または Office 365 への接続を有効にするには、D/A は暗号化トンネルかクラウド サービス プロバイダー (CSP) への専用接続を利用する必要があります。 CSP サービスは、機関の人間に直接アクセスするとき、D/A クラウド アセットへの接続が公共のインターネットに確実に提供されないようにします。
 
-Office 365 は、[Microsoft ピアリング](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)を有効にして ExpressRoute を使用するか、TLS 1.2 ですべてのトラフィックを暗号化するインターネット接続を使用して TIC 2.0 付録 H に準拠します。 D/A ネットワークの D/A エンド ユーザーは、機関ネットワークと TIC インフラストラクチャを介してインターネット接続できます。 Office 365 へのリモート インターネット アクセスはすべてブロックされ、機関を通過するようにルーティングされます。 D/A は Microsoft ピアリングを有効にした ExpressRoute で Office 365 に接続することもできます。Microsoft ピアリングはパブリック ピアリングの一種です。  
+Office 365 は、[Microsoft ピアリング](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)を有効にして ExpressRoute を使用するか、TLS 1.2 ですべてのトラフィックを暗号化するインターネット接続を使用して TIC 2.0 付録 H に準拠します。 D/A ネットワークの D/A エンド ユーザーは、機関ネットワークと TIC インフラストラクチャを介してインターネット接続できます。 Office 365 へのリモート インターネット アクセスはすべてブロックされ、機関を通過するようにルーティングされます。 D/A は Microsoft ピアリングを有効にした ExpressRoute で Office 365 に接続することもできます。Microsoft ピアリングはパブリック ピアリングの一種です。  
 
 Azure の場合のみ、2 番目のオプション (VPN) と 3 番目のオプション (ExpressRoute) は、インターネットへのアクセスを制限するサービスと併用するとき、これらの要件を満たすことができます。
 
@@ -198,7 +198,7 @@ Azure には、ネットワークのトラフィック フローを理解する�
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](https://azure.microsoft.com/services/azure-policy/) は、コンプライアンス イニシアティブを監査し、強制するためのすぐれた機能を組織に与える Azure サービスです。 Azure Policy は、現在販売されている Azure サービスのパブリック プレビューで使用できます。 Azure Policy は、Azure Government ではまだ使用できません。 お客様は、今のうちに Azure Policy のルールを計画およびテストしておき、後で TIC に確実に準拠できます。 
+[Azure Policy](../../governance/policy/overview.md) は、コンプライアンス イニシアティブを監査し、強制するためのすぐれた機能を組織に与える Azure サービスです。 お客様は、今のうちに Azure Policy のルールを計画およびテストしておき、後で TIC に確実に準拠できます。
 
 Azure Policy は、サブスクリプション レベルを対象としています。 サービスが提供する一元的なインターフェイスを使用して、次のようなコンプライアンス タスクを実行できます。
 - イニシアティブを管理する
@@ -211,15 +211,15 @@ Azure Policy は、サブスクリプション レベルを対象としていま
 
 次のサンプル ポリシーを TIC コンプライアンス シナリオに使用できます。
 
-|ポリシー  |サンプル シナリオ  |テンプレート  |
+|ポリシー  |サンプル シナリオ  |Template  |
 |---------|---------|---------|
-|ユーザー定義ルート テーブルを強制する。 | すべての仮想ネットワークの既定のルートを、オンプレミスにルーティングするための承認済み仮想ネットワーク ゲートウェイに確実にポイントするようにします。    | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table)で今すぐ開始。 |
-|リージョンで Network Watcher が有効になっていない場合を監査する。  | 使用されているすべてのリージョンで Network Watcher が確実に有効になっているようにします。  | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled)で今すぐ開始。 |
-|すべてのサブネット上の NSG x。  | インターネット トラフィックをブロックする NSG (または承認済み NSG のセット) を、すべての仮想ネットワークのすべてのサブネットに確実に適用されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet)で今すぐ開始。 |
-|すべての NIC 上の NSG x。 | インターネット トラフィックをブロックする NSG が、すべての仮想マシンのすべての NIC に確実に適用されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic)で今すぐ開始。 |
-|仮想マシン ネットワーク インターフェイスに対して承認された仮想ネットワークを使用する。  | すべての NIC が承認された仮想ネットワーク上に確実に配置されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics)で今すぐ開始。 |
-|許可される場所。 | 仮想ネットワークと Network Watcher 構成が準拠しているリージョンに、すべてのリソースが確実にデプロイされるようにします。  | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs)で今すぐ開始。 |
-|**PublicIP** など、許可されないリソースの種類。 | コンプライアンス プランのない種類のリソースのデプロイを禁止します。 パブリック IP アドレス リソースのデプロイを禁止するには、このポリシーを使います。 NSG ルールを使って受信インターネット トラフィックを効果的にブロックできますが、パブリック IP の使用を禁止すると攻撃をさらに減らすことができます。   | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type)で今すぐ開始。  |
+|ユーザー定義ルート テーブルを強制する。 | すべての仮想ネットワークの既定のルートを、オンプレミスにルーティングするための承認済み仮想ネットワーク ゲートウェイに確実にポイントするようにします。    | この[テンプレート](../../governance/policy/samples/no-user-defined-route-table.md)で今すぐ開始。 |
+|リージョンで Network Watcher が有効になっていない場合を監査する。  | 使用されているすべてのリージョンで Network Watcher が確実に有効になっているようにします。  | この[テンプレート](../../governance/policy/samples/network-watcher-not-enabled.md)で今すぐ開始。 |
+|すべてのサブネット上の NSG x。  | インターネット トラフィックをブロックする NSG (または承認済み NSG のセット) を、すべての仮想ネットワークのすべてのサブネットに確実に適用されるようにします。 | この[テンプレート](../../governance/policy/samples/nsg-on-subnet.md)で今すぐ開始。 |
+|すべての NIC 上の NSG x。 | インターネット トラフィックをブロックする NSG が、すべての仮想マシンのすべての NIC に確実に適用されるようにします。 | この[テンプレート](../../governance/policy/samples/nsg-on-nic.md)で今すぐ開始。 |
+|仮想マシン ネットワーク インターフェイスに対して承認された仮想ネットワークを使用する。  | すべての NIC が承認された仮想ネットワーク上に確実に配置されるようにします。 | この[テンプレート](../../governance/policy/samples/use-approved-vnet-vm-nics.md)で今すぐ開始。 |
+|許可される場所。 | 仮想ネットワークと Network Watcher 構成が準拠しているリージョンに、すべてのリソースが確実にデプロイされるようにします。  | この[テンプレート](../../governance/policy/samples/allowed-locations.md)で今すぐ開始。 |
+|**PublicIP** など、許可されないリソースの種類。 | コンプライアンス プランのない種類のリソースのデプロイを禁止します。 パブリック IP アドレス リソースのデプロイを禁止するには、このポリシーを使います。 NSG ルールを使って受信インターネット トラフィックを効果的にブロックできますが、パブリック IP の使用を禁止すると攻撃をさらに減らすことができます。   | この[テンプレート](../../governance/policy/samples/not-allowed-resource-types.md)で今すぐ開始。  |
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher のトラフィック分析
 
@@ -249,25 +249,25 @@ Network Watcher によって監視されているリージョン内のネット�
 
 | Category | ワークロード | IaaS | 専用 PaaS/仮想ネットワーク挿入  | サービス エンドポイント  |
 |---------|---------|---------|---------|--------|
-| Compute | Azure Linux 仮想マシン | [はい] | | |
-| Compute | Azure Windows ウィンドウ | [はい] | | |
-| Compute | 仮想マシン スケール セット | [はい] | | |
+| Compute | Azure Linux 仮想マシン | はい | | |
+| Compute | Azure Windows ウィンドウ | はい | | |
+| Compute | 仮想マシン スケール セット | はい | | |
 | Compute | Azure Functions | | App Service 環境 | |
 | Web とモバイル | 内部 Web アプリケーション | | App Service 環境| |
 | Web とモバイル | 内部モバイル アプリケーション | | App Service 環境 | |
 | Web とモバイル | API アプリケーション | | App Service 環境 | |
-| Containers | Azure Container Service | | | [はい] |
-| Containers | Azure Kubernetes Service (AKS) \* | | | [はい] |
+| Containers | Azure Container Service | | | はい |
+| Containers | Azure Kubernetes Service (AKS) \* | | | はい |
 | Database | Azure SQL Database | | Azure SQL Database Managed Instance \* | Azure SQL |
-| Database | Azure Database for MySQL | | | [はい] |
-| Database | Azure Database for PostgreSQL | | | [はい] |
-| Database | Azure SQL Data Warehouse | | | [はい] |
-| Database | Azure Cosmos DB | | | [はい] |
-| Database | Azure Cache for Redis | | [はい] | |
-| Storage | Azure BLOB ストレージ | [はい] | | |
-| Storage | Azure Files | [はい] | | |
-| Storage | Azure Queue Storage | [はい] | | |
-| Storage | Azure Table Storage | [はい] | | |
-| Storage | Azure Disk Storage | [はい] | | |
+| Database | Azure Database for MySQL | | | はい |
+| Database | Azure Database for PostgreSQL | | | はい |
+| Database | Azure SQL Data Warehouse | | | はい |
+| Database | Azure Cosmos DB | | | はい |
+| Database | Azure Cache for Redis | | はい | |
+| Storage | Azure BLOB ストレージ | はい | | |
+| Storage | Azure Files | はい | | |
+| Storage | Azure Queue Storage | はい | | |
+| Storage | Azure Table Storage | はい | | |
+| Storage | Azure Disk Storage | はい | | |
 
 \* 2018 年 5 現在、Azure Government ではパブリック プレビュー。

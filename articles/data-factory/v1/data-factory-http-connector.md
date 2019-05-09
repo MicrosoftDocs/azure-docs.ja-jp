@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 06eb11132d7e3968850aadb4bfdaa53261f14ada
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167479"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017261"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する
 
@@ -36,7 +35,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 ## <a name="supported-scenarios-and-authentication-types"></a>サポートされているシナリオと認証の種類
 
-この HTTP コネクタを使用すると、HTTP **GET** または **POST** メソッドを使用して、*クラウドとオンプレミスの両方の HTTP/S エンドポイント*からデータを取得できます。 サポートされている認証の種類は、**Anonymous**、**Basic**、**Digest**、**Windows**、および **ClientCertificate** です。 このコネクタと [Web テーブル コネクタ](data-factory-web-table-connector.md)の違いに注意してください。 Web テーブル コネクタは、HTML Web ページからテーブルの内容を抽出します。
+この HTTP コネクタを使用すると、HTTP **GET** または **POST** メソッドを使用して、*クラウドとオンプレミスの両方の HTTP/S エンドポイント*からデータを取得できます。 次の認証の種類がサポートされています。**Anonymous**、**Basic**、**Digest**、**Windows**、および **ClientCertificate**。 このコネクタと [Web テーブル コネクタ](data-factory-web-table-connector.md)の違いに注意してください。 Web テーブル コネクタは、HTML Web ページからテーブルの内容を抽出します。
 
 オンプレミスの HTTP エンドポイントからデータをコピーする場合は、オンプレミスの環境または Azure VM に Data Management Gateway をインストールする必要があります。 Data Management Gateway の詳細、およびゲートウェイを設定する方法に関する詳細な手順については、[オンプレミスの場所とクラウドの間のデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページを参照してください。
 
@@ -44,7 +43,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 さまざまなツールまたは API を使用して、HTTP ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-- パイプラインを作成するための最も簡単な方法は、データのコピー ウィザードの使用です。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用してパイプラインを作成する方法のチュートリアル](data-factory-copy-data-wizard-tutorial.md)を参照してください。
+- パイプラインを作成するための最も簡単な方法は、データのコピー ウィザードの使用です。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
 
 - また、**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのツールを使用してパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成する方法に関する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 HTTP ソースから Azure Blob Storage にデータをコピーする JSON サンプルについては、「[JSON の使用例](#json-examples)」を参照してください。
 
@@ -54,11 +53,11 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type | **type** プロパティは **Http** に設定する必要があります。 | [はい] |
-| url | Web サーバーへのベース URL | [はい] |
-| authenticationType | 認証の種類を指定します。 使用できる値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類のその他のプロパティや JSON サンプルについては、この記事の後の方のセクションを参照してください。 | [はい] |
+| type | **type** プロパティは **Http** に設定する必要があります。 | はい |
+| url | Web サーバーへのベース URL | はい |
+| authenticationType | 認証の種類を指定します。 使用できる値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類のその他のプロパティや JSON サンプルについては、この記事の後の方のセクションを参照してください。 | はい |
 | enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーで自己署名証明書を使用している場合は、これを **false** に設定します。 | いいえ <br /> (既定値は **true** です)。 |
-| gatewayName | オンプレミスの HTTP ソースに接続するために使用する Data Management Gateway インスタンスの名前。 | オンプレミスの HTTP ソースからデータをコピーしている場合は [はい] |
+| gatewayName | オンプレミスの HTTP ソースに接続するために使用する Data Management Gateway インスタンスの名前。 | オンプレミスの HTTP ソースからデータをコピーしている場合は はい |
 | encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 この値は、コピー ウィザードで、または **ClickOnce** ダイアログ ボックスを使用して認証情報を構成していると自動生成されます。 | いいえ <br /> (オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用されます) |
 
 オンプレミスの HTTP コネクタ データ ソースの資格情報を設定する方法の詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
@@ -69,10 +68,10 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| username | HTTP エンドポイントにアクセスするために使用するユーザー名。 | [はい] |
-| password | ユーザー (**username**) のパスワード。 | [はい] |
+| username | HTTP エンドポイントにアクセスするために使用するユーザー名。 | はい |
+| password | ユーザー (**username**) のパスワード。 | はい |
 
-**例: 基本、ダイジェスト、または Windows 認証の使用**
+**例:基本、ダイジェスト、または Windows 認証の使用**
 
 ```json
 {
@@ -108,7 +107,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 3. 個人用ストアの証明書を右クリックし、**[すべてのタスク]** >**[秘密キーの管理]** の順に選択します。
 3. **[セキュリティ]** タブで、証明書に対する読み取りアクセス権を使用して、Data Management Gateway ホスト サービスが実行されているユーザー アカウントを追加します。  
 
-**例: クライアント証明書の使用**
+**例:クライアント証明書の使用**
 
 このリンクされたサービスは、データ ファクトリをオンプレミスの HTTP Web サーバーにリンクします。 これは、Data Management Gateway がインストールされているコンピューターにインストールされているクライアント証明書を使用します。
 
@@ -130,7 +129,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 }
 ```
 
-**例: ファイル内のクライアント証明書の使用**
+**例:ファイル内のクライアント証明書の使用**
 
 このリンクされたサービスは、データ ファクトリをオンプレミスの HTTP Web サーバーにリンクします。 これは、Data Management Gateway がインストールされているコンピューター上のクライアント証明書ファイルを使用します。
 
@@ -161,15 +160,15 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** は **Http** に設定する必要があります。 | [はい] |
+| type | データセットの **type** は **Http** に設定する必要があります。 | はい |
 | relativeUrl | データを含むリソースへの相対 URL。 パスが指定されない場合は、リンクされたサービスの定義で指定されている URL のみが使用されます。 <br><br> 動的 URL を構築するには、[Data Factory の関数とシステム変数](data-factory-functions-variables.md)を使用できます。 例: **relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)**。 | いいえ  |
 | requestMethod | HTTP メソッド。 使用できる値は **GET** と **POST** です。 | いいえ  <br />(既定値は **GET**) |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |
 | requestBody | HTTP 要求の本文。 | いいえ  |
-| format | *HTTP エンドポイントからそのままデータを取得する*だけで解析しない場合は、**format** の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、および **ParquetFormat** の形式の種類がサポートされます。 詳細については、[Text 形式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 形式](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)の各セクションを参照してください。 |いいえ  |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類: **GZip**、**Deflate**、**BZip2**、**ZipDeflate**。 サポートされるレベル: **Optimal** と **Fastest**。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  |
+| format | *HTTP エンドポイントからそのままデータを取得する*だけで解析しない場合は、**format** の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合に、次の種類の形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 詳細については、[Text 形式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 形式](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)の各セクションを参照してください。 |いいえ  |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  |
 
-**例: GET (既定) メソッドの使用**
+**例:GET (既定) メソッドの使用**
 
 ```json
 {
@@ -190,7 +189,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 }
 ```
 
-**例: POST メソッドの使用**
+**例:POST メソッドの使用**
 
 ```json
 {
@@ -224,7 +223,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 これは応答データを読み取るタイムアウトではなく、応答を取得するタイムアウトです。 | いいえ <br />(既定値: **00:01:40**) |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 これは応答データを読み取るタイムアウトではなく、応答を取得するタイムアウトです。 | いいえ <br />(既定値:**00:01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
 
@@ -234,7 +233,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる、サンプルの JSON 定義です。 これらの例は、HTTP ソースから Azure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用すると、任意のソースから[サポートされている](data-factory-data-movement-activities.md#supported-data-stores-and-formats)任意のシンクに*直接*データをコピーできます。
 
-**例: HTTP ソースから Azure Blob Storage にデータをコピーする**
+**例:HTTP ソースから Azure Blob Storage にデータをコピーする**
 
 このサンプルの Data Factory ソリューションには、次の Data Factory エンティティが含まれています。
 
@@ -305,7 +304,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 ### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
 
-データは新しい BLOB に 1 時間おきに書き込まれます (**頻度**: **時間**、**間隔**: **1**)。
+データは新しい BLOB に 1 時間おきに書き込まれます (**frequency**: **Hour**、**interval**:**1**)。
 
 ```json
 {

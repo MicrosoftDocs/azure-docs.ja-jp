@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SilkRoad Life Suite の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SilkRoad Life Suite の統合 | Microsoft Docs
 description: Azure Active Directory と SilkRoad Life Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3cd92319-7964-41eb-8712-444f5c8b4d15
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 4d8be22a6b700d5ea9d95ee19d6ad3fa7bf5910a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7f047d784796b9e7c59d95863aa74b3f72da324
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995635"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>チュートリアル: Azure Active Directory と SilkRoad Life Suite の統合
+# <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>チュートリアル:Azure Active Directory と SilkRoad Life Suite の統合
 
 このチュートリアルでは、SilkRoad Life Suite と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -113,12 +114,14 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.silkroad-eng.com/Authentication/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 
+
     | |
     |--|
     | `https://<subdomain>.silkroad-eng.com/Authentication/SP` |
     | `https://<subdomain>.silkroad.com/Authentication/SP` |
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 
+    
     | |
     |--|
     | `https://<subdomain>.silkroad-eng.com/Authentication/` |
@@ -180,11 +183,11 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 
     b. **[Entity Id]\(エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
    
-    c. **[IdP Description]\(IdP の説明\)** ボックスに、構成の説明を入力します (例: *Azure AD の SSO*)。
+    c. **[IdP Description]\(IdP の説明\)** ボックスに、構成の説明を入力します (例:*Azure AD の SSO*)。
 
     d. **[メタデータ ファイル]** ボックスに、Azure Portal からダウンロードした**メタデータ** ファイルをアップロードします。
   
-    e. **[IdP Name]\(IdP 名\)** ボックスに、構成の固有の名前を入力します (例: *Azure SP*)。
+    e. **[IdP Name]\(IdP 名\)** ボックスに、構成の固有の名前を入力します (例:*Azure SP*)。
   
     f. **[Logout Service URL]\(ログアウト サービス URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
@@ -197,7 +200,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
      ![Azure AD Single Sign-On][17]
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -233,7 +236,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
  
 ### <a name="create-a-silkroad-life-suite-test-user"></a>SilkRoad Life Suite テスト ユーザーの作成
 
-このセクションでは、SilkRoad Life Suite で Britta Simon というユーザーを作成します。 SilkRoad Life Suite プラットフォームにユーザーを追加するには、[SilkRoad Life Suite Client サポート チーム](https://www.silkroad.com/locations/)に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、SilkRoad Life Suite で Britta Simon というユーザーを作成します。 SilkRoad Life Suite プラットフォームにユーザーを追加するには、 [SilkRoad Life Suite Client サポート チーム](https://www.silkroad.com/locations/) に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -270,7 +273,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで SilkRoad Life Suite のタイルをクリックすると、自動的に SilkRoad Life Suite アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

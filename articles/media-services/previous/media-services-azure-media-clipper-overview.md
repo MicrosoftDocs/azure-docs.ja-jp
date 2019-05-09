@@ -6,17 +6,18 @@ keywords: クリップ;サブクリップ;エンコード;メディア
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0fc04fb64e6d34c46f20b4ba5ff8a1ffc8da9c31
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 35f1f359b44af00000ccd9047673b80ca541d376
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998213"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>Azure Media Clipper を使用したクリップの作成
+# <a name="create-clips-with-azure-media-clipper"></a>Azure Media Clipper を使用したクリップの作成 
+
 Azure Media Clipper は無料の JavaScript ライブラリで、Web 開発者はこれを使ってユーザーにメディア クリップを作成するためのインターフェイスを提供できます。 このツールを任意の Web ページに統合して、アセットを読み込み、クリッピング ジョブを送信するための API を提供できます。
 
 Azure Media Clipper では次のことが可能です。
@@ -30,7 +31,7 @@ Azure Media Clipper では次のことが可能です。
 
 新機能のリクエスト、アイデアの提供、またはフィードバックは、[Azure Media Services の UserVoice](https://aka.ms/amsvoice/)に関するページにお送りください。 特定の問題や質問がある場合、またはバグを発見した場合は、Media Services チーム (amcinfo@microsoft.com) にご連絡ください。
 
-次の図は、Clipper のインターフェイスです。![Azure Media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
+次の図は、Clipper のインターフェイスを示しています。![Azure Media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
 
 ## <a name="release-notes"></a>リリース ノート
 Clipper の最新リリースに関するブログ投稿、さまざまな既知の問題、変更ログについては、次の一覧をご覧ください。

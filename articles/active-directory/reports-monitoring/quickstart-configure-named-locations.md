@@ -3,26 +3,27 @@ title: Azure Active Directory で名前付きの場所を構成する | Microsof
 description: 名前付きの場所を構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 49d0840ff7a41ed48151b65e1351628d32d46d24
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 71b21c4727e7679c25dc2574a6506f8d3932aec2
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623250"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434791"
 ---
-# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で名前付きの場所を構成する
+# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で名前付きの場所を構成する
 
 名前付きの場所を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のために名前付きの場所を使用します。
 - [リスク イベント](concept-risk-events.md)で誤判定を検出する。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。   
@@ -52,11 +53,11 @@ ms.locfileid: "51623250"
 
 6. 新しいページのフォームに入力します。 
 
-    * **[名前]** ボックスに、名前付きの場所の名前を入力します。
-    * **[IP 範囲]** ボックスに、IP 範囲を CIDR 形式で入力します。  
-    * **Create** をクリックしてください。
+   * **[名前]** ボックスに、名前付きの場所の名前を入力します。
+   * **[IP 範囲]** ボックスに、IP 範囲を CIDR 形式で入力します。  
+   * **Create** をクリックしてください。
     
-    ![[新規] ブレード](./media/quickstart-configure-named-locations/61.png)
+     ![[新規] ブレード](./media/quickstart-configure-named-locations/61.png)
 
 ## <a name="next-steps"></a>次の手順
 

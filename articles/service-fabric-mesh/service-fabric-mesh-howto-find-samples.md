@@ -6,15 +6,15 @@ keywords: ''
 author: v-vasuke
 ms.author: v-vasuke
 ms.date: 12/03/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: 6dac55e69761067cf9700e10f449af27ca659f20
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+manager: chakdan
+ms.openlocfilehash: db8c68bf5f9aeb8069044c1344be9f69e498b1b7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000327"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780884"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>Service Fabric Mesh のサンプル
 

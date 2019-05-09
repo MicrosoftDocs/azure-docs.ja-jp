@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 10/11/2018
+ms.date: 03/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6badfabb3ad20b5c17b3bb2bf09ae13f63568d05
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 447c5b1e94b848e9e560db1188a767f2040740c0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714752"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546852"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -45,7 +45,7 @@ Application Gateway では、この記事で説明されている機能の他に
 
 Application Gateway のパブリック プレビューの機能の詳細については、「[自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)](application-gateway-autoscaling-zone-redundant.md)」を参照してください。
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer (SSL) の終了
+## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer (SSL) ターミネーション
 
 アプリケーション ゲートウェイは、ゲートウェイの SSL ターミネーションをサポートします。通常、トラフィックは、その後、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 その理由として、セキュリティ要件、コンプライアンス要件、またはセキュリティで保護された接続以外はアプリケーションで受け入れられない場合があります。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL 暗号化がサポートされています。
 
@@ -70,19 +70,25 @@ Web アプリケーション ファイアウォール (WAF) は、一般的な�
 
 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの多数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
 
+詳細については、[Application Gateway の Web アプリケーション ファイアウォール (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview) に関するページを参照してください。
+
 ## <a name="url-based-routing"></a>URL ベースのルーティング
 
 URL パス ベースのルーティングを使用すると、要求の URL パスに基づいてバックエンド サーバー プールにトラフィックをルーティングできます。 シナリオの 1 つとして、さまざまなコンテンツ タイプの要求を異なるプールにルーティングする場合があります。
 
 たとえば、`http://contoso.com/video/*` の要求は VideoServerPool にルーティングされ、`http://contoso.com/images/*` は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
 
+詳細については、[Application Gateway による URL ベースのルーティング](https://docs.microsoft.com/azure/application-gateway/url-route-overview)に関するページを参照してください。
+
 ## <a name="multiple-site-hosting"></a>複数サイトのホスティング
 
-複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web サイトを構成することができます。 この機能を使用すると、最大で 20 の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のプールに送られるようにすることができます。 たとえば、アプリケーション ゲートウェイは、ContosoServerPool と FabrikamServerPool という 2 つのサーバー プールから `contoso.com` と `fabrikam.com` のトラフィックを処理できます。
+複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web サイトを構成することができます。 この機能を使用すると、最大で 100 の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のプールに送られるようにすることができます。 たとえば、アプリケーション ゲートウェイは、ContosoServerPool と FabrikamServerPool という 2 つのサーバー プールから `contoso.com` と `fabrikam.com` のトラフィックを処理できます。
 
 `http://contoso.com` の要求は ContosoServerPool にルーティングされ、`http://fabrikam.com` は FabrikamServerPool にルーティングされます。
 
 同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、単一のアプリケーション ゲートウェイ デプロイ上でホストされる `http://blog.contoso.com` 、 `http://app.contoso.com` などがあります。
+
+詳細については、[Application Gateway による複数サイトのホスト](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview)に関するページを参照してください。
 
 ## <a name="redirection"></a>リダイレクト
 
@@ -96,28 +102,51 @@ Application Gateway のリダイレクトのサポートでは、次の機能が
 - パスに基づくリダイレクト。 このタイプのリダイレクトを使うと、特定のサイト領域でのみ HTTP から HTTPS へのリダイレクトが可能になります (たとえば、`/cart/*` で示されたショッピング カート領域など)。
 - 外部サイトへのリダイレクト
 
+詳細については、Application Gateway による[トラフィックのリダイレクト](https://docs.microsoft.com/azure/application-gateway/redirect-overview)に関するページを参照してください。
+
 ## <a name="session-affinity"></a>セッション アフィニティ
 
 Cookie ベースのセッション アフィニティ機能は、同じサーバー上にユーザー セッションを保持する場合に便利です。 ゲートウェイで管理される Cookie を使用すると、Application Gateway は、ユーザー セッションの後続のトラフィックを、処理のために同じサーバーに送ることができます。 この機能は、ユーザー セッションのためにセッションの状態をサーバー上でローカルに保存する場合に重要です。
 
 ## <a name="websocket-and-http2-traffic"></a>Websocket と HTTP/2 トラフィック
 
-Application Gateway は、WebSocket および HTTP/2 プロトコルをネイティブにサポートしています。 ユーザーが構成可能な、WebSocket のサポートを選択的に有効または無効にするための設定はありません。 Azure PowerShell を使用して HTTP/2 サポートを有効にすることができます。
+Application Gateway は、WebSocket および HTTP/2 プロトコルをネイティブにサポートしています。 ユーザーが構成可能な、WebSocket のサポートを選択的に有効または無効にするための設定はありません。
 
 WebSocket および HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でサーバーとクライアント間の全二重通信が可能になります。 この機能により、HTTP ベースの実装では必須だったポーリングを使用することなく、Web サーバーとクライアントの間により対話的な双方向通信が可能になります。 これらのプロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 これらのプロトコルは、従来の HTTP ポート 80 および 443 上で動作するよう設計されています。
 
+詳細については、[WebSocket のサポート](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket)と [HTTP/2 のサポート](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)に関するページを参照してください。 
+
 ## <a name="rewrite-http-headers-public-preview"></a>HTTP ヘッダーを書き換える (パブリック プレビュー)
 
-クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーを書き換えることにより、HSTS/ X-XSS-Protection などのセキュリティ関連のヘッダー フィールドを追加したり、バックエンド サーバー名などの機密情報を暴露する可能性がある応答ヘッダー フィールドを削除するなど、いくつかの重要なシナリオを達成できます。 
+クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーの書き換えによって、次のようないくつかの重要なシナリオを実現できます。
+- HSTS/ X-XSS-Protection などのセキュリティ関連ヘッダー フィールドを追加する。
+- 機密情報が漏れる可能性がある応答ヘッダー フィールドを削除する。
+- X-Forwarded-For ヘッダーからポート情報を削除する。
 
-Application Gateway では、受信 HTTP 要求と送信 HTTP 応答のヘッダーを書き換える機能をサポートするようになりました。 要求/応答パケットがクライアントおよびバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新することができます。 ([RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) に規定されている) 標準ヘッダー フィールドと非標準のヘッダー フィールドの両方を書き換えることができます。  
+Application Gateway では、要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新する機能をサポートします。 また、条件を追加して、特定の条件が満たされた場合にのみ特定のヘッダーが書き換えられるようにする機能も提供されます。
 
 このパブリック プレビュー機能の詳細については、[HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関するページを参照してください。
+
+## <a name="sizing"></a>サイズ変更
+
+現在、Application Gateway は、**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
+
+アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
+
+次の表では、SSL オフロードが有効になっているアプリケーション ゲートウェイ インスタンスごとにパフォーマンス スループットの平均値を示します。
+
+| バックエンド ページの平均応答サイズ | Small | Medium | Large |
+| --- | --- | --- | --- |
+| 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
+| 100 KB |35 Mbps |100 Mbps |200 Mbps |
+
+> [!NOTE]
+> これらの値は、アプリケーション ゲートウェイ スループットのおおよその値です。 実際のスループットは、平均ページ サイズ、バックエンド インスタンスの場所、ページの処理時間など、さまざまな環境の違いによって異なります。 パフォーマンス面の正確な数値は、ご自身でテストを実施のうえご確認ください。 ここに挙げた数値は、容量計画の参考とすることを目的として記載したものにすぎません。
 
 ## <a name="next-steps"></a>次の手順
 
 要件と環境に応じて、Azure Portal、Azure PowerShell、または Azure CLI のいずれかを使用してテスト Application Gateway を作成できます。
 
-- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)。
-- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
-- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure CLI](quick-create-cli.md)
+- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)。
+- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
+- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure CLI](quick-create-cli.md)

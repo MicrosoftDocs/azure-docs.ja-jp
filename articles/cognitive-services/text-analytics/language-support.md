@@ -3,19 +3,19 @@ title: 言語サポート - Text Analytics API
 titleSuffix: Azure Cognitive Services
 description: Text Analytics API でサポートされる自然言語の一覧。 この記事では、各操作 (感情分析、キー フレーズ抽出、言語検出、エンティティ認識) でサポートされている言語について説明します。
 services: cognitive-services
-author: ashmaka
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 63c8ebe8eda049a770cecfd445757e4b5a2de1ea
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: a9f48c8cef8d977469bb6c583d0bc363e334f693
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067043"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245322"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Text Analytics API の言語と地域のサポート
 
@@ -33,7 +33,7 @@ Text Analytics API は最大 120 の異なる言語を検出できます。 言�
 
 言語サポートは、互いに関係なく、また、Text Analytics サービス全体に関係なく、最初にプレビューでロールアウトされ、徐々に一般公開 (GA) 状態に移行されます。 Text Analytics API が一般公開に移っているときでも、言語をプレビューのままにすることができます。
 
-| Language    | 言語コード | センチメント | キー フレーズ | エンティティの認識 |   メモ  |
+| 言語    | 言語コード | センチメント | キー フレーズ | エンティティの認識 |   メモ  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | デンマーク語      | `da`          | ✔ \*     | ✔           |             |     |
 | オランダ語       | `nl`          | ✔ \*     | ✔          |             |     |

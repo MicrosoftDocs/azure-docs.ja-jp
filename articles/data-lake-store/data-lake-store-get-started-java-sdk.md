@@ -3,21 +3,21 @@ title: Java SDK:Azure Data Lake Storage Gen1 に対するファイルシステ�
 description: Azure Data Lake Storage Gen1 Java SDK を使用して、Data Lake Storage Gen1 に対してフォルダーの作成などのファイルシステム操作を実行します。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: edbaa8fe42c0e6bfda8558e7d9e5cd0ce42bfcc4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.author: twooley
+ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260703"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58883549"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Java SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 [GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) で入手できるコード サンプルは、ストアでのファイルの作成、ファイルの連結、ファイルのダウンロード、ストアでのファイルの削除のプロセスを示しています。 このセクションでは、コードの主要部分について説明します。
 
-1. コマンド ラインで [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) を使用するか、IDE を使用して、Maven プロジェクトを作成します。 IntelliJ を使用して Java プロジェクトを作成する方法については、[こちら](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)をご覧ください。 Eclipse を使用してプロジェクトを作成する方法については、[こちら](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)をご覧ください。 
+1. コマンド ラインで [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) を使用するか、IDE を使用して、Maven プロジェクトを作成します。 IntelliJ を使用して Java プロジェクトを作成する方法については、[こちら](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)をご覧ください。 Eclipse を使用してプロジェクトを作成する方法については、[こちら](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)をご覧ください。 
 
 2. Maven の **pom.xml** ファイルに次の依存関係を追加します。 **\</project>** タグの前に次のスニペットを追加します。
    
@@ -58,7 +58,7 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
           </dependency>
         </dependencies>
    
-    最初の依存関係では、maven リポジトリから Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Storage Gen1 SDK では、[slf4j](http://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](http://www.slf4j.org/manual.html#projectDep)をご覧ください。
+    最初の依存関係では、maven リポジトリから Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Storage Gen1 SDK では、[slf4j](https://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](https://www.slf4j.org/manual.html#projectDep)をご覧ください。
 
 3. アプリケーションに次の import ステートメントを追加します。
 
@@ -205,8 +205,8 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
     promptEnterKey();
 
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
-1. IDE 内から実行するには、**[実行]** ボタンを見つけてクリックします。 Maven から実行するには、[exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) を使用します。
-2. コマンド ラインから実行できるスタンドアロン jar を生成するには、[Maven アセンブリ プラグイン](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html)を使用して、すべての依存関係を含めて jar をビルドします。 [GitHub のサンプル ソース コード](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)の pom.xml に例が含まれています。
+1. IDE 内から実行するには、**[実行]** ボタンを見つけてクリックします。 Maven から実行するには、[exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) を使用します。
+2. コマンド ラインから実行できるスタンドアロン jar を生成するには、[Maven アセンブリ プラグイン](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)を使用して、すべての依存関係を含めて jar をビルドします。 [GitHub のサンプル ソース コード](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)の pom.xml に例が含まれています。
 
 ## <a name="next-steps"></a>次の手順
 * [Java SDK の JavaDoc を確認する](https://azure.github.io/azure-data-lake-store-java/javadoc/)

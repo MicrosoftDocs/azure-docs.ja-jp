@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Bing Web Search API で使用される回答の種類と応答について説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 8/13/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1d47d8e35a1be28b5610961c1b1c7b5d1492e871
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250503"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232894"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
@@ -42,7 +42,7 @@ Bing Web Search から返されるのは、回答のサブセットであるの�
 
 ## <a name="webpages-answer"></a>webPages 回答
 
-[webPages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) の回答には、クエリとの関連性が高いと Bing Web Search によって判断された Web ページへのリンクのリストが格納されます。 このリストに含まれる各 [Webpage](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) には、ページの名前や URL、表示 URL、コンテンツの簡単な説明、さらに、そのコンテンツが Bing によって検索された日付が含まれています。
+[webPages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) の回答には、クエリとの関連性が高いと Bing Web Search によって判断された Web ページへのリンクのリストが格納されます。 このリストに含まれる各 [Webpage](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) には、ページの名前、URL、表示 URL、コンテンツの簡単な説明、Bing でそのコンテンツが見つかった日付が含まれます。
 
 ```json
 {
@@ -91,7 +91,7 @@ The following shows an example of how you might display the webpage in a search 
 }, ...
 ```
 
-ユーザーのデバイスにもよりますが、通常はサムネイルのサブセットを表示したうえで、残りの画像を表示するためのオプションを表示します。
+ユーザーのデバイスにもよりますが、通常はサムネイルのサブセットを表示したうえで、残りの画像の[ページングを行う](paging-webpages.md)ためのオプションをユーザーに表示します。
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![List of thumbnail images](./media/cognitive-services-bing-web-api/bing-web-image-thumbnails.PNG)
@@ -314,7 +314,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 |シンボル|説明|
 |------------|-----------------|
-|Sqrt|平方根|
+|並べ替え|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角関数 (引数はラジアン単位)|
 |ArcSin[x]、ArcCos[x]、ArcTan[x]<br />ArcCsc[x]、ArcSec[x]、ArcCot[x]|逆三角関数 (結果はラジアン単位)|
 |Exp[x]、E^x|指数関数|
@@ -428,6 +428,48 @@ Query: What time is it in the U.S.
     }]
 }, ...
 ```
+
+Bing による修正候補の例を次に示します。
+
+![Bing による修正候補の例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
+
+## <a name="response-headers"></a>応答ヘッダー
+
+Bing Web Search API からの応答には、以下のヘッダーが含まれることがあります。
+
+|||
+|-|-|
+|`X-MSEdge-ClientID`|Bing がユーザーに割り当てた一意の ID|
+|`BingAPIs-Market`|要求を満たすために使用された市場|
+|`BingAPIs-TraceId`|この要求に対する Bing API サーバー上のログ エントリ (サポート用)|
+
+クライアント ID を保持し、後続の要求で返すことが特に重要です。 これを行うときに、検索は検索結果の順位付けに過去のコンテキストを使用し、一貫性のあるユーザー エクスペリエンスも提供します。
+
+ただし、JavaScript から Bing Web Search API を呼び出すときに、ブラウザーの組み込みのセキュリティ機能 (CORS) によっては、これらのヘッダーの値にアクセスできないことがあります。
+
+ヘッダーにアクセスするために、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用可能にする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+
+CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-web-search-single-page-app.md)がオプションのクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 次に、コマンド プロンプトで次のコマンドを入力します。
+
+    npm install -g cors-proxy-server
+
+次に、HTML ファイル内の Bing Web Search API エンドポイントを次のように変更します。
+
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+
+最後に、次のコマンドを使用して、CORS プロキシを開始します。
+
+    cors-proxy-server
+
+チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
+
+## <a name="response-headers-in-production"></a>実稼働環境での応答ヘッダー
+
+前の回答で説明されている CORS プロキシ アプローチは、開発、テスト、学習に適しています。
+
+実稼働環境では、Bing Web Search API を使用する Web ページと同じドメインでサーバー側スクリプトをホストする必要があります。 このスクリプトでは、Web ページの JavaScript からの要求時に API 呼び出しを実行し、ヘッダーを含むすべての結果をクライアントに戻す必要があります。 2 つのリソース (ページとスクリプト) が配信元を共有するので、CORS は使用されず、Web ページ上の JavaScript から特殊なヘッダーにアクセスできます。
+
+API キーはサーバー側スクリプトでのみ必要なので、このアプローチでは API キーもパブリックへの露出から保護されます。 スクリプトでは、別の方法を使用して、要求が承認されているかどうかを確認できます。
 
 Bing による修正候補の例を次に示します。
 

@@ -6,20 +6,20 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139624"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524006"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
-このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
+このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
 
 大規模なデータ セットの処理方法を説明したチュートリアルについては、「[Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](hive-criteo-walkthrough.md)」を参照してください。
 
@@ -84,15 +84,15 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 > 
 > 
 
-公開されている場所から [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットをコンピューターにコピーするには、「[Azure Blob ストレージとの間のデータの移動](move-azure-blob.md)」で説明されている方法のいずれかを使用します。
+公開されている場所から [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットをコンピューターにコピーするには、「[Azure Blob ストレージとの間のデータの移動](move-azure-blob.md)」で説明されている方法のいずれかを使用します。
 
 ここでは、AzCopy を使用してデータを含むファイルを転送する方法について説明します。 AzCopy をダウンロードしてインストールするには、「[AzCopy コマンド ライン ユーティリティの概要](../../storage/common/storage-use-azcopy.md)」に記載されている手順に従います。
 
-1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを発行します。*<path_to_data_folder>* を、目的の転送先に置き換えてください。
+1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを実行します。*\<path_to_data_folder>* を、目的の転送先に置き換えてください。
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. コピーが完了すると、選択したデータのフォルダー内に合計 24 個の Zip ファイルが表示されます。 ダウンロードされたファイルをローカル コンピューター上の同じディレクトリに解凍します。 圧縮されていないファイルが存在するフォルダーをメモしておきます。 *<path\_to\_unzipped_data\_files\>* として参照されるこのフォルダーについては、後ほど説明します。
+1. コピーが完了すると、選択したデータのフォルダー内に合計 24 個の Zip ファイルが表示されます。 ダウンロードされたファイルをローカル コンピューター上の同じディレクトリに解凍します。 圧縮されていないファイルが存在するフォルダーをメモしておきます。 *\<path\_to\_unzipped_data\_files\>* として参照されるこのフォルダーについては、後ほど説明します。
 
 ## <a name="upload"></a>データを HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
 > [!NOTE]
@@ -102,10 +102,10 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
-* "***<path_to_data_folder>***" を解凍データ ファイルのあるコンピューター上のディレクトリ (パス) で置き換えます。  
-* "***<storage account name of Hadoop cluster>***" を、HDInsight クラスターに関連付けられているストレージ アカウントで置き換えます。
-* "***<default container of Hadoop cluster>***" を、クラスターで使用される既定のコンテナーで置き換えます。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
-* "***<storage account key>***" を、クラスターで使用するストレージ アカウントのキーで置き換えます。
+* ***\<path_to_data_folder>*** を解凍データ ファイルが入った、マシン上のディレクトリ (パス)。  
+* ***\<Hadoop クラスターのストレージ アカウント名>*** HDInsight クラスターに関連付けられているストレージ アカウント。
+* ***\<Hadoop クラスターの既定のコンテナー>*** クラスターで使用する既定のコンテナー。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
+* ***\<ストレージ アカウント キー>*** クラスターで使用するストレージ アカウントのキー。
 
 コマンド プロンプトまたは Windows PowerShell ウィンドウで、次の 2 つの AzCopy コマンドを実行します。
 
@@ -516,7 +516,7 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
 
 2 つの場所間の直接距離とタクシーの実際の乗車距離に違いがあるかどうかを知りたい場合があります。 運転手が意図的に長いルートを走行したことに乗客が気づいた場合に、チップが支払われる可能性が低くなる可能性があります。
 
-実際の乗車距離と緯度経度の 2 つの地点の [Haversine distance (球面上の距離)](http://en.wikipedia.org/wiki/Haversine_formula) を比較するために、Hive 内で利用できる次のような三角関数を使用します。
+実際の乗車距離と緯度経度の 2 つの地点の [Haversine distance (球面上の距離)](https://en.wikipedia.org/wiki/Haversine_formula) を比較するために、Hive 内で利用できる次のような三角関数を使用します。
 
     set R=3959;
     set pi=radians(180);
@@ -822,9 +822,9 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 このサンプルのチュートリアルとそれに付随するスクリプトは、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある **LICENSE.txt** ファイルを参照してください。
 
 ## <a name="references"></a>参照
-•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
-•    [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-•    [ニューヨーク市タクシー&リムジン委員会調査および統計](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
+•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](https://www.andresmh.com/nyctaxitrips/)  
+•    [NYC のタクシー乗車データを FOIL する (Chris Whong)](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png
 [11]: ./media/hive-walkthrough/hive-reader-properties.png

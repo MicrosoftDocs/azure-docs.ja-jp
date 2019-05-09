@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 83f648b67ae4f8e6fb964d82c245f1c7ba475542
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c41057203da949e371f62332e938feb92e84534f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568542"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699681"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Azure の Web ロールで Twilio を使用して通話する方法
 このガイドでは、Azure でホストされる Web ページから Twilio を使用して通話する方法を説明します。 次のスクリーンショットに示すように、作成されたアプリケーションは指定された番号とメッセージで呼び出しを行うことをユーザーに求めます。
@@ -29,12 +29,12 @@ ms.locfileid: "51568542"
 ## <a name="twilio-prereqs"></a>前提条件
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
-1. [Twilio Console][twilio_console] で Twilio アカウントと認証トークンを取得します。 Twilio を使い始めるには、[https://www.twilio.com/try-twilio][try_twilio] でサインアップします。 [http://www.twilio.com/pricing][twilio_pricing] で価格を評価することができます。 Twilio から提供される API については、[http://www.twilio.com/voice/api][twilio_api] を参照してください。
+1. [Twilio Console][twilio_console] で Twilio アカウントと認証トークンを取得します。 Twilio を使い始めるには、[https://www.twilio.com/try-twilio][try_twilio] でサインアップします。 [https://www.twilio.com/pricing][twilio_pricing] で価格を評価することができます。 Twilio から提供される API については、[https://www.twilio.com/voice/api][twilio_api] を参照してください。
 2. *Twilio .NET ライブラリ*を Web ロールに追加します。 このトピックの「**Twilio ライブラリを Web ロール プロジェクトに追加するには**」のセクションを参照してください。
 
 [Azure での基本的な Web ロール][azure_webroles_get_started]の作成について詳しく理解している必要があります。
 
-## <a name="howtocreateform"></a>方法: 通話用の Web フォームの作成
+## <a name="howtocreateform"></a>方法:通話用の Web フォームの作成
 <a id="use_nuget"></a>Twilio ライブラリを Web ロール プロジェクトに追加するには
 
 1. Visual Studio でソリューションを開きます。
@@ -70,7 +70,7 @@ ms.locfileid: "51568542"
 </asp:Content>
 ```
 
-## <a id="howtocreatecode"></a>方法: 通話用のコードの作成
+## <a id="howtocreatecode"></a>方法:通話用のコードの作成
 次のコードはユーザーがフォームへの入力を完了すると呼び出され、このコードによって通話メッセージが作成され、通話が生成されます。 この例では、コードは、フォームのボタンの onclick イベント ハンドラーで実行されます (このコードで `accountSID` と `authToken` に設定しているプレースホルダー値は、Twilio アカウントと認証トークンに置き換えてください)。
 
 ```csharp
@@ -96,7 +96,7 @@ namespace WebRole1
 
         protected void callpage_Click(object sender, EventArgs e)
         {
-            // Call porcessing happens here.
+            // Call processing happens here.
 
             // Use your account SID and authentication token instead of
             // the placeholders shown here.
@@ -126,7 +126,7 @@ namespace WebRole1
                 // Create a URL using the Twilio message and the user-entered
                 // text. You must replace spaces in the user's text with '%20'
                 // to make the text suitable for a URL.
-                var url = $"http://twimlets.com/message?Message%5B0%5D={myMessage.Replace(" ", "%20")}";
+                var url = $"https://twimlets.com/message?Message%5B0%5D={myMessage.Replace(" ", "%20")}";
                 var twimlUri = new Uri(url);
 
                 // Display the endpoint, API version, and the URL for the message.
@@ -148,7 +148,7 @@ namespace WebRole1
 
 ![Twilio および ASP.NET を使用した Azure 通話応答][twilio_dotnet_basic_form_output]
 
-TwiML の詳細については、[http://www.twilio.com/docs/api/twiml][twiml] を参照してください。 &lt;Say&gt; や他の Twilio の動詞については、[http://www.twilio.com/docs/api/twiml/say][twilio_say] を参照してください。
+TwiML の詳細については、[https://www.twilio.com/docs/api/twiml][twiml] を参照してください。 &lt;Say&gt; や他の Twilio の動詞については、[https://www.twilio.com/docs/api/twiml/say][twilio_say] を参照してください。
 
 ## <a id="nextsteps"></a>次のステップ
 Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示すために、このコードが用意されました。 運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。 例: 
@@ -162,15 +162,15 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 * [Azure から音声および SMS 機能に Twilio を使用する方法](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console
-[twilio_pricing]: http://www.twilio.com/pricing
-[try_twilio]: http://www.twilio.com/try-twilio
-[twilio_api]: http://www.twilio.com/voice/api
+[twilio_pricing]: https://www.twilio.com/pricing
+[try_twilio]: https://www.twilio.com/try-twilio
+[twilio_api]: https://www.twilio.com/voice/api
 [verify_phone]: https://www.twilio.com/console/phone-numbers/verified
 
 [twilio_dotnet_basic_form]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form.png
 [twilio_dotnet_basic_form_output]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form_output.png
 
-[twiml]: http://www.twilio.com/docs/api/twiml
+[twiml]: https://www.twilio.com/docs/api/twiml
 
 
 
@@ -181,10 +181,10 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 [howto_sql_azure_dotnet]: https://www.windowsazure.com/develop/net/how-to-guides/sql-database/
 
 
-[twilio_docs_security]: http://www.twilio.com/docs/security
-[twilio_docs]: http://www.twilio.com/docs
-[twilio_say]: http://www.twilio.com/docs/api/twiml/say
+[twilio_docs_security]: https://www.twilio.com/docs/security
+[twilio_docs]: https://www.twilio.com/docs
+[twilio_say]: https://www.twilio.com/docs/api/twiml/say
 
 
-[azure_runtime_ref_dotnet]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
+[azure_runtime_ref_dotnet]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
 [azure_webroles_get_started]: https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-get-started

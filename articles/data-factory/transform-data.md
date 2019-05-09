@@ -3,21 +3,20 @@ title: Azure Data Factory を使用してデータを変換する | Microsoft Do
 description: Azure Data Factory で Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/31/2018
-ms.author: douglasl
-ms.openlocfilehash: e3aefc23cd0f4d8043232214591155aa893f4522
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 2c674f77ef0f779c9764771e2e0ae7a4aea47548
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390138"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575224"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 > [!div class="op_single_selector"]
@@ -62,7 +61,7 @@ Azure Data Factory を使用すると、公開された Azure Machine Learning W
 これらの Machine Learning アクティビティの詳細については、 [Azure Machine Learning アクティビティの使用](transform-data-using-machine-learning.md) に関する記事を参照してください。 
 
 ## <a name="stored-procedure-activity"></a>ストアド プロシージャ アクティビティ
-SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプラインで使用して、次のデータ ストアのいずれかでストアド プロシージャを呼び出すことができます: 社内または Azure VM 内のAzure SQL Database、Azure SQL Data Warehouse、SQL Server Database。 詳細については、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)に関する記事をご覧ください。  
+SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプライン内で使用して、次のいずれかのデータ ストア内のストアド プロシージャを呼び出すことができます。社内または Azure VM 内の Azure SQL Database、Azure SQL Data Warehouse、SQL Server データベース。 詳細については、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)に関する記事をご覧ください。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
 Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。 詳細については、[Data Analytics U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)に関する記事をご覧ください。 
@@ -87,11 +86,10 @@ Data Factory でサポートされていない方法でデータを変換する�
 ## <a name="compute-environments"></a>コンピューティング環境
 変換アクティビティを定義するときには、コンピューティング環境のリンクされたサービスを作成したうえで、そのサービスを使用します。 Data Factory でサポートされているコンピューティング環境は 2 種類あります。 
 
-- 
-  **オンデマンド**: この場合、コンピューティング環境は Data Factory で完全に管理されます。 データを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。 ユーザーは、ジョブの実行、クラスターの管理、ブートストラップ アクションなどについて、オンデマンドのコンピューティング環境の詳細設定を構成および制御できます。 
+- **オンデマンド**: この場合、コンピューティング環境は Data Factory によって完全に管理されます。 データを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。 ユーザーは、ジョブの実行、クラスターの管理、ブートストラップ アクションなどについて、オンデマンドのコンピューティング環境の詳細設定を構成および制御できます。 
 - **独自の環境を使用する**: この場合、Data Factory のリンクされたサービスとして、独自のコンピューティング環境 (HDInsight クラスターなど) を登録できます。 このコンピューティング環境はユーザーが自分で管理することになります。Data Factory サービスは、アクティビティを実行にこの環境を使用します。 
 
 Data Factory でサポートされているコンピューティング サービスの詳細については、記事「 [コンピューティングのリンクされたサービス](compute-linked-services.md) 」を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
-変換アクティビティの使用例については、次のチュートリアルをご覧ください: [チュートリアル: Spark を使用してデータを変換する](tutorial-transform-data-spark-powershell.md)
+変換アクティビティの使用例については、次のチュートリアルをご覧ください。[チュートリアル: Spark を使用してデータを変換する](tutorial-transform-data-spark-powershell.md)

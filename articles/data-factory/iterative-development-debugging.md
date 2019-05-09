@@ -1,9 +1,6 @@
 ---
 title: Azure Data Factory での反復開発とデバッグ | Microsoft Docs
 description: Azure Portal で Data Factory パイプラインの開発とデバッグを反復して実行する方法について説明します。
-author: douglaslMS
-ms.author: douglasl
-manager: craigg
 ms.date: 09/26/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,13 +8,15 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
-ms.openlocfilehash: 610f0c8691714bf30415347dd2775b6fa3625c11
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: a8028fdde93d06f7b25bf9bd8b4ed5a560a35f83
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391099"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575275"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
 

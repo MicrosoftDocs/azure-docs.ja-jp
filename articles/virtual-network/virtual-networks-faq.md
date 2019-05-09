@@ -1,5 +1,6 @@
 ---
-title: Azure 仮想ネットワークに関する FAQ | Microsoft Docs
+title: Azure Virtual Network に関する FAQ
+titlesuffix: Azure Virtual Network
 description: Microsoft Azure 仮想ネットワークについてよく寄せられる質問に回答します。
 services: virtual-network
 documentationcenter: na
@@ -9,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2018
+ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: 686985c705b4026ccc26238fc5919296c98d5cb7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 19fdf2e7e1c7c56b6bfe8ddbf7329d3722f4e8de
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188613"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -51,7 +52,12 @@ VNet を使用して次のことが行えます。
 * ネットワーク構成ファイル (netcfg - クラシック VNet のみ)。 「[Configure a VNet using a network configuration file (ネットワーク構成ファイルを使用した VNet の構成)](virtual-networks-using-network-configuration-file.md)」を参照してください。
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>VNet でどのアドレス範囲が使用できるでしょうか。
-[RFC 1918](http://tools.ietf.org/html/rfc1918) で定義されている任意の IP アドレス範囲 (例: 10.0.0.0/16)。
+[RFC 1918](https://tools.ietf.org/html/rfc1918) で定義されている任意の IP アドレス範囲 (例: 10.0.0.0/16)。 次のアドレス範囲は追加できません。
+* 224.0.0.0/4 (マルチキャスト)
+* 255.255.255.255/32 (ブロードキャスト)
+* 127.0.0.0/8 (ループバック)
+* 169.254.0.0/16 (リンク ローカル)
+* 168.63.129.16/32 (内部 DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>VNet 内でパブリック IP アドレスを持つことができますか。
 はい。 パブリック IP アドレス範囲の詳細については、[仮想ネットワークの作成](manage-virtual-network.md#create-a-virtual-network)に関する記事をご覧ください。 パブリック IP アドレスは、インターネットから直接アクセスできません。
@@ -215,7 +221,7 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 ### <a name="is-there-tooling-support-for-vnets"></a>VNet に対するツール サポートはありますか。
 はい。 次のツールを使用できます。
 - Azure Portal。[Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) および[クラシック](virtual-networks-create-vnet-classic-pportal.md) デプロイメント モデルを使用して VNet をデプロイするために使用します。
-- PowerShell。[Resource Manager](/powershell/module/azurerm.network) および[クラシック](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
+- PowerShell。[Resource Manager](/powershell/module/az.network) および[クラシック](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
 - Azure コマンド ライン インターフェイス (CLI)。[Resource Manager](/cli/azure/network/vnet) デプロイメント モデルおよび[クラシック](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) デプロイメント モデルを使用してデプロイされた VNet をデプロイおよび管理するために使用します。  
 
 ## <a name="vnet-peering"></a>VNET ピアリング
@@ -224,7 +230,27 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 VNet ピアリング (仮想ネットワーク ピアリング) を使用して、仮想ネットワークに接続できます。 仮想ネットワーク間の VNet ピアリング接続では、IPv4 アドレスによってそれらの間でトラフィックをプライベートにルーティングできます。 ピアリングされた VNet 内の仮想マシンは、同じネットワーク内にあるかのように相互に通信できます。 これらの仮想ネットワークは、同じリージョン内にあっても異なるリージョン内にあってもかまいません (グローバル VNet ピアリングとも呼ばれます)。 VNet ピアリング接続は、Azure サブスクリプション間で作成することもできます。
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>別のリージョンの VNet へのピアリング接続を作成できますか。
-はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、Azure のすべてのパブリック リージョンで使用できます。 Azure のパブリック リージョンからナショナル クラウドにグローバルにピアリングすることはできません。 現在、グローバル ピアリングはナショナル クラウドでは使用できません。
+はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、Azure のすべてのパブリック リージョンと中国のクラウド リージョンで使用できます。 Azure のパブリック リージョンからナショナル クラウド リージョンにグローバルにピアリングすることはできません。 現在、グローバル ピアリングは Government クラウドでは使用できません。
+
+### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>グローバル VNet ピアリングとロード バランサーに関連する制約は何ですか?
+2 つの仮想ネットワークが異なるリージョンにある場合 (グローバル VNet ピアリング)、Basic Load Balancer を使用するリソースには接続できません。 Standard Load Balancer を使用するリソースには接続できます。
+次のリソースは Basic Load Balancer を使用しています。つまり、グローバル VNet ピアリングを介してそれらと通信することはできません。
+- Basic Load Balancer の背後にある VM
+- Basic Load Balancer を使用する VM Scale Sets 
+- Redis Cache 
+- Application Gateway (v1) SKU
+- Service Fabric
+- SQL Always-on
+- SQL MI
+- API Managemenet
+- ADDS
+- Logic Apps
+- HD Insight
+-   Azure Batch
+- AKS
+- App Service 環境
+
+ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>仮想ネットワークが別の Azure Active Directory テナント内のサブスクリプションに属する場合、VNet ピアリングを有効にできますか。
 はい。 サブスクリプションが別の Azure Active Directory テナントに属する場合、(ローカルまたはグローバルのどちらでも) VNet ピアリング を確立できます。 これは、PowerShell または CLI を使用して行うことができます。 portal はまだサポートされていません。
@@ -259,7 +285,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 ## <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>仮想ネットワーク TAP はどの Azure リージョンで利用できますか。
-開発者向けプレビューの期間中、機能は米国中西部リージョンで使用できます。 監視対象のネットワーク インターフェイス、仮想ネットワーク TAP リソース、およびコレクターまたは分析ソリューションは、同じリージョンにデプロイする必要があります。
+仮想ネットワーク TAP プレビューは、すべての Azure リージョンで利用できます。 監視対象のネットワーク インターフェイス、仮想ネットワーク TAP リソース、およびコレクターまたは分析ソリューションは、同じリージョンにデプロイする必要があります。
 
 ### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>仮想ネットワーク TAP では、ミラー化されたパケットに対するフィルター処理機能がサポートされていますか。
 仮想ネットワーク TAP のプレビュー版では、フィルター処理機能はサポートされていません。 TAP 構成をネットワーク インターフェイスに追加すると、ネットワーク インターフェイス上のすべてのイングレス トラフィックとエグレス トラフィックのディープ コピーが、TAP のターゲットにストリーミングされます。
@@ -272,7 +298,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>ネットワーク インターフェイスで仮想ネットワーク TAP 構成を有効にする場合、運用環境のトラフィックのパフォーマンスについて考慮することがありますか。
 
-仮想ネットワーク TAP は開発者プレビュー段階です。 プレビュー期間中は、サービス レベル アグリーメントはありません。 運用環境のワークロードでは機能を使用しないでください。 TAP 構成で仮想マシンのネットワーク インターフェイスを有効にすると、運用トラフィックを送信するために仮想マシンに割り当てられている Azure ホスト上の同じリソースを使用して、ミラーリング機能が実行され、ミラー化されたパケットが送信されます。 運用トラフィックとミラー化されたトラフィックを送信するのに十分なリソースを仮想マシンが利用できるように、[Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切な仮想マシン サイズを選択してください。
+仮想ネットワーク TAP はプレビュー段階です。 プレビュー期間中は、サービス レベル アグリーメントはありません。 運用環境のワークロードでは機能を使用しないでください。 TAP 構成で仮想マシンのネットワーク インターフェイスを有効にすると、運用トラフィックを送信するために仮想マシンに割り当てられている Azure ホスト上の同じリソースを使用して、ミラーリング機能が実行され、ミラー化されたパケットが送信されます。 運用トラフィックとミラー化されたトラフィックを送信するのに十分なリソースを仮想マシンが利用できるように、[Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切な仮想マシン サイズを選択してください。
 
 ### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>仮想ネットワーク TAP では、[Linux](create-vm-accelerated-networking-cli.md) または [Windows](create-vm-accelerated-networking-powershell.md) に対する高速ネットワークはサポートされていますか。
 
@@ -323,7 +349,7 @@ VNet サービス エンドポイントは、Azure サービス リソースを�
 Azure サービスへのアクセスを 1 つの仮想ネットワーク内または複数の仮想ネットワークにまたがる複数のサブネットに限定するには、サブネットごとに個別にネットワーク側でサービス エンドポイントを有効にしてから、Azure サービス側で適切な VNet ACL を設定することによって、Azure サービス リソースへのアクセスをすべてのサブネットに限定します。
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>仮想ネットワークから Azure サービスへの送信トラフィックをフィルター処理しながら、サービス エンドポイントを使用するには、どうすればよいですか。
-仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、VNet ACL を使用してこのサブネットのみに Azure サービス リソースへのアクセスを限定します。 また、このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
+仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、VNet ACL を使用してこのサブネットのみに Azure サービス リソースへのアクセスを限定します。 また、このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)に関するページを参照してください。
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>仮想ネットワーク アクセス制御リスト (ACL) が有効になっている Azure サービス アカウントに、VNet の外部からアクセスするとどうなりますか。
 HTTP 403 または HTTP 404 エラーが返されます。
@@ -344,7 +370,7 @@ Azure サービス アカウントの削除は独立した操作であり、ネ�
 仮想ネットワーク サービス エンドポイントが有効である場合、仮想ネットワークのサブネット内にあるリソースの送信元 IP アドレスは、Azure サービスへのトラフィックで、パブリック IPV4 アドレスから Azure 仮想ネットワークのプライベート IP アドレスに切り替えられます。 Azure サービスで以前にパブリック IPV4 アドレスに対して設定されている特定の IP ファイアウォールが失敗する可能性があることに注意してください。 
 
 ### <a name="does-service-endpoint-route-always-take-precedence"></a>サービス エンドポイントのルートは常に優先されますか。
-サービス エンドポイントでは、BGP ルートより優先されるシステム ルートが追加され、サービス エンドポイントのトラフィックに対して最適なルーティングが提供されます。 サービス エンドポイントでは常に、ユーザーの仮想ネットワークから Microsoft Azure のバックボーン ネットワーク上のサービスへのサービス トラフィックが、直接受け取られます。 Azure でのルートの選択方法について詳しくは、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md)」をご覧ください。
+サービス エンドポイントでは、BGP ルートより優先されるシステム ルートが追加され、サービス エンドポイントのトラフィックに対して最適なルーティングが提供されます。 サービス エンドポイントでは常に、ユーザーの仮想ネットワークから Microsoft Azure のバックボーン ネットワーク上のサービスへのサービス トラフィックが、直接受け取られます。 Azure でのルートの選択方法の詳細については、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md)」を参照してください。
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>サービス エンドポイントではサブネット上の NSG はどのように動作しますか。
 Azure サービスに到達するには、NSG で送信接続を許可する必要があります。 NSG がすべてのインターネット送信トラフィックに対して開かれている場合、サービス エンドポイントのトラフィックは動作するはずです。 サービス タグを使用して、サービス IP にみに送信トラフィックを制限することもできます。  

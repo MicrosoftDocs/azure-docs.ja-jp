@@ -3,24 +3,24 @@ title: Web サービスでデータをインポート/エクスポートする -
 description: データのインポート モジュールとデータのエクスポート モジュールを使用して、Web サービスとデータを送受信する方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 28d16bce6dbb5063c085e8c4393777ee9d152768
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251387"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092040"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>データのインポート モジュールとエクスポート モジュールを使用する Azure Machine Learning Studio Web サービスをデプロイする
 
@@ -44,9 +44,9 @@ Azure SQL テーブルからデータを読み取るには:
 5. [プロパティ] ウィンドウで、 **[Azure SQL Database]** in the **[Azure SQL Database]** を選択します。
 6. **[データベース サーバー名]**、**[データベース名]**、**[ユーザー名]**、**[パスワード]** の各フィールドに、データベースの適切な情報を入力します。
 7. データベースのクエリ フィールドに、次のクエリを入力します。
-   
+
      select [age],
-   
+
         [workclass],
         [fnlwgt],
         [education],
@@ -68,17 +68,17 @@ Azure SQL テーブルからデータを読み取るには:
 次に、Web サービスの展開元の予測実験を設定します。
 
 1. 実験キャンバスの下部で、**[Web サービスの設定]** をクリックして **[予測 Web サービス] \(推奨)** を選択します。
-2. 予測実験から *Web サービス入力モジュール*と *Web サービス出力モジュール*を削除します。 
+2. 予測実験から *Web サービス入力モジュール*と *Web サービス出力モジュール*を削除します。
 3. コンポーネントの検索ボックスで、「エクスポート」と入力します。
 4. 結果の一覧から、 *データのエクスポート* モジュールを実験キャンバスに追加します。
-5. *モデルのスコア付け*モジュールの出力と*データのエクスポート* モジュールの入力を接続します。 
+5. *モデルのスコア付け*モジュールの出力と*データのエクスポート* モジュールの入力を接続します。
 6. [プロパティ] ウィンドウで、データの移動先ドロップダウンから **[Azure SQL Database]** を選択します。
 7. **[データベース サーバー名]**、**[データベース名]**、**[サーバー ユーザー アカウント名]**、**[サーバー ユーザー アカウント パスワード]** の各フィールドに、データベースの適切な情報を入力します。
 8. **[保存する列のコンマ区切りリスト]** フィールドで、「スコア付けラベル」と入力します。
 9. **[データ テーブル名] フィールド**で、「dbo.ScoredLabels」と入力します。 テーブルが存在しない場合、テーブルは実験を実行したとき、または Web サービスが呼び出されたときに作成されます。
 10. **[データベース列のコンマ区切りリスト]** フィールドで、「スコア付けラベル」と入力します。
 
-最終的な Web サービスを呼び出すアプリケーションを作成する場合は、実行時に別の入力クエリまたは変換先テーブルを指定します。 これらの入力と出力を構成するために、Web サービス パラメーターの機能を使用して*データのインポート* モジュールの*データソース* プロパティと*データのエクスポート* モード データの変換先プロパティを設定できます。  Web サービス パラメーターの詳細については、Cortana Intelligence と Machine Learning ブログの [AzureML Web サービス パラメーターに関するエントリ](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) を参照してください。
+最終的な Web サービスを呼び出すアプリケーションを作成する場合は、実行時に別の入力クエリまたは変換先テーブルを指定します。 これらの入力と出力を構成するために、Web サービス パラメーターの機能を使用して*データのインポート* モジュールの*データソース* プロパティと*データのエクスポート* モード データの変換先プロパティを設定できます。  Web サービス パラメーターの詳細については、Cortana Intelligence と Machine Learning ブログの [Azure Machine Learning Studio Web サービス パラメーターに関するエントリ](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) を参照してください。
 
 クエリのインポートおよび変換先テーブルの Web サービス パラメーターを構成するには:
 
@@ -108,22 +108,22 @@ Web サービスとして予測実験をデプロイできるようになりま�
 7. C# サンプル コードをコピーして Program.cs ファイルに貼り付け、BLOB ストレージへの参照をすべて削除します。
 8. *apiKey* 変数の値を、以前に保存した API キーで更新します。
 9. 要求の宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合は、元のクエリを使用しますが、新しいテーブル名を定義します。
-   
-        var request = new BatchExecutionRequest() 
-        {           
+
+        var request = new BatchExecutionRequest()
+        {
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
             }
         };
-10. アプリケーションを実行します。 
+10. アプリケーションを実行します。
 
 実行が完了すると、新しいテーブルがスコア付けの結果を含むデータベースに追加されます。
 
 ### <a name="deploy-a-new-web-service"></a>新しい Web サービスのデプロイ
 
-> [!NOTE] 
-> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。 
+> [!NOTE]
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。
 
 新しい Web サービスとしてデプロイし、それを使用するアプリケーションを作成します。
 
@@ -136,9 +136,9 @@ Web サービスとして予測実験をデプロイできるようになりま�
 7. C# サンプル コードをコピーして Program.cs ファイルに貼り付けます。
 8. *apiKey* 変数の値を、**[Basic consumption info (基本的な実行情報)]** セクションにある**プライマリ キー**を使用して更新します。
 9. *scoreRequest* 宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合は、元のクエリを使用しますが、新しいテーブル名を定義します。
-   
+
         var scoreRequest = new
-        {       
+        {
             Inputs = new Dictionary<string, StringTable>()
             {
             },
@@ -147,5 +147,5 @@ Web サービスとして予測実験をデプロイできるようになりま�
                 { "Table", "dbo.ScoredTable3" },
             }
         };
-10. アプリケーションを実行します。 
+10. アプリケーションを実行します。
 

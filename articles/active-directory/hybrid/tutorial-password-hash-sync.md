@@ -4,21 +4,22 @@ description: パスワード ハッシュの同期を使用してハイブリッ
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/17/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 45379f8f955c50e2598ebcebd34e971c29b2c81c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103232"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 
@@ -76,12 +77,12 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 
 1. Hyper-V マネージャーで仮想マシンをダブルクリックします。
 2. [スタート] ボタンをクリックします。
-3.  "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
+3. "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
 4. Windows Server の起動画面で言語を選択し、**[次へ]** をクリックします。
 5. **[今すぐインストール]** をクリックします。
 6. ライセンス キーを入力し、**[次へ]** をクリックします。
 7. [ライセンス条項に同意します] をオンにし、**[次へ]** をクリックします。
-8. **[カスタム:Windows のみをインストールする (詳細設定)]** を選択します。
+8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
 9. **[次へ]** をクリックします
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
 
@@ -138,6 +139,7 @@ $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
 $Password = "Pass1w0rd"
+$SecureString = ConvertTo-SecureString $Password -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -148,7 +150,7 @@ Wait-Job -Name addFeature
 Get-WindowsFeature | Where installed >>$featureLogPath
 
 #Create New AD Forest
-Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $Password -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $SecureString -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Windows Server AD ユーザーを作成する
@@ -224,9 +226,9 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>いずれかのユーザーでサインインをテストする
 
-1.  [https://myapps.microsoft.com](httpss://myapps.microsoft.com) に移動します。
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。</br>
-![確認](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![確認](media/tutorial-password-hash-sync/verify1.png)</br>
 
 これでハイブリッド ID 環境を正常に設定できました。この環境は、Azure で提供されるサービスをテストしたり理解したりするために使用できます。
 

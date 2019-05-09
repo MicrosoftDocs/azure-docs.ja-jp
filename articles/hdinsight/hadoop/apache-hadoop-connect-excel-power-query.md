@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 981f17b6c2c33fd5bc3fdcb93d1b6c9938d27d8e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 687a9884c861b4cf72e51f9179e6c0b43968801d
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435380"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202909"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query を使用して Excel を Apache Hadoop に接続する
 マイクロソフトのビッグ データ ソリューションの重要な特徴の 1 つに、Azure HDInsight での Microsoft ビジネス インテリジェンス (BI) コンポーネントと Apache Hadoop クラスターの統合があります。 主な例は、Microsoft Power Query for Excel アドインを使用して Hadoop クラスターと関連付けられたデータを格納する Azure Storage アカウントに Excel を接続する機能です。 この記事では、Power Query をセットアップして、HDInsight で管理される Hadoop クラスターに関連付けられたデータの照会に使用する方法を説明します。
@@ -40,22 +40,22 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 2. 新しい空のブックを作成します。
 3. Excel のバージョンに応じて、次の手順を実行します。
 
-    - Excel 2016
+   - Excel 2016
 
-        - **[データ]** メニューをクリックし、**[Get & Transform Data]\(データの取得と変換\)** リボンの **[データの取得]** をクリックして、**[From Azure]\(Azure から\)**、**[From Azure HDInsight(HDFS)]\(Azure HDInsight(HDFS) から\)** を順にクリックします。
+     - **[データ]** メニューをクリックし、**[Get & Transform Data]\(データの取得と変換\)** リボンの **[データの取得]** をクリックして、**[From Azure]\(Azure から\)**、**[From Azure HDInsight(HDFS)]\(Azure HDInsight(HDFS) から\)** を順にクリックします。
 
-        ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
+       ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
-    - Excel 2013/2010
+   - Excel 2013/2010
 
-        - **[Power Query]** メニューをクリックし、**[Azure から]**、**[Microsoft Azure HDInsight から]** の順にクリックします。
+     - **[Power Query]** メニューをクリックし、**[Azure から]**、**[Microsoft Azure HDInsight から]** の順にクリックします。
    
-        ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
+       ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
        
-        **注:****[Power Query]** メニューが表示されない場合は、**[ファイル]** > **[オプション]** > **[アドイン]** をクリックして、ページ下部にある **[管理]** ボックスの一覧の **[COM アドイン]** を選択します。 **[設定]** をクリックして、Power Query for Excel アドインのボックスがオンになっていることを確認します。
+       **注:****[Power Query]** メニューが表示されない場合は、**[ファイル]** > **[オプション]** > **[アドイン]** をクリックして、ページ下部にある **[管理]** ボックスの一覧の **[COM アドイン]** を選択します。 **[設定]** をクリックして、Power Query for Excel アドインのボックスがオンになっていることを確認します。
        
-        **注:** Power Query では、**[その他のデータ ソース]** をクリックして、HDFS からデータをインポートすることもできます。
-4. **[アカウント名]** にクラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を入力し、**[OK]** をクリックします。 [既定のストレージ アカウント](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)またはリンクされたストレージ アカウントを指定できます。  書式は *https://&lt;StorageAccountName>.blob.core.windows.net/* です。
+       **注:** Power Query では、**[その他のデータ ソース]** をクリックして、HDFS からデータをインポートすることもできます。
+4. **[アカウント名]** にクラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を入力し、**[OK]** をクリックします。 既定のストレージ アカウントまたはリンクされたストレージ アカウントを指定できます。  書式は *https://&lt;StorageAccountName>.blob.core.windows.net/* です。
 5. **アカウント キー**に BLOB ストレージ アカウントのキーを入力し、**[保存]** をクリックします。 (アカウント情報を入力するのは、最初にこのストアにアクセスするときだけです。)
 6. クエリ エディターの左側にある **[ナビゲーター]** ウィンドウで、BLOB ストレージ コンテナーの名前をダブルクリックします。 既定で、コンテナー名はクラスター名と同じです。
 7. **[名前]** 列 (フォルダーのパスは **../hive/warehouse/hivesampletable/**) で **HiveSampleData.txt** を見つけて、HiveSampleData.txt の左側の **[バイナリ]** をクリックします。 HiveSampleData.txt はすべてのクラスターに用意されています。 必要に応じて、独自のファイルを使用できます。

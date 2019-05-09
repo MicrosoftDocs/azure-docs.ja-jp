@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 1d32198b9f15e168899b1dfe482d42d48c7b4277
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 5eaf29623a18f7347ad287e4b8389667f4b4e272
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526727"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467562"
 ---
 # <a name="using-the-azure-importexport-tool"></a>Azure Import/Export ツールの使用 
 

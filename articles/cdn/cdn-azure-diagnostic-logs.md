@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2beb5aa7218df25a1af87411d9481d30b259c353
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256731"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881131"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -31,11 +31,11 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
  
 この機能は、すべての価格レベルの CDN エンドポイントで使用できます。 
 
-Azure 診断ログにより、基本的な使用メトリックを CDN エンドポイントからさまざまなソースにエクスポートして、それらをカスタマイズした方法で使用できるようになります。 たとえば、次の種類のデータのエクスポートを実行できます。
+Azure Diagnostics ログにより、基本的な使用メトリックを CDN エンドポイントからさまざまなソースにエクスポートして、それらをカスタマイズした方法で使用できるようになります。 たとえば、次の種類のデータのエクスポートを実行できます。
 
 - BLOB ストレージへのデータのエクスポート、CSV へのエクスポート、Excel でのグラフの生成。
 - イベント ハブへのデータのエクスポートと、他の Azure サービスのデータとの関連付け。
-- ログ分析へのデータのエクスポートと、自分の Log Analytics ワークスペースでのデータ表示
+- ログ分析へのデータのエクスポートと、自分の Azure Monitor ログのワークスペースでのデータ表示
 
 以下の図は、データの通常の CDN コア分析ビューを示します。
 
@@ -45,11 +45,13 @@ Azure 診断ログにより、基本的な使用メトリックを CDN エンド
 
 診断ログの詳細については、[診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)に関するページを参照してください。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="enable-logging-with-the-azure-portal"></a>Azure Portal を使用したログの有効化
 
 CDN コア分析を使用してログ記録を有効にするには、次の手順に従います。
 
-[Azure Portal](http://portal.azure.com) にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
+[Azure Portal](https://portal.azure.com) にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
 
 1. Azure Portal で、**CDN プロファイル** に移動してください。
 
@@ -85,15 +87,15 @@ CDN コア分析を使用してログ記録を有効にするには、次の手�
 
 5. 診断ログの設定が終わったら、**保存**を選択します。
 
-### <a name="logging-with-log-analytics"></a>Log Analytics によるログ記録
+### <a name="logging-with-azure-monitor"></a>Azure Monitor でのログ記録
 
-Log Analytics を使用してログを保存するには、次の手順に従います。
+Azure Monitor を使用してログを保存するには、次の手順に従います。
 
 1. **診断ログ**ページで、**Log Analytics** への送信を選択します。 
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. **構成**を選択して Log Analytics ログ記録を構成します。 
+2. **構成** を選択して Azure Monitor ログ記録を構成します。 
 
    **[Log Analytics ワークスペース]** ページが表示されます。
 
@@ -133,7 +135,7 @@ Log Analytics を使用してログを保存するには、次の手順に従い
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    これで、Log Analytics ワークスペースがデータをログ記録する準備ができました。 そのデータを使用するためには、[Log Analytics ソリューション](#consuming-diagnostics-logs-from-a-log-analytics-workspace)を使用する必要があります。これについては、この記事の中で後で説明します。
+    これで、Log Analytics ワークスペースがデータをログ記録する準備ができました。 そのデータを使用するためには、[Azure Monitor ログのソリューション](#consuming-diagnostics-logs-from-a-log-analytics-workspace) を使用する必要があります。これについては、この記事の中で後で説明します。
 
 ログ データの遅延の詳細については、「[Log data delays](#log-data-delays)」(ログ データの遅延) を参照してください。
 
@@ -141,24 +143,26 @@ Log Analytics を使用してログを保存するには、次の手順に従い
 
 以下の例は、Azure PowerShell コマンドレットによる診断ログを有効にする方法を示しています。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>ストレージ アカウントの診断ログを有効にする
 
 1. ログインしてサブスクリプションを選択します。
 
-    Connect-AzureRmAccount 
+    Connect-AzAccount 
 
     Select-AzureSubscription -SubscriptionId 
 
 2. ストレージ アカウントの診断ログを有効にするには、次のコマンドを入力します。
 
     ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
+    Set-AzDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
     ```
 
 3. Log Analytics ワークスペースの診断ログを有効にするには、次のコマンドを入力します。
 
     ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
+    Set-AzDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
     ```
 
@@ -166,7 +170,7 @@ Log Analytics を使用してログを保存するには、次の手順に従い
 このセクションでは、CDN コア分析のスキーマと、これが Microsoft Azure Storage アカウントの内部でどのように編成されているかについて説明し、ログを CSV ファイルにダウンロードするためのサンプル コードを提供します。
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーの使用
-Azure ストレージ アカウントからコア分析データにアクセスするには、ストレージ アカウント内のコンテンツにアクセスするためのツールが必要です。 市場にはいくつかのツールがありますが、お勧めするツールは Microsoft Azure ストレージ エクスプローラーです。 ツールをダウンロードするには、「[Azure Storage Explorer](http://storageexplorer.com/)」を参照してください。 ソフトウェアをダウンロードしてインストールしたら、CDN 診断ログの保存先として構成したのと同じ Microsoft Azure Storage アカウントを使用するように構成します。
+Azure ストレージ アカウントからコア分析データにアクセスするには、ストレージ アカウント内のコンテンツにアクセスするためのツールが必要です。 市場にはいくつかのツールがありますが、お勧めするツールは Microsoft Azure ストレージ エクスプローラーです。 ツールをダウンロードするには、「[Azure Storage Explorer](https://storageexplorer.com/)」を参照してください。 ソフトウェアをダウンロードしてインストールしたら、CDN 診断ログの保存先として構成したのと同じ Microsoft Azure Storage アカウントを使用するように構成します。
 
 1.  **Microsoft Azure ストレージ エクスプローラー**を開きます
 2.  ストレージ アカウントを見つけます
@@ -202,16 +206,16 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 
 このツールを使用する方法を次に示します。
 
-1.  次の GitHub リンクにアクセスします: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  次の GitHub リンクにアクセスします: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  コードをダウンロードします。
 3.  指示に従ってコンパイルして構成します。
 4.  ツールを実行します。
 5.  生成される CSV ファイルには単純なフラット階層の分析データが示されています。
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースからの診断ログの使用
-Log Analytics は、クラウドやオンプレミスの環境を監視する Azure サービスであり、可用性やパフォーマンスを維持できます。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 
+Azure Monitor は、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持する Azure サービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 
 
-Log Analytics を使用するには、Azure Log Analytics ワークスペースに対する[ログ記録を有効にする](#enable-logging-with-azure-storage)必要があります。これについては、この記事の前半で説明しています。
+Azure Monitor を使用するには、Azure Log Analytics ワークスペースに対する[ ログ記録を有効にする](#enable-logging-with-azure-storage) 必要があります。これについては、この記事の前半で説明しています。
 
 ### <a name="using-the-log-analytics-workspace"></a>Log Analytics ワークスペースの使用
 
@@ -223,11 +227,11 @@ Log Analytics を使用するには、Azure Log Analytics ワークスペース�
 
 管理ソリューションを使用して、さまざまな方法でデータを表示できます。 管理ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)から取得できます。
 
-各ソリューション下部の**今すぐ入手する**リンクを選択し、Azure マーケットプレースから管理ソリューションをインストールできます。
+各ソリューション下部の**今すぐ入手する** リンクを選択し、Azure マーケットプレースから管理ソリューションをインストールできます。
 
-### <a name="add-a-log-analytics-cdn-management-solution"></a>Log Analytics CDN 管理ソリューションを追加する
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Azure Monitor CDN 監視ソリューションを追加する
 
-Log Analytics 管理ソリューションを追加するには、次の手順に従います。
+Azure Monitor 監視ソリューションを追加するには、次の手順に従います。
 
 1.   Azure サブスクリプションで Azure Portal にサインインし、ダッシュボードに移動します。
     ![Azure ダッシュボード](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
@@ -290,7 +294,7 @@ Log Analytics 管理ソリューションを追加するには、次の手順に
 
 ### <a name="offers-and-pricing-tiers"></a>プランと価格レベル
 
-[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)で管理ソリューションのプランと価格レベルを確認できます。
+[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)で管理ソリューションのプランと価格レベルを確認できます。
 
 ### <a name="customizing-views"></a>ビューのカスタマイズ
 
@@ -441,7 +445,7 @@ Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai
 
 * [Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Azure CDN の補助ポータルを使用したコア分析](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

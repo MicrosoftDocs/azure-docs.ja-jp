@@ -3,16 +3,16 @@ title: Azure Key Vault のマネージド ストレージ アカウント - Powe
 description: マネージド ストレージ アカウント機能によって、Azure Key Vault と Azure ストレージ アカウント間がシームレスに統合されます。
 ms.topic: conceptual
 ms.service: key-vault
-author: bryanla
-ms.author: bryanla
-manager: mbaldwin
-ms.date: 11/28/2018
-ms.openlocfilehash: 7effcc82a737fd2914f06a2c475cece94adc84f3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+author: msmbaldwin
+ms.author: mbaldwin
+manager: barbkess
+ms.date: 03/01/2019
+ms.openlocfilehash: 9b6089aa828b5667f100c1a8cbff3e69345e4512
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841797"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405099"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault のマネージド ストレージ アカウント - PowerShell
 
@@ -21,6 +21,8 @@ ms.locfileid: "52841797"
 > - ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証する。 
 > - Azure 上で実行する場合に [Azure AD マネージド ID](/azure/active-directory/managed-identities-azure-resources/) を使用する。 マネージド ID を使用すると、クライアント認証を併用し、アプリケーションに資格情報を保存する必要がなくなります。
 > - 承認の管理にロール ベースのアクセス制御 (RBAC) を使用する (これも Key Vault でサポートされています)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [Azure ストレージ アカウント](/azure/storage/storage-create-storage-account)は、アカウント名とキーで構成される資格情報を使用します。 キーは自動生成され、暗号キーではなく "パスワード" として機能します。 Key Vault は、このようなストレージ アカウント キーを [Key Vault のシークレット](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)として保存することで管理できます。 
 
@@ -61,13 +63,13 @@ $keyVaultName = "kvContoso"
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
 # Authenticate your PowerShell session with Azure AD, for use with Azure Resource Manager cmdlets
-$azureProfile = Connect-AzureRmAccount
+$azureProfile = Connect-AzAccount
 
 # Get a reference to your Azure storage account
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
 
 # Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
-New-AzureRmRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
+New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
 
 ロールの割り当てが成功すると、次のような出力が表示されます。
@@ -95,7 +97,8 @@ Key Vault が既にストレージ アカウントのロールに追加されて
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get,list,delete,set,update,regeneratekey,recover,backup,restore,purge
+
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
 ```
 
 ストレージ アカウントのアクセス許可は、Azure portal のストレージ アカウントの [アクセス ポリシー] ページで使用できないことに注意してください。
@@ -106,7 +109,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azu
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
-Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
+Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
 
 キーの再生成を行わないストレージ アカウントの追加に成功すると、次の例のような出力が表示されます。
@@ -131,7 +134,7 @@ Key Vault でストレージ アカウント キーを定期的に再生成す�
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
-Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
+Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 
 キーの再生成を行うストレージ アカウントの追加に成功すると、次の例のような出力が表示されます。
@@ -154,4 +157,4 @@ Tags                :
 
 - [マネージド ストレージ アカウント キーのサンプル](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
-- [Key Vault PowerShell リファレンス](/powershell/module/azurerm.keyvault/)
+- [Key Vault PowerShell リファレンス](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

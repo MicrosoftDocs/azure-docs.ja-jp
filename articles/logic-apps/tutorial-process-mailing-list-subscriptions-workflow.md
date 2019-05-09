@@ -59,7 +59,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **名前** | LA-MailingList | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
@@ -124,7 +124,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![承認依頼メールの設定](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **To** | <*approver-email-address*> | 承認者のメール アドレス。 テスト目的のため、ご自身のアドレスを使ってください。 | 
    | **ユーザー オプション** | Approve, Reject | 承認者が選ぶことのできる回答の選択肢。 既定では、承認者が回答として [Approve] または [Reject] を選択できます。 | 
@@ -245,7 +245,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![成功時に送信されるメールの情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **To** | <*your-email-address*> | 成功時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 | 
    | **[件名]** | <*subject-for-success-email*> | 成功時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Success! Member added to 'test-members-ML': **<メール アドレス>**" | 
@@ -270,7 +270,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![失敗時に送信されるメールの情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **To** | <*your-email-address*> | 失敗時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 | 
    | **[件名]** | <*subject-for-failure-email*> | 失敗時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Failed, member not added to 'test-members-ML': **<メール アドレス>**" | 

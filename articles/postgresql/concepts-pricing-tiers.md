@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.openlocfilehash: 3760e2a5ccae1d21574412ec223cade03bebda1e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/01/2019
+ms.openlocfilehash: a8dbb2c06d3622dcde19f298ee12fa49afb4cd4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548937"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532050"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -43,42 +43,50 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 
 > [!IMPORTANT]
 > 2018 年 12 月 12 日以降、ブラジル南部、カナダ中部、カナダ東部、アジア太平洋、米国東部 2、インド中部、インド西部、西日本、米国中北部、米国西部の新規のお客様は、第 4 世代コンピューティング サーバーをプロビジョニングできなくなります。 これらのリージョンでは、2019 年 2 月 1 日以降、前に作成された第 4 世代コンピューティング サーバーが第 5 世代コンピューティングに移行されます。
+>
+> [!IMPORTANT]
+> 2019 年 2 月 19 日以降、米国中部、米国東部、東日本、北ヨーロッパ、米国中南部、東南アジア、西ヨーロッパの新規のお客様は、第 4 世代コンピューティング サーバーをプロビジョニングできなくなります。 これらのリージョンでは、2019 年 4 月 1 日以降、以前に作成された第 4 世代コンピューティング サーバーが第 5 世代コンピューティングに移行されます。
 
 | **Azure のリージョン** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
 | 米国中央部 |  | X |
 | 米国東部 |  | X |
-| 米国東部 2 | X | X |
-| 米国中北部 | X | X |
+| 米国東部 2 |  | X |
+| 米国中北部 |  | X |
 | 米国中南部 | X | X |
-| 米国西部 | X | X |
+| 米国西部 |  | X |
 | 米国西部 2 |  | X |
-| カナダ中部 | X | X |
-| カナダ東部 | X | X |
-| ブラジル南部 | X | X |
+| ブラジル南部 |  | X |
+| カナダ中部 |  | X |
+| カナダ東部 |  | X |
 | 北ヨーロッパ | X | X |
 | 西ヨーロッパ |  | X |
 | フランス中部 |  | X |
-| 英国西部 |  | X |
 | 英国南部 |  | X |
-| 東アジア | X | X |
+| 英国西部 |  | X |
+| 東アジア |  | X |
 | 東南アジア | X | X |
 | オーストラリア東部 |  | X |
 | オーストラリア中部 |  | X |
 | オーストラリア中部 2 |  | X |
 | オーストラリア南東部 |  | X |
-| インド中部 | X | X |
-| インド西部 | X | X |
+| インド中部 |  | X |
 | インド南部 |  | X |
+| インド西部 |  | X |
 | 東日本 | X | X |
-| 西日本 | X | X |
+| 西日本 |  | X |
 | 韓国中部 |  | X |
 | 韓国南部 |  | X |
+| 中国東部 1 | X |  |
+| 中国東部 2 |  | X |
+| 中国北部 1 | X |  |
+| 中国北部 2 |  | X |
 | ドイツ中部 |  | X |
 | US DoD Central  | X |  |
 | US DoD East  | X |  |
 | 米国政府アリゾナ |  | X |
 | 米国政府テキサス |  | X |
+| 米国政府バージニア州 |  | X |
 
 ## <a name="storage"></a>Storage
 
@@ -124,5 +132,5 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 ## <a name="next-steps"></a>次の手順
 
 - [ポータルで PostgreSQL サーバーを作成](tutorial-design-database-using-azure-portal.md)する方法を確認します。
-- [Azure CLI での Azure Database for PostgreSQL サーバーの監視とスケーリング](scripts/sample-scale-server-up-or-down.md)する方法を確認します。
-- [サービスの制限事項](concepts-limits.md)を確認します。 
+- [サービスの制限](concepts-limits.md)について確認します。 
+- [読み取りレプリカを使用してスケールアウトする](howto-read-replicas-portal.md)方法を確認します。

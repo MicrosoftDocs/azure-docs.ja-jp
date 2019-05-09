@@ -3,7 +3,7 @@ title: Azure AD Connect のパフォーマンスに影響を及ぼす因子
 description: このドキュメントでは、さまざまな因子が Azure AD Connect プロビジョニング エンジンにどのように影響を及ぼすかについて説明します。 これらの因子は、組織がその同期要件を確実に満たす Azure AD Connect デプロイを計画する際に役立ちます。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: cdca1b31f9b6cf10113dc0dba70b8f8991bafa2b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093971"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192576"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Azure AD Connect のパフォーマンスに影響を及ぼす因子
 
@@ -41,7 +42,7 @@ Azure AD Connect は、Active Directory を Azure AD に同期します。 こ�
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-プロビジョニング エンジンは、各 Active Directory フォレストと Azure AD に接続しています。 各ディレクトリから情報を読み取るプロセスを、インポートと言います。 エクスポートは、プロビジョニング エンジンからディレクトリを更新することを指します。 同期は、プロビジョニング エンジン内のオブジェクトのフロー方法の規則を評価します。 詳細については、「[Azure AD Connect sync: アーキテクチャの概要](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)」を参照してください。
+プロビジョニング エンジンは、各 Active Directory フォレストと Azure AD に接続しています。 各ディレクトリから情報を読み取るプロセスを、インポートと言います。 エクスポートは、プロビジョニング エンジンからディレクトリを更新することを指します。 同期は、プロビジョニング エンジン内のオブジェクトのフロー方法の規則を評価します。 詳細については、「[Azure AD Connect 同期: アーキテクチャの概要](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)」を参照してください。
 
 Azure AD Connect では、次のステージング領域、規則、およびプロセスを使用して、Active Directory から Azure AD への同期を許可します。
 

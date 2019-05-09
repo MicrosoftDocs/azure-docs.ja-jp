@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 66d816795ec06891aafce73036d7aea9bb52b2c8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994894"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay ライセンスの要件と構成 
 

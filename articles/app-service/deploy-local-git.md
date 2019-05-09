@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2c547eba931e23b6ffc7cae176e19959d43bcf5e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602496"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405030"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -44,7 +44,7 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-from-local-git-with-kudu-builds"></a>Kudu ビルドを使用して ローカル Git からデプロイする
+## <a name="deploy-with-kudu-builds"></a>Kudu ビルドを使用してデプロイする
 
 Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にする最も簡単な方法は、Cloud Shell を使用することです。
 
@@ -102,7 +102,7 @@ git push azure master
 
 アプリに移動して、コンテンツがデプロイされていることを確認します。
 
-## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Azure DevOps Services ビルドを使用してローカル Git からデプロイする
+## <a name="deploy-with-azure-devops-builds"></a>Azure DevOps ビルドを使用してデプロイする
 
 > [!NOTE]
 > App Service で必要な Azure Pipelines を Azure DevOps Services 組織に作成するには、Azure アカウントが Azure サブスクリプションの**所有者**ロールを持っている必要があります。
@@ -110,20 +110,18 @@ git push azure master
 
 Kudu ビルド サーバーを使用したアプリへの ローカルGit のデプロイを有効にするには、[Azure Portal](https://portal.azure.com) でアプリに移動します。
 
-アプリ ページの左側のナビゲーションで、**[デプロイ センター]** > **[ローカル Git]** > **[継続]** をクリックします。 
+アプリ ページの左側のナビゲーションで、**[デプロイ センター]** > **[ローカル Git]** > **[継続]** をクリックします。
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-**[Azure DevOps Services Continuous Delivery]\(Azure DevOps Services 継続的デリバリー\)** > **[継続]** をクリックします。
+**[Azure Pipelines (プレビュー)]** > **[続行]** の順にクリックします。
 
-![](media/app-service-deploy-local-git/vsts-build-server.png)
+![](media/app-service-deploy-local-git/pipeline-builds.png)
 
-**[構成]** ページで、新しい Azure DevOps Services 組織を構成するか、既存の組織を指定します。 完了したら、**[続行]** をクリックします。
+**[構成]** ページで、新しい Azure DevOps 組織を構成するか、既存の組織を指定します。 完了したら、**[続行]** をクリックします。
 
 > [!NOTE]
-> 一覧にない既存の Azure DevOps Services 組織を使用する場合、[Azure DevOps Services 組織を Azure サブスクリプションにリンク](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)する必要があります。
-
-**[テスト]** ページで、ロード テストを有効にするかどうかを選択し、**[続行]** をクリックします。
+> 一覧にない既存の Azure DevOps 組織を使用する場合、[Azure DevOps Services 組織を Azure サブスクリプションにリンク](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)する必要があります。
 
 App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 デプロイ スロットを有効にするかどうかを選択し、**[続行]** をクリックします。
 

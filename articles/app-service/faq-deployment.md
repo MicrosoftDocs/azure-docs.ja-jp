@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549430"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350642"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure の Web Apps のデプロイに関するよくあるご質問
 
@@ -90,7 +90,7 @@ Azure クイック スタートは、お好きなデプロイ スタックと方
 
 Azure DevOps で継続的デプロイを使用するには、2 つの方法があります。
 
-*   Git プロジェクトを使用する。 そのリポジトリのデプロイ オプションを使用して、App Service 経由で接続します。
+*   Git プロジェクトを使用する。 デプロイ センターを使用して、App Service 経由で接続します。
 *   Team Foundation バージョン管理 (TFVC) プロジェクトを使用する。 App Service のビルド エージェントを使用してデプロイします。
 
 どちらの方法でも、コードの継続的デプロイは既存の開発者ワークフローとチェックイン プロシージャに依存します。 詳細と例については、次の記事をご覧ください。 

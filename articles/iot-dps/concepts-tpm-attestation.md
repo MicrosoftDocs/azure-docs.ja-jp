@@ -3,23 +3,23 @@ title: Azure IoT Hub Device Provisioning Service - TPM の構成証明
 description: この記事では、IoT Device Provisioning Service を使用して TPM 構成証明フローの概念について概説します。
 author: nberdy
 ms.author: nberdy
-ms.date: 04/23/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 07c5dbce0b98d1c197164f4fc77682f78ede57f0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146746"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59048879"
 ---
 # <a name="tpm-attestation"></a>TPM の構成証明
 
 Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サービスです。このサービスは、指定された IoT Hub にプロビジョニングするゼロタッチ デバイスの構成に使用されます。 Device Provisioning Service を利用すると、セキュリティで保護された方法で多数のデバイスをプロビジョニングできます。
 
-この記事では、[TPM](./concepts-device.md) を使用した場合の ID 構成証明プロセスについて説明します。 TPM は、トラステッド プラットフォーム モジュールの略で、一種のハードウェア セキュリティ モジュール (HSM) です。 この記事では、ディスクリート TPM、ファームウェア TPM、または統合された TPM を使用していると仮定します。 ソフトウェアでエミュレートされた TPM はプロトタイプの作成やテストには適していますが、ディスクリート TPM、ファームウェア TPM、または統合された TPM と同じレベルのセキュリティを提供することはできません。 実稼働環境でソフトウェア TPM を使用することはお勧めしません。 TPM の種類について詳しくは、[TPM の概要](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)に関するページをご覧ください。
+この記事では、[TPM](./concepts-device.md) を使用した場合の ID 構成証明プロセスについて説明します。 TPM は、トラステッド プラットフォーム モジュールの略で、一種のハードウェア セキュリティ モジュール (HSM) です。 この記事では、ディスクリート TPM、ファームウェア TPM、または統合された TPM を使用していると仮定します。 ソフトウェアでエミュレートされた TPM はプロトタイプの作成やテストには適していますが、ディスクリート TPM、ファームウェア TPM、または統合された TPM と同じレベルのセキュリティを提供することはできません。 実稼働環境でソフトウェア TPM を使用することはお勧めしません。 TPM の種類について詳しくは、[TPM の概要](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)に関するページをご覧ください。
 
 この記事は、HMAC キーをサポートする TPM 2.0 を使用したデバイスおよびその保証キーにのみ該当します。 認証に X.509 証明書を使用するデバイスは対象外です。 TPM は、業界で広く採用されている Trusted Computing Group の ISO 標準です。TPM の詳細については、[完全な TPM 2.0 仕様](https://trustedcomputinggroup.org/tpm-library-specification/)または [ISO/IEC 11889 仕様](https://www.iso.org/standard/66510.html)を参照してください。また、この記事は、公開キーおよび秘密キーのペアと、これらを使用して暗号化を行う方法について熟知していることを前提としています。
 

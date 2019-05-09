@@ -2,17 +2,17 @@
 title: Azure Event Grid でのイベントのフィルター処理
 description: Azure Event Grid サブスクリプションを作成するときにイベントをフィルター処理する方法について説明します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.author: tomfitz
-ms.openlocfilehash: 973b5d3f40968790dc6153ae91d1638cb83202ee
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.date: 01/21/2019
+ms.author: spelluru
+ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384379"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470629"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -107,7 +107,7 @@ ms.locfileid: "53384379"
 
 Event Grid スキーマ内のイベントの場合、キーには次の値を使用します。
 
-* ID
+* Id
 * トピック
 * Subject
 * EventType
@@ -129,7 +129,7 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 指定できる値は次のとおりです。
 
 * number
-* string
+* 文字列
 * ブール値
 * array
 
@@ -141,6 +141,7 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 * 文字列値あたり 512 文字
 * **in** 演算子および **not in** 演算子の値は 5 つ
 * キーの入れ子レベルは 1 つまでとします (data.key1 など)
+* カスタム イベント スキーマは、トップレベルのフィールドでのみフィルター処理できます。
 
 複数のフィルターで同じキーを使用できます。
 

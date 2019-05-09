@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 164f3b8ef42d07606d98d200fa9bebcd0add3d38
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 08eb7171249c42348877afedc80c6c6338265422
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319576"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861734"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -31,7 +31,7 @@ IoT Hub メッセージは、次のような構成です。
 
 * 非透過的なバイナリ本文。
 
-HTTPS プロトコルを使用して device-to-cloud メッセージを送信するとき、または cloud-to-device メッセージを送信するときに、プロパティ名と値に含めることができるのは、ASCII 英数字と `{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}` のみです。
+HTTPS プロトコルを使用して device-to-cloud メッセージを送信するとき、または cloud-to-device メッセージを送信するときに、プロパティ名と値に含めることができるのは、ASCII 英数字と ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` のみです。
 
 IoT Hub を使用した device-to-cloud メッセージングには、次のような特徴があります。
 
@@ -49,19 +49,18 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 
 | プロパティ | 説明 | ユーザーが設定可能 |
 | --- | --- | --- |
-| message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式: ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 | [はい] |
+| message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式:ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 | はい |
 | sequence-number |IoT Hub によって各 C2D メッセージに割り当てられる数値 (デバイスとキューごとに一意)。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
 | to |[C2D](iot-hub-devguide-c2d-guidance.md) メッセージで指定される宛先。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| absolute-expiry-time |メッセージの有効期限の日時。 | [はい] |
+| absolute-expiry-time |メッセージの有効期限の日時。 | はい |
 | iothub-enqueuedtime |IoT Hub が [cloud-to-device](iot-hub-devguide-c2d-guidance.md) メッセージを受信した日時。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| correlation-id |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 | [はい] |
+| correlation-id |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 | はい |
 | user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 | いいえ  |
-| iothub-ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 
-<!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | [はい] |
+| iothub-ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | はい |
 | iothub-connection-device-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **deviceId** が含まれます。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
 | iothub-connection-auth-generation-id |IoT Hub で D2C メッセージに対して設定される ID。 ( **デバイス ID のプロパティ** に従って) メッセージを送信したデバイスの [generationId](iot-hub-devguide-identity-registry.md#device-identity-properties)が含まれています。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
 | iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。 <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| iothub-creation-time-utc | デバイスでメッセージが作成された日時。 デバイスでこの値を明示的に設定する必要があります。 | [はい] |
+| iothub-creation-time-utc | デバイスでメッセージが作成された日時。 デバイスでこの値を明示的に設定する必要があります。 | はい |
 
 ## <a name="message-size"></a>メッセージ サイズ
 

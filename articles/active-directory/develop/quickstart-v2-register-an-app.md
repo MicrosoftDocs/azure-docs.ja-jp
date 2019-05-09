@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: bb2f701f-3bc3-4759-94a5-8b9d53a8a0b6
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,14 +17,15 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: c0bf5bbdf496a23a5ed66a149933f25a059984a9
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6221fb7575fc267030929b449cba48cff8563f27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122556"
 ---
-# <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>クイック スタート: Azure Active Directory v2.0 エンドポイントを使用してアプリを登録する
+# <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>クイック スタート:Azure Active Directory v2.0 エンドポイントを使用してアプリを登録する
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -35,16 +36,16 @@ Azure AD のシナリオと機能のすべてが、v2.0 エンドポイントで
 > [!NOTE]
 > 新しいアプリを登録する場合は、 Azure portal の新しい**アプリの登録 (プレビュー)** エクスペリエンスをお試しください。 使用するには、[アプリの登録 (プレビュー)](quickstart-register-app.md) に関するページを参照してください。
 
-## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>手順 1: Microsoft アプリケーション登録ポータルにサインインする
+## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>手順 1:Microsoft アプリケーション登録ポータルにサインインする
 
 1. [https://apps.dev.microsoft.com/](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) で Microsoft アプリ登録ポータルにアクセスします。
 1. Microsoft の個人または職場/学校アカウントのいずれかでサインインします。 いずれのアカウントもをお持ちでない場合は、新しい個人アカウントを新規登録します。
 1. サインアップできましたか? おそらく空の Microsoft アプリの一覧が表示されているはずです。 これを変更してみましょう。
 
-## <a name="step-2-register-an-app"></a>手順 2: アプリを登録する
+## <a name="step-2-register-an-app"></a>手順 2:アプリを登録します
 
 1. **[アプリの追加]** を選択し、名前を付けます。
-    ポータルにより、アプリにグローバルに一意のアプリケーション ID が割り当てられます。これは、後ほどコードで使用します。 アプリに API を呼び出すためのアクセス トークンが必要なサーバー側コンポーネントが含まれる場合 (Office、Azure、独自の Web API など)、**アプリケーションのシークレット**を作成することもできます。
+    ポータルにより、アプリにグローバルに一意のアプリケーション ID が割り当てられます。これは、後ほどコードで使用します。 API を呼び出すためのアクセス トークンが必要なサーバー側コンポーネントがアプリに含まれる場合 (Office、Azure、独自の Web API など)、**アプリケーションのシークレット**を作成することもできます。
 1. 次に、アプリで使用する**プラットフォーム**を追加します。
     * Web ベースのアプリの場合、サインイン メッセージを送信できる **リダイレクト URI** を指定します。
     * モバイル アプリの場合、自動的に作成される既定のリダイレクト URI をメモしておきます。
@@ -60,4 +61,4 @@ Azure AD のシナリオと機能のすべてが、v2.0 エンドポイントで
 
 Microsoft アプリを構築したら、いずれかの v2.0 quickstart2 を実行します。 以下に、推奨事項をいくつか示します。
 
-[!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
+[!INCLUDE [active-directory-v2-quickstart-table](~/includes/active-directory-v2-quickstart-table.md)]

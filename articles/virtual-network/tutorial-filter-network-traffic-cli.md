@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 27102f3523749802dc16a28e28f8859d35814990
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2c24634a42fd420eae204437418b82479869bbe5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952751"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525546"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>ネットワーク セキュリティ グループと Azure CLI を使用してネットワーク トラフィックをフィルター処理する
 
-ネットワーク セキュリティ グループを使用して、仮想ネットワーク サブネットとの間で送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、IP アドレス、ポート、およびプロトコルでネットワーク トラフィックをフィルター処理するセキュリティ規則が含まれています。 セキュリティ規則は、サブネットに展開されたリソースに適用されます。 この記事では、次のことについて説明します:
+ネットワーク セキュリティ グループを使用して、仮想ネットワーク サブネットとの間で送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、IP アドレス、ポート、およびプロトコルでネットワーク トラフィックをフィルター処理するセキュリティ規則が含まれています。 セキュリティ規則は、サブネットに展開されたリソースに適用されます。 この記事では、次のことについて説明します。
 
 * ネットワーク セキュリティ グループと規則を作成する
 * 仮想ネットワークを作成し、ネットワーク セキュリティ グループをサブネットに関連付ける
@@ -46,7 +46,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ### <a name="create-application-security-groups"></a>アプリケーション セキュリティ グループを作成する
 
-まず [az group create](/cli/azure/group#az_group_create) を使用して、この記事で作成したすべてのリソースのリソース グループを作成します。 次の例では、*eastus* の場所にリソース グループを作成します。 
+まず [az group create](/cli/azure/group) を使用して、この記事で作成したすべてのリソースのリソース グループを作成します。 次の例では、*eastus* の場所にリソース グループを作成します。 
 
 ```azurecli-interactive
 az group create \
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-[az network asg create](/cli/azure/network/asg#az_network_asg_create) で、アプリケーション セキュリティ グループを作成します。 アプリケーション セキュリティ グループを使用すると、同様のポート フィルター処理要件を持つサーバーをグループ化できます。 次の例では、2 つのアプリケーション セキュリティ グループを作成します。
+[az network asg create](/cli/azure/network/asg) で、アプリケーション セキュリティ グループを作成します。 アプリケーション セキュリティ グループを使用すると、同様のポート フィルター処理要件を持つサーバーをグループ化できます。 次の例では、2 つのアプリケーション セキュリティ グループを作成します。
 
 ```azurecli-interactive
 az network asg create \
@@ -70,7 +70,7 @@ az network asg create \
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-[az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsg* という名前のネットワーク セキュリティ グループを作成します。 
+[az network nsg create](/cli/azure/network/nsg) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsg* という名前のネットワーク セキュリティ グループを作成します。 
 
 ```azurecli-interactive 
 # Create a network security group
@@ -81,7 +81,7 @@ az network nsg create \
 
 ### <a name="create-security-rules"></a>セキュリティ規則を作成する
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) でセキュリティ規則を作成します。 次の例では、インターネットから *myWebServers* アプリケーション セキュリティ グループへの、ポート 80 および 443 経由の受信トラフィックを許可する規則を作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule) でセキュリティ規則を作成します。 次の例では、インターネットから *myWebServers* アプリケーション セキュリティ グループへの、ポート 80 および 443 経由の受信トラフィックを許可する規則を作成します。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -119,7 +119,7 @@ az network nsg rule create \
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 次の例では、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して仮想ネットワークを作成します。 次の例では、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -128,7 +128,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) で、仮想ネットワークにサブネットを追加します。 次の例では、*mySubnet* という名前のサブネットを仮想ネットワークに追加し、それに *myNsg* ネットワーク セキュリティ グループを関連付けます。
+[az network vnet subnet create](/cli/azure/network/vnet/subnet) で、仮想ネットワークにサブネットを追加します。 次の例では、*mySubnet* という名前のサブネットを仮想ネットワークに追加し、それに *myNsg* ネットワーク セキュリティ グループを関連付けます。
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -143,7 +143,7 @@ az network vnet subnet create \
 
 仮想ネットワークに 2 つの VM を作成して、後でトラフィックのフィルター処理を検証できるようにします。 
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、Web サーバーとして機能する VM を作成します。 `--asgs myAsgWebServers` オプションを指定すると、VM 用に作成するネットワーク インターフェイスが、*myAsgWebServers* アプリケーション セキュリティ グループのメンバーになります。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、Web サーバーとして機能する VM を作成します。 `--asgs myAsgWebServers` オプションを指定すると、VM 用に作成するネットワーク インターフェイスが、*myAsgWebServers* アプリケーション セキュリティ グループのメンバーになります。
 
 `--nsg ""` オプションを指定すると、VM の作成時に、作成するネットワーク インターフェイス用に既定のネットワーク セキュリティ グループが作成されるのを回避します。 この記事を効率化するために、パスワードが使用されています。 通常、キーは運用環境デプロイで使用されます。 キーを使用する場合は、残りの手順を実行するために、SSH エージェント転送も構成する必要があります。 詳細については、SSH クライアントのドキュメントを参照してください。 次のコマンドの `<replace-with-your-password>` を、使用するパスワードに置き換えます。
 
@@ -196,7 +196,7 @@ VM の作成には数分かかります。 VM が作成されたら、返され�
 
 ## <a name="test-traffic-filters"></a>トラフィック フィルターをテストする
 
-次のコマンドを使って、*myVmMgmt* VM との SSH セッションを作成します。 *<publicIpAddress>* を VM のパブリック IP アドレスに置き換えます。 上の例では、IP アドレスは *13.90.242.231* です。
+次のコマンドを使って、*myVmMgmt* VM との SSH セッションを作成します。 *\<publicIpAddress>* を VM のパブリック IP アドレスに置き換えます。 上の例では、IP アドレスは *13.90.242.231* です。
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -234,7 +234,7 @@ curl myVmWeb
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
+不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

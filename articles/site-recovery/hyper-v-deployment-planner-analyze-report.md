@@ -2,18 +2,18 @@
 title: Hyper-V VM から Azure へのディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する | Microsoft Docs
 description: この記事では、Hyper-V VM から Azure へのディザスター リカバリーについて、Azure Site Recovery Deployment Planner によって生成されるレポートを分析する方法を説明します。
 services: site-recovery
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 4c857afb6fbec8501c1f5836935dd6e78f89e67d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 3/20/2019
+ms.author: mayg
+ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847747"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286501"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。
@@ -127,13 +127,13 @@ Site Recovery を使用してすべての適合 VM を Azure に保護する場�
  
 コストは月単位または年単位で表示することができます。 詳細については、「[サポートされるターゲット リージョン](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions)」と「[サポートされる通貨](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies)」を参照してください。
 
-**[Cost by components]\(コンポーネントごとのコスト\)**: DR コストの合計が、コンピューティング、ストレージ、ネットワーク、Site Recovery ライセンス コストの 4 つのコンポーネントに分けて表示されます。 コストは、レプリケーション中および DR ドリル時に発生する消費量に基づいて計算されます。 計算には、コンピューティングとストレージ (Premium と Standard) のほか、オンプレミス サイトと Azure との間に構成されている ExpressRoute/VPN、Site Recovery ライセンスが考慮されます。
+**[Cost by components]\(コンポーネントごとのコスト\)**:DR コストの合計が、コンピューティング、ストレージ、ネットワーク、Site Recovery ライセンス コストの 4 つのコンポーネントに分けて表示されます。 コストは、レプリケーション中および DR ドリル時に発生する消費量に基づいて計算されます。 計算には、コンピューティングとストレージ (Premium と Standard) のほか、オンプレミス サイトと Azure との間に構成されている ExpressRoute/VPN、Site Recovery ライセンスが考慮されます。
 
 **[Cost by states]\(状態ごとのコスト\)**: ディザスター リカバリーの合計コストが、レプリケーションと DR ドリルという 2 種類の状態に基づいて分類されます。 
 
 **[Replication cost]\(レプリケーション コスト\)**: レプリケーション時に発生するコストです。 ストレージ、ネットワーク、Site Recovery ライセンスのコストが含まれます。 
 
-**[DR-Drill cost]\(DR ドリル コスト\)**: テスト フェールオーバー時に発生するコストです。 テスト フェールオーバー中は、Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。 
+**[DR-Drill cost]\(DR ドリル コスト\)**:テスト フェールオーバー時に発生するコストです。 テスト フェールオーバー中は、Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。 
 
 **[Azure Storage Cost per Month/Year]\(月/年単位の Azure Storage コスト\)**: Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが棒グラフで表示されます。 VM ごとの詳細なコスト分析は、[[Cost Estimation]\(コスト見積もり\)](hyper-v-deployment-planner-cost-estimation.md) シートで確認できます。
 
@@ -179,7 +179,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 **[VM 名]**: レポートの生成時に VMListFile 内で使用された VM の名前です。 また、VM にアタッチされたディスク (VHD) もこの列に一覧表示されます。 この名前には、VM がプロファイリング期間中に検出された時点で配置されていた Hyper-V ホストの名前が含まれます。
 
-**[VM Compatibility]\(VM 適合性\)**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Azure Premium Storage](https://aka.ms/premium-storage-workload) に適した VM があるインスタンスに付けられます。 この場合、ディスクの変更頻度または IOPS が高く、現在ディスクにマップされているサイズよりも上位の Premium ディスク サイズが適していることをプロファイリングの結果は示しています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 
+**[VM Compatibility]\(VM 適合性\)**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Premium SSD](../virtual-machines/windows/disks-types.md) に適した VM があるインスタンスに付けられます。 この場合、ディスクの変更頻度または IOPS が高く、現在ディスクにマップされているサイズよりも上位の Premium ディスク サイズが適していることをプロファイリングの結果は示しています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 
 * 128 GB 未満の場合は P10
 * 128 GB から 256 GB の場合は P15
 * 256 ～ 512 GB の場合は P20
@@ -193,7 +193,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 **[Suggested Prefix]\(推奨プレフィックス\)**: ストレージ アカウントの 3 文字のプレフィックスです。
 
-**ストレージ アカウント**: ストレージ アカウントの推奨プレフィックスを使用した名前です。
+**[ストレージ アカウント]**: ストレージ アカウントの推奨プレフィックスを使用した名前です。
 
 **[Peak R/W IOPS (with Growth Factor)]\(ピーク読み取り/書き込み IOPS (増加率を考慮)\)**: 将来的な増加率 (既定値は 30%) を加味した、ディスクに対するピーク ワークロードの読み取り/書き込み IOPS (既定値は 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、その個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。 VM の読み取り/書き込みのピーク IOPS は、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークです。
 
@@ -209,7 +209,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 **[メモリ (MB)]**: VM 上の RAM です。
 
-**NIC**: VM 上の NIC の数です。
+**[NIC]**: VM 上の NIC の数です。
 
 **[ブートの種類]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。
 
@@ -264,7 +264,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 **[メモリ (MB)]**: VM 上の RAM のサイズです。
 
-**NIC**: VM 上の NIC の数です。
+**[NIC]**: VM 上の NIC の数です。
 
 **[ブートの種類]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。
 
@@ -275,7 +275,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 ---|---|---|---
 Standard Storage | 8 KB | VM あたり 2 MB/秒 | VM あたり 168 GB
 Premium Storage | 8 KB  | VM あたり 5 MB/秒 | VM あたり 421 GB
-Premium Storage | 16 KB 以上| VM あたり 10 MB/秒 | VM あたり 842 GB
+Premium Storage | 16 KB 以上| VM あたり 20 MB/秒 | VM あたり 1,684 GB
 
 これらの制限は、I/O のオーバーラップを 30% とした場合の平均値です。 Site Recovery は、オーバーラップ比に基づくより高いスループットと、より大きな書き込みサイズ、そして実ワークロード I/O 動作を扱うことができます。 上記の数値には、標準的なバックログとして約 5 分が想定されています。 つまりデータはアップロード後 5 分以内に処理されて復旧ポイントが作成されます。
 

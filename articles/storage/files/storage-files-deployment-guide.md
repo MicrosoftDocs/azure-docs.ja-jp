@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: files
+ms.openlocfilehash: f0b6ed366f35368c70f3d2224f430f400ee9656c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242457"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481180"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
@@ -77,7 +77,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     
     詳細については[ドライブセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file)を参照してください。
 
-6. [WAImportExport ツール](https://www.microsoft.com/en-us/download/details.aspx?id=55280)を使用して、1 台以上のハード ドライブにデータをコピーします。
+6. [WAImportExport ツール](https://www.microsoft.com/download/details.aspx?id=55280)を使用して、1 台以上のハード ドライブにデータをコピーします。
 
     ```
     WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
@@ -129,10 +129,10 @@ AzCopy は、最高のパフォーマンスの単純なコマンドを使って 
 > [!Note]  
 > Azure ファイル共有をマウントするには、パスワードとしてストレージ アカウント キーを使用する必要があります。したがって、信頼できる環境でのみマウントすることをお勧めします。 
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 複数の PC で mount コマンドを実行するために PowerShell を使用できます。 次の例では、`$computers` は手動で入力しますが、マウントするコンピューターの一覧は自動で生成できます。 たとえば、Active Directory からの結果によって、この変数を設定できます。
 
-```PowerShell
+```powershell
 $computer = "MyComputer1", "MyComputer2", "MyComputer3", "MyComputer4"
 $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name> /PERSISTENT:YES } }
 ```

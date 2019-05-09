@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6612e3fb5368d8d5a4f59c0e5eefc8ef24c04aec
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008692"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -45,7 +45,7 @@ ms.locfileid: "34656926"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -59,6 +59,7 @@ ms.locfileid: "34656926"
 [sap-ascs-ha-multi-sid-wsfc-shared-disk]:sap-ascs-ha-multi-sid-wsfc-shared-disk.md
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
+[sap-suse-ascs-ha-anf]:high-availability-guide-suse-netapp-files.md
 [sap-higher-availability]:sap-higher-availability-architecture-scenarios.md
 
 [planning-guide]:planning-guide.md  
@@ -92,11 +93,11 @@ ms.locfileid: "34656926"
 [virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
 [virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
 
-[sap-ha-bc-virtual-env-hyperv-vmware-white-paper]:http://scn.sap.com/docs/DOC-44415
-[sap-ha-partner-information]:http://scn.sap.com/docs/DOC-8541
+[sap-ha-bc-virtual-env-hyperv-vmware-white-paper]:https://scn.sap.com/docs/DOC-44415
+[sap-ha-partner-information]:https://scn.sap.com/docs/DOC-8541
 [azure-sla]:https://azure.microsoft.com/support/legal/sla/
-[azure-virtual-machines-manage-availability]:http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability
-[azure-storage-redundancy]:http://azure.microsoft.com/documentation/articles/storage-redundancy/
+[azure-virtual-machines-manage-availability]:https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability
+[azure-storage-redundancy]:https://azure.microsoft.com/documentation/articles/storage-redundancy/
 [azure-storage-managed-disks-overview]:https://docs.microsoft.com/azure/storage/storage-managed-disks-overview
 
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
@@ -231,9 +232,9 @@ ms.locfileid: "34656926"
 
 ## <a name="terminology-definitions"></a>用語の定義
 
-**高可用性 (HA)**: IT の中断を最小限に抑える一連のテクノロジを表し、*同じ*データ センター内の冗長性、フォールト トレランス、またはフェールオーバーで保護されたコンポーネントを通じて IT サービスのビジネス継続性を提供することで実現されます。 ここの例では、データ センターは 1 つの Azure リージョン内にあります。
+**高可用性**: IT の中断を最小限に抑える一連のテクノロジを表し、"*同じ*" データ センター内の冗長性、フォールト トレランス、またはフェールオーバーで保護されたコンポーネントを通じて IT サービスのビジネス継続性を提供することで実現されます。 ここの例では、データ センターは 1 つの Azure リージョン内にあります。
 
-**ディザスター リカバリー**: 互いに数百マイル離れているような*さまざまな*データ センター間で、IT サービスの中断と復旧を最小にすることを表します。 ここの例では、データ センターは同じ地理的リージョン内のさまざまな Azure リージョンや顧客が設定した場所に存在している可能性があります。
+**ディザスター リカバリー** :互いに数百マイル離れているような "*さまざまな*" データ センター間で、IT サービスの中断と復旧を最小にすることも表します。 ここの例では、データ センターは同じ地理的リージョン内のさまざまな Azure リージョンや顧客が設定した場所に存在している可能性があります。
 
 
 ## <a name="overview-of-high-availability"></a>高可用性の概要
@@ -287,6 +288,19 @@ Windows 向けはありますが、Linux 向けの sapinst-integrated SAP 高可
 * SAP アプリケーション サーバーの冗長性。  
 * SAP ASCS/SCS インスタンスや DBMS などの SPOF を保護する 2 つ以上のノード (VM など) があるクラスター。
 
+
+### <a name="azure-availability-zones"></a>Azure 可用性ゾーン
+Azure では、[Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) の概念をさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)全体にロールアウトしています。 Availability Zones が提供される Azure リージョンには複数のデータ センターがあり、電源、冷却装置、ネットワークが独立しています。 1 つの Azure リージョン内で異なるゾーンを提供する理由は、2 つまたは 3 つの Availability Zones にまたがってアプリケーションをデプロイできるようにするためです。 電源やネットワークの問題により 1 つの可用性ゾーンのインフラストラクチャだけが影響を受けた場合でも、Azure リージョン内のアプリケーションのデプロイは完全に機能します。 最終的には、1 つのゾーンの VM がいくつか失われて、容量が若干減る可能性があります。 ただし、他の 2 つのゾーンの VM はまだ稼働しています。 ゾーンを提供する Azure リージョンの一覧は、[Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) に関するページにあります。
+
+Availability Zones を使用する際には、考慮すべき点がいくつかあります。 考慮事項を次に示します。
+
+- 可用性ゾーン内に Azure 可用性セットをデプロイすることはできません。 可用性ゾーンまたは可用性セットのいずれかを VM のデプロイ フレームとして選択する必要があります。
+- [Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) を使用して Windows フェールオーバー クラスター サービスまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります
+- Azure Availability Zones は、1 つのリージョン内のさまざまな異なる間の特定の距離を保証するものではありません
+- 異なる Azure リージョン内の異なる Azure Availability Zones 間のネットワーク待ち時間は、Azure リージョンごとに異なる可能性があります。 1 つのゾーンからアクティブな DBMS VM までのネットワーク待ち時間がビジネス プロセスへの影響から依然として許容できるようなケースでは、顧客が異なるゾーンをまたがってデプロイされた SAP アプリケーション レイヤーを合理的に実行できる場合があります。 一方、あるゾーン内のアクティブな DBMS VM と別のゾーンにある VM 内の SAP アプリケーション インスタンスとの間の待ち時間が過度に侵入的であり、SAP ビジネス プロセスにとって許容できない顧客シナリオがあります。 そのため、待ち時間が長すぎる場合は、デプロイ アーキテクチャをアプリケーションのアクティブ/アクティブ アーキテクチャまたはアクティブ/パッシブ アーキテクチャとは異なるものにする必要があります。
+- Azure Availability Zones にデプロイするには、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)の使用が必須です 
+
+
 ### <a name="planned-and-unplanned-maintenance-of-virtual-machines"></a>仮想マシンの計画済みメンテナンスと計画外メンテナンス
 
 2 種類の Azure プラットフォーム イベントが仮想マシンの可用性に影響を与えることがあります。
@@ -305,13 +319,13 @@ Azure Storage は、既定で、データの 3 つのイメージを維持する
 詳細については、「[Azure Storage のレプリケーション][azure-storage-redundancy]」をご覧ください。
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
-Managed Disks は Azure Resource Manager の新しいリソースの種類で、Azure Storage アカウントに格納されている仮想ハード ディスク (VHD) の代わりに使用できます。 Managed Disks は接続先の仮想マシンの可用性セットに自動的に配置されます。 それにより、仮想マシンとそこで実行されるサービスの可用性が向上します。
+Managed Disks は Azure Resource Manager のリソースの種類で、Azure Storage アカウントに格納されている仮想ハード ディスク (VHD) の代わりに使用することをお勧めします。 マネージド ディスクは接続先の仮想マシンの Azure 可用性セットに自動的に配置されます。 それにより、仮想マシンとそこで実行されるサービスの可用性が向上します。
 
 詳細については、「[Azure Managed Disks の概要][azure-storage-managed-disks-overview]」をご覧ください。
 
-仮想マシンのデプロイと管理が簡単なため、管理ディスクを使うことをお勧めします。
+仮想マシンのデプロイと管理が簡単なため、マネージド ディスクを使うことをお勧めします。
 
-SAP は現在、Premium Managed Disks のみをサポートします。 詳しくは、SAP Note [1928533] をご覧ください。
+
 
 ## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>Azure インフラストラクチャ高可用性を利用した SAP アプリケーションの*高可用性*の実現
 
@@ -331,14 +345,14 @@ SAP システム全体の高可用性を実現するには、SAP システムの
 
 > このセクションは次に適用されます。
 >
-> ![Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
+> ![ Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
 >
 
 SAP アプリケーション サーバーおよびダイアログ インスタンスについては、通常、特定の高可用性ソリューションは不要です。 高可用性は冗長性によって実現し、Azure Virtual Machines のさまざまなインスタンスで複数のダイアログ インスタンスを構成します。 Azure Virtual Machines の 2 つのインスタンスに少なくとも 2 つの SAP アプリケーション インスタンスをインストールする必要があります。
 
-![図 1: 高可用性の SAP アプリケーション サーバー][sap-ha-guide-figure-2000]
+![図 1:高可用性 SAP アプリケーション サーバー][sap-ha-guide-figure-2000]
 
-_**図 1:** 高可用性の SAP アプリケーション サーバー_
+_**図 1:** 高可用性 SAP アプリケーション サーバー_"
 
 SAP アプリケーション サーバー インスタンスをホストするすべての仮想マシンを、同じ Azure 可用性セットに配置する必要があります。 Azure 可用性セットでは次のことが保証されます。
 
@@ -354,43 +368,46 @@ Azure スケール ユニット内の Azure 可用性セットで使用できる
 
 専用の VM 内に少数の SAP アプリケーション サーバー インスタンスをデプロイし、5 つの更新ドメインがあるとした場合、次のような状態になります。 可用性セット内の更新ドメインと障害ドメインの実際の最大数は、後で変わる可能性があります。
 
-![図 2: Azure 可用性セット内の SAP アプリケーション サーバーの高可用性][planning-guide-figure-3000]
-_**図 2:** Azure 可用性セット内の SAP アプリケーション サーバーの高可用性_
+"![図 2:Azure 可用性セット内の SAP アプリケーション サーバーの高可用性][planning-guide-figure-3000]
+"_**図 2:** Azure 可用性セット内の SAP アプリケーション サーバーの高可用性_"
 
 詳細については、「[Azure での Windows 仮想マシンの可用性の管理][azure-virtual-machines-manage-availability]」をご覧ください。
 
 詳しくは、SAP NetWeaver のための Azure Virtual Machines の計画と実装に関するドキュメントの[Azure の可用性セット][planning-guide-3.2.3]のセクションをご覧ください。
 
-**非管理対象ディスクのみ:** Azure ストレージ アカウントは潜在的な単一障害点であるため、少なくとも 2 つの仮想マシンが分散された Azure ストレージ アカウントを少なくとも 2 つ用意することが重要です。 理想的な設定としては、SAP ダイアログ インスタンスを実行する各仮想マシンのディスクを、異なるストレージ アカウントにデプロイします。
+**アンマネージド ディスクのみ:** Azure ストレージ アカウントが単一障害点になる可能性があるため、少なくとも 2 つの Azure ストレージ アカウントを用意し、それぞれにおいて少なくとも 2 つの仮想マシンに分散させることが重要です。 理想的な設定としては、SAP ダイアログ インスタンスを実行する各仮想マシンのディスクを、異なるストレージ アカウントにデプロイします。
 
 > [!IMPORTANT]
-> SAP 高可用性インストールには、Azure Managed Disks を使用することを強くお勧めします。 Managed Disks は接続されている仮想マシンの可用性セットに自動的に配置されるため、仮想マシンと仮想マシンで実行されているサービスの可用性を向上させます。  
+> SAP 高可用性インストールには、Azure マネージド ディスクを使用することを強くお勧めします。 マネージド ディスクは接続されている仮想マシンの可用性セットに自動的に配置されるため、仮想マシンと仮想マシンで実行されているサービスの可用性を向上させます。  
 >
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows での SAP ASCS/SCS インスタンスの高可用性のアーキテクチャ
 
-> ![Windows][Logo_Windows] Windows
+> ![ Windows][Logo_Windows]  Windows
 >
 
 WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを保護できます。 ソリューションには、2 つのバリエーションがあります。
 
-* **クラスター化共有ディスクを使用した SAP ASCS/SCS インスタンスのクラスタリング**: このアーキテクチャについて詳しくは、[クラスター化共有ディスクを使用した Windows フェールオーバー クラスターでの SAP ASCS/SCS インスタンスのクラスター化][sap-high-availability-guide-wsfc-shared-disk]に関するページをご覧ください。   
+* **クラスター化された共有ディスクを使用した SAP ASCS/SCS インスタンスのクラスタリング**: このアーキテクチャの詳細については、[クラスター共有ディスクを使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスタリング][sap-high-availability-guide-wsfc-shared-disk]に関するページを参照してください。   
 
-* **ファイル共有を使用した SAP ASCS/SCS インスタンスのクラスタリング**: このアーキテクチャについて詳しくは、[ファイル共有を使用した Windows フェールオーバー クラスターでの SAP ASCS/SCS インスタンスのクラスター化][sap-high-availability-guide-wsfc-file-share]に関するページをご覧ください。
+* **ファイル共有を使用した SAP ASCS/SCS インスタンスのクラスタリング**: このアーキテクチャの詳細については、[ファイル共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスタリング][sap-high-availability-guide-wsfc-file-share]に関するページを参照してください。
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux での SAP ASCS/SCS インスタンスの高可用性アーキテクチャ
 
 > ![Linux][Logo_Linux] Linux
->
-SUSE クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングについて詳しくは、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性][sap-suse-ascs-ha]」をご覧ください。
+> 
+> SUSE クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングについて詳しくは、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性][sap-suse-ascs-ha]」をご覧ください。 可用性の高い NFS が必要でない、SLES での代替 HA アーキテクチャについては、[SAP アプリケーション用に Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の SAP NetWeaver に関する高可用性ガイド][sap-suse-ascs-ha-anf]を参照してください。
+
+Red Hat クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングの詳細については、「[Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)」を参照してください
+
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>クラスター化された SAP ASCS/SCS インスタンスのための SAP NetWeaver マルチ SID の構成
 
-> ![Windows][Logo_Windows] Windows
->
+> ![ Windows][Logo_Windows]  Windows
+> 
 > 現在、マルチ SID は WSFC でのみサポートされます。 マルチ SID は、ファイル共有と共有ディスクを使用してサポートされます。
->
-マルチ SID 高可用性アーキテクチャについて詳しくは、次をご覧ください。
+> 
+> マルチ SID 高可用性アーキテクチャについて詳しくは、次をご覧ください。
 
 * [Windows Server フェールオーバー クラスタリングとファイル共有を使用する SAP ASCS/SCS インスタンス マルチ SID の高可用性に関するページ][sap-ascs-ha-multi-sid-wsfc-file-share]
 
@@ -400,9 +417,9 @@ SUSE クラスター フレームワークを使用した SAP ASCS/SCS インス
 
 DBMS は、SAP システムでの単一接続点でもあります。 高可用性ソリューションを使用して保護する必要があります。 次の図では、Azure の SQL Server AlwaysOn 高可用性ソリューションと、Windows Server フェールオーバー クラスタリングおよび Azure 内部ロード バランサーを示します。 SQL Server AlwaysOn は、独自の DBMS レプリケーションを使用して、DBMS のデータとログ ファイルをレプリケートします。 この場合、クラスター共有ディスクは必要なく、セットアップ全体が簡単になります。
 
-![図 3: 高可用性の SAP DBMS と SQL Server AlwaysOn の例][sap-ha-guide-figure-2003]
+![図 3:高可用性の SAP DBMS と SQL Server AlwaysOn の例][sap-ha-guide-figure-2003]
 
-_**図 3:** 高可用性の SAP DBMS と SQL Server AlwaysOn の例_
+_**図 3:** 高可用性の SAP DBMS と SQL Server AlwaysOn の例_"
 
 Azure Resource Manager デプロイ モデルを使用した Azure での SQL Server DBMS のクラスタリングの詳細については、次の記事をご覧ください。
 

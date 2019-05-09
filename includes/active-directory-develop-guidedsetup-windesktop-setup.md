@@ -4,22 +4,22 @@ description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 022017015808d72f661f6764e8fa10fdc49e9f61
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: ce95e8d0249a886e031e3ae0fe9dd8e20804f391
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843100"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799533"
 ---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
@@ -28,7 +28,7 @@ ms.locfileid: "48843100"
 このガイドで作成したアプリケーションには、グラフを呼び出すボタン、結果を画面に表示する領域、およびサインアウト ボタンが表示されます。
 
 > [!NOTE]
-> 代わりにこのサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)したら、[構成手順](#register-your-application)に進んでサンプル コードを構成してから実行してください。
+> 代わりにこのサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)したら、[構成手順](#register-your-application)に進んでサンプル コードを構成してから実行してください。
 >
 
 アプリケーションを作成するには、次の手順を実行します。
@@ -59,19 +59,35 @@ ms.locfileid: "48843100"
     ```csharp
     using Microsoft.Identity.Client;
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 
 2. App クラスを以下のように更新します。
 
     ```csharp
     public partial class App : Application
     {
-        //Below is the clientId of your app registration. 
-        //You have to replace the below with the Application Id for your app registration
-        private static string ClientId = "your_client_id_here";
+        static App()
+        {
+            _clientApp = PublicClientApplicationBuilder.Create(ClientId)
+                .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
+                .Build();
+        }
 
-        public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
+        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // You have to replace:
+        // - the content of ClientID with the Application Id for your app registration
+        // - Te content of Tenant by the information about the accounts allowed to sign-in in your application:
+        //   - For Work or School account in your org, use your tenant ID, or domain
+        //   - for any Work or School accounts, use `organizations`
+        //   - for any Work or School accounts, or Microsoft personal account, use `common`
+        //   - for Microsoft Personal account, use consumers
+        private static string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";
 
+        private static string Tenant = "common";
+
+        private static IPublicClientApplication _clientApp ;
+
+        public static IPublicClientApplication PublicClientApp { get { return _clientApp; } }
     }
     ```
 

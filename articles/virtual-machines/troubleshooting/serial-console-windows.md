@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 535c65f58ac9a3f39faa347ca853bfa410b7f182
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 57b20f9d694ae0581988762735c35cb65012fd8e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185334"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992370"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>Windows の仮想マシンのシリアル コンソール
 
@@ -53,6 +53,9 @@ Linux VM のシリアル コンソールのドキュメントについては、[
   1. 下へスクロールして **[サポート + トラブルシューティング]** セクションを表示し、**[シリアル コンソール]** を選択します。 シリアル コンソールで新しいウィンドウが開き、接続が開始されます。
 
 ## <a name="enable-serial-console-functionality"></a>シリアル コンソール機能を有効にする
+
+> [!NOTE]
+> シリアル コンソールに何も表示されない場合は、VM でそのブート診断が有効になっていることを確認してください。
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>カスタム イメージまたは古いイメージでシリアル コンソールを有効にする
 Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効です。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。
@@ -134,6 +137,13 @@ Windows VM のシリアル コンソールでファンクション キーを有�
 ### <a name="use-wsl-in-serial-console"></a>シリアル コンソールで WSL を使用する
 Windows Subsystem for Linux (WSL) は Windows Server 2019 以降で有効なので、Windows Server 2019 以降を実行している場合は、シリアル コンソール内で WSL を有効にして使用することもできます。 この点は、Linux コマンドも熟知しているユーザーに役立つ可能性があります。 WSL for Windows Server を有効にする手順については、[インストール ガイド](https://docs.microsoft.com/windows/wsl/install-on-server)に関するページを参照してください。
 
+### <a name="restart-your-windows-vm-within-serial-console"></a>シリアル コンソール内で Windows VM を再起動する
+電源ボタンに移動して [Restart VM]\(VM の再起動\) をクリックすると、シリアル コンソール内で VM を再起動できます。 これにより VM の再起動が始まり、Azure portal 内に再起動に関する通知が表示されます。
+
+これは、シリアル コンソールから離れることなく VM のブート メニューにアクセスする場合に便利です。
+
+![Windows シリアル コンソールでの再起動](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
+
 ## <a name="disable-serial-console"></a>シリアル コンソールを無効にする
 既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 サブスクリプション レベルまたは VM レベルのいずれかで、シリアル コンソールを無効にすることができます。
 
@@ -186,14 +196,14 @@ Windows Subsystem for Linux (WSL) は Windows Server 2019 以降で有効なの�
 ### <a name="audit-logs"></a>監査ログ
 現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。
 
->[!CAUTION]
-コンソールのアクセス パスワードはログに記録されません。 ただし、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は VM のブート診断ログに書き込まれます。 それらは、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。 ただし、シークレットや PII が含まれている可能性のあるものにはリモート デスクトップを使用するというベスト プラクティスに従うことをお勧めします。
+> [!CAUTION]
+> コンソールのアクセス パスワードはログに記録されません。 ただし、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は VM のブート診断ログに書き込まれます。 それらは、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。 ただし、シークレットや PII が含まれている可能性のあるものにはリモート デスクトップを使用するというベスト プラクティスに従うことをお勧めします。
 
 ### <a name="concurrent-usage"></a>同時使用
 ユーザーがシリアル コンソールに接続しているときに、別のユーザーがその同じ仮想マシンへのアクセスを要求し、その要求が成功した場合、最初のユーザーが切断され、2 番目のユーザーが同じセッションに接続されます。
 
->[!CAUTION]
-これは、切断されたユーザーはログアウトされないことを意味します。(SIGHUP または同様のメカニズムを使用して) 切断時に強制的にログアウトする機能は、まだロードマップにあります。 Windows では SAC で自動タイムアウトが有効になっていますが、Linux ではターミナルのタイムアウト設定を構成できます。
+> [!CAUTION]
+> これは、切断されたユーザーはログアウトされないことを意味します。(SIGHUP または同様のメカニズムを使用して) 切断時に強制的にログアウトする機能は、まだロードマップにあります。 Windows では SAC で自動タイムアウトが有効になっていますが、Linux ではターミナルのタイムアウト設定を構成できます。
 
 ## <a name="accessibility"></a>アクセシビリティ
 アクセシビリティは、Azure シリアル コンソールの重点事項です。 そのため、視覚や聴覚に障碍があるユーザーや、マウスを使用できない可能性があるユーザーがシリアル コンソールにアクセスできるようにしました。
@@ -205,6 +215,7 @@ Azure portal からシリアル コンソール インターフェイスでナ�
 シリアル コンソールには、スクリーン リーダーのサポートが組み込まれています。 スクリーン リーダーを有効にしてナビゲートすると、現在選択されているボタンの代替テキストをスクリーン リーダーで読み上げることができます。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>シリアル コンソールにアクセスする一般的なシナリオ
+
 シナリオ          | シリアル コンソールでのアクション
 :------------------|:-----------------------------------------
 不適切なファイアウォール規則 | シリアル コンソールにアクセスし、Windows ファイアウォール規則を修正します。
@@ -237,13 +248,14 @@ Microsoft は、シリアル コンソールには問題がいくつかあるこ
 元のコンテンツに反復する文字が含まれる場合、SAC の PowerShell に貼り付けると 3 文字目が生成される。 | 回避策は、`Remove-Module PSReadLine` を実行して、現在のセッションから PSReadLine モジュールをアンロードすることです。 このアクションは、モジュールを削除またはアンインストールしません。
 一部のキーボード入力で、不適切な SAC 出力が生成される (例: **[A**、**[3~**)。 | [VT100](https://aka.ms/vtsequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。
 長い文字列を貼り付けると機能しない。 | シリアル コンソールでは、シリアル ポートの帯域幅に対する過負荷を防止するために、ターミナルに貼り付けられる文字列の長さが 2048 文字に制限されます。
+シリアル コンソールは、ストレージ アカウントのファイアウォールと連動しません。 | シリアル コンソールは、ブート診断ストレージ アカウントで有効になっているストレージ アカウント ファイアウォールと設計上、連動できません。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **Q.フィードバックを送信するにはどうすればよいですか?**
 
-A. https://aka.ms/serialconsolefeedback で GitHub の問題を作成することで、フィードバックをご提供ください。 (あまりお勧めしませんが) azserialhelp@microsoft.com、または http://feedback.azure.com の仮想マシン カテゴリでフィードバックをお送りいただくこともできます。
+A. GitHub の問題を作成したフィードバックの提供 https://aka.ms/serialconsolefeedbackします。 (あまりお勧めしませんが) azserialhelp@microsoft.com、または https://feedback.azure.com の仮想マシン カテゴリでフィードバックをお送りいただくこともできます。
 
 **Q.シリアル コンソールでは、コピー/貼り付けが可能ですか。**
 

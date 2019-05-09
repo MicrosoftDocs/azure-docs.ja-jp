@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 905431c73488ddc6ebf2d13823e4bb705d16304c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102012"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019267"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Presto からデータをコピーする (プレビュー)
 
@@ -45,12 +44,12 @@ Presto のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Presto** に設定する必要があります | [はい] |
-| host | Presto サーバーの IP アドレスまたはホスト名。 (例: 192.168.222.160)  | [はい] |
-| serverVersion | Presto サーバーのバージョン。 (例: 0.148-t)  | [はい] |
-| catalog | サーバーに対するすべての要求のカタログ コンテキスト。  | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**Presto** | はい |
+| host | Presto サーバーの IP アドレスまたはホスト名。 (例: 192.168.222.160)  | はい |
+| serverVersion | Presto サーバーのバージョン。 (例: 0.148-t)  | はい |
+| catalog | サーバーに対するすべての要求のカタログ コンテキスト。  | はい |
 | port | Presto サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8080 です。  | いいえ  |
-| authenticationType | Presto サーバーへの接続に使用する認証メカニズム。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**LDAP** | [はい] |
+| authenticationType | Presto サーバーへの接続に使用する認証メカニズム。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**LDAP** | はい |
 | username | Presto サーバーへの接続に使用されるユーザー名。  | いいえ  |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
@@ -92,7 +91,7 @@ Presto からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**PrestoObject** に設定する必要があります | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**PrestoObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -121,7 +120,7 @@ Presto からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **PrestoSource** に設定する必要があります | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**PrestoSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

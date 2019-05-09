@@ -7,15 +7,18 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: d12edc2023deb69118d7c02e053cd2525f6ae684
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: autoscale
+ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437726"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312054"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor の自動スケールの一般的なメトリック
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Azure Monitor の自動スケールを使用すると、テレメトリ データ (メトリック) に基づいて、実行インスタンス数を増減してスケールすることができます。 このドキュメントでは、一般的なメトリックについて説明します。必要に応じて利用してください。 Azure portal で、スケールに使用するリソースのメトリックを選択できます。 ただし、スケールには、さまざまなリソースのメトリックを選択できます。
 
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。 他の Azure サービスでは、異なるスケーリング方法が使用されています。
@@ -29,7 +32,7 @@ VM Scale Sets を使用し、特定のメトリックが一覧に表示されな
 
 特定のメトリックが、目的の頻度でサンプリングまたは転送が行われない場合は、診断の構成を更新することができます。
 
-上記のいずれかに該当する場合は、「[PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする](../../virtual-machines/extensions/diagnostics-windows.md)」を参照し、PowerShell で Azure VM 診断拡張機能を構成してメトリックを有効に変更してください。 また、この記事には、診断構成ファイルの例も紹介されています。
+上記のいずれかに該当する場合は、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](../../virtual-machines/extensions/diagnostics-windows.md)」を参照し、PowerShell で Azure VM 診断拡張機能を構成してメトリックを有効に変更してください。 また、この記事には、診断構成ファイルの例も紹介されています。
 
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Resource Manager ベースの Windows と Linux VM のホスト メトリック
 以下のホスト レベルのメトリックは、Windows と Linux の両方のインスタンスで Azure VM と VMSS に既定で出力されます。 以下のメトリックでは Azure VM について説明しますが、ゲスト VM にインストールされているエージェントを介してではなく、Azure VM ホストから収集されます。 自動スケールの規則では、以下のメトリックを使用する場合があります。
@@ -43,7 +46,7 @@ VM Scale Sets を使用し、特定のメトリックが一覧に表示されな
 メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
 次のメトリックのアラートを作成できます。
@@ -84,7 +87,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
  次のメトリックのアラートを作成できます。
@@ -137,7 +140,7 @@ HTTP キューの長さなどの一般的な Web サーバー メトリックに
 Web Apps メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
 これらのメトリックに基づいてアラートしたり、スケールすることができます。
@@ -187,3 +190,4 @@ VM Scale Sets の場合、Resource Manager テンプレートの [自動スケ�
 > Service Bus の場合、リソース グループの概念は存在しませんが、Azure Resource Manager でリージョンごとに既定のリソース グループが作成されます。 通常、リソース グループは 'Default-ServiceBus-[region]' 形式です。 たとえば、'Default-ServiceBus-EastUS'、'Default-ServiceBus-WestUS'、'Default-ServiceBus-AustraliaEast' などです。
 >
 >
+

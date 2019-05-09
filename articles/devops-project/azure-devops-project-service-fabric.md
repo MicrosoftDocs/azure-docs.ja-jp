@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする'
+title: チュートリアル:Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
 description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用することによって、いくつかの簡単な手順で ASP.NET Core アプリを Azure Service Fabric に簡単にデプロイできます。
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 2bba5d54c2b6298c2dd8059d47e5975ad3f176c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264762"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453773"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
+# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
 
 Azure DevOps Projects によって提供される簡略化されたエクスペリエンスを使用すると、既存のコードと Git リポジトリを使用するか、サンプル アプリケーションを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。 
 
@@ -39,7 +39,7 @@ DevOps Projects には、以下の機能もあります。
 
 * Azure サブスクリプション。 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
 
-## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabricc"></a>DevOps Projects を使用して ASP.NET Core アプリを作成し、Service Fabric にデプロイする
+## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>DevOps Projects を使用して ASP.NET Core アプリを作成し、Service Fabric にデプロイする
 
 DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Service Fabric クラスターなどの Azure リソースも作成されます。
 

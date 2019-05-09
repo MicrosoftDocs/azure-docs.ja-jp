@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 2013b3b96fddd32f01245655c1feb600bc426e2a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084143"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524890"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -56,7 +56,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
 
-ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。 この情報は、CLI コマンド "az network express-route list-service-providers" で取得できます。取得した情報は、後の手順で使用します。
+ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。 CLI コマンド `az network express-route list-service-providers` によってこの情報が返されます。この情報は、後のステップで使用します。
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -154,7 +154,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4.すべての ExpressRoute 回線を一覧表示する
 
-作成したすべての ExpressRoute 回線の一覧を取得するには、"az network express-route list" コマンドを実行します。 この情報は、このコマンドを使用していつでも取得できます。 すべての回線を一覧表示するには、パラメーターを付けずに呼び出します。
+作成したすべての ExpressRoute 回路の一覧を取得するには、`az network express-route list` コマンドを実行します。 この情報は、このコマンドを使用していつでも取得できます。 すべての回線を一覧表示するには、パラメーターを付けずに呼び出します。
 
 ```azurecli-interactive
 az network express-route list

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 905f00842c5ce74f681a6c5c09ff8bf6c7a9e162
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b24435501ed1312e91ebec9b9c434971dbc94b55
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091251"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163451"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Azure Portal を使用して VHD から VM を作成する
 
@@ -28,6 +28,8 @@ Azure で仮想マシン (VM) を作成する方法には、次のいくつか�
 - 使用する仮想ハード ディスク (VHD) が既にある場合や、使用する既存の VM から VHD をコピーする場合は、その VHD を OS ディスクとして新しい VM に*接続することによって*新しい VM を作成できます。 
 
 - 削除された VM の VHD から新しい VM を作成できます。 たとえば、正常に動作していない Azure VM がある場合は、VM を削除し、その VHD を使用して新しい VM を作成できます。 同じ VHD を再利用するか、またはスナップショットを作成し、そのスナップショットから新しいマネージド ディスクを作成することによって VHD のコピーを作成できます。 スナップショットを作成すると手順がいくつか多く必要になりますが、それにより元の VHD が保持されるため、フォールバックが可能になります。
+
+- クラシック VM の場合、VHD を使用して、Resource Manager デプロイ モデルとマネージド ディスクを使用する新しい VM を作成します。 最良の結果を得るために、スナップショットを作成する前に Azure portal でクラシック VM を**停止**してください。
  
 - オンプレミスの VHD をアップロードし、それを新しい VM に接続することによって、オンプレミスの VHD から Azure VM を作成できます。 PowerShell または別のツールを使用して VHD をストレージ アカウントにアップロードした後、VHD からマネージド ディスクを作成します。 詳細については、「[特殊化された VHD をアップロードする](create-vm-specialized.md#option-2-upload-a-specialized-vhd)」を参照してください。 
 

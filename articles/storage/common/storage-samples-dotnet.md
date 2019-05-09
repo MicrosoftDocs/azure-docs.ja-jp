@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 663df77a7fb574f05cfaa9378dff53ca5db21c49
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: c4dcb3f42d97624e66258228ce27e130a05cac70
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526111"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456138"
 ---
 # <a name="azure-storage-samples-using-net"></a>.NET を使用した Azure Storage サンプル
 
@@ -161,7 +161,7 @@ ms.locfileid: "39526111"
 <tr> 
 <td rowspan="7"><b>テーブル</b></td>
 <td>テーブルの作成</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage での同時実行制御の管理 - サンプル アプリケーション</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション</a></td> 
 </tr> 
 <tr> 
 <td>エンティティ/テーブルの削除</td> 
@@ -169,7 +169,7 @@ ms.locfileid: "39526111"
 </tr> 
 <tr> 
 <td>エンティティの挿入/マージ/置換</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage での同時実行制御の管理 - サンプル アプリケーション</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション</a></td> 
 </tr> 
 <tr> 
 <td>エンティティのクエリ</td> 
@@ -185,7 +185,7 @@ ms.locfileid: "39526111"
 </tr> 
 <tr> 
 <td>エンティティの更新</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage での同時実行制御の管理 - サンプル アプリケーション</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション</a></td> 
 </tr> 
 </tbody> 
 </table>
@@ -210,5 +210,5 @@ Azure Storage ライブラリのインストール方法と概要については
 
 他の言語のサンプルについては、以下のページをご覧ください。
 
-* Java: [Java を使用した Azure Storage サンプル](storage-samples-java.md)
-* その他のすべての言語: [Azure Storage のサンプル](../storage-samples.md)
+* Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
+* その他すべての言語: [Azure Storage のサンプル](../storage-samples.md)

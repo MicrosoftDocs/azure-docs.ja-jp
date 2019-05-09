@@ -1,23 +1,25 @@
 ---
-title: クイック スタート - Azure Container Instances でアプリケーションを実行する - Portal
-description: このクイック スタートでは、Azure portal を使用して、Azure Container Instances の分離されたコンテナーで実行されるように Docker コンテナー アプリケーションをデプロイします
+title: クイック スタート - Azure Container Instances への Docker コンテナーのデプロイ - ポータル
+description: このクイック スタートでは、Azure portal を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190290"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369447"
 ---
-# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>クイック スタート:Azure portal を使って Azure Container Instances でコンテナー アプリケーションを実行する
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してコンテナー インスタンスを Azure 内にデプロイする
 
-Docker コンテナーを Azure で簡単にすばやく実行するには、Azure Container Instances を使用します。 仮想マシンをデプロイしたり、Kubernetes などの完全なコンテナー オーケストレーション プラットフォームを使用したりする必要はありません。 このクイック スタートでは、Azure portal を使用して Azure でコンテナーを作成し、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 いくつかの設定を構成し、コンテナーをデプロイした後は、実行中のアプリケーションを参照できます。
+サーバーレスの Docker コンテナーを Azure 内で簡単にすばやく実行するには、Azure Container Instances を使用します。 Azure Kubernetes Service のように完全なコンテナー オーケストレーション プラットフォームが不要な場合は、コンテナー インスタンス オンデマンドにアプリケーションをデプロイします。
+
+このクイック スタートでは、Azure portal を使用して、分離された Docker コンテナーをデプロイし、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 いくつかの設定を構成し、コンテナーをデプロイした後は、実行中のアプリケーションを参照できます。
 
 ![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][aci-portal-07]
 
@@ -33,17 +35,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure ポータルで新しいコンテナー インスタンスの作成を開始][aci-portal-01]
 
-**[Container name] (コンテナー名)**、**[Container image] (コンテナー イメージ)**、および **[Resource group] (リソース グループ)** テキスト ボックスに次の値を入力します。 その他の値は既定値のままにして、**[OK]** をクリックします。
+**[Container name] (コンテナー 名)**、**[Container image] (コンテナー イメージ)**、および **[Resource group] (リソース グループ)** テキスト ボックスに次の値を入力します。 その他の値は既定値のままにして、**OK** をクリックします。
 
-* [Container name] (コンテナー名): `mycontainer`
-* [Container image] (コンテナー イメージ): `microsoft/aci-helloworld`
+* [コンテナー 名]: `mycontainer`
+* [コンテナー イメージ]: `mcr.microsoft.com/azuredocs/aci-helloworld`
 * リソース グループ:**新規作成** > `myResourceGroup`
 
 ![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]
 
-Azure Container Instances では、Windows コンテナーと Linux コンテナーの両方を作成できます。 このクイック スタートでは、**Linux** の既定の設定をそのまま使用して、Linux ベースの `microsoft/aci-helloworld` イメージをデプロイします。
+このクイック スタートでは、既定の設定である **[パブリック]** のままにして、パブリックの Microsoft `aci-helloworld` イメージをデプロイします。 このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。
 
-**[構成]** で、コンテナーの **DNS 名ラベル**を指定します。 この名前は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コンテナーには、`<dns-name-label>.<region>.azurecontainer.io` でパブリックに到達できます。
+**[構成]** で、コンテナーの **DNS 名ラベル**を指定します。 この名前は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コンテナーには、`<dns-name-label>.<region>.azurecontainer.io` でパブリックに到達できます。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
 
 **[構成]** のその他の設定は既定値のままにし、**[OK]** をクリックして構成を検証します。
 
@@ -87,7 +89,7 @@ Azure Container Instances では、Windows コンテナーと Linux コンテナ
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、パブリック Docker Hub レジストリ内のイメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージをビルドし、プライベート Azure コンテナー レジストリからデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
+このクイック スタートでは、パブリック Microsoft イメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージをビルドし、プライベート Azure コンテナー レジストリからデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル](./container-instances-tutorial-prepare-app.md)

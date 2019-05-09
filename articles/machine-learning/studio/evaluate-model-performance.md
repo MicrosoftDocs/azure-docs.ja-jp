@@ -1,26 +1,21 @@
 ---
-title: モデルのパフォーマンスを評価する - Azure Machine Learning Studio | Microsoft Docs
+title: モデルのパフォーマンスを評価する
+titleSuffix: Azure Machine Learning Studio
 description: この記事では、Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法を紹介し、このタスクで使用できるメトリックについて簡単に説明します。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 501a9834e598fc8b1c11a86ef0ae9db1c19a66a7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269942"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891588"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法
 
@@ -34,7 +29,7 @@ ms.locfileid: "53269942"
 
 モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。 その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。 
 
-Azure Machine Learning では、[モデルの評価][evaluate-model]と[モデルのクロス検証][cross-validate-model]という 2 つの主な機械学習モジュールによってモデルの評価を行えます。 これらのモジュールを使用すれば、機械学習と統計情報でよく使用されるさまざまなメトリックの観点からモデルのパフォーマンスを確認できます。
+Azure Machine Learning Studio では、[モデルの評価][evaluate-model]と[モデルのクロス検証][cross-validate-model]という 2 つの主な機械学習モジュールによってモデルの評価を行えます。 これらのモジュールを使用すれば、機械学習と統計情報でよく使用されるさまざまなメトリックの観点からモデルのパフォーマンスを確認できます。
 
 ## <a name="evaluation-vs-cross-validation"></a>評価とクロス検証
 評価とクロス検証は、モデルのパフォーマンスを測定する標準的な方法です。 どちらの場合も評価メトリックが生成されるので、そのメトリックを確認したり、他のモデルと比較したりできます。
@@ -88,7 +83,7 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 図 4: 回帰モデルのクロス検証の結果。
 
 ## <a name="evaluating-a-binary-classification-model"></a>二項分類モデルの評価
-二項分類のシナリオでは、ターゲット変数には 2 つの選択肢しかありません。たとえば、{0, 1}、{偽, 真}、{負, 正} などです。 ここで、成人の従業員の人口統計データや雇用データが含まれているデータセットに基づいて収入のレベルを予測するために、二項変数 {"<=50 K", ">50 K"} を使うと想定しましょう。 つまり、年収が 5 万ドル以下の従業員を表す負のクラスと、その他の従業員を表す正のクラスです。 回帰のシナリオの場合と同じく、モデルのトレーニング、データのスコア付け、結果の評価を行います。 おもな違いは、Azure Machine Learning が計算して出力するメトリックの選択です。 この収入レベルの予測シナリオでは、[Adult](http://archive.ics.uci.edu/ml/datasets/Adult) データセットを使用して Azure Machine Learning の実験を作成し、よく使われている二項分類モデルである 2 クラスのロジスティック回帰モデルのパフォーマンスを評価します。
+二項分類のシナリオでは、ターゲット変数には 2 つの選択肢しかありません。たとえば、{0, 1}、{偽, 真}、{負, 正} などです。 ここで、成人の従業員の人口統計データや雇用データが含まれているデータセットに基づいて収入のレベルを予測するために、二項変数 {"<=50 K", ">50 K"} を使うと想定しましょう。 つまり、年収が 5 万ドル以下の従業員を表す負のクラスと、その他の従業員を表す正のクラスです。 回帰のシナリオの場合と同じく、モデルのトレーニング、データのスコア付け、結果の評価を行います。 おもな違いは、Azure Machine Learning Studio で計算されて出力されるメトリックの選択です。 この収入レベルの予測シナリオでは、[Adult](https://archive.ics.uci.edu/ml/datasets/Adult) データセットを使用して Studio の実験を作成し、よく使われている二項分類モデルである 2 クラスのロジスティック回帰モデルのパフォーマンスを評価します。
 
 ### <a name="creating-the-experiment"></a>実験の作成
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。
@@ -110,7 +105,7 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 
 精度とは、簡単に言えば正しく分類された事例の比率です。 分類モデルを評価するときは通常、精度のメトリックに最初に注目します。 しかし、テスト データのバランスが悪く大半が片方のクラスに属する場合や、片方のクラスのパフォーマンスにおもに関心がある場合は、精度だけで分類モデルのパフォーマンスを評価することはできません。 たとえば、収入レベルの分類シナリオで、99% が年収 5 万ドル以下の層に属するデータをテストしているとしましょう。 どの事例についても、「<=50K」の層を予測すれば 0.99 の精度を達成できます。 この分類モデルのパフォーマンスは非常に高いように思えるかもしれませんが、実際のところ、高収入の人たち (1%) を正確に分類することはできません。
 
-そのため、多角的に評価するには、さらに別のメトリックを計算する必要があります。 そのようなメトリックを詳しく取り上げる前に、二項分類の評価の混同行列について理解しておくことは重要です。 トレーニング セットのクラス ラベルには 2 つの値しかありません。通常は、正の値と負の値です。 分類モデルが正しく予測した正の事例と負の事例のことを、それぞれ真陽性 (TP) と真陰性 (TN) といいます。 また、間違って分類した事例のことを、それぞれ偽陽性 (FP) と偽陰性 (FN) といいます。 混同行例とは、簡単に言えば、この 4 つの分類に該当する事例の数をまとめた表です。 Azure Machine Learning では、データセット内の 2 つのクラスが正のクラスとして自動的に設定されます。 クラスのラベルがブール値または整数値であれば、「真」または「1」のラベルの事例が正のクラスになります。 収入のデータセットの場合のようにラベルが文字列であれば、ラベルがアルファベット順に並べられ、最初のレベルが負のクラス、2 番目のレベルが正のクラスになります。
+そのため、多角的に評価するには、さらに別のメトリックを計算する必要があります。 そのようなメトリックを詳しく取り上げる前に、二項分類の評価の混同行列について理解しておくことは重要です。 トレーニング セットのクラス ラベルには 2 つの値しかありません。通常は、正の値と負の値です。 分類モデルが正しく予測した正の事例と負の事例のことを、それぞれ真陽性 (TP) と真陰性 (TN) といいます。 また、間違って分類した事例のことを、それぞれ偽陽性 (FP) と偽陰性 (FN) といいます。 混同行例とは、簡単に言えば、この 4 つの分類に該当する事例の数をまとめた表です。 Azure Machine Learning Studio では、データセット内の 2 つのクラスが正のクラスとして自動的に設定されます。 クラスのラベルがブール値または整数値であれば、「真」または「1」のラベルの事例が正のクラスになります。 収入のデータセットの場合のようにラベルが文字列であれば、ラベルがアルファベット順に並べられ、最初のレベルが負のクラス、2 番目のレベルが正のクラスになります。
 
 ![二項分類の混同行列](./media/evaluate-model-performance/6a.png)
 
@@ -138,7 +133,7 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 図 9: 二項分類モデルのクロス検証の結果。
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>多クラス分類モデルの評価
-この実験では、3 種類のあやめの事例が含まれている有名な [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris ") データセットを使います。 事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。 前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。 今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。 Iris データセットは [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][import-data] モジュールを使ってダウンロードできます。
+この実験では、3 種類のあやめの事例が含まれている有名な [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris ") データセットを使います。 事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。 前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。 今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。 Iris データセットは [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][import-data] モジュールを使ってダウンロードできます。
 
 ### <a name="creating-the-experiment"></a>実験の作成
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。

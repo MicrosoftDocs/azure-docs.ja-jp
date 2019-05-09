@@ -6,15 +6,15 @@ keywords: クリップ;サブクリップ;エンコード;メディア
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: ac64d97aeeef6147aa62658c9ee440bf058f4db1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783291"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842364"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Azure Media Clipper を使用したクリップの作成
 このセクションでは、Azure Media Clipper の使用を開始する基本的な手順を示します。 以降のセクションで、Azure Media Clipper の構成方法の詳細を提供します。
@@ -88,27 +88,27 @@ var subclipper = new subclipper({
 ```
 
 初期化メソッド呼び出しのパラメーターは次のとおりです。
-- `selector`{必須、文字列}: ウィジェットをレンダリングする、一致した HTML 要素の CSS セレクター。
-- `restVersion`{必須、文字列}: 対象とする Azure Media Services REST API バージョン。 REST バージョンは、ウィジェットによって生成される出力の形式を定義します。 現時点では、2.0 のみがサポートされています。
+- `selector`{必須、文字列}:ウィジェットをレンダリングする、一致した HTML 要素の CSS セレクター。
+- `restVersion`{必須、文字列}:対象とする Azure Media Services REST API バージョン。 REST バージョンは、ウィジェットによって生成される出力の形式を定義します。 現時点では、2.0 のみがサポートされています。
 - `submitSubclipCallback`{必須、promise} ウィジェットの [送信] ボタンがクリックされたときに呼び出されるコールバック関数。 このコールバック関数では、ウィジェットによって生成される出力 (レンダー ジョブ構成やフィルター定義) を予期します。 詳細については、サブクリップ送信コールバックに関するページをご覧ください。
-- `logLevel`{省略可能、{'info', 'warn', 'error'}}: ブラウザーのコンソールに表示されるログ記録レベル。 既定値: error
-- `minimumMarkerGap` {省略可能、int}: サブクリップの最小サイズ (秒単位)。 注: この値は 6 (既定値) 以上である必要があります。
+- `logLevel`{省略可能、{'info', 'warn', 'error'}}:ブラウザーのコンソールに表示されるログ記録レベル。 既定値: error
+- `minimumMarkerGap` {省略可能、int}:サブクリップの最小サイズ (秒単位)。 注: この値は 6 (既定値) 以上である必要があります。
 - `singleBitrateMp4Profile` {省略可能、JSON オブジェクト} ウィジェットで生成されたレンダー ジョブの構成に使用する、シングル ビットレート MP4 プロファイル。 指定されていない場合は、[既定のシングルビットレート MP4 プロファイル](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-single-bitrate-1080p)が使用されます。
 - `multiBitrateMp4Profile` {省略可能、JSON オブジェクト} ウィジェットで生成されたレンダー ジョブの構成に使用する、マルチ ビットレート MP4 プロファイル。 指定されていない場合は、[既定のマルチビットレート MP4 プロファイル](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-multiple-bitrate-1080p)が使用されます。
 - `keymap` {省略可能、JSON オブジェクト} ウィジェットのキーボード ショートカットのカスタマイズを可能にします。 詳細については、[カスタマイズ可能なキーボード ショートカット](media-services-azure-media-clipper-keyboard-shortcuts.md)に関するページをご覧ください。
 - `assetsPanelLoaderCallback`{省略可能、promise} ユーザーがウィンドウの下部までスクロールするたびに、資産ウィンドウに資産の新しいページを (非同期で) 読み込むように呼び出されるコールバック関数。 詳細については、資産ウィンドウ ローダー コールバックに関するページをご覧ください。
 - `height` {省略可能、数字} ウィジェット全体の高さ (高さの最小値は、資産ウィンドウなしで 600 px、資産ウィンドウありで 850 px)。
-- `subclippingMode`(省略可能、{'all', 'render', 'filter'}): サブクリップ モードを許可します。 既定値は all です。
+- `subclippingMode`(省略可能、{'all', 'render', 'filter'}):サブクリップ モードを許可します。 既定値は all です。
 - `filterAssetsTypes`(省略可能、ブール値): filterAssetsTypes を使用すると、資産ウィンドウでフィルター ドロップダウン リストを表示したり隠したりできます。 既定値は true です。
-- `speedLevels` (省略可能、配列): speedLevels を使用すると、ビデオ プレーヤーに異なる速度レベルを設定できます。詳細については、[Azure Media Player ドキュメント](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions)に関するページをご覧ください。
+- `speedLevels` (省略可能、配列): speedLevels を使用すると、ビデオ プレーヤーに異なる速度レベルを設定できます。詳細については、[Azure Media Player ドキュメント](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions)に関するページをご覧ください。
 - `resetOnJobDone`(省略可能、ブール値): resetOnJobDone を使用すると、ジョブが正常に送信された場合に Clipper がサブクリッパーを初期状態にリセットできます。
 - `autoplayVideo`(省略可能、ブール値): autoplayVideo を使用すると、Clipper が読み込まれたビデオを自動再生できます。 既定値は true です。
 - `language` {省略可能、文字列}: language を指定すると、ウィジェットの言語が設定されます。 指定しない場合、ウィジェットはブラウザーの言語に基づいてメッセージをローカライズします。 ブラウザーの言語が検出されない場合、ウィジェットの既定は英語となります。 詳しくは、「[ローカライズの構成](media-services-azure-media-clipper-localization.md)」セクションをご覧ください。
 - `languages`{省略可能、JSON}: languages パラメーターを指定すると、言語の既定の辞書が、ユーザーが定義したカスタム辞書に置き換えられます。 詳しくは、「[ローカライズの構成](media-services-azure-media-clipper-localization.md)」セクションをご覧ください。
-- `extraLanguages`(省略可能、JSON): extraLanaguages パラメーターを指定すると、既定の辞書に新しい言語が追加されます。 詳しくは、「[ローカライズの構成](media-services-azure-media-clipper-localization.md)」セクションをご覧ください。
+- `extraLanguages`(省略可能、JSON): extraLanguages パラメーターを指定すると、既定の辞書に新しい言語が追加されます。 詳しくは、「[ローカライズの構成](media-services-azure-media-clipper-localization.md)」セクションをご覧ください。
 
 ## <a name="typescript-definition"></a>TypeScript 定義
-Clipper の [TypeScript](https://www.typescriptlang.org/) 定義ファイルは、[ここ](http://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts)にあります。
+Clipper の [TypeScript](https://www.typescriptlang.org/) 定義ファイルは、[ここ](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts)にあります。
 
 ## <a name="azure-media-clipper-api"></a>Azure Media Clipper API
 このセクションでは、Clipper によって提供される API サーフェスを説明します。

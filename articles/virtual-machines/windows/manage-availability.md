@@ -3,7 +3,7 @@ title: Azure での Windows VM の可用性管理 | Microsoft Docs
 description: 複数の仮想マシンを使って Azure の Windows アプリケーションの高い可用性を確保する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: caa6932a7b284113e06b3b585f4f7bac404ab58a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7631205943efc827edd80d3a89ea68804d94153d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469166"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888711"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Azure での Windows 仮想マシンの可用性の管理 
 

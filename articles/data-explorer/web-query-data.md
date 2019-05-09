@@ -1,19 +1,18 @@
 ---
 title: 'クイック スタート: Azure Data Explorer でデータのクエリを実行する'
 description: このクイック スタートでは、Azure Data Explorer でデータのクエリと共有を行う方法について説明します。
-services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106449"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59050562"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>クイック スタート: Azure Data Explorer でデータのクエリを実行する
 
@@ -39,7 +38,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. アプリケーションの左上にある **[Add cluster]\(クラスターの追加\)** を選択します。
 
-1. **[Add cluster]\(クラスターの追加\)** ダイアログ ボックスで「`https://help.kusto.windows.net`」と入力して、**[Add]\(追加\)** を選択します。
+1. **[Add cluster]\(クラスターの追加\)** ダイアログ ボックスで URI を入力して、**[Add]\(追加\)** を選択します。
+
+   ヘルプ クラスター URI `https://help.kusto.windows.net` を使用できます。 独自のクラスターがある場合は、そのクラスターの URI を指定します。 たとえば、次の図のように、`https://mydataexplorercluster.westus.kusto.windows.net` と指定します。
+
+    ![ポータルでのサーバー URI](media/web-query-data/server-uri.png)
 
 1. 左側のウィンドウに **help** クラスターが表示されます。 **Samples** データベースを展開し、アクセスできるサンプル テーブルを表示します。
 

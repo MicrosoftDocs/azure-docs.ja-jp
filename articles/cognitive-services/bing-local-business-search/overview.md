@@ -6,16 +6,15 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: f6299a8241b4ce43dc9276070f06ae4cc6566d43
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: fb3b375a66ac9b05ad26287b7c39ce8e748ad699
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748568"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780322"
 ---
 # <a name="what-is-bing-local-business-search"></a>Bing Local Business Search とは
 RESTful サービスである Bing Local Business Search API を使用すると、アプリケーションで検索クエリに基づいて地元企業に関する情報を検索できます。 たとえば、`q=<business-name> in Redmond, Washington`、または `q=Italian restaurants near me` です。 
@@ -23,7 +22,7 @@ RESTful サービスである Bing Local Business Search API を使用すると�
 ## <a name="features"></a>機能
 | 機能 | 説明 |  
 | -- | -- | 
-| [地元の企業と場所を検索する](quickstarts/local-quickstart.md) | Bing Local Business Search API では、クエリからローカライズされた結果が得られます。 結果には、企業の Web サイトの URL と表示テキスト、電話番号、地理的な場所 (GPS 座標、市区町村、番地など) が含まれます |  
+| [地元の企業と場所を検索する](quickstarts/local-quickstart.md) | Bing Local Business Search API では、クエリからローカライズされた結果が得られます。 結果には、企業の Web サイトの URL と表示テキスト、電話番号、地理的な場所(GPS 座標、市区町村、番地など) が含まれます |  
 | [地理的境界を使用してローカル結果をフィルター処理する](specify-geographic-search.md) | 検索パラメーターとして座標を追加し、円領域または正方形の境界ボックスで指定された、特定の地域に結果を制限します。 | 
 | [カテゴリ別に地元企業の結果をフィルター処理する](local-categories.md) | カテゴリ別に地元企業の結果を検索します。 このオプションでは、リバース IP の場所または呼び出し元の GPS 座標を使用して、さまざまな企業のカテゴリのローカライズされた結果を返します。|
 

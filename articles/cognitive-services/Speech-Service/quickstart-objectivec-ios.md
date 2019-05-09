@@ -1,27 +1,27 @@
 ---
 title: 'クイック スタート: 音声を認識する (Objective-C) - 音声サービス'
 titleSuffix: Azure Cognitive Services
-description: iOS で Objective-C と Speech Service SDK を使用して音声を認識する方法について説明します
+description: iOS で Objective-C と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: chlandsi
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 75411ebd50448c5f490a1f03fbbf25a61dbffaf8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718114"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59009273"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>クイック スタート: iOS 上で Objective-C と Speech Service SDK を使用して音声を認識する
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、音声が録音された音声ファイルをテキストに変換するために、Cognitive Services Speech SDK を使用して Objective-C で iOS アプリを作成する方法について説明します。
+この記事では、音声を録音したファイルやマイクからの音声をテキストに文字起こしする iOS アプリを、Objective-C と Cognitive Services Speech SDK を使用して作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,16 +29,16 @@ ms.locfileid: "53718114"
 
 * 音声サービス用の[サブスクリプション キー](get-started.md)
 * macOS コンピューターと [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 以降
-* iOS バージョン 11.4 以降に設定されたターゲット
+* iOS バージョン 9.3 以降に設定されたターゲット
 
 ## <a name="get-the-speech-sdk-for-ios"></a>iOS 用の Speech SDK を取得する
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.2.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.4.0` です。
 
-Mac および iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
-これは https://aka.ms/csspeech/iosbinary からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。
+iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
+[こちら](https://aka.ms/csspeech/iosbinary)からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。
 
 ## <a name="create-an-xcode-project"></a>Xcode プロジェクトの作成
 
@@ -75,7 +75,7 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
 
 1. リンクを右クリックし、**[Save target as...]** を選択して、[サンプルの wav ファイル](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)をダウンロードします。Finder ウィンドウからプロジェクト ビューのルート レベルにドラッグすることで、wav ファイルをプロジェクトにリソースとして追加します。
-設定を変更せずに、次のダイアログで **[Finish]** をクリックします。
+   設定を変更せずに、次のダイアログで **[Finish]** をクリックします。
 1. 次の操作によって、自動生成された `ViewController.m` ファイルの内容を置き換えます。
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
@@ -92,10 +92,10 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 1. デバッグ出力が表示されるようにします (**[View]** > **[Debug Area]** > **[Activate Console]**)。
 1. **[Product]\(製品\)** -> **[Destination]\(ターゲット\)** メニューの一覧から、お使いの開発マシンに接続された iOS デバイスまたは iOS シミュレーターをアプリのターゲットとして選択します。
 1. コード例をビルドし、メニューから **[Product]** -> **[Run]** の順に選択するか、**[Play]** ボタンをクリックして、iOS シミュレーターで実行します。
-現在、Speech SDK は、64 ビット iOS プラットフォームのみをサポートしています。
+   現在、Speech SDK は、64 ビット iOS プラットフォームのみをサポートしています。
 1. アプリの [Recognize (File)]\(認識 (ファイル)\) ボタンをクリックすると、画面の下部にオーディオ ファイルの内容である "What's the weather like?" が表示されます。 表示されます。
 
- ![シミュレートされた iOS アプリ](media/sdk/qs-objectivec-simulated-app.png)
+   ![シミュレートされた iOS アプリ](media/sdk/qs-objectivec-simulated-app.png)
 
 1. アプリの [Recognize (Microphone)]\(認識 (マイク)\) ボタンをクリックして何か話すと、発話した内容のテキストが画面の下部に表示されます。
 
@@ -103,3 +103,4 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 
 > [!div class="nextstepaction"]
 > [GitHub で Objective-C のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
+

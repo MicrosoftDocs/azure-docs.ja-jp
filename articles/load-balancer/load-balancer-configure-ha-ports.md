@@ -5,6 +5,7 @@ description: すべてのポートで内部トラフィックを負荷分散す�
 services: load-balancer
 documentationcenter: na
 author: rdhillon
+manager: narayan
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: d104fd8a88a55af75faa2a0958733442c083451c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084568"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593405"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>内部ロード バランサー用の高可用性ポートの構成
 
@@ -37,9 +38,9 @@ ms.locfileid: "53084568"
 
 ![高可用性ポートのデプロイ例](./media/load-balancer-configure-ha-ports/haports.png)
 
-
-
 ## <a name="configure-high-availability-ports"></a>高可用性ポートの構成
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 高可用性ポートを構成するには、バックエンド プール内の NVA で内部ロード バランサーを設定します。 NVA の正常性を検出するための対応するロード バランサー正常性プローブ構成と、高可用性ポートのロード バランサー規則を設定します。 ロード バランサー関連の全般的な構成については、[概要](load-balancer-get-started-ilb-arm-portal.md)に関する記事をご覧ください。 この記事では、高可用性ポートの構成を取り上げます。
 
@@ -50,7 +51,6 @@ ms.locfileid: "53084568"
 Azure Portal を使用して高可用性ポートを構成するには、**[HA ポート]** チェック ボックスをオンにします。 このオプションを選択すると、関連するポートとプロトコルの構成が自動的に設定されます。 
 
 ![Azure Portal を使用した高可用性ポートの構成](./media/load-balancer-configure-ha-ports/haports-portal.png)
-
 
 ### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>Resource Manager テンプレートを使用して高可用性ポートの負荷分散規則を構成する
 
@@ -90,7 +90,7 @@ Load Balancer リソース内の 2017-08-01 API バージョンの Microsoft.Net
 PowerShell で、次のコマンドを使用して高可用性ポートのロード バランサー規則を作成し、内部ロード バランサーを作成します。
 
 ```powershell
-lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
+lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Azure CLI を使用して高可用性ポートのロード バランサー規則を構成する

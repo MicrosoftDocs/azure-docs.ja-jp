@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c2497fef359d4a519c6d4927dfc0c38ee3d80d88
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f61f8740c9514f6276afb2ee84bcdccdc54c0710
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544568"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997903"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のサーバーの概念
 この記事では、Azure Database for MariaDB サーバーを操作するための考慮事項とガイドラインを示します。
@@ -36,6 +36,7 @@ Azure Database for MariaDB サーバー内には 1 つまたは複数のデー�
 ## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Azure Database for MariaDB サーバーをセキュリティ保護する方法
 
 次の要素が、データベースへの安全なアクセスを確保するうえで役に立ちます。
+
 |||
 | :--| :--|
 | **認証と権限承認** | Azure Database for MariaDB サーバーは、ネイティブ MySQL 認証をサポートしています。 サーバーにはサーバーの管理者ログインで接続し、認証できます。 |

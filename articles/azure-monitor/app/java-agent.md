@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
+ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: c0478b320afca1b82a79fa43e7b60c29a2cb2e7c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997930"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004050"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、およびメソッド実行時間の監視
 
@@ -73,7 +73,6 @@ xml ファイルの内容を設定します。 次の例を編集して、必要
                reportCaughtExceptions="true"
                reportExecutionTime="true"
                />
-
            <!-- Report on the particular signature
                 void methodTwo(String, int) -->
            <Method name="methodTwo"
@@ -89,6 +88,63 @@ xml ファイルの内容を設定します。 次の例を編集して、必要
 レポートの例外や、個々のメソッドのメソッド タイミングを有効にする必要があります。
 
 既定では、`reportExecutionTime` は true、`reportCaughtExceptions` は false です。
+
+## <a name="additional-config-spring-boot"></a>追加構成 (Spring Boot)
+
+`java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
+
+Azure App Services については、次のようにします。
+
+* [設定]、[アプリケーションの設定] の順に選択します
+* [アプリ設定] で、新しいキー値ペアを追加します。
+
+キー:`JAVA_OPTS`値:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.3.1-SNAPSHOT.jar`
+
+Java の最新バージョンについては、[ここ](https://github.com/Microsoft/ApplicationInsights-Java/releases
+) でリリースを確認してください。 
+
+エージェントは、D:/home/site/wwwroot/ directory で終わるようにプロジェクト内でリソースとしてパッケージ化する必要があります。 **[開発ツール]** > **[高度なツール]** > **[デバッグ コンソール]** に進み、サイト ディレクトリの内容を調べることで、エージェントが正しい App Service ディレクトリにあることを確認できます。    
+
+* 設定を [保存] し、アプリを [再起動] します。 (これらの手順は、Windows で実行している App Services にのみ適用されます)
+
+> [!NOTE]
+> AI-Agent.xml とエージェントの jar ファイルは同じフォルダーに含まれている必要があります。 多くの場合、これらはプロジェクトの `/resources` フォルダーに一緒に配置されます。  
+
+### <a name="spring-rest-template"></a>Spring Rest テンプレート
+
+Spring の Rest テンプレートで行われた HTTP 呼び出しを Application Insights で正しくインストルメント化するためには、Apache HTTP クライアントが必要です。 既定では、Spring の Rest テンプレートが Apache HTTP クライアントを使用する構成になっていません。 Spring Rest テンプレートのコンストラクターで [HttpComponentsClientHttpRequestfactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/client/HttpComponentsClientHttpRequestFactory.html) を指定することによって、Apache HTTP が使用されるようになります。
+
+これを Spring Beans で行う例を以下に示しました。 これは、ファクトリ クラスの既定の設定を使用するごく単純な例です。
+
+```java
+@bean
+public ClientHttpRequestFactory httpRequestFactory() {
+return new HttpComponentsClientHttpRequestFactory()
+}
+@Bean(name = 'myRestTemplate')
+public RestTemplate dcrAccessRestTemplate() {
+    return new RestTemplate(httpRequestFactory())
+}
+```
+
+#### <a name="enable-w3c-distributed-tracing"></a>W3C 分散トレースを有効にする
+
+AI-Agent.xml に次のコードを追加します。
+
+```xml
+<Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+        </BuiltIn>
+    </Instrumentation>
+```
+
+> [!NOTE]
+> 既定では、下位互換性モードが有効になっています。また、enableW3CBackCompat パラメーターは、省略可能で、このモードをオフにするときにのみ使用する必要があります。 
+
+すべてのサービスが、W3C プロトコルをサポートする新しいバージョンの SDK に更新されたときに、これを行うことが理想的です。 W3C をサポートする新しいバージョンの SDK にできるだけ早く移行することを強くお勧めします。
+
+**受信と送信 (エージェント) の構成が**[両方とも](correlation.md#w3c-distributed-tracing)正確に同じであることを確認してください。
 
 ## <a name="view-the-data"></a>データの表示
 Application Insights リソースでは、集計されたリモートの依存関係やメソッドの実行時間が [[パフォーマンス] タイル][metrics]に表示されます。

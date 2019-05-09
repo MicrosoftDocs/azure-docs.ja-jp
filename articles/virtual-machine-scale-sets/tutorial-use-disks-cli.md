@@ -3,7 +3,7 @@ title: チュートリアル - Azure CLI を使用したスケール セット�
 description: Azure CLI を使用して仮想マシン スケール セットの Managed Disks を作成および使用する方法 (ディスクの追加、準備、一覧表示、切断方法など) を説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35256a22265ca544975b2fead40b1a2be0d73ff1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469386"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751159"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -95,13 +95,13 @@ Premium ディスクは、SSD ベースの高性能で待機時間の短いデ�
 ディスクは、スケール セットの作成時に作成および接続できます。また、既存のスケール セットに対してディスクを作成および接続することもできます。
 
 ### <a name="attach-disks-at-scale-set-creation"></a>スケール セットの作成時にディスクを接続する
-まず、[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+まず、[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-[az vmss create](/cli/azure/vmss#az_vmss_create) コマンドを使用して、仮想マシン スケール セットを作成します。 次の例では、*myScaleSet* という名前のスケール セットを作成し、SSH キーが存在しない場合は SSH キーを生成します。 `--data-disk-sizes-gb` パラメーターを使用して 2 つのディスクを作成します。 1 つ目のディスクのサイズは *64* GB、2 つ目のディスクは *128* GB です。
+[az vmss create](/cli/azure/vmss) コマンドを使用して、仮想マシン スケール セットを作成します。 次の例では、*myScaleSet* という名前のスケール セットを作成し、SSH キーが存在しない場合は SSH キーを生成します。 `--data-disk-sizes-gb` パラメーターを使用して 2 つのディスクを作成します。 1 つ目のディスクのサイズは *64* GB、2 つ目のディスクは *128* GB です。
 
 ```azurecli-interactive
 az vmss create \
@@ -117,7 +117,7 @@ az vmss create \
 すべてのスケール セット リソースと VM インスタンスを作成して構成するには数分かかります。
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>既存のスケール セットにディスクを接続する
-既存のスケール セットにディスクを接続することもできます。 前の手順で作成したスケール セットを使用して別のディスクを追加するには、[az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) を使用します。 次の例では、*128* GB の追加ディスクを接続します。
+既存のスケール セットにディスクを接続することもできます。 前の手順で作成したスケール セットを使用して別のディスクを追加するには、[az vmss disk attach](/cli/azure/vmss/disk) を使用します。 次の例では、*128* GB の追加ディスクを接続します。
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -132,7 +132,7 @@ az vmss disk attach \
 
 スケール セット内の複数の VM インスタンスにわたってこのプロセスを自動化するには、Azure カスタム スクリプト拡張機能を使用できます。 この拡張機能を使用すると、各 VM インスタンス上でローカルにスクリプトを実行して、接続されたデータ ディスクの準備などの操作を実行できます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/linux/extensions-customscript.md)」を参照してください。
 
-次の例では、すべての未フォーマットの接続されたデータ ディスクを準備する [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) を使用して、GitHub サンプル リポジトリにあるスクリプトを各 VM インスタンス上で実行します。
+次の例では、すべての未フォーマットの接続されたデータ ディスクを準備する [az vmss extension set](/cli/azure/vmss/extension) を使用して、GitHub サンプル リポジトリにあるスクリプトを各 VM インスタンス上で実行します。
 
 ```azurecli-interactive
 az vmss extension set \
@@ -144,7 +144,7 @@ az vmss extension set \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"],"commandToExecute":"./prepare_vm_disks.sh"}'
 ```
 
-ディスクが正常に準備されたことを確認するには、VM インスタンスの 1 つに SSH 接続します。 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) を使用して、スケール セットの接続情報を一覧表示します。
+ディスクが正常に準備されたことを確認するには、VM インスタンスの 1 つに SSH 接続します。 [az vmss list-instance-connection-info](/cli/azure/vmss) を使用して、スケール セットの接続情報を一覧表示します。
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -225,7 +225,7 @@ exit
 
 
 ## <a name="list-attached-disks"></a>接続されているディスクの一覧表示
-スケール セットに接続されているディスクに関する情報を表示するには、[az vmss show](/cli/azure/vmss#az_vmss_show) と *virtualMachineProfile.storageProfile.dataDisks* に対するクエリを使います。
+スケール セットに接続されているディスクに関する情報を表示するには、[az vmss show](/cli/azure/vmss) と *virtualMachineProfile.storageProfile.dataDisks* に対するクエリを使います。
 
 ```azurecli-interactive
 az vmss show \
@@ -279,7 +279,7 @@ az vmss show \
 
 
 ## <a name="detach-a-disk"></a>ディスクを取り外す
-特定のディスクが不要になったら、スケール セットから切断することができます。 ディスクは、スケール セット内のすべての VM インスタンスから削除されます。 スケール セットからディスクを切断するには、[az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) を使用し、ディスクの LUN を指定します。 LUN は、前のセクションの [az vmss show](/cli/azure/vmss#az_vmss_show) の出力に表示されています。 次の例では、スケール セットから LUN *2* を切断します。
+特定のディスクが不要になったら、スケール セットから切断することができます。 ディスクは、スケール セット内のすべての VM インスタンスから削除されます。 スケール セットからディスクを切断するには、[az vmss disk detach](/cli/azure/vmss/disk) を使用し、ディスクの LUN を指定します。 LUN は、前のセクションの [az vmss show](/cli/azure/vmss) の出力に表示されています。 次の例では、スケール セットから LUN *2* を切断します。
 
 ```azurecli-interactive
 az vmss disk detach \
@@ -290,7 +290,7 @@ az vmss disk detach \
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-スケール セットとディスクを削除するには、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
+スケール セットとディスクを削除するには、[az group delete](/cli/azure/group) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

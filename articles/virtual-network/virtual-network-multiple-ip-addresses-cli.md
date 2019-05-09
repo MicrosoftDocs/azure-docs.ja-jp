@@ -1,13 +1,10 @@
 ---
-title: Azure CLI を使用して複数の IP アドレスを持つ VM を作成する | Microsoft Docs
+title: Azure CLI を使用して複数の IP アドレスを持つ VM
+titlesuffix: Azure Virtual Network
 description: Azure コマンド ライン インターフェイス (CLI) を使用して仮想マシンに複数の IP アドレスを割り当てる方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: 8f82a7d5d9c9f3b85856154973be4ec3fb961f6c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b693500e785d41b2ad3339e26dd9fd3505891bc0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287560"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648335"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -49,7 +46,7 @@ az group create --name $RgName --location $Location
     
 # Create a public IP address resource with a static IP address using the `--allocation-method Static` option. If you
 # do not specify this option, the address is allocated dynamically. The address is assigned to the resource from a pool
-# of IP adresses unique to each Azure region. Download and view the file from
+# of IP addresses unique to each Azure region. Download and view the file from
 # https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists the ranges for each region.
 
 PipName="myPublicIP"
@@ -126,13 +123,13 @@ az network nic ip-config create \
 VmName="myVm"
 
 # Replace the value for the following **VmSize** variable with a value from the
-# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes rticle. The script fails if the VM size
-# is not supported in the location you select. Run the `azure vm sizes --location estcentralus` command to get a full list
+# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article. The script fails if the VM size
+# is not supported in the location you select. Run the `azure vm sizes --location eastcentralus` command to get a full list
 # of VMs in US West Central, for example.
 
 VmSize="Standard_DS1"
 
-# Replace the value for the OsImage variable value with a value for *urn* from the utput returned by entering the
+# Replace the value for the OsImage variable value with a value for *urn* from the output returned by entering the
 # `az vm image list` command.
 
 OsImage="credativ:Debian:8:latest"
@@ -168,7 +165,7 @@ VM の作成後、「`az network nic show --name MyNic1 --resource-group myResou
 
 ## <a name="add"></a>VM に IP アドレスを追加する
 
-プライベートおよびパブリック IP アドレスを既存の Azure ネットワーク インターフェイスに追加するには、次の手順を実行します。 各例はこの記事で説明する[シナリオ](#Scenario)に基づいています。
+プライベートおよびパブリック IP アドレスを既存の Azure ネットワーク インターフェイスに追加するには、次の手順を実行します。 各例はこの記事で説明する[シナリオ](#scenario)に基づいています。
 
 1. コマンド シェルを開き、1 つのセッションでこのセクションの残りの手順を実行します。 Azure CLI のインストールと構成をまだ行っていない場合は、[Azure CLI のインストール](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順を完了し、`az-login` コマンドで Azure アカウントにログインします。
 

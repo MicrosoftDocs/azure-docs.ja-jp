@@ -4,7 +4,7 @@ description: この記事では、Azure のデータベース セキュリティ
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281627"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117971"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 データベースを管理するうえでセキュリティは最大の懸念事項であり、 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) では常に優先事項として扱われてきました。 データベースは、大部分の規制要件やセキュリティ要件 (HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。 規制の要件に基づいて特定の Azure データセンターにデータベースを配置することも選択できます。
@@ -77,7 +77,7 @@ SQL Server 認証を使用する場合は、次のことを行う必要があり
 
 - 強力な資格情報を自分で管理します。
 - 接続文字列で資格情報を保護します。
-- (場合により) Web サーバーからデータベースにネットワーク経由で渡される資格情報を保護します。 詳しくは、「[How To: ASP.NET 2.0 で SQL 認証を使用して SQL Server へ接続する方法](/previous-versions/msp-n-p/ff648340(v=pandp.10))」をご覧ください。
+- (場合により) Web サーバーからデータベースにネットワーク経由で渡される資格情報を保護します。 詳細については、[方法:ASP.NET 2.0 で SQL 認証を使用して SQL Server へ接続する方法](/previous-versions/msp-n-p/ff648340(v=pandp.10))をご覧ください。
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) 認証*
 Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
@@ -100,7 +100,7 @@ Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL
 構成の手順には、Azure AD 認証を構成して使用する次の手順が含まれます。
 
 - Azure AD を作成して設定します。
-- 省略可能: Active Directory インスタンスを関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory インスタンスを変更します。
+- 省略可能:Active Directory インスタンスを関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory インスタンスを変更します。
 - Azure SQL Database または [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) の Azure Active Directory 管理者を作成します。
 - クライアント コンピューターを構成します。
 - Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成します。
@@ -158,7 +158,7 @@ SQL Server データベース エンジンまたは個々のデータベース�
 
 ルールは Microsoft のベスト プラクティスに基づき、データベースとその貴重なデータに最も大きなリスクとなるセキュリティの問題に注目します。 これらのルールは、データベース レベルの問題およびサーバーのファイアウォール設定やサーバー レベルの権限など、サーバー レベルのセキュリティ問題もカバーしたものとなっています。 また、これらの規則は、規制機関によるコンプライアンス基準を満たすための多くの要件も表しています。
 
-**ベスト プラクティス**: 脅威の検出を有効にする。  
+**ベスト プラクティス**: 脅威の検出を有効にします。  
 **詳細**: Azure SQL Database の[脅威の検出](../sql-database/sql-database-threat-detection.md)を有効にし、セキュリティ アラートと、脅威を調査して軽減する方法の推奨事項を取得します。 不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセスやクエリのパターンが見つかった場合に、アラートを受信します。
 
 [Advanced Threat Protection](../sql-database/sql-advanced-threat-protection.md) は、高度な SQL セキュリティ機能のための統合パッケージです。 これには前に説明したサービス (データの検出と分類、脆弱性の評価、脅威の検出) が含まれています。 これらの機能を 1 つの場所で有効にして管理できます。

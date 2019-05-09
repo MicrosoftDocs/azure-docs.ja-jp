@@ -4,16 +4,16 @@ description: 定期的にデータを転送する場合にデータ転送用の 
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 61d3bcf8fd046ec1b68637bfdcc9827bb5b5d084
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263247"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58801983"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション
  
@@ -47,20 +47,20 @@ ms.locfileid: "53263247"
 | フォーム ファクター                 | Microsoft からのコマンドライン ツール       | 顧客による Storage に対する開発 <br> Azure クライアント ライブラリを使用した REST API |
 | 最初の 1 回限りのセットアップ     | 最小限                                | 多少の変数開発作業    |
 | データ形式                 | Azure BLOB、Azure Files、Azure Tables | Azure BLOB、Azure Files、Azure Tables   |
-| [パフォーマンス]                 | 既に最適化済み                      | 開発する際に最適化                  |
+| パフォーマンス                 | 既に最適化済み                      | 開発する際に最適化                  |
 | 価格                     | 無料、データ エグレス料金を適用      | 無料、データ エグレス料金を適用        |
 
 ### <a name="continuous-data-ingestion-over-network"></a>ネットワーク経由での継続的なデータ インジェスト
 
-| 機能                                       | Data Box Gateway (プレビュー) | Data Box Edge (プレビュー)  | Azure Data Factory        |
+| 機能                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | フォーム ファクター                                   | 仮想デバイス             | 物理デバイス          | Azure portal のサービス、オンプレミス エージェント                                                            |
 | ハードウェア                                      | ハイパーバイザー            | Microsoft により提供    | NA                                                            |
 | 初期セットアップ作業                          | 短時間 (< 30 分)            | 中程度 (から数時間) | 長時間 (から数日間)                                                 |
 | データ形式                                   | Azure BLOB、Azure Files   | Azure BLOB、Azure Files | [データ ストアと形式について、70 個を超えるデータ コネクタをサポート](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| データの前処理                           | いいえ                          | はい、Edge コンピューティング経由    | [はい]                                                           |
-| ローカル キャッシュ<br>(オンプレミス データを格納)    | [はい]                        | [はい]                      | いいえ                                                             |
-| その他のクラウドからの転送                    | いいえ                          | いいえ                        | [はい]                                                           |
+| データの前処理                           | いいえ                          | はい、Edge コンピューティング経由    | はい                                                           |
+| ローカル キャッシュ<br>(オンプレミス データを格納)    | はい                        | はい                      | いいえ                                                             |
+| その他のクラウドからの転送                    | いいえ                          | いいえ                        | はい                                                           |
 | 価格                                       | [料金](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [料金](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [料金](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>次の手順

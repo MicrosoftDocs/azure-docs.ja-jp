@@ -1,17 +1,18 @@
 ---
-title: レンダリング用の Azure Batch のストレージとデータ移動
+title: レンダリング用のストレージとデータ移動 - Azure Batch
 description: ワークロードをレンダリングするためのストレージとデータ移動のオプション
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: d5b006fd744e463c73ee0a32388f254017e96354
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 5a0d4dc82995e63697cc673bc54695c9c6d586df
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036758"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790248"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション
 
@@ -25,7 +26,7 @@ ms.locfileid: "40036758"
   * このオプションではファイル システムに VM が必要とされないため、非常にコスト効率がよいという利点があります。さらに、VM での blobfuse のキャッシングにより、複数のジョブやタスクで同じファイルが繰り返しダウンロードされることを防ぎます。  また、ファイルは単純な BLOB および標準の API やツールであるため、データ移動も簡単です。たとえば、azcopy を使用してオンプレミスのファイル システムと Azure ストレージ間でファイルをコピーできます。
 * ファイル システムまたはファイル共有:
   * VM のオペレーティング システムやパフォーマンス/スケールの要件により、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)、NFS に接続されたディスクと VM の使用、GlusterFS などの分散ファイル システムに接続されたディスクと複数の VM の使用、またはサード パーティのオファリングの使用のオプションがあります。
-  * マイクロソフトは [Avere Systems](http://www.averesystems.com/) を買収し、近い将来に大規模で高パフォーマンスのレンダリングに最適なソリューションが完成します。  Avere のソリューションでは、BLOB ストレージやオンプレミスの NAS デバイスと連携する、Azure ベースの NFS や SMB キャッシュを作成できます。
+  * マイクロソフトは [Avere Systems](https://www.averesystems.com/) を買収し、近い将来に大規模で高パフォーマンスのレンダリングに最適なソリューションが完成します。  Avere のソリューションでは、BLOB ストレージやオンプレミスの NAS デバイスと連携する、Azure ベースの NFS や SMB キャッシュを作成できます。
   * ファイル システムを使用すると、ファイルはファイル システムに対して直接読み取りと書き込みが可能で、ファイル システムとプール VM 間でコピーできます。
   * 共有ファイル システムはプロジェクトおよびジョブ間で大量のアセットを共有可能で、レンダリング タスクは必要なものにのみアクセスします。
 

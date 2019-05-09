@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c54431009105c1d213e6cefeba06c39c781e2c1a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164366"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889465"
 ---
-<!--author=SharS last changed: 06/22/2016-->
-
 ### <a name="to-configure-and-register-the-device"></a>デバイスを構成して登録するには
 1. StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイス にアクセスします。 方法については、「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) 」を参照してください。 **必ず手順を正確に実行してください。そうしないと、コンソールにアクセスできません。**
 2. 開いたセッションで、**Enter** キーを 1 回押して、コマンド プロンプトを開きます。
@@ -35,7 +33,7 @@ ms.locfileid: "50164366"
       
       * DATA 0 ネットワーク インターフェイスの IP アドレス
       * サブネット マスク
-      * ゲートウェイ
+      * Gateway
       * プライマリ DNS サーバーの IP アドレス
       * プライマリ NTP サーバーの IP アドレス
       
@@ -63,7 +61,7 @@ ms.locfileid: "50164366"
 11. セキュリティ上の理由で、デバイス管理者のパスワードは最初のセッション後に期限が切れるため、今すぐパスワードを変更する必要があります。 画面の指示に従って、デバイスの管理者パスワードを入力します。 デバイス管理者の有効なパスワードの長さは、8 ～ 15 文字です。 パスワードには、小文字、大文字、数字、および特殊文字のうち 3 種類の文字を組み合わせる必要があります。
     
     <br/>![StorSimple によるデバイスの登録 5](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice5_gov-include.png)
-12. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple デバイス マネージャー サービスに登録します。 そのためには、 [手順 2. (サービス登録キーの取得)](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#step-2-get-the-service-registration-key)で取得したサービス登録キーが必要です。 登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
+12. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple デバイス マネージャー サービスに登録します。 そのためには、次の手順で取得したサービス登録キーが必要です。「[手順 2:サービス登録キーを取得する](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#step-2-get-the-service-registration-key)」をご覧ください。 登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
     
     > [!NOTE]
     > Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。 すべてのネットワーク設定 (Data 0、サブネット マスク、およびゲートウェイの IP アドレス) を入力した場合、エントリは保持されます。

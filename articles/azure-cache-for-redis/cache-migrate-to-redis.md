@@ -1,25 +1,25 @@
 ---
 title: Managed Cache Service アプリケーションの Redis への移行 - Azure | Microsoft Docs
 description: Managed Cache Service アプリケーションおよび In-Role Cache アプリケーションを Azure Cache for Redis に移行する方法について説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: na
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: tysonn
 ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/30/2017
-ms.author: wesmc
-ms.openlocfilehash: c3c1aa9abc6a7ba97bf7c95aa1c670c7239df3ab
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: 116e54fd39af801cf8941a974da2b72c483097dc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021886"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237023"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Managed Cache Service から Azure Cache for Redis への移行
 Azure Managed Cache Service を使用するアプリケーションの Azure Cache for Redis への移行は、キャッシュ アプリケーションで使用されている Managed Cache Service の機能によっては、最小限の変更をアプリケーションに対して行うだけで実現できます。 API はまったく同じではありませんがよく似ており、Managed Cache Service を使用してキャッシュにアクセスする既存コードの多くは最小限の変更で再利用できます。 この記事では、Azure Cache for Redis を使用するように Managed Cache Service アプリケーションを移行する際に必要な構成とアプリケーションの変更を行う方法、および Azure Cache for Redis の機能の一部を使用して Managed Cache Service キャッシュの機能を実装する方法について説明します。
@@ -53,7 +53,7 @@ Azure Managed Cache Service と Azure Cache for Redis は似ていますが、�
 | ローカル キャッシュ |特に高速のアクセスのため、キャッシュされたオブジェクトのコピーをクライアントにローカルに格納します。 |クライアント アプリケーションは、ディクショナリまたは類似のデータ構造を使用してこの機能を実装する必要があります。 |
 | 削除ポリシー |None または LRU。 既定のポリシーは LRU です。 |Azure Cache for Redis は、volatile-lru、allkeys-lru、volatile-random、allkeys-random、volatile-ttl、noeviction の各削除ポリシーをサポートします。 既定のポリシーは volatile-lru です。 詳細については、「 [既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |
 | 有効期限ポリシー |既定の有効期限ポリシーは絶対であり、既定の有効期限は 10 分です。 スライド式ポリシーおよび期限なしポリシーも使用できます。 |既定ではキャッシュ内のアイテムは期限切れしませんが、キャッシュ設定のオーバーロードを使用して書き込みごとに有効期限を構成できます。 |
-| リージョンとタグ付け |リージョンは、キャッシュされるアイテムのサブグループです。 また、リージョンでは、タグと呼ばれる追加の説明文を使用してキャッシュされるアイテムに注釈を付けることもできます。 リージョンでは、そのリージョン内のタグ付きアイテムに対する検索操作を実行できます。 リージョン内のすべてのアイテムは、キャッシュ クラスターの 1 つのノードに格納されます。 |Azure Cache for Redis は 1 つのノードで構成される (Redis クラスターが有効になっていない場合) ため、Managed Cache Service のリージョンの概念は適用されません。 Redis はキーを取得するときの検索とワイルドカード操作をサポートするので、説明的なタグをキー名に埋め込み、それを使用して後でアイテムを取得できます。 Redis を使用したタグ付けソリューションの実装の例については、 [Redis でのキャッシュタグの実装](http://stackify.com/implementing-cache-tagging-redis/)に関するページをご覧ください。 |
+| リージョンとタグ付け |リージョンは、キャッシュされるアイテムのサブグループです。 また、リージョンでは、タグと呼ばれる追加の説明文を使用してキャッシュされるアイテムに注釈を付けることもできます。 リージョンでは、そのリージョン内のタグ付きアイテムに対する検索操作を実行できます。 リージョン内のすべてのアイテムは、キャッシュ クラスターの 1 つのノードに格納されます。 |Azure Cache for Redis は 1 つのノードで構成される (Redis クラスターが有効になっていない場合) ため、Managed Cache Service のリージョンの概念は適用されません。 Redis はキーを取得するときの検索とワイルドカード操作をサポートするので、説明的なタグをキー名に埋め込み、それを使用して後でアイテムを取得できます。 Redis を使用したタグ付けソリューションの実装の例については、 [Redis でのキャッシュタグの実装](https://stackify.com/implementing-cache-tagging-redis/)に関するページをご覧ください。 |
 | シリアル化 |Managed Cache は、NetDataContractSerializer、BinaryFormatter、およびカスタム シリアライザーの使用をサポートします。 既定値は NetDataContractSerializer です。 |キャッシュに格納する前の .NET オブジェクトのシリアル化は、クライアント アプリケーションで行う必要があります。使用するシリアライザーはクライアント アプリケーションの開発者が選択します。 詳細とサンプル コードについては、「 [キャッシュ内で .NET オブジェクトを使用する](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)」を参照してください。 |
 | キャッシュ エミュレーター |Managed Cache には、ローカル キャッシュ エミュレーターが用意されています。 |Azure Cache for Redis にはエミュレーターはありませんが、[redis-server.exe の MSOpenTech ビルドをローカルに実行する](cache-faq.md#cache-emulator) ことで、エミュレーターを体験できます。 |
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 5845fd246b20d29739eb6d60bbc8621489ccc0d6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011940"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312493"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -68,7 +68,9 @@ StorSimple Data Manager は、次の 7 つのリージョンで利用できま�
  - ソース ストレージ アカウント (StorSimple デバイスに関連付けられているアカウント) とターゲット ストレージ アカウント (ネイティブ形式のデータを格納するアカウント) を、同じ Azure リージョンにします。
  - StorSimple のストレージ アカウントが含まれているリージョンで、Data Manager とジョブ定義を起動します。 それが不可能な場合は、最も近い Azure リージョンで Data Manager を起動した後、StorSimple のストレージ アカウントと同じリージョンでジョブ定義を作成します。 
 
-    StorSimple のストレージ アカウントが、ジョブ定義の作成をサポートしている 26 のリージョンにない場合は、StorSimple Data Manager を実行しないことをお勧めします。待機時間が長くなり、送信料金が高額になる可能性があります。
+    StorSimple のストレージ アカウントが、ジョブ定義の作成をサポートしている 26 のリージョンにない場合は、StorSimple Data Manager を実行しないことをお勧めします。待機時間が長くなり、送信料金が上がる可能性があります。
+    
+Microsoft は、Azure サービスをすべての領域で常に使用できるようにする作業に取り組んでいます。 そうはいっても、特定のリージョンで計画されていないサービスの停止が短期間発生する可能性はあります。 このような場合、Data Manager とジョブ定義を停止の影響を受けないリージョンで表示し、変換ジョブを実行します。 そのようなシナリオではある程度の待ち時間が追加される場合がありますが、これはリージョンの停止というまれなイベントにおける復旧戦略になります。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 

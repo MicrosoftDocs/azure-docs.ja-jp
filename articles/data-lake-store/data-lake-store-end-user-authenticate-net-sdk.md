@@ -3,20 +3,20 @@ title: 'エンドユーザー認証: .NET SDK から Azure Active Directory を�
 description: Azure Active Directory を .NET SDK と共に使用した Data Lake Storage Gen1 でエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
+author: twooley
 manager: cgronlun
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 62b7e293468a8b92f22ee1a5fd5b38cd15cfafbf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.author: twooley
+ms.openlocfilehash: 78a290d8136f8804e853d36a9bc95571625ed89c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261536"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58876770"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 での .NET SDK を使用したエンドユーザー認証
 > [!div class="op_single_selector"]

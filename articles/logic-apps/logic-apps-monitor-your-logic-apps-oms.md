@@ -1,5 +1,5 @@
 ---
-title: Log Analytics でロジック アプリを監視する - Azure Logic Apps | Microsoft Docs
+title: Azure Monitor ログを使用してロジック アプリを監視する - Azure Logic Apps | Microsoft Docs
 description: ロジック アプリの実行に関するトラブルシューティングと診断のために、Azure Log Analytics を使用して分析情報とデバッグ データを取得します
 services: logic-apps
 ms.service: logic-apps
@@ -9,21 +9,23 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3f890e6cabd757fdd38374befaaccd1a10c9bd96
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995638"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192464"
 ---
-# <a name="monitor-logic-apps-with-azure-log-analytics"></a>Azure Log Analytics でロジック アプリを監視する
+# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Azure Monitor ログでロジック アプリを監視する
 
-ロジック アプリを監視してより多くのデバッグ詳細情報を取得するには、ロジック アプリの作成時に [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を有効にします。 Azure portal で Logic Apps 管理ソリューションをインストールすると、Log Analytics によりロジック アプリの診断ログと監視の機能が提供されます。 このソリューションは、ロジック アプリ実行の集計情報に加えて、状態、実行時間、再送信の状態、関連付け ID など、特定の詳細情報も提供します。 この記事では、Log Analytics を有効にして、ロジック アプリ実行のランタイム イベントとランタイム データを確認する方法を説明します。
+ロジック アプリを監視してより多くのデバッグ詳細情報を取得するには、ロジック アプリの作成時に [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を有効にします。 Azure portal で Logic Apps 管理ソリューションをインストールすると、Azure Monitor ログによりロジック アプリの診断ログと監視の機能が提供されます。 このソリューションは、ロジック アプリ実行の集計情報に加えて、状態、実行時間、再送信の状態、関連付け ID など、特定の詳細情報も提供します。 この記事では、Azure Monitor ログを有効にして、ロジック アプリ実行のランタイム イベントとランタイム データを確認する方法を説明します。
 
-既存のロジック アプリに対して Azure Log Analytics を有効にするには、[診断ログを有効にしてロジック アプリのランタイム データを Log Analytics に送信する](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)手順に従います。
+既存のロジック アプリに対して Azure Monitor ログを有効にするには、[診断ログを有効にしてロジック アプリのランタイム データを Azure Monitor ログに送信する](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)手順に従います。
 
 > [!NOTE]
 > このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,7 +58,7 @@ ms.locfileid: "52995638"
 
 ## <a name="install-logic-apps-management-solution"></a>Logic Apps 管理ソリューションをインストールする
 
-ロジック アプリの作成時にすでに Log Analytics をオンにしている場合は、この手順をスキップします。 Logic Apps 管理ソリューションが既にインストールされています。
+ロジック アプリの作成時にすでに Azure Monitor ログをオンにしている場合は、この手順をスキップします。 Logic Apps 管理ソリューションが既にインストールされています。
 
 1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
 
@@ -149,9 +151,9 @@ ms.locfileid: "52995638"
 
      ![ロジック アプリの実行のアクションと詳細を表示する](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
      
-     [Azure Log Analytics] ページで、クエリを更新して表から結果を確認できます。 このクエリは [Kusto クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)を使用します。他の結果を表示するには編集します。 
+     ログ分析ページで、クエリを更新し、表から結果を確認できます。 このクエリは [Kusto クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)を使用します。他の結果を表示するには編集します。 
 
-     ![Azure Log Analytics - クエリ ビュー](media/logic-apps-monitor-your-logic-apps-oms/query.png)
+     ![ログ分析 - クエリ ビュー](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
 ## <a name="next-steps"></a>次の手順
 

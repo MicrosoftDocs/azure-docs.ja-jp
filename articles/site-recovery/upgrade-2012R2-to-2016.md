@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホストと SCVMM を Windows Server 2016 にアップグレードする
-description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
+title: Upgrade Windows Server 2012 R2 hosts & SCVMM configured with Azure Site Recovery to Windows Server 2016
+description: Learn how to set up disaster recovery to Azure for Azure Stack VMs with the Azure Site Recovery service.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,106 +8,106 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: 351213749dcec2b4c16728c04230c75a12179118
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b67290f72f762331a6d699fb79aef0c0d7f9fb65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411349"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853275"
 ---
-# <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホスト、SCVMM 2012 R2 を Windows Server 2016 と SCVMM 2016 にアップグレードする
+# <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Upgrade Windows Server 2012 R2 hosts, SCVMM 2012 R2 configured with Azure Site Recovery to Windows Server 2016 & SCVMM 2016
 
-この記事では、Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホストと SCVMM 2012 R2 を Windows Server 2016 と SCVMM 2016 にアップグレードする方法について説明します
+This article shows you how to upgrade Windows Server 2012 R2 hosts & SCVMM 2012 R2 that are configured with Azure Site Recovery, to Windows Server 2016 & SCVMM 2016
 
-Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦略に貢献します。 想定内または想定外の障害が発生したときに、このサービスを使って、VM ワークロードが引き続き利用可能な状態を維持できるようにします。
+Site Recovery contributes to your business continuity and disaster recovery (BCDR) strategy. The service ensures that your VM workloads remain available when expected and unexpected outages occur.
 
 > [!IMPORTANT]
-> Azure Site Recovery によるレプリケーション用に既に構成されている Windows Server 2012 R2 ホストをアップグレードする場合は、このドキュメントに記載されている手順に従う必要があります。 アップグレードに他の方法を選択した場合は、サポートされていない状態になったり、フェールオーバーを実行する機能またはレプリケーションが中断したりする可能性があります。
+> When you upgrade Windows Server 2012 R2 hosts that are already configured for replication with Azure Site Recovery, you must follow the steps mentioned in this document. Any alternate path chosen for upgrade can result in unsupported states and can result in a break in replication or ability to perform failover.
 
 
-この記事では、お客様の環境にある以下の構成をアップグレードする方法について説明します。
+In this article, you learn how to upgrade the following configurations in your environment:
 
 > [!div class="checklist"]
-> * **SCVMM によって管理されていない Windows Server 2012 R2 ホスト** 
-> * **スタンドアロンの SCVMM 2012 R2 サーバーによって管理されている Windows Server 2012 R2 ホスト** 
-> * **高可用性の SCVMM 2012 R2 サーバーによって管理されている Windows Server 2012 R2 ホスト**
+> * **Windows Server 2012 R2 hosts which aren't managed by SCVMM** 
+> * **Windows Server 2012 R2 hosts which are managed by a standalone SCVMM 2012 R2 server** 
+> * **Windows Server 2012 R2 hosts which are managed by highly available SCVMM 2012 R2 server**
 
 
-## <a name="prerequisites--factors-to-consider"></a>前提条件と検討するべき要素
+## <a name="prerequisites--factors-to-consider"></a>Prerequisites & factors to consider
 
-アップグレードする前に、次の点に注意してください。
+Before you upgrade, note the following:-
 
-- SCVMM によって管理されていない Windows Server 2012 R2 ホストがあり、それがスタンドアロン環境のセットアップである場合、アップグレードを実行しようとすると、レプリケーションが中断されます。
-- 最初に、SCVMM 2012 R2 のインストール中に "*キーを Active Directory の分散キー管理に格納しない*" ことを選択した場合、アップグレードは正常に完了しません。
+- If you have Windows Server 2012 R2 hosts that are not managed by SCVMM, and its a stand-alone environment setup, there will be a break in replication if you try to perform the upgrade.
+- If you had selected "*not store my Keys in Active Directory under Distributed Key Management*" while installing SCVMM 2012 R2 in the first place, the upgrades will not complete successfully.
 
-- System Center 2012 R2 の VMM を使用している場合は、 
+- If you are using System Center 2012 R2 VMM, 
 
-    - VMM でデータベース情報を確認します。**[VMM コンソール]** -> **[設定]** -> **[標準]** -> **[データベース接続]**
-    - System Center Virtual Machine Manager エージェント サービスのために使用されているサービス アカウントを確認します
-    - VMM データベースのバックアップがあることを確認します。
-    - 関係する SCVMM サーバーのデータベース名をメモします。 これは、**[VMM コンソール]** -> **[設定]** -> **[標準]** -> **[データベース接続]** の順に移動して行えます
-    - 2012R2 のプライマリ VMM サーバーと復旧 VMM サーバーの両方の VMM ID をメモしておきます。 VMM ID は、レジストリ "HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup" で確認できます。
-    - クラスターに追加する新しい SCVMM の名前が以前と同じであることを確認します。 
+    - Check the database information on VMM: **VMM console** -> **settings** -> **General** -> **Database connection**
+    - Check the service accounts being used for System Center Virtual Machine Manager Agent service
+    - Make sure that you have a backup of the VMM Database.
+    - Note down the database name of the SCVMM servers involved. This can be done by navigating to **VMM console** -> **Settings** -> **General** -> **Database connection**
+    - Note down the VMM ID of both the 2012R2 primary and recovery VMM servers. VMM ID can be found from the registry "HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup”.
+    - Ensure that you the new SCVMMs that you add to the cluster has the same names as was before. 
 
-- どちらも SCVMM によって管理されているお客様の 2 つのサイト間でレプリケートしている場合は、プライマリ側をアップグレードする前に、必ず復旧側を先にアップグレードします。
-> [!WARNING]
-> SCVMM 2012 R2 のアップグレード中に、[分散キー管理] で**暗号化キーを Active Directory に格納する**ことを選択します。 サービス アカウントおよび分散キー管理の設定は、慎重に選択します。 お客様の選択によっては、テンプレート内のパスワードなど、暗号化されたデータがアップグレード後に使用できなくなり、Azure Site Recovery によるレプリケーションに影響が及ぶ可能性があります
+- If you are replicating between two of your sites managed by SCVMMs on both sides, ensure that you upgrade your recovery side first before you upgrade the primary side.
+  > [!WARNING]
+  > While upgrading the SCVMM 2012 R2, under Distributed Key Management, select to **store encryption keys in Active Directory**. Choose the settings for the service account and distributed key management carefully. Based on your selection, encrypted data such as passwords in templates might not be available after the upgrade, and can potentially affect replication with Azure Site Recovery
 
 > [!IMPORTANT]
-> 詳細な SCVMM ドキュメントの[前提条件](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)を参照してください
+> Please refer to the detailed SCVMM documentation of [prerequisites](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)
 
-## <a name="windows-server-2012-r2-hosts-which-arent-managed-by-scvmm"></a>SCVMM によって管理されていない Windows Server 2012 R2 ホスト 
-以下で説明されている各手順は、この[チュートリアル](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial)に従って実行された [Hyper-V ホストから Azure へ](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-architecture)のユーザー構成に適用されます
+## <a name="windows-server-2012-r2-hosts-which-arent-managed-by-scvmm"></a>Windows Server 2012 R2 hosts which aren't managed by SCVMM 
+The list of steps mentioned below applies to the user configuration from [Hyper-V hosts to Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-architecture) executed by following this [tutorial](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial)
 
 > [!WARNING]
-> 前提条件で説明したとおり、これらの手順はクラスター環境シナリオだけに適用され、スタンドアロンの Hyper-V ホスト構成には適用されません。
+> As mentioned in the prerequisites, these steps only apply to a clustered environment scenario, and not in a stand-alone Hyper-V host configuration.
 
-1. [クラスターのローリング アップグレード](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process)の手順に従って、 クラスターのローリング アップグレード プロセスを実行します。
-2. クラスターに導入された新しい Windows Server 2016 ホストごとに、[こちら] に記載されている手順に従って、Azure Site Recovery から Windows Server 2012 R2 ホストの参照を削除します。 これは、クラスターからのドレインおよび無効化を選択したホストである必要があります。
-3. すべての仮想マシンに対して *Update-VMVersion* コマンドが実行されたら、アップグレードは完了です。 
-4. [こちら](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-tutorial#set-up-the-source-environment)に記載されている手順を使用して、新しい Windows Server 2016 ホストを Azure Site Recovery に登録します。 Hyper-V サイトは既にアクティブになっているので、新しいホストをクラスターに登録するだけで済むことに注意してください。 
-5.  Azure portal に移動し、[Recovery Services] で、レプリケートされた正常性状態を確認します
+1. Follow the steps to perform the [rolling cluster upgrade.](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) to execute the rolling cluster upgrade process.
+2. With every new Windows Server 2016 host that is introduced in the cluster, remove the reference of a Windows Server 2012 R2 host from Azure Site Recovery by following steps mentioned [here]. This should be the host you chose to drain & evict from the cluster.
+3. Once the *Update-VMVersion* command has been executed for all virtual machines, the upgrades have been completed. 
+4. Use the steps mentioned [here](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-tutorial#set-up-the-source-environment) to register the new Windows Server 2016 host to Azure Site Recovery. Please note that the Hyper-V site is already active and you just need to register the new host in the cluster. 
+5.  Go to Azure portal and verify the replicated health status inside the Recovery Services
 
-## <a name="upgrade-windows-server-2012-r2-hosts-managed-by-stand-alone-scvmm-2012-r2-server"></a>スタンドアロンの SCVMM 2012 R2 サーバーによって管理されている Windows Server 2012 R2 ホストのアップグレード
-お客様の Windows Sever 2012 R2 ホストをアップグレードする前に、SCVMM 2012 R2 を SCVMM 2016 にアップグレードする必要があります。 以下の手順に従ってください。
+## <a name="upgrade-windows-server-2012-r2-hosts-managed-by-stand-alone-scvmm-2012-r2-server"></a>Upgrade Windows Server 2012 R2 hosts managed by stand-alone SCVMM 2012 R2 server
+Before you upgrade your Windows Sever 2012 R2 hosts,  you need to upgrade the SCVMM 2012 R2 to SCVMM 2016. Follow the below steps:-
 
-**スタンドアロンの SCVMM 2012 R2 を SCVMM 2016 にアップグレードする**
+**Upgrade standalone SCVMM 2012 R2 to SCVMM 2016**
 
-1.  [コントロール パネル]、[プログラム]、[プログラムと機能]、[Microsoft Azure Site Recovery] の順に移動し、[アンインストール] をクリックして、ASR プロバイダーをアンインストールします
-2. [SCVMM のデータベースを保持し、オペレーティング システムをアップグレードします](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. **[プログラムの追加と削除]** で、**[VMM]** > **[アンインストール]** の順に選択します。 b. **[機能の削除]** を選択し、**[VMM 管理サーバー] と [VMM コンソール]** を選択します。 c. **[データベースのオプション]** で **[データベースの保持]** を選択します。 d. 概要を確認し、**[アンインストール]** をクリックします。
+1.  Uninstall ASR provider by navigating to Control Panel -> Programs -> Programs and Features ->Microsoft Azure Site Recovery , and click on Uninstall
+2. [Retain the SCVMM database and upgrade the operating system](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
+3. In **Add remove programs**, select **VMM** > **Uninstall**. b. Select **Remove Features**, and then select V**MM management Server and VMM Console**. c. In **Database Options**, select **Retain database**. d. Review the summary and click **Uninstall**.
 
-4. [VMM 2016 をインストールします](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
-5. SCVMM を起動し、**[ファブリック]** タブで各ホストの状態を確認します。**[最新の情報に更新]** をクリックして、最新の状態を取得します。 状態として "要注意" と表示されるはずです。 
-17. SCVMM に最新の [Microsoft Azure Site Recovery プロバイダー](http://aka.ms/downloaddra)をインストールします。
-16. クラスターの各ホストに最新の [Microsoft Azure Recovery Service (MARS) エージェント](http://aka.ms/latestmarsagent)をインストールします。 最新の情報に更新して、SCVMM がホストを正常に照会できることを確認します。
+4. [Install VMM 2016](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
+5. Launch SCVMM  and check status of each hosts under **Fabrics** tab. Click **Refresh** to get the most recent status. You should see status as “Needs Attention”. 
+17. Install the latest [Microsoft Azure Site Recovery Provider](https://aka.ms/downloaddra) on the SCVMM.
+16. Install the latest [Microsoft Azure Recovery Service (MARS) agent](https://aka.ms/latestmarsagent) on each host of the cluster. Refresh to ensure SCVMM is able to successfully query the hosts.
 
-**Windows Server 2012 R2 ホストを Windows Server 2016 にアップグレードする**
+**Upgrade Windows Server 2012 R2 hosts to Windows Server 2016**
 
-1. クラスターのローリング アップグレード プロセスを実行するには、[こちら](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process)に記載されている手順に従います。 
-2. クラスターに新しいホストを追加した後、SCVMM コンソールからホストを更新して、この更新されたホストに VMM エージェントをインストールします。
-3. *Update-VMVersion* を実行して、仮想マシンの VM バージョンを更新します。 
-4.  Azure portal に移動し、[Recovery Services コンテナー] で仮想マシンのレプリケートされた正常性状態を確認します。 
+1. Follow the steps mentioned [here](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) to execute the rolling cluster upgrade process. 
+2. After adding the new host to the cluster, refresh the host from the SCVMM console to install the VMM Agent on this updated host.
+3. Execute *Update-VMVersion* to update the VM versions of the Virtual machines. 
+4.  Go to Azure portal and verify the replicated health status of the virtual machines inside the Recovery Services Vault. 
 
-## <a name="upgrade-windows-server-2012-r2-hosts-are-managed-by-highly-available-scvmm-2012-r2-server"></a>高可用性の SCVMM 2012 R2 サーバーによって管理されている Windows Server 2012 R2 ホストのアップグレード
-お客様の Windows Sever 2012 R2 ホストをアップグレードする前に、SCVMM 2012 R2 を SCVMM 2016 にアップグレードする必要があります。 Azure Site Recovery を使用して構成された SCVMM 2012 R2 サーバーのアップグレードでは、次のアップグレード モードがサポートされています。それは、追加の VMM サーバーを使用しない混合モードと、追加の VMM サーバーを使用する混合モードです。
+## <a name="upgrade-windows-server-2012-r2-hosts-are-managed-by-highly-available-scvmm-2012-r2-server"></a>Upgrade Windows Server 2012 R2 hosts are managed by highly available SCVMM 2012 R2 server
+Before you upgrade your Windows Sever 2012 R2 hosts,  you need to upgrade the SCVMM 2012 R2 to SCVMM 2016. The following modes of upgrade are supported while upgrading SCVMM 2012 R2 servers configured with Azure Site Recovery - Mixed mode with no additional VMM servers & Mixed mode with additional VMM servers.
 
-**SCVMM 2012 R2 を SCVMM 2016 にアップグレードする**
+**Upgrade SCVMM 2012 R2 to SCVMM 2016**
 
-1.  [コントロール パネル]、[プログラム]、[プログラムと機能]、[Microsoft Azure Site Recovery] の順に移動し、[アンインストール] をクリックして、ASR プロバイダーをアンインストールします
-2. お客様が実行したいアップグレードのモードに応じて、[こちら](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server)に記載されている手順に従います。
-3. SCVMM コンソールを起動し、**[ファブリック]** タブで各ホストの状態を確認します。**[最新の情報に更新]** をクリックして、最新の状態を取得します。 状態として "要注意" と表示されるはずです。
-4. SCVMM に最新の [Microsoft Azure Site Recovery プロバイダー](http://aka.ms/downloaddra)をインストールします。
-5. クラスターの各ホストで、最新の [Microsoft Azure Recovery Service (MARS) エージェント](http://aka.ms/latestmarsagent)に更新します。 最新の情報に更新して、SCVMM がホストを正常に照会できることを確認します。
+1.  Uninstall ASR provider by navigating to Control Panel -> Programs -> Programs and Features ->Microsoft Azure Site Recovery , and click on Uninstall
+2. Follow the steps mentioned [here](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) based on the mode of upgrade you wish to execute.
+3. Launch SCVMM console and check status of each hosts under **Fabrics** tab. Click **Refresh** to get the most recent status. You should see status as “Needs Attention”.
+4. Install the latest [Microsoft Azure Site Recovery Provider](https://aka.ms/downloaddra) on the SCVMM.
+5. Update the latest [Microsoft Azure Recovery Service (MARS) agent](https://aka.ms/latestmarsagent) on each host of the cluster. Refresh to ensure SC VMM is able to successfully query the hosts.
 
 
-**Windows Server 2012 R2 ホストを Windows Server 2016 にアップグレードする**
+**Upgrade Windows Server 2012 R2 hosts to Windows Server 2016**
 
-1. クラスターのローリング アップグレード プロセスを実行するには、[こちら](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process)に記載されている手順に従います。
-2. クラスターに新しいホストを追加した後、SCVMM コンソールからホストを更新して、この更新されたホストに VMM エージェントをインストールします。
-3. *Update-VMVersion* を実行して、仮想マシンの VM バージョンを更新します。 
-4.  Azure portal に移動し、[Recovery Services コンテナー] で仮想マシンのレプリケートされた正常性状態を確認します。 
+1. Follow the steps mentioned [here](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) to execute the rolling cluster upgrade process.
+2. After adding the new host to the cluster, refresh the host from the SCVMM console to install the VMM Agent on this updated host.
+3. Execute *Update-VMVersion* to update the VM versions of the Virtual machines. 
+4.  Go to Azure portal and verify the replicated health status of the virtual machines inside the Recovery Services Vault. 
 
-## <a name="next-steps"></a>次の手順
-ホストのアップグレードが実行されたら、[テスト フェールオーバー](tutorial-dr-drill-azure.md)を実行して、レプリケーションの正常性とディザスター リカバリーの状態をテストできます。
+## <a name="next-steps"></a>Next steps
+Once the upgrade of the hosts is performed, you can perform a [test failover](tutorial-dr-drill-azure.md) to test the health of your replication and disaster recovery status.
 

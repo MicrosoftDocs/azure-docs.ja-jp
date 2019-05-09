@@ -4,7 +4,7 @@ description: この記事では、Azure ポータルを使用してコンテン�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c46faf2298ebaac4f40fb1d18cbfca83076e0d4f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423550"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259076"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Azure Portal を使用したコンテンツ保護ポリシーの構成
  Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) 128 ビット暗号化キーを使用して、動的に暗号化されたコンテンツを配信できます。 また、PlayReady や Widevine デジタル著作権管理 (DRM) と Apple FairPlay を使用した共通暗号化 (CENC) と共に使用することもできます。 
@@ -90,10 +90,10 @@ FairPlay の暗号化を有効にするには、**[FairPlay の構成]** を選�
 ![アセットのオプション](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>AES または DRM による暗号化
-アセットの **[暗号化]** を選択すると、**[AES]** または **[DRM]** という 2 つの選択肢が表示されます。 
+アセットの **[暗号化]** を選択すると、**[AES]** または **[DRM]** の 2 つの選択肢が表示されます。 
 
 #### <a name="aes"></a>AES
-AES クリア キーによる暗号化はすべてのストリーミング プロトコル (Smooth Streaming、HLS、MPEG-DASH) で有効になります。
+AES クリア キー暗号化は、Smooth Streaming、HLS、および MPEG-DASH のすべてのストリーミング プロトコルで有効になります。
 
 ![暗号化の構成](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 

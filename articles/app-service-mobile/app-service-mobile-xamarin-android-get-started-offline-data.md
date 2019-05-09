@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: ca0eaf9e47b88bc0df8e7f050d8558c23d884f78
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7e951b9f2c2fda3c63f154b5b144addcbf65aacf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999299"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530333"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Xamarin Android モバイル アプリのオフライン同期を有効にする
 
@@ -131,7 +131,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 <!-- URLs. -->
 [Create a Xamarin Android app (Xamarin Android アプリの作成)]: app-service-mobile-xamarin-android-get-started.md
 [Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
-[Xamarin Studio]: http://xamarin.com/download
-[Xamarin extension]: http://xamarin.com/visual-studio
+[Xamarin Studio]: https://xamarin.com/download
+[Xamarin extension]: https://xamarin.com/visual-studio
 [SyncContext]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.synccontext(v=azure.10).aspx
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md

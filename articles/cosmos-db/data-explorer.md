@@ -1,20 +1,19 @@
 ---
 title: Azure Cosmos DB エクスプローラーを使用してデータを管理する
 description: Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベースのインターフェイスで、Azure Cosmos DB に格納されたデータを表示および管理することができます。
-services: cosmos-db
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: c1af73d57255b3c74bbab4c69767d1756b24a6da
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d50bf7d865cb286f2a1421156b477dc92dc978d1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541576"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453605"
 ---
-# <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Azure Cosmos DB エクスプローラーを使用してデータを管理する 
+# <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos Explorer を使ってデータを操作する 
 
 Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベースのインターフェイスで、Azure Cosmos DB に格納されたデータを表示および管理することができます。 Azure Cosmos DB エクスプローラーは、Azure Cosmos DB アカウントを作成するときに Azure portal で使用できる既存の **[データ エクスプローラー]** タブと同じです。 既存のデータ エクスプローラーよりも優れた Azure Cosmos DB エクスプローラーの主な利点は、次のとおりです。
 

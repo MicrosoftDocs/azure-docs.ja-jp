@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: overview
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 18b8fab53e9e2de6d083b3a9e78001a3844b38d5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: c850d2b01e098a10aacf383f0ed4340cb9e64e10
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226345"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476878"
 ---
 # <a name="introduction-to-table-storage-in-azure"></a>Azure の Table Storage の概要
 

@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストを翻訳する、Java - Translator Text API'
+title: クイック スタート:テキストを翻訳する (Java) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java と Translator Text REST API を使用して、テキスト文字列を英語からイタリア語とドイツ語に翻訳する方法を学習します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 537132a5d77927f130f2737e0ba597b9e74ace6e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 2fde25e4d21081d350fb2a7ecf07b66f348e7ab1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890247"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736483"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-java"></a>クイック スタート: Java で Translator Text API を使用して文字列を翻訳する
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-java"></a>クイック スタート:Java と Translator Text API を使用して文字列を翻訳する
 
 このクイック スタートでは、Java と Translator Text REST API を使用して、テキスト文字列を英語からイタリア語とドイツ語に翻訳する方法を学習します。
 
@@ -170,6 +170,12 @@ public static void main(String[] args) {
 
 ```console
 gradle build
+```
+
+ビルドが完了したら、次のコマンドを実行します。
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>応答のサンプル

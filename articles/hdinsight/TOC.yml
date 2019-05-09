@@ -1,4 +1,3 @@
-items:
 - name: HDInsight のドキュメント
   href: index.yml
 - name: Apache Hadoop
@@ -17,9 +16,3 @@ items:
   href: ./r-server/r-server-overview.md
 - name: エンタープライズ対応
   href: ./domain-joined/apache-domain-joined-introduction.md
-ms.openlocfilehash: fb8b74562f7b37dce5a3b194589f158d787552c3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386165"

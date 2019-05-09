@@ -6,6 +6,13 @@ items:
   - name: Azure Blockchain Workbench について
     href: overview.md
   expanded: true
+- name: チュートリアル
+  items:
+  - name: ブロックチェーン アプリを作成する
+    href: create-app.md
+  - name: ブロックチェーン アプリを使用する
+    href: use.md
+  expanded: true
 - name: 概念
   items:
   - name: アーキテクチャ
@@ -16,12 +23,8 @@ items:
   items:
   - name: Workbench をデプロイする
     href: deploy.md
-  - name: ブロックチェーン アプリを作成する
-    href: create-app.md
   - name: Workbench ユーザーを管理する
     href: manage-users.md
-  - name: ブロックチェーン アプリを使用する
-    href: use.md
   - name: アプリのバージョン管理
     href: version-app.md
   - name: Workbench API を使用する
@@ -67,13 +70,11 @@ items:
   items:
   - name: Ethereum Proof-of-Authority Consortium
     href: ../templates/ethereum-poa-deployment.md
-  - name: Ethereum Proof-of-Work Consortium
-    href: ../templates/ethereum-deployment.md
   - name: Hyperledger Fabric コンソーシアム
-    href: ../templates/hyperledger-fabric-single-member-blockchain.md
-ms.openlocfilehash: fe5d3879dea89824207e213c31992d5f130d9967
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+    href: ../templates/hyperledger-fabric-consortium-blockchain.md
+ms.openlocfilehash: b0426cc5dfbac62657ad172f5fa73586e6214601
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107142"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001929"

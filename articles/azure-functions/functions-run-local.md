@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 48b2d42348996f5f135d88cdf6345bca8daf8335
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409447"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59495534"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -28,7 +28,7 @@ Azure Functions Core Tools を使用すると、ローカル コンピュータ�
 
 Azure Functions Core Tools には、2 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、[選択した言語](supported-languages.md)、および必要なサポートのレベルによって異なります。
 
-+ [バージョン 1.x](#v1): ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
++ バージョン 1.x: ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
 
 + [バージョン 2.x](#v2): [ランタイムのバージョン 2.x](functions-versions.md) をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
@@ -40,13 +40,13 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 ### <a name="v2"></a>バージョン 2.x
 
-バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。
+バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。 .NET Core 2.x SDK を先にインストールしておく必要があります。
 
 #### <a name="windows-npm"></a>Windows
 
 次の手順では、npm を使用して Windows 上に Core Tools をインストールします。 また、[Chocolatey](https://chocolatey.org/) を使用することもできます。 詳細については、[Core Tools の readme ](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)に関するページを参照してください。
 
-1. [Windows 用 .NET Core 2.1](https://www.microsoft.com/net/download/windows) をインストールします。
+1. [Windows 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows) をインストールします。
 
 2. [Node.js]をインストールします。これには、npm が同梱されています。 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。
 
@@ -60,7 +60,7 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 次の手順では、Homebrew を使用して macOS 上に Core Tools をインストールします。
 
-1. [macOS 用 .NET Core 2.1](https://www.microsoft.com/net/download/macos) をインストールします。
+1. [macOS 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos) をインストールします。
 
 2. まだインストールしていない場合は、[Homebrew](https://brew.sh/) をインストールします。
 
@@ -68,14 +68,14 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
     ```bash
     brew tap azure/functions
-    brew install azure-functions-core-tools 
+    brew install azure-functions-core-tools
     ```
 
 #### <a name="linux"></a>APT による Linux (Ubuntu/Debian)
 
 次の手順では [APT ](https://wiki.debian.org/Apt)を使用して、Ubuntu/Debian Linux ディストリビューションに Core Tools をインストールします。 他の Linux ディストリビューションについては、[Core Tools の readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux) に関するページを参照してください。
 
-1. [Linux 用 .NET Core 2.1](https://www.microsoft.com/net/download/linux) をインストールします。
+1. [Linux 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux) をインストールします。
 
 2. 次のコマンドを使って、Microsoft プロダクト キーを信頼済みとして登録します。
 
@@ -91,10 +91,10 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
     sudo apt-get update
     ```
 
-    | Linux ディストリビューション | Version |
+    | Linux ディストリビューション | バージョン |
     | --------------- | ----------- |
+    | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17.10    | `artful`    |
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
@@ -156,7 +156,7 @@ Azure Functions ランタイムのバージョン 2.x では、関数アプリ�
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
-詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md#register-binding-extensions)」をご覧ください。
+詳しくは、「[Azure Functions でのトリガーとバインドの概念](./functions-bindings-expressions-patterns.md)」をご覧ください。
 
 ## <a name="local-settings-file"></a>ローカル設定ファイル
 
@@ -183,24 +183,24 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 
 | Setting      | 説明                            |
 | ------------ | -------------------------------------- |
-| **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
-| **値** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、**AzureWebJobsStorage** や **AzureWebJobsDashboard** など、Azure 内の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[BLOB Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の **Connection** など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 <br/>**AzureWebJobsStorage** は、HTTP 以外のトリガーに必要なアプリ設定です。 [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、**AzureWebJobsStorage** を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
-| **Host** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 |
-| **LocalHttpPort** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
-| **CORS** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
-| **ConnectionStrings** | 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得するのが一般的なフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 関数アプリの設定の**接続文字列**のコレクションに、これらの値を明示的に追加する必要があります。 関数のコードで [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、接続文字列の値を他の接続と共に**アプリケーションの設定**に格納する必要があります。 |
+| **`IsEncrypted`** | `true` に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は `false` です。 |
+| **`Values`** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、[`AzureWebJobsStorage`] など、Azure 内のご自分の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[Blob Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の `Connection` など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、`Values` 配列にアプリケーション設定を定義する必要があります。 <br/>[`AzureWebJobsStorage`] は、HTTP 以外のトリガーに必要なアプリ設定です。 <br/>Functions ランタイムのバージョン 2.x には、[`FUNCTIONS_WORKER_RUNTIME`] 設定が必要です。これは、Core Tools によってご自分のプロジェクトのために生成されます。 <br/> [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、[`AzureWebJobsStorage`] を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
+| **`Host`** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 |
+| **`LocalHttpPort`** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
+| **`CORS`** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
+| **`ConnectionStrings`** | 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など、構成ファイルの `ConnectionStrings` セクションから接続文字列を取得するのが一般的なフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 ご自分の関数アプリの設定の `Connection strings` コレクションに、これらの値を明示的に追加する必要があります。 関数のコードで [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、他の接続と共に、接続文字列の値をポータル内の**アプリケーションの設定**に格納する必要があります。 |
 
 関数アプリの設定値は、コードの中で環境変数として読み込むこともできます。 詳細については、以下の言語固有のリファレンス トピックの「環境変数」のセクションを参照してください。
 
-+ [C# プリコンパイル済み](functions-dotnet-class-library.md#environment-variables)
-+ [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
-+ [F# スクリプト (.fsx)](functions-reference-fsharp.md#environment-variables)
-+ [Java](functions-reference-java.md#environment-variables) 
-+ [JavaScript](functions-reference-node.md#environment-variables)
+* [C# プリコンパイル済み](functions-dotnet-class-library.md#environment-variables)
+* [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
+* [F# スクリプト (.fsx)](functions-reference-fsharp.md#environment-variables)
+* [Java](functions-reference-java.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
-有効なストレージ接続文字列が **AzureWebJobsStorage** に設定されておらず、エミュレーターが使用されていない場合は、次のエラー メッセージが表示されます。  
+有効なストレージ接続文字列が [`AzureWebJobsStorage`] に設定されていなく、エミュレーターが使用されていない場合は、次のエラー メッセージが表示されます。
 
-> local.settings.json に AzureWebJobsStorage の値がありません。 これは HTTP 以外のすべてのトリガーに必要です。 "func azure functionapp fetch-app-settings <functionAppName>" を実行するか、local.settings.json で接続文字列を指定することができます。
+> local.settings.json に AzureWebJobsStorage の値がありません。 これは HTTP 以外のすべてのトリガーに必要です。 "func azure functionapp fetch-app-settings \<functionAppName\>" を実行するか、local.settings.json で接続文字列を指定することができます。
 
 ### <a name="get-your-storage-connection-strings"></a>ストレージ接続文字列の取得
 
@@ -210,18 +210,18 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 
   ![Azure Portal から接続文字列をコピーする](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ [Azure Storage Explorer](https://storageexplorer.com/) を使用して、Azure アカウントに接続します。 **Explorer** でサブスクリプションを展開し、ストレージ アカウントを選択して、プライマリまたはセカンダリの接続文字列をコピーします。 
++ [Azure Storage Explorer](https://storageexplorer.com/) を使用して、Azure アカウントに接続します。 **Explorer** でサブスクリプションを展開し、ストレージ アカウントを選択して、プライマリまたはセカンダリの接続文字列をコピーします。
 
   ![Storage Explorer から接続文字列をコピーする](./media/functions-run-local/storage-explorer.png)
 
 + Core Tools を使用して、次のコマンドのいずれで Azure から接続文字列をダウンロードします。
 
-    + 既存の関数アプリからすべての設定をダウンロードします。
+  + 既存の関数アプリからすべての設定をダウンロードします。
 
     ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-    + 特定のストレージ アカウントの接続文字列を取得します。
+  + 特定のストレージ アカウントの接続文字列を取得します。
 
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
@@ -298,10 +298,10 @@ func host start
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-| **`--build`** | 実行前に現在のプロジェクトをビルドします。 バージョン 2.x と C# プロジェクトのみ。 |
+| **`--no-build`** | 実行前に現在のプロジェクトをビルドしません。 dotnet プロジェクトの場合のみ。 既定値は false に設定されます。 Version 2.x のみ。 |
 | **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 Version 2.x のみ。 |
+| **`--cors-credentials`** | クロスオリジン認証済み要求 (つまり、Cookie と Authentication ヘッダー) バージョン 2.x のみを許可します。 |
 | **`--cors`** | CORS オリジンのコンマ区切りのリスト (スペースなし)。 |
-| **`--debug`** | [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) または [Visual Studio 2017](functions-dotnet-class-library.md) から **func.exe** プロセスにアタッチできるように、デバッグ ポートを開いた状態でホストを起動します。 有効な値は `VSCode` と `VS` です。  |
 | **`--language-worker`** | 言語ワーカーを構成するための引数。 Version 2.x のみ。 |
 | **`--nodeDebugPort -n`** | 使用するノード デバッガーのポート。 既定値はlaunch.json または 5858 の値。 バージョン 1.x のみ。 |
 | **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 Version 2.x のみ。 |
@@ -324,13 +324,13 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->ローカルで実行される場合、HTTP エンドポイントに対して認証は適用されません。 つまり、ローカルの HTTP 要求はすべて、`authLevel = "anonymous"` として処理されます。 詳細については、[HTTP バインディング](functions-bindings-http-webhook.md#authorization-keys)に関する記事を参照してください。 
+>ローカルで実行される場合、HTTP エンドポイントに対して認証は適用されません。 つまり、ローカルの HTTP 要求はすべて、`authLevel = "anonymous"` として処理されます。 詳細については、[HTTP バインディング](functions-bindings-http-webhook.md#authorization-keys)に関する記事を参照してください。
 
 ### <a name="passing-test-data-to-a-function"></a>関数へのテスト データの受け渡し
 
 関数をローカルでテストするには、[Functions ホストを起動](#start)し、HTTP 要求を使用してローカル サーバーでエンドポイントを呼び出します。 呼び出すエンドポイントは、関数の種類によって異なります。
 
->[!NOTE]  
+>[!NOTE]
 > このトピックの例では、cURL ツールを使用して端末またはコマンド プロンプトから HTTP 要求を送信します。 お好みのツールを使用して HTTP 要求をローカル サーバーに送信できます。 Linux ベースのシステムでは既定で cURL ツールを使用できます。 Windows では、最初にダウンロードし、[cURL ツール](https://curl.haxx.se/)をインストールする必要があります。
 
 関数のテストの全般的な情報については、「[Azure Functions のコードをテストするための戦略](functions-test-a-function.md)」を参照してください。
@@ -341,9 +341,9 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
     http://localhost:{port}/api/{function_name}
 
-Functions ホストがリッスンしているのと同じサーバー名とポートを使用していることを確認してください。 これは、Functions ホストの起動時に生成される出力で確認できます。 トリガーでサポートされている任意の HTTP メソッドを使用して、この URL を呼び出すことができます。 
+Functions ホストがリッスンしているのと同じサーバー名とポートを使用していることを確認してください。 これは、Functions ホストの起動時に生成される出力で確認できます。 トリガーでサポートされている任意の HTTP メソッドを使用して、この URL を呼び出すことができます。
 
-次の cURL コマンドは、`MyHttpTrigger` クイックスタート関数を、クエリ文字列で渡された _name_ パラメーターを使用して、GET 要求からトリガーします。 
+次の cURL コマンドは、`MyHttpTrigger` クイックスタート関数を、クエリ文字列で渡された _name_ パラメーターを使用して、GET 要求からトリガーします。
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
@@ -355,11 +355,11 @@ curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-ブラウザーから GET 要求を行ってクエリ文字列でデータを渡すことが可能です。 その他すべての HTTP メソッドについては、cURL、Fiddler、Postman、または類似の HTTP テスト ツールを使用する必要があります。  
+ブラウザーから GET 要求を行ってクエリ文字列でデータを渡すことが可能です。 その他すべての HTTP メソッドについては、cURL、Fiddler、Postman、または類似の HTTP テスト ツールを使用する必要があります。
 
 #### <a name="non-http-triggered-functions"></a>HTTP でトリガーされない関数
 
-HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、管理エンドポイントを呼び出すことによって、関数をローカルでテストできます。 HTTP POST 要求を使ってローカル サーバーでこのエンドポイントを呼び出すと、関数がトリガーされます。 必要に応じて、POST 要求の本体でテスト データを実行に渡すことができます。 この機能は、Azure Portal の **[テスト]** タブに似ています。  
+HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、管理エンドポイントを呼び出すことによって、関数をローカルでテストできます。 HTTP POST 要求を使ってローカル サーバーでこのエンドポイントを呼び出すと、関数がトリガーされます。 必要に応じて、POST 要求の本体でテスト データを実行に渡すことができます。 この機能は、Azure Portal の **[テスト]** タブに似ています。
 
 次の管理者エンドポイントを呼び出して、非 HTTP 関数をトリガーします。
 
@@ -371,7 +371,7 @@ HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、
 {
     "input": "<trigger_input>"
 }
-````
+```
 
 `<trigger_input>` 値には、関数が必要とする形式でデータが含まれています。 次の cURL の例は、`QueueTriggerJS` 関数に対する POST です。 この場合、入力は、キューにあることが期待されるメッセージに相当する文字列です。
 
@@ -381,10 +381,10 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 #### <a name="using-the-func-run-command-in-version-1x"></a>バージョン 1.x での `func run` コマンドの使用
 
->[!IMPORTANT]  
+>[!IMPORTANT]
 > `func run` コマンドは、ツールのバージョン 2.x ではサポートされていません。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」を参照してください。
 
-`func run <FunctionName>` を使用して関数を直接呼び出し、関数の入力データを渡すこともできます。 このコマンドは、Azure Portal の **[テスト]** タブを使用して関数を実行するのと似ています。 
+`func run <FunctionName>` を使用して関数を直接呼び出し、関数の入力データを渡すこともできます。 このコマンドは、Azure Portal の **[テスト]** タブを使用して関数を実行するのと似ています。
 
 `func run` では、次のオプションがサポートされています。
 
@@ -402,17 +402,13 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-### <a name="viewing-log-files-locally"></a>ログ ファイルをローカルに表示する
-
-[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
-
 ## <a name="publish"></a>Azure に発行する
 
 Core Tools でサポートされている 2 種類のデプロイは、関数アプリへの関数プロジェクト ファイルの直接的なデプロイと、カスタム Linux コンテナーのデプロイ (バージョン 2.x でのみサポート) です。 既に [Azure サブスクリプションで関数アプリを作成してある](functions-cli-samples.md#create)必要があります。
 
-バージョン 2.x では、発行する前に、プロジェクトで[拡張機能を登録しておく](#register-extensions)必要があります。 コンパイルを必要とするプロジェクトは、バイナリをデプロイできるように、ビルドする必要があります。 
+バージョン 2.x では、発行する前に、プロジェクトで[拡張機能を登録しておく](#register-extensions)必要があります。 コンパイルを必要とするプロジェクトは、バイナリをデプロイできるように、ビルドする必要があります。
 
-### <a name="project-file-deployment"></a>プロジェクト ファイルのデプロイ  
+### <a name="project-file-deployment"></a>プロジェクト ファイルのデプロイ
 
 最も一般的なデプロイ方法は、Core Tools を使用して関数アプリ プロジェクト、バイナリ、および依存関係をパッケージ化し、関数アプリにパッケージをデプロイする方法です。 必要に応じて、[展開パッケージから直接関数を実行する](run-functions-from-deployment-package.md)ことができます。
 
@@ -424,10 +420,10 @@ func azure functionapp publish <FunctionAppName>
 
 このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 `<FunctionAppName>` がサブスクリプションに存在しない場合は、エラーが発生します。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。
 
-`publish` コマンドは、Functions プロジェクト ディレクトリのコンテンツをアップロードします。 ローカルでファイルを削除する場合、`publish` コマンドではファイルは Azure から削除されません。 Azure 内のファイルは、[Azure ポータル] の [Kudu ツール](functions-how-to-use-azure-function-app-settings.md#kudu) を使用することで削除できます。  
+`publish` コマンドは、Functions プロジェクト ディレクトリのコンテンツをアップロードします。 ローカルでファイルを削除する場合、`publish` コマンドではファイルは Azure から削除されません。 Azure 内のファイルは、[Azure ポータル] の [Kudu ツール](functions-how-to-use-azure-function-app-settings.md#kudu) を使用することで削除できます。
 
->[!IMPORTANT]  
-> Azure portal で関数アプリを作成すると、既定でバージョン 2.x の Function ランタイムが使用されます。 関数アプリにバージョン 1.x のランタイムを使用させるには、[バージョン 1.x での実行](functions-versions.md#creating-1x-apps)に関するページの説明に従ってください。  
+>[!IMPORTANT]
+> Azure portal で関数アプリを作成すると、既定でバージョン 2.x の Function ランタイムが使用されます。 関数アプリにバージョン 1.x のランタイムを使用させるには、[バージョン 1.x での実行](functions-versions.md#creating-1x-apps)に関するページの説明に従ってください。
 > 既存の関数がある関数アプリのランタイム バージョンを変更することはできません。
 
 次のプロジェクト発行オプションは、1.x と 2.x の両方のバージョンに適用されます。
@@ -460,7 +456,7 @@ Functions では、カスタム Linux コンテナーに関数プロジェクト
 func deploy
 ```
 
-次のカスタム コンテナー デプロイ オプションを使用できます。 
+次のカスタム コンテナー デプロイ オプションを使用できます。
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
@@ -470,6 +466,16 @@ func deploy
 | **`--max`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最大数を設定します。 |
 | **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |
 | **`--config`** | オプションのデプロイ構成ファイルを設定します。 |
+
+## <a name="monitoring-functions"></a>関数の監視
+
+関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+
+関数アプリ用に Application Insights を有効にするには:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -481,3 +487,5 @@ Azure Functions Core Tools は[オープン ソースであり、GitHub でホ�
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure ポータル]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
+[`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage

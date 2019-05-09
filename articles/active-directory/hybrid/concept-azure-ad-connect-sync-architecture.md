@@ -4,25 +4,26 @@ description: このトピックでは、Azure AD Connect 同期のアーキテ�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 465bcbe9-3bdd-4769-a8ca-f8905abf426d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 958ec6b32434bd9e0228255c0edbe9312225586c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 60a648b24ad16c1b5ea404b5ad9f1f18fd5041da
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307071"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193851"
 ---
-# <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect sync: アーキテクチャの概要
+# <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同期: アーキテクチャの概要
 このトピックでは、Azure AD Connect 同期の基本的なアーキテクチャについて説明します。多くの点で、前身の MIIS 2003、ILM 2007、FIM 2010 と似ています。 Azure AD Connect sync は、これらのテクノロジが進化したものです。 これらの以前のテクノロジのいずれかに慣れていれば、このトピックの内容も既によくご存知のことと思われます。 同期テクノロジについて初めて学ぶ場合は、このトピックを読むことをお勧めします。 ただし、このトピックの内容を隅々まで理解しなくても、(このトピックでは同期エンジンと呼んでいる) Azure AD Connect 同期を問題なくカスタマイズできます。
 
 ## <a name="architecture"></a>アーキテクチャ

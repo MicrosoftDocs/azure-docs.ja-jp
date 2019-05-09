@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7798cea053be1662edeb5bc8bfcef00f656b8d6e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 37f068be544f964f3aec63d85702098c8f382ab8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832941"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187930"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office データ接続ファイルを作成する
 

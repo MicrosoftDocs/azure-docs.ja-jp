@@ -7,21 +7,26 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 03/19/2019
 ms.author: anzaman
-ms.openlocfilehash: 073cff22f17f496c2ff85cfbf716751dfea1e03e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b491120639421d85d2fbb1a0efb2b6dd09ec1d4c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283238"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794639"
 ---
 # <a name="customize-a-person-model-in-video-indexer"></a>Video Indexer で人物モデルをカスタマイズする
 
+Video Indexer では、ビデオでの著名人の認識がサポートされています。 著名人認識機能では、IMDB、Wikipedia、LinkedIn のトップ インフルエンサなどの一般的に要求されているデータ ソースに基づく約 100 万人の顔を処理できます。 Video Indexer によって認識されない顔も検出されますが、名前はないままになります。 お客様は、カスタム人物モデルを構築し、Video Indexer で既定では認識されない顔が認識されるようにすることができます。 お客様は、個人の名前と個人の顔の画像ファイルをペアにすることで、これらの人物モデルを構築できます。  
 
-Video Indexer では、ビデオ コンテンツの顔検出と著名人認識がサポートされます。 著名人認識機能では、IMDB、Wikipedia、および LinkedIn のトップ インフルエンサーなど、一般的に要求されるデータ ソースに基づいて約 1,000,000 個の顔に対応します。 著名人認識機能で認識されない顔は、検出されますが、名前なしのままとなります。 Video Indexer にビデオをアップロードし、結果が戻ってきた後、前に戻り、認識されなかった顔に名前を付けることができます。 顔に名前でラベルを付けると、その顔と名前が、アカウントの人物モデルに追加されます。 その後、Video Indexer では、今後のビデオと過去のビデオでこの顔が認識されるようになります。
+ご利用のアカウントがさまざまなユースケースに対応している場合は、アカウントごとに複数の人物モデルを作成できるベネフィットがあります。 たとえば、アカウントのコンテンツが異なるチャネルに並べ替えられるものの場合は、チャネルごとに異なる人物モデルを作成できます。 
 
-Video Indexer Web サイトまたは API を使用して、アカウント内のビデオで検出された顔を編集することができます。これについては、以下のトピックで説明します。
+> [!NOTE]
+> 各人物モデルでは最大 100万人の人物がサポートされ、各アカウントは 50 人物モデルに制限されます。 
 
-- [API を使用して人物モデルをカスタマイズする](customize-person-model-with-api.md)
-- [Web サイトを使用して人物モデルをカスタマイズする](customize-person-model-with-website.md)
+モデルが作成されたら、ビデオのアップロード/インデックスの作成または再作成の際に、特定の人物モデルのモデル ID を指定して使用できます。 ビデオの新しい顔のトレーニングを行うと、そのビデオが関連付けられた特定のカスタム モデルが更新されます。 
+
+複数の人物モデルのサポートが必要でない場合は、アップロード/インデックスの作成または再作成の際にビデオに人物モデル ID を割り当てないでください。 この場合、Video Indexer ではアカウントの既定の人物モデルが使われます。 
+
+Video Indexer の Web サイトでは、ビデオで検出された顔を編集し、自分のアカウントの複数のカスタム人物モデルを管理できます。[Web サイトを使用した人物モデルのカスタマイズ](customize-person-model-with-website.md)に関するトピックの説明をご覧ください。  [API を使用した人物モデルのカスタマイズ](customize-person-model-with-api.md)に関する記事の説明に従って、API を使用することもできます。

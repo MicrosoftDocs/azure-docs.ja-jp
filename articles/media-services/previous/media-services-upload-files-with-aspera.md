@@ -4,24 +4,24 @@ description: このチュートリアルでは、Azure 上の **Aspera Server On
 services: media-services
 documentationcenter: ''
 author: johndeu
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 8812623a-b425-4a0f-9e05-0ee6c839b6f9
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 04/17/2017
+ms.topic: conceptual
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d2a1fc23f4ff725a08a1be433c7a5373c01a12a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e522883da7fddad44741599107f2dbc4c99aace6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780587"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316373"
 ---
-# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Azure 上の Aspera Server On Demand サービスを使用して Media Services アカウントにファイルをアップロードする
+# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Azure 上の Aspera Server On Demand サービスを使用して Media Services アカウントにファイルをアップロードする 
 
 ## <a name="overview"></a>概要
 
@@ -89,48 +89,48 @@ Azure Marketplace にログインしたら、次の基本的な手順に従っ�
 
     次のスクリーンショットは、アクセスの作成を示します。 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
 
     次のスクリーンショットは、ポータルの使用状況レポート インターフェイスを示しています。 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
 
 ## <a name="upload-files-with-aspera"></a>Aspera を使用したファイルのアップロード
 
 1. Aspera クライアント ソフトウェアをダウンロードしてインストールします。
     
-    * [ブラウザー プラグイン](http://downloads.asperasoft.com/connect2/)
-    * [リッチ クライアント](http://downloads.asperasoft.com/en/downloads/2)
+    * [ブラウザー プラグイン](https://downloads.asperasoft.com/connect2/)
+    * [リッチ クライアント](https://downloads.asperasoft.com/en/downloads/2)
 
 2. 最初の転送を行います。 Aspera クライアントを使って Aspera 転送サービスで転送するには、次の手順を完了する必要があります。 
 
-    1. Aspera ポータルを使用して、アクセス キーを作成します。  
-    2. Aspera クライアントをダウンロード、インストール、ライセンスします (ソフトウェアは Aspera ポータルで見つかります)。  
+   1. Aspera ポータルを使用して、アクセス キーを作成します。  
+   2. Aspera クライアントをダウンロード、インストール、ライセンスします (ソフトウェアは Aspera ポータルで見つかります)。  
 
-    >[!NOTE]
-    >構成情報については、Aspera クライアント ガイドをお読みください。
+      >[!NOTE]
+      >構成情報については、Aspera クライアント ガイドをお読みください。
     
-    3. Azure Media アカウントに関連付けられているストレージ アカウントの情報を、[Azure Portal](https://portal.azure.com/) を使用して取得します。 具体的には、名前とキーのほか、コンテンツの配置先となるストレージ BLOB コンテナー名です。 
+   3. Azure Media アカウントに関連付けられているストレージ アカウントの情報を、[Azure Portal](https://portal.azure.com/) を使用して取得します。 具体的には、名前とキーのほか、コンテンツの配置先となるストレージ BLOB コンテナー名です。 
 
-        * ポータルからストレージ情報を取得するには、ストレージ アカウントを見つけて、[アクセス キー] をクリックし、アカウントの名前とキーをコピーします。
-        * コンテナー名を取得するには、ストレージ アカウントを見つけて、**[BLOB]** を選択し、コンテンツのアップロード先にするコンテナーの名前を選択します。 
+       * ポータルからストレージ情報を取得するには、ストレージ アカウントを見つけて、[アクセス キー] をクリックし、アカウントの名前とキーをコピーします。
+       * コンテナー名を取得するには、ストレージ アカウントを見つけて、**[BLOB]** を選択し、コンテンツのアップロード先にするコンテナーの名前を選択します。 
 
-    Aspera クライアントの **Connection Manager** のスクリーンショットを次に示します。ここでは、ストレージの種類 "Azure" と資格情報に加え、BLOB コンテナーを指定する必要があります。
+      Aspera クライアントの **Connection Manager** のスクリーンショットを次に示します。ここでは、ストレージの種類 "Azure" と資格情報に加え、BLOB コンテナーを指定する必要があります。
 
-    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
+      ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
 ## <a name="resources"></a>リソース
 
 この記事では、次のリソースについて説明しました。 
 
-* [Connect ブラウザー プラグイン](http://downloads.asperasoft.com/connect2/)
-* [Connect ガイド](http://downloads.asperasoft.com/en/documentation/8)
-* [Aspera クライアント](http://downloads.asperasoft.com/en/downloads/2)
-* [クライアント ガイド](http://downloads.asperasoft.com/en/documentation/2)
+* [Connect ブラウザー プラグイン](https://downloads.asperasoft.com/connect2/)
+* [Connect ガイド](https://downloads.asperasoft.com/en/documentation/8)
+* [Aspera クライアント](https://downloads.asperasoft.com/en/downloads/2)
+* [クライアント ガイド](https://downloads.asperasoft.com/en/documentation/2)
 
 ## <a name="next-steps"></a>次の手順
 
-[ストレージ アカウントから AMS アカウントに blob をコピー](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account)できます。
+[ストレージ アカウントから AMS アカウントに BLOB をコピー](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account)できます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

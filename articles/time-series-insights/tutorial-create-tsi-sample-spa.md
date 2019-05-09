@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 9d18b1382bdb421afcc8aee92fd99b7ef0d09e32
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fe8b6113646589e30ff839c8bd47968138d98b03
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540148"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521435"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>チュートリアル: Azure Time Series Insights シングルページ Web アプリの作成
 
@@ -52,9 +52,9 @@ ms.locfileid: "53540148"
    
    パラメーター|説明
    ---|---
-   **名前** | わかりやすい登録名を入力します。  
+   **Name** | わかりやすい登録名を入力します。  
    **アプリケーションの種類** | SPA Web アプリケーションをビルドするため、[Web アプリ/API] のままにします。
-   **サインオン URL** | アプリケーションのホーム/サインイン ページの URL を入力します。 アプリケーションは (後で) Azure App Service でホストされるため、"https://azurewebsites.net" ドメイン内の URL を使用する必要があります。 この例では、名前は登録名に基づきます。
+   **サインオン URL** | アプリケーションのホーム/サインイン ページの URL を入力します。 アプリケーションは (後で) Azure App Service でホストされるため、"https:\//azurewebsites.net" ドメイン内の URL を使用する必要があります。 この例では、名前は登録名に基づきます。
 
    完了したら、**[作成]** をクリックして新しいアプリケーション登録を作成します。
 
@@ -179,7 +179,7 @@ ms.locfileid: "53540148"
 エラー コード/状態 | 説明
 ---------------------| -----------
 "*AADSTS50011: アプリケーションの応答アドレスが登録されていません。*" | Azure AD 登録に "応答 URL" プロパティがありません。 Azure AD アプリケーション登録の **[設定]** / **[応答 URL]** ページに移動します。 「[Azure AD へのアプリケーションの登録](#register-the-application-with-azure-ad)」の手順 3. で指定された**サインオン** URL が存在することを確認します。 
-"*AADSTS50011: 要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません (<Application ID GUID>)。*" | 「[Web アプリケーションのビルドと発行](#build-and-publish-the-web-application)」の手順 4.b で指定された `postLogoutRedirectUri` が、Azure AD アプリケーション登録の**設定** / **応答 URL** のプロパティで指定されている値に一致する必要があります。 さらに、`https` を使用するよう **[宛先 URL]** も変更してください  (「[Web アプリケーションのビルドと発行](#build-and-publish-the-web-application)」の手順 5.e を参照)。
+"*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '\<Application ID GUID>'. (要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません: "<アプリケーション ID GUID>")*" | 「[Web アプリケーションのビルドと発行](#build-and-publish-the-web-application)」の手順 4.b で指定された `postLogoutRedirectUri` が、Azure AD アプリケーション登録の**設定** / **応答 URL** のプロパティで指定されている値に一致する必要があります。 さらに、`https` を使用するよう **[宛先 URL]** も変更してください  (「[Web アプリケーションのビルドと発行](#build-and-publish-the-web-application)」の手順 5.e を参照)。
 Web アプリケーションによって読み込みが行われるものの、背景が白く、スタイルが適用されていないテキストのみのサインイン ページが表示される。 | 「[Web アプリケーションのビルドと発行](#build-and-publish-the-web-application)」の手順 4. で説明されているパスが正しいことを確認します。 Web アプリケーションが .css ファイルを検出できない場合、スタイルがページに正しく適用されません。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

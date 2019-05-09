@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーする
-description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーします
+title: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
+description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーします
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 40cf8dcf6729d577c4fff694b0380833fccb142d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679360"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59256789"
 ---
-# <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-preview-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーする
+# <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
-Azure Data Lake Storage Gen2 プレビューは、ビッグ データ分析専用の機能セットで、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
+Azure Data Lake Storage Gen2 は、ビッグ データ分析専用の機能セットであり、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
 現在 Azure Data Lake Storage Gen1 を使用している場合、Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーすることで、Gen2 の新機能を評価できます。
 
@@ -34,13 +34,14 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * データを備えた Azure Data Lake Storage Gen1 アカウント。
-* Data Lake Storage Gen2 が有効な Azure Storage アカウント:Storage アカウントをお持ちでない場合は、[こちら](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)をクリックして作成してください。
+* Data Lake Storage Gen2 が有効な Azure Storage アカウント:ストレージ アカウントがない場合、[作成します](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-1. 左側のメニューで、**[新規]** > **[データ + 分析]** > **[データ ファクトリ]** を選択します。
+1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。
    
-   ![新しいデータ ファクトリの作成](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory-menu.png)
+   ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. **[新しいデータ ファクトリ]** ページで、次の画像に示されているフィールドの値を指定します。 
       
    ![[新しいデータ ファクトリ] ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
@@ -51,7 +52,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
     * **バージョン**:**[V2]** を選択します。
     * **場所**:データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
 
-3. **作成**を選択します。
+3. **作成** を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
    
    ![データ ファクトリのホーム ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -92,7 +93,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
     ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-7. **[配布先データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックし、**[Azure Data Lake Storage Gen2 (Preview)]\(Azure Data Lake Storage Gen2 (プレビュー)\)** を選択して、**[続行]** を選択します。
+7. **[配布先データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックし、**[Azure Data Lake Storage Gen2]** を選択して、**[続行]** を選択します。
 
     ![[Destination data store]\(コピー先データ ストア\) ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 
@@ -103,7 +104,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
    
    ![Azure Data Lake Storage Gen2 アカウントを指定する](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
-9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromadlsgen1**」と入力し、**[次へ]** を選択します。 
+9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromadlsgen1**」と入力し、**[次へ]** を選択します。 ADF は、対応する ADLS Gen2 ファイル システムとサブ フォルダーがない場合には、コピー中に作成します。
 
     ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
 

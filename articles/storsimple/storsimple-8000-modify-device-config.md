@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 727cf523f2a505729377f36738657fc5489134a7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008381"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイス構成を変更する
 
@@ -71,7 +71,7 @@ StorSimple デバイス マネージャー サービスに接続されている 
 
 NTP サーバーの構成時には、データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。 パブリック NTP サーバーを指定する場合、外部ネットワークとの間を NTP トラフィックが行き来できるように、ネットワーク ファイアウォールやその他のセキュリティ デバイスを設定する必要があります。 双方向の NTP トラフィックが許可されていない場合は、内部 NTP サーバーを使用する必要があります (Windows ドメイン コントローラーにこの機能があります)。 デバイスは、時刻を同期できない場合、クラウド ストレージ プロバイダーと通信できない可能性があります。
 
-パブリック NTP サーバーの一覧については、 [NTP Servers Web](http://support.ntp.org/bin/view/Servers/WebHome)を参照してください。
+パブリック NTP サーバーの一覧については、 [NTP Servers Web](https://support.ntp.org/bin/view/Servers/WebHome)を参照してください。
 
 ### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>デバイスが異なるタイム ゾーンでデプロイされた場合の処理
 

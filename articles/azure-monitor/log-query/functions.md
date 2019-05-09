@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics の関数| Microsoft Docs
-description: この記事では、Log Analytics. 内で関数を使用して、あるクエリを別のクエリから呼び出す方法について説明します。
+title: Azure Monitor ログ クエリの関数 | Microsoft Docs
+description: この記事では、Azure Monitor で関数を使用して、あるクエリを別のログ クエリから呼び出す方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 8f2855ed56d298ec4c6abee02dd59ce9471f0d2e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885329"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750771"
 ---
-# <a name="using-functions-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 内での関数の使用
+# <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 
 > [!NOTE]
 > このレッスンを完了する前に、[Analytics ポータルの概要](get-started-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
@@ -28,11 +28,11 @@ ms.locfileid: "52885329"
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 
-別のクエリで使用するために Log Analytics クエリを関数として保存できます。 これにより、複雑なクエリを複数のパーツに分割することで単純化でき、共通のコードを複数のクエリで再利用できます。
+ログ クエリは、別のクエリで使用するために関数として保存できます。 これにより、複雑なクエリを複数のパーツに分割することで単純化でき、共通のコードを複数のクエリで再利用できます。
 
 ## <a name="create-a-function"></a>関数を作成する
 
-Azure portal で **［保存］** をクリックした後、次の表の情報を指定して関数を作成します。
+Azure portal の Log Analytics で **[保存]** をクリックした後、次の表の情報を指定して関数を作成します。
 
 | Setting | 説明 |
 |:---|:---|
@@ -42,10 +42,10 @@ Azure portal で **［保存］** をクリックした後、次の表の情報�
 | Category       | 保存したクエリと関数を**クエリ エクスプローラー**内で整理するためのカテゴリ。 |
 
 > [!NOTE]
-> Log Analytics 内の関数に別の関数を含めることはできません。
+> Azure Monitor 内の関数に、別の関数を含めることはできません。
 
 > [!NOTE]
-> Log Analytics クエリでは関数の保存が可能ですが、現時点において、Application Insights クエリでは保存できません。
+> Azure Monitor ログ クエリに関数を保存することは可能ですが、現時点で、Application Insights クエリには保存できません。
 
 
 
@@ -69,7 +69,7 @@ security_updates_last_day | where Title contains "SQL"
 ```
 
 ## <a name="next-steps"></a>次の手順
-Log Analytics クエリ言語の使用については、他のレッスンをご覧ください。
+Azure Monitor ログ クエリの記述に関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)
 - [日付と時刻の操作](datetime-operations.md)

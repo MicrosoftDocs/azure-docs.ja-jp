@@ -8,18 +8,24 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 830deb7569772b610b7e6abde649830b7ad67a92
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 547e0b08b2a57b4b9192f11907f77160142d4466
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046629"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54192127"
 ---
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
+
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
+
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
+
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の例を完了するには、汎用 VM の既存のマネージド イメージを保持している必要があります。 詳細については、「[チュートリアル: Azure CLI 2.0 を使用して Azure VM のカスタム イメージを作成する](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)」を参照してください。 
+この記事の例を完了するには、汎用 VM の既存のマネージド イメージを保持している必要があります。 詳細については、[Azure CLI 2.0 を使用して Azure VM のカスタム イメージを作成する方法](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)に関するチュートリアルを参照してください。 
 
-## <a name="preview-register-the-feature"></a>プレビュー: 機能を登録する
+## <a name="preview-register-the-feature"></a>更新:機能を登録する
 
 共有イメージ ギャラリーはプレビュー段階ですが、使用するには、事前に機能を登録しておく必要があります。 共有イメージ ギャラリー機能を登録するには、次のコマンドを実行します。
 

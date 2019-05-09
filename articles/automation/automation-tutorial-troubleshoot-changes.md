@@ -3,7 +3,7 @@ title: Azure 仮想マシンの変更に関する問題を解決する | Microso
 description: 変更履歴を使用して、Azure 仮想マシンの変更に関する問題を解決します。
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: 変更, 追跡, オートメーション
 author: jennyhunter-msft
 ms.author: jehunte
@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 77dda5f113a10f0bfb59457b1059563c58db0dde
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190018"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816943"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -62,12 +62,14 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 このエージェントは VM との通信に使用され、インストールされているソフトウェアに関する情報を取得します。
 
 ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。
-ソリューションが有効になると、VM にインストールされているソフトウェアと変更に関する情報が Log Analytics に送られます。
+ソリューションが有効になると、VM にインストールされているソフトウェアと変更に関する情報が Azure Monitor ログに送られます。
 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
-## <a name="using-change-tracking-in-log-analytics"></a>Log Analytics で変更履歴を使用する
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-変更の追跡は、Log Analytics に送信されるログ データを生成します。
+## <a name="using-change-tracking-in-azure-monitor-logs"></a>Azure Monitor ログで変更履歴を使用する
+
+変更の追跡は、Azure Monitor ログに送信されるログ データを生成します。
 クエリを実行してログを検索するには、**[変更の追跡]** ウィンドウの上部にある **[Log Analytics]** ウィンドウを選択します。
 変更履歴データは、型 **ConfigurationChange** に格納されます。
 次のサンプル Log Analytics クエリは、停止しているすべての Windows サービスを返します。
@@ -77,7 +79,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Log Analytics でのログ ファイルの実行と検索については、[Azure Log Analytics ](../azure-monitor/log-query/log-query-overview.md) に関するページを参照してください。
+Azure Monitor ログでのログ ファイルの実行と検索については、[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
 
 ## <a name="configure-change-tracking"></a>変更履歴を構成する
 
@@ -97,7 +99,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 
 1. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -110,7 +112,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 
 1. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -125,7 +127,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 
 1. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -228,3 +230,4 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 
 > [!div class="nextstepaction"]
 > [変更管理とインベントリ ソリューション](automation-change-tracking.md)
+

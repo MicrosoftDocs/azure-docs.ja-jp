@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: b1ef03b97f9fe95286d427effc40e69ae07b6b3c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 02/08/2019
+ms.openlocfilehash: 85757ace20501bea1db22ecfdd2fdb63284038d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601493"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108748"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 
 多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期リテンション期間 (LTR) 機能を使用すると、最大で 10 年間、指定した SQL データベースの完全バックアップを [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) Blob Storage に格納できます。 その後、任意のバックアップを新しいデータベースとして復元できます。
 
 > [!NOTE]
-> LTR は、Azure SQL Database 論理サーバーでホストされているデータベースで有効にすることができます。 Managed Instance でホストされているデータベースではまだ使用できません。 SQL エージェント ジョブを使用すれば、LTR の代替手段として、[コピーのみのデータベース バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)を 35 日間以上スケジュールすることができます。
+> LTR は単一データベースとプールされたデータベースに対して有効にできます。 Managed Instance 内のインスタンス データベースではまだ使用できません。 SQL エージェント ジョブを使用すれば、LTR の代替手段として、[コピーのみのデータベース バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)を 35 日間以上スケジュールすることができます。
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL Database の長期リテンション期間のしくみ
@@ -56,22 +56,20 @@ W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear
    ![LTR の例](./media/sql-database-long-term-retention/ltr-example.png)
 
 
- 
+
 このポリシーを変更して、W = 0 (毎週のバックアップなし) を設定すると、上記の表のバックアップ コピーの周期は、強調表示された日付のように変更されます。 それに応じて、これらのバックアップの保持に必要なストレージの量は減ります。 
 
 > [!NOTE]
-1. LTR コピーは Azure Storage サービスによって作成されます。したがって、既存のデータベースが、コピー処理の影響を受けることはありません。
-2. ポリシーは現在以降のバックアップに適用されます。 例:  指定した WeekOfYear がポリシーの構成時点で既に過去である場合、初回の LTR バックアップは次の年に作成されます。 
-3. LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。   データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 
-> 
+> 1. LTR コピーは Azure Storage サービスによって作成されます。したがって、既存のデータベースが、コピー処理の影響を受けることはありません。
+> 2. ポリシーは現在以降のバックアップに適用されます。 例:  指定した WeekOfYear がポリシーの構成時点で既に過去である場合、初回の LTR バックアップは次の年に作成されます。 
+> 3. LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。   データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>geo レプリケーションと長期のバックアップ リテンション期間
 
 ビジネス継続性のソリューションとしてアクティブ geo レプリケーションやフェールオーバー グループを使用している場合、最終的なフェールオーバーを準備して、geo セカンダリ データベース上に同じ LTR ポリシーを構成する必要があります。 これによって、バックアップがセカンダリから生成されないときに、LTR ストレージのコストが増加することはありません。 セカンダリがプライマリになった場合にのみ、バックアップが作成されます。 この方法では、フェールオーバーがトリガーされ、プライマリがセカンダリ リージョンに移動するときに、LTR バックアップの中断されない生成が保証されます。 
 
 > [!NOTE]
-元のプライマリ データベースをフェールオーバーの原因となる停止から回復させると、これが新しいセカンダリになります。 したがって、バックアップの作成は再開することなく、既存の LTR ポリシーは、もう一度プライマリになるまで反映されることはありません。 
-> 
+> 元のプライマリ データベースをフェールオーバーの原因となる停止から回復させると、これが新しいセカンダリになります。 したがって、バックアップの作成は再開することなく、既存の LTR ポリシーは、もう一度プライマリになるまで反映されることはありません。 
 
 ## <a name="configure-long-term-backup-retention"></a>長期のバックアップ リテンション期間の構成
 

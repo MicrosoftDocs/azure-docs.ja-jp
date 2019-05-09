@@ -1,21 +1,20 @@
 ---
 title: Azure Cosmos DB 用 SQL API の Node.js チュートリアル
 description: SQL API を使用して Azure Cosmos DB に接続して照会する方法を示す Node.js チュートリアル
-services: cosmos-db
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: c758b3f56d8935b8d0d7873df41a965be1281044
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fe925ed408f64424de8da98f6e182a06a41bf015
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075051"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -37,7 +36,7 @@ ms.locfileid: "53407579"
 > * Azure Cosmos DB アカウントを作成して接続する。
 > * アプリケーションを設定する。
 > * データベースを作成する。
-> * コンテナーを作成する。
+> * コンテナーを作成します。
 > * コンテナーに項目を追加する。
 > * 項目、コンテナー、およびデータベースに対する基本的な操作を実行する。
 
@@ -73,7 +72,10 @@ ms.locfileid: "53407579"
      * ```touch app.js```
      * ```touch config.js```
 
-4. npm で @azure/cosmos モジュールをインストールします。 次のコマンドを使用します。
+4. `package.json` ファイルを作成して初期化します。 次のコマンドを使用します。
+   * ```npm init -y```
+
+5. npm で @azure/cosmos モジュールをインストールします。 次のコマンドを使用します。
    * ```npm install @azure/cosmos --save```
 
 ## <a id="Config"></a>アプリの構成を設定する
@@ -86,7 +88,7 @@ ms.locfileid: "53407579"
 
    ![Azure portal からキーを取得するスクリーンショット][keys]
 
-   ```nodejs
+   ```javascript
    // ADD THIS PART TO YOUR CODE
    var config = {}
 
@@ -96,7 +98,7 @@ ms.locfileid: "53407579"
 
 1. ```database```、```container```、および ```items``` データをコピーして ```config``` オブジェクトに貼り付けます。```config.endpoint``` プロパティと ```config.primaryKey``` プロパティの設定に続けて追加してください。 データベースに保存するデータが既にある場合は、データをここに定義する代わりに、Azure Cosmos DB のデータ移行ツールを使用できます。
 
-   ```nodejs
+   ```javascript
    var config = {}
 
    config.endpoint = "~your Azure Cosmos DB account endpoint uri here~";
@@ -172,7 +174,7 @@ ms.locfileid: "53407579"
 
 1. 最後に、```app.js``` ファイル内で参照できるように、```config``` オブジェクトをエクスポートします。
 
-   ```nodejs
+   ```javascript
         },
         "isRegistered": false
        }
@@ -186,18 +188,17 @@ ms.locfileid: "53407579"
 
 1. テキスト エディターで、空の ```app.js``` ファイルを開きます。 ```@azure/cosmos``` モジュールと新たに作成した ```config``` モジュールをインポートするために、以下のコードをコピーして貼り付けます。
 
-   ```nodejs
+   ```javascript
    // ADD THIS PART TO YOUR CODE
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
    ```
 
 1. 先ほど保存した ```config.endpoint``` と ```config.primaryKey``` を使用して新しい CosmosClient を作成するために、以下のコードをコピーして貼り付けます。
 
-   ```nodejs
-   const url = require('url');
+   ```javascript
+   const config = require('./config');
 
    // ADD THIS PART TO YOUR CODE
    const endpoint = config.endpoint;
@@ -205,6 +206,15 @@ ms.locfileid: "53407579"
 
    const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
    ```
+   
+> [!Note]
+> **Cosmos DB エミュレーター**に接続する場合は、カスタム接続ポリシーを作成して SSL 検証を無効にします。
+>   ```
+>   const connectionPolicy = new cosmos.ConnectionPolicy ()
+>   connectionPolicy.DisableSSLVerification = true
+>
+>   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey }, connectionPolicy });
+>   ```
 
 Azure Cosmos DB クライアントを初期化するためのコードは以上で完成です。続いて、Azure Cosmos DB リソースの使用方法について説明します。
 
@@ -212,7 +222,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
 1. データベース ID およびコンテナー ID を設定するために、以下のコードをコピーして貼り付けます。 Azure Cosmos DB クライアントは、これらの ID を通じて適切なデータベースとコンテナーを検出します。
 
-   ```nodejs
+   ```javascript
    const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
 
    // ADD THIS PART TO YOUR CODE
@@ -226,7 +236,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
 2. app.js ファイルの ```databaseId``` と ```containerId``` の定義の下に、**createDatabase** メソッドと **readDatabase** メソッドをコピーして貼り付けます。 **createDatabase** 関数は、```config``` オブジェクトから指定された ID が ```FamilyDatabase``` の新しいデータベースを作成します (該当するデータベースが存在しない場合)。 **readDatabase** 関数は、データベースの定義を読み取り、データベースが存在することを確認します。
 
-   ```nodejs
+   ```javascript
    /**
     * Create the database if it does not exist
     */
@@ -246,7 +256,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
 3. 終了メッセージを印刷するヘルパー関数 **exit** を追加するために、**createDatabase** 関数と **readDatabase** 関数を設定したコードの下に以下のコードをコピーして貼り付けます。 
 
-   ```nodejs
+   ```javascript
    // ADD THIS PART TO YOUR CODE
    function exit(message) {
       console.log(message);
@@ -259,7 +269,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
 4. **createDatabase** 関数と **readDatabase** 関数を呼び出すために、**exit** 関数を設定したコードの下に以下のコードをコピーして貼り付けます。
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
      .then(() => { exit(`Completed successfully`); })
@@ -268,11 +278,10 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
    この時点で、```app.js``` のコードは次のようになります。
 
-   ```nodejs
+   ```javascript
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -329,13 +338,13 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 次に、データの保存とクエリに使用できるように、Azure Cosmos DB アカウント内にコンテナーを作成します。 
 
 > [!WARNING]
-コンテナーを作成すると、料金に影響があります。 かかる料金については、[料金ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
+> コンテナーを作成すると、料金に影響があります。 かかる料金については、[料金ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 
 コンテナーは、**Containers** クラスの `createIfNotExists` または create 関数を使用して作成できます。  コンテナーは、項目 (SQL API の場合は JSON ドキュメント) と、それに関連する JavaScript アプリケーション ロジックで構成されます。
 
 1. app.js ファイルの **readDatabase** 関数の下に、**createContainer** 関数と **readContainer** 関数をコピーして貼り付けます。 **createContainer** 関数は、```config``` オブジェクトから指定された ```containerId``` を持つ新しいコンテナーを作成します (該当するコンテナーが存在しない場合)。 **readContainer** 関数は、コンテナー定義を読み取り、コンテナーが存在することを確認します。
 
-   ```nodejs
+   ```javascript
    /**
    * Create the container if it does not exist
    */
@@ -355,7 +364,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
 1. **createContainer** 関数と **readContainer** 関数を実行するために、**readDatabase** の呼び出しの下に以下のコードをコピーして貼り付けます。
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
 
@@ -370,11 +379,10 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
    この時点で、```app.js``` のコードは次のようになります。
 
-   ```nodejs
+   ```javascript
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -450,11 +458,11 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
 1. **readContainer** 関数の下に、**createFamilyItem** 関数をコピーして貼り付けます。 **createFamilyItem** 関数は、```config``` オブジェクトに保存された JSON データを含む項目を作成します。 項目を作成する前に、同じ ID を持つ項目が存在していないことを確認します。
 
-   ```nodejs
+   ```javascript
    /**
    * Create family item if it does not exist
    */
-  async function createFamilyItem(itemBody) {
+   async function createFamilyItem(itemBody) {
      try {
          // read the item to see if it exists
          const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).read();
@@ -474,7 +482,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
 1. **createFamilyItem** 関数を実行するために、**readContainer** の呼び出しの下に以下のコードをコピーして貼り付けます。
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
      .then(() => createContainer())
@@ -501,7 +509,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. app.js ファイルの **createFamilyItem** 関数の下に、**queryContainer** 関数をコピーして貼り付けます。 以下のとおり、Azure Cosmos DB は SQL に似たクエリをサポートしています。
 
-   ```nodejs
+   ```javascript
    /**
    * Query the container using SQL
     */
@@ -529,7 +537,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. **createFamilyItem** の呼び出しの下に、**queryContainer** 関数を実行するためのコードをコピーして貼り付けます。
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
      .then(() => createContainer())
@@ -557,7 +565,7 @@ Azure Cosmos DB は、項目の内容の置換をサポートします。
 
 1. app.js ファイルの **queryContainer** 関数の下に、**replaceFamilyItem** 関数をコピーして貼り付けます。 子のプロパティ "grade" が以前の 5 から 6 に変更されていることに注意してください。
 
-   ```nodejs
+   ```javascript
    // ADD THIS PART TO YOUR CODE
    /**
    * Replace the item by ID.
@@ -572,7 +580,7 @@ Azure Cosmos DB は、項目の内容の置換をサポートします。
 
 1. **replaceFamilyItem** 関数を実行するために、**queryContainer** の呼び出しの下に以下のコードをコピーして貼り付けます。 さらに、もう一度 **queryContainer** を呼び出して項目が正常に変更されたことを確認するためのコードを追加します。
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
      .then(() => createContainer())
@@ -603,10 +611,10 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
 
 1. **replaceFamilyItem** 関数の下に、**deleteFamilyItem** 関数をコピーして貼り付けます。
 
-   ```nodejs
-  /**
-  * Delete the item by ID.
-  */
+   ```javascript
+   /**
+   * Delete the item by ID.
+   */
    async function deleteFamilyItem(itemBody) {
       await client.database(databaseId).container(containerId).item(itemBody.id).delete(itemBody);
       console.log(`Deleted item:\n${itemBody.id}\n`);
@@ -615,7 +623,7 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
 
 1. **deleteFamilyItem** 関数を実行するために、2 つ目の **queryContainer** の呼び出しの下に以下のコードをコピーして貼り付けます。
 
-   ```nodejs
+   ```javascript
    createDatabase()
       .then(() => readDatabase())
       .then(() => createContainer())
@@ -648,7 +656,7 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
 
 1. データベースとそのすべての子リソースを削除するために、**deleteFamilyItem** 関数の下に **cleanup** 関数をコピーして貼り付けます。
 
-   ```nodejs
+   ```javascript
    /**
    * Cleanup the database and container on completion
    */
@@ -659,7 +667,7 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
 
 1. **cleanup** 関数を実行するために、**deleteFamilyItem** の呼び出しの下に以下のコードをコピーして貼り付けます。
 
-   ```nodejs
+   ```javascript
    createDatabase()
       .then(() => readDatabase())
       .then(() => createContainer())
@@ -683,11 +691,10 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
 
 全体的なコードは次のようになります。
 
-```nodejs
+```javascript
 const CosmosClient = require('@azure/cosmos').CosmosClient;
 
 const config = require('./config');
-const url = require('url');
 
 const endpoint = config.endpoint;
 const masterKey = config.primaryKey;
@@ -881,9 +888,9 @@ node app.js
 * [Azure Cosmos DB アカウント][create-account]。 
 * GitHub で入手可能な[使用の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started)ソリューション。 
 
-npm で **@azure/cosmos** モジュールをインストールします。 次のコマンドを使用します。 
+npm でプロジェクトの依存関係をインストールします。 次のコマンドを使用します。 
 
-* ```npm install @azure/cosmos --save``` 
+* ```npm install``` 
 
 次に、```config.js``` ファイルで、config.endpoint と config.primaryKey の値を更新します。このとき、「[手順 3:アプリの構成を設定する](#Config)」の説明に従います。  
 

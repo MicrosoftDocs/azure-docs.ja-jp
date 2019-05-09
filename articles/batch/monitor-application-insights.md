@@ -2,7 +2,7 @@
 title: Azure Application Insights による Batch の監視 | Microsoft docs
 description: Azure Application Insights ライブラリを使用して Azure Batch .NET アプリケーションをインストルメント化する方法を説明します。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,19 +10,19 @@ ms.devlang: .NET
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: danlep
-ms.openlocfilehash: fb0760f24b8f384818db8154ffe871d7fd4ce429
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.author: lahugh
+ms.openlocfilehash: 42ea8398fa1a8b1fbc42108d1165dc17da2c34d7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138346"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473464"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 
-[Application Insights](../application-insights/app-insights-overview.md) には、Azure サービスにデプロイされたアプリケーションを開発者が監視およびデバッグできる洗練された強力な方法が用意されています。 Application Insights を使用してパフォーマンス カウンターと例外を監視し、カスタム メトリックとトレースでコードをインストルメント化します。 Application Insights を Azure Batch アプリケーションと統合すると、動作をよく理解し、問題をほぼリアルタイムで調査できます。
+[Application Insights](../azure-monitor/app/app-insights-overview.md) には、Azure サービスにデプロイされたアプリケーションを開発者が監視およびデバッグできる洗練された強力な方法が用意されています。 Application Insights を使用してパフォーマンス カウンターと例外を監視し、カスタム メトリックとトレースでコードをインストルメント化します。 Application Insights を Azure Batch アプリケーションと統合すると、動作をよく理解し、問題をほぼリアルタイムで調査できます。
 
-この記事では、Azure Batch .NET ソリューションに Application Insights ライブラリを追加して構成し、アプリケーション コードをインストルメント化する方法を示します。 Azure Portal 経由でアプリケーションを監視し、カスタム ダッシュボードを構築する方法も示します。 他の言語での Application Insights のサポートについては、[言語、プラットフォーム、統合に関するドキュメント](../application-insights/app-insights-platforms.md)をご覧ください。
+この記事では、Azure Batch .NET ソリューションに Application Insights ライブラリを追加して構成し、アプリケーション コードをインストルメント化する方法を示します。 Azure Portal 経由でアプリケーションを監視し、カスタム ダッシュボードを構築する方法も示します。 他の言語での Application Insights のサポートについては、[言語、プラットフォーム、統合に関するドキュメント](../azure-monitor/app/platforms.md)をご覧ください。
 
 この記事に付属するサンプル C# ソリューションとコードは、[GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) にあります。 この例では、Application Insights インストルメンテーション コードを [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) の例に追加します。 この例をよく理解していない場合は、最初に TopNWords を構築し、実行してみてください。 そうすることで、複数のコンピューティング ノードで一連の入力 BLOB を並列に処理する基本的な Batch ワークフローを理解できます。 
 
@@ -35,11 +35,11 @@ ms.locfileid: "50138346"
 
 * [Batch アカウントおよびリンクされたストレージ アカウント](batch-account-create-portal.md)
 
-* [Application Insights リソース](../application-insights/app-insights-create-new-resource.md)
+* [Application Insights リソース](../azure-monitor/app/create-new-resource.md )
   
    * Azure Portal を使用して、Application Insights の "*リソース*" を作成します。 "*一般的*" な**アプリケーションの種類**を選択します。
 
-   * ポータルから[インストルメンテーション キー](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key)をコピーします。 これはこの記事の中で後で必要になります。
+   * ポータルから[インストルメンテーション キー](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)をコピーします。 これはこの記事の中で後で必要になります。
   
   > [!NOTE]
   > Application Insights に格納されているデータは[課金](https://azure.microsoft.com/pricing/details/application-insights/)されることがあります。 この記事で説明する診断データと監視データも対象となります。
@@ -56,14 +56,14 @@ Install-Package Microsoft.ApplicationInsights.WindowsServer
 
 ## <a name="instrument-your-code"></a>コードをインストルメント化する
 
-コードをインストルメント化するには、ソリューションで Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient) を作成する必要があります。 例では、TelemetryClient はその構成を [ApplicationInsights.config](../application-insights/app-insights-configuration-with-applicationinsights-config.md) ファイルから読み込みます。 Application Insights インストルメンテーション キー Microsoft.Azure.Batch.Samples.TelemetryStartTask と TopNWordsSample を使用して、次のプロジェクトの ApplicationInsights.config を更新してください。
+コードをインストルメント化するには、ソリューションで Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient) を作成する必要があります。 例では、TelemetryClient はその構成を [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) ファイルから読み込みます。 Application Insights インストルメンテーション キー Microsoft.Azure.Batch.Samples.TelemetryStartTask と TopNWordsSample を使用して、次のプロジェクトの ApplicationInsights.config を更新してください。
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
 ```
 また、TopNWords.cs ファイルのインストルメンテーション キーを追加します。
 
-TopNWords.cs の例では、Application Insights API から次の[インストルメンテーション呼び出し](../application-insights/app-insights-api-custom-events-metrics.md)を使用します。
+TopNWords.cs の例では、Application Insights API から次の[インストルメンテーション呼び出し](../azure-monitor/app/api-custom-events-metrics.md)を使用します。
 * `TrackMetric()` - コンピューティング ノードが必要なテキスト ファイルのダウンロードに要した時間の平均を追跡します。
 * `TrackTrace()` - デバッグ呼び出しをコードに追加します。
 * `TrackEvent()` - キャプチャする対象イベントを追跡します。
@@ -125,7 +125,7 @@ public void CountWords(string blobName, int numTopN, string storageAccountName, 
 ```
 
 ### <a name="azure-batch-telemetry-initializer-helper"></a>Azure Batch テレメトリの初期化子ヘルパー
-特定のサーバーとインスタンスのテレメトリをレポートする際に、Application Insights は既定値に Azure VM ロールと VM 名を使用します。 Azure Batch のコンテキストで、例ではプール名とコンピューティング ノードを代わりに使用する方法を示しています。 [テレメトリ初期化子](../application-insights/app-insights-api-filtering-sampling.md#add-properties)を使用して既定値をオーバーライドします。 
+特定のサーバーとインスタンスのテレメトリをレポートする際に、Application Insights は既定値に Azure VM ロールと VM 名を使用します。 Azure Batch のコンテキストで、例ではプール名とコンピューティング ノードを代わりに使用する方法を示しています。 [テレメトリ初期化子](../azure-monitor/app/api-filtering-sampling.md#add-properties)を使用して既定値をオーバーライドします。 
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -338,12 +338,12 @@ pool.StartTask = new StartTask()
 
 ## <a name="throttle-and-sample-data"></a>スロットルとサンプル データ 
 
-運用環境で実行される Azure Batch アプリケーションは大規模となる性質があるため、コストを管理するために Application Insights によって収集されるデータ量を制限することが必要な場合があります。 これを実現するいくつかのメカニズムについては、「[Application Insights におけるサンプリング](../application-insights/app-insights-sampling.md)」をご覧ください。
+運用環境で実行される Azure Batch アプリケーションは大規模となる性質があるため、コストを管理するために Application Insights によって収集されるデータ量を制限することが必要な場合があります。 これを実現するいくつかのメカニズムについては、「[Application Insights におけるサンプリング](../azure-monitor/app/sampling.md)」をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順
-* [Application Insights](../application-insights/app-insights-overview.md) についてさらに学習します。
+* [Application Insights](../azure-monitor/app/app-insights-overview.md) についてさらに学習します。
 
-* 他の言語での Application Insights のサポートについては、[言語、プラットフォーム、統合に関するドキュメント](../application-insights/app-insights-platforms.md)をご覧ください。
+* 他の言語での Application Insights のサポートについては、[言語、プラットフォーム、統合に関するドキュメント](../azure-monitor/app/platforms.md)をご覧ください。
 
 

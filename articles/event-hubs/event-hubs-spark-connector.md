@@ -14,16 +14,16 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 194898f658c08a3a5a9d8c1d601ea53c817e7649
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 605669a740663040ab7a167bf266fe1940123afc
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076817"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551876"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark と Event Hubs の統合
 
-Azure Event Hubs と [Apache Spark](https://spark.apache.org/) をシームレスに統合すると、分散ストリーミング のアプリケーションを構築できます。 この統合では、[Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html)、[Spark Streaming](http://spark.apache.org/docs/latest/streaming-programming-guide.html)、[構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) がサポートされています。 Apache Spark 用の Event Hubs コネクタは [GitHub](https://github.com/Azure/azure-event-hubs-spark) で入手できます。 このライブラリは、[Maven Central Repository](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C) の Maven プロジェクトで使用することもできます
+Azure Event Hubs と [Apache Spark](https://spark.apache.org/) をシームレスに統合すると、分散ストリーミング のアプリケーションを構築できます。 この統合では、[Spark Core](https://spark.apache.org/docs/latest/rdd-programming-guide.html)、[Spark Streaming](https://spark.apache.org/docs/latest/streaming-programming-guide.html)、[構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) がサポートされています。 Apache Spark 用の Event Hubs コネクタは [GitHub](https://github.com/Azure/azure-event-hubs-spark) で入手できます。 このライブラリは、[Maven Central Repository](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C) の Maven プロジェクトで使用することもできます
 
 この記事には、[Azure Databrick](https://azure.microsoft.com/services/databricks/) で継続的なアプリケーションを作成する方法について記載します。 この記事では Azure Databricks を使用しますが、Spark クラスターも [HDInsight](../hdinsight/spark/apache-spark-overview.md) で使用できます。
 

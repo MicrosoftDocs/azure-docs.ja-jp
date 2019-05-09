@@ -5,17 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958671"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168019"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
+
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
 
 データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの数多くの要因によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (表形式オブジェクト モデル)、[PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (表形式モデル スクリプト言語) などの既存の方法を使用して呼び出されていました。 しかし、多くの場合、これらの方法は信頼性が低く実行時間が長い HTTP 接続を必要とします。
@@ -94,15 +95,16 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 ```
 
 ### <a name="parameters"></a>parameters
+
 パラメーターを指定する必要はありません。 既定値が適用されます。
 
-|Name  |type  |[説明]  |既定値  |
-|---------|---------|---------|---------|
-|type     |  列挙型       |  実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
-|CommitMode     |  列挙型       |  オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |
-|MaxParallelism     |   int      |  この値は、複数の処理コマンドを並列に実行するスレッドの最大数を決定します。 この値は、TMSL の [Sequence コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)やその他のメソッドで設定できる MaxParallelism プロパティと一致します。       | 10        |
-|RetryCount    |    int     |   失敗前の操作の再試行回数を示します。      |     0    |
-|オブジェクト     |   array      |   処理されるオブジェクトの配列です。 各オブジェクトには、テーブル全体を処理する時には "table" が、またはパーティションを処理する時には "table" と "partition" が含まれます。 オブジェクトが指定されていない場合は、モデル全体が更新されます。 |   モデル全体を処理      |
+| Name             | Type  | 説明  |既定値  |
+|------------------|-------|--------------|---------|
+| `Type`           | 列挙型  | 実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
+| `CommitMode`     | 列挙型  | オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |
+| `MaxParallelism` | int   | この値は、複数の処理コマンドを並列に実行するスレッドの最大数を決定します。 この値は、TMSL の [Sequence コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)やその他のメソッドで設定できる MaxParallelism プロパティと一致します。       | 10        |
+| `RetryCount`     | int   | 失敗前の操作の再試行回数を示します。      |     0    |
+| `Objects`        | Array | 処理されるオブジェクトの配列です。 各オブジェクトには、テーブル全体を処理する時には "table" が、またはパーティションを処理する時には "table" と "partition" が含まれます。 オブジェクトが指定されていない場合は、モデル全体が更新されます。 |   モデル全体を処理      |
 
 CommitMode は partialBatch と同じです。 これは、読み込みに何時間もかかる可能性がある大規模なデータセットを最初に読み込む時に使用されます。 1 つまたは複数のバッチのコミットに成功したあとに更新操作が失敗すると、コミットに成功したバッチはコミットされたままになります (コミットに成功したバッチはロールバックされません)。
 
@@ -184,11 +186,11 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 `syncstate` の値:
 
-- 0: レプリケーション中。 データベース ファイルはターゲット フォルダーにレプリケートされています。
-- 1: リハイドレート中。 データベースは読み取り専用のサーバー インスタンスにリハイドレートされています。
-- 2: 完了。 同期操作は正常に完了しました。
-- 3: 失敗。 同期操作は失敗しました。
-- 4: 終了処理中。 同期操作は完了しましたが、クリーンアップ手順を実行中です。
+- 0:レプリケーション中。 データベース ファイルはターゲット フォルダーにレプリケートされています。
+- 1:リハイドレート中。 データベースは読み取り専用のサーバー インスタンスにリハイドレートされています。
+- 2.完了。 同期操作は正常に完了しました。
+- 3:失敗。 同期操作は失敗しました。
+- 4:終了処理中。 同期操作は完了しましたが、クリーンアップ手順を実行中です。
 
 ## <a name="code-sample"></a>サンプル コード
 

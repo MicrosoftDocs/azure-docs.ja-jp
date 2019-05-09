@@ -2,22 +2,24 @@
 title: Azure Event Grid スキーマへのカスタム フィールドのマップ
 description: カスタム スキーマを Azure Event Grid スキーマに変換する方法について説明します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: tomfitz
-ms.openlocfilehash: de509ab4fa3eb4dcc647877ed6d6ee0f114fb6f4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 01/07/2019
+ms.author: spelluru
+ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090274"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181318"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ
 
 イベント データと必要な [Event Grid スキーマ](event-schema.md)が一致しない場合でも、Event Grid を使用して、イベントをサブスクライバーにルーティングできます。 この記事では、カスタム スキーマを Event Grid スキーマにマップする方法について説明します。
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="install-preview-feature"></a>プレビュー機能のインストール
 

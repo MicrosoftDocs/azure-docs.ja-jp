@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 8365f7e60dfb78aba16bea9708c99195a6b76b11
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e0ced89ce97d5f22270d9968fdeb0ddb3fad1e4e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972897"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194990"
 ---
 # <a name="service-to-service-apps"></a>サービス間アプリ
 
@@ -71,5 +72,5 @@ ms.locfileid: "46972897"
 
 ## <a name="next-steps"></a>次の手順
 
-- その他の[アプリケーションの種類とシナリオ](app-types.md)の説明
-- Azure AD [認証の基本](authentication-scenarios.md)についての説明
+- その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
+- Azure AD [認証の基本](authentication-scenarios.md)について学習する

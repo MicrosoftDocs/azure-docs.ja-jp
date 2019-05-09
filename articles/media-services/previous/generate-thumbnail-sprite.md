@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: f9ad7fcf414e90acc40ee5cd42e322a3b9e47f17
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380907"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991649"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>サムネイル スプライトを生成する 
+# <a name="generate-a-thumbnail-sprite"></a>サムネイル スプライトを生成する  
 
 Media Encoder Standard を使用して、サムネイル スプライトを生成できます。サムネイル スプライトは、1 つの (大きい) 画像につなぎ合わされた複数の解像度の小さいサムネイルを含む JPEG ファイルと VTT ファイルがまとめられたものです。 この VTT ファイルでは、各サムネイルが表す入力ビデオでの時間範囲と、大きい JPEG ファイル内でのそのサムネイルのサイズと座標が指定されています。 ビデオ プレーヤーは、VTT ファイルとスプライト画像を使用して、"ビジュアル" なシークバーを表示し、ビデオのタイムライン上を前後に移動するときに視覚的なフィードバックを閲覧者に提供します。
 
@@ -70,7 +70,7 @@ Media Encoder Standard を使用してサムネイル スプライトを生成�
 
 1.  1 行の画像のスプライト画像を生成することはできません (SpriteColumn = 1 の結果は 1 列の画像)。
 2.  スプライト画像を妥当なサイズの JPEG 画像にチャンクすることは、まだサポートされていません。 そのため、結果の合成サムネイル スプライトが約 8 M ピクセル以下になるように、サムネイルの数とサイズを制限するよう注意する必要があります。
-3.  Azure Media Player は、Edge、Chrome、および Firefox ブラウザーでスプライトをサポートしています。 VTT 解析は IE11 ではサポートされていません。
+3.  Azure Media Player は、Microsoft Edge、Chrome、および Firefox ブラウザーでスプライトをサポートしています。 VTT 解析は IE11 ではサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

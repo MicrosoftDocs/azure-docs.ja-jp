@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 03920bc3ed17eac9d76cea78877f1f008e83f4dd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bcaf470fae34056fe932cf8b5fd3076899f895ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195974"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880281"
 ---
 # <a name="create-a-new-saas-application-offer"></a>新しい SaaS アプリケ―ション オファーを作成する
 
@@ -34,6 +34,7 @@ ms.locfileid: "53195974"
 ## <a name="offer-components"></a>オファーのコンポーネント
 
 SaaS アプリ オファーは、次の表に示す 5 つのセクションで構成されます。
+
 |  **資産グループ**   |  **説明**  |
 |  ---------------   |  ---------------  |
 |    プラン設定  |  SaaS アプリの一意の ID を構成するときに使用します。                 |
@@ -45,7 +46,7 @@ SaaS アプリ オファーは、次の表に示す 5 つのセクションで�
 
 ## <a name="new-offer-form"></a>[新しいプラン] フォーム
 
-[Cloud パートナー ポータル](http://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ 新しいオファー]** を選択します。 [新しいオファー] メニューで **[SaaS アプリ]** を選択して新しいオファー フォームを表示し、新しい SaaS アプリケーション オファーの資産を定義するプロセスを開始します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ 新しいオファー]** を選択します。 [新しいオファー] メニューで **[SaaS アプリ]** を選択して新しいオファー フォームを表示し、新しい SaaS アプリケーション オファーの資産を定義するプロセスを開始します。
 
 ![SaaS アプリの [新しいオファー] メニュー](./media/azure-new-saas-offer.png)
 

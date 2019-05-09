@@ -1,5 +1,5 @@
 ---
-title: 単純なクエリの例 - Azure Search
+title: "\"単純な\" 検索構文を利用したクエリの例 - Azure Search"
 description: フルテキスト検索、フィルター検索、地理検索、ファセット検索、および Azure Search インデックスのクエリに使用されるその他のクエリ文字列の単純なクエリの例。
 author: HeidiSteen
 manager: cgronlun
@@ -7,17 +7,17 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316269"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439130"
 ---
-# <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Azure Search でクエリを作成するための単純構文クエリの例
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure Search における "単純な" 検索構文を利用したクエリの例
 
 [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)では、既定のクエリ パーサーを呼び出して、Azure Search インデックスに対してフルテキスト検索クエリを実行します。 単純クエリ アナライザーは高速で、フルテキスト検索、フィルター検索、ファセット検索、地理検索などの Azure Search で一般的なシナリオに対応します。 この記事では、単純な構文を使用するときに利用できるクエリ操作をデモンストレーションする例について詳しく説明します。
 
@@ -55,7 +55,9 @@ URL は、次の要素から構成されます。
 
 ## <a name="send-your-first-query"></a>初めてクエリを送信する
 
-確認手順として、次の要求を GET に貼り付け、**[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 下の最初の例のこの URL をコピーして貼り付けることができます。
+確認手順として、次の要求を GET に貼り付け、**[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 ドキュメント全体が返され、すべてのフィールドとすべての値を確認することができます。
+
+次の URL を検証手順として REST クライアントに貼り付けて、ドキュメントの構造を表示します。
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -75,6 +77,20 @@ URL は、次の要素から構成されます。
 
 簡潔にするため、このクエリでは *business_title* フィールドのみを対象として、肩書きのみが返されるよう指定しています。 構文は、クエリの実行を business_title フィールドのみに制限する **searchFields** と、応答に含まれるフィールドを指定する **select** です。
 
+### <a name="partial-query-string"></a>部分クエリ文字列
+
+```http
+searchFields=business_title&$select=business_title&search=*
+```
+
+次のクエリは、コンマ区切りのリストに複数のフィールドを持つ同じクエリです。
+
+```http
+search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+```
+
+### <a name="full-url"></a>完全な URL
+
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
@@ -93,21 +109,21 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=id&$select=id&search=*
- ```
+```
 
 次の例は、前の応答で最初に出現した `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5" に基づいて特定のドキュメントを返す検索クエリです。 次のクエリでは、選択したフィールドだけでなく、ドキュメント全体が返されます。 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
- ```
+```
 
 ## <a name="example-3-filter-queries"></a>例 3:フィルター クエリ
 
 [フィルター構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) は、**search** と一緒に使用することも、単独で使用することもできる OData 式です。 search パラメーターがないスタンドアロン フィルターは、関心があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析なし、スコア付けなし (すべて 1 にスコア付け)、および優先度付けなしになります。 検索文字列が空である点に注目してください。
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
       "select": "select=job_id, business_title, agency, salary_range_from",
@@ -123,13 +139,13 @@ Postman で GET を使用して試す場合は、次の文字列を貼り付け�
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
- ```
+```
 
 フィルターと検索を組み合わせる別の強力な方法は、フィルター式の中で **`search.ismatch*()`** を使用することです。この場合、フィルター内で検索クエリを使用できます。 次のフィルター式では、*plan* でワイルドカードを使用して、plan、planner、planning などの用語が含まれる business_title を選択します。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
- ```
+```
 
 この関数の詳細については、[「フィルターの例」の search.ismatch](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) を参照してください。
 
@@ -142,8 +158,8 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 次の例は、読みやすくするために POST 形式になっています (数値範囲の後ろにテキスト範囲が続きます)。
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
       "select": "job_id, business_title, num_of_positions, agency",
@@ -155,8 +171,8 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
       "select": "job_id, business_title, agency",
@@ -175,7 +191,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
- ```
+```
 
 > [!NOTE]
 > 検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 ファセット ナビゲーション構造に対するフィルターの作成に関する情報と例については、[*「ファセット ナビゲーションを実装する方法」の「範囲に基づくフィルター」*](search-faceted-navigation.md#filter-based-on-a-range)を参照してください。
@@ -187,8 +203,8 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 次の例は、読みやすくするために POST 形式になっています。
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
       "select": "job_id, business_title, work_location",
@@ -273,7 +289,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 コードでクエリを指定してみてください。 次のリンクでは、既定の単純な構文を使用して .NET と REST API の両方の検索クエリを設定する方法について説明しています。
 
 * [.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)
-* [REST API を使用した Azure Search インデックスの照会](search-query-rest-api.md)
+* [REST API を使用した Azure Search インデックスの照会](search-create-index-rest-api.md)
 
 追加の構文リファレンス、クエリ アーキテクチャ、およびサンプルについては、次のリンク先を参照してください。
 

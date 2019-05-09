@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Simple エンティティを使用して発話から雇用ジョブ名の機械学習データを抽出します。 抽出精度を向上させるために、Simple エンティティに固有の用語のフレーズ リストを追加します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: c0c79e3d85a8ced2b868c9fa7741a14105c1de05
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753050"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526570"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>チュートリアル:Simple エンティティとフレーズ リストを使用して名前を抽出する
 
@@ -48,7 +48,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
 * データが正規表現のような整形式ではない。
 * 電話番号またはデータの事前構築済みエンティティのような一般的なデータではない。
 * リスト エンティティなどの既知の単語のリストにデータが正確に一致しない。
-* 複合エンティティや階層構造エンティティのような他のデータ項目がデータに含まれていない。
+* 複合エンティティやコンテキスト ロールのような他のデータ項目がデータに含まれていない。
 
 チャット ボットからの次の発話について考えます。
 
@@ -127,7 +127,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
     |タイル職人に応募します。|タイル|
     |造園技師に応募するための履歴書を添付します。|造園技師|
     |生物学教授への応募に必要な履歴書を同封します。|生物学教授|
-    |写真撮影の職に応募します。|写真撮影|git 
+    |写真撮影の職に応募します。|写真撮影|
 
 ## <a name="mark-job-entity-in-other-intents"></a>他の意図のジョブ エンティティにマークを付ける
 
@@ -233,13 +233,15 @@ Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://gi
 
     [![新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    フレーズ リストに単語をさらに追加したい場合は、**[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
+    フレーズ リストに単語をさらに追加したい場合は、**[推奨]** を選択してから、新しい **[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
+
+    これらの値は、すべてがジョブのシノニムとして扱われる必要があるため、**[These values are interchangeable]\(これらの値は交換可能\)** をオンのままにしておきます。 交換可能と交換不能の[フレーズ リストの概念](luis-concept-feature.md#how-to-use-phrase-lists)について学習してください。
 
 1. **[保存]** を選択して、フレーズ リストをアクティブにします。
 
     [![フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-1. フレーズ リストが使用されるように、アプリを再度[トレーニング](#train)して[発行](#publish)します。
+1. フレーズ リストが使用されるように、アプリを再度トレーニングして発行します。
 
 1. 同じ発話 `This is the lead welder paperwork.` を含むエンドポイントにクエリを再実行します。
 

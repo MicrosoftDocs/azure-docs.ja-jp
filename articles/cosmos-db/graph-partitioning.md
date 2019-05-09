@@ -4,16 +4,16 @@ description: Azure Cosmos DB でパーティション分割されたグラフを
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
+ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7fc6068ccdc0c089b222fc8282063d526e862a38
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f1e486a302b440d819e15ef86f8d76ea5e50d201
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139437"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036326"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割されたグラフの使用
 

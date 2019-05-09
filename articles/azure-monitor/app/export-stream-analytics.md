@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8afe994f2441e736d660a306746508e9c6d13691
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 58eaec32fee149c845dc77a83763f2fcd8133a06
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001840"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120786"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -25,7 +25,7 @@ ms.locfileid: "54001840"
 この例では、Application Insights からデータを取得し、一部のフィールドの名前を変更して処理した後、Power BI にパイプするアダプターを作成します。
 
 > [!WARNING]
-> [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](../../application-insights/app-insights-export-power-bi.md)があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
+> [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](../../azure-monitor/app/export-power-bi.md )があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
 > 
 > 
 
@@ -198,7 +198,7 @@ ms.locfileid: "54001840"
 
 ## <a name="see-results-in-power-bi"></a>Power BI で結果を確認します。
 > [!WARNING]
-> [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](../../application-insights/app-insights-export-power-bi.md)があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
+> [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](../../azure-monitor/app/export-power-bi.md )があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
 > 
 > 
 
@@ -223,5 +223,5 @@ Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデ�
 ## <a name="next-steps"></a>次の手順
 * [連続エクスポート](export-telemetry.md)
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
-* [Application Insights](../../application-insights/app-insights-overview.md)
+* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 

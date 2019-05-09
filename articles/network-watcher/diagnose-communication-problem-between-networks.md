@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: d89c5a3f2545edd7c02b67fa9d2e2b78937a9791
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 4f5fbbb9d06f9fcb8858625b57957fc18c5c1f1f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779546"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59046913"
 ---
-# <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用してネットワーク間の通信に関する問題を診断する
+# <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク間の通信に関する問題を診断する
 
-仮想ネットワーク ゲートウェイは、Azure 仮想ネットワーク をオンプレミスやその他の仮想ネットワークに接続します。 このチュートリアルで学習する内容は次のとおりです。
+仮想ネットワーク ゲートウェイは、Azure 仮想ネットワーク をオンプレミスやその他の仮想ネットワークに接続します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Network Watcher の VPN 診断機能で仮想ネットワーク ゲートウェイの問題を診断する
@@ -33,11 +33,14 @@ ms.locfileid: "32779546"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 VPN 診断を使用するには、既存の動作している VPN ゲートウェイが必要です。 診断する既存の VPN ゲートウェイがない場合は、[PowerShell スクリプト](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)を使用してゲートウェイを 1 つデプロイすることができます。 次の場所から PowerShell スクリプトを実行できます。
-    - **ローカルにインストールされている PowerShell**: スクリプトを使用するには、AzureRM PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell のインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
-    - **Azure Cloud Shell**: [Azure Cloud Shell](https://shell.azure.com/powershell) には最新バージョンの PowerShell がインストールされ構成されており、ユーザーは Azure にログインされます。
+- **ローカルにインストールされている PowerShell**: このスクリプトは Azure PowerShell `Az` モジュールを必要とします。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell のインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+- **Azure Cloud Shell**: [Azure Cloud Shell](https://shell.azure.com/powershell) には最新バージョンの PowerShell がインストールされ構成されており、ユーザーは Azure にログインされます。
 
 このスクリプトで VPN ゲートウェイを作成するのに、約 1 時間かかります。 残りの手順は、診断しようとしているゲートウェイが、このスクリプトによってデプロイされたものであることが前提となっています。 そうではなく、既存のゲートウェイを診断する場合は、異なる結果となります。
 
@@ -71,12 +74,12 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 8. テストの実行中には、前の図のように、**[Not started (未開始)]** が表示されている **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** 列に、**[Running (実行中)]** と表示されます。 このテストの実行には数分かかることがあります。
 9. 完了したテストの状態を表示します。 次の図は、完了した診断テストの状態の結果を示しています。
 
-    ![状態](./media/diagnose-communication-problem-between-networks/status.png)
+    ![Status](./media/diagnose-communication-problem-between-networks/status.png)
 
     **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** が **[異常]** であるのを確認できるのと同時に、**[状態]** タブで問題の **[概要]** と **[Detail (詳細)]** を確認できます。
 10. **[アクション]** タブを選択すると、VPN 診断から追加の情報が提供されます。 この例では、次の図に示すように、VPN 診断により、各接続の正常性を調べる必要があることがわかります。
 
-  ![アクションを表示します。](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Action](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>ゲートウェイ接続を診断する
 
@@ -105,7 +108,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
 1. ポータル上部の **[検索]** ボックスに「*TestRG1*」と入力します。 検索結果に **TestRG1** が表示されたら選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[TYPE THE RESOURCE GROUP NAME:](リソース グループ名を入力してください:)** に「*TestRG1*」と入力し、**[削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:)** に「*TestRG1*」と入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

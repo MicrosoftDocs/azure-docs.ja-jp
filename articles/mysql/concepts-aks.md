@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.openlocfilehash: 624689fd6b9d8f364b0caf7e96b79b2773ce6171
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538176"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485451"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes Service と Azure Database for MySQL を接続する
 
@@ -32,6 +32,14 @@ AKS クラスターで高速ネットワークが有効になっているかど�
 6. VM の **[ネットワーク]** タブに移動します。
 7. **[高速ネットワーク]** が "有効" になっていることを確認します。
 
+または、Azure CLI で、次の 2 つのコマンドを使用します。
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
+```
+出力は、AKS が作成する、ネットワーク インターフェイスを含む生成されたリソース グループになります。 名前 "nodeResourceGroup" を利用し、次のコマンドで使用します。 **EnableAcceleratedNetworking** は、true または false のいずれかになります。
+```azurecli
+az network nic list --resource-group nodeResourceGroup -o table
+```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
 [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) を使用すると、Kubernetes または Cloud Foundry から Azure サービスを直接プロビジョニングできます。 これは Azure 用の [Open Service Broker API](https://www.openservicebrokerapi.org/) 実装です。

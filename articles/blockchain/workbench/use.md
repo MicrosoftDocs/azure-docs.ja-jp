@@ -1,25 +1,33 @@
 ---
 title: Azure Blockchain Workbench でのアプリケーションの使用
-description: Azure Blockchain Workbench でのアプリケーション コントラクトの使用方法。
+description: Azure Blockchain Workbench でのアプリケーション コントラクトの使用方法に関するチュートリアル。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 04/15/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4fe6f164882ffce7bf22ec0c0b94107abcf6a20e
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242088"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578852"
 ---
-# <a name="using-applications-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのアプリケーションの使用
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でのアプリケーションの使用
 
 Blockchain Workbench では、コントラクトを作成し、それらのコントラクトに対してアクションを実行できます。 また、状態やトランザクション履歴などのコントラクト詳細を表示することもできます。
+
+学習内容は次のとおりです。
+
+> [!div class="checklist"]
+> * 新しいコントラクトを作成する
+> * コントラクトに対してアクションを実行する
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +40,7 @@ Blockchain Workbench では、コントラクトを作成し、それらのコ�
 
 Blockchain Workbench のメンバーとしてサインインする必要があります。 アプリケーションが表示されない場合は、Blockchain Workbench のメンバーではあるものの、まだどのアプリケーションのメンバーにもなっていないことになります。 アプリケーションにメンバーを割り当てることができるのは、Blockchain Workbench の管理者です。
 
-## <a name="create-new-contract"></a>新しいコントラクトの作成 
+## <a name="create-new-contract"></a>新しいコントラクトの作成
 
 新しいコントラクトを作成するには、コントラクト **イニシエーター**として指定されているメンバーになる必要があります。 コントラクトのアプリケーション ロールとイニシエーターの定義については、[構成概要ページのワークフローに関するセクション](configuration.md#workflows)を参照してください。 アプリケーション ロールにメンバーを割り当てる方法については、[アプリケーションにメンバーを追加する](manage-users.md#add-member-to-application)方法に関するページを参照してください。
 
@@ -42,7 +50,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
     ![[新しいコントラクト] ボタン](./media/use/contract-list.png)
 
-3. **[新しいコントラクト]** ウィンドウが表示されます。 初期パラメーター値を指定します。 **作成**を選択します。
+3. **[新しいコントラクト]** ウィンドウが表示されます。 初期パラメーター値を指定します。 **作成** を選択します。
 
     ![[新しいコントラクト] ウィンドウ](./media/use/new-contract.png)
 
@@ -59,11 +67,11 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
     ![コントラクト詳細](./media/use/contract-details.png)
 
-    | セクション  | 説明  |
+    | Section  | 説明  |
     |---------|---------|
     | Status | コントラクト ステージ内での現在の進捗状況が一覧表示されます |
     | 詳細 | コントラクトの現在の値です |
-    | アクションを表示します。 | 直近のアクションに関する詳細です |
+    | Action | 直近のアクションに関する詳細です |
     | アクティビティ | コントラクトのトランザクション履歴です |
     
 3. **[アクション]** セクションで、**[アクションの実行]** を選択します。
@@ -82,4 +90,4 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench のトラブルシューティング方法](troubleshooting.md)
+> [Azure Blockchain Workbench アプリケーションのバージョン管理](version-app.md)

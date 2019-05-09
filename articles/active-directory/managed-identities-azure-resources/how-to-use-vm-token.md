@@ -3,23 +3,24 @@ title: 仮想マシン上で Azure リソースのマネージド ID を使用�
 description: 仮想マシン上で Azure リソースのマネージド ID を使用して OAuth アクセス トークンを取得する手順と例について説明します。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: 0355b8cf19209509dca2f3cac93c7abb92a63990
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323322"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59258914"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -33,7 +34,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-この記事の Azure PowerShell の例を使用する場合は、[Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) の最新バージョンをインストールする必要があります。
+この記事の Azure PowerShell の例を使用する場合は、[Azure PowerShell](/powershell/azure/install-az-ps) の最新バージョンをインストールする必要があります。
 
 
 > [!IMPORTANT]
@@ -55,7 +56,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 | [Go を使用してトークンを取得する](#get-a-token-using-go) | Go クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [Azure PowerShell を使用してトークンを取得する](#get-a-token-using-azure-powershell) | PowerShell クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [CURL を使用してトークンを取得する](#get-a-token-using-curl) | Bash/CURL クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
-| [トークンのキャッシュの処理](#handling-token-caching) | 有効期限が切れたアクセス トークンの処理に関するガイダンス |
+| トークンのキャッシュの処理 | 有効期限が切れたアクセス トークンの処理に関するガイダンス |
 | [エラー処理](#error-handling) | Azure リソース トークン エンドポイントのマネージド ID から返される HTTP エラーを処理するためのガイダンス |
 | [Azure サービスのリソース ID](#resource-ids-for-azure-services) | サポートされている Azure サービスのリソース ID を取得する場所 |
 
@@ -78,10 +79,11 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として Azure リソースのマネージド ID に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。 |
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
+| `mi_res_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の mi_res_id (Azure リソース ID) を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。 |
 
 Azure リソース VM 拡張機能エンドポイントにマネージド ID を使用するサンプル要求 *(2019 年 1 月に非推奨となる予定)*:
 
-```
+```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
@@ -95,10 +97,9 @@ Metadata: true
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 
-
 応答のサンプル:
 
-```
+```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -124,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリを使用してトークンを取得する
 
-.NET アプリケーションと Functions の場合、Azure リソースのマネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス] に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+.NET アプリケーションと Functions の場合、Azure リソースのマネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス](/azure/key-vault/service-to-service-authentication)に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) および [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet パッケージに対する参照をアプリケーションに追加します。
 
@@ -152,7 +153,7 @@ using System.Net;
 using System.Web.Script.Serialization; 
 
 // Build request to acquire managed identities for Azure resources token
-HttpWebRequest request = (HttpWebRequest)WebRequest.Create(http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/");
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
 
@@ -373,14 +374,14 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 | 状態コード | Error | エラーの説明 | 解決策 |
 | ----------- | ----- | ----------------- | -------- |
 | 400 Bad Request | invalid_resource | AADSTS50001:*\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
-| 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。|
-| 401 権限がありません | unknown_source | 不明なソース *\<URI\>* | HTTP GET 要求の URI の形式が正しいことを確認します。 `scheme:host/resource-path` 部分は、`http://localhost:50342/oauth2/token` として指定する必要があります。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。|
+| 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。|
+| 401 権限がありません | unknown_source | 不明なソース *\<URI\>* | HTTP GET 要求の URI の形式が正しいことを確認します。 `scheme:host/resource-path` 部分は、`http://localhost:50342/oauth2/token` として指定する必要があります。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。|
 |           | invalid_request | 要求に必要なパラメーターが含まれていないか、要求に無効なパラメーター値が含まれているか、要求に複数回パラメーターが含まれているか、要求の形式が正しくないかのいずれかです。 |  |
 |           | unauthorized_client | クライアントには、このメソッドを使用してアクセス トークンを要求する権限がありません。 | 拡張機能の呼び出しにローカル ループバックを使用しなかった要求や、Azure リソースのマネージド ID が正しく構成されていない VM が原因です。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。 |
 |           | access_denied | リソース所有者または承認サーバーによって、要求が拒否されました。 |  |
 |           | unsupported_response_type | このメソッドを使用したアクセス トークンの取得は、承認サーバーによってサポートされていません。 |  |
 |           | invalid_scope | 要求されたスコープが無効、不明、または形式が正しくありません。 |  |
-| 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、*\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」で、サービスの一覧と、そのリソース ID を参照してください。
+| 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、*\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」で、サービスの一覧と、そのリソース ID を参照してください。
 
 ## <a name="retry-guidance"></a>再試行のガイダンス 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights プレビューの計画 - Azure Time Series Insights プレビューの環境を計画する | Microsoft Docs
+title: Azure Time Series Insights プレビューの環境を計画する | Microsoft Docs
 description: Azure Time Series Insights プレビューの環境を計画します。
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1df4847f20329e924352adfe782faa43d10dde98
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277048"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076998"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する
 
@@ -90,7 +90,7 @@ Time Series Insights は、Azure リージョン レベルで冗長性を使用�
 事業継続とディザスター リカバリー (BCDR) のための Azure の組み込み機能については、[Azure の事業継続テクニカル ガイダンス](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance)に関する記事を参照してください。 高可用性とディザスター リカバリーを実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスについては、[Azure アプリケーションのディザスター リカバリーと高可用性](https://docs.microsoft.com/azure/architecture/resiliency/index)に関するページを参照してください。
 
 > [!NOTE]
-
+> 
 >  Time Series Insights には、組み込みの BCDR がありません。
 > 既定で、Azure Storage、Azure IoT Hub、および Azure Event Hubs には共にリカバリーが組み込まれています。
 

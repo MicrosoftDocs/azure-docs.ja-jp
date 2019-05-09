@@ -1,5 +1,5 @@
 ---
-title: コグニティブ検索パイプラインでのカスタム スキルのインターフェイス定義 - Azure Search
+title: コグニティブ検索でのカスタム スキルのインターフェイス定義 - Azure Search
 description: Azure Search のコグニティブ検索パイプラインでの web-api カスタム スキル用カスタム データ抽出インターフェイス。
 manager: pablocas
 author: luiscabrer
@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 1df2a565b1c9e8bd2bea75ce78abc84608c89eea
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2c43a6b64f7b7f4f1adae78dca77fe71cf538e5e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314654"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870859"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>コグニティブ検索パイプラインにカスタム スキルを追加する方法
 
-Azure Search の [コグニティブ検索インデックス作成パイプライン](cognitive-search-concept-intro.md)は、[定義済みスキル](cognitive-search-predefined-skills.md)と、個人的に作成してパイプラインに追加するカスタム スキルで組み立てることができます。 この記事では、コグニティブ検索パイプラインに含めることができるようにインターフェイスを公開するカスタム スキルの作成方法について説明します。 
+Azure Search の [コグニティブ検索インデックス作成パイプライン](cognitive-search-concept-intro.md)は、[定義済みスキル](cognitive-search-predefined-skills.md)と、個人的に作成してパイプラインに追加する[カスタム スキル](cognitive-search-custom-skill-web-api.md)で組み立てることができます。 この記事では、コグニティブ検索パイプラインに含めることができるようにインターフェイスを公開するカスタム スキルの作成方法について説明します。 
 
 カスタム スキルを構築すると、コンテンツに固有の変換を挿入することができます。 カスタム スキルは独立して実行され、必要なすべてのエンリッチメント ステップが適用されます。 たとえば、フィールド固有のカスタム エンティティを定義して、ビジネスおよび財務の契約やドキュメントを区別するためのカスタム分類モデルを作成したり、音声認識スキルを追加して、関連するコンテンツのオーディオ ファイルを細かく調べたりすることができます。 手順の例については、[カスタム スキルの作成に関する例](cognitive-search-create-custom-skill-example.md)を参照してください。
 
@@ -27,7 +27,14 @@ Azure Search の [コグニティブ検索インデックス作成パイプラ�
 
 ## <a name="web-api-custom-skill-interface"></a>Web API のカスタム スキル インターフェイス
 
-Web API のカスタム スキル エンドポイントは、5 分以内に応答を返す必要があります。 インデックス作成パイプラインは同期的であり、この時間内に応答が受信されない場合は、タイムアウト エラーが発生します。
+Web API のカスタム スキル エンドポイントが、30 秒以内に応答を返さない場合、既定ではタイムアウトになります。 インデックス作成パイプラインは同期的であり、この時間内に応答が受信されない場合は、タイムアウト エラーが発生します。  タイムアウト パラメーターを設定することで、タイムアウトを最長で 90 秒に構成できます。
+
+```json
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "description": "This skill has a 90 second timeout",
+        "uri": "https://[your custom skill uri goes here]",
+        "timeout": "PT90S",
+```
 
 現在のところ、カスタム スキルとやり取りするための唯一のメカニズムは、Web API インターフェイスです。 Web API は、このセクションで説明する要件を満たしている必要があります。
 

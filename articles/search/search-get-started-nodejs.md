@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 0b36ee9aa54f0d8dd3d246d6c5a96e767326d2d8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634679"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005337"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js での Azure Search の使用
 > [!div class="op_single_selector"]

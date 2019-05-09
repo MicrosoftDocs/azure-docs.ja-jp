@@ -3,21 +3,22 @@ title: Azure Multi-Factor Authentication パイロットの有効化
 description: このチュートリアルでは、パイロット グループのユーザーに対して Azure AD Multi-Factor Authentication を有効にします
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 098973e2ece3477ec87b154c0304c4ca7e0246d1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5fdf88ed6cedaa38676a56536ff1eda7ee6bca66
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163334"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204799"
 ---
-# <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>チュートリアル: Azure Multi-Factor Authentication のパイロット ロール アウトを完了する
+# <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>チュートリアル:Azure Multi-Factor Authentication のパイロット ロール アウトを完了する
 
 このチュートリアルでは、Azure portal にログインするときに Azure Multi-Factor Authentication (Azure MFA) を有効にする条件付きアクセス ポリシーの構成について説明します。 このポリシーは、パイロット ユーザーの特定のグループにデプロイされ、テストされます。 条件付きアクセスを使用する Azure MFA のデプロイは、組織および管理者にとって、従来の強制方法よりも大幅に高い柔軟性を持つ方法です。
 
@@ -29,7 +30,7 @@ ms.locfileid: "39163334"
 
 * 少なくとも試用版ライセンスが有効になっている、動作している Azure AD テナント。
 * 全体管理者特権を持つアカウント。
-* テスト用に管理者が知っているパスワードを持つ、管理者以外のテスト ユーザー。ユーザーを作成する必要がある場合は、「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
+* 管理者がテスト目的で把握しているパスワードを持つ、管理者以外のテスト ユーザー。ユーザーを作成する必要がある場合は、[Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
 * 管理者以外のユーザーが所属している、テストするパイロット グループ。グループを作成する必要がある場合は、「[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory-groups-create-azure-portal.md)」を参照してください。
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の有効化
@@ -37,8 +38,8 @@ ms.locfileid: "39163334"
 1. 全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. **[Azure Active Directory]**、**[条件付きアクセス]** の順に移動します
 1. **[新しいポリシー]** を選択します
-1. ポリシーに **MFA Pilot** という名前を付けます
-1. **[ユーザーとグループ]** の下で、**[ユーザーとグループの選択]** ボタンを選択します
+1. ポリシーに「**MFA Pilot**」という名前を付けます
+1. **[ユーザーとグループ]** の下で、**[ユーザーとグループの選択]** を選択します
     * この記事の前提条件セクションで作成したパイロット グループを選択します
     * **[完了]** をクリックします
 1. **[クラウド アプリ]** の下の **[アプリを選択]** を選択します

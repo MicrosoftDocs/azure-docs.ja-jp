@@ -4,22 +4,22 @@ description: Service Fabric でのメトリック向け戦略としての最適�
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a35ae5933729615d634359e64e31d43536d81431
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205078"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661652"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric のメトリックと負荷の最適化
 Service Fabric クラスター リソース マネージャーで、クラスターの負荷メトリックを管理する既定の戦略は、負荷を分散することです。 ノードが均等に利用されるようにすることで、リソースの競合や無駄につながるホット スポットとコールド スポットを回避します。 また、クラスター内のワークロードの分散化も、障害対応の観点から見て最も安全です。障害が発生しても、ワークロードの大部分が消費される事態を回避できるからです。 
@@ -41,6 +41,7 @@ Service Fabric クラスター リソース マネージャーは、最適化と
 次の図は、2 つのクラスターを視覚的に表現したものです。一方は最適化され、もう一方は最適化されていません。 
 
 <center>
+
 ![分散および最適化されたクラスターの比較][Image1]
 </center>
 

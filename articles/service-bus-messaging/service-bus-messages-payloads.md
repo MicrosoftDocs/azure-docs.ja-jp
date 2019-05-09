@@ -3,22 +3,22 @@ title: Azure Service Bus のメッセージ、ペイロード、およびシリ�
 description: Service Bus メッセージのペイロードの概要
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: 00c7605b09c32328a8324b13b8151a258a39dc22
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: aschhab
+ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857603"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733928"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 
@@ -28,7 +28,7 @@ Microsoft Azure Service Bus はメッセージを処理します。 メッセー
  
 Service Bus メッセージは、どのような形式でもサービス側で Service Bus によって処理されないバイナリ ペイロード セクションと、2 つのプロパティ セットで構成されます。 "*ブローカー プロパティ*" は、システムによって事前定義されています。 この事前定義されているプロパティは、ブローカー内のメッセージ レベルの機能を制御するか、一般的な標準化されたメタデータ項目にマップされます。 "*ユーザー プロパティ*" は、アプリケーションが定義および設定できるキーと値のペアのコレクションです。
  
-次の表に、事前定義されているブローカー プロパティの一覧を示します。 これらの名前は、すべての公式クライアント API と、HTTP プロトコル マッピングの JSON オブジェクト [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Properties_) でも使用されます。
+次の表に、事前定義されているブローカー プロパティの一覧を示します。 これらの名前は、すべての公式クライアント API と、HTTP プロトコル マッピングの JSON オブジェクト [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) でも使用されます。
  
 かっこ内には、AMQP プロトコル レベルで使用される同等の名前を示しています。 
 

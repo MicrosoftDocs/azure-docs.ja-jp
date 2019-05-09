@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2457ef2843b0d16359b7e47fc54c58e2ef5e6034
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125091"
 ---
 > [!NOTE]
 > これらの例は、S2S/ExpressRoute の共存構成には該当しません。
@@ -28,8 +28,8 @@ ms.locfileid: "53429992"
 1. [ネットワーク構成ファイル](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)に関する記事の手順に従ってネットワーク構成ファイルをダウンロードします。 テキスト エディターを使用してファイルを開きます。
 2. ローカル ネットワーク サイトをファイルに追加します。 任意の有効なアドレス プレフィックスを使用できます。 VPN ゲートウェイに使用する任意の有効な IP アドレスを追加してください。 このセクションのアドレス値は ExpressRoute の動作上は使用されませんが、ファイルの検証に必要となります。 この例では、"branch1" がサイトの名前です。 別の名前を使用することもできますが、このファイルの Gateway セクションでも必ず同じ値を使用してください。
 
-  ```
-  <VirtualNetworkConfiguration>
+   ```
+   <VirtualNetworkConfiguration>
     <Dns />
     <LocalNetworkSites>
       <LocalNetworkSite name="branch1">
@@ -38,15 +38,15 @@ ms.locfileid: "53429992"
         </AddressSpace>
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
-  ```
+   ```
 3. VirtualNetworkSites に移動して、その各フィールドに変更を加えます。
 
-  * お使いの仮想ネットワークのゲートウェイ サブネットが存在することを確認します。 存在しなければ、ここで追加してください。 "GatewaySubnet" という名前にする必要があります。
-  * ファイルに Gateway セクションが存在することを確認します。 存在しなければ追加してください。 仮想ネットワークを (接続先のネットワークを表す) ローカル ネットワーク サイトに関連付けるために必要となります。
-  * Connection type が Dedicated になっていることを確認します。 ExpressRoute 接続では、これが必須となります。
+   * お使いの仮想ネットワークのゲートウェイ サブネットが存在することを確認します。 存在しなければ、ここで追加してください。 "GatewaySubnet" という名前にする必要があります。
+   * ファイルに Gateway セクションが存在することを確認します。 存在しなければ追加してください。 仮想ネットワークを (接続先のネットワークを表す) ローカル ネットワーク サイトに関連付けるために必要となります。
+   * Connection type が Dedicated になっていることを確認します。 ExpressRoute 接続では、これが必須となります。
 
-  ```
-  </LocalNetworkSites>
+   ```
+   </LocalNetworkSites>
     <VirtualNetworkSites>
       <VirtualNetworkSite name="myAzureVNET" Location="East US">
         <AddressSpace>
@@ -69,9 +69,9 @@ ms.locfileid: "53429992"
         </Gateway>
       </VirtualNetworkSite>
     </VirtualNetworkSites>
-  </VirtualNetworkConfiguration>
-  </NetworkConfiguration>
-  ```
+   </VirtualNetworkConfiguration>
+   </NetworkConfiguration>
+   ```
 4. ファイルを保存して Azure にアップロードします。
 
 ### <a name="create-the-gateway"></a>ゲートウェイを作成する

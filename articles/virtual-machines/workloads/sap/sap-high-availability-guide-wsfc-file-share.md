@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf50dad01cf9893209cc861d29d275ec114966c4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 28b3851a52ec5fe69eaa531e2e08f66fb73cb1e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186159"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997979"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -34,7 +34,7 @@ ms.locfileid: "53186159"
 [kb4025334]:https://support.microsoft.com/help/4025334/windows-10-update-kb4025334
 
 [dv2-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dv2-series
-[ds-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#ds-series
+[ds-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -45,7 +45,7 @@ ms.locfileid: "53186159"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 

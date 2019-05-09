@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: cwatson
-ms.openlocfilehash: 76f4a52b702a609d7181b9c6c0f2ce600d8a6aac
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.author: kfollis
+ms.openlocfilehash: a7e9acbe78ffdca2e615873cc4c33f86b250a429
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267989"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885695"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造
 このドキュメントでは、次のダッシュボードを例として、Azure のダッシュボードの構造を説明します。
@@ -312,7 +312,7 @@ Azure のリソース ID は、[Azure リソースの名前付け規則](https:/
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>プロパティ オブジェクト
-プロパティ オブジェクトには、__レンズ__ と __メタデータ__ の 2 つのプロパティが含まれます。 __レンズ__ プロパティには、ダッシュボード上のタイル (別名 "パーツ") に関する情報が含まれています。  __メタデータ__ プロパティには、今後機能が設定される可能性があります。
+プロパティ オブジェクトには、__レンズ__ と __メタデータ__ の 2 つのプロパティが含まれます。 __レンズ__ プロパティには、ダッシュボード上のタイル  (別名 "パーツ") に関する情報が含まれています。  __メタデータ__ プロパティには、今後機能が設定される可能性があります。
 
 ### <a name="the-lenses-property"></a>レンズ プロパティ
 __レンズ__ プロパティには、ダッシュボードが含まれています。 この例では、レンズ オブジェクトに、"0" というプロパティが 1 つ含まれています。 レンズは、ダッシュボードで現在実装されていないグループ化の概念です。 ここでは、すべてのダッシュボードに、これも "0" というプロパティを 1 つ持つレンズ オブジェクトがあります。

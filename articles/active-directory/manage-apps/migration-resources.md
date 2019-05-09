@@ -2,21 +2,22 @@
 title: アプリを Azure Active Directory に移行するためのリソース | Microsoft Docs
 description: アプリケーションのアクセスと認証を Azure Active Directory (Azure AD) に移行するために役立つリソース。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: baselden
-ms.openlocfilehash: d2ede423a92fe9e0d45155d9470d63689bc8d281
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 92ce62d745bfb0299dc8f3eb401f5a66e38580f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165543"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182121"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>アプリケーションを Azure Active Directory に移行するためのリソース
 

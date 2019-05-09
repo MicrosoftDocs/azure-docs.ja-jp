@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834130"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727963"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -41,19 +41,19 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 | --- | --- | --- | --- |
 | **ラボのタスク** | | | |
 | ラボへのユーザーの追加 |いいえ  |はい |いいえ  |
-| コストの設定の更新 |いいえ  |可能  |[はい] |
+| コストの設定の更新 |いいえ  |可能  |はい |
 | **VM ベースのタスク** | | | |
-| カスタム イメージの追加と削除 |いいえ  |可能  |[はい] |
-| 数式の追加、更新、および削除 |[はい] |はい |[はい] |
-| Azure Marketplace のイメージのホワイトリスト |いいえ  |可能  |[はい] |
+| カスタム イメージの追加と削除 |いいえ  |可能  |はい |
+| 数式の追加、更新、および削除 |はい |はい |はい |
+| Azure Marketplace のイメージのホワイトリスト |いいえ  |可能  |はい |
 | **VM タスク** | | | |
-| VM の作成 |[はい] |はい |[はい] |
-| VM の開始、停止、および削除 |ユーザーによって作成された VM のみ |[はい] |[はい] |
-| VM のポリシーの更新 |いいえ  |可能  |[はい] |
-| データ ディスクの VM への追加と VM からの削除 |ユーザーによって作成された VM のみ |[はい] |[はい] |
+| VM の作成 |はい |はい |はい |
+| VM の開始、停止、および削除 |ユーザーによって作成された VM のみ |はい |はい |
+| VM のポリシーの更新 |いいえ  |可能  |はい |
+| データ ディスクの VM への追加と VM からの削除 |ユーザーによって作成された VM のみ |はい |はい |
 | **アーティファクトのタスク** | | | |
-| アーティファクトのリポジトリの追加と削除 |いいえ  |可能  |[はい] |
-| アーティファクトの適用 |[はい] |はい |[はい] |
+| アーティファクトのリポジトリの追加と削除 |いいえ  |可能  |はい |
+| アーティファクトの適用 |はい |はい |はい |
 
 > [!NOTE]
 > ユーザーが VM を作成すると、そのユーザーは作成された VM の **所有者** ロールに自動的に割り当てられます。
@@ -77,6 +77,9 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 11. **[ユーザー]** ブレードに戻ると、このユーザーが追加されています。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>PowerShell を使用して、ラボに外部ユーザーを追加します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Azure Portal にユーザーを追加するだけでなく、PowerShell スクリプトを使用して、ラボに外部ユーザーを追加することもできます。 次の例で、**Values to change** コメントの下のパラメーター値を変更してください。
 `subscriptionId`、`labResourceGroup`、および `labName` の値は、Azure Portal のラボのブレードから取得することができます。
 
@@ -96,18 +99,18 @@ Azure Portal にユーザーを追加するだけでなく、PowerShell スク�
     $userDisplayName = "<Enter user's display name here>"
 
     # Log into your Azure account
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
     # Select the Azure subscription that contains the lab. 
     # This step is optional if you have only one subscription.
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
+    Select-AzSubscription -SubscriptionId $subscriptionId
 
     # Retrieve the user object
-    $adObject = Get-AzureRmADUser -SearchString $userDisplayName
+    $adObject = Get-AzADUser -SearchString $userDisplayName
 
     # Create the role assignment. 
     $labId = ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
-    New-AzureRmRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
+    New-AzRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
 
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>サブスクリプション レベルでの所有者またはユーザーの追加
 Azure のアクセス許可は、Azure で親スコープから子スコープに反映されます。 したがって、ラボを含む Azure サブスクリプションの所有者は、自動的にこれらのラボの所有者となります。 また、これらの所有者は、VM やラボのユーザーによって作成されたその他のリソース、および Azure DevTest Labs サービスも所有します。 

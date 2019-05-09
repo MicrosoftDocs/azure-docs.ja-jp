@@ -8,13 +8,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 8a5a71fada190939abf638cd1b681adff7e80970
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: files
+ms.openlocfilehash: 62a771b831c88f73df91c50f34ba6de0d95b832e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244544"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453095"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]

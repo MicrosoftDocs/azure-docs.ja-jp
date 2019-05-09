@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f703a934b0eaf4bff5be3811adeed8f0287bc658
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2b34f6bcbf37a48fb49a2a64d727fc9330b0d735
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50237827"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882261"
 ---
 # <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>Azure CDN の現在の Verizon POP リストの取得
 
@@ -30,7 +30,7 @@ POP リストを取得するための REST API 操作の構文については、
 
 ## <a name="typical-use-case"></a>一般的なユース ケース
 
-セキュリティ上の目的で、この IP リストを使用して、配信元サーバーへの要求が有効な Verizon POP からのみ行われるようにすることができます。 たとえば、CDN エンドポイントの配信元サーバーのホスト名または IP アドレスを発見しただれかが、Azure CDN によって提供されるスケーリングおよびセキュリティ機能をバイパスして配信元サーバーに直接要求を行う可能性があります。 返されるリスト内の IP アドレスを配信元サーバー上の唯一の許可される IP アドレスとして設定することで、このシナリオを回避できます。 確実に最新の POP リストを使用するには、POP リストを少なくとも 1 日に 1 回取得します。 
+セキュリティ上の目的で、この IP リストを使用して、配信元サーバーへの要求が有効な Verizon POP からのみ行われるようにすることができます。 たとえば、CDN エンドポイントの配信元サーバーのホスト名または IP アドレスを発見しただれかが、Azure CDN によって提供されるスケーリングおよびセキュリティ機能をバイパスして配信元サーバーに直接要求を行う可能性があります。 返されるリスト内の IP アドレスを配信元サーバー上の唯一の許可される IP アドレスとして設定することで、このシナリオを回避できます。 確実に最新の POP リストを使用するためには、POP リストを少なくとも 1 日に 1 回取得します。 
 
 ## <a name="next-steps"></a>次の手順
 

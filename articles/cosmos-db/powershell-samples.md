@@ -1,20 +1,17 @@
 ---
 title: Azure Cosmos DB 用 Azure PowerShell サンプル
 description: Azure PowerShell サンプル - Azure Cosmos DB アカウントの作成と管理で役立つスクリプト。
-services: cosmos-db
 author: SnehaGunda
-tags: azure-service-management
 ms.service: cosmos-db
-ms.custom: mvc
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: 480bccd73a049d2f181d5acf906882b2f9b6ccdb
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 3498ac6a2a4aaa1682d7b5bc5aae5383866d5bcd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808402"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873799"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure Cosmos DB 用 Azure PowerShell サンプル
 

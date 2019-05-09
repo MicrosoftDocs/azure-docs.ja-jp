@@ -17,12 +17,21 @@ items:
   - name: ポリシーの割り当て - Azure CLI
     displayName: assign, compliance
     href: assign-policy-azurecli.md
+  - name: ポリシーの割り当て - テンプレート
+    displayName: assign, compliance, resource manager, ARM
+    href: assign-policy-template.md
   expanded: true
 - name: チュートリアル
   items:
   - name: Azure Policy の作成と管理
     displayName: assign, definition, compliance, exempt, exclusion
     href: ./tutorials/create-and-manage.md
+  - name: カスタム ポリシー定義の作成
+    displayName: disabled, parameters, rule, mode
+    href: ./tutorials/create-custom-policy-definition.md
+  - name: ハンズオン ラボ - Azure Policy の探索
+    displayName: create, policy, training, learn
+    href: https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy
 - name: サンプル
   items:
   - name: Index
@@ -44,7 +53,7 @@ items:
       - name: タグ一致パターンを要求する
         displayName: deny, all
         href: samples/enforce-tag-match-pattern.md
-    - name: タグ
+    - name: Tags
       items:
       - name: タグとその既定値の適用
         displayName: append, builtin, concat
@@ -108,6 +117,16 @@ items:
     - name: Data Lake Store での暗号化の適用
       displayName: deny
       href: samples/enforce-data-lake-store-encryption.md
+  - name: ゲスト構成
+    items:
+    - name: Linux 上にインストールされているアプリケーションの監査
+      displayName: audit, vm
+      href: samples/guest-configuration-applications-installed-linux.md
+  - name: キー コンテナー
+    items:
+    - name: 仮想ネットワーク エンドポイントがないコンテナーの監査
+      displayName: audit, KeyVault, indexed
+      href: samples/keyvault-no-vnet-rules.md
   - name: 監視
     items:
     - name: 診断設定の監査
@@ -160,15 +179,15 @@ items:
       - name: すべてのサブネット上の NSG X
         displayName: deny, all
         href: samples/nsg-on-subnet.md
-    - name: Express Route
+    - name: ExpressRoute
       items:
-      - name: 許可されている Express Route の帯域幅
+      - name: 許可された ExpressRoute の帯域幅
         displayName: deny
         href: samples/allowed-express-route-bandwidth.md
-      - name: 許可されている Express Route の SKU
+      - name: 許可された ExpressRoute の SKU
         displayName: deny
         href: samples/allowed-express-route-skus.md
-      - name: 許可されている Express Route ピアリングの場所
+      - name: 許可されている ExpressRoute ピアリングの場所
         displayName: deny, Location
         href: samples/allowed-express-route-peering.md
     - name: Network Watcher
@@ -200,7 +219,7 @@ items:
       - name: SQL Server バージョン 12.0 が必要
         displayName: deny, builtin
         href: samples/require-sql-12.md
-    - name: '[SQL データベース]'
+    - name: SQL データベース
       items:
       - name: 許可されている SQL DB の SKU
         displayName: deny
@@ -250,9 +269,15 @@ items:
   - name: プログラムによるポリシーの作成
     displayName: assign, definition
     href: ./how-to/programmatically-create.md
+  - name: 配列プロパティのポリシーの作成
+    displayName: array property, alias, aliases, in, notIn, type, defaultValue
+    href: ./how-to/author-policies-for-arrays.md
   - name: コンプライアンス データの取得
     displayName: evaluation, scan, summarize, query, events, log analytics
     href: ./how-to/get-compliance-data.md
+  - name: コンプライアンス違反の原因の特定
+    displayName: reasons, compliance details
+    href: ./how-to/determine-non-compliance.md
   - name: 準拠していないリソースを修復する
     displayName: managed identity, task, definition, roleDefinitionIds
     href: ./how-to/remediate-resources.md
@@ -263,10 +288,12 @@ items:
   - name: Azure PowerShell
     items:
     - name: ポリシー
-      href: /powershell/module/azurerm.resources/#policies
-    - name: ゲスト構成 (プレビュー)
-      href: https://www.powershellgallery.com/packages/AzureRM.GuestConfiguration
-  - name: REST API
+      href: /powershell/module/az.resources/#policies
+    - name: ポリシーの分析情報
+      href: /powershell/module/az.policyinsights#policy_insights
+    - name: ゲスト構成
+      href: https://www.powershellgallery.com/packages/Az.GuestConfiguration
+  - name: REST
     items:
     - name: events
       href: /rest/api/policy-insights/policyevents
@@ -282,7 +309,7 @@ items:
       href: /rest/api/policy-insights/policytrackedresources
     - name: 修復
       href: /rest/api/policy-insights/remediations
-    - name: ゲスト構成 (プレビュー)
+    - name: ゲスト構成
       href: /rest/api/guestconfiguration/
   - name: Resource Manager テンプレート
     items:
@@ -298,8 +325,8 @@ items:
     href: https://github.com/Azure/azure-policy
   - name: 動画 - Build 2018
     href: https://channel9.msdn.com/events/Build/2018/THR2030
-  - name: 動画 - Ignite 2017
-    href: https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2238
+  - name: ガバナンスに関する YouTube チャンネル
+    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
   - name: ゲスト構成のビデオ
     items:
     - name: Getting Started (概要)
@@ -316,9 +343,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: e23ca5bd5826feda30c632bbf888c19d1227498e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 730222484658019c78fb2dfef94c474f3031769b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105901"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226132"

@@ -4,7 +4,7 @@ description: このチュートリアルでは、複数コンテナーの Servic
 services: service-fabric
 documentationcenter: ''
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: suhuruli
 tags: servicefabric
 keywords: Docker, コンテナー, マイクロサービス, Service Fabric, Azure
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: f2e8ce7dc6102471f95f6332d9cb01a6cb4f4f54
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c081a6296e1fae89f24a2c3ddb1ae66f7a3f94aa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313787"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662552"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル:Linux Service Fabric クラスターにコンテナー イメージを作成する
 
@@ -190,7 +190,7 @@ docker push コマンドが完了までに数分かかります。
 
 ## <a name="list-images-in-registry"></a>レジストリ内のイメージの一覧表示
 
-お使いの Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
+お使いの Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
 ```bash
 az acr repository list --name <acrName> --output table

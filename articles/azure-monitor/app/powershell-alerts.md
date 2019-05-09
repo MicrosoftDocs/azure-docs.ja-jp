@@ -12,22 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: ed18be8b875ba7cf4c465123297d8f390ac4ae7c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004680"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481793"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
-[Application Insights](../../application-insights/app-insights-overview.md) では、[アラート](../../azure-monitor/app/alerts.md)の構成を自動化できます。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) では、[アラート](../../azure-monitor/app/alerts.md)の構成を自動化できます。
 
 さらに、[webhook を設定して、アラートへの対応を自動化](../../azure-monitor/platform/alerts-webhooks.md)することもできます。
 
 > [!NOTE]
 > リソースと警告を同時に作成したい場合は、[Azure Resource Manager テンプレートの使用](powershell.md)を検討してください。
->
->
 
 ## <a name="one-time-setup"></a>1 回限りのセットアップ
 以前に Azure サブスクリプションで PowerShell を使用したことがない場合
@@ -40,17 +41,17 @@ ms.locfileid: "54004680"
 ## <a name="connect-to-azure"></a>Azure への接続
 Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azure/overview)します。
 
-```PowerShell
+```powershell
 
-    Add-AzureRmAccount
+    Add-AzAccount
 ```
 
 
 ## <a name="get-alerts"></a>アラートの取得
-    Get-AzureRmAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
+    Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
 ## <a name="add-alert"></a>アラートの追加
-    Add-AzureRmMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
+    Add-AzMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
      -ResourceGroup "{GROUP NAME}" `
      -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
      -MetricName "{METRIC NAME}" `
@@ -69,7 +70,7 @@ Azure PowerShell を起動して、 [サブスクリプションに接続](/powe
 
 GUID は、サブスクリプション ID です (アプリケーションのインストルメンテーション キーではありません)。
 
-    Add-AzureRmMetricAlertRule -Name "slow responses" `
+    Add-AzMetricAlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
@@ -83,7 +84,7 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 ## <a name="example-2"></a>例 2
 [TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) を使用して "salesPerHour" という名前のメトリックを報告するアプリケーションがあります。 24 時間にわたる "salesPerHour" の平均が 100 を下回る場合は、私の同僚に電子メールを送信してください。
 
-    Add-AzureRmMetricAlertRule -Name "poor sales" `
+    Add-AzMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `

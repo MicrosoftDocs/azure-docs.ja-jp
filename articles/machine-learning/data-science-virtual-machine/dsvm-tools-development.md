@@ -9,25 +9,26 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: ee1e7003a9f1479db7311072e29132cf491cbc88
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7983169c2b1123c57a48471e3f4d9ad6f19c84dc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073756"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314724"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシン上の開発ツール
 
 データ サイエンス仮想マシン (DSVM) は、いくつかの一般的なツールと IDE をバンドルすることにより、開発のための生産性の高い環境を提供します。 DSVM で提供されるツールには、次のものがあります。 
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017  
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 汎用 IDE      |
@@ -38,6 +39,7 @@ ms.locfileid: "53073756"
 | DSVM 上の関連ツール      |     Visual Studio Code、RStudio、Juno  |
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 汎用 IDE      |
@@ -47,6 +49,7 @@ ms.locfileid: "53073756"
 | DSVM 上の関連ツール      |     Visual Studio 2017、RStudio、Juno  |
 
 ## <a name="rstudio--desktop"></a>RStudio Desktop 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | R 言語用のクライアント IDE    |
@@ -56,15 +59,17 @@ ms.locfileid: "53073756"
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、Juno      |
 
 ## <a name="rstudio--server"></a>RStudio Server 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | R 言語用の Web ベース IDE    |
 | サポートされている DSVM バージョン      | Linux      |
 | 一般的な用途      |  R 開発     |
-| 使用/実行方法      | _systemctl enable rstudio-server_ を使用してサービスを有効にしてから、_systemctl start rstudio-server_ でサービスを開始します。 その後、RStudio Server (http://your-vm-ip:8787) にログインできます。       |
+| 使用/実行方法      | _systemctl enable rstudio-server_ を使用してサービスを有効にしてから、_systemctl start rstudio-server_ でサービスを開始します。 その後、RStudio Server (http:\//your-vm-ip:8787) にログインできます。       |
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | Julia 言語用のクライアント IDE   |
@@ -74,6 +79,7 @@ ms.locfileid: "53073756"
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、RStudio      |
 
 ## <a name="pycharm"></a>Pycharm
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | Python 言語用のクライアント IDE    |
@@ -85,6 +91,7 @@ ms.locfileid: "53073756"
 
 
 ## <a name="powerbi-desktop"></a>PowerBI Desktop 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 対話型データ視覚化と BI ツール    |

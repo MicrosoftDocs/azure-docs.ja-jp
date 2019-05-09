@@ -3,25 +3,26 @@ title: テンプレートを使用して仮想マシン スケール セット�
 description: Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットで Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: daveba
-ms.openlocfilehash: c6bc77e5ee1fa5e180b41dca50640dc01fee0691
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ecbac8af86c3c2c76b7710eb61f71481b86291b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017518"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59009871"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>テンプレートを使用して Azure 仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>テンプレートを使用して Azure 仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -49,7 +50,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 Azure portal とスクリプトを使う場合と同じように、[Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) テンプレートを使うと、Azure リソース グループによって定義された新しいリソースまたは変更されたリソースをデプロイすることができます。 ローカルとポータル ベースの両方を含むテンプレートの編集やデプロイでは、次のような複数のオプションが使用できます。
 
    - [Azure Marketplace のカスタム テンプレート](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)を使用します。これにより、最初からテンプレートを作成したり、既存の共通テンプレートまたは[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)に基づいてテンプレートを作成したりできます。
-   - [元のデプロイ](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history)または[デプロイの現在の状態](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
+   - [元のデプロイ](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)または[デプロイの現在の状態](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
    - ローカルの [JSON エディター (VS Code など)](../../azure-resource-manager/resource-manager-create-first-template.md) を使用してから、PowerShell または CLI を使用してアップロードおよびデプロイします。
    - Visual Studio の [Azure リソース グループ プロジェクト](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)を使用して、テンプレートを作成およびデプロイします。  
 
@@ -59,10 +60,9 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 このセクションでは、Azure Resource Manager テンプレートを使用して、システム割り当てマネージド ID を有効および無効にします。
 
-### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-a-existing-virtual-machine-scale-set"></a>仮想マシン スケール セットの作成時に、または既存の仮想マシン スケール セットでシステム割り当てマネージド ID を有効にする
+### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>仮想マシン スケール セットの作成時に、または既存の仮想マシン スケール セットでシステム割り当てマネージド ID を有効にする
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
-   
 2. システム割り当てマネージド ID を有効にするには、テンプレートをエディターに読み込み、resources セクション内で対象の `Microsoft.Compute/virtualMachinesScaleSets` リソースを探し、`"type": "Microsoft.Compute/virtualMachinesScaleSets"` プロパティと同じレベルに `identity` プロパティを追加します。 次の構文を使用します。
 
    ```JSON
@@ -71,29 +71,9 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
    }
    ```
 
-3. (省略可能) 仮想マシン スケール セットの、Azure リソースのマネージド ID 拡張機能を `extensionsProfile` 要素として追加します。 Azure Instance Metadata Service (IMDS) の ID を使ってトークンを取得することもできるため、このステップは省略可能です。  次の構文を使用します。
+> [!NOTE]
+> オプションで、Azure リソース仮想マシン スケール セット拡張機能のマネージド ID をプロビジョニングできます。そのためには、これをテンプレートの `extensionProfile` 要素内に指定します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。  詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
 
-   >[!NOTE] 
-   > 次の例では、Windows 仮想マシン スケール セットの拡張機能 (`ManagedIdentityExtensionForWindows`) がデプロイ済みであることを前提としています。 `"name"` 要素と `"type"` 要素については、代わりに `ManagedIdentityExtensionForLinux` を使用して Linux 用に構成することもできます。
-   >
-
-   ```json
-   "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
-            }
-   ```
 
 4. 完了すると、次のセクションがテンプレートのリソース セクションに追加されます。次のようなセクションになります。
 
@@ -112,6 +92,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
                 //other resource provider properties...
                 "virtualMachineProfile": {
                     //other virtual machine profile properties...
+                    //The following appears only if you provisioned the optional virtual machine scale set extension (to be deprecated)
                     "extensionProfile": {
                         "extensions": [
                             {
@@ -173,7 +154,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 > [!Note]
 > Azure Resource Manager テンプレートを使用してユーザー割り当てマネージド ID を作成するには、「[Create a user-assigned managed identity (ユーザー割り当てマネージド ID を作成する)](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)」をご覧ください。
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virutal-machine-scale-set"></a>仮想マシン スケール セットにユーザー割り当て マネージド ID を割り当てる
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>仮想マシン スケール セットにユーザー割り当て マネージド ID を割り当てる
 
 1. ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てるには、`resources` 要素に次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` は、作成したユーザー割り当てマネージド ID の名前に置き換えてください。
    
@@ -214,26 +195,8 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
    }
    ``` 
-
-2. (省略可能) `extensionProfile` 要素に次のエントリを追加して、Azure リソースのマネージド ID 拡張機能を VMSS に割り当てます。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。 次の構文を使用します。
-   
-    ```JSON
-       "extensionProfile": {
-            "extensions": [
-                {
-                    "name": "ManagedIdentityWindowsExtension",
-                    "properties": {
-                        "publisher": "Microsoft.ManagedIdentity",
-                        "type": "ManagedIdentityExtensionForWindows",
-                        "typeHandlerVersion": "1.0",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
-                            "port": 50342
-                        },
-                        "protectedSettings": {}
-                    }
-                }
-    ```
+> [!NOTE]
+> オプションで、Azure リソース仮想マシン スケール セット拡張機能のマネージド ID をプロビジョニングできます。そのためには、これをテンプレートの `extensionProfile` 要素内に指定します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。  詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
 
 3. 完了すると、テンプレートは以下の例のようになります。
    
@@ -257,6 +220,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
                 //other virtual machine properties...
                 "virtualMachineProfile": {
                     //other virtual machine profile properties...
+                    //The following appears only if you provisioned the optional virtual machine scale set extension (to be deprecated)
                     "extensionProfile": {
                         "extensions": [
                             {
@@ -299,6 +263,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
                 //other virtual machine properties...
                 "virtualMachineProfile": {
                     //other virtual machine profile properties...
+                    //The following appears only if you provisioned the optional virtual machine scale set extension (to be deprecated)    
                     "extensionProfile": {
                         "extensions": [
                             {
@@ -320,7 +285,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
         }
     ]
    ```
-### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットからユーザー割り当てマネージド ID を削除する
+   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットからユーザー割り当てマネージド ID を削除する
 
 ユーザー割り当てマネージド ID が不要になった仮想マシン スケール セットがある場合は、次の手順に従います。
 

@@ -1,20 +1,19 @@
 ---
 title: 初歩的なクエリのサンプル
-description: いくつかの初歩的なクエリを実行するには、Azure Resource Graph を使用します。
-services: resource-graph
+description: Azure Resource Graph を使用して、リソースのカウント、リソースの並べ替え、特定のタグによるクエリなど、いくつかの初歩的なクエリを実行します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 04/04/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: a1e54c4f78f502c6ae354ecdf4dd3c4b48a3457b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2ba48e2a21bdee0c5698bdfa314dd3bf462c1c7e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310183"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267771"
 ---
 # <a name="starter-resource-graph-queries"></a>Resource Graph の初歩的なクエリ
 
@@ -29,12 +28,14 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 > - [名前とその OS の種類による最初の 5 つの仮想マシンの表示](#show-sorted)
 > - [仮想マシンの数 (OS の種類別)](#count-os)
 > - [ストレージを含むリソースの表示](#show-storage)
-> - [パブリック IP アドレスの一覧表示](#list-publicip)
+> - [すべてのパブリック IP アドレスの一覧表示](#list-publicip)
 > - [サブスクリプションで構成されている IP アドレスを持つリソースの数](#count-resources-by-ip)
 > - [特定のタグ値が付いたリソースの一覧表示](#list-tag)
 > - [特定のタグ値を持つすべてのストレージ アカウントの一覧表示](#list-specific-tag)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>言語のサポート
 
@@ -53,7 +54,7 @@ az graph query -q "summarize count()"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "summarize count()"
+Search-AzGraph -Query "summarize count()"
 ```
 
 ## <a name="list-resources"></a>名前で並べ替えられたリソースの一覧表示
@@ -70,7 +71,7 @@ az graph query -q "project name, type, location | order by name asc"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "project name, type, location | order by name asc"
+Search-AzGraph -Query "project name, type, location | order by name asc"
 ```
 
 ## <a name="show-vms"></a>降順の名前で順序付けられたすべての仮想マシンの表示
@@ -88,12 +89,12 @@ az graph query -q "project name, location, type| where type =~ 'Microsoft.Comput
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
+Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
 ## <a name="show-sorted"></a>名前とその OS の種類による最初の 5 つの仮想マシンの表示
 
-このクエリは、名前別に整理された 5 つの一致するレコードを取得するためのみに `limit` を使用します。 Azure リソースの種類は `Microsoft.Compute/virtualMachines` です。 `project` により、Azure Resource Graph に含めるプロパティを説明します。
+このクエリは、名前別に整理された 5 つの一致するレコードを取得するためのみに `limit` を使用します。 Azure リソースの種類は `Microsoft.Compute/virtualMachines` です。 `project` により、含めるプロパティを Azure Resource Graph に指示しています。
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -106,7 +107,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
 ```
 
 ## <a name="count-os"></a>仮想マシンの数 (OS の種類別)
@@ -124,7 +125,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | summarize
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
 ```
 
 同じクエリを記述するさまざまな方法は、プロパティを `extend` し、クエリ内で使用するために一時的に名前を付けます。この場合は **os** です。 前の例に示すように、**os** が `summarize` および `count()` により使用されます。
@@ -140,7 +141,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | extend os
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
 ```
 
 > [!NOTE]
@@ -159,26 +160,28 @@ az graph query -q "where type contains 'storage' | distinct type"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type contains 'storage' | distinct type"
+Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ```
 
 ## <a name="list-publicip"></a>パブリック IP アドレスの一覧表示
 
 前のクエリと同様に、type に **publicIPAddresses** という語を含むものをすべて検索します。
-このクエリは、**properties.ipAddress** が null の場合、**properties.ipAddress** のみを返す場合、および上位 100 件の結果を`limit`する場合に結果を除外するパターンで拡張します。 選択したシェルによって引用符のエスケープが必要となる場合があります。
+このクエリは、そのパターンを拡張して、**properties.ipAddress**
+`isnotempty` の場合にのみ結果を取得し、**properties.ipAddress** のみを、その結果を上位 100 件に制限 (`limit`) して返します
+100. 選択したシェルによって引用符のエスケープが必要となる場合があります。
 
 ```Query
-where type contains 'publicIPAddresses' and properties.ipAddress != ''
+where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
 | project properties.ipAddress
 | limit 100
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'publicIPAddresses' and properties.ipAddress != '' | project properties.ipAddress | limit 100"
+az graph query -q "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | project properties.ipAddress | limit 100"
+Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
 ## <a name="count-resources-by-ip"></a>サブスクリプションで構成されている IP アドレスを持つリソースの数
@@ -186,16 +189,16 @@ Search-AzureRmGraph -Query "where type contains 'publicIPAddresses' and properti
 前例のクエリを使用し、`summarize` および `count()` を追加して、構成された IP アドレスをもつリソースのサブスクリプションにより一覧を取得できます。
 
 ```Query
-where type contains 'publicIPAddresses' and properties.ipAddress != ''
+where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
 | summarize count () by subscriptionId
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'publicIPAddresses' and properties.ipAddress != '' | summarize count () by subscriptionId"
+az graph query -q "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | summarize count () by subscriptionId"
+Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
 ## <a name="list-tag"></a>特定のタグ値が付いたリソースの一覧表示
@@ -212,7 +215,7 @@ az graph query -q "where tags.environment=~'internal' | project name"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name"
+Search-AzGraph -Query "where tags.environment=~'internal' | project name"
 ```
 
 そのリソースが持っているタグとその値も得る必要がある場合は、`project` キーワードに **tags** プロパティを追加します。
@@ -227,7 +230,7 @@ az graph query -q "where tags.environment=~'internal' | project name, tags"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name, tags"
+Search-AzGraph -Query "where tags.environment=~'internal' | project name, tags"
 ```
 
 ## <a name="list-specific-tag"></a>特定のタグ値を持つすべてのストレージ アカウントの一覧表示
@@ -244,11 +247,11 @@ az graph query -q "where type =~ 'Microsoft.Storage/storageAccounts' | where tag
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
+Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
 ```
 
 > [!NOTE]
-> この例では`=~`の条件付きの代わりに、`==`をマッチングに使用しています。 `==` は大文字小文字が区別します。
+> この例では`=~`の条件付きの代わりに、`==`をマッチングに使用しています。 `==` では、大文字と小文字が区別されます。
 
 ## <a name="next-steps"></a>次の手順
 

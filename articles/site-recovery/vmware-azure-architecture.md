@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 1c47f9d511cd6461ef5a31f308669eba751d1de4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d9fdd6f42e1443c0515c2c38496e9d474c87715c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976003"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310763"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -25,7 +25,7 @@ ms.locfileid: "53976003"
 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | ---
-**Azure** | Azure サブスクリプション、Azure Storage アカウント、および Azure ネットワーク。 | オンプレミスの VM からレプリケートされたデータはストレージ アカウントに格納されます。 オンプレミスから Azure へのフェールオーバーを実行すると、そのレプリケートされたデータで Azure VM が作成されます。 Azure VM は、作成時に Azure 仮想ネットワークに接続します。
+**Azure** | Azure サブスクリプション、キャッシュの Azure Storage アカウント、マネージド ディスク、および Azure ネットワーク。 | オンプレミスの VM からレプリケートされたデータは、Azure ストレージに格納されます。 オンプレミスから Azure へのフェールオーバーを実行すると、そのレプリケートされたデータで Azure VM が作成されます。 Azure VM は、作成時に Azure 仮想ネットワークに接続します。
 **構成サーバー マシン** | 単一のオンプレミス マシン。 ダウンロードした OVF テンプレートからデプロイできる VMware VM として実行することをお勧めします。<br/><br/> マシンは、構成サーバー、プロセス サーバー、マスター ターゲット サーバーなど、オンプレミスのすべての Site Recovery コンポーネントを実行します。 | **構成サーバー**:オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。<br/><br/> **プロセス サーバー**:構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 また、プロセス サーバーは、レプリケートする VM への Azure Site Recovery モビリティ サービスのインストールや、オンプレミスのマシンの自動検出も行います。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。<br/><br/> **マスター ターゲット サーバー**:構成サーバーに既定でインストールされます。 Azure からのフェールバック中にレプリケーション データを処理します。 大規模なデプロイでは、フェールバック用に別のマスター ターゲット サーバーを追加できます。
 **VMware サーバー** | VMware VM は、オンプレミス vSphere ESXi サーバーでホストされています。 ホストの管理には vCenter サーバーをお勧めします。 | Site Recovery のデプロイ中には、VMware サーバーを Recovery Services コンテナーに追加します。
 **レプリケートされたマシン** | レプリケートする各 VMware VM にモビリティ サービスがインストールされます。 | プロセス サーバーから自動的にインストールできるようにすることをお勧めします。 また、サービスを手動でインストールしたり、System Center Configuration Manager などの自動デプロイ方法を使用したりすることができます。

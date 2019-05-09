@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 7612e9d6444b61210da5d642530d99423220c0a4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076842"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539159"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
 この記事では、データを Kafka 対応 Event Hubs にストリームし、Azure Stream Analytics で処理する方法について説明します。 次の手順について説明します。 
@@ -36,7 +36,7 @@ ms.locfileid: "53076842"
 
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 * [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)
-* Maven バイナリ アーカイブの[ダウンロード](http://maven.apache.org/download.cgi)と[インストール](http://maven.apache.org/install.html)
+* Maven バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
 * [Git](https://www.git-scm.com/)
 * **Azure ストレージ アカウント**。 持っていない場合は、次に進む前に[作成します](../storage/common/storage-quickstart-create-account.md)。 このチュートリアルの Stream Analytics ジョブでは、出力データを Azure Blob ストレージに格納します。 
 
@@ -170,7 +170,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 3. `[YourInputAlias]` を前に作成した入力エイリアスに置き換えます。 
 4. ツールバーの **[保存]** を選択します。 
 
-    ![クエリ](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![Query](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行

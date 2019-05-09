@@ -1,27 +1,31 @@
 ---
-title: 急上昇中の動画を Web で検索する - Bing Video Search
+title: Bing Video Search API を使用して、急上昇中の動画を Web で検索する
 titlesuffix: Azure Cognitive Services
-description: Bing Video Search API を使用して Web で急上昇中の動画を検索する方法を示します。
+description: Bing Video Search API を使用して、急上昇中の動画を Web で検索する方法を示します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8a6ccc9ea8cf9468d7638360c9db8131bc6dc5be
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 486cf2e3bcf851f23011bb2fb8d91691d6190698
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222048"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120841"
 ---
-# <a name="get-trending-videos"></a>急上昇中の動画の取得  
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Bing Video Search API を使用して急上昇中の動画を取得する 
 
-今日の急上昇中の動画を取得するには、次の GET 要求を送信します。  
+Bing Video Search API を使用すると、さまざまなカテゴリで現在急上昇中の動画を Web 全体から検索することができます。 
+
+## <a name="get-request"></a>GET 要求
+
+今日の急上昇中の動画を Bing Video Search API から取得するには、次の GET 要求を送信します。  
   
-```
+```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -30,6 +34,8 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
 ```
+
+## <a name="market-support"></a>市場のサポート
 
 次の市場は、急上昇中の動画をサポートしています。  
  
@@ -47,10 +53,11 @@ Host: api.cognitive.microsoft.com
 -   en-ZA (英語、南アフリカ)  
 -   zh-CN (中国語、中国)
 
-  
-次の例は、急上昇中の動画を含む応答を示しています。  
+## <a name="example-json-response"></a>JSON の応答例  
 
-```  
+次の例は、カテゴリとサブカテゴリごとに一覧表示された急上昇中の動画を含む API 応答を示しています。 この応答にはバナー ビデオも含まれています。バナー ビデオは、最も人気のある急上昇中の動画であり、1 つ以上のカテゴリから選択される場合があります。  
+
+```json
 {  
     "_type" : "TrendingVideos",  
     "bannerTiles" : [
@@ -112,8 +119,9 @@ Host: api.cognitive.microsoft.com
     ]  
 }  
   
-```  
-応答には、カテゴリおよびサブカテゴリごとの動画の一覧が含まれています。 たとえば、カテゴリの一覧にミュージック ビデオ カテゴリが含まれており、そのサブカテゴリの 1 つが上位の場合は、ユーザー エクスペリエンスに上位ミュージック ビデオ カテゴリを作成できます。 `thumbnailUrl`、`displayText`、`webSearchUrl` のフィールドを使用して、各カテゴリ (たとえば、上位ミュージック ビデオ) の下にクリック可能なタイルを作成できます。 ユーザーがタイルをクリックすると、Bing のビデオ ブラウザーに移動し、動画が再生されます。
+```
 
-応答には、最も人気の高い急上昇中の動画であるバナー ビデオも含まれます。 バナー ビデオは、1 つまたは複数のカテゴリから取得される可能性があります。  
-  
+## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"]
+> [ビデオの分析情報の取得](video-insights.md)

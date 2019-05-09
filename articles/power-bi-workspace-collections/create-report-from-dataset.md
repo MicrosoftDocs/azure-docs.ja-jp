@@ -1,21 +1,19 @@
 ---
 title: Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成 | Microsoft Docs
 description: Power BI ワークスペース コレクション レポートをお使いのアプリケーションのデータセットから作成できるようになりました。
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: dbfe8c98dce1879a2e0956fafba32ab6e608bfdb
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 92f75a15374738d02972adc012b3a28918d7825d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046656"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518815"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成
 
@@ -32,7 +30,7 @@ Embedded レポートを作成する際に発行されるトークンは、特�
 
 Power BI ワークスペース コレクションでは、埋め込みトークンを使用します。これは、HMAC の署名付き JSON Web トークンです。 これらのトークンは、Power BI ワークスペース コレクションのアクセス キーで署名されます。 埋め込みトークンは、既定では、アプリケーションに埋め込むレポートへの読み取り専用アクセスを提供するために使用されます。 埋め込みトークンは特定のレポートに対して発行されます。また、埋め込み URL に関連付けられている必要があります。
 
-アクセス トークンはサーバー上で作成する必要があります。これは、トークンの署名と暗号化にアクセス キーが使用されるためです。 アクセス トークンを作成する方法については、「[Power BI ワークスペース コレクションでの認証と承認](app-token-flow.md)」を参照してください。 また、[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) メソッドに関する説明も参照してください。 Power BI 用 .NET SDK を使用した場合の例を次に示します。
+アクセス トークンはサーバー上で作成する必要があります。これは、トークンの署名と暗号化にアクセス キーが使用されるためです。 アクセス トークンを作成する方法については、「[Power BI ワークスペース コレクションでの認証と承認](app-token-flow.md)」を参照してください。 また、[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) メソッドに関する説明も参照してください。 Power BI 用 .NET SDK を使用した場合の例を次に示します。
 
 この例では、データセット ID に対して新しいレポートを作成します。 また、"*Dataset.Read および Workspace.Report.Create*" のスコープを追加する必要があります。
 
@@ -40,13 +38,13 @@ Power BI ワークスペース コレクションでは、埋め込みトーク�
 
 **NuGet パッケージのインストール**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.Core
 ```
 
 **C# コード**
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -65,15 +63,16 @@ var token = embedToken.Generate("{access key}");
 
 **NuGet パッケージのインストール**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.JavaScript
 ```
 
 **JavaScript コード**
 
-```
+```html
 <div id="reportContainer"></div>
-  
+
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -85,6 +84,7 @@ var embedCreateConfiguration = {
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
+</script>
 ```
 
 *powerbi.createReport()* を呼び出すと、編集モードの空白のキャンバスが *div* 要素内に表示されます。
@@ -95,7 +95,7 @@ var embedCreateConfiguration = {
 
 レポートは、"**名前を付けて保存**" 操作を呼び出すまで作成されません。 この操作は、[ファイル] メニューから、または JavaScript から実行できます。
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -116,9 +116,9 @@ var embedCreateConfiguration = {
 
 新しいレポートを操作するには、アプリケーションで通常のレポートを埋め込むのと同じ方法でレポートを埋め込む必要があります。つまり、新しいレポート用に新しいトークンを発行し、埋め込みメソッドを呼び出す必要があります。
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -130,13 +130,14 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>"saved" イベントを使用して新しいレポートの保存と読み込みを自動化する
 
 "名前を付けて保存" 操作の後に新しいレポートを読み込むプロセスを自動化するには、"saved" イベントを使用できます。 このイベントは、保存操作が完了すると起動され、新しい reportId、レポート名、古い reportId (存在する場合)、および操作が saveAs と save のどちらであるかを示す値を含む JSON オブジェクトを返します。
 
-```
+```json
 {
   "reportObjectId": "5dac7a4a-4452-46b3-99f6-a25915e0fe54",
   "reportName": "newReport",
@@ -147,9 +148,9 @@ var embedConfiguration = {
 
 このプロセスを自動化するには、"saved" イベントをリッスンし、新しい reportId を取得します。次に、新しいトークンを作成し、それを使用して新しいレポートを埋め込みます。
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -192,6 +193,7 @@ var embedCreateConfiguration = {
    // report.off removes a given event handler if it exists.
    report.off("saved");
     });
+</script>
 ```
 
 ## <a name="see-also"></a>関連項目
@@ -205,4 +207,4 @@ var embedCreateConfiguration = {
 [Power BI Core NuGut パッケージ](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Power BI JavaScript パッケージ](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

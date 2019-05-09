@@ -3,19 +3,19 @@ title: カスタム ポリシーを使用して Azure Active Directory B2C で G
 description: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントによるサインインを設定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5f4aaef65620a2c6f268f123544c7ecf71dccb82
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.subservice: B2C
+ms.openlocfilehash: a958650a80df9eba27b99e11cce72a1ad62db14c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887276"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153064"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントによるサインインを設定する
 
@@ -147,7 +147,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Google アカウントと通信してトークンを受信します。
 
 1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-2. 次の **ClaimsExchange** 要素を追加します。**Id** には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
+2. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した **Id** と同じ値を必ずご使用ください。
 
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
@@ -159,23 +159,23 @@ Google アカウントをクレーム プロバイダーとして定義するに
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 
-Azure AD B2C との通信は、テナント内に作成したアプリケーション経由で行われます。 このセクションでは、テスト アプリケーションをまだ作成していない場合、それを作成するために実行できる省略可能な手順を示します。
+Azure AD B2C との通信は、テナントで作成したアプリケーション経由で行われます。 このセクションでは、テスト アプリケーションをまだ作成していない場合にそれを作成するための省略可能な手順を紹介します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]**、**[追加]** の順に選択します。
-5. アプリケーションの名前 (*testapp1* など) を入力します。
-6. **[Web アプリ/Web API]** で [`Yes`] を選択し、**[応答 URL]** に「`https://jwt.ms`」と入力します。
+4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+5. アプリケーションの名前を入力します (*testapp1* など)。
+6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。
 7. **Create** をクリックしてください。
 
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新してテストする
+## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
 
 作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
 
-1. 作業ディレクトリ内に *SignUpOrSignIn.xml* のコピーを作成し、その名前を変更します。 たとえば、その名前を *SignUpSignInGoogle.xml* に変更します。
-2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値に更新します。 たとえば、「 `SignUpSignInGoogle` 」のように入力します。
+1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、その名前を *SignUpSignInGoogle.xml* に変更します。
+2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInGoogle` 」のように入力します。
 3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_google` とします。
 4. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignGoogle) に一致するように更新します。
 5. 変更を保存し、ファイルをアップロードしてから、一覧内の新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてそれをテストします。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。

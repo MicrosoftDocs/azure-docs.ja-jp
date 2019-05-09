@@ -4,18 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Translator Speech API 言語メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: conceptual
-ms.date: 05/18/18
+ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 73c65aa5c95887c8b1f6eb5e4cf91e19815eba15
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741880"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435764"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 
@@ -27,7 +28,7 @@ Translator Speech は、そのサービスでサポートされる言語の一�
 
 ## <a name="implementation-notes"></a>実装に関するメモ
 
-### <a name="get-languages"></a>GET /languages 
+### <a name="get-languages"></a>GET /languages
 
 音声の文字起こし、文字起こししたテキストの翻訳、翻訳の合成音声の生成には、広範な言語セットを使用できます。
 
@@ -64,7 +65,7 @@ Translator Speech は、そのサービスでサポートされる言語の一�
 音声テキスト変換プロパティ `speech` に関連付けられている値は、(キー、値) ペアのディクショナリです。 各キーは、音声テキスト変換でサポートされている言語を示します。 キーは、クライアントが API に渡す識別子です。 キーに関連付けられている値は、次のプロパティを持つオブジェクトです。
 
 * `name`:言語の表示名。
-* `language`:関連付けられている記述言語の言語タグ。 後の「テキスト翻訳」をご覧ください。
+* `language`:関連付けられている記述言語の言語タグ。 後の "テキスト翻訳" をご覧ください。
 例を示します。
 
 ```
@@ -125,7 +126,7 @@ Translator Speech は、そのサービスでサポートされる言語の一�
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 サポート対象言語のセットが記述されているオブジェクト。
 
-ModelExample の値: 
+ModelExample の値:
 
 Langagues { speech (object, optional), text (object, optional), tts (object, optional) }
 
@@ -141,9 +142,9 @@ X-RequestId|要求を識別するためにサーバーによって生成され�
 |:--|:--|:--|:--|
 |api-version    |クライアントによって要求される API のバージョン。 使用できる値: `1.0`。|クエリ|文字列|
 |scope  |クライアントに返す、サポートされている言語または音声のセット。 このパラメーターは、キーワードのコンマ区切り一覧として指定されます。 次のキーワードを使用できます。<ul><li>`speech`:音声の文字起こしにサポートされている言語のセットを提供します。</li><li>`tts`:テキスト音声変換にサポートされている音声のセットを提供します。</li><li>`text`:テキストの翻訳にサポートされている言語のセットを提供します。</li></ul>値が指定されていない場合、`scope` の既定値は `text` です。|query|文字列|
-|X-ClientTraceId    |クライアントによって生成される GUID であり、要求を追跡するのに使用されます。 問題のトラブルシューティングを容易にするため、クライアントは要求のたびに新しい値を指定し、それを記録する必要があります。|ヘッダー|文字列|
-|Accept-Language    |応答内のフィールドには、言語や地域の名前などがあります。 名前が返される言語を定義するには、このパラメーターを使用します。 言語は、整形式の BCP 47 言語タグを使用して指定します。 `text` スコープで返される言語識別子の一覧からタグを選択します。 サポートされていない言語の場合、名前は英語で提供されます。<br/>たとえば、フランス語の名前を要求するには値 `fr` を使用し、繁体字中国語の名前を要求するには値 `zh-Hant` を使用します。|ヘッダー|文字列|
-    
+|X-ClientTraceId    |クライアントによって生成される GUID であり、要求を追跡するのに使用されます。 問題のトラブルシューティングを容易にするため、クライアントは要求のたびに新しい値を指定し、それを記録する必要があります。|header|文字列|
+|Accept-Language    |応答内のフィールドには、言語や地域の名前などがあります。 名前が返される言語を定義するには、このパラメーターを使用します。 言語は、整形式の BCP 47 言語タグを使用して指定します。 `text` スコープで返される言語識別子の一覧からタグを選択します。 サポートされていない言語の場合、名前は英語で提供されます。<br/>たとえば、フランス語の名前を要求するには値 `fr` を使用し、繁体字中国語の名前を要求するには値 `zh-Hant` を使用します。|header|文字列|
+
 ### <a name="response-messages"></a>応答メッセージ
 
 |HTTP 状態コード|理由|

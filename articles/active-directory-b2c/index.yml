@@ -1,20 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9fd163db5b727c5284756e2d24a35c6c6e57a794
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181383"
 documentType: LandingData
 title: Azure Active Directory B2C のドキュメント
 metadata:
   title: Azure Active Directory B2C のドキュメント
-  meta.description: Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.
+  meta.description: 'Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.'
   services: active-directory-b2c
   author: davidmu1
-  manager: mtillman
+  manager: daveba
   ms.service: active-directory
-  ms.component: B2C
+  ms.subservice: B2C
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
@@ -22,74 +16,74 @@ abstract:
   description: Azure Active Directory (Azure AD) B2C は、アプリケーション使用時の顧客のサインアップ、サインイン、プロファイル管理をカスタマイズして制御できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、同時に顧客の ID を保護します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure AD B2C の使用方法を確認してください。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ./media/index/active-directory-b2c-video.PNG
       width: 250
-    title: Azure AD B2C での顧客 ID 管理 (20:56)
-    href: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
+    title: 'Azure AD B2C での顧客 ID 管理 (20:56)'
+    href: 'https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/active-directory-b2c/active-directory-b2c-overview
+            html: <p>Azure AD B2C とその各種機能について説明します。</p>
+            image:
+              src: ./media/index/i_get-started.svg
+            title: Azure AD B2C について
+          - href: /azure/active-directory-b2c/solution-articles
+            html: <p>Azure AD B2C を使用するソリューションとトレーニングの機会を調べます。</p>
+            image:
+              src: ./media/index/i_advanced.svg
+            title: ソリューションとトレーニング
+          - href: /azure/active-directory-b2c/trustframeworkpolicy
+            html: <p>Azure AD B2C でカスタム ポリシーを使用して、高度なサインアップ シナリオとサインイン シナリオを作成します。</p>
+            image:
+              src: ./media/index/i_investigate.svg
+            title: Identity Experience Framework
+  - title: 5 分間のクイック スタート
     items:
-    - href: /azure/active-directory-b2c/active-directory-b2c-overview
-      html: <p>Azure AD B2C とその各種機能について説明します。</p>
-      image:
-        src: ./media/index/i_get-started.svg
-      title: Azure AD B2C について
-    - href: /azure/active-directory-b2c/solution-articles
-      html: <p>Azure AD B2C を使用するソリューションとトレーニングの機会を調べます。</p>
-      image:
-        src: ./media/index/i_advanced.svg
-      title: ソリューションとトレーニング
-    - href: /azure/active-directory-b2c/trustframeworkpolicy
-      html: <p>Azure AD B2C でカスタム ポリシーを使用して、高度なサインアップ シナリオとサインイン シナリオを作成します。</p>
-      image:
-        src: ./media/index/i_investigate.svg
-      title: Identity Experience Framework
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: アプリケーションを使用する顧客の ID 管理を設定する方法について説明します。
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: アプリケーションを使用する顧客の ID 管理を設定する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg'
+            text: .NET
+            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app'
+          - image:
+              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg'
+            text: デスクトップ
+            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app'
+          - image:
+              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg'
+            text: シングルページ
+            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa'
+  - title: ステップバイステップのチュートリアル
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg
-      text: .NET
-      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app
-    - image:
-        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg
-      text: デスクトップ
-      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app
-    - image:
-        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg
-      text: シングルページ
-      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: ASP.NET アプリケーション、デスクトップ アプリケーション、またはシングルページ Node.js アプリケーションのサインアップ、サインイン、顧客プロファイルを管理する方法について説明します。
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: ASP.NET アプリケーション、デスクトップ アプリケーション、またはシングルページ Node.js アプリケーションのサインアップ、サインイン、顧客プロファイルを管理する方法について説明します。
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: ASP.NET
+            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API アクセスを許可する</a></p>
+          - title: デスクトップ
+            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API アクセスを許可する</a></p>
+          - title: シングルページ
+            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API アクセスを許可する</a></p>
+  - title: サンプル
     items:
-    - title: ASP.NET
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API アクセスを許可する</a></p>
-    - title: デスクトップ
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API アクセスを許可する</a></p>
-    - title: シングルページ
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API アクセスを許可する</a></p>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: アプリケーションで顧客 ID を管理する方法について説明したサンプルがあります。
-  - type: list
-    style: unordered
-    className: spaced noBullet
-    items:
-    - html: <a href="/azure/active-directory-b2c/code-samples">モバイル、デスクトップ、Web、シングルページのアプリ</a>
+      - type: paragraph
+        text: アプリケーションで顧客 ID を管理する方法について説明したサンプルがあります。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/active-directory-b2c/code-samples">モバイル、デスクトップ、Web、シングルページのアプリ</a>

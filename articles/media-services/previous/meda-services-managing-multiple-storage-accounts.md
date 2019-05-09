@@ -4,45 +4,49 @@ description: この記事では、複数のストレージ アカウントで Me
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: aa9386182f521119012ea59fe6b64fb31099169e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620270"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855301"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理
-Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。 Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理  
+
+1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。 Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。
 
 * アセットを複数のストレージ アカウントに負荷分散します。
 * 大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB (テラバイト) の制限があります)。 
 
-この記事では、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) および [PowerShell](/powershell/module/azurerm.media) を使って、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
+この記事では、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) および [PowerShell](/powershell/module/az.media) を使って、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="considerations"></a>考慮事項
+
 Media Services アカウントに複数のストレージ アカウントをアタッチする場合は、次の考慮事項が適用されます。
 
-* Media Services アカウントにアタッチされているすべてのストレージ アカウントは、Media Services アカウントと同じデータ センターにある必要があります。
-* 現時点では、ストレージ アカウントが指定された Media Services アカウントにアタッチされると、デタッチできなくなります。
+* Media Services アカウントおよび関連するすべてのストレージ アカウントは、同じ Azure サブスクリプションに存在する必要があります。 Media Services アカウントと同じ場所にあるストレージ アカウントを使用することをお勧めします。
+* ストレージ アカウントは指定された Media Services アカウントにアタッチされると、デタッチできなくなります。
 * プライマリ ストレージ アカウントは、Media Services アカウントの作成時に示されているものです。 現時点では、既定のストレージ アカウントを変更することはできません。 
-* 現時点では、クール ストレージ アカウントを AMS アカウントに追加する場合、ストレージ アカウントが BLOB 型であり、非プライマリに設定されている必要があります。
+* クール ストレージ アカウントを AMS アカウントに追加する場合、ストレージ アカウントが BLOB 型であり、非プライマリに設定されている必要があります。
 
 その他の考慮事項
 
-Media Services は、ストリーミング コンテンツ (たとえば、 http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。  "." は 1 つのみです。 また、ファイル名拡張子で使用できる
+Media Services は、ストリーミング コンテンツ (たとえば、 http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。  "." は 1 つのみです。 また、ファイル名拡張子で使用できる
 
 ## <a name="to-attach-storage-accounts"></a>ストレージ アカウントをアタッチするには  
 
-ストレージ アカウントを AMS アカウントにアタッチするには、次の例に示すように、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) および [PowerShell](/powershell/module/azurerm.media) を使用します。
+ストレージ アカウントを AMS アカウントにアタッチするには、次の例に示すように、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) および [PowerShell](/powershell/module/az.media) を使用します。
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -52,11 +56,11 @@ Media Services は、ストリーミング コンテンツ (たとえば、 http
     $storageAccount2Name = "skystorage2"
     $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
     $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
-    $storageAccount1 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
-    $storageAccount2 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+    $storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+    $storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
     $storageAccounts = @($storageAccount1, $storageAccount2)
     
-    Set-AzureRmMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+    Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
 
 ### <a name="support-for-cool-storage"></a>クール ストレージのサポート
 
@@ -70,7 +74,7 @@ Media Services は、ストリーミング コンテンツ (たとえば、 http
 3. 既定のストレージ アカウントに新しい資産を作成します。
 4. 指定されたストレージ アカウントにエンコード ジョブの出力資産を作成します。
    
-```
+```cs
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System;
 using System.Collections.Generic;
@@ -123,9 +127,9 @@ namespace MultipleStorageAccounts
             Console.WriteLine("IsDefault: {0}", defaultStorageName.IsDefault);
 
             // Retrieve the name of a storage account that is not the default one.
-            var notDefaultStroageName = _context.StorageAccounts.Where(s => s.IsDefault == false).FirstOrDefault();
-            Console.WriteLine("Name: {0}", notDefaultStroageName.Name);
-            Console.WriteLine("IsDefault: {0}", notDefaultStroageName.IsDefault);
+            var notDefaultStorageName = _context.StorageAccounts.Where(s => s.IsDefault == false).FirstOrDefault();
+            Console.WriteLine("Name: {0}", notDefaultStorageName.Name);
+            Console.WriteLine("IsDefault: {0}", notDefaultStorageName.IsDefault);
 
             // Create the original asset in the default storage account.
             IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.None,
@@ -133,7 +137,7 @@ namespace MultipleStorageAccounts
             Console.WriteLine("Created the asset in the {0} storage account", asset.StorageAccountName);
 
             // Create an output asset of the encoding job in the other storage account.
-            IAsset outputAsset = CreateEncodingJob(asset, notDefaultStroageName.Name, _singleInputFilePath);
+            IAsset outputAsset = CreateEncodingJob(asset, notDefaultStorageName.Name, _singleInputFilePath);
             if (outputAsset != null)
                 Console.WriteLine("Created the output asset in the {0} storage account", outputAsset.StorageAccountName);
 

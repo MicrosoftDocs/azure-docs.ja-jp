@@ -1,5 +1,5 @@
 ---
-title: Azure Search でのマルチテナント機能のモデル化 | Microsoft Docs
+title: 1 つのサービスでコンテンツを分離するためのマルチテナントのモデル化 - Azure Search
 description: Azure Search の使用時のマルチテナント SaaS アプリケーションの一般的な設計パターンについて説明します。
 manager: jlembicz
 author: LiamCavanagh
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 1da9756df4fa05b367665a5fe024528939f22578
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 58d7ca65a14f9f774b19796c9beae2a7c84102ad
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313039"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632927"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>マルチテナント SaaS アプリケーションと Azure Search の設計パターン
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。

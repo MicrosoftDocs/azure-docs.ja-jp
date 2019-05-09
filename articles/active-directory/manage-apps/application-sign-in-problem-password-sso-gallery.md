@@ -2,24 +2,25 @@
 title: パスワード シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションにサインインできない問題 | Microsoft Docs
 description: パスワード シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションの使用に関する問題をトラブルシューティングする方法
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 6af369c9ba1621dcedc2adf74f0c25321422f3c4
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 195d4f6e30b2e12b12419c4aea3948c6268c9dbe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087569"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>パスワード シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションにサインインできない問題
 
@@ -76,7 +77,7 @@ Internet Explorer 用のアクセス パネル拡張機能をユーザーのコ�
 
 -   [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) を設定し、ユーザーのコンピューターをドメインに参加させている必要があります。
 
--   グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定では、Domain Administrators、Enterprise Administrators、Group Policy Creator Owners の各セキュリティ グループ メンバーにはこのアクセス許可があります。 [詳細情報](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)。
+-   グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定でこのアクセス許可を持っているセキュリティ グループのメンバーはDomain Administrators、Enterprise Administrators、Group Policy Creator Owners です。 [詳細情報](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)。
 
 グループ ポリシーを構成し、ユーザーにデプロイする方法の詳しい手順については、「[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy)」チュートリアルを参照してください。
 
@@ -88,7 +89,7 @@ Internet Explorer 用のアクセス パネル拡張機能をユーザーのコ�
 
 Azure AD ギャラリーからアプリケーションを構成するには、以下の手順を実行する必要があります。
 
--   [Azure AD ギャラリーからアプリケーションを追加する](#_Add_an_application)
+-   Azure AD ギャラリーからアプリケーションを追加する
 
 -   [パスワード シングル サインオンに対応するようにアプリケーションを構成する](#configure-the-application-for-password-single-sign-on)
 
@@ -122,25 +123,25 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 アプリケーションのシングル サインオンを構成するには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
+5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
    * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
-6.  シングル サインオンを構成するアプリケーションを選択します。
+6. シングル サインオンを構成するアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
+7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
 
-8.  **[パスワード ベースのサインオン]** モードを選択します。
+8. **[パスワード ベースのサインオン]** モードを選択します。
 
-9.  [アプリケーションにユーザーを割り当てます](#_How_to_assign)。
+9. アプリケーションにユーザーを割り当てます。
 
 10. さらに、ユーザーの行を選び、**[資格情報の更新]** をクリックしてユーザーに代わってユーザー名とパスワードを入力すると、ユーザーに代わって資格情報を提供することもできます。 そうしないと、起動時に自分で資格情報を入力するように求めるプロンプトがユーザーに表示されます。
 
@@ -148,25 +149,25 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 1 人以上のユーザーをアプリケーションに直接割り当てるには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
+5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
    * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
-6.  ユーザーを割り当てるアプリケーションを一覧から選びます。
+6. ユーザーを割り当てるアプリケーションを一覧から選びます。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[ユーザーとグループ]** をクリックします。
+7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[ユーザーとグループ]** をクリックします。
 
-8.  **[ユーザーとグループ]** 一覧の上部にある **[追加]** ボタンをクリックして、**[割り当ての追加]** ウィンドウを開きます。
+8. **[ユーザーとグループ]** 一覧の上部にある **[追加]** ボタンをクリックして、**[割り当ての追加]** ウィンドウを開きます。
 
-9.  **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターをクリックします。
+9. **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターをクリックします。
 
 10. 割り当てる対象のユーザーの**フル ネーム**または**電子メール アドレス**を **[名前または電子メール アドレスで検索]** 検索ボックスに入力します。
 

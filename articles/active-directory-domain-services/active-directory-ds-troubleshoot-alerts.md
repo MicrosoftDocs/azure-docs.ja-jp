@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: アラートのトラブルシューティング | Microsoft Docs'
+title: Azure Active Directory Domain Services:アラートのトラブルシューティング | Microsoft Docs
 description: Azure AD Domain Services のアラートのトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7d99f5a5d027c825fa1145328bb9576229ce39b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036140"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121997"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services - アラートのトラブルシューティング
 この記事では、マネージド ドメインで発生する可能性があるすべてのアラート向けのトラブルシューティング ガイドを提供します。
@@ -42,10 +42,10 @@ ms.locfileid: "51036140"
 | AADDS108 | *The subscription used by Azure AD Domain Services has been moved to another directory. (Azure AD Domain Services によって使用されるサブスクリプションは、別のディレクトリに移動されました。)Azure AD Domain Services needs to have an active subscription in the same directory to function properly. (Azure AD Domain Services を正常に機能させるには、アクティブなサブスクリプションを同じディレクトリに配置する必要があります。)* | [サブスクリプションのディレクトリが移動した](#aadds108-subscription-moved-directories) |
 | AADDS109 | *ご利用のマネージド ドメインに使用されているリソースが削除されています。このリソースは、Azure AD Domain Services が正しく動作するために必要です。* | [リソースが削除されている](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Azure AD Domain Services のデプロイ用に選択されたサブネットがいっぱいになり、作成する必要がある追加のドメイン コントローラー用の領域がありません。* | [サブネットが満杯](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | *A service principal that Azure AD Domain Services uses to service your domain is not authorized to manage resources on the Azure subscription. (ご使用のドメインへのサービス提供のために Azure AD Domain Services によって使用されるサービス プリンシパルに、Azure サブスクリプション上のリソースを管理する権限がありません。) The service principal needs to gain permissions to service your managed domain. (このサービス プリンシパルは、マネージド ドメインにサービスを提供するためのアクセス許可を取得する必要があります。) * | [サービス プリンシパルが承認されていない](#aadds111-service-principal-unauthorized) |
+| AADDS111 | *A service principal that Azure AD Domain Services uses to service your domain is not authorized to manage resources on the Azure subscription. (ご使用のドメインへのサービス提供のために Azure AD Domain Services によって使用されるサービス プリンシパルに、Azure サブスクリプション上のリソースを管理する権限がありません。)The service principal needs to gain permissions to service your managed domain. (このサービス プリンシパルは、マネージド ドメインにサービスを提供するためのアクセス許可を取得する必要があります。)* | [サービス プリンシパルが承認されていない](#aadds111-service-principal-unauthorized) |
 | AADDS112 | *このドメインの仮想ネットワークのサブネットに十分な IP アドレスがない可能性があることを確認しました。Azure AD Domain Services では、それが有効にされているサブネット内に少なくとも 2 つの使用可能な IP アドレスが必要です。サブネット内に少なくとも 3 - 5 個のスペア IP アドレスを用意することをお勧めします。他の仮想マシンがサブネット内にデプロイされ、使用可能な数の IP アドレスがすべて使用されたか、サブネット内の使用可能 IP アドレスの数に制限がある場合にこの状況が発生した可能性があります。* | [十分な IP アドレスがない](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Azure AD Domain Services で使用されているリソースが、予期しない状態で検出され、復旧することができません。* | [リソースが復旧できない](#aadds113-resources-are-unrecoverable) |
-| AADDS114 | *The subnet selected for deployment of Azure AD Domain Services is invalid, and cannot be used. (Azure AD Domain Services のデプロイ用に選択されたサブネットが無効であるため、使用できません。) * | [サブネットが無効](#aadds114-subnet-invalid) |
+| AADDS114 | *The subnet selected for deployment of Azure AD Domain Services is invalid, and cannot be used. (Azure AD Domain Services のデプロイ用に選択されたサブネットが無効であるため、使用できません。)* | [サブネットが無効](#aadds114-subnet-invalid) |
 | AADDS115 | *ターゲット スコープがロックされているため、マネージド ドメインで使用されている 1 つ以上のネットワーク リソースを操作できません。* | [リソースがロックされている](#aadds115-resources-are-locked) |
 | AADDS116 | *ポリシー制限により、マネージド ドメインで使用されている 1 つ以上のネットワーク リソースを操作できません。* | [リソースが使用できない](#aadds116-resources-are-unusable) |
 | AADDS500 | "*マネージド ドメインが Azure AD と最後に同期されたのは [date] です。ユーザーがマネージド ドメインでサインインできない、またはグループ メンバーシップが Azure AD と同期されていない可能性があります。*" | [同期がしばらく行われていない](#aadds500-synchronization-has-not-completed-in-a-while) |
@@ -56,7 +56,7 @@ ms.locfileid: "51036140"
 
 
 
-## <a name="aadds100-missing-directory"></a>AADDS100: 不足しているディレクトリ
+## <a name="aadds100-missing-directory"></a>AADDS100:不足しているディレクトリ
 **アラート メッセージ:**
 
 "*マネージド ドメインに関連付けられている Azure AD ディレクトリが削除されている可能性があります。マネージド ドメインはもうサポートされる構成に含まれていません。Microsoft は、マネージド ドメインに対する監視、管理、修正プログラムの適用、および同期を実行できません。*"
@@ -67,7 +67,7 @@ ms.locfileid: "51036140"
 
 このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、新しいディレクトリ内に再作成する必要があります。 削除で問題が発生した場合は、Azure Active Directory Domain Services 製品チームに[お問い合わせ](active-directory-ds-contact-us.md)ください。
 
-## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: このディレクトリで Azure AD B2C が実行されている
+## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101:このディレクトリで Azure AD B2C が実行されている
 **アラート メッセージ:**
 
 "*Azure AD B2C ディレクトリで Azure AD Domain Services を有効にできません。*"
@@ -83,7 +83,7 @@ ms.locfileid: "51036140"
 2. Azure AD B2C 以外の新しいディレクトリを作成します。
 3. [使用の開始](active-directory-ds-getting-started.md)ガイドに従って、マネージド ドメインを再作成します。
 
-## <a name="aadds103-address-is-in-a-public-ip-range"></a>AADDS103: アドレスがパブリック IP 範囲内である
+## <a name="aadds103-address-is-in-a-public-ip-range"></a>AADDS103:アドレスがパブリック IP 範囲内である
 
 **アラート メッセージ:**
 
@@ -103,18 +103,18 @@ ms.locfileid: "51036140"
 
 1. ディレクトリから[マネージド ドメインを削除](active-directory-ds-disable-aadds.md)します。
 2. サブネットの IP アドレス範囲を修正します。
-  1. [Azure Portal の [仮想マシン] ページ](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks)に移動します。
-  2. Azure AD Domain Services で使用する予定の仮想ネットワークを選択します。
-  3. [設定] の下の **[アドレス空間]** をクリックします。
-  4. 既存のアドレス範囲をクリックし、それを編集するかアドレス範囲を追加することでアドレス範囲を更新します。 新しいアドレス範囲がプライベート IP 範囲にあることを確認します。 変更を保存します。
-  5. 左側のナビゲーション メニューで、**[サブネット]** をクリックします。
-  6. テーブルの編集するサブネットをクリックします。
-  7. アドレス範囲を更新し、変更を保存します。
+   1. [Azure Portal の [仮想マシン] ページ](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks)に移動します。
+   2. Azure AD Domain Services で使用する予定の仮想ネットワークを選択します。
+   3. [設定] の下の **[アドレス空間]** をクリックします。
+   4. 既存のアドレス範囲をクリックし、それを編集するかアドレス範囲を追加することでアドレス範囲を更新します。 新しいアドレス範囲がプライベート IP 範囲にあることを確認します。 変更を保存します。
+   5. 左側のナビゲーション メニューで、**[サブネット]** をクリックします。
+   6. テーブルの編集するサブネットをクリックします。
+   7. アドレス範囲を更新し、変更を保存します。
 3. [Azure AD Domain Services の使用開始に関するガイド](active-directory-ds-getting-started.md)に従って、マネージド ドメインを再作成します。 プライベート IP アドレス範囲にある仮想ネットワークを選択していることを確認します。
 4. 仮想マシンを新しいドメインに参加させるには、[こちらのガイド](active-directory-ds-admin-guide-join-windows-vm-portal.md)に従います。
 8. アラートが解決されたことを確認するために、ドメインの正常性を 2 時間以内に確認します。
 
-## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Azure サブスクリプションが見つからない
+## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106:Azure サブスクリプションが見つからない
 
 **アラート メッセージ:**
 
@@ -128,7 +128,7 @@ Azure AD Domain Services が機能するには、サブスクリプションが�
 2. 既存の Azure AD ディレクトリから[マネージド ドメインを削除](active-directory-ds-disable-aadds.md)します。
 3. [使用の開始](active-directory-ds-getting-started.md)ガイドに従って、マネージド ドメインを再作成します。
 
-## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Azure サブスクリプションが無効
+## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107:Azure サブスクリプションが無効
 
 **アラート メッセージ:**
 
@@ -140,7 +140,7 @@ Azure AD Domain Services が機能するには、サブスクリプションが�
 1. [Azure サブスクリプションを更新してください](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)。
 2. サブスクリプションを更新すると、Azure から Azure AD Domain Services にマネージド ドメインを再度有効にするための通知が送信されます。
 
-## <a name="aadds108-subscription-moved-directories"></a>AADDS108: サブスクリプションのディレクトリが移動した
+## <a name="aadds108-subscription-moved-directories"></a>AADDS108:サブスクリプションのディレクトリが移動した
 
 **アラート メッセージ:**
 
@@ -150,7 +150,7 @@ Azure AD Domain Services が機能するには、サブスクリプションが�
 
 Azure AD Domain Services に関連付けられているサブスクリプションを以前のディレクトリに移動するか、または既存のディレクトリから[マネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、選択したディレクトリに再作成する必要があります (新しいサブスクリプションを使用するか、Azure AD Domain Services のインスタンスが置かれているディレクトリを変更します)。
 
-## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: マネージド ドメインのリソースが見つからない
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109:マネージド ドメインのリソースが見つからない
 
 **アラート メッセージ:**
 
@@ -160,16 +160,16 @@ Azure AD Domain Services に関連付けられているサブスクリプショ�
 
 Azure AD Domain Services では、適切に機能するために、デプロイ中にパブリック IP アドレス、NIC、ロード バランサーなどの特定のリソースが作成されます。 これらのいずれかが削除された場合は、これが原因でご利用のマネージド ドメインがサポートされない状態になり、ご利用のドメインが管理されなくなります。 このアラートは、Azure AD Domain Services のリソースを編集できる人が必要なリソースを削除した場合に表示されます。 次の手順では、マネージド ドメインを復元する方法を説明します。
 
-1.  Azure AD Domain Services の正常性ページに移動します
-  1.    Azure portal で、[Azure AD Domain Services ページ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices)に移動します。
-  2.    左側のナビゲーションで、**[正常性]** をクリックします。
-2.  アラートが 4 時間未満のものかどうかを確認します
-  1.    正常性ページで、ID **AADDS109** のアラートをクリックします
-  2.    アラートには、最初に検出されたときのタイムスタンプがあります。 そのタイムスタンプが 4 時間未満の場合は、Azure AD Domain Services で削除されたリソースを再作成できる可能性があります。
-3.  アラートが 4 時間以上前のものである場合は、マネージド ドメインは回復不可能な状態にあります。 Azure AD Domain Services を削除して再作成する必要があります。
+1. Azure AD Domain Services の正常性ページに移動します
+   1.    Azure portal で、[Azure AD Domain Services ページ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices)に移動します。
+   2.    左側のナビゲーションで、**[正常性]** をクリックします。
+2. アラートが 4 時間未満のものかどうかを確認します
+   1.    正常性ページで、ID **AADDS109** のアラートをクリックします
+   2.    アラートには、最初に検出されたときのタイムスタンプがあります。 そのタイムスタンプが 4 時間未満の場合は、Azure AD Domain Services で削除されたリソースを再作成できる可能性があります。
+3. アラートが 4 時間以上前のものである場合は、マネージド ドメインは回復不可能な状態にあります。 Azure AD Domain Services を削除して再作成する必要があります。
 
 
-## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: マネージド ドメインに関連付けられているサブネットが満杯
+## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110:マネージド ドメインに関連付けられているサブネットが満杯
 
 **アラート メッセージ:**
 
@@ -179,7 +179,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、[マネージド ドメインを再作成する](active-directory-ds-getting-started.md)必要があります。
 
-## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: サービス プリンシパルが承認されていない
+## <a name="aadds111-service-principal-unauthorized"></a>AADDS111:サービス プリンシパルが承認されていない
 
 **アラート メッセージ:**
 
@@ -193,7 +193,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 2. ID ```abba844e-bc0e-44b0-947a-dc74e5d09022``` のサービス プリンシパルのアクセス権をレビューし、以前の日付で拒否されたアクセス権を付与します。
 
 
-## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: マネージド ドメインに十分な数の IP アドレスがない
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112:マネージド ドメインに十分な数の IP アドレスがない
 
 **アラート メッセージ:**
 
@@ -201,20 +201,20 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 **解決策:**
 
-1. テナントから[マネージド ドメインを削除](#active-directory-ds-disable-aadds.md)します。
+1. テナントからマネージド ドメインを削除します。
 2. サブネットの IP アドレス範囲を修正します。
-  1. [Azure Portal の [仮想マシン] ページ](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks)に移動します。
-  2. Azure AD Domain Services で使用する予定の仮想ネットワークを選択します。
-  3. [設定] の下の **[アドレス空間]** をクリックします。
-  4. 既存のアドレス範囲をクリックし、それを編集するかアドレス範囲を追加することでアドレス範囲を更新します。 変更を保存します。
-  5. 左側のナビゲーション メニューで、**[サブネット]** をクリックします。
-  6. テーブルの編集するサブネットをクリックします。
-  7. アドレス範囲を更新し、変更を保存します。
+   1. [Azure Portal の [仮想マシン] ページ](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks)に移動します。
+   2. Azure AD Domain Services で使用する予定の仮想ネットワークを選択します。
+   3. [設定] の下の **[アドレス空間]** をクリックします。
+   4. 既存のアドレス範囲をクリックし、それを編集するかアドレス範囲を追加することでアドレス範囲を更新します。 変更を保存します。
+   5. 左側のナビゲーション メニューで、**[サブネット]** をクリックします。
+   6. テーブルの編集するサブネットをクリックします。
+   7. アドレス範囲を更新し、変更を保存します。
 3. [Azure AD Domain Services の使用開始に関するガイド](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)に従って、マネージド ドメインを再作成します。 プライベート IP アドレス範囲にある仮想ネットワークを選択していることを確認します。
 4. 仮想マシンを新しいドメインに参加させるには、[こちらのガイド](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal)に従います。
 5. 手順を正しく完了したことを確認するには、2 時間後にドメインの正常性をチェックします。
 
-## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: リソースが復旧できない
+## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113:リソースが復旧できない
 
 **アラート メッセージ:**
 
@@ -224,7 +224,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、[マネージド ドメインを再作成する](active-directory-ds-getting-started.md)必要があります。
 
-## <a name="aadds114-subnet-invalid"></a>AADDS114: サブネットが無効
+## <a name="aadds114-subnet-invalid"></a>AADDS114:サブネットが無効
 
 **アラート メッセージ:**
 
@@ -234,7 +234,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、[マネージド ドメインを再作成する](active-directory-ds-getting-started.md)必要があります。
 
-## <a name="aadds115-resources-are-locked"></a>AADDS115: リソースがロックされている
+## <a name="aadds115-resources-are-locked"></a>AADDS115:リソースがロックされている
 
 **アラート メッセージ:**
 
@@ -245,7 +245,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 1.  ネットワーク リソースに対する Resource Manager の操作ログ (これはどのロックが変更を妨げているかに関する情報を提供します) を確認します。
 2.  Azure AD Domain Services のサービス プリンシパルがリソースを操作できるように、リソースのロックを削除します。
 
-## <a name="aadds116-resources-are-unusable"></a>AADDS116: リソースが使用できない
+## <a name="aadds116-resources-are-unusable"></a>AADDS116:リソースが使用できない
 
 **アラート メッセージ:**
 
@@ -258,7 +258,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 
 
-## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: 同期がしばらく行われていない
+## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500:同期がしばらく行われていない
 
 **アラート メッセージ:**
 
@@ -272,7 +272,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 - 管理対象ドメインでネットワーク接続がブロックされる。 ネットワークに問題がないか確認することの詳細については、[ネットワーク セキュリティ グループをトラブルシューティングする方法](active-directory-ds-troubleshoot-nsg.md)および[Azure AD Domain Services に対するネットワーク要件](active-directory-ds-networking.md)を参照してください。
 -  パスワード同期が設定されないか、完了しない。 パスワード同期を設定するには、[この記事](active-directory-ds-getting-started-password-sync.md)を読んでください。
 
-## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: バックアップがしばらく行われていない
+## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501:バックアップがしばらく行われていない
 
 **アラート メッセージ:**
 
@@ -283,7 +283,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 [ご利用のドメインの正常性](active-directory-ds-check-health.md)で、マネージド ドメインの構成の問題を示している可能性があるアラートをすべて確認します。 構成の問題によって、マネージド ドメインのバックアップを行うための Microsoft の機能がブロックされることがあります。 アラートを解決できる場合は、2 時間待機してから、バックアップが完了したかどうかを再度確認してください。
 
 
-## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: 無効にしたサブスクリプションが原因の中断
+## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503:無効にしたサブスクリプションが原因の中断
 
 **アラート メッセージ:**
 
@@ -296,7 +296,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 サービスを復元するには、ご利用のマネージド ドメインに関連付けられた [Azure サブスクリプションを更新](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)します。
 
-## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504: 無効な構成が原因の中断
+## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504:無効な構成が原因の中断
 
 **アラート メッセージ:**
 

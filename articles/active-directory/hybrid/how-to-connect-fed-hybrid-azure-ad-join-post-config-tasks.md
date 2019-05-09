@@ -4,23 +4,24 @@ description: このドキュメントでは、ハイブリッド Azure AD 参加
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/10/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a9af969700f4f2dfbedc4833badd7e7349696302
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999231"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199733"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成後のタスク
 

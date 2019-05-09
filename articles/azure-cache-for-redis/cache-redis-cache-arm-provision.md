@@ -3,39 +3,42 @@ title: Azure Resource Manager を使用した Azure Cache for Redis のプロビ
 description: Azure Resource Manager テンプレートを使用し、Azure Cache for Redis をデプロイします。
 services: app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
 ms.workload: web
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: wesmc
-ms.openlocfilehash: 34f69340e0e7cad583ba0b8797a076a4fd6e3097
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: 5bdad61df732f0aeb1a758aacb5844204387e19b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021686"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983911"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>テンプレートを使用して Azure Cache for Redis を作成する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 このトピックでは、Azure Cache for Redis をデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。 キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法についても説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 現時点では、診断設定は、サブスクリプションの同じリージョン内のすべてのキャッシュで共有されます。 領域内の 1 つのキャッシュを更新すると、領域内の他のすべてのキャッシュに反映されます。
 
-テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。 キャッシュ リソースの種類の JSON 構文とプロパティについては、「[Microsoft.Cache resource types (Microsoft.Cache リソースの種類)](/azure/templates/microsoft.cache/allversions)」を参照してください。
 
 完成したテンプレートについては、[Azure Cache for Redis テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)のページを参照してください。
 
 > [!NOTE]
 > 新しい [Premium レベル](cache-premium-tier-intro.md) の Resource Manager テンプレートを利用できます。 
 > 
-> * [クラスタリングを使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
-> * [データの永続化を使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
-> * [VNet とオプションのクラスタリングを使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
+> * [クラスタリングを使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
+> * [データの永続化を使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+> * [仮想ネットワークにデプロイされる Premium Redis Cache の作成](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
 > 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で `Azure Cache for Redis` を検索してください。
 > 
@@ -127,7 +130,8 @@ Azure Cache for Redis を作成します。
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-    New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
+
+    New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
 
 ### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup

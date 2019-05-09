@@ -2,7 +2,7 @@
 title: Durable Functions のモニター - Azure
 description: Azure Functions の Durable Functions 拡張機能を使って状態モニターを実装する方法を説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4322841f126e4aa017b4d901cbfb1afd39e5bccf
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9be062ec42f054832225c17a65b06e47dbcbe990
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342574"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607281"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -166,7 +166,7 @@ RetryAfter: 10
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-オーケストレーションは、タイムアウトになるか晴天が検出されると[終了](durable-functions-instance-management.md#terminating-instances)します。 別の関数内で `TerminateAsync` (.NET) または `terminate` (JavaScript) を使うか、上の 202 応答で参照されている **terminatePostUri** HTTP POST webhook を呼び出して `{text}` を終了の理由に置き換えることもできます。
+オーケストレーションは、タイムアウトになるか晴天が検出されると[終了](durable-functions-instance-management.md)します。 別の関数内で `TerminateAsync` (.NET) または `terminate` (JavaScript) を使うか、上の 202 応答で参照されている **terminatePostUri** HTTP POST webhook を呼び出して `{text}` を終了の理由に置き換えることもできます。
 
 ```
 POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
@@ -175,6 +175,9 @@ POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf6
 ## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
 
 Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
+
+> [!NOTE]
+> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget パッケージをインストールする必要があります。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 

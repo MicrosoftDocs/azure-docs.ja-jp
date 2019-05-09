@@ -11,14 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.date: 08/14/2017
+ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9e291d68cded02296583aba2ef7cef1d1d17b567
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.topic: conceptual
+ms.openlocfilehash: 49a3ea97efc702a4616a48eb3b69b0868e2853f2
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38721136"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792227"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 

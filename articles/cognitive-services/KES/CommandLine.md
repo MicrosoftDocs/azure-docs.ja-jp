@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: コマンドライン インターフェイスを使用して、構造化データからインデックス ファイルと文法ファイルをビルドし、Web サービスとしてデプロイします。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127155"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860118"
 ---
 # <a name="command-line-interface"></a>コマンド ライン インターフェイス
 
@@ -80,7 +80,7 @@ Knowledge Exploration Service (KES) コマンド ライン インターフェイ
 |-----------------|----------------------------|
 | `<grammarFile>` | 入力バイナリ文法のパス         |
 | `<indexFile>`   | 入力バイナリ インデックスのパス           |
-| `--port <port>` | ローカル ポート番号。  既定: 8000 |
+| `--port <port>` | ローカル ポート番号。  既定値は8000 |
 
 これらのファイルは、ローカル ファイルのパスまたは AzureBLOB への URL パスによって指定できます。  Web サービスは、 http://localhost:&lt;port&gt;/ でホストされます。  サポートされている操作の一覧については、「[Web API](WebAPI.md)」を参照してください。
 

@@ -4,7 +4,7 @@ description: Service Fabric Reliable Actors のイベントの概要
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: aa01b0f7-8f88-403a-bfe1-5aba00312c24
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: c228821383a1bfedf380f97e3411fdacc322a6f9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 9075fc8391e8afa21e3963c1eff6a630c586d647
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054480"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58659390"
 ---
 # <a name="actor-events"></a>アクター イベント
 アクター イベントは、アクターからクライアントにベスト エフォート通知を送信する方法を提供します。 アクター イベントは、アクターとクライアントの通信用に設計されており、アクター間の通信には使用できません。
@@ -114,4 +114,4 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [C# コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
-* [Java コード サンプル](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java コード サンプル](https://github.com/Azure-Samples/service-fabric-java-getting-started)

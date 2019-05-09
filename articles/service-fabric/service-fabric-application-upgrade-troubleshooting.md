@@ -4,7 +4,7 @@ description: この記事では、Service Fabric アプリケーションのア�
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 19ad152e-ec50-4327-9f19-065c875c003c
 ms.service: service-fabric
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c6ba61354bf7466819e34a0d619a5a1820dd7b90
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e393eb92e11dc8dc296f1dc5f1c0036566c285c5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212740"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797861"
 ---
 # <a name="troubleshoot-application-upgrades"></a>アプリケーションのアップグレードのトラブルシューティング
+
 この記事では、Azure Service Fabric アプリケーションのアップグレードに関する一般的な問題とその解決方法のいくつかについて説明します。
 
 ## <a name="troubleshoot-a-failed-application-upgrade"></a>アプリケーションのアップグレードで障害が発生した場合のトラブルシューティング
+
 アップグレードに失敗した場合、 **Get-ServiceFabricApplicationUpgrade** コマンドの出力には、エラーのデバッグに関する追加情報が含まれています。  次の一覧では、この追加情報を使用する方法を指定します。
 
 1. 失敗の種類を識別する。
@@ -34,6 +36,7 @@ ms.locfileid: "34212740"
 この情報は、Service Fabric がエラーを検出すると、 **FailureAction** をロールバックするか、アップグレードを中断するかに関係なく利用できます。
 
 ### <a name="identify-the-failure-type"></a>失敗の種類を識別する
+
 **Get-ServiceFabricApplicationUpgrade** の出力で、**FailureTimestampUtc** は Service Fabric によってアップグレードの失敗が検出されたタイムスタンプ (UTC) を識別し、**FailureAction** がトリガーされました。 **FailureReason** は、エラーの 3 つの潜在的で大まかな原因の 1 つを識別します。
 
 1. UpgradeDomainTimeout - 特定のアップグレード ドメインの完了に時間がかかりすぎ、 **UpgradeDomainTimeout** の有効期限が切れていることを識別します。
@@ -43,11 +46,14 @@ ms.locfileid: "34212740"
 これらのエントリは、アップグレードが失敗し、ロールバックを開始する場合にのみ出力に表示されます。 エラーの種類に応じて、詳細な情報が表示されます。
 
 ### <a name="investigate-upgrade-timeouts"></a>アップグレードのタイムアウトを調査する
+
 アップグレードのタイムアウト エラーは、サービスの可用性の問題に起因することが最も一般的です。 以下に示す出力は、サービスのレプリカまたはインスタンスが新しいコード バージョンを開始できないアップグレードの一般的な例です。 **UpgradeDomainProgressAtFailure** フィールドは、エラーの発生時に保留中のアップグレード作業のスナップショットをキャプチャします。
 
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 ```
-PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 
+```Output
 ApplicationName                : fabric:/DemoApp
 ApplicationTypeName            : DemoAppType
 TargetApplicationTypeVersion   : v2
@@ -90,11 +96,14 @@ UpgradeReplicaSetCheckTimeout  : 00:00:00
 まれに、システムが現在のアップグレード ドメインのすべての作業を完了するのと同時に全体のアップグレードがタイムアウトになった場合に、**UpgradeDomainProgressAtFailure** フィールドが空になることがあります。 そのような場合は、アップグレード パラメーター **UpgradeTimeout** および **UpgradeDomainTimeout** の値を大きくしてアップグレードを再試行してください。
 
 ### <a name="investigate-health-check-failures"></a>正常性チェックの障害を調査する
+
 正常性チェックの障害は、アップグレード ドメインのすべてのノードがアップグレードを終了し、すべての安全性チェックを渡した後で、さまざまな問題によりトリガーされる可能性があります。 以下に示す出力は、正常性チェックの失敗によるアップグレード エラーの一般的な例です。 **UnhealthyEvaluations** フィールドは、アップグレード中に失敗した正常性チェックのスナップショットを、指定した [正常性ポリシー](service-fabric-health-introduction.md)に従って取得します。
 
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 ```
-PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 
+```Output
 ApplicationName                         : fabric:/DemoApp
 ApplicationTypeName                     : DemoAppType
 TargetApplicationTypeVersion            : v4
@@ -149,6 +158,7 @@ ServiceTypeHealthPolicyMap              :
 アップグレードを開始するときに **FailureAction** を手動で指定することで、アップグレードは、障害が発生したときに中断されました。 このモードでは、追加のアクションを実行する前に、障害が発生しているライブ システムを調査できます。
 
 ### <a name="recover-from-a-suspended-upgrade"></a>中断されたアップグレードから回復する
+
 ロールバック **FailureAction**を使用すると、障害が発生したときにアップグレードが自動的にロールバックされるため、復旧は必要ありません。 手動の **FailureAction**を使用する場合、いくつかの回復オプションがあります。
 
 1.  ロールバックをトリガーする
@@ -161,9 +171,11 @@ ServiceTypeHealthPolicyMap              :
 
 **Update-ServiceFabricApplicationUpgrade** コマンドを使用すると、安全性チェックと正常性チェックの両方が実行されている、監視対象のアップグレードを再開できます。
 
+```powershell
+Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
 ```
-PS D:\temp> Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
 
+```Output
 UpgradeMode                             : Monitored
 ForceRestart                            :
 UpgradeReplicaSetCheckTimeout           :
@@ -179,14 +191,14 @@ MaxPercentUnhealthyReplicasPerPartition :
 MaxPercentUnhealthyServices             :
 MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
-
-PS D:\temp>
 ```
 
 アップグレードは最後に中断したアップグレード ドメインから続行し、以前と同じアップグレード パラメーターと正常性ポリシーを使用します。 必要に応じて、前の出力に示すアップグレード パラメーターと正常性ポリシーを、アップグレードを再開するときと同じコマンドで変更できます。 この例では、アップグレードは、パラメーターと正常性ポリシーは変更されないまま、監視対象モードで再開されました。
 
 ## <a name="further-troubleshooting"></a>詳細なトラブルシューティング
+
 ### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric が指定された正常性ポリシーに従っていない
+
 考えられる原因 1:
 
 Service Fabric は、すべてのパーセンテージを、正常性評価のためのエンティティ (レプリカ、パーティション、サービスなど) の実際の数値に変換し、全体のエンティティ数に常に切り上げます。 たとえば、最大の *MaxPercentUnhealthyReplicasPerPartition* が 21% で、5 個のレプリカがある場合、Service Fabric は最大 2 個の異常レプリカ (つまり `Math.Ceiling (5*0.21)`) を許可します。 このため、これに基づいて、正常性ポリシーを設定する必要があります。
@@ -198,12 +210,15 @@ Service Fabric は、すべてのパーセンテージを、正常性評価の�
 ただし、アップグレード中、C が異常になり、D が正常になる可能性があります この場合でも、アップグレードは正常に完了します。異常なのは、サービスの 25% のみだからです。 ただし、D ではなく C により予期しないエラーが発生する可能性があります。この状態では、D は A、B、および C とは異なるサービス型としてモデル化する必要があります。正常性ポリシーはサービス型ごとに指定されるため、さまざまな異常の割合のしきい値を、さまざまなサービスに割り当てることができます。 
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>アプリケーションのアップグレードの正常性ポリシーを指定していないが、未指定のタイムアウトによりアップグレードが失敗する
+
 正常性ポリシーがアップグレード要求に指定されていない場合、現在のアプリケーションのバージョンの *ApplicationManifest.xml* から取得されます。 たとえば、アプリケーション X をバージョン 1.0 から バージョン 2.0 にアップグレードしている場合は、バージョン 1.0 に指定されたアプリケーションの正常性ポリシーが使用されます。 別の正常性ポリシーをアップグレードに使用するには、アプリケーションのアップグレードの API 呼び出しの一部としてポリシーを指定する必要があります。 アップグレード中は、API 呼び出しの一部として指定されたポリシーのみが適用されます。 アップグレードが完了すると、 *ApplicationManifest.xml* で指定されたポリシーが使用されます。
 
 ### <a name="incorrect-time-outs-are-specified"></a>不適切なタイムアウトが指定されている
+
 タイムアウトの設定に一貫性がないとどうなるでしょうか。 たとえば、*UpgradeTimeout* が *UpgradeDomainTimeout* より小さい場合があります。 このような場合は、エラーが返されます。 *UpgradeDomainTimeout* が *HealthCheckWaitDuration* と *HealthCheckRetryTimeout* の合計より小さい場合や、*UpgradeDomainTimeout* が *HealthCheckWaitDuration* と *HealthCheckStableDuration* の合計より小さい場合も、エラーが返されます。
 
 ### <a name="my-upgrades-are-taking-too-long"></a>アップグレードの時間がかかりすぎる
+
 アップグレードにかかる時間は、指定された正常性チェックとタイムアウトによって異なります。 正常性チェックとタイムアウトの時間は、アプリケーションのコピー、デプロイ、および安定化にかかる時間によって異なります。 タイムアウトが短すぎるとアップグレードが失敗する可能性が高くなるため、タイムアウトは長めにして開始することをお勧めします。
 
 タイムアウトが、アップグレードの時間にどのように影響するのか、以下で簡単に確認できます。
@@ -215,6 +230,7 @@ Service Fabric は、すべてのパーセンテージを、正常性評価の�
 アップグレード ドメインのアップグレード時間は、 *UpgradeDomainTimeout*によって制限されます。  *HealthCheckRetryTimeout* と *HealthCheckStableDuration* が両方とも 0 以外であり、アプリケーションの正常性が切り替わる場合は、アップグレードが最終的に *UpgradeDomainTimeout* でタイムアウトします。 *UpgradeDomainTimeout* は、現在のアップグレード ドメインのアップグレードが開始されると、カウント ダウンを開始します。
 
 ## <a name="next-steps"></a>次の手順
+
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be3d98dc0b3a8119fb853493440c6fc78d65c5a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110750"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454240"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure Portal を介した StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー
 
@@ -162,7 +162,7 @@ DR が正常に完了すると、ソース デバイスのクラウド データ
 
 **DR 時にクラウドの接続が切断される**
 
-DR が開始された後、デバイスの復元が完了する前にクラウドの接続が切断されると、DR が失敗し、 その旨が通知されます。 DR のターゲット デバイスは、"*使用不可*" としてマークされます。 同じターゲット デバイスを今後の DR に使用することはできません。
+DR が開始された後、デバイスの復元が完了する前にクラウドの接続が切断されると、DR が失敗し、 失敗の通知が届きます。 DR のターゲット デバイスは、"*使用不可*" としてマークされます。 同じターゲット デバイスを今後の DR に使用することはできません。
 
 **互換性のあるターゲット デバイスがない**
 

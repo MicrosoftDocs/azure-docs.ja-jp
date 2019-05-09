@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1be3c411a208a2a9da1a4f6a319fdf37cc8aa2dd
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338524"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669046"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性
 
@@ -108,7 +108,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     * **[Db Type]\(データベースの種類\)**:**[HANA]** を選択します。
     * **[Sap System Size]\(SAP システムのサイズ\)**:新しいシステムが提供する SAPS の数を入力します。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
     * **[System Availability]\(システムの可用性\)**:**[HA]** を選択します。
-    * **[Admin Username, Admin Password or SSH key]\(管理ユーザー名、管理パスワード、SSH キー\)**:コンピューターへのログオンで使用できる新しいユーザーが作成されます。
+    * **[Admin Username, Admin Password or SSH key]\(管理ユーザー名、管理パスワード、SSH キー\)**:コンピューターへのサインインに使用できる新しいユーザーが作成されます。
     * **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、**/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名>/subnets/\<サブネット名>** のようになります。 新しい仮想ネットワークを作成する場合は、空白のままにします
 
 ### <a name="manual-deployment"></a>手動デプロイ
@@ -182,6 +182,10 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    1. ポート 3**03**41 と 3**03**42 について、これらの手順を繰り返します。
 
 SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント データベース](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) ガイドの[テナント データベースへの接続](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)に関する章または [SAP Note 2388694][2388694] を参照してください。
+
+> [!IMPORTANT]
+> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+> SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) も参照してください。 
 
 ## <a name="install-sap-hana"></a>SAP HANA のインストール
 
@@ -307,7 +311,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    * Select additional components for installation (追加でインストールするコンポーネントの選択):**1** を入力します。
    * Enter Installation Path (インストール パスの入力) [/hana/shared]:Enter キーを押します。
    * Enter Local Host Name (ローカル ホスト名の入力) [..]:Enter キーを押します。
-   * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) [n]:Enter キーを押します。
+   * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) \[n]:Enter キーを押します。
    * Enter SAP HANA System ID (SAP HANA のシステム ID を入力):HANA の SID を入力します。例:**HN1**。
    * Enter Instance Number [00] \(インスタンス番号 (00) の入力):HANA のインスタンス番号を入力します。 Azure テンプレートを使用した場合、またはこの記述の手動デプロイに関するセクションに従った場合は、「**03**」を入力します。
    * Select Database Mode / Enter Index (データベース モードの選択/インデックスの入力) [1]:Enter キーを押します。
@@ -338,7 +342,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
 1. **[A]** ファイアウォールを構成します
 
-   Azure ロードバランサーのプローブ ポート用にファイアウォール規則を作成します。
+   Azure ロード バランサーのプローブ ポート用にファイアウォール規則を作成します。
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp
    sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp --permanent
@@ -357,35 +361,35 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    HANA システム レプリケーションおよびクライアント トラフィックを許可するファイアウォール規則を作成します。 必要なポートは、[すべての SAP 製品の TCP/IP ポート](https://help.sap.com/viewer/ports)のページにあります。 次のコマンドは、HANA 2.0 システム レプリケーションと、データベース SYSTEMDB、HN1 および NW1 へのクライアント トラフィックを許可する単なる例です。
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=40302/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40302/tcp
-sudo firewall-cmd --zone=public --add-port=40301/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40301/tcp
-sudo firewall-cmd --zone=public --add-port=40307/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40307/tcp
-sudo firewall-cmd --zone=public --add-port=40303/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40303/tcp
-sudo firewall-cmd --zone=public --add-port=40340/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40340/tcp
-sudo firewall-cmd --zone=public --add-port=30340/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30340/tcp
-sudo firewall-cmd --zone=public --add-port=30341/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30341/tcp
-sudo firewall-cmd --zone=public --add-port=30342/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30342/tcp
+   sudo firewall-cmd --zone=public --add-port=40302/tcp
+   sudo firewall-cmd --zone=public --add-port=40301/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40301/tcp
+   sudo firewall-cmd --zone=public --add-port=40307/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40307/tcp
+   sudo firewall-cmd --zone=public --add-port=40303/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40303/tcp
+   sudo firewall-cmd --zone=public --add-port=40340/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40340/tcp
+   sudo firewall-cmd --zone=public --add-port=30340/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30340/tcp
+   sudo firewall-cmd --zone=public --add-port=30341/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30341/tcp
+   sudo firewall-cmd --zone=public --add-port=30342/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30342/tcp
    </code></pre>
 
 1. **[1]** テナント データベースを作成します。
 
    SAP HANA 2.0 または MDC を使用している場合は、ご自身の SAP NetWeaver システムに対してテナント データベースを作成します。 **NW1** をご自身の SAP システムの SID に置き換えます。
 
-   \<hanasid>adm としてログインし、次のコマンドを実行します
+   <hanasid\>adm として次のコマンドを実行します。
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 最初のノードでシステム レプリケーションを構成します
 
-   \<hanasid>adm としてログインし、データベースをバックアップします。
+   <hanasid\>adm としてデータベースをバックアップします。
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -405,7 +409,7 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 1. **[2]** 2 番目のノードでシステム レプリケーションを構成します
     
-   2 番目のノードを登録して、システム レプリケーションを開始します。 \<hanasid>adm としてログインし、次のコマンドを実行します。
+   2 番目のノードを登録して、システム レプリケーションを開始します。 <hanasid\>adm として次のコマンドを実行します。
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -453,7 +457,7 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 1. **[1]** 必要なユーザーを作成します。
 
-   root としてログインし、次のコマンドを実行します。 太字の文字列 (HANA システム ID **HN1**、インスタンス番号 **03**) を、ご自身の SAP HANA のインストールの値に置き換えてください。
+   root として次のコマンドを実行します。 太字の文字列 (HANA システム ID **HN1**、インスタンス番号 **03**) を、ご自身の SAP HANA のインストールの値に置き換えてください。
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -463,7 +467,7 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 1. **[A]** キーストア エントリを作成します。
 
-   root としてログインし、次のコマンドを実行して、新しいキーストア エントリを作成します。
+   root として次のコマンドを実行して、新しいキーストア エントリを作成します。
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -471,7 +475,7 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 1. **[1]** データベースをバックアップします。
 
-   root としてログインし、データベースをバックアップします
+   root としてデータベースをバックアップします。
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -484,7 +488,7 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 1. **[1]** 最初のノードでシステム レプリケーションを構成します。
 
-   \<hanasid>adm としてログインし、プライマリ サイトを作成します。
+   <hanasid\>adm としてプライマリ サイトを作成します。
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -492,7 +496,7 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 1. **[2]** セカンダリ ノードでシステム レプリケーションを構成します。
 
-   \<hanasid>adm としてログインし、2 番目のサイトを登録します。
+   <hanasid\>adm としてセカンダリ サイトを登録します。
 
    <pre><code>HDB stop
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>

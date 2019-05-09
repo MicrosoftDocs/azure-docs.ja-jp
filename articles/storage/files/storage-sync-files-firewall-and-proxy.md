@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
-ms.component: files
-ms.openlocfilehash: 3a1cc0a28ef5a4861d86373ce39258936639baab
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.subservice: files
+ms.openlocfilehash: 35904c3854ddbcf3648c8a226d56f73be890b6ad
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333352"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481504"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -46,10 +46,10 @@ Azure File Sync は、Azure に到達さえできれば、その接続手段を�
 ## <a name="proxy"></a>プロキシ
 Azure File Sync では、アプリ固有のプロキシ設定とマシン全体のプロキシ設定がサポートされています。
 
-**アプリ固有のプロキシ設定**を使用すると、Azure File Sync のトラフィック専用のプロキシを構成できます。 アプリ固有のプロキシ設定はエージェント バージョン 4.0.1.0 以降でサポートされ、エージェントのインストール中に構成するか、または Set-StorageSyncProxyConfiguration PowerShell コマンドレットを使用して構成できます。
+**アプリ固有のプロキシ設定**を使用すると、Azure File Sync のトラフィック専用のプロキシを構成できます。 アプリ固有のプロキシ設定はエージェント バージョン 4.0.1.0 以降でサポートされ、エージェントのインストール中に、または Set-StorageSyncProxyConfiguration PowerShell コマンドレットを使用して構成できます。
 
 アプリ固有のプロキシ設定を構成する PowerShell コマンドを次に示します。
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
@@ -59,48 +59,48 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 1. .NET アプリケーションのプロキシ設定を構成します 
 
-  - 以下の 2 つのファイルを編集します。  
-    C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
-    C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+   - 以下の 2 つのファイルを編集します。  
+     C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
+     C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-  - <system.net> セクションを machine.config ファイルに追加します (<system.serviceModel> セクションの下)。  127.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します。 
-  ```
+   - <system.net> セクションを machine.config ファイルに追加します (<system.serviceModel> セクションの下)。  127.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します。 
+     ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
           <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
         </defaultProxy>
       </system.net>
-  ```
+     ```
 
 2. WinHTTP のプロキシ設定を設定します 
 
-  - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、既存のプロキシ設定を表示します。   
+   - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、既存のプロキシ設定を表示します。   
 
-    netsh winhttp show proxy
+     netsh winhttp show proxy
 
-  - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、プロキシ設定を設定します (127.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します)。  
+   - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、プロキシ設定を設定します (127.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します)。  
 
-    netsh winhttp set proxy 127.0.0.1:8888
+     netsh winhttp set proxy 127.0.0.1:8888
 
 3. 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、ストレージ同期エージェント サービスを開始し直します。 
 
       net stop filesyncsvc
 
-      注: ストレージ同期エージェント (filesyncsvc) サービスは、停止すると自動的に開始します。
+      注:ストレージ同期エージェント (filesyncsvc) サービスは、停止すると自動的に開始します。
 
 ## <a name="firewall"></a>ファイアウォール
 前のセクションで述べたように、送信方向のポート 443 を開放する必要があります。 さらに、ご利用のデータセンターやブランチ、リージョンのポリシーによっては、このポート上のトラフィックを特定のドメインに制限することが望ましい、または必須となる場合もあります。
 
 次の表で、通信に必要なドメインについて説明します。
 
-| Service | ドメイン | 使用法 |
-|---------|----------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | 初回サーバー登録呼び出しを含め、すべてのユーザー呼び出し (PowerShell など) は、この URL に向かうか、この URL を経由します。 |
-| **Azure Active Directory** | https://login.windows.net | Azure Resource Manager の呼び出しは、認証済みのユーザーが行う必要があります。 成功するためには、この URL を使用してユーザー認証を行う必要があります。 |
-| **Azure Active Directory** | https://graph.windows.net/ | Azure File Sync をデプロイする過程で、サブスクリプションの Azure Active Directory のサービス プリンシパルを作成する必要があります。 この URL は、その際に使用されます。 このプリンシパルは、最小限の権限一式を Azure File Sync サービスに委任する目的で使用されます。 Azure File Sync の初回セットアップは、サブスクリプション所有者の権限を持った認証済みユーザーが実行する必要があります。 |
-| **Azure Storage** | &ast;.core.windows.net | サーバーがファイルをダウンロードするとき、ストレージ アカウント内の Azure ファイル共有との間で直接通信を行った方が、データの移動を効率よく実行することができます。 このサーバーには、対象のファイル共有へのアクセスのみが許可された SAS キーが与えられます。 |
-| **Azure File Sync** | &ast;.one.microsoft.com | サーバーの初回登録後、そのサーバーには、特定のリージョン内の Azure File Sync サービス インスタンスに使用されるリージョン固有の URL が送信されます。 サーバーは、この URL を使って、その同期処理を行うインスタンスと直接かつ効率的に通信を行います。 |
-| **Microsoft PKI** | http://www.microsoft.com/pki/mscorp  http://ocsp.msocsp.com | Azure File Sync エージェントがインストールされると、PKI URL を使用して、Azure File Sync サービスと Azure ファイル共有との通信に必要な中間証明書がダウンロードされます。 OCSP URL は、証明書の状態を確認するために使用されます。 |
+| Service | パブリック クラウド エンドポイント | Azure Government のエンドポイント | 使用法 |
+|---------|----------------|---------------|------------------------------|
+| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | 初回サーバー登録呼び出しを含め、すべてのユーザー呼び出し (PowerShell など) は、この URL に向かうか、この URL を経由します。 |
+| **Azure Active Directory** | https://login.windows.net | https://login.microsoftonline.us | Azure Resource Manager の呼び出しは、認証済みのユーザーが行う必要があります。 成功するためには、この URL を使用してユーザー認証を行う必要があります。 |
+| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | Azure File Sync をデプロイする過程で、サブスクリプションの Azure Active Directory のサービス プリンシパルを作成する必要があります。 この URL は、その際に使用されます。 このプリンシパルは、最小限の権限一式を Azure File Sync サービスに委任する目的で使用されます。 Azure File Sync の初回セットアップは、サブスクリプション所有者の権限を持った認証済みユーザーが実行する必要があります。 |
+| **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | サーバーがファイルをダウンロードするとき、ストレージ アカウント内の Azure ファイル共有との間で直接通信を行った方が、データの移動を効率よく実行することができます。 このサーバーには、対象のファイル共有へのアクセスのみが許可された SAS キーが与えられます。 |
+| **Azure File Sync** | &ast;.one.microsoft.com | &ast;.afs.azure.us | サーバーの初回登録後、そのサーバーには、特定のリージョン内の Azure File Sync サービス インスタンスに使用されるリージョン固有の URL が送信されます。 サーバーは、この URL を使って、その同期処理を行うインスタンスと直接かつ効率的に通信を行います。 |
+| **Microsoft PKI** | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | Azure File Sync エージェントがインストールされると、PKI URL を使用して、Azure File Sync サービスと Azure ファイル共有との通信に必要な中間証明書がダウンロードされます。 OCSP URL は、証明書の状態を確認するために使用されます。 |
 
 > [!Important]
 > &ast;.one.microsoft.com へのトラフィックを許可すると、同期サービスに限らず、サーバーから出て行くそれ以外のトラフィックも許可されます。 サブドメインには、その他多くの Microsoft サービスが提供されています。
@@ -109,22 +109,24 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 事業継続とディザスター リカバリー (BCDR) 上の理由から、グローバル冗長ストレージ (GRS) アカウント内の Azure ファイル共有が指定されていることも考えられます。 そのようなケースで、万一長時間にわたる地域的な機能不全が生じた場合には、Azure ファイル共有がペア リージョンにフェールオーバーされます。 Azure File Sync がストレージとして使用するリージョン ペアは変わりません。 そのため、GRS ストレージ アカウントを使用している場合は、サーバーが Azure File Sync のペア リージョンと通信するための URL を別途有効にする必要があります。以下の表では、これを "ペア リージョン" と記述しています。 また、Traffic Manager のプロファイルの URL も有効にする必要があります。 これにより、万一フェールオーバーが発生した場合、ネットワーク トラフィックがペア リージョンに対してシームレスに再ルーティングされます。次の表では、これを "検出 URL" と記述しています。
 
-| リージョン | プライマリ エンドポイントの URL | ペアのリージョン | 探索 URL |
-|--------|---------------------------------------|--------|---------------------------------------|
-| オーストラリア東部 | https://kailani-aue.one.microsoft.com | オーストラリア南東部 | https://kailani-aue.one.microsoft.com |
-| オーストラリア南東部 | https://kailani-aus.one.microsoft.com | オーストラリア東部 | https://tm-kailani-aus.one.microsoft.com |
-| カナダ中部 | https://kailani-cac.one.microsoft.com | カナダ東部 | https://tm-kailani-cac.one.microsoft.com |
-| カナダ東部 | https://kailani-cae.one.microsoft.com | カナダ中部 | https://tm-kailani.cae.one.microsoft.com |
-| 米国中央部 | https://kailani-cus.one.microsoft.com | 米国東部 2 | https://tm-kailani-cus.one.microsoft.com |
-| 東アジア | https://kailani11.one.microsoft.com | 東南アジア | https://tm-kailani11.one.microsoft.com |
-| 米国東部 | https://kailani1.one.microsoft.com | 米国西部 | https://tm-kailani1.one.microsoft.com |
-| 米国東部 2 | https://kailani-ess.one.microsoft.com | 米国中央部 | https://tm-kailani-ess.one.microsoft.com |
-| 北ヨーロッパ | https://kailani7.one.microsoft.com | 西ヨーロッパ | https://tm-kailani7.one.microsoft.com |
-| 東南アジア | https://kailani10.one.microsoft.com | 東アジア | https://tm-kailani10.one.microsoft.com |
-| 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
-| 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
-| 西ヨーロッパ | https://kailani6.one.microsoft.com | 北ヨーロッパ | https://tm-kailani6.one.microsoft.com |
-| 米国西部 | https://kailani.one.microsoft.com | 米国東部 | https://tm-kailani.one.microsoft.com |
+| クラウド  | リージョン | プライマリ エンドポイントの URL | ペアのリージョン | 探索 URL |
+|--------|--------|----------------------|---------------|---------------|
+| パブリック |オーストラリア東部 | https://kailani-aue.one.microsoft.com | オーストラリア南東部 | https://kailani-aue.one.microsoft.com |
+| パブリック |オーストラリア南東部 | https://kailani-aus.one.microsoft.com | オーストラリア東部 | https://tm-kailani-aus.one.microsoft.com |
+| パブリック | カナダ中部 | https://kailani-cac.one.microsoft.com | カナダ東部 | https://tm-kailani-cac.one.microsoft.com |
+| パブリック | カナダ東部 | https://kailani-cae.one.microsoft.com | カナダ中部 | https://tm-kailani.cae.one.microsoft.com |
+| パブリック | 米国中央部 | https://kailani-cus.one.microsoft.com | 米国東部 2 | https://tm-kailani-cus.one.microsoft.com |
+| パブリック | 東アジア | https://kailani11.one.microsoft.com | 東南アジア | https://tm-kailani11.one.microsoft.com |
+| パブリック | 米国東部 | https://kailani1.one.microsoft.com | 米国西部 | https://tm-kailani1.one.microsoft.com |
+| パブリック | 米国東部 2 | https://kailani-ess.one.microsoft.com | 米国中央部 | https://tm-kailani-ess.one.microsoft.com |
+| パブリック | 北ヨーロッパ | https://kailani7.one.microsoft.com | 西ヨーロッパ | https://tm-kailani7.one.microsoft.com |
+| パブリック | 東南アジア | https://kailani10.one.microsoft.com | 東アジア | https://tm-kailani10.one.microsoft.com |
+| パブリック | 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
+| パブリック | 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
+| パブリック | 西ヨーロッパ | https://kailani6.one.microsoft.com | 北ヨーロッパ | https://tm-kailani6.one.microsoft.com |
+| パブリック | 米国西部 | https://kailani.one.microsoft.com | 米国東部 | https://tm-kailani.one.microsoft.com |
+| Government | 米国政府アリゾナ | https://usgovarizona01.afs.azure.us | 米国政府テキサス | https://tm-usgovarizona01.afs.azure.us |
+| Government | 米国政府テキサス | https://usgovtexas01.afs.azure.us | 米国政府アリゾナ | https://tm-usgovtexas01.afs.azure.us |
 
 - 使用しているストレージ アカウントがローカル冗長 (LRS) またはゾーン冗長 (ZRS) の場合、有効にする必要があるのは、"プライマリ エンドポイント URL" に記載された URL だけです。
 
@@ -144,3 +146,4 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 ## <a name="next-steps"></a>次の手順
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 - [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
+- [Azure File Sync の監視](storage-sync-files-monitoring.md)

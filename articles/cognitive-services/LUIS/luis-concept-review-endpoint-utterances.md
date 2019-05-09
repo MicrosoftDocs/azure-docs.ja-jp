@@ -4,25 +4,25 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: アクティブ ラーニングによって、エンドポイント発話の意図とエンティティが正しいことをレビューします。 LUIS が確証を持てないエンドポイント発話が LUIS によって選択されます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/07/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 0eaf411afdcd66345f64c2b6dd93e4799183de78
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2af11d7776a29288801e5db049262481ae27c102
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141035"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785358"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>エンドポイント発話のレビューによるアクティブ ラーニング実現の概念
 アクティブ ラーニングは、3 つの予測精度の改善戦略の 1 つで、最も簡単に実装できます。 アクティブ ラーニングによって、エンドポイント発話の意図とエンティティが正しいことをレビューします。 LUIS が確証を持てないエンドポイント発話が LUIS によって選択されます。
 
 ## <a name="what-is-active-learning"></a>アクティブ ラーニングとは
-アクティブ ラーニングは 2 段階のプロセスです。 まず、LUIS がアプリのエンドポイントで受信した発話が、LUIS によって選択されます。 次のステップで、アプリの所有者またはコラボレーターが、選択された発話を、正しい意図とその意図内の任意のエンティティを含め、[レビュー](luis-how-to-review-endoint-utt.md)のために検証します。 発話をレビューしたら、アプリをもう一度トレーニングして公開します。 
+アクティブ ラーニングは 2 段階のプロセスです。 まず、LUIS がアプリのエンドポイントで受信した発話が、LUIS によって選択されます。 次のステップで、アプリの所有者またはコラボレーターが、選択された発話を、正しい意図とその意図内の任意のエンティティを含め、[レビュー](luis-how-to-review-endpoint-utterances.md)のために検証します。 発話をレビューしたら、アプリをもう一度トレーニングして公開します。 
 
 ## <a name="which-utterances-are-on-the-review-list"></a>どの発話がレビュー リストに追加されるか
 最上位にある実行中の意図のスコアが低いとき、または上位 2 つの意図のスコアが非常に近いときに、その発話は LUIS によってレビュー リストに追加されます。 
@@ -41,4 +41,4 @@ ms.locfileid: "53141035"
 
 ## <a name="next-steps"></a>次の手順
 
-* エンドポイント発話を[レビュー](luis-how-to-review-endoint-utt.md)する方法を確認します
+* エンドポイント発話を[レビュー](luis-how-to-review-endpoint-utterances.md)する方法を確認します

@@ -1,7 +1,7 @@
 ---
 title: Linux での Java Enterprise のサポート - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux で Wildfly を使用して Java Enterprise アプリをデプロイするための開発者ガイド。
-keywords: Azure App Service, Web アプリ, Linux, OSS, Java, Wildfly, Enterprise
+keywords: Azure App Service, Web アプリ, Linux, OSS, Java, Wildfly, Enterprise, java ee, jee, javaee
 services: app-service
 author: rloutlaw
 manager: angerobe
@@ -13,16 +13,19 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 408141650a11a81f0c6000c6e7927af8333e2afe
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8db65fd9a1f271aea4ceb345f4d9dfbb6b9ff8a6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548478"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58877382"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>App Service on Linux の Java Enterprise ガイド
 
-Azure App Service on Linux を使用すると、Java 開発者は、完全に管理された Linux ベースのサービス上で Java Enterprise (JEE) アプリケーションをビルド、デプロイ、およびスケーリングすることができます。  基になる Java Enterprise ランタイム環境は、オープン ソース [Wildfly](https://wildfly.org/) アプリケーション サーバーです。
+> [!NOTE] 
+> App Service Linux 上の Java Enterprise エディションは現在プレビュー段階です。 このスタックを運用環境向けの作業に使用することは**お勧めできません**。 Java SE および Tomcat スタックについては、[Java 開発者ガイド](app-service-linux-java.md)を参照してください。
+
+Azure App Service on Linux を使用すると、Java 開発者は、完全に管理された Linux ベースのサービス上で Java Enterprise (Java EE) アプリケーションをビルド、デプロイ、およびスケーリングすることができます。  基になる Java Enterprise ランタイム環境は、オープン ソース [Wildfly](https://wildfly.org/) アプリケーション サーバーです。
 
 このガイドでは、App Service for Linux で使用する Java Enterprise 開発者向けに主要な概念と手順を示します。 Azure App Service for Linux で Java アプリケーションをデプロイしたことがない場合は、最初に [Java クイック スタート](quickstart-java.md)を完了する必要があります。 Java Enterprise に限らない App Service for Linux に関する質問については、[Java 開発者ガイド](app-service-linux-java.md)および [App Service Linux の FAQ](app-service-linux-faq.md) で回答されています。
 
@@ -41,7 +44,7 @@ WildFly CLI を呼び出して次のことを行うように、スタートア�
 - メッセージング プロバイダーを構成します
 - Wildfly サーバーの構成に、他のモジュールおよび依存関係を追加します。
 
- このスクリプトは、Wildfly の稼働中で、ただしアプリケーションが起動する前に実行されます。 スクリプトでは、`/opt/jboss/wildfly/bin/jboss-cli.sh` から呼び出される [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) を使用して、サーバーの起動後に必要な構成や変更によってアプリケーション サーバーを構成する必要があります。 
+  このスクリプトは、Wildfly の稼働中で、ただしアプリケーションが起動する前に実行されます。 スクリプトでは、`/opt/jboss/wildfly/bin/jboss-cli.sh` から呼び出される [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) を使用して、サーバーの起動後に必要な構成や変更によってアプリケーション サーバーを構成する必要があります。 
 
 Wildfly を構成するために、CLI の対話モードを使用しないでください。 代わりに、`--file` コマンドを使用して、JBoss CLI にコマンドのスクリプトを指定できます。次に例を示します。
 
@@ -116,4 +119,4 @@ App Service には、アプリケーションの問題のトラブルシュー�
 
 -   左側のナビゲーション ウィンドウの **[診断ログ]** をクリックして、ログを有効にします。 **[ファイル システム]** をクリックして、ストレージ クォータおよび保持期間を設定し、変更を保存します。 これらのログは、`/home/LogFiles/` にあります。
 -   [SSH を使用して、アプリケーション インスタンスに接続し](app-service-linux-ssh-support.md)、実行中のアプリケーションのログを表示します。
--   portal の **[診断ログ]** パネルの診断ログまたは Azure CLI コマンド ` az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group> ` を使用して、診断ログを確認します。
+-   portal の **[診断ログ]** パネルの診断ログまたは Azure CLI コマンド `az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>` を使用して、診断ログを確認します。

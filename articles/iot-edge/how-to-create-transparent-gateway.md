@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556222"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482948"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -45,7 +45,10 @@ ms.locfileid: "53556222"
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
-任意のマシンを使用して証明書を生成してから、その証明書をお使いの IoT Edge デバイスにコピーできます。 
+任意のマシンを使用して証明書を生成してから、その証明書をお使いの IoT Edge デバイスにコピーできます。
+
+>[!NOTE]
+>この手順で証明書の作成に使用されている "gateway name" は、IoT Edge config.yaml ファイル内のホスト名やダウンストリーム デバイスの接続文字列内にある GatewayHostName として使用されているのと同じ名前にする必要があります。 "gateway name" は、DNS または host ファイル エントリを使用して IP アドレスに解決できるようにする必要があります。 使用されるプロトコル (MQTTS:8883/AMQPS:5671/HTTPS:433) に基づく通信は、ダウンストリーム デバイスと透過的な IoT Edge の間で可能にする必要があります。 ファイアウォールが間にある場合は、それぞれのポートを開く必要があります。
 
 ## <a name="generate-certificates-with-windows"></a>Windows での証明書の生成
 
@@ -60,7 +63,7 @@ Windows デバイスでテスト証明書を生成するには、このセクシ
    >[!NOTE]
    >ご使用の Windows デバイスに既に OpenSSL がインストールされている場合は、この手順をスキップできますが、openssl.exe がご自分の PATH 環境変数で使用できることを確認してください。
 
-* **簡単:** サードパーティの OpenSSL バイナリ (たとえば、[SourceForge のこちらのプロジェクトのバイナリ](https://sourceforge.net/projects/openssl/)) をダウンロードしてインストールします。 openssl.exe への完全なパスを PATH 環境変数に追加します。 
+* **簡単:**[サードパーティの OpenSSL バイナリ](https://wiki.openssl.org/index.php/Binaries) (たとえば、[SourceForge のこちらのプロジェクトのバイナリ](https://sourceforge.net/projects/openssl/)) をダウンロードしてインストールします。 openssl.exe への完全なパスを PATH 環境変数に追加します。 
    
 * **推奨されるもの:** OpenSSL ソース コードをダウンロードし、お使いのコンピューター上または [vcpkg](https://github.com/Microsoft/vcpkg) 経由でバイナリをビルドします。 以下に示す指示では、vcpkg を使用してソース コードのダウンロード、コンパイル、および Windows コンピューターへの OpenSSL のインストールを、簡単な手順で実行します。
 
@@ -68,7 +71,7 @@ Windows デバイスでテスト証明書を生成するには、このセクシ
    
    2. vcpkg がインストールされたら、Powershell プロンプトから次のコマンドを実行して、Windows x64 用の OpenSSL パッケージをインストールします。 インストールには通常、完了まで約 5 分かかります。
 
-      ```PowerShell
+      ```powershell
       .\vcpkg install openssl:x64-windows
       ```
    3. ご自分の PATH 環境変数に `<VCPKGDIR>\installed\x64-windows\tools\openssl` を追加して、openssl.exe ファイルを呼び出せるようにします。
@@ -81,7 +84,7 @@ C 用 Azure IoT device SDK には、テスト証明書の生成に使用でき�
 
 2. 非運用証明書を生成するスクリプトが含まれている git リポジトリを複製します。 これらのスクリプトでは、透過的なゲートウェイの設定に必要な証明書を作成できます。 `git clone` コマンドを使用するか、[ZIP をダウンロードします](https://github.com/Azure/azure-iot-sdk-c/archive/master.zip)。 
 
-   ```PowerShell
+   ```powershell
    git clone https://github.com/Azure/azure-iot-sdk-c.git
    ```
 
@@ -89,7 +92,7 @@ C 用 Azure IoT device SDK には、テスト証明書の生成に使用でき�
 
 4. 構成ファイルとスクリプト ファイルを作業ディレクトリにコピーします。 
 
-   ```PowerShell
+   ```powershell
    copy <path>\azure-iot-sdk-c\tools\CACertificates\*.cnf .
    copy <path>\azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
    ```
@@ -98,25 +101,25 @@ C 用 Azure IoT device SDK には、テスト証明書の生成に使用でき�
 
 5. openssl_root_ca.cnf 構成ファイルを使用するように OPENSSL_CONF 環境変数を設定します。
 
-    ```PowerShell
+    ```powershell
     $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
     ```
 
 6. PowerShell でスクリプトの実行を有効にします。
 
-   ```PowerShell
+   ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
 7. スクリプトで使用される関数を PowerShell のグローバル名前空間に取り込みます。
    
-   ```PowerShell
+   ```powershell
    . .\ca-certs.ps1
    ```
 
 8. OpenSSL が正しくインストールされていることを確認し、既存の証明書の名前の競合がないことを確認します。 問題がある場合、スクリプトは、システム上で問題を修正する方法を示す必要があります。
 
-   ```PowerShell
+   ```powershell
    Test-CACertsPrerequisites
    ```
 
@@ -126,19 +129,19 @@ C 用 Azure IoT device SDK には、テスト証明書の生成に使用でき�
 
 1. 所有者 CA 証明書を作成し、それに 1 つの中間証明書を署名します。 証明書はすべて、*\<WRKDIR>* に配置されます。
 
-      ```PowerShell
+      ```powershell
       New-CACertsCertChain rsa
       ```
 
 2. 次のコマンドを使用して、Edge デバイス CA 証明書と秘密キーを作成します。 証明書の生成中にファイルに名前を付けるために使用されるゲートウェイ デバイスの名前を指定します。 
 
-   ```PowerShell
+   ```powershell
    New-CACertsEdgeDevice "<gateway name>"
    ```
 
 3. 次のコマンドを使用して、所有者 CA 証明書、中間証明書、Edge デバイス CA 証明書から証明書チェーンを作成します。 
 
-   ```PowerShell
+   ```powershell
    Write-CACertsCertificatesForEdgeDevice "<gateway name>"
    ```
 
@@ -178,7 +181,7 @@ Linux デバイスでテスト証明書を生成するには、このセクシ�
 
 このセクションでは、3 つの証明書を作成し、それらをチェーンで接続します。 チェーン ファイル内に証明書を配置すると、それらを IoT Edge ゲートウェイ デバイスおよび、ダウンストリーム デバイスに簡単にインストールすることができます。  
 
-1.  所有者 CA 証明書と 1 つの中間証明書を作成します。 これらの証明書はすべて、*\<WRKDIR>* に配置されています。
+1. 所有者 CA 証明書と 1 つの中間証明書を作成します。 これらの証明書はすべて、*\<WRKDIR>* に配置されています。
 
    ```bash
    ./certGen.sh create_root_and_intermediate
@@ -190,7 +193,7 @@ Linux デバイスでテスト証明書を生成するには、このセクシ�
    * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
    * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
 
-2.  次のコマンドを使用して、Edge デバイス CA 証明書と秘密キーを作成します。 証明書の生成中にファイルに名前を付けるために使用されるゲートウェイ デバイスの名前を指定します。 
+2. 次のコマンドを使用して、Edge デバイス CA 証明書と秘密キーを作成します。 証明書の生成中にファイルに名前を付けるために使用されるゲートウェイ デバイスの名前を指定します。 
 
    ```bash
    ./certGen.sh create_edge_device_certificate "<gateway name>"

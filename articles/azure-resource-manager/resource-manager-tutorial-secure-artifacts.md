@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/07/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c17d4d51327862872d240e07cb69d4ddf1f8672b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f7f235ce709fd81c4bb4c367774b4a96cd920e13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082144"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120348"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>チュートリアル: Azure Resource Manager テンプレートのデプロイ時に成果物をセキュリティで保護する
 
@@ -126,11 +126,11 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 3. **[BLOB SAS トークンおよび URL を生成]** を選択します。
 4. **BLOB SAS URL** のコピーを作成します。 このURL の中央に、ファイル名 **SQLDatabaseExtension.bacpac** があります。  URL は、このファイル名によって 3 つの部分に分割されます。
 
-    - **成果物の場所**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/ 場所の末尾が "/" であることを確認します。
-    - **BACPAC ファイル名**: SQLDatabaseExtension.bacpac。
-    - **[Artifact location SAS token]\(成果物の場所の SAS トークン\)**: トークンの前に "?" があることを確認します。
+   - **成果物の場所**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/ 場所の末尾が "/" であることを確認します。
+   - **BACPAC ファイル名**: SQLDatabaseExtension.bacpac。
+   - **[Artifact location SAS token]\(成果物の場所の SAS トークン\)**: トークンの前に "?" があることを確認します。
 
-    これら 3 つの値は、「[テンプレートのデプロイ](#deploy-the-template)」で必要です。
+     これら 3 つの値は、「[テンプレートのデプロイ](#deploy-the-template)」で必要です。
 
 ## <a name="open-an-existing-template"></a>既存のテンプレートを開く
 
@@ -146,13 +146,13 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
     テンプレート内に定義されているリソースは 5 つあります。
 
-    * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers)をご覧ください。
-    * `Microsoft.SQL/servers/securityAlertPolicies` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies)をご覧ください。
-    * `Microsoft.SQL/servers/filewallRules` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules)をご覧ください。
-    * `Microsoft.SQL/servers/databases`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
-    * `Microsoft.SQL/server/databases/extensions`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions)をご覧ください。
+   * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers)をご覧ください。
+   * `Microsoft.SQL/servers/securityAlertPolicies` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies)をご覧ください。
+   * `Microsoft.SQL/servers/filewallRules` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules)をご覧ください。
+   * `Microsoft.SQL/servers/databases`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
+   * `Microsoft.SQL/server/databases/extensions`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions)をご覧ください。
 
-    カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+     カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 4. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 
 ## <a name="edit-the-template"></a>テンプレートの編集
@@ -193,10 +193,11 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 デプロイ手順については、「[テンプレートのデプロイ](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template)」セクションを参照してください。 代わりに次の PowerShell デプロイ スクリプトを使用します。
 
 ```azurepowershell
-$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
@@ -205,15 +206,15 @@ $artifactsLocation = Read-Host -Prompt "Enter the artifacts location"
 $artifactsLocationSasToken = Read-Host -Prompt "Enter the artifacts location SAS token" -AsSecureString
 $bacpacFileName = Read-Host -Prompt "Enter the BACPAC file name"
 
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-New-AzureRmResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
     -_artifactsLocation $artifactsLocation `
     -_artifactsLocationSasToken $artifactsLocationSasToken `
     -bacpacFileName $bacpacFileName `
-    -TemplateFile azuredeploy.json
+    -TemplateFile "$HOME/azuredeploy.json"
 ```
 
 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。

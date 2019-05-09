@@ -1,31 +1,32 @@
 ---
-title: 'クイック スタート: Bing Spell Check API (PHP)'
+title: クイック スタート:Bing Spell Check REST API と PHP を使用してスペルをチェックする
 titlesuffix: Azure Cognitive Services
-description: Bing Spell Check API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
+description: Bing Spell Check API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 97332b063a649795cffd7ff0bf00829a554d98ac
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dcec06113c418b6df6beb5473a282f5ffdc2faee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312835"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533614"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-php"></a>Bing Spell Check API のクイック スタート (PHP) 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>クイック スタート:Bing Spell Check REST API と PHP を使用してスペルをチェックする
 
-この記事では、PHP で [Bing Spell Check API](https://azure.microsoft.com/services/cognitive-services/spell-check/)  を使用する方法について説明します。 Spell Check API は、認識できない単語のリストを置換候補と共に返します。 一般に、この API にテキストを送信し、テキスト内の単語を置換候補に置き換えるか、その判断をユーザー自身が行えるように置換候補をアプリケーションのユーザーに表示することになるでしょう。 この記事では、"Hollo, wrld!" というテキストを含んだ要求を送信する方法について説明します。 置換候補は "Hello" と "world" です。
+このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Python アプリケーションは、API に要求を送信して、一連の修正候補を返します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[PHP 5.6.x](http://php.net/downloads.php) が必要です。
+* [PHP 5.6.x](https://php.net/downloads.php)
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Spell Check API v7** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#lang)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
+
 
 ## <a name="get-spell-check-results"></a>スペル チェックの結果を取得する
 
@@ -69,7 +70,7 @@ $headers = "Content-type: application/x-www-form-urlencoded\r\n" .
     "Ocp-Apim-Subscription-Key: $key\r\n";
 
 // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-// http://php.net/manual/en/function.stream-context-create.php
+// https://php.net/manual/en/function.stream-context-create.php
 $options = array (
     'http' => array (
         'header' => $headers,
@@ -130,13 +131,10 @@ echo $json;
    ]
 }
 ```
-
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Spell Check のチュートリアル](../tutorials/spellcheck.md)
+> [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>関連項目
-
-- [Bing Spell Check の概要](../proof-text.md)
+- [Bing Spell Check API とは](../overview.md)
 - [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

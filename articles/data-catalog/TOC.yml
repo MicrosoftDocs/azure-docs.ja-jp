@@ -1,0 +1,91 @@
+items:
+- name: Data Catalog のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Data Catalog とは
+    href: overview.md
+- name: クイック スタート
+  items:
+  - name: Azure データ カタログを作成する
+    href: data-catalog-get-started.md
+- name: チュートリアル
+  items:
+  - name: データ資産の登録
+    href: register-data-assets-tutorial.md
+- name: 概念
+  items:
+  - name: 一般的なシナリオ
+    href: data-catalog-common-scenarios.md
+  - name: サポートされるデータ ソース
+    href: data-catalog-dsr.md
+  - name: Azure Data Catalog の導入
+    href: data-catalog-adopting-data-catalog.md
+  - name: 前提条件
+    href: data-catalog-prerequisites.md
+  - name: FAQ
+    href: data-catalog-frequently-asked-questions.md
+- name: 方法
+  items:
+  - name: データ ソースの登録
+    href: data-catalog-how-to-register.md
+  - name: データ ソースの検出
+    href: data-catalog-how-to-discover.md
+  - name: データ ソースの注釈付け
+    href: data-catalog-how-to-annotate.md
+  - name: データ ソースの文書化
+    href: data-catalog-how-to-documentation.md
+  - name: データ ソースへの接続
+    href: data-catalog-how-to-connect.md
+  - name: ビッグ データの操作
+    href: data-catalog-how-to-big-data.md
+  - name: データ ソースのプロファイリング
+    href: data-catalog-how-to-data-profile.md
+  - name: データ資産の管理
+    href: data-catalog-how-to-manage.md
+  - name: 検索条件を保存してデータ資産をピン留めする
+    href: data-catalog-how-to-save-pin.md
+  - name: ビジネス用語集を設定する
+    href: data-catalog-how-to-business-glossary.md
+  - name: データ カタログへのアクセスをセキュリティで保護する
+    href: data-catalog-how-to-secure-catalog.md
+  - name: 関連するデータ資産の表示
+    href: data-catalog-how-to-view-related-data-assets.md
+  - name: トラブルシューティング
+    href: troubleshoot-policy-configuration.md
+- name: リファレンス
+  items:
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?service=data-catalog
+  - name: REST
+    href: /rest/api/datacatalog/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.datacatalog/catalogs
+  - name: 検索構文リファレンス
+    href: /rest/api/datacatalog/data-catalog-search-syntax-reference
+  - name: 開発者の概念
+    href: data-catalog-developer-concepts.md
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: Azure Data Catalog 用のキーボード ショートカット
+    href: data-catalog-keyboard-shortcuts.md
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/data-catalog/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=data-catalog
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-data-catalog
+  - name: 用語集
+    href: data-catalog-terminology.md
+ms.openlocfilehash: 0ef4cb62b8991db67df52fded512c1881050eac3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793929"

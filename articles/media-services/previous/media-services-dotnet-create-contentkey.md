@@ -4,7 +4,7 @@ description: アセットに安全にアクセスできる ContentKey を作成�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 53df4c4cef19f6eef99aa15bb265317aa0cd1d58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ab26be3b9ac5d209cfe8117bdf9e87e0c7e74188
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782741"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183086"
 ---
-# <a name="create-contentkeys-with-net"></a>.NET を使用したコンテンツ キーの作成
+# <a name="create-contentkeys-with-net"></a>.NET を使用したコンテンツ キーの作成 
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
@@ -30,9 +30,9 @@ ms.locfileid: "33782741"
 
 Media Services では、暗号化されたアセットを作成して送信できます。 **ContentKey** により、**アセット**に安全にアクセスすることができます。 
 
-新しいアセットを作成するときは ([ファイルをアップロード](media-services-dotnet-upload-files.md)する前など)、次の暗号化オプションを指定できます: **StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。 
+新しいアセットを作成するときは ([ファイルをアップロード](media-services-dotnet-upload-files.md)する前など)、次の暗号化オプションを指定できます:**StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。 
 
-クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-dotnet-configure-asset-delivery-policy.md): **DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
+クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-dotnet-configure-asset-delivery-policy.md):**DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
 
 暗号化されたアセットには、 **ContentKey**を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
 

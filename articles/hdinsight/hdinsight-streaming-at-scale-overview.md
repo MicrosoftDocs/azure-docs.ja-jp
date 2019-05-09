@@ -8,18 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: a86902d772226be136778d200a37c451b7b7e9a5
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201162"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight での大規模なストリーミング
 
 リアルタイム ビッグ データ ソリューションは、動いているデータに作用します。 通常、このデータは到着時に最も高い価値があります。 受信データ ストリームがその瞬間で処理できるよりも大きくなった場合は、リソースを制限する必要がある可能性があります。 または、オンデマンドでノードを追加することによって、HDInsight クラスターをスケール アップし、ストリーミング ソリューションに対応することができます。
 
-ストリーミング アプリケーションでは、1 つまたは複数のデータ ソースが、有用な情報をすべて取りこぼすことなく速やかに取り込む必要があるイベント (場合により 1 秒あたり数百万個) を生成しています。 受信イベントは、[Apache Kafka](kafka/apache-kafka-introduction.md) や [Event Hubs](https://azure.microsoft.com/services/event-hubs/) などのサービスによって、*ストリーム バッファリング* (*イベント キュー*とも呼ばれる) を使用して処理されます。 イベントを収集したら、[Apache Storm](storm/apache-storm-overview.md) または [Apache Spark ストリーミング](spark/apache-spark-streaming-overview.md)などの*ストリーム処理*レイヤー内でリアルタイム分析システムを使用して、データを分析できます。 処理済みのデータは、[Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) などの長期ストレージ システムに格納し、[Power BI](https://powerbi.microsoft.com)、Tableau、カスタム Web ページなどのビジネス インテリジェンス ダッシュ ボードにリアルタイムで表示できます。
+
+ストリーミング アプリケーションでは、1 つまたは複数のデータ ソースが、有用な情報をすべて取りこぼすことなく速やかに取り込む必要があるイベント (場合により 1 秒あたり数百万個) を生成しています。 受信イベントは、[Apache Kafka](kafka/apache-kafka-introduction.md) や [Event Hubs](https://azure.microsoft.com/services/event-hubs/) などのサービスによって、*ストリーム バッファリング* (*イベント キュー*とも呼ばれる) を使用して処理されます。 イベントを収集したら、[Apache Storm](storm/apache-storm-overview.md) または [Apache Spark ストリーミング](spark/apache-spark-streaming-overview.md)などの*ストリーム処理*レイヤー内でリアルタイム分析システムを使用して、データを分析できます。 処理済みのデータは、[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) などの長期ストレージ システムに格納し、[Power BI](https://powerbi.microsoft.com)、Tableau、カスタム Web ページなどのビジネス インテリジェンス ダッシュ ボードにリアルタイムで表示できます。
+
 
 ![HDInsight ストリーミング パターン](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -37,13 +39,13 @@ Apache Storm は、Hadoop を使用して、リアルタイムでデータのス
 
 ## <a name="spark-streaming"></a>Spark Streaming
 
-Spark Streaming は、Spark の拡張機能で、バッチ処理に使用する同じコードを再利用できます。 同じアプリケーションで、バッチと対話型の両方のクエリを組み合わせることができます。 Storm と異なり、Spark Streaming はステートフルな exactly-once 処理セマンティクスを提供します。 [Kafka Direct API](http://spark.apache.org/docs/latest/streaming-kafka-integration.html) と組み合わせて使用すると、すべての Kafka データが Spark Streaming によって正確に 1 回受信され、エンド ツー エンドの exactly-once 保証を実現できます。 Spark Streaming の長所の 1 つは、クラスター内で複数のノードが使用されている場合に、障害のあるノードを迅速に復旧するフォールト トレランス機能です。
+Spark Streaming は、Spark の拡張機能で、バッチ処理に使用する同じコードを再利用できます。 同じアプリケーションで、バッチと対話型の両方のクエリを組み合わせることができます。 Storm と異なり、Spark Streaming はステートフルな exactly-once 処理セマンティクスを提供します。 [Kafka Direct API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html) と組み合わせて使用すると、すべての Kafka データが Spark Streaming によって正確に 1 回受信され、エンド ツー エンドの exactly-once 保証を実現できます。 Spark Streaming の長所の 1 つは、クラスター内で複数のノードが使用されている場合に、障害のあるノードを迅速に復旧するフォールト トレランス機能です。
 
 詳細については、「[What is Apache Spark Streaming?](hdinsight-spark-streaming-overview.md)」(Apache Spark ストリーミングの概要) を参照してください。
 
 ## <a name="scaling-a-cluster"></a>クラスターのスケーリング
 
-作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。 すべての HDInsight クラスターで、[クラスター内のノード数を変更](hdinsight-administer-use-management-portal.md#scale-clusters)できます。 すべてのデータが Azure Storage または Data Lake Store に格納されるため、Spark クラスターはデータの損失なく削除できます。
+作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。 すべての HDInsight クラスターで、[クラスター内のノード数を変更](hdinsight-administer-use-portal-linux.md#scale-clusters)できます。 すべてのデータが Azure Storage または Data Lake Storage に格納されるため、Spark クラスターはデータの損失なく削除できます。
 
 分離テクノロジには利点があります。 たとえば、Kafka はイベント バッファリング テクノロジであるため、IO 集中型であり、大量の処理能力を必要としません。 比較すると、Spark Streaming などのストリーム プロセッサはコンピューティング集中型であり、より強力な VM を必要とします。 これらのテクノロジを異なるクラスターに分離することによって、VM を最適に利用しながら、それらを独立してスケーリングできます。
 
@@ -55,7 +57,7 @@ Spark Streaming は、Spark の拡張機能で、バッチ処理に使用する�
 
 Apache Storm と Spark Streaming は共に、データの処理中でも、クラスターにワーカー ノードを追加する機能をサポートしています。
 
-Storm のスケーリングによって追加された新しいノードを利用するには、クラスター サイズを増やす前に開始していた Storm トポロジを再調整する必要があります。 この再調整は、Storm Web UI またはその CLI を使用して実行できます。 詳細については、[Apache Storm のドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
+Storm のスケーリングによって追加された新しいノードを利用するには、クラスター サイズを増やす前に開始していた Storm トポロジを再調整する必要があります。 この再調整は、Storm Web UI またはその CLI を使用して実行できます。 詳細については、[Apache Storm のドキュメント](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
 
 Apache Spark は、アプリケーションの要件に応じて、その環境を構成するための 3 つの重要なパラメーター (`spark.executor.instances`、`spark.executor.cores`、および `spark.executor.memory`) を使用します。 *executor* は、Spark アプリケーション用に起動されるプロセスです。 executor はワーカー ノードで動作し、アプリケーションのタスクを実行する役割を担います。 それぞれのクラスターで使用される executor の既定の数とサイズは、ワーカー ノードの数とワーカー ノードのサイズに基づいて計算されます。 これらの数は、各クラスター ヘッド ノード上の `spark-defaults.conf` ファイルに格納されます。
 

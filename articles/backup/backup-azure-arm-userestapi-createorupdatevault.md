@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 7d1a4e6b1093344d1217e8577a56f34cd3c1f52c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289459"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734336"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーを作成する
 
@@ -29,7 +29,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>要求を作成する
 
-*PUT* 要求を作成するには、`{subscription-id}` パラメーターが必要です。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)を参照してください｡ リソースの `{resourceGroupName}` と `{vaultName}` を `api-version` パラメーターと共に定義します。 この記事では、`api-version=2016-06-01` を使用します。
+*PUT* 要求を作成するには、`{subscription-id}` パラメーターが必要です。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ リソースの `{resourceGroupName}` と `{vaultName}` を `api-version` パラメーターと共に定義します。 この記事では、`api-version=2016-06-01` を使用します。
 
 次のヘッダーは必須です｡
 
@@ -50,7 +50,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 |location     |  true       |String         |   リソースの場所      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  コンテナーのプロパティ       |
 |sku     |         |  [SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    各 Azure リソースの一意のシステム ID を示します     |
-|tags     |         | オブジェクト        |     リソース タグ    |
+|tags     |         | Object        |     リソース タグ    |
 
 コンテナー名とリソース グループ名は PUT URI で提供することに注意してください。 要求本文では場所を定義します。
 

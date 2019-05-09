@@ -1,21 +1,23 @@
 ---
-title: 'Azure AD Connect: ADSyncTools PowerShell リファレンス | Microsoft Docs'
+title: Azure AD Connect:ADSyncTools PowerShell リファレンス | Microsoft Docs
 description: このドキュメントでは、ADSyncTools.psm1 PowerShell モジュールの参照情報を示します。
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 734387e7ce5fc27cb88c73601bdfd0f35d04b693
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.topic: reference
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288681"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443336"
 ---
-# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: ADSyncTools PowerShell リファレンス
+# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:ADSyncTools PowerShell リファレンス
 次のドキュメントでは、Azure AD Connect に含まれる ADSyncTools.psm1 PowerShell モジュールの参照情報を示します。
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
@@ -63,7 +65,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
@@ -191,7 +193,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
@@ -284,7 +286,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
@@ -338,7 +340,7 @@ Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>Description
-AD オブジェクトを返します 。TO DO: マルチ フォレストのサポート
+AD オブジェクトを返します。作業予定:マルチ フォレストのサポート
 
 ### <a name="examples"></a>例
 
@@ -371,7 +373,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
@@ -418,7 +420,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
@@ -465,7 +467,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
@@ -512,7 +514,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
 
@@ -526,7 +528,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>Description
-関数は AAD 接続実行履歴を照会し、エラー "SourceAnchor attribute has changed." を報告するすべてのユーザーをエクスポートします。
+関数は AAD 接続実行履歴を照会し、エラー "SourceAnchor 属性が変更されました。" を報告するすべてのユーザーをエクスポートします。
 
 ### <a name="examples"></a>例
 
@@ -578,7 +580,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
@@ -593,7 +595,7 @@ Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFrom
 ```
 
 ### <a name="description"></a>Description
-ImmutableID 値を含むすべての Azure AD 同期済みユーザーを格納するファイルを GUID 形式で生成します。要件: MSOnline PowerShell モジュール
+ImmutableID 値を含むすべての Azure AD 同期済みユーザーを格納するファイルを GUID 形式で生成します。要件:MSOnline PowerShell モジュール
 
 ### <a name="examples"></a>例
 
@@ -641,7 +643,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 
 ## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
@@ -701,7 +703,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
 
@@ -719,7 +721,7 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 このスクリプトは、Active Directory ドメイン内のターゲット組織単位からすべてのオブジェクトを取得し、オブジェクト クラス (ユーザー/コンピューター) でフィルター処理し、UserCertificate 属性に存在する有効期限が切れたすべての証明書を削除します。
 既定 (BackupOnly モード) では、期限切れの証明書をファイルにバックアップするだけで、AD 内は何も変更しません。
 -BackupOnly $false を使用した場合、これらのオブジェクトの UserCertificate 属性に存在する有効期限が切れた証明書は、ファイルにコピーされた後で AD から削除されます。
-各証明書は別のファイル名でバックアップされます (ObjectClass_ObjectGUID_CertThumprint.cer)。スクリプトは、有効または有効期限が切れた証明書を持つすべてのユーザーと、行われた実際のアクション (スキップ/エクスポート/削除) を示すログ ファイルを CSV 形式で作成 します。
+各証明書は別のファイル名でバックアップされます (ObjectClass_ObjectGUID_CertThumprint.cer)。このスクリプトでは、有効なまたは有効期限切れの証明書を持つすべてのユーザーと、行われた実際のアクション (スキップ/エクスポート/削除) が記載された CSV 形式のログ ファイルが作成されます。
 
 ### <a name="examples"></a>例
 
@@ -786,7 +788,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
@@ -940,7 +942,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
@@ -1119,7 +1121,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
@@ -1212,7 +1214,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
 
 ## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
@@ -1227,7 +1229,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>Description
-ConsistencyGuid レポートから取得した新しい ConsistencyGuid (ImmutableId) でユーザーを更新します。この機能は WhatIf スイッチをサポートします。注:  ConsistencyGuid レポートはタブ区切り文字と一緒にインポートする必要があります
+ConsistencyGuid レポートから取得した新しい ConsistencyGuid (ImmutableId) 値でユーザーを更新します。この機能は WhatIf スイッチをサポートします。注:ConsistencyGuid レポートはタブ区切り文字と一緒にインポートする必要があります
 
 ### <a name="examples"></a>例
 
@@ -1336,4 +1338,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (http://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。

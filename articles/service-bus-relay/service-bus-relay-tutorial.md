@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 6927788fa79c567222a199064f5b375546ecf9ad
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: db73363a05734db5d7e3375a5755a807eb7ce2a5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890969"
 ---
 # <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
 
@@ -48,7 +48,7 @@ ms.locfileid: "51615478"
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-- [Visual Studio 2015 またはそれ以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
+- [Visual Studio 2015 またはそれ以降](https://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
 - Azure SDK for .NET。 [SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からインストールします。
 
 ## <a name="create-a-relay-namespace"></a>Relay 名前空間を作成する
@@ -68,7 +68,7 @@ ms.locfileid: "51615478"
 
 3. Service Bus NuGet パッケージをインストールします。 WCF の **System.ServiceModel** と Service Bus ライブラリへの参照が、このパッケージによって自動的に追加されます。 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできるようにする名前空間です。 Service Bus は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。
 
-    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[参照]** タブをクリックして、**WindowsAzure.ServiceBus** を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]** をクリックして、使用条件に同意します。
+    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。[参照] タブをクリックして、**WindowsAzure.ServiceBus** を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]** をクリックして、使用条件に同意します。
 
     ![Service Bus パッケージ][3]
 4. エディターに Program.cs ファイルがまだ表示されていない場合は、ソリューション エクスプローラーでこのファイルをダブルクリックして開きます。
@@ -84,10 +84,10 @@ ms.locfileid: "51615478"
    > このチュートリアルでは、C# の名前空間 **Microsoft.ServiceBus.Samples** を使用します。これは、コントラクトベースのマネージド型の名前空間で、「[WCF クライアントを構成する](#configure-the-wcf-client)」の手順に出てくる構成ファイルで使用されます。 このサンプルをビルドするときに必要な名前空間を指定できますが、それに応じて、アプリケーション構成ファイルでコントラクトとサービスの名前空間を変更しない限り、このチュートリアルは機能しません。 App.config ファイルで指定する名前空間は、C# ファイルで指定した名前空間と同じである必要があります。
    >
    >
-7. `Microsoft.ServiceBus.Samples` 名前空間の宣言の直後 (ただし、名前空間内部) に、`IEchoContract` という名前の新しいインターフェイスを定義し、このインターフェイスに名前空間の値が `http://samples.microsoft.com/ServiceModel/Relay/` の `ServiceContractAttribute` 属性を適用します。 この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。 代わりに、この名前空間の値は、このコントラクトの一意の識別子として使用されます。 名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。 名前空間の宣言の後に次のコードを貼り付けます。
+7. `Microsoft.ServiceBus.Samples` 名前空間の宣言の直後 (ただし、名前空間内部) に、`IEchoContract` という名前の新しいインターフェイスを定義し、このインターフェイスに名前空間の値が `https://samples.microsoft.com/ServiceModel/Relay/` の `ServiceContractAttribute` 属性を適用します。 この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。 代わりに、この名前空間の値は、このコントラクトの一意の識別子として使用されます。 名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。 名前空間の宣言の後に次のコードを貼り付けます。
 
     ```csharp
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
     }
@@ -122,7 +122,7 @@ using System.ServiceModel;
 
 namespace Microsoft.ServiceBus.Samples
 {
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]
@@ -158,7 +158,7 @@ Azure Relay を作成するには、まずコントラクトを作成する必�
 2. `IEchoContract` インターフェイスに [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) 属性を適用します。 サービスの名前と名前空間をこの属性で指定します。 指定後の `EchoService` クラスは次のようになります。
 
     ```csharp
-    [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class EchoService : IEchoContract
     {
     }
@@ -211,7 +211,7 @@ Azure Relay を作成するには、まずコントラクトを作成する必�
 次のコードは、サービス コントラクトの実装を示します。
 
 ```csharp
-[ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+[ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
 
     class EchoService : IEchoContract
     {
@@ -354,7 +354,7 @@ using Microsoft.ServiceBus.Description;
 
 namespace Microsoft.ServiceBus.Samples
 {
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]
@@ -363,7 +363,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IEchoChannel : IEchoContract, IClientChannel { };
 
-    [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class EchoService : IEchoContract
     {
         public string Echo(string text)
@@ -442,7 +442,7 @@ namespace Microsoft.ServiceBus.Samples
 6. 次の例に示すように、サービス コントラクトの定義を名前空間に追加します。 この定義は **Service** プロジェクトで使用される定義と同じです。 `Microsoft.ServiceBus.Samples` 名前空間の先頭に次のコードを追加する必要があります。
 
     ```csharp
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]
@@ -465,7 +465,7 @@ using System.ServiceModel;
 namespace Microsoft.ServiceBus.Samples
 {
 
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]
@@ -631,7 +631,7 @@ using System.ServiceModel;
 
 namespace Microsoft.ServiceBus.Samples
 {
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]

@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 の Storm パフォーマンス チューニ
 description: Azure Data Lake Storage Gen2 の Storm パフォーマンス チューニング ガイドライン
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 845bb739408cb38d823ae662e261d6955726d28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2401c74b55df78014a2f642b5166b4cf0017d87d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976795"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076209"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight と Azure Data Lake Storage Gen2 の Storm に対するパフォーマンス チューニング ガイダンス
 
@@ -23,7 +23,7 @@ Azure Storm トポロジのパフォーマンスを調整する際に考慮す�
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート:分析用ストレージ アカウントの作成](data-lake-storage-quickstart-create-account.md)に関するページをご覧ください。
-* Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 * **Data Lake Storage Gen2 上で Storm クラスターを実行している**。 詳細については、[HDInsight での Storm](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview) に関する記事を参照してください。
 * **Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス](data-lake-storage-performance-tuning-guidance.md)を参照してください。   
 
@@ -78,7 +78,7 @@ D13v2 Azure VM を含む 8 つのワーカー ノードから成るクラスタ�
 
 - **スパウトでの保留の最大数: topology.max.spout.pending**。 この設定は、任意の時点でフライト状態 (トポロジのどのノードでも受信確認されていない状態) でいられる、スパウト スレッドあたりのタプルの数を決定します。
 
- 適切な計算を行うには、まず各タプルのサイズを見積もります。 次に、1 つのスパウト スレッドにどれだけのメモリがあるかを確認します。 1 つのスレッドに割り当てられたメモリの合計をこの値で割ると、スパウトでの保留パラメーターの最大値が得られます。
+  適切な計算を行うには、まず各タプルのサイズを見積もります。 次に、1 つのスパウト スレッドにどれだけのメモリがあるかを確認します。 1 つのスレッドに割り当てられたメモリの合計をこの値で割ると、スパウトでの保留パラメーターの最大値が得られます。
 
 既定の Data Lake Storage Gen2 Storm ボルトには、このパラメーターのチューニングに使用できるサイズ同期ポリシー パラメーター (fileBufferSize) が用意されています。
 

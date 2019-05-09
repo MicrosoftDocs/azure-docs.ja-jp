@@ -4,7 +4,7 @@ description: このトピックでは、Microsoft Azure Media Services に関連
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: d4c43afd-dba8-40a2-ad92-6de54152f7ec
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c755cc4297e0729726d63ff1ce85f85672a07041
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dc0d41457729bf5fd78adb88d683ab4fbe23a148
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785711"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293347"
 ---
 # <a name="quotas-and-limitations"></a>クォータと制限
+
 この記事では、Microsoft Azure Media Services に関連付けられているクォータと制限について説明します。
 
 [!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]

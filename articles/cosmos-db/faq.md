@@ -1,20 +1,18 @@
 ---
 title: Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 description: グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB についてよく寄せられる質問の回答が得られます。 容量、パフォーマンス レベル、スケーリングについて説明します。
-keywords: データベース質問, よく寄せられる質問, documentdb, azure, Microsoft azure
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 70feaae718bc6ff8e3f956f0fbc6aa395ba27061
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410399"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523955"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -26,7 +24,7 @@ DocumentDB API アカウントを既に持っていた場合は、そのアカ�
 
 ### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Azure DocumentDB サービスはどうなりましたか?
 
-Azure DocumentDB サービスは Azure Cosmos DB サービスの一部となり、SQL API という形になりました。 Azure DocumentDB に対して構築されたアプリケーションは、何も変更せずに Azure Cosmos DB SQL API に対して実行できます。 また、Azure Cosmos DB は、Gremlin API、Table API、MongoDB API、および Cassandra API (プレビュー) もサポートしています。
+Azure DocumentDB サービスは Azure Cosmos DB サービスの一部となり、SQL API という形になりました。 Azure DocumentDB に対して構築されたアプリケーションは、何も変更せずに Azure Cosmos DB SQL API に対して実行できます。 Cosmos DB では、[Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md)、[Azure Table Storage](table-introduction.md) といったワイヤ プロトコルもサービスで直接実装されています。 これにより、よく使用される NoSQL API 用のクライアント ドライバー (およびツール) で Cosmos データベースを直接参照することができます。
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Azure Cosmos DB の一般的なユース ケースを教えてください。
 
@@ -36,11 +34,11 @@ Azure Cosmos DB は、自動スケール、予測可能なパフォーマンス�
 
 [要求ユニット](request-units.md) (RU) とは、Azure Cosmos DB におけるスループットの単位です。 1 RU のスループットは、1 KB のドキュメントを取得するスループットに相当します。 Azure Cosmos DB におけるすべての操作 (読み取り、書き込み、SQL クエリ、ストアド プロシージャの実行など) には、操作を完了するために必要なスループットに基づいて明確な RU 値が設定されています。 CPU、IO、メモリや、これらがアプリケーションのスループットに及ぼす影響について考えるのではなく、RU という 1 つの単位を基にして考えることができます。
 
-各 Azure Cosmos DB コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して予約できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。 この場合の "*コンテナー*" とは、SQL API のコレクション、Gremlin API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。
+各 Azure Cosmos DB コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して構成できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB は、キー/値、多桁式、ドキュメント、グラフなどのさまざまなデータ モデルをどのようにサポートしていますか?
 
-キー/値 (テーブル)、多桁式、ドキュメント、およびグラフ データ モデルは、Azure Cosmos DB のベースである ARS (アトム、レコード、およびシーケンス) 設計のため、すべてネイティブにサポートされています。 アトム、レコード、およびシーケンスは、さまざまなデータ モデルに容易にマップしたり投影したりできます。 モデルのサブセット用の API は今すぐ使用でき (SQL、MongoDB、Table、および Gremlin API)、追加のデータ モデルに固有のその他の API は将来使用可能になります。
+キー/値 (テーブル)、多桁式、ドキュメント、およびグラフ データ モデルは、Azure Cosmos DB のベースである ARS (アトム、レコード、およびシーケンス) 設計のため、すべてネイティブにサポートされています。 アトム、レコード、およびシーケンスは、さまざまなデータ モデルに容易にマップしたり投影したりできます。 モデルのサブセット用の API は今すぐ使用でき (SQL、MongoDB、Table、Gremlin)、追加のデータ モデルに固有のその他の API は将来使用可能になります。
 
 Azure Cosmos DB は、開発者にスキーマやセカンダリ インデックスを要求することなく、取り込んだすべてのデータを自動的にインデックス作成できるスキーマ独立型インデックス作成エンジンを備えています。 このエンジンは、インデックスおよびクエリ処理サブシステムから記憶域のレイアウトを分離する一連の論理インデックス レイアウト (転置、多桁式、ツリー) に依存しています。 さらに Cosmos DB は、一連のワイヤ プロトコルと API を拡張可能な方法でサポートし、それらをコア データ モデル (1) と論理インデックス レイアウト (2) に効率的に変換することによって複数のデータ モデルをネイティブにサポートできるようにする独自の能力も備えています。
 
@@ -62,7 +60,7 @@ Azure Cosmos DB でコンテナーがサポートできるスループットの�
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB の料金はいくらですか?
 
-詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 この場合のコンテナーとは、SQL API のコレクション、Gremlin API (Graph)、MongoDB API のコレクション、Table API のテーブルを指します。
+詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。
 
 ### <a name="is-a-free-account-available"></a>無料アカウントはありますか?
 
@@ -97,15 +95,16 @@ Try Azure Cosmos DB サブスクリプションには、次の条件が適用さ
 * MongoDB アカウントのサブスクリプションあたり最大 3 つのコレクション。
 * 10 GB のストレージ容量。
 * グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です
-* 最大スループット 5 K RU/秒。
-* サブスクリプションの有効期限は 24 時間後に切れます。これは、合計で最大 48 時間まで延長できます。
+* コンテナー レベルでプロビジョニングされている場合、最大 5 K RU/s のスループット。
+* データベース レベルでプロビジョニングされている場合、最大 20 K RU/s のスループット。
+* サブスクリプションの有効期限は 30 日後に切れます。これは合計で最大 31 日まで延長できます。
 * Try Azure Cosmos DB アカウントでは Azure サポート チケットを作成できません。ただし、既存のサポート プランをご利用のサブスクライバーにはサポートが提供されます。
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB の設定
 
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Azure Cosmos DB にサインアップするにはどうすればよいですか?
 
-Azure Cosmos DB は Azure Portal で利用できます。 まず、Azure サブスクリプションにサインアップします。 サインアップしたら、SQL API、Gremlin API、Table API、MongoDB API、または Cassandra API のアカウントを Azure サブスクリプションに追加できます。
+Azure Cosmos DB は Azure Portal で利用できます。 まず、Azure サブスクリプションにサインアップします。 サインアップ後、Azure サブスクリプションに Azure Cosmos DB アカウントを追加できます。
 
 ### <a name="what-is-a-master-key"></a>マスター キーとは何ですか?
 
@@ -153,7 +152,7 @@ SQL API の [.NET](sql-api-dotnet-samples.md)、[Java](https://github.com/Azure/
 
 コンテナーとは、ドキュメントと、関連する JavaScript アプリケーション ロジックのグループです。 コンテナーは課金対象のエンティティであり、その[コスト](performance-levels.md)は、スループットと使用しているストレージによって決まります。 コンテナーは、1 つ以上のパーティションまたはサーバーにまたがって存在することができ、拡張性があるので、対応できるストレージまたはスループットの量には実質的に制限はありません。
 
-* SQL および MongoDB API アカウントの場合、コンテナーはコレクションにマップされます。
+* SQL API アカウントと Cosmos DB の MongoDB 用 API アカウントの場合、コンテナーはコレクションにマップされます。
 * Cassandra および Table API アカウントの場合、コンテナーはテーブルにマップされます。
 * Gremlin API アカウントの場合、コンテナーはグラフにマップされます。
 
@@ -161,7 +160,7 @@ SQL API の [.NET](sql-api-dotnet-samples.md)、[Java](https://github.com/Azure/
 
 ### <a name="how-do-i-create-a-database"></a>どのようにしてデータベースを作成しますか?
 
-データベースは、[Azure Portal](https://portal.azure.com) (「[コレクションの追加](create-sql-api-dotnet.md#create-collection)」を参照)、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) のいずれか、または [REST API](/rest/api/cosmos-db/) を使用して作成できます。
+データベースは、[Azure Portal](https://portal.azure.com) (「[コレクションの追加](create-sql-api-dotnet.md#create-collection-database)」を参照)、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) のいずれか、または [REST API](/rest/api/cosmos-db/) を使用して作成できます。
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>どのようにしてユーザーおよびアクセス許可を設定しますか?
 
@@ -183,7 +182,7 @@ SQL API は、HTTP エンティティ タグ (ETag) によるオプティミス�
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>どのようにして SQL API のトランザクションを実行しますか?
 
-SQL API は、JavaScript のストアド プロシージャとトリガーによる、統合された言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コレクションの場合は、コレクションが実行対象となります。 コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[Azure Cosmos DB のサーバー側プログラミング](programming.md)」を参照してください。
+SQL API は、JavaScript のストアド プロシージャとトリガーによる、統合された言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コレクションの場合は、コレクションが実行対象となります。 コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[Azure Cosmos DB のサーバー側プログラミング](stored-procedures-triggers-udfs.md)」を参照してください。
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>ドキュメントを Cosmos DB に一括挿入するにはどうすればよいですか?
 
@@ -191,11 +190,7 @@ Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれか�
 
 * 一括実行ツール。[一括実行 .NET ライブラリの使用](bulk-executor-dot-net.md)および[一括実行 Java ライブラリの使用](bulk-executor-java.md)に関する記事で説明されています。
 * データ移行ツール。[Azure Cosmos DB 用のデータベース移行ツール](import-data.md)に関する記事で説明されています。
-* ストアド プロシージャ。[Azure Cosmos DB のサーバー側 JavaScript プログラミング](programming.md)に関する記事で説明されています。
-
-### <a name="ive-set-up-my-container-to-use-lazy-indexing-i-see-that-my-queries-dont-return-expected-results"></a>非同期インデックスを使用するようにコンテナーを設定しましたが、クエリで期待される結果が返りません。
-
-インデックス作成セクションに説明されているように、非同期インデックスではこのような結果になる可能性があります。 常にすべてのアプリケーションで同期インデックスを使用する必要があります。
+* ストアド プロシージャ。[Azure Cosmos DB のサーバー側 JavaScript プログラミング](stored-procedures-triggers-udfs.md)に関する記事で説明されています。
 
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>SQL API はリソース リンク キャッシュをサポートしていますか?
 
@@ -207,38 +202,38 @@ Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれか�
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>ポータルのデータ エクスプローラーから表示したとき、ドキュメント内の長い浮動小数点値が丸められるのはなぜですか?
 
-これは、JavaScript の制限です。 JavaScript では IEEE 754 で指定されている倍精度浮動小数点形式の値が使用されるため、安全に保持できるのは -(253 - 1) ～ 253 - 1 (つまり 9007199254740991) の範囲の値だけです。
+これは、JavaScript の制限です。 JavaScript では IEEE 754 で指定されている倍精度浮動小数点形式の値が使用されるため、安全に保持できるのは -(2<sup>53</sup> - 1) から 2<sup>53</sup> - 1 (つまり 9007199254740991) の範囲の値だけです。
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>アクセス許可はオブジェクト階層のどこで許可されますか?
 
 ResourceTokens の使用によるアクセス許可の作成は、コンテナー レベルとその子孫 (ドキュメントや添付ファイルなど) で許可されます。 これは、データベースまたはアカウント レベルでのアクセス許可の作成は、現時点では許可されないことを示唆しています。
 
-## <a name="mongodb-api"></a>MongoDB API
+## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 
-### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API とは何ですか?
+### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API とは何ですか?
 
-Azure Cosmos DB の MongoDB 用 API は、コミュニティでサポートされる既存の Apache MongoDB API とドライバーを使用して、アプリケーションがネイティブの Azure Cosmos DB データベース エンジンと簡単かつ透過的に通信できるようにする互換性レイヤーです。 開発者は、既存の MongoDB ツール チェーンとスキルを使って、Azure Cosmos DB を活用するアプリケーションを構築できるようになりました。 これにより、自動インデックス作成、バックアップ メンテナンス、利用料金に基づくサービス レベル アグリーメント (SLA) など、Azure Cosmos DB の独自の機能によるメリットが得られます。
+Azure Cosmos DB の MongoDB 用 API は、コミュニティでサポートされる MongoDB 用の既存の SDK とドライバーを使用して、アプリケーションがネイティブの Azure Cosmos DB データベース エンジンと簡単かつ透過的に通信できるようにするワイヤ プロトコル互換レイヤーです。 開発者は、既存の MongoDB ツールチェーンとスキルを使って、Azure Cosmos DB を活用するアプリケーションを構築できるようになりました。 これにより、マルチマスター レプリケーションによるグローバル配信、自動インデックス作成、バックアップ メンテナンス、利用料金に基づくサービス レベル アグリーメント (SLA) など、Azure Cosmos DB の独自の機能によるメリットが得られます。
 
-### <a name="how-do-i-connect-to-my-api-for-mongodb-database"></a>MongoDB 用 API データベースに接続するにはどうすればよいですか?
+### <a name="how-do-i-connect-to-my-database"></a>データベースに接続する方法は?
 
-Azure Cosmos DB の MongoDB 用 API に接続する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を使用することです。 アカウントに移動し、左側のナビゲーション メニューで **[クイック スタート]** をクリックします。 クイック スタートは、コード スニペットを取得してデータベースに接続するための最善の方法です。
+Azure Cosmos DB の MongoDB 用 API で Cosmo データベースに接続する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を使用することです。 アカウントに移動し、左側のナビゲーション メニューで **[クイック スタート]** をクリックします。 クイック スタートは、コード スニペットを取得してデータベースに接続するための最善の方法です。
 
 Azure Cosmos DB では、厳密なセキュリティ要件と基準が適用されます。 Azure Cosmos DB アカウントでは、SSL による認証とセキュリティで保護された通信が要求されるので、必ず TLSv1.2 を使用してください。
 
-詳細については、[MongoDB 用 API データベースへの接続](connect-mongodb-account.md)に関する記事をご覧ください。
+詳細については、[Azure Cosmos DB の MongoDB 用 API で Cosmo データベースに接続する](connect-mongodb-account.md)方法に関するページを参照してください。
 
-### <a name="are-there-additional-error-codes-for-an-api-for-mongodb-database"></a>MongoDB 用 API にはその他のエラー コードはありますか?
+Azure Cosmos DB の MongoDB 用 API を使用するとき、対処しなければならないエラー コードは他にもありますか。
 
-MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、独自のエラー コードがあります。
+Azure Cosmos DB の MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、次のような独自のエラー コードがあります。
 
 | Error               | コード  | 説明  | 解決策  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用された要求ユニットの合計数が、コレクションのプロビジョニング済みの要求ユニット レートを超えたために調整されました。 | Azure Portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングするか、再試行することを検討してください。 |
-| ExceededMemoryLimit | 16501 | マルチテナント サービスとしての操作が、クライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 <br><br>例: *&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name:"Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+| ExceededMemoryLimit | 16501 | マルチテナント サービスとしての操作が、クライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 <br><br>例: <em>&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name:"Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
 
-### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>MongoDB 向けの Simba ドライバーは Azure CosmosDB MongoDB API で使用できますか。
+### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 向けの Simba ドライバーは Azure Cosmos DB の MongoDB 用 API で使用できますか。
 
-はい。Simba の Mongo ODBC ドライバーは Azure CosmosDB MongoDB API で使用できます。
+はい。Simba の Mongo ODBC ドライバーは Azure Cosmos DB の MongoDB 用 API で使用できます。
 
 ## <a id="table"></a>Table API
 
@@ -263,14 +258,15 @@ Azure Cosmos DB Table API は [Azure Portal][azure-portal] で利用できます
 * CORS は現在サポートされていません。
 * Azure Table Storage ではテーブル名は大文字小文字が区別されませんが、Azure Cosmos DB Table API では区別されます。
 * 現在、バイナリ フィールドなどのエンコード情報に対する Azure Cosmos DB の内部形式の一部は、それほど効率的ではありません。 そのため、データ サイズの予期しない制限が発生する可能性があります。 たとえば、現在、エンコードによってデータ サイズが増加するため、フル 1 メガのテーブル エンティティを使用してバイナリ データを格納することはできません。
-* エンティティ プロパティ名 "Id" は現在サポートされていません。
+* エンティティ プロパティ名 "ID" は現在サポートされていません。
 * TableQuery TakeCount は 1000 に制限されません。
 
 REST API に関しては、Azure Cosmos DB Table API によってサポートされないエンドポイント/クエリ オプションがいくつかあります。
+
 | REST メソッド | REST エンドポイント/クエリ オプション | ドキュメントの URL | 説明 |
 | ------------| ------------- | ---------- | ----------- |
 | GET、PUT | /?restype=service@comp=properties| 「[Set Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties)」(Table Service のプロパティを設定する) および「[Get Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties)」(Table Service のプロパティを取得する) | このエンドポイントは、CORS ルールの設定、ストレージ分析の構成、ログ記録の設定に使われます。 CORS は現在サポートされておらず、Azure Cosmos DB での分析とログ記録の処理は Azure Storage Table とは異なります。 |
-| OPTIONS | /<table-resource-name> | 「[Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request)」(プレフライト CORS テーブル要求) | これは、Azure Cosmos DB が現在サポートしていない CORS の一部です。 |
+| OPTIONS | /\<table-resource-name> | 「[Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request)」(プレフライト CORS テーブル要求) | これは、Azure Cosmos DB が現在サポートしていない CORS の一部です。 |
 | GET | /?restype=service@comp=stats | 「[Get Table Service Stats](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats)」(Table Service の統計情報を取得する) | プライマリとセカンダリの間でデータがレプリケートされる速度の情報を提供します。 Cosmos DB ではレプリケーションは書き込みの一部なので、これは必要ありません。 |
 | GET、PUT | /mytable?comp=acl | 「[Get Table ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl)」(テーブルの ACL を取得する) および[Set Table ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl)」(テーブルの ACL を設定する) | Shared Access Signature (SAS) の管理に使われる保存されたアクセス ポリシーを取得および設定します。 SAS はサポートされていますが、設定と管理の方法は異なります。 |
 
@@ -313,7 +309,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=
 
 ### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-net-sdk-for-the-table-api"></a>Table API の .NET SDK で、要求オプションの構成設定をオーバーライドするにはどうすればよいですか?
 
-構成設定については、「[Azure Cosmos DB の機能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)」をご覧ください。 一部の設定は CreateCloudTableClient メソッドで処理され、他の設定はクライアント アプリケーションの appSettings セクションの app.config で処理されます。
+一部の設定は CreateCloudTableClient メソッドで処理され、他の設定はクライアント アプリケーションの appSettings セクションの app.config で処理されます。 構成設定については、「[Azure Cosmos DB の機能](tutorial-develop-table-dotnet.md)」をご覧ください。
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>既存の Azure Table Storage SDK を使っている顧客に関する変更はありますか?
 
@@ -379,7 +375,7 @@ Azure Cosmos DB のグローバル レプリケーション ポータル ウィ�
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>データを分散するときに低待機時間を実現するために、優先読み取りリージョンを構成するにはどうすればよいですか?
 
-ローカルの場所から読み取りを実行できるようにするには、app.config ファイルの PreferredLocation キーを使用します。 既存のアプリケーションの場合、LocationMode が設定されていると、Table API はエラーをスローします。 Table API は app.config ファイルからこの情報を取得するので、該当のコードを削除してください。 詳細については、「[Azure Cosmos DB の機能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)」をご覧ください。
+ローカルの場所から読み取りを実行できるようにするには、app.config ファイルの PreferredLocation キーを使用します。 既存のアプリケーションの場合、LocationMode が設定されていると、Table API はエラーをスローします。 Table API は app.config ファイルからこの情報を取得するので、該当のコードを削除してください。 
 
 ### <a name="how-should-i-think-about-consistency-levels-in-the-table-api"></a>Table API の整合レベルについてどのように考えればよいですか?
 
@@ -391,7 +387,7 @@ Table API では、既定で有界整合性制約の整合性が適用され、"
 
 ### <a name="does-azure-cosmos-db-table-api-offer-more-consistency-levels-than-azure-table-storage"></a>Azure Cosmos DB Table API では、Azure Table Storage より多くの整合性レベルが提供されますか?
 
-はい。Azure Cosmos DB の分散特性のメリットを得る方法については、「[一貫性レベル](consistency-levels.md)」をご覧ください。 整合性レベルは保証の対象となるため、安心して使用できます。 詳細については、「[Azure Cosmos DB の機能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)」をご覧ください。
+はい。Azure Cosmos DB の分散特性のメリットを得る方法については、「[一貫性レベル](consistency-levels.md)」をご覧ください。 整合性レベルは保証の対象となるため、安心して使用できます。
 
 ### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>グローバル分散を有効にした場合、データのレプリケーションにどのくらいの時間がかかりますか?
 
@@ -421,7 +417,7 @@ Table API は、Azure Cosmos DB のグローバルに分散されたプラット
 
 ### <a name="can-i-change-the-indexing-policy"></a>インデックス作成ポリシーは変更できますか?
 
-はい。インデックス定義を提供することでインデックス作成ポリシーを変更できます。 詳細については、「[Azure Cosmos DB の機能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)」をご覧ください。 設定を適切にエンコードし、エスケープする必要があります。
+はい。インデックス定義を提供することでインデックス作成ポリシーを変更できます。 設定を適切にエンコードし、エスケープする必要があります。
 
 .NET SDK がない場合、インデックス作成ポリシーを設定できる唯一の方法は次のとおりです。ポータルの**データ エクスプローラー**で、変更する特定のテーブルに移動し、**[Scale & Settings]\(スケールと設定\)** > [インデックス作成ポリシー] で必要な変更を行って、**[保存]** を選びます。
 
@@ -610,7 +606,6 @@ g.V('mary').out('knows').executionProfile()
         },
         "storeOps": [
           {
-            "partitionsAccessed": 1,
             "count": 0,
             "size": 0,
             "time": 0.6
@@ -646,7 +641,7 @@ g.V('mary').out('knows').executionProfile()
 
 ## <a id="cassandra"></a> Cassandra API
 
-### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>プライベート プレビューでサポートされているプロトコルのバージョンは何ですか? 他のプロトコルをサポートする予定はありますか?
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmso DB の Cassandra API でサポートされているプロトコル バージョンは何ですか? 他のプロトコルをサポートする予定はありますか?
 
 現在、Azure Cosmos DB 用の Apache Cassandra API は CQL バージョン 4 をサポートしています。 他のプロトコルのサポートについてフィードバックがある場合は、[UserVoice のフィードバック](https://feedback.azure.com/forums/263030-azure-cosmos-db)を投稿するか、メールを [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) に送信してください。
 
@@ -696,7 +691,7 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 この無制限のストレージは、主要概念としてパーティション分割を使用する、データの水平スケールアウトに基づいてします。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。
 
-論理パーティションあたりのエンティティ数または項目数に対する 10 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーに大量の (10 GB を超える) データ が割り当てられている場合にのみ発生する可能性があります。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択し、データの分散を改善することをお勧めします。
+論理パーティションあたりのエンティティ数または項目数に対する 10 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーに大量の (10&nbsp;GB を超える) データ が割り当てられている場合にのみ発生する可能性があります。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択し、データの分散を改善することをお勧めします。
 
 ### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>パーティション キーが数百万個または数十億個あるキー値ストアとして Cassandra API を使用することはできますか?
 
@@ -750,7 +745,7 @@ Azure Cosmos DB はプラットフォーム サービスであり、生産性を
 
 ### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>Azure Cosmos DB の Apache Cassandra API で動作するクライアント SDK はどれですか?
 
-プライベート プレビューでは、CQLv3 を使用する Apache Cassandra SDK のクライアント ドライバーがクライアント プログラムに使用されていました。 他のドライバーを使用している場合、または問題が発生している場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせください。
+CQLv3 を使用する Apache Cassandra SDK のクライアント ドライバーがクライアント プログラムに使用されていました。 他のドライバーを使用している場合、または問題が発生している場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせください。
 
 ### <a name="is-composite-partition-key-supported"></a>複合パーティション キーはサポートされていますか?
 
@@ -787,7 +782,7 @@ Azure Cosmos DB の Cassandra API は、Azure Cosmos DB のグローバルに分
 
 今後、この機能をサポートする予定です。
 
-### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-changefeed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>プラットフォームとしての Azure Cosmos DB は、変更フィードなどの多数の機能を備えているようですが、 これらの機能が Cassandra API に追加される予定はありますか?
+### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-change-feed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>プラットフォームとしての Azure Cosmos DB は、変更フィードなどの多数の機能を備えているようですが、 これらの機能が Cassandra API に追加される予定はありますか?
 
 Apache Cassandra API には、Apache Cassandra と同じ CQL 機能が提供されています。 今後、多様な機能をサポートする実現可能性を調査する予定です。
 

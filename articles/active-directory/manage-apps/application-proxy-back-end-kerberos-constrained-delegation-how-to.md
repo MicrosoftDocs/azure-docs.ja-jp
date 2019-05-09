@@ -3,24 +3,25 @@ title: Application Proxy | Microsoft Docsのための、制限付き委任構成
 description: Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 2a55e39414cd691c48b015b3aae73f93cbb95aab
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b83b08c442a7f10d6b29122fe7959bedf8f3cff0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134660"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177531"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 

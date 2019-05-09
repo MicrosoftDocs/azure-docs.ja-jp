@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3240b3ecfe8de8644d2ac1fd4a880fc0d2dcc76b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7aadac72aa1c8c7e7085cccba1d8c83ffb3ebc7b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237130"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58792435"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
+
 このチュートリアルでは、Azure Blob Storage から Azure SQL Database にデータをコピーする Data Factory パイプラインを作成します。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
 
 このチュートリアルでは、以下の手順を実行します。
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Jane|Doe
     ```
 
-2. [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して **adfv2tutorial** コンテナーを作成し、このコンテナーに **inputEmp.txt** ファイルをアップロードします。
+2. [Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用して **adfv2tutorial** コンテナーを作成し、このコンテナーに **inputEmp.txt** ファイルをアップロードします。
 
 #### <a name="create-a-sink-sql-table"></a>シンク SQL テーブルを作成する
 
@@ -96,11 +96,11 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
 1. **[ツール]** -> **[NuGet パッケージ マネージャー]** -> **[パッケージ マネージャー コンソール]** の順にクリックします。
-2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。
+2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。 詳細については、[Microsoft.Azure.Management.DataFactory nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)を参照してください。
 
-    ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    ```powershell
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 
@@ -118,8 +118,9 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     using Microsoft.Azure.Management.DataFactory.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
+
     
-2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```csharp
     // Set variables
@@ -232,12 +233,12 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.Ser
 
 Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照し、次の内容を記述します。
 
-- コピー元 BLOB の場所: **FolderPath** と **FileName**。
-- 内容の解析方法を示す BLOB 形式: **TextFormat** とその設定 (たとえば、列区切り文字)。
+- コピー元 BLOB の場所:**FolderPath** と **FileName**。
+- コンテンツの解析方法を示す BLOB 形式:**TextFormat** とその設定 (たとえば、列区切り記号)。
 - 列名とデータ型を含むデータ構造。ここでは、シンク SQL テーブルにマップされます。
 
 ```csharp
-// Create a Azure Blob dataset
+// Create an Azure Blob dataset
 Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
@@ -275,7 +276,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.Serializat
 Azure SQL Database 内のシンク データを表すデータセットを定義します。 このデータセットは、前の手順で作成した Azure SQL Database のリンクされたサービスを参照します。 また、コピーされたデータを保持する SQL テーブルも指定します。 
 
 ```csharp
-// Create a Azure SQL Database dataset
+// Create an Azure SQL Database dataset
 Console.WriteLine("Creating dataset " + sqlDatasetName + "...");
 DatasetResource sqlDataset = new DatasetResource(
     new AzureSqlTableDataset
@@ -514,6 +515,7 @@ Press any key to exit...
 
 
 ## <a name="next-steps"></a>次の手順
+
 このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 以下の方法について学習しました。 
 
 > [!div class="checklist"]

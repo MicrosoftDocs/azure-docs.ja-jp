@@ -1,54 +1,57 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9e9f0020ce52a5bd75e15ab333ed367244016e11
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317522"
 documentType: LandingData
 title: Azure Maps のドキュメント
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Maps のドキュメント | Microsoft Docs
   meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
   author: philmea
-  manager: 
+  manager: null
   ms.service: azure-maps
   services: azure-maps
   ms.topic: landing-page
-  ms.date: 05/07/2018
+  ms.date: 02/14/2019
   ms.author: philmea
 abstract:
-  description: Azure Maps は、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 このサービスは Azure One API に準拠した一連の REST API であり、開発を簡単かつ容易にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。
+  description: Azure Maps は、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するために使用できる最新のマッピング データが搭載された強力な地理空間機能を、あらゆる業界の開発者に提供します。 Azure Maps は、Azure One API に準拠した一連の REST API であり、マップ、検索、経路指定、交通状況、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、空間演算に対応しています。Web SDK と Android SDK の両方が用意されており、開発を簡単かつ柔軟に行えるうえ、複数のプラットフォーム全体での移植が可能です。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure Maps を使用して、マップ検索アプリを起動します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /azure/sql-database/media/index/portal.svg
-      text: デモ用の地図アプリの起動
-      href: /azure/azure-maps/quick-demo-map-app
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure Maps を使用して観光名所の検索や場所へのルート設定を行う地理空間の Web アプリケーションを作成します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Azure Maps を使用して地理空間アプリケーションを作成する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
+            text: Web アプリを作成する
+            href: /azure/azure-maps/quick-demo-map-app
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/azure-maps/tutorial-search-location">観光名所の検索</a>
-    - html: <a href="/azure/azure-maps/tutorial-route-location">観光名所までのルート設定</a>
-    - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">移動モード別のルート</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsW
+      - html: <b>Web SDK のチュートリアル</b>
+      - type: paragraph
+        text: Azure Maps Web SDK を使用して、地理空間 Web アプリケーションを構築します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/azure-maps/tutorial-search-location">観光名所の検索</a>
+          - html: <a href="/azure/azure-maps/tutorial-route-location">観光名所までのルート設定</a>
+          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">移動モード別のルート</a>
+          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">ストア ロケーターの作成</a>
+      - html: <b>REST API のチュートリアル</b>
+      - type: paragraph
+        text: Azure Maps REST サービスを呼び出す地理空間アプリケーションを構築します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/azure-maps/tutorial-geofence">ジオフェンスの設定</a>
+  - title: リファレンス
     items:
-    - title: JavaScript
-      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">マップ コントロール</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">タイムゾーン サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">マップ アカウント管理</a></p>
+      - type: list
+        style: cards
+        className: cardsW
+        items:
+          - title: JavaScript
+            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">マップ コントロール</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">データ サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">位置情報サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空間サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">タイムゾーン サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p>'

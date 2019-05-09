@@ -3,9 +3,9 @@ title: 脅威 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
 description: Microsoft Threat Modeling Tool の脅威のカテゴリ ページには、生成された危険な全脅威のカテゴリが表示されます。
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 704f9995828866d4d2e4969e3aa922ed1e23c4ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23043307"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359036"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool の脅威
 
@@ -37,7 +37,7 @@ Threat Modeling Tool を使用すると、以下のような特定の質問に�
 
 これらの種類の特定の質問をより適切に定式化できるように、Microsoft は STRIDE モデルを使用しています。このモデルではさまざまな種類の脅威を分類し、セキュリティに関する会話全体を簡単にします。
 
-| カテゴリ | Description |
+| カテゴリ | 説明 |
 | -------- | ----------- |
 | **スプーフィング** | 他のユーザーの認証情報 (ユーザー名、パスワードなど) に不正にアクセスし、それを使用する行為などです |
 | **改ざん** | 悪意のあるデータの変更などです。 例としては、データベースに保持されているような永続的なデータに対する許可されていない変更や、インターネットなどのオープン ネットワーク経由で 2 台のコンピューター間を流れるデータの変更などがあります |
@@ -46,6 +46,6 @@ Threat Modeling Tool を使用すると、以下のような特定の質問に�
 | **サービス拒否** | サービス拒否 (DoS) 攻撃では、有効なユーザーへのサービスが拒否されます。たとえば、Web サーバーを一時的に使用できなくする行為です。 システムの可用性と信頼性を向上させるために、特定の種類の DoS 脅威からシステムを保護する必要があります |
 | **特権の昇格** | 特権のないユーザーが特権的なアクセスを取得すると、システム全体を侵害したり破壊したりできるようになります。 特権の昇格の脅威には、攻撃者が効果的にすべてのシステム防御を破り、信頼されているシステム自体の一部となる、本当に危険な状況が含まれます |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 「**[Threat Modeling Tool Mitigations](./azure-security-threat-modeling-tool-mitigations.md)**」(Threat Modeling Tool の軽減策) に進み、これらの脅威 Azure で軽減する方法について学びます。

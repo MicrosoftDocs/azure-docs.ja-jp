@@ -1,0 +1,38 @@
+- name: Azure Service Health
+  href: index.md
+- name: 概要
+  items:
+    - name: Azure の状態とは
+      href: azure-status-overview.md
+    - name: Service Health とは
+      href: service-health-overview.md
+    - name: Resource Health とは
+      href: resource-health-overview.md
+- name: 方法
+  items:
+    - name: Service Health イベントのアラートの構成
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      items:
+        - name: Azure Portal を使用したサービス正常性通知の表示
+          href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+    - name: Webhook を使用したサービス正常性通知の構成
+      href: service-health-alert-webhook-guide.md
+      items:
+        - name: ServiceNow での構成
+          href: service-health-alert-webhook-servicenow.md
+        - name: PagerDuty での構成
+          href: service-health-alert-webhook-pagerduty.md
+        - name: OpsGenie での構成
+          href: service-health-alert-webhook-opsgenie.md
+        - name: REST を使用した正常性イベントの取得
+          href: service-health-rest.md
+    - name: リソース正常性イベントのアラートの構成
+      href: resource-health-alert-arm-template-guide.md
+- name: リソース
+  items:
+    - name: よく寄せられる質問
+      href: resource-health-faq.md
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Azure Resource Health で利用できるリソースの種類と正常性チェック
+      href: resource-health-checks-resource-types.md

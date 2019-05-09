@@ -1,6 +1,6 @@
 ---
-title: MongoDB を使用して Node.js アプリをビルドする - Azure App Service | Microsoft Docs
-description: MongoDB 接続文字列を使用して Cosmos DB データベースに接続する Node.js アプリを Azure で動作させる方法について説明します。
+title: Node.js (MEAN.js) と MongoDB - Azure App Service | Microsoft Docs
+description: MongoDB 接続文字列を使用して Cosmos DB データベースに接続する Node.js アプリを Azure で動作させる方法について説明します。 このチュートリアルでは MEAN.js を使用します。
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 514915d68ef79c3f6db2ff1da2b5ea6e348de150
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 361e921af65b33ac0a7a8d12e28db1cb305b0fa1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633812"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548127"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>チュートリアル:Azure で Node.js と MongoDB のアプリを構築する
 
@@ -344,12 +344,12 @@ http://<app_name>.azurewebsites.net
 
 ### <a name="update-the-data-model"></a>データ モデルを更新する
 
-_modules/articles/server/models/article.server.model.js_を開きます。
+_modules/articles/server/models/article.server.model.js_ を開きます。
 
 `ArticleSchema` に `comment` という `String` 型を追加します。 完了すると、スキーマ コードは次のようになります。
 
 ```javascript
-var ArticleSchema = new Schema({
+const ArticleSchema = new Schema({
   ...,
   user: {
     type: Schema.ObjectId,
@@ -375,7 +375,7 @@ _modules/articles/server/controllers/articles.server.controller.js_ を開きま
 
 ```javascript
 exports.update = function (req, res) {
-  var article = req.article;
+  let article = req.article;
 
   article.title = req.body.title;
   article.content = req.body.content;
@@ -492,7 +492,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-nodejs-mongodb-app/access-portal.png)
 
-既定では、ポータルはアプリの **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
+既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
 ![Azure Portal の [App Service] ページ](./media/app-service-web-tutorial-nodejs-mongodb-app/web-app-blade.png)
 

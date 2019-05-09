@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 501fe1d2da89b6968f5a3619fc8e02b01b1abd7a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 280d389875d5ac951e0a846f3331ea727176b5e0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263437"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59009769"
 ---
-# <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でスループット コストを最適化する
+# <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
 Azure Cosmos DB では、プロビジョニング済みスループット モデルにより、あらゆる規模で予測可能なパフォーマンスを提供します。 スループットを事前に予約またはプロビジョニングすると、パフォーマンスでの "迷惑な隣人効果" を排除できます。 必要なスループットの量を正確に指定すると、Azure Cosmos DB で SLA によって裏付けられた構成済みのスループットが保証されます。
 
@@ -56,7 +56,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 |API|**共有**スループットの場合の構成対象 |**専用**スループットの場合の構成対象 |
 |----|----|----|
 |SQL API|Database|コンテナー|
-|MongoDB API|Database|コレクション|
+|Azure Cosmos DB の MongoDB 用 API|Database|コレクション|
 |Cassandra API|キースペース|テーブル|
 |Gremlin API|データベース アカウント|Graph|
 |テーブル API|データベース アカウント|テーブル|
@@ -79,7 +79,7 @@ HTTP Status 429,
 
 累積的に動作する複数のクライアントがあり、要求レートを常に超えている場合は、現在 9 に設定されている既定の再試行回数では十分ではない可能性があります。 このような場合、クライアントではアプリケーションに対して状態コード 429 の `DocumentClientException` がスローされます。 既定の再試行回数は、ConnectionPolicy インスタンスで `RetryOptions` を設定することで変更できます。 既定では、要求レートを超えて要求が続行されている場合に、30 秒の累積待機時間を過ぎると、状態コード 429 を含む DocumentClientException が返されます。 これは、現在の再試行回数が最大再試行回数 (既定値の 9 またはユーザー定義の値) より少ない場合でも発生します。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryAtte) は 3 に設定されているので、このケースでは、コレクションの予約済みスループットを超えることによって要求操作がレート制限された場合、要求操作では 3 回再試行してからアプリケーションに例外がスローされます。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) は 60 に設定されているので、このケースでは、最初の要求からの累積再試行待機時間 (秒数) が 60 秒を超えると、例外がスローされます。
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) は 3 に設定されているので、このケースでは、コレクションの予約済みスループットを超えることによって要求操作がレート制限された場合、要求操作では 3 回再試行してからアプリケーションに例外がスローされます。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) は 60 に設定されているので、このケースでは、最初の要求からの累積再試行待機時間 (秒数) が 60 秒を超えると、例外がスローされます。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -159,7 +159,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](online-backup-and-restore.md)に関する記事をご覧ください。 
 
-3. 操作とその RU コストを取得するもう 1 つの方法は、Log Analytics を有効にすることで、操作/継続時間と要求の料金の明細が提供されます。 Azure Cosmos DB では、すべての操作に対して要求の料金が提供されるので、すべての操作の料金を応答から保存して、分析に使用できます。 
+3. 操作とその RU コストを取得するもう 1 つの方法は、Azure Monitor ログを有効にすることで、操作/継続時間と要求の料金の明細が提供されます。 Azure Cosmos DB では、すべての操作に対して要求の料金が提供されるので、すべての操作の料金を応答から保存して、分析に使用できます。 
 
 4. プロビジョニング済みスループットを弾力的にスケールアップおよびスケールダウンして、ワークロードのニーズに対応できます。 
 
@@ -177,12 +177,12 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 ## <a name="next-steps"></a>次の手順
 
-次は、Azure Cosmos DB でのコストの最適化について、以下の記事で詳しくご確認ください。
+次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 
-* [開発とテストのための最適化](optimize-dev-test.md)について確認する
+* [開発とテストのための最適化](optimize-dev-test.md)の詳細について学習します
 * [Azure Cosmos DB の請求書を理解する方法](understand-your-bill.md)について確認する
 * [ストレージ コストの最適化](optimize-cost-storage.md)について確認する
-* [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)について確認する
-* [クエリのコストの最適化](optimize-cost-queries.md)について確認する
-* [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)について確認する
+* [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
+* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
+* [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細について学習します
 

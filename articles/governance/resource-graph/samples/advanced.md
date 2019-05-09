@@ -1,20 +1,19 @@
 ---
 title: 高度なクエリのサンプル
-description: いくつかの高度なクエリを実行するには、Azure Resource Graph を使用します。
-services: resource-graph
+description: Azure Resource Graph を使用して、VMSS の容量、使用されているすべてのタグの一覧、正規表現と一致する仮想マシンなど、高度なクエリを実行します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8599d535a3a522d742207a655a8f4098d6f3f18f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309391"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59256823"
 ---
 # <a name="advanced-resource-graph-queries"></a>Resource Graph の高度なクエリ
 
@@ -28,6 +27,8 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 > - [ regexに一致する仮想マシン](#vm-regex)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>言語のサポート
 
@@ -49,7 +50,7 @@ az graph query -q "where type=~ 'microsoft.compute/virtualmachinescalesets' | wh
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' | where name contains 'contoso' | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name | order by Capacity desc"
+Search-AzGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' | where name contains 'contoso' | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name | order by Capacity desc"
 ```
 
 ## <a name="list-all-tags"></a>すべてのタグ名を一覧表示します
@@ -66,13 +67,13 @@ az graph query -q "project tags | summarize buildschema(tags)"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
+Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 ```
 
 ## <a name="vm-regex"></a> regexに一致する仮想マシン
 
-このクエリは、[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_と呼ばれる) に一致する仮想マシンを検索します。
-**matches regex @** では、一致させる regex を定義することができます。ここでは `^Contoso(.*)[0-9]+$` を指定しています。 その regex の定義は以下のように説明されています。
+このクエリは、[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ と呼ばれる) に一致する仮想マシンを検索します。
+**matches regex \@** では、一致させる regex を定義することができます。ここでは `^Contoso(.*)[0-9]+$` を指定しています。 その regex の定義は以下のように説明されています。
 
 - `^` - 一致は、文字列の先頭から始まる必要があります。
 - `Contoso` - 文字列。大文字と小文字は区別されます。
@@ -96,7 +97,7 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
+Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
 
 ## <a name="next-steps"></a>次の手順

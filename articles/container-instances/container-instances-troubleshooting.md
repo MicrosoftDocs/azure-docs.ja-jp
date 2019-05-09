@@ -2,19 +2,19 @@
 title: Azure Container Instances のトラブルシューティング
 description: Azure Container Instances に関する問題のトラブルシューティングを行う方法について説明します
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
-ms.author: seanmck
+ms.date: 02/15/2019
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978180"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371878"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -25,7 +25,7 @@ ms.locfileid: "50978180"
 コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。 Azure の名前付け規則の詳細については、Azure Architecture Center 内の[名前付け規則][azure-name-restrictions]を参照してください。
 
 | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 提案されるパターン | 例 |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | コンテナー グループ名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | コンテナー名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | コンテナーポート | 1 ～ 65535 の範囲 |整数 |1 ～ 65535 の整数 |`<port-number>` |`443` |
@@ -48,7 +48,7 @@ Azure Container Instances でサポートされていないイメージを指定
 
 このエラーは、半期チャネル (SAC) リリースに基づく Windows イメージを展開するときに最も多く発生します。 たとえば、Windows バージョン 1709 および 1803 は SAC リリースであり、展開時にこのエラーを生成します。
 
-Azure Container Instances では、長期的なサービス チャネル (LTSC) のバージョンのみに基づいて Windows イメージをサポートしています。 Windows コンテナーをデプロイするときにこの問題を軽減するには、必ず LTSC ベースのイメージを展開します。
+Azure Container Instances は現在、**Windows Server 2016 の長期的なサービス チャネル (LTSC)** リリースにのみ基づいた Windows イメージをサポートしています。 Windows コンテナーのデプロイ時にこの問題を軽減するには、常に Windows Server 2016 (LTSC) ベースのイメージをデプロイしてください。 Windows Server 2019 (LTSC) に基づいたイメージはサポートされていません。
 
 Windows の LTSC および SAC バージョンについて詳しくは、「[Windows Server の半期チャネルの概要][windows-sac-overview]」をご覧ください。
 
@@ -66,7 +66,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "pulling image \"microsoft/aci-hellowrld\"",
+    "message": "pulling image \"mcr.microsoft.com/azuredocs/aci-hellowrld\"",
     "name": "Pulling",
     "type": "Normal"
   },
@@ -74,7 +74,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
+    "message": "Failed to pull image \"mcr.microsoft.com/azuredocs/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
     "name": "Failed",
     "type": "Warning"
   },
@@ -82,7 +82,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:20+00:00",
     "lastTimestamp": "2017-12-21T22:57:16+00:00",
-    "message": "Back-off pulling image \"microsoft/aci-hellowrld\"",
+    "message": "Back-off pulling image \"mcr.microsoft.com/azuredocs/aci-hellowrld\"",
     "name": "BackOff",
     "type": "Normal"
   }
@@ -93,7 +93,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
 
 コンテナー グループは[再起動ポリシー](container-instances-restart-policy.md)が既定で **Always** に設定されるため、コンテナー グループ内のコンテナーは実行完了後に必ず再起動します。 タスクベースのコンテナーを実行する場合は、これを **OnFailure** または **Never** に変更することが必要になることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
 
-Ubuntu や Alpine などのイメージを使用した場合、長時間実行されるプロセスのないコンテナー グループを実行していると、終了と再起動が繰り返されることがあります。 コンテナーを実行したままにするプロセスがないため、[EXEC](container-instances-exec.md) を使った接続は機能しません。 これを解決するには、コンテナー グループのデプロイに次のような起動コマンドを含め、コンテナーを実行したままにします。
+Ubuntu や Alpine などのイメージを使用した場合、長時間実行されるプロセスのないコンテナー グループを実行していると、終了と再起動が繰り返されることがあります。 コンテナーを実行したままにするプロセスがないため、[EXEC](container-instances-exec.md) を使った接続は機能しません。 この問題を解決するには、コンテナー グループのデプロイに次のような起動コマンドを含め、コンテナーを実行したままにします。
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -102,7 +102,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image microsoft/windowsservercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2016
  --command-line "ping -t localhost"
 ```
 
@@ -166,8 +166,8 @@ Windows イメージには、[追加の考慮事項](#cached-windows-images)が�
 
 ```console
 $ docker images
-REPOSITORY                  TAG       IMAGE ID        CREATED        SIZE
-microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
+REPOSITORY                                    TAG       IMAGE ID        CREATED          SIZE
+mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 months ago    67.6MB
 ```
 
 イメージのサイズを小さくしておくための鍵は、最終イメージに実行時に不要なものが含まれないようにすることです。 これを行う 1 つの方法は、[マルチステージ ビルド][docker-multi-stage-builds]を使用することです。 マルチステージ ビルドを使用すると、最終イメージにはアプリケーションに必要な成果物のみが含まれ、ビルド時に必要であった余分なコンテンツは含まれないようにすることを簡単に実行できます。
@@ -178,11 +178,11 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 
 ### <a name="cached-windows-images"></a>キャッシュされた Windows イメージ
 
-Azure Container Instances では、キャッシュ メカニズムを使用して、特定の Windows イメージに基づくイメージに対するコンテナーの起動時間を高速化します。
+Azure Container Instances では、キャッシュ メカニズムを使用して、一般的な Windows および Linux イメージに基づくイメージに対するコンテナーの起動時間を高速化します。 キャッシュされたイメージとタグの詳細な一覧については、[List Cached Images][list-cached-images] API を使用してください。
 
 Windows コンテナーの起動時間を最速にするには、次の **2 つのイメージ**の**最新の 3 つ**のバージョンのいずれかを、基本イメージとして使用します。
 
-* [Windows Server 2016][docker-hub-windows-core] (LTS のみ)
+* [Windows Server Core 2016][docker-hub-windows-core] (LTSC のみ)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows コンテナーの低速のネットワークの準備
@@ -197,7 +197,7 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 
 このエラーは、デプロイを試行しているリージョンで高負荷になっているため、コンテナーに指定されたリソースが、その時点では割り当てできないことを示しています。 以下に示す 1 つ以上の軽減策の手順を使用して、問題を解決してください。
 
-* コンテナーのデプロイ設定が、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md#region-availability)」 (Azure Container Instances のクォータとリージョンの可用性) で定義されているパラメーター内に収まっていることを確認する
+* コンテナーのデプロイ設定が、[Azure Container Instances のリージョンでの利用可否](container-instances-region-availability.md)に関する記事で定義されているパラメーター内に収まっていることを確認する
 * コンテナーに低い CPU およびメモリ設定を指定する。
 * 別の Azure リージョンにデプロイする
 * 後でデプロイする
@@ -206,15 +206,21 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 
 Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](https://aka.ms/aci/rest)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
 
+## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないために IP にアクセスできない
+
+現在、Azure Container Instances は、通常の docker 構成のようなポート マッピングをサポートしていませんが、この修正はロードマップにあります。 IP にアクセスできるはずの場合にアクセスできない場合は、`ports` プロパティを使用してコンテナー グループで公開しているものと同じポートをリッスンするようにコンテナー イメージを構成してください。
+
 ## <a name="next-steps"></a>次の手順
-コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学びました。
+
+コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学習します。
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
-[docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
-[docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/
+[docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
+[docker-hub-windows-nano]: https://hub.docker.com/_/microsoft-windows-nanoserver
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
+[list-cached-images]: /rest/api/container-instances/listcachedimages

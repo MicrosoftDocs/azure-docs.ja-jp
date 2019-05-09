@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js と Translator Text REST API を使用して、文の長さ (文字数) を調べる方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/29/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 09d0c855aada753b0a3e594055ec188c2698e677
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 46d48a92beeb2d015cce6ba8aa68cd5c1999dfaf
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999016"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734021"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>クイック スタート: Translator Text API と Node.js を使用して文の長さを調べる
 
@@ -90,7 +90,7 @@ let options = {
 };
 ```
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 要求を認証する最も簡単な方法は、このサンプルで使用している `Ocp-Apim-Subscription-Key` ヘッダーとしてサブスクリプション キーを渡すことです。 または、アクセス トークンのサブスクリプション キーを交換し、アクセス トークンを一緒に `Authorization` ヘッダーとして渡して要求を検証することもできます。 詳細については、[認証](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)に関するページをご覧ください。
 

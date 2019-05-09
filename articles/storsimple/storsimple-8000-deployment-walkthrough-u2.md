@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 34648426086bdd67f19ec227ddf0d931f3837c0d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a4f9d9a7fe368ec4ffaceff80ce42d42a318c68d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237997"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763573"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>オンプレミスの StorSimple デバイス (Update 3 以降) のデプロイ
 
@@ -47,14 +47,14 @@ StorSimple デバイスを構成し、StorSimple デバイス マネージャー
 | [デプロイメントの前提条件](#deployment-prerequisites) |これらの前提条件を使用して、デプロイに対する環境の準備が完了していることを確認します。 |
 |  | |
 | **デプロイの手順** |運用環境に StorSimple デバイスをデプロイするには、次の手順を実行します。 |
-| [手順 1. 新しいサービスを作成する](#step-1-create-a-new-service) |StorSimple デバイス用にクラウド管理とストレージを設定します。 *既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。* |
-| [手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key) |このキーを使用して、StorSimple デバイスを管理サービスに登録し、接続します。 |
-| [手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |管理サービスを使用してセットアップを完了するには、デバイスをネットワークに接続して Azure に登録します。 |
-| [手順 4. デバイスの最小セットアップを完了する](#step-4-complete-minimum-device-setup)</br>[ベスト プラクティス: StorSimple デバイスを更新する](#scan-for-and-apply-updates) |管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
-| [手順 5. ボリューム コンテナーを作成する](#step-5-create-a-volume-container) |ボリュームをプロビジョニングするためのコンテナーを作成します。 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 |
-| [手順 6. ボリュームを作成する](#step-6-create-a-volume) |サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングします。 |
-| [手順 7. ボリュームをマウント、初期化、フォーマットする](#step-7-mount-initialize-and-format-a-volume)</br>[省略可能: MPIO を構成する](storsimple-8000-configure-mpio-windows-server.md) |デバイスによって提供される iSCSI ストレージにサーバーを接続します。 必要に応じて、サーバーがリンク、ネットワーク、およびインターフェイスの障害を許容できるように MPIO を構成します。 |
-| [手順 8. バックアップを取得する](#step-8-take-a-backup) |データを保護するためのバックアップ ポリシーを設定します。 |
+| [手順 1:新しいサービスを作成する](#step-1-create-a-new-service) |StorSimple デバイス用にクラウド管理とストレージを設定します。 *既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。* |
+| [手順 2:サービス登録キーを取得する](#step-2-get-the-service-registration-key) |このキーを使用して、StorSimple デバイスを管理サービスに登録し、接続します。 |
+| [手順 3:StorSimple 用 Windows PowerShell を使用してデバイスを構成して登録する](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |管理サービスを使用してセットアップを完了するには、デバイスをネットワークに接続して Azure に登録します。 |
+| [手順 4:デバイスの最小セットアップを完了する](#step-4-complete-minimum-device-setup)</br>[ベスト プラクティス:お使いの StorSimple デバイスを更新する](#scan-for-and-apply-updates) |管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
+| [手順 5:ボリューム コンテナーを作成する](#step-5-create-a-volume-container) |ボリュームをプロビジョニングするためのコンテナーを作成します。 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 |
+| [手順 6:ボリュームを作成する](#step-6-create-a-volume) |サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングします。 |
+| [手順 7: ボリュームをマウント、初期化、フォーマットする](#step-7-mount-initialize-and-format-a-volume)</br>[省略可能: MPIO を構成する](storsimple-8000-configure-mpio-windows-server.md) |デバイスによって提供される iSCSI ストレージにサーバーを接続します。 必要に応じて、サーバーがリンク、ネットワーク、およびインターフェイスの障害を許容できるように MPIO を構成します。 |
+| [手順 8: バックアップを作成する](#step-8-take-a-backup) |データを保護するためのバックアップ ポリシーを設定します。 |
 |  | |
 | **その他の手順** |ソリューションのデプロイ中に、これらの手順を参照する必要が生じる場合があります。 |
 | [サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service) | |
@@ -93,7 +93,7 @@ StorSimple デバイスを構成し、StorSimple デバイス マネージャー
 ## <a name="step-by-step-deployment"></a>デプロイの手順
 StorSimple デバイスをデータセンター内にデプロイするには、次の詳細な手順を実行します。
 
-## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
+## <a name="step-1-create-a-new-service"></a>手順 1:新しいサービスの作成
 StorSimple デバイス マネージャー サービスでは、複数の StorSimple デバイスを管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-8000-create-new-service.md)]
@@ -102,22 +102,22 @@ StorSimple デバイス マネージャー サービスでは、複数の StorSi
 > サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。 このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
 >
 > * ストレージ アカウントを自動的に作成していない場合は、「 [サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service) 」に移動して詳細な手順をご確認ください。
-> * ストレージ アカウントの自動作成を有効にしている場合は、「 [手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
+> * ストレージ アカウントの自動作成を有効にしている場合は、「 [手順 2:サービス登録キーを取得する](#step-2-get-the-service-registration-key)」をご覧ください。
 
 
-## <a name="step-2-get-the-service-registration-key"></a>手順 2. サービス登録キーを取得する
+## <a name="step-2-get-the-service-registration-key"></a>手順 2:サービス登録キーを取得する
 StorSimple デバイス マネージャー サービスが稼働したら、サービス登録キーを取得する必要があります。 このキーを使用して StorSimple デバイスを登録し、サービスに接続します。
 
 Azure Portal で、次の手順を実行します。
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>手順 3:StorSimple 用 Windows PowerShell を使用してデバイスを構成して登録する
 次の手順の説明に従い、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの初期セットアップを完了します。 この手順を完了するには、ターミナル エミュレーション ソフトウェアを使用する必要があります。 詳細については、「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)」を参照してください。
 
 [!INCLUDE [storsimple-8000-configure-and-register-device-u2](../../includes/storsimple-8000-configure-and-register-device-u2.md)]
 
-## <a name="step-4-complete-minimum-device-setup"></a>手順 4. デバイスの最小セットアップを完了する
+## <a name="step-4-complete-minimum-device-setup"></a>手順 4:デバイスの最小セットアップを完了する
 StorSimple デバイスの最小構成を完了するには、次の手順を実行する必要があります。 
 
 * デバイスの表示名を指定します。
@@ -130,14 +130,14 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 デバイスの最小セットアップを完了したら、ベスト プラクティスとして、[最新の更新プログラムをスキャンして適用します](#scan-for-and-apply-updates)。
 
-## <a name="step-5-create-a-volume-container"></a>手順 5. ボリューム コンテナーを作成する
+## <a name="step-5-create-a-volume-container"></a>手順 5:ボリューム コンテナーを作成する
 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 StorSimple デバイス上のボリュームのプロビジョニングを開始する前に、ボリューム コンテナーを作成する必要があります。
 
 ボリューム コンテナーを作成するには、Azure Portal で次の手順を実行します。
 
 [!INCLUDE [storsimple-8000-create-volume-container](../../includes/storsimple-8000-create-volume-container.md)]
 
-## <a name="step-6-create-a-volume"></a>手順 6. ボリュームを作成する
+## <a name="step-6-create-a-volume"></a>手順 6:ボリュームを作成する
 ボリューム コンテナーを作成したら、サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングできます。 ボリュームを作成するには、Azure Portal で次の手順を実行します。
 
 > [!IMPORTANT]
@@ -146,7 +146,7 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 [!INCLUDE [storsimple-8000-create-volume](../../includes/storsimple-8000-create-volume-u2.md)]
 
-## <a name="step-7-mount-initialize-and-format-a-volume"></a>手順 7. ボリュームをマウント、初期化、フォーマットする
+## <a name="step-7-mount-initialize-and-format-a-volume"></a>手順 7:ボリュームをマウント、初期化、フォーマットする
 次の手順が Windows Server ホストで実行されます。
 
 > [!IMPORTANT]
@@ -158,7 +158,7 @@ MPIO を構成しない場合は、次の手順に従い、Windows Server ホス
 
 [!INCLUDE [storsimple-8000-mount-initialize-format-volume](../../includes/storsimple-8000-mount-initialize-format-volume.md)]
 
-## <a name="step-8-take-a-backup"></a>手順 8. バックアップを取得する
+## <a name="step-8-take-a-backup"></a>ステップ 8:バックアップを作成する
 バックアップにより、特定の時点のボリュームを保護し、復元時間を最小限に抑えながら回復性を向上させることができます。 StorSimple デバイスでは、ローカル スナップショットとクラウド スナップショットという 2 種類のバックアップを実行できます。 どちらの種類のバックアップも、**[スケジュール設定]** または **[手動]** で実行できます。
 
 スケジュールされたバックアップを作成するには、Azure Portal で次の手順を実行します。

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: f405fe1c93ad17476ac47bc23951c65a5ea5db73
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2ed4432aec9b833efe6b521b4452177088d21d70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091365"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119413"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Azure Event Hubs で Apache Kafka Connect のサポートを統合する (プレビュー)
 ビジネス ニーズに応じたインジェストが増えるにつれて、外部のさまざまなソースとシンクの取り込み要件も増してきています。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) は、Kafka クラスターを通じて、MySQL や HDFS、ファイル システムなどの外部システムに接続し、それらとの間でデータをインポート/エクスポートするためのフレームワークとなります。 このチュートリアルでは、Kafka 対応の Event Hubs と組み合わせて Kafka Connect フレームワークを使用する方法について説明します。
@@ -23,7 +23,7 @@ ms.locfileid: "53091365"
 このチュートリアルでは、Kafka 対応の Azure イベント ハブに Kafka Connect を統合し、基本的な FileStreamSource コネクタと FileStreamSink コネクタをデプロイする方法について説明します。 現在、この機能はプレビュー段階にあります。 これらのコネクタは運用環境での使用を想定したものではありませんが、Azure Event Hubs が Kafka ブローカーとして機能する Kafka Connect のシナリオをエンド ツー エンドで示しています。
 
 > [!NOTE]
-このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) で入手できます。
+> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) で入手できます。
 
 このチュートリアルでは、次の手順を実行します。
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、cURL で Computer Vision API を使用してリモート画像を分析します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 18e7c084686099611db0c3042e66181df19d6186
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 96088d1e4f42edc47f1b4a1a7a4effacca02b3c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875568"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-curl-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と cURL を使用してリモート画像を分析する
 
@@ -105,10 +105,6 @@ curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: applica
   }
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になったら、コマンド プロンプト ウィンドウとテキスト エディターを閉じます。
 
 ## <a name="next-steps"></a>次の手順
 

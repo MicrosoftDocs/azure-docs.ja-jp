@@ -2,18 +2,18 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのデプロイ
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry に格納されているカスタム イメージを使用して、複数コンテナーのアプリケーションをクラスターにデプロイします。
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: b3336f592163d793b8415d2d4f0dd79b92200c89
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 42437130d30a405af47289ae16d9851fb506a598
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727940"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756265"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
@@ -139,7 +139,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-scale]: ./tutorial-kubernetes-scale.md
-[az-acr-list]: /cli/azure/acr#list
+[az-acr-list]: /cli/azure/acr
 [azure-cli-install]: /cli/azure/install-azure-cli
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [kubernetes-service]: concepts-network.md#services

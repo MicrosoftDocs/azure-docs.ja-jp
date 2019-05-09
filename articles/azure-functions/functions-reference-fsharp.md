@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 112a986efc11822f6c847511a33be6206b1f00da
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717486"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58894357"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 
@@ -54,7 +54,7 @@ FunctionsProject
 
 関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.fsx) とバインディング構成ファイル (function.json) があります。
 
-Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-triggers-bindings.md#local-development-azure-functions-core-tools)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#local-development-azure-functions-core-tools)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 「[Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」で詳しく説明されているように、各バインドはいくつかの引数のセットをサポートしています。 たとえば、BLOB トリガーでサポートされている引数バインドの 1 つは、POCO です。これは、F# レコードを使用して表すことができます。 例: 
@@ -115,7 +115,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>キャンセル トークン
-関数が正常なシャットダウンを処理する必要がある場合は、 [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 引数を設定できます。 これは、たとえば `async`と結合される場合があります。
+関数が正常なシャットダウンを処理する必要がある場合は、 [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) 引数を設定できます。 これは、たとえば `async`と結合される場合があります。
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)

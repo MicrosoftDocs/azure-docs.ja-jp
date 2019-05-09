@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fde06a9c7c0f0b225840c3b5a49d00fbfbcf33d9
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 6324eb11b334fd6a00e30d6f2fc6d1bec3f7a82c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306268"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870825"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Azure SQL Data Warehouse の復元 (PowerShell)
 > [!div class="op_single_selector"]
@@ -29,13 +29,16 @@ ms.locfileid: "43306268"
 この記事では、PowerShell を使用して Azure SQL Data Warehouse を復元する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
-**DTU 容量を確認します。** 各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  SQL Data Warehouse を復元する前に、データベースの復元に必要な量の DTU クォータがSQL server に残っていることを確認してください。 必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][Request a DTU quota change]に関するトピックをご覧ください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+**DTU 容量を確認します。**  各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  SQL Data Warehouse を復元する前に、データベースの復元に必要な量の DTU クォータがSQL server に残っていることを確認してください。 必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][Request a DTU quota change]に関するトピックをご覧ください。
 
 ### <a name="install-powershell"></a>PowerShell をインストールする
-SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。  **Get-Module -ListAvailable -Name AzureRM**を実行することで、バージョンを確認できます。  最新バージョンは、[Microsoft Web Platform Installer][Microsoft Web Platform Installer] からインストールできます。  最新バージョンのインストールの詳細については、[Azure PowerShell のインストールと構成方法][How to install and configure Azure PowerShell]に関するページを参照してください。
+SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell をインストールする必要があります。  **Get-Module -ListAvailable -Name Az** を実行することで、お使いのバージョンを確認できます。  最新バージョンのインストールの詳細については、[Azure PowerShell のインストールと構成方法][How to install and configure Azure PowerShell]に関するページを参照してください。
 
 ## <a name="restore-an-active-or-paused-database"></a>アクティブまたは一時停止中のデータベースを復元する
-スナップショットからデータベースを復元するには、[Restore-AzureRmSqlDatabase PowerShell][Restore-AzureRmSqlDatabase] コマンドレットを使用します。
+スナップショットからデータベースを復元するには、[Restore-AzSqlDatabase][Restore-AzSqlDatabase] PowerShell コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
@@ -53,24 +56,24 @@ $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.window
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+Connect-AzAccount
+Get-AzSubscription
+Select-AzSubscription -SubscriptionName $SubscriptionName
 
 # List the last 10 database restore points
-((Get-AzureRMSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName ($DatabaseName)).RestorePointCreationDate)[-10 .. -1]
+((Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName ($DatabaseName)).RestorePointCreationDate)[-10 .. -1]
 
 # Or list all restore points
-Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
+Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 
 # Get the specific database to restore
-$Database = Get-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
+$Database = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 
 # Pick desired restore point using RestorePointCreationDate
 $PointInTime="<RestorePointCreationDate>"  
 
 # Restore database from a restore point
-$RestoredDatabase = Restore-AzureRmSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
+$RestoredDatabase = Restore-AzSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
 
 # Verify the status of restored database
 $RestoredDatabase.status
@@ -83,7 +86,7 @@ $RestoredDatabase.status
 > 
 
 ## <a name="restore-a-deleted-database"></a>削除されたデータベースの復元
-削除されたデータベースを復元するには、[Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] コマンドレットを使用します。
+削除されたデータベースを復元するには、[Restore-AzSqlDatabase][Restore-AzSqlDatabase] コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
@@ -99,15 +102,15 @@ $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.window
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+Connect-AzAccount
+Get-AzSubscription
+Select-AzSubscription -SubscriptionName $SubscriptionName
 
 # Get the deleted database to restore
-$DeletedDatabase = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
+$DeletedDatabase = Get-AzSqlDeletedDatabaseBackup -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 
 # Restore deleted database
-$RestoredDatabase = Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $DeletedDatabase.ResourceID
+$RestoredDatabase = Restore-AzSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $DeletedDatabase.ResourceID
 
 # Verify the status of restored database
 $RestoredDatabase.status
@@ -119,7 +122,7 @@ $RestoredDatabase.status
 > 
 
 ## <a name="restore-from-an-azure-geographical-region"></a>Azure 地理的リージョンからの復元
-データベースを復旧するには、[Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] コマンドレットを使用します。
+データベースを復旧するには、[Restore-AzSqlDatabase][Restore-AzSqlDatabase] コマンドレットを使用します。
 
 > [!NOTE]
 > コンピューティング用に最適化されたパフォーマンス レベルへの geo リストアを実行できます。 そのためには、省略可能なパラメーターとしてコンピューティング用に最適化された ServiceObjectiveName を指定します。 
@@ -134,15 +137,15 @@ $RestoredDatabase.status
 6. geo リストアされたデータベースの状態を確認します。
 
 ```Powershell
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
+Connect-AzAccount
+Get-AzSubscription
+Select-AzSubscription -SubscriptionName "<Subscription_name>"
 
 # Get the database you want to recover
-$GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
+$GeoBackup = Get-AzSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
 
 # Recover database
-$GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID -ServiceObjectiveName "<YourTargetServiceLevel>"
+$GeoRestoredDatabase = Restore-AzSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID -ServiceObjectiveName "<YourTargetServiceLevel>"
 
 # Verify that the geo-restored database is online
 $GeoRestoredDatabase.status
@@ -172,8 +175,7 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 [Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
 
 <!--MSDN references-->
-[Restore-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase
+[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
-[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps

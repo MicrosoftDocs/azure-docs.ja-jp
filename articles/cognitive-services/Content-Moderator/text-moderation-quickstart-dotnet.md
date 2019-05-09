@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: C# で好ましくない要素を検出するためにテキストの内容を分析する'
+title: クイック スタート:C# でテキストの内容を分析する - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for .NET を使用してさまざまな好ましくない要素を検出するためにテキスト コンテンツを分析する方法
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 10/31/2018
+ms.date: 02/07/2019
 ms.author: sajagtap
-ms.openlocfilehash: 74c2142e8f6839422446767cd0c70b34daa3f1ad
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103249"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756528"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート: C# で好ましくない要素を検出するためにテキストの内容を分析する 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート: C# で好ましくない要素を検出するためにテキストの内容を分析する
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 潜在的に好ましくない素材をモデレートすることを目的として、テキスト コンテンツの用語ベースのフィルター処理と分類を実行する方法を学習します。
 
@@ -35,9 +35,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**TextModeration** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
 1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
-    - Microsoft.Azure.CognitiveServices.ContentModerator
-    - Microsoft.Rest.ClientRuntime
-    - Newtonsoft.Json
+    - `Microsoft.Azure.CognitiveServices.ContentModerator`
+    - `Microsoft.Rest.ClientRuntime`
+    - `Newtonsoft.Json`
 
 ## <a name="add-text-moderation-code"></a>テキスト モデレーション コードの追加
 
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 次のコードを **Main** メソッドに追加します。 **ScreenText** メソッドは必須の操作です。 そのパラメーターには、実行するコンテンツ モデレーション操作を指定します。 この例では、次の操作を実行するようにメソッドを構成しています。
 - テキスト内の潜在的な冒涜的表現を検出する。
 - テキストを正規化し、入力ミスを自動修正する。
-- 米国および英国の電話番号、電子メール アドレス、米国の住所など、個人を特定できる情報 (PII) を検出します。
+- 米国および英国の電話番号、メール アドレス、米国の住所など、個人データを検出します。
 - 機械学習ベースのモデルを使用して、3 つのカテゴリにテキストを分類する。
 
 これらの操作の詳細については、「[次の手順](#next-steps)」セクションのリンク先を参照してください。

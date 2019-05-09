@@ -4,7 +4,7 @@ description: この記事では、Microsoft Azure の保存データの暗号化
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 1bcd9dfe2d7a846dd040944509be916c1964ba48
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4ced712b1b2716d85f0366ea892460053db598b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420389"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076906"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -104,7 +104,7 @@ Azure Key Vault に保存されたキーを、その管理、または保存時�
 - ユーザーがオンプレミス (または別のセキュリティで保護されたストア) でキーを管理および保管します キーは Azure のサービスでは使用できません
 - 制限されたクラウド機能
 
-Azure でサポートされている暗号化モデルは、前述のとおり、"クライアント側暗号化" と "サーバー側暗号化" の 2 つの主なグループに分類されます。 使用されている保存時暗号化モデルとは無関係に、Azure サービスでは常に、TLS や HTTPS などのセキュリティで保護されたトランスポートを使用することをお勧めしています。 そのため、転送中の暗号化の問題は、トランスポート プロトコルによって解決され、どの保存時暗号化モデルを使用するかを決定する主な要因ではなくなります。
+Azure でサポートされている暗号化モデルは、2 つの主なグループに分割されます。"クライアント側暗号化" と既に説明した "サーバー側暗号化" です。 使用されている保存時暗号化モデルとは無関係に、Azure サービスでは常に、TLS や HTTPS などのセキュリティで保護されたトランスポートを使用することをお勧めしています。 そのため、転送中の暗号化の問題は、トランスポート プロトコルによって解決され、どの保存時暗号化モデルを使用するかを決定する主な要因ではなくなります。
 
 ### <a name="client-encryption-model"></a>クライアント側暗号化モデル
 
@@ -201,7 +201,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Microsoft クラウド サービスでの保存時の暗号化
 
-Microsoft Cloud サービスは、IaaS、PaaS、SaaS のすべての 3 つのクラウド モデルで使用されます。 以下は、各モデルにこれらがどのように対応するかを示した例です。
+Microsoft Cloud サービスは、IaaS、PaaS、SaaS の3 つのクラウド モデルすべてで使用されます。 以下は、各モデルにこれらがどのように対応するかを示した例です。
 
 - Software as a Server (SaaS) と呼ばれるソフトウェア サービスでは、Office 365 などのクラウドで提供されるアプリケーションが利用できます。
 - アプリケーションでお客様がクラウドを活用できるプラットフォームでは、ストレージ、分析、サービス バス機能にクラウドが使用されています。
@@ -243,8 +243,8 @@ IaaS アプリケーションでは、可能な限り、Azure Disk Encryption �
 
 すべての Azure Storage サービス (Blob Storage、Queue Storage、Table Storage、Azure Files) では、サーバー側の保存データの暗号化がサポートされています。一部のサービスでは、ユーザー管理キーとクライアント側の暗号化がサポートされています。  
 
-- サーバー側: すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)」を参照してください。
-- クライアント側: Azure BLOB、テーブル、およびキューは、クライアント側の暗号化をサポートしています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳しくは、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)」をご覧ください。
+- サーバー側:すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)」を参照してください。
+- クライアント側:Azure BLOB、Azure テーブル、および Azure キューは、クライアント側の暗号化をサポートしています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳しくは、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)」をご覧ください。
 
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
@@ -258,31 +258,32 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 |                                  |                    | **暗号化モデルとキーの管理** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **サービス管理キーを使用したサーバー側**     | **Key Vault でユーザー管理を使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
-| **ストレージとデータベース**        |                    |                    |                    |                    |
+| **ストレージとデータベース**        |                    |                    |                    |
 | ディスク (IaaS)                      | -                  | はい、RSA 2048 ビット  | -                  |
-| SQL Server (IaaS)                | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure SQL (Database/Data Warehouse) | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure Storage (ブロック/ページ Blob) | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure Storage (ファイル)            | [はい]                | はい、RSA 2048 ビット  | -                  |
-| Azure Storage (テーブル、キュー)   | [はい]                | -                  | [はい]                |
-| Cosmos DB (ドキュメント DB)          | [はい]                | -                  | -                  |
-| StorSimple                       | [はい]                | -                  | [はい]                |
-| バックアップ                           | -                  | -                  | [はい]                |
+| SQL Server (IaaS)                | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL (Database/Data Warehouse) | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL (Database Managed Instance) | はい                | プレビュー、RSA 2048 ビット  | はい                |
+| Azure Storage (ブロック/ページ Blob) | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure Storage (ファイル)            | はい                | はい、RSA 2048 ビット  | -                  |
+| Azure Storage (テーブル、キュー)   | はい                | -                  | はい                |
+| Cosmos DB (ドキュメント DB)          | はい                | -                  | -                  |
+| StorSimple                       | はい                | -                  | はい                |
+| バックアップ                           | はい                | -                  | はい                |
 | **インテリジェンスおよび分析**   |                    |                    |                    |
-| Azure Data Factory               | [はい]                | -                  | -                  |
+| Azure Data Factory               | はい                | -                  | -                  |
 | Azure Machine Learning           | -                  | プレビュー、RSA 2048 ビット | -                  |
-| Azure Stream Analytics           | [はい]                | -                  | -                  |
-| HDInsight (Azure Blob Storage)   | [はい]                | -                  | -                  |
-| HDInsights (Data Lake Storage)    | [はい]                | -                  | -                  |
-| Apache Kafka for HDInsight       | [はい]                | プレビュー、RSA の長さすべて | -                  |
-| Azure Data Lake Store            | [はい]                | はい、RSA 2048 ビット  | -                  |
-| Azure Data Catalog               | [はい]                | -                  | -                  |
-| Power BI                         | [はい]                | -                  | -                  |
+| Azure Stream Analytics           | はい                | -                  | -                  |
+| HDInsight (Azure Blob Storage)   | はい                | -                  | -                  |
+| HDInsights (Data Lake Storage)    | はい                | -                  | -                  |
+| Apache Kafka for HDInsight       | はい                | プレビュー、RSA の長さすべて | -                  |
+| Azure Data Lake Store            | はい                | はい、RSA 2048 ビット  | -                  |
+| Azure Data Catalog               | はい                | -                  | -                  |
+| Power BI                         | はい                | -                  | -                  |
 | **IoT サービス**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | [はい]                |
-| Service Bus                      | [はい]                | -                  | [はい]                |
-| Event Hubs                       | [はい]                | -                  | -                  |
-| Event Grid                       | [はい]                | -                  | -                  |
+| IoT Hub                          | -                  | -                  | はい                |
+| Service Bus                      | はい                | -                  | はい                |
+| Event Hubs                       | はい                | -                  | -                  |
+| Event Grid                       | はい                | -                  | -                  |
 
 
 ## <a name="conclusion"></a>まとめ

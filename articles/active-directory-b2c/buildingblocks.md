@@ -3,19 +3,19 @@ title: BuildingBlocks - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの BuildingBlocks 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 475c53a899c540389b512ff9acfc0f6b099b78df
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: afa064232c10d3e84e9c301d44b82faae4904253
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836306"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152979"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 

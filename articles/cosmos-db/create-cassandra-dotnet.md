@@ -1,23 +1,21 @@
 ---
 title: 'クイック スタート: Cassandra API と .NET - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使用して、Azure Portal と .NET でプロファイル アプリケーションを作成する方法を示します。
-services: cosmos-db
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 author: SnehaGunda
 ms.author: sngun
-ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 50c2362e961d882afc109a0554303d364d52384b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2e43b2d6f5a127f7f0f81c2dfc2fd3737c9ee787
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089432"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880264"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>クイック スタート: .NET と Azure Cosmos DB で Cassandra アプリをビルドする
+# <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -146,7 +144,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 5. Program.cs ファイルを保存します。
     
-## <a name="run-the-net-app"></a>.Net アプリを実行する
+## <a name="run-the-net-app"></a>.NET アプリを実行する
 
 1. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択します。
 

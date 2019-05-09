@@ -1,20 +1,19 @@
 ---
 title: Azure Databricks から Azure Cosmos DB Cassandra API にアクセスする
 description: この記事では、Azure Databricks から Azure Cosmos DB Cassandra API を使用する方法について説明します。
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: f1588cac61d0cef821dc15019683f67c2962f049
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255382"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033657"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Databricks から Azure Cosmos DB Cassandra API のデータにアクセスする
 

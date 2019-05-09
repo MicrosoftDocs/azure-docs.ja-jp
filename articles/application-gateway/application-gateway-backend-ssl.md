@@ -9,18 +9,18 @@ editor: amsriva
 ms.assetid: 3976399b-25ad-45eb-8eb3-fdb736a598c5
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.openlocfilehash: 689ee54dc1db2ea371b08270718278fd98c65bb5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 856f23de8a8772255f570a923ecf1708dc819bb5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22704712"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778350"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Application Gateway でのエンド ツー エンド SSL の概要
 
@@ -40,7 +40,7 @@ ms.locfileid: "22704712"
 
 Application Gateway は、既知のバックエンド インスタンスのみと通信します。これらのインスタンスでは、アプリケーション ゲートウェイに関する証明書がホワイトリスト登録されています。 証明書のホワイトリスト登録を有効にするには、(ルート証明書ではなく) バックエンド サーバーの証明書の公開キーをアプリケーション ゲートウェイにアップロードする必要があります。 ホワイトリスト登録された既知のバックエンドへの接続のみが許可され、 それ以外ではゲートウェイ エラーが発生します。 自己署名証明書はテストのみを目的とするため、運用環境のワークロードで使用することはお勧めできません。 このような証明書は、使用する前に、上記の手順で説明したとおりに、アプリケーション ゲートウェイでホワイトリスト登録する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 エンド ツー エンド SSL について学習したので、[Application Gateway でのエンド ツー エンド SSL の有効化](application-gateway-end-to-end-ssl-powershell.md)に進んで、エンド ツー エンド SSL を使用する Application Gateway を作成します。
 

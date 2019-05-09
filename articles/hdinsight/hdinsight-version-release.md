@@ -1,20 +1,20 @@
 ---
-title: HDInsight 4.0 の概要 (プレビュー) - Azure
+title: Azure HDInsight 4.0 の概要
 description: HDInsight 3.6 と HDInsight 4.0 の機能、制限事項、アップグレードの推奨事項を比較します。
 ms.service: hdinsight
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: hrasheed
 ms.topic: overview
-ms.date: 10/04/2018
-ms.openlocfilehash: 34582e66dec3b2f97efba7856ccfbf678f8f1f63
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 04/15/2019
+ms.openlocfilehash: af9f8a9e4d67c74910f60c70a0aee5c2439d6209
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408087"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609202"
 ---
-# <a name="hdinsight-40-overview-preview"></a>HDInsight 4.0 の概要 (プレビュー)
+# <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
 Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。 HDInsight (HDI) 4.0 は、[Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) の Apache Hadoop コンポーネントのクラウド ディストリビューションです。 この記事では、Azure HDInsight の最新のリリースとアップグレード方法に関する情報を提供します。
 

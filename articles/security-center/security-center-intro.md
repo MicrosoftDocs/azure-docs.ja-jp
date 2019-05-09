@@ -4,7 +4,7 @@ description: Azure Security Center の主な機能とそのしくみについて
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/5/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 88aa9a9003363f86db9214c62adff962bbd345cf
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344161"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242039"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -52,9 +52,11 @@ Security Center はネイティブで Azure の一部なので、Service Fabric�
 
 エージェントと Azure から収集されたイベントは、セキュリティ分析エンジンで相互に関連付けられ、調整された推奨事項 (強化タスク) が提供されます。これに従うことで、ワークロードをセキュリティで保護できます。また、脅威検出アラートも提供されます。 このようなアラートはできるだけ早く調査し、ワークロードに対して悪意のある攻撃が行われていないことを確認する必要があります。
 
+Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーが、Security Center カテゴリのビルトインのイニシアティブとして Azure Policy に反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 ビルトインのイニシアティブに含まれているのは監査ポリシーだけです。 Azure Policy における Security Center のポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
+
 ## <a name="strengthen-security-posture"></a>セキュリティ体制の強化
 
-Azure Security Center を使用すると、セキュリティ体制を強化できます。 つまり、セキュリティのベスト プラクティスとして推奨される強化タスクを特定して実行し、マシン、データ サービス、およびアプリ全体に実装することができます。 これには、セキュリティ ポリシーの管理と実施、および Azure 仮想マシン、Azure 以外のサーバー、Azure PaaS サービスが準拠していることの確認が含まれています。 Security Center には、ネットワークのセキュリティ資産を明確に可視化して、ワークロード全体を把握するために必要なツールが用意されています。
+Azure Security Center を使用すると、セキュリティ体制を強化できます。 つまり、セキュリティのベスト プラクティスとして推奨される強化タスクを特定して実行し、マシン、データ サービス、およびアプリ全体に実装することができます。 これには、セキュリティ ポリシーの管理と実施、および Azure 仮想マシン、Azure 以外のサーバー、Azure PaaS サービスが準拠していることの確認が含まれています。 Security Center には、ネットワークのセキュリティ資産を明確に可視化して、ワークロード全体を把握するために必要なツールが用意されています。 
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>組織のセキュリティ ポリシーとコンプライアンスの管理
 
@@ -126,7 +128,7 @@ Security Center には、Azure SQL 内のデータの自動分類を実行する
 
 ## <a name="get-secure-faster"></a>より迅速にセキュリティ保護
 
-ネイティブの Azure 統合 (Azure Policy、Log Analytics など) が、他の Microsoft セキュリティ ソリューション (Microsoft Cloud App Security、Windows Defender Advanced Threat Protection など) とのシームレスな統合と組み合わされているため、包括的なセキュリティ ソリューションを実現できるだけでなく、オンボードと展開も簡単です。
+ネイティブの Azure 統合 (Azure Policy、Azure Monitor ログなど) が、他の Microsoft セキュリティ ソリューション (Microsoft Cloud App Security、Windows Defender Advanced Threat Protection など) とのシームレスな統合と組み合わされているため、包括的なセキュリティ ソリューションを実現できるだけでなく、オンボードと展開も簡単です。
 
 さらに、Azure 以外にも、他のクラウド上やオンプレミスのデータ センター内で実行されているワークロードにソリューション全体を拡張することもできます。
 

@@ -1,27 +1,29 @@
 ---
-title: C を使用してリモート監視するために Windows デバイスをプロビジョニングする - Azure | Microsoft Docs
+title: C で Windows デバイスをリモート監視にプロビジョニングする - Azure | Microsoft Docs
 description: Windows で実行されている C で記述されたアプリケーションを使用して、デバイスをリモート監視ソリューション アクセラレータに接続する方法について説明します。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 55c8ff799ba3ff7fe9691d46dc90a00d5182d390
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 2a8a0bf1e63f06bbe6b6a073af6b3da8904dcaeb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829412"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182899"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>デバイスをリモート監視ソリューション アクセラレータに接続する (Windows)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-このチュートリアルでは、リモート監視ソリューション アクセラレータに物理デバイスを接続する方法について説明します。
+このチュートリアルでは、実デバイスをリモート監視ソリューション アクセラレータに接続する方法を示します。
 
 制限のあるデバイス上で実行されるほとんどの組み込みアプリケーションと同様、デバイス アプリケーションのためのクライアント コードは C で記述されています。このチュートリアルでは、Windows を実行しているコンピューターでデバイス クライアント アプリケーションを構築します。
+
+デバイスをシミュレートする場合は、「[新しいシミュレートされたデバイスの作成とテスト](iot-accelerators-remote-monitoring-create-simulated-device.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +35,7 @@ ms.locfileid: "48829412"
 
 ### <a name="download-the-source-code-and-prepare-the-project"></a>ソース コードをダウンロードしてプロジェクトを準備する
 
-プロジェクトを準備するには、GitHub から [Azure IoT C SDK リポジトリ](https://github.com/Azure/azure-iot-sdk-c)を複製またはダウンロードします。
+プロジェクトを準備するには、GitHub から [Azure IoT C SDK リポジトリを複製します](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment)。
 
 サンプルは、**samples/solutions/remote_monitoring_client** フォルダーにあります。
 

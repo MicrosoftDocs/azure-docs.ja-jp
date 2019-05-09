@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning Service で対称キーを使用して�
 description: デバイス プロビジョニング サービス インスタンスで対称キーを使用してレガシ デバイスをプロビジョニングする方法 | Microsoft Docs
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/31/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+manager: philmea
+ms.openlocfilehash: 248c7977752eaec86121a0dd197e5bff2621ead5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341237"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59500279"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>対称キーを使用してレガシ デバイスをプロビジョニングする方法
 
@@ -53,21 +53,7 @@ ms.locfileid: "53341237"
 
 この SDK には、シミュレートされたデバイスのサンプル コードが含まれています。 このシミュレートされたデバイスでは、デバイスのブート シーケンス中にプロビジョニングを試行します。
 
-1. [CMake ビルド システム](https://cmake.org/download/) バージョン 3.11.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.11.4 の暗号化ハッシュを検証しています。
-
-    ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
-    True
-    ```
-    
-    この記事の執筆時点では、CMake サイトにバージョン 3.11.4 用に次のハッシュ値が一覧表示されていました。
-
-    ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
-    ```
+1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
@@ -76,7 +62,7 @@ ms.locfileid: "53341237"
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+    この操作は、完了するまでに数分かかります。
 
 
 3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
@@ -114,23 +100,23 @@ ms.locfileid: "53341237"
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>対称キーの登録グループを作成する
 
-1. [Azure portal](http://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
 
 2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
 
 3. **[登録グループの追加]** で、次の情報を入力して、**[保存]** ボタンをクリックします。
 
-    - **[グループ名]**: 「**mylegacydevices**」と入力します。
+   - **[グループ名]**: 「**mylegacydevices**」と入力します。
 
-    - **[構成証明の種類]**: **[対称キー]** を選択します。
+   - **[構成証明の種類]**: **[対称キー]** を選択します。
 
-    - **[キーの自動生成]**: このボックスをオンにします。
+   - **[キーの自動生成]**: このボックスをオンにします。
 
-    - **[デバイスをハブに割り当てる方法を選択してください]**: 特定のハブを割り当てることができるように、**[静的構成]** を選択します。
+   - **[デバイスをハブに割り当てる方法を選択してください]**: 特定のハブを割り当てることができるように、**[静的構成]** を選択します。
 
-    - **[このグループを割り当てることができる IoT ハブを選択してください]**: お使いのハブのいずれかを選択します。
+   - **[このグループを割り当てることができる IoT ハブを選択してください]**: お使いのハブのいずれかを選択します。
 
-    ![対称キー構成証明に登録グループを追加する](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![対称キー構成証明に登録グループを追加する](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
 4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーの登録グループが、*[登録グループ]* タブの *[グループ名]* 列に **mylegacydevices** として対表示されます。 
 
@@ -186,7 +172,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 **REG_ID** の値を登録 ID に置き換えます。
 
-```PowerShell
+```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
 $REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
 
@@ -197,7 +183,7 @@ $derivedkey = [Convert]::ToBase64String($sig)
 echo "`n$derivedkey`n"
 ```
 
-```PowerShell
+```powershell
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
@@ -293,7 +279,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ## <a name="next-steps"></a>次の手順
 
 * 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-* [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
+* [クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
 * プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
 
 

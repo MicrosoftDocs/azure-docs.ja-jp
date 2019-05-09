@@ -4,7 +4,7 @@ description: Linux コンテナーを作成して、Azure Service Fabric で Apa
 services: service-fabric
 documentationcenter: .net
 author: JimacoMS2
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 29208bcbdbe6ad01d0e1ac7343bd921f3287260a
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5ae2ca352c6d3cbe02b659a97fe3147c1a31128f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580652"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664575"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 上で Apache Tomcat を実行して Service Fabric コンテナーを作成する
 Apache Tomcat は、Java サーブレットと Java サーバー テクノロジの一般的なオープンソースの実装です。 この記事では、Apache Tomcat とシンプルな Web アプリケーションでコンテナーをビルドし、Linux を実行している Service Fabric クラスターにコンテナーをデプロイして、Web アプリケーションに接続する方法を示します。  
 
-Apache Tomcat の詳細については、[Apache Tomcat のホームページ](http://tomcat.apache.org/)を参照してください。 
+Apache Tomcat の詳細については、[Apache Tomcat のホームページ](https://tomcat.apache.org/)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 * 次のものを実行している開発コンピューター。
@@ -95,9 +95,9 @@ Apache Tomcat の詳細については、[Apache Tomcat のホームページ](h
 
 1. コンテナーをテストするには、ブラウザーを開いて、次の URL のいずれかを入力します。 各 URL のようこそ画面である "Hello World!"  のバリアントが表示されます。
 
-   - http://localhost:8080/hello 
-   - http://localhost:8080/hello/sayhello 
-   - http://localhost:8080/hello/sayhi 
+   - `http://localhost:8080/hello` 
+   - `http://localhost:8080/hello/sayhello` 
+   - `http://localhost:8080/hello/sayhi` 
 
    ![Hello world /sayhi](./media/service-fabric-get-started-tomcat/hello.png)
 
@@ -141,82 +141,82 @@ Tomcat イメージをコンテナー レジストリにプッシュして、レ
    ```
    入力を求められたら、次の値を入力します。
 
-   * アプリケーションの名前: ServiceFabricTomcat
-   * アプリケーション サービスの名前: TomcatService
-   * イメージ名を入力: コンテナー レジストリにあるコンテナー イメージの URL を指定します (例: myregistry.azurecr.io/samples/tomcattest)。
-   * コマンド: 空白のままにします。 このイメージには定義済みのワークロード エントリ ポイントがあるため、入力コマンド (コンテナーの起動後にコンテナーの実行を維持するためにコンテナー内で実行されるコマンド) を明示的に指定する必要はありません。
-   * ゲスト コンテナー アプリケーションのインスタンス数: 1
+   * [Name your application]\(アプリケーションの名前\): ServiceFabricTomcat
+   * [Name of the application service]\(アプリケーション サービスの名前\): TomcatService
+   * [Input the Image Name]\(イメージ名を入力\): コンテナー レジストリにあるコンテナー イメージの URL を指定します (例: myregistry.azurecr.io/samples/tomcattest)。
+   * コマンド:空白のままにします。 このイメージには定義済みのワークロード エントリ ポイントがあるため、入力コマンド (コンテナーの起動後にコンテナーの実行を維持するためにコンテナー内で実行されるコマンド) を明示的に指定する必要はありません。
+   * [Number of instances of guest container application]\(ゲスト コンテナー アプリケーションのインスタンス数\): 1
 
    ![コンテナー用 Service Fabric Yeoman ジェネレーター](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
 10. サービス マニフェスト (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml*) で、ルートの **ServiceManfest** タグの下に次の XML を追加して、使用するアプリケーションで要求をリッスンしているポートを開きます。 **Endpoint** タグでは、エンドポイントのプロトコルとポートを宣言します。 この記事では、コンテナー化されたサービスがポート 8080 でリッスンします。 
 
-    ```xml
-    <Resources>
-      <Endpoints>
-        <!-- This endpoint is used by the communication listener to obtain the port on which to 
-         listen. Please note that if your service is partitioned, this port is shared with 
-         replicas of different partitions that are placed in your code. -->
-        <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
-      </Endpoints>
-    </Resources>
-    ```
+   ```xml
+   <Resources>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+       listen. Please note that if your service is partitioned, this port is shared with 
+       replicas of different partitions that are placed in your code. -->
+      <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
+    </Endpoints>
+   </Resources>
+   ```
 
 11. アプリケーション マニフェスト (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) では、**ServiceManifestImport** タグの下に、次の XML を追加します。 **RepositoryCredentials** タグ内の **AccountName** と **Password** をご自分のコンテナー レジストリの名前とそこにログインするために必要なパスワードに置き換えます。
 
-    ```xml
-    <Policies>
-      <ContainerHostPolicies CodePackageRef="Code">
-        <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-      </ContainerHostPolicies>
-    </Policies>
-    ```
+   ```xml
+   <Policies>
+    <ContainerHostPolicies CodePackageRef="Code">
+      <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
+      <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
+    </ContainerHostPolicies>
+   </Policies>
+   ```
 
-    **ContainerHostPolicies** タグでは、コンテナー ホストをアクティブ化するためのポリシーを指定します。
+   **ContainerHostPolicies** タグでは、コンテナー ホストをアクティブ化するためのポリシーを指定します。
     
-    * **PortBinding** タグでは、コンテナー ポートからホスト ポートへのマッピング ポリシーを構成します。 コンテナーでは Dockerfile で指定されたポート 8080 を公開するため、**ContainerPort** 属性は 8080 に設定されます。 **EndpointRef** 属性は "endpointTest" に設定されます。エンドポイントは前の手順のサービス マイフェストで定義されています。 そのため、ポート 8080 で受信するサービスへの要求は、コンテナー上のポート 8080 にマッピングされています。 
-    * **RepositoryCredentials** タグでは、コンテナーでイメージをプルする (プライベート) リポジトリを使用して認証する必要がある資格情報を指定します。 画像がパブリックなリポジトリからプルされる場合、このポリシーは必要ありません。
+   * **PortBinding** タグでは、コンテナー ポートからホスト ポートへのマッピング ポリシーを構成します。 コンテナーでは Dockerfile で指定されたポート 8080 を公開するため、**ContainerPort** 属性は 8080 に設定されます。 **EndpointRef** 属性は "endpointTest" に設定されます。エンドポイントは前の手順のサービス マイフェストで定義されています。 そのため、ポート 8080 で受信するサービスへの要求は、コンテナー上のポート 8080 にマッピングされています。 
+   * **RepositoryCredentials** タグでは、コンテナーでイメージをプルする (プライベート) リポジトリを使用して認証する必要がある資格情報を指定します。 画像がパブリックなリポジトリからプルされる場合、このポリシーは必要ありません。
     
 
 12. *ServiceFabricTomcat* フォルダーで、使用する Service Fabric クラスターに接続します。 
 
-    * ローカルの Service Fabric クラスターに接続するには、次を実行します。
+   * ローカルの Service Fabric クラスターに接続するには、次を実行します。
 
-       ```bash
-       sfctl cluster select --endpoint http://localhost:19080
-       ```
+     ```bash
+     sfctl cluster select --endpoint http://localhost:19080
+     ```
     
-    * セキュリティで保護された Azure クラスターに接続するには、クライアント証明書が *ServiceFabricTomcat* ディレクトリ内の .pem ファイルがあることを確認して、次を実行します。 
+   * セキュリティで保護された Azure クラスターに接続するには、クライアント証明書が *ServiceFabricTomcat* ディレクトリ内の .pem ファイルがあることを確認して、次を実行します。 
 
-       ```bash
-       sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
-       ```
-       上記のコマンドで、`your-certificate.pem` をご自分のクライアント証明書ファイルの名前に置き換えます。 開発環境およびテスト環境では、多くの場合、クラスター証明書がクライアント証明書として使用されます。 証明書が自己署名されていない場合、`-no-verify` パラメーターを省略します。 
+     ```bash
+     sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
+     ```
+     上記のコマンドで、`your-certificate.pem` をご自分のクライアント証明書ファイルの名前に置き換えます。 開発環境およびテスト環境では、多くの場合、クラスター証明書がクライアント証明書として使用されます。 証明書が自己署名されていない場合、`-no-verify` パラメーターを省略します。 
        
-       通常、クラスター証明書は、ローカルに .pfx ファイルとしてダウンロードされます。 まだ PEM 形式の証明書がない場合は、次のコマンドを実行すると、.pfx ファイルから .pem ファイルを作成できます。
+     通常、クラスター証明書は、ローカルに .pfx ファイルとしてダウンロードされます。 まだ PEM 形式の証明書がない場合は、次のコマンドを実行すると、.pfx ファイルから .pem ファイルを作成できます。
 
-       ```bash
-       openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
-       ```
+     ```bash
+     openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
+     ```
 
-       .pfx ファイルがパスワードで保護されていない場合は、最後のパラメーターとして `-passin pass:` を使用します。
+     .pfx ファイルがパスワードで保護されていない場合は、最後のパラメーターとして `-passin pass:` を使用します。
 
 
 13. テンプレートで指定されたインストール スクリプトを実行して、アプリケーションをご利用のクラスターにデプロイします。 スクリプトは、クラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録し、アプリケーションのインスタンスを作成します。
 
-       ```bash
-       ./install.sh
-       ```
+     ```bash
+     ./install.sh
+     ```
 
-    インストール スクリプトを実行した後、ブラウザーを開いて、Service Fabric Explorer に移動します。
+   インストール スクリプトを実行した後、ブラウザーを開いて、Service Fabric Explorer に移動します。
     
-    * ローカル クラスター上で、 http://localhost:19080/Explorer を使用します (Mac OS X で Vagrant を使用している場合は、*localhost* を VM のプライベート IP に置き換えます)。
-    * セキュリティで保護された Azure クラスターで、 https://PublicIPorFQDN:19080/Explorer を使用します。 
+   * ローカル クラスター上で、 `http://localhost:19080/Explorer` を使用します (Mac OS X で Vagrant を使用している場合は、*localhost* を VM のプライベート IP に置き換えます)。
+   * セキュリティで保護された Azure クラスターで、 `https://PublicIPorFQDN:19080/Explorer` を使用します。 
     
-    **Applications** ノードを展開し、アプリケーションの種類 (**ServiceFabricTomcatType**) のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。 アプリケーションが完全にデプロイされるには数分かかる場合があるので、お待ちください。
+   **Applications** ノードを展開し、アプリケーションの種類 (**ServiceFabricTomcatType**) のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。 アプリケーションが完全にデプロイされるには数分かかる場合があるので、お待ちください。
 
-    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
+   ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
 1. Tomcat サーバー上のアプリケーションにアクセスするには、ブラウザー ウィンドウを開いて、次の URL のいずれかを入力します。 ローカル クラスターにデプロイした場合、*PublicIPorFQDN* に *localhost* を使用します。 各 URL のようこそ画面である "Hello World!"  のバリアントが表示されます。

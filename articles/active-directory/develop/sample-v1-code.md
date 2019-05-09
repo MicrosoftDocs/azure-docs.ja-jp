@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory のコード サンプル | Microsoft Docs
+title: Azure Active Directory v1.0 のコード サンプル | Microsoft Docs
 description: シナリオ別に整理された Azure Active Directory (v1.0 エンドポイント) のコード サンプルのインデックスを提供します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 46b66a6e718f18b76db6332487c350c2c199c342
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7e88c672e72549d813971ce72fc7b85ee8619eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957776"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101025"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -44,7 +45,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 このサンプルでは、Azure AD を使用してセキュリティ保護されているシングルページ アプリケーションの作成方法を示します。
 
  プラットフォーム | 独自 API の呼び出し | 別の Web API の呼び出し
- -------- |  --------------------- | ------------------ | ----------------
+ -------- |  --------------------- | ------------------ 
 ![JavaScript](media/sample-v2-code/logo_js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
 ![Angular JS](media/sample-v2-code/logo_angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
@@ -66,8 +67,8 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 次のサンプルは、ロールベースのアクセス制御 (RBAC) を実装する方法を示しています。 RBAC は、Web アプリケーションの特定の機能のアクセス許可を特定のユーザーに制限するために使用されます。 **Azure AD グループ**に属しているか、特定のアプリケーション **ロール**が割り当てられているかに応じて、ユーザーには権限が与えられます。
 
-プラットフォーム | サンプル
- -------- | -------------------
+プラットフォーム | サンプル |
+ -------- | ------------------- |
 ![ASP.NET 4.5](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) <p/>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD の**ロール**を承認に使用する .NET 4.5 MVC Web アプリ
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph または Web API を呼び出すデスクトップおよびモバイルのパブリック クライアント アプリケーション
@@ -94,7 +95,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 次のサンプルは、ユーザーなしで (アプリケーション ID で) Microsoft Graph または Web API にアクセスするデスクトップまたは Web アプリケーションを示しています。
 
 クライアント アプリケーション | プラットフォーム | フロー/許可 | ASP.NET または ASP.NET Core 2.0 Web API の呼び出し
------------------- | -------- | ---------- | -------------------- | -------------------------
+------------------ | -------- | ---------- | -------------------- 
 デーモン アプリ (コンソール)          | ![.NET](media/sample-v2-code/logo_NETframework.png) | アプリ シークレットまたは証明書によるクライアント資格情報 | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 デーモン アプリ (コンソール)         | ![.NET](media/sample-v2-code/logo_NETcore.png) | 証明書によるクライアント資格情報| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
 ASP.NET Web アプリ  | ![.NET](media/sample-v2-code/logo_NETframework.png) | クライアントの資格情報 | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)

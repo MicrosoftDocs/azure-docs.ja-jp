@@ -3,8 +3,8 @@ title: Service Fabric Mesh アプリケーションで Azure Files ベースの�
 description: Azure CLI を使用して、Azure Files ベースのボリュームをサービス内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
-ms.author: ryanwi
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9bce2d0e6d01813fd376b2505838defc9c772d70
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891097"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335965"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
 
@@ -87,7 +87,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -119,7 +119,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
       "type": "string",
       "defaultValue": "TestVolumeData",
       "metadata": {
-        "description": "Folder in which to store the state. Provide a empty value to create a unique folder for each container to store the state. A non-empty value will retain the state across deployments, however if more than one applications are using the same folder, the counter may update more frequently."
+        "description": "Folder in which to store the state. Provide an empty value to create a unique folder for each container to store the state. A non-empty value will retain the state across deployments, however if more than one applications are using the same folder, the counter may update more frequently."
       }
     }
   },

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 0bcc49df6540b73b8feb5bb1ec4312e680572797
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617810"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243331"
 ---
 # <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のノードにセキュリティとカーネルの更新プログラムを適用する
 
@@ -27,7 +27,7 @@ ms.locfileid: "51617810"
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
-また、Azure CLI バージョン 2.0.49 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="understand-the-aks-node-update-experience"></a>AKS ノードの更新エクスペリエンスを理解する
 
@@ -78,15 +78,15 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
-aks-nodepool1-79590246-2   Ready,SchedulingDisabled   agent     1h        v1.9.11
+aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-更新プロセスが完了したら、[kubectl get nodes][kubectl-get-nodes] コマンドに `--output wide` パラメーターを指定してノードの状態を確認できます。 この追加の出力によって、基になるノードの *KERNEL-VERSION* の違いを確認することができます。次の出力例をご覧ください。 前の手順で *aks-nodepool1-79590246-2* が更新され、カーネル バージョンが *4.15.0-1025-azure* になっていることがわかります。 更新されていないノード *aks-nodepool1-79590246-1* は、カーネル バージョンが *4.15.0-1023-azure* であることを示しています。
+更新プロセスが完了したら、[kubectl get nodes][kubectl-get-nodes] コマンドに `--output wide` パラメーターを指定してノードの状態を確認できます。 この追加の出力によって、基になるノードの *KERNEL-VERSION* の違いを確認することができます。次の出力例をご覧ください。 前の手順で *aks-nodepool1-28993262-0* が更新され、カーネル バージョンが *4.15.0-1039-azure* になっていることがわかります。 更新されていないノード *aks-nodepool1-28993262-1* は、カーネル バージョンが *4.15.0-1037-azure* であることを示しています。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-aks-nodepool1-79590246-1   Ready     agent     1h        v1.9.11   10.240.0.6    <none>        Ubuntu 16.04.5 LTS   4.15.0-1023-azure   docker://1.13.1
-aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.11   10.240.0.4    <none>        Ubuntu 16.04.5 LTS   4.15.0-1025-azure   docker://1.13.1
+aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS   4.15.0-1039-azure   docker://3.0.4
+aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
 ## <a name="next-steps"></a>次の手順

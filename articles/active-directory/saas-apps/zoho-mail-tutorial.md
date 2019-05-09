@@ -4,22 +4,23 @@ description: Azure Active Directory と Zoho の間でシングル サインオ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: bae52a16a73048355a327408bfb58b04cb5e4a55
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dfd3afea4a5f09f1e572030b28d3511b31d81b69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル:Azure Active Directory と Zoho の統合
 
@@ -169,7 +170,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -227,7 +228,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    c. **[Email ID]\(メール ID\)** ボックスに、ユーザーのメール ID (この例では **brittasimon@contoso.com**) を入力します。
+    c. **[メール ID]** ボックスに、ユーザーのメール ID (**brittasimon\@contoso.com** など) を入力します。
 
     d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
    
@@ -246,7 +247,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

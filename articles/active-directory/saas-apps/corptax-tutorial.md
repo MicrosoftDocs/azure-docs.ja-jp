@@ -4,22 +4,23 @@ description: Azure Active Directory と CorpTax の間でシングル サイン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: fdad2893-41f4-4056-b6d2-ec3d050eb350
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 1949e8fc648aac5772c12d2c38e233dc53ca8b17
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f150522c8ea4d3bcb69b7ffe274f1d40d831ab2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797122"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-corptax"></a>チュートリアル:Azure Active Directory と CorpTax の統合
 
@@ -132,7 +133,7 @@ CorpTax で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
 
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -182,6 +183,6 @@ CorpTax で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

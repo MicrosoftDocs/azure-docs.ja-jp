@@ -2,8 +2,8 @@
 title: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する | Microsoft Docs
 description: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する方法について説明します。
 documentationcenter: ios
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 services: notification-hubs
 ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 04/13/2018
-ms.author: dimazaid
-ms.openlocfilehash: 270311af94d0c0551626fc2906cade84e0c60664
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: 9b6c0715cb85e245aba94adfb8b33d0d07ece9a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918966"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084414"
 ---
-# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する
+# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -52,21 +52,21 @@ ms.locfileid: "42918966"
    > [!NOTE]
    > このセクションでは、プロジェクトは空の組織名で構成されていると想定しています。 そうでない場合は、すべてのクラス名の前に組織名を付けてください。
 
-2. **Main.storyboard** で、オブジェクト ライブラリから、スクリーンショットに表示されているコンポーネントを追加します。
+2. `Main.storyboard` ファイルで、オブジェクト ライブラリから、スクリーンショットに表示されているコンポーネントを追加します。
 
-    ![Xcode Interface Builder でストリートボードを編集する][1]
+    ![Xcode Interface Builder でストーリーボードを編集する][1]
 
-   * **Username**: "*Enter Username*" というプレースホルダー テキストが入っている UI テキスト フィールドです。結果の送信ラベルのすぐ下にあり、左右の余白と、結果の送信ラベルの下の余白による制約が適用されます。
-   * **Password**: "*Enter Password*" というプレースホルダー テキストが入っている UI テキスト フィールドです。ユーザー名のテキスト フィールドのすぐ下にあり、左右の余白と、ユーザー名のテキスト フィールドの下の余白による制約が適用されます。 Attributes Inspector で *[Return Key]* の下にある **[Secure Text Entry]** オプションをオンにします。
-   * **Log in**: パスワードのテキスト フィールドのすぐ下にあるラベル付きの UI ボタンです。Attributes Inspector の *[Control-Content]* の下にある **[Enabled]** オプションをオフにします。
+   * **[ユーザー名]**: "*Enter Username*" というプレースホルダー テキストが入っている UI テキスト フィールドです。結果の送信ラベルのすぐ下にあり、左右の余白と、結果の送信ラベルの下の余白による制約が適用されます。
+   * **Password**:"*Enter Password*" というプレースホルダー テキストが入っている UI テキスト フィールドです。ユーザー名のテキスト フィールドのすぐ下にあり、左右の余白と、ユーザー名のテキスト フィールドの下の余白による制約が適用されます。 Attributes Inspector で *[Return Key]* の下にある **[Secure Text Entry]** オプションをオンにします。
+   * **Log in**: パスワードのテキスト フィールドのすぐ下にあるラベル付きの UI ボタンです。Attributes Inspector の *[Control-Content]* の下にある **[Enabled]** オプションをオフにします
    * **WNS**: Windows Notification Service に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。 詳しくは、[Windows で通知ハブを使用する方法に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)をご覧ください。
    * **GCM**: Google Cloud Messaging に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。 詳しくは、[Android で通知ハブを使用する方法に関するチュートリアル](notification-hubs-android-push-notification-google-gcm-get-started.md)をご覧ください。
    * **APNS**: Apple Platform Notification Service に通知を送信するためのスイッチとそのラベルです。
    * **Recipient Username**: "*Recipient username tag*" というプレースホルダー テキストが入っている UI テキスト フィールドです。GCM ラベルのすぐ下にあり、左右の余白と、GCM ラベルの下にあることの制約が適用されます。
 
-    「 [Notification Hubs の使用](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」チュートリアル (iOS) では、いくつかのコンポーネントが追加されています。
+     「 [Notification Hubs の使用](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」チュートリアル (iOS) では、いくつかのコンポーネントが追加されています。
 
-3. ビューに表示されているコンポーネントを **Ctrl** キーを押しながらドラッグし、**ViewController.h** まで移動して、新しいアウトレットを追加します。
+3. ビューに表示されているコンポーネントを **Ctrl** キーを押しながら `ViewController.h` までドラッグし、新しいアウトレットを追加します。
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ ms.locfileid: "42918966"
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. **ViewController.h** で、インポート ステートメントの後ろに次の `#define` を追加します。 *<Enter Your Backend Endpoint\>* の部分は、前のセクションでアプリのバックエンドをデプロイする際に使用した URL で置き換えてください。 たとえば、*http://you_backend.azurewebsites.net* です。
+4. `ViewController.h` で、インポート ステートメントの後ろに次の `#define` を追加します。 `<Enter Your Backend Endpoint>` のプレースホルダーは、前のセクションでアプリのバックエンドのデプロイに使用した宛先 URL に置き換えます。 たとえば、「 `http://your_backend.azurewebsites.net` 」のように入力します。
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
     ```
 
-5. プロジェクトで、新しく **RegisterClient** という名前の **Cocoa Touch クラス**を作成します。これは、前もって作成しておいた ASP.NET バックエンドとの間のインターフェイスに使用します。 `NSObject` から継承するクラスを作成したら、 RegisterClient.h に以下のコードを追加します。
+5. プロジェクトで、作成済みの ASP.NET バックエンドとのインターフェイスになる、`RegisterClient` という名前の新しい Cocoa Touch クラスを作成します。 `NSObject` から継承するクラスを作成したら、 `RegisterClient.h` の中に次のコードを追加します。
 
     ```objc
     @interface RegisterClient : NSObject
@@ -288,9 +288,9 @@ ms.locfileid: "42918966"
 
     このコードは、アプリケーション バックエンドへの REST 呼び出しを実行するための NSURLSession、および通信ハブによって返される registrationId をローカルに格納するための NSUserDefaults の使用についてのガイダンス記事「[アプリ バックエンドからの登録](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)」で説明したロジックを実装します。
 
-    このクラスが適切に機能するためには、プロパティ **authorizationHeader** を設定する必要があります。 このプロパティは、ログイン後に **ViewController** クラスによって設定されます。
+    このクラスが適切に機能するためには、プロパティ `authorizationHeader` を設定する必要があります。 このプロパティは、ログイン後に `ViewController` クラスによって設定されます。
 
-8. ViewController.h で、RegisterClient.h の `#import` ステートメントを追加し、 デバイス トークンの宣言と、`@interface` セクションの`RegisterClient` インスタンスに対する参照を追加します。
+8. `ViewController.h` で、`RegisterClient.h` のための `#import` ステートメントを追加します。 デバイス トークンの宣言と、`@interface` セクションの`RegisterClient` インスタンスに対する参照を追加します。
 
     ```objc
     #import "RegisterClient.h"
@@ -312,7 +312,7 @@ ms.locfileid: "42918966"
     ```
 
     > [!NOTE]
-    > これは安全な認証スキームではないため、 **createAndSetAuthenticationHeaderWithUsername:AndPassword** : の実装を登録クライアント クラス (OAuth、Active Directory など) によって読み取られる認証トークンを生成する特定の認証メカニズムで置き換えます。
+    > 次のスニペットは安全な認証スキームではないため、`createAndSetAuthenticationHeaderWithUsername:AndPassword:` の実装を、OAuth や Active Directory などの登録クライアント クラスによって使用される認証トークンを生成する特定の認証メカニズムで置き換える必要があります。
 
 10. 次に、`ViewController.m` の `@implementation` セクションに以下のコードを追加します。これは、デバイス トークンと認証ヘッダーの設定の実装を追加するものです。
 
@@ -444,7 +444,7 @@ ms.locfileid: "42918966"
     }
     ```
 
-13. **ViewDidLoad**関数で次のコードを追加して、RegisterClient インスタンスをインスタンス化し、テキスト フィールドに対するデリゲートを設定します。
+13. `ViewDidLoad` 関数で、以下を追加して `RegisterClient` インスタンスをインスタンス化し、テキスト フィールドに対するデリゲートを設定します。
 
     ```objc
     self.UsernameField.delegate = self;
@@ -453,7 +453,7 @@ ms.locfileid: "42918966"
     self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
     ```
 
-14. **AppDelegate.m** 内の `application:didRegisterForPushNotificationWithDeviceToken:` メソッドの内容をすべて削除して以下で置き換え、View Controller に APNs から取得した最新のデバイス トークンが含まれることを確認します。
+14. ここで `AppDelegate.m` 内で、`application:didRegisterForPushNotificationWithDeviceToken:` メソッドの内容をすべて削除し、以下に置き換えます (ビュー コントローラーに APNs から取得した最新のデバイス トークンが含まれることを確認するため)。
 
     ```objc
     // Add import to the top of the file
@@ -467,7 +467,7 @@ ms.locfileid: "42918966"
     }
     ```
 
-15. 最後に、 **AppDelegate.m**に次のメソッドが含まれることを確認してください。
+15. 最後に `AppDelegate.m` で、次のメソッドが含まれていることを確認します。
 
     ```objc
     - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -497,8 +497,7 @@ ms.locfileid: "42918966"
 このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
 
 > [!div class="nextstepaction"]
->[場所に基づいたプッシュ通知を送信する](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
-
+>[場所に基づいたプッシュ通知を送信する](notification-hubs-push-bing-spatial-data-geofencing-notification.md)
 
 [1]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-interface.png
 [2]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-user-pwd.png

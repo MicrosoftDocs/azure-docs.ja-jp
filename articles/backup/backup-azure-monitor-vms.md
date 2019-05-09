@@ -6,19 +6,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 0cfbb258364ed684ff38b2be9f998d8ff0656251
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864538"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310163"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
+
 アラートはサービスから返され、イベントのしきい値が満たされていること、またはしきい値を超えたことを示します。 ビジネス コストを抑えるには、問題が発生したときに、それを把握することが重要です。 通常、アラートはスケジュールに基づいて発生するわけではないため、発生後にできるだけ早く通知されると便利です。 たとえば、バックアップ ジョブまたは復元ジョブが失敗した場合、エラーの発生後 5 分以内にアラートが発生します。 コンテナーのダッシュボードの [バックアップ アラート] タイルには、重大なアラートと警告レベルのアラートが発生しているイベントが表示されます。 [バックアップ アラート] 設定では、すべてのイベントを確認することができますが、 別の問題に対応しているときに、アラートが発生したらどうでしょう。 アラートが発生したことを知らなくても、大きな問題にはならないかもしれませんが、データのセキュリティ侵害につながることもあります。 アラートが発生したことを、適切なユーザーに確実に知らせるには、アラート通知を電子メールで送信するようにサービスを構成します。 電子メール通知の設定の詳細については、「[通知の構成](backup-azure-monitor-vms.md#configure-notifications)」を参照してください。
 
 ## <a name="how-do-i-find-information-about-the-alerts"></a>アラートに関する情報の見つけ方
+
 アラートが生成されたイベントに関する情報を表示するには、[バックアップ アラート] セクションを開く必要があります。 [バックアップ アラート] セクションは、コンテナーのダッシュボードの [バックアップ アラート] タイルから開くか、[アラートとイベント] セクションから開きます。
 
 [バックアップ アラート] タイルから [バックアップ アラート] ブレードを開くには:
@@ -40,9 +42,10 @@ ms.locfileid: "52864538"
 
     ![イベントの詳細](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
-    一覧に表示される属性をカスタマイズするには、「 [追加のイベント属性の表示](backup-azure-monitor-vms.md#view-additional-event-attributes)
+    一覧に表示される属性をカスタマイズするには、「 [追加のイベント属性の表示](backup-azure-monitor-vms.md)
 
 ## <a name="configure-notifications"></a>通知の構成
+
  過去 1 時間に発生したアラート、または特定の種類のイベントの発生時に生成されたアラートに対して、電子メール通知を送信するようにサービスを構成できます。
 
 アラートの電子メール通知を設定するには
@@ -62,14 +65,16 @@ ms.locfileid: "52864538"
 5. **[重大度]** ダイアログ ボックスで、電子メール通知をトリガーする 1 つ以上のレベルを選択します。
 6. **[Save]** をクリックします。
 
-   ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Azure IaaS VM のバックアップに使用できるアラートの種類
+### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Azure IaaS VM のバックアップに使用できるアラートの種類
+
    | アラート レベル | 送信されるアラート |
    | --- | --- |
    | 重大 | バックアップに失敗した場合、回復エラー |
    | 警告 | 警告を伴って成功したバックアップ ジョブの場合 (例: スナップショットの作成中に一部の書き込みに失敗した) |
    | 情報 | 現時点では、Azure VM バックアップでは、情報通知のアラートは使用できません |
 
-### <a name="are-there-situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>通知が構成されていても電子メールが送信されない場合はあるか
+### <a name="situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>通知が構成されていても電子メールが送信されない場合
+
 通知が正しく構成されているにもかかわらずアラートが送信されないことがあります。 アラートのノイズを回避する目的で、次のような状況では電子メール通知は送信されません。
 
 * 通知頻度が [1 時間ごとのダイジェスト] に設定されており、アラートが発生してから 1 時間以内に解決した。
@@ -79,9 +84,13 @@ ms.locfileid: "52864538"
 
 ## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>アクティビティ ログを使用して、成功したバックアップの通知を取得する
 
+> [!NOTE]
+> Azure Backup からのアクティビティ ログを Recovery Services コンテナーで汲み上げる新しいモデルに移行しました。 残念ながら、Azure ソブリン クラウドでは、このことによって、アクティビティ ログの生成に影響が生じています。 Azure ソブリン クラウドのユーザーが、ここで説明されているように、アクティビティ ログからのアラートを Azure Monitor 経由で作成または構成した場合、それらのアラートはトリガーされません。 このケースに該当するユーザーの皆様には、診断設定と LA ワークスペースを使用するか、[PowerBI のレポート ソリューション](backup-azure-configure-reports.md)を使用して対象となる情報を取得することをお勧めします。 また、すべての Azure パブリック リージョンにおいて、ユーザーが Recovery Services のアクティビティ ログを Log Analytics ワークスペースに収集している場合 ([こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)を参照)、それらのログも表示されません。
+
 バックアップが正常に実行した後に通知を受ける場合は、コンテナーの[アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)上に構築されたアラートを使用できます。
 
 ### <a name="login-into-azure-portal"></a>Azure Portal にログインする
+
 Azure Portal にログインし、関連する Azure Recovery Services コンテナーに進み、プロパティの [アクティビティ ログ] セクションをクリックします。
 
 ### <a name="identify-appropriate-log"></a>適切なログを識別する
@@ -98,9 +107,7 @@ Azure Portal にログインし、関連する Azure Recovery Services コンテ
 
 [アクティビティ ログ アラートの追加] をクリックすると、次のような画面が表示されます。
 
-![アクティビティ ログ アラート](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png)
-    
-サブスクリプションとリソース グループは、アラートの保存に使用されます。 条件は自動的に入力されます。 すべての値が要件に適切であることを確認します。
+![アクティビティ ログ アラート](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png) サブスクリプションとリソース グループは、アラートの保存に使用されます。 条件は自動的に入力されます。 すべての値が要件に適切であることを確認します。
 
 バックアップが成功した場合は、[レベル] は [情報]、[状態] は [成功] と記録されます。
 
@@ -112,18 +119,19 @@ Azure Portal にログインし、関連する Azure Recovery Services コンテ
 
 ![アクティビティ ログのアクション グループ](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
 
-
 [OK] をクリックするとアクティビティ ログ アラートが生成され、その後バックアップが成功したときに記録されたアクティビティ ログによって、アクション グループで定義されているアクションが始動します。
 
 ### <a name="limitations-on-alerts"></a>アラートに関する制限事項
+
 イベント ベースのアラートには、次の制限事項が適用されます。
 
 1. アラートは、Recovery Services コンテナー内のすべての仮想マシン上でトリガーされます。 Recovery Services コンテナーの仮想マシンのサブセットに対して、アラートをカスタマイズすることはできません。
 2. アラートは "alerts-noreply@mail.windowsazure.com" から送信されます。 現時点で、電子メールの送信者を変更することはできません。
 
 ## <a name="next-steps"></a>次の手順
+
 復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-arm-restore-vms.md)に関するページをご覧ください。
 
-仮想マシンの保護については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 
+仮想マシンの保護に関する情報については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。
 
 VM バックアップの管理タスクについては、[Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。

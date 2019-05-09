@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: e5757cee2238f44706194da5247da7d4721762f3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837581"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791869"
 ---
 # <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>オンプレミスのディザスター リカバリーから Azure への仮想マシンのネットワーク インターフェイスを管理する
 Azure 内の仮想マシン (VM) には少なくとも 1 つのネットワーク インターフェイスがアタッチされている必要があります。 VM のサイズが対応できるだけの数のネットワーク インターフェイスをアタッチすることができます。

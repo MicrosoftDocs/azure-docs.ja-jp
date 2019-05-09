@@ -1,19 +1,19 @@
 ---
 title: Azure 診断ログの概要
 description: Azure 診断ログの概要と、診断ログを使用して Azure リソース内で発生するイベントを把握する方法について説明します。
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 50eb70799506ecd5203ff4fd0c2649726658b3e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/26/2019
+ms.author: nikiest
+ms.subservice: logs
+ms.openlocfilehash: 890f2224a4053ec8cad65b44b85eab0e31be3b64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550968"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519393"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -23,7 +23,7 @@ ms.locfileid: "53550968"
 * **テナント ログ**: Azure Active Directory ログなど、Azure サブスクリプションの外部に存在するテナント レベルのサービスのログです。
 * **リソースログ**: ネットワーク セキュリティ グループやストレージ アカウントなど、Azure サブスクリプション内でリソースをデプロイする Azure サービスのログです。
 
-    ![リソース診断ログとその他の種類のログ ](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
+    ![リソース診断ログとその他の種類のログ](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
 
 これらのログの内容は、Azure サービスとリソースの種類によって異なります。 たとえば、ネットワーク セキュリティ グループのルール カウンターとキー コンテナーの監査は、2 種類の診断ログです。
 
@@ -31,7 +31,7 @@ ms.locfileid: "53550968"
 
 これらのログは、ゲスト OS レベルの診断ログとも異なります。 ゲスト OS 診断ログは、仮想マシンの内部で実行されているエージェントや、他のサポートされるリソースの種類によって収集されるログです。 リソースレベルの診断ログの場合、エージェントは不要です。Azure プラットフォーム自体からリソース固有のデータをキャプチャします。一方、ゲスト OS レベルの診断ログの場合、仮想マシン上で実行されているオペレーティング システムとアプリケーションからデータをキャプチャします。
 
-ここで説明するサービスは、診断ログでサポートされていない場合があります。 [この記事には、診断ログ をサポートするサービスの一覧が記載されたセクションがあります](./../../azure-monitor/platform/tutorial-dashboards.md)。
+ここで説明するサービスは、診断ログでサポートされていない場合があります。 [この記事には、診断ログ をサポートするサービスの一覧が記載されたセクションがあります](./../../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>診断ログで実行できること
 診断ログでは次のことを実行できます。
@@ -40,26 +40,23 @@ ms.locfileid: "53550968"
 
 * 監査や手動での検査に使用するために診断ログを[**ストレージ アカウント**](../../azure-monitor/platform/archive-diagnostic-logs.md)に保存する。 **リソース診断設定**を使用して、リテンション期間 (日数) を指定できます。
 * サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを **Event Hubs** にストリーミング](diagnostic-logs-stream-event-hubs.md)する。
-* これを [Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md) で分析する。ここでは、データが Log Analytics に即座に書き込まれ、データを最初にストレージに出力する必要はありません。  
+* これを [Azure Monitor](../../azure-monitor/platform/collect-azure-metrics-logs.md) で分析する。ここでは、データが Azure Monitor に即座に書き込まれ、データを最初にストレージに出力する必要はありません。  
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは Event Hubs 名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
 
 > [!NOTE]
 >  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにネットワーク フロー ログをアーカイブすることはできません。
 
-> [!WARNING]
-> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
-
 ## <a name="diagnostic-settings"></a>診断設定
 
 リソース診断ログは、リソース診断設定を使用して構成します。 テナント診断ログは、テナント診断設定を使用して構成します。 サービス コントロールの**診断設定**:
 
-* 診断ログおよびメトリックの送信先 (ストレージ アカウント、Event Hubs、Log Analytics)。
+* 診断ログおよびメトリックの送信先 (ストレージ アカウント、Event Hubs、Azure Monitor)。
 * 送信されるログ カテゴリ、メトリック データが送信されるかどうか。
 * ログの各カテゴリをストレージ アカウントに保持する期間。
-    - リテンション期間が 0 日の場合、ログは永続的に保持されます。 または、1 日から 2147483647 日の間の任意の日数を値として指定できます。
+    - リテンション期間が 0 日の場合、ログは永続的に保持されます。 または、1 日から 365 日の間の任意の日数を値として指定できます。
     - リテンション ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または Log Analytics オプションだけが選択されている場合)、リテンション ポリシーは無効になります。
     - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。
 
@@ -83,7 +80,7 @@ ms.locfileid: "53550968"
 
 リソースの作成後に Azure Portal でリソース診断ログの収集を有効にするには、特定のリソースに移動するか、Azure Monitor に移動します。 Azure Monitor でこれを有効にする手順は次のとおりです。
 
-1. [Azure Portal](http://portal.azure.com) で、Azure Monitor に移動し、**[診断設定]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) で、Azure Monitor に移動し、**[診断設定]** をクリックします。
 
     ![Azure Monitor の [監視] セクション](media/diagnostic-logs-overview/diagnostic-settings-blade.png)
 
@@ -111,12 +108,14 @@ ms.locfileid: "53550968"
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>PowerShell でリソース診断ログの収集を有効にする
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Azure PowerShell でリソース診断ログの収集を有効にするには、次のコマンドを使用します。
 
 ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
 ストレージ アカウント ID は、ログの送信先となるストレージ アカウントのリソース ID です。
@@ -124,7 +123,7 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [y
 イベント ハブへの診断ログのストリーミングを有効にするには、次のコマンドを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
 Service Bus 規則 ID は、`{Service Bus resource ID}/authorizationrules/{key name}` という形式の文字列です。
@@ -132,13 +131,13 @@ Service Bus 規則 ID は、`{Service Bus resource ID}/authorizationrules/{key n
 Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
 次のコマンドを使用して、Log Analytics ワークスペースのリソース ID を取得できます。
 
 ```powershell
-(Get-AzureRmOperationalInsightsWorkspace).ResourceId
+(Get-AzOperationalInsightsWorkspace).ResourceId
 ```
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
@@ -229,10 +228,10 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 
 ## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>診断ログでサポートされているサービス、カテゴリ、スキーマ
 
-サポートされているサービスと、それらのサービスで使用されるログ カテゴリおよびスキーマの完全な一覧については、[この記事](../../azure-monitor/platform/tutorial-dashboards.md)をご覧ください。
+サポートされているサービスと、それらのサービスで使用されるログ カテゴリおよびスキーマの完全な一覧については、[この記事](../../azure-monitor/platform/diagnostic-logs-schema.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
 * [リソース診断ログを **Event Hubs** にストリーミングする](diagnostic-logs-stream-event-hubs.md)
-* [Azure Monitor REST API を使用してリソース診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [Azure Monitor REST API を使用してリソース診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/)
+* [Azure Monitor を使用した、Azure ストレージからのログの分析](collect-azure-metrics-logs.md)

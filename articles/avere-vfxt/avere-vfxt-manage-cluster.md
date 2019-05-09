@@ -4,20 +4,20 @@ description: Avere クラスターの管理方法 - ノードの追加または�
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999055"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787979"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT クラスターの管理
 
 クラスターを作成した後、クラスター ノードを追加したりクラスターを停止または再起動したりすることが必要になることがあります。 また、プロジェクトが完了したとき、クラスターを停止して完全に削除する方法を知っておく必要があります。 
 
-クラスターの管理タスクによっては、タスクを行うために Avere コントロール パネル、vfxt.py クラスター作成スクリプト、または Azure portal を使用する必要があります。 
+クラスターの管理タスクによっては、タスクを行うために Avere コントロール パネル、vfxt.py コマンド ライン クラスター作成スクリプト、または Azure portal を使用する必要があります。 
 
 以下のテーブルに、各タスクについて使用できるツールの概要を示します。 
 
@@ -63,15 +63,19 @@ Avere コントロール パネルには Web ブラウザーからアクセス�
 > [!NOTE] 
 > アクティブ ノード数が変更されたときに IP アドレスがクラスター ノード間で移動することがあります。
 
-詳細については、Avere クラスター設定ガイドの[[クラスター] > [FXT Nodes]\(FXT ノード)](<http://library.averesystems.com/ops_guide/4_7/gui_fxt_nodes.html#gui-fxt-nodes>) をお読みください。
+詳細については、Avere クラスター設定ガイドの[[クラスター] > [FXT Nodes]\(FXT ノード)](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) をお読みください。
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Avere コントロール パネルでクラスターを停止または再起動する
 
-**[System Maintenance]\(システム メンテナンス)** 設定ページには、クラスター サービスの再起動、クラスターの再起動、またはクラスターの安全な電源停止のためのコマンドがあります。 詳細については、[[管理] > [System Maintenance]\(システム メンテナンス)](<http://library.averesystems.com/ops_guide/4_7/gui_system_maintenance.html#gui-system-maintenance>) (Avere クラスター設定ガイド) をお読みください。
+**[System Maintenance]\(システム メンテナンス)** 設定ページには、クラスター サービスの再起動、クラスターの再起動、またはクラスターの安全な電源停止のためのコマンドがあります。 詳細については、[[管理] > [System Maintenance]\(システム メンテナンス)](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (Avere クラスター設定ガイド) をお読みください。
 
 クラスターがシャットダウンするとき、最初に状態メッセージを **[ダッシュ ボード]** タブに表示します。 しばらくすると、Avere コントロール パネル セッションは応答を停止し、これはクラスターがシャットダウンしたことを意味します。
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>vfxt.py でクラスターを管理する 
+## <a name="manage-the-cluster-with-vfxtpy"></a>vfxt.py でクラスターを管理する
+
+vfxt.py は、クラスターの作成と管理のためのコマンドライン ツールです。 
+
+vfxt.py は、クラスター コント ローラー VM に事前にインストールされています。 別のシステムにインストールする場合は、<https://github.com/Azure/AvereSDK> にあるドキュメントを参照してください。
 
 vfxt.py スクリプトは、以下のクラスター管理タスクに使用できます。
 
@@ -80,8 +84,6 @@ vfxt.py スクリプトは、以下のクラスター管理タスクに使用で
 * クラスターの破棄
 
 Avere コントロール パネルと同じように、vfxt.py は、クラスターまたはノードを破棄する前に、変更されたデータがバック エンド ストレージに永続的に保管されるように動作します。 これにより、Avere portal よりもより安全なオプションとなります。
-
-vfxt.py は、クラスター コント ローラー VM に事前にインストールされています。 <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster management with vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)」(vfxt.py でのクラウド クラスター管理) で提供されています。
 
@@ -96,7 +98,7 @@ vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster
 * クラスターのリソース グループ名、およびネットワークとストレージ リソースのリソース グループ名 (これらがクラスターと同じでない場合)
 * クラスターの位置
 * クラスター ネットワークとサブネット 
-* クラスター ノードのアクセス ロール 
+* クラスター ノード アクセス ロール (組み込みロール [Avere 演算子](../role-based-access-control/built-in-roles.md#avere-operator)を使用)
 * クラスターの管理 IP アドレスと管理パスワード 
 * 追加するノードの数 (1、2、または 3)
 * ノード インスタンスの種類とキャッシュ サイズの値 
@@ -111,7 +113,7 @@ vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster
    --add-nodes --nodes NODE_COUNT \
    --management-address CLUSTER_IP --admin-password ADMIN_PASSWORD \
    --instance-type TYPE --node-cache-size SIZE \
-   --azure-role ROLE_NAME \
+   --azure-role "Avere Operator" \
    --log ~/vfxt.log
 ```
 

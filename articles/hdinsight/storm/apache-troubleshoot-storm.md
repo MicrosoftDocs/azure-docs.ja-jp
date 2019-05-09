@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8b0f1cfe56923cbd8a5b1c517cfdc3b174088715
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5634d812b3fbd4e904516767b008f63104b3d7b7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086141"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632740"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
 
@@ -54,7 +54,7 @@ lib フォルダーには、エクスポート/インポート操作の実装を
 
 データをエクスポートし、インポートするには、Zookeeper ノードから [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) スクリプトを実行します。 スクリプトを適切な Hortonworks Data Platform (HDP) バージョンに更新します  (Microsoft では、HDInsight でこれらのスクリプトを汎用スクリプトにするよう取り組んでいます。 汎用スクリプトは、ユーザーが変更しなくてもクラスターのどのノードからでも実行できます)。
 
-エクスポート コマンドは、設定されている場所の Apache Hadoop 分散ファイル システム (HDFS) パス (Azure Blob Storage または Azure Data Lake Store 内) にメタデータを書き込みます。
+エクスポート コマンドでは、設定されている場所の Apache Hadoop 分散ファイル システム (HDFS) パス (Azure Blob Storage または Azure Data Lake Storage 内) にメタデータが書き込まれます。
 
 ### <a name="examples"></a>例
 
@@ -87,7 +87,7 @@ lib フォルダーには、エクスポート/インポート操作の実装を
  
 /usr/hdp には、特定の HDP バージョンの複数のバイナリが存在する場合があります (例: /usr/hdp/2.5.0.1233/storm)。 /usr/hdp/current/storm-client フォルダーは、クラスターで実行されている最新バージョンにシンボリック リンクされます。
 
-詳細については、[SSH を使用した HDInsight への接続](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)に関する記事および [Storm](http://storm.apache.org/) のページをご覧ください。
+詳しくは、[SSH を使用した HDInsight クラスターへの接続](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)に関する記事および [Apache Storm](https://storm.apache.org/) のページをご覧ください。
  
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Storm クラスターのデプロイ トポロジを特定する方法
 まず、HDInsight Storm でインストールされているすべてのコンポーネントを特定します。 Storm クラスターは、次の 4 つのノード カテゴリで構成されます。

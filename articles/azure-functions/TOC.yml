@@ -54,12 +54,10 @@ items:
     href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: サーバーレス Web アプリの作成
     href: https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database
-  - name: Linux 上の関数
-    items:
-    - name: Custom image
-      href: functions-create-function-linux-custom-image.md
-    - name: IoT Edge デバイス
-      href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - name: カスタム Linux イメージの作成
+    href: functions-create-function-linux-custom-image.md
+  - name: IoT Edge デバイス上の Functions
+    href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: サンプル
   items:
   - name: コード サンプル
@@ -69,11 +67,26 @@ items:
 - name: 概念
   items:
   - name: バージョン 1.x と 2.x の比較
+    displayName: migrate, migration
     href: functions-versions.md
+  - name: Premium プラン
+    href: functions-premium-plan.md
   - name: スケールとホスティング
     href: functions-scale.md
   - name: トリガーとバインド
-    href: functions-triggers-bindings.md
+    items:
+    - name: トリガーとバインディングについて
+      href: functions-triggers-bindings.md
+    - name: バインディングの例
+      href: functions-bindings-example.md
+    - name: バインディング拡張機能を登録する
+      href: functions-bindings-register.md
+    - name: バインディングの式のパターン
+      href: functions-bindings-expressions-patterns.md
+    - name: バインディングの戻り値の利用
+      href: functions-bindings-return-value.md
+    - name: バインディング エラーの処理
+      href: functions-bindings-errors.md
   - name: Languages
     items:
     - name: サポートされている言語
@@ -96,6 +109,8 @@ items:
     href: functions-best-practices.md
   - name: 関数プロキシ
     href: functions-proxies.md
+  - name: ネットワーク オプション
+    href: functions-networking-options.md
   - name: IP アドレス
     href: ip-addresses.md
   - name: オンプレミスの関数
@@ -122,10 +137,14 @@ items:
       href: create-function-app-linux-app-service-plan.md
     - name: 接続の管理
       href: manage-connections.md
-    - name: HTTP によってトリガーされない関数の手動実行
+    - name: エラー処理
+      href: functions-bindings-error-pages.md
+    - name: HTTP によってトリガーされない関数を手動で実行する
       href: functions-manually-run-non-http.md
     - name: イベント グリッド トリガーをローカルにデバッグ
       href: functions-debug-event-grid-trigger-local.md
+    - name: Microsoft Azure for Students Starter
+      href: functions-create-student-starter.md
   - name: デプロイ
     items:
     - name: 継続的なデプロイ
@@ -138,6 +157,9 @@ items:
       href: functions-infrastructure-as-code.md
     - name: オンプレミスの関数
       href: functions-runtime-install.md
+    - name: Jenkins プラグインを使用したデプロイ
+      href: /azure/jenkins/jenkins-azure-functions-deploy
+      maintainContext: true
   - name: 構成
     items:
     - name: 関数アプリの管理
@@ -218,10 +240,8 @@ items:
       href: functions-bindings-event-grid.md
     - name: Event Hubs
       href: functions-bindings-event-hubs.md
-    - name: 外部ファイル
-      href: functions-bindings-external-file.md
-    - name: 外部テーブル
-      href: functions-bindings-external-table.md
+    - name: IoT Hub
+      href: functions-bindings-event-iot.md
     - name: HTTP と webhook
       href: functions-bindings-http-webhook.md
     - name: Microsoft Graph
@@ -251,6 +271,8 @@ items:
       href: functions-host-json.md
     - name: Functions 1.x
       href: functions-host-json-v1.md
+  - name: ネットワークに関する FAQ
+    href: functions-networking-faq.md
   - name: OpenAPI リファレンス
     href: functions-api-definition.md
 - name: リソース
@@ -279,9 +301,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 7528b43987cebcad064f77ba64f9b3e658ba189c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b8f86a7da1e083e222c20c49af4f66add8790cda
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727821"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564943"

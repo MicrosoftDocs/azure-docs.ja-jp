@@ -1,10 +1,10 @@
 ---
-title: Azure Monitor の Azure Active Directory サインイン ログ スキーマを解釈する (プレビュー) | Microsoft Docs
+title: Azure Monitor (プレビュー) の Azure Active Directory サインイン ログ スキーマ | Microsoft Docs
 description: Azure Monitor (プレビュー) で使用する Azure AD サインイン ログ スキーマについて説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c44501a483b9a988c3ef048d12455eb3e5ae337
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 78ce1de5b5b9ff46efcc9e7faed9aa147b53211a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546401"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439058"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) での Azure AD サインイン ログ スキーマを解釈する
 
@@ -153,7 +154,7 @@ ms.locfileid: "53546401"
 | フィールド名 | 説明 |
 |------------|-------------|
 | Time | 日付と時刻 (UTC)。 |
-| resourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
+| ResourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
 | OperationName | サインインの場合、この値は常に *Sign-in activity* です。 |
 | OperationVersion | クライアントによって要求された REST API のバージョン。 |
 | Category | サインインの場合、この値は常に *SignIn* です。 | 
@@ -166,7 +167,7 @@ ms.locfileid: "53546401"
 | CorrelationId | クライアントから渡される省略可能な GUID。 この値は、クライアント側の操作をサーバー側の操作と関連付けるために役立ちます。また、複数のサービスにまたがるログをトレースする場合に便利です。 |
 | ID | 要求を行ったときに提示されたトークンからの ID。 ユーザー アカウント、システム アカウント、またはサービス プリンシパルです。 |
 | Level | メッセージの種類を指定します。 監査の場合は常に *Informational* です。 |
-| 場所 | サインイン アクティビティの場所を指定します。 |
+| Location | サインイン アクティビティの場所を指定します。 |
 | Properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
 
 ## <a name="next-steps"></a>次の手順

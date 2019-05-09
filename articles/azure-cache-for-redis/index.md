@@ -1,23 +1,23 @@
 ---
 title: Azure Cache for Redis のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
 description: アプリケーションでのデータへの高速アクセスを可能にする、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカーである Azure Cache for Redis の使用方法について説明します。 チュートリアルや API リファレンスなどを提供します。
-services: azure-cache-for-redis
-author: czeumault
-manager: carolz
+services: cache
+author: yegu-ms
+manager: jubbard
 layout: LandingPage
 ms.assetid: ''
-ms.service: azure-cache-for-redis
+ms.service: cache
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: efd21341254708f0dc2020d3d2b98326f462bd7d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: c5de77f3862f3ca315c586e1ec1cbfc7b5b453a1
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105714"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234851"
 ---
 # <a name="azure-cache-for-redis-documentation"></a>Azure Cache for Redis のドキュメント
 
@@ -205,8 +205,8 @@ ms.locfileid: "54105714"
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/module/azurerm.rediscache">PowerShell</a></p>
-                        <p><a href="/cli/azure/redis">Azure CLI 2.0 (プレビュー)</a></p>
+                        <p><a href="/powershell/module/az.rediscache">PowerShell</a></p>
+                        <p><a href="/cli/azure/redis">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
@@ -219,7 +219,7 @@ ms.locfileid: "54105714"
                     <div class="cardText">
                         <h3>Languages</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.redis">.NET</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.management.redis._redis_cache">Java</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.redis.rediscache">Java</a></p>
                         <p><a href="https://redis.io/clients">Redis クライアント</a></p>
                         <p><a href="https://redis.io/commands#">Redis コマンド</a></p>
                    </div>

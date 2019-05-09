@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c4537709181398e401ade67b831bc2d26a99221f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193588"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58878011"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure テーブルでの潜在顧客管理の手順
 
@@ -34,11 +34,11 @@ ms.locfileid: "53193588"
 
     ![Azure ストレージ アカウントを作成する手順](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-4.  キーのストレージ アカウント接続文字列をコピーし、Cloud パートナー ポータルの **[ストレージ アカウント接続文字列]** フィールドに貼り付けます。 `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net ` は接続文字列の例です。
+4.  キーのストレージ アカウント接続文字列をコピーし、Cloud パートナー ポータルの **[ストレージ アカウント接続文字列]** フィールドに貼り付けます。 `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` は接続文字列の例です。
     
     ![Azure ストレージ キー](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 
-[Azure のストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)またはその他任意のツールを使用して、ストレージ テーブル内のデータを表示できます。 Azure テーブルのデータをエクスポートすることもできます
+[Azure のストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)またはその他任意のツールを使用して、ストレージ テーブル内のデータを表示できます。 Azure テーブルのデータをエクスポートすることもできます
 。
 
 ## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>**(省略可能)** Azure テーブルで Microsoft Flow を使用する

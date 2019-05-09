@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9b366cca37e562e229e7d139426fc0b24978e366
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 3eb16034cc6507944ca7bebb59893e0d72a6f4c9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412965"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415461"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>ローカル ファイルからジョブの入力を作成する
 
@@ -33,6 +33,10 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#SubmitJob)]
+
+## <a name="job-error-codes"></a>ジョブ エラー コード
+
+[エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,8 +3,8 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ac8e678d8ca006fc5b0ab52f007590ac4e334bf7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988537"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505819"
 ---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
@@ -29,14 +29,14 @@ ms.locfileid: "49988537"
 
 ### <a name="create-your-aspnet-project"></a>ASP.NET プロジェクトを作成する
 
-1. Visual Studio で、[`File`] > [`New`] > [`Project`] を選択します。
+1. Visual Studio での操作: [`File`] > [`New`] > `Project`
 2. *Visual C#\Web* で、[`ASP.NET Web Application (.NET Framework)`] \(ASP.NET Web アプリケーション (.NET Framework)) を選択します。
 3. アプリケーションに名前を付けて、*[OK]* をクリックします。
 4. [`Empty`] を選択し、`MVC` 参照を追加するチェック ボックスを選択します。
 
 ## <a name="add-authentication-components"></a>認証コンポーネントの追加
 
-1. Visual Studio で、[`Tools`] > [`Nuget Package Manager`] > [`Package Manager Console`] を選択します。
+1. Visual Studio での操作: [`Tools`] > [`Nuget Package Manager`] > `Package Manager Console`
 2. パッケージ マネージャー コンソールのウィンドウで以下を入力し、*OWIN ミドルウェア NuGet パッケージ*を追加します。
 
     ```powershell
@@ -51,12 +51,13 @@ ms.locfileid: "49988537"
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>認証パイプラインを構成する
+
 次の手順を使用して、OWIN ミドルウェアのスタートアップ クラスを作成し、OpenID 接続の認証を構成できます。 このクラスは、IIS プロセスの開始時に自動的に実行されます。
 
 > [!TIP]
 > プロジェクトのルート フォルダー内に `Startup.cs` ファイルがない場合:
-> 1. プロジェクトのルート フォルダーを右クリックし、[`Add`] > [`New Item...`] > [`OWIN Startup class`] の順に選択します。<br/>
-> 2. これに `Startup.cs` という名前を付けます。
+> 1. プロジェクトのルート フォルダーを右クリックし、次を選択します: [`Add`] > [`New Item...`] > `OWIN Startup class`<br/>
+> 2. これに次のように名前を付けます:  `Startup.cs`
 >
 >> 選択したクラスが標準的な C# クラスではなく、OWIN Startup クラスであることを確認します。 これを確認するには、名前空間の上に `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` があるかチェックします。
 
@@ -113,10 +114,10 @@ ms.locfileid: "49988537"
                     ResponseType = OpenIdConnectResponseType.IdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
-                    // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter 
+                    // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
                     TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateIssuer = false
+                        ValidateIssuer = false // This is a simplification
                     },
                     // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
                     Notifications = new OpenIdConnectAuthenticationNotifications
@@ -140,6 +141,9 @@ ms.locfileid: "49988537"
         }
     }
     ```
+
+> [!NOTE]
+> `ValidateIssuer = false` の設定は、このクイック スタートを単純にするためのものです。 実際のアプリケーションでは、発行者を検証する必要があります。その方法については、サンプルを参照してください。
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>詳細情報

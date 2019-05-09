@@ -4,18 +4,18 @@ description: Azure Application Insights でログベースのメトリックと�
 services: application-insights
 keywords: ''
 author: vgorbenko
-ms.author: vitaly.gorbenko
+ms.author: vitalyg
 ms.reviewer: mbullwin
 ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d095be8c5d921001ab4a492d2385938020fa8ce0
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0b544bfcb59bf4c2b44e6b666fcd33e9fb493692
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004736"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330655"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 

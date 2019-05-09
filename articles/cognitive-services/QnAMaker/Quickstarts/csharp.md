@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ C# REST ベースの情報とコード サンプルを提供します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e2bddb6ab2d7aeb801569102fa3387838f6c3104
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c7f0afb2776f11ac9406fced1209dfedd769a96f
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258102"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245594"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>C# で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ ms.locfileid: "53258102"
 - [サポート技術情報を削除します。](#Delete)
 - [現在のエンドポイント キーを取得します。](#GetKeys)
 - [現在のエンドポイント キーを再生成します。](#PutKeys)
-- [現在の一連の単語変更を取得します。](#GetAlterations)
-- [現在の一連の単語変更を置換します。](#PutAlterations)
+- [大文字と小文字が区別される、現在の一連の単語変更を取得します。](#GetAlterations)
+- [大文字と小文字が区別される、現在の一連の単語変更を置換します。](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 

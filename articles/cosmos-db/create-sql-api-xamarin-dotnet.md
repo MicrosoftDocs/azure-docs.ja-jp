@@ -1,23 +1,21 @@
 ---
 title: Azure Cosmos DB は:Xamarin を使用した todo アプリの構築
 description: Azure Cosmos DB への接続とデータの照会に使用できる Xamarin コード サンプルについて説明します
-services: cosmos-db
 author: codemillmatt
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: f955e0386cd601212eb992870f02607538b537e2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1f86690b97fc7d65afed650664a76200ef490f33
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252628"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517115"
 ---
-# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB は:Xamarin を使用した todo アプリの構築
+# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -33,7 +31,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 > [!NOTE]
 > CosmosDB を含め、さまざまな Azure プランを表示する基本的なサンプル Xamarin アプリのサンプル コードは、[こちら](https://github.com/xamarinhq/app-geocontacts)の GitHub でご覧いただけます。 このアプリでは、地理的に分散した連絡先を確認し、それらの連絡先がその場所を更新できるようにする方法が紹介されています。
 
-このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB SQL API アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 次に、[SQL .NET API](sql-api-sdk-dotnet.md) と [Xamarin](https://docs.microsoft.com/xamarin/#pivot=platforms&panel=Cross-Platform) を基盤に [Xamarin.Forms](https://docs.microsoft.com/xamarin/#pivot=platforms&panel=XamarinForms) と [MVVM アーキテクチャ パターン](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)を使用して、todo リスト Web アプリを構築およびデプロイします。
+このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB SQL API アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 次に、[SQL .NET API](sql-api-sdk-dotnet.md) と [Xamarin](https://docs.microsoft.com/xamarin/) を基盤に [Xamarin.Forms](https://docs.microsoft.com/xamarin/) と [MVVM アーキテクチャ パターン](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)を使用して、todo リスト Web アプリを構築およびデプロイします。
 
 ![iOS 上で実行されている Xamarin todo アプリ](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
 

@@ -3,18 +3,18 @@ title: Azure Service Fabric Mesh CLI の設定 | Microsoft Docs
 description: Azure Service Fabric Mesh CLI を設定する方法について説明します。
 services: service-fabric-mesh
 keywords: ''
-author: tylermsft
-ms.author: twhitney
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/28/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: daeec38863ee7e9dd4e56f2470e5f9459dcc8bc1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c716ae0a2bb30e7e8eb249a1d230097efc0d3795
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958595"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521018"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
 Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 
@@ -25,7 +25,7 @@ Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | プライマリ CLI。Azure Service Fabric Mesh 環境でアプリケーションをデプロイしてリソースを管理するために使用できます。 
 | sfctl | ローカル クラスター | Service Fabric CLI。ローカル クラスターに対する Service Fabric リソースのデプロイメントとテストに使用できます。  
-| Maven CLI | ローカル クラスターおよび Azure Service Fabric Mesh | "az mesh" と "sfctl" のラッパー。Java 開発者が、ローカルおよび Azure の開発エクスペリエンスで使い慣れたコマンド ライン エクスペリエンスを使用できます。  
+| Maven CLI | ローカル クラスターおよび Azure Service Fabric Mesh | `az mesh` と `sfctl` のラッパー。Java 開発者は、ローカルおよび Azure の開発エクスペリエンスで使い慣れたコマンド ライン エクスペリエンスを使用できます。  
 
 プレビューでは、Azure Service Fabric Mesh CLI は Azure CLI の拡張機能として記述されています。 これは、Azure Cloud Shell または Azure CLI のローカル インストールでインストールできます。 
 
@@ -55,7 +55,7 @@ Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、
 Maven CLI を使用するには、コンピューターに次をインストールする必要があります。 
 
 * [Java](https://www.azul.com/downloads/zulu/)
-* [Maven](http://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * Azure Mesh CLI (az mesh) - Azure Service Fabric Mesh 対象 
 * SFCTL (sfctl) - ローカル クラスター対象 

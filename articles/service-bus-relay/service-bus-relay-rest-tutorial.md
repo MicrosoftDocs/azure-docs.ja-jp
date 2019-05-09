@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614474"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847968"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST のチュートリアル
 このチュートリアルでは、REST ベースのインターフェイスを表示する簡易な Azure Relay ホスト アプリケーションを構築する方法について説明します。 REST を使用すると、Web ブラウザーなどの Web クライアントから HTTP 要求を介して Service Bus API にアクセスできるようになります。
@@ -40,7 +40,7 @@ ms.locfileid: "51614474"
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-- [Visual Studio 2015 またはそれ以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
+- [Visual Studio 2015 またはそれ以降](https://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
 - Azure SDK for .NET。 [SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からインストールします。
 
 ## <a name="create-a-relay-namespace"></a>Relay 名前空間を作成する
@@ -51,7 +51,7 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
 
 WCF REST スタイルのサービスを作成するには、コントラクトを定義する必要があります。 コントラクトには、ホストがサポートする操作を指定します。 サービス操作は、Web サービス メソッドと考えることができます。 コントラクトを作成するには、C++、C#、または Visual Basic インターフェイスを定義します。 インターフェイスの各メソッドは、特定のサービス操作に対応しています。 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 属性を各インターフェイスに適用する必要があります。また、[OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) 属性を各操作に適用する必要があります。 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) があるインターフェイスのメソッドに [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) がない場合、そのメソッドは公開されません。 これらのタスクに使用されるコードの例を手順に従って説明します。
 
-WCF コントラクトと REST スタイルのコントラクトの主な違いは、REST スタイルの [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) にはプロパティ [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) がある点です。 このプロパティを使用すると、インターフェイス内のメソッドを相手側のインターフェイスのメソッドにマップすることができます。 この例では、[WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) 属性を使用してメソッドを HTTP GET にリンクします。 その結果、Service Bus は、インターフェイスに送信されたコマンドをより正確に取得および解釈できるようになります。
+WCF コントラクトと REST スタイルのコントラクトの主な違いは、REST スタイルの [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) にはプロパティ[WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) がある点です。 このプロパティを使用すると、インターフェイス内のメソッドを相手側のインターフェイスのメソッドにマップすることができます。 この例では、[WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) 属性を使用してメソッドを HTTP GET にリンクします。 その結果、Service Bus は、インターフェイスに送信されたコマンドをより正確に取得および解釈できるようになります。
 
 ### <a name="to-create-a-contract-with-an-interface"></a>インターフェイスを使用してコントラクトを作成するには
 
@@ -81,10 +81,10 @@ WCF コントラクトと REST スタイルのコントラクトの主な違い�
     {
         ...
     ```
-8. 名前空間の宣言の左中かっこの直後に、**IImageContract** という新しいインターフェイスを定義し、値が `http://samples.microsoft.com/ServiceModel/Relay/` の **ServiceContractAttribute** 属性をインターフェイスに適用します。 この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。 この名前空間の値は、このコントラクトの一意の識別子として使用されます。値にはバージョン情報が含まれています。 詳細については、[「サービスのバージョン管理」](https://go.microsoft.com/fwlink/?LinkID=180498)を参照してください。 名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。
+8. 名前空間の宣言の左中かっこの直後に、**IImageContract** という新しいインターフェイスを定義し、値が `https://samples.microsoft.com/ServiceModel/Relay/` の **ServiceContractAttribute** 属性をインターフェイスに適用します。 この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。 この名前空間の値は、このコントラクトの一意の識別子として使用されます。値にはバージョン情報が含まれています。 詳細については、[「サービスのバージョン管理」](https://go.microsoft.com/fwlink/?LinkID=180498)を参照してください。 名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。
    
     ```csharp
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
     public interface IImageContract
     {
     }
@@ -134,7 +134,7 @@ using System.IO;
 namespace Microsoft.ServiceBus.Samples
 {
 
-    [ServiceContract(Name = "IImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -169,7 +169,7 @@ REST スタイルの WCF Relay サービスを作成するには、まずコン�
 2. [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute) 属性を **IImageService** クラスに適用して、クラスが WCF コントラクトの実装であることを示します。
    
     ```csharp
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
     }
@@ -311,7 +311,7 @@ namespace Microsoft.ServiceBus.Samples
 {
 
 
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -320,7 +320,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IImageChannel : IImageContract, IClientChannel { }
 
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
         const string imageFileName = "image.jpg";
@@ -439,9 +439,9 @@ namespace Microsoft.ServiceBus.Samples
       </behaviors>
     </system.serviceModel>
     <appSettings>
-        <!-- Service Bus specific app setings for messaging connections -->
+        <!-- Service Bus specific app settings for messaging connections -->
         <add key="Microsoft.ServiceBus.ConnectionString"
-            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey="YOUR_SAS_KEY"/>
+            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SAS_KEY>"/>
     </appSettings>
 </configuration>
 ```
@@ -512,7 +512,7 @@ using Microsoft.ServiceBus.Web;
 namespace Microsoft.ServiceBus.Samples
 {
 
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -521,7 +521,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IImageChannel : IImageContract, IClientChannel { }
 
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
         const string imageFileName = "image.jpg";

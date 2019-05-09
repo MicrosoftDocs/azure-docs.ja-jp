@@ -3,18 +3,18 @@ title: カスタム イベントを Web エンドポイントに送信する - E
 description: Azure Event Grid と PowerShell を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。
 services: event-grid
 keywords: ''
-author: tfitzmac
-ms.author: tomfitz
+author: spelluru
+ms.author: spelluru
 ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 46278d0663cd748f88fcfa13d0688ec89a17bd89
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fa703defdda17a69aec99d3fbe479e9867781d68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096673"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175587"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>クイック スタート: PowerShell と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
@@ -24,20 +24,22 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 ![結果の表示](./media/custom-event-quickstart-powershell/view-result.png)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-この記事では、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+この記事では、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドでリソース グループを作成します。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。
 
 次の例では、*gridResourceGroup* という名前のリソース グループを *westus2* の場所に作成します。
 
 ```powershell-interactive
-New-AzureRmResourceGroup -Name gridResourceGroup -Location westus2
+New-AzResourceGroup -Name gridResourceGroup -Location westus2
 ```
 
 [!INCLUDE [event-grid-register-provider-powershell.md](../../includes/event-grid-register-provider-powershell.md)]
@@ -49,7 +51,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 ```powershell-interactive
 $topicname="<your-topic-name>"
 
-New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name $topicname
+New-AzEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name $topicname
 ```
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
@@ -61,7 +63,7 @@ New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2
 ```powershell-interactive
 $sitename="<your-site-name>"
 
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -ResourceGroupName gridResourceGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" `
   -siteName $sitename `
@@ -81,7 +83,7 @@ Web アプリのエンドポイントには、サフィックス `/api/updates/`
 ```powershell-interactive
 $endpoint="https://$sitename.azurewebsites.net/api/updates"
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -EventSubscriptionName demoViewerSub `
   -Endpoint $endpoint `
   -ResourceGroupName gridResourceGroup `
@@ -97,8 +99,8 @@ Web アプリをもう一度表示し、その Web アプリにサブスクリ�
 イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 まず、トピックの URL とキーを取得します。
 
 ```powershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicname).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicname
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicname).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicname
 ```
 
 この記事では、単純化するために、カスタム トピックに送信するサンプル イベント データを設定します。 通常はイベント データをアプリケーションまたは Azure サービスから送信することになります。 次の例では、Hashtable を使用してイベントのデータ `htbody` を構築し、それを整形式の JSON ペイロード オブジェクト `$body` に変換しています。
@@ -158,7 +160,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 引き続きこのイベントまたはイベント ビューアー アプリを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name gridResourceGroup
+Remove-AzResourceGroup -Name gridResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

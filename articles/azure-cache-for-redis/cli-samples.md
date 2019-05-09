@@ -1,25 +1,25 @@
 ---
 title: Azure CLI Azure Cache for Redis のサンプル | Microsoft Docs
 description: Azure Cache for Redis 用の Azure CLI サンプル。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 8d2de145-50c0-4f76-bf8f-fdf679f03698
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
-ms.author: wesmc
-ms.openlocfilehash: 15166ae5eaab72849564ce8f03daf65eefae11f1
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.author: yegu
+ms.openlocfilehash: eea74e8f1291901fea3c77b70ba3c636f40bd132
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584039"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56231791"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure Cache for Redis 用の Azure CLI サンプル
 

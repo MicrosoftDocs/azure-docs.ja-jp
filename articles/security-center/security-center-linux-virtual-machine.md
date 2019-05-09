@@ -4,7 +4,7 @@ description: このドキュメントでは、Azure Security Center で Azure �
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 5ec77d7bcc3715946c4574bca17f280a9f483b45
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9ff111bb70716e4ca218dce81dd1754181cdd93b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340950"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113330"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Linux での Azure Security Center と Azure 仮想マシン
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。

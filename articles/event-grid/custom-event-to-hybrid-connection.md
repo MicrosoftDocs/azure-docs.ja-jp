@@ -3,18 +3,18 @@ title: カスタム イベントをハイブリッド接続に送信する - Eve
 description: Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 ハイブリッド接続はエンドポイントに使用されます｡
 services: event-grid
 keywords: ''
-author: tfitzmac
-ms.author: tomfitz
-ms.date: 12/07/2018
+author: spelluru
+ms.author: spelluru
+ms.date: 02/02/2019
 ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 1f66c75333b41cf399a72b801a7e362672744775
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2a050f8bc5d2437c7cdbadcf3296c2ef6d4659dc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099592"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728641"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>チュートリアル: Azure CLI および Azure Event Grid を利用した Azure Relay Hybrid Connections へのカスタム イベントの転送
 
@@ -26,7 +26,8 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
+> [!NOTE]
+> ローカル マシンで Azure CLI を使用する場合は、Azure CLI バージョン 2.0.56 以降を使用してください。 Azure CLI の最新バージョンをインストールする手順については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -45,10 +46,6 @@ az group create --name gridResourceGroup --location westus2
 Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 次の例では、リソース グループにカスタム トピックを作成します。 `<topic_name>` は、カスタム トピックの一意の名前に置き換えてください。 イベント グリッド トピック名は、DNS エントリによって表されるため、一意である必要があります。
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 

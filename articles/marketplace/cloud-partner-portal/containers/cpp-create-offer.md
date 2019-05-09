@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 71a69a8c299d4469c151102b0dbd5cdb70c296ec
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980229"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900082"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Cloud パートナー ポータルで新しいコンテナー オファーを作成する
 
@@ -34,13 +34,13 @@ ms.locfileid: "50980229"
 
 ## <a name="new-offer-form"></a>[新しいプラン] フォーム 
 
-[Cloud パートナー ポータル](http://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ New offer](+ 新しいオファー)** を選択します。 [New Offer](新しいオファー) メニューで **[コンテナー]** を選択して **[New Offer](新しいオファー)** フォームを表示し、新しいコンテナー オファーの資産を定義するプロセスを開始します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ 新しいオファー]** を選択します。 [New Offer]\(新しいオファー) メニューで **[コンテナー]** を選択して **[New Offer]\(新しいオファー)** フォームを表示し、新しいコンテナー オファーの資産を定義するプロセスを開始します。
 
 ![新しいオファーのコンテナー オプションを選択](./media/azure-container-offer.png)
 
 ## <a name="next-steps"></a>次の手順
 
-コンテナー オファーの種類に対応する **[New Offer](新しいオファー)** ページには、新しいオファーを作成するのに使用する一連のタブとフォーム フィールドが用意されています。 以下の各記事では、タブを使用して新しいコンテナー オファーの資産グループとサポート サービスを定義する方法が説明されています。
+コンテナー オファーの種類に対応する **[New Offer]\(新しいオファー)** ページには、新しいオファーを作成するのに使用する一連のタブとフォーム フィールドが用意されています。 以下の各記事では、タブを使用して新しいコンテナー オファーの資産グループとサポート サービスを定義する方法が説明されています。
 
 - [[プランの設定] タブ](./cpp-offer-settings-tab.md)
 - [[SKU] タブ](./cpp-skus-tab.md)

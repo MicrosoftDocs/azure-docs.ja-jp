@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: c4ee56f4ddcccb1fc4ddd84aa1c1b16dea9754d9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123959"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842143"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -36,9 +36,10 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 ## <a name="create-an-x12-agreement"></a>X12 契約の作成
 
-1. [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 
+1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。 
 
-2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。  
+2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 
+   検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。  
 
    ![統合アカウントの検索](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
@@ -49,7 +50,8 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
    ![契約を作成する統合アカウントの選択](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. **[概要]**、**[契約]** タイルの順に選択します。 [契約] タイルが表示されない場合は、まずタイルを追加します。 
+4. **[概要]**、**[契約]** タイルの順に選択します。 
+   [契約] タイルが表示されない場合は、まずタイルを追加します。 
 
    ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
@@ -57,11 +59,14 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
    ![[追加] の選択](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
-6. **[追加]** で、契約の**名前**を入力します。 [契約タイプ] で、**[X12]** を選択します。 契約の**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および**ゲスト ID** を選択します。 プロパティの詳細については、この手順の表を参照してください。
+6. **[追加]** で、契約の**名前**を入力します。 
+   [契約タイプ] で、**[X12]** を選択します。 
+   契約の**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および**ゲスト ID** を選択します。 
+   プロパティの詳細については、この手順の表を参照してください。
 
     ![契約の詳細の指定](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     | --- | --- |
     | Name |契約の名前。 |
     | 契約の種類 | X12 にする必要があります。 |
@@ -72,8 +77,8 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
     | 受信設定 |これらのプロパティは、契約によって受信されたすべてのメッセージに適用されます。 |
     | Send Settings (送信の設定) |これらのプロパティは、契約によって送信されたすべてのメッセージに適用されます。 |  
 
-  > [!NOTE]
-  > X12 契約では、パートナーと受信メッセージに定義された、送信者の修飾子/識別子と受信者の修飾子/識別子が一致している必要があります。 パートナー側でこれらの値を変更した場合は、契約も更新します。
+   > [!NOTE]
+   > X12 契約では、パートナーと受信メッセージに定義された、送信者の修飾子/識別子と受信者の修飾子/識別子が一致している必要があります。 パートナー側でこれらの値を変更した場合は、契約も更新します。
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>契約で受信したメッセージを処理する方法の構成
 
@@ -82,7 +87,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 1.  **[追加]** で、**[受信設定]** をクリックします。
 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。 プロパティの説明については、このセクションの表を参照してください。
 
-    **[受信設定]** は、[識別子]、[受信確認]、[スキーマ]、[エンベロープ]、[制御番号]、[検証]、[内部設定] のセクションに分かれています。
+    **[受信設定]** は次のセクションに分かれています。[識別子]、[受信確認]、[スキーマ]、[エンベロープ]、[制御番号]、[検証]、[内部設定]。
 
 2. 完了したら、**[OK]** を選択して、必ず設定を保存します。
 
@@ -178,7 +183,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 1.  **[追加]** で、**[送信設定]** をクリックします。
 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。 プロパティの説明については、このセクションの表を参照してください。
 
-    **[送信設定]** は、[識別子]、[受信確認]、[スキーマ]、[エンベロープ]、[文字セットと区切り記号]、[制御番号]、[検証] のセクションに分かれています。
+    **[送信設定]** は次のセクションに分かれています。[識別子]、[受信確認]、[スキーマ]、[エンベロープ]、[文字セットと区切り記号]、[制御番号]、[検証]。
 
 2. 完了したら、**[OK]** を選択して、必ず設定を保存します。
 

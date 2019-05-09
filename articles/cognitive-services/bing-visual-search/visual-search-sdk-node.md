@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing Visual Search SDK を使用して画像をアップロードし、画像に関する分析情報を取得します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 1dba0f3aacd0e51a9e4d8017a93f18928fd6b2ea
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: c46c33b81a1162bdb30edc7a39a04fea8c0abb7d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744295"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866935"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>クイック スタート:Bing Visual Search SDK for Node.js を使用して画像に関する分析情報を取得する
 
@@ -52,7 +52,7 @@ ms.locfileid: "53744295"
 2. クライアントをインスタンス化します。
 
     ```javascript
-    let visualSearchApiClient = new Search.VisualSearchAPIClient(credentials);
+    let visualSearchClient = new Search.VisualSearchClient(credentials);
     ```
 
 ## <a name="search-for-images"></a>画像を検索する
@@ -64,7 +64,7 @@ ms.locfileid: "53744295"
     let visualSearchRequest = JSON.stringify({});
     let visualSearchResults;
     try {
-        visualSearchResults = await visualSearchApiClient.images.visualSearch({
+        visualSearchResults = await visualSearchClient.images.visualSearch({
             image: fileStream,
             knowledgeRequest: visualSearchRequest
         });

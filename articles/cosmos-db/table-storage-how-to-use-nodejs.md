@@ -1,20 +1,19 @@
 ---
 title: Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: b00c7168891c848f4b153acb1bf09728b7a78908
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 977b59c3344eaf2c4877f51afea176455d22ecc9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106483"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546689"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -57,34 +56,34 @@ Azure Storage または Azure Cosmos DB を使用するには、Azure Storage SD
 ### <a name="import-the-package"></a>パッケージをインポートする
 アプリケーションの **server.js** ファイルの先頭に次のコードを追加します。
 
-```nodejs
+```javascript
 var azure = require('azure-storage');
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
 Azure モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数の AZURE_STORAGE_ACCOUNT と AZURE_STORAGE_ACCESS_KEY、または AZURE_STORAGE_CONNECTION_STRING を読み取ります。 これらの環境変数が設定されていない場合、 **TableService**を呼び出すときにアカウント情報を指定する必要があります。 たとえば、次のコードでは、**TableService** オブジェクトを作成します。
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB の接続を追加する
 Azure Cosmos DB 接続を追加するには、**TableService** オブジェクトを作成し、アカウント名、主キー、およびエンドポイントを指定します。 これらの値は、自分の Cosmos DB アカウントの Azure Portal で **[設定]** > **[接続文字列]** を選択することによりコピーできます。 例: 
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
 ```  
 
 ## <a name="create-a-table"></a>テーブルを作成する
 次のコードは、 **TableService** オブジェクトを作成し、これを使用して新しいテーブルを作成します。 
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService();
 ```
 
 **createTableIfNotExists** の呼び出しにより、指定した名前の新しいテーブルが (まだ存在していない場合は) 作成されます。 次の例では、"mytable" という名前のテーブルが存在しない場合、このテーブルを作成します。
 
-```nodejs
+```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
   if(!error){
     // Table exists or created
@@ -97,13 +96,13 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 ### <a name="filters"></a>フィルター
 オプションのフィルタリングは、**TableService** を使って行われる操作に適用できます。 フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
-```nodejs
+```javascript
 function handle (requestOptions, next)
 ```
 
 要求オプションに対するプリプロセスを行った後で、このメソッドは **next** を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
-```nodejs
+```javascript
 function (returnObject, finalCallback, next)
 ```
 
@@ -111,7 +110,7 @@ function (returnObject, finalCallback, next)
 
 再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **TableService** オブジェクトを作成します。
 
-```nodejs
+```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
@@ -126,7 +125,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 エンティティを定義する例を次に示します。 **dueDate** が **Edm.DateTime** の型として定義されている点に注意してください。 型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 
-```nodejs
+```javascript
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
@@ -142,7 +141,7 @@ var task = {
 
 **entityGenerator** を使用してエンティティを作成することもできます。 次の例では、 **entityGenerator**を使用して同じタスク エンティティを作成しています。
 
-```nodejs
+```javascript
 var entGen = azure.TableUtilities.entityGenerator;
 var task = {
   PartitionKey: entGen.String('hometasks'),
@@ -154,7 +153,7 @@ var task = {
 
 エンティティをテーブルに追加するには、エンティティ オブジェクトを **insertEntity** メソッドに渡します。
 
-```nodejs
+```javascript
 tableSvc.insertEntity('mytable',task, function (error, result, response) {
   if(!error){
     // Entity inserted
@@ -166,7 +165,7 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 
 応答の例:
 
-```nodejs
+```javascript
 { '.metadata': { etag: 'W/"datetime\'2015-02-25T01%3A22%3A22.5Z\'"' } }
 ```
 
@@ -187,7 +186,7 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 
 次の例に、 **replaceEntity**を使用してエンティティを更新する方法を示します。
 
-```nodejs
+```javascript
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
   if(!error) {
     // Entity updated
@@ -215,7 +214,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 
  次の例に、2 つのエンティティをバッチで送信する方法を示します。
 
-```nodejs
+```javascript
 var task1 = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
@@ -255,7 +254,7 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 ## <a name="retrieve-an-entity-by-key"></a>キーを使用したエンティティを取得する
 **PartitionKey** と **RowKey** に基づいて特定のエンティティを返すには、**retrieveEntity** メソッドを使います。
 
-```nodejs
+```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
   if(!error){
     // result contains the entity
@@ -277,7 +276,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 
 次の例では、"hometasks" の PartitionKey で最初の 5 つの項目を返すクエリを作成します。
 
-```nodejs
+```javascript
 var query = new azure.TableQuery()
   .top(5)
   .where('PartitionKey eq ?', 'hometasks');
@@ -285,7 +284,7 @@ var query = new azure.TableQuery()
 
 **select** が使用されていないため、すべてのフィールドが返されます。 テーブルでクエリを実行するには、 **queryEntities**を使用します。 次の例では、このクエリを使用して "mytable" からエンティティを返します。
 
-```nodejs
+```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
   if(!error) {
     // query was successful
@@ -299,7 +298,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 テーブルに対するクエリでは、ごくわずかのフィールドだけをエンティティから取得できます。
 この方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 **select** 句を使って、返されるフィールドの名前を渡します。 たとえば、次のクエリでは **description** フィールドと **dueDate** フィールドのみを返します。
 
-```nodejs
+```javascript
 var query = new azure.TableQuery()
   .select(['description', 'dueDate'])
   .top(5)
@@ -309,7 +308,7 @@ var query = new azure.TableQuery()
 ## <a name="delete-an-entity"></a>エンティティを削除する
 パーティション キーと行キーを使用してエンティティを削除できます。 次の例では、**task1** オブジェクトに、削除するエンティティの **RowKey** と **PartitionKey** の値が格納されます。 次に、このオブジェクトが **deleteEntity** メソッドに渡されます。
 
-```nodejs
+```javascript
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'}
@@ -330,7 +329,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 ## <a name="delete-a-table"></a>テーブルを削除する
 次のコードは、ストレージ アカウントからテーブルを削除します。
 
-```nodejs
+```javascript
 tableSvc.deleteTable('mytable', function(error, response){
     if(!error){
         // Table deleted
@@ -347,7 +346,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 
 クエリを実行するとき、クエリ オブジェクト インスタンスとコールバック関数の間に `continuationToken` パラメーターを指定することができます。
 
-```nodejs
+```javascript
 var nextContinuationToken = null;
 dc.table.queryEntities(tableName,
     query,
@@ -366,6 +365,8 @@ dc.table.queryEntities(tableName,
 
 `continuationToken` オブジェクトには `nextPartitionKey`、`nextRowKey`、`targetLocation` などのプロパティがあり、これらを使用してすべての結果を反復処理できます。
 
+また、`continuationToken` と共に `top` を使用して、ページ サイズを設定することもできます。 
+
 ## <a name="work-with-shared-access-signatures"></a>共有アクセス署名を操作する
 共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにテーブルへの細密なアクセスを提供する安全な方法です。 多くの場合、SAS は、モバイル アプリでのレコードの照会などデータへの限定的なアクセスのために使用されます。
 
@@ -373,7 +374,7 @@ dc.table.queryEntities(tableName,
 
 次の例では、SAS の保有者に対してテーブルのクエリ ('r') を許可し、作成時から 100 分後に期限が切れる、新しい共有アクセス ポリシーを作成しています。
 
-```nodejs
+```javascript
 var startDate = new Date();
 var expiryDate = new Date(startDate);
 expiryDate.setMinutes(startDate.getMinutes() + 100);
@@ -395,7 +396,7 @@ SAS の保有者がテーブルにアクセスするときに必要なホスト�
 
 クライアント アプリケーションは、この SAS と **TableServiceWithSAS** を使用してテーブルに対する操作を実行します。 次の例では、テーブルに接続してクエリを実行しています。 tableSAS の形式については、[Shared Access Signature の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris)に関する記事を参照してください。 
 
-```nodejs
+```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
 
 var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
@@ -416,7 +417,7 @@ SAS のアクセス ポリシーを設定するために、アクセス制御リ
 
 ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。 次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
 
-```nodejs
+```javascript
 var sharedAccessPolicy = {
   user1: {
     Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
@@ -433,7 +434,7 @@ var sharedAccessPolicy = {
 
 次の例では、現在の **hometasks** テーブルの ACL を取得し、**setTableAcl** を使って新しいポリシーを追加しています。 この手法で以下を実行できます。
 
-```nodejs
+```javascript
 var extend = require('extend');
 tableSvc.getTableAcl('hometasks', function(error, result, response) {
 if(!error){
@@ -449,7 +450,7 @@ if(!error){
 
 ACL を設定した後で、ポリシーの ID に基づいて SAS を作成できます。 次の例では、"user2" 用に新しい SAS を作成しています。
 
-```nodejs
+```javascript
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 

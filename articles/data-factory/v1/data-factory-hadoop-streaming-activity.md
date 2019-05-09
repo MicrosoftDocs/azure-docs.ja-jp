@@ -9,17 +9,16 @@ ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3d5832f63a3ebe7583d18fcd863c8cc60b9b045d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048766"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523224"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop ストリーミング アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -43,7 +42,7 @@ HDInsightStreamingActivity アクティビティを使用して、Azure Data Fac
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Streaming アクティビティは、[独自の](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)、または[オンデマンドの](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux ベースの HDInsight クラスターで Hadoop Streaming プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
 > [!NOTE] 
-> Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)チュートリアルを実行してください。 
+> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してから、「[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)」チュートリアルを実行してください。 
 
 ## <a name="json-sample"></a>JSON のサンプル
 HDInsight クラスターには、サンプル プログラム (wc.exe および cat.exe) とデータ (davinci.txt) が自動的に設定されます。 既定では、HDInsight クラスターで使用されるコンテナーの名前は、クラスター自体の名前になります。 たとえば、クラスター名が myhdicluster の場合、関連付けられる BLOB コンテナーの名は myhdicluster になります。 
@@ -100,7 +99,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 2. アクティビティの種類には **HDInsightStreaming**に設定します。
 3. **mapper** プロパティには、mapper 実行可能ファイルの名前を指定します。 例では、cat.exe が mapper 実行可能ファイルです。
 4. **reducer** プロパティには、reducer 実行可能ファイルの名前を指定します。 例では、wc.exe が reducer 実行可能ファイルです。
-5. **input** プロパティには、mapper の入力ファイルを、場所を含めて指定します。 例 "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt" では、adfsample は BLOB コンテナー、example/data/Gutenberg はフォルダー、davinci.txt は BLOB です。
+5. **input** プロパティには、mapper の入力ファイルを、場所を含めて指定します。 `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` の例で、adfsample は BLOB コンテナー、example/data/Gutenberg はフォルダー、davinci.txt は BLOB です。
 6. **output** プロパティには、reducer の出力ファイルを、場所を含めて指定します。 Hadoop ストリーミング ジョブの出力は、このプロパティに指定されている場所に書き込まれます。
 7. **filePaths** セクションには、mapper と reducer の実行可能ファイルのパスを指定します。 例の "adfsample/example/apps/wc.exe"： adfsample は BLOB コンテナー、example/apps はフォルダー、wc.exe は実行可能ファイルです。
 8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure ストレージを表す Azure Storage のリンクされたサービスを指定します。
@@ -176,7 +175,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 ```
 
 ### <a name="pipeline"></a>パイプライン
-この例のパイプラインには、 **HDInsightStreaming**という種類のアクティビティが 1 つだけあります。 
+この例のパイプラインには、**HDInsightStreaming** という種類のアクティビティが 1 つだけあります。 
 
 HDInsight クラスターには、サンプル プログラム (wc.exe および cat.exe) とデータ (davinci.txt) が自動的に設定されます。 既定では、HDInsight クラスターで使用されるコンテナーの名前は、クラスター自体の名前になります。 たとえば、クラスター名が myhdicluster の場合、関連付けられる BLOB コンテナーの名は myhdicluster になります。  
 

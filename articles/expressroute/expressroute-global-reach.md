@@ -5,17 +5,17 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 8ee57bf101b432049d895b65a1dc7641653c7f21
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d2de98fe6cb0fffcc77bb851e3a853475d0f704c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105456"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998585"
 ---
-# <a name="expressroute-global-reach-preview"></a>ExpressRoute Global Reach (プレビュー)
+# <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure、Office 365、Dynamics 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用できます。 ただし、ブランチ オフィスは相互にデータを直接交換することはできません。 言い換えれば、10.0.1.0/24 はデータを、10.0.3.0/24 と 10.0.4.0/24 には送信できますが、10.0.2.0/24 には送信できません。
 
 ![ない場合][1]
@@ -33,10 +33,12 @@ ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を
 現在、ExpressRoute Global Reach は以下の場所でサポートされています。
 
 * オーストラリア
+* カナダ
 * フランス
 * 香港特別行政区
 * アイルランド
 * 日本
+* 韓国
 * オランダ
 * イギリス
 * 米国

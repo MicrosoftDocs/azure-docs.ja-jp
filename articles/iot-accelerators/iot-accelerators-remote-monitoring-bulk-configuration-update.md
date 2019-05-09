@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 640eb8800f9593aef510d99713595bdd0c844263
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52683430"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799042"
 ---
-# <a name="tutorial-manage-your-connected-devices-in-bulk"></a>チュートリアル: 接続されたデバイスを一括管理する
+# <a name="tutorial-manage-your-connected-devices-in-bulk"></a>チュートリアル:接続されたデバイスを一括管理する
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されたデバイスの構成を一括管理します。
 
@@ -57,7 +57,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 開始する前に次の操作を実行してください。
 
 * [IoT DevKit デバイスのブートローダーがバージョン 1.4.0 以降である](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)ことを確認します。
-* IoT DevKit SDK がブートローダーと同じバージョンであることを確認します。 VS Code で Azure IoT Workbench を使用して、IoT DevKit SDK を更新できます。 コマンド パレットを開き、「**Arduino: Board Manager**」と入力します。 詳しくは、「[開発環境の準備](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment)」をご覧ください。
+* IoT DevKit SDK がブートローダーと同じバージョンであることを確認します。 VS Code で Azure IoT Workbench を使用して、IoT DevKit SDK を更新できます。 コマンド パレットを開き、次のように入力します: **Arduino:**  を入力して選択します。 詳しくは、「[開発環境の準備](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment)」をご覧ください。
 
 少なくとも 1 台の IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する必要もあります。 IoT DevKit デバイスを接続していない場合は、「[MXChip IoT DevKit AZ3166 を IoT リモート監視ソリューション アクセラレータに接続する](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)」をご覧ください。
 
@@ -89,7 +89,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 1. IoT DevKit がお使いのコンピューターに接続されていないことを確認します。 VS Code を起動し、DevKit をコンピューターに接続します。
 
-1. **F1** キーを押してコマンド パレットを開き、「**IoT Workbench: Examples**」と入力して選択します。 次に、ボードとして **IoT DevKit** を選択します。
+1. **F1** キーを押してコマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Examples**。 次に、ボードとして **IoT DevKit** を選択します。
 
 1. **Firmware OTA** を探し、**[Open Sample]\(サンプルを開く\)** をクリックします。 新しい VS Code ウィンドウが開き、**firmware_ota** プロジェクト フォルダーが表示されます。
 
@@ -103,7 +103,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
     ![ファームウェアのバージョンを変更する](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. コマンド パレットを開き、「**IoT Workbench: Device**」と入力して選択します。 次に、**[Device Compile]\(デバイスのコンパイル\)** を選択してコードをコンパイルします。
+1. コマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Device**。 次に、**[Device Compile]\(デバイスのコンパイル\)** を選択してコードをコンパイルします。
 
     ![デバイスのコンパイル](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>CRC 値を生成し、ファームウェアのファイル サイズを計算する
 
-1. コマンド パレットを開き、「**IoT Workbench: Device**」と入力して選択します。 次に、**[Generate CRC]\(CRC の生成\)** を選択します。
+1. コマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Device**。 次に、**[Generate CRC]\(CRC の生成\)** を選択します。
 
     ![CRC を生成する](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -139,7 +139,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
     ![バージョン 1.0.0](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. コマンド パレットを開き、「**IoT Workbench: Device**」と入力して選択します。 **[Device Upload]\(デバイスのアップロード\)** を選択します。
+1. コマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Device**。 **[Device Upload]\(デバイスのアップロード\)** を選択します。
 
     ![デバイスのアップロード](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
@@ -151,7 +151,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ## <a name="create-a-device-configuration"></a>デバイス構成を作成する
 
-デバイス構成では、デバイスの望ましい状態を指定します。 通常、開発者は、Azure portal の **[IoT デバイスの構成]** ページで[構成を作成](../iot-hub/iot-hub-auto-device-config.md#create-a-configuration)します。 デバイス構成は、デバイスの望ましい状態とメトリックのセットが指定されている JSON ドキュメントです。
+デバイス構成では、デバイスの望ましい状態を指定します。 通常、開発者は、Azure portal の **[IoT デバイスの構成]** ページで[構成を作成](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration)します。 デバイス構成は、デバイスの望ましい状態とメトリックのセットが指定されている JSON ドキュメントです。
 
 次の構成を **firmware-update.json** という名前のファイルとしてローカル コンピューターに保存します。 `YOURSTRORAGEACCOUNTNAME`、`YOURCHECKSUM`、`YOURPACKAGESIZE` の各プレースホルダーを、前に書き留めた値に置き換えます。
 

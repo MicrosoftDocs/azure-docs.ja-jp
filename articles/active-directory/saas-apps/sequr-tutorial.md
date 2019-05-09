@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Sequr の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Sequr の統合 | Microsoft Docs
 description: Azure Active Directory と Sequr の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a491e2ce-b4e8-41b8-8f4a-a2e263e462c3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: 183d5f9d1e8da4e0ed9e4648ea48ba5e23e2e70e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 007989d51ad111fb6a3ef21daee6a7c484bd154d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447926"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184366"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル: Azure Active Directory と Sequr の統合
+# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル:Azure Active Directory と Sequr の統合
 
 このチュートリアルでは、Sequr と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -152,10 +153,10 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     c. 構成を保存した後に、[リレー状態] の値が生成されます。 **[リレー状態]** の値をコピーして、Azure Portal の **[Sequr のドメインと URL]** セクションの **[リレー状態]** テキスト ボックスに貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -187,11 +188,11 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-sequr-test-user"></a>Sequr テスト ユーザーを作成する
 
-このセクションでは、Sequr で Britta Simon というユーザーを作成します。 [Sequr クライアント サポート チーム](mailto:support@sequr.io)と連携し、Sequr プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Sequr で Britta Simon というユーザーを作成します。  [Sequr クライアント サポート チーム](mailto:support@sequr.io) と協力して、Sequr プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -228,7 +229,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Sequr のタイルをクリックすると、Sequr アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

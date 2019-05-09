@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 5602e68e546c59e3ee43442fdf0cdf33b9cf6a29
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 99aec3be893693e523dffefbb3c422222ac19a2e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975034"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616868"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理サーバーの Azure へのディザスター リカバリー アーキテクチャ
 
@@ -25,7 +25,7 @@ ms.locfileid: "53975034"
 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | ---
-**Azure** | Azure サブスクリプション、Azure ストレージ アカウント、および Azure ネットワーク。 | オンプレミスの VM からレプリケートされたデータはストレージ アカウントに格納されます。 オンプレミスから Azure へのフェールオーバーを実行すると、そのレプリケートされたデータで Azure VM が作成されます。 Azure VM は、作成時に Azure 仮想ネットワークに接続します。
+**Azure** | Azure サブスクリプションと Azure ネットワーク。 | オンプレミスの物理マシンからレプリケートされたデータは、Azure マネージド ディスクに格納されます。 オンプレミスから Azure へのフェールオーバーを実行すると、そのレプリケートされたデータで Azure VM が作成されます。 Azure VM は、作成時に Azure 仮想ネットワークに接続します。
 **構成サーバー** | 1 台のオンプレミス物理マシンまたは VMware VM が、オンプレミスの Site Recovery のコンポーネントを実行するためにデプロイされています。 この VM は、構成サーバー、プロセス サーバー、マスター ターゲット サーバーを実行します。 | 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
  **プロセス サーバー**:  | 構成サーバーと共に既定でインストールされます。 | レプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。<br/><br/> プロセス サーバーには、レプリケートするサーバー上のモビリティ サービスもインストールされます。<br/><br/> デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。
  **マスター ターゲット サーバー** | 構成サーバーと共に既定でインストールされます。 | Azure からのフェールバック中にレプリケーション データを処理します。<br/><br/> 大規模なデプロイでは、フェールバック用に別のマスター ターゲット サーバーを追加できます。

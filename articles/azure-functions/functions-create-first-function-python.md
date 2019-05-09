@@ -7,22 +7,22 @@ author: ggailey777
 ms.author: glenga
 ms.date: 08/29/2018
 ms.topic: quickstart
-ms.service: functions
+ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: a5abc90f5a40911538b6516622203f595adfed5c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: af684a4fcc3a70326c1a57cb10a39204b4fd12dc
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091817"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438752"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Azure で初めての Python 関数を作成する (プレビュー)
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
-このクイック スタート記事では、Linux 上で動作する初めての[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/) Python 関数アプリを Azure CLI を使用して作成する方法について説明します。 [Azure Functions Core Tools](functions-run-local.md) を使用して、関数のコードをローカルで作成し、その後 Azure にデプロイします。 関数アプリを Linux 上で実行するためのプレビューに関する考慮事項の詳細については、[Linux 上の関数に関するこちらの記事](https://aka.ms/funclinux)を参照してください。
+このクイック スタート記事では、Linux 上で動作する初めての[サーバーレス](https://azure.com/serverless) Python 関数アプリを Azure CLI を使用して作成する方法について説明します。 [Azure Functions Core Tools](functions-run-local.md) を使用して、関数のコードをローカルで作成し、その後 Azure にデプロイします。 関数アプリを Linux 上で実行するためのプレビューに関する考慮事項の詳細については、[Linux 上の関数に関するこちらの記事](https://aka.ms/funclinux)を参照してください。
 
 次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。
 
@@ -30,9 +30,9 @@ ms.locfileid: "53091817"
 
 ローカルでビルドしてテストするには、以下を行う必要があります。
 
-+ [Python 3.6](https://www.python.org/downloads/) のインストール
++ [Python 3.6](https://www.python.org/downloads/) のインストール。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 2.2.70 以降のインストール
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 2.2.70 以降のインストール (.NET Core 2.x SDK が必要)。
 
 Azure に発行して実行するには:
 
@@ -179,7 +179,7 @@ Http Functions:
 
 ## <a name="create-a-linux-function-app-in-azure"></a>Azure に Linux の関数アプリを作成する
 
-関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドを使用して、**Linux 上で動作する Python 関数アプリ**を作成します。
+関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。 [az functionapp create](/cli/azure/functionapp) コマンドを使用して、**Linux 上で動作する Python 関数アプリ**を作成します。
 
 `<app_name>` プレースホルダーに一意の関数アプリ名を、ストレージ アカウント名として `<storage_name>` を使用して、次のコマンドを実行します。 `<app_name>` は、関数アプリの既定の DNS ドメインでもあります。 この名前は、Azure のすべてのアプリで一意である必要があります。
 

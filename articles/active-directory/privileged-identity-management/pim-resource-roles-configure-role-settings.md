@@ -1,5 +1,5 @@
 ---
-title: PIM で Azure リソース ロールの設定を構成する | Microsoft Docs
+title: PIM で Azure リソース ロールの設定を構成する - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールの設定を構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -10,20 +10,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
-ms.date: 08/30/2018
+ms.subservice: pim
+ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a4aecd276df8e5453f0c35d6290bbe8a8d156ffa
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669365"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494869"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>PIM で Azure リソース ロールの設定を構成する
 
-Azure リソース ロールの設定を構成するときに、Azure AD Privileged Identity Management (PIM) で Azure リソース ロールの割り当てに適用される既定の設定を定義します。 次の手順を実行して、承認ワークフローを構成し、誰が要求を承認または拒否できるかを指定します。
+Azure リソース ロールの設定を構成するときに、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で Azure リソース ロールの割り当てに適用される既定の設定を定義します。 次の手順を実行して、承認ワークフローを構成し、誰が要求を承認または拒否できるかを指定します。
 
 ## <a name="open-role-settings"></a>ロールの設定を開く
 
@@ -61,15 +62,15 @@ Azure リソース ロールの設定を構成するときに、Azure AD Privile
 
 | | |
 | --- | --- |
-| **永続的に資格のある割り当てを許可する** | リソース管理者は、永続的に資格のあるメンバーシップを割り当てることができます。 |
-| **次の後に、資格のある割り当ての有効期限が切れる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| **永続的な有資格割り当てを許可する** | リソース管理者は、永続的に資格のあるメンバーシップを割り当てることができます。 |
+| **資格のある割り当てが次の期間後に期限切れになる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 また、このような**アクティブな**割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |
-| **永続するアクティブな割り当てを許可する** | リソース管理者は、永続的にアクティブなメンバーシップを割り当てることができます。 |
-| **アクティブ割り当ては次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| **永続的なアクティブ割り当てを許可する** | リソース管理者は、永続的にアクティブなメンバーシップを割り当てることができます。 |
+| **アクティブな割り当てが次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 > [!NOTE] 
 > リソース管理者は､終了日時が指定されている割り当てのどれでも更新することができます｡ これに対し､メンバーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 8e082f15cff616b9dc63fbf4ad51e94d078a04f3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811292"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995542"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -384,12 +384,13 @@ public async Task Process(MessagePayload message)
 各メッセージは、独自の非同期制御フローの中で処理する必要があります。 詳細については、「[出力方向の依存関係の追跡](#outgoing-dependencies-tracking)」セクションを参照してください。
 
 ## <a name="long-running-background-tasks"></a>長時間実行されるバックグラウンド タスク
+
 アプリケーションの中には、ユーザーの要求によって発生する、長時間実行される操作を開始するものがあります。 トレース/インストルメンテーションの観点から見ると、これは要求や依存関係のインストルメンテーションと変わりません。 
 
 ```csharp
 async Task BackgroundTask()
 {
-    var operation = telemetryClient.StartOperation<RequestTelemetry>(taskName);
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>(taskName);
     operation.Telemetry.Type = "Background";
     try
     {
@@ -414,9 +415,9 @@ async Task BackgroundTask()
 }
 ```
 
-この例では、`telemetryClient.StartOperation` で `RequestTelemetry` を作成し、関連付けのコンテキストを設定しています。 操作のスケジュールが設定された受信要求によって作成された親操作があるとします。 `BackgroundTask` が受信要求と同じ非同期制御フローで開始されていれば、受信要求はその親操作と関連付けられます。 `BackgroundTask` と、入れ子になっているすべてのテレメトリ項目は、(要求の終了後も) それを発生させた要求と自動的に関連付けられます。
+この例では、`telemetryClient.StartOperation` で `DependencyTelemetry` を作成し、関連付けのコンテキストを設定しています。 操作のスケジュールが設定された受信要求によって作成された親操作があるとします。 `BackgroundTask` が受信要求と同じ非同期制御フローで開始されていれば、受信要求はその親操作と関連付けられます。 `BackgroundTask` と、入れ子になっているすべてのテレメトリ項目は、(要求の終了後も) それを発生させた要求と自動的に関連付けられます。
 
-いずれの操作 (`Activity`) も関連付けられていないバックグラウンド スレッドからタスクが開始された場合、`BackgroundTask` には親が存在しません。 ただし、入れ子になった操作が存在する可能性があります。 そのタスクから報告されるすべてのテレメトリ項目は、`BackgroundTask` で作成された `RequestTelemetry` に関連付けられます。
+いずれの操作 (`Activity`) も関連付けられていないバックグラウンド スレッドからタスクが開始された場合、`BackgroundTask` には親が存在しません。 ただし、入れ子になった操作が存在する可能性があります。 そのタスクから報告されるすべてのテレメトリ項目は、`BackgroundTask` で作成された `DependencyTelemetry` に関連付けられます。
 
 ## <a name="outgoing-dependencies-tracking"></a>出力方向の依存関係の追跡
 Application Insights がサポートしていない独自の依存関係や操作を追跡することができます。

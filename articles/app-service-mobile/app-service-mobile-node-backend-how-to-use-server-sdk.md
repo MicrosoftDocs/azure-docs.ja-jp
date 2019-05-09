@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725033"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997535"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 
@@ -135,7 +135,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
     ファイルを保存します。
 
-1. アプリケーションをローカルで実行するか (API は http://localhost:3000) で動作します)、Azure に発行します。
+1. アプリケーションをローカルで実行するか (API は `http://localhost:3000` で動作します)、Azure に発行します。
 
 ### <a name="create-node-backend-portal"></a>Azure Portal を使用して Node.js バックエンドを作成する
 
@@ -176,7 +176,7 @@ Microsoft Azure では、Azure サービスに Mobile Apps Node.js バックエ�
 Azure App Service には、バックエンドを公開する前に確認する必要がある Node.js アプリケーションに関する具体的なアドバイスがあります。
 
 * 方法: [Node のバージョンを指定する]
-*  [Node モジュールを使用する]
+* [Node モジュールを使用する]
 
 ### <a name="howto-enable-homepage"></a>アプリケーションのホーム ページを有効にする
 
@@ -364,7 +364,7 @@ module.exports = {
 };
 ```
 
-パスワードがクラウドに保存されないように、**azureMobile.js** を **.gitignore** ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。 運用環境の設定は、必ず **Azure Portal** の [Azure Portal] で構成してください。
+パスワードがクラウドに保存されないように、**azureMobile.js** を **.gitignore** ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。 運用環境の設定は、必ず [Azure Portal] の **[アプリ設定]** で構成してください。
 
 ### <a name="howto-appsettings"></a>モバイル アプリのアプリ設定を構成する
 
@@ -372,7 +372,7 @@ azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] �
 
 | アプリ設定 | azureMobile.js setting | 説明 | 有効な値 |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |アプリの名前 |string |
+| **MS_MobileAppName** |name |アプリの名前 |文字列 |
 | **MS_MobileLoggingLevel** |logging.level |ログ記録するメッセージの最小ログ レベル |error、warning、info、verbose、debug、silly |
 | **MS_DebugMode** |debug |デバッグ モードを有効または無効にします |true、false |
 | **MS_TableSchema** |data.schema |SQL テーブルの既定のスキーマ名 |string (既定: dbo) |
@@ -433,7 +433,7 @@ Mobile Apps バックエンドのプロビジョニングには数分かかる�
 
 <!--- END OF ALTERNATE INCLUDE -->
 
-データベースの作成には数分かかる場合があります。 **[通知]** 領域を使用して、デプロイの進行状況を監視します。 データベースのデプロイが正常に完了するまで、先に進まないでください。 データベースがデプロイされると、Mobile Apps バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。 このアプリ設定を確認するには、**[設定]** > **[アプリケーション設定]** > **[接続文字列]** を順に選択します。
+データベースの作成には数分かかる場合があります。 **[通知]** 領域を使用して、デプロイの進行状況を監視します。 データベースのデプロイが正常に完了するまで、先に進まないでください。 データベースがデプロイされると、Mobile Apps バックエンドの [アプリ設定] で、SQL データベース インスタンスの接続文字列が作成されます。 このアプリ設定を確認するには、**[設定]** > **[アプリケーション設定]** > **[接続文字列]** を順に選択します。
 
 ### <a name="howto-tables-auth"></a>テーブルへのアクセスに認証を要求する
 

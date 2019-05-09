@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e9271081b36681c4011d96b329de5058aeaf8472
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c25232abf20bbe3d01672b7620e5d2f5e31d5c8a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090620"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019607"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Shopify からデータをコピーする (プレビュー)
 
@@ -45,9 +44,9 @@ Shopify のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**Shopify** | [はい] |
-| host | Shopify サーバーのエンドポイント。 (つまり、mystore.myshopify.com)  | [はい] |
-| accessToken | Shopify のデータへのアクセスに使用する API アクセス トークン。 トークンはオフライン モードの場合には期限切れしません。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**Shopify** | はい |
+| host | Shopify サーバーのエンドポイント。 (つまり、mystore.myshopify.com)  | はい |
+| accessToken | Shopify のデータへのアクセスに使用する API アクセス トークン。 トークンはオフライン モードの場合には期限切れしません。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -78,7 +77,7 @@ Shopify からデータをコピーするには、データセットの type プ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**ShopifyObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**ShopifyObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -107,7 +106,7 @@ Shopify からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ShopifySource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ShopifySource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

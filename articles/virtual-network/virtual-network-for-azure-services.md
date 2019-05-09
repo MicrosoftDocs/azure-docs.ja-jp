@@ -1,32 +1,30 @@
 ---
-title: Azure サービスの仮想ネットワーク | Microsoft Docs
+title: Azure サービス用の仮想ネットワーク
+titlesuffix: Azure Virtual Network
 description: 仮想ネットワークにリソースをデプロイすることの利点について説明します。 仮想ネットワークに置いたリソースは互いに通信できるほか、オンプレミスのリソースと通信できます。トラフィックがインターネットを通過することがありません。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: malopMSFT
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: jdial
-ms.openlocfilehash: 5b21ec36215dfde964b845a1ee28c02b562e1dd7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: malop;kumud
+ms.openlocfilehash: c9b2f7244731be67628776b032e041457900353c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340676"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58886422"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure サービスの仮想ネットワーク統合
 
 Azure 仮想ネットワークに Azure サービスを統合すると、仮想ネットワーク内の仮想マシンまたはコンピューティング リソースからサービスにプライベート アクセスできるようになります。
-次のオプションを使用して、仮想ネットワークで Azure サービスを統合することができます。サービスの専用インスタンスを仮想ネットワークに直接デプロイする。 サービスは、仮想ネットワーク内で、また、オンプレミス ネットワークからプライベート アクセスできます。
-サービス エンドポイント経由で仮想ネットワークをサービスまで延ばす。 サービス エンドポイントを使用することで、仮想ネットワークに個々のサービス リソースを結び付けることができます。
+次のオプションを使用して、仮想ネットワークで Azure サービスを統合することができます。
+- サービスの専用インスタンスを仮想ネットワークにデプロイする。 サービスは、仮想ネットワーク内で、また、オンプレミス ネットワークからプライベート アクセスできます。
+- サービス エンドポイント経由で仮想ネットワークをサービスまで延ばす。 サービス エンドポイントを使用することで、仮想ネットワークに個々のサービス リソースを結び付けることができます。
 
 仮想ネットワークに複数の Azure サービスを統合するには、上記のパターンの 1 つ以上を組み合わせることができます。 たとえば、仮想ネットワークに HDInsight をデプロイし、サービス エンドポイントを介して HDInsight サブネットにストレージ アカウントを結び付けることができます。
  
@@ -54,7 +52,7 @@ Azure 仮想ネットワークに Azure サービスを統合すると、仮想�
 |データ|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 Analytics | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |
 | ID | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |
-| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instances (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service エンジン](https://github.com/Azure/acs-engine)と Azure Virtual Network CNI [プラグイン](https://github.com/Azure/acs-engine/tree/master/examples/vnet)||
+| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instances (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service エンジン](https://github.com/Azure/acs-engine)と Azure Virtual Network CNI [プラグイン](https://github.com/Azure/acs-engine/tree/master/examples/vnet)|
 | Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service 環境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|
 | ホストされている | [Azure の専用 HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|
 |||

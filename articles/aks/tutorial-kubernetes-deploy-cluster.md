@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7e5c78e1b30b311c6ce918453fe728ae86060dda
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 54872a1c5a40cdb3f51c17362daed93c3892001e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720664"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754559"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>チュートリアル:Azure Kubernetes Service (AKS) クラスターのデプロイ
 
@@ -67,10 +67,10 @@ ACR に格納されているイメージにアクセスするためには、ACR 
 az acr show --resource-group myResourceGroup --name <acrName> --query "id" --output tsv
 ```
 
-ACR に格納されているイメージを使用するための適切なアクセス権を AKS クラスターに与えるには、[az role assignment create][] コマンドを使用してロールの割り当てを作成します。 `<appId`> と `<acrId>` は、前の 2 つの手順で書き留めた値に置き換えてください。
+ACR に格納されているイメージをプルするための適切なアクセス権を AKS クラスターに与えるには、[az role assignment create][] コマンドを使用して `AcrPull` ロールを割り当てます。 `<appId`> と `<acrId>` は、前の 2 つの手順で書き留めた値に置き換えてください。
 
 ```azurecli
-az role assignment create --assignee <appId> --scope <acrId> --role Reader
+az role assignment create --assignee <appId> --scope <acrId> --role acrpull
 ```
 
 ## <a name="create-a-kubernetes-cluster"></a>Kubernetes クラスターの作成

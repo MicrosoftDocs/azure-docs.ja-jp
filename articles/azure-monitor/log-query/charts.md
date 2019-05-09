@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリからのグラフと図の作成 |Microsoft Docs
-description: さまざまな方法でデータを表示できるよう Azure Log Analytics に備えられている多様な視覚化について説明します。
+title: Azure Monitor ログ クエリからのグラフと図の作成 | Microsoft Docs
+description: ログ データをさまざまな方法で表示するための、Azure Monitor の多様な視覚化について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 049e50f5800194c4126003f7e5ff7ae60b3de768
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186227"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269418"
 ---
-# <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Log Analytics クエリからのグラフと図の作成
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Azure Monitor ログ クエリからのグラフと図の作成
 
 > [!NOTE]
-> このレッスンを完了する前に、「[Advanced aggregations in Log Analytics queries (Log Analytics クエリの高度な集計)](advanced-aggregations.md)」のレッスンを完了する必要があります。
+> このレッスンを完了する前に、「[Azure Monitor ログ クエリの高度な集計](advanced-aggregations.md)」を完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-この記事では、さまざまな方法でデータを表示できるよう Azure Log Analytics に備えられている多様な視覚化について説明します。
+この記事では、ログ データをさまざまな方法で表示するための、Azure Monitor の多様な視覚化について説明します。
 
 ## <a name="charting-the-results"></a>結果のグラフ表示
 まず、過去 1 時間のオペレーティング システムあたりのコンピューター数を確認します。
@@ -93,7 +93,7 @@ SecurityEvent
 ![棒グラフ AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>次の手順
-Log Analytics クエリ言語の使用については、他のレッスンをご覧ください。
+Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)
 - [日付と時刻の操作](datetime-operations.md)

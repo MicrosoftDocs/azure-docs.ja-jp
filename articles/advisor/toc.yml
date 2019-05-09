@@ -1,0 +1,56 @@
+- name: Azure Advisor のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Advisor とは
+      href: advisor-overview.md
+- name: チュートリアル
+  items:
+    - name: Advisor の使用を開始する
+      href: advisor-get-started.md
+- name: ハウツー ガイド
+  items:
+    - name: Azure アプリケーションの可用性の向上
+      href: advisor-high-availability-recommendations.md
+    - name: リソースのセキュリティを強化する
+      href: advisor-security-recommendations.md
+    - name: Azure アプリケーションのパフォーマンスの向上
+      href: advisor-performance-recommendations.md
+    - name: サービス コストの削減
+      href: advisor-cost-recommendations.md
+    - name: 推奨事項の構成
+      href: view-recommendations.md
+    - name: アクセス許可とブロックされるアクション
+      href: permissions.md
+- name: リファレンス
+  items:
+    - name: Security Center
+      href: 'https://azure.microsoft.com/services/security-center/'
+    - name: SQL DB Advisor
+      href: 'https://azure.microsoft.com/documentation/articles/sql-database-advisor/'
+    - name: App Service
+      href: 'https://docs.microsoft.com/azure/app-service/app-service-best-practices'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/advisor/'
+    - name: CLI
+      href: 'https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest'
+    - name: PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/advisor'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=advisor'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=advisor'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=advisor'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=azure+advisor'
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=advisor'

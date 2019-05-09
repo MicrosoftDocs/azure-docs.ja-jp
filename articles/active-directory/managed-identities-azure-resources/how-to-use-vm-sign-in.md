@@ -3,34 +3,37 @@ title: Azure VM 上の Azure リソースのマネージド ID を使用して�
 description: Azure リソース サービス プリンシパルの Azure VM マネージド ID を使用して、スクリプト クライアントのサインインとリソースへのアクセスを行うための手順を追った説明と例。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: bf363e4b03fb604e1b9af0d30b6e4ac471a41821
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980289"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442139"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 上の Azure リソースのマネージド ID を使用してサインインする方法 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 この記事では、Azure リソース サービス プリンシパルのマネージド ID を使用してサインインするための PowerShell と CLI スクリプトの例と、エラー処理などの重要なトピックに関するガイダンスを提供します。
 
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-この記事に含まれている Azure PowerShell または Azure CLI の例を使用するには、最新バージョンの [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールする必要があります。 
+この記事に含まれている Azure PowerShell または Azure CLI の例を使用するには、最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールする必要があります。 
 
 > [!IMPORTANT]
 > - この記事のすべてのサンプル スクリプトは、Azure リソースのマネージド ID が有効になっている VM 上でコマンドライン クライアントが実行されていることを前提としています。 お使いの VM にリモート接続するには、Azure ポータルで VM への "接続" 機能を使用します。 VM で Azure リソースのマネージド ID を有効にする方法の詳細については、「[Azure Portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」、または関連する記事 (PowerShell、CLI、テンプレート、または Azure SDK の使用) のいずれかを参照してください。 
@@ -67,24 +70,24 @@ Azure リソースのマネージド ID では、スクリプト クライアン
 2. VM に関する情報を取得するには、Azure Resource Manager コマンドレットを呼び出します。 PowerShell が自動的にトークンの使用を管理します。  
 
    ```azurepowershell
-   Add-AzureRmAccount -identity
+   Add-AzAccount -identity
 
    # Call Azure Resource Manager to get the service principal ID for the VM's managed identity for Azure resources. 
-   $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
+   $vmInfoPs = Get-AzVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
    $spID = $vmInfoPs.Identity.PrincipalId
    echo "The managed identity for Azure resources service principal ID is $spID"
    ```
 
 ## <a name="resource-ids-for-azure-services"></a>Azure サービスのリソース ID
 
-Azure AD をサポートするリソースで、Azure リソースのマネージド ID をテスト済みのリソースとそれぞれのリソース ID の一覧については、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md#azure-services-that-support-azure-ad-authentication)」を参照してください。
+Azure AD をサポートするリソースで、Azure リソースのマネージド ID をテスト済みのリソースとそれぞれのリソース ID の一覧については、「[Azure AD 認証をサポートしている Azure サービス](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」を参照してください。
 
 ## <a name="error-handling-guidance"></a>エラー処理に関するガイダンス 
 
 次のような応答が返ってきた場合は、VM の Azure リソースのマネージド ID が正しく構成されていない可能性があります。
 
-- PowerShell: *Invoke-WebrRequest: リモート サーバーに接続できません*
-- CLI: *MSI: 'http://localhost:50342/oauth2/token' からトークンを取得できませんでした。'HTTPConnectionPool (host='localhost', port=50342) エラーが発生しました* 
+- PowerShell:*Invoke-WebRequest: リモート サーバーに接続できません*
+- CLI:*MSI: `http://localhost:50342/oauth2/token` からトークンを取得できませんでした。'HTTPConnectionPool(host='localhost', port=50342) エラーが発生しました* 
 
 これらのエラーが発生した場合、[Azure ポータル](https://portal.azure.com)で Azure VM に戻り、
 

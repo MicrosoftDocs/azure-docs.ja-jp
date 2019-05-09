@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2755232ea81f1551477431f4eb1f0aeab8b8bfe8
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081542"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734042"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 オファーに対して選択する公開オプションは、適格性の要件とマーケットプレースの GTM 特典の両方に直接関係しています。 さらに重要なこととして、Cloud パートナー ポータルにおける公開オプションとオファーの種類の選択によって、ユーザーがマーケットプレースのオファーをどのように取り扱うかが定義されます。
@@ -62,7 +62,7 @@ Cloud パートナー ポータルでオファーの種類を選択してから�
 
 ## <a name="choose-a-publishing-option"></a>公開オプションを選択する
 
-公開オプションによってお客様のエンゲージメントが差別化され、潜在顧客の共有や [Go-To-Market 特典](https://partner.microsoft.com/en-US/reach-customers/gtm)へのアクセスも可能になります。 Cloud パートナー ポータルを使用してマーケットプレースのオファーを作成する前に、3 つのいずれかの公開オプションを選択してください。 公開オプションに対応した行動喚起を次に示します。
+公開オプションによってお客様のエンゲージメントが差別化され、潜在顧客の共有や [Go-To-Market 特典](https://partner.microsoft.com/reach-customers/gtm)へのアクセスも可能になります。 Cloud パートナー ポータルを使用してマーケットプレースのオファーを作成する前に、3 つのいずれかの公開オプションを選択してください。 公開オプションに対応した行動喚起を次に示します。
 
 | **公開オプション**    | **説明**  |
 | :------------------- | :-------------------|

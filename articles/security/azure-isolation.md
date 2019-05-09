@@ -4,7 +4,7 @@ description: クラウドベースのコンピューティング サービスに
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f5d1c66cb049ab9ec52db619d55a4bb3e485e4b2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974711"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109845"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -344,7 +344,7 @@ Azure デプロイでは、複数の層でネットワークの分離を行う�
 
 **トラフィックの分離**: [仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)は、Azure プラットフォームでのトラフィックの分離境界となります。 ある仮想ネットワーク内の仮想マシン (VM) と別の仮想ネットワーク内の VM は、両方の仮想ネットワークを同じ顧客が作成した場合でも、直接通信することはできません。 分離は、顧客の VM と通信が仮想ネットワーク内でプライベートであることを保証する重要な特性です。
 
-[サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets)によって、IP 範囲に基づいて仮想ネットワーク内に分離の層がさらに提供されます。 仮想ネットワーク内の IP アドレスを使用して、仮想ネットワークを組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) を構成し、NSG のアクセス制御リスト (ACL) に構成した規則に基づいて VM インスタンスに対するネットワーク トラフィックを許可または禁止することもできます。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。
+[サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)によって、IP 範囲に基づいて仮想ネットワーク内に分離の層がさらに提供されます。 仮想ネットワーク内の IP アドレスを使用して、仮想ネットワークを組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) を構成し、NSG のアクセス制御リスト (ACL) に構成した規則に基づいて VM インスタンスに対するネットワーク トラフィックを許可または禁止することもできます。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。
 
 ## <a name="next-steps"></a>次の手順
 

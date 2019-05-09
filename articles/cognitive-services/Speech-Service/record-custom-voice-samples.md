@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: しっかりした台本を準備し、優秀なボイス タレントを採用し、プロフェッショナルなやり方で録音することによって、プロダクション品質のカスタム音声を作成します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6aaa638504dd441240879050531952b269d02d15
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d5d3d7031f9795db0ae04bc707bd9e7707137210
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081083"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530741"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>カスタム音声を作成するための音声サンプルを録音する
 
@@ -150,7 +150,7 @@ Custom Speech ポータルで良質の音声を構築するために*ちょう�
 
 ここでは、レンジ (高さ) のほとんどが使用されていますが、信号の最高ピークはウィンドウの上端または下端に届きません。 録音中の無音部分が細い水平線に近似し、低いノイズ フロアを示していることも確認できます。 この録音のダイナミック レンジと信号対雑音比は許容範囲内です。
 
-使用しているマイクによっては、高品質のオーディオ インターフェイスまたは USB ポートを介してコンピューターに直接録音します。 アナログの場合、マイク、プリアンプ、オーディオ インターフェイス、コンピューターというシンプルなオーディオ チェーンを維持します。 [Avid Pro Tools](http://www.avid.com/en/pro-tools) と [Adobe Audition](https://www.adobe.com/products/audition.html) はどちらも、手頃な料金で月単位のライセンスを購入できます。 予算が本当に厳しい場合は、無料の [Audacity](https://www.audacityteam.org/) を試してみてください。
+使用しているマイクによっては、高品質のオーディオ インターフェイスまたは USB ポートを介してコンピューターに直接録音します。 アナログの場合、マイク、プリアンプ、オーディオ インターフェイス、コンピューターというシンプルなオーディオ チェーンを維持します。 [Avid Pro Tools](https://www.avid.com/en/pro-tools) と [Adobe Audition](https://www.adobe.com/products/audition.html) はどちらも、手頃な料金で月単位のライセンスを購入できます。 予算が本当に厳しい場合は、無料の [Audacity](https://www.audacityteam.org/) を試してみてください。
 
 44.1 kHz 16 ビット モノラル (CD 品質) 以上で録音します。 機器でサポートされている場合、現在の最先端は 48 kHz 24 ビットです。 Custom Voice ポータルに提出する前に、オーディオを 16 kHz 16 ビットにダウンサンプリングします。 それでも、編集が必要な場合には、オリジナルの録音が高品質であることのメリットはあります。
 
@@ -204,7 +204,7 @@ Custom Speech ポータルで良質の音声を構築するために*ちょう�
 
 Custom Voice ポータルでは、提供される個々の発話が個別のファイルに入っている必要があります。 スタジオから渡される各オーディオ ファイルには、複数の発話が含まれています。 したがって、最重要のポストプロダクション タスクは、録音を分割して提出の準備をすることです。 各発話の開始位置を示すために、録音エンジニアによってファイル内にマーカーが配置 (または別個のキュー シートが提供) されている可能性があります。
 
-メモを使用して目的のテイクを探し、[Avid Pro Tools](http://www.avid.com/en/pro-tools)、[Adobe Audition](https://www.adobe.com/products/audition.html)、無料の [Audacity](https://www.audacityteam.org/) などのサウンド編集ユーティリティを使用して、各発話を新しいファイルにコピーします。
+メモを使用して目的のテイクを探し、[Avid Pro Tools](https://www.avid.com/en/pro-tools)、[Adobe Audition](https://www.adobe.com/products/audition.html)、無料の [Audacity](https://www.audacityteam.org/) などのサウンド編集ユーティリティを使用して、各発話を新しいファイルにコピーします。
 
 最初のクリップを除き、各クリップの先頭と末尾に約 0.2 秒の無音だけを残します。 そのファイルは丸 5 秒の無音で始まるようにしてください。 オーディオ エディターを使用してファイルの無音部分を "全カット" しないでください。 "ルーム トーン" を含めておくことは、Custom Voice アルゴリズムが残存の背景ノイズを補正するために役立ちます。
 

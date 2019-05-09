@@ -3,7 +3,7 @@ title: チュートリアル - Azure 内に Linux 用の仮想マシン スケ�
 description: このチュートリアルでは、Azure CLI で仮想マシン スケール セットを使用して、Linux VM 上に高可用性アプリケーションを作成してデプロイする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/01/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f61503930b582614965b321dd712da8935c6ddff
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2f2ebf5eb52c3e99e98fa5078182491a394cc6f0
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465731"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882355"
 ---
-# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して仮想マシン スケール セットを作成して Linux 上に高可用性アプリをデプロイする
+# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを作成して Linux 上に高可用性アプリをデプロイする
 
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。 学習内容は次のとおりです。
 

@@ -11,18 +11,20 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/10/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184544"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341404"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>リソース プロバイダーの登録エラーの解決
 
 この記事では、これまでサブスクリプションで使用したことがないリソース プロバイダーを使用する際に発生する可能性のあるエラーについて説明します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
@@ -43,38 +45,46 @@ Message: The subscription is not registered to use namespace {resource-provider-
 
 サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure portal またはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。
 
+または、仮想マシンの自動シャットダウンを無効にすると、次のようなエラー メッセージを受け取ることがあります。
+
+```
+Code: AuthorizationFailed
+Message: The client '<identifier>' with object id '<identifier>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope ...
+```
+
 ## <a name="cause"></a>原因
 
-これらのエラーの原因として、次の 3 つの理由のいずれかが考えられます。
+これらのエラーの原因として、次のいずれかの理由が考えられます。
 
-* サブスクリプションに対してリソース プロバイダーが登録されていない
+* サブスクリプションに対して必要なリソース プロバイダーが登録されていない
 * リソース タイプでサポートされた API バージョンに該当しない
 * リソース タイプでサポートされた場所に該当しない
+* VM を自動シャットダウンするには、Microsoft.DevTestLab リソース プロバイダーを登録する必要があります。
 
 ## <a name="solution-1---powershell"></a>解決策 1 - PowerShell
 
-PowerShell では、**Get-AzureRmResourceProvider** を使用して登録の状態を確認します。
+PowerShell では、**Get-AzResourceProvider** を使用して登録の状態を確認します。
 
 ```powershell
-Get-AzureRmResourceProvider -ListAvailable
+Get-AzResourceProvider -ListAvailable
 ```
 
-プロバイダーを登録するには、 **Register-AzureRmResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
+プロバイダーを登録するには、**Register-AzResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
+Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
 特定のタイプのリソースでサポートされている場所を取得するには、次のコマンドを使用します。
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
 特定のタイプのリソースでサポートされている API バージョンを取得するには、次のコマンドを使用します。
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
 ## <a name="solution-2---azure-cli"></a>解決策 2 - Azure CLI

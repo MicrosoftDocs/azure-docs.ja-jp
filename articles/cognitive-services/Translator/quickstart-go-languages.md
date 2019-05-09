@@ -4,35 +4,32 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Go で Translator Text API を使った例を紹介しています。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 1e630d4dee3629fc256fdc97eefad259aff909e2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bf33860b111900fed850158d6b80d5a9d4404893
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000283"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181607"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>クイック スタート: Translator Text API と Go を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Go と Translator Text REST API を使用し、GET 要求を行うことによって、サポートされている言語の一覧を取得する方法を説明します。
-
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは以下が必要です。
 
 * [Go](https://golang.org/doc/install)
-* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-普段使用している IDE またはエディターで、新しい Go プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `get-languages.go` という名前のファイルにコピーします。
+任意の IDE またはエディターを使用して新しい Go プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 次に、このコード スニペットをプロジェクトまたはフォルダーの `get-languages.go` という名前のファイルにコピーします。
 
 ```go
 package main
@@ -43,43 +40,32 @@ import (
     "log"
     "net/http"
     "net/url"
-    "os"
 )
 ```
 
 ## <a name="create-the-main-function"></a>main 関数を作成する
 
-このサンプルでは、環境変数 `TRANSLATOR_TEXT_KEY` から Translator Text のサブスクリプション キーが読み取られるよう試行されます。 環境変数を使い慣れていない場合は、`subscriptionKey` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+アプリケーションの main 関数を作成しましょう。 コードが 1 行だけであることがわかります。 これは、Translator Text 用にサポートされている言語の一覧を取得して印刷するための 1 つの関数を作成しているためです。
 
 このコードをプロジェクトにコピーします。
 
 ```go
 func main() {
     /*
-     * Read your subscription key from an env variable.
-     * Please note: You can replace this code block with
-     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables.
-     */
-    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
-    if subscriptionKey == "" {
-       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
-    }
-    /*
      * This calls our getLanguages function, which we'll
      * create in the next section. It takes a single argument,
      * the subscription key.
      */
-    getLanguages(subscriptionKey)
+    getLanguages()
 }
 ```
 
 ## <a name="create-a-function-to-get-a-list-of-supported-languages"></a>サポートされている言語の一覧を取得する関数を作成する
 
-サポートされている言語の一覧を取得する関数を作成しましょう。 この関数では、単一の引数である Translator Text サブスクリプション キーを使用します。
+サポートされている言語の一覧を取得する関数を作成しましょう。
 
 ```go
-func getLanguages(subscriptionKey string) {
+func getLanguages() {
     /*  
      * In the next few sections, we'll add code to this
      * function to make a request and handle the response.
@@ -93,8 +79,9 @@ func getLanguages(subscriptionKey string) {
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
-u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/languages?api-version=3.0")
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/languages")
 q := u.Query()
+q.Add("api-version", "3.0")
 u.RawQuery = q.Encode()
 ```
 
@@ -112,7 +99,6 @@ if err != nil {
     log.Fatal(err)
 }
 // Add required headers
-req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
 // Call the Translator Text API
@@ -148,6 +134,8 @@ go run get-languages.go
 作成したコードをサンプル コードと比較したい場合は、完全なサンプルを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) から入手できます。
 
 ## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 成功した応答は、次の例に示すように JSON で返されます。
 

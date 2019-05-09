@@ -1,22 +1,21 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310846"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793946"
 ---
-# <a name="understand-policy-effects"></a>Policy の効果について
+# <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
 Azure Policy 内の各ポリシー定義には単一の効果があります。 その効果によって、ポリシー規則が一致すると評価されたときの動作が決まります。 効果の動作は、対象 (新しいリソース、更新されたリソース、または既存のリソース) によって異なります。
 
@@ -25,7 +24,7 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - Append
 - Audit
 - AuditIfNotExists
-- Deny
+- 拒否
 - DeployIfNotExists
 - Disabled
 
@@ -50,7 +49,7 @@ Append は、作成中または更新中に要求されたリソースにフィ�
 
 ### <a name="append-evaluation"></a>Append の評価
 
-リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Append による評価が行われます。 Append では、ポリシー規則の **if** 条件が満たされた場合、リソースにフィールドが追加されます。 Append 効果によって元の要求の値が別の値でオーバーライドされる場合、Append は Deny 効果として機能し、要求は拒否されます。
+リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Append による評価が行われます。 Append では、ポリシー規則の **if** 条件が満たされた場合、リソースにフィールドが追加されます。 Append 効果によって元の要求の値が別の値でオーバーライドされる場合、Append は Deny 効果として機能し、要求は拒否されます。 新しい値を既存の配列に追加するには、**[\*]** バージョンの別名を使用します。
 
 Append 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
 
@@ -60,7 +59,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="append-examples"></a>Append の例
 
-例 1: 1 つのタグを追加する単一の **field/value** のペア。
+例 1:1 つのタグを追加する単一の **field/value** のペア。
 
 ```json
 "then": {
@@ -72,7 +71,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-例 2: タグのセットを追加する 2 つの **field/value** のペア。
+例 2:タグのセットを追加する 2 つの **field/value** のペア。
 
 ```json
 "then": {
@@ -89,7 +88,8 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-例 3: [別名](definition-structure.md#aliases)と **value** の配列を使用して、ストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。
+例 3:非 **[\*]**
+[別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **[\*]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
 
 ```json
 "then": {
@@ -104,7 +104,22 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-## <a name="deny"></a>Deny
+例 4:**[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 **[\*]** 別名を使用することで、この効果により、**value** が事前に存在している可能性のある配列に追加されます。 配列はまだが存在しない場合は作成されます。
+
+```json
+"then": {
+    "effect": "append",
+    "details": [{
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "value": {
+            "value": "40.40.40.40",
+            "action": "Allow"
+        }
+    }]
+}
+```
+
+## <a name="deny"></a>拒否
 
 Deny は、ポリシーを通して定義された基準に一致していないために失敗するリソース要求を防ぐために使用されます。
 
@@ -164,9 +179,10 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 
 - **Type** [必須]
   - 照合する関連リソースの型を指定します。
-  - 最初に **if** 条件リソースの下にあるリソースを取得しようとし、次に **if** 条件リソースと同じリソース グループ内を検索します。
+  - **details.type** が **if** 条件リソース下にあるリソースの型である場合、この **type** のリソースが、ポリシーによって評価対象リソースのスコープ内から照会されます。 それ以外の場合は、評価対象リソースと同じリソース グループ内から照会されます。
 - **Name** (省略可能)
   - 照合するリソースの正確な名前を指定して、指定した型のすべてのリソースではなく 1 つの特定のリソースを取得します。
+  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、`[field('name')]` であることが必要です。 ただし、代わりに [audit](#audit) の影響を考慮する必要があります。
 - **ResourceGroupName** (省略可能)
   - 別のリソース グループに由来する関連リソースを照合できるようにします。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
@@ -237,12 +253,13 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 最初に **if** 条件リソースの下にあるリソースを取得しようとし、次に **if** 条件リソースと同じリソース グループ内を検索します。
 - **Name** (省略可能)
   - 照合するリソースの正確な名前を指定して、指定した型のすべてのリソースではなく 1 つの特定のリソースを取得します。
+  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、`[field('name')]` であることが必要です。
 - **ResourceGroupName** (省略可能)
   - 別のリソース グループに由来する関連リソースを照合できるようにします。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
   - 既定値は、**if** 条件リソースのリソース グループです。
   - テンプレートのデプロイが実行される場合は、この値のリソース グループにデプロイされます。
-- **ExistenceScope** (オプション)
+- **ExistenceScope** (省略可能)
   - 使用できる値は _Subscription_ と _ResourceGroup_ です。
   - 照合する関連リソースを取得する範囲を設定します。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
@@ -257,6 +274,11 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - たとえば、(**if** 条件内の) 親リソースが照合する関連リソースと同じリソースの場所にあることを検証できます。
 - **roleDefinitionIds** [必須]
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
+- **DeploymentScope** (省略可能)
+  - 使用できる値は _Subscription_ と _ResourceGroup_ です。
+  - トリガーされるデプロイの種類を設定します。 _Subscription_ は[サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
+  - サブスクリプション レベルのデプロイを使用する場合は、_Deployment_ で _location_ プロパティを指定する必要があります。
+  - 既定値は _ResourceGroup_ です。
 - **Deployment** [必須]
   - このプロパティは `Microsoft.Resources/deployments` PUT API に渡されるため、完全なテンプレートのデプロイを含める必要があります。 詳細については、[Deployments REST API](/rest/api/resources/deployments) をご覧ください。
 
@@ -289,7 +311,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
             "properties": {
                 "mode": "incremental",
                 "template": {
-                    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
                     "contentVersion": "1.0.0.0",
                     "parameters": {
                         "fullDbName": {

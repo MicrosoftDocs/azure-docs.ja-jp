@@ -17,35 +17,39 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: d98a804961defc80bebe3e3a838dd229c23044bc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bf4c49bc988500d0f8b226dd6d735f966080ae09
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704189"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784724"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>クイック スタート: 仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure PowerShell
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>クイック スタート:仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure PowerShell
 
 このクイック スタートでは、仮想マシン (VM) を展開してから、IP アドレスと URL への通信および IP アドレスからの通信をチェックします。 通信障害の原因と解決方法を特定します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このクイック スタートでは AzureRM PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカル環境にインストールして使用する場合、このクイック スタートでは Azure PowerShell `Az` モジュールが必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+
+
 
 ## <a name="create-a-vm"></a>VM の作成
 
-VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) を使用して Azure リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 この手順の実行時に、資格情報の入力を求められます。 入力した値は、VM のユーザー名とパスワードとして構成されます。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 この手順の実行時に、資格情報の入力を求められます。 入力した値は、VM のユーザー名とパスワードとして構成されます。
 
 ```azurepowershell-interactive
-$vM = New-AzureRmVm `
+$vM = New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVm" `
     -Location "East US"
@@ -59,18 +63,18 @@ Network Watcher を使ってネットワーク通信をテストするには、�
 
 ### <a name="enable-network-watcher"></a>ネットワーク ウォッチャーを有効にする
 
-米国東部リージョンで Network Watcher を既に有効にしてある場合は、[Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher) を使ってそのネットワーク ウォッチャーを取得します。 次の例では、*NetworkWatcherRG* リソース グループ内にある *NetworkWatcher_eastus* という名前の既存のネットワーク ウォッチャーを取得しています。
+米国東部リージョンで Network Watcher を既に有効にしてある場合は、[Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) を使ってそのネットワーク ウォッチャーを取得します。 次の例では、*NetworkWatcherRG* リソース グループ内にある *NetworkWatcher_eastus* という名前の既存のネットワーク ウォッチャーを取得しています。
 
 ```azurepowershell-interactive
-$networkWatcher = Get-AzureRmNetworkWatcher `
+$networkWatcher = Get-AzNetworkWatcher `
   -Name NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-米国東部リージョンで Network Watcher をまだ有効にしていない場合は、[New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher) を使って、米国東部リージョンにネットワーク ウォッチャーを作成します。
+米国東部リージョンで Network Watcher をまだ有効にしていない場合は、[New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) を使って、米国東部リージョンにネットワーク ウォッチャーを作成します。
 
 ```azurepowershell-interactive
-$networkWatcher = New-AzureRmNetworkWatcher `
+$networkWatcher = New-AzNetworkWatcher `
   -Name "NetworkWatcher_eastus" `
   -ResourceGroupName "NetworkWatcherRG" `
   -Location "East US"
@@ -78,12 +82,12 @@ $networkWatcher = New-AzureRmNetworkWatcher `
 
 ### <a name="use-ip-flow-verify"></a>IP フローの確認を使用する
 
-VM を作成すると、Azure は既定に従って、VM との間でやり取りされるネットワーク トラフィックを許可および拒否します。 後で Azure の既定値をオーバーライドして、他の種類のトラフィックを許可または拒否する場合があります。 さまざまな送信先へのトラフィックまたは送信元 IP アドレスからのトラフィックが許可または拒否されるかどうかをテストするには、[Test-AzureRmNetworkWatcherIPFlow](/powershell/module/azurerm.network/test-azurermnetworkwatcheripflow) コマンドを使います。
+VM を作成すると、Azure は既定に従って、VM との間でやり取りされるネットワーク トラフィックを許可および拒否します。 後で Azure の既定値をオーバーライドして、他の種類のトラフィックを許可または拒否する場合があります。 さまざまな送信先へのトラフィックまたは送信元 IP アドレスからのトラフィックが許可または拒否されるかどうかをテストするには、[Test-AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) コマンドを使います。
 
-VM から www.bing.com の IP アドレスの 1 つへの送信通信をテストします。
+VM から www.bing.com のいずれかの IP アドレスへの送信通信をテストします。
 
 ```azurepowershell-interactive
-Test-AzureRmNetworkWatcherIPFlow `
+Test-AzNetworkWatcherIPFlow `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $vM.Id `
   -Direction Outbound `
@@ -99,7 +103,7 @@ Test-AzureRmNetworkWatcherIPFlow `
 VM から 172.31.0.100 への送信通信をテストします。
 
 ```azurepowershell-interactive
-Test-AzureRmNetworkWatcherIPFlow `
+Test-AzNetworkWatcherIPFlow `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $vM.Id `
   -Direction Outbound `
@@ -115,7 +119,7 @@ Test-AzureRmNetworkWatcherIPFlow `
 172.31.0.100 から VM への受信通信をテストします。
 
 ```azurepowershell-interactive
-Test-AzureRmNetworkWatcherIPFlow `
+Test-AzNetworkWatcherIPFlow `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $vM.Id `
   -Direction Inbound `
@@ -130,10 +134,10 @@ Test-AzureRmNetworkWatcherIPFlow `
 
 ## <a name="view-details-of-a-security-rule"></a>セキュリティ規則の詳細を表示する
 
-「[ネットワーク通信をテストする](#test-network-communication)」の規則が通信を許可または拒否している理由を特定するには、[Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) を使って、ネットワーク インターフェイスに対して有効なセキュリティ規則を確認します。
+「[ネットワーク通信をテストする](#test-network-communication)」の規則が通信を許可または拒否している理由を特定するには、[Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup) を使って、ネットワーク インターフェイスに対して有効なセキュリティ規則を確認します。
 
 ```azurepowershell-interactive
-Get-AzureRmEffectiveNetworkSecurityGroup `
+Get-AzEffectiveNetworkSecurityGroup `
   -NetworkInterfaceName myVm `
   -ResourceGroupName myResourceGroup
 ```
@@ -173,9 +177,9 @@ Get-AzureRmEffectiveNetworkSecurityGroup `
   },
 ```
 
-出力では、**DestinationAddressPrefix** が **Internet** であることがわかります。 しかし、「[IP フローの確認を使用する](#use-ip-flow-verify)」でテストしたアドレス 13.107.21.200 が **Internet** にどのように関連するのかはっきりしません。 **ExpandedDestinationAddressPrefix** には複数のアドレス プレフィックスが列記されています。 リストのプレフィックスの 1 つは **12.0.0.0/6** であり、これは 12.0.0.1-15.255.255.254 の IP アドレス範囲を包含します。 13.107.21.200 はそのアドレス範囲内にあるため、**AllowInternetOutBound** 規則は送信トラフィックを許可します。 さらに、`Get-AzureRmEffectiveNetworkSecurityGroup` によって返される出力の中には、この規則をオーバーライドする**優先順位の高い** (小さい値の) 規則はありません。 13.107.21.200 への送信通信を拒否するには、その IP アドレスへのポート 80 での送信を拒否する、優先順位の高いセキュリティ規則を追加します。
+出力では、**DestinationAddressPrefix** が **Internet** であることがわかります。 しかし、「[IP フローの確認を使用する](#use-ip-flow-verify)」でテストしたアドレス 13.107.21.200 が **Internet** にどのように関連するのかはっきりしません。 **ExpandedDestinationAddressPrefix** には複数のアドレス プレフィックスが列記されています。 リストのプレフィックスの 1 つは **12.0.0.0/6** であり、これは 12.0.0.1-15.255.255.254 の IP アドレス範囲を包含します。 13.107.21.200 はそのアドレス範囲内にあるため、**AllowInternetOutBound** 規則は送信トラフィックを許可します。 さらに、`Get-AzEffectiveNetworkSecurityGroup` によって返される出力の中には、この規則をオーバーライドする**優先順位の高い** (小さい値の) 規則はありません。 13.107.21.200 への送信通信を拒否するには、その IP アドレスへのポート 80 での送信を拒否する、優先順位の高いセキュリティ規則を追加します。
 
-「[IP フローの確認を使用する](#use-ip-flow-verify)」で `Test-AzureRmNetworkWatcherIPFlow` コマンドを実行して 172.131.0.100 への送信通信をテストしたとき、出力では **DefaultOutboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultOutboundDenyAll** 規則は、`Get-AzureRmEffectiveNetworkSecurityGroup` コマンドからの次の出力で示されている **DenyAllOutBound** 規則と同じです。
+「[IP フローの確認を使用する](#use-ip-flow-verify)」で `Test-AzNetworkWatcherIPFlow` コマンドを実行して 172.131.0.100 への送信通信をテストしたとき、出力では **DefaultOutboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultOutboundDenyAll** 規則は、`Get-AzEffectiveNetworkSecurityGroup` コマンドからの次の出力で示されている **DenyAllOutBound** 規則と同じです。
 
 ```powershell
 {
@@ -201,9 +205,9 @@ Get-AzureRmEffectiveNetworkSecurityGroup `
 }
 ```
 
-ルールでは、**DestinationAddressPrefix** として **0.0.0.0/0** が含まれます。 172.131.0.100 は `Get-AzureRmEffectiveNetworkSecurityGroup` コマンドからの出力の他のどの送信規則の **DestinationAddressPrefix** にも含まれないので、規則はこのアドレスへの送信通信を拒否します。 この送信通信を許可するには、172.131.0.100 のポート 80 への送信トラフィックを許可する、優先順位の高いセキュリティ規則を追加します。
+ルールでは、**DestinationAddressPrefix** として **0.0.0.0/0** が含まれます。 172.131.0.100 は `Get-AzEffectiveNetworkSecurityGroup` コマンドからの出力の他のどの送信規則の **DestinationAddressPrefix** にも含まれないので、規則はこのアドレスへの送信通信を拒否します。 この送信通信を許可するには、172.131.0.100 のポート 80 への送信トラフィックを許可する、優先順位の高いセキュリティ規則を追加します。
 
-「[IP フローの確認を使用する](#use-ip-flow-verify)」で `Test-AzureRmNetworkWatcherIPFlow` コマンドを実行して 172.131.0.100 からの受信通信をテストしたとき、出力では **DefaultInboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultInboundDenyAll** 規則は、`Get-AzureRmEffectiveNetworkSecurityGroup` コマンドからの次の出力で示されている **DenyAllInBound** 規則と同じです。
+「[IP フローの確認を使用する](#use-ip-flow-verify)」で `Test-AzNetworkWatcherIPFlow` コマンドを実行して 172.131.0.100 からの受信通信をテストしたとき、出力では **DefaultInboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultInboundDenyAll** 規則は、`Get-AzEffectiveNetworkSecurityGroup` コマンドからの次の出力で示されている **DenyAllInBound** 規則と同じです。
 
 ```powershell
 {
@@ -229,16 +233,16 @@ Get-AzureRmEffectiveNetworkSecurityGroup `
 },
 ```
 
-出力で示されているように、`Get-AzureRmEffectiveNetworkSecurityGroup` コマンドからの出力には、172.131.0.100 から VM へのポート 80 での受信を許可する優先順位の高い規則が他に存在しないため、**DenyAllInBound** 規則が適用されます。 この受信通信を許可するには、ポート 80 での 172.131.0.100 からの受信を許可する優先順位の高いセキュリティ規則を追加します。
+出力で示されているように、`Get-AzEffectiveNetworkSecurityGroup` コマンドからの出力には、172.131.0.100 から VM へのポート 80 での受信を許可する優先順位の高い規則が他に存在しないため、**DenyAllInBound** 規則が適用されます。 この受信通信を許可するには、ポート 80 での 172.131.0.100 からの受信を許可する優先順位の高いセキュリティ規則を追加します。
 
 このクイック スタートのチェックでは、Azure の構成をテストしました。 チェックから予想どおりの結果が返ったにもかかわらず、まだネットワークの問題がある場合は、VM と通信対象のエンドポイントとの間にファイアウォールが存在しないこと、および VM のオペレーティング システムに通信を許可または拒否するファイアウォールが含まれないことを確認します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要なくなったら、[Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
+必要なくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -3,7 +3,7 @@ title: C# と Resource Manager テンプレートを使用した VM のデプロ
 description: C# および Resource Manager テンプレートを使用して Azure VM をデプロイする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: zarhoads
-ms.openlocfilehash: f3d83fa8ba5a78c7aacc7014e9ec50fb447bb1c6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: cynthn
+ms.openlocfilehash: 50d0d78e9dc0c7f51fcd82dd16eab5a180eae073
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953690"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796028"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ
+
 この記事では、C# を使用して Azure Resource Manager テンプレートをデプロイする方法を示します。 作成したテンプレートは、単一のサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する単一の仮想マシンをデプロイします。
 
 仮想マシン リソースの詳細については、「[Virtual machines in an Azure Resource Manager template](template-description.md)」(Azure Resource Manager テンプレートの仮想マシン) をご覧ください。 テンプレート内のすべてのリソースの詳細については、「[Resource Manager テンプレートのチュートリアル](../../azure-resource-manager/resource-manager-template-walkthrough.md)」をご覧ください。
@@ -44,7 +45,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 1. **[ツール]** > **[NuGet パッケージ マネージャー]** をクリックし、**[パッケージ マネージャー コンソール]** をクリックします。
 2. コンソールに次のコマンドを入力します。
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.Fluent
     Install-Package WindowsAzure.Storage
     ```
@@ -206,15 +207,17 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 3. azureauth.properties ファイルを保存します。
 4. AZURE_AUTH_LOCATION という名前の Windows 環境変数に、作成した承認ファイルへの完全なパスを設定します。たとえば、次の PowerShell コマンドを使用できます。
 
-    ```
+    ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
+
     
+
 ## <a name="create-the-management-client"></a>管理クライアントの作成
 
 1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭の既存のステートメントに追加します。
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -226,7 +229,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 2. 管理クライアントを作成するには、次のコードを Main メソッドに追加します。
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -241,7 +244,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 アプリケーションの値を指定するには、Main メソッドにコードを追加します。
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var location = Region.USWest;
 
@@ -256,7 +259,7 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 アカウントを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
 
 Console.WriteLine("Creating storage account...");
@@ -296,7 +299,7 @@ paramblob.UploadFromFileAsync("..\\..\\Parameters.json").Result();
 
 テンプレートをデプロイするには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
 var paramPath = "https://" + storageAccountName + ".blob.core.windows.net/templates/Parameters.json";
 var deployment = azure.Deployments.Define("myDeployment")
@@ -315,7 +318,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 リソース グループを削除するには、次のメソッドを Main メソッドに追加します。
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -328,5 +331,6 @@ azure.ResourceGroups.DeleteByName(groupName);
 2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 
 ## <a name="next-steps"></a>次の手順
+
 * デプロイに問題がある場合は、次の手順として、「[Troubleshoot common Azure deployment errors with Azure Resource Manager](../../resource-manager-common-deployment-errors.md)」(Azure Resource Manager を使用した Azure のデプロイで発生する一般的なエラーのトラブルシューティング) を参照してください。
 * 「[C# を使用した Azure 仮想マシンのデプロイ](csharp.md)」で、仮想マシンとそれをサポートするリソースのデプロイ方法を確認します。

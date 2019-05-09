@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d77396cdcaa3f2f291aff52dfd1e6793aee4039c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997857"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662059"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(非推奨) Azure Container Service で Kubernetes クラスターをデプロイする
 
@@ -54,7 +54,7 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 
 クライアント コンピューターから Kubernetes クラスターに接続するには、[kubectl](https://kubernetes.io/docs/user-guide/kubectl/) (Kubernetes コマンドライン クライアント) を使います。 
 
-Azure CloudShell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) コマンドを使います。
+Azure CloudShell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes) コマンドを使います。
 
 Linux または macOS で実行している場合は、sudo で実行することが必要な場合があります。 Windows では、シェルが管理者として実行されていることを確認します。
 
@@ -66,7 +66,7 @@ Windows では、既定のインストールは *c:\program files (x86)\kubectl.
 
 ## <a name="connect-with-kubectl"></a>kubectl を使用して接続する
 
-Kubernetes クラスターに接続するように kubectl を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。
+Kubernetes クラスターに接続するように kubectl を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) コマンドを実行します。
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster

@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7d5b4d5d797b56407712494ca3702586a33c9fca
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c545e73e51ea33db1ced546bf47465197b3fb8e4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138026"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457634"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure 上の T-SQL と Python を使用した SQL Data Warehouse データ サイエンスのチュートリアル
 

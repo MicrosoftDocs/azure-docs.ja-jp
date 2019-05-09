@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB Table API .NET SDK およびリソース
 description: リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。
-services: cosmos-db
-author: rnagpal
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.author: rnagpal
-ms.openlocfilehash: 7092daa7cf3a1cfcbeac06db308fa53e18d27131
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 506f623fe928cf122a16630844996c981cc20e9e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878586"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58791730"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API:ダウンロードおよびリリース ノート
+
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -38,30 +38,41 @@ ms.locfileid: "52878586"
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+
+* バグの修正
+
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
 * マルチリージョンの書き込みがサポートされるようになりました。
 * Microsoft.Azure.DocumentDB、Microsoft.OData.Core、Microsoft.OData.Edm、Microsoft.Spatial に関する NuGet パッケージの依存関係が修正されました。
 
 ### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
+
 * Microsoft.Azure.Storage.Common と Microsoft.Azure.DocumentDB の NuGet パッケージの依存関係が修正されました。
 * JsonConvert.DefaultSettings が構成されたときに、テーブルのシリアル化のバグ修正があります。
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+
 * 直接モードで無効な ETAG の検証が追加されました。
 * ゲートウェイ モードで LINQ クエリ バグが修正されました。
 * 同期 API が SynchronizationContext によってスレッド プールで実行されるようになりました。
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+
 * TableQueryMaxItemCount、TableQueryEnableScan、TableQueryMaxDegreeOfParallelism、および TableQueryContinuationTokenLimitInKb を TableRequestOptions に追加
 * バグの修正
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+
 * 一般公開リリース
 
 ### <a name="a-name010-preview090-preview"></a><a name="0.1.0-preview"/>0.9.0 - プレビュー
+
 * 初期プレビュー リリース
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
+
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。
 
 [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) プレビュー パッケージは非推奨となっており、[Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) パッケージに置き換えられます。 WindowsAzure.Storage PremiumTable SDK は、2018 年 11 月 15 日に提供終了されます。その時点で提供終了された SDK への要求は許可されなくなります。 `Microsoft.Azure.CosmosDB.Table` ライブラリは、現在、.NET Standard だけで利用できます。まだ .NET Core では利用できません。
@@ -71,13 +82,15 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 提供終了になった SDK を使用した Azure Cosmos DB への要求は、サービスによって拒否されます。
 <br/>
 
-| Version | リリース日 | 提供終了日 |
+| バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2019 年 1 月 22 日|--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 26 日|--- |
 | [1.1.3](#1.1.3) |2018 年 7 月 17 日|--- |
 | [1.1.1](#1.1.1) |2018 年 3 月 26 日|--- |
 | [1.1.0](#1.1.0) |2018 年 2 月 21 日|--- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日|--- |
-| [0.9.0 - プレビュー](#0.9.0-preview) |2017 年 11 月 11 日 |--- |
+| 0.9.0 - プレビュー |2017 年 11 月 11 日 |--- |
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -91,9 +104,11 @@ Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: '
 Microsoft.Azure.CosmosDB.Table NuGet パッケージの使用を試している場合は、問題を解決する 2 つのオプションがあります。
 
 * Package Manage Console を使用して Microsoft.Azure.CosmosDB.Table パッケージとその依存関係をインストールします。 これを行うには、ソリューションの Package Manager Console に以下を入力します。 
-    ```
+
+    ```powershell
     Install-Package Microsoft.Azure.CosmosDB.Table -IncludePrerelease
     ```
+
     
 * NuGet パッケージ管理ツールを使用して、Microsoft.Azure.CosmosDB.Table をインストールする前に、Microsoft.Azure.Storage.Common NuGet パッケージをインストールします。
 
@@ -102,4 +117,5 @@ Microsoft.Azure.CosmosDB.Table NuGet パッケージの使用を試している�
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
+
 Azure Cosmos DB Table API の詳細については、「[Introduction to Azure Cosmos DB Table API (Azure Cosmos DB Table API の概要)](table-introduction.md)」を参照してください。 

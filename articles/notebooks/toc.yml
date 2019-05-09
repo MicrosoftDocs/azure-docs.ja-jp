@@ -1,55 +1,48 @@
-items:
 - name: Azure Notebooks のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure Notebooks とは
-    href: azure-notebooks-overview.md
+    - name: Azure Notebooks とは
+      href: azure-notebooks-overview.md
 - name: クイック スタート
   items:
-  - name: サインインとユーザー ID の設定
-    href: quickstart-sign-in-azure-notebooks.md
-  - name: ノートブックの作成と共有
-    href: quickstart-create-share-jupyter-notebook.md
-  - name: ノートブックの複製
-    href: quickstart-clone-jupyter-notebook.md
-  - name: ローカルの Jupyter ノートブックの移行
-    href: quickstart-migrate-local-jupyter-notebook.md
-  - name: カスタム環境の使用
-    href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: サインインとユーザー ID の設定
+      href: quickstart-sign-in-azure-notebooks.md
+    - name: ノートブックの作成と共有
+      href: quickstart-create-share-jupyter-notebook.md
+    - name: ノートブックの複製
+      href: quickstart-clone-jupyter-notebook.md
+    - name: ローカルの Jupyter ノートブックの移行
+      href: quickstart-migrate-local-jupyter-notebook.md
+    - name: カスタム環境の使用
+      href: quickstart-create-jupyter-notebook-project-environment.md
 - name: チュートリアル
   items:
-  - name: ノートブックの作成と実行
-    href: tutorial-create-run-jupyter-notebook.md
+    - name: ノートブックの作成と実行
+      href: tutorial-create-run-jupyter-notebook.md
 - name: サンプル
   items:
-  - name: ノートブックのサンプル
-    href: azure-notebooks-samples.md
+    - name: ノートブックのサンプル
+      href: azure-notebooks-samples.md
 - name: 概念
   items:
-  - name: アカウント
-    href: azure-notebooks-user-account.md
-  - name: プロファイル
-    href: azure-notebooks-user-profile.md
+    - name: アカウント
+      href: azure-notebooks-user-account.md
+    - name: プロファイル
+      href: azure-notebooks-user-profile.md
 - name: ハウツー ガイド
   items:
-  - name: プロジェクトの作成と複製
-    href: create-clone-jupyter-notebooks.md
-  - name: プロジェクトの管理と構成
-    href: configure-manage-azure-notebooks-projects.md
-  - name: ノートブックのパッケージのインストール
-    href: install-packages-jupyter-notebook.md
-  - name: スライド ショーの表示
-    href: present-jupyter-notebooks-slideshow.md
-  - name: データ ファイルの操作
-    href: work-with-project-data-files.md
-  - name: データ リソースへのアクセス
-    href: access-data-resources-jupyter-notebooks.md
-  - name: Azure Machine Learning Services の使用
-    href: use-machine-learning-services-jupyter-notebooks.md
-ms.openlocfilehash: 95122e9ec45fb606e07a29e474e411d6e49278c0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852410"
+    - name: プロジェクトの作成と複製
+      href: create-clone-jupyter-notebooks.md
+    - name: プロジェクトの管理と構成
+      href: configure-manage-azure-notebooks-projects.md
+    - name: ノートブックのパッケージのインストール
+      href: install-packages-jupyter-notebook.md
+    - name: スライド ショーの表示
+      href: present-jupyter-notebooks-slideshow.md
+    - name: データ ファイルの操作
+      href: work-with-project-data-files.md
+    - name: データ リソースへのアクセス
+      href: access-data-resources-jupyter-notebooks.md
+    - name: Azure Machine Learning Services の使用
+      href: use-machine-learning-services-jupyter-notebooks.md

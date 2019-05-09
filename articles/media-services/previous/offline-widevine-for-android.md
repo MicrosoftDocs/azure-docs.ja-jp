@@ -12,16 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 158b58c13aee4d6241900db4a5e2b3fe8a45cc3c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 55d59871ee72f755fcd881e4f89e56e6d6d1d84e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786051"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995321"
 ---
-# <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
+# <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング  
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Version 3](../latest/offline-widevine-for-android.md)
+> * [Version 2](offline-widevine-for-android.md)
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 オンライン ストリーミング用にコンテンツを保護するだけでなく、メディア コンテンツ サブスクリプション サービスとレンタル サービスは、インターネットに接続していないときに視聴できるダウンロード可能なコンテンツを提供します。 ネットワークから切断されて飛行中に機内モードで再生するには、お使いの携帯電話やタブレットにコンテンツをダウンロードすることが必要な場合があります。 コンテンツのダウンロードが必要になることがあるシナリオとしては、他に次のような場合があります。
 
@@ -45,7 +52,7 @@ Android デバイスに Widevine 用のオフライン DRM を実装する前に
 
 - Widevine DRM を使ったオンライン コンテンツ保護に対して導入される概念をよく理解します。 これについては、次のドキュメント/サンプルで詳しく説明されています。
     - [Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する](media-services-deliver-keys-and-licenses.md)
-    - [CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装](media-services-cenc-with-multidrm-access-control.md)
+    - [CENC とマルチ DRM およびアクセス制御: Azure および Azure Media Services での参照設計と実装](media-services-cenc-with-multidrm-access-control.md)
     - [.NET で PlayReady または Widevine の動的共通暗号化を使用する](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-drm/)
     - [.NET で Azure Media Services を使用して PlayReady や Widevine のライセンスを配信する](https://azure.microsoft.com/resources/samples/media-services-dotnet-deliver-playready-widevine-licenses/)
 - Widevine DRM のオフライン再生をサポートする機能を持つオープンソースのビデオ プレーヤー SDK である Google ExoPlayer SDK for Android についてよく理解します。 
@@ -123,7 +130,7 @@ ExoPlayer SDK for Android でのオフライン モードを容易にするク�
 
 一部の古い Android デバイスでは、**policy_overrides** のプロパティ **rental_duration_seconds**、**playback_duration_seconds**、**license_duration_seconds** の値を設定する必要があります ([Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)で定義されています)。 または、これらを無期限/無制限の期間を意味する 0 に設定してもかまいません。  
 
-整数オーバーフローのバグを回避するには、値を設定する必要があります。 この問題に関する詳しい説明については、https://github.com/google/ExoPlayer/issues/3150 と https://github.com/google/ExoPlayer/issues/3112 を参照してください。 <br/>値を明示的に設定しない場合、**PlaybackDurationRemaining** および **LicenseDurationRemaining** に非常に大きな値が割り当てられます (たとえば 9223372036854775807、これは 64 ビット整数の正の最大値です)。 その結果、Widevine ライセンスは有効期限切れになり、解読は行われません。 
+整数オーバーフローのバグを回避するには、値を設定する必要があります。 この問題に関する詳しい説明については、 https://github.com/google/ExoPlayer/issues/3150 と https://github.com/google/ExoPlayer/issues/3112 を参照してください。 <br/>値を明示的に設定しない場合、**PlaybackDurationRemaining** および **LicenseDurationRemaining** に非常に大きな値が割り当てられます (たとえば 9223372036854775807、これは 64 ビット整数の正の最大値です)。 その結果、Widevine ライセンスは有効期限切れになり、解読は行われません。 
 
 この問題は、Android 5.0 Lollipop 以降では発生しません。Android 5.0 は ARMv8 ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) と 64 ビット プラットフォームを完全にサポートするように設計された最初の Android バージョンですが、Android 4.4 KitKat は他の古い Android バージョンと同じように ARMv7 と 32 ビット プラットフォームをサポートするようにもともと設計されていました。
 
@@ -134,7 +141,7 @@ ExoPlayer 用の Xamarin バインドについては以下のリンクをご覧�
 - [Google ExoPlayer ライブラリ用の Xamarin バインド ライブラリ](https://github.com/martijn00/ExoPlayerXamarin)
 - [ExoPlayer NuGet 用の Xamarin バインド](https://www.nuget.org/packages/Xam.Plugins.Android.ExoPlayer/)
 
-また、[Xamarin バインド](https://github.com/martijn00/ExoPlayerXamarin/pull/57)のスレッドもご覧ください。 
+次のスレッドもご覧ください。[Xamarin バインディング](https://github.com/martijn00/ExoPlayerXamarin/pull/57)。 
 
 ## <a name="chrome-player-apps-for-android"></a>Android 用の Chrome プレーヤー アプリ
 
@@ -149,8 +156,8 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 上記のオープンソース PWA アプリは、Node.js で作成されています。 独自のバージョンを Ubuntu サーバーでホストする場合は、再生を妨げる可能性のある、以下のよく発生する問題に留意してください。
 
-1. CORS の問題: サンプル アプリ内のサンプル ビデオは、https://storage.googleapis.com/biograf-video-files/videos/ でホストされます。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ https://biograf-155113.appspot.com (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます。Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://13.85.80.81:8080' is therefore not allowed access. 非透過の応答が要求に対応している場合は、要求のモードを 'no-cors' に設定し、CORS を無効にしてリソースをフェッチしてください。
-2. 証明書の問題: Chrome v 58 以降では、Widevine 用の EME には HTTPS が必要です。 したがって、X509 証明書を使って HTTPS 経由でサンプル アプリをホストする必要があります。 通常のテスト証明書は、以下の要件のため機能しません。次の最小要件を満たす証明書を取得する必要があります。
+1. CORS の問題:サンプル アプリ内のサンプル ビデオは、 https://storage.googleapis.com/biograf-video-files/videos/ でホストされます。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ https://biograf-155113.appspot.com (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます。Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. 非透過の応答が要求に対応している場合は、要求のモードを 'no-cors' に設定し、CORS を無効にしてリソースをフェッチしてください。
+2. 証明書の問題:Chrome v 58 以降では、Widevine 用の EME には HTTPS が必要です。 したがって、X509 証明書を使って HTTPS 経由でサンプル アプリをホストする必要があります。 通常のテスト証明書は次の要件のため機能しません。次の最小要件を満たす証明書を取得する必要があります。
     - Chrome および Firefox では、SAN-Subject Alternative Name の設定が証明書に存在する必要があります
     - 証明書には信頼された CA が必要であり、開発用の自己署名証明書は機能しません
     - 証明書には、Web サーバーまたはゲートウェイの DNS 名と一致する CN が必要です。
@@ -161,7 +168,7 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 一部のクライアント/ユーザーには永続ライセンス (オフライン有効) を提供し、他のクライアント/ユーザーには非永続ライセンス (オフライン無効) を提供するにはどうすればよいですか。 コンテンツを複製し、別のコンテンツ キーを使う必要がありますか。
 
-### <a name="answer"></a>リダイレクト先
+### <a name="answer"></a>Answer
 コンテンツを複製する必要はありません。 コンテンツのコピーと ContentKeyAuthorizationPolicy は 1 つでかまいませんが、2 つの異なる ContentKeyAuthorizationPolicyOption が必要です。
 
 1. IContentKeyAuthorizationPolicyOption 1: 永続的ライセンスと、license_type = "Persistent" などの要求を含む ContentKeyAuthorizationPolicyRestriction 1 を使います
@@ -175,12 +182,12 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 Widevine のセキュリティ レベルについて、Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」(Widevine DRM アーキテクチャの概要) ドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
 
-### <a name="answer"></a>リダイレクト先
+### <a name="answer"></a>Answer
 
 Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」(Widevine DRM アーキテクチャの概要) では、次の 3 つのセキュリティ レベルが定義されています。
 
-1.  セキュリティ レベル 1: すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。
-2.  セキュリティ レベル 2: 暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。
+1.  セキュリティ レベル 1:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。
+2.  セキュリティ レベル 2:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。
 3.  セキュリティ レベル 3: デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。
 
 同時に、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)では、content_key_specs の security_level プロパティは、次の 5 つの異なる値を持つことができるようになっています (再生のクライアント堅牢性の要件)。
@@ -195,15 +202,15 @@ Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com
 
 | **Widevine アーキテクチャで定義されているセキュリティ レベル** |**Widevine API で使われるセキュリティ レベル**|
 |---|---| 
-| **セキュリティ レベル 1**: すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5**: 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4**: コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
-**セキュリティ レベル 2**: 暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**: キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
-| **セキュリティ レベル 3**: デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。 | **security_level=2**: ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**: ソフトウェアベースのホワイトボックス暗号化が必須です。|
+| **セキュリティ レベル 1**:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5**:暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4**:コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
+**セキュリティ レベル 2**:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**:キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
+| **セキュリティ レベル 3**:デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。 | **security_level=2**:ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**:ソフトウェアベースのホワイトボックス暗号化が必須です。|
 
 ### <a name="question"></a>質問
 
 コンテンツのダウンロードに時間がかかるのはなぜですか。
 
-### <a name="answer"></a>リダイレクト先
+### <a name="answer"></a>Answer
 
 ダウンロードの速度を上げるには 2 つの方法があります。
 

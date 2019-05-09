@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: シングルページ Bing Video Search アプリを構築する'
+title: チュートリアル:シングルページ Bing Video Search アプリを構築する
 titlesuffix: Azure Cognitive Services
 description: シングルページ Web アプリケーションで Bing Video Search API を使用する方法を説明します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 11/01/2017
+ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: a7c6646a69aec11797d354da28baca669b802ab0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 182783576c8b47db8dd1c60ed2d5c5948fb98672
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226604"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438994"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>チュートリアル: 単一ページ Video Search アプリ
+# <a name="tutorial-single-page-video-search-app"></a>チュートリアル:シングルページ Video Search アプリ
 Bing Video Search API を使うと、Web を検索して、検索クエリに関連するビデオの結果を取得できます。 このチュートリアルでは、Bing Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -281,7 +281,7 @@ function renderSearchResults(results) {
     showDiv("paging1", pagingLinks);
     showDiv("paging2", pagingLinks);
 
-    // Render the resuts to the mainline section
+    // Render the results to the mainline section
     for (section in { mainline: 0 }) {
          showDiv(section, renderResultsItems(section, results));
     }

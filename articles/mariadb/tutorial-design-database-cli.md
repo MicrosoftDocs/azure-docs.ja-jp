@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/10/2018
 ms.custom: mvc
-ms.openlocfilehash: fa056dad052914e771251585cb426c70591aa235
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 548f4f10758b2d69bf4fda00f8bf52d33d20306c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541193"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999151"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MariaDB を設計する
 
@@ -27,6 +27,8 @@ Azure Database for MariaDB は、Microsoft クラウドにおける、MariaDB �
 > * データのクエリを実行する
 > * データの更新
 > * データの復元
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 このチュートリアルのコード ブロックを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに [Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
 
@@ -182,6 +184,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 ```
 
 `az mariadb server restore` コマンドには、次のパラメーターが必要です。
+
 | Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |

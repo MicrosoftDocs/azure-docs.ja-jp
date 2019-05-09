@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 9d953cdb82412c07fe0ed4bef75dece4a929cad9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e831979e0a9f9c8b4d812f682403ecf466abbd13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299131"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993883"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes Web ダッシュボードにアクセスする
 
@@ -34,7 +34,7 @@ Kubernetes ダッシュボードを起動するには、[az aks browse][az-aks-b
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-このコマンドは、開発システムと Kubernetes API の間にプロキシを作成し、Kubernetes ダッシュボードへの Web ブラウザーを開きます。 Web ブラウザーで Kubernetes ダッシュ ボードを開いていない場合は、Azure CLI に記載されている URL アドレス (一般に  *http://127.0.0.1:8001*) をコピーして貼り付けます。
+このコマンドは、開発システムと Kubernetes API の間にプロキシを作成し、Kubernetes ダッシュボードへの Web ブラウザーを開きます。 Web ブラウザーで Kubernetes ダッシュボードを開いていない場合は、Azure CLI に記載されている URL アドレス (一般に `http://127.0.0.1:8001`) をコピーして貼り付けます。
 
 ![Kubernetes Web ダッシュ ボードの概要ページ](./media/kubernetes-dashboard/dashboard-overview.png)
 

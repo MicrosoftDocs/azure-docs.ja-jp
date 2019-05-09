@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7a00f18a8ae51d5118275e904e2ca76fc167d987
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 91d645e6120040870c7c1696c7bfd8f68509cb35
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132620"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451905"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルの顧客による受け入れステージ
 

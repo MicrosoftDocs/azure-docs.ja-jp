@@ -1,25 +1,28 @@
 ---
-title: 2 段階認証と AD FS - Azure MFA | Microsoft Docs
+title: 2 段階認証 Azure MFA と AD FS - Azure Active Directory
 description: Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 6ce31bba9fb2f237586c6e59cbb5be7643c35aa1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 58cfac56af9074e065431f6adbd44496adc7c7a6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161435"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369685"
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure Multi-Factor Authentication と Active Directory フェデレーション サービスの概要
 
-<center>![クラウド](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+<center>
+
+![Azure MFA と ADFS の概要](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 組織がオンプレミスの Active Directory と Azure Active Directory を AD FS を使ってフェデレーションする場合、Azure Multi-Factor Authentication の使用には 2 つの選択肢があります。
 
@@ -29,7 +32,7 @@ ms.locfileid: "39161435"
 Azure Multi-Factor Authentication と AD FS を使用したリソースのセキュリティ保護の認証エクスペリエンスを次の表に要約します
 
 | 認証エクスペリエンス - ブラウザー ベースのアプリ | 認証エクスペリエンス - 非ブラウザー ベースのアプリ |
-|:--- |:--- |:--- |
+|:--- |:--- |
 | Azure Multi-Factor Authentication を使用した Azure AD リソースのセキュリティ保護 |<li>認証の第 1 段階は、AD FS を使用してオンプレミスで実行されます。</li> <li>第 2 段階は、クラウド認証を使用して実行される電話ベースの方式です。</li> |
 | Active Directory フェデレーション サービスを使用した Azure AD リソースのセキュリティ保護 |<li>認証の第 1 段階は、AD FS を使用してオンプレミスで実行されます。</li><li>第 2 段階は、要求を受け入れることによりオンプレミスで実行されます。</li> |
 

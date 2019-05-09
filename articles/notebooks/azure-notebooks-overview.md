@@ -6,25 +6,25 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2018
+ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713609"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59280113"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks の概要
 
 Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 [Jupyter](https://jupyter.org/) (旧称 IPython) は、マークダウン テキスト、実行可能コード、永続データ、グラフィックス、およびグラフを組み合わせて "*ノートブック*" (画像提供: jupyter.org) と呼ばれる 1 つの共有可能なキャンバスを簡単に作成できるオープン ソース プロジェクトです。
 
-[![](https://jupyter.org/assets/jupyterpreview.png "Jupyter ノートブック")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Jupyter Notebooks の例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 コード、グラフィックス、および説明テキストのこの強力な組み合わせにより、Jupyter は、データ サイエンス教育、データのクリーニングと変換、数値シミュレーション、統計モデリング、機械学習モデルの開発などを行う多数のユーザーの間で一般に使用されるようになっています。
 
@@ -57,7 +57,9 @@ Azure Notebooks はコードを作成、実行、および共有するための�
 
 Azure Notebooks は無料のサービスですが、乱用を防ぐために各プロジェクトのメモリは 4 GB、データは 1 GB に制限されています。 これらの制限を超える正当なユーザーは、CAPTCHA チャレンジをクリアしてノートブックの実行を継続してください。
 
-すべての制限を解除するには、お使いのアカウントを Azure サブスクリプションに関連付けます。これにより、Premium コンピューティング レベルを選択できるようになります。
+すべての制限を解除するには、Azure Active Directory を使用したアカウント (会社のアカウントなど) で Azure Notebooks にサインインします。 そのアカウントが Azure サブスクリプションに関連付けられている場合は、そのサブスクリプション内の任意の Azure Data Science Virtual Machine インスタンスに接続できます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](configure-manage-azure-notebooks-projects.md#compute-tier)」を参照してください。
+
+Notebook サーバーは、最大で 8 時間存在することが保証されます。 ほとんどの場合、コンテナーはこの制限を受けず、この期間を超えて実行を続けます。ただし、システムの安定性のために、有効期間の長いセッションがシャットダウンされることがあります。
 
 ## <a name="available-kernels-and-environments"></a>利用可能なカーネルと環境
 

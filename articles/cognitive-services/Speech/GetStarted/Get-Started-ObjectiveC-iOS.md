@@ -6,18 +6,19 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 7c4a5029208854528afdfdbfcdc63434a2a94e24
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 09b7e8961e59bd6fad49408c28e9ee9a4a209cae
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338702"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669433"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>クイック スタート: iOS 上の Objective-C で Bing Speech Recognition API を使用する
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>クイック スタート:iOS 上の Objective-C で Bing Speech Recognition API を使用する
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -113,8 +114,8 @@ iOS 用のクライアント ライブラリ リファレンスを見つける�
 
 クライアント ライブラリには、音声認識の一般的なシナリオに対応した、事前実装済みの認識クライアント クラスが用意されています。
 
-* `DataRecognitionClient`: PCM データ (たとえば、ファイルや音声ソース) を使った音声認識です。 データはバッファーに分割され、各バッファーが Speech Service に送信されます。 バッファーへの変更は加えられないので、ユーザーは必要に応じて独自の無音検出を適用できます。 データが WAV ファイルから提供された場合は、データをファイルからサーバーに直接送信できます。 生データ (たとえば、Bluetooth 経由で送られる音声など) がある場合は、まず形式ヘッダーをサーバーに送信し、その後データを送信します。
-* `MicrophoneRecognitionClient`: マイクからの音声を使った音声認識です。 マイクの電源が入っていて、マイクからのデータが音声認識サービスに送信されることを確認してください。 マイクのデータが認識サービスへ送信される前に、組み込みの "Silence Detector" がデータに適用されます。
+* `DataRecognitionClient`:PCM データ (たとえば、ファイルや音声ソース) を使った音声認識です。 データはバッファーに分割され、各バッファーが Speech Service に送信されます。 バッファーへの変更は加えられないので、ユーザーは必要に応じて独自の無音検出を適用できます。 データが WAV ファイルから提供された場合は、データをファイルからサーバーに直接送信できます。 生データ (たとえば、Bluetooth 経由で送られる音声など) がある場合は、まず形式ヘッダーをサーバーに送信し、その後データを送信します。
+* `MicrophoneRecognitionClient`:マイクからの音声を使った音声認識です。 マイクの電源が入っていて、マイクからのデータが音声認識サービスに送信されることを確認してください。 マイクのデータが認識サービスへ送信される前に、組み込みの "Silence Detector" がデータに適用されます。
 * `DataRecognitionClientWithIntent` と `MicrophoneRecognitionClientWithIntent`: これらのクライアントからは、認識テキストに加えて、話者の意図に関する構造化された情報が返されます。この情報は、アプリケーションでさらなるアクションを実行するために使用できます。 意図検出を使用するには、まず [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) を使用してモデルをトレーニングする必要があります。
 
 ### <a name="recognition-language"></a>認識言語
@@ -125,16 +126,16 @@ iOS 用のクライアント ライブラリ リファレンスを見つける�
 
 また、`SpeechRecognitionServiceFactory` を使ってクライアントを作成する際には、`SpeechRecognitionMode` も指定する必要があります。
 
-* `SpeechRecognitionMode_ShortPhrase`: 発話時間は最大 15 秒です。 データがサービスに送信されると、クライアントは複数の部分結果と、複数の n-best 選択肢を持った 1 つの最終結果を受け取ります。
-* `SpeechRecognitionMode_LongDictation`: 発話時間は最大 20 分です。 データがサービスに送信されると、クライアントはサーバーが特定した文の区切り位置に基づいて、複数の部分結果と複数の最終結果を受け取ります。
+* `SpeechRecognitionMode_ShortPhrase`:発話時間は最大 15 秒です。 データがサービスに送信されると、クライアントは複数の部分結果と、複数の n-best 選択肢を持った 1 つの最終結果を受け取ります。
+* `SpeechRecognitionMode_LongDictation`:発話時間は最大 2 分です。 データがサービスに送信されると、クライアントはサーバーが特定した文の区切り位置に基づいて、複数の部分結果と複数の最終結果を受け取ります。
 
 ### <a name="attach-event-handlers"></a>イベント ハンドラーをアタッチする
 
 作成したクライアントには、さまざまなイベント ハンドラーをアタッチできます。
 
-* **部分結果イベント**: このイベントは、ユーザーが言おうとしていることを Speech Service が予測するたびに呼び出されます。これは、ユーザーの発話 (`MicrophoneRecognitionClient` を使用した場合) やデータの送信 (`DataRecognitionClient` を使用した場合) が完了する前であっても呼び出されます。
-* **エラー イベント**: サービスがエラーを検出したときに呼び出されます。
-* **意図イベント**: 最終的な認識結果が解析され、構造化された JSON 意図が生成された後、"WithIntent" クライアント (ShortPhrase モードの場合のみ) で呼び出されます。
+* **部分結果イベント**:このイベントは、ユーザーが言おうとしていることを Speech Service が予測するたびに呼び出されます。これは、ユーザーの発話 (`MicrophoneRecognitionClient` を使用した場合) やデータの送信 (`DataRecognitionClient` を使用した場合) が完了する前であっても呼び出されます。
+* **エラー イベント**:サービスがエラーを検出したときに呼び出されます。
+* **意図イベント**:最終的な認識結果が解析され、構造化された JSON 意図が生成された後、"WithIntent" クライアント (ShortPhrase モードの場合のみ) で呼び出されます。
 * **結果イベント**:
   * `SpeechRecognitionMode_ShortPhrase` モードでは、このイベントは発話の完了後に呼び出され、n-best 結果を返します。
   * `SpeechRecognitionMode_LongDictation` モードでは、サービスによって特定された文の区切り目に基づいて、イベント ハンドラーが複数回呼び出されます。

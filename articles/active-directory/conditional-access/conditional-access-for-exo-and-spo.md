@@ -3,27 +3,28 @@ title: SharePoint Online と Exchange Online に Azure Active Directory の条�
 description: SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 62349fba-3cc0-4ab5-babe-372b3389eff6
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2018
-ms.author: markvi
+ms.date: 02/27/2019
+ms.author: joflore
 ms.reviewer: calebb
-ms.openlocfilehash: a5f0a17682f3481ad9a2dff5f144aa3d97f29920
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a90cd381dbe3feaad110c7f10ae328915c051d0a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063848"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517727"
 ---
-# <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>方法: SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する 
+# <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>方法:SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する 
 
 [Azure Active Directory (Azure AD) の条件付きアクセス](overview.md)を使うと、ユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセスを使って SharePoint Online と Exchange Online に対するアクセスを制御するには、以下が必要になります:
 
@@ -76,7 +77,7 @@ Exchange Online に条件付きアクセス ポリシーを設定するときは
 
 Exchange Active Sync は先進認証をサポートしているものの、条件付きアクセスのシナリオのサポートに関していくつか制約があります:
 
-- 構成できるのはデバイス プラットフォームの条件のみです  
+- ポリシーで **Exchange Active Sync クライアント**を選択した場合は、他の条件を構成することはできません。  
 
     ![デバイス プラットフォーム](./media/conditional-access-for-exo-and-spo/05.png)
 
@@ -92,7 +93,7 @@ Exchange ActiveSync から Exchange Online へのアクセスを効果的に保�
 
     ![条件付きアクセス](./media/conditional-access-for-exo-and-spo/04.png)
 
-    b. **クライアント アプリ**として **Exchange Active Sync** を選択してから、**[サポートされているプラットフォームのみにポリシーを適用する]** を選択します。  
+    b. **クライアント アプリ**として、**Exchange Active Sync** を選択します。  
 
     ![デバイス プラットフォーム](./media/conditional-access-for-exo-and-spo/03.png)
 

@@ -3,7 +3,7 @@ title: Azure で課金を管理して予想外のコストを防ぐ | Microsoft 
 description: Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Microsoft Azure サブスクリプションに対して、コスト管理機能を使用します。
 services: ''
 documentationcenter: ''
-author: tonguyen10
+author: bandersmsft
 manager: alherz
 editor: ''
 tags: billing
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
-ms.author: cwatson
-ms.openlocfilehash: 98ce2127cc9f60128767f8e4409134f2393ac84f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.author: banders
+ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582431"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842502"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -64,6 +64,24 @@ Azure にサインアップしたら、支出を把握するために行える�
 
 バナーをクリックし、画面の指示に従って使用制限を削除します。 サインアップ時にクレジット カード情報を入力しなかった場合、使用制限を削除するには、この情報を入力する必要があります。 詳細については、「[Azure 使用制限 - しくみと有効化または削除する方法](https://azure.microsoft.com/pricing/spending-limits/)」をご覧ください。
 
+[Cloudyn](https://www.cloudyn.com/) サービスを使用すると、異常な支出や浪費のリスクについて、関係者に自動的に通知するアラートを作成できます。 予算やコストのしきい値に基づくアラートをサポートするレポートを使用することで、アラートを作成できます。 Cloudyn の使用の詳細については、「[チュートリアル: 使用状況とコストを確認する](../cost-management/tutorial-review-usage.md)」を参照してください。
+
+この例では、**実績経過コスト** レポートを使用して、Azure VM の支出が合計予算に近づいたときに通知を送信します。 このシナリオでは、合計予算が 20,000 ドルで、コストが予算の半分 (9,000 ドル) に近づいたときに通知を受け取り、コストが 10,000 ドルに達したときに追加のアラートを受け取ります。
+
+1. Cloudyn ポータルの上部にあるメニューで、**[コスト]** > **[コスト分析]** > **[実績経過コスト]** の順に選択します。 
+2. **[グループ]** を **[サービス]** に設定し、**[Filter on the service]\(サービスのフィルター\)** を **[Azure/VM]** に設定します。 
+3. レポートの右上にある **[アクション]** を選択してから **[レポートのスケジュール]** を選択します。
+4. スケジュールされた間隔でレポートのメールを自分に送信するには、**[Save or Schedule this report]\(このレポートを保存またはスケジュールする\)** ダイアログの **[スケジューリング]** タブを選択します。 必ず **[メールで送信]** を選択してください。 使用するタグ、グループ、およびフィルターは、メールで送信されるレポートに含まれます。 
+5. **[しきい値]** タブを選択して、**[Actual Cost vs.Threshold]\(実際のコスト対しきい値\)** を選択します。 
+   1. **[Red alert]\(赤色のアラート\)** しきい値ボックスに、「10000」と入力します。 
+   2. **[Yellow alert]\(黄色のアラート\)** しきい値ボックスに、「9000」と入力します。 
+   3. **[Number of consecutive alerts]\(連続アラートの回数\)** ボックスに、受信する連続アラートの回数を入力します。 指定したアラートの合計数に達すると、それ以上アラートは送信されません。 
+6. **[保存]** を選択します。
+
+    ![支出しきい値に基づいて赤色と黄色のアラートが示された例](./media/billing-getting-started/schedule-alert01.png)
+
+**原価率対予算**のしきい値メトリックを選択して、アラートを作成することもできます。 これにより、しきい値を通貨値ではなく予算の割合として指定できます。
+
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Azure サービス使用時にコストを監視する方法
 
 ### <a name="tags"></a>リソースにタグを追加して課金データをグループ化する
@@ -90,7 +108,7 @@ Azure にサインアップしたら、支出を把握するために行える�
 
     ![Azure Portal のコスト分析ビューのスクリーンショット](./media/billing-getting-started/cost-analysis.PNG)
 
-4. [タグ](#tags)、リソース グループ、期間などのさまざまなプロパティでフィルター処理できます。 ビューをコンマ区切り値 (.csv) ファイルにエクスポートする場合は、**[適用]** をクリックしてフィルターを確認し、**[ダウンロード]** をクリックします。
+4. [タグ](#tags)、リソースの種類、リソース グループ、期間などのさまざまなプロパティでフィルター処理できます。 ビューをコンマ区切り値 (.csv) ファイルにエクスポートする場合は、**[適用]** をクリックしてフィルターを確認し、**[ダウンロード]** をクリックします。
 
 5. また、リソースをクリックして、毎日の支出の履歴とリソースのコストを確認できます。
 
@@ -165,8 +183,28 @@ Enterprise コスト ビューは、現在、パブリック プレビューの�
 
 ご自身がアカウント管理者でない場合は、[Azure Active Directory のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md) (RBAC) によって、部分的なアクセス権が与えられていると考えられます。 サブスクリプションを管理して課金情報を変更するには、[アカウント管理者を探します](billing-subscription-transfer.md#whoisaa)。アカウント管理者にタスクを実行してもらうか、[サブスクリプションを譲渡](billing-subscription-transfer.md)してもらうように依頼します。
 
-組織にアカウント管理者が存在せず、課金を管理する必要がある場合は、[お問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+組織にアカウント管理者が存在せず、課金を管理する必要がある場合は、[お問い合わせください](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
+
+### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>サービス インシデントに対するサービス レベル アグリーメントの控除を要求する方法
+
+サービス レベル アグリーメント (SLA) では、稼働時間と接続に関するマイクロソフトの確約内容について説明しています。 Azure サービスで稼働時間や接続に影響を与える問題 (しばしば “停止” と呼ばれる) が発生すると、サービス インシデントが報告されます。 SLA に記載されている各サービスのサービス レベルが達成および維持されていない場合は、月額サービス料金の一部が控除対象になる場合があります。
+
+控除を要求するには、次の手順を実行します。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。 複数のアカウントをお持ちの場合は、Azure のダウンタイムの影響を受けたアカウントを必ず使用してください。 これにより、サポート担当者は必要な背景情報を自動的に収集して、お客様のケースをより迅速に解決することができます。
+2. 新しいサポート リクエストを作成します。
+3. **[問題の種類]** で **[課金]** を選択します。
+4. **[問題の種類]** で **[払戻要求]** を選択します。
+5. SLA の控除を求めていることを指定する詳細を追加し、日付/時刻/タイムゾーン、および影響を受けたサービス (VM、Web サイトなど) を記載します。
+6. 連絡先情報の詳細を確認し、**[作成]** ボタンを選択して要求を送信します。
+
+SLA のしきい値は、サービスによって異なります。 たとえば、SQL Web サービス レベルの SLA は 99.9%、VM の SLA は 99.95%、SQL Standard サービス レベルの SLA は 99.99% です。
+
+一部のサービスには、SLA を適用するための前提条件があります。 たとえば、仮想マシンでは、2 つ以上のインスタンスが同じ可用性セットにデプロイされている必要があります。
+
+詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/en-us/support/legal/sla/)」ドキュメントと「[Azure サービスの SLA 概要](https://azure.microsoft.com/en-us/support/legal/sla/summary/)」ドキュメントを参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

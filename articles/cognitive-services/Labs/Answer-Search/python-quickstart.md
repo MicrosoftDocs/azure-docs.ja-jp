@@ -1,21 +1,21 @@
 ---
-title: 'クイック スタート: Project Answer Search、Python'
+title: クイック スタート:Project Answer Search (Python)
 titlesuffix: Azure Cognitive Services
 description: Project Answer Search の使用を開始する Python の例。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 69c5edfef65af2ed1b27f9a512ad13c21468df7a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2eaf07e041998efade1091861144a2dc4d78c56d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465510"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860305"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>クイック スタート: Python での Project Answer Search
 
@@ -41,7 +41,7 @@ Python での次の例では、"Rock of Gibraltar".に関する情報の要求�
 
 このデモの完全なコードを次に示します。
 
-````
+```
 import http.client, urllib.parse
 import json
 
@@ -65,7 +65,7 @@ def get_local():
 result = get_local()
 print (json.dumps(json.loads(result), indent=4))
 
-````
+```
 ## <a name="next-steps"></a>次の手順
 - [C# のクイック スタート](c-sharp-quickstart.md)
 - [Java のクイック スタート](java-quickstart.md)

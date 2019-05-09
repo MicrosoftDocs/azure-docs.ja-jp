@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 680a47dae057b68957c58bbaab1ec35407d67952
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d1634552522a3d1056f9af29386b6ae32754cae0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834088"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Azure Machine Learning 用にデータを Azure SQL Database に移動する
 
@@ -39,7 +39,7 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 * **Azure SQL Database**へのアクセス権。 Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、 [Microsoft Azure SQL Database の概要](../../sql-database/sql-database-get-started.md) に関する記事をご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 
-**データ**:移行プロセスは、[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/)を使用して説明されています。 NYC タクシー データセットには乗車データと料金についての情報が含まれています。このデータセットは Azure Blob Storage の[NYC タクシー データ](http://www.andresmh.com/nyctaxitrips/)で入手できます。 これらのファイルのサンプルと説明は、「 [NYC タクシー乗車データセットの説明](sql-walkthrough.md#dataset)」にあります。
+**データ**:移行プロセスは、[NYC タクシー データセット](https://chriswhong.com/open-data/foil_nyc_taxi/)を使用して説明されています。 NYC タクシー データセットには乗車データと料金についての情報が含まれています。このデータセットは Azure Blob Storage の[NYC タクシー データ](https://www.andresmh.com/nyctaxitrips/)で入手できます。 これらのファイルのサンプルと説明は、「 [NYC タクシー乗車データセットの説明](sql-walkthrough.md#dataset)」にあります。
 
 ここで説明されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](sql-walkthrough.md#dbload)」に記載されている手順に従います。 これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 

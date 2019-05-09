@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing Entities API の分析を取得する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7c9b4968aa3483bc5e233f8bd3220e61738128d3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d9ee97955f7d63d4fb9afc2a70582d2c63ce32de
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888197"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864827"
 ---
 # <a name="how-to-get-analytics-for-bing-entities-api"></a>Bing Entities API の分析を取得する方法
 

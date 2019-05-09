@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 18398326e21ac6f3d64e43a577cf7d57cfb23438
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139522"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094577"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -47,13 +47,13 @@ ms.locfileid: "53139522"
 
 既定では、バックエンドへの要求は、元の要求のコピーとして初期化されます。 バックエンドの URL を設定することに加え、HTTP メソッドやヘッダー、クエリ文字列のパラメーターに変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することが可能です。
 
-バックエンドへの要求は、ポータルでプロキシの詳細ページの "*要求のオーバーライド*" セクションを展開して変更することができます。 
+バックエンドへの要求は、ポータルで [proxy detail]\(プロキシの詳細\) ページの *[request override]\(要求のオーバーライド\)* セクションを展開して変更することができます。 
 
 ### <a name="modify-response"></a>応答を変更する
 
 既定では、クライアントへの応答は、バックエンドからの応答のコピーとして初期化されます。 応答の状態コード、理由の文字列、ヘッダー、本文には、変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]、[バックエンドからの応答のパラメーター]を参照することが可能です。
 
-バックエンドへの要求は、ポータルでプロキシの詳細ページの "*応答のオーバーライド*" セクションを展開して変更することができます。 
+バックエンドへの要求は、ポータルで [proxy detail]\(プロキシの詳細\) ページの *[response override]\(応答のオーバーライド\)* セクションを展開して変更することができます。 
 
 ## <a name="using-variables"></a>変数を使用する
 
@@ -94,7 +94,7 @@ ms.locfileid: "53139522"
 
 ### <a name="use-appsettings"></a>アプリケーション設定を参照する
 
-[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
+[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
 
 たとえば、*https://%ORDER_PROCESSING_HOST%/api/orders* のバックエンド URL で、"%ORDER_PROCESSING_HOST%" は ORDER_PROCESSING_HOST 設定の値に置き換えられます。
 
@@ -151,7 +151,7 @@ ms.locfileid: "53139522"
 
 ### <a name="disableProxies"></a> 個々のプロキシを無効する
 
-個々のプロキシを無効にするには、`proxies.json` ファイル内のプロキシに `"disabled": true` を追加します。 これにより、matchCondidtion を満たす要求はすべて 404 を返します。
+個々のプロキシを無効にするには、`proxies.json` ファイル内のプロキシに `"disabled": true` を追加します。 これにより、matchCondition を満たす要求はすべて 404 を返します。
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -161,7 +161,7 @@ ms.locfileid: "53139522"
             "matchCondition": {
                 "route": "/example"
             },
-            "backendUri": "www.example.com"
+            "backendUri": "https://<AnotherApp>.azurewebsites.net/api/<FunctionName>"
         }
     }
 }
@@ -171,17 +171,18 @@ ms.locfileid: "53139522"
 
 プロキシの動作は、いくつかのアプリ設定によって制御できます。 これらについては、[関数のアプリ設定のリファレンス](./functions-app-settings.md)で説明されています
 
-* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azurefunctionproxydisablelocalcall)
-* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azurefunctionproxybackendurldecodeslashes)
+* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
+* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
 ### <a name="reservedChars"></a> 予約文字 (文字列形式)
 
-プロキシでは、中かっことスラッシュを除くすべての文字列が解釈なしに読み取られます
+プロキシで JSON ファイルのすべての文字列が読み取られるときは、エスケープ記号として \ が使用されます。 プロキシでは、中括弧も解釈されます。 以下の例の完全なセットを参照してください。
 
 |Character|エスケープ文字|例|
 |-|-|-|
 |{ または }|{{ または }}|`{{ example }}` --> `{ example }`
-|/|///| `example.com///text.html` --> `example.com/text.html`
+| \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
+|"|\\\"| `\"example\"` --> `"example"`
 
 ### <a name="requestOverrides"></a>requestOverrides オブジェクトの定義
 
@@ -248,7 +249,7 @@ ms.locfileid: "53139522"
 > この例では、応答の本文が直接設定されているため、`backendUri` プロパティは必要ありません。 この例では、Azure Functions プロキシを使って API のモッキングを行う方法を説明しています。
 
 [Azure Portal]: https://portal.azure.com
-[HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [requestOverrides オブジェクトの定義]: #requestOverrides

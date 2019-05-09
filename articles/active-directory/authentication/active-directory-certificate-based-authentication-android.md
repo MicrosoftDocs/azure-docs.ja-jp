@@ -1,21 +1,22 @@
 ---
-title: Android での Azure Active Directory の証明書ベースの認証
+title: Android での証明書ベースの認証 - Azure Active Directory
 description: Android デバイスでソリューションに証明書ベースの認証を構成するための対応シナリオや要件について説明する
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: annaba
-ms.openlocfilehash: ef58fd6c4701f367c6b8664c9cf9ee76e15fbd70
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106661"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368291"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android での Azure Active Directory の証明書ベースの認証
 
@@ -34,16 +35,16 @@ Office 365 US Government Defense プランと Federal プランでは、この�
 
 | アプリケーション | サポート |
 | --- | --- |
-| Azure Information Protection アプリ |![○][1] |
-| Intune ポータル サイト |![○][1] |
-| Microsoft Teams |![○][1] |
-| OneNote |![○][1] |
-| OneDrive |![○][1] |
-| Outlook |![○][1] |
-| Power BI |![○][1] |
-| Skype for Business |![○][1] |
-| Word/Excel/PowerPoint |![○][1] |
-| Yammer |![○][1] |
+| Azure Information Protection アプリ |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Intune ポータル サイト |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Microsoft Teams |![このアプリケーションのサポートを示すチェック マーク][1] |
+| OneNote |![このアプリケーションのサポートを示すチェック マーク][1] |
+| OneDrive |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Outlook |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Power BI |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Skype for Business |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Word/Excel/PowerPoint |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Yammer |![このアプリケーションのサポートを示すチェック マーク][1] |
 
 ### <a name="implementation-requirements"></a>実装要件
 

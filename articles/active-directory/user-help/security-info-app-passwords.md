@@ -1,28 +1,31 @@
 ---
-title: セキュリティ情報を使用したアプリ パスワードの設定 - Azure Active Directory | Microsoft Docs
-description: セキュリティ情報を使用して、通常のパスワードとは別に、各非ブラウザー アプリで使用するように自動生成パスワード (アプリ パスワード) を設定します。
+title: セキュリティ情報 (プレビュー) からアプリ パスワードを設定する - Azure Active Directory | Microsoft Docs
+description: 組織のブラウザー以外のアプリ、または 2 要素認証をサポートしていないアプリで使用する、自動生成パスワード (アプリ パスワード) を設定します。 このアプリ パスワードは、通常のパスワードとは別のものであり、[セキュリティ情報] ページから設定できます。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 02/13/2018
 ms.author: lizross
-ms.openlocfilehash: e527a0eaec433b96b5c37c5ec22f392a7166dfe8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162446"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341105"
 ---
-# <a name="manage-app-passwords-using-security-info-preview"></a>セキュリティ情報を使用したアプリ パスワードの管理 (プレビュー)
+# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>セキュリティ情報 (プレビュー) ページからアプリ パスワードを管理する
+Outlook 2010 などの特定のアプリでは、2 段階認証はサポートされていません。 このサポートの欠如は、組織で 2 段階認証を使用している場合、アプリが動作しないことを意味します。 この問題を回避するために、通常のパスワードとは別に、各非ブラウザー アプリで使用する自動生成パスワードを作成できます。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-Outlook 2010 などの特定の非ブラウザー アプリは、2 段階認証をサポートしていません。 このサポートの欠如は、2 段階認証を使用している場合、アプリが動作しないことを意味します。 この問題を回避するために、通常のパスワードとは別に、各非ブラウザー アプリで使用する自動生成パスワードを作成できます。
+>[!Important]
+>アプリ パスワードの使用が組織の管理者によって許可されていない場合があります。 オプションとして **[アプリ パスワード]** が表示されない場合、アプリ パスワードを組織で利用することはできません。
 
 アプリ パスワードを使用する場合は、次の点に注意してください。
 
@@ -35,52 +38,48 @@ Outlook 2010 などの特定の非ブラウザー アプリは、2 段階認証�
     >[!Note]
     >Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートしており、2 段階認証を使用できます。 このサポートは、2 段階認証が有効になれば、以降は Office 2013 クライアントに対するアプリ パスワードは必要なくなることを意味します。 詳細については、「[Office 2013 クライアント アプリと Office 2016 クライアント アプリでの先進認証のしくみ](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517)」記事を参照してください。
 
-## <a name="create-and-delete-app-passwords-using-security-info"></a>セキュリティ情報を使用してアプリ パスワードを作成および削除する
+## <a name="create-new-app-passwords"></a>新しいアプリ パスワードを作成する
+職場または学校のアカウントで 2 段階認証を使用し、管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、**[セキュリティ情報]** ページを使用してアプリ パスワードの作成と削除を実行できます。
 
-職場または学校のアカウントで 2 段階認証を使用し、管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、My Apps ポータルを使用してアプリ パスワードを作成および削除できます。
+>[!Note]
+>管理者がセキュリティ情報エクスペリエンスを有効にしていない場合は、[2 段階認証用のアプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)に関するセクションの手順と情報に従う必要があります。
 
-管理者がセキュリティ情報エクスペリエンスを有効にしていない場合は、[2 段階認証用のアプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)に関するセクションの手順と情報に従う必要があります。
+### <a name="to-create-a-new-app-password"></a>新しいアプリ パスワードを作成するには
+1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
 
-### <a name="to-create-app-passwords-using-the-my-apps-portal"></a>My Apps ポータルを使用してアプリ パスワードを作成するには
+    ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
-1. 職場または学校のアカウントにサインインします。
+2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、**[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
 
-2. myapps.microsoft.com に進み、ページの右上隅から自分の名前を選択し、**[プロファイル]** を選択します。
+    ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. **[アカウントの管理]** 領域で **[セキュリティ情報の編集]** を選択します。
+3. **[メソッドの追加]** ページで、ドロップダウン リストから **[アプリ パスワード]** を選択し、**[追加]** を選択します。
 
-    ![[セキュリティ情報の編集] リンクが強調表示されているプロファイル画面](media/security-info/security-info-profile.png)
+    ![[アプリ パスワード] が選択されている [メソッドの追加] ボックス](media/security-info/securityinfo-myprofile-addpassword.png)
 
-4. **[アカウントのセキュリティ保護]** 画面で、**[セキュリティ情報の追加]** を選択します。
+4. アプリ パスワードを必要とするアプリの名前を入力し、**[次へ]** を選択します。
 
-    ![セキュリティ情報画面。既存の編集可能な情報が表示されています](media/security-info/security-info-edit-add-info.png)
+    ![アプリの名前が表示されている [アプリ パスワード] ページ](media/security-info/securityinfo-myprofile-password-appname.png)
 
-5. **[セキュリティ情報の追加]** 画面で、**[アプリ パスワード]** を選択します。
+5. **[パスワード]** ボックスのテキストをコピーし、そのパスワードを、アプリ (この例では Outlook 2010) のパスワード エリアに貼り付けた後、**[完了]** を選択します。
 
-6. **[アプリ パスワードの作成]** 画面で、アプリ パスワードの名前を入力し、**[次へ]** を選択します。
-
-    ![アプリ パスワードに名前を付ける画面](media/security-info/security-info-name-app-password.png)
-
-7. **[コピー]** を選択してパスワードをクリップボードにコピーし、**[次へ]** を選択します。
-
-    ![アプリ パスワードをコピーするための画面](media/security-info/security-info-create-app-password.png)
+    ![アプリの名前が表示されている [アプリ パスワード] ページ](media/security-info/securityinfo-myprofile-password-copytext.png)
     
-8. アプリ パスワードが **[アカウントのセキュリティ保護]** 画面に表示されることを確認します。
+    パスワードが追加され、今後はアプリに正常にログインできます。
 
-    ![セキュリティ保護の画面と、アプリ パスワード](media/security-info/security-info-keep-secure-app-password.png)
+## <a name="delete-your-app-passwords"></a>アプリ パスワードを削除する
+アプリ パスワードを必要とするアプリの使用が不要になった場合は、関連付けられているアプリ パスワードを削除できます。 アプリ パスワードを削除すると、今後利用できるアプリ パスワードのいずれかのスポットが解放されまます。
 
-### <a name="to-delete-app-passwords-using-the-my-apps-portal"></a>My Apps ポータルを使用してアプリ パスワードを削除するには
+>[!Important]
+>アプリ パスワードを誤って削除した場合、元に戻す方法はありません。 この記事の「[新しいアプリ パスワードを作成する](#create-new-app-passwords)」の手順に従って新しいアプリ パスワードを作成し、アプリに再入力する必要あります。
 
-1. **[アカウントのセキュリティ保護]** 画面で、アプリ パスワードの横の **[X]** を選択して削除します。
+### <a name="to-delete-an-app-password"></a>アプリ パスワードを削除するには
 
-    ![セキュリティ保護の画面、アプリ パスワードの削除](media/security-info/security-info-keep-secure-delete-app-password.png)
+1. **[セキュリティ情報]** ページで、特定のアプリ用の **[アプリ パスワード]** オプションの横にある **[削除]** リンクを選択します。
 
-2. **[アプリケーションのパスワードを削除]** 画面で、**[削除]** を選択します。
+    ![セキュリティ情報からアプリ パスワード メソッドを削除するためのリンク](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-    ![アプリケーションのパスワードを削除画面](media/security-info/security-info-keep-secure-delete-app-password2.png)
+2. 確認ボックスで **[はい]** を選択して、**アプリ パスワード**を削除します。 アプリ パスワードを削除すると、セキュリティ情報から削除され、**[セキュリティ情報]** ページから消去されます。
 
-## <a name="next-steps"></a>次の手順
-
-- セキュリティ情報を更新する必要がある場合は、「[セキュリティ情報の管理](security-info-manage-settings.md)」にある説明に従ってください。
-
-- セキュリティ情報と実行できることに関する一般的な情報については、「[セキュリティ情報の概要](user-help-security-info-overview.md)」を参照してください。 
+## <a name="for-more-information"></a>BLOB の詳細
+- **[セキュリティ情報]** ページとその設定方法の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください。

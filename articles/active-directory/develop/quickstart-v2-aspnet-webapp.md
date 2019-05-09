@@ -1,10 +1,10 @@
 ---
-title: Azure AD v2.0 ASP.NET Web サーバーのクイック スタート | Microsoft Docs
+title: Microsoft ID プラットフォーム ASP.NET Web サーバーのクイックスタート | Azure
 description: OpenID Connect を使用して、ASP.NET Web アプリで Microsoft サインインを実装する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2018
-ms.author: andret
+ms.date: 04/11/2019
+ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d86727e0a3c681a05b2a1f6ff62bdab83394fa56
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959820"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579480"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -28,7 +29,7 @@ ms.locfileid: "52959820"
 
 このクイック スタートでは、ASP.NET Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を学びます。
 
-![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.png)
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
@@ -38,21 +39,22 @@ ms.locfileid: "52959820"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. [Azure portal の [アプリケーションの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) に移動します。
+> 1. 新しい [Azure portal の [アプリの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ウィンドウに移動します。
 > 1. アプリケーションの名前を入力して **[登録]** をクリックします。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションを登録し、コード サンプルを手動で構成する
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
 >
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
 > 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 > 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-> 1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)]** > **[新規登録]** を選択します。
+> 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
+> 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 >      - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `ASPNET-Quickstart`)。
->      - **[応答 URL]** に「`https://localhost:44368/`」を追加し、**[登録]** をクリックします。
+>      - **[リダイレクト URI]** に `https://localhost:44368/` を追加して、**[登録]** をクリックします。
 **[認証]** メニューを選択し、**[暗黙の付与]** の **[ID トークン]** を設定して、**[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -131,7 +133,7 @@ public void Configuration(IAppBuilder app)
             // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
             TokenValidationParameters = new TokenValidationParameters()
             {
-                ValidateIssuer = false
+                ValidateIssuer = false // Simplification (see note below)
             },
             // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
             Notifications = new OpenIdConnectAuthenticationNotifications
@@ -146,15 +148,20 @@ public void Configuration(IAppBuilder app)
 > |Where  |  |
 > |---------|---------|
 > | `ClientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID |
-> | `Authority`    | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは通常 https://login.microsoftonline.com/{tenant}/v2.0 で、{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) |
-> | `RedirectUri`  | Azure AD v2.0 エンドポイントに対する認証後にユーザーが送られる URL |
+> | `Authority`    | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は <https://login.microsoftonline.com/{tenant}/v2.0>。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |
+> | `RedirectUri`  | Microsoft ID プラットフォーム エンドポイントに対する認証後にユーザーが送られる URL |
 > | `PostLogoutRedirectUri`     | サインオフ後にユーザーが送られる URL |
 > | `Scope`     | 要求されているスコープのスペース区切りリスト |
 > | `ResponseType`     | 認証からの応答に ID トークンが含まれていることを要求します |
 > | `TokenValidationParameters`     | トークン検証のためのパラメーターのリスト。 この場合、`ValidateIssuer` は `false` に設定され、任意の個人、あるいは職場または学校のアカウント タイプからのサインインを受け付け可能であることを示します |
 > | `Notifications`     | さまざまな *OpenIdConnect* メッセージで実行可能なデリゲートの一覧 |
 
-### <a name="initiate-an-authentication-challenge"></a>認証チャレンジの開始
+
+> [!NOTE]
+> `ValidateIssuer = false` の設定は、このクイックスタートを単純にするためのものです。 実際のアプリケーションでは、発行者を検証する必要があります。
+> その方法については、サンプルを参照してください。
+
+### <a name="initiate-an-authentication-challenge"></a>認証チャレンジを開始する
 
 コントローラーで認証チャレンジを要求することによって、ユーザーにサインインを強制することができます。
 

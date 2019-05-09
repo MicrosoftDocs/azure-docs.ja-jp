@@ -2,22 +2,22 @@
 title: Azure クイック スタート - Batch ジョブの実行 - CLI
 description: Azure CLI で Batch ジョブを実行する方法を簡単に説明します。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 75703b4b10bbf3864076952990df2e6c2a9ab28d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969650"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752349"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート: Azure CLI で最初の Batch ジョブを実行する
+# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して Batch アカウント、コンピューティング ノード (仮想マシン) の "*プール*"、そのプールで "*タスク*" を実行する "*ジョブ*" を作成する方法を示します。 各サンプル タスクでは、プール ノードの 1 つに対して基本的なコマンドが実行されます。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
@@ -139,7 +139,7 @@ az batch task show \
 
 ## <a name="view-task-output"></a>タスク出力の表示
 
-コンピューティング ノード上にタスクによって作成されたファイルを一覧表示するには、[az batch task file list](/cli/azure/batch/task#az-batch-task-file-list) コマンドを使用します。 次のコマンドでは、*mytask1* によって作成されたファイルの一覧が表示されます。 
+コンピューティング ノード上にタスクによって作成されたファイルを一覧表示するには、[az batch task file list](/cli/azure/batch/task) コマンドを使用します。 次のコマンドでは、*mytask1* によって作成されたファイルの一覧が表示されます。 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-出力ファイルの 1 つをローカル ディレクトリにダウンロードするには、[az batch task file download](/cli/azure/batch/task#az-batch-task-file-download) コマンドを使用します。 この例では、タスクの出力は `stdout.txt` にあります。 
+出力ファイルの 1 つをローカル ディレクトリにダウンロードするには、[az batch task file download](/cli/azure/batch/task) コマンドを使用します。 この例では、タスクの出力は `stdout.txt` にあります。 
 
 ```azurecli-interactive
 az batch task file download \

@@ -1,14 +1,12 @@
 ---
-title: Azure での仮想ネットワークの作成 - クイック スタート - Azure PowerShell | Microsoft Docs
+title: 仮想ネットワークの作成 - クイック スタート - Azure PowerShell
+titlesuffix: Azure Virtual Network
 description: このクイック スタートでは、Azure Portal を使用した仮想ネットワークの作成について説明します。 仮想ネットワークによって、仮想マシンなどの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
 ms.topic: quickstart
@@ -16,13 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: 4e2808df56684b257898f3e03f8e9ca36682063b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 57c3b5099c24151794b27f4aeec7845495a4630a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341917"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670412"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>クイック スタート:PowerShell を使用して仮想ネットワークを作成する
 
@@ -32,9 +29,9 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-代わりに PowerShell をインストールしてローカルで使用する場合、このクイック スタートでは AzureRM PowerShell モジュール バージョン 5.4.1 以降を使用する必要があります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードの詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+代わりに PowerShell をインストールしてローカルで使用する場合、このクイック スタートでは Azure PowerShell モジュール バージョン 1.0.0 以降を使用する必要があります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードの詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
-最後に、PowerShell をローカルで実行している場合は、`Connect-AzureRmAccount` も実行する必要があります。 このコマンドで、Azure との接続が作成されます。
+最後に、PowerShell をローカルで実行している場合は、`Connect-AzAccount` も実行する必要があります。 このコマンドで、Azure との接続が作成されます。
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>リソース グループと仮想ネットワークを作成する
 
@@ -42,18 +39,18 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 ### <a name="create-the-resource-group"></a>リソース グループの作成
 
-仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) を使用してリソース グループを作成します。 この例では、*eastus* の場所内に *myResourceGroup* という名前のリソース グループを作成します。
+仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) を使用して Azure リソース グループを作成します。 この例では、*eastus* の場所内に *myResourceGroup* という名前のリソース グループを作成します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 ### <a name="create-the-virtual-network"></a>仮想ネットワークの作成
 
-[New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 この例では、*EastUS* の場所内に *myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 この例では、*EastUS* の場所内に *myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork `
@@ -62,10 +59,10 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>サブネットの追加
 
-Azure では、仮想ネットワーク内のサブネットにリソースがデプロイされるため、サブネットを作成する必要があります。 [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig) を使用して、*default* というサブネット構成を作成します。
+Azure では、仮想ネットワーク内のサブネットにリソースがデプロイされるため、サブネットを作成する必要があります。 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) を使用して、*default* というサブネット構成を作成します。
 
 ```azurepowershell-interactive
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -Name default `
   -AddressPrefix 10.0.0.0/24 `
   -VirtualNetwork $virtualNetwork
@@ -73,10 +70,10 @@ $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>サブネットを仮想ネットワークに関連付ける
 
-[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) を使用して、仮想ネットワークにサブネット構成を書き込むことができます。 このコマンドで、サブネットが作成されます。
+[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) を使用して、仮想ネットワークにサブネット構成を書き込むことができます。 このコマンドで、サブネットが作成されます。
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
@@ -85,10 +82,10 @@ $virtualNetwork | Set-AzureRmVirtualNetwork
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して最初の VM を作成します。 次のコマンドを実行すると、資格情報の入力が求められます。 VM のユーザー名とパスワードを入力します。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して最初の VM を作成します。 次のコマンドを実行すると、資格情報の入力が求められます。 VM のユーザー名とパスワードを入力します。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Location "East US" `
     -VirtualNetworkName "myVirtualNetwork" `
@@ -104,7 +101,7 @@ Azure でバックグラウンドで VM の作成を開始すると、次のよ�
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
 --     ----            -------------   -----         -----------     --------             -------
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmVM
+1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
 ### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
@@ -112,7 +109,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 このコマンドを使用して 2 番目の VM を作成します。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -VirtualNetworkName "myVirtualNetwork" `
   -SubnetName "default" `
@@ -126,10 +123,10 @@ New-AzureRmVm `
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
-[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、VM のパブリック IP アドレスを返します。 この例では、*myVm1* VM のパブリック IP アドレスを返しています。
+[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、VM のパブリック IP アドレスを返します。 この例では、*myVm1* VM のパブリック IP アドレスを返しています。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVm1 `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
@@ -138,7 +135,7 @@ Get-AzureRmPublicIpAddress `
 お使いのローカル コンピューターでコマンド プロンプトを開きます。 `mstsc` コマンドを実行します。 `<publicIpAddress>` を最後の手順で返されたパブリック IP アドレスに置き換えます。
 
 > [!NOTE]
-> ローカル コンピューター上の PowerShell プロンプトからこれらのコマンドを実行済みで、AzureRM PowerShell モジュール バージョン 5.4.1 以降を使用している場合、そのインターフェイスで続行できます。
+> ローカル コンピューター上の PowerShell プロンプトからこれらのコマンドを実行済みで、Az PowerShell モジュール バージョン 1.0 以降を使用している場合、そのインターフェイスで続行できます。
 
 ```cmd
 mstsc /v:<publicIpAddress>
@@ -168,7 +165,7 @@ mstsc /v:<publicIpAddress>
     ```powershell
     PS C:\Users\myVm1> ping myVm2
 
-    Pinging myVm2.ovvzzdcazhbu5iczfvonhg2zrb.bx.internal.cloudap
+    Pinging myVm2.ovvzzdcazhbu5iczfvonhg2zrb.bx.internal.cloudapp.net
     Request timed out.
     Request timed out.
     Request timed out.
@@ -217,10 +214,10 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-仮想ネットワークと VM を完了したら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。
+仮想ネットワークと VM を完了したら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

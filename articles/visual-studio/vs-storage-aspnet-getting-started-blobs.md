@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 93859b3b6fcdad67d46604f2ab34bec4138feb2b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 557b47aab5cdadef79427c4da9c18477daac0689
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969619"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745420"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 
@@ -413,7 +413,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
     
-    完成した `ListBlobs` メソッド (作成されるローカル ファイルの完全修飾パス指定あり) を次に示します。
+    完成した `DownloadBlob` メソッド (作成されるローカル ファイルの完全修飾パス指定あり) を次に示します。
     
     ```csharp
     public string DownloadBlob()

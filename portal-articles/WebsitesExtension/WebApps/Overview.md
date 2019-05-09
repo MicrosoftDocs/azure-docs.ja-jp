@@ -8,18 +8,18 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 50e6b714bc28ce383f06580d0e35b0b0e4066835
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60530874"
 ---
 # <a name="app-service-documentation"></a>App Service のドキュメント
-Azure App Service を使用すると、インフラストラクチャ、言語、または Web フレームワーク ランタイムを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Azure DevOps Services、または任意の Git リポジトリからの自動デプロイが可能になります。 クイック スタート、チュートリアル、およびサンプルを使用して、Azure App Service の使用方法を学習してください。
+Azure App Service を使用すると、インフラストラクチャ、言語、または Web フレームワーク ランタイムを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Azure DevOps Services、または任意の Git リポジトリからの自動デプロイが可能になります。 クイック スタート、チュートリアル、およびサンプルを使用して、Azure App Service の使用方法を学習してください。
 
 ## <a name="windows-linux-and-docker"></a>Windows、Linux、および Docker
-[Web Apps](/app-service/app-service-web-overview) は、Windows 環境を使用する Web アプリケーションを構築およびホスティングするための、App Service の主要なサービスです。 Linux 環境を使用する開発者は、[Linux 用 App Service](/app-service/containers/app-service-linux-intro) を選択することができます。 また、開発者は、Docker イメージを Linux 用 App Service に直接デプロイして、カスタム ランタイム/フレームワークをデプロイすることもできます。
+[Web Apps](/app-service/overview) は、Windows 環境を使用する Web アプリケーションを構築およびホスティングするための、App Service の主要なサービスです。 Linux 環境を使用する開発者は、[Linux 用 App Service](/app-service/containers/app-service-linux-intro) を選択することができます。 また、開発者は、Docker イメージを Linux 用 App Service に直接デプロイして、カスタム ランタイム/フレームワークをデプロイすることもできます。
 
 ## <a name="5-minute-quickstarts"></a>5 分間のクイック スタート
 
@@ -54,7 +54,7 @@ Azure でセキュリティ保護された Web アプリケーションをデプ
 一般的なタスクを管理するためのスクリプトを探します。
 
 - [Azure CLI](/azure/app-service/app-service-cli-sample)
-- [Azure Powershell](/azure/app-service/app-service-powershell-samples)
+- [Azure Powershell](/azure/app-service/samples-powershell)
 
 ## <a name="more"></a>詳細
 

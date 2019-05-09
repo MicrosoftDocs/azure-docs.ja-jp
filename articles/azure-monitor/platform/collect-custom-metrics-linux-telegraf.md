@@ -4,16 +4,16 @@ description: Linux VM のカスタム メトリックを InfluxData Telegraf エ
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: 6427507a9a27ad41f9e0f0f5bfffd0eb55af2d78
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: metrics
+ms.openlocfilehash: 14415b88cd6036642442ef9ae23e8dee301bb908
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325454"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775613"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -132,5 +132,6 @@ sudo systemctl start telegraf
 
 ## <a name="next-steps"></a>次の手順
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
+
 
 

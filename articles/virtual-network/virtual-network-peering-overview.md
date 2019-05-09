@@ -1,29 +1,27 @@
 ---
-title: Azure の仮想ネットワーク ピアリング | Microsoft Docs
+title: Azure Virtual Network ピアリング
+titlesuffix: Azure Virtual Network
 description: Azure の仮想ネットワーク ピアリングについて説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: eb0ba07d-5fee-4db0-b1cb-a569b7060d2a
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
-ms.author: jdial
-ms.openlocfilehash: 493beb254852464765d506c61c7ae6ce3b3835d3
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 04/01/2019
+ms.author: anavin
+ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362893"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489983"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
-仮想ネットワーク ピアリングを使用すると、2 つの Azure [仮想ネットワーク](virtual-networks-overview.md)間をシームレスに接続できます。 ピアリングされた仮想ネットワークは、接続において、見かけ上 1 つのネットワークとして機能します。 ピアリングされた仮想ネットワークに存在する仮想マシン間のトラフィックは Microsoft のバックボーン インフラストラクチャを介して、"*プライベート*" IP アドレスのみを使った同一仮想ネットワーク内の仮想マシン間のトラフィックと同じようにルーティングされます。 Azure では、次のことがサポートされています。
+仮想ネットワーク ピアリングを使用すると、Azure [仮想ネットワーク](virtual-networks-overview.md)間をシームレスに接続できます。 ピアリングされた仮想ネットワークは、接続において、見かけ上 1 つのネットワークとして機能します。 ピアリングされた仮想ネットワークに存在する仮想マシン間のトラフィックは Microsoft のバックボーン インフラストラクチャを介して、"*プライベート*" IP アドレスのみを使った同一仮想ネットワーク内の仮想マシン間のトラフィックと同じようにルーティングされます。 Azure では、次のことがサポートされています。
 * VNet ピアリング - 同じ Azure リージョン内の VNet を接続する
 * グローバル VNet ピアリング - 複数の Azure リージョンにわたる VNet を接続する
 
@@ -61,11 +59,12 @@ ms.locfileid: "49362893"
 
 仮想ネットワーク間の接続に両方の方法が構成されているときは、ピアリング構成を介して (つまり Azure バックボーンを介して) 仮想ネットワーク間のトラフィックが流れます。
 
-同一リージョンで仮想ネットワークがピアリングされているとき、そのピアリングされた仮想ネットワークのゲートウェイを、オンプレミスのネットワークへのトランジット ポイントとして構成することもできます。 この場合、リモート ゲートウェイを使用する仮想ネットワークが、その独自のゲートウェイを持つことはできません。 1 つの仮想ネットワークが所有できるゲートウェイは 1 つに限られています。 ゲートウェイは、以下の図に示すように、ローカル ゲートウェイと (ピアリングされた仮想ネットワークの) リモート ゲートウェイのどちらかになります。
+仮想ネットワークがピアリングされているとき、そのピアリングされた仮想ネットワークのゲートウェイを、オンプレミスのネットワークへのトランジット ポイントとして構成することもできます。 この場合、リモート ゲートウェイを使用する仮想ネットワークが、その独自のゲートウェイを持つことはできません。 1 つの仮想ネットワークが所有できるゲートウェイは 1 つに限られています。 ゲートウェイは、以下の図に示すように、ローカル ゲートウェイと (ピアリングされた仮想ネットワークの) リモート ゲートウェイのどちらかになります。
 
 ![仮想ネットワーク ピアリングのトランジット](./media/virtual-networks-peering-overview/figure04.png)
 
-ゲートウェイ転送は、異なるリージョンに作成された仮想ネットワーク間のピアリング関係ではサポートされません。 ゲートウェイ転送が機能するためには、ピアリング関係にある両方の仮想ネットワークが、同じリージョンに存在する必要があります。 異なるデプロイ モデル (Resource Manager とクラシック) を使って作成された仮想ネットワーク間のゲートウェイ転送は、ゲートウェイが仮想ネットワーク (Resource Manager) 内にある場合にのみサポートされます。 転送へのゲートウェイの使用について詳しくは、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+ゲートウェイのトランジットは、VNet ピアリングとグローバル VNet ピアリング (プレビュー) の両方でサポートされています。 プレビューでグローバルにピアリングされた仮想ネットワークでは、リモート ゲートウェイを使用でき、ゲートウェイ転送を許可できます。 プレビューは、すべての Azure リージョン、中国のクラウド リージョン、および政府のクラウド リージョンで利用できます。 ホワイト リストに登録する必要はありません。 CLI、PowerShell、テンプレート、または API を介してプレビューをテストできます。 プレビューではポータルはサポートされていません。
+異なるデプロイ モデル (Resource Manager とクラシック) を使って作成された仮想ネットワーク間のゲートウェイ転送は、ゲートウェイが仮想ネットワーク (Resource Manager) 内にある場合にのみサポートされます。 転送へのゲートウェイの使用について詳しくは、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
 1 本の Azure ExpressRoute 接続を共有する仮想ネットワークどうしをピアリングした場合、両者間のトラフィックは、そのピアリング関係を通過することになります (つまり Azure バックボーン ネットワークが使用されます)。 それでも、各仮想ネットワークのローカル ゲートウェイを使用してオンプレミス回線に接続できます。 また、共有ゲートウェイを使用して、オンプレミス接続用のトランジットを構成することもできます。
 
@@ -75,12 +74,12 @@ ms.locfileid: "49362893"
 
 Network Watcher の[接続チェック](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を使って、ピアリングされた仮想ネットワーク内の仮想マシンへの接続をトラブルシューティングすることもできます。 接続チェックを実行すると、接続元の仮想マシンのネットワーク インターフェイスから接続先の仮想マシンのネットワーク インターフェイスまでのトラフィックのルーティング方法がわかります。
 
+[仮想ネットワーク ピアリングの問題のトラブルシューティング ツール](https://support.microsoft.com/help/4486956/troubleshooter-for-virtual-network-peering-issues)を試すこともできます。
+
 ## <a name="requirements-and-constraints"></a>要件と制約
 
-仮想ネットワークがグローバルにピアリングされている場合、次の制約が適用されます。
-- 仮想ネットワークは、任意の Azure パブリック クラウド リージョンに存在できますが、Azure ナショナル クラウドには存在できません。
-- ある仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Azure 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 ロード バランサーおよびそれと通信するリソースは、同じリージョン内に存在する必要があります。
-- リモート ゲートウェイを使うこと、またはゲートウェイの通過を許可することはできません。 リモート ゲートウェイを使う場合、またはゲートウェイの通過を許可する場合は、ピアリングされた仮想ネットワークが同じリージョンに存在する必要があります。
+仮想ネットワークがグローバルにピアリングされている場合のみ、次の制約が適用されます。
+- 仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Basic 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 Basic Load Balancer のサポートは、同じリージョン内でのみ存在します。 Standard Load Balancer のサポートはグローバル VNet ピアリングに存在します。
 
 要件と制約の詳細については、[仮想ネットワーク ピアリングの要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)に関するページを参照してください。 仮想ネットワークで作成できるピアリングの数の制限については、[Azure ネットワーキングの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。 
 

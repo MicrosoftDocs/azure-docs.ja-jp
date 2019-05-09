@@ -8,7 +8,7 @@ items:
     expanded: true
 - name: クイック スタート
   items:
-  - name: 使用の開始
+  - name: Web 上で Content Moderator を試す
     href: quick-start.md
   - name: クライアント SDK の使用
     items:
@@ -26,6 +26,10 @@ items:
   items:
   - name: eコマース イメージをモデレートする
     href: ecommerce-retail-catalog-moderation.md
+  - name: Facebook コンテンツのモデレート
+    href: facebook-post-moderation.md
+  - name: ビデオとトランスクリプトのモデレーション
+    href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: 概念
   items:
   - name: 画像のモデレート
@@ -34,86 +38,60 @@ items:
     href: text-moderation-api.md
   - name: ビデオのモデレート
     href: video-moderation-human-review.md
-  - name: ジョブとレビュー
+  - name: レビュー ツール
+    href: Review-Tool-User-Guide/human-in-the-loop.md
+  - name: レビュー、ワークフロー、ジョブ
     href: review-api.md
-  - name: Workflows
-    href: workflow-api.md
 - name: ハウツー ガイド
   items:
-  - name: モデレート サービスの使用
+  - name: コンテンツの調整
     items:
-    - name: モデレート API
+    - name: REST API
       items:
-      - name: .NET SDK の使用
-        items:
-        - name: ビデオ コンテンツの確認
-          href: video-moderation-api.md
-        - name: イメージをカスタム リストと照合する
-          href: image-lists-quickstart-dotnet.md
-        - name: テキストをカスタム用語と照合する
-          href: term-lists-quickstart-dotnet.md
-      - name: REST API の使用
-        items:
-        - name: イメージ - API コンソール
-          href: try-image-api.md
-        - name: カスタム イメージ - API コンソール
-          href: try-image-list-api.md
-        - name: テキスト - API コンソール
-          href: try-text-api.md
-        - name: カスタム用語 - API コンソール
-          href: try-terms-list-api.md
-  - name: レビュー ツールの使用
+      - name: イメージ - API コンソール
+        href: try-image-api.md
+      - name: カスタム イメージ - API コンソール
+        href: try-image-list-api.md
+      - name: テキスト - API コンソール
+        href: try-text-api.md
+      - name: カスタム用語 - API コンソール
+        href: try-terms-list-api.md
+    - name: .NET SDK
+      items:
+      - name: ビデオ コンテンツの確認
+        href: video-moderation-api.md
+      - name: イメージをカスタム リストと照合する
+        href: image-lists-quickstart-dotnet.md
+      - name: テキストをカスタム用語と照合する
+        href: term-lists-quickstart-dotnet.md
+  - name: レビューの定義と使用
     items:
-    - name: API の確認
-      items:
-      - name: .NET SDK の使用
-        items:
-        - name: ジョブ - .NET
-          href: moderation-jobs-quickstart-dotnet.md
-        - name: レビュー - .NET
-          href: moderation-reviews-quickstart-dotnet.md
-        - name: ビデオのレビュー - .NET
-          href: video-reviews-quickstart-dotnet.md
-        - name: ビデオのトランスクリプトのレビュー - .NET
-          href: video-transcript-reviews-quickstart-dotnet.md
-      - name: REST API の使用
-        items:
-        - name: ジョブ - API コンソール
-          href: try-review-api-job.md
-        - name: レビュー - API コンソール
-          href: try-review-api-review.md
-        - name: ワークフロー - API コンソール
-          href: try-review-api-workflow.md
-    - name: レビュー ツールの概要
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: レビュー ツールの設定
-      href: Review-Tool-User-Guide/Configure.md
-    - name: チームの管理
-      href: Review-Tool-User-Guide/SubTeams.md
-    - name: タグを使用する
-      href: Review-Tool-User-Guide/Tags.md
-    - name: 画像のレビュー
+    - name: レビュー ツール (ブラウザー)
       href: Review-Tool-User-Guide/Review-Moderated-Images.md
-    - name: テキストのレビュー
-      href: Review-Tool-User-Guide/Text-Reviews.md
-    - name: 資格情報を管理する
-      href: Review-Tool-User-Guide/Credentials.md
-    - name: コネクタの使用
-      href: Review-Tool-User-Guide/Connectors.md
-    - name: ワークフローの使用
-      href: Review-Tool-User-Guide/Workflows.md
-    - name: ダッシュボードの表示
-      href: Review-Tool-User-Guide/View-Dashboard.md
-  - name: 最初の Content Moderator アプリ
+    - name: REST API
+      href: try-review-api-review.md
+    - name: .NET SDK
+      href: moderation-reviews-quickstart-dotnet.md
+    - name: ビデオ レビュー (.NET)
+      href: video-reviews-quickstart-dotnet.md
+    - name: ビデオ トランスクリプト レビュー (.NET)
+      href: video-transcript-reviews-quickstart-dotnet.md
+  - name: ワークフローの定義と使用
     items:
-    - name: Facebook のコンテンツ モデレーション
-      href: facebook-post-moderation.md
-    - name: ビデオとトランスクリプトのモデレート
-      href: video-transcript-moderation-review-tutorial-dotnet.md
+    - name: レビュー ツール (ブラウザー)
+      href: Review-Tool-User-Guide/Workflows.md
+    - name: REST API
+      href: try-review-api-workflow.md
+  - name: ジョブの定義と使用
+    items:
+    - name: REST API
+      href: try-review-api-job.md
+    - name: .NET SDK
+      href: moderation-jobs-quickstart-dotnet.md
+  - name: レビュー ツールの構成
+    href: Review-Tool-User-Guide/Configure.md
   - name: アカウント データのエクスポートまたは削除
     href: ./export-delete-data.md
-  - name: Azure ウェビナー シリーズ
-    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
 - name: リファレンス
   items:
   - name: Content Moderator API
@@ -136,10 +114,16 @@ items:
     items:
     - name: .NET SDK のサンプル
       href: samples-dotnet.md
+    - name: Python SDK のサンプル
+      href: https://github.com/Azure-Samples/cognitive-services-python-sdk-samples
+    - name: Node.js SDK のサンプル
+      href: https://github.com/Azure-Samples/cognitive-services-node-sdk-samples
     - name: C# での REST API のサンプル
       href: samples-rest.md
     - name: その他の Azure のサンプル
       href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator
+  - name: Azure ウェビナー シリーズ
+    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
   - name: FAQ
     href: FAQs.md
   - name: 料金と制限
@@ -156,9 +140,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: fa356b96f4b7064c83f28624a678e41e6942d51b
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 8948caa31d1fa464f13295a4dd4c1174b88543f5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742322"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758145"

@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル | Microsoft Docs
 description: Azure PowerShell のサンプル
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ced4cf2270b0c818357cc0eaf1a4d4537031b07
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 3727d2db375847c8df0a96d5721ea3135584eeec
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469590"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976250"
 ---
-# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure PowerShell サンプル
+# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure PowerShell サンプル。
 
 次の表には、Azure PowerShell を使用して構築された Bash スクリプトへのリンクが含まれています。
 
@@ -41,3 +41,6 @@ ms.locfileid: "49469590"
 | [単一ゾーン スケール セットを作成する](scripts/powershell-sample-single-availability-zone-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | 単一の可用性ゾーンを使用する仮想マシン スケールを作成します。 |
 | [ゾーン冗長スケール セットを作成する](scripts/powershell-sample-zone-redundant-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | 複数の可用性ゾーンにわたる仮想マシン スケールを作成します。 |
 | | |
+
+
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]    

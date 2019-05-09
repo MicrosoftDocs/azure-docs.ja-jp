@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 28c8ca5a81f76e10e7c8b84897f77702ee68cdc0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434394"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234799"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor のカスタム ログ
 Azure Monitor のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。 収集されたデータは、クエリで解析して個別のフィールドに格納するか、または収集時に個別のフィールドに抽出することができます。
@@ -42,13 +42,21 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 > アプリケーションが、毎日新しいログ ファイルを作成する場合や、一定のサイズに達する場合、Linux 用の Log Analytics エージェントは再起動されるまでそれらを検出しません。 これは、エージェントは起動時に、指定されたログを使用して、パターンを列挙して監視を開始するだけであるためです。これが理由で、エージェントの再起動を自動化することでこれに関する計画を立てる必要があります。  この制限は、Windows 用の Log Analytics エージェントには存在しません。  
 >
 
+>[!NOTE]
+> Log Analytics ワークスペースでのサポートには次の制限があります。
+> 
+> * 作成できるカスタム ログの数は 500 個のみです。
+> * テーブルでサポートされる最大列数は 500 列のみです。 
+> * 列名の最大文字数は 500 です。 
+>
+
 ## <a name="defining-a-custom-log"></a>カスタム ログを定義する
 次の手順でカスタム ログ ファイルを定義できます。  この記事の最後にカスタム ログ追加のサンプル チュートリアルがあります。
 
 ### <a name="step-1-open-the-custom-log-wizard"></a>手順 1. カスタム ログ ウィザードを開く
 カスタム ログ ウィザードは Azure Portal で実行され、収集する新しいカスタム ログを定義できます。
 
-1. Azure Portal で、**[Log Analytics]**、目的のワークスペース、**[詳細設定]** の順に選択します。
+1. Azure portal で、**[Log Analytics ワークスペース]**、目的のワークスペース、**[詳細設定]** の順に選択します。
 2. **[データ]** > **[カスタム ログ]** をクリックします。
 3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスのチェックを外します。
 4. **[追加+]** をクリックし、カスタム ログ ウィザードを開きます。
@@ -123,7 +131,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ## <a name="custom-log-record-properties"></a>カスタム ログ レコードのプロパティ
 カスタム ログ レコードには、種類、ユーザーが指定するログ名、次の表にあるプロパティが与えられます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | TimeGenerated |Azure Monitor がレコードを収集した日付と時刻。  ログが時間基準の区切り記号を使用する場合、これはエントリから収集された時間になります。 |
 | SourceSystem |レコードが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または System Center Operations Manager <br> Linux – すべての Linux エージェント |
@@ -164,6 +172,18 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 カスタム フィールドを利用し、*EventTime*、*Code*、*Status*、*Message* フィールドを定義します。クエリにより返されるレコードの違いがわかります。
 
 ![カスタム フィールドのあるログ クエリ](media/data-sources-custom-logs/query-02.png)
+
+## <a name="alternatives-to-custom-logs"></a>カスタム ログの代替手段
+上記の条件をデータが満たす場合はカスタム ログが便利ですが、次のような状況で別の方法が必要になることがあります。
+
+- タイムスタンプの形式が異なるなど、求められる構造にデータが適していない。
+- ファイル エンコードや非対応のフォルダー構造などの要件をログ ファイルが満たさない。
+- データの収集前に事前処理やフィルター処理が必要である。 
+
+カスタム ログではデータを収集できない場合、次の代替手段を検討してください。
+
+- カスタム スクリプトまたはその他の手法を使用し、Azure Monitor によって収集される [Windows イベント](data-sources-windows-events.md)または [Syslog](data-sources-syslog.md) にデータを書き込む。 
+- [HTTP Data Collector API](data-collector-api.md) を使用して Azure Monitor に直接データを送信する。 Azure Automation で Runbook を使用する例は、[Azure Automation の Runbook を使用して Azure Monitor でログ データを収集する](runbook-datacollect.md)ことに関するページに記載されています。
 
 ## <a name="next-steps"></a>次の手順
 * インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。

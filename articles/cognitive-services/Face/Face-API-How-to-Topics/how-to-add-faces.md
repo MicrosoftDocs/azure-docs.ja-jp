@@ -1,29 +1,29 @@
 ---
-title: '例: 顔を追加する - Face API'
+title: 例:顔を追加する - Face API
 titleSuffix: Azure Cognitive Services
 description: Face API を使用して画像に顔を追加します。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 722a09b782c902642b599460835151928c16c5f4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125104"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859030"
 ---
-# <a name="example-how-to-add-faces"></a>例: 顔を追加する方法
+# <a name="example-how-to-add-faces"></a>例:顔を追加する方法
 
 このガイドでは、PersonGroup に膨大な数の人と顔を追加するベスト プラクティスを説明します。
 同じ戦略が FaceList と LargePersonGroup にも適用されます。
 サンプルは Face API クライアント ライブラリを使用して C# で記述されています。
 
-## <a name="step-1-initialization"></a>手順 1: 初期化
+## <a name="step-1-initialization"></a>手順 1:初期化する
 
 いくつかの変数を宣言し、ヘルパー関数を実装して要求をスケジュール設定します。
 
@@ -60,7 +60,7 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>手順 2: API 呼び出しを承認する
+## <a name="step-2-authorize-the-api-call"></a>手順 2:API 呼び出しを承認する
 
 クライアント ライブラリを使用するとき、サブスクリプション キーが FaceServiceClient クラスのコンストラクターを介して渡されます。 例: 
 
@@ -70,7 +70,7 @@ FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>"
 
 サブスクリプション キーは、Azure Poral の [Marketplace] ページから入手できます。 [サブスクリプション](https://www.microsoft.com/cognitive-services/en-us/sign-up)に関するページを参照してください。
 
-## <a name="step-3-create-the-persongroup"></a>手順 3: PersonGroup を作成する
+## <a name="step-3-create-the-persongroup"></a>手順 3:PersonGroup を作成する
 
 人を保存するために "MyPersonGroup" という名前の PersonGroup を作成します。
 要求時間が `_timeStampQueue` にエンキューされ、全体的な検証が保証されます。
@@ -82,7 +82,7 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-to-the-persongroup"></a>手順 4: PersonGroup に対して人を作成する
+## <a name="step-4-create-the-persons-to-the-persongroup"></a>手順 4:PersonGroup に対して人を作成する
 
 複数の人を同時に作成します。また、`await WaitCallLimitPerSecondAsync()` を適用して、呼び出し制限を超えないようにします。
 
@@ -97,7 +97,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step-5-add-faces-to-the-persons"></a>手順 5: 顔を人に追加する
+## <a name="step-5-add-faces-to-the-persons"></a>手順 5:顔を人に追加する
 
 さまざまな人への顔の追加は同時に処理されますが、特定の 1 人については順次処理されます。
 ここでも、`await WaitCallLimitPerSecondAsync()` を呼び出して、要求の頻度が制限範囲内になるようにします。

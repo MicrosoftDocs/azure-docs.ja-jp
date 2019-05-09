@@ -1,28 +1,28 @@
 ---
 title: Azure Cosmos DB での SQL 言語の構文
 description: この記事では、Azure Cosmos DB で使用される SQL クエリ言語の構文、およびこの言語で使用できるさまざまな演算子とキーワードについて説明します。
-author: LalithaMV
+author: markjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.topic: reference
-ms.date: 12/07/2018
-ms.author: laviswa
+ms.subservice: cosmosdb-sql
+ms.topic: conceptual
+ms.date: 03/31/2019
+ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: eec3846319a93e94ca362d9ef6815a73d0ca958a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142509"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59283649"
 ---
-# <a name="azure-cosmos-db-sql-language-reference"></a>Azure Cosmos DB SQL 言語リファレンス 
+# <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB 用の SQL 言語リファレンス 
 
-Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデックスの作成を必要とせずに、階層型 JSON ドキュメントに対する文法などの使い慣れた SQL (構造化照会言語) を使用したドキュメンのクエリ実行をサポートします。 この記事では、SQL クエリ言語の構文のドキュメントを提供します。これは、SQL API アカウントと互換性があります。 SQL クエリの例のチュートリアルについては、[Cosmos DB の SQL クエリ](how-to-sql-query.md)に関するページを参照してください。  
+Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデックスの作成を必要とせずに、階層型 JSON ドキュメントに対する文法などの使い慣れた SQL (構造化照会言語) を使用したドキュメンのクエリ実行をサポートします。 この記事では、SQL API アカウントで使用される SQL クエリ言語の構文に関するドキュメントを提供します。 SQL クエリの例のチュートリアルについては、[Cosmos DB の SQL クエリの例](how-to-sql-query.md)に関するページを参照してください。  
   
-[Query Playground](https://www.documentdb.com/sql/demo) にアクセスして、Cosmos DB を試したり、データセットに対して SQL クエリを実行したりできます。  
+[Query Playground](https://www.documentdb.com/sql/demo) にアクセスすると、Cosmos DB を試したり、サンプル データセットに対して SQL クエリを実行したりできます。  
   
 ## <a name="select-query"></a>SELECT クエリ  
-すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。 通常は、各クエリで FROM 句のソースが列挙されます。 次に WHERE 句のフィルターがソースに適用され、JSON ドキュメントのサブセットが取得されます。 最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。 SELECT ステートメントを記述するために使用される規則については、「構文表記規則」セクションの表を参照してください。 例については、[SELECT クエリの例](how-to-sql-query.md#SelectClause)を参照してください。
+すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。 通常、各クエリでは、FROM 句のソースが列挙された後、JSON ドキュメントのサブセットを取得するためにそのソースに WHERE 句のフィルターが適用されます。 最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。 例については、[SELECT クエリの例](how-to-sql-query.md#SelectClause)を参照してください。
   
 **構文**  
   
@@ -218,11 +218,11 @@ FROM <from_specification>
   
 結合の評価は、参加しているセットのコンテキストのスコープによって異なります。  
   
--  コンテナー セット A とコンテナー スコープ セット B の間の結合の結果は、A と B のセットのすべての要素のクロス積になります。
+- コンテナー セット A とコンテナー スコープ セット B の間の結合の結果は、A と B のセットのすべての要素のクロス積になります。
   
--   セット A とドキュメント スコープ セット B の間の結合の結果は、セット Aの各ドキュメントの スコープ セット B を評価することによって取得されたすべてのセットの和集合になります。  
+- セット A とドキュメント スコープ セット B の間の結合の結果は、セット Aの各ドキュメントの スコープ セット B を評価することによって取得されたすべてのセットの和集合になります。  
   
- 現在のリリースでは、最大で 1 つのコンテナー スコープ式が、クエリ プロセッサによってサポートされています。  
+  現在のリリースでは、最大で 1 つのコンテナー スコープ式が、クエリ プロセッサによってサポートされています。  
   
 ### <a name="examples-of-joins"></a>結合の例  
   
@@ -321,17 +321,17 @@ WHERE <filter_condition>
   
  **引数**  
   
--   `<filter_condition>`  
+- `<filter_condition>`  
   
-     返されるドキュメントが満たす条件を指定します。  
+   返されるドキュメントが満たす条件を指定します。  
   
--   `<scalar_expression>`  
+- `<scalar_expression>`  
   
-     計算する値を表す式。 詳細については、「[スカラー式](#bk_scalar_expressions)」セクションを参照してください。  
+   計算する値を表す式。 詳細については、「[スカラー式](#bk_scalar_expressions)」セクションを参照してください。  
   
- **解説**  
+  **解説**  
   
- ドキュメントが返されるには、フィルター条件として指定された式が true に評価される必要があります。 ブール値 true のみがその条件を満たし、他の値 (undefined、null、false、数字、配列、またはオブジェクト) は条件を満たしません。  
+  ドキュメントが返されるには、フィルター条件として指定された式が true に評価される必要があります。 ブール値 true のみがその条件を満たし、他の値 (undefined、null、false、数字、配列、またはオブジェクト) は条件を満たしません。  
   
 ##  <a name="bk_orderby_clause"></a>ORDER BY 句  
  クエリによって返される結果の並べ替え順序を指定します。 例については、[ORDER BY 句の例](how-to-sql-query.md#OrderByClause)を参照してください。
@@ -347,29 +347,29 @@ ORDER BY <sort_specification>
   
  **引数**  
   
--   `<sort_specification>`  
+- `<sort_specification>`  
   
-     クエリの結果セットの並べ替えの条件にするプロパティまたは式を指定します。 並べ替え列は、名前または列の別名として指定できます。  
+   クエリの結果セットの並べ替えの条件にするプロパティまたは式を指定します。 並べ替え列は、名前または列の別名として指定できます。  
   
-     複数の並べ替え列を指定することができます。 列名は一意である必要があります。 ORDER BY 句の並べ替え列の順序は、並べ替えられた結果セットの構成を定義します。 つまり、結果セットは最初のプロパティで並べ替えられ、その並べ替えられたリストが 2 番目のプロパティで並べ替えられ、以下同様に続きます。  
+   複数の並べ替え列を指定することができます。 列名は一意である必要があります。 ORDER BY 句の並べ替え列の順序は、並べ替えられた結果セットの構成を定義します。 つまり、結果セットは最初のプロパティで並べ替えられ、その並べ替えられたリストが 2 番目のプロパティで並べ替えられ、以下同様に続きます。  
   
-     ORDER BY 句で参照される列名は、選択リスト内の列にまたはあいまいさのない FROM 句で指定されたテーブルで定義されている列に対応する必要があります。  
+   ORDER BY 句で参照される列名は、選択リスト内の列にまたはあいまいさのない FROM 句で指定されたテーブルで定義されている列に対応する必要があります。  
   
--   `<sort_expression>`  
+- `<sort_expression>`  
   
-     クエリの結果セットの並べ替えの条件にする 1 つのプロパティまたは式を指定します。  
+   クエリの結果セットの並べ替えの条件にする 1 つのプロパティまたは式を指定します。  
   
--   `<scalar_expression>`  
+- `<scalar_expression>`  
   
-     詳細については、「[スカラー式](#bk_scalar_expressions)」セクションを参照してください。  
+   詳細については、「[スカラー式](#bk_scalar_expressions)」セクションを参照してください。  
   
--   `ASC | DESC`  
+- `ASC | DESC`  
   
-     指定された列の値を昇順または降順で並べ替える必要があることを指定します。 ASC は、最小値から最大値に並べ替えられます。 DESC は、最大値から最小値に並べ替えられます。 既定の並べ替え順は ASC です。 NULL 値は、有効な最小値として扱われます。  
+   指定された列の値を昇順または降順で並べ替える必要があることを指定します。 ASC は、最小値から最大値に並べ替えられます。 DESC は、最大値から最小値に並べ替えられます。 既定の並べ替え順は ASC です。 NULL 値は、有効な最小値として扱われます。  
   
- **解説**  
+  **解説**  
   
- クエリ文法では、複数のプロパティによる並べ替えがサポートされますが、Cosmos DB クエリ ランタイムでは、1 つのプロパティに対する並べ替えのみがサポートされ、プロパティ名のみが対象となります (計算されるプロパティは対象になりません)。 並べ替えではまた、インデックス作成ポリシーが、プロパティの範囲インデックス、指定された型、および最大有効桁数を含んでいる必要があります。 詳細については、インデックス作成ポリシーに関するドキュメントを参照してください。  
+  クエリ文法では、複数のプロパティによる並べ替えがサポートされますが、Cosmos DB クエリ ランタイムでは、1 つのプロパティに対する並べ替えのみがサポートされ、プロパティ名のみが対象となります (計算されるプロパティは対象になりません)。 並べ替えではまた、インデックス作成ポリシーが、プロパティの範囲インデックス、指定された型、および最大有効桁数を含んでいる必要があります。 詳細については、インデックス作成ポリシーに関するドキュメントを参照してください。  
   
 ##  <a name="bk_scalar_expressions"></a>スカラー式  
  スカラー式は、1 つの値を取得するために評価できるシンボルと演算子の組み合わせです。 単純式には、定数、プロパティの参照、配列要素の参照、別名の参照、または関数の呼び出しを指定できます。 単純式は、演算子を使用して複雑な式に結合できます。 例については、[スカラー式の例](how-to-sql-query.md#scalar-expressions)を参照してください。
@@ -407,62 +407,62 @@ ORDER BY <sort_specification>
   
  **引数**  
   
--   `<constant>`  
+- `<constant>`  
   
-     定数値を表します。 詳細については、「[定数](#bk_constants)」セクションを参照してください。  
+   定数値を表します。 詳細については、「[定数](#bk_constants)」セクションを参照してください。  
   
--   `input_alias`  
+- `input_alias`  
   
-     `FROM` 句によって導入された `input_alias` で定義された値を表します。  
-    この値は、**undefined** ではないことが保証されます。入力内の **undefined** 値はスキップされます。  
+   `FROM` 句によって導入された `input_alias` で定義された値を表します。  
+  この値は、**undefined** ではないことが保証されます。入力内の **undefined** 値はスキップされます。  
   
--   `<scalar_expression>.property_name`  
+- `<scalar_expression>.property_name`  
   
-     オブジェクトのプロパティの値を表します。 プロパティが存在しない場合、またはプロパティがオブジェクトではない値で参照されている場合、式は **undefined** 値として評価されます。  
+   オブジェクトのプロパティの値を表します。 プロパティが存在しない場合、またはプロパティがオブジェクトではない値で参照されている場合、式は **undefined** 値として評価されます。  
   
--   `<scalar_expression>'['"property_name"|array_index']'`  
+- `<scalar_expression>'['"property_name"|array_index']'`  
   
-     名前 `property_name` を持つプロパティの値、またはオブジェクト/配列のインデックス `array_index` を持つ配列要素を表します。 プロパティ/配列インデックスが存在しない場合、またはプロパティ/配列インデックスがオブジェクト/配列ではない値で参照されている場合、式は undefined 値として評価されます。  
+   名前 `property_name` を持つプロパティの値、またはオブジェクト/配列のインデックス `array_index` を持つ配列要素を表します。 プロパティ/配列インデックスが存在しない場合、またはプロパティ/配列インデックスがオブジェクト/配列ではない値で参照されている場合、式は undefined 値として評価されます。  
   
--   `unary_operator <scalar_expression>`  
+- `unary_operator <scalar_expression>`  
   
-     1 つの値に適用される演算子を表します。 詳細については、「[演算子](#bk_operators)」セクションを参照してください。  
+   1 つの値に適用される演算子を表します。 詳細については、「[演算子](#bk_operators)」セクションを参照してください。  
   
--   `<scalar_expression> binary_operator <scalar_expression>`  
+- `<scalar_expression> binary_operator <scalar_expression>`  
   
-     2 つの値に適用される演算子を表します。 詳細については、「[演算子](#bk_operators)」セクションを参照してください。  
+   2 つの値に適用される演算子を表します。 詳細については、「[演算子](#bk_operators)」セクションを参照してください。  
   
--   `<scalar_function_expression>`  
+- `<scalar_function_expression>`  
   
-     関数呼び出しの結果によって定義された値を表します。  
+   関数呼び出しの結果によって定義された値を表します。  
   
--   `udf_scalar_function`  
+- `udf_scalar_function`  
   
-     ユーザー定義のスカラー関数の名前です。  
+   ユーザー定義のスカラー関数の名前です。  
   
--   `builtin_scalar_function`  
+- `builtin_scalar_function`  
   
-     組み込みのスカラー関数の名前です。  
+   組み込みのスカラー関数の名前です。  
   
--   `<create_object_expression>`  
+- `<create_object_expression>`  
   
-     指定したプロパティとその値で新しいオブジェクトを作成することによって取得される値を表します。  
+   指定したプロパティとその値で新しいオブジェクトを作成することによって取得される値を表します。  
   
--   `<create_array_expression>`  
+- `<create_array_expression>`  
   
-     指定した値を要素として新しい配列を作成することによって取得される値を表します。  
+   指定した値を要素として新しい配列を作成することによって取得される値を表します。  
   
--   `parameter_name`  
+- `parameter_name`  
   
-     指定したパラメーターの値を表します。 パラメーター名は、最初の文字として 1 つの \@ を使用する必要があります。  
+   指定したパラメーターの値を表します。 パラメーター名は、最初の文字として 1 つの \@ を使用する必要があります。  
   
- **解説**  
+  **解説**  
   
- 組み込みまたはユーザー定義のスカラー関数を呼び出すときには、すべての引数を定義する必要があります。 引数のいずれかが定義されていない場合、関数は呼び出されず、結果は未定義になります。  
+  組み込みまたはユーザー定義のスカラー関数を呼び出すときには、すべての引数を定義する必要があります。 引数のいずれかが定義されていない場合、関数は呼び出されず、結果は未定義になります。  
   
- オブジェクトを作成するときに、未定義の値が割り当てられているプロパティはすべてスキップされ、作成されたオブジェクトに含まれません。  
+  オブジェクトを作成するときに、未定義の値が割り当てられているプロパティはすべてスキップされ、作成されたオブジェクトに含まれません。  
   
- 配列を作成するときに、**undefined** 値が割り当てられている要素値はすべてスキップされ、作成されたオブジェクトに含まれません。 この場合、作成される配列にスキップされたインデックスが含まれないようにするために、次の定義済みの要素が代わりに使用されます。  
+  配列を作成するときに、**undefined** 値が割り当てられている要素値はすべてスキップされ、作成されたオブジェクトに含まれません。 この場合、作成される配列にスキップされたインデックスが含まれないようにするために、次の定義済みの要素が代わりに使用されます。  
   
 ##  <a name="bk_operators"></a>演算子  
  このセクションでは、サポートされている演算子について説明します。 各演算子は、正確に 1 つのカテゴリに割り当てることができます。  
@@ -481,7 +481,7 @@ ORDER BY <sort_specification>
   
  **単項演算子**  
   
-|**名前**|**演算子**|**詳細**|  
+|**Name**|**演算子**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -|数値を返します。<br /><br /> ビットごとの否定。 否定された数値を返します。|  
 |**ビット演算子**|~|1 の補数。 数値の補数を返します。|  
@@ -489,26 +489,28 @@ ORDER BY <sort_specification>
   
  **二項演算子:**  
   
-|**名前**|**演算子**|**詳細**|  
+|**Name**|**演算子**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加算。<br /><br /> 減算。<br /><br /> 乗算。<br /><br /> 除算。<br /><br /> 比率。|  
 |**ビット演算子**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|ビット演算子 OR。<br /><br /> ビット演算子 AND。<br /><br /> ビット演算子 XOR。<br /><br /> 左シフト。<br /><br /> 右シフト。<br /><br /> 0 埋め右シフト。|  
-|**論理**|**AND**<br /><br /> **OR**|論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。|  
+|**論理**|**AND**<br /><br /> **OR**|論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 論理和。 いずれかの引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。|  
 |**比較**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|等しい。 両方の引数が等しい場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 等しくない。 両方の引数が等しくない場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> より大きい。 1 番目の引数が 2 番目の引数より大きい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以上。 1 番目の引数が 2 番目の引数以上の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> より小さい。 1 番目の引数が 2 番目の引数より小さい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以下。 1 番目の引数が 2 番目の引数以下の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 結合。 最初の引数が **undefined** 値である場合、2 番目の引数を返します。|  
 |**文字列**|**&#124;&#124;**|連結。 両方の引数の連結を返します。|  
   
  **三項演算子:**  
-  
-|三項演算子|?|最初の引数が **true** に評価された場合、2 番目の引数を返します。それ以外の場合、3 番目の引数を返します。|  
+
+|**Name**|**演算子**|**詳細**| 
 |-|-|-|  
+|三項演算子|?|最初の引数が **true** に評価された場合、2 番目の引数を返します。それ以外の場合、3 番目の引数を返します。|  
+
   
  **比較の値の順序付け**  
   
-|**種類**|**値の順序**|  
+|**Type**|**値の順序**|  
 |-|-|  
 |**Undefined**|比較できません。|  
 |**Null**|単一の値: **Null**|  
-|**数値**|実数。<br /><br /> 負の無限大の値は、他のどの数値よりも小さくなります。<br /><br /> 正の無限大の値は、他のどの数値よりも大きくなります。**NaN** 値は比較できません。 **NaN** と比較すると、結果は **undefined** 値になります。|  
+|**Number**|実数。<br /><br /> 負の無限大の値は、他のどの数値よりも小さくなります。<br /><br /> 正の無限大の値は、他のどの数値よりも大きくなります。**NaN** 値は比較できません。 **NaN** と比較すると、結果は **undefined** 値になります。|  
 |**文字列**|辞書の順序。|  
 |**Array**|順序付けがなく平等に扱われます。|  
 |**Object**|順序付けがなく平等に扱われます。|  
@@ -532,12 +534,12 @@ ORDER BY <sort_specification>
   
  **サポートされるスカラー データ型:**  
   
-|**種類**|**値の順序**|  
+|**Type**|**値の順序**|  
 |-|-|  
 |**Undefined**|単一の値: **undefined**|  
 |**Null**|単一の値: **Null**|  
 |**Boolean**|値: **false**、**true**。|  
-|**数値**|倍精度浮動小数点数、IEEE 754 標準。|  
+|**Number**|倍精度浮動小数点数、IEEE 754 標準。|  
 |**String**|0 個以上の Unicode 文字のシーケンス。 文字列は、一重引用符または二重引用符で囲む必要があります。|  
 |**Array**|0 個以上の要素のシーケンス。 各要素には、Undefined を除く、任意のスカラー データ型の値を指定できます。|  
 |**Object**|0 個以上の名前/値ペアの順序なしのセット。 名前は Unicode 文字列で、値は **Undefined** 以外の任意のスカラー データ型を指定できます。|  
@@ -614,13 +616,13 @@ ORDER BY <sort_specification>
   
   文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符 (アポストロフィ: ') または二重引用符 (引用符:") で囲みます。  
   
- 次のエスケープ シーケンスを使用できます。  
+  次のエスケープ シーケンスを使用できます。  
   
 |**エスケープ シーケンス**|**説明**|**Unicode 文字**|  
 |-|-|-|  
 |\\'|アポストロフィ (')|U+0027|  
 |\\"|引用符 (")|U+0022|  
-|\\\|逆斜線 (\\)|U+005C|  
+|\\\ |逆斜線 (\\)|U+005C|  
 |\\/|斜線 (/)|U+002F|  
 |\b|バックスペース|U+0008|  
 |\f|フォーム フィード|U+000C|  
@@ -634,17 +636,17 @@ ORDER BY <sort_specification>
   
  インデックスの検索では、次のフィルターを検討できます。  
   
--   ドキュメント パス式および定数を含む等値演算子 (=) を使用します。  
+- ドキュメント パス式および定数を含む等値演算子 (=) を使用します。  
   
--   ドキュメント パス式および定数を含む範囲演算子 (<、\<=、>、>=) を使用します。  
+- ドキュメント パス式および定数を含む範囲演算子 (<、\<=、>、>=) を使用します。  
   
--   ドキュメント パス式は、参照先のデータベース コンテナーからドキュメント内の定数のパスを識別する任意の式を表します。  
+- ドキュメント パス式は、参照先のデータベース コンテナーからドキュメント内の定数のパスを識別する任意の式を表します。  
   
- **ドキュメント パス式**  
+  **ドキュメント パス式**  
   
- ドキュメント パス式は、データべース コンテナー ドキュメントから取得されるドキュメントのプロパティまたは配列インデクサー評価機能のパスの式です。 このパスは、データベース コンテナーのドキュメント内で、直接フィルターで参照されている値の場所を識別するために使用されます。  
+  ドキュメント パス式は、データべース コンテナー ドキュメントから取得されるドキュメントのプロパティまたは配列インデクサー評価機能のパスの式です。 このパスは、データベース コンテナーのドキュメント内で、直接フィルターで参照されている値の場所を識別するために使用されます。  
   
- 式がドキュメント パス式と見なされるには、次の条件を満たしている必要があります。  
+  式がドキュメント パス式と見なされるには、次の条件を満たしている必要があります。  
   
 1.  コンテナーのルートを直接参照する。  
   
@@ -674,7 +676,7 @@ ORDER BY <sort_specification>
 ##  <a name="bk_built_in_functions"></a>組み込み関数  
  Cosmos DB は、多くの組み込み SQL 関数を提供します。 組み込み関数のカテゴリは次のとおりです。  
   
-|関数|説明|  
+|Function|説明|  
 |--------------|-----------------|  
 |[数学関数](#bk_mathematical_functions)|一般に、各数学関数は、引数として提供された入力値に基づいて計算を実行し、数値を返します。|  
 |[型チェック関数](#bk_type_checking_functions)|型チェック関数を使用すると、SQL クエリ内の式の型をチェックできます。|  
@@ -707,26 +709,26 @@ ABS (<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、次の 3 つの異なる数値に対して ABS 関数を使用した結果を示しています。  
+  次の例は、次の 3 つの異なる数値に対して ABS 関数を使用した結果を示しています。  
   
 ```  
-SELECT ABS(-1), ABS(0), ABS(1)  
+SELECT ABS(-1) AS abs1, ABS(0) AS abs2, ABS(1) AS abs3 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 1, $2: 0, $3: 1}]  
+[{abs1: 1, abs2: 0, abs3: 1}]  
 ```  
   
 ####  <a name="bk_acos"></a> ACOS  
@@ -740,26 +742,26 @@ ACOS(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、-1 の ACOS を返します。  
+  次の例は、-1 の ACOS を返します。  
   
 ```  
-SELECT ACOS(-1)  
+SELECT ACOS(-1) AS acos 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 3.1415926535897931}]  
+[{"acos": 3.1415926535897931}]  
 ```  
   
 ####  <a name="bk_asin"></a> ASIN  
@@ -773,26 +775,26 @@ ASIN(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、-1 の ASIN を返します。  
+  次の例は、-1 の ASIN を返します。  
   
 ```  
-SELECT ASIN(-1)  
+SELECT ASIN(-1) AS asin  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": -1.5707963267948966}]  
+[{"asin": -1.5707963267948966}]  
 ```  
   
 ####  <a name="bk_atan"></a> ATAN  
@@ -806,26 +808,26 @@ ATAN(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、指定した値の ATAN を返します。  
+  次の例では、指定した値の ATAN を返します。  
   
 ```  
-SELECT ATAN(-45.01)  
+SELECT ATAN(-45.01) AS atan  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": -1.5485826962062663}]  
+[{"atan": -1.5485826962062663}]  
 ```  
   
 ####  <a name="bk_atn2"></a> ATN2  
@@ -839,26 +841,26 @@ ATN2(<numeric_expression>, <numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、指定された x と y コンポーネントの ATN2 を計算します。  
+  次の例は、指定された x と y コンポーネントの ATN2 を計算します。  
   
 ```  
-SELECT ATN2(35.175643, 129.44)  
+SELECT ATN2(35.175643, 129.44) AS atn2  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 1.3054517947300646}]  
+[{"atn2": 1.3054517947300646}]  
 ```  
   
 ####  <a name="bk_ceiling"></a> CEILING  
@@ -872,26 +874,26 @@ CEILING (<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、CEILING 関数を使用して、正の数値、負の数値、およびゼロ値を示します。  
+  次の例では、CEILING 関数を使用して、正の数値、負の数値、およびゼロ値を示します。  
   
 ```  
-SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)  
+SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 124, $2: -123, $3: 0}]  
+[{c1: 124, c2: -123, c3: 0}]  
 ```  
   
 ####  <a name="bk_cos"></a> COS  
@@ -905,26 +907,26 @@ COS(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、指定された角度の COS を計算します。  
+  次の例では、指定された角度の COS を計算します。  
   
 ```  
-SELECT COS(14.78)  
+SELECT COS(14.78) AS cos  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": -0.59946542619465426}]  
+[{"cos": -0.59946542619465426}]  
 ```  
   
 ####  <a name="bk_cot"></a> COT  
@@ -938,26 +940,26 @@ COT(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、指定された角度の COT を計算します。  
+  次の例では、指定された角度の COT を計算します。  
   
 ```  
-SELECT COT(124.1332)  
+SELECT COT(124.1332) AS cot  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": -0.040311998371148884}]  
+[{"cot": -0.040311998371148884}]  
 ```  
   
 ####  <a name="bk_degrees"></a> DEGREES  
@@ -971,26 +973,26 @@ DEGREES (<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、PI/2 ラジアンの角度で度数を返します。  
+  次の例では、PI/2 ラジアンの角度で度数を返します。  
   
 ```  
-SELECT DEGREES(PI()/2)  
+SELECT DEGREES(PI()/2) AS degrees  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 90}]  
+[{"degrees": 90}]  
 ```  
   
 ####  <a name="bk_floor"></a> FLOOR  
@@ -1004,26 +1006,26 @@ FLOOR (<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、FLOOR 関数を使用して、正の数値、負の数値、およびゼロ値を示します。  
+  次の例では、FLOOR 関数を使用して、正の数値、負の数値、およびゼロ値を示します。  
   
 ```  
-SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR(0.0)  
+SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 123, $2: -124, $3: 0}]  
+[{fl1: 123, fl2: -124, fl3: 0}]  
 ```  
   
 ####  <a name="bk_exp"></a> EXP  
@@ -1037,46 +1039,46 @@ EXP (<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **解説**  
+  **解説**  
   
- 定数 **e** (2.718281...) は、自然対数の底です。  
+  定数 **e** (2.718281...) は、自然対数の底です。  
   
- 数値の指数は、定数 **e** のべき乗された数値です。 たとえば、EXP(1.0) = e^1.0 = 2.71828182845905 および EXP(10) = e^10 = 22026.4657948067 になります。  
+  数値の指数は、定数 **e** のべき乗された数値です。 たとえば、EXP(1.0) = e^1.0 = 2.71828182845905 および EXP(10) = e^10 = 22026.4657948067 になります。  
   
- 数値の自然対数の指数は数自体です:EXP (LOG (n)) = n。 数値の指数の自然対数は数自体です:LOG (EXP (n)) = n。  
+  数値の自然対数の指数は数自体です:EXP (LOG (n)) = n。 数値の指数の自然対数は数自体です:LOG (EXP (n)) = n。  
   
- **例**  
+  **例**  
   
- 次の例では、変数を宣言し、指定した変数 (10) の指数値を返します。  
+  次の例では、変数を宣言し、指定した変数 (10) の指数値を返します。  
   
 ```  
-SELECT EXP(10)  
+SELECT EXP(10) AS exp  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 22026.465794806718}]  
+[{exp: 22026.465794806718}]  
 ```  
   
  次の例では、自然対数 20 の指数値、および指数 20 の自然対数を返します。 これらの関数は互いの逆関数であるため、どちらの場合も浮動小数点計算に丸めを適用した戻り値は 20 です。  
   
 ```  
-SELECT EXP(LOG(20)), LOG(EXP(20))  
+SELECT EXP(LOG(20)) AS exp1, LOG(EXP(20)) AS exp2  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 19.999999999999996, $2: 20}]  
+[{exp1: 19.999999999999996, exp2: 20}]  
 ```  
   
 ####  <a name="bk_log"></a> LOG  
@@ -1090,50 +1092,50 @@ LOG (<numeric_expression> [, <base>])
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
--   `base`  
+- `base`  
   
-     対数の底を設定する省略可能な数値引数。  
+   対数の底を設定する省略可能な数値引数。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **解説**  
+  **解説**  
   
- 既定では、LOG() は自然対数を返します。 省略可能な底パラメーターを使用して、対数の底を別の値に変更できます。  
+  既定では、LOG() は自然対数を返します。 省略可能な底パラメーターを使用して、対数の底を別の値に変更できます。  
   
- 自然対数は、底 **e** に対する自然対数です。ここで、**e** は、2.718281828 にほぼ等しい無理定数です。  
+  自然対数は、底 **e** に対する自然対数です。ここで、**e** は、2.718281828 にほぼ等しい無理定数です。  
   
- 数値の指数の自然対数は数自体です:LOG( EXP( n ) ) = n。 数値の自然対数の指数は数自体です:EXP( LOG( n ) ) = n。  
+  数値の指数の自然対数は数自体です:LOG( EXP( n ) ) = n。 数値の自然対数の指数は数自体です:EXP( LOG( n ) ) = n。  
   
- **例**  
+  **例**  
   
- 次の例では、変数を宣言し、指定した変数 (10) の対数値を返します。  
+  次の例では、変数を宣言し、指定した変数 (10) の対数値を返します。  
   
 ```  
-SELECT LOG(10)  
+SELECT LOG(10) AS log  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 2.3025850929940459}]  
+[{log: 2.3025850929940459}]  
 ```  
   
  次の例では、数値の指数の LOG を計算します。  
   
 ```  
-SELECT EXP(LOG(10))  
+SELECT EXP(LOG(10)) AS expLog  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 10.000000000000002}]  
+[{expLog: 10.000000000000002}]  
 ```  
   
 ####  <a name="bk_log10"></a> LOG10  
@@ -1147,30 +1149,30 @@ LOG10 (<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **解説**  
+  **解説**  
   
- LOG10 関数と POWER 関数は、互いに逆の関係になります。 たとえば、10 ^ log10 (n) = n になります。  
+  LOG10 関数と POWER 関数は、互いに逆の関係になります。 たとえば、10 ^ log10 (n) = n になります。  
   
- **例**  
+  **例**  
   
- 次の例では、変数を宣言し、指定した変数 (100) の LOG10 値を返します。  
+  次の例では、変数を宣言し、指定した変数 (100) の LOG10 値を返します。  
   
 ```  
-SELECT LOG10(100)  
+SELECT LOG10(100) AS log10 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 2}]  
+[{log10: 2}]  
 ```  
   
 ####  <a name="bk_pi"></a> PI  
@@ -1184,26 +1186,26 @@ PI ()
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、PI の値を返します。  
+  次の例は、PI の値を返します。  
   
 ```  
-SELECT PI()  
+SELECT PI() AS pi 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 3.1415926535897931}]  
+[{"pi": 3.1415926535897931}]  
 ```  
   
 ####  <a name="bk_power"></a> POWER  
@@ -1217,30 +1219,30 @@ POWER (<numeric_expression>, <y>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
--   `y`  
+- `y`  
   
-     `numeric_expression` のべき乗です。  
+   `numeric_expression` のべき乗です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、数値の 3 (数のキューブ) のべき乗数を示します。  
+  次の例では、数値の 3 (数のキューブ) のべき乗数を示します。  
   
 ```  
-SELECT POWER(2, 3), POWER(2.5, 3)  
+SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 8, $2: 15.625}]  
+[{pow1: 8, pow2: 15.625}]  
 ```  
   
 ####  <a name="bk_radians"></a> RADIANS  
@@ -1254,31 +1256,31 @@ RADIANS (<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、入力としていくつかの角度を取得し、対応するラジアン値を返します。  
+  次の例では、入力としていくつかの角度を取得し、対応するラジアン値を返します。  
   
 ```  
-SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIANS(197.1099392)  
+SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
 [{  
-       "$1": -0.7855726963226477,  
-       "$2": -3.1592204790349356,  
-       "$3": 0,  
-       "$4": 0.0025704127119236249,  
-       "$5": 3.4402174274458375  
+       "r1": -0.7855726963226477,  
+       "r2": -3.1592204790349356,  
+       "r3": 0,  
+       "r4": 0.0025704127119236249,  
+       "r5": 3.4402174274458375  
    }]  
 ```  
   
@@ -1293,26 +1295,26 @@ ROUND(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、最も近い整数に次の正と負の数値を丸めます。  
+  次の例では、最も近い整数に次の正と負の数値を丸めます。  
   
 ```  
-SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)  
+SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, ROUND(-2.6) AS r5  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 2, $2: 3, $3: 3, $4: -2, $5: -3}]  
+[{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
   
 ####  <a name="bk_sign"></a> SIGN  
@@ -1326,26 +1328,26 @@ SIGN(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、-2 ～ 2 の数値の SIGN 値を返します。  
+  次の例では、-2 ～ 2 の数値の SIGN 値を返します。  
   
 ```  
-SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)  
+SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS s5  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: -1, $2: -1, $3: 0, $4: 1, $5: 1}]  
+[{s1: -1, s2: -1, s3: 0, s4: 1, s5: 1}]  
 ```  
   
 ####  <a name="bk_sin"></a> SIN  
@@ -1359,26 +1361,26 @@ SIN(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、指定された角度の SIN を計算します。  
+  次の例では、指定された角度の SIN を計算します。  
   
 ```  
-SELECT SIN(45.175643)  
+SELECT SIN(45.175643) AS sin  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 0.929607286611012}]  
+[{"sin": 0.929607286611012}]  
 ```  
   
 ####  <a name="bk_sqrt"></a> SQRT  
@@ -1392,26 +1394,26 @@ SQRT(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、数値 1 ～ 3 の平方根を返します。  
+  次の例では、数値 1 ～ 3 の平方根を返します。  
   
 ```  
-SELECT SQRT(1), SQRT(2.0), SQRT(3)  
+SELECT SQRT(1) AS s1, SQRT(2.0) AS s2, SQRT(3) AS s3  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 1, $2: 1.4142135623730952, $3: 1.7320508075688772}]  
+[{s1: 1, s2: 1.4142135623730952, s3: 1.7320508075688772}]  
 ```  
   
 ####  <a name="bk_square"></a> SQUARE  
@@ -1425,26 +1427,26 @@ SQUARE(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、数値 1 ～ 3 の 2 乗を返します。  
+  次の例では、数値 1 ～ 3 の 2 乗を返します。  
   
 ```  
-SELECT SQUARE(1), SQUARE(2.0), SQUARE(3)  
+SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 1, $2: 4, $3: 9}]  
+[{s1: 1, s2: 4, s3: 9}]  
 ```  
   
 ####  <a name="bk_tan"></a> TAN  
@@ -1458,26 +1460,26 @@ TAN (<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、PI()/2 のタンジェントを計算します。  
+  次の例は、PI()/2 のタンジェントを計算します。  
   
 ```  
-SELECT TAN(PI()/2);  
+SELECT TAN(PI()/2) AS tan 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 16331239353195370 }]  
+[{"tan": 16331239353195370 }]  
 ```  
   
 ####  <a name="bk_trunc"></a> TRUNC  
@@ -1491,26 +1493,26 @@ TRUNC(<numeric_expression>)
   
  **引数**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     数値式です。  
+   数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、最も近い整数値に次の正と負の数値を丸めます。  
+  次の例では、最も近い整数値に次の正と負の数値を丸めます。  
   
 ```  
-SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)  
+SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, TRUNC(-2.6) AS t5  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: 2, $2: 2, $3: 2, $4: -2, $5: -2}]  
+[{t1: 2, t2: 2, t3: 2, t4: -2, t5: -2}]  
 ```  
   
 ###  <a name="bk_type_checking_functions"></a>型チェック関数  
@@ -1533,33 +1535,33 @@ IS_ARRAY(<expression>)
   
  **引数**  
   
--   `expression`  
+- `expression`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、IS_ARRAY 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
+  次の例では、IS_ARRAY 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
   
 ```  
 SELECT   
- IS_ARRAY(true),   
- IS_ARRAY(1),  
- IS_ARRAY("value"),  
- IS_ARRAY(null),  
- IS_ARRAY({prop: "value"}),   
- IS_ARRAY([1, 2, 3]),  
- IS_ARRAY({prop: "value"}.prop2)  
+ IS_ARRAY(true) AS isArray1,   
+ IS_ARRAY(1) AS isArray2,  
+ IS_ARRAY("value") AS isArray3,  
+ IS_ARRAY(null) AS isArray4,  
+ IS_ARRAY({prop: "value"}) AS isArray5,   
+ IS_ARRAY([1, 2, 3]) AS isArray6,  
+ IS_ARRAY({prop: "value"}.prop2) AS isArray7  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: false, $5: false, $6: true}]  
+[{"isArray1":false,"isArray2":false,"isArray3":false,"isArray4":false,"isArray5":false,"isArray6":true,"isArray7":false}]
 ```  
   
 ####  <a name="bk_is_bool"></a> IS_BOOL  
@@ -1573,33 +1575,33 @@ IS_BOOL(<expression>)
   
  **引数**  
   
--   `expression`  
+- `expression`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、IS_BOOL 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
+  次の例では、IS_BOOL 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
   
 ```  
 SELECT   
-    IS_BOOL(true),   
-    IS_BOOL(1),  
-    IS_BOOL("value"),   
-    IS_BOOL(null),  
-    IS_BOOL({prop: "value"}),   
-    IS_BOOL([1, 2, 3]),  
-    IS_BOOL({prop: "value"}.prop2)  
+    IS_BOOL(true) AS isBool1,   
+    IS_BOOL(1) AS isBool2,  
+    IS_BOOL("value") AS isBool3,   
+    IS_BOOL(null) AS isBool4,  
+    IS_BOOL({prop: "value"}) AS isBool5,   
+    IS_BOOL([1, 2, 3]) AS isBool6,  
+    IS_BOOL({prop: "value"}.prop2) AS isBool7  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: true, $2: false, $3: false, $4: false, $5: false, $6: false}]  
+[{"isBool1":true,"isBool2":false,"isBool3":false,"isBool4":false,"isBool5":false,"isBool6":false,"isBool7":false}]
 ```  
   
 ####  <a name="bk_is_defined"></a> IS_DEFINED  
@@ -1613,29 +1615,26 @@ IS_DEFINED(<expression>)
   
  **引数**  
   
--   `expression`  
+- `expression`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、指定された JSON ドキュメント内のプロパティの存在を確認します。 1 つ目は、"a" が存在するので true を返しますが、2 つ目は "b" が存在しないので false を返します。  
+  次の例では、指定された JSON ドキュメント内のプロパティの存在を確認します。 1 つ目は、"a" が存在するので true を返しますが、2 つ目は "b" が存在しないので false を返します。  
   
 ```  
-SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)  
+SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isDefined2 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{  
-       "$1": true,    
-       "$2": false   
-   }]  
+[{"isDefined1":true,"isDefined2":false}]  
 ```  
   
 ####  <a name="bk_is_null"></a> IS_NULL  
@@ -1649,33 +1648,33 @@ IS_NULL(<expression>)
   
  **引数**  
   
--   `expression`  
+- `expression`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、IS_NULL 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
+  次の例では、IS_NULL 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
   
 ```  
 SELECT   
-    IS_NULL(true),   
-    IS_NULL(1),  
-    IS_NULL("value"),   
-    IS_NULL(null),  
-    IS_NULL({prop: "value"}),   
-    IS_NULL([1, 2, 3]),  
-    IS_NULL({prop: "value"}.prop2)  
+    IS_NULL(true) AS isNull1,   
+    IS_NULL(1) AS isNull2,  
+    IS_NULL("value") AS isNull3,   
+    IS_NULL(null) AS isNull4,  
+    IS_NULL({prop: "value"}) AS isNull5,   
+    IS_NULL([1, 2, 3]) AS isNull6,  
+    IS_NULL({prop: "value"}.prop2) AS isNull7  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: true, $5: false, $6: false}]  
+[{"isNull1":false,"isNull2":false,"isNull3":false,"isNull4":true,"isNull5":false,"isNull6":false,"isNull7":false}]
 ```  
   
 ####  <a name="bk_is_number"></a> IS_NUMBER  
@@ -1689,33 +1688,33 @@ IS_NUMBER(<expression>)
   
  **引数**  
   
--   `expression`  
+- `expression`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、IS_NULL 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
+  次の例では、IS_NULL 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
   
 ```  
 SELECT   
-    IS_NUMBER(true),   
-    IS_NUMBER(1),  
-    IS_NUMBER("value"),   
-    IS_NUMBER(null),  
-    IS_NUMBER({prop: "value"}),   
-    IS_NUMBER([1, 2, 3]),  
-    IS_NUMBER({prop: "value"}.prop2)  
+    IS_NUMBER(true) AS isNum1,   
+    IS_NUMBER(1) AS isNum2,  
+    IS_NUMBER("value") AS isNum3,   
+    IS_NUMBER(null) AS isNum4,  
+    IS_NUMBER({prop: "value"}) AS isNum5,   
+    IS_NUMBER([1, 2, 3]) AS isNum6,  
+    IS_NUMBER({prop: "value"}.prop2) AS isNum7  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: true, $3: false, $4: false, $5: false, $6: false}]  
+[{"isNum1":false,"isNum2":true,"isNum3":false,"isNum4":false,"isNum5":false,"isNum6":false,"isNum7":false}]  
 ```  
   
 ####  <a name="bk_is_object"></a> IS_OBJECT  
@@ -1729,33 +1728,33 @@ IS_OBJECT(<expression>)
   
  **引数**  
   
--   `expression`  
+- `expression`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、IS_OBJECT 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
+  次の例では、IS_OBJECT 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
   
 ```  
 SELECT   
-    IS_OBJECT(true),   
-    IS_OBJECT(1),  
-    IS_OBJECT("value"),   
-    IS_OBJECT(null),  
-    IS_OBJECT({prop: "value"}),   
-    IS_OBJECT([1, 2, 3]),  
-    IS_OBJECT({prop: "value"}.prop2)  
+    IS_OBJECT(true) AS isObj1,   
+    IS_OBJECT(1) AS isObj2,  
+    IS_OBJECT("value") AS isObj3,   
+    IS_OBJECT(null) AS isObj4,  
+    IS_OBJECT({prop: "value"}) AS isObj5,   
+    IS_OBJECT([1, 2, 3]) AS isObj6,  
+    IS_OBJECT({prop: "value"}.prop2) AS isObj7  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: false, $5: true, $6: false}]  
+[{"isObj1":false,"isObj2":false,"isObj3":false,"isObj4":false,"isObj5":true,"isObj6":false,"isObj7":false}]
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
@@ -1769,33 +1768,33 @@ IS_PRIMITIVE(<expression>)
   
  **引数**  
   
--   `expression`  
+- `expression`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、IS_PRIMITIVE 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
+  次の例では、IS_PRIMITIVE 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
   
 ```  
 SELECT   
-           IS_PRIMITIVE(true),   
-           IS_PRIMITIVE(1),  
-           IS_PRIMITIVE("value"),   
-           IS_PRIMITIVE(null),  
-           IS_PRIMITIVE({prop: "value"}),   
-           IS_PRIMITIVE([1, 2, 3]),  
-           IS_PRIMITIVE({prop: "value"}.prop2)  
+           IS_PRIMITIVE(true) AS isPrim1,   
+           IS_PRIMITIVE(1) AS isPrim2,  
+           IS_PRIMITIVE("value") AS isPrim3,   
+           IS_PRIMITIVE(null) AS isPrim4,  
+           IS_PRIMITIVE({prop: "value"}) AS isPrim5,   
+           IS_PRIMITIVE([1, 2, 3]) AS isPrim6,  
+           IS_PRIMITIVE({prop: "value"}.prop2) AS isPrim7  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": true, "$2": true, "$3": true, "$4": true, "$5": false, "$6": false, "$7": false}]  
+[{"isPrim1": true, "isPrim2": true, "isPrim3": true, "isPrim4": true, "isPrim5": false, "isPrim6": false, "isPrim7": false}]  
 ```  
   
 ####  <a name="bk_is_string"></a> IS_STRING  
@@ -1809,33 +1808,33 @@ IS_STRING(<expression>)
   
  **引数**  
   
--   `expression`  
+- `expression`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、IS_STRING 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
+  次の例では、IS_STRING 関数を使用して、JSON ブール値のオブジェクト、数値、文字列、null、オブジェクト、配列、および未定義の型をチェックします。  
   
 ```  
 SELECT   
-       IS_STRING(true),   
-       IS_STRING(1),  
-       IS_STRING("value"),   
-       IS_STRING(null),  
-       IS_STRING({prop: "value"}),   
-       IS_STRING([1, 2, 3]),  
-       IS_STRING({prop: "value"}.prop2)  
+       IS_STRING(true) AS isStr1,   
+       IS_STRING(1) AS isStr2,  
+       IS_STRING("value") AS isStr3,   
+       IS_STRING(null) AS isStr4,  
+       IS_STRING({prop: "value"}) AS isStr5,   
+       IS_STRING([1, 2, 3]) AS isStr6,  
+       IS_STRING({prop: "value"}.prop2) AS isStr7  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: false, $3: true, $4: false, $5: false, $6: false}]  
+[{"isStr1":false,"isStr2":false,"isStr3":true,"isStr4":false,"isStr5":false,"isStr6":false,"isStr7":false}] 
 ```  
   
 ###  <a name="bk_string_functions"></a>文字列関数  
@@ -1847,8 +1846,10 @@ SELECT
 |[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[LENGTH](#bk_length)|  
 |[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[REPLACE](#bk_replace)|  
 |[REPLICATE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
-|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[ToString](#bk_tostring)|[TRIM](#bk_trim)|[UPPER](#bk_upper)||| 
+|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
+|[StringToBoolean](#bk_stringtoboolean)|[StringToNull](#bk_stringtonull)|[StringToNumber](#bk_stringtonumber)|
+|[StringToObject](#bk_stringtoobject)|[SUBSTRING](#bk_substring)|[ToString](#bk_tostring)|
+|[TRIM](#bk_trim)|[UPPER](#bk_upper)||
   
 ####  <a name="bk_concat"></a> CONCAT  
  2 つ以上の文字列値を連結した結果である文字列を返します。  
@@ -1861,26 +1862,26 @@ CONCAT(<str_expr>, <str_expr> [, <str_expr>])
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、指定した値の連結された文字列を返します。  
+  次の例では、指定した値の連結された文字列を返します。  
   
 ```  
-SELECT CONCAT("abc", "def")  
+SELECT CONCAT("abc", "def") AS concat  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "abcdef"}  
+[{"concat": "abcdef"}  
 ```  
   
 ####  <a name="bk_contains"></a> CONTAINS  
@@ -1894,26 +1895,26 @@ CONTAINS(<str_expr>, <str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、"abc" に "ab" と "d" が含まれるかどうかを確認します。  
+  次の例では、"abc" に "ab" と "d" が含まれるかどうかを確認します。  
   
 ```  
-SELECT CONTAINS("abc", "ab"), CONTAINS("abc", "d")  
+SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": true, "$2": false}]  
+[{"c1": true, "c2": false}]  
 ```  
   
 ####  <a name="bk_endswith"></a> ENDSWITH  
@@ -1927,26 +1928,26 @@ ENDSWITH(<str_expr>, <str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、"b" と "bc" で終わる "abc" を返します。  
+  次の例では、"b" と "bc" で終わる "abc" を返します。  
   
 ```  
-SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")  
+SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": false, "$2": true}]  
+[{"e1": false, "e2": true}]  
 ```  
   
 ####  <a name="bk_index_of"></a> INDEX_OF  
@@ -1960,26 +1961,26 @@ INDEX_OF(<str_expr>, <str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、"abc" 内のさまざまな部分文字列のインデックスを返します。  
+  次の例では、"abc" 内のさまざまな部分文字列のインデックスを返します。  
   
 ```  
-SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")  
+SELECT INDEX_OF("abc", "ab") AS i1, INDEX_OF("abc", "b") AS i2, INDEX_OF("abc", "c") AS i3 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 0, "$2": 1, "$3": -1}]  
+[{"i1": 0, "i2": 1, "i3": -1}]  
 ```  
   
 ####  <a name="bk_left"></a> LEFT  
@@ -1993,30 +1994,30 @@ LEFT(<str_expr>, <num_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
--   `num_expr`  
+- `num_expr`  
   
-     任意の有効な数値式です。  
+   任意の有効な数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、さまざまな長さの値の "abc" の左側の部分を返します。  
+  次の例では、さまざまな長さの値の "abc" の左側の部分を返します。  
   
 ```  
-SELECT LEFT("abc", 1), LEFT("abc", 2)  
+SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "a", "$2": "ab"}]  
+[{"l1": "a", "l2": "ab"}]  
 ```  
   
 ####  <a name="bk_length"></a> LENGTH  
@@ -2030,26 +2031,26 @@ LENGTH(<str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、文字列の長さを返します。  
+  次の例では、文字列の長さを返します。  
   
 ```  
-SELECT LENGTH("abc")  
+SELECT LENGTH("abc") AS len 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 3}]  
+[{"len": 3}]  
 ```  
   
 ####  <a name="bk_lower"></a> LOWER  
@@ -2063,26 +2064,26 @@ LOWER(<str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、クエリ内での LOWER の使用方法を示しています。  
+  次の例は、クエリ内での LOWER の使用方法を示しています。  
   
 ```  
-SELECT LOWER("Abc")  
+SELECT LOWER("Abc") AS lower
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "abc"}]  
+[{"lower": "abc"}]  
   
 ```  
   
@@ -2097,26 +2098,26 @@ LTRIM(<str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、クエリ内での LTRIM の使用方法を示しています。  
+  次の例は、クエリ内での LTRIM の使用方法を示しています。  
   
 ```  
-SELECT LTRIM("  abc"), LTRIM("abc"), LTRIM("abc   ")  
+SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "abc", "$2": "abc", "$3": "abc   "}]  
+[{"l1": "abc", "l2": "abc", "l3": "abc   "}]  
 ```  
   
 ####  <a name="bk_replace"></a> REPLACE  
@@ -2130,26 +2131,26 @@ REPLACE(<str_expr>, <str_expr>, <str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、クエリ内での REPLACE の使用方法を示しています。  
+  次の例は、クエリ内での REPLACE の使用方法を示しています。  
   
 ```  
-SELECT REPLACE("This is a Test", "Test", "desk")  
+SELECT REPLACE("This is a Test", "Test", "desk") AS replace 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "This is a desk"}]  
+[{"replace": "This is a desk"}]  
 ```  
   
 ####  <a name="bk_replicate"></a> REPLICATE  
@@ -2163,30 +2164,33 @@ REPLICATE(<str_expr>, <num_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
--   `num_expr`  
+- `num_expr`  
   
-     任意の有効な数値式です。  
+   任意の有効な数値式です。 num_expr が負の数値である場合、または有限の数値でない場合、結果は未定義になります。
+
+  > [!NOTE]
+  > 結果の最大長は 10,000 文字、つまり (length(str_expr) * num_expr) <= 10,000 です。
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、クエリ内での REPLICATE の使用方法を示しています。  
+  次の例は、クエリ内での REPLICATE の使用方法を示しています。  
   
 ```  
-SELECT REPLICATE("a", 3)  
+SELECT REPLICATE("a", 3) AS replicate  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "aaa"}]  
+[{"replicate": "aaa"}]  
 ```  
   
 ####  <a name="bk_reverse"></a> REVERSE  
@@ -2200,26 +2204,26 @@ REVERSE(<str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、クエリ内での REVERSE の使用方法を示しています。  
+  次の例は、クエリ内での REVERSE の使用方法を示しています。  
   
 ```  
-SELECT REVERSE("Abc")  
+SELECT REVERSE("Abc") AS reverse  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "cbA"}]  
+[{"reverse": "cbA"}]  
 ```  
   
 ####  <a name="bk_right"></a> RIGHT  
@@ -2233,30 +2237,30 @@ RIGHT(<str_expr>, <num_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
--   `num_expr`  
+- `num_expr`  
   
-     任意の有効な数値式です。  
+   任意の有効な数値式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、さまざまな長さの値の "abc" の右側の部分を返します。  
+  次の例では、さまざまな長さの値の "abc" の右側の部分を返します。  
   
 ```  
-SELECT RIGHT("abc", 1), RIGHT("abc", 2)  
+SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "c", "$2": "bc"}]  
+[{"r1": "c", "r2": "bc"}]  
 ```  
   
 ####  <a name="bk_rtrim"></a> RTRIM  
@@ -2270,26 +2274,26 @@ RTRIM(<str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、クエリ内での RTRIM の使用方法を示しています。  
+  次の例は、クエリ内での RTRIM の使用方法を示しています。  
   
 ```  
-SELECT RTRIM("  abc"), RTRIM("abc"), RTRIM("abc   ")  
+SELECT RTRIM("  abc") AS r1, RTRIM("abc") AS r2, RTRIM("abc   ") AS r3  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "   abc", "$2": "abc", "$3": "abc"}]  
+[{"r1": "   abc", "r2": "abc", "r3": "abc"}]  
 ```  
   
 ####  <a name="bk_startswith"></a> STARTSWITH  
@@ -2303,63 +2307,444 @@ STARTSWITH(<str_expr>, <str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、文字列 "abc" が "b" および "a" で始まるかどうかを確認します。  
+  次の例は、文字列 "abc" が "b" および "a" で始まるかどうかを確認します。  
   
 ```  
-SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")  
+SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": false, "$2": true}]  
+[{"s1": false, "s2": true}]  
+```  
+
+  ####  <a name="bk_stringtoarray"></a> StringToArray  
+ 配列に変換された式を返します。 式を変換できない場合は、undefined を返します。  
+  
+ **構文**  
+  
+```  
+StringToArray(<expr>)  
 ```  
   
+ **引数**  
+  
+- `expr`  
+  
+   これは、JSON 配列式として評価される有効なスカラー式です。 入れ子になった文字列値を有効にするには二重引用符で囲む必要があることにご注意ください。 JSON 形式の詳細については、「[json.org](https://json.org/)」をご覧ください。
+  
+  **戻り値の型**  
+  
+  配列式または undefined を返します。  
+  
+  **例**  
+  
+  次の例では、異なる型間で StringToArray がどのように動作するかを示します。 
+  
+ 有効な入力を使用した例を次に示します。
+
+```
+SELECT 
+    StringToArray('[]') AS a1, 
+    StringToArray("[1,2,3]") AS a2,
+    StringToArray("[\"str\",2,3]") AS a3,
+    StringToArray('[["5","6","7"],["8"],["9"]]') AS a4,
+    StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
+```
+
+ 結果セットは次のようになります。
+
+```
+[{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
+```
+
+ 無効な入力を使用した例を次に示します。 
+   
+ 配列内に一重引用符を使用した場合は、有効な JSON ではありません。
+クエリ内で有効であっても、有効な配列として解析されません。 配列文字列内の文字列は、"[\\"\\"]" のようにエスケープするか、'[""]' のように一重引用符で囲む必要があります。
+
+```
+SELECT
+    StringToArray("['5','6','7']")
+```
+
+ 結果セットは次のようになります。
+
+```
+[{}]
+```
+
+ 無効な入力の例を次に示します。
+   
+ 渡された式は JSON 配列として解析されます。次の場合は、配列型として評価されないため、undefined が返されます。
+   
+```
+SELECT
+    StringToArray("["),
+    StringToArray("1"),
+    StringToArray(NaN),
+    StringToArray(false),
+    StringToArray(undefined)
+```
+
+ 結果セットは次のようになります。
+
+```
+[{}]
+```
+
+####  <a name="bk_stringtoboolean"></a> StringToBoolean  
+ ブール値に変換された式を返します。 式を変換できない場合は、undefined を返します。  
+  
+ **構文**  
+  
+```  
+StringToBoolean(<expr>)  
+```  
+  
+ **引数**  
+  
+- `expr`  
+  
+   ブール式として評価される有効なスカラー式です。  
+  
+  **戻り値の型**  
+  
+  ブール式または undefined を返します。  
+  
+  **例**  
+  
+  次の例では、異なる型間で StringToBoolean がどのように動作するかを示します。 
+ 
+ 有効な入力を使用した例を次に示します。
+
+ 空白は "true" または "false" の前後のみで使用できます。
+
+```  
+SELECT 
+    StringToBoolean("true") AS b1, 
+    StringToBoolean("    false") AS b2,
+    StringToBoolean("false    ") AS b3
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{"b1": true, "b2": false, "b3": false}]
+```  
+
+ 無効な入力を使用した例を次に示します。
+ 
+ ブール値では大文字と小文字が区別されるので、すべて小文字で記述する必要があります (つまり、"true" と "false")。
+
+```  
+SELECT 
+    StringToBoolean("TRUE"),
+    StringToBoolean("False")
+```  
+
+ 結果セットは次のようになります。  
+  
+```  
+[{}]
+``` 
+
+ 渡された式はブール式として解析されます。これらの入力はブール型として評価されないため、undefined が返されます。
+
+ ```  
+SELECT 
+    StringToBoolean("null"),
+    StringToBoolean(undefined),
+    StringToBoolean(NaN), 
+    StringToBoolean(false), 
+    StringToBoolean(true)
+```  
+
+ 結果セットは次のようになります。  
+  
+```  
+[{}]
+```  
+
+####  <a name="bk_stringtonull"></a> StringToNull  
+ null 値に変換された式を返します。 式を変換できない場合は、undefined を返します。  
+  
+ **構文**  
+  
+```  
+StringToNull(<expr>)  
+```  
+  
+ **引数**  
+  
+- `expr`  
+  
+   null 式として評価される有効なスカラー式です。
+  
+  **戻り値の型**  
+  
+  null 式または undefined を返します。  
+  
+  **例**  
+  
+  次の例では、異なる型間で StringToNull がどのように動作するかを示します。 
+
+ 有効な入力を使用した例を次に示します。
+ 
+ 空白は "null" の前後のみで使用できます。
+
+```  
+SELECT 
+    StringToNull("null") AS n1, 
+    StringToNull("  null ") AS n2,
+    IS_NULL(StringToNull("null   ")) AS n3
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{"n1": null, "n2": null, "n3": true}]
+```  
+
+ 無効な入力を使用した例を次に示します。
+
+ null 値では大文字と小文字が区別されるので、すべて小文字で記述する必要があります (つまり、"null")。
+
+```  
+SELECT    
+    StringToNull("NULL"),
+    StringToNull("Null")
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{}]
+```  
+
+ 渡された式は null 式として解析されます。これらの入力は null 型として評価されないため、undefined が返されます。
+
+```  
+SELECT    
+    StringToNull("true"), 
+    StringToNull(false), 
+    StringToNull(undefined),
+    StringToNull(NaN) 
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{}]
+```  
+
+####  <a name="bk_stringtonumber"></a> StringToNumber  
+ 数値に変換された式を返します。 式を変換できない場合は、undefined を返します。  
+  
+ **構文**  
+  
+```  
+StringToNumber(<expr>)  
+```  
+  
+ **引数**  
+  
+- `expr`  
+  
+   JSON 数値式として評価される有効なスカラー式です。 JSON の数値は整数または浮動小数点にする必要があります。 JSON 形式の詳細については、「[json.org](https://json.org/)」をご覧ください。  
+  
+  **戻り値の型**  
+  
+  数値式または undefined を返します。  
+  
+  **例**  
+  
+  次の例では、異なる型間で StringToNumber がどのように動作するかを示します。 
+
+ 空白は数値の前後のみで使用できます。
+ 
+```  
+SELECT 
+    StringToNumber("1.000000") AS num1, 
+    StringToNumber("3.14") AS num2,
+    StringToNumber("   60   ") AS num3, 
+    StringToNumber("-1.79769e+308") AS num4
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+{{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
+```  
+
+ JSON で有効な数値は、整数または浮動小数点数である必要があります。
+ 
+```  
+SELECT   
+    StringToNumber("0xF")
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+{{}}
+```  
+
+ 渡された式は数値式として解析されます。これらの入力は数値型として評価されないため、undefined が返されます。 
+
+```  
+SELECT 
+    StringToNumber("99     54"),   
+    StringToNumber(undefined),
+    StringToNumber("false"),
+    StringToNumber(false),
+    StringToNumber(" "),
+    StringToNumber(NaN)
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+{{}}
+```  
+
+####  <a name="bk_stringtoobject"></a> StringToObject  
+ オブジェクトに変換された式を返します。 式を変換できない場合は、undefined を返します。  
+  
+ **構文**  
+  
+```  
+StringToObject(<expr>)  
+```  
+  
+ **引数**  
+  
+- `expr`  
+  
+   JSON オブジェクト式として評価される有効なスカラー式です。 入れ子になった文字列値を有効にするには二重引用符で囲む必要があることにご注意ください。 JSON 形式の詳細については、「[json.org](https://json.org/)」をご覧ください。  
+  
+  **戻り値の型**  
+  
+  オブジェクト式または undefined を返します。  
+  
+  **例**  
+  
+  次の例では、異なる型間で StringToObject がどのように動作するかを示します。 
+  
+ 有効な入力を使用した例を次に示します。
+ 
+``` 
+SELECT 
+    StringToObject("{}") AS obj1, 
+    StringToObject('{"A":[1,2,3]}') AS obj2,
+    StringToObject('{"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]}') AS obj3, 
+    StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
+``` 
+
+ 結果セットは次のようになります。
+
+```
+[{"obj1": {}, 
+  "obj2": {"A": [1,2,3]}, 
+  "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
+  "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
+```
+ 
+ 無効な入力を使用した例を次に示します。
+クエリ内では有効であっても、有効なオブジェクトとして解析されません。 オブジェクト文字列内の文字列は、"{\\"a\\":\\"str\\"}" のようにエスケープするか、'{"a": "str"}' のように一重引用符で囲む必要があります。
+
+ 一重引用符で囲んだプロパティ名は有効な JSON ではありません。
+
+``` 
+SELECT 
+    StringToObject("{'a':[1,2,3]}")
+```
+
+ 結果セットは次のようになります。
+
+```  
+[{}]
+```  
+
+ 引用符で囲まれていないプロパティ名は有効な JSON ではありません。
+
+``` 
+SELECT 
+    StringToObject("{a:[1,2,3]}")
+```
+
+ 結果セットは次のようになります。
+
+```  
+[{}]
+``` 
+
+ 無効な入力を使用した例を次に示します。
+ 
+ 渡された式は JSON オブジェクトとして解析されます。これらの入力はオブジェクト型として評価されないため、undefined が返されます。
+ 
+``` 
+SELECT 
+    StringToObject("}"),
+    StringToObject("{"),
+    StringToObject("1"),
+    StringToObject(NaN), 
+    StringToObject(false), 
+    StringToObject(undefined)
+``` 
+ 
+ 結果セットは次のようになります。
+
+```
+[{}]
+```
+
 ####  <a name="bk_substring"></a> SUBSTRING  
  指定された文字のゼロベースの位置で始まる文字列式の一部を返し、指定された長さまたは文字列の末尾まで続きます。  
   
  **構文**  
   
 ```  
-SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
+SUBSTRING(<str_expr>, <num_expr>, <num_expr>)  
 ```  
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
--   `num_expr`  
+- `num_expr`  
   
-     任意の有効な数値式です。  
+   開始および終了文字を示す任意の有効な数値式です。    
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、1 から始まる 1 文字の長さの "abc" の部分文字列を返します。  
+  次の例では、1 から始まる 1 文字の長さの "abc" の部分文字列を返します。  
   
 ```  
-SELECT SUBSTRING("abc", 1, 1)  
+SELECT SUBSTRING("abc", 1, 1) AS substring  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "b"}]  
+[{"substring": "b"}]  
 ```  
 ####  <a name="bk_tostring"></a> ToString  
  スカラー式の文字列表現を返します。 
@@ -2372,27 +2757,34 @@ ToString(<expr>)
   
  **引数**  
   
--   `expr`  
+- `expr`  
   
-     任意の有効なスカラー式です。  
+   任意の有効なスカラー式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、異なる型間で ToString がどのように動作するかを示します。   
+  次の例では、異なる型間で ToString がどのように動作するかを示します。   
   
 ```  
-SELECT ToString(1.0000), ToString("Hello World"), ToString(NaN), ToString(Infinity),
-ToString(IS_STRING(ToString(undefined))), IS_STRING(ToString(0.1234), ToString(false), ToString(undefined))
+SELECT 
+    ToString(1.0000) AS str1, 
+    ToString("Hello World") AS str2, 
+    ToString(NaN) AS str3, 
+    ToString(Infinity) AS str4,
+    ToString(IS_STRING(ToString(undefined))) AS str5, 
+    ToString(0.1234) AS str6, 
+    ToString(false) AS str7, 
+    ToString(undefined) AS str8
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "1", "$2": "Hello World", "$3": "NaN", "$4": "Infinity", "$5": "false", "$6": true, "$7": "false"}]  
+[{"str1": "1", "str2": "Hello World", "str3": "NaN", "str4": "Infinity", "str5": "false", "str6": "0.1234", "str7": "false"}]  
 ```  
  次のような入力があるものとします。
 ```  
@@ -2447,26 +2839,26 @@ TRIM(<str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、クエリ内での TRIM の使用方法を示しています。  
+  次の例は、クエリ内での TRIM の使用方法を示しています。  
   
 ```  
-SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")   
+SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM("abc") AS t4
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "abc", "$2": "abc", "$3": "abc", "$4": "abc"}]  
+[{"t1": "abc", "t2": "abc", "t3": "abc", "t4": "abc"}]  
 ``` 
 ####  <a name="bk_upper"></a> UPPER  
  文字列式の小文字データを大文字に変換して返します。  
@@ -2479,26 +2871,26 @@ UPPER(<str_expr>)
   
  **引数**  
   
--   `str_expr`  
+- `str_expr`  
   
-     任意の有効な文字列式です。  
+   任意の有効な文字列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 文字列式を返します。  
+  文字列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例は、クエリ内での UPPER の使用方法を示しています。  
+  次の例は、クエリ内での UPPER の使用方法を示しています。  
   
 ```  
-SELECT UPPER("Abc")  
+SELECT UPPER("Abc") AS upper  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": "ABC"}]  
+[{"upper": "ABC"}]  
 ```  
   
 ###  <a name="bk_array_functions"></a>配列関数  
@@ -2520,30 +2912,30 @@ ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])
   
  **引数**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     任意の有効な配列式です。  
+   任意の有効な配列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 配列式を返します。  
+  配列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、2 つの配列を結合する方法を示します。  
+  次の例では、2 つの配列を結合する方法を示します。  
   
 ```  
-SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])  
+SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": ["apples", "strawberries", "bananas"]}]  
+[{"arrayConcat": ["apples", "strawberries", "bananas"]}]  
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-配列に指定された値が含まれているかどうかを示すブール値を返します。 一致が完全か部分的かを指定できます。 
+配列に指定された値が含まれているかどうかを示すブール値を返します。 コマンド内でブール式を使用して、オブジェクトの部分一致または完全一致を確認できます。 
 
  **構文**  
   
@@ -2553,54 +2945,54 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
  **引数**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     任意の有効な配列式です。  
+   任意の有効な配列式です。  
   
--   `expr`  
+- `expr`  
   
-     任意の有効な式です。  
+   任意の有効な式です。  
 
--   `bool_expr`  
+- `bool_expr`  
   
-     任意のブール式です。       
+   任意のブール式です。 'true' に設定されていて、指定された検索値がオブジェクトである場合、このコマンドで部分一致が確認されます (検索オブジェクトは、いずれかのオブジェクトのサブセットです)。 'false' に設定されている場合、このコマンドで配列内のすべてのオブジェクトの完全一致が確認されます。 指定しない場合の既定値は false です。 
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール値を返します。  
+  ブール値を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、ARRAY_CONTAINS を使用して、配列内のメンバーシップを確認する方法を示します。  
+  次の例では、ARRAY_CONTAINS を使用して、配列内のメンバーシップを確認する方法を示します。  
   
 ```  
 SELECT   
-           ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "apples"),  
-           ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "mangoes")  
+           ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "apples") AS b1,  
+           ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "mangoes") AS b2  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": true, "$2": false}]  
+[{"b1": true, "b2": false}]  
 ```  
 
  次の例では、ARRAY_CONTAINS を使用して、配列内 JSON の部分一致を確認する方法を示します。  
   
 ```  
 SELECT  
-    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "apples"}, true), 
-    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "apples"}),
-    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) 
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "apples"}, true) AS b1, 
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "apples"}) AS b2,
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) AS b3 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
 [{
-  "$1": true,
-  "$2": false,
-  "$3": false
+  "b1": true,
+  "b2": false,
+  "b3": false
 }] 
 ```  
   
@@ -2615,26 +3007,26 @@ ARRAY_LENGTH(<arr_expr>)
   
  **引数**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     任意の有効な配列式です。  
+   任意の有効な配列式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 数値式を返します。  
+  数値式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、ARRAY_LENGTH を使用して、配列の長さを取得する方法を示します。  
+  次の例では、ARRAY_LENGTH を使用して、配列の長さを取得する方法を示します。  
   
 ```  
-SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])  
+SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": 3}]  
+[{"len": 3}]  
 ```  
   
 ####  <a name="bk_array_slice"></a> ARRAY_SLICE  
@@ -2648,35 +3040,35 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
  **引数**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     任意の有効な配列式です。  
+   任意の有効な配列式です。  
   
--   `num_expr`  
+- `num_expr`  
   
-     配列を開始する位置を示す 0 から始まる数値インデックス。 配列内の最後の要素を基準とした開始インデックスを指定するために負の値が使用されることがあり、つまり、-1 は配列の最後の要素を参照します。  
+   配列を開始する位置を示す 0 から始まる数値インデックス。 配列内の最後の要素を基準とした開始インデックスを指定するために負の値が使用されることがあり、つまり、-1 は配列の最後の要素を参照します。  
 
--   `num_expr`  
+- `num_expr`  
 
-     結果の配列内の要素の最大数。    
+   結果の配列内の要素の最大数。    
 
- **戻り値の型**  
+  **戻り値の型**  
   
- 配列式を返します。  
+  配列式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、ARRAY_SLICE を使用して、配列の別のスライスを取得する方法を示します。  
+  次の例では、ARRAY_SLICE を使用して、配列の別のスライスを取得する方法を示します。  
   
 ```  
 SELECT   
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1),  
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1),
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 1),
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 2),
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 0),
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1000),
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, -100)      
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1) AS s1,  
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1) AS s2,
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 1) AS s3,
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 2) AS s4,
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 0) AS s5,
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1000) AS s6,
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, -100) AS s7      
   
 ```  
   
@@ -2684,23 +3076,23 @@ SELECT
   
 ```  
 [{  
-           "$1": ["strawberries", "bananas"],   
-           "$2": ["strawberries"],
-           "$3": ["strawberries"],  
-           "$4": ["strawberries", "bananas"], 
-           "$5": [],
-           "$6": ["strawberries", "bananas"],
-           "$7": [] 
+           "s1": ["strawberries", "bananas"],   
+           "s2": ["strawberries"],
+           "s3": ["strawberries"],  
+           "s4": ["strawberries", "bananas"], 
+           "s5": [],
+           "s6": ["strawberries", "bananas"],
+           "s7": [] 
 }]  
 ```  
  
 ###  <a name="bk_spatial_functions"></a>空間関数  
  次のスカラー関数は、空間オブジェクト入力値に対して演算を実行し、数値またはブール値を返します。  
   
-||||  
-|-|-|-|  
-|[ST_DISTANCE](#bk_st_distance)|[ST_WITHIN](#bk_st_within)|[ST_INTERSECTS](#bk_st_intersects)|[ST_ISVALID](#bk_st_isvalid)|  
-|[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)|||  
+|||||
+|-|-|-|-|
+|[ST_DISTANCE](#bk_st_distance)|[ST_WITHIN](#bk_st_within)|[ST_INTERSECTS](#bk_st_intersects)|[ST_ISVALID](#bk_st_isvalid)|
+|[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)||||
   
 ####  <a name="bk_st_distance"></a> ST_DISTANCE  
  2 つの GeoJSON Point、Polygon、または LineString 式間の距離を返します。  
@@ -2713,17 +3105,17 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **引数**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
+   有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 距離を含む数値式を返します。 これは、既定の参照システムのメートル単位で表されます。  
+  距離を含む数値式を返します。 これは、既定の参照システムのメートル単位で表されます。  
   
- **例**  
+  **例**  
   
- 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 。  
+  次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 。  
   
 ```  
 SELECT f.id   
@@ -2750,21 +3142,21 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
  **引数**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
+   有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
  
--   `spatial_expr`  
+- `spatial_expr`  
   
-     有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
+   有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール値を返します。  
+  ブール値を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、ST_WITHIN を使用して多角形内のすべての世帯ドキュメントを検索する方法を示します。  
+  次の例では、ST_WITHIN を使用して多角形内のすべての世帯ドキュメントを検索する方法を示します。  
   
 ```  
 SELECT f.id   
@@ -2792,21 +3184,21 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
  **引数**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
+   有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
  
--   `spatial_expr`  
+- `spatial_expr`  
   
-     有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
+   有効な GeoJSON ポイント、多角形、または LineString オブジェクト式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール値を返します。  
+  ブール値を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、特定の多角形と交差するすべての領域を見つける方法を示します。  
+  次の例では、特定の多角形と交差するすべての領域を見つける方法を示します。  
   
 ```  
 SELECT a.id   
@@ -2834,30 +3226,30 @@ ST_ISVALID(<spatial_expr>)
   
  **引数**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     有効な GeoJSON ポイント、多角形、または LineString 式です。  
+   有効な GeoJSON ポイント、多角形、または LineString 式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- ブール式を返します。  
+  ブール式を返します。  
   
- **例**  
+  **例**  
   
- 次の例では、ST_VALID を使用してポイントが有効かどうかを確認する方法を示します。  
+  次の例では、ST_VALID を使用してポイントが有効かどうかを確認する方法を示します。  
   
- たとえば、このポイントの緯度の値は有効な値の範囲 [-90, 90] に含まれていないので、クエリは false を返します。  
+  たとえば、このポイントの緯度の値は有効な値の範囲 [-90, 90] に含まれていないので、クエリは false を返します。  
   
- GeoJSON 仕様では、最後に指定された座標ペアが、最初に指定された座標ペアとちょうど重なり、閉じた形状になっていることが、ポリゴンの条件となります。 ポリゴン内のポイントは、反時計回りに指定する必要があります。 時計回りに指定されたポリゴンは、その中の領域を逆にしたものを表します。  
+  GeoJSON 仕様では、最後に指定された座標ペアが、最初に指定された座標ペアとちょうど重なり、閉じた形状になっていることが、ポリゴンの条件となります。 ポリゴン内のポイントは、反時計回りに指定する必要があります。 時計回りに指定されたポリゴンは、その中の領域を逆にしたものを表します。  
   
 ```  
-SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })  
+SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b 
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{ "$1": false }]  
+[{ "b": false }]  
 ```  
   
 ####  <a name="bk_st_isvaliddetailed"></a> ST_ISVALIDDETAILED  
@@ -2866,35 +3258,35 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
  **構文**  
   
 ```  
-ST_ISVALID(<spatial_expr>)  
+ST_ISVALIDDETAILED(<spatial_expr>)  
 ```  
   
  **引数**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     有効な GeoJSON ポイントまたはポリゴン式です。  
+   有効な GeoJSON ポイントまたはポリゴン式です。  
   
- **戻り値の型**  
+  **戻り値の型**  
   
- 指定された GeoJSON ポイントまたはポリゴン式が有効であるかどうかのブール値を含んだ JSON 値を返します。無効である場合はさらに、その理由が文字列値として返されます。  
+  指定された GeoJSON ポイントまたはポリゴン式が有効であるかどうかのブール値を含んだ JSON 値を返します。無効である場合はさらに、その理由が文字列値として返されます。  
   
- **例**  
+  **例**  
   
- 次の例では、ST_ISVALIDDETAILED を使用して有効性 (詳細) を確認する方法を示します。  
+  次の例では、ST_ISVALIDDETAILED を使用して有効性 (詳細) を確認する方法を示します。  
   
 ```  
 SELECT ST_ISVALIDDETAILED({   
   "type": "Polygon",   
   "coordinates": [[ [ 31.8, -5 ], [ 31.8, -4.7 ], [ 32, -4.7 ], [ 32, -5 ] ]]  
-})  
+}) AS b  
 ```  
   
  結果セットは次のようになります。  
   
 ```  
 [{  
-  "$1": {   
+  "b": {   
     "valid": false,   
     "reason": "The Polygon input is not valid because the start and end points of the ring number 1 are not the same. Each ring of a polygon must have the same start and end points."   
   }  

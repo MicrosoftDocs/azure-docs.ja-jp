@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6e382e57473cd1461b97e742546a3b621f2fd4c8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426704"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539107"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -24,8 +24,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 > 
 > 
 
-バックアップは、.abf という拡張子で保存されます。 インメモリの表形式モデルの場合、モデル データとメタデータの両方が保存されます。 DirectQuery 表形式モデルの場合、モデルのメタデータのみが保存されます。 バックアップは、オプションの選択によって、圧縮したり暗号化したりすることができます。 
-
+バックアップは、.abf という拡張子で保存されます。 インメモリの表形式モデルの場合、モデル データとメタデータの両方が保存されます。 DirectQuery 表形式モデルの場合、モデルのメタデータのみが保存されます。 バックアップは、オプションの選択によって、圧縮したり暗号化したりすることができます。
 
 
 ## <a name="configure-storage-settings"></a>ストレージ設定の構成

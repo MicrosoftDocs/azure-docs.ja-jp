@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0af7a7fd43bba46de6faa770bf3042fbf58a90f6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5d6ec0197699f603c79f414e015cdebcde6b9f60
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195873"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58905615"
 ---
 # <a name="azure-application-skus-tab"></a>Azure アプリケーション SKU タブ
 
 この記事では、SKU タブを使用し、Azure アプリケーションの SKU を作成する方法について説明します。 
 
->[!IMPORTANT] 
-SKU の設定手順は、マネージド アプリケーション オファーとソリューション テンプレート オファーの場合で異なります。 この違いについてはこの記事で取り上げています。 
+> [!IMPORTANT]
+> SKU の設定手順は、マネージド アプリケーション オファーとソリューション テンプレート オファーの場合で異なります。 この違いについてはこの記事で取り上げています。 
 
 ## <a name="configure-azure-application-skus"></a>Azure アプリケーションの SKU を構成する
 
@@ -90,7 +90,7 @@ SKU の設定手順は、マネージド アプリケーション オファー�
   >[!NOTE]
   >価格データのエクスポート/インポートを有効にするには、価格設定変更を保存します。
 
-- **Simplified Currency Pricing (簡略化された通貨による価格)** – SKU の月額を USD で入力します。 これは [Old Pricing]\(以前の価格\) と同じにする必要があります。 詳細については、「[簡略化された通貨による価格](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer#simplified-currency-pricing)」を参照してください。
+- **Simplified Currency Pricing (簡略化された通貨による価格)** – SKU の月額を USD で入力します。 これは [Old Pricing]\(以前の価格\) と同じにする必要があります。 詳細については、「[簡略化された通貨による価格](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer)」を参照してください。
 
 ### <a name="package-details-for-solution-template"></a>ソリューション テンプレートのパッケージ詳細
 
@@ -139,7 +139,7 @@ SKU の設定手順は、マネージド アプリケーション オファー�
 
 #### <a name="policy-settings"></a>ポリシー設定
 
-マネージド アプリが準拠するポリシーを追加します。 Azure リソース ポリシーの詳細ついては、「[Azure Policy とは](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)」をご覧ください。 
+マネージド アプリが準拠するポリシーを追加します。 Azure リソース ポリシーの詳細ついては、「[Azure Policy とは](../../../governance/policy/overview.md)」をご覧ください。
 
 
    ![マネージド アプリケーションの承認設定とポリシー設定](./media/azureapp-sku-details-managedapp-auth-policy.png)

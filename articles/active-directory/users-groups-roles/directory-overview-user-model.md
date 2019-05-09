@@ -1,23 +1,25 @@
 ---
-title: Azure Active Directory における大規模組織のユーザー、グループ、ライセンス、ロール | Microsoft Docs
+title: ユーザー、グループ、ライセンス、およびロールの概要 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory における割り当てライセンス、管理者ロール、グループ メンバーシップとユーザーとの関係
 keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 10/01/2018
+ms.date: 01/28/2019
 ms.topic: overview
 ms.service: active-directory
+ms.subservice: users-groups-roles
 ms.workload: identity
 services: active-directory
-ms.custom: it-pro
-ms.openlocfilehash: 7f588766ead19f2cbca22aab596e6dc9d0210791
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.custom: it-pro;seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 775a03a82c1fc432e65ce45309a5af3febb448a9
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019924"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428223"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大規模組織のユーザー、グループ、ライセンス、ロール
 
@@ -31,13 +33,13 @@ ms.locfileid: "48019924"
 
 Azure AD のグループを使うと、ライセンスを多数のユーザーに割り当てたり、デプロイされているエンタープライズ アプリへのユーザー アクセス権を割り当てたりすることができます。 Azure AD でグループを使用して管理者ロールを割り当てたり、外部のリソース (SaaS アプリケーション、SharePoint サイトなど) へのアクセス権を付与したりすることが可能です。
 
-また、柔軟性を高めたり、グループ メンバーシップの管理作業を軽減したりするために、Azure AD の[ダイナミック グループ](groups-create-rule.md)を使用して、グループのメンバーシップを自動的に拡大、縮小することもできます。 各ユーザーには、それぞれ Azure AD Premium P1 ライセンスが必要です。また、ユーザーは少なくとも 1 つのダイナミック グループに属している必要があります。
+また、柔軟性を高めたり、グループ メンバーシップの管理作業を軽減したりするために、Azure AD の[動的グループ](groups-create-rule.md)を使用して、グループのメンバーシップを自動的に拡大、縮小することもできます。 1 つ以上の動的グループのメンバーになっている一意のユーザーには、それぞれ Azure AD Premium P1 ライセンスが必要です。
 
 ## <a name="assign-licenses-to-groups"></a>ライセンスをグループに割り当てる
 
 ライセンスの割り当てまたは削除を個々のユーザーに対して実施するためには、時間と注意が必要になることがあります。 代わりに[ライセンスをグループに割り当てる](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)ことによって、大規模なライセンス管理の負荷を軽減することができます。
 
-Azure AD では、ライセンスを付与されているグループにユーザーが参加すると、適切なライセンスがそのユーザーに自動的に割り当てられます。 ユーザーがグループから離脱すると、そのライセンスの割り当てが Azure AD によって解除されます。 Azure AD グループがない場合に、組織に参加するユーザーや組織から離脱するユーザーのライセンスを一括追加または一括削除するためには、PowerShell スクリプトを作成するか、Graph API を使用する必要があります。
+Azure AD では、ライセンスを付与されているグループにユーザーが参加すると、適切なライセンスがそのユーザーに自動的に割り当てられます。 ユーザーがグループから離脱すると、そのライセンスの割り当てが Azure AD によって解除されます。 Azure AD グループがない場合には、組織に参加するユーザーや組織から離脱するユーザーのライセンスを一括追加または一括削除するために、PowerShell スクリプトを作成するか、Graph API を使用する必要があります。
 
 使用できるライセンスが不足している場合や、何らかの問題 (同時には割り当てることができないサービス プランなど) が生じた場合、グループのライセンスに関する問題の状態を Azure portal で確認できます。
 
@@ -58,9 +60,9 @@ Azure AD では、ライセンスを付与されているグループにユー�
 
 ## <a name="assign-app-access"></a>アプリへのアクセス権を割り当てる
 
-Azure AD を使用すると、[Azure AD テナントにデプロイされたエンタープライズ アプリ](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-a-group-directly-to-an-application-as-an-administrator?context=azure/active-directory/users-groups-roles/context/ugr-context)へのグループ アクセス権を割り当てることができます。 アプリへのグループ割り当てとダイナミック グループを組み合わせれば、組織の規模拡大に伴って、ユーザーに対するアプリへのアクセス権の割り当てを自動化することができます。 エンタープライズ アプリへのアクセス権を割り当てるには、Azure Active Directory Premium P1 または Premium P2 ライセンスが必要です。
+Azure AD を使用すると、[Azure AD テナントにデプロイされたエンタープライズ アプリ](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)へのグループ アクセス権を割り当てることができます。 アプリへのグループ割り当てと動的グループを組み合わせれば、組織の規模拡大に伴って、ユーザーに対するアプリへのアクセス権の割り当てを自動化することができます。 エンタープライズ アプリへのアクセス権を割り当てるには、Azure Active Directory Premium P1 または Premium P2 ライセンスが必要です。
 
-また、Azure AD では、アクセス権の割り当て先となるグループとアプリの間を行き来するデータをきめ細かく管理することができます。 [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) でアプリを開き、**[プロビジョニング]** を選択して次の作業を実施できます。
+また、Azure AD では、アクセス権の割り当て先となるグループとアプリの間を行き来するデータをきめ細かく制御することができます。 [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) でアプリを開き、**[プロビジョニング]** を選択して次の作業を実施できます。
 
 * 自動プロビジョニングをサポートするアプリに対してその設定を行う
 * アプリのユーザー管理 API に接続するための資格情報を指定する
@@ -72,4 +74,4 @@ Azure AD を使用すると、[Azure AD テナントにデプロイされたエ�
 
 Azure AD 管理者としてまだ日が浅い方は、[Azure Active Directory の基礎](https://docs.microsoft.com/azure/active-directory/fundamentals/index)に関するドキュメントで基本的な事柄をマスターしてください。
 
-または、[グループの作成](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)、[ライセンスの割り当て](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)、[アプリのアクセス権の割り当て](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-a-group-directly-to-an-application-as-an-administrator?context=azure/active-directory/users-groups-roles/context/ugr-context)、[管理者ロールの割り当て](directory-assign-admin-roles.md)に関するページをまずご確認ください。
+または、[グループの作成](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)、[ライセンスの割り当て](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)、[アプリのアクセス権の割り当て](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)、[管理者ロールの割り当て](directory-assign-admin-roles.md)を始めることができます。

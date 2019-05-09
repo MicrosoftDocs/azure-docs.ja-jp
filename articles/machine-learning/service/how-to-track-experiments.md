@@ -1,39 +1,38 @@
 ---
-title: 実験とトレーニング メトリックを追跡する
+title: トレーニングの実行中にメトリックを記録する
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service では、実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。 トレーニング スクリプトにログ記録を追加する方法、実験を送信する方法、実行中のジョブの進行状況を確認する方法、および実行の結果を表示する方法について説明します。
+description: トレーニング スクリプトにログ記録を追加する方法、実験を送信する方法、実行中のジョブの進行状況を確認する方法、および実行の結果を表示する方法について説明します。 実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c45023a462a5c01dfde806d7abbb9714aaf09b85
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 59a801fd149a0f647298d94522f9eefc1ea6eb9f
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189474"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609469"
 ---
-# <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Azure Machine Learning で実験とトレーニング メトリックを追跡する
+# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Azure Machine Learning 内でトレーニングの実行中にメトリックを記録する
 
-Azure Machine Learning service では、実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。 この記事では、トレーニング スクリプトにログ記録を追加するさまざまな方法、**start_logging** と **ScriptRunConfig** で実験を送信する方法、実行中のジョブの進行状況を確認する方法、および実行の結果を表示する方法について説明します。 
-
+この記事では、Azure Machine Learning service におけるトレーニング スクリプトへのログ記録の追加、実験の実行の送信、実行の監視、実行の結果の表示を行う方法について説明します。 実験を追跡し、メトリックを監視することで、モデルの作成プロセスを拡張します。 
 
 ## <a name="list-of-training-metrics"></a>トレーニング メトリックの一覧 
 
 実験のトレーニング中に、次のメトリックを実行に追加できます。 実行で追跡できる内容の詳細な一覧については、[Run クラスのリファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)をご覧ください。
 
-|type| Python 関数 | メモ|
+|Type| Python 関数 | メモ|
 |----|:----|:----|
 |スカラー値 |関数:<br>`run.log(name, value, description='')`<br><br>例:<br>run.log("accuracy", 0.95) |指定した名前で実行に数値または文字列値を記録します。 実行にメトリックを記録すると、メトリックは実験の実行レコードに格納されます。  同じメトリックを実行内で複数回記録でき、結果はそのメトリックのベクターと見なされます。|
 |リスト|関数:<br>`run.log_list(name, value, description='')`<br><br>例:<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 指定した名前で実行に値リストを記録します。|
-|行|関数:<br>`run.log_row(name, description=None, **kwargs)<br>例:<br>run.log_row("Y over X", x=1, y=0.4) | *log_row* を使用すると、kwargs で記述されているように、複数の列を含むメトリックが作成されます。 各名前付きパラメーターにより、指定した値の列が生成されます。  *log_row* を 1 回呼び出すと任意のタプルを記録でき、ループ内で複数回呼び出すと完全なテーブルを生成できます。|
+|行|関数:<br>`run.log_row(name, description=None, **kwargs)`<br>例:<br>run.log_row("Y over X", x=1, y=0.4) | *log_row* を使用すると、kwargs で記述されているように、複数の列を含むメトリックが作成されます。 各名前付きパラメーターにより、指定した値の列が生成されます。  *log_row* を 1 回呼び出すと任意のタプルを記録でき、ループ内で複数回呼び出すと完全なテーブルを生成できます。|
 |テーブル|関数:<br>`run.log_table(name, value, description='')`<br><br>例:<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 指定した名前で実行にディクショナリ オブジェクトを記録します。 |
-|イメージ|関数:<br>`run.log_image(name, path=None, plot=None)`<br><br>例:<br>run.log_image("ROC", plt) | 実行レコードにイメージを記録します。 log_image を使用してイメージ ファイルに記録するか、または matplotlib を使用して実行にプロットします。  これらのイメージは実行レコードで表示して比較できます。|
+|イメージ|関数:<br>`run.log_image(name, path=None, plot=None)`<br><br>例:<br>`run.log_image("ROC", plt)` | 実行レコードにイメージを記録します。 log_image を使用してイメージ ファイルに記録するか、または matplotlib を使用して実行にプロットします。  これらのイメージは実行レコードで表示して比較できます。|
 |実行にタグを付ける|関数:<br>`run.tag(key, value=None)`<br><br>例:<br>run.tag("selected", "yes") | 文字列キーと省略可能な文字列値で実行にタグを付けます。|
 |ファイルまたはディレクトリをアップロードする|関数:<br>`run.upload_file(name, path_or_stream)`<br> <br> 例:<br>run.upload_file("best_model.pkl", "./model.pkl") | 実行レコードにファイルをアップロードします。 実行は指定された出力ディレクトリ内のファイルを自動的にキャプチャします。ディレクトリの既定値は、ほとんどの実行種類で "./outputs" です。  追加のファイルをアップロードする必要がある場合、または出力ディレクトリが指定されていない場合にのみ、upload_file を使用します。 出力ディレクトリにアップロードされるように、名前に `outputs` を追加することをお勧めします。 `run.get_file_names()` を呼び出すことにより、この実行レコードに関連付けられているすべてのファイルの一覧を取得できます。|
 
@@ -49,13 +48,13 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 ## <a name="set-up-the-workspace"></a>ワークスペースを設定する
 ログを追加して実験を送信する前に、ワークスペースを設定する必要があります。
 
-1. ワークスペースを読み込みます。 ワークスペースの構成の設定について詳しくは、[クイック スタート](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started)に従ってください。
+1. ワークスペースを読み込みます。 ワークスペース構成の設定について詳しくは、「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md#sdk)」の手順に従ってください。
 
-  ```python
-  from azureml.core import Experiment, Run, Workspace
-  import azureml.core
+   ```python
+   from azureml.core import Experiment, Run, Workspace
+   import azureml.core
   
-  ws = Workspace(workspace_name = <<workspace_name>>,
+   ws = Workspace(workspace_name = <<workspace_name>>,
                subscription_id = <<subscription_id>>,
                resource_group = <<resource_group>>)
    ```
@@ -68,95 +67,95 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 
 1. ローカルの Jupyter Notebook でトレーニング スクリプトを作成します。 
 
-  ``` python
-  # load diabetes dataset, a well-known small dataset that comes with scikit-learn
-  from sklearn.datasets import load_diabetes
-  from sklearn.linear_model import Ridge
-  from sklearn.metrics import mean_squared_error
-  from sklearn.model_selection import train_test_split
-  from sklearn.externals import joblib
+   ``` python
+   # load diabetes dataset, a well-known small dataset that comes with scikit-learn
+   from sklearn.datasets import load_diabetes
+   from sklearn.linear_model import Ridge
+   from sklearn.metrics import mean_squared_error
+   from sklearn.model_selection import train_test_split
+   from sklearn.externals import joblib
 
-  X, y = load_diabetes(return_X_y = True)
-  columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-  data = {
+   X, y = load_diabetes(return_X_y = True)
+   columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+   data = {
       "train":{"X": X_train, "y": y_train},        
       "test":{"X": X_test, "y": y_test}
-  }
-  reg = Ridge(alpha = 0.03)
-  reg.fit(data['train']['X'], data['train']['y'])
-  preds = reg.predict(data['test']['X'])
-  print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
-  joblib.dump(value = reg, filename = 'model.pkl');
-  ```
+   }
+   reg = Ridge(alpha = 0.03)
+   reg.fit(data['train']['X'], data['train']['y'])
+   preds = reg.predict(data['test']['X'])
+   print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
+   joblib.dump(value = reg, filename = 'model.pkl');
+   ```
 
 2. Azure Machine Learning service SDK を使用して実験の追跡を追加し、永続化されたモデルを実験の実行レコードにアップロードします。 次のコードでは、タグを追加し、ログを記録して、実験の実行にモデル ファイルをアップロードします。
 
-  ```python
-  # Get an experiment object from Azure Machine Learning
-  experiment = Experiment(workspace = ws, name = "train-within-notebook")
+   ```python
+   # Get an experiment object from Azure Machine Learning
+   experiment = Experiment(workspace = ws, name = "train-within-notebook")
   
-  # Create a run object in the experiment
-  run = experiment.start_logging()# Log the algorithm parameter alpha to the run
-  run.log('alpha', 0.03)
+   # Create a run object in the experiment
+   run = experiment.start_logging()# Log the algorithm parameter alpha to the run
+   run.log('alpha', 0.03)
 
-  # Create, fit, and test the scikit-learn Ridge regression model
-  regression_model = Ridge(alpha=0.03)
-  regression_model.fit(data['train']['X'], data['train']['y'])
-  preds = regression_model.predict(data['test']['X'])
+   # Create, fit, and test the scikit-learn Ridge regression model
+   regression_model = Ridge(alpha=0.03)
+   regression_model.fit(data['train']['X'], data['train']['y'])
+   preds = regression_model.predict(data['test']['X'])
 
-  # Output the Mean Squared Error to the notebook and to the run
-  print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
-  run.log('mse', mean_squared_error(data['test']['y'], preds))
+   # Output the Mean Squared Error to the notebook and to the run
+   print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
+   run.log('mse', mean_squared_error(data['test']['y'], preds))
 
-  # Save the model to the outputs directory for capture
-  joblib.dump(value=regression_model, filename='outputs/model.pkl')
+   # Save the model to the outputs directory for capture
+   joblib.dump(value=regression_model, filename='outputs/model.pkl')
 
-  # Take a snapshot of the directory containing this notebook
-  run.take_snapshot('./')
+   # Take a snapshot of the directory containing this notebook
+   run.take_snapshot('./')
 
-  # Complete the run
-  run.complete()
+   # Complete the run
+   run.complete()
   
-  ```
+   ```
 
 スクリプトが ```run.complete()``` で終了すると、実行は完了としてマークされます。  この関数は通常、対話型ノートブックのシナリオで使用されます。
 
 ## <a name="option-2-use-scriptrunconfig"></a>オプション 2:ScriptRunConfig を使用する
 
-**ScriptRunConfig** は、スクリプト実行の構成をセットアップするためのクラスです。 このオプションでは、監視コードを追加して、完了の通知を受け取るか、または監視するためのビジュアル ウィジェットを取得できます。
+[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) は、スクリプト実行の構成を設定するためのクラスです。 このオプションでは、監視コードを追加して、完了の通知を受け取るか、または監視するためのビジュアル ウィジェットを取得できます。
 
 この例は、上記の基本的な sklearn Ridge モデルを拡張します。 単純なパラメーター スイープを行ってモデルのアルファ値をスイープし、実行でのメトリックとトレーニング済みモデルを実験にキャプチャします。 例は、ユーザー管理の環境に対してローカルに実行します。 
 
-1. トレーニング スクリプトを作成します。 このコードでは、```%%writefile%%``` を使用して、トレーニング コードを ```train.py``` としてスクリプト フォルダーに書き出します。
+1. トレーニング スクリプト `train.py` を作成します。
 
-  ```python
-  %%writefile $project_folder/train.py
+   ```python
+   # train.py
 
-  import os
-  from sklearn.datasets import load_diabetes
-  from sklearn.linear_model import Ridge
-  from sklearn.metrics import mean_squared_error
-  from sklearn.model_selection import train_test_split
-  from azureml.core.run import Run
-  from sklearn.externals import joblib
+   import os
+   from sklearn.datasets import load_diabetes
+   from sklearn.linear_model import Ridge
+   from sklearn.metrics import mean_squared_error
+   from sklearn.model_selection import train_test_split
+   from azureml.core.run import Run
+   from sklearn.externals import joblib
 
-  import numpy as np
+   import numpy as np
 
-  #os.makedirs('./outputs', exist_ok = True)
+   #os.makedirs('./outputs', exist_ok = True)
 
-  X, y = load_diabetes(return_X_y = True)
+   X, y = load_diabetes(return_X_y = True)
 
-  run = Run.get_context()
+   run = Run.get_context()
 
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-  data = {"train": {"X": X_train, "y": y_train},
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+   data = {"train": {"X": X_train, "y": y_train},
           "test": {"X": X_test, "y": y_test}}
 
-  # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = mylib.get_alphas()
+   # list of numbers from 0.0 to 1.0 with a 0.05 interval
+   alphas = mylib.get_alphas()
 
-  for alpha in alphas:
+   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
       reg = Ridge(alpha = alpha)
       reg.fit(data["train"]["X"], data["train"]["y"])
@@ -180,43 +179,48 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 
       print('alpha is {0:.2f}, and mse is {1:0.2f}'.format(alpha, mse))
   
-  ```
+   ```
 
-2. ```train.py``` スクリプトは ```mylib.py``` を参照しています。 このファイルにより、Ridge モデルで使用するアルファ値の一覧を取得できます。
+2. `train.py` スクリプトは、Ridge モデルで使用するアルファ値の一覧を取得できる `mylib.py` を参照します。
 
-  ```python
-  %%writefile $script_folder/mylib.py
-  import numpy as np
+   ```python
+   # mylib.py
+  
+   import numpy as np
 
-  def get_alphas():
+   def get_alphas():
       # list of numbers from 0.0 to 1.0 with a 0.05 interval
       return np.arange(0.0, 1.0, 0.05)
-  ```
+   ```
 
 3. ユーザー管理のローカル環境を構成します。
 
-  ```python
-  from azureml.core.runconfig import RunConfiguration
+   ```python
+   from azureml.core.runconfig import RunConfiguration
 
-  # Editing a run configuration property on-fly.
-  run_config_user_managed = RunConfiguration()
+   # Editing a run configuration property on-fly.
+   run_config_user_managed = RunConfiguration()
 
-  run_config_user_managed.environment.python.user_managed_dependencies = True
+   run_config_user_managed.environment.python.user_managed_dependencies = True
 
-  # You can choose a specific Python environment by pointing to a Python path 
-  #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
-  ```
+   # You can choose a specific Python environment by pointing to a Python path 
+   #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
+   ```
 
 4. ```train.py``` スクリプトを送信して、ユーザー管理の環境内で実行します。 ```mylib.py``` ファイルも含めて、このスクリプト フォルダー全体がトレーニングのために送信されます。
 
-  ```python
-  from azureml.core import ScriptRunConfig
+   ```python
+   from azureml.core import ScriptRunConfig
   
-  experiment = Experiment(workspace=ws, name="train-on-local")
-  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
-  run = experiment.submit(src)
-  ```
-  
+   experiment = Experiment(workspace=ws, name="train-on-local")
+   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+   run = experiment.submit(src)
+   ```
+
+## <a name="manage-a-run"></a>実行の管理
+
+[トレーニングの実行の開始、監視、キャンセル](how-to-manage-runs.md)に関する記事では、実験の管理方法に関する特定の Azure Machine Learning ワークフローについて紹介しています。
+
 ## <a name="view-run-details"></a>実行の詳細を表示する
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Jupyter Notebook ウィジェットで実行を監視する
@@ -224,17 +228,17 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 
 1. 実行が完了するのを待っている間、Jupyter ウィジェットを表示します。
 
-  ```python
-  from azureml.widgets import RunDetails
-  RunDetails(run).show()
-  ```
+   ```python
+   from azureml.widgets import RunDetails
+   RunDetails(run).show()
+   ```
 
-  ![Jupyter Notebook ウィジェットのスクリーンショット](./media/how-to-track-experiments/widgets.PNG)
+   ![Jupyter Notebook ウィジェットのスクリーンショット](./media/how-to-track-experiments/widgets.PNG)
 
-2. **[自動化された機械学習の実行の場合]** 前回の実行のグラフにアクセスするには。 `<<experiment_name>>` は適切な実験名に置き換えてください。
+2. **[自動化された機械学習の実行の場合]** 前回の実行のグラフにアクセスするには。 `<<experiment_name>>` を適切な実験名に置き換えます。
 
    ``` 
-   from azureml.train.widgets import RunDetails
+   from azureml.widgets import RunDetails
    from azureml.core.run import Run
 
    experiment = Experiment (workspace, <<experiment_name>>)
@@ -243,7 +247,7 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
    RunDetails(run).show()
    ```
 
-  ![自動機械学習の場合の Jupyter Notebook ウィジェット](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+   ![自動機械学習の場合の Jupyter Notebook ウィジェット](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
 パイプラインをさらに詳しく見るには、調べるパイプラインをテーブルでクリックすると、Azure portal のポップアップにグラフがレンダリングされます。
@@ -298,17 +302,17 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 
 1. ワークスペースの左側のパネルで **[実験]** を選択します。
 
-  ![実験メニューのスクリーンショット](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
+   ![実験メニューのスクリーンショット](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
 
 1. 興味のある実験を選択します。
 
-  ![実験リスト](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+   ![実験リスト](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
 
 1. テーブルで実行番号を選択します。
 
    ![実験の実行](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
 
-1.  テーブルで、さらに調べるモデルの繰り返し番号を選択します。
+1. テーブルで、さらに調べるモデルの繰り返し番号を選択します。
 
    ![実験モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
 
@@ -319,7 +323,7 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 Azure Machine Learning の自動機械学習機能を使って作成されたすべての分類モデルについて、次のグラフを見ることができます。 
 + [混同行列](#confusion-matrix)
 + [精度/再現率グラフ](#precision-recall-chart)
-+ [受信者操作特性 (ROC)](#ROC)
++ [受信者操作特性 (ROC)](#roc)
 + [リフト曲線](#lift-curve)
 + [ゲイン曲線](#gains-curve)
 + [調整プロット](#calibration-plot)
@@ -418,7 +422,7 @@ Azure Machine Learning の自動機械学習機能を使って作成されたす
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 次の Notebook は、この記事の概念を示しています。
-* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training\train-within-notebook)
+* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 

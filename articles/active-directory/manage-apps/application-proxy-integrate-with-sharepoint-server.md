@@ -3,24 +3,25 @@ title: Azure AD アプリケーション プロキシによる SharePoint への
 description: オンプレミスの SharePoint サーバーを Azure AD アプリケーション プロキシと統合する方法の基礎について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 9b8ae85d1a5410677dd9299ebb947c2189a6b663
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7dc80b78bbba369e0ddb5c2c1e9fd90834dc0148
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166185"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120416"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化
 
@@ -49,7 +50,7 @@ SharePoint サーバーの KCD を設定するには、以下のセクション�
 まず、SharePoint Web アプリケーションがローカル システム、ローカル サービス、ネットワーク サービスのいずれでもなく、ドメイン アカウントで実行されていることを確認します。 これを行って、このアカウントにサービス プリンシパル名 (SPN) をアタッチできるようにします。 SPN は、Kerberos プロトコルがさまざまなサービスを特定する方法です。 そして、KCD を構成するために後でアカウントが必要になります。
 
 > [!NOTE]
-サービス用に事前に作成した Azure AD アカウントが必要です。 パスワードの自動変更を許可することをお勧めします。 問題のトラブルシューティングの完全な手順の詳細については、「[SharePoint Server でのパスワードの自動変更の構成](https://technet.microsoft.com/library/ff724280.aspx)」を参照してください。
+> サービス用に事前に作成した Azure AD アカウントが必要です。 パスワードの自動変更を許可することをお勧めします。 問題のトラブルシューティングの完全な手順の詳細については、「[SharePoint Server でのパスワードの自動変更の構成](https://technet.microsoft.com/library/ff724280.aspx)」を参照してください。
 
 サイトが定義済みのサービス アカウントで実行されていることを確認するには、次の手順に従います。
 
@@ -57,7 +58,7 @@ SharePoint サーバーの KCD を設定するには、以下のセクション�
 2. **[セキュリティ]** に移動し、**[サービス アカウントの構成]** を選択します。
 3. **[Web アプリケーション プール - SharePoint - 80]** を選択します。 Web プールの名前に応じて、オプションが若干異なることがあります。Web プールが既定で SSL を使用している場合も同様です。
 
-  ![サービス アカウントを構成するための選択肢](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
+   ![サービス アカウントを構成するための選択肢](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
 4. **[このコンポーネントのアカウントの選択]** フィールドが **[ローカル サービス]** または **[ネットワーク サービス]** の場合は、アカウントを作成する必要があります。 アカウントがそのどちらでもない場合は完了しているため、次のセクションに進むことができます。
 5. **[新しい管理アカウントの登録]** を選択します。 アカウントを作成したら、アカウントを使用する前に **Web アプリケーション プール**を設定する必要があります。
@@ -107,7 +108,7 @@ KCD を構成するには、コネクタ コンピューターごとに以下の
 6. SPN の一覧で、先ほどサービス アカウント用に作成した SPN を選びます。
 7. Click **OK**. もう一度 **[OK]** をクリックして変更を保存します。
   
-  ![Delegation settings](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
+   ![Delegation settings](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
 
 ## <a name="step-2-configure-azure-ad-proxy"></a>手順 2:Azure AD プロキシを構成する
 
@@ -141,18 +142,18 @@ KCD を構成したので、Azure AD アプリケーション プロキシを構
 1. **SharePoint 管理シェル**を起動します。
 2. 次のスクリプトを実行して Web アプリケーションをエクストラネット ゾーンに拡張し、Kerberos 認証を有効にします。
 
-  ```powershell
-  # Replace "http://spsites/" with the URL of your web application
-  # Replace "https://sharepoint-f128.msappproxy.net/" with the External URL in your Azure AD proxy application
-  $winAp = New-SPAuthenticationProvider -UseWindowsIntegratedAuthentication -DisableKerberos:$false
-  Get-SPWebApplication "http://spsites/" | New-SPWebApplicationExtension -Name "SharePoint - AAD Proxy" -SecureSocketsLayer -Zone "Extranet" -Url "https://sharepoint-f128.msappproxy.net/" -AuthenticationProvider $winAp
-  ```
+   ```powershell
+   # Replace "http://spsites/" with the URL of your web application
+   # Replace "https://sharepoint-f128.msappproxy.net/" with the External URL in your Azure AD proxy application
+   $winAp = New-SPAuthenticationProvider -UseWindowsIntegratedAuthentication -DisableKerberos:$false
+   Get-SPWebApplication "http://spsites/" | New-SPWebApplicationExtension -Name "SharePoint - AAD Proxy" -SecureSocketsLayer -Zone "Extranet" -Url "https://sharepoint-f128.msappproxy.net/" -AuthenticationProvider $winAp
+   ```
 
 3. **[SharePoint サーバーの全体管理]** サイトを開きます。
 4. **[システム設定]** で、**[代替アクセス マッピングの構成]** を選択します。 [代替アクセス マッピング] ボックスが開きます。
 5. サイト (例: **[SharePoint - 80]**) を選択します。 この時点で、エクストラネット ゾーンの内部 URL はまだ正しく設定されていません。
 
-  ![[代替アクセス マッピング] ボックス](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
+   ![[代替アクセス マッピング] ボックス](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
 
 6. **[内部 URL の追加]** をクリックします。
 7. **[URL のプロトコル、ホスト、およびポート]** テキストボックスに Azure AD プロキシで構成した**内部 URL** (<https://SharePoint/> など) を入力します。
@@ -160,7 +161,7 @@ KCD を構成したので、Azure AD アプリケーション プロキシを構
 9. **[Save]** をクリックします。
 10. [代替アクセス マッピング] は次のようになります。
 
-  ![正しい [代替アクセス マッピング]](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
+    ![正しい [代替アクセス マッピング]](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
 
 ## <a name="step-4-ensure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>手順 4:エクストラネット ゾーンの IIS サイト用に HTTPS 証明書が構成されていることを確認する
 
@@ -169,13 +170,13 @@ SharePoint の構成はこれで完了しましたが、エクストラネット
 1. Windows PowerShell コンソールを開きます。
 2. 次のスクリプトを実行して自己署名証明書を生成し、それをコンピューターの MY ストアに追加します。
 
-  ```powershell
-  # Replace "SharePoint" with the actual hostname of the Internal URL of your Azure AD proxy application
-  New-SelfSignedCertificate -DnsName "SharePoint" -CertStoreLocation "cert:\LocalMachine\My"
-  ```
+   ```powershell
+   # Replace "SharePoint" with the actual hostname of the Internal URL of your Azure AD proxy application
+   New-SelfSignedCertificate -DnsName "SharePoint" -CertStoreLocation "cert:\LocalMachine\My"
+   ```
 
-  > [!NOTE]
-  自己署名証明書はテスト目的にのみ適しています。 運用環境では、代わりに証明機関が発行した証明書を使用することを強くお勧めします。
+   > [!NOTE]
+   > 自己署名証明書はテスト目的にのみ適しています。 運用環境では、代わりに証明機関が発行した証明書を使用することを強くお勧めします。
 
 3. [インターネット インフォメーション サービス マネージャー] コンソールを開きます。
 4. ツリー ビューでサーバーを展開し、[サイト] を展開し、サイト [SharePoint - AAD Proxy] を選択して **[バインド]** をクリックします。

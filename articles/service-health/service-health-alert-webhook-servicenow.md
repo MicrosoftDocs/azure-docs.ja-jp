@@ -1,23 +1,17 @@
 ---
 title: ServiceNow で Azure サービス正常性アラートを構成する | Microsoft Docs
 description: ServiceNow インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
-author: shawntabrizi
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
-ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: stephbaron
+ms.author: stbaron
 ms.topic: article
+ms.service: service-health
 ms.date: 11/14/2017
-ms.author: shtabriz
-ms.openlocfilehash: 3f8e0e94cf3b63b3ea409b46cb9eec3d5d97eb6f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f17215a5695128bf2ea507efa0c12fdbba9467d2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580333"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858860"
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>ServiceNow でサービス正常性アラートを構成する
 
@@ -78,7 +72,7 @@ ms.locfileid: "53580333"
                     short_description += " - Service Issue - ";
                 } else if (event.data.context.activityLog.properties.incidentType == "Maintenance") {
                     short_description += " - Planned Maintenance - ";
-                } else if (event.data.context.activityLog.properties.incidentType == "Information" || event.data.context.activityLog.properties.incidentType == "ActionRequired") {
+                } else if (event.data.context.activityLog.properties.incidentType == "Informational" || event.data.context.activityLog.properties.incidentType == "ActionRequired") {
                     short_description += " - Health Advisory - ";
                 }
                 short_description += event.data.context.activityLog.properties.title;

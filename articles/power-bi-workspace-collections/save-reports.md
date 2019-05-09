@@ -1,21 +1,19 @@
 ---
 title: Power BI ワークスペース コレクションでのレポートの保存 | Microsoft Docs
 description: Power BI ワークスペース コレクション内でレポートを保存する方法について説明します。 この操作を正常に実行するには、適切なアクセス許可が必要です。
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 277667bb3b4e39acbb935285e984660a3b44993d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc3c9f71900abcbba440db259d92df53a4c7a586
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047958"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516452"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでのレポートの保存
 
@@ -47,9 +45,10 @@ Power BI ワークスペース コレクション内で既存のレポートを�
 
 JavaScript の例:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -75,6 +74,7 @@ JavaScript の例:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 これで、レポートが編集モードでアプリに埋め込まれます。
@@ -83,7 +83,7 @@ JavaScript の例:
 
 適切なトークンとアクセス許可を使用してレポートを編集モードで埋め込んだ後、[ファイル] メニューまたは JavaScript を使用してレポートを保存できます。
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
 
@@ -93,7 +93,7 @@ JavaScript の例:
 
 ## <a name="save-as"></a>名前を付けて保存
 
-```
+```javascript
 // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -110,9 +110,9 @@ JavaScript の例:
 
 次に、"*名前を付けて保存*" した後に、新しいレポートを読み込む必要があります。 新しいレポートの読み込みは、他のレポートを埋め込む場合と同様です。
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -124,6 +124,7 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="see-also"></a>関連項目
@@ -135,5 +136,5 @@ var embedConfiguration = {
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。
 

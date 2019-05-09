@@ -3,9 +3,9 @@ title: Azure Service Bus のロールベースのアクセス制御 (RBAC) (プ�
 description: Azure Service Bus のロールベースのアクセス制御
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
-ms.author: spelluru
-ms.openlocfilehash: c2a0fdd9fc006a9c849a71d6064959759886d920
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: aschhab
+ms.openlocfilehash: 7ef152b130e77e833e19c51ff97d0cea577216c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309469"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845003"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -47,7 +47,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 ### <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
 
-次に、RBAC のプレビューをサポートする Azure リージョンのいずれか (**米国東部**、**米国東部 2**、または**西ヨーロッパ**) で、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します。
+次に、RBAC のプレビューをサポートする次の Azure リージョンのいずれかで、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します:**米国東部**、**米国東部 2**、または**西ヨーロッパ**。
 
 名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
 
@@ -57,7 +57,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 サンプル アプリケーションを実行できるようにするには、その前に、アプリケーションを Azure AD に登録し、アプリケーションが Azure Service Bus にアクセスすることを許可する同意プロンプトに同意します。
 
-サンプル アプリケーションはコンソール アプリケーションであるため、ネイティブ アプリケーションを登録し、**Microsoft.ServiceBus** に対する API アクセス許可を "必要なアクセス許可" セットに追加する必要があります。 また、ネイティブ アプリケーションには識別子として機能する Azure AD の**リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `http://servicebus.microsoft.com` を既に使っているため、この URI を使います。
+サンプル アプリケーションはコンソール アプリケーションであるため、ネイティブ アプリケーションを登録し、**Microsoft.ServiceBus** に対する API アクセス許可を "必要なアクセス許可" セットに追加する必要があります。 また、ネイティブ アプリケーションには識別子として機能する Azure AD の**リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `https://servicebus.microsoft.com` を既に使っているため、この URI を使います。
 
 登録の詳細な手順については、[こちらのチュートリアル](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)をご覧ください。 手順に従って**ネイティブ** アプリを登録した後、更新手順に従って **Microsoft.ServiceBus** API を必要なアクセス許可に追加します。 手順を実行している間に、**TenantId** と **ApplicationId** を書き留めておきます。これらの値はアプリケーションを実行するために必要です。
 

@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 87d2ebcf6a12f51775b15e906ea7813962e3630f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965378"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105286"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -208,6 +208,15 @@ ms.locfileid: "52965378"
 <set-backend-service base-url="base URL of the backend service" />
 ```
 
+or
+
+```xml
+<set-backend-service backend-id="identifier of the backend entity specifying base URL of the backend service" />
+```
+
+> [!NOTE]
+> バックエンド エンティティは、管理 [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます。
+
 ### <a name="example"></a>例
 
 ```xml
@@ -260,8 +269,8 @@ ms.locfileid: "52965378"
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
-|base-url|バックエンド サービスの新しいベース URL。|いいえ |該当なし|
-|backend-id|ルーティング先のバックエンドの識別子。|いいえ |該当なし|
+|base-url|バックエンド サービスの新しいベース URL。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
+|backend-id|ルーティング先のバックエンドの識別子。 (バックエンド エンティティは、[API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます)。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
 |sf-partition-key|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 名前解決サービスからの特定のパーティションを解決するために使います。|いいえ |該当なし|
 |sf-replica-type|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 要求をパーティションのプライマリ レプリカとセカンダリ レプリカのどちらに送信する必要があるかを制御します。 |いいえ |該当なし|
 |sf-resolve-condition|バックエンドが Service Fabric サービスの場合にのみ適用されます。 Service Fabric バックエンドへの呼び出しを新しい解決で繰り返す必要があるかどうかを識別する条件です。|いいえ |該当なし|
@@ -280,13 +289,13 @@ ms.locfileid: "52965378"
 
 > [!IMPORTANT]
 >  既定では、`context.Request.Body` または `context.Response.Body` を使用してメッセージ本文にアクセスした場合元のメッセージ本文は失われるため、この本文を式で返して設定する必要があります。 本文の内容を保持するには、メッセージへのアクセス時に `preserveContent` パラメーターを `true` に設定します。 `preserveContent` を `true` に設定している場合に式から別の本文が返されると、返された本文が使用されます。
->
+> 
 >  `set-body` ポリシーを使用する際は次の考慮事項に注意してください。
->
->  -   `set-body` ポリシーを使用して新しい本文はまたは更新した本文を返す場合、新しい本文の内容を明示的に指定しているため、`preserveContent` を `true` に設定する必要はありません。
-> -   受信パイプラインには応答が存在しないため、このパイプラインで応答の内容を保持しても意味がありません。
-> -   送信パイプラインで要求の内容を保持しても、要求はこの時点で既にバックエンドに送信されているため意味がありません。
-> -   受信パイプラインの GET 内など、メッセージ本文がない場合にこのポリシーを使用すると、例外がスローされます。
+> 
+> - `set-body` ポリシーを使用して新しい本文はまたは更新した本文を返す場合、新しい本文の内容を明示的に指定しているため、`preserveContent` を `true` に設定する必要はありません。
+>   -   受信パイプラインには応答が存在しないため、このパイプラインで応答の内容を保持しても意味がありません。
+>   -   送信パイプラインで要求の内容を保持しても、要求はこの時点で既にバックエンドに送信されているため意味がありません。
+>   -   受信パイプラインの GET 内など、メッセージ本文がない場合にこのポリシーを使用すると、例外がスローされます。
 
  詳細については、[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)に関する表の `context.Request.Body``context.Response.Body``IMessage` の各セクションを参照してください。
 
@@ -318,7 +327,7 @@ ms.locfileid: "52965378"
 </set-body>
 ```
 
-#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>JObject である本文にアクセスする例。 元の要求本文を予約していないため、後からパイプラインでアクセスすると例外が発生することに注意してください。
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>JObject である本文にアクセスする例。 元の要求本文を予約していないため、後でパイプラインでそこにアクセスすると例外が発生することに注意してください。
 
 ```xml
 <set-body> 
@@ -376,7 +385,7 @@ ms.locfileid: "52965378"
 </set-body>
 ```
 
-#### <a name="tranform-json-using-a-liquid-template"></a>Liquid テンプレートを使用した JSON の変換
+#### <a name="transform-json-using-a-liquid-template"></a>Liquid テンプレートを使用した JSON の変換
 ```xml
 {
 "order": {
@@ -482,17 +491,15 @@ OriginalUrl.
  詳細については、[ポリシー式](api-management-policy-expressions.md)および[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)に関する各ページを参照してください。
 
 > [!NOTE]
-> ヘッダーの複数の値が次のように CSV 文字列に連結されます。  
-> `headerName: value1,value2,value3`
+> ヘッダーの複数の値が次のように CSV 文字列に連結されます。`headerName: value1,value2,value3`
 >
 > 値が次の性質を持つ標準化されたヘッダーは例外です。
 > - コンマを含む可能性がある (`User-Agent`、`WWW-Authenticate`、`Proxy-Authenticate`)。
 > - 日付を含む可能性がある (`Cookie`、`Set-Cookie`、`Warning`)。
 > - 日付を含む (`Date`、`Expires`、`If-Modified-Since`、`If-Unmodified-Since`、`Last-Modified`、`Retry-After`)。
 >
-> これらの例外の場合は、複数のヘッダー値が 1 つの文字列に連結されることはなく、次のように個別のヘッダーとして渡されます。  
->`User-Agent: value1`  
->`User-Agent: value2`  
+> これらの例外の場合は、複数のヘッダー値が 1 つの文字列に連結されることはなく、次のように個別のヘッダーとして渡されます。`User-Agent: value1`
+>`User-Agent: value2`
 >`User-Agent: value3`
 
 ### <a name="elements"></a>要素
@@ -579,11 +586,11 @@ OriginalUrl.
 ##  <a name="RewriteURL"></a> URL の書き換え
  `rewrite-uri` ポリシーは、次の例に示すように、要求 URL をパブリックな形式から Web サービスで想定されている形式に変換します。
 
--   パブリック URL - `http://api.example.com/storenumber/ordernumber`
+- パブリック URL - `http://api.example.com/storenumber/ordernumber`
 
--   要求 URL - `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- 要求 URL - `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
- このポリシーは、人間やブラウザーにとって使いやすい URL を Web サービスで求められる URL 形式に変換する必要がある場合に使用します。 このポリシーを適用する必要があるのは、クリーン URL、RESTful URL、ユーザーフレンドリ URL、SEO フレンドリ URL など、(スキーマと機関の後に) クエリ文字列を含まずリソースのパスのみを含む純粋に構造的な URL のような代替 URL 形式を公開する場合のみです。 これは、一般的に、美学上、使いやすさ、または検索エンジン最適化 (SEO) の目的で行われます。
+  このポリシーは、人間やブラウザーにとって使いやすい URL を Web サービスで求められる URL 形式に変換する必要がある場合に使用します。 このポリシーを適用する必要があるのは、クリーン URL、RESTful URL、ユーザーフレンドリ URL、SEO フレンドリ URL など、(スキーマと機関の後に) クエリ文字列を含まずリソースのパスのみを含む純粋に構造的な URL のような代替 URL 形式を公開する場合のみです。 これは、一般的に、美学上、使いやすさ、または検索エンジン最適化 (SEO) の目的で行われます。
 
 > [!NOTE]
 >  ポリシーを使用して追加できるのはクエリ文字列パラメーターのみです。 書き換え URL にさらにテンプレート パス パラメーターを追加することはできません。

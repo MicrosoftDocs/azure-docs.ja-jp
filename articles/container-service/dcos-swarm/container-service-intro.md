@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 348bde94bc01e00777603af8ac078d5e319d732c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 25b6f2b1e79cb6efdcb9d7ee0e956648673e48c0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001997"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528867"
 ---
 # <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(非推奨) Azure Container Service を使用した Docker コンテナー ホスティング ソリューションの概要 
 
@@ -38,7 +38,7 @@ Azure Container Service を使用するには、ポータル経由か (Marketpla
 Azure Container Service では、オーケストレーション用に Docker Swarm、DC/OS、または Kubernetes を選択できます。 アプリケーションをデプロイする方法は、選択したオーケストレーターによって異なります。
 
 ### <a name="using-dcos"></a>DC/OS の使用
-DC/OS は、Apache Mesos 分散システムのカーネルをベースとする分散オペレーティング システムです。 Apache Mesos は、Apache Software Foundation の下で管理されており、そのユーザーや協力会社として [大手 IT 企業](http://mesos.apache.org/documentation/latest/powered-by-mesos/) が名前を連ねています。
+DC/OS は、Apache Mesos 分散システムのカーネルをベースとする分散オペレーティング システムです。 Apache Mesos は、Apache Software Foundation の下で管理されており、そのユーザーや協力会社として [大手 IT 企業](https://mesos.apache.org/documentation/latest/powered-by-mesos/) が名前を連ねています。
 
 ![DC/OS 用に構成された Azure Container Service。エージェントとマスターが示されている。](media/acs-intro/dcos.png)
 

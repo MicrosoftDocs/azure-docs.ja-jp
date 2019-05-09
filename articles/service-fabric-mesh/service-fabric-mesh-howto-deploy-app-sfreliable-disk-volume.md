@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric Mesh アプリケーションで高可用な Service Fabric Reliable Disk Volume を使用する | Microsoft Docs
+title: Azure Service Fabric Mesh アプリケーション内で高可用な Service Fabric Reliable Disk Volume を使用する | Microsoft Docs
 description: Azure CLI を使用して、Service Fabric Reliable Disk ベースのボリュームをコンテナー内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
 services: service-fabric-mesh
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2ed64bbf0da252285184e2ca6fef0555a85ce149
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955323"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850855"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで高可用な Service Fabric Reliable Disk ベースのボリュームをマウントする 
 コンテナー アプリで状態を保持する一般的な方法は、Azure File Storage などのリモート ストレージ、または Azure Cosmos DB などのデータベースを使用することです。 これにより、リモート ストアに対する読み取りおよび書き込みのネットワーク待機時間が大幅に増えます。

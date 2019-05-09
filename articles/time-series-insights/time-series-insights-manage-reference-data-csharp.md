@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: cded580e9083b9056bafe8070626a34726e8595a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d15e229595ded0f814ebc4048d428f044b59e16d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556001"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295731"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の参照データを管理する
 
 この記事では、コンパイルして Azure Time Series Insights 環境の参照データを管理できるサンプル C# プロジェクトについて説明します。
 
-## <a name="prerequistes"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 サンプル コードをコンパイルして実行する前に、次の手順を実行します。
 1. [参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。
 
@@ -241,4 +241,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>次の手順
-[参照データ API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)
+[参照データ API](/rest/api/time-series-insights/ga-reference-data-api)

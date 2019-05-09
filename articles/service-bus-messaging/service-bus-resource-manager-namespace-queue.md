@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/11/2018
+ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 4010f1582b726993a5540898492c76aa543fa2d9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 2952c446e2d66505ebaec42eb82e37be02035483
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407741"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59047791"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
 
@@ -38,8 +38,8 @@ ms.locfileid: "47407741"
 > * [トピック、サブスクリプション、ルールを含んだ Service Bus の名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
 > 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "**Service Bus**" を検索してください。
-> 
-> 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-will-you-deploy"></a>デプロイの対象
 
@@ -117,13 +117,15 @@ Service Bus 名前空間に作成するキューの名前。
     }]
 ```
 
+JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces) と [queues](/azure/templates/microsoft.servicebus/namespaces/queues) のページを参照してください。
+
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
+New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI

@@ -4,18 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Translator Speech API のリファレンス ドキュメントです。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: dea32146c1e00869de43b50823e81853e6543411
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259428"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675111"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
@@ -90,7 +91,7 @@ GET /speech/translate によって音声翻訳のセッションが確立され�
 クライアントは、WAV (RIFF) ヘッダーの送信後にオーディオ データのチャンクを送信します。 クライアントは通常、固定期間を表す固定サイズのチャンクをストリーミングします (たとえば、一度に 100 ms のオーディオをストリーミングします)。
 
 ### <a name="signal-the-end-of-the-utterance"></a>発話の終わりを示す
-Translator Speech API では、ユーザーがオーディオを送信すると、オーディオ ストリームのトランスクリプトと翻訳が返されます。 最終的なトランスクリプト、最終的な翻訳、および翻訳されたオーディオは、発話の終了後にのみ返されます。 場合によっては、発話の終了を強制することができます。 発話の終了を強制するには、2.5 秒の無音声を送信してください。 
+Translator Speech API では、ユーザーがオーディオを送信すると、オーディオ ストリームのトランスクリプトと翻訳が返されます。 最終的なトランスクリプト、最終的な翻訳、および翻訳されたオーディオは、発話の終了後にのみ返されます。 場合によっては、発話の終了を強制することができます。 発話の終了を強制するには、2.5 秒の無音声を送信してください。
 
 ### <a name="final-result"></a>最終的な結果
 最終的な音声認識の結果は、発話の最後で生成されます。 Text 型の WebSocket メッセージを使用してサービスからクライアントに結果が送信されます。 メッセージの内容は、次のプロパティを持つオブジェクトの JSON のシリアル化となります。
@@ -112,7 +113,7 @@ Translator Speech API では、ユーザーがオーディオを送信すると�
 {
   type: "final"
   id: "23",
-  recognition: "what was said", 
+  recognition: "what was said",
   translation: "translation of what was said",
   audioStreamPosition: 319680,
   audioSizeBytes: 35840,
@@ -143,7 +144,7 @@ Text 型の WebSocket メッセージを使用してサービスからクライ�
 {
   type: "partial"
   id: "23.2",
-  recognition: "what was", 
+  recognition: "what was",
   translation: "translation of what was",
   audioStreamPosition: 319680,
   audioSizeBytes: 25840,
@@ -193,46 +194,3 @@ Text 型の WebSocket メッセージを使用してサービスからクライ�
 |401    |権限がありません。 資格情報が設定されていること、資格情報が有効であること、および Azure Data Market サブスクリプションが健全な状態で、利用可能な残量があることを確認します。|||
 |500    |エラーが発生しました。 エラーが解決しない場合は、それをクライアント トレース識別子 (X-ClientTraceId) または要求識別子 (X-RequestId) と一緒にご報告ください。|||
 |503    |サーバーが一時的に使用できません。 要求を再試行してください。 エラーが解決しない場合は、それをクライアント トレース識別子 (X-ClientTraceId) または要求識別子 (X-RequestId) と一緒にご報告ください。|||
-
-    
-
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-            
-
-
-
-
-        
-
-
-
-
-
-
-
-
-

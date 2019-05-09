@@ -3,19 +3,19 @@ title: Azure Active Directory B2C を使用して QQ アカウントでのサイ
 description: Azure Active Directory B2C を使用するアプリケーションで QQ アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 23e44763b773835583d255104771d2329851aac8
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.subservice: B2C
+ms.openlocfilehash: 38e17308f7aab5b28509d7a3509be0de844ee94f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181416"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160163"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 
@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ ア�
 ## <a name="configure-qq-as-an-identity-provider"></a>QQ を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認するために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*QQ*」と入力します。

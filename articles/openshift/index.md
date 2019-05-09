@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 0856b86ce3d5510dfaa395d17705a2c7d5675cde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f0d3eae8c005b7e26f425a4411042fdc050fdef
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23071162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422425"
 ---
 <div class="content">
     <h1>Azure 上の OpenShift</h1>
@@ -26,7 +26,7 @@ OpenShift Origin は、Kubernetes に基づいて構築されたオープンソ�
         </div>
     </div>
 <h2>5 分間のクイック スタート</h2>
-<a href="https://azure.microsoft.com/resources/templates/openshift-origin-rhel/">OpenShift Origin コミュニティ テンプレートをデプロイする</a> 
+<a href="https://docs.microsoft.com/azure/virtual-machines/linux/openshift-okd">OpenShift Origin コミュニティ テンプレートをデプロイする</a> 
 <h2>ステップバイステップのチュートリアル</h2>
 <p>Azure に OpenShift をデプロイする方法を学習します。</p>
 <ol>

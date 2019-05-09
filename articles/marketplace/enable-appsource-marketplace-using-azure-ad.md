@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 3ad9308f3bc714ee2877627da8fdb328459b9fe4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351951"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732330"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
 
@@ -44,7 +44,7 @@ AppSource と Azure Marketplace 用のさまざまな[オプションとオフ�
 | 仮想マシン | 該当なし | いいえ  | いいえ  | いいえ  |
 | Azure アプリ (ソリューション テンプレート)  | 該当なし | 該当なし | 該当なし | 該当なし |
 | マネージド アプリ  | 該当なし | 該当なし | 該当なし | いいえ  |
-| SaaS  | いいえ  | 可能  | はい | [はい] |
+| SaaS  | いいえ  | 可能  | はい | はい |
 | Containers  | 該当なし | 該当なし | 該当なし | いいえ  |
 | コンサルティング サービス  | いいえ  | 該当なし | 該当なし | 該当なし |
 
@@ -59,7 +59,7 @@ SaaS 技術要件に関する詳細については、「[SaaS アプリケーシ
 
 自動化された顧客のセットアップにより、コンバージョン率を高めることができます。 顧客が試用版の一覧を選択し、試用版の環境にリダイレクトされた場合、追加のサインイン手順を必要とせずに、顧客を直接設定できます。
 
-認証時に、Azure AD からアプリまたはオファーにトークンが送信されます。 トークンによって提供されるユーザー情報により、アプリまたはオファー内にユーザー アカウントを作成できます。 詳しくは、[サンプル トークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens)に関する記事をご覧ください。
+認証時に、Azure AD からアプリまたはオファーにトークンが送信されます。 トークンによって提供されるユーザー情報により、アプリまたはオファー内にユーザー アカウントを作成できます。 詳しくは、[サンプル トークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)に関する記事をご覧ください。
 
 Azure AD を使って、アプリまたは試用版一覧でワンクリック認証を有効にした場合、次のことが行われます。
 

@@ -1,229 +1,201 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Insight4GRC の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Insight4GRC の統合 | Microsoft Docs
 description: Azure Active Directory と Insight4GRC の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: db3b4bd1-b372-4660-88d7-aea0b0ca962e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/22/2018
+ms.topic: tutorial
+ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 256550dc6aaa832599747f6fe39c2ca77ed3f8d7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1ad101d209415acdceb0091dba5fbedeb8b0aa4b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441583"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59280521"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>チュートリアル: Azure Active Directory と Insight4GRC の統合
+# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>チュートリアル:Azure Active Directory と Insight4GRC の統合
 
 このチュートリアルでは、Insight4GRC と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Insight4GRC と Azure AD の統合には、次の利点があります。
 
-- Insight4GRC にアクセスできるユーザーを Azure AD で管理できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Insight4GRC にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Insight4GRC にアクセスできるユーザーを Azure AD で管理できます。
+* ユーザーが自分の Azure AD アカウントで Insight4GRC に自動的にサインイン (シングル サインオン) するように設定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Insight4GRC と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Insight4GRC でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Insight4GRC でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Insight4GRC の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Insight4GRC では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Insight4GRC では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-insight4grc-from-the-gallery"></a>ギャラリーからの Insight4GRC の追加
+
 Azure AD への Insight4GRC の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Insight4GRC を追加する必要があります。
 
 **ギャラリーから Insight4GRC を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[新しいアプリケーション] ボタン][3]
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. 検索ボックスに「**Insight4GRC**」と入力し、結果パネルで **Insight4GRC** を選び、**[追加]** をクリックしてアプリケーションを追加します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![結果一覧の Insight4GRC](./media/insight4grc-tutorial/tutorial_insight_addfromgallery.png)
+4. 検索ボックスに「**Insight4GRC**」と入力し、結果パネルで **Insight4GRC** を選び、**[追加]** をクリックしてアプリケーションを追加します。
+
+     ![結果一覧の Insight4GRC](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Insight4GRC で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Insight4GRC ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Insight4GRC の関連ユーザーの間で、リンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Insight4GRC で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Insight4GRC 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Insight4GRC で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Insight4GRC テスト ユーザーの作成](#create-an-insight4grc-test-user)** - Insight4GRC で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[Insight4GRC のシングル サインオンの構成](#configure-insight4grc-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Insight4GRC のテスト ユーザーの作成](#create-insight4grc-test-user)** - Insight4GRC で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Insight4GRC アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Insight4GRC で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Insight4GRC で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **Insight4GRC** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Insight4GRC** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/insight4grc-tutorial/tutorial_insight_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-1. **IDP** 開始モードでアプリケーションを構成する場合は、**[Insight4GRC Domain and URLs]**(Insight4GRC のドメインと URL) セクションで、次の手順に従います。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[Insight4GRC Domain and URLs]\(Insight4GRC のドメインと URL) のシングル サインオン情報](./media/insight4grc-tutorial/tutorial_insight_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+
+4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+
+    ![[Insight4GRC Domain and URLs]\(Insight4GRC のドメインと URL) のシングル サインオン情報](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<subdomain>.Insight4GRC.com/SAML` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx` のパターンを使用して URL を入力します
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Insight4GRC Domain and URLs]\(Insight4GRC のドメインと URL) のシングル サインオン情報](./media/insight4grc-tutorial/tutorial_insight_url1.png)
+    ![[Insight4GRC Domain and URLs]\(Insight4GRC のドメインと URL) のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、`https://<subdomain>.Insight4GRC.com/Public/Login.aspx` のパターンを使用して URL を入力します。
-     
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Insight4GRC クライアント サポート チーム](mailto:support.ss@rsmuk.com)に問い合わせてください。 
+    **[サインオン URL]** ボックスに、`https://<subdomain>.Insight4GRC.com/Public/Login.aspx` という形式で URL を入力します。
 
-1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Insight4GRC クライアント サポート チーム](mailto:support.ss@rsmuk.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-    ![証明書のダウンロードのリンク](./media/insight4grc-tutorial/tutorial_insight_certificate.png) 
+6. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
-1. **[保存]** ボタンをクリックします。
+    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/insight4grc-tutorial/tutorial_general_400.png)
-    
-1. **Insight4GRC** 側でシングル サインオンを構成するには、コピーした**フェデレーション メタデータ URL** を [Insight4GRC サポート チーム](mailto:support.ss@rsmuk.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+### <a name="configure-insight4grc-single-sign-on"></a>Insight4GRC のシングル サインオンの構成
+
+**Insight4GRC** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Insight4GRC サポート チーム](mailto:support.ss@rsmuk.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/insight4grc-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/insight4grc-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/insight4grc-tutorial/create_aaduser_03.png)
-
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/insight4grc-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="create-an-insight4grc-test-user"></a>Insight4GRC テスト ユーザーの作成
-
-このセクションの目的は、Insight4GRC で Britta Simon というユーザーを作成することです。 Insight4GRC では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Insight4GRC にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
-
->[!Note]
->ユーザーを手動で作成する必要がある場合は、[Insight4GRC クライアント サポート チーム](mailto:support.ss@rsmuk.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Insight4GRC へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Insight4GRC]** を選択します。
 
-**Insight4GRC に Britta Simon を割り当てるには、次の手順に従います。**
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で **[Insight4GRC]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![アプリケーションの一覧の [Insight4GRC] リンク](common/all-applications.png)
 
-1. アプリケーションの一覧で **[Insight4GRC]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の [Insight4GRC] リンク](./media/insight4grc-tutorial/tutorial_insight_app.png)  
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+### <a name="create-insight4grc-test-user"></a>Insight4GRC のテスト ユーザーの作成
 
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションでは、Britta Simon というユーザーを Insight4GRC に作成します。 Insight4GRC では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Insight4GRC にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+
+> [!Note]
+> ユーザーを手動で作成する必要がある場合は、 [Insight4GRC クライアント サポート チーム](mailto:support.ss@rsmuk.com)にお問い合わせください。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Insight4GRC] タイルをクリックすると、自動的に Insight4GRC アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネル上で [Insight4GRC] タイルをクリックすると、SSO を設定した Insight4GRC に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/insight4grc-tutorial/tutorial_general_01.png
-[2]: ./media/insight4grc-tutorial/tutorial_general_02.png
-[3]: ./media/insight4grc-tutorial/tutorial_general_03.png
-[4]: ./media/insight4grc-tutorial/tutorial_general_04.png
-
-[100]: ./media/insight4grc-tutorial/tutorial_general_100.png
-
-[200]: ./media/insight4grc-tutorial/tutorial_general_200.png
-[201]: ./media/insight4grc-tutorial/tutorial_general_201.png
-[202]: ./media/insight4grc-tutorial/tutorial_general_202.png
-[203]: ./media/insight4grc-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

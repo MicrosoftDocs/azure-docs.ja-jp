@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: dd6a9ee00ba6244e5a0d04f654e6b57db8896ea6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/19/2019
+ms.openlocfilehash: fad9437a631254d6c60d6d97267ae111d195040f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603949"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567453"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 
@@ -77,13 +77,13 @@ T-SQL で Azure SQL Database 間の完全なクエリを実行します。 こ�
 
 **図 2** 列方向のパーティション分割 - エラスティック クエリを使用して参照データを照会する
 
-![ 列方向のパーティション分割 - エラスティック クエリを使用して参照データを照会する][3]
+![列方向のパーティション分割 - エラスティック クエリを使用して参照データを照会する][3]
 
 **データベース間クエリ**: エラスティック クエリを使うと、複数の SQL Database にまたがるクエリを必要とするユース ケースに対応できます。 図 3 には 4 つの異なるデータベース (CRM、Inventory、HR、Products) が示されています。 これらのデータベースのいずれかで実行されるクエリでは、他のデータベースにもアクセスする必要があります。 エラスティック クエリを使用すると、4 つのデータベースごとにいくつかの単純な DDL ステートメントを実行することで、このケースに対応するデータベースを構成できます。 この 1 回限りの構成を行った後は、T-SQL クエリまたは BI ツールからローカル テーブルを参照するだけでリモート テーブルにアクセスできます。 この方法は、リモート クエリからサイズの大きな結果が返されない場合にお勧めします。
 
 **図 3** 列方向のパーティション分割 - エラスティック クエリを使用して複数のデータベースにまたがって照会する
 
-![ 列方向のパーティション分割 - エラスティック クエリを使用して複数のデータベースにまたがって照会する][4]
+![列方向のパーティション分割 - エラスティック クエリを使用して複数のデータベースにまたがって照会する][4]
 
 次の手順では、同じスキーマのリモート SQL Database 上にあるテーブルへのアクセスを必要とする列方向のパーティション分割シナリオ向けに、エラスティック データベース クエリを構成します。
 
@@ -100,7 +100,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 **図 4** 行方向のパーティション分割: シャーディングされたデータ層に対してエラスティック クエリを使用する
 
-![ 行方向のパーティション分割: シャーディングされたデータ層に対してエラスティック クエリを使用する][5]
+![行方向のパーティション分割: シャーディングされたデータ層に対してエラスティック クエリを使用する][5]
 
 > [!NOTE]
 > エラスティック クエリ データベース (ヘッド ノード) は、別のデータベースにするか、シャード マップをホストする同じデータベースにすることができます。
@@ -108,11 +108,11 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 次の手順では、(通常は) いくつかのリモート SQL Database 上にある一連のテーブルへのアクセスを必要とする行方向のパーティション分割シナリオ向けに、エラスティック データベース クエリを構成します。
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
+* [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * エラスティック データベース クライアント ライブラリを使用して、データ層を表す [シャード マップ](sql-database-elastic-scale-shard-map-management.md) を作成します。
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource (**SHARD_MAP_MANAGER** 型)
-* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
+* [CREATE/DROP EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource (**SHARD_MAP_MANAGER** 型)
+* [CREATE/DROP EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 これらの手順を実行すると、ローカル テーブルであるかのように、行方向にパーティション分割されたテーブル "mytable" にアクセスできます。 Azure SQL Database により、テーブルが物理的に格納されているリモート データベースへの複数の並列接続が自動的に開かれます。さらに、リモート データベースで要求が処理され、その結果が返されます。
 行方向のパーティション分割シナリオに必要な手順の詳細については、[行方向のパーティション分割のためのエラスティック クエリ](sql-database-elastic-query-horizontal-partitioning.md)に関するページをご覧ください。
@@ -146,7 +146,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 ## <a name="feedback"></a>フィードバック
 
-以下に示す MSDN フォーラムまたは Stackoverflow で、エラスティック クエリに関するエクスペリエンスのフィードバックを共有してください。 サービスに関して何でもご意見とご感想をお寄せください (障害、機能差、悪口など)。
+以下に示す MSDN フォーラムまたは Stack Overflow で、エラスティック クエリに関するエクスペリエンスのフィードバックを共有してください。 サービスに関して何でもご意見とご感想をお寄せください (障害、機能差、悪口など)。
 
 ## <a name="next-steps"></a>次の手順
 

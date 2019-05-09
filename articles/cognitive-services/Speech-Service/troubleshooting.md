@@ -1,26 +1,26 @@
 ---
 title: Speech SDK のトラブルシューティング - Speech Services
 titleSuffix: Azure Cognitive Services
-description: この記事では、Speech Service SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
+description: この記事では、Speech SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 04a1f3222b17d91889eb580d9d4e8206d8156d37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a3741cb351b11b8cfd7c5d38713bb71232cf010e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095485"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446530"
 ---
-# <a name="troubleshoot-the-speech-service-sdk"></a>Speech Service SDK のトラブルシューティング
+# <a name="troubleshoot-the-speech-sdk"></a>Speech SDK のトラブルシューティング
 
-この記事では、Speech Service SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
+この記事では、Speech SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>エラー:認証エラー (403) で WebSocket をアップグレードできませんでした
 
@@ -67,6 +67,8 @@ ms.locfileid: "53095485"
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
+有効なサブスクリプション キーを入力した場合、このコマンドで承認トークンが返されます。それ以外の場合はエラーが返されます。
+
 ### <a name="validate-an-authorization-token"></a>承認トークンを検証する
 
 認証に承認トークンを使用している場合は、次のコマンドのいずれかを実行して、認証トークンがまだ有効であることを確認します。 トークンは 10 分間有効です。
@@ -101,6 +103,8 @@ ms.locfileid: "53095485"
     ```
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
+
+有効な承認トークンを入力した場合、このコマンドでオーディオ ファイルのトランスクリプトが返されます。それ以外の場合はエラーが返されます。
 
 ---
 

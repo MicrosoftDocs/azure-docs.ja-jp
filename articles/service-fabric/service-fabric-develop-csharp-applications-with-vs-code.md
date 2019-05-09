@@ -3,8 +3,8 @@ title: Visual Studio Code で .NET Core Azure Service Fabric アプリケーシ�
 description: この記事では、Visual Studio Code を使用して .NET Core Service Fabric アプリケーションをビルド、デプロイ、およびデバッグする方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: JimacoMS2
-manager: timlt
+author: peterpogorski
+manager: chackdan
 editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 27c7c62125f3f559fb1764292729cbbfdc1c4e5f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: pepogors
+ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115592"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664245"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して C# Service Fabric アプリケーションを開発する
 
@@ -42,7 +42,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-st
 
 ## <a name="open-the-application-in-vs-code"></a>VS Code でアプリケーションを開く
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 スタート メニューで VS Code アイコンを右クリックし、**[管理者として実行]** を選択します。 サービスにデバッガーをアタッチするには、VS Code を管理者として実行する必要があります。
 
 ### <a name="linux"></a>Linux
@@ -59,22 +59,22 @@ sudo code . --user-data-dir='.'
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
 1. (Ctrl + Shift + P キー) を押して VS Code で**コマンド パレット**を開きます。
-2. **[Service Fabric: Build Application]\(Service Fabric: アプリケーションのビルド\)** コマンドを探して選択します。 ビルドの出力は統合ターミナルに送信されます。
+2. **[Service Fabric:Build Application]\(Service Fabric: アプリケーションのビルド\)** コマンドを探して選択します。 ビルドの出力は統合ターミナルに送信されます。
 
    ![VS Code の [Build Application]\(アプリケーションのビルド\) コマンド](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
 
 ## <a name="deploy-the-application-to-the-local-cluster"></a>アプリケーションをローカル クラスターにデプロイする
 アプリケーションをビルドしたら、ローカル クラスターにデプロイできます。 
 
-1. **コマンド パレット**から **[Service Fabric: Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンドを選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
+1. **コマンド パレット**から **[Service Fabric:Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンドを選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
 
    ![VS Code の [Deploy Application]\(アプリケーションのデプロイ) コマンド](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. デプロイが完了したら、ブラウザーを起動して Service Fabric Explorer を開きます (http://localhost:19080/Explorer)。 アプリケーションが実行中であることがわかります。 この処理には時間がかかる場合があります。 
+4. デプロイが完了したら、ブラウザーを起動して Service Fabric Explorer (http:\//localhost:19080/Explorer) を開きます。 アプリケーションが実行中であることがわかります。 この処理には時間がかかる場合があります。 
 
    ![Service Fabric Explorer 内のカウンター サービス アプリケーション](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. アプリケーションが実行されていることを確認したら、ブラウザーを起動して http://localhost:31002 のページを開きます。 これはアプリケーションの Web フロントエンドです。 カウンター値は増えるので、ページを更新して最新の値を表示します。
+4. アプリケーションが実行されていることを確認したら、ブラウザーを起動して http:\//localhost:31002 のページを開きます。 これはアプリケーションの Web フロントエンドです。 カウンター値は増えるので、ページを更新して最新の値を表示します。
 
    ![ブラウザーのカウンター サービス アプリケーション](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
@@ -91,7 +91,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
 
    ![VS Code ワークスペースの [デバッグ] アイコン](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. ブラウザーで Service Fabric Explorer を開きます (http://localhost:19080/Explorer)。 **[アプリケーション]** をクリックし、ドリルダウンして CounterService が実行されているプライマリ ノードを特定します。 以下の画像では、CounterService のプライマリ ノードはノード 0 です。
+3. ブラウザーで Service Fabric Explorer (http:\//localhost:19080/Explorer) を開きます。 **[アプリケーション]** をクリックし、ドリルダウンして CounterService が実行されているプライマリ ノードを特定します。 以下の画像では、CounterService のプライマリ ノードはノード 0 です。
 
    ![CounterService のプライマリ ノード](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 
@@ -107,7 +107,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
    
    ![デバッガーから切断する](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. デバッグが完了したら、**[Service Fabric: Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから CounterService アプリケーションを削除できます。 
+7. デバッグが完了したら、**[Service Fabric:Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから CounterService アプリケーションを削除できます。 
 
 ## <a name="next-steps"></a>次の手順
 

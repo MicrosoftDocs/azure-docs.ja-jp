@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: fc2b5a5badcf38f7bc94a876f9f0a21af4f558b7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53813510"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015476"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト:Application Insights データ モデル
 
@@ -84,7 +84,7 @@ ms.locfileid: "53813510"
 
 匿名ユーザー ID。アプリケーションのエンド ユーザーを表します。 サービスからテレメトリが送信されるときのユーザー コンテキストは、サービスで操作を開始したユーザーに関するものです。
 
-[サンプリング](../../application-insights/app-insights-sampling.md)は、収集されたテレメトリの量を最小限に抑える方技術の 1 つです。 サンプリング アルゴリズムは、相関関係を持つテレメトリをすべて対象として、またはすべてを対象外としてサンプリングを試行します。 匿名ユーザー ID は、サンプリング スコアの生成に使用されます。 このため、匿名ユーザー ID は、十分にランダムな値である必要があります。 
+[サンプリング](../../azure-monitor/app/sampling.md)は、収集されたテレメトリの量を最小限に抑える方技術の 1 つです。 サンプリング アルゴリズムは、相関関係を持つテレメトリをすべて対象として、またはすべてを対象外としてサンプリングを試行します。 匿名ユーザー ID は、サンプリング スコアの生成に使用されます。 このため、匿名ユーザー ID は、十分にランダムな値である必要があります。 
 
 ユーザー名を格納するために匿名ユーザー ID を使用すると、フィールドの不正使用になります。 認証されたユーザー ID を使用します。
 

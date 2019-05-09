@@ -4,10 +4,10 @@ description: 信頼されていないネットワークからのアクセスの�
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
@@ -15,14 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
-ms.openlocfilehash: c40db6c253899d7aab21d277e93b23dd0c6feb97
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314008"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518866"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>方法:条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して MFA を必須にする   
 

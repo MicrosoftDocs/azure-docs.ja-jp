@@ -4,21 +4,21 @@ description: Azure Media Motion Detector メディア プロセッサ (MP) を�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 03/19/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: 8488b968fe2ab823479d70a98ba86be97b28f67d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e0b083cba575f4d1c0eb19afb76fca29431ae75e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783621"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259102"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics で動作を検出する
 ## <a name="overview"></a>概要
@@ -39,12 +39,12 @@ ms.locfileid: "33783621"
 ### <a name="parameters"></a>parameters
 次のパラメーターを使用できます。
 
-| Name | オプション | [説明] | 既定値 |
+| Name | オプション | 説明 | 既定値 |
 | --- | --- | --- | --- |
 | sensitivityLevel |文字列: "low"、"medium"、"high" |モーション報告の感度を設定します。 誤検出の数を調整します。 |"medium" |
 | frameSamplingValue |正の整数 |アルゴリズムの実行頻度を設定します。 1 = すべてのフレーム、2 = 2 フレームごと、以降同様に続きます。 |1 |
 | detectLightChange |ブール値: "true" または "false" |ライトの変更を結果で報告するかどうかを設定します |"False" |
-| mergeTimeThreshold |Xs-time: Hh:mm:ss<br/>例: 00:00:03 |モーション イベント間の時間枠を指定します。ここでは 2 つのイベントが結合され、1 として報告されます。 |00:00:00 |
+| mergeTimeThreshold |Xs-time:Hh:mm:ss<br/>例:00:00:03 |モーション イベント間の時間枠を指定します。ここでは 2 つのイベントが結合され、1 として報告されます。 |00:00:00 |
 | detectionZones |検出ゾーンの配列:<br/>- 検出ゾーンとは 3 つ以上のポイントの配列です<br/>- ポイントは、0 から 1 の xy 座標です。 |使用する多角形検出ゾーンの一覧を記述します<br/>結果にはゾーンが ID として報告され、最初は "ID": 0 です |フレーム全体を対象とする 1 つのゾーンです。 |
 
 ### <a name="json-example"></a>JSON の例
@@ -92,21 +92,21 @@ Motion Detector API は、固定背景ビデオ (監視ビデオなど) 内に�
 
 出力 JSON ファイルの要素を次の表に示します。
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | --- | --- |
-| バージョン |Video API のバージョンを示します。 現行バージョンは 2 です。 |
+| Version |Video API のバージョンを示します。 現行バージョンは 2 です。 |
 | タイムスケール |ビデオの 1 秒あたりの "ティック数" です。 |
-| Offset |タイムスタンプの時間オフセットです ("ティック数")。 Video API のバージョン 1.0 では、これは常に 0 になります。 今後サポートされるシナリオでは、変更される可能性があります。 |
+| offset |タイムスタンプの時間オフセットです ("ティック数")。 Video API のバージョン 1.0 では、これは常に 0 になります。 今後サポートされるシナリオでは、変更される可能性があります。 |
 | Framerate |ビデオの 1 秒あたりのフレーム数です。 |
 | Width、Height |ビデオの幅と高さです (ピクセル)。 |
-| 開始 |"ティック数" での開始タイムスタンプです。 |
-| 時間 |イベントの長さです ("ティック数")。 |
-| 間隔 |イベント内の各エントリの間隔です ("ティック数")。 |
-| イベント |各イベント フラグメントには、その期間内で検出されたモーションが含まれます。 |
+| start |"ティック数" での開始タイムスタンプです。 |
+| duration |イベントの長さです ("ティック数")。 |
+| interval |イベント内の各エントリの間隔です ("ティック数")。 |
+| events |各イベント フラグメントには、その期間内で検出されたモーションが含まれます。 |
 | type |現在のバージョンでは、これは常に一般モーションを示す "2" です。 このラベルにより、Video API は将来のバージョンでモーションを柔軟に分類できます。 |
 | RegionID |前述のように、このバージョンではこの値は常に 0 です。 このラベルにより、Video API は将来のバージョンでさまざまな領域のモーションを柔軟に検出できるます。 |
 | リージョン |モーションに注意するビデオ内の領域を示します。 <br/><br/>- "id" は、領域の範囲を表します。現バージョンでは ID 0 だけです。 <br/>- "type" は、モーションに注意する領域の形状を表します。 現在 "rectangle" と "polygon" がサポートされています。<br/> "rectangle" を指定した場合、領域のディメンションは X、Y、幅、高さです。 X および Y 座標は、0.0 ～ 1.0 に正規化されたスケール内の領域の左上の XY 座標を表します。 幅と高さは、0.0 ～ 1.0 に正規化されたスケール内の領域のサイズを表します。 現在のバージョンでは、X、Y、幅、高さは常に 0、0、1、1 の固定値です。 <br/>"polygon" を指定したした場合、領域のディメンションはポイント単位になります。 <br/> |
-| Fragments |メタデータは、フラグメントと呼ばれる複数のセグメントに分割されます。 各フラグメントには、開始、継続時間、間隔数、およびイベントが含まれます。 イベントのないフラグメントは、その開始時間と継続時間中にモーションが検出されなかったことを意味します。 |
+| fragments |メタデータは、フラグメントと呼ばれる複数のセグメントに分割されます。 各フラグメントには、開始、継続時間、間隔数、およびイベントが含まれます。 イベントのないフラグメントは、その開始時間と継続時間中にモーションが検出されなかったことを意味します。 |
 | 角かっこ [] |各角かっこは、イベント内の 1 つの間隔を表します。 その間隔の角かっこが空の場合、モーションが検出されなかったことを意味します。 |
 | 場所 |イベントの下にあるこの新しいエントリには、モーションが発生した場所が示されます。 これは検出ゾーンよりも具体的です。 |
 
@@ -280,7 +280,7 @@ namespace VideoMotionDetection
             task.InputAssets.Add(asset);
 
             // Add an output asset to contain the results of the job.
-            task.OutputAssets.AddNew("My Video Motion Detectoion Output Asset", AssetCreationOptions.None);
+            task.OutputAssets.AddNew("My Video Motion Detection Output Asset", AssetCreationOptions.None);
 
             // Use the following event handler to check job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
@@ -386,5 +386,5 @@ namespace VideoMotionDetection
 
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

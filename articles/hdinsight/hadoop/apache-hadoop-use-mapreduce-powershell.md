@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 015728a43e091e36dcf02b5cc17f0135a64428ca
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436264"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361950"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブを実行する
 
@@ -23,6 +23,8 @@ ms.locfileid: "53436264"
 このドキュメントでは、Azure PowerShell を使用して HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。
 
 ## <a id="prereq"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Azure HDInsight (HDInsight で Hadoop を使用) クラスター**
 
@@ -37,15 +39,15 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 リモート HDInsight クラスターで MapReduce ジョブを実行するときに次のコマンドレットを使用します。
 
-* **Connect-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
+* **Connect-AzAccount**:Azure サブスクリプションに対して Azure PowerShell を認証します。
 
-* **New-AzureRmHDInsightMapReduceJobDefinition**: 指定された MapReduce 情報を使用して、新しい "*ジョブ定義*" を作成します。
+* **New-AzHDInsightMapReduceJobDefinition**:指定された MapReduce 情報を使用して、新しい "*ジョブ定義*" を作成します。
 
-* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
+* **Start-AzHDInsightJob**:ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
 
-* **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
+* **Wait-AzHDInsightJob**:ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
 
-* **Get-AzureRmHDInsightJobOutput**: ジョブの出力を取得するために使用します。
+* **Get-AzHDInsightJobOutput**:ジョブの出力を取得するために使用します。
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
@@ -92,7 +94,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 ```powershell
 # Print the output of the WordCount job.
 Write-Host "Display the standard output ..." -ForegroundColor Green
-Get-AzureRmHDInsightJobOutput `
+Get-AzHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $wordCountJob.JobId `
         -HttpCredential $creds `

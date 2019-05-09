@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストの言語を検出する (C#) - Translator Text API'
+title: クイック スタート:テキストの言語を検出する (C#) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、.NET Core と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: de5088a012a7f5fd210a5aa66805fe865cc09bbe
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6f89e1e89736929b7d50444800550708a55e45db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889261"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103419"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>クイック スタート: Translator Text API と C# を使用してテキストの言語を検出する
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>クイック スタート:Translator Text API と C# を使用してテキストの言語を検出する
 
 このクイック スタートでは、.NET Core と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 
@@ -131,9 +131,17 @@ request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
 
-// Print the response
-Console.WriteLine(jsonResponse);
+// Pretty print the response
+Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
+```
+
+"Pretty Print" で応答を書式設定して出力するには、次の関数を Program クラスに追加します。
+```
+static string PrettyPrint(string s)
+{
+    return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
+}
 ```
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
@@ -154,6 +162,8 @@ dotnet run
 ```
 
 ## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [

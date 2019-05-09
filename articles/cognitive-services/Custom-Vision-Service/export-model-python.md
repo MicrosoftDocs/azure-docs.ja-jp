@@ -1,36 +1,37 @@
 ---
-title: 'チュートリアル: Python での TensorFlow モデルの実行 - Custom Vision Service'
+title: チュートリアル:Python での TensorFlow モデルの実行 - Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Python での TensorFlow モデルの実行
 services: cognitive-services
 author: areddish
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 05/17/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 26427406b045b96f2f3f612e4444b7dc2afcefc6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 1e4c08c1e1f9c32c7c397cf187ad2ef91a25c59d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247314"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350456"
 ---
-# <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル: Python での TensorFlow モデルの実行
+# <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル:Python での TensorFlow モデルの実行
 
 Custom Vision Service から [TensorFlow モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)したら、このクイックスタートが、このモデルをローカルで使用して画像を分類する方法を示します。
 
-## <a name="install-required-components"></a>必須コンポーネントのインストール
+> [!NOTE]
+> このチュートリアルは、イメージ分類のプロジェクトからエクスポートされたモデルにのみ適用されます。
 
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを使用するには、次の作業が必要となります。
 
 - Python 2.7 以降または Python 3.5 以降をインストールします。
 - pip をインストールします。
 
-次のパッケージもインストールする必要があります。
+続けて次のパッケージをインストールする必要があります。
 
 ```
 pip install tensorflow
@@ -50,8 +51,12 @@ import os
 graph_def = tf.GraphDef()
 labels = []
 
+# These are set to the default names from exported models, update as needed.
+filename = "model.pb"
+labels_filename = "labels.txt"
+
 # Import the TF graph
-with tf.gfile.FastGFile(filename, 'rb') as f:
+with tf.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -107,12 +112,13 @@ max_square_image = crop_center(image, min_dim, min_dim)
 augmented_image = resize_to_256_square(max_square_image)
 ```
 
-
 ### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>モデルの特定の入力サイズの中央をトリミングする
 
 ```Python
-# The compact models have a network size of 227x227, the model requires this size.
-network_input_size = 227
+# Get the input size of the model
+with tf.Session() as sess:
+    input_tensor_shape = sess.graph.get_tensor_by_name('Placeholder:0').shape.as_list()
+network_input_size = input_tensor_shape[1]
 
 # Crop the center for the specified network_input_Size
 augmented_image = crop_center(augmented_image, network_input_size, network_input_size)
@@ -174,8 +180,13 @@ output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
 with tf.Session() as sess:
-    prob_tensor = sess.graph.get_tensor_by_name(output_layer)
-    predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+    try:
+        prob_tensor = sess.graph.get_tensor_by_name(output_layer)
+        predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+    except KeyError:
+        print ("Couldn't find classification output layer: " + output_layer + ".")
+        print ("Verify this a model exported from an Object Detection project.")
+        exit(-1)
 ```
 
 ## <a name="view-the-results"></a>結果の確認
@@ -190,15 +201,15 @@ with tf.Session() as sess:
 
     # Or you can print out all of the results mapping labels to probabilities.
     label_index = 0
-    for p in predictions[0]:
+    for p in predictions:
         truncated_probablity = np.float64(np.round(p,8))
         print (labels[label_index], truncated_probablity)
         label_index += 1
 ```
+
 ## <a name="next-steps"></a>次の手順
 
-モバイル アプリケーションに、モデルをラップすることもできます。
+次に、モバイル アプリケーションにモデルをラップする方法を学びましょう。
 * [エクスポートされた Tensorflow モデルを Android アプリケーションで使用する](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [エクスポートされた CoreML モデルを Swift iOS アプリケーションで使用する](https://go.microsoft.com/fwlink/?linkid=857726)
 * [エクスポートされた CoreML モデルを Xamarin を使って iOS アプリケーションで使用する](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
-

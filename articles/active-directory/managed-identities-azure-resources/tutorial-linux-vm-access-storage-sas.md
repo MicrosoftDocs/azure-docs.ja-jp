@@ -3,29 +3,33 @@ title: Linux VM のシステム割り当てマネージド ID を使用して SA
 description: Linux VM のシステム割り当てマネージド ID を使用して、ストレージ アカウント アクセス キーではなく、SAS 資格情報で Azure Storage にアクセスする方法を示すチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: 16bcc56dd05c86b7c2adb324de480e7482f80fef
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 06fa483a34efa3a9486e04d894a3139d17b157b4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724300"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59273959"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル: Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
+# <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 このチュートリアルでは、Linux 仮想マシン (VM) のシステム割り当てマネージド ID を使用して、ストレージの Shared Access Signature (SAS) 資格情報を取得する方法について説明します。 具体的には [Service SAS 資格情報](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)です。 
+
+> [!NOTE]
+> このチュートリアルで生成された SAS キーは、この VM に制限またはバインドされません。  
 
 Service SAS は、アカウント アクセス キーを公開することなく、ストレージ アカウント内のオブジェクトへの限られたアクセス許可を限られた時間にわたって特定のサービス (ここでは BLOB サービス) に対してのみ提供できます。 ストレージ SDK の使用時など、ストレージ操作を実行するときに、SAS 資格情報を通常どおりに使用できます。 このチュートリアルでは、Azure Storage CLI を使用して BLOB のアップロードとダウンロードを行う手順を示します。 学習内容:
 

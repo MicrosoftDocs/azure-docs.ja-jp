@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシーを使って Micro
 description: OpenID Connect (OIDC) プロトコルを使って Microsoft を ID プロバイダーとして使用する例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: d53bbd10cbe822a91f201b7ba702b27b5ac0a6f9
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.subservice: B2C
+ms.openlocfilehash: 4bcc51c3efce95178dbb190eb86cb7ac8e224cd0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887242"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187523"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Microsoft アカウントでのサインインを設定する
 
@@ -149,7 +149,7 @@ Azure AD B2C で Microsoft アカウントを ID プロバイダーとして使�
     
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `MSA-OIDC` 」のように入力します。
 
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のためにもう一度アップロードします。
+3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 

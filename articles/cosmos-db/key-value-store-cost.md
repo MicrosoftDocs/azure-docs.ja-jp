@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e04439d63646a8aebe224adbf629491cc2dfbc6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e81dec7d7556819e60a65a44106426c226c6223d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547220"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035731"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>キー値ストアとしての Azure Cosmos DB - コストの概要
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: roiyz
-ms.openlocfilehash: 0926859037c358aaf94ec51d9614cc9c02629e7f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 5d53f34ea6b0983d0687cdaf6ec6271c703bb055
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998531"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>VM で Azure Linux エージェントを更新する方法
 
@@ -367,8 +367,8 @@ Oracle Linux 6 仮想マシンの場合:
 ```sh
 [ol6_addons]
 name=Add-Ons for Oracle Linux $releasever ($basearch)
-baseurl=http://public-yum.oracle.com/repo/OracleLinux/OL6/addons/x86_64
-gpgkey=http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6
+baseurl=https://public-yum.oracle.com/repo/OracleLinux/OL6/addons/x86_64
+gpgkey=https://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6
 gpgcheck=1
 enabled=1
 ```

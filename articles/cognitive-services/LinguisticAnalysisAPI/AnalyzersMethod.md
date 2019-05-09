@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: アナライザの REST API は、Linguistic Analysis API が現在サポートしているアナライザーの一覧を表示します。
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 762ebf50999a88251dcd05824f2ed450cec97f04
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 9338e87644554ac8b3121c5341cea6f2bc512a97
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237400"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878189"
 ---
 # <a name="analyzers-method"></a>Analyzers メソッド
 
@@ -35,16 +35,16 @@ ms.locfileid: "48237400"
 Name | type | 説明
 -----|------|--------------
 languages | string のリスト | このアナライザーを使用できる 2 文字の ISO 言語コードの一覧。
-id   | string | このアナライザーの一意の ID
-kind | string | アナライザーの大まかな種類
-specification | string | このアナライザーに使用される仕様の名前
-implementation | string | このアナライザーの背後にあるモデルやアルゴリズムの説明
+id   | 文字列 | このアナライザーの一意の ID
+kind | 文字列 | アナライザーの大まかな種類
+specification | 文字列 | このアナライザーに使用される仕様の名前
+implementation | 文字列 | このアナライザーの背後にあるモデルやアルゴリズムの説明
 
 <br>
 ## <a name="example"></a>例
 GET /analyzers
 
-応答: JSON
+応答:JSON
 ```json
 [
     {

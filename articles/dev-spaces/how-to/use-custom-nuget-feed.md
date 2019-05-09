@@ -1,22 +1,21 @@
 ---
-title: Azure Dev Spaces での カスタム NuGet フィードの使用方法 | Microsoft Docs
+title: Azure Dev Spaces でのカスタム NuGet フィードの使用方法
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
 author: johnsta
 ms.author: johnsta
 ms.date: 05/11/2018
-ms.topic: article
+ms.topic: conceptual
 description: カスタム NuGet フィードを使用して、Azure Dev Space 内の NuGet パッケージにアクセスし、使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 manager: ghogen
-ms.openlocfilehash: 04b89f6d12c58e2f4915a84d3e0a7988d0e3192f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579216"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772468"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Azure Dev Space でのカスタム NuGet フィードの使用
 
@@ -36,7 +35,7 @@ NuGet フィードをセットアップするには:
    ```
 
 2. プロジェクト フォルダー内に [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ファイルを作成します。
-     * `packageSources` セクションを使用して NuGet フィードの場所を参照します。 重要: NuGet フィードはパブリック アクセス可能である必要があります。
+     * `packageSources` セクションを使用して NuGet フィードの場所を参照します。 重要:NuGet フィードはパブリックからアクセスできる必要があります。
      * `packageSourceCredentials` セクションを使用して、ユーザー名とパスワードの資格情報を構成します。 
 
    ```xml

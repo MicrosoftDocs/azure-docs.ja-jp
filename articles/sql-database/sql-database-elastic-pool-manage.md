@@ -1,25 +1,25 @@
 ---
-title: エラスティック プールの作成と管理 - Azure SQL Database | Microsoft Docs
+title: エラスティック プールの管理 - Azure SQL Database | Microsoft Docs
 description: Azure SQL エラスティック プールを作成し、管理します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 366bdf73c6b62ffa98ce44076374df8be8b3de3c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 03/12/2019
+ms.openlocfilehash: debf91f04cff3cb9705ebc5915e2e665679230a9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865881"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59267584"
 ---
-# <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの作成と管理
+# <a name="manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの管理
 
 エラスティック プールを使用する場合、データベースのワークロードを処理するためにエラスティック プールに必要なリソースのサイズと、プールされた各データベースのリソースのサイズを決定します。
 
@@ -39,7 +39,11 @@ ms.locfileid: "52865881"
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell:エラスティック プールとプールされたデータベースの管理
 
-Azure PowerShell を使用して SQL Database エラスティック プールとプールされたデータベースを作成および管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 エラスティック プールの論理サーバーを作成および管理する方法については、[論理サーバーの作成と管理](sql-database-logical-servers.md)に関する記事を参照してください。 ファイアウォール ルールを作成および管理する方法については、[PowerShell を使用したファイアウォール ルールの作成と管理](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell)に関する記事を参照してください。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
+Azure PowerShell を使用して SQL Database エラスティック プールとプールされたデータベースを作成および管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 エラスティック プール用の SQL Database サーバーを作成および管理する方法については、[SQL Database サーバーの作成と管理](sql-database-servers.md)に関する記事を参照してください。 ファイアウォール ルールを作成および管理する方法については、[PowerShell を使用したファイアウォール ルールの作成と管理](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell)に関する記事を参照してください。
 
 > [!TIP]
 > PowerShell のサンプル スクリプトについては、「[Create elastic pools and move databases between pools and out of a pool using PowerShell (エラスティック プールを作成し、PowerShell を使用してデータベースをプール間で、およびプールから外に移動する)](scripts/sql-database-move-database-between-pools-powershell.md)」および「[Use PowerShell to monitor and scale a SQL elastic pool in Azure SQL Database (PowerShell を使用して、Azure SQL Database 内の SQL エラスティック プールを監視およびスケーリングする)](scripts/sql-database-monitor-and-scale-pool-powershell.md)」を参照してください。
@@ -47,15 +51,15 @@ Azure PowerShell を使用して SQL Database エラスティック プールと
 
 | コマンドレット | 説明 |
 | --- | --- |
-|[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|論理 SQL サーバー上にエラスティック データベース プールを作成します。|
-|[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|論理 SQL サーバー上のエラスティック プールとそのプロパティ値を取得します。|
-|[Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)|論理 SQL サーバー上のエラスティック データベース プールのプロパティを変更します。 たとえば、**StorageMB** プロパティを使用して、エラスティック プールの最大容量を変更します。|
-|[Remove-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/remove-azurermsqlelasticpool)|論理 SQL サーバー上のエラスティック データベース プールを削除します。|
-|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|論理 SQL サーバー上のエラスティック プールに対する操作の状態を取得します。|
-|[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 |
-|[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|1 つまたは複数のデータベースを取得します。|
-|[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|データベースのプロパティを設定するか、または既存のデータベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
-|[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|データベースを削除します。|
+|[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|エラスティック プールを作成します。|
+|[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|エラスティック プールとそのプロパティ値を取得します。|
+|[Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool)|エラスティック プールのプロパティを変更します。たとえば、**StorageMB** プロパティを使用して、エラスティック プールの最大容量を変更します。|
+|[Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool)|エラスティック プールを削除します。|
+|[Get-AzSqlElasticPoolActivity](/powershell/module/az.sql/get-azsqlelasticpoolactivity)|エラスティック プールに対する操作の状態を取得します。|
+|[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 |
+|[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|1 つまたは複数のデータベースを取得します。|
+|[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)|データベースのプロパティを設定するか、または既存のデータベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
+|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase)|データベースを削除します。|
 
 > [!TIP]
 > ポータルまたは PowerShell コマンドレットで一度に作成できるデータベースは 1 つのみであるため、エラスティック プールに多数のデータベースを作成しようとすると時間がかかることがあります。 エラスティック プールへの作成を自動化するには、「[CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae)」を参照してください。
@@ -79,25 +83,25 @@ Azure PowerShell を使用して SQL Database エラスティック プールと
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL:プールされたデータベースの管理
 
-Transact-SQL を使用して既存のエラスティック プール内のデータベースを作成および移動するか、または SQL Database エラスティック プールに関する情報を返すには、次の T-SQL コマンドを使用します。 これらのコマンドは、Azure Portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続して Transact-SQL コマンドを渡すことができるその他のプログラムを使用して実行できます。 T-SQL を使用してファイアウォール ルールを作成および管理する方法については、[Transact-SQL を使用したファイアウォール ルールの管理](sql-database-firewall-configure.md#manage-firewall-rules-using-transact-sql)に関する記事を参照してください。
+Transact-SQL を使用して既存のエラスティック プール内のデータベースを作成および移動するか、または SQL Database エラスティック プールに関する情報を返すには、次の T-SQL コマンドを使用します。 これらのコマンドは、Azure Portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続して Transact-SQL コマンドを渡すことができるその他のプログラムを使用して実行できます。 T-SQL を使用してファイアウォール ルールを作成および管理する方法については、[Transact-SQL を使用したファイアウォール ルールの管理](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-transact-sql)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > Transact-SQL を使用して Azure SQL Database エラスティック プールを作成、更新、または削除するすることはできません。 データベースをエラスティック プールに追加または削除したり、DMV を使用して既存のエラスティック プールに関する情報を返したりすることができます。
 >
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |データベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|データベースを削除します。|
-|[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|論理サーバー内のすべてのエラスティック データベース プールのリソース使用状況の統計を返します。 各エラスティック データベース プールについて、15 秒のレポート ウィンドウごとに 1 行 (1 分あたり 4 行) が存在します。 これには、プール内のすべてのデータベースごとの CPU、I/O、ログ、ストレージ消費、および同時実行要求/セッション使用率が含まれます。|
+|[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|SQL Database サーバー内のすべてのエラスティック プールのリソース使用状況の統計を返します。 各エラスティック プールのレポート間隔は、15 秒に 1 行 (1 分あたり 4 行) です。 これには、プール内のすべてのデータベースごとの CPU、I/O、ログ、ストレージ消費、および同時実行要求/セッション使用率が含まれます。|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Azure SQL Database または Azure SQL Data Warehouse のエディション (サービス レベル)、サービス目標 (価格レベル)、およびエラスティック プール名 (存在する場合) を返します。 Azure SQL Database サーバーの master データベースにログオンしている場合は、すべてのデータベースの情報が返されます。 Azure SQL Data Warehouse の場合は、master データベースに接続する必要があります。|
 
 ## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST API:エラスティック プールとプールされたデータベースの管理
 
 SQL Database エラスティック プールとプールされたデータベースを作成して管理するには、これらの REST API 要求を使用します。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[エラスティック プール - 作成または更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|新しいエラスティック プールを作成するか、既存のエラスティック プールを更新します。|
 |[エラスティック プール - 削除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|エラスティック プールを削除します。|
@@ -114,6 +118,5 @@ SQL Database エラスティック プールとプールされたデータベー
 
 ## <a name="next-steps"></a>次の手順
 
-* ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
 * エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 * エラスティック プールを使用した SaaS チュートリアルについては、「[Introduction to the Wingtip SaaS application (Wingtip SaaS アプリケーションの概要)](sql-database-wtp-overview.md)」を参照してください。

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 39b5a7a99f56c33aee0b0db9211f4f45a058f418
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 370da046e5a964d91b668ea80730b8d331065d29
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094340"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019964"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Azure Data Factory を使用して Spark からデータをコピーする 
 
@@ -42,12 +41,12 @@ Spark のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Spark** | [はい] |
-| host | Spark サーバーの IP アドレスまたはホスト名  | [はい] |
-| port | Spark サーバーがクライアント接続のリッスンに使用する TCP ポート。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります: **Spark** | はい |
+| host | Spark サーバーの IP アドレスまたはホスト名  | はい |
+| port | Spark サーバーがクライアント接続のリッスンに使用する TCP ポート。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | はい |
 | serverType | Spark サーバーの種類。 <br/>使用できる値は、以下のとおりです。**SharkServer**、**SharkServer2**、**SparkThriftServer** | いいえ  |
 | thriftTransportProtocol | Thrift レイヤーで使用するトランスポート プロトコル。 <br/>使用できる値は、以下のとおりです。**Binary**、**SASL**、**HTTP**。 | いいえ  |
-| authenticationType | Spark サーバーへのアクセスに使用する認証方法。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | [はい] |
+| authenticationType | Spark サーバーへのアクセスに使用する認証方法。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | はい |
 | username | Spark サーバーへのアクセスに使用するユーザー名。  | いいえ  |
 | password | ユーザーに対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | httpPath | Spark サーバーに対応する部分的な URL。  | いいえ  |
@@ -87,7 +86,7 @@ Spark からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **SparkObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります: **SparkObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -116,7 +115,7 @@ Spark からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **SparkSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **SparkSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

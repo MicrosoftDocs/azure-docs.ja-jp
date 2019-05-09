@@ -1,20 +1,19 @@
 ---
 title: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能とコマンド
 description: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能について説明します
-services: cosmos-db
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: f62afc91f5cb92bd6f8faa866320fdd23b2c818b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 46eea21e1eafce1696ed1cf77a1f334798f0bc17
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089243"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58848403"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -48,7 +47,7 @@ Azure Cosmos DB の Cassandra API では、次の CQL データ型がサポー�
 * ブール値  
 * counter  
 * date  
-* 小数点  
+* decimal  
 * double  
 * float  
 * frozen  
@@ -114,14 +113,14 @@ CQLSH コマンドライン ユーティリティは、Apache Cassandra 3.1.1 �
 set SSL_VERSION=TLSv1_2 
 SSL_CERTIFICATE=<path to Baltimore root ca cert>
 set CQLSH_PORT=10350 
-cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> –ssl 
+cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl 
 ```
 **Unix/Linux/Mac:**
 
 ```bash
 export SSL_VERSION=TLSv1_2 
 export SSL_CERTFILE=<path to Baltimore root ca cert>
-cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> –ssl 
+cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl 
 ```
 
 ## <a name="cql-commands"></a>CQL コマンド
@@ -136,7 +135,7 @@ Azure Cosmos DB は、Cassandra API アカウントで以下のデータベー�
 * SELECT 
 * UPDATE 
 * BATCH - unlogged コマンドのみサポートされています 
-* 削除
+* DELETE
 
 CQLV4 互換の SDK から実行された場合のすべての CRUD 操作により、エラー、消費された要求の単位数、アクティビティ ID に関する追加情報が返されます。 コマンドの削除と更新は、プロビジョニングされたリソースの過剰使用を防ぐため、検討中のリソース ガバナンスで処理する必要があります。 
 * gc_grace_seconds を指定する場合は値を 0 にする必要があることに注意してください。
@@ -148,7 +147,7 @@ var insertResult = await tableInsertStatement.ExecuteAsync();
 foreach (string key in insertResult.Info.IncomingPayload) 
         { 
             byte[] valueInBytes = customPayload[key]; 
-            string value = Encoding.UTF8.GetString(valueInBytes); 
+            double value = Encoding.UTF8.GetString(valueInBytes); 
             Console.WriteLine($“CustomPayload:  {key}: {value}”); 
         } 
 ```
@@ -162,7 +161,6 @@ Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選�
 Azure Cosmos DB は、ロール ベース アクセス制御 (RBAC) と、[Azure portal](https://portal.azure.com) から取得できる読み取り/書き込みおよび読み取り専用のパスワードとキーをサポートしています。 Azure Cosmos DB では、データ プレーン アクティビティのためのユーザーとロールはまだサポートされていません。 
 
 ## <a name="planned-support"></a>計画されているサポート 
-* timestamp と TTL の併用  
 * create keyspace コマンドのリージョン名は現在無視されます。データのディストリビューションは、基礎となる Cosmos DB プラットフォームに実装され、アカウントのポータルまたは PowerShell を介して公開されます。 
 
 

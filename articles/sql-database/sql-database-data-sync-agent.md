@@ -9,19 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: douglasl
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/12/2018
-ms.openlocfilehash: bb80b512176e8fe260eb4572ea9fa801a6ffc80a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/20/2018
+ms.openlocfilehash: adb8917605a00208b328e7fd15f96d28c7838988
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685142"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485206"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL データ同期のデータ同期エージェント
 
 Azure SQL データ同期のデータ同期エージェントをインストールして構成することによって、オンプレミスの SQL Server データベースとデータを同期します。SQL データ同期の詳細については、「[複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します](sql-database-sync-data.md)」を参照してください。
+
+> [!IMPORTANT]
+> 現在のところ、Azure SQL データ同期では、Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="download-and-install"></a>ダウンロードとインストール
 
@@ -99,8 +102,8 @@ SQL データ同期サービスは、クライアント エージェントを使
 
 - **解決策**。 エラーの具体的な原因を特定するには、Windows インストーラー ログを生成し、内容を確認します。 ログ記録はコマンド プロンプトから有効にすることができます。 たとえば、ダウンロードしたインストール ファイルが `SQLDataSyncAgent-2.0-x86-ENU.msi` である場合は、次のコマンド ラインを使用してログ ファイルを生成し、内容を確認します。
 
-    -   インストールの場合: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-    -   アンインストールの場合: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - インストールの場合: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - アンインストールの場合: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Windows インストーラーによって実行されるすべてのインストールについて、ログ記録を有効にすることもできます。 Microsoft サポート技術情報の記事「[Windows インストーラーのログの記録を有効にする方法](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)」には、Windows インストーラーのログの記録を有効にするワンクリック ソリューションが用意されています。 また、ログの場所も示されています。
 
@@ -136,7 +139,7 @@ SQL データ同期サービスは、クライアント エージェントを使
 
 ### <a name="agent-start"></a> クライアント エージェントが起動しない (エラー 1069)
 
-SQL Server をホストしているコンピューターで、エージェントが実行されていませんでした。 エージェントを手動で起動しようとすると、"エラー 1069: ログオンに失敗したため、サービスを開始できませんでした。" というメッセージを示すダイアログ ボックスが表示されます。
+SQL Server をホストしているコンピューターで、エージェントが実行されていませんでした。 エージェントを手動で起動しようとすると、"エラー 1069:ログオンに失敗したため、サービスを開始できませんでした。" というメッセージを示すダイアログ ボックスが表示されます。
 
 ![データ同期エラー 1069 のダイアログ ボックス](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -318,12 +321,12 @@ SQL データ同期の詳細については、次の記事を参照してくだ�
 
 -   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
 -   データ同期の設定
-    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
         -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
--   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
 -   同期スキーマの更新
     -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)

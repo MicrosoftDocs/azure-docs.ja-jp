@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c2b8b205229ec1ef180e52372f75d06c83f1cc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ff0cb82e3f1ddedf8dabebadf7a0309d08b2c4e3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716414"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297091"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -210,7 +210,7 @@ git push frontend master
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/remote-api-call-run.png)
 
-## <a name="configure-auth"></a>認証を構成する
+## <a name="configure-auth"></a>auth を構成する
 
 この手順では、2 つのアプリの認証と承認を有効にします。 また、フロントエンド アプリも構成して、バックエンド アプリへの認証済みの呼び出しを行うために使用できるアクセス トークンが生成されるようにします。
 
@@ -293,7 +293,7 @@ AD アプリケーションの管理ページで、**アプリケーション ID
 
 これでアプリの構成は完了です。 フロントエンドが適切なアクセス トークンを使用してバックエンドにアクセスする準備ができました。
 
-他のプロバイダー用に構成する方法については、「[Refresh access tokens (アクセス トークンの更新)](app-service-authentication-how-to.md#refresh-access-tokens)」を参照してください。
+他のプロバイダー用に構成する方法については、「[Refresh identity provider tokens (ID プロバイダー トークンの更新)](app-service-authentication-how-to.md#refresh-identity-provider-tokens)」を参照してください。
 
 ## <a name="call-api-securely-from-server-code"></a>サーバー コードから API を安全に呼び出す
 
@@ -417,7 +417,7 @@ git push frontend master
 
 ## <a name="when-access-tokens-expire"></a>アクセス トークンの有効期限が切れたら
 
-アクセス トークンは、しばらくすると有効期限が切れます。 アプリに対する再認証をユーザーに強制することなくアクセス トークンを更新する方法については、「[更新アクセス トークン](app-service-authentication-how-to.md#refresh-access-tokens)」を参照してください。
+アクセス トークンは、しばらくすると有効期限が切れます。 アプリに対する再認証をユーザーに強制することなくアクセス トークンを更新する方法については、「[Refresh identity provider tokens (ID プロバイダー トークンの更新)](app-service-authentication-how-to.md#refresh-identity-provider-tokens)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

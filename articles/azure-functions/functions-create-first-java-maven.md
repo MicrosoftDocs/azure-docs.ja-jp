@@ -12,59 +12,36 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fdd29bbfaf36619fd823220e5d32a48a1619679b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d25fbfc058337c7a96414cf41f321e039ebc2258
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842069"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58801846"
 ---
-# <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
+# <a name="create-your-first-function-with-java-and-maven"></a>Java と Maven を使用して初めての関数を作成する
 
-> [!NOTE] 
-> Azure Functions 用の Java は現在プレビュー段階です。
-
-このクイックスタートでは、Maven で[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数プロジェクトを作成し、ローカルでテストして、Azure にデプロイする手順について説明します。 完了すると、Java 関数コードはクラウドで実行され、HTTP 要求からトリガーできるようになります。
-
-![コマンド ラインから cURL で Hello World 関数にアクセスする](media/functions-create-java-maven/hello-azure.png)
+この記事では、Maven コマンド ライン ツールを使用して Java 関数を作成し、Azure Functions に公開する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
-Java で関数アプリを開発するには、以下のものがインストールされている必要があります。
 
--  [Java Developer Kit](https://www.azul.com/downloads/zulu/) バージョン 8。
--  [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+Java を使用して関数を開発するには、以下のものがインストールされている必要があります。
 
-> [!IMPORTANT] 
+- [Java Developer Kit](https://www.azul.com/downloads/zulu/) バージョン 8。
+- [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
+- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure Functions Core Tools](functions-run-local.md#v2) (**.NET Core 2.x SDK** が必要)
+
+> [!IMPORTANT]
 > このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
-
-## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
-
-[Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) では、Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。 
-
-インストールするには、Azure Functions Core Tools プロジェクトの「[Installing (インストール)](https://github.com/azure/azure-functions-core-tools#installing)」セクションにアクセスし、オペレーティング システムに固有の手順を参照してください。
-
-次の要件のインストール後、[Node.js](https://nodejs.org/) に付属する [npm](https://www.npmjs.com/) を使って手動でインストールすることもできます。
-
--  [.NET Core](https://www.microsoft.com/net/core) の最新バージョン。
--  [Node.js](https://nodejs.org/download/) バージョン 8.6 以降。
-
-npm ベースのインストールを続行するには、次のコマンドを実行します。
-
-```
-npm install -g azure-functions-core-tools@core
-```
-
-> [!NOTE]
-> Azure Functions Core Tools バージョン 2.0 のインストールで問題がある場合は、「[バージョン 2.x ランタイム](/azure/azure-functions/functions-run-local#version-2x-runtime)」をご覧ください。
 
 ## <a name="generate-a-new-functions-project"></a>新しい Functions プロジェクトを生成する
 
 空のフォルダーで次のコマンドを実行して、[Maven アーキタイプ](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)から Functions プロジェクトを生成します。
 
-### <a name="linuxmacos"></a>Linux/MacOS
+### <a name="linuxmacos"></a>Linux/macOS
 
 ```bash
 mvn archetype:generate \
@@ -72,7 +49,17 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-### <a name="windows-cmd"></a>Windows (CMD)
+> [!NOTE]
+> コマンドの実行で問題が発生した場合は、使用されている `maven-archetype-plugin` のバージョンを確認します。 `.pom` ファイルがない空のディレクトリでコマンドを実行しているため、Maven を古いバージョンからアップグレードした場合は、`~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` から古いバージョンのプラグインを使用しようとしている可能性があります。 その場合は、`maven-archetype-plugin` ディレクトリを削除した後、コマンドを再実行します。
+
+### <a name="windows"></a> Windows
+
+```powershell
+mvn archetype:generate `
+    "-DarchetypeGroupId=com.microsoft.azure" `
+    "-DarchetypeArtifactId=azure-functions-archetype"
+```
+
 ```cmd
 mvn archetype:generate ^
     -DarchetypeGroupId=com.microsoft.azure ^
@@ -167,6 +154,9 @@ az login
 
 `azure-functions:deploy` Maven ターゲットを使用して、新しい関数アプリにコードをデプロイします。
 
+> [!NOTE]
+> Visual Studio Code を使用して関数アプリをデプロイするときは、無料サブスクリプション以外のサブスクリプションを選択してください。そうでないと、エラーが発生します。 IDE の左側で自分のサブスクリプションを確認することができます。
+
 ```
 mvn azure-functions:deploy
 ```
@@ -182,6 +172,9 @@ mvn azure-functions:deploy
 ```
 
 `cURL` を使用して、Azure で実行している関数アプリをテストします。 前の手順でデプロイされた独自の関数アプリの URL と一致するように、下のサンプルの URL を変更する必要があります。
+
+> [!NOTE]
+> **アクセス権**を `Anonymous` に設定していることを確認します。 `Function` の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](../azure-functions/functions-bindings-http-webhook.md#authorization-keys)を提示する必要があります。
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions

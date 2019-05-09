@@ -1,6 +1,6 @@
 ---
-title: Azure AD Identity Governance | Microsoft Docs
-description: Azure AD Identity Governance を使用すると、セキュリティや従業員の生産性に対する組織のニーズと、適切なプロセスや可視性とのバランスを取ることができます。
+title: Identity Governance - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory Identity Governance を使用すると、セキュリティや従業員の生産性に対する組織のニーズと、適切なプロセスや可視性とのバランスを取ることができます。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 20b1c8673bfdb3b2207ed63749f79539c396642c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167754"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045486"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -55,7 +56,7 @@ Identity Governance により、組織は、*生産性* (従業員が組織に�
 
 組織では、[動的グループ](../users-groups-roles/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリ](../saas-apps/tutorial-list.md)または [SCIM と統合されたアプリ](../manage-apps/use-scim-to-provision-users-and-groups.md)と組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。  また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../b2b/hybrid-cloud-to-on-premises.md)を制御することもできます。  それにより、[Azure AD アクセス レビュー](access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。
 
-ユーザーがアプリケーションにアクセスしようとすると、Azure AD は[条件付きアクセス](/azure/active-directory/conditional-access/)ポリシーを適用します。 条件付きアクセス ポリシーには、たとえば、[使用条件](active-directory-tou.md)を表示することと、[ユーザーがそれらの条件に確実に同意した](../conditional-access/require-tou.md)後でアプリケーションにアクセスできるようになることを含めることができます。
+ユーザーがアプリケーションにアクセスしようとすると、Azure AD は[条件付きアクセス](/azure/active-directory/conditional-access/)ポリシーを適用します。 条件付きアクセス ポリシーには、たとえば、[使用条件](../conditional-access/terms-of-use.md)を表示することと、[ユーザーがそれらの条件に確実に同意した](../conditional-access/require-tou.md)後でアプリケーションにアクセスできるようになることを含めることができます。
 
 ## <a name="privileged-access-lifecycle"></a>特権アクセスのライフサイクル
 
@@ -76,12 +77,12 @@ Azure AD Privileged Identity Management (PIM) により、Azure AD、Azure、お
 - [アクセス レビューとは](access-reviews-overview.md)
 - [アクセス レビューを使用してユーザー アクセスを管理する](manage-user-access-with-access-reviews.md)
 - [アクセス レビューを使用してゲスト アクセスを管理する](manage-guest-access-with-access-reviews.md)
-- [ディレクトリ ロールのアクセス レビューを開始する](../privileged-identity-management/pim-how-to-start-security-review.md)
+- [Azure AD ロールのアクセス レビューを開始する](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>使用条件
 
-- [利用規約でできること](active-directory-tou.md)
+- [Terms of use を使用してできること](../conditional-access/terms-of-use.md)
 
 ### <a name="privileged-identity-management"></a>Privileged Identity Management
 
-- [Azure AD PIMとは](../privileged-identity-management/pim-configure.md)
+- [Azure AD PIM とは](../privileged-identity-management/pim-configure.md)

@@ -5,21 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528558"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164928"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
 Azure Import/Export サービスでは、Azure データセンターにディスク ドライブを送付することで、Azure Blob Storage と Azure Files に大量のデータを安全にインポートできます。 また、このサービスでは、Azure Blob Storage からディスク ドライブにデータを転送し、オンプレミスのサイトに送付できます。 1 つまたは複数のディスク ドライブからのデータを、Azure Blob Storage または Azure Files にインポートできます。 
 
-独自のディスク ドライブを用意し、Azure Import/Export サービスでデータを転送します。 Microsoft から提供されるディスク ドライブを使用することもできます。 
+ご自身のディスク ドライブを用意し、Azure Import/Export サービスを使用してデータを転送します。 Microsoft から提供されるディスク ドライブを使用することもできます。 
 
 Microsoft 提供のディスク ドライブを使用してデータを転送する場合は、[Azure Data Box Disk](../../databox/data-box-disk-overview.md) を使用してデータを Azure にインポートできます。 Microsoft から地域の運送業者を通じて、1 つの注文ごとに合計容量 40 TB の暗号化された SSD (ソリッドステート ディスク ドライブ) を最大 5 台、お客様のデータセンターに発送します。 お客様はそのディスク ドライブを速やかに構成し、USB 3.0 接続でデータをディスク ドライブにコピーしてから、Azure にディスク ドライブを返送することができます。 詳細については、[Azure Data Box Disk の概要](../../databox/data-box-disk-overview.md)に関するページを参照してください。
 
@@ -29,7 +29,7 @@ Microsoft 提供のディスク ドライブを使用してデータを転送す
 
 * **クラウドへのデータの移行**: Azure に大量のデータを迅速にコスト効率よく移動します。
 * **コンテンツ配信**: 顧客サイトにデータを迅速に送信します。
-* **バックアップ**: Azure Storage に格納するオンプレミスのデータのバックアップを作成します。
+* **バックアップ**:Azure Storage に格納するオンプレミスのデータのバックアップを作成します。
 * **データの回復**: ストレージに格納された大量のデータを回復し、オンプレミスの場所に配信します。
 
 ## <a name="importexport-components"></a>Import/Export コンポーネント

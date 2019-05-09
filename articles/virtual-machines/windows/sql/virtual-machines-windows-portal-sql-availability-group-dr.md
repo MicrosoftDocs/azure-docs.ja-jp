@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure Virtual Machines - ディザス�
 description: この記事では、別のリージョンのレプリカを使って、Azure Virtual Machines に SQL Server 可用性グループを構成する方法について説明します。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 43f3628878654a32be8aeafe1ba0d2e42e03d82f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 542505c5a6c3af91669ebe28287ae6e1477e214d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240411"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487178"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>さまざまな地域に存在する Azure 仮想マシンに Always On 可用性グループを構成します｡
 
@@ -84,6 +84,7 @@ ms.locfileid: "51240411"
    - ロード バランサーと同じリージョン内の仮想マシンのみで構成されるバックエンド プールを含むこと。
    - IP アドレスに固有の TCP ポート プローブを使用していること。
    - 同じリージョン内の SQL Server に固有の負荷分散ルールがあること。  
+   - バックエンド プール内の仮想マシンが単一の可用性セットまたは仮想マシン スケール セットの一部でない場合は、Standard ロード バランサーであること。 詳細については、「[Azure Load Balancer Standard の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」をご覧ください。
 
 1. [新しい SQL Server にフェールオーバー クラスタリング機能を追加します](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -127,7 +128,7 @@ ms.locfileid: "51240411"
 
 新しいリージョンのロード バランサーに構成したクラスター ネットワーク名、IP アドレス、およびプローブ ポートを指定して、PowerShell スクリプトを実行します。
 
-   ```PowerShell
+   ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
    $IPResourceName = "<IPResourceName>" # The cluster name for the new IP Address resource.
    $ILBIP = “<n.n.n.n>” # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.

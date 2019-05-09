@@ -2,23 +2,24 @@
 title: Azure AD アプリ プロキシのコネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する | Microsoft Docs
 description: Azure AD アプリケーション プロキシにおけるコネクタのグループの作成と管理の方法について説明します。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e57a953f99a5e0259c346836c156a0e4fe3e4c03
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139027"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170892"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
 

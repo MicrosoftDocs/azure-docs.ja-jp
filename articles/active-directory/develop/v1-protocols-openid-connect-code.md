@@ -8,25 +8,26 @@ manager: mtillman
 editor: ''
 ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/4/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a830527f65cdbd485ef57ea43e4564363f3ca98b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 06639f943542e322e79e137e31be7b8954566a0f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967763"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261991"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 プロトコル上に構築された単純な ID 層です。 OAuth 2.0 では保護されたリソースにアクセスするための[**アクセス トークン**](access-tokens.md)を取得して使用するためのメカニズムを定義しますが、ID 情報を提供するための標準的な方法は定義しません。 OpenID Connect は、OAuth 2.0 承認プロセスの拡張機能として認証を実装します。 エンド ユーザーに関する情報を [`id_token`](id-tokens.md) の形式で提供し、これを使ってユーザーの ID を検証し、ユーザーに関する基本的なプロファイル情報を提供します。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 プロトコル上に構築された単純な ID 層です。 OAuth 2.0 では保護されたリソースにアクセスするための[**アクセス トークン**](access-tokens.md)を取得して使用するためのメカニズムを定義しますが、ID 情報を提供するための標準的な方法は定義しません。 OpenID Connect は、OAuth 2.0 承認プロセスの拡張機能として認証を実装します。 エンド ユーザーに関する情報を [`id_token`](id-tokens.md) の形式で提供し、これを使ってユーザーの ID を検証し、ユーザーに関する基本的なプロファイル情報を提供します。
 
 OpenID Connect は、サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築している場合に推奨されます。
 
@@ -46,12 +47,12 @@ OpenID Connect はメタデータ ドキュメントについて説明するも�
 ```
 https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 ```
-メタデータは、単純な JavaScript Object Notation (JSON) ドキュメントです。 例については、次のスニペットを参照してください。 スニペットの内容については、[OpenID Connect の仕様](https://openid.net)に詳しく記載されています。 上記の {tenant} に `common` ではなくテナントを指定すると、JSON オブジェクトのテナント固有の URI が返されます。
+メタデータは、単純な JavaScript Object Notation (JSON) ドキュメントです。 例については、次のスニペットを参照してください。 スニペットの内容については、[OpenID Connect の仕様](https://openid.net)に詳しく記載されています。 上記の {tenant} に `common` ではなくテナント ID を指定すると、JSON オブジェクトのテナント固有の URI が返されます。
 
 ```
 {
-    "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
-    "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token",
+    "authorization_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/token",
     "token_endpoint_auth_methods_supported":
     [
         "client_secret_post",
@@ -63,6 +64,8 @@ https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
     ...
 }
 ```
+
+[claims-mapping](active-directory-claims-mapping.md) 機能を使用した結果として、アプリにカスタム署名キーがある場合は、アプリの署名キー情報をポイントする `jwks_uri` を取得するために、アプリ ID を含む `appid` クエリ パラメーターを追加する必要があります。 例: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` には、`https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` の `jwks_uri` が含まれます。
 
 ## <a name="send-the-sign-in-request"></a>サインイン要求を送信する
 
@@ -90,13 +93,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター |  | 説明 |
 | --- | --- | --- |
 | tenant |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
-| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]**、**[アプリの登録]** の順にクリックし、アプリケーションを選び、アプリケーション ページでアプリケーション ID を特定します。 |
+| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]**、**[アプリの登録]** の順にクリックし、アプリケーションを選択して、アプリケーション ページでアプリケーション ID を特定します。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。 `code` や `token` などの他の response_types が含まれていてもかまいません。 |
-| scope |必須 |スコープのスペース区切りリスト。 OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
+| scope | 推奨 | OpenID Connect の仕様では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 これとその他の OIDC スコープは v1.0 エンドポイントでは無視されますが、標準に準拠したクライアントにとっては依然としてベスト プラクティスです。 |
 | nonce |必須 |アプリによって生成された、要求に含まれる値。この値が、最終的な `id_token` に要求として含まれます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常、この値はランダム化された一意の文字列または GUID になっており、要求の送信元を特定する際に使用できます。 |
-| redirect_uri |推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
+| redirect_uri | 推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ない場合は、ユーザー エージェントが、アプリ用に登録されたリダイレクト URI のいずれかにランダムに送り返されます。 最大長は 255 バイトです。 |
 | response_mode |省略可能 |結果として得られた authorization_code をアプリに返す際に使用するメソッドを指定します。 サポートされる値は、`form_post` (*HTTP フォーム ポスト* の場合) および `fragment` (*URL フラグメント* の場合) です。 Web アプリケーションでは、トークンをアプリケーションに最も安全に転送できるように、`response_mode=form_post` を使用することをお勧めします。 id_token を含むすべてのフローの既定値は `fragment` です。|
-| state |推奨 |要求に含まれ、トークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
+| state |推奨 |要求に含まれ、トークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は 'login'、'none'、'consent' だけです。 `prompt=login` は、その要求でユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。 `prompt=none` は反対に、ユーザーに対して対話形式のプロンプトを表示しません。 シングル サインオンによって自動的に要求を完了できない場合、エンドポイントはエラーを返します。 `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。 |
 | login_hint |省略可能 |ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 多くの場合、アプリは `preferred_username` 要求を使用して以前のサインインからユーザー名を抽出しておき、再認証時にこのパラメーターを使用します。 |
 
@@ -117,7 +120,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | パラメーター | 説明 |
 | --- | --- |
 | id_token |アプリが要求した `id_token` 。 この `id_token` を使用してユーザーの身元を確認し、そのユーザーとのセッションを開始することができます。 |
-| state |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
+| state |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 
 ### <a name="error-response"></a>エラー応答
 
@@ -154,12 +157,12 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 単に `id_token` を受け取るだけでは、ユーザーを認証するには不十分です。`id_token` の署名を検証し、要求をアプリの要件に従って確認する必要があります。 Azure AD エンドポイントは、JSON Web トークン (JWT) と公開キー暗号を使用してトークンに署名し、それらが有効であることを確認します。
 
-クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 `id_token` の署名を検証した後に、確認の必要な要求がいくつか存在します。
+クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 
 
 シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
 
 * ユーザー/組織がアプリにサインアップ済みであることを確認する。
-* 適切な承認/特権がユーザーにあることを確認する。
+* `wids` または `roles` 要求を使用して、適切な承認/特権がユーザーにあることを確認する。 
 * 多要素認証など特定の強度の認証が行われたことを確認する。
 
 `id_token` を検証したら、ユーザーとのセッションを開始し、`id_token` の要求を使用してそのユーザーに関する情報をアプリで取得することができます。 この情報は、表示、記録、パーソナル化などに利用することができます。`id_tokens` と要求の詳細については、[AAD id_tokens](id-tokens.md) に関するページを参照してください。
@@ -178,7 +181,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | パラメーター |  | 説明 |
 | --- | --- | --- |
-| post_logout_redirect_uri |推奨 |ログアウトの正常終了後にユーザーをリダイレクトする URL。 指定しない場合、ユーザーに汎用メッセージが表示されます。 |
+| post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。指定しない場合、ユーザーに汎用メッセージが表示されます。 |
 
 ## <a name="single-sign-out"></a>シングル サインアウト
 
@@ -199,7 +202,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 // Line breaks for legibility only
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application ID
 &response_type=id_token+code
 &redirect_uri=http%3A%2F%2Flocalhost%3a12345          // Your registered Redirect Uri, url encoded
 &response_mode=form_post                              // `form_post' or 'fragment'

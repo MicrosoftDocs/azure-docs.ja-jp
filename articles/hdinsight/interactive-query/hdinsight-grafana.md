@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 7f33742fc5e765aa5ab0c66d13e844b3be2bab9e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 495c617f97b2a7f39182b7684c2c0e183c2002b1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599878"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867815"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |プロパティ  |説明  |
     |---------|---------|
     |**サブスクリプション**     |  Azure サブスクリプションを選択します。 |
-    |**[リソース グループ]**     | リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 |
+    |**リソース グループ**     | リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 |
     |**場所**     | クラスターを作成する Azure の場所を選択します。  パフォーマンスを向上させるため、お近くの場所を選択してください。 |
     |**クラスターの種類**     | **[hadoop]** を選択します。 |
     |**クラスター名**     | Apache Hadoop クラスターの名前を入力します。 HDInsight のすべてのクラスターでは同じ DNS 名前空間が共有されるため、この名前は一意である必要があります。 この名前は、文字、数字、ハイフンを含む最大 59 文字で構成できます。 名前の先頭と末尾の文字をハイフンにすることはできません。 |

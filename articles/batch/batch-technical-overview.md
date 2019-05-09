@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35621281"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730947"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは
 
@@ -30,7 +30,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 Batch の使用に追加料金はかかりません。 仮想マシン、ストレージ、ネットワークなど、基になるリソースの使用した分だけをお支払いいただきます。
 
-Batch と Azure 内の他の HPC ソリューション オプションとの比較については、[HPC、Batch、Big Compute ソリューション](../virtual-machines/linux/high-performance-computing.md)に関するページを参照してください。
+Batch と Azure 内の他の HPC ソリューション オプションとの比較については、[Azure でのハイ パフォーマンス コンピューティング (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)に関するページを参照してください。
 
 ## <a name="run-parallel-workloads"></a>並列ワークロードの実行
 Batch は本質的に並列 (「驚異的並列」とも呼ばれています) なワークロードと効果的に連動します。 本質的に並列なワークロードとは、各アプリケーションを独立して実行することができ、各インスタンスが作業の一部を完了するワークロードのことです。 アプリケーションは、実行時にいくつかの共通データにアクセスする場合がありますが、アプリケーションの他のインスタンスとは通信しません。 そのため、本質的に並列なワークロードは、大規模で実行できます。可能な規模は、アプリケーションを同時に実行するために使用できるコンピューティング リソースの量によって決まります。

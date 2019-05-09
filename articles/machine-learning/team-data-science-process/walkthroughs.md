@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a5a63bfdc9019afe292dd7623051123c3eb2dbf
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 98595ea0ef5b6d9d4cef0f239390b364fb1e4e75
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132688"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476980"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Team Data Science Process を実行するチュートリアル
 

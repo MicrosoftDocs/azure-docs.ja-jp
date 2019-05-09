@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4757b20e1a3d9830c2d52a5fbc85fd935b27fb62
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7862e4d5c4dd603dacf5784df6c4194392ebc351
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245037"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783687"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>クラウド サービスの Web/worker ロールに対する既定の一時フォルダーのサイズが小さすぎる
 クラウド サービスの worker または Web ロールの既定の一時ディレクトリの最大サイズは 100 MB ですが、ある時点でいっぱいになる可能性があります。 この記事では、一時ディレクトリの領域不足を回避する方法について説明します。
@@ -33,8 +33,8 @@ ms.locfileid: "51245037"
 ## <a name="suggestion-to-fix-the-problem"></a>問題の修正に関する推奨事項
 次のいずれかの代替手段を実装します。
 
-* ローカル ストレージ リソースを構成し、TEMP や TMP を使用せずに直接アクセスします。 アプリケーション内で実行されているコードからローカル ストレージ リソースにアクセスするには、 [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) メソッドを呼び出します。
-* ローカル ストレージ リソースを構成し、TEMP と TMP ディレクトリがローカル ストレージ リソースのパスを指すように指定します。 この変更は [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) メソッド内で実行する必要があります。
+* ローカル ストレージ リソースを構成し、TEMP や TMP を使用せずに直接アクセスします。 アプリケーション内で実行されているコードからローカル ストレージ リソースにアクセスするには、 [RoleEnvironment.GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) メソッドを呼び出します。
+* ローカル ストレージ リソースを構成し、TEMP と TMP ディレクトリがローカル ストレージ リソースのパスを指すように指定します。 この変更は [RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) メソッド内で実行する必要があります。
 
 次のコード例では、OnStart メソッド内から TEMP および TMP のターゲット ディレクトリを変更する方法を示します。
 

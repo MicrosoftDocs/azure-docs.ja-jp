@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387686"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763165"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -45,7 +45,7 @@ StorSimple Cloud Appliance は、Standard 8010 (以前の 1100) と Premium 8020
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ)| Standard_DS3 (4 コア、14 GB メモリ)|
 | **利用可能なリージョン** |すべての Azure リージョン |Premium Storage と DS3 Azure VM をサポートする Azure リージョン<br></br>[こちらの表](https://azure.microsoft.com/regions/services/)を参照し、該当するリージョンで **「Virtual Machines」の「DS シリーズ」** と **「Storage」の「Disk Storage」** の両方が利用できるかどうかを確認してください。 |
-| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../virtual-machines/windows/premium-storage.md)方法を参照 |
+| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br> |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ <br></br>短い待ち時間と高いパフォーマンスが求められるワークロード<br></br>障害復旧のためのセカンダリ デバイス |
 
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
@@ -63,7 +63,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 |  | 物理デバイス | クラウド アプライアンス |
 | --- | --- | --- |
 | **場所** |データ センター内に存在します。 |Azure で実行されます。 |
-| **ネットワーク インターフェイス** |6 つのネットワーク インターフェイス (DATA 0 から DATA 5) があります。 |ネットワーク インターフェイスは DATA 0 ただ 1 つです。 |
+| **ネットワーク インターフェイス** |6 つのネットワーク インターフェイスがあります (DATA 0 から DATA 5)。 |ネットワーク インターフェイスは 1 つのみです (DATA 0)。 |
 | **登録** |初期構成手順の中で登録を行います。 |登録は別の作業です。 |
 | **サービス データ暗号化キー** |物理デバイスで再生成し、新しいキーでクラウド アプライアンスを更新します。 |クラウド アプライアンスから再生成することはできません。 |
 | **サポートされるボリュームの種類** |ローカル固定ボリュームと階層化ボリュームの両方がサポートされます。 |階層化ボリュームのみサポートされます。 |
@@ -94,7 +94,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 クラウド アプライアンスを作成する前に、StorSimple デバイス マネージャー サービスに対して次の更新作業を行います。
 
 * クラウド アプライアンスのホスト サーバーとなる VM の[アクセス制御レコード](storsimple-8000-manage-acrs.md)を追加します。
-* クラウド アプライアンスと同じリージョンにある[ストレージ アカウント](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 クラウド アプライアンスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/common/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../virtual-machines/windows/premium-storage.md)を参照してください。
+* クラウド アプライアンスと同じリージョンにある[ストレージ アカウント](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 クラウド アプライアンスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 詳細については、[Standard Storage アカウント](../storage/common/storage-create-storage-account.md)の作成方法を参照してください。
 * クラウド アプライアンスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。 同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
 作業を開始する前に、次の情報を確認してください。
@@ -108,7 +108,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 
 StorSimple Cloud Appliance を作成するには、次の手順を実行します。
 
-### <a name="step-1-create-a-cloud-appliance"></a>手順 1. クラウド アプライアンスを作成する
+### <a name="step-1-create-a-cloud-appliance"></a>手順 1:クラウド アプライアンスの作成
 
 StorSimple Cloud Appliance を作成するには、次の手順を実行します。
 
@@ -116,7 +116,7 @@ StorSimple Cloud Appliance を作成するには、次の手順を実行しま�
 
 この手順でクラウド アプライアンスを作成できない場合は、インターネットに接続されていない可能性があります。 詳しくは、「[インターネット接続エラーのトラブルシューティング](#troubleshoot-internet-connectivity-errors)」をご覧ください。
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>手順 2. クラウド アプライアンスを構成して登録する
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>手順 2:クラウド アプライアンスの構成と登録
 
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。 StorSimple デバイス マネージャー サービスに最初の StorSimple 物理デバイスを登録すると、サービス データ暗号化キーが作成されます。 キーは安全な場所に保存するよう指示されます。 サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
@@ -124,7 +124,7 @@ StorSimple Cloud Appliance を構成して登録するには、次の手順を�
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>手順 3. (オプション) デバイスの構成設定の変更
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>手順 3:(オプション) デバイスの構成設定の変更
 
 次のセクションでは、CHAP を使用する場合や StorSimple Snapshot Manager のパスワードまたはデバイス管理者パスワードを変更する場合に StorSimple Cloud Appliance に必要なデバイス構成設定について説明します。
 
@@ -160,13 +160,13 @@ Windows PowerShell インターフェイス経由でのクラウド アプライ
 
 クラウド アプライアンスにリモート接続するための 2 つの手順を以下で説明します。
 
-### <a name="step-1-configure-remote-management"></a>手順 1. リモート管理の構成
+### <a name="step-1-configure-remote-management"></a>手順 1:リモート管理の構成
 
 StorSimple Cloud Appliance のリモート管理を構成するには、次の手順を実行します。
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>手順 2. クラウド アプライアンスへのリモート アクセス
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>手順 2:クラウド アプライアンスへのリモート アクセス
 
 クラウド アプライアンスのリモート管理を有効にしたら、Windows PowerShell リモート処理を使って、同じ仮想ネットワーク内の別の仮想マシンからクラウド アプライアンスに接続できます。 たとえば、iSCSI に接続するよう構成して使用しているホスト VM から接続することができます。 ほとんどのデプロイでは、ホスト VM にアクセスするためのパブリック エンドポイントを開き、それを使用してクラウド アプライアンスにアクセスできます。
 

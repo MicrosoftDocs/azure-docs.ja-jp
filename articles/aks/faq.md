@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: 55f32c403da179a0b7babc2172a80c2168cfab17
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: ae92a5c894b186a1c8b471c1b446a88299742aec
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636919"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004858"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -60,7 +60,7 @@ Kured の使用について詳しくは、[AKS 上のノードへのセキュリ
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>MC_* リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
 
-*MC_** リソース グループのリソースの Azure で作成されたタグやその他のプロパティを変更または削除すると、スケーリングやアップグレードのエラーなど、予期しない結果につながる可能性があります。 ビジネス ユニットやコスト センターの割り当てなどの目的で、追加のカスタム タグを作成および変更することができます。 AKS クラスターの *MC_** でリソースを変更すると、SLO が中断されます。
+*MC_** リソース グループのリソースの Azure で作成されたタグやその他のプロパティを変更または削除すると、スケーリングやアップグレードのエラーなど、予期しない結果につながる可能性があります。 ビジネス ユニットやコスト センターの割り当てなどの目的で、追加のカスタム タグを作成および変更することができます。 AKS クラスター内の *MC_** でリソースを変更すると、サービス レベル目標 (SLO) が中断されます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか。](#does-aks-offer-a-service-level-agreement)」を参照してください。
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? アドミッション コントローラーの追加や削除はできますか?
 
@@ -97,8 +97,8 @@ Windows Server コンテナーを実行するには、Windows Server ベース�
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
 [virtual-kubelet]: virtual-kubelet.md
-[aks-advanced-networking]: ./configure-advanced-networking.md
-[aks-rbac-aad]: ./aad-integration.md
+[aks-advanced-networking]: ./configure-azure-cni.md
+[aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
 
 <!-- LINKS - external -->

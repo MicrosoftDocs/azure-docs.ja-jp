@@ -3,7 +3,7 @@ title: クイック スタート - Azure テンプレートを使用して Windo
 description: サンプル アプリのデプロイと自動スケール ルールの構成を行う Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットをすばやく作成する方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,29 +14,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/18
-ms.author: zarhoads
-ms.openlocfilehash: 702c041f838619c1396d5d4ae8e2fd0d3861653f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 03/27/2018
+ms.author: cynthn
+ms.openlocfilehash: 8124f2236b37f72741c16dad8f1649d08963542e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467942"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316662"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>クイック スタート: Azure テンプレートを使用して Windows 仮想マシン スケール セットを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>クイック スタート:Azure テンプレートを使用して Windows 仮想マシン スケール セットを作成する
+
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.5.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
-
 
 ## <a name="define-a-scale-set-in-a-template"></a>テンプレート内にスケール セットを定義する
 Azure Resource Manager テンプレートを使用して、関連するリソースのグループをデプロイできます。 テンプレートは JavaScript Object Notation (JSON) で記述され、アプリケーションの Azure インフラストラクチャ環境全体を定義します。 1 つのテンプレートで、仮想マシン スケール セットの作成、アプリケーションのインストール、および自動スケール ルールの構成を実行できます。 変数やパラメーターを使用してこのテンプレートを再利用することで、既存のスケール セットを更新したり、追加のスケール セットを作成したりできます。 テンプレートは、Azure portal、Azure CLI、Azure PowerShell からデプロイすることも、継続的インテグレーション/継続的デリバリー (CI/CD) パイプラインから呼び出すこともできます。
 
-テンプレートの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)」を参照してください。
+テンプレートの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)」を参照してください。 JSON 構文とプロパティについては、[Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) のテンプレート リファレンスを参照してください。
 
 テンプレートは、各リソースの種類の構成を定義します。 仮想マシン スケール セットのリソースの種類は、個々の VM に似ています。 仮想マシン スケール セットのリソースの種類のコア部分は次のとおりです。
 
@@ -141,19 +140,19 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 
 [![テンプレートを Azure にデプロイする](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
-次のように、Azure PowerShell で [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) を使用して ASP.NET アプリケーションを Windows にインストールすることもできます。
+次のように、Azure PowerShell の [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用して ASP.NET アプリケーションを Windows にインストールすることもできます。
 
 ```azurepowershell-interactive
 # Create a resource group
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 # Deploy template into resource group
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
     -ResourceGroupName myResourceGroup `
     -TemplateFile https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json
 
 # Update the scale set and apply the extension
-Update-AzureRmVmss `
+Update-AzVmss `
     -ResourceGroupName myResourceGroup `
     -VmScaleSetName myVMSS `
     -VirtualMachineScaleSet $vmssConfig
@@ -163,22 +162,22 @@ Update-AzureRmVmss `
 
 
 ## <a name="test-your-scale-set"></a>スケール セットのテスト
-動作中のスケール セットを表示するには、Web ブラウザーでサンプル Web アプリケーションにアクセスします。 次のように [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、ロード バランサーのパブリック IP アドレスを取得します。
+動作中のスケール セットを表示するには、Web ブラウザーでサンプル Web アプリケーションにアクセスします。 次のように [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、ロード バランサーのパブリック IP アドレスを取得します。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-ロード バランサーのパブリック IP アドレスを *http://publicIpAddress/MyApp* 形式で Web ブラウザーに入力します。 ロード バランサーは、次の例に示すように、VM インスタンスのいずれかにトラフィックを配分します。
+ロード バランサーのパブリック IP アドレスを *http:\//publicIpAddress/MyApp* 形式で Web ブラウザーに入力します。 ロード バランサーは、次の例に示すように、VM インスタンスのいずれかにトラフィックを配分します。
 
 ![実行中の IIS サイト](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループ、スケール セットを削除できます。 `-Force` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。 `-AsJob` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループ、スケール セットを削除できます。 `-Force` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。 `-AsJob` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
+Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 

@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Azure REST API と Node.js を使って画像から顔を検出する'
+title: クイック スタート:Azure REST API と Node.js を使用して画像から顔を検出する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と Node.js を使用して、画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/09/2018
+ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: ba42cc7ede2ab790e5f50f3db525e48ebd21f522
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: bbb5cf9a043f8f4ab4202b6113d1c1b915f3b8a0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852505"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312771"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>クイック スタート: Face REST API と Node.js を使って画像から顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>クイック スタート:Face REST API と Node.js を使用して画像から顔を検出する
 
 このクイック スタートでは、Azure Face REST API と Node.js を使用して、画像から人の顔を検出します。
 
@@ -26,12 +26,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)
 
-## <a name="create-the-nodejs-script"></a>Node.js スクリプトを作成する
+## <a name="set-up-the-node-environment"></a>Node 環境をセットアップする
 
-次のコードは、Face API を呼び出して、顔の属性データを画像から取得します。 まず、テキスト エディターにコードをコピーしてください。実行する前に、いくつかの変更を加える必要があります。
+実際のプロジェクトの作成先となるフォルダーに移動して、*facedetection.js* という新しいファイルを作成します。 そのプロジェクトに `requests` モジュールをインストールします。 これにより、スクリプトから HTTP 要求を実行することができます。
 
-```nodejs
+```shell
+npm install request --save
+```
+
+## <a name="write-the-nodejs-script"></a>Node.js スクリプトを作成する
+
+次のコードを *facedetection.js* に貼り付けます。 Face サービスへの接続方法と入力データの取得場所がこれらのフィールドによって指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 `imageUrl` フィールドは、実際の入力画像を指すように変更する必要があります。
+
+```javascript
 'use strict';
 
 const request = require('request');
@@ -46,7 +55,12 @@ const uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/det
 
 const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
+```
 
+さらに、Face API を呼び出して顔の属性データを入力画像から取得する次のコードを追加します。 `returnFaceAttributes` フィールドは、取得する顔の属性を指定します。 この文字列は、実際の用途に合わせて変更してください。
+
+
+```javascript
 // Request parameters.
 const params = {
     'returnFaceId': 'true',
@@ -76,26 +90,12 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-### <a name="subscription-key"></a>Subscription key
-`<Subscription Key>` を、有効な Face サブスクリプション キーに置き換えます。
-
-### <a name="face-endpoint-url"></a>Face エンドポイント URL
-
-URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` は、照会する Azure Face エンドポイントを示します。 この URL の最初の部分は、実際のサブスクリプション キーに対応するリージョンと一致するように変更する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
-
-### <a name="url-query-string"></a>URL クエリ文字列
-
-`returnFaceAttributes` フィールドは、取得する顔の属性を指定します。 この文字列は、実際の用途に合わせて変更してください。
-
-### <a name="image-source-url"></a>イメージ ソース URL
-`imageUrl` フィールドは、入力として使用する画像を示します。 実際の分析対象となる画像を指すように変更してください。
-
 ## <a name="save-and-run-the-script"></a>スクリプトを保存して実行する
 
-変更後のファイルを JavaScript (.js) スクリプトとして保存します。 次にコマンド プロンプトを開き、`node` コマンドで実行します。
+変更を加えたら、コマンド プロンプトを開き、`node` コマンドでこのファイルを実行します。
 
 ```
-node myfile.js
+node facedetection.js
 ```
 
 コンソール ウィンドウに、顔の情報が JSON データとして表示されます。 例: 
@@ -281,7 +281,7 @@ node myfile.js
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す cURL コマンドを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
+このクイック スタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す Node.js スクリプトを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

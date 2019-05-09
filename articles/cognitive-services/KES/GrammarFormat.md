@@ -4,22 +4,22 @@ titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) API の文法形式について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125155"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544326"
 ---
 # <a name="grammar-format"></a>文法形式
 
-文法とは、サービスが解釈できる自然言語のクエリの重み付けセットと、これらの自然言語のクエリをセマンティック クエリ式に変換する方法を指定する、XML ファイルのことです。  文法構文は、音声認識文法の W3C 標準である [SRGS](http://www.w3.org/TR/speech-grammar/) をベースとし、データ インデックスの統合やセマンティック関数をサポートする拡張機能が備わっています。
+文法とは、サービスが解釈できる自然言語のクエリの重み付けセットと、これらの自然言語のクエリをセマンティック クエリ式に変換する方法を指定する、XML ファイルのことです。  文法構文は、音声認識文法の W3C 標準である [SRGS](https://www.w3.org/TR/speech-grammar/) をベースとし、データ インデックスの統合やセマンティック関数をサポートする拡張機能が備わっています。
 
 次に文法で使用できる各構文要素について説明します。  文脈の中でこれらの要素の使用について実践する完全な文法については、[こちらの例](#example)をご覧ください。
 

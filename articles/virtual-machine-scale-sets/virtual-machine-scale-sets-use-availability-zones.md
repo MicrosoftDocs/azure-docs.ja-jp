@@ -3,7 +3,7 @@ title: 可用性ゾーンを使用する Azure スケール セットを作成�
 description: 障害に対する冗長性を高めるために可用性ゾーンを使用する Azure 仮想マシン スケール セットを作成する方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
-ms.author: zarhoads
-ms.openlocfilehash: 062725ab5e486ff795ffa0f4a72dd3fdb0e6b948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468876"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994709"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -62,10 +62,10 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 単一のゾーンにスケール セットを作成する場合は、すべての VM インスタンスが実行するゾーンをユーザーが制御し、スケール セットはそのゾーン内でのみ管理および自動スケールされます。 ゾーン冗長スケール セットを使うと、複数のゾーンにまたがる単一のスケール セットを作成できます。 VM インスタンスが作成されると、既定で、複数のゾーンに均等に分散されます。 ゾーンの 1 つで中断が発生しても、スケール セットは容量を増やすためのスケールアウトを自動的には行いません。 CPU またはメモリの使用率に基づく自動スケール ルールを構成するのがベスト プラクティスです。 自動スケール ルールを作成すると、スケール セットは、その 1 つのゾーンでの VM インスタンスの喪失に、残りの動作しているゾーンに新しいインスタンスをスケールアウトすることによって、対応できるようになります。
 
-可用性ゾーンを使うには、[サポートされている Azure リージョン](../availability-zones/az-overview.md#regions-that-support-availability-zones)にスケール セットを作成する必要があります。 次のいずれかの方法で、可用性ゾーンを使うスケール セットを作成できます。
+可用性ゾーンを使うには、[サポートされている Azure リージョン](../availability-zones/az-overview.md#services-support-by-region)にスケール セットを作成する必要があります。 次のいずれかの方法で、可用性ゾーンを使うスケール セットを作成できます。
 
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI](#use-the-azure-cli-20)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure リソース マネージャーのテンプレート](#use-azure-resource-manager-templates)
 
@@ -81,7 +81,7 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-cli.md)で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。
 
-`--zones` パラメーターを [az vmss create](/cli/azure/vmss#az_vmss_create) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。 次の例では、*myScaleSet* という名前の単一ゾーン スケール セットをゾーン *1* に作成します。
+`--zones` パラメーターを [az vmss create](/cli/azure/vmss) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。 次の例では、*myScaleSet* という名前の単一ゾーン スケール セットをゾーン *1* に作成します。
 
 ```azurecli
 az vmss create \
@@ -94,7 +94,7 @@ az vmss create \
     --zones 1
 ```
 
-単一ゾーン スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル CLI スクリプト](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh.)をご覧ください
+単一ゾーン スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル CLI スクリプト](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh)をご覧ください
 
 ### <a name="zone-redundant-scale-set"></a>ゾーン冗長スケール セット
 
@@ -117,12 +117,12 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
-可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。 `-Zone` パラメーターを [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。
+可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。 `-Zone` パラメーターを [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。
 
 次の例では、*myScaleSet* という名前の単一ゾーン スケール セットを、*米国東部 2* のゾーン *1* に作成します。 仮想ネットワーク用の Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `
@@ -139,7 +139,7 @@ New-AzureRmVmss `
 ゾーン冗長スケール セットを作成するには、`-Zone` パラメーターで複数のゾーンを指定します。 次の例では、*myScaleSet* という名前のゾーン冗長スケール セットを、"*米国東部 2*" のゾーン *1、2、3* にまたがって作成します。 仮想ネットワーク用のゾーン冗長 Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `
@@ -215,7 +215,7 @@ New-AzureRmVmss `
 }
 ```
 
-パブリック IP アドレスまたはロード バランサーを作成する場合、ゾーン冗長ネットワーク リソースを作成するには、*"sku": { "name": "Standard" }"* プロパティを指定します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
+パブリック IP アドレスまたはロード バランサーを作成する場合、*"sku": { "name":"Standard" }"* プロパティを指定してゾーン冗長ネットワーク リソースを作成します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
 ゾーン冗長スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)をご覧ください
 

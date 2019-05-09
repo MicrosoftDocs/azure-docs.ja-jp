@@ -3,21 +3,21 @@ title: Data Lake Storage Gen1 のアクセス制御の概要 | Microsoft Docs
 description: Azure Data Lake Store Gen1 のアクセス制御のしくみを理解します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: d16f8c09-c954-40d3-afab-c86ffa8c353d
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: eaabb29a492ec6a0ef4c85afe839a9df5f588958
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.author: twooley
+ms.openlocfilehash: 211cb32298b17bb9e4023bf8bc74233c3916f58d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087169"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58877671"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 
@@ -45,7 +45,7 @@ Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生�
 
 ファイル システム オブジェクトに対するアクセス許可は、**読み取り**、**書き込み**、**実行**であり、次の表に示すように、ファイルとフォルダーに対して使用できます。
 
-|            |    ファイル     |   フォルダー |
+|            |    ファイル     |   Folder |
 |------------|-------------|----------|
 | **読み取り (R)** | ファイルの内容を読み取ることができる | フォルダーの内容を一覧表示するには、**読み取り**と**実行**が必要です。|
 | **書き込み (W)** | ファイルへの書き込みまたは追加を実行できる | フォルダーに子項目を作成するには、**書き込み**と**実行**が必要です。 |
@@ -71,7 +71,7 @@ Data Lake Store Gen1 で使用されている POSIX 形式のモデルでは、�
 
 Data Lake Store Gen1 アカウントに対する特定の操作の実行に必要なアクセス許可について理解できるように、一般的なシナリオを次に示します。
 
-| Operation | オブジェクト              |    /      | Seattle/   | Portland/   | Data.txt       |
+| Operation | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 読み取り      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 追加 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -289,13 +289,13 @@ GUID が表示されるのは、そのユーザーがもう Azure AD に存在�
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX アクセス制御モデルの詳細はどこで確認できますか
 
 * [POSIX Access Control Lists on Linux (Linux での POSIX アクセス制御リスト)](https://www.linux.com/news/posix-acls-linux)
-* [HDFS Permission Guide (HDFS アクセス許可ガイド)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
-* [POSIX FAQ (POSIX のよく寄せられる質問)](http://www.opengroup.org/austin/papers/posix_faq.html)
-* [POSIX 1003.1 2008](http://standards.ieee.org/findstds/standard/1003.1-2008.html)
-* [POSIX 1003.1 2013](http://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
-* [POSIX 1003.1 2016](http://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
+* [HDFS Permission Guide (HDFS アクセス許可ガイド)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+* [POSIX FAQ (POSIX のよく寄せられる質問)](https://www.opengroup.org/austin/papers/posix_faq.html)
+* [POSIX 1003.1 2008](https://standards.ieee.org/findstds/standard/1003.1-2008.html)
+* [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
+* [POSIX 1003.1 2016](https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
 * [Ubuntu での POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
-* [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
+* [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>関連項目
 

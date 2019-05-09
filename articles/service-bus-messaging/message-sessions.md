@@ -3,29 +3,29 @@ title: Azure Service Bus のメッセージ セッション | Microsoft Docs
 description: セッションで Azure Service Bus メッセージのシーケンスを処理します。
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2018
-ms.author: spelluru
-ms.openlocfilehash: 523394010058ace7f61da2196a110fd3e6db610c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739860"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59500143"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
 Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 Service Bus の FIFO 処理を保証するには、セッションを使用します。 Service Bus では、メッセージ間の関係の性質に関する規範はなく、またメッセージのシーケンスの開始または終了位置を既定するモデルは特に定義されていません。
 
 > [!NOTE]
-> Service Bus の Basic レベルはセッションをサポートしていません。 Standard レベルと Premium レベルはセッションをサポートしています。 詳細については、「[Service Bus の価格](/pricing/details/service-bus/)」をご覧ください。
+> Service Bus の Basic レベルはセッションをサポートしていません。 Standard レベルと Premium レベルはセッションをサポートしています。 詳細については、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
 送信プロセスは、トピックまたはキューにメッセージを送信するときに、アプリケーションで定義されたセッションに固有の ID に、[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) プロパティを設定することで、セッションを作成できます AMQP 1.0 プロトコル レベルでは、この値は *group-id* プロパティに相当します。
 
@@ -51,7 +51,7 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) の受信プロセスは、セッションを受け入れたクライアントによって作成されます。 クライアントは [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) (C# の場合は [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)) を呼び出します。 リアクティブなコールバック モデルでは、セッション ハンドラーが登録されます。
 
-[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) オブジェクトが受け入れられクライアントに保持されている間、そのクライアントはそのセッションの [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) が付いたキューまたはサブスクリプションに存在するすべてのメッセージと、その **SessionId** が付けられ、セッションが保持されている間も着信し続けるメッセージに対する排他的ロックを保持します。
+[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) オブジェクトが受け入れられクライアントに保持されている間、そのクライアントはそのセッションの [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) が付いたキューまたはサブスクリプションに存在するすべてのメッセージと、その **SessionId** が付けられ、セッションが保持されている間も着信し続けるメッセージに対する排他的ロックを保持します。
 
 ロックが解除されるのは、**Close** または **CloseAsync** が呼び出されたとき、またはロックの有効期限が切れ、アプリケーションが終了操作を実行できないときです。 セッション ロックは、ファイルの排他的ロックと同様に処理する必要があり、アプリケーションは、セッションが不要になったらただちにセッションを閉じ、それ以上のメッセージを期待しない必要があります。
 

@@ -3,24 +3,25 @@ title: リンクと URL の Azure AD アプリ プロキシの変換 | Microsoft
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230065"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59262552"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -31,28 +32,28 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 
 テナントでカスタム ドメインを使用できない場合、この機能を提供するその他のいくつかのオプションがあります。 これらはすべて、カスタム ドメインとの互換性も相互の互換性もあるため、カスタム ドメインやその他のソリューションを必要に応じて構成できます。 
 
-**オプション 1: Managed Browser を使用する** – このソリューションは、Intune Managed Browser を使用してアプリケーションにアクセスすることをユーザーに推奨または要求することを計画している場合にのみ適用されます。 すべての公開されている URL を処理します。 
+**オプション 1:Managed Browser を使用する** – このソリューションは、Intune Managed Browser を使用してアプリケーションにアクセスすることをユーザーに推奨または要求することを計画している場合にのみ適用されます。 すべての公開されている URL を処理します。 
 
-**オプション 2: MyApps 拡張機能を使用する** – このソリューションは、クライアント側のブラウザー拡張機能をインストールすることをユーザーに要求しますが、すべての公開されている URL を処理し、ほとんどの一般的なブラウザーと連携します。 
+**オプション 2:MyApps 拡張機能を使用する** – このソリューションは、クライアント側のブラウザー拡張機能をインストールすることをユーザーに要求しますが、すべての公開されている URL を処理し、ほとんどの一般的なブラウザーと連携します。 
 
-**オプション 3: リンク変換設定を使用する** – これは、ユーザーからは見えない管理者側の設定です。 ただし、HTML および CSS 内の URL のみを処理します。 (たとえば) JavaScript によって生成されるハードコードされた内部 URL は機能しません。  
+**オプション 3:リンク変換設定を使用する** – これは、ユーザーからは見えない管理者側の設定です。 ただし、HTML および CSS 内の URL のみを処理します。 (たとえば) JavaScript によって生成されるハードコードされた内部 URL は機能しません。  
 
 これら 3 つの機能は、ユーザーの居場所にかかわらず、リンクを機能させ続けます。 内部エンドポイントまたはポートを直接ポイントするアプリがある場合は、公開されている外部アプリケーション プロキシ URL にこれらの内部 URL をマップできます。 
 
  
 > [!NOTE]
 > 最後のオプションはテナント専用です。いかなる理由であっても、カスタム ドメインのアプリに同じ内部および外部 URL を含めることはできません。 この機能を有効にする前に、[Azure AD アプリケーション プロキシでカスタム ドメイン](application-proxy-configure-custom-domain.md)が機能するかどうかをご確認ください。 
-
->または、リンク変換を構成したいアプリケーションが SharePoint の場合は、「[SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)」で、リンクをマッピングするための別の方法をご覧ください。 
+> 
+> または、リンク変換を構成したいアプリケーションが SharePoint の場合は、「[SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)」で、リンクをマッピングするための別の方法をご覧ください。 
 
  
-### <a name="option-1-intune-managed-browser-integration"></a>オプション 1: Intune Managed Browser の統合 
+### <a name="option-1-intune-managed-browser-integration"></a>オプション 1:Intune Managed Browser の統合 
 
 Intune Managed Browser を使用して、アプリケーションとコンテンツの保護を強化することができます。 このソリューションを使用するには、Intune Managed Browser を使用してアプリケーションにアクセスすることをユーザーに要求または推奨する必要があります。 アプリケーション プロキシで公開されているすべての内部 URL は Managed Browser によって認識され、対応する外部 URL にリダイレクトされます。 これにより、すべてのハードコードされた内部 URL が機能すること、またユーザーがブラウザーに移動して内部 URL を直接入力した場合に、ユーザーがリモートであってもその URL が機能することが保証されます。  
 
 このオプションの構成方法などの詳細については、[Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) のドキュメントをご覧ください。  
 
-### <a name="option-2-myapps-browser-extension"></a>オプション 2: MyApps ブラウザー拡張機能 
+### <a name="option-2-myapps-browser-extension"></a>オプション 2:MyApps ブラウザー拡張機能 
 
 MyApps ブラウザー拡張機能を使用すると、アプリケーション プロキシで公開されているすべての内部 URL は拡張機能によって認識され、対応する外部 URL にリダイレクトされます。 これにより、すべてのハードコードされた内部 URL が機能すること、またユーザーがブラウザーのアドレス バーに移動して内部 URL を直接入力した場合に、ユーザーがリモートであってもその URL が機能することが保証されます。  
 
@@ -80,6 +81,31 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 - `/claims/claims.html` のようなローカル ファイル構造の共有リソースをポイントする**相対内部リンク**。 これらのリンクは、アプリケーション プロキシ経由で公開されるアプリで自動的に動作し、リンク変換の有無にかかわらず機能し続けます。 
 - `http://expenses` のような他のオンプレミスのアプリまたは `http://expenses/logo.jpg` のような公開されたファイルへの**ハードコードされた内部リンク**。 リンク変換機能は、ハードコードされた内部リンクで機能し、リモート ユーザーが経由する必要がある外部 URL をポイントするように変更します。
+
+アプリケーション プロキシがリンク変換をサポートする HTML コード タグの完全な一覧には、以下のものが含まれます。
+* a
+* audio
+* base
+* ボタン
+* div
+* embed
+* form
+* frame
+* head
+* html
+* iframe
+* 画像
+* input
+* link
+* menuitem
+* meta
+* object
+* script
+* source
+* track
+* video
+
+さらに、CSS 内では URL 属性も変換されます。
 
 ### <a name="how-do-apps-link-to-each-other"></a>アプリが相互にリンクする方法
 

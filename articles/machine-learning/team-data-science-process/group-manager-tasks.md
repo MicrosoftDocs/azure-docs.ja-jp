@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7a04b875befdd523527d286113fddb783984d4af
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408733"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458144"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>データ サイエンス チーム プロジェクトのグループ マネージャーのタスク
 
@@ -83,7 +83,7 @@ Microsoft アカウントがない場合は、**[Sign up now]\(今すぐサイ�
 
 ![3](./media/group-manager-tasks/create-account-1.PNG)
 
-**[Create your account] (アカウントの作成)** ウィザードで、作成する Azure DevOps Services に関する情報として次の値を入力します。
+**[Create your account]\(アカウントの作成)** ウィザードで、作成する Azure DevOps Services に関する情報として次の値を入力します。
 
 - **サーバー URL**:*mysamplegroup* を、独自の*サーバー名*に置き換えます。 サーバーの URL は、*https://\<servername\>.visualstudio.com* になります。
 - **コードの管理に次を使用:****_[Git]_** を選択します。

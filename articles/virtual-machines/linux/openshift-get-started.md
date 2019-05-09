@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 03/01/2019
 ms.author: haroldw
-ms.openlocfilehash: d68215359d50ac153d6df3bbcce5a9b6171698bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 826085df8d928cab0a05527be8c464af5f4e9180
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002517"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -35,22 +35,22 @@ OpenShift には、コンテナーのオーケストレーションと管理の�
 以下の複数のバージョンの OpenShift を使用できます。
 
 - OpenShift Container Platform
-- OpenShift On Azure (2019 年の初めに公開予定のフル マネージド OpenShift)
+- OpenShift On Azure (2019 年第 1 四半期末頃に公開予定のフル マネージド OpenShift)
 - OKD (旧称 OpenShift Origin)
 - OpenShift Dedicated
 - OpenShift Online
 
-この記事で扱う 5 つのバージョンのうち、現時点でお客様がAzure にデプロイできるのは 2 つ (OpenShift Container Platform と OKD) のみです。
+この記事で扱う 5 つのバージョンのうち、現時点でお客様が Azure にデプロイできるのは次の 2 つのみです: OpenShift Container Platform、OKD。
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
 Container Platform は Red Hat 製のエンタープライズ対応[市販バージョン](https://www.openshift.com)であり、Red Hat でサポートされています。 このバージョンでは、OpenShift Container Platform の必要な権利を購入します。インフラストラクチャ全体のインストールと管理は顧客が行います。
 
-プラットフォーム全体を顧客が "所有" しているため、プラットフォームを自社のオンプレミスのデータセンターや、パブリック クラウド (Azure、AWS、Google など) にインストールすることができます。
+プラットフォーム全体を顧客が "所有" しているため、プラットフォームを自社のオンプレミスのデータセンターや、パブリック クラウド (Azure など) にインストールすることができます。
 
 ## <a name="openshift-on-azure"></a>OpenShift On Azure
 
-OpenShift On Azure は Azure で実行される フル マネージド OpenShift です。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 クラスターは、お客様の Azure サブスクリプションにデプロイされます。 サービスは、現在プライベート プレビュー段階であり、2019 年の初めに一般公開される予定です。 一般公開が近づくにつれて、サービスの詳細がさらに提供されます。
+OpenShift On Azure は Azure で実行される フル マネージド OpenShift です。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 クラスターは、お客様の Azure サブスクリプションにデプロイされます。 サービスは、現在プライベート プレビュー段階であり、2019 年第 1 四半期末頃に一般提供される予定です。 プライベート プレビューへの参加に関心をお持ちのお客様は、[申請フォーム](https://aka.ms/openshiftazureinterest)にご記入ください。  一般公開が近づくにつれて、サービスの詳細がさらに提供されます。
 
 ## <a name="okd-formerly-openshift-origin"></a>OKD (旧称 OpenShift Origin)
 
@@ -58,7 +58,7 @@ OKD は OpenShift の[オープン ソース](https://www.okd.io/)上流プロ�
 
 ## <a name="openshift-dedicated"></a>OpenShift Dedicated
 
-Dedicated は、Red Hat によって管理される*シングルテナント*の OpenShift であり、OpenShift Container Platform を使用します。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 クラスターはお客様専用であり、パブリック クラウド (AWS や Googleなど) で実行されます。 開始クラスターには 4 つのアプリケーション ノードが含まれ、すべてのコストは年単位で前払いされます。
+Dedicated は、Red Hat によって管理される*シングルテナント*の OpenShift であり、OpenShift Container Platform を使用します。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 クラスターはお客様専用であり、パブリック クラウド (Azure など) で実行されます。 開始クラスターには 4 つのアプリケーション ノードが含まれ、すべてのコストは年単位で前払いされます。
 
 ## <a name="openshift-online"></a>OpenShift Online
 

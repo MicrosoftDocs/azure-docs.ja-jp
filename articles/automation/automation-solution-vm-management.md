@@ -1,24 +1,27 @@
 ---
 title: Start/Stop VMs during off-hours ソリューション
-description: この VM 管理ソリューションは、スケジュールに従って Azure Resource Manager 仮想マシンを起動および停止し、Log Analytics からプロアクティブに監視します。
+description: この VM 管理ソリューションは、スケジュールに従って Azure Resource Manager 仮想マシンを起動および停止し、Azure Monitor ログからプロアクティブに監視します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/04/2018
+ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f5c86a90325c9a6dcd521a97cb899b88b55198d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194268"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58762941"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
-Start/Stop VMs during off-hours ソリューションでは、ユーザー定義のスケジュールで Azure Virtual Machines を起動および停止し、Azure Log Analytics によって分析情報を提供して、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用することで必要に応じて電子メールを送信します。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。
+Start/Stop VMs during off-hours ソリューションでは、ユーザー定義のスケジュールで Azure Virtual Machines を起動および停止し、Azure Monitor ログによって分析情報を提供して、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用することで必要に応じて電子メールを送信します。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。
+
+> [!NOTE]
+> Start/Stop VMs during off-hours ソリューションは、このソリューションのデプロイ時にご使用の Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 このソリューションは現在、Azure モジュールの新しいバージョンでは動作しません。 これは、Start/Stop VMs during off-hours ソリューションの実行に使用する Automation アカウントのみに影響します。 「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」で説明しているように、ご使用の他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
 
 このソリューションは、VM のコストを最適化する必要があるユーザー向けに、分散型の低コストなオートメーション オプションを提供します。 このソリューションでは次のことが可能です。
 
@@ -34,11 +37,15 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 > [!NOTE]
 > クラシック VM 用のソリューションを使用している場合、すべての VM はクラウド サービスごとに順番に処理されます。 仮想マシンは、異なる複数のクラウド サービスでまだ並列に処理されています。
 >
-> Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 起動/停止ソリューションでは、クラシック リソースを管理するためのコマンドレットがあるため、実行時にエラーが発生する可能性があります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページをご覧ください。
+> Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 起動/停止ソリューションでは、クラシック リソースを管理するためのコマンドレットがあるため、実行時にエラーが発生する可能性があります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページをご覧ください。 CSP サブスクリプションを使用する場合、デプロイ後に [**External_EnableClassicVMs**](#variables) 変数を **False** に変更する必要があります。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 このソリューションの Runbook は、[Azure 実行アカウント](automation-create-runas-account.md)で動作します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
+
+Start/Stop VM ソリューションには、別の Automation アカウントを使用することをお勧めします。 この理由は、Azure モジュールのバージョンが頻繁にアップグレードされ、パラメーターが変更される可能性があるからです。 Start/Stop VM ソリューションは同じ周期でアップグレードされないため、使用しているコマンドレットの新しいバージョンで機能しない場合があります。 モジュールの更新は、実稼働用の Automation アカウントにインポートする前に、テスト用の Automation アカウントでテストすることをお勧めします。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
@@ -59,17 +66,17 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
    ![VM 管理の [ソリューションの追加] ページ](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
 4. **[ソリューションの追加]** ページで、**[ワークスペース]** を選択します。 Automation アカウントと同じ Azure サブスクリプションに関連付けられている Log Analytics ワークスペースを選択します。 ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択します。 **[Log Analytics ワークスペース]** ページで、次の手順を実行します。
-   - 新しい **Log Analytics ワークスペース**の名前を指定します。
+   - 新しい **Log Analytics ワークスペース**の名前 ("ContosoLAWorkspace" など) を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、新しいリソース グループを作成するか、既存のリソース グループを選択できます。
-   - **[場所]** を選択します。 現在使用できる場所は、**オーストラリア南東部**、**カナダ中部**、**インド中部**、**米国東部**、**東日本**、**東南アジア**、**英国南部**、および**西ヨーロッパ**のみです。
-   - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Log Analytics は[価格](https://azure.microsoft.com/pricing/details/log-analytics/)を更新し、GB ごとのレベルが唯一のオプションとなっています。
+   - **[場所]** を選択します。 現在使用できる場所は、**オーストラリア南東部**、**カナダ中部**、**インド中部**、**米国東部**、**東日本**、**東南アジア**、**英国南部**、**西ヨーロッパ**、および**米国西部 2** のみです。
+   - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Azure Monitor ログは[価格](https://azure.microsoft.com/pricing/details/log-analytics/)を更新し、GB ごとのレベルが唯一のオプションとなっています。
 
 5. **[Log Analytics ワークスペース]** ページで必要な情報を入力したら、**[作成]** をクリックします。 進行状況はメニューの **[通知]** で追跡できます。完了したら、**[ソリューションの追加]** ページに戻ります。
 6. **[ソリューションの追加]** ページで、**[Automation アカウント]** を選択します。 新しい Log Analytics ワークスペースを作成する場合は、関連付ける新しい Automation アカウントを作成するか、Log Analytics ワークスペースにまだリンクされていない既存の Automation アカウントを選択することができます。 既存の Automation アカウントを選択するか、**[Automation アカウントの作成]** をクリックし、**[Automation アカウントの追加]** ページで、次の情報を入力します。
    - **[名前]** フィールドに、Automation アカウントの名前を入力します。
 
-    それ以外のオプションはすべて、選択した Log Analytics ワークスペースに基づいて自動的に入力されます。 こうしたオプションは変更できません。 このソリューションに含まれている Runbook は、Azure 実行アカウントが既定の認証方法になります。 **[OK]** をクリックすると、構成オプションが検証され、Automation アカウントが作成されます。 進行状況は、メニューの **[通知]** で追跡できます。
+     それ以外のオプションはすべて、選択した Log Analytics ワークスペースに基づいて自動的に入力されます。 こうしたオプションは変更できません。 このソリューションに含まれている Runbook は、Azure 実行アカウントが既定の認証方法になります。 **[OK]** をクリックすると、構成オプションが検証され、Automation アカウントが作成されます。 進行状況は、メニューの **[通知]** で追跡できます。
 
 7. 最後に、**[ソリューションの追加]** ページで、**[構成]** を選択します。 **[パラメーター]** ページが表示されます。
 
@@ -90,6 +97,9 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 8. ソリューションに必要な初期設定を構成したら、**[OK]** をクリックして **[パラメーター]** ページを閉じ、**[作成]** を選択します。 すべての設定が検証された後、ソリューションは、ご利用のサブスクリプションにデプロイされます。 このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
 
+> [!NOTE]
+> Azure Cloud Solution Provider (Azure CSP) サブスクリプションがある場合、デプロイ完了後に、Automation アカウントで、**[共有リソース]** の **[変数]** に移動し、[**External_EnableClassicVMs**](#variables) 変数を **False** に設定してください。 これにより、ソリューションによるクラシック VM リソースの検索が停止します。
+
 ## <a name="scenarios"></a>シナリオ
 
 ソリューションには 3 つのシナリオがあります。 そのシナリオを次に示します。
@@ -108,8 +118,8 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>サブスクリプションとリソース グループに対する起動および停止アクションを対象にする
 
 1. **External_Stop_ResourceGroupNames** 変数と **External_ExcludeVMNames** 変数を構成して対象の VM を指定します。
-1. **Scheduled-StartVM** スケジュールと **Scheduled-StopVM** スケジュールを有効にして、更新します。
-1. ACTION パラメーターを **start** に設定し、WHATIF パラメーターを **True** に設定して、**ScheduledStartStop_Parent** Runbook を実行し、ご自身の変更をプレビューします。
+2. **Scheduled-StartVM** スケジュールと **Scheduled-StopVM** スケジュールを有効にして、更新します。
+3. ACTION パラメーターを **start** に設定し、WHATIF パラメーターを **True** に設定して、**ScheduledStartStop_Parent** Runbook を実行し、ご自身の変更をプレビューします。
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM リストによる起動および停止アクションを対象にする
 
@@ -133,7 +143,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM リストによる起動および停止アクションを対象にする
 
-1. **VMList** 変数に追加する VM に、正の整数値を持つ **sequencestart** および **sequencestop** タグを追加します。 
+1. **VMList** パラメーターに追加する VM に、正の整数値を持つ **sequencestart** および **sequencestop** タグを追加します。
 1. ACTION パラメーターを **start** に設定して **SequencedStartStop_Parent** Runbook を実行し、*VMList* パラメーターに VM のコンマ区切りリストを追加して、WHATIF パラメーターを **True** に設定します。 変更をプレビューします。
 1. **External_ExcludeVMNames** パラメーターを、VM のコンマ区切りリスト (VM1, VM2, VM3) で構成します。
 1. このシナリオでは、**External_Start_ResourceGroupNames** 変数と **External_Stop_ResourceGroupnames** 変数は考慮されていません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、「[Azure Automation の Runbook をスケジュール設定する](../automation/automation-schedules.md)」を参照してください。
@@ -171,7 +181,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
-仮想マシンのスタートアップとシャットダウンをビジネス要件に合わせて調整できるように、このソリューションには、構成済みの Runbook、スケジュール、および Log Analytics との統合が含まれています。
+仮想マシンのスタートアップとシャットダウンをビジネス要件に合わせて調整できるように、このソリューションには、構成済みの Runbook、スケジュール、および Azure Monitor ログとの統合が含まれています。
 
 ### <a name="runbooks"></a>Runbooks
 
@@ -197,7 +207,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 次の表は、Automation アカウント内に作成される変数の一覧です。 **External** プレフィックスが付いた変数のみを変更するようにしてください。 **Internal** プレフィックスが付いた変数を変更すると、望ましくない効果がもたらされます。
 
-|可変 | 説明|
+|変数 | 説明|
 |---------|------------|
 |External_AutoStop_Condition | アラートをトリガーする前の条件を構成するのに必要な条件演算子。 指定できる値は、**GreaterThan**、**GreaterThanOrEqual**、**LessThan**、および **LessThanOrEqual** です。|
 |External_AutoStop_Description | CPU の割合がしきい値を超えた場合に VM を停止するアラート。|
@@ -205,7 +215,8 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |External_AutoStop_Threshold | 変数 _External_AutoStop_MetricName_ で指定される Azure アラート ルールのしきい値。 パーセンテージの値の範囲は 1 ～ 100 です。|
 |External_AutoStop_TimeAggregationOperator | 時間の集計演算子。条件を評価するために選択した時間枠のサイズに適用されます。 指定できる値は、**Average**、**Minimum**、**Maximum**、**Total**、および **Last** です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure が分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
-|External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。|
+|External_EnableClassicVMs| クラシック VM をソリューションの対象とするかどうかを指定します。 既定値は True です。 CSP サブスクリプションでは、これを False に設定する必要があります。|
+|External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。 これは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合、除外対象として設定した VM が意図せず起動または停止されることがあります。|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |Internal_AutomationAccountName | Automation アカウントの名前を指定します。|
@@ -229,7 +240,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |Sequenced-StopVM | 午前 1 時 00 分 (UTC)、毎週金曜日 | _Stop_ パラメーターを持つ Sequenced_Parent Runbook を毎週金曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStop** のタグを持つ VM すべてを順番 (昇順) に停止します。 タグの値とアセット変数について詳しくは、「Runbook」セクションをご覧ください。 関連するスケジュール (**Sequenced-StartVM**) を有効にしてください。|
 |Sequenced-StartVM | 午後 1 時 00 分 (UTC)、毎週月曜日 | _Start_ パラメーターを持つ Sequenced_Parent Runbook を毎週月曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStart** のタグを持つ VM すべてを順番 (降順)に 起動します。 タグの値とアセット変数について詳しくは、「Runbook」セクションをご覧ください。 関連するスケジュール (**Sequenced-StopVM**) を有効にしてください。|
 
-## <a name="log-analytics-records"></a>Log Analytics のレコード
+## <a name="azure-monitor-logs-records"></a>Azure Monitor ログのレコード
 
 Automation により、ジョブ ログとジョブ ストリームの 2 種類のレコードが Log Analytics ワークスペースに作成されます。
 
@@ -279,10 +290,10 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 以下の表は、このソリューションによって収集されたジョブ レコードを探すログ検索の例です。
 
-|クエリ | 説明|
+|Query | 説明|
 |----------|----------|
-|正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
-|正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>ソリューションの表示
 
@@ -315,13 +326,29 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 ![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/email.png)
 
+## <a name="add-exclude-vms"></a>VM を追加/除外する
+
+ソリューションには、ソリューションの対象となる VM を追加する機能、ソリューションからマシンを除外する機能があります。
+
+### <a name="add-a-vm"></a>VM を追加する
+
+実行時に VM が開始/停止ソリューションに含まれるようにするためのオプションがいくつかあります。
+
+* ソリューションの親 [Runbook](#runbooks) ごとに、**VMList** パラメーターがあります。 自分の状況に合わせて適切な親 Runbook をスケジュールするときに VM 名のコンマ区切りのリストをこのパラメーターに渡すと、これらの VM はソリューションが実行されるときに含められます。
+
+* 複数の VM を選択するには、**External_Start_ResourceGroupNames** と **External_Stop_ResourceGroupNames** を開始または停止する VM を含むリソース グループ名で設定します。 サブスクリプションのすべてのリソース グループに対してソリューションを実行するように、この値を `*` に設定することもできます。
+
+### <a name="exclude-a-vm"></a>VM を除外する
+
+ソリューションから VM を除外するには、VM を **External_ExcludeVMNames** 変数に追加します。 この変数は、開始/停止ソリューションから除外する特定の VM のコンマ区切りのリストです。 このリストは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合、除外対象として設定した VM が意図せず起動または停止されることがあります。
+
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>起動および停止スケジュールを変更する
 
-このソリューションの起動および停止スケジュールを管理するには、「[Azure Automation の Runbook をスケジュール設定する](automation-schedules.md)」で説明されている手順に従います。
+このソリューションの起動および停止スケジュールを管理するには、「[Azure Automation の Runbook をスケジュール設定する](automation-schedules.md)」で説明されている手順に従います。 VM の開始と停止それぞれについて、個別のスケジュールが存在する必要があります。
 
-特定の時刻に VM の停止のみを行うようにソリューションを構成できます。 そのためには、次の手順を実行する必要があります。
+特定の時刻に VM の停止のみを行うようにソリューションを構成できます。 このシナリオでは、**停止**スケジュールを作成するだけで、対応する**開始**はスケジュールされません。 そのためには、次の手順を実行する必要があります。
 
-1. シャットダウンする VM のリソース グループが、**External_Start_ResourceGroupNames** 変数に追加されていることを確認します。
+1. シャットダウンする VM のリソース グループが、**External_Stop_ResourceGroupNames** 変数に追加されていることを確認します。
 2. VM をシャットダウンする時刻の独自のスケジュールを作成します。
 3. **ScheduledStartStop_Parent** Runbook に移動し、**[スケジュール]** をクリックします。 これにより、前の手順で作成したスケジュールを選択できます。
 4. **[パラメーターと実行設定]** を選択し、ACTION パラメーターを "Stop" に設定します。
@@ -344,14 +371,14 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 Automation アカウントと Log Analytics ワークスペースは、このプロセスの一部として削除されません。 Log Analytics ワークスペースを保持しない場合は、これを手動で削除する必要があります。 これは、Azure Portal から行うことができます。
 
-1. Azure Portal ホーム画面で **[Log Analytics]** を選択します。
-1. **[Log Analytics]** ページで、ワークスペースを選択します。
+1. Azure portal ホーム画面で **[Log Analytics ワークスペース]** を選択します。
+1. **[Log Analytics ワークスペース]** ページで、ワークスペースを選択します。
 1. ワークスペースの設定ページのメニューから **[削除]** を選択します。
 
 Azure Automation アカウント コンポーネントを保持しない場合は、各コンポーネントを手動で削除することができます。 ソリューションによって作成される Runbook、変数、およびスケジュールの一覧については、「[ソリューションのコンポーネント](#solution-components)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- 各種検索クエリの作成方法と、Log Analytics での Automation ジョブ ログの確認方法の詳細については、[Log Analytics でのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
+- 各種検索クエリの作成方法と、Azure Monitor ログでの Automation ジョブ ログの確認方法の詳細については、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
 - Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
-- Log Analytics とデータ収集ソースの詳細については、[Log Analytics における Azure Storage データの収集](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページをご覧ください。
+- Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページを参照してください。

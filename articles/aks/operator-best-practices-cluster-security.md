@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 5acabc8381422b9202b041cf849af3b35809a3c0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bf794c6c4f73c4dd25849148aa2ea68b538372c4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111202"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001968"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -52,9 +52,12 @@ Azure AD 統合と RBAC の詳細については、[AKS の認証と承認のベ
 
 コンテナー アクションをより細かく制御するには、*AppArmor* や *seccomp* など、組み込みの Linux セキュリティ機能を使用することもできます。 このような機能はノード レベルで定義されてから、ポッド マニフェストを介して実装されます。
 
+> [!NOTE]
+> AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 *AppArmor*、*seccomp*、*Pod Security Policy* などの他のセキュリティ機能やノードに対するきめの細かいロールベースのアクセス制御 (RBAC) によって、悪用しにくくします。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
+
 ### <a name="app-armor"></a>App Armor
 
-コンテナーが実行できるアクションを制限するには、[AppAmour][k8s-apparmor] Linux カーネル セキュリティ モジュールを使用できます。 AppArmor は基となる AKS ノード OS に含まれており、既定で有効です。 読み取り、書き込み、実行などのアクション、またはファイルシステムのマウントなどのシステム機能を制限する AppArmor プロファイルを作成します。 既定の AppArmor プロファイルでは、さまざまな `/proc` と `/sys` の場所へのアクセスが制限されており、基となるノードからコンテナーを論理的に分離する手段が用意されています。 AppArmor は、Kubernetes ポッドだけでなく、Linux 上で動作するあらゆるアプリケーションに対応しています。
+コンテナーが実行できるアクションを制限するには、[AppArmor][k8s-apparmor] Linux カーネル セキュリティ モジュールを使用できます。 AppArmor は基となる AKS ノード OS に含まれており、既定で有効です。 読み取り、書き込み、実行などのアクション、またはファイルシステムのマウントなどのシステム機能を制限する AppArmor プロファイルを作成します。 既定の AppArmor プロファイルでは、さまざまな `/proc` と `/sys` の場所へのアクセスが制限されており、基となるノードからコンテナーを論理的に分離する手段が用意されています。 AppArmor は、Kubernetes ポッドだけでなく、Linux 上で動作するあらゆるアプリケーションに対応しています。
 
 ![コンテナーの動作を制限するために AKS クラスターで使用されている AppArmor プロファイル](media/operator-best-practices-container-security/apparmor.png)
 
@@ -185,7 +188,7 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 次に、[az aks upgrade][az-aks-upgrade] コマンドを使用して AKS クラスターをアップグレードすることができます。 このアップグレード プロセスでは、ノードの遮断と解放を一度に 1 つずつ安全に実行し、残りのノード上のポッドをスケジュールに設定してから、最新の OS および Kubernetes バージョンを実行している新しいノードを展開します。
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.3
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
 ```
 
 AKS のアップグレードの詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]と [AKS クラスターのアップグレード][aks-upgrade]に関する記事を参照してください。
@@ -227,7 +230,7 @@ Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェク�
 [aks-upgrade]: upgrade-cluster.md
 [aks-best-practices-identity]: concepts-identity.md
 [aks-kured]: node-updates-kured.md
-[aks-aad]: aad-integration.md
+[aks-aad]: azure-ad-integration.md
 [best-practices-container-image-management]: operator-best-practices-container-image-management.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources

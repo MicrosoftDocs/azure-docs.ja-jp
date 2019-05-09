@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 01/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f2d6f956564f01c14edb213f0bc5ae709892c542
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: fa79f519c8f3eb8baeaab04870f22a1cfefa59ab
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163314"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884326"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS にボットを組み合わせてナレッジ ベースを配信する
 QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
@@ -137,7 +137,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
         public async Task<string> GetAnswer(string question)
         {
             string uri = qnaServiceHostName + "/qnamaker/knowledgebases/" + knowledgeBaseId + "/generateAnswer";
-            string questionJSON = @"{'question': '" + question + "'}";
+            string questionJSON = "{\"question\": \"" + question.Replace("\"","'") +  "\"}";
 
             var response = await Post(uri, questionJSON);
 

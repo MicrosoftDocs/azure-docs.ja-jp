@@ -1,44 +1,47 @@
 ---
-title: Azure Multi-Factor Authentication と Active Directory 間のディレクトリ統合
+title: Azure MFA Server と Active Directory の統合 - Azure Active Directory
 description: ディレクトリを同期できるように Azure Multi-Factor Authentication Server と Active Directory を統合する方法。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 818674ba1825a438a5abeb7927bcf0f683506625
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.custom: seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f97b4ee364ecadde7738b8fe077f21d5732365f6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159925"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371827"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
 
 Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合するには、Azure MFA Server の [ディレクトリの統合] セクションを使用します。 そのディレクトリ スキーマに合わせて属性を構成したり、自動ユーザー同期を設定したりすることができます。
 
 ## <a name="settings"></a>設定
+
 既定では、Azure Multi-Factor Authentication (MFA) Server は、Active Directory からユーザーをインポートするか同期するように構成されます。  [ディレクトリの統合] タブでは、この既定の動作をオーバーライドしたり、別の LDAP ディレクトリ、ADAM ディレクトリ、または特定の Active Directory ドメイン コントローラーにバインドしたりできます。  LDAP を委任するため、RADIUS ターゲットとしての LDAP バインドのため、IIS 認証のための事前認証、またはユーザー ポータルのためのプライマリ認証としての LDAP 認証の使用も提供します。  次の表で、個々の設定について説明します。
 
-![設定](./media/howto-mfaserver-dir-ad/dirint.png)
+![MFA Server で LDAP 構成を編集する](./media/howto-mfaserver-dir-ad/dirint.png)
 
-| Feature | 説明 |
+| 機能 | 説明 |
 | --- | --- |
-| Active Directory を使用する |インポートと同期のために Active Directory を使用するには、[Active Directory を使用する] オプションを選択します。  これは、既定の設定です。 <br>注: Active Directory 統合が正しく機能するためには、対象のコンピューターをドメインに参加させ、ドメイン アカウントでサインインする必要があります。 |
+| Active Directory を使用する |インポートと同期のために Active Directory を使用するには、[Active Directory を使用する] オプションを選択します。  これは、既定の設定です。 <br>注:Active Directory 統合が正しく機能するためには、対象のコンピューターをドメインに参加させ、ドメイン アカウントでサインインする必要があります。 |
 | 信頼できるドメインを含める |エージェントに、現在のドメイン、フォレスト内の別のドメイン、またはフォレストの信頼に関係するドメインによって信頼されているドメインへの接続を試行させるには、**[信頼できるドメインを含める]** チェック ボックスをオンにします。  信頼できるドメインからユーザーをインポートしないまたは同期しない場合は、パフォーマンスを向上させるためにチェックボックスをオフにします。  既定値はオンです。 |
-| 指定の LDAP 構成を使用する |インポートと同期のために特定の LDAP 設定を使用する場合は、この LDAP を使用するオプションを選択します。 注: LDAP を使用することを選択した場合、ユーザー インターフェイスの参照が Active Directory から LDAP に変更されます。 |
+| 指定の LDAP 構成を使用する |インポートと同期のために特定の LDAP 設定を使用する場合は、この LDAP を使用するオプションを選択します。 注:LDAP を使用することを選択した場合、ユーザー インターフェイスの参照が Active Directory から LDAP に変更されます。 |
 | [編集] ボタン |[編集] ボタンを使用して、現在の LDAP 構成設定を変更できます。 |
-| 属性スコープ クエリを使用する |属性スコープ クエリを使用するかどうかを示します。  属性スコープ クエリを使用すると、別のレコードの属性内のエントリに基づいてレコードを制限する効率的なディレクトリ検索を実行できます。  Azure Multi-Factor Authentication Server は、属性スコープ クエリを使用して、セキュリティ グループのメンバーであるユーザーを効率的にクエリします。   <br>注: 属性スコープ クエリがサポートされていても、使用してはならない場合があります。  たとえば、セキュリティ グループに 1 つ以上のドメインのメンバーが含まれている場合、Active Directory で属性スコープ クエリを実行すると問題が発生する可能性があります。 その場合は、チェック ボックスをオフにしてください。 |
+| 属性スコープ クエリを使用する |属性スコープ クエリを使用するかどうかを示します。  属性スコープ クエリを使用すると、別のレコードの属性内のエントリに基づいてレコードを制限する効率的なディレクトリ検索を実行できます。  Azure Multi-Factor Authentication Server は、属性スコープ クエリを使用して、セキュリティ グループのメンバーであるユーザーを効率的にクエリします。   <br>注:属性スコープ クエリがサポートされていても、使用してはならない場合があります。  たとえば、セキュリティ グループに 1 つ以上のドメインのメンバーが含まれている場合、Active Directory で属性スコープ クエリを実行すると問題が発生する可能性があります。 その場合は、チェック ボックスをオフにしてください。 |
 
 次の表で、LDAP 構成設定について説明します。
 
-| Feature | 説明 |
+| 機能 | 説明 |
 | --- | --- |
-| サーバー |LDAP ディレクトリを実行するサーバーのホスト名または IP アドレスを入力します。  セミコロンで区切ることで、バックアップ サーバーも指定できます。 <br>注: バインドの種類が SSL の場合、完全修飾ホスト名を指定する必要があります。 |
+| サーバー |LDAP ディレクトリを実行するサーバーのホスト名または IP アドレスを入力します。  セミコロンで区切ることで、バックアップ サーバーも指定できます。 <br>注:バインドの種類が SSL の場合、完全修飾ホスト名を指定する必要があります。 |
 | ベース DN |すべてのディレクトリ クエリの開始元となるベース ディレクトリ オブジェクトの識別名を入力します。  例: dc=abc、dc=com |
 | バインドの種類 - クエリ |LDAP ディレクトリの検索にバインドする際に使用する適切なバインドの種類を選択します。  これは、インポート、同期、およびユーザー名の解決のために使用されます。 <br><br>  匿名 - 匿名バインドが実行されます。  バインド DN とバインド パスワードは使用されません。  これは、LDAP ディレクトリで匿名バインドが許可され、適切なレコードと属性のクエリの実行できるアクセス許可がある場合にのみ機能します。  <br><br> シンプル - LDAP ディレクトリにバインドするために、バインド DN とバインド パスワードがプレーン テキストとして渡されます。  これは、サーバーに到達可能か、またバインド アカウントに適切なアクセス権があるかを検証するテスト目的で使用します。 適切な証明書をインストールした後は、SSL を使用してください。  <br><br> SSL - LDAP ディレクトリにバインドするために、バインド DN とバインド パスワードが SSL を使用して暗号化されます。  LDAP ディレクトリで信頼されている証明書をローカルにインストールしてください。  <br><br> Windows - Active Directory ドメイン コントローラーまたは ADAM ディレクトリに安全に接続するために、バインド ユーザー名とバインド パスワードが使用されます。  バインド ユーザー名が空白の場合、ログオンしたユーザーのアカウントがバインドするために使用されます。 |
 | バインドの種類 - 認証 |LDAP バインド認証を実行するときに使用する適切なバインドの種類を選択します。  バインドの種類については、「バインドの種類 - クエリ」の説明を参照してください。  たとえば、クエリで匿名バインドを、セキュリティで保護された LDAP バインド認証で SSL バインドを使用できます。 |
@@ -48,28 +51,30 @@ Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合
 | テスト ボタン |LDAP サーバーへのバインドをテストするには **[テスト]** をクリックします。  <br><br>バインドをテストするために **[Use LDAP (LDAP を使用する)]** オプションを選択する必要はありません。 これにより、LDAP 構成を使用する前にバインドをテストできます。 |
 
 ## <a name="filters"></a>フィルター
+
 フィルターを使用して、ディレクトリ検索の実行時にレコードを制限する条件を設定できます。  フィルターを設定することで、同期するオブジェクトの範囲を指定できます。  
 
-![フィルター](./media/howto-mfaserver-dir-ad/dirint2.png)
+![MFA Server でディレクトリ フィルタリングを構成する](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Azure Multi-Factor Authentication には、次の 3 つのフィルター オプションがあります。
 
-* **コンテナー フィルター** - ディレクトリ検索の実行時にコンテナー レコードを制限するために使用するフィルター条件を指定します。  Active Directory と ADAM の場合、通常は (|(objectClass=organizationalUnit)(objectClass=container)) が使用されます。  その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、各コンテナー オブジェクトの種類を制限するフィルター条件を使用してください。  <br>注: 空白の場合は ((objectClass=organizationalUnit)(objectClass=container)) が既定で使用されます。
-* **セキュリティ グループ フィルター** - ディレクトリ検索の実行時にセキュリティ グループ レコードを制限するために使用するフィルター条件を指定します。  Active Directory と ADAM の場合、通常は (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) が使用されます。  その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、セキュリティ グループ オブジェクトを種類ごとに制限するフィルター条件を使用してください。  <br>注: 空白の場合は (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) が既定で使用されます。
-* **ユーザー フィルター** - ディレクトリ検索の実行時にユーザー レコードを制限するために使用するフィルター条件を指定します。  Active Directory と ADAM の場合、通常は (&(objectClass=user)(objectCategory=person)) が使用されます。  その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、(objectClass=inetOrgPerson) またはそれに類似する条件を使用する必要があります。 <br>注: 空白の場合は (&(objectCategory=person)(objectClass=user)) が既定で使用されます。
+* **コンテナー フィルター** - ディレクトリ検索の実行時にコンテナー レコードを制限するために使用するフィルター条件を指定します。  Active Directory と ADAM の場合、通常は (|(objectClass=organizationalUnit)(objectClass=container)) が使用されます。  その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、各コンテナー オブジェクトの種類を制限するフィルター条件を使用してください。  <br>注:空白の場合は ((objectClass=organizationalUnit)(objectClass=container)) が既定で使用されます。
+* **セキュリティ グループ フィルター** - ディレクトリ検索の実行時にセキュリティ グループ レコードを制限するために使用するフィルター条件を指定します。  Active Directory と ADAM の場合、通常は (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) が使用されます。  その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、セキュリティ グループ オブジェクトを種類ごとに制限するフィルター条件を使用してください。  <br>注:空白の場合は (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) が既定で使用されます。
+* **ユーザー フィルター** - ディレクトリ検索の実行時にユーザー レコードを制限するために使用するフィルター条件を指定します。  Active Directory と ADAM の場合、通常は (&(objectClass=user)(objectCategory=person)) が使用されます。  その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、(objectClass=inetOrgPerson) またはそれに類似する条件を使用する必要があります。 <br>注:空白の場合は (&(objectCategory=person)(objectClass=user)) が既定で使用されます。
 
 ## <a name="attributes"></a>属性
+
 特定のディレクトリの属性を必要に応じてカスタマイズできます。  カスタム属性を追加し、必要な属性のみを対象とするように同期を微調整できます。 各属性フィールドの値には、ディレクトリ スキーマで定義されている属性の名前を使用します。 それぞれの機能については、以下の表で詳しく説明します。
 
 属性は手動で入力でき、属性の一覧内の属性と一致させる必要はありません。
 
-![属性](./media/howto-mfaserver-dir-ad/dirint3.png)
+![MFA Server でディレクトリ統合属性をカスタマイズする](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Feature | 説明 |
+| 機能 | 説明 |
 | --- | --- |
 | 一意識別子 |コンテナー、セキュリティ グループ、およびユーザー レコードの一意識別子として機能する属性の属性名を入力します。  Active Directory では、これは通常は objectGUID です。 その他の LDAP 実装では、entryUUID またはそれに類似する名前が使用されることがあります。  既定値は objectGUID です。 |
 | 一意識別子の型 |一意識別子属性の型を選択します。  Active Directory では、objectGUID 属性の型は GUID です。 その他の LDAP 実装では、ASCII バイト配列型または文字列型が使用されることがあります。  既定値は [GUID] です。 <br><br>同期項目はその一意識別子によって参照されるため、この型を正しく設定することが重要です。 ディレクトリから目的のオブジェクトを直接検索するときに一意識別子の型が使用されます。  ディレクトリに実際に保存されている値が ASCII 文字のバイト配列のときに型を [文字列] に設定すると、同期が正常に機能しなくなります。 |
-| 識別名 |各レコードの識別名を含む属性の属性名を入力します。  Active Directory では、これは通常は distinguishedName です。 その他の LDAP 実装では、entryDN またはそれに類似する名前が使用されることがあります。  既定値は distinguishedName です。 <br><br>識別名のみが含まれている属性が存在しない場合は、adspath 属性を使用できます。  パスの "LDAP://\<サーバー\>/" 部分は自動的に削除され、オブジェクトの識別名だけが残ります。 |
+| 識別名 |各レコードの識別名を含む属性の属性名を入力します。  Active Directory では、これは通常は distinguishedName です。 その他の LDAP 実装では、entryDN またはそれに類似する名前が使用されることがあります。  既定値は distinguishedName です。 <br><br>識別名のみが含まれている属性が存在しない場合は、AD パス属性を使用できます。  パスの "LDAP://\<サーバー\>/" 部分は自動的に削除され、オブジェクトの識別名だけが残ります。 |
 | コンテナー名 |コンテナー レコード内の名前を含む属性の属性名を入力します。  この属性の値は、Active Directory からインポートするとき、または同期項目を追加するときに、コンテナー階層に表示されます。  既定値は name です。 <br><br>注: コンテナーごとに異なる属性をその名前に使用する場合は、複数のコンテナー名属性をセミコロンで区切って指定します。  コンテナー オブジェクトで見つかった最初のコンテナー名の属性が、名前を表示するために使用されます。 |
 | セキュリティ グループ名 |セキュリティ グループ レコード内の名前を含む属性の属性名を入力します。  この属性の値は、Active Directory からインポートするとき、または同期項目を追加するときに、セキュリティ グループ リストに表示されます。  既定値は name です。 |
 | ユーザー名 |ユーザー レコード内のユーザー名を含む属性の属性名を入力します。  この属性の値は、Multi-Factor Auth Server ユーザー名として使用されます。  2 つ目の属性を 1 つ目の属性のバックアップとして指定できます。  2 つ目の属性は、1 つ目の属性にユーザーの値が含まれていない場合にのみ使用されます。  既定値は userPrincipalName と sAMAccountName です。 |
@@ -89,14 +94,15 @@ Azure Multi-Factor Authentication には、次の 3 つのフィルター オプ
 | Fax |ユーザー レコード内の Fax 番号を含む属性の属性名を入力します。  既定値は facsimileTelephoneNumber です。 |
 | IP 電話 |ユーザー レコード内の IP 電話の番号を含む属性の属性名を入力します。  既定値は ipPhone です。 |
 | カスタム |ユーザー レコード内のカスタム電話番号を含む属性の名前を入力します。  既定値は空白です。 |
-| 内線番号 |ユーザー レコード内の内線番号を含む属性の属性名を入力します。  内線番号フィールドの値は、代表電話番号に対する内線番号としてのみ使用されます。  既定値は空白です。 <br><br>内線番号属性が指定されていない場合は、電話属性の一部として内線番号を含めることができます。 その場合は、正しく解析されるように、内線番号の前に "x" を付けてください。  たとえば 555-123-4567 x 890 は、555-123-4567 が電話番号として、890 が内線番号として解析されます。 |
+| 拡張機能 |ユーザー レコード内の内線番号を含む属性の属性名を入力します。  内線番号フィールドの値は、代表電話番号に対する内線番号としてのみ使用されます。  既定値は空白です。 <br><br>内線番号属性が指定されていない場合は、電話属性の一部として内線番号を含めることができます。 その場合は、正しく解析されるように、内線番号の前に "x" を付けてください。  たとえば 555-123-4567 x 890 は、555-123-4567 が電話番号として、890 が内線番号として解析されます。 |
 | [既定値に戻す] ボタン |すべての属性を既定値に戻すには、**[既定値に戻す]** をクリックします。  既定値は、通常の Active Directory または ADAM スキーマで正常に動作します。 |
 
 属性を編集するには、[属性] タブの **[編集]** をクリックします。属性を編集するためのウィンドウが表示されます。 表示する属性を選択できるウィンドウを開くには、各属性の横の **[...]** を選択します。
 
-![属性の編集](./media/howto-mfaserver-dir-ad/dirint4.png)
+![MFA Server でディレクトリ属性マッピングを編集する](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>同期
+
 Azure MFA ユーザー データベースは、Active Directory や他のライトウェイト ディレクトリ アクセス プロトコル (LDAP) ディレクトリとの間でユーザーの同期状態を維持することができます。 このプロセスは Active Directory からユーザーを手動でインポートすることと似ていますが、Active Directory に対してユーザーとセキュリティ グループの変更を定期的にポーリングします。  また、コンテナー、セキュリティ グループ、または Active Directory から削除されたユーザーは無効になるか、削除されます。
 
 Multi-Factor Auth ADSync サービスは、Active Directory の定期的なポーリングを実行する Windows サービスです。  このサービスを Azure AD Sync または Azure AD Connect と混同しないでください。  Multi-Factor Auth ADSync は類似するコード ベースに基づいて構築されていますが、それは Azure Multi-Factor Authentication Server に固有のサービスです。  このサービスは停止状態でインストールされ、実行するように構成されたときに Multi-Factor Auth Server サービスによって開始されます。  複数のサーバーを対象とする Multi-Factor Auth Server 構成がある場合でも、Multi-Factor Auth ADSync は単一のサーバーでのみ実行できます。
@@ -105,14 +111,14 @@ Multi-Factor Auth ADSync サービスは、変更を効率的にポーリング�
 
 LDAP ディレクトリが DirSync に対応していて、かつ DirSync を使用するように構成されている場合、ユーザーとセキュリティ グループの変更に関するポーリングは、Active Directory の場合と同じように動作します。  LDAP ディレクトリが DirSync コントロールをサポートしていない場合、完全同期は各サイクル中に実行されます。
 
-![同期](./media/howto-mfaserver-dir-ad/dirint5.png)
+![ディレクトリ オブジェクトの MFA Server への同期](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 [同期] タブの各設定については、以下の表でさらに詳しく説明します。
 
-| Feature | 説明 |
+| 機能 | 説明 |
 | --- | --- |
-| Active Directory との同期を有効にする |オンにした場合、Multi-Factor Auth Server サービスは、Active Directory の変更を定期的にポーリングします。 <br><br>注: Multi-Factor Auth Server サービスで変更の処理を開始する前に、少なくとも 1 つの同期項目を追加し、[今すぐ同期] を実行する必要があります。 |
-| 同期間隔: |Multi-Factor Auth Server サービスが、ポーリングと変更の処理を実行するために待機する時間間隔を指定します。 <br><br> 注: 指定する間隔は、各サイクルの先頭と先頭の間の時間です。  変更の処理時間が間隔時間を超過した場合、サービスは次のポーリングをすぐに実行します。 |
+| Active Directory との同期を有効にする |オンにした場合、Multi-Factor Auth Server サービスは、Active Directory の変更を定期的にポーリングします。 <br><br>注:Multi-Factor Auth Server サービスで変更の処理を開始する前に、少なくとも 1 つの同期項目を追加し、[今すぐ同期] を実行する必要があります。 |
+| 同期間隔: |Multi-Factor Auth Server サービスが、ポーリングと変更の処理を実行するために待機する時間間隔を指定します。 <br><br> 注:指定する間隔は、各サイクルの先頭と先頭の間の時間です。  変更の処理時間が間隔時間を超過した場合、サービスは次のポーリングをすぐに実行します。 |
 | Active Directory にないユーザーを削除する |オンにした場合、Multi-Factor Auth Server サービスは、Active Directory で削除されたユーザーの廃棄状態を処理し、関連する Multi-Factor Auth Server ユーザーを削除します。 |
 | 常に完全同期を実行する |オンにした場合、Multi-Factor Auth Server サービスは常に完全同期を実行します。  オフにした場合、Multi-Factor Auth Server サービスは、変更されているユーザーのみをクエリすることで増分同期を実行します。  既定の設定はオフです。 <br><br>オフの場合、ディレクトリが DirSync コントロールをサポートし、ディレクトリにバインドするために使用されるアカウントが、DirSync の増分クエリを実行するためのアクセス許可を持っている場合にのみ増分同期が実行されます。  アカウントに適切なアクセス許可がない場合、または複数のドメインが同期に関係している場合、Azure MFA Server は完全同期を実行します。 |
 | 無効なユーザーまたは削除するユーザーがしきい値を超えたときに管理者の承認を必須にする |同期項目は、項目のコンテナーまたはセキュリティ グループのメンバーでなくなったユーザーを無効にするか削除するように構成できます。  安全のために、無効にするか削除するユーザーの数がしきい値を超えたときに、管理者の承認を要求することができます。  オンにした場合、指定したしきい値に達したときに承認が要求されます。  既定値は 5 で、指定範囲は 1 ～ 999 です。 <br><br> 承認は、まず管理者に電子メール通知を送信することで実施されます。 電子メール通知により、ユーザーの無効化と削除を確認して承認するための指示が出されます。  Multi-Factor Auth Server ユーザー インターフェイスが起動され、承認を求めるメッセージが表示されます。 |
@@ -131,7 +137,8 @@ LDAP ディレクトリが DirSync に対応していて、かつ DirSync を使
 > [!TIP]
 > 同期項目を削除した後、完全同期を実行する必要があります。  同期項目を並べ替えた後、完全同期を実行する必要があります。  完全同期を実行するには、**[今すぐ同期]** をクリックします。
 
-## <a name="multi-factor-auth-servers"></a>Multi-Factor Auth Server
-追加の Multi-factor Auth Server を、バックアップ RADIUS プロキシ、LDAP プロキシ、または IIS 認証として機能するように設定できます。 同期構成は、すべてのエージェント間で共有されます。 ただし、Multi-Factor Auth Server サービスは、これらのエージェントのいずれかのみで実行できます。 このタブで、同期するために有効にする必要がある Multi-Factor Auth Server を選択できます。
+## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication サーバー
 
-![Multi-Factor-Auth Server](./media/howto-mfaserver-dir-ad/dirint6.png)
+追加の Multi-Factor Authentication サーバーを、バックアップ RADIUS プロキシ、LDAP プロキシ、または IIS 認証として機能するように設定できます。 同期構成は、すべてのエージェント間で共有されます。 ただし、Multi-Factor Authentication サーバー サービスは、これらのエージェントのいずれかのみで実行できます。 このタブで、同期するために有効にする必要がある Multi-Factor Authentication サーバーを選択できます。
+
+![関連する Multi-Factor Authentication サーバー](./media/howto-mfaserver-dir-ad/dirint6.png)

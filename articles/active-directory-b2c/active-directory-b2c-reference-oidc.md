@@ -1,33 +1,34 @@
 ---
-title: Azure Active Directory B2C での OpenID Connect による Web サインイン | Microsoft Docs
+title: OpenID Connect での Web サインイン - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory で導入された OpenID Connect 認証プロトコルを利用した Web アプリケーションの構築。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/19/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 41f6027378e48b525345e29e1d1e08dd2c48aaa5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: bd7ecf273d4e842909d88eeaa3683203d8d9e841
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843752"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429167"
 ---
-# <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C:OpenID Connect での Web サインイン
-OpenID Connect は、ユーザーを Web アプリケーションに安全にサインインさせるために使用できる、OAuth 2.0 に基づいて構築された認証プロトコルです。 OpenID Connect の Azure Active Directory B2C (Azure AD B2C) 実装を使用することにより、Web アプリケーションでのサインアップ、サインイン、その他の ID 管理エクスペリエンスを Azure Active Directory (Azure AD) にアウトソーシングできます。 このガイドでは、これを言語に依存しない方法で実行する方法について説明します。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
+# <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*認可*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 OpenID Connect を使うことで OAuth を使用したシングル サインオンを行うことができます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにするセキュリティ トークンである *ID トークン*の概念が導入されています。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、ユーザーを Web アプリケーションに安全にサインインさせるために使用できる、OAuth 2.0 に基づいて構築された認証プロトコルです。 OpenID Connect の Azure Active Directory B2C (Azure AD B2C) 実装を使用することにより、Web アプリケーションでのサインアップ、サインイン、その他の ID 管理エクスペリエンスを Azure Active Directory (Azure AD) にアウトソーシングできます。 このガイドでは、これを言語に依存しない方法で実行する方法について説明します。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
 
-これは OAuth 2.0 の拡張であるため、アプリが*アクセス トークン*を安全に取得することも可能になります。 access_token を使用すると、[認可サーバー](active-directory-b2c-reference-protocols.md#the-basics)によってセキュリティ保護されたリソースにアクセスできます。 サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 Azure AD B2C を利用し、モバイルまたはデスクトップ アプリケーションに ID 管理を追加する場合は、OpenID Connect ではなく、 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) をご利用ください。
+OpenID Connect は、OAuth 2.0 の "*認可*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 OpenID Connect を使うことで OAuth を使用したシングル サインオンを行うことができます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにするセキュリティ トークンである *ID トークン*の概念が導入されています。
 
-Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 これには、OpenID Connect を使用してサインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをご利用のアプリに追加できるようにする[ユーザー フロー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ここでは、OpenID Connect とユーザー フローを使用してこれらの各エクスペリエンスを Web アプリケーション内に実装する方法について説明します。 また、Web API にアクセスするためのアクセス トークンを取得する方法についても説明します。
+これは OAuth 2.0 の拡張であるため、アプリが*アクセス トークン*を安全に取得することも可能になります。 アクセス トークンを使用すると、[認可サーバー](active-directory-b2c-reference-protocols.md#the-basics)によってセキュリティ保護されたリソースにアクセスできます。 サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 Azure AD B2C を利用し、モバイルまたはデスクトップ アプリケーションに ID 管理を追加する場合は、OpenID Connect ではなく、 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) をご利用ください。
+
+Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 これには、OpenID Connect を使用してサインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをご利用のアプリに追加できるようにする[ユーザー フロー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 OpenID Connect プロトコルを使用する ID プロバイダーとしては、[Microsoft アカウント](active-directory-b2c-setup-msa-app.md)や他の [OpenID Connect プロバイダー](active-directory-b2c-setup-oidc-idp.md)があります。
 
 次のセクションにある HTTP 要求例では、サンプル B2C ディレクトリ fabrikamb2c.onmicrosoft.com のほか、サンプル アプリケーション https://aadb2cplayground.azurewebsites.net およびユーザー フローを使用します。 これらの値を利用して、要求を自由に試すことができます。または、独自の値で置換できます。
-[独自の B2C テナント、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-directory)について説明します。
+[独自の B2C テナント、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-tenant)について説明します。
 
 ## <a name="send-authentication-requests"></a>認証要求を送信する
 ご利用の Web アプリでユーザーを認証し、ユーザー フローを実行する必要があるときは、ユーザーを `/authorize` エンドポイントにリダイレクトさせます。 これはフローのインタラクティブな部分であり、ユーザーはここでユーザー フローに応じてアクションを実行します。

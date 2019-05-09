@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026009"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790326"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの負荷分散
 
 ## <a name="introduction"></a>はじめに
-Microsoft Azure では、ネットワーク トラフィックの分散と負荷分散の方法を管理するための複数のグローバルおよびリージョン サービス (Traffic Manager、Front Door Service、Application Gateway、Load Balancer) が提供されます。  Azure の多くのリージョンとゾーン アーキテクチャと共に、これらのサービスを一緒に使用することで、堅牢でスケーラブルな高パフォーマンスのアプリケーションをビルドすることができます。
+Microsoft Azure では、ネットワーク トラフィックの分散や負荷分散の方法を管理するための多数のグローバル サービスおよびリージョン サービス(Traffic Manager、Front Door Service、Application Gateway、および Load Balancer) を利用できます。  Azure の多くのリージョンとゾーン アーキテクチャと共に、これらのサービスを一緒に使用することで、堅牢でスケーラブルな高パフォーマンスのアプリケーションをビルドすることができます。
 
 ![アプリケーション配信スイート ][1]
  
 これらのサービスは、次の 2 つのカテゴリに分類されます。
-1. **グローバル負荷分散サービス** (Traffic Manager や Front Door など)。リージョン バックエンド全体、クラウド全体、さらにはハイブリッド オンプレミス サービス全体のエンド ユーザーからのトラフィックを分散します。 グローバル負荷分散では最も近いサービス バックエンドにトラフィックをルーティングし、サービスの信頼性やパフォーマンスの変化に対応し、ユーザーに対して常時、最高のパフォーマンスが維持されます。 
+1. **グローバル負荷分散サービス** (Traffic Manager や Front Door など)。リージョン バックエンド全体、クラウド全体、さらにはハイブリッド オンプレミス サービス全体に、エンド ユーザーからのトラフィックを分散します。 グローバル負荷分散では最も近いサービス バックエンドにトラフィックをルーティングし、サービスの信頼性やパフォーマンスの変化に対応し、ユーザーに対して常時、最高のパフォーマンスが維持されます。 
 2. **リージョン負荷分散サービス** (Standard Load Balancer や Application Gateway など)。ご利用の仮想マシン (VM) またはリージョン内のゾーン サービス エンドポイント全体の仮想ネットワーク (VNET) 内のトラフィックを分散できます。
 
 アプリケーションのグローバルおよびリージョン サービスを組み合わせることで、エンドツーエンドの信頼できるパフォーマンスに優れた安全な方法で、ユーザーとの間のトラフィックを IaaS、PaaS、またはオンプレミス サービスにルーティングすることができます。 次のセクションでは、これらの各サービスについて説明します。
@@ -51,7 +51,7 @@ Load Balancer は、Azure SDN スタックの重要な構成要素であり、�
 
 ## <a name="choosing-a-global-load-balancer"></a>グローバル ロード バランサーの選択
 グローバルなルーティングのために Traffic Manager と Azure Front Door の間でグローバル ロード バランサーを選択する場合は、2 つのサービスの類似点と相違点を考慮する必要があります。   両方のサービスで以下が提供されます。
-- **複数の地理的な冗長性:** 1 つのリージョンがダウンした場合は、最も近いリージョンにトラフィックがシームレスにルーティングされます。アプリケーション所有者による操作は必要ありません。
+- **複数の地理的冗長性:** 1 つのリージョンがダウンした場合は、最も近いリージョンにトラフィックがシームレスにルーティングされます。アプリケーション所有者による操作は必要ありません。
 - **最も近いリージョンへのルーティング:** トラフィックは自動的に最も近いリージョンにルーティングされます。
 
 </br>次の表で、Traffic Manager と Azure Front Door Service との違いについて説明します。</br>

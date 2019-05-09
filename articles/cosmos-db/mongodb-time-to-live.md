@@ -1,19 +1,18 @@
 ---
 title: Azure Cosmos DB での MongoDB のドキュメントごとの TTL 機能
 description: Azure Cosmos DB の MongoDB 用 API を使用してドキュメントの TTL (Time to Live) 値を設定し、一定期間経過後にシステムからドキュメントを自動的に消去する方法について説明します。
-services: cosmos-db
-author: rimman
-ms.author: rimman
+author: sivethe
+ms.author: sivethe
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: d7c811dba3ad9b894fd5dae47e898f51ec4d05e5
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790097"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436291"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でデータを期限切れにする
 
@@ -56,7 +55,7 @@ TTL 値は int32 である必要があります。 または、int32 に収ま�
 
 ドキュメントの TTL 値は省略可能です。TTL 値のないドキュメントをコレクションに挿入できます。  この場合、コレクションの TTL 値が適用されます。 
 
-次のドキュメントには有効な TTL 値があります。 ドキュメントが挿入されると、ドキュメントの TTL 値がコレクションの TTL 値よりも優先されます。 そのため、ドキュメントは 20 秒後に削除されます。  
+次のドキュメントには有効な TTL 値があります。 ドキュメントが挿入されると、ドキュメントの TTL 値がコレクションの TTL 値よりも優先されます。 そのため、ドキュメントは 20 秒後に削除されます。   
 
 ```JavaScript 
 globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: 20.0}) 

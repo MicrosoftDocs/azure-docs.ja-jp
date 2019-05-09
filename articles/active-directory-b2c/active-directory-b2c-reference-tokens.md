@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のトークン リファレンス | Microsoft
 description: Azure Active Directory B2C で発行されるトークンの種類
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: d1c9101f10342f98803a4ace420abbed5d49ba23
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: B2C
+ms.openlocfilehash: 6a588764908f72607bbb99e9b1ea031182c95e64
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880116"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166919"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークンのリファレンス
 

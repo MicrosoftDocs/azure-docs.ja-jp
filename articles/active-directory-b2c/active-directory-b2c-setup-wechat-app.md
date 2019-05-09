@@ -3,19 +3,19 @@ title: Azure Active Directory B2C を使用して WeChat アカウントでの�
 description: Azure Active Directory B2C を使用するアプリケーションで WeChat アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 953868f90c4f761b1d02c314e0e1a4e04b8404d9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 9c9f6b930c5173e97e29148270dedc7eb086ef5a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842613"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159677"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して WeChat アカウントでのサインアップおよびサインインを設定する
 

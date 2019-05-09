@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: c21ee4d1d69145a442ad0af05da830548cded237
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748054"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443986"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Linux VM デバイス名の変更トラブルシューティング
 
@@ -36,15 +36,17 @@ Microsoft Azure で Linux VM を実行する場合に、次の問題が発生す
 
 Linux のデバイス パスは、再起動前後の一貫性が保証されていません。 デバイス名はメジャー番号 (文字) とマイナー番号で構成されています。 Linux ストレージ デバイス ドライバーは新しいデバイスを検出すると、メジャー番号とマイナー番号を利用可能な範囲からデバイスに割り当てます。 デバイスが削除されると、再利用できるようにデバイス番号が解放されます。
 
-この問題は、Linux のデバイス スキャンが非同期で行われるように SCSI サブシステムでスケジュールされているために発生します。 その結果、デバイスのパス名は再起動の前後で変わることがあります。 
+この問題は、Linux のデバイス スキャンが非同期で行われるように SCSI サブシステムでスケジュールされているために発生します。 その結果、デバイスのパス名は再起動の前後で変わることがあります。
 
 ## <a name="solution"></a>解決策
 
-この問題を解決するには、永続的な名前付けを使用します。 永続的な名前付けを行うには 4 つの方法があります。それは、ファイル システム ラベル、UUID、ID、パスのいずれかを利用する方法です。 Azure Linux VM には、ファイル システム ラベルまたは UUID の使用をお勧めします。 
+この問題を解決するには、永続的な名前付けを使用します。 永続的な名前付けを行うには 4 つの方法があります。それは、ファイル システム ラベル、UUID、ID、パスのいずれかを利用する方法です。 Azure Linux VM には、ファイル システム ラベルまたは UUID の使用をお勧めします。
 
-ほとんどのディストリビューションでは、`fstab` **nofail** または **nobootwait** パラメーターが提供されています。 これらのパラメーターにより、起動時にディスクのマウントに失敗しても、システムを起動できます。 これらのパラメーターについて詳しくは、ディストリビューションのドキュメントをご覧ください。 データ ディスクの追加時に UUID を使用するように Linux VM を構成する方法について詳しくは、[Linux VM に接続した新しいディスクのマウント](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)に関するページをご覧ください。 
+ほとんどのディストリビューションでは、`fstab` **nofail** または **nobootwait** パラメーターが提供されています。 これらのパラメーターにより、起動時にディスクのマウントに失敗しても、システムを起動できます。 これらのパラメーターについて詳しくは、ディストリビューションのドキュメントをご覧ください。 データ ディスクの追加時に UUID を使用するように Linux VM を構成する方法について詳しくは、[Linux VM に接続した新しいディスクのマウント](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)に関するページをご覧ください。
 
 Azure Linux エージェントが VM にインストールされている場合、エージェントは /dev/disk/azure パスにシンボリック リンクのセットを構築するために Udev ルールを使用します。 アプリケーションとスクリプトは、VM にアタッチされているディスクと、ディスクの種類およびディスク LUN を識別するために Udev ルールを使用します。
+
+VM が起動せず、VM に SSH 接続できないように fstab を既に編集している場合、[VM シリアル コンソール](./serial-console-linux.md)を使用して[シングル ユーザー モード](./serial-console-grub-single-user-mode.md)に入り、fstab を編集できます。
 
 ### <a name="identify-disk-luns"></a>ディスク LUN の識別
 
@@ -63,11 +65,11 @@ Azure Linux エージェントが VM にインストールされている場合�
         ├── lun1 -> ../../../sdd
         ├── lun1-part1 -> ../../../sdd1
         ├── lun1-part2 -> ../../../sdd2
-        └── lun1-part3 -> ../../../sdd3                                    
-                                 
+        └── lun1-part3 -> ../../../sdd3
+
 `lsscsi` または同様のツールを使用して、Linux ゲスト アカウントから LUN 情報が取得されます。
 
-       $ sudo lsscsi
+      $ sudo lsscsi
 
       [1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
 
@@ -81,32 +83,32 @@ Azure Linux エージェントが VM にインストールされている場合�
 
 ゲスト LUN 情報は、パーティション データを含む Azure Storage の VHD を特定するために Azure サブスクリプション メタデータで使用されます。 たとえば、`az` CLI を使用できます。
 
-    $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks                                        
-    [                                                                                                                                                                  
-    {                                                                                                                                                                  
-    "caching": "None",                                                                                                                                              
-      "createOption": "empty",                                                                                                                                         
-    "diskSizeGb": 1023,                                                                                                                                             
-      "image": null,                                                                                                                                                   
-    "lun": 0,                                                                                                                                                        
-    "managedDisk": null,                                                                                                                                             
-    "name": "testVM-20170619-114353",                                                                                                                    
-    "vhd": {                                                                                                                                                          
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"                                                       
-    }                                                                                                                                                              
-    },                                                                                                                                                                
-    {                                                                                                                                                                   
-    "caching": "None",                                                                                                                                               
-    "createOption": "empty",                                                                                                                                         
-    "diskSizeGb": 512,                                                                                                                                              
-    "image": null,                                                                                                                                                   
-    "lun": 1,                                                                                                                                                        
-    "managedDisk": null,                                                                                                                                             
-    "name": "testVM-20170619-121516",                                                                                                                    
-    "vhd": {                                                                                                                                                           
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"                                                       
-      }                                                                                                                                                            
-      }                                                                                                                                                             
+    $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
+    [
+    {
+    "caching": "None",
+      "createOption": "empty",
+    "diskSizeGb": 1023,
+      "image": null,
+    "lun": 0,
+    "managedDisk": null,
+    "name": "testVM-20170619-114353",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+    }
+    },
+    {
+    "caching": "None",
+    "createOption": "empty",
+    "diskSizeGb": 512,
+    "image": null,
+    "lun": 1,
+    "managedDisk": null,
+    "name": "testVM-20170619-121516",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+      }
+      }
     ]
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>blkid を使用したファイルシステム UUID の検出
@@ -138,7 +140,7 @@ Azure Linux エージェント Udev ルールは、/dev/disk/azure パスにシ�
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
-    
+
 ### <a name="get-the-latest-azure-storage-rules"></a>最新の Azure Storage ルールを取得する
 
 最新の Azure Storage ルールを取得するには、次のコマンドを実行します。
@@ -150,8 +152,8 @@ Azure Linux エージェント Udev ルールは、/dev/disk/azure パスにシ�
 
 詳細については、次の記事を参照してください。
 
-- [Ubuntu: UUID の使用](https://help.ubuntu.com/community/UsingUUID)
-- [Red Hat: 永続的な名前付け](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
-- [Linux: UUID ができること](https://www.linux.com/news/what-uuids-can-do-you)
-- [Udev: 最新の Linux システムでのデバイス管理の概要](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
+- [Ubuntu:Using UUID (UUID の使用)](https://help.ubuntu.com/community/UsingUUID)
+- [Red Hat:永続的な命名](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
+- [Linux:What UUIDs can do for you (UUID ができること)](https://www.linux.com/news/what-uuids-can-do-you)
+- [Udev:Introduction to device management in a modern Linux system (最新の Linux システムでのデバイス管理の概要)](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

@@ -12,25 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 9af5ebe9f37127656c7f61357240d4e69a28812b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a2ffc344f51c45007eb982a02b14cb2d481d752e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243131"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616783"
 ---
-# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する
+# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する  
+
 > [!NOTE]
-> Microsoft Azure Media Packager と Microsoft Azure Media Encryptor の有効期限が 2017 年 3 月 1 日まで延長されました。 有効期限までに、これらのプロセッサの機能が Media Encoder Standard (MES) に追加されます。 お客様には、ジョブを MES に送信するワークフローを移行する方法について手順を説明します。 また、形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
-> 
-> 
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+
 
 ## <a name="overview"></a>概要
+
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。 デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客のデバイスでうまく表示したりできない可能性があります。 エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。 エンコードしたビデオは、さまざまなファイル コンテナーに配置できます。 エンコードしたビデオをコンテナーに配置するプロセスは、パッケージと呼ばれます。 たとえば、MP4 ファイルがある場合、Azure Media Packager を使用して Smooth Streaming または HLS コンテンツに変換できます。 
 
-Media Services は、動的パッケージと静的パッケージをサポートしています。 静的パッケージを使用する場合は、顧客に必要な各形式でコンテンツのコピーを作成する必要があります。 動的パッケージを使用する場合、必要な操作は、一連のアダプティブ ビットレート MP4 または Smooth Streaming ファイルを含むアセットの作成のみです。 そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
+Media Services は、動的パッケージと静的パッケージをサポートしています。 静的パッケージを使用する場合は、顧客に必要な各形式でコンテンツのコピーを作成する必要があります。 動的パッケージを使用する場合、必要な操作は、一連のアダプティブ ビットレート MP4 またはスムーズ ストリーミング ファイルを含むアセットの作成のみです。 そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
 > [!NOTE]
 > [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
@@ -41,7 +42,7 @@ Media Services は、動的パッケージと静的パッケージをサポー�
 
 * 外部エンコーダー (サード パーティのエンコーダーなど) を使用してエンコードされたアダプティブ ビットレート MP4 を検証する
 
-静的パッケージを使用して、次のタスクを実行することもできます。ただし、動的暗号化を使うことをお勧めします。
+静的パッケージを使用して、次のタスクを実行することもできます。ただし、動的暗号化を使用することが推奨されます。
 
 * 静的暗号化を使用して PlayReady で Smooth および MPEG DASH を保護する
 * 静的暗号化を使用して AES-128 で HLSv3 を保護する
@@ -61,7 +62,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-    <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+    <smil xmlns="https://www.w3.org/2001/SMIL20/Language">
       <head>
     <!-- Tells the server that these input files are MP4s – specific to Dynamic Packaging -->
         <meta name="formats" content="mp4" /> 
@@ -80,7 +81,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
     </smil>
 ```
 
-アダプティブ ビットレート MP4 を設定すると、動的パッケージを利用できます。 Dynamic Packaging を使用すると、さらにパッケージ化せずに、指定したプロトコルでストリームを配信できます。 詳細については、「 [動的パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
+アダプティブ ビットレート MP4 を設定すると、ダイナミック パッケージを利用できます。 Dynamic Packaging を使用すると、さらにパッケージ化せずに、指定したプロトコルでストリームを配信できます。 詳細については、「 [動的パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
 
 次のコード サンプルでは、Azure Media Services .NET SDK Extensions を使用します。  入力 MP4 ファイルと .ism ファイルがあるフォルダーを指すようにコードを更新します。 これは、MediaPackager_ValidateTask.xml ファイルがある場所でもあります。 この XML ファイルは、「[Azure Media Packager のタスク プリセット](https://msdn.microsoft.com/library/azure/hh973635.aspx)」トピックで定義されています。
 
@@ -108,26 +109,33 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
             private static readonly string _multibitrateMP4s =
                 Path.Combine(_mediaFiles, @"MultibitrateMP4Files");
 
-            // XML Configruation files path.
+            // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations";
 
             private static MediaServicesCredentials _cachedCredentials = null;
             private static CloudMediaContext _context = null;
 
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServicesAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+            // Read values from the App.config file.
+
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Ingest a set of multibitrate MP4s.
                 //
@@ -168,7 +176,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
                 SetISMFileAsPrimary(multibitrateMP4sAsset);
 
                 // Create a new job.
-                IJob job = _context.Jobs.Create("MP4 validation and converstion to Smooth Stream job.");
+                IJob job = _context.Jobs.Create("MP4 validation and conversion to Smooth Stream job.");
 
                 // Read the task configuration data into a string. 
                 string configMp4Validation = File.ReadAllText(Path.Combine(
@@ -293,27 +301,29 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
 
-            // XML Configruation files path.
+            // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
-
-
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+          
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Encoding and encrypting assets //////////////////////
                 // Load a single MP4 file.
@@ -537,18 +547,18 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
 
-                ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
+                ITask adaptiveBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "Adaptive Streaming",
                    TaskOptions.None);
 
                 // Specify the input Asset
-                adpativeBitrateTask.InputAssets.Add(asset);
+                adaptiveBitrateTask.InputAssets.Add(asset);
 
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
-                IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
+                IAsset abrAsset = adaptiveBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
                                         AssetCreationOptions.None);
 
                 return abrAsset;
@@ -612,7 +622,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Note that the configuration defined in MediaEncryptor_PlayReadyProtection.xml
                 // is using keySeedValue. It is recommended that you do this only for testing 
                 // and not in production. For more information, see 
-                // http://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
+                // https://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
                 //
                 string configPlayReady = File.ReadAllText(Path.Combine(_configurationXMLFiles,
                                             @"MediaEncryptor_PlayReadyProtection.xml"));
@@ -664,7 +674,6 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                             ContentKeyAuthorizationPolicies.
                             CreateAsync("Deliver Common Content Key with no restrictions").
                             Result;
-
 
                 contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
@@ -740,26 +749,29 @@ AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨�
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"SingleMP4\BigBuckBunny.mp4");
 
-            // XML Configruation files path.
+            // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName = 
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey = 
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName, 
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Encoding and encrypting assets //////////////////////
 
@@ -774,7 +786,7 @@ AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨�
                 IAsset HLSEncryptedWithAESAsset = CreateHLSEncryptedWithAES(clearSmoothStreamAsset);
 
                 // You can use the following player to test the HLS with AES stream.
-                // http://apps.microsoft.com/windows/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614 
+                // https://apps.microsoft.com/windows/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614 
                 string hlsWithAESURL = HLSEncryptedWithAESAsset.GetHlsUri().ToString();
                 Console.WriteLine("HLS with AES URL:");
                 Console.WriteLine(hlsWithAESURL);
@@ -888,18 +900,18 @@ AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨�
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
 
-                ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
+                ITask adaptiveBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "Adaptive Streaming",
                    TaskOptions.None);
 
                 // Specify the input Asset
-                adpativeBitrateTask.InputAssets.Add(asset);
+                adaptiveBitrateTask.InputAssets.Add(asset);
 
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
-                IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s", 
+                IAsset abrAsset = adaptiveBitrateTask.OutputAssets.AddNew("Multibitrate MP4s", 
                                         AssetCreationOptions.None);
 
                 return abrAsset;
@@ -1027,27 +1039,30 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"SingleMP4\BigBuckBunny.mp4");
 
-            // XML Configruation files path.
+            // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
-
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Used the chached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
 
                 // Load an MP4 file.
                 IAsset asset = IngestSingleMP4File(_singleMP4File, AssetCreationOptions.None);
@@ -1263,18 +1278,18 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
 
-                ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
+                ITask adaptiveBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "Adaptive Streaming",
                    TaskOptions.None);
 
                 // Specify the input Asset
-                adpativeBitrateTask.InputAssets.Add(asset);
+                adaptiveBitrateTask.InputAssets.Add(asset);
 
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
-                IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
+                IAsset abrAsset = adaptiveBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
                                         AssetCreationOptions.None);
 
                 return abrAsset;
@@ -1372,7 +1387,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
                 // Note that the configuration defined in MediaEncryptor_PlayReadyProtection.xml
                 // is using keySeedValue. It is recommended that you do this only for testing 
                 // and not in production. For more information, see 
-                // http://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
+                // https://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
                 //
                 string configPlayReady = File.ReadAllText(Path.Combine(_configurationXMLFiles,
                                             @"MediaEncryptor_PlayReadyProtection.xml"));

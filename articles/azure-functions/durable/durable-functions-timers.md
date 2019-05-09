@@ -2,7 +2,7 @@
 title: Durable Functions のタイマー - Azure
 description: Azure Functions の Durable Functions 拡張機能で持続的タイマーを実装する方法について説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9c9fd7b780ac1850586177e69d4c1cb3a06d005d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: a05f75a7e38ee7cd4dc056629d9acaacad875e08
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744855"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608237"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
@@ -115,7 +115,7 @@ module.exports = df.orchestrator(function*(context) {
     const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");
 
     const activityTask = context.df.callActivity("GetQuote");
-    const timeoutTask = context.df.createTimer(deadline);
+    const timeoutTask = context.df.createTimer(deadline.toDate());
 
     const winner = yield context.df.Task.any([activityTask, timeoutTask]);
     if (winner === activityTask) {

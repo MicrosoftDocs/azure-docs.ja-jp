@@ -14,13 +14,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
-ms.openlocfilehash: f46d975c33d10688b04fca40b55c249b913fe5a1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: banders
+ms.openlocfilehash: 44ff08c84b3e95a5b598ebf4279fc2ffc46313e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863442"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする
 Office 365 サブスクリプションがある場合は、Office 365 アカウントを使用して Azure サブスクリプションを作成できます。 Office 365 のユーザー名とパスワードを使用して [Azure ポータル](https://portal.azure.com/) にサインインします。 仮想マシンを設定するか、他の Azure サービスを使用する場合は、Azure サブスクリプションにサインアップする必要があります。 他のユーザーと Azure サブスクリプションを共有し、[ロールベースのアクセス制御を使用して、Azure サブスクリプションとリソースへのアクセスを管理できます](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
@@ -55,5 +55,6 @@ Office 365 と Azure では、ユーザーとサブスクリプションの管�
 
 詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

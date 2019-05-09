@@ -2,17 +2,17 @@
 title: AKS と Azure Container Registry で Draft を使用します。
 description: AKS と Azure Container Registry で Draft を使用します。
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
-ms.author: iainfou
-ms.openlocfilehash: d94f70771cf3ee364dbb3e4c4256cd2248ce3828
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.author: zarhoads
+ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164774"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755657"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Draft の使用
 
@@ -144,7 +144,7 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-アプリケーションにアクセスするには、`draft connect` 出力に示されたアドレスとポートで Web ブラウザーを開きます。(*http://localhost:49804* など)。 
+アプリケーションにアクセスするには、`draft connect` 出力に示されたアドレスとポートで Web ブラウザーを開きます (`http://localhost:49804` など)。 
 
 ![Draft で実行されたサンプル Java アプリ](media/kubernetes-draft/sample-app.png)
 

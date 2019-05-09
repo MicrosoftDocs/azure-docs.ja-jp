@@ -8,32 +8,34 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: adff3c4096a1464913997489cb50665a450024b6
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4fec9be34e390498b85ecfcb3f3b61055a08fdd2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53285951"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305358"
 ---
 1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左側のメニューで、**[リソースの作成]**、**[データベース]** の順にクリックし、**[Azure Cosmos DB]** の下にある **[作成]** をクリックします。 
+2. 左側のナビゲーション ウィンドウで、**[+ リソースの作成]** を選択します。 **[データベース]** を選択してから、**[Azure Cosmos DB]** を選択します。
    
-   ![その他のサービスと Azure Cosmos DB が強調表示された Azure Portal のスクリーンショット](./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png)
+   ![その他のサービスと Azure Cosmos DB が強調表示された Azure portal のスクリーンショット](./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png)
 
-3. **[Azure Cosmos DB アカウントの作成]** ページで、新しい Azure Cosmos DB アカウントの設定を入力します。 
+3. **[Azure Cosmos DB アカウントの作成]** ページで、新しい Azure Cosmos DB アカウントの設定を入力します。
  
-    設定|値|説明
+    Setting|値|説明
     ---|---|---
     サブスクリプション|該当するサブスクリプション|この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。 
-    リソース グループ|新規作成<br><br>その後、ID で指定したものと同じ一意の名前を入力|**[新規作成]** を選択します。 その後、自分のアカウントの新しいリソースグループの名前を入力します。 簡略化するには、ID と同じ名前を使用します。 
-    アカウント名|一意の名前を入力します|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 指定した ID に *documents.azure.com* が付加されて URI が作成されるので、一意の ID を使用してください。<br><br>ID に使用できるのは、英小文字、数字、ハイフン (-) のみです。 長さは 3 文字から 31 文字でなければなりません。
+    リソース グループ|新規作成<br><br>その後、ID で指定したものと同じ一意の名前を入力|**[新規作成]** を選択します。 その後、自分のアカウントの新しいリソース グループの名前を入力します。 簡略化するには、ID と同じ名前を使用します。 
+    アカウント名|一意の名前を入力します|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。<br><br>ID に使用できるのは、英小文字、数字、ハイフン (-) のみです。 3 から 31 文字の長さにする必要があります。
     API|Azure テーブル|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB には、5 種類の API が用意されています。ドキュメント データベース用の Core(SQL)、グラフ データベース用の Gremlin、ドキュメント データベース用の MongoDB、Azure Table、Cassandra です。 現在は、API ごとに別のアカウントを作成する必要があります。 <br><br>このクイックスタートでは Table API に対応するテーブルを作成するので、**Azure Table** を選択します。 <br><br>[Table API の詳細](../articles/cosmos-db/table-introduction.md)|
-    場所|ユーザーに最も近いリージョンを選択|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできる、ユーザーに最も近い場所を使用します。
+    Location|ユーザーに最も近いリージョンを選択|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。
 
-    **[確認および作成]** を選択します。 **[ネットワーク]** セクションと **[タグ]** セクションはスキップできます。  
+    追加の RU 料金を回避するために、**[geo 冗長性]** オプションと **[マルチ リージョン書き込み]** オプションは既定値 (**[無効]**) のままにすることができます。 **[ネットワーク]** セクションと **[タグ]** セクションはスキップできます。
 
-    ![Azure Cosmos DB の新しいアカウント ページ](./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-create-new-account.png)
+5. **[確認および作成]** を選択します。 検証が完了したら、**[作成]** を選択してアカウントを作成します。 
+ 
+   ![Azure Cosmos DB の新しいアカウント ページ](./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-create-new-account.png)
 
-4. アカウントの作成には数分かかります。 ポータルに "**Azure Cosmos DB アカウントが作成されました**" ページが表示されるまで待機します。
+6. アカウントの作成には数分かかります。 "**デプロイが進行中です**" というメッセージが表示されます。 デプロイが完了するまで待ってから、**[リソースに移動]** を選択します。
 
-    ![Azure Portal の [通知] ウィンドウ](./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-account-created.png)
+    ![Azure portal の [通知] ウィンドウ](./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-account-created.png)

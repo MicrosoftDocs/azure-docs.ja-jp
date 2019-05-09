@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: b-juche
-ms.openlocfilehash: 72da85fb7296d02bc6d5f7fcd3279953c312c920
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f08eaee038ad18c600826dea6fe0fd85935de59a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012010"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761975"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>容量プールまたはボリュームをサイズ変更する
 容量プールまたはボリュームは、必要に応じてサイズ変更できます。 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 302445038dc9767bd412e232f62fc5249a1a7f09
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994965"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696951"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Azure に移行されたワークロードのネットワークの設定に関するベスト プラクティス
 
@@ -72,7 +72,7 @@ IP アドレス空間の配置方法、ハブスポーク ネットワークの�
 **詳細情報:**
 
 - ハブとスポークのトポロジ[について読む](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。
-- Azure [Windows](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm#network-recommendations) VM および [Linux](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/linux-vm#network-recommendations) VM を実行するためのネットワークの推奨事項を確認する。
+- Azure [Windows](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) VM および [Linux](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/linux-vm) VM を実行するためのネットワークの推奨事項を確認する。
 - VNet ピアリング[について学習する](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
 
 
@@ -185,7 +185,7 @@ VNet をデプロイすると、Azure によって既定で DNS サーバーが�
 **詳細情報:**
 
 - 互換性のあるオンプレミス VPN デバイスを[確認する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)。
-- VPN ゲートウェイの[概要を理解する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateway)。
+- VPN ゲートウェイの[概要を理解する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
 - 高可用性 VPN 接続[について学習する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)。
 - VPN ゲートウェイの計画と設計[について学習する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)。
 - VPN ゲートウェイの設定を[確認する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)。

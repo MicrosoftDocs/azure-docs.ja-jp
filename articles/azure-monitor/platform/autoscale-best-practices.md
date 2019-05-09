@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: b34d5f061eae297b635e2249143240668a4c2b08
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: autoscale
+ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325646"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454104"
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
@@ -150,3 +150,4 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 ## <a name="next-steps"></a>次の手順
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+

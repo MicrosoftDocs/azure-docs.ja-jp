@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897301"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信のセキュリティ | 軽減策 
 | 製品/サービス | 記事 |
@@ -146,7 +146,7 @@ ms.locfileid: "53013187"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [OWASP HTTP Strict Transport Security チート シートを有効にする](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **手順** | <p>HTTP Strict Transport Security (HSTS) は、特別な応答ヘッダーを使用して Web アプリケーションで指定されるオプトイン セキュリティ拡張機能です。 サポートされているブラウザーがこのヘッダーを受け取ると、そのブラウザーでは、指定したドメインへの HTTP 経由の通信を送信できなくなり、代わりにすべての通信が HTTPS 経由で送信されます。 HTTPS クリックスルー メッセージもブラウザーに表示されなくなります。</p><p>HSTS を実装するには、コードまたは config で、応答ヘッダー Strict-Transport-Security: max-age=300; includeSubDomains を、Web サイトに対してグローバルに構成する必要があります。HSTS では、次の脅威に対応します。</p><ul><li>ユーザーは http://example.com をブックマークするか手動で入力し、中間者攻撃を受ける。HSTS は HTTP 要求をターゲット ドメインの HTTPS に自動的にリダイレクトします。</li><li>HTTPS のみを目的とした Web アプリケーションで、うっかり HTTP リンクを含めてしまうかまたは HTTP 経由でコンテンツを提供する。HSTS は HTTP 要求をターゲット ドメインの HTTPS に自動的にリダイレクトします。</li><li>中間者攻撃で、無効な証明書を使用して攻撃対象ユーザーからのトラフィックを傍受しようとしており、ユーザーに不正な証明書を受け入れさせようとしている。HSTS は、無効な証明書のメッセージを上書きするユーザーを許可しません。</li></ul>|
+| **手順** | <p>HTTP Strict Transport Security (HSTS) は、特別な応答ヘッダーを使用して Web アプリケーションで指定されるオプトイン セキュリティ拡張機能です。 サポートされているブラウザーがこのヘッダーを受け取ると、そのブラウザーでは、指定したドメインへの HTTP 経由の通信を送信できなくなり、代わりにすべての通信が HTTPS 経由で送信されます。 HTTPS クリックスルー メッセージもブラウザーに表示されなくなります。</p><p>HSTS を実装するには、コードまたは config で、応答ヘッダー Strict-Transport-Security: max-age=300; includeSubDomains を、Web サイトに対してグローバルに構成する必要があります。HSTS では、次の脅威に対応します。</p><ul><li>ユーザーは https://example.com をブックマークするか手動で入力し、中間者攻撃を受ける。HSTS は HTTP 要求をターゲット ドメインの HTTPS に自動的にリダイレクトします。</li><li>HTTPS のみを目的とした Web アプリケーションで、うっかり HTTP リンクを含めてしまうかまたは HTTP 経由でコンテンツを提供する。HSTS は HTTP 要求をターゲット ドメインの HTTPS に自動的にリダイレクトします。</li><li>中間者攻撃で、無効な証明書を使用して攻撃対象ユーザーからのトラフィックを傍受しようとしており、ユーザーに不正な証明書を受け入れさせようとしている。HSTS は、無効な証明書のメッセージを上書きするユーザーを許可しません。</li></ul>|
 
 ## <a id="sqlserver-validation"></a>SQL Server 接続の暗号化と証明書の検証を確認する
 
@@ -339,7 +339,7 @@ string GetData(int value);
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
-| **参照**              | [Web API コント ローラーでの SSL の適用](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
+| **参照**              | [Web API コント ローラーでの SSL の適用](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
 | **手順** | アプリケーションに HTTPS と HTTP の両方のバインドがある場合、クライアントは引き続き HTTP を使用してサイトにアクセスできます。 これを防ぐには、アクション フィルターを使用して、保護された API への要求が常に HTTPS を経由するように指定します。|
 
 ### <a name="example"></a>例 

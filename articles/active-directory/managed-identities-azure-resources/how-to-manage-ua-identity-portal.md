@@ -3,23 +3,24 @@ title: Azure portal を使用して、ユーザー割り当てマネージド ID
 description: ユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする方法に関する詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
-ms.author: daveba
-ms.openlocfilehash: d54820acf8742ad2f95e8cc8527d9e252ffe3c30
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 18a15b8039322fc5e43a2b9dfed8a9bd3fc8b5fb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720136"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449057"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Azure Portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする
 
@@ -62,6 +63,8 @@ Azure リソースのマネージド ID は、Azure Active Directory で管理�
 ## <a name="delete-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を削除する
 
 ユーザー割り当てマネージド ID を削除するには、お使いのアカウントに[マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロールの割り当てが必要です。
+
+ユーザー割り当て ID を削除しても、それが割り当てられていた VM やリソースから削除されることはありません。  VM からユーザー割り当てマネージド ID を削除する場合は、「[VM からユーザー割り当て ID を削除する](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm)」を参照してください。
 
 1. Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインして、ユーザー割り当てマネージド ID を削除します。
 2. ユーザー割り当てマネージド ID を選択して、**[削除]** をクリックします。

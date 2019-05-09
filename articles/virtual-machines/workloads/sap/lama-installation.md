@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 17/07/2018
+ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 2a0934fa3bb46eebba02029a8292b9bee6b12c62
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728227"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313602"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -77,7 +77,7 @@ Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP La
 1. [Azure Active Directory] ブレードを開きます
 1. [アプリの登録] をクリックします
 1. [追加] をクリックします
-1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost)) を入力します。その後、[作成] をクリックします
+1. [名前] を入力し、[アプリケーションの種類] に [Web アプリ/API] を選択し、サインオン URL (たとえば http:\//localhost) を入力して、[作成] をクリックします
 1. サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[期限なし] を選択して [保存] をクリックします
@@ -116,7 +116,7 @@ Connection successful: (接続成功:)Connection to Microsoft cloud was successf
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>新しい適応型 SAP システムのプロビジョニング
 
-新しい仮想マシンを手動でデプロイするか、または[クイック スタート リポジトリ](https://github.com/Azure/azure-quickstart-templates)内にあるいずれかの Azure テンプレートを使用できます。 このリポジトリには、[SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver アプリケーション サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)、および[データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-db)用のテンプレートが含まれています。 これらのテンプレートを使用すると、システム コピー/複製などの一部として新しいホストをプロビジョニングすることもできます。
+新しい仮想マシンを手動でデプロイするか、または[クイック スタート リポジトリ](https://github.com/Azure/azure-quickstart-templates)内にあるいずれかの Azure テンプレートを使用できます。 このリポジトリには、[SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver アプリケーション サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)、および[データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database)用のテンプレートが含まれています。 これらのテンプレートを使用すると、システム コピー/複製などの一部として新しいホストをプロビジョニングすることもできます。
 
 新しい仮想マシンおよび SAP インスタンスのデプロイが準備解除された場合に IP アドレスが "盗まれる" のを防ぐために、SAP LaMa で管理するすべての仮想マシンについて個別のサブネットを使用し、動的 IP アドレスは使用しないことをお勧めします。
 

@@ -3,18 +3,18 @@ title: Azure Automation での初めての Python Runbook
 description: 簡単な Python Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b621c6b9af60637e8bb818545746923c22926ac4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: e79f4b58582ab6643a7a13ffee25503060a2208c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984983"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226744"
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -25,6 +25,9 @@ ms.locfileid: "45984983"
 > - [Python](automation-first-runbook-textual-python2.md)
 
 このチュートリアルでは、Azure Automation で [Python Runbook](automation-runbook-types.md#python-runbooks) を作成する手順について説明します。 最初に、簡単な Runbook をテストおよび発行します。 次に、実際に Azure リソースを管理するように Runbook を変更します。ここでは Azure 仮想マシンを開始します。 最後に Runbook のパラメーターを追加して、Runbook をさらに堅牢にします。
+
+> [!NOTE]
+> Webhook を使用して Python Runbook を開始することはできません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -78,16 +81,16 @@ Runbook を発行するときは、既存の発行済みバージョンをドラ
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
 1. ここで **[Runbook]** ウィンドウで左へスクロールして Runbook を表示すると、**[編集状態]** は **[発行済み]** になっています。
 1. 右にスクロールして戻り、**MyFirstRunbook-Python** のウィンドウを表示します。
-   上部のオプションを使用すると、Runbook の開始、Runbook の表示、将来の開始スケジュールの設定を行ったり、HTTP 呼び出しで開始できるように [webhook](automation-webhooks.md) を作成したりすることができます。
-1. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。
-1. 作成した Runbook ジョブのジョブ ウィンドウが開きます。 このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
+   上部のオプションを使用すると、Runbook の開始、Runbook の表示、Runbook の将来の開始スケジュールの設定を行うことができます。
+2. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。
+3. 作成した Runbook ジョブのジョブ ウィンドウが開きます。 このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
 1. ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。
-1. Runbook の状態が *[完了]* になったら、 **[出力]** をクリックします。 [出力] ウィンドウが開き、*Hello World* と表示されます。
-1. [出力] ウィンドウを閉じます。
-1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームでは "*Hello World*" だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。
-1. ストリーム ウィンドウとジョブ ウィンドウを閉じると、MyFirstRunbook-Python のウィンドウに戻ります。
-1. **[ジョブ]** をクリックして、この Runbook のジョブ ウィンドウを開きます。 この Runbook によって作成されたジョブの一覧が表示されます。 ジョブを 1 回実行しただけであるため、一覧に表示されるジョブは 1 つだけです。
-1. このジョブをクリックすると、Runbook を開始したときに表示されたのと同じジョブ ウィンドウが開きます。 これにより前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
+2. Runbook の状態が *[完了]* になったら、 **[出力]** をクリックします。 [出力] ウィンドウが開き、*Hello World* と表示されます。
+3. [出力] ウィンドウを閉じます。
+4. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームでは "*Hello World*" だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。
+5. ストリーム ウィンドウとジョブ ウィンドウを閉じると、MyFirstRunbook-Python のウィンドウに戻ります。
+6. **[ジョブ]** をクリックして、この Runbook のジョブ ウィンドウを開きます。 この Runbook によって作成されたジョブの一覧が表示されます。 ジョブを 1 回実行しただけであるため、一覧に表示されるジョブは 1 つだけです。
+7. このジョブをクリックすると、Runbook を開始したときに表示されたのと同じジョブ ウィンドウが開きます。 これにより前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
 
 ## <a name="add-authentication-to-manage-azure-resources"></a>Azure リソースを管理するための認証を追加する
 

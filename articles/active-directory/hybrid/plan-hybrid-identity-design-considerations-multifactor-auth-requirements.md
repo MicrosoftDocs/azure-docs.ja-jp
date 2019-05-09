@@ -9,19 +9,20 @@ editor: ''
 ms.assetid: 9c59fda9-47d0-4c7e-b3e7-3575c29beabe
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a5fa005741d0ac320badc12c908fde3991291857
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3dabb381c16aa107e41c1d556e61e020b8c6a6c3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305101"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170230"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの多要素認証要件の決定
 ユーザーがクラウドのデータとアプリケーションにあらゆるデバイスからアクセスするこのモバイルの世界では、情報を守ることが最重要事項になりました。  毎日、セキュリティ違反に関する話題がニュースになっています。  そのような違反に対抗できる保証はありませんが、多要素認証はセキュリティの層を厚くし、違反防止に役立ちます。

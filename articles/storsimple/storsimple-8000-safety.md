@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 428bc3504416f3a99518572f9f5bcb39423295b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261603"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014160"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple デバイスを安全にインストールして操作する
 ![警告のアイコン](./media/storsimple-safety/IC740879.png)
@@ -145,7 +145,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 ![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 
-バッテリを船舶または飛行機で輸送する場合は、[http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) にある IATA Lithium Battery Guidance のドキュメントに従ってください
+バッテリを船舶または飛行機で輸送する場合は、[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) にある IATA Lithium Battery Guidance のドキュメントに従ってください
 
 これらの安全上の注意を確認した後、装置を開梱し、ラックに積み込み、ケーブルを接続するステップに進みます。
 

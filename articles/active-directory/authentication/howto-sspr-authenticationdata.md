@@ -1,27 +1,29 @@
 ---
-title: Azure AD SSPR データ要件 |Microsoft Docs
+title: Azure AD SSPR データ要件 - Azure Active Directory
 description: Azure AD のセルフ サービスによるパスワード リセットのデータ要件とそれらを満たす方法
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296246"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371368"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
 Azure Active Directory (Azure AD) のセルフサービスによるパスワードのリセット (SSPR) をデプロイするには、認証データが存在する必要があります。 ユーザーに自分で認証データを入力させている組織もあります。 しかし、多くの組織では Active Directory に既に存在するデータと同期する方法が採用されています。 次の条件が満たされていれば、ユーザーが介入しなくても、同期されたデータは Azure AD と SSPR で利用できるようになります。
-   * オンプレミスのディレクトリ内のデータが正しい形式になっていること。
-   * [簡単設定を使って Azure AD Connect](../hybrid/how-to-connect-install-express.md) が構成されていること。
+
+* オンプレミスのディレクトリ内のデータが正しい形式になっていること。
+* [簡単設定を使って Azure AD Connect](../hybrid/how-to-connect-install-express.md) が構成されていること。
 
 正常に動作させるには、電話番号の形式が "*+<国コード> <電話番号>*" (例: +1 4255551234) になっている必要があります。
 
@@ -45,7 +47,7 @@ Azure AD Connect で既定の設定を使用する場合、次のマッピング
 
 グローバル管理者は、次のスクリーンショットに示すように、ユーザーの認証の連絡先情報を手動で設定できます。
 
-![連絡先][Contact]
+![Azure AD におけるユーザーの認証の連絡先情報][Contact]
 
 [電話番号] フィールドに電話番号が入力され、SSPR ポリシーの携帯電話が有効になると、その番号がパスワード リセット登録ページに表示され、また、パスワード リセット ワークフロー中に表示されます。
 
@@ -75,7 +77,7 @@ PowerShell を使用して、次のフィールドを設定することができ
 
 * **連絡用メール アドレス**
 * **携帯電話**
-* **会社電話** - オンプレミス ディレクトリと同期していない場合にのみ設定できます
+* **会社電話**:オンプレミス ディレクトリと同期していない場合にのみ設定できます
 
 ### <a name="use-powershell-version-1"></a>PowerShell バージョン 1 を使う
 
@@ -83,7 +85,7 @@ PowerShell を使用して、次のフィールドを設定することができ
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>PowerShell バージョン 1 を使って認証データを設定する
 
-```
+```PowerShell
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
@@ -95,7 +97,7 @@ Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("emai
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>PowerShell バージョン 1 を使って認証データを読み取る
 
-```
+```PowerShell
 Connect-MsolService
 
 Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
@@ -109,7 +111,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 PowerShell バージョン 1 で **[認証用電話]** と **[認証用電子メール]** を読み取るには、次のコマンドを使います。
 
-```
+```PowerShell
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
@@ -121,7 +123,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 Install-Module をサポートする PowerShell の最新バージョンから簡単にインストールするには、次のコマンドを実行します  (最初の行では、モジュールが既にインストールされているかどうかを確認しています)。
 
-```
+```PowerShell
 Get-Module AzureADPreview
 Install-Module AzureADPreview
 Connect-AzureAD
@@ -129,7 +131,7 @@ Connect-AzureAD
 
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>PowerShell バージョン 2 を使って認証データを設定する
 
-```
+```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
@@ -141,7 +143,7 @@ Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mo
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>PowerShell バージョン 2 を使って認証データを読み取る
 
-```
+```PowerShell
 Connect-AzureAD
 
 Get-AzureADUser -ObjectID user@domain.com | select otherMails

@@ -1,52 +1,52 @@
 ---
-title: 'クイックスタート: Azure SQL Data Warehouse のコンピューティングのスケールアウト - PowerShell | Microsoft Docs'
+title: クイック スタート:Azure SQL Data Warehouse のコンピューティングのスケールアウト - PowerShell | Microsoft Docs
 description: PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: cb6153d2859968a02345cfbcfa66bd9a4177d864
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: bd137b71cab4a345afce835effd2ecb0c03df312
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427424"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882983"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>クイックスタート: PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングする
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>クイック スタート:PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングします。
 
 PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングします。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 5.1.1 以降が必要です。 現在所有しているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
-
 ## <a name="before-you-begin"></a>開始する前に
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 このクイックスタートでは、スケーリングできる SQL データ ウェアハウスが既に用意されていることを前提とします。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-[Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
-使用しているサブスクリプションを確認するには、[Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) を実行します。
+使用しているサブスクリプションを確認するには、[Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) を実行します。
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
-既定ではない別のサブスクリプションを使用する必要がある場合は、[Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext) を実行します。
+既定ではない別のサブスクリプションを使用する必要がある場合は、[Set-AzContext](/powershell/module/az.accounts/set-azcontext) を実行します。
 
 ```powershell
-Set-AzureRmContext -SubscriptionName "MySubscription"
+Set-AzContext -SubscriptionName "MySubscription"
 ```
 
 ## <a name="look-up-data-warehouse-information"></a>データ ウェアハウスの情報を調べる
@@ -68,18 +68,18 @@ Set-AzureRmContext -SubscriptionName "MySubscription"
 
 SQL Data Warehouse では、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
 
-Data Warehouse ユニットを変更するには、[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell コマンドレットを使用します。 次の例では、サーバー **mynewserver-20180430** 上のリソース グループ **myResourceGroup** においてホストされているデータベース **mySampleDataWarehouse** の Data Warehouse ユニットを DW300 に設定します。
+Data Warehouse ユニットを変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell コマンドレットを使用します。 次の例では、サーバー **mynewserver-20180430** 上のリソース グループ **myResourceGroup** においてホストされているデータベース **mySampleDataWarehouse** の Data Warehouse ユニットを DW300 に設定します。
 
 ```Powershell
-Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
 ```
 
 ## <a name="check-data-warehouse-state"></a>データ ウェアハウスの状態の確認
 
-データ ウェアハウスの現在の状態を確認するには、[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell コマンドレットを使用します。 これを使用すると、リソース グループ **myResourceGroup** とサーバー **mynewserver-20180430.database.windows.net** 内のデータベース **mySampleDataWarehouse** の状態が取得されます。
+データ ウェアハウスの現在の状態を確認するには、[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell コマンドレットを使用します。 これを使用すると、リソース グループ **myResourceGroup** とサーバー **mynewserver-20180430.database.windows.net** 内のデータベース **mySampleDataWarehouse** の状態が取得されます。
 
 ```powershell
-$database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
+$database = Get-AzSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
 $database
 ```
 

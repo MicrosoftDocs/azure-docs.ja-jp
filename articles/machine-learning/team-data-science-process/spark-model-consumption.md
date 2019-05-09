@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 543ae7cecf9edcb5997a0bae66e0722d258a4523
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135307"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524584"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
 
@@ -112,7 +112,7 @@ Jupyter Notebook で提供される PySpark カーネルには、コンテキス
 PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。 そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
 
 * **%%local** このコマンドを指定した場合、後続行のすべてのコードがローカルで実行されます。 コードは有効な Python コードにする必要があります。
-* **%%sql -o <variable name>** 
+* **%%sql -o \<変数名>** 
 * sqlContext に対して Hive クエリを実行します。 -o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
 
 Jupyter Notebook のカーネルと、それによって提供される定義済みの "マジック" (例: %%local) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
@@ -190,9 +190,9 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>特徴の変換: カテゴリの特徴のインデックスを作成してエンコードし、モデルに入力してスコア付けできるようにする
 このセクションでは、`StringIndexer` を使用してカテゴリ データのインデックスを作成し、`OneHotEncoder` 入力を使って特徴をモデルにエンコードする方法について説明します。
 
-[StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) によって、ラベルの文字列型の列をラベル インデックスの列にエンコードします。 インデックスの順序は、ラベルの頻度順になります。 
+[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) によって、ラベルの文字列型の列をラベル インデックスの列にエンコードします。 インデックスの順序は、ラベルの頻度順になります。 
 
-[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) によって、ラベル インデックスの列をバイナリのベクトルの列にマッピングします。値は最大でも 1 つのみです。 このエンコードによって、ロジスティック回帰などの連続する値を持つ特徴を受け取るアルゴリズムをカテゴリの特徴に適用できます。
+[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) によって、ラベル インデックスの列をバイナリのベクトルの列にマッピングします。値は最大でも 1 つのみです。 このエンコードによって、ロジスティック回帰などの連続する値を持つ特徴を受け取るアルゴリズムをカテゴリの特徴に適用できます。
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -257,7 +257,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 上記のセルの実行に要した時間:5.37 秒
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>モデルに入力する特徴配列を含む RDD オブジェクトの作成
-このセクションのコードでは、RDD オブジェクトとしてカテゴリ テキスト データのインデックスを作成し、それをワン ホット エンコーディングすることで、MLlib ロジスティック回帰モデルやツリーベース モデルのトレーニングおよびテストに使用できるようにする方法を示します。 インデックス付きデータは、 [Resilient Distributed Dataset (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) オブジェクトに格納されます。 これは、Spark における基本的な抽象化です。 RDD オブジェクトは、パーティション分割された変更できない要素のコレクションであり、Spark と平行して処理することができます。
+このセクションのコードでは、RDD オブジェクトとしてカテゴリ テキスト データのインデックスを作成し、それをワン ホット エンコーディングすることで、MLlib ロジスティック回帰モデルやツリーベース モデルのトレーニングおよびテストに使用できるようにする方法を示します。 インデックス付きデータは、 [Resilient Distributed Dataset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) オブジェクトに格納されます。 これは、Spark における基本的な抽象化です。 RDD オブジェクトは、パーティション分割された変更できない要素のコレクションであり、Spark と平行して処理することができます。
 
 さらにここでは、確率的勾配降下 (SGD) による線形回帰に使用できるように、MLlib の `StandardScalar` を使ってデータをスケーリングする方法を示すコードも示しています。SGD はさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) を使用して、特徴を単価差異にスケーリングします。 この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 
 
@@ -279,7 +279,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
                              line.trip_distance, line.fare_amount])
         return  features
 
-    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC RERESSION MODELS
+    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC REGRESSION MODELS
     def parseRowOneHotBinary(line):
         features = np.concatenate((np.array([line.pickup_hour, line.weekday, line.passenger_count,
                                             line.trip_time_in_secs, line.trip_distance, line.fare_amount]), 
@@ -397,9 +397,9 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 ## <a name="score-classification-and-regression-random-forest-models"></a>分類と回帰のランダム フォレスト モデルのスコア付け
 このセクションのコードでは、Azure Blob Storage に保存されている分類と回帰のランダム フォレスト モデルを読み込み、標準の分類方法と回帰方法でそのパフォーマンスをスコア付けした後、結果を Blob Storage に保存する方法を示します。
 
-[ランダム フォレスト](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) は、複数のデシジョン ツリーをまとめたものです。  オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。 ランダム フォレストによって、カテゴリの特徴を処理し、多クラス分類の設定に拡張できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの 1 つです。
+[ランダム フォレスト](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) は、複数のデシジョン ツリーをまとめたものです。  オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。 ランダム フォレストによって、カテゴリの特徴を処理し、多クラス分類の設定に拡張できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの 1 つです。
 
-[spark.mllib](http://spark.apache.org/mllib/) は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類および多クラス分類と回帰のためのランダム フォレストをサポートします。 
+[spark.mllib](https://spark.apache.org/mllib/) は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類および多クラス分類と回帰のためのランダム フォレストをサポートします。 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -445,7 +445,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **spark.mllib** は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類と回帰のための GBT をサポートします。 
 
-[勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT によって、カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類の設定にも使用できます。
+[勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT によって、カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類の設定にも使用できます。
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -555,7 +555,7 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
     import os
 
-    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF THE REQUEST LIBRARY AS THEY ARE AVAILBLE BY DEFAULT
+    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF THE REQUEST LIBRARY AS THEY ARE AVAILABLE BY DEFAULT
     import httplib, urllib, base64
 
     # REPLACE VALUE WITH ONES FOR YOUR SPARK CLUSTER

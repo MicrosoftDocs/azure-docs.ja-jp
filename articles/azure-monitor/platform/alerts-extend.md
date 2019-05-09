@@ -1,5 +1,5 @@
 ---
-title: Log Analytics のアラートを Azure Alerts に拡張 (コピー) する - 概要
+title: Log Analytics のアラートを Azure Government Cloud に拡張 (コピー) する
 description: アラートを OMS ポータル内の Log Analytics から Azure Alerts にコピーするプロセスの概要について説明し、お客様の一般的な懸念に対応する詳細を示します。
 author: msvijayn
 services: azure-monitor
@@ -7,20 +7,22 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 2028b9555ec20fc5e97511a2a908351b66aec216
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.subservice: alerts
+ms.openlocfilehash: efd2fc9d164564126b7b641ef35bbb10c4834f49
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385501"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099330"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Log Analytics アラートを Azure Alerts に拡張する
 
 > [!NOTE]
 > Microsoft は既に、この記事で説明されている Azure のパブリック バージョンに関するプロセスを完了しました。 ただし、それはまだ米国政府バージョンに適用されます。  
 
-最近まで、Azure Log Analytics には、Log Analytics のデータに基づいて状態を事前にユーザーに通知できる独自のアラート機能が含まれていました。 Microsoft Operations Management Suite ポータルでアラート ルールを管理していました。 新しいアラートのエクスペリエンスにより、Microsoft Azure のさまざまなサービスにわたってアラートが統合されました。 これは Azure Portal の Azure Monitor で **[アラート]**  として提供されており、Log Analytics と Azure Application Insights 両方のアクティビティ ログ、メトリック、およびログからのアラートをサポートしています。 
+最近まで、Azure Log Analytics には、Log Analytics のデータに基づいて状態を事前にユーザーに通知できる独自のアラート機能が含まれていました。 Microsoft Operations Management Suite ポータルでアラート ルールを管理していました。 新しいアラートのエクスペリエンスにより、Microsoft Azure のさまざまなサービスにわたってアラートが統合されました。 これは Azure Portal の Azure Monitor で **[アラート]**  として提供されており、Log Analytics と Azure Application Insights 両方のアクティビティ ログ、メトリック、およびログからのアラートをサポートしています。
+
+OMS ポータルを使用している Azure Government Cloud のお客様は、**2019 年 2 月 1 日**から[ご自身のアラート ルールを自主的に Azure に拡張する](alerts-extend-tool.md)ことができます。 **2019 年 3 月 1 日**以降、Microsoft は、Azure Government - OMS ポータル内のすべての既存のアラート ルールを体系的な方法で Azure に自動的に拡張します。この際、ダウンタイムは発生せず、監視が中断されることもありません。 **2019 年 3 月 1 日**以降、Azure Government Cloud の OMS ポータルで作成された新しいワークスペースは、Azure に自動的に拡張されます。
 
 ## <a name="benefits-of-extending-your-alerts"></a>アラートを拡張するメリット
 Azure Portal でアラートの作成と管理を行うことには、以下のようにいくつかの利点があります。
@@ -62,3 +64,4 @@ Operations Management Suite ポータルで、既存のアラートの編集や�
 * [Log Analytics から Azure へのアラート拡張の開始する](alerts-extend-tool.md)ためのツールについて学習する。
 * [Azure Alerts のエクスペリエンス](../../azure-monitor/platform/alerts-overview.md)の詳細について学習する。
 * [Azure Alerts でのログ アラート](alerts-unified-log.md)の作成方法について学習します。
+

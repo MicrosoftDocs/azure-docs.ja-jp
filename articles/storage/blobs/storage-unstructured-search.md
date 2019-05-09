@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/13/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 42c67d73ee776488fbe932676f61cb7166c2984b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: acf01788a1ac8ed8ca476941c402801abfbd8adf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599843"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011303"
 ---
 # <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>チュートリアル:クラウド ストレージで非構造化データを検索する
 
@@ -32,14 +32,14 @@ ms.locfileid: "53599843"
 > * 検索サービスをストレージ アカウントに接続する
 > * データ ソースを作成する
 > * インデックスの構成
-> * インデクサーを作成する
+> * インデクサーの作成
 > * 検索サービスを使用してコンテナーを検索する
 
 ## <a name="prerequisites"></a>前提条件
 
 すべてのストレージ アカウントは、Azure リソース グループに属している必要があります。 リソース グループは、Azure サービスをグループ化するための論理コンテナーです。 ストレージ アカウントを作成するときに、新しいリソース グループを作成するか、既存のリソース グループを使用するかを選択できます。 このチュートリアルでは、新しいリソース グループを作成します。
 
-[Azure Portal](http://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -63,7 +63,7 @@ ms.locfileid: "53599843"
 
 5. **[OK]** を選択してコンテナーを作成します。
 
-  ![非構造化検索](media/storage-unstructured-search/storageactinfo.png)
+   ![非構造化検索](media/storage-unstructured-search/storageactinfo.png)
 
 ## <a name="upload-the-example-data"></a>サンプル データのアップロード
 
@@ -77,7 +77,7 @@ ms.locfileid: "53599843"
 
 4. **[Upload] \(アップロード)** を選択し、アップロード プロセスを開始します。
 
-  ![非構造化検索](media/storage-unstructured-search/upload.png)
+   ![非構造化検索](media/storage-unstructured-search/upload.png)
 
 アップロード プロセスには、しばらく時間がかかることがあります。
 
@@ -107,7 +107,7 @@ Azure Search は、データ検索機能を追加するための API とツー�
 
 8. **[Create] \(作成)** を選択して、検索サービスを作成します。
 
-  ![非構造化検索](media/storage-unstructured-search/createsearch2.png)
+   ![非構造化検索](media/storage-unstructured-search/createsearch2.png)
 
 ## <a name="connect-your-search-service-to-your-container"></a>検索サービスをコンテナーに接続する
 
@@ -127,13 +127,13 @@ Blob Storage に接続できる検索サービスが用意されました。 こ
 
 2. 使用している BLOB はテキスト ファイルであるため、**[解析モード]** を **[テキスト]** に設定します。
 
-  ![非構造化検索](media/storage-unstructured-search/datasources.png)
+   ![非構造化検索](media/storage-unstructured-search/datasources.png)
 
 3. **[Storage Container] (ストレージ コンテナー)** を選択し、使用可能なストレージ アカウントを一覧表示します。
 
 4. ストレージ アカウントを選択し、以前に作成したコンテナーを選択します。
 
-  ![非構造化検索](media/storage-unstructured-search/datacontainer.png)
+   ![非構造化検索](media/storage-unstructured-search/datacontainer.png)
 
 5. **[Select]\(選択\)** をクリックして、**[New data source]\(新しいデータ ソース\)** に戻り、**[OK]** を選択して続行します。
 
@@ -147,7 +147,7 @@ Blob Storage に接続できる検索サービスが用意されました。 こ
 
 3. **[metadata_storage_name]** で **[Retrievable]** 属性のチェックボックスをオンにします。
 
-  ![非構造化検索](media/storage-unstructured-search/valuestoselect.png)
+   ![非構造化検索](media/storage-unstructured-search/valuestoselect.png)
 
 4. **[OK]** を選択すると、**[インデクサーの作成]** が表示されます。
 
@@ -172,7 +172,7 @@ Blob Storage に接続できる検索サービスが用意されました。 こ
 
 1. **[Name] \(名前)** フィールドに名前を入力し、**[OK]** を選択します。
 
-  ![非構造化検索](media/storage-unstructured-search/exindexer.png)
+   ![非構造化検索](media/storage-unstructured-search/exindexer.png)
 
 2. **[Import Data]\(データのインポート\)** に戻ります。 **[OK]** を選択して、接続プロセスを完了します。
 
@@ -186,19 +186,19 @@ BLOB を検索サービスに正常に接続しました。 ポータルで、�
 
 1. すべてのリソースに移動し、新しく作成した検索サービスを見つけます。
 
-  ![非構造化検索](media/storage-unstructured-search/exampleurl.png)
+   ![非構造化検索](media/storage-unstructured-search/exampleurl.png)
 
 2. インデックスを選択して、それを開きます。
 
-  ![非構造化検索](media/storage-unstructured-search/overview.png)
+   ![非構造化検索](media/storage-unstructured-search/overview.png)
 
 3. **[Search エクスプローラー]** を選択して、Search エクスプローラーを開き、データへのライブ クエリを行うことができます。
 
-  ![非構造化検索](media/storage-unstructured-search/indexespane.png)
+   ![非構造化検索](media/storage-unstructured-search/indexespane.png)
 
 4. クエリ文字列フィールドが空の状態で、**[Search] \(検索)** を選択します。 空のクエリは、BLOB から*すべて*のデータを返します。
 
-  ![非構造化検索](media/storage-unstructured-search/emptySearch.png)
+   ![非構造化検索](media/storage-unstructured-search/emptySearch.png)
 
 ### <a name="perform-a-full-text-search"></a>フルテキスト検索を実行する
 

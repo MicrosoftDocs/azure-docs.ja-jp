@@ -10,18 +10,18 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 638b29dd2a15d0467c41e20ecfed9f333b34c04d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229419"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061059"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
-Azure には、インフラストラクチャを気にすることなく、クラウドですばやくアプリをビルドしてホストするのに役立つ、サーバーレス ツールが用意されています。 このチュートリアルでは、カスタマーからのフィードバックによってトリガーされ、機械学習を使用してフィードバックを分析し、Power BI や Azure Data Lake などのソースに洞察を発行するダッシュボードを作成することができます。
+Azure には、インフラストラクチャを気にすることなく、クラウドですばやくアプリをビルドしてホストするのに役立つ、[サーバーレス](https://azure.microsoft.com/solutions/serverless/) ツールが用意されています。 このチュートリアルでは、カスタマーからのフィードバックによってトリガーされ、機械学習を使用してフィードバックを分析し、Power BI や Azure Data Lake などのソースに洞察を発行するダッシュボードを作成することができます。
 
-このソリューションに向けて、サーバーレス アプリ用の主要な Azure コンポーネントである [Azure Functions](https://azure.microsoft.com/services/functions/) と [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) を使用します。
+このソリューションに向けて、サーバーレス アプリ用の主要な Azure コンポーネントである[Azure Functions](https://azure.microsoft.com/services/functions/) と [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) を使用します。
 Azure Logic Apps では、サーバーレス コンポーネント間でオーケストレーションを作成したり、200 を超えるサービスや API に接続したりできるように、クラウド内のサーバーレス ワークフロー エンジンが提供されます。 Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。 このソリューションでは、定義済みのキーワードに基づいてカスタマーのツイートにフラグを設定するために、Azure Functions を使用します。
 
 このシナリオでは、カスタマーからのフィードバックを検出するとトリガーされるロジック アプリを作成します。 カスタマー フィードバックへの応答に役立つコネクタには、Outlook.com、Office 365、Survey Monkey、Twitter、[Web フォームからの HTTP 要求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)などがあります。 作成するワークフローは、Twitter のハッシュタグを監視します。
@@ -34,7 +34,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
    ロジック アプリを初めて使用する場合は、[Azure Portal 用のクイックスタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)または [Visual Studio 用のクイックスタート](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)を参照してください。
 
-2. ロジック アプリ デザイナーで、**[新しいツイートが投稿されたら]** アクションを含む Twitter トリガーを検索して追加します。
+2. ロジック アプリ デザイナーで、次のアクションを含む Twitter トリガーを検索して追加します。**新しいツイートの投稿時**
 
 3. キーワードまたはハッシュタグに基づいてツイートをリッスンするようにトリガーを設定します。
 
@@ -60,10 +60,10 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 ツイート データとそのツイートに関する洞察を取得したら、その他のいくつかの関連するコネクタと、そのアクションを使用できますようになります。
 
-* **Power BI - ストリーミング データセットへの行の追加**: Power BI ダッシュボードで受信ツイートを表示します。
-* **Azure Data Lake - ファイルの追加**: カスタマーのデータを Azure Data Lake データセットに追加して Analytics ジョブに含めます。
-* **SQL - 行の追加**: 後で取得できるようにデータベースにデータを格納します。
-* **Slack - メッセージの送信**: アクションを必要とする可能性がある否定的なフィードバックについて Slack チャンネルに通知します。
+* **Power BI - ストリーミング データセットへの行の追加**:Power BI ダッシュボードで受信ツイートを表示します。
+* **Azure Data Lake - ファイルの追加**:カスタマーのデータを Azure Data Lake データセットに追加して Analytics ジョブに含めます。
+* **SQL - 行の追加**:後で取得できるようにデータベースにデータを格納します。
+* **Slack - メッセージの送信**:アクションを必要とする可能性がある否定的なフィードバックについて Slack チャンネルに通知します。
 
 また、データに対してカスタム処理を実行するために、Azure 関数を作成することもできます。 
 

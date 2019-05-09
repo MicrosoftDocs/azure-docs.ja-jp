@@ -1,23 +1,23 @@
 ---
-title: '例: 画像内の顔を識別する - Face API'
+title: 例:画像内の顔を識別する - Face API
 titleSuffix: Azure Cognitive Services
 description: Face API を使用して画像内の顔を識別します。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a26f7d6057f92fd3ab92405ecca6965dbd6e37ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 013467cb64220b525d429c901c48028bf65b3852
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129073"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864929"
 ---
-# <a name="example-how-to-identify-faces-in-images"></a>例: 画像内の顔を識別する方法
+# <a name="example-how-to-identify-faces-in-images"></a>例:画像内の顔を識別する方法
 
 このガイドでは、既知のユーザーから事前に作成される PersonGroups を使用して不明な顔を識別する方法を示します。 サンプルは Face API クライアント ライブラリを使用して C# で記述されています。
 
@@ -41,7 +41,7 @@ ms.locfileid: "46129073"
 - 個人の顔を含むいくつかの写真。 [ここをクリックして、Anna、Bill、Clare のサンプルの写真をダウンロードします](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data)。
 - テストの識別に使用される Anna、Bill、または Clare の顔が含まれていなくてもかまわない一連のテスト用の写真。 上記のリンクからいくつかのサンプル画像を選択することもできます。
 
-## <a name="step-1-authorize-the-api-call"></a>手順 1: API 呼び出しを承認する
+## <a name="step-1-authorize-the-api-call"></a>手順 1:API 呼び出しを承認する
 
 Face API を呼び出すたびに、サブスクリプション キーが必要です。 このキーは、クエリ文字列パラメーターを通じて渡すか、または要求ヘッダーで指定できます。 クエリ文字列を介してサブスクリプション キーを渡すには、例として[画面 - 検出](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)の要求 URL を参照してください。
 ```
@@ -49,7 +49,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription key>
 ```
 
-代替手段として、HTTP 要求のヘッダーでサブスクリプション キーを指定することもできます (**ocp-apim-subscription-key: &lt;サブスクリプション キー&gt;**)。クライアント ライブラリを使用する場合は、サブスクリプション キーは、FaceServiceClient クラスのコンストラクターを介して渡されます。 例: 
+その代わりに、HTTP 要求ヘッダー内でサブスクリプション キーを指定することもできます (**ocp-apim-subscription-key:&lt;サブスクリプション キー&gt;**)。クライアント ライブラリを使用するとき、サブスクリプション キーが FaceServiceClient クラスのコンストラクターを介して渡されます。 例: 
  
 ```CSharp 
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
@@ -57,9 +57,9 @@ faceServiceClient = new FaceServiceClient("<Subscription Key>");
  
 サブスクリプション キーは、Azure Poral の [Marketplace] ページから入手できます。 [サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。
 
-## <a name="step-2-create-the-persongroup"></a>手順 2: PersonGroup を作成する
+## <a name="step-2-create-the-persongroup"></a>手順 2:PersonGroup を作成する
 
-この手順では、Anna、Bill、Clare の 3 人を含む "MyFriends" という名前の PersonGroup を作成しました。 各ユーザーには、登録されているいくつかの顔があります。 顔は、画像から検出される必要があります。 これらのすべての手順の後に、次の画像のような PersonGroup が作成されます。
+この手順では、"MyFriends" という名前の PersonGroup を作成しました。これには、3 人が含まれています (Anna、Bill、および Clare)。 各ユーザーには、登録されているいくつかの顔があります。 顔は、画像から検出される必要があります。 これらのすべての手順の後に、次の画像のような PersonGroup が作成されます。
 
 ![HowToIdentify1](../Images/group.image.1.jpg)
 
@@ -106,7 +106,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 ``` 
 画像に複数の顔が含まれている場合、最大の顔だけが追加されることに注意してください。 ユーザーに他の顔を追加するには、"targetFace = left, top, width, height" の形式の文字列を [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API の targetFace クエリ パラメーターに渡します。または、AddPersonFaceAsync メソッドの targetFace オプション パラメーターを使用して他の顔を追加します。 ユーザーに追加される各顔には、固有で永続的な顔 ID が指定されます。これを [PersonGroup Person – Delete Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e) および [Face – Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) で使用できます。
 
-## <a name="step-3-train-the-persongroup"></a>手順 3: PersonGroup のトレーニング
+## <a name="step-3-train-the-persongroup"></a>手順 3:PersonGroup をトレーニングする
 
 PersonGroup を使用して識別を実行する前に、PersonGroup をトレーニングする必要があります。 さらに、ユーザーが追加または削除された後、またはユーザーの登録済みの顔が編集された場合、それを保持する必要があります。 トレーニングは、[PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API によって実行されます。 クライアント ライブラリを使用する場合は、TrainPersonGroupAsync メソッドを呼び出すだけです。
  
@@ -131,7 +131,7 @@ while(true)
 } 
 ``` 
 
-## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>手順 4: 定義されている PersonGroup に対して顔を識別する
+## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>手順 4:定義されている PersonGroup に対して顔を識別する
 
 識別を実行するときには、Face API は、グループ内のすべての顔の間でテストする顔の類似性を計算し、そのテストする顔と最も類似しているユーザーを返します。 これには、[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API またはクライアント ライブラリの IdentifyAsync メソッドを使用します。
 
@@ -170,7 +170,7 @@ using (Stream s = File.OpenRead(testImageFile))
 
 ![HowToIdentify2](../Images/identificationResult.1.jpg )
 
-## <a name="step-5-request-for-large-scale"></a>手順 5: 大規模な要求
+## <a name="step-5-request-for-large-scale"></a>手順 5:大規模な要求を行う
 
 既知のように、PersonGroup は前述の設計の制限のために、最大 10,000 人のユーザーを保持できます。
 100 万人の規模のシナリオの詳細については、「[How to use the large-scale feature](how-to-use-large-scale.md)」(大規模な機能を使用する方法) を参照してください。

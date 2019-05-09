@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: a80c96891f3d91a920519db2915932742bd84d72
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002299"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118066"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>トレース テレメトリ:Application Insights データ モデル
 
-トレース テレメトリ ([Application Insights](../../application-insights/app-insights-overview.md)) は、テキスト検索される `printf` スタイルのトレース ステートメントを表します。 `Log4Net`、`NLog`、およびその他のテキスト ベースのログ ファイルのエントリは、この型のインスタンスに変換されます。 トレースには、機能拡張としての測定はありません。
+トレース テレメトリ ([Application Insights](../../azure-monitor/app/app-insights-overview.md)) は、テキスト検索される `printf` スタイルのトレース ステートメントを表します。 `Log4Net`、`NLog`、およびその他のテキスト ベースのログ ファイルのエントリは、この型のインスタンスに変換されます。 トレースには、機能拡張としての測定はありません。
 
 ## <a name="message"></a>Message
 

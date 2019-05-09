@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/03/2018
 ms.author: cynthn
-ms.openlocfilehash: f84626c5a487d52f53a2c8bf492a124c87599ed0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 3a7ac2e7a86a135f20f46b03be2c38af330a5367
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932396"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730341"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Linux ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどのディストリビューションおよびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
@@ -29,7 +29,7 @@ Azure の各仮想マシン (VM) は、Linux ディストリビューション�
 ## <a name="create-azure-resource-group"></a>Azure リソース グループを作成する
 ビルド プロセス中、Packer はソース VM をビルドする際に一時的な Azure リソースを作成します。 イメージとして使用するためにそのソース VM をキャプチャするには、リソース グループを定義する必要があります。 Packer のビルド プロセスからの出力は、このリソース グループに格納されます。
 
-[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -39,7 +39,7 @@ az group create -n myResourceGroup -l eastus
 ## <a name="create-azure-credentials"></a>Azure 資格情報の作成
 Packer はサービス プリンシパルを使用して Azure で認証されます。 Azure のサービス プリンシパルは、アプリケーション、サービス、および Packer などのオートメーション ツールで使用できるセキュリティ ID です。 Azure で実行できる操作やサービス プリンシパルを設定するアクセス許可をコントロールおよび定義します。
 
-[az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) でサービス プリンシパルを作成し、Packer が必要とする資格情報を出力します。
+[az ad sp create-for-rbac](/cli/azure/ad/sp) でサービス プリンシパルを作成し、Packer が必要とする資格情報を出力します。
 
 ```azurecli
 az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
@@ -55,7 +55,7 @@ az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, t
 }
 ```
 
-Azure に対して認証するには、[az account show](/cli/azure/account#az_account_show) で Azure サブスクリプション ID を取得する必要もあります。
+Azure に対して認証するには、[az account show](/cli/azure/account) で Azure サブスクリプション ID を取得する必要もあります。
 
 ```azurecli
 az account show --query "{ subscription_id: id }"
@@ -76,7 +76,7 @@ az account show --query "{ subscription_id: id }"
 | *tenant_id*                         | `az ad sp` 作成コマンドの出力の 3 つ目の行 - *tenant* |
 | *subscription_id*                   | `az account show` コマンドからの出力 |
 | *managed_image_resource_group_name* | 最初の手順で作成したリソース グループの名前 |
-| *managed_image_name*                | 作成される管理ディスク イメージの名前 |
+| *managed_image_name*                | 作成されるマネージド ディスク イメージの名前 |
 
 
 ```json
@@ -201,7 +201,7 @@ Packer が VM をビルド、プロビジョナーを実行、およびデプロ
 
 
 ## <a name="create-vm-from-azure-image"></a>Azure イメージから VM を作成する
-[az vm create](/cli/azure/vm#az_vm_create) を使用して、イメージから VM を作成できるようになりました。 `--image` パラメーターで作成したイメージを指定します。 次の例では、*myPackerImage* から *myVM* という名前の VM を作成し、SSH キーを生成します (まだ存在していない場合)。
+[az vm create](/cli/azure/vm) を使用して、イメージから VM を作成できるようになりました。 `--image` パラメーターで作成したイメージを指定します。 次の例では、*myPackerImage* から *myVM* という名前の VM を作成し、SSH キーを生成します (まだ存在していない場合)。
 
 ```azurecli
 az vm create \
@@ -216,7 +216,7 @@ az vm create \
 
 VM の作成には数分かかります。 VM が作成されたら、Azure CLI によって表示される `publicIpAddress` をメモしてください。 このアドレスは、Web ブラウザーから NGINX サイトにアクセスするために使用します。
 
-Web トラフィックが VM にアクセスできるようにするには、[az vm open-port](/cli/azure/vm#open-port) を使用してインターネットからポート 80 を開きます。
+Web トラフィックが VM にアクセスできるようにするには、[az vm open-port](/cli/azure/vm) を使用してインターネットからポート 80 を開きます。
 
 ```azurecli
 az vm open-port \

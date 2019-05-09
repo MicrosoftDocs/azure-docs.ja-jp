@@ -1,25 +1,25 @@
 ---
 title: Apache Ambari を使用したクラスター構成の最適化 - Azure HDInsight
 description: Apache Ambari Web UI を使用して、HDInsight クラスターを構成および最適化します。
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: ashish
-ms.openlocfilehash: 82995f2cc8facac9bef6f8c84c9667775ac81463
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 03/26/2019
+ms.author: hrasheed
+ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038520"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58805382"
 ---
-# <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Ambari を使用した HDInsight クラスター構成の最適化
+# <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari を使用して HDInsight クラスター構成を最適化する
 
-HDInsight は、大規模なデータ処理アプリケーションの Apache Hadoop クラスターを提供します。 これらの複雑なマルチノード クラスターの管理、監視、最適化は困難な場合があります。 [Apache Ambari](http://ambari.apache.org/) は、HDInsight Linux クラスターを管理および監視するための Web インターフェイスです。  Windows クラスターでは、Ambari [REST API](hdinsight-hadoop-manage-ambari-rest-api.md) を使用します。
+HDInsight は、大規模なデータ処理アプリケーションのための [Apache Hadoop](https://hadoop.apache.org/) クラスターを提供します。 これらの複雑なマルチノード クラスターの管理、監視、最適化は困難な場合があります。 [Apache Ambari](https://ambari.apache.org/) は、HDInsight Linux クラスターを管理および監視するための Web インターフェイスです。  Windows クラスターの場合は、[Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) を使用します。
 
-Ambari Web UI の使用方法の概要については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
+Ambari Web UI の使用の概要については、[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください
 
 クラスターの資格情報を使用して Ambari (`https://CLUSTERNAME.azurehdidnsight.net`) にログインします。 初期画面に概要ダッシュボードが表示されます。
 
@@ -51,7 +51,7 @@ NameNode の Java ヒープ サイズを変更するには、次の手順を実�
 
     ![NameNode の Java ヒープ サイズの編集](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-1. NameNode の Java ヒープ サイズが 1 GB から 2 GB に変更されます。
+1. NameNode の Java ヒープ サイズが 2 GB から 1 GB に変更されます。
 
     ![編集された NameNode の Java ヒープ サイズ](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
@@ -59,16 +59,16 @@ NameNode の Java ヒープ サイズを変更するには、次の手順を実�
 
     ![変更を保存する](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
-## <a name="hive-optimization"></a>Hive の最適化
+## <a name="apache-hive-optimization"></a>Apache Hive の最適化
 
-以下のセクションでは、Hive の全体的なパフォーマンスを最適化するための構成オプションについて説明します。
+以下のセクションでは、Apache Hive の全体的なパフォーマンスを最適化するための構成オプションについて説明します。
 
 1. Hive 構成パラメーターを変更するには、[Services]\(サービス\) サイドバーで **[Hive]** を選択します。
 1. **[Configs]\(構成\)** タブに移動します。
 
 ### <a name="set-the-hive-execution-engine"></a>Hive 実行エンジンを設定する
 
-Hive は、MapReduce と Tez の 2 つの実行エンジンを提供します。 Tez は MapReduce より高速です。 HDInsight Linux クラスターでは、既定の実行エンジンとして Tez を使用します。 実行エンジンを変更するには、次の手順を実行します。
+Hive は、[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) と [Apache TEZ](https://tez.apache.org/) の 2 つの実行エンジンを提供します。 Tez は MapReduce より高速です。 HDInsight Linux クラスターでは、既定の実行エンジンとして Tez を使用します。 実行エンジンを変更するには、次の手順を実行します。
 
 1. Hive の **[Configs]\(構成\)** タブで、フィルター ボックスに「**execution engine**」と入力します。
 
@@ -82,8 +82,8 @@ Hive は、MapReduce と Tez の 2 つの実行エンジンを提供します。
 
 Hadoop では、1 つのファイルを複数のファイルに分割 (*"マップ"*) し、分割されたファイルの並列処理を試みます。 マッパーの数は分割数によって異なります。 次の 2 つの構成パラメーターは、Tez 実行エンジンの分割数を制御します。
 
-* `tez.grouping.min-size`: グループ化された分割のサイズの下限。既定値は 16 MB (16,777,216 バイト) です。
-* `tez.grouping.max-size`: グループ化された分割のサイズの上限。既定値は 1 GB (1,073,741,824 バイト) です。
+* `tez.grouping.min-size`:グループ化された分割のサイズの下限であり、既定値は 16 MB (16,777,216 バイト) です。
+* `tez.grouping.max-size`:グループ化された分割のサイズの上限であり、既定値は 1 GB (1,073,741,824 バイト) です。
 
 パフォーマンスの目安として、これらのパラメーターの両方を減らすと待機時間が改善され、増やすとスループットが向上します。
 
@@ -99,7 +99,7 @@ Hadoop では、1 つのファイルを複数のファイルに分割 (*"マッ�
 
 ### <a name="tune-reducers"></a>レジューサーを調整する
 
-ORC と Snappy は、どちらも高パフォーマンスを提供します。 ただし、Hive は既定でレジューサーの数が少なすぎるため、ボトルネックが発生する可能性があります。
+[Apache ORC](https://orc.apache.org/) と [Snappy](https://google.github.io/snappy/) は、どちらも高パフォーマンスを提供します。 ただし、Hive は既定でレジューサーの数が少なすぎるため、ボトルネックが発生する可能性があります。
 
 たとえば、入力データ サイズが 50 GB であるとします。 このデータを ORC 形式にして Snappy で圧縮すると 1 GB になります。 Hive では、(マッパーに入力されたバイト数/`hive.exec.reducers.bytes.per.reducer`) で必要なレジューサーの数を見積もります。
 
@@ -179,7 +179,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 | 形式 | ツール | アルゴリズム | ファイル拡張子 | 分割可能かどうか |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | いいえ  |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | [はい] |
+| Bzip2 | Bzip2 | Bzip2 |.bz2 | はい |
 | LZO | Lzop | LZO | .lzo | はい (インデックス付きの場合) |
 | Snappy | 該当なし | Snappy | Snappy | いいえ  |
 
@@ -189,7 +189,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
     ![hive.exec.compress.intermediate](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > 中間ファイルを圧縮する場合、コーデックに高圧縮の出力がなくても、CPU コストが低い圧縮コーデックを選択します。
 
 1. 中間圧縮コーデックを設定するには、`mapred.map.output.compression.codec` カスタム プロパティを `hive-site.xml` ファイルまたは `mapred-site.xml` ファイルに追加します。
@@ -210,7 +210,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
     これで、Snappy 圧縮を使用して中間ファイルが圧縮されます。 プロパティが追加されると、[Custom hive-site]\(カスタム hive-site\) ウィンドウに表示されます。
 
-    > [!NOTE]
+    > [!NOTE]  
     > この手順により、`$HADOOP_HOME/conf/hive-site.xml` ファイルが変更されます。
 
 ### <a name="compress-final-output"></a>最終出力を圧縮する
@@ -287,9 +287,9 @@ Hive 実行エンジンの最適化に関するその他の推奨事項を次に
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
-## <a name="pig-optimization"></a>Pig の最適化
+## <a name="apache-pig-optimization"></a>Apache Pig の最適化
 
-Ambari Web UI から Pig プロパティを変更して、Pig クエリを調整できます。 Ambari から Pig プロパティを変更すると、`/etc/pig/2.4.2.0-258.0/pig.properties` ファイルの Pig プロパティが直接変更されます。
+Ambari Web UI から [Apache Pig](https://pig.apache.org/) プロパティを変更して、Pig クエリを調整できます。 Ambari から Pig プロパティを変更すると、`/etc/pig/2.4.2.0-258.0/pig.properties` ファイルの Pig プロパティが直接変更されます。
 
 1. Pig プロパティを変更するには、Pig の **[Configs]\(構成\)** タブに移動し、**[Advanced pig-properties]\(高度な pig-properties\)** ウィンドウを展開します。
 
@@ -299,12 +299,12 @@ Ambari Web UI から Pig プロパティを変更して、Pig クエリを調整
 
     ![[Advanced pig-properties]\(高度な pig-properties\)](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
-> [!NOTE]
+> [!NOTE]  
 > セッション レベルの設定によって、`pig.properties` ファイルのプロパティ値がオーバーライドされます。
 
 ### <a name="tune-execution-engine"></a>実行エンジンを調整する
 
-MapReduce と Tez の 2 つの実行エンジンを使用して Pig スクリプトを実行できます。 Tez は最適化されたエンジンであり、MapReduce よりもはるかに高速です。
+Pig スクリプトを実行するために、MapReduce と Tez の 2 つの実行エンジンを使用できます。 Tez は最適化されたエンジンであり、MapReduce よりもはるかに高速です。
 
 1. 実行エンジンを変更するには、**[Advanced pig-properties]\(高度な pig-properties\)** ウィンドウで、`exectype` プロパティを見つけます。
 
@@ -333,18 +333,18 @@ Pig では、UDF に必要な JAR ファイルを分散キャッシュにコピ�
 
 次のメモリ設定は、Pig スクリプトのパフォーマンスの最適化に役立ちます。
 
-* `pig.cachedbag.memusage`: バッグに割り当てられたメモリ容量。 バッグとはタプルのコレクションです。 タプルとはフィールドの順序付けされたセットであり、フィールドとはデータの一部です。 バッグ内のデータが割り当てられたメモリ容量を超えた場合はディスクに書き込まれます。 既定値は 0.2 です。これは使用可能なメモリの 20% を表します。 このメモリは、アプリケーションのすべてのバッグで共有されます。
+* `pig.cachedbag.memusage`:バッグに割り当てられたメモリの量。 バッグとはタプルのコレクションです。 タプルとはフィールドの順序付けされたセットであり、フィールドとはデータの一部です。 バッグ内のデータが割り当てられたメモリ容量を超えた場合はディスクに書き込まれます。 既定値は 0.2 です。これは使用可能なメモリの 20% を表します。 このメモリは、アプリケーションのすべてのバッグで共有されます。
 
-* `pig.spill.size.threshold`: この書き込みサイズのしきい値 (バイト単位) よりも大きいバッグはディスクに書き込まれます。 既定値は 5 MB です。
+* `pig.spill.size.threshold`:この書き込みサイズのしきい値 (バイト単位) より大きいバッグがディスクに書き込まれます。 既定値は 5 MB です。
 
 
 ### <a name="compress-temporary-files"></a>一時ファイルを圧縮する
 
 Pig では、ジョブの実行中に一時ファイルが生成されます。 一時ファイルを圧縮すると、ファイルの読み取り時やディスクへの書き込み時にパフォーマンスが向上します。 一時ファイルを圧縮するには、次の設定を使用します。
 
-* `pig.tmpfilecompression`: true の場合、一時ファイルの圧縮が有効になります。 既定値は false です。
+* `pig.tmpfilecompression`:true の場合は、一時ファイルの圧縮が有効になります。 既定値は false です。
 
-* `pig.tmpfilecompression.codec`: 一時ファイルの圧縮に使用する圧縮コーデック。 CPU 使用率を低減するために、推奨される圧縮コーデックは LZO と Snappy です。
+* `pig.tmpfilecompression.codec`:一時ファイルの圧縮に使用する圧縮コーデック。 CPU 使用率を削減するために推奨される圧縮コーデックは [LZO](https://www.oberhumer.com/opensource/lzo/) と Snappy です。
 
 ### <a name="enable-split-combining"></a>分割結合を有効にする
 
@@ -361,9 +361,9 @@ Pig では、ジョブの実行中に一時ファイルが生成されます。 
 レジューサーの数は、`pig.exec.reducers.bytes.per.reducer` パラメーターに基づいて計算されます。 このパラメーターは、レジューサーごとに処理されるバイト数を指定します。既定値は 1 GB です。 レジューサーの最大数を制限するには、`pig.exec.reducers.max` プロパティを設定します。既定値は 999 です。
 
 
-## <a name="hbase-optimization-with-the-ambari-web-ui"></a>Ambari Web UI を使用した HBase の最適化
+## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Ambari Web UI を使用した Apache HBase の最適化
 
-HBase の構成は、**HBase の [Configs]\(構成\)** タブで変更します。以下のセクションでは、HBase のパフォーマンスに影響する重要な構成設定について説明します。
+[Apache HBase](https://hbase.apache.org/) の構成は、**[HBase Configs] (HBase の構成)** タブから変更されます。以下のセクションでは、HBase のパフォーマンスに影響する重要な構成設定について説明します。
 
 ### <a name="set-hbaseheapsize"></a>HBASE_HEAPSIZE を設定する
 
@@ -395,9 +395,9 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
 すべての編集内容は、*Memstore* と呼ばれるメモリ バッファーに保存されます。 これにより、1 つの操作でディスクに書き込むことができるデータの総量が増加し、最近の編集内容への以降のアクセスが高速化されます。 Memstore のサイズは、次の 2 つのパラメーターで定義します。
 
-* `hbase.regionserver.global.memstore.UpperLimit`: 結合された Memstore が使用できるリージョン サーバーの最大パーセンテージを定義します。
+* `hbase.regionserver.global.memstore.UpperLimit`:結合された Memstore が使用できるリージョン サーバーの最大パーセンテージを定義します。
 
-* `hbase.regionserver.global.memstore.LowerLimit`: 結合された Memstore が使用できるリージョン サーバーの最小パーセンテージを定義します。
+* `hbase.regionserver.global.memstore.LowerLimit`:結合された Memstore が使用できるリージョン サーバーの最小パーセンテージを定義します。
 
 ランダム読み取りに最適化するには、Memstore の上限と下限を減らします。
 
@@ -408,7 +408,7 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
 ![HBase のフェッチされる行数](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > スキャナーでの次のメソッドの呼び出しまでの時間がスキャナーのタイムアウトよりも長くなるような値を設定しないでください。 スキャナーのタイムアウト期間は、`hbase.regionserver.lease.period` プロパティで定義します。
 
 
@@ -453,5 +453,5 @@ Memstore のローカル割り当てバッファーの使用は、`hbase.hregion
 
 ## <a name="next-steps"></a>次の手順
 
-* [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
-* [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Apache Ambari Web UI を使用して HDInsight クラスターを管理する](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

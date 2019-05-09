@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Jupyter Notebook を使用することで、Computer Vision API を Python で使用する方法について説明します。 人気のあるライブラリを使用して結果を視覚化します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 55e5168c36eb16944142c2deaae9bc94d60d2fe4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b55b1fdf3b93d3865bdb115e43ff8583af61b45d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582016"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326427"
 ---
 # <a name="tutorial-computer-vision-api-python"></a>チュートリアル:Computer Vision API Python
 

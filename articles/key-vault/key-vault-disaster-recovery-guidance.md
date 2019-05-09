@@ -1,27 +1,27 @@
 ---
-title: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 | Microsoft Docs
+title: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 19a9af63-3032-447b-9d1a-b0125f384edb
 ms.service: key-vault
 ms.workload: key-vault
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/07/2017
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 5ab6fc207d8a7732062a51a6215c25a4a0fac006
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: dd1d2af174f93cceabccd62a78d45a0e4fbed502
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465845"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104518"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
+
 Azure Key Vault には複数層の冗長性が備わっています。そのため、サービスの個々のコンポーネントで障害が発生した場合でも、アプリケーションでは引き続きキーとシークレットを使用することができます。
 
 Key Vault のコンテンツは、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 これにより、キーとシークレットの高い持続性が保たれます。 特定のリージョン ペアの詳細については、「[Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」ドキュメントを参照してください。
@@ -46,6 +46,6 @@ Azure リージョン全体が使用できない場合がまれにあります�
   * ラップ解除
   * 確認
   * 署名
-  * Backup
+  * バックアップ
 * フェールオーバーがフェールバックされると、すべての種類の要求 (つまり、読み取り "*および*" 書き込み要求) が可能になります。
 

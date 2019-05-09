@@ -1,153 +1,159 @@
 ---
-title: Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) の概要
+title: Azure Application Gateway の Web アプリケーション ファイアウォールの概要
 description: この記事では、Application Gateway の Web アプリケーション ファイアウォール (WAF) の概要を説明します
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 2/22/2019
 ms.author: amsriva
-ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.topic: conceptual
+ms.openlocfilehash: 830513a03bd65ca14cb0938ae599a676f1bb3bca
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219530"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518186"
 ---
-# <a name="web-application-firewall-waf"></a>Web アプリケーション ファイアウォール (WAF)
+# <a name="web-application-firewall-for-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール
 
-Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Application Gateway の機能です。 
+Azure Application Gateway は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Web アプリケーション ファイアウォール (WAF) を提供します。 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の標的になるケースが増えています。 よくある攻撃の例として、SQL インジェクションやクロスサイト スクリプティングが挙げられます。
 
-Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの複数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
+アプリケーション コードでのこのような攻撃の阻止は困難です。 アプリケーション トポロジの複数の層で厳格な保守、パッチ適用、監視が必要になる場合があります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になります。 また、WAF を使用すると、アプリケーション管理者にとっては脅威や侵入に対する保護がより確実になります。
 
-WAF は、[OWASP コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいています。 追加構成を必要とすることなく、新たな脆弱性に対する保護を含めるために自動的に更新します。
+WAF のソリューションでは、個々の Web アプリケーションをセキュリティで保護するのではなく、一元的に既知の脆弱性の修正プログラムを適用することで、さらに迅速にセキュリティの脅威に対応できます。 既存の アプリケーション ゲートウェイは、ファイアウォール対応のアプリケーション ゲートウェイに簡単に変換できます。
 
-![imageURLroute](./media/waf-overview/WAF1.png)
+Application Gateway の WAF は、OWASP (Open Web Application Security Project) の[コア ルール セット (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 に基づいています。 WAF は、追加構成を必要とすることなく、新たな脆弱性に対する保護を含めるために自動的に更新します。
 
-Application Gateway は、アプリケーション配信コントローラー (ADC) として動作し、SSL ターミネーション、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能を提供します。 Application Gateway で実現するセキュリティの強化には、SSL ポリシーの管理、エンド ツー エンド SSL のサポートが含まれます。 アプリケーション セキュリティは、ADC 製品に直接統合された WAF (Web アプリケーション ファイアウォール) によって強化されるようになりました。 その結果、一般的な Web の脆弱性に対して Web アプリケーションを管理および保護するための構成を、1 か所で簡単に設定できます。
+![Application Gateway の WAF の図](./media/waf-overview/WAF1.png)
+
+Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 Secure Sockets Layer (SSL) ターミネーション、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能を提供します。
+
+Application Gateway によるセキュリティの強化には、SSL ポリシーの管理、エンド ツー エンド SSL のサポートが含まれます。 アプリケーション セキュリティは、WAF を Application Gateway に統合することによって強化されています。 この組み合わせにより、Web アプリケーションが一般的な脆弱性から保護されます。 また、管理するための構成を、1 か所で簡単に設定できます。
 
 ## <a name="benefits"></a>メリット
 
-Application Gateway と Web アプリケーション ファイアウォールが提供する主な利点を次に示します。
+このセクションでは、Application Gateway とその WAF によって得られる主なメリットについて説明します。
 
 ### <a name="protection"></a>保護
 
 * バックエンド コードを変更しなくても、Web アプリケーションを Web の脆弱性および攻撃から保護できます。
 
-* アプリケーション ゲートウェイの内側にある複数の Web アプリケーションを同時に保護できます。 Application Gateway は、1 つのゲートウェイの内側で最大 20 個の Web サイトをホストし、WAF を使用してすべてを Web 攻撃から保護できます。
+* 同時に複数の Web アプリケーションを保護できます。 Application Gateway のインスタンスは、Web アプリケーション ファイアウォールによって保護されている最大 20 個の Web サイトをホストできます。
 
 ### <a name="monitoring"></a>監視
 
-* リアルタイムの WAF ログを使用して、Web アプリケーションに対する攻撃を監視できます。 このログは [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されているため、WAF のアラートおよびログを追跡し、傾向を簡単に監視できます。
+* リアルタイムの WAF ログを使用して、Web アプリケーションに対する攻撃を監視できます。 このログは [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されているため、WAF のアラートを追跡し、傾向を簡単に監視できます。
 
-* WAF は Azure Security Center と統合されています。 Azure Security Center では、すべての Azure リソースのセキュリティの状態を一元的に把握できます。
+* Application Gateway の WAF は Azure Security Center と統合されています。 Security Center は、すべての Azure リソースのセキュリティ状態を一元的に表示します。
 
 ### <a name="customization"></a>カスタマイズ
 
-* アプリケーションの要件に合わせて、誤検出が削減されるように WAF の規則と規則グループをカスタマイズする機能。
+* ご使用のアプリケーションの要件に合わせて WAF の規則と規則グループをカスタマイズし、誤検出を排除できます。
 
 ## <a name="features"></a>機能
 
-- SQL インジェクションからの保護
-- クロス サイト スクリプティングからの保護
-- 一般的な Web 攻撃からの保護 (コマンド インジェクション、HTTP 要求スマグリング、HTTP レスポンス スプリッティング、リモート ファイル インクルード攻撃など)
-- HTTP プロトコル違反に対する保護
-- HTTP プロトコル異常に対する保護 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)
-- ボット、クローラー、スキャナーの防止
-- 一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
-
-### <a name="public-preview-features"></a>パブリック プレビュー機能
-
-現在の WAF パブリック プレビュー SKU には、次の機能が含まれます。
-
-- **要求サイズの制限** - Web アプリケーション ファイアウォールでは、ユーザーは下限と上限の範囲内に収まる要求サイズ制限を構成することができます。
-- **除外リスト** - WAF の除外リストを使用すると、ユーザーは WAF の評価から特定の要求属性を省略することができます。 一般的な例として、認証フィールドまたはパスワード フィールドにおいて使用される、Active Directory で挿入されたトークンが挙げられます。
-
-WAF のパブリック プレビューについて詳しくは、「[Web アプリケーション ファイアウォール要求サイズ制限と除外リスト (パブリック プレビュー)](application-gateway-waf-configuration.md)」をご覧ください。
-
-
-
-
+- SQL インジェクションからの保護。
+- クロスサイト スクリプティングからの保護。
+- その他の一般的な Web 攻撃からの保護 (コマンド インジェクション、HTTP 要求スマグリング、HTTP レスポンス スプリッティング、リモート ファイル インクルードなど)。
+- HTTP プロトコル違反に対する保護。
+- HTTP プロトコル異常に対する保護 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)。
+- ボット、クローラー、スキャナーに対する保護。
+- 一般的なアプリケーション構成ミスの検出 (Apache や IIS など)。
+- 下限と上限を指定した、構成可能な要求サイズ制限。
+- 除外リストを使用すると、WAF の評価から特定の要求属性を省略できます。 一般的な例として、認証フィールドまたはパスワード フィールドにおいて使用される、Active Directory で挿入されたトークンが挙げられます。
 
 ### <a name="core-rule-sets"></a>コア ルール セット
 
-Application Gateway では、CRS 3.0 と CRS 2.2.9 の 2 つのルール セットをサポートします。 これらのコア ルール セットは、悪意のあるアクティビティから Web アプリケーションを保護する規則のコレクションです。
+Application Gateway では、CRS 3.0 と CRS 2.2.9 の 2 つのルール セットをサポートします。 これらの規則は、悪意のあるアクティビティから Web アプリケーションを保護します。
 
-Web アプリケーション ファイアウォールは、既定で CRS 3.0 を使用するように構成されています。2.2.9 を使用することもできます。 CRS 3.0 では、2.2.9 よりも誤検出が減少します。 [ニーズに合わせて規則をカスタマイズ](application-gateway-customize-waf-rules-portal.md)できます。 Web アプリケーション ファイアウォールで保護される一般的な Web の脆弱性の一部を以下に示します。
+Application Gateway の WAF は、既定で CRS 3.0 を使用するように事前構成されています。 ただし、代わりに CRS 2.2.9 を使用することも選択できます。 CRS 3.0 では、CRS 2.2.9 と比較して誤検出が減少しています。 また、[ニーズに合わせて規則をカスタマイズ](application-gateway-customize-waf-rules-portal.md)することもできます。
 
-- SQL インジェクションからの保護
-- クロス サイト スクリプティングからの保護
-- 一般的な Web 攻撃からの保護 (コマンド インジェクション、HTTP 要求スマグリング、HTTP レスポンス スプリッティング、リモート ファイル インクルード攻撃など)
-- HTTP プロトコル違反に対する保護
-- HTTP プロトコル異常に対する保護 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)
-- ボット、クローラー、スキャナーの防止
-- 一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
+WAF は、次の Web の脆弱性から保護します。
 
-規則と保護の詳細な一覧については、「[コア ルール セット](#core-rule-sets)」をご覧ください。
+- SQL インジェクション攻撃
+- クロスサイト スクリプティング攻撃
+- その他の一般的な攻撃 (コマンド インジェクション、HTTP 要求スマグリング、HTTP レスポンス スプリッティング、リモート ファイル インクルードなど)
+- HTTP プロトコル違反
+- HTTP プロトコル異常 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)
+- ボット、クローラー、スキャナー
+- 一般的なアプリケーション構成ミス (Apache や IIS など)
 
+#### <a name="owasp-crs-30"></a>OWASP CRS 3.0
 
-#### <a name="owasp30"></a>OWASP_3.0
+次の表に示すように、CRS 3.0 には 13 個の規則グループが含まれています。 各グループには、無効にできる複数の規則が含まれています。
 
-提供される 3.0 コア ルール セットには、次の表に示すように 13 個の規則グループがあります。 これらの各規則グループには、無効にできる複数の規則が含まれています。
-
-|RuleGroup|説明|
+|規則グループ|説明|
 |---|---|
-|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|メソッド (PUT、PATCH< ..) をロックダウンする規則が含まれています。|
-|**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| ポートや環境のスキャナーから保護するための規則が含まれています。|
-|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|プロトコルとエンコーディングの問題から保護するための規則が含まれています。|
-|**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|ヘッダー インジェクション、要求スマグリング、応答分割から保護するための規則が含まれています。|
-|**[REQUEST-930-APPLICATION-ATTACK-LFI](application-gateway-crs-rulegroups-rules.md#crs930)**|ファイル攻撃やパス攻撃から保護するための規則が含まれています。|
-|**[REQUEST-931-APPLICATION-ATTACK-RFI](application-gateway-crs-rulegroups-rules.md#crs931)**|リモート ファイル インクルージョン (RFI) から保護するための規則が含まれています。|
-|**[REQUEST-932-APPLICATION-ATTACK-RCE](application-gateway-crs-rulegroups-rules.md#crs932)**|リモート コード実行から保護するための規則が含まれています。|
-|**[REQUEST-933-APPLICATION-ATTACK-PHP](application-gateway-crs-rulegroups-rules.md#crs933)**|PHP インジェクション攻撃から保護するための規則が含まれています。|
-|**[REQUEST-941-APPLICATION-ATTACK-XSS](application-gateway-crs-rulegroups-rules.md#crs941)**|クロス サイト スクリプティングから保護するための規則が含まれています。|
-|**[REQUEST-942-APPLICATION-ATTACK-SQLI](application-gateway-crs-rulegroups-rules.md#crs942)**|SQL インジェクション攻撃から保護するための規則が含まれています。|
-|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](application-gateway-crs-rulegroups-rules.md#crs943)**|セッション固定攻撃から保護するための規則が含まれています。|
+|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|メソッド (PUT、PATCH) をロックダウンします|
+|**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**|ポートや環境のスキャナーから保護します|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|プロトコルとエンコーディングの問題から保護します|
+|**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|ヘッダー インジェクション、要求スマグリング、応答分割から保護します|
+|**[REQUEST-930-APPLICATION-ATTACK-LFI](application-gateway-crs-rulegroups-rules.md#crs930)**|ファイル攻撃やパス攻撃から保護します|
+|**[REQUEST-931-APPLICATION-ATTACK-RFI](application-gateway-crs-rulegroups-rules.md#crs931)**|リモート ファイル インクルージョン (RFI) 攻撃から保護します|
+|**[REQUEST-932-APPLICATION-ATTACK-RCE](application-gateway-crs-rulegroups-rules.md#crs932)**|リモート コード実行攻撃から保護します|
+|**[REQUEST-933-APPLICATION-ATTACK-PHP](application-gateway-crs-rulegroups-rules.md#crs933)**|PHP インジェクション攻撃から保護します|
+|**[REQUEST-941-APPLICATION-ATTACK-XSS](application-gateway-crs-rulegroups-rules.md#crs941)**|クロスサイト スクリプティング攻撃から保護します|
+|**[REQUEST-942-APPLICATION-ATTACK-SQLI](application-gateway-crs-rulegroups-rules.md#crs942)**|SQL インジェクション攻撃から保護します|
+|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](application-gateway-crs-rulegroups-rules.md#crs943)**|セッション固定攻撃から保護します|
 
-#### <a name="owasp229"></a>OWASP_2.2.9
+#### <a name="owasp-crs-229"></a>OWASP CRS 2.2.9
 
-提供される 2.2.9 コア ルール セットには、次の表に示すように 10 個の規則グループがあります。 これらの各規則グループには、無効にできる複数の規則が含まれています。
+次の表に示すように、CRS 2.2.9 には 10 個の規則グループが含まれています。 各グループには、無効にできる複数の規則が含まれています。
 
-|RuleGroup|説明|
+|規則グループ|説明|
 |---|---|
-|**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|プロトコル違反 (無効な文字、要求本文がある GET など) から保護するための規則が含まれています。|
-|**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|不適切なヘッダー情報から保護するためのルールが含まれています。|
-|**[crs_23_request_limits](application-gateway-crs-rulegroups-rules.md#crs23)**|制限を超える引数やファイルから保護するための規則が含まれています。|
-|**[crs_30_http_policy](application-gateway-crs-rulegroups-rules.md#crs30)**|制限されているメソッド、ヘッダー、およびファイルの種類から保護するための規則が含まれています。 |
-|**[crs_35_bad_robots](application-gateway-crs-rulegroups-rules.md#crs35)**|Web クローラーおよびスキャナーから保護するための規則が含まれています。|
-|**[crs_40_generic_attacks](application-gateway-crs-rulegroups-rules.md#crs40)**|一般的な攻撃 (セッション固定、リモート ファイル インクルージョン、PHP インジェクションなど) から保護するための規則が含まれています。|
-|**[crs_41_sql_injection_attacks](application-gateway-crs-rulegroups-rules.md#crs41sql)**|SQL インジェクション攻撃から保護するための規則が含まれています。|
-|**[crs_41_xss_attacks](application-gateway-crs-rulegroups-rules.md#crs41xss)**|クロス サイト スクリプティングから保護するための規則が含まれています。|
-|**[crs_42_tight_security](application-gateway-crs-rulegroups-rules.md#crs42)**|パス トラバーサル攻撃から保護するための規則が含まれています。|
-|**[crs_45_trojans](application-gateway-crs-rulegroups-rules.md#crs45)**|バックドア型トロイの木馬から保護するための規則が含まれています。|
+|**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|プロトコル違反 (無効な文字、要求本文がある GET など) から保護します|
+|**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|不適切なヘッダー情報から保護します|
+|**[crs_23_request_limits](application-gateway-crs-rulegroups-rules.md#crs23)**|制限を超える引数やファイルから保護します|
+|**[crs_30_http_policy](application-gateway-crs-rulegroups-rules.md#crs30)**|制限されているメソッド、ヘッダー、ファイルの種類から保護します|
+|**[crs_35_bad_robots](application-gateway-crs-rulegroups-rules.md#crs35)**|Web クローラーおよびスキャナーから保護します|
+|**[crs_40_generic_attacks](application-gateway-crs-rulegroups-rules.md#crs40)**|一般的な攻撃 (セッション固定、リモート ファイル インクルージョン、PHP インジェクションなど) から保護します|
+|**[crs_41_sql_injection_attacks](application-gateway-crs-rulegroups-rules.md#crs41sql)**|SQL インジェクション攻撃から保護します|
+|**[crs_41_xss_attacks](application-gateway-crs-rulegroups-rules.md#crs41xss)**|クロスサイト スクリプティング攻撃から保護します|
+|**[crs_42_tight_security](application-gateway-crs-rulegroups-rules.md#crs42)**|パス トラバーサル攻撃から保護します|
+|**[crs_45_trojans](application-gateway-crs-rulegroups-rules.md#crs45)**|バックドア型トロイの木馬から保護します|
 
 ### <a name="waf-modes"></a>WAF のモード
 
 Application Gateway の WAF は、次の 2 つのモードで実行するように構成できます。
 
-* **検出モード** – 検出モードで実行するように構成すると、Application Gateway の WAF ではすべての脅威のアラートが監視され、ログ ファイルに記録されます。 **[診断]** セクションを使用して、Application Gateway の診断ログの記録を有効にする必要があります。 また、WAF のログを選択し、オンにする必要があります。 検出モードで実行されている場合、Web アプリケーション ファイアウォールでは受信要求がブロックされません。
-* **防止モード** – 防止モードで実行するように構成すると、Application Gateway の規則に従って検出された侵入と攻撃が自発的にブロックされます。 攻撃者に "403 不正アクセス" の例外が送信され、接続が終了します。 防止モードでも、検出モードと同様に攻撃などが WAF ログに記録されます。
+* **検出モード**:すべての脅威アラートを監視してログに記録します。 **[診断]** セクションで Application Gateway の診断ログの記録をオンにしてください。 また、必ず WAF のログを選択してオンにしてください。 Web アプリケーション ファイアウォールは、検出モードで動作しているときに受信要求をブロックしません。
+* **防止モード**:規則で検出された侵入や攻撃をブロックします。 攻撃者に "403 不正アクセス" の例外が送信され、接続が終了します。 防止モードでは、このような攻撃を WAF ログに記録します。
 
-### <a name="application-gateway-waf-reports"></a>WAF の監視
+### <a name="anomaly-scoring-mode"></a>異常スコアリング モード
+ 
+OWASP には、トラフィックをブロックするかどうかを決定するための 2 つのモードがあります。従来モードと異常スコアリング モードです。
 
-Application Gateway の正常性を監視することは重要です。 Web アプリケーション ファイアウォールおよび保護対象のアプリケーションの正常性の監視は、ログ記録および Azure Monitor、Azure Security Center (近日対応予定)、および Log Analytics との統合によって実現されます。
+従来モードでは、いずれかの規則に一致するトラフィックが、他の規則の一致とは無関係に考慮されます。 このモードは簡単に理解できます。 しかし、特定の要求に一致する規則の数に関する情報が不足することが制限事項です。 そのため、異常スコアリング モードが導入されました。 OWASP 3.*x* ではこれが既定です。
 
-![診断](./media/waf-overview/diagnostics.png)
+異常スコアリング モードでは、ファイアウォールが防止モードの場合、いずれかの規則に一致するトラフィックがすぐにブロックされることはありません。 規則には特定の重大度があります。*[重大]*、*[エラー]*、*[警告]*、または *[通知]* です。 その重大度は、異常スコアと呼ばれる要求の数値に影響します。 たとえば、１つの *[警告]* 規則の一致によって、スコアに 3 が与えられます。 １つの *[重大]* 規則の一致では 5 が与えられます。
+
+異常スコアでトラフィックがブロックされるしきい値は 5 です。 そのため、防止モードであっても、Application Gateway の WAF が要求をブロックするには、*[重大]* 規則の一致が 1 つあるだけで十分です。 しかし、1 つの *[警告]* 規則の一致では、異常スコアは 3 増加するだけで、その一致だけではトラフィックをブロックするには不十分です。
+
+> [!NOTE]
+> WAF の規則がトラフィックと一致したときにログに記録されるメッセージには、アクション値 "ブロック" が含まれます。 ただし、トラフィックは、実際には 5 以上の異常スコアに対してのみブロックされます。  
+
+### <a name="waf-monitoring"></a>WAF の監視
+
+Application Gateway の正常性を監視することは重要です。 WAF および WAF の保護対象のアプリケーションの正常性の監視は、Azure Security Center、Azure Monitor、および Azure Monitor ログとの統合によってサポートされます。
+
+![Application Gateway の WAF 診断の図](./media/waf-overview/diagnostics.png)
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-各アプリケーション ゲートウェイのログは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されます。  そのため、WAF のアラートやログなどの診断情報を追跡できます。  この機能は、ポータルの Application Gateway リソース内の **[診断]** タブから、または Azure Monitor サービスから直接利用できます。 Application Gateway の診断ログの有効化について詳しくは、[Application Gateway の診断](application-gateway-diagnostics.md)に関する記事をご覧ください
+Application Gateway のログは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されます。 そのため、WAF のアラートやログなどの診断情報を追跡できます。 この機能には、ポータルの Application Gateway リソースの **[診断]** タブからアクセスするか、またはAzure Monitor から直接アクセスできます。 ログの有効化の詳細については、[Application Gateway の診断](application-gateway-diagnostics.md)に関する記事を参照してください。
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これで、アプリケーション ゲートウェイは、[Azure Security Center に統合](application-gateway-integration-security-center.md)されました。 Azure Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、アプリケーション ゲートウェイの WAF が推奨されます。 アプリケーション ゲートウェイの WAF は、Azure Security Center から直接作成できます。  これらの WAF インスタンスは Azure Security Center に統合され、アラートおよび正常性情報をレポートとして Azure Security Center に送信します。
+[Security Center](../security-center/security-center-intro.md) は、脅威の防御、検出、対応を可能にする機能です。 Azure リソースのセキュリティに対する可視性と制御を強化します。 Application Gateway は [Security Center と統合されています](application-gateway-integration-security-center.md)。 Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、Application Gateway の WAF が推奨されます。 Security Center から直接ファイアウォールを作成します。 これらの WAF インスタンスは Security Center と統合されます。 それらによって、アラートおよび正常性情報がレポートとして Security Center に送信されます。
 
-![図 1](./media/waf-overview/figure1.png)
+![Security Center の概要ウィンドウ](./media/waf-overview/figure1.png)
 
 #### <a name="logging"></a>ログの記録
 
-Application Gateway の WAF では、検出された脅威ごとに詳細なレポートが提供されます。 ログ記録は Azure 診断ログに統合されており、json 形式でアラートが記録されます。 これらのログは、[Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) と統合できます。
+Application Gateway の WAF は、検出した各脅威について詳細なレポートを提供します。 ログ記録は Azure 診断ログに統合されています。 アラートは json 形式で記録されます。 これらのログは、[Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)と統合できます。
 
-![imageURLroute](./media/waf-overview/waf2.png)
+![Application Gateway の診断ログ ウィンドウ](./media/waf-overview/waf2.png)
 
 ```json
 {
@@ -179,9 +185,10 @@ Application Gateway の WAF では、検出された脅威ごとに詳細なレ�
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Application Gateway の WAF SKU の価格
 
-Web アプリケーション ファイアウォールは、新しい WAF SKU で利用できます。 この SKU を利用できるのは、クラシック デプロイ モデルではなく、Azure Resource Manager プロビジョニング モデルのみです。 また、WAF SKU には、Medium および Large のアプリケーション ゲートウェイ インスタンス サイズしかありません。 Application Gateway のすべての制限が WAF SKU にも適用されます。 料金は、1 時間あたりのゲートウェイ インスタンスの料金とデータ処理の料金に基づいています。 WAF SKU の 1 時間あたりのゲートウェイの料金は、Standard SKU の料金とは異なります。[Application Gateway の価格の詳細](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 データ処理の料金は同じです。 規則あたり、または規則グループあたりの料金は発生しません。 同じ Web アプリケーション ファイアウォールの背後にある複数の Web アプリケーションを保護できます。複数のアプリケーションをサポートするのに追加料金はかかりません。 
+Application Gateway の WAF は、新しい SKU で利用できます。 この SKU を利用できるのは、クラシック デプロイ モデルではなく、Azure Resource Manager プロビジョニング モデルのみです。 また、WAF SKU には、Medium および Large の Application Gateway インスタンス サイズしかありません。 Application Gateway のすべての制限が WAF SKU にも適用されます。
+
+料金は、1 時間あたりのゲートウェイ インスタンスの料金とデータ処理の料金に基づいています。 WAF SKU の [Application Gateway の価格](https://azure.microsoft.com/pricing/details/application-gateway/)は、Standard SKU の料金とは異なります。 データ処理の料金は同じです。 規則あたり、または規則グループあたりの料金は発生しません。 同じ Web アプリケーション ファイアウォールの内側で複数の Web アプリケーションを保護できます。 複数のアプリケーションのサポートに対して課金されることはありません。
 
 ## <a name="next-steps"></a>次の手順
 
-WAF について学習した後は、[Application Gateway で Web アプリケーション ファイアウォールを構成する方法](tutorial-restrict-web-traffic-powershell.md)に関するページをご覧ください。
-
+[Application Gateway で Web アプリケーション ファイアウォールを構成する方法](tutorial-restrict-web-traffic-powershell.md)に関するページをご覧ください。

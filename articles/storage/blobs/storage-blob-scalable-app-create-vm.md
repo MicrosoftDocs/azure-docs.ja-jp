@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: 366c6043a851a88447116ca07bd90cc84d30cb7b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: blobs
+ms.openlocfilehash: a5b6c22b3917784b20ad11bddf200d1546c48597
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629462"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58882871"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>スケーラブルなアプリケーションの仮想マシンおよびストレージ アカウントの作成
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール Az バージョン 0.7 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール Az バージョン 0.7 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 

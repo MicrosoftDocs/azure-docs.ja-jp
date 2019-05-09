@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: この C# クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6be2b3016218f02e6c58f19feb7f0585032bffe3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719576"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59273466"
 ---
 # <a name="quickstart-change-model-using-c"></a>クイック スタート: C# を使ってモデルを変更する
 
@@ -37,19 +37,19 @@ ms.locfileid: "53719576"
 
 ## <a name="create-quickstart-code"></a>クイック スタート コードの作成 
 
-Visual Studio で .Net Framework を使用して新しい **Windows クラシック デスクトップ コンソール** アプリを作成します。 
+Visual Studio 上で .NET Framework を使用して新しい **Windows クラシック デスクトップ コンソール** アプリを作成します。 プロジェクトに `ConsoleApp1` と名前を付けます。
 
 ![Visual Studio プロジェクトの種類](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>System.Web の依存関係を追加する
 
-Visual Studio プロジェクトに **System.Web** が必要です。 ソリューション エクスプローラーで **[参照]** を右クリックし、**[参照の追加]** を選択します。
+Visual Studio プロジェクトに **System.Web** が必要です。 ソリューション エクスプローラーで **[参照]** を右クリックし、[アセンブリ] セクションから **[参照の追加]** を選択します。
 
 ![System.web の参照を追加する](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>その他の依存関係を追加する
 
-Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParser** が必要です。 ソリューション エクスプローラーで、**[参照設定]** を右クリックし、**[NuGet パッケージの管理]** を選択します。2 つのパッケージをそれぞれ検索して追加してください。 
+Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParser** が必要です。 ソリューション エクスプローラーで、**[参照設定]** を右クリックし、**[NuGet パッケージの管理]** を選択します。2 つのパッケージをそれぞれ参照して追加します。 
 
 ![サード パーティの依存関係の追加](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -64,7 +64,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3
+namespace ConsoleApp1
 {
     class Program
     {
@@ -75,7 +75,7 @@ namespace ConsoleApp3
 }
 ```
 
-依存関係を追加します。
+次のように依存関係を更新します。
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -115,7 +115,7 @@ LUIS ID と文字列を **Program** クラスに追加します。
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>utterances.json を出力ディレクトリにコピーします。
 
-ソリューション エクスプローラーで `utterances.json` を右クリックし、**[プロパティ]** を選択します。 プロパティ ウィンドウで、`Content` の **[ビルド アクション]** と、`Copy Always` の **[出力ディレクトリにコピー]** をマークします。  
+ソリューション エクスプローラーで、ソリューション エクスプローラーのプロジェクト名を右クリックして `utterances.json` を追加し、**[追加]**、**[既存の項目]** の順に選択します。 `utterances.json` ファイルを選択します。 これで、ファイルがプロジェクトに追加されます。 次に、これを出力方向に追加する必要があります。 `utterances.json` を右クリックし、**[プロパティ]** を選択します。 プロパティ ウィンドウで、`Content` の **[ビルド アクション]** と、`Copy Always` の **[出力ディレクトリにコピー]** をマークします。  
 
 ![JSON ファイルをコンテンツとしてマークする](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
@@ -128,7 +128,7 @@ Visual Studio でコードをビルドします。
 プロジェクトの /bin/Debug ディレクトリで、コマンド ラインからアプリケーションを実行します。 
 
 ```console
-ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
+ConsoleApp1.exe --add utterances.json --train --status
 ```
 
 このコマンドラインで、発話の追加 API を呼び出した結果が表示されます。 

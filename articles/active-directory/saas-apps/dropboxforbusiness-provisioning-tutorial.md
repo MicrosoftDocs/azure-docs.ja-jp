@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Dropbox を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Dropbox を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory と Dropbox for Business の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 0f3a42e4-6897-4234-af84-b47c148ec3e1
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 8e61fe4af83ee72df74027b2e52a3e81db486798
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0d53d10b036a37489be0b7aae6208880044b766a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347309"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211803"
 ---
-# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>チュートリアル: Dropbox for Business を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>チュートリアル:Dropbox for Business を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Dropbox for Business にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Dropbox for Business と Azure AD で実行する必要がある手順について説明します。
 

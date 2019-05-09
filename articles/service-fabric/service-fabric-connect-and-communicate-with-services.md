@@ -4,7 +4,7 @@ description: Service Fabric のサービスに対して解決、接続、通信�
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: msfussell
 ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
 ms.service: service-fabric
@@ -14,21 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 2b6fd2373a9cd0b376a6c8729d5952c5fc48ddf8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205588"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666122"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric のサービスとの接続と通信
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。
 
 Service Fabric アプリケーションは、通常はさまざまなサービスで構成されており、各サービスがそれぞれに特化したタスクを実行します。 これらのサービスが互いに通信することによって、Web アプリケーションの異なる部分のレンダリングのような機能を完成させることができます。 また、サービスに接続して通信するクライアント アプリケーションもあります。 このドキュメントでは、Service Fabric のサービスとの通信やサービス間での通信を設定する方法について説明します。
-
-次の Microsoft Virtual Academy のビデオでも、サービスの通信について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
-<img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
 
 ## <a name="bring-your-own-protocol"></a>独自のプロトコルを使用する
 Service Fabric は、サービスのライフサイクル管理に役立ちますが、サービスで何を実行するかを決める機能は備えていません。 このことは通信にも当てはまります。 Service Fabric によってサービスが開かれると、サービスの側で、必要なプロトコルまたは通信スタックを使用して、受信要求向けにエンドポイントを設定することができます。 サービスは、URI などのアドレス指定スキームを使用して通常の **IP:ポート** アドレスでリッスンします。 複数のサービス インスタンスまたはレプリカでホスト プロセスを共有できますが、その場合はそれぞれが別のポートを使用するか、Windows での http.sys カーネル ドライバーのようなポート共有メカニズムを使用する必要があります。 いずれの場合も、ホスト プロセス内の各サービス インスタンスまたはレプリカを一意にアドレス指定できることが必要です。
@@ -46,7 +42,7 @@ Service Fabric では、ネーム サービスという検出および解決サ�
 
 サービスの解決とサービスへの接続を行う際は、以下の手順を繰り返し実行する必要があります。
 
-* **解決**: サービスによってネーム サービスから発行されたエンドポイントを取得します。
+* **解決**: サービスによって Naming Service から発行されたエンドポイントを取得します。
 * **接続**: 取得したエンドポイントでサービスが使用するプロトコルを介してサービスに接続します。
 * **再試行**: 接続試行はさまざまな理由で失敗する可能性があります。たとえば、エンドポイント アドレスの前回の解決時からサービスが移動している場合などに失敗します。 このような場合、前の解決と接続の手順を再試行する必要があり、このサイクルは接続が確立されるまで繰り返されます。
 
@@ -172,11 +168,11 @@ Azure の Service Fabric クラスターは、Azure Load Balancer の背後に�
 
 Azure Load Balancer とプローブが把握しているのは*ノード*についての情報のみであり、ノードで実行されている*サービス*については把握していないことを覚えておいてください。 Azure Load Balancer は、プローブに応答するノードに対して常にトラフィックを送信します。そのため、プローブに応答できるノードでサービスを利用可能にする必要があります。
 
-## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: 組み込みの通信 API オプション
+## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services:組み込みの通信 API オプション
 Reliable Services フレームワークには、事前に構築されたいくつかの通信オプションが用意されています。 最適なオプションの決定は、プログラミング モデル、通信フレームワーク、およびサービスが作成されているプログラミング言語に応じて異なります。
 
 * **特定のプロトコルがない場合**: 特定の通信フレームワークを選択していないものの、すぐに利用できるようにすることが必要という場合、最適なオプションは[サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)です。これにより、Reliable Services と Reliable Actors 向けの厳密に型指定されたリモート プロシージャ コールが可能になります。 これは、サービスの通信を開始する最も簡単ですばやい方法です。 サービスのリモート処理では、サービス アドレスの解決、接続、再試行、エラー処理を扱います。 これは、C# と Java のアプリケーションの両方で利用できます。
-* **HTTP**: 言語に依存しない通信の場合、HTTP ではさまざまな言語で利用できる業界標準のツールと HTTP サーバーを選択でき、そのすべてが Service Fabric でサポートされています。 サービスでは、C# アプリケーションの [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) など、任意の HTTP スタックを利用できます。 C# で記述されたクライアントでは `ICommunicationClient` クラスと `ServicePartitionClient` クラス、Java では `CommunicationClient` クラスと `FabricServicePartitionClient` クラスを[サービスの解決、HTTP 通信、再試行ループ](service-fabric-reliable-services-communication.md)に活用できます。
+* **HTTP**:言語に依存しない通信の場合、HTTP ではさまざまな言語で利用できる業界標準のツールと HTTP サーバーを選択でき、そのすべてが Service Fabric でサポートされています。 サービスでは、C# アプリケーションの [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) など、任意の HTTP スタックを利用できます。 C# で記述されたクライアントでは `ICommunicationClient` クラスと `ServicePartitionClient` クラス、Java では `CommunicationClient` クラスと `FabricServicePartitionClient` クラスを[サービスの解決、HTTP 通信、再試行ループ](service-fabric-reliable-services-communication.md)に活用できます。
 * **WCF**: 通信フレームワークとして WCF を使用する既存のコードがある場合、サーバー側で `WcfCommunicationListener` を使用し、クライアントで `WcfCommunicationClient` クラスおよび `ServicePartitionClient` クラスを使用することができます。 ただし、これは Windows ベースのクラスター上の C# アプリケーションでのみ利用できます。 詳細については、 [WCF ベースの通信スタックの実装](service-fabric-reliable-services-communication-wcf.md)に関するこの記事を参照してください。
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>カスタム プロトコルとその他の通信フレームワークの使用

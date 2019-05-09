@@ -3,7 +3,7 @@ title: Azure Cloud Shell の Bash のクイックスタート | Microsoft Docs
 description: Cloud Shell の Bash のクイックスタート
 services: ''
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: juluk
-ms.openlocfilehash: 0b3616a723e793ab1ce8d7bcca1f53ca10ec4f96
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: damaerte
+ms.openlocfilehash: b8f96de7214a46c9e38182c141343a46c0e28139
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970667"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58882091"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
@@ -44,13 +44,13 @@ ms.locfileid: "46970667"
 
 ### <a name="set-your-subscription"></a>サブスクリプションの設定
 1. 自分が利用できるサブスクリプションを一覧表示します。
-```azurecli-interactive
-az account list
-```
+   ```azurecli-interactive
+   az account list
+   ```
 
 2. 優先するサブスクリプションを設定します。 <br>
 ```azurecli-interactive
-az account set --subscription my-subscription-name`
+az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
@@ -77,26 +77,26 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ### <a name="ssh-into-your-linux-vm"></a>Linux VM への SSH 接続
 1. Azure Portal の検索バーで VM 名を検索します。
 2. [接続] をクリックして、VM 名とパブリック IP アドレスを取得します。 <br>
-![](media/quickstart/sshcmd-copy.png)
+   ![](media/quickstart/sshcmd-copy.png)
 
 3. `ssh` コマンドを使用して VM への SSH 接続を確立します。
-```
-ssh username@ipaddress
-```
+   ```
+   ssh username@ipaddress
+   ```
 
 SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表示されます。 <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>クリーンアップしています 
 1. SSH セッションを終了します。
-```azurecli-interactive
-exit
-```
+   ```azurecli-interactive
+   exit
+   ```
 
 2. リソース グループとそこに含まれるリソースを削除します。
-```azurecli-interactive
-az group delete -n MyRG
-```
+   ```azurecli-interactive
+   az group delete -n MyRG
+   ```
 
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>

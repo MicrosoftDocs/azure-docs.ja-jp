@@ -6,23 +6,23 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fec649706be1b3db01a5c6cbc8f395e8c7e1a4d2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134337"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897080"
 ---
 # <a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
 
 この記事では、SQL または Python プログラミング言語を使って、Azure の SQL Server に格納されているデータをサンプリングする方法について説明します。 また、サンプリングしたデータをファイルを保存し、Azure BLOB にアップロードして、Azure Machine Learning Studio に読み込むことで、データを Azure Machine Learning に移動する方法についても説明します。
 
-Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/) ODBC ライブラリを使用して、Azure 上の SQL Server に接続し、[Pandas](http://pandas.pydata.org/) ライブラリを使用してサンプリングを実行します。
+Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/) ODBC ライブラリを使用して、Azure 上の SQL Server に接続し、[Pandas](https://pandas.pydata.org/) ライブラリを使用してサンプリングを実行します。
 
 > [!NOTE]
 > このドキュメントにあるサンプルの SQL コードは、データが Azure の SQL Server に存在することを前提としています。 SQL Server にデータが存在しない場合、データを Azure の SQL Server に移動する方法については、「[Azure VM の SQL Server へのデータの移動](move-sql-server-virtual-machine.md)」をご覧ください。
@@ -71,12 +71,12 @@ Azure Machine Learning の[データのインポート][import-data] モジュ�
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python の [Pandas ライブラリ](http://pandas.pydata.org/) には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。 次のコードは、Azure SQL Database から 0.1% のデータのサンプルを Pandas のデータに読み込みます。
+Python の [Pandas ライブラリ](https://pandas.pydata.org/) には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。 次のコードは、Azure SQL Database から 0.1% のデータのサンプルを Pandas のデータに読み込みます。
 
     import pandas as pd
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select column1, cloumn2... from <table_name> tablesample (0.1 percent)''', conn)
+    data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
 
 これで、Pandas データ フレームでサンプリングされたデータを操作できるようになりました。 
 

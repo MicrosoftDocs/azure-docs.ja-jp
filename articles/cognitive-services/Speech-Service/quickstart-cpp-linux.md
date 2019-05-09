@@ -1,23 +1,23 @@
 ---
 title: 'クイック スタート: 音声を認識する、C++ (Linux) - Speech Services'
 titleSuffix: Azure Cognitive Services
-description: Linux で C++ と Speech Service SDK を使用して音声を認識する方法について説明します。
+description: Linux で C++ と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: d741550fc64ef7544e33304f8608ad6e6ee3426e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d504e3abe148f1f607d8ee359e182832ec7d19f6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723649"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59010313"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>クイック スタート: Linux で C++ と Speech SDK を使用して音声を認識する
+# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>クイック スタート:Linux で C++ と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -25,13 +25,13 @@ ms.locfileid: "53723649"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Speech サービス サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、[Sppech サービスを無料で試す](get-started.md)ための記事を参照してください。
+このクイック スタートを完了するには、Speech Services サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、「[Speech Service を無料で試す](get-started.md)」を参照してください。
 
 ## <a name="install-speech-sdk"></a>Speech SDK をインストールする
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.2.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.4.0` です。
 
 Linux 用 Speech SDK は、64 ビット アプリケーションと 32 ビット アプリケーションのどちらの構築にも使用できます。 必要なライブラリとヘッダー ファイルは、 https://aka.ms/csspeech/linuxbinary から tar ファイルとしてダウンロードできます。
 
@@ -41,7 +41,7 @@ SDK を次のようにダウンロードしてインストールします。
 
    ```sh
    sudo apt-get update
-   sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+   sudo apt-get install build-essential libssl1.0.0 libasound2 wget
    ```
 
 1. Speech SDK のファイル抽出先にする必要があるディレクトリを選択し、そのディレクトリを指すように `SPEECHSDK_ROOT` 環境変数を設定します。 この変数によって、後のコマンドでこのディレクトリを参照することが容易になります。 たとえば、ホーム ディレクトリで `speechsdk` ディレクトリを使用する場合、次のようなコマンドを使用します。
@@ -79,7 +79,7 @@ SDK を次のようにダウンロードしてインストールします。
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-linux/helloworld.cpp#code)]
 
-1. この新しいファイルで、文字列 `YourSubscriptionKey` を、音声サービスのサブスクリプション キーで置き換えます。
+1. この新しいファイルで、文字列 `YourSubscriptionKey` を、Speech Services のサブスクリプション キーで置き換えます。
 
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
@@ -91,13 +91,13 @@ SDK を次のようにダウンロードしてインストールします。
 * **x64** (64 ビット) システムでは、次のコマンドを実行してアプリケーションをビルドします。
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libasound.so.2
   ```
 
 * **x86** (32 ビット) システムでは、次のコマンドを実行してアプリケーションをビルドします。
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libasound.so.2
   ```
 
 ## <a name="run-the-app"></a>アプリの実行
@@ -122,7 +122,7 @@ SDK を次のようにダウンロードしてインストールします。
    ./helloworld
    ```
 
-1.  コンソール ウィンドウに、何か発言するよう求めるプロンプトが表示されます。 英語の語句または文を読み上げます。 音声が Speech サービスに送信されてテキストに変換され、同じウィンドウに表示されます。
+1. コンソール ウィンドウに、何か発言するよう求めるプロンプトが表示されます。 英語の語句または文を読み上げます。 音声が Speech Services に送信されてテキストに変換され、同じウィンドウに表示されます。
 
    ```text
    Say something...

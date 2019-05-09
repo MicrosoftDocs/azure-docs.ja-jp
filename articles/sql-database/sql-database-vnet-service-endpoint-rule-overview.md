@@ -1,9 +1,9 @@
 ---
-title: Azure SQL Database と SQL Data Warehouse の Virtual Network サービス エンドポイントとルール | Microsoft Docs
+title: Azure SQL の単一およびプール データベース用の VNet エンドポイントおよび規則 | Microsoft Docs
 description: サブネットを Virtual Network サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 03/12/2019
+ms.openlocfilehash: 8c33cd7fe702f46f9c88643895b96445a9aa6a78
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438593"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58805195"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Azure SQL の Virtual Network サービス エンドポイントとルールを使用する
+# <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
-*仮想ネットワーク規則*は、Azure [SQL Database](sql-database-technical-overview.md) または [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク ルール機能が、場合によっては Azure SQL Database と SQL Data Warehouse への通信を安全に許可するための最適な選択肢となる理由を説明します。
+*仮想ネットワーク規則*は 1 つのファイアウォール セキュリティ機能であり、Azure [SQL Database](sql-database-technical-overview.md) 内の単一データベースおよびエラスティック プール用、または [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のデータベース サーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク ルール機能が、場合によっては Azure SQL Database と SQL Data Warehouse への通信を安全に許可するための最適な選択肢となる理由を説明します。
 
-> [!NOTE]
-> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+> [!IMPORTANT]
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 関連付けられているサービス エンドポイントがないため、この記事は Azure SQL Database の**マネージド インスタンス** デプロイには*適用されません*。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
 
@@ -64,9 +64,8 @@ SQL Database のファイアウォールでは、SQL Database への通信が許
 
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
-### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. サブネット上に SQL Database を保持することは、まだできません。
-
-Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は SQL Database と通信できます。
+> [!NOTE]
+> サブネット上に SQL Database を保持することは、まだできません。 Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は SQL Database と通信できます。
 
 しかし、2017 年 9 月時点ではまだ、Azure SQL Database サービスは、サブネットに割り当て可能なサービスの範囲には含まれていません。
 
@@ -119,8 +118,9 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 
 - 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL のインスタンスへの接続の試行は失敗します。
-  - 根本的な理由は、MySQL と PostgreSQL が現在は ACL 処理をサポートしていないためです。
+- Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL インスタンスへの接続の試行は失敗します。
+  - 根本的な理由は、MySQL および PostgreSQL には仮想ネットワーク ルールが構成されていない可能性があるためです。 接続を成功させるには、Azure Database for MySQL と Azure Database for PostgreSQL の仮想ネットワーク ルールを構成する必要があります。
+
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
   - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
   - [ExpressRoute][expressroute-indexmd-744v] 経由のオンプレミス
@@ -162,7 +162,7 @@ Azure SQL Database クエリ エディターは、Azure の VM にデプロイ�
 
 ### <a name="impact-on-data-sync"></a>データ同期への影響
 
-Azure SQL Database には、Azure IP を使用してデータベースに接続するデータ同期機能があります。 サービス エンドポイントを使用する場合、使用している論理サーバーへの **[Azure サービスにサーバーへのアクセスを許可する]** のアクセス許可をオフにすることがあります。 これにより、データ同期機能が中断されます。
+Azure SQL Database には、Azure IP を使用してデータベースに接続するデータ同期機能があります。 サービス エンドポイントを使用する場合、使用している SQL Database サーバーへの **[Azure サービスにサーバーへのアクセスを許可する]** のアクセス許可をオフにすることがあります。 これにより、データ同期機能が中断されます。
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Azure Storage で VNet サービス エンドポイントを使用した場合の影響
 
@@ -173,57 +173,62 @@ Azure Storage は、Azure ストレージ アカウントへの接続を制限�
 PolyBase は、Azure ストレージ アカウントから Azure SQL Data Warehouse にデータを読み込むときによく使用されます。 データの読み込み元の Azure ストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 VNet に結び付けられた Azure Storage に接続する Azure SQL Data Warehouse で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、次に示す手順に従います。
 
 #### <a name="prerequisites"></a>前提条件
-1.  この[ガイド](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)を使用して、Azure PowerShell をインストールします。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
+1.  この[ガイド](https://docs.microsoft.com/powershell/azure/install-az-ps)を使用して、Azure PowerShell をインストールします。
 2.  汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、最初に汎用 v2 にアップグレードする必要があります。
 3.  Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、**[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)をご覧ください。
  
 #### <a name="steps"></a>手順
-1.  PowerShell で、Azure Active Directory (AAD) に**論理 SQL Server を登録します**。
+1. PowerShell で、Azure Active Directory (AAD) に **SQL Database サーバーを登録します**。
 
-    ```powershell
-    Add-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
-    ```
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
     
- 1. この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
+   1. この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
 
-    > [!NOTE]
-    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
-    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
+   > [!NOTE]
+   > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
+   > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
     
-1.  お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者 (プレビュー)]** RBAC ロールを論理 SQL Server に割り当てます。
+1. お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者]** RBAC ロールを SQL Database サーバーに割り当てます。
 
-    > [!NOTE] 
-    > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
+   > [!NOTE] 
+   > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
   
-1.  **Azure ストレージ アカウントへの Polybase 接続:**
+1. **Azure ストレージ アカウントへの Polybase 接続:**
 
-    1. データベースの**[マスター キー](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** をまだ作成していない場合は、作成します。
-        ```SQL
-        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
-        ```
+   1. データベースの**[マスター キー](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** をまだ作成していない場合は、作成します。
+       ```SQL
+       CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+       ```
     
-    1. **IDENTITY = 'Managed Service Identity'** を使用して、データベース スコープ資格情報を作成します。
+   1. **IDENTITY = 'Managed Service Identity'** を使用して、データベース スコープ資格情報を作成します。
 
-        ```SQL
-        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-        ```
-        > [!NOTE] 
-        > - このメカニズムは内部的に[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用するため、Azure Storage アクセス キーにシークレットを指定する必要はありません。
-        > - VNet に結び付けられた Azure ストレージ アカウントを PolyBase 接続で操作するためには、ID の名前を **"Managed Service Identity"** にする必要があります。    
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - このメカニズムは内部的に[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用するため、Azure Storage アクセス キーにシークレットを指定する必要はありません。
+       > - VNet に結び付けられた Azure ストレージ アカウントを PolyBase 接続で操作するためには、ID の名前を **"Managed Service Identity"** にする必要があります。    
     
-    1. PolyBase を使用して汎用 v2 ストレージ アカウントに接続するために、abfss:// スキームを使用して外部データ ソースを作成します。
+   1. PolyBase を使用して汎用 v2 ストレージ アカウントに接続するために、abfss:// スキームを使用して外部データ ソースを作成します。
 
-        ```SQL
-        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
-        ```
-        > [!NOTE] 
-        > - 汎用 v1 または BLOB ストレージ アカウントに外部テーブルが既に関連付けられている場合は、まずそれらの外部テーブルを削除した後、対応する外部データ ソースを削除する必要があります。 次に上記のように、汎用 v2 ストレージ アカウントに接続するために abfss:// スキームを使用して外部データ ソースを作成し、この新しい外部データ ソースを使用して、すべての外部テーブルを再作成します。 [スクリプトの生成とパブリッシュ ウィザード](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017)を使用して、すべての外部テーブルを簡単に作成するスクリプトを生成できます。
-        > - abfss:// スキームの詳細については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)をご覧ください。
-        > - 外部データ ソースの作成の詳細については、この[ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)をご覧ください。
+       ```SQL
+       CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+       ```
+       > [!NOTE] 
+       > - 汎用 v1 または BLOB ストレージ アカウントに外部テーブルが既に関連付けられている場合は、まずそれらの外部テーブルを削除した後、対応する外部データ ソースを削除する必要があります。 次に上記のように、汎用 v2 ストレージ アカウントに接続するために abfss:// スキームを使用して外部データ ソースを作成し、この新しい外部データ ソースを使用して、すべての外部テーブルを再作成します。 [スクリプトの生成とパブリッシュ ウィザード](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)を使用して、すべての外部テーブルを簡単に作成するスクリプトを生成できます。
+       > - abfss:// スキームの詳細については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)をご覧ください。
+       > - 外部データ ソースの作成の詳細については、この[ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)をご覧ください。
         
-    1. [外部テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)を使用して、通常どおりクエリを実行します。
+   1. [外部テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)を使用して、通常どおりクエリを実行します。
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL Database BLOB の監査
 
@@ -272,7 +277,7 @@ SQL Database のエラー メッセージの一覧については、[こちら][
 
 ## <a name="powershell-alternative"></a>PowerShell による代替
 
-PowerShell スクリプトでも、仮想ネットワーク規則を作成できます。 重要なコマンドレットは **New-AzureRmSqlServerVirtualNetworkRule** です。 ご興味がある方は、「[PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database (PowerShell で Azure SQL Database の Virtual Network サービス エンドポイントと規則を作成する)][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
+PowerShell スクリプトでも、仮想ネットワーク規則を作成できます。 重要なコマンドレットは **New-AzSqlServerVirtualNetworkRule** です。 ご興味がある方は、「[PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database (PowerShell で Azure SQL Database の Virtual Network サービス エンドポイントと規則を作成する)][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
 
 ## <a name="rest-api-alternative"></a>REST API の代替手段
 

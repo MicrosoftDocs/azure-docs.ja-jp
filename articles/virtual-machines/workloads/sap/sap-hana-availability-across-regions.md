@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae03e1498d948e7d044561c3e6bea8c343d7b165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 95ada2cb146bdbc972afee883a1d174c95aa67d7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713971"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297584"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Azure リージョンの枠を越えた SAP HANA の可用性
 
@@ -39,7 +39,7 @@ Azure Virtual Network では、異なる IP アドレス範囲を使用します
 
 ## <a name="simple-availability-between-two-azure-regions"></a>2 つの Azure リージョン間の単純な可用性
 
-1 つのリージョン内に可用性構成を配置しないことを選択しても、災害が発生した場合にはワークロードを処理することが必要な場合があります。 このようなシステムの一般的な例として、非運用環境システムがあります。 システムを半日または 1 日停止することには耐えられても、48 時間以上システムを利用不可にすることはできません。 セットアップ コストを低く抑えるには、重要度の低い別のシステムを VM で実行します。 他のシステムは同期先として機能します。 セカンダリ リージョンの VM のサイズを小さくして、データを事前に読み込まないことも選択できます。 フェールオーバーは手動で行われ、完全なアプリケーション スタックをフェールオーバーするには手順が増えるため、VM を停止し、サイズを変更して VM を再起動するための追加の時間は許容されます。
+1 つのリージョン内に可用性構成を配置しないことを選択しても、災害が発生した場合にはワークロードを処理することが必要な場合があります。 このようなシナリオの一般的な例として、非運用環境システムがあります。 システムを半日または 1 日停止することには耐えられても、48 時間以上システムを利用不可にすることはできません。 セットアップ コストを低く抑えるには、重要度の低い別のシステムを VM で実行します。 他のシステムは同期先として機能します。 セカンダリ リージョンの VM のサイズを小さくして、データを事前に読み込まないことも選択できます。 フェールオーバーは手動で行われ、完全なアプリケーション スタックをフェールオーバーするには手順が増えるため、VM を停止し、サイズを変更して VM を再起動するための追加の時間は許容されます。
 
 1 つの VM 内の QA システムでディザスター リカバリーのターゲットを共有するシナリオを使用している場合、次の点を考慮する必要があります。
 
@@ -68,10 +68,20 @@ Azure Virtual Network では、異なる IP アドレス範囲を使用します
 
 ![2 つのリージョン上の 3 つの VM のダイアグラム](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
 
+SAP では、HANA 2.0 SPS3 による[マルチターゲット システム レプリケーション](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html)が導入されました。 マルチターゲット システム レプリケーションには、更新のシナリオでいくつかの利点があります。 たとえば、セカンダリ HA サイトがメンテナンスや更新のために停止しても、DR サイト (リージョン 2) は影響を受けません。 HANA マルチターゲット システム レプリケーションの詳細については、[こちら](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html)を参照してください。
+マルチターゲット レプリケーションで可能なアーキテクチャは、次のようになります。
+
+![2 つのリージョンのマルチターゲットでの 3 つの VM のダイアグラム](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)
+
+組織の要件が、2 番目の (DR) Azure リージョンで高可用性の準備ができていることである場合、アーキテクチャは次のようになります。
+
+![2 つのリージョンのマルチターゲットでの 3 つの VM のダイアグラム](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+
+
 操作モードとして logreplay を使用すると、この構成は、プライマリ リージョン内に RPO = 0、低 RTO を提供します。 構成は、2 つ目のリージョンへの移行が必要な場合にも適切な RPO を提供します。 2 つ目のリージョンの RTO 時間は、データが事前に読み込まれるかどうかによって変わります。 多くのお客様は、セカンダリ リージョンの VMを 使用してテスト システムを実行します。 このユース ケースでは、データを事前読み込みできません。
 
 > [!IMPORTANT]
-> 異なる階層間の操作モードは、同じ種類にする必要があります。 階層 1 と階層 2 の間の操作モードとして logreply を使用し、階層 3 の指定で delta_datashipping を使用することは**できません**。 すべての階層に一貫性がある必要がある、いずれか一方の操作モードのみを選ぶことができます。 RPO=0 を提供するために delta_datashipping は適していないため、このような多層構成に適切な唯一の操作モードである logreplay が保持されます。 操作モードと一部の制限事項について詳しくは、SAP の [SAP HANA システム レプリケーションの操作モード](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)に関する記事をご覧ください。 
+> 異なる階層間の操作モードは、同じ種類にする必要があります。 階層 1 と階層 2 の間の操作モードとして logreply を使用し、階層 3 の指定で delta_datashipping を使用することは**できません**。 すべての階層に一貫性がある必要がある、いずれか一方の操作モードのみを選ぶことができます。 RPO=0 を提供するために delta_datashipping は適していないため、このような多層構成に適切な唯一の操作モードは logreplay です。 操作モードと一部の制限事項について詳しくは、SAP の [SAP HANA システム レプリケーションの操作モード](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)に関する記事をご覧ください。 
 
 ## <a name="next-steps"></a>次の手順
 

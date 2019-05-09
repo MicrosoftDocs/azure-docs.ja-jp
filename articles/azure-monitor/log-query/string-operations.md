@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリ内の文字列の操作 | Microsoft Docs
-description: この記事では、Log Analytics で Analytics ポータルを使用してクエリを作成する方法のチュートリアルを提供します。
+title: Azure Monitor ログ クエリ内の文字列を操作する | Microsoft Docs
+description: この記事では、Azure Monitor ログ クエリの文字列に対して、編集、比較、検索、およびさまざまなその他の操作を実行する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186244"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012226"
 ---
-# <a name="working-with-strings-in-log-analytics-queries"></a>Log Analytics クエリ内の文字列の操作
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の文字列を操作する
 
 
 > [!NOTE]
-> このチュートリアルを完了する前に、[Analytics ポータルの概要](get-started-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
+> このチュートリアルを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と、[Azure Monitor ログ クエリの使用の開始](get-started-queries.md)に関するチュートリアルを完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-この記事では、文字列での編集、比較、検索、およびその他さまざまな操作を実行する方法について説明します。 
+この記事では、文字列での編集、比較、検索、およびその他さまざまな操作を実行する方法について説明します。
 
 文字列内の文字にはそれぞれ、その場所に従ってインデックス番号が付いています。 最初の文字はインデックス 0、次の文字は 1、以降、同様に続きます。 以降のセクションで示すように、さまざまな文字列関数でインデックス番号が使用されています。 特定のデータ ソースを使用せずに文字列操作を示すために、次の例の多くで **print** コマンドが使用されています。
 
@@ -51,37 +51,37 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
  演算子       |説明                         |大文字と小文字の区別|例 (`true` になる)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |等しい                              |[はい]           |`"aBc" == "aBc"`
-`!=`           |等しくない                          |[はい]           |`"abc" != "ABC"`
+`==`           |等しい                              |はい           |`"aBc" == "aBc"`
+`!=`           |等しくない                          |はい           |`"abc" != "ABC"`
 `=~`           |等しい                              |いいえ             |`"abc" =~ "ABC"`
 `!~`           |等しくない                          |いいえ             |`"aBc" !~ "xyz"`
 `has`          |右辺が左辺の完全な用語として含まれる |いいえ |`"North America" has "america"`
 `!has`         |右辺が左辺の完全な用語として含まれない       |いいえ             |`"North America" !has "amer"` 
-`has_cs`       |右辺が左辺の完全な用語として含まれる |[はい]|`"North America" has_cs "America"`
-`!has_cs`      |右辺が左辺の完全な用語として含まれない       |[はい]            |`"North America" !has_cs "amer"` 
+`has_cs`       |右辺が左辺の完全な用語として含まれる |はい|`"North America" has_cs "America"`
+`!has_cs`      |右辺が左辺の完全な用語として含まれない       |はい            |`"North America" !has_cs "amer"` 
 `hasprefix`    |右辺が左辺の用語のプレフィックスとして含まれる         |いいえ             |`"North America" hasprefix "ame"`
 `!hasprefix`   |右辺が左辺の用語のプレフィックスとして含まれない     |いいえ             |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |右辺が左辺の用語のプレフィックスとして含まれる         |[はい]            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |右辺が左辺の用語のプレフィックスとして含まれない     |[はい]            |`"North America" !hasprefix_cs "CA"` 
+`hasprefix_cs`    |右辺が左辺の用語のプレフィックスとして含まれる         |はい            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |右辺が左辺の用語のプレフィックスとして含まれない     |はい            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |右辺が左辺の用語のサフィックスとして含まれる         |いいえ             |`"North America" hassuffix "ica"`
-`!hassuffix`   |右辺が左辺の用語のサフィックスに含まれない     |いいえ             |`"North America" !hassuffix "americ"
-`hassuffix_cs`    |右辺が左辺の用語のサフィックスとして含まれる         |[はい]            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |右辺が左辺の用語のサフィックスに含まれない     |[はい]            |`"North America" !hassuffix_cs "icA"
+`!hassuffix`   |右辺が左辺の用語のサフィックスに含まれない     |いいえ             |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |右辺が左辺の用語のサフィックスとして含まれる         |はい            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |右辺が左辺の用語のサフィックスに含まれない     |はい            |`"North America" !hassuffix_cs "icA"`
 `contains`     |右辺が左辺のサブシーケンスとして出現する  |いいえ             |`"FabriKam" contains "BRik"`
 `!contains`    |右辺が左辺のサブシーケンスとして出現しない           |いいえ             |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |右辺が左辺のサブシーケンスとして出現する  |[はい]           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |右辺が左辺のサブシーケンスとして出現しない           |[はい]           |`"Fabrikam" !contains_cs "Kam"`
+`contains_cs`   |右辺が左辺のサブシーケンスとして出現する  |はい           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |右辺が左辺のサブシーケンスとして出現しない           |はい           |`"Fabrikam" !contains_cs "Kam"`
 `startswith`   |右辺が左辺の先頭のサブシーケンスである|いいえ             |`"Fabrikam" startswith "fab"`
 `!startswith`  |右辺が左辺の先頭のサブシーケンスでない|いいえ         |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |右辺が左辺の先頭のサブシーケンスである|[はい]            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |右辺が左辺の先頭のサブシーケンスでない|[はい]        |`"Fabrikam" !startswith_cs "fab"`
+`startswith_cs`   |右辺が左辺の先頭のサブシーケンスである|はい            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |右辺が左辺の先頭のサブシーケンスでない|はい        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |右辺が左辺の末尾のサブシーケンスである|いいえ              |`"Fabrikam" endswith "Kam"`
 `!endswith`    |右辺が左辺の末尾のサブシーケンスでない|いいえ          |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |右辺が左辺の末尾のサブシーケンスである|[はい]             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |右辺が左辺の末尾のサブシーケンスでない|[はい]         |`"Fabrikam" !endswith "brik"`
-`matches regex`|左辺には右辺の一致が含まれている        |[はい]           |`"Fabrikam" matches regex "b.*k"`
-`in`           |要素のいずれかに等しい       |[はい]           |`"abc" in ("123", "345", "abc")`
-`!in`          |要素のいずれとも等しくない   |[はい]           |`"bca" !in ("123", "345", "abc")`
+`endswith_cs`     |右辺が左辺の末尾のサブシーケンスである|はい             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |右辺が左辺の末尾のサブシーケンスでない|はい         |`"Fabrikam" !endswith "brik"`
+`matches regex`|左辺には右辺の一致が含まれている        |はい           |`"Fabrikam" matches regex "b.*k"`
+`in`           |要素のいずれかに等しい       |はい           |`"abc" in ("123", "345", "abc")`
+`!in`          |要素のいずれとも等しくない   |はい           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>countof
@@ -259,6 +259,7 @@ SecurityEvent
 ```
 
 結果は次のとおりです。
+
 アクティビティ                                        |replaced
 ------------------------------------------------|----------------------------------------------------------
 4663 - オブジェクトへのアクセスが試行されました  |アクティビティ ID 4663: オブジェクトへのアクセスが試行されました。

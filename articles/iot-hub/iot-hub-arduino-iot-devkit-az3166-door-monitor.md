@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 501dc942fc41a4e06aa13fba2eb670f8bc0f8a21
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a620b592a33f9de11de53d623d257f203da2157b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597822"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547703"
 ---
 # <a name="door-monitor"></a>ドア モニター          
 
@@ -66,11 +66,11 @@ SendGrid のサインアップ フォームが表示されます。
 
 サインアップ フォームに入力します。
 
-   * **リソース グループ**: SendGrid をホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)に関する記事をご覧ください。
+   * **[リソース グループ]**:SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関する記事をご覧ください。
 
-   * **名前**: SendGrid サービスの名前。 他のサービスとは異なる一意の名前を選択します。
+   * **[名前]**:SendGrid サービスの名前。 他のサービスとは異なる一意の名前を選択します。
 
-   * **パスワード**: このサービスにはパスワードが必要です。このプロジェクト内で他に使用されることはありません。
+   * **Password**:このサービスにはパスワードが必要です。このプロジェクト内で他に使用されることはありません。
 
    * **電子メール**: SendGrid サービスは、この電子メール アドレスに確認を送信します。
 
@@ -106,13 +106,13 @@ API キーは 1 回だけ表示されます。 次の手順で使用するため
 
 サインアップ フォームの各フィールドに情報を入力します。
 
-   * **リソース グループ**: SendGrid をホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)に関する記事をご覧ください。
+   * **[リソース グループ]**:SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関する記事をご覧ください。
 
-   * **Iot Hub 名**: IoT Hub の名前。 他のサービスとは異なる一意の名前を選択します。
+   * **Iot Hub 名**:IoT Hub の名前。 他のサービスとは異なる一意の名前を選択します。
 
-   * **Iot Hub SKU**: F1 は無料です (サブスクリプションあたり 1 つに制限されています)。 詳しい料金情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/iot-hub/)をご覧ください。
+   * **Iot Hub SKU**:F1 は無料です (サブスクリプションあたり 1 つに制限されています)。 詳しい料金情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/iot-hub/)をご覧ください。
 
-   * **送信者アドレス**: このフィールドは、SendGrid サービスを設定するときに使用したのと同じ電子メール アドレスにする必要があります。
+   * **送信者アドレス**:このフィールドは、SendGrid サービスを設定するときに使用したのと同じ電子メール アドレスにする必要があります。
 
 このアプリケーションを後で見つけやすくするために、**[ダッシュボードにピン留めする]** オプションをオンにし、次の手順に進む準備ができたら、**[購入]** をクリックします。
  
@@ -135,7 +135,7 @@ API キーは 1 回だけ表示されます。 次の手順で使用するため
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-サンプル アプリは、コマンド パレットから開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
+サンプル アプリは、コマンド パレットから開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ### <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
@@ -162,7 +162,7 @@ VS Code ターミナルでは、対話型コマンド ラインを使用して�
 
 #### <a name="macos"></a>macOS
 
-1. DevKit を構成モードにします。A ボタンを押しながら、リセット ボタンを押して離します。 画面に "構成" が表示されます。
+1. DevKit を構成モードに配置します。A ボタンを押しながら、リセット ボタンを押して離します。 画面に "構成" が表示されます。
 
 2. `Cmd+P` をクリックして `task device-upload` を実行します。
 
@@ -177,7 +177,7 @@ VS Code によって、Arduino スケッチの検証と DevKit へのアップ�
 DevKit が再起動され、コードの実行が開始されます。
 
 > [!NOTE]
-> エラー メッセージ "エラー: AZ3166: 不明なパッケージ" が表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 このエラーを解決するには、[IoT DevKit FAQ の「Development (開発)」セクション](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)を参照してください。
+> "エラー:AZ3166:不明なパッケージ" というエラー メッセージが表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 このエラーを解決するには、[IoT DevKit FAQ の「Development (開発)」セクション](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)を参照してください。
 
 ## <a name="test-the-project"></a>プロジェクトのテスト
 
@@ -185,16 +185,16 @@ DevKit が再起動され、コードの実行が開始されます。
 
 初期化が終わると、画面に `Door closed` が表示されます。 磁場が変化すると、状態が `Door opened` に変わります。 ドアの状態が変化するたびに、電子メール通知を受信します  (これらの電子メール メッセージが受信されるまで、最大 5 分かかる場合があります)。
 
-![磁石がセンサーの近くにあるとき: Door Closed](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "磁石がセンサーの近くにあるとき: Door Closed")
+![磁石がセンサーの近くにあるとき:Door Closed](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "磁石がセンサーの近くにあるとき:Door Closed")
 
-![磁石がセンサーから離れたとき: Door Opened](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "磁石がセンサーから離れたとき: Door Opened")
+![磁石がセンサーから離れたとき:Door Opened](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "磁石がセンサーから離れたとき:Door Opened")
 
 ## <a name="problems-and-feedback"></a>問題とフィードバック
 
-問題が発生した場合は、[IoT DevKit の FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) を参照するか、以下のチャンネルを使用してお問い合わせください。
+問題が発生した場合は、[IoT DevKit の FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) に関するページを参照するか、以下のチャネルを使用してお問い合わせください。
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>次の手順
 

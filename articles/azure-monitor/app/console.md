@@ -10,24 +10,24 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: c3381ac2dcc3755bb0aedb5f36e398ebc5842959
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 602cd9696271931babad9aa962638c5b646c80ac
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797620"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296768"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
-[Application Insights](../../application-insights/app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。
 
 [Microsoft Azure](https://azure.com) のサブスクリプションが必要になります。 Windows、Xbox Live、またはその他の Microsoft クラウド サービスの Microsoft アカウントでサインインします。 所属するチームが組織の Azure サブスクリプションを持っている場合は、自分の Microsoft アカウントを使用してサブスクリプションに追加してもらうよう所有者に依頼してください。
 
 ## <a name="getting-started"></a>使用の開始
 
-* [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](../../application-insights/app-insights-create-new-resource.md)。 アプリケーションの種類として **[一般]** を選びます。
+* [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](../../azure-monitor/app/create-new-resource.md )。 アプリケーションの種類として **[一般]** を選びます。
 * インストルメンテーション キーをコピーします。 先ほど作成した新しいリソースの **[要点]** ドロップダウン リストで、キーを探します。 
 * 最新の [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) パッケージをインストールします。
 * テレメトリを追跡する前に、コードにインストルメンテーション キーを設定します (または APPINSIGHTS_INSTRUMENTATIONKEY 環境変数を設定します)。 その後、テレメトリを手動で追跡して、Azure Portal に表示します。
@@ -105,7 +105,8 @@ module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
 //...
 
 // enable known dependency tracking, note that in future versions, we will extend this list. 
-// please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/NuGet/ApplicationInsights.config.install.xdt#L20
+// please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/DependencyCollector/ApplicationInsights.config.install.xdt
+
 module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.ServiceBus");
 module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
 //....
@@ -183,7 +184,8 @@ namespace ConsoleApp
             module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("127.0.0.1");
 
             // enable known dependency tracking, note that in future versions, we will extend this list. 
-            // please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/NuGet/ApplicationInsights.config.install.xdt#L20
+            // please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/DependencyCollector/ApplicationInsights.config.install.xdt
+
             module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.ServiceBus");
             module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
 

@@ -1,59 +1,139 @@
 ---
-title: ドメイン固有のコンテンツの検出 - Computer Vision
+title: ドメイン固有のコンテンツを検出する - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用した画像の記述に関連する概念。
+description: 画像に関する詳細な情報を返すための画像分類ドメインを指定する方法について説明します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: a9c71fa7e5d86cfeb4fe6fab44bbce241546ccb8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342560"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339013"
 ---
-# <a name="detecting-domain-specific-content"></a>ドメイン固有のコンテンツの検出
+# <a name="detect-domain-specific-content"></a>ドメイン固有のコンテンツの検出
 
-タグ付けやトップレベルの分類に加え、Computer Vision では特殊な (つまり、ドメイン固有の) 情報もサポートされます。 特殊な情報は、スタンドアロン方式として、または高度な分類を使用して実装することができます。 これは、ドメイン固有のモデルを追加することにより、86 のカテゴリ分類をさらに絞り込む手段として機能します。
+タグ付けと大まかなカテゴリ化に加えて、Computer Vision では、特殊なデータでトレーニング済みのモデルを使用した詳細なドメイン固有の解析もサポートされます。
 
-ドメイン固有のモデルを使用する場合、次の 2 つのオプションがあります。
+ドメイン固有のモデルには、それ自体で使用する方法 (スコープ解析) と、カテゴリ化機能の拡張として使用する方法があります。
 
-* スコープされた分析  
-  HTTP POST 呼び出しを行うことで、選択したモデルのみを分析します。 使用するモデルがわかっている場合は、モデルの名前を指定します。 そのモデルに関連する情報のみを取得します。 たとえば、このオプションを使用して、有名人識別のみを検索することができます。 応答には、信頼度スコアと共に、潜在的に一致する有名人のリストが含まれます。
-* 高度な分析  
-  86 のカテゴリ分類からのカテゴリに関連する詳細情報を取得するための分析です。 このオプションは、1 つ以上のドメイン固有のモデルからの詳細に加え、ユーザーが汎用的なイメージ分析を行うアプリケーションで使用できます。 このメソッドが呼び出された場合、最初に 86 のカテゴリ分類の分類子が呼び出されます。 いずれかのカテゴリが既知のモデルや一致するモデルのカテゴリと一致した場合、分類子呼び出しの 2 番目のパスが後に続きます。 たとえば、HTTP POST 呼び出しの `details` パラメーターに "all" が設定されているか、または "celebrities" が含まれている場合、86 のカテゴリ分類子が呼び出された後、メソッドで有名人の分類子が呼び出されます。 画像が `people_` として、またはそのカテゴリのサブカテゴリとして分類された場合、celebrity 分類子が呼び出されます。
+### <a name="scoped-analysis"></a>スコープされた分析
 
-## <a name="listing-domain-specific-models"></a>ドメイン固有のモデルの一覧取得
+選択したドメイン固有のモデルのみを使用してイメージを分析するには、[Models/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API を使用します。
 
-Computer Vision でサポートされているドメイン固有モデルの一覧を取得できます。 現在、Computer Vision では、ドメイン固有コンテンツの検出に対して次のドメイン固有モデルがサポートされています。
+特定のイメージについて、**models/celebrities/analyze** API で返される JSON 応答の例を次に示します。
+
+![Satya Nadella が立っています](./images/satya.jpeg)
+
+```json
+{
+  "result": {
+    "celebrities": [{
+      "faceRectangle": {
+        "top": 391,
+        "left": 318,
+        "width": 184,
+        "height": 184
+      },
+      "name": "Satya Nadella",
+      "confidence": 0.99999856948852539
+    }]
+  },
+  "requestId": "8217262a-1a90-4498-a242-68376a4b956b",
+  "metadata": {
+    "width": 800,
+    "height": 1200,
+    "format": "Jpeg"
+  }
+}
+```
+
+### <a name="enhanced-categorization-analysis"></a>拡張カテゴリ化解析
+
+ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](concept-categorizing-images.md)の一部として行います。
+
+この場合、最初に 86 のカテゴリ分類の分類子が呼び出されます。 検出されたカテゴリのいずれかに、一致するドメイン固有のモデルがあった場合、イメージはそのモデルもパススルーし、結果が追加されます。
+
+次の JSON 応答は、ドメイン固有の解析を `detail` ノードとしてより広範なカテゴリ化解析に含める方法を示しています。
+
+```json
+"categories":[
+  {
+    "name":"abstract_",
+    "score":0.00390625
+  },
+  {
+    "name":"people_",
+    "score":0.83984375,
+    "detail":{
+      "celebrities":[
+        {
+          "name":"Satya Nadella",
+          "faceRectangle":{
+            "left":597,
+            "top":162,
+            "width":248,
+            "height":248
+          },
+          "confidence":0.999028444
+        }
+      ],
+      "landmarks":[
+        {
+          "name":"Forbidden City",
+          "confidence":0.9978346
+        }
+      ]
+    }
+  }
+]
+```
+
+## <a name="list-the-domain-specific-models"></a>ドメイン固有のモデルの一覧
+
+現在、Computer Vision では、次のドメイン固有モデルがサポートされています。
 
 | Name | 説明 |
 |------|-------------|
 | celebrities | 著名人の認識、`people_` カテゴリに分類された画像についてサポート |
 | landmarks | ランドマークの認識、`outdoor_` または `building_` カテゴリに分類された画像についてサポート |
 
-### <a name="domain-model-list-example"></a>ドメイン モデル一覧取得の例
-
-次の JSON 応答では、Computer Vision でサポートされているドメイン固有モデルの一覧が取得されます。
+[Models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API を呼び出すと、各モデルを適用できるカテゴリと共に、この情報が返されます。
 
 ```json
 {
-    "models": [
-        {
-            "name": "celebrities",
-            "categories": ["people_", "人_", "pessoas_", "gente_"]
-        },
-        {
-            "name": "landmarks",
-            "categories": ["outdoor_", "户外_", "屋外_", "aoarlivre_", "alairelibre_",
-                "building_", "建筑_", "建物_", "edifício_"]
-        }
-    ]
+  "models":[
+    {
+      "name":"celebrities",
+      "categories":[
+        "people_",
+        "人_",
+        "pessoas_",
+        "gente_"
+      ]
+    },
+    {
+      "name":"landmarks",
+      "categories":[
+        "outdoor_",
+        "户外_",
+        "屋外_",
+        "aoarlivre_",
+        "alairelibre_",
+        "building_",
+        "建筑_",
+        "建物_",
+        "edifício_"
+      ]
+    }
+  ]
 }
 ```
 

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: f50767ad4fc979962968c32bbe972e28d93cce88
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 89902da9668d32c28e5cc88b7e4468c0dbd0b861
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166406"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335914"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -57,9 +57,9 @@ Azure HDInsight で Apache Hive を使用して JavaScript Object Notation (JSON
 }
 ```
 
-ファイルは、**wasb://processjson@hditutorialdata.blob.core.windows.net/** で参照できます。 HDInsight での Azure BLOB Storage の使用方法については、[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB Storage の使用](../hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
+このファイルは **wasb://processjson\@hditutorialdata.blob.core.windows.net/** にあります。 HDInsight での Azure BLOB ストレージの使用方法については、[HDInsight の Apache Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](../hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
 
-このチュートリアルでは、Hive コンソールを使用します。 Hive コンソールを開く方法については、「[リモート デスクトップによる HDInsight での Hive と Hadoop の使用](apache-hadoop-use-hive-remote-desktop.md)」をご覧ください。
+このチュートリアルでは、Apache Hive コンソールを使用します。 Hive コンソールを開く方法については、「[HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する](apache-hadoop-use-hive-ambari-view.md)」を参照してください。
 
 ## <a name="flatten-json-documents"></a>JSON ドキュメントの平坦化
 次のセクションで一覧表示されているメソッドでは、JSON ドキュメントが 1 行で構成されている必要があります。 このため、JSON ドキュメントを文字列にフラット化する必要があります。 JSON ドキュメントがすでにフラット化されている場合、このステップをスキップして、JSON データの分析に関する次のセクションに直接進むことができます。 JSON ドキュメントをフラット化するには、次のスクリプトを実行します。
@@ -83,7 +83,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-未加工の JSON ファイルは **wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。 **StudentsRaw** Hive テーブルは、未加工のフラット化されていない JSON ドキュメントを指しています。
+未加工の JSON ファイルは **wasb://processjson\@hditutorialdata.blob.core.windows.net/** にあります。 **StudentsRaw** Hive テーブルは、未加工のフラット化されていない JSON ドキュメントを指しています。
 
 **StudentsOneLine** Hive テーブルは、**/json/students/** パスの下にある HDInsight の既定のファイル システムにデータを保存します。
 
@@ -101,7 +101,7 @@ Hive は、JSON ドキュメントに対してクエリを実行するための�
 * get_json_object user-defined 関数 (UDF) を使用します。
 * json_tuple UDF を使用します。
 * カスタムのシリアライザー/デシリアライザー (SerDe) を使用します。
-* Python またはその他の言語を使用して独自の UDF を作成します。 Hive で独自の Python コードを実行する方法の詳細については、「[HDInsight における Hive および Pig での Python ユーザー定義関数 (UDF) の使用][hdinsight-python]」を参照してください。
+* Python またはその他の言語を使用して独自の UDF を作成します。 Hive で独自の Python コードを実行する方法の詳細については、[Apache Hive および Apache Pig での Python UDF の使用][hdinsight-python]に関するページを参照してください。
 
 ### <a name="use-the-getjsonobject-udf"></a>get_json_object UDF を使用する
 Hive には、ランタイム処理中に JSON クエリを実行できる [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。 このメソッドでは 2 つの引数 (テーブル名とメソッド名) を取り、解析が必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。 この UDF の動作を確認する例を見てみましょう。
@@ -143,7 +143,7 @@ Hive コンソールにおけるこのスクリプトの出力:
 json_tuple UDF では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これによって、json\_tuple は元のテーブルの各行に UDT 関数を適用して、仮想テーブルを作成することができます。 複雑な JSON では **LATERAL VIEW** が繰り返し使用されるため、処理が難しくなります。 また、**JSON_TUPLE** では入れ子になった JSON を処理できません。
 
 ### <a name="use-a-custom-serde"></a>カスタム SerDe を使用する
-SerDe は、入れ子になった JSON ドキュメントの解析に最適な選択肢です。 SerDe を使用して JSON スキーマを定義し、そのスキーマを使用してドキュメントを解析することができます。 手順については、「[How to use a Custom JSON Serde with Microsoft Azure HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)」 (Microsoft Azure HDInsight でのカスタム JSON Serde の使用方法) を参照してください。
+SerDe は、入れ子になった JSON ドキュメントの解析に最適な選択肢です。 SerDe を使用して JSON スキーマを定義し、そのスキーマを使用してドキュメントを解析することができます。 手順については、「[How to use a Custom JSON Serde with Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)」 (Microsoft Azure HDInsight でのカスタム JSON Serde の使用方法) を参照してください。
 
 ## <a name="summary"></a>まとめ
 結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。 JSON ドキュメントが単純で、検索するのが 1 つのフィールドのみの場合には、Hive UDF get_json_object を選択できます。 検索対象のキーが複数ある場合には、json_tuple を使用できます。 入れ子になったドキュメントの場合、JSON SerDe を使用する必要があります。
@@ -152,9 +152,9 @@ SerDe は、入れ子になった JSON ドキュメントの解析に最適な�
 
 関連記事については、次を参照してください。
 
-* [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](../hdinsight-use-hive.md)
-* [HDInsight での Hive を使用したフライトの遅延データの分析](../hdinsight-analyze-flight-delay-data.md)
-* [HDInsight での Hive を使用した Twitter データの分析](../hdinsight-analyze-twitter-data.md)
+* [HDInsight で Apache Hive Hadoop と共に Apache Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](../hdinsight-use-hive.md)
+* [HDInsight での Apache Hive を使用したフライトの遅延データの分析](../hdinsight-analyze-flight-delay-data-linux.md)
+* [HDInsight での Apache Hive を使用した Twitter データの分析](../hdinsight-analyze-twitter-data-linux.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

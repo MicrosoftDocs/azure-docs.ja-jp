@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 099576b1a4c5c28aab7672aaeb9274bc0beb96bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 037f0ff64b114ce9341702564147825099695aa0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842324"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105643"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>フェールバックのために Azure でプロセス サーバーを設定する
 
@@ -33,7 +33,7 @@ ms.locfileid: "52842324"
 3. **[プロセス サーバーの追加]** ページで、Azure でプロセス サーバーをデプロイすることを選択します。
 4. Azure の設定を指定します。これには、フェールオーバーに使用されるサブスクリプション、リソース グループ、フェールオーバーに使用される Azure リージョン、および Azure VM が配置される仮想ネットワークが含まれます。 複数の Azure ネットワークを使用している場合は、それぞれにプロセス サーバーが必要です。
 
-  ![プロセス サーバー ギャラリー アイテムの追加](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
+   ![プロセス サーバー ギャラリー アイテムの追加](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
 4. **[サーバー名]**、**[ユーザー名]**、および **[パスワード]** で、プロセス サーバーの名前と、サーバー上で管理者のアクセス許可が割り当てられる資格情報を指定します。
 5. サーバー VM ディスクに使用されるストレージ アカウント、プロセス サーバー VM が配置されるサブネット、および VM の起動時に割り当てられるサーバー IP アドレスを指定します。

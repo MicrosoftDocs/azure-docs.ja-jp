@@ -1,25 +1,25 @@
 ---
-title: Azure Active Directory の動的グループ メンバーシップ ルール参照 | Microsoft Docs
-description: グループとルール参照に自動的にデータを入力するメンバーシップ ルールを作成する方法。
+title: 動的で自動的なグループ メンバーシップ ルール - Azure Active Directory | Microsoft Docs
+description: グループを自動的に設定するメンバーシップ ルールと、ルール参照を作成する方法。
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a64f92df7592b4df419e5f70a32f631ca0504c6c
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994217"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450670"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -137,7 +137,7 @@ user.department -eq "Sales"
  次の例の式は、user.department の値が一覧内のいずれかの値に等しい場合に true に評価されます。
 
 ```
-   user.department -in ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+   user.department -in ["50001","50002","50003","50005","50006","50007","50008","50016","50020","50024","50038","50039","51100"]
 ```
 
 
@@ -348,7 +348,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | 任意の文字列値 |(device.displayName -eq "Rob Iphone”)
  deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")
- deviceOSVersion | 任意の文字列値 | (device.OSVersion -eq "9.1")
+ deviceOSVersion | 任意の文字列値 | (device.deviceOSVersion -eq "9.1")
  deviceCategory | 有効なデバイス カテゴリ名 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")

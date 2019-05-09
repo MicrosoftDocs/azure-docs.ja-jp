@@ -1,10 +1,10 @@
 ---
-title: チュートリアル - Azure Active Directory のログを Azure ストレージ アカウントにアーカイブする (プレビュー) | Microsoft Docs
-description: Azure Active Directory のログをストレージ アカウントにプッシュするよう Azure 診断を設定する方法について説明します (プレビュー)
+title: チュートリアル - Azure Active Directory のログをストレージ アカウントにアーカイブする (プレビュー) | Microsoft Docs
+description: Azure Active Directory のログをストレージ アカウントにプッシュするよう Azure Diagnostics を設定する方法について説明します (プレビュー)
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
 ms.service: active-directory
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9d41c0ceeed2a69884b8ef481c79feb495fc89c0
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6d34b41e780466d9ab734b9dbd0e58016dba7b10
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621210"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434723"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>チュートリアル: Azure AD のログを Azure ストレージ アカウントにアーカイブする (プレビュー)
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>チュートリアル:Azure AD のログを Azure ストレージ アカウントにアーカイブする (プレビュー)
 
 このチュートリアルでは、Azure Active Directory (Azure AD) のログを Azure ストレージ アカウントにルートするよう Azure Monitor の診断設定をセットアップする方法について説明します。
 
@@ -44,11 +45,11 @@ ms.locfileid: "51621210"
 3. **[エクスポート設定]** を選択します。 
 
 4. **[診断設定]** ウィンドウで、次のいずれかの操作を実行します。
-    * 既存の設定を変更するには、**[設定の編集]** を選択します。
-    * 新しい設定を追加するには、**[診断の設定の追加]** を選択します。  
-      最大で 3 つの設定を作成できます。 
+   * 既存の設定を変更するには、**[設定の編集]** を選択します。
+   * 新しい設定を追加するには、**[診断の設定の追加]** を選択します。  
+     最大で 3 つの設定を作成できます。 
 
-    ![設定のエクスポート](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
+     ![設定のエクスポート](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
 5. 設定にその目的を連想しやすいよう、わかりやすい名前を付けます ("*Azure ストレージ アカウントに送信*" など)。 
 

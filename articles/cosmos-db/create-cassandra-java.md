@@ -1,23 +1,21 @@
 ---
 title: 'クイック スタート: Cassandra API と Java - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure Portal と Java でプロファイル アプリケーションを作成する方法を示します
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.component: cosmosdb-cassandra
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 0ba2143847d51bda7bc15c0c93835c758505cd0b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7f6108a5d1e8ee386641c6d1f7c09ea96e12458c
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089182"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587602"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>クイック スタート: Java と Azure Cosmos DB を使用して Cassandra アプリをビルドする
+# <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>クイック スタート:Java SDK と Azure Cosmos DB を使用して Cassandra アプリをビルドする
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)

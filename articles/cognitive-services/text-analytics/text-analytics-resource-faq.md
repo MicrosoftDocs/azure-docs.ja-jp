@@ -3,19 +3,19 @@ title: Text Analytics API に関してよく寄せられる質問
 titleSuffix: Azure Cognitive Services
 description: Text Analytics API に関する一般的な質問の回答を表示します。
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: aa1c5b048c3ef339d01a3a63fd1d565b888ffbbb
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: a85fa543a6b26a5ea6452ce99fb91dc1ce465db7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603398"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545296"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service に関してよく寄せられる質問 (FAQ)
 
@@ -53,5 +53,5 @@ ms.locfileid: "45603398"
 
 ## <a name="see-also"></a>関連項目
 
- [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow:Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow:Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

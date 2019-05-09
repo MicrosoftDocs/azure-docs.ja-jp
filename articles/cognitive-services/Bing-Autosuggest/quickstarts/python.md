@@ -1,73 +1,81 @@
 ---
-title: 'クイック スタート: Bing Autosuggest API (Python)'
+title: クイック スタート:Bing Autosuggest REST API と Python によって検索クエリの候補を表示する
 titlesuffix: Azure Cognitive Services
 description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jaswel
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 60585b2d5884962d0f988597ef1e50107e548122
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: 463ace3aa9004bdffe07a16a062a4871b8daf699
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830619"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008408"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-python"></a>Python での Bing Autosuggest API のクイック スタート
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>クイック スタート:Bing Autosuggest REST API と Python によって検索クエリの候補を表示する
 
-この記事では、Python で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
+このクイック スタートでは、Bing Autosuggest API を呼び出して JSON 応答を取得するための基礎を学ぶことができます。 このシンプルな Python アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[Python 3.x](https://www.python.org/downloads/) が必要です。
+* [Python 3.x](https://www.python.org/downloads/) 
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Autosuggest API v7** を取得している必要があります。 このクイックスタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>Autosuggest の結果を取得する
+## <a name="create-a-new-application"></a>新しいアプリケーションを作成する
 
-1. 適当な IDE で新しい Python プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+1. 普段ご利用の IDE またはエディターで新しい Python ファイルを作成します。 次のインポートを追加します。
 
-```python
-# -*- coding: utf-8 -*-
+    ```python
+    import http.client, urllib.parse, json
+    ```
 
-import http.client, urllib.parse, json
+2. API ホストとパス、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、および検索クエリの一部に対応する変数を作成します。
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+    ```python
+    subscriptionKey = 'enter key here'
+    host = 'api.cognitive.microsoft.com'
+    path = '/bing/v7.0/Suggestions'
+    mkt = 'en-US'
+    query = 'sail'
+    ```
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'enter key here'
+3. `?mkt=` パラメーターに市場コードを付加し、`&q=` パラメーターに目的のクエリを付加して、パラメーター文字列を作成します。
 
-host = 'api.cognitive.microsoft.com'
-path = '/bing/v7.0/Suggestions'
+    ```python
+    params = '?mkt=' + mkt + '&q=' + query
+    ```
 
-mkt = 'en-US'
-query = 'sail'
+## <a name="create-and-send-an-api-request"></a>API 要求を作成して送信する
 
-params = '?mkt=' + mkt + '&q=' + query
+1. お使いのサブスクリプション キーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。
+    
+    ```python
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    ```
 
-def get_suggestions ():
-  "Gets Autosuggest results for a query and returns the information."
+2. `HTTPSConnection()` を使用して API に接続し、要求パラメーターを含む `GET` 要求を送信します。
+    
+    ```python
+    conn = http.client.HTTPSConnection(host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read ()
+    ```
 
-  headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-  conn = http.client.HTTPSConnection(host)
-  conn.request ("GET", path + params, None, headers)
-  response = conn.getresponse ()
-  return response.read ()
+3. JSON 応答を取得して出力します。
 
-result = get_suggestions ()
-print (json.dumps(json.loads(result), indent=4))
-```
+    ```python
+    result = get_suggestions ()
+    print (json.dumps(json.loads(result), indent=4))
+    ```
 
-### <a name="response"></a>Response
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -138,7 +146,7 @@ print (json.dumps(json.loads(result), indent=4))
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Autosuggest チュートリアル](../tutorials/autosuggest.md)
+> [単一ページの Web アプリの作成](../tutorials/autosuggest.md)
 
 ## <a name="see-also"></a>関連項目
 

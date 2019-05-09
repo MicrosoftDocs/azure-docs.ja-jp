@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 84522612dbd31d406537b9679887e0f82a971b1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: cb5676b2609ffb16dd1ef5454ee443bc69fab782
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182321"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>クイック スタート: Translator Text API と Go を使用してテキストの言語を検出する
 
@@ -60,7 +60,7 @@ func main() {
      * Read your subscription key from an env variable.
      * Please note: You can replace this code block with
      * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables.
+     * want to use env variables. If so, be sure to delete the "os" import.
      */
     subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
     if subscriptionKey == "" {
@@ -163,6 +163,8 @@ go run detect-language.go
 作成したコードをサンプル コードと比較したい場合は、完全なサンプルを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) から入手できます。
 
 ## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [

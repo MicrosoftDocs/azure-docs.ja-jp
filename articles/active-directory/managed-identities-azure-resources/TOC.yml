@@ -1,161 +1,158 @@
-items:
 - name: Azure リソースのマネージド ID
   href: index.yml
 - name: 概要
   items:
-  - name: Azure リソースのマネージド ID について
-    href: overview.md
+    - name: Azure リソースのマネージド ID について
+      href: overview.md
 - name: クイック スタート
   items:
-  - name: VM マネージド ID を使用した Azure Resource Manager へのアクセス
-    items:
-    - name: Windows VM
-      href: tutorial-windows-vm-access-arm.md
-    - name: Linux VM
-      href: tutorial-linux-vm-access-arm.md
+    - name: VM マネージド ID を使用した Azure Resource Manager へのアクセス
+      items:
+        - name: Windows VM
+          href: tutorial-windows-vm-access-arm.md
+        - name: Linux VM
+          href: tutorial-linux-vm-access-arm.md
 - name: チュートリアル
   items:
-  - name: Windows VM/VMSS
-    items:
-    - name: Azure Data Lake Store へのアクセス
-      href: tutorial-windows-vm-access-datalake.md
-    - name: Azure Storage へのアクセス
-      href: tutorial-vm-windows-access-storage.md
-    - name: アクセス キーを使用した Azure Storage へのアクセス
-      href: tutorial-windows-vm-access-storage.md
-    - name: SAS を使用した Azure Storage へのアクセス
-      href: tutorial-windows-vm-access-storage-sas.md
-    - name: Azure SQL へのアクセス
-      href: tutorial-windows-vm-access-sql.md
-    - name: Azure Key Vault へのアクセス
-      href: tutorial-windows-vm-access-nonaad.md
-    - name: Azure Cosmos DB へのアクセス
-      href: tutorial-windows-vm-access-cosmos-db.md
-    - name: Azure AD Graph API へのアクセス
-      href: tutorial-windows-vm-access-azure-ad-graph.md
-    - name: ユーザー割り当てマネージド ID による Azure Resource Manager へのアクセス
-      href: tutorial-windows-vm-ua-arm.md
-  - name: Linux VM/VMSS
-    items:
-    - name: Azure Data Lake Store へのアクセス
-      href: tutorial-linux-vm-access-datalake.md
-    - name: Azure Storage へのアクセス
-      href: tutorial-linux-vm-access-storage.md
-    - name: アクセス キーを使用した Azure Storage へのアクセス
-      href: tutorial-linux-vm-access-storage-access-key.md
-    - name: SAS を使用した Azure Storage へのアクセス
-      href: tutorial-linux-vm-access-storage-sas.md
-    - name: Azure Key Vault へのアクセス
-      href: tutorial-linux-vm-access-nonaad.md
-    - name: Azure Cosmos DB へのアクセス
-      href: tutorial-linux-vm-access-cosmos-db.md
-    - name: Azure AD Graph API へのアクセス
-      href: tutorial-linux-vm-access-azure-ad-graph.md
-    - name: ユーザー割り当てマネージド ID による Azure Resource Manager へのアクセス
-      href: msi-tutorial-linux-vm-access-arm.md
-  - name: Azure Service Bus
-    href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-  - name: Azure App Service と Azure Functions
-    href: /azure/app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-  - name: Azure Event Hubs
-    href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-  - name: Azure Container Instances
-    href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+    - name: Windows VM/VMSS
+      items:
+        - name: Azure Data Lake Store へのアクセス
+          href: tutorial-windows-vm-access-datalake.md
+        - name: Azure Storage へのアクセス
+          href: tutorial-vm-windows-access-storage.md
+        - name: アクセス キーを使用した Azure Storage へのアクセス
+          href: tutorial-windows-vm-access-storage.md
+        - name: SAS を使用した Azure Storage へのアクセス
+          href: tutorial-windows-vm-access-storage-sas.md
+        - name: Azure SQL へのアクセス
+          href: tutorial-windows-vm-access-sql.md
+        - name: Azure Key Vault へのアクセス
+          href: tutorial-windows-vm-access-nonaad.md
+        - name: Azure Cosmos DB へのアクセス
+          href: tutorial-windows-vm-access-cosmos-db.md
+        - name: Azure AD Graph API へのアクセス
+          href: tutorial-windows-vm-access-azure-ad-graph.md
+        - name: ユーザー割り当てマネージド ID による Azure Resource Manager へのアクセス
+          href: tutorial-windows-vm-ua-arm.md
+    - name: Linux VM/VMSS
+      items:
+        - name: Azure Data Lake Store へのアクセス
+          href: tutorial-linux-vm-access-datalake.md
+        - name: Azure Storage へのアクセス
+          href: tutorial-linux-vm-access-storage.md
+        - name: アクセス キーを使用した Azure Storage へのアクセス
+          href: tutorial-linux-vm-access-storage-access-key.md
+        - name: SAS を使用した Azure Storage へのアクセス
+          href: tutorial-linux-vm-access-storage-sas.md
+        - name: Azure Key Vault へのアクセス
+          href: tutorial-linux-vm-access-nonaad.md
+        - name: Azure Cosmos DB へのアクセス
+          href: tutorial-linux-vm-access-cosmos-db.md
+        - name: Azure Container Registry へのアクセス
+          href: /azure/container-registry/container-registry-authentication-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+        - name: Azure AD Graph API へのアクセス
+          href: tutorial-linux-vm-access-azure-ad-graph.md
+        - name: ユーザー割り当てマネージド ID による Azure Resource Manager へのアクセス
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: Azure Service Bus
+      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+    - name: Azure App Service と Azure Functions
+      href: /azure/app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+    - name: Azure Event Hubs
+      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+    - name: Azure Container Instances
+      href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
 - name: ハウツー ガイド
   items:
-  - name: VM でのマネージド ID の構成
-    items:
-    - name: ポータル
-      href: qs-configure-portal-windows-vm.md
-    - name: CLI
-      href: qs-configure-cli-windows-vm.md
-    - name: PowerShell
-      href: qs-configure-powershell-windows-vm.md
-    - name: Azure Resource Manager テンプレート
-      href: qs-configure-template-windows-vm.md
-    - name: REST
-      href: qs-configure-rest-vm.md
-    - name: Azure SDK
-      href: qs-configure-sdk-windows-vm.md
-  - name: 仮想マシン スケール セットでのマネージド ID の構成
-    items:
-    - name: ポータル
-      href: qs-configure-portal-windows-vmss.md
-    - name: CLI
-      href: qs-configure-cli-windows-vmss.md
-    - name: PowerShell
-      href: qs-configure-powershell-windows-vmss.md
-    - name: Azure Resource Manager テンプレート
-      href: qs-configure-template-windows-vmss.md
-    - name: REST
-      href: qs-configure-rest-vmss.md
-  - name: VM でのマネージド ID の利用
-    items:
-    - name: アクセス トークンの取得
-      href: how-to-use-vm-token.md
-    - name: マネージド ID を使用して PowerShell と CLI にサインインする
-      href: how-to-use-vm-sign-in.md
-    - name: Azure SDK での使用
-      href: how-to-use-vm-sdk.md
-  - name: 他の Azure リソースへの管理 ID アクセスのアサイン
-    items:
-    - name: ポータル
-      href: howto-assign-access-portal.md
-    - name: CLI
-      href: howto-assign-access-cli.md
-    - name: PowerShell
-      href: howto-assign-access-powershell.md
-  - name: ユーザー割り当てマネージド ID の管理
-    items:
-    - name: ポータル
-      href: how-to-manage-ua-identity-portal.md
-    - name: CLI
-      href: how-to-manage-ua-identity-cli.md
-    - name: PowerShell
-      href: how-to-manage-ua-identity-powershell.md
-    - name: Azure Resource Manager テンプレート
-      href: how-to-manage-ua-identity-arm.md
-    - name: REST
-      href: how-to-manage-ua-identity-rest.md
-  - name: マネージド個人 ID サービス プリンシパルの表示
-    items:
-    - name: ポータル
-      href: how-to-view-managed-identity-service-principal-portal.md
-    - name: CLI
-      href: how-to-view-managed-identity-service-principal-cli.md
-    - name: PowerShell
-      href: how-to-view-managed-identity-service-principal-powershell.md
+    - name: VM でのマネージド ID の構成
+      items:
+        - name: ポータル
+          href: qs-configure-portal-windows-vm.md
+        - name: CLI
+          href: qs-configure-cli-windows-vm.md
+        - name: PowerShell
+          href: qs-configure-powershell-windows-vm.md
+        - name: Azure Resource Manager テンプレート
+          href: qs-configure-template-windows-vm.md
+        - name: REST
+          href: qs-configure-rest-vm.md
+        - name: Azure SDK
+          href: qs-configure-sdk-windows-vm.md
+    - name: 仮想マシン スケール セットでのマネージド ID の構成
+      items:
+        - name: ポータル
+          href: qs-configure-portal-windows-vmss.md
+        - name: CLI
+          href: qs-configure-cli-windows-vmss.md
+        - name: PowerShell
+          href: qs-configure-powershell-windows-vmss.md
+        - name: Azure Resource Manager テンプレート
+          href: qs-configure-template-windows-vmss.md
+        - name: REST
+          href: qs-configure-rest-vmss.md
+    - name: VM でのマネージド ID の利用
+      items:
+        - name: アクセス トークンの取得
+          href: how-to-use-vm-token.md
+        - name: マネージド ID を使用して PowerShell と CLI にサインインする
+          href: how-to-use-vm-sign-in.md
+        - name: Azure SDK での使用
+          href: how-to-use-vm-sdk.md
+        - name: VM 拡張機能の利用を中止し、Azure IMDS の使用を開始する
+          href: howto-migrate-vm-extension.md
+    - name: 他の Azure リソースへの管理 ID アクセスのアサイン
+      items:
+        - name: ポータル
+          href: howto-assign-access-portal.md
+        - name: CLI
+          href: howto-assign-access-cli.md
+        - name: PowerShell
+          href: howto-assign-access-powershell.md
+    - name: ユーザー割り当てマネージド ID の管理
+      items:
+        - name: ポータル
+          href: how-to-manage-ua-identity-portal.md
+        - name: CLI
+          href: how-to-manage-ua-identity-cli.md
+        - name: PowerShell
+          href: how-to-manage-ua-identity-powershell.md
+        - name: Azure Resource Manager テンプレート
+          href: how-to-manage-ua-identity-arm.md
+        - name: REST
+          href: how-to-manage-ua-identity-rest.md
+    - name: マネージド個人 ID サービス プリンシパルの表示
+      items:
+        - name: ポータル
+          href: how-to-view-managed-identity-service-principal-portal.md
+        - name: CLI
+          href: how-to-view-managed-identity-service-principal-cli.md
+        - name: PowerShell
+          href: how-to-view-managed-identity-service-principal-powershell.md
 - name: リファレンス
   items:
-  - name: CLI
-    href: /cli/azure/identity
-  - name: PowerShell
-    href: /powershell/module/azurerm.managedserviceidentity#managed_service_identity
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet
-  - name: Java
-    href: https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines
-  - name: Python
-    href: /python/api/azure.mgmt.msi
-  - name: Ruby
-    href: https://rubygems.org/gems/azure_mgmt_msi
-  - name: Node.js
-    href: /javascript/api/ms-rest-azure
-  - name: Go
-    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi
+    - name: CLI
+      href: /cli/azure/identity
+    - name: PowerShell
+      href: '/powershell/module/az.managedserviceidentity#managed_service_identity'
+    - name: .NET
+      href: '/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet'
+    - name: Java
+      href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
+    - name: Python
+      href: /python/api/azure.mgmt.msi
+    - name: Ruby
+      href: 'https://rubygems.org/gems/azure_mgmt_msi'
+    - name: Node.js
+      href: /javascript/api/ms-rest-azure
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'
 - name: リソース
   items:
-  - name: FAQ と既知の問題
-    href: known-issues.md
-  - name: Azure リソースのマネージド ID をサポートする Azure サービス
-    href: services-support-msi.md
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-msi
-  - name: AAD 開発者フォーラム
-    href: https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences
-ms.openlocfilehash: fd1da572bcd8dbf88fa2c3f54dd11f85bc489c93
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718629"
+    - name: FAQ と既知の問題
+      href: known-issues.md
+    - name: Azure リソースのマネージド ID をサポートする Azure サービス
+      href: services-support-managed-identities.md
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-msi'
+    - name: AAD 開発者フォーラム
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

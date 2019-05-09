@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166610"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546249"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -25,7 +25,7 @@ ms.locfileid: "53166610"
 
 この記事では、Azure の Network Performance Monitor (NPM) についてよく寄せられる質問 (FAQ) について説明します
 
-[Network Performance Monitor](/azure/networking/network-monitoring-overview) は、クラウド ベースの[ハイブリッド ネットワーク監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](../../azure-monitor/insights/network-performance-monitor-service-endpoint.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](../../azure-monitor/insights/network-performance-monitor-expressroute.md)にも利用できます。 
+[Network Performance Monitor](/azure/networking/network-monitoring-overview) は、クラウド ベースの[ハイブリッド ネットワーク監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](../../azure-monitor/insights/network-performance-monitor-expressroute.md)にも利用できます。 
 
 トラフィックのブラックホール、ルーティング エラーなどのネットワークの問題のほか、従来のネットワーク監視手法では検出されない問題を検出します。 ネットワーク リンクに関するしきい値を超えた場合、このソリューションはアラートと通知を生成します。 また、ネットワーク パフォーマンスの問題をタイムリーに検出できるほか、問題の原因を特定のネットワーク セグメントまたはデバイスに限定できます。 
 
@@ -40,7 +40,7 @@ NPM の様々な機能に対するプラットフォーム要件を、以下に�
 - NPM の ExpressRoute モニター機能は Windows Server (2008 SP1 またはそれ以降) オペレーティング システムのみをサポートします。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>NPM 内の監視ノードとして Linux マシンを使用できますか。
-Linux ベースのノードを使用してネットワークを監視する機能は、現在はプライベート プレビュー段階です。 詳細についてはアカウント マネージャーにご連絡ください。 ご使用のワークスペース ID を提供すれば、機能が有効にされます。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
+Linux ベースのノードを使用してネットワークを監視する機能は、現在はプレビュー段階です。 詳細についてはアカウント マネージャーにご連絡ください。 ご使用のワークスペース ID を提供すれば、機能が有効にされます。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM による監視で使用するノードのサイズ要件はありますか。
 ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 ソリューションには、使用する CPU が 5% を超えた場合に監視プロセスを停止する機能があります。
@@ -70,6 +70,9 @@ TCP プロトコルを使用してノードが監視をサポートするには�
 
 ### <a name="how-many-agents-should-i-use"></a>いくつのエージェントを使用する必要がありますか。
 監視する各サブネットに対して少なくとも 1 つのエージェントを使用してください。
+
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>使用できるエージェントの最大数はいくつですか。または、構成の上限に達したことを示すエラーが表示されます。
+NPM では、ワークスペースあたりの IP アドレス数が 5,000 個に制限されます。 ノードに IPv4 と IPv6 の両方のアドレスがある場合、そのノードに 2 つの IP アドレスがあるものとしてカウントされます。 したがって、5,000 個の IP アドレスというこの制限によって、エージェント数の上限が決まります。 [NPM] > [構成] の [ノード] タブを使用して、非アクティブなエージェントを削除できます。 NPM には、エージェントをホストしている VM にこれまで割り当てられていたすべての IP ドレスの履歴も保持されます。これらも、5,000 個の IP アドレスの上限に関係する個別の IP アドレスとしてカウントされます。 ワークスペース用に IP アドレスを解放するために、使用されていない IP アドレスを [ノード] ページで削除できます。
 
 ## <a name="monitoring"></a>監視
 
@@ -131,7 +134,7 @@ NPM は、[サポートされるリージョン](../../azure-monitor/insights/ne
 NPM は、[サポートされるリージョン](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのサービスへの接続を監視できます
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>NPM の ExpressRoute モニターではどのリージョンがサポートされていますか。
-NPM は、Azure のすべてのリージョンにある ExpressRoute 回線を監視できます。 NPM をオンボードする場合、[サポートされているリージョン](/azure/expressroute/how-to-npm#regions)のいずれかでホストする必要がある Log Analytics ワークスペースが必要です
+NPM は、Azure のすべてのリージョンにある ExpressRoute 回線を監視できます。 NPM をオンボードする場合、[サポートされているリージョン](/azure/expressroute/how-to-npm)のいずれかでホストする必要がある Log Analytics ワークスペースが必要です
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

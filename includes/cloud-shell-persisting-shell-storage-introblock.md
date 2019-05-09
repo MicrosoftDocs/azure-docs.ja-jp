@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: a66f5ca9501d09f2ef89f421191f617c177e10eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886196"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58052225"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
@@ -40,7 +40,7 @@ Cloud Shell では Azure File ストレージを使用してセッション間�
 ストレージのセットアップを促す画面が表示されたら、**[詳細設定の表示]** を選択して、追加オプションを表示します。 設定されているストレージ オプションは、ローカル冗長ストレージ (LRS) アカウント、 geo 冗長ストレージ (GRS) アカウント、およびゾーン冗長ストレージ (ZRS) アカウントをフィルター処理します。 
 
 > [!NOTE]
-> バッキング ファイル共有の回復性を強化するには、GRS または ZRS のストレージ アカウントの使用をお勧めします。 どちらの種類の冗長性を選ぶかは、実際の目標と価格の希望により異なります。 [詳細については、Azure Storage アカウントのレプリケーションのオプションを参照してください](https://docs.microsoft.com/azure/storage/common/storage-redundancy#choosing-a-replication-option)。
+> バッキング ファイル共有の回復性を強化するには、GRS または ZRS のストレージ アカウントの使用をお勧めします。 どちらの種類の冗長性を選ぶかは、実際の目標と価格の希望により異なります。 [詳細については、Azure Storage アカウントのレプリケーションのオプションを参照してください](https://docs.microsoft.com/azure/storage/common/storage-redundancy)。
 
 ![リソース グループ設定](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 
@@ -48,6 +48,7 @@ Cloud Shell では Azure File ストレージを使用してセッション間�
 マウント先の Cloud Shell マシンと同じリージョンに、関連付けられた Azure ストレージ アカウントが存在する必要があります。 現在のリージョンを確認するには、Bash で `env` を実行し、変数 `ACC_LOCATION` を見つけます。 ファイル共有には、`$Home` ディレクトリの永続化に使用できる 5 GB のイメージが割り当てられます。
 
 Cloud Shell マシンは、次の各リージョンに存在します。
+
 |領域|リージョン|
 |---|---|
 |アメリカ合衆国|米国東部、米国中南部、米国西部|

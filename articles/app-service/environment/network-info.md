@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 03/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 73175b326c25d5d9a78155d0d9d888b655da1bfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271013"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124135"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -54,6 +54,7 @@ ILB ASE が存在する場合、ILB のアドレスは、HTTP/S、FTP/S、Web �
 |  HTTP/HTTPS  | ユーザーが構成可能 |  80、443 |
 |  FTP/FTPS    | ユーザーが構成可能 |  21、990、10001-10020 |
 |  Visual Studio リモート デバッグ  |  ユーザーが構成可能 |  4020、4022、4024 |
+|  Web 配置サービス | ユーザーが構成可能 | 8172 |
 
 これは、ユーザーが外部 ASE または ILB ASE にいる場合に当てはまります。 外部 ASE にいる場合は、パブリック VIP でこれらのポートにヒットします。 ILB ASE にいる場合は、ILB でこれらのポートにヒットします。 ポート 443 をロックダウンすると、ポータルで公開されている一部の機能に影響が出る場合があります。 詳細については、「[ポータルの依存関係](#portaldep)」を参照してください。
 
@@ -131,7 +132,7 @@ ILB ASE がドメイン名 *contoso.net* であり、アプリ名が *testapp* �
 
 ## <a name="functions-and-web-jobs"></a>関数と Web ジョブ ##
 
-関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
+関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Microsoft Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
 
 ## <a name="ase-ip-addresses"></a>ASE IP アドレス ##
 
@@ -151,7 +152,7 @@ ASE で認識されている必要のある IP アドレスがいくつかあり
 
 ### <a name="app-assigned-ip-addresses"></a>アプリに割り当てられた IP アドレス ###
 
-外部 ASE では、個々のアプリに IP アドレスを割り当てることができます。 これは ILB ASE では実行できません。 独自の IP アドレスを持つようにアプリを構成する方法の詳細については、「[既存のカスタム SSL 証明書の Azure Web Apps へのバインド](../app-service-web-tutorial-custom-ssl.md)」をご覧ください。
+外部 ASE では、個々のアプリに IP アドレスを割り当てることができます。 これは ILB ASE では実行できません。 独自の IP アドレスを持つようにアプリを構成する方法の詳細については、「[既存のカスタム SSL 証明書の Azure App Service へのバインド](../app-service-web-tutorial-custom-ssl.md)」をご覧ください。
 
 アプリに独自の IP ベースの SSL アドレスがある場合、ASE はその IP アドレスにマップするために 2 つのポートを予約します。 1 つのポートは HTTP トラフィック用であり、もう 1 つのポートは HTTPS 用です。 これらのポートは、ASE UI の [IP アドレス] セクションに表示されます。 トラフィックは、VIP からこれらのポートに到達できる必要があります。そうでないと、アプリにアクセスできません。 この要件は、ネットワーク セキュリティ グループ (NSG) を構成するときに思い出すことが重要です。
 

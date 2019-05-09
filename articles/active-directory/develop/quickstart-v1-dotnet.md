@@ -8,23 +8,24 @@ manager: mtillman
 editor: ''
 ms.assetid: ed33574f-6fa3-402c-b030-fae76fba84e1
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f9389a7c0e80f075c01f2236fa1bdf9dc9544ac6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2b55f7e615f2c2edb604d5b9433db6cc48d9f36f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987443"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223395"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>クイック スタート: .NET Desktop (WPF) アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>クイック スタート:.NET Desktop (WPF) アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -49,7 +50,7 @@ Azure Active Directory (Azure AD) には、保護されたリソースにアク�
 * [アプリのスケルトン](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip)をダウンロードするか、[完全なサンプル](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)をダウンロードします。
 * ユーザーを作成してアプリケーションを登録するための Azure AD テナントがある。 テナントを所有していない場合は、「 [How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](quickstart-create-new-tenant.md)」を参照して取得してください。
 
-## <a name="step-1-register-the-directorysearcher-application"></a>手順 1: DirectorySearcher アプリケーションを登録する
+## <a name="step-1-register-the-directorysearcher-application"></a>手順 1:DirectorySearcher アプリケーションを登録する
 
 アプリがトークンを取得できるようにするには、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
@@ -64,7 +65,7 @@ Azure Active Directory (Azure AD) には、保護されたリソースにアク�
 6. 登録が完了すると、AAD により、アプリに一意のアプリケーション ID が割り当てられます。 この値は次のセクションで必要になるので、アプリケーション ページからコピーします。
 7. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。 API として **[Microsoft Graph]** を選択し、**[委任されたされたアクセス許可]** の下に **[ディレクトリ データの読み取り]** アクセス許可を追加します。 このアクセス許可の設定によって、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
 
-## <a name="step-2-install-and-configure-adal"></a>手順 2: ADAL をインストールして構成する
+## <a name="step-2-install-and-configure-adal"></a>手順 2:ADAL をインストールして構成する
 
 アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。 ADAL が Azure AD と通信するには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
 
@@ -76,11 +77,11 @@ Azure Active Directory (Azure AD) には、保護されたリソースにアク�
 
 1. `DirectorySearcher` プロジェクトで、`app.config` ファイルを開きます。
 1. Azure portal で入力した値が反映されるように、`<appSettings>` セクションの要素の値を置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
-  * `ida:Tenant` は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
-  * `ida:ClientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
-  * `ida:RedirectUri` は、ポータルに登録したリダイレクト URL です。
+   * `ida:Tenant` は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
+   * `ida:ClientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
+   * `ida:RedirectUri` は、ポータルに登録したリダイレクト URL です。
 
-## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>手順 3: ADAL を使用して Azure AD からトークンを取得する
+## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>手順 3:ADAL を使用して、Azure AD からトークンを取得する
 
 ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireTokenAsync(...)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
 
@@ -171,7 +172,7 @@ ADAL を使用することの基本的なメリットは、アプリがアクセ
                 MessageBox.Show(ex.Message);
             }
 
-            // If user interaction is required, proceed to main page without singing the user in.
+            // If user interaction is required, proceed to main page without signing the user in.
             return;
         }
 

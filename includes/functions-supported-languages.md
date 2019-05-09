@@ -2,28 +2,28 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 ms.service: functions
 ms.topic: include
-ms.date: 08/29/2018
-ms.author: tdykstra
+ms.date: 03/17/2019
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: f62d14477daa820cf2b862f5854b763f8eaff753
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: db7753f3d4319cd8f93b39880fe40c8f757f03c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886264"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133613"
 ---
 |言語                                 |1.x         |2.x|
 |-----------------------------------------|------------|---|
 |[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Framework 4.7)|GA (.NET Core 2)|
 |[JavaScript](../articles/azure-functions/functions-reference-node.md)|GA (Node 6)|GA (Node 8、10)|
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4.7)|GA (.NET Core 2)|
-|[Java](../articles/azure-functions/functions-reference-java.md)|該当なし|プレビュー (Java 8)|
+|[Java](../articles/azure-functions/functions-reference-java.md)|該当なし|GA (Java 8)|
 |[Python](../articles/azure-functions/functions-reference-python.md)|試験段階|プレビュー (Python 3.6)|
-|TypeScript          |試験段階|JavaScript へのトランスパイリングによってサポートされます|
+|TypeScript          |試験段階|GA (JavaScript へのトランスパイリングによってサポートされます)|
 |PHP                 |試験段階|該当なし|
 |バッチ (.cmd、.bat)  |試験段階|該当なし|
 |Bash                |試験段階|該当なし|

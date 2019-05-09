@@ -1,20 +1,19 @@
 ---
 title: Azure Cosmos DB は:SQL Async Java API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB SQL Async Java SDK の各バージョン間の変更など、SQL Async Java API と SDK に関するあらゆる詳細を提供します。
-services: cosmos-db
-author: SnehaGunda
+author: moderakh
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 3/5/2019
 ms.author: moderakh
-ms.openlocfilehash: 5284de9a5b0f4f78b3b8b68e3848c2cb2783b839
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338619"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570098"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -33,24 +32,45 @@ ms.locfileid: "53338619"
 
 SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポートした非同期操作が可能であるという点で、SQL API Java SDK とは異なります。 既存の [SQL API Java SDK](sql-api-sdk-java.md) では、非同期操作はサポートされません。 
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client?view=azure-java-stable)</td></tr>
-
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)</td></tr>
-
-<tr><td>**Code sample**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
-
-<tr><td>**パフォーマンスに関するヒント**</td><td>[GitHub の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
-
-<tr><td>**サポートされている最小ランタイム**</td><td>[JDK 8](https://aka.ms/azure-jdks)</td></tr>
-</table></br>
+| |  |
+|---|---|
+| **SDK のダウンロード** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) |
+|**API ドキュメント** |[Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable) | 
+|**SDK への協力** | [GitHub](https://github.com/Azure/azure-cosmosdb-java) | 
+|**作業開始** | [Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) | 
+|**Code sample** | [GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)| 
+| **パフォーマンスに関するヒント**| [GitHub の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
+| **サポートされている最小ランタイム**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
+* client#close() におけるリソース リークのバグ修正 ([github #88](https://github.com/Azure/azure-cosmosdb-java/issues/88))。
+
+### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
+* クロス パーティション クエリの継続トークンのサポートを追加しました。
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+* 直接モードのバグをいくつか修正しました。
+* 直接モードでのログ記録を強化しました。
+* 接続管理を強化しました。
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+* 直接モード接続は、一般提供 (GA) になっています。 直接モード接続を使用するサンプルについては、[azure-cosmosdb-java](https://github.com/Azure/azure-cosmosdb-java) GitHub リポジトリをご覧ください。
+* QueryMetrics のサポートが追加されました。
+* 代わりに java.util.List を受け付けるために重要な順序に合わせて、java.util.Collection を受け付ける API を変更しました。 ConnectionPolicy#getPreferredLocations()、JsonSerialization、および PartitionKey(.) でリストを受け付けるようになりました。
+
+### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
+* 直接モード接続のサポートが追加されました。
+* 代わりに java.util.List を受け付けるために重要な順序に合わせて、java.util.Collection を受け付ける API を変更しました。
+  ConnectionPolicy#getPreferredLocations()、JsonSerialization、および PartitionKey(.) でリストを受け付けるようになりました。
+* ゲートウェイ モードでのドキュメント クエリのセッション バグを修正しました。
+* 依存関係をアップグレードしました (netty 0.4.20 [github #79](https://github.com/Azure/azure-cosmosdb-java/issues/79)、RxJava 1.3.8)。
+
+### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
+* 非常に大規模なクエリ応答の処理を修正しました。
+* クライアントをインスタンス化するときのリソース トークン処理を修正しました ([github #78](https://github.com/Azure/azure-cosmosdb-java/issues/78))。
+* 脆弱性のある依存関係 jackson-databind をアップグレードしました ([github #77](https://github.com/Azure/azure-cosmosdb-java/pull/77))。
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 * リソース リークのバグを修正しました。
@@ -126,6 +146,12 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.4.3](#2.4.3) |2019 年 3 月 5 日|--- |
+| [2.4.2](#2.4.2) |2019 年 3 月 1 日|--- |
+| [2.4.1](#2.4.1) |2019 年 2 月 20 日|--- |
+| [2.4.0](#2.4.0) |2019 年 2 月 8 日|--- |
+| [2.4.0-beta-1](#2.4.0-beta-1) |2019 年 2 月 4 日|--- |
+| [2.3.1](#2.3.1) |2019 年 1 月 15 日|--- |
 | [2.3.0](#2.3.0) |2018 年 11 月 29 日|--- |
 | [2.2.2](#2.2.2) |2018 年 11 月 8 日|--- |
 | [2.2.1](#2.2.1) |2018 年 11 月 2 日|--- |

@@ -3,18 +3,18 @@ title: Azure IoT Hub Device Provisioning Service 用にデバイスをセット�
 description: デバイスの製造プロセス中に、IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスを設定します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/02/2018
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f0b62f73650294349e1879b306beebabdaf974a7
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633403"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500976"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
@@ -45,21 +45,7 @@ ms.locfileid: "45633403"
 
 Device Provisioning Service Client SDK は、デバイス登録ソフトウェアを実装するために役立ちます。 しかし、使用する前に、開発クライアント プラットフォームと構成証明メカニズムに固有の SDK のバージョンを構築する必要があります。 このチュートリアルでは、Windows 開発プラットフォーム上で Visual Studio 2017 を使用する、以下のサポートされている種類の構成証明書用の SDK を構築します。
 
-1. [CMake ビルド システム](https://cmake.org/download/) バージョン 3.11.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.11.4 の暗号化ハッシュを検証しています。
-
-    ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
-    True
-    ```
-    
-    この記事の執筆時点では、CMake サイトにバージョン 3.11.4 用に次のハッシュ値が一覧表示されていました。
-
-    ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
-    ```
+1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
@@ -68,7 +54,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+    この操作は、完了するまでに数分かかります。
 
 
 1. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
@@ -215,7 +201,7 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** をクリックします。  
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * プラットフォーム固有の Device Provisioning Service Client SDK を構築する

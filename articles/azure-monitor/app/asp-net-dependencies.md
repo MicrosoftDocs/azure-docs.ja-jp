@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7cde9fa0849729ba9db9b604dd0ad26cf362a484
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c77b5810164aef7508f717a0f75d90cf6cba2089
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969864"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59273109"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定:依存関係の追跡
-*依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](../../application-insights/app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
+*依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
 
 すぐに使用できる依存関係モニターは、現在、次の種類の依存関係の呼び出しを報告します。
 
@@ -50,15 +50,15 @@ ms.locfileid: "53969864"
 
 ## <a name="where-to-find-dependency-data"></a>依存関係データが見つかる場所
 * [アプリケーション マップ](#application-map)では、アプリと隣接コンポーネント間の依存関係が視覚化されます。
-* [[パフォーマンス]、[ブラウザー]、および [障害] ブレード](#performance-and-blades)では、サーバー依存関係データが示されます。
+* [[パフォーマンス]、[ブラウザー]、および [障害] ブレード](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-performance)では、サーバー依存関係データが示されます。
 * [[ブラウザー] ブレード](#ajax-calls)では、ユーザーのブラウザーからの AJAX 呼び出しが示されます。
-* [低速または失敗した要求からクリックしていき](#diagnose-slow-requests)、依存関係呼び出しを確認します。
+* 低速または失敗した要求からクリックしていき、依存関係呼び出しを確認します。
 * 依存関係データのクエリを実行するには、[Analytics](#analytics) を使用できます。
 
 ## <a name="application-map"></a>アプリケーション マップ
 アプリケーション マップを見ると、アプリケーションのコンポーネント間の依存関係を発見できます。 これは、アプリから送信されたテレメトリから自動的に生成されます。 この例では、ブラウザー スクリプトからの AJAX 呼び出しとサーバー アプリから 2 つの外部サービスへの REST 呼び出しが示されています。
 
-![アプリケーション マップ](./media/asp-net-dependencies/08.png)
+![アプリケーション マップ](./media/asp-net-dependencies/cloud-rolename.png)
 
 * ボックスから、関連する依存関係および他のグラフに**移動できます**。
 * マップは[ダッシュボード](../../azure-monitor/app/app-insights-dashboards.md)に**ピン留め**し、すべての機能を利用することができます。
@@ -66,13 +66,7 @@ ms.locfileid: "53969864"
 [詳細情報](../../azure-monitor/app/app-map.md)。
 
 ## <a name="performance-and-failure-blades"></a>[パフォーマンス] および [障害] ブレード
-[パフォーマンス] ブレードは、サーバー アプリから行われた依存関係呼び出しの期間を示します。 概要グラフと、呼び出しによって分類されたテーブルがあります。
-
-![[パフォーマンス] ブレードの依存関係グラフ](./media/asp-net-dependencies/dependencies-in-performance-blade.png)
-
-概要グラフまたはテーブル項目をクリックしていき、これらの呼び出しの生の発生を検索します。
-
-![依存関係呼び出しインスタンス](./media/asp-net-dependencies/dependency-call-instance.png)
+[パフォーマンス] ブレードは、サーバー アプリから行われた依存関係呼び出しの期間を示します。
 
 **[障害]** ブレードには**エラーの数**が表示されます。 エラーとは、範囲 200 ～ 399 にない、または不明なリターン コードのことです。
 
@@ -87,53 +81,12 @@ ms.locfileid: "53969864"
 ## <a name="diagnosis"></a> 低速なリクエストの診断
 各要求イベントは、依存関係呼び出し、例外、およびアプリでの要求の処理中に追跡されるその他のイベントに関連しています。 そのため、いくつかのリクエストが正しく実行されない場合は、それが依存関係からの応答が遅いためかどうかを調べることができます。
 
-ひとつの例を見てみましょう。
-
-### <a name="tracing-from-requests-to-dependencies"></a>リクエストから依存関係までのトレース
-[パフォーマンス] ブレードを開き、要求のグリッドを参照します。
-
-![平均およびカウントを持つ要求の一覧](./media/asp-net-dependencies/02-reqs.png)
-
-上部にあるものは、非常に長い時間がかかります。 どこに時間がかかるか見つけられるか見てみましょう。
-
-個々の要求イベントを表示するには、その行をクリックします。
-
-![要求回数の一覧](./media/asp-net-dependencies/03-instances.png)
-
-実行時間の長いインスタンスをクリックしてさらに検査し、この要求に関連したリモート依存関係呼び出しまで下にスクロールします。
-
-![リモートの依存関係への呼び出しを見つけ、異常な期間を特定します](./media/asp-net-dependencies/04-dependencies.png)
-
-この要求に使われた時間のほとんどが、ローカル サービスへの呼び出しに費やされたように見えます。
-
-さらに情報を得るには、その行をクリックします。
-
-![そのリモートの依存関係をクリックし、問題の原因を特定します](./media/asp-net-dependencies/05-detail.png)
-
-ここに問題があるようです。 問題を特定できたので、あとは呼び出しに長い時間がかかっている理由を確認するだけです。
-
-### <a name="request-timeline"></a>要求のタイムライン
-別のケースでは、呼び出しが長い依存関係はありませんが、 タイムライン ビューに切り替えることで、内部処理に遅延が発生した箇所を確認できます。
-
-![リモートの依存関係への呼び出しを見つけ、異常な期間を特定します](./media/asp-net-dependencies/04-1.png)
-
-最初の依存関係呼び出しの後に大きな隔たりがあるようです。コードを参照してその理由を調べる必要があります。
-
 ### <a name="profile-your-live-site"></a>ライブ サイトのプロファイリング
 
-時間がどこに使われているのか見当がつかないでしょうか。 [Application Insights プロファイラー](../../application-insights/app-insights-profiler.md)は、ライブ サイトへの HTTP 呼び出しをトレースし、コード内の関数のうち最も時間がかかったものを示します。
-
-## <a name="failed-requests"></a>失敗した要求
-失敗した要求も、依存関係への失敗した呼び出しに関連している可能性があります。 この場合も、クリック操作で問題を追跡することができます。
-
-![失敗した要求のグラフをクリックします。](./media/asp-net-dependencies/06-fail.png)
-
-失敗した要求の発生場所までクリックしていき、関連するイベントを参照します。
-
-![要求の種類をクリックし、インスタンスをクリックして同じインスタンスの異なるビューを取得し、それをクリックして例外の詳細を取得します。](./media/asp-net-dependencies/07-faildetail.png)
+時間がどこに使われているのか見当がつかないでしょうか。 [Application Insights プロファイラー](../../azure-monitor/app/profiler.md)は、ライブ サイトへの HTTP 呼び出しをトレースし、コード内の関数のうち最も時間がかかったものを示します。
 
 ## <a name="analytics"></a>Analytics
-依存関係は [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguage)によって追跡できます。 次に例をいくつか示します。
+依存関係は [Kusto クエリ言語](/azure/kusto/query/)で追跡できます。 次に例をいくつか示します。
 
 * これは、失敗した依存関係呼び出しを見つけます。
 
@@ -211,10 +164,6 @@ ms.locfileid: "53969864"
 | IIS Express |代わりに IIS サーバーを使用します。 |
 | Azure Web アプリ |Web アプリのコントロール パネルで [[Application Insights] ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、メッセージが表示された場合は [Install (インストール)] を選択します。 |
 | Azure Cloud Services |[スタートアップ タスクを使用](../../azure-monitor/app/cloudservices.md)するか、[.NET Framework 4.6 以降をインストール](../../cloud-services/cloud-services-dotnet-install-dotnet.md)します。 |
-
-## <a name="video"></a>ビデオ
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>次の手順
 * [例外](../../azure-monitor/app/asp-net-exceptions.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: ad050e11c98139af00ad752f8960d55a58ca2f34
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 8541362a16c7d12a0e3a4cf009ed9cd5faf9f1cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132593"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097629"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute 回線のピアリングをリセットする
 
@@ -25,54 +25,56 @@ ExpressRoute ピアリングをリセットすると役立つ可能性のある�
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ## <a name="reset-a-peering"></a>ピアリングをリセットする
 
 1. PowerShell をローカルで実行している場合は、昇格された特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
-  ```azurepowershell
-  Connect-AzureRmAccount
-  ```
+   ```azurepowershell
+   Connect-AzAccount
+   ```
 2. 複数の Azure サブスクリプションを所有している場合には、アカウントのサブスクリプションをすべて確認します。
 
-  ```azurepowershell-interactive
-  Get-AzureRmSubscription
-  ```
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 3. 使用するサブスクリプションを指定します。
 
-  ```azurepowershell-interactive
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 4. 次のコマンドを実行して、ExpressRoute 回線を取得します。
 
-  ```azurepowershell-interactive
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-  ```
+   ```azurepowershell-interactive
+   $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+   ```
 5. 無効または有効にするピアリングを識別します。 *Peerings* は配列です。 次の例では、Peerings[0] は Azure プライベート ピアリングであり、Peerings[1] は Microsoft ピアリングです。
 
-  ```azurepowershell-interactive
-Name                             : ExpressRouteARMCircuit
-ResourceGroupName                : ExpressRouteResourceGroup
-Location                         : westus
-Id                               : /subscriptions/########-####-####-####-############/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-Etag                             : W/"cd011bef-dc79-49eb-b4c6-81fb6ea5d178"
-ProvisioningState                : Succeeded
-Sku                              : {
+   ```azurepowershell-interactive
+   Name                             : ExpressRouteARMCircuit
+   ResourceGroupName                : ExpressRouteResourceGroup
+   Location                         : westus
+   Id                               : /subscriptions/########-####-####-####-############/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+   Etag                             : W/"cd011bef-dc79-49eb-b4c6-81fb6ea5d178"
+   ProvisioningState                : Succeeded
+   Sku                              : {
                                      "Name": "Standard_MeteredData",
                                      "Tier": "Standard",
                                      "Family": "MeteredData"
                                    }
-CircuitProvisioningState         : Enabled
-ServiceProviderProvisioningState : Provisioned
-ServiceProviderNotes             :
-ServiceProviderProperties        : {
+   CircuitProvisioningState         : Enabled
+   ServiceProviderProvisioningState : Provisioned
+   ServiceProviderNotes             :
+   ServiceProviderProperties        : {
                                      "ServiceProviderName": "Coresite",
                                      "PeeringLocation": "Los Angeles",
                                      "BandwidthInMbps": 50
                                    }
-ServiceKey                       : ########-####-####-####-############
-Peerings                         : [
+   ServiceKey                       : ########-####-####-####-############
+   Peerings                         : [
                                      {
                                        "Name": "AzurePrivatePeering",
                                        "Etag": "W/\"cd011bef-dc79-49eb-b4c6-81fb6ea5d178\"",
@@ -128,17 +130,17 @@ Peerings                         : [
                                        "Connections": []
                                      }
                                    ]
-Authorizations                   : []
-AllowClassicOperations           : False
-GatewayManagerEtag               :
-  ```
+   Authorizations                   : []
+   AllowClassicOperations           : False
+   GatewayManagerEtag               :
+   ```
 6. 次のコマンドを実行して、ピアリングの状態を変更します。
 
-  ```azurepowershell-interactive
-  $ckt.Peerings[0].State = "Disabled"
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
-  ```
-ピアリングが、設定された状態になります。 
+   ```azurepowershell-interactive
+   $ckt.Peerings[0].State = "Disabled"
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+   ```
+   ピアリングが、設定された状態になります。 
 
 ## <a name="next-steps"></a>次の手順
 ExpressRoute の問題をトラブルシューティングするためにサポートが必要な場合は、次の記事をチェックしてください。

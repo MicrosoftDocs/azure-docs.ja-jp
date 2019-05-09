@@ -6,18 +6,18 @@ documentationcenter: na
 author: ggailey777
 manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
-ms.service: azure-functions; cosmos-db
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: f0173940656581c8bf6b66b0d2a4744e1c751f82
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 941a35084ba811e3bf9224087336db9abbd5b5d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968290"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137846"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -60,7 +60,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 1. 検索フィールドに「`cosmos`」と入力し、**Azure Cosmos DB トリガー** テンプレートを選択します。
 
-1. プロンプトが表示されたら、**[インストール]** を選択して Azure Storage 拡張機能とすべての依存関係を関数アプリにインストールします。 インストールが正常に完了したら、**[続行]** を選択します。
+1. プロンプトが表示されたら、**[インストール]** を選択して Azure Cosmos DB 拡張機能を関数アプリにインストールします。 インストールが正常に完了したら、**[続行]** を選択します。
 
     ![バインディング拡張機能をインストールする](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -70,7 +70,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
     | Setting      | 推奨値  | Description                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **名前** | 既定値 | テンプレートに示されている既定の関数名を使用します。|
+    | **Name** | 既定値 | テンプレートに示されている既定の関数名を使用します。|
     | **Azure Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択し、使用する**サブスクリプション**、前の手順で作成した**データベース アカウント**、**[選択]** の順に選択します。 これにより、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
     | **[コレクション名]** | 項目 | 監視するコレクションの名前。 |
     | **[Create lease collection if it doesn't exist]\(リース コレクションが存在しない場合は作成する\)** | オン | コレクションはまだ存在していないため、作成します。 |
@@ -140,8 +140,6 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Cosmos DB でドキュメントが追加または変更されたときに実行される関数を作成しました。
+Azure Cosmos DB でドキュメントが追加または変更されたときに実行される関数を作成しました。 Azure Cosmos DBのトリガーの詳細については、「[Azure Functions の Azure Cosmos DB バインド](functions-bindings-cosmosdb.md)」をご覧ください。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-
-Azure Cosmos DBのトリガーの詳細については、「[Azure Functions の Azure Cosmos DB バインド](functions-bindings-cosmosdb.md)」をご覧ください。

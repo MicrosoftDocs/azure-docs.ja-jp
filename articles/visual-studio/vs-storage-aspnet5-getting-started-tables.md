@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 9a9fe0a92f8a8eadbd72ae56303348413a9d10c3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1f90ce71084ba3acbf5a0aec5c7b8e9683323766
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142756"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011608"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Azure テーブル ストレージと Visual Studio 接続済みサービスの概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "42142756"
 
 Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。 Azure Table Storage の使用に関する全般的な情報については、「 [.NET を使用して Azure Table Storage を使用する](../storage/storage-dotnet-how-to-use-tables.md)」をご覧ください。
 
-最初に、ストレージ アカウント内にテーブルを作成します。 この記事ではその後、C# でテーブルを作成する方法と、テーブル エントリの追加、変更、読み取り、および削除などの基本的なテーブル操作を実行する方法を示します。  コードでは .NET 用の Azure Storage クライアント ライブラリを使用します。 ASP.NET の詳細については、 [ASP.NET](http://www.asp.net)に関するページを参照してください。
+最初に、ストレージ アカウント内にテーブルを作成します。 この記事ではその後、C# でテーブルを作成する方法と、テーブル エントリの追加、変更、読み取り、および削除などの基本的なテーブル操作を実行する方法を示します。  コードでは .NET 用の Azure Storage クライアント ライブラリを使用します。 ASP.NET の詳細については、 [ASP.NET](https://www.asp.net)に関するページを参照してください。
 
 一部の Azure Storage API は非同期であるため、この記事のコードでは非同期メソッドが使用されている前提とします。 詳細については、[非同期プログラミング](https://docs.microsoft.com/dotnet/csharp/async)に関するページをご覧ください。
 

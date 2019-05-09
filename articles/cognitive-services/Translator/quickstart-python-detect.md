@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Translator Text REST API を使用して、指定されたテキストの言語を認識する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/24/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: cfc2565c0ee2b51eaff40647cfcd7505e0479e64
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4400b466927253e6eb81cf2ec29994d0606beea6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993829"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176703"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>クイック スタート: Translator Text API と Python を使用してテキストの言語を検出する
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`detect` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`detect` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 >[!NOTE]
 > エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)」をご覧ください。
@@ -126,6 +126,8 @@ python detect.py
 作成したコードをサンプル コードと比較したい場合は、完全なサンプルを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) から入手できます。
 
 ## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [

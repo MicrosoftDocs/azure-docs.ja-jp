@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 084d5e9453ea5a55bdeeff839e4c70890575c83d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258017"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653392"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続 #
 
@@ -177,7 +177,7 @@ HCM はそれぞれ、複数のハイブリッド接続をサポートできま�
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>ハイブリッド接続をプログラミングによってアプリに追加する ##
 
-次に示す API を直接使用して、Web アプリに接続するハイブリッド接続を管理できます。 
+次に示す API を直接使用して、アプリに接続するハイブリッド接続を管理できます。 
 
     /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
 
@@ -198,7 +198,7 @@ HCM はそれぞれ、複数のハイブリッド接続をサポートできま�
       }
     }
 
-この情報を使用する方法の 1 つとして、[ARMClient][armclient] GitHub プロジェクトから取得できる armclient があります。 既存のハイブリッド接続を Web アプリに接続する例を次に示します。 上記のスキーマに対して次の JSON ファイルを作成します。
+この情報を使用する方法の 1 つとして、[ARMClient][armclient] GitHub プロジェクトから取得できる armclient があります。 既存のハイブリッド接続をアプリに接続する例を次に示します。 上記のスキーマに対して次の JSON ファイルを作成します。
 
     {
       "name": "relay-demo-hc",
@@ -230,7 +230,7 @@ App Service では、Advanced Tools (Kudu) コンソールから tcpping ツー�
 
 ## <a name="biztalk-hybrid-connections"></a>BizTalk ハイブリッド接続 ##
 
-以前、この機能は BizTalk ハイブリッド接続と呼ばれていました。 これは 2018 年 5 月 31 日で終了となり、運用が停止されました。 BizTalk ハイブリッド接続は、すべての Web アプリから削除され、ポータルや API からアクセスできなくなっています。 このような古い接続がまだハイブリッド接続マネージャーに構成されている場合、[中止] というステータスが表示され、一番下には有効期間が終了したという説明が表示されます。
+以前、この機能は BizTalk ハイブリッド接続と呼ばれていました。 これは 2018 年 5 月 31 日で終了となり、運用が停止されました。 BizTalk ハイブリッド接続は、すべてのアプリから削除され、ポータルや API からアクセスできなくなっています。 このような古い接続がまだハイブリッド接続マネージャーに構成されている場合、[中止] というステータスが表示され、一番下には有効期間が終了したという説明が表示されます。
 
 ![HCM での BizTalk ハイブリッド接続][12]
 

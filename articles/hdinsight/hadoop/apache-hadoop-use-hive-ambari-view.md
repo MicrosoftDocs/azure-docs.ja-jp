@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 978b865f6dd7e3427a0139e7e71ed4b2d937fbe5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407849"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517302"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する
 
@@ -24,22 +24,14 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* バージョン 3.4 以上の HDInsight クラスター上の Linux ベースの Apache Hadoop。
-
-  > [!IMPORTANT]  
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
+* HDInsight 上の Hadoop クラスター。 詳細については、[Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * Web ブラウザー
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
-1. [Azure Portal](https://portal.azure.com)を開きます。
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 クラスターは新しいポータル ブレードで開きます。
 
-2. HDInsight クラスターを選択し、**[クイック リンク]** セクションの **[Ambari ビュー]** を選択します。
-
-    ![ポータルの [クイック リンク] セクション](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
-
-    認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。
+2. **クラスター ダッシュボード**で **[Ambari ビュー]** を選択します。 認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。
 
 3. ビューの一覧で、__Hive ビュー__ を選択します。
 
@@ -73,7 +65,7 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
    * `DROP TABLE`:テーブルが既に存在する場合は、テーブルとデータ ファイルを削除します。
 
    * `CREATE EXTERNAL TABLE`:新しい "外部" テーブルを Hive に作成します。
-   外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
+     外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
 
    * `ROW FORMAT`:データがどのように書式設定されているかを示します。 ここでは、各ログのフィールドは、スペースで区切られています。
 
@@ -81,35 +73,33 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 
    * `SELECT`:t4 列の値が [ERROR] であるすべての行の数を選択します。
 
-    > [!IMPORTANT]  
-    > __[Database]\(データベース\)__ では、__[default]\(既定\)__ が選択されたままにしておきます。 このドキュメントの例では、HDInsight に含まれている既定のデータベースを使用します。
+   > [!IMPORTANT]  
+   > __[Database]\(データベース\)__ では、__[default]\(既定\)__ が選択されたままにしておきます。 このドキュメントの例では、HDInsight に含まれている既定のデータベースを使用します。
 
-5. クエリを開始するために、ワークシートの下にある **[Execute]\(実行\)** ボタンを使用します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
+5. クエリを開始するには、ワークシートの下にある **[実行]** を選択します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
 
 6. クエリが完了すると、**[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
 
         loglevel       count
         [ERROR]        3
 
-    **[Logs]\(ログ\)** タブを使用すると、ジョブが作成したログ情報を表示できます。
+    **[ログ]** タブを使用すると、ジョブによって作成されたログ情報を表示できます。
 
    > [!TIP]  
-   > **[Query Process Results]\(クエリ処理結果\)** セクションの左上にある **[Save results]\(結果の保存\)** ドロップダウン ダイアログで、結果をダウンロードまたは保存します。
+   > **[結果]** タブの **[アクション]** ドロップダウン ダイアログ ボックスから結果をダウンロードするか保存します。
 
 ### <a name="visual-explain"></a>ビジュアルの説明
 
 クエリ プランの視覚化を表示するために、ワークシートの下にある **[Visual Explain]\(ビジュアルの説明\)** タブを選択します。
 
-クエリの **[Visual Explain]** ビューは、複雑なクエリのフローを理解する際に役立ちます。 クエリ エディターの **[Explain]\(説明\)** ボタンを使用して、このビューに対応するテキストを見ることができます。
+クエリの **[Visual Explain]** ビューは、複雑なクエリのフローを理解する際に役立ちます。
 
 ### <a name="tez-ui"></a>Tez UI
 
-クエリの Tez UI を表示するために、ワークシートの下にある **[Tez]** タブを選択します。
+クエリの Tez UI を表示するには、ワークシートの下にある **[Tez UI]** タブを選択します。
 
 > [!IMPORTANT]  
 > Tez を使用してもすべてのクエリが解決するとは限りません。 多くのクエリは、Tez を使用することなく解決できます。 
-
-クエリの解決に Tez を使用している場合、有向非巡回グラフ (DAG) が表示されます。 過去に実行したクエリの DAG を表示する場合、または Tez プロセスをデバッグする場合は、代わりに [[Tez View]\(Tez ビュー\)](../hdinsight-debug-ambari-tez-view.md) を使用します。
 
 ## <a name="view-job-history"></a>ジョブ履歴の表示
 

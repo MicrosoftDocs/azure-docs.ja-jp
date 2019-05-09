@@ -3,20 +3,20 @@ title: .NET SDK:Azure Data Lake Storage Gen1 に対するファイルシステ�
 description: Azure Data Lake Storage Gen1 .NET SDK を使用して、Data Lake Storage Gen1 に対してフォルダーの作成などのファイルシステム操作を実行します。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.author: twooley
+ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163237"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58876957"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ ms.locfileid: "53163237"
       * `Microsoft.Azure.DataLake.Store` - このチュートリアルでは、v1.0.0 を使用します。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.3.1 を使用します。
     
-    **NuGet パッケージ マネージャー**を閉じます。
+      **NuGet パッケージ マネージャー**を閉じます。
 
 6. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 

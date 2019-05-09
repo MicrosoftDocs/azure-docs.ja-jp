@@ -1,26 +1,24 @@
 ---
 title: Azure Database for MariaDB サーバーでユーザーを作成する
 description: この記事では、Azure Database for MariaDB サーバーとやりとりする新しいユーザー アカウントを作成する方法について説明します。
-author: jasonwhowell
-ms.author: jasonh
-editor: jasonwhowell
-services: mariadb
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50154a7fee63eb3ff9e08155123f9e5962bbfcf0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ed373cfa0ac755d56e7bc2601c65e0e6482ff6d5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946118"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349452"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でユーザーを作成する 
 この記事では、Azure Database for MariaDB でユーザーを作成する方法について説明します。
 
 Azure Database for MariaDB を初めて作成したときに、サーバー管理者のログイン ユーザー名とパスワードを指定しています。 詳細については、[クイックスタート](quickstart-create-mariadb-server-database-using-azure-portal.md)に関するページを参照してください。 サーバー管理者のログイン ユーザー名は、Azure Portal で確認できます。
 
-サーバー管理者のユーザーには、サーバーに関して SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、RELOAD、PROCESS、REFERENCES、INDEX、ALTER、SHOW DATABASES、CREATE TEMPORARY TABLES、LOCK TABLES、EXECUTE、REPLICATION SLAVE、REPLICATION CLIENT、CREATE VIEW、SHOW VIEW、CREATE ROUTINE、ALTER ROUTINE、CREATE USER、EVENT、TRIGGER の特権が付与されます。
+サーバー管理者のユーザーがサーバーに関して付与される特権は、SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、RELOAD、PROCESS、REFERENCES、INDEX、ALTER、SHOW DATABASES、CREATE TEMPORARY TABLES、LOCK TABLES、EXECUTE、REPLICATION SLAVE、REPLICATION CLIENT、CREATE VIEW、SHOW VIEW、CREATE ROUTINE、ALTER ROUTINE、CREATE USER、EVENT、TRIGGER です
 
 Azure Database for MariaDB サーバーが作成されると、最初のサーバー管理者のユーザー アカウントを使用して、追加のユーザーを作成し、それらのユーザーに管理者アクセス権を付与できます。 また、サーバー管理者アカウントを使用して、個々のデータベース スキーマに対するアクセス権を持つ特権の少ないユーザーを作成することもできます。
 
@@ -82,9 +80,9 @@ Azure Database for MariaDB サーバーが作成されると、最初のサー�
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-ユーザー アカウント管理の詳細については、[ユーザー アカウント管理](https://mariadb.com/kb/en/library/user-account-management/)、[GRANT の構文](https://mariadb.com/kb/en/library/grant/)、および[特権](https://mariadb.com/kb/en/library/grant/#privilege-levels)に関する MariaDB 製品ドキュメントを参照してください。
+   ユーザー アカウント管理の詳細については、[ユーザー アカウント管理](https://mariadb.com/kb/en/library/user-account-management/)、[GRANT の構文](https://mariadb.com/kb/en/library/grant/)、および[特権](https://mariadb.com/kb/en/library/grant/#privilege-levels)に関する MariaDB 製品ドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次の手順
-新しいユーザーのマシンの IP アドレスについてファイアウォールを開き、接続できるようにします。[Azure portal を使用して、Azure Database for MariaDB のファイアウォール規則を作成して管理します](howto-manage-firewall-portal.md)。  
+新しいユーザーのマシンの IP アドレスについてファイアウォールを開き、接続できるようにします。[Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

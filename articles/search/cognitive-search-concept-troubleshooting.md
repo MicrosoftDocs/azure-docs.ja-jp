@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5f21fe3c65e37d3fee4043526762a7fafdea5cc4
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316296"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961854"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>コグニティブ検索のトラブルシューティングのヒント
 

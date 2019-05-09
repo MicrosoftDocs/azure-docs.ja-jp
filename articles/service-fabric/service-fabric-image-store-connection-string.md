@@ -4,7 +4,7 @@ description: イメージ ストア接続文字列を理解します
 services: service-fabric
 documentationcenter: .net
 author: alexwun
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 00f8059d-9d53-4cb8-b44a-b25149de3030
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 8a11f9c9ebc2dd0b0eabf7a34d5ef38ae4e29309
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4a56b48c0041e963b89312c59335b45cabacc1bb
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719074"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667551"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>ImageStoreConnectionString 設定を理解する
 

@@ -8,29 +8,29 @@ ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.component: alerts
-ms.openlocfilehash: a8ec7d13305bf4c76600d8ca3334f06dfe4e77c9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.subservice: alerts
+ms.openlocfilehash: f8b9db47684a6dd78302f094d8e670da4a61ab2c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384702"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58849813"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>メトリック値が条件を満たしている場合は通知を受け取る
 
-Azure Monitor はメトリックを多くの Azure リソースで使用できるようにします。 これらのメトリックはリソースのパフォーマンスと正常性を伝えます。 多くの場合、メトリック値はリソースの問題を指している可能性があります。 異常な動作を監視し、その動作が発生した場合は通知するメトリック アラートを作成することができます。 このクイック スタートでは、ロジック アプリの作成、ジョブの作成、およびロジック アプリのメトリックを表示する手順を説明します。 その後、アラートの作成と、ロジック アプリ リソースのメトリックに関する通知を受け取る方法について説明します。
+Azure Monitor はメトリックを多くの Azure リソースで使用できるようにします。 これらのメトリックはリソースのパフォーマンスと正常性を伝えます。 多くの場合、メトリック値はリソースの問題を示している可能性があります。 異常な動作を監視し、その動作が発生した場合は通知するメトリック アラートを作成することができます。 このクイック スタートでは、ロジック アプリの作成、ジョブの作成、およびロジック アプリのメトリックを表示する手順を説明します。 その後、アラートの作成と、ロジック アプリ リソースのメトリックに関する通知を受け取る方法について説明します。
 
-メトリックとメトリック アラートの詳細については、[Azure Monitor メトリックの概要](../../azure-monitor/platform/data-collection.md)および [Azure Monitor アラートの概要](./alerts-overview.md)に関するページを参照してください。 
+メトリックとメトリック アラートの詳細については、[Azure Monitor メトリックの概要](data-platform.md)および [Azure Monitor アラートの概要](alerts-overview.md)に関するページを参照してください。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします
 
 ## <a name="create-a-logic-app"></a>ロジック アプリの作成
 
-1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
+1. Azure portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
 
 2. **ロジック アプリ**を検索して選択します。 **[作成]** ボタンをクリックします。
 
@@ -98,15 +98,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このコレクションの他のクイック スタートは、このクイック スタートに基づいています。 引き続きクイック スタートまたはチュートリアルの作業を行う場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを Azure Portal で削除してください。
+このコレクションの他のクイック スタートは、このクイック スタートに基づいています。 引き続きクイック スタートまたはチュートリアルの作業を行う場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを Azure portal で削除してください。
 
-1. Azure Portal の左側のメニューで、**[監視]** をクリックします。
+1. Azure portal の左側のメニューで、**[監視]** をクリックします。
 
 2. **[アラート]** タブを選択し、このクイック スタート ガイドで作成したアラートを見つけて、それをクリックします。
 
 3. メトリック アラート パネルで、**[削除]** をクリックします。
 
-4. Azure Portal の左側のメニューで、**Logic App** を検索して、**[Logic App]** をクリックします。
+4. Azure portal の左側のメニューで、**Logic App** を検索して、**[Logic App]** をクリックします。
 
 5. パネルのテキスト ボックスで、このクイック スタートで作成したロジック アプリをクリックしてから **[削除]** をクリックします。
 
@@ -116,3 +116,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [Azure Monitor のサブスクリプション アクション アラート](./../../azure-monitor/platform/quick-audit-notify-action-subscription.md )
+

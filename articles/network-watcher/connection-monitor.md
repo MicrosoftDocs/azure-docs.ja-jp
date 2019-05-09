@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093042"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429249"
 ---
-# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
 仮想マシン (VM) と別の VM などのエンドポイント間の通信の成功は、組織にとってきわめて重要になることがあります。 場合によっては、通信を切断させる可能性がある構成の変更が導入されることがあります。 このチュートリアルでは、以下の内容を学習します。
 
@@ -73,11 +73,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |手順|Setting|値|
 |---|---|---|
-| 1 | **[Ubuntu Server 17.10 VM]** を選択します |                                                                         |
-| 3 | Name                              | myVm2                                                                   |
-| 3 | 認証の種類               | SSH 公開キーを貼り付けるか、**[パスワード]** を選択して、パスワードを入力します。 |
-| 3 | リソース グループ                    | **[既存のものを使用]** を選択し、**[myResourceGroup]** を選択します。                 |
-| 6 | 拡張機能                        | **Linux 用ネットワーク エージェント**                                             |
+| 1 | いずれかのバージョンの **Ubuntu Server** を選択する |                                                                         |
+| 3 | Name                                  | myVm2                                                                   |
+| 3 | 認証の種類                   | SSH 公開キーを貼り付けるか、**[パスワード]** を選択して、パスワードを入力します。 |
+| 3 | リソース グループ                        | **[既存のものを使用]** を選択し、**[myResourceGroup]** を選択します。                 |
+| 6 | Extensions                            | **Linux 用ネットワーク エージェント**                                             |
 
 VM のデプロイには数分かかります。 残りの手順を続行する前に、VM がデプロイを完了するまで待ちます。
 
@@ -96,7 +96,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
     | Name                     | myVm1-myVm2(22)     |
     | ソース                   |                     |
     | 仮想マシン          | myVm1               |
-    | 変換先              |                     |
+    | 宛先              |                     |
     | 仮想マシンを選択する |                     |
     | 仮想マシン          | myVm2               |
     | ポート                     | 22                  |
@@ -160,7 +160,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
     **myvm2529** ネットワーク インターフェイスの状態列に赤の感嘆符アイコンがあることが確認できます。
 
-6. 状態が変更された理由については、前の図の 10.0.0.5 を選択します。 接続モニターは、通信エラーの理由が　*UserRule_DenySshInbound ネットワーク セキュリティ グループ規則によってトラフィックがブロックされた* ためであることを通知します。
+6. 状態が変更された理由については、前の図の 10.0.0.5 を選択します。 接続モニターによって、通信エラーの理由が通知されます: "*次のネットワーク セキュリティ グループの規則によってトラフィックがブロックされました: UserRule_DenySshInbound*"。
 
     手順 4. で作成したセキュリティの規則をだれかが実装したことを知らなかった場合、接続モニターからこの規則が通信の問題を引き起こしていることがわかります。 その後、規則を変更、オーバーライド、または削除して、VM 間の通信を復元できます。
 

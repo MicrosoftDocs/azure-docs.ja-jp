@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -17,12 +17,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a2e62d24ea56e00b49c32c00136db858ecd0f778
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47068732"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173776"
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
 
@@ -59,9 +60,9 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 アプリケーションでは、サインアップとサインインに別々のパスを示すことがあります。以下のセクションでは、この 2 つのシナリオの表示に関するガイダンスを示します。
 
-**アプリケーションがエンド ユーザーのサインアップをサポートしている場合 (無料試用版やフリーミアム モデルなど)**: ユーザーが、その職場のアカウントまたは個人のアカウントを使用してアプリケーションにアクセスできるようにするための**サインイン** ボタンを表示できます。 Azure AD は、ユーザーがアプリケーションに初めてアクセスしたときに同意プロンプトを表示します。
+**アプリがエンド ユーザーのサインアップをサポートしている場合 (無料試用版やフリーミアム モデルなど)**: ユーザーが、職場アカウントまたは個人のアカウントを使用してアプリにアクセスできるようにするための**サインイン** ボタンを表示できます。 Azure AD は、ユーザーがアプリケーションに初めてアクセスしたときに同意プロンプトを表示します。
 
-**アプリケーションに管理者だけが同意できるアクセス許可が必要な場合、またはアプリケーションに組織のライセンスが必要な場合**: 管理者による取得をユーザー サインインから分離する必要があります。 **"このアプリケーションを入手" ボタン** で管理者をサインインにリダイレクトし、組織のユーザーに代わって同意するよう求めることにより、エンドユーザーにアプリケーションで同意画面が表示されないという追加のメリットもあります。
+**アプリに管理者だけが同意できるアクセス許可が必要な場合、またはアプリに組織のライセンスが必要な場合**: 管理者による取得をユーザー サインインから分離します。 **"このアプリケーションを入手" ボタン** で管理者をサインインにリダイレクトし、組織のユーザーに代わって同意するよう求めることにより、エンドユーザーにアプリケーションで同意画面が表示されないという追加のメリットもあります。
 
 ## <a name="visual-guidance-for-app-acquisition"></a>アプリケーションの取得の表示に関するガイダンス
 

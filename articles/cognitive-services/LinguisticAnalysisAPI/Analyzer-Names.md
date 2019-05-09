@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Linguistic Analysis API Analyzer のアナライザーの名前付け構造によって､どのように柔軟性と精度の両方が実現されているかについて説明します。
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8c7aba2b853f3916c2d01d94d49090a4b3e36a0
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b2e956b099022751712f96ab0b15aa57c752b458
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237233"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873378"
 ---
 # <a name="analyzer-names"></a>アナライザー名
 

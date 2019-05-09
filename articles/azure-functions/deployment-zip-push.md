@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717220"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086583"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -51,13 +51,13 @@ Azure Functions には、Azure App Service によって提供されている、�
 
 + **Azure portal から:**
 
-    1. [Azure Portal](https://portal.azure.com) にサインインし、関数アプリに移動します。
+  1. [Azure Portal](https://portal.azure.com) にサインインし、関数アプリに移動します。
 
-    2. **[概要]** タブで、**[アプリのコンテンツのダウンロード]** を選択します。 ダウンロード オプションを選択し、**[ダウンロード]** を選択します。
+  2. **[概要]** タブで、**[アプリのコンテンツのダウンロードド]** を選択します。 ダウンロード オプションを選択し、**[ダウンロード]** を選択します。
 
-        ![関数アプリ プロジェクトのダウンロード](./media/deployment-zip-push/download-project.png)
+      ![関数アプリ プロジェクトのダウンロード](./media/deployment-zip-push/download-project.png)
 
-    ダウンロードした .zip ファイルは、.zip プッシュ デプロイを使用して関数アプリに再発行するための適切な形式になっています。 ポータルのダウンロードでは、Visual Studio で関数アプリを直接開くために必要なファイルを追加することもできます。
+     ダウンロードした .zip ファイルは、.zip プッシュ デプロイを使用して関数アプリに再発行するための適切な形式になっています。 ポータルのダウンロードでは、Visual Studio で関数アプリを直接開くために必要なファイルを追加することもできます。
 
 + **REST API の使用:**
 

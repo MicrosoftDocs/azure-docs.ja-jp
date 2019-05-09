@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Resource Manager テンプレートを使用してパイプラインを作成する | Microsoft Docs'
+title: チュートリアル:Resource Manager テンプレートを使用してパイプラインを作成する | Microsoft Docs
 description: このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Data Factory パイプラインを作成します。 このパイプラインは、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
 services: data-factory
 documentationcenter: ''
@@ -10,19 +10,18 @@ ms.assetid: 1274e11a-e004-4df5-af07-850b2de7c15e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2b23239fd82198747980fd527c478647743028c4
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 95a29a458fc9333515ef29aaaed9a47e93cf3a8d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090093"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483762"
 ---
-# <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル: Azure Resource Manager テンプレートを使用して、データをコピーする Data Factory パイプラインを作成する 
+# <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル:Azure Resource Manager テンプレートを使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -37,16 +36,19 @@ ms.locfileid: "43090093"
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
-このチュートリアルでは、Azure Resource Manager テンプレートを使用して Azure データ ファクトリを作成する方法を説明します。 このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
+このチュートリアルでは、Azure Resource Manager テンプレートを使用して Azure データ ファクトリを作成する方法を説明します。 このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換するパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
 このチュートリアルでは、1 つのアクティビティ (コピー アクティビティ) が含まれたパイプラインを作成します。 コピー アクティビティは、サポートされているデータ ストアからサポートされているシンク データ ストアにデータをコピーします。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、「[パイプライン内の複数アクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)」を参照してください。 
 
 > [!NOTE] 
-> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。 
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換するパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に目を通し、**前提条件**の手順を完了します。
 * 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。 このチュートリアルでは、PowerShell を使用して Data Factory エンティティをデプロイします。 
 * (省略可能)「[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)」を参照して、Azure Resource Manager テンプレートについて学びます。
@@ -73,7 +75,7 @@ ms.locfileid: "43090093"
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": { ...
     },
@@ -100,7 +102,7 @@ ms.locfileid: "43090093"
 ```json
 {
     "contentVersion": "1.0.0.0",
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "parameters": {
       "storageAccountName": { "type": "string", "metadata": { "description": "Name of the Azure storage account that contains the data to be copied." } },
       "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
@@ -320,22 +322,22 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
    * 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
    
     ```PowerShell
-    Connect-AzureRmAccount      
+    Connect-AzAccount       
     ```  
    * 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
    
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```   
    * 次のコマンドを実行して、使用するサブスクリプションを選択します。
     
     ```PowerShell
-    Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext
+    Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
     ```    
 2. 次のコマンドを実行し、手順 1. で作成した Resource Manager テンプレートを使用して Data Factory エンティティをデプロイします。
 
     ```PowerShell   
-    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
+    New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
     ```
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
@@ -410,7 +412,7 @@ AzureStorageLinkedService は、Azure ストレージ アカウントをデー�
 }
 ```
 
-connectionString では、storageAccountName パラメーターと storageAccountKey パラメーターを使用しています。 これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートで定義された azureStroageLinkedService、dataFactoryName の各変数も使用しています。 
+connectionString では、storageAccountName パラメーターと storageAccountKey パラメーターを使用しています。 これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートで定義された azureStorageLinkedService、dataFactoryName の各変数も使用しています。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス
 AzureSqlLinkedService は、Azure SQL データベースをデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに emp テーブルを作成しました。 このセクションで、Azure SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#linked-service-properties)に関するセクションをご覧ください。  
@@ -577,13 +579,13 @@ Azure BLOB データセットから Azure SQL データセットにデータを�
 例:  
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Dev.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Dev.json
 ```
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Test.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Test.json
 ```
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Production.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Production.json
 ```
 
 最初のコマンドでは開発環境用、2 番目のコマンドではテスト環境用、3 番目のコマンドでは運用環境用のパラメーター ファイルをそれぞれ使用していることに注意してください。  

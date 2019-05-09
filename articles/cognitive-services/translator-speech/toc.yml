@@ -1,47 +1,40 @@
-items:
 - name: Translator Speech API のドキュメント
 - name: 概要
   items:
-  - name: Translator Speech API について
-    href: Overview.md
-  - name: サポートされている言語
-    href: languages.md
+    - name: Translator Speech API について
+      href: Overview.md
+    - name: サポートされている言語
+      href: languages.md
 - name: クイック スタート
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: Python
-    href: quickstarts/python.md
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: Python
+      href: quickstarts/python.md
 - name: チュートリアル
   items:
-  - name: 翻訳アプリ
-    href: tutorial-translator-speech-csharp.md
+    - name: 翻訳アプリ
+      href: tutorial-translator-speech-csharp.md
 - name: サンプル
   items:
-  - name: GitHub のサンプル
-    href: https://aka.ms/TranslatorGitHub
+    - name: GitHub のサンプル
+      href: 'https://aka.ms/TranslatorGitHub'
 - name: リファレンス
   href: reference.md
   items:
-  - name: Languages
-    href: languages-reference.md
+    - name: Languages
+      href: languages-reference.md
 - name: リソース
   items:
-  - name: FAQ
-    href: https://www.microsoft.com/en-us/translator/faq.aspx
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-speech-api/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/558796-translator
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/microsoft-translator
-ms.openlocfilehash: 8519e4a514f7fa1a811966ff971c64a331378ce8
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604084"
+    - name: FAQ
+      href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-speech-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

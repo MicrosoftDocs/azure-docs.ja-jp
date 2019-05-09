@@ -3,26 +3,59 @@ title: Azure Kubernetes Service (AKS) で Azure CLI を使用して仮想ノー�
 description: Azure CLI を使用して、仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成してポッドを実行する方法を説明します。
 services: container-service
 author: iainfoulds
+ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: ee16165352edbacddac0c91f1ff68109982577de
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 54c8e44685bb69e845c819b0c2846b188a771d71
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52854833"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878232"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI を使って仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>プレビュー - Azure CLI を使って仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
 Azure Kubernetes Service (AKS) クラスターでアプリケーション ワークロードをすばやくスケーリングするには、仮想ノードを使用します。 仮想ノードを使用すると、ポッドを短時間でプロビジョニングできるため、ポッドの実行時間に対して秒単位の支払いだけで済みます。 Kubernetes クラスターのオートスケーラーが VM コンピューティング ノードをデプロイして追加のポッドを実行するのを待つ必要はありません。 この記事では、仮想ネットワーク リソースと AKS クラスターを作成して構成し、その後仮想ノードを有効にする方法を示します。
 
 > [!IMPORTANT]
-> AKS の仮想ノードは現在、**プレビュー**段階です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+> AKS のプレビュー機能は、セルフサービスかつオプトインです。 プレビューは、コミュニティからフィードバックやバグを収集するために提供されます。 ただし、これらは Azure テクニカル サポートではサポートされません。 クラスターを作成するか、または既存のクラスターにこれらの機能を追加した場合、そのクラスターは、この機能がプレビューでなくなり、一般提供 (GA) となるまでサポートされません。
+>
+> プレビュー機能に関する問題が発生した場合は、バグ タイトルにプレビュー機能の名前を使用して、[AKS GitHub リポジトリで問題をオープンします][aks-github]。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 仮想ノードを使用すると、ACI および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 この通信を可能にするために、仮想ネットワーク サブネットが作成され、委任されたアクセス許可が割り当てられます。 仮想ノードは、"*高度*" ネットワークを使用して作成された AKS クラスターに対してのみ機能します。 既定では、AKS クラスターは "*基本*" ネットワークを使用して作成されます。 この記事では、仮想ネットワークとサブネットを作成した後、高度ネットワークを使用した AKS クラスターをデプロイする方法について説明します。
+
+以前に ACI を使用していない場合は、ご使用のサブスクリプションでサービス プロバイダーを登録します。 ACI プロバイダーの状態は、次の例で示すように [az provider list][az-provider-list] コマンドを使用して確認できます。
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+*Microsoft.ContainerInstance* プロバイダーは、次の出力の例で示すように *Registered* としてレポートします。
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+プロバイダーが *NotRegistered* として示される場合は、次の例で示すように [az provider register][az-provider-register] を使用してプロバイダーを登録します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
+
+## <a name="regional-availability"></a>リージョン別の提供状況
+
+仮想ノードのデプロイでは、次のリージョンがサポートされています。
+
+* オーストラリア東部 (australiaeast)
+* 米国東部 (eastus)
+* 米国中西部 (westcentralus)
+* 西ヨーロッパ (westeurope)
+* 米国西部 (westus)
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -129,13 +162,7 @@ az aks create \
 
 数分してコマンドが完了すると、このクラスターに関する情報が JSON 形式で表示されます。
 
-## <a name="enable-virtual-nodes"></a>仮想ノードを有効にする
-
-追加の機能を提供するには、仮想ノード コネクタで Azure CLI 拡張機能を使用します。 仮想ノード コネクタを有効にする前に、まず [az extension add][az-extension-add] コマンドを使用して拡張機能をインストールします。
-
-```azurecli-interactive
-az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-```
+## <a name="enable-virtual-nodes-addon"></a>仮想ノード アドオンを有効にする
 
 次に、仮想ノードを有効にするために、[az aks enable-addons][az-aks-enable-addons] コマンドを使用します。 次の例では、前の手順で作成した *myVirtualNodeSubnet* というサブネットを使用しています。
 
@@ -146,6 +173,11 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
+> [!NOTE]
+> 仮想ノードが見つからないというエラーを受け取る場合は、その CLI 拡張機能をインストールすることが必要な場合があります 
+> ```azurecli-interactive
+> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
+> ```
 
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 
@@ -223,6 +255,9 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 
 ポッドには、仮想ノードで使用するために委任された Azure 仮想ネットワーク サブネットからの内部 IP アドレスが割り当てられます。
 
+> [!NOTE]
+> Azure Container Registry に格納されているイメージを使用する場合、[Kubernetes シークレットを構成して使用します][acr-aks-secrets]。 仮想ノード プレビューの現在の制限は、Azure AD サービス プリンシパル統合認証を使用できないことです。 シークレットを使用しない場合、仮想ノードでスケジュールされたポッドの開始に失敗し、エラー `HTTP response status code 400 error code "InaccessibleImage"` が報告されます。
+
 ## <a name="test-the-virtual-node-pod"></a>仮想ノード ポッドのテスト
 
 仮想ノードで実行されているポッドをテストするには、Web クライアントでデモ アプリケーションを参照します。 ポッドには内部 IP アドレスが割り当てられているため、AKS クラスターの別のポッドからこの接続をすばやくテストできます。 テスト ポッドを作成し、それにターミナル セッションをアタッチします。
@@ -278,13 +313,13 @@ NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query
 az network profile delete --id $NETWORK_PROFILE_ID -y
 
 # Get the service association link (SAL) ID
-SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name myVnet --name myAKSSubnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
+SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name myVnet --name myVirtualNodeSubnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
 
 # Delete the default SAL ID for the subnet
 az resource delete --ids $SAL_ID --api-version 2018-07-01
 
 # Delete the subnet delegation to Azure Container Instances
-az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --name myAKSSubnet --remove delegations 0
+az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --name myVirtualNodeSubnet --remove delegations 0
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -295,12 +330,17 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --n
 
 - [Kubernetes のポッドの水平オートスケーラーを使用する][aks-hpa]
 - [Kubernetes クラスター オートスケーラーを使用する][aks-cluster-autoscaler]
+- [仮想ノード用の自動スケーリング サンプルをチェックアウトする][virtual-node-autoscale]
+- [Virtual Kubelet のオープン ソース ライブラリの詳細を確認する][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+[aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli
@@ -319,3 +359,6 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --n
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
+[az-provider-list]: /cli/azure/provider#az-provider-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret

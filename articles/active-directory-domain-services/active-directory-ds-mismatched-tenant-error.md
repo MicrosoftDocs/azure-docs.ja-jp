@@ -4,23 +4,23 @@ description: 既存の Azure AD Domain Services のマネージド ドメイン�
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: ergreenl
-ms.openlocfilehash: b73739ca6d392af191d1a51eca2d646a8a5cd4c4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d3586293574cc71011ad96fece5e5a4fdfa0b70f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955074"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191994"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services のマネージド ドメインでのディレクトリの不一致エラーを解決する
 既存の Azure AD Domain Services のマネージド ドメインがあります。 Azure Portal にアクセスしてこのマネージド ドメインを表示すると、次のエラー メッセージが表示されます。

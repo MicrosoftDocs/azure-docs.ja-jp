@@ -3,26 +3,25 @@ title: Databricks Jar でデータを変換する - Azure | Microsoft Docs
 description: Databricks Jar を実行してデータを処理または変換する方法を説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: a47d0130cd06a936da456ec6d78bde99907072f2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526302"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575870"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Azure Databricks で Jar アクティビティを実行してデータを変換する
 
-[Data Factory パイプライン](concepts-pipelines-activities.md) の Azure Databricks Jar アクティビティは、Azure Databricks クラスターで Spark Jar を実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
+[Data Factory パイプライン](concepts-pipelines-activities.md) の Azure Databricks Jar アクティビティは、Azure Databricks クラスターで Spark Jar を実行します。 この記事は、データ変換の概要とサポートされる変換アクティビティを説明している [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
 
 この機能の概要とデモンストレーションについては、以下の 11 分間の動画を視聴してください。
 
@@ -59,11 +58,11 @@ Databricks Jar アクティビティのサンプルの JSON 定義を次に示�
 
 |プロパティ|説明|必須|
 |:--|---|:-:|
-|name|パイプラインのアクティビティの名前。|[はい]|
+|name|パイプラインのアクティビティの名前。|はい|
 |description|アクティビティの動作を説明するテキスト。|いいえ |
-|type|Databricks Jar アクティビティでは、アクティビティの種類は DatabricksSparkJar です。|[はい]|
-|linkedServiceName|Jar アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。|[はい]|
-|mainClassName|実行される main メソッドを含むクラスのフル ネーム。 このクラスは、ライブラリとして提供される JAR に含まれている必要があります。|[はい]|
+|type|Databricks Jar アクティビティでは、アクティビティの種類は DatabricksSparkJar です。|はい|
+|linkedServiceName|Jar アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
+|mainClassName|実行される main メソッドを含むクラスのフル ネーム。 このクラスは、ライブラリとして提供される JAR に含まれている必要があります。|はい|
 |parameters|main メソッドに渡されるパラメーター。  文字列の配列です。|いいえ |
 |libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|はい (mainClassName メソッドを少なくとも 1 つ含む)|
 
@@ -95,7 +94,7 @@ Databricks Jar アクティビティのサンプルの JSON 定義を次に示�
         {
             "cran": {
                 "package": "ada",
-                "repo": "http://cran.us.r-project.org"
+                "repo": "https://cran.us.r-project.org"
             }
         }
     ]

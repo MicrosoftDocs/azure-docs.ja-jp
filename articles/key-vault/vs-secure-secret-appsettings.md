@@ -1,5 +1,5 @@
 ---
-title: Web アプリケーション用のシークレット アプリケーション設定の安全な保存 | Microsoft Docs
+title: Web アプリケーション用のシークレット アプリケーション設定の安全な保存 - Azure Key Vault | Microsoft Docs
 description: ASP.NET Core Key Vault Provider、User Secret、または .NET 4.7.1 構成ビルダーを使用して Azure 資格情報またはサード パーティ製 API キーなどのシークレット アプリケーション設定を安全に保存する方法
 services: visualstudio
 documentationcenter: ''
@@ -7,19 +7,18 @@ author: cawaMS
 manager: paulyuk
 editor: ''
 ms.assetid: ''
-ms.service: ''
+ms.service: key-vault
 ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 4c54fe7c9ae5555ad1b8ba6919c70c8f7fa49125
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 79b1c740bca56982243ddc130d8747fdc955247f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252109"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124118"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -33,7 +32,7 @@ ms.locfileid: "53252109"
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET Core と .NET Core アプリケーション
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>ソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに保存する
-クイック プロトタイプを実行しているか、インターネットにアクセスできない場合は、まずソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに移動します。 User Secret ストアは、ユーザー プロファイラー フォルダーの下に保存されているファイルです。そのため、シークレットはソース管理にチェックインされません。 次の図では、[User Secret](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) がどのように機能するかを示します。
+クイック プロトタイプを実行しているか、インターネットにアクセスできない場合は、まずソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに移動します。 User Secret ストアは、ユーザー プロファイラー フォルダーの下に保存されているファイルです。そのため、シークレットはソース管理にチェックインされません。 次の図では、[User Secret](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) がどのように機能するかを示します。
 
 ![User Secret ではシークレット設定はソース管理の外部に保持される](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -144,9 +143,9 @@ ms.locfileid: "53252109"
 プロジェクト用に Key Vault を構成するには、ASP.NET Core のセクションの指示に従います。
 
 1. プロジェクトに次の NuGet パッケージをインストールします
-```
-Microsoft.Configuration.ConfigurationBuilders.UserSecrets
-```
+   ```
+   Microsoft.Configuration.ConfigurationBuilders.UserSecrets
+   ```
 
 2. Web.config で Key Vault 構成ビルダーを定義します。このセクションは *appSettings* セクションの前に配置します。 お客様の Key Vault がパブリック Azure 内にある場合は、*vaultName* を Key Vault 名に置き換え、管理権のあるクラウドを使用している場合は完全 URI に置き換えます。
 
@@ -160,16 +159,16 @@ Microsoft.Configuration.ConfigurationBuilders.UserSecrets
         </builders>
     </configBuilders>
     ```
-3.  appSettings セクションでその Key Vault 構成ビルダーを使用することを指定します。 シークレット設定に、ダミーの値をもつエントリがあることを確認します。
+3. appSettings セクションでその Key Vault 構成ビルダーを使用することを指定します。 シークレット設定に、ダミーの値をもつエントリがあることを確認します。
 
-    ```xml
-    <appSettings configBuilders="AzureKeyVault">
-        <add key="webpages:Version" value="3.0.0.0" />
-        <add key="webpages:Enabled" value="false" />
-        <add key="ClientValidationEnabled" value="true" />
-        <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-        <add key="secret" value="" />
-    </appSettings>
-    ```
+   ```xml
+   <appSettings configBuilders="AzureKeyVault">
+       <add key="webpages:Version" value="3.0.0.0" />
+       <add key="webpages:Enabled" value="false" />
+       <add key="ClientValidationEnabled" value="true" />
+       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+       <add key="secret" value="" />
+   </appSettings>
+   ```
 
 4. プロジェクトのデバッグを開始します。 これは正常に実行される必要があります。

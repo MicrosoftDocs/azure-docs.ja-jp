@@ -5,16 +5,16 @@ services: storage
 author: RenaShahMSFT
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: files
+ms.openlocfilehash: 9238b1dfc697f9efae723aba787982ae1493a608
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253705"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762264"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -35,7 +35,7 @@ Azure Files の詳細については、「[Azure Files の概要](storage-files-
 
 ## <a name="understanding-the-net-apis"></a>.NET API について
 
-Azure Files は、クライアント アプリケーションに対して、サーバー メッセージ ブロック (SMB) と REST という 2 つの幅広いアプローチを提供します。 .NET 内では、これらのアプローチは `System.IO` API と `WindowsAzure.Storage` API によって抽象化されています。
+Azure Files は、クライアント アプリケーションに対して、2 つの幅広いアプローチを提供します。それは、サーバー メッセージ ブロック (SMB) と REST です。 .NET 内では、これらのアプローチは `System.IO` API と `WindowsAzure.Storage` API によって抽象化されています。
 
 API | いつ使用するか | メモ
 ----|-------------|------
@@ -58,8 +58,8 @@ Azure クラウド サービス、Azure Web アプリ、デスクトップ ア�
 ## <a name="use-nuget-to-install-the-required-packages"></a>NuGet を使用した必要なパッケージのインストール
 このチュートリアルを完了するには、プロジェクトで参照する必要があるパッケージが 2 つあります。
 
-* [.NET 用 Microsoft Azure ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/): このパッケージを使用すると、ストレージ アカウント内のデータ リソースにプログラムでアクセスできます。
-* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
+* [.NET 用の Microsoft Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/): このパッケージを使用すると、ストレージ アカウント内のデータ リソースにプログラムでアクセスできます。
+* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/):このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
 
 NuGet を使って両方のパッケージを取得できます。 次の手順に従います。
 
@@ -324,8 +324,8 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 同じ方法で、ファイルに BLOB をコピーできます。 ソース オブジェクトが BLOB である場合、SAS を作成して、コピー操作中にその BLOB へのアクセスを承認します。
 
-## <a name="share-snapshots-preview"></a>共有スナップショット (プレビュー)
-Azure Storage クライアント ライブラリのバージョン 8.5 以降では、共有スナップショット (プレビュー) を作成できます。 また、共有スナップショットを一覧表示または参照したり、削除したりすることもできます。 共有スナップショットは読み取り専用であるため、共有スナップショットに対する書き込み操作は許可されていません。
+## <a name="share-snapshots"></a>共有スナップショット
+Azure Storage クライアント ライブラリのバージョン 8.5 以降では、共有スナップショットを作成できます。 また、共有スナップショットを一覧表示または参照したり、削除したりすることもできます。 共有スナップショットは読み取り専用であるため、共有スナップショットに対する書き込み操作は許可されていません。
 
 **共有スナップショットを作成する**
 

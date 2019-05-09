@@ -17,14 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b3977e045751165947243c67291e81b998b5fcb5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bf69fe0b817011f63ef0a792e01084aedfb83ddc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606116"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795136"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>PowerShell を使用して仮想ネットワーク サービスのエンドポイントで PaaS リソースへのネットワーク アクセスを制限する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 仮想ネットワーク サービスのエンドポイントを使用すると、一部の Azure サービス リソースへのネットワーク アクセスを、仮想ネットワーク サブネットに制限できます。 また、リソースに対するインターネット アクセスを排除することもできます。 サービス エンドポイントにより、使用している仮想ネットワークからサポートされている Azure サービスへの直接接続が提供されるため、ご自身の仮想ネットワークのプライベート アドレス スペースを使用して、Azure サービスにアクセスできるようになります。 サービス エンドポイントを介して Azure リソースに送信されるトラフィックは、常に Microsoft Azure のバックボーン ネットワーク上に留まります。 この記事では、次のことについて説明します:
 
@@ -39,67 +41,67 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカルにインストールして使用する場合、この記事では Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-仮想ネットワークを作成する前に、仮想ネットワークのリソース グループと、この記事で作成された他のすべてのリソースを作成する必要があります。 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを作成します。 
+仮想ネットワークを作成する前に、仮想ネットワークのリソース グループと、この記事で作成された他のすべてのリソースを作成する必要があります。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを作成します。 
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
+New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-[New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、アドレス プレフィックスが *10.0.0.0/16* の、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、アドレス プレフィックスが *10.0.0.0/16* の、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用してサブネット構成を作成します。 次の例では、*Public* という名前のサブネットの構成を作成します。
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用してサブネット構成を作成します。 次の例では、*Public* という名前のサブネットの構成を作成します。
 
 ```azurepowershell-interactive
-$subnetConfigPublic = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
   -Name Public `
   -AddressPrefix 10.0.0.0/24 `
   -VirtualNetwork $virtualNetwork
 ```
 
-[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) を使用してサブネット構成を仮想ネットワークに書き込むことで、仮想ネットワークにサブネットを作成します。
+[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) を使用してサブネット構成を仮想ネットワークに書き込むことで、仮想ネットワークにサブネットを作成します。
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="enable-a-service-endpoint"></a>サービス エンドポイントを有効にする 
+## <a name="enable-a-service-endpoint"></a>サービス エンドポイントを有効にする
 
-サービス エンドポイントをサポートするサービスについてのみ、サービス エンドポイントを有効にできます。 [Get-AzureRmVirtualNetworkAvailableEndpointService](/powershell/module/azurerm.network/get-azurermvirtualnetworkavailableendpointservice) を使用して、Azure の場所で使用できるサービス エンドポイント対応のサービスを表示します。 次の例では、*eastus* リージョンで使用できる、サービス エンドポイント対応サービスの一覧が返されます。 将来的にサービス エンドポイント対応の Azure サービスが増えるにつれて、返されるサービスの一覧も大きくなる予定です。
+サービス エンドポイントをサポートするサービスについてのみ、サービス エンドポイントを有効にできます。 [Get-AzVirtualNetworkAvailableEndpointService](/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice) を使用して、Azure の場所で使用できるサービス エンドポイント対応のサービスを表示します。 次の例では、*eastus* リージョンで使える、サービス エンドポイント対応サービスの一覧が返されます。 将来的にサービス エンドポイント対応の Azure サービスが増えるにつれて、返されるサービスの一覧も大きくなる予定です。
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkAvailableEndpointService -Location eastus | Select Name
-``` 
+Get-AzVirtualNetworkAvailableEndpointService -Location eastus | Select Name
+```
 
 追加のサブネットを仮想ネットワークに作成します。 この例では、*Microsoft.Storage* のサービス エンドポイントを持つ *Private* という名前のサブネットが作成されます。 
 
 ```azurepowershell-interactive
-$subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
   -Name Private `
   -AddressPrefix 10.0.1.0/24 `
   -VirtualNetwork $virtualNetwork `
   -ServiceEndpoint Microsoft.Storage
 
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="restrict-network-access-for-a-subnet"></a>サブネットのネットワーク アクセスを制限する
 
-[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用して、ネットワーク セキュリティ グループのセキュリティ規則を作成します。 次の規則では、Azure Storage サービスに割り当てられたパブリック IP アドレスへの発信アクセスを許可します。 
+[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、ネットワーク セキュリティ グループのセキュリティ規則を作成します。 次の規則では、Azure Storage サービスに割り当てられたパブリック IP アドレスへの発信アクセスを許可します。 
 
 ```azurepowershell-interactive
-$rule1 = New-AzureRmNetworkSecurityRuleConfig `
+$rule1 = New-AzNetworkSecurityRuleConfig `
   -Name Allow-Storage-All `
   -Access Allow `
   -DestinationAddressPrefix Storage `
@@ -114,7 +116,7 @@ $rule1 = New-AzureRmNetworkSecurityRuleConfig `
 次の規則では、すべてのパブリック IP アドレスへのアクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
 
 ```azurepowershell-interactive
-$rule2 = New-AzureRmNetworkSecurityRuleConfig `
+$rule2 = New-AzNetworkSecurityRuleConfig `
   -Name Deny-Internet-All `
   -Access Deny `
   -DestinationAddressPrefix Internet `
@@ -129,7 +131,7 @@ $rule2 = New-AzureRmNetworkSecurityRuleConfig `
 次の規則では、任意の場所からサブネットへのリモート デスクトップ プロトコル (RDP) 受信トラフィックを許可します。 サブネットへのリモート デスクトップ接続が許可されるため、後の手順でリソースへのネットワーク アクセスを確認できます。
 
 ```azurepowershell-interactive
-$rule3 = New-AzureRmNetworkSecurityRuleConfig `
+$rule3 = New-AzNetworkSecurityRuleConfig `
   -Name Allow-RDP-All `
   -Access Allow `
   -DestinationAddressPrefix VirtualNetwork `
@@ -141,27 +143,27 @@ $rule3 = New-AzureRmNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) を使用して、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsgPrivate* という名前のネットワーク セキュリティ グループを作成します。
+[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsgPrivate* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurepowershell-interactive
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myNsgPrivate `
   -SecurityRules $rule1,$rule2,$rule3
 ```
 
-[Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) を使用してこのネットワーク セキュリティ グループを *Private* サブネットに関連付けて、サブネット構成を仮想ネットワークに書き込みます。 次の例では、*myNsgPrivate* ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。
+[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) を使用してこのネットワーク セキュリティ グループを *Private* サブネットに関連付けて、サブネット構成を仮想ネットワークに書き込みます。 次の例では、*myNsgPrivate* ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。
 
 ```azurepowershell-interactive
-Set-AzureRmVirtualNetworkSubnetConfig `
+Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $VirtualNetwork `
   -Name Private `
   -AddressPrefix 10.0.1.0/24 `
   -ServiceEndpoint Microsoft.Storage `
   -NetworkSecurityGroup $nsg
 
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="restrict-network-access-to-a-resource"></a>リソースへのネットワーク アクセスを制限する
@@ -170,12 +172,12 @@ $virtualNetwork | Set-AzureRmVirtualNetwork
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) を使用して Azure ストレージ アカウントを作成します。 `<replace-with-your-unique-storage-account-name>` を Azure 全体における一意の名前 (3 から 24 文字で、数字と小文字のみを使用) に置き換えます。
+[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) を使用して Azure ストレージ アカウントを作成します。 `<replace-with-your-unique-storage-account-name>` を Azure 全体における一意の名前 (3 から 24 文字で、数字と小文字のみを使用) に置き換えます。
 
 ```azurepowershell-interactive
 $storageAcctName = '<replace-with-your-unique-storage-account-name>'
 
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
   -Location EastUS `
   -Name $storageAcctName `
   -ResourceGroupName myResourceGroup `
@@ -183,10 +185,10 @@ New-AzureRmStorageAccount `
   -Kind StorageV2
 ```
 
-ストレージ アカウントが作成されたら、[Get AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) を使用して、変数に読み込むストレージ アカウントのキーを取得します。
+ストレージ アカウントが作成されたら、[Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) を使用して、変数に読み込むストレージ アカウントのキーを取得します。
 
 ```azurepowershell-interactive
-$storageAcctKey = (Get-AzureRmStorageAccountKey `
+$storageAcctKey = (Get-AzStorageAccountKey `
   -ResourceGroupName myResourceGroup `
   -AccountName $storageAcctName).Value[0]
 ```
@@ -195,22 +197,22 @@ $storageAcctKey = (Get-AzureRmStorageAccountKey `
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>ストレージ アカウントにファイル共有を作成する
 
-[New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext) を使用して、ご自身のストレージ アカウントとキーのコンテキストを作成します。 コンテキストによってストレージ アカウント名とアカウント キーがカプセル化されます。
+[New-AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext) を使用して、ご自身のストレージ アカウントとキーのコンテキストを作成します。 コンテキストによってストレージ アカウント名とアカウント キーがカプセル化されます。
 
 ```azurepowershell-interactive
-$storageContext = New-AzureStorageContext $storageAcctName $storageAcctKey
+$storageContext = New-AzStorageContext $storageAcctName $storageAcctKey
 ```
 
-[New-AzureStorageShare](/powershell/module/azure.storage/new-azurestorageshare) を使用してファイル共有を作成します。
+[New-AzStorageShare](/powershell/module/az.storage/new-azstorageshare) を使用してファイル共有を作成します。
 
-$share = New-AzureStorageShare my-file-share -Context $storageContext
+$share = New-AzStorageShare my-file-share -Context $storageContext
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>ストレージ アカウントへのすべてのネットワーク アクセスを拒否する
 
-既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 選択したネットワークのみにアクセスを制限するには、[Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset) を使用して、既定のアクションを *Deny* に変更します。 ネットワーク アクセスが拒否されると、ストレージ アカウントには、どのネットワークからもアクセスできなくなります。
+既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 選択したネットワークのみにアクセスを制限するには、[Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset) を使用して、既定のアクションを *Deny* に変更します。 ネットワーク アクセスが拒否されると、ストレージ アカウントには、どのネットワークからもアクセスできなくなります。
 
 ```azurepowershell-interactive
-Update-AzureRmStorageAccountNetworkRuleSet  `
+Update-AzStorageAccountNetworkRuleSet  `
   -ResourceGroupName "myresourcegroup" `
   -Name $storageAcctName `
   -DefaultAction Deny
@@ -218,20 +220,20 @@ Update-AzureRmStorageAccountNetworkRuleSet  `
 
 ### <a name="enable-network-access-from-a-subnet"></a>サブネットからのネットワーク アクセスを有効にする
 
-[Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) を使用して作成済み仮想ネットワークを取得し、[Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig) を使用して、変数に読み込むプライベート サブネット オブジェクトを取得します。
+[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) を使用して作成済み仮想ネットワークを取得し、[Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) を使用して、変数に読み込むプライベート サブネット オブジェクトを取得します。
 
 ```azurepowershell-interactive
-$privateSubnet = Get-AzureRmVirtualNetwork `
+$privateSubnet = Get-AzVirtualNetwork `
   -ResourceGroupName "myResourceGroup" `
   -Name "myVirtualNetwork" `
-  | Get-AzureRmVirtualNetworkSubnetConfig `
+  | Get-AzVirtualNetworkSubnetConfig `
   -Name "Private"
 ```
 
-[Add-AzureRmStorageAccountNetworkRule](/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig) を使用して、*Private* サブネットからストレージ アカウントへのネットワーク アクセスを許可します。
+[Add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig) を使用して、*Private* サブネットからストレージ アカウントへのネットワーク アクセスを許可します。
 
 ```azurepowershell-interactive
-Add-AzureRmStorageAccountNetworkRule `
+Add-AzStorageAccountNetworkRule `
   -ResourceGroupName "myresourcegroup" `
   -Name $storageAcctName `
   -VirtualNetworkResourceId $privateSubnet.Id
@@ -243,10 +245,10 @@ Add-AzureRmStorageAccountNetworkRule `
 
 ### <a name="create-the-first-virtual-machine"></a>最初の仮想マシンを作成する
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、"*パブリック*" サブネット内に仮想マシンを作成します。 次のコマンドを実行するとき、資格情報の入力を求められます。 入力した値は、VM のユーザー名とパスワードとして構成されます。 `-AsJob` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、"*パブリック*" サブネット内に仮想マシンを作成します。 次のコマンドを実行するとき、資格情報の入力を求められます。 入力した値は、VM のユーザー名とパスワードとして構成されます。 `-AsJob` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Location "East US" `
     -VirtualNetworkName "myVirtualNetwork" `
@@ -260,7 +262,7 @@ New-AzureRmVm `
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command                  
 --     ----            -------------   -----         -----------     --------             -------                  
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmVM     
+1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM     
 ```
 
 ### <a name="create-the-second-virtual-machine"></a>2 番目の仮想マシンを作成する
@@ -268,7 +270,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 *Private* サブネットに仮想マシンを作成します。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Location "East US" `
     -VirtualNetworkName "myVirtualNetwork" `
@@ -276,20 +278,20 @@ New-AzureRmVm `
     -Name "myVmPrivate"
 ```
 
-Azure では VM の作成に数分かかります。 Azure が VM の作成を完了し、出力を PowerShell に返すまでは、次の手順に進まないでください。 
+Azure では VM の作成に数分かかります。 Azure が VM の作成を完了し、出力を PowerShell に返すまでは、次の手順に進まないでください。
 
 ## <a name="confirm-access-to-storage-account"></a>ストレージ アカウントへのアクセスを確認する
 
-[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、VM のパブリック IP アドレスを返します。 次の例では、*myVmPrivate* VM のパブリック IP アドレスを返しています。
+[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、VM のパブリック IP アドレスを返します。 次の例では、*myVmPrivate* VM のパブリック IP アドレスを返しています。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVmPrivate `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
 ```
 
-次のコマンドの `<publicIpAddress>` を、前のコマンドで返されたパブリック IPアドレスで置換して、次のコマンドを入力します。 
+次のコマンドの `<publicIpAddress>` を、前のコマンドで返されたパブリック IPアドレスで置換して、次のコマンドを入力します。
 
 ```powershell
 mstsc /v:<publicIpAddress>
@@ -304,6 +306,7 @@ $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
+
 PowerShell によって、次のサンプル出力のような出力が返されます。
 
 ```powershell
@@ -329,7 +332,7 @@ ping bing.com
 *myVmPublic* VM のパブリック IP アドレスを取得します。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVmPublic `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
@@ -356,19 +359,19 @@ New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.
 自分のコンピューターから、次のコマンドを使用してストレージ アカウントのファイル共有の表示を試みます。
 
 ```powershell-interactive
-Get-AzureStorageFile `
+Get-AzStorageFile `
   -ShareName my-file-share `
   -Context $storageContext
 ```
 
-アクセスが拒否され、"*Get-AzureStorageFile : The remote server returned an error: (403) Forbidden.\(Get-AzureStorageFile: リモート サーバーがエラー「(403) 許可されていません」を返しました。\)HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation\(HTTP 状態コード: 403 - HTTP エラー メッセージ: この要求には、この操作を実行する権限がありません\)*" というエラーが発生します。使用しているコンピューターが *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットにないためです。
+アクセスが拒否され、*Get-AzStorageFile :リモート サーバーからエラーが返される:(403) 禁止。HTTP 状態コード:403 -HTTP エラー メッセージ:"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)*" というエラーが発生します。これは、使っているコンピューターが *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットにないためです。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要なくなったら、[Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
+必要なくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
 
 ```azurepowershell-interactive 
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

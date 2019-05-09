@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリ内の文字列の操作 | Microsoft Docs
-description: この記事では、Log Analytics で Analytics ポータルを使用してクエリを作成する方法のチュートリアルを提供します。
+title: Azure Monitor ログ クエリ内の文字列の操作 | Microsoft Docs
+description: この記事は、Azure portal で Azure Monitor Log Analytics を使用して、Azure Monitor でログ データのクエリと分析を行うためのチュートリアルとなっています。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4262b5df4cbe9efe4b2ab1f8ef72ab175cde6f02
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885393"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750958"
 ---
-# <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>Log Analytics クエリ内の JSON とデータ構造の操作
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の JSON とデータ構造の操作
 
 > [!NOTE]
-> このレッスンを完了する前に、[Analytics ポータルの概要](get-started-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
+> このレッスンを完了する前に、「[Azure Monitor Log Analytics の使用を開始する](get-started-portal.md)」と、「[Azure Monitor ログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -131,7 +131,7 @@ print hosts_object
 ![スキーマの作成](media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>次の手順
-Log Analytics クエリ言語の使用については、他のレッスンをご覧ください。
+Azure Monitor でのログ クエリの使用に関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)
 - [日付と時刻の操作](datetime-operations.md)

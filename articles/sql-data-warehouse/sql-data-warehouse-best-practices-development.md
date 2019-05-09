@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 09/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c60ec516a5bcefc3fac98fbc09abc89683e2004
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 1682a26ba713db564484e8984010e9c12ce9d79e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783505"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838512"
 ---
 # <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の開発のベスト プラクティス
 この記事では、独自のデータ ウェアハウス ソリューションを開発するにあたってのガイダンスとベスト プラクティスについて説明します。 
@@ -112,8 +112,8 @@ DDL を定義するときに、データをサポートする最小のデータ�
 [Columnstore indexes guide]: https://msdn.microsoft.com/library/gg492088.aspx
 
 <!--Other Web references-->
-[Selecting table distribution]: https://blogs.msdn.microsoft.com/sqlcat/2015/08/11/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/
+[Selecting table distribution]: https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/
 [Azure SQL Data Warehouse Feedback]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL Data Warehouse MSDN Forum]: https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse
-[Azure SQL Data Warehouse Stack Overflow Forum]:  http://stackoverflow.com/questions/tagged/azure-sqldw
-[Azure SQL Data Warehouse loading patterns and strategies]: http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/
+[Azure SQL Data Warehouse Stack Overflow Forum]:  https://stackoverflow.com/questions/tagged/azure-sqldw
+[Azure SQL Data Warehouse loading patterns and strategies]: https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/

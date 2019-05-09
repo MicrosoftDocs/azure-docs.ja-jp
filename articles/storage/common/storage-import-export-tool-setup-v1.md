@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: d7f0a40710d0cd7f017d9caa0da8e1644cdf56d3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526514"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087450"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
 Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。  
@@ -45,36 +45,36 @@ Microsoft Azure Import/Export ツールは、ドライブの準備と修復用�
   
 部分的に問題のあるインポートを修復する場合は、次の項目が必要です。  
   
--   コピー ログ ファイル  
+- コピー ログ ファイル  
   
--   ストレージ アカウント キー。  
+- ストレージ アカウント キー。  
   
   部分的に問題のあるエクスポートを修復する場合は、次の項目が必要です。  
   
--   コピー ログ ファイル  
+- コピー ログ ファイル  
   
--   マニフェスト ファイル (オプション)  
+- マニフェスト ファイル (オプション)  
   
--   ストレージ アカウント キー。  
+- ストレージ アカウント キー。  
   
 ## <a name="installing-the-azure-importexport-tool"></a>Azure Import/Export ツールのインストール  
  Azure Import/Export ツールは次のファイルで構成されます。  
   
--   WAImportExport.exe  
+- WAImportExport.exe  
   
--   WAImportExport.exe.config  
+- WAImportExport.exe.config  
   
--   WAImportExportCore.dll  
+- WAImportExportCore.dll  
   
--   WAImportExportRepair.dll  
+- WAImportExportRepair.dll  
   
--   Microsoft.WindowsAzure.Storage.dll  
+- Microsoft.WindowsAzure.Storage.dll  
   
--   Hddid.dll  
+- Hddid.dll  
   
- たとえば、これらのファイルを作業ディレクトリ (`c:\WAImportExport`) にコピーします。 次に、管理者モードでコマンド ライン ウィンドウを開き、上記のディレクトリを現在のディレクトリとして設定します。  
+  たとえば、これらのファイルを作業ディレクトリ (`c:\WAImportExport`) にコピーします。 次に、管理者モードでコマンド ライン ウィンドウを開き、上記のディレクトリを現在のディレクトリとして設定します。  
   
- コマンドのヘルプを出力するには、パラメーターを指定せずにツールを実行します。  
+  コマンドのヘルプを出力するには、パラメーターを指定せずにツールを実行します。  
   
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  

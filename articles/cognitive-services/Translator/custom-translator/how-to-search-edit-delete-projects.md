@@ -5,16 +5,16 @@ description: Custom Translator には、効率的な方法でプロジェクト�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 185febd18d773a07601fce4dfa8c4575855f84b0
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.topic: conceptual
+ms.openlocfilehash: a4277e8bbd130588e343019a8b02221593efad52
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626964"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772638"
 ---
 # <a name="search-edit-and-delete-projects"></a>プロジェクトの検索、編集、削除
 
@@ -39,7 +39,7 @@ Custom Translator には、効率的な方法でプロジェクトを管理す�
 
 ## <a name="edit-a-project"></a>プロジェクトを編集する
 
-Custom Translator には、プロジェクトの名前と説明を編集する機能があります。 カテゴリ、ソース言語、ターゲット言語など、他のプロジェクトのメタデータは編集に使用できません。 次にプロジェクトの編集手順を説明します。
+Custom Translator には、プロジェクトの名前と説明を編集する機能があります。 カテゴリ、ソース言語、ターゲット言語など、プロジェクトの他のメタデータは編集できません。 次にプロジェクトの編集手順を説明します。
 
 1.  プロジェクトをマウスでポイントしたときに表示される鉛筆アイコンをクリックします。
 

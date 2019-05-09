@@ -1,33 +1,33 @@
 ---
 title: Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
 description: この記事では、Azure Cosmos DB を Qlik Sense に接続してデータを可視化するのに必要な手順を説明します。
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 57832b59d8b43f5aa157b278e67c50b25084c86c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962837"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258779"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
 
 Qlik Sense は、さまざまなソースからのデータを 1 つのビューに結合するデータ視覚化ツールです。 Qlik Sense はデータ内の可能なすべての関係をインデックス化するので、データを直ちに分析して理解することができます。 Qlik Sense を使用して Azure Cosmos DB データを視覚化できます。 この記事では、Azure Cosmos DB を Qlik Sense に接続してデータを可視化するのに必要な手順を説明します。 
 
 > [!NOTE]
-> Qlik Sense と Azure Cosmos DB との接続は現在、Azure Cosmos DB SQL API および MongoDB API アカウントでのみサポートされています。
+> Qlik Sense と Azure Cosmos DB との接続は現在、SQL API および Azure Cosmos DB の MongoDB 用 API のアカウントでのみサポートされています。
 
 次の機能で、Qlik Sense と Azure Cosmos DB を接続することができます。
 
 * Cosmos DB SQL API (ODBC コネクタを使用)。
 
-* Cosmos DB MongoDB API (Qlik Sense MongoDB コネクタを使用。現在プレビュー段階)。
+* Azure Cosmos DB の MongoDB 用 API (Qlik Sense MongoDB コネクタを使用。現在プレビュー段階)。
 
-* Cosmos DB MongoDB API および SQL API (Qlik Sense で REST API コネクタを使用)。
+* Azure Cosmos DB の MongoDB 用 API および SQL API (Qlik Sense で REST API コネクタを使用)。
 
 * Cosmos DB Mongo DB API (Qlik Core 用 gRPC コネクタを使用)。
 この記事では、ODBC コネクタを使用して Cosmos DB SQL API に接続する方法を詳しく説明します。
@@ -42,9 +42,9 @@ Qlik Sense は、さまざまなソースからのデータを 1 つのビュー
 
 * [ビデオ ゲーム データ](https://www.kaggle.com/gregorut/videogamesales)をダウンロードします。このサンプル データは CSV 形式です。 あとでこのデータを Cosmos DB アカウントに保存して Qlik Sense で視覚化します。
 
-* クイック スタート記事の「[アカウントの作成](create-sql-api-dotnet.md#create-a-database-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
+* クイック スタート記事の「[アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 
-* [データベースとコレクションを作成](create-sql-api-dotnet.md#add-a-collection)します。コレクションのスループット値を 1000 RU/秒に設定できます。 
+* [データベースとコレクションを作成](create-sql-api-dotnet.md#create-collection-database)します。コレクションのスループット値を 1000 RU/秒に設定できます。 
 
 * サンプル ビデオ ゲームの売上データを Cosmos DB アカウントに読み込みます。 データをインポートするには Azure Cosmos DB データ移行ツールを使用できます。[順次](import-data.md#SQLSeqTarget)または[一括](import-data.md#SQLBulkTarget)のデータ インポートが可能です。 データが Cosmos DB アカウントにインポートされるまでに 3 分から 5 分かかります。
 

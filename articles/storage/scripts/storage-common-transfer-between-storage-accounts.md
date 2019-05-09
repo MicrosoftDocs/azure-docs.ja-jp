@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 2c83526ac5fd6fb6c757bffab08414d940694998
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 88eb97a206bc75bc9635da90eb9d48818ceef0f0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635427"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487134"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Windows での AzCopy を使用したストレージ アカウント間での BLOB の移行
 
@@ -37,7 +37,7 @@ ms.locfileid: "53635427"
 このサンプルの入力の例を次に示します。
 
 AzCopy が既定のディレクトリにインストールされている場合:
-```PowerShell
+```powershell
 srcStorageAccountName: ExampleSourceStorageAccountName
 srcStorageAccountKey: ExampleSourceStorageAccountKey
 DestStorageAccountName: ExampleTargetStorageAccountName
@@ -66,10 +66,10 @@ AzCopyPath: C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\AzCopy.exe
 
 このスクリプトは、次のコマンドを使用して、データを 1 つのストレージ アカウントから別のストレージ アカウントにコピーします。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [Get-AzStorageContainer](/powershell/module/azure.storage/Get-AzStorageContainer) | このストレージ アカウントに関連付けられているストレージ コンテナーが返ります。 |
-| [New-AzStorageContext](/powershell/module/azure.storage/New-AzStorageContext) | Azure Storage コンテキストを作成します。 |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | このストレージ アカウントに関連付けられているストレージ コンテナーが返ります。 |
+| [New-AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Azure Storage コンテキストを作成します。 |
 
 ## <a name="next-steps"></a>次の手順
 

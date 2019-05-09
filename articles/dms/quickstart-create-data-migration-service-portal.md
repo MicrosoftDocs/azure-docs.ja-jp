@@ -2,21 +2,21 @@
 title: クイック スタート:Azure ポータルを使用して Azure Database Migration Service インスタンスを作成する | Microsoft Docs
 description: Azure ポータルを使用して Azure Database Migration Service のインスタンスを作成します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/09/2018
-ms.openlocfilehash: 2b3ec4a09fb2baee7d532f348fc18cb3d428d092
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: af5ffdb1c1f030c2bbc0616d027c06b59f1a34de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53711824"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177468"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 このクイック スタートでは、Azure Portal を使用して Azure Database Migration Service のインスタンスを作成します。  サービスを作成したら、それを使用してオンプレミスの SQL Server から Azure SQL Database にデータを移行できます。

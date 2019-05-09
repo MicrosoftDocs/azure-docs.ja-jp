@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Azure Blob ストレージで Azure Machine Learning の入力モデル データを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 11/08/2018
+ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2a4f0f1100064010405c3d0bc599e7add1041074
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a127a211157edb0b26d0495bc2ed05dd79323111
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271574"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842636"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
@@ -50,7 +50,7 @@ ms.locfileid: "53271574"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 - Azure Machine Learning service ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
 
@@ -136,15 +136,15 @@ ms.locfileid: "53271574"
 
   1. **[デプロイ]** -> **[サービスの選択]** -> **[編集]** の順に選択します。
 
-    [![編集オプション](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [![編集オプション](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. **[詳細設定]** で、**[モデルのデータ コレクションを有効にする]** をオフにします。 
 
-    [![データ コレクションをオフにする](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [![データ コレクションをオフにする](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. **[更新]** をクリックして変更を適用します。
 
-* オプション 2 - Python を使用してデータ収集を無効にする:
++ オプション 2 - Python を使用してデータ収集を無効にする:
 
   ```python 
   ## replace <service_name> with the name of the web service

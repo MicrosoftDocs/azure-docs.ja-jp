@@ -1,189 +1,184 @@
-items:
 - name: Network Watcher のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Network Watcher について
-    href: network-watcher-monitoring-overview.md
+    - name: Network Watcher について
+      href: network-watcher-monitoring-overview.md
 - name: クイック スタート
-  items:
-  - name: VM トラフィック フィルターに関する問題を診断する - ポータル
-    href: diagnose-vm-network-traffic-filtering-problem.md
-  - name: VM トラフィック フィルターに関する問題を診断する - PowerShell
-    href: diagnose-vm-network-traffic-filtering-problem-powershell.md
-  - name: VM トラフィック フィルターに関する問題を診断する - Azure CLI
-    href: diagnose-vm-network-traffic-filtering-problem-cli.md
   expanded: true
+  items:
+    - name: VM トラフィック フィルターに関する問題を診断する - ポータル
+      href: diagnose-vm-network-traffic-filtering-problem.md
+    - name: VM トラフィック フィルターに関する問題を診断する - PowerShell
+      href: diagnose-vm-network-traffic-filtering-problem-powershell.md
+    - name: VM トラフィック フィルターに関する問題を診断する - Azure CLI
+      href: diagnose-vm-network-traffic-filtering-problem-cli.md
 - name: チュートリアル
   items:
-  - name: VM のルーティングに関する問題を診断する
-    href: diagnose-vm-network-routing-problem.md
-  - name: VM 間の通信を監視する
-    href: connection-monitor.md
-  - name: ネットワーク間の通信に関する問題を診断する
-    href: diagnose-communication-problem-between-networks.md
-  - name: VM ネットワーク トラフィックのログを記録する
-    href: network-watcher-nsg-flow-logging-portal.md
+    - name: VM のルーティングに関する問題を診断する
+      href: diagnose-vm-network-routing-problem.md
+    - name: VM 間の通信を監視する
+      href: connection-monitor.md
+    - name: ネットワーク間の通信に関する問題を診断する
+      href: diagnose-communication-problem-between-networks.md
+    - name: VM ネットワーク トラフィックのログを記録する
+      href: network-watcher-nsg-flow-logging-portal.md
 - name: 概念
   items:
-  - name: VM ネットワーク トラフィック フィルターに関する問題を診断する
-    href: network-watcher-ip-flow-verify-overview.md
-  - name: VM のルーティングに関する問題を診断する
-    href: network-watcher-next-hop-overview.md
-  - name: 送信 VM 通信に関する問題を診断する
-    href: network-watcher-connectivity-overview.md
-  - name: VPN 接続に関する問題のトラブルシューティングを行う
-    href: network-watcher-troubleshoot-overview.md
-  - name: 可変パケット キャプチャ
-    href: network-watcher-packet-capture-overview.md
-  - name: ネットワーク セキュリティ グループのフロー ログ
-    href: network-watcher-nsg-flow-logging-overview.md
-  - name: ネットワーク セキュリティ グループ ビュー
-    href: network-watcher-security-group-view-overview.md
-  - name: ロールベースのアクセス制御のアクセス許可
-    href: required-rbac-permissions.md
+    - name: VM ネットワーク トラフィック フィルターに関する問題を診断する
+      href: network-watcher-ip-flow-verify-overview.md
+    - name: VM のルーティングに関する問題を診断する
+      href: network-watcher-next-hop-overview.md
+    - name: 送信 VM 通信に関する問題を診断する
+      href: network-watcher-connectivity-overview.md
+    - name: VPN 接続に関する問題のトラブルシューティングを行う
+      href: network-watcher-troubleshoot-overview.md
+    - name: 可変パケット キャプチャ
+      href: network-watcher-packet-capture-overview.md
+    - name: ネットワーク セキュリティ グループのフロー ログ
+      href: network-watcher-nsg-flow-logging-overview.md
+    - name: ネットワーク セキュリティ グループ ビュー
+      href: network-watcher-security-group-view-overview.md
+    - name: ロールベースのアクセス制御のアクセス許可
+      href: required-rbac-permissions.md
 - name: ハウツー ガイド
   items:
-  - name: Network Watcher を構成する
-    href: network-watcher-create.md
-  - name: VM ネットワークに関する問題を診断する
-    items:
-    - name: VM 拡張機能をインストールする
+    - name: Network Watcher を構成する
+      href: network-watcher-create.md
+    - name: VM ネットワークに関する問題を診断する
       items:
-      - name: " Windows"
-        href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
-      - name: " Linux"
-        href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
-    - name: ルーティングに関する問題を診断する
+        - name: VM 拡張機能をインストールする
+          items:
+            - name: ' Windows'
+              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+            - name: Linux
+              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+        - name: ルーティングに関する問題を診断する
+          items:
+            - name: Azure PowerShell
+              href: diagnose-vm-network-routing-problem-powershell.md
+            - name: Azure CLI
+              href: diagnose-vm-network-routing-problem-cli.md
+        - name: 送信接続に関する問題を診断する
+          items:
+            - name: Azure ポータル
+              href: network-watcher-connectivity-portal.md
+            - name: Azure PowerShell
+              href: network-watcher-connectivity-powershell.md
+            - name: Azure CLI
+              href: network-watcher-connectivity-cli.md
+            - name: REST
+              href: network-watcher-connectivity-rest.md
+        - name: パケットをキャプチャして分析する
+          items:
+            - name: パケット キャプチャを管理する
+              items:
+                - name: Azure ポータル
+                  href: network-watcher-packet-capture-manage-portal.md
+                - name: Azure PowerShell
+                  href: network-watcher-packet-capture-manage-powershell.md
+                - name: Azure CLI
+                  href: network-watcher-packet-capture-manage-cli.md
+                - name: REST
+                  href: network-watcher-packet-capture-manage-rest.md
+            - name: パケット キャプチャを分析する
+              items:
+                - name: 異常の検出
+                  href: network-watcher-deep-packet-inspection.md
+                - name: Azure Functions によるプロアクティブなネットワーク監視
+                  href: network-watcher-alert-triggered-packet-capture.md
+                - name: オープン ソース ツールを使用して不正侵入検出を実行する
+                  href: network-watcher-intrusion-detection-open-source-tools.md
+                - name: オープン ソース ツールを使用してネットワーク トラフィック パターンを視覚化する
+                  href: network-watcher-using-open-source-tools.md
+    - name: ネットワーク セキュリティ グループを操作する
       items:
-      - name: Azure PowerShell
-        href: diagnose-vm-network-routing-problem-powershell.md
-      - name: Azure CLI
-        href: diagnose-vm-network-routing-problem-cli.md
-    - name: 送信接続に関する問題を診断する
+        - name: NSG フロー ログの構成
+          items:
+            - name: Azure PowerShell
+              href: network-watcher-nsg-flow-logging-powershell.md
+            - name: Azure CLI
+              href: network-watcher-nsg-flow-logging-cli.md
+            - name: REST
+              href: network-watcher-nsg-flow-logging-rest.md
+        - name: NSG フロー ログの分析
+          items:
+            - name: NSG フロー ログの読み取り
+              href: network-watcher-read-nsg-flow-logs.md
+            - name: トラフィック分析を使用する
+              href: traffic-analytics.md
+              items:
+                - name: よく寄せられる質問
+                  href: traffic-analytics-faq.md
+                - name: スキーマとデータ収集
+                  href: traffic-analytics-schema.md
+            - name: Power BI を使用する
+              href: network-watcher-visualize-nsg-flow-logs-power-bi.md
+            - name: Elastic Stack を使用する
+              href: network-watcher-visualize-nsg-flow-logs-open-source-tools.md
+            - name: Grafana を使用する
+              href: network-watcher-nsg-grafana.md
+            - name: Graylog を使用する
+              href: network-watcher-analyze-nsg-flow-logs-graylog.md
+        - name: ネットワーク セキュリティ グループを表示する
+          items:
+            - name: Azure PowerShell
+              href: network-watcher-security-group-view-powershell.md
+            - name: Azure CLI
+              href: network-watcher-security-group-view-cli.md
+            - name: REST
+              href: network-watcher-security-group-view-rest.md
+        - name: コンプライアンスを実行し、ネットワークを監査する
+          href: network-watcher-nsg-auditing-powershell.md
+    - name: VPN ゲートウェイと接続を診断する
       items:
-      - name: Azure ポータル
-        href: network-watcher-connectivity-portal.md
-      - name: Azure PowerShell
-        href: network-watcher-connectivity-powershell.md
-      - name: Azure CLI
-        href: network-watcher-connectivity-cli.md
-      - name: REST
-        href: network-watcher-connectivity-rest.md
-    - name: パケットをキャプチャして分析する
-      items:
-      - name: パケット キャプチャを管理する
-        items:
-        - name: Azure ポータル
-          href: network-watcher-packet-capture-manage-portal.md
-        - name: Azure PowerShell
-          href: network-watcher-packet-capture-manage-powershell.md
-        - name: Azure CLI
-          href: network-watcher-packet-capture-manage-cli.md
-        - name: REST
-          href: network-watcher-packet-capture-manage-rest.md
-      - name: パケット キャプチャを分析する
-        items:
-        - name: 異常の検出
-          href: network-watcher-deep-packet-inspection.md
-        - name: Azure Functions によるプロアクティブなネットワーク監視
-          href: network-watcher-alert-triggered-packet-capture.md
-        - name: オープン ソース ツールを使用して不正侵入検出を実行する
-          href: network-watcher-intrusion-detection-open-source-tools.md
-        - name: オープン ソース ツールを使用してネットワーク トラフィック パターンを視覚化する
-          href: network-watcher-using-open-source-tools.md
-  - name: ネットワーク セキュリティ グループを操作する
-    items:
-    - name: NSG フロー ログの構成
-      items:
-      - name: Azure PowerShell
-        href: network-watcher-nsg-flow-logging-powershell.md
-      - name: Azure CLI
-        href: network-watcher-nsg-flow-logging-cli.md
-      - name: REST
-        href: network-watcher-nsg-flow-logging-rest.md
-    - name: NSG フロー ログの分析
-      items:
-      - name: NSG フロー ログの読み取り
-        href: network-watcher-read-nsg-flow-logs.md
-      - name: トラフィック分析を使用する
-        href: traffic-analytics.md
-        items:
-        - name: よく寄せられる質問
-          href: traffic-analytics-faq.md
-      - name: Power BI を使用する
-        href: network-watcher-visualize-nsg-flow-logs-power-bi.md
-      - name: Elastic Stack を使用する
-        href: network-watcher-visualize-nsg-flow-logs-open-source-tools.md
-      - name: Grafana を使用する
-        href: network-watcher-nsg-grafana.md
-      - name: Graylog を使用する
-        href: network-watcher-analyze-nsg-flow-logs-graylog.md
-    - name: ネットワーク セキュリティ グループを表示する
-      items:
-      - name: Azure PowerShell
-        href: network-watcher-security-group-view-powershell.md
-      - name: Azure CLI
-        href: network-watcher-security-group-view-cli.md
-      - name: REST
-        href: network-watcher-security-group-view-rest.md
-    - name: コンプライアンスを実行し、ネットワークを監査する
-      href: network-watcher-nsg-auditing-powershell.md
-  - name: VPN ゲートウェイと接続を診断する
-    items:
-    - name: トラブルシューティング
-      items:
-      - name: Azure PowerShell
-        href: network-watcher-troubleshoot-manage-powershell.md
-      - name: Azure CLI
-        href: network-watcher-troubleshoot-manage-cli.md
-      - name: REST
-        href: network-watcher-troubleshoot-manage-rest.md
-    - name: Azure Automation を使用して VPN ゲートウェイを監視する
-      href: network-watcher-monitor-with-azure-automation.md
-    - name: VPN ゲートウェイ経由でオンプレミスの接続を診断する
-      href: network-watcher-diagnose-on-premises-connectivity.md
-  - name: ネットワーク トポロジの表示
-    href: view-network-topology.md
-  - name: 場所と Azure リージョンの間の相対待ち時間を確認する
-    href: view-relative-latencies.md
-  - name: ネットワーク パフォーマンスを監視する
-    href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+        - name: トラブルシューティング
+          items:
+            - name: Azure PowerShell
+              href: network-watcher-troubleshoot-manage-powershell.md
+            - name: Azure CLI
+              href: network-watcher-troubleshoot-manage-cli.md
+            - name: REST
+              href: network-watcher-troubleshoot-manage-rest.md
+        - name: Azure Automation を使用して VPN ゲートウェイを監視する
+          href: network-watcher-monitor-with-azure-automation.md
+        - name: VPN ゲートウェイ経由でオンプレミスの接続を診断する
+          href: network-watcher-diagnose-on-premises-connectivity.md
+    - name: ネットワーク トポロジの表示
+      href: view-network-topology.md
+    - name: 場所と Azure リージョンの間の相対待ち時間を確認する
+      href: view-relative-latencies.md
+    - name: ネットワーク パフォーマンスを監視する
+      href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
 - name: リファレンス
   items:
-  - name: Azure CLI
-    href: /cli/azure/network/watcher
-  - name: Azure PowerShell
-    href: /powershell/module/azurerm.network/#network_watcher
-  - name: Java
-    href: /java/api/com.microsoft.azure.management.network
-  - name: Ruby
-    href: http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher
-  - name: Python
-    href: /python/api/overview/azure/network
-  - name: .NET
-    href: /dotnet/api/overview/azure/virtual-network
-  - name: Node.js
-    href: /javascript/api/azure-arm-network
-  - name: REST
-    href: /rest/api/network-watcher/
+    - name: Azure CLI
+      href: /cli/azure/network/watcher
+    - name: Azure PowerShell
+      href: '/powershell/module/az.network/#network_watcher'
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.network
+    - name: Ruby
+      href: 'https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher'
+    - name: Python
+      href: /python/api/overview/azure/network
+    - name: .NET
+      href: /dotnet/api/overview/azure/virtual-network
+    - name: Node.js
+      href: /javascript/api/azure-arm-network
+    - name: REST
+      href: /rest/api/network-watcher/
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/network-watcher/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=network-watcher
-  - name: SLA
-    href: https://azure.microsoft.com/support/legal/sla/
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/network-watcher
-ms.openlocfilehash: 69b4efb5adc0b6c3c7766b7c9178ccefb816711d
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391642"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=network-watcher'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/network-watcher'

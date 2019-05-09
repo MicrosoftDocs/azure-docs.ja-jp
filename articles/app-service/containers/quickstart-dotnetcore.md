@@ -1,11 +1,11 @@
 ---
-title: Linux での .NET Core アプリの作成 - Azure App Service | Microsoft Docs
+title: Linux で ASP.NET Core アプリを作成する - Azure App Service | Microsoft Docs
 description: App Service on Linux で、初めての .NET Core の Hello World アプリを数分でデプロイします。
 keywords: Azure App Service, Web アプリ, .NET, コア, Linux, OSS
 services: app-service
 documentationCenter: ''
 author: cephalin
-manager: syntaxc4
+manager: jeconnoc
 editor: ''
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
 ms.service: app-service
@@ -13,17 +13,17 @@ ms.workload: web
 ms.tgt_pltfrm: linux
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/11/2018
-ms.author: cfowler
+ms.date: 03/27/2019
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 047ed6026412cac7fc7c51135e1837a20decd910
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: da4d246e098751f650eb6315de3794ad957884d6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633932"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543895"
 ---
-# <a name="create-a-net-core-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core アプリの作成
+# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>App Service on Linux で ASP.NET Core アプリを作成する
 
 > [!NOTE]
 > この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、[Azure での ASP.NET Core アプリの作成](../app-service-web-get-started-dotnet.md)に関するページを参照してください。
@@ -49,7 +49,7 @@ ms.locfileid: "53633932"
 コンピューターのターミナル ウィンドウで、`hellodotnetcore` という名前のディレクトリを作成し、現在のディレクトリをそのディレクトリに変更します。
 
 ```bash
-md hellodotnetcore
+mkdir hellodotnetcore
 cd hellodotnetcore
 ```
 
@@ -188,4 +188,7 @@ git push azure master
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure App Service on Linux での .NET Core および SQL Database のアプリの作成](tutorial-dotnetcore-sqldb-app.md)
+> [チュートリアル:ASP.NET Core アプリと SQL Database](tutorial-dotnetcore-sqldb-app.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core アプリの構成](configure-language-dotnetcore.md)

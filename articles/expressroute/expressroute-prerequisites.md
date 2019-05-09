@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 03/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: c44eb4bbf4945973e075ff88bccde19053b812be
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: afe8d3971a51d57498e3e32b7e1cf5bf5a3263d6
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133483"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295200"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。
@@ -22,7 +22,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 
 ## <a name="azure-account"></a>Azure アカウント
 * 有効でアクティブな Microsoft Azure アカウント。 このアカウントは ExpressRoute 回線のセットアップに必要です。 ExpressRoute 回線は Azure サブスクリプション内のリソースです。 Office 365 サービスや Dynamics 365 など、Azure 以外の Microsoft クラウド サービスに接続が限定される場合でも、Azure サブスクリプションが要件となります。
-* アクティブな Office 365 サブスクリプション (Office 365 サービスを利用する場合)。 詳細については、この記事の [Office 365 固有の要件](#office-365-specific-requirements)に関するセクションを参照してください。
+* アクティブな Office 365 サブスクリプション (Office 365 サービスを利用する場合)。 詳細については、この記事の Office 365 固有の要件に関するセクションを参照してください。
 
 ## <a name="connectivity-provider"></a>接続プロバイダー
 
@@ -30,7 +30,8 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 * プロバイダーが ExpressRoute 接続パートナーではない場合でも、 [クラウド エクスチェンジ プロバイダー](expressroute-locations.md#connectivity-through-exchange-providers)を通じて Microsoft Cloud に接続できます。
 
 ## <a name="network-requirements"></a>ネットワークの要件
-* **接続の冗長性**: プロバイダーとの物理接続に対する冗長性の要件はありません。 Microsoft の要件では、 [クラウド エクスチェンジへの物理接続が 1 つ](expressroute-faqs.md#onep2plink)しかない場合でも、Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが必要です。
+* **ピアリングの場所ごとの冗長性**: Microsoft から、([クラウド エクスチェンジへの物理接続が 1 つ](expressroute-faqs.md#onep2plink)しかない場合でも) 各 ExpressRoute 回線上の Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが求められます。
+* **ディザスター リカバリーの冗長性**: Microsoft は、単一障害点を回避するために別々のピアリングの場所に少なくとも 2 つの ExpressRoute 回線を設定することを強くお勧めします。
 * **ルーティング**: Microsoft Cloud への接続方法に応じて、自社またはプロバイダーで[ルーティング ドメイン](expressroute-circuit-peerings.md)用の BGP セッションを設定および管理する必要があります。 一部のイーサネット接続プロバイダーまたはクラウド エクスチェンジ プロバイダーでは、BGP 管理を付加価値サービスとして提供している場合があります。
 * **NAT**:Microsoft では、パブリック IP アドレスのみを Microsoft ピアリング経由で受け入れます。 オンプレミス ネットワークでプライベート IP アドレスを使用している場合、自社またはプロバイダーで [NAT を使用して](expressroute-nat.md)プライベート IP アドレスをパブリック IP アドレスに変換する必要があります。
 * **QoS**:Skype for Business にはさまざまなサービス (音声、ビデオ、テキストなど) があり、それぞれに特化した QoS 処理を必要とします。 自社またはプロバイダーで [QoS 要件](expressroute-qos.md)に従うことが必要です。

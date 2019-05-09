@@ -4,23 +4,24 @@ description: この記事では、Azure AD Connect と Azure AD Sync のすべ�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2018
-ms.component: hybrid
+ms.date: 03/27/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5e13f21971c7babaeaebc9714fe2a040229eebb2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278680"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58803155"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -36,6 +37,70 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](reference-connect-accounts-permissions.md#upgrade)に関するページを参照してください。
 
 ダウンロード | [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)します。
+
+>[!NOTE]
+>Azure AD Connect の新バージョンのリリースは、サービスの操作の機能性を確保するためのいくつかの品質管理手順が必要なプロセスであり、このプロセスを進めている間、新しいリリースのバージョン番号とリリースの状態が、最新の状況を反映するように更新されます。
+このプロセスを進めている間、リリースのバージョン番号では、"1.3.X.0" のようにマイナー リリース番号の位置に "X" が表示されます。これは、このドキュメントのリリース ノートは、"1.3." で始まるすべてのバージョンで有効であることを示しています。 リリース プロセスが終了すると、すぐにリリース バージョン番号が最近リリースされたバージョンに更新され、リリースの状態が "ダウンロードと自動アップグレード用にリリース済み" に更新されます。
+Azure AD Connect のすべてのリリースが自動アップグレードに対応しているわけではありません。 リリースの状態により、リリースが自動アップグレードに対応しているか、ダウンロードにのみ対応しているかが分かります。 Azure AD Connect サーバーに対して自動アップグレードが有効になっている場合、そのサーバーは、自動アップグレードのためにリリースされた Azure AD Connect の最新バージョンに自動的にアップグレードされます。 Azure AD Connect のすべての構成が自動アップグレードの対象となっているわけではないので注意してください。 詳細については、[自動アップグレード](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)に関するこのリンクを参照してください。
+
+## <a name="13x0"></a>1.3.X.0 
+
+### <a name="release-status"></a>リリースの状態 
+
+3/25/2019:保留中
+ 
+### <a name="new-features-and-improvements"></a>新機能と機能強化 
+
+- ドメインの更新に対するサポートが追加されました。 
+- Exchange メールのパブリック フォルダー機能が一般提供されました。 
+- サービス エラーに対するウィザードのエラー処理が機能強化されました。 
+- コネクタのプロパティ ページで、古い UI の警告リンクが追加されました。 
+- 統合グループの書き戻し機能が一般提供されるようになりました。 
+- DC で LDAP コントロールがない場合の SSPR エラー メッセージが改善されました。 
+- インストール時の DCOM レジストリ エラーに対する診断が追加されました。  
+- PHS RPC エラーのトレースが機能強化されました。 
+- 子ドメインからの EA 資格情報が許可されるようになりました。 
+- インストール中のデータベース名の入力が許可されるようになりました (既定名 ADSync)。
+- Ping での WS-Trust の修正をピックアップするためと新しい Azure インスタンスに対するサポートを追加するために ADAL 3.19.8 へのアップグレードが行われました。 
+- samAccountName、DomainNetbios、および DomainFQDN をクラウドに送信するためのグループ同期規則が変更されました (要求で必要)。 
+- 同期規則の既定の処理が変更されました。詳細については[こちら](how-to-connect-fix-default-rules.md)を参照してください。
+- Windows サービスとして実行される新しいエージェントが追加されました。 “Admin Agent” という名前のこのエージェントでは、Azure AD Connect サーバーの詳細なリモート診断が可能であり、お客様がサポート ケースを開いたときに Microsoft のエンジニアがトラブルシューティングを行う際に役に立ちます。 管理エージェントの詳細については、[こちら](whatis-aadc-admin-agent.md)を参照してください。 
+- エンド ユーザー ライセンス契約 (EULA) が更新されました。 
+- ログインの種類として AD FS を使用するデプロイに対する自動アップグレードのサポートが追加されました。  これにより、アップグレード プロセスの一環として AD FS の Azure AD 証明書利用者信頼を更新するという要件が削除されます。 
+- 分析/更新の信頼とリセットの信頼という 2 つのオプションがある Azure AD 信頼管理タスクが追加されました。 
+- AD FS Azure AD 証明書利用者信頼の動作が、常に -SupportMultipleDomain スイッチを使用するように変更されました。 (信頼と Azure AD ドメインの更新が含まれます)。 
+- インストール済みの証明書を使用するオプションの削除によって、新しい AD FS ファームのインストール動作で .pfx 証明書が必要になるように変更されました。
+- 新しい AD FS ファームのワークフローのインストールが、1 台の AD FS と 1 台の WAP サーバーのデプロイのみを許可するように更新されました。  すべてのサーバーの追加は、初期インストールの後で実行されます。 
+
+### <a name="fixed-issues"></a>修正された問題 
+
+
+- ADSync サービスの SQL 再接続ロジックが修正されました。 
+- 空の SQL AOA DB を使用したクリーン インストールを許可するための修正が行われました。 
+- GWB アクセス許可を絞り込むための PS アクセス許可が修正されました。 
+- LocalDB での VSS エラーが修正されました。  
+- オブジェクトの種類が範囲外の場合の誤解されやすいエラー メッセージが修正されました。 
+- サーバーでの Azure AD PowerShell のインストールで、Azure AD Connect とのアセンブリの競合が発生する可能性があるという問題が修正されました。 
+- 古い UI でコネクタの資格情報が更新されるときのステージング サーバーでの PHS のバグが修正されました。 
+- いくつかのメモリ リークが修正されました。 
+- 自動更新に関するさまざまな修正が行われました。 
+- エクスポートと未確認のインポート処理に対するさまざまな修正が行われました。 
+- ドメインと OU のフィルター処理でのバックスラッシュの処理のバグが修正されました。 
+- ADSync サービスが停止するまで 2 分以上かかり、アップグレード時間に問題が発生するという問題を修正しました。 
+
+
+
+
+## <a name="12700"></a>1.2.70.0
+
+### <a name="release-status"></a>リリースの状態
+
+2018/12/18:ダウンロード対象としてリリース済み
+
+### <a name="fixed-issues"></a>修正された問題
+
+このビルドでは、Azure AD Connect に付属の非標準コネクタ (Generic LDAP コネクタや Generic SQL コネクタなど) を更新します。 適用可能なコネクタの詳細については、「[コネクタ バージョンのリリース履歴](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history)」でバージョン 1.1.911.0 を参照してください。
+
 
 ## <a name="12690"></a>1.2.69.0
 
@@ -120,7 +185,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 
 - Azure AD Connect の Ping Federate 統合が一般提供となりました。 [Azure AD と Ping Federate のフェデレーションについて詳しくは、こちらをご覧ください](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)。
-- Azure AD Connect は、Azure AD 信頼のバックアップを更新のたびに AD FS に作成し、さらに、必要に応じて簡単に復元できるよう別個のファイルにそれを格納するようになりました。 [Azure AD Connect における Azure AD の信頼管理と新機能について詳しくは、こちらをご覧ください](https://aka.ms/fedtrustinaadconnect)。
+- Azure AD Connect は、Azure AD 信頼のバックアップを更新のたびに AD FS に作成し、さらに、必要に応じて簡単に復元できるよう別個のファイルにそれを格納するようになりました。 [Azure AD Connect における Azure AD の信頼管理と新機能の詳細をご覧ください](https://aka.ms/fedtrustinaadconnect)。
 - 通常の電子メール アドレスを変更したり、グローバル アドレス一覧に対してアカウントを非表示にしたりする際に発生した問題のトラブルシューティングを支援するトラブルシューティング ツールが導入されました。
 - Azure AD Connect が更新されて、最新の SQL Server 2012 Native Client が追加されました。
 - [ユーザー サインインの変更] タスクで、ユーザーのサインインをパスワード ハッシュ同期またはパススルー認証に切り替えたとき、[シームレスなシングル サインオン] チェック ボックスが既定で有効になります。
@@ -134,12 +199,12 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 
 ### <a name="fixed-issues"></a>修正された問題 
 
-- .Net 4.7.2 へのアップグレード後に AAD Connect サーバーで高い CPU 使用率が表示されるバグを修正しました
+- .NET 4.7.2 へのアップグレード後に AAD Connect サーバーで高い CPU 使用率が表示されるバグを修正しました
 - 自動的に解決された SQL デッドロックの問題に関して、エラー メッセージが断続的に生成されるバグを修正しました
 - Sync Rules Editor と Sync Service Manager のアクセシビリティに関するいくつかの問題を修正しました  
 - Azure AD Connect がレジストリ設定情報を取得できないバグを修正しました
 - ウィザードでユーザーが前後に移動する際の問題を引き起こしていたバグを修正しました
-- ウィザードでマルチスレッド処理の誤りに起因したエラーの発生を防ぐためにバグを修正しました
+- ウィザード内でのマルチスレッド処理の誤りに起因したエラーの発生を防ぐためにバグを修正しました
 - Group Sync Filtering ページでセキュリティ グループを解決する際に LDAP エラーが発生した場合、詳細な情報を忠実に含んだ例外が Azure AD Connect から返されるようになりました。  紹介例外の根本的な原因はまだ不明であり、別のバグで対処される予定です。
 -  STK キーと NGC キー (WHfB のユーザー/デバイス オブジェクトの ms-DS-KeyCredentialLink 属性) のアクセス許可が正しく設定されないバグを修正しました。     
 - "Set-ADSyncRestrictedPermissions" が正しく呼び出されないバグを修正しました
@@ -165,12 +230,12 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 - デバイスの書き戻しの構成は、Azure AD Connect ウィザード内でのみ管理されるようになりました。
 - SQL 接続の問題とその他のさまざまなトラブルシューティング ユーティリティをトラブルシューティングするために使用できる ADSyncTools.psm1 という名前の新しい PowerShell モジュールが追加されました。 ADSyncTools モジュールの詳細については、[こちら](tshoot-connect-tshoot-sql-connectivity.md)を参照してください。 
 - 新しいタスクである "デバイス オプションの構成" が追加されました。 このタスクを使用して、次の 2 つの操作を構成できます。 
-    -   **Hybrid Azure AD 参加**:環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加しているデバイスです。
-    -   **デバイス ライトバック**:デバイス ライトバックを使うと、AD FS (2012 R2 以降) で保護されているデバイスへの、デバイスに基づく条件付きアクセスを有効にできます。
+  - **Hybrid Azure AD 参加**:環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加しているデバイスです。
+  - **デバイス ライトバック**:デバイス ライトバックを使うと、AD FS (2012 R2 以降) で保護されているデバイスへの、デバイスに基づく条件付きアクセスを有効にできます。
 
-   >[!NOTE] 
-   > - 同期カスタマイズ オプションからデバイスの書き戻しを有効にするオプションはグレー表示されます。 
-   > -  このリリースでは、ADPrep の PowerShell モジュールは非推奨になりました。
+    >[!NOTE] 
+    > - 同期カスタマイズ オプションからデバイスの書き戻しを有効にするオプションはグレー表示されます。 
+    > -  このリリースでは、ADPrep の PowerShell モジュールは非推奨になりました。
 
 
 
@@ -322,7 +387,7 @@ Azure AD Connect バージョン 1.1.654.0 (以降) が強化され、Azure AD C
 *   SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。 SELF については、既定のアクセス許可を維持します。
 *   以下の特定のアクセス許可を割り当てます。
 
-type     | Name                          | Access               | 適用対象
+Type     | Name                          | Access               | 適用対象
 ---------|-------------------------------|----------------------|--------------|
 ALLOW    | SYSTEM                        | フル コントロール         | このオブジェクト  |
 ALLOW    | Enterprise Admins             | フル コントロール         | このオブジェクト  |
@@ -400,7 +465,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect ウィザードの *[ユーザー サインインの変更]* タスクの問題を修正しました。
 
-   * この問題は、Azure AD Connect の既存のデプロイでパスワード同期が**無効**になっており、ユーザーのサインイン方法を*パススルー認証*に設定しようとしているときに発生します。 変更が適用されるときに、ウィザードによってパススルー認証とパスワード同期の両方が有効になります。 この修正により、ウィザードでパスワード同期が有効化されなくなりました。
+  * この問題は、Azure AD Connect の既存のデプロイでパスワード同期が**無効**になっており、ユーザーのサインイン方法を*パススルー認証*に設定しようとしているときに発生します。 変更が適用されるときに、ウィザードによってパススルー認証とパスワード同期の両方が有効になります。 この修正により、ウィザードでパスワード同期が有効化されなくなりました。
 
   * 以前は、パスワード同期は、パススルー認証を有効にするための前提条件でした。 ユーザーのサインイン方法を*パススルー認証*に設定すると、ウィザードによってパススルー認証とパスワード同期の両方が有効化されていました。 最近、パスワード同期が前提条件から削除されました。 Azure AD Connect バージョン 1.1.557.0 の一環として、ユーザーのサインイン方法が*パススルー認証*に設定される場合に、パスワード同期を有効にしない変更が Azure AD Connect に対して行われました。 ただし、この変更は Azure AD Connect のインストールにのみ適用されていました。 この修正により、同じ変更が *[ユーザー サインインの変更]* タスクにも適用されます。
   
@@ -421,7 +486,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 * Microsoft Germany Cloud で Azure AD Connect を設定するために必要な手順を簡略化するロジックを追加しました。 以前は、この記事で説明しているように、Microsoft Germany Cloud で正しく機能するためには、Azure AD Connect サーバー上の特定のレジストリ キーを更新する必要がありました。 今後は、セットアップ時に入力されたグローバル管理者の資格情報に基づいて、Microsoft Germany Cloud 内に存在するテナントかどうかが Azure AD Connect で自動的に検出されます。
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同期
->[!NOTE]
+> [!NOTE]
 > 注:同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、組み込みスケジューラ (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) を使用する必要があります。
 
 #### <a name="fixed-issues"></a>修正された問題
@@ -627,7 +692,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect が、オンプレミス AD **publicDelegates** 属性への Exchange Online **cloudPublicDelegates** 属性のライトバックをサポートするようになりました。 これにより、オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できるシナリオが有効になります。 この機能をサポートするために、既定の同期規則 "AD への送信 – ユーザー Exchange ハイブリッド PublicDelegates ライトバック" が新しく追加されました。 この同期規則は、Exchange ハイブリッド機能が有効になっている場合にのみ、Azure AD Connect に追加されます。
 
-*   Azure AD Connect が、Azure AD からの **altRecipient** 属性の同期をサポートするようになりました。 この変更をサポートするために、次の既定の同期規則が更新され、必須の属性フローが追加されています。
+* Azure AD Connect が、Azure AD からの **altRecipient** 属性の同期をサポートするようになりました。 この変更をサポートするために、次の既定の同期規則が更新され、必須の属性フローが追加されています。
   * AD からの受信 - ユーザー Exchange
   * AAD への送信 – ユーザー ExchangeOnline
   
@@ -665,7 +730,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Select|
+    |CertVersion|CertSignatureAlgorithmOid|選択|
     |CertKeyAlgorithmParams|CertHashString|Where|
     |||With|
 
@@ -818,7 +883,7 @@ Azure AD Connect Sync
 Azure AD Connect Sync
 * Azure AD テナントに割り当てられた初期の onmicrosoft.com ドメインが Azure AD コネクタの表示名に含まれていない場合に Azure AD Connect ウィザードが失敗する原因となる問題が修正されました。
 * 同期サービス アカウントのパスワードにアポストロフィ、コロン、スペースなどの特殊文字が含まれている場合に SQL Database への接続時に Azure AD Connect ウィザードが失敗する原因となる問題が修正されました。
-* オンプレミスの ADオブジェクトを同期から一時的に除外してからもう一度同期に含めた後で、ステージング モードの Azure AD Connect サーバーで「The dimage has an anchor that is different than the image (dimage にイメージとは異なるアンカーがあります)」エラーが発生する原因となる問題が修正されました。
+* オンプレミスの AD オブジェクトを同期から一時的に除外してからもう一度同期に含めた後で、ステージング モードの Azure AD Connect サーバー上で "The dimage has an anchor that is different than the image"\(dimage にイメージとは異なるアンカーがあります\) というエラーが発生する原因となる問題が修正されました。
 * オンプレミスの ADオブジェクトを同期から一時的に除外してからもう一度同期に含めた後で、ステージング モードの Azure AD Connect サーバーで「The object located by DN is a phantom (DN によって特定されたオブジェクトはファントムです)」エラーが発生する原因となる問題が修正されました。
 
 AD FS の管理
@@ -1087,7 +1152,7 @@ AD FS の管理
 * [AD FS の構成](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)
 * [DirSync からのアップグレード](how-to-dirsync-upgrade-get-started.md)
 * [誤って削除されないように保護する](how-to-connect-sync-feature-prevent-accidental-deletes.md)
-*  [ステージング モード](how-to-connect-sync-operations.md#staging-mode)
+*  [ステージング モード](how-to-connect-sync-staging-server.md)
 
 **新しいプレビュー機能:**
 
@@ -1171,9 +1236,9 @@ AD FS の管理
 
 Azure AD Sync が既にインストールされている場合、標準の同期規則を変更したのであれば、追加の手順が 1 つ必要になります。 1.0.470.1023 リリースにアップグレードした後で、変更した同期規則は複製されます。 変更された各同期規則で、次の操作を行ってください。
 
-1.  変更した同期規則を探して、変更内容をメモしておきます。
-* 同期規則を削除します。
-* Azure AD Sync によって作成された新しい同期規則を探して、変更を再適用します。
+1. 変更した同期規則を探して、変更内容をメモしておきます。
+1. 同期規則を削除します。
+1. Azure AD Sync によって作成された新しい同期規則を探して、変更を再適用します。
 
 **Active Directory アカウントのアクセス許可**
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 77a5b455e3ef86484119983af24b6461a2fba229
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 493b71e503b6023eeea4a71e34d5405f84821e28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074489"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009641"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法
 

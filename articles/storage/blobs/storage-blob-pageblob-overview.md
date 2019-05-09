@@ -1,36 +1,36 @@
 ---
-title: Azure ページ BLOB の固有の機能 |Microsoft Docs
-description: サンプル スクリプトでのユース ケースを含む、Azure ページ BLOB とそのメリットの概要。
+title: Azure ページ BLOB の概要 |Microsoft Docs
+description: サンプル スクリプトでのユース ケースを含む、Azure ページ BLOB とその利点の概要。
 services: storage
 author: anasouma
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 01/03/2019
 ms.author: wielriac
-ms.component: blobs
-ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.subservice: blobs
+ms.openlocfilehash: b03da04c97475dcb9ce15f2ed69d7ca333d6f431
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022690"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456212"
 ---
-# <a name="unique-features-of-azure-page-blobs"></a>Azure ページ BLOB の固有の機能
+# <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
-Azure Storage が提供する BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB の 3 種類があります。 ブロック BLOB はブロックで構成され、テキストまたはバイナリ ファイルの格納と大きいファイルの効率的なアップロードに最適です。 追加 BLOB もブロックで構成されますが、追加操作用に最適化されているので、ログ記録シナリオに最適です。 ページ BLOB は 512 バイトのページ (合計で最大 8 TB) で構成され、頻繁なランダムの読み取り/書き込み操作のために設計されています。 ページ BLOB は、Azure IaaS ディスクの基盤です。 この記事では、ページ BLOB の機能とメリットに重点を置いて説明します。
+Azure Storage には、3 つの種類の BLOB ストレージが用意されています。ブロック BLOB、追加 BLOB、およびページ BLOB です。 ブロック BLOB はブロックで構成され、テキストまたはバイナリ ファイルの格納と大きいファイルの効率的なアップロードに最適です。 追加 BLOB もブロックで構成されますが、追加操作用に最適化されているので、ログ記録シナリオに最適です。 ページ BLOB は 512 バイトのページ (合計で最大 8 TB) で構成され、頻繁なランダムの読み取り/書き込み操作のために設計されています。 ページ BLOB は、Azure IaaS ディスクの基盤です。 この記事では、ページ BLOB の機能とメリットに重点を置いて説明します。
 
 ページ BLOB は 512 バイトのページの集まりであり、任意の範囲のバイトの読み取り/書き込みを行うことができます。 そのため、ページ BLOB は、仮想マシンとデータベースの OS やデータ ディスクのような、インデックスに基づくスパース データ構造の格納に最適です。 たとえば、Azure SQL DB は、そのデータベースの基になる永続的ストレージとしてページ BLOB を使用します。 さらに、ページ BLOB は、範囲を基にした更新を含むファイルにもよく使用されます。  
 
-Azure のページ BLOB の重要な機能は、その REST インターフェイス、基礎をなすストレージの耐久性、および Azure へのシームレスな移行機能です。 これらの機能については、次のセクションで詳しく説明します。 さらに、Azure のページ BLOB は、現時点では Premium Storage と Standard Storage という 2 種類のストレージでサポートされています。 Premium Storage は、特に一貫した高いパフォーマンスと待機時間の短縮を必要とするワークロード向けに設計されているため、Premium ページ BLOB を高パフォーマンスのデータ ストレージ データベースに最適なものにします。  Standard Storage は、待機時間の影響を受けないワークロードを実行する場合はコスト効率に優れています。
+Azure のページ BLOB の重要な機能は、その REST インターフェイス、基礎をなすストレージの耐久性、および Azure へのシームレスな移行機能です。 これらの機能については、次のセクションで詳しく説明します。 さらに、Azure のページ BLOB は、現時点では次の 2 種類のストレージでサポートされています。Premium Storage と Standard Storage。 Premium Storage は、特に一貫した高いパフォーマンスと待機時間の短縮を必要とするワークロード向けに設計されているため、Premium ページ BLOB を高パフォーマンスのデータ ストレージ データベースに最適なものにします。  Standard Storage は、待機時間の影響を受けないワークロードを実行する場合はコスト効率に優れています。
 
 ## <a name="sample-use-cases"></a>サンプル ユース ケース
 
 ページ BLOB のいくつかのユース ケースについて、Azure IaaS ディスクから説明します。 Azure のページ BLOB は、Azure IaaS の仮想ディスクのプラットフォームのバックボーンです。 Azure の OS とデータ ディスクは両方とも仮想ディスクとして実装され、そこでデータは Azure Storage プラットフォームで永続化され、その後、パフォーマンスを最大にするために仮想マシンに配信されます。 Azure ディスクは HYPER-V [VHD 形式](https://technet.microsoft.com/library/dd979539.aspx)で永続化され、Azure Storage に[ページ BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されます。 ページ BLOB は、Azure IaaS VM の仮想ディスクを使用するだけでなく、現時点で SQL データの格納のためにページ BLOB を使用している Azure SQL DB サービスなどの PaaS と DBaaS のシナリオも実現して、データベースの高速でランダムな読み取り/書き込み操作を可能にします。 もう 1 つの例として、コラボレーション用のビデオ編集アプリケーションの共有メディアへのアクセスに PaaS サービスを使用している場合は、ページ BLOB によってメディア内のランダムな場所への高速アクセスが可能になります。 また、複数のユーザーが同じメディアを高速かつ効率的に編集したりマージしたりできるようにもなります。 
 
 Azure Site Recovery、Azure Backup のようなファースト パーティの Microsoft サービスと、多くのサード パーティの開発者は、ページ BLOB の REST インターフェイスを使用して、業界をリードするイノベーションを実装しています。 Azure に実装されている固有のシナリオの一部を、次に示します。 
-* アプリケーションをターゲットにした増分スナップショットの管理: アプリケーションは、ページ BLOB のスナップショットと REST API を利用して、コストがかかるデータの重複を発生させずに、アプリケーションのチェックポイントを保存できます。 Azure Storage では、ページ BLOB のローカル スナップショットがサポートされています。このスナップショットは、BLOB 全体のコピーを必要としません。 これらのパブリック スナップショット API では、スナップショット間でのデルタへのアクセスとコピーも可能です。
-* オンプレミスからクラウドへのアプリケーションとデータのライブ マイグレーション: オンプレミスの VM の実行を続けながら、オンプレミス データをコピーし、REST API を使用して Azure のページ BLOB に直接書き込みます。 ターゲットが書き込まれたら、そのデータを使用して Azure VM にすばやくフェールオーバーできます。 このようにして、最小限のダウンタイムで VM と仮想ディスクをオンプレミスからクラウドに移行できます。これは、VM の使用を続けている間にバックグラウンドでデータの移行が行われて、フェールオーバーに必要なダウンタイムが短縮されるためです (数分)。
-* [SAS ベース](../common/storage-dotnet-shared-access-signature-part-1.md)の共有アクセス。同時実行制御のサポートによる複数のリーダーと単一のライターのようなシナリオを実現できます。
+* アプリケーションをターゲットにした増分スナップショットの管理:アプリケーションは、ページ BLOB のスナップショットと REST API を利用して、コストがかかるデータの重複を発生させずに、アプリケーションのチェックポイントを保存できます。 Azure Storage では、ページ BLOB のローカル スナップショットがサポートされています。このスナップショットは、BLOB 全体のコピーを必要としません。 これらのパブリック スナップショット API では、スナップショット間でのデルタへのアクセスとコピーも可能です。
+* オンプレミスからクラウドへのアプリケーションとデータのライブ マイグレーション:オンプレミスの VM の実行を続けながら、オンプレミス データをコピーし、REST API を使用して Azure のページ BLOB に直接書き込みます。 ターゲットが書き込まれたら、そのデータを使用して Azure VM にすばやくフェールオーバーできます。 このようにして、最小限のダウンタイムで VM と仮想ディスクをオンプレミスからクラウドに移行できます。これは、VM の使用を続けている間にバックグラウンドでデータの移行が行われて、フェールオーバーに必要なダウンタイムが短縮されるためです (数分)。
+* [SAS ベース](../common/storage-dotnet-shared-access-signature-part-1.md)の共有アクセス。コンカレンシー制御のサポートによる複数のリーダーと単一のライターのようなシナリオを実現できます。
 
 ## <a name="page-blob-features"></a>ページ BLOB の機能
 

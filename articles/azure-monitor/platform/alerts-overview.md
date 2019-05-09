@@ -5,25 +5,27 @@ author: rboucher
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 01/28/2018
 ms.author: robb
-ms.component: alerts
-ms.openlocfilehash: b24b98760e276c207bb360687f32ae902b3306fb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.subservice: alerts
+ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976955"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003314"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
 この記事では、アラートの概要、利点、および使用方法について説明します。  
 
 
+
+
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要
 アラートは、監視データで重要な状態が見つかると事前に通知します。 管理者は、その通知を見て、システムのユーザーが問題に気付く前に問題を識別して対処できます。 
 
-この記事では、Log Analytics と Application Insights が含まれるようになった Azure Monitor の統合アラート エクスペリエンスについて説明します。 [以前のアラート エクスペリエンス](alerts-overview.md)とアラートの種類は、**クラシック アラート**と呼ばれます。 この古いエクスペリエンスと古いアラートの種類は、アラート ページの上部にある **[クラシック アラートの表示]** をクリックすることで表示できます。 
+この記事では、Log Analytics と Application Insights によって管理されていたアラートを含むようになった Azure Monitor の統合アラート エクスペリエンスについて説明します。 [以前のアラート エクスペリエンス](alerts-classic.overview.md)とアラートの種類は、**クラシック アラート**と呼ばれます。 この古いエクスペリエンスと古いアラートの種類は、アラート ページの上部にある **[クラシック アラートの表示]** をクリックすることで表示できます。 
 
 ## <a name="overview"></a>概要
 
@@ -62,6 +64,13 @@ ms.locfileid: "53976955"
 - アクティビティ ログのイベント
 - 基になっている Azure プラットフォームの正常性
 - Web サイトの可用性のテスト
+
+Azure Monitor のメトリック、Application Insights、Log Analytics、および Service Health のアラート機能は以前は別々でした。 Azure では、ユーザー インターフェイスとさまざまなアラート方法が時間と共に統合され、改善されました。 この統合は現在も継続中です。 その結果、新しいアラート システムにまだ組み込まれていないアラート機能がいくつかあります。  
+
+| **モニター ソース** | **シグナルの種類**  | **説明** | 
+|-------------|----------------|-------------|
+| サービス正常性 | アクティビティ ログ  | サポートされていません。 「[サービス通知のアクティビティ ログ アラートを作成する](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)」をご覧ください。  |
+| Application Insights | Web 可用性テスト | サポートされていません。 [Web テスト アラート](../../azure-monitor/app/monitor-web-app-availability.md)に関するページをご覧ください。 Application Insights にデータを送信するようにインストルメント化されたすべての Web サイトで使用できます。 Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
 
 ## <a name="manage-alerts"></a>Manage alerts
 アラートの状態を設定して、それが解決プロセス内のどこにあるかを指定できます。 アラート ルールで指定されている基準が満たされると、アラートが作成または生成されます。アラートの状態は "*新規*" です。 アラートを確認した場合や、アラートを終了した場合は、その状態を変更できます。 状態の変更はすべて、アラートの履歴に格納されます。
@@ -116,7 +125,7 @@ ms.locfileid: "53976955"
 アラートは、監視サービスやシグナルの種類には関係なく、一貫した方法で作成できます。 発生したすべてのアラートや関連する詳細を単一のページで確認できます。
  
 新しいアラート ルールは、次の 3 つの手順で作成します。
-1. アラートの_ターゲット_を選択します。
+1. アラートの _ターゲット_ を選択します。
 1. そのターゲットに使用できるシグナルから _シグナル_ を選択します。
 1. そのシグナルからのデータに適用される _ロジック_ を指定します。
  
@@ -124,14 +133,7 @@ ms.locfileid: "53976955"
 
 アラート ルールを作成する方法の詳細については、「[Azure Monitor を使用してアラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
-アラートは複数の Azure 監視サービス全体で使用できます。 これらの各サービスを使用する方法およびタイミングについては、「[Azure のアプリケーションおよびリソースの監視](../../azure-monitor/overview.md)」を参照してください。 次の表では、Azure 全体で使用できるアラートのルールの種類の一覧を示します。 また、アラート エクスペリエンスで現在サポートされているものの一覧も示します。
-
-Azure Monitor、Application Insights、Log Analytics、および Service Health のアラート機能は以前は別々でした。 Azure では、ユーザー インターフェイスとさまざまなアラート方法が時間と共に統合され、改善されました。 この統合は現在も継続中です。 その結果、新しいアラート システムにまだ組み込まれていないアラート機能がいくつかあります。  
-
-| **モニター ソース** | **シグナルの種類**  | **説明** | 
-|-------------|----------------|-------------|
-| サービス正常性 | アクティビティ ログ  | サポートされていません。 「[サービス通知のアクティビティ ログ アラートを作成する](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)」をご覧ください。  |
-| Application Insights | Web 可用性テスト | サポートされていません。 [Web テスト アラート](../../azure-monitor/app/monitor-web-app-availability.md)に関するページをご覧ください。 Application Insights にデータを送信するようにインストルメント化されたすべての Web サイトで使用できます。 Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
+アラートは複数の Azure 監視サービス全体で使用できます。 これらの各サービスを使用する方法およびタイミングについては、「[Azure のアプリケーションおよびリソースの監視](../../azure-monitor/overview.md)」を参照してください。 
 
 
 ## <a name="all-alerts-page"></a>[すべてのアラート] ページ 
@@ -183,6 +185,7 @@ Azure Monitor、Application Insights、Log Analytics、および Service Health 
 - [アクション グループの詳細](../../azure-monitor/platform/action-groups.md)
 - [Azure でのアラート インスタンスの管理](https://aka.ms/managing-alert-instances)
 - [スマート グループの管理](https://aka.ms/managing-smart-groups)
+
 
 
 

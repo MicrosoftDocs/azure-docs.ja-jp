@@ -1,20 +1,19 @@
 ---
 title: ブループリントのライフサイクルの概要
 description: ブループリントが経過するライフサイクルと各ステージの詳細について説明します。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a57085fa37efd56a46b740d8cbc4278dc53cf39f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309808"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795425"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint のライフサイクルの概要
 
@@ -33,10 +32,9 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ## <a name="creating-and-editing-a-blueprint"></a>ブループリントの作成と編集
 
-ブループリントを作成するときは、成果物を追加し、管理グループに保存し、一意の名前と一意のバージョンを指定します。 この時点で、ブループリントは**ドラフト** モードであり、まだ割り当てることはできません。
-**ドラフト** モードの間でも、更新と変更を続けることはできます。
+ブループリントを作成するときは、成果物を追加し、管理グループまたはサブスクリプションに保存し、一意の名前と一意のバージョンを指定します。 この時点で、ブループリントは**ドラフト** モードであり、まだ割り当てることはできません。 **ドラフト** モードの間でも、更新と変更を続けることはできます。
 
-発行されていない**ドラフト** モードのブループリントには、**[ブループリントの定義]** ページで、**発行済み**のブループリントとは異なるアイコンが表示されます。 これらの未発行ブループリントについては、**[最新バージョン]** も **[ドラフト]** と表示されます。
+発行されていない**ドラフト** モードのブループリントには、**[ブループリントの定義]** ページで、**発行済み**のブループリントとは異なるアイコンが表示されます。 これらの未発行ブループリントについては、**[最新バージョン]** に **[ドラフト]** と表示されます。
 
 ブループリントを作成および編集するには、[Azure portal](../create-blueprint-portal.md#create-a-blueprint) または [REST API](../create-blueprint-rest-api.md#create-a-blueprint) を使用します。
 
@@ -69,7 +67,7 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 > [!NOTE]
 > アクティブな割り当てがあるブルー プリントを削除することはできません。 最初に割り当てを削除してから、バージョンを削除する必要があります。
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページで **[ブループリントの定義]** を選択し、フィルター オプションを使用してバージョンを削除するブループリントを検索します。 それをクリックして編集ページを開きます。
 
@@ -104,8 +102,8 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ## <a name="next-steps"></a>次の手順
 
-- [静的および動的パラメーター](parameters.md)の使用方法を理解する
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

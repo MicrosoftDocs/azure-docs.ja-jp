@@ -1,25 +1,26 @@
 ---
-title: Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ | Microsoft Docs
+title: グループベースのライセンスが使用されるその他のシナリオ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: piotrci
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
-ms.date: 10/29/2018
+ms.subservice: users-groups-roles
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.reviewer: sumitp
+ms.custom: it-pro
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887028"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -62,14 +63,14 @@ ms.locfileid: "50215414"
 
 > [!WARNING]
 > 既存のグループのメンバーシップ規則を変更するときには注意が必要です。 規則を変更すると、グループのメンバーシップが再評価され、新しい規則と一致しなくなったユーザーが削除されます (新しい規則とも一致しているユーザーについては、このプロセス中に影響はありません)。 このプロセス中に、これらのユーザーはライセンスが削除されます。その結果、サービスを利用できなくなったり、場合によってはデータが失われたりする可能性があります。
-
+> 
 > ライセンス割り当ての基盤となる大きな動的グループがある場合、大規模な変更を加える際は、まず小さなテスト グループで検証し、それからメインのグループに適用することをご検討ください。
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>複数のグループと複数のライセンス
 
 ユーザーは、ライセンスを持つ複数のグループのメンバーになることができます。 考慮事項をいくつか以下に示します。
 
-- 同じ製品の複数のライセンスが重複することがあり、その結果、有効になっているすべてのサービスがユーザーに適用されることがあります。 次の例は、2 つのライセンス グループを示します。"*E3 base services (E3 基本サービス)*" にはすべてのユーザーに先にデプロイする基本サービスが含まれています。 "*E3 extended services (E3 拡張サービス)*" には一部のユーザーにのみデプロイするその他のサービス (Sway と Planner) が含まれています。 この例では、ユーザーは両方のグループに追加されました。
+- 同じ製品の複数のライセンスが重複することがあり、その結果、有効になっているすべてのサービスがユーザーに適用されることがあります。 次の例は、2 つのライセンス グループを示しています。*E3 base services (E3 基本サービス)* にはすべてのユーザーに先にデプロイする基本サービスが含まれています。 "*E3 extended services (E3 拡張サービス)*" には一部のユーザーにのみデプロイするその他のサービス (Sway と Planner) が含まれています。 この例では、ユーザーは両方のグループに追加されました。
 
   ![有効になっているサービスのスクリーンショット](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -89,23 +90,23 @@ ms.locfileid: "50215414"
 
 1. 最初に、ユーザーは "*E3 basic services (E3 基本サービス)*" グループからのみライセンスを継承します。このグループでは、次のように 4 つのサービス プランが有効になります。
 
-  ![E3 グループで有効になっているサービスのスクリーンショット](./media/licensing-group-advanced/e3-group-enabled-services.png)
+   ![E3 グループで有効になっているサービスのスクリーンショット](./media/licensing-group-advanced/e3-group-enabled-services.png)
 
 2. **[割り当て]** を選択して、E3 ライセンスをユーザーに直接割り当てることができます。 このケースでは、Yammer Enterprise 以外のすべてのサービス プランを無効にします。
 
-  ![ユーザーにライセンスを直接割り当てる方法を示すスクリーンショット](./media/licensing-group-advanced/assign-license-to-user.png)
+   ![ユーザーにライセンスを直接割り当てる方法を示すスクリーンショット](./media/licensing-group-advanced/assign-license-to-user.png)
 
 3. その結果、ユーザーは引き続き E3 製品のライセンスを 1 つだけ使用します。 ただし、直接割り当てにより Yammer Enterprise のサービスはそのユーザーに対してのみ有効になります。 グループ メンバーシップと直接割り当てによって有効になっているサービスを確認できます。
 
-  ![継承と直接割り当てのスクリーンショット](./media/licensing-group-advanced/direct-vs-inherited-assignment.png)
+   ![継承と直接割り当てのスクリーンショット](./media/licensing-group-advanced/direct-vs-inherited-assignment.png)
 
 4. 直接割り当てを使用すると、次の操作を行うことができます。
 
-  - Yammer Enterprise はユーザー オブジェクトに対して直接無効にできます。 その他のサービスと異なり、図の **[オン]/[オフ]** の切り替えがこのサービスに対して有効になっています。 サービスがそのユーザーに対して直接有効になっており、変更できるためです。
-  - 直接割り当てられたライセンスの一部として、追加サービスも有効にすることができます。
-  - **[削除]** ボタンを使用して、ユーザーから直接ライセンスを削除できます。 ユーザーは継承されたグループ ライセンスのみ持つようになり、元のサービスだけが有効なままであることを確認できます。
+   - Yammer Enterprise はユーザー オブジェクトに対して直接無効にできます。 その他のサービスと異なり、図の **[オン]/[オフ]** の切り替えがこのサービスに対して有効になっています。 サービスがそのユーザーに対して直接有効になっており、変更できるためです。
+   - 直接割り当てられたライセンスの一部として、追加サービスも有効にすることができます。
+   - **[削除]** ボタンを使用して、ユーザーから直接ライセンスを削除できます。 ユーザーは継承されたグループ ライセンスのみ持つようになり、元のサービスだけが有効なままであることを確認できます。
 
-    ![直接割り当てを削除する方法を示すスクリーンショット](./media/licensing-group-advanced/remove-direct-license.png)
+     ![直接割り当てを削除する方法を示すスクリーンショット](./media/licensing-group-advanced/remove-direct-license.png)
 
 ## <a name="managing-new-services-added-to-products"></a>製品に追加される新しいサービスを管理する
 Microsoft が製品に新しいサービスを追加すると、既定では、製品ライセンスを割り当てたすべてのグループでサービスが有効になります。 製品の変更に関する通知をサブスクライブしているテナントのユーザーは、今後のサービスの追加について事前に通知するメールを受け取ります。
@@ -121,15 +122,15 @@ Microsoft が製品に新しいサービスを追加すると、既定では、�
 3. [**[Azure Active Directory] > [ライセンス] > [すべての製品]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) ブレードに移動して、*[Office 365 Enterprise E5]* を選択してから、**[ライセンスされているグループ]** を選択し、その製品を持つすべてのグループの一覧を表示します。
 
 4. 確認するグループをクリックします (この場合は、*[O365 E5 - Exchange のみ]*)。 これにより、**[ライセンス]** タブが開きます。E5 ライセンスをクリックすると、すべての有効なサービスを一覧表示するブレードが開きます。
-> [!NOTE]
-> このグループで *Exchange Online* サービスに加え、*Microsoft Stream* サービスも自動的に追加され、有効になっています。
+   > [!NOTE]
+   > このグループで *Exchange Online* サービスに加え、*Microsoft Stream* サービスも自動的に追加され、有効になっています。
 
-  ![グループ ライセンスに追加された新しいサービスのスクリーン ショット](./media/licensing-group-advanced/manage-new-services.png)
+   ![グループ ライセンスに追加された新しいサービスのスクリーン ショット](./media/licensing-group-advanced/manage-new-services.png)
 
 5. このグループで新しいサービスを無効にする場合は、サービスの横にある **[オン]/[オフ]** の切り替えをクリックし、**[保存]** ボタンをクリックして変更を確認します。 これで、Azure AD はグループ内のすべてのユーザーに対する処理を実行して変更を適用します。新しいユーザーをグループに追加しても、*Microsoft Stream* サービスは有効にならなくなります。
 
-  > [!NOTE]
-  > 他のライセンス割り当て (そのユーザーが属する他のグループまたはライセンスの直接割り当て) によって、そのサービスがまだユーザーに対して有効になっている可能性があります。
+   > [!NOTE]
+   > 他のライセンス割り当て (そのユーザーが属する他のグループまたはライセンスの直接割り当て) によって、そのサービスがまだユーザーに対して有効になっている可能性があります。
 
 6. 必要に応じて、この製品が割り当てられている他のグループにも同じ手順を実行します。
 
@@ -140,7 +141,7 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 
 2. `Get-MsolAccountSku` を使用して、テナントにプロビジョニングされているすべての製品ライセンスを検出します。
 
-  ![Get-Msolaccountsku コマンドレットのスクリーンショット](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
+   ![Get-Msolaccountsku コマンドレットのスクリーンショット](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
 3. 対象ライセンスの *AccountSkuId* 値と、[この PowerShell スクリプト](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)を併用します。 そうすると、このライセンスを持っているユーザーの一覧と、ライセンスの割り当て状況に関する情報が生成されます。
 
@@ -158,8 +159,8 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 
 1. **[アクティビティ]** フィルターを *[グループ ライセンスの設定]* に設定し、**[適用]** をクリックします。
 2. 結果には、グループで設定または変更されているライセンスの事例がすべて含まれます。
->[!TIP]
-> *[ターゲット]* フィルターにグループの名前を入力して、結果の範囲を指定することもできます。
+   >[!TIP]
+   > *[ターゲット]* フィルターにグループの名前を入力して、結果の範囲を指定することもできます。
 
 3. 変更内容の詳細を参照するには、リスト ビュー内の項目をクリックします。 *[変更されたプロパティ]* の下に、ライセンス割り当ての新旧両方の値の一覧が表示されます。
 
@@ -172,23 +173,23 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 グループ上でライセンスが変更されると、Azure AD ではすべてのユーザーに対してその変更の適用が開始されます。
 
 1. グループ上の処理が開始された時点を参照するには、**[アクティビティ]** フィルターを *[ユーザーに対するグループ ベースのライセンスの適用の開始]* に設定します。 この操作のアクターは、*Microsoft Azure AD グループベースのライセンス* - すべてのグループ ライセンスの変更を実行するために使用されるシステム アカウントであることにご注意ください。
->[!TIP]
-> *[変更されたプロパティ]* フィールドを表示するには、一覧内の項目をクリックします。処理するために選ばれたライセンスの変更が表示されます。 これは、グループに複数の変更を加えて、処理した変更がわからなくなった場合に便利です。
+   >[!TIP]
+   > *[変更されたプロパティ]* フィールドを表示するには、一覧内の項目をクリックします。処理するために選ばれたライセンスの変更が表示されます。 これは、グループに複数の変更を加えて、処理した変更がわからなくなった場合に便利です。
 
 2. 同様に、処理が完了したグループを表示するには、*[ユーザーに対するグループ ベースのライセンスの適用の終了]* フィルター値を使用します。
->[!TIP]
-> この場合、*[変更されたプロパティ]* フィールドに結果の概要が含まれます。これは、処理の結果エラーが発生したかどうかをすばやく確認する場合に便利です。 サンプル出力:
-> ```
-Modified Properties
-...
-Name : Result
-Old Value : []
-New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
-> ```
+   > [!TIP]
+   > この場合、*[変更されたプロパティ]* フィールドに結果の概要が含まれます。これは、処理の結果エラーが発生したかどうかをすばやく確認する場合に便利です。 サンプル出力:
+   > ```
+   > Modified Properties
+   > ...
+   > Name : Result
+   > Old Value : []
+   > New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
+   > ```
 
 3. すべてのユーザー変更を含む、グループが処理された状況に関する完全なログを参照するには、次のフィルターを設定します。
-  - **[開始者 (アクター)]**: "Microsoft Azure AD グループベースのライセンス"
-  - **[期間]** (省略可能): 特定のグループが処理を開始した時と完了した時がわかっている場合、その期間を表すユーザー設定の範囲
+   - **[開始者 (アクター)]**:"Microsoft Azure AD グループベースのライセンス"
+   - **[期間]** (省略可能): 特定のグループが処理を開始した時と完了した時がわかっている場合、その期間を表すユーザー設定の範囲
 
 このサンプル出力は、処理の開始時、処理結果のユーザー変更すべて、処理の終了時を示します。
 
@@ -215,11 +216,11 @@ PowerShell または Graph API でグループを削除しようとした場合�
 
 - この機能は、セキュリティ グループ、および securityEnabled = TRUE の Office 365 グループでのみ使用できます。
 
-- 現在、[Office 365 管理ポータル](https://portal.office.com )では、グループベースのライセンスはサポートされていません。 ユーザーがライセンスをグループから継承する場合、このライセンスは Office 管理ポータルに通常のユーザー ライセンスとして表示されます。 そのライセンスを変更しようとした場合、または削除しようとした場合、ポータルはエラー メッセージを返します。 継承されたグループのライセンスをユーザーで直接変更することはできません。
+- 現在、[Microsoft 365 管理センター](https://admin.microsoft.com)では、グループベースのライセンスはサポートされていません。 ユーザーがライセンスをグループから継承する場合、このライセンスは Office 管理ポータルに通常のユーザー ライセンスとして表示されます。 そのライセンスを変更しようとした場合、または削除しようとした場合、ポータルはエラー メッセージを返します。 継承されたグループのライセンスをユーザーで直接変更することはできません。
 
 - 大きなグループ (例: ユーザーが 100,000 人) に対してライセンスを割り当てるまたはライセンスを変更すると、パフォーマンスに影響が及ぶことがあります。 特に、Azure AD のオートメーションによって生成される変更の量によっては、Azure AD とオンプレミスのシステム間のディレクトリの同期のパフォーマンスに悪影響を及ぼす可能性があります。
 
-- 動的なグループを使用してユーザーのメンバーシップを管理している場合は、ユーザーがそのグループのメンバーであることを確認します。これは、ライセンスを割り当てるうえで必要です。 そうでない場合は、動的なグループの[メンバーシップ ルールの処理状態を確認](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule)します。 
+- 動的なグループを使用してユーザーのメンバーシップを管理している場合は、ユーザーがそのグループのメンバーであることを確認します。これは、ライセンスを割り当てるうえで必要です。 そうでない場合は、動的なグループの[メンバーシップ ルールの処理状態を確認](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)します。 
 
 - 負荷が高い状況では、グループのライセンス変更や、既存のライセンスがあるグループのメンバー シップ変更を処理する場合に時間がかかることがあります。 ユーザー数が 60K 以下のグループ サイズの変更処理にかかっている時間が 24 時間を超えた場合には、[サポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) Microsoft に調査を依頼してください。 
 

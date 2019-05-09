@@ -12,26 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 11/28/2018
 ms.author: spelluru
-ms.openlocfilehash: cffc84cdb86c01f5ca892b987a23dc3ded611dd9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bd62624406adb006fdcd7d59f72db3fb5e1848a0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986956"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798025"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor の Azure リレー メトリック (プレビュー)
-
 Azure リレー メトリックによって、Azure サブスクリプション内のリソースの状態が提供されます。 豊富な一連のメトリック データにより、名前空間レベルだけでなくエンティティ レベルでも、リレー リソースの全体的な正常性を評価できます。 これらの統計は Azure リレーの状態の監視に役立つため、重要になる場合があります。 メトリックはまた、Azure サポートに問い合わせることなく、根本的な問題をトラブルシューティングするのにも役立ちます。
 
 Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、「[Microsoft Azure での監視](../monitoring-and-diagnostics/monitoring-overview.md)」および GitHub 上の「[Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)」(.NET を使用した Azure Monitor メトリックの取得) のサンプルを参照してください。
 
+> [!IMPORTANT]
+> この記事は WCF リレーではなく、Azure リレーのハイブリッド接続機能にのみ適用されます。 
+
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Operation Management Suite や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../monitoring/monitoring-data-collection.md)」をご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Operation Management Suite や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/platform/data-platform.md)」をご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成されます。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)で構成されます。
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
 
@@ -39,13 +41,13 @@ Azure Monitor では、複数の方法でメトリックにアクセスできま
 
 ![][1]
 
-また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、**[Metrics (Peview)]\(メトリック (プレビュー)\)** をクリックします。 
+また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、**[Metrics (Peview)]\(メトリック (プレビュー))** をクリックします。 
 
 ディメンションをサポートするメトリックについては、目的のディメンション値でフィルター処理する必要があります。
 
 ## <a name="billing"></a>課金
 
-Azure Monitor でのメトリックの使用は現在、プレビュー段階にある間は無料です。 ただし、メトリック データを取り込む追加のソリューションを使用する場合は、これらのソリューションによって課金される可能性があります。 たとえば、メトリック データを Azure ストレージ アカウントにアーカイブする場合は、Azure Storage によって課金されます。 また、高度な分析のためにメトリック データを Log Analytics にストリーミングする場合は、Log Analytics によっても課金されます。
+Azure Monitor でのメトリックの使用は現在、プレビュー段階にある間は無料です。 ただし、メトリック データを取り込む追加のソリューションを使用する場合は、これらのソリューションによって課金される可能性があります。 たとえば、メトリック データを Azure ストレージ アカウントにアーカイブする場合は、Azure Storage によって課金されます。 また、高度な分析のためにメトリック データを Azure Monitor ログにストリーミングする場合は、Azure Monitor ログによっても課金されます。
 
 次のメトリックによって、サービスの正常性の概要が提供されます。 
 
@@ -58,24 +60,24 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| ListenerConnections-Success (プレビュー) | 指定された期間に成功した Azure リレーに対するリスナーの接続数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ListenerConnections-ClientError (プレビュー)|指定された期間にリスナー接続で発生したクライアント エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ListenerConnections-ServerError (プレビュー)|指定された期間にリスナー接続で発生したサーバー エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderConnections-Success (プレビュー)|指定された期間に成功した送信側の接続数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderConnections-ClientError (プレビュー)|指定された期間に送信側の接続で発生したクライアント エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderConnections-ServerError (プレビュー)|指定された期間に送信側の接続で発生したサーバー エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ListenerConnections-TotalRequests (プレビュー)|指定された期間のリスナー接続数の合計。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderConnections-TotalRequests (プレビュー)|指定された期間に送信側が行った接続要求数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ActiveConnections (プレビュー)|指定された期間のアクティブな接続数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ActiveListeners (プレビュー)|指定された期間のアクティブなリスナー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ListenerDisconnects (プレビュー)|指定された期間に切断されたリスナー数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderDisconnects (プレビュー)|指定された期間に切断された送信側数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
+| ListenerConnections-Success (プレビュー) | 指定された期間に成功した Azure リレーに対するリスナーの接続数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-ClientError (プレビュー)|指定された期間にリスナー接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-ServerError (プレビュー)|指定された期間にリスナー接続で発生したサーバー エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-Success (プレビュー)|指定された期間に成功した送信側の接続数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-ClientError (プレビュー)|指定された期間に送信側の接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-ServerError (プレビュー)|指定された期間に送信側の接続で発生したサーバー エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-TotalRequests (プレビュー)|指定された期間のリスナー接続数の合計。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-TotalRequests (プレビュー)|指定された期間に送信側が行った接続要求数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ActiveConnections (プレビュー)|指定された期間のアクティブな接続数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ActiveListeners (プレビュー)|指定された期間のアクティブなリスナー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerDisconnects (プレビュー)|指定された期間に切断されたリスナー数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderDisconnects (プレビュー)|指定された期間に切断された送信側数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="memory-usage-metrics"></a>メモリ使用状況のメトリック
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|BytesTransferred (プレビュー)|指定された期間に転送されたバイト数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
+|BytesTransferred (プレビュー)|指定された期間に転送されたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 

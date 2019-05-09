@@ -4,7 +4,7 @@ description: Service Fabric に関してよく寄せられる質問とその回�
 services: service-fabric
 documentationcenter: .net
 author: chackdan
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
 ms.service: service-fabric
@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0a78405dc6293a7debd599e0e44754dc59d8af7e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0bd8a7d403ad1fe0f7abb15356cc9c90ed6b3f02
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164647"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59359424"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
 Service Fabric で実行できる内容とその使用方法に関してよく寄せられる多数の質問があります。 このドキュメントでは、これらのよく寄せられる質問とその回答を示します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cluster-setup-and-management"></a>クラスターのセットアップと管理
 
@@ -44,7 +47,7 @@ Service Fabric コア クラスタリング テクノロジを使用すると、
 以下の点を考慮してください。 
 
 1. 現在、Azure での Service Fabric クラスター リソースは、クラスターが構築される仮想マシン スケール セットと同じように、地域に限定されています。 つまり、地域的な障害が発生したとき、Azure Resource Manager または Azure Portal を使用してクラスターを管理できなくなることがあります。 クラスターが実行し続けていて、直接やり取りできる場合にも、そのような状況になることがあります。 また、現在の Azure では、地域にまたがって使用できる単独の仮想ネットワークは提供されていません。 つまり、Azure における複数リージョン クラスターは、[VM Scale Sets の各 VM のための Public IP Addresses](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) か [Azure VPN Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) を必要とします。 これらのネットワーク オプションにより、コストやパフォーマンスがさまざまな影響を受けます。ある程度まではアプリケーション設計にも影響があります。このため、このような環境を立ち上げるには、事前に注意深い分析と計画が必要です。
-2. 特に、異なるクラウド プロバイダーやオンプレミス リソースと Azure など、複数の環境の_タイプ_が混在する場合、これらのマシンのメンテナンス、管理、監視は複雑になります。 そのような環境で実稼働ワークロードを実行する前には、クラスターとアプリケーションの両方のアップグレード、監視、管理、診断についてよく理解する必要があります。 Azure または自身のデータセンターでこのような問題を解決した経験がある場合は、Service Fabric クラスターを構築または実行する際にも同じソリューションを適用できると考えられます。 
+2. 特に、異なるクラウド プロバイダーやオンプレミス リソースと Azure など、複数の環境の _タイプ_ が混在する場合、これらのマシンのメンテナンス、管理、監視は複雑になります。 そのような環境で実稼働ワークロードを実行する前には、クラスターとアプリケーションの両方のアップグレード、監視、管理、診断についてよく理解する必要があります。 Azure または自身のデータセンターでこのような問題を解決した経験がある場合は、Service Fabric クラスターを構築または実行する際にも同じソリューションを適用できると考えられます。 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric ノードでは、OS の更新は自動的に受信されますか?
 
@@ -64,9 +67,16 @@ Azure で実行されていないクラスターの場合は、Service Fabric �
 
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric クラスターの最小サイズとは何ですか?  もっと小さくできないのはなぜですか?
 
-運用ワークロードを実行する Service Fabric クラスターでサポートされる最小サイズは、5 つのノードです。 開発/テスト シナリオでは、3 つのノードで構成されるクラスターがサポートされます。
+運用ワークロードを実行する Service Fabric クラスターでサポートされる最小サイズは、5 つのノードです。 開発シナリオでは、1 つのノード (Visual Studio での迅速な開発エクスペリエンスのために最適化) と 5 つのノード クラスターがサポートされます。
 
-これらの最小要件が存在する理由はは、Service Fabric クラスターでは、一連のステートフル システム サービス (ネーム サービスやフェールオーバー マネージャーなど) が実行されるためです。 クラスターにデプロイされているサービスと現在のホスト場所を追跡するこれらのサービスは、強い一貫性に依存しています。 この強い一貫性は、これらのサービスの状態に対する特定の更新の "*クォーラム*" を取得する能力に依存しています (クォーラムは特定のサービスに対するレプリカの strict majority (N/2 +1) を表します)。
+次の 3 つの理由により、運用クラスターには少なくとも 5 つのノードが必要です。
+1. ユーザー サービスが実行中でない場合でも、Service Fabric クラスターでは一連のステートフル システム サービス (ネーム サービスやフェールオーバー マネージャー サービスなど) が実行されるためです。 クラスターを運用可能な状態のままにするには、これらのシステム サービスが不可欠です。
+2. 常に、1 ノードにつきサービスのレプリカを 1 つ配置します。そのため、サービス (実際にはパーティション) が保持できるレプリカの数の上限はクラスター サイズになります。
+3. クラスターのアップグレード時は少なくとも 1 つのノードがダウンするため、少なくとも 1 つのノードのバッファーを用意する必要があります。そのため、運用クラスターには、最小限の数のノードの "*ほかに*"、少なくとも 2 つのノードが必要です。 最小限とは、以下で説明しますが、システム サービスのクォーラム サイズです。  
+
+クラスターは、2 つのノードに同時に障害が発生しても使用できる必要があります。 Service Fabric クラスターを使用できるようにするには、システム サービスが使用できなければなりません。 クラスターにデプロイされているサービスと現在のホスト場所を追跡するステートフル システム サービス (ネーム サービスやフェールオーバー マネージャー サービスなど) は、強い一貫性に依存しています。 この強い一貫性は、これらのサービスの状態に対する特定の更新の "*クォーラム*" を取得する能力に依存しています (クォーラムは特定のサービスに対するレプリカの strict majority (N/2 +1) を表します)。 そのため、2 つのノードが同時に失われた (したがって、システム サービスの 2 つのレプリカが同時に失われた) 際の回復性を備えておく必要がある場合、ClusterSize - QuorumSize >= 2 でなければなりません。その結果、最小サイズは強制的に 5 つになります。 そのことを確かめるために、クラスターに N 個のノードがあり、システム サービスのレプリカが N 個 (ノードごとに 1 個) ある場合を考えてみましょう。 システム サービスのクォーラム サイズは (N/2 + 1) です。 上記の不等式は N - (N/2 + 1) >= 2 のようになります。 N が偶数の場合と N が奇数の場合の 2 つのケースを考慮する必要があります。 N が偶数の場合、たとえば N = 2\*m で、m >= 1 とすると、不等式は 2\*m - (2\*m/2 + 1) >= 2 のようになります。つまり、m >= 3 となります。 N の最小値は 6 となり、これは m = 3 の場合に実現されます。 一方、N が奇数の場合、たとえば N = 2\*m + 1 で、m >= 1 とすると、不等式は 2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 のようになります。つまり 2\*m+1 - (m+1) >= 2、さらには m >= 2 となります。 N の最小値は 5 となり、これは m = 2 の場合に実現されます。 そのため、ClusterSize - QuorumSize >= 2 という不等式を満たす N のすべての値の最小値は 5 です。
+
+注意していただきたい点として、上記の論証では、すべてのノードにシステム サービスのレプリカがあると想定しています。したがって、クォーラム サイズはクラスター内のノードの数に基づいて計算されます。 ただし、*TargetReplicaSetSize* を変更することで、クォーラム サイズを (N/2 + 1) よりも小さくすることができます。それによって、5 ノード未満のクラスターでも、クォーラム サイズ以外に 2 つの追加ノードを用意できるという印象を受けるかもしれません。 たとえば、4 ノードのクラスターで TargetReplicaSetSize を 3 に設定した場合、TargetReplicaSetSize に基づくクォーラム サイズは (3/2 + 1)、つまり 2 です。したがって、ClusterSize - QuorumSize = 4-2 >= 2 となります。 ただし、ペアのノードが同時に失われた場合に、システム サービスがクォーラム以上であるという保証はありません。失われた 2 つのノードが 2 つのレプリカをホストしていた可能性があります。その場合、システム サービスはクォーラム損失となり (残っているレプリカが 1 つだけとなり)、使用できなくなります。
 
 これを背景として、考えられるいくつかのクラスター構成を検討してみます。
 
@@ -74,9 +84,13 @@ Azure で実行されていないクラスターの場合は、Service Fabric �
 
 **2 つのノード**: 2 つのノード (N = 2) 間でデプロイされるサービスのクォーラムは 2 です (2/2 + 1 = 2)。 1 つのレプリカが失われると、クォーラムを作成できなくなります。 サービスのアップグレードを実行するには、レプリカを一時的に停止させる必要があるため、これは有用な構成ではありません。
 
-**3 つのノード**: 3 つのノード (N = 3) でも、クォーラムを作成するためのノードの要件は 2 つのままです (3/2 + 1 = 2)。 これは、個々のノードが失われた場合でも、クォーラムを保持できることを意味します。
+**3 つのノード**: 3 つのノード (N = 3) でも、クォーラムを作成するためのノードの要件は 2 つのままです (3/2 + 1 = 2)。 つまり、1 つのノードが失われてもクォーラムを維持できますが、2 つのノードに同時に障害が発生すると、システム サービスがクォーラム損失になり、クラスターが使用できなくなります。
 
-3 つのノードのクラスター構成は、開発/テストでサポートされます。その理由は、アップグレードや個々のノードの障害が同時に発生しない限り、アップグレードを安全に実行でき、個々のノードの障害にも対応できるためです。 運用ワークロードでは、このような同時障害から回復する必要があるため、5 つのノードが必要です。
+**4 つのノード**: 4 つのノード (N = 4) では、クォーラムを作成するためのノードの要件は 3 つです (4/2 + 1 = 3)。 つまり、1 つのノードが失われてもクォーラムを維持できますが、2 つのノードに同時に障害が発生すると、システム サービスがクォーラム損失になり、クラスターが使用できなくなります。
+
+**5 つのノード**: 5 つのノード (N = 5) でも、クォーラムを作成するためのノードの要件は 3 つのままです (5/2 + 1 = 3)。 つまり、同時に 2 つのノードが失われても、システム サービスのクォーラムを維持できます。
+
+運用ワークロードでは、少なくとも 2 つのノードに (たとえば、1 つがクラスターのアップグレードで、もう 1 つが他の理由によって) 同時に障害が発生した際の回復性を備えておかなければならないため、5 つのノードが必要です。
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>コストを節約するために夜間/週末にクラスターをオフにすることはできますか?
 
@@ -122,7 +136,7 @@ Microsoft はエクスペリエンスの改善に取り組んでいますが、�
 アプリケーションを KeyVault に対して認証するための資格情報を取得する方法を次に示します。
 
 A. アプリケーションのビルド/パッキング ジョブ中に、SF アプリのデータ パッケージに証明書をプルし、これを使用して KeyVault に対して認証することができます。
-B. 仮想マシン スケール セットの MSI 対応ホストの場合は、SF アプリ用の単純な PowerShell SetupEntryPoint を開発して、[MSI エンドポイントからアクセス トークン](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)を取得し、[key Vault からシークレットを取得](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)することができます
+B. 仮想マシン スケール セットの MSI 対応ホストの場合は、SF アプリ用の単純な PowerShell SetupEntryPoint を開発して、[MSI エンドポイントからアクセス トークン](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)を取得し、[KeyVault からシークレットを取得](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)することができます。
 
 ## <a name="application-design"></a>アプリケーションの設計
 
@@ -172,10 +186,10 @@ Reliable Services と同じように、アクター サービスに格納でき�
 
 GitHub では Service Fabric のオープン ソース化された部分 ([Reliable Services フレームワーク](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[Reliable Actors フレームワーク](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[ASP.NET Core 統合ライブラリ](https://github.com/Azure/service-fabric-aspnetcore)、[Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)、[Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) が提供されており、これらのプロジェクトにはコミュニティの皆さんにも参加していただいています。 
 
-Service Fabric ラインタイムをオープン ソース化する予定であることは、[最近発表](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/)しました。 現時点では、GitHub には、Linux のビルドおよびテスト ツールを含む、[Service Fabric リポジトリ](https://github.com/Microsoft/service-fabric/)がアップされており、このリポジトリを複製し、Linux 用の Service Fabric をビルドして、基本的なテストを実行し、問題を開き、プル要求を送信することができます。 完全な CI 環境と共に、Windows ビルド環境の移行にも全力で取り組んでいます。
+Service Fabric ラインタイムをオープン ソース化する予定であることは、[最近発表](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/)しました。 現時点では、GitHub には、Linux のビルドおよびテスト ツールを含む、[Service Fabric リポジトリ](https://github.com/Microsoft/service-fabric/)がアップされており、このリポジトリを複製し、Linux 用の Service Fabric をビルドして、基本的なテストを実行し、問題を開き、pull request を送信することができます。 完全な CI 環境と共に、Windows ビルド環境の移行にも全力で取り組んでいます。
 
 詳しくは、[Service Fabric ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)での発表をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Service Fabric の中心概念とベスト プラクティスを学習する](https://mva.microsoft.com/en-us/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965)
+[コア Service Fabric の概念](service-fabric-technical-overview.md)および[ベスト プラクティス](service-fabric-best-practices-overview.md) Service Fabric の概念](service-fabric-technical-overview.md) および[ベスト プラクティス](service-fabric-best-practices-overview.md)

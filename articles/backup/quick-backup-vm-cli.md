@@ -8,15 +8,15 @@ tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 8/3/2018
+ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bcc995994b19314b985e9a038fed236ca55db804
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d3ed9370726d35f67edfbcf32dfd25e74d7865e5
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878773"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621568"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>CLI を使用した Azure での仮想マシンのバックアップ
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure CLI を使用して Azure で仮想マシン (VM) をバックアップする方法を説明します。 これらの手順は、[Azure PowerShell](quick-backup-vm-powershell.md) または [Azure Portal](quick-backup-vm-portal.md) を介して実行することもできます。
@@ -43,7 +43,14 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データがレプリケートされます。
+既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データがレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) コマンドレットを使用します。
+
+```azurecli
+az backup vault backup-properties set \
+    --name myRecoveryServicesVault  \
+    --resource-group myResourceGroup \
+    --backup-storage-redundancy "LocallyRedundant/GeoRedundant" 
+```
 
 
 ## <a name="enable-backup-for-an-azure-vm"></a>Azure VM のバックアップを有効にする
@@ -58,13 +65,13 @@ az backup protection enable-for-vm \
 ```
 
 > [!NOTE]
-VM がコンテナーと同じリソース グループにない場合、myResourceGroup はコンテナーが作成されたリソース グループを参照します。 VM 名の代わりに、次に示すように VM ID を指定します。
+> VM がコンテナーと同じリソース グループにない場合、myResourceGroup はコンテナーが作成されたリソース グループを参照します。 VM 名の代わりに、次に示すように VM ID を指定します。
 
 ```azurecli-interactive 
 az backup protection enable-for-vm \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
-    --vm $(az vm show -g VMResourceGroup -n MyVm --query id) \
+    --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') \
     --policy-name DefaultPolicy
 ```
 

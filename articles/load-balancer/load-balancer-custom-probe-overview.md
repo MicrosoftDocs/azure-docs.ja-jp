@@ -5,6 +5,7 @@ description: 正常性プローブを使用して Load Balancer の背後にあ�
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: f9ada3518c4354b112e9e288da89ee9659629b1c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435125"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450449"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -187,7 +188,7 @@ Load Balancer の正常性プローブだけでなく、次の操作でもこの
 
 正常性プローブは、お客様のサービスを回復性があるものにして、そのスケーリングを可能にするために使用されます。 誤った構成または不適切な設計パターンは、お客様のサービスの可用性とスケーラビリティに影響を及ぼす可能性があります。 このドキュメント全体を確認して、このプローブ応答がダウンまたはアップとしてマークされた場合にお客様のシナリオにどのような影響があるか、また、お客様のアプリケーション シナリオの可用性に対してそれがどのように影響するかについて検討してください。
 
-お客様がご自分のアプリケーション用に正常性モデルを設計する際は、バックエンド インスタンス__と__お客様が提供しているアプリケーション サービスの正常性を反映する、そのインスタンス上のポートをプローブする必要があります。  アプリケーション ポートとプローブ ポートが同一である必要はありません。  一部のシナリオでは、プローブ ポートが、お客様のアプリケーションのサービスを提供するポートと異なることが望ましい場合もあります。  
+お客様がご自分のアプリケーション用に正常性モデルを設計する際は、バックエンド インスタンス __と__ お客様が提供しているアプリケーション サービスの正常性を反映する、そのインスタンス上のポートをプローブする必要があります。  アプリケーション ポートとプローブ ポートが同一である必要はありません。  一部のシナリオでは、プローブ ポートが、お客様のアプリケーションのサービスを提供するポートと異なることが望ましい場合もあります。  
 
 場合によっては、お客様のアプリケーションの正常性を検出するためだけではなく、お客様のインスタンスが新しいフローを受信すべきかどうかを Load Balancer に直接伝えるために正常性プローブ応答を生成することが、お客様のアプリケーションの役に立つ可能性があります。  お客様のアプリケーションで正常性プローブの失敗によってバックプレッシャを作成してインスタンスへの新しいフローの送信を調整したり、お客様のアプリケーションのメンテナンスを準備してお客様のシナリオのドレインを開始したりするために、プローブ応答を操作できます。  Standard Load Balancer を使用している場合、[プローブのダウン](#probedown)信号では常に、アイドル タイムアウトまたは接続の終了まで TCP フローが継続されます。 
 
@@ -211,9 +212,9 @@ VM に複数のインターフェイスがある場合は、プローブを受�
 
 ## <a name="monitoring"></a>監視
 
-公開および内部の [Standard Load Balancer](load-balancer-standard-overview.md) はいずれも、Azure Monitor を使用してエンドポイントおよびバックエンド インスタンスの正常性プローブ状態を多次元メトリックとして公開します。 これらのメトリックは、他の Azure サービスやサード パーティ製のアプリケーションによって消費される可能性があります。 
+公開および内部の [Standard Load Balancer](load-balancer-standard-overview.md) はいずれも、Azure Monitor を使用してエンドポイントおよびバックエンド インスタンスの正常性プローブ状態を多次元メトリックとして公開します。 これらのメトリックは、他の Azure サービスやパートナー アプリケーションによって消費される可能性があります。 
 
-公開の Basic Load Balancer では、Log Analytics 経由でバックエンド プールごとにまとめられた正常性プローブの状態が公開されます。  Log Analytics は Basic の内部ロード バランサ―では使用できません。  [ログ分析](load-balancer-monitor-log.md)を使って、パブリック Load Balancer のプローブの正常性状態とプローブの数を確認できます。 ログ記録と共に Power BI または Azure Operational Insights を使用することで、Load Balancer の正常性状態の統計情報を提供することができます。
+公開の Basic Load Balancer では、Azure Monitor ログ経由でバックエンド プールごとにまとめられた正常性プローブの状態が公開されます。  Azure Monitor ログは内部の Basic Load Balancer では使用できません。  [Azure Monitor ログ](load-balancer-monitor-log.md)を使って、パブリック Load Balancer のプローブの正常性状態とプローブの数を確認できます。 ログ記録と共に Power BI または Azure Operational Insights を使用することで、Load Balancer の正常性状態の統計情報を提供することができます。
 
 ## <a name="limitations"></a>制限事項
 

@@ -1,54 +1,51 @@
 ---
-title: 'クイック スタート: REST API と PHP を使用して画像内の顔を検出する'
+title: クイック スタート:REST API と PHP を使用して画像内の顔を検出する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、PHP で Face API を使って画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 05/30/2018
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: be322cafc381dbc6e8b7cf03cd65e1dd5f9c9ad4
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954903"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490448"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート: REST API と PHP を使用して画像内の顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート:REST API と PHP を使用して画像内の顔を検出する
 
-このクイック スタートでは、Face API を使って画像から人の顔を検出します。
+このクイック スタートでは、Azure Face REST API と PHP を使用して、画像から人の顔を検出します。
 
 ## <a name="prerequisites"></a>前提条件
 
-サンプルを実行するにはサブスクリプション キーが必要です。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。
+- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
+- PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) パッケージ。
+- PHP 対応の Web ブラウザー。 設定していない場合は、マシンに [XAMPP](https://www.apachefriends.org/) をインストールして設定することで、これを設定できます。
 
-## <a name="face---detect-request"></a>顔検出要求
+## <a name="initialize-the-html-file"></a>HTML ファイルを初期化する
 
-"[顔 - 検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
+新しい HTML ファイル (*detectFaces.html*) を作成して次のコードを追加します。
 
-* Face ID: Face API の各種シナリオで使用される一意の ID。
-* 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。
-* ランドマーク: 顔の構成要素の重要な位置を示す 27 地点のランドマークの配列。
-* 顔の属性 (年齢、性別、笑顔の強さ、頭部姿勢、顔ひげなど)。
+```html
+<html>
+    <head>
+        <title>Face Detect Sample</title>
+    </head>
+    <body></body>
+</html>
+```
 
-このサンプルを実行するには、次の手順を実行します。
+## <a name="write-the-php-script"></a>PHP スクリプトを作成する
 
-1. エディターに次のコードをコピーします。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて、サブスクリプション キーの取得場所を使用するように `uriBase` を変更します。
-1. 必要に応じて `imageUrl` を、分析する画像に設定します。
-1. `.php` という拡張子でファイルを保存します。
-1. PHP をサポートするブラウザー ウィンドウでファイルを開きます。
+ドキュメントの `body` 要素内に次のコードを追加します。 これにより、URL フィールドと **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
 
 ```php
-<html>
-<head>
-    <title>Face Detect Sample</title>
-</head>
-<body>
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
@@ -62,7 +59,7 @@ $imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
 
 // This sample uses the PHP5 HTTP_Request2 package
-// (http://pear.php.net/package/HTTP_Request2).
+// (https://pear.php.net/package/HTTP_Request2).
 require_once 'HTTP/Request2.php';
 
 $request = new Http_Request2($uriBase . '/detect');
@@ -102,13 +99,13 @@ catch (HttpException $ex)
     echo "<pre>" . $ex . "</pre>";
 }
 ?>
-</body>
-</html>
 ```
 
-## <a name="face---detect-response"></a>顔検出応答
+`subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 `returnFaceAttributes` フィールドは、取得する顔の属性を指定します。この文字列は、実際の用途に合わせて変更してください。
 
-成功応答が JSON で返されます。その例を次に示します。
+## <a name="run-the-script"></a>スクリプトを実行する
+
+PHP に対応した Web ブラウザーでファイルを開きます。 次のような顔のデータの JSON 文字列が得られます。
 
 ```json
 [

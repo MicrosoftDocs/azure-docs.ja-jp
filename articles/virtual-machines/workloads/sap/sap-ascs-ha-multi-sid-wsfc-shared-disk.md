@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee5dc346def58ea7362a763d088145eb0d04a608
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbc21922be66c793e76882cbd145f19681684252
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656732"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786892"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -56,7 +56,7 @@ ms.locfileid: "34656732"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -206,7 +206,7 @@ ms.locfileid: "34656732"
 
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
-> ![Windows][Logo_Windows] Windows
+> ![ Windows][Logo_Windows]  Windows
 >
 
 [Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能が 2016 年 9 月にリリースされました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。 
@@ -223,7 +223,9 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限について詳しくは、「[ネットワークの制限 - Azure Resource Manager][networking-limits-azure-resource-manager]」でロード バランサーごとのプライベート フロントエンド IP に関する説明をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -243,7 +245,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 
 ![Azure の複数の SAP ASCS/SCS クラスター化されたインスタンス][sap-ha-guide-figure-6002]
 
-ロード バランサーの制限について詳しくは、「[ネットワークの制限 - Azure Resource Manager][networking-limits-azure-resource-manager]」でロード バランサーごとのプライベート フロントエンド IP に関する説明をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -279,7 +281,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 次のパラメーターを使用して、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成することができます。
 
 | 新しい SAP ASCS/SCS 仮想ホスト名 | 関連付けられる IP アドレス |
-| --- | --- | --- |
+| --- | --- |
 |pr5-sap-cl |10.0.0.50 |
 
 次のスクリーンショットに示すように、新しいホスト名と IP アドレスが DNS Manager に表示されます。
@@ -299,7 +301,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 
 ```powershell
 
-# Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
+# Select-AzSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 Clear-Host
 $ResourceGroupName = "SAP-MULTI-SID-Landscape"      # Existing resource group name
 $VNetName = "pr2-vnet"                        # Existing virtual network name
@@ -310,55 +312,55 @@ $VMNames = "pr2-ascs-0","pr2-ascs-1"          # Existing cluster virtual machine
 $SAPInstanceNumber = 50                       # SAP ASCS/SCS instance number: must be a unique value for each cluster
 [int]$ProbePort = "623$SAPInstanceNumber"     # Probe port: must be a unique value for each IP and load balancer
 
-$ILB = Get-AzureRmLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName
 
 $count = $ILB.FrontendIpConfigurations.Count + 1
 $FrontEndConfigurationName ="lbFrontendASCS$count"
 $LBProbeName = "lbProbeASCS$count"
 
 # Get the Azure virtual network and subnet
-$VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName
-$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
+$VNet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName
+$Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
 
 # Add a second front-end and probe configuration
 Write-Host "Adding new front end IP Pool '$FrontEndConfigurationName' ..." -ForegroundColor Green
-$ILB | Add-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id
-$ILB | Add-AzureRmLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 10  | Set-AzureRmLoadBalancer
+$ILB | Add-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id
+$ILB | Add-AzLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 10  | Set-AzLoadBalancer
 
 # Get a new updated configuration
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
 # Get an updated LP FrontendIpConfig
-$FEConfig = Get-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
-$HealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
+$FEConfig = Get-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
+$HealthProbe  = Get-AzLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
 # Add a back-end configuration into an existing ILB
 $BackEndConfigurationName  = "backendPoolASCS$count"
 Write-Host "Adding new backend Pool '$BackEndConfigurationName' ..." -ForegroundColor Green
-$BEConfig = Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB | Set-AzureRmLoadBalancer
+$BEConfig = Add-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB | Set-AzLoadBalancer
 
 # Get an updated config
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
 # Assign VM NICs to the back-end pool
-$BEPool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
+$BEPool = Get-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
 foreach($VMName in $VMNames){
-        $VM = Get-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VMName
+        $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
         $NICName = ($VM.NetworkInterfaceIDs[0].Split('/') | select -last 1)        
-        $NIC = Get-AzureRmNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName                
+        $NIC = Get-AzNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName                
         $NIC.IpConfigurations[0].LoadBalancerBackendAddressPools += $BEPool
         Write-Host "Assigning network card '$NICName' of the '$VMName' VM to the backend pool '$BackEndConfigurationName' ..." -ForegroundColor Green
-        Set-AzureRmNetworkInterface -NetworkInterface $NIC
-        #start-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VM.Name
+        Set-AzNetworkInterface -NetworkInterface $NIC
+        #start-AzVM -ResourceGroupName $ResourceGroupName -Name $VM.Name
 }
 
 
 # Create load-balancing rules
 $Ports = "445","32$SAPInstanceNumber","33$SAPInstanceNumber","36$SAPInstanceNumber","39$SAPInstanceNumber","5985","81$SAPInstanceNumber","5$SAPInstanceNumber`13","5$SAPInstanceNumber`14","5$SAPInstanceNumber`16"
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
-$FEConfig = get-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
-$BEConfig = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
-$HealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$FEConfig = get-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
+$BEConfig = Get-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
+$HealthProbe  = Get-AzLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
 Write-Host "Creating load balancing rules for the ports: '$Ports' ... " -ForegroundColor Green
 
@@ -367,10 +369,10 @@ foreach ($Port in $Ports) {
         $LBConfigrulename = "lbrule$Port" + "_$count"
         Write-Host "Creating load balancing rule '$LBConfigrulename' for the port '$Port' ..." -ForegroundColor Green
 
-        $ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $HealthProbe -Protocol tcp -FrontendPort  $Port -BackendPort $Port -IdleTimeoutInMinutes 30 -LoadDistribution Default -EnableFloatingIP   
+        $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $HealthProbe -Protocol tcp -FrontendPort  $Port -BackendPort $Port -IdleTimeoutInMinutes 30 -LoadDistribution Default -EnableFloatingIP   
 }
 
-$ILB | Set-AzureRmLoadBalancer
+$ILB | Set-AzLoadBalancer
 
 Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
@@ -435,5 +437,5 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 ## <a name="next-steps"></a>次の手順
 
-- [ネットワークの制限: Azure Resource Manager][networking-limits-azure-resource-manager]
+- [ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure Load Balancer の複数 VIP][load-balancer-multivip-overview]

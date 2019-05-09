@@ -3,19 +3,19 @@ title: Azure Active Directory B2C での言語のカスタマイズ | Microsoft 
 description: 言語のエクスペリエンスのカスタマイズについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e5bf7cc199fc8a439b5071faa89cce2e3ed47a75
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: 040f9b00b7f282789d8a63b9bbeb8ee7edfc779e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724317"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164154"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
 
@@ -175,7 +175,7 @@ Microsoft は、最新の翻訳を提供するよう努めています。 継続
 ### <a name="social-identity-provider-translations"></a>ソーシャル ID プロバイダーの翻訳
 Microsoft は、`ui_locales` OIDC パラメーターをソーシャル ログインに提供しています。 ただし、Facebook や Google などの一部のソーシャル ID プロバイダーは、それを利用していません。 
 ### <a name="browser-behavior"></a>ブラウザーの動作
-Chrome と Firefox はどちらも、それぞれに設定されている言語を要求します。 サポートされている言語の場合は、既定値の前に表示されます。 Edge は現在、言語を要求せず、既定の言語が表示されます。
+Chrome と Firefox はどちらも、それぞれに設定されている言語を要求します。 サポートされている言語の場合は、既定値の前に表示されます。 Microsoft Edge は現在、言語を要求せず、既定の言語が表示されます。
 
 ### <a name="supported-languages"></a>サポートされている言語
 
@@ -211,7 +211,7 @@ Chrome と Firefox はどちらも、それぞれに設定されている言語�
 | ロシア語               | ru            |
 | スロバキア語                | sk            |
 | スウェーデン語               | sv            |
-| タミール語                 | ta            |
+| タミル語                 | ta            |
 | テルグ語                | te            |
 | タイ語                  | th            |
 | トルコ語               | tr            |

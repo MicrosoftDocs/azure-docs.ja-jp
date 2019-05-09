@@ -1,62 +1,64 @@
 ---
-title: Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
-description: Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
+title: Send Guest OS metrics to the Azure Monitor data store for a Windows virtual machine (classic)
+description: Send Guest OS metrics to the Azure Monitor data store for a Windows virtual machine (classic)
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: ''
-ms.openlocfilehash: 9f13e0783a53b096da47f3afe3f830d24cc281a4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: ''
+ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325451"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315131"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
+# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Send Guest OS metrics to the Azure Monitor data store for a Windows virtual machine (classic)
 
-Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) ("WAD" または "診断" と呼ばれる) を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの異なる場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、Windows 仮想マシン (クラシック) 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するプロセスについて説明します。 診断拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 
+The Azure Monitor [Diagnostics extension](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (known as "WAD" or "Diagnostics") allows you to collect metrics and logs from the guest operating system (Guest OS) running as part of a virtual machine, cloud service, or Service Fabric cluster. The extension can send telemetry to [many different locations.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-この場所にこれらを格納することで、プラットフォーム メトリックに対して実行するのと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。 これまで、診断拡張機能では、Azure Monitor データ ストアではなく Azure Storage に書き込んでいました。 
+This article describes the process for sending Guest OS performance metrics for a Windows virtual machine (classic) to the Azure Monitor metric store. Starting with Diagnostics version 1.11, you can write metrics directly to the Azure Monitor metrics store, where standard platform metrics are already collected. 
 
-この記事で説明するプロセスは、Windows オペレーティング システムが実行されているクラシック仮想マシンでのみ機能します。
+Storing them in this location allows you to access the same actions as you do for platform metrics. Actions include near-real time alerting, charting, routing, access from a REST API, and more. In the past, the Diagnostics extension wrote to Azure Storage, but not to the Azure Monitor data store. 
 
-## <a name="prerequisites"></a>前提条件
+The process that's outlined in this article only works on classic virtual machines that are running the Windows operating system.
 
-- Azure サブスクリプションで、[サービス管理者または共同管理者](../../billing/billing-add-change-azure-subscription-administrator.md)である必要があります。 
+## <a name="prerequisites"></a>Prerequisites
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal) に登録する必要があります 
+- You must be a [service administrator or co-administrator](../../billing/billing-add-change-azure-subscription-administrator.md) on your Azure subscription. 
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
+- Your subscription must be registered with [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-## <a name="create-a-classic-virtual-machine-and-storage-account"></a>クラシック仮想マシンおよびストレージ アカウントを作成する
+- You need to have either [Azure PowerShell](/powershell/azure) or [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installed.
 
-1. Azure portal を使用してクラシック VM を作成します。
-   ![クラシック VM の作成](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
+## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Create a classic virtual machine and storage account
 
-1. この VM を作成しているときに、新しいクラシック ストレージ アカウントを作成するオプションを選択します。 このストレージ アカウントは後の手順で使用します。
+1. Create a classic VM by using the Azure portal.
+   ![Create Classic VM](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
 
-1. Azure portal で、**ストレージ アカウント**のリソース ブレードに移動します。 **[キー]** を選択して、ストレージ アカウント名とストレージ アカウント キーをメモしておきます。 この情報は後の手順で必要になります。
-   ![ストレージ アクセス キー](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
+1. When you're creating this VM, choose the option to create a new classic storage account. We use this storage account in later steps.
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+1. In the Azure portal, go to the **Storage accounts** resource blade. Select **Keys**, and take note of the storage account name and storage account key. You need this information in later steps.
+   ![Storage access keys](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
-[サービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 このプロセスを進める際には、次の点に注意してください。 
-- このアプリ用に新しいクライアント シークレットを作成します。
-- 後の手順で使用するために、キーとクライアント ID を保存します。
+## <a name="create-a-service-principal"></a>Create a service principal
 
-このアプリに、メトリックを出力するリソースへの "監視メトリック パブリッシャー" アクセス許可を付与します。 リソース グループまたはサブスクリプション全体を使用できます。  
+Create a service principle in your Azure Active Directory tenant by using the instructions at [Create a service principal](../../active-directory/develop/howto-create-service-principal-portal.md). Note the following while going through this process: 
+- Create new client secret for this app.
+- Save the key and the client ID for use in later steps.
+
+Give this app “Monitoring Metrics Publisher” permissions to the resource that you want to emit metrics against. You can use a resource group or an entire subscription.  
 
 > [!NOTE]
-> 診断拡張機能では、サービス プリンシパルを使用して、Azure Monitor を認証し、クラシック VM 用のメトリックを発行します
+> The Diagnostics extension uses the service principal to authenticate against Azure Monitor and emit metrics for your classic VM.
 
-## <a name="author-diagnostics-extension-configuration"></a>診断拡張機能の構成の作成
+## <a name="author-diagnostics-extension-configuration"></a>Author Diagnostics extension configuration
 
-1. 診断拡張機能の構成ファイルを準備します。 このファイルにより、ご自身のクラシック VM について、診断拡張機能の収集対象のパフォーマンス カウンターとログが決まります。 たとえば次のようになります。
+1. Prepare your Diagnostics extension configuration file. This file dictates which logs and performance counters the Diagnostics extension should collect for your classic VM. Following is an example:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -102,7 +104,7 @@ Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-a
     <IsEnabled>true</IsEnabled>
     </DiagnosticsConfiguration>
     ```
-1. 診断ファイルの "SinksConfig" セクションで、新しい Azure Monitor シンクを次のように定義します。
+1. In the “SinksConfig” section of your diagnostics file, define a new Azure Monitor sink, as follows:
 
     ```xml
     <SinksConfig>
@@ -115,7 +117,7 @@ Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-a
     </SinksConfig>
     ```
 
-1. 収集対象のパフォーマンス カウンターの一覧が表示されている構成ファイルのセクションで、パフォーマンス カウンターを Azure Monitor シンク "AzMonSink" にルーティングします。
+1. In the section of your configuration file where the list of performance counters to be collected is listed, route the performance counters to the Azure Monitor sink "AzMonSink".
 
     ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -124,7 +126,7 @@ Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-a
     </PerformanceCounters>
     ```
 
-1. プライベート構成で、Azure Monitor アカウントを定義します。 その後、メトリックの出力に使用するサービス プリンシパル情報を追加します。
+1. In the private configuration, define the Azure Monitor account. Then add the service principal information to use to emit metrics.
 
     ```xml
     <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -138,66 +140,67 @@ Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-a
     </PrivateConfig>
     ```
 
-1. このファイルをローカルに保存します。
+1. Save this file locally.
 
-## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>診断拡張機能をクラウド サービスに配置する
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Deploy the Diagnostics extension to your cloud service
 
-1. PowerShell を起動して、サインインします。
+1. Launch PowerShell and sign in.
 
     ```powershell
-    Login-AzureRmAccount
+    Login-AzAccount
     ```
 
-1. 最初に、お使いのクラシック VM にコンテキストを設定します。
+1. Start by setting the context for your classic VM.
 
     ```powershell
     $VM = Get-AzureVM -ServiceName <VM’s Service_Name> -Name <VM Name>
     ```
 
-1. VM で作成されたクラシック ストレージ アカウントのコンテキストを設定します。
+1. Set the context of the classic storage account that was created with the VM.
 
     ```powershell
-    $StorageContext = New-AzureStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
+    $StorageContext = New-AzStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
-1.  次のコマンドを使用して、診断ファイルのパスを変数に設定します。
+1.  Set the Diagnostics file path to a variable by using the following command:
 
     ```powershell
     $diagconfig = “<path of the diagnostics configuration file with the Azure Monitor sink configured>”
     ```
 
-1.  Azure Monitor シンクが構成されている診断ファイルを使って、クラシック VM への更新を準備します。
+1.  Prepare the update for your classic VM with the diagnostics file that has the Azure Monitor sink configured.
 
     ```powershell
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $diagconfig -VM $VM -StorageContext $Storage_Context
     ```
 
-1.  次のコマンドを実行して、ご自身の VM に更新をデプロイします。
+1.  Deploy the update to your VM by running the following command:
 
     ```powershell
     Update-AzureVM -ServiceName "ClassicVMWAD7216" -Name "ClassicVMWAD" -VM $VM_Update.VM
     ```
 
 > [!NOTE]
-> 診断拡張機能のインストールの一環として、引き続きストレージ アカウントを指定する必要があります。 診断構成ファイルで指定されたログやパフォーマンス カウンターは、指定したストレージ アカウントに書き込まれます。
+> It is still mandatory to provide a storage account as part of the installation of the Diagnostics extension. Any logs or performance counters that are specified in the Diagnostics config file will be written to the specified storage account.
 
-## <a name="plot-the-metrics-in-the-azure-portal"></a>Azure portal でメトリックをプロットする
+## <a name="plot-the-metrics-in-the-azure-portal"></a>Plot the metrics in the Azure portal
 
-1.  Azure Portal にアクセスします。 
+1.  Go to the Azure portal. 
 
-1.  左側のメニューで **[モニター]** を選択します。
+1.  On the left menu, select **Monitor.**
 
-1.  **[モニター]** ブレードで、**[メトリック]** を選択します。
+1.  On the **Monitor** blade, select **Metrics**.
 
-    ![メトリックを移動する](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
+    ![Navigate metrics](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
 
-1. リソースのドロップダウン メニューで、お使いのクラシック VM を選択します。
+1. In the resources drop-down menu, select your classic VM.
 
-1. 名前空間のドロップダウン メニューで、**[azure.vm.windows.guest]** を選択します。
+1. In the namespaces drop-down menu, select **azure.vm.windows.guest**.
 
-1. メトリックのドロップダウン メニューで、**[Memory\Committed Bytes in Use]** を選択します。
-   ![メトリックをプロットする](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
+1. In the metrics drop-down menu, select **Memory\Committed Bytes in Use**.
+   ![Plot metrics](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
-## <a name="next-steps"></a>次の手順
-- [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
+## <a name="next-steps"></a>Next steps
+- Learn more about [custom metrics](metrics-custom-overview.md).
+

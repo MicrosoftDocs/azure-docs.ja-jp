@@ -4,49 +4,74 @@ description: この記事では、Azure Portal を使って Azure Stream Analyti
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/26/2017
-ms.openlocfilehash: 4c676ab3039a02a4fda27ab00312133e5de8077a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 02/05/2019
+ms.custom: seodec18
+ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47090968"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769492"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する
-メトリックが指定した条件に達したときにアラートをトリガーするルールを設定できます。 たとえば、次のような条件でアラートを設定できます。
 
-`If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`
+Azure Stream Analytics ジョブが問題を生じることなく常に実行している状態を確保するためには、ジョブを監視することが大切です。 この記事では、監視が必要とされる一般的なシナリオについてのアラートの設定方法について説明します。 
 
-ルールは、ポータルでメトリックに対して設定することも、操作ログのデータに対して [プログラムによって](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) 構成することもできます。
+ルールは、ポータルでメトリックに対して設定することも、操作ログのデータに対して[プログラムによって](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)構成することもできます。
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Azure Portal でアラートを設定する
-1. Azure Portal で、アラートを作成する Stream Analytics ジョブを開きます。 
 
-2. **[ジョブ]** ブレードで **[監視]** セクションをクリックします。  
+次の例では、ジョブがエラー状態になったときのアラートを設定する方法を説明しています。 このアラートは、あらゆるジョブに推奨されます。
 
-3. **[メトリック]** ブレードで、**[アラートの追加]** コマンドをクリックします。
+1. Azure Portal で、アラートを作成する Stream Analytics ジョブを開きます。
 
-      ![Azure portal setup](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
+2. **[ジョブ]** ページで、**[監視]** セクションに移動します。  
 
-4. 名前と説明を入力します。
+3. **[メトリック]** を選択し、**[新しいアラート ルール]** をクリックします。
 
-5. セレクターを使用して、アラートを送信する条件を定義します。
+   ![Azure portal での Stream Analytics のアラートの設定](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-6. アラートの送信先の情報を入力します。
+4. 該当する Stream Analytics ジョブ名が **[リソース]** に自動的に表示されます。 **[条件の追加]** をクリックし、**[シグナル ロジックの構成]** の **[All Administrative operations]\(すべての管理操作\)** を選択します。
 
-      ![Azure Streaming Analytics ジョブのアラートの設定](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
+   ![Stream Analytics アラートのシグナル名を選択する](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
+
+5. **[シグナル ロジックの構成]** で、**[イベントのレベル]** を **[すべて]** に変更し、**[状態]** を **[失敗]** に変更します。 **[イベント開始者]** は空欄のまま、**[完了]** をクリックします。
+
+   ![Stream Analytics アラートのシグナル ロジックの構成](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
+
+6. 既存のアクション グループを選択するか、新しいグループを作成します。 この例では、**TIDashboardGroupActions** というアクション グループを新たに作成し、Azure Resource Manager の**所有者**ロールを有するユーザーにメールを送信する **[電子メール]** アクションを設定しています。
+
+   ![Azure Streaming Analytics ジョブのアラートの設定](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
+
+7. **[リソース]**、**[条件]**、**[アクション グループ]** がすべて入力されている必要があります。 起動するアラートの順に、定義されている条件が満たされる必要がある点に注意してください。 たとえば、直近 15 分間のメトリックの平均値を 5 分ごとに測定できます。
+
+   ![Stream Analytics のアラート ルールを作成する](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+
+   **[アラートの詳細]** に **[アラート ルール名]**、**[説明]**、**[リソース グループ]** を追加し、**[アラート ルールの作成]** をクリックして、Stream Analytics ジョブ用のルールを作成します。
+
+   ![Stream Analytics のアラート ルールを作成する](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+   
+## <a name="scenarios-to-monitor"></a>監視するシナリオ
+
+Stream Analytics ジョブのパフォーマンス監視には、以下のアラートが推奨されます。 これらのメトリックを、1 分間隔で直近 5 分間にわたって評価することをお勧めします。
+
+|メトリック|条件|時間の集計|Threshold|是正措置|
+|-|-|-|-|-|
+|SU 使用率 (%)|より大きい|最大値|80|SU 使用率 (%) が増加する要因は複数あります。 クエリの並列処理を使用してスケーリングするか、ストリーミング ユニット数を増やすことができます。 詳細については、「[Azure Stream Analytics でのクエリの並列処理の活用](stream-analytics-parallelization.md)」を参照してください。|
+|実行時エラー|より大きい|合計|0|アクティビティ ログまたは診断ログを観察して、入力、クエリ、出力を適宜変更してください。|
+|透かしの遅延|より大きい|最大値|このメトリックの直近 15 分間の平均値が到着遅延許容期間 (秒単位) を超えたとき。 到着遅延許容期間を変更していない場合の既定値は 5 秒に設定されています。|SU 数を増やすか、クエリの並列処理を試してみてください。 SU の詳細については、「[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job)」を参照してください。 クエリの並列処理の詳細については、「[Azure Stream Analytics でのクエリの並列処理の活用](stream-analytics-parallelization.md)」を参照してください。|
+|逆シリアル化の入力エラー|より大きい|合計|0|アクティビティ ログまたは診断ログを観察して、入力を適宜変更してください。 診断ログの詳細については、[診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)に関するページを参照してください。|
+
+## <a name="get-help"></a>問い合わせ
 
 Azure Portal でのアラートの構成の詳細については、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」を参照してください。  
 
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

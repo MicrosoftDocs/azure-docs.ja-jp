@@ -15,17 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: b73cdc7e55a60fbefc294a54f70daa9b2a11ced1
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: a4fb31721da679b21fa311340269cf07f93cd903
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452457"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981266"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
 Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があり、VM にアクセスできない場合があります。 VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。 この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。 
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 <a id="quickfixrdp"></a>
 
@@ -50,8 +52,8 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>RDP 問題をトラブルシューティングする方法
 次のメソッドのいずれかを使用して、Resource Manager デプロイ モデルを使用して作成された VM のトラブルシューティングを行うことができます。
 
-* [Azure Portal](#using-the-azure-portal) - RDP 構成またはユーザーの資格情報をすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
-* [Azure PowerShell](#using-azure-powershell) - PowerShell プロンプトに慣れている場合、Azure PowerShell コマンドレットを使用して、RDP の構成またはユーザーの資格情報をすばやくリセットします。
+* Azure portal - RDP 構成またはユーザーの資格情報をすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
+* Azure PowerShell - PowerShell プロンプトに慣れている場合、Azure PowerShell コマンドレットを使用して、RDP の構成またはユーザーの資格情報をすばやくリセットします。
 
 [クラシック デプロイ モデル](#troubleshoot-vms-created-using-the-classic-deployment-model)を使用して作成された VM のトラブルシューティングの手順も記載されています。
 
@@ -107,7 +109,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 次の例では、`myResourceGroup`、`myVM`、`myVMAccessExtension` などの変数を使用します。 これらの変数の名前と場所は、実際の値に置き換えてください。
 
 > [!NOTE]
-> [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell コマンドレットを使用して、ユーザーの資格情報と RDP 構成をリセットします。 次の例では、`myVMAccessExtension` がプロセスの一部として指定した名前になります。 VMAccessAgent を前に操作したことがある場合は、`Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の拡張機能の名前を取得できます。 名前を確認するには、出力の 'Extensions' セクションを調べます。
+> [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、ユーザーの資格情報と RDP 構成をリセットします。 次の例では、`myVMAccessExtension` がプロセスの一部として指定した名前になります。 VMAccessAgent を前に操作したことがある場合は、`Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の拡張機能の名前を取得できます。 名前を確認するには、出力の 'Extensions' セクションを調べます。
 
 トラブルシューティングの各手順を実行した後、再度 VM に接続してみてください。 それでも接続できない場合は、次の手順をお試しください。
 
@@ -116,7 +118,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
     次の例では、`WestUS` 内と `myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM でRDP 接続をリセットします。
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location Westus -Name "myVMAccessExtension"
     ```
 2. **ネットワーク セキュリティ グループの規則を確認する**。 このトラブルシューティングの手順では、RDP トラフィックを許可するように、ネットワーク セキュリティ グループに規則があることを確認します。 RDP の既定のポートは、TCP ポート 3389 です。 RDP トラフィックを許可する規則は、VM を作成する際に自動で作成されない場合があります。
@@ -124,7 +126,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
     最初に、ネットワーク セキュリティ グループのすべての構成データを `$rules` 変数に割り当てます。 次の例では、`myResourceGroup` という名前のリソース グループ内の `myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループに関する情報を取得します。
    
     ```powershell
-    $rules = Get-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
+    $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
         -Name "myNetworkSecurityGroup"
     ```
    
@@ -164,7 +166,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
     ここで、VM の資格情報を更新します。 次の例では、`WestUS` 内と `myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM で資格情報を更新します。
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location WestUS -Name "myVMAccessExtension" `
         -UserName $cred.GetNetworkCredential().Username `
         -Password $cred.GetNetworkCredential().Password
@@ -174,14 +176,14 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
     次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再起動します。
    
     ```powershell
-    Restart-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
+    Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **アプリケーションを再デプロイする**。 このトラブルシューティングの手順では、プラットフォームやネットワークの根底にある問題を修正するために、Azure 内の別のホストに VM を再デプロイします。
    
     次の例では、`WestUS` 内と `myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。
    
     ```powershell
-    Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
+    Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
 6. **ルーティングを確認します**。 Network Watcher の[次ホップ](../../network-watcher/network-watcher-check-next-hop-portal.md)機能を使用して、ルートが仮想マシンとの間でトラフィックのルーティングを妨げていないことを確認します。 有効なルートを見直し、ネットワーク インターフェイスのすべての有効なルートを確認することもできます。 詳細については、「[有効なルートを使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-routing-problem.md)」を参照してください。
@@ -236,7 +238,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 * [ライセンスを提供するためのリモート デスクトップ ライセンス サーバーがないため、リモート セッションは切断されました](troubleshoot-specific-rdp-errors.md#rdplicense)。
 * [リモート デスクトップは、コンピューター "name" を見つけることができません](troubleshoot-specific-rdp-errors.md#rdpname)。
 * [認証エラーが発生しました。ローカル セキュリティ機関にアクセスできません。](troubleshoot-specific-rdp-errors.md#rdpauth)
-* [Windows セキュリティ エラー: 資格情報が正しくありません](troubleshoot-specific-rdp-errors.md#wincred)。
+* [Windows セキュリティ エラー:お使いの資格情報は機能しませんでした](troubleshoot-specific-rdp-errors.md#wincred)。
 * [このコンピューターはリモート コンピューターに接続できません](troubleshoot-specific-rdp-errors.md#rdpconnect)。
 
 ## <a name="additional-resources"></a>その他のリソース

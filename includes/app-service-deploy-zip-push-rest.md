@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 7771bbcab08fb84a941eedab402880fb7bc4232d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7aa0d232cf53eef9bd28c36b66e8fdae22a28db9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551080"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488061"
 ---
 ## <a name="rest"></a>REST API を使って ZIP ファイルを展開する 
 
@@ -35,7 +35,7 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 次の例では、[Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)を使って、.zip ファイルを含む要求を送信します。 プレースホルダー `<deployment_user>`、`<deployment_password>`、`<zip_file_path>`、`<app_name>` を置き換えます。
 
-```PowerShell
+```powershell
 #PowerShell
 $username = "<deployment_user>"
 $password = "<deployment_password>"

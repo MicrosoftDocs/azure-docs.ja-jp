@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 04/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c2cebe2225e475ccd40460e7b10a6ba3ed428d5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723741"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527814"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services のリソースとオブジェクトの制限
 
@@ -23,7 +23,7 @@ ms.locfileid: "44723741"
 
 ### <a name="developer-tier"></a>Developer レベル
 
-このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 このレベルでは、SLA は適用されません。
+このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウトは、このレベルでは利用できません。 このレベルでは、SLA は適用されません。
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
@@ -32,7 +32,7 @@ ms.locfileid: "44723741"
 
 ### <a name="basic-tier"></a>Basic レベル
 
-このレベルは、表形式モデルが小さく、ユーザーの同時実行数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能*は、このレベルではサポートされません*。  
+このレベルは、表形式モデルが小さく、ユーザーのコンカレンシー数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能は、このレベルではサポートされません。  
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
@@ -56,9 +56,9 @@ ms.locfileid: "44723741"
 
 ## <a name="object-limits"></a>オブジェクト制限
 
-これは理論上の制限です。 数字が小さくなると、パフォーマンスが低下します。
+この制限は理論上のものです。 数字が小さくなると、パフォーマンスが低下します。
 
-|オブジェクト|最大サイズ/数|  
+|Object|最大サイズ/数|  
 |------------|----------------------------|  
 |インスタンスのデータベース|16,000|  
 |データベース内のテーブルと列の合計数|16,000|  

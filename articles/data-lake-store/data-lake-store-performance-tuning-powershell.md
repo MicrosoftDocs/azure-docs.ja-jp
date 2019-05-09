@@ -4,42 +4,44 @@ description: Azure Data Lake Storage Gen1 で Azure PowerShell を使用する�
 services: data-lake-store
 documentationcenter: ''
 author: stewu
-manager: jhubbard
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: fff26406b036edeb48371b89f7e585160ddc58e0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1c554b0eee844a632e6412b6f8a285c7a2573326
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123319"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885317"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス
 
 この記事では、PowerShell を使用して Azure Data Lake Storage Gen1 を操作する際のパフォーマンスを改善するために調整できるプロパティについて説明します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="performance-related-properties"></a>パフォーマンス関連のプロパティ
 
 | プロパティ            | 既定値 | 説明 |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | このパラメーターを使用すると、各ファイルをアップロードまたはダウンロードする場合の並列スレッドの数を選択できます。 この数値は、1 ファイルに割り当てることができる最大スレッド数を表しますが、シナリオに応じてスレッドが少なくなる場合があります (たとえば、1 KB のファイルをアップロードする場合、20 個のスレッドを要求してもスレッドは 1 つになります)。  |
-| ConcurrentFileCount | 10      | このパラメーターは、ファイルのアップロードまたはダウンロード専用です。 このパラメーターによって、同時にアップロードまたはダウンロードできるファイルの数が決まります。 この数値は、一度にアップロードまたはダウンロードできる同時実行ファイルの最大数を表しますが、シナリオに応じて同時実行の数が少なくなる場合があります (たとえば、2 つのファイルをアップロードしている場合、15 を要求しても同時に行われるファイルのアップロードは 2 つになります)。 |
+| ConcurrentFileCount | 10      | このパラメーターは、ファイルのアップロードまたはダウンロード専用です。 このパラメーターによって、同時にアップロードまたはダウンロードできるファイルの数が決まります。 この数値は、一度にアップロードまたはダウンロードできるコンカレント ファイルの最大数を表しますが、シナリオに応じてコンカレンシーの数が少なくなる場合があります (たとえば、2 つのファイルをアップロードしている場合、15 を要求しても同時に行われるファイルのアップロードは 2 つになります)。 |
 
 **例**
 
 次のコマンドは、1 ファイルにつき 20 個のスレッドと、100 個の同時実行ファイルを使用して、ファイルを Data Lake Storage Gen1 からユーザーのローカル ドライブにダウンロードします。
 
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
+    Export-AzDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
 ## <a name="how-do-i-determine-the-value-for-these-properties"></a>これらのプロパティの値を決める方法
 
 次の考慮事項は、パフォーマンスに関連するプロパティに指定する値を決める方法です。 使用できるガイダンスがいくつかあります。
 
-* **手順 1: 合計スレッド数を決める** - まず、使用する合計スレッド数を計算する必要があります。 一般的なガイドラインとして、各物理コアに 6 個のスレッドを使用する必要があります。
+* **手順 1:合計スレッド数を決める** - まず、使用する合計スレッド数を計算する必要があります。 一般的なガイドラインとして、各物理コアに 6 個のスレッドを使用する必要があります。
 
         Total thread count = total physical cores * 6
 
@@ -50,7 +52,7 @@ ms.locfileid: "46123319"
         Total thread count = 16 cores * 6 = 96 threads
 
 
-* **手順 2: PerFileThreadCount を計算する** - ファイルのサイズに基づいて PerFileThreadCount を計算します。 2.5 GB 未満のファイルの場合、既定値の 10 で十分なため、このパラメーターを変更する必要はありません。 2.5 GB を超えるファイルの場合、最初の 2.5 GB に基準として 10 個のスレッドを使用し、ファイル サイズが 256 MB 増加するたびにスレッドを 1 つ追加する必要があります。 コピーするフォルダーにさまざまなファイル サイズが含まれている場合は、似たようなファイル サイズに分類することを検討してください。 異なるファイル サイズがあると、最適なパフォーマンスを得られない可能性があります。 似たようなファイル サイズをグループ化できない場合は、最も大きいファイル サイズに基づいて PerFileThreadCount を設定する必要があります。
+* **手順 2:PerFileThreadCount を計算する** - ファイルのサイズに基づいて PerFileThreadCount を計算します。 2.5 GB 未満のファイルの場合、既定値の 10 で十分なため、このパラメーターを変更する必要はありません。 2.5 GB を超えるファイルの場合、最初の 2.5 GB に基準として 10 個のスレッドを使用し、ファイル サイズが 256 MB 増加するたびにスレッドを 1 つ追加する必要があります。 コピーするフォルダーにさまざまなファイル サイズが含まれている場合は、似たようなファイル サイズに分類することを検討してください。 異なるファイル サイズがあると、最適なパフォーマンスを得られない可能性があります。 似たようなファイル サイズをグループ化できない場合は、最も大きいファイル サイズに基づいて PerFileThreadCount を設定する必要があります。
 
         PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size
 
@@ -60,7 +62,7 @@ ms.locfileid: "46123319"
 
         PerFileThreadCount = 10 + ((10 GB - 2.5 GB) / 256 MB) = 40 threads
 
-* **手順 3: ConcurrentFilecount を計算する** - 合計スレッド数と PerFileThreadCount を使用して、次の式に基づいて ConcurrentFileCount を計算します。
+* **手順 3:ConcurrentFilecount を計算する** - 合計スレッド数と PerFileThreadCount を使用して、次の式に基づいて ConcurrentFileCount を計算します。
 
         Total thread count = PerFileThreadCount * ConcurrentFileCount
 
@@ -84,13 +86,13 @@ ms.locfileid: "46123319"
 
 ### <a name="limitation"></a>制限事項
 
-* **ファイルの数が ConcurrentFileCount より少ない**: アップロードしているファイルの数が、計算した **ConcurrentFileCount** より小さい場合、ファイル数と等しくなるように **ConcurrentFileCount** を小さくする必要があります。 残りのスレッドすべてを使用して、**PerFileThreadCount** を大きくすることができます。
+* **ファイルの数が ConcurrentFileCount より少ない**:アップロードしているファイルの数が、計算した **ConcurrentFileCount** より小さい場合、ファイル数と等しくなるように **ConcurrentFileCount** を小さくする必要があります。 残りのスレッドすべてを使用して、**PerFileThreadCount** を大きくすることができます。
 
-* **スレッドが多すぎる**: クラスターのサイズを大きくせずにスレッド数を増やしすぎると、パフォーマンスの低下というリスクがあります。 CPU でのコンテキスト切り替え時に競合の問題が発生する可能性があります。
+* **スレッドが多すぎる**:クラスターのサイズを大きくせずにスレッド数を増やしすぎると、パフォーマンスの低下というリスクがあります。 CPU でのコンテキスト切り替え時に競合の問題が発生する可能性があります。
 
-* **同時実行が不十分**: 同時実行が十分でない場合、クラスターが小さすぎる可能性があります。 クラスター内のノード数を増やすことで、同時実行を増加させることができます。
+* **コンカレンシーが不十分**:コンカレンシーが十分でない場合、クラスターが小さすぎる可能性があります。 クラスター内のノード数を増やすことで、コンカレンシーを増加させることができます。
 
-* **調整エラー**: 同時実行があまりに多くなると、調整エラーが表示される場合があります。 調整エラーが表示される場合は、同時実行を減らすか、Microsoft にお問い合わせください。
+* **調整エラー**:コンカレンシーがあまりに多くなると、調整エラーが表示される場合があります。 調整エラーが表示される場合は、コンカレンシーを減らすか、Microsoft にお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 * [Data Lake Storage Gen1 を使用してビッグ データの要件に対応する](data-lake-store-data-scenarios.md) 

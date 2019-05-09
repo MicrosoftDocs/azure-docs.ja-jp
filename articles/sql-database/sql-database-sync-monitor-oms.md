@@ -1,6 +1,6 @@
 ---
-title: Log Analytics を使用した Azure SQL データ同期の監視 | Microsoft Docs
-description: Log Analytics を使用して Azure SQL データ同期を監視する方法について説明します
+title: Azure Monitor ログによる Azure SQL データ同期の監視 | Microsoft Docs
+description: Azure Monitor ログを使用して Azure SQL データ同期を監視する方法について説明します
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -9,45 +9,50 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: douglasl
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: d6a1f2829352e8589c8d132a195a425edcbe62c3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/20/2018
+ms.openlocfilehash: 6e94aac47ce5b45e700e2413d2e86d5f36596348
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872945"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482438"
 ---
-# <a name="monitor-sql-data-sync-with-log-analytics"></a>Log Analytics による SQL データ同期の監視 
+# <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Monitor ログによる SQL データ同期の監視 
 
 SQL データ同期アクティビティ ログをチェックし、エラーおよび警告を検出するには、以前に Azure Portal で SQL データ同期を手動でチェックするか、PowerShell または REST API を使用している必要があります。 データ同期の監視エクスペリエンスを向上させるカスタム ソリューションを構成するには、この記事の手順に従ってください。 このソリューションは、シナリオに合わせてカスタマイズできます。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-database-sync-data.md)に関する記事を参照してください。
+
+> [!IMPORTANT]
+> 現在のところ、Azure SQL データ同期では、Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>すべての同期グループのためのダッシュボードの監視 
 
-問題を見つけるために各同期グループのログを個別に調べる必要はなくなりました。 カスタム Log Analytics ビューを使用して、いずれかのサブスクリプションからすべての同期グループを 1 つの場所で監視できます。 このビューには、SQL データ同期の顧客にとって重要な情報が表示されます。
+問題を見つけるために各同期グループのログを個別に調べる必要はなくなりました。 カスタム Azure Monitor ビューを使用して、いずれかのサブスクリプションからすべての同期グループを 1 つの場所で監視できます。 このビューには、SQL データ同期の顧客にとって重要な情報が表示されます。
 
 ![データ同期の監視ダッシュボード](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>自動化された電子メール通知
 
-Azure Portal で、または PowerShell や REST API を使用してログを手動でチェックする必要はなくなりました。 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) を使用すると、エラーが発生した場合に確認する必要のあるユーザーの電子メール アドレスに直接送信されるアラートを作成できます。
+Azure Portal で、または PowerShell や REST API を使用してログを手動でチェックする必要はなくなりました。 [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)を使用すると、エラーが発生した場合に確認する必要のあるユーザーの電子メール アドレスに直接送信されるアラートを作成できます。
 
 ![データ同期の電子メール通知](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>これらの監視機能を設定する方法 
 
-次のことを実行することで、SQL データ同期のためのカスタム Log Analytics 監視ソリューションを 1 時間以内に実装できます。
+次のことを実行することで、SQL データ同期のためのカスタム Azure Monitor ログ監視ソリューションを 1 時間以内に実装できます。
 
 3 つのコンポーネントを構成する必要があります。
 
--   SQL データ同期のログ データを Log Analytics に提供するための PowerShell Runbook。
+-   SQL データ同期のログ データを Azure Monitor ログに提供するための PowerShell Runbook。
 
--   電子メール通知のための Log Analytics アラート。
+-   電子メール通知のための Azure Monitor アラート。
 
--   監視のための Log Analytics ビュー。
+-   監視のため Azure Monitor ビュー。
 
 ### <a name="samples-to-download"></a>ダウンロードするサンプル
 
@@ -55,7 +60,7 @@ Azure Portal で、または PowerShell や REST API を使用してログを手
 
 -   [データ同期のログ PowerShell Runbook](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [データ同期の Log Analytics ビュー](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [データ同期 Azure Monitor ビュー](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -67,7 +72,7 @@ Azure Portal で、または PowerShell や REST API を使用してログを手
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>SQL データ同期のログを取得するための PowerShell Runbook 
 
-Azure Automation でホストされた PowerShell Runbook を使用して SQL データ同期のログ データを取得し、それを Log Analytics に送信します。 サンプル スクリプトが含まれています。 前提条件として、Azure Automation アカウントを持っている必要があります。 次に Runbook を作成し、その実行をスケジュールする必要があります。 
+Azure Automation でホストされた PowerShell Runbook を使用して SQL データ同期のログ データを取得し、それを Azure Monitor ログに送信します。 サンプル スクリプトが含まれています。 前提条件として、Azure Automation アカウントを持っている必要があります。 次に Runbook を作成し、その実行をスケジュールする必要があります。 
 
 ### <a name="create-a-runbook"></a>Runbook を作成する
 
@@ -97,7 +102,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
     2.  同期グループの情報。
 
-    3.  Log Analytics 情報。 これらの情報は、[Azure Portal] | [設定] | [接続されたソース] で見つけます。 Log Analytics へのデータ送信の詳細については、「[HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (プレビュー)](../azure-monitor/platform/data-collector-api.md)」を参照してください。
+    3.  Azure Monitor ログの情報。 これらの情報は、[Azure Portal] | [設定] | [接続されたソース] で見つけます。 Azure Monitor ログへのデータ送信のついて詳しくは、「[HTTP データ コレクター API を使用した Azure Monitor ログへのデータの送信 (プレビュー)](../azure-monitor/platform/data-collector-api.md)」をご覧ください。
 
 11. [テスト] ペインで Runbook を実行します。 それが成功したことを確認します。
 
@@ -117,7 +122,7 @@ Runbook のスケジュールを設定するには:
 
 4.  **[新しいスケジュールを作成します]** を選択します。
 
-5.  **[繰り返し]** を [繰り返し] に設定し、必要な間隔を設定します。 ここ (このスクリプト) と Log Analytics で同じ間隔を使用します。
+5.  **[繰り返し]** を [繰り返し] に設定し、必要な間隔を設定します。 ここ (このスクリプト) と Azure Monitor ログで同じ間隔を使用します。
 
 6.  **作成**を選択します。
 
@@ -125,9 +130,9 @@ Runbook のスケジュールを設定するには:
 
 オートメーションが期待どおりに実行されているかどうかを監視するには、Automation アカウントの **[概要]** で、**[監視]** の下にある **[Job Statistics] \(ジョブの統計)** ビューを見つけます。 見やすくするために、これをダッシュボードにピン留めします。 Runbook の実行が成功すると [完了] と表示され、実行が失敗すると [失敗] と表示されます。
 
-## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>電子メール通知のための Log Analytics リーダー アラートの作成
+## <a name="create-an-azure-monitor-reader-alert-for-email-notifications"></a>電子メール通知のための Azure Monitor リーダー アラートの作成
 
-Log Analytics を使用するアラートを作成するには、次のことを実行します。 前提条件として、Log Analytics ワークスペースにリンクされた Log Analytics を使用している必要があります。
+Azure Monitor ログを使用するアラートを作成するには、次のことを実行します。 前提条件として、Azure Monitor ログが Log Analytics ワークスペースにリンクされている必要があります。
 
 1.  Azure portal で **[ログ検索]** を選択します。
 
@@ -147,9 +152,9 @@ Log Analytics を使用するアラートを作成するには、次のことを
 
 6.  **[Save]** をクリックします。 これで、指定された受信者がエラー発生時に電子メール通知を受信するようになりました。
 
-## <a name="create-a-log-analytics-view-for-monitoring"></a>監視のための Log Analytics ビューの作成
+## <a name="create-an-azure-monitor-view-for-monitoring"></a>監視のための Azure Monitor ビューを作成する
 
-この手順では、指定されたすべての同期グループを視覚的に監視するための Log Analytics ビューを作成します。 このビューには、いくつかのコンポーネントが含まれています。
+この手順では、指定されたすべての同期グループを視覚的に監視するための Azure Monitor ビューを作成します。 このビューには、いくつかのコンポーネントが含まれています。
 
 -   概要タイル。これには、すべての同期グループのエラー、成功、および警告の数が表示されます。
 
@@ -157,9 +162,9 @@ Log Analytics を使用するアラートを作成するには、次のことを
 
 -   同期グループごとのタイル。これには、エラー、成功、および警告の数と、最新のエラー メッセージが表示されます。
 
-Log Analytics ビューを構成するには、次のことを実行します。
+Azure Monitor ビューを構成するには、次のことを実行します。
 
-1.  Log Analytics ホーム ページで、左側にあるプラスを選択して**ビュー デザイナー**を開きます。
+1.  Log Analytics ワークスペース ホーム ページで、左側にあるプラスを選択して**ビュー デザイナー**を開きます。
 
 2.  ビュー デザイナーの上部のバーにある **[インポート]** を選択します。 次に、"DataSyncLogOMSView" サンプル ファイルを選択します。
 
@@ -183,7 +188,7 @@ Log Analytics ビューを構成するには、次のことを実行します。
 
 **Azure Automation:** 使用法によっては、Azure Automation アカウントのコストが発生する可能性があります。 1 か月あたり、ジョブ実行時間の最初の 500 分は無料です。 ほとんどの場合、このソリューションは 1 か月あたり 500 分未満を使用すると予測されます。 料金が発生しないようにするには、2 時間以上の間隔で実行されるように Runbook のスケジュールを設定します。 詳細については、「[Automation pricing (Automation の価格)](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
 
-**Log Analytics:** 使用法によっては、Log Analytics に関連したコストが発生する可能性があります。 Free レベルには、1 日あたり 500 MB の取り込まれたデータが含まれます。 ほとんどの場合、このソリューションは 1 日あたり 500 MB 未満を取り込むと予測されます。 使用量を減らすには、Runbook に含まれている失敗のみのフィルター処理を使用します。 1 日あたりの使用量が 500 MB を超える場合は、制限に達して分析が停止してしまうリスクを回避するために、有料レベルにアップグレードしてください。 詳細については、「[Log Analytics pricing (Log Analytics の価格)](https://azure.microsoft.com/pricing/details/log-analytics/)」を参照してください。
+**Azure Monitor ログ:** 使用法によっては、Azure Monitor ログに関連したコストが発生する可能性があります。 Free レベルには、1 日あたり 500 MB の取り込まれたデータが含まれます。 ほとんどの場合、このソリューションは 1 日あたり 500 MB 未満を取り込むと予測されます。 使用量を減らすには、Runbook に含まれている失敗のみのフィルター処理を使用します。 1 日あたりの使用量が 500 MB を超える場合は、制限に達して分析が停止してしまうリスクを回避するために、有料レベルにアップグレードしてください。 詳しくは、[Azure Monitor ログ](https://azure.microsoft.com/pricing/details/log-analytics/)の価格に関するページをご覧ください。
 
 ## <a name="code-samples"></a>コード サンプル
 
@@ -191,7 +196,7 @@ Log Analytics ビューを構成するには、次のことを実行します。
 
 -   [データ同期のログ PowerShell Runbook](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [データ同期の Log Analytics ビュー](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [データ同期 Azure Monitor ビュー](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>次の手順
 SQL データ同期の詳細については、以下を参照してください。

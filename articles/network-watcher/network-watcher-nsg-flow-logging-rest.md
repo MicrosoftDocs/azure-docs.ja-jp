@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 003335aad0452e7a2dbfff49ed29a6b99b5d54d2
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 4569ea0ff43993c4605c55c529dbcb951ef502ca
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089631"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485019"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>REST API を使用したネットワーク セキュリティ グループ のフローのログの構成
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
-ネットワーク セキュリティ グループのフローのログは、ネットワーク セキュリティ グループを使用したイングレスおよびエグレス IP トラフィックに関する情報を表示できる Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。
+ネットワーク セキュリティ グループ フロー ログは、ネットワーク セキュリティ グループを介して IP トラフィックの送信と受信に関する情報を表示できるようにする Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信、受信フロー、フロー (送信元/送信先 IP、送信元/送信先ポート、プロトコル) についての 5 組の情報が適用される NIC、トラフィックが許可されているか、拒否されているかを示しています。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -46,7 +46,7 @@ PowerShell を使用して REST API を呼び出すには、ARMClient を使用�
 
 このシナリオでは次のことを行います。
 
-* フローのログを有効にする
+* フロー ログ (バージョン 2) を有効にする
 * フローのログを無効にする
 * フローのログの状態を照会する
 
@@ -54,7 +54,7 @@ PowerShell を使用して REST API を呼び出すには、ARMClient を使用�
 
 Azure の資格情報を使用して ARMClient にログインします。
 
-```PowerShell
+```powershell
 armclient login
 ```
 
@@ -69,7 +69,7 @@ armclient post "https://management.azure.com//subscriptions/${subscriptionId}/pr
 
 ## <a name="enable-network-security-group-flow-logs"></a>ネットワーク セキュリティ グループのフローのログを有効にする
 
-フローのログを有効にするコマンドを次の例に示します。
+フロー ログのバージョン 2 を有効にするコマンドを次の例に示します。 バージョン 1 の場合は、'version' フィールドを '1' に置き換えます。
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -86,7 +86,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -105,6 +109,10 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -129,7 +137,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -148,6 +160,10 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -182,6 +198,10 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
    "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -189,7 +209,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="download-a-flow-log"></a>フローのログをダウンロードする
 
-フローのログの保存場所は作成時に定義されます。 ストレージ アカウントに保存されているこれらのフローのログにアクセスする際の便利なツールが Microsoft Azure Storage Explorer です。このツールは、http://storageexplorer.com/ からダウンロードできます。
+フローのログの保存場所は作成時に定義されます。 ストレージ アカウントに保存されているこれらのフローのログにアクセスする際の便利なツールが Microsoft Azure Storage Explorer です。このツールは、 https://storageexplorer.com/ からダウンロードできます。
 
 ストレージ アカウントが指定されている場合、パケット キャプチャ ファイルは、次の場所にあるストレージ アカウントに保存されます。
 

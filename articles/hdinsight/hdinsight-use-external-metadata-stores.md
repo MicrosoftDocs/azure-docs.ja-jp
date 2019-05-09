@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3daa71c91d1e49a497a979b9b5b89df1fcb9418c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408325"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889683"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
@@ -68,7 +68,7 @@ Azure Portal または Ambari 構成 ([Hive] > [詳細設定]) から、他の�
 - 複数の HDInsight クラスターで異なるデータにアクセスする場合は、クラスターごとに metastore に対して別のデータベースを使用します。 複数の HDInsight クラスターで metastore を共有する場合は、クラスターが同じメタデータおよび基になるユーザー データ ファイルを使用することを意味します。
 - カスタム metastore を定期的にバックアップします。 Azure SQL Database ではバックアップが自動的に生成されますが、バックアップのリテンション期間は異なります。 詳しくは、「[SQL Database 自動バックアップについての詳細情報](../sql-database/sql-database-automated-backups.md)」をご覧ください。
 - パフォーマンスを最高にして、ネットワーク エグレスの課金を最小にするには、metastore と HDInsight クラスターを同じリージョンで検索します。
-- Azure Portal や Azure Log Analytics などの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
+- Azure portal や Azure Monitor ログなどの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
 - 既存のカスタム metastore データベースに対して、より高いバージョンの Azure HDInsight が新しく作成された場合、システムは metastore のスキーマをアップグレードします。バックアップからデータベースを復元しないかぎり、これを元に戻すことはできません。
 - 複数のクラスター間で metastore を共有する場合は、すべてのクラスターの HDInsight を確実に同じバージョンにします。 異なるバージョンの Hive は、異なる metastore データベース スキーマを使用します。 たとえば、バージョン 1.2 の Hive クラスターと 2.1 の Hive クラスターで metastore を共有することはできません。 
 

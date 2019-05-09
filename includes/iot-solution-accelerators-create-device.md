@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: cda08d44cba9e59af853b1705f538ec199ec4d3a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435114"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630522"
 ---
 1 つ目のシナリオでは、新しいテレメトリ タイプを Contoso の既存の **Chiller** デバイスの種類に追加します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "47435114"
 
 次の表に、電球がクラウドにデータ ストリームとしてレポートするデータを示します。
 
-| 名前   | 値      |
+| Name   | 値      |
 | ------ | ----------- |
 | 状態 | "オン"、"オフ" |
 | 気温 | 度 (華氏) |
@@ -98,9 +98,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 Visual Studio Code で **remote-monitoring-services-dotnet-master\storage-adapter** フォルダーを開きます。 未解決の依存関係がある場合は、**[復元]** ボタンをクリックして修正します。
 
-**.vscode/launch.json** ファイルを開き、Cosmos DB 接続文字列を **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** 環境変数に割り当てます。
-
-<!-- Open the **WebService/appsettings.ini** file and assign your Cosmos DB connection string to the **documentdb_connstring** configuration setting.-->
+**storage-adapter/WebService/appsettings.ini** ファイルを開き、Cosmos DB 接続文字列を **documentDBConnectionString** 変数に割り当てます。
 
 マイクロサービスをローカルで実行するために、**[デバッグ] > [デバッグの開始]** をクリックします。
 
@@ -116,7 +114,7 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
 1. ダウンロードしたデバイス シミュレーション マイクロサービスのコピーから、次のファイルを新しいフォルダーにコピーします。
 
-    | ソース | 変換先 |
+    | ソース | 宛先 |
     | ------ | ----------- |
     | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
@@ -417,11 +415,7 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
 Visual Studio Code の新しいインスタンスで、GitHub からダウンロードした **device-simulation-dotnet-master** フォルダーを開きます。 未解決の依存関係がある場合は、**[復元]** ボタンをクリックして修正します。
 
-**.vscode/launch.json** ファイルを開き、IoT Hub 接続文字列を **PCS_IOTHUB_CONNSTRING** 環境変数に割り当てます。 同じファイルに、**PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** 環境変数を追加し、Cosmos DB データベース用の接続文字列を割り当てます。
-
-**WebService/Properties/launchSettings.json** ファイルを開き、IoT Hub 接続文字列を **PCS_IOTHUB_CONNSTRING** 環境変数に割り当てます。
-
-**WebService/appsettings.ini** ファイルを開き、次のように設定を変更します。
+**WebService/appsettings.ini** ファイルを開き、Cosmos DB 接続文字列を **documentdb_connstring** 変数に割り当て、次のように設定を変更します。
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

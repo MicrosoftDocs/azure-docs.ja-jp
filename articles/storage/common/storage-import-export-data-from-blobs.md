@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 25ea4f41ac1fa36c7f9b6f64bc7c4eede4702f38
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315181"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263837"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Blob Storage から安全にエクスポートする手順について説明します。 このサービスを利用するには、Azure データセンターに空のドライブを送付する必要があります。 このサービスでは、ストレージ アカウントからドライブにデータをエクスポートし、ドライブを返送します。
@@ -25,7 +25,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 - Import/Export サービスに使用できるアクティブな Azure サブスクリプションがある。
 - Azure Storage アカウントが少なくとも 1 つある。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-quickstart-create-account.md)」を参照してください。
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。
-- FedEx または DHL のアカウントを用意します。  
+- FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` に Azure Data Box Operations チームまでお問い合わせください。 
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
     - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。 
@@ -82,7 +82,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 4. **[差出人住所の詳細]** で次の操作を実行します。
 
-    - ドロップダウン リストから運送業者を選択します。
+    - ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 `adbops@microsoft.com` で Azure Data Box Operations チームに使用する予定の運送業者に関する情報を連絡してください。
     - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 
     - 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。
 
@@ -145,7 +145,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
     |**/sn:**|必須。 エクスポート ジョブのストレージ アカウント名です。|  
     |**/sk:**|コンテナー SAS が指定されていない場合のみ必須。 エクスポート ジョブのストレージ アカウントのアカウント キーです。|  
     |**/csas:**|ストレージ アカウント キーが指定されていない場合のみ必須。 エクスポート ジョブでエクスポートされる BLOB を一覧表示するためのコンテナー SAS です。|  
-    |**/ExportBlobListFile:**|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|  
+    |**/ExportBlobListFile:**|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|  
     |**/DriveSize:**|必須。 エクスポート ジョブに使用するドライブのサイズ (*例:* 500 GB、1.5 TB)。|  
 
     「[PreviewExport コマンドの例](#example-of-previewexport-command)」を参照してください。

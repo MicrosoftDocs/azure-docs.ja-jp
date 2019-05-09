@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 38b8e8a0e413f367d34a4ccf5dbd87817891b8ea
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313022"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59277785"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>管理アクセス用の RBAC ロールを設定する
 

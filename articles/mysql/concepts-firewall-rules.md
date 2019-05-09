@@ -1,27 +1,24 @@
 ---
 title: Azure Database for MySQL サーバーのファイアウォール規則
 description: Azure Database for MySQL サーバーのファイアウォール規則について説明します。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: bd075a98e75c6fcb609103eefe260f4d7fc216b1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a7016b8ca43abee9c3f346c6dec55a101ce4020a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264655"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541219"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
 
 ファイアウォールを構成するには、受け入れ可能な IP アドレスの範囲を指定するファイアウォール規則を作成します。 ファイアウォール規則はサーバー レベルで作成できます。
 
-**ファイアウォール規則:** この規則により、クライアントは、Azure Database for MySQL サーバー全体、つまり、同じ論理サーバー内のすべてのデータベースにアクセスできるようになります。 サーバー レベルのファイアウォール規則を構成するには、Azure Portal または Azure CLI コマンドを使用します。 サーバー レベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
+**ファイアウォール規則**:この規則により、クライアントは、Azure Database for MySQL サーバー全体、つまり、同じ論理サーバー内のすべてのデータベースにアクセスできるようになります。 サーバー レベルのファイアウォール規則を構成するには、Azure Portal または Azure CLI コマンドを使用します。 サーバー レベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
 
 ## <a name="firewall-overview"></a>ファイアウォールの概要
 既定では、Azure Database for MySQL サーバーへのすべてのデータベース アクセスが、ファイアウォールによってブロックされます。 他のコンピューターからサーバーの使用を開始するには、サーバー レベルのファイアウォール規則を 1 つ以上指定して、サーバーへのアクセスを有効にする必要があります。 ファイアウォール規則を使用して、インターネットからのアクセスを許可する IP アドレス範囲を指定します。 Azure Portal Web サイト自体へのアクセスは、ファイアウォール規則の影響は受けません。
@@ -52,9 +49,9 @@ Azure のアプリケーションが Azure Database for MySQL サーバーに接
 ## <a name="troubleshooting-the-database-firewall"></a>データベース ファイアウォールのトラブルシューティング
 Microsoft Azure Database for MySQL サーバー サービスに期待どおりにアクセスできない場合は、次の点を検討してください。
 
-* **許可一覧に変更が反映されない:** Azure Database for MySQL サーバー ファイアウォールの構成に対する変更が反映されるまで最大 5 分の遅延が発生する場合があります。
+* **許可一覧に変更が反映されない:** Azure Database for MySQL サーバーのファイアウォール構成に対する変更が反映されるまで最大 5 分間の遅延が発生する場合があります。
 
-* **ログインが許可されない、または正しくないパスワードが使用された**: Azure Database for MySQL サーバーでは、ログインのアクセス許可がないか、使用したパスワードが正しくない場合、Azure Database for MySQL サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、クライアントに対し、サーバーへの接続を試行する機会のみを提供します。それぞれのクライアントは、必要なセキュリティ資格情報を提供する必要があります。
+* **ログインが許可されない、または正しくないパスワードが使用された:** Azure Database for MySQL サーバーでは、ログインのアクセス許可がないか、使用したパスワードが正しくない場合、Azure Database for MySQL サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、クライアントに対し、サーバーへの接続を試行する機会のみを提供します。それぞれのクライアントは、必要なセキュリティ資格情報を提供する必要があります。
 
 * **動的 IP アドレス:** 動的 IP アドレス指定によるインターネット接続を使用しており、ファイアウォールの通過に問題が発生している場合は、次の解決策のいずれかをお試しください。
 

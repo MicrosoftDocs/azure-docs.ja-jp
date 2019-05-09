@@ -2,7 +2,7 @@
 title: Azure PowerShell を使用して Windows VM で診断を有効にする | Microsoft Docs
 services: virtual-machines-windows
 documentationcenter: ''
-description: PowerShell を使用して、Windows を実行している仮想マシンで Azure 診断を有効にする方法について説明します
+description: PowerShell を使用して、Windows を実行している仮想マシンで Azure Diagnostics を有効にする方法について説明します
 author: sbtron
 manager: jeconnoc
 editor: ''
@@ -14,61 +14,63 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 2a4f55ea15c933094befb8855185c4b7e353dee3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 520211f3499931281d3ac86a1da1144564a8bb48
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038612"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980756"
 ---
-# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする
+# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする
 
-Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 診断拡張機能を使用して、Windows を実行している Azure 仮想マシン (VM) から、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、Windows PowerShell を使用して VM の診断拡張機能を有効にする方法について説明します。 この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) に関するページを参照してください。
+Azure Diagnostics は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 診断拡張機能を使用して、Windows を実行している Azure 仮想マシン (VM) から、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルを使用している場合の診断拡張機能の有効化
 Azure Resource Manager デプロイ モデルを使用して Windows VM を作成するときに、リソース マネージャー テンプレートに拡張機能構成を追加することで、診断拡張機能を有効にすることができます。 「[Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](diagnostics-template.md)」をご覧ください。
 
-Resource Manager デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、次のように [Set-AzureRMVMDiagnosticsExtension](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) PowerShell コマンドレットを使用します。
+Resource Manager デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、下に示すように、[Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) PowerShell コマンドレットを使用できます。
 
     $vm_resourcegroup = "myvmresourcegroup"
     $vm_name = "myvm"
     $diagnosticsconfig_path = "DiagnosticsPubConfig.xml"
 
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
+    Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
 
 
 *$diagnosticsconfig_path* は、後の[サンプル](#sample-diagnostics-configuration)で説明するように、XML での診断構成が含まれているファイルへのパスです。  
 
-診断構成ファイルでストレージ アカウント名を設定した **StorageAccount** 要素を指定すると、 *Set-AzureRMVMDiagnosticsExtension* スクリプトによって、そのストレージ アカウントに診断データを送信するように診断拡張機能が自動的に設定されます。 これを機能させるには、ストレージ アカウントが VM と同じサブスクリプションに属している必要があります。
+診断構成ファイルでストレージ アカウント名を含む **StorageAccount** 要素が指定されている場合は、*Set-AzVMDiagnosticsExtension* スクリプトによって、そのストレージ アカウントに診断データを送信するように診断拡張機能が自動的に設定されます。 これを機能させるには、ストレージ アカウントが VM と同じサブスクリプションに属している必要があります。
 
 診断構成で **StorageAccount** を指定しなかった場合は、 *StorageAccountName* パラメーターをコマンドレットに渡す必要があります。 *StorageAccountName* パラメーターを指定すると、診断構成ファイルに指定されたストレージ アカウントではなく、このパラメーターに指定されたストレージ アカウントがコマンドレットで常に使用されます。
 
 診断ストレージ アカウントが VM と異なるサブスクリプションに属している場合は、*StorageAccountName* パラメーターと *StorageAccountKey* パラメーターをコマンドレットに明示的に渡す必要があります。 診断ストレージ アカウントが同じサブスクリプションに属している場合、診断拡張機能を有効にすると、コマンドレットによってキー値が自動的に照会され、設定されるので、 *StorageAccountKey* パラメーターは不要です。 ただし、診断ストレージ アカウントが別のサブスクリプションに属している場合は、コマンドレットでキーを自動的に取得できないので、 *StorageAccountKey* パラメーターでキーを明示的に指定する必要があります。  
 
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
+    Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
-VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/get-azurermvmdiagnosticsextension) コマンドレットを使用して現在の設定を取得できます。
+VM で診断拡張機能が有効になったら、[Get-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) コマンドレットを使用して現在の設定を取得できます。
 
-    Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
+    Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
 コマンドレットから返される *PublicSettings* には診断構成が含まれます。 サポートされている構成は WadCfg と xmlCfg の 2 種類です。 WadCfg は JSON 構成で、xmlCfg は Base64 でエンコードされた形式の XML 構成です。 XML を読み取るには、デコードする必要があります。
 
-    $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
+    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
 
-[Remove-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension) コマンドレットを使用すると、VM から診断拡張機能を削除できます。  
+[Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) コマンドレットを使用すると、VM から診断拡張機能を削除できます。  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用している場合の診断拡張機能の有効化
-クラシック デプロイ モデルを使用して作成した VM で診断拡張機能を有効にするには、 [Set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) コマンドレットを使用します。 次の例は、診断拡張機能を有効にしたクラシック デプロイ モデルを使用して、新しい VM を作成する方法を示しています。
+クラシック デプロイ モデルを使用して作成した VM で診断拡張機能を有効にするには、 [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) コマンドレットを使用します。 次の例は、診断拡張機能を有効にしたクラシック デプロイ モデルを使用して、新しい VM を作成する方法を示しています。
 
     $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
     $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
 
-クラシック デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、まず、 [Get-AzureVM](/powershell/module/servicemanagement/azure/get-azurevm) コマンドレットを使用して VM 構成を取得します。 次に、 [Set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) コマンドレットを使用して、診断拡張機能を含めるように VM 構成を更新します。 最後に、 [Update-AzureVM](/powershell/module/servicemanagement/azure/update-azurevm)を使用して、更新された構成を VM に適用します。
+クラシック デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、まず、 [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) コマンドレットを使用して VM 構成を取得します。 次に、 [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) コマンドレットを使用して、診断拡張機能を含めるように VM 構成を更新します。 最後に、 [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)を使用して、更新された構成を VM に適用します。
 
     $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
@@ -84,13 +86,13 @@ VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtens
   * リソース ID は、"/subscriptions/{*VM が実行されているサブスクリプションのサブスクリプション ID*}/resourceGroups/{*VM のリソース グループ名*}/providers/Microsoft.Compute/virtualMachines/{*VM 名*}" のパターンを使用して作成できます。
   * たとえば、VM が実行されているサブスクリプションのサブスクリプション ID が **11111111-1111-1111-1111-111111111111**、リソース グループのリソース グループ名が **MyResourceGroup**、VM 名が **MyWindowsVM** の場合、*resourceID* の値は次のようになります。
     
-      ```
+      ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
-  * パフォーマンス カウンターとメトリックの構成に基づいてメトリックが生成されるしくみの詳細については、 [ストレージの Azure 診断メトリック テーブル](diagnostics-template.md#wadmetrics-tables-in-storage)に関する記事を参照してください。
+  * パフォーマンス カウンターとメトリックの構成に基づいてメトリックが生成されるしくみの詳細については、「 [ストレージの Azure Diagnostics メトリック テーブル](diagnostics-template.md#wadmetrics-tables-in-storage)」をご覧ください。
 * 診断ストレージ アカウントの名前を使用して、 **StorageAccount** 要素を更新する必要があります。
   
-    ```
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
         <WadCfg>
@@ -195,6 +197,6 @@ VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtens
     ```
 
 ## <a name="next-steps"></a>次の手順
-* Azure 診断機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事を参照してください。
+* Azure Diagnostics 機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。
 * [Azure 診断構成スキーマ](https://msdn.microsoft.com/library/azure/mt634524.aspx) 」では、診断拡張機能の各種 XML 構成オプションについて説明しています。
 

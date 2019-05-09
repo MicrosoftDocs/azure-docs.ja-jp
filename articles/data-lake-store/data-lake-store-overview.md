@@ -3,19 +3,19 @@ title: Azure Data Lake Storage Gen1 の概要 | Microsoft Docs
 description: Data Lake Storage Gen1 (以前の Azure Data Lake Store) とは何か、Data Lake Storage Gen1 が他のデータ ストアで提供する値はどのようなものか、を理解する
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: b733a0bec20c7abae5df41acd74284bdf75bca2c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: 438eab091fac103b66f0789beca0098b87ee44cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124135"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885657"
 ---
 # <a name="overview-of-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の概要
 
@@ -45,7 +45,7 @@ Data Lake Storage Gen1 では無制限のストレージが提供されます。
 ### <a name="performance-tuned-for-big-data-analytics"></a>ビッグ データを分析するためのパフォーマンス チューニング
 Data Lake Storage Gen1 は、大量のデータのクエリと分析のために非常に高いスループットを必要とする、大規模な分析システムを実行するために構築されています。 Data Lake では、ファイル内のデータを複数の異なる記憶域サーバーに分散します。 これにより、ファイルを並列に読み取ってデータ分析を実行する場合の読み取りスループットが向上します。
 
-### <a name="enterprise-ready-highly-available-and-secure"></a>エンタープライズ対応: 高い可用性とセキュリティ保護
+### <a name="enterprise-ready-highly-available-and-secure"></a>エンタープライズ対応: 高可用性およびセキュリティ
 Data Lake Storage Gen1 では、業界標準の可用性と信頼性が提供されます。 データ資産は、冗長なコピーを作成して格納されるので、予期せぬ障害が発生しても保護されます。 企業では、実際のソリューションで既存のデータ プラットフォームの重要な部分として Data Lake Storage Gen1 を使用できます。
 
 Data Lake Storage Gen1 では、格納されたデータに対してエンタープライズ レベルのセキュリティも提供されます。 詳細については、[Azure Data Lake Storage Gen1 内のデータのセキュリティ保護](#DataLakeStoreSecurity)に関するページを参照してください。
@@ -58,7 +58,7 @@ Data Lake Storage Gen1 のデータ コンテナーは、本質的にはフォ�
 ## <a name="DataLakeStoreSecurity">Data Lake Storage Gen1 でのデータのセキュリティ保護</a>
 Data Lake Storage Gen1 では、Azure Active Directory を使用し、認証およびアクセス制御リスト (ACL) によってデータへのアクセスを管理します。
 
-| Feature | 説明 |
+| 機能 | 説明 |
 | --- | --- |
 | Authentication |Data Lake Storage Gen1 では、Azure Active Directory (AAD) と統合することで、Data Lake Storage Gen1 に格納されたすべてのデータの ID およびアクセスの管理を行います。 この統合により、Data Lake Storage Gen1 では、AAD のすべての機能 (多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) の利点が得られます。Data Lake Storage Gen1 では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルがサポートされます。 [Data Lake Storage Gen1 の認証](data-lakes-store-authentication-using-azure-active-directory.md)に関するページを参照してください。|
 | アクセス制御 |Data Lake Storage Gen1 では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御が提供されます。 ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Storage Gen1 のコンテキストにおける ACL のしくみの詳細については、[Data Lake Storage Gen1 でのアクセス制御](data-lake-store-access-control.md)に関するページを参照してください。 |

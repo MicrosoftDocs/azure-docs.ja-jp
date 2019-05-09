@@ -1,24 +1,24 @@
 ---
 title: Azure Storage Explorer を使用して Data Lake Storage Gen2 のアクセス許可を設定する
-description: このハウツーでは、Azure Data Lake Storage Gen2 (プレビュー) 対応のストレージ アカウント内のファイルとディレクトリに対して、Azure Storage Explorer を使用してアクセス許可を設定する方法について説明します。
+description: このハウツーでは、Azure Data Lake Storage Gen2 対応のストレージ アカウント内のファイルとディレクトリに対するアクセス許可を Azure Storage Explorer で設定する方法について説明します。
 services: storage
 author: roygara
 ms.custom: mvc
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 1b89553816b6ff8a8076d954274d8404f49154a6
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d1e941e41871de4a11641254f40c53285b096807
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384855"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546313"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2-preview"></a>Azure Storage Explorer と Azure Data Lake Storage Gen2 (プレビュー) を使用してファイルとディレクトリ レベルのアクセス許可を設定する
+# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure Storage Explorer を使用してファイルとディレクトリ レベルのアクセス許可を設定する
 
-Azure Data Lake Storage Gen2 (プレビュー) に格納されているファイルは、細かいアクセス許可とアクセス制御リスト (ACL) 管理をサポートしています。 細かいアクセス許可と ACL 管理を組み合わせることで、データへのアクセスをきめ細かいレベルで管理できます。
+Azure Data Lake Storage Gen2 に格納されているファイルでは、アクセス許可とアクセス制御リスト (ACL) のきめ細かい管理がサポートされています。 細かいアクセス許可と ACL 管理を組み合わせることで、データへのアクセスをきめ細かいレベルで管理できます。
 
 この記事では、Azure Storage Explorer を使用して以下を行う方法について説明します。
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen2 (プレビュー) に格納されているファイ
 
 ## <a name="managing-access"></a>アクセスの管理
 
-ファイルシステムのルートにアクセス許可を設定することができます。 これを行うには、ファイルシステムを右クリックし、**[アクセス許可の管理]** を選択し、**[アクセス許可の管理]** ダイアログ ボックスを開きます。
+ファイルシステムのルートにアクセス許可を設定することができます。 これを行うには、(接続文字列を使用するのではなく) その操作のアクセス権を持つ自分の個人アカウントで Azure Storage Explorer にログインする必要があります。 ファイルシステムを右クリックし、**[アクセス許可の管理]** を選択し、**[アクセス許可の管理]** ダイアログ ボックスを開きます。
 
 ![Microsoft Azure Storage Explorer - ディレクトリ アクセスを管理する](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 

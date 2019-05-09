@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: JavaScript による異常検出'
+title: チュートリアル:JavaScript による異常検出
 titlesuffix: Azure Cognitive Services
 description: 異常検出 API を使用する JavaScript Web アプリについて説明します。 API に元のデータ ポイントを送信し、予期される値と異常なポイントを取得します。
 services: cognitive-services
 author: wenya
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: cd65a5275fac651968197c9000b2d4cd3962693b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9e66b24987b2318f3022404d951fbb911e7b592d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883705"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227831"
 ---
-# <a name="tutorial-anomaly-detection-with-javascript-application"></a>チュートリアル: JavaScript アプリケーションによる異常検出
+# <a name="tutorial-anomaly-detection-with-javascript-application"></a>チュートリアル:JavaScript アプリケーションによる異常検出
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 

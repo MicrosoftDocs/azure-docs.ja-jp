@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
-ms.openlocfilehash: 62f43fc082969bf04b7177725478585ce41aa347
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a6faa7037ccbacc0547401dd52bb3b19abd1c474
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045940"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401601"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL カタログを使用する
 
@@ -65,7 +65,7 @@ GROUP BY Region
 HAVING SUM(Duration) > 200;
 
 OUTPUT @res
-    TO "/output/SerachLog-use-tvf.csv"
+    TO "/output/SearchLog-use-tvf.csv"
     ORDER BY TotalDuration DESC
     USING Outputters.Csv();
 ```
@@ -172,5 +172,5 @@ OUTPUT @res
 
 ## <a name="next-steps"></a>次の手順
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-* [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+* [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Portal を使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

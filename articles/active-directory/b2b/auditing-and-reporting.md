@@ -1,21 +1,23 @@
 ---
-title: Azure Active Directory B2B コラボレーション ユーザーの監査およびレポート | Microsoft Docs
+title: B2B コラボレーション ユーザーの監査およびレポート - Azure Active Directory | Microsoft Docs
 description: ゲスト ユーザーは、Azure Active Directory B2B コラボレーションで構成できます
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: fbe1cfdcfb1b5ec295748c3c77030df45323ee54
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+manager: daveba
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5763a7e5f122702ddaf86246fbfbd18326878146
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434326"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294197"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B コラボレーション ユーザーの監査およびレポート
 ゲスト ユーザーに対しても、メンバー ユーザーに対する場合と同様に、監査機能を使用できます。 
@@ -27,11 +29,11 @@ ms.locfileid: "53434326"
 
 Azure AD 監査ログはシステムとユーザーのアクティビティのレコードを提供しますが、これにはゲスト ユーザーによって開始されたアクティビティも含まれます。 監査ログにアクセスするには、**Azure Active Directory** で、**[Monitoring]\(監視\)** にある **[監査ログ]** を選択します。 招待された Sam Oogle の招待と使用の履歴の例を示します。
 
-![監査ログ](./media/auditing-and-reporting/audit-log.png)
+![監査ログの出力例を示すスクリーンショット](./media/auditing-and-reporting/audit-log.png)
 
 各イベントに立ち入って、詳細を取得することができます。 たとえば、承認の詳細を見てみましょう。
 
-![活動の詳細](./media/auditing-and-reporting/activity-details.png)
+![アクティビティの詳細の出力例を示すスクリーンショット](./media/auditing-and-reporting/activity-details.png)
 
 これらのログを Azure AD からエクスポートし、任意のレポート ツールを使用してレポートをカスタマイズすることもできます。
 

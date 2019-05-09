@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 1ae352a0292e75eb9a5bf07e3ddca79ca687dea2
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 417772b2e955b1a3664dd495f292a76ab2819165
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687386"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734523"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>Azure CLI (プレビュー) による仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
 
@@ -42,13 +42,13 @@ CLI をローカルにインストールして使用する場合、Azure CLI バ
 
 ## <a name="register-for-disk-encryption-preview"></a>ディスク暗号化プレビューの登録をする
 
-仮想マシン スケール セットのプレビューのための Azure ディスク暗号化では、 [az feature register](/cli/azure/feature#az_feature_register) を使用してサブスクリプションを自己登録する必要があります。 ディスク暗号化のプレビュー機能を初めて利用する場合は､以下の手順を行えばよいだけです｡
+仮想マシン スケール セットのプレビューのための Azure ディスク暗号化では、 [az feature register](/cli/azure/feature) を使用してサブスクリプションを自己登録する必要があります。 ディスク暗号化のプレビュー機能を初めて利用する場合は､以下の手順を行えばよいだけです｡
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature#az_feature_show) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider#az_provider_register) を使って *Microsoft.Compute* プロバイダーを登録し直します。
+登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider) を使って *Microsoft.Compute* プロバイダーを登録し直します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -56,13 +56,13 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
 
-スケール セットを作成する前に、[az group create](/cli/azure/group#az_group_create) を使ってリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+スケール セットを作成する前に、[az group create](/cli/azure/group) を使ってリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-ここでは、[az vmss create](/cli/azure/vmss#az_vmss_create) を使って仮想マシン スケール セットを作成します。 以下の例では、*myScaleSet* という名前のスケール セットを作成します。このスケール セットは、変更が適用されると自動的に更新するように設定され、SSH キーが *~/.ssh/id_rsa* に存在しない場合は生成します。 VM インスタンスのそれぞれに 32GB のディスクが接続され､Azure [Custom Script Extension](../virtual-machines/linux/extensions-customscript.md) では､[az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) を使用してデータ ディスクが作成されます｡
+ここでは、[az vmss create](/cli/azure/vmss) を使って仮想マシン スケール セットを作成します。 以下の例では、*myScaleSet* という名前のスケール セットを作成します。このスケール セットは、変更が適用されると自動的に更新するように設定され、SSH キーが *~/.ssh/id_rsa* に存在しない場合は生成します。 VM インスタンスのそれぞれに 32GB のディスクが接続され､Azure [Custom Script Extension](../virtual-machines/linux/extensions-customscript.md) では､[az vmss extension set](/cli/azure/vmss/extension) を使用してデータ ディスクが作成されます｡
 
 ```azurecli-interactive
 # Create a scale set with attached data disk

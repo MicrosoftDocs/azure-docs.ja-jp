@@ -1,17 +1,11 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7e320bdc98de75141aed4783d343571971287f37
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052536"
 documentType: LandingData
 title: Azure 上の Chef ソフトウェアのドキュメント
 metadata:
   title: Azure 上の Chef ソフトウェアのドキュメント - チュートリアル、サンプル、リファレンス、リソース
   description: Chef ソフトウェアは、Linux と Windows 向けの DevOps オートメーション プラットフォームで、物理サーバーと仮想サーバー両方の構成を管理できます。 クイック スタートやチュートリアルを使用して、コードとしてのインフラストラクチャ (IaC) のレシピを自動化したり、Azure 上の仮想マシンの管理およびデプロイを実行したりするための Chef ソフトウェア製品の使用方法を確認してください。
   ms.service: chef
-  keywords: Chef, Azure, DevOps, チュートリアル, サンプル, リファレンス
+  keywords: 'Chef, Azure, DevOps, チュートリアル, サンプル, リファレンス'
   author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
@@ -25,36 +19,36 @@ abstract:
       height: 133
       width: 48
       src: media/chef.png
-    title: 
+    title: null
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Chef をインストールして構成します。また、Chef を使用して Azure に Linux 仮想マシンを作成します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /azure/media/index/azure_dev-9.svg
-      text: Chef のインストールと構成
-      href: ./chef-extension-portal.md
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Chef ソフトウェア ツールを使用して Azure のコンピューティングとネットワークのインフラストラクチャを作成および管理する方法を確認してください。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Chef をインストールして構成します。また、Chef を使用して Azure に Linux 仮想マシンを作成します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/media/index/azure_dev-9.svg
+            text: Chef のインストールと構成
+            href: ./chef-extension-portal.md
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/virtual-machines/windows/chef-automation">Chef で Azure 仮想マシンのデプロイを自動化する</a>。
-- title: リソースとツール
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Chef ソフトウェア ツールを使用して Azure のコンピューティングとネットワークのインフラストラクチャを作成および管理する方法を確認してください。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/virtual-machines/windows/chef-automation">Chef で Azure 仮想マシンのデプロイを自動化する</a>。
+  - title: リソースとツール
     items:
-    - title: Chef Automate
-      html: <p><a href="https://docs.chef.io/chef_automate.html">Chef Automate の概要</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Chef Automate インストール ガイド</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Azure Marketplace の Chef Automate</a></p>
-    - title: Chef ソフトウェア ツール
-      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef の Azure DevOps 拡張機能</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat の Azure DevOps 拡張機能</a></p>
-    - title: Chef ソフトウェアのニュース
-      html: <p><a href="https://blog.chef.io/">Chef ソフトウェアのブログ</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Chef Automate
+            html: '<p><a href="https://docs.chef.io/chef_automate.html">Chef Automate の概要</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Chef Automate インストール ガイド</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Azure Marketplace の Chef Automate</a></p>'
+          - title: Chef ソフトウェア ツール
+            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef の Azure DevOps 拡張機能</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat の Azure DevOps 拡張機能</a></p>'
+          - title: Chef ソフトウェアのニュース
+            html: '<p><a href="https://blog.chef.io/">Chef ソフトウェアのブログ</a></p>'

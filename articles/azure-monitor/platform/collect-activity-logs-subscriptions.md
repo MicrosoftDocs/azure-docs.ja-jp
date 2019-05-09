@@ -1,6 +1,6 @@
 ---
-title: サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する | Microsoft Docs
-description: Event Hubs と Logic Apps を使用して、Azure のアクティビティ ログからデータを収集し、別のテナントにある Azure Log Analytics ワークスペースへ送信します。
+title: Azure アクティビティ ログをサブスクリプションにまたがる Log Analytics ワークスペースに収集する | Microsoft Docs
+description: Event Hubs と Logic Apps を使用して Azure アクティビティ ログからデータを収集し、それを別のテナント内の Azure Monitor の Log Analytics ワークスペースに送信します。
 services: log-analytics, logic-apps, event-hubs
 documentationcenter: ''
 author: mgoedtel
@@ -10,18 +10,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 344b049c46243c06c32ed061410f48f71bc70f54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 76a789bd4f9167344fcc240e3f3fdbf3a00aa5a3
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580945"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540756"
 ---
-# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
+# <a name="collect-azure-activity-logs-into-a-log-analytics-workspace-across-subscriptions-in-different-azure-active-directory-tenants"></a>Azure アクティビティ ログを異なる Azure Active Directory テナント内のサブスクリプションにまたがる Log Analytics ワークスペースに収集する
 
-この記事では、Logic Apps 用の Azure Log Analytics データ コレクター コネクタを使用して、Azure アクティビティ ログを Log Analytics ワークスペースに収集する方法の手順を説明します。 別の Azure Active Directory のワークスペースにログを送信する必要があるときに、この記事のプロセスを使用します。 たとえば、マネージド サービス プロバイダーとしては、顧客のサブスクリプションからアクティビティ ログを収集して、自身のサブスクリプションの内の Log Analytics ワークスペースに格納する必要があります。
+この記事では、Logic Apps 用の Azure Log Analytics データ コレクター コネクタを使用して、Azure アクティビティ ログを Azure Monitor の Log Analytics ワークスペースに収集する方法について説明します。 異なる Azure Active Directory テナントのワークスペースにログを送信する必要があるときには、この記事の手順を使用します。 たとえば、マネージド サービス プロバイダーとしては、顧客のサブスクリプションからアクティビティ ログを収集して、自身のサブスクリプションの内の Log Analytics ワークスペースに格納する必要があります。
 
 Log Analytics ワークスペースが同一の Azure サブスクリプションにある場合、または同じ Azure Active Directory 内の別のサブスクリプションにある場合は、[Azure アクティビティ ログ ソリューション](collect-activity-logs.md)に関する記事の手順を使用して Azure アクティビティ ログを収集します。
 
@@ -29,23 +29,23 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
 このシナリオで使用される戦略では、Azure アクティビティ ログがイベントを[イベント ハブ](../../event-hubs/event-hubs-about.md)に送信するようにします。そこから、[ロジック アプリ](../../logic-apps/logic-apps-overview.md) が Log Analytics ワークスペースにイベントを送信します。 
 
-![アクティビティ ログから Log Analytics へのデータ フローの画像](media/collect-activity-logs-subscriptions/data-flow-overview.png)
+![アクティビティ ログから Log Analytics ワークスペースへのデータ フローの図](media/collect-activity-logs-subscriptions/data-flow-overview.png)
 
 このアプローチの長所:
-- Azure アクティビティ ログはイベント ハブにストリーミングされるため待機時間が少なくなります。  その後、Logic App がトリガーされ、Log Analytics にデータを送信します。 
+- Azure アクティビティ ログはイベント ハブにストリーミングされるため待機時間が少なくなります。  その後、ロジック アプリがトリガーされ、データをワークスペースに投稿します。 
 - 必要なコードは最小限であり、展開するサーバー インフラストラクチャはありません。
 
 この記事では、次の方法について説明します。
 1. イベント ハブの作成。 
 2. Azure アクティビティ ログのエクスポート プロファイルを使用して、アクティビティ ログをイベント ハブにエクスポートします。
-3. イベント ハブを読み取って Log Analytics にイベントを送信するロジック アプリを作成します。
+3. イベント ハブから読み取り、イベントを Log Analytics ワークスペースに送信するロジック アプリを作成します。
 
 ## <a name="requirements"></a>必要条件
 このシナリオで使用される Azure リソースの要件は次のとおりです。
 
 - イベント ハブ名前空間は、ログを出力するサブスクリプションと同じサブスクリプションに存在する必要はありません。 設定を構成するユーザーは、両方のサブスクリプションに対して適切なアクセス許可を持っている必要があります。 同じ Azure Active Directory に複数のサブスクリプションがある場合、すべてのサブスクリプションのアクティビティ ログを 1 つのイベント ハブに送信できます。
 - ロジック アプリは、イベント ハブと別のサブスクリプションに配置でき、同じ Azure Active Directory に存在する必要もありません。 ロジック アプリはイベント ハブのアクセス キーを使用してイベント ハブから読み取ります。
-- Log Analytics ワークスペースは、ロジック アプリとは別のサブスクリプションおよび Azure Active Directory に配置できますが、わかりやすくするために同じサブスクリプションに置くことをお勧めします。 ロジック アプリは、Log Analytics ワークスペースの ID とキーを使用して Log Analytics に送信します。
+- Log Analytics ワークスペースは、ロジック アプリとは別のサブスクリプションおよび Azure Active Directory に配置できますが、わかりやすくするために同じサブスクリプションに置くことをお勧めします。 ロジック アプリは、Log Analytics ワークスペースの ID とキーを使用してワークスペースに送信します。
 
 
 
@@ -96,15 +96,15 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
 ## <a name="step-3---create-logic-app"></a>手順 3 - ロジック アプリの作成
 
-アクティビティ ログがイベント ハブに書き込まれるようになったら、イベント ハブからログを収集して Log Analytics に書き込むためのロジック アプリを作成します。
+アクティビティ ログがイベント ハブに書き込まれるようになったら、イベント ハブからログを収集し、それを Log Analytics ワークスペースに書き込むロジック アプリを作成します。
 
 ロジック アプリには次を含めます。
 - イベント ハブから読み取る[イベント ハブ コネクタ](https://docs.microsoft.com/connectors/eventhubs/) トリガー。
 - JSON イベントを抽出する [Parse JSON アクション](../../logic-apps/logic-apps-content-type.md)。
 - JSON をオブジェクトに変換する [Compose アクション](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action)。
-- データを Log Analytics に送信する [Log Analytics のデータ送信コネクタ](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)。
+- データを Log Analytics ワークスペースに投稿する [Log Analytics データ送信コネクタ](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)。
 
-   ![イベント ハブ トリガーの Logic Apps への追加の画像](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+   ![イベント ハブ トリガーのロジック アプリへの追加の画像](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="logic-app-requirements"></a>ロジック アプリの要件
 ロジック アプリを作成する前に、前の手順で説明した次の情報があることを確認します。
@@ -131,8 +131,8 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
    | Name           | ロジック アプリの一意の名前。 |
    | サブスクリプション   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
    | リソース グループ | ロジック アプリのために、既存の Azure リソース グループを選択するか、新しいものを作成します。 |
-   | 場所       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
-   | Log Analytics  | ロジック アプリを実行するたびにその状態を Log Analytics に記録する場合に選択します。  |
+   | Location       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
+   | Log Analytics  | ロジック アプリの各実行の状態を Log Analytics ワークスペースにログ記録するかどうかを選択します。  |
 
     
 3. **作成**を選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[リソースに移動]** をクリックしてロジック アプリを開きます。
@@ -163,7 +163,7 @@ Logic Apps デザイナーには、使用可能なコネクタとそのトリガ
 
 ### <a name="add-parse-json-action"></a>Parse JSON アクションの追加
 
-Event Hub からの出力には、レコードの配列を持つ JSON ペイロードが含まれています。 [Parse JSON](../../logic-apps/logic-apps-content-type.md) アクションを使用して、Log Analytics に送信するためにレコードの配列のみを抽出します。
+Event Hub からの出力には、レコードの配列を持つ JSON ペイロードが含まれています。 [Parse JSON](../../logic-apps/logic-apps-content-type.md) アクションは、Log Analytics ワークスペースに送信するためのレコードの配列のみを抽出するために使用されます。
 
 1. **[新しいステップ]** > **[アクションの追加]** をクリックします。
 2. 検索ボックスに、フィルターとして「*parse json*」と入力します。 **[Data Operations - Parse JSON]\(データ操作 - Parse JSON\)** アクションを選択します。
@@ -286,7 +286,7 @@ Event Hub からの出力には、レコードの配列を持つ JSON ペイロ�
 
 
 ### <a name="add-log-analytics-send-data-action"></a>Log Analytics データ送信アクションの追加
-[Azure Log Analytics データ コレクター](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) アクションは、Compose アクションからオブジェクトを受け取り、それを Log Analytics に送信します。
+[Azure Log Analytics データ コレクター](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) アクションは、Compose アクションからオブジェクトを取得し、それを Log Analytics ワークスペースに送信します。
 
 1. **[新しいステップ]** > **[アクションの追加]** をクリックします。
 2. フィルターとして「*log analytics*」と入力し、**[Azure Log Analytics Data Collector - Send Data]\(Azure Log Analytics データ コレクター - データの送信\)** アクションを選択します。
@@ -304,7 +304,7 @@ Event Hub からの出力には、レコードの配列を持つ JSON ペイロ�
    |Setting        | 値           | 説明  |
    |---------------|---------------------------|--------------|
    |[JSON Request body]\(JSON 要求本文\)  | **Compose** アクションの**出力** | Compose アクションの本文からレコードを取得します。 |
-   | [カスタム ログの名前] | AzureActivity | インポートされるデータを保持するために Log Analytics 内に作成するカスタム ログ テーブルの名前。 |
+   | [カスタム ログの名前] | AzureActivity | インポートされたデータを保持するために Log Analytics ワークスペース内に作成するカスタム ログ テーブルの名前。 |
    | [Time-generated-field]\(時刻生成フィールド\) | time | **time** に対応する JSON フィールドを選択せずに、「time」と入力してください。 JSON フィールドを選択すると、デザイナーによって**データ送信**アクションが *For Each* ループに配置され、意図した結果になりません。 |
 
 
@@ -329,7 +329,7 @@ Logic Apps デザイナーで **[実行]** をクリックしてロジック ア
 3.  **[ログ検索]** タイルをクリックし、[ログ検索] ウィンドウのクエリ フィールドに「`AzureActivity_CL`」と入力してから Enter キーを押すか、クエリ フィールドの右側にある検索ボタンをクリックします。 カスタム ログに *AzureActivity* という名前を付けなかった場合は、選択した名前を入力して末尾に `_CL` を追加します。
 
 >[!NOTE]
-> 新しいカスタム ログが Log Analytics に最初に送信されるときは、カスタム ログを検索可能にするために 1 時間程度かかることがあります。
+> 新しいカスタム ログが Log Analytics ワークスペースに初めて送信されるときは、カスタム ログが検索可能になるまでに最大 1 時間かかる可能性があります。
 
 >[!NOTE]
 > アクティビティ ログはカスタム テーブルに書き込まれ、[アクティビティ ログ ソリューション](./collect-activity-logs.md)には表示されません。
@@ -339,7 +339,7 @@ Logic Apps デザイナーで **[実行]** をクリックしてロジック ア
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、イベント ハブから Azure アクティビティ ログを読み取って分析のために Log Analytics に送信するロジック アプリを作成しました。 ダッシュボードの作成など、Log Analytics でのデータの視覚化について詳しくは、データの表示に関するチュートリアルをご覧ください。
+この記事では、イベント ハブから Azure アクティビティ ログを読み取り、分析のためにそれを Log Analytics ワークスペースに送信するロジック アプリを作成しました。 ワークスペース内のデータの視覚化 (ダッシュボードの作成を含む) の詳細については、データの視覚化のチュートリアルを確認してください。
 
 > [!div class="nextstepaction"]
 > [ログ検索データの視覚化のチュートリアル](./../../azure-monitor/learn/tutorial-logs-dashboards.md)

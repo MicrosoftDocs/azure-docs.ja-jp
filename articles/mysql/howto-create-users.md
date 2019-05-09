@@ -1,27 +1,24 @@
 ---
 title: Azure Database for MySQL サーバーでユーザーを作成する
 description: この記事では、Azure Database for MySQL サーバーと対話する新しいユーザー アカウントを作成する方法について説明します。
-services: mysql
-author: jasonwhowell
-ms.author: jasonh
-editor: jasonwhowell
-manager: kfile
+author: ajlam
+ms.author: andrela
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: ee74ea9e114f6401bfcafe44ca3caedfcd0005c5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4cd2305ed3d7f88f6c3825d8f7cdb5d81f9a0f6b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265620"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351254"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーでユーザーを作成する 
 この記事では、Azure Database for MySQL サーバーでユーザーを作成する方法について説明します。
 
 Azure Database for MySQL を初めて作成したときに、サーバー管理者のログイン ユーザー名とパスワードを指定しています。 詳細については、[クイックスタート](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページを参照してください。 サーバー管理者のログイン ユーザー名は、Azure Portal で確認できます。
 
-サーバー管理者のユーザーには、サーバーに関して SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、RELOAD、PROCESS、REFERENCES、INDEX、ALTER、SHOW DATABASES、CREATE TEMPORARY TABLES、LOCK TABLES、EXECUTE、REPLICATION SLAVE、REPLICATION CLIENT、CREATE VIEW、SHOW VIEW、CREATE ROUTINE、ALTER ROUTINE、CREATE USER、EVENT、TRIGGER の特権が付与されます。
+サーバー管理者のユーザーがサーバーに関して付与される特権は、SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、RELOAD、PROCESS、REFERENCES、INDEX、ALTER、SHOW DATABASES、CREATE TEMPORARY TABLES、LOCK TABLES、EXECUTE、REPLICATION SLAVE、REPLICATION CLIENT、CREATE VIEW、SHOW VIEW、CREATE ROUTINE、ALTER ROUTINE、CREATE USER、EVENT、TRIGGER です
 
 Azure Database for MySQL サーバーが作成されると、最初のサーバー管理者のユーザー アカウントを使用して、追加のユーザーを作成し、それらのユーザーに管理者アクセス権を付与できます。 また、サーバー管理者アカウントを使用して、個々のデータベース スキーマに対するアクセス権を持つ特権の少ないユーザーを作成することもできます。
 
@@ -85,6 +82,6 @@ Azure Database for MySQL サーバーが作成されると、最初のサーバ�
    ```
 
 ## <a name="next-steps"></a>次の手順
-新しいユーザーのマシンの IP アドレスについてファイアウォールを開き、接続できるようにします。[Azure Portal](howto-manage-firewall-using-portal.md) または [Azure CLI](howto-manage-firewall-using-cli.md) を使用して、Azure Database for MySQL のファイアウォール規則を作成して管理します。
+新しいユーザーのマシンの IP アドレスについてファイアウォールを開き、接続できるようにします。[Azure portal](howto-manage-firewall-using-portal.md) または [Azure CLI](howto-manage-firewall-using-cli.md) を使用して、Azure Database for MySQL ファイアウォール規則の作成と管理を行います。
 
 ユーザー アカウント管理の詳細については、[ユーザー アカウント管理](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html)、[GRANT の構文](https://dev.mysql.com/doc/refman/5.7/en/grant.html)、および[特権](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)に関する MySQL 製品ドキュメントを参照してください。

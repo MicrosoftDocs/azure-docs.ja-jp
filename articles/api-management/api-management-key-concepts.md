@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 0ede6c0c55e2f953e0d109d2d371313759ed4d06
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2ed29f50278afe5bf7cd3daabe088cee55caae06
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965157"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793953"
 ---
 # <a name="what-is-api-management"></a>API Management とは
 
@@ -101,7 +101,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 ## <a name="policies"> </a> ポリシー
 ポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
 
-ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) ポリシーや[変数の設定](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies)」と「[ポリシーの式](https://msdn.microsoft.com/library/azure/dn910913.aspx)」をご覧ください。
+ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](/azure/api-management/api-management-advanced-policies#choose) ポリシーや[変数の設定](/azure/api-management/api-management-advanced-policies#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](/azure/api-management/api-management-advanced-policies#AdvancedPolicies)」と「[ポリシーの式](/azure/api-management/api-management-policy-expressions)」をご覧ください。
 
 
 API Management の全ポリシー一覧については、[ポリシー リファレンス][Policy reference]に関するページを参照してください。 ポリシーの使用と構成の詳細については、[API Management のポリシー][API Management policies]に関するページを参照してください。 レート制限ポリシーとクォータ ポリシーを持つ成果物の作成に関するチュートリアルについては、[成果物の詳細設定を作成して構成する方法][How create and configure advanced product settings]に関するページを参照してください。

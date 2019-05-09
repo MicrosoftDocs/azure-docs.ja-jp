@@ -12,14 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: e45b3bde0d5077a5d18369236e81bcd467527940
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118257"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS での逆引き DNS 参照ゾーンのホスト
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 この記事では、割り当てられた IP アドレス範囲の逆引き DNS 参照ゾーンを Azure DNS でホストする方法について説明します。 逆引き参照ゾーンによって表される IP 範囲を、通常は ISP が、組織に割り当てる必要があります。
 
@@ -60,7 +62,7 @@ IPv4 の逆引き参照ゾーンの名前は、それが表す IP アドレス�
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
+New-AzDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
 ```
 
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
@@ -91,7 +93,7 @@ IPv6 の逆引き参照ゾーンの名前は、`<IPv6 network prefix in reverse 
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
+New-AzDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
 ```
 
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
@@ -129,14 +131,14 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 1. **[ドメイン名]** に、その IP アドレスを使うリソースの完全修飾ドメイン名 (FQDN) を入力します。
 1. ウィンドウ下部の **[OK]** を選択すると、DNS レコードが作成されます。
 
- ![ボックスに入力された [レコード セットの追加] ウィンドウ](./media/dns-reverse-dns-hosting/figure5.png)
+   ![ボックスに入力された [レコード セットの追加] ウィンドウ](./media/dns-reverse-dns-hosting/figure5.png)
 
 次の例では、PowerShell または Azure CLI を使用してこのタスクを行う方法を示します。
 
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Ptrdname "dc1.contoso.com")
+New-AzDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "dc1.contoso.com")
 ```
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
@@ -172,7 +174,7 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Ptrdname "dc2.contoso.com")
+New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "dc2.contoso.com")
 ```
 
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
@@ -202,7 +204,7 @@ azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureRmDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
+Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
 ```
 
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
@@ -228,7 +230,7 @@ Get-AzureRmDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyReso
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureRmDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
+Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
 ```
 
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
@@ -267,6 +269,6 @@ ISP によって割り当てられた IP アドレス ブロックの逆引き D
 
 ## <a name="next-steps"></a>次の手順
 
-逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
+逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>
 [Azure サービスの逆引き DNS レコードを管理する](dns-reverse-dns-for-azure-services.md)方法を学習してください。

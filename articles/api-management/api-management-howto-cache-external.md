@@ -11,15 +11,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 06052bd0cba6d119d07e86ed6aed833dec9f1f92
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014567"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407625"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Azure API Management で外部の Azure Cache for Redis を使用する
 
@@ -66,7 +66,7 @@ Azure API Management に外部の Azure Cache for Redis を追加するには、
 ![APIM にお客様のキャッシュを追加する](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
-> **[Used from]\(使用元\)** 設定では、API Management がマルチリージョン構成である場合に、API Management のどのリージョンのデプロイが構成済みのキャッシュと通信するのかを指定します。 **既定**として指定されたキャッシュは、リージョンの値を使ったキャッシュによって上書きされます。
+> **[Use from]\(使用元\)** 設定では、API Management がマルチリージョン構成である場合に、API Management のどのリージョンのデプロイが構成済みのキャッシュと通信するのかを指定します。 **既定**として指定されたキャッシュは、リージョンの値を使ったキャッシュによって上書きされます。
 >
 > たとえば、API Management が米国東部、東南アジア、および西ヨーロッパのリージョンでホストされていて、2 つのキャッシュ (1 つは**既定**、もう 1 つは**東南アジア**用) が構成されている場合、**東南アジア**の API Management ではそのリージョンのキャッシュが使用され、他の 2 つのリージョンでは**既定**のキャッシュ エントリが使用されます。
 
@@ -76,7 +76,7 @@ Azure API Management に外部の Azure Cache for Redis を追加するには、
 2. 左側のメニューから **[External cache]\(外部キャッシュ\)** タブを選択します。
 3. **[+ 追加]** ボタンをクリックします。
 4. **[Cache instance]\(キャッシュ インスタンス\)** ドロップダウン フィールドでキャッシュを選択します。
-5. **[既定]** を選択するか、**[Used from]\(使用元\)** ドロップダウン フィールドで目的のリージョンを指定します。
+5. **[既定]** を選択するか、**[Use from]\(使用元\)** ドロップダウン フィールドで目的のリージョンを指定します。
 6. **[Save]** をクリックします。
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>現在の Azure サブスクリプションまたは一般の Azure の外部でホストされている Azure Cache for Redis を追加します
@@ -85,7 +85,7 @@ Azure API Management に外部の Azure Cache for Redis を追加するには、
 2. 左側のメニューから **[External cache]\(外部キャッシュ\)** タブを選択します。
 3. **[+ 追加]** ボタンをクリックします。
 4. **[Cache instance]\(キャッシュ インスタンス\)** ドロップダウン フィールドで **[カスタム]** を選択します。
-5. **[既定]** を選択するか、**[Used from]\(使用元\)** ドロップダウン フィールドで目的のリージョンを指定します。
+5. **[既定]** を選択するか、**[Use from]\(使用元\)** ドロップダウン フィールドで目的のリージョンを指定します。
 6. **[接続文字列]** フィールドで Azure Cache for Redis の接続文字列を指定します。
 7. **[Save]** をクリックします。
 

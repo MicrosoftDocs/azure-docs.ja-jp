@@ -4,17 +4,17 @@ description: HTTP REST API を使ったコードで、Azure Blob Storage 内の�
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 7bd7bcf66f0d91a87519a5d5bff7df7c73e2603f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310880"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759393"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Azure Search を使用した Blob Storage の検索
 
@@ -38,7 +38,7 @@ Azure Blob Storage で[ドキュメント抽出](https://aka.ms/azsblobindexer)�
 ## <a name="image-search"></a>イメージの検索
 Azure Search のフルテキスト検索、ファセット ナビゲーション、および並べ替え機能は現在、BLOB に格納されているイメージのメタデータに適用できます。
 
-これらのイメージが Microsoft の Cognitive Services の [Computer Vision API](https://www.microsoft.com/cognitive-services/computer-vision-api) を使用して前処理されている場合は、OCR や手書き認識を含む、各イメージ内にあるビジュアル コンテンツのインデックスを作成できます。 当社では、OCR やその他のイメージ処理機能を Azure Search に直接追加する作業を行っています。これらの機能に関心がある場合は、[UserVoice](https://aka.ms/azsuv) に要求を送信するか、または[当社に電子メールを送信](mailto:azscustquestions@microsoft.com)してください。
+Cognitive Search には、[光学式文字認識 (OCR)](cognitive-search-skill-ocr.md) や、各画像内で見つかったビジュアル コンテンツのインデックス作成を可能にする[視覚的特徴](cognitive-search-skill-image-analysis.md)の特定などの画像処理スキルが含まれています。
 
 ## <a name="index-and-search-through-json-blobs"></a>JSON BLOB のインデックス作成および検索
 Azure Search は、JSON を含む BLOB 内にある構造化コンテンツを抽出するように構成できます。 Azure Search は、JSON BLOB を読み取り、その構造化コンテンツを Azure Search ドキュメントの適切なフィールドに解析できます。 Azure Search はまた、JSON オブジェクトの配列を含む BLOB を取得し、各要素を個別の Azure Search ドキュメントにマップすることもできます。
@@ -52,5 +52,5 @@ Azure Search は、Blob Storage ポータル ページから直接 BLOB に追�
 
 **[Azure Search の追加]** をクリックするとフローが開始され、既存の Azure Search サービスを選択するか、新しいサービスを作成することができます。 新しいサービスを作成すると、ストレージ アカウントのポータル エクスペリエンスの外部に移動します。 ストレージのポータル ページに戻って、**[Azure Search の追加]** オプションを再度選択することができます。そこで、既存のサービスを選択できます。
 
-### <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 完全な[ドキュメント](https://aka.ms/azsblobindexer)にある Azure Search BLOB インデクサの詳細を学習します。

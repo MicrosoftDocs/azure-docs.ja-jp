@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Replicon の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Replicon の統合 | Microsoft Docs
 description: Azure Active Directory と Replicon の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 7edfe5a115caf4ee6e4677e5fd7f324b8f3873ee
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ade40287bd38580a1e3f6377e54017bfe92bf452
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863408"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル: Azure Active Directory と Replicon の統合
+# <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル:Azure Active Directory と Replicon の統合
 
 このチュートリアルでは、Replicon と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -195,7 +196,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
     ![User profile](./media/replicon-tutorial/ic777808.png "User profile")
 
-    a. **[ログイン名]** ボックスに、プロビジョニングする Azure AD ユーザーの Azure AD メール アドレスを入力します (例: **BrittaSimon@contoso.com**)。
+    a. **[ログイン名]** ボックスに、プロビジョニングする Azure AD ユーザーの Azure AD メール アドレス (例: **BrittaSimon\@contoso.com**) を入力します。
 
     b. **[Authentication Type]** として **[SSO]** を選択します。
 

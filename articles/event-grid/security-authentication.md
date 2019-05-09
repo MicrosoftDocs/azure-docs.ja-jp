@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/29/2019
 ms.author: babanisa
-ms.openlocfilehash: db6db54d362e7ef6373271e238fdb1cf543a142e
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 2d56a7cda88f96a6728dc1c3e4af8e9ad0bf946f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413490"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755511"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -29,9 +29,9 @@ Webhook は、Azure Event Grid からイベントを受信する多数ある方�
 
 Webhook をサポートする他の多くのサービスと同様に、Event Grid を使用するには、Webhook エンドポイントへのイベントの配信を開始する前に、そのエンドポイントの所有権を証明する必要があります。 この要件により、悪意のあるユーザーはエンドポイントをイベントで氾濫させることができなくなります。 以下に示す 3 つの Azure サービスのいずれかを使用すると、Azure インフラストラクチャはこの検証を自動的に処理します。
 
-* Azure Logic Apps
-* Azure Automation
-* Event Grid Trigger用の Azure Functions。
+* [Event Grid コネクタ](https://docs.microsoft.com/connectors/azureeventgrid/)を使用した Azure Logic Apps
+* [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) を使用した Azure Automation
+* [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用した Azure Functions
 
 他の種類のエンドポイント (HTTP トリガー ベースの Azure 関数など) を使用する場合は、エンドポイントのコードが Event Grid を使用した検証ハンドシェイクに参加する必要があります。 Event Grid では、サブスクリプションを検証する 2 つの方法がサポートされています。
 
@@ -41,16 +41,18 @@ Webhook をサポートする他の多くのサービスと同様に、Event Gri
 
    2018-05-01-preview バージョン以降では、手動の検証ハンドシェイクが Event Grid によってサポートされるようになりました。 API バージョン 2018-05-01-preview 以降を使用する SDK またはツールでイベント サブスクリプションを作成すると、Event Grid によって、サブスクリプション検証イベントのデータ部分で `validationUrl` プロパティが送信されます。 ハンドシェイクを完了するには、イベント データ内でその URL を探し、そこへ GET 要求を手動で送信します。 REST クライアントと Web ブラウザーのどちらでも使用できます。
 
-   指定された URL は、10 分間有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動による検証を 10 分以内に完了しなかった場合、プロビジョニング状態には `Failed` が設定されます。 手動による検証を始める前に、もう一度イベント サブスクリプションを作成する必要があります。
+   指定された URL は 5 分間有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動の検証を 5 分以内に完了しなかった場合、プロビジョニング状態は `Failed` に設定されます。 手動による検証を始める前に、もう一度イベント サブスクリプションを作成する必要があります。
+
+    この認証メカニズムではまた、webhook エンドポイントが 200 の HTTP 状態コードを返すことも必要です。それにより、手動検証モードに設定される前に、検証イベントの POST が受け付けられたことを認識できるようになります。 つまり、エンドポイントが 200 を返しても、プログラムで検証の応答を戻さないと、モードは手動検証モードに移行されます。 5 分以内に検証 URL に GET が存在した場合、検証ハンドシェイクは成功したと見なされます。
 
 ### <a name="validation-details"></a>検証の詳細
 
 * イベント サブスクリプションの作成時または更新時に、Event Grid はサブスクリプション検証イベントをターゲット エンドポイントに投稿します。 
-* このイベントには、ヘッダー値 "aeg-event-type:SubscriptionValidation" が含まれています。
+* このイベントには、ヘッダー値 "aeg-event-type: SubscriptionValidation" が含まれています。
 * イベント本文のスキーマは、他の Event Grid イベントと同じです。
 * イベントの eventType プロパティは、`Microsoft.EventGrid.SubscriptionValidationEvent` です。
 * イベントの data プロパティには、ランダムに生成された文字列を持つ `validationCode` プロパティが含まれています。 たとえば、"validationCode: acb13…" のようなプロパティです。
-* API バージョン 2018-05-01-preview を使用する場合、イベント データには `validationUrl` プロパティと、サブスクリプションを手動で検証するための URL も含まれます。
+* イベント データには、`validationUrl` プロパティと、サブスクリプションを手動で検証するための URL も含まれます。
 * 配列には、検証イベントのみが含まれています。 その他のイベントは、検証コードをエコーで返した後、別の要求で送信されます。
 * EventGrid DataPlane SDK には、サブスクリプション検証イベント データとサブスクリプション検証の応答に対応するクラスがあります。
 
@@ -88,7 +90,7 @@ HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Acce
 
 ### <a name="checklist"></a>チェック リスト
 
-イベント サブスクリプションの作成時に表示される "指定されたエンドポイント https://your-endpoint-here の検証の試行に失敗しました。 詳細については、 https://aka.ms/esvalidation を参照してください" のようなエラー メッセージは、検証ハンドシェイクでエラーが発生したことを示します。 このエラーを解決するには、次の点を確認します。
+イベント サブスクリプションの作成時に表示される "指定されたエンドポイント https:\//your-endpoint-here の検証の試行に失敗しました。 詳細については、https:\//aka.ms/esvalidation を参照してください" のようなエラー メッセージは、検証ハンドシェイクでエラーが発生したことを示します。 このエラーを解決するには、次の点を確認します。
 
 * ターゲット エンドポイントでアプリケーション コードを制御しているか。 たとえば、HTTP トリガー ベースの Azure 関数を記述する場合は、その関数を変更するためにアプリケーション コードにアクセスできるかどうか。
 * アプリケーション コードにアクセスできる場合は、上記のサンプルに示すように ValidationCode ベースのハンドシェイクのメカニズムを実装します。
@@ -277,18 +279,18 @@ Event Grid には、イベント サブスクリプションを管理するた�
 
 ```json
 {
-  "Name": "Event grid read only role",
-  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
-  "IsCustom": true,
-  "Description": "Event grid read only role",
-  "Actions": [
-    "Microsoft.EventGrid/*/read"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription Id>"
-  ]
+  "Name": "Event grid read only role",
+  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
+  "IsCustom": true,
+  "Description": "Event grid read only role",
+  "Actions": [
+    "Microsoft.EventGrid/*/read"
+  ],
+  "NotActions": [
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription Id>"
+  ]
 }
 ```
 
@@ -296,22 +298,22 @@ Event Grid には、イベント サブスクリプションを管理するた�
 
 ```json
 {
-  "Name": "Event grid No Delete Listkeys role",
-  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
-  "IsCustom": true,
-  "Description": "Event grid No Delete Listkeys role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action"
-  ],
-  "NotActions": [
-    "Microsoft.EventGrid/*/delete"
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
+  "Name": "Event grid No Delete Listkeys role",
+  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
+  "IsCustom": true,
+  "Description": "Event grid No Delete Listkeys role",
+  "Actions": [
+    "Microsoft.EventGrid/*/write",
+    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
+    "Microsoft.EventGrid/topics/listkeys/action",
+    "Microsoft.EventGrid/topics/regenerateKey/action"
+  ],
+  "NotActions": [
+    "Microsoft.EventGrid/*/delete"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription id>"
+  ]
 }
 ```
 
@@ -319,21 +321,21 @@ Event Grid には、イベント サブスクリプションを管理するた�
 
 ```json
 {
-  "Name": "Event grid contributor role",
-  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
-  "IsCustom": true,
-  "Description": "Event grid contributor role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/*/delete",
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-  ],
-  "NotActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
+  "Name": "Event grid contributor role",
+  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
+  "IsCustom": true,
+  "Description": "Event grid contributor role",
+  "Actions": [
+    "Microsoft.EventGrid/*/write",
+    "Microsoft.EventGrid/*/delete",
+    "Microsoft.EventGrid/topics/listkeys/action",
+    "Microsoft.EventGrid/topics/regenerateKey/action",
+    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription id>"
+  ]
 }
 ```
 

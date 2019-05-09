@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 18ca854f1e04127a900c1b753245ed6e2a331d68
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: e0c41ed1fc2cdb7559d36a7056ebb7b9a6ecc186
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628170"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242772"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>コンテナー名のプレフィックスに基づいたコンテナーの削除
 
 このスクリプトでは、コンテナー名のプレフィックスに基づいて Azure Blob ストレージ内のコンテナーを削除します。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -46,11 +46,11 @@ Remove-AzResourceGroup -Name containerdeletetestrg
 
 このスクリプトでは、次のコマンドを使用して、コンテナー名のプレフィックスに基づいてコンテナーを削除します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | リソース グループまたはサブスクリプション内の指定された Storage アカウントまたはすべての Storage アカウントを取得します。 |
-| [Get-AzStorageContainer](/powershell/module/azure.storage/get-AzStoragecontainer) | ストレージ アカウントに関連付けられているストレージ コンテナーを一覧表示します。 |
-| [Remove-AzStorageContainer](/powershell/module/azure.storage/remove-AzStoragecontainer) | 指定されたストレージ コンテナーを削除します。 |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | ストレージ アカウントに関連付けられているストレージ コンテナーを一覧表示します。 |
+| [Remove-AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | 指定されたストレージ コンテナーを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

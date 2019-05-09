@@ -3,7 +3,7 @@ title: Windows での SSH キーを使用した Linux VM への接続 | Microsof
 description: Windows コンピューターで SSH キーを生成して使用し、Azure 上の Linux 仮想マシンに接続する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: danlep
-ms.openlocfilehash: abb0ba6eace2e837ea2f74a0d919097f8801101e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 0ac62a99f5735647f67917d441645e30444b3818
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005678"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -37,9 +37,9 @@ Windows コンピューターでは、それに相当する SSH コマンドが�
 
 ローカルにインストールできるその他の一般的な Windows SSH クライアントは、次のパッケージに含まれています。
 
-* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git For Windows](https://git-for-windows.github.io/)
-* [MobaXterm](http://mobaxterm.mobatek.net/)
+* [MobaXterm](https://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
 また、[Azure Cloud Shell](../../cloud-shell/overview.md) の Bash で入手できる SSH ユーティリティを使用することもできます。 
@@ -62,7 +62,7 @@ ssh-keygen -t rsa -b 2048
 
 ### <a name="create-ssh-keys-with-puttygen"></a>PuTTYgen で SSH キーを作成する
 
-GUI ベースのツールを使って SSH キーを作成する場合は、[PuTTY のダウンロード パッケージ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)に含まれる PuTTYgen キー ジェネレーターを使うことができます。 
+GUI ベースのツールを使って SSH キーを作成する場合は、[PuTTY のダウンロード パッケージ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)に含まれる PuTTYgen キー ジェネレーターを使うことができます。 
 
 PuTTYgen で SSH RSA キー ペアを作成するには:
 
@@ -72,7 +72,7 @@ PuTTYgen で SSH RSA キー ペアを作成するには:
 
 4. 空白領域内でマウスを動かすと、キーがランダムになります。
 
-5. 公開キーが生成された後、必要に応じて、パスフレーズを入力して確認します。 プライベート SSH キーを使用して VM の認証を受けると、パスフレーズの入力を求められます。 パスフレーズを使用しない場合、だれかが秘密キーを入手すると、その人物はそのキーを使用するすべての VM またはサービスにログインできるようになります。 そのため、パスフレーズを作成することをお勧めします。 ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
+5. 公開キーが生成された後、必要に応じて、パスフレーズを入力して確認します。 プライベート SSH キーを使用して VM の認証を受けると、パスフレーズの入力を求められます。 パスフレーズを使用しない場合、だれかが秘密キーを入手すると、その人物はそのキーを使用するすべての VM またはサービスにサインインできるようになります。 そのため、パスフレーズを作成することをお勧めします。 ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
 
 6. 公開キーがウィンドウの上部に表示されます。 Linux VM を作成するときに、この公開キー全体をコピーし、Azure portal または Azure Resource Manager テンプレートに貼り付けます。 **[Save public key]\(公開キーの保存\)** をクリックして、公開キーを自分のコンピューターに保存することもできます。
 
@@ -104,11 +104,13 @@ Windows から Linux VM に SSH 接続する方法の 1 つは、SSH クライ�
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-キー ペアを作成するときにパスフレーズを構成した場合は、ログイン プロセス中に入力を求められたら、そのパスフレーズを入力します。
+キー ペアを作成するときにパスフレーズを構成した場合は、サインイン プロセス中に入力を求められたら、そのパスフレーズを入力します。
+
+VM が Just-In-Time アクセス ポリシーを使用している場合、VM に接続するにはアクセス権を要求する必要があります。 Just-In-Time ポリシーの詳細については、[Just in Time ポリシーを使用した仮想マシン アクセスの管理](../../security-center/security-center-just-in-time.md)に関するページを参照してください。
 
 ### <a name="connect-with-putty"></a>PuTTY を使用して接続する
 
-[PuTTY のダウンロード パッケージ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)をインストールし、前に PuTTY の秘密キー (.ppk) ファイルを生成した場合は、PuTTY を使って Linux VM に接続することができます。
+[PuTTY のダウンロード パッケージ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)をインストールし、前に PuTTY の秘密キー (.ppk) ファイルを生成した場合は、PuTTY を使って Linux VM に接続することができます。
 
 1. PuTTY を起動します。
 

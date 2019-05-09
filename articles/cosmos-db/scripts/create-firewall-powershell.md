@@ -1,24 +1,26 @@
 ---
 title: Azure PowerShell スクリプト - Azure Cosmos DB のファイアウォールを作成する
 description: Azure PowerShell サンプル スクリプト - Azure Cosmos DB のファイアウォールを作成する
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.custom: mvc
+ms.subservice: cosmosdb-sql
 ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/10/2017
-ms.openlocfilehash: 013afdbcde94ef7b5224408b7643037051083df4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: ce6c87c9775552ad747701ae48f72f37e5943d3d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955022"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496056"
 ---
 # <a name="azure-cosmos-db-create-a-firewall-using-powershell"></a>Azure Cosmos DB は:PowerShell を使用してファイアウォールを作成する
 
 この PowerShell サンプル スクリプトでは、任意の種類の Azure Cosmos DB API アカウントのファイアウォールを作成します。 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -31,19 +33,19 @@ ms.locfileid: "52955022"
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
-| [Set-AzureRMResource](https://docs.microsoft.com/powershell/module/azurerm.resources/set-azurermresource?view=azurermps-3.8.0) | データベース アカウントに変更を加えます。 |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
+| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | データベース アカウントに変更を加えます。 |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
 ## <a name="next-steps"></a>次の手順

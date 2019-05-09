@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: cd28eef249ae6b07b9e3f74b80c32a4b53370215
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436741"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797844"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Monitor での IIS ログを収集する
-インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-collection.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
+インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-platform.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
 
 ![IIS ログ](media/data-sources-iis-logs/overview.png)
 
@@ -67,14 +67,14 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 ## <a name="log-queries-with-iis-logs"></a>IIS ログでのログ クエリ
 次の表は、IIS ログ レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| Query | 説明 |
 |:--- |:--- |
 | W3CIISLog |IIS ログのすべてのレコード。 |
 | W3CIISLog &#124; where scStatus==500 |戻り状態が 500 であるすべての IIS ログ レコード。 |
 | W3CIISLog &#124; summarize count() by cIP |クライアントの IP アドレス別の IIS ログ エントリの数。 |
-| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |ホスト www.contoso.com の URL 別の IIS ログ エントリの数。 |
+| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |ホスト www\.contoso.com の URL 別の IIS ログ エントリの数。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |各 IIS コンピューターによって受信された合計バイト数。 |
 
 ## <a name="next-steps"></a>次の手順
 * 分析のために他の[データ ソース](agent-data-sources.md)を収集するように Azure Monitor を構成します。
-* [ログ クエリ](../../log-analytics/log-analytics-queries.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

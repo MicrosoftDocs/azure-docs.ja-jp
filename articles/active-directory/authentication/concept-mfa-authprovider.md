@@ -1,21 +1,22 @@
 ---
-title: Azure Multi-Factor Auth プロバイダーをいつどのように使用するか
+title: Azure Multi-Factor Auth プロバイダーをいつどのように使用するか - Azure Active Directory
 description: どのようなときに Azure MFA 認証プロバイダーを使用するかについて説明します。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 8e77a33667bd6794f667348958e0edb9c6a8fb0d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dfababeae15ee18a140042d9a6ca10be40e41339
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094979"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310644"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication プロバイダーをいつ使用するか
 
@@ -26,13 +27,11 @@ Azure Multi-Factor Authentication プロバイダーは、Azure Multi-Factor Aut
 社内の全ユーザーを対象としたライセンスを所有している場合、Azure Multi-Factor Auth プロバイダーは必要ありません。 Azure Multi-Factor Authentication プロバイダーの作成が必要になるのは、ライセンスが割り当てられていないユーザーに追加で 2 段階認証を適用しなければならないケースのみです。
 
 > [!NOTE]
-> 2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できます。 多要素認証認証は、今後も Azure AD Premium ライセンスで利用できます。
+> 2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できます。 多要素認証は、今後も Azure AD Premium ライセンスの一機能としてご利用いただけます。
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Azure MFA SDK に関する注意事項
 
-SDK をダウンロードする場合は、Azure 多要素認証プロバイダーが必要です。 この SDK は非推奨となっており、新規のお客様に対するサポートは現在行っておりません。正常に機能するのは、2018 年 11 月 14 日までとなります。 その後は、SDK への呼び出しは失敗します。
-
-SDK をダウンロードするには、Azure MFA、AAD Premium、またはその他のバンドル ライセンスを所有していても、Azure Multi-Factor Auth プロバイダーを作成する必要があります。 既にライセンスがある状態で、SDK のダウンロードのために Azure 多要素認証プロバイダーを作成する場合には、プロバイダーの作成に **[有効化されたユーザーごと]** モデルを使用してください。 プロバイダーを作成したら、Azure MFA、Azure AD Premium、またはその他のバンドル ライセンスが保存されているディレクトリにリンクします。 この構成により、所有しているライセンス数よりも 2 段階認証を実行する一意のユーザーの数が多い場合でも、適切な課金が行われます。
+SDK は廃止となり、2018 年 11 月 14 日までのみの作動となることにご注意ください。 その後は、SDK への呼び出しは失敗します。
 
 ## <a name="what-is-an-mfa-provider"></a>MFA プロバイダーとは
 

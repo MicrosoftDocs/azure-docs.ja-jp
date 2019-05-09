@@ -3,29 +3,30 @@ title: 2 段階認証の概要 - Azure Active Directory | Microsoft Docs
 description: 2 段階認証を設定および使用する方法について学習します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: de5c9810b234a93643321d1ba299a66a3ae965a3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 48a38b91cd17e2107fe85bfc77da8ead86196173
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42022929"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174046"
 ---
 # <a name="two-step-verification-overview"></a>2 段階認証の概要
-
->[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
 組織によってお客様のアカウントに対して追加のセキュリティ確認が加えられたという内容のメールを IT 部門のだれかまたは上司から受け取りました。 これはどういう意味でしょうか。 これは、組織が、あなたがサインインするときに本人であることを確認する追加の手順を採用していることを意味します。 2 段階認証とも呼ばれるこの追加の確認は、ユーザー名、パスワード、携帯端末または携帯電話の組み合わせによって行われます。
 
 2 段階認証では、ユーザーが知っているものとユーザーが所有するものの 2 つの形式の認証を使用するため、パスワードだけよりも安全性が高くなります。 ユーザーが知っているものは、パスワードです。 ユーザーが所有するものは、ユーザーが通常携帯している電話やデバイスです。 2 段階認証は、悪意のあるハッカーによるなりすましを防ぐのに役立ちます。なぜなら、悪意のあるハッカーがあなたのパスワードを知っていたとしても、あなたのデバイスを持っていない可能性も高いためです。
+
+>[!Important]
+>このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
 |記事 |説明 |
 |------|------------|

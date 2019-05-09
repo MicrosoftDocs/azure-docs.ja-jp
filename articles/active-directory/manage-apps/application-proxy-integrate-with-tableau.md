@@ -2,22 +2,23 @@
 title: Azure Active Directory アプリケーション プロキシと Tableau | Microsoft Docs
 description: Azure Active Directory (Azure AD) のアプリケーション プロキシを使用して、Tableau 配置にリモート アクセスを提供する方法を説明します。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 0ad58d4759d8532ab947043c20cc1060782c6d78
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c5d80381815524658d91067ee880eba47c394058
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138672"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783555"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory アプリケーション プロキシと Tableau 
 
@@ -49,7 +50,7 @@ Tableau を発行するには、Azure Portal でアプリケーションを発�
 **アプリケーションを発行する**: 
 
 
-1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。 
+1. アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。 
 
 2. **[Azure Active Directory] > [エンタープライズ アプリケーション]** を選択します。 
 

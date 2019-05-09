@@ -1,4 +1,4 @@
-﻿---
+---
 title: C# を使用して Azure で最初の永続関数を作成する
 description: Visual Studio を使用して Azure 永続関数を作成して発行します。
 services: functions
@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341050"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038159"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
 
 *Durable Functions* は、サーバーレス環境でステートフル関数を記述できる [Azure Functions](../functions-overview.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
 
-この記事では、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" の Durable Functions をローカルで作成してテストする方法を学習します。この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 の Azure 開発ワークロードの一部として利用できます。
+この記事では、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" の Durable Functions をローカルで作成してテストする方法を学習します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 の Azure 開発ワークロードの一部として利用できます。
 
 ![Azure で Durable Functions を実行する](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -30,7 +30,7 @@ ms.locfileid: "53341050"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Visual Studio 2017](https://azure.microsoft.com/downloads/) をインストールし、**Azure 開発**ワークロードもインストールされていることを確認します。
+* [Visual Studio 2017](https://azure.microsoft.com/downloads/) のインストール。 **Azure 開発**ワークロードもインストールされていることを確認します。
 
 * [最新の Azure Functions ツール](../functions-develop-vs.md#check-your-tools-version)があることを確認します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "53341050"
 
 ## <a name="create-a-function-app-project"></a>関数アプリ プロジェクトを作成する
 
-Visual Studio の Azure Functions プロジェクト テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースを管理、デプロイ、および共有するための論理ユニットとして関数をグループ化できます。
+Azure Functions テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースを管理、デプロイ、および共有するための論理ユニットとして関数をグループ化できます。
 
 1. Visual Studio で、**[ファイル]** メニューから **[新規]** > **[プロジェクト]** の順に選択します。
 
@@ -55,14 +55,14 @@ Visual Studio の Azure Functions プロジェクト テンプレートでは、
     | Setting      | 推奨値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
     | **バージョン** | Azure Functions 2.x <br />(.NET Core) | .NET Core をサポートする Azure Functions のバージョン 2.x ランタイムを使用する関数プロジェクトを作成します。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../functions-versions.md)」をご覧ください。   |
-    | **テンプレート** | Empty | これで空の関数アプリが作成されます。 |
+    | **テンプレート** | Empty | 空の関数アプリを作成します。 |
     | **ストレージ アカウント**  | ストレージ エミュレーター | Durable Functions の状態管理にはストレージ アカウントが必要です。 |
 
-4. **[OK]** をクリックして、空の関数プロジェクトを作成します。
+4. **[OK]** をクリックして、空の関数プロジェクトを作成します。 このプロジェクトには、関数を実行するために必要な基本的な構成ファイルがあります。
 
 ## <a name="add-functions-to-the-app"></a>アプリに関数を追加する
 
-Visual Studio で空の関数アプリ プロジェクトが作成されます。  これにはアプリに必要な基本的な構成ファイルが含まれていますが、関数はまだ含まれていません。  プロジェクトに Durable Functions テンプレートを追加する必要があります。
+次の手順では、テンプレートを使用してプロジェクト内に永続関数のコードを作成します。
 
 1. Visual Studio でプロジェクトを右クリックし、**[追加]** > **[新しい Azure 関数]** を選択します。
 
@@ -74,11 +74,13 @@ Visual Studio で空の関数アプリ プロジェクトが作成されます�
 
     ![Durable Functions Orchestration テンプレートを選択する](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
-新しい Durable Functions がアプリに追加されます。  新しいファイルを開いて内容を表示します。  この Durable Functions は、単純な関数チェーンの例です。  
+新しい永続関数がアプリに追加されます。  新しい .cs ファイルを開いて内容を表示します。 この永続関数は、次のメソッドを使用した単純な関数チェーンの例です。  
 
-* `RunOrchestrator` メソッドは、オーケストレーター関数に関連付けられています。  この関数が起動し、一覧が作成され、3 つの関数呼び出しの結果が一覧に追加されます。  3 つの関数呼び出しが完了すると、一覧が返されます。  呼び出す関数は `SayHello` メソッドです (既定では `<NameOfFile>_Hello` と呼ばれます)。
-* `SayHello` 関数から hello が返されます。
-* `HttpStart` メソッドには、オーケストレーションのインスタンスを開始する関数を記述します。  これは、オーケストレーターの新しいインスタンスを開始し、チェック状態の応答を返す [HTTP トリガー](../functions-bindings-http-webhook.md)に関連付けられています。
+| 方法 | FunctionName | 説明 |
+| -----  | ------------ | ----------- |
+| **`RunOrchestrator`** | `<file-name>` | 持続的オーケストレーションを管理します。 このケースでは、オーケストレーションが起動し、一覧が作成され、3 つの関数呼び出しの結果が一覧に追加されます。  3 つの関数呼び出しが完了すると、一覧が返されます。 |
+| **`SayHello`** | `<file-name>_Hello` | 関数から hello が返されます。 これは、調整されるビジネス ロジックを含む関数です。 |
+| **`HttpStart`** | `<file-name>_HttpStart` | オーケストレーションのインスタンスを開始し、チェック状態の応答を返す、[HTTP によってトリガーされる関数](../functions-bindings-http-webhook.md)。 |
 
 関数プロジェクトと Durable Functions を作成できたので、この関数をローカル コンピューターでテストすることができます。
 
@@ -143,4 +145,4 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 Visual Studio を使用して、C# の Durable Functions アプリを作成して発行しました。
 
 > [!div class="nextstepaction"]
-> [Durable Functions の一般的なパターンについて学習する。](durable-functions-overview.md)
+> [Durable Functions の一般的なパターンについて学習する。](durable-functions-concepts.md)

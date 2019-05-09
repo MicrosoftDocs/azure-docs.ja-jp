@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 73ac2072a087f0931b6c9c776d3ad0bfedb4320b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653800"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199530"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
 [Azure 仮想ネットワーク][1]内に Azure HDInsight Apache HBase クラスターを作成する方法について説明します。
@@ -50,7 +50,7 @@ ms.locfileid: "53653800"
 >
 >
 
-1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)にあります。
+1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)にあります。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. **[カスタム デプロイ]** ブレードで以下のプロパティを入力します。
@@ -64,7 +64,7 @@ ms.locfileid: "53653800"
    * **上記の使用条件に同意する**:(選択)
 3. **[購入]** をクリックします。 クラスターの作成には約 20 分かかります。 クラスターが作成されたら、ポータルのクラスター ブレードをクリックして開きます。
 
-チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 クラスターの削除手順については、「[Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](../hdinsight-administer-use-management-portal.md#delete-clusters)」を参照してください。
+チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 クラスターの削除手順については、「[Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](../hdinsight-administer-use-portal-linux.md#delete-clusters)」を参照してください。
 
 新しい HBase クラスターの使用を開始する場合は、[HDInsight の Apache Hadoop での Apache HBase の使用開始](./apache-hbase-tutorial-get-started-linux.md)に関する記事に記載されている手順を使用できます。
 
@@ -90,9 +90,9 @@ ms.locfileid: "53653800"
      2. ページの上部にある **[ホスト]** をクリックします。
    * Curl を使用した REST の呼び出し:
 
-    ```bash
+     ```bash
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
-    ```
+     ```
 
      返された JavaScript Object Notation (JSON) データで、"host_name" エントリを見つけます。 これには、クラスターのノードの FQDN が含まれています。 例: 
 
@@ -105,7 +105,7 @@ ms.locfileid: "53653800"
 
      次の Azure PowerShell スクリプトを使用して、DNS サフィックスを返すことができる **Get-ClusterDetail** 関数を登録します。
 
-    ```powershell
+     ```powershell
         function Get-ClusterDetail(
             [String]
             [Parameter( Position=0, Mandatory=$true )]
@@ -195,13 +195,13 @@ ms.locfileid: "53653800"
                 Write-host $Suffix
             }
         }
-    ```
+     ```
 
      Azure PowerShell スクリプトを実行した後、次のコマンドで **Get-ClusterDetail** 関数を使用して DNS サフィックスを返します。 このコマンドを使用する場合は、HDInsight HBase のクラスター名、管理者名、および管理者のパスワードを指定します。
 
-    ```powershell
+     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
-    ```
+     ```
 
      このコマンドは、DNS サフィックスを返します。 たとえば、 **yourclustername.b4.internal.cloudapp.net**です。
 

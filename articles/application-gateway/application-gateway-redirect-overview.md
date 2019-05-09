@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
-ms.openlocfilehash: e6352873ea055965b433fbf3e6e46162890e5fec
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d05d509b67fd26c958e0e2fa2bbd877db26e6521
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200707"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232211"
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway のリダイレクトの概要
 
@@ -35,4 +35,4 @@ HTTP を HTTPS に自動的にリダイレクトして、アプリケーショ�
 
 ### <a name="next-steps"></a>次の手順
 
-[アプリケーション ゲートウェイに URL リダイレクトを構成する](application-gateway-configure-redirect-powershell.md)
+[アプリケーション ゲートウェイで HTTP から HTTPS へのリダイレクトを構成する](redirect-http-to-https-portal.md)

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: d5bbdac74b0afa745993dd848ef73352d996e8b6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f3b4e6cd18a362775443bb296560a076aaa1497d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315062"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883629"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>例:Text Translate API を使用してカスタム スキルを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "53315062"
 
 + Azure 開発のワークロードを備えた、[Visual Studio 2017 バージョン 15.5](https://www.visualstudio.com/vs/) 以降をインストールします。
 
-## <a name="create-an-azure-function"></a>Azure 関数の作成
+## <a name="create-an-azure-function"></a>Azure Function の作成
 
 この例では Azure 関数を使用して Web API をホストしていますが、必須ではありません。  [コグニティブ スキルのインターフェイス要件](cognitive-search-custom-skill-interface.md)を満たしていれば、どのような方法を使用してもかまいません。 ただし、Azure Functions を使用すると、カスタム スキルを簡単に作成できます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "53315062"
 
 1. [新しいプロジェクト] ダイアログで、**[インストール済み]** を選択し、**[Visual C#]** > **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、**[OK]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
-1. **[Azure Functions v2 (.Net Core)]** を選択します。 バージョン 1 でも同様の手順を実行できますが、以下に記述したコードは、v2 テンプレートに基づいています。
+1. **[Azure Functions v2 (.NET Core)]** を選択します。 バージョン 1 でも同様の手順を実行できますが、以下に記述したコードは、v2 テンプレートに基づいています。
 
 1. 種類として **[HTTP Trigger]\(HTTP トリガー\)** を選択します。
 
@@ -154,7 +154,7 @@ namespace TranslateFunction
 
 
         /// <summary>
-        /// Use Cognitive Service to translate text from one language to antoher.
+        /// Use Cognitive Service to translate text from one language to another.
         /// </summary>
         /// <param name="originalText">The text to translate.</param>
         /// <param name="toLanguage">The language you want to translate to.</param>

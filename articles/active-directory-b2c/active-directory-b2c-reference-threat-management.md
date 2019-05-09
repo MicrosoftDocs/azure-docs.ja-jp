@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でリソースやデータに対する脅威�
 description: Azure Active Directory B2C でのサービス拒否攻撃やパスワード攻撃を検出して軽減する手法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ee99e7346d438e81a0cd25f8c522838524732568
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.subservice: B2C
+ms.openlocfilehash: 65c74b7451c5a605ca8c2e866296c87c0320b730
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912851"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162924"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でリソースやデータに対する脅威を管理する
 

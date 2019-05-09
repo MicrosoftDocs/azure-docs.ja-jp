@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/17/2018
+ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4cfa25b8d32a37c4ccbf8a18f21a0e56a219b156
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 27102cd6b8e98b0f8b2b4940b92d4e4c4580a9cd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601646"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58904068"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows コンテナー (プレビュー) を使用して Azure App Service に ASP.NET アプリを移行する
 
@@ -33,7 +33,7 @@ ms.locfileid: "53601646"
 
 - <a href="https://hub.docker.com/" target="_blank">Docker Hub アカウントにサインアップする</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows をインストールする</a>。
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
+- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
 - **ASP.NET と Web 開発**ワークロードと **Azure の開発**ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 をインストールする</a>。 Visual Studio 2017 を既にインストールしている場合:
     - **[ヘルプ]** > **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
     - **[ツール]** > **[ツールと機能を取得]** の順にクリックし、Visual Studio にワークロードを追加します。
@@ -80,7 +80,7 @@ ms.locfileid: "53601646"
 [サポートされている親イメージ](app-service-web-get-started-windows-container.md#use-a-different-parent-image)を使用する必要があります。 `FROM` 行を次のコードに置き換えることで、親イメージを変更します。
 
 ```Dockerfile
-FROM microsoft/aspnet:4.7.1
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
 ファイルの末尾に次の行を追加し、ファイルを保存します。

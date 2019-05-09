@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 3cee083096584d30fb979aaf58bfdc2edf2e6c4f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 663283c4dff16194dea78afbf5dd393f1fa833b1
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971650"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823809"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -42,22 +42,27 @@ SendGrid バインディングは [Microsoft.Azure.WebJobs.Extensions.SendGrid](
 * [C#](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
+* [Java](#java-example)
 
 ### <a name="c-example"></a>C# の例
 
 次の例は、Service Bus キュー トリガーと SendGrid 出力バインディングを使用する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
+#### <a name="synchronous-c-example"></a>同期 C# の例:
+
 ```cs
 [FunctionName("SendEmail")]
 public static void Run(
-    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] OutgoingEmail email,
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
     [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
 {
-    message = new SendGridMessage();
-    message.AddTo(email.To);
-    message.AddContent("text/html", email.Body);
-    message.SetFrom(new EmailAddress(email.From));
-    message.SetSubject(email.Subject);
+var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+
+message = new SendGridMessage();
+message.AddTo(emailObject.To);
+message.AddContent("text/html", emailObject.Body);
+message.SetFrom(new EmailAddress(emailObject.From));
+message.SetSubject(emailObject.Subject);
 }
 
 public class OutgoingEmail
@@ -66,6 +71,33 @@ public class OutgoingEmail
     public string From { get; set; }
     public string Subject { get; set; }
     public string Body { get; set; }
+}
+```
+#### <a name="asynchronous-c-example"></a>非同期 C# の例:
+
+```cs
+[FunctionName("SendEmail")]
+public static async void Run(
+ [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
+ [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] IAsyncCollector<SendGridMessage> messageCollector)
+{
+ var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+
+ var message = new SendGridMessage();
+ message.AddTo(emailObject.To);
+ message.AddContent("text/html", emailObject.Body);
+ message.SetFrom(new EmailAddress(emailObject.From));
+ message.SetSubject(emailObject.Subject);
+ 
+ await messageCollector.AddAsync(message);
+}
+
+public class OutgoingEmail
+{
+ public string To { get; set; }
+ public string From { get; set; }
+ public string Subject { get; set; }
+ public string Body { get; set; }
 }
 ```
 
@@ -128,6 +160,33 @@ public class Message
     public string Subject { get; set; }
     public string Content { get; set; }
 }
+```
+
+### <a name="java-example"></a>Java の例
+
+次の例では、SendGrid 出力バインディングを使用してメールを送信するために、[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)の `@SendGridOutput` 注釈を使用しています。
+
+```java
+@FunctionName("SendEmail")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @SendGridOutput(
+                name = "email", dataType = "String", apiKey = "SendGridConnection", to = "test@example.com", from = "test@example.com",
+                subject= "Sending with SendGrid", text = "Hello from Azure Functions"
+                ) OutputBinding<String> email
+            )
+    {
+        String name = request.getBody().orElse("World");
+
+        final String emailBody = "{\"personalizations\":" +
+                                    "[{\"to\":[{\"email\":\"test@example.com\"}]," +
+                                    "\"subject\":\"Sending with SendGrid\"}]," +
+                                    "\"from\":{\"email\":\"test@example.com\"}," +
+                                    "\"content\":[{\"type\":\"text/plain\",\"value\": \"Hello" + name + "\"}]}";
+
+        email.setValue(emailBody);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+    }
 ```
 
 ### <a name="javascript-example"></a>JavaScript の例

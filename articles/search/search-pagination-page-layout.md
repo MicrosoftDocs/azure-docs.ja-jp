@@ -1,38 +1,39 @@
 ---
-title: 検索結果ページでのページ項目の表示方法 - Azure Search
-description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search の改ページ。
+title: 検索結果を操作する方法 - Azure Search
+description: Azure Search において、検索結果の構成と並べ替え、ドキュメント数の取得、および検索結果へのコンテンツ ナビゲーションの追加を行います。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
-ms.devlang: rest-api
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/29/2016
+ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f36dbb72e2518f7e3a27ef3aadec85312d751c2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 7a4423449931b74afa15ca238c611f54b071402f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309343"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339297"
 ---
-# <a name="how-to-page-search-results-in-azure-search"></a>Azure Search でのページ検索結果の表示方法
-この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを、Azure Search サービス REST API を使用して実装する方法を説明します。
+# <a name="how-to-work-with-search-results-in-azure-search"></a>Azure Search での検索結果の操作方法
+この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを実装する方法のガイダンスを提供します。 データまたは情報を検索結果に表示するためのページ関連オプションは、Azure Search サービスに送信される [検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)の要求によって指定します。 
 
-以下に示すべての例において、データまたは情報を検索結果ページに表示するためのページ関連オプションは、Azure Search サービスに送信される [検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 要求で指定します。 要求には、GET コマンド、パス、要求内容をサービスに伝えるクエリ パラメーター、および応答の作成方法が含まれます。
+REST API では、要求には GET コマンド、パス、要求内容をサービスに伝えるクエリ パラメーター、および応答の作成方法が含まれます。 .NET SDK では、同等の API は[DocumentSearchResult クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet)です。
+
+複数のコード サンプルに Web フロントエンド インターフェイスが含まれており、次でも見つけることができます: [ニューヨーク市のジョブ デモ アプリ](https://azjobsdemo.azurewebsites.net/)および [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
-> 有効な要求には、サービス URL とパスや HTTP 動詞、`api-version` などがあります。 簡潔にまとめ、改ページに関連する構文だけに焦点を当てられるように例の記載を省きました。 要求構文の詳細については、「 [Azure Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice) 」ドキュメントを参照してください。
-> 
-> 
+> 有効な要求には、サービス URL とパスや HTTP 動詞、`api-version` などがあります。 簡潔にまとめ、改ページに関連する構文だけに焦点を当てられるように例の記載を省きました。 要求の構文について詳しくは、[Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice) に関する記事をご覧ください。
+>
 
 ## <a name="total-hits-and-page-counts"></a>合計ヒット数とページ数
 クエリから返される検索結果の合計数を表示し、それらの結果を一定の数ごとにページにまとめて返すことは、ほぼすべての検索ページでの基本機能です。
 
 ![][1]
 
-Azure Search では、`$count`、`$top`、および `$skip` のパラメーターを使用すると、これらの値が返されます。 次に示すのは、合計ヒット数のサンプル要求が `@OData.count`として返された例です。
+Azure Search では、`$count`、`$top`、および `$skip` のパラメーターを使用すると、これらの値が返されます。 次の例では、"onlineCatalog" というインデックス上での合計ヒット数のサンプル要求が `@OData.count` として返されていることがわかります。
 
         GET /indexes/onlineCatalog/docs?$count=true
 
@@ -70,7 +71,7 @@ Azure Search では、 `$select` と参照コマンドを使用してこれら�
 
  ![][3]
 
-Azure Search では、`"Sortable": true.` とインデックス付けされたすべてのフィールドで、`$orderby` 式に基づいた並べ替えが実行されます。
+Azure Search では、`"Sortable": true.` としてインデックス付けされたすべてのフィールドにおいて、並べ替えは `$orderby` 式に基づきます。`$orderby` 句は OData 式です。 構文について詳しくは、[filters 句と order-by 句のための OData 式の構文](query-odata-filter-orderby-syntax.md)に関する記事をご覧ください。
 
 関連性は、スコアリング プロファイルに深くかかわっています。 既定のスコアリングを使用すると、すべての結果がテキスト分析と統計情報に基づいて順に並べられます。このとき、検索用語との一致内容が多い、あるいは一致レベルが高いドキュメントに高いスコアが付けられます。
 
@@ -83,7 +84,7 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
  ![][5]
 
 > [!NOTE]
-> 既定のスコアリングは多くのシナリオに使用可能ですが、カスタムのスコアリング プロファイルに基づいた関連性を使用することをお勧めします。 カスタムのスコアリング プロファイルを使用すると、ユーザーのビジネスに有益な項目をブーストすることができます。 詳細は、「 [スコアリング プロファイルの追加](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) 」を参照してください。 
+> 既定のスコアリングは多くのシナリオに使用可能ですが、カスタムのスコアリング プロファイルに基づいた関連性を使用することをお勧めします。 カスタムのスコアリング プロファイルを使用すると、ユーザーのビジネスに有益な項目をブーストすることができます。 詳しくは、[スコアリング プロファイルの追加](index-add-scoring-profiles.md)に関する記事をご覧ください。 
 > 
 > 
 
@@ -91,7 +92,7 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
 検索ナビゲーションは結果ページによく使用され、ページの端または上部に表示される場合が多いです。 Azure Search では、ファセット ナビゲーションを使用すると、定義済みのフィルターに基づいた自動検索ができます。 詳細については、「 [Azure Search のファセット ナビゲーション](search-faceted-navigation.md) 」を参照してください。
 
 ## <a name="filters-at-the-page-level"></a>ページ レベルでのフィルター
-ソリューションの設計に、特定種類のコンテンツ (たとえば、ページ上部に売り場リストを表示させるオンライン ショッピング用アプリケーション) 専用の検索ページが組み込まれている場合、 **onClick** イベントとともにフィルター式を挿入すると、あらかじめフィルター処理された状態でページが開きます。 
+ソリューションの設計に、特定種類のコンテンツ (たとえば、ページ上部に売り場リストを表示させるオンライン ショッピング用アプリケーション) 専用の検索ページが組み込まれている場合、**onClick** イベントと共に[フィルター式](search-filters.md)を挿入すると、あらかじめフィルター処理された状態でページが開きます。 
 
 フィルターは、検索式が挿入されているかどうかにかかわらず送信できます。 たとえば、次の要求ではブランド名でフィルター処理され、それに一致するドキュメントのみが返されます。
 

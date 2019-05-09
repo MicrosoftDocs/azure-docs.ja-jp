@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning Service でカスタム割り当てポ�
 description: Azure IoT Hub Device Provisioning Service でカスタム割り当てポリシーを使用する方法
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/15/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+manager: philmea
+ms.openlocfilehash: f0eb2f7358e8fb1564275e1de510f302d2eef90b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340056"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500942"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -90,7 +90,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 このセクションでは、カスタム割り当てポリシーを使用する新しい登録グループを作成します。 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-security.md#x509-certificates)を使用することを検討してください。
 
-1. [Azure portal](http://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
 
 2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
 
@@ -318,7 +318,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 1. **KEY** の値を、前に書き留めた**主キー**で置き換えます。
 
-    ```PowerShell
+    ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
     $REG_ID1='breakroom499-contoso-tstrsd-007'
@@ -334,7 +334,7 @@ Windows ベースのワークステーションを使用している場合は、
     echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
     ```
 
-    ```PowerShell
+    ```powershell
     breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
@@ -351,23 +351,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 このセクションは、Windows ベースのワークステーション向けです。 Linux の例については、「[How to provision for multitenancy (マルチテナント用にプロビジョニングする方法)](how-to-provision-multitenant.md)」の VM のセットアップに関するセクションを参照してください。
 
-
-
-1. [CMake ビルド システム](https://cmake.org/download/) バージョン 3.11.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.11.4 の暗号化ハッシュを検証しています。
-
-    ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
-    True
-    ```
-    
-    この記事の執筆時点では、CMake サイトにバージョン 3.11.4 用に次のハッシュ値が一覧表示されていました。
-
-    ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
-    ```
+1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
@@ -376,7 +360,7 @@ Windows ベースのワークステーションを使用している場合は、
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+    この操作は、完了するまでに数分かかります。
 
 
 3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
@@ -555,7 +539,7 @@ Windows ベースのワークステーションを使用している場合は、
 ## <a name="next-steps"></a>次の手順
 
 - 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-- プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」を参照してください 
+- プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
 
 
 

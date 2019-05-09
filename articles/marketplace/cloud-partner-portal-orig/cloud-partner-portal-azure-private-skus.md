@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 519f0354f2a19e106ca1072170721b27357d173e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dcc8b9fef75ba13b607d7fdda5bd55cc710165b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849209"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837016"
 ---
 <a name="private-skus-and-plans"></a>プライベート SKU とプラン
 ============
 
-プライベート SKU を使用することで、SKU の利用を特定の顧客だけに制限することができます。 SKU がプライベートとしてマークされている場合、[Azure Marketplace](https://azuremarketplace.microsoft.com) や [Azure portal](http://portal.azure.com) などのパブリック カタログでは利用できません。 Azure portal では、SKU へのアクセス権を持つ顧客のみが閲覧できます。 また、プライベート プランへのアクセス権があることを示すメッセージが示される場合があります。
+プライベート SKU を使用することで、SKU の利用を特定の顧客だけに制限することができます。 SKU がプライベートとしてマークされている場合、[Azure Marketplace](https://azuremarketplace.microsoft.com) や [Azure portal](https://portal.azure.com) などのパブリック カタログでは利用できません。 Azure portal では、SKU へのアクセス権を持つ顧客のみが閲覧できます。 また、プライベート プランへのアクセス権があることを示すメッセージが示される場合があります。
 
 >[!NOTE]
 >パブリック SKU との競合を避けるために、プライベート SKU には新しい一意の SKU/プラン ID が必要です。

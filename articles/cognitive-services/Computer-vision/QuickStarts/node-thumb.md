@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と Node.js を使って、画像からサムネイルを生成します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cda00b7d8a9d7b597f5702769eb367a7fa93d2dc
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c10be50adbfae559873da87fffe4cdb10bc350ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875840"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-nodejs-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と Node.js を使用したサムネイルの生成
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`node` コマンドを使用してファイルを実行します。 たとえば、「 `node get-thumbnail.js` 」のように入力します。
 
-```nodejs
+```javascript
 'use strict';
 
 const request = require('request');

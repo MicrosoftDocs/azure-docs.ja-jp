@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning Service の概要 | Microsoft Docs
 description: Device Provisioning Service と IoT Hub を使用した Azure へのデバイス プロビジョニングについて説明します
 author: nberdy
 ms.author: nberdy
-ms.date: 12/05/2017
+ms.date: 04/04/2019
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: bad33376b9457eff25e3407c8e480cf7c0078a1d
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316416"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59051470"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。

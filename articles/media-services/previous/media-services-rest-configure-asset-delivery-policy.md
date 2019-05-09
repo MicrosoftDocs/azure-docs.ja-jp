@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: dea12d7188b716b4a832a33bb173201e68dbe20f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5e4e565b0b5272de19458617a9c4bd3509907cce
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189746"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295727"
 ---
 # <a name="configuring-asset-delivery-policies"></a>資産配信ポリシーの構成
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -258,7 +258,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Widevine DRM を使用してコンテンツを保護する場合は、WidevineLicenseAcquisitionUrl (値 7 が設定されています) を使用するように AssetDeliveryConfiguration の値を更新し、ライセンス配信サービスの URL を指定します。 次の AMS パートナーを使用して Widevine ライセンスを提供できます:[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
+Widevine DRM を使用してコンテンツを保護する場合は、WidevineLicenseAcquisitionUrl (値 7 が設定されています) を使用するように AssetDeliveryConfiguration の値を更新し、ライセンス配信サービスの URL を指定します。 次の AMS パートナーを使用して Widevine ライセンスを提供できます:[Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](https://ezdrm.com/)、[castLabs](https://castlabs.com/company/partners/azure/)。
 
 例:  
 
@@ -355,7 +355,7 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
         None = 0,
 
         /// <summary>
-        /// Use PlayReady License acquistion protocol
+        /// Use PlayReady License acquisition protocol
         ///
         </summary>
         PlayReadyLicense = 1,
@@ -367,7 +367,7 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
         BaselineHttp = 2,
 
         /// <summary>
-        /// Use Widevine License acquistion protocol
+        /// Use Widevine License acquisition protocol
         ///
         </summary>
         Widevine = 3

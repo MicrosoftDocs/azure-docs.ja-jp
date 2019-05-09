@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810272"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577900"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -53,7 +53,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
     ```
     search "[username goes here]"
     ```
-人間が判読できるユーザー名だけでなく、特定のユーザーまで直接追跡できる GUID も忘れずに検索してください。
+  人間が判読できるユーザー名だけでなく、特定のユーザーまで直接追跡できる GUID も忘れずに検索してください。
 * *デバイス ID*:ユーザー ID と同様、デバイス ID も "プライベート" と見なされる場合があります。 上に記載されているユーザー ID の場合と同じ方法を使用して、これが問題となるかもしれないテーブルを特定します。 
 * *カスタム データ*:Log Analytics では、カスタム ログとカスタム フィールド、[HTTP データ コレクター API](../../azure-monitor/platform/data-collector-api.md)、システムのイベント ログの一部として収集されるカスタム データなど、さまざまな方法による収集が可能です。 これらはすべてプライベート データを含んでいる可能性があり、そのようなデータが存在するかどうかを確認するために調べる必要があります。
 * *ソリューションによって収集されたデータ*: ソリューションのメカニズムは変更可能です。そのため、コンプライアンスを確保するために、ソリューションによって生成されたすべてのテーブルを確認することをお勧めします。
@@ -79,13 +79,16 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 
 ## <a name="how-to-export-and-delete-private-data"></a>プライベート データをエクスポートして削除する方法
 
-「[個人データの処理に関する戦略](#strategy-for-personal-data-handling)」セクションで先ほど述べたとおり、可能な場合はデータ収集ポリシーを再構築することが__強く__推奨されます。プライベート データの収集を無効にするか、難読化または匿名化を行ってください。そうでなければ、"プライベート" と見なされるデータがなくなるよう修正してください。 データの処理を行う場合、戦略を定義して自動化するコスト、顧客が問題なくデータを操作できるインターフェイスを作成するコスト、継続的なメンテナンス コストがまず、お客様とそのチームにかかります。 そのうえ、Log Analytics と Application Insights で多額の計算コストがかかります。また、クエリ API または消去 API の同時呼び出しが大量に発生して、Log Analytics 機能に対するすべての他の操作に悪影響が及ぶ可能性があります。 とは言え、プライベート データを収集する必要があるシナリオが有効な場合が確かにあります。 このような場合、このセクションで説明されているとおりデータを処理する必要があります。
+「[個人データの処理に関する戦略](#strategy-for-personal-data-handling)」セクションで先ほど述べたとおり、可能な場合はデータ収集ポリシーを再構築することが __強く__ 推奨されます。プライベート データの収集を無効にするか、難読化または匿名化を行ってください。そうでなければ、"プライベート" と見なされるデータがなくなるよう修正してください。 データの処理を行う場合、戦略を定義して自動化するコスト、顧客が問題なくデータを操作できるインターフェイスを作成するコスト、継続的なメンテナンス コストがまず、お客様とそのチームにかかります。 そのうえ、Log Analytics と Application Insights で多額の計算コストがかかります。また、クエリ API または消去 API の同時呼び出しが大量に発生して、Log Analytics 機能に対するすべての他の操作に悪影響が及ぶ可能性があります。 とは言え、プライベート データを収集する必要があるシナリオが有効な場合が確かにあります。 このような場合、このセクションで説明されているとおりデータを処理する必要があります。
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="view-and-export"></a>表示とエクスポート
 
 データ要求の表示とエクスポートの両方に、[Log Analytics クエリ API](https://dev.loganalytics.io/) または [Application Insights クエリ API](https://dev.applicationinsights.io/quickstart) を使用する必要があります。 必要な場合、ユーザーに提供するためにデータの形式を適切なものに変換するロジックを実装できます。 そのようなロジックをホストするには、[Azure Functions](https://azure.microsoft.com/services/functions/) が適しています。
+
+> [!IMPORTANT]
+>  消去操作の大部分は SLA よりもずっと短期間に完了する場合がありますが、使用されるデータ プラットフォームへの影響が大きいため、**消去操作の完了の正式な SLA は 30 日に設定されています**。 これは自動化されたプロセスです。操作処理の高速化を要求する方法はありません。
 
 ### <a name="delete"></a>削除
 

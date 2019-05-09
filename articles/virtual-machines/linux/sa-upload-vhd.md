@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 368fec658dd1f063c45f3d00d42a4549ca9dfd83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966505"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996749"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する
 
@@ -31,37 +31,37 @@ ms.locfileid: "46966505"
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VHD を Azure にアップロードするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#requirements)。
 
-[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
+[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`mystorageaccount`、および `mydisks` が含まれています。
 
-最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `WestUs` の場所に作成します。
+最初に、[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `WestUs` の場所に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-[az storage account create](/cli/azure/storage/account#az_storage_account_create) を使用して、仮想ディスクを保持するストレージ アカウントを作成します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
+[az storage account create](/cli/azure/storage/account) を使用して、仮想ディスクを保持するストレージ アカウントを作成します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用して、ストレージ アカウントのアクセス キーの一覧を表示します。 `key1` を書き留めておきます。
+[az storage account keys list](/cli/azure/storage/account/keys) を使用して、ストレージ アカウントのアクセス キーの一覧を表示します。 `key1` を書き留めておきます。
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-[az storage container create](/cli/azure/storage/container#az_storage_container_create) を使用して、取得したストレージ キーを使用してストレージ アカウント内にコンテナーを作成します。 次の例では、`key1` からのストレージ キーの値を使用して `mydisks` という名前のコンテナーを作成します。
+[az storage container create](/cli/azure/storage/container) を使用して、取得したストレージ キーを使用してストレージ アカウント内にコンテナーを作成します。 次の例では、`key1` からのストレージ キーの値を使用して `mydisks` という名前のコンテナーを作成します。
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
     --account-key key1 --name mydisks
 ```
 
-最後に、[az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) を使用して、作成したコンテナーに VHD をアップロードします。 `/path/to/disk/mydisk.vhd` の下で VHD のローカル パスを指定します。
+最後に、[az storage blob upload](/cli/azure/storage/blob) を使用して、作成したコンテナーに VHD をアップロードします。 `/path/to/disk/mydisk.vhd` の下で VHD のローカル パスを指定します。
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -69,7 +69,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
+[az vm create](/cli/azure/vm) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -85,7 +85,7 @@ az vm create --resource-group myResourceGroup --location westus \
 次の手順を完了するには、以下が必要です。
 
 * **.vhd ファイルにインストールされている Linux オペレーティング システム** - [動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (または[動作保証外のディストリビューションに関する情報](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください) を VHD 形式で仮想ディスクにインストールします。 VM と VHD を作成するツールはいくつかあります。
-  * [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](http://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要であれば `qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
+  * [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](https://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要であれば `qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
   * [Windows 10 上](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install)または [Windows Server 2012/2012 R2 上](https://technet.microsoft.com/library/hh846766.aspx)の Hyper-V を使用することもできます。
 
 > [!NOTE]
@@ -97,7 +97,7 @@ az vm create --resource-group myResourceGroup --location westus \
   * ストレージ アカウントと、カスタム ディスクおよび作成した VM の両方を保持するコンテナーを作成します。
   * VM をすべて作成したら、ディスクを安全に削除することができます。
 
-[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
+[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`mystorageaccount`、および `mydisks` が含まれています。
 
@@ -122,7 +122,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 > 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-リソース グループは、仮想ネットワークやストレージ記憶域など、仮想マシンをサポートするすべての Azure リソースを論理的にまとめます。 リソース グループの詳細については、[リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 カスタム ディスクをアップロードして VM を作成する前に、まず [az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成する必要があります。
+リソース グループは、仮想ネットワークやストレージ記憶域など、仮想マシンをサポートするすべての Azure リソースを論理的にまとめます。 リソース グループの詳細については、[リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 カスタム ディスクをアップロードして VM を作成する前に、まず [az group create](/cli/azure/group) を使用してリソース グループを作成する必要があります。
 
 次の例では、`myResourceGroup` という名前のリソース グループを `westus` の場所に作成します。
 
@@ -132,7 +132,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[az storage account create](/cli/azure/storage/account#az_storage_account_create) を使用して、カスタム ディスクと VM 用に、ストレージ アカウントを作成します。 カスタム ディスクから作成する、非管理対象ディスクを備えた VM はすべて、そのイメージと同じストレージ アカウント内に存在する必要があります。 
+[az storage account create](/cli/azure/storage/account) を使用して、カスタム ディスクと VM 用に、ストレージ アカウントを作成します。 カスタム ディスクから作成する、非管理対象ディスクを備えた VM はすべて、そのイメージと同じストレージ アカウント内に存在する必要があります。 
 
 次の例では、`mystorageaccount` という名前のストレージ アカウントを以前に作成したリソース グループに作成します。
 
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
-Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-account-manage.md#access-keys)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用します。
+Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-account-manage.md#access-keys)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys) を使用します。
 
 作成したストレージ アカウントのアクセス キーは次のようにして表示します。
 
@@ -164,7 +164,7 @@ info:    storage account keys list command OK
 以降の手順でストレージ アカウントとのやり取りに使用するため、 `key1` を書き留めます。
 
 ## <a name="create-a-storage-container"></a>ストレージ コンテナーを作成する
-ローカル ファイル システムを論理的に整理するためにさまざまなディレクトリを作成するのと同様に、ストレージ アカウント内にコンテナーを作成してディスクを整理します。 ストレージ アカウントには、任意の数のコンテナーを含めることができます。 コンテナーを作成するには、[az storage container create](/cli/azure/storage/container#az_storage_container_create) を使用します。
+ローカル ファイル システムを論理的に整理するためにさまざまなディレクトリを作成するのと同様に、ストレージ アカウント内にコンテナーを作成してディスクを整理します。 ストレージ アカウントには、任意の数のコンテナーを含めることができます。 コンテナーを作成するには、[az storage container create](/cli/azure/storage/container) を使用します。
 
 次の例では、`mydisks` という名前のコンテナーを作成します。
 
@@ -175,7 +175,7 @@ az storage container create \
 ```
 
 ## <a name="upload-vhd"></a>VHD をアップロードする
-次に、[az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) を使用してカスタム ディスクをアップロードします。 カスタム ディスクをアップロードし、ページ BLOB として保存します。
+次に、[az storage blob upload](/cli/azure/storage/blob) を使用してカスタム ディスクをアップロードします。 カスタム ディスクをアップロードし、ページ BLOB として保存します。
 
 アクセス キー、前の手順で作成したコンテナー、ローカル コンピューター上のカスタム ディスクへのパスの順に指定します。
 
@@ -186,9 +186,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>VM の作成
-非管理対象ディスクで VM を作成するには、[az vm create](/cli/azure/vm#az_vm_create) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
+非管理対象ディスクで VM を作成するには、[az vm create](/cli/azure/vm) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
 
-カスタム ディスクをポイントするには、[az vm create](/cli/azure/vm#az_vm_create) を使用して `--image` パラメーターを指定します。 `--storage-account` は、カスタム ディスクが保存されているストレージ アカウントと必ず一致させます。 カスタム ディスクと同じコンテナーを VM の格納先として使用する必要はありません。 カスタム ディスクをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
+カスタム ディスクをポイントするには、[az vm create](/cli/azure/vm) を使用して `--image` パラメーターを指定します。 `--storage-account` は、カスタム ディスクが保存されているストレージ アカウントと必ず一致させます。 カスタム ディスクと同じコンテナーを VM の格納先として使用する必要はありません。 カスタム ディスクをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
 
 次の例では、`myVM` という名前の VM をカスタム ディスクから作成します。
 
@@ -226,7 +226,7 @@ Azure Resource Manager のテンプレートは、ビルドする環境を定義
 
 [この既存のテンプレートを使用してカスタム イメージから VM を作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)するか、[独自の Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)に関するページを確認できます。 
 
-テンプレートを構成したら、[az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して VM を作成します。 `--template-uri` パラメーターを使用して JSON テンプレートの URI を指定します。
+テンプレートを構成したら、[az group deployment create](/cli/azure/group/deployment) を使用して VM を作成します。 `--template-uri` パラメーターを使用して JSON テンプレートの URI を指定します。
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \

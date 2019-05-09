@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 58f4827910d863aef14171574d40e4b3acfc04d9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d4245ce35cfc1e3aa0ba9ee9307315c9a999b5ff
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498677"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722043"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "52498677"
 
 ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。 これらは、実行時に発生する問題を診断するのに便利です。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="whichServices"></a>サービス
@@ -48,7 +48,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
 
-> [!NOTE]
+> [!NOTE]  
 > [Apache Ambari](https://ambari.apache.org/) がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。 具体的な手順については、「[Apache Ambari の使用](#using-apache-ambari)」セクションを参照してください。
 
 ### <a name="enable-heap-dumps"></a>ヒープ ダンプを有効にする
@@ -59,7 +59,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 **+** は、このオプションが有効になっていることを示します。 既定では無効になっています。
 
-> [!WARNING]
+> [!WARNING]  
 > ヒープ ダンプは、ダンプ ファイルが大きくなる可能性があるため、既定では HDInsight の Hadoop サービスで無効になっています。 トラブルシューティングのために有効にした場合は、問題を再現してダンプ ファイルを収集したら、忘れずに無効にしてください。
 
 ### <a name="dump-location"></a>ダンプの場所
@@ -76,7 +76,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     -XX:OnOutOfMemoryError=/path/to/script
 
-> [!NOTE]
+> [!NOTE]  
 > Apache Hadoop は分散システムなので、使用するスクリプトは、サービスを実行しているクラスター内のすべてのノードに配置する必要があります。
 > 
 > また、スクリプトはサービスが実行するアカウントからアクセスできる場所にあり、実行権限を提供する必要もあります。 たとえば、スクリプトを `/usr/local/bin` に保存し、`chmod go+rx /usr/local/bin/filename.sh` を使用して読み取りと実行権限を付与できます。
@@ -89,7 +89,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     メッセージが表示されたら、HTTP のアカウント名 (既定値: admin) とクラスターのパスワードを使用してサイトを認証します。
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ambari によって、ユーザー名とパスワードの入力が 2 回求められる場合があります。 その場合は、同じアカウント名とパスワードを入力してください。
 
 2. 左側の一覧を使用して、変更するサービス領域を選択します。 たとえば、 **[HDFS]** です。 中央の領域で、 **[Configs]** タブを選択します。
@@ -104,7 +104,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > マップまたは削減の子プロセスのヒープ ダンプが有効になっている場合は、**mapreduce.admin.map.child.java.opts** と **mapreduce.admin.reduce.child.java.opts** というフィールドを探します。
 
     **[保存]** ボタンを押して、変更を保存します。 変更を説明する短いメモを入力できます。
@@ -121,7 +121,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     ![[すべて再起動] エントリ](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > **[再起動]** ボタンのエントリは、サービスによって異なる場合があります。
 
 8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。

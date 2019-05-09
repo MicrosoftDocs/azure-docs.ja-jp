@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: azure
 ms.devlang: ''
-ms.topic: ''
+ms.topic: overview
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 4ced3aa9b7d37543b4942bbfa9a5605058a614d8
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014737"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59051172"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -169,7 +169,7 @@ Azure Portal を利用したリソースの作成、管理、削除に加え、P
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell は、Azure を管理するためのコマンドレットを提供するモジュール セットです。 コマンドレットを使用し、Azure サービスを作成、管理、削除できます。 コマンドレットを利用すれば、自動的かつ一貫性のある方法で繰り返しデプロイできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)」を参照してください。
+Azure PowerShell は、Azure を管理するためのコマンドレットを提供するモジュール セットです。 コマンドレットを使用し、Azure サービスを作成、管理、削除できます。 コマンドレットを利用すれば、自動的かつ一貫性のある方法で繰り返しデプロイできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)」を参照してください。
 
 #### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
 
@@ -481,9 +481,9 @@ Azure 仮想ネットワークはオンプレミス ネットワークに接続�
 
 - Azure Resource Manager のテンプレート
 
->**いつ使用するか**: Azure で VM を使用するときはいつでも、仮想ネットワークを使用します。 これにより、オンプレミスのデータ センターのように公開されるサブネットとプライベート サブネットに VM をセグメント化できます。
-
->**作業開始**: Azure 仮想ネットワークで仮想マシンをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しい仮想ネットワークを新しいリソース グループや既存のリソース グループにデプロイできます。 ポータルから新しい仮想マシンを作成するとき、既存の仮想ネットワークを選択するか、新しい仮想ネットワークを作成できます。 概要および「[Azure portal を使用した仮想ネットワークの作成](../../virtual-network/quick-create-portal.md)」。
+> **いつ使用するか**: Azure で VM を使用するときはいつでも、仮想ネットワークを使用します。 これにより、オンプレミスのデータ センターのように公開されるサブネットとプライベート サブネットに VM をセグメント化できます。
+> 
+> **作業開始**: Azure 仮想ネットワークで仮想マシンをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しい仮想ネットワークを新しいリソース グループや既存のリソース グループにデプロイできます。 ポータルから新しい仮想マシンを作成するとき、既存の仮想ネットワークを選択するか、新しい仮想ネットワークを作成できます。 概要および「[Azure portal を使用した仮想ネットワークの作成](../../virtual-network/quick-create-portal.md)」。
 
 ### <a name="access-and-security-for-virtual-networks"></a>仮想ネットワークのアクセスとセキュリティ
 

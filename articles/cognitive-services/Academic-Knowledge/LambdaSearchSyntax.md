@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API で利用できる Lambda 検索構文について説明します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 284f1d90f043e2634e143508e2ab0e98cd309f46
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 4d4c540e00794bfdf1df265457798cc13530c828
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902690"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873201"
 ---
 # <a name="lambda-search-syntax"></a>ラムダ検索の構文
 
@@ -33,7 +33,7 @@ FollowEdge(params string[] edgeTypes)
 > [!NOTE]
 > フォローするエッジの種類を気にしない場合は、単純に 2 つのノード間で *FollowEdge()* を省略します。クエリは、この 2 つのノード間で可能なすべてのエッジをウォークスルーします。
 
-*VisitNode()* を使用して、ノードに対して実行するトラバーサル アクションを指定できます。つまり、このノードで停止し、結果として現在のパスに戻るか、グラフの探索を続けるかを指定します。  列挙型 *Action* は、*Action.Return* および *Action.Continue* という 2 種類のアクションを定義します。 このような列挙型の値を *VisitNode()* に直接渡すか、ビットごとの And 演算子 '&' と組み合わせることができます。 2 つのアクションを組み合わせる場合、両方のアクションが実行されることを意味します。 注: アクションではビットごとの Or 演算子 '|' は使用しないでください。 使用すると、クエリが何もを返さずに終了する原因となります。 2 つの *FollowEdge()* 呼び出し間で *VisitNode()* をスキップすると、ノードに到達した後、クエリが無条件でグラフを探索します。
+*VisitNode()* を使用して、ノードに対して実行するトラバーサル アクションを指定できます。つまり、このノードで停止し、結果として現在のパスに戻るか、グラフの探索を続けるかを指定します。  列挙型 *Action* では、2 種類のアクションを定義しています。*Action.Return* と *Action.Continue* です。 このような列挙型の値を *VisitNode()* に直接渡すか、ビットごとの And 演算子 '&' と組み合わせることができます。 2 つのアクションを組み合わせる場合、両方のアクションが実行されることを意味します。 注: アクションではビットごとの Or 演算子 '|' は使用しないでください。 使用すると、クエリが何もを返さずに終了する原因となります。 2 つの *FollowEdge()* 呼び出し間で *VisitNode()* をスキップすると、ノードに到達した後、クエリが無条件でグラフを探索します。
 
 ```
 VisitNode(Action action, IEnumerable<string> select = null)
@@ -93,7 +93,7 @@ VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = n
 
 0.0 以上 1.0 未満の乱数を生成します。 この関数は、数値が *p* 以下の場合にのみ *true* を返します。
 
-*json* 検索と比較すると、"*ラムダ*" 検索の方が表現が豊かです。C# ラムダ式を直接使用して、クエリ パターンを指定できます。 次に 2 つの例を示します。
+*json* 検索と比較して、*ラムダ*検索は表現力に富んでいます。クエリのパターンを指定するために、C# ラムダ式を直接使用できます。 次に 2 つの例を示します。
 
 ```
 MAG.StartFrom(@"{

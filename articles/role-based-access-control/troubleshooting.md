@@ -1,6 +1,6 @@
 ---
-title: Azure での RBAC のトラブルシューティング | Microsoft Docs
-description: Azure ロールベースのアクセス制御 (RBAC) に関する問題を解決します。
+title: Azure リソースの RBAC のトラブルシューティング | Microsoft Docs
+description: Azure リソースのロールベースのアクセス制御 (RBAC) に関する問題を解決します。
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -11,20 +11,52 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 03/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: d85c49cc8533b88382de81f8f12fde7116afb69a
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223298"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407591"
 ---
-# <a name="troubleshoot-rbac-in-azure"></a>Azure での RBAC のトラブルシューティング
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
-この記事では、Azure portal でロールを使用するときに予想されることをユーザーが理解し、アクセスの問題を解決できるように、ロールベースのアクセス制御 (RBAC) に関する一般的な質問に回答します。
+この記事では、Azure portal でロールを使用するときに予想されることをユーザーが理解し、アクセスの問題を解決できるように、Azure リソースのロールベースのアクセス制御 (RBAC) に関する一般的な質問に回答します。
+
+## <a name="problems-with-rbac-role-assignments"></a>RBAC ロールの割り当てに関する問題
+
+- **[追加]** > **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
+- エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、代わりにロールをグループに割り当てて、ロールの割り当て数を減らしてみます。 Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。
+
+## <a name="problems-with-custom-roles"></a>カスタム ロールに関する問題
+
+- カスタム ロールを作成する方法の手順が必要な場合は、[Azure PowerShell](tutorial-custom-role-powershell.md) または [Azure CLI](tutorial-custom-role-cli.md) を使用するカスタム ロールのチュートリアルをご覧ください。
+- 既存のカスタム ロールを更新できない場合は、現在サインインしているユーザーに `Microsoft.Authorization/roleDefinition/write` アクセス許可を持つロール ([所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など) が割り当てられていることを確認します。
+- カスタム ロールを削除することができず、エラー メッセージ "ロールを参照している既存のロールの割り当てがあります (コード: RoleDefinitionHasAssignments)" が表示される場合は、カスタム ロールを使用しているロールの割り当てがまだ存在します。 それらのロール割り当てを削除してから、もう一度カスタム ロールを削除してみてください。
+- エラー メッセージ "ロールの定義の制限を超えました。 ロールの定義をこれ以上作成することはできません (コード: RoleDefinitionLimitExceeded)" が、新しいカスタム ロールを作成しようとすると表示される場合は、使用されていないすべてのカスタム ロールを削除します。 Azure では、テナントあたり最大 **2,000** 個のカスタム ロールをサポートします。
+- カスタム ロールを更新しようとすると、"このクライアントには、範囲 '/subscriptions/{subscriptionid}' に対してアクション 'Microsoft.Authorization/roleDefinitions/write' を実行する権限がありますが、リンクされているサブスクリプションが見つかりません" のようなエラーが発生する場合は、テナントで 1 つまたは[複数の割り当て可能な範囲](role-definitions.md#assignablescopes)が削除さているかどうかを確認してください。 スコープが削除された場合は、現時点で使用可能なセルフ サービス ソリューションがないため、サポート チケットを作成します。
+
+## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>サブスクリプションがテナントをまたいで移動される際に RBAC を復旧します
+
+- サブスクリプションを別の Azure AD テナントに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」を参照してください。
+- 別の Azure AD テナントにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD テナントから完全に削除され、ターゲット Azure AD テナントに移行されることはありません。 ターゲット テナントでロールの割り当てを再作成する必要があります。
+- Azure AD グローバル管理者であり、テナント間で移動された後のサブスクリプションにアクセスできない場合は、**[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
+
+## <a name="issues-with-service-admins-or-co-admins"></a>サービス管理者または共同管理者に関する問題
+
+- サービス管理者または共同管理者に問題が発生した場合は、「[Add or change Azure subscription administrators](../billing/billing-add-change-azure-subscription-administrator.md)」(Azure サブスクリプション管理者を追加または変更する) および「[Classic subscription administrator roles, Azure RBAC roles, and Azure AD administrator roles](rbac-and-directory-admin-roles.md)」(クラシック サブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール) を参照してください。
+
+## <a name="access-denied-or-permission-errors"></a>アクセス拒否またはアクセス許可エラー
+
+- アクセス許可エラー "オブジェクト ID のクライアントは、スコープに対するアクションの実行を承認されていません (コード: AuthorizationFailed)" が、リソースを作成しようとすると発生する場合は、選択したスコープでリソースへの書き込みアクセス許可を持つロールを割り当てられたユーザーで、現在サインインしていることを確認します。 たとえば、リソース グループ内の仮想マシンを管理するには、そのリソース グループ (または親スコープ) に対する[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを持っている必要があります。 各組み込みロールに対するアクセス許可の一覧については、「[Azure リソースの組み込みロール](built-in-roles.md)」を参照してください。
+- サポート チケットを作成または更新しようとすると "サポート要求を作成するためのアクセス許可がありません" というアクセス許可エラーが発生する場合は、現在サインインしているユーザーに、`Microsoft.Support/supportTickets/write` アクセス許可を持つロール ([サポート リクエスト共同作成者](built-in-roles.md#support-request-contributor)など) が割り当てられていることを確認します。
+
+## <a name="rbac-changes-are-not-being-detected"></a>RBAC の変更が検出されない
+
+Azure Resource Manager は、パフォーマンスを高めるために構成やデータをキャッシュすることがあります。 ロールの割り当てを作成または削除した場合、その変更が有効となるまでに最大 30 分かかる場合があります。 Azure portal、Azure PowerShell、Azure CLI のいずれかを使用している場合は、一度サインアウトしてからサインインすることで、ロールの割り当てを強制的に最新の情報に更新し、その変更を有効にすることができます。 REST API 呼び出しでロールの割り当てを変更する場合は、アクセス トークンを更新することによって、最新の情報への更新を強制することができます。
 
 ## <a name="web-app-features-that-require-write-access"></a>書き込みアクセス権限を必要とする Web アプリ機能
 
@@ -76,7 +108,7 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 * エンドポイント  
 * IP アドレス  
 * ディスク  
-* 拡張機能  
+* Extensions  
 
 以下には、**仮想マシン**と、その仮想マシンが含まれる**リソース グループ** (とドメイン名) の両方に対する**書き込み**アクセス権が必要です。  
 
@@ -94,11 +126,7 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 
 閲覧者は、**[プラットフォーム機能]** タブをクリックし、**[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。
 
-## <a name="rbac-changes-are-not-being-detected"></a>RBAC の変更が検出されない
-
-Azure Resource Manager は、パフォーマンスを高めるために構成やデータをキャッシュすることがあります。 ロールの割り当てを作成または削除した場合、その変更が有効となるまでに最大 30 分かかる場合があります。 Azure portal、Azure PowerShell、Azure CLI のいずれかを使用している場合は、一度サインアウトしてからサインインすることで、ロールの割り当てを強制的に最新の情報に更新し、その変更を有効にすることができます。 REST API 呼び出しでロールの割り当てを変更する場合は、アクセス トークンを更新することによって、最新の情報への更新を強制することができます。
-
 ## <a name="next-steps"></a>次の手順
-* [RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)
-* [RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
+* [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
+* [Azure リソースに対する RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
 

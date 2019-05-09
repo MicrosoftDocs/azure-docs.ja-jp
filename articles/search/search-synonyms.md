@@ -1,5 +1,5 @@
 ---
-Title: Synonyms for query expansion over a search index  - Azure Search
+title: 検索インデックスのクエリ拡張のシノニム - Azure Search
 description: Azure Search インデックスの検索クエリの範囲を拡張するシノニム マップを作成します。 一覧で指定した同等の語句を含むように範囲が拡大されます。
 author: brjohnstmsft
 services: search
@@ -10,12 +10,12 @@ ms.date: 04/20/2018
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: ce9eb8ed099a232128ba924da1466917df542fbb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4383cc327d8058ca44acd892f41a7a256e3b1727
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315665"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570438"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure Search のシノニム
 
@@ -52,7 +52,7 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
-    {  
+    {
        "name":"mysynonymmap",
        "format":"solr",
        "synonyms": "
@@ -65,7 +65,7 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
-    {  
+    {
        "format":"solr",
        "synonyms": "
           USA, United States, United States of America\n

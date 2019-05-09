@@ -1,20 +1,19 @@
 ---
 title: Azure Cosmos DB でリージョン間の競合を管理する方法について
 description: Azure Cosmos DB で競合を管理する方法について
-services: cosmos-db
 author: christopheranderson
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 83785e532523c3e921b0772ddaa50502b2dc867d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c7edc9bd20b42725903201fae6349a37a8c0d9eb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633794"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548827"
 ---
-# <a name="manage-conflicts-between-regions"></a>リージョン間の競合の管理
+# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
 
 複数リージョンの書き込みでは、データ競合が発生した際に、さまざまな競合解決ポリシーを使用して競合を解決できます。 この記事では、さまざまな言語プラットフォームを使用して競合解決ポリシーを管理する方法について説明します。
 
@@ -151,7 +150,14 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
 ```python
-
+udp_collection = {
+  'id': self.udp_collection_name,
+  'conflictResolutionPolicy': {
+    'mode': 'Custom',
+    'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
+    }
+}
+udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
 ```
 
 コンテナーが作成されたら、`resolver` ストアド プロシージャを作成する必要があります。
@@ -248,9 +254,9 @@ for (Conflict conflict : response.getResults()) {
 ### <a id="read-from-conflict-feed-java-sync"></a>Java Sync SDK
 
 ```java
-Iterator<Conflict> conflictsIterartor = client.readConflicts(this.collectionLink, null).getQueryIterator();
-while (conflictsIterartor.hasNext()) {
-    Conflict conflict = conflictsIterartor.next();
+Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();
+while (conflictsIterator.hasNext()) {
+    Conflict conflict = conflictsIterator.next();
     /* Do something with conflict */
 }
 ```
@@ -268,8 +274,8 @@ const { result: conflicts } = await container.conflicts.readAll().toArray();
 ### <a id="read-from-conflict-feed-python"></a>Python
 
 ```python
-conflicts_iterartor = iter(client.ReadConflicts(self.manual_collection_link))
-conflict = next(conflicts_iterartor, None)
+conflicts_iterator = iter(client.ReadConflicts(self.manual_collection_link))
+conflict = next(conflicts_iterator, None)
 while conflict:
     # Do something with conflict
     conflict = next(conflicts_iterator, None)
@@ -279,6 +285,6 @@ while conflict:
 
 Azure Cosmos DB の次の概念について学習しましょう。
 
+* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
 * [パーティション分割とデータ分散](partition-data.md)
 * [Azure Cosmos DB のインデックス作成](indexing-policies.md)
-

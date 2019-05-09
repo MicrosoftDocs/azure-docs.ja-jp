@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Veracode の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Veracode の統合 | Microsoft Docs
 description: Azure Active Directory と Veracode の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4fe78050-cb6d-4db9-96ec-58cc0779167f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: a295885d67e674e1cef7cbeb0480b8031d405a92
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e80a2e554d31ad85ddb1111f84a96e1814c3969f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423165"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194650"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-veracode"></a>チュートリアル: Azure Active Directory と Veracode の統合
+# <a name="tutorial-azure-active-directory-integration-with-veracode"></a>チュートリアル:Azure Active Directory と Veracode の統合
 
 このチュートリアルでは、Veracode と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -138,7 +139,7 @@ Veracode で Azure AD のシングル サインオンを構成してテストす
     
     c. **[属性値]** ボックスで、その行に対して表示される属性値を選択します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
 1. **[保存]** ボタンをクリックします。
 
@@ -187,7 +188,7 @@ Veracode で Azure AD のシングル サインオンを構成してテストす
       * **既定のチーム**
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -220,7 +221,7 @@ Veracode で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-veracode-test-user"></a>Veracode テスト ユーザーの作成
 Azure AD ユーザーが Veracode にログインできるようにするには、そのユーザーを Veracode にプロビジョニングする必要があります。 Veracode の場合、プロビジョニングは自動化されています。 アイテムを操作することはありません。 最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
@@ -264,7 +265,7 @@ Azure AD ユーザーが Veracode にログインできるようにするには�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Veracode] タイルをクリックすると、自動的に Veracode アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

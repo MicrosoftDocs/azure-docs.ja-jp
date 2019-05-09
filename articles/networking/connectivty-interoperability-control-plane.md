@@ -1,23 +1,23 @@
 ---
-title: 'Azure バックエンド接続機能の相互運用性: コントロール プレーン分析 | Microsoft Docs'
+title: 'Azure バックエンド接続機能の相互運用性: コントロール プレーンの分析 | Microsoft Docs'
 description: この記事では、Azure における ExpressRoute、サイト間 VPN、仮想ネットワーク ピアリングの間の相互運用性を分析する際に使用できるテスト セットアップのコントロール プレーン分析について説明します。
 documentationcenter: na
 services: networking
 author: rambk
 manager: tracsman
-ms.service: expressroute,vpn-gateway,virtual-network
+ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 37f5399426bebd375200bbc18dae7ed83f4fde3f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 28ce4cfd0c62586510a6f7dfdeca8b552fe9638e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614684"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258940"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure バックエンド接続機能の相互運用性: コントロール プレーン分析
+# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure バックエンド接続機能の相互運用性: コントロール プレーンの分析
 
 この記事では､[テスト セットアップ][Setup]のコントロール プレーン分析について説明します。 [テスト セットアップの構成][Configuration]とテスト セットアップの[データ プレーン分析][Data-Analysis]についてもご覧ください。
 
@@ -55,7 +55,7 @@ Azure 内では、ASN はピアリングの視点からのみ重要です。 既
 
 [![4]][4]
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続を組み合わせる
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続の併用
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
 
@@ -102,7 +102,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
-[Configuration]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-config
+[Configuration]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-configuration
 [ExpressRoute]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
 [VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways
 [VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal

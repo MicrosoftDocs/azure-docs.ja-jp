@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c2821890408e38d0d2be730da10b7926d77697d4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257699"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59048301"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
@@ -28,7 +28,7 @@ WestUS と EastAsia のリージョンに Web サイトのインスタンスが�
 
 Traffic Manager が Web サイトのパフォーマンスに対して影響を与えることができるのは、初期 DNS 参照のみです。 Traffic Manager プロファイルの名前の DNS 要求は trafficmanager.net ゾーンをホストする Microsoft DNS ルート サーバーによって処理されます。 Traffic Manager は、Traffic Manager ポリシーとプローブの結果に基づいて、Microsoft DNS ルート サーバーを設定し、定期的に更新します。 そのため、初期の DNS lookup 時であっても、DNS クエリが Traffic Manager に送信されることはありません。
 
-Traffic Manager は、DNS ネーム サーバー、API サービス、ストレージ層、エンドポイント監視サービスなど、いくつかのコンポーネントで構成されます。 Traffic Manager のサービス コンポーネントでエラーが発生しても、Traffic Manager プロファイルに関連付けられた DNS 名への影響はありません。 Microsoft DNS サーバー内のレコードは変更されません。 ただし、エンドポイントの監視と DNS の更新は実行されません。 したがって、プライマリ サイトがダウンすると、Traffic Manager は DNS を更新してフェールオーバー サイトを指し示すことができません。
+Traffic Manager は、いくつかのコンポーネントで構成されます: DNS サーバー、API サービス、ストレージ レイヤー、エンドポイント監視サービス。 Traffic Manager のサービス コンポーネントでエラーが発生しても、Traffic Manager プロファイルに関連付けられた DNS 名への影響はありません。 Microsoft DNS サーバー内のレコードは変更されません。 ただし、エンドポイントの監視と DNS の更新は実行されません。 したがって、プライマリ サイトがダウンすると、Traffic Manager は DNS を更新してフェールオーバー サイトを指し示すことができません。
 
 DNS 名前解決は短時間で処理され、結果はキャッシュに保存されます。 初期 DNS lookup の速度は、クライアントが名前解決に使用する DNS サーバーに依存します。 通常、クライアントは DNS lookup を約 50 ミリ秒以内で完了します。 lookup の結果は、DNS の Time-to-live (TTL) に設定されている時間キャッシュに保存されます。 Traffic Manager の TTL の既定値は 300 秒です。
 
@@ -42,11 +42,11 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>DNS パフォーマンスを測定するサンプル ツール
 
-* [SolveDNS](http://www.solvedns.com/dns-comparison/)
+* [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
     SolveDNS には、多くのパフォーマンス ツールが備わっています。 DNS Comparison ツールでは、DNS 名を解決するのにかかる時間と他の DNS サービス プロバイダーとの比較が表示されます。
 
-* [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+* [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
     最も簡単なツールの 1 つは WebSitePulse です。 URL を入力すると、DNS 解決時間、最初のバイト、最後のバイト、その他のパフォーマンス統計が表示されます。 3 つの異なるテストの場所から選択できます。 今回の例では、最初の実行時には DNS lookup が 0.204 秒かかっていることが分かります。
 
@@ -62,15 +62,15 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
-* [Pingdom](http://tools.pingdom.com/)
+* [Pingdom](https://tools.pingdom.com/)
 
     このツールでは、Web ページの各要素のパフォーマンス統計値を確認できます。 [Page Analysis] タブには、DNS lookup にかかった時間の割合が表示されます。
 
-* [What's My DNS?](http://www.whatsmydns.net/)
+* [What's My DNS?](https://www.whatsmydns.net/)
 
     このサイトは、20 の異なる場所から DNS 参照を実行して、結果を地図上に表示します。
 
-* [Dig Web Interface](http://www.digwebinterface.com)
+* [Dig Web Interface](https://www.digwebinterface.com)
 
     このサイトでは CNAME や A レコードなど DNS のさらに詳細な情報が表示されます。 オプションで [Colorize output] と [Stats] を選択し、[Nameservers] で [All] を選択してください。
 
@@ -82,5 +82,5 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
 [Traffic Manager の操作 (REST API リファレンス)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)
+[Azure Traffic Manager コマンドレット](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 

@@ -1,0 +1,607 @@
+- name: Azure Active Directory のドキュメント
+  href: index.md
+- name: 概要
+  items:
+    - name: Azure Active Directory とは
+      href: fundamentals/active-directory-whatis.md
+    - name: Azure の ID 管理について
+      href: fundamentals/identity-fundamentals.md
+    - name: Azure ID ソリューションについて
+      href: fundamentals/understand-azure-identity-solutions.md
+    - name: Azure サブスクリプションを関連付ける
+      href: fundamentals/active-directory-how-subscriptions-associated-directory.md
+    - name: 保存場所とデータに関する考慮事項
+      href: fundamentals/active-directory-data-storage-eu.md
+    - name: FAQ
+      href: fundamentals/active-directory-faq.md
+    - name: 新機能
+      href: fundamentals/whats-new.md
+- name: 作業開始
+  items:
+    - name: Azure AD Premium へのサインアップ
+      href: fundamentals/active-directory-get-started-premium.md
+    - name: カスタム ドメイン名を追加する
+      href: fundamentals/add-custom-domain.md
+    - name: 会社のブランドの構成
+      href: fundamentals/customize-branding.md
+    - name: Azure AD へのユーザーの追加
+      href: fundamentals/add-users-azure-active-directory.md
+    - name: ユーザーへのライセンスの割り当て
+      href: fundamentals/license-users-groups.md
+    - name: パスワード リセットのセルフサービスを構成する
+      href: authentication/quickstart-sspr.md
+    - name: Azure AD で組織のプライバシーに関する情報を追加する
+      href: active-directory-properties-area.md
+    - name: Azure Active Directory にアクセスして新しいテナントを作成する
+      href: fundamentals/active-directory-access-create-new-tenant.md
+- name: 方法
+  items:
+    - name: 計画と設計
+      items:
+        - name: Azure AD のアーキテクチャを理解する
+          href: fundamentals/active-directory-architecture.md
+        - name: Azure Active Directory における要求のマッピング
+          href: develop/active-directory-claims-mapping.md
+        - name: ハイブリッド ID ソリューションをデプロイする
+          href: hybrid/plan-hybrid-identity-design-considerations-overview.md
+          items:
+            - name: 要件を確認する
+              items:
+                - name: ID
+                  href: hybrid/plan-hybrid-identity-design-considerations-business-needs.md
+                - name: ディレクトリ同期
+                  href: hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md
+                - name: 多要素認証
+                  href: hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
+                - name: ID のライフサイクル戦略
+                  href: hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
+            - name: データ セキュリティを計画する
+              href: hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md
+              items:
+                - name: データ保護
+                  href: hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md
+                - name: コンテンツ管理
+                  href: hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md
+                - name: アクセス制御
+                  href: hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
+                - name: インシデント対応
+                  href: hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md
+            - name: ID ライフサイクルを計画する
+              items:
+                - name: タスク
+                  href: hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
+                - name: 導入戦略
+                  href: hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
+            - name: 次の手順
+              href: hybrid/plan-hybrid-identity-design-considerations-nextsteps.md
+            - name: ツールの比較
+              href: hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md
+    - name: ユーザーの管理
+      items:
+        - name: Azure AD への新しいユーザーの追加
+          href: fundamentals/add-users-azure-active-directory.md
+        - name: ユーザー プロファイルの管理
+          href: fundamentals/active-directory-users-profile-azure-portal.md
+        - name: ユーザー パスワードのリセット
+          href: fundamentals/active-directory-users-reset-password-azure-portal.md
+        - name: 管理者ロールへのユーザーの割り当て
+          href: fundamentals/active-directory-users-assign-role-azure-portal.md
+        - name: 別のディレクトリからのゲスト ユーザーの追加 (B2B)
+          href: b2b/what-is-b2b.md
+          items:
+            - name: 管理者による B2B ユーザーの追加
+              href: b2b/add-users-administrator.md
+            - name: インフォメーション ワーカーによる B2B ユーザーの追加
+              href: b2b/add-users-information-worker.md
+            - name: API とカスタマイズ
+              href: b2b/customize-invitation-api.md
+            - name: Google のフェデレーション
+              href: b2b/google-federation.md
+            - name: コードと Azure PowerShell のサンプル
+              href: b2b/code-samples.md
+            - name: セルフサービス サインアップ ポータルのサンプル
+              href: b2b/self-service-portal.md
+            - name: 招待メール
+              href: b2b/invitation-email-elements.md
+            - name: 招待の利用
+              href: b2b/redemption-experience.md
+            - name: 招待を使用せずに B2B ユーザーを追加する
+              href: b2b/add-user-without-invite.md
+            - name: 招待を許可またはブロックする
+              href: b2b/allow-deny-list.md
+            - name: B2B 向けの条件付きアクセス
+              href: b2b/conditional-access.md
+            - name: B2B の共有ポリシー
+              href: b2b/delegate-invitations.md
+            - name: B2B ユーザーをロールに追加する
+              href: b2b/add-guest-to-role.md
+            - name: 動的グループと B2B ユーザー
+              href: b2b/use-dynamic-groups.md
+            - name: 組織を脱退する
+              href: b2b/leave-the-organization.md
+            - name: 監査とレポート
+              href: b2b/auditing-and-reporting.md
+            - name: ハイブリッド組織向けの B2B
+              href: b2b/hybrid-organizations.md
+              items:
+                - name: B2B ユーザーにローカル アプリへのアクセスを付与する
+                  href: b2b/hybrid-cloud-to-on-premises.md
+                - name: ローカル ユーザーにクラウド アプリへのアクセスを付与する
+                  href: b2b/hybrid-on-premises-to-cloud.md
+            - name: B2B と Office 365 の外部共有
+              href: b2b/o365-external-user.md
+            - name: B2B ライセンス
+              href: b2b/licensing-guidance.md
+            - name: 現時点での制限事項
+              href: b2b/current-limitations.md
+            - name: FAQ
+              href: b2b/faq.md
+            - name: B2B のトラブルシューティング
+              href: b2b/troubleshoot.md
+            - name: B2B ユーザーについて
+              href: b2b/user-properties.md
+            - name: B2B ユーザー トークン
+              href: b2b/user-token.md
+            - name: Azure AD 統合アプリ向けの B2B
+              href: b2b/configure-saas-apps.md
+            - name: B2B ユーザー要求のマッピング
+              href: b2b/claims-mapping.md
+            - name: B2B コラボレーションと B2C の比較
+              href: b2b/compare-with-b2c.md
+            - name: B2B のサポートの利用
+              href: b2b/get-support.md
+    - name: グループとメンバーの管理
+      href: fundamentals/active-directory-manage-groups.md
+      items:
+        - name: グループの管理
+          href: fundamentals/active-directory-groups-create-azure-portal.md
+        - name: グループとそのメンバーの削除
+          href: fundamentals/active-directory-groups-delete-group.md
+        - name: グループ設定の管理
+          href: fundamentals/active-directory-groups-settings-azure-portal.md
+    - name: レポートの管理
+      href: reports-monitoring/overview-reports.md
+      items:
+        - name: サインイン アクティビティ
+          href: reports-monitoring/concept-sign-ins.md
+        - name: 監査アクティビティ
+          href: reports-monitoring/concept-audit-logs.md
+        - name: リスクのあるユーザー
+          href: reports-monitoring/concept-user-at-risk.md
+        - name: リスクの高いサインイン
+          href: reports-monitoring/concept-risky-sign-ins.md
+        - name: リスク イベント
+          href: reports-monitoring/concept-risk-events.md
+        - name: Azure Monitor を使用したログの監視
+          href: reports-monitoring/concept-activity-logs-in-azure-monitor.md
+        - name: FAQ
+          href: reports-monitoring/reports-faq.md
+        - name: タスク
+          items:
+            - name: サインイン レポートのダウンロード
+              href: reports-monitoring/quickstart-download-sign-in-report.md
+            - name: 監査レポートのダウンロード
+              href: reports-monitoring/quickstart-download-audit-report.md
+            - name: 名前付きの場所の構成
+              href: reports-monitoring/quickstart-configure-named-locations.md
+            - name: アクティビティ レポートの検出
+              href: reports-monitoring/howto-find-activity-reports.md
+            - name: Azure AD Power BI コンテンツ パックの使用
+              href: reports-monitoring/howto-power-bi-content-pack.md
+            - name: リスクのフラグ付きユーザーの修復
+              href: reports-monitoring/howto-remediate-users-flagged-for-risk.md
+            - name: Azure イベント ハブへのアクティビティ ログのルーティング
+              href: reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md
+            - name: Azure ストレージ アカウントへのアクティビティ ログのアーカイブ
+              href: reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md
+            - name: Azure Monitor を使用したアクティビティ ログと Splunk の統合
+              href: reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md
+            - name: Azure Monitor を使用したアクティビティ ログと SumoLogic の統合
+              href: reports-monitoring/howto-integrate-activity-logs-with-sumologic.md
+            - name: Azure Monitor を使用したアクティビティ ログと Log Analytics の統合
+              href: reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md
+        - name: リファレンス
+          items:
+            - name: 保持
+              href: reports-monitoring/reference-reports-data-retention.md
+            - name: 待機時間
+              href: reports-monitoring/reference-reports-latencies.md
+            - name: 監査アクティビティのリファレンス
+              href: reports-monitoring/reference-audit-activities.md
+            - name: サインイン アクティビティのエラー コード
+              href: reports-monitoring/reference-sign-ins-error-codes.md
+            - name: Azure Monitor での監査ログのスキーマの解釈
+              href: reports-monitoring/reference-azure-monitor-audit-log-schema.md
+            - name: Azure Monitor でのサインイン ログのスキーマの解釈
+              href: reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md
+        - name: トラブルシューティング
+          items:
+            - name: Azure AD アクティビティ ログに見つからないデータ
+              href: reports-monitoring/troubleshoot-missing-audit-data.md
+            - name: ダウンロードに見つからないデータ
+              href: reports-monitoring/troubleshoot-missing-data-download.md
+            - name: Azure AD アクティビティ ログ コンテンツ パックのエラー
+              href: reports-monitoring/troubleshoot-content-pack.md
+            - name: Azure AD Reporting API のエラー
+              href: reports-monitoring/troubleshoot-graph-api.md
+        - name: プログラムによるアクセス
+          href: reports-monitoring/concept-reporting-api.md
+          items:
+            - name: 前提条件
+              href: reports-monitoring/howto-configure-prerequisites-for-reporting-api.md
+            - name: 証明書の使用
+              href: reports-monitoring/tutorial-access-api-with-certificates.md
+    - name: パスワードの管理
+      href: authentication/concept-sspr-howitworks.md
+    - name: アプリを管理する
+      items:
+        - name: 概要
+          href: manage-apps/what-is-application-management.md
+        - name: 使用の開始
+          href: manage-apps/plan-an-application-integration.md
+        - name: SaaS アプリの統合に関するチュートリアル
+          href: saas-apps/tutorial-list.md
+        - name: SaaS アプリへのユーザーのプロビジョニングとプロビジョニング解除
+          href: manage-apps/user-provisioning.md
+          items:
+            - name: アプリの統合に関するチュートリアル
+              href: saas-apps/tutorial-list.md
+            - name: SCIM 対応アプリへのプロビジョニングの自動化
+              href: manage-apps/use-scim-to-provision-users-and-groups.md
+            - name: 属性マッピングのカスタマイズ
+              href: manage-apps/customize-application-attributes.md
+            - name: 属性マッピングの式の書き方
+              href: manage-apps/functions-for-customizing-application-data.md
+            - name: スコープ フィルターの使用
+              href: manage-apps/define-conditional-rules-for-provisioning-user-accounts.md
+            - name: 自動ユーザー プロビジョニングについてのレポート
+              href: manage-apps/check-status-user-account-provisioning.md
+            - name: ユーザー プロビジョニングのトラブルシューティング
+              href: active-directory-application-provisioning-content-map.md
+        - name: アプリ プロキシを使用してリモートでアプリにアクセスする
+          href: manage-apps/application-proxy.md
+          items:
+            - name: 作業開始
+              items:
+                - name: アプリケーション プロキシを有効にする
+                  href: manage-apps/application-proxy-enable.md
+                - name: アプリを発行する
+                  href: manage-apps/application-proxy-publish-azure-portal.md
+                - name: カスタム ドメイン
+                  href: manage-apps/application-proxy-configure-custom-domain.md
+            - name: シングル サインオン
+              href: manage-apps/application-proxy-single-sign-on.md
+              items:
+                - name: KCD を使用した SSO
+                  href: manage-apps/application-proxy-configure-single-sign-on-with-kcd.md
+                - name: ヘッダーを使用した SSO
+                  href: manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md
+                - name: パスワード保管を使用した SSO
+                  href: manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: 概念
+              items:
+                - name: Connectors
+                  href: manage-apps/application-proxy-connectors.md
+                - name: セキュリティ
+                  href: manage-apps/application-proxy-security.md
+                - name: ネットワーク
+                  href: manage-apps/application-proxy-network-topology.md
+                - name: TMG または UAG からのアップグレード
+                  href: manage-apps/application-proxy-migration.md
+            - name: 詳細な構成
+              items:
+                - name: 異なるネットワークに発行する
+                  href: manage-apps/application-proxy-connector-groups.md
+                - name: プロキシ サーバー
+                  href: manage-apps/application-proxy-configure-connectors-with-proxy-servers.md
+                - name: 要求に対応するアプリ
+                  href: manage-apps/application-proxy-configure-for-claims-aware-applications.md
+                - name: ネイティブ クライアント アプリ
+                  href: manage-apps/application-proxy-configure-native-client-application.md
+                - name: サイレント インストール
+                  href: manage-apps/application-proxy-register-connector-powershell.md
+                - name: カスタム ホーム ページ
+                  href: manage-apps/application-proxy-configure-custom-home-page.md
+                - name: インライン リンクの変換
+                  href: manage-apps/application-proxy-configure-hard-coded-link-translation.md
+                - name: ワイルドカード
+                  href: manage-apps/application-proxy-wildcard.md
+                - name: 個人データの削除
+                  href: manage-apps/application-proxy-remove-personal-data.md
+            - name: 発行に関するチュートリアル
+              items:
+                - name: リモート デスクトップ
+                  href: manage-apps/application-proxy-integrate-with-remote-desktop-services.md
+                - name: SharePoint
+                  href: manage-apps/application-proxy-integrate-with-sharepoint-server.md
+                - name: Microsoft Teams
+                  href: manage-apps/application-proxy-integrate-with-teams.md
+                - name: Tableau
+                  href: manage-apps/application-proxy-integrate-with-tableau.md
+                - name: Qlik
+                  href: manage-apps/application-proxy-qlik.md
+            - name: PowerShell
+              href: 'https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management'
+            - name: トラブルシューティング
+              href: manage-apps/application-proxy-troubleshoot.md
+        - name: エンタープライズ アプリの管理
+          items:
+            - name: アプリケーションを追加する
+              href: manage-apps/add-application-portal.md
+            - name: テナント アプリを表示する
+              href: manage-apps/view-applications-portal.md
+            - name: Configure single sign-on
+              href: manage-apps/configure-single-sign-on-portal.md
+            - name: ユーザーの割り当て
+              href: manage-apps/assign-user-or-group-access-portal.md
+            - name: ブランドをカスタマイズする
+              href: manage-apps/change-name-or-logo-portal.md
+            - name: ユーザーのサインインを無効にする
+              href: manage-apps/disable-user-sign-in-portal.md
+            - name: Remove users
+              href: manage-apps/remove-user-or-group-access-portal.md
+            - name: ユーザー アカウントのプロビジョニングを管理する
+              href: manage-apps/configure-automatic-user-provisioning-portal.md
+            - name: SAML アプリの詳細な証明書署名
+              href: manage-apps/certificate-signing-options.md
+            - name: ユーザーのエクスペリエンスからアプリケーションを非表示にする
+              href: manage-apps/hide-application-from-user-portal.md
+        - name: HRD ポリシーを使用してサインイン自動アクセラレーションを構成する
+          href: manage-apps/configure-authentication-for-federated-users-portal.md
+        - name: AD FS アプリを Azure AD に移行する
+          href: manage-apps/migrate-adfs-apps-to-azure.md
+        - name: アプリへのアクセスを管理する
+          href: manage-apps/what-is-access-management.md
+          items:
+            - name: SSO アクセス
+              href: manage-apps/what-is-single-sign-on.md
+            - name: SSO の証明書
+              href: manage-apps/manage-certificates-for-federated-single-sign-on.md
+            - name: テナント制限
+              href: manage-apps/tenant-restrictions.md
+            - name: ユーザーのプロビジョニングに SCIM を使用する
+              href: manage-apps/use-scim-to-provision-users-and-groups.md
+        - name: Azure AD アプリケーションの同意エクスペリエンスについて
+          href: develop/application-consent-experience.md
+        - name: トラブルシューティング
+          items:
+            - name: アクセス パネル
+              items:
+                - name: アプリが表示されない
+                  href: manage-apps/access-panel-troubleshoot-application-not-appearing.md
+                - name: 予期しないアプリが表示される
+                  href: manage-apps/access-panel-troubleshoot-unexpected-application.md
+                - name: サインインできない
+                  href: manage-apps/access-panel-troubleshoot-web-sign-in-problem.md
+                - name: ブラウザー拡張機能のインストール時のエラー
+                  href: manage-apps/access-panel-extension-problem-installing.md
+                - name: セルフサービス アプリ アクセスの使用方法
+                  href: manage-apps/access-panel-manage-self-service-access.md
+                - name: セルフサービス アプリ アクセスの使用時のエラー
+                  href: manage-apps/access-panel-troubleshoot-self-service-access.md
+            - name: アプリの追加
+              items:
+                - name: アプリの種類の選択
+                  href: manage-apps/choose-application-type.md
+                - name: 一般的な問題 - ギャラリー アプリ
+                  href: manage-apps/adding-gallery-app-common-problems.md
+                - name: 一般的な問題 - ギャラリー以外のアプリ
+                  href: manage-apps/adding-non-gallery-app-common-problems.md
+            - name: アプリケーション プロキシ
+              items:
+                - name: アプリ ページを表示できない
+                  href: manage-apps/application-proxy-page-appearance-broken-problem.md
+                - name: アプリケーション読み込みに時間がかかりすぎる
+                  href: manage-apps/application-proxy-page-load-speed-problem.md
+                - name: アプリケーション ページ上のリンクが動作しない
+                  href: manage-apps/application-proxy-page-links-broken-problem.md
+                - name: アプリに対して開く必要のあるポート
+                  href: manage-apps/application-proxy-connectivity-ports-how-to.md
+                - name: アプリのコネクタ グループに動作するコネクタがない
+                  href: manage-apps/application-proxy-connectivity-no-working-connector.md
+                - name: 管理ポータルでの構成
+                  href: manage-apps/application-proxy-config-how-to.md
+                - name: アプリに対するシングル サインオンの構成
+                  href: manage-apps/application-proxy-config-sso-how-to.md
+                - name: 管理ポータルでのアプリの作成に関する問題
+                  href: manage-apps/application-proxy-config-problem.md
+                - name: Kerberos の制約付き委任を構成する
+                  href: manage-apps/application-proxy-back-end-kerberos-constrained-delegation-how-to.md
+                - name: PingAccess を使用した構成
+                  href: manage-apps/application-proxy-back-end-ping-access-how-to.md
+                - name: '"この企業アプリケーションにアクセスできない" というエラー'
+                  href: manage-apps/application-proxy-sign-in-bad-gateway-timeout-error.md
+                - name: アプリケーション プロキシ エージェント コネクタのインストール時の問題
+                  href: manage-apps/application-proxy-connector-installation-problem.md
+            - name: アプリケーションの登録
+              items:
+                - name: アプリケーション オブジェクトのフィールドの入力
+                  href: develop/registration-config-specific-application-property-how-to.md
+                - name: トークン有効期間の既定値の変更
+                  href: develop/registration-config-change-token-lifetime-how-to.md
+            - name: Authentication
+              items:
+                - name: エンドポイントを構成する
+                  href: develop/registration-config-how-to.md
+            - name: 条件付きアクセス
+              items:
+                - name: 顧客がデバイス登録の前提条件を満たしていない
+                  href: active-directory-conditional-access.md
+                - name: 企業ネットワークのルールを無効にする方法とタイミング
+                  href: 'https://aka.ms/calocation'
+                - name: Azure AD でユーザーが登録できるデバイス数を増やす方法
+                  href: active-directory-azureadjoin-setup.md
+                - name: Exchange Online の条件付きアクセスの設定方法
+                  href: 'https://aka.ms/csforexchange'
+                - name: Windows 7 デバイスの条件付きアクセスの設定方法
+                  href: 'active-directory-conditional-access.md#device-based-conditional-access'
+                - name: 条件付きアクセスでサポートされるアプリケーション
+                  href: active-directory-conditional-access-supported-apps.md
+            - name: API の検索
+              items:
+                - name: API の検索
+                  href: develop/api-find-an-api-how-to.md
+            - name: アクセスの管理
+              items:
+                - name: アプリへのユーザーとグループの割り当て
+                  href: manage-apps/methods-for-assigning-users-and-groups.md
+                - name: アプリへのユーザー アクセスの削除
+                  href: manage-apps/methods-for-removing-user-access.md
+                - name: セルフサービス アプリの割り当ての構成
+                  href: manage-apps/manage-self-service-access.md
+                - name: 予期しないユーザーが割り当てられる
+                  href: manage-apps/ways-users-get-assigned-to-applications.md
+                - name: アプリケーション リストの予期しないアプリ
+                  href: manage-apps/application-types.md
+            - name: マルチテナント アプリ
+              items:
+                - name: 新しいアプリの構成
+                  href: develop/setup-multi-tenant-app.md
+                - name: アプリ ギャラリーへの追加
+                  href: develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md
+            - name: アクセス許可
+              items:
+                - name: API のアクセス許可の選択
+                  href: develop/perms-for-given-api.md
+                - name: 委任されたアクセス許可とアプリケーションのアクセス許可
+                  href: develop/delegated-and-app-perms.md
+                - name: アプリケーションへの同意
+                  href: develop/consent-framework.md
+            - name: プロビジョニング
+              items:
+                - name: 所要時間
+                  href: manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md
+                - name: 長時間かかる - ギャラリー アプリ
+                  href: manage-apps/application-provisioning-when-will-provisioning-finish.md
+                - name: ユーザー プロビジョニングの構成 - ギャラリー アプリ
+                  href: manage-apps/application-provisioning-config-how-to.md
+                - name: ユーザー プロビジョニングの構成に関する問題 - ギャラリー アプリ
+                  href: manage-apps/application-provisioning-config-problem.md
+                - name: ギャラリー アプリケーションへのユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題
+                  href: manage-apps/application-provisioning-config-problem-storage-limit.md
+                - name: ユーザーがプロビジョニングされない - ギャラリー アプリ
+                  href: manage-apps/application-provisioning-config-problem-no-users-provisioned.md
+                - name: 間違ったユーザーがプロビジョニングされている - ギャラリー アプリ
+                  href: manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md
+                - name: SCIM 互換性に関する問題 - ギャラリー以外のアプリ
+                  href: manage-apps/application-provisioning-config-problem-scim-compatibility.md
+            - name: シングル サインオン
+              items:
+                - name: 方法の選択
+                  href: manage-apps/single-sign-on-modes.md
+                - name: 構成
+                  href: develop/registration-config-sso-how-to.md
+                - name: フェデレーションの構成 - ギャラリー アプリ
+                  href: manage-apps/configure-federated-single-sign-on-gallery-applications.md
+                - name: フェデレーションの構成の一般的な問題 - ギャラリー アプリ
+                  href: manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md
+                - name: フェデレーションの構成 - ギャラリー以外のアプリ
+                  href: manage-apps/configure-federated-single-sign-on-non-gallery-applications.md
+                - name: フェデレーションの構成の一般的な問題 - ギャラリー以外のアプリ
+                  href: manage-apps/configure-federated-single-sign-on-non-gallery-applications-problems.md
+                - name: パスワードの構成 - ギャラリー アプリ
+                  href: manage-apps/configure-password-single-sign-on-gallery-applications.md
+                - name: パスワードの構成の一般的な問題 - ギャラリー アプリ
+                  href: manage-apps/configure-password-single-sign-on-gallery-applications-problems.md
+                - name: パスワードの構成 - ギャラリー以外のアプリ
+                  href: manage-apps/configure-password-single-sign-on-non-gallery-applications.md
+                - name: パスワードの構成の一般的な問題 - ギャラリー以外のアプリ
+                  href: manage-apps/configure-password-single-sign-on-non-gallery-applications-problems.md
+            - name: ユーザー サインインに関する問題
+              items:
+                - name: 予期しない同意プロンプト
+                  href: manage-apps/application-sign-in-unexpected-user-consent-prompt.md
+                - name: ユーザーの同意エラー
+                  href: manage-apps/application-sign-in-unexpected-user-consent-error.md
+                - name: カスタム ポータルからのサインインに関する問題
+                  href: manage-apps/application-sign-in-other-problem-deeplink.md
+                - name: アクセス パネルからのサインインに関する問題
+                  href: manage-apps/application-sign-in-other-problem-access-panel.md
+                - name: アプリケーションのサインイン ページでのエラー
+                  href: manage-apps/application-sign-in-problem-application-error.md
+                - name: パスワード シングル サインオンに関する問題 - ギャラリー以外のアプリ
+                  href: manage-apps/application-sign-in-problem-password-sso-non-gallery.md
+                - name: パスワード シングル サインオンに関する問題 - ギャラリー アプリ
+                  href: manage-apps/application-sign-in-problem-password-sso-gallery.md
+                - name: Microsoft アプリへのサインインに関する問題
+                  href: manage-apps/application-sign-in-problem-first-party-microsoft.md
+                - name: フェデレーション シングル サインオンに関する問題 - ギャラリー以外のアプリ
+                  href: manage-apps/application-sign-in-problem-federated-sso-non-gallery.md
+                - name: フェデレーション シングル サインオンに関する問題 - ギャラリー アプリ
+                  href: manage-apps/application-sign-in-problem-federated-sso-gallery.md
+                - name: カスタム開発されたアプリに関する問題
+                  href: manage-apps/application-sign-in-problem-custom-dev.md
+                - name: オンプレミス アプリに関する問題 - アプリケーション プロキシ
+                  href: manage-apps/application-sign-in-problem-on-premises-application-proxy.md
+    - name: ディレクトリの管理
+      items:
+        - name: Azure AD Connect
+          href: hybrid/whatis-hybrid-identity.md
+        - name: カスタム ドメイン名
+          items:
+            - name: クイック スタート
+              href: fundamentals/add-custom-domain.md
+        - name: ディレクトリの管理
+          href: fundamentals/active-directory-administer.md
+        - name: Azure AD Connect を使用してオンプレミスの ID を統合する
+          href: hybrid/whatis-hybrid-identity.md
+        - name: トークンの有効期間の構成
+          href: develop/active-directory-configurable-token-lifetimes.md
+    - name: ID をセキュリティで保護する
+      items:
+        - name: Privileged Identity Management
+          href: privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json
+    - name: トラブルシューティング
+      href: fundamentals/active-directory-troubleshooting-support-howto.md
+    - name: Azure AD の概念実証 (PoC) のデプロイ
+      items:
+        - name: 'PoC プレイブック:はじめに'
+          href: active-directory-playbook-intro.md
+        - name: 'PoC プレイブック:内容'
+          href: active-directory-playbook-ingredients.md
+        - name: 'PoC プレイブック:実装'
+          href: active-directory-playbook-implementation.md
+        - name: 'PoC プレイブック:構成要素'
+          href: active-directory-playbook-building-blocks.md
+- name: リファレンス
+  items:
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
+    - name: Azure PowerShell コマンドレット
+      href: /powershell/azure/overview
+    - name: Java API リファレンス
+      href: /java/api
+    - name: .NET API
+      href: /active-directory/adal/microsoft.identitymodel.clients.activedirectory
+- name: 関連項目
+  items:
+    - name: Multi-Factor Authentication
+      href: /azure/multi-factor-authentication/
+    - name: Azure AD Connect
+      href: hybrid/whatis-hybrid-identity.md
+    - name: Azure AD Connect Health
+      href: hybrid/whatis-hybrid-identity-health.md
+    - name: 開発者向け Azure AD
+      href: ./develop/active-directory-how-to-integrate.md
+    - name: Azure AD Privileged Identity Management
+      href: ./privileged-identity-management/pim-configure.md
+- name: リソース
+  items:
+    - name: Azure AD のデプロイ計画
+      href: ./fundamentals/active-directory-deployment-plans.md
+    - name: Azure フィードバック フォーラム
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

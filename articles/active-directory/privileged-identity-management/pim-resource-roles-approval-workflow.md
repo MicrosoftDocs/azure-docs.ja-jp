@@ -1,5 +1,5 @@
 ---
-title: PIM で Azure リソース ロールに対する要求を承認または拒否する | Microsoft Docs
+title: PIM で Azure リソース ロールに対する要求を承認または拒否する - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールに対する要求を承認または拒否する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -10,20 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
-ms.date: 08/31/2018
+ms.subservice: pim
+ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: c661f2662f48c5aaece142cb4a2223ab8a6d0853
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666593"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492160"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールに対する要求を承認または拒否する
 
-Azure AD Privileged Identity Management (PIM) を使用して、アクティブ化の承認を必要とするようにロールを構成できます。また、代理承認者として 1 名以上のユーザーまたはグループを選択できます。 Azure リソース ロールの要求を承認または拒否するには、この記事の手順に従ってください。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、アクティブ化の承認を必要とするようにロールを構成できます。また、代理承認者として 1 名以上のユーザーまたはグループを選択できます。 代理承認者は、要求を承認するまでに 24 時間あります。 要求が 24 時間以内に承認されない場合、有資格ユーザーは新しい要求を再送信する必要があります。 24 時間の承認時間枠は構成できません。
+
+Azure リソース ロールの要求を承認または拒否するには、この記事の手順に従ってください。
 
 ## <a name="view-pending-requests"></a>保留中の要求を表示する
 
@@ -81,4 +84,4 @@ Azure AD Privileged Identity Management (PIM) を使用して、アクティブ�
 
 - [PIM で Azure リソース ロールを延長または更新する](pim-resource-roles-renew-extend.md)
 - [PIM での電子メール通知](pim-email-notifications.md)
-- [PIM で Azure AD ディレクトリ ロールに対する要求を承認または拒否する](azure-ad-pim-approval-workflow.md)
+- [PIM で Azure AD ロールに対する要求を承認または拒否する](azure-ad-pim-approval-workflow.md)

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fa1b043f94897e752f3aa6b638995d3c2aa1eae5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9d8b425ff73672ce8989e235c4a2c130c763716c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196085"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213553"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS アプリケーション プラン
 
@@ -36,8 +36,11 @@ ms.locfileid: "53196085"
 - 販売チームの拡張: 世界中のビジネス ユーザーへのリーチ、エンドユーザーを取り込む販売チャネルの獲得、潜在顧客の発掘に役立つ、業種を超えた新しい顧客との会話のきっかけを作ることができます。
 
 - アクションにつながる分析情報を取得: AppSource でアプリがどのように実行され、どのくらいうまく機能しているか、および営業の手順をさらに改善する方法についての分析情報を共有します。
+ 
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。
 
-## <a name="publishing-process-workflow"></a>発行プロセス ワークフロー 
+## <a name="publishing-process-workflow"></a>発行プロセスのワークフロー 
 
 次の図は、SaaS アプリケーション オファー発行の概要手順を示しています。 
 

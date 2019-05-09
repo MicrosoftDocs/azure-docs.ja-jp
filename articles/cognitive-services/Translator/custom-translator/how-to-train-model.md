@@ -5,16 +5,16 @@ description: モデルのトレーニングは、翻訳モデルを構築する�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 60e0485c28d90050a6ff775db41f8696a09fe033
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.topic: conceptual
+ms.openlocfilehash: 2045041a9ee4872e4510e5ee0deba258b0342557
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165760"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437290"
 ---
 # <a name="train-a-model"></a>モデルをトレーニングする
 
@@ -51,6 +51,9 @@ ms.locfileid: "53165760"
 6.  Custom Translator からトレーニングが送信され、モデルのタブにトレーニングの状態が表示されます。
 
     ![[Train model]\(モデルのトレーニング\) ページ](media/how-to/how-to-train-model-3.png)
+
+>[!Note]
+>Custom Translator は、任意の 1 時点で、ワークスペース内の 10 個の同時実行トレーニングをサポートします。
 
 
 ## <a name="edit-a-model"></a>モデルを編集する

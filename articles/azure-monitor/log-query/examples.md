@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor Log Analytics クエリの例 |Microsoft Docs
-description: Kusto 言語を使用した Log Analytics でのクエリの例。
+title: Azure Monitor ログ クエリの例 | Microsoft Docs
+description: Kusto クエリ言語を使用する Azure Monitor でのログ クエリの例です。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885810"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416651"
 ---
-# <a name="log-analytics-query-examples"></a>Log Analytics クエリの例
-この記事には、[Kusto 言語](https://docs.microsoft.com/azure/kusto/query/)を使用して Log Analytics から複数の種類のデータを取得するさまざまな[クエリ](../../azure-monitor/log-query/log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
+# <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
+この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
 
-これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Log Analytics を利用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)をご覧ください。
+これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Azure Monitor を使用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)を行ってください。
 
 ## <a name="events"></a>events
 
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>マーシャリングの解除に関連するイベントの検索
-テーブル **Event** と **SecurityEvents** から _unmashaling_ に言及するレコードを検索します。
+テーブル **Event** と **SecurityEvents** から _unmarshaling_ が言及されているレコードを検索します。
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
@@ -131,8 +131,8 @@ search *
 
 ## <a name="azurediagnostics"></a>AzureDiagnostics
 
-### <a name="count-azure-diagnostics-records-per-category"></a>カテゴリごとの Azure 診断レコードのカウント
-次の例は、一意のカテゴリごとの Azure 診断レコードをカウントします。
+### <a name="count-azure-diagnostics-records-per-category"></a>カテゴリごとの Azure Diagnostics レコードのカウント
+次の例は、一意のカテゴリごとの Azure Diagnostics レコードをカウントします。
 
 ```Kusto
 AzureDiagnostics 
@@ -141,7 +141,7 @@ AzureDiagnostics
 ```
 
 ### <a name="get-a-random-record-for-each-unique-category"></a>一意の各カテゴリのランダム レコードの取得
-次の例は、一意の各カテゴリの Azure 診断レコードをランダムに 1 つ取得します。
+次の例は、一意の各カテゴリの Azure Diagnostics レコードをランダムに 1 つ取得します。
 
 ```Kusto
 AzureDiagnostics
@@ -150,7 +150,7 @@ AzureDiagnostics
 ```
 
 ### <a name="get-the-latest-record-per-category"></a>カテゴリごとの直近のレコードの取得
-次の例は、一意の各カテゴリの直近の Azure 診断レコードを取得します。
+次の例は、一意の各カテゴリの直近の Azure Diagnostics レコードを取得します。
 
 ```Kusto
 AzureDiagnostics
@@ -170,7 +170,7 @@ NetworkMonitoring
 | distinct Computer
 ```
 
-## <a name="performance"></a>[パフォーマンス]
+## <a name="performance"></a>パフォーマンス
 
 ### <a name="join-computer-perf-records-to-correlate-memory-and-cpu"></a>メモリと CPU を関連付けるためにコンピューターのパフォーマンス レコードを結合する
 次の例は、特定のコンピューターの **perf** レコードを関連付け、平均 CPU と最大メモリの 2 つの時間グラフを作成します。
@@ -440,4 +440,4 @@ Update
 ## <a name="next-steps"></a>次の手順
 
 - 言語の詳細については、[Kusto 言語リファレンス](/azure/kusto/query)を参照してください。
-- [Log Analytics でのクエリの記述](get-started-queries.md)に関するレッスンをご覧ください。
+- [Azure Monitor でのログ クエリの記述に関するレッスン](get-started-queries.md)を行います。

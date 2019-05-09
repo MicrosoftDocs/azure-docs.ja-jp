@@ -3,8 +3,8 @@ title: Azure Service Fabric のステートフル サービスの単体テスト
 description: Service Fabric ステートフル サービスの単体テストを作成する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: charleszipp
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
-ms.author: ryanwi
-ms.openlocfilehash: 4941d893c6c871541772569e42bf5169270def88
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.author: atsenthi
+ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413559"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669114"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>ステートフル サービスの単体テストの作成
 Service Fabric ステートフル サービスの単体テストにより、従来のアプリケーションまたはドメイン固有の単体テストでは必ずしも検出されない一般的な誤りが明らかになります。 ステートフル サービスの単体テストを作成するときに、留意すべき特別な考慮事項があります。
@@ -42,13 +42,13 @@ Service Fabric ステートフル サービスの単体テストにより、従�
 テストの準備 (Arrange) 部分の一環として、モック レプリカ セットと状態マネージャーが作成されます。 レプリカ セットは、各レプリカのテスト対象となるサービスのインスタンスの作成を制御します。 また、`OnChangeRole` や `RunAsync` などのライフサイクル イベントの実行も制御します。 モック状態マネージャーにより、状態マネージャーに対して実行される操作が、実際の状態マネージャーの場合と同様に実行され、維持されるようになります。
 
 1. テスト対象のサービスをインスタンス化するサービス ファクトリ デリゲートを作成します。 これは、Service Fabric サービスまたは Service Fabric アクターの `Program.cs` で通常見られるサービス ファクトリ コールバックと類似しているか同じである必要があります。 これは次のシグネチャに従う必要があります。
-```csharp
-MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
-```
+   ```csharp
+   MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
+   ```
 2. `MockReliableStateManager` クラスのインスタンスを作成します。 これにより、状態マネージャーとのすべての対話がモックされます。
 3. `MockStatefulServiceReplicaSet<TStatefulService>` のインスタンスを作成します。`TStatefulService` は、テスト対象のサービスの種類です。 これには、手順 1. で作成したデリゲートと、手順 2. でインスタンス化された状態マネージャーが必要です。
 4. レプリカ セットにレプリカを追加します。 役割 (Primary、ActiveSecondary、IdleSecondary など) とレプリカの ID を指定します。
-> レプリカ ID は必ず保持してください。 これらは、単体テストの実行 (Act) 部分とアサート (Assert) 部分で使用される可能性があります。
+   > レプリカ ID は必ず保持してください。 これらは、単体テストの実行 (Act) 部分とアサート (Assert) 部分で使用される可能性があります。
 
 ```csharp
 //service factory to instruct how to create the service instance
@@ -91,7 +91,7 @@ replicaSet.PromoteNewReplicaToPrimaryAsync(4);
 
 //promote the first idle secondary to an active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync();
-//promote idle secodary with replica id 4 to active secondary
+//promote idle secondary with replica id 4 to active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync(4);
 
 //add a new replica with randomly assigned replica id and promote it to primary

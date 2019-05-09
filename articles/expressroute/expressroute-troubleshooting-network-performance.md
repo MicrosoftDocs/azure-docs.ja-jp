@@ -1,5 +1,5 @@
 ---
-title: '仮想ネットワークのパフォーマンスのトラブルシューティング: Azure | Microsoft Docs'
+title: 仮想ネットワークのパフォーマンスのトラブルシューティング:Azure | Microsoft Docs
 description: このページでは、Azure ネットワーク リンクのパフォーマンスをテストする標準化された方法について説明します。
 services: expressroute
 author: tracsman
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 2572ff3711fb86cda88a86744192980a5b2d5361
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277626"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995794"
 ---
 # <a name="troubleshooting-network-performance"></a>ネットワーク パフォーマンスのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -179,26 +179,26 @@ Azure では、可能な限り詳しく問題を特定したら、[Azure ネッ�
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>場所|Azure<br/>リージョン|推定<br/>距離 (km)|Latency|1 セッションの<br/>帯域幅|最大値<br/>帯域幅|
-| シアトル | 米国西部 2        |    191 km |   5 ミリ秒 | 262.0 メガビット/秒 |  3.74 ギガビット/秒 | 21
-| シアトル | 米国西部          |  1,094 km |  18 ミリ秒 |  82.3 メガビット/秒 |  3.70 ギガビット/秒 | 20
-| シアトル | 米国中央部       |  2,357 km |  40 ミリ秒 |  38.8 メガビット/秒 |  2.55 ギガビット/秒 | 17
-| シアトル | 米国中南部 |  2,877 km |  51 ミリ秒 |  30.6 メガビット/秒 |  2.49 ギガビット/秒 | 19
-| シアトル | 米国中北部 |  2,792 km |  55 ミリ秒 |  27.7 メガビット/秒 |  2.19 ギガビット/秒 | 18
-| シアトル | 米国東部 2        |  3,769 km |  73 ミリ秒 |  21.3 メガビット/秒 |  1.79 ギガビット/秒 | 16
-| シアトル | 米国東部          |  3,699 km |  74 ミリ秒 |  21.1 メガビット/秒 |  1.78 ギガビット/秒 | 15
-| シアトル | 東日本       |  7,705 km | 106 ミリ秒 |  14.6 メガビット/秒 |  1.22 ギガビット/秒 | 28
-| シアトル | 英国南部         |  7,708 km | 146 ミリ秒 |  10.6 メガビット/秒 |   896 メガビット/秒 | 24
-| シアトル | 西ヨーロッパ      |  7,834 km | 153 ミリ秒 |  10.2 メガビット/秒 |   761 メガビット/秒 | 23
-| シアトル | オーストラリア東部   | 12,484 km | 165 ミリ秒 |   9.4 メガビット/秒 |   794 メガビット/秒 | 26
-| シアトル | 東南アジア   | 12,989 km | 170 ミリ秒 |   9.2 メガビット/秒 |   756 メガビット/秒 | 25
-| シアトル | ブラジル南部*   | 10,930 km | 189 ミリ秒 |   8.2 メガビット/秒 |   699 メガビット/秒 | 22
-| シアトル | インド南部      | 12,918 km | 202 ミリ秒 |   7.7 メガビット/秒 |   634 メガビット/秒 | 27
+|ExpressRoute<br/>Location|Azure<br/>リージョン|推定<br/>距離 (km)|Latency|1 セッションの<br/>帯域幅|最大値<br/>帯域幅|
+| シアトル | 米国西部 2        |    191 km |   5 ミリ秒 | 262.0 メガビット/秒 |  3.74 ギガビット/秒 |
+| シアトル | 米国西部          |  1,094 km |  18 ミリ秒 |  82.3 メガビット/秒 |  3.70 ギガビット/秒 |
+| シアトル | 米国中央部       |  2,357 km |  40 ミリ秒 |  38.8 メガビット/秒 |  2.55 ギガビット/秒 |
+| シアトル | 米国中南部 |  2,877 km |  51 ミリ秒 |  30.6 メガビット/秒 |  2.49 ギガビット/秒 |
+| シアトル | 米国中北部 |  2,792 km |  55 ミリ秒 |  27.7 メガビット/秒 |  2.19 ギガビット/秒 |
+| シアトル | 米国東部 2        |  3,769 km |  73 ミリ秒 |  21.3 メガビット/秒 |  1.79 ギガビット/秒 |
+| シアトル | 米国東部          |  3,699 km |  74 ミリ秒 |  21.1 メガビット/秒 |  1.78 ギガビット/秒 |
+| シアトル | 東日本       |  7,705 km | 106 ミリ秒 |  14.6 メガビット/秒 |  1.22 ギガビット/秒 |
+| シアトル | 英国南部         |  7,708 km | 146 ミリ秒 |  10.6 メガビット/秒 |   896 メガビット/秒 |
+| シアトル | 西ヨーロッパ      |  7,834 km | 153 ミリ秒 |  10.2 メガビット/秒 |   761 メガビット/秒 |
+| シアトル | オーストラリア東部   | 12,484 km | 165 ミリ秒 |   9.4 メガビット/秒 |   794 メガビット/秒 |
+| シアトル | 東南アジア   | 12,989 km | 170 ミリ秒 |   9.2 メガビット/秒 |   756 メガビット/秒 |
+| シアトル | ブラジル南部*   | 10,930 km | 189 ミリ秒 |   8.2 メガビット/秒 |   699 メガビット/秒 |
+| シアトル | インド南部      | 12,918 km | 202 ミリ秒 |   7.7 メガビット/秒 |   634 メガビット/秒 |
 
 \* ブラジルの待機時間は、直線距離と設置されたファイバーの距離が大きく異なることを表す好例です。 160 ミリ秒前後の待機時間が予想されましたが、実際には 189 ミリ秒でした。 予想に対するこの違いは、ネットワークのどこかに問題があることを示す場合もありますが、ほとんどの場合は設置されたファイバーがブラジルまで直線で通っておらず、シアトルからブラジルに到達するまでに 1,000 km ほど余分にかかっていることを示しています。
 
 ## <a name="next-steps"></a>次の手順
-1. Azure Connectivity Toolkit を GitHub ([http://aka.ms/AzCT][ACT]) からダウンロードします
+1. Azure Connectivity Toolkit を GitHub ([https://aka.ms/AzCT][ACT]) からダウンロードします
 2. [リンクのパフォーマンス テスト][Performance Doc]の手順に従います
 
 <!--Image References-->
@@ -210,17 +210,6 @@ Azure では、可能な限り詳しく問題を特定したら、[Azure ネッ�
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
-[Network Docs]: https://docs.microsoft.com/azure/index#pivot=services&panel=network
+[Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
-[ACT]: http://aka.ms/AzCT
-
-
-
-
-
-
-
-
-
-
-
+[ACT]: https://aka.ms/AzCT

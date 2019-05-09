@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c99d638845cf0cd00ddbacf1ed0dcf3da889dd6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 08a1980a8855fc119a5066e058e9bb4d2df6646e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082545"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998877"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Cloudyn サービスとは
 
@@ -24,6 +24,35 @@ Microsoft の子会社である Cloudyn によって、Azure リソースおよ�
 入門ビデオを視聴するには、「[Azure Cloudyn の概要](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo)」を参照してください。
 
 Azure Cost Management は Cloudyn と同様の機能を提供します。 Azure Cost Management は、Azure のネイティブのコスト管理ソリューションです。 このソリューションにより、コストを分析し、予算を作成して管理し、データをエクスポートし、最適化のための推奨事項を検討して対処することで、費用を節約できます。 詳細については、「[Azure Cost Management](overview-cost-mgt.md)」を参照してください。
+
+## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Azure Cost Management に移行される Cloudyn の機能
+
+Microsoft では Cloudyn を買収し、そのコスト管理機能を Cloudyn ポータルから Azure にネイティブに移行しています。 新しい機能を使用するには、Azure portal にサインインし、Azure サービスの一覧の [[コスト管理と請求]](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) に移動します。 Cloudyn に比べて、ネイティブ エクスペリエンスではパフォーマンスが向上し、データ待機時間が約 8 時間低下します。
+
+Enterprise Agreement、従量課金制、および MSDN のオファー カテゴリ向けの重要な機能の Azure Cost Management への移行が完了しています。 CSP サブスクリプションの Azure Cost Management への移行が進行中です。
+
+まだ移行されていないオファー カテゴリをご利用のお客様は、引き続き Cloudyn ポータルを使用する必要があります。 それ以外のお客様は、Azure Cost Management を使用できます。
+
+| Microsoft Azure のオファーと機能 | 推奨されるコスト管理サービス |
+| --- | --- |
+| Azure Enterprise Agreement | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Web Direct (PAYG/MSDN) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Government | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
+| AWS 向けのクラウド間コスト分析サポート (プレビュー段階) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| AWS の推奨事項 | [Cloudyn](https://azure.cloudyn.com) |
+
+次の機能の一部は Cloudyn で使用できますが、それらのすべてを Azure Cost Management で使用できるようになりました。
+
+- API
+- Azure コンピューティングの推奨事項
+- Azure 予約の推奨事項
+- 予算
+- コスト分析
+- Azure ストレージ アカウントへのデータのエクスポート
+- 待ち時間の短縮
+- Power BI コンテンツ パックとコネクタ
+- リソースのタグのサポート
 
 ## <a name="monitor-usage-and-spending"></a>使用状況と支出の監視
 
@@ -46,6 +75,7 @@ Azure Cost Management は Cloudyn と同様の機能を提供します。 Azure 
 Cloudyn を利用すると、VM の最適な使用状況を判断し、アイドル状態の VM を識別したり、アイドル状態の VM やアタッチされていないディスクを削除したりできます。 サイズ最適化レポートや非効率性レポートの情報を使って、ダウンサイジングまたはアイドル状態の VM の削除に関する計画を作成できます。 ただし、CSP パートナー アカウントまたはサブスクリプションの最適化レポートは、現在サポートされていません。
 
 AWS 予約済みインスタンスをプロビジョニングした場合、最適化レポートで予約済みインスタンスの使用率を向上できます。最適化レポートでは、購入の推奨事項を表示し、未使用の予約を変更し、プロビジョニングを計画することができます。
+
 
 ## <a name="next-steps"></a>次の手順
 

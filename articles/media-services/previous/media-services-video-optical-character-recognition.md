@@ -4,7 +4,7 @@ description: Azure Media Analytics OCR (光学式文字認識) では、ビデ�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 307c196e-3a50-4f4b-b982-51585448ffc6
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4a7a31b4e0069d2c94a4f109248d7b02c0b03faa
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785901"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315132"
 ---
-# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する  
 ## <a name="overview"></a>概要
 ビデオ ファイルからテキスト コンテンツを抽出し、編集かつ検索可能なデジタル テキストを生成する必要がある場合は、Azure Media Analytics OCR (光学式文字認識) を使用する必要があります。 この Azure メディア プロセッサは、ビデオ ファイル内のテキスト コンテンツを検出し、テキスト ファイルを生成して使用できるようにします。 OCR を使用すると、メディアのビデオ信号から有意なメタデータを自動的に抽出できます。
 
@@ -42,11 +42,11 @@ ms.locfileid: "33785901"
 >
 
 ### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | [説明] |
+| 属性名 | 説明 |
 | --- | --- |
 |AdvancedOutput| AdvancedOutput を true に設定すると、JSON 出力には各単語ごとに (語句とリージョンに加えて) 位置指定データが含まれます。 これらの詳細を表示しないようにするには、フラグを false に設定します。 既定値は false です。 詳細については、 [このブログ](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)をご覧ください。|
-| 言語 |(省略可能) 検索対象テキストの言語です。 次のいずれかを指定します: AutoDetect (既定)、Arabic、ChineseSimplified、ChineseTraditional、Czech、Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
-| TextOrientation |(省略可能) 検索対象テキストの向きです。  "Left" は、すべての文字の上部が左を指していることを意味します。  既定のテキスト (書籍など) は "Up"、つまり上を指しています。  次のいずれかを指定します: AutoDetect (既定)、Up、Right、Down、Left。 |
+| 言語 |(省略可能) 検索対象テキストの言語です。 次のいずれか:AutoDetect (既定)、Arabic、ChineseSimplified、ChineseTraditional、Czech、Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
+| TextOrientation |(省略可能) 検索対象テキストの向きです。  "Left" は、すべての文字の上部が左を指していることを意味します。  既定のテキスト (書籍など) は "Up"、つまり上を指しています。  次のいずれか:AutoDetect (既定)、Up、Right、Down、Left。 |
 | TimeInterval |(省略可能) サンプリング レートです。  既定値は、毎 0.5 秒です。<br/>JSON 形式 – HH:mm:ss.SSS (既定値 00:00:00.500)<br/>XML 形式 – W3C XSD プリミティブ期間 (既定値 PT0.5) |
 | DetectRegions |(省略可能)テキストを検出するビデオ フレーム内の領域を指定する DetectRegion オブジェクトの配列。<br/>DetectRegion オブジェクトは、次の 4 つの整数値で構成されます。<br/>Left: 左余白からのピクセル<br/>Top: 上余白からのピクセル<br/>Width: 領域の幅 (ピクセル)<br/>Height: 領域の高さ (ピクセル) |
 
@@ -77,7 +77,7 @@ ms.locfileid: "33785901"
 
 ```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
-    <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
+    <VideoOcrPreset xmlns:xsi=""https://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""https://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""https://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
          <AdvancedOutput>true</AdvancedOutput>
          <Language>English</Language>
@@ -103,23 +103,23 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
 
 出力には、次の属性が含まれています。
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | --- | --- |
 | タイムスケール |ビデオの 1 秒あたりの "ティック数" |
 | Offset |タイムスタンプの時間オフセット。 Video API のバージョン 1.0 では、これは常に 0 になります。 |
-| Framerate |ビデオの 1 秒あたりのフレーム数 |
+| framerate |ビデオの 1 秒あたりのフレーム数 |
 | width |ビデオの幅 (ピクセル単位) |
 | height |ビデオの高さ (ピクセル単位) |
-| Fragments |ビデオの時間ベースのチャンクの配列。メタデータはこのチャンク配列単位で分割されます |
+| fragments |ビデオの時間ベースのチャンクの配列。メタデータはこのチャンク配列単位で分割されます |
 | start |"ティック" 内のフラグメントの開始時刻 |
 | duration |"ティック" 内のフラグメントの長さ |
 | interval |指定したフラグメント内の各イベントの間隔 |
 | events |リージョンを含む配列 |
 | region |検出された単語または語句を表すオブジェクト |
-| 言語 |リージョン内で検出されたテキストの言語 |
+| language |リージョン内で検出されたテキストの言語 |
 | orientation |リージョン内で検出されたテキストの向き |
 | lines |リージョン内で検出されたラインの配列 |
-| テキスト |実際のテキスト |
+| text |実際のテキスト |
 
 ### <a name="json-output-example"></a>JSON 出力の例
 次の出力例には、一般的なビデオ情報とビデオ フラグメントがいくつか含まれています。 ビデオ フラグメントごとに、OCR MP によって検出されたすべてのリージョンと、言語およびそのテキストの向きが示されています。 また、リージョンには、そのリージョン内のすべての単語ラインと、ラインのテキスト、ラインの位置、およびこのラインのすべての単語情報 (単語のコンテンツ、位置、信頼度) も含まれます。 例を次に示します。この例には、コメントをいくつかインラインで挿入してあります。

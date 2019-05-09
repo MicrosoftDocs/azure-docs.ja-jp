@@ -4,7 +4,7 @@ description: このドキュメントでは、Azure Security Center でセキュ
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
@@ -12,19 +12,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2018
+ms.date: 1/9/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1948cee033ecb8b50fdd75513a07766490568600
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337259"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107941"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Azure Security Center でセキュリティ連絡先の詳細情報を指定する
 Azure Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定していない場合、それを指定するよう推奨されます。 この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 MSRC では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者からの脅威インテリジェンスと不正使用の報告を受け取ります。
 
-電子メール通知は、最初に警告が発生したとき、および重大度が高い警告に対してのみ送信されます。 また、電子メールの設定は、サブスクリプション ポリシーに対してのみ構成できます。 サブスクリプション内のリソース グループは、この設定を継承します。
+電子メール通知は、最初に警告が発生したとき、および重大度が高い警告に対してのみ送信されます。 また、電子メールの設定は、サブスクリプション ポリシーに対してのみ構成できます。 サブスクリプション内のリソース グループは、この設定を継承します。 
+
+アラート メール通知の送信:
+- 重大度が高いアラートに関してのみ送信されます
+- 1 日あたりアラートの種類ごとに 1 人のメール受信者に送信されます  
+- 1 日に 1 人の受信者に送信されるメール メッセージは 3 件以下です
+- 各メール メッセージには、アラートの集計ではなく単一のアラートが含まれます
+ 
+たとえば、RDP 攻撃について警告するメール メッセージが既に送信されている場合、別のアラートがトリガーされた場合でも、同じ日に RDP 攻撃に関する別のメール メッセージを受信することはありません。 
+ 
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。

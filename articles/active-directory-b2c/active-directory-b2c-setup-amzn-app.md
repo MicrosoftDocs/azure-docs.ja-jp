@@ -1,27 +1,27 @@
 ---
-title: Azure Active Directory B2C を使用して Amazon アカウントでのサインアップおよびサインインを設定する | Microsoft Docs
+title: Amazon アカウントでのサインアップとサインインを設定する - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C を使用するアプリケーションで Amazon アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: cec84b5be64f82d4edd286127330ae3bdebc6367
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 9098e92c594a5a6043888042f143cd875b02833d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007776"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Amazon アカウントでのサインアップおよびサインインを設定する
 
 ## <a name="create-an-amazon-application"></a>Amazon アプリケーションを作成する
 
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Amazon アカウントを持っていない場合は、[https://www.amazon.com/](https://www.amazon.com/) で取得できます。
+Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directory-b2c-reference-oauth-code.md)として Amazon アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Amazon アカウントを持っていない場合は、[https://www.amazon.com/](https://www.amazon.com/) で取得できます。
 
 1. Amazon アカウントの資格情報で [Amazon Developer Center](https://login.amazon.com/) にサインインします。
 2. まだ行っていない場合は、 **[Sign Up (サインアップ)]** をクリックして、開発者登録手順に従い、ポリシーを受け入れます。

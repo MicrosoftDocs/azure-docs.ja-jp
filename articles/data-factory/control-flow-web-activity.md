@@ -9,48 +9,47 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 71e89828645cadbbbf60527fca9968fd8ed568ff
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055728"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214302"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
-Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。 
+Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
 
 ## <a name="syntax"></a>構文
 
 ```json
-{  
+{
    "name":"MyWebActivity",
    "type":"WebActivity",
-   "typeProperties":{  
+   "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
-      "headers":{  
+      "headers":{
          "Content-Type":"application/json"
       },
-      "authentication":{  
-         "type":"ClientCertificate",  
+      "authentication":{
+         "type":"ClientCertificate",
          "pfx":"****",
          "password":"****"
       },
-      "datasets":[  
-         {  
+      "datasets":[
+         {
             "referenceName":"<ConsumedDatasetName>",
             "type":"DatasetReference",
-            "parameters":{  
+            "parameters":{
                ...
             }
          }
       ],
-      "linkedServices":[  
-         {  
+      "linkedServices":[
+         {
             "referenceName":"<ConsumedLinkedServiceName>",
             "type":"LinkedServiceReference"
          }
@@ -66,7 +65,7 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 -------- | ----------- | -------------- | --------
 name | Web アクティビティの名前 | String | はい
 type | **WebActivity** に設定する必要があります。 | String | はい
-method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされるタイプ: "GET"、"POST"、"PUT" | はい
+method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされている型"GET"、"POST"、"PUT" | はい
 url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式)。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。 | はい
 headers | 要求に送信されるヘッダー。 たとえば、要求で言語と種類を設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 文字列 (または文字列の resultType を含む式) | あり。Content-type ヘッダーが必要です。 `"headers":{ "Content-Type":"application/json"}`
 body | エンドポイントに送信されるペイロードを表します。  | 文字列 (または文字列の resultType を含む式)。 <br/><br/>「[要求ペイロードのスキーマ](#request-payload-schema)」セクションにある要求ペイロードのスキーマを参照してください。 | POST/PUT メソッドには必須です。
@@ -87,34 +86,46 @@ linkedServices | エンドポイントに渡されるリンクされたサービ
 | 非 JSON 型 | サポートされていません | サポートされていません |
 ||||
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 ### <a name="none"></a>なし
 認証が必要ない場合は、"authentication" プロパティを含めないでください。
 
 ### <a name="basic"></a>Basic
-基本認証で使用するユーザー名とパスワードを指定します。 
+基本認証で使用するユーザー名とパスワードを指定します。
 
 ```json
-"authentication":{  
-   "type":"Basic,
+"authentication":{
+   "type":"Basic",
    "username":"****",
    "password":"****"
 }
 ```
 
 ### <a name="client-certificate"></a>クライアント証明書
-PFX ファイルの Base64 でエンコードされたコンテンツとパスワードを指定します。 
+PFX ファイルの Base64 でエンコードされたコンテンツとパスワードを指定します。
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"ClientCertificate",
-   "pfx":"****",   
+   "pfx":"****",
    "password":"****"
 }
 ```
+
+### <a name="managed-identity"></a>マネージド ID
+
+データ ファクトリのマネージド ID を使用してアクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+
+```json
+"authentication": {
+    "type": "MSI",
+    "resource": "https://management.azure.com/"
+}
+```
+
 ## <a name="request-payload-schema"></a>要求ペイロードのスキーマ
-POST/PUT メソッドを使用する場合、body プロパティは、エンドポイントに送信されるペイロードを表します。 そのペイロードの一部としてリンクされたサービスやデータセットを渡すことができます。 ペイロードのスキーマを次に示します。 
+POST/PUT メソッドを使用する場合、body プロパティは、エンドポイントに送信されるペイロードを表します。 そのペイロードの一部としてリンクされたサービスやデータセットを渡すことができます。 ペイロードのスキーマを次に示します。
 
 ```json
 {
@@ -133,11 +144,11 @@ POST/PUT メソッドを使用する場合、body プロパティは、エンド
             }
         }]
     }
-} 
+}
 ```
 
 ## <a name="example"></a>例
-この例では、パイプライン内の Web アクティビティが REST エンドポイントを呼び出します。 Azure SQL リンクされたサービスと Azure SQL データセットがエンドポイントに渡されます。 REST エンドポイントは、Azure SQL 接続文字列を使用して Azure SQL サーバーに接続し、SQL サーバーのインスタンスの名前を返します。 
+この例では、パイプライン内の Web アクティビティが REST エンドポイントを呼び出します。 Azure SQL リンクされたサービスと Azure SQL データセットがエンドポイントに渡されます。 REST エンドポイントは、Azure SQL 接続文字列を使用して Azure SQL サーバーに接続し、SQL サーバーのインスタンスの名前を返します。
 
 ### <a name="pipeline-definition"></a>パイプラインの定義
 
@@ -231,7 +242,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>次の手順
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
+Data Factory でサポートされている他の制御フロー アクティビティを参照してください。
 
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)

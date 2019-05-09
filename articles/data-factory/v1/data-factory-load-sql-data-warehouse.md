@@ -9,17 +9,16 @@ ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5fb4034d49982d600fe5b0de17d0b198e3ee653e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077022"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "40246726"
 
 Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、さらに使いやすくなっています。  Azure Data Factory は、フル マネージドのクラウド ベースのデータ統合サービスであり、このサービスを使用して既存のシステムのデータを SQL Data Warehouse に入力することで、貴重な時間を節約しながら、SQL Data Warehouse の評価と分析ソリューションの構築を行うことができます。 Azure Data Factory を使用して Azure SQL Data Warehouse にデータを読み込む主な利点を次に示します。
 
-* **簡単にセットアップ**: 直感的なウィザードが示す 5 つの手順に従うだけです。スクリプトは必要ありません。
+* **簡単なセットアップ**: 5 つの手順からなる直感的なウィザードを使用でき、スクリプト作成の必要はありません。
 * **豊富なデータ ストアのサポート**: オンプレミスとクラウド ベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。
 * **セキュリティとコンプライアンスへの準拠**: データは HTTPS または ExpressRoute で転送され、グローバル サービスの存在により、データが地理的な境界を越えることはありません。
 * **PolyBase の使用による比類のないパフォーマンス**: PolyBase の使用は、Azure SQL Data Warehouse にデータを移動するための最も効率的な方法です。 ステージング BLOB の機能を使用して、Azure Blob ストレージを含むすべての種類のデータ ストアからデータを高速で読み込むことができます。これは PolyBase が既定でサポートしている機能です。
@@ -42,7 +41,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 > [!NOTE]
 >  Azure SQL Data Warehouse との間のデータ移動に関する Data Factory の機能の一般的な情報については、「[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](data-factory-azure-sql-data-warehouse-connector.md)」を参照してください。
 >
-> Azure ポータル、Visual Studio、PowerShell などを使用してパイプラインを構築することもできます。Azure Data Factory のコピー アクティビティを使用するための手順を含む簡単なチュートリアルについては、 [Azure BLOB から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 方法に関するチュートリアルをご覧ください。  
+> Azure ポータル、Visual Studio、PowerShell などを使用してパイプラインを構築することもできます。手順については、「[チュートリアル: Azure Data Factory でコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、Azure BLOB から Azure SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するチュートリアルを参照してください。  
 >
 >
 
@@ -110,7 +109,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
         CLUSTERED COLUMNSTORE INDEX
     )
     ```
-以上で前提条件の手順が完了し、コピー ウィザードを使用するコピー アクティビティを構成する準備が整いました。
+  以上で前提条件の手順が完了し、コピー ウィザードを使用するコピー アクティビティを構成する準備が整いました。
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
 1. [Azure Portal](https://portal.azure.com) にログインします。
@@ -118,7 +117,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 3. **[新しいデータ ファクトリ]** ウィンドウで、次の手順を実行します。
 
    1. **[名前]** に「**LoadIntoSQLDWDataFactory**」と入力します。
-       Azure Data Factory の名前はグローバルに一意にする必要があります。 **""LoadIntoSQLDWDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を (yournameLoadIntoSQLDWDataFactory などに) 変更して作成し直します。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
+       Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラー、**データ ファクトリ名 "LoadIntoSQLDWDataFactory" は使用できません** が表示された場合は、データ ファクトリの名前を変更し (yournameLoadIntoSQLDWDataFactory など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
    2. Azure **サブスクリプション**を選択します。
    3. リソース グループについて、次の手順のいずれかを行います。
       1. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
@@ -136,7 +135,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
    >
    >
 
-## <a name="step-1-configure-data-loading-schedule"></a>手順 1: データの読み込みスケジュールを構成する
+## <a name="step-1-configure-data-loading-schedule"></a>手順 1:データの読み込みスケジュールを構成する
 最初の手順は、データの読み込みスケジュールを構成することです。  
 
 **[プロパティ]** ページで次の操作を実行します。
@@ -147,8 +146,8 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
     ![コピー ウィザード - [プロパティ] ページ](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
-## <a name="step-2-configure-source"></a>手順 2: ソースを構成する
-このセクションでは、ソース (1 TB の TPC-H 行項目ファイルを含む Azure Blob) を構成する手順を示します。
+## <a name="step-2-configure-source"></a>手順 2:ソースの構成
+このセクションでは、1-TB TPC-H 行アイテム ファイルを含む Azure BLOB のソースを構成する手順を示します。
 
 1. データ ストアとして **[Azure Blob Storage]** を選択し、**[次へ]** をクリックします。
 
@@ -166,7 +165,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
     ![コピー ウィザード - ファイル形式の設定](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
-## <a name="step-3-configure-destination"></a>手順 3: 変換先を構成する
+## <a name="step-3-configure-destination"></a>手順 3:コピー先を構成する
 このセクションでは、変換先 (Azure SQL Data Warehouse データベースの `lineitem` テーブル) を構成する方法を示します。
 
 1. 変換先ストアとして **[Azure SQL Data Warehouse]** を選択し、**[次へ]** をクリックします。
@@ -183,13 +182,13 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
 4. [スキーマ マッピング] ページで [Apply column mapping (列マッピングの適用)] オプションをオフにして、**[次へ]** をクリックします。
 
-## <a name="step-4-performance-settings"></a>手順 4: パフォーマンス設定
+## <a name="step-4-performance-settings"></a>手順 4:パフォーマンス設定
 
 **[Allow polybase (PolyBase を許可する)]** は既定でオンになっています。  **[次へ]** をクリックします。
 
 ![コピー ウィザード - [スキーマ マッピング] ページ](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
-## <a name="step-5-deploy-and-monitor-load-results"></a>手順 5: デプロイを実行し、読み込み結果を監視する
+## <a name="step-5-deploy-and-monitor-load-results"></a>手順 5:デプロイし、読み込み結果を監視する
 1. **[完了]** ボタンをクリックしてデプロイします。
 
     ![コピー ウィザード - [概要] ページ](media/data-factory-load-sql-data-warehouse/summary-page.png)

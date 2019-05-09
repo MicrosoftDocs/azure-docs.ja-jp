@@ -1,22 +1,22 @@
 ---
 title: Speech Devices SDK を取得する
 titleSuffix: Azure Cognitive Services
-description: Speech Service は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 この記事では、Speech Devices SDK を利用して開発を始める方法について説明します。
+description: Speech Services は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 この記事では、Speech Devices SDK を利用して開発を始める方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: bc9497ff8d48cd1c5fd045f12908234462a7a2f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3c5874625ee9d1932c401238c1586ad89d5d206d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856724"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK を取得する
 
@@ -46,7 +46,7 @@ Subject: You're invited to the Microsoft organization
 
 登録時に指定したメール アドレスを使用して、以下の手順で Azure AD に参加します。 このプロセスによって、Speech Devices SDK の[ダウンロード サイト](https://shares.datatransfer.microsoft.com/)へのアクセスが許可されます。
 
-1. 受信した電子メール メッセージに記載されている **[開始]** をクリックします。 お客様の組織で既に Office 365 を使用している場合は、サインインするように求められ、手順 8. に進むことができます。
+1. 受信した電子メール メッセージに記載されている **[開始]** をクリックします。 お客様の組織で既に Office 365 を使用している場合は、サインインするように求められ、手順 7 に進むことができます。
 
 2. 表示されるブラウザー ウィンドウで **[次へ]** を選択します。
 

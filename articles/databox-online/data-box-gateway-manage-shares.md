@@ -5,29 +5,25 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: overview
-ms.date: 10/09/2018
+ms.topic: article
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: fd58bf9582663e64e1aefd8193d48d92f51dcd0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165668"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005079"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway の共有を管理する 
 
 この記事では、Azure Data Box Gateway の共有を管理する方法について説明します。 Azure Data Box Gateway の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用して共有を追加、削除、更新したり、共有に関連するストレージ アカウントのストレージ キーを同期したりします。
 
-> [!IMPORTANT]
-> - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-
-
 ## <a name="about-shares"></a>共有について
 
 データを Azure に転送するには、Azure Data Box Gateway で共有を作成する必要があります。 Data Box Gateway デバイスに追加する共有は、クラウド共有です。 これらの共有のデータは、クラウドに自動的にアップロードされます。 これらの共有には、すべてのクラウド機能 (更新、ストレージ キーの同期など) が適用されます。 デバイス データがクラウドのストレージ アカウントに自動的にプッシュされるようにする場合は、クラウド共有を使用します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 共有の追加
@@ -88,6 +84,9 @@ ms.locfileid: "49165668"
 
 更新機能を使用すると、オンプレミスの共有の内容を更新することができます。 共有を更新すると、前回の更新後にクラウドに追加された BLOB とファイルを含むすべての Azure オブジェクトを見つけるために、検索が開始されます。 これらの追加ファイルは、後でデバイス上のオンプレミスの共有の内容を更新するために使用されます。 
 
+> [!NOTE]
+> アクセス許可とアクセス制御リスト (ACL) は、更新操作の間で保持されません。 
+
 共有を更新するには、Azure portal で次の手順を実行します。
 
 1.  Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
@@ -111,7 +110,7 @@ ms.locfileid: "49165668"
 失敗がある場合は、アラートが発生します。 アラートには、問題を解決するための推奨事項と原因が詳しく記載されています。 アラートには、更新または削除が失敗したファイルなど、失敗の完全なまとめが記載されているファイルへのリンクもあります。
 
 >[!IMPORTANT]
-> このプレビュー リリースでは、一度に複数の共有を更新しないでください。
+> このリリースでは、一度に複数の共有を更新しないでください。
 
 ## <a name="sync-storage-keys"></a>ストレージ キーの同期
 

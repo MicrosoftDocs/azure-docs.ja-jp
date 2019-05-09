@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 6068f054a2ce695a889351b1f959319c64eb73fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ce66d44c0ddb84ed8c2908d02b8062195d6b461d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235600"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351017"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure ゲスト OS のサポートと提供終了のポリシー
 このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](cloud-services-guestos-update-matrix.md)) に関連しています。 このページの情報は、Virtual Machines (IaaS) には適用されません。
@@ -55,7 +55,9 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 
 バージョンは、有効期間の 60 日目に "*無効*" になります。 "無効" になるとは、そのバージョンがポータルから削除されることを意味します。 また、CSCFG 構成ファイルから設定することもできなくなります。 既存のデプロイは実行されたままになりますが、 新しいデプロイや、既存のデプロイに対するコードや構成の更新は許可されなくなります。
 
-ゲスト OS バージョンは "無効" になってからしばらくすると "*有効期限切れ*" となります。まだそのバージョンを実行しているインストールは強制的にアップグレードされ、今後ゲスト OS を自動的に更新するように設定されます。 有効期限切れにする操作は一括して行われるため、無効になったときから有効期限切れまでの期間は変動する場合があります。
+ゲスト OS バージョンは "無効" になってからしばらくすると "有効期限切れ" となります。まだその期限切れのバージョンを実行しているインストールはセキュリティと脆弱性の問題に晒されます。 一般に、有効期限切れにする操作は一括して行われるため、無効になったときから有効期限切れまでの期間は変動する場合があります。
+
+ゲスト OS を手動で更新するようにサービスを構成したお客様は、そのサービスが、サポートされているゲスト OS で実行されていることを確認する必要があります。 ゲスト OS を自動的に更新するようにサービスを構成している場合は、基になるプラットフォームでコンプライアンスが確保され、最新のゲスト OS にアップグレードされます。
 
 顧客が容易に移行できるように、これらの期間は Microsoft の判断で延長される場合があります。 変更は、 [Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)に反映されます。
 

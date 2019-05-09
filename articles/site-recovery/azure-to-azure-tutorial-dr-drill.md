@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 55e61158b2c0f21809be7d172f208fa5fea44713
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 16c791287cc50b5ac8992a86f6de1e3eeb5e329e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792562"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59260274"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する
 

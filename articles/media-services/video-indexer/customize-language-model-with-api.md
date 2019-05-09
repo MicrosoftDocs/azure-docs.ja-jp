@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 95334ac326b346da23f17d3a9d494120235abace
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ca1e66d20b19c1a5b85a4f4ff1c433331116bee7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283728"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002036"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Video Indexer API を使用して言語モデルをカスタマイズする
 
@@ -47,17 +47,17 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 --data-ascii "{body}" 
 ```
 
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-PersonModel?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?)。
 
 ### <a name="request-parameters"></a>要求パラメーター
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-|modelName|string|[はい]|言語モデルの名前|
-|language|string|[はい]|言語モデルの言語。 <br/>**language** パラメーターでは、BCP-47 形式の 'language tag-region' (たとえば、'en-US') で言語を指定する必要があります。 サポートされる言語は、英語 (en-US)、ドイツ語 (de-DE)、スペイン語 (es-ES)、アラビア語 (ar-EG)、フランス語 (fr-FR)、ヒンディー語 (hi-HI)、イタリア語 (it-IT)、日本語 (ja-JP)、ポルトガル語 (pt-BR)、ロシア語 (ru-RU)、中国語 (zh-CN) です。  |
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|string|はい|アカウントのグローバル一意識別子|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|modelName|string|はい|言語モデルの名前|
+|language|string|はい|言語モデルの言語。 <br/>**language** パラメーターでは、BCP-47 形式の 'language tag-region' (たとえば、'en-US') で言語を指定する必要があります。 サポートされる言語は、英語 (en-US)、ドイツ語 (de-DE)、スペイン語 (es-ES)、アラビア語 (ar-EG)、フランス語 (fr-FR)、ヒンディー語 (hi-HI)、イタリア語 (it-IT)、日本語 (ja-JP)、ポルトガル語 (pt-BR)、ロシア語 (ru-RU)、中国語 (zh-CN) です。  |
 
 ### <a name="request-body"></a>要求本文
 
@@ -118,16 +118,16 @@ Curl の要求を以下に示します。
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}"
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5bac3cf761779a6c2ab27?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train)。
 
 ### <a name="request-parameters"></a>要求パラメーター
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountID|string|[はい]|アカウントのグローバル一意識別子|
-|modelId|string|[はい]|言語モデルの ID (言語モデルの作成時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountID|string|はい|アカウントのグローバル一意識別子|
+|modelId|string|はい|言語モデルの ID (言語モデルの作成時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -183,16 +183,16 @@ Curl の要求を以下に示します。
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5ba53782606e91f65be9d?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete)。
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountID|string|[はい]|アカウントのグローバル一意識別子|
-|modelId|string|[はい]|言語モデルの ID (言語モデルの作成時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountID|string|はい|アカウントのグローバル一意識別子|
+|modelId|string|はい|言語モデルの ID (言語モデルの作成時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -225,16 +225,16 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 --data-ascii "{body}" 
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b3ce85f4684240bdb78f?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update)。
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountID|string|[はい]|アカウントのグローバル一意識別子|
-|modelId|string|[はい]|言語モデルの ID (言語モデルの作成時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountID|string|はい|アカウントのグローバル一意識別子|
+|modelId|string|はい|言語モデルの ID (言語モデルの作成時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 |modelName|string|いいえ |モデルに付けることができる新しい名前|
 |enable|ブール値|いいえ |このモデルの配下にあるすべてのファイルを有効 (true) にするか無効 (false) にするかを選択します|
 
@@ -294,19 +294,19 @@ Curl の要求を以下に示します。
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}?fileName={string}&enable={string}"
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b60547f33c1c2b2d1375?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)。
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
-|modelId|string|[はい]|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
-|フィールド|string|[はい]|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|string|はい|アカウントのグローバル一意識別子|
+|modelId|string|はい|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
+|フィールド|string|はい|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 |fileName|string|いいえ |更新後のファイル名|
-|enable|ブール値|いいえ |言語モデル内でこのファイルを有効 (true) にするか無効 (false) にするかを更新します||
+|enable|ブール値|いいえ |言語モデル内でこのファイルを有効 (true) にするか無効 (false) にするかを更新します|
 
 ### <a name="request-body"></a>要求本文
 
@@ -344,16 +344,16 @@ Curl の要求を以下に示します。
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b4fcbd9b437d27d53f16)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get)。
 
 ### <a name="request-parameters-and-request-body"></a>要求パラメーターと要求本文
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountID|string|[はい]|アカウントのグローバル一意識別子|
-|modelId|string|[はい]|言語モデルの ID (言語モデルの作成時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountID|string|はい|アカウントのグローバル一意識別子|
+|modelId|string|はい|言語モデルの ID (言語モデルの作成時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -409,15 +409,15 @@ Curl の要求を以下に示します。
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}"
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b4979e6ecbd30faa6f75?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)。
 
 ### <a name="request-parameters"></a>要求パラメーター
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountID|string|[はい]|アカウントのグローバル一意識別子|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountID|string|はい|アカウントのグローバル一意識別子|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -480,17 +480,17 @@ Curl の要求を以下に示します。
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b57b5de51e64ee52242e)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete)。
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountID|string|[はい]|アカウントのグローバル一意識別子|
-|modelId|string|[はい]|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
-|フィールド|string|[はい]|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountID|string|はい|アカウントのグローバル一意識別子|
+|modelId|string|はい|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
+|フィールド|string|はい|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -517,17 +517,17 @@ Curl の要求を以下に示します。
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b73f9e6416d7a9965b42)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model)。
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountID|string|[はい]|アカウントのグローバル一意識別子|
-|modelId|string|[はい]|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
-|フィールド|string|[はい]|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountID|string|はい|アカウントのグローバル一意識別子|
+|modelId|string|はい|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
+|フィールド|string|はい|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -566,17 +566,17 @@ Curl の要求を以下に示します。
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}"
 ```
  
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b99e522cb47bd9679122)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)。
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountID|string|[はい]|アカウントのグローバル一意識別子|
-|modelId|string|[はい]|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
-|フィールド|string|[はい]|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountID|string|はい|アカウントのグローバル一意識別子|
+|modelId|string|はい|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
+|フィールド|string|はい|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文 
 

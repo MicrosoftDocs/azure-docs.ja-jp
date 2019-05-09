@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b76b64ddf854b32c51b8b319479a35331e0f72f3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 13a2eb080c6822a8a6786be1952bc588fa8afd80
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957437"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729212"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
 
@@ -27,6 +27,8 @@ API Management には、クライアント証明書を使用して API のバッ
 API Management REST API を使用して証明書を管理する方法の詳細については、「 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API 証明書エンティティ</a>」をご覧ください。
 
 ## <a name="prerequisites"> </a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 このガイドは、クライアント証明書認証を使用して API のバックエンド サービスにアクセスするように、API Management サービス インスタンスを構成する方法を示しています。 この記事の手順を実行する前に、クライアント証明書の認証用にバックエンド サービスを構成する必要があります ([Azure WebSites で証明書の認証を構成するには、こちらの記事を参照してください][to configure certificate authentication in Azure WebSites refer to this article])。 証明書へのアクセスと、API Management サービスに証明書をアップロードするためのパスワードが必要です。
 
@@ -81,11 +83,11 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ## <a name="self-signed-certificates"></a>自己署名証明書
 
-自己署名証明書を使用している場合は、API Management がバックエンド システムと通信するために、証明書チェーン検証を無効にする必要があります。 そうしないと、エラー コード 500 が返されます。 これを構成するには、[`New-AzureRmApiManagementBackend`](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (新しいバック エンド) または[`Set-AzureRmApiManagementBackend`](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (既存のバック エンド) PowerShell コマンドレットを使用して、`-SkipCertificateChainValidation` パラメーターを `True` に設定します。
+自己署名証明書を使用している場合は、API Management がバックエンド システムと通信するために、証明書チェーン検証を無効にする必要があります。 そうしないと、エラー コード 500 が返されます。 これを構成するには、[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (新しいバック エンド) または[`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (既存のバック エンド) PowerShell コマンドレットを使用して、`-SkipCertificateChainValidation` パラメーターを `True` に設定します。
 
-```
-$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
-New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+```powershell
+$context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
 [How to add operations to an API]: api-management-howto-add-operations.md

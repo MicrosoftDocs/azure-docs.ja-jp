@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 73e1fac5ba9fbb981c92ff8d32064f7d34729ef7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53813670"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448392"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 
 > [!NOTE]
-> HockeyApp は新しいアプリケーションでは使用できなくなりました。 既存の HockeyApp の展開については今後も動作します。 Visual Studio App Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [App Center と Application Insights でアプリを設定する方法を確認してください](../../application-insights/app-insights-mobile-center-quickstart.md)。
+> HockeyApp は新しいアプリケーションでは使用できなくなりました。 既存の HockeyApp の展開については今後も動作します。 Visual Studio App Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [App Center と Application Insights でアプリを設定する方法を確認してください](../../azure-monitor/learn/mobile-center-quickstart.md)。
 
-[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) は、稼働中のデスクトップ アプリとモバイル アプリを監視するためのサービスです。 HockeyApp から、(クラッシュ データの取得だけでなく) カスタム テレメトリやトレース テレメトリを送信して、使用状況を監視し、診断に役立てることができます。 このテレメトリのストリームは、[Azure Application Insights](../../application-insights/app-insights-overview.md) の強力な [Analytics](../../azure-monitor/app/analytics.md) 機能を使用して照会できます。 さらに、 [カスタム テレメトリとトレース テレメトリをエクスポートする](export-telemetry.md)こともできます。 これらの機能を有効にするには、Application Insights に HockeyApp カスタム データを中継するブリッジを設定します。
+[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) は、稼働中のデスクトップ アプリとモバイル アプリを監視するためのサービスです。 HockeyApp から、(クラッシュ データの取得だけでなく) カスタム テレメトリやトレース テレメトリを送信して、使用状況を監視し、診断に役立てることができます。 このテレメトリのストリームは、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) の強力な [Analytics](../../azure-monitor/app/analytics.md) 機能を使用して照会できます。 さらに、 [カスタム テレメトリとトレース テレメトリをエクスポートする](export-telemetry.md)こともできます。 これらの機能を有効にするには、Application Insights に HockeyApp カスタム データを中継するブリッジを設定します。
 
 ## <a name="the-hockeyapp-bridge-app"></a>HockeyApp ブリッジ アプリ
 HockeyApp ブリッジ アプリは、Application Insights 内の HockeyApp カスタムおよびトレース テレメトリに Analytics 機能や連続エクスポート機能を使用してアクセスできるようにする核となる機能です。 HockeyApp ブリッジ アプリの作成後に HockeyApp で収集されたカスタムおよびトレース イベントは、これらの機能からアクセスできるようになります。 このようなブリッジ アプリの 1 つを設定する方法を確認しましょう。
@@ -33,7 +33,7 @@ HockeyApp で [Account Settings (アカウント設定)]、 [[API Tokens (API �
 
 ![Get a HockeyApp API token](./media/hockeyapp-bridge-app/01.png)
 
-Microsoft Azure Portal を開いて、 [Application Insights のリソースを作成](../../application-insights/app-insights-create-new-resource.md)します。 [アプリケーションの種類] を [HockeyApp ブリッジ アプリケーション] に設定します。
+Microsoft Azure Portal を開いて、 [Application Insights のリソースを作成](../../azure-monitor/app/create-new-resource.md )します。 [アプリケーションの種類] を [HockeyApp ブリッジ アプリケーション] に設定します。
 
 ![New Application Insights resource](./media/hockeyapp-bridge-app/02.png)
 
@@ -58,7 +58,7 @@ HockeyApp ブリッジのフィールドが表示されます。
 ## <a name="analytics"></a>Analytics
 Analytics はデータのアドホック クエリのための強力なツールです。使用すると、テレメトリを診断、分析し、根本原因とパターンを迅速に突き止めることができます。
 
-![[分析]](./media/hockeyapp-bridge-app/05.png)
+![Analytics](./media/hockeyapp-bridge-app/05.png)
 
 * [Analytics の詳細](../../azure-monitor/log-query/get-started-portal.md)
 

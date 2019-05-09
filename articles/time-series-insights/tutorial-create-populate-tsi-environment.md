@@ -9,12 +9,12 @@ ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: c2aeab6888cf93be75742028b0354c45a1834d51
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 58b19a039bb6aebcd2687ab80cdd29c5f378645e
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537284"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200209"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル: Azure Time Series Insights 環境を作成する
 
@@ -41,7 +41,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="overview"></a>概要
 
-TSI 環境とは、デバイス データが収集、格納される場所のことです。 TSI 環境に格納されたデータは、[TSI エクスプローラー](time-series-quickstart.md)や [TSI Query API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) を使用してデータのクエリや分析を実行できます。
+TSI 環境とは、デバイス データが収集、格納される場所のことです。 TSI 環境に格納されたデータは、[TSI エクスプローラー](time-series-quickstart.md)や [TSI Query API](/rest/api/time-series-insights/ga-query-api) を使用してデータのクエリや分析を実行できます。
 
 シミュレートされたデバイスや物理デバイスと同じように、IoT Hub は Azure クラウドに安全に接続してデータを転送するためにデバイスによって使用される、コネクション ポイントです。 [TSI の概要](time-series-insights-overview.md)で説明したように、IoT Hub はデータを TSI 環境にストリーミングするイベント ソースとしても機能します。 
 

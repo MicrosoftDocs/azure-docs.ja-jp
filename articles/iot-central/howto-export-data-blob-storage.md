@@ -8,18 +8,18 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: ae1e71170952a2f05e371de68b519eba522e3298
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f6e44b21a2a2e174ffa49073fdeb8cc96910a69e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318408"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295081"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Azure Blob Storage にデータをエクスポートする
 
 *このトピックでは、管理者に適用されます。*
 
-この記事では、定期的にデータを **Azure BLOB ストレージ アカウント**にエクスポートする Azure IoT Central の連続データ エクスポート機能の使用方法について詳細に説明します。 **測定**、**デバイス**、**デバイス テンプレート**を Apache Avro 形式のファイルにエクスポートできます。 エクスポートしたデータは、Azure Machine Learning のトレーニング モデルや Microsoft Power BI の長期傾向分析などのコールド パス分析に使用できます。
+この記事では、定期的にデータを **Azure BLOB ストレージ アカウント**にエクスポートする Azure IoT Central の連続データ エクスポート機能の使用方法について説明します。 **測定**、**デバイス**、**デバイス テンプレート**を Apache Avro 形式のファイルにエクスポートできます。 エクスポートしたデータは、Azure Machine Learning のトレーニング モデルや Microsoft Power BI の長期傾向分析などのコールド パス分析に使用できます。
 
 > [!Note]
 > この場合も、連続データ エクスポートを有効にすると、その時点以降のデータのみが取得されます。 現在は、連続データ エクスポートがオフになっていたときのデータを取得することはできません。 より多くの履歴データを保持するには、連続データ エクスポートを早い段階で有効にしてください。
@@ -29,14 +29,77 @@ ms.locfileid: "53318408"
 
 - ご利用の IoT Central アプリケーションの管理者であること
 
+
+## <a name="set-up-export-destination"></a>エクスポート先の設定
+
+エクスポート先となる既存のストレージがない場合は、次の手順に従います。
+
+## <a name="create-storage-account"></a>ストレージ アカウントの作成
+
+1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 詳細については、[Azure Storage のドキュメント](https://aka.ms/blobdocscreatestorageaccount)を参照してください。
+2. アカウントの種類として、**[汎用]** または **[BLOB ストレージ]** を選択します。
+3. サブスクリプションを選択します。 
+
+    > [!Note] 
+    > これで、ご使用の従量課金制 IoT Central アプリケーションのサブスクリプションとは**異なる**別のサブスクリプションにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
+
+4. ご自分のストレージ アカウントでコンテナーを作成します。 ストレージ アカウントに移動します。 **[Blob service]** で **[BLOB の参照]** を選択します。 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
+
+
+## <a name="set-up-continuous-data-export"></a>連続データ エクスポートを設定する
+
+これでデータのエクスポート先となるストレージができました。次の手順に従って、継続的データ エクスポートを設定します。 
+
+1. ご使用の IoT Central アプリケーションにサインインします。
+
+2. 左側のメニューで、**[継続的データ エクスポート]** を選択します。
+
+    > [!Note]
+    > 左側のメニューに [継続的データ エクスポート] が表示されない場合は、そのアプリの管理者ではありません。 データ エクスポートの設定について、管理者に問い合わせてください。
+
+    ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu.PNG)
+
+3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、**[Azure Blob Storage]** を選択します。 
+
+    > [!NOTE] 
+    > アプリごとのエクスポートの最大数は 5 です。 
+
+    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new.PNG)
+
+4. ドロップダウン リスト ボックスで、お使いの **Storage Account 名前空間**を選択します。 リスト内の最後のオプション (**[Enter a connection string]\(接続文字列を入力する\)**) を選択することもできます。 
+
+    > [!NOTE] 
+    > ご使用の **IoT Central アプリと同じサブスクリプション**の Storage Account 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、**[Enter a connection string]\(接続文字列を入力する\)** を選択して、手順 5 に進みます。
+
+    > [!NOTE] 
+    > 7 日間の試用版アプリの場合、継続的データ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 7 日間の試用版アプリに関連付けられた Azure サブスクリプションがないのはこのためです。
+
+    ![新しい cde イベント ハブの作成](media/howto-export-data/export-create-blob.png)
+
+5. (省略可能) **[Enter a connection string]\(接続文字列を入力する\)** を選択すると、接続文字列を貼り付けるための新しいボックスが表示されます。 次の接続文字列を取得するには:
+    - ストレージ アカウント。Azure portal で [ストレージ アカウント] に移動します。
+        - **[設定]** で **[アクセス キー]** を選択します。
+        - key1 接続文字列または key2 接続文字列のいずれかをコピーします。
+ 
+6. ドロップダウン リスト ボックスでコンテナーを選択します。
+
+7. **[Data to export]\(エクスポートするデータ\)** で、エクスポートするデータの種類を **[オン]** に設定して指定します。
+
+6. 継続的データ エクスポートを有効にするには、**[データのエクスポート]** が **[オン]** になっていることを確認します。 **[保存]** を選択します。
+
+  ![連続データ エクスポートを構成する](media/howto-export-data/export-list-blob.png)
+
+7. 数分後に、選択したエクスポート先にデータが表示されます。
+
+
 ## <a name="export-to-azure-blob-storage"></a>Azure Blob Storage にエクスポートする
 
 測定、デバイス、およびデバイス テンプレートのデータは、1 分間に 1 回、お使いのストレージ アカウントにエクスポートされます。各ファイルには、最後にエクスポートしたファイル以降の変更バッチが含まれています。 エクスポートされたデータは [Apache Avro](https://avro.apache.org/docs/current/index.html) 形式で、3 つのフォルダーにエクスポートされます。 ストレージ アカウントでの既定のパスは次のとおりです。
-    - メッセージ: 
+- メッセージ: 
 {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - デバイス: 
+- デバイス: 
 {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - デバイス テンプレート: 
+- デバイス テンプレート: 
 {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ### <a name="measurements"></a>測定

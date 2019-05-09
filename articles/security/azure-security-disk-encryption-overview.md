@@ -1,19 +1,18 @@
 ---
 title: 概要 - IaaS VM のための Azure Disk Encryption | Microsoft Docs
 description: この記事では、IaaS VM の Microsoft Azure Disk Encryption の概要を示します。
-author: mestew
+author: msmbaldwin
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.author: mstewart
-ms.date: 12/07/2018
+ms.author: mbaldwin
+ms.date: 03/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 66d788aec83e3e57a49b063f2ca80484360f639d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093286"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295285"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>IaaS VM の Azure Disk Encryption
 
@@ -72,7 +71,7 @@ Disk Encryption ソリューションでは、次の顧客シナリオがサポ�
    > [!NOTE]
    > 一部の Linux ディストリビューションでは、OS ドライブの暗号化はサポートされていません。 詳しくは、「[Azure Disk Encryption に関する FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)」をご覧ください。
    
-* Windows 記憶域スペースを使用して構成されている Windows VM の暗号化を有効にする。
+* Windows Server 2016 以降の Windows 記憶域スペースを使用して構成されている VM の暗号化を有効にする。
 * 既存の暗号化された Premium および Premium 以外のストレージ VM の暗号化設定を更新する。
 * キー暗号化キー (KEK) シナリオと非 KEK シナリオ両方で暗号化された VM をバックアップおよび復元する。
 * すべての Azure パブリック リージョンと Azure Government リージョンをサポートする。
@@ -82,6 +81,7 @@ Disk Encryption ソリューションでは、次の顧客シナリオがサポ�
 * Basic レベルの IaaS VM。
 * Linux IaaS VM での OS ドライブの暗号化を無効にする。
 * OS ドライブが Linux IaaS VM で暗号化されている場合にデータ ドライブの暗号化を無効にする。
+* Linux 仮想マシン スケール セットの OS ドライブの暗号化。
 * 従来の VM の作成方法を使用して作成された IaaS VM。
 * Linux IaaS VM で顧客カスタム イメージの暗号化を有効にする。
 * オンプレミスのキー管理システムとの統合。

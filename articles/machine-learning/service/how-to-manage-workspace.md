@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Azure portal 内で Azure Machine Learning Services ワークスペースを作成、表示、削除する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73a47929fa26ae0729943e17d0f6c9a054f4f6bb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276708"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359922"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Azure Machine Learning Services ワークスペースを作成し、管理する
 
@@ -24,28 +24,23 @@ ms.locfileid: "53276708"
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成 
 
-ワークスペースを作成するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+ワークスペースを作成するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="view-a-workspace"></a>ワークスペースの表示
+## <a name="view"></a>ワークスペースの表示
 
 1. ポータルの左上隅にある **[すべてのサービス]** を選択します。 
 
-1. **[すべてのサービス]** フィルター フィールドに、「**Machine Learning Services ワークスペース**」と入力します。  
+1. **[すべてのサービス]** フィルター フィールドに、「**Machine Learning service**」と入力します。  
 
-   ![Machine Learning Services ワークスペースを検索する](media/how-to-manage-workspace/allservices-search1.png)
+1. **[Machine Learning service ワークスペース]** を選択します。
 
-1. フィルターの結果から **[Machine Learning service workspace]\(Machine Learning Services ワークスペース\)** を選択すると、ご利用のワークスペースの一覧が表示されます。 
-
-   ![Azure Machine Learning service ワークスペースの一覧表示](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Azure Machine Learning service ワークスペースを検索する](media/how-to-manage-workspace/all-services.png)
 
 1. 見つかったワークスペースの一覧にひととおり確認します。 サブスクリプション、リソース グループ、場所に基づいてフィルター処理できます。  
 
-   ![ワークスペースの表示](media/how-to-manage-workspace/allservices_view_workspace.PNG)
-
-1. 先ほど作成したワークスペースを選択すると、そのプロパティが表示されます。
-
+1. ワークスペースを選択して、そのプロパティを表示します。
    ![ワークスペースのプロパティ](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>ワークスペースを削除する

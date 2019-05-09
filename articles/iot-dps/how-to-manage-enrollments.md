@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0970131c4b674fd864ad574b0f749cd6d7f6f2a2
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142210"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089388"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure Portal でデバイス登録を管理する方法
 
@@ -28,15 +28,15 @@ ms.locfileid: "42142210"
 
     次の手順を使用して、任意のデバイス グループ用に、ポータルで登録グループを作成できます。
 
-    1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。  
-    1. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。  
-    1. 目的のプロビジョニング サービスで、次の手順を実行します。  
-       a. **[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。  
-       b. 上部にある **[追加]** をクリックします。  
-       c. [Add Enrollment Group]\(登録グループの追加\) パネルが表示されたら、登録リストのエントリ情報を入力します。  **グループ名**は必須です。 **[証明書の種類]** に "[CA] または [中間]" を選択し、デバイス グループのルートの **[Primary certificate]/(プライマリ証明書/)** をアップロードします。  
-       d. **[Save]** をクリックします。 登録グループの作成に成功すると、**[Enrollment Groups]\(登録グループ\)** タブにグループ名が表示されます。  
+  1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。  
+  1. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。  
+  1. 目的のプロビジョニング サービスで、次の手順を実行します。  
+     a. **[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。  
+     b. 上部にある **[追加]** をクリックします。  
+     c. [Add Enrollment Group]\(登録グループの追加\) パネルが表示されたら、登録リストのエントリ情報を入力します。  **グループ名**は必須です。 **[証明書の種類]** に "[CA] または [中間]" を選択し、デバイス グループのルートの **[Primary certificate]/(プライマリ証明書/)** をアップロードします。  
+     d. **[Save]** をクリックします。 登録グループの作成に成功すると、**[Enrollment Groups]\(登録グループ\)** タブにグループ名が表示されます。  
 
-       [![ポータルでの登録グループ](./media/how-to-manage-enrollments/group-enrollment.png)]  (./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![ポータルでの登録グループ](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
 * **個別登録**は、登録する単一のデバイスのエントリです。 個別登録では、構成証明メカニズムとして x509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM または仮想 TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別登録を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。

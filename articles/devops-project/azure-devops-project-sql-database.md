@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure DevOps Projects を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする'
+title: チュートリアル:Azure DevOps Projects を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用すると、いくつかの簡単な手順で ASP.NET アプリと Azure SQL Database コードをデプロイできます。
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 32f33e4ac66ad456b5ff8807d6a1b5ea5f541fed
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161403"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845224"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>チュートリアル: Azure DevOps Projects を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
 
 Azure DevOps Projects によって提供される簡略化されたエクスペリエンスを使用すると、既存のコードと Git リポジトリを使用するか、サンプル アプリケーションを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。 
 
@@ -122,8 +122,8 @@ DevOps Projects では、Azure DevOps 組織から Azure サブスクリプシ�
     
 1. 左側の **[変数]** を選択します。 
 
-  > [!NOTE]
-  > 次の手順は、SQL Server のパスワードを変更した場合にのみ行います。 パスワード変数は 1 つだけあります。
+   > [!NOTE]
+   > 次の手順は、SQL Server のパスワードを変更した場合にのみ行います。 パスワード変数は 1 つだけあります。
   
 1. **[値]** ボックスの横にある南京錠アイコンを選択し、新しいパスワードを入力して、**[保存]** を選択します。
 
@@ -136,13 +136,13 @@ DevOps Projects では、Azure DevOps 組織から Azure サブスクリプシ�
 1. 右側で **[リリースの表示]** を選択して、リリースの履歴を表示します。
 
 1. リリースの横にある省略記号 (...) を選択し、**[開く]** を選択します。  
-    リリース概要、関連付けられた作業項目、テストなど、いくつかのメニューを調べることができます。
+     リリース概要、関連付けられた作業項目、テストなど、いくつかのメニューを調べることができます。
 
 1. **[コミット]** を選択します。  
-    このビューには、このデプロイに関連付けられているコードのコミットが表示されます。 リリースを比較して、デプロイ間のコミットの相違を表示します。
+     このビューには、このデプロイに関連付けられているコードのコミットが表示されます。 リリースを比較して、デプロイ間のコミットの相違を表示します。
 
 1. **[ログ]** を選択します。  
-    ログには、デプロイ プロセスに関する有用な情報が含まれます。 それらは、デプロイ中もデプロイ後も表示されます。
+     ログには、デプロイ プロセスに関する有用な情報が含まれます。 それらは、デプロイ中もデプロイ後も表示されます。
 
 ## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>変更を Azure Repos にコミットし、Azure に自動的にデプロイする 
 
@@ -182,10 +182,10 @@ Azure SQL データベースに接続するには、適切なアクセスを許�
 
     これで、必要に応じて、SQL Server Management Studio や Visual Studio などのクライアント ツールを使用して、SQL Server と Azure SQL データベースに接続できるようになりました。 **[サーバー名]** プロパティを使用して接続します。
 
-    DevOps Projects のプロジェクトの初期構成の際にデータベース ユーザー名を変更しなかった場合、ユーザー名はメール アドレスのローカル部分です。 たとえば、メール アドレスが *johndoe@microsoft.com* の場合、ユーザー名は *johndoe* です。
+    DevOps Projects のプロジェクトの初期構成の際にデータベース ユーザー名を変更しなかった場合、ユーザー名はメール アドレスのローカル部分です。 たとえば、メール アドレスが *johndoe\@microsoft.com* の場合、ユーザー名は *johndoe* です。
 
- > [!NOTE]
- > SQL ログインのパスワードを変更する場合は、「CD パイプラインを確認する」セクションで説明したように、リリース パイプライン変数のパスワードを変更する必要があります。
+   > [!NOTE]
+   > SQL ログインのパスワードを変更する場合は、「CD パイプラインを確認する」セクションで説明したように、リリース パイプライン変数のパスワードを変更する必要があります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

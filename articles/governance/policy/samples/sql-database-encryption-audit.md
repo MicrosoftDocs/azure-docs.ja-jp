@@ -1,21 +1,20 @@
 ---
 title: サンプル - SQL Database の Transparent Data Encryption の監査
-description: このサンプル ポリシーでは、SQL Database で Transparent Data Encryption が有効になっていないかどうかを監査します。
-services: azure-policy
+description: このサンプル ポリシー定義は、SQL Database で Transparent Data Encryption が有効になっていないかどうかを監査します。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 10/29/2018
+ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 36eb62dfa7ae45b70f5907241c66f2286f9ce760
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e8ee800ff9f286f901a84a039e3c433442ae11b2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310625"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789580"
 ---
-# <a name="audit-sql-database-encryption"></a>SQL Database の暗号化の監査
+# <a name="sample---audit-sql-database-encryption"></a>サンプル - SQL Database の暗号化の監査
 
 このビルトイン ポリシーでは、SQL Database で Transparent Data Encryption が有効になっていないかどうかを監査します。
 
@@ -33,12 +32,12 @@ ms.locfileid: "53310625"
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ```azurepowershell-interactive
-$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/17k78e20-9358-41c9-923c-fb736d382a12
+$definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/17k78e20-9358-41c9-923c-fb736d382a12
 
-New-AzureRmPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scope <scope>
+New-AzPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scope <scope>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>PowerShell でのデプロイをクリーンアップする
@@ -46,7 +45,7 @@ New-AzureRmPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition 
 ポリシーの割り当てを削除するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
+Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 ```
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ

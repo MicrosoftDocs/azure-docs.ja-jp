@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: aacfc98a9132a59c90a8f67d5a3877b75fa59dfe
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.subservice: metrics
+ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605587"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287266"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
 
@@ -55,7 +55,7 @@ Azure Monitor にカスタム メトリックを送信するには、メトリ�
 >
 
 ### <a name="timestamp"></a>Timestamp
-Azure Monitor に送信されるデータ ポイントには、それぞれタイムスタンプが記録されている必要があります。 このタイムスタンプはメトリック値が測定または収集された日時を表します。 Azure Monitor は、現在から 20 分前までの、および現在から 5 分後までのタイムスタンプが付いたメトリック データを受け付けます。
+Azure Monitor に送信されるデータ ポイントには、それぞれタイムスタンプが記録されている必要があります。 このタイムスタンプはメトリック値が測定または収集された日時を表します。 Azure Monitor は、現在から 20 分前までの、および現在から 5 分後までのタイムスタンプが付いたメトリック データを受け付けます。 タイムスタンプは、ISO 8601 形式である必要があります。
 
 ### <a name="namespace"></a>名前空間
 名前空間は類似のメトリックを分類またはグループ化する方法です。 名前空間を使用すると、収集する情報またはパフォーマンス指標に基づいてメトリックのグループを分離できます。 たとえば、**ContosoMemoryMetrics** という名前空間では、アプリをプロファイリングするメモリ使用量メトリックを追跡し、 **ContosoAppTransaction** という別の名前空間では、アプリケーション内のユーザー トランザクションに関するすべてのメトリックを追跡するといったことが可能です。
@@ -65,7 +65,7 @@ Azure Monitor に送信されるデータ ポイントには、それぞれタ�
 
 ### <a name="dimension-keys"></a>ディメンション キー
 ディメンションは、収集しているメトリックに関する追加の特性を説明するのに役立つキーと値のペアです。 この追加の特性を使用することで、より多くの情報をメトリックについて収集し、より深い洞察を得ることが可能になります。 たとえば、**Memory Bytes In Use** メトリックに **Process** というディメンション キーを追加して、VM 上の各プロセスが消費するメモリのバイト数を取得することもできます。 このキーを使用すれば、メトリックをフィルタリングし、メモリ固有のプロセスが使用する容量を確認したり、メモリ使用量で上位 5 つのプロセスを識別したりすることが可能になります。
-各カスタム メトリックは最大 10 個のディメンションを持つことができます。
+ディメンションは省略可能です。すべてのメトリックがディメンションを持つとは限りません。 カスタム メトリックは最大 10 個のディメンションを持つことができます。
 
 ### <a name="dimension-values"></a>ディメンション値
 メトリックのデータ ポイントを報告するとき、報告されるメトリックのディメンション キーごとに、対応するディメンション値が存在します。 たとえば、VM で ContosoApp によって使用されているメモリを報告する場合、
@@ -75,6 +75,7 @@ Azure Monitor に送信されるデータ ポイントには、それぞれタ�
 * ディメンション値は **ContosoApp.exe** のようになります。
 
 メトリック値を発行するとき、ディメンション キーごとに 1 つのディメンション値しか指定できません。 VM 上の複数のプロセスについて同じメモリ使用率を収集する場合、そのタイムスタンプで複数のメトリック値を報告できます。 各メトリック値は、**Process** ディメンション キーに異なるディメンション値を指定します。
+ディメンションは省略可能です。すべてのメトリックがディメンションを持つとは限りません。 メトリックの投稿にディメンション キーが定義されている場合、対応するディメンション値は必須です。
 
 ### <a name="metric-values"></a>メトリックの値
 Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保存します。 ただし場合によっては、メトリックを 1 分間に複数回サンプリングする必要があります。 たとえば、CPU 使用率などがそうです。 また、多数のイベントごとに測定が必要な場合もあります。 たとえば、サインイン トランザクションの待機時間などです。 出力して Azure Monitor に送信する必要がある未処理値の数を制限するために、ローカルで値を事前集計して出力することができます。
@@ -169,13 +170,13 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 
 |Azure リージョン|リージョンのエンドポイントのプレフィックス|
 |---|---|
-|米国東部|https://eastus.monitoring.azure.com/|
-|米国中南部|https://southcentralus.monitoring.azure.com/|
-|米国中西部|https://westcentralus.monitoring.azure.com/|
-|米国西部 2|https://westus2.monitoring.azure.com/|
-|東南アジア|https://southeastasia.monitoring.azure.com/|
-|北ヨーロッパ|https://northeurope.monitoring.azure.com/|
-|西ヨーロッパ|https://westeurope.monitoring.azure.com/|
+|米国東部| https:\//eastus.monitoring.azure.com/ |
+|米国中南部| https:\//southcentralus.monitoring.azure.com/ |
+|米国中西部| https:\//westcentralus.monitoring.azure.com/ |
+|米国西部 2| https:\//westus2.monitoring.azure.com/ |
+|東南アジア| https:\//southeastasia.monitoring.azure.com/ |
+|北ヨーロッパ| https:\//northeurope.monitoring.azure.com/ |
+|西ヨーロッパ| https:\//westeurope.monitoring.azure.com/ |
 
 ## <a name="quotas-and-limits"></a>クォータと制限
 Azure Monitor では、カスタム メトリックの使用に次の制限があります。
@@ -185,6 +186,7 @@ Azure Monitor では、カスタム メトリックの使用に次の制限が�
 |アクティブ時系列/サブスクリプション/リージョン|50,000|
 |メトリックあたりのディメンション キー|10|
 |メトリック名前空間、メトリック名、ディメンション キー、およびディメンション値の文字列の長さ|256 文字|
+
 アクティブ時系列は、メトリック、ディメンション キー、またはディメンション値の任意の一意な組み合わせであり、過去 12 時間以内にメトリック値が発行されたものとして定義されます。
 
 ## <a name="next-steps"></a>次の手順

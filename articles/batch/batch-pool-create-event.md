@@ -2,7 +2,7 @@
 title: Azure Batch プール作成イベント | Microsoft Docs
 description: Batch のプール作成イベントのリファレンスです。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: f8c0adf96d027f58a35dbe570f1b19c311cd84b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: lahugh
+ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246516"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470597"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
 
@@ -57,9 +57,9 @@ ms.locfileid: "51246516"
 |[networkConfiguration](#bk_netconf)|複合型|プールのネットワーク構成。|
 |resizeTimeout|Time|最終のサイズ変更時に指定されたプールに対するコンピューティング ノードのタイムアウト割り当て。  (プール作成時の初回サイズ設定もサイズ変更とカウントされます。)|
 |targetDedicated|Int32|プールに要求されたコンピューティング ノード数。|
-|enableAutoScale|ブール値|プールのサイズを自動的に調整し続けるかどうかを指定します。|
-|enableInterNodeCommunication|ブール値|ノード間の直接的な通信に対し、プールが設定されるかどうかを指定します。|
-|isAutoPool|ブール値|ジョブの AutoPool メカニズムを経由して、プールが作成されているかどうかを指定します。|
+|enableAutoScale|Bool|プールのサイズを自動的に調整し続けるかどうかを指定します。|
+|enableInterNodeCommunication|Bool|ノード間の直接的な通信に対し、プールが設定されるかどうかを指定します。|
+|isAutoPool|Bool|プールがジョブの AutoPool メカニズムを介して作成されたかどうかを指定します。|
 |maxTasksPerNode|Int32|プール内の単一コンピューティング ノードで同時に実行できるタスクの最大数。|
 |vmFillType|String|プール内のコンピューティング ノード間で Batch サービスがタスクを分散する方法を定義します。 有効な値は、分散またはパックです。|
 

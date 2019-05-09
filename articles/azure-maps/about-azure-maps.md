@@ -1,36 +1,44 @@
 ---
 title: Azure Maps の概要 | Microsoft Docs
 description: Azure Maps の概要
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/12/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 02/04/2019
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165966"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268771"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
-Azure Maps は一連の地理空間サービスであり、最新のマッピング データによってサポートされているため、精度の高い地理的なコンテキストを Web アプリケーションとモバイル アプリケーションに提供できます。 マップをレンダリングして目的地を検索するための REST API が含まれます。 また、API では目的地への経路、交通状況、タイム ゾーン、および IP アドレスからの位置を検索することも可能です。 API と共に使い慣れたツールを使用して、位置情報を Azure ソリューションに統合するソリューションの開発とスケーリングを迅速に行えます。 REST API に加えて、開発を簡単かつ柔軟にし、複数のメディア間で移植可能にする Web ベースの [JavaScript マップ コントロール](https://docs.microsoft.com/javascript/api/azure-maps-control)が提供されます。
+Azure Maps は地理空間サービスのコレクションであり、使用可能な最新のマッピング データによって、精度の高い地理的なコンテキストが Web アプリケーションとモバイル アプリケーションに提供されます。 Azure Maps を構成する REST API では、複数のスタイルと衛星画像での**マップ**のレンダリング、世界中の関心のある住所、場所、ポイントの**検索**、ポイント間、マルチポイント、マルチポイント最適化、等時線、商用車、影響を受ける交通、マトリックス ルーティングの**経路設定**、業界最高レベルの交通の流れとインシデントの表示、**位置情報**によるユーザーの場所の特定、場所から**タイム ゾーン**への変換、場所での時刻の取得などを行うことができます。 さらに、Azure Maps では、**ジオフェンシング**、マップ **データ**ストレージ、Azure での場所情報のホスティング、地理空間分析によって場所のインテリジェンスを提供する**空間演算**などのためのサービスが提供されています。 Azure Maps サービスは、REST API として直接、あるいは堅牢な **Web SDK** または **Android SDK** を介して、使用できます。 これらのツールを使用して、開発者は、Azure クラウド内から位置情報を Azure ソリューションに統合するソリューションの開発とスケーリングを迅速に行うことができます。 今すぐ無料の [Azure Maps アカウント](https://azure.microsoft.com/services/azure-maps/)にサインアップして、開発を始めてください。
 
 次の動画では、Azure Maps について詳しく説明しています。
 
-<iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 ## <a name="map-controls"></a>マップ コントロール
 
-### <a name="web-control"></a>Web コントロール
+### <a name="web-sdk"></a>Web SDK
 
-Azure Maps Web コントロールを使用すると、インタラクティブ マップをカスタマイズして、Web アプリケーションまたはモバイル アプリケーションに独自のコンテンツや映像を表示することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 このコントロールを使った開発は、JavaScript または TypeScript を使用して行います。
+Azure Maps Web SDK を使用すると、インタラクティブ マップをカスタマイズして、Web アプリケーションまたはモバイル アプリケーションに独自のコンテンツや映像を表示することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 この SDK を使った開発は、JavaScript または TypeScript を使用して行います。
 
-![Azure Maps Web コントロール](media/about-azure-maps/Introduction_WebMapControl.png)
+![Azure Maps Web SDK](media/about-azure-maps/Introduction_WebMapControl.png)
+
+### <a name="android-sdk"></a>Android SDK
+
+Azure Maps Android SDK を使用して、強力なモバイル マッピング アプリケーションを作成できます。 
+
+![Azure Maps Android SDK](media/about-azure-maps/AndroidSDK.png)
 
 ## <a name="services-in-azure-maps"></a>Azure Maps のサービス
 
@@ -62,7 +70,7 @@ Search Service ではさらに、ルートに沿った検索、より広い範�
 
 ### <a name="time-zone-service"></a>Time Zone Service
 
-Time Zone Service では、緯度と経度の組み合わせまたは [IANA ID](http://www.iana.org/) を使って、現在、過去、未来のタイム ゾーン情報のクエリを実行できます。 また、Time Zone Service では、Microsoft Windows タイム ゾーン ID を IANA タイム ゾーンに変換したり、UTC に対するタイム ゾーン オフセットを取得したり、それぞれのタイム ゾーンで現在の時刻を取得したりすることもできます。 Time Zone Service に対するクエリの一般的な JSON 応答は、次の例のようになります。
+Time Zone Service では、緯度と経度の組み合わせまたは [IANA ID](https://www.iana.org/) を使って、現在、過去、未来のタイム ゾーン情報のクエリを実行できます。 また、Time Zone Service では、Microsoft Windows タイム ゾーン ID を IANA タイム ゾーンに変換したり、UTC に対するタイム ゾーン オフセットを取得したり、それぞれのタイム ゾーンで現在の時刻を取得したりすることもできます。 Time Zone Service に対するクエリの一般的な JSON 応答は、次の例のようになります。
 
 ```JSON
 {
@@ -89,7 +97,7 @@ Time Zone Service では、緯度と経度の組み合わせまたは [IANA ID](
 Traffic Service は、交通情報を必要とする Web アプリケーションおよびモバイル アプリケーションを開発者が作成できるように設計された Web サービスのスイートです。 サービスでは、次の 2 つのデータ型が提供されます。
 
 * トラフィック フロー - ネットワーク内のすべての主要道路で観察されたリアルタイムの速度と移動時間。
-* トラフィック インシデント - 道路ネットワークでの交通渋滞およびインシデントに関する正確なビュー。
+* トラフィック インシデント - 道路ネットワークでの交通渋滞およびインシデントに関する最新のビュー。
 
 ![Azure Maps の交通情報](media/about-azure-maps/Introduction_Traffic.png)
 
@@ -109,13 +117,13 @@ IP to Location サービスの REST API については、[Azure Maps Geolocatio
 
 ## <a name="usage"></a>使用法
 
-[Azure portal](http://portal.azure.com) に移動して Azure Maps アカウントを作成すると、Maps サービスにアクセスできます。
+[Azure portal](https://portal.azure.com) に移動して Azure Maps アカウントを作成すると、Maps サービスにアクセスできます。
 
 Azure Maps では、キーベースの認証スキームが使用されます。 アカウントでは 2 つのキーがあらかじめ自動的に生成されます。 アプリケーションへのこれらの場所機能の統合を始めるには、どちらかのキーを使用して Azure Maps サービスへの要求を行います。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-Azure Maps API は現在、以下を除くすべての国で利用できます。
+Azure Maps API は現在、以下のリージョンを除くすべての国で利用できます。
 
 * アルゼンチン
 * 中国
@@ -133,7 +141,7 @@ Azure Maps の新機能に関する詳細情報:
 > [!div class="nextstepaction"]
 > [ルート マトリックス、等時線、IP 検索など](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
 
-サービスを例示するサンプル アプリの試行に進む:
+Azure Maps を紹介するサンプル アプリの試行:
 
 > [!div class="nextstepaction"]
-> [デモの対話形式の検索マップを起動する](quick-demo-map-app.md)
+> [クイック スタート:Web アプリを作成する](quick-demo-map-app.md)

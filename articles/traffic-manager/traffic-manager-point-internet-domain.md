@@ -1,22 +1,21 @@
 ---
-title: 会社のインターネット ドメインで Traffic Manager ドメイン名が参照されるようにする | Microsoft Docs
+title: 会社のインターネット ドメインで Azure Traffic Manager ドメイン名が参照されるようにする
 description: この記事は、会社のドメイン名で Traffic Manager ドメイン名が参照されるようにするために役立ちます。
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 45fe4fd8511cd1d725275a5a04bd4b6e13eb68f7
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 77a5fbab6ecda910750ab2b8bae987e77607223a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138397"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903509"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>会社のインターネット ドメインで Azure Traffic Manager ドメインが参照されるようにする
 
@@ -26,7 +25,7 @@ Traffic Manager プロファイルを作成すると、Azure では、そのプ�
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-これで、*www.contoso.com* へのすべてのトラフィック要求が *contoso.trafficmanager.net* にリダイレクトされるようになります。
+これで、*www\.contoso.com* へのすべてのトラフィック要求が *contoso.trafficmanager.net* にリダイレクトされるようになります。
 
 > [!IMPORTANT]
 > *contoso.com*などの第 2 レベル ドメインで、Traffic Manager ドメインを参照させることはできません。 DNS プロトコルの標準では、第 2 レベル ドメイン名の CNAME レコードは許可されません。

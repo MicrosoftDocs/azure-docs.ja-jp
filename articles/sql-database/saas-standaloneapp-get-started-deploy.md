@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 85c5ff33fbf5979dd07ab27ccf5993149151b38a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252413"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012685"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するスタンドアロン シングルテナント アプリケーションをデプロイおよび操作する
 
@@ -76,11 +76,11 @@ ms.locfileid: "51252413"
 
 1. 個別のブラウザー タブで、次のように 3 つのテナントごとにイベント ページを開きます。
 
-    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
 
-    (各 URL で、&lt;user&gt; を、デプロイのユーザー値に置き換えてください。)
+     (各 URL で、&lt;user&gt; を、デプロイのユーザー値に置き換えてください。)
 
    ![events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "51252413"
 
 デプロイされたリソースの一部を見てみましょう。
 
-1. [Azure Portal](http://portal.azure.com) で、リソース グループの一覧を参照します。
+1. [Azure Portal](https://portal.azure.com) で、リソース グループの一覧を参照します。
 2. 3 つのテナントのリソース グループが表示されるはずです。
 3. **wingtip-sa-fabrikam-&lt;user&gt;** リソース グループを開きます。これには、Fabrikam Jazz Club デプロイのリソースが含まれます。  **fabrikamjazzclub-&lt;user&gt;** サーバーには、**fabrikamjazzclub** データベースが含まれます。
 
@@ -105,9 +105,9 @@ ms.locfileid: "51252413"
 ## <a name="additional-resources"></a>その他のリソース
 
 <!--
-* Additional [tutorials that build on the Wingtip SaaS application](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
-* To learn about elastic pools, see [*What is an Azure SQL elastic pool*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)
+* Additional [tutorials that build on the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* To learn about elastic pools, see [*What is an Azure SQL elastic pool*](sql-database-elastic-pool.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](sql-database-elastic-jobs-overview.md)
 -->
 
 - マルチテナント SaaS アプリケーションの詳細については、[マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページをご覧ください。

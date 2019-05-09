@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services チュートリアル - レッスン 7: 主要業績評価指標を作成する |Microsoft Docs'
+title: 'Azure Analysis Services チュートリアル - レッスン 7: 主要業績評価指標を作成する | Microsoft Docs'
 description: Azure Analysis Services チュートリアル プロジェクトで主要業績評価指標を作成する方法を説明します｡
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1e7fc5cd684610a5d96b5986f5c169741055c9b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d238b3bf159a5e540eb9c72ecbcee188bd357b05
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426820"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186534"
 ---
 # <a name="create-key-performance-indicators"></a>主要業績評価指標を作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "49426820"
 このレッスンの推定所要時間: **15 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 6: メジャーを作成する](../tutorials/aas-lesson-6-create-measures.md)」を終えている必要があります。   
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 6: メジャーを作成する](../tutorials/aas-lesson-6-create-measures.md)」を終えている必要があります。   
   
 ## <a name="create-key-performance-indicators"></a>主要業績評価指標を作成する  
   

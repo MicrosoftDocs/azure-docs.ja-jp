@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 6c8498a43b127fecc02473177ac955ae51a647d6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854118"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728314"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>.NET で Azure Relay WCF リレーを使用する方法
 この記事では、Azure Relay サービスの使用方法について説明します。 サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と Service Bus アセンブリに含まれている拡張機能を使用しています。 Azure Relay の詳細については、[Azure Relay の概要](relay-what-is-it.md)に関するページをご覧ください。
@@ -116,7 +116,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。 1 つはローカルで、もう 1 つは Azure Relay を経由して送信されます。 主な違いはバインドにあります。ローカルには [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) を使用し、リレー エンドポイントとアドレスには [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) を使用しています。 ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。 リレー エンドポイントは、文字列 `sb`、使用する名前空間名、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。 全体としては `sb://[serviceNamespace].servicebus.windows.net/solver` という URI になり、このサービス エンドポイントは完全修飾の外部 DNS 名を持つ Service Bus (リレー) TCP エンドポイントとして識別されます。 プレースホルダーを置き換えたコードを **Service** アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。 サービスでリレーを排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
+この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。 1 つはローカルで、もう 1 つは Azure Relay を経由して送信されます。 主な違いはバインドにあります。ローカルには [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) を使用し、リレー エンドポイントとアドレスには [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) を使用しています。 ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。 リレー エンドポイントは、文字列 `sb`、使用する名前空間名、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。 全体としては `sb://[serviceNamespace].servicebus.windows.net/solver` という URI になり、このサービス エンドポイントは完全修飾の外部 DNS 名を持つ Service Bus (リレー) TCP エンドポイントとして識別されます。 プレースホルダーを置き換えたコードを **Service** アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。 サービスでリレーを排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
 
 ### <a name="configure-a-service-host-in-the-appconfig-file"></a>サービス ホストを App.config ファイルで構成する
 App.config ファイルを使用してホストを構成することもできます。 この場合にコードをホストするサービスは、次の例にあります。
@@ -161,7 +161,7 @@ sh.Close();
 
 ### <a name="create-the-client"></a>クライアントを作成する
 #### <a name="configure-a-client-programmatically"></a>クライアントをプログラムで構成する
-サービスを使用するために、[ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) オブジェクトを使用して WCF クライアントを作成できます。 Service Bus は SAS を使用して実装されるトークン ベースのセキュリティ モデルを使用します。 [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 次の例では [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#Microsoft_ServiceBus_TokenProvider_CreateSharedAccessSignatureTokenProvider_System_String_) メソッドを使用し、適切な SAS トークンの取得を処理します。 名前とキーは、前のセクションで説明したようにポータルから取得されます。
+サービスを使用するために、[ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) オブジェクトを使用して WCF クライアントを作成できます。 Service Bus は SAS を使用して実装されるトークン ベースのセキュリティ モデルを使用します。 [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。 次の例では [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) メソッドを使用し、適切な SAS トークンの取得を処理します。 名前とキーは、前のセクションで説明したようにポータルから取得されます。
 
 最初に、`IProblemSolver` コントラクト コードをサービスからクライアント プロジェクトに対して参照またはコピーします。
 

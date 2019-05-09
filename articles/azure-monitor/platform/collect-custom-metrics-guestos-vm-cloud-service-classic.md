@@ -4,18 +4,20 @@ description: Azure Monitor メトリック ストアの Cloud Services にゲス
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: 31cbdb2d343f4cc8d30decb587df135c3f374467
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: metrics
+ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325459"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482625"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
 
@@ -29,9 +31,9 @@ Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用�
 
 - Azure サブスクリプションで、[サービス管理者または共同管理者](~/articles/billing/billing-add-change-azure-subscription-administrator.md)である必要があります。 
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal) に登録する必要があります。 
+- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります。 
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
+- [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>クラウド サービスとストレージ アカウントのプロビジョニング 
 
@@ -140,26 +142,26 @@ Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用�
 
 PowerShell を起動し、Azure にログインします。 
 
-```PowerShell
-Login-AzureRmAccount 
+```powershell
+Login-AzAccount 
 ```
 
 次のコマンドを使用して、先ほど作成したストレージ アカウントの詳細情報を格納します。 
 
-```PowerShell
+```powershell
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
 
 同様に、次のコマンドを使用して、診断ファイルのパスを変数に設定します。
 
-```PowerShell
+```powershell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
 
 次のコマンドを使用して、Azure Monitor シンクが構成された診断ファイルで、診断拡張機能をクラウド サービスに配置します。  
 
-```PowerShell
+```powershell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
 
@@ -189,3 +191,4 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 ## <a name="next-steps"></a>次の手順
 
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
+

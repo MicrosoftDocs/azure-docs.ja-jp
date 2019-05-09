@@ -1,65 +1,95 @@
 ---
-title: Azure AD パスワード保護プレビュー
-description: Azure AD パスワード保護プレビューを使用してオンプレミスの Active Directory で脆弱なパスワードを禁止する
+title: Azure AD パスワード保護 - Azure Active Directory
+description: Azure AD パスワード保護を使用してオンプレミスの Active Directory で脆弱なパスワードを禁止する
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/25/2018
+ms.date: 02/18/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: ca412e94f65c7e1ed9a547ec9dcabc62fac7d42f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741829"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264473"
 ---
-# <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>プレビュー: Windows Server Active Directory に Azure AD パスワード保護を適用する
+# <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Windows Server Active Directory に Azure AD パスワード保護を適用する
 
-|     |
-| --- |
-| Azure AD パスワード保護と禁止パスワードのカスタム リストは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+Azure AD パスワード保護は、組織のパスワード ポリシーを強化する機能です。 オンプレミス デプロイのパスワード保護では、グローバル禁止パスワード リストと Azure AD に格納されているカスタムの禁止パスワード リストの両方を使用します。 これは、クラウドベース Azure AD と同じチェックをオンプレミスで実行します。
 
-Azure AD パスワード保護は、Azure Active Directory (Azure AD) が提供するパブリック プレビュー段階の新機能です。組織のパスワード ポリシーを強化する機能です。 Azure AD パスワード保護のオンプレミス デプロイでは、グローバル禁止パスワード リストと Azure AD に格納されているカスタムの禁止パスワード リストの両方を使用して、Azure AD のクラウドベースの変更と同じチェックをオンプレミスで実行します。
+## <a name="design-principles"></a>設計原則
 
-Azure AD パスワード保護を構成するソフトウェア コンポーネントは 3 つあります。
+Azure AD パスワード保護は、次の原則を考慮して設計されています。
 
-* Azure AD パスワード保護プロキシ サービスは、現在の Active Directory フォレスト内のドメインに参加しているすべてのマシン上で実行されています。 要求はドメイン コントローラーから Azure AD に転送され、応答は Azure AD からドメイン コントローラーに返されます。
-* Azure AD パスワード保護 DC エージェント サービスは、DC エージェント パスワード フィルター dll からパスワード検証要求を受け取り、現在使用できるパスワード ポリシーを使用して要求を処理し、結果 (合格/失敗) を返します。 このサービスは、定期的に (1 時間に 1 回) Azure AD パスワード保護プロキシ サービスを呼び出し、新しいバージョンのパスワード ポリシーを取得します。 Azure AD パスワード保護プロキシ サービスとの間の呼び出しの通信は、RPC (Remote Procedure Call) over TCP を介して処理されます。 新しいポリシーが取得されると、sysvol フォルダーに格納されます。これらのポリシーは、他のドメイン コントローラーにレプリケートすることができます。 また、DC エージェント サービスは、他のドメイン コントローラーが新しいパスワード ポリシーを書き込んだ場合の変更について sysvol フォルダーを監視します。適切な最近のポリシーが既に使用できる場合、Azure AD パスワード保護プロキシ サービスのチェックはスキップされます。
-* DC エージェント パスワード フィルター dll は、オペレーティング システムからパスワード検証要求を受け取り、ドメイン コントローラーのローカルで実行されている Azure AD パスワード保護 DC エージェント サービスにそれらの要求を転送します。
+* ドメイン コントローラーはインターネットと直接通信する必要がありません。
+* ドメイン コントローラーで新しいネットワーク ポートが開かれません。
+* Active Directory スキーマの変更は必要ありません。 このソフトウェアは、既存の Active Directory **コンテナー**および **serviceConnectionPoint** スキーマ オブジェクトを使用します。
+* 最小限の Active Directory ドメインまたはフォレスト機能レベル (DFL\FFL) は必要ありません。
+* このソフトウェアは、保護する Active Directory ドメイン内にアカウントを作成せず、要求もしません。
+* ユーザーのクリア テキスト パスワードは、パスワード検証操作のときも、他のどのようなときでも、ドメイン コントローラーの外部に出ることはありません。
+* このソフトウェアは、他の Azure AD 機能に依存しません。たとえば、Azure AD のパスワード ハッシュ同期は関連しておらず、Azure AD のパスワード保護を機能させるために必要ではありません。
+* 増分デプロイはサポートされていますが、ドメイン コントローラー エージェント (DC エージェント) がインストールされている場合にのみパスワード ポリシーが適用されます。 詳細については、次のトピックを参照してください。
+
+## <a name="incremental-deployment"></a>増分デプロイ
+
+Azure AD パスワード保護では、Active Directory ドメイン内のドメイン コントローラー全体への増分デプロイがサポートされていますが、これが何を意味するのか、何がトレードオフであるのかを理解することが重要です。
+
+Azure AD パスワード保護 DC エージェント ソフトウェアがパスワードを検証できるのは、それがドメイン コントローラーにインストールされるときと、そのドメイン コントローラーに送信されるパスワード変更に対してのみです。 ユーザー パスワードの変更を処理するために Windows クライアント マシンによって選択されるドメイン コントローラーを制御することはできません。 一貫性のある動作と世界共通のパスワード保護のセキュリティを確実に適用するには、ドメイン内のすべてのドメイン コントローラーに DC エージェント ソフトウェアをインストールする必要があります。
+
+多くの組織では、完全なデプロイを行う前に、ドメイン コントローラーのサブセットで Azure AD パスワード保護を慎重にテストする必要があります。 Azure AD パスワード保護は一部のデプロイをサポートしています。つまり、特定の DC 上にある DC エージェント ソフトウェアは、ドメイン内の他の DC に DC エージェント ソフトウェアがインストールされていない場合でも積極的にパスワードを検証します。 このような一部のデプロイは安全ではないため、テスト目的以外にはお勧めしません。
+
+## <a name="architectural-diagram"></a>アーキテクチャ図
+
+オンプレミスの Active Directory 環境で Azure AD パスワード保護をデプロイする前に、基になる設計と機能の概念を理解することが重要です。 次の図は、パスワード保護のコンポーネントの連携のしくみを示しています。
 
 ![Azure AD パスワード保護コンポーネントの連携方法](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
-### <a name="license-requirements"></a>ライセンスの要件
+* Azure AD パスワード保護プロキシ サービスは、現在の Active Directory フォレスト内のドメインに参加しているすべてのマシン上で実行されています。 その主な目的は、パスワード ポリシーのダウンロード要求をドメイン コントローラーから Azure AD に転送することです。 その後、Azure AD からドメイン コントローラーに応答を返します。
+* DC エージェントのパスワード フィルター DLL は、オペレーティング システムからユーザーのパスワード検証要求を受け取り、 ドメイン コントローラーでローカルで実行されている DC エージェント サービスに転送します。
+* パスワード保護の DC エージェント サービスは、DC エージェントのパスワード フィルター DLL からパスワード検証要求を受け取り、 現在の (ローカルで使用できる) パスワード ポリシーを使用して処理し、結果 (*合格*または*失敗*) を返します。
 
-グローバル禁止パスワード リストの機能は、Azure Active Directory (Azure AD) のすべてのユーザーが利用できます。
+## <a name="how-password-protection-works"></a>パスワード保護のしくみ
 
-カスタムの禁止パスワード リストには、Azure AD Basic ライセンスが必要です。
+各 Azure AD パスワード保護プロキシ サービス インスタンスは、Active Directory に **serviceConnectionPoint** オブジェクトを作成することによって、それ自体をフォレスト内のドメイン コントローラーにアドバタイズします。
 
-Windows Server Active Directory の Azure AD パスワード保護には、Azure AD Premium ライセンスが必要です。
+パスワード保護用の各 DC エージェント サービスは、Active Directory に **serviceConnectionPoint** オブジェクトも作成します。 このオブジェクトは、主にレポートと診断に使用されます。
 
-追加のライセンス情報 (コストを含む) については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
+DC エージェント サービスは、Azure AD からの新しいパスワード ポリシーのダウンロードの開始を担当します。 最初の手順は、フォレストで、プロキシ **serviceConnectionPoint** オブジェクトをクエリすることによって、Azure AD パスワード保護プロキシ サービスを見つけることです。 使用可能なプロキシ サービスが見つかると、DC エージェント サービスがプロキシ サービスにパスワード ポリシー ダウンロード要求を送信します。 さらに、プロキシ サービスが Azure AD に要求を送信します。 次にプロキシ サービスは、DC エージェント サービスに応答を返します。
 
-## <a name="download"></a>[ダウンロード]
+DC エージェント サービスが Azure AD から新しいパスワード ポリシーを受信すると、サービスはそのドメイン *sysvol* フォルダー共有のルートにある専用フォルダーにポリシーを格納します。 さらに、DC エージェント サービスは、ドメイン内の他の DC エージェント サービスから新しいポリシーがレプリケートされた場合にこのフォルダーを監視します。
 
-Azure AD パスワード保護のために必要なインストーラーが 2 つあり、これらは [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)からダウンロードできます
+DC エージェント サービスは、サービスの起動時に常に新しいポリシーを要求します。 DC エージェント サービスの起動後、1 時間ごとに現在のローカルで使用可能なポリシーの有効期間が確認されます。 ポリシーが 1 時間よりも古い場合、DC エージェントは上記のように Azure AD にプロキシ サービスを介して新しいポリシーを要求します。 現在のポリシーが 1 時間よりも古くない場合、DC エージェントはそのポリシーを使用し続けます。
 
-## <a name="answers-to-common-questions"></a>よく寄せられる質問に対する回答
+Azure AD パスワード保護のパスワード ポリシーがダウンロードされたときは常に、そのポリシーがテナントに固有になります。 つまり、パスワード ポリシーは常に、Microsoft のグローバルな禁止パスワード リストとテナントごとのカスタムの禁止パスワード リストの組み合わせになります。
 
-* ドメイン コントローラーからのインターネット接続は必要ありません。 Azure AD パスワード保護プロキシ サービスを実行しているマシンにのみ、インターネット接続が必要です。
-* ドメイン コントローラーのネットワーク ポートは開かれません。
-* Active Directory スキーマの変更は必要ありません。
-* このソフトウェアは、既存の Active Directory コンテナーおよび serviceConnectionPoint スキーマ オブジェクトを使用します。
-* 最小限の Active Directory ドメインまたはフォレスト機能レベル (DFL\FFL) の要件はありません。
-* このソフトウェアは、保護する Active Directory ドメイン内にアカウントを作成せず、要求もしません。
-* 増分デプロイはサポートされていますが、代わりに、ドメイン コントローラー エージェントがインストールされている場合にのみパスワード ポリシーが適用されます。
-* パスワード保護を確実に適用するには、すべての DC に DC エージェントをインストールすることをお勧めします。 
-* Azure AD パスワード保護は、リアルタイム ポリシー アプリケーション エンジンではありません。 パスワード ポリシー構成の変更と、すべてのドメイン コントローラーに変更が到達して適用されるまでに遅延が生じることがあります。
+DC エージェントは、TCP を介した RPC を使用してプロキシ サービスと通信します。 プロキシ サービスは、構成に従って、動的または静的 RPC ポートでこれらの呼び出しをリッスンします。
+
+DC エージェントはネットワークで使用可能なポートでリッスンしません。
+
+プロキシ サービスは、DC エージェント サービスを呼び出すことはありません。
+
+プロキシ サービスはステートレスです。 Azure からダウンロードされたポリシーやその他の状態をキャッシュしません。
+
+DC エージェント サービスは、常に最新のローカルで使用可能なパスワード ポリシーを使用して、ユーザーのパスワードを評価します。 ローカル DC に使用可能なパスワード ポリシーがない場合、パスワードは自動的に承認されます。 その場合、イベント ログ メッセージが記録され、管理者に警告されます。
+
+Azure AD パスワード保護は、リアルタイム ポリシー アプリケーション エンジンではありません。 パスワード ポリシー構成の変更が Azure AD で行われてから、その変更がすべてのドメイン コントローラーに到達して適用されるまでに、遅延が生じることがあります。
+
+Azure AD のパスワード保護は、既存の Active Directory パスワード ポリシーを補完するものであり、代わりにはなりません。 これには、インストールされる可能性がある他の任意のサード パーティ製パスワード フィルター dll が含まれます。 Active Directory では、常に、すべてのパスワード検証コンポーネントがパスワードの受け入れ前に同調している必要があります。
+
+## <a name="foresttenant-binding-for-password-protection"></a>パスワード保護のフォレスト/テナント バインディング
+
+Active Directory フォレスト内の Azure AD パスワード保護のデプロイには、そのフォレストの Azure AD への登録が必要です。 デプロイ済みの各プロキシ サービスも、Azure AD に登録する必要があります。 このようなフォレストとプロキシの登録は、登録時に使用される資格情報によって暗黙的に識別される、特定の Azure AD テナントと関連付けられます。
+
+Active Directory フォレストと、フォレスト内にデプロイ済みのすべてのプロキシ サービスは、同じテナントに登録する必要があります。 Active Directory フォレストまたはそのフォレスト内のプロキシ サービスを別の Azure AD に登録することは、サポートされていません。 このような誤って構成されたデプロイの症状として、パスワード ポリシーをダウンロードできないことがあります。
+
+## <a name="download"></a>ダウンロード
+
+Azure AD パスワード保護のために必要な 2 つのエージェント インストーラーは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)から入手できます。
 
 ## <a name="next-steps"></a>次の手順
-
 [Azure AD のパスワード保護をデプロイする](howto-password-ban-bad-on-premises-deploy.md)

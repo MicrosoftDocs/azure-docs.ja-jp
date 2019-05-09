@@ -1,15 +1,15 @@
 ---
-author: dominicbetts
+author: wesmc7777
+ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: dobett
-ms.openlocfilehash: 304637422c0b8fd4dfa99e2e434e13d12f1fb342
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 72ccad94301e053d8103ca949d41202e58d9f5bb
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165698"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011664"
 ---
 > [!div class="op_single_selector"]
 > * [Node.JS](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)

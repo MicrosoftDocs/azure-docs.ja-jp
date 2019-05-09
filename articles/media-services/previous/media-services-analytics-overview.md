@@ -4,7 +4,7 @@ description: Media Analytics のパブリック プレビュー (エンタープ
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c56e3781-8510-4f7f-b5ff-a218c1bb6f4c
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0ac8b9fad35267ceaec5b5acec4722b6005f68a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783591"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620004"
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics
+# <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics 
+
 ## <a name="overview"></a>概要
 従業員のトレーニング、お客様への対応、およびビジネス機能のドキュメント化で優先的に利用するメディアとしてビデオを使用する組織が増えています。 クラウド コンピューティングでは、それらの大量のメディア ファイルを格納、ストリーミングしたり、それらのファイルにアクセスしたりできます。 しかし、企業のビデオ コンテンツのライブラリが大きくなると、コンテンツから洞察を引き出す効果的な手段も必要です。 
 
@@ -39,8 +40,6 @@ Media Analytics のメディア プロセッサによって MP4 ファイルま�
 
 ### <a name="indexer"></a>Indexer
 Azure Media Indexer では、コンテンツを検索可能にしたり、クローズド キャプション トラックを生成したりできます。 前のバージョンと比較すると、 Azure Media Indexer 2 プレビューは、インデックス作成が高速化され、より多くの言語をサポートします。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語、ポルトガル語、アラビア語などがサポートされています。 詳しい情報と例については、[Azure Media Indexer 2 を使用したビデオの処理](media-services-process-content-with-indexer2.md)に関するページをご覧ください。
-### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse では、ビデオの安定化と低速撮影の機能を組み合わせて、長い形式のコンテンツからすばやく視聴可能なビデオを作成します。 低速撮影ビデオの作成のほか、Hyperlapse では携帯電話やビデオ カメラを使用して撮影したブレのあるビデオから安定したビデオを作成できます。 詳しい情報と例については、「[Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル](media-services-hyperlapse-content.md)」をご覧ください。
 ### <a name="motion-detector"></a>Motion Detector
 Motion Detector を使用することで、ひな形の背景を持つビデオでモーションを検出することができます。 これにより、監視カメラで検出されるモーション イベントの誤判定をチェックします。 詳細と例については、 [Azure Media Analytics でのモーション検出](media-services-motion-detection.md)に関するページを参照してください。
 ### <a name="face-detector"></a>Face Detector
@@ -125,7 +124,7 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
     }
 
 ## <a name="demos"></a>デモ
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)を参照してください。
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)を参照してください。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

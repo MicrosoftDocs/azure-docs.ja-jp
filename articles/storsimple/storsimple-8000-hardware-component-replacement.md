@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 6de50c5031db59176bdf17ecc69b934559220f6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108450"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433656"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントの交換
 
@@ -34,7 +34,7 @@ ms.locfileid: "23108450"
 ### <a name="safety-icon-conventions"></a>安全性アイコンの表記規則
 次の表で、これらのチュートリアルで使用される安全性アイコンについて説明します。 デバイスのコンポーネントを取り外して交換する手順を進めるときに、これらの安全性アイコンに細心の注意を払ってください。
 
-| アイコン | テキスト | 追加情報 |
+| アイコン | Text | 追加情報 |
 |:--- |:--- |:--- |
 | ![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) |**危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
 | ![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) |**警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
@@ -67,7 +67,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 | コンポーネント | 台数 | プラグイン モジュール? | 交換手順 |
 |:--- |:--- |:--- |:--- |
-| シャーシ |1 |なし |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
+| シャーシ |1 |いいえ  |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
 | プライマリ コントローラー |2 |はい |[StorSimple デバイスのコントローラー モジュールを交換する](storsimple-8000-controller-replacement.md) |
 | 764W 電源冷却モジュール (PCM) |2 |はい |[StorSimple デバイスの電源冷却モジュールを交換する](storsimple-8000-power-cooling-module-replacement.md) |
 | バックアップ バッテリ |2 |はい |[StorSimple デバイスのバックアップ バッテリ モジュールを交換する](storsimple-8000-battery-replacement.md) |
@@ -79,7 +79,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 | コンポーネント | 台数 | プラグイン モジュール? | 交換手順 |
 |:--- |:--- |:--- |:--- |
-| シャーシ |1 |なし |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
+| シャーシ |1 |いいえ  |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
 | EBOD コントローラー |2 |はい |[StorSimple デバイスの EBOD コントローラーを交換する](storsimple-8000-ebod-controller-replacement.md) |
 | 580W 電源冷却モジュール (PCM) |2 |はい |[StorSimple デバイスの電源冷却モジュールを交換する](storsimple-8000-power-cooling-module-replacement.md) |
 | ディスク ドライブ |12 |はい |[StorSimple デバイスのディスク ドライブを交換する](storsimple-8000-disk-drive-replacement.md) |
@@ -88,11 +88,11 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 デバイスのプラグイン モジュールは、次の前面図と背面図で強調表示されています。 これらの図を使用して、さまざまなプラグイン モジュールの交換が必要になった場合に、その場所を判別できます。 前面図はディスク ドライブを示し、EBOD エンクロージャと主エンクロージャの背面図はプラグイン モジュールを示しています。
 
-![デバイスのフロントプレーン (ディスク ドライブ付き)](./media/storsimple-hardware-component-replacement/IC741028.png)
+![デバイスのフロント パネル (ディスク ドライブ付き)](./media/storsimple-hardware-component-replacement/IC741028.png)
 
 **図 1** デバイスの前面
 
-| ラベル | Description |
+| Label | 説明 |
 |:--- |:--- |
 | 0 ～ 11 |ディスク ドライブ (合計 12 台) |
 
@@ -102,7 +102,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 **図 2** 主エンクロージャの背面
 
-| ラベル | 説明 |
+| Label | 説明 |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -113,7 +113,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 **図 3** EBOD エンクロージャの背面
 
-| ラベル | 説明 |
+| Label | 説明 |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -134,6 +134,6 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 これらの交換ユニットの注文については、 [Microsoft サポートにお問い合わせください](storsimple-8000-contact-microsoft-support.md) 。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 StorSimple のハードウェア コンポーネントを交換する前に、すべての [安全に関する情報](storsimple-safety.md) を確認します。
 

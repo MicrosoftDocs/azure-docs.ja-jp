@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579330"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090816"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -27,13 +27,13 @@ ms.locfileid: "53579330"
 ## <a name="azure-portal"></a>Azure ポータル
 
 > [!NOTE]
-
+> 
 >  アラート ルールを作成する際は、次のことを確認してください。
-
+> 
 > - スコープ内のサブスクリプションが、アラートが作成されているサブスクリプションと同じである。
-- 条件が、アラートが構成されているレベル/状態/呼び出し元/リソース グループ/リソース ID/リソースの種類/イベント カテゴリである必要があります。
-- アラートの構成 JSON に "anyOf" 条件または入れ子になった条件がない (基本的に許可されている allOf は 1 つだけで、それ以上 allOf/anyOf は含まれません)。
-- カテゴリが "管理" のとき。 アラートでは、上記の条件の少なくとも 1 つを指定する必要があります。 アクティビティ ログ内にイベントが作成されるたびにアクティブ化するアラートを作成することはできません。
+> - 条件が、アラートが構成されているレベル/状態/呼び出し元/リソース グループ/リソース ID/リソースの種類/イベント カテゴリである必要があります。
+> - アラートの構成 JSON に "anyOf" 条件または入れ子になった条件がない (基本的に許可されている allOf は 1 つだけで、それ以上 allOf/anyOf は含まれません)。
+> - カテゴリが "管理" のとき。 アラートでは、上記の条件の少なくとも 1 つを指定する必要があります。 アクティビティ ログ内にイベントが作成されるたびにアクティブ化するアラートを作成することはできません。
 
 ### <a name="create-with-azure-portal"></a>Azure Portal での作成
 
@@ -50,35 +50,36 @@ ms.locfileid: "53579330"
 
 3. **[アラートの条件を定義します]** で、次の情報を入力し、**[完了]** をクリックします。
 
-    - **アラートの対象:** 新しいアラートの対象を表示および選択するには、**[サブスクリプション別でフィルター]** / **[リソースの種類でフィルター]** を使用し、表示された一覧からリソースまたはリソース グループを選択します。
+   - **アラートの対象:** 新しいアラートの対象を表示および選択するには、**[サブスクリプション別でフィルター]** / **[リソースの種類でフィルター]** を使用し、表示された一覧からリソースまたはリソース グループを選択します。
 
-    > [!NOTE]
+     > [!NOTE]
+     > 
+     > アクティビティ ログ シグナルについてリソース、リソース グループ、またはサブスクリプション全体を選択できます。
 
-    > アクティビティ ログ シグナルについてリソース、リソース グループ、またはサブスクリプション全体を選択できます。
+     **アラート対象のサンプル ビュー**
+     ![対象の選択](media/alerts-activity-log/select-target.png)
 
-    **アラート対象のサンプル ビュー** ![対象の選択](media/alerts-activity-log/select-target.png)
+   - **[対象の条件]** の下で **[条件の追加]** をクリックすると、対象で使用可能なすべてのシグナルが表示されます。これには、さまざまなカテゴリの**アクティビティ ログ**のものも含まれ、カテゴリ名は **[サービスの監視]** 名に付加されます。
 
-    - **[対象の条件]** の下で **[条件の追加]** をクリックすると、対象で使用可能なすべてのシグナルが表示されます。これには、さまざまなカテゴリの**アクティビティ ログ**のものも含まれ、カテゴリ名は **[サービスの監視]** 名に付加されます。
+   - **[アクティビティ ログ]** という種類について使用可能なさまざまな操作の一覧からシグナルを選択します。
 
-    - **[アクティビティ ログ]** という種類について使用可能なさまざまな操作の一覧からシグナルを選択します。
+     ログ履歴のタイムラインと、この対象シグナルの対応するアラート ロジックを選択できます。
 
-    ログ履歴のタイムラインと、この対象シグナルの対応するアラート ロジックを選択できます。
+     **[条件の追加] 画面**
 
-    **[条件の追加] 画面**
+     ![条件の追加](media/alerts-activity-log/add-criteria.png)
 
-    ![条件の追加](media/alerts-activity-log/add-criteria.png)
+     **履歴の時間:** 選択した操作で利用できるイベントをプロットできるのは、過去 6 時間/12 時間/24 時間または過去 1 週間です。
 
-    **履歴の時間:** 選択した操作で利用できるイベントをプロットできるのは、過去 6 時間/12 時間/24 時間または過去 1 週間です。
-
-    **[アラート ロジック]**:
+     **[アラート ロジック]**:
 
      - **[イベント レベル]** - イベントの重大度レベル。 "_詳細_"、"_情報_"、"_警告_"、"_エラー_" または "_重大_"。
      - **[状態]**:イベントの状態。 "_開始済み_"、"_失敗_" または "_成功_"。
      - **[イベント開始者]**:呼び出し元とも呼ばれます。操作を実行するユーザーのメール アドレスまたは Azure Active Directory 識別子です。
 
-        アラート ロジックが適用されたシグナル グラフのサンプル:
+       アラート ロジックが適用されたシグナル グラフのサンプル:
 
-        ![ 選択済み条件](media/alerts-activity-log/criteria-selected.png)
+       ![ 選択済み条件](media/alerts-activity-log/criteria-selected.png)
 
 4. **[アラートの詳細を定義します]** で、以下の詳細を入力します。
 
@@ -93,7 +94,7 @@ ms.locfileid: "53579330"
 
     アクティビティ ログの新しいアラート ルールが作成され、ウィンドウの右上に確認メッセージが表示されます。
 
-    ルールは、有効化、無効化、編集、または削除することができます。 アクティビティ ログ ルールの管理の[詳細を確認](#view-and-manage-activity-log-alert-rules-in-azure-portal)してください。
+    ルールは、有効化、無効化、編集、または削除することができます。 アクティビティ ログ ルールの管理の詳細を確認してください。
 
 
 あるいは、アクティビティ ログに対してアラート ルールを作成する状況を簡単にたとえるとすれば、[Azure portal のアクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal)でイベントを探索したりフィルター処理したりするのに似ています。 Azure Monitor のアクティビティ ログでは、必要なイベントを検索またはフィルター処理し、次に **[アクティビティ ログ アラートの追加]** をクリックすることでアラートを作成できます。その後、上記のチュートリアルで説明した 4 つの手順に従います。
@@ -115,15 +116,15 @@ ms.locfileid: "53579330"
 
     編集するアクティビティのルールを検索するには、用意されているフィルターとして _[サブスクリプション]_、_[リソース グループ]_、_[リソース]_、_[シグナルの種類]_ または _[状態]_ を使用できます。
 
-    > [!NOTE]
+   > [!NOTE]
+   > 
+   > 編集できるのは、**[説明]**、**[対象の条件]**、**[アクション グループ]** のみです。
 
-    > 編集できるのは、**[説明]**、**[対象の条件]**、**[アクション グループ]** のみです。
+3. ルールを選択し、ダブルクリックしてルールのオプションを編集します。 必要な変更を行い、**[保存]** をクリックします。
 
-3.  ルールを選択し、ダブルクリックしてルールのオプションを編集します。 必要な変更を行い、**[保存]** をクリックします。
+   ![ manage alert rules](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
-    ![ manage alert rules](media/alerts-activity-log/activity-log-rule-edit-page.png)
-
-4.  ルールは、無効化、有効化、または削除することができます。 手順 2 で説明したようにルールを選択した後、ウィンドウの上部にある適切なオプションを選択します。
+4. ルールは、無効化、有効化、または削除することができます。 手順 2 で説明したようにルールを選択した後、ウィンドウの上部にある適切なオプションを選択します。
 
 
 ## <a name="azure-resource-template"></a>Azure リソース テンプレート
@@ -203,20 +204,41 @@ Resource Manager テンプレートを使用してアクティビティ ログ �
 [Azure Monitor - Activity Log Alerts API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) は REST API であり、Azure Resource Manager REST API との完全な互換性があります。 そのためこれは、Resource Manager コマンドレットだけでなく Azure CLI を使用して、Powershell を介して使用できます。
 
 ## <a name="powershell"></a>PowerShell
-[リソース テンプレートのセクション](#manage-alert-rules-for-activity-log-using-azure-resource-template)で前に示したサンプル リソース テンプレート (sampleActivityLogAlert.json) に対する Azure Resource Manager PowerShell コマンドレットの使い方を以下に示します。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+### <a name="deploy-resource-manager-template-with-powershell"></a>PowerShell を使用して Resource Manager テンプレートをデプロイする
+PowerShell を使用して、前のリソース テンプレートのセクションで示したサンプル リソース テンプレートをデプロイするには、次のコマンドを使用します。
+
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
+
 ここで、sampleActivityLogAlert.parameters.json には、アラート ルールの作成時に必要とされたパラメーターに指定された値が含まれます。
 
+### <a name="use-activity-log-powershell-cmdlets"></a>アクティビティ ログの PowerShell コマンドレットを使用する
+
+アクティビティ ログ アラートでは、専用の PowerShell コマンドレットを使用できます。
+
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) :新しいアクティビティ ログ アラートを作成するか、既存のアクティビティ ログ アラートを有効にします。
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) :1 つ以上のアクティビティ ログ アラート リソースを取得します。
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) :既存のアクティビティ ログ アラートを有効にし、そのタグを設定します。
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) :既存のアクティビティ ログ アラートを無効にし、そのタグを設定します。
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    :アクティビティ ログ アラートを削除します。
+
 ## <a name="cli"></a>CLI
-[リソース テンプレートのセクション](#manage-alert-rules-for-activity-log-using-azure-resource-template)で前に示したサンプル リソース テンプレート (sampleActivityLogAlert.json) に対する Azure CLI での Azure Resource Manager コマンドの使い方を以下に示します。
 
-```azurecli
-az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json
-```
-*sampleActivityLogAlert.parameters.json* ファイルには、アラート ルールの作成時に必要であったパラメーターに指定された値が含まれています。
+アクティビティ ログ アラート ルールを管理する専用の Azure CLI コマンドが [az monitor activity-log alert](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) セットの下に用意されています。
 
+新しいアクティビティ ログ アラート ルールを作成するには、次のコマンドを次の順序で使用します。
+
+1. [az monitor activity-log alert create](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create):新規のアクティビティ ログ アラート ルールのリソースを作成します。
+1. [az monitor activity-log alert scope](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope):作成したアクティビティ ログ アラート ルールのスコープを追加します。
+1. [az monitor activity-log alert action-group](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group):アクティビティ ログ アラート ルールにアクション グループを追加します。
+
+1 つのアクティビティ ログ アラート ルールのリソースを取得するには、Azure CLI コマンド [az monitor activity-log alert show](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+) を使用します。 リソース グループ内のすべてのアクティビティ ログ アラート ルール のリソースを表示する場合は、[az monitor activity-log alert list](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list) を使用します。
+アクティビティ ログ アラート ルールのリソースを削除するには、Azure CLI コマンド [az monitor activity-log alert delete](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) を使用します。
 
 ## <a name="next-steps"></a>次の手順
 

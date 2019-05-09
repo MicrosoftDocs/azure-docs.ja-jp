@@ -1,6 +1,6 @@
 ---
-title: SQL Database のマルチテナント アプリで Log Analytics を使用する | Microsoft Docs
-description: マルチテナントの Azure SQL Database SaaS アプリで Log Analytics を設定して使用する
+title: SQL Database のマルチテナント アプリで Azure Monitor ログを使用する | Microsoft Docs
+description: マルチテナントの Azure SQL Database SaaS アプリで Azure Monitor ログを設定して使用する
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,23 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 58a354950e303eda8158ca072870bfecbf33a89f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.date: 01/25/2019
+ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890213"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455923"
 ---
-# <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>マルチテナントの SQL Database SaaS アプリで Log Analytics を設定して使用する
+# <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>マルチテナントの SQL Database SaaS アプリで Azure Monitor ログを設定して使用する
 
-このチュートリアルでは、エラスティック プールおよびデータベースを監視するために、[Azure Log Analytics](/azure/log-analytics/log-analytics-overview) を設定して使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)を基礎とします。 Log Analytics を使用して、Azure Portal で提供された監視とアラート設定を拡張する方法を示します。 Log Analytics では、何千単位のエラスティック プールと何十万単位のデータベースの監視をサポートしています。 Log Analytics は単一の監視ソリューションを提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
+このチュートリアルでは、エラスティック プールおよびデータベースを監視するために、[Azure Monitor ログ](/azure/log-analytics/log-analytics-overview)を設定して使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)を基礎とします。 Azure Monitor ログを使用して、Azure portal で提供された監視とアラート設定を拡張する方法を示します。 Azure Monitor ログでは、何千単位のエラスティック プールと何十万単位のデータベースの監視をサポートしています。 Azure Monitor ログは単一の監視ソリューションを提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Log Analytics をインストールして構成します。
-> * Log Analytics を使用してプールとデータベースを監視する。
+> * Azure Monitor ログをインストールし構成する
+> * Azure Monitor ログを使用してプールとデータベースを監視する
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
@@ -36,11 +38,11 @@ ms.locfileid: "52890213"
 
 SaaS のシナリオとパターン、および監視ソリューションの要件に対する影響については、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)に関するページを参照してください。
 
-## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics"></a>Log Analytics を使用してデータベースとエラスティック プールのパフォーマンスを監視および管理する
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-azure-monitor-logs"></a>Azure Monitor ログ を使用してデータベースとエラスティック プールのパフォーマンスを監視および管理する
 
 Azure SQL Database については、Azure Portal でデータベースとプールを監視してアラートを設定できます。 この組み込みの監視機能とアラート設定機能は便利ですが、リソースに固有でもあります。 つまり、大規模なインストールを監視することや、複数のリソースやサブスクリプションを統合されたビューで確認することには向いていません。
 
-大規模なシナリオでは、監視とアラート設定に Log Analytics を使用できます。 Log Analytics は、潜在的に多くのサービスからワークスペースに集められた診断ログやテレメトリに対する分析を可能にする、別個の Azure サービスです。 Log Analytics には、オペレーション データを分析できるクエリ言語とデータ視覚化ツールが組み込まれています。 SQL Analytics ソリューションには、エラスティック プールとデータベースを監視およびアラートを設定するためのさまざまな定義済みのビューとクエリが用意されています。 Log Analytics には、カスタム ビュー デザイナーも用意されています。
+大規模なシナリオでは、監視とアラート設定に Azure Monitor ログを使用できます。 Azure Monitor は、潜在的に多くのサービスからワークスペースに集められた診断ログやテレメトリに対する分析を可能にする、別個の Azure サービスです。 Azure Monitor ログには、オペレーション データを分析できるクエリ言語とデータ視覚化ツールが組み込まれています。 SQL Analytics ソリューションには、エラスティック プールとデータベースを監視およびアラートを設定するためのさまざまな定義済みのビューとクエリが用意されています。 Azure Monitor ログには、カスタム ビュー デザイナーも用意されています。
 
 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。 Log Analytics のワークスペースと分析ソリューションは、Azure portal で開きます。 Azure portal は新しいアクセス ポイントですが、一部の領域では Operations Management Suite ポータルの背後に配置される場合があります。
 
@@ -63,27 +65,27 @@ OMS ワークスペースは、Log Analytics ワークスペースと呼ばれ�
 
 Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリで入手できます。 Wingtip Tickets PowerShell スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
-## <a name="install-and-configure-log-analytics-and-the-azure-sql-analytics-solution"></a>Log Analytics と Azure SQL Analytics ソリューションをインストールして構成する
+## <a name="install-and-configure-log-analytics-workspace-and-the-azure-sql-analytics-solution"></a>Log Analytics ワークスペースと Azure SQL Analytics ソリューションをインストールして構成する
 
-Log Analytics は別個のサービスとして構成する必要があります。 Log Analytics は、ログ データ、テレメトリ、およびメトリックを Log Analytics ワークスペース内に収集します。 Azure の他のリソースと同じように、Log Analytics ワークスペースを作成する必要があります。 ワークスペースは監視対象のアプリケーションと同じリソース グループ内に作成する必要はありません。 多くの場合は、そうすることが最も理にかなっています。 Wingtip Tickets アプリの場合、単一のリソース グループを使用することで、アプリケーションによってワークスペースが確実に削除されます。
+Azure Monitor は別個のサービスとして構成する必要があります。 Azure Monitor ログは、ログ データ、テレメトリ、およびメトリックを Log Analytics ワークスペース内に収集します。 Azure の他のリソースと同じように、Log Analytics ワークスペースを作成する必要があります。 ワークスペースは監視対象のアプリケーションと同じリソース グループ内に作成する必要はありません。 多くの場合は、そうすることが最も理にかなっています。 Wingtip Tickets アプリの場合、単一のリソース グループを使用することで、アプリケーションによってワークスペースが確実に削除されます。
 
 1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1* を開きます。
 1. F5 キーを押してスクリプトを実行します。
 
-これで、Log Analytics を Azure portal で開くことができます。 Log Analytics ワークスペース内にテレメトリが収集されて視覚化されるまで、数分かかります。 システムが診断データを収集する時間を長くすればするほど、エクスペリエンスの関連性が高くなります。 
+Azure portal で Azure Monitor ログを開くことができるようになりました。 Log Analytics ワークスペース内にテレメトリが収集されて視覚化されるまで、数分かかります。 システムが診断データを収集する時間を長くすればするほど、エクスペリエンスの関連性が高くなります。 
 
-## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Log Analytics と SQL Analytics ソリューションを使用してプールとデータベースを監視する
+## <a name="use-log-analytics-workspace-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Log Analytics ワークスペースと SQL Analytics ソリューションを使用してプールとデータベースを監視する
 
 
-この演習では、Azure portal で Log Analytics を開き、データベースとプールで収集されるテレメトリを調べます。
+この演習では、Azure portal で Log Analytics ワークスペースを開き、データベースとプールで収集されるテレメトリを調べます。
 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して Log Analytics を選択します。 Log Analytics を検索します。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して Log Analytics ワークスペースを開きます。 Log Analytics を検索します。
 
-   ![Log Analytics を開く](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
+   ![Log Analytics ワークスペースを開く](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
 1. _wtploganalytics-&lt;user&gt;_ という名前のワークスペースを選択します。
 
-1. **[概要]** を選択して、Azure ポータルで Log Analytics ソリューションを選択します。
+1. **[概要]** を選択して、Azure portal で Log Analytics ソリューションを開きます。
 
    ![概要](media/saas-dbpertenant-log-analytics/click-overview.png)
 
@@ -104,7 +106,7 @@ Log Analytics は別個のサービスとして構成する必要があります
 
     ![時間フィルター](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-1. クエリの使用状況と該当のデータベースのメトリックを調査する単一のデータベースを選択します。
+1. クエリの使用状況と該当のデータベースのメトリックを調査する個々のデータベースを選択します。
 
     ![データベースの分析](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
@@ -131,11 +133,11 @@ Log Analytics は別個のサービスとして構成する必要があります
 
 Log Analytics ワークスペースでは、ログとメトリック データをさらに詳細に調査できます。 
 
-Log Analytics の監視とアラートは、Azure Portal の各リソースで定義されているアラートとは異なり、ワークスペース内のデータに対するクエリに基づいています。 アラートがクエリに基づくようにすることで、すべてのデータベースを対象とする単一のアラートを定義でき、データベース別に 1 つずつアラートを定義する必要はありません。 クエリは、ワークスペースで利用可能なデータによってのみ制限されます。
+Azure Monitor ログの監視とアラートは、Azure portal の各リソースで定義されているアラートとは異なり、ワークスペース内のデータに対するクエリに基づいています。 アラートがクエリに基づくようにすることで、すべてのデータベースを対象とする単一のアラートを定義でき、データベース別に 1 つずつアラートを定義する必要はありません。 クエリは、ワークスペースで利用可能なデータによってのみ制限されます。
 
-Log Analytics を使用してアラートのクエリと設定を行う方法については、「[Log Analytics のアラート ルールの操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)」を参照してください。
+Azure Monitor ログを使用してアラートのクエリと設定を行う方法については、[Azure Monitor ログのアラート ルールの操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)に関するページを参照してください。
 
-Log Analytics for SQL Database では、ワークスペース内のデータ量に基づいて課金されます。 このチュートリアルでは、無料のワークスペースを作成しました。このワークスペースの制限は、1 日あたり 500 MB です。 この制限に達すると、データはワークスペースに追加されなくなります。
+SQL Database の Azure Monitor ログでは、ワークスペース内のデータ量に基づいて課金されます。 このチュートリアルでは、無料のワークスペースを作成しました。このワークスペースの制限は、1 日あたり 500 MB です。 この制限に達すると、データはワークスペースに追加されなくなります。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -143,12 +145,12 @@ Log Analytics for SQL Database では、ワークスペース内のデータ量�
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Log Analytics をインストールして構成します。
-> * Log Analytics を使用してプールとデータベースを監視する。
+> * Azure Monitor ログをインストールし構成する
+> * Azure Monitor ログを使用してプールとデータベースを監視する
 
 [テナント分析のチュートリアル](saas-dbpertenant-log-analytics.md)を試す。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Wingtip Tickets SaaS テナント単位データベース アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)
+* [Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f6face1b6bd8893f1391f32ea5ac1a52e0289e99
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8b10892a087572f2e66a73539827601410e9aca2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542426"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155050"
 documentType: LandingData
 title: App Service on Linux のドキュメント
 metadata:
@@ -98,7 +98,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core と Azure SQL DB</a>、<a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">Java Enterpise と PostgreSQL</a>、または <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js と MongoDB</a> を使用してアプリケーションを作成する
+    - html: <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core と Azure SQL DB</a>、<a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">Java Enterprise と PostgreSQL</a>、または <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js と MongoDB</a> を使用してアプリケーションを作成する
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">既存のカスタム ドメインをアプリケーションにマップする</a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">既存の SSL 証明書をアプリケーションにバインドする</a>
     - html: <a href="/azure/cdn/cdn-add-to-web-app">CDN をアプリケーションに追加する</a>
@@ -123,4 +123,4 @@ sections:
     - title: Languages
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
     - title: REST
-      html: <p><a href="/rest/api/appservice">REST API リファレンスに関するページ</a></p>
+      html: <p><a href="/rest/api/appservice">REST API リファレンス</a></p>

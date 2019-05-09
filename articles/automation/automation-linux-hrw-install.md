@@ -3,18 +3,18 @@ title: Azure Automation の Linux Hybrid Runbook Worker
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのコンピューターで Runbook を実行できるようにする方法について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f32574dc0a3fd61c21e8c9a7c1ec93c7d366d384
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: cc07aa9c1b2c540c33949a8c591bd98f91b04666
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408848"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225452"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -62,7 +62,7 @@ Linux Hybrid Runbook Worker の最小要件は次のようになります。
 
 1. 次のいずれかの方法を使って、Azure において **Automation Hybrid Worker** ソリューションを有効にします。
 
-   * 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](../log-analytics/log-analytics-add-solutions.md)」の手順を使用して、**Automation Hybrid Worker** ソリューションをサブスクリプションに追加します。
+   * [Azure Monitor ログ ソリューションのワークスペースへの追加](../log-analytics/log-analytics-add-solutions.md)に関するページの手順を使用して、**Automation Hybrid Worker** ソリューションをサブスクリプションに追加します。
    * 次のコマンドレットを実行します。
 
         ```azurepowershell-interactive
@@ -71,7 +71,7 @@ Linux Hybrid Runbook Worker の最小要件は次のようになります。
 
 1. 次のコマンドを実行して、Log Analytics エージェント for Linux をインストールします。 \<WorkspaceID\> と \<WorkspaceKey\> は、お使いのワークスペースの適切な値に置き換えてください。
 
-  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
    ```bash
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -85,9 +85,12 @@ Linux Hybrid Runbook Worker の最小要件は次のようになります。
 
 1. コマンドが完了すると、Azure portal の **[ハイブリッド Worker グループ]** ページに、新しいグループとメンバーの数が表示されます。 既存のグループの場合は、メンバーの数がインクリメントされます。 **[ハイブリッド worker グループ]** ページ上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。 **[ハイブリッド worker]** ページで、グループの各メンバーが一覧表示されます。
 
+> [!NOTE]
+> Azure VM 用の Linux で Azure Monitor 仮想マシン拡張機能を使用している場合は、`autoUpgradeMinorVersion` を false に設定することをお勧めします。これは、バージョンを自動的にアップグレードすると、Hybrid Runbook Worker で問題が発生する場合があるからです。 拡張機能を手動でアップグレードする方法については、「[Azure CLI deployment (Azure CLI のデプロイ)](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)」を参照してください。
+
 ## <a name="turning-off-signature-validation"></a>署名の検証をオフにする
 
-既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 ワーカーに対して未署名の Runbook を実行した場合は、"署名の検証が失敗しました" というエラーが表示されます。 署名の検証をオフにするには、次のコマンドを実行します。 2 番目のパラメーターは Log Analytics のワークスペース ID に置き換えます。
+既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 ワーカーに対して未署名の Runbook を実行した場合は、"署名の検証が失敗しました" というエラーが表示されます。 署名の検証をオフにするには、次のコマンドを実行します。 2 番目のパラメーターは Log Analytics ワークスペース ID に置き換えます。
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
@@ -111,11 +114,8 @@ Linux Hybrid Worker では、次の Runbook の種類は機能しません。
 * グラフィカル
 * グラフィカル PowerShell ワークフロー
 
-## <a name="troubleshoot"></a>トラブルシューティング
-
-Linux Hybrid Runbook Worker をトラブルシューティングする方法については、[Linux Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#linux)に関する記事を参照してください。
-
 ## <a name="next-steps"></a>次の手順
 
 * オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。
 * Hybrid Runbook Worker を削除する方法については、「[Hybrid Runbook Worker の削除](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)」をご覧ください。
+* Linux Hybrid Runbook Worker をトラブルシューティングする方法については、[Linux Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#linux)に関する記事を参照してください。

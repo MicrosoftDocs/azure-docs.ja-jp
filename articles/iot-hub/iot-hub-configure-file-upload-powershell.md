@@ -1,18 +1,19 @@
 ---
 title: Azure PowerShell を使用してファイルのアップロードを構成する | Microsoft Docs
 description: Azure PowerShell コマンドレットを使用して IoT Hub を構成し、接続されているデバイスからファイルのアップロードを有効にする方法。 対象の Azure ストレージ アカウントの構成に関する情報が含まれています。
-author: dominicbetts
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: b99874ce87c6e161fcd62ec871c6aee277ec946e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: robinsh
+ms.openlocfilehash: 4f1a5d59c340a02dcdc0291046ef6361c6f41c86
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232296"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59044914"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>PowerShell を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -20,36 +21,38 @@ ms.locfileid: "51232296"
 
 [IoT Hub でファイルのアップロード機能](iot-hub-devguide-file-upload.md)を使用するには、最初に Azure ストレージ アカウントと IoT Hub を関連付ける必要があります。 既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成できます。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
 
-* [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
+* [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* Azure IoT Hub。 IoT Hub がない場合は、[New-AzureRmIoTHub コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub)を使用するか、ポータルを使用して [IoT Hub を作成](iot-hub-create-through-portal.md)できます。
+* Azure IoT Hub。 IoT Hub がない場合は、[New-AzIoTHub コマンドレット](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub)を使用するか、ポータルを使用して、[IoT Hub を作成](iot-hub-create-through-portal.md)できます。
 
-* Azure ストレージ アカウント。 Azure ストレージ アカウントがない場合は、[Azure Storage PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.storage/)を使用するか、ポータルを使用して[ストレージ アカウントを作成](../storage/common/storage-create-storage-account.md)できます
+* Azure ストレージ アカウント。 Azure ストレージ アカウントがない場合は、[Azure Storage PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.storage/)を使用するか、ポータルを使用して[ストレージ アカウントを作成](../storage/common/storage-create-storage-account.md)できます
 
 ## <a name="sign-in-and-set-your-azure-account"></a>サインインして Azure アカウントを設定する
 
 Azure アカウントにサインインしてサブスクリプションを選択します。
 
-1. PowerShell プロンプトで、**Connect-AzureRmAccount** コマンドレットを実行します。
+1. PowerShell プロンプトで、**Connect-AzAccount** コマンドレットを実行します。
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 2. 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドで、使用できる Azure サブスクリプションの一覧を表示します。
 
     ```powershell
-    Get-AzureRMSubscription
+    Get-AzSubscription
     ```
 
     次のコマンドで、使用するサブスクリプションを選択して、IoT Hub を管理するためのコマンドを実行します。 前のコマンドの出力から、サブスクリプション名または ID のいずれかを使用できます。
 
     ```powershell
-    Select-AzureRMSubscription `
+    Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
@@ -60,7 +63,7 @@ Azure アカウントにサインインしてサブスクリプションを選�
 デバイスからファイル アップロードを構成するには、Azure Storage アカウント用の接続文字列が必要です。 Azure Storage アカウントは、IoT Hub と同じサブスクリプション内にある必要があります。 また、ストレージ アカウントには BLOB コンテナーの名前も必要です。 ストレージ アカウント キーを取得するには、次のコマンドを使用します。
 
 ```powershell
-Get-AzureRmStorageAccountKey `
+Get-AzStorageAccountKey `
   -Name {your storage account name} `
   -ResourceGroupName {your storage account resource group}
 ```
@@ -72,19 +75,19 @@ Get-AzureRmStorageAccountKey `
 * ストレージ アカウントの既存の BLOB コンテナーの一覧を表示するには、次のコマンドを使用します。
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    Get-AzureStorageContainer -Context $ctx
+    Get-AzStorageContainer -Context $ctx
     ```
 
 * ストレージ アカウントに BLOB コンテナーを作成するには、次のコマンドを使用します。
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    New-AzureStorageContainer `
+    New-AzStorageContainer `
         -Name {your new container name} `
         -Permission Off `
         -Context $ctx
@@ -96,20 +99,20 @@ Get-AzureRmStorageAccountKey `
 
 構成するには次の値が必要です。
 
-* **ストレージ コンテナー**: IoT Hub に関連付ける、現在の Azure サブスクリプションの Azure ストレージ アカウントの BLOB コンテナー。 必要なストレージ アカウント情報は、前のセクションで取得しました。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
+* **ストレージ コンテナー**:お使いの IoT ハブに関連付ける、現在の Azure サブスクリプション内の Azure ストレージ アカウントの BLOB コンテナー。 必要なストレージ アカウント情報は、前のセクションで取得しました。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
 
-* **Receive notifications for uploaded files (アップロードされたファイルに関する通知を受け取る)**: ファイルのアップロードに関する通知を有効または無効にします。
+* **アップロードされたファイルに関する通知を受け取る**:ファイルのアップロード通知を有効にするか無効にします。
 
-* **SAS TTL**: IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定では 1 時間に設定されています。
+* **SAS TTL**:IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定では 1 時間に設定されています。
 
-* **File notification settings default TTL (ファイルの通知設定 既定の TTL)**: 有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定では 1 日に設定されています。
+* **File notification settings default TTL (ファイル通知設定の既定の TTL)**:有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定では 1 日に設定されています。
 
-* **File notification maximum delivery count (ファイルの通知設定 最大配信回数)**: IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定では 10 に設定されています。
+* **File notification maximum delivery count (ファイル通知設定の最大配信回数)**:IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定では 10 に設定されています。
 
 IoT Hub でファイルのアップロード設定を構成するには、次の PowerShell コマンドレットを使用します。
 
 ```powershell
-Set-AzureRmIotHub `
+Set-AzIotHub `
     -ResourceGroupName "{your iot hub resource group}" `
     -Name "{your iot hub name}" `
     -FileUploadNotificationTtl "01:00:00" `

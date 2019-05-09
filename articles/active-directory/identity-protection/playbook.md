@@ -4,24 +4,25 @@ description: Azure AD Identity Protection を使用して、侵害された ID �
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
-ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 5c2a37f3753292c6db847a4a9152bd4506f8fa5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: joflore
+ms.reviewer: sahandle
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 697bb8a60861acb120e92d8fd1dda3892a957b57
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580495"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518909"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
 

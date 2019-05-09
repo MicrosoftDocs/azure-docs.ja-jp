@@ -1,81 +1,106 @@
-items:
 - name: ユーザー ヘルプのドキュメント
   href: index.md
 - name: 2 段階認証のヘルプ
   items:
-  - name: 概要
-    href: user-help-two-step-verification-overview.md
-  - name: アカウントの設定
-    href: multi-factor-authentication-end-user-first-time.md
-  - name: 設定の管理
-    href: multi-factor-authentication-end-user-manage-settings.md
-  - name: 問い合わせ
-    href: multi-factor-authentication-end-user-troubleshoot.md
-  - name: アプリ パスワードの管理
-    href: multi-factor-authentication-end-user-app-passwords.md
-  - name: サインイン方法
-    href: user-help-sign-in.md?toc=./toc.json
+    - name: 概要
+      href: user-help-two-step-verification-overview.md
+    - name: アカウントの設定
+      href: multi-factor-authentication-end-user-first-time.md
+    - name: 設定の管理
+      href: multi-factor-authentication-end-user-manage-settings.md
+    - name: 問い合わせ
+      href: multi-factor-authentication-end-user-troubleshoot.md
+    - name: アプリ パスワードの管理
+      href: multi-factor-authentication-end-user-app-passwords.md
+    - name: サインイン方法
+      href: user-help-sign-in.md?toc=./toc.json
 - name: パスワードのリセットのヘルプ
   items:
-  - name: 概要
-    href: user-help-password-reset-overview.md
-  - name: パスワードをリセットするためのサインアップ
-    href: active-directory-passwords-reset-register.md
-  - name: パスワードをリセットする
-    href: user-help-reset-password.md
-- name: セキュリティ情報 (プレビュー) のヘルプ
-  items:
-  - name: 概要
-    href: user-help-security-info-overview.md
-  - name: 認証アプリの設定
-    href: security-info-setup-auth-app.md
-  - name: テキスト メッセージの設定
-    href: security-info-setup-text-msg.md
-  - name: 音声通話の設定
-    href: security-info-setup-phone-number.md
-  - name: メールの設定
-    href: security-info-setup-email.md
-  - name: セキュリティの質問の設定
-    href: security-info-setup-questions.md
-  - name: アプリ パスワードの管理
-    href: security-info-app-passwords.md
-  - name: セキュリティ情報の管理
-    href: security-info-manage-settings.md
-  - name: サインイン方法
-    href: user-help-sign-in.md?toc=./toc.json
+    - name: 概要
+      href: user-help-password-reset-overview.md
+    - name: パスワードをリセットするためのサインアップ
+      href: active-directory-passwords-reset-register.md
+    - name: パスワードをリセットする
+      href: user-help-reset-password.md
 - name: Microsoft Authenticator アプリのヘルプ
   items:
-  - name: 概要
-    href: user-help-auth-app-overview.md
-  - name: 作業開始
-    href: microsoft-authenticator-app-how-to.md
-  - name: バックアップと復旧
-    href: microsoft-authenticator-app-backup-and-recovery.md
-  - name: 携帯電話を使用したサインイン
-    href: microsoft-authenticator-app-phone-signin-faq.md
-  - name: FAQ
-    href: microsoft-authenticator-app-faq.md
-- name: マイ アプリ ポータルのヘルプ
+    - name: 概要
+      href: user-help-auth-app-overview.md
+    - name: アプリのダウンロードとインストール
+      href: user-help-auth-app-download-install.md
+    - name: アカウントの追加の概要
+      href: user-help-auth-app-add-account-overview.md
+      items:
+        - name: 職場または学校用のアカウントを追加する
+          href: user-help-auth-app-add-work-school-account.md
+        - name: 個人用の Microsoft アカウントを追加する
+          href: user-help-auth-app-add-personal-ms-account.md
+        - name: Microsoft 以外のアカウントを追加する
+          href: user-help-auth-app-add-non-ms-account.md
+        - name: アカウントの手動での追加
+          href: user-help-auth-app-add-account-manual.md
+    - name: Microsoft Authenticator アプリを使用してサインインする
+      href: user-help-auth-app-sign-in.md
+    - name: アカウントのバックアップと回復
+      href: user-help-auth-app-backup-recovery.md
+    - name: FAQ
+      href: user-help-auth-app-faq.md
+- name: マイ プロファイル ポータル (プレビュー) のヘルプ
   items:
-  - name: 概要
-    href: user-help-my-apps-overview.md
-  - name: マイ アプリ ポータルとは
-    href: active-directory-saas-access-panel-introduction.md
-  - name: 問題のトラブルシューティング
-    href: active-directory-saas-access-panel-user-help.md
+    - name: 概要
+      href: myprofile-portal-overview.md
+    - name: セキュリティ情報の管理
+      href: user-help-security-info-overview.md
+    - name: 組織の管理
+      href: myprofile-portal-organizations-page.md
+    - name: 接続されているデバイスの管理
+      href: myprofile-portal-devices-page.md
+    - name: プライバシーに関連する情報の表示
+      href: myprofile-portal-privacy-page.md
+- name: セキュリティ情報 (プレビュー) のヘルプ
+  items:
+    - name: 概要
+      href: user-help-security-info-overview.md
+    - name: サインイン中のセキュリティ情報の追加
+      href: security-info-setup-signin.md
+    - name: セキュリティ情報の方法の追加または更新に関する概要
+      href: security-info-add-update-methods-overview.md
+      items:
+        - name: 認証アプリの設定
+          href: security-info-setup-auth-app.md
+        - name: テキスト メッセージの設定
+          href: security-info-setup-text-msg.md
+        - name: 音声通話の設定
+          href: security-info-setup-phone-number.md
+        - name: メールの設定
+          href: security-info-setup-email.md
+        - name: セキュリティの質問の設定
+          href: security-info-setup-questions.md
+    - name: アプリ パスワードの管理
+      href: security-info-app-passwords.md
+    - name: サインイン方法
+      href: user-help-sign-in.md?toc=./toc.json
 - name: デバイスの管理のヘルプ
   items:
-  - name: 概要
-    href: user-help-device-mgmt-overview.md
-  - name: 職場のデバイスを参加させる
-    href: user-help-join-device-on-network.md
-  - name: 個人所有の職場のデバイスを登録する
-    href: user-help-register-device-on-network.md
-  - name: メッセージ "アクセスできません" のトラブルシューティング
-    href: user-help-device-remediation.md
-ms.openlocfilehash: 27d0d3300a19d4c27bec48ebf411c7ac3ee6ad87
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649587"
+    - name: 概要
+      href: user-help-device-mgmt-overview.md
+    - name: 職場のデバイスを参加させる
+      href: user-help-join-device-on-network.md
+    - name: 個人所有の職場のデバイスを登録する
+      href: user-help-register-device-on-network.md
+    - name: メッセージ "アクセスできません" のトラブルシューティング
+      href: user-help-device-remediation.md
+- name: マイ アプリ ポータルのヘルプ
+  items:
+    - name: 概要
+      href: my-apps-portal-end-user-overview.md
+    - name: マイ アプリ ポータルにアクセスして使用する
+      href: my-apps-portal-end-user-access.md
+    - name: プロファイルとアカウント情報を更新する
+      href: my-apps-portal-end-user-update-profile.md
+    - name: グループ情報を更新する
+      href: my-apps-portal-end-user-groups.md
+    - name: 自分のアクセス レビューを実行する
+      href: my-apps-portal-end-user-access-reviews.md
+    - name: 問題のトラブルシューティング
+      href: my-apps-portal-end-user-troubleshoot.md

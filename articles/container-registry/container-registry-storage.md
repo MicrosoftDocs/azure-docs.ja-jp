@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: danlep
-ms.openlocfilehash: ba3c6a6bd4fb330eb64b5408eb72095f4de46a7b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856650"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551026"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存
 
@@ -39,7 +39,7 @@ Azure では、geo 冗長ストレージ スキームを使用して、コンテ
 | リポジトリ | 制限なし |
 | イメージ | 制限なし |
 | レイヤー | 制限なし |
-| タグ | 制限なし|
+| Tags | 制限なし|
 | Storage | 5 TB |
 
 膨大な数のリポジトリとタグは、レジストリのパフォーマンスに影響する可能性があります。 レジストリのメンテナンス ルーチンの一部として、未使用のリポジトリ、タグ、およびイメージを定期的に削除してください。 リポジトリ、イメージ、タグなどの削除されたレジストリ リソースは、削除後に元に戻すことは*できません*。 レジストリのリソースを削除する方法については、「[Azure Container Registry 内のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
@@ -56,6 +56,6 @@ Azure Container Registry の SKU (Basic、Standard、Premium) の詳細につい
 
 <!-- LINKS - External -->
 [portal]: https://portal.azure.com
-[pricing]: http://aka.ms/acr/pricing
+[pricing]: https://aka.ms/acr/pricing
 
 <!-- LINKS - Internal -->

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: c3a737bdd9978e6cb02e3e8b7a34407eb1dd8fb6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cce38eb12d803c0640d9ee774dbc6c98ab5db219
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380767"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243773"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -29,7 +29,7 @@ Azure Kubernetes Service (AKS) で実行されるアプリケーションで、�
 
 ## <a name="volumes"></a>ボリューム
 
-多くの場合、アプリケーションではデータの格納と取得を行う必要があります。 通常、Kubernetes は、破棄できる短期的なリソースとして個々のポッドを扱うため、アプリケーションが必要に応じてデータを使用したり保存したりする際にさまざまなアプローチが提供されます。 "*ボリューム*" とは、複数のポッドにまたがり、アプリケーション ライフサイクルを通じて、データを格納、取得および保存する手段です。
+多くの場合、アプリケーションではデータの格納と取得を行う必要があります。 通常、Kubernetes では、破棄できる短期的なリソースとして個々のポッドが扱われるため、アプリケーションで必要に応じてデータを使用したり保存したりするためのさまざまなアプローチが提供されています。 "*ボリューム*" とは、複数のポッドにまたがり、アプリケーション ライフサイクルを通じて、データを格納、取得および保存する手段です。
 
 データを格納して取得するための従来のボリュームは、Azure Storage を基盤とする Kubernetes リソースとして作成されます。 これらのデータ ボリュームを手動で作成してポッドに直接割り当てることも、Kubernetes で自動的に作成することもできます。 これらのデータ ボリュームには、Azure ディスクまたは Azure Files を使用できます。
 
@@ -44,7 +44,7 @@ Kubernetes におけるボリュームは、情報を格納して取得するだ
 
 ## <a name="persistent-volumes"></a>永続ボリューム
 
-ボリュームは、ポッド ライフサイクルの一部として定義および作成され、そのポッドが削除されるまでしか存在しません。 メンテナンス イベントでポッドが別のホストに再スケジュールされた場合でも、多くの場合、ポッドはストレージがそのまま存在することを予期しています (特に StatefulSets)。 "*永続ボリューム*" (PV) は、Kubernetes API によって作成および管理されるストレージ リソースであり、個々のポッドの有効期間が終了しても存在できます。
+ポッド ライフサイクルの一部として定義および作成されるボリュームは、そのポッドが削除されるまでしか存在しません。 メンテナンス イベントでポッドが別のホストに再スケジュールされた場合でも、多くの場合、ポッドはストレージがそのまま存在することを予期しています (特に StatefulSets)。 "*永続ボリューム*" (PV) は、Kubernetes API によって作成および管理されるストレージ リソースであり、個々のポッドの有効期間が終了しても存在できます。
 
 PersistentVolume を提供するために Azure ディスクまたは Azure Files が使用されます。 前の「ボリューム」のセクションで説明したように、多くの場合、ディスクまたは Files の選択はデータへの同時アクセスの必要性またはパフォーマンス レベルによって決まります。
 
@@ -121,6 +121,8 @@ spec:
 
 ## <a name="next-steps"></a>次の手順
 
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
+
 Azure ディスクまたは Azure Files を使用する動的または静的ボリュームの作成方法については、次の操作方法の記事をご覧ください。
 
 - [Azure ディスクを使用した静的ボリュームの作成][aks-static-disks]
@@ -148,3 +150,4 @@ Kubernetes と AKS の中心概念に関する追加情報については、次�
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-network]: concepts-network.md
+[operator-best-practices-storage]: operator-best-practices-storage.md

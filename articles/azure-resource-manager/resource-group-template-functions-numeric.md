@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 4fc17b997c44560199e65edb01d20c6a24e49877
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360004"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266978"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの数値関数
 
@@ -38,6 +38,8 @@ ms.locfileid: "34360004"
 
 <a id="add" />
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="add"></a>追加
 `add(operand1, operand2)`
 
@@ -45,8 +47,8 @@ ms.locfileid: "34360004"
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
-|:--- |:--- |:--- |:--- |
+| パラメーター | 必須 | type | 説明 |
+|:--- |:--- |:--- |:--- | 
 |operand1 |はい |int |加算する最初の整数。 |
 |operand2 |はい |int |加算する 2 つ目の整数。 |
 
@@ -104,7 +106,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
 ```
 
 <a id="copyindex" />
@@ -112,11 +114,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-反復処理のループのインデックスを返します。
+反復処理のループのインデックスを返します。 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | loopName | いいえ  | 文字列 | 反復処理の取得対象となるループの名前。 |
 | offset |いいえ  |int |0 から始まる反復値に追加する整数。 |
@@ -125,25 +127,25 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 この関数は常に **copy** オブジェクトと共に使用されます。 **offset** の値が指定されていない場合、現在の反復値が返されます。 反復値は 0 から始まります。 リソースまたは変数のいずれかを定義するときに、反復処理のループを使用できます。
 
-copyIndex がリソースの反復処理を指すのかプロパティの反復処理を指すのかは、**loopName** プロパティで指定できます。 **loopName** に値を指定しなかった場合は、現在のリソース タイプの反復処理が使われます。 プロパティに対する反復では、**loopName** に値を指定してください。
-
+copyIndex がリソースの反復処理を指すのかプロパティの反復処理を指すのかは、**loopName** プロパティで指定できます。 **loopName** に値を指定しなかった場合は、現在のリソース タイプの反復処理が使われます。 プロパティに対する反復では、**loopName** に値を指定してください。 
+ 
 **copyIndex**の使用方法の詳細については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
 変数を定義するときに **copyIndex** を使用する例については、「[変数](resource-group-authoring-templates.md#variables)」を参照してください。
 
 ### <a name="example"></a>例
 
-次の例では、コピー ループと、名前に含まれるインデックス値を示します。
+次の例では、コピー ループと、名前に含まれるインデックス値を示します。 
 
 ```json
-"resources": [
-  {
-    "name": "[concat('examplecopy-', copyIndex())]",
-    "type": "Microsoft.Web/sites",
-    "copy": {
-      "name": "websitescopy",
-      "count": "[parameters('count')]"
-    },
+"resources": [ 
+  { 
+    "name": "[concat('examplecopy-', copyIndex())]", 
+    "type": "Microsoft.Web/sites", 
+    "copy": { 
+      "name": "websitescopy", 
+      "count": "[parameters('count')]" 
+    }, 
     ...
   }
 ]
@@ -162,7 +164,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |int |除算される整数。 |
 | operand2 |はい |int |除算に使用される整数。 0 にすることはできません。 |
@@ -221,7 +223,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
 ```
 
 <a id="float" />
@@ -233,7 +235,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |浮動小数点数に変換する値。 |
 
@@ -267,7 +269,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい |文字列または整数 |整数に変換する値。 |
 
@@ -284,7 +286,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "stringToConvert": {
+        "stringToConvert": { 
             "type": "string",
             "defaultValue": "4"
         }
@@ -315,7 +317,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
 <a id="max" />
@@ -327,7 +329,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
@@ -379,19 +381,19 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
 <a id="min" />
 
-## <a name="min"></a>Min
+## <a name="min"></a>min
 `min (arg1)`
 
 整数の配列または整数のコンマ区切りリストから最小値を返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
@@ -443,7 +445,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
 <a id="mod" />
@@ -455,7 +457,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |int |除算される整数。 |
 | operand2 |はい |int |除算に使用される整数。0 にすることはできません。 |
@@ -513,7 +515,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
 <a id="mul" />
@@ -525,7 +527,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |int |乗算する最初の整数。 |
 | operand2 |はい |int |乗算する 2 つ目の整数。 |
@@ -584,7 +586,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
 <a id="sub" />
@@ -596,7 +598,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |int |減算される整数。 |
 | operand2 |はい |int |減算する整数。 |
@@ -654,7 +656,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -662,3 +664,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+

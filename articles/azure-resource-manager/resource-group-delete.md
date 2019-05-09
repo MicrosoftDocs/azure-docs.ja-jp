@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: b8c4fdc942af291e912a4c1e74d1292279cf9f8c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c38b1ccf7f7ccfe57e2b29f236f642238c4706a7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132331"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492744"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Azure Resource Manager によるリソース グループの削除
 
@@ -69,4 +69,4 @@ GET 操作からエラーが返された場合、次のエラー コードであ
 ## <a name="next-steps"></a>次の手順
 
 * Resource Manager の概念を理解するには、「[Azure Resource Manager の概要](resource-group-overview.md)」をご覧ください。
-* 削除コマンドについては、[PowerShell](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup)、[Azure CLI](/cli/azure/group?view=azure-cli-latest#az-group-delete)、[REST API](/rest/api/resources/resourcegroups/delete) をご覧ください。
+* 削除コマンドについては、[PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup)、[Azure CLI](/cli/azure/group?view=azure-cli-latest#az-group-delete)、[REST API](/rest/api/resources/resourcegroups/delete) をご覧ください。

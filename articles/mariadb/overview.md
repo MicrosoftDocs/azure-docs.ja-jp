@@ -6,17 +6,17 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 12/03/2018
-ms.openlocfilehash: 507425a6cffc6f3b49e117ebf5a604bf0d252164
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/20/2019
+ms.openlocfilehash: a5d00c24531099e66afcb6ccf07cfdf99abd28d1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542018"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295149"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 
-Azure Database for MariaDB は、Microsoft Cloud のリレーショナル データベース サービスです。 Azure Database for MariaDB は、[MariaDB コミュニティ エディション](https://mariadb.org/download/)のデータベース エンジン バージョン 10.2 を基にしています。
+Azure Database for MariaDB は、Microsoft Cloud のリレーショナル データベース サービスです。 Azure Database for MariaDB は、[MariaDB コミュニティ エディション](https://mariadb.org/download/) (GPLv2 ライセンスで入手可能) のデータベース エンジン バージョン 10.2 を基にしています。
 
 Azure Database for MariaDB では次のものが提供されます。
 
@@ -45,7 +45,7 @@ Azure Database for MariaDB サービスには、次の複数のサービス レ�
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
-スケールアップまたはスケールダウンするときに、適切なパフォーマンス レベルはどのようにして見極めればよいのでしょうか。 Azure Database for MariaDB の組み込みのパフォーマンス監視機能およびアラート機能と、仮想コアに基づくパフォーマンス評価とを組み合わせて使用できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、仮想コアのスケールアップまたはスケールダウンの効果をすばやく評価することができます。 <!--See [Alerts](howto-alert-on-metric.md) for details.-->
+スケールアップまたはスケールダウンするときに、適切なパフォーマンス レベルはどのようにして見極めればよいのでしょうか。 Azure Database for MariaDB の組み込みのパフォーマンス監視機能およびアラート機能と、仮想コアに基づくパフォーマンス評価とを組み合わせて使用できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、仮想コアのスケールアップまたはスケールダウンの効果をすばやく評価することができます。 詳細については、[アラート](howto-alert-metric.md)に関するページを参照してください。
 
 ## <a name="keep-your-app-and-business-running"></a>アプリケーションとビジネスの継続的な稼働
 
@@ -55,7 +55,7 @@ Azure の業界をリードする可用性 99.99% の SLA は、Microsoft が管
 
 Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trustcenter/security)をご覧ください。
 
-Azure Database for MariaDB サービスでは、保存データにストレージ暗号化が使用されます。 バックアップ データも含め、データはディスク上で暗号化されます  (クエリの実行時にエンジンによって作成される一時ファイルはディスク上で暗号化されません)。このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用されます。 このキーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
+Azure Database for MariaDB サービスは、保存データにストレージ暗号化を使用し、FIPS 140-2 に準拠しています。 バックアップ データも含め、データはディスク上で暗号化されます  (クエリの実行時にエンジンによって作成される一時ファイルはディスク上で暗号化されません)。このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用されます。 このキーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
 
 既定では、Azure Database for MariaDB サービスは、ネットワーク全体で移動中のデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されています。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要件を無効にできます。
 

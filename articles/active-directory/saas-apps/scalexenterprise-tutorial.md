@@ -4,22 +4,23 @@ description: Azure Active Directory と ScaleX Enterprise の間でシングル 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c2379a8d-a659-45f1-87db-9ba156d83183
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 64edf2aa47211c1d2a598417a7b2edc00f260075
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835388"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>チュートリアル:Azure Active Directory と ScaleX Enterprise の統合
 
@@ -172,7 +173,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     c. **[Name of Identity Provider email field in ACS response]\(ACS 応答での ID プロバイダーの電子メール フィールドの名前\)**:値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます
 
-    d. **[Identity Provider EntityDescriptor Entity ID]\(ID プロバイダーの EntityDescriptor エンティティ ID\):** Azure portal からコピーした **SAML エンティティ ID** 値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Identity Provider EntityDescriptor Entity ID]\(ID プロバイダーの EntityDescriptor エンティティ ID\):** Azure portal からコピーした **SAML エンティティ ID** 値を貼り付けます。
 
     e. **Identity Provider SingleSignOnService URL\(ID プロバイダーの SingleSignOnService URL\):** Azure portal からの **SAML シングル サインオン サービス URL** を貼り付けます。
 
@@ -183,7 +184,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
     h. **[Update SSO Settings (SSO 設定を更新する)]** をクリックして設定を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -215,7 +216,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-scalex-enterprise-test-user"></a>ScaleX Enterprise テスト ユーザーの作成
 

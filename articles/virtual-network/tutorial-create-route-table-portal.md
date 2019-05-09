@@ -1,5 +1,6 @@
 ---
-title: ネットワーク トラフィックをルーティングする - チュートリアル - Azure Portal | Microsoft Docs
+title: ネットワーク トラフィックをルーティングする - チュートリアル - Azure portal
+titlesuffix: Azure Virtual Network
 description: このチュートリアルでは、Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: fbbc624bbc3d20a70a54c50296f5b74634002a67
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 855adccf036f731de12810fe0f5287186048ddb0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409073"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095959"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -136,7 +137,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="associate-myroutetablepublic-to-your-public-subnet"></a>myRouteTablePublic を Public サブネットに関連付けます。
 
-1. **[Public]** を選択します。
+1. **[パブリック]** を選択します。
 
 1. **[Public]** で **[ルート テーブル]** > **[MyRouteTablePublic]** > **[保存]** の順に選択します。
 
@@ -194,7 +195,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
     | ------- | ----- |
     | Name | 「*mynvastorageaccount*」と入力します。 |
     | アカウントの種類 | 既定値 **[ストレージ (汎用 v1)]** のままにします。 |
-    | [パフォーマンス] | 既定値 **[標準]** のままにします。 |
+    | パフォーマンス | 既定値 **[標準]** のままにします。 |
     | レプリケーション | 既定値 **[ローカル冗長ストレージ (LRS)]** のままにします。
 
 1. **[OK]** を選択します。
@@ -280,7 +281,7 @@ Azure で *myVmPublic* VM が作成されている場合に *myVmPrivate* VM を
 
 1. **[はい]** を選択して VM に接続します。
 
-### <a name="enable-icpm-through-the-windows-firewall"></a>ICMP が Windows ファイアウォールを通過できるようにする
+### <a name="enable-icmp-through-the-windows-firewall"></a>ICMP が Windows ファイアウォールを通過できるようにする
 
 後の手順では、ルーティングのテストにトレース ルート ツールを使用します。 トレース ルートはインターネット制御メッセージ プロトコル (ICMP) を使用していますが、Windows ファイアウォールでは既定で拒否されます。 ICMP が Windows ファイアウォールを通過できるようにします。
 

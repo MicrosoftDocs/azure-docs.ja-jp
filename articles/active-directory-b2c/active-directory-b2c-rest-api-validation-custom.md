@@ -3,21 +3,21 @@ title: Azure Active Directory B2C での検証としての REST API 要求の交
 description: Azure Active Directory B2C のカスタム ポリシーに関するトピック。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.subservice: B2C
+ms.openlocfilehash: b08c5e6f2bc7d7970c47e14db84f4172e92eb820
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542584"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203659"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>チュートリアル: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -30,7 +30,7 @@ IEF では、要求を介してデータが送受信されます。 API との�
 - REST API 要求交換として、またはオーケストレーション手順内で使用される検証プロファイルとして設計できます。
 - 通常は、ユーザーからの入力を検証します。 ユーザーからの値を拒否する場合は、エラー メッセージを返して、ユーザーが有効な値を入力し直すことができるように設定できます。
 
-対話は、オーケストレーション手順として設計することもできます。 詳細については、「[チュートリアル: REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-step-custom.md)」を参照してください。
+対話は、オーケストレーション手順として設計することもできます。 詳細については、[チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-step-custom.md)を参照してください。
 
 検証プロファイルの例として、スターター パック ファイル ProfileEdit.xml のプロファイルの編集ユーザー体験を使用します。
 
@@ -41,7 +41,7 @@ IEF では、要求を介してデータが送受信されます。 API との�
 - [概要](active-directory-b2c-get-started-custom.md)に関するページに記載されたローカル アカウントのサインアップ/サインインを完了するように構成された Azure AD B2C テナント。
 - 対話する REST API エンドポイント。 このチュートリアルでは、REST API サービスを使用する [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) という名前のデモ サイトを設定します。
 
-## <a name="step-1-prepare-the-rest-api-function"></a>手順 1: REST API 関数を準備する
+## <a name="step-1-prepare-the-rest-api-function"></a>手順 1:REST API 関数を準備する
 
 > [!NOTE]
 > REST API 関数の設定は、この記事の範囲外です。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) に、クラウドで RESTful サービスを作成するための優れたツールキットが用意されています。
@@ -75,7 +75,7 @@ return request.CreateResponse(HttpStatusCode.OK);
 
 IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 この要求は、検証が失敗した場合 (上の例では 409 競合ステータスが返った場合) に、文字列としてユーザーに提示されます。
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>手順 2: RESTful API 要求交換を技術プロファイルとして TrustFrameworkExtensions.xml ファイルに構成する
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>手順 2:RESTful API 要求交換を技術プロファイルとして TrustFrameworkExtensions.xml ファイルに構成する
 
 技術プロファイルは、RESTful サービスで必要となる交換の完全な構成です。 TrustFrameworkExtensions.xml ファイルを開き、次の XML スニペットを `<ClaimsProviders>` 要素の中に追加します。
 
@@ -93,6 +93,7 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
@@ -110,7 +111,7 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
 
 `InputClaims` 要素は、IEF から REST サービスに送信される要求を定義します。 この例では、要求 `givenName` の内容が `playerTag` として REST サービスに送信されます。 この例では、IEF は、要求が戻ることを期待していません。 代わりに、REST サービスからの応答のために待機し、受信したステータス コードに基づいて動作します。
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>手順 3: ユーザー入力を検証するセルフアサート技術プロファイルに RESTful サービス要求交換を含める
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>手順 3:ユーザー入力を検証するセルフアサート技術プロファイルに RESTful サービス要求交換を含める
 
 検証手順は、ユーザーとの対話で使用するのが最も一般的です。 ユーザー入力が期待されるすべての対話は、*セルフアサート技術プロファイル*です。 この例では、この検証を Self-Asserted-ProfileUpdate 技術プロファイルに追加します。 これは、証明書利用者 (RP) ポリシー ファイル`Profile Edit` が使用する技術プロファイルです。
 
@@ -120,7 +121,7 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
 2. この技術プロファイルの構成を確認します。 ユーザーとの交換が、ユーザーに対する要求 (入力要求) とセルフ アサート プロバイダーから返されることが期待される要求 (出力要求) として、どのように定義されているかを確認します。
 3. `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate` を検索します。このプロファイルは、オーケストレーション手順 5 `<UserJourney Id="ProfileEdit">` として呼び出されます。
 
-## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>手順 4: プロファイルの編集 RP ポリシー ファイルをアップロードしてテストする
+## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>手順 4:プロファイルの編集 RP ポリシー ファイルをアップロードしてテストする
 
 1. TrustFrameworkExtensions.xml ファイルの新しいバージョンをアップロードします。
 2. **[今すぐ実行]** を使用してプロファイルの編集 RP ポリシー ファイルをテストします。
@@ -130,4 +131,4 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
 
 [プロファイルの編集とユーザー登録を変更してユーザーから追加情報を収集する](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
-[チュートリアル: REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-step-custom.md)
+[チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-step-custom.md)

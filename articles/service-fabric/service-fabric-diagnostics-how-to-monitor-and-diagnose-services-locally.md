@@ -3,8 +3,8 @@ title: Windows で Azure Service Fabric アプリをデバッグする | Microso
 description: ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
-manager: timlt
+author: srrengar
+manager: chackdan
 editor: ''
 ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
 ms.service: service-fabric
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: b4c3bc21591e8472dc8d51309f7431cb5d4421fd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 02/25/2019
+ms.author: srrengar
+ms.openlocfilehash: 31c559c1ab314b7e1f29bd96f74d6d82cfcc0420
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054174"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670049"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 > [!div class="op_single_selector"]
@@ -33,13 +33,13 @@ ms.locfileid: "44054174"
 ## <a name="event-tracing-for-windows"></a>Windows イベント トレーシング
 [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) では、Service Fabric のメッセージをトレースするための推奨されるテクノロジです。 ETW を使用する利点は次のとおりです。
 
-* **ETW は、高速です。** コードの実行時間にほとんど影響を与えない追跡テクノロジとして構成されています。
+* **ETW は、高速です。**  コードの実行時間にほとんど影響を与えない追跡テクノロジとして構成されています。
 * **ETW トレースは、ローカル開発環境から実際のクラスターのセットアップに至るまでシームレスに機能します。** つまり、コードを実際のクラスターにデプロイする準備ができたら、トレース コードを書き直す必要はありません。
-* **Service Fabric のシステム コードも内部のトレースに ETW を使用します。** これを使用すると、アプリケーションのトレースと Service Fabric のシステム トレースを交互に配置した状態で表示できます。 また、アプリケーションのコードと基盤となるシステムのイベントの間の順序と相互関係が理解しやすくなります。
+* **Service Fabric のシステム コードも内部のトレースに ETW を使用します。**  これを使用すると、アプリケーションのトレースと Service Fabric のシステム トレースを交互に配置した状態で表示できます。 また、アプリケーションのコードと基盤となるシステムのイベントの間の順序と相互関係が理解しやすくなります。
 * **ETW イベントを表示する Service Fabric のVisual Studio ツールが内蔵でサポートされます。** ETW イベントは、Service Fabric で Visual Studio が正しく構成されていると、Visual Studio の診断イベント ビューで表示されます。 
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>Visual Studio で Service Fabric のシステム イベントを表示する
-Service Fabric は ETW イベントを出力して、アプリケーションの開発者が、プラットフォームで起こっていることを理解できるようにします。 まだ実行していない場合は、 [Visual Studio での初めてのアプリケーション作成](service-fabric-create-your-first-application-in-visual-studio.md)に関するページの手順に従ってください。 この情報は、アプリケーションを起動して実行し、診断イベント ビューアーにトレース メッセージを表示するのに役立ちます。
+Service Fabric は ETW イベントを出力して、アプリケーションの開発者が、プラットフォームで起こっていることを理解できるようにします。 まだ実行していない場合は、 [Visual Studio での初めてのアプリケーション作成](service-fabric-tutorial-create-dotnet-app.md)に関するページの手順に従ってください。 この情報は、アプリケーションを起動して実行し、診断イベント ビューアーにトレース メッセージを表示するのに役立ちます。
 
 1. 診断イベント ウィンドウが自動的に表示されない場合は、Visual Studio の **[表示]** タブに移動し、**[その他のウィンドウ]**、**[診断イベント ビューアー]** の順に選択します。
 2. 各イベントには、イベントの送信元のノード、アプリケーション、およびサービスを示す標準的なメタデータ情報があります。 イベント ウィンドウの上部にある **[イベントのフィルター処理]** ボックスを使用して、イベントの一覧をフィルター処理することもできます。 たとえば、**[ノード名]** または **[サービス名]** でフィルター処理することができます。 また、イベントの詳細を確認する際には、イベント ウィンドウの上部にある **[一時停止]** ボタンを使用して一時停止すると、イベントが失われることなく後で再開できます。
@@ -51,7 +51,7 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 
 **サービス テンプレート**から作成されるプロジェクト (ステートレスまたはステートフル) の場合は、単に `RunAsync` の実装を検索します:
 
-1. `ServiceEventSource.Current.ServiceMessage` in the `RunAsync` を呼び出すと、アプリケーション コードからのカスタムの ETW トレースの例が表示されます。
+1.  `ServiceEventSource.Current.ServiceMessage` in the `RunAsync` を呼び出すと、アプリケーション コードからのカスタムの ETW トレースの例が表示されます。
 2. **ServiceEventSource.cs** ファイルには、パフォーマンス上の理由により頻度の高いイベントに使用する必要がある、`ServiceEventSource.ServiceMessage` メソッドのオーバーロードが見つかります。
 
 **アクター テンプレート** から作成されるプロジェクトの場合 (ステートレスまたはステートフル):

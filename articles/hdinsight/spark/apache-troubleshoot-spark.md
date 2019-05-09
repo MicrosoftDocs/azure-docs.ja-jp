@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2108de8988e973644e0622a4b76a04408949298e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: aad35aa7a958e8bdaf1479d1ffbbad5bf213d46a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635153"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339246"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Spark のトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "53635153"
 
 ### <a name="resolution-steps"></a>解決手順
 
-この手順の構成値は、既に HDInsight に設定されている値です。 Spark のどの構成をどのような値に設定する必要があるかを判断するには、「[Apache Spark アプリケーションの OutOfMemoryError 例外の原因](#what-causes-a-spark-application-outofmemoryerror-exception)」を参照してください。 
+Spark 構成値を調整して、Apache Spark アプリケーションの OutofMemoryError 例外を回避できます。 次の手順では、Azure HDInsight での既定の Spark 構成値を示します。 
 
 1. クラスターの一覧で **[Spark2]** を選択します。
 
@@ -85,14 +85,13 @@ ms.locfileid: "53635153"
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HDInsight クラスターでの Apache Spark ジョブの送信](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>クラスター上の Jupyter Notebook を使用して Apache Spark アプリケーションを構成する方法
 
 ### <a name="resolution-steps"></a>解決手順
 
-1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「[Apache Spark アプリケーションの OutOfMemoryError 例外の原因](#what-causes-a-spark-application-outofmemoryerror-exception)」を参照してください。
+1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「Apache Spark アプリケーションの OutOfMemoryError 例外の原因」を参照してください。
 
 2. **%%configure** ディレクティブの後にある最初の Jupyter Notebook セルに、Spark 構成を有効な JSON 形式で指定します。 必要に応じて、実際の値に変更します。
 
@@ -100,14 +99,14 @@ ms.locfileid: "53635153"
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HDInsight クラスターでの Apache Spark ジョブの送信](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>クラスター上の Apache Livy を使用して Apache Spark アプリケーションを構成する方法
 
 ### <a name="resolution-steps"></a>解決手順
 
-1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「[Apache Spark アプリケーションの OutOfMemoryError 例外の原因](#what-causes-a-spark-application-outofmemoryerror-exception)」を参照してください。 
+1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「Apache Spark アプリケーションの OutOfMemoryError 例外の原因」を参照してください。 
 
 2. cURL などの REST クライアントを使用して、Spark アプリケーションを Livy に送信します。 次のようなコマンドを使用します。 必要に応じて、実際の値に変更します。
 
@@ -117,14 +116,13 @@ ms.locfileid: "53635153"
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HDInsight クラスターでの Apache Spark ジョブの送信](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>クラスター上の spark-submit を使用して Apache Spark アプリケーションを構成する方法
 
 ### <a name="resolution-steps"></a>解決手順
 
-1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「[Apache Spark アプリケーションの OutOfMemoryError 例外の原因](#what-causes-a-spark-application-outofmemoryerror-exception)」を参照してください。
+1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「Apache Spark アプリケーションの OutOfMemoryError 例外の原因」を参照してください。
 
 2. 次のようなコマンドを使用して、spark-shell を起動します。 必要に応じて、構成を実際の値に変更します。 
 
@@ -134,7 +132,7 @@ ms.locfileid: "53635153"
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HDInsight クラスターでの Apache Spark ジョブの送信](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Apache Spark アプリケーションの OutOfMemoryError 例外の原因
@@ -205,12 +203,12 @@ java.lang.OutOfMemoryError
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    すべての Executor で使用される合計メモリを計算するには、次のコマンドを実行します。 
+    すべての実行プログラムで使用されるメモリの合計を計算するには、次のコマンドを実行します。 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-   ドライバーで使用される合計メモリを計算するには、次のコマンドを実行します。
+   ドライバーで使用されるメモリの合計を計算するには、次のコマンドを実行します。
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead
@@ -219,9 +217,8 @@ java.lang.OutOfMemoryError
 ### <a name="additional-reading"></a>その他の情報
 
 - [Apache Spark のメモリ管理の概要](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [HDInsight クラスターでの Apache Spark アプリケーションのデバッグ](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [HDInsight クラスターでの Apache Spark アプリケーションのデバッグ](https://web.archive.org/web/20190112152909/ https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>関連項目
 [Azure HDInsight を使用したトラブルシューティング](../../hdinsight/hdinsight-troubleshoot-guide.md)
-

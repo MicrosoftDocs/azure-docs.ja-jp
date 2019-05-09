@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 89c74b0c2144776d3bbc8a87f660b546ad40987f
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 27a013bee98447de591d373917c2cbaae7ca08b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495410"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857659"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .Net SDK の使用
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .NET SDK の使用
 
-[Apache HBase](apache-hbase-overview.md) では主に 2 つの方法でデータを操作できます。[1 つは Apache Hive クエリ、もう 1 つは HBase の RESTful API への呼び出し](apache-hbase-tutorial-get-started-linux.md)です。 `curl` コマンドまたは同様のユーティリティを使用すると、REST API を直接操作できます。
+[Apache HBase](apache-hbase-overview.md) では主に 2 つの方法でデータを操作できます。[Apache Hive クエリと、HBase の RESTful API への呼び出し](apache-hbase-tutorial-get-started-linux.md)です。 `curl` コマンドまたは同様のユーティリティを使用すると、REST API を直接操作できます。
 
 C# および .NET アプリケーションの場合、[.NET 用 Microsoft HBase REST クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.HBase.Client/)は、HBase REST API 上にクライアント ライブラリを提供します。
 

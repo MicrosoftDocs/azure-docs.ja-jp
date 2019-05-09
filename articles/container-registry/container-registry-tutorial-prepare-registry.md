@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: db00672c7cbb39002c4a40eb7397af76e4c8189a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261315"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533666"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
 
@@ -41,7 +41,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-[Azure Portal](http://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 **[リソースの作成]** > **[コンテナー]** > **[Azure Container Registry]** の順に選択します。
 
@@ -118,7 +118,7 @@ cd acr-helloworld
 
 [Dockerfile][dockerfile] は複製されたソース内の `./AcrHelloworld/Dockerfile` にあります。
 
-```dockerfile
+```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
@@ -162,7 +162,7 @@ uniqueregistryname.azurecr.io
 
 次に、`ENV DOCKER_REGISTRY` 行をレジストリのログイン サーバーの FQDN で更新します。 この例は、サンプルのレジストリ名 *uniqueregistryname* を反映しています。
 
-```dockerfile
+```Dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
 ```
 
@@ -244,7 +244,7 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
-[aspnet-core]: http://dot.net
+[aspnet-core]: https://dot.net
 [dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
 [dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

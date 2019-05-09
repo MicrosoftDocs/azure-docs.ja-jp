@@ -1,26 +1,26 @@
 ---
 title: チュートリアル - Azure DevOps Services を使用して Jenkins から Azure VM への CI/CD を設定する | Microsoft Docs
 description: このチュートリアルでは、Visual Studio Team Services または Microsoft Team Foundation Server の Release Management から Jenkins を使用して、Azure VM に対する Node.js アプリの継続的インテグレーション (CI) と継続的配置 (CD) を設定する方法を説明します
-author: tomarcher
+author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: devops
+ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
+ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388493"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901425"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル: Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル:Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
 継続的インテグレーション (CI) と継続的デプロイ (CD) は、コードのビルド、リリース、デプロイに使用できるパイプラインを生成します。 Azure DevOps Services には、Azure へのデプロイに使用できる機能が一式そろった CI/CD 自動化ツールが用意されています。 Jenkins は、よく使われているサードパーティの CI/CD サーバーベースのツールであり、CI/CD 自動化機能も備えています。 Azure DevOps Services と Jenkins を一緒に使用して、クラウド アプリまたはサービスの提供方法をカスタマイズできます。
 
@@ -60,7 +60,7 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 このアプリのフォークを作成し、このチュートリアルの後の手順で使用できるように場所 (URL) のメモを取ります。 詳細については、「[Fork a repo (リポジトリのフォーク)](https://help.github.com/articles/fork-a-repo/)」を参照してください。    
 
 > [!NOTE]
-> アプリは [Yeoman](http://yeoman.io/learning/index.html) でビルドされました。 Express、bower、および Grunt を使用します。 また、依存関係として複数の npm パッケージを保持しています。
+> アプリは [Yeoman](https://yeoman.io/learning/index.html) でビルドされました。 Express、bower、および Grunt を使用します。 また、依存関係として複数の npm パッケージを保持しています。
 > このサンプルには、Nginx を設定し、アプリを配置するスクリプトも含まれています。 これは仮想マシンで実行します。 スクリプトによって、具体的には次の処理が行われます。
 > 1. Node、Nginx、および PM2 をインストールします。
 > 2. Nginx と PM2 を構成します。
@@ -68,7 +68,7 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 
 ## <a name="configure-jenkins-plug-ins"></a>Jenkins プラグインを構成する
 
-まず **NodeJS** 用と **VS Team Services Continuous Deployment** 用の 2 つの Jenkins プラグインを構成する必要があります。
+最初に、2 つの Jenkins プラグインを構成する必要があります。**NodeJS** と **VS Team Services Continuous Deployment** です。
 
 1. Jenkins アカウントを開き、**[Jenkins の管理]** を選択します。
 2. **[Jenkins の管理]** ページで、**[プラグインの管理]** を選択します。
@@ -141,7 +141,7 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 8. インストール後、デプロイ グループのタグを求められます。 既定値を受け入れます。
 9. Azure DevOps Services の **[配置グループ]** の **[ターゲット]** で、新たに登録された仮想マシンを確認します。
 
-## <a name="create-a-azure-pipelines-release-pipeline"></a>Azure Pipelines のリリース パイプラインを作成する
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Azure Pipelines のリリース パイプラインを作成する
 
 リリース パイプラインでは、Azure Pipelines でアプリをデプロイするときに使用するプロセスを指定します。 この例ではシェル スクリプトを実行します。
 
@@ -164,7 +164,7 @@ Azure Pipelines でリリース パイプラインを作成するには、次の
 
 1. **[+ リリース]** を選択し、**[リリースの作成]** を選択します。
 2. 強調表示されているドロップダウン リストから完了したビルドを選択し、**[キュー]** を選択します。
-3. ポップアップ メッセージでリリース リンクを選択します。 たとえば、"リリース **Release-1** が作成されました" と表示されます。
+3. ポップアップ メッセージでリリース リンクを選択します。 例: "リリース **Release-1** が作成されました。"
 4. **[ログ]** タブを開いて、リリース コンソールの出力を確認します。
 5. ブラウザーで、デプロイ グループに追加したサーバーのいずれかについて URL を開きます。 たとえば、**http://{your-server-ip-address}** と入力します。
 6. ソース Git リポジトリに移動し、app/views/index.jade ファイル内の **[h1]** 見出しの内容を、変更を行ったテキストで変更します。

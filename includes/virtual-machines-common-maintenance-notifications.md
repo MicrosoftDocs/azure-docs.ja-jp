@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 609389460ab18ba947130e64dbe7b599574816a5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 50a215175d7305834a64b7e0cfbc153431b10b7c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53216007"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56739203"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>ポータルでメンテナンスがスケジュールされている VM を表示する
 

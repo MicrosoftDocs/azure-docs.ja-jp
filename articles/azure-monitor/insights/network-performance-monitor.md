@@ -3,7 +3,7 @@ title: Azure の Network Performance Monitor ソリューション | Microsoft D
 description: Azure の Network Performance Monitor は、ネットワークのパフォーマンスを監視して、ネットワーク パフォーマンスのボトルネックをほぼリアルタイムで検出して特定するのに役立ちます。
 services: log-analytics
 documentationcenter: ''
-author: abshamsft
+author: vinynigam
 manager: carmonm
 editor: ''
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
-ms.author: abshamsft
-ms.openlocfilehash: 7f7fe545c10d80fc5a201923679b7d61623786fb
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: vinigam
+ms.openlocfilehash: 29826f7f842f8dfbd7cd2a754c919f06542a161c
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193792"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615984"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -33,7 +33,7 @@ Network Performance Monitor では、次の 3 つの広範な機能が提供さ�
 
 * [[パフォーマンス モニター]](network-performance-monitor-performance-monitor.md): クラウドの展開やオンプレミスの場所、複数のデータ センターやブランチ オフィス、ミッション クリティカルな多層アプリケーション/マイクロ サービスのネットワーク接続を監視できます。 パフォーマンスの監視では、ユーザーから不満があがる前に、ネットワークの問題を検出できます。
 
-* [[サービス接続モニター]](network-performance-monitor-service-endpoint.md): 注意を払ってサービスへのユーザーからの接続を監視して、パス内のインフラストラクチャを特定し、ネットワークのボトルネックが発生している場所を識別できます。 ユーザーより前に障害について把握して、ネットワーク パスの問題の正確な場所を確認できます。 
+* [[サービス接続モニター]](network-performance-monitor-service-connectivity.md): 注意を払ってサービスへのユーザーからの接続を監視して、パス内のインフラストラクチャを特定し、ネットワークのボトルネックが発生している場所を識別できます。 ユーザーより前に障害について把握して、ネットワーク パスの問題の正確な場所を確認できます。 
 
     この機能では、HTTP、HTTPS、TCP、および ICMP に基づくテストを行うことで、サービスの可用性と応答時間を、ほぼリアルタイムに、または履歴情報として監視できます。 ネットワークに起因するパケット損失と待ち時間を監視することもできます。 ネットワーク トポロジ マップでは、ネットワークの速度低下を分離できます。 各ホップでの待ち時間のデータを使ってノードからサービスへのネットワーク パスで発生する問題点を識別できます。 組み込みのテストでは、Office 365 や Dynamics CRM へのネットワーク接続を事前構成なしで監視できます。 この機能により、Web サイト、SaaS アプリケーション、PaaS アプリケーション、SQL データベースなどの TCP 対応のエンドポイントへのネットワーク接続を監視することができます。
 
@@ -52,14 +52,14 @@ NPM は、次のリージョンのいずれかでホストされているワー�
 * 英国南部
 * 米国政府バージニア州
 
-ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions)で確認できます。
+ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)で確認できます。
 
 
 ## <a name="set-up-and-configure"></a>セットアップと構成
 
 ### <a name="install-and-configure-agents"></a>エージェントのインストールと構成 
 
-「[Windows コンピューターを Azure Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」と「[Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
+「[Windows コンピューターを Azure Monitor に接続する](../platform/agent-windows.md)」と「[Operations Manager を Azure Monitor に接続する](../platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
 
 ### <a name="where-to-install-the-agents"></a>エージェントをインストールする場所 
 
@@ -83,7 +83,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
     > このスクリプトでは、Windows ファイアウォールがローカルでのみ構成されます。 ネットワーク ファイアウォールがある場合、ネットワーク パフォーマンス モニターによって使われている TCP ポート宛てのトラフィックを許可する必要があります。
 
     >[!NOTE]
-    > サービス エンドポイントの監視で [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell スクリプトを実行する必要はありません
+    > サービス接続モニターで [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell スクリプトを実行する必要はありません。
 
     
 
@@ -101,7 +101,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
 ### <a name="configure-the-solution"></a>ソリューションの構成 
 
-1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](../../azure-monitor/insights/solutions.md)」で説明されている手順も使用できます。 
+1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順も使用できます。 
 2. Log Analytics ワークスペースを開いて、**[概要]** タイルを選びます。 
 3. " *このソリューションにはさらに構成が必要です*" というメッセージが表示されている **[ネットワーク パフォーマンス モニター]** タイルを選びます。
 
@@ -115,23 +115,17 @@ Network Performance Monitor は、代理トランザクションを使って、�
     
    **[サービス接続モニター]**: この機能では、事前構成済みの組み込みのテストを実行して、エージェントから Office 365 と Dynamics 365 へのネットワーク接続を監視することができます。 横にチェック ボックスをオンにして、監視する Office 365 と Dynamics 365 のサービスを選びます。 監視用のエージェントを選ぶには、**[エージェントの追加]** を選びます。 この機能が必要ない場合、または後で設定する場合は、何も選ばないで、**[保存して続行]** を選びます。
 
-   ![[サービス エンドポイント モニター] ビュー](media/network-performance-monitor/npm-service-endpoint-monitor.png)
+   ![サービス接続モニター ビュー](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
    **ExpressRoute モニター**: **[今すぐ検出する]** を選び、この Log Analytics ワークスペースにリンクされている Azure サブスクリプション内の仮想ネットワークに接続されているすべての ExpressRoute プライベート ピアリングを検出します。 
 
-   >[!NOTE] 
-   > このソリューションでは、現時点では ExpressRoute プライベート ピアリングしか検出されません。 
-
-   >[!NOTE] 
-   > 検出されるのは、この Log Analytics ワークスペースにリンクされているサブスクリプションに関連付けられている仮想ネットワークに接続されているプライベート ピアリングのみです。 ExpressRoute が、このワークスペースにリンクされているサブスクリプションの外部の仮想ネットワークに接続されている場合は、これらのサブスクリプションに Log Analytics ワークスペースを作成します。 Network Performance Monitor を使ってこれらのピアリングを監視します。
-
    ![[ExpressRoute モニター] ビュー](media/network-performance-monitor/npm-express-route.png)
 
-   検出が完了した後、検出されたプライベート ピアリングが表に一覧表示されます。 
+   検出が完了した後、検出された回線とピアリングが表に一覧表示されます。 
 
    ![[ネットワーク パフォーマンス モニターの構成] ページ](media/network-performance-monitor/npm-private-peerings.png)
     
-これらのピアリングの監視は、最初は無効状態になっています。 監視する各ピアリングを選び、右側の詳細ビューからそれらの監視を構成します。 **[保存]** を選んで構成を保存します。 詳しくは、ExpressRoute の監視の構成に関する記事をご覧ください。 
+これらの回線とピアリングの監視は、最初は無効状態になっています。 監視する各リソースを選び、右側の詳細ビューからそれらの監視を構成します。 **[保存]** を選んで構成を保存します。 詳しくは、ExpressRoute の監視の構成に関する記事をご覧ください。 
 
 セットアップの完了後は、データの読み込みに 30 分から 1 時間かかります。 ソリューションによってネットワークからデータが集計されている間、Network Performance Monitor の **[概要]** タイルには "*このソリューションにはさらに構成が必要です*" と表示されます。 データが収集されてインデックスが設定されると、**[概要]** タイルは変化し、ネットワークの正常性の概要が表示されます。 その後、Log Analytics エージェントがインストールされているノードと、環境から検出されたサブネットの監視を編集できます。
 
@@ -158,7 +152,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 目的の機能を構成します。
 
 - [パフォーマンス モニター](network-performance-monitor-performance-monitor.md#configuration)
-- [サービス エンドポイント モニター](network-performance-monitor-performance-monitor.md#configuration)
+- [サービス接続モニター](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute モニター](network-performance-monitor-expressroute.md#configuration)
 
  
@@ -174,7 +168,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
  
 
  
-このソリューションは、代理トランザクションを使用してネットワークの正常性を評価します。 ネットワーク上のいたるところにインストールされた Log Analytics エージェントどうしが、TCP パケットまたは ICMP エコーを交換します。 エージェントが TCP パケットまたは ICMP エコーのどちらを使うかは、監視用に選ばれているプロトコルによって決まります。 エージェントは、このプロセスを通じて、ラウンドトリップ時間とパケット損失 (発生した場合) を把握します。 各エージェントはさらに、他のエージェントに対して traceroute を定期的に実行し、テストが必要なネットワークのさまざまなルートをすべて検出します。 このデータを使用することで、エージェントはネットワーク待機時間とパケット損失の数値を推定できます。 テストは 5 秒ごとに繰り返されます。 データは、エージェントによって約 3 分間集計されてから、Log Analytics サービスにアップロードされます。
+このソリューションは、代理トランザクションを使用してネットワークの正常性を評価します。 ネットワーク上のいたるところにインストールされた Log Analytics エージェントどうしが、TCP パケットまたは ICMP エコーを交換します。 エージェントが TCP パケットまたは ICMP エコーのどちらを使うかは、監視用に選ばれているプロトコルによって決まります。 エージェントは、このプロセスを通じて、ラウンドトリップ時間とパケット損失 (発生した場合) を把握します。 各エージェントはさらに、他のエージェントに対して traceroute を定期的に実行し、テストが必要なネットワークのさまざまなルートをすべて検出します。 このデータを使用することで、エージェントはネットワーク待機時間とパケット損失の数値を推定できます。 テストは 5 秒ごとに繰り返されます。 データは、エージェントによって約 3 分間集計されてから、Azure Monitor の Log Analytics ワークスペースにアップロードされます。
 
 
 
@@ -247,9 +241,9 @@ Network Performance Monitor では、送信元と宛先のエンドポイント�
 ![トポロジ マップ](media/network-performance-monitor/topology-map.png)
  
 
-## <a name="log-analytics-search"></a>Log Analytics 検索 
+## <a name="log-queries-in-azure-monitor"></a>Azure Monitor でのログ クエリ
 
-すべてのデータは、Network Performance Monitor ダッシュボードで視覚的に表示されます。さらに、[Log Analytics 検索](../../azure-monitor/log-query/log-query-overview.md)では、ドリルダウン ページもネイティブで使用できます。 リポジトリのデータの対話型分析を実行したり、さまざまなソースからのデータを関連付けたりすることができます。 カスタム アラートを作成し、データを表示して、Excel、Power BI、または共有可能なリンクにデータをエクスポートすることもできます。 ダッシュボードの  **[共通クエリ]** 領域には、便利なクエリがいくつかあります。これらのクエリは、独自のクエリとレポートを作成するための出発点として利用できます。 
+すべてのデータは、Network Performance Monitor ダッシュボードで視覚的に表示されます。さらに、[ログ クエリ](../log-query/log-query-overview.md)では、ドリルダウン ページもネイティブで使用できます。 リポジトリのデータの対話型分析を実行したり、さまざまなソースからのデータを関連付けたりすることができます。 カスタム アラートを作成し、データを表示して、Excel、Power BI、または共有可能なリンクにデータをエクスポートすることもできます。 ダッシュボードの  **[共通クエリ]** 領域には、便利なクエリがいくつかあります。これらのクエリは、独自のクエリとレポートを作成するための出発点として利用できます。 
 
 ## <a name="alerts"></a>アラート
 
@@ -258,19 +252,19 @@ Network Performance Monitor は、[Azure Monitor](https://docs.microsoft.com/azu
 これは、すべての通知が[アクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)を使用して管理されることを意味します。  
 
 Log Analytics を介してアラートを作成する NPM ユーザーの場合: 
-1. Azure Portal にリダイレクトするリンクが表示されます。 それをクリックしてポータルにアクセスします。
+1. Azure portal にリダイレクトするリンクが表示されます。 それをクリックしてポータルにアクセスします。
 2. Network Performance Monitor ソリューションのタイルをクリックします。 
 3. [構成] に移動します。  
 4. アラートを作成するテストを選択し、後述する手順に従います。
 
-Azure Portal を介してアラートを作成する NPM ユーザーの場合:  
+Azure portal を介してアラートを作成する NPM ユーザーの場合:  
 1. 電子メール アドレスを直接入力することも、アクション グループを使用してアラートを作成することもできます。
 2. 電子メール アドレスを直接入力する場合、**NPM Email ActionGroup** という名前のアクション グループが作成され、そのアクション グループに電子メール ID が追加されます。
 3. アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法については、[ここ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)を参照してください。 
 4. アラートが正常に作成されると、[アラートの管理] リンクを使用してアラートを管理できます。 
 
 アラートを作成するたびに NPM によって Azure Monitor 上でクエリ ベースのログ アラート ルールが作成されます。 このクエリは、既定では 5 分ごとにトリガーされます。 Azure Monitor では、最初に作成された 250 件のログ アラート ルールには課金されず、250 件のログ アラート ルール制限を超えるアラート ルールは [Azure Monitor の価格ページのアラートの価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って課金されます。
-通知は、[Azure Monitor の価格ページの通知の価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って個別に課金されます。
+通知は、[「Azure Monitor の価格」ページに記載されている通知の料金](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って個別に課金されます。
 
 
 ## <a name="pricing"></a>価格

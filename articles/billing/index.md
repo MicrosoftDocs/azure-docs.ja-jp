@@ -10,14 +10,14 @@ ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 05/24/2018
-ms.author: cwatson
-ms.openlocfilehash: ed792b03a79d2dcbb77142a51ae2641c8d0bd3ad
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.date: 02/19/2019
+ms.author: banders
+ms.openlocfilehash: e150525b6f5fd1814f13595fbd4ea7e3bccde4fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583331"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368541"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure の課金とコスト管理に関するドキュメント
 
@@ -50,9 +50,9 @@ Azure の課金の確認、使用量とコストの監視、アカウントと�
                         <p>
                         <a href="/azure/billing/billing-getting-started">予想外のコストを防ぐ</a><br/>
                         <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">リソース タグの利用</a><br/>
-                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">コストの分析を開始する - EA のみ</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">予算を作成して管理する - EA のみ</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">最適化に関する推奨事項 - EA のみ</a>
+                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">コストの分析を開始する</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">予算を作成して管理する</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">推奨事項を最適化する</a>
                         </p>
                     </div>
                 </div>
@@ -184,5 +184,5 @@ Azure の課金の確認、使用量とコストの監視、アカウントと�
             </div>
         </div>
     </li>
-    
+
 </ul>

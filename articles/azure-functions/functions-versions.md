@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: f2f1313461fcb58ea48af99aeda2f7005534fe34
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885189"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58889755"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
- Azure Functions Runtime には、2 つのメジャー バージョン 1.x と 2.x があります。 新機能が動作し、機能強化が行われている現在のバージョンは 2.x ですが、どちらも運用シナリオに対してサポートされています。  以下では、2 つのバージョンの違い、各バージョンを作成する方法、および 1.x から 2.x にアップグレードする方法について詳しく説明します。
+ Azure Functions ランタイムには、次の 2 つのメジャー バージョンがあります:1.x と 2.x。 新機能が動作し、機能強化が行われている現在のバージョンは 2.x ですが、どちらも運用シナリオに対してサポートされています。  以下では、2 つのバージョンの違い、各バージョンを作成する方法、および 1.x から 2.x にアップグレードする方法について詳しく説明します。
 
 > [!NOTE]
 > この記事は、クラウド サービスの Azure Functions に関するものです。 オンプレミスで Azure Functions を実行できるプレビュー製品については、「[Azure Functions Runtime の概要 (プレビュー)](functions-runtime-overview.md)」をご覧ください。
@@ -49,7 +49,7 @@ Azure Functions 1.x の試験段階の言語は、新しいモデルを使用す
 
 ### <a name="changes-in-triggers-and-bindings"></a>トリガーとバインドでの変更
 
-バージョン 2.x では、アプリの関数から使用される特定のトリガーとバインドの拡張機能をインストールする必要があります。 この例外は、拡張機能を必要としない HTTP トリガーとタイマー トリガーのみです。  詳細については、[バインド拡張機能の登録とインストール](./functions-triggers-bindings.md#register-binding-extensions)に関するページを参照してください。
+バージョン 2.x では、アプリの関数から使用される特定のトリガーとバインドの拡張機能をインストールする必要があります。 この例外は、拡張機能を必要としない HTTP トリガーとタイマー トリガーのみです。  詳細については、[バインド拡張機能の登録とインストール](./functions-bindings-register.md)に関するページを参照してください。
 
 バージョン間には、関数の `function.json` や属性の変更もいくつかあります。 たとえば、イベント ハブの `path` のプロパティは `eventHubName` になりました。 各バインドのドキュメントへのリンクについては、[既存のバインド一覧](#bindings)を参照してください。
 
@@ -65,9 +65,9 @@ Azure Functions 1.x の試験段階の言語は、新しいモデルを使用す
 
 * ホスト構成ファイル (host.json) は空か、文字列 `"version": "2.0"` が含まれる必要があります。
 
-* 監視を改善するために、[`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 設定を使用したポータルの WebJobs ダッシュボードは、[`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsightsinstrumentationkey) 設定を使用する Azure Application Insights に置き換えられています。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。
+* 監視を改善するために、[`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 設定を使用したポータルの WebJobs ダッシュボードは、[`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) 設定を使用する Azure Application Insights に置き換えられています。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。
 
-* 関数アプリ内のすべての関数は、同じ言語を共有する必要があります。 関数アプリを作成するときに、そのアプリのランタイム スタックを選択する必要があります。 ランタイム スタックは、アプリケーション設定の [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functionsworkerruntime) 値によって指定されます。 メモリ占有領域と起動時間を改善するために、この要件が追加されました。 ローカルで開発する場合は、この設定も [local.settings.json ファイル](functions-run-local.md#local-settings-file) に含める必要があります。
+* 関数アプリ内のすべての関数は、同じ言語を共有する必要があります。 関数アプリを作成するときに、そのアプリのランタイム スタックを選択する必要があります。 ランタイム スタックは、アプリケーション設定の [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) 値によって指定されます。 メモリ占有領域と起動時間を改善するために、この要件が追加されました。 ローカルで開発する場合は、この設定も [local.settings.json ファイル](functions-run-local.md#local-settings-file) に含める必要があります。
 
 * App Service プランでの関数に対する既定のタイムアウトは 30 分に変更されます。 host.json の [functionTimeout](functions-host-json.md#functiontimeout) 設定を使用して、手動でタイムアウトを無制限に変更することができます。
 
@@ -95,7 +95,7 @@ Visual Studio では、プロジェクトを作成するときにランタイム
 ##### <a name="version-2x"></a>バージョン 2.x
 
 ```xml
-<TargetFramework>netstandard2.0</TargetFramework>
+<TargetFramework>netcoreapp2.2</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
@@ -109,7 +109,7 @@ Visual Studio Code の開発の場合は、必要に応じてインストール�
 
 ### <a name="changing-version-of-apps-in-azure"></a>Azure でのアプリのバージョンの変更
 
-Azure の公開アプリから使用される Functions ランタイムのバージョンは、[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functionsextensionversion) アプリケーションの設定によって決まります。 `~2` の値はバージョン 2.x のランタイムをターゲットにし、`~1` はバージョン 1.x のランタイムをターゲットにしています。 他のアプリ設定の変更や関数のコード変更が必要になる可能性があるため、この設定を任意に変更しないでください。 関数アプリを別のランタイム バージョンに移行する場合に推奨される方法については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」を参照してください。
+Azure の公開アプリから使用される Functions ランタイムのバージョンは、[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) アプリケーションの設定によって決まります。 `~2` の値はバージョン 2.x のランタイムをターゲットにし、`~1` はバージョン 1.x のランタイムをターゲットにしています。 他のアプリ設定の変更や関数のコード変更が必要になる可能性があるため、この設定を任意に変更しないでください。 関数アプリを別のランタイム バージョンに移行する場合に推奨される方法については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」を参照してください。
 
 ## <a name="bindings"></a>バインド
 
@@ -121,11 +121,13 @@ Azure の公開アプリから使用される Functions ランタイムのバー
 
 * より軽量な実行環境。ここでは、使用中のバインドのみがランタイムによって識別され、読み込まれます。
 
-HTTP とタイマーのトリガーを除き、すべてのバインドを関数アプリ プロジェクトに明示的に追加するか、ポータルで登録する必要があります。 詳細については、「[バインディング拡張機能を登録する](functions-triggers-bindings.md#register-binding-extensions)」を参照してください。
+HTTP とタイマーのトリガーを除き、すべてのバインドを関数アプリ プロジェクトに明示的に追加するか、ポータルで登録する必要があります。 詳細については、「[バインディング拡張機能を登録する](./functions-bindings-expressions-patterns.md)」を参照してください。
 
 各ランタイム バージョンでサポートされるバインドを次の表に示します。
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで JWT トー�
 description: Azure Active Directory B2C 内のカスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 25352d12e578c289ccb4ab8aab60dc55a444762e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.subservice: B2C
+ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413504"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436056"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 
@@ -23,7 +23,7 @@ ms.locfileid: "50413504"
 
 Azure Active Directory (Azure AD) B2C は、各 認証フローを処理する際に、複数の種類のセキュリティ トークンを発行します。 JWT トークン発行者用の技術プロファイルは、証明書利用者のアプリケーションに返却される JWT トークンを発行します。 通常では、この技術プロファイルは、ユーザー体験での最後のオーケストレーション手順です。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
 **Protocol** 要素の **Name** 属性は `None` に設定する必要があります。 **OutputTokenFormat** 要素を `JWT` に設定します。
 
@@ -53,8 +53,8 @@ Azure Active Directory (Azure AD) B2C は、各 認証フローを処理する�
 | refresh_token_lifetime_secs | いいえ  | 更新トークンの有効期間。 アプリケーションが offline_access スコープを許可されていた場合に、新しいアクセス トークンを取得するために更新トークンを使用できる最長期間です。 既定は 120,9600 秒 (14 日) です。 最短 (包括) は 86,400 秒 (24 時間) です。 最長 (包括) は 7,776,000 秒 (90 日) です。 | 
 | rolling_refresh_token_lifetime_secs | いいえ  | 更新トークンのスライディング ウィンドウの有効期間。 この期間が経過すると、アプリケーションによって取得された最新の更新トークンの有効期間にかかわらず、ユーザーは強制的に再認証されます。 スライディング ウィンドウの有効期間を強制しないようにする場合は、allow_infinite_rolling_refresh_token の値を `true` に設定してください。 既定は 7,776,000 秒 (90 日) です。 最短 (包括) は 86,400 秒 (24 時間) です。 最長 (包括) は 31,536,000 秒 (365 日) です。 | 
 | allow_infinite_rolling_refresh_token | いいえ  | `true` に設定される場合、更新トークンのスライディング ウィンドウの有効期間はありません。 |
-| IssuanceClaimPattern | はい | 発行者 (iss) 要求を制御します。 次のいずれかの値です。<ul><li>AuthorityAndTenantGuid - iss 要求には、`login.microsoftonline` や `tenant-name.b2clogin.com` のようなドメイン名、テナント識別子 https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/ などがあります。</li><li>AuthorityWithTfp - iss 要求には、`login.microsoftonline` や `tenant-name.b2clogin.com` のようなドメイン名、テナント識別子、証明書利用者のポリシー名などがあります。 https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> | 
-| AuthenticationContextReferenceClaimPattern | いいえ  | `acr` の要求値 を制御します。<ul><li>None - Azure AD B2C は acr 要求を発行しない</li><li>PolicyId - `acr` 要求にポリシー名を含める</li></ul>この値を設定する場合のオプションは、TFP (trust framework policy) および ACR (authentication context reference) です。 この値を TFP に設定することをお勧めします。値を設定するには、`<Item>` が `Key="AuthenticationContextReferenceClaimPattern"` と共に存在し、その値が `None` であることを確認してください。 証明書利用者ポリシーで、<OutputClaims> 項目を追加し、この要素 `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` を追加します。 ポリシーには、クレームの種類 `<ClaimType Id="trustFrameworkPolicy"> <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` が存在することも確認してください。 | 
+| IssuanceClaimPattern | はい | 発行者 (iss) 要求を制御します。 次のいずれかの値です。<ul><li>AuthorityAndTenantGuid - iss 要求には、`login.microsoftonline` や `tenant-name.b2clogin.com` のようなドメイン名、テナント識別子 https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/ などがあります。</li><li>AuthorityWithTfp - iss 要求には、`login.microsoftonline` や `tenant-name.b2clogin.com` のようなドメイン名、テナント識別子、証明書利用者のポリシー名などがあります。 [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/](https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/)</li></ul> | 
+| AuthenticationContextReferenceClaimPattern | いいえ  | `acr` の要求値 を制御します。<ul><li>None - Azure AD B2C は acr 要求を発行しない</li><li>PolicyId - `acr` 要求にポリシー名を含める</li></ul>この値を設定する場合のオプションは、TFP (trust framework policy) および ACR (authentication context reference) です。 この値を TFP に設定することをお勧めします。値を設定するには、`<Item>` が `Key="AuthenticationContextReferenceClaimPattern"` と共に存在し、その値が `None` であることを確認してください。 証明書利用者ポリシーで、`<OutputClaims>` 項目を追加し、この要素 `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` を追加します。 ポリシーには、クレームの種類 `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` が存在することも確認してください。 | 
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

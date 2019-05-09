@@ -1,26 +1,26 @@
 ---
-title: 'Azure Active Directory Domain Services: マネージド ドメインの DNS を管理する | Microsoft Docs'
+title: Azure Active Directory Domain Services:マネージド ドメイン上の DNS の管理 | Microsoft Docs
 description: Azure Active Directory Domain Services のマネージド ドメイン上の DNS の管理
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: f2eea139209a03950217a855b5c8af7bc9a17372
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d6705f9f7e324c915c38d01c54bdf16826c62380
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155305"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180196"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメイン上の DNS の管理
 Azure Active Directory Domain Services には、マネージド ドメインの DNS 解決を提供する DNS (ドメイン名解決) サーバーが含まれています。 場合によっては、マネージド ドメインの DNS を構成する必要があります。 ドメインに参加していないコンピューターの DNS レコードを作成したり、ロード バランサーの仮想 IP アドレスを構成したり、外部 DNS フォワーダーを設定したりすることが必要になる場合があります。 このため、AAD DC 管理者グループに属するユーザーは、マネージド ドメインの DNS 管理者権限が付与されます。

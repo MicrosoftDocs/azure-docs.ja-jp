@@ -3,23 +3,23 @@ title: ファイアウォールの内側で翻訳する - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: IP ファイアウォールの内側で Translator Text API を使用して翻訳します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: bf1a63d996a1ed2021654c96576eb9dac2cff8e6
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: ebc8b7ce4ed0242f1bc62e3b97b6594cfe810374
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52683334"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58915749"
 ---
 # <a name="how-to-translate-behind-ip-firewalls-with-the-translator-text-api"></a>IP ファイアウォールの内側で Translator Text API を使用して翻訳する方法
 
-Translator Text API による翻訳は、ドメイン名フィルタリングまたは IP フィルタリングを使用して、ファイアウォールの内側で実行できます。 可能であればドメイン名フィルタリングの使用をお勧めします。 IP フィルタリング ファイアウォールの内側から Microsoft Translator を実行することは**お勧めしません**。 この構成は将来、予告なく動作不能になる可能性があります。 
+Translator Text API による翻訳は、ドメイン名フィルタリングまたは IP フィルタリングを使用して、ファイアウォールの内側で実行できます。 可能であればドメイン名フィルタリングの使用をお勧めします。 IP フィルタリング ファイアウォールの内側から Microsoft Translator を実行することは**お勧めしません**。 この構成は将来、予告なく動作不能になる可能性があります。
 
 ## <a name="translator-ip-addresses"></a>Translator の IP アドレス
 2018 年 11 月 20 日における api.cognitive.microsofttranslator.com (Microsoft Translator Text API) の IP アドレスは次のとおりです。

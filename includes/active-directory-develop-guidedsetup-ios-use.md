@@ -3,8 +3,8 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: andret
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 06da33b91ef9846204b33ba2cb3dea40c75d425d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: b7883de410a1fd281a154a792dd45132c08f0c03
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988277"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804474"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Authentication Library (MSAL) を使用して Microsoft Graph API のトークンを取得する
 
@@ -215,7 +215,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 ユーザーがサインアウトした場合や、別のデバイスでパスワードを変更した場合などには、`acquireTokenSilent` は最終的に失敗します。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MSALErrorCode.interactionRequired` 例外を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-1. すぐに `acquireToken` を呼び出し、ユーザーにサインインを促します。 オンライン アプリケーション (ユーザーが使用できるオフライン コンテンツが含まれていないアプリケーション) の場合は、通常、この方法で処理します。 このガイド付きのセットアップによって生成されるサンプル アプリケーションは、このパターンを使用します。アプリケーションの初回実行時に、実際の動作を確認できます。 アプリケーションはユーザーによって使用されたことがないため、`applicationContext.allAccounts().first` には null 値が含まれ、` MSALErrorCode.interactionRequired ` 例外がスローされます。 サンプルのコードでは、`acquireToken` を呼び出してユーザーのサインインを促すことにより、この例外を処理します。
+1. すぐに `acquireToken` を呼び出し、ユーザーにサインインを促します。 オンライン アプリケーション (ユーザーが使用できるオフライン コンテンツが含まれていないアプリケーション) の場合は、通常、この方法で処理します。 このガイド付きのセットアップによって生成されるサンプル アプリケーションは、このパターンを使用します。アプリケーションの初回実行時に、実際の動作を確認できます。 アプリケーションはユーザーによって使用されたことがないため、`applicationContext.allAccounts().first` には null 値が含まれ、`MSALErrorCode.interactionRequired` 例外がスローされます。 サンプルのコードでは、`acquireToken` を呼び出してユーザーのサインインを促すことにより、この例外を処理します。
 
 2. ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `acquireTokenSilent` を再試行できるようにする。 アプリケーションにユーザーが使用できるオフライン コンテンツが含まれている場合など、アプリケーションの他の機能を中断せずに使用できる場合は、通常、この方法で処理します。 この方法では、ユーザーは保護されたリソースにサインインしたり、古い情報を更新したりするタイミングを決めることができます。また、アプリケーションで、ネットワークが一時的に使用できなくなってから回復した場合に `acquireTokenSilent` を再試行できます。
 

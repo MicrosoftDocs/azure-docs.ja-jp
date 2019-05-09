@@ -4,33 +4,35 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、PHP を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f34f86fe7fba09bfbc5a05814fb4e39ee40c003b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e77c7ea6036e92c33c975f8180053a8880db55a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090527"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>クイック スタート:PHP と Bing News Search REST API を使用してニュース検索を実行する
 
-この記事では、Azure 上の Microsoft Cognitive Services の一部である Bing News Search API の使用方法を示します。 この記事では PHP を使用しますが、この API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。 
+このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな JavaScript アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
 
-コード例は、PHP 5.6 で動作するように作成されています。
-
-API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)を参照してください。
+このアプリケーションは PHP で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+* PHP 5.6 以降
 
-## <a name="bing-news-search"></a>Bing News Search
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
+
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+
+## <a name="run-the-application"></a>アプリケーションの実行
 
 [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
 
@@ -64,7 +66,7 @@ $term = 'Microsoft';
 function BingNewsSearch ($url, $key, $query) {
     // Prepare HTTP request
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
     $options = array ('http' => array (
                           'header' => $headers,
@@ -198,8 +200,4 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ニュースのページング](paging-news.md)
-> [装飾マーカーを使用してテキストを強調表示する](hit-highlighting.md)
-> [Web でのニュースの検索](search-the-web.md)  
-> [試してみる](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+> [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

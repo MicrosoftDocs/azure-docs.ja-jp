@@ -1,21 +1,21 @@
 ---
-title: 'チュートリアル: Face API C#'
+title: チュートリアル:Face API (C#)
 titleSuffix: Azure Cognitive Services
 description: Cognitive Services Face API を利用して画像の中にある顔の特徴を検出する単純な Windows アプリを作成します。
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: 70414674e563cf3703d2cf3ebc57f09afcdf2691
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: aafa115ee1e270b903e958e5b43826dfb4ff8bdb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129524"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435231"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを使用して Cognitive Services Face API に接続する
 

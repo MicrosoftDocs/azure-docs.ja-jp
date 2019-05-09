@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 63ee308c50a2d5399dd395dc90c2666fae0bbf49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: fee172eccd79fd28e281b2beece9702630ac39b5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999460"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001189"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
-Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](../../application-insights/app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
+Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
 
-短い JavaScript コードを追加するだけで、Application Insights をあらゆる Web ページで使用できます。 Web サービスが [Java](java-get-started.md) または [ASP.NET](../../azure-monitor/app/asp-net.md) の場合、サーバーとクライアントのテレメトリを統合できます。
+短い JavaScript コードを追加するだけで、Application Insights をあらゆる Web ページで使用できます。 Web サービスが [Java](java-get-started.md) または [ASP.NET](asp-net.md) の場合、サーバーとクライアントのテレメトリを統合できます。
 
-![portal.azure.com でアプリのリソースを開き、[ブラウザー] をクリックする](./media/javascript/03.png)
+![portal.azure.com でアプリのリソースを開き、[ブラウザー] をクリックする](media/javascript/03.png)
 
 使用を開始するには、 [Microsoft Azure](https://azure.com)のサブスクリプションが必要です。 所属する部署がサブスクリプションを所有している場合、あなたの Microsoft アカウントをサブスクリプションに追加するようその所有者に依頼してください。
 
@@ -38,13 +38,13 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 アプリのサーバー側の監視を既に設定している場合は、既にリソースがあります。
 
-![[参照]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/javascript/01-find.png)
+![[参照]、[開発者向けサービス]、[Application Insights] の順に選択する](media/javascript/01-find.png)
 
 リソースがない場合は、次の手順で作成します。
 
-![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/javascript/01-create.png)
+![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](media/javascript/01-create.png)
 
-*質問がございますか?* [リソースの作成に関する詳細はここにあります](../../application-insights/app-insights-create-new-resource.md)のサブスクリプションが必要です。
+*質問がございますか?* [リソースの作成に関する詳細はここにあります](create-new-resource.md )のサブスクリプションが必要です。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>アプリや Web ページに SDK スクリプトを追加する
 
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 追跡するすべてのページの `</head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 例: 
 
 * ASP.NET MVC プロジェクトで、 `View\Shared\_Layout.cshtml`
-* SharePoint サイトのコントロール パネルで、[ [サイト設定 / マスター ページ](../../application-insights/app-insights-sharepoint.md)] を開きます。
+* SharePoint サイトのコントロール パネルで、[ [サイト設定 / マスター ページ](sharepoint.md)] を開きます。
 
 このスクリプトには、Application Insights リソースにデータを転送するインストルメンテーション キーが含まれています。 
 
@@ -118,9 +118,9 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/javascript/03.png)
 
-まだデータが表示されませんか?  ページの上部にある **[更新]** をクリックします。 まだは何も表示されませんか? [トラブルシューティング](../../application-insights/app-insights-troubleshoot-faq.md)に関するページを参照します。
+まだデータが表示されませんか?  ページの上部にある **[更新]** をクリックします。 まだは何も表示されませんか? [トラブルシューティング](troubleshoot-faq.md)に関するページを参照します。
 
-[ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](../../azure-monitor/app/metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
+[ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 
 ## <a name="page-load-performance"></a>ページ読み込みのパフォーマンス
 最上部には、ページの読み込み時間をセグメント化したグラフが表示されます。 グラフ全体の高さは、ユーザーのブラウザーでアプリからページを読み込んで表示するのにかかった平均時間を表します。 時間の測定範囲は、ブラウザーが初期 HTTP 要求を送信してから、すべての同時読み込みイベントが処理されるまでとなります (レイアウトと実行中のスクリプトを含む)。 AJAX 呼び出しからの Web パーツ読み込みといった非同期タスクは含まれません。
@@ -178,7 +178,6 @@ Web ページからの AJAX 呼び出しは、[ブラウザー] ブレードに�
 
 ![](./media/javascript/37.png)
 
-
 [ `...` ] をクリックすると、AJAX 呼び出しの全テレメトリが表示されます。
 
 ### <a name="no-ajax-calls-reported"></a>AJAX 呼び出しが報告されない場合
@@ -202,11 +201,11 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 いずれかのイベントをクリックして、詳細を表示します。 詳細ページで、[...] をクリックしてさらに詳しい情報を表示します。
 
 > [!NOTE]
-> [Search](../../azure-monitor/app/diagnostic-search.md) を使用する場合は、単語全体と一致しなければならないことに注意してください。たとえば、"Abou" や "bout" は "About" と一致しません。
+> [Search](diagnostic-search.md) を使用する場合は、単語全体と一致しなければならないことに注意してください。たとえば、"Abou" や "bout" は "About" と一致しません。
 > 
 > 
 
-強力な [Log Analytics クエリ言語](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table)を使って、ページ ビューを検索することもできます。
+強力な [Log Analytics クエリ言語](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour)を使って、ページ ビューを検索することもできます。
 
 ### <a name="page-view-properties"></a>ページ ビュー プロパティ
 * **ページ ビュー時間** 
@@ -227,8 +226,8 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 ## <a name="usage-tracking"></a>使用状況の追跡
 アプリケーションで、ユーザーが何をするのかを知る必要がありますか。
 
-* [ユーザー動作分析ツールの詳細情報](../../application-insights/app-insights-usage-overview.md)
-* [カスタム イベントとメトリックの API の詳細情報](../../azure-monitor/app/api-custom-events-metrics.md)。
+* [ユーザー動作分析ツールの詳細情報](usage-overview.md)
+* [カスタム イベントとメトリックの API の詳細情報](api-custom-events-metrics.md)。
 
 ## <a name="video"></a> ビデオ
 
@@ -238,7 +237,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 
 
 ## <a name="next"></a> 次のステップ
-* [利用状況を追跡する](../../application-insights/app-insights-usage-overview.md)
-* [カスタム イベントとメトリックス](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ビルド - 測定 - 学習](../../application-insights/app-insights-usage-overview.md)
+* [利用状況を追跡する](usage-overview.md)
+* [カスタム イベントとメトリックス](api-custom-events-metrics.md)
+* [ビルド - 測定 - 学習](usage-overview.md)
 

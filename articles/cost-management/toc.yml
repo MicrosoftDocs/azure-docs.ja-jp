@@ -23,10 +23,18 @@ items:
     items:
     - name: Azure Cost Management のベスト プラクティス
       href: cost-mgt-best-practices.md
+    - name: Cost Management のデータを理解する
+      href: understand-cost-mgt-data.md
+    - name: スコープを理解して使用する
+      href: understand-work-scopes.md
+    - name: EA から MCA API に移行する
+      href: migrate-cost-management-api.md
   - name: ハウツー ガイド
     items:
     - name: データへのアクセスの割り当て
       href: assign-access-acm-data.md
+    - name: コストのアラートの使用
+      href: cost-mgt-alerts-monitor-usage-spending.md
   - name: リファレンス
     items:
     - name: Azure Cost Management REST API
@@ -109,9 +117,9 @@ items:
         href: cost-mgt-faq.md
       - name: Cloudyn のサポートに問い合わせる
         href: support-request-cost-management.md
-ms.openlocfilehash: 3e37e0d145b50326b8c7f878216ead0bc4a665e3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: b9e987d0f839b3ea0c13b15cdb27e8cb9de5b5dc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120395"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312514"

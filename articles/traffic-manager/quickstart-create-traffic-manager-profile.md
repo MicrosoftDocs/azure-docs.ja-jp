@@ -2,8 +2,7 @@
 title: クイック スタート - アプリケーションの高可用性を実現する Traffic Manager プロファイルを Azure portal を使って作成する
 description: このクイック スタート記事では、高可用性 Web アプリケーションを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-documentationcenter: ''
-author: kumudd
+author: KumudD
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.openlocfilehash: 5520b78ce3899c39167663ac426fa6702369c944
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 2cd8830f4b2b7c972ba8972e686be984bb96fd04
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634780"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760666"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>クイック スタート: Web アプリケーションの高可用性を実現する Traffic Manager プロファイルの作成
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Traffic Manager プロファイルの作成
 
 このクイック スタートでは、Web アプリケーションの高可用性を実現する Traffic Manager プロファイルの作成方法について説明します。
 

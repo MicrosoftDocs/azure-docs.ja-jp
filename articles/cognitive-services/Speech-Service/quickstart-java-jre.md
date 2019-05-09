@@ -1,27 +1,27 @@
 ---
 title: クイック スタート:音声を認識する、Java (Windows、Linux) - Speech Services
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャしてテキストに書き起こす単純な Java アプリケーションの作成について説明します。
+description: このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャしてテキストに文字起こしする単純な Java アプリケーションの作成について説明します。
 services: cognitive-services
 author: fmegen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 0591ca0275c039ddb5828cb48bda2b0b305d7003
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721390"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59009401"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、[Speech Service SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows または 64 ビット Ubuntu Linux 16.04/18.04 上の Eclipse Java IDE (v4.8) を使用してビルドされます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
+この記事では、[Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成 します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows、64 ビット Ubuntu Linux 16.04/18.04、または macOS 10.13 以降の Eclipse Java IDE (v4.8) を使用してビルドされます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
 > [!NOTE]
 > Speech Devices SDK および Roobo デバイスについては、[Speech Devices SDK](speech-devices-sdk.md) を参照してください。
@@ -30,17 +30,21 @@ ms.locfileid: "53721390"
 
 このクイック スタートでは以下が必要です。
 
-* オペレーティング システム:Windows (64 ビット) または Ubuntu Linux 16.04/18.04 (64 ビット)
+* オペレーティング システム:Windows (64 ビット)、Ubuntu Linux 16.04/18.04 (64 ビット)、または macOS 10.13 以降
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Speech Service 用の Azure サブスクリプション キー。 [無料で取得する](get-started.md)。
+* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 Ubuntu 16.04/18.04 を実行している場合は、Eclipse を開始する前に、これらの依存関係がインストールされていることを確認してください。
 
 ```console
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+Windows (64 ビット版) を実行している場合は、お使いのプラットフォーム用の Microsoft Visual C++ 再頒布可能パッケージがインストールされていることを確認してください。
+* [Visual Studio 2017 の Microsoft Visual C++ 再頒布可能パッケージをダウンロードする](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
 
 ## <a name="create-and-configure-project"></a>プロジェクトの作成と構成
 
@@ -80,6 +84,6 @@ F11 キーを押すか、**[Run]**  >  **[Debug]** の順に選択します。
 
 ## <a name="see-also"></a>関連項目
 
-- [クイック スタート: 音声を翻訳する、Java (Windows、Linux)](quickstart-translate-speech-java-jre.md)
+- [クイック スタート:音声を翻訳する、Java (Windows、Linux)](quickstart-translate-speech-java-jre.md)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)

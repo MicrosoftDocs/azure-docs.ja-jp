@@ -4,19 +4,19 @@ description: このクイック スタートを利用し、Bing Image Search SDK
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 810cdc2029462b225b5d53634f1730cbcbb8d785
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: dd2bf11781a6dd013f033fc535b068d449dd04d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254889"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238132"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>クイック スタート:Bing Image Search SDK for Java を使用してイメージを検索する
 
@@ -63,9 +63,10 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Bing Image Search API に検索要求を送信します。
+## <a name="send-a-search-request-to-the-api"></a>API に検索要求を送信します。
 
 1. `bingImages().search()` を使用して、検索クエリを含む HTTP 要求を送信します。 応答を `ImagesModel` として保存します。
+
    ```java
     ImagesModel imageResults = client.bingImages().search()
                 .withQuery(searchTerm)

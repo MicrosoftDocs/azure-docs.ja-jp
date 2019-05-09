@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: kadimitr
-ms.openlocfilehash: 3dcc9e4880c65e868f1cd62d3c6e1567e82b6870
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 69cf91f1448e36353f83de7a271abb3b53858bb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094077"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 
@@ -184,6 +184,6 @@ ms.locfileid: "53337871"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [xUnit の詳細を確認する](http://xunit.github.io/docs/getting-started-dotnet-core)
-
+> [xUnit の詳細を確認する](https://xunit.github.io/docs/getting-started-dotnet-core)
+> 
 > [moq の詳細を確認する](https://github.com/Moq/moq4/wiki/Quickstart)

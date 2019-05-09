@@ -1,59 +1,52 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Klue の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Klue の統合 | Microsoft Docs
 description: Azure Active Directory と Klue の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 08341008-980b-4111-adb2-97bbabbf1e47
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/28/2018
+ms.topic: tutorial
+ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8e1199826601f8f2ddd82164dac1a20013d9b7bb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123058"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59269743"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-klue"></a>チュートリアル: Azure Active Directory と Klue の統合
+# <a name="tutorial-azure-active-directory-integration-with-klue"></a>チュートリアル:Azure Active Directory と Klue の統合
 
 このチュートリアルでは、Klue と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Klue と Azure AD の統合には、次の利点があります。
 
-- Klue にアクセスする Azure AD ユーザーを制御できます
-- ユーザーが自分の Azure AD アカウントで Klue に自動的にサインオン (シングル サインオン) できるようにします
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+* Klue にアクセスする Azure AD のユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Klue に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Klue と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Klue でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Klue でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-1. ギャラリーからの Klue の追加
-2. Azure AD シングル サインオンの構成とテスト
+* Klue では、**SP と IDP** によって開始される SSO がサポートされます
+* Klue では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-klue-from-the-gallery"></a>ギャラリーからの Klue の追加
 
@@ -61,205 +54,185 @@ Azure AD への Klue の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Klue を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Active Directory][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[アプリケーション]][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[アプリケーション]][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに、「**Klue**」と入力します。
+4. 検索ボックスに「**Klue**」と入力し、結果パネル上の **[Klue]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/klue-tutorial/tutorial_klue_search.png)
+     ![結果一覧内の Klue](common/search-new-app.png)
 
-5. 結果ウィンドウで **Klue** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-    ![Azure AD のテスト ユーザーの作成](./media/klue-tutorial/tutorial_klue_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Klue で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Klue ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Klue の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-Klue で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Klue を利用した Azure AD のシングル サインオンを構成してテストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Klue 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Klue で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Klue テスト ユーザーの作成](#creating-a-klue-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Klue で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Klue シングル サインオンの構成](#configure-klue-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Klue テスト ユーザーの作成](#create-klue-test-user)** - Azure AD のユーザー表現にリンクされる Britta Simon に対応するユーザーを Klue 内に用意します。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Klue アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Klue で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Klue を利用して Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. Azure Portal の **Klue** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) 内の **[Klue]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![Configure single sign-on][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_samlbase.png)
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[Klue のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_url1.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+
+4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+
+    ![[Klue のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`urn:klue:<Customer ID>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://app.klue.com/account/auth/saml/<Customer UUID>/callback` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://app.klue.com/account/auth/saml/<Customer UUID>/callback` のパターンを使用して URL を入力します
 
-4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_url2.png)
+    ![[Klue のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、`https://app.klue.com/account/auth/saml/<Customer UUID>/` のパターンを使用して URL を入力します。
+    **[サインオン URL]** ボックスに、`https://app.klue.com/account/auth/saml/<Customer UUID>/` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 この値を取得するには、[Klue クライアント サポート チーム](mailto:support@klue.com)にお問い合わせください。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Klue クライアント サポート チーム](mailto:support@klue.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Klue アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。
+6. Klue アプリケーションでは、特定の形式の SAML アサーションを想定しています。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-    ![Configure single sign-on](./media/klue-tutorial/attribute.png)
+    ![image](common/edit-attribute.png)
 
-6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
-    | 属性名      | 属性値      |
+    | Name | ソース属性|
     | ------------------- | -------------------- |
     | first_name          | User.givenname |
     | last_name           | User.surname |
     | email               | user.userprincipalname|
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_attribute_04.png)
+    ![image](common/new-save-attribute.png)
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_attribute_05.png)
+    ![image](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    c. **[名前空間]** は空白のままにします。
 
-    d. **[OK]** をクリックします。
+    d. [ソース] として **[属性]** を選択します。
 
-    > [!NOTE]
-    > **[名前空間]** 値は空白のままにしてください。
+    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
-7. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+    f. **[OK]** をクリックします。
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_certificate.png) 
+    g. **[Save]** をクリックします。
 
-8. **[保存]** ボタンをクリックします。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_general_400.png)
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-9. **[Klue 構成]** セクションで、**[Klue の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+9. **[Klue のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_configure.png) 
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-10. **Klue** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、SAML シングル サインオン サービス URL、および SAML エンティティ ID を [Klue サポート チーム](mailto:support@klue.com)に送信する必要があります。
+    a. ログイン URL
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-klue-single-sign-on"></a>Klue シングル サインオンの構成
+
+**Klue** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Klue サポート チーム](mailto:support@klue.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/klue-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/klue-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/klue-tutorial/create_aaduser_03.png)
-
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
-
-    ![Azure AD のテスト ユーザーの作成](./media/klue-tutorial/create_aaduser_04.png) 
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
 
-### <a name="creating-a-klue-test-user"></a>Klue テスト ユーザーの作成
-
-このセクションの目的は、Klue で Britta Simon というユーザーを作成することです。 Klue では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Klue ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
-
-> [!Note]
-> ユーザーを手動で作成する必要がある場合は、[Klue サポート チーム](mailto:support@klue.com)にお問い合わせください。
-
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Klue へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200] 
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Klue]** を選択します。
 
-**Klue に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で **[Klue]** を選択します。
 
-    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_app.png) 
+    ![アプリケーション一覧内の [Klue] リンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![ユーザーの割り当て][202]
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="create-klue-test-user"></a>Klue テスト ユーザーの作成
+
+このセクションでは、Britta Simon というユーザーを Klue 内に作成します。 Klue では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Klue にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Klue] タイルをクリックすると、自動的に Klue アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネル上で [Klue] タイルをクリックすると、SSO を設定した Klue に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/klue-tutorial/tutorial_general_01.png
-[2]: ./media/klue-tutorial/tutorial_general_02.png
-[3]: ./media/klue-tutorial/tutorial_general_03.png
-[4]: ./media/klue-tutorial/tutorial_general_04.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: ./media/klue-tutorial/tutorial_general_100.png
-
-[200]: ./media/klue-tutorial/tutorial_general_200.png
-[201]: ./media/klue-tutorial/tutorial_general_201.png
-[202]: ./media/klue-tutorial/tutorial_general_202.png
-[203]: ./media/klue-tutorial/tutorial_general_203.png

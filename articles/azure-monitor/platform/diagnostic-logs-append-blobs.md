@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: ba163b797cfaaf73c660f1ef3d8da18758e8139a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: logs
+ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542001"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370059"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備
 
@@ -24,14 +24,14 @@ ms.locfileid: "53542001"
 
 ## <a name="what-is-changing"></a>変更点
 
-Azure Monitor では、Azure ストレージ アカウント、Event Hubs 名前空間、または Log Analytics へのリソース診断データやアクティビティ ログ データの送信を可能にする機能が提供されます。 システム パフォーマンスの問題に対処するために、**2018 年 11 月 1 日の深夜 12 時 00 分 (UTC)** より、BLOB ストレージに送信されるログ データの形式が変更されます。 BLOB ストレージからデータを読み取っているツールがある場合は、新しいデータ形式を認識するようにツールを更新する必要があります。
+Azure Monitor で、Azure ストレージ アカウント、Event Hubs 名前空間、または Azure Monitor の Log Analytics ワークスペースへのリソース診断データやアクティビティ ログ データの送信を可能にする機能が提供されます。 システム パフォーマンスの問題に対処するために、**2018 年 11 月 1 日の深夜 12 時 00 分 (UTC)** より、BLOB ストレージに送信されるログ データの形式が変更されます。 BLOB ストレージからデータを読み取っているツールがある場合は、新しいデータ形式を認識するようにツールを更新する必要があります。
 
 * 2018 年 11 月 1 日木曜日の深夜 12 時 00 分 (UTC) より、BLOB 形式は [JSON Lines](http://jsonlines.org/) に変更されます。 つまり、各レコードは改行で区切られるようになり、外部のレコード配列や JSON レコード間のコンマはなくなります。
 * すべてのサブスクリプションのすべての診断設定の BLOB 形式が一度に変更されます。 11 月 1 日に出力される最初の PT1H.json ファイルでは、この新しい形式が使用されます。 BLOB およびコンテナーの名前は変わりません。
 * 今から 11 月 1 日までの間に診断設定が行われた場合、11 月 1 日までは現在の形式で引き続きデータが出力されます。
 * この変更はすべてのパブリック クラウド リージョンで一度に行われます。 Azure 中国、Azure ドイツ、Azure Government クラウドではまだこの変更は行われません。
 * この変更は次のデータの種類に影響します。
-  * [Azure リソース診断ログ](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](./../../azure-monitor/platform/tutorial-dashboards.md))
+  * [Azure リソース診断ログ](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](./../../azure-monitor/platform/diagnostic-logs-schema.md))
   * [診断設定でエクスポートされる Azure リソース メトリック](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
   * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](./../../azure-monitor/platform/archive-activity-log.md)
 * この変更は以下のものには影響しません。
@@ -137,3 +137,4 @@ Azure BLOB ストレージ内の PT1H.json ファイルの現在の形式では�
 
 * [ストレージ アカウントへのリソース診断ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
 * [ストレージ アカウントへのアクティビティ ログ データのアーカイブ](./../../azure-monitor/platform/archive-activity-log.md)について確認します。
+

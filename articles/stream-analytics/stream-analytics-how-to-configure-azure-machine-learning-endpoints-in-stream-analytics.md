@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: cea810a5e57f4b10c170038108226c4e0f1320bc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c3b30085e1036e49706d73fd68b80221e5177d03
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104936"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095738"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Stream Analytics への Machine Learning の統合
 Stream Analytics では、Azure Machine Learning のエンドポイントを呼び出す、ユーザー定義の関数をサポートしています。 この機能でサポートされている REST API の詳細については、「 [Stream Analytics の REST API ライブラリ](https://msdn.microsoft.com/library/azure/dn835031.aspx)」を参照してください。 この資料では、Stream Analytics にこの機能を正しく実装するために必要な補足的な情報を示します。 チュートリアルも用意しており、 [ここ](stream-analytics-machine-learning-integration-tutorial.md)から確認できます。
@@ -26,7 +26,7 @@ Microsoft Azure Machine Learning には、データを活用した予測分析�
 * **エンドポイント**: *エンドポイント* は、機能を入力として取得し、特定の機械学習モデルを適用し、スコア付けされた出力を返す Azure Machine Learning のオブジェクトです。
 * **スコア付け Web サービス**: *スコア付け Web サービス* とは、前述のエンドポイントの集合です。
 
-各エンドポイントには、バッチの実行と同期の実行用の API があります。 Stream Analytics では、同期実行を使用します。 この特定のサービスは、AzureML Studio では [Request/Response Service](../machine-learning/studio/consume-web-services.md) と呼ばれています。
+各エンドポイントには、バッチの実行と同期の実行用の API があります。 Stream Analytics では、同期実行を使用します。 この特定のサービスは、Azure Machine Learning Studio では[要求応答サービス](../machine-learning/studio/consume-web-services.md)と呼ばれています。
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Stream Analytics のジョブに必要な Machine Learning リソース
 Stream Analytics のジョブを正常に処理するには、Request/Response のエンドポイント、 [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)および Swagger 定義のすべてが必要になります。 Stream Analytics には、Swagger エンドポイントの URL を作成し、インターフェイスを検索し、既定の UDF の定義をユーザーに返す追加エンドポイントがあります。
@@ -44,11 +44,11 @@ REST API を使用すると、ジョブを構成して Azure Machine Language �
 ## <a name="creating-a-udf-with-basic-properties"></a>基本的なプロパティを持つ UDF の作成
 次に、Azure Machine Learning のエンドポイントにバインドされる *newudf* という名前のスカラー UDF を作成するサンプル コードの例に示します。 *エンドポイント* (サービス URI) は、選択したサービスの API のヘルプ ページにあり、*apiKey* はサービスのメイン ページにあります。
 
-````
-    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>  
-````
+```
+    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
+```
 
-要求本文の例  
+要求本文の例
 
 ```json
     {
@@ -69,13 +69,13 @@ REST API を使用すると、ジョブを構成して Azure Machine Language �
 ```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>既定の UDF 用の RetrieveDefaultDefinition エンドポイントの呼び出し
-スケルトン UDF を作成したら、UDF を完全に定義する必要があります。 RetreiveDefaultDefinition エンドポイントを使用すると、Azure Machine Learning エンドポイントにバインドされているスカラー関数の既定の定義を取得できます。 以下のペイロードでは、Azure Machine Learning エンドポイントにバインドされているスカラー関数の既定の UDF 定義を取得する必要があります。 PUT 要求で既に渡されているので、実際のエンドポイントは指定されません。 Stream Analytics は、要求で明示的に渡される場合、そのエンドポイントを呼び出します。 そうでない場合、最初に参照したものを使用します。 ここでは UDF は単一の文字列型のパラメーター (文) を取り、その文の "sentiment" ラベルである文字列型の単一の出力を返します。
+スケルトン UDF を作成したら、UDF を完全に定義する必要があります。 RetrieveDefaultDefinition エンドポイントを使用すると、Azure Machine Learning エンドポイントにバインドされているスカラー関数の既定の定義を取得できます。 以下のペイロードでは、Azure Machine Learning エンドポイントにバインドされているスカラー関数の既定の UDF 定義を取得する必要があります。 PUT 要求で既に渡されているので、実際のエンドポイントは指定されません。 Stream Analytics は、要求で明示的に渡される場合、そのエンドポイントを呼び出します。 そうでない場合、最初に参照したものを使用します。 ここでは UDF は単一の文字列型のパラメーター (文) を取り、その文の "sentiment" ラベルである文字列型の単一の出力を返します。
 
-````
+```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
-````
+```
 
-要求本文の例  
+要求本文の例
 
 ```json
     {
@@ -87,7 +87,7 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
     }
 ```
 
-このサンプル出力は、次のようになります。  
+このサンプル出力は、次のようになります。
 
 ```json
     {
@@ -130,9 +130,9 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 ## <a name="patch-udf-with-the-response"></a>応答を使用した UDF の PATCH
 ここで前の応答を使用して、以下のように UDF に対して PATH を実行します。
 
-````
+```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
-````
+```
 
 要求本文 (RetrieveDefaultDefinition からの出力)
 
@@ -175,7 +175,7 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 ```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>UDF を呼び出すための Stream Analytics 変換の実装
-ここで各入力イベントにつき (scoreTweet という名前の) UDF に対し問い合わせを行い、そのイベントの応答を出力に書き込みます。  
+ここで各入力イベントにつき (scoreTweet という名前の) UDF に対し問い合わせを行い、そのイベントの応答を出力に書き込みます。
 
 ```json
     {

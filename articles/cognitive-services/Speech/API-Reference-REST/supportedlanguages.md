@@ -6,16 +6,17 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 961bc2f5d8d619c5a1815b0f4be3b837f72513f4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340037"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672391"
 ---
 # <a name="supported-languages"></a>サポートされている言語
 
@@ -23,9 +24,9 @@ ms.locfileid: "49340037"
 
 ## <a name="interactive-and-dictation-mode"></a>対話モードとディクテーション モード
 
-Microsoft Speech Recognition API では、`interactive` モードおよび `dictation` モードで、次の言語がサポートされています。 
+Microsoft Speech Recognition API では、`interactive` モードおよび `dictation` モードで、次の言語がサポートされています。
 
-|コード | Language | コード | Language |
+|コード | 言語 | コード | 言語 |
 |-----|-----|-----|-----|
 | ar-EG | アラビア語 (エジプト)、現代標準 | hi-IN | ヒンディー語 (インド) |
 | ca-ES | カタルニア語 (スペイン) | it-IT | イタリア語 (イタリア)  |
@@ -45,9 +46,9 @@ Microsoft Speech Recognition API では、`interactive` モードおよび `dict
 
 ## <a name="conversation-mode"></a>会話モード
 
-Microsoft Speech Recognition API では、`conversation` モードで、次の言語がサポートされています。 
+Microsoft Speech Recognition API では、`conversation` モードで、次の言語がサポートされています。
 
-| コード | Language | コード | Language |
+| コード | 言語 | コード | 言語 |
 |-----|-----|-----|-----|
 | ar-EG | アラビア語 (エジプト)、現代標準 | It-IT | イタリア語 (イタリア) |
 | de-DE | ドイツ語 (ドイツ) | ja-JP | 日本語 (日本) |

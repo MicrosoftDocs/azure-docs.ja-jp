@@ -1,24 +1,24 @@
 ---
-title: 'クイック スタート: BAM ファイルの入力を使用したワークフローの送信 - Microsoft Genomics'
+title: BAM ファイルの入力を使用したワークフローの送信 - Microsoft Genomics
 titleSuffix: Azure
-description: このクイックスタートでは、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
+description: この記事では、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 91bc13dbf024df20ac23ca0ff83a73ed246dce28
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 329ac374edbffa65a1b654a05a4934828f25d5de
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729506"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435084"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>BAM ファイルの入力を使用したワークフローの送信
 
-このクイックスタートでは、入力ファイルが単一の BAM ファイルである場合に、Microsoft Genomics サービスへワークフローを送信する方法を示します。 このトピックでは、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローの送信に成功した場合、このクイックスタートを進める準備ができています。 
+この記事では、入力ファイルが単一の BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。 このトピックでは、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローを正常に送信したら、この記事を読み進める準備は完了です。 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>設定: Azure Storage に BAM ファイルをアップロードする
 単一の BAM ファイル *reads.bam* を保持しており、これを Azure にあるお使いのストレージ アカウント *myaccount*に **https://<span> </span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span> </span>** としてアップロード済みであることを前提としましょう。 API URL とアクセス キーを保持しています。 また、**https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** に出力を配置したいと考えています。

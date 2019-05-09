@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3165adf09281f4ad35b77c2e0fbb89e40c04c631
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604533"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120960"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
@@ -31,21 +31,21 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 2. *[データ サイエンスと分析のアプリケーション]* ワークロードを選択し、**[R 言語サポート]**、**[R 開発ツールのランタイム サポート]**、**[Microsoft R Client ]** の各オプションを選択します。
 
 3. SSH 認証のための公開キーと秘密キーを用意します。
-<!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
+   <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
 4. お使いのコンピューターに [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) をインストールします。 ML Server により、[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 関数と `RxSpark` 関数が提供されます。
 
 5. ローカル クライアントから HDInsight クラスターに対して `RevoScaleR` 関数を実行するための計算コンテキストを提供する、[PuTTY](https://www.putty.org/) をインストールします。
 
 6. Visual Studio 環境にデータ サイエンスの設定を適用して、R Tools のワークスペースに新しいレイアウトを提供するオプションがあります。
-    1. 現在の Visual Studio 設定を保存するには、**[ツール] > [設定のインポートとエクスポート]** コマンドを使用し、**[選択された環境設定をエクスポート]** を選択してファイル名を指定します。 それらの設定を復元するには、同じコマンドを使用し、**[選択された環境設定をインポート]** を選択します。
+   1. 現在の Visual Studio 設定を保存するには、**[ツール] > [設定のインポートとエクスポート]** コマンドを使用し、**[選択された環境設定をエクスポート]** を選択してファイル名を指定します。 それらの設定を復元するには、同じコマンドを使用し、**[選択された環境設定をインポート]** を選択します。
 
-    2. **[R Tools]** メニュー項目に移動して、**[データ サイエンスの設定...]** を選択します。
+   2. **[R Tools]** メニュー項目に移動して、**[データ サイエンスの設定...]** を選択します。
 
-        ![[データ サイエンスの設定...]](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![[データ サイエンスの設定...]](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]  
-    > 手順 1 のアプローチを使用して、**[データ サイエンスの設定]** コマンドを繰り返さずに、パーソナライズされたデータ サイエンティストのレイアウトを保存および復元することもできます。
+      > [!NOTE]  
+      > 手順 1 のアプローチを使用して、**[データ サイエンスの設定]** コマンドを繰り返さずに、パーソナライズされたデータ サイエンティストのレイアウトを保存および復元することもできます。
 
 ## <a name="execute-local-r-methods"></a>ローカル R メソッドを実行する
 

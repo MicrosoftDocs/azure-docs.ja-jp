@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3b9de282b95b27a04ac6d182b1045e18e65c5f6
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025907"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58849771"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -29,12 +29,14 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 
 この記事では、VM 拡張機能の概要と Azure VM 拡張機能を使用する場合の前提条件を示し、VM 拡張機能を検出、管理、および削除する方法についてのガイダンスを提供します。 構成がそれぞれ固有の VM 拡張機能が多数あるため、この記事では一般的な情報を示します。 拡張機能に固有の詳細情報については、それぞれの拡張機能のドキュメントをご覧ください。
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="use-cases-and-samples"></a>ユース ケースとサンプル
 
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Windows 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](dsc-overview.md)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Log Analytics への接続](../../log-analytics/log-analytics-azure-vm-extension.md)に関するページを参照してください。
+- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../log-analytics/log-analytics-azure-vm-extension.md)に関するページを参照してください。
 - Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](../windows/chef-automation.md)」を参照してください。
 - Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
@@ -75,12 +77,12 @@ Windows ゲスト エージェントでは、エージェント トラフィッ�
 
 ## <a name="discover-vm-extensions"></a>VM 拡張機能の検出
 
-Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、[Get AzureRmVMExtensionImage](/powershell/module/azurerm.compute/get-azurermvmextensionimage) を使用します。 次の例では、*WestUS* の場所で利用できるすべての拡張機能が表示されています。
+Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、[Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage) を使用します。 次の例では、*WestUS* の場所で利用できるすべての拡張機能が表示されています。
 
 ```powershell
-Get-AzureRmVmImagePublisher -Location "WestUS" | `
-Get-AzureRmVMExtensionImageType | `
-Get-AzureRmVMExtensionImage | Select Type, Version
+Get-AzVmImagePublisher -Location "WestUS" | `
+Get-AzVMExtensionImageType | `
+Get-AzVMExtensionImage | Select Type, Version
 ```
 
 ## <a name="run-vm-extensions"></a>VM 拡張機能の実行
@@ -91,36 +93,36 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 
 ### <a name="powershell"></a>PowerShell
 
-個々の拡張機能を実行するための PowerShell コマンドがいくつか存在します。 一覧を表示するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command) を使用して*拡張機能*をフィルター処理します。
+個々の拡張機能を実行するための PowerShell コマンドがいくつか存在します。 一覧を表示するには、[Get-command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) を使用して*拡張機能*をフィルター処理します。
 
 ```powershell
-Get-Command Set-AzureRM*Extension* -Module AzureRM.Compute
+Get-Command Set-Az*Extension* -Module Az.Compute
 ```
 
 次のような出力が表示されます。
 
 ```powershell
-CommandType     Name                                               Version    Source
------------     ----                                               -------    ------
-Cmdlet          Set-AzureRmVMAccessExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMADDomainExtension                     4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMAEMExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMBackupExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMBginfoExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMChefExtension                         4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMCustomScriptExtension                 4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDiagnosticsExtension                  4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDiskEncryptionExtension               4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDscExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMExtension                             4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMSqlServerExtension                    4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVmssDiskEncryptionExtension             4.5.0      AzureRM.Compute
+CommandType     Name                                          Version    Source
+-----------     ----                                          -------    ------
+Cmdlet          Set-AzVMAccessExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMADDomainExtension                     4.5.0      Az.Compute
+Cmdlet          Set-AzVMAEMExtension                          4.5.0      Az.Compute
+Cmdlet          Set-AzVMBackupExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMBginfoExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMChefExtension                         4.5.0      Az.Compute
+Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      Az.Compute
+Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      Az.Compute
+Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      Az.Compute
+Cmdlet          Set-AzVMDscExtension                          4.5.0      Az.Compute
+Cmdlet          Set-AzVMExtension                             4.5.0      Az.Compute
+Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Compute
+Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
 
 次の例では、カスタム スクリプト拡張機能を使って、ターゲットの仮想マシン上に GitHub リポジトリからスクリプトをダウンロードし、スクリプトを実行します。 カスタム スクリプト拡張機能について詳しくは、[カスタム スクリプト拡張機能の概要](custom-script-windows.md)に関する記事をご覧ください。
 
 ```powershell
-Set-AzureRmVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
+Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" -Name "myCustomScript" `
     -FileUri "https://raw.githubusercontent.com/neilpeterson/nepeters-azure-templates/master/windows-custom-script-simple/support-scripts/Create-File.ps1" `
     -Run "Create-File.ps1" -Location "West US"
@@ -131,12 +133,12 @@ Set-AzureRmVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
 ```powershell
 $cred=Get-Credential
 
-Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" `
+Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" `
     -Location WestUS -UserName $cred.GetNetworkCredential().Username `
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-`Set-AzureRmVMExtension` コマンドを使って、任意の VM 拡張機能を開始できます。 詳しくは、[Set-AzureRmVMExtension のリファレンス](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension)に関する記事をご覧ください。
+`Set-AzVMExtension` コマンドを使って、任意の VM 拡張機能を開始できます。 詳細については、[Set-AzVMExtension のリファレンス](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)を参照してください。
 
 
 ### <a name="azure-portal"></a>Azure ポータル
@@ -258,7 +260,7 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 更新プログラムが利用できる場合で、拡張機能への変更があり、次のような他の VM モデルが変更されるときは、更新プログラムは VM にのみインストールされます。
 
 - データ ディスク
-- 拡張機能
+- Extensions
 - ブート診断コンテナー
 - ゲスト OS のシークレット
 - VM サイズ
@@ -269,7 +271,7 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 #### <a name="listing-extensions-deployed-to-a-vm"></a>VM にデプロイされる拡張機能の一覧
 
 ```powershell
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
+$vm = Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
 $vm.Extensions | select Publisher, VirtualMachineExtensionType, TypeHandlerVersion
 ```
 
@@ -310,10 +312,10 @@ Windows ゲスト エージェントには*拡張機能処理コード*のみが
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>拡張機能が autoUpgradeMinorVersion を使って VM 上に設定されているかどうかを識別する
 
-拡張機能が 'autoUpgradeMinorVersion' を使ってプロビジョニングされたかどうかは、VM モデルから判断できます。 確認するには、[Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm) を使用して、次のようにリソース グループと VM の名前を指定します。
+拡張機能が 'autoUpgradeMinorVersion' を使ってプロビジョニングされたかどうかは、VM モデルから判断できます。 確認するには、[Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用し、リソース グループと VM の名前を次のように指定します。
 
 ```powerShell
- $vm = Get-AzureRmVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
+ $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
  $vm.Extensions
 ```
 
@@ -366,10 +368,10 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>拡張機能の状態表示
 
-VM 拡張機能が VM に対して実行された後は、拡張機能のステータスを返す [Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) を使用します。 *Substatuses[0]* は、拡張機能のプロビジョニングに成功したことを示しており、VM には正常にデプロイされたが VM 内での拡張機能の実行はエラーになったことが *Substatuses[1]* でわかります。
+VM に対して VM 拡張機能が実行されたら、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して拡張機能の状態を返します。 *Substatuses[0]* は、拡張機能のプロビジョニングに成功したことを示しており、VM には正常にデプロイされたが VM 内での拡張機能の実行はエラーになったことが *Substatuses[1]* でわかります。
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
+Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
 ```
 
 出力は次の例のようになります。
@@ -402,10 +404,10 @@ Extensions[0]           :
 
 ### <a name="rerun-vm-extensions"></a>VM 拡張機能の再実行
 
-VM 拡張機能の再実行が必要な場合があります。 拡張機能を再実行するには、その拡張機能を削除し、その後任意の実行方法で拡張機能を再実行します。 拡張機能を削除するには、次のように [Remove-AzureRmVMExtension](/powershell/module/AzureRM.Compute/Remove-AzureRmVMExtension) を使用します。
+VM 拡張機能の再実行が必要な場合があります。 拡張機能を再実行するには、その拡張機能を削除し、その後任意の実行方法で拡張機能を再実行します。 拡張機能を削除するには、[Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) を次のように使用します。
 
 ```powershell
-Remove-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
+Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
 ```
 
 また、次の手順を使用して、Azure Portal で拡張機能を削除することもできます。
@@ -420,7 +422,7 @@ Remove-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -N
 | --- | --- | --- |
 | Windows でのカスタムのスクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します |[Windows でのカスタムのスクリプト拡張機能](custom-script-windows.md) |
 | Windows での DSC 拡張機能 |PowerShell DSC (必要な状態の構成) 拡張機能 |[Windows での DSC 拡張機能](dsc-overview.md) |
-| Azure 診断拡張機能 |Azure 診断を管理します |[Azure 診断拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Azure Diagnostics 拡張機能 |Azure Diagnostics を管理します |[Azure Diagnostics 拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>次の手順

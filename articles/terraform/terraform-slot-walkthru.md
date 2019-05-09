@@ -2,19 +2,19 @@
 title: Terraform と Azure プロバイダーのデプロイ スロットの使用
 description: Terraform と Azure プロバイダーのデプロイ スロットの使用に関するチュートリアル
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 仮想マシン, Azure, デプロイ スロット
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: a85e7c46aa41309bc031f59ed841dc8149d878b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992234"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Terraform を使用し、Azure デプロイ スロットでインフラストラクチャをプロビジョニングする
 
@@ -26,11 +26,11 @@ ms.locfileid: "53723962"
 
 - **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **GitHub アカウント**:テスト GitHub リポジトリをフォークして使用するには、[GitHub](http://www.github.com) アカウントが必要です。
+- **GitHub アカウント**:テスト GitHub リポジトリをフォークして使用するには、[GitHub](https://www.github.com) アカウントが必要です。
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Terraform プランの作成と適用
 
-1. [Azure ポータル](http://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview) を開きます。 前に環境を選択しなかった場合、環境として **Bash** を選択します。
 

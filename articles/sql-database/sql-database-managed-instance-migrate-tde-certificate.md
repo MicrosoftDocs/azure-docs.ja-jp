@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 08/09/2018
-ms.openlocfilehash: 078a64bf625fad15b66a3c4e6e31e798f675fc33
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 03/12/2019
+ms.openlocfilehash: 43793380fab2bcece215c53b82e09a3c3a849af3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161779"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833915"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Database Managed Instance に移行する
 
@@ -35,17 +35,21 @@ TDE で保護されたデータベースと対応する証明書の両方を円�
 
 ## <a name="prerequisites"></a>前提条件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
 この記事の手順を完了するには、次の前提条件を満たす必要があります。
 
 - ファイルとしてエクスポートされた証明書にアクセス可能なオンプレミス サーバーまたは他のコンピューターへの [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) コマンドライン ツールのインストール。 Pvk2Pfx ツールは、スタンドアロンの自己完結型コマンドライン環境、[Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) に含まれています。
 - [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) バージョン 5.0 以上のインストール。
-- AzureRM PowerShell モジュールの[インストールと更新](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
-- [AzureRM.Sql モジュール](https://www.powershellgallery.com/packages/AzureRM.Sql) バージョン 4.10.0 以上。
+- Azure PowerShell モジュールの[インストールと更新](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- [Az.Sql モジュール](https://www.powershellgallery.com/packages/Az.Sql)。
   PowerShell で次のコマンドを実行して、PowerShell モジュールをインストール/更新します。
 
    ```powershell
-   Install-Module -Name AzureRM.Sql
-   Update-Module -Name AzureRM.Sql
+   Install-Module -Name Az.Sql
+   Update-Module -Name Az.Sql
    ```
 
 ## <a name="export-tde-certificate-to-a-personal-information-exchange-pfx-file"></a>TDE 証明書を Personal Information Exchange (.pfx) ファイルにエクスポートする
@@ -116,13 +120,13 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
    ```powershell
    # Import the module into the PowerShell session
-   Import-Module AzureRM
+   Import-Module Az
    # Connect to Azure with an interactive dialog for sign-in
-   Connect-AzureRmAccount
+   Connect-AzAccount
    # List subscriptions available and copy id of the subscription target Managed Instance belongs to
-   Get-AzureRmSubscription
+   Get-AzSubscription
    # Set subscription for the session (replace Guid_Subscription_Id with actual subscription id)
-   Select-AzureRmSubscription Guid_Subscription_Id
+   Select-AzSubscription Guid_Subscription_Id
    ```
 
 2. すべての準備手順が完了したら、次のコマンドを実行して、Base-64 でエンコードされた証明書をターゲットのマネージド インスタンスにアップロードします。
@@ -133,7 +137,7 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
    $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "SomeStrongPassword"
    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-   Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
+   Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
 これで、指定したマネージド インスタンスで証明書が使用できるようになりました。TDE で保護された対応するデータベースのバックアップを正常に復元できます。

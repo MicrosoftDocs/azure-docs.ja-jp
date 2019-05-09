@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
-ms.component: autoscale
-ms.openlocfilehash: d676af42b80d12ac0e537ce0c2bc008e196990c6
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: autoscale
+ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53586716"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088351"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>パフォーマンス データまたはスケジュールに基づいて自動スケール設定を作成する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-web-app-and-app-service-plan"></a>Web アプリおよび App Service プランを作成する
 1. 左側のナビゲーション ウィンドウの **[リソースの作成]** オプションをクリックします。
 2. *[Web アプリ]* 項目を検索して選択し、**[作成]** をクリックします。
-3. *MyTestScaleWebApp* のようなアプリ名を選択します。 新しいリソース グループ 'myResourceGroup' を作成し、選択したリソース グループに配置します。
+3. *MyTestScaleWebApp* のようなアプリ名を選択します。 新しいリソース グループ *myResourceGroup* を作成するか、選択したリソース グループに配置します。
 
 数分以内に、リソースがプロビジョニングされます。 このチュートリアルの残りの部分では、この Web アプリとそれに対応する App Service プランを使用します。
 
@@ -55,15 +55,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![自動スケール設定を保存する](./media/tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
- ## <a name="configure-default-profile"></a>既定のプロファイルを構成する
+## <a name="configure-default-profile"></a>既定のプロファイルを構成する
 1. 自動スケール設定に**名前**を指定します。
 2. 既定のプロファイルで **[スケール モード]** が [特定のインスタンス数にスケーリングする] に設定されていることを確認します。
 3. インスタンス数を **1** に設定します。 このように設定すると、他のプロファイルがアクティブでない場合、または有効でない場合、既定のプロファイルのインスタンス数が 1 に戻ります。
 
-  ![自動スケール設定に移動する](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![自動スケール設定に移動する](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
-## <a name="create-recurrance-profile"></a>定期プロファイルを作成する
+## <a name="create-recurrence-profile"></a>定期プロファイルを作成する
 
 1. 既定のプロファイルの下の、**[Add a scale condition]\(スケール条件の追加\)** リンクをクリックします。
 
@@ -185,3 +185,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [監視データをアーカイブする](tutorial-archive-data.md)
+

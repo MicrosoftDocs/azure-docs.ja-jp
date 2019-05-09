@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 6238d3d7a64816df01be69458d784114368d9e17
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: afcd180146bc349bda9375f10eb56f85f67ccb52
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141341"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498739"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Azure に移行されたワークロードのセキュリティ保護と管理に関するベスト プラクティス
 
@@ -267,7 +267,7 @@ Azure では、高度なセキュリティ オプションを提供するセキ�
 
 - タグ付けとタグの制限事項[について学習する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)。
 - タグ付けを設定してリソース グループからリソースにタグを適用するための PowerShell と CLI の例を[確認する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#powershell)。
-- Azure のタグ付けのベスト プラクティスを[読む](http://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/)。
+- Azure のタグ付けのベスト プラクティスを[読む](https://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/)。
 
 
 ## <a name="best-practice-implement-blueprints"></a>ベスト プラクティス:ブループリントを実装する
@@ -400,8 +400,7 @@ Azure VM は、Azure Storage にページ BLOB として格納されます。
 - BLOB スナップショットを作成する[方法を学習する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-snapshots)。
 - BLOB ストレージ バックアップの[サンプル シナリオを確認する](https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup)。
 - 論理的な削除について[読む](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。
-- Azure Storage の停止が発生した場合の対処方法を[確認する](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
-
+- [Azure Storage でのディザスター リカバリーと強制フェールオーバー (プレビュー)](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 #### <a name="third-party-backup"></a>サード パーティのバックアップ
 
@@ -438,7 +437,7 @@ Azure Functions は多かれ少なかれコードとして機能するので、G
 
 **詳細情報:**
 
-- Azure DevOps に対する[データ保護](https://docs.microsoft.com/azure/devops/articles/team-services-security-whitepaper?view=vsts)。
+- Azure DevOps に対する[データ保護](/azure/devops/organizations/security/data-protection)。
 
 ## <a name="best-practice-set-up-disaster-recovery"></a>ベスト プラクティス:ディザスター リカバリーを設定する 
 
@@ -517,7 +516,7 @@ PaaS ワークロードの例に対するディザスター リカバリーの�
 - ディザスター リカバリーのための Azure SQL Database 101 を[読む](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)。
 - アクティブ geo レプリケーションとフェールオーバー グループの[概要を理解する](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)。
 - ディザスター リカバリーのための設計[について学習する](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery)。
-- フェールオーバー グループに関する[ベスト プラクティスを知る](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview#best-practices-of-using-failover-groups-for-business-continuity)。
+- フェールオーバー グループに関する[ベスト プラクティスを知る](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)。
 - geo リストアまたはフェールオーバーの後のセキュリティに関する[ベスト プラクティスを知る](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-security-config)。
 - ゾーン冗長性[について学習する](https://docs.microsoft.com/azure/sql-database/sql-database-high-availability#zone-redundant-configuration)
 - SQL データベースのディザスター リカバリー訓練を実施する[方法を学習する](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery-drills)。
@@ -589,7 +588,7 @@ Azure リソースでは、かなり多くのログ メトリックとテレメ�
 
 - 既定では、ほとんどのリソースの種類で診断ログは有効になっていません。
 - リソース全体で診断ログを有効にすることにより、ログ データのクエリを実行し、アラートとそれに基づくプレイブックを作成できます。
-- 診断ログを有効にするとき、各リソースには特定のカテゴリのセットがあります。 1 つまたは複数のログ カテゴリと、ログ データの場所を選択します。 ログは、ストレージ アカウント、イベント ハブ、または Log Analytics に送信できます。 
+- 診断ログを有効にするとき、各リソースには特定のカテゴリのセットがあります。 1 つまたは複数のログ カテゴリと、ログ データの場所を選択します。 ログは、ストレージ アカウント、イベント ハブ、または Azure Monitor ログに送信できます。 
 
 
 ![診断ログ](./media/migrate-best-practices-security-management/diagnostics.png)
@@ -680,7 +679,7 @@ Azure VM をオペレーティング システムとソフトウェアの最新�
 Azure Automation には Change Tracking ソリューションがあります。
 
 - このソリューションでは、Windows および Linux のソフトウェアとファイル、Windows のレジストリ キー、Windows サービス、および Linux デーモンに対する変更が追跡されます。
-- 監視対象のサーバーでの変更は、クラウドの Log Analytics サービスに送信されて、処理されます。
+- 監視サーバーに対する変更は、クラウドの Azure Monitor サービスに送信されて、処理されます。
 - 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
 - [変更の追跡] ダッシュボードでは、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 

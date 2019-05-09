@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3a9a026af67cd5528dfc00148bcbbcef82b8b189
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: adab50b7325be96830ee937153d110754cc0b552
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714663"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549799"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行
 
@@ -22,7 +22,7 @@ Linux ベースの HDInsight クラスターでは、[Mono (https://mono-project
 
 ## <a name="mono-compatibility-with-net"></a>Mono と .NET の互換性
 
-Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。 特定のバージョンの Mono をインストールするには、[Mono のインストールと更新](hdinsight-hadoop-install-mono.md)に関するドキュメントを参照してください。
+Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。
 
 Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (https://www.mono-project.com/docs/about-mono/compatibility/)](https://www.mono-project.com/docs/about-mono/compatibility/) をご覧ください。
 

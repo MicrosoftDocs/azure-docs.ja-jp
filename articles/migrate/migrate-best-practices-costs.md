@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6f6440e12840538614b4092b173ab25ae37a68a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163771"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110284"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス
 
@@ -40,19 +40,20 @@ ms.locfileid: "53163771"
 
 - **Azure 料金計算ツール**:VM やストレージなど、見積りをする製品を選択します。 料金計算ツールにコストを入力し、見積りを作成します。
 
- ![Azure 料金計算ツール](./media/migrate-best-practices-costs/pricing.png) *Azure 料金計算ツール*
+  ![Azure 料金計算ツール](./media/migrate-best-practices-costs/pricing.png) *Azure 料金計算ツール*
 
 - **Azure Migrate**:コストを見積もるには、Azure でワークロードを実行するために必要なすべてのリソースを確認し、それらを計上します。 このデータを取得するには、サーバー、VM、データベース、ストレージを含む資産のインベントリを作成します。 この情報は、Azure Migrate を使用して収集できます。
 
- - Azure Migrate は、オンプレミス環境で検出と評価を行ってインベントリを提供します。
- - Azure Migrate では、全体像を把握できるように、VM 間の依存関係をマップして表示できます。
- - Azure Migrate の評価には、推定コストが含まれています。
+  - Azure Migrate は、オンプレミス環境で検出と評価を行ってインベントリを提供します。
+  - Azure Migrate では、全体像を把握できるように、VM 間の依存関係をマップして表示できます。
+  - Azure Migrate の評価には、推定コストが含まれています。
     - コンピューティング コスト:Azure Migrate は、評価の作成時には推奨される Azure VM のサイズを採用し、Billing API を使用して VM の推定月間コストを計算します。 この見積りでは、オペレーティング システム、ソフトウェア アシュアランス、予約インスタンス、VM のアップタイム、場所、および通貨の設定が考慮されます。 評価に含まれるすべての VM にわたるコストが集計され、月間コンピューティング コストの合計が計算されます。
     - ストレージのコスト:Azure Migrate は、評価に含まれるすべての VM のストレージ コストを集計して、月間ストレージ コストの合計を計算します。 特定のマシンの月間ストレージ コストは、そのマシンに接続されているすべてのディスクの月間コストを集計することで計算できます。 
 
-    ![Azure Migrate](./media/migrate-best-practices-costs/assess.png) *Azure Migrate の評価*
+    ![Azure Migrate](./media/migrate-best-practices-costs/assess.png)
+    "*Azure Migrate の評価*"
 
-**詳細情報**:
+**詳細情報:**
 - Azure 料金計算ツールを[使用](https://azure.microsoft.com/pricing/calculator/)します。
 - Azure Migrate の[概要を確認](https://docs.microsoft.com/azure/migrate/migrate-overview)します。
 - Azure Migrate の評価[についてのページを読みます](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)。
@@ -62,7 +63,7 @@ ms.locfileid: "53163771"
 
 ワークロードをサポートする Azure VM をデプロイするときは、さまざまなオプションを選択できます。 各種類の VM には特定の機能があり、さまざまな組み合わせの CPU、メモリ、およびディスクが用意されています。 VM は以下のようにグループ化されます。
 
-**種類** | **詳細** | **用途**
+**Type** | **詳細** | **用途**
 --- | --- | ---
 **汎用** | CPU とメモリのバランスがとれています。 | テストと開発、小～中規模のデータベース、低～中程度のトラフィックの Web サーバーに適しています。
 **コンピューティング最適化** | メモリに対する CPU の比が大きくなっています。 | トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリ サーバーに適しています。
@@ -92,20 +93,20 @@ ms.locfileid: "53163771"
 
 Azure では、ストレージ データのさまざまな種類が提供されています。
 
-**データの種類** | **詳細** | **使用方法** 
---- | --- |  ---
-**BLOB** | テキスト データやバイナリ データなどの大量の非構造化オブジェクトを格納するために最適化されています<br/><br/> | HTTP/HTTPS 経由でどこからでもデータにアクセスします。 | ストリーミングやランダム アクセスのシナリオに使用します。 たとえば、イメージやドキュメントをブラウザーに直接提供する、ビデオやオーディオをストリーム配信する、バックアップやディザスター リカバリーのデータを格納するなどです。
-**ファイル** | マネージド ファイル共有は SMB 3.0 経由でアクセスされます | オンプレミスのファイル共有を移行する場合に、ファイル データへの複数アクセス/接続を提供するために使用します。
-**ディスク** | ページ BLOB に基づきます。<br/><br/> ディスクの種類 (速度):Standard (HDD または SSD) または Premium (SSD)。<br/><br/>ディスクの管理:アンマネージド (ユーザーがディスクの設定とストレージを管理する) またはマネージド (ユーザーがディスクの種類を選択し、Azure 側でディスクを管理する)。 | VM には Premium ディスクを使用します。 簡単な管理とスケーリングのためにはマネージド ディスクを使用します。
-**キュー** | 認証された呼び出し (HTTP または HTTPS) を介してアクセスされる大量のメッセージを格納および取得します | 非同期メッセージ キューを使用してアプリのコンポーネントを接続します。
-**テーブル** | テーブルを格納します。 | 現在では Azure Cosmos DB Table API の一部です。
+| **データの種類** | **詳細** | **使用方法** |
+|--- | --- |  --- |
+|**BLOB** | テキスト データやバイナリ データなどの大量の非構造化オブジェクトを格納するために最適化されています<br/>HTTP/HTTPS 経由でどこからでもデータにアクセスします。 | ストリーミングやランダム アクセスのシナリオに使用します。 たとえば、イメージやドキュメントをブラウザーに直接提供する、ビデオやオーディオをストリーム配信する、バックアップやディザスター リカバリーのデータを格納するなどです。|
+|**ファイル** | マネージド ファイル共有は SMB 3.0 経由でアクセスされます | オンプレミスのファイル共有を移行する場合に、ファイル データへの複数アクセス/接続を提供するために使用します。|
+|**ディスク** | ページ BLOB に基づきます。<br/><br/> ディスクの種類 (速度):Standard (HDD または SSD) または Premium (SSD)。<br/><br/>ディスクの管理:アンマネージド (ユーザーがディスクの設定とストレージを管理する) またはマネージド (ユーザーがディスクの種類を選択し、Azure 側でディスクを管理する)。 | VM には Premium ディスクを使用します。 簡単な管理とスケーリングのためにはマネージド ディスクを使用します。|
+|**キュー** | 認証された呼び出し (HTTP または HTTPS) を介してアクセスされる大量のメッセージを格納および取得します | 非同期メッセージ キューを使用してアプリのコンポーネントを接続します。|
+|**テーブル** | テーブルを格納します。 | 現在では Azure Cosmos DB Table API の一部です。|
 
 
 
 ### <a name="access-tiers"></a>アクセス層
 Azure のストレージには、ブロック BLOB データにアクセスするためのさまざまなオプションが用意されています。 レベルに合った適切なアクセス層を選択することで、最も費用対効果の高い方法でブロック BLOB データが格納されるようにする助けとなります。
 
-**種類** | **詳細** | **使用方法**
+**Type** | **詳細** | **使用方法**
 --- | --- | ---
 **ホット** | ストレージ コストはクールより高いです。 アクセス料金はクールよりも低いです。<br/><br/>これが既定のレベルです。 | 頻繁にアクセスされる、アクティブに使用中のデータに使用します。
 **クール** | ストレージ コストはホットより低いです。 アクセス料金はホットよりも高いです。<br/><br/> 少なくとも 30 日間格納します。 | 短期に格納し、データは使用できますが、アクセス頻度は低いものです。
@@ -117,7 +118,7 @@ Azure では、さまざまな種類のストレージ アカウントとパフ�
 
 **アカウントの種類** | **詳細** | **使用方法**
 --- | --- | ---
-**General Purpose v2 Standard** | BLOB (ブロック、ページ、追加)、ファイル、ディスク、キュー、およびテーブルをサポートしています。<br/><br/> ホット、クール、およびアーカイブのアクセス層をサポートしています。 ZRS がサポートされています。 | ほとんどのシナリオの、ほとんどの種類のデータに使用します。 Standard ストレージ アカウントは、HHD または SSD ベースとして指定できます。
+**General Purpose v2 Standard** | BLOB (ブロック、ページ、追加)、ファイル、ディスク、キュー、およびテーブルをサポートしています。<br/><br/> ホット、クール、およびアーカイブのアクセス層をサポートしています。 ZRS がサポートされています。 | ほとんどのシナリオの、ほとんどの種類のデータに使用します。 Standard ストレージ アカウントは、HDD または SSD ベースとして指定できます。
 **General Purpose v2 Premium** | BLOB ストレージ データ (ページ BLOB) をサポートしています。 ホット、クール、およびアーカイブのアクセス層をサポートしています。 ZRS がサポートされています。<br/><br/> SSD に格納されます。 | すべての VM のために使用することをお勧めします。
 **General Purpose v1** | アクセスの階層化はサポートされません。 ZRS をサポートしていません | アプリに Azure クラシック デプロイ モデルが必要な場合に使用します。
 **BLOB** | 非構造化オブジェクトを格納するための特殊なストレージ アカウント。 ブロック BLOB と 追加 BLOB のみを提供します (ファイル、キュー、テーブル、ディスクのストレージ サービスはありません)。 同じ持続性、可用性、スケーラビリティ、および General Purpose v2 と同じパフォーマンスを提供します。 | これらのアカウントにページ BLOB を格納することはできないため、VHD ファイルは格納できません。 アクセス層はホットまたはクールに設定できます。
@@ -126,7 +127,7 @@ Azure では、さまざまな種類のストレージ アカウントとパフ�
 
 ストレージ アカウントでは、回復力と高可用性のためにさまざまな種類の冗長性を使用できます。
 
-**種類** | **詳細** | **使用方法**
+**Type** | **詳細** | **使用方法**
 --- | --- | ---
 **ローカル冗長ストレージ (LRS)** | 1 つのストレージ単位内で、別個の障害ドメインと更新ドメインにレプリケートすることで、ローカルの障害から保護します。 1 つのデータ センター内に複数のデータコピーを保管します。 年間 99.999999999% 以上 (9 が 11 個) のオブジェクトの持続性を提供します。 | アプリが格納するデータは簡単に再構築できるものかどうかを考慮に入れます。
 **ゾーン冗長ストレージ (ZRS)** | 1 つのリージョン内の 3 つのストレージ クラスター間でレプリケートすることで、データ センター停止の保護に冗長性を持たせます。 各ストレージ クラスターは、物理的に分離されており、独自の可用性ゾーン内に置かれています。 複数のデータセンターまたはリージョンにわたってデータのコピーを複数保持することで、年間 99.9999999999 % (9 が 12 個) 以上のオブジェクトの持続性を提供します。 | 一貫性、持続性、および高可用性が必要かどうかを考慮します。 複数のゾーンが永続的に影響を受けるリージョンの災害からは保護されないことがあります。
@@ -154,7 +155,7 @@ Microsoft の統合されたオンプレミス/Azure 製品ポートフォリオ
 
 - ハイブリッド特典の節約額計算ツールを[見てみます](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 - Windows Server 向けのハイブリッド特典の[詳細を確認します](https://azure.microsoft.com/pricing/hybrid-benefit/)。
-- SQL Server Azure VM の料金ガイダンスを[確認します](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol)。
+- SQL Server Azure VM の料金ガイダンスを[確認します](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)。
 
 
 ## <a name="best-practice-use-reserved-vm-instances"></a>ベスト プラクティス:予約 VM インスタンスを使用する
@@ -174,7 +175,7 @@ Azure 予約 VM インスタンスを使用して、1 年または 3 年の期�
 **詳細情報**:
 - Azure の予約の[詳細を確認します](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)。
 - 予約インスタンスの FAQ を[読みます](https://azure.microsoft.com/pricing/reserved-vm-instances/#faq)。
-- SQL Server Azure VM の[料金ガイダンスを表示します](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol)。
+- SQL Server Azure VM の[料金ガイダンスを表示します](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)。
 
 
 ## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>ベスト プラクティス:サブスクリプション間のクラウド支出を集約する
@@ -211,19 +212,21 @@ Cost Management では以下のことが可能です。
 
 
 - **予算を作成する**:財務上の説明責任のために予算を作成します。
-    - 特定の期間 (月単位、四半期単位、年単位) と範囲 (サブスクリプション/リソース グループ) について、使用またはサブスクライブしているサービスを計算に入れることができます。 たとえば、月、四半期、または年の期間の Azure サブスクリプション予算を作成できます。
-    - 作成した予算は、コストの分析に表示されます。 現在の支出に対する予算を表示することは、コストや支出を分析するときに必要な最初の手順の 1 つです。
-    - 予算がしきい値に達したときに電子メールの通知を送信できます。
-    - コスト管理データは、分析のために Azure のストレージにエクスポートできます。
+  - 特定の期間 (月単位、四半期単位、年単位) と範囲 (サブスクリプション/リソース グループ) について、使用またはサブスクライブしているサービスを計算に入れることができます。 たとえば、月、四半期、または年の期間の Azure サブスクリプション予算を作成できます。
+  - 作成した予算は、コストの分析に表示されます。 現在の支出に対する予算を表示することは、コストや支出を分析するときに必要な最初の手順の 1 つです。
+  - 予算がしきい値に達したときに電子メールの通知を送信できます。
+  - コスト管理データは、分析のために Azure のストレージにエクスポートできます。
 
-    ![コスト管理予算](./media/migrate-best-practices-costs/budget.png) *Azure Cost Management の予算*
+    ![Cost Management の予算](./media/migrate-best-practices-costs/budget.png)
+    "*Azure Cost Management の予算*"
 
 - **コスト分析を行う**:コスト分析を取得し、組織のコストを探って分析すれば、コストがどのように生じるかを理解し、支出の傾向を識別する助けになります。
-    - EA ユーザーがコスト分析を使用できます。
-    - 部門、アカウント、サブスクリプション、リソース グループを含むいくつもの範囲別に、コスト分析データを表示できます。
-    - 現在の月の総コストと、毎日の累積コストを表示するコスト分析を取得できます。 
+  - EA ユーザーがコスト分析を使用できます。
+  - 部門、アカウント、サブスクリプション、リソース グループを含むいくつもの範囲別に、コスト分析データを表示できます。
+  - 現在の月の総コストと、毎日の累積コストを表示するコスト分析を取得できます。 
 
-    ![Cost Management での分析](./media/migrate-best-practices-costs/analysis.png) *Azure Cost Management での分析*
+    ![Cost Management での分析](./media/migrate-best-practices-costs/analysis.png)
+    "*Azure Cost Management での分析*"
 - **推奨事項を取得する**:最適化と効率向上が可能な方法を示す Advisor の推奨事項を取得します。
 
 
@@ -248,7 +251,7 @@ Azure では、リソースが消費されたときに使用した分だけ支�
 **詳細情報**:
 - [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) と [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) の概要を表示しますします。
 - Advisor のコストに関する推奨事項を[表示します](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)。
-- [推奨事項に従ってコストを最適化](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json)し、[予期しない料金を防ぐ](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started)方法を学びます。
+- [推奨事項に従ってコストを最適化](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json)し、[予期しない料金を防ぐ](https://docs.microsoft.com/azure/billing/billing-getting-started)方法を学びます。
 - Azure Resource Optimization (ARO) ツールキット[について学びます](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/)
 
 ## <a name="best-practice-implement-resource-group-budgets"></a>ベスト プラクティス:リソース グループの予算を実施する
@@ -332,7 +335,7 @@ VM ワークロードは、多くの場合、ダウンタイムを回避する�
   
 ## <a name="next-steps"></a>次の手順 
 
-その他のベスト プラクティスの確認:
+他のベスト プラクティスを確認してください。
 
 - 移行後のセキュリティと管理の[ベスト プラクティス](migrate-best-practices-security-management.md)。
 - 移行後のネットワーキングの[ベスト プラクティス](migrate-best-practices-networking.md)。

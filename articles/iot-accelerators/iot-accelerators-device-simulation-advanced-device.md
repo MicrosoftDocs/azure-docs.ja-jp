@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 10/25/2018
+ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 7e680e3cd8a3d7056141814c5e7d4539b72073b4
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50756958"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286127"
 ---
 # <a name="create-an-advanced-device-model"></a>高度なデバイス モデルを作成する
 
@@ -56,7 +56,7 @@ JSON のデバイス定義ファイルと一連の JavaScript ファイルを使
 各デバイス定義ファイルには、次の情報を含む、シミュレートされたデバイス モデルの詳細が含まれています。
 
 * デバイス モデル名: 文字列。
-* プロトコル: AMQP | MQTT | HTTP。
+* プロトコル:AMQP | MQTT | HTTP。
 * デバイスの初期状態。
 * デバイス状態の更新頻度。
 * デバイス状態を更新するために使用する JavaScript ファイル。
@@ -165,7 +165,7 @@ IoT デバイスは、さまざまなプロトコルを使用して接続でき�
 * Boolean
 * 整数
 * Double
-* Datetime
+* DateTime
 
 ### <a name="supported-methods"></a>サポートされるメソッド
 
@@ -486,7 +486,7 @@ function main(context, state) {
 
     // ...
 
-    return state;
+    return updateState;
 }
 ```
 
@@ -516,4 +516,4 @@ function main(context, state) {
 
 ## <a name="next-steps"></a>次の手順
 
-この攻略ガイドでは、デバイス シミュレーションで使用するデバイス モデル ファイルについてと、高度なデバイス モデルの作成方法を学習しました。 次は、[Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する](about-iot-accelerators.md)方法を確認できます。
+この攻略ガイドでは、デバイス シミュレーションで使用するデバイス モデル ファイルについてと、高度なデバイス モデルの作成方法を学習しました。 次は、[Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)方法を確認できます。

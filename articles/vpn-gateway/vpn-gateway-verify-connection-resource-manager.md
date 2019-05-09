@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9dfea33b558b4b568da1fd9ed90402e6c5ce54bf
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: bcece64a85a69c705b0f7f915dafe29123a2cd4a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573197"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765757"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway 接続の確認
 

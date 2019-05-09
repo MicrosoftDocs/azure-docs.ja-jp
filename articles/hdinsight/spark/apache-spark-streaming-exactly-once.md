@@ -8,20 +8,20 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 194e6091180fa1dd0eaaf999e970c0248ea99db9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581002"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651777"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回だけ伴う Apache Spark Streaming ジョブを作成します
 
 システムでの障害発生後にストリーム処理アプリケーションがメッセージの再処理を行う方法はさまざまです。
 
-* 少なくとも 1 回: 各メッセージは必ず処理されますが、複数回処理される可能性があります。
-* 多くても 1 回: 各メッセージは、処理される場合と処理されない場合があります。 メッセージが処理される場合は、1 回だけ処理されます。
-* 厳密に 1 回: 各メッセージは、必ず 1 回だけ処理されることが保証されます。
+* 少なくとも 1 回:各メッセージは必ず処理されますが、複数回処理される可能性があります。
+* 多くても 1 回:各メッセージは、処理される場合と処理されない場合があります。 メッセージが処理される場合は、1 回だけ処理されます。
+* 厳密に 1 回:各メッセージは、必ず 1 回だけ処理されることが保証されます。
 
 この記事では、Spark Streaming が厳密に 1 回だけ処理するように構成する方法について説明します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "52581002"
 
 Spark Streaming アプリケーションがイベントを読み取るソースは、"*再生可能*" である必要があります。 つまり、メッセージを取得した後、メッセージを永続化または処理する前に、システムで障害が発生した場合、ソースは同じメッセージを再び提供する必要があります。
 
-Azure では、Azure Event Hubs と [Apache Kafka](https://kafka.apache.org/) on HDInsight の両方が再生可能なソースを提供します。 再生可能なソースのもう 1 つの例は、[Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)、Microsoft Azure Storage、Azure Data Lake Store のようなフォールト トレラントなファイル システムであり、すべてのデータが永久に保持され、いつでもデータ全体を読み込み直すことができます。
+Azure では、Azure Event Hubs と [Apache Kafka](https://kafka.apache.org/) on HDInsight の両方が再生可能なソースを提供します。 再生可能なソースのもう 1 つの例は、[Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)、Microsoft Azure Storage、Azure Data Lake Storage のようなフォールト トレラントなファイル システムであり、すべてのデータが永久に保持され、いつでもデータ全体を読み込み直すことができます。
 
 ### <a name="reliable-receivers"></a>信頼性の高いレシーバー
 
@@ -49,7 +49,7 @@ Spark Streaming では、Event Hubs や Kafka のようなソースは "*信頼�
 
 ### <a name="use-the-write-ahead-log"></a>先書きログの使用
 
-Spark Streaming がその使用をサポートしている先書きログでは、受信された各イベントは最初にフォールト トレラント ストレージの Spark のチェックポイント ディレクトリに書き込まれた後、Resilient Distributed Dataset (RDD) に格納されます。 Azure では、フォールト トレラント ストレージは Azure Storage または Azure Data Lake Store のいずれかによってバックアップされた HDFS です。 Spark Streaming アプリケーションでは、`spark.streaming.receiver.writeAheadLog.enable` 構成設定を `true` に設定することで、すべてのレシーバーに対して先書きログが有効になります。 先書きログは、ドライバーと Executor の両方の障害に対してフォールト トレランスを提供します。
+Spark Streaming がその使用をサポートしている先書きログでは、受信された各イベントは最初にフォールト トレラント ストレージの Spark のチェックポイント ディレクトリに書き込まれた後、Resilient Distributed Dataset (RDD) に格納されます。 Azure では、フォールト トレラント ストレージは Azure Storage または Azure Data Lake Storage のいずれかによってバックアップされた HDFS です。 Spark Streaming アプリケーションでは、`spark.streaming.receiver.writeAheadLog.enable` 構成設定を `true` に設定することで、すべてのレシーバーに対して先書きログが有効になります。 先書きログは、ドライバーと Executor の両方の障害に対してフォールト トレランスを提供します。
 
 イベント データに対するタスクを実行しているワーカーの場合、各 RDD はレプリケートされて複数のワーカーに分散されるように定義されています。 タスクを実行しているワーカーのクラッシュによりタスクが失敗した場合、タスクはイベント データのレプリカを持つ別のワーカーで再開されるので、イベントは失われます。
 
@@ -66,7 +66,7 @@ Spark Streaming がその使用をサポートしている先書きログでは�
     ssc.checkpoint("/path/to/checkpoints")
     ```
 
-    HDInsight では、これらのチェックポイントをクラスターに接続されている既定のストレージ (Azure Storage または Azure Data Lake Store) に保存する必要があります。
+    HDInsight では、これらのチェックポイントをクラスターに接続されている既定のストレージ (Azure Storage または Azure Data Lake Storage) に保存する必要があります。
 
 2. 次に、DStream でチェックポイントの間隔 (秒単位) を指定します。 各間隔で、入力イベントから派生した状態データがストレージに保存されます。 永続化された状態データは、ソース イベントから状態を再構築するときに必要な計算を減らすことができます。
 
@@ -85,7 +85,7 @@ Spark Streaming がその使用をサポートしている先書きログでは�
 
 たとえば、テーブルにイベントを挿入する Azure SQL Database のストアド プロシージャを使うことができます。 このストアド プロシージャは、最初にキー フィールドでイベントを検索し、一致するイベントが見つからなかった場合にのみ、テーブルにレコードを挿入します。
 
-もう 1 つの例は、Azure Storage Blob や Azure Data Lake Store のように、パーティション分割されたファイル システムを使う方法です。 この場合は、シンク ロジックでファイルの存在を確認する必要はありません。 イベントを表すファイルが存在する場合は、同じデータで単純に上書きされます。 存在しない場合は、計算されたパスで新しいファイルが作成されます。
+もう 1 つの例は、Azure Storage Blob や Azure Data Lake Storage のように、パーティション分割されたファイル システムを使う方法です。 この場合は、シンク ロジックでファイルの存在を確認する必要はありません。 イベントを表すファイルが存在する場合は、同じデータで単純に上書きされます。 存在しない場合は、計算されたパスで新しいファイルが作成されます。
 
 ## <a name="next-steps"></a>次の手順
 

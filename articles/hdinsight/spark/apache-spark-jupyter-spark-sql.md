@@ -9,18 +9,20 @@ ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e816799ba2df0f97aca7618e7c181a1086bb84a9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 16ec2f52a3272e774f4743ec730e0b1184d8fb53
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791916"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225639"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>クイック スタート:テンプレートを使用した HDInsight での Apache Spark クラスターの作成
 
-Azure HDInsight で [Apache Spark](https://spark.apache.org/) クラスターを作成し、[Apache Hive](https://hive.apache.org/) テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight での Spark について詳しくは、[Azure HDInsight での Apache Spark の概要](apache-spark-overview.md)に関する記事をご覧ください。
+Azure HDInsight で [Apache Spark](https://spark.apache.org/) クラスターを作成し、[Apache Hive](https://hive.apache.org/) テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight 上のSpark については、[Azure HDInsight での Apache Spark の概要](apache-spark-overview.md)に関する記事をご覧ください。
 
-このクイックスタートでは、Resource Manager テンプレートを使用して HDInsight Spark クラスターを作成します。 クラスターは、クラスター記憶域として Azure Storage Blob を使います。 Data Lake Storage Gen2 の使用について詳しくは、「[クイック スタート:HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+このクイックスタートでは、Resource Manager テンプレートを使用して HDInsight Spark クラスターを作成します。 同じようなテンプレートを「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)」で見ることができます。 テンプレートのリファレンスについては、[こちら](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)をご覧ください。
+
+クラスターは、クラスター記憶域として Azure Storage Blob を使います。 Data Lake Storage Gen2 の使用法の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
 > [!IMPORTANT]  
 > HDInsight クラスターの料金は、そのクラスターを使用しているかどうかに関係なく、分単位で課金されます。 使用後は、クラスターを必ず削除してください。 詳しくは、この記事の「[リソースのクリーンアップ](#clean-up-resources)」をご覧ください。
@@ -29,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスターを作成する
 
-Azure Resource Manager テンプレートを使用して HDInsight Spark クラスターを作成します。 テンプレートは [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/) から入手できます。
+Azure Resource Manager テンプレートを使用して HDInsight Spark クラスターを作成します。 テンプレートは [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/) から入手できます。 クラスターの JSON の構文とプロパティについては、[Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters) に関するページを参照してください。
 
 1. 次のリンクを選択して、新しいブラウザー タブで、Azure Portal のテンプレートを開きます。
 
@@ -40,7 +42,7 @@ Azure Resource Manager テンプレートを使用して HDInsight Spark クラ�
     | プロパティ | 値 |
     |---|---|
     |**サブスクリプション**|このクラスターを作成するために使用する Azure サブスクリプションを選択します。 このクイックスタートで使用されるサブスクリプションは **&lt;Azure サブスクリプション名>** です。 |
-    | **[リソース グループ]**|リソース グループを作成するか、既存のリソース グループを選択します。 リソース グループは、プロジェクトの Azure リソースを管理するために使用されます。 このクイックスタートで使用される新しいリソース グループ名は **myspark20180403rg** です。|
+    | **リソース グループ**|リソース グループを作成するか、既存のリソース グループを選択します。 リソース グループは、プロジェクトの Azure リソースを管理するために使用されます。 このクイックスタートで使用される新しいリソース グループ名は **myspark20180403rg** です。|
     | **場所**|リソース グループの場所を選びます。 テンプレートでは、この場所をクラスターの作成および既定のクラスター ストレージに使用します。 このクイック スタートで使う場所は **米国東部 2** です。|
     | **ClusterName**|作成する HDInsight クラスターの名前を入力します。 このクイックスタートで使用される新しいクラスター名は **myspark20180403** です。|
     | **クラスター ログイン名とパスワード**|既定のログイン名は admin です。クラスター ログイン用のパスワードを選択します。 このクイックスタートで使用されるログイン名は **admin** です。|

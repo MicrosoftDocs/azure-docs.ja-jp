@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 79a44e3f5303aaf0d337333b482c2df670e0b3da
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ae8dc263e08528c6e3b3bae8c779162c96d51f43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144947"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100787"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -76,13 +76,13 @@ ms.locfileid: "42144947"
 
 3. DevKit をコンピューターに接続します。 VS Code により DevKit が自動的に検出され、次のページが開きます。
 
-  * DevKit 概要ページ
-  * Arduino の例: DevKit の使用を開始するためのハンズオン サンプル
+   * DevKit 概要ページ
+   * [Arduino Examples]\(Arduino の例\): DevKit の使用を開始するためのハンズオン サンプル。
 
 4. 左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、**[RemoteMonitoring]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
    > [!NOTE]
-   > ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
+   > ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="provision-required-azure-services"></a>必要な Azure サービスのプロビジョニング
 
@@ -126,8 +126,8 @@ DevKit が再起動され、コードの実行が開始されます。
 
 問題が発生した場合は、[IoT 開発者キットの FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) を参照するか、以下のチャネルを使用して Microsoft までお問い合わせください。
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>次の手順
 

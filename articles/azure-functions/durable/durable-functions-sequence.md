@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339588"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043959"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
-関数チェーンとは、特定の順序で一連の関数を実行するパターンです。 ある関数の出力が、別の関数の入力に適用される必要がある、ということがよくあります。 この記事では、Durable Functions のクイックスタート ([C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md)) を実行するときに作成するチェーンのシーケンスについて説明します。 Durable Functions について詳しくは、「[Durable Functions overview](durable-functions-overview.md)」(Durable Functions の概要) をご覧ください。
+関数チェーンとは、特定の順序で一連の関数を実行するパターンです。 ある関数の出力が、別の関数の入力に適用される必要がある、ということがよくあります。 この記事では、Durable Functions のクイックスタート ([C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md)) を実行するときに作成するチェーンのシーケンスについて説明します。 Durable Functions の詳細については、「[Durable Functions patterns and technical concepts](durable-functions-concepts.md)」(Durable Functions のパターンおよび技術的概念) を参照してください。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -142,7 +142,7 @@ Content-Type: application/json; charset=utf-8
 > [!NOTE]
 > orchestrator 関数を開始した HTTP POST エンドポイントは、"HttpStart" という名前の HTTP トリガー関数としてサンプル アプリに実装されています。 同様のスターター ロジックを `queueTrigger`、`eventHubTrigger`、`timerTrigger` などの他のトリガーの種類に実装することができます。
 
-関数の実行ログを確認しましょう。 `E1_HelloSequence` 関数が、[概要](durable-functions-overview.md)で説明されている再生の動作のため、複数回、開始し完了しています。 その一方で、`E1_SayHello` の実行は 3 回だけでした。これらの関数の実行は再生されなかったためです。
+関数の実行ログを確認しましょう。 `E1_HelloSequence` 関数が、[概要](durable-functions-concepts.md)で説明されている再生の動作のため、複数回、開始し完了しています。 その一方で、`E1_SayHello` の実行は 3 回だけでした。これらの関数の実行は再生されなかったためです。
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio サンプル コード
 

@@ -1,226 +1,208 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Uberflip の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Uberflip の統合 | Microsoft Docs
 description: Azure Active Directory と Uberflip の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/21/2018
+ms.topic: tutorial
+ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: bb1f53895fcd91a9474302fcf8c9e0040fe91961
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e0f24bf10bd16dc0b6aed140182f2f18710691ff
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42920212"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273024"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>チュートリアル: Azure Active Directory と Uberflip の統合
+# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>チュートリアル:Azure Active Directory と Uberflip の統合
 
 このチュートリアルでは、Uberflip と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Uberflip と Azure AD の統合には、次の利点があります。
 
-- Uberflip にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Uberflip にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Uberflip にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Uberflip に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Uberflip と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- シングル サインオンが有効な Uberflip のサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* Uberflip でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-1. ギャラリーからの Uberflip の追加
-2. Azure AD シングル サインオンの構成とテスト
+* Uberflip では、**SP** と **IDP** によって開始される SSO がサポートされます
+
+* Uberflip では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-uberflip-from-the-gallery"></a>ギャラリーからの Uberflip の追加
 
 Azure AD への Uberflip の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Uberflip を追加する必要があります。
 
-**ギャラリーから Uberflip を追加するには、次の手順に従います。**
+**ギャラリーから Uberflip を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
 4. 検索ボックスに「**Uberflip**」と入力し、結果ウィンドウで **[Uberflip]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の Uberflip](./media/uberflip-tutorial/tutorial_uberflip_addfromgallery.png)
+     ![結果一覧の Uberflip](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Uberflip で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Uberflip ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Uberflip の関連ユーザーの間で、リンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Uberflip で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Uberflip 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Uberflip で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Uberflip のテスト ユーザーの作成](#create-an-uberflip-test-user)** - Uberflip で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+2. **[Uberflip シングル サインオンの構成](#configure-uberflip-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[Uberflip のテスト ユーザーの作成](#create-uberflip-test-user)** - Uberflip で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Uberflip アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Uberflip で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Uberflip で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. Azure Portal の **Uberflip** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Uberflip** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    ![[シングル サインオン] ダイアログ ボックス](./media/uberflip-tutorial/tutorial_uberflip_samlbase.png)
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[Uberflip のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![[Uberflip のドメインと URL] のシングル サインオン情報](./media/uberflip-tutorial/tutorial_uberflip_url1.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    **[応答 URL]** ボックスに、`https://app.uberflip.com/sso/saml2/<IDPID>/<ACCOUNTID>` のパターンを使用して URL を入力します。
+4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
+    ![[Uberflip のドメインと URL] のシングル サインオン情報](common/both-replyurl.png)
+
+    **[応答 URL]** ボックスに、`https://app.uberflip.com/sso/saml2/<IDPID>/<ACCOUNTID>` のパターンを使用して URL を入力します
+    
     > [!NOTE]
-    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Uberflip クライアント サポート チーム](mailto:support@uberflip.com)にお問い合わせください。
+    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Uberflip クライアント サポート チーム](mailto:support@uberflip.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Uberflip のドメインと URL] のシングル サインオン情報](./media/uberflip-tutorial/tutorial_uberflip_url2.png)
+    ![[Uberflip のドメインと URL] のシングル サインオン情報](common/both-signonurl.png)
 
-    **[サインオン URL]** ボックスに、URL として「`https://app.uberflip.com/users/login`」を入力します。
+    **[サインオン URL]** テキスト ボックスに URL として「`https://app.uberflip.com/users/login`」と入力します。
 
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](./media/uberflip-tutorial/tutorial_uberflip_certificate.png) 
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[保存]** ボタンをクリックします。
+7. **[Uberflip のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/uberflip-tutorial/tutorial_general_400.png)
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-7. **Uberflip** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Uberflip サポート チーム](mailto:support@uberflip.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+    a. ログイン URL
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-uberflip-single-sign-on"></a>Uberflip シングル サインオンの構成
+
+**Uberflip** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Uberflip サポート チーム](mailto:support@uberflip.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/uberflip-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/uberflip-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/uberflip-tutorial/create_aaduser_03.png)
-
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/uberflip-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
-
-### <a name="create-an-uberflip-test-user"></a>Uberflip テスト ユーザーを作成する
-
-このセクションの目的は、Uberflip で Britta Simon というユーザーを作成することです。 Uberflip では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Uberflip ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
-
-> [!Note]
-> ユーザーを手動で作成する必要がある場合は、[Uberflip サポート チーム](mailto:support@uberflip.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Uberflip へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Uberflip]** の順に選択します。
 
-**Uberflip に Britta Simon を割り当てるには、次の手順を実行します。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で **[Uberflip]** を選択します。
 
-    ![アプリケーションの一覧の [Uberflip] リンク](./media/uberflip-tutorial/tutorial_uberflip_app.png)  
+    ![アプリケーションの一覧の [Uberflip] リンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[割り当ての追加] ウィンドウ][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="create-uberflip-test-user"></a>Uberflip のテスト ユーザーの作成
+
+このセクションでは、Britta Simon というユーザーを Uberflip に作成します。 Uberflip では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Uberflip にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+
+> [!Note]
+> ユーザーを手動で作成する必要がある場合は、[Uberflip サポート チーム](mailto:support@uberflip.com)にお問い合わせください。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Uberflip のタイルをクリックすると、自動的に Uberflip アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネル上で [Uberflip] タイルをクリックすると、SSO を設定した Uberflip に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/uberflip-tutorial/tutorial_general_01.png
-[2]: ./media/uberflip-tutorial/tutorial_general_02.png
-[3]: ./media/uberflip-tutorial/tutorial_general_03.png
-[4]: ./media/uberflip-tutorial/tutorial_general_04.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: ./media/uberflip-tutorial/tutorial_general_100.png
-
-[200]: ./media/uberflip-tutorial/tutorial_general_200.png
-[201]: ./media/uberflip-tutorial/tutorial_general_201.png
-[202]: ./media/uberflip-tutorial/tutorial_general_202.png
-[203]: ./media/uberflip-tutorial/tutorial_general_203.png

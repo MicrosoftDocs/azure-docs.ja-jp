@@ -2,21 +2,21 @@
 title: Azure Event Grid のサブスクリプション用のイベント スキーマ
 description: Azure Event Grid のサブスクリプション イベントに対して用意されているプロパティについて説明します
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 10/12/2018
-ms.author: tomfitz
-ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 01/12/2019
+ms.author: spelluru
+ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310237"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536251"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid のサブスクリプション用のイベント スキーマ
 
-この記事では、Azure サブスクリプション イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
+この記事では、Azure サブスクリプション イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
 Azure サブスクリプションとリソース グループは、同じ種類のイベントを出力します。 イベントの種類は、リソースの変更またはアクションに関連しています。 主な違いは、リソース グループはリソース グループ内のリソースのイベントを出力し、Azure サブスクリプションはサブスクリプションのリソースのイベントを出力することです。
 
@@ -236,29 +236,29 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | string | 発行元が定義したイベントの対象のパス。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
+| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
+| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | 文字列 | イベントの一意識別子。 |
 | data | オブジェクト | サブスクリプション イベントのデータ。 |
-| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | authorization | オブジェクト | 操作の要求された承認。 |
-| claims | オブジェクト | 要求のプロパティ。 詳細については、[JWT 認証](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |
-| correlationId | string | トラブルシューティング用の操作 ID。 |
+| claims | オブジェクト | 要求のプロパティ。 詳細については、[JWT 認証](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |
+| correlationId | 文字列 | トラブルシューティング用の操作 ID。 |
 | httpRequest | オブジェクト | 操作の詳細。 このオブジェクトは、既存のリソースを更新する場合、またはリソースを削除する場合にのみ含まれます。 |
-| resourceProvider | string | 操作に対するリソース プロバイダー。 |
-| resourceUri | string | 操作内のリソースの URI。 |
-| operationName | string | 実行された操作。 |
-| status | string | 操作の状態。 |
-| subscriptionId | string | リソースのサブスクリプション ID。 |
-| tenantId | string | リソースのテナント ID。 |
+| resourceProvider | 文字列 | 操作に対するリソース プロバイダー。 |
+| resourceUri | 文字列 | 操作内のリソースの URI。 |
+| operationName | 文字列 | 実行された操作。 |
+| status | 文字列 | 操作の状態。 |
+| subscriptionId | 文字列 | リソースのサブスクリプション ID。 |
+| tenantId | 文字列 | リソースのテナント ID。 |
 
 ## <a name="next-steps"></a>次の手順
 

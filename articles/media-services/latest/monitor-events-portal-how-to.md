@@ -15,16 +15,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 4e6527bf115f327635a0b0fe187094dafb320598
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380804"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884037"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Azure portal を使用した Event Grid による Media Services イベントの作成と監視
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure portal を使用して、Azure Media Services アカウントのイベントをサブスクライブします。 次に、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 この記事では、メッセージを収集して表示する Web アプリにイベントを送信します。
+Azure Event Grid は、クラウドのイベント処理サービスです。 このサービスは、[イベント サブスクリプション](../../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 Media Services イベントには、データの変更に対応するために必要なすべての情報が含まれます。 Media Services イベントは、eventType プロパティが "Microsoft.Media" で始まっていることで識別できます。 詳細については、「[Media Services イベントのスキーマ](media-services-event-schemas.md)」を参照してください。
+
+この記事では、Azure portal を使用して、Azure Media Services アカウントのイベントをサブスクライブします。 次に、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 この記事では、メッセージを収集して表示する Web アプリにイベントを送信します。
 
 最後に、イベント データが Web アプリに送信されたことを確認します。
 
@@ -39,7 +41,7 @@ Media Services アカウントのイベントをサブスクライブする前�
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 

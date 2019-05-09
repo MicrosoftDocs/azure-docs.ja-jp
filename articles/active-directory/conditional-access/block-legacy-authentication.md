@@ -1,32 +1,34 @@
 ---
 title: 条件付きアクセスを利用して Azure Active Directory (Azure AD) へのレガシ認証をブロックする方法 | Microsoft Docs
-description: 信頼されていないネットワークからのアクセスの試行に対して、Azure Active Directory (Azure AD) で条件付きアクセス ポリシーを構成する方法を説明します。
+description: Azure AD 条件付きアクセスを使用してレガシ認証をブロックすることでセキュリティ体制を強化する方法について説明します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2018
-ms.author: markvi
+ms.date: 03/25/2019
+ms.author: joflore
 ms.reviewer: calebb
-ms.openlocfilehash: ddfea3ec7380a36f937052a6a994504ca081f187
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3d2841d3be584cae45ef49ad9ff20da8a232c366
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021839"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519931"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
 指定したユーザーがお使いのクラウド アプリに簡単にアクセスできるように、Azure Active Directory (Azure AD) ではレガシ認証を含め、幅広い認証プロトコルをサポートしています。 ただし、従来のプロトコルでは、多要素認証 (MFA) をサポートしていません。 MFA は多くの環境で、なりすましに対処するための一般的な要件になっています。 
+
 
 お使いの環境で、テナントの保護を向上させるためにレガシ認証をブロックする準備ができている場合は、条件付きアクセスによってこの目標を達成できます。 この記事では、テナントのレガシ認証をブロックする条件付きアクセス ポリシーを構成する方法について説明します。
 
@@ -52,6 +54,8 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 最近は、単一要素認証 (たとえば、ユーザー名とパスワード) では不十分です。 パスワードは、簡単に推測できるうえに、適切なパスワードの選定は難しいため、不十分です。 また、パスワードは、フィッシングやパスワード スプレーなどの幅広い攻撃に対しては脆弱です。 パスワードの脅威から保護できる最も簡単な方法の 1 つは、MFA を実装することです。 MFA を使用すれば、攻撃者がユーザーのパスワードを入手したとしても、認証に成功してデータにアクセスするには、パスワードだけでは不十分です。
 
 レガシ認証を使用しているアプリからはテナントのリソースにアクセスできないようにするには、どうしたらいいでしょうか。 お勧めは、単純に条件付きアクセス ポリシーを使用して、それらのアプリをブロックすることです。 必要に応じて、特定のユーザーと特定のネットワークの場所だけに、レガシ認証に基づいたアプリの使用を許可します。
+
+条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 つまり、条件付きアクセスは、サービス拒否 (DoS) 攻撃などのシナリオの防御の最前線を意図したものではありませんが、これらのイベントのシグナル (サインインのリスク レベル、要求の場所など) を利用してアクセスを判別できます。
 
 
 
@@ -91,7 +95,7 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 ![サポートされていないポリシー構成](./media/block-legacy-authentication/04.png)
 
 
-"*すべてのユーザーとすべてのクラウド アプリのブロック*" では、組織全体をテナントへのサインオンからブロックする可能性があるため、安全機能が必要です。 ベスト プラクティスの最小要件を満たすには、少なくとも 1 人のユーザーを除外する必要があります。 また、次の方法を使用することもできます。 
+"*すべてのユーザーとすべてのクラウド アプリのブロック*" では、組織全体をテナントへのサインオンからブロックする可能性があるため、安全機能が必要です。 ベスト プラクティスの最小要件を満たすには、少なくとも 1 人のユーザーを除外する必要があります。 ディレクトリ ロールを除外することもできます。
 
 ![サポートされていないポリシー構成](./media/block-legacy-authentication/05.png)
 
@@ -113,17 +117,29 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
+**その他のクライアント**を使用しているアクセスをブロックすると、基本認証を使用している Exchange Online PowerShell もブロックされます。
+
 **その他のクライアント**を対象とするポリシーを構成すると、SPConnect などの特定のクライアントから組織全体がブロックされます。 このブロックは、旧バージョンのクライアントが想定していない方法で認証されるために発生します。 この問題は、古い Office クライアントなどの重要な Office アプリケーションには適用されません。
 
 ポリシーが有効になるまで、最大で 24 時間かかる可能性があります。
 
 その他のクライアント条件には、利用可能なすべての制御の許可を選択できます。ただし、エンドユーザーのエクスペリエンスは常に同じ、つまり、アクセスがブロックされます。
 
-その他のクライアント条件の横にあるその他の条件はすべて、構成可能です。
+他のクライアント条件を使用してレガシ認証をブロックする場合は、デバイスのプラットフォームと場所の条件も設定できます。 たとえば、モバイル デバイスに対する従来の認証をブロックすることだけが必要な場合は、以下を選択して**デバイス プラットフォーム**の条件を設定します。
+
+- Android
+
+- iOS
+
+- Windows Phone
+
+![サポートされていないポリシー構成](./media/block-legacy-authentication/06.png)
 
 
 
 
 ## <a name="next-steps"></a>次の手順
 
-条件付きアクセス ポリシー構成についてまだよく知らない場合は、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」で例を参照してください。
+- 条件付きアクセス ポリシー構成についてまだよく知らない場合は、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」で例を参照してください。
+
+- 先進認証のサポートの詳細については、「[How modern authentication works for Office 2013 and Office 2016 client apps](https://docs.microsoft.com/en-us/office365/enterprise/modern-auth-for-office-2013-and-2016)」 (Office 2013 クライアント アプリと Office 2016 クライアント アプリでの先進認証のしくみ) を参照してください 

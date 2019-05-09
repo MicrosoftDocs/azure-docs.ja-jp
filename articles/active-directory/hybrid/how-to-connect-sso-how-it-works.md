@@ -5,22 +5,23 @@ services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/14/2018
-ms.component: hybrid
+ms.topic: conceptual
+ms.date: 04/08/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 54b614e49bc7c03325ebeada60232fca861874e0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 788b03bb55abdc3040df8c5317f1f55738ebb023
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193078"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268361"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン:技術的な詳細情報
 
@@ -38,15 +39,12 @@ ms.locfileid: "53193078"
 
 シームレス SSO は、[こちら](how-to-connect-sso-quick-start.md)で示す通り、Azure AD Connect を使用して有効にできます。 この機能を有効にすると、次の手順が発生します。
 
-- 各 Active Directory (AD) フォレスト内のオンプレミスの AD に (Azure AD を表す) `AZUREADSSOACC` という名前のコンピューター アカウントが作成されます。
-- コンピューター アカウントの Kerberos の復号化キーは、Azure AD と安全に共有されます。 複数の AD フォレストがある場合は、それぞれに専用の Kerberos 復号化キーが作成されます。
-- また、Azure AD のサインイン時に使用される 2 つの URL を表す、2 つの Kerberos サービス プリンシパル名 (SPN) も作成されます。
-
->[!NOTE]
-> (Azure AD Connect を使用して) Azure AD と同期する各 AD フォレストとシームレス SSO を有効にするユーザー用に、コンピューター アカウントと Kerberos SPN が作成されます。 同じ方法で管理され削除されないことを保証するために、その他のコンピューター アカウントが格納されている `AZUREADSSOACC` コンピューター アカウントに、組織単位 (OU) が移動されます。
+- (Azure AD Connect を使用して) Azure AD と同期する各 AD フォレストのオンプレミス Active Directory (AD) にコンピューター アカウント (`AZUREADSSOACC`) が作成されます。
+- また、Azure AD のサインイン プロセス中に使用される多数の Kerberos サービス プリンシパル名 (SPN) が作成されます。
+- コンピューター アカウントの Kerberos の復号化キーは、Azure AD と安全に共有されます。 複数の AD フォレストがある場合は、各コンピューター アカウントに、固有の Kerberos 復号化キーが割り当てられます。
 
 >[!IMPORTANT]
->少なくとも 30 日ごとに、`AZUREADSSOACC` コンピューター アカウントの [Kerberos の復号化キーをロールオーバーする](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)ことを強くお勧めします。
+> `AZUREADSSOACC` コンピューター アカウントは、セキュリティ上の理由から強固に保護する必要があります。 ドメイン管理者だけがこのコンピューター アカウントを管理できるようにしてください。 このコンピューター アカウントの Kerberos 委任は必ず無効にします。 このコンピューター アカウントは、不注意で削除されるおそれがなく、ドメイン管理者のみがアクセスできる組織単位 (OU) に格納してください。 このコンピューター アカウントの Kerberos の復号化キーも機密として扱う必要があります。 少なくとも 30 日ごとに、`AZUREADSSOACC` コンピューター アカウントの [Kerberos の復号化キーをロールオーバーする](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)ことを強くお勧めします。
 
 このセットアップが完了すると、シームレス SSO は、統合 Windows 認証 (IWA) を使用するその他のサインインと同様に機能します。
 
@@ -59,7 +57,7 @@ Web ブラウザーでのサインインのフローは次のとおりです。
 3. ユーザーが、Azure AD サインイン ページにユーザー名を入力します。
 
    >[!NOTE]
-   >[特定のアプリケーション](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso)では、手順 2. と 3. をスキップします。
+   >[特定のアプリケーション](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso)では、手順 2. と 3. をスキップします。
 
 4. Azure AD が JavaScript をバックグラウンドで使用して、Kerberos チケットを提供するよう、401 認証エラーを通じてクライアントに要求します。
 5. ブラウザーは、代わりに Active Directory から (Azure AD を表す) `AZUREADSSOACC` コンピューター アカウント用にチケットを要求します。

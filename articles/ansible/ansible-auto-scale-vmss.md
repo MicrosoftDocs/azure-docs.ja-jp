@@ -1,19 +1,19 @@
 ---
 title: Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングする
 description: Ansible を使用して、Azure 内の自動スケールで仮想マシン スケール セットを拡大縮小する方法について説明します
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, プレイブック, スケール, 自動スケール, 仮想マシン, 仮想マシン スケール セット, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
-ms.author: yuwzho, kyliel
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.openlocfilehash: c6678d6df3a695d3a0471e5779bc3af4b6ba6c84
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 578ad3207f62e74805be056ca11d3bd9b46513da
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411136"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792431"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングする
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 Ansible を使用すると、他の Azure リソースを管理するのと同様に、Azure 内の仮想マシン スケール セット (VMSS) を管理できます。 

@@ -1,34 +1,30 @@
 ---
-title: モデルをデバッグする - Azure Machine Learning Studio | Microsoft Docs
+title: モデルをデバッグする
+titleSuffix: Azure Machine Learning Studio
 description: モデルのトレーニングとモデルのスコア付け モジュールによって生成されたエラーを Azure Machine Learning Studio でデバッグする方法。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 0464dec9e747e57e4b95a691aeb5a0992cf8d9cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9c505262030e5b5aa13b8d221cf1e39c4a9c7833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090765"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でモデルをデバッグする
 
-この記事では、モデルを実行したときに次の 2 つの障害が発生する場合の潜在的な理由について説明します。
+モデルを実行しているときに、次のエラーが発生する場合があります。
 
 * [[モデルのトレーニング]][train-model] モジュールがエラーを生成する 
 * [[モデルのスコア付け]][score-model] モジュールから生成される結果が間違っている 
 
+この記事では、これらのエラーの考えられる原因について説明します。
 
 
 ## <a name="train-model-module-produces-an-error"></a>[モデルのトレーニング] モジュールがエラーを生成する
@@ -37,7 +33,7 @@ ms.locfileid: "53268888"
 
 [[モデルのトレーニング]][train-model] モジュールでは、次の 2 つを入力する必要があります。
 
-1. Azure Machine Learning によって提供されるモデルのコレクションからの機械学習モデルの種類。
+1. Azure Machine Learning Studio によって提供されるモデルのコレクションからの機械学習モデルの種類。
 2. 指定したラベル列のあるトレーニング データ。[ラベル] 列は予測変数を示します (データに含まれる残りの列は、[特徴] と見なされます)。
 
 このモジュールは、次のような場合にエラーを発生します。
@@ -59,11 +55,11 @@ ms.locfileid: "53268888"
 1. [[モデルのトレーニング]][train-model] モジュールからのトレーニング済みのモデル出力。
 2. モデルのトレーニングに使用されたデータセットとは別の、スコア付け用のデータセット。
 
-実験が成功した場合でも、[[モデルのスコア付け]][score-model] モジュールから正しくない結果が生成されることがあります。 これは、次のようないくつかのシナリオで発生することがあります。
+実験が成功した場合でも、[[モデルのスコア付け]][score-model] モジュールから正しくない結果が生成されることがあります。 この問題は、次のようないくつかのシナリオで発生することがあります。
 
 1. 指定されたラベルがカテゴリ別であり、そのデータに対して回帰モデルのトレーニングが行われた場合は、[[モデルのスコア付け]][score-model] モジュールから正しくない出力が生成されます。 これは、回帰には連続応答変数が必要だからです。 この場合は、分類モデルを使用したほうが適切でした。 
 
-2. 同様に、浮動小数点数のラベル列を持つデータセットに対して分類モデルのトレーニングを実行した場合も、期待した結果が生成されないことがあります。 これは、分類モデルには離散的な応答変数が必要であり、有限の範囲で、通常は少なめの数のクラスが含まれる変数でなければならないためです。
+2. 同様に、浮動小数点数のラベル列を持つデータセットに対して分類モデルのトレーニングを実行した場合も、期待した結果が生成されないことがあります。 これは、分類モデルには離散的な応答変数が必要であり、有限の範囲で、少なめの数のクラスが含まれる変数でなければならないためです。
 
 3. スコア付け用のデータセットに、モデルのトレーニングに使用した特徴の一部しか含まれていない場合は、[[モデルのスコア付け]][score-model] モジュールがエラーを生成します。
 

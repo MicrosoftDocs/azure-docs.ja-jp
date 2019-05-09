@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 manager: briz
-ms.openlocfilehash: f4254cd90d8cf3b9f4cd206b729a3d44784b377a
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6dadd746bccd028a2b81a980d99ab47ec9e6e2a3
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343629"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726739"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -110,7 +110,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 ## <a name="quotas-and-limits"></a>クォータと制限
 
-各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT ハブの数は 10 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 クォータ制限の詳細については、次を参照してください。
+各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT ハブの数は 50 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 クォータ制限の詳細については、次を参照してください。
 
 * [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)
 
@@ -120,4 +120,4 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 エンド ツー エンドの IoT ソリューションを試すには、IoT Hub のクイック スタートをご覧ください。
 
-* [クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)
+* [クイック スタート:デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)

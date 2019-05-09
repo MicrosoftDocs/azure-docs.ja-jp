@@ -1,6 +1,6 @@
 ---
-title: Azure AD Privileged Identity Management (PIM) 向けの Microsoft Graph API (プレビュー) | Microsoft Docs
-description: Azure Active Directory Privileged Identity Management (PIM) 向けの Microsoft Graph API (プレビュー) の使用に関する情報を提供します。
+title: PIM 向けの Microsoft Graph API (プレビュー) - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) 向けの Microsoft Graph API (プレビュー) の使用に関する情報を提供します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,21 +8,22 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e27f4c937a97b955d4f0b879ad0199cc35dcadce
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e54ec4049b2b0cd67c148d881a64a40efff438a2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500212"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578970"
 ---
 # <a name="microsoft-graph-apis-for-pim-preview"></a>PIM 向けの Microsoft Graph API (プレビュー)
 
-Azure portal を使用して Azure AD Privileged Identity Management (PIM) で実行できるタスクのほとんどは、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) を使用して実行することもできます。 この記事では、PIM 向けの Microsoft Graph API を使用する際のいくつかの重要な概念について説明します。 Microsoft Graph API の詳細については、[Azure AD Privileged Identity Management API のリファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)に関するページをご確認ください。
+Azure portal を使用して Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で実行できるタスクのほとんどは、[Microsoft Graph API シリーズ](https://developer.microsoft.com/graph/docs/concepts/overview)を使用して実行することもできます。 この記事では、PIM 向けの Microsoft Graph API を使用する際のいくつかの重要な概念について説明します。 Microsoft Graph API の詳細については、[Azure AD Privileged Identity Management API のリファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)に関するページをご確認ください。
 
 > [!IMPORTANT]
 > Microsoft Graph でベータ版の API はプレビュー段階であり、変更されることがあります。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。

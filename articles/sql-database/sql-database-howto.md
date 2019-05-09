@@ -3,97 +3,98 @@ title: Azure SQL Database を構成する方法 | Microsoft Docs
 description: Azure SQL Database を構成して管理する方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 manager: craigg
-ms.date: 12/14/2018
-ms.openlocfilehash: b4dd21324591075d7625a82fbbb661c4a8e84b1d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/25/2019
+ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439539"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59359695"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL Database を使用する方法
 
-このセクションでは、お客様の Azure SQL データベースを管理して構成するのに役立つさまざまなガイド、スクリプト、説明をご紹介します。 また、[Single Database](sql-database-howto-single-database.md) と [Managed Instance](sql-database-howto-managed-instance.md) については個別の攻略ガイドもあります。
+このセクションでは、お客様の Azure SQL データベースを管理して構成するのに役立つさまざまなガイド、スクリプト、説明をご紹介します。 また、[単一データベース](sql-database-howto-single-database.md)と [Managed Instance](sql-database-howto-managed-instance.md) については個別の攻略ガイドもご覧いただけます。
 
 ## <a name="load-data"></a>データを読み込む
 
-- [Azure 内での単一データベースのコピー](https://docs.microsoft.com/azure/sql-database/sql-database-copy)
-- [BACPAC からの DB のインポート](https://docs.microsoft.com/azure/sql-database/sql-database-import)
-- [BACPAC への DB のエクスポート](https://docs.microsoft.com/azure/sql-database/sql-database-export)
-- [BCP を使用したデータの読み込み](https://docs.microsoft.com/azure/sql-database/sql-database-load-from-csv-with-bcp)
-- [ADF を使用したデータの読み込み](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database?toc=/azure/sql-database/toc.json)
+- [Azure 内での単一データベースまたはプールされたデータベースのコピー](sql-database-copy.md)
+- [BACPAC からの DB のインポート](sql-database-import.md)
+- [BACPAC への DB のエクスポート](sql-database-export.md)
+- [BCP を使用したデータの読み込み](sql-database-load-from-csv-with-bcp.md)
+- [ADF を使用したデータの読み込み](../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json)
 
 ### <a name="data-sync"></a>データ同期
 
-- [SQL データ同期](https://docs.microsoft.com/azure/sql-database/sql-database-sync-data)
-- [データ同期エージェント](https://docs.microsoft.com/azure/sql-database/sql-database-data-sync-agent)
-- [スキーマ変更のレプリケート](https://docs.microsoft.com/azure/sql-database/sql-database-update-sync-schema)
-- [OMS で監視する](https://docs.microsoft.com/azure/sql-database/sql-database-sync-monitor-oms)
-- [データ同期のベスト プラクティス](https://docs.microsoft.com/azure/sql-database/sql-database-best-practices-data-sync)
-- [データ同期のトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-data-sync)
+- [SQL データ同期](sql-database-sync-data.md)
+- [データ同期エージェント](sql-database-data-sync-agent.md)
+- [スキーマ変更のレプリケート](sql-database-update-sync-schema.md)
+- [OMS で監視する](sql-database-sync-monitor-oms.md)
+- [データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
+- [データ同期のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
 
 ## <a name="monitoring-and-tuning"></a>監視とチューニング
 
--  [手動チューニング](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance)
-- [DMV を使用したパフォーマンスの監視](https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-with-dmvs)
-- [クエリ ストアを使用したパフォーマンスの監視](https://docs.microsoft.com/azure/sql-database/sql-database-operate-query-store)
-- [Intelligent Insights を使用したパフォーマンスのトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance)
-- [Intelligent Insights 診断ログの使用](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-use-diagnostics-log)
-- [インメモリ OLTP スペースの監視](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)
+- [手動チューニング](sql-database-performance-guidance.md)
+- [DMV を使用したパフォーマンスの監視](sql-database-monitoring-with-dmvs.md)
+- [クエリ ストアを使用したパフォーマンスの監視](sql-database-operate-query-store.md)
+- [Intelligent Insights を使用したパフォーマンスのトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)
+- [Intelligent Insights 診断ログの使用](sql-database-intelligent-insights-use-diagnostics-log.md)
+- [インメモリ OLTP スペースの監視](sql-database-in-memory-oltp-monitoring.md)
 
 ### <a name="extended-events"></a>拡張イベント
 
-- [拡張イベント](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-db-diff-from-svr)
-- [イベント ファイルへの拡張イベントの格納](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-code-event-file)
-- [リング バッファーへの拡張イベントの格納](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-code-ring-buffer)
+- [拡張イベント](sql-database-xevent-db-diff-from-svr.md)
+- [イベント ファイルへの拡張イベントの格納](sql-database-xevent-code-event-file.md)
+- [リング バッファーへの拡張イベントの格納](sql-database-xevent-code-ring-buffer.md)
 
 ## <a name="configure-features"></a>機能の構成
 
-- [Azure AD 認証の構成](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
-- [条件付きアクセスの構成](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
-- [多要素 AAD 認証](https://docs.microsoft.com/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [多要素認証の構成](https://docs.microsoft.com/azure/sql-database/sql-database-ssms-mfa-authentication-configure)
-- [一時的なアイテム保持ポリシーの構成](https://docs.microsoft.com/azure/sql-database/sql-database-temporal-tables-retention-policy)
-- [BYOK を使用した TDE の構成](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql-configure)
-- [TDE BYOK キーの回転](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql-key-rotation)
-- [TDE 保護機能の削除](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql-remove-tde-protector)
-- [インメモリ OLTP の構成](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-migration)
-- [Azure Automation の構成](https://docs.microsoft.com/azure/sql-database/sql-database-manage-automation)
+- [Azure AD 認証の構成](sql-database-aad-authentication-configure.md)
+- [条件付きアクセスの構成](sql-database-conditional-access.md)
+- [多要素 AAD 認証](sql-database-ssms-mfa-authentication.md)
+- [多要素認証の構成](sql-database-ssms-mfa-authentication-configure.md)
+- [一時的なアイテム保持ポリシーの構成](sql-database-temporal-tables-retention-policy.md)
+- [BYOK を使用した TDE の構成](transparent-data-encryption-byok-azure-sql-configure.md)
+- [TDE BYOK キーの回転](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- [TDE 保護機能の削除](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
+- [インメモリ OLTP の構成](sql-database-in-memory-oltp-migration.md)
+- [Azure Automation の構成](sql-database-manage-automation.md)
 
 ## <a name="develop-applications"></a>アプリケーションを開発する
 
-- [接続](https://docs.microsoft.com/azure/sql-database/sql-database-libraries)
-- [Spark コネクタの使用](https://docs.microsoft.com/azure/sql-database/sql-database-spark-connector)
-- [アプリの認証](https://docs.microsoft.com/azure/sql-database/sql-database-client-id-keys)
-- [エラー メッセージ](https://docs.microsoft.com/azure/sql-database/sql-database-develop-error-messages)
-- [バッチ処理を使用したパフォーマンスの向上](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance)
-- [接続のガイダンス](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues)
-- [DNS エイリアス](https://docs.microsoft.com/azure/sql-database/dns-alias-overview)
-- [DNS エイリアスの PowerShell の設定](https://docs.microsoft.com/azure/sql-database/dns-alias-powershell)
-- [ポート - ADO.NET](https://docs.microsoft.com/azure/sql-database/sql-database-develop-direct-route-ports-adonet-v12)
-- [C と C++](https://docs.microsoft.com/azure/sql-database/sql-database-develop-cplusplus-simple)
-- [Excel](https://docs.microsoft.com/azure/sql-database/sql-database-connect-excel)
+- [接続](sql-database-libraries.md)
+- [Spark コネクタの使用](sql-database-spark-connector.md)
+- [アプリの認証](sql-database-client-id-keys.md)
+- [エラー メッセージ](sql-database-develop-error-messages.md)
+- [バッチ処理を使用したパフォーマンスの向上](sql-database-use-batching-to-improve-performance.md)
+- [接続のガイダンス](sql-database-connectivity-issues.md)
+- [DNS エイリアス](dns-alias-overview.md)
+- [DNS エイリアスの PowerShell の設定](dns-alias-powershell.md)
+- [ポート - ADO.NET](sql-database-develop-direct-route-ports-adonet-v12.md)
+- [C と C++](sql-database-develop-cplusplus-simple.md)
+- [Excel](sql-database-connect-excel.md)
 
 ## <a name="design-applications"></a>アプリケーションの設計
 
-- [ディザスター リカバリーの設計](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery)
-- [エラスティック プールの設計](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool)
-- [アプリのアップグレードの設計](https://docs.microsoft.com/azure/sql-database/sql-database-manage-application-rolling-upgrade)
+- [ディザスター リカバリーの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [エラスティック プールの設計](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+- [アプリのアップグレードの設計](sql-database-manage-application-rolling-upgrade.md)
 
 ### <a name="design-multi-tenant-saas-applications"></a>マルチテナント SaaS アプリケーションの設計
 
-- [SaaS の設計パターン](https://docs.microsoft.com/azure/sql-database/saas-tenancy-app-design-patterns)
-- [SaaS Video Indexer](https://docs.microsoft.com/azure/sql-database/saas-tenancy-video-index-wingtip-brk3120-20171011)
-- [SaaS アプリのセキュリティ](https://docs.microsoft.com/azure/sql-database/saas-tenancy-elastic-tools-multi-tenant-row-level-security)
+- [SaaS の設計パターン](saas-tenancy-app-design-patterns.md)
+- [SaaS Video Indexer](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
+- [SaaS アプリのセキュリティ](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
 ## <a name="next-steps"></a>次の手順
-- [Managed Instance の攻略ガイド](sql-database-howto-managed-instance.md)について詳しく確認する。
-- [Single Database の攻略ガイド](sql-database-howto-single-database.md)について詳しく確認する。
+
+- [マネージド インスタンスの攻略ガイド](sql-database-howto-managed-instance.md)の詳細を確認する。
+- [単一データベースの攻略ガイド](sql-database-howto-single-database.md)の詳細を確認する。

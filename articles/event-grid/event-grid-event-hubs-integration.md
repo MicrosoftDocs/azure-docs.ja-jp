@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 12/13/2018
+ms.date: 01/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 450cbf4deace7d3edc1fcb50b8c3d8a91e936012
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c2c49563bf505ce70c4900c6c0a8e41c0f6ac9c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385416"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176618"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから SQL データ ウェアハウスにシームレスに移行する方法を説明しています。
@@ -39,6 +39,9 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 > * データ ウェアハウスに移行されたデータを表示する。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 このチュートリアルを完了するには、以下が必要です。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
@@ -129,7 +132,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
     1. 次のコマンドをコピーして Cloud Shell ウィンドウに貼り付けます。
 
         ```powershell
-        New-AzureRmResourceGroup -Name rgDataMigration -Location westcentralus
+        New-AzResourceGroup -Name rgDataMigration -Location westcentralus
         ```
     2. **リソース グループ**の名前を指定します。
     3. Enter キーを押します。 
@@ -137,7 +140,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
     1. コマンドをコピーして Cloud Shell ウィンドウに貼り付けます。 または、お好みのエディターにコピーして貼り付け、値を設定してから、コマンドを Cloud Shell にコピーすることもできます。 
 
         ```powershell
-        New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
+        New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
         ```
     2. 次のエンティティの値を指定します。
         1. お客様が先ほど作成したリソース グループの名前。

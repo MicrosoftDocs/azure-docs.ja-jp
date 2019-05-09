@@ -1,9 +1,11 @@
 ---
-title: 入れ子になった Traffic Manager プロファイル | Microsoft Docs
+title: Azure 内の入れ子になった Traffic Manager プロファイル
+titlesuffix: Azure Traffic Manager
 description: この記事では、Azure Traffic Manager の "入れ子になったプロファイル" 機能について説明します。
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648600"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228828"
 ---
 # <a name="nested-traffic-manager-profiles"></a>入れ子になった Traffic Manager プロファイル
 
@@ -26,7 +28,7 @@ Traffic Manager プロファイルごとに 1 つのトラフィック ルーテ
 
 次の例で、入れ子になった Traffic Manager プロファイルをさまざまなシナリオで使用する方法を説明します。
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>例 1: "パフォーマンス" トラフィック ルーティングと "加重" トラフィック ルーティングの組み合わせ
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>例 1:"パフォーマンス" トラフィック ルーティングと "加重" トラフィック ルーティングの組み合わせ
 
 アプリケーションを Azure リージョンの米国西部、西ヨーロッパ、東アジアにデプロイしたとします。 Traffic Manager の "パフォーマンス" トラフィック ルーティング方法を使用して、ユーザーに最も近いリージョンにトラフィックを振り分けます。
 
@@ -44,7 +46,7 @@ Traffic Manager プロファイルごとに 1 つのトラフィック ルーテ
 
 親プロファイルで "パフォーマンス" トラフィック ルーティング方法を使用するときは、各エンドポイントに場所を割り当てる必要があります。 場所は、エンドポイントを構成するときに割り当てます。 デプロイメントに最も近い Azure リージョンを選択してください。 Azure のリージョンは、インターネット待機時間テーブルでサポートされている場所の値です。 詳細については、[Traffic Manager の "パフォーマンス" によるトラフィック ルーティング方法](traffic-manager-routing-methods.md#performance)に関する記事をご覧ください。
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>例 2: 入れ子になったプロファイルでのエンドポイントの監視
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>例 2:入れ子になったプロファイル内でのエンドポイントの監視
 
 Traffic Manager は、各サービス エンドポイントの正常性をアクティブに監視します。 エンドポイントが正常でない場合、Traffic Manager は、別のエンドポイントにユーザーを送信してサービスの可用性を維持します。 このエンドポイントの監視とフェールオーバーの動作は、すべてのトラフィック ルーティング方法に適用されます。 詳細については、 [Traffic Manager のエンドポイント監視](traffic-manager-monitoring.md)に関する記事をご覧ください。 エンドポイントの監視は、入れ子になったプロファイルに対しては異なった動作をします。 入れ子になったプロファイルを使用した場合、親プロファイルでは子の正常性チェックが直接には実行されません。 代わりに、子プロファイルのエンドポイントの正常性を使用して、子プロファイルの全体的な正常性が計算されます。 この正常性の情報は、入れ子になったプロファイルの階層の上位に伝達されます。 親プロファイルは、集計したこの正常性を使用して、子プロファイルにトラフィックを送信するかどうかを決定します。 入れ子になったプロファイルの正常性の監視について詳しくは、「[FAQ](traffic-manager-FAQs.md#traffic-manager-nested-profiles)」をご覧ください。
 
@@ -61,7 +63,7 @@ Traffic Manager は、各サービス エンドポイントの正常性をアク
 > [!NOTE]
 > "優先順位" によるトラフィック ルーティング方法では、単一のエンドポイントにすべてのトラフィックが振り分けられます。 そのため、子プロファイルの MinChildEndpoints を '1' 以外の値に設定してもほとんど意味はありません。
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>例 3: "パフォーマンス" トラフィック ルーティングにおける優先フェールオーバー リージョン
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>例 3:"パフォーマンス" トラフィック ルーティングにおける優先フェールオーバー リージョン
 
 "パフォーマンス" トラフィック ルーティング方式の既定の動作では、エンドポイントが地理的に異なる場所にある場合、エンド ユーザーはネットワーク待ち時間が最も短いという意味で "最も近い" エンドポイントにルーティングされます。
 
@@ -73,7 +75,7 @@ Traffic Manager は、各サービス エンドポイントの正常性をアク
 
 このパターンは、すべてのリージョンで繰り返すことができます。 親プロファイル内の 3 つのエンドポイントすべてを 3 つの子プロファイルに置き換え、それぞれにフェールオーバーの順序を優先順位付けして指定します。
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>例 4: 同じリージョンの複数のエンドポイント間での "パフォーマンス" トラフィック ルーティングの制御
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>例 4:同じリージョンの複数のエンドポイント間での "パフォーマンス" トラフィック ルーティングの制御
 
 特定のリージョンの複数のエンドポイントを含むプロファイルで "パフォーマンス" トラフィック ルーティング方法が使用されているとします。 既定では、そのリージョンに送信されるトラフィックは、そのリージョンの使用可能なすべてのエンドポイントに均等に分散されます。
 
@@ -83,7 +85,7 @@ Traffic Manager は、各サービス エンドポイントの正常性をアク
 
 !["パフォーマンス" トラフィック ルーティングのカスタムのリージョン内トラフィック分散][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>例 5: エンドポイントごとの監視設定
+## <a name="example-5-per-endpoint-monitoring-settings"></a>例 5:エンドポイントごとの監視設定
 
 従来のオンプレミス Web サイトから Azure でホストされる新しいクラウドベースのバージョンにトラフィックをスムーズに移行するために、Traffic Manager を使用するとします。 従来のサイトでは、ホーム ページの URI を使用して、サイトの正常性を監視します。 ただし、新しいクラウドベースのバージョンでは、その他のチェックも含まれたカスタムの監視ページ (パスは "/monitor.aspx") を実装します。
 

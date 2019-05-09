@@ -4,7 +4,7 @@ description: Adobe Open Source Media Framework 用 Azure Media Services スム�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 6068151f-b6b0-4507-9346-f03416d3d572
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1664dc16e93fa825962690ec3ed5681478005d59
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c40d8b93a7487619cc94586c7e6b4cdc550435cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229630"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314061"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法  
 ## <a name="overview"></a>概要
 Open Source Media Framework 2.0 用 Microsoft スムーズ ストリーミング プラグイン (OSMF 用 SS) は、OSMF の既定の機能を拡張し、新規または既存の OSMF プレーヤーに Microsoft スムーズ ストリーミング コンテンツ再生機能を追加します。 また、このプラグインは、Strobe Media Playback (SMP) にもスムーズ ストリーミング再生機能を追加します。
 
@@ -53,7 +53,7 @@ OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが�
 OSMF プラグインは、静的 (コンパイル時) または動的 (実行時) に読み込むことができます。 OSMF 用スムーズ ストリーミング プラグインのダウンロードには、静的バージョンと動的バージョンの両方が含まれています。
 
 * 静的読み込み: 静的に読み込むには、静的ライブラリ (SWC) ファイルが必要です。 静的プラグインは参照としてプロジェクトに追加され、コンパイル時に最終的な出力ファイル内部でマージされます。
-* 動的読み込み: 動的に読み込むには、プリコンパイル済みファイル (SWF) ファイルが必要です。 動的プラグインはランタイムに読み込まれ、プロジェクト出力(コンパイル済み出力) には含まれません。 動的プラグインは HTTP および FILE プロトコルを使用して読み込むことができます。
+* 動的読み込み: 動的に読み込むには、プリコンパイル済み (SWF) ファイルが必要です。 動的プラグインはランタイムに読み込まれ、プロジェクト出力(コンパイル済み出力) には含まれません。 動的プラグインは HTTP および FILE プロトコルを使用して読み込むことができます。
 
 静的読み込みと動的読み込みの詳細については、 [OSMF 公式サイトのプラグインに関するページ](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf)を参照してください。
 

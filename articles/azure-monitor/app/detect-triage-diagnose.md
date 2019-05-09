@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b3cfd57ff0e4b881352c07081d71bb9ba80fd11e
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 45824ba93e86622b1bbd92aae01f18f89bee6adf
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000191"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673344"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>DevOps のための Application Insights の概要
 
-[Application Insights](../../application-insights/app-insights-overview.md) を使用すると、アプリを本稼働に移行したとき、その動作と利用状況をすばやく確認できます。 問題があれば、それを通知し、その問題による影響の分析と原因究明を支援します。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) を使用すると、アプリを本稼働に移行したとき、その動作と利用状況をすばやく確認できます。 問題があれば、それを通知し、その問題による影響の分析と原因究明を支援します。
 
 以下は、Web アプリケーションを開発しているチームからの説明です。
 
@@ -61,7 +61,7 @@ Marcela Markova は OBS チームの上級開発者で、オンライン パフ�
 さらに重要なこととして、あらゆるエラーに関するアラートが開発チームに電子メールで送信されます。 このようにして、チームは、ほとんどの顧客よりも先にエラーの発生を把握できます。
 
 ## <a name="monitor-performance"></a>パフォーマンスの監視
-Application Insights の概要ページには、さまざまな[主要メトリック](../../application-insights/app-insights-web-monitor-performance.md)を示す 1 つのグラフがあります。
+Application Insights の概要ページには、さまざまな[主要メトリック](../../azure-monitor/app/web-monitor-performance.md)を示す 1 つのグラフがあります。
 
 ![概要パフォーマンス KPI グラフのスクリーン ショット](./media/detect-triage-diagnose/overview-graphs.png)
 
@@ -151,7 +151,7 @@ TrackException はスタックのコピーを送信するので、例外を報�
 
 
 ## <a name="monitor-proactively"></a>予防的な監視
-Marcela は、ただ座ってアラートを待っているのではありません。 再デプロイの後には、いつもすぐに、例外数だけでなく、[応答時間](../../application-insights/app-insights-web-monitor-performance.md)に関して、全体的な数値と最も遅い要求の表の両方を確認しています。  
+Marcela は、ただ座ってアラートを待っているのではありません。 再デプロイの後には、いつもすぐに、例外数だけでなく、[応答時間](../../azure-monitor/app/web-monitor-performance.md)に関して、全体的な数値と最も遅い要求の表の両方を確認しています。  
 
 ![応答時間のグラフとサーバー応答時間のグリッド](./media/detect-triage-diagnose/response-time.png)
 
@@ -175,20 +175,20 @@ Marcela は、ただ座ってアラートを待っているのではありませ
 ## <a name="diagnose-issues"></a>問題の診断
 診断は、デバッグとまったく同じではありません。 コードのトレースを開始するには、まず、問題が発生している原因、場所、状況について大まかに理解する必要があります。
 
-**どのような状況で発生するのか。**  イベント チャートやメトリック チャートで提供される履歴ビューを使用すると、影響と考えられる原因とを関連付けるのが容易になります。 応答時間や例外率に断続的なピークが見られる場合は、要求数を確認します。 複数のピークが同時に発生している場合は、リソースの問題が考えられます。 CPU やメモリの割り当てを増やす必要があるか、 依存関係で負荷に対処できていないのかもしれません。
+**どのような状況で発生するのか。** イベント チャートやメトリック チャートで提供される履歴ビューを使用すると、影響と考えられる原因とを関連付けるのが容易になります。 応答時間や例外率に断続的なピークが見られる場合は、要求数を確認します。 複数のピークが同時に発生している場合は、リソースの問題が考えられます。 CPU やメモリの割り当てを増やす必要があるか、 依存関係で負荷に対処できていないのかもしれません。
 
-**自社システムが原因か。**   特定の種類の要求のパフォーマンスが急激に低下している場合、たとえば、顧客が口座明細書を必要としているときなどは、Web アプリケーションではなく外部のサブシステムが原因である可能性があります。 メトリック エクスプローラーで、[依存関係のエラー] の割合と [依存関係の期間] の割合を選択し、検出された問題を過去数時間または数日の履歴と比較します。 相関関係のある変更が見つかる場合は、外部のサブシステムに原因があると考えられます。  
+**自社システムが原因か。**  特定の種類の要求のパフォーマンスが急激に低下している場合、たとえば、顧客が口座明細書を必要としているときなどは、Web アプリケーションではなく外部のサブシステムが原因である可能性があります。 メトリック エクスプローラーで、[依存関係のエラー] の割合と [依存関係の期間] の割合を選択し、検出された問題を過去数時間または数日の履歴と比較します。 相関関係のある変更が見つかる場合は、外部のサブシステムに原因があると考えられます。  
 
 
 ![依存関係のエラーおよび依存関係の呼び出しの時間のチャート](./media/detect-triage-diagnose/11-dependencies.png)
 
 依存関係の速度低下の問題の中には、地理的な問題があります。 Fabrikam 銀行では Azure Virtual Machines を使用していますが、Web サーバーとアカウント サーバーが意図せず複数の国に配置されていることがわかりました。 そのうち 1 つを移行することで、速度は大幅に改善されました。
 
-**何を実行したか。**  依存関係に問題が見つからない場合や、以前は常に問題があったわけではない場合、最近の変更が問題の原因である可能性があります。 メトリック チャートやイベント チャートで提供される履歴を確認すれば、急激な変化とデプロイメントの関連付けが容易になります。 これにより、問題の検索を絞り込むことができます。 アプリケーション コードのどの行がパフォーマンスを低下させているかを特定するには、Application Insights Profiler を有効にします。 「[Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う](./../../application-insights/app-insights-profiler.md)」をご覧ください。 Profiler を有効にすると、次のようなトレースが表示されます。 この例では、メソッド *GetStorageTableData* が問題の原因となっていたことがすぐに分かります。  
+**何を実行したか。** 依存関係に問題が見つからない場合や、以前は常に問題があったわけではない場合、最近の変更が問題の原因である可能性があります。 メトリック チャートやイベント チャートで提供される履歴を確認すれば、急激な変化とデプロイメントの関連付けが容易になります。 これにより、問題の検索を絞り込むことができます。 アプリケーション コードのどの行がパフォーマンスを低下させているかを特定するには、Application Insights Profiler を有効にします。 「[Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う](./../../azure-monitor/app/profiler.md)」をご覧ください。 Profiler を有効にすると、次のようなトレースが表示されます。 この例では、メソッド *GetStorageTableData* が問題の原因となっていたことがすぐに分かります。  
 
 ![App Insights Profiler トレース](./media/detect-triage-diagnose/AppInsightsProfiler.png)
 
-**何が起こっているのか。**  問題によっては、まれにしか発生しないために、オフラインでテストして追跡するが難しいものがあります。 このような場合は、ライブ環境で発生したときにバグをキャプチャするしかありません。 例外レポートでスタック ダンプを調査できます。 また、使い慣れたログ記録フレームワークか TrackTrace() または TrackEvent() を使用して、トレースの呼び出しを記述できます。  
+**何が起こっているのか。** 問題によっては、まれにしか発生しないために、オフラインでテストして追跡するが難しいものがあります。 このような場合は、ライブ環境で発生したときにバグをキャプチャするしかありません。 例外レポートでスタック ダンプを調査できます。 また、使い慣れたログ記録フレームワークか TrackTrace() または TrackEvent() を使用して、トレースの呼び出しを記述できます。  
 
 Fabrikam では、口座間振替で断続的な問題が発生しましたが、該当するのは特定の種類の口座のみでした。 何が起こっていたかを詳しく理解するために、チームはコード内の主要ポイントに TrackTrace() の呼び出しを挿入し、各呼び出しにプロパティとして口座の種類をアタッチしました。 こうすることで、[診断検索] でトレースをフィルター処理しやすくなりました。 また、トレースの呼び出しにプロパティおよび測定値としてパラメーター値をアタッチしました。
 
@@ -215,7 +215,7 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 
 チームにとって、ユーザー アクティビティに関する情報を得ることが業務の一環になり、 現在では新機能を設計するときは常に、使用についてのフィードバックを入手する方法にも取り組んでいます。 追跡呼び出しは、開始時から機能に設計されており、 各開発サイクルの機能向上にフィードバックを役立てています。
 
-[詳しくは、使用状況の追跡をご覧ください](../../application-insights/app-insights-usage-overview.md)。
+[詳しくは、使用状況の追跡をご覧ください](../../azure-monitor/app/usage-overview.md)。
 
 ## <a name="apply-the-devops-cycle"></a>DevOps 周期の適用
 この記事では、1 つのチームが Application Insights を使用して、個々の問題を修正するだけでなく、開発ライフサイクルを改善するようすを紹介しました。 皆様がアプリケーションでのアプリケーション パフォーマンス管理に Application Insights を活用する方法を理解するお役に立てればさいわいです。
@@ -230,6 +230,7 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 * [ASP.NET Web アプリケーション](../../azure-monitor/app/asp-net.md)
 * [Java Web アプリケーション](../../azure-monitor/app/java-get-started.md)
 * [Node.js Web アプリケーション](../../azure-monitor/app/nodejs.md)
-* [IIS](../../azure-monitor/app/monitor-web-app-availability.md)、[J2EE](../../azure-monitor/app/java-live.md) または [Azure](../../application-insights/app-insights-overview.md) でホストされているデプロイ済みのアプリ。
+* [IIS](../../azure-monitor/app/monitor-web-app-availability.md) でホストされているデプロイ済みのアプリ
+* [Azure](../../azure-monitor/app/app-insights-overview.md)
 * [Web ページ](../../azure-monitor/app/javascript.md) (シングル ページ アプリまたは通常の Web ページ) - 単独で、または任意のサーバー オプションに加えて使用します。
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md) - パブリック インターネットからアプリをテストします。

@@ -6,19 +6,19 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: a3c570d3d22742afcbba86f35a9dd1f6a85c0b8f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d99149f8112c19a07208523a1ee26ba1c36e5362
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134286"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474226"
 ---
-# <a name="creating-continous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Docker、Kubernetes、および Python Flask アプリケーションを使用した Azure での継続的インテグレーション パイプラインの作成
+# <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Docker、Kubernetes、および Python Flask アプリケーションを使用した Azure での継続的インテグレーション パイプラインの作成
 多くの場合、AI アプリケーションには、データ サイエンティストが機械学習モデルを構築し、アプリ開発者がアプリケーションをビルドしてエンド ユーザーが使用できるように公開するという 2 つの作業の流れがあります。 この記事では、AI アプリケーション パイプラインの継続的インテグレーション (CI)/継続的デリバリー (CD) を実装する方法について説明します。 AI アプリケーションは、事前トレーニング済みの機械学習 (ML) モデルに埋め込まれたアプリケーション コードの組み合わせです。 この記事では、個人の Azure Blob Storage アカウントから事前トレーニング済みモデルを取得しますが、AWS S3 アカウントも使用できます。 この記事では、単純な Python Flask Web アプリケーションを使用します。
 
 > [!NOTE]

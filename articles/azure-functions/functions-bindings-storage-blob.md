@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: efccea36dd94120934b1a9729f583e0596316bc7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c1c20e225e15769a8cb09f60dfc371f4ec4d81f6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338568"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58895851"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -95,7 +95,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](functions-triggers-bindings.md#binding-expressions-and-patterns)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
+BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](./functions-bindings-expressions-patterns.md)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
 
 `BlobTrigger` 属性について詳しくは、[トリガー - 属性](#trigger---attributes) に関する記事をご覧ください。
 
@@ -120,14 +120,14 @@ BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、
 }
 ```
 
-BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](functions-triggers-bindings.md#binding-expressions-and-patterns)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
+BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](./functions-bindings-expressions-patterns.md)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
 
 *function.json* ファイル プロパティについて詳しくは、これらのプロパティについて説明している「[構成](#trigger---configuration)」セクションをご覧ください。
 
 `Stream` にバインドする C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(Stream myBlob, ILogger log)
+public static void Run(Stream myBlob, string name, ILogger log)
 {
    log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
 }
@@ -167,7 +167,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](functions-triggers-bindings.md#binding-expressions-and-patterns)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
+BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](./functions-bindings-expressions-patterns.md)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
 
 *function.json* ファイル プロパティについて詳しくは、これらのプロパティについて説明している「[構成](#trigger---configuration)」セクションをご覧ください。
 
@@ -202,7 +202,7 @@ module.exports = function(context) {
 }
 ```
 
-BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](functions-triggers-bindings.md#binding-expressions-and-patterns)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
+BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](./functions-bindings-expressions-patterns.md)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
 
 *function.json* ファイル プロパティについて詳しくは、これらのプロパティについて説明している「[構成](#trigger---configuration)」セクションをご覧ください。
 
@@ -282,7 +282,7 @@ public void run(
   {
       ....
   }
-  ```
+   ```
 
   完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
 
@@ -318,8 +318,8 @@ public void run(
 |---------|---------|----------------------|
 |**type** | 該当なし | `blobTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 例外は、[使用方法](#trigger---usage)のセクションに記載しています。 |
-|**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。 | 
-|**path** | **BlobPath** |監視する[コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  [BLOB 名パターン](#trigger---blob-name-patterns)の場合があります。 | 
+|**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。 |
+|**path** | **BlobPath** |監視する[コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  [BLOB 名パターン](#trigger---blob-name-patterns)の場合があります。 |
 |**connection** | **Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -348,7 +348,7 @@ JavaScript では、`context.bindings.<name from function.json>` を使用して
 
 ## <a name="trigger---blob-name-patterns"></a>トリガー - BLOB 名のパターン
 
-*function.json* の `path` プロパティまたは `BlobTrigger` 属性コンストラクターで BLOB 名のパターンを指定することができます。 名前のパターンは、[フィルターまたはバインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)にすることができます。 以下のセクションで、例を示します。
+*function.json* の `path` プロパティまたは `BlobTrigger` 属性コンストラクターで BLOB 名のパターンを指定することができます。 名前のパターンは、[フィルターまたはバインド式](./functions-bindings-expressions-patterns.md)にすることができます。 以下のセクションで、例を示します。
 
 ### <a name="get-file-name-and-extension"></a>ファイル名と拡張子の取得
 
@@ -391,7 +391,7 @@ BLOB の名前が *{20140101}-soundfile.mp3* の場合、関数コード内の `
 
 BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
 
-|プロパティ  |type  |説明  |
+|プロパティ  |Type  |説明  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|トリガーする BLOB のパス。|
 |`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|
@@ -444,13 +444,15 @@ BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテ�
 
 BLOB トリガーはキューを内部的に使用するため、関数の同時呼び出しの最大数が [host.json のキュー構成設定](functions-host-json.md#queues)によって制御されます。 既定の設定では、コンカレンシーの数は 24 までに制限されています。 この制限は、BLOB トリガーを使用する各関数に個別に適用されます。
 
-[従量課金プラン](functions-scale.md#how-the-consumption-plan-works)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大コンカレンシー数 3*24 = 72 関数呼び出しとなります。
+[従量課金プラン](functions-scale.md#how-the-consumption-and-premium-plans-work)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大コンカレンシー数 3*24 = 72 関数呼び出しとなります。
 
-JavaScript 関数は BLOB 全体をメモリに読み込みますが、C# 関数は `string`、`Byte[]`、または POCO にバインドした場合に BLOB 全体をメモリに読み込みます。
+JavaScript 関数と Java 関数は BLOB 全体をメモリに読み込みますが、C# 関数は `string`、`Byte[]`、または POCO にバインドした場合に BLOB 全体をメモリに読み込みます。
 
 ## <a name="trigger---polling"></a>トリガー - ポーリング
 
-監視対象の BLOB コンテナーに 10,000 を超える BLOB が含まれる場合は、Functions ランタイムによりログ ファイルがスキャンされ、新規または変更された BLOB が監視されます。 このプロセスによって遅延が発生することがあります。 関数は、BLOB が作成されてから数分以上経過しないとトリガーされない可能性があります。 また、[ ストレージ ログは "ベスト エフォート"](/rest/api/storageservices/About-Storage-Analytics-Logging) ベースで作成されます。 すべてのイベントがキャプチャされる保証はありません。 ある条件下では、ログが欠落する可能性があります。 より高速で信頼性の高い BLOB 処理が必要な場合は、BLOB 作成時に[キュー メッセージ](../storage/queues/storage-dotnet-how-to-use-queues.md)を作成することを検討してください。 次に、BLOB トリガーの代わりに[キュー トリガー](functions-bindings-storage-queue.md)を使用して BLOB を処理します。 別のオプションは、Event Grid の使用です。「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)」のチュートリアルをご覧ください。
+監視対象の BLOB コンテナーに 10,000 を超える BLOB が含まれる (すべてのコンテナー全体で) 場合は、Functions ランタイムによりログ ファイルがスキャンされ、新規または変更された BLOB が監視されます。 このプロセスによって遅延が発生することがあります。 関数は、BLOB が作成されてから数分以上経過しないとトリガーされない可能性があります。 また、[ ストレージ ログは "ベスト エフォート"](/rest/api/storageservices/About-Storage-Analytics-Logging) ベースで作成されます。 すべてのイベントがキャプチャされる保証はありません。 ある条件下では、ログが欠落する可能性があります。
+
+より高速で信頼性の高い BLOB 処理が必要な場合は、BLOB 作成時に[キュー メッセージ](../storage/queues/storage-dotnet-how-to-use-queues.md)を作成することを検討してください。 次に、BLOB トリガーの代わりに[キュー トリガー](functions-bindings-storage-queue.md)を使用して BLOB を処理します。 別のオプションは、Event Grid の使用です。「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)」のチュートリアルをご覧ください。
 
 ## <a name="input"></a>入力
 
@@ -462,7 +464,7 @@ Blob Storage 入力バインディングを使用して BLOB を読み取りま�
 
 * [C#](#input---c-example)
 * [C# スクリプト (.csx)](#input---c-script-example)
-* [Java](#input---java-example)
+* [Java](#input---java-examples)
 * [JavaScript](#input---javascript-example)
 * [Python](#input---python-example)
 
@@ -479,7 +481,7 @@ public static void Run(
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
-```        
+```
 
 ### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
 
@@ -630,22 +632,61 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-example"></a>入力 - Java の例
+### <a name="input---java-examples"></a>入力 - Java の例
 
-次の例は、キュー トリガーと入力 BLOB バインドを使用する Java 関数です。 キュー メッセージには BLOB の名前が含まれ、関数は BLOB のサイズをログに記録します。
+このセクションには、次の例が含まれています。
+
+* [HTTP トリガー、クエリ文字列から BLOB を検索する](#http-trigger-look-up-blob-name-from-query-string-java)
+* [キュー トリガー、キュー メッセージから BLOB 名前を受け取る](#queue-trigger-receive-blob-name-from-queue-message-java)
+
+#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>HTTP トリガー、クエリ文字列から BLOB 名を検索する (Java)
+
+ 次の例では、Java 関数が ```HttpTrigger``` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むパラメーターを受け取ります。 ```BlobInput``` 注釈によってファイルが読み取られ、その内容が ```byte[]``` として関数に渡されます。
 
 ```java
-@FunctionName("getBlobSize")
-@StorageAccount("AzureWebJobsStorage")
-public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-items") String filename,
-                    @BlobInput(name = "file", dataType = "binary", path = "samples-workitems/{queueTrigger") byte[] content,
-       final ExecutionContext context) {
+  @FunctionName("getBlobSizeHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage blobSize(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    final ExecutionContext context) {
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>キュー トリガー、キュー メッセージから BLOB 名前を受け取る (Java)
+
+ 次の例では、Java 関数が ```QueueTrigger``` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むメッセージを受け取ります。 ```BlobInput``` 注釈によってファイルが読み取られ、その内容が ```byte[]``` として関数に渡されます。
+
+```java
+  @FunctionName("getBlobSize")
+  @StorageAccount("Storage_Account_Connection_String")
+  public void blobSize(
+    @QueueTrigger(
+      name = "filename", 
+      queueName = "myqueue-items-sample") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{queueTrigger}") 
+    byte[] content,
+    final ExecutionContext context) {
       context.getLogger().info("The size of \"" + filename + "\" is: " + content.length + " bytes");
- }
- ```
+  }
+```
 
-  [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が BLOB に由来するパラメーター上で `@BlobInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
-
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が BLOB に由来するパラメーター上で `@BlobInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
 ## <a name="input---attributes"></a>入力 - 属性
 
@@ -718,7 +759,7 @@ Storage SDK タイプの 1 つにバインドしようとしてエラー メッ�
 
 JavaScript では、`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
 
-## <a name="output"></a>出力
+## <a name="output"></a>Output
 
 Blob Storage 出力バインディングを使用して BLOB を書き込みます。
 
@@ -728,7 +769,7 @@ Blob Storage 出力バインディングを使用して BLOB を書き込みま�
 
 * [C#](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
@@ -763,7 +804,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
     { ImageSize.Small,      (640, 400) },
     { ImageSize.Medium,     (800, 600) }
 };
-```        
+```
 
 ### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
 
@@ -915,23 +956,72 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-example"></a>出力 - Java の例
+### <a name="output---java-examples"></a>出力 - Java の例
 
-次の例は、Java 関数の BLOB 入力および出力バインドを示しています。 関数は、テキスト BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は {originalblobname}-Copy です
+このセクションには、次の例が含まれています。
+
+* [HTTP トリガー、OutputBinding を使用する](#http-trigger-using-outputbinding-java)
+* [キュー トリガー、関数戻り値を使用する](#queue-trigger-using-function-return-value-java)
+
+#### <a name="http-trigger-using-outputbinding-java"></a>HTTP トリガー、OutputBinding を使用する (Java)
+
+ 次の例では、Java 関数が ```HttpTrigger``` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むパラメーターを受け取ります。 ```BlobInput``` 注釈によってファイルが読み取られ、その内容が ```byte[]``` として関数に渡されます。 ```BlobOutput``` 注釈が ```OutputBinding outputItem``` にバインドされます。OutputBinding が関数によって使用され、構成済みのストレージ コンテナーに入力 BLOB の内容が書き込まれます。
 
 ```java
-@FunctionName("copyTextBlob")
-@StorageAccount("AzureWebJobsStorage")
-@BlobOutput(name = "target", path = "samples-workitems/{queueTrigger}-Copy")
-public String blobCopy(
-    @QueueTrigger(name = "filename", queueName = "myqueue-items") String filename,
-    @BlobInput(name = "source", path = "samples-workitems/{queueTrigger}") String content ) {
+  @FunctionName("copyBlobHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage copyBlobHttp(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    @BlobOutput(
+      name = "target", 
+      path = "myblob/{Query.file}-CopyViaHttp")
+    OutputBinding<String> outputItem,
+    final ExecutionContext context) {
+      // Save blob to outputItem
+      outputItem.setValue(new String(content, StandardCharsets.UTF_8));
+
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-using-function-return-value-java"></a>キュー トリガー、関数戻り値を使用する (Java)
+
+ 次の例では、Java 関数が ```QueueTrigger``` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むメッセージを受け取ります。 ```BlobInput``` 注釈によってファイルが読み取られ、その内容が ```byte[]``` として関数に渡されます。 ```BlobOutput``` 注釈が関数戻り値にバインドされます。この関数戻り値がランタイムによって使用され、構成済みのストレージ コンテナーに入力 BLOB の内容が書き込まれます。
+
+```java
+  @FunctionName("copyBlobQueueTrigger")
+  @StorageAccount("Storage_Account_Connection_String")
+  @BlobOutput(
+    name = "target", 
+    path = "myblob/{queueTrigger}-Copy")
+  public String copyBlobQueue(
+    @QueueTrigger(
+      name = "filename", 
+      dataType = "string",
+      queueName = "myqueue-items") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      path = "samples-workitems/{queueTrigger}") 
+    String content,
+    final ExecutionContext context) {
+      context.getLogger().info("The content of \"" + filename + "\" is: " + content);
       return content;
- }
- ```
+  }
+```
 
  [Java 関数ランタイム ライブラリ ](/java/api/overview/azure/functions/runtime) で、その値が Blob Storage のオブジェクトに書き込まれる関数のパラメーター上で `@BlobOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
-
 
 ## <a name="output---attributes"></a>出力 - 属性
 
@@ -1013,7 +1103,7 @@ JavaScript では、`context.bindings.<name from function.json>` を使用して
 
 | バインド |  リファレンス |
 |---|---|
-| BLOB | [BLOB エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
+| Blob | [BLOB エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | BLOB、テーブル、キュー |  [ストレージ エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | BLOB、テーブル、キュー |  [トラブルシューティング](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 

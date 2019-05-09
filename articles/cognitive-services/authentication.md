@@ -4,17 +4,17 @@ titleSuffix: Cognitive Services - Azure
 description: Azure Cognitive Services リソースへの要求を認証する方法には、サブスクリプション キー、ベアラー トークン、またはマルチサービス サブスクリプションの 3 つがあります。 この記事では、それぞれの方法と、要求を実行する方法について学習します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726292"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240764"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -28,6 +28,8 @@ Azure Cognitive Service に対する各要求には、認証ヘッダーが含�
 
 要求を実行する前に、Azure アカウントと Azure Cognitive Services サブスクリプションが必要です。 既にアカウントをお持ちの場合は、次のセクションまでスキップして進んでください。 アカウントをお持ちでない場合は、数分で設定を行えるガイドをご覧ください。[Azure の Cognitive Services アカウントの作成](cognitive-services-apis-create-account.md)に関するページを参照してください。
 
+アカウントを作成した後、または[無料試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)を有効にした後、[Azure portal](cognitive-services-apis-create-account.md#access-your-resource) からサブスクリプション キーを取得できます。
+ 
 ## <a name="authentication-headers"></a>認証ヘッダー
 
 Azure Cognitive Services で使用できる認証ヘッダーについて簡単に確認しましょう。
@@ -58,6 +60,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+次のビデオでは、Cognitive Services キーを使用するデモンストレーションを行っています。
+
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>マルチサービスのサブスクリプション キーによる認証
 
 >[!WARNING]
@@ -66,6 +70,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 この方法も、サブスクリプション キーを使用して要求を認証します。 主な違いは、サブスクリプション キーが特定のサービスに関連付けられておらず、単一のキーを使用して複数の Cognitive Services に対する要求を認証できることです。 リージョン別の提供状況、サポートされている機能、および価格については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)」を参照してください。
 
 サブスクリプション キーは、各要求内で `Ocp-Apim-Subscription-Key` ヘッダーとして指定されます。
+
+[![Cognitive Services のマルチサービスのサブスクリプション キーのデモ](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 
@@ -123,16 +129,15 @@ Azure Cognitive Services の中には、認証トークンを受け入れるも�
 
 ### <a name="sample-requests"></a>サンプルの要求
 
-単一サービスのサブスクリプション キーを認証トークンと交換するには、`https://api.cognitive.microsoft.com/sts/v1.0/issueToken` という URL を使用します。
+サブスクリプション キーを認証トークンと交換するには、`https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken` という URL を使用します。
 
 ```cURL
 curl -v -X POST \
-"https://api.cognitive.microsoft.com/sts/v1.0/issueToken" \
+"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
 -H "Content-type: application/x-www-form-urlencoded" \
+-H "Content-length: 0" \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
-
-マルチサービスのサブスクリプション キーを使用している場合は、リージョンに固有のエンドポイントをトークンの交換に使用する必要があります。 マルチサービスのサブスクリプション キーを認証トークンと交換するには、`https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken` という URL を使用します。
 
 以下のマルチサービスのリージョンで、トークンの交換がサポートされています。
 
@@ -143,13 +148,6 @@ curl -v -X POST \
 | `japaneast` | `northeurope` | `southcentralus` |
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
-
-```cURL
-curl -v -X POST \
-"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
--H "Content-type: application/x-www-form-urlencoded" \
--H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
-```
 
 認証トークンを取得したら、各要求内でそれを `Authorization` ヘッダーとして渡す必要があります。 これは、Translator Text API 呼び出しのサンプルです。
 

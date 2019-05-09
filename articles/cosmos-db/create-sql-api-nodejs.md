@@ -1,23 +1,21 @@
 ---
 title: Azure Cosmos DB は:JavaScript SDK を使用して Node.js アプリをビルドして Azure Cosmos DB SQL API データを管理する
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Node.js コード サンプルについて説明します
-services: cosmos-db
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: ae935157264dd5fa33df9afd0d8f7d5447855a92
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 5a5286695508e46fa24eb5c49cdaf0fe1318fc9d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53161291"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585494"
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Azure Cosmos DB は:JavaScript SDK を使用して Node.js アプリをビルドして Azure Cosmos DB SQL API データを管理する
+# <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Node.js アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -83,37 +81,37 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
 
-以前のバージョンの JavaScript SDK に慣れている方は、"コレクション" や "ドキュメント" といった用語をよく目にしたかと思います。 Azure Cosmos DB は[複数の API モデル](https://docs.microsoft.com/azure/cosmos-db/introduction#key-capabilities)をサポートしているため、バージョン 2.0 以上の JavaScript SDK では、コレクション、グラフ、テーブルを表す用語として "コンテナー" が、またコンテナーの内容を表す用語として "項目" が一般的に使用されます。
+以前のバージョンの JavaScript SDK に慣れている方は、"コレクション" や "ドキュメント" といった用語をよく目にしたかと思います。 Azure Cosmos DB は[複数の API モデル](https://docs.microsoft.com/azure/cosmos-db/introduction)をサポートしているため、バージョン 2.0 以上の JavaScript SDK では、コレクション、グラフ、テーブルを表す用語として "コンテナー" が、またコンテナーの内容を表す用語として "項目" が一般的に使用されます。
 
 次のスニペットはすべて **app.js** ファイルからのものです。
 
 * `CosmosClient` が初期化されます。
 
-    ```nodejs
+    ```javascript
     const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
     ```
 
 * 新しいデータベースが作成されます。
 
-    ```nodejs
+    ```javascript
     const { database } = await client.databases.createIfNotExists({ id: databaseId });
     ```
 
 * 新しいコンテナー (コレクション) が作成されます。
 
-    ```nodejs
+    ```javascript
     const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
     ```
 
 * 項目 (ドキュメント) が作成されます。
 
-    ```nodejs
+    ```javascript
     const { item } = await client.database(databaseId).container(containerId).items.create(itemBody);
     ```
 
 * JSON に対する SQL クエリが実行されます。
 
-    ```nodejs
+    ```javascript
     const querySpec = {
         query: "SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName",
         parameters: [

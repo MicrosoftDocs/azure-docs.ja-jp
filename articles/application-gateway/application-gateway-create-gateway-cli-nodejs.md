@@ -1,44 +1,26 @@
 ---
-title: Azure Application Gateway を作成する - Azure クラシック CLI | Microsoft Docs
+title: Azure Application Gateway を作成する - Azure クラシック CLI
 description: Resource Manager で Azure クラシック CLI を使用して Application Gateway を作成する方法について説明します
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974427"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608473"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
-> * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
-> * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
-> * [Azure クラシック CLI](application-gateway-create-gateway-cli.md)
-> * [Azure CLI](application-gateway-create-gateway-cli.md)
-> 
-> 
+Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway には、次のアプリケーション配信機能があります: HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポート。
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどのアプリケーション配信機能を備えています。
+## <a name="prerequisite-install-the-azure-cli"></a>前提条件:Azure CLI のインストール
 
-## <a name="prerequisite-install-the-azure-cli"></a>前提条件: Azure CLI のインストール
-
-この記事の手順を実行するには、[Azure CLI をインストール](../xplat-cli-install.md)して、[Azure にログオン](/cli/azure/authenticate-azure-cli)する必要があります。 
+この記事の手順を実行するには、[Azure CLI をインストール](../xplat-cli-install.md)して、[Azure にサインイン](/cli/azure/authenticate-azure-cli)する必要があります。 
 
 > [!NOTE]
 > Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../active-directory/fundamentals/sign-up-organization.md)にサインアップしてください。
@@ -60,15 +42,15 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 Azure Application Gateway には、専用のサブネットが必要です。 仮想ネットワークを作成する場合は、複数のサブネットを持つことができるように十分なアドレス空間を残しておいてください。 アプリケーション ゲートウェイをサブネットにデプロイすると、追加のアプリケーション ゲートウェイのみをそのサブネットにデプロイすることができます。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-**Microsoft Azure コマンド プロンプト**を開き、ログインします。 
+**Microsoft Azure コマンド プロンプト**を開き、サインインします。
 
 ```azurecli-interactive
-azure login
+az login
 ```
 
-上記の例に従って入力すると、コードが表示されます。 ブラウザーの https://aka.ms/devicelogin に移動して、ログイン プロセスを続行します。
+上記の例に従って入力すると、コードが表示されます。 ブラウザーで https://aka.ms/devicelogin に移動して、サインオン プロセスを続けます。
 
 ![cmd showing device login][1]
 
@@ -122,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-仮想ネットワークとサブネットを作成すれば、アプリケーション ゲートウェイの前提条件は満たされたことになります。 以下の手順では、それに加えて、あらかじめエクスポートしておいた .pfx 証明書とそのパスワードが必要となります。バックエンド用の IP アドレスは、ご使用のバックエンド サーバーの IP アドレスです。 バックエンド サーバーに該当する仮想ネットワーク内のプライベート IP、パブリック IP、または完全修飾ドメイン名を指定してください。
+仮想ネットワークとサブネットを作成すれば、アプリケーション ゲートウェイの前提条件は満たされたことになります。 さらに、以下の手順では、前にエクスポートした .pfx 証明書と証明書のパスワードが必要です。バックエンドに使用される IP アドレスは、バックエンド サーバーの IP アドレスです。 バックエンド サーバーに該当する仮想ネットワーク内のプライベート IP、パブリック IP、または完全修飾ドメイン名を指定してください。
 
 ```azurecli-interactive
 azure network application-gateway create \
@@ -151,9 +133,9 @@ azure network application-gateway create \
 
 ## <a name="next-steps"></a>次の手順
 
-[カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
+ [カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
 
-[SSL オフロードの構成](application-gateway-ssl-arm.md)
+ [SSL オフロードの構成](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

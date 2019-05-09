@@ -4,25 +4,24 @@ titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API で画像の分析情報トークンを使用して、画像に関する分析情報を取得する方法を説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 5/16/2018
+ms.date: 4/05/2019
 ms.author: scottwhi
-ms.openlocfilehash: 76fb61f0f1dd3c1f72c4c6132d1bfdc8b516477a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955549"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493877"
 ---
-# <a name="using-an-insights-token-to-get-insights-about-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
+# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
 Bing Visual Search API は、提供された画像に関する情報を返します。 画像を提供するには、画像の URL または分析情報トークンを使用するか、画像をアップロードします。 これらのオプションについて詳しくは、「[Bing Visual Search API とは](overview.md)」をご覧ください。 この記事では、分析情報トークンの使用方法を示します。 画像をアップロードして分析情報を取得する方法の例については、クイック スタート ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)) をご覧ください。
 
-
-画像のトークンまたは URL を Visual Search に送信する場合は、次に示すフォーム データを POST の本文に含める必要があります。 フォーム データには Content-Disposition ヘッダーが含まれ、その `name` パラメーターは "knowledgeRequest" に設定されている必要があります。 `imageInfo` オブジェクトについて詳しくは、「[要求](#the-request)」をご覧ください。
+画像のトークンまたは URL を Bing Visual Search に送信する場合は、次に示すフォーム データを POST の本文に含める必要があります。 フォーム データには `Content-Disposition` ヘッダーが含まれ、その `name` パラメーターが "knowledgeRequest" に設定されている必要があります。 `imageInfo` オブジェクトの詳細については、要求を参照してください。
 
 ```json
 {
@@ -44,7 +43,7 @@ Bing Visual Search API は、提供された画像に関する情報を返しま
 }
 ```
 
-この記事の例では、分析情報トークンを使う方法を示します。 分析情報トークンは、/images/search API 応答の Image オブジェクトから取得します。 分析情報トークンの取得については、[Bing Image Search API](../Bing-Image-Search/overview.md) に関するページをご覧ください。
+この記事の例では、分析情報トークンを使う方法を示します。 分析情報トークンは、/images/search API 応答の `Image` オブジェクトから取得します。 分析情報トークンの取得については、「[Bing Image Search API とは](../Bing-Image-Search/overview.md)」をご覧ください。
 
 ```
 --boundary_1234-abcd
@@ -59,28 +58,24 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
+分析情報トークンを使用する例については、[C#](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | [Python](#use-with-python) をご覧ください。
 
-分析情報トークンを使用する例については、[C#](#using-csharp) | [Java](#using-java) | [Node.js](#using-nodejs) | [Python](#using-python) をご覧ください。
+## <a name="use-with-c"></a>C# で使用する
 
-<a name="using-csharp" />
+### <a name="c-prerequisites"></a>C# の前提条件
 
-## <a name="using-c"></a>C# の使用
+- このコードを Windows 上で実行するには、任意のバージョンの [Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です。
+- Azure サブスクリプション。 このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
 
-### <a name="prerequisites"></a>前提条件
-
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)
-
-このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
-
-## <a name="running-the-application"></a>アプリケーションの実行
+## <a name="run-the-application"></a>アプリケーションの実行
 
 このアプリケーションを実行するには、次の手順に従います。
 
-1. Visual Studio で新しいコンソール ソリューションを作成します。
-1. `Program.cs` の内容をこのクイックスタートで示すコードに置き換えます。
-2. `accessKey` 値を、サブスクリプション キーに置き換えます。
-2. `insightsToken` の値を、/images/search 応答からの分析情報トークンに置き換えます。
-3. プログラムを実行します。
+1. Visual Studio で、コンソール ソリューションを作成します。
+2. Program.cs の内容をこのクイックスタートで示すコードに置き換えます。
+3. `accessKey` 値を、サブスクリプション キーに置き換えます。
+4. `insightsToken` の値を、/images/search 応答からの分析情報トークンに置き換えます。
+5. プログラムを実行します。
 
 ```csharp
 using System;
@@ -238,21 +233,18 @@ namespace VisualSearchInsightsToken
 }
 ```
 
-<a name="using-java" />
+## <a name="use-with-java"></a>Java で使用する
 
-## <a name="using-java"></a>Java の使用
+### <a name="java-prerequisites"></a>Java の前提条件
 
-### <a name="prerequisites"></a>前提条件
+- このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) を使用する必要があります。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+- このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
-
-このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
-
-## <a name="running-the-application"></a>アプリケーションの実行
+## <a name="run-the-java-application"></a>Java アプリケーションを実行する
 
 このアプリケーションを実行するには、次の手順に従います。
 
-1. [gson ライブラリ](https://github.com/google/gson)をダウンロードまたはインストールします。 また、Maven 経由で入手することもできます。
+1. [Gson Java ライブラリ](https://github.com/google/gson)をダウンロードまたはインストールします。 Maven 経由で Gson を入手することもできます。
 2. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成します。
 3. `VisualSearch.java` という名前のファイルで提供されているコードを追加します。
 4. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
@@ -286,7 +278,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-// http://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
+// https://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -351,41 +343,38 @@ public class InsightsToken {
         return gson.toJson(json);
     }
 
-    
+
 }
 ```
 
+## <a name="use-with-nodejs"></a>Node.js で使用する
 
-<a name="using-nodejs" />
+### <a name="nodejs-prerequisites"></a>Node.js の前提条件
 
-## <a name="using-nodejs"></a>Node.js の使用
+- このコードを実行するには、[Node.js 6](https://nodejs.org/en/download/) が必要です。
+- このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
 
-### <a name="prerequisites"></a>前提条件
-
-このコードを実行するには [Node.js 6](https://nodejs.org/en/download/) が必要です。
-
-このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
-
-## <a name="running-the-application"></a>アプリケーションの実行
+## <a name="run-the-javascript-application"></a>JavaScript アプリケーションを実行する
 
 このアプリケーションを実行するには、次の手順に従います。
 
 1. プロジェクト用のフォルダーを作成します (または、お気に入りの IDE やエディターを使用)。
 2. コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。
-3. request モジュールをインストールします。  
-  ```  
-  npm install request  
-  ```  
-3. form-data モジュールをインストールします。  
-  ```  
-  npm install form-data  
-  ```  
-4. GetVisualInsights.js という名前のファイルを作成し、次のコードを追加します。
-5. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
-7. プログラムを実行します。  
-  ```
-  node GetVisualInsights.js
-  ```
+3. request モジュールをインストールします。
+  
+   ```
+   npm install request  
+   ```
+1. form-data モジュールをインストールします。  
+   ```
+   npm install form-data  
+   ```
+1. GetVisualInsights.js という名前のファイルを作成し、次のコードを追加します。
+1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
+1. プログラムを実行します。  
+   ```
+   node GetVisualInsights.js
+   ```
 
 ```javascript
 var request = require('request');
@@ -422,19 +411,14 @@ function requestCallback(err, res, body) {
 }
 ```
 
+## <a name="use-with-python"></a>Python を使用する
 
-<a name="using-python" />
+### <a name="python-prerequisites"></a>Python の前提条件
 
-## <a name="using-python"></a>Python の使用
+- このコードを実行するには、[Python 3](https://www.python.org/) が必要です。
+- このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
 
-
-### <a name="prerequisites"></a>前提条件
-
-このコードを実行するには、[Python 3](https://www.python.org/) が必要です。
-
-このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
-
-## <a name="running-the-walkthrough"></a>チュートリアルの実行
+## <a name="run-the-python-application"></a>Python アプリケーションを実行する
 
 このアプリケーションを実行するには、次の手順に従います。
 
@@ -442,7 +426,6 @@ function requestCallback(err, res, body) {
 2. visualsearch.py という名前のファイルを作成し、このクイック スタートにあるコードを追加します。
 3. `SUBSCRIPTION_KEY` 値を、サブスクリプション キーに置き換えます。
 4. プログラムを実行します。
-
 
 ```python
 """Bing Visual Search example"""
@@ -492,8 +475,8 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>次の手順
 
-[Bing Visual Search の単一ページ アプリのチュートリアル](tutorial-bing-visual-search-single-page-app.md)  
-[Bing Visual Search の概要](overview.md)  
-[試してみる](https://aka.ms/bingvisualsearchtryforfree)  
+[Visual Search のシングルページ Web アプリを作成する](tutorial-bing-visual-search-single-page-app.md)  
+[Bing Visual Search API とは](overview.md)  
+[Cognitive Services を試す](https://aka.ms/bingvisualsearchtryforfree)  
 [無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Bing Visual Search API のリファレンス](https://aka.ms/bingvisualsearchreferencedoc)
+[画像 - Visual Search](https://aka.ms/bingvisualsearchreferencedoc)

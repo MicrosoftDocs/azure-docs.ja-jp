@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 73eda631d43da87b4472615c2b6a28244372c613
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992347"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "53339265"
 
 C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるために ANSI C (C99) で記述されています。 この機能により、複数のプラットフォームとデバイス、特にディスクとメモリの量を最小限に抑えることが優先される環境でライブラリを操作しやすくなります。
 
-この SDK は幅広いプラットフォームでテストされています (詳細は、[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsuite.com/)に関するページを参照してください)。 この記事には、Windows プラットフォームで実行されるサンプル コードのチュートリアルが含まれますが、この記事で説明するコードはサポートされるプラットフォーム全体で同じです。
+この SDK は幅広いプラットフォームでテストされています (詳細は、[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)に関するページを参照してください)。 この記事には、Windows プラットフォームで実行されるサンプル コードのチュートリアルが含まれますが、この記事で説明するコードはサポートされるプラットフォーム全体で同じです。
 
 次のビデオでは、C 用 Azure IoT SDK の概要が紹介されています。
 
@@ -75,11 +75,11 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
 * [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)と呼ばれる Windows アプリケーション。
 
-* [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (旧称 Azure IoT Toolkit) と呼ばれるクロス プラットフォームの Visual Studio Code 拡張機能。
+* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) と呼ばれるクロスプラットフォームの Visual Studio Code 拡張機能。
 
 * [Azure CLI 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)と呼ばれるクロスプラットフォーム Python CLI。
 
-このチュートリアルでは、グラフィカル *デバイス エクスプローラー* ツールを使います。 VS Code で開発を行う場合は、*VS Code 用 Azure IoT Hub Toolkit 拡張機能*を使用できます。 CLI ツールを使いたい場合は、"*Azure CLI 2.0 向けの IoT 拡張機能*" ツールを使うこともできます。
+このチュートリアルでは、グラフィカル *デバイス エクスプローラー* ツールを使います。 VS Code で開発する場合は、*VS Code 用の Azure IoT Tools* を使用できます。 CLI ツールを使いたい場合は、"*Azure CLI 2.0 向けの IoT 拡張機能*" ツールを使うこともできます。
 
 デバイス エクスプローラー ツールは、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。 デバイス エクスプローラー ツールを使用してデバイスを追加すると、デバイス用の接続文字列が表示されます。 この接続文字列は、サンプル アプリケーションを実行するために必要です。
 
@@ -89,7 +89,7 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
 1. プログラムを実行すると、次のインターフェイスが表示されます。
 
-  ![Device Explorer ツインのスクリーンショット](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
+   ![Device Explorer ツインのスクリーンショット](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
 1. **IoT Hub の接続文字列**を最初のフィールドに入力し、**[更新]** をクリックします。 この手順により、IoT Hub と通信できるようにツールが構成されます。 
 
@@ -97,21 +97,21 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
 1. IoT Hub の接続文字列を構成したら、**[管理]** タブをクリックします。
 
-  ![Device Explorer ツイン/管理のスクリーンショット](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
+   ![Device Explorer ツイン/管理のスクリーンショット](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 このタブで、IoT Hub に登録されたデバイスを管理します。
 
 1. **[作成]** をクリックしてデバイスを作成します。 ダイアログが、一連のキー (プライマリおよびセカンダリ) が入力された状態で表示されます。 **デバイス ID** を入力し、**[作成]** をクリックします。
 
-  ![デバイス作成のスクリーンショット](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
+   ![デバイス作成のスクリーンショット](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
 1. デバイスが作成されたら、デバイスの一覧が更新され、今作成したデバイスを含むすべての登録済みデバイスが表示されます。 新しいデバイスを右クリックすると、次のメニューが表示されます。
 
-  ![Device Explorer ツインの右クリックの結果](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
+   ![Device Explorer ツインの右クリックの結果](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
 1. **[Copy connection string for selected device (選択したデバイスの接続文字列のコピー)]** を選択すると、デバイスの接続文字列がクリップボードにコピーされます。 デバイス接続文字列のコピーを保存しておきます。 次のセクションで説明するサンプル アプリケーションを実行するときにこれが必要になります。
 
-前の手順が完了すると、コードを実行する準備が整います。 多くのサンプルでは、メインのソース ファイルの上部に、接続文字列を入力するための定数が使用されています。 たとえば、**iothub\_client\_sample\_mqtt** アプリケーションの対応する行は次のとおりです。
+前の手順が完了すると、コードを実行する準備が整います。 多くのサンプルでは、メインのソース ファイルの上部に、接続文字列を入力するための定数が使用されています。 たとえば、**iothub_client\_samples\_iothub_convenience_sample** アプリケーションの対応する行は次のとおりです。
 
 ```c
 static const char* connectionString = "[device connection string]";
@@ -121,7 +121,7 @@ static const char* connectionString = "[device connection string]";
 
 [azure-iot-sdk-c](https://github.com/azure/azure-iot-sdk-c) リポジトリ内の **iothub\_client** フォルダーに **samples** フォルダーがあり、**iothub\_client\_sample\_mqtt** というアプリケーションが格納されています。
 
-**iothub\_client\_sample\_mqtt** アプリケーションの Windows バージョンには、次の Visual Studio のソリューションが含まれます。
+**iothub_client\_samples\_iothub_convenience_sample** アプリケーションの Windows バージョンには、次の Visual Studio のソリューションが含まれます。
 
   ![Visual Studio のソリューション エクスプローラー](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
@@ -137,7 +137,7 @@ static const char* connectionString = "[device connection string]";
 
 SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。 このサンプルでは MQTT プロトコルを使用するため、**Microsoft.Azure.umqtt** パッケージと **Microsoft.Azure.IoTHub.MqttTransport** パッケージを含める必要があります (AMQP と HTTPS にも同等のパッケージが存在します)。 サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
 
-サンプル アプリケーションの実装は、**iothub\_client\_sample\_mqtt.c** ソース ファイル内にあります。
+サンプル アプリケーションの実装は、**iothub_client\_samples\_iothub_convenience_sample** ソース ファイル内にあります。
 
 次の手順では、このサンプル アプリケーションを使用して、**IoTHubClient** ライブラリの使用に必要な内容を説明します。
 
@@ -351,7 +351,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 ほとんどのパッケージは前のサンプルにも含まれていましたが、**Microsoft.Azure.IoTHub.Serializer** を使うのはこれが初めてです。 このパッケージは、**serializer** ライブラリを使用するときに必要です。
 
-サンプル アプリケーションの実装は **simplesample\_mqtt.c** ファイル内にあります。
+サンプル アプリケーションの実装は、**iothub_client\_samples\_iothub_convenience_sample** ファイル内にあります。
 
 次のセクションで、このサンプルの主要な部分について説明します。
 
@@ -392,7 +392,7 @@ else
 
 ### <a name="define-the-model"></a>モデルを定義する
 
-**serializer** ライブラリ内のモデルは、デバイスから IoT Hub に送信できるメッセージと、モデリング言語で "*アクション*" と呼ばれる、デバイスで受信できるメッセージを定義します。 **simplesample\_mqtt** サンプル アプリケーションと同様に、一連の C マクロを使用してモデルを定義します。
+**serializer** ライブラリ内のモデルは、デバイスから IoT Hub に送信できるメッセージと、モデリング言語で "*アクション*" と呼ばれる、デバイスで受信できるメッセージを定義します。 **iothub_client\_samples\_iothub_convenience_sample** サンプル アプリケーションと同様に、一連の C マクロを使用してモデルを定義します。
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);
@@ -410,7 +410,7 @@ END_NAMESPACE(WeatherStation);
 
 **BEGIN\_NAMESPACE** と **END\_NAMESPACE** の両方のマクロは、モデルの名前空間を引数として取得します。 これらのマクロの間には、モデルの定義とモデルが使用するデータ構造があることが想定されます。
 
-この例では、 **ContosoAnemometer**という単一のモデルがあります。 このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** という 2 つのデータを定義します。 さらに、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、**SetAirResistance** の 3 つのアクション (メッセージ) を定義します。 各データ要素には型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
+この例では、 **ContosoAnemometer**という単一のモデルがあります。 このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** という 2 つのデータを定義します。 また、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、および **SetAirResistance** の 3 つのアクション (メッセージ) も定義されます。 各データ要素には型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
 
 モデルで定義されたデータとアクションは、IoT Hub へのメッセージの送信とデバイスに送信されたメッセージへの応答に使用できる API へのアクセスを定義します。 このモデルの使用については、例を通じて理解するのが一番です。
 

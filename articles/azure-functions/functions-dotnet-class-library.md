@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994536"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58896161"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -50,7 +50,7 @@ Visual Studio では、**Azure Functions** プロジェクト テンプレート
  | - host.json
 ```
 
-このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017)されます。
+このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](./functions-bindings-register.md#c-class-library-with-visual-studio-2017)されます。
 
 > [!IMPORTANT]
 > ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にする方法については、[関数を無効にする方法](disable-function.md#functions-2x---c-class-libraries)に関するページをご覧ください。
@@ -83,7 +83,7 @@ public static class SimpleExample
 * 属性で修飾することによってそのようにマークした[入出力のバインド](functions-triggers-bindings.md)。  
 * [ログ記録](#logging)のための `ILogger` または `TraceWriter` ([バージョン 1.x のみ](functions-versions.md#creating-1x-apps)) パラメーター。
 * [グレースフル シャットダウン](#cancellation-tokens)のための `CancellationToken` パラメーター。
-* トリガー メタデータを取得するための[バインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)パラメーター。
+* トリガー メタデータを取得するための[バインド式](./functions-bindings-expressions-patterns.md)パラメーター。
 
 関数シグネチャのパラメーターの順序は関係ありません。 たとえば、トリガー パラメーターは、他のバインドの前後に配置できます。また、ロガー パラメーターは、トリガー パラメーターまたはバインド パラメーターの前後に配置できます。
 
@@ -131,7 +131,7 @@ public static class BindingExpressionsExample
 
 ビルド処理では、ビルド フォルダー内の関数フォルダーに *function.json*ファイルを作成します。 前述のとおり、このファイルに対しては直接編集が行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 
 
-このファイルの目的は、[従量課金プランに関する決定事項を評価](functions-scale.md#how-the-consumption-plan-works)する際に使用するスケール コントローラーに、情報を提供することです。 このため、ファイルはトリガー情報だけを含み、入力または出力バインドは含まれません。
+このファイルの目的は、[従量課金プランに関する決定事項を評価](functions-scale.md#how-the-consumption-and-premium-plans-work)する際に使用するスケール コントローラーに、情報を提供することです。 このため、ファイルはトリガー情報だけを含み、入力または出力バインドは含まれません。
 
 生成された *function.json* ファイルには、*function.json* 構成ではなく、バインドの .NET 属性を使用するようにランタイムに指示する `configurationSource` プロパティが含まれます。 次に例を示します。
 
@@ -173,7 +173,7 @@ Functions ランタイムのバージョン 1.x と 2.x では同じパッケー
 
 ```xml
 <PropertyGroup>
-  <TargetFramework>netstandard2.0</TargetFramework>
+  <TargetFramework>netcoreapp2.1</TargetFramework>
   <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 </PropertyGroup>
 <ItemGroup>
@@ -205,7 +205,7 @@ npm を使用して Core Tools をインストールする場合、これは Vis
 
 ## <a name="binding-to-method-return-value"></a>メソッドの戻り値へのバインド
 
-出力バインドのメソッドの戻り値を使用するには、属性をメソッドの戻り値に適用します。 例については、[トリガーとバインディング](functions-triggers-bindings.md#using-the-function-return-value)に関するページを参照してください。 
+出力バインドのメソッドの戻り値を使用するには、属性をメソッドの戻り値に適用します。 例については、[トリガーとバインディング](./functions-bindings-return-value.md)に関するページを参照してください。 
 
 正常な関数の実行によって、常に戻り値が出力バインドに渡される場合のみ、戻り値を使用してください。 それ以外の場合は、次のセクションに示すように `ICollector` または `IAsyncCollector` を使用してください。
 
@@ -274,7 +274,7 @@ public static class AsyncExample
 
 ## <a name="cancellation-tokens"></a>キャンセル トークン
 
-関数は [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) パラメーターを受け付けることができます。これにより、オペレーティング システムは、その関数をいつ終了しようとしているかをコードに通知できます。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
+関数は [CancellationToken](/dotnet/api/system.threading.cancellationtoken) パラメーターを受け付けることができます。これにより、オペレーティング システムは、その関数をいつ終了しようとしているかをコードに通知できます。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
 
 次の例は、関数の終了が迫っているかどうかを確認する方法を示しています。
 
@@ -369,7 +369,7 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) はサポートされている出力バインドの種類です。
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](/dotnet/api/system.io.textwriter) はサポートされている出力バインドの種類です。
 
 ### <a name="multiple-attribute-example"></a>複数属性の例
 

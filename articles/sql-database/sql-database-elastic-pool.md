@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: ea548b55bc216b815b5f49f1e0405f1a90d05d08
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 02/28/2019
+ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275620"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010239"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -34,6 +34,9 @@ SaaS 開発者は、複数のデータベースで構成される大規模なデ
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
+
+> [!IMPORTANT]
+> エラスティック プールでは、データベース単位の請求はありません。 課金は、使用量やプールがアクティブであったのが 1 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU または仮想コアを使用して 1 時間単位で行われます。
 
 エラスティック プールを使用することで、開発者は、複数のデータベースで共有されるプールのリソースを購入でき、個々のデータベースの使用期間が予測しづらい場合にも対応できます。 [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のいずれかに基づいて、プールのリソースを構成できます。 プールのリソース要件は、そのデータベースの使用量の合計によって決まります。 プールで使用可能なリソースの量は、開発者の予算に応じて決められます。 開発者は、単純にプールにデータベースを追加し、データベースに対する最小および最大のリソース (選択したリソース モデルに応じて、最小および最大の DTU、または最小および最大の仮想コアのいずれか) を設定してから、予算に基づいてプールのリソースを設定します。 開発者はプールを使用することで、リーン スタートアップの段階から成熟企業の段階に至るまで、サービスをシームレスに拡大し続けることができます。
 
@@ -197,6 +200,20 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 また、より多くのメトリックを選択してこのデータベース テーブルで並列に表示し、データベース パフォーマンスのより詳細なビューを取得することもできます。
 
 詳細については、[Azure Portal での SQL Database アラートの作成](sql-database-insights-alerts-portal.md)に関するトピックを参照してください。
+
+## <a name="customer-case-studies"></a>お客様導入事例
+
+- [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
+
+  SnelStart は、Azure SQL Database とエラスティック プールを使用して、新しい Azure SQL データベースを 1 か月あたり 1,000 台追加し、自社のビジネス サービスを急速に拡大しました。
+
+- [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
+
+  Umbraco は、Azure SQL Database とエラスティック プールを使用して、クラウド上の数千のテナント向けに迅速にサービスをプロビジョニングしてスケーリングしています。
+
+- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+
+  Daxko/CSI は、Azure SQL Database とエラスティック プールを使用して、開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化しています。
 
 ## <a name="next-steps"></a>次の手順
 

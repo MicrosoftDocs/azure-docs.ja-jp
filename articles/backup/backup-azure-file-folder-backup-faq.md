@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: 5262c99fae965201d4f9519495163d0e16836a7a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c1690fe6d0ce24bd319b042a3850bbfe487ffcfc
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726544"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426258"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Azure Backup エージェントについての質問
 この記事では、Azure Backup エージェントの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -33,7 +33,7 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 * 読み取り専用ボリューム:ボリューム シャドウ コピー サービス (VSS) が機能するには、ボリュームが書き込み可能である必要があります。
 * オフライン ボリューム:VSS が機能するには、ボリュームがオンラインである必要があります。
 * ネットワーク共有:オンライン バックアップを使用してバックアップするボリュームは、サーバーに対してローカルである必要があります。
-* Bitlocker で保護されているボリューム:バックアップを行う前に、ボリュームのロックを解除する必要があります。
+* BitLocker で保護されているボリューム: バックアップを行う前に、ボリュームのロックを解除する必要があります。
 * ファイル システムの識別:サポートされているファイル システムは NTFS だけです。
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>サーバーからバックアップできるのはどのような種類のファイルとフォルダーですか。<br/>
@@ -74,8 +74,8 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 
 1. 管理者特権でのコマンド プロンプトで次のコマンドを実行して Backup エンジンを停止します。
 
-    ```PS C:\> Net stop obengine``` 
-  
+    ```PS C:\> Net stop obengine```
+
 2. ファイルを移動するのではなく、 空き容量に余裕のある別のドライブにキャッシュ領域フォルダーをコピーします。 元のキャッシュ領域は、バックアップが新しいキャッシュ領域で正常に動作していることを確認した後で削除できます。
 3. 次のレジストリ エントリを、新しいキャッシュ領域のフォルダーへのパスで更新します。<br/>
 
@@ -111,15 +111,22 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-servicebr"></a>Backup サービスによって使用される帯域幅の量を調整する方法はありますか。<br/>
   はい。帯域幅の調整には、Backup エージェントの **[プロパティの変更]** オプションを使用します。 帯域幅の量と、帯域幅を使用する時間を調整できます。 具体的な手順については、「**[ネットワーク調整を有効にするには](backup-configure-vault.md#enable-network-throttling)**」を参照してください。
 
+## <a name="restore"></a>復元
+
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>進行中の復元ジョブをキャンセルした場合、どうなりますか? 
+進行中の復元ジョブがキャンセルされると、復元プロセスが停止され、すべてのファイルがキャンセル前に復元されます。ロールバックされずに、構成された変換先 (元の場所または別の場所) は保持されます。
+
+
 ## <a name="manage-backups"></a>バックアップの管理
+
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Azure にデータをバックアップしている Windows サーバーの名前を変更するとどうなりますか。<br/>
 サーバーの名前を変更すると、現在構成されているすべてのバックアップが停止します。 バックアップ コンテナーにサーバーの新しい名前を登録します。 コンテナーに新しい名前を登録すると、最初のバックアップ操作は "*完全*" バックアップになります。 以前のサーバー名でコンテナーにバックアップしたデータを回復する必要がある場合は、**データの回復**ウィザードで [**[別のサーバー]**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) オプションを使用します。
 
 ### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>Azure Backup エージェントを使用するバックアップ ポリシーに指定できるファイル パスの最大長はどれくらいですか。 <br/>
-Azure Backup エージェントでは NTFS が使用されています。 [ファイル パスの長さの指定は、Windows API による制限を受けます](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。 保護するファイルのファイル パスが、Windows API で許容されている長さを超える場合は、親フォルダーまたはディスク ドライブをバックアップしてください。  
+Azure Backup エージェントでは NTFS が使用されています。 [ファイル パスの長さの指定は、Windows API による制限を受けます](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths)。 保護するファイルのファイル パスが、Windows API で許容されている長さを超える場合は、親フォルダーまたはディスク ドライブをバックアップしてください。  
 
 ### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Azure Backup エージェントを使用する Azure Backup ポリシーのファイル パスには、どのような文字を使用できますか。 <br>
- Azure Backup エージェントでは NTFS が使用されています。 そのため、ファイルの指定では [NTFS でサポートされている文字](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) を使用できます。 
- 
+ Azure Backup エージェントでは NTFS が使用されています。 そのため、ファイルの指定では [NTFS でサポートされている文字](/windows/desktop/FileIO/naming-a-file#naming_conventions) を使用できます。
+
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>バックアップ ポリシーを設定してあるのに、"このサーバーに対して Azure Backups は構成されていません" という警告が表示されるのはなぜですか。 <br/>
 ローカル サーバーに保存されているバックアップ スケジュールの設定がバックアップ コンテナーに格納されている設定と異なる場合、このような警告が表示されることがあります。 サーバーまたは設定が既知の正常な状態に復旧されると、バックアップ スケジュールの同期が失われることがあります。 この警告が表示された場合は、 [バックアップ ポリシーを再構成](backup-azure-manage-windows-server.md) した後、 **[今すぐバックアップ]** を実行して、ローカル サーバーと Azure を再同期してください。

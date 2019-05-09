@@ -1,18 +1,17 @@
 ---
 title: サーバーレス データベース コンピューティング - Azure Functions と Azure Cosmos DB
 description: Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: f0f0308233334e2662704e818c765c625a80019d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878331"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123778"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -29,7 +28,7 @@ Azure Cosmos DB と Azure Functions を使用して、次の方法でデータ�
 * **出力バインディング**を使用して、関数を Azure Cosmos DB コンテナーにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
 
 > [!NOTE]
-> 現在のところ、Azure Cosmos DB トリガー、入力バインディング、および出力バインディングは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、MongoDB API、Cassandra API、Gremlin API、Table API など、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
+> 現在のところ、Azure Cosmos DB トリガー、入力バインディング、および出力バインディングは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
 
 
 次の各図は、これら 3 つの統合を示しています。 
@@ -98,11 +97,11 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 1. 複数の Azure 関数を作成するには、それぞれに Azure Cosmos DB トリガーを追加します。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。 リース コレクションの詳細については、「[Change Feed Processor ライブラリの概要](change-feed-processor.md)」を参照してください。
 2. 新しい項目がユーザーのショッピング カートに追加されるたびに、各関数はショッピング カート コンテナーの変更フィードから個別に呼び出されます。
-    * 1 つの関数で現在のバスケットの内容を使用して、ユーザーが関心を持つ可能性がある他の項目の表示を変更することができます。
-    * 別の関数で在庫の合計を更新できます。
-    * また、別の関数は特定の製品に関する顧客情報をマーケティング部門に送信できます。マーケティング部門は宣伝メールを送信します。 
+   * 1 つの関数で現在のバスケットの内容を使用して、ユーザーが関心を持つ可能性がある他の項目の表示を変更することができます。
+   * 別の関数で在庫の合計を更新できます。
+   * また、別の関数は特定の製品に関する顧客情報をマーケティング部門に送信できます。マーケティング部門は宣伝メールを送信します。 
 
-    任意の部門が変更フィードをリッスンして Azure Cosmos DB トリガーを作成し、プロセスの重要な注文処理イベントが遅れないようにすることができます。
+     任意の部門が変更フィードをリッスンして Azure Cosmos DB トリガーを作成し、プロセスの重要な注文処理イベントが遅れないようにすることができます。
 
 これらのいずれのユース ケースでも、関数でアプリケーション自体が分離されるので、常に新しいアプリケーション インスタンスを起動する必要はありません。 その代わりに必要に応じて Azure Functions が個々の関数を起動して各プロセスを完了します。
 

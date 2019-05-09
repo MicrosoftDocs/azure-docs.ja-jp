@@ -8,19 +8,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 57e23c55342ee397ecb8590dd6da639ba766f351
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.date: 03/21/2019
+ms.openlocfilehash: 63def1464c3c219b5181a31bf19cc80a1e487025
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385433"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521739"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
-Azure HDInsight には、Apache Hive クエリを実行できるいくつかのクラスター タイプと テクノロジがあります。 HDInsight クラスターを作成する際には、適切なクラスター タイプを選択することで、パフォーマンスをワークロード ニーズに応じて最適化することができます。 
+Azure HDInsight には、Apache Hive クエリを実行できるいくつかのクラスター タイプと テクノロジがあります。 HDInsight クラスターを作成する際には、適切なクラスター タイプを選択することで、パフォーマンスをワークロード ニーズに応じて最適化することができます。
 
-たとえば、アドホックな対話型クエリ用に最適化するには、**対話型クエリ** クラスター タイプを選択します。 バッチ処理として使用される Hive クエリ用に最適化するには、Apache **Hadoop** クラスター タイプを選択します。 また、**Spark** や **HBase** といったクラスター タイプで Hive クエリを実行することもできます。 Hive クエリを実行するための各種 HDInsight クラスター タイプについて詳しくは、「[Azure HDInsight における Apache Hive と HiveQL](hadoop/hdinsight-use-hive.md)」をご覧ください。
+たとえば、アドホックなインタラクティブ クエリ用に最適化するには、**インタラクティブ クエリ** クラスター タイプを選択します。 バッチ処理として使用される Hive クエリ用に最適化するには、Apache **Hadoop** クラスター タイプを選択します。 また、**Spark** や **HBase** といったクラスター タイプで Hive クエリを実行することもできます。 Hive クエリを実行するための各種 HDInsight クラスター タイプについて詳しくは、「[Azure HDInsight における Apache Hive と HiveQL](hadoop/hdinsight-use-hive.md)」をご覧ください。
 
 Hadoop クラスター タイプの HDInsight クラスターは、既定ではパフォーマンス用に最適化されていません。 この記事では、クエリに適用できる最も一般的な Hive パフォーマンスの最適化方法について説明します。
 
@@ -196,10 +196,8 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Apache Hive を使用したフライトの遅延データの分析](hdinsight-analyze-flight-delay-data.md)
-* [HDInsight での Apache Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data.md)
-* [HDInsight 上の Apache Hadoop で Apache Hive クエリ コンソールを使用してセンサー データを分析する](hadoop/apache-hive-analyze-sensor-data.md)
-* [Web サイトのログを分析するための HDInsight での Apache Hive の使用](hadoop/apache-hive-analyze-website-log.md)
+* [HDInsight での Apache Hive を使用したフライトの遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)
+* [HDInsight での Apache Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data-linux.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png

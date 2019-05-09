@@ -3,27 +3,28 @@ title: Windows VM のシステム割り当てマネージド ID を使用して 
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
-ms.author: daveba
-ms.openlocfilehash: 18141e0f58a0b5227c3f5f5c36210017da101780
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b402fa754105b734bfc7abbd2790a2a12afc6ff4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625336"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523360"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
 このチュートリアルでは、Windows 仮想マシン (VM) のシステム割り当てマネージド ID を使用して Microsoft Graph API にアクセスし、そのグループ メンバーシップを取得する方法について説明します。 Azure リソースのマネージド ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。  このチュートリアルでは、Azure AD グループ内での VM ID のメンバーシップをクエリします。 たとえば、グループの情報は承認の判断によく使用されます。 実際には、VM のマネージド ID は Azure AD 内の**サービス プリンシパル**によって表されます。 グループ クエリを実行する前に、VM の ID を表すサービス プリンシパルを Azure AD 内のグループに追加します。 これは Azure PowerShell、Azure AD PowerShell、または Azure CLI を使用して実行できます。
 
@@ -38,13 +39,18 @@ ms.locfileid: "51625336"
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 - Azure AD Graph に VM ID アクセスを許可するには、Azure AD で**全体管理者**ロールがアカウントに割り当てられている必要があります。
+- 最新の [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) をインストールします (まだインストールしていない場合)。 
 
 ## <a name="connect-to-azure-ad"></a>Azure への接続
 
-Azure AD に接続して、VM をグループに割り当てることに加えて、そのグループ メンバーシップを取得するためのアクセス許可を VM に付与する必要があります。
+Azure AD に接続して、VM をグループに割り当てることに加えて、そのグループ メンバーシップを取得するためのアクセス許可を VM に付与する必要があります。 Connect-AzureAD コマンドレットは直接使用できるほか、複数のテナントがある場合には TenantId パラメータを指定することもできます。
 
 ```powershell
 Connect-AzureAD
+```
+または
+```powershell
+Connect-AzureAD -TenantId "Object Id of the tenant"
 ```
 
 ## <a name="add-your-vm-identity-to-a-group-in-azure-ad"></a>Azure AD 内のグループに VM ID を追加する
@@ -66,7 +72,7 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 Azure AD Graph:
 - サービス プリンシパル appId (アプリのアクセス許可の付与時に使用): 00000002-0000-0000-c000-000000000000
 - リソース ID (Azure リソースのマネージド ID からアクセス トークンを要求するときに使用): https://graph.windows.net
-- アクセス許可のスコープ参照: [Azure AD Graph アクセス許可の参照](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- アクセス許可のスコープに関するリファレンス: [Azure AD Graph のアクセス許可に関するリファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してアプリケーションのアクセス許可を付与する
 
@@ -77,7 +83,13 @@ Azure AD Graph:
    ```powershell
    Connect-AzureAD
    ```
+   特定の Azure Active Directory に接続するには、次のように _TenantId_ パラメーターを使用します。
 
+   ```powershell
+   Connect-AzureAD -TenantId "Object Id of the tenant"
+   ```
+
+   
 2. 次の PowerShell コマンドを実行して、VM の ID を表すサービス プリンシパルに ``Directory.Read.All`` のアプリケーションのアクセス許可を割り当てます。
 
    ```powershell
@@ -153,7 +165,7 @@ VM のシステム割り当てマネージド ID を Azure AD Graph への認証
    $AccessToken = $content.access_token
    ```
 
-5. VM ID のサービス プリンシパルのオブジェクト ID (この値は以前の手順で宣言した変数から取得できます: ``$ManagedIdentitiesServicePrincipal.ObjectId``) を使用して Azure AD Graph API をクエリし、そのグループ メンバーシップを取得できます。 <OBJECT ID> は以前の手順で取得したオブジェクト ID に、<ACCESS-TOKEN> は以前に取得したアクセス トークンにそれぞれ置き換えます:
+5. VM ID のサービス プリンシパルのオブジェクト ID (この値は以前の手順で宣言した変数から取得できます: ``$ManagedIdentitiesServicePrincipal.ObjectId``) を使用して Azure AD Graph API をクエリし、そのグループ メンバーシップを取得できます。 `<OBJECT ID>` は以前の手順で取得したオブジェクト ID に、<`ACCESS-TOKEN>` は以前に取得したアクセス トークンにそれぞれ置き換えます。
 
    ```powershell
    Invoke-WebRequest 'https://graph.windows.net/<Tenant ID>/servicePrincipals/<VM Object ID>/getMemberGroups?api-version=1.6' -Method POST -Body '{"securityEnabledOnly":"false"}' -Headers @{Authorization="Bearer $AccessToken"} -ContentType "application/json"

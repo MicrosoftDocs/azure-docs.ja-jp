@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 1b39de45d5046ce5a59dcaf0648b87aca2a5c6f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: common
+ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868346"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447253"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -25,19 +25,21 @@ ZRS は、ブロック BLOB、非ディスク ページ BLOB、ファイル、�
 
 ZRS は、次のリージョンで一般公開されています。
 
+- 東南アジア
+- 西ヨーロッパ
+- 北ヨーロッパ
+- フランス中部
+- 東日本
+- 英国南部
 - 米国東部
 - 米国東部 2
 - 米国西部 2
 - 米国中部
-- 北ヨーロッパ
-- 西ヨーロッパ
-- フランス中部
-- 東南アジア
 
 Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予定です。 新しいリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>ゾーンが利用不可になった場合
-データは、ゾーンが使用できなくなった場合でもアクセスできます。 一時的な障害の処理の方法に従うことをお勧めします。 これらの方法には、指数バックオフを使用した再試行ポリシーの実行などがあります。
+データは、ゾーンが使用できなくなった場合でも読み取り操作と書き込み操作の両方にアクセスできます。 一時的な障害の処理の方法に従うことをお勧めします。 これらの方法には、指数バックオフを使用した再試行ポリシーの実行などがあります。
 
 ゾーンが利用不可になると、Azure は DNS の再指定などのネットワークの更新を実行します。 このような更新は、更新が完了する前にデータにアクセスしている場合、アプリケーションに影響を与える可能性があります。
 
@@ -48,7 +50,7 @@ LRS、GRS、および RA-GRS 間の移行は簡単です。 アカウントの�
 
 ZRS との間のデータ移行には別の戦略が必要です。 ZRS 移行には、リージョン内の 1 つのストレージ スタンプから複数のスタンプへのデータの物理的移動が含まれます。
 
-ZRS との間の移行には、主に 2 つの選択肢があります。 
+ZRS に移行するとき、主に 2 つの選択肢があります。 
 
 - 既存のアカウントから新しい ZRS アカウントにデータを手動でコピーまたは移動する。
 - ライブ マイグレーションを要求する。
@@ -71,6 +73,7 @@ ZRS との間の移行には、主に 2 つの選択肢があります。
 - アカウントにはデータが含まれている必要があります。
 - 同じリージョン内のデータのみ移行できます。 ソース アカウントとは異なるリージョンにある ZRS アカウントにデータを移行する場合は、手動の移行を実行する必要があります。
 - Standard ストレージ アカウントの種類のみがライブ マイグレーションをサポートします。 Premium ストレージ アカウントは手動で移行する必要があります。
+- ZRS から LRS、GRS、RA-GRS にライブ マイグレーションすることはできません。 新しいストレージ アカウントか既存のストレージ アカウントにデータを手動で移動する必要があります。
 
 ライブ マイグレーションは [Azure サポート ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)から要求できます。 ポータルから、ZRS に変換するストレージ アカウントを選択します。
 1. **[新しいサポート要求]** を選択します
@@ -86,7 +89,33 @@ ZRS との間の移行には、主に 2 つの選択肢があります。
 6. **[連絡先情報]** ブレードの連絡先情報が正しいことを確認します。
 7. **作成**を選択します。
 
-サポート担当者はお客様に連絡し、必要なサポートを提供します。 
+サポート担当者はお客様に連絡し、必要なサポートを提供します。
+
+## <a name="live-migration-to-zrs-faq"></a>ZRS のライブ マイグレーションについてよくあるご質問
+
+**移行中はダウンタイムを予定するべきですか。**
+
+移行によってダウンタイムが発生することはありません。 ライブ マイグレーション中、移行元と移行先のストレージ スタンプの間でデータが移行されているとき、引き続きストレージ アカウントを使用できます。 移行プロセス中は、通常と同じレベルの持続性と可用性の SLA を維持できます。
+
+**移行でデータが失われることはありますか。**
+
+移行でデータが失われることはありません。 移行プロセス中は、通常と同じレベルの持続性と可用性の SLA を維持できます。
+
+**移行が完了したら、アプリケーションを更新する必要はありますか。**
+
+移行が完了すると、アカウントのレプリケーション タイプが "ゾーン冗長ストレージ (ZRS)" に変わります。 サービス エンドポイント、アクセス キー、SAS、その他のアカウント構成オプションは変更されません。
+
+**汎用 v1 アカウントを ZRS にライブ マイグレーションするように依頼できますか。**
+
+ZRS は汎用 v2 アカウントにのみ対応しています。そのため、ZRS へのライブ マイグレーションを依頼する前に、必ずアカウントを汎用 v2 にアップグレードしてください。 詳細については、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」と「[汎用 v2 ストレージ アカウントにアップグレードする](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)」を参照してください。
+
+**読み取りアクセス geo 冗長ストレージ (RA-GRS) アカウントを ZRS にライブ マイグレーションするように依頼できますか。**
+
+ZRS へのライブ マイグレーションを依頼する前に、アプリケーションとワークロードで読み取り専用セカンダリ エンドポイントにアクセスする必要がないことを確認し、ストレージ アカウントのレプリケーション タイプを geo 冗長ストレージ (GRS) に変更してください。 詳細については、「[レプリケーション戦略の変更](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy)」を参照してください。
+
+**別のリージョンにある ZRS にストレージ アカウントをライブ マイグレーションするように依頼できますか。**
+
+ソース アカウントのリージョンとは異なるリージョンにある ZRS アカウントにデータを移行する場合は、手動で移行する必要があります。
 
 ## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS クラシック:BLOB の冗長性をブロックするレガシー オプション
 > [!NOTE]
@@ -99,6 +128,20 @@ ZRS クラシックでは、1 つから 2 つのリージョン内の複数の�
 ZRS クラシックを利用できるのは、汎用 V1 (GPv1) ストレージ アカウントの**ブロック BLOB** に限られます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](storage-account-overview.md)」をご覧ください。
 
 LRS、ZRS クラシック、GRS、または RA-GRS アカウントとの間で ZRS アカウント データを手動で移行するには、次のいずれかのツールを使用します:AzCopy、Azure Storage Explorer、Azure PowerShell、または Azure CLI。 また、Azure Storage クライアント ライブラリのいずれかを使用して、独自の移行ソリューションを構築することもできます。
+
+また、ZRS が利用できるリージョンであれば、ポータルで、あるいは Azure PowerShell または Azure CLI を使用し、ZRS Classic アカウントを ZRS にアップグレードできます。
+
+ポータルで ZRS にアップグレードするには、アカウントの構成セクションに移動し、[アップグレードする] を選択します。![ポータルで ZRS Classic を ZRS にアップグレードする](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+
+PowerShell を利用して ZRS にアップグレードするには、次のコマンドを呼び出します。
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
+```
+
+CLI を利用して ZRS にアップグレードするには、次のコマンドを呼び出します。
+```cli
+az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
+```
 
 ## <a name="see-also"></a>関連項目
 - [Azure Storage のレプリケーション](storage-redundancy.md)

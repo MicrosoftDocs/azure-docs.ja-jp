@@ -3,19 +3,19 @@ title: PowerShell で Azure Data Lake Storage Gen1 の使用を開始する | Mi
 description: Azure PowerShell を使用して、Azure Data Lake Storage Gen1 アカウントを作成し、基本的な操作を実行する
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 7a465559bd4e46777f67121e9b3c7d2b0b8a0a22
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: twooley
+ms.openlocfilehash: 6635b572d11339307083b8aa2aaaba69dc731101
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986338"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885861"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell を使用して Azure Data Lake Storage Gen1 の使用を開始する
 > [!div class="op_single_selector"]
@@ -31,41 +31,43 @@ Azure PowerShell を使用して、Azure Data Lake Storage Gen1 アカウント�
 
 ## <a name="prerequisites"></a>前提条件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure PowerShell 1.0 以上**。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
 ## <a name="authentication"></a>Authentication
 この記事では、Data Lake Storage Gen1 に対する認証に、Azure アカウントの資格情報を入力する比較的単純な方法を使用しています。 その後、Data Lake Storage Gen1 アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Storage Gen1 には他の認証方法も存在します (**エンド ユーザー認証**と**サービス間認証**)。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの作成
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する
 1. デスクトップで、新しい Windows PowerShell ウィンドウを開きます。 次のスニペットを入力して Azure アカウントにログインし、サブスクリプションを設定して、Data Lake Storage Gen1 プロバイダーを登録します。 ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
 
         # Log in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Azure Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 2. Data Lake Storage Gen1 アカウントは、Azure リソース グループに関連付けられます。 まず、Azure リソース グループを作成します。
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     ![Azure リソース グループの作成](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Azure リソース グループの作成")
 3. Data Lake Storage Gen1 アカウントを作成します。 指定する名前には、小文字と数字のみを含める必要があります。
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     ![Data Lake Storage Gen1 アカウントを作成する](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "Data Lake Storage Gen1 アカウントを作成する")
 4. アカウントが正常に作成されたことを確認します。
 
-        Test-AzureRmDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+        Test-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
     コマンドレットの出力は **True** になります。
 
@@ -77,10 +79,10 @@ Azure PowerShell を使用して、Azure Data Lake Storage Gen1 アカウント�
         $myrootdir = "/"
 2. 指定したルートの下に **mynewdirectory** という新しいディレクトリを作成します。
 
-        New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/mynewdirectory
+        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/mynewdirectory
 3. 新しいディレクトリが正常に作成されたことを確認します。
 
-        Get-AzureRmDataLakeStoreChildItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir
+        Get-AzDataLakeStoreChildItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir
 
     次のスクリーンショットに示すように、出力が表示されます。
 
@@ -91,30 +93,30 @@ Azure PowerShell を使用して、Azure Data Lake Storage Gen1 アカウント�
 
 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。 ファイルをダウンロードし、コンピューター上のローカル ディレクトリ (C:\sampledata\ など) に保存します。
 
-    Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
+    Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 
 
 ## <a name="rename-download-and-delete-data-from-your-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントのデータの名前変更、ダウンロード、削除を行う
 ファイルの名前を変更するには、次のコマンドを使用します。
 
-    Move-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+    Move-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
 
 ファイルをダウンロードするには、次のコマンドを使用します。
 
-    Export-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
+    Export-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
 
 ファイルを削除するには、次のコマンドを使用します。
 
-    Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+    Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
 
 確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、項目を削除します。 削除する複数のファイルがある場合は、すべてのパスをコンマで区切って指定できます。
 
-    Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
+    Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 
 ## <a name="delete-your-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを削除する
 Data Lake Storage Gen1 アカウントを削除するには、次のコマンドを使用します。
 
-    Remove-AzureRmDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+    Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
 確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、アカウントを削除します。
 

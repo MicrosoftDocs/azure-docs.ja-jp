@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: d0af6c098f68c23bf9ef6161bd307afec518ead7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: db48db5ce9402267570ac9e41f9f4b5bec2781ad
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011691"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527950"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -27,6 +27,8 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
 > [!NOTE]
 > Azure API Management では、従来型および Azure Resource Manager の両方の VNet がサポートされています。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -51,26 +53,26 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
     ![API Management の [仮想ネットワーク] メニュー][api-management-using-vnet-menu]
 4. 目的のアクセスの種類を選択します。
 
-    * **外部**: API Management のゲートウェイと開発者ポータルには、パブリック インターネットから外部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
+   * **外部**: API Management のゲートウェイと開発者ポータルには、パブリック インターネットから外部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
 
-    ![パブリック ピアリング][api-management-vnet-public]
+     ![パブリック ピアリング][api-management-vnet-public]
 
-    * **内部**: API Management のゲートウェイと開発者ポータルには、仮想ネットワークから内部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
+   * **内部**: API Management のゲートウェイと開発者ポータルには、仮想ネットワークから内部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
 
-    ![プライベート ピアリング][api-management-vnet-private]`
+     ![プライベート ピアリング][api-management-vnet-private]
 
-    API Management サービスがプロビジョニングされているすべてのリージョンの一覧が表示されます。 すべてのリージョンについて、VNET とサブネットを選択します。 この一覧には、構成しているリージョンで設定された Azure サブスクリプションで使用できる従来型および Resource Manager の仮想ネットワークが含まれます。
+     API Management サービスがプロビジョニングされているすべてのリージョンの一覧が表示されます。 すべてのリージョンについて、VNET とサブネットを選択します。 この一覧には、構成しているリージョンで設定された Azure サブスクリプションで使用できる従来型および Resource Manager の仮想ネットワークが含まれます。
 
-    > [!NOTE]
-    > 上の図の**サービス エンドポイント**には、ゲートウェイ/プロキシ、Azure Portal、開発者ポータル、GIT、およびダイレクト管理エンドポイントが含まれています。
-    > 上の図の**管理エンドポイント**は、Azure Portal と Powershell を使用して構成を管理するためにサービスでホストされるエンドポイントです。
-    > さらに、図にはさまざまなエンドポイントの IP アドレスが示されていますが、API Management サービスは、構成済みのホスト名で**のみ**で応答することに注意してください。
+     > [!NOTE]
+     > 上の図の**サービス エンドポイント**には、ゲートウェイ/プロキシ、Azure Portal、開発者ポータル、GIT、およびダイレクト管理エンドポイントが含まれています。
+     > 上の図の**管理エンドポイント**は、Azure Portal と Powershell を使用して構成を管理するためにサービスでホストされるエンドポイントです。
+     > さらに、図にはさまざまなエンドポイントの IP アドレスが示されていますが、API Management サービスは、構成済みのホスト名で**のみ**で応答することに注意してください。
 
-    > [!IMPORTANT]
-    > Azure API Management インスタンスを Resource Manager VNET にデプロイする場合、サービスは Azure API Management インスタンス以外のリソースを含まない専用サブネットにある必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
-    >
+     > [!IMPORTANT]
+     > Azure API Management インスタンスを Resource Manager VNET にデプロイする場合、サービスは Azure API Management インスタンス以外のリソースを含まない専用サブネットにある必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
+     >
 
-    ![VPN の選択][api-management-setup-vpn-select]
+     ![VPN の選択][api-management-setup-vpn-select]
 
 5. 画面の上部にある **[保存]** をクリックします。
 
@@ -85,9 +87,9 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 ## <a name="enable-vnet-powershell"> </a>PowerShell コマンドレットを使用して VNET 接続を有効にする
 PowerShell コマンドレットを使用して VNET 接続を有効にすることもできます。
 
-* **VNET 内に API Management サービスを作成する**:コマンドレット [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) を使用して、VNET 内に Azure API Management サービスを作成します。
+* **VNET 内に API Management サービスを作成する**:コマンドレット [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) を使用して、VNET 内に Azure API Management サービスを作成します。
 
-* **VNET 内に既存の API Management サービスをデプロイする**:コマンドレット [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) を使用して、既存の Azure API Management サービスを仮想ネットワーク内に移動します。
+* **VNET 内に既存の API Management サービスをデプロイする**:コマンドレット [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) を使用して、既存の Azure API Management サービスを仮想ネットワーク内に移動します。
 
 ## <a name="connect-vnet"> </a>仮想ネットワーク内でホストされる Web サービスに接続する
 API Management サービスが VNET に接続された後で VNET 内のバックエンド サービスにアクセスする方法は、パブリック サービスにアクセスする方法と同じです。 単に、新しい API を作成するときや既存の API を編集するときに Web サービスのローカル IP アドレスまたはホスト名 (VNET に対して DNS サーバーが構成されている場合) を **[Web サービスの URL]** ボックスに入力するだけです。
@@ -104,9 +106,9 @@ API Management サービスを Virtual Network にデプロイするときに発
 
 * **API Management に必要なポート**:API Management がデプロイされるサブネットへの受信トラフィックと送信トラフィックは[ネットワーク セキュリティ グループ][Network Security Group]を使用して制御できます。 これらのポートのいずれかが利用できない場合、API Management は正しく動作しない可能性があり、アクセス不能になる場合があります。 VNET で API Management を使用した場合の不正な構成に関するその他の一般的な問題として、これらの 1 つまたは複数のポートがブロックされていることが挙げられます。
 
-API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。
+<a name="required-ports"> </a> API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。
 
-| ソース / ターゲット ポート | 方向          | トランスポート プロトコル |   [サービス タグ](../virtual-network/security-overview.md#service-tags) <br> ソース / ターゲット   | 目的 ( * )                                                 | 仮想ネットワークの種類 |
+| ソース / ターゲット ポート | Direction          | トランスポート プロトコル |   [サービス タグ](../virtual-network/security-overview.md#service-tags) <br> ソース / ターゲット   | 目的 ( * )                                                 | 仮想ネットワークの種類 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | 受信            | TCP                | INTERNET / VIRTUAL_NETWORK            | API Management へのクライアント通信                      | 外部             |
 | * / 3443                     | 受信            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure Portal と Powershell 用の管理エンドポイント         | 外部 / 内部  |
@@ -126,11 +128,11 @@ API Management サービス インスタンスが VNET でホストされてい�
 >[!IMPORTANT]
 > "*目的*" が**太字**になっているポートは、API Management サービスの正常なデプロイを必要とします。 ただし、その他のポートをブロックすると、実行中のサービスの使用と監視を行う能力が低下します。
 
-* **SSL 機能**:SSL 証明書チェーンの構築と検証を有効にするには、API Management サービスに ocsp.msocsp.com、mscrl.microsoft.com、および crl.microsoft.com に対する送信ネットワーク接続が必要です。 API Management にアップロードする任意の証明書に CA ルートへの完全なチェーンが含まれている場合、この依存関係は必要ありません。
++ **SSL 機能**:SSL 証明書チェーンの構築と検証を有効にするには、API Management サービスに ocsp.msocsp.com、mscrl.microsoft.com、および crl.microsoft.com に対する送信ネットワーク接続が必要です。 API Management にアップロードする任意の証明書に CA ルートへの完全なチェーンが含まれている場合、この依存関係は必要ありません。
 
-* **DNS アクセス**:DNS サーバーとの通信には、ポート 53 での発信アクセスが必要です。 カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは API Management をホストしているサブネットから到達できる必要があります。
++ **DNS アクセス**:DNS サーバーとの通信には、ポート 53 での発信アクセスが必要です。 カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは API Management をホストしているサブネットから到達できる必要があります。
 
-* **メトリックと正常性の監視**:Azure Monitoring エンドポイントへの発信ネットワーク接続、次のドメインで解決されます。 
++ **メトリックと正常性の監視**:Azure Monitoring エンドポイントへの発信ネットワーク接続、次のドメインで解決されます。
 
     | Azure 環境 | エンドポイント                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -138,21 +140,25 @@ API Management サービス インスタンスが VNET でホストされてい�
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure China       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
-* **SMTP リレー**:SMTP リレー用の発信ネットワーク接続。`ies.global.microsoft.com` ホストで解決されます。
++ **SMTP リレー**:SMTP リレー用の送信ネットワーク接続。`smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` の各ホストで解決されます。
 
-* **Azure portal 診断**:仮想ネットワーク内から API Management 拡張機能を使用しているときに、Azure portal から診断ログのフローを有効にするには、ポート 443 での `dc.services.visualstudio.com` への送信アクセスが必要です。 これは、拡張機能の使用時に発生する可能性がある問題のトラブルシューティングに役立ちます。
++ **開発者ポータル CAPTCHA**: 開発者ポータルの CAPTCHA 用の発信ネットワーク接続。ホスト `client.hip.live.com` で解決されます。
 
-* **Express Route セットアップ**:顧客の一般的な構成として、発信インターネット トラフィックを強制的にオンプレミスにフローさせる独自の既定のルート (0.0.0.0/0) を定義します。 このトラフィック フローでは、Azure API Management を使用した接続は必ず切断されます。これは、発信トラフィックがオンプレミスでブロックされるか、さまざまな Azure エンドポイントで有効ではなくなった、認識できないアドレス セットに NAT 処理されることが原因です。 解決策は、Azure API Management を含むサブネット上で 1 つ (以上) のユーザー定義ルート ([UDR][UDRs]) を定義することです。 UDR は、既定のルートに優先するサブネット固有のルートを定義します。
-  可能であれば、次の構成を使用することをお勧めします。
- * ExpressRoute 構成は 0.0.0.0/0 をアドバタイズし、既定でオンプレミスのすべての発信トラフィックを強制的にトンネリングします。
- * Azure API Management を含むサブネットに適用される UDR では、次ホップの種類がインターネットである 0.0.0.0/0 を定義します。
- これらの手順を組み合わせた結果として、サブネット レベル UDR は ExpressRoute 強制トンネリングよりも優先されるので、Azure API Management からの発信インターネット アクセスを確保できます。
++ **Azure portal 診断**:仮想ネットワーク内から API Management 拡張機能を使用しているときに、Azure portal から診断ログのフローを有効にするには、ポート 443 での `dc.services.visualstudio.com` への送信アクセスが必要です。 これは、拡張機能の使用時に発生する可能性がある問題のトラブルシューティングに役立ちます。
 
-* **ネットワーク仮想アプライアンス経由のルーティング**:既定ルート (0.0.0.0/0) の UDR を使って API Management サブネットから Azure 内で実行されているネットワーク仮想アプライアンスを介し、インターネット宛てトラフィックをルーティングする構成では、仮想ネットワーク サブネット内にデプロイされた API Management サービス インスタンスにインターネットから着信する管理トラフィックがブロックされます。 この構成はサポートされていません。
++ **Express Route またはネットワーク仮想アプライアンスを使用したオンプレミスのファイアウォールへのトラフィックの強制トンネリング**: 顧客の一般的な構成では、API Management の委任されたサブネットからのすべてのトラフィックを、オンプレミスのファイアウォールまたはネットワーク仮想アプライアンスに強制的に流す、独自の既定のルート (0.0.0.0/0) が定義されています。 このトラフィック フローでは、Azure API Management を使用した接続は必ず切断されます。これは、発信トラフィックがオンプレミスでブロックされるか、さまざまな Azure エンドポイントで有効ではなくなった、認識できないアドレス セットに NAT 処理されることが原因です。 これを解決するには、いくつかのことを実行する必要があります。
 
->[!WARNING]
->Azure API Management は、**パブリック ピアリング パスからプライベート ピアリング パスにルートを正しくクロスアドバタイズしていない** ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。 これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure API Management インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。 このネットワーク フローでは、Azure API Management が機能しません。 この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
+  * API Management サービスがデプロイされているサブネット上でサービス エンドポイントを有効にします。 Azure SQL、Azure Storage、Azure EventHub、Azure ServiceBus の[サービス エンドポイント][ServiceEndpoints]を有効にする必要があります。 これらのサービスに対して、API Management の委任されたサブネットからエンドポイントを直接有効にすると、サービス トラフィックの最適なルーティングを提供する Microsoft Azure バックボーン ネットワークを使用できるようになります。 トンネリングが強制された API Management でサービス エンドポイントを使用すると、上記の Azure サービス のトラフィックが強制的にトンネリングされることはありません。 API Management サービスの他の 依存関係トラフィックは強制的にトンネリングされ、失われることはありません。依存関係トラフィックが失われた場合、API Management サービスが適切に機能しなくなります。
+    
+  * インターネットから API Management サービスの管理エンドポイントへのすべてのコントロール プレーン トラフィックは、API Management によってホストされている受信 IP の特定のセットを使用してルーティングされます。 トラフィックが強制的にトンネリングされると、応答がこれらの受信送信元 IP に対称的にマップされなくなります。 この制限を克服するには、次のユーザー定義ルート ([UDR][UDRs]) を追加し、これらのホスト ルートの宛先を "Internet" に設定することによってトラフィックを Azure に誘導する必要があります。 コントロール プレーン トラフィックの受信 IP のセットは次のとおりです。
+    
+    > 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、13.64.39.16/32、40.81.47.216/32、51.145.179.78/32、52.142.95.35/32、40.90.185.46/32、20.40.125.155/32
 
+  * 強制的にトンネリングされる、API Management サービスの他の依存関係については、ホスト名を解決し、エンドポイントに到達するための方法が必要です。 次のような方法があります。
+      - メトリックと正常性の監視
+      - Azure portal 診断
+      - SMTP リレー
+      - 開発者ポータル CAPTCHA
 
 ## <a name="troubleshooting"> </a>トラブルシューティング
 * **初回のセットアップ**:API Management サービスのサブネットへの初回のデプロイが成功しなかった場合は、同じサブネットに仮想マシンを先にデプロイすることをお勧めします。 次に、リモート デスクトップを仮想マシンにデプロイし、Azure サブスクリプション内の次のリソースのいずれかに接続できることを確認します。
@@ -160,8 +166,8 @@ API Management サービス インスタンスが VNET でホストされてい�
     * Azure SQL Database
     * Azure Storage Table
 
- > [!IMPORTANT]
- > 接続を確認したら、サブネットにデプロイされているすべてのリソースを必ず削除してから、サブネットに API Management をデプロイしてください。
+  > [!IMPORTANT]
+  > 接続を確認したら、サブネットにデプロイされているすべてのリソースを必ず削除してから、サブネットに API Management をデプロイしてください。
 
 * **増分更新**:ネットワークを変更するときは、[NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus) を参照して、API Management サービスが依存している重要なリソースへのアクセスが失われていないことを確認してください。 接続状態は、15 分間隔で更新されます。
 
@@ -172,7 +178,7 @@ Azure は、各サブネット内で一部の IP アドレスを予約し、こ�
 
 Azure VNET インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 API Management インスタンスは、Premium SKU のユニットごとに 2 つの IP アドレス、または Developer SKU 用に 1 つの IP アドレスを使用します。 各インスタンスによって、外部ロード バランサー用の IP アドレスが別途予約されています。 内部 VNET に展開する場合は、内部ロード バランサー用に追加の IP アドレスが必要です。
 
-前述の計算によると、API Management で展開できるサブネットの最小サイズは /29 で、3 つの IP アドレスを提供します。
+前述の計算によると、API Management で展開できるサブネットの最小サイズは /29 で、3 つの IP アドレスが提供されます。
 
 ## <a name="routing"> </a> ルーティング
 + 負荷分散されたパブリック IP アドレス (VIP) は、すべてのサービス エンドポイントへのアクセスを提供するために予約されます。
@@ -195,7 +201,6 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 * [サービス タグ](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
-[api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
 [api-management-setup-vpn-add-api]: ./media/api-management-using-with-vnet/api-management-using-vnet-add-api.png
 [api-management-vnet-private]: ./media/api-management-using-with-vnet/api-management-vnet-internal.png
@@ -207,3 +212,5 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
 [Network Security Group]: ../virtual-network/security-overview.md
+[ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
+[ServiceTags]: ../virtual-network/security-overview.md#service-tags

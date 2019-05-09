@@ -1,28 +1,29 @@
 ---
-title: Azure Active Directory の条件付きアクセスにおけるベースラインの保護とは (プレビュー) | Microsoft Docs
+title: Azure Active Directory の条件付きアクセスにおけるベースラインの保護とは  (プレビュー) | Microsoft Docs
 description: ベースラインの保護により、Azure Active Directory 環境で少なくともベースライン レベルのセキュリティを有効にする方法について説明します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: nigu
-ms.openlocfilehash: 585a4968672c8bcab0efb988d556e447983dfc5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5b3d8b1daef9f780bbba53f33ae451c63f80249b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158705"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519767"
 ---
 # <a name="what-is-baseline-protection-preview"></a>ベースラインの保護とは (プレビュー)  
 
@@ -51,7 +52,7 @@ ms.locfileid: "50158705"
 
 ![Azure Active Directory](./media/baseline-protection/01.png)
 
-このベースライン ポリシーを使用すると、ユーザーを除外できるようになります。 テナントからロックアウトされないように、1 つの*[緊急アクセス管理アカウント](../users-groups-roles/directory-emergency-access.md)* を除外することができます。
+このベースライン ポリシーを使用すると、ユーザーを除外できるようになります。 テナントからロックアウトされないように、1 つの *[緊急アクセス管理アカウント](../users-groups-roles/directory-emergency-access.md)* を除外することができます。
 
 
 ## <a name="enable-a-baseline-policy"></a>ベースライン ポリシーを有効にする 

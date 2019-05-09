@@ -1,42 +1,41 @@
 ---
 title: 管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
-description: 管理イベントに関するアラートは 10 月 1 日に削除されます。 既存に関するアラートを移行して準備してください。
+description: 管理イベントに関するアラートは 10 月 1 日に削除されます。 既存のアラートを移行して準備してください。
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
-ms.component: alerts
-ms.openlocfilehash: 8fd7161208f6303e03deaacca6a1e2fad24ec45e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580878"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794118"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!WARNING]
 > 管理イベントに関するアラートは 10 月 1 日以降に無効になります。 以下の手順に従って、該当するアラートがあるかどうかを確認し、存在する場合はそのアラートを移行してください。
->
-> 
 
 ## <a name="what-is-changing"></a>変更点
 
 Azure Monitor (旧称 Azure Insights) では、管理イベントからトリガーされ、webhook の URL または電子メール アドレスへの通知を生成するアラートを作成する機能が提供されていました。 次のいずれかの方法でアラートを作成している可能性があります。
 * Azure Portal で、特定の種類のリソースについて、[監視]、[アラート]、[アラートの追加] の順に移動して、[アラート対象] を [イベント] に設定する
-* Add-AzureRmLogAlertRule PowerShell コマンドレットを実行する
+* Add-AzLogAlertRule PowerShell コマンドレットを実行する
 * [アラート REST API](https://docs.microsoft.com/rest/api/monitor/alertrules) を odata.type = “ManagementEventRuleCondition” および dataSource.odata.type = “RuleManagementEventDataSource” と共に直接使用する
  
 次の PowerShell スクリプトは、各アラートに設定されている条件だけでなく、サブスクリプション内にある管理イベントに関するすべてのアラートの一覧を返します。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 $alerts = $null
-foreach ($rg in Get-AzureRmResourceGroup ) {
-  $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName
+foreach ($rg in Get-AzResourceGroup ) {
+  $alerts += Get-AzAlertRule -ResourceGroup $rg.ResourceGroupName
 }
 foreach ($alert in $alerts) {
   if($alert.Properties.Condition.DataSource.GetType().Name.Equals("RuleManagementEventDataSource")) {
@@ -105,7 +104,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 * [Azure Portal でアラートを作成する方法についてのガイド](../../azure-monitor/platform/activity-log-alerts.md)に従う
 * [Resource Manager テンプレートを使用してアラートを作成する](../../azure-monitor/platform/alerts-activity-log.md)方法を学習する
  
-以前に作成した、管理イベントに関するアラートは、アクティビティ ログ アラートに自動的には移行されません。 上記の PowerShell スクリプトを使用して、現在構成済みで、かつアクティビティ ログ アラートとして手動で再作成する、管理イベントに関するアラートを一覧表示する必要があります。 この操作は、10 月 1 日より前に行う必要があります。10 月 1 日以降、管理イベントに関するアラートが Azure サブスクリプションに表示されなくなります。 Azure Monitor のメトリック アラート、Application Insights のアラート、および Log Analytics のアラートを含むその他の種類の Azure アラートは、この変更による影響を受けません。 ご質問があれば、後のコメントに投稿してください。
+以前に作成した、管理イベントに関するアラートは、アクティビティ ログ アラートに自動的には移行されません。 上記の PowerShell スクリプトを使用して、現在構成済みで、かつアクティビティ ログ アラートとして手動で再作成する、管理イベントに関するアラートを一覧表示する必要があります。 この操作は、10 月 1 日より前に行う必要があります。10 月 1 日以降、管理イベントに関するアラートが Azure サブスクリプションに表示されなくなります。 Azure Monitor のメトリック アラート、Application Insights のアラート、およびログ検索のアラートを含むその他の種類の Azure アラートは、この変更による影響を受けません。 ご質問があれば、後のコメントに投稿してください。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -116,3 +115,4 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 * [アクティビティ ログ アラート webhook スキーマ](../../azure-monitor/platform/activity-log-alerts-webhook.md) の確認
 * [サービス通知](../../azure-monitor/platform/service-notifications.md) の詳細
 * [アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細については、こちらをご覧ください。
+

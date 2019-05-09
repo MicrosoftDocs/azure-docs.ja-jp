@@ -2,7 +2,7 @@
 title: Durable Functions のファンアウト/ファンイン シナリオ - Azure
 description: Azure Functions の Durable Functions 拡張機能でファンアウト ファンイン シナリオを実装する方法を説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d3dfcb74852f90615af90f9eab3711b1b235c53e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0bef5f1b64ec9f322070ba5c36cab138c7327da2
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341390"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608505"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
@@ -172,6 +172,9 @@ Content-Type: application/json; charset=utf-8
 ## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
 
 Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
+
+> [!NOTE]
+> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Storage` Nuget パッケージをインストールする必要があります。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 

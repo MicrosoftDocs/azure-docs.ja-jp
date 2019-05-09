@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリの app() 式 | Microsoft Docs
-description: app 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータを取得するために、Log Analytics クエリで使用します。
+title: Azure Monitor ログ クエリの app() 式 | Microsoft Docs
+description: app 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからデータを取得するために、Azure Monitor ログ クエリで使用します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: e83ba321a98e40f07ff82e68c7961c2a6a49076d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889456"
 ---
-# <a name="app-expression-in-log-analytics-query"></a>Log Analytics クエリでの app() 式
+# <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor クエリでの app() 式
 
-`app` 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータを取得するために、Log Analytics クエリで使用します。 これは、Log Analytics クエリにアプリケーション データを含めたり、Application Insights のクエリで複数のアプリケーションのデータをクエリしたりする場合に便利です。
+`app` 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからデータを取得するために、Azure Monitor クエリで使用します。 これは、Azure Monitor ログ クエリにアプリケーション データを含めたり、Application Insights のクエリで複数のアプリケーションにわたるデータをクエリしたりする場合に便利です。
 
 
 
@@ -48,6 +48,7 @@ ms.locfileid: "53191837"
 * アプリケーションへの読み取りアクセスが必要です。
 * アプリケーションをその名前で識別することで、アクセス可能なすべてのサブスクリプション全体で一意であるとみなされます。 指定した名前を持つ複数のアプリケーションが存在する場合は、あいまいさのためにクエリが失敗します。 この場合、その他の識別子のいずれかを使用する必要があります。
 * 関連する[ワークスペース](workspace-expression.md)の式を使用して、Log Analytics ワークスペースにわたってクエリを実行します。
+* Application Insights アプリケーションがアラート ルールのリソースとして使用されていない限り、Azure portal を使用して[カスタム ログ検索アラート ルール](../platform/alerts-log.md)を作成する場合、現在のところ検索クエリには app() 式を使用できません。
 
 ## <a name="examples"></a>例
 
@@ -77,5 +78,6 @@ union
 
 ## <a name="next-steps"></a>次の手順
 
-- Log Analytics ワークスペースについては、[ワークスペースの式](workspace-expression.md)を参照してください。
-- [Log Analytics データ](../../azure-monitor/log-query/log-query-overview.md)の保存方法をご覧ください。
+- [ワークスペースの式](workspace-expression.md)に関するページを見て、Log Analytics ワークスペースについて参照します。
+- [Azure Monitor データ](../../azure-monitor/log-query/log-query-overview.md)の格納方法を確認します。
+- [Kusto クエリ言語](/azure/kusto/query/)の完全なドキュメントにアクセスします。

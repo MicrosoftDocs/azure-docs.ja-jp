@@ -2,21 +2,21 @@
 title: Azure Database Migration Service を使用して Azure SQL Database Managed Instance を移行するためのネットワーク トポロジ | Microsoft Docs
 description: Database Migration Service のソースとターゲットの構成について説明します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+author: HJToland3
+ms.author: jtoland
+manager: craigg
+ms.reviewer: craigg
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/8/2018
-ms.openlocfilehash: cd62b60718a35aed9129db61413086266bb9f2c7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 03/12/2019
+ms.openlocfilehash: d12d6b1274a756bfb13761ab999a1539bcee3657
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971081"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58178120"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用して Azure SQL DB Managed Instance を移行するためのネットワーク トポロジ
 この記事では、オンプレミスの SQL サーバーから Azure SQL Database Managed Instance への包括的な移行エクスペリエンスを提供するために Azure Database Migration Service で使用できる、さまざまなネットワーク トポロジについて説明します。
@@ -87,4 +87,5 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 - [Azure Portal を使用した仮想ネットワークの作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
 ## <a name="next-steps"></a>次の手順
-Azure Database Migration Service の概要と、パブリック プレビュー期間中のリージョンごとの利用可能性については、「[Azure Database Migration Service プレビューとは何ですか](dms-overview.md)」という記事を参照してください。 
+- Azure Database Migration Service の概要については、「[Azure Database Migration Service とは](dms-overview.md)」の記事を参照してください。
+- Azure Database Migration Service のリージョン別の提供状況に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration)」のページを参照してください。

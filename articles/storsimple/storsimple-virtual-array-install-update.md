@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21c10c4bf19d4bf72c4ec5005bb95353ed00c7aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7bf064ff01693f7a65c756a99c435d7f1a39840e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256954"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010141"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>StorSimple Virtual Array に更新プログラムをインストールする - Azure Portal
 
@@ -49,7 +49,7 @@ ms.locfileid: "51256954"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをダウンロードするには
 
-1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) に移動します。
+1. Internet Explorer を起動し、[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) に移動します。
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 

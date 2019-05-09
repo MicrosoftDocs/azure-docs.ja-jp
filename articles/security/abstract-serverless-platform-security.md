@@ -27,5 +27,5 @@ ms.locfileid: "53320746"
 * Azure のコンテキストにおける重大なセキュリティの問題と軽減策
 * Microsoft サーバーレス プラットフォームのセキュリティ保護
 
-[ホワイト ペーパーをダウンロードする](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-functions-serverless-platform-security/Microsoft%20Serverless%20Platform.pdf)
+[ホワイト ペーパーをダウンロードする](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-functions-serverless-platform-security/ja-jp/Microsoft_Serverless_Platform_ja-JP.pdf)
 

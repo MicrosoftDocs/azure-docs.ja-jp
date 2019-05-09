@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor Log Analytics レコードでの標準プロパティ | Microsoft Docs
-description: Azure Monitor Log Analytics で複数のデータ型に共通するプロパティについて説明します。
+title: Azure Monitor ログ レコードの標準プロパティ | Microsoft Docs
+description: Azure Monitor ログの複数のデータ型に共通するプロパティについて説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,17 +10,17 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: d2db9d426da58b3783b07210165a55cc6ec27658
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185955"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294724"
 ---
-# <a name="standard-properties-in-log-analytics-records"></a>Log Analytics レコードでの標準プロパティ
-[Log Analytics](../log-query/log-query-overview.md) のデータは、それぞれにプロパティの固有セットがある特定のデータ型を持つ、レコードのセットとして格納されます。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
+# <a name="standard-properties-in-azure-monitor-log-records"></a>Azure Monitor ログ レコードの標準プロパティ
+Azure Monitor のログ データは、それぞれにプロパティの固有セットがある特定のデータ型を持つ、[レコードのセットとして格納](../log-query/log-query-overview.md)されます。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
 
 これらのプロパティの一部は、まだ実装の途中ですので、いくつかのデータ型では表示され、他のデータ型では表示されない可能性があります。
 
@@ -85,8 +85,84 @@ AzureActivity
 ) on _ResourceId  
 ```
 
+次のクエリは、**_ResourceId** を解析し、Azure サブスクリプションごとに課金対象のデータ ボリュームを集計します。
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+```
+
+複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。
+
+## <a name="isbillable"></a>\_IsBillable
+**\_IsBillable** プロパティでは、取り込まれたデータが課金対象かどうかを指定します。 **\_IsBillable** が _false_ のデータは無料で収集され、Azure アカウントには課金されません。
+
+### <a name="examples"></a>例
+課金対象のデータ型を送信しているコンピューターの一覧を取得するには、次のクエリを使用します。
+
+> [!NOTE]
+> 複数の種類のデータにわたるスキャンは実行コストが高いため、`union withsource = tt *` を含むクエリの使用は控えめにしてください。 
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
+
+これを拡張して、課金対象のデータ型を送信している 1 時間あたりのコンピューターの数を返すことができます。
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
+
+## <a name="billedsize"></a>\_BilledSize
+**\_BilledSize** プロパティでは、**\_IsBillable** が true の場合に Azure アカウントに課金されるデータのサイズをバイト単位で指定します。
+
+### <a name="examples"></a>例
+コンピューターごとに、取り込まれた課金可能イベントのサイズを表示するには `_BilledSize` プロパティを使用します。サイズはバイト単位で示されます。
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
+```
+
+コンピューターごとに、取り込まれたイベントの数を表示するには、次のクエリを使用します
+
+```Kusto
+union withsource = tt *
+| summarize count() by Computer | sort by count_ nulls last
+```
+
+コンピューターごとに、取り込まれた課金対象イベントの数を表示するには、次のクエリを使用します 
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last
+```
+
+特定のコンピューターにデータを送信する、課金対象のデータ型のデータ数を表示する場合は、次のクエリを使用します。
+
+```Kusto
+union withsource = tt *
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last 
+```
+
+
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics データの格納方法](../log-query/log-query-overview.md)に関するページをご覧ください。
-- [Log Analytics でのクエリの記述](../../azure-monitor/log-query/get-started-queries.md)に関するレッスンをご覧ください。
-- [Log Analytics クエリでのテーブルの結合](../../azure-monitor/log-query/joins.md)に関するレッスンをご覧ください。
+- [Azure Monitor ログ データの格納](../log-query/log-query-overview.md)方法の詳細を確認する。
+- [ログ クエリの作成](../../azure-monitor/log-query/get-started-queries.md)に関するレッスンを参照する。
+- [ログ クエリでのテーブルの結合](../../azure-monitor/log-query/joins.md)に関するレッスンを参照する。

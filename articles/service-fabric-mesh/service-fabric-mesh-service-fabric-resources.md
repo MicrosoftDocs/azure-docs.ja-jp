@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3eeabd4c3bf099d7a0c7007bdf0c8c7e85f3381e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 3cee0ada75c4ea265c7e9c598408eb6b01477d6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889669"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903676"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric リソース モデルの概要
 

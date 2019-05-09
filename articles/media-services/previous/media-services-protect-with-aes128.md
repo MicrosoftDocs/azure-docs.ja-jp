@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9f3fe36eab7dc7fd1921c4e225b5a173fe2e9243
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 6f76d6aed8dc5eed3dbf673b265c404f27b0536d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364875"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526828"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 > [!div class="op_single_selector"]
@@ -29,23 +29,18 @@ ms.locfileid: "46364875"
 >  
 
 > [!NOTE]
-> 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)」を参照してください。 <br/>
-> Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowsAzure パッケージを検索してください。  
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
-## <a name="overview"></a>概要
-> [!NOTE]
-> macOS 上で Safari に配信するために Advanced Encryption Standard (AES) でコンテンツを暗号化する方法については、[こちらのブログ投稿](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)を参照してください。
-> AES 暗号化でメディア コンテンツを保護する方法の概要については、[こちらのビデオ](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption)をご覧ください。
-> 
-> 
-
- Media Services では、AES 128 ビット暗号化キーを使用して暗号化された HTTP ライブ ストリーミング (HLS) およびスムーズ ストリーミングを配信できます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 Media Services で資産を暗号化する場合は、暗号化キーを資産に関連付ける必要があります。また、キーの承認ポリシーを構成する必要があります。 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES でコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
+Media Services では、AES 128 ビット暗号化キーを使用して暗号化された HTTP ライブ ストリーミング (HLS) およびスムーズ ストリーミングを配信できます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 Media Services で資産を暗号化する場合は、暗号化キーを資産に関連付ける必要があります。また、キーの承認ポリシーを構成する必要があります。 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES でコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[単純 Web トークン](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と [JSON Web トークン](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。 詳細については、「[コンテンツ キー承認ポリシーの構成](media-services-protect-with-aes128.md#configure_key_auth_policy)」を参照してください。
 
 動的暗号化を使用するには、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産が必要です。 また、資産の配信ポリシーを構成する必要があります (この記事で後述します)。 次に、ストリーミング URL で指定された形式に基づいて、オンデマンド ストリーミング サーバーは、選択されたプロトコルでストリームを配信できるようにします。 そのため、単一のストレージ形式のファイルだけに対して保存と支払を行う必要があります。 Media Services は、クライアントからの要求に応じて適切な応答を作成して返します。
 
 この記事には、保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。 この記事では、承認ポリシーを使用するキー配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが暗号化キーを受け取ることができるようになります。 また、動的暗号化の使用方法についても説明します。
+
+macOS 上で Safari に配信するために Advanced Encryption Standard (AES) でコンテンツを暗号化する方法については、[こちらのブログ投稿](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)を参照してください。
+AES 暗号化でメディア コンテンツを保護する方法の概要については、[こちらのビデオ](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption)をご覧ください。
 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128 動的暗号化とキー配信サービスのワークフロー
@@ -140,13 +135,13 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-[Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
+[Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
 
 ## <a id="client_request"></a>クライアントが配信サービスにキーを要求する方法
 以前の手順で、マニフェスト ファイルを参照する URL を構成しました。 クライアントは、キー配信サービスへの要求を実行するために、ストリーミング マニフェスト ファイルから必要な情報を抽出する必要があります。
 
 ### <a name="manifest-files"></a>マニフェスト ファイル
-クライアントはマニフェスト ファイルから URL 値 (コンテンツ キー ID [kid] も含まれる) を抽出する必要があります。 その後、クライアントは、キー配信サービスからの暗号化キーの取得を試みます。 また、クライアントは、IV 値を抽出し、それを使ってストリームの暗号化を解除する必要もあります。 次のスニペットでは、Smooth Streaming マニフェストの <Protection> 要素を示します。
+クライアントはマニフェスト ファイルから URL 値 (コンテンツ キー ID [kid] も含まれる) を抽出する必要があります。 その後、クライアントは、キー配信サービスからの暗号化キーの取得を試みます。 また、クライアントは、IV 値を抽出し、それを使ってストリームの暗号化を解除する必要もあります。 次のスニペットでは、Smooth Streaming マニフェストの `<Protection>` 要素を示します。
 
 ```xml
     <Protection>
@@ -164,7 +159,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 
 HLS の場合、ルート マニフェストはセグメント ファイルに分割されます。 
 
-たとえば、ルート マニフェストは http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) です。 これにはセグメント ファイル名の一覧が含まれています。
+たとえば、ルート マニフェストは http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) です。 これにはセグメント ファイル名の一覧が含まれています。
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -173,7 +168,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-セグメント ファイルのいずれかをテキスト エディターで開いた場合 (例: http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)、ファイルが暗号化されていることを示す #EXT-X-KEY が含まれます。
+セグメント ファイルのいずれかをテキスト エディターで開くと (たとえば、http:\///test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)、それには #EXT-X-KEY キーが含まれ、ファイルが暗号化されていることを示します。
 
     #EXTM3U
     #EXT-X-VERSION:4

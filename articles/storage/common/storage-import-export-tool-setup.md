@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: c122d4bc0091eade90c2491c5893f7a2f5c9f455
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: d2ce6c409ae9cbf99589d11dfc850e2324d1b0c9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526880"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452415"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ed1fedab45ce59af2c67ed8a2ef60714d26d5801
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2a1785b9c749a8c413987974446190aafc08ed3a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105592"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -28,17 +28,17 @@ ms.locfileid: "53091028"
 
 次の表では、Event Hubs で提供されるサービス レベルを比較しています。 Standard のほとんどの機能が従量課金であるのに対し、Event Hubs Dedicated プランは月額固定価格となっています。 Dedicated レベルの機能は Standard プランとすべて同じですが、要求の厳しいワークロードを実行するお客様向けにエンタープライズ スケールの容量で提供されます。 
 
-| 機能 | 標準 | 専用 |
-| --- |:---:|:---:|:---:|
+| 機能 | Standard | 専用 |
+| --- |:---:|:---:|
 | イングレス イベント | 100 万イベントごとの課金 | あり |
 | スループット単位 (1 MB/秒イングレス、2 MB/秒エグレス) | 1 時間ごとの課金 | あり |
-| メッセージ サイズ | 256 KB | 1 MB |
-| パブリッシャー ポリシー | [はい] | [はい] |   
+| メッセージ サイズ | 1 MB | 1 MB |
+| パブリッシャー ポリシー | はい | はい |   
 | コンシューマー グループ | 20 | 20 |
-| メッセージ リプレイ | [はい] | [はい] |
+| メッセージ リプレイ | はい | はい |
 | 最大スループット ユニット | 20 (～ 100)   | 1 容量ユニット (CU) ≈ 50 |
 | 仲介型接続 | 1,000 (付属) | 100,000 (付属) |
-| 追加の仲介型接続 | [はい] | [はい] |
+| 追加の仲介型接続 | はい | はい |
 | メッセージのリテンション期間 | 1 日分が含まれます | 最大 7 日分が含まれます |
 | キャプチャ | 1 時間ごとの課金 | あり |
 
@@ -47,7 +47,6 @@ ms.locfileid: "53091028"
 Event Hubs Dedicated を使用することで実現する利点を次に示します。
 
 * 他のテナントからのノイズがないシングル テナント ホスティング。
-* メッセージ サイズを 1 MB に拡大 (Standard では 256 KB)。
 * パフォーマンスを常に再現可能。
 * ニーズの急増に対応するための容量を保証。
 * マイクロバッチおよび長期リテンション期間と統合できるように、Event Hubs の[キャプチャ](event-hubs-capture-overview.md)機能が含まれます。

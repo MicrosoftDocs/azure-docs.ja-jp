@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
-ms.component: autoscale
-ms.openlocfilehash: 85a93746f3d10c5b4dae4f50cd539d515960bd54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: autoscale
+ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584328"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085645"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -38,7 +38,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 
 ## <a name="resource-metrics"></a>リソース メトリック
 リソースは、メトリックを出力します。これらのメトリックは、後でルールに従って処理されます。 メトリックは、さまざまな方法で取得されます。
-仮想マシン スケール セットは、Azure 診断エージェントからのテレメトリ データを使用します。一方、Web アプリおよびクラウド サービスのテレメトリは、Azure インフラストラクチャから直接取得されます。 一般的に使用される統計情報として、CPU 使用率、メモリ使用量、スレッド数、キューの長さ、ディスク使用量などがあります。 使用できるテレメトリ データの一覧については、[自動スケールの一般的なメトリック](../../azure-monitor/platform/autoscale-common-metrics.md)に関するページを参照してください。
+仮想マシン スケール セットは、Azure Diagnostics エージェントからのテレメトリ データを使用します。一方、Web アプリおよびクラウド サービスのテレメトリは、Azure インフラストラクチャから直接取得されます。 一般的に使用される統計情報として、CPU 使用率、メモリ使用量、スレッド数、キューの長さ、ディスク使用量などがあります。 使用できるテレメトリ データの一覧については、[自動スケールの一般的なメトリック](../../azure-monitor/platform/autoscale-common-metrics.md)に関するページを参照してください。
 
 ## <a name="custom-metrics"></a>カスタム メトリック
 アプリケーションから出力されている可能性のある独自のカスタム メトリックを利用することもできます。 メトリックを Application Insights に送信するようにアプリケーションを構成している場合は、これらのメトリックを利用して、スケールするかどうかを決定することができます。
@@ -66,15 +66,15 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 
 - **自動スケール設定** は自動スケールエンジンによって読み取られ、スケールアップまたはダウンするかどうかが判断されます。 1 つ以上のプロファイル、ターゲット リソースに関する情報、および通知の設定が含まれています。
 
-    - **自動スケール プロファイル**は、次の要素を組み合わせたものです。
+  - **自動スケール プロファイル**は、次の要素を組み合わせたものです。
 
-        - **容量設定**。インスタンスの数の最小値、最大値、既定値を示します。
-        - **一連のルール**。各ルールに、トリガー (時間またはメトリック) とスケール アクション (スケールアップまたはスケールダウン) が含まれています。
-        - **繰り返し**。自動スケールによってこのプロファイルがいつ有効になるかを示します。
+    - **容量設定**。インスタンスの数の最小値、最大値、既定値を示します。
+    - **一連のルール**。各ルールに、トリガー (時間またはメトリック) とスケール アクション (スケールアップまたはスケールダウン) が含まれています。
+    - **繰り返し**。自動スケールによってこのプロファイルがいつ有効になるかを示します。
 
-        さまざまな重複する要件に対処できるように、複数のプロファイルを設定できます。 たとえば、一日 の異なる時間、または曜日に異なる自動スケール プロファイルを設定することができます。
+      さまざまな重複する要件に対処できるように、複数のプロファイルを設定できます。 たとえば、一日 の異なる時間、または曜日に異なる自動スケール プロファイルを設定することができます。
 
-    - **通知設定** によって、自動スケール設定プロファイルのいずれかの基準が満たされていることに基づいて、自動スケール イベントが発生したときに、どの通知が行われるかが定義されます。 自動スケールでは、1 つ以上の電子メール アドレスに通知したり、1 つ以上の webhook の呼び出しを行ったりすることができます。
+  - **通知設定** によって、自動スケール設定プロファイルのいずれかの基準が満たされていることに基づいて、自動スケール イベントが発生したときに、どの通知が行われるかが定義されます。 自動スケールでは、1 つ以上の電子メール アドレスに通知したり、1 つ以上の webhook の呼び出しを行ったりすることができます。
 
 
 ![Azure 自動スケール設定、プロファイル、およびルール構造](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
@@ -120,3 +120,4 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 * [自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [自動スケールの REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 * [仮想マシン スケール セットの自動スケールに関するトラブルシューティング](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+

@@ -4,103 +4,97 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Python を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/20/2018
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a93a044279cccd883de5f946bb236cad4b088ae2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0fa60f8dc7a1bb0f72080e91adb1149c1c4c082d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261979"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234449"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>クイック スタート:Bing Image Search REST API と Python を使用してイメージを検索する
 
-このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな Python アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
-
-このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイック スタートでは、Bing Image Search API に検索要求を送信する基本的な方法について説明します。 この Python アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 この例は、起動 Binder バッジ上でクリックすることで、[MyBinder](https://mybinder.org) の Jupyter Notebook として実行できます。
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
 
-また、このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) で入手できます。
+このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) で入手できます。
+
 
 ## <a name="prerequisites"></a>前提条件
 
+* [Python 2.x または 3.x](https://www.python.org/)
+* [Python Imaging Library (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
+* [matplotlib](https://matplotlib.org/) 
+
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-## <a name="running-the-quickstart"></a>クイックスタートの実行
+1. 任意の IDE またはエディターで新しい Python ファイルを作成し、次のモジュールをインポートします。 サブスクリプション キー、検索のエンドポイント、検索語句の変数を作成します。
 
-まず、`subscription_key` を Bing API サービスの有効なサブスクリプション キーに設定します。
+    ```python
+    import requests
+    import matplotlib.pyplot as plt
+    from PIL import Image
+    from io import BytesIO
+    
+    subscription_key = "your-subscription-key"
+    search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
+    search_term = "puppies"
+    ```
 
-```python
-subscription_key = None
-assert subscription_key
-```
+2. ディクショナリを作成し、サブスクリプション キーを値として追加して、`Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加します。 
 
-次に、`search_url` エンドポイントが正しいことを確認します。 このドキュメントの作成時点では、Bing Search APIs にはエンドポイントは 1 つだけ使用されます。 承認エラーが発生した場合は、Azure ダッシュボードの Bing Search エンドポイントに対するこの値を再確認してください。
+    ```python
+    headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
+    ```
 
+## <a name="create-and-send-a-search-request"></a>検索要求を作成して送信する
 
-```python
-search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
-```
+1. 検索要求のパラメーターに使用するディクショナリを作成します。 `q` パラメーターに検索語句を追加します。 パブリック ドメインから画像を検索するために、`license` パラメーターには "public" を使用します。 写真のみを検索する場合は、`imageType` に "photo" を使用します。
 
-`search_term` に、子犬の画像を検索するための値 (puppies) を設定します。
+    ```python
+    params  = {"q": search_term, "license": "public", "imageType": "photo"}
+    ```
 
+2. `requests` ライブラリを使用して、Bing Image Search API を呼び出します。 ヘッダーとパラメーターを要求に追加し、その応答を JSON オブジェクトとして返します。 
 
-```python
-search_term = "puppies"
-```
+    ```python
+    response = requests.get(search_url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = response.json()
+    ```
 
-次のブロックでは、Python 内の `requests` ライブラリを使用して、Bing Search API を呼び出し、JSON オブジェクトとして結果を返します。 `headers` を介して API キーを渡し、`params` ディクショナリを介して検索用語を渡していることに注意してください。 検索結果をフィルター処理するために使用できる全オプションの一覧を確認するには、「[REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)」ドキュメントをご覧ください。
+## <a name="view-the-response"></a>応答の表示
 
+1. matplotlib ライブラリを使用して、4 つの列と 4 つの行から成る新しい図を作成します。 
 
-```python
-import requests
+2. 図の行と列を繰り返し処理し、PIL ライブラリの `Image.open()` メソッドを使用して、それぞれの領域に画像のサムネイルを追加します。 
 
-headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-params  = {"q": search_term, "license": "public", "imageType": "photo"}
-response = requests.get(search_url, headers=headers, params=params)
-response.raise_for_status()
-search_results = response.json()
-```
+    ```python
+    f, axes = plt.subplots(4, 4)
+    for i in range(4):
+        for j in range(4):
+            image_data = requests.get(thumbnail_urls[i+4*j])
+            image_data.raise_for_status()
+            image = Image.open(BytesIO(image_data.content))        
+            axes[i][j].imshow(image)
+            axes[i][j].axis("off")
+    ```
 
-`search_results` オブジェクトには、実際の画像が、関連項目などの豊富なメタデータと共に含まれています。 たとえば、次のコード行では、最初の 16 の結果のサムネイルの URL を抽出できます。
+3. `plt.show()` を使用して図を描画し、画像を表示します。
 
-
-```python
-thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
-```
-
-次に、`PIL` ライブラリを使用してサムネイル画像をダウンロードし、`matplotlib` ライブラリを使用してそれらの画像を 4 列 x 4 行のグリッドに出力します。
-
-
-```python
-%matplotlib inline
-import matplotlib.pyplot as plt
-from PIL import Image
-from io import BytesIO
-
-f, axes = plt.subplots(4, 4)
-for i in range(4):
-    for j in range(4):
-        image_data = requests.get(thumbnail_urls[i+4*j])
-        image_data.raise_for_status()
-        image = Image.open(BytesIO(image_data.content))        
-        axes[i][j].imshow(image)
-        axes[i][j].axis("off")
-plt.show()
-```
-
-## <a name="sample-json-response"></a>サンプルの JSON 応答
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Image Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。
 
@@ -144,7 +138,7 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -153,10 +147,8 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 > [!div class="nextstepaction"]
 > [Bing Image Search の単一ページ アプリのチュートリアル](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目
-
-* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Bing Image Search API とは](../overview.md)  
+* Bing Search API シリーズの[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 * [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

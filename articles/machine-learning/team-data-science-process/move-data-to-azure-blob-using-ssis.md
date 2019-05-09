@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8cd7fc5b69fd3ef124a96f00466a0d9a8c4e2240
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844785"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure Blob Storage 間でデータを移動する
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
@@ -55,7 +55,7 @@ SSIS のトレーニング資料については、 [SSIS の実践的トレー�
 SISS を使用して稼働状態にし、簡単な ETL (抽出、変換、読み込み) パッケージを作成する方法については、[SSIS チュートリアル:簡単な ETL パッケージの作成](https://msdn.microsoft.com/library/ms169917.aspx)に関する記事をご覧ください。
 
 ## <a name="download-nyc-taxi-dataset"></a>NYC タクシー データセットをダウンロードする
-ここで説明する例では、一般公開されているデータセットである、 [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセットを使用します。 このデータセットは、2013 年のニューヨーク市における約 1 億 7300 万件のタクシー乗車情報で構成されています。 データには、乗車の詳細データと料金データの 2 種類があります。 月ごとにファイルが用意されているため、全部で 24 ファイルになり、各ファイルは圧縮されていない状態で約 2 GB になります。
+ここで説明する例では、一般公開されているデータセットである、 [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセットを使用します。 このデータセットは、2013 年のニューヨーク市における約 1 億 7300 万件のタクシー乗車情報で構成されています。 データには、乗車の詳細データと料金データの 2 種類があります。 月ごとにファイルが用意されているため、全部で 24 ファイルになり、各ファイルは圧縮されていない状態で約 2 GB になります。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
 SSIS 機能パックを使用して、データをオンプレミスから Azure BLOB ストレージに移動するには、次に示す [**Azure BLOB アップロード タスク**](https://msdn.microsoft.com/library/mt146776.aspx)のインスタンスを使用します。

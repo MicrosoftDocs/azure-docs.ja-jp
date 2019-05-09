@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Speech Service を使用して言語モデルを作成する方法について説明します。 このカスタム言語モデルを Microsoft が提供する既存の最先端の音声モデルと組み合わせて使用して、アプリケーションに音声操作を追加します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: e65fa21eefcc103f553f8e1bc47792ac372c59e3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8276b86df2dc1bc90fc07da262aa0979f7562619
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975442"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548491"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>チュートリアル: カスタム言語モデルを作成する
 
@@ -59,7 +59,7 @@ Azure portal での Speech Services サブスクリプションの作成につ�
 | 1 行あたりの発話の数 | 1 |
 | ファイルの最大サイズ | 1.5 GB |
 | 解説 | 文字を 5 回以上繰り返さないようにします (例: 'aaaaa')|
-| 解説 | '\t' などの特殊文字や、[Unicode 文字コード表](http://www.utf8-chartable.de/) の U+00A1 より上のその他の UTF-8 文字は使用しません|
+| 解説 | '\t' などの特殊文字や、[Unicode 文字コード表](https://www.utf8-chartable.de/) の U+00A1 より上のその他の UTF-8 文字は使用しません|
 | 解説 | 一意に発音する方法がないため、URI も拒否されます|
 
 テキストのインポート時に、システムで処理できるように、テキストの正規化が行われます。 ただし、"_データをアップロードする前_" にユーザーが行う必要があるいくつかの重要な正規化があります。 [文字起こしガイドライン](prepare-transcription.md)を参照して、言語データを準備する際に使用するのが適切な言語を判断してください。

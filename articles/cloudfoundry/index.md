@@ -12,11 +12,11 @@ ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
 ms.openlocfilehash: 850ed1418a8880e30273f62aec3b3420c41b2ef6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294519"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198080"
 ---
 <div class="content">
     <h1>Azure での Cloud Foundry</h1>

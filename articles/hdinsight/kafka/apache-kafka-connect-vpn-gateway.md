@@ -9,19 +9,21 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6807a14bb7b46389abbc4c5a44e7699c79e29dff
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283072"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361623"
 ---
-# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Kafka に接続する
+# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Apache Kafka に接続する
 
-Azure Virtual Network 経由で HDInsight 上の Kafka へ直接接続する方法について説明します。 このドキュメントでは、次の構成での Kafka への接続の詳細を示します。
+Azure Virtual Network 経由で HDInsight 上の Apache Kafka へ直接接続する方法について説明します。 このドキュメントでは、次の構成での Kafka への接続の詳細を示します。
 
 * オンプレミス ネットワーク内のリソースからの接続。 この接続は、ローカル ネットワーク上の VPN デバイス (ソフトウェアまたはハードウェア) を使用して確立します。
 * VPN ソフトウェア クライアントを使用した開発環境からの接続。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="architecture-and-planning"></a>アーキテクチャと計画
 
@@ -31,37 +33,37 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
 
 * オンプレミス ネットワークなどのプライベート ネットワークを仮想ネットワークに接続する。 この構成では、オンプレミス ネットワーク内のクライアントから直接 Kafka を操作することができます。 この構成を有効にするには、次のタスクを実行します。
 
-    1. 仮想ネットワークを作成します。
-    2. サイト間構成を使用する VPN ゲートウェイを作成します。 このドキュメントで使用する構成では、オンプレミス ネットワーク内の VPN ゲートウェイ デバイスへ接続します。
-    3. 仮想ネットワーク内に DNS サーバーを作成します。
-    4. 各ネットワークの DNS サーバー間の転送を構成します。
-    5. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
+  1. 仮想ネットワークを作成します。
+  2. サイト間構成を使用する VPN ゲートウェイを作成します。 このドキュメントで使用する構成では、オンプレミス ネットワーク内の VPN ゲートウェイ デバイスへ接続します。
+  3. 仮想ネットワーク内に DNS サーバーを作成します。
+  4. 各ネットワークの DNS サーバー間の転送を構成します。
+  5. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
 
-    詳細については、「[オンプレミス ネットワークから Kafka に接続する](#on-premises)」セクションを参照してください。 
+     詳細については、「[オンプレミス ネットワークから Apache Kafka に接続する](#on-premises)」セクションを参照してください。 
 
 * VPN ゲートウェイと VPN クライアントを使用して、仮想ネットワークに各マシンを接続する。 この構成を有効にするには、次のタスクを実行します。
 
-    1. 仮想ネットワークを作成します。
-    2. ポイント対サイト構成を使用する VPN ゲートウェイを作成します。 この構成は、Windows と MacOS の両方のクライアントで使用することができます。
-    3. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
-    4. IP を提供するように Kafka を構成します。 この構成を行うことで、クライアントでドメイン名の代わりに ブローカー IP アドレスを使用して接続を行えるようになります。
-    5. 開発システムに VPN クライアントをダウンロードして使用します。
+  1. 仮想ネットワークを作成します。
+  2. ポイント対サイト構成を使用する VPN ゲートウェイを作成します。 この構成は、Windows と MacOS の両方のクライアントで使用することができます。
+  3. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
+  4. IP を提供するように Kafka を構成します。 この構成を行うことで、クライアントでドメイン名の代わりに ブローカー IP アドレスを使用して接続を行えるようになります。
+  5. 開発システムに VPN クライアントをダウンロードして使用します。
 
-    詳細については、「[VPN クライアントを使用して Kafka に接続する](#vpnclient)」セクションを参照してください。
+     詳細については、「[VPN クライアントを使用して Apache Kafka に接続する](#vpnclient)」セクションを参照してください。
 
-    > [!WARNING]
-    > この構成には次の制限があるため、推奨されるのは開発用途のみです。
-    >
-    > * 各クライアントは、VPN ソフトウェア クライアントを使用して接続する必要があります。
-    > * この VPN クライアントは仮想ネットワークに名前解決要求を渡さないため、Kafka との通信には IP アドレスを使用する必要があります。 IP で通信を行うには、Kafka クラスターで追加の構成を行う必要があります。
+     > [!WARNING]  
+     > この構成には次の制限があるため、推奨されるのは開発用途のみです。
+     >
+     > * 各クライアントは、VPN ソフトウェア クライアントを使用して接続する必要があります。
+     > * この VPN クライアントは仮想ネットワークに名前解決要求を渡さないため、Kafka との通信には IP アドレスを使用する必要があります。 IP で通信を行うには、Kafka クラスターで追加の構成を行う必要があります。
 
-仮想ネットワークで HDInsight を使用する方法については、[Azure Virtual Network を使用した HDInsight の機能拡張](../hdinsight-extend-hadoop-virtual-network.md)に関する記事を参照してください。
+仮想ネットワークでの HDInsight の使用の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](../hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
 
-## <a id="on-premises"></a> オンプレミス ネットワークから Kafka に接続する
+## <a id="on-premises"></a> オンプレミス ネットワークから Apache Kafka に接続する
 
 「[Connect HDInsight to your on-premises network (オンプレミス ネットワークに HDInsight を接続する)](./../connect-on-premises-network.md)」の手順に従って、オンプレミス ネットワークと通信する Kafka クラスターを作成します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight クラスターの作成時には、クラスター種類で __Kafka__ を選択します。
 
 これらの手順により、次の構成が作成されます。
@@ -71,9 +73,9 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
 * Azure Storage アカウント (HDInsight で使用します)
 * HDInsight 上の Kafka
 
-Kafka クライアントがオンプレミスからクラスターへ接続できることを確認するには、「[例: Python クライアント](#python-client)」セクションの手順を実行します。
+Kafka クライアントがオンプレミスからクラスターへ接続できることを確認するには、「[例:Python クライアント](#python-client)」セクションの手順を実行します。
 
-## <a id="vpnclient"></a> VPN クライアントを使用して Kafka に接続する
+## <a id="vpnclient"></a> VPN クライアントを使用して Apache Kafka に接続する
 
 このセクションの手順では、次の構成を作成します。
 
@@ -87,9 +89,9 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 2. PowerShell プロンプトを開き、次のコードを使用して Azure サブスクリプションにログインします。
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     # If you have multiple subscriptions, uncomment to set the subscription
-    #Select-AzureRmSubscription -SubscriptionName "name of your subscription"
+    #Select-AzSubscription -SubscriptionName "name of your subscription"
     ```
 
 3. 次のコードを使用して、構成情報を含む変数を作成します。
@@ -133,35 +135,35 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
     ```powershell
     # Create the resource group that contains everything
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create the subnet configuration
-    $defaultSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $defaultSubnetName `
+    $defaultSubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $defaultSubnetName `
         -AddressPrefix $defaultSubnetPrefix
-    $gatewaySubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
+    $gatewaySubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
         -AddressPrefix $gatewaySubnetPrefix
 
     # Create the subnet
-    New-AzureRmVirtualNetwork -Name $networkName `
+    New-AzVirtualNetwork -Name $networkName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
         -AddressPrefix $networkAddressPrefix `
         -Subnet $defaultSubnetConfig, $gatewaySubnetConfig
 
     # Get the network & subnet that were created
-    $network = Get-AzureRmVirtualNetwork -Name $networkName `
+    $network = Get-AzVirtualNetwork -Name $networkName `
         -ResourceGroupName $resourceGroupName
-    $gatewaySubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
+    $gatewaySubnet = Get-AzVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
         -VirtualNetwork $network
-    $defaultSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $defaultSubnetName `
+    $defaultSubnet = Get-AzVirtualNetworkSubnetConfig -Name $defaultSubnetName `
         -VirtualNetwork $network
 
     # Set a dynamic public IP address for the gateway subnet
-    $gatewayPublicIp = New-AzureRmPublicIpAddress -Name $gatewayPublicIpName `
+    $gatewayPublicIp = New-AzPublicIpAddress -Name $gatewayPublicIpName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
         -AllocationMethod Dynamic
-    $gatewayIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $gatewayIpConfigName `
+    $gatewayIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $gatewayIpConfigName `
         -Subnet $gatewaySubnet `
         -PublicIpAddress $gatewayPublicIp
 
@@ -170,11 +172,11 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
     $rootCertFile = Get-ChildItem $rootCert
     $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($rootCertFile)
     $certBase64 = [System.Convert]::ToBase64String($cert.RawData)
-    $p2sRootCert = New-AzureRmVpnClientRootCertificate -Name $vpnRootCertName `
+    $p2sRootCert = New-AzVpnClientRootCertificate -Name $vpnRootCertName `
         -PublicCertData $certBase64
 
     # Create the VPN gateway
-    New-AzureRmVirtualNetworkGateway -Name $vpnName `
+    New-AzVirtualNetworkGateway -Name $vpnName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
         -IpConfigurations $gatewayIpConfig `
@@ -186,27 +188,27 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
         -VpnClientRootCertificates $p2sRootCert
     ```
 
-    > [!WARNING]
+    > [!WARNING]  
     > このプロセスは、完了するまで数分かかる可能性があります。
 
 5. 次のコードを使用して、Azure Storage アカウントと BLOB コンテナーを作成します。
 
     ```powershell
     # Create the storage account
-    New-AzureRmStorageAccount `
+    New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $storageName `
         -Type Standard_GRS `
         -Location $location
 
     # Get the storage account keys and create a context
-    $defaultStorageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName `
+    $defaultStorageKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
         -Name $storageName)[0].Value
-    $storageContext = New-AzureStorageContext -StorageAccountName $storageName `
+    $storageContext = New-AzStorageContext -StorageAccountName $storageName `
         -StorageAccountKey $defaultStorageKey
 
     # Create the default storage container
-    New-AzureStorageContainer -Name $defaultContainerName `
+    New-AzStorageContainer -Name $defaultContainerName `
         -Context $storageContext
     ```
 
@@ -214,7 +216,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
     ```powershell
     # Create the HDInsight cluster
-    New-AzureRmHDInsightCluster `
+    New-AzHDInsightCluster `
         -ResourceGroupName $resourceGroupName `
         -ClusterName $clusterName `
         -Location $location `
@@ -232,12 +234,12 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
         -SubnetName $defaultSubnet.Id
     ```
 
-  > [!WARNING]
-  > このプロセスは、完了するまで約 15 分かかります。
+   > [!WARNING]  
+   > このプロセスは、完了するまで約 15 分かかります。
 
 ### <a name="configure-kafka-for-ip-advertising"></a>IP を提供するように Kafka を構成する
 
-既定では、Zookeeper は、Kafka ブローカーのドメイン名をクライアントに返します。 この構成では、仮想ネットワーク内のエンティティに対して名前解決を使用できないため、VPN ソフトウェア クライアントは使用できません。 このように構成する場合は、次の手順を実行して、ドメイン名ではなく IP アドレスを提供するように Kafka を構成します。
+既定では、Apache Zookeeper は、Kafka ブローカーのドメイン名をクライアントに返します。 この構成では、仮想ネットワーク内のエンティティに対して名前解決を使用できないため、VPN ソフトウェア クライアントは使用できません。 このように構成する場合は、次の手順を実行して、ドメイン名ではなく IP アドレスを提供するように Kafka を構成します。
 
 1. Web ブラウザーを使用し、 https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
 
@@ -287,7 +289,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 VPN ゲートウェイに接続するには、[ポイント対サイト接続の構成](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)に関するドキュメントの「__Azure への接続__」セクションに従います。
 
-## <a id="python-client"></a>例: Python クライアント
+## <a id="python-client"></a> 例:Python クライアント
 
 Kafka への接続を検証するには、次の手順に従って Python プロデューサーとコンシューマーを作成します。
 
@@ -296,7 +298,7 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
     ```powershell
     $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
 
-    $clusterNICs = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName | where-object {$_.Name -like "*node*"}
+    $clusterNICs = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName | where-object {$_.Name -like "*node*"}
 
     $nodes = @()
     foreach($nic in $clusterNICs) {
@@ -317,29 +319,29 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
     返された情報を、次の手順で使用するために保存します。
 
-2. 次のコマンドを使用して、[kafka-python](http://kafka-python.readthedocs.io/) クライアントをインストールします。
+2. 次のコマンドを使用して、[kafka-python](https://kafka-python.readthedocs.io/) クライアントをインストールします。
 
         pip install kafka-python
 
 3. データを Kafka に送信するには、次の Python コードを使用します。
 
-  ```python
-  from kafka import KafkaProducer
-  # Replace the `ip_address` entries with the IP address of your worker nodes
-  # NOTE: you don't need the full list of worker nodes, just one or two.
-  producer = KafkaProducer(bootstrap_servers=['kafka_broker_1','kafka_broker_2'])
-  for _ in range(50):
+   ```python
+   from kafka import KafkaProducer
+   # Replace the `ip_address` entries with the IP address of your worker nodes
+   # NOTE: you don't need the full list of worker nodes, just one or two.
+   producer = KafkaProducer(bootstrap_servers=['kafka_broker_1','kafka_broker_2'])
+   for _ in range(50):
       producer.send('testtopic', b'test message')
-  ```
+   ```
 
     `'kafka_broker'` エントリを、このセクションの手順 1 で返されたアドレスに置き換えます。
 
-    * __ソフトウェア VPN クライアント__ を使用している場合、`kafka_broker` エントリはワーカー ノードの IP アドレスに置き換えます。
+   * __ソフトウェア VPN クライアント__ を使用している場合、`kafka_broker` エントリはワーカー ノードの IP アドレスに置き換えます。
 
-    * __カスタム DNS サーバー経由での名前解決を有効化__ している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
+   * __カスタム DNS サーバー経由での名前解決を有効化__ している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
 
-    > [!NOTE]
-    > このコードは、文字列 `test message` をトピック `testtopic` に送信します。 HDInsight 上の Kafka の既定の構成では、トピックが存在しない場合は作成します。
+     > [!NOTE]
+     > このコードは、文字列 `test message` をトピック `testtopic` に送信します。 HDInsight 上の Kafka の既定の構成では、トピックが存在しない場合は作成します。
 
 4. Kafka からメッセージを取得するには、次の Python コードを使用します。
 
@@ -371,7 +373,7 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
 * [Azure PowerShell を使用したポイント対サイト接続の構成](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-HDInsight 上の Kafka の操作の詳細については、次のドキュメントを参照してください。
+HDInsight 上の Apache Kafka の操作の詳細については、次のドキュメントを参照してください。
 
-* [HDInsight での Kafka の使用](apache-kafka-get-started.md)
-* [HDInsight 上の Kafka でのミラーリングの使用](apache-kafka-mirroring.md)
+* [HDInsight での Apache Kafka の使用](apache-kafka-get-started.md)
+* [HDInsight 上の Apache Kafka でミラーリングを使用する](apache-kafka-mirroring.md)

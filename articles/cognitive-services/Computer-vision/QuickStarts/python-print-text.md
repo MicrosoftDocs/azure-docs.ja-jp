@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Computer Vision API を使って、画像内の印刷されたテキストを抽出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/21/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4c89ab58e214080855d9ce707ab60a8462ae930c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aba6e57c9e6d51024390d629ebc088326dc4c64e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583529"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652350"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Python を使用して印刷されたテキストを抽出する (OCR)
 
@@ -26,7 +26,7 @@ ms.locfileid: "53583529"
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/try/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -207,10 +207,6 @@ plt.axis("off")
   ]
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

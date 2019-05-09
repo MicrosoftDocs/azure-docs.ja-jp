@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ZephyrSSO の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ZephyrSSO の統合 | Microsoft Docs
 description: Azure Active Directory と ZephyrSSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 47bbdc1c50f0d96f1f26d5595a9e54814fa85188
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3be3008367f5c405f65dfd37b4384726ab2456c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310312"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209525"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>チュートリアル: Azure Active Directory と ZephyrSSO の統合
+# <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>チュートリアル:Azure Active Directory と ZephyrSSO の統合
 
 このチュートリアルでは、ZephyrSSO と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -156,11 +157,11 @@ ZephyrSSO で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-zephyrsso-test-user"></a>ZephyrSSO テスト ユーザーの作成
 
-このセクションでは、ZephyrSSO で Britta Simon というユーザーを作成します。 [ZephyrSSO サポート チーム](https://support.getzephyr.com)と連携し、ZephyrSSO プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ZephyrSSO で Britta Simon というユーザーを作成します。  [ZephyrSSO サポート チーム](https://support.getzephyr.com) と協力して、ZephyrSSO プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -197,7 +198,7 @@ ZephyrSSO で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで ZephyrSSO のタイルをクリックすると、自動的に ZephyrSSO アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -4,7 +4,7 @@ description: クラウドベースのコンピューティング サービスに
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c904d8306c145bad57ca7d77b139a2ad6d216b0b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249032"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500255"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -75,7 +75,7 @@ Azure Active Directory (Azure AD) のセキュリティ上の利点は次のと�
 
 - Azure AD アプリケーション プロキシを通じてオンプレミス Web アプリケーションへの安全なリモート アクセスをプロビジョニングする。
 
-[Azure Active Directory ポータル](http://aad.portal.azure.com/)を Azure Portal の一部として使用できます。 このダッシュボードから組織の状態の概要を確認し、ディレクトリ、ユーザー、またはアプリケーションのアクセスを簡単に管理できます。
+[Azure Active Directory ポータル](https://aad.portal.azure.com/)を Azure Portal の一部として使用できます。 このダッシュボードから組織の状態の概要を確認し、ディレクトリ、ユーザー、またはアプリケーションのアクセスを簡単に管理できます。
 
 ![Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -113,7 +113,7 @@ Azure ID 管理のコア機能は次のとおりです。
 
 セキュリティの監視とアラートや、整合性のないアクセス パターンを識別する機械学習ベースのレポートを使用して、ビジネスを保護できます。 Azure Active Directory のアクセスおよび使用状況レポートを使用すると、組織のディレクトリの整合性とセキュリティを表示できます。 ディレクトリ管理者は、この情報を使用して、リスクを軽減するために適切に計画できるように、セキュリティ上のリスクがある箇所をより適切に確認できます。
 
-[レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)は、Azure Portal または [Azure Active Directory ポータル](http://aad.portal.azure.com/)で、次の方法で分類されます。
+[レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)は、Azure Portal または [Azure Active Directory ポータル](https://aad.portal.azure.com/)で、次の方法で分類されます。
 
 - 異常レポート: 異常と考えられるサインイン イベントが含まれます。 この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
 
@@ -169,7 +169,7 @@ Azure のアクセス制御では、最初に課金に注目します。 [Azure 
 
 セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
 
-![セキュリティで保護されたリソース アクセス ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
+![セキュリティで保護されたリソース アクセス](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 たとえば、RBAC を使用して、ある従業員にはサブスクリプションで仮想マシンを管理できるようにし、他の従業員にも同じサブスクリプション内で SQL データベースを管理できるようにします。
 
@@ -193,7 +193,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 | ----------------  | ----------------- | ----------------- | --------------- |
 | サーバーの暗号化 | サーバーの暗号化 | サーバーの暗号化 | クライアントの暗号化
 | サービス管理キーを使用したサーバー側暗号化 | ユーザーが管理する Azure Key Vault キーを使用したサーバー側暗号化 | オンプレミスの顧客管理キーを使用したサーバー側暗号化 |
-| • Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br> •    マイクロソフトがキーを管理する <br>•    完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する<br>• お客様が Azure Key Vault を使用してキーを制御する<br>• 完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br>• お客様がオンプレミスのキーを制御する <br> •   完全なクラウド機能| • Azure のサービスは解読されたデータを表示できない <br>• お客様がオンプレミス (または別のセキュリティで保護されたストア) にキーを保持する。 キーは Azure のサービスでは使用できません <br>• 制限されたクラウド機能|
+| • Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br> •    マイクロソフトがキーを管理する <br>•    完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する<br>• お客様が Azure Key Vault を使用してキーを制御する<br>• 完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br>• お客様がオンプレミスのキーを管理する <br> •   完全なクラウド機能| • Azure のサービスは解読されたデータを表示できない <br>• お客様がオンプレミス (または別のセキュリティで保護されたストア) にキーを保持する。 キーは Azure のサービスでは使用できません <br>• 制限されたクラウド機能|
 
 ### <a name="enabling-encryption-at-rest"></a>保存時の暗号化を有効にする
 
@@ -216,9 +216,9 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 使用する各ストアで、既存の保存データの暗号化サポートを活用します。
 
-- Azure Storage: 「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)」をご覧ください。
+- Azure Storage:[保存データに対する Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)に関するページを参照してください
 
-- SQL Azure: 「[Transparent Data Encryption (TDE), SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)」(透過的なデータ暗号化 (TDE)、SQL Always Encrypted) をご覧ください
+- SQL Azure: [透過的なデータ暗号化 (TDE)、SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)に関するページを参照してください
 
 - VM とローカル ディスク ストレージ ([Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption))
 
@@ -248,7 +248,7 @@ Azure Key Vault と統合するには、解読に必要なときに AKV から�
 
 保存データの暗号化にはホスト、インフラストラクチャ、およびテナント データの暗号化が関与するため、システム エラーや悪意のある行動によってキーが失われると、暗号化データがすべて失われることがあります。 このため、保存データの暗号化ソリューションに、システム エラーや悪意のある行動に耐性がある、包括的なディザスター リカバリー ストーリーが必要です。
 
-保存データの暗号化が実装されているサービスは通常、暗号化キーやホスト ドライブ (ホスト OS のページ ファイルなど) で暗号化されずに残っているデータの影響を引き続き受けやすい状態にあります。そのため、サービスはホスト ボリュームが暗号化されていることを確認する必要があります。 これを容易にするために、Compute チームは [Bitlocker](https://technet.microsoft.com/library/dn306081.aspx) NKP と DCM サービスとエージェントの拡張機能を使用してホスト ボリュームを暗号化する、ホスト暗号化のデプロイを有効にしています。
+保存データの暗号化が実装されているサービスは通常、暗号化キーやホスト ドライブ (ホスト OS のページ ファイルなど) で暗号化されずに残っているデータの影響を引き続き受けやすい状態にあります。そのため、サービスはホスト ボリュームが暗号化されていることを確認する必要があります。 これを容易にするために、Compute チームは、[BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP と DCM サービスとエージェントの拡張機能を使用してホスト ボリュームを暗号化する、ホスト暗号化のデプロイを有効にしました。
 
 ほとんどのサービスは標準の Azure VM に実装されています。 このようなサービスでは、Compute が有効にすると[ホスト暗号化](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)を自動的に入手します。 Compute 管理のクラスターで実行されているサービスでは、Windows Server 2016 がロールアウトされた段階でホスト暗号化が自動的に有効になっています。
 
@@ -274,7 +274,7 @@ Azure VPN オプションの詳細については、「[VPN Gateway の計画と
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) は、暗号化、ID、承認ポリシーを使用してファイルとメールを保護します。 Azure RMS は組織内と組織外の両方でデータを保護できるため、携帯電話、タブレット、PC などの複数のデバイスに適用できます。 これが可能なのは、データが組織外に出たとしても Azure RMS による保護がデータに残るためです。
 
-Azure RMS を使用してファイルを保護する場合、[FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html) を完全にサポートする業界標準の暗号化技術が適用されます。 データ保護に Azure RMS を利用すると、クラウド ストレージ サービスのような IT 部門の管轄外のストレージにファイルがコピーされたとしても、ファイルを確実に保護できます。 メールでファイルを共有する場合も同じです。メール メッセージの添付ファイルとしてファイルを保護し、保護された添付ファイルを開く方法をメール本文に記載しておきます。
+Azure RMS を使用してファイルを保護する場合、[FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) を完全にサポートする業界標準の暗号化技術が適用されます。 データ保護に Azure RMS を利用すると、クラウド ストレージ サービスのような IT 部門の管轄外のストレージにファイルがコピーされたとしても、ファイルを確実に保護できます。 メールでファイルを共有する場合も同じです。メール メッセージの添付ファイルとしてファイルを保護し、保護された添付ファイルを開く方法をメール本文に記載しておきます。
 Azure RMS の導入を計画するときは、次の準備を行うことをお勧めします。
 
 - [RMS 共有アプリ](https://technet.microsoft.com/library/dn339006.aspx)をインストールします。 Office アドインをインストールすることによって、このアプリが Office アプリケーションと統合され、ユーザーが直接簡単にファイルを保護できるようになります。
@@ -370,7 +370,7 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧の調整に役立ちます。これにより、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>コンプライアンスを確保する: クラウド サービス向けデュー デリジェンス チェックリスト (保護)
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>コンプライアンスを確保する: クラウド サービス向けデリジェンス チェックリスト (保護)
 
 マイクロソフトは、クラウドへの移行を検討している組織がデリジェンスを訓練するのに役立つ、[Cloud Services 向けデュー デリジェンス チェックリスト](https://aka.ms/cloudchecklist.download)を作成しました。 民間企業から行政機関、非営利組織などの公的機関まで、あらゆる規模および種類の組織の構造体を提供し、自社のパフォーマンス、サービス、データ管理、およびガバナンス目標や要件を特定できます。 これにより、異なるクラウド サービス プロバイダーのサービスを比較し、最終的なクラウド サービス契約の基礎を築くことができます。
 
@@ -398,19 +398,19 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 Log Analytics は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
+[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 Azure Monitor ログは単独で使用されるか、System Center の既存のデプロイを拡張するために使用され、ご自分のインフラストラクチャをクラウドベースで管理するための柔軟性と制御を最大限に実現します。
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-Log Analytics を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された Log Analytics は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
+Azure Monitor を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された Azure Monitor は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効果の良い新たな企業の管理方法を提供します。
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
+[Azure Monitor ログ](https://azure.microsoft.com/documentation/services/log-analytics)は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Azure Monitor ログ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 この方法を使用すると、さまざまなソースからのデータを統合できるため、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、データの収集とそのデータに対して実行される操作は明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
@@ -454,7 +454,7 @@ Log Analytics を使用すれば、オンプレミス型、Azure、AWS、Windows
 
 ### <a name="network-watcher"></a>Network Watcher
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) は地域サービスであり、ネットワーク レベルで Azure 内と Azure 間の状態を監視して診断できます。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
+[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) は地域サービスであり、ネットワーク レベルで Azure 内と Azure 間の状態を監視して診断できます。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
 
 ### <a name="storage-analytics"></a>Storage Analytics
 
@@ -462,7 +462,7 @@ Log Analytics を使用すれば、オンプレミス型、Azure、AWS、Windows
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスと統合され、さまざまな開発ツールへの接続ポイントを備えています。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされる .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスと統合され、さまざまな開発ツールへの接続ポイントを備えています。
 
 以下を監視します。
 

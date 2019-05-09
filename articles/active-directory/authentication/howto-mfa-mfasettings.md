@@ -1,21 +1,22 @@
 ---
-title: Azure Multi-Factor Authentication の構成
+title: Azure Multi-Factor Authentication を構成する - Azure Active Directory
 description: この記事では、Azure Portal で Azure Multi-Factor Authentication 設定を構成する方法について説明します
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320660"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885997"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -33,7 +34,7 @@ Azure portal で Multi-Factor Authentication に関連する設定にアクセ�
 | ------- | ----------- |
 | アカウントのロックアウト | 連続して拒否された認証試行が多すぎる場合に、Multi-Factor Authentication サービス内でアカウントを一時的にロックします。 この機能は、認証のために PIN を入力するユーザーにのみ適用されます。 (MFA サーバー) |
 | [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | MFA サーバー (オンプレミス) の特定のユーザーが Multi-Factor Authentication 要求を受信できないようにするために使用されます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 |
-| [不正アクセスのアラート](#fraud-alert) | ユーザーが MFA サーバーからの不正な確認要求をレポートできるかどうかに関する設定を構成します。 |
+| [不正アクセスのアラート](#fraud-alert) | ユーザーが不正な確認要求をレポートできるかどうかに関する設定を構成します |
 | 通知 | MFA サーバーからのイベントの通知を有効にします。 |
 | [OATH トークン](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
 | [電話の設定](#phone-call-settings) | クラウド環境とオンプレミス環境の電話と案内メッセージに関連する設定を構成します。 |
@@ -56,14 +57,14 @@ Azure portal で Multi-Factor Authentication に関連する設定にアクセ�
 
 ## <a name="block-and-unblock-users"></a>ユーザーのブロックおよびブロック解除
 
-ユーザーが認証要求を受信できないようにする場合は、_ユーザーのブロック/ブロック解除_ 機能を使用します。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 この機能は、MFA サーバー (オンプレミス) に固有です。
+ユーザーが認証要求を受信できないようにする場合は、_ユーザーのブロック/ブロック解除_ 機能を使用します。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。
 
 ### <a name="block-a-user"></a>ユーザーのブロック
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 2. **[Azure Active Directory]** > **[MFA]** > **[ユーザーのブロック/ブロック解除]** に移動します。
 3. **[追加]** を選択してユーザーをブロックします。
-4. **[レプリケーション グループ]** を選択します。 ブロックするユーザーのユーザー名を「**username@domain.com**」のように入力します。 **[理由]** フィールドにコメントを入力します。
+4. **[レプリケーション グループ]** を選択します。 ブロックされているユーザーのユーザー名を **username\@domain.com** として入力します。 **[理由]** フィールドにコメントを入力します。
 5. **[追加]** を選択してユーザーのブロックを終了します。
 
 ### <a name="unblock-a-user"></a>ユーザーのブロック解除
@@ -76,7 +77,7 @@ Azure portal で Multi-Factor Authentication に関連する設定にアクセ�
 
 ## <a name="fraud-alert"></a>不正アクセスのアラート
 
-ユーザーが各自のリソースに対する不正アクセスの試みを通報できるように、_不正アクセスのアラート_ 機能を構成します。 ユーザーは、モバイル アプリまたは電話で不正アクセスの試みを通報できます。 この機能は、MFA サーバー (オンプレミス) に固有です。
+ユーザーが各自のリソースに対する不正アクセスの試みを通報できるように、_不正アクセスのアラート_ 機能を構成します。 ユーザーは、モバイル アプリまたは電話で不正アクセスの試みを通報できます。
 
 ### <a name="turn-on-fraud-alerts"></a>不正アクセスのアラートを有効にする
 
@@ -153,7 +154,7 @@ _ワンタイム バイパス_ 機能は、2 段階認証の実行なしでユ�
 2. **[Azure Active Directory]** > **[MFA]** > **[ワンタイム バイパス]** の順に移動します。
 3. **[追加]** を選択します。
 4. 必要に応じて、バイパスのレプリケーション グループを選択します。
-5. ユーザー名を「**username@domain.com**」のように入力します。 バイパスが持続する秒数を入力します。 バイパスの理由を入力します。
+5. ユーザー名を **username\@domain.com** として入力します。 バイパスが持続する秒数を入力します。 バイパスの理由を入力します。
 6. **[追加]** を選択します。 制限時間はすぐに有効になります。 ユーザーはワンタイム バイパスの有効期限が切れる前にサインインする必要があります。
 
 ### <a name="view-the-one-time-bypass-report"></a>ワンタイム バイパス レポートを表示する
@@ -163,7 +164,7 @@ _ワンタイム バイパス_ 機能は、2 段階認証の実行なしでユ�
 
 ## <a name="caching-rules"></a>キャッシュ規則
 
-_キャッシュ_機能を使用して、ユーザー認証後の認証の試みを許可する期間を設定することができます。 指定した期間内のユーザーの後続の認証の試みは自動的に成功します。 キャッシュは主に、VPN などのオンプレミス システムによって複数の認証要求が送信され、最初の要求がまだ処理中である場合に使用されます。 この機能を使用すれば、処理中の最初の認証にユーザーが成功した後で、後続の要求が自動的に処理されるようになります。
+_キャッシュ_ 機能を使用して、ユーザー認証後の認証の試みを許可する期間を設定することができます。 指定した期間内のユーザーの後続の認証の試みは自動的に成功します。 キャッシュは主に、VPN などのオンプレミス システムによって複数の認証要求が送信され、最初の要求がまだ処理中である場合に使用されます。 この機能を使用すれば、処理中の最初の認証にユーザーが成功した後で、後続の要求が自動的に処理されるようになります。
 
 >[!NOTE]
 >キャッシュ機能は Azure Active Directory (Azure AD) へのサインインに使用するためのものではありません。
@@ -185,7 +186,7 @@ Azure Multi-Factor Authentication におけるアプリ パスワード、信頼
 
 ## <a name="app-passwords"></a>アプリ パスワード
 
-Office 2010 以前や iOS 11 以前の Apple Mail のような一部のアプリでは、2 段階認証はサポートされません。 アプリは、2 つ目の認証を受け入れるように構成されていません。 これらのアプリケーションを使用する場合は、_アプリ パスワード_機能を利用します。 従来のパスワードの代わりにアプリ パスワードを使用すれば、アプリが 2 段階認証をバイパスして動作を続行できるように指定できます。
+Office 2010 以前や iOS 11 以前の Apple Mail のような一部のアプリでは、2 段階認証はサポートされません。 アプリは、2 つ目の認証を受け入れるように構成されていません。 これらのアプリケーションを使用する場合は、_アプリ パスワード_ 機能を利用します。 従来のパスワードの代わりにアプリ パスワードを使用すれば、アプリが 2 段階認証をバイパスして動作を続行できるように指定できます。
 
 Microsoft Office 2013 クライアント以降向けの最新の認証がサポートされています。 Office 2013 クライアント (Outlook を含む) は、最新の認証プロトコルをサポートしており、2 段階認証を有効にすることができます。 クライアントを有効にした場合、そのクライアントではアプリ パスワードは必要ありません。
 
@@ -251,11 +252,11 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 ユーザーは、初回の登録時にアプリ パスワードを作成できます。 登録プロセスの最後に、アプリ パスワードを作成するためのオプションが表示されます。
 
-ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードは、Azure Portal や Office 365 ポータルの設定を使用して変更できます。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](../user-help/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
+ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](../user-help/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
 
 ## <a name="trusted-ips"></a>信頼できる IP
 
-Azure Multi-Factor Authentication の_信頼できる IP_ 機能は、管理者常駐型テナントまたはフェデレーション テナントの管理者が使用します。 この機能では、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスします。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用できます。管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
+Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、管理者常駐型テナントまたはフェデレーション テナントの管理者が使用します。 この機能では、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスします。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用できます。管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
 
 > [!NOTE]
 > MFA の信頼できる IP と条件付きアクセスの名前付きの場所は、IPV4 アドレスでのみ機能します。
@@ -287,7 +288,7 @@ Azure Multi-Factor Authentication の_信頼できる IP_ 機能は、管理者�
 4. 場所の名前を入力します。
 5. **[信頼できる場所としてマークする]** を選択します。
 6. IP 範囲を CIDR 表記 (**192.168.1.1/24** など) で入力します。
-7. **作成**を選択します。
+7. **作成** を選択します。
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>条件付きアクセスを使用した信頼できる IP 機能の有効化
 
@@ -332,10 +333,10 @@ Azure Multi-Factor Authentication の_信頼できる IP_ 機能は、管理者�
 
 ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
-| 方法 | 説明 |
+| Method | 説明 |
 |:--- |:--- |
 | 電話の呼び出し |自動音声通話を行います。 ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。 電話番号は、オンプレミスの Active Directory には同期されません。 |
-| 電話へのテキスト メッセージ |確認コードを含むテキスト メッセージを送信します。 ユーザーは、この確認コードをサインイン インターフェイスに入力するように求められます。 このプロセスを一方向の SMS といいます。 双方向の SMS は、ユーザーが特定のコードを返信する必要があることを意味します。 双方向の SMS は非推奨となり、2018 年 11 月 14 日以降はサポートされなくなります。 双方向 SMS 用に構成されているユーザーは、その時点で_電話の呼び出し_認証に自動的に切り替わります。|
+| 電話へのテキスト メッセージ |確認コードを含むテキスト メッセージを送信します。 ユーザーは、この確認コードをサインイン インターフェイスに入力するように求められます。 このプロセスを一方向の SMS といいます。 双方向の SMS は、ユーザーが特定のコードを返信する必要があることを意味します。 双方向の SMS は非推奨となり、2018 年 11 月 14 日以降はサポートされなくなります。 双方向 SMS 用に構成されているユーザーは、その時点で _電話の呼び出し_ 認証に自動的に切り替わります。|
 | モバイル アプリでの通知 |電話または登録されたデバイスにプッシュ通知を送信します。 ユーザーは通知を表示し、**[確認]** を選択して認証を完了します。 Microsoft Authenticator アプリは、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
 | モバイル アプリからの確認コードまたはハードウェア トークン |Microsoft Authenticator アプリは、30 秒ごとに新しい OATH 確認コードを生成します。 ユーザーは確認コードをサインイン インターフェイスに入力します。 Microsoft Authenticator アプリは、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
 
@@ -352,7 +353,7 @@ Azure Multi-Factor Authentication の_信頼できる IP_ 機能は、管理者�
 
 ## <a name="remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶
 
-ユーザーが信頼済みデバイスとブラウザーに対する _Multi-Factor Authentication の記憶_機能は、すべての Multi-Factor Authentication ユーザー向けの無料の機能です。 ユーザーは、Multi-Factor Authentication を使用して正常にデバイスにサインインした後、一定の日数の間、後続の確認をバイパスすることができます。 この機能により、ユーザーが同じデバイスで 2 段階認証を実行する必要がある回数を最小限に抑えることができるので、使いやすさを強化できます。
+ユーザーが信頼済みデバイスとブラウザーに対する _Multi-Factor Authentication の記憶_ 機能は、すべての Multi-Factor Authentication ユーザー向けの無料の機能です。 ユーザーは、Multi-Factor Authentication を使用して正常にデバイスにサインインした後、一定の日数の間、後続の確認をバイパスすることができます。 この機能により、ユーザーが同じデバイスで 2 段階認証を実行する必要がある回数を最小限に抑えることができるので、使いやすさを強化できます。
 
 >[!IMPORTANT]
 >アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[Multi-Factor Authentication をすべてのデバイスで復元](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)する必要があります。
@@ -364,7 +365,7 @@ Azure Multi-Factor Authentication の_信頼できる IP_ 機能は、管理者�
 
 Multi-Factor Authentication の記憶機能では、ブラウザーでユーザーがサインイン時に **[今後 X 日間はこのメッセージを表示しない]** オプションを選択したときに永続的な Cookie を設定します。 Cookie の有効期限が切れるまでは、同じブラウザーからユーザーが再度 Multi-Factor Authentication を求められることはありません。 そのユーザーが同じデバイスで異なるブラウザーを開くか、Cookie をクリアした場合は、再度、認証が求められます。
 
-ブラウザーではないアプリケーションでは、アプリで先進認証がサポートされているかどうかに関係なく、**[今後 X 日間はこのメッセージを表示しない]** オプションは表示されません。 これらのアプリでは、新しいアクセス トークンが 1 時間おきに支給される_更新トークン_が使用されます。 更新トークンの検証時に、前回の 2 段階認証が設定されている日数内に実行されたことが Azure AD によって確認されます。
+ブラウザーではないアプリケーションでは、アプリで先進認証がサポートされているかどうかに関係なく、**[今後 X 日間はこのメッセージを表示しない]** オプションは表示されません。 これらのアプリでは、新しいアクセス トークンが 1 時間おきに支給される _更新トークン_ が使用されます。 更新トークンの検証時に、前回の 2 段階認証が設定されている日数内に実行されたことが Azure AD によって確認されます。
 
 この機能を使用すると、Web アプリでの認証回数 (通常は毎回プロンプトが表示される) が減ります。 この機能では、先進認証クライアントの認証の回数 (通常は 90 日ごとにプロンプトが表示される) が増えます。 条件付きアクセス ポリシーと組み合わされた場合の認証数を増やすこともできます。
 

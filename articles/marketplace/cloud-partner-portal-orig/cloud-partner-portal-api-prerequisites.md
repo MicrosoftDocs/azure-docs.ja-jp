@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e6e25424981118363070d42b2fb057b18fdb91a9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809004"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878649"
 ---
 <a name="api-prerequisites"></a>API 前提条件
 ================
@@ -55,7 +55,7 @@ ms.locfileid: "48809004"
 
      ![マネージド アプリをポータルに追加する](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-4. **[追加]** をクリックし、サービス プリンシパルをアカウントに追加します。
+1. **[追加]** をクリックし、サービス プリンシパルをアカウントに追加します。
 
    ![サービス プリンシパルを追加する](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
@@ -66,7 +66,7 @@ ms.locfileid: "48809004"
 クラウド パートナー ポータル API では認証の間、次のアセットとプロトコルが使用されます。
 
 - リソースへのアクセスを要求するための JSON Web Token (JWT) ベアラー トークン
-- ID を確認するための [OpenID Connect](http://openid.net/connect/) (OIDC) プロトコル
+- ID を確認するための [OpenID Connect](https://openid.net/connect/) (OIDC) プロトコル
 - ID 機関としての [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 JWT トークンをプログラムで取得するための主要な方法が 2 つあります。

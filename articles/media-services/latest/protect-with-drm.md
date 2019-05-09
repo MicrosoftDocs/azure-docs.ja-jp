@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 12/08/2018
+ms.topic: conceptual
+ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 84bdc560a135f8f1eb7d6c86fe4f3749135ff7e1
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f53ae122e9888f3e537a3557b6ac5bd76856c2eb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139046"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767551"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>DRM 動的暗号化とライセンス配信サービスの使用
 

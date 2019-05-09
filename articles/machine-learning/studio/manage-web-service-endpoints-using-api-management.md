@@ -1,37 +1,28 @@
 ---
-title: API Management を使用して Machine Learning Studio Web サービスを管理する - Azure | Microsoft Docs
+title: API Management を使用して Web サービスを管理する
+titleSuffix: Azure Machine Learning Studio
 description: API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。 ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理します。
-keywords: Machine Learning、api 管理
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 8f82332b02d2e7bbf937a84de42714392e3fccd6
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852886"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio Web サービスを管理する
 ## <a name="overview"></a>概要
 このガイドでは、API Management を使用して Azure Machine Learning Studio Web サービスを管理する方法について簡単に説明します。
 
 ## <a name="what-is-azure-api-management"></a>Azure API Management とは
-Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 [ここ](https://azure.microsoft.com/services/api-management/) をクリックして、Azure API Management の詳細についてご覧ください。 [ここ](../../api-management/api-management-get-started.md) をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
-
-## <a name="what-is-azureml"></a>Azure ML とは
-AzureML は、高度な分析ソリューションを簡単に構築、デプロイ、共有できる、機械学習用の Azure サービスです。 [ここ](https://azure.microsoft.com/services/machine-learning/) をクリックして、AzureML の詳細についてご覧ください。
+Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 [ここ](https://azure.microsoft.com/services/api-management/) をクリックして、Azure API Management の詳細についてご覧ください。 [ここ](/azure/api-management/import-and-publish) をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 このガイドを完了するには、以下が必要です。
@@ -191,11 +182,11 @@ API を作成するには、次の手順に従います。
 
 **[データ操作]** と **[操作]** を展開し、**[データセット内の列の選択]** を実験にドラッグします。 **[Amazon の書評]** を **[データセット内の列の選択]** に接続します。
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![書評データセット モジュールをプロジェクト列モジュールに接続する](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 **[データセット内の列の選択]** をクリックし、次に **[列セレクターの起動]** をクリックし、**Col2** を選択します。 チェック マークをクリックして、これらの変更を適用します。
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![列名を使用して列を選択する](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 **[テキスト分析]** を展開し、**[特徴ハッシュ]** を実験にドラッグします。 **[データセット内の列の選択]** を **[特徴ハッシュ]** に接続します。
 

@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: b0bb45233aa34dce6794638e5d49fc2b47bef71d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53615208"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213097"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(非推奨) Container Service についてよく寄せられる質問
 
@@ -85,7 +85,7 @@ Azure Portal や Azure Resource Explorer などの Azure ツールではクラ�
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>デプロイ後にオーケストレーターをアップグレードするには、どうすればよいですか。
 
-現時点で Azure Container Service には、クラスターにデプロイしたオーケストレーターのバージョンをアップグレードするためのツールは用意されていません。 Container Service でそれ以降のバージョンがサポートされている場合は、新しいクラスターをデプロイできます。 他には、オーケストレーターに固有のツールがあれば、それを利用してデプロイ済みのクラスターをアップグレードするという方法もあります。 一例として、[DC/OS のアップグレード](https://dcos.io/docs/1.8/administration/upgrading/)に関するページを参照してください。
+現時点で Azure Container Service には、クラスターにデプロイしたオーケストレーターのバージョンをアップグレードするためのツールは用意されていません。 Container Service でそれ以降のバージョンがサポートされている場合は、新しいクラスターをデプロイできます。 他には、オーケストレーターに固有のツールがあれば、それを利用してデプロイ済みのクラスターをアップグレードするという方法もあります。 一例として、[DC/OS のアップグレード](http://docs.mesosphere.com/1.12/installing/production/upgrading)に関するページを参照してください。
  
 ### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>クラスターへの SSH 接続文字列はどこで確認できますか。
 

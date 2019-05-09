@@ -1,116 +1,129 @@
 ---
-title: PowerShell を使用して Azure ファイル共有のバックアップをデプロイおよび管理する
-description: PowerShell を使用して Azure で Azure ファイル共有のバックアップをデプロイおよび管理する
-services: backup
+title: Azure Backup と PowerShell を使用して Azure Files をバックアップおよび復元する
+description: Azure Backup と PowerShell を使用して Azure Files をバックアップおよび復元します。
 author: pvrk
 manager: shivamg
-keywords: PowersShell; Azure でのファイル バックアップ; Azure でのファイル復元;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 03/05/2018
 ms.author: pullabhk
-ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 90623981f67bbed15ade743192525676e58a0a83
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 83fe8d17699c19d442fd734d71d828eb9fd9d6ed
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318399"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258362"
 ---
-# <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>PowerShell を使用して Azure ファイル共有をバックアップおよび復元する
+# <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップおよび復元する
 
-この記事では、Azure PowerShell コマンドレットを使用して、Recovery Services コンテナーから Azure ファイル共有をバックアップする方法と復元する方法を説明します。 Recovery Services コンテナーは、Azure Backup サービスと Azure Site Recovery サービスでデータと資産を保護するために使用される Azure Resource Manager のリソースです。
+この記事では、[Azure Backup](backup-overview.md) Recovery Services コンテナーを使用して Azure Files のファイル共有をバックアップおよび復元するために Azure PowerShell を使用する方法を説明します。 
 
-## <a name="concepts"></a>概念
+このチュートリアルでは、次の方法について説明します。
 
-Azure Backup サービスに関する知識が十分でない場合は、「[Azure Backup とは](backup-introduction-to-azure-backup.md)」という記事を参照してください。 開始する前に、[ここ](backup-azure-files.md)に記載されている、Azure ファイル共有をバックアップするプレビュー機能に注意するようにしてください。
+> [!div class="checklist"]
+> * PowerShell を設定し、Azure Recovery Services プロバイダーを登録する。
+> * Recovery Services コンテナーを作成する。
+> * Azure ファイル共有のバックアップを構成する。
+> * バックアップ ジョブを実行する。
+> * バックアップされた Azure ファイル共有、または共有に含まれる個々のファイルを復元する。
+> * バックアップ ジョブと復元ジョブを監視する。
 
-PowerShell を効果的に使用するには、オブジェクトの階層および開始地点を理解しておく必要があります。
+
+## <a name="before-you-start"></a>開始する前に
+
+- Recovery Services コンテナーについての[詳細情報](backup-azure-recovery-services-vault-overview.md)を確認します。
+- [Azure ファイル共有のバックアップ](backup-azure-files.md)に関するプレビュー機能を確認します。
+- Recovery Services の PowerShell オブジェクト階層を確認します。
+
+
+## <a name="recovery-services-object-hierarchy"></a>Recovery Services オブジェクトの階層
+
+オブジェクト階層の概要を次の図に示します。
 
 ![Recovery Services オブジェクトの階層](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-AzureRm.RecoveryServices.Backup PowerShell コマンドレット リファレンスを確認するには、Azure ライブラリの「[Azure Backup - Recovery Services Cmdlets (Azure Backup - Recovery Services コマンドレット)](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup)」を参照してください。
+Azure ライブラリに含まれる **Az.RecoveryServices** [コマンドレット リファレンス](/powershell/module/az.recoveryservices)のリファレンスを確認します。
 
-## <a name="setup-and-registration"></a>セットアップと登録
 
-> [!NOTE]
-> [ここ](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0)に記載されているように、AzureRM モジュールの新機能のサポートは 2018 年 11 月に終了します。 そのため、新しい 'Az' PS モジュールで、Azure ファイル共有のバックアップのサポートを提供する予定です。 Az モジュールの GA リリースへのオンボードも予定されています。
+## <a name="set-up-and-install"></a>設定とインストール
 
-開始するには
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. [最新バージョンの 'Az' PowerShell をダウンロードします](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (必要な最小バージョンは 0.7.0) です
+PowerShell を次のように設定します。
 
-2. 以下のコマンドを入力して、使用可能な Azure Backup の PowerShell コマンドレットを検索します。
+1. [最新バージョンの Az PowerShell をダウンロードします](/powershell/azure/install-az-ps)。 必要な最小バージョンは 1.0.0 です。
+
+2. 次のコマンドを使用して、Azure Backup PowerShell コマンドレットを検索します。
 
     ```powershell
     Get-Command *azrecoveryservices*
     ```
-    Azure Backup、Azure Site Recovery、Recovery Services コンテナーのエイリアスとコマンドレットが表示されます。 次の画像は表示例です。 コマンドレットの完全な一覧ではありません。
+3. Azure Backup、Azure Site Recovery、Recovery Services コンテナーの別名とコマンドレットを確認します。 表示例を次に示します。 これはコマンドレットの完全な一覧ではありません。
 
-    ![Recovery Services の一覧](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
+    ![Recovery Services コマンドレットの一覧](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-3. **Connect-AzAccount** を使用して Azure アカウントにサインインします。 このコマンドレットを実行すると、アカウントの資格情報を入力する Web ページが表示されます。
+3. **Connect-AzAccount** を使用して Azure アカウントにサインインします。
+4. 表示される Web ページで、アカウントの資格情報を入力するように求められます。
 
-    * または、**-Credential** パラメーターを使用して、**Connect-AzAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含められます。
-    * CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 例: **Connect-AzAccount -Tenant "fabrikam.com"**
+    - または、**-Credential** を使用して、**Connect-AzAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含めることもできます。
+    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当する tenantID またはテナントのプライマリ ドメイン名で指定してください。 たとえば、「**Connect-AzAccount -Tenant** fabrikam.com」を指定します。
 
 4. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+    Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Azure Backup を初めて使用する場合、**Register-AzResourceProvider** コマンドレットを使って Azure Recovery Services プロバイダーをサブスクリプションに登録する必要があります。
+5. Azure Backup を初めて使用する場合、**Register-AzResourceProvider** コマンドレットを使って Azure Recovery Services プロバイダーをサブスクリプションに登録します。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-6. 次のコマンドを使用して、プロバイダーが正しく登録されたことを確認できます。
+6. プロバイダーが正常に登録されたことを確認します。
+
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-    コマンドの出力では、**RegistrationState** が **Registered** に変更されるはずです。 そうでない場合は、**Register-AzResourceProvider** コマンドレットをもう一度実行してください。
+7. コマンド出力で、**RegistrationState** が **Registered** に変わっていることを確認します。 変わっていない場合は、**Register-AzResourceProvider** コマンドレットをもう一度実行します。
 
-次のタスクは PowerShell を使用して自動化することができます。
 
-* Recovery Services コンテナーを作成する
-* Azure ファイル共有のバックアップを構成する
-* バックアップ ジョブをトリガーする
-* バックアップ ジョブを監視する
-* Azure ファイル共有を復元する
-* Azure ファイル共有から個々の Azure ファイルを復元する
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
-次の手順では、Recovery Services コンテナーの作成について説明します。
+Recovery Services コンテナーを作成するには、次の手順に従います。
 
-1. Recovery Services コンテナーは Resource Manager リソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、**New-AzResourceGroup** コマンドレットを使ってリソース グループを作成することもできます。 新しいリソース グループを作成するときは、リソース グループの名前と場所を指定します。  
+- Recovery Services コンテナーは Resource Manager のリソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、**New-AzResourceGroup** コマンドレットを使ってリソース グループを作成することもできます。 リソース グループを作成するときは、リソース グループの名前と場所を指定します。 
 
-    ```powershell
-    New-AzResourceGroup -Name "test-rg" -Location "West US"
-    ```
-2. **New-AzRecoveryServicesVault** コマンドレットを使用して Recovery Services コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定してください。
+1. コンテナーはリソース グループに配置されます。 既存のリソース グループがない場合は、[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) を使用して新しいリソース グループを作成します。 この例では、新しいリソース グループを米国西部リージョンに作成します。
+
+   ```powershell
+   New-AzResourceGroup -Name "test-rg" -Location "West US"
+   ```
+2. [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-3. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) を使用できます。 次に示す例では、testvault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
+3. コンテナー ストレージに使用する冗長性の種類を指定します。
 
-    ```powershell
-    $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-    Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-    ```
+   - [ローカル冗長ストレージ](../storage/common/storage-redundancy-lrs.md)または [geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md)を使用できます。
+   - 次の例では、**testvault** の [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperties?view=azps-1.4.0) コマンドの **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
 
-## <a name="view-the-vaults-in-a-subscription"></a>サブスクリプション内のコンテナーの表示
+     ```powershell
+     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
+     Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
+     ```
 
-サブスクリプション内のコンテナーをすべて表示するには、**Get-AzRecoveryServicesVault** を使用します。
+### <a name="view-the-vaults-in-a-subscription"></a>サブスクリプション内のコンテナーの表示
+
+サブスクリプション内のコンテナーをすべて表示するには、[Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0) を使用します。
 
 ```powershell
 Get-AzRecoveryServicesVault
 ```
 
-出力は次のサンプルのようなものになります。関連する ResourceGroupName と Location が指定されていることに注目してください。
+出力は次のようになります。 関連するリソース グループと場所が指定されていることに注目してください。
 
 ```powershell
 Name              : Contoso-vault
@@ -122,28 +135,38 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。
+### <a name="set-the-vault-context"></a>コンテナーのコンテキストを設定する
 
-**Set-AzRecoveryServicesVaultContext** を使用して、コンテナーのコンテキストを設定します。 コンテナーのコンテキストを設定すると、後続のすべてのコマンドレットに適用されます。 次の例は、コンテナー *testvault* のコンテナーのコンテキストを設定します。
+このコンテナー オブジェクトを変数に格納し、そのコンテナーのコンテキストを設定します。
+
+- Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要とするので、コンテナー オブジェクトを変数に格納すると便利です。
+- コンテナーのコンテキストとは、コンテナーで保護されるデータの種類です。 これを、[Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) を使用して設定します。 コンテキストが設定されると、それが後続のすべてのコマンドレットに適用されます。
+
+
+次の例では、**testvault** のコンテナーのコンテキストを設定します。
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
-> [!NOTE]
-> コンテナーのコンテキストの設定は、Azure PowerShell のガイドラインに従って、廃止される予定となっています。 その代わり、後述するようにコンテナー ID を渡すことをお勧めします
+### <a name="fetch-the-vault-id"></a>コンテナー ID をフェッチする
 
-または、PowerShell 操作の実行対象にするコンテナーの ID の格納/フェッチを実行し、それを関連するコマンドに渡すことができます。
+コンテナーのコンテキストの設定は、Azure PowerShell のガイドラインに従って廃止される予定です。 代わりに、次のようにしてコンテナー ID を格納またはフェッチしたり、関連するコマンドに渡したりできます。
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
 ```
 
-## <a name="configure-backup-for-an-azure-file-share"></a>Azure ファイル共有のバックアップを構成する
+## <a name="configure-a-backup-policy"></a>バックアップ ポリシーを構成する
 
-### <a name="create-protection-policy"></a>保護ポリシーを作成する
+バックアップ ポリシーは、バックアップのスケジュール、およびバックアップの復旧ポイントを保持する期間を指定します。
 
-バックアップ保護ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられます。 アイテム保持ポリシーでは、復旧ポイントが削除される前に保持される期間を定義します。 既定のアイテム保持ポリシーを表示するには、**Get-AzRecoveryServicesBackupRetentionPolicyObject** を使用します。  同様に **Get-AzRecoveryServicesBackupSchedulePolicyObject** を使用して、既定のスケジュール ポリシーを取得できます。 **New-AzRecoveryServicesBackupProtectionPolicy** コマンドレットは、バックアップ ポリシー情報を保持する PowerShell オブジェクトを作成します。 スケジュール ポリシーとアイテム保持ポリシー オブジェクトは、**New-AzRecoveryServicesBackupProtectionPolicy** コマンドレットへの入力として使用されます。 次の例では、スケジュール ポリシーとアイテム保持ポリシーを変数に格納します。 次の例では、これらの変数を使用して、保護ポリシー *NewPolicy* の作成時にパラメーターを定義します。
+- バックアップ ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられています。 アイテム保持ポリシーでは、復旧ポイントが削除される前に保持される期間が定義されています。
+- [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0) を使用して、既定のバックアップ ポリシー リテンション期間を表示します。
+- [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0) を使用して、既定のバックアップ ポリシー スケジュールを表示します。
+-  新しいバックアップ ポリシーを作成するには、[New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) コマンドレットを使用します。 スケジュール ポリシー オブジェクトとアイテム保持ポリシー オブジェクトを入力します。
+
+次の例では、スケジュール ポリシーとアイテム保持ポリシーを変数に格納します。 その後に、それらの変数を新しいポリシー (**NewAFSPolicy**) のパラメーターとして使用しています。 **NewAFSPolicy** は毎日のバックアップを受け取り、30 日間保持します。
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
@@ -151,7 +174,7 @@ $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "Azure
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType "AzureFiles" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
 
-出力は次の例のようになります。
+出力は次のようになります。
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -159,46 +182,53 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
 ```
 
-### <a name="enable-protection"></a>保護を有効にする
 
-保護ポリシーを定義したら、このポリシーを使用して、Azure ファイル共有の保護を有効にできます。
 
-最初に、**Get-AzRecoveryServicesBackupProtectionPolicy** コマンドレットで、関連するポリシー オブジェクトをフェッチします。 このコマンドレットを使用して、特定のポリシーを取得したり、ワークロードの種類に関連付けられているポリシーを表示したりできます。
+## <a name="enable-backup"></a>バックアップの有効化
 
-次の例では、ワークロードの種類が AzureFiles であるポリシーを取得します。
+バックアップ ポリシーを定義したら、このポリシーを使用して、Azure ファイル共有の保護を有効にできます。
+
+### <a name="retrieve-a-backup-policy"></a>バックアップ ポリシーを取得する
+
+[Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) を使用して、関連するポリシー オブジェクトをフェッチします。 このコマンドレットを使用して、特定のポリシーを取得したり、ワークロードの種類に関連付けられているポリシーを表示したりできます。
+
+#### <a name="retrieve-a-policy-for-a-workload-type"></a>ワークロードの種類のポリシーを取得する
+
+次の例では、ワークロードの種類が **AzureFiles** であるポリシーを取得します。
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureFiles"
 ```
 
-出力は次の例のようになります。
+出力は次のようになります。
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
 ----                 ------------       -------------------- ----------                ----------
 dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 AM
 ```
-
 > [!NOTE]
-> PowerShell の BackupTime フィールドのタイムゾーンは UTC です。 ただし、Azure ポータルにバックアップ時刻が表示されるとき、時刻はローカル タイムゾーンに調整されます。
->
->
+> PowerShell の **BackupTime** フィールドのタイム ゾーンは協定世界時 (UTC) です。 Azure portal 上でバックアップ時刻が表示されるときに、時刻はローカル タイム ゾーンに調整されます。
 
-次のポリシーは、"dailyafs" という名前のバックアップ ポリシーを取得します
+### <a name="retrieve-a-specific-policy"></a>特定のポリシーを取得する
+
+次のポリシーでは、**dailyafs** という名前のバックアップ ポリシーを取得します。
 
 ```powershell
 $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 ```
 
-**Enable-AzRecoveryServicesBackupProtection** を使用して、指定のポリシーによる項目の保護を有効にします。 ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールで定義された時刻にバックアップのワークフローが開始されます。
+### <a name="enable-backup-and-apply-policy"></a>バックアップを有効にしてポリシーを適用する
 
-次の例では、ポリシー dailyafs を使用して、ストレージ アカウント "testStorageAcct" の下にある Azure ファイル共有 "testAzureFileShare" の保護を有効にしています。
+[Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0) を使用して、保護を有効にします。 ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールに従ってバックアップがトリガーされます。
+
+次の例では、ポリシー **dailyafs** を使用して、ストレージ アカウント **testStorageAcct** の Azure ファイル共有 **testAzureFileShare** の保護を有効にしています。
 
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -StorageAccountName "testStorageAcct" -Name "testAzureFS" -Policy $afsPol
 ```
 
-このコマンドは、保護の構成ジョブが完了し、下に示したものに似た出力が得られるまで待機します。
+このコマンドは、保護の構成ジョブが完了し、下に示すような出力が得られるまで待機します。
 
 ```cmd
 WorkloadName       Operation            Status                 StartTime                                                                                                         EndTime                   JobID
@@ -206,17 +236,23 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-### <a name="trigger-an-on-demand-backup"></a>オンデマンド バックアップをトリガーする
+## <a name="trigger-an-on-demand-backup"></a>オンデマンド バックアップをトリガーする
 
-**Backup-AzRecoveryServicesBackupItem** を使用して、保護されている Azure ファイル共有のバックアップ ジョブをトリガーします。 次のコマンドを使用して、その中のストレージ アカウントとファイル共有を取得し、オンデマンド バックアップをトリガーします。
+[Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) を使用して、保護されている Azure ファイル共有のオンデマンド バックアップを実行します。
 
+1. [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) を使用して、バックアップ データを保持するコンテナー内のコンテナーからストレージ アカウントとファイル共有を取得します。
+2. バックアップ ジョブを開始するには、[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) を使用して、VM に関する情報を取得します。
+3. [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) を使用して、オンデマンド バックアップを実行します。
+
+次のようにしてオンデマンド バックアップを実行します。
+    
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
 $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
-このコマンドは、次の例のように、ID によって追跡されるジョブを返します。
+このコマンドでは、次の例に示すように、追跡する必要がある ID を持つジョブが返されます。
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -224,13 +260,13 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS       Backup               Completed            11/12/2018 2:42:07 PM     11/12/2018 2:42:11 PM     8bdfe3ab-9bf7-4be6-83d6-37ff1ca13ab6
 ```
 
-バックアップ作成時には Azure ファイル共有のスナップショットが活用されるため、通常は、コマンドからこの出力が返されるまでにジョブが完了します
+バックアップ作成時には Azure ファイル共有のスナップショットが使用されるため、通常は、コマンドからこの出力が返されるまでにジョブが完了します。
 
-### <a name="modify-protection-policy"></a>保護ポリシーを変更する
+### <a name="modify-the-protection-policy"></a>保護ポリシーを変更する
 
-Azure ファイル共有の保護に使用するポリシーを変更する場合は、関連するバックアップ項目と、新しい保護ポリシーを指定して、**Enable-AzRecoveryServicesBackupProtection** を使用します。
+Azure ファイル共有のバックアップに使用するポリシーを変更するには、[Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0) を使用します。 関連するバックアップ項目と新しいバックアップ ポリシーを指定します。
 
-次の例では、"testAzureFS" の保護ポリシーを、"dailyafs" から "monthlyafs" に変更しています
+次の例では、**testAzureFS** の保護ポリシーを **dailyafs** から **monthlyafs** に変更します。
 
 ```powershell
 $monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"
@@ -239,13 +275,20 @@ $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -Workloa
 Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsPol
 ```
 
-## <a name="restore-azure-file-sharesazure-files"></a>Azure ファイル共有/Azure ファイルを復元する
+## <a name="restore-azure-file-shares-and-files"></a>Azure ファイル共有とファイルを復元する
 
-ファイル共有全体を、元の場所や代わりの場所に復元できます。 同様に、ファイル共有の個々のファイルを復元することもできます。
+ファイル共有全体を復元することも、共有上の特定のファイルを復元することもできます。 元の場所に復元することも、代わりの場所に復元することもできます。 
 
-### <a name="fetching-recovery-points"></a>復旧ポイントのフェッチ
+### <a name="fetch-recovery-points"></a>復旧ポイントをフェッチする
 
-**Get-AzRecoveryServicesBackupRecoveryPoint** コマンドレットを使用して、バックアップ項目のすべての復旧ポイントを一覧表示します。 次のスクリプトでは、**$rp** 変数が、過去 7 日間に選択したバックアップ項目の復旧ポイントの配列になっています。 この配列は時間の逆順で並べ替えられています。最新の復旧ポイントのインデックスは 0 です。 標準の PowerShell 配列のインデックスを使用して、復旧ポイントを選択します。 次の例では、$rp[0] は最新の復旧ポイントを選択します。
+[Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) を使用して、バックアップされた項目のすべての復旧ポイントを一覧表示します。
+
+スクリプトの説明:
+
+- 変数 **$rp** は、過去 7 日間に選択したバックアップ項目の復旧ポイントの配列です。
+- この配列は時間の逆順で並べ替えられています。最新の復旧ポイントのインデックスは **0** です。
+- 標準の PowerShell 配列のインデックスを使用して、復旧ポイントを選択します。
+- 次の例では、**$rp[0]** によって最新の復旧ポイントが選択されます。
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -255,7 +298,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $st
 $rp[0] | fl
 ```
 
-出力は次の例のようになります。
+出力は次のようになります。
 
 ```powershell
 FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
@@ -270,56 +313,53 @@ ContainerName        : storage;teststorageRG;testStorageAcct
 ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
+関連する復旧ポイントが選択されたら、ファイル共有またはファイルを、その元の場所か代わりの場所に復元します。
 
-関連する復旧ポイントを選択したら、下で説明するように、代わりの場所または元の場所へのファイル共有/ファイルの復元に進みます。
+### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Azure ファイル共有を代わりの場所に復元する
 
-### <a name="restore-azure-file-shares-to-an-alternate-location"></a>Azure ファイル共有を代わりの場所に復元する
+[Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) を使用して、選択された復旧ポイントに復元します。 代わりの場所を特定するため、次のパラメーターを指定します。 
 
-#### <a name="restoring-an-azure-file-share"></a>Azure ファイル共有の復元
+- **TargetStorageAccountName**:バックアップされたコンテンツの復元先となるストレージ アカウント。 このストレージ アカウントは、コンテナーと同じ場所にある必要があります。
+- **TargetFileShareName**:バックアップされたコンテンツの復元先となるターゲット ストレージ アカウント内のファイル共有。
+- **TargetFolder**:データの復元先となるファイル共有の下のフォルダー。 バックアップされたコンテンツをルート フォルダーに復元する必要がある場合は、ターゲット フォルダーの値として空の文字列を指定します。
+- **ResolveConflict**:復元されたデータとの競合が発生した場合の指示。 **Overwrite** または **Skip** を指定できます。
 
-以下の情報を指定して、代わりの場所を識別します。
+次のようにパラメーターを指定してコマンドレットを実行します。
 
-* ***TargetStorageAccountName***:バックアップされたコンテンツの復元先となるストレージ アカウント。 ターゲット ストレージ アカウントは、コンテナーのストレージ アカウントと同じ場所にある必要があります。
-* ***TargetFileShareName***:バックアップされたコンテンツの復元先となるターゲット ストレージ アカウント内のファイル共有
-* ***TargetFolder***:データの復元先となるファイル共有の下のフォルダー。 バックアップされたコンテンツをルート フォルダーに復元する必要がある場合は、ターゲット フォルダーの値として空の文字列を指定します
-* ***ResolveConflict***:復元されたデータとの競合が発生した場合の指示。 "Overwrite" または "skip" を指定できます
-
-restore コマンドにこれらのパラメーターを指定して、バックアップされたファイル共有を代わりの場所に復元します。
-
-````powershell
+```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
-````
+```
 
-このコマンドは、次の例に示すように、追跡する必要がある ID を持つジョブを返します。
+このコマンドでは、次の例に示すように、追跡する必要がある ID を持つジョブが返されます。
 
-````powershell
+```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
-````
+```
 
-#### <a name="restoring-an-azure-file"></a>Azure ファイルの復元
+### <a name="restore-an-azure-file-to-an-alternate-location"></a>Azure ファイルを代わりの場所に復元する
 
-ファイル共有全体ではなく、個々のファイルを復元する場合は、以下のパラメーターを指定して、個々のファイルを一意に識別する必要があります。
+[Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) を使用して、選択された復旧ポイントに復元します。 代わりの場所を特定し、復元するファイルを一意に特定するため、次のパラメーターを指定します。
 
-* ***TargetStorageAccountName***:バックアップされたコンテンツの復元先となるストレージ アカウント。 ターゲット ストレージ アカウントは、コンテナーのストレージ アカウントと同じ場所にある必要があります。
-* ***TargetFileShareName***:バックアップされたコンテンツの復元先となるターゲット ストレージ アカウント内のファイル共有
-* ***TargetFolder***:データの復元先となるファイル共有の下のフォルダー。 バックアップされたコンテンツをルート フォルダーに復元する必要がある場合は、ターゲット フォルダーの値として空の文字列を指定します
-* ***SourceFilePath***:文字列で表わされた、ファイル共有内の復元するファイルの絶対パス。 これは ```Get-AzStorageFile``` PS コマンドレットで使用されるのと同じパスです。
-* ***SourceFileType***:選択されるのはディレクトリかファイルか。 "Directory" または "File" を指定できます
-* ***ResolveConflict***:復元されたデータとの競合が発生した場合の指示。 "Overwrite" または "skip" を指定できます
+* **TargetStorageAccountName**:バックアップされたコンテンツの復元先となるストレージ アカウント。 このストレージ アカウントは、コンテナーと同じ場所にある必要があります。
+* **TargetFileShareName**:バックアップされたコンテンツの復元先となるターゲット ストレージ アカウント内のファイル共有。
+* **TargetFolder**:データの復元先となるファイル共有の下のフォルダー。 バックアップされたコンテンツをルート フォルダーに復元する必要がある場合は、ターゲット フォルダーの値として空の文字列を指定します。
+* **SourceFilePath**:文字列で表わされた、ファイル共有内の復元するファイルの絶対パス。 このパスは **Get-AzStorageFile** PowerShell コマンドレットで使用されるのと同じパスです。
+* **SourceFileType**:選択されるのはディレクトリかファイルか。 **Directory** または **File** を指定できます。
+* **ResolveConflict**:復元されたデータとの競合が発生した場合の指示。 **Overwrite** または **Skip** を指定できます。
 
-ご覧のように、追加のパラメーターは、復元する個々のファイルにのみ関連しています。
+追加のパラメーター (SourceFilePath および SourceFileType) は、復元する個々のファイルにのみ関連しています。
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-上記のように、ID で追跡されるジョブも返されます。
+前のセクションで示したように、このコマンドは追跡する必要がある ID を持つジョブを返します。
 
-### <a name="restore-azure-file-shares-to-original-location"></a>Azure ファイル共有を元の場所に復元する
+### <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Azure ファイル共有およびファイルを元の場所に復元する
 
-元の場所への復元の場合、復元先/ターゲットに関連するすべてのパラメーターを指定する必要はありません。 ```ResolveConflict``` のみ指定する必要があります
+元の場所に復元する場合、復元先とターゲットに関連するパラメーターを指定する必要はありません。 **ResolveConflict** のみ指定する必要があります。
 
 #### <a name="overwrite-an-azure-file-share"></a>Azure ファイル共有を上書きする
 
@@ -335,7 +375,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="track-backup-and-restore-jobs"></a>バックアップ ジョブと復元ジョブを追跡する
 
-オンデマンドのバックアップ操作や復元操作では、[上](#trigger-an-on-demand-backup)で示したように、ID と共にジョブが返されます。 ```Get-AzRecoveryServicesBackupJobDetails``` コマンドレットを使用して、ジョブの進行状況を追跡し、詳細をフェッチします。
+オンデマンドのバックアップ操作や復元操作では、[オンデマンド バックアップの実行](#trigger-an-on-demand-backup)で示したように、ID と共にジョブが返されます。 ジョブの進行状況と詳細を追跡するには、[Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) コマンドレットを使用します。
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -360,5 +400,7 @@ $job.ErrorDetails
 
  ErrorCode ErrorMessage                                          Recommendations
  --------- ------------                                          ---------------
-1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support
+1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
 ```
+## <a name="next-steps"></a>次の手順
+Azure portal での Azure Files のバックアップについて[学習します](backup-azure-files.md)。

@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: c3627cdbabb38c2236a8a433e9d82d78fe502e4c
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: db3333aa52782ceb949ef3f46a903b618f6e3f2f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311092"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693026"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP から SendGrid 電子メール サービスを使用する方法
 
@@ -46,7 +46,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 
 Azure PHP アプリケーションで SendGrid を使用するために、特別な構成やコーディングは不要です。 SendGrid はサービスであるため、オンプレミスのアプリケーションからとまったく同じ方法で、クラウド アプリケーションからアクセスできます。
 
-## <a name="how-to-send-an-email"></a>方法: 電子メールを送信する
+## <a name="how-to-send-an-email"></a>方法:電子メールを送信する
 
 SMTP、または SendGrid の Web API を使用して電子メールを送信できます。
 
@@ -161,7 +161,7 @@ PHP の [curl 関数][curl function]で SendGrid Web API を使用して電子�
 
 SendGrid の Web API は REST API とほとんど同じですが、実際は REST ベースの API ではありません。ほとんどの呼び出しで GET と POST の両方の動詞を区別しないで使用できるためです。
 
-## <a name="how-to-add-an-attachment"></a>方法: 添付ファイルを追加する
+## <a name="how-to-add-an-attachment"></a>方法:添付ファイルを追加する
 
 ### <a name="smtp-api"></a>SMTP API
 
@@ -174,7 +174,7 @@ SMTP API を使用して添付ファイルを送信するには、この例の�
   * Create the body of the message (a plain-text and an HTML version).
   * $text is your plain-text email
   * $html is your html version of the email
-  * If the reciever is able to view html emails then only the html
+  * If the receiver is able to view html emails then only the html
   * email will be displayed
   */
  $text = "Hi!\nHow are you?\n";
@@ -296,7 +296,7 @@ Web API を使用した添付ファイルの送信は、Web API を使用した�
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法: フィルターを使用してフッター、追跡、および分析を有効にする
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法:フィルターを使用してフッター、追跡、および分析を有効にする
 
 SendGrid では、 *フィルター*を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。
 
@@ -349,7 +349,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  // support@yourcompany.com, info@yourcompany.com
  $from = 'someone@example.com';
 
- // If you do not specify a sender list above, you can specifiy the user here. If
+ // If you do not specify a sender list above, you can specify the user here. If
  // a sender list IS specified above, this email address becomes irrelevant.
  $to = 'john@contoso.com';
 
@@ -418,9 +418,9 @@ php composer.phar require sendgrid/sendgrid 2.1.1
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
 [special offer]: https://www.sendgrid.com/windowsazure.html
-[Packaging and Deploying PHP Applications for Azure]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
+[Packaging and Deploying PHP Applications for Azure]: https://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
 [http://swiftmailer.org/download]: http://swiftmailer.org/download
-[curl function]: http://php.net/curl
+[curl function]: https://php.net/curl
 [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions
 [トランザクション メール配信]: https://sendgrid.com/transactional-email
 [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1

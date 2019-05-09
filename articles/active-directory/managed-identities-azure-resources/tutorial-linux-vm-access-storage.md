@@ -3,25 +3,26 @@ title: Linux VM のシステム割り当てマネージド ID を使用して Az
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
-ms.author: daveba
-ms.openlocfilehash: 3b608f9f099b2c4d030eefe96ea96c5d3effdc53
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bb7de72a435faf100d6992815ef8d5ec00cb3581
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725235"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58801863"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする 
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -83,7 +84,7 @@ VM のマネージド ID を使用して、Azure Storage Blob のデータを取
 1. 新たに作成したストレージ アカウントに戻ります。  
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
 3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します。
-4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者 (プレビュー)]** を選択します。 
+4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者]** を選択します。 
 5. 次のドロップダウンで、**[アクセスの割り当て先]** として **[仮想マシン]** を選択します。  
 6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、**[リソース グループ]** を **[すべてのリソース グループ]** に設定します。  
 7. **[選択]** で、VM を選択し、**[保存]** をクリックします。

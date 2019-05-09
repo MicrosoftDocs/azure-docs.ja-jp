@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 6ece4d7d0a39f5ea9dd4d9503d3bdd11a4bffd89
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 286bc73cb7226d95c1e46fc51ae5999ea27d44ad
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678578"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535685"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>チュートリアル: Python API を使用して Azure Batch で並列ワークロードを実行する
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>チュートリアル:Python API を使用して Azure Batch で並列ワークロードを実行する
 
 Azure Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のバッチ ジョブを Azure で効率的に実行することができます。 このチュートリアルでは、Batch を使用して並列ワークロードを実行する Python の例を紹介します。 一般的な Batch アプリケーション ワークフローのほか、Batch および Storage のリソースをプログラムで操作する方法を学習します。 学習内容は次のとおりです。
 
@@ -29,7 +29,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 > * タスクの実行を監視する
 > * 出力ファイルを取得する
 
-このチュートリアルでは、[ffmpeg](http://ffmpeg.org/) オープンソース ツールを使用して複数の MP4 メディア ファイルを並行して MP3 形式に変換します。 
+このチュートリアルでは、[ffmpeg](https://ffmpeg.org/) オープンソース ツールを使用して複数の MP4 メディア ファイルを並行して MP3 形式に変換します。 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/batch-python-ffmpeg-tutorial.git
 pip install -r requirements.txt
 ```
 
-ファイル `batch_python_tutorial_ffmpeg.py`を開きます。 Batch アカウントとストレージ アカウントの資格情報文字列を、アカウントに固有の値で更新します。 例: 
+ファイル `config.py`を開きます。 Batch アカウントとストレージ アカウントの資格情報文字列を、アカウントに固有の値で更新します。 例: 
 
 
 ```Python
@@ -75,8 +75,6 @@ _BATCH_ACCOUNT_URL = 'https://mybatchaccount.mybatchregion.batch.azure.com'
 _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
-
-[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
 
 ### <a name="run-the-app"></a>アプリの実行
 
@@ -172,7 +170,7 @@ input_files = [
 
 このプールの構成には、物理ノードのプロパティだけでなく、[StartTask](/python/api/azure.batch.models.starttask) オブジェクトも含まれています。 各ノードがプールに参加するときと、ノードの再起動のたびに、各ノードで StartTask が実行されます。 この例では、StartTask は Bash シェル コマンドを実行して、ffmpeg パッケージと依存関係をノードにインストールします。
 
-[pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) メソッドは、プールを Batch サービスを送信します。
+[pool.add](/python/api/azure.batch.operations.pooloperations) メソッドは、プールを Batch サービスを送信します。
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -202,7 +200,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>ジョブを作成する
 
-Batch ジョブでは、タスクの実行対象となるプールと、作業の優先順位やスケジュールなどのオプションの設定を指定します。 このサンプルでは、`create_job` の呼び出しを使用してジョブを作成します。 この定義済みの関数は、[JobAddParameter](/python/api/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure.batch.operations.joboperations#azure_batch_operations_JobOperations_add) メソッドは、プールを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
+Batch ジョブでは、タスクの実行対象となるプールと、作業の優先順位やスケジュールなどのオプションの設定を指定します。 このサンプルでは、`create_job` の呼び出しを使用してジョブを作成します。 この定義済みの関数は、[JobAddParameter](/python/api/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure.batch.operations.joboperations) メソッドは、プールを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
 
 ```python
 job = batch.models.JobAddParameter(
@@ -218,7 +216,7 @@ batch_service_client.job.add(job)
 
 このサンプルでは、コマンド ラインの実行後に MP3 ファイルの [OutputFile](/python/api/azure.batch.models.outputfile) オブジェクトを作成します。 各タスクの出力ファイル (この場合は 1 つ) は、タスクの `output_files` プロパティを使用して、リンクされているストレージ アカウントのコンテナーにアップロードされます。
 
-その後、アプリは、[task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
+その後、アプリは、[task.add_collection](/python/api/azure.batch.operations.taskoperations) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
 
 ```python
 tasks = list()

@@ -1,21 +1,21 @@
 ---
-title: 'クイック スタート: Python で好ましくない要素を検出するためにテキストの内容を分析する'
+title: クイック スタート:Python でテキストの内容を分析する - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for Python を使用してさまざまな好ましくない要素を検出するためにテキスト コンテンツを分析する方法
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 11/19/2018
+ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: acafd666b2d3791450499ebdf173ffb67ad2c932
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 20920a04c5b85c9eede7d7b249dd6e0548308240
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095190"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883408"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>クイック スタート: Python で好ましくない要素を検出するためにテキストの内容を分析する
 
@@ -61,7 +61,7 @@ _ContentModeratorQS.py_ という名前の新しい Python スクリプトを作
 
 ## <a name="query-the-moderator-service"></a>Moderator サービスの照会
 
-お使いのサブスクリプション キーとエンドポイント URL を使用して、**ContentModeratorClient** インスタンスを作成します。 その後、インスタンスのメンバーである **TextModerationOperations** インスタンスを使用して、モデレート API を呼び出します。 呼び出し方法の詳細については、**[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python#screen-text)** リファレンスのドキュメントを参照してください。
+お使いのサブスクリプション キーとエンドポイント URL を使用して、**ContentModeratorClient** インスタンスを作成します。 その後、インスタンスのメンバーである **TextModerationOperations** インスタンスを使用して、モデレート API を呼び出します。 呼び出し方法の詳細については、**[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** リファレンスのドキュメントを参照してください。
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
 

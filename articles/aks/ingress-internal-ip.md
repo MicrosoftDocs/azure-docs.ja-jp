@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: bd3009a5abf6bd34be0e5dd45abfac628ae8a4c8
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 56e7f9a7760fc270df40dd4524f70b5ddce57198
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093583"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847443"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部の仮想ネットワークにイングレス コントローラーを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "50093583"
 
 - [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
-- [ご自身の TLS 証明書を使用するイングレス コント ローラーを作成する][aks-ingress-own-tls]
+- [ご自身の TLS 証明書を使用するイングレス コントローラーを作成する][aks-ingress-own-tls]
 - Let's Encrypt を使用して、[動的パブリック IP アドレスを使用][aks-ingress-tls]または[静的パブリック IP アドレスを使用][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -228,7 +228,7 @@ kubectl delete -f hello-world-ingress.yaml
 - [静的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成する][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->

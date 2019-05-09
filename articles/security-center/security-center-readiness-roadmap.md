@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 56d18b7ec44e979bee48c3598286a461199e1005
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7de085766ae700b5c76d9eca49c1127aabdddb9b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958203"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244646"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -118,7 +118,7 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 * [ネットワーク セキュリティのベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
 * [PaaS に関する推奨情報](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/due-diligence-checklist)
-* [Log Analytics customers can now use Azure Security Center to protect their hybrid cloud workloads (Log Analytics のお客さまが Azure Security Center を使用してハイブリッド クラウド ワークロードを保護できるようになりました)](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Log Analytics のお客さまが Azure Security Center を使用してハイブリッド クラウド ワークロードを保護できるようになりました](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>コミュニティ リソース
 

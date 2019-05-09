@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2480aa92dec8d8e8879db813b1cfcddc26f77b7e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e1cb588d68153a88d8b55b2696b376c4eb8704f5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792528"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199281"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure IoT (モノのインターネット) とは
 
@@ -34,6 +34,8 @@ IoT ソリューションの主な構成要素は、デバイスとバックエ�
 * 室内のプレゼンス センサー
 
 プロトタイプ作成には、Microsoft の基本的な MX Chip IoT Devkit と Raspberry PI という 2 つのデバイスがよく使用されます。 MX Chip Devkit は、温度、気圧、湿度のセンサーに加え、ジャイロスコープや加速度計、磁力計、Wi-Fi チップを内蔵しています。 Raspberry PI は、多数の多様なセンサーを接続できる IoT デバイスであるため、ご自分のシナリオに必要なものを選ぶことができます。 
+
+利用可能な IoT デバイスについて詳しくは、業界最大の [Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/alldevices)を参照してください。
 
 [IoT Device SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用すると、ご自分のデバイス上で実行されるアプリを構築し、必要なタスクを実行させることができます。 これらの SDK を使用すれば、目的の IoT ハブにテレメトリを送信したり、その IoT ハブからメッセージや更新を受信したりもできます。
 

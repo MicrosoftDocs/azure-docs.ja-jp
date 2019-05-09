@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/16/2018
+ms.date: 01/23/2019
 ms.author: shvija
-ms.openlocfilehash: 3a1054b0c753b3e5dca4cd66ac42e6bc8bdd16ae
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a7976c0798bd78fd51632d3025147526a645b041
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960704"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528798"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>クイック スタート: Azure portal を使用したイベント ハブの作成
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -32,63 +32,61 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループは、Azure リソースの論理的なコレクションです。 すべてのリソースのデプロイと管理はリソース グループで行われます。 以下を実行してリソース グループを作成します。
+リソース グループは、Azure リソースの論理的なコレクションです。 すべてのリソースのデプロイと管理はリソース グループで行われます。 リソース グループを作成するには:
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のナビゲーションで、**[リソース グループ]** をクリックします。 **[追加]** をクリックします。
 
    ![リソース グループ - [追加] ボタン](./media/event-hubs-quickstart-portal/resource-groups1.png)
 
-2. リソース グループに一意の名前を入力します。 現在選択されている Azure サブスクリプションでその名前を使用できるかどうかが、すぐに自動で確認されます。
-
-3. **[サブスクリプション]** で、リソース グループを作成したい Azure サブスクリプションの名前をクリックします。
-
-4. リソース グループの地理的な場所を選択します。
-
-5. **Create** をクリックしてください。
+2. **[サブスクリプション]** で、リソース グループを作成したい Azure サブスクリプションの名前を選択します。
+3. **リソース グループの一意の名前**を入力します。 現在選択されている Azure サブスクリプションでその名前を使用できるかどうかが、すぐに自動で確認されます。
+4. リソース グループの**リージョン**を選択します。
+5. **[確認および作成]** を選択します。
 
    ![リソース グループ - 作成](./media/event-hubs-quickstart-portal/resource-groups2.png)
+6. **[確認および作成]** ページで、**[作成]** を選択します。 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 
 Event Hubs 名前空間は一意のスコープ コンテナーを提供します。このコンテナーは、1 つ以上のイベント ハブを作成する完全修飾ドメイン名によって参照されます。 ポータルを使用してリソース グループに名前空間を作成するには、以下の操作を実行します。
 
 1. Azure portal で、画面の左上にある **[リソースの作成]** をクリックします。
-
-2. **[モノのインターネット]**、**[Event Hubs]** の順にクリックします。
-
-3. **[名前空間の作成]** で、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
-
-   ![イベント ハブの名前空間の作成](./media/event-hubs-create/create-event-hub1.png)
-
-4. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic または Standard) を選択します。 Azure サブスクリプション、リソース グループ、リソースが作成される場所を選択します。
- 
-5. **[作成]** をクリックして、名前空間を作成します。 システムがリソースを完全にプロビジョニングするまで、数分間待つことが必要な場合があります。
-6. **[アラート]** を選択し、イベント ハブの名前空間と同じ名前の**デプロイ**を選択します。 
-
-   ![リソース グループ - 作成のアラート](./media/event-hubs-quickstart-portal/create-alert.png)
-6. デプロイ内に作成されたリソースの一覧で、イベント ハブの名前空間を選択します。 
-
-   ![デプロイから名前空間を選択する](./media/event-hubs-quickstart-portal/deployment-namespace.png)
-7. **[Event Hubs 名前空間]** ページで **[共有アクセス ポリシー]** を選択し、**[RootManageSharedAccessKey]** をクリックします。
+2. 左側のメニューで **[すべてのサービス]** を選択し、**[Analytics]** カテゴリの **[Event Hubs]** の横にある**星 (`*`)** を選択します。 左側のナビゲーション メニューの **[お気に入り]** に **[Event Hubs]** が追加されていることを確認します。 
     
-8. コピー ボタンをクリックして **RootManageSharedAccessKey** 接続文字列をクリップボードにコピーします。 後で使用するため、メモ帳などの一時的な場所に、この接続文字列を保存します。
+   ![Event Hubs を検索する](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
+3. 左側のナビゲーション メニューの **[お気に入り]** の下の **[Event Hubs]** を選択し、ツール バーの **[追加]** を選択します。
+
+   ![[追加] ツール バー ボタン](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
+4. **[名前空間の作成]** ページで、次の手順を実行します。
+    1. 名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
+    2. 価格レベル (Basic または Standard) を選択します。
+    3. 名前空間を作成する**サブスクリプション**を選択します。
+    4. 名前空間の**場所**を選択します。
+    5. **作成**を選択します。 システムがリソースを完全にプロビジョニングするまで、数分間待つことが必要な場合があります。
+
+       ![イベント ハブの名前空間の作成](./media/event-hubs-quickstart-portal/create-event-hub1.png)
+5. **[Event Hubs]** ページを更新して、イベント ハブの名前空間を確認します。 アラートを通じてイベント ハブの作成状態を確認することができます。 
+
+    ![イベント ハブの名前空間の作成](./media/event-hubs-quickstart-portal/event-hubs-refresh.png)
+6. 名前空間を選択します。 ポータルの **[Event Hubs 名前空間]** のホーム ページが表示されます。 
+
+   ![名前空間のホーム ページ](./media/event-hubs-quickstart-portal/namespace-home-page.png)
     
 ## <a name="create-an-event-hub"></a>イベント ハブの作成
 
 名前空間内にイベント ハブを作成するには、以下の操作を実行します。
 
-1. [Event Hubs 名前空間] ページで、**[イベント ハブ]** を選択します。
-   
-    ![左側のメニューで [イベント ハブ] を選択する](./media/event-hubs-quickstart-portal/create-event-hub3.png)
-
+1. [Event Hubs 名前空間] ページで、左側のメニューから **[Event Hubs]** を選択します。
 1. ウィンドウの上部にある **[+ イベント ハブ]** をクリックします。
    
     ![イベント ハブの追加 - ボタン](./media/event-hubs-quickstart-portal/create-event-hub4.png)
 1. イベント ハブの名前を入力し、 **[作成]** をクリックします。
    
     ![イベント ハブの作成](./media/event-hubs-quickstart-portal/create-event-hub5.png)
+4. アラートを通じてイベント ハブの作成状態を確認することができます。 次の図に示すように、作成されたイベント ハブがイベント ハブの一覧に表示されます。
 
+    ![作成されたイベント ハブ](./media/event-hubs-quickstart-portal/event-hub-created.png)
 
 お疲れさまでした。 ポータルを使用して Event Hubs 名前空間を作成し、その名前空間内にイベント ハブを作成しました。 
 

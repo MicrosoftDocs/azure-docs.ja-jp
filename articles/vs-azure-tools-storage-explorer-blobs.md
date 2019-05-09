@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 8315647afec0166b41ce7a75f491077edd56db46
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036262"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858169"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Storage Explorer を使用して Azure Blob Storage リソースを管理する
 ## <a name="overview"></a>概要
@@ -29,7 +29,7 @@ BLOB ストレージを使用すると、データを一般に公開すること
 ## <a name="prerequisites"></a>前提条件
 この記事の手順を完了するには、次のことが必要になります。
 
-* [Storage Explorer をダウンロードしてインストールする](http://www.storageexplorer.com)
+* [Storage Explorer をダウンロードしてインストールする](https://www.storageexplorer.com)
 * [Azure ストレージ アカウントまたはサービスに接続する](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>BLOB コンテナーを作成する
@@ -213,7 +213,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      3. 確認のダイアログで **[はい]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
-* [最新の Storage Explorer のリリース ノートとビデオ](http://www.storageexplorer.com)を確認します。
+* [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com)を確認します。
 * [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png

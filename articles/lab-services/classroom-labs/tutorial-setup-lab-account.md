@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/15/2018
+ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 4b8b5502090e1b115829b65834532dd6ce15a934
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 962b69a97b8116b82878a0a82960c9159091a9a7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835915"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652622"
 ---
-# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル: Azure Lab Services でラボ アカウントを設定する
+# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル:Azure Lab Services でラボ アカウントを設定する
 Azure Lab Services では、ラボ アカウントは、それによって組織のラボが管理される中心的なアカウントとして機能します。 ラボ アカウントでは、ラボを作成する権限を他のユーザーに付与し、ラボ アカウントの管理下にあるすべてのラボに適用されるポリシーを設定します。 このチュートリアルでは、ラボ管理者としてラボ アカウントを作成する方法について説明します。 
 
 このチュートリアルでは、次のアクションを実行します。
@@ -37,21 +37,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次の手順では、Azure portal を使って Azure Lab Services でラボ アカウントを作成する方法を示します。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメイン メニューで、**[リソースの作成]** を選択します。
-3. Azure Marketplace で **Lab Services** を検索し、ボックスの一覧から **[Lab Services]** を選択します。 
-4. フィルター適用後のサービスの一覧で、**[Lab Services (プレビュー)]** を選択します。 
-1. **[Create a lab account]** ウィンドウで、**[作成]** を選びます。
-2. **[Lab account]\(ラボ アカウント\)** ウィンドウで、次のようにします。 
+2. 左側のメニューから、**[すべてのサービス]** を選択します。 **[DevOps]** セクションで、**[ラボ サービス]** を選択します。 **[ラボ サービス]** の横にある星印 (`*`) を選択した場合は、左側のメニューの **[お気に入り]** セクションに追加されます。 次回以降は、**[お気に入り]** の下で **[ラボ サービス]** を選択します。
+
+    ![[すべてのサービス] -> [ラボ サービス]](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. **[ラボ サービス]** ページで、ツール バーの **[追加]** を選択します。 
+
+    ![[ラボ アカウント] ページで [追加] を選択する](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. **[ラボ アカウント]** ページで、次のようにします。 
     1. **[Lab account name]\(ラボ アカウント名\)** に、名前を入力します。 
     2. ラボ アカウントを作成する **[Azure サブスクリプション]** を選択します。
     3. **[リソース グループ]** で、**[新規作成]** を選択し、リソース グループの名前を入力します。
     4. **[場所]** で、ラボ アカウントが作成される場所/リージョンを選択します。 
-    5. **作成**を選択します。 
+    5. **[仮想ネットワークのピアリング]** には、ラボ ネットワークのピア仮想ネットワーク (VNet) を選択します。 このアカウントで作成したラボは、選択した VNet に接続され、そこにあるリソースにアクセスすることができます。 
+    6. **[Allow lab creator to pick lab location]\(ラボの作成者にラボの場所の選択を許可する\)** フィールドで、ラボの作成者がラボの場所を選択できるようにするかどうかを指定します。 既定では、このオプションは無効です。 無効である場合、ラボの作成者は作成するラボの場所を指定できません。 ラボは、ラボ アカウントに地理的に最も近い場所に作成されます。 有効である場合、ラボの作成者はラボの作成時に場所を選択できます。 
+    7. **作成**を選択します。 
 
         ![ラボ アカウントの作成ウィンドウ](../media/tutorial-setup-lab-account/lab-account-settings.png)
-5. ラボ アカウント ページが表示されない場合は、**[通知]** ボタンを選択し、通知内の **[リソースに移動]** ボタンをクリックします。 
+5. ツールバーの**ベル アイコン** (**[通知]**) を選択し、デプロイが成功したことを確認して、**[リソースに移動]** を選択します。 
 
-    ![ラボ アカウントの作成ウィンドウ](../media/tutorial-setup-lab-account/notification-go-to-resource.png)    
+    または、**[ラボ アカウント]** ページの **[更新]** を選択し、作成したラボ アカウントを選択します。 
+
+    ![ラボ アカウントの作成ウィンドウ](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. 次の **[Lab account]\(ラボ アカウント\)** ページが表示されます。
 
     ![[Lab account]\(ラボ アカウント\) ページ](../media/tutorial-setup-lab-account/lab-account-page.png)
@@ -61,10 +67,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 クラスのラボを作成するアクセス許可を教師に与えるには、教師を**ラボの作成者**ロールに追加します。
 
-1. **[ラボ アカウント]** ページで、**[アクセス制御 (IAM)]** を選択し、ツールバーの **[+ ロール割り当ての追加]** をクリックします。 
-2. **[アクセス許可の追加]** ページで、**[ロール]** から **[ラボの作成者]** を選び、ラボの作成者ロールに追加するユーザーを選んだ後、**[保存]** をクリックします。 
+1. **[ラボ アカウント]** ページで、**[アクセス制御 (IAM)]** を選択し、ツール バーの **[+ 追加]** を選択してから、ツール バーの **[+ ロール割り当ての追加]** を選択します。 
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>ラボ所有者が利用できる Marketplace イメージを指定する
+    ![[アクセス制御] -> [ロールの割り当ての追加] ボタン](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. **[ロールの割り当ての追加]** ページで、**[ロール]** から **[ラボの作成者]** を選択し、ラボの作成者ロールに追加するユーザーを選択した後、**[保存]** を選択します。 
+
+    ![ラボ作成者の追加](../media/tutorial-setup-lab-account/add-lab-creator.png)
+
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>ラボ作成者が利用できる Marketplace イメージを指定する
 ラボ アカウント所有者は、ラボ作成者がラボ アカウントにラボを作成するために使用できる Marketplace イメージを指定できます。 
 
 1. 左側のメニューで、**[Marketplace イメージ]** を選択します。 既定では、イメージの完全な一覧 (有効なものと無効なものの両方) が表示されます。 上部のドロップダウン リストから **[有効のみ]**/**[無効のみ]** オプションを選択することにより、一覧をフィルター処理して、有効/無効のイメージのみを表示することができます。 

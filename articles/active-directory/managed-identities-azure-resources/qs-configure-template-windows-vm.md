@@ -3,23 +3,24 @@ title: テンプレートを使用して Azure VM で Azure リソースのマ�
 description: Azure Resource Manager テンプレートを使用して、Azure VM で Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
-ms.author: daveba
-ms.openlocfilehash: 78920bfe000287daef7b4efcaa8339d599d6f57e
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1cb96f4aaef461d049ca496780d542ad7db229e2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578503"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444632"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する
 
@@ -39,7 +40,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 Azure portal とスクリプトを使う場合と同じように、[Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) テンプレートを使うと、Azure リソース グループによって定義された新しいリソースまたは変更されたリソースをデプロイすることができます。 ローカルとポータル ベースの両方を含むテンプレートの編集やデプロイでは、次のような複数のオプションが使用できます。
 
    - [Azure Marketplace のカスタム テンプレート](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)を使用します。これにより、最初からテンプレートを作成したり、既存の共通テンプレートまたは[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)に基づいてテンプレートを作成したりできます。
-   - [元のデプロイ](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history)または[デプロイの現在の状態](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
+   - [元のデプロイ](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)または[デプロイの現在の状態](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
    - ローカルの [JSON エディター (VS Code など)](../../azure-resource-manager/resource-manager-create-first-template.md) を使用してから、PowerShell または CLI を使用してアップロードおよびデプロイします。
    - Visual Studio の [Azure リソース グループ プロジェクト](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)を使用して、テンプレートを作成およびデプロイします。  
 
@@ -63,35 +64,10 @@ VM でシステム割り当てマネージド ID を有効にするには、お�
    },
    ```
 
-3. (省略可能) VM の、Azure リソースのマネージド ID 拡張機能を `resources` 要素として追加します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。  次の構文を使用します。
+> [!NOTE]
+> オプションで、Azure リソース VM 拡張機能のマネージド ID をプロビジョニングできます。そのためには、これをテンプレートの `resources` 要素内に指定します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。  詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
 
-   >[!NOTE] 
-   > 次の例では、Windows VM の拡張機能 (`ManagedIdentityExtensionForWindows`) がデプロイ済みであることを前提としています。 `"name"` 要素と `"type"` 要素については、代わりに `ManagedIdentityExtensionForLinux` を使用して Linux 用に構成することもできます。 VM 拡張機能は、2019 年 1 月に非推奨となる予定です。
-   >
-
-   ```JSON
-   { 
-       "type": "Microsoft.Compute/virtualMachines/extensions",
-       "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-       "apiVersion": "2018-06-01",
-       "location": "[resourceGroup().location]",
-       "dependsOn": [
-           "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-       ],
-       "properties": {
-           "publisher": "Microsoft.ManagedIdentity",
-           "type": "ManagedIdentityExtensionForWindows",
-           "typeHandlerVersion": "1.0",
-           "autoUpgradeMinorVersion": true,
-           "settings": {
-               "port": 50342
-           },
-           "protectedSettings": {}
-       }
-   }
-   ```
-
-4. 完了すると、テンプレートの `resource` セクションに次のセクションが追加され、テンプレートは次のようになります。
+3. 完了すると、テンプレートの `resource` セクションに次のセクションが追加され、テンプレートは次のようになります。
 
    ```JSON
    "resources": [
@@ -105,6 +81,8 @@ VM でシステム割り当てマネージド ID を有効にするには、お�
                 "type": "SystemAssigned",
                 },
             },
+        
+            //The following appears only if you provisioned the optional VM extension (to be deprecated)
             {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
@@ -208,7 +186,7 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 > [!Note]
 > Azure Resource Manager テンプレートを使用してユーザー割り当てマネージド ID を作成するには、「[Create a user-assigned managed identity (ユーザー割り当てマネージド ID を作成する)](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)」をご覧ください。
 
- ### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Azure VM にユーザー割り当てマネージド ID を割り当てる
+### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Azure VM にユーザー割り当てマネージド ID を割り当てる
 
 ユーザー割り当て ID を VM に割り当てるには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールと[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
@@ -252,29 +230,6 @@ VM からシステム割り当てマネージド ID を削除するには、お�
    }
    ```
        
-
-2. (省略可能) 次に、マネージド ID 拡張機能を VM に割り当てるために (2019 年 1 月に非推奨となる予定)、`resources` 要素の下に次のエントリを追加します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。 次の構文を使用します。
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
-        }
-    }
-    ```
-    
 3. 完了すると、テンプレートの `resource` セクションに次のセクションが追加され、テンプレートは次のようになります。
    
    **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**    
@@ -294,6 +249,7 @@ VM からシステム割り当てマネージド ID を削除するには、お�
                 }
             }
         },
+        //The following appears only if you provisioned the optional VM extension (to be deprecated)                  
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
@@ -331,6 +287,8 @@ VM からシステム割り当てマネージド ID を削除するには、お�
                 ]
             }
         },
+                 
+        //The following appears only if you provisioned the optional VM extension (to be deprecated)                   
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",

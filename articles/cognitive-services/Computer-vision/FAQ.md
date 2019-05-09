@@ -1,25 +1,27 @@
 ---
-title: Computer Vision API に関する FAQ
+title: よく寄せられる質問 - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Computer Vision API についてよく寄せられる質問とその回答を紹介します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/26/2017
+ms.date: 04/17/2019
 ms.author: kefre
-ms.openlocfilehash: 55b474d0edbb8dc01b9f35d4f8799e53e37862df
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec18
+ms.openlocfilehash: 579a47e70f292222914723606d032737b98822bc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166374"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004875"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API についてよく寄せられる質問
 
-### <a name="if-you-cant-find-answers-to-your-questions-in-this-faq-try-asking-the-computer-vision-api-community-on-stackoverflowhttpsstackoverflowcomquestionstaggedproject-oxfordormicrosoft-cognitive-or-contact-help-and-support-on-uservoicehttpscognitiveuservoicecom"></a>この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) の Computer Vision API コミュニティに質問するか、[UserVoice のヘルプとサポート](https://cognitive.uservoice.com/)にご連絡ください
+> [!TIP]
+> この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) の Computer Vision API コミュニティに質問するか、[UserVoice のヘルプとサポート](https://cognitive.uservoice.com/)にご連絡ください
 
 -----
 
@@ -35,34 +37,15 @@ ms.locfileid: "49166374"
 
 -----
 
-**質問**: *Computer Vision ではどの言語がサポートされますか?*
-
-**回答**: 以下の言語がサポートされています。
-
-| | | サポートされている言語 | | |
-|---------------- |------------------ |------------------ |--------------------------- |--------------------
-| デンマーク語 (da-DK)  | オランダ語 (nl-NL)     | 英語           | フィンランド語 (fi-FI)            |フランス語 (fr-FR)
-| ドイツ語 (de-DE)  | ギリシャ語 (el-GR)     | ハンガリー語 (hu-HU) | イタリア語 (it-IT)            | 日本語 (ja-JP)
-| 韓国語 (ko-KR)  | ノルウェー語 (nb-NO) | ポーランド語 (pl-PL)    | ポルトガル語 (pt-BR) (pt-PT) | ロシア語 (ru-RU)
-| スペイン語 (es-ES)   | スウェーデン語 (sv-SV)     | トルコ語 (tr-TR)   |                            |
-
------
-
 **質問**: *Computer Vision をナンバー プレートの読み取りに使用できますか?*
 
 **回答**: Vision API は、OCR による優れたテキスト検出を提供しますが、ナンバー プレート用には現在最適化されていません。 マイクロソフトではサービスの向上に努めており、自動ナンバー プレート認識用の OCR を機能要求の一覧に追加しました。
 
 -----
 
-**質問:** *手書き認識ではどの言語がサポートされますか?*
-
-**回答**: 現在、英語のみがサポートされています。
-
------
-
 **質問**: *手書き認識ではどのような種類の筆記面がサポートされますか?*
 
-**回答**: ホワイトボード、白紙、黄色の付箋など、さまざまな種類の筆記面で動作します。
+**回答**: このテクノロジは、ホワイトボード、白紙、黄色の付箋など、さまざまな種類の筆記面で動作します。
 
 -----
 

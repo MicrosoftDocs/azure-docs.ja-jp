@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
-ms.date: 04/17/2018
+ms.subservice: implement
+ms.date: 04/02/2019
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 4cd8394104c72e8df53fa0c44e60037b4dc05976
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 8a53a63b7425935e117d7af951717999bc9340b7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301615"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794830"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>SQL Data Warehouse でストアド プロシージャを使用する
 ソリューション開発のための Azure SQL Data Warehouse でのストアド プロシージャの実装に関するヒント。

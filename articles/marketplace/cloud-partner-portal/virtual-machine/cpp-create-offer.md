@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0a875b69a10f6305b4ffe32b63d3db5b508faf01
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: a3124ca2f163291d266fba77255d2ee98d30fd23
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639536"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888810"
 ---
 # <a name="create-virtual-machine-offer"></a>仮想マシン オファーを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "49639536"
 
 ## <a name="new-offer-form"></a>[新しいプラン] フォーム
 
-[Cloud パートナー ポータル](http://cloudpartner.azure.com/)にサインインした後、左側のメニュー バーの **[+ 新しいプラン]** 項目をクリックします。 表示されるメニューで **[仮想マシン]** をクリックして **[新しいプラン]** フォームを表示し、新しい VM オファーの資産を定義するプロセスを開始します。 
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインした後、左側のメニュー バーの **[+ 新しいプラン]** 項目をクリックします。 表示されるメニューで **[仮想マシン]** をクリックして **[新しいプラン]** フォームを表示し、新しい VM オファーの資産を定義するプロセスを開始します。 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
 ![新しい仮想マシン オファーのユーザー インターフェイスの選択](./media/publishvm_003.png)

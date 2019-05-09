@@ -11,15 +11,15 @@ ms.service: app-service-mobile
 ms.workload: na
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 5df59e886a2a4950e2ca6e1ef96487d3d59e7524
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f3eb781e7f84e8cf03a975f7cb77f6a7ef074d44
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718131"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771809"
 ---
 # <a name="getting-started"> </a>Azure App Service の Mobile Apps について
 Azure App Service は、プロの開発者のためのフル マネージドの[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 製品であり、 Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。 

@@ -3,8 +3,8 @@ title: Azure Service Fabric パッチ オーケストレーション アプリ�
 description: Service Fabric クラスターでオペレーティング システムへのパッチの適用を自動化するためのアプリケーション。
 services: service-fabric
 documentationcenter: .net
-author: novino
-manager: timlt
+author: khandelwalbrijeshiitr
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/22/2018
-ms.author: nachandr
-ms.openlocfilehash: a8b2070b6f5b10cb60c6658aefc8cc90331ecfd9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 2/01/2019
+ms.author: brkhande
+ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409358"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58847739"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -28,6 +28,12 @@ ms.locfileid: "49409358"
 > * [Linux](service-fabric-patch-orchestration-application-linux.md)
 >
 >
+
+
+> 
+> [!IMPORTANT]
+> アプリケーションのバージョン 1.2.* は 2019 年 4 月 30 日にサポートが終了する予定です。 最新のバージョンにアップグレードしてください。
+
 
 [Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)は、Azure でオペレーティング システムに修正プログラムを適用させたままにするために最適で、Azure 以外でホストされるクラスターの OS パッチ スケジュールに基づいた構成を可能にする Service Fabrics RepairManager Systems サービスのラッパーです。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、アップグレード ドメインによる更新プログラムのインストールのスケジュール設定は、ダウンタイムなく Service Fabric クラスターのホストに修正プログラムを適用するために必要です。
 
@@ -43,13 +49,13 @@ POA は、ダウンタイムなしで、Service Fabric クラスターでのオ�
 
 パッチ オーケストレーション アプリケーションは、次のサブコンポーネントで構成されます。
 
-- **コーディネーター サービス**: このステートフル サービスは次の役割を担います。
+- **コーディネーター サービス**:このサービスの役割は次のとおりです。
     - クラスター全体における Windows Update ジョブを調整する。
     - 完了した Windows Update 操作の結果を保存する。
-- **ノード エージェント サービス**: このステートレス サービスは、すべての Service Fabric クラスター ノードで実行されます。 このサービスは次の役割を担います。
+- **ノード エージェント サービス**:このステートレス サービスは、すべての Service Fabric クラスター ノードで実行されます。 このサービスは次の役割を担います。
     - ノード エージェント NTService をブートストラップする。
     - ノード エージェント NTService の監視。
-- **ノード エージェント NTService**: この Windows NT サービスは、上位の特権 (SYSTEM) で実行されます。 一方、ノード エージェント サービスとコーディネーター サービスは、下位の特権 (NETWORK SERVICE) で実行されます。 このサービスは、全クラスター ノードで次の Windows Update ジョブを実行する役割を担います。
+- **ノード エージェント NTService**:この Windows NT サービスは、上位の特権 (SYSTEM) で実行されます。 一方、ノード エージェント サービスとコーディネーター サービスは、下位の特権 (NETWORK SERVICE) で実行されます。 このサービスは、全クラスター ノードで次の Windows Update ジョブを実行する役割を担います。
     - ノードの自動 Windows Update を無効にする。
     - ユーザーが指定したポリシーに従って、Windows Update をダウンロードしてインストールする。
     - Windows Update のインストール後にマシンを再起動する。
@@ -60,6 +66,9 @@ POA は、ダウンタイムなしで、Service Fabric クラスターでのオ�
 > パッチ オーケストレーション アプリケーションでは、Service Fabric の修復マネージャー システム サービスを使用して、ノードを無効または有効にし、正常性チェックを実行します。 パッチ オーケストレーション アプリケーションによって作成される修復タスクによって、各ノードの Windows Update の進行状況が追跡されます。
 
 ## <a name="prerequisites"></a>前提条件
+
+> [!NOTE]
+> 必要な .NET Framework の最小バージョンは 4.6 です。
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>修復マネージャー サービスを有効にする (まだ実行されていない場合)
 
@@ -131,9 +140,9 @@ Azure クラスターの持続性層がシルバーの場合、修復マネー�
     ],
     ```
 
-3. これらの変更によってクラスター マニフェストを更新し、更新済みのクラスター マニフェストを使用して、[新しいクラスターを作成](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)するか、[クラスター構成をアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server#Upgrade-the-cluster-configuration)します。 更新済みのクラスター マニフェストを使用してクラスターを実行したら、クラスターで修復マネージャー システム サービスが実行されていることを確認できます。このサービスは、Service Fabric Explorer のシステム サービス セクションに `fabric:/System/RepairManagerService` という名前で表示されます。
+3. これらの変更によってクラスター マニフェストを更新し、更新済みのクラスター マニフェストを使用して、[新しいクラスターを作成](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)するか、[クラスター構成をアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server)します。 更新済みのクラスター マニフェストを使用してクラスターを実行したら、クラスターで修復マネージャー システム サービスが実行されていることを確認できます。このサービスは、Service Fabric Explorer のシステム サービス セクションに `fabric:/System/RepairManagerService` という名前で表示されます。
 
-### <a name="disable-automatic-windows-update-on-all-nodes"></a>すべてのノードで Windows Update の自動更新を無効にする
+### <a name="configure-windows-updates-for-all-nodes"></a>すべてのノードの Windows Update を構成する
 
 Windows Update の自動更新を有効にすると、複数のクラスター ノードが同時に再起動される可能性があるため、可用性が失われる場合があります。 既定では、パッチ オーケストレーション アプリケーションは、クラスター ノードごとに Windows Update の自動更新を無効にします。 ただし、管理者またはグループ ポリシーによって設定が管理されている場合は、"ダウンロードする前に通知する" ように Windows Update ポリシーを明示的に設定することをお勧めします。
 
@@ -141,33 +150,33 @@ Windows Update の自動更新を有効にすると、複数のクラスター �
 
 インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=869566)からダウンロード可能です。
 
-sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v1.2.2.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
 
 ## <a name="configure-the-app"></a>Configure the app
 
 パッチ オーケストレーション アプリケーションの動作はニーズに合わせて構成できます。 アプリケーションの作成時または更新時にアプリケーション パラメーターを渡して既定値をオーバーライドします。 アプリケーション パラメーターを渡すには、`Start-ServiceFabricApplicationUpgrade` コマンドレットまたは `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定します。
 
-|**パラメーター**        |**種類**                          | **詳細**|
+|**パラメーター**        |**Type**                          | **詳細**|
 |:-|-|-|
 |MaxResultsToCache    |long                              | キャッシュする Windows Update の結果の最大件数。 <br>既定値は 3000 で、次の条件を想定しています。 <br> - ノード数が 20 個である <br> - ノード上で実行される更新の回数が 1 か月あたり 5 回である <br> - 1 回の処理で 10 件程度の結果が生成される <br> - 過去 3 か月の結果を保存する |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br>                         使用できる値は、以下のとおりです。 <br>                                                           <b>NodeWise</b>:  Windows Update が 1 ノードずつインストールされます。 <br>                                                           <b>UpgradeDomainWise</b>:  Windows Update が 1 アップグレード ドメインずつインストールされます  (最大で、アップグレード ドメインに属するすべてのノードに Windows Update を適用できます)。<br> クラスターに最適なポリシーを決定する方法については、「[FAQ](#frequently-asked-questions)」セクションを参照してください。
-|LogsDiskQuotaInMB   |long  <br> (既定値: 1024)               |パッチ オーケストレーション アプリケーションのログの最大サイズ (MB 単位)。このサイズまで、ノードでローカルに保存することができます。
-| WUQuery               | string<br>(既定値: "IsInstalled=0")                | Windows 更新プログラムを取得するためのクエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページをご覧ください。
-| InstallWindowsOSOnlyUpdates | Boolean <br> (既定値: True)                 | このフラグによって、Windows オペレーティング システムの更新プログラムのインストールが許可されます。            |
-| WUOperationTimeOutInMinutes | int <br>(既定値: 90)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
-| WURescheduleCount     | int <br> (既定値: 5)                  | 操作が繰り返し失敗する場合に、サービスが Windows Update を再スケジュールする最大回数。          |
-| WURescheduleTimeInMinutes | int <br>(既定値: 30) | 操作が繰り返し失敗する場合に、サービスが Windows Update を再スケジュールする間隔。 |
-| WUFrequency           | コンマ区切りの文字列 (既定値: "Weekly, Wednesday, 7:00:00")     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD,HH:MM:SS (例: Monthly, 5,12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、Windows Update が実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
+|LogsDiskQuotaInMB   |long  <br> (既定値:1024)               |パッチ オーケストレーション アプリケーションのログの最大サイズ (MB 単位)。このサイズまで、ノードでローカルに保存することができます。
+| WUQuery               | string<br>(既定値:"IsInstalled=0")                | Windows 更新プログラムを取得するためのクエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページをご覧ください。
+| InstallWindowsOSOnlyUpdates | Boolean <br> (既定値: false)                 | このフラグを使用して、どの更新プログラムをダウンロードしてインストールするかを制御します。 次の値が許可されています <br>true - Windows オペレーティング システムの更新プログラムのみをインストールします。<br>false - マシンで使用可能なすべての更新プログラムをインストールします。          |
+| WUOperationTimeOutInMinutes | int <br>(既定値:90)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
+| WURescheduleCount     | int <br> (既定値:5)                  | 操作が繰り返し失敗する場合に、サービスが Windows Update を再スケジュールする最大回数。          |
+| WURescheduleTimeInMinutes | int <br>(既定値:30) | 操作が繰り返し失敗する場合に、サービスが Windows Update を再スケジュールする間隔。 |
+| WUFrequency           | コンマ区切りの文字列 (既定値:"Weekly, Wednesday, 7:00:00")     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD,HH:MM:SS (例: Monthly, 5,12:22:32)。<br>DD (日) フィールドに使用できる値は、1 から 28 の数字と "last" です。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、Windows Update が実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
 | AcceptWindowsUpdateEula | Boolean <br>(既定値: true) | このフラグを設定すると、コンピューターの所有者に代わって、アプリケーションが Windows Update の使用許諾契約に同意します。              |
 
 > [!TIP]
-> Windows Update をすぐに実行する場合は、アプリケーションのデプロイ時間を基準として `WUFrequency` を設定します。 たとえば、5 ノード テスト クラスターがあり、UTC 時刻の午後 5 時頃にアプリケーションをデプロイする予定であるとします。 アプリケーションのアップグレードまたはデプロイに最大 30 分かかると想定している場合、WUFrequency を "Daily, 17:30:00" に設定します。
+> Windows Update をすぐに実行する場合は、アプリケーションのデプロイ時間を基準として `WUFrequency` を設定します。 たとえば、5 ノード テスト クラスターがあり、UTC 時刻の午後 5 時頃にアプリケーションをデプロイする予定であるとします。 アプリケーションのアップグレードまたはデプロイに最大 30 分かかると想定される場合、WUFrequency を "Daily, 17:30:00" に設定します。
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
 1. 前提条件となるすべての手順を実行してクラスターを準備します。
 2. 他の Service Fabric アプリケーションと同様に、パッチ オーケストレーション アプリケーションをデプロイします。 アプリケーションは、PowerShell を使用してデプロイできます。 「[PowerShell を使用してアプリケーションのデプロイと削除を実行する](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)」に記載されている手順に従います。
-3. デプロイ時にアプリケーションを構成するには、`ApplicationParamater` を `New-ServiceFabricApplication` コマンドレットに渡します。 利便性のために、アプリケーションと共に Deploy.ps1 スクリプトが用意されています。 このスクリプトを使用するには、次の手順に従います。
+3. デプロイ時にアプリケーションを構成するには、`ApplicationParameter` を `New-ServiceFabricApplication` コマンドレットに渡します。 利便性のために、アプリケーションと共に Deploy.ps1 スクリプトが用意されています。 このスクリプトを使用するには、次の手順に従います。
 
     - `Connect-ServiceFabricCluster` を使用して Service Fabric クラスターに接続します。
     - 適切な `ApplicationParameter` 値を指定して、Deploy.ps1 PowerShell スクリプトを実行します。
@@ -292,7 +301,7 @@ A. インストール プロセス中に、パッチ オーケストレーショ
 
 Windows Update のインストールが完了するまでに、ノードは再起動後に再度有効になります。
 
-次の例では、2 つのノードがダウンし、MaxPercentageUnhealthNodes ポリシーに違反しているため、クラスターが一時的にエラー状態になっています。 これはパッチ適用操作が完了するまでの一時的なエラーです。
+次の例では、2 つのノードがダウンし、MaxPercentageUnhealthyNodes ポリシーに違反しているため、クラスターが一時的にエラー状態になっています。 これはパッチ適用操作が完了するまでの一時的なエラーです。
 
 ![異常なクラスターの画像](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
@@ -316,7 +325,7 @@ A. 'UpgradeDomainWise' を設定すると、アップグレード ドメイン�
 
 Q. **ノードにパッチを適用するにはどのくらい時間がかかりますか?**
 
-A. ノードへのパッチの適用には、数分 (例: [Windows Defender 定義の更新プログラム](https://www.microsoft.com/wdsi/definitions)) から数時間 (例: [Windows の累積的な更新プログラム](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) かかることがあります。 ノードにパッチを適用するために必要な時間は、主に次の要因によって変わります。 
+A. ノードへのパッチの適用には、数分 (例:[Windows Defender 定義の更新プログラム](https://www.microsoft.com/en-us/wdsi/definitions)) から数時間 (例:[Windows の累積的な更新プログラム](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) かかることがあります。 ノードにパッチを適用するために必要な時間は、主に次の要因によって変わります。 
  - 更新プログラムのサイズ
  - (パッチの適用期間内に適用する必要がある) 更新プログラムの数
  - 更新プログラムのインストール、ノードの再起動 (必要な場合)、再起動後のインストール手順の完了までにかかる時間。
@@ -327,7 +336,7 @@ Q. **クラスター全体にパッチを適用するにはどのくらい時間
 A. クラスター全体にパッチを適用するために必要な時間は、次の要因によって変わります。
 
 - ノードにパッチを適用するために必要な時間。
-- コーディネーター サービスのポリシー。 既定のポリシー (`NodeWise`) では、パッチの適用は 1 ノードずつしか実行されないため、`UpgradeDomainWise` よりも遅くなります。 たとえば、ノードへのパッチの適用に最大 1 時間かかり、5 個のアップグレード ドメインそれぞれに 4 個のノードがある 20 個のノード (同じ種類のノード) のクラスターにパッチを適用する場合、
+- コーディネーター サービスのポリシー。 既定のポリシー (`NodeWise`) では、パッチの適用は 1 ノードずつしか実行されないため、`UpgradeDomainWise` よりも遅くなります。 例: ノードへのパッチの適用に最大 1 時間かかり、5 個のアップグレード ドメインそれぞれに 4 個のノードがある 20 個のノード (同じ種類のノード) のクラスターにパッチを適用する場合。
     - クラスター全体にパッチを適用するためにかかる時間は、ポリシーが `NodeWise` の場合は最大 20 時間です
     - ポリシーが `UpgradeDomainWise` の場合は最大 5 時間です
 - クラスターの負荷。パッチ操作ごとに、クラスター内の他の利用可能なノードに顧客のワークロードを再配置する必要があります。 パッチを適用しているノードは、適用中は[無効化中](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling)状態になります。 クラスターがほぼピーク負荷で実行されている場合、無効化処理には時間がかかります。 そのため、このような高負荷状態では、全体のパッチ適用プロセスが遅く見えることがあります。
@@ -397,8 +406,22 @@ Windows Update の問題によって、特定のノードまたはアップグ�
 
 - クラスターのスケール ダウン ワークフローのバグ修正。 導入された POA 用のガベージ コレクション ロジックは、存在しないノードに属するタスクを修正します。
 
-### <a name="version-122-latest"></a>バージョン 1.2.2 (最新)
+### <a name="version-122"></a>バージョン 1.2.2
 
 - 各種のバグ修正。
 - バイナリが署名されるようになりました。
-- sfpkg のダウンロード リンクが特定のバージョンを指すようになりました。
+- アプリケーションの sfpkg リンクを追加しました。
+
+### <a name="version-130"></a>バージョン 1.3.0
+
+- InstallWindowsOSOnlyUpdates を false に設定すると、使用可能なすべての更新プログラムがインストールされるようになりました。
+- 自動更新を無効にするロジックを変更しました。 これにより、Server 2016 以降で自動更新が無効にならないバグが修正されます。
+- 高度なユースケースのために POA の両方のマイクロサービスのデプロイ制約をパラメーター化しました。
+
+### <a name="version-131"></a>バージョン 1.3.1
+- Windows Server 2012 R2 以前のバージョンで、自動更新の無効化に失敗するために POA 1.3.0 が機能しない回帰を修正しました。 
+- InstallWindowsOSOnlyUpdates の構成が常に True として選択されるバグを修正しました。
+- InstallWindowsOSOnlyUpdates の既定値を False に変更します。
+
+### <a name="version-132"></a>バージョン 1.3.2
+- 現在のノード名のサブセットである名前を持つノードがある場合に、ノードでのパッチ適用のライフサイクルに影響を与える問題を修正しました。 このようなノードでは、パッチが適用されなかったり、再起動が保留になる可能性があります。 

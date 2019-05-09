@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33e968ac608c393d65f69bfd6abbc0d205fb9bd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718879"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078790"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -263,7 +263,7 @@ Mobile Apps バックエンドに対してクライアントを認証する方�
 > カスタム認証を有効にするには、まず、Azure Portal で App Service のプロバイダーを選択せずに App Service 認証を有効にする必要があります。 ホストされている場合は、これにより WEBSITE_AUTH_SIGNING_KEY 環境変数が有効になります。
 > 
 > 
-App Service 認証/承認プロバイダーの中に使用したいものがない場合は、独自のログイン システムを実装できます。 認証トークンの生成に役立つ [Microsoft.Azure.Mobile.Server.Login] パッケージをインストールします。  ユーザー資格情報を検証するための独自のコードを指定します。 たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。 次の例では、(他の場所に定義されている) `isValidAssertion()` メソッドがこれらの照合を実行します。
+> App Service 認証/承認プロバイダーの中に使用したいものがない場合は、独自のログイン システムを実装できます。 認証トークンの生成に役立つ [Microsoft.Azure.Mobile.Server.Login] パッケージをインストールします。  ユーザー資格情報を検証するための独自のコードを指定します。 たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。 次の例では、(他の場所に定義されている) `isValidAssertion()` メソッドがこれらの照合を実行します。
 
 カスタム認証を公開するには、ApiController を作成し、`register` アクションと `login` アクションを公開します。 クライアントは、カスタム UI を使用してユーザーから情報を収集する必要があります。  その後、この情報は、標準の HTTP POST 呼び出しで API に送信されます。 サーバーでアサーションを検証したら、 `AppServiceLoginHandler.CreateToken()` メソッドを使用してトークンを発行します。  ApiController で `[MobileAppController]` 属性を使用することは**できません**。
 

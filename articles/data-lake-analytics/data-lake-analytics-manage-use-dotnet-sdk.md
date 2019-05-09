@@ -1,6 +1,6 @@
 ---
 title: Azure .NET SDK を使用して Azure Data Lake Analytics を管理する
-description: この記事では、Azure .Net SDK を使用して、Data Lake Analytics のジョブ、データ ソース、ユーザーを管理する方法について説明します。
+description: この記事では、Azure .NET SDK を使用して、Data Lake Analytics のジョブ、データ ソース、ユーザーを管理するアプリを作成する方法について説明します。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,14 +9,15 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: fc732065f328f653082286508db74cc29107854e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232010"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793290"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Azure Data Lake Analytics .NET アプリを管理する
+
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 この記事では、Azure .NET SDK を使用して記述されたアプリを使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、ジョブを管理する方法について説明します。 
@@ -29,7 +30,7 @@ ms.locfileid: "51232010"
 
 ### <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-|Package|Version|
+|Package|バージョン|
 |-------|-------|
 |[Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| 2.3.1|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
@@ -39,7 +40,7 @@ ms.locfileid: "51232010"
 
 これらのパッケージは、NuGet コマンド ラインで次のコマンドを使ってインストールできます。
 
-```
+```powershell
 Install-Package -Id Microsoft.Rest.ClientRuntime.Azure.Authentication  -Version 2.3.1
 Install-Package -Id Microsoft.Azure.Management.DataLake.Analytics  -Version 3.0.0
 Install-Package -Id Microsoft.Azure.Management.DataLake.Store  -Version 2.2.0
@@ -49,7 +50,7 @@ Install-Package -Id Microsoft.Azure.Graph.RBAC -Version 3.4.0-preview
 
 ## <a name="common-variables"></a>共通の変数
 
-``` csharp
+```csharp
 string subid = "<Subscription ID>"; // Subscription ID (a GUID)
 string tenantid = "<Tenant ID>"; // AAD tenant ID or domain. For example, "contoso.onmicrosoft.com"
 string rg == "<value>"; // Resource  group name
@@ -120,7 +121,7 @@ graphClient.TenantID = domain;
 
 ```
 
-## <a name="manage-accounts"></a>[アカウントの管理]
+## <a name="manage-accounts"></a>アカウントの管理
 
 ### <a name="create-an-azure-resource-group"></a>Azure リソース グループを作成する
 
@@ -130,7 +131,8 @@ Azure リソース グループをまだ作成していない場合は、Data La
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
-詳細については、「[Azure リソース グループと Data Lake Analytics](#Azure-Resource-Groups-and-Data-Lake-Analytics)」を参照してください。
+
+詳細については、「Azure リソース グループと Data Lake Analytics」を参照してください。
 
 ### <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
 
@@ -260,6 +262,7 @@ if (adls_accounts != null)
 ```
 
 ### <a name="upload-and-download-folders-and-files"></a>フォルダーとファイルのアップロードとダウンロード
+
 Data Lake Store ファイル システムのクライアント管理オブジェクトを使用して、Azure からローカル コンピューターに次のメソッドを使用してファイルやフォルダーをアップロードおよびダウンロードできます。
 
 - UploadFolder
@@ -293,6 +296,7 @@ using (var memstream = new MemoryStream())
 ```
 
 ### <a name="verify-azure-storage-account-paths"></a>Azure ストレージ アカウント パスを確認する
+
 次のコードは、Data Lake Analytics アカウント (analyticsAccountName) 内に Azure ストレージ アカウント (storageAccntName) が存在するかどうかと、その Azure ストレージ アカウント内にコンテナー (containerName) が存在するかどうかを確認します。
 
 ``` csharp
@@ -303,9 +307,11 @@ bool containerExists = adlaClient.Account.StorageContainerExists(rg, adla, stora
 ```
 
 ## <a name="manage-catalog-and-jobs"></a>カタログとジョブを管理する
+
 DataLakeAnalyticsCatalogManagementClient オブジェクトは、各 Azure Data Lake Analytics アカウントに提供された SQL Database を管理するための方法を提供します。 DataLakeAnalyticsJobManagementClient は、U-SQL スクリプトを使用してデータベースで実行されるジョブを送信および管理する方法を提供します。
 
 ### <a name="list-databases-and-schemas"></a>データベースとスキーマを一覧表示する
+
 一覧表示できる対象の中で、最も一般的なものはデータベースとスキーマです。 次のコードは、データベースのコレクションを取得し、各データベースのスキーマを列挙します。
 
 ``` csharp
@@ -323,9 +329,10 @@ foreach (var db in databases)
 ```
 
 ### <a name="list-table-columns"></a>テーブルの列を一覧表示する
+
 次のコードでは、Data Lake Analytics カタログ管理クライアントを使用してデータベースにアクセスして、指定したテーブルの列を一覧表示する方法を示します。
 
-``` csharp
+```csharp
 var tbl = adlaCatalogClient.Catalog.GetTable(adla, "master", "dbo", "MyTableName");
 IEnumerable<USqlTableColumn> columns = tbl.ColumnList;
 
@@ -336,7 +343,9 @@ foreach (USqlTableColumn utc in columns)
 ```
 
 ### <a name="submit-a-u-sql-job"></a>U-SQL ジョブの送信
+
 次のコードは、Data Lake Analytics のジョブ管理クライアントを使用してジョブを送信する方法を示しています。
+
 ``` csharp
 string scriptPath = "/Samples/Scripts/SearchResults_Wikipedia_Script.txt";
 Stream scriptStrm = adlsFileSystemClient.FileSystem.Open(_adlsAccountName, scriptPath);
@@ -355,9 +364,10 @@ Console.WriteLine($"Job {jobName} submitted.");
 ```
 
 ### <a name="list-failed-jobs"></a>失敗したジョブを一覧表示する
+
 次のコードは、失敗したジョブに関する情報を一覧表示します。
 
-``` csharp
+```csharp
 var odq = new ODataQuery<JobInformation> { Filter = "result eq 'Failed'" };
 var jobs = adlaJobClient.Job.List(adla, odq);
 foreach (var j in jobs)
@@ -367,6 +377,7 @@ foreach (var j in jobs)
 ```
 
 ### <a name="list-pipelines"></a>パイプラインを一覧表示する
+
 次のコードは、アカウントに送信されたジョブの各パイプラインに関する情報を一覧表示します。
 
 ``` csharp
@@ -378,6 +389,7 @@ foreach (var p in pipelines)
 ```
 
 ### <a name="list-recurrences"></a>反復を一覧表示する
+
 次のコードは、アカウントに送信されたジョブの各反復に関する情報を一覧表示します。
 
 ``` csharp
@@ -404,9 +416,11 @@ Console.WriteLine( userinfo.ObjectId )
 ```
 
 ## <a name="manage-compute-policies"></a>コンピューティング ポリシーを管理する
+
 DataLakeAnalyticsAccountManagementClient オブジェクトでは、Data Lake Analytics アカウントのコンピューティング ポリシーを管理するためのメソッドが提供されています。
 
 ### <a name="list-compute-policies"></a>コンピューティング ポリシーを一覧表示する
+
 次のコードは、Data Lake Analytics アカウントのコンピューティング ポリシーの一覧を取得します。
 
 ``` csharp
@@ -418,6 +432,7 @@ foreach (var p in policies)
 ```
 
 ### <a name="create-a-new-compute-policy"></a>新しいコンピューティング ポリシーを作成する
+
 次のコードは、Data Lake Analytics アカウントの新しいコンピューティング ポリシーを作成し、指定したユーザーが使用できる最大 AU を 50 に、最小ジョブ優先順位を 250 に設定します。
 
 ``` csharp
@@ -427,6 +442,7 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure  Portal を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-portal.md)
 * [Azure  Portal を使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

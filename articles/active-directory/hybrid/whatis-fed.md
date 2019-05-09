@@ -3,21 +3,22 @@ title: Azure AD とのフェデレーションとは | Microsoft Docs
 description: Azure AD とのフェデレーションについて説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0556a01490786ec4101176bc0437661723ce9b4f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8794ffa1654e49690f3bd31a380ba2051b4b1da7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110462"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177140"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Azure AD とのフェデレーションとは
 

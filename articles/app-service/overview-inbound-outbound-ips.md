@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5315efbfb94bec5ef810078788623dd105dcf34
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730614"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480806"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -32,7 +32,7 @@ ms.locfileid: "53730614"
 スケールアウトされたインスタンスの数に関係なく、各アプリは、1 つの受信 IP アドレスを持ちます。 受信 IP アドレスは、次の操作のいずれかを実行したときに変更される可能性があります。
 
 - アプリを削除した後、別のリソース グループ内に再作成する。
-- リソース グループ_と_リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する。
+- リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する。
 - 証明書の更新中などに既存の SSL バインドを削除する ([証明書の更新](app-service-web-tutorial-custom-ssl.md#renew-certificates)に関する記事を参照してください)。
 
 ## <a name="get-static-inbound-ip"></a>静的な受信 IP を取得する
@@ -45,11 +45,11 @@ ms.locfileid: "53730614"
 
 アプリの送信 IP アドレス セットは、アプリを下位レベル (**Basic**、**Standard**、および **Premium**) と **Premium V2**レベルの間でスケーリングするときに変更されます。
 
-アプリが使用できるすべての可能な送信 IP アドレスは、価格レベルに関係なく、`possibleOutboundIPAddresses` プロパティを調べることで見つけることができます。 「[IP アドレスを見つける](#find-outbound-ips)」を参照してください。
+アプリが使用できるすべての可能な送信 IP アドレスは、価格レベルに関係なく、`possibleOutboundIPAddresses` プロパティを調べるか、Azure portal の **[プロパティ]** ブレードの **[追加の送信 IP アドレス]** で確認できます。 「[IP アドレスを見つける](#find-outbound-ips)」を参照してください。
 
 ## <a name="find-outbound-ips"></a>IP アドレスを見つける
 
-Azure ポータルで、現在アプリで使用されている送信 IP アドレスを見つけるには、アプリの左側のナビゲーションで **[プロパティ]** をクリックします。 
+Azure ポータルで、現在アプリで使用されている送信 IP アドレスを見つけるには、アプリの左側のナビゲーションで **[プロパティ]** をクリックします。 IP アドアレスは **[送信 IP アドレス]** フィールドに表示されています。
 
 [Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行することで、同じ情報を見つけることができます。
 
@@ -57,10 +57,20 @@ Azure ポータルで、現在アプリで使用されている送信 IP アド�
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 ```
 
-価格レベルに関係なく、アプリのすべての可能な送信 IP アドレスを見つけるには、[Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行します。
+```azurepowershell
+(Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
+```
+
+アプリで考えられる "_すべて_" の送信 IP アドレスを見つけるには、価格レベルに関係なく、アプリの左側にあるナビゲーションで **[プロパティ]** をクリックします。 IP アドアレスは **[追加の送信 IP アドレス]** フィールドに表示されています。
+
+[Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行することで、同じ情報を見つけることができます。
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
+```
+
+```azurepowershell
+(Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).PossibleOutboundIpAddresses
 ```
 
 ## <a name="next-steps"></a>次の手順

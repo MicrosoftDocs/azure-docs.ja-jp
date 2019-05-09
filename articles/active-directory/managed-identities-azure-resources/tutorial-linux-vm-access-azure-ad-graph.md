@@ -3,25 +3,26 @@ title: Linux VM のシステム割り当てマネージド ID を使用して Az
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
-ms.author: daveba
-ms.openlocfilehash: b58bfc5345e06f82b2550ea2a1a53443946f2096
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427456"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445409"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
@@ -66,7 +67,7 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 Azure AD Graph:
 - サービス プリンシパル appId (アプリのアクセス許可の付与時に使用): 00000002-0000-0000-c000-000000000000
 - リソース ID (Azure リソースのマネージド ID からアクセス トークンを要求するときに使用): https://graph.windows.net
-- アクセス許可のスコープ参照: [Azure AD Graph アクセス許可の参照](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- アクセス許可のスコープに関するリファレンス: [Azure AD Graph のアクセス許可に関するリファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-curl"></a>CURL を使用してアプリケーションのアクセス許可を付与する
 

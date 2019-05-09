@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 88880fbfe0f6020a0a982c42b6df0e9eb71b2fc9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550450"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527984"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -22,9 +22,9 @@ ms.locfileid: "53550450"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+> * 前提条件
 > * *http* 経由または *https* 経由で Data Box BLOB ストレージに接続する
 > * Data Box にデータをコピーする
-> * 発送の準備をする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -79,7 +79,7 @@ Azure portal を使用して証明書をダウンロードします。
 
 1. Azure portal にサインインします。
 2. お客様の Data Box の注文に移動し、**[全般]、[デバイスの詳細]** の順に移動します。
-3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、**<your order name>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
+3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、**\<注文名>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
 
     ![Azure portal での証明書のダウンロード](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -154,7 +154,7 @@ BLOB は常にコンテナーにアップロードされるため、最初の手
 
    ![Create blob containers context menu](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
-4. **[BLOB コンテナー]** フォルダーの下にテキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限については、「[コンテナーを作成し、アクセス許可を設定する](/articles/storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions)」を参照してください。
+4. **[BLOB コンテナー]** フォルダーの下にテキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限については、「[コンテナーを作成し、アクセス許可を設定する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」を参照してください。
 5. 作業を終えたら、**Enter** キーを押して BLOB コンテナーを作成するか、**Esc** キーを押して取り消します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
 
    ![作成された BLOB コンテナー](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)
@@ -163,7 +163,7 @@ BLOB は常にコンテナーにアップロードされるため、最初の手
 
 AzCopy を使用して、フォルダー内のすべてのファイルを Windows または Linux 上の BLOB ストレージにアップロードします。 フォルダー内のすべての BLOB をアップロードするには、次の AzCopy コマンドを入力します。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
     azcopy \
         --source /mnt/myfolder \
@@ -171,7 +171,7 @@ AzCopy を使用して、フォルダー内のすべてのファイルを Window
         --dest-key <key> \
         --recursive
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 
@@ -188,7 +188,7 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
 
 宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに `--exclude-older` と `--exclude-newer` (Linux) または `/XO` と `/XN` (Windows) の両方のパラメーターを指定します。 AzCopy は、タイムスタンプに基づいて、更新されたデータのみをアップロードします。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
     azcopy \
     --source /mnt/myfolder \
     --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
@@ -196,23 +196,22 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
     --recursive \
     --exclude-older
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
 
-## <a name="prepare-to-ship"></a>発送の準備をする
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
+次に、発送するデバイスを準備します。
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+> * 前提条件
 > * *http* 経由または *https* 経由で Data Box BLOB ストレージに接続する
 > * Data Box にデータをコピーする
-> * 発送の準備をする
+
 
 次のチュートリアルに進み、お客様の Data Box を Microsoft に返送する方法を学習してください。
 

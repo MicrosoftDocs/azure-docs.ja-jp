@@ -3,29 +3,30 @@ title: Azure Active Directory B2C の監査ログのサンプルと定義 | Micr
 description: Azure AD B2C 監査ログへのアクセスに関するガイドとサンプル。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 67e57faf37697697bee74597a40db39149699fe5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.subservice: B2C
+ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320239"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003603"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
 Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行されたトークン、および管理者のアクセス権に関するアクティビティ情報を含む監査ログを出力します。 この記事では、監査ログから入手できる情報の概要を示し、Azure AD B2C テナントのこのデータにアクセスする方法に関する手順を説明します。
 
 > [!IMPORTANT]
-> 監査ログは 7 日間のみ保持されます。 より長い保持期間が必要な場合は、次に示すいずれかの方法を使用して、ログをダウンロードして保存するための計画を立てます。 
+> 監査ログは 7 日間のみ保持されます。 より長い保持期間が必要な場合は、次に示すいずれかの方法を使用して、ログをダウンロードして保存するための計画を立てます。
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>監査ログの B2C カテゴリで使用できるアクティビティの概要
 監査ログの **B2C** カテゴリには、以下の種類のアクティビティが含まれています。
+
 |アクティビティの種類 |説明  |
 |---------|---------|
 |Authorization |B2C リソースにアクセスするユーザー (例: B2C ポリシーの一覧にアクセスする管理者) の承認に関するアクティビティ         |
@@ -43,7 +44,7 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>Azure Portal からの監査ログへのアクセス
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 [B2C] ディレクトリ内にいることを確認します。
-2. 左側のお気に入りバーで **[Azure Active Directory]** をクリックします。 
+2. 左側のお気に入りバーで **[Azure Active Directory]** をクリックします。
     
     ![監査ログ - AAD のボタン](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
@@ -56,19 +57,19 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 
     ![監査ログ - カテゴリ](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
-過去 7 日間にわたってログに記録されたアクティビティの一覧が表示されます。 
+過去 7 日間にわたってログに記録されたアクティビティの一覧が表示されます。
 - **[Activity Resource Type]\(アクティビティのリソースの種類)** ドロップダウン ボックスを使用して、前述したアクティビティの種類でフィルター処理します
 - **[日付の範囲]** ドロップダウン ボックスを使用して、表示されるアクティビティの日付の範囲をフィルター処理します
 - 一覧の特定の行をクリックすると、右側のコンテキスト ボックスに、そのアクティビティに関連付けられている追加の属性が表示されます
 - **[ダウンロード]** をクリックし、アクティビティを csv ファイルとしてダウンロードします
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Azure AD Reporting API を使用した監査ログへのアクセス
-監査ログは、Azure Active Directory の他のアクティビティと同じパイプラインに発行されるため、[Azure Active Directory Reporting API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference) を使用してアクセスできます。 
+監査ログは、Azure Active Directory の他のアクティビティと同じパイプラインに発行されるため、[Azure Active Directory Reporting API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference) を使用してアクセスできます。
 
 ### <a name="prerequisites"></a>前提条件
 Azure AD Reporting API に対する認証を行うには、まずアプリケーションを登録する必要があります。 必ず、[Azure AD Reporting API にアクセスするための前提条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)の手順に従ってください。
 
-### <a name="accesing-the-api"></a>API へのアクセス
+### <a name="accessing-the-api"></a>API へのアクセス
 API で Azure AD B2C 監査ログをダウンロードする場合は、ログをフィルター処理して **B2C** カテゴリに出力することをお勧めします。 カテゴリでフィルター処理するには、Azure AD Reporting API のエンドポイントを呼び出すときに、次に示すようにクエリ文字列パラメーターを使用します。
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
@@ -82,7 +83,7 @@ API で Azure AD B2C 監査ログをダウンロードする場合は、ログ�
 # Constants
 $ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a Globally Unique ID (registered by Global Admin)
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client Key/Secret string
-$loginURL       = "https://login.microsoftonline.com"     
+$loginURL       = "https://login.microsoftonline.com"
 $tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # AAD B2C Tenant; for example, contoso.onmicrosoft.com
 $resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -93,13 +94,13 @@ $body       = @{grant_type="client_credentials";resource=$resource;client_id=$Cl
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
 # Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
-if ($oauth.access_token -ne $null) {   
+if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago 
+    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago
 
     # loop through each query page (1 through n)
-    Do{
+    Do {
         # display each event on the console window
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
@@ -117,4 +118,3 @@ if ($oauth.access_token -ne $null) {
     Write-Host "ERROR: No Access Token"
 }
 ```
-

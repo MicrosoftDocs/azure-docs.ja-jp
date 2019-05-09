@@ -4,7 +4,7 @@ description: " 他のクラウド サービス モデルに対する PaaS のセ
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: techlake
 ms.assetid: ''
 ms.service: security
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/05/2019
 ms.author: terrylan
-ms.openlocfilehash: 199ea6855e661ef39104fdeb54941ccfd9f36933
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728484"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404809"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -85,7 +85,7 @@ PaaS と従来のオンプレミス デプロイにおけるもう 1 つの重�
 ID 境界を管理するためのベスト プラクティスを次に示します。
 
 **ベスト プラクティス**: キーと資格情報をセキュリティ保護して PaaS デプロイをセキュリティ保護する   
-**詳細**: キーや資格情報の紛失は、よくある問題です。 キーやシークレットをハードウェア セキュリティ モジュールに格納する一元化されたソリューションを使用できます。 Azure では、[Azure Key Vault](../key-vault/key-vault-whatis.md) によりクラウドで HSM を提供しています。
+**詳細**: キーや資格情報の紛失は、よくある問題です。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 [Azure Key Vault](../key-vault/key-vault-whatis.md) は、HSM によって保護されているキーを使用して、認証キー、ストレージ アカウント キー、データ暗号化キー、.pfx ファイル、およびパスワードを暗号化することによって、キーとシークレットを保護します。
 
 **ベスト プラクティス**: 資格情報やその他のシークレットをソース コードや GitHub に格納しない。   
 **詳細**: 資格情報やその他のシークレットを紛失するよりも悪い唯一のことは、権限のない第三者がキーや資格情報にアクセスすることです。 攻撃者はボット テクノロジを利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを検索することができます。 これらのパブリックなコード レポジトリには、キーやシークレットを格納しないようにします。
@@ -153,7 +153,7 @@ Web アプリケーションが、一般的な既知の脆弱性を悪用した�
 
 [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) を使用すると、クラウドにホストされているかオンプレミスかにかかわらず、アプリケーションの可用性、パフォーマンス、使用状況を監視できます。 Application Insights を使用することによって、アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断できます。 収集した情報を活用すれば、アプリケーションのメンテナンスや機能強化に関する選択を十分な情報に基づいて判断することができます。
 
-Application Insights には、収集されたデータを操作するための豊富なツールが用意されています。 Application Insights では、そのデータは共通リポジトリに格納されます。 アラート、ダッシュボード、Log Analytics クエリ言語を使用した詳細分析などの共有機能を活用できます。
+Application Insights には、収集されたデータを操作するための豊富なツールが用意されています。 Application Insights では、そのデータは共通リポジトリに格納されます。 アラート、ダッシュボード、Kusto クエリ言語を使用した詳細分析などの共有機能を活用できます。
 
 
 

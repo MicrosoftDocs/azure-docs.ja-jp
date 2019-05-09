@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ffa6e44a4be8813b74dc707f161bd5c17f72f350
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 59b390776a5e23c08d8793125747742cee4e473e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720052"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487025"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル:SQL Database を使用して Azure に ASP.NET アプリを作成する
 
@@ -189,15 +189,15 @@ Visual Studio では、**SQL Server オブジェクト エクスプローラー*
 
 ### <a name="allow-client-connection-from-your-computer"></a>コンピューターからのクライアント接続を許可する
 
-**[新しいファイアウォール規則の作成]** ダイアログが開かれています。 既定では、SQL Database インスタンスはお使いの Azure アプリなどの Azure サービスからの接続のみを許可します。 データベースに接続するには、SQL Database インスタンスでファイアウォール規則を作成します。 ファイアウォール規則で、ローカル コンピューターのパブリック IP アドレスを許可します。
+**[新しいファイアウォール規則の作成]** ダイアログが開かれています。 既定では、SQL データベース インスタンスはお使いの Azure アプリなどの Azure サービスからの接続のみを許可します。 データベースに接続するには、SQL データベース インスタンスでファイアウォール規則を作成します。 ファイアウォール規則で、ローカル コンピューターのパブリック IP アドレスを許可します。
 
 ダイアログには、既にコンピューターのパブリック IP アドレスが入力されています。
 
 **クライアント IP を追加**するための項目が選択されていることを確認し、**[OK]** をクリックします。 
 
-![SQL Database インスタンスのファイアウォールを設定する](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
+![SQL データベース インスタンスのファイアウォールを設定する](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
 
-Visual Studio で SQL Database インスタンスのファイアウォール設定の作成が完了すると、**SQL Server オブジェクト エクスプローラー**に接続が表示されます。
+Visual Studio で SQL データベース インスタンスのファイアウォール設定の作成が完了すると、**SQL Server オブジェクト エクスプローラー**に接続が表示されます。
 
 ここでは、クエリの実行やビューとストアド プロシージャの作成など、最も一般的なデータベース操作を実行できます。 
 
@@ -227,19 +227,19 @@ public bool Done { get; set; }
 
 [パッケージ マネージャー コンソール] ウィンドウで、Code First Migrations を有効にします。
 
-```PowerShell
+```powershell
 Enable-Migrations
 ```
 
 移行を追加します。
 
-```PowerShell
+```powershell
 Add-Migration AddProperty
 ```
 
 ローカル データベースを更新します。
 
-```PowerShell
+```powershell
 Update-Database
 ```
 

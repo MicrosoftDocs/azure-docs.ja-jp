@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/17/2018
 ms.author: juliako
-ms.openlocfilehash: 5cc670a94958b123ac71b49cbf25661d567e4629
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 32b9664d12d6fe3a44329665c730dbc8709430f2
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083413"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650843"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API を使用したフィルターの作成
 
@@ -31,12 +31,13 @@ ms.locfileid: "53083413"
 このトピックで説明する手順を完了するには以下を行う必要があります。
 
 - [フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)を確認します。
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
 - [Azure Media Services REST API 呼び出し用の Postman を構成する](media-rest-apis-with-postman.md)
+
+    [Azure AD トークンの取得](media-rest-apis-with-postman.md#get-azure-ad-token)に関するトピックの最後の手順を必ず実行してください。 
 
 ## <a name="define-a-filter"></a>フィルターの定義  
 
-次に、マニフェストに追加されるトラック選択条件を定義する**要求本文**の例を示します。 このフィルターは、英語の EC-3 を持つオーディオ トラックと、0-1000000 の範囲でビットレートを持つビデオ トラックを含みます。
+次に、マニフェストに追加されるトラック選択条件を定義する**要求本文**の例を示します。 このフィルターには、EC-3 のオーディオ トラックと、0 から 1,000,000 の範囲のビットレートのビデオ トラックが含まれます。
 
 ```json
 {
@@ -50,14 +51,9 @@ ms.locfileid: "53083413"
                         "operation": "Equal"
                     },
                     {
-                        "property": "Language",
-                        "value": "en",
-                        "operation": "Equal"
-                    },
-                    {
                         "property": "FourCC",
                         "value": "EC-3",
-                        "operation": "NotEqual"
+                        "operation": "Equal"
                     }
                 ]
             },
@@ -86,7 +82,9 @@ ms.locfileid: "53083413"
 
 **PUT** の HTTP 要求メソッドは、以下のようになります。
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
+```
 
 **本文**タブを選択し、[先ほど定義した](#define-a-filter) json コードを貼り付けます。
 
@@ -96,13 +94,15 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 詳細については、「 [作成または更新](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)」を参照してください。 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter)も参照してください。
 
-## <a name="create-asset-filters"></a>アセット フィルターを作成します。  
+## <a name="create-asset-filters"></a>資産フィルターの作成  
 
-ダウンロードした「Media Services v3」Postmanで、**アセット** -> ** [アセット フィルターの作成または更新] を選択します。
+ダウンロードした "Media Services v3" Postman コレクションで、**[アセット]**->**[アセット フィルターの作成または更新]** を選択します。
 
 **PUT** の HTTP 要求メソッドは、以下のようになります。
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
+```
 
 **本文**タブを選択し、[先ほど定義した](#define-a-filter) json コードを貼り付けます。
 

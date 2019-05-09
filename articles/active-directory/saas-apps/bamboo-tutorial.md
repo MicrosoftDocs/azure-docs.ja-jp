@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合 | Microsoft Docs
 description: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: f00160c7-f4cc-43bf-af18-f04168d3767c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 95aada1303a807034d22689f71cea37696df4154
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5353cc921d4fc07770737bb70d02361fa0e5f438
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432458"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198441"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
+# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
 
 このチュートリアルでは、SAML SSO for Bamboo by resolution GmbH と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -155,7 +156,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     c. **[Description]\(説明\)** ボックスに、説明を入力します。
 
-    d. **[次へ]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** をクリックします。
 
 1. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[Next]\(次へ\)** をクリックします。
 
@@ -172,7 +173,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
     ![保存](./media/bamboo-tutorial/tutorial_bamboo_save.png)
     
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -204,7 +205,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-saml-sso-for-bamboo-by-resolution-gmbh-test-user"></a>SAML SSO for Bamboo by resolution GmbH のテスト ユーザーの作成
 
@@ -245,7 +246,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SAML SSO for Bamboo by resolution GmbH] タイルをクリックすると、SAML SSO for Bamboo by resolution GmbH アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

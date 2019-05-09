@@ -3,25 +3,26 @@ title: リスクベースの MFA および SSPR と Azure Identity Protection
 description: このチュートリアルでは、Multi-Factor Authentication とセルフサービスによるパスワードのリセットに対して Azure Identity Protection 統合を有効にして、危険な動作を減らします。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: fb9ec69476253eaa559fe763dcc2c92994505602
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 35039dc05103ac6528f668fd76e1372ed7cc0708
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163315"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370561"
 ---
-# <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>チュートリアル: リスク イベントを使用して Multi-Factor Authentication とパスワードの変更をトリガーする
+# <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>チュートリアル:リスク イベントを使用して多要素認証とパスワード変更をトリガーする
 
-このチュートリアルでは、Azure Active Directory (Azure AD) Identity Protection の機能を有効にします。この Azure AD Premium P2 機能は、単なる監視およびレポート ツール以上のものです。 組織の ID を保護するために、危険な動作に自動的に対処するリスクベースのポリシーを構成することができます。 これらのポリシーは、自動的にブロックしたり、パスワードの変更の要求や Multi-Factor Authentication の強制などの修復を開始したりすることができます。
+このチュートリアルでは、Azure Active Directory (Azure AD) Identity Protection の機能を有効にします。この Azure AD Premium P2 機能は、単なる監視およびレポート ツール以上のものです。 組織の ID を保護するために、危険な動作に自動的に対処するリスクベースのポリシーを構成することができます。 これらのポリシーによって、自動的にブロックしたり、パスワードの変更の要求や Multi-Factor Authentication の強制などの修復を開始したりすることができます。
 
-Azure AD Identity Protection ポリシーは、既存の条件付きアクセス ポリシーに加えて、追加の保護レイヤーとして使用することができます。 ユーザーがこれらのポリシーの 1 つを必要とする危険な動作をトリガーすることはないかもしれませんが、管理者はユーザーが保護されているとわかっています。
+Azure AD Identity Protection ポリシーは、既存の条件付きアクセス ポリシーに加えて、追加の保護レイヤーとして使用することができます。 このようなポリシーを必要とするような危険な動作をユーザーがトリガーすることはないかもしれませんが、管理者として、ユーザーの保護に確信を持つことができます。
 
 リスク イベントをトリガーする可能性があるのは、次のような操作です。
 
@@ -57,10 +58,10 @@ Azure AD Identity Protection には、ユーザーを Multi-Factor Authenticatio
 1. **[すべてのサービス]** をクリックし、**[Azure AD Identity Protection]** に移動します。
 1. **[MFA 登録]** をクリックします。
 1. [ポリシーの適用] を **[オン]** に設定します。
-   1. このポリシーを設定する場合は、Multi-Factor Authentication を使用するための準備方法をすべてのユーザーが登録する必要があります。
+   1. このポリシーを設定すると、すべてのユーザーが方法を登録し、それを Multi-Factor Authentication で使用するための準備を行う必要があります。
 1. **[Save]** をクリックします。
 
-   ![Azure AD Identity Protection を使用してサインイン時に MFA に登録するようにユーザーに要求する](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+   ![サインイン時に MFA への登録をユーザーに求める](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
 ### <a name="enable-risk-based-password-changes"></a>リスクベースのパスワードの変更を有効にする
 
@@ -72,7 +73,7 @@ Microsoft では、研究者、法執行機関、Microsoft のさまざまなセ
 1. **[アクセス]** の下の **[アクセスを許可]** を選択し、**[パスワードの変更を必須とする]** を選択します。
 1. [選択] をクリックします。
 1. [ポリシーの適用] を **[オン]** に設定します。
-1. **[保存]**
+1.  **[保存]**
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>リスクベースの Multi-Factor Authentication を有効にする
 
@@ -84,7 +85,7 @@ Microsoft では、研究者、法執行機関、Microsoft のさまざまなセ
 1. **[アクセス]** の下の **[アクセスを許可]** を選択し、**[多要素認証を要求する]** を選択します。
 1. [選択] をクリックします。
 1. [ポリシーの適用] を **[オン]** に設定します。
-1. **[保存]**
+1.  **[保存]**
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

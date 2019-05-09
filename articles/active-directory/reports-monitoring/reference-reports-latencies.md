@@ -3,8 +3,8 @@ title: Azure Active Directory レポートの待機時間 | Microsoft ドキュ�
 description: Azure Portal にレポート イベントが表示されるのにかかる時間について学習します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 64bd2247a3437a2cc960da1820d9be417eedff8e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623181"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438651"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
@@ -40,10 +41,14 @@ ms.locfileid: "51623181"
 > **待機時間 (95 パーセンタイル)** は、ログの 95% が報告されるまでにかかる時間を示し、**待機時間 (99 パーセンタイル)** は、ログの 99% が報告されるまでにかかる時間を示します。 
 >
 
-| レポート | 待機時間 (95 パーセンタイル) |待機時間 (99 パーセンタイル)|
-| :-- | --- | --- | 
-| 監査ログ | 2 分  | 5 分  |
-| サインイン | 2 分  | 5 分 |
+| レポート | 待機時間 (95 パーセンタイル) |待機時間 (99 パーセンタイル)|ログがレポートされる時間の範囲|
+| :-- | --- | --- | --- |
+| 監査ログ | 2 分  | 5 分  | 2 分から 60 分 |
+| サインイン | 2 分  | 5 分 | 2 分から 120 分 |
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Premium ライセンスの取得後、アクティビティ データが表示されるまでにかかる時間
+
+無料ライセンスでのアクティビティ データが既にある場合、アップグレード時にはすぐにそのデータを表示できます。 データが何もない場合は、Premium ライセンスへのアップグレード後、レポートにデータが表示されるまで 1 日から 2 日かかります。
 
 ## <a name="security-reports"></a>セキュリティ レポート
 

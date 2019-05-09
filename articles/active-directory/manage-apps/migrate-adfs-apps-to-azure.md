@@ -2,22 +2,23 @@
 title: アプリを AD FS から Azure AD に移動する | Microsoft Docs
 description: この記事は、アプリケーションを Azure AD に移動する方法の理解に役立つことを目的としています。特に、フェデレーション SaaS アプリケーションに重点を置いています。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
-ms.author: barbkess
-ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f2739b5d2d944ea9a8b8cefdcc741abc8a2b632a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141936"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113403"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>アプリケーションを AD FS から Azure AD に移動する 
 
@@ -98,7 +99,7 @@ AD FS と Azure AD は動作が似ているため、信頼関係の構成、サ�
 |アプリの構成要素|説明|AD FS 構成内の場所|Azure AD 構成内の対応する場所|SAML トークン要素|
 |-----|-----|-----|-----|-----|
 |アプリのサインオン URL|このアプリケーションのサインイン ページの URL。 これは、SP によって開始された SAML フローでユーザーがアプリにサインインする場所です。|該当なし|Azure AD では、サインオン URL は Azure Portal 内でアプリケーションの **[シングル サインオン]** プロパティの [サインオン URL] として構成します</br></br>([サインオン URL] を表示するには、**[詳細な URL 設定の表示]** を選択しなければならない場合があります)。|該当なし|
-|アプリの応答 URL|ID プロバイダー (IdP) の観点からの、アプリの URL。 これは、ユーザーが IdP でサインオンした後で、ユーザーとトークンが送信される場所です。</br></br> "SAML アサーション コンシューマー エンドポイント" と呼ばれることもあります。|アプリの AD FS 証明書利用者信頼にあります。 証明書利用者を右クリックし、**[プロパティ]** を選択し、**[エンドポイント]** タブをクリックします。|Azure AD では、応答 URL は Azure Portal 内でアプリケーションの **[シングル サインオン]** プロパティの [応答 URL] として構成します</br></br>([応答 URL] を表示するには、**[詳細な URL 設定の表示]** を選択しなければならない場合があります)。|SAML トークンの **Destination** 要素にマッピングされます。</br></br> 値の例: https://contoso.my.salesforce.com|
+|アプリの応答 URL|ID プロバイダー (IdP) の観点からの、アプリの URL。 これは、ユーザーが IdP でサインオンした後で、ユーザーとトークンが送信される場所です。</br></br> "SAML アサーション コンシューマー エンドポイント" と呼ばれることもあります。|アプリの AD FS 証明書利用者信頼にあります。 証明書利用者を右クリックし、**[プロパティ]** を選択し、**[エンドポイント]** タブをクリックします。|Azure AD では、応答 URL は Azure Portal 内でアプリケーションの **[シングル サインオン]** プロパティの [応答 URL] として構成します</br></br>([応答 URL] を表示するには、**[詳細な URL 設定の表示]** を選択しなければならない場合があります)。|SAML トークンの **Destination** 要素にマッピングされます。</br></br> 値の例: `https://contoso.my.salesforce.com`|
 |アプリのサインアウト URL|ユーザーがアプリからサインアウトするときに、IdP によってユーザーがサインオンした他のすべてのアプリをサインアウトするために、"サインアウト クリーンアップ" 要求が送信される URL。|[AD FS の管理] の **[証明書利用者信頼]** の下にあります。 証明書利用者を右クリックし、**[プロパティ]** を選択し、**[エンドポイント]** タブをクリックします。|該当なし。 Azure AD は、すべてのアプリからサインアウトする "シングル ログアウト" をサポートしていません。 単に Azure AD 自体からユーザーをサインアウトします。|該当なし|
 |アプリ識別子|IdP の観点からの、アプリの識別子。 多くの場合、サインオン URL 値が識別子に使用されます (そうでない場合もあります)。</br></br> アプリ側でこれを "エンティティ ID" と呼ぶこともあります。|AD FS では、証明書利用者 ID となっています。 証明書利用者を右クリックし、**[プロパティ]** を選択し、**[識別子]** タブをクリックします。|Azure AD では、識別子は Azure Portal 内でアプリケーションの **[シングル サインオン]** プロパティの **[ドメインと URL]** の下の識別子として構成します (**[詳細な URL 設定の表示]** チェック ボックスをオンにしなければならない場合があります)。|SAML トークンの **Audience** 要素に対応します。|
 |アプリのフェデレーション メタデータ|アプリのフェデレーション メタデータの場所。 エンドポイントや暗号化証明書などの特定の構成設定を自動更新するために、IdP によって使用されます。|アプリのフェデレーション メタデータ URL は、アプリの AD FS 証明書利用者信頼にあります。 信頼を右クリックし、**[プロパティ]** を選択し、**[監視]** タブをクリックします。|該当なし。 Azure AD では、アプリケーション フェデレーション メタデータの使用を直接サポートしていません。|該当なし|

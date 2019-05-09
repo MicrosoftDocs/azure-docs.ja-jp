@@ -1,29 +1,25 @@
 ---
-title: テキスト分析モデルを作成する - Azure Machine Learning Studio | Microsoft Docs
+title: 感情分析モデルを作成する
+titleSuffix: Azure Machine Learning Studio
 description: テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: ''
-ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 11f4ad4ff1e8e2eab688596d393e63009f7e5624
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 08d62e7a6c9503d415fe144da57eee72ce3bfafd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088402"
 ---
-# <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でテキスト分析モデルを作成する
-Azure Machine Learning を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で感情分析モデルを作成する
+
+Azure Machine Learning Studio を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
 
 通常のテキスト分析の実験では、次の作業を行います。
 
@@ -37,9 +33,9 @@ Azure Machine Learning を使用して、テキスト分析モデルを構築し
 
 Azure AI ギャラリーで、このチュートリアルで取り上げた実験をご覧になれます。
 
-[Predict Book Reviews (書評の予測)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
+[Predict Book Reviews (書評の予測)](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 
-[Predict Book Reviews - Predictive Experiment (書評の予測 - 予測実験)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[Predict Book Reviews - Predictive Experiment (書評の予測 - 予測実験)](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## <a name="step-1-clean-and-preprocess-text-dataset"></a>手順 1: テキスト データセットのクリーニングと前処理
 実験ではまず、レビュー スコアを低と高のカテゴリーに分類し、問題を 2 クラス分類として形式化します。 [メタデータの編集](https://msdn.microsoft.com/library/azure/dn905986.aspx)モジュールと [Group Categorical Values (カテゴリ値のグループ化)](https://msdn.microsoft.com/library/azure/dn906014.aspx) モジュールを使用します。
@@ -70,7 +66,7 @@ N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハ�
 ## <a name="step-3-train-classification-or-regression-model"></a>手順 3: 分類モデルまたは回帰モデルのトレーニング
 テキストが数値の特徴列に変換されました。 データセットにはまだ前の段階からの文字列があるため、データセット内の列選択を使ってこれらを除外します。
 
-その後、 [2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) を使ってターゲット、つまりレビュー スコアの高低を予測します。 この時点で、テキスト分析の問題は、通常の分類問題に変換されています。 Azure Machine Learning で使用できるツールを使って、モデルを改良できます。 たとえば、実験の精度を確認するために異なる分類器を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
+その後、 [2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) を使ってターゲット、つまりレビュー スコアの高低を予測します。 この時点で、テキスト分析の問題は、通常の分類問題に変換されています。 Azure Machine Learning Studio で使用できるツールを使って、モデルを改良できます。 たとえば、実験の精度を確認するために異なる分類子を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
 
 ![トレーニングとスコア付け](./media/text-analytics-module-tutorial/scoring-text.png)
 

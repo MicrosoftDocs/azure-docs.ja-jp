@@ -5,26 +5,26 @@ author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: f0765e010cb40a89f3f57d143c51bdfba72a4ba0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341935"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788652"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
 > [!NOTE]
-> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)がサポートされています。 
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)がサポートされています。 クラシック アラートは[廃止される予定です](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)。  
 >
 
 アラートを使用してデータに対する条件を構成し、その条件が最新の監視データと一致したときに通知を受け取ることができます。
 
 ## <a name="old-and-new-alerting-capabilities"></a>新旧のアラート機能
 
-Azure Monitor、Application Insights、Log Analytics および Service Health のアラート機能は以前は別々でした。 Azure では、ユーザー インターフェイスとさまざまなアラート方法が時間と共に統合され、改善されました。 この統合は現在も継続中です。 アラート
+Azure Monitor、Application Insights、Log Analytics、Service Health のアラート機能は以前は別々でした。 Azure では、ユーザー インターフェイスとさまざまなアラート方法が時間と共に統合され、改善されました。 この統合は現在も継続中です。 アラート
 
 クラシック アラートは、Azure Portal のクラシック アラート ユーザー画面でのみ参照できます。 この画面は、アラート画面の **[クラシック アラートの表示]** ボタンで表示できます。 
 
@@ -50,9 +50,9 @@ Azure Monitor、Application Insights、Log Analytics および Service Health �
 ## <a name="classic-alerts-on-azure-monitor-data"></a>Azure Monitor データのクラシック アラート
 メトリック アラートとアクティビティ ログ アラートの 2 つの種類のクラシック アラートが使用可能です。
 
-* **クラシック メトリック アラート** - このアラートは、指定したメトリックの値が、割り当てたしきい値を超えたときにトリガーされます。 アラートでは、"アクティブ化済み" になったとき (しきい値を超えて、アラートの条件に一致したとき) に通知が生成されます。 "解決済み" になったとき (もう一度しきい値を超えて、条件が一致しなくなったとき)、別のアラートが生成されます。
+* **クラシック メトリック アラート** - このアラートは、指定したメトリックの値が、割り当てたしきい値を超えたときにトリガーされます。 アラートでは、しきい値を超えて、アラートの条件に一致したときに通知が生成されます。 その時点で、アラートは "アクティブ化済み" と見なされます。 "解決済み" になったとき (つまり、もう一度しきい値を超えて、条件が一致しなくなったとき)、別のアラートが生成されます。
 
-* **クラシック アクティビティ ログ アラート** - 割り当てたフィルター条件と一致するアクティビティ ログ イベントが生成されたときにトリガーされるストリーミング ログ アラート。 すべての新規イベントには、アラート エンジンによってフィルター条件が適用されるだけなので、これらのアラートの状態は "アクティブ化済み" のみです。 これらのアラートを使用して、新しいサービス正常性インシデントが発生したとき、またはユーザーまたはアプリケーションがサブスクリプションで操作 (仮想マシンの削除など) を実行したときに通知を受け取ることができます。
+* **クラシック アクティビティ ログ アラート** - アクティビティ ログ イベント エントリがフィルター条件と一致したときにトリガーされるストリーミング ログ アラート。 これらのアラートには、"アクティブ化済み" の 1 つの状態しかありません。 アラート エンジンはすべての新規イベントにフィルター条件を適用するだけです。 古いエントリを検索することはしません。 これらのアラートでは、新しい Service Health インシデントが発生したとき、またはユーザーまたはアプリケーションがサブスクリプションで "仮想マシンの削除" などの操作を実行したときに通知を受け取ることができます。
 
 Azure Monitor で使用できる診断ログ データの場合、データを Log Analytics (旧称 OMS) に転送し、Log Analytics クエリ アラートを使用します。 Log Analytics では、[新しいアラート メソッド](../../azure-monitor/platform/alerts-overview.md)を使用しています。 
 
@@ -71,7 +71,7 @@ Azure では、クラシック アラートとその機能を説明するとき�
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>Azure Monitor クラシック アラートから通知を受け取る方法
 これまで、各サービスの Azure アラートは、それぞれ独自の組み込み通知方法を使用していました。 
 
-Azure Monitor に、*アクション グループ*という再利用可能な通知グループが作成されました。 アクション グループには、通知の受信者セットを指定します。アクション グループを参照するアラートがアクティブになると、すべての受信者がその通知を受け取ります。 アクション グループでは、多数のアラート オブジェクト全体で受信者のグループ (たとえば、オン コール エンジニア一覧など) を再利用できます。 アクション グループでは、電子メール アドレスや SMS 番号、その他の多数のアクションに加え、Webhook URL への投稿による通知をサポートしています。  詳細については、「[action groups](../../azure-monitor/platform/action-groups.md)」 (アクション グループ) を参照してください。 
+Azure Monitor に、*アクション グループ*という再利用可能な通知グループが作成されました。 アクション グループで通知に対する受信者のセットを指定します。 アクション グループを参照するアラートがアクティブになると、必ずすべての受信者が通知を受信します。 アクション グループでは、多数のアラート オブジェクト全体で受信者のグループ (たとえば、オン コール エンジニア一覧など) を再利用できます。 アクション グループでは、電子メール アドレスや SMS 番号、その他の多数のアクションに加え、Webhook URL への投稿による通知をサポートしています。  詳細については、「[action groups](../../azure-monitor/platform/action-groups.md)」 (アクション グループ) を参照してください。 
 
 従来のクラシック アクティビティ ログ アラートでは、アクション グループを使用しています。
 
@@ -80,22 +80,22 @@ Azure Monitor に、*アクション グループ*という再利用可能な通
 - webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。
 
 たとえば、Webhook では、以下を使用して自動化や修復を可能にします。
-    - Azure Automation Runbook
-    - Azure 関数
-    - Azure Logic App
-    - サードパーティのサービス
+- Azure Automation Runbook
+- Azure 関数
+- Azure Logic App
+- サードパーティのサービス
 
 ## <a name="next-steps"></a>次の手順
 アラート ルールとその構成方法については、以下をご覧ください。
 
-* [メトリック](../../azure-monitor/platform/data-collection.md)の詳細
+* [メトリック](data-platform.md)の詳細
 * [Azure Portal からの従来のメトリック アラート](alerts-classic-portal.md)を構成する
 * [従来のメトリック アラートの PowerShell](alerts-classic-portal.md) を構成する
 * [従来のメトリック アラートのコマンド ライン インターフェイス (CLI)](alerts-classic-portal.md) を構成する
 * [従来のメトリック アラートの Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx) を構成する
-* [アクティビティ ログ](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) の詳細
-* [Azure Portal からのアクティビティ ログ アラート](../../azure-monitor/platform/activity-log-alerts.md)の構成
+* [アクティビティ ログ](activity-logs-overview.md) の詳細
+* [Azure Portal からのアクティビティ ログ アラート](activity-log-alerts.md)の構成
 * [Resource Manager からのアクティビティ ログ アラート](alerts-activity-log.md)の構成
-* [アクティビティ ログ アラート webhook スキーマ](../../azure-monitor/platform/activity-log-alerts-webhook.md) の確認
-* [アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細をご覧ください。
-* [新しいアラート](../../azure-monitor/platform/alerts-metric.md)を構成する
+* [アクティビティ ログ アラート webhook スキーマ](activity-log-alerts-webhook.md) の確認
+* [アクション グループ](action-groups.md)の詳細をご覧ください。
+* [新しいアラート](alerts-metric.md)を構成する

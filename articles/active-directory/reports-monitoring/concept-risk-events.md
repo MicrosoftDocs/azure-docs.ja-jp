@@ -3,35 +3,38 @@ title: Azure Active Directory リスク イベント | Microsoft Docs
 description: この記事では、リスク イベントの詳細な概要を示します。
 services: active-directory
 keywords: azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 02fc505c8f14f4cc0e486502060a16af47c68bbc
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625268"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439024"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
-ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業はありません。 Azure Active Directory では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク イベント**と呼ばれるレコードに格納されます。
+ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure Active Directory では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク イベント**と呼ばれるレコードに格納されます。
 
 報告されたリスク イベントは、次の 2 つの場所で確認できます。
 
  - **Azure AD レポート** - リスク イベントは、Azure AD のセキュリティ レポートに含まれています。 詳細については、[危険な状態のユーザー セキュリティ レポート](concept-user-at-risk.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](concept-risky-sign-ins.md)に関する記事をご覧ください。
 
  - **Azure AD Identity Protection** - リスク イベントは、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) のレポート機能の一部でもあります。
-    
+
+また、[Identity Protection リスク イベント API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/graph-get-started.md)」を参照してください。 
+
 現在、Azure Active Directory では、6 種類のリスク イベントが検出されます。
 
 - [資格情報が漏洩したユーザー](#leaked-credentials) 
@@ -42,6 +45,9 @@ ms.locfileid: "51625268"
 - [未知の場所からのサインイン](#sign-in-from-unfamiliar-locations) 
 
 ![リスク イベント](./media/concept-risk-events/91.png)
+
+> [!IMPORTANT]
+> 場合によっては、[サインイン レポート](concept-sign-ins.md)に対応するサインイン エントリがないリスク イベントが見つかることがあります。 これは、Identity Protection が **対話型**と**非対話型**の両方のサインインのリスクを評価する一方、サインイン レポートには対話型サインインのみが表示されるためです。
 
 検出されたリスク イベントに対して取得する洞察は、Azure AD サブスクリプションに関連付けられています。 
 
@@ -159,7 +165,7 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 
 ユーザーに連絡して、ユーザーのすべてのデバイスをスキャンして安全を確認することをお勧めします。 また、ユーザーの個人デバイスが感染している可能性、またはユーザーと同じ IP アドレスから他のユーザーがウイルスに感染したデバイスを使用していた可能性もあります。 感染したデバイスは、ウイルス対策ソフトウェアによってまだ識別されていないマルウェアに感染していることが多く、デバイスが感染する原因になるユーザーの悪い習慣を示していることもあります。
 
-マルウェア感染に対処する方法の詳細については、 [マルウェア対策センター](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409)を参照してください。
+マルウェア感染に対処する方法の詳細については、 [マルウェア対策センター](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/)を参照してください。
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>不審なアクティビティのある IP アドレスからのサインイン
 

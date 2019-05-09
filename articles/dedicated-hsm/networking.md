@@ -3,7 +3,7 @@ title: ネットワークについての考慮事項 - Azure 専用 HSM | Micros
 description: Azure 専用 HSM のデプロイに関連するネットワークの考慮事項の概要
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 46a4cc5e48a9fe239a3c62bd72cf6a99e9bf76d8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d6672827a87fbb949237d51310f1a9febc192ff2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092887"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58886347"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure の専用 HSM のネットワーク
 
@@ -51,8 +51,8 @@ Azure の専用 HSM は、きわめて安全なネットワーク環境を必要
 クラウドベースのリソースを作成する場合は、通常、オンプレミスの IT リソースへのプライベート接続が必要となります。 専用 HSM のケースでは、この接続は主に HSM クライアント ソフトウェアが HSM デバイスを構成する目的で使用するほか、分析に使用するログを HSM から取得する作業やバックアップにも使用されます。 ここで重要な意思決定のポイントとなるのが接続の特性であり、いくつかの選択肢があります。  最も柔軟性の高い選択肢はサイト間 VPN です。Azure クラウド内のリソース (HSM を含む) との安全な通信を必要とするオンプレミス リソースは複数存在する可能性が高いためです。 この場合、お客様の組織には、接続を容易にする VPN デバイスが必要になります。 オンプレミスにエンドポイントが 1 つしか存在しなければ (単一の管理ワークステーションなど)、ポイント対サイト VPN 接続を使用できます。
 接続の選択肢の詳細については、[VPN Gateway の計画の選択肢](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)に関するセクションを参照してください。
 
->[!NOTE]
-現時点では、オンプレミス リソースへの接続に ExpressRoute を選択することはできません。 また、前述した ExpressRoute ゲートウェイは、オンプレミス インフラストラクチャに接続するためのものではないので注意してください。
+> [!NOTE]
+> 現時点では、オンプレミス リソースへの接続に ExpressRoute を選択することはできません。 また、前述した ExpressRoute ゲートウェイは、オンプレミス インフラストラクチャに接続するためのものではないので注意してください。
 
 ### <a name="point-to-site-vpn"></a>ポイント対サイト VPN
 
@@ -80,8 +80,8 @@ HSM デバイスには、ソフトウェア ライブラリを通じて、トラ
 
 グローバルに分散されたアプリケーションや、フェールオーバーをリージョン間で行う高可用性のシナリオでは、リージョンの境界を越えて仮想ネットワークを接続する必要があります。 Azure の専用 HSM では、2 つの仮想ネットワーク間に安全なトンネルを提供する VPN ゲートウェイを使用して高可用性を確保することができます。 VPN Gateway を使用した VNet 間接続の詳細については、「[VPN ゲートウェイとは](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)」という記事を参照してください。
 
->[!NOTE]
-現時点では、専用 HSM を使用したリージョン間接続のシナリオで、グローバル VNET ピアリングを利用することはできません。VPN Gateway を使用する必要があります。 
+> [!NOTE]
+> 現時点では、専用 HSM を使用したリージョン間接続のシナリオで、グローバル VNET ピアリングを利用することはできません。VPN Gateway を使用する必要があります。 
 
 ![グローバル VNET](media/networking/global-vnet.png)
 

@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ecf19ec484e03f4cbc9e396ff80818c192da4d17
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b0599317d09a1757b3c86372cb7ed8ea78d4cdd7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132791"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464485"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>U-SQL を使用した Azure Data Lake データ サイエンスのチュートリアル
 

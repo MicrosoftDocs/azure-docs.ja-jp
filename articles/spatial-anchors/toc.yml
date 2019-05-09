@@ -1,0 +1,83 @@
+- name: Spatial Anchors のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Spatial Anchors について
+      href: overview.md
+- name: クイック スタート
+  items:
+    - name: Unity アプリの作成
+      href: unity-overview.yml
+      expanded: true
+      items:
+        - name: HoloLens
+          href: quickstarts/get-started-unity-hololens.md
+        - name: Android
+          href: quickstarts/get-started-unity-android.md
+        - name: iOS
+          href: quickstarts/get-started-unity-ios.md
+    - name: iOS アプリの作成
+      href: quickstarts/get-started-ios.md
+    - name: Android アプリの作成
+      href: quickstarts/get-started-android.md
+    - name: HoloLens アプリの作成
+      href: quickstarts/get-started-hololens.md
+- name: チュートリアル
+  items:
+    - name: Unity での共有
+      href: tutorials/tutorial-share-anchors-across-devices.md
+    - name: Azure Cosmos DB を使用した Unity での共有
+      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+    - name: 新しい Android アプリの開始
+      href: tutorials/tutorial-new-android-app.md
+- name: 操作方法
+  items:
+    - name: アンカーの作成と配置
+      href: create-locate-anchors-overview.md
+      items:
+        - name: Unity の場合
+          href: how-tos/create-locate-anchors-unity.md
+        - name: Objective-C の場合
+          href: how-tos/create-locate-anchors-objc.md
+        - name: Swift の場合
+          href: how-tos/create-locate-anchors-swift.md
+        - name: Java の場合
+          href: how-tos/create-locate-anchors-java.md
+        - name: C++/NDK の場合
+          href: how-tos/create-locate-anchors-cpp-ndk.md
+        - name: C++/WinRT の場合
+          href: how-tos/create-locate-anchors-cpp-winrt.md
+- name: サンプル
+  items:
+    - name: Azure Spatial Anchors のサンプル (GitHub)
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples'
+- name: 概念
+  items:
+    - name: アンカーのリレーションシップ
+      href: concepts/anchor-relationships-way-finding.md
+    - name: エクスペリエンスのガイドライン
+      href: concepts/guidelines-effective-anchor-experiences.md
+    - name: ログ記録と診断
+      href: concepts/logging-diagnostics.md
+- name: 参照
+  items:
+    - name: Unity 用 SDK
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'
+    - name: iOS Objective-C 用 SDK
+      href: 'https://docs.microsoft.com/objectivec/api/spatial-anchors/'
+    - name: Android Java 用 SDK
+      href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/'
+    - name: Android NDK 用 SDK
+      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
+    - name: HoloLens C++/WinRT 用 SDK
+      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+- name: リソース
+  items:
+    - name: FAQ
+      href: spatial-anchor-faq.md
+    - name: 製品フィードバックの提供
+      href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
+    - name: サポート
+      href: spatial-anchor-support.md

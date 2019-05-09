@@ -4,23 +4,29 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 529c130f5694856f99f5d49e5b2f3628a4c3818f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074997"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607171"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker に関してよく寄せられる質問
 
 QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
+
+## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>QnA Maker ポータルでヘルプ ボットを使用する
+
+QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボットが提供されています。 ヘルプ ボットは、すべての Web ページで利用できます。 ボットでは、QnA Maker を使用して回答が提供されます。ボットには [C# Bot Framework コード プロジェクト](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)が用意されているので、独自の応答ボットをすばやく稼働させることができます。 
+
+![![QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボットが提供されています。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>ナレッジ ベースの管理
 

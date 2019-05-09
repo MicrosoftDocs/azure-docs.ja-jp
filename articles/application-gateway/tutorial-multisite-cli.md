@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 472c8666d8c57f56113d00e60d8de92e636dc7d7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5508a1dbd105fc47a4ed7b3484f55532904956ff
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995858"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732075"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Azure CLI を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する
 
 [アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure CLI を使用して[複数の Web サイト](application-gateway-multi-site-overview.md)のホスティングを構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
@@ -42,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#create) を使用してリソース グループを作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
 次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
@@ -52,7 +52,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet#az-net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -74,7 +74,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -102,7 +102,7 @@ az network application-gateway create \
 
 ### <a name="add-the-backend-pools"></a>バックエンド プールの追加
 
-[az network application-gateway address-pool create](/cli/azure/network/application-gateway#az-network_application_gateway_address_pool_create) を使用して、バックエンド サーバーを含めるために必要な *contosoPool* と *fabrikamPool* という名前のバックエンド プールを追加します。
+[az network application-gateway address-pool create](/cli/azure/network/application-gateway) を使用して、バックエンド サーバーを含めるために必要な *contosoPool* と *fabrikamPool* という名前のバックエンド プールを追加します。
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -119,7 +119,7 @@ az network application-gateway address-pool create \
 
 アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 このチュートリアルでは、2 つのドメインに対して 2 つのリスナーを作成します。 この例では、*www.contoso.com* と *www.fabrikam.com* のドメインに対してリスナーを作成しています。 
 
-[az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) を使用して、トラフィックをルーティングするために必要な *contosoListener* と *fabrikamListener* という名前のリスナーを追加します。
+[az network application-gateway http-listener create](/cli/azure/network/application-gateway) を使用して、トラフィックをルーティングするために必要な *contosoListener* と *fabrikamListener* という名前のリスナーを追加します。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -142,7 +142,7 @@ az network application-gateway http-listener create \
 
 規則は作成された順番で処理されます。トラフィックは、アプリケーション ゲートウェイに送信される URL に一致する最初の規則を使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
 
-この例では、2 つの新しい規則を作成し、アプリケーション ゲートウェイを作成したときに作成された既定の規則を削除します。 [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) を使用して、規則を追加することができます。
+この例では、2 つの新しい規則を作成し、アプリケーション ゲートウェイを作成したときに作成された既定の規則を削除します。 [az network application-gateway rule create](/cli/azure/network/application-gateway) を使用して、規則を追加することができます。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -213,7 +213,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>ドメインの CNAME レコードの作成
 
-パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、DNS アドレスを取得し、これを使用してドメインに CNAME レコードを作成できます。 [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) を使用して、アプリケーション ゲートウェイの DNS アドレスを取得できます。 DNSSettings の *fqdn* 値をコピーし、作成した CNAME レコードの値として使用します。 
+パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、DNS アドレスを取得し、これを使用してドメインに CNAME レコードを作成できます。 [az network public-ip show](/cli/azure/network/public-ip) を使用して、アプリケーション ゲートウェイの DNS アドレスを取得できます。 DNSSettings の *fqdn* 値をコピーし、作成した CNAME レコードの値として使用します。 
 
 ```azurecli-interactive
 az network public-ip show \
@@ -237,7 +237,7 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ

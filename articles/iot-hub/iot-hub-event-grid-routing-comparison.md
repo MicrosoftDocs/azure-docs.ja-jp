@@ -2,18 +2,18 @@
 title: IoT Hub における Event Grid とルーティングの比較 | Microsoft Docs
 description: IoT Hub には独自のメッセージ ルーティング サービスが用意されていますが、イベントの発行のために Event Grid とも統合します。 2 つの機能を比較します。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 3d52ca0c7022e08655ece8775b5855f3ae985aca
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: e7d5ab3ebdf29fbf699220a3b214176ec4862739
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247454"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672799"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>IoT Hub のメッセージ ルーティングと Event Grid の比較
 
@@ -21,37 +21,39 @@ Azure IoT Hub には、接続されたデバイスからデータをストリー
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-* **[IoT Hub メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)**: この IoT Hub の機能を使用して、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックなどのサービス エンドポイントに、device-to-cloud メッセージをルーティングすることができます。 また、ルーティングでは、エンドポイントにルーティングする前にデータをフィルター処理するクエリ機能も提供されています。 デバイスのテレメトリ データに加えて、アクションのトリガーに使用できる[非テレメトリ イベント](iot-hub-devguide-messages-d2c.md#non-telemetry-events)も送信できます。 
+**[IoT Hub メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)**:この IoT Hub の機能を使用して、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックなどのサービス エンドポイントに、device-to-cloud メッセージをルーティングすることができます。 また、ルーティングでは、エンドポイントにルーティングする前にデータをフィルター処理するクエリ機能も提供されています。 デバイスのテレメトリ データに加えて、アクションのトリガーに使用できる[非テレメトリ イベント](iot-hub-devguide-messages-d2c.md#non-telemetry-events)も送信できます。 
 
-* **IoT Hub の Event Grid との統合**: Azure Event Grid は、発行-サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 IoT Hub と Event Grid は、[Azure サービスと Azure 以外のサービスに IoT Hub イベントを統合する](iot-hub-event-grid.md)ために、ほぼリアルタイムで連携します。 
+**IoT Hub の Event Grid との統合**:Azure Event Grid は、パブリッシュ - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 IoT Hub と Event Grid は、[Azure サービスと Azure 以外のサービスに IoT Hub イベントを統合する](iot-hub-event-grid.md)ために、ほぼリアルタイムで連携します。 
 
-## <a name="similarities-and-differences"></a>類似点と相違点
+## <a name="differences"></a>相違点
 
 メッセージ ルーティングと Event Grid は共にアラートの構成を可能にしますが、両者の間には主な違いがいくつかあります。 詳細については、以下の表を参照してください。
 
 | 機能 | IoT Hub メッセージ ルーティング | IoT Hub の Event Grid との統合 |
 | ------- | --------------- | ---------- |
 | **デバイス メッセージ** | はい、メッセージ ルーティングはテレメトリ データに対して使用できます。 | いいえ、Event Grid は非テレメトリ IoT Hub イベントに対してしか使用できません。 |
-| **イベントの種類** | はい、メッセージ ルーティングでは、ツイン変更とデバイス ライフサイクル イベントをレポートできます。 | はい、Event Grid では、IoT Hub のデバイスが作成、削除、接続、切断されたときにレポートできます |
+| **デバイスのイベント** | はい、メッセージ ルーティングでは、ツイン変更とデバイス ライフサイクル イベントをレポートできます。 | はい、Event Grid では、IoT Hub のデバイスが作成、削除、接続、切断されたときにレポートできます |
 | **順序付け** | はい、イベントの順序付けは維持されます。  | いいえ、イベントの順序付けは保証されません。 | 
 | **最大メッセージ サイズ** | 256 KB、device-to-cloud | 64 KB |
 | **Filtering** | メッセージ アプリケーション プロパティ、メッセージ システム プロパティ、メッセージ本文、デバイス ツインのタグおよびプロパティに基づく豊富なフィルター。 例については、[メッセージ ルーティングのクエリ構文](iot-hub-devguide-routing-query-syntax.md)に関するページを参照してください。 | デバイス ID のサフィックス/プレフィックスに基づくフィルタリング。これはストレージのような階層サービスに適しています。 |
 | **Endpoints** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus キュー</li> <li>Service Bus トピック</li></ul><br>有料の IoT Hub SKU (S1、S2、S3) は、10 のカスタム エンドポイントに制限されます。 IoT Hub あたり 100 のルートを作成できます。 | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>ストレージ BLOB</li> <li>カスタム トピック</li> <li>WebHook を通じたサード パーティのサービス</li></ul><br>最新のエンドポイントの一覧については、[Event Grid のイベント ハンドラー](../event-grid/overview.md#event-handlers)に関する記事を参照してください。 |
 | **コスト** | メッセージ ルーティングについては、別料金はかかりません。 IoT Hub へのテレメトリのイングレスのみが課金されます。 たとえば、3 つの異なるエンドポイントにメッセージをルーティングする場合、1 つのメッセージに対してのみ課金されます。 | IoT Hub からの課金はありません。 Event Grid では、毎月最初の 100,000 操作が無料で提供され、それ以降は 100 万操作あたり 0.60 ドルが課金されます。 |
 
+## <a name="similarities"></a>類似点
+
 IoT Hub メッセージ ルーティングと Event Grid には類似点もあります。そのいくつかについて以下の表で詳しく説明します。
 
 | 機能 | IoT Hub メッセージ ルーティング | IoT Hub の Event Grid との統合 |
 | ------- | --------------- | ---------- |
-| **信頼性** | 高い: ルートごとに少なくとも 1 回はエンドポイントに各メッセージを配信します。 1 時間内に配信されないメッセージはすべて有効期限切れになります。 | 高い: サブスクリプションごとに少なくとも 1 回は webhook に各メッセージを配信します。 24 時間内に配信されないイベントはすべて有効期限切れになります。 | 
-| **拡張性** | 高い: 何十億ものメッセージを送信する数百万の同時接続されたデバイスをサポートするように最適化されます。 | 高い: リージョンあたり 10,000,000 イベント/秒をルーティングすることができます。 |
-| **待機時間** | 少ない: ほぼリアルタイムです。 | 少ない: ほぼリアルタイムです。 |
+| **信頼性** | [高]:ルートごとに少なくとも 1 回はエンドポイントに各メッセージを配信します。 1 時間内に配信されないメッセージはすべて有効期限切れになります。 | [高]:サブスクリプションごとに少なくとも 1 回は webhook に各メッセージを配信します。 24 時間内に配信されないイベントはすべて有効期限切れになります。 | 
+| **拡張性** | [高]:何十億ものメッセージを送信する数百万の同時接続されたデバイスをサポートするように最適化されます。 | [高]:リージョンあたり 10,000,000 イベント/秒をルーティングすることができます。 |
+| **待機時間** | [低]:ほぼリアルタイムです。 | [低]:ほぼリアルタイムです。 |
 | **複数のエンドポイントへの送信** | はい、1 つのメッセージを複数のエンドポイントに送信します。 | はい、1 つのメッセージを複数のエンドポイントに送信します。  | 
 | **セキュリティ** | IoT Hub では、デバイスごとの ID と取り消し可能なアクセス制御が用意されます。 詳細については、[IoT Hub のアクセス制御](iot-hub-devguide-security.md)に関する記事を参照してください。 | Event Grid には 3 点での検証が用意されています。イベント サブスクリプション、イベントの発行、webhook のイベント配信です。 詳細については、「[Event Grid security and authentication](../event-grid/security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。 |
 
 ## <a name="how-to-choose"></a>選択する方法
 
-IoT Hub メッセージ ルーティングと IoT Hub の Event Grid との統合は、同様の結果を得るために異なるアクションを実行します。 両者は共に IoT Hub ソリューションから情報を取得し、他のサービスが対応できるように情報を渡します。 どのようにして、どちらを使用するか決めればよいのでしょうか。 前のセクションのデータに加えて、次の質問を意思決定の目安にします。 
+IoT Hub メッセージ ルーティングと IoT Hub の Event Grid との統合は、同様の結果を得るために異なるアクションを実行します。 両者は共に IoT Hub ソリューションから情報を取得し、他のサービスが対応できるように情報を渡します。 どのようにして、どちらを使用するか決めればよいのでしょうか。 判断に役立つ次の質問を検討します。 
 
 * **どのような種類のデータをエンドポイントに送信しますか。**
 

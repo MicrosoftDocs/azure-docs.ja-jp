@@ -1,22 +1,20 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
 description: 記載されている Golang のコード サンプルを使用すると、Azure Cosmos DB の MongoDB 用 API を使用して接続とクエリを行うことができます。
-services: cosmos-db
 author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.custom: quickstart
-ms.openlocfilehash: 7fb1e547f58f2297378b0c95cdea67182a416e04
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5b60ac28cd8f65d464e659f328872524be59b3ed
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791610"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586876"
 ---
-# <a name="build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
+# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

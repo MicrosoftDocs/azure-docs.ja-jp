@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0e3d6255d6e2787d407d24a4217a0262ae4c974d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1d87774ab667dd2d4f7f9fa7827a3ddf17c09044
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098479"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010934"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>アマゾン ウェブ サービス アカウントの接続
 
@@ -42,7 +42,7 @@ AWS IAM の ID の詳細については、「[ID (ユーザー、グループ、
 
 ### <a name="add-aws-read-only-role-based-access"></a>AWS の読み取り専用のロールベースのアクセスを追加する
 
-1. https://console.aws.amazon.com/iam/home から AWS コンソールにサインインし、**[Roles]\(ロール\)** を選択します。
+1.  https://console.aws.amazon.com/iam/home から AWS コンソールにサインインし、**[Roles]\(ロール\)** を選択します。
 2. **[Create Role]\(ロールの作成\)** をクリックし、**[Another AWS account]\(別の AWS アカウント\)** を選択します。
 3. **[Account ID]\(アカウント ID\)** に `432263259397` を貼り付けます。 このアカウント ID は、AWS によって Cloudyn サービスに割り当てられた Cloudyn データ コレクター アカウントです。 表示されたアカウント ID を使用します。
 4. **[オプション]** の横にある **[Require external ID]\(外部 ID が必要\)** を選択します。 前に Cloudyn で **[External ID]\(外部 ID\)** フィールドからコピーした一意の値を貼り付けます。 **[Next:Permissions]\(次へ: アクセス許可\)** をクリックします。  
@@ -77,7 +77,7 @@ Cloudyn は、データの収集とレポートの作成を開始します。 �
 
 ### <a name="add-aws-read-only-user-based-access"></a>AWS の読み取り専用のユーザーベースのアクセスを追加する
 
-1. https://console.aws.amazon.com/iam/home から AWS コンソールにサインインし、**[ユーザー]** を選択します。
+1.  https://console.aws.amazon.com/iam/home から AWS コンソールにサインインし、**[ユーザー]** を選択します。
 2. **[ユーザーの追加]** をクリックします。
 3. **[User name]\(ユーザー名\)** フィールドに、ユーザー名を入力します。
 4. **[Access type]\(アクセスの種類\)** で、**[Programmatic access]\(プログラムによるアクセス\)** を選択し、**[Next:Permissions]\(次へ: アクセス許可\)** をクリックします。  
@@ -108,7 +108,7 @@ Cloudyn は、データの収集とレポートの作成を開始します。 �
 
 AWS ロール ARN を取得するには、次の手順を実行します。 ロール ARN を使用して、請求バケットに読み取りアクセス許可を与えます。
 
-1. https://console.aws.amazon.com から AWS コンソールにサインインし、**[Services]\(サービス\)** を選択します。
+1.  https://console.aws.amazon.com から AWS コンソールにサインインし、**[Services]\(サービス\)** を選択します。
 2. [Service Search] に「*IAM*」と入力し、そのオプションを選択します。
 3. 左手のメニューから **[Roles]\(ロール\)** を選択します。
 4. ロールの一覧で、Cloudyn アクセス用に作成したロールを選択します。
@@ -118,7 +118,7 @@ AWS ロール ARN を取得するには、次の手順を実行します。 ロ�
 
 課金の詳細情報を格納する S3 バケットを作成します。
 
-1. https://console.aws.amazon.com から AWS コンソールにサインインし、**[Services]\(サービス\)** を選択します。
+1.  https://console.aws.amazon.com から AWS コンソールにサインインし、**[Services]\(サービス\)** を選択します。
 2. [Service Search] に「*S3*」と入力し、**[S3]** を選択します。
 3. [Amazon S3] ページで、**[Create bucket]\(バケットの作成\)** をクリックします。
 4. バケットの作成ウィザードで、バケットの名前と地域を選択し、**[次へ]** をクリックします。  
@@ -127,11 +127,11 @@ AWS ロール ARN を取得するには、次の手順を実行します。 ロ�
 6. [Review]\(レビュー\) ページで、**[Create bucket]\(バケットの作成\)** をクリックします。 バケット一覧が表示されます。
 7. 作成したバケットをクリックし、**[Permissions]\(アクセス許可\)** タブを選択し、**[Bucket Policy]\(バケット ポリシー\)** を選択します。 バケット ポリシー エディターが開きます。
 8. 次の JSON の例をコピーし、バケット ポリシー エディターに貼り付けます。
-  - `<BillingBucketName>` を S3 バケットの名前に置き換えます。
-  - `<ReadOnlyUserOrRole>` を、事前にコピーしたロールまたはユーザー ARN に置き換えます。
+   - `<BillingBucketName>` を S3 バケットの名前に置き換えます。
+   - `<ReadOnlyUserOrRole>` を、事前にコピーしたロールまたはユーザー ARN に置き換えます。
 
-  ```json
-  {
+   ```json
+   {
     "Version": "2012-10-17",
     "Id": "Policy1426774604000",
     "Statement": [
@@ -169,8 +169,8 @@ AWS ロール ARN を取得するには、次の手順を実行します。 ロ�
             "Resource": "arn:aws:s3:::<BillingBucketName>/*"
         }
     ]
-  }
-  ```
+   }
+   ```
 
 9. **[Save]** をクリックします。  
     ![バケット ポリシー エディターで [Save]\(保存\) をクリックする](./media/connect-aws-account/bucket-policy-editor.png)

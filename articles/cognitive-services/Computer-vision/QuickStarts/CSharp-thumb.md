@@ -4,21 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と C# を使って、画像からサムネイルを生成します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8355b78b33a4ac559f1ca61db8dc21537b02cc09
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 05d48c67876b02c1909243eaa86a57fd4ab8d5c1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579449"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312839"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と C&#35; を使用したサムネイルの生成
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c-in-computer-vision"></a>クイック スタート:Computer Vision の REST API と C# を使用したサムネイルの生成
 
 このクイック スタートでは、Computer Vision の REST API を使って、画像からサムネイルを生成します。 [サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドを使うと、画像のサムネイルを生成することができます。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 
@@ -194,7 +194,7 @@ namespace CSHttpClientSample
 
 サンプル アプリケーションによって、次の例のように成功応答がコンソール ウィンドウに表示されます。
 
-```text
+```console
 Response:
 
 StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:

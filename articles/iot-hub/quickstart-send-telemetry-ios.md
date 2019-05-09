@@ -1,28 +1,28 @@
 ---
 title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート | Microsoft Docs
 description: このクイック スタートでは、サンプルの iOS アプリケーションを実行して、IoT Hub にシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT Hub から利用統計情報を読み取ります。
-author: kgremban
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/20/2018
-ms.author: kgremban
-ms.openlocfilehash: c2cfe40afb2c855e600e103fc8b9bb0845b09aa3
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.date: 04/03/2019
+ms.openlocfilehash: a3f72c2a55acfc53d7d8a07bd10250c6ed6102ea
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515116"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59006904"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート: デバイスから IoT ハブへの利用統計情報の送信 (iOS)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート:デバイスから IoT ハブへのテレメトリの送信 (iOS)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub は、保管や処理のために IoT デバイスから大量の利用統計情報をクラウドに取り込むことを可能にする Azure サービスです。 この記事では、シミュレートされたデバイス アプリケーションから IoT Hub に利用統計情報を送信します。 その後、バックエンド アプリケーションからデータを表示できます。 
+IoT Hub は、保管や処理のために IoT デバイスから大量の利用統計情報をクラウドに取り込むことを可能にする Azure サービスです。 この記事では、シミュレートされたデバイス アプリケーションから IoT Hub に利用統計情報を送信します。 その後、バックエンド アプリケーションからデータを表示できます。
 
-この記事では、事前に作成済みの Swift アプリケーションを使用して利用統計情報を送信し、CLI ユーティリティを使用して IoT Hub から利用統計情報を読み取ります。 
+この記事では、事前に作成済みの Swift アプリケーションを使用して利用統計情報を送信し、CLI ユーティリティを使用して IoT Hub から利用統計情報を読み取ります。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -30,9 +30,14 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure サンプル](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)のページからコード サンプルをダウンロードします 
-- iOS SDK の最新バージョンを実行している最新バージョンの [XCode](https://developer.apple.com/xcode/)。 このクイック スタートは、XCode 9.3 と iOS 11.3 でテストされました。
+- [Azure サンプル](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)のページからコード サンプルをダウンロードします
+- iOS SDK の最新バージョンを実行している最新バージョンの [XCode](https://developer.apple.com/xcode/)。 このクイック スタートは、XCode 10.2 と iOS 12.2 でテストされました。
 - 最新バージョンの [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)。
+- 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+   ```azurecli-interactive
+   az extension add --name azure-cli-iot-ext
+   ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -42,14 +47,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
-   **myiOSdevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、myiOSdevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **myiOSdevice**:これは、登録済みデバイスに付けられた名前です。 示されているように、myiOSdevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
    az iot hub device-identity create --hub-name YourIoTHubName --device-id myiOSdevice
    ```
 

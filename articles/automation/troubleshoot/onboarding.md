@@ -4,22 +4,44 @@ description: Update Management、Change Tracking、および Inventory ソリュ
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879642"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793148"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
 
 Update Management または Change Tracking や Inventory などのソリューションをオンボードする際にエラーが発生することがあります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
 
 ## <a name="general-errors"></a>一般エラー
+
+### <a name="missing-write-permissions"></a>シナリオ:オンボードが失敗し、ソリューションを有効にできませんというメッセージが表示されます
+
+#### <a name="issue"></a>問題
+
+仮想マシンをソリューションにオンボードしようとすると、次のメッセージのいずれかが表示されます。
+
+```error
+The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+```error
+The solution cannot be enabled on this VM because the permission to read the workspace is missing
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、仮想マシン、ワークスペース、またはユーザーに対するアクセス許可が正しくないか、不足しているために発生します。
+
+#### <a name="resolution"></a>解決策
+
+仮想マシンをオンボードする正しいアクセス許可を持つことを確認します。 [マシンをオンボードするために必要なアクセス許可](../automation-role-based-access-control.md#onboarding)を確認し、再度ソリューションをオンボードしてください。 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` というエラーが発生する場合は、ワークスペースにVM がオンボードされているかどうかを調べることができる `Microsoft.OperationalInsights/workspaces/read` アクセス許可があることを確認します。
 
 ### <a name="computer-group-query-format-error"></a>シナリオ:ComputerGroupQueryFormatError
 
@@ -55,7 +77,7 @@ Update Management または Change Tracking や Inventory などのソリュー�
   * ポリシーの対象を特定のリソースに設定し直す (特定の Automation アカウントなど)。
   * 拒否するようにポリシーが構成されているリソースのセットを変更する
 
-Azure Portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、**[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure Policy の詳細については、次をご覧ください。[Azure Policy の概要](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)。
+Azure portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、**[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure Policy の詳細については、次をご覧ください。[Azure Policy の概要](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
 ## <a name="mma-extension-failures"></a>MMA 拡張機能のエラー
 
@@ -65,7 +87,7 @@ Azure Portal の右上にある通知を確認するか、Automation アカウ�
 通常は、Notifications Hub に表示される通知によって、MMA または Log Analytics エージェント for Linux のインストール エラーに最初に気付きます。 その通知をクリックすると、特定のエラーの詳しい情報が表示されます。 [リソース グループ] のリソース、さらにリソース内のデプロイ要素にナビゲートすると、発生したデプロイ エラーの詳細が示されます。
 MMA または Log Analytics エージェント for Linux のインストールは、さまざまな理由からエラーが発生する可能性があるため、そうしたエラーに対処する手順は問題によって異なります。 具体的なトラブルシューティング手順はこの後で説明します。
 
-次のセクションでは、オンボードの際に発生して MMA 拡張機能のデプロイメントのエラーを引き起こす可能性があるさまざまな問題について説明します。
+次のセクションでは、オンボードのときに発生して MMA 拡張機能のデプロイのエラーの原因になる可能性があるさまざまな問題について説明します。
 
 ### <a name="webclient-exception"></a>シナリオ:WebClient 要求で例外が発生した
 
@@ -97,7 +119,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 ### <a name="transient-environment-issue"></a>シナリオ:環境の一時的な問題のためにインストールが失敗した
 
-デプロイの際に、別のインストールまたは操作によって妨げられたため、Microsoft Monitoring Agent 拡張機能のインストールが失敗しました。
+デプロイのときに、別のインストールまたは操作によって妨げられたため、Microsoft Monitoring Agent 拡張機能のインストールが失敗しました
 
 #### <a name="issue"></a>問題
 
@@ -120,7 +142,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 このエラーの原因として考えられるものは次のとおりです。
 
 * 別のインストールが進行中です。
-* テンプレートのデプロイ中にシステムの再起動がトリガーされました。
+* テンプレートのデプロイ中にシステムの再起動がトリガーされます
 
 #### <a name="resolution"></a>解決策
 

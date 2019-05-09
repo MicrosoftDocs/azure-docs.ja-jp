@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: hascipio; v-divte; v-miclar
-ms.openlocfilehash: 535a947f7a4b9c750d585ce854a14be80c4a135c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 381f88c4641417bceca0f988d4b1a187aedaa642
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639154"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327308"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>VHD 作成における一般的な問題 (FAQ)
 
@@ -27,7 +27,7 @@ ms.locfileid: "49639154"
 
 ## <a name="how-do-you-create-a-vm-from-the-azure-portal-using-the-vhd-that-is-uploaded-to-premium-storage"></a>Premium Storage にアップロードされる VHD を使用して、Azure portal から VM を作成するにはどうすればよいですか?
 
-Azure Marketplace は現在、マネージド ストレージ上に存在するイメージまたは Azure Premium Storage からの VM オファーの作成をサポートしていません。  これらのストレージ オプションの詳細については、「[Azure Managed Disks の概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)」および「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)」を参照してください。
+Azure Marketplace は現在、マネージド ストレージ上に存在するイメージまたは Azure Premium Storage からの VM オファーの作成をサポートしていません。  これらのストレージ オプションについて詳しくは、「[Azure Managed Disks の概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)」をご覧ください。
 
 
 ## <a name="can-you-use-generation-2-vms-for-offers"></a>オファーに第 2 世代の VM を使用できますか?
@@ -73,7 +73,7 @@ Azure Resource Manager デプロイ モデルを使用している場合、VPN �
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>VM で、スタートアップ タスクのカスタム スクリプト拡張機能を管理するにはどうすればよいですか?
 
-次の記事では、Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法について詳しく説明します。また、Windows システムでのトラブルシューティング手順についても詳しく説明します。「[Windows でのカスタムのスクリプト拡張機能](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)」
+次の記事では、Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法について詳しく説明します。また、Windows システムでのトラブルシューティング手順についても詳しく説明します。[Windows でのカスタムのスクリプト拡張機能](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>32 ビット アプリケーションやサービスは Azure Marketplace でサポートされていますか?

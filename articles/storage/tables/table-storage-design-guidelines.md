@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: ef6d257aee532d4b6325bd3d2f619fd00824e06f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: d056d29469ad9a60fceeee307aca3c0e1319283c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525420"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454523"
 ---
 # <a name="guidelines-for-table-design"></a>テーブル設計のガイドライン
 

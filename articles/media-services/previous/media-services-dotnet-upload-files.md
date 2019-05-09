@@ -4,7 +4,7 @@ description: 資産を作成し、アップロードすることによって、M
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c9c86380-9395-4db8-acea-507c52066f73
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9edfa8ea0c9e469d09cef7ddbd1c7edda4484b47
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 4098d55a0b7505b2178c95d612c078a427adc9a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444631"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845515"
 ---
-# <a name="upload-files-into-a-media-services-account-using-net"></a>.NET を使用した Media Services アカウントへのファイルのアップロード
+# <a name="upload-files-into-a-media-services-account-using-net"></a>.NET を使用した Media Services アカウントへのファイルのアップロード 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
@@ -29,14 +29,14 @@ ms.locfileid: "42444631"
 > 
 > 
 
-Media Services で、デジタル ファイルを資産にアップロードし (取り込み) ます。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
+Media Services で、デジタル ファイルをアセットにアップロードし (取り込み) ます。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
 資産内のこれらのファイルを **資産ファイル**といいます。 **AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 > [!NOTE]
 > 次の考慮事項が適用されます。
 > 
-> * Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
+> * Media Services は、ストリーミング コンテンツ (たとえば、 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
 > * 名前は 260 文字以内で指定する必要があります。
 > * Media Services での処理についてサポートされている最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)の記事を参照してください。
 > * さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
@@ -48,7 +48,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
   プログレッシブ ダウンロードを使用して MP4 を配信する場合は、このオプションを使用します。 
 * **CommonEncryption** : 既に Common Encryption や PlayReady DRM で暗号化されて保護されているコンテンツ (PlayReady DRM で保護されたスムーズ ストリーミングなど) をアップロードする場合は、このオプションを使用します。
 * **EnvelopeEncrypted** : AES で暗号化された HLS をアップロードする場合はこのオプションを使用します。 この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
-* **StorageEncrypted**: ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。 StorageEncrypted で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力資産として再びアップロードできます。 StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
+* **StorageEncrypted**: ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。 StorageEncrypted で保護されたアセットは、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力アセットとして再びアップロードできます。 StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
   
     Media Services では、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、資産のオンディスクでのストレージ暗号化を提供します。
   
@@ -56,7 +56,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 資産を **CommonEncrypted** オプションか **EnvelopeEncypted** オプションで暗号化することを指定した場合、資産を **ContentKey** に関連付ける必要があります。 詳細については、「 [How to create a ContentKey (ContentKey の作成方法)](media-services-dotnet-create-contentkey.md)」をご覧ください 
 
-資産を **StorageEncrypted** オプションで暗号化することを指定した場合、Media Services SDK for .NET によって、資産の **StorateEncrypted** の **ContentKey** が作成されます。
+資産を **StorageEncrypted** オプションで暗号化することを指定した場合、Media Services SDK for .NET によって、資産の **StorageEncrypted** の **ContentKey** が作成されます。
 
 この記事では、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルを Media Services 資産にアップロードする方法を説明します。
 

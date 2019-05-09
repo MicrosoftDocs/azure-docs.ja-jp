@@ -6,14 +6,14 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/26/2018
+ms.date: 12/27/2018
 ms.author: dkshir
-ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556103"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535384"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>チュートリアル:Azure Digital Twins を使用して建物をプロビジョニングし、作業環境を監視する
 
@@ -30,6 +30,7 @@ ms.locfileid: "53556103"
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルでは、[Azure Digital Twins の設定が完了](tutorial-facilities-setup.md)していることを前提としています。 次に進む前に、以下が準備されていることを確認します。
+
 - [Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Digital Twins のインスタンスが実行中であること。 
 - [Digital Twins C# のサンプル](https://github.com/Azure-Samples/digital-twins-samples-csharp)がダウンロードされ、作業マシン上に展開されていること。 
@@ -37,6 +38,7 @@ ms.locfileid: "53556103"
 - [Visual Studio Code](https://code.visualstudio.com/)。サンプル コードを確認するために使用します。 
 
 ## <a name="define-conditions-to-monitor"></a>監視する条件を定義する
+
 デバイスまたはセンサーのデータについて監視する特定の条件のセット ("*マッチャー*" と呼ばれます) を定義できます。 その後、"*ユーザー定義関数*" と呼ばれる関数を定義できます。 ユーザー定義関数では、マッチャーによって指定された条件が発生したときに、空間およびデバイスから受け取ったデータに対してカスタム ロジックが実行されます。 詳細については、「[データ処理とユーザー定義関数](concepts-user-defined-functions.md)」を参照してください。 
 
 Visual Studio Code で、**occupancy-quickstart** サンプル プロジェクトの **src\actions\provisionSample.yaml** ファイルを開きます。 型 **matchers** で始まるセクションに注目してください。 この型の各エントリによって、指定された**名前**のマッチャーが作成されます。 このマッチャーによって、型 **dataTypeValue** のセンサーが監視されます。 これが *Focus Room A1* という名前の空間とどのように関係しているかに注目してください。ここには、いくつかのセンサーがある **devices** ノードが含まれています。 これらのセンサーの 1 つを追跡するマッチャーをプロビジョニングするには、その **dataTypeValue** がセンサーの **dataType** と一致している必要があります。 
@@ -48,14 +50,15 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
         dataTypeValue: Temperature
 ```
 
-このマッチャーは、[最初のチュートリアル](tutorial-facilities-setup.md)で追加した SAMPLE_SENSOR_TEMPERATURE センサーを追跡します。 これらの行は、コメントアウトされた行として *provisionSample.yaml* ファイル内にもあります。 各行の先頭にある `#` 文字を削除するだけでコメント解除することができます。 
+このマッチャーは、[最初のチュートリアル](tutorial-facilities-setup.md)で追加した SAMPLE_SENSOR_TEMPERATURE センサーを追跡します。 これらの行は、コメントアウトされた行として *provisionSample.yaml* ファイル内にもあります。 各行の先頭にある `#` 文字を削除するだけでコメント解除することができます。
 
-<a id="udf" />
+<a id="udf"></a>
 
 ## <a name="create-a-user-defined-function"></a>ユーザー定義関数を作成する
+
 ユーザー定義関数を使用すると、センサー データの処理をカスタマイズできます。 これらは、マッチャーによって記述された特定の条件が発生したときに Azure Digital Twins インスタンス内で実行できるカスタム JavaScript コードです。 マッチャーとユーザー定義関数は、監視したいセンサーごとに作成できます。 詳細については、「[データ処理とユーザー定義関数](concepts-user-defined-functions.md)」を参照してください。 
 
-サンプルの provisionSample.yaml ファイルで、型 **userdefinedfunctions** で始まるセクションを見つけます。 このセクションによって、指定された**名前**のユーザー定義関数がプロビジョニングされます。 この UDF は、**matcherNames** の下のマッチャーの一覧を対象にして動作します。 独自の JavaScript ファイルを**スクリプト**として UDF に提供する方法に注目してください。 
+サンプルの provisionSample.yaml ファイルで、型 **userdefinedfunctions** で始まるセクションを見つけます。 このセクションによって、指定された**名前**のユーザー定義関数がプロビジョニングされます。 この UDF は、**matcherNames** の下のマッチャーの一覧を対象にして動作します。 独自の JavaScript ファイルを**スクリプト**として UDF に提供する方法に注目してください。
 
 さらに、**roleassignments** という名前のセクションに注目してください。 これによって、ユーザー定義関数にスペース管理者ロールが割り当てられます。 このロールでは、すべてのプロビジョニング済み空間から届いたイベントへのアクセスが許可されます。 
 
@@ -188,7 +191,7 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 > [!TIP]
 > プロビジョニングの途中で "The I/O operation has been aborted because of either a thread exit or an application request (スレッドの終了またはアプリケーション要求のため I/O 操作が中止されました)" のようなエラー メッセージが表示された場合は、コマンドをもう一度実行してみてください。 これは、ネットワークの問題が原因で HTTP クライアントがタイムアウトしたときに発生する可能性があります。
 
-<a id="simulate" />
+<a id="simulate"></a>
 
 ## <a name="simulate-sensor-data"></a>センサー データをシミュレートする
 
@@ -202,13 +205,13 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
     dotnet restore
     ```
 
-1. エディターで **appSettings.json** ファイルを開き、次の値を編集します。
+1. エディターで [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) ファイルを開き、次の値を編集します。
 
    a. **DeviceConnectionString**: 前のセクションの出力ウィンドウに含まれている `ConnectionString` の値を割り当てます。 シミュレーターが IoT ハブに正常に接続できるように、引用符で囲まれたこの文字列を完全にコピーしてください。
 
    b. **Sensors** 配列内の **HardwareId**: Azure Digital Twins インスタンスにプロビジョニングされたセンサーからのイベントをシミュレートしているので、このファイル内のハードウェア ID とセンサーの名前が provisionSample.yaml ファイルの `sensors` ノードと一致している必要があります。
 
-      温度センサーの新しいエントリを追加します。 appSettings.json の **Sensors** ノードは次のようになります。
+      温度センサーの新しいエントリを追加します。 appsettings.json の **Sensors** ノードは次のようになります。
 
       ```JSON
       "Sensors": [{
@@ -233,6 +236,7 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
    > シミュレーション サンプルは Digital Twins インスタンスと直接通信しないため、認証を行う必要はありません。
 
 ## <a name="get-results-of-the-user-defined-function"></a>ユーザー定義関数の結果を取得する
+
 ユーザー定義関数は、インスタンスがデバイスとセンサーのデータを受信するたびに実行されます。 このセクションでは、Azure Digital Twins インスタンスに対するクエリを実行して、ユーザー定義関数の結果を取得します。 部屋が使用可能な場合、空気が新鮮であり温度が適切であることが、ほぼリアルタイムでわかります。 
 
 1. サンプルのプロビジョニングに使用したコマンド ウィンドウを開くか、新しいコマンド ウィンドウを開き、再度サンプルの **occupancy-quickstart\src** フォルダーに移動します。
@@ -253,7 +257,7 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 
 この時点で Azure Digital Twins の探索を中止する場合は、このチュートリアルで作成されたリソースを削除してかまいません。
 
-1. [Azure portal](http://portal.azure.com) の左側のメニューにある **[すべてのリソース]** をクリックし、目的の Digital Twins リソース グループを選択して **[削除]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のメニューにある **[すべてのリソース]** をクリックし、目的の Digital Twins リソース グループを選択して **[削除]** を選択します。
 
     > [!TIP]
     > ご自分の Digital Twins インスタンスの削除で問題が発生していた場合は、サービス更新が修正と共にロールアウトされています。 ご自分のインスタンスの削除を再試行してください。
@@ -265,7 +269,7 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 これで、空間をプロビジョニングし、カスタム通知をトリガーするフレームワークを作成できたので、次のいずれかのチュートリアルに進むことができます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る](tutorial-facilities-events.md)
+> [チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る](tutorial-facilities-events.md)
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Time Series Insights を使用して Azure Digital Twins 空間からのイベントを視覚化および分析する](tutorial-facilities-analyze.md)
+> [チュートリアル:Time Series Insights を使用して Azure Digital Twins 空間からのイベントを視覚化および分析する](tutorial-facilities-analyze.md)

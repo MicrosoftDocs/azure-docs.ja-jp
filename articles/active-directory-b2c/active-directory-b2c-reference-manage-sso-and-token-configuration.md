@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でカスタム ポリシーを使用して SS
 description: Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: c7ba1f87b877466ff4d9d11e4b3b5a6567e7ae06
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.subservice: B2C
+ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902637"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856361"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する
 
@@ -52,7 +52,18 @@ ms.locfileid: "48902637"
 - **更新トークンの有効期間**: 更新トークンの有効期間の値は、**refresh_token_lifetime_secs** メタデータ項目で設定します。 既定値は 1,209,600 秒 (14 日) です。
 - **更新トークン スライディング ウィンドウの有効期間**: 更新トークンにスライディング ウィンドウの有効期間を設定する場合は、**rolling_refresh_token_lifetime_secs** メタデータ項目の値を設定します。 既定値は 7,776,000 秒 (90 日) です。 スライディング ウィンドウの有効期間を指定しない場合は、項目を `<Item Key="allow_infinite_rolling_refresh_token">True</Item>` に置き換えます。
 - **発行者 (iss) 要求**: 発行者 (iss) 要求は、**IssuanceClaimPattern** メタデータ項目で設定します。 指定できる値は、`AuthorityAndTenantGuid` および `AuthorityWithTfp` です。
-- **ポリシー ID を表す要求の設定**: この値を設定するためのオプションは、`TFP` (Trust Framework Policy) および `ACR` (Authentication Context Reference) です。 `TFP` が推奨値です。 **AuthenticationContextReferenceClaimPattern** に値 `None` を設定します。 **OutputClaims** 項目に、次の要素を追加します。
+- **ポリシー ID を表す要求の設定**: この値を設定するためのオプションは、`TFP` (Trust Framework Policy) および `ACR` (Authentication Context Reference) です。 `TFP` が推奨値です。 **AuthenticationContextReferenceClaimPattern** に値 `None` を設定します。 
+
+    **ClaimsSchema** 要素に、次の要素を追加します。 
+    
+    ```XML
+    <ClaimType Id="trustFrameworkPolicy">
+      <DisplayName>Trust framework policy name</DisplayName>
+      <DataType>string</DataType>
+    </ClaimType>
+    ```
+    
+    **OutputClaims** 要素に、次の要素を追加します。
     
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />

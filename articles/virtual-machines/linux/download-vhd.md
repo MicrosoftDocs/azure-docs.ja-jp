@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 5f269f074236beef3e213c888e540bcf18238be1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953703"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329253"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
-この記事では、Azure CLI と Azure Portal を使用して、Azure から [Linux 仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ファイルをダウンロードする方法を説明します。 
+この記事では、Azure CLI と Azure portal を使用して、Azure から Linux 仮想ハード ディスク (VHD) ファイルをダウンロードする方法を説明します。 
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) をまだインストールしていない場合はインストールします。
 
@@ -42,7 +42,7 @@ VHD をイメージとして使用して他の VM を作成するには、次の
     exit 
     ```
 
-2. [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login) で Azure アカウントにサインインします。
+2. [az login](https://docs.microsoft.com/cli/azure/reference-index) で Azure アカウントにサインインします。
 3. VM を停止し、割り当てを解除します。
 
     ```azurecli

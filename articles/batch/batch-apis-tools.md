@@ -5,20 +5,20 @@ services: batch
 author: laurenhughes
 manager: jeconnoc
 ms.service: batch
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 7335a5c61b46fab2da4054fdc0b8c9bbe05a148a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 912e3342b4e8031b4404dffb56f1add2cc705f8e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537479"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772587"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API とツールの概要
 
-Azure Batch による並列ワークロードの処理は、通常、[Batch API](#batch-development-apis) のいずれかを使用して、プログラムで実行されます。 クライアント アプリケーションまたはサービスは、Batch API を使用して Batch サービスと通信することができます。 Batch API を使用すると、コンピューティング ノード (仮想マシンまたはクラウド サービス) のプールを作成して管理できます。 その後、それらのノードで実行するジョブおよびタスクをスケジュールできます。 
+Azure Batch による並列ワークロードの処理は、通常、Batch API のいずれかを使用して、プログラムで実行されます。 クライアント アプリケーションまたはサービスは、Batch API を使用して Batch サービスと通信することができます。 Batch API を使用すると、コンピューティング ノード (仮想マシンまたはクラウド サービス) のプールを作成して管理できます。 その後、それらのノードで実行するジョブおよびタスクをスケジュールできます。 
 
 組織の大規模なワークロードを効率的に処理したり、ノードの数を問わず (1 つ、数百、数千など)、必要なときに、またはスケジュールに基づいてジョブやタスクを実行できるように、顧客にサービス フロントエンドを提供したりできます。 また、Azure Batch を大規模なワークフローの一部として使用し、[Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json) などのツールで管理できます。
 
@@ -40,7 +40,7 @@ Batch ソリューションを開発するとき、ご自身の Azure サブス�
 | API | API リファレンス | ダウンロード | チュートリアル | コード サンプル | 詳細情報 |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[docs.microsoft.com][batch_rest] |該当なし |- |- | [サポートされているバージョン](/rest/api/batchservice/batch-service-rest-api-versioning) |
-| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet ][api_net_nuget] |[チュートリアル](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [リリース ノート](https://aka.ms/batch-net-dataplane-changelog) |
+| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[チュートリアル](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [リリース ノート](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[チュートリアル](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Readme](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[チュートリアル](batch-nodejs-get-started.md) |- | [Readme](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[Readme][api_sample_java] | [Readme](https://github.com/Azure/azure-batch-sdk-for-java)|
@@ -52,7 +52,7 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 | API | API リファレンス | ダウンロード | チュートリアル | コード サンプル |
 | --- | --- | --- | --- | --- |
 | **Batch Management REST** |[docs.microsoft.com][api_rest_mgmt] |該当なし |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
-| **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet ][api_net_mgmt_nuget] | [チュートリアル](batch-management-dotnet.md) |[GitHub][api_sample_net] |
+| **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [チュートリアル](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Batch Management Python** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
 | **Batch Management Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[npm][api_nodejs_mgmt_npm] |- |- | 
 | **Batch Management Java** |- |[Maven][api_java_mgmt_jar] |- |- |
@@ -69,7 +69,8 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 
 * [Azure portal][portal]: Azure portal では、Batch プール、ジョブ、タスクを作成、監視、削除できます。 ジョブの実行時にこれらをはじめとする各種リソースの状態情報を確認できるほか、プールのコンピューティング ノードからファイルをダウンロードすることもできます。 たとえばトラブルシューティングの際に、失敗したタスクの `stderr.txt` をダウンロードすることができます。 コンピューティング ノードへのログインに使用できるリモート デスクトップ (RDP) ファイルをダウンロードすることもできます。
 * [Azure Batch Explorer][batch_labs]: Batch Explorer (旧称: BatchLabs) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Mac、Linux、または Windows 用の[インストール パッケージ](https://azure.github.io/BatchExplorer/)をダウンロードしてください。
-* [Microsoft Azure Storage Explorer][storage_explorer]: 厳密には Azure Batch ツールではありませんが、ストレージ エクスプローラーは Batch ソリューションの開発とデバッグで役に立つツールです。
+* [Azure Batch Shipyard](https://github.com/Azure/batch-shipyard): Batch Shipyard は、コンテナーベースのバッチ処理と HPC ワークロードを Azure Batch に対してプロビジョニング、実行、監視できるようにするツールです。
+* [Azure Storage Explorer][storage_explorer]: 厳密には Azure Batch ツールではありませんが、ストレージ エクスプローラーは Batch ソリューションの開発とデバッグで役に立つツールです。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -81,7 +82,6 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 * Batch を使用するための準備を担当する方は、「 [開発者向け Batch 機能の概要](batch-api-basics.md)」で重要な情報をご確認ください。 この記事には、Batch アプリケーションを構築するときに使用できる多数の API 機能、プール、ノード、ジョブ、タスクなど、Batch サービスのリソースに関する詳しい情報が記載されています。
 * [.NET 向け Azure Batch ライブラリの概要](tutorial-parallel-dotnet.md) 」では、C# と Batch .NET ライブラリを利用し、一般的な Batch ワークフローを使用して簡単なワークロードを実行する方法を学習できます。 [Python バージョン](tutorial-parallel-python.md)と [Node.js のチュートリアル](batch-nodejs-get-started.md)も用意されています。
 * [GitHub のサンプル コード][github_samples]をダウンロードし、C# と Python の両方について、Batch とやり取りしてサンプル ワークロードのスケジュール設定と処理を実行する方法を確認してください。
-
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: /java/api/overview/azure/batch
@@ -104,7 +104,7 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 [api_sample_net]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp
 [api_sample_python]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
 [api_sample_java]: https://github.com/Azure/azure-batch-samples/tree/master/Java/
-[batch_ps]: /powershell/module/azurerm.batch/
+[batch_ps]: /powershell/module/az.batch/
 [batch_rest]: /rest/api/batchservice/
 [free_account]: https://azure.microsoft.com/free/
 [github_samples]: https://github.com/Azure/azure-batch-samples

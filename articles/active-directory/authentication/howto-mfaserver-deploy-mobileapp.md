@@ -1,21 +1,22 @@
 ---
-title: Azure MFA Server モバイル アプリ Web サービス | Microsoft Docs
+title: Azure MFA Server モバイル アプリ Web サービス | Azure Active Directory
 description: Microsoft Authenticator アプリを使用してプッシュ通知がユーザーに送信されるように MFA サーバーを構成します。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: d31cf6569f642d2c7b61abe25148f5cfb199f0a2
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ac59b68f1ddda695fba8f1a4ceacb90bfa4102a2
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159442"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313704"
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server でモバイル アプリ認証を有効にする
 

@@ -3,8 +3,8 @@ title: Azure Security Center における各種のセキュリティ アラー�
 description: この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートについて説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: mbaldwin
+author: monhaber
+manager: barbkess
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
 ms.service: security-center
@@ -12,22 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: 360614a2c4f7c8c397ef9d5039f6ef31f7e90da6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 3/20/2018
+ms.author: monhaber
+ms.openlocfilehash: 407d0610f919b1145a91e8678f57f8d344c9c187
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344076"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286365"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラートの概要
 この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートと関連する分析情報についてわかりやすく説明します。 アラートとインシデントを管理する方法の詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 
 高度な検出をセットアップする場合には、Azure Security Center Standard にアップグレードする必要があります。 無料試用版が提供されています。 アップグレードするには、[[セキュリティ ポリシー]](tutorial-security-policy.md) で **[価格レベル]** を選択します。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
-
-> [!NOTE]
-> Security Center は、制限付きプレビューに対して、Linux マシン上の悪意のある行為を検出するために、共通の監査フレームワークである監査レコードを活用した一連の新しい検出機能をリリースしました。 プレビューに参加するには、サブスクリプション ID を記入した電子メールを[こちら](mailto:ASC_linuxdetections@microsoft.com)に送信してください。
 
 ## <a name="what-type-of-alerts-are-available"></a>使用できる警告の種類
 Azure Security Center では、さまざまな[検出機能](security-center-detection-capabilities.md)を使用して、お客様の環境を対象とする攻撃の可能性を通知します。 これらのアラートには、アラートをトリガーした要因、対象となったリソース、攻撃元に関する重要な情報が含まれています。 こうした情報は、脅威を検出するために使用された分析の種類によって異なります。 インシデントには、脅威を調査する際に活用できる追加のコンテキスト情報も含まれる可能性があります。  この記事では、次の警告の種類について説明します。
@@ -87,7 +84,7 @@ Security Center は高度な分析を使用し、仮想マシンのイベント 
     * SSH ログインが複数回失敗しました。
     * SSH ログインが複数回試行され、その一部が成功しました。
 * **Suspicious WindowPosition registry value (疑わしい WindowPosition レジストリ値)**: このアラートは、WindowPosition レジストリ構成の変更が試行されたことを示します。これは、デスクトップの非表示セクションにアプリケーション ウィンドウを隠していることを示す可能性があります。
-* **Potential attempt to bypass AppLocker (AppLocker をバイパスする可能性のある試行)**: AppLocker は、Windows 上で実行できるプロセスを制限し、マルウェアに対する露出を制限するために使用できます。 このアラートは、信頼できないコードを実行するために、(AppLocker ポリシーによって許可された) 信頼できる実行可能ファイルを使用して AppLocker の制限のバイパスが試行された可能性があることを示します。
+* **Potential attempt to bypass AppLocker (AppLocker をバイパスする潜在的試行)**: AppLocker は、Windows 上で実行できるプロセスを制限し、マルウェアに対する露出を制限するために使用できます。 このアラートは、信頼できないコードを実行するために、(AppLocker ポリシーによって許可された) 信頼できる実行可能ファイルを使用して AppLocker の制限のバイパスが試行された可能性があることを示します。
 * **Suspicious named pipe communications (疑わしい名前付きパイプ通信)**: このアラートは、Windows コンソール コマンドからローカルの名前付きパイプにデータが書き込まれたことを示します。 名前付きパイプは、攻撃者が悪意のあるインプラントを使用し、通信するために使用されることがわかっています。
 * **Decoding of an executable using built-in certutil.exe tool (組み込みの certutil.exe ツールを使用した実行可能ファイルのデコード)**: このアラートは、組み込みの管理者ユーティリティ certutil.exe が実行可能ファイルのデコードに使用されたことを示します。 攻撃者は、正規の管理者ツールの機能を悪用して悪意のある操作を実行することがわかっています。たとえば、悪意のある実行ファイルのデコードに certutil.exe などのツールが使用され、デコード後のファイルが実行されることがあります。
 * **An event log was cleared (イベント ログがクリアされました)**: このアラートは、疑わしいイベント ログのクリア操作を示します。これは、痕跡を隠そうとする攻撃者によってよく使用されます。
@@ -109,13 +106,13 @@ Security Center は高度な分析を使用し、仮想マシンのイベント 
 * **Suspicious execution via rundll32.exe (rundll32.exe による疑わしい実行)**: このアラートは、通常とは異なる名前のプロセスを実行するために rundll32.exe が使用されたことを示します。これは、攻撃者が侵害したホストに第 1 段階のインプラントをインストールするために使用されるプロセスの命名スキームと一致します。
 * **Suspicious combination of HTA and PowerShell (HTA と PowerShell の疑わしい組み合わせ)**: このアラートは、Microsoft HTML アプリケーション ホスト (HTA) が PowerShell コマンドを起動していることを示します。 これは攻撃者が悪質な PowerShell スクリプトを起動するときに使う手法です。
 * **Change to a registry key that can be abused to bypass UAC (UAC のバイパスに悪用される可能性があるレジストリ キーの変更)**: このアラートは、UAC (ユーザー アカウント制御) のバイパスに悪用される可能性があるレジストリ キーが変更されたことを示します。これは、侵害されたホスト上で特権を持たない (標準ユーザー) アクセス権から特権のある (たとえば管理者) アクセス権に移行するために攻撃者によってよく使用されます。
-* **Use of suspicious domain name within command line (コマンド ラインでの疑わしいドメイン名の使用)**: このアラートは、疑わしいドメイン名が使用されたことを示します。これは、攻撃者が、コマンドと制御およびデータの取り出しのエンドポイントとして悪意のあるツールをホストしている証拠である可能性があります。
+* **Use of suspicious domain name within command line (コマンド ラインでの疑わしいドメイン名の使用)**: このアラートは、疑わしいドメイン名が使用されたことを示します。これは、攻撃者が、指揮管理とデータの取り出しのエンドポイントとして悪意のあるツールをホストしている証拠である可能性があります。
 * **An account was created on multiple hosts within a 24-hour time period (24 時間以内に複数のホストにアカウントが作成されました)**: このアラートは、複数のホストに同じユーザー アカウントの作成が試みられたことを示します。これは、攻撃者が、1 つ以上のネットワーク エンティティを侵害した後に、ネットワーク全体を横断している証拠である可能性があります。
 * **Suspicious use of CACLS to lower the security state of the system (システムのセキュリティ状態を低下させる CACLS の疑わしい使用)**: このアラートは、Change Access Control List (CACLS) が変更されたことを示します。 この手法は、攻撃者が ftp.exe、net.exe、wscript.exe などのシステム バイナリに完全アクセス権を付与するためによく使われます。
 * **Suspected Kerberos Golden Ticket attack parameters (疑わしい Kerberos ゴールデン チケット攻撃パラメーター)**: このアラートは、Kerberos ゴールデン チケット攻撃と一致するコマンド ライン パラメーターが実行されたことを示します。 攻撃者は侵害した krbtgt キーを使用して、目的の任意のユーザーになりすますことができます。
 * **Enabling of the WDigest UseLogonCredential registry key (WDigest UseLogonCredential レジストリ キーの有効化)**: このアラートは、サインイン資格情報がクリア テキストで LSA メモリに格納されるようにレジストリ キーが変更され、その結果、資格情報をメモリから取得できるようになったことを示します。
 * **Potentially suspicious use of Telegram tool (Telegram ツールの疑わしい可能性がある使用方法)**: このアラートは、Telegram がインストールされたことを示します。これは、悪意のあるバイナリを他のコンピューター、電話、またはタブレットに転送するために攻撃者が使用する無料のクラウドベースのインスタント メッセージング サービスです。
-* **New ASEP creation (新しい ASEP の作成)**: このアラートは、新しい ASEP (Start Extensibility Point) が作成されたことを示します。これによって、コマンド ラインで指定された名前のプロセスが自動的に開始され、攻撃者が永続化を達成するために使用する可能性があります。
+* **New ASEP creation (新しい ASEP の作成)**: このアラートは、新しい ASEP (Auto Start Extensibility Point) が作成されたことを示します。これによって、コマンド ラインで指定された名前のプロセスが自動的に開始され、攻撃者が永続化を達成するために使用する可能性があります。
 * **Suspicious Set-ExecutionPolicy and WinRM changes (疑わしい Set-ExecutionPolicy と WinRM の変更)**: このアラートは、悪意のある ChinaChopper webshell の使用に関連する構成の変更を示します。
 * **Disabling of critical services (重要なサービスの無効化)**: このアラートは、"net.exe stop" コマンドが SharedAccess や Windows Security Center などの重要なサービスを停止するために使用されたことを示します。
 * **Suspicious use of FTP -s switch (FTP -s スイッチの疑わしい使用)**: このアラートは、FTP の "-s" スイッチが使用されたことを示します。これは、マルウェアがリモート FTP サーバーに接続し、悪意のあるバイナリをさらにダウンロードするために使用されることがあります。
@@ -176,12 +173,12 @@ Security Center のリソース分析は、[Azure SQL Database の脅威の検�
 * **Vulnerability to SQL Injection (SQL インジェクションの脆弱性)**: このアラートは、アプリケーションがデータベースにエラーのある SQL ステートメントを生成したときにトリガーされます。 これは、SQL インジェクション攻撃に対する脆弱性が存在する可能性を示すものです。 エラーのあるステートメントが生成される理由として、次の 2 つが考えられます。
     * アプリケーション コードの欠陥により、エラーのある SQL 文が作成される
     * アプリケーション コードまたはストアド プロシージャが、SQL インジェクションに悪用される可能性があるエラーのある SQL ステートメントを作成するときにユーザー入力をサニタイズしない
-* **Potential SQL injection (SQL インジェクションの可能性)**: このアラートは、SQL インジェクションに対する特定されたアプリケーションの脆弱性に対してアクティブな悪用が発生したときにトリガーされます。 これは、攻撃者が脆弱なアプリケーション コードまたはストアド プロシージャを使用して悪意のある SQL 文を挿入しようとしていることを意味します。
-* **Access from unusual location (通常とは異なる場所からのアクセス)**: このアラートは、だれかが通常とは異なる地理的な場所から SQL サーバーにログオンしたことで SQL Server へのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
-* **Access from unusual Azure data center (通常とは異なる Azure データ センターからのアクセス)**: このアラートは、だれかが最近このサーバーで記録された通常とは異なる Azure データ センターから SQL サーバーにログオンしたことで SQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (Azure、Power BI、Azure SQL クエリ エディターの新しいアプリケーション) が検出されることがあります。 別のケースでは、このアラートによって Azure リソース/サービス (元従業員、外部の攻撃者) からの悪意のあるアクションが検出されます。
-* **Access from unfamiliar principal (通常とは異なるプリンシパルからのアクセス)**: このアラートは、だれかが通常とは異なるプリンシパル (SQL ユーザー) を使用して SQL サーバーにログオンしたことで SQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
-* **Access from a potentially harmful application (潜在的に有害なアプリケーションからのアクセス)**: このアラートは、データベースにアクセスするために潜在的に有害なアプリケーションが使用されたときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートで一般的な攻撃ツールを使用した攻撃が検出されます。
-* **Brute force SQL credentials (SQL 資格情報に対するブルート フォース攻撃)**: このアラートは、異なる資格情報でログインに失敗した回数が異常に多いときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートでブルート フォース攻撃が検出されます。
+* **Potential SQL injection (SQL インジェクションの可能性)**:このアラートは、SQL インジェクションに対する特定されたアプリケーションの脆弱性に対してアクティブな悪用が発生したときにトリガーされます。 これは、攻撃者が脆弱なアプリケーション コードまたはストアド プロシージャを使用して悪意のある SQL 文を挿入しようとしていることを意味します。
+* **Access from unusual location (通常とは異なる場所からのアクセス)**:このアラートは、だれかが通常とは異なる地理的な場所から SQL サーバーにログオンしたことで SQL Server へのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
+* **Access from unusual Azure data center (通常とは異なる Azure データ センターからのアクセス)**:このアラートは、SQL Server へのアクセス パターンに変化が生じたときにトリガーされます。たとえば、だれかが通常とは異なる Azure データ センターから SQL Server にログオンしたことが、サーバーで最近確認された場合です。 このアラートで正当なアクション (Azure、Power BI、Azure SQL クエリ エディターの新しいアプリケーション) が検出されることがあります。 別のケースでは、このアラートによって Azure リソース/サービス (元従業員、外部の攻撃者) からの悪意のあるアクションが検出されます。
+* **Access from unfamiliar principal (通常とは異なるプリンシパルからのアクセス)**:このアラートは、だれかが通常とは異なるプリンシパル (SQL ユーザー) を使用して SQL サーバーにログオンしたことで SQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
+* **Access from a potentially harmful application (潜在的に有害なアプリケーションからのアクセス)**:このアラートは、データベースにアクセスするために潜在的に有害なアプリケーションが使用されたときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートで一般的な攻撃ツールを使用した攻撃が検出されます。
+* **Brute force SQL credentials (SQL 資格情報に対するブルート フォース攻撃)**:このアラートは、異なる資格情報でログインに失敗した回数が異常に多いときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートでブルート フォース攻撃が検出されます。
 
 ## <a name="contextual-information"></a>コンテキスト情報
 アナリストが調査を行い、脅威の性質とそれを軽減する方法を判断するためには、追加のコンテキストが必要になります。  たとえば、ネットワーク異常が検出された際に、ネットワーク上で発生していたその他のイベントや対象となっているリソースを把握できなければ、対処法を決めることは困難です。 この判断を助けるため、セキュリティ インシデントにはアーティファクトや関連イベントのほか、調査に役立つ情報が含まれています。 利用できる追加情報は、検出された脅威の種類や環境内の構成によって異なります。また、すべてのセキュリティ インシデントで追加情報が利用できるとは限りません。

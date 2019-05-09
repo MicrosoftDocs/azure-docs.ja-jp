@@ -9,17 +9,16 @@ ms.assetid: 25b1ff3c-b2fd-48e5-b759-bb2112122e30
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2498fbef8d13fe9c61fd474dbbb678aa0b133e8a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975612"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -46,7 +45,7 @@ ms.locfileid: "52728414"
 ## <a name="supported-authentication-types"></a>サポートされている認証の種類
 Data Lake Store コネクタは、以下の認証の種類に対応しています。
 * サービス プリンシパルの認証
-* ユーザー資格情報 (OAuth) 認証 
+* ユーザー資格情報 (OAuth) 認証
 
 サービス プリンシパル認証を使うことをお勧めします (特に、スケジュールされたデータ コピーの場合)。 ユーザー資格情報認証では、トークンの有効期限の動作が発生する可能性があります。 構成の詳細については、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
 
@@ -59,12 +58,12 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 
-2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure Data Lake Store にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure Data Lake Store をデータ ファクトリにリンクします。 Azure Data Lake Store に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。 
+1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。
+2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure Data Lake Store にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure Data Lake Store をデータ ファクトリにリンクします。 Azure Data Lake Store に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、もう 1 つのデータセットを作成して、Blob Storage からコピーされたデータを保持する Data Lake Store 内のフォルダーとファイルのパスを指定します。 Azure Data Lake Store に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションを参照してください。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして AzureDataLakeStoreSink を使います。 同様に、Azure Data Lake Store から Azure Blob Storage にコピーする場合は、AzureDataLakeStoreSource と BlobSink をコピー アクティビティで使います。 Azure Data Lake Store に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションを参照してください。 ソースまたはシンクとしてデータ ストアを使う方法については、前のセクションのデータ ストアのリンクをクリックしてください。  
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして AzureDataLakeStoreSink を使います。 同様に、Azure Data Lake Store から Azure Blob Storage にコピーする場合は、AzureDataLakeStoreSource と BlobSink をコピー アクティビティで使います。 Azure Data Lake Store に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションを参照してください。 ソースまたはシンクとしてデータ ストアを使う方法については、前のセクションのデータ ストアのリンクをクリックしてください。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Azure Data Lake Store との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-to-and-from-data-lake-store)」を参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 Azure Data Lake Store との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-to-and-from-data-lake-store)」を参照してください。
 
 次のセクションでは、Data Lake Store に固有の Data Factory エンティティの定義に使われる JSON プロパティについて詳しく説明します。
 
@@ -73,15 +72,15 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **type** | type プロパティは **AzureDataLakeStore** に設定する必要があります。 | [はい] |
-| **dataLakeStoreUri** | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | [はい] |
+| **type** | type プロパティは **AzureDataLakeStore** に設定する必要があります。 | はい |
+| **dataLakeStoreUri** | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | はい |
 | **subscriptionId** | Data Lake Store アカウントが属している Azure サブスクリプション ID です。 | シンクでは必須 |
 | **resourceGroupName** | Data Lake Store アカウントが属している Azure リソース グループ名です。 | シンクでは必須 |
 
 ### <a name="service-principal-authentication-recommended"></a>サービス プリンシパル認証 (推奨)
 サービス プリンシパル認証を使うには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与します。 詳細な手順については、「[サービス間認証](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 * アプリケーション ID
-* アプリケーション キー 
+* アプリケーション キー
 * テナント ID
 
 > [!IMPORTANT]
@@ -94,9 +93,9 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | [はい] |
-| **servicePrincipalKey** | アプリケーションのキーを取得します。 | [はい] |
-| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
+| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | はい |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。 | はい |
+| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい |
 
 **例:サービス プリンシパルの認証**
 ```json
@@ -121,8 +120,8 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | [はい] |
-| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | [はい] |
+| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい |
+| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | はい |
 
 > [!IMPORTANT]
 > Azure Data Lake Store でユーザーに適切なアクセス許可を付与してください。
@@ -234,15 +233,15 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     ```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
-Data Lake Store の入力データを表すデータセットを指定するには、データセットの **type** プロパティを **AzureDataLakeStore** に設定します。 また、データセットの **linkedServiceName** プロパティは、Data Lake Store のリンクされたサービスの名前に設定します。 データセットの定義に利用できる JSON のセクションとプロパティの完全な一覧については、「[Azure Data Factory のデータセット](data-factory-create-datasets.md)」を参照してください。 **構造**、**可用性**、**ポリシー**など、JSON でのデータセットのセクションは、データセットのすべての型 (Azure SQL Database、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。 
+Data Lake Store の入力データを表すデータセットを指定するには、データセットの **type** プロパティを **AzureDataLakeStore** に設定します。 また、データセットの **linkedServiceName** プロパティは、Data Lake Store のリンクされたサービスの名前に設定します。 データセットの定義に利用できる JSON のセクションとプロパティの完全な一覧については、「[Azure Data Factory のデータセット](data-factory-create-datasets.md)」を参照してください。 **構造**、**可用性**、**ポリシー**など、JSON でのデータセットのセクションは、データセットのすべての型 (Azure SQL Database、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。
 
 **AzureDataLakeStore** 型の **typeProperties** セクションには、次のプロパティが含まれます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **folderPath** |Data Lake Store のコンテナーとフォルダーのパスです。 |[はい] |
-| **fileName** |Azure Data Lake Store 内のファイルの名前です。 **fileName** プロパティは省略可能で、大文字と小文字を区別します。 <br/><br/>**fileName** を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>**fileName** が指定されていない場合、コピーには入力データセットの **folderPath** のすべてのファイルが含まれます。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は "Data._Guid_.txt" という形式になります。 例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |いいえ  |
-| **partitionedBy** |**PartitionedBy** プロパティは省略可能です。 これを使用し、時系列データに動的なパスとファイル名を指定できます。 たとえば、1 時間ごとのデータに対して **folderPath** をパラメーター化できます。 詳細と例については、「[partitionedBy プロパティ](#using-partitionedby-property)」を参照してください。 |いいえ  |
+| **folderPath** |Data Lake Store のコンテナーとフォルダーのパスです。 |はい |
+| **fileName** |Azure Data Lake Store 内のファイルの名前です。 **fileName** プロパティは省略可能で、大文字と小文字を区別します。 <br/><br/>**fileName** を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>**fileName** が指定されていない場合、コピーには入力データセットの **folderPath** のすべてのファイルが含まれます。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は `Data._Guid_.txt` という形式になります。 例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |いいえ  |
+| **partitionedBy** |**PartitionedBy** プロパティは省略可能です。 これを使用し、時系列データに動的なパスとファイル名を指定できます。 たとえば、1 時間ごとのデータに対して **folderPath** をパラメーター化できます。 詳細と例については、「partitionedBy プロパティ」を参照してください。 |いいえ  |
 | **format** | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」の「[テキスト形式](data-factory-supported-file-and-compression-formats.md#text-format)」、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」、「[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)」、「[ORC 形式](data-factory-supported-file-and-compression-formats.md#orc-format)」、「[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)」の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で `format` セクションをスキップします。 |いいえ  |
 | **compression** | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  |
 
@@ -265,14 +264,14 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-時系列データセット、スケジュール、スライスの詳細については、「[Azure Data Factory のデータセット](data-factory-create-datasets.md)」および「[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md)」を参照してください。 
+時系列データセット、スケジュール、スライスの詳細については、「[Azure Data Factory のデータセット](data-factory-create-datasets.md)」および「[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md)」を参照してください。
 
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
@@ -285,7 +284,6 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | **recursive** |データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True (既定値)、False |いいえ  |
-
 
 **AzureDataLakeStoreSink** の **typeProperties** セクションでは、次のプロパティがサポートされます。
 
@@ -309,7 +307,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Data Lake Store との間でのデータのコピーに関する JSON の例
-次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに _直接_ コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。  
+次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに _直接_ コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>例:Azure Blob Storage から Azure Data Lake Store にデータをコピーする
 このセクションのコード例では以下を示します。
@@ -320,7 +318,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 * [AzureDataLakeStore](#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 * [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) と [AzureDataLakeStoreSink](#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-以下の例では、Azure Blob Storage ストレージから Data Lake Store に時系列データを 1 時間おきにコピーします。 
+以下の例では、Azure Blob Storage ストレージから Data Lake Store に時系列データを 1 時間おきにコピーします。
 
 **Azure Storage のリンクされたサービス**
 
@@ -429,68 +427,67 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 ```JSON
 {
     "name": "AzureDataLakeStoreOutput",
-      "properties": {
+    "properties": {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
         "typeProperties": {
             "folderPath": "datalake/output/"
         },
         "availability": {
-              "frequency": "Hour",
-              "interval": 1
+            "frequency": "Hour",
+            "interval": 1
         }
-      }
+    }
 }
 ```
-
 
 **BLOB ソースおよび Data Lake Store シンクを使用するパイプラインでのコピー アクティビティ**
 
 次の例のパイプラインには、入力データセットと出力データセットを使うように構成されたコピー アクティビティが含まれます。 コピー アクティビティは、1 時間おきに実行するようにスケジュールされています。 パイプラインの JSON 定義では、`source` 型は `BlobSource` に、`sink` 型は `AzureDataLakeStoreSink` に設定されています。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
     "properties":
-    {  
+    {
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline with copy activity",
         "activities":
-        [  
-              {
+        [
+            {
                 "name": "AzureBlobtoDataLake",
                 "description": "Copy Activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureBlobInput"
-                  }
+                    {
+                        "name": "AzureBlobInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureDataLakeStoreOutput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "BlobSource"
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "AzureDataLakeStoreSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
+            }
         ]
     }
 }
@@ -505,7 +502,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 * [AzureDataLakeStoreSource](#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-次のコードは、Data Lake Store から Azure BLOB に時系列データを 1 時間おきにコピーします。 
+次のコードは、Data Lake Store から Azure BLOB に時系列データを 1 時間おきにコピーします。
 
 **Azure Data Lake Store のリンクされたサービス**
 
@@ -548,7 +545,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 ```json
 {
     "name": "AzureDataLakeStoreInput",
-      "properties":
+    "properties":
     {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
@@ -564,16 +561,16 @@ Data Lake Store の入力データを表すデータセットを指定するに�
         "external": true,
         "availability": {
             "frequency": "Hour",
-              "interval": 1
+            "interval": 1
         },
         "policy": {
-              "externalData": {
+            "externalData": {
                 "retryInterval": "00:01:00",
                 "retryTimeout": "00:10:00",
                 "maximumRetry": 3
-              }
+            }
         }
-      }
+    }
 }
 ```
 **Azure BLOB の出力データセット**
@@ -641,47 +638,47 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 次の例のパイプラインには、入力データセットと出力データセットを使うように構成されたコピー アクティビティが含まれます。 コピー アクティビティは、1 時間おきに実行するようにスケジュールされています。 パイプラインの JSON 定義では、`source` 型は `AzureDataLakeStoreSource` に、`sink` 型は `BlobSink` に設定されています。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline for copy activity",
-        "activities":[  
-              {
+        "activities":[
+            {
                 "name": "AzureDakeLaketoBlob",
                 "description": "copy activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureDataLakeStoreInput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureBlobOutput"
-                  }
+                    {
+                        "name": "AzureBlobOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "AzureDataLakeStoreSource",
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "BlobSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
-         ]
+            }
+        ]
     }
 }
 ```

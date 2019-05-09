@@ -8,13 +8,13 @@ ms.author: robb
 ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
-ms.component: ''
-ms.openlocfilehash: 4579dd4fb14a01454f86d5913eb9dd44a8977db6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: ''
+ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440189"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58850676"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -26,7 +26,8 @@ Grafana サーバーをセットアップし、Azure Monitor のメトリック�
 ## <a name="set-up-a-grafana-server"></a>Grafana サーバーをセットアップする
 
 ### <a name="set-up-grafana-locally"></a>Grafana をローカルにセットアップする
-Grafana サーバーをローカルにセットアップするには、[Grafana をダウンロードし、ご自分のローカル環境にインストール](https://grafana.com/grafana/download)します。 プラグインの Log Analytics の統合を使用するには、Grafana バージョン 5.3 以降をインストールします。
+Grafana サーバーをローカルにセットアップするには、[Grafana をダウンロードし、ご自分のローカル環境にインストール](https://grafana.com/grafana/download)します。 プラグインの Azure Monitor の統合を使用するには、Grafana バージョン 5.3 以降をインストールします。
+
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Azure Marketplace を使用して Azure 上に Grafana をセットアップする
 1. Azure Marketplace に移動し、Grafana Labs のそばの Grafana を選択します。
 
@@ -46,13 +47,13 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 
 7. Grafana サーバーのパブリック IP アドレスを取得します。リソースの一覧に戻り、**[パブリック IP アドレス]** を選択します。
 
-## <a name="log-in-to-grafana"></a>Grafana にログインする
+## <a name="sign-in-to-grafana"></a>Grafana にサインインする
 
 1. ブラウザーで、サーバーの IP アドレスを使用して [ログイン] ページを開きます (*http://\<IP アドレス\>:3000* または *\<ドメイン名>\:3000*)。 3000 は既定のポートです。セットアップ中にご自身で別のポートを選択している場合があることに注意してください。 構築した Grafana サーバーのログイン ページが表示されます。
 
     ![Grafana ログイン画面](./media/grafana-plugin/grafana-login-screen.png)
 
-2. ユーザー名 *admin* と、作成済みの Grafana サーバー管理者のパスワードを使用してログインします。 ローカル セットアップを使用している場合、既定のパスワードは *admin* であり、初回のログイン時に変更することを要求されます。
+2. ユーザー名 *admin* と、作成済みの Grafana サーバー管理者のパスワードを使用してサインインします。 ローカル セットアップを使用している場合、既定のパスワードは *admin* であり、初回のログイン時に変更することを要求されます。
 
 ## <a name="configure-data-source-plugin"></a>データ ソース プラグインを構成する
 
@@ -66,19 +67,19 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 
 3. サービス プリンシパルを作成します。Grafana では、Azure Active Directory サービス プリンシパルを使用して Azure Monitor API に接続してメトリック データを収集します。 Azure リソースへのアクセスを管理するには、サービス プリンシパルを作成するか、既存のものを使用する必要があります。
     * サービス プリンシパルを作成するには、[この手順](../../azure-resource-manager/resource-group-create-service-principal-portal.md)を参照してください。 ご自分のテナント ID (ディレクトリ ID)、クライアント ID (アプリケーション ID)、およびクライアント シークレット (アプリケーション キー値) をコピーして保存します。
-    * [アプリケーションへのロールの割り当て](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)に関する記事を参照して、監視するサブスクリプション内の Azure Active Directory アプリケーション、リソース グループ、またはリソースに閲覧者ロールを割り当てます。 
+    * [アプリケーションへのロールの割り当て](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照して、監視するサブスクリプション内の Azure Active Directory アプリケーション、リソース グループ、またはリソースに閲覧者ロールを割り当てます。 
     Log Analytics API には、閲覧者ロールのアクセス許可を含む[Log Analytics 閲覧者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)が必要なので、それを追加します。
 
 4. 使用する API への接続の詳細を指定します。 それらのすべてまたは一部に接続できます。 
-    * Azure Monitor (メトリックの収集用) と Azure Log Analytics (ログ データ用) の両方に接続する場合は、**[Same details as Azure Monitor API]\(Azure Monitor API の詳細と同じ\)** を選択することで、同じ資格情報を再利用できます。
+    * Azure Monitor のメトリックとログの両方に接続する場合は、**[Same details as Azure Monitor API]\(Azure Monitor API の詳細と同じ\)** を選択することで、同じ資格情報を再利用できます。
     * プラグインを構成するときに、このプラグインで監視する Azure クラウド (パブリック、Azure US Government、Azure Germany、または Azure China) を指定できます。
     * Application Insights を使用する場合は、Application Insights ベースのメトリックを収集するための Application Insights API とアプリケーション ID も含めることができます。 詳細については、「[Getting your API key and Application ID (API キーとアプリケーション ID の取得)](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)」を参照してください。
 
         > [!NOTE]
         > 一部のデータ ソース フィールドの名前は、相関関係にある Azure の設定の名前とは異なっています。
-        >     * [Tenant ID]\(テナント ID\) は Azure ディレクトリ ID です。
-        >     * [Client ID]\(クライアント ID\) は Azure Active Directory のアプリケーション ID です。
-        >     * [Client Secret]\(クライアント シークレット\) は Azure Active Directory のアプリケーション キー値です。
+        > * [Tenant ID]\(テナント ID\) は Azure ディレクトリ ID です。
+        > * [Client ID]\(クライアント ID\) は Azure Active Directory のアプリケーション ID です。
+        > * [Client Secret]\(クライアント シークレット\) は Azure Active Directory のアプリケーション キー値です。
 
 5. Application Insights を使用する場合は、Application Insights ベースのメトリックを収集するための Application Insights API とアプリケーション ID も含めることができます。 詳細については、「[Getting your API key and Application ID (API キーとアプリケーション ID の取得)](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)」を参照してください。
 
@@ -95,16 +96,16 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
     ![Grafana の新しいグラフ](./media/grafana-plugin/grafana-new-graph-dark.png)
 
 4. 構成した Azure Monitor データ ソースを選択します。
-    * Azure Monitor のメトリックの収集 - [Service]\(サービス\) のドロップダウンから **[Azure Monitor]** を選択します。 セレクターの一覧が表示されます。この一覧から、このグラフで監視するリソースとメトリックを選択できます。 VM からメトリックを収集するには、**Microsoft.Compute/VirtualMachines** 名前空間を使用します。 VM とメトリックを選択したら、ダッシュボードでのそれらのデータの表示を開始できます。
-    ![Grafana での Azure Monitor 用のグラフの構成](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * Azure Log Analytics のデータの収集 - [Service]\(サービス\) のドロップダウンから **[Azure Log Analytics]** を選択します。 クエリを実行するワークスペースを選択し、クエリ テキストを設定します。 設定済みの Log Analytics クエリをここにコピーすることも、新しく作成することもできます。 クエリの入力中は、IntelliSense が起動し、オートコンプリートによる選択肢が表示されます。 視覚化の種類と**時系列****テーブル**を選択し、クエリを実行します。
+   * Azure Monitor のメトリックの収集 - [Service]\(サービス\) のドロップダウンから **[Azure Monitor]** を選択します。 セレクターの一覧が表示されます。この一覧から、このグラフで監視するリソースとメトリックを選択できます。 VM からメトリックを収集するには、**Microsoft.Compute/VirtualMachines** 名前空間を使用します。 VM とメトリックを選択したら、ダッシュボードでのそれらのデータの表示を開始できます。
+     ![Grafana での Azure Monitor 用のグラフの構成](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
+   * Azure Monitor ログ データの収集 - サービスのドロップダウンから **[Azure Log Analytics]** を選択します。 クエリを実行するワークスペースを選択し、クエリ テキストを設定します。 設定済みのログ クエリをここにコピーすることも、新しく作成することもできます。 クエリの入力中は、IntelliSense が起動し、オートコンプリートによる選択肢が表示されます。 視覚化の種類と**時系列** **テーブル**を選択し、クエリを実行します。
     
-    > [!NOTE]
-    >
-    > プラグインに用意されている既定のクエリでは、2 つのマクロ ($__timeFilter() と $__interval) が使用されます。 
-    > Grafana では、これらのマクロによって、グラフの一部を拡大するときに、時間範囲と時間グレインを動的に計算できます。 これらのマクロを削除し、*TimeGenerated > ago(1h)* などの標準的な時間フィルターを使用できますが、それを行うと、グラフで拡大機能はサポートされなくなります。
+     > [!NOTE]
+     >
+     > プラグインに用意されている既定のクエリでは、2 つのマクロ ($__timeFilter() と $__interval) が使用されます。 
+     > Grafana では、これらのマクロによって、グラフの一部を拡大するときに、時間範囲と時間グレインを動的に計算できます。 これらのマクロを削除し、*TimeGenerated > ago(1h)* などの標準的な時間フィルターを使用できますが、それを行うと、グラフで拡大機能はサポートされなくなります。
     
-    ![Grafana での Azure Log Analytics 用のグラフの構成](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
+     ![Grafana での Azure Log Analytics 用のグラフの構成](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. 2 つのグラフを含む単純なダッシュボードを次に示します。 左側のグラフは、2 つの VM の CPU の割合を示します。 右側のグラフは、トランザクション API の種類で分類された Azure Storage アカウント内のトランザクションを示します。
     ![Grafana の 2 つのグラフの例](media/grafana-plugin/grafana6.png)
@@ -166,4 +167,5 @@ Azure 上に Grafana 環境をセットアップした場合、VM を使用し�
 2. リソース グループのページで、**[削除]** をクリックし、テキスト ボックスに「**Grafana**」と入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Monitor メトリックの概要](../../azure-monitor/platform/data-collection.md)
+* [Azure Monitor メトリックの概要](data-platform.md)
+

@@ -1,0 +1,322 @@
+items:
+- name: Mobile Apps ドキュメント
+  href: index.md
+- name: 概要
+  items:
+  - name: Mobile Apps とは
+    href: app-service-mobile-value-prop.md
+  - name: App Service プラン
+    href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+- name: クイック スタート
+  items:
+  - name: Android
+    href: app-service-mobile-android-get-started.md
+  - name: Cordova
+    href: app-service-mobile-cordova-get-started.md
+  - name: iOS
+    href: app-service-mobile-ios-get-started.md
+  - name: " Windows"
+    href: app-service-mobile-windows-store-dotnet-get-started.md
+  - name: Xamarin.Android
+    href: app-service-mobile-xamarin-android-get-started.md
+  - name: Xamarin.Forms
+    href: app-service-mobile-xamarin-forms-get-started.md
+  - name: Xamarin.iOS
+    href: app-service-mobile-xamarin-ios-get-started.md
+- name: 方法
+  items:
+  - name: 計画と設計
+    items:
+    - name: Azure Mobile Apps での認証および承認
+      href: app-service-mobile-auth.md
+    - name: Azure モバイル アプリでのオフライン データ同期
+      href: app-service-mobile-offline-data-sync.md
+    - name: Azure App Service のベスト プラクティス
+      href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service プランの詳細
+      href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 高密度ホスティング
+      href: ../app-service/manage-scale-per-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service 環境
+      href: ../app-service/environment/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: 開発
+    items:
+    - name: Android
+      items:
+      - name: オフライン同期を有効にする
+        href: app-service-mobile-android-get-started-offline-data.md
+      - name: 認証を追加する
+        href: app-service-mobile-android-get-started-users.md
+      - name: プッシュ通知の追加
+        href: app-service-mobile-android-get-started-push.md
+      - name: クライアント SDK を操作する
+        href: app-service-mobile-android-how-to-use-client-library.md
+    - name: Cordova
+      items:
+      - name: オフライン同期を有効にする
+        href: app-service-mobile-cordova-get-started-offline-data.md
+      - name: 認証を追加する
+        href: app-service-mobile-cordova-get-started-users.md
+      - name: プッシュ通知の追加
+        href: app-service-mobile-cordova-get-started-push.md
+      - name: クライアント SDK を操作する
+        items:
+        - name: Cordova
+          href: app-service-mobile-cordova-how-to-use-client-library.md
+        - name: JavaScript/HTML
+          href: app-service-mobile-html-how-to-use-client-library.md
+    - name: iOS
+      items:
+      - name: オフライン同期を有効にする
+        href: app-service-mobile-ios-get-started-offline-data.md
+      - name: 認証を追加する
+        href: app-service-mobile-ios-get-started-users.md
+      - name: プッシュ通知を追加する
+        href: app-service-mobile-ios-get-started-push.md
+      - name: クライアント SDK を操作する
+        href: app-service-mobile-ios-how-to-use-client-library.md
+    - name: " Windows"
+      items:
+      - name: オフライン同期を有効にする
+        href: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+      - name: 認証を追加する
+        href: app-service-mobile-windows-store-dotnet-get-started-users.md
+      - name: プッシュ通知の追加
+        href: app-service-mobile-windows-store-dotnet-get-started-push.md
+      - name: クライアント SDK を操作する
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.Android
+      items:
+      - name: オフライン同期を有効にする
+        href: app-service-mobile-xamarin-android-get-started-offline-data.md
+      - name: 認証を追加する
+        href: app-service-mobile-xamarin-android-get-started-users.md
+      - name: プッシュ通知の追加
+        href: app-service-mobile-xamarin-android-get-started-push.md
+      - name: クライアント SDK を操作する
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.Forms
+      items:
+      - name: オフライン同期を有効にする
+        href: app-service-mobile-xamarin-forms-get-started-offline-data.md
+      - name: 認証を追加する
+        href: app-service-mobile-xamarin-forms-get-started-users.md
+      - name: プッシュ通知の追加
+        href: app-service-mobile-xamarin-forms-get-started-push.md
+      - name: クライアント SDK を操作する
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.iOS
+      items:
+      - name: オフライン同期を有効にする
+        href: app-service-mobile-xamarin-ios-get-started-offline-data.md
+      - name: 認証を追加する
+        href: app-service-mobile-xamarin-ios-get-started-users.md
+      - name: プッシュ通知の追加
+        href: app-service-mobile-xamarin-ios-get-started-push.md
+      - name: クライアント SDK を操作する
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: サーバー SDK を操作する
+      items:
+      - name: .NET バックエンド
+        href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+      - name: Node.js バックエンド
+        href: app-service-mobile-node-backend-how-to-use-server-sdk.md
+      - name: クライアントとサーバーのバージョン管理
+        href: app-service-mobile-client-and-server-versioning.md
+    - name: App Service 環境
+      items:
+      - name: App Service 環境で Web アプリを作成する
+        href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: 内部ロード バランサーを作成して使用する
+        href: ../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: テンプレートを使用して ASE を作成する
+        href: ../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: デプロイ
+    items:
+    - name: クラウドの同期デプロイ
+      href: ../app-service/deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 継続的なデプロイ
+      href: ../app-service/deploy-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: ステージング環境
+      href: ../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: ローカル Git のデプロイ
+      href: ../app-service/deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Azure Resource Manager デプロイ
+      href: ../app-service/deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: スケール
+    items:
+    - name: アプリのスケールアップ
+      href: ../app-service/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service 環境
+      href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      items:
+      - name: App Service 環境を使用した geo 分散スケール
+        href: ../app-service/environment/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: App Service 環境内でのアプリのスケーリング
+        href: ../app-service/environment/app-service-web-scale-a-web-app-in-an-app-service-environment.md
+      - name: App Service 環境内での自動スケーリング
+        href: ../app-service/environment/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: 管理
+    items:
+    - name: 構成
+      href: ../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: カスタム ドメイン
+      items:
+      - name: カスタム ドメインを購入して構成する
+        href: ../app-service/manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: 独自のカスタム ドメインをマップする
+        href: ../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Traffic Manager でのカスタム ドメイン
+        href: ../app-service/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 既存のアプリを複製する
+      href: ../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Azure Virtual Network
+      href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: リソース グループ
+      href: ../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations
+      items:
+      - name: Web ジョブでバックグラウンド タスクを実行する
+        href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: 構成
+        href: ../app-service/environment/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: カスタム構成設定
+        href: ../app-service/environment/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: 受信トラフィックを制御する方法
+        href: ../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: ネットワーク アーキテクチャの概要
+        href: ../app-service/environment/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: ExpressRoute でのネットワーク構成の詳細
+        href: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: 移行
+    items:
+    - name: App Service と Mobile Services の比較
+      href: app-service-mobile-value-prop-migration-from-mobile-services.md
+    - name: 既存の Mobile Service を App Service に移行する
+      href: app-service-mobile-migrating-from-mobile-services.md
+    - name: 既存の Mobile Service を App Service にアップグレードする
+      items:
+      - name: .NET バックエンド
+        href: app-service-mobile-net-upgrading-from-mobile-services.md
+      - name: Node.js バックエンド
+        href: app-service-mobile-node-backend-upgrading-from-mobile-services.md
+  - name: セキュリティ保護
+    items:
+    - name: ID プロバイダーで認証する
+      items:
+      - name: Azure Active Directory 認証
+        href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Facebook 認証
+        href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Google 認証
+        href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Microsoft アカウント認証
+        href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Twitter 認証
+        href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: HTTPS
+      items:
+      - name: TLS 相互認証を構成する
+        href: ../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Azure で SSL 証明書を購入する
+        href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: 他の場所で取得した SSL 証明書を使用する
+        href: ../app-service/app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service 環境をセキュリティで保護する
+      items:
+      - name: Web アプリケーション ファイアウォールを構成する
+        href: ../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: レイヤード セキュリティ アーキテクチャを実装する
+        href: ../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: バックエンド リソースへの安全な接続
+        href: ../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: バックアップ
+    items:
+    - name: Azure でのアプリのバックアップ
+      href: ../app-service/manage-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Azure でのアプリの復元
+      href: ../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: 監視
+    href: ../app-service/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    items:
+    - name: 診断ログの有効化
+      href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Visual Studio を使用したトラブルシューティング
+      href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: 統合
+    items:
+    - name: SendGrid を使用した Azure での電子メールの送信方法
+      href: ../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: PowerApps および Microsoft Flow にエクスポートする
+      href: ../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: マネージド ID の使用
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: トラブルシューティング
+    items:
+    - name: Mobile Apps の一般的なトラブルシューティング
+      items:
+      - name: .NET バックエンド
+        href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk
+      - name: Node.JS バックエンド
+        href: app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging
+    - name: 診断ログの有効化
+      href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Visual Studio を使用したトラブルシューティング
+      href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+- name: リファレンス
+  items:
+  - name: .NET バックエンド SDK
+    href: https://msdn.microsoft.com/library/azure/dn961176.aspx
+  - name: Node.js バックエンド SDK
+    href: https://azure.github.io/azure-mobile-apps-node/
+  - name: Android クライアント SDK
+    href: https://azure.github.io/azure-mobile-apps-android-client/
+  - name: iOS クライアント SDK
+    href: https://azure.github.io/azure-mobile-apps-ios-client/
+  - name: JavaScript/Cordova クライアント SDK
+    href: https://azure.github.io/azure-mobile-apps-js-client/
+  - name: Windows/Xamarin クライアント SDK
+    href: https://msdn.microsoft.com/library/azure/mt419521.aspx
+- name: 関連項目
+  items:
+  - name: GitHub リポジトリ
+    href: https://github.com/Azure/azure-mobile-apps
+- name: リソース
+  items:
+  - name: App Service のベスト プラクティス
+    href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/app-service/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=mobile-services
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-mobile-services
+  - name: ビデオ
+    href: https://azure.microsoft.com/documentation/videos/index/?services=mobile-services
+  - name: サンプル
+    items:
+    - name: フィールド エンジニア
+      href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/
+    - name: 構造化データの同期
+      href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/
+    - name: クイック スタートの完了
+      items:
+      - name: .NET バックエンド
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/
+      - name: Node.js バックエンド
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/
+      - name: " Windows"
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/
+      - name: Xamarin.Android
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/
+ms.openlocfilehash: b7aa7664e7261233cda211b3d206432f388c4e87
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341205"

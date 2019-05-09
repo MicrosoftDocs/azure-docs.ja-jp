@@ -4,7 +4,7 @@ description: この記事では、Azure で運用可能なセキュリティの�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238541"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241087"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -29,13 +29,13 @@ ms.locfileid: "51238541"
 
 IT 運用チームは、データセンター インフラストラクチャ、アプリケーション、データの管理を担当します。これには、こうしたシステムの安定性とセキュリティが含まれます。 ただし、多くの場合、複雑さを増す IT 環境のセキュリティを組織が把握するには、複数のセキュリティおよび管理システムのデータをまとめる必要があります。
 
-[Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、クラウドベースの IT 管理ソリューションです。 このソリューションのコア機能は、Azure で実行される次のサービスによって提供されます。 Azure には、オンプレミスおよびクラウド インフラストラクチャを管理して保護できる複数のサービスがあります。 各サービスでは、固有の管理機能が提供されます。 お客様は、複数のサービスを組み合わせて、さまざまな管理シナリオを実現することができます。 
+[Microsoft Azure Monitor ログ](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、クラウドベースの IT 管理ソリューションです。 このソリューションのコア機能は、Azure で実行される次のサービスによって提供されます。 Azure には、オンプレミスおよびクラウド インフラストラクチャを管理して保護できる複数のサービスがあります。 各サービスでは、固有の管理機能が提供されます。 お客様は、複数のサービスを組み合わせて、さまざまな管理シナリオを実現することができます。 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) では、マネージド ソースから中央のデータ ストアへのデータの収集が行われます。 このデータには、API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 収集されたデータは、アラート、分析、エクスポートに使用できます。 
 
-さまざまなソースからのデータを統合し、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、Log Analytics ではデータの収集とそのデータに対して実行される操作が明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
+さまざまなソースからのデータを統合し、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、Azure Monitor ログではデータの収集とそのデータに対して実行される操作が明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
 ### <a name="automation"></a>Automation
 
@@ -93,7 +93,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 >[!Note]
 >Security Center のロールと許可されているアクションの詳細については、「[Azure Security Center におけるアクセス許可](https://docs.microsoft.com/azure/security-center/security-center-permissions)」を参照してください。
 
-Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Log Analytics サービスで使用されるエージェントと同じです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)または新規のワークスペースのいずれかに格納されます。
+Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Azure Monitor サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)または新規のワークスペースのいずれかに格納されます。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -121,9 +121,9 @@ Windows イベント システム ログは、VM 用診断ログの 1 カテゴ�
 
 Azure Monitor では、テレメトリを使用して、Azure 上のワークロードのパフォーマンスと正常性を可視化できます。 Azure テレメトリ データの種類の中でも最も重要なのが、[メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です (パフォーマンス カウンターとも呼ばれます)。これはほとんどの Azure リソースから出力されます。 Azure Monitor では、このメトリックを複数の方法で構成して使用し、監視やトラブルシューティングを行うことができます。
 
-### <a name="azure-diagnostics"></a>Azure 診断
+### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Azure 診断を使用すると、デプロイされたアプリケーションで診断データを収集できます。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスのロール](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure 仮想マシン](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、および [Azure Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) となっています。
+Azure Diagnostics を使用すると、デプロイされたアプリケーションで診断データを収集できます。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスのロール](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure 仮想マシン](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、および [Azure Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) となっています。
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
@@ -139,15 +139,15 @@ Network Watcher を使用すると、Azure ネットワークの監視と診断�
 
 現在、Network Watcher が備える機能は次のとおりです。
 
-- [トポロジ](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): リソース グループ内のネットワーク リソース間のさまざまな相互接続および関係を確認できます。
-- [可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): 仮想マシンで送受信されるパケット データをキャプチャします。 時間やサイズの制限を設定する機能など、詳細なフィルター オプションときめ細やかなコントロールにより、多様なキャプチャを行えます。 パケット データは、.cap 形式で BLOB ストアまたはローカル ディスクに保管できます。
-- [IP フロー検証](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): フロー情報の 5 タプル パケット パラメーター (宛先 IP、発信元 IP、宛先ポート、発信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループによって拒否された場合は、そのパケットを拒否した規則とグループが返されます。
-- [次のホップ](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Azure ネットワーク ファブリックにおけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
-- [セキュリティ グループ ビュー](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) - VM に適用されている有効な適用セキュリティ規則を確認できます。
-- [ネットワーク セキュリティ グループの NSG フロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
-- [仮想ネットワーク ゲートウェイと接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): 仮想ネットワーク ゲートウェイと接続に関する問題をトラブルシューティングできます。
-- [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
-- [診断ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): 1 つのウィンドウで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
+- [トポロジ](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview):リソース グループ内のネットワーク リソース間のさまざまな相互接続および関係を確認できます。
+- [可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview):仮想マシンで送受信されるパケット データをキャプチャします。 時間やサイズの制限を設定する機能など、詳細なフィルター オプションときめ細やかなコントロールにより、多様なキャプチャを行えます。 パケット データは、.cap 形式で BLOB ストアまたはローカル ディスクに保管できます。
+- [IP フロー検証](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview):フロー情報の 5 タプル パケット パラメーター (宛先 IP、発信元 IP、宛先ポート、発信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループによって拒否された場合は、そのパケットを拒否した規則とグループが返されます。
+- [次ホップ](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview):Azure ネットワーク ファブリックにおけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
+- [セキュリティ グループ ビュー](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview):VM に適用されている有効な適用セキュリティ規則を確認できます。
+- [ネットワーク セキュリティ グループの NSG フロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview):そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
+- [Virtual Network ゲートウェイと接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest):仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能を提供します。
+- [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview):ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
+- [診断ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview):1 つのウィンドウで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
 
 詳しくは、[Network Watcher の構成](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)に関する記事をご覧ください。
 

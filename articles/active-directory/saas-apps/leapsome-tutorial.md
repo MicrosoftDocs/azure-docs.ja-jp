@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Leapsome の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Leapsome の統合 | Microsoft Docs
 description: Azure Active Directory と Leapsome の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: e55d161b7c95118736f4443c3fed0312418feee7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 37549cc76e1490b0758de8e296523b0e70c98dbf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441937"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191233"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>チュートリアル: Azure Active Directory と Leapsome の統合
+# <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>チュートリアル:Azure Active Directory と Leapsome の統合
 
 このチュートリアルでは、Leapsome と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -134,7 +135,7 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
     | picture | 社員の画像への URL | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
     > [!Note]
-    > 属性 attribute の値は、実際のものではありません。 実際の画像 URL でこの値を更新してください。 この値を取得するには、[Leapsome クライアント サポート チーム](mailto:support@leapsome.com)にお問い合わせください。
+    > picture 属性の値は、実際のものではありません。 実際の画像 URL でこの値を更新してください。 この値を取得するには、 [Leapsome クライアント サポート チーム](mailto:support@leapsome.com)にお問い合わせください。
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
@@ -146,7 +147,7 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** ボックスに、その行の名前空間 URI を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** ボックスに、その行の名前空間 URI を入力します。
     
     e. **[OK]** をクリックします。
 
@@ -176,9 +177,9 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
 
     b. **[Login URL \(point your users here to start login\)]\(ログイン URL \(ログインをスタートする場所としてユーザーにここを案内する\)\)** の値をコピーし、Azure portal の **[Leapsome Domain and URLs]\(Leapsome のドメインと URL\)** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
-    c. **[Reply URL \(recieves response from your identity provider\)]\(応答 URL \(ID プロバイダーからの応答をここで受け取る\)\)** の値をコピーし、Azure portal の **[Leapsome Domain and URLs]\(Leapsome のドメインと URL\)** セクションの **[応答 URL]** ボックスに貼り付けます。
+    c. **[Reply URL (receives response from your identity provider)]\(応答 URL (ID プロバイダーからの応答をここで受け取る)\)** の値をコピーし、Azure portal の **[Leapsome のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
-    d. **[SSO Login URL \(provided by identity provider\)]\(SSO ログイン URL \(ID プロバイダーから提供されたもの\)\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SSO Login URL \(provided by identity provider\)]\(SSO ログイン URL \(ID プロバイダーから提供されたもの\)\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. Azure portal からダウンロードした証明書をコピーし、---BEGIN CERTIFICATE--- および ---END CERTIFICATE--- というコメントを削除して、**[Certificate \(provided by identity provider\)]\(証明書 \(ID プロバイダーから提供されたもの\)\)** ボックスに貼り付けます。
 
@@ -214,11 +215,11 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-leapsome-test-user"></a>Leapsome テスト ユーザーの作成
 
-このセクションでは、Leapsome で Britta Simon というユーザーを作成します。 [Leapsome クライアント サポート チーム](mailto:support@leapsome.com)と協力して、Leapsome プラットフォームでホワイトリストに追加する必要のあるユーザーまたはドメインを追加します。 ドメインがチームによって追加された場合、ユーザーは Leapsome プラットフォームに自動的にプロビジョニングされます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Leapsome で Britta Simon というユーザーを作成します。  [Leapsome クライアント サポート チーム](mailto:support@leapsome.com) に相談して、Leapsome プラットフォームでホワイトリストに追加する必要のあるユーザーまたはドメインを追加します。 ドメインがチームによって追加された場合、ユーザーは Leapsome プラットフォームに自動的にプロビジョニングされます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -255,7 +256,7 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Leapsome] タイルをクリックすると、自動的に Leapsome アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

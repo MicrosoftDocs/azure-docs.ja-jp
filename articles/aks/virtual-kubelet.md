@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: e5d415593a510acb81eac65242010d1841044857
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162649"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054014"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -240,7 +240,7 @@ Virtual Kubelet で考えられる問題については、[既知の問題と回
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
-[kubectl-get]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#get
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [vk-github]: https://github.com/virtual-kubelet/virtual-kubelet

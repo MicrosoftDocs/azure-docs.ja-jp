@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3f3b20ac21c0a871d3baad50098700b7cf3b3b9c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235396"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521727"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーを使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 この記事では、[Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示します。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure でのディスクと VHD の詳細については、「[仮想マシン用のディスクと VHD について](../virtual-machines/linux/about-disks-and-vhds.md)」を参照してください。
+Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 この記事では、[Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示します。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure のディスクと VHD の詳細については、「[マネージド ディスクの概要](../virtual-machines/linux/managed-disks-overview.md)」を参照してください。
 
 ## <a name="step-by-step-instructions"></a>詳細な手順
 
 次の手順は、[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して VHD ファイルを Azure DevTest Labs にアップロードする方法を示しています。
 
-1. [最新バージョンの Microsoft Azure ストレージ エクスプローラー](http://www.storageexplorer.com) をダウンロードしてインストールします。
+1. [最新バージョンの Microsoft Azure ストレージ エクスプローラー](https://www.storageexplorer.com) をダウンロードしてインストールします。
 
 1. Azure Portal を使用して、ラボのストレージ アカウントを取得します。
 
@@ -55,7 +55,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
     
     1. **[PowerShell を使用したイメージのアップロード]** ブレードに、**Add-AzureVhd** コマンドレットへの呼び出しが表示されます。 最初のパラメーター ("*Destination*") には、ラボのストレージ アカウント名が、次の形式で指定されます。
     
-        https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/... 
+        `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
 
     1. 後の手順で使用するため、このストレージ アカウントをメモしておきます。
     

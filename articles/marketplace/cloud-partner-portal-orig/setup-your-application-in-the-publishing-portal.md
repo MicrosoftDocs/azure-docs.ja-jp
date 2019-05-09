@@ -1,6 +1,6 @@
 ---
 title: 発行ポータルでのアプリケーションのセットアップ | Microsoft Docs
-description: クラウド発行ポータルでアプリケーションをセットアップする方法について説明します。
+description: クラウド発行ポータルでお客様のアプリケーションを設定する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9386f0e0bf552789b027df96e9e54ebcf31d7d34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807326"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310019"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>発行ポータルでのアプリケーションのセットアップ
 
@@ -27,16 +27,16 @@ ms.locfileid: "48807326"
 
 ## <a name="login-and-create-a-new-offer"></a>ログインして新しいオファーを作成する
 
-1. [クラウド パートナー ポータル](http://cloudpartner.azure.com/)にサインインします。
+1. [クラウド パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 2. 左側のナビゲーション バーから [+新しいオファー] をクリックして、[Dynamics 365 for Customer Engagement] を選択します。
 
 ![新しいオファーの選択](./media/CRMScreenShot14.png)
 
-3. これで新しいプランの "エディター" ビューが開いて、作成を開始する準備ができました。
+1. これで新しいプランの "エディター" ビューが開いて、作成を開始する準備ができました。
 
 ![新しいオファーの画面](./media/CRMScreenShot15.png)
 
-4. 入力が必要な "フォーム" は、[エディター] ビューの左側に表示されます。 各 "フォーム" は、入力する必要がある一連のフィールドで構成されています。必須フィールドには赤いアスタリスク (\*) が付いています。
+1. 入力が必要な "フォーム" は、[エディター] ビューの左側に表示されます。 各 "フォーム" は、入力する必要がある一連のフィールドで構成されています。必須フィールドには赤いアスタリスク (\*) が付いています。
 
 Dynamics 365 for Customer Engagement オファーを作成するための、主な 4 つのフォームがあります。
 
@@ -51,9 +51,9 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 ### <a name="offer-id"></a>プラン ID
 
-これは、パブリッシャー プロファイル内で一意のプラン識別子です。 この ID は製品 URL に含まれるようになります。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はダッシュで終えることはできず、最大で 50 文字の長さにできます。 このフィールドは、プランの運用が開始されるとロックされます。
+これは、パブリッシャー プロファイル内で一意のプラン識別子です。 この ID は製品 URL に含まれます。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はダッシュで終えることはできず、最大で 50 文字の長さにできます。 このフィールドは、プランの運用が開始されるとロックされます。
 
-たとえば、**"contoso"** という発行元が **"sample-WebApp"** というオファー ID を使用してオファーを作成した場合、AppSource に "https://appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview" として表示されます。
+たとえば、パブリッシャー **"contoso"** がプラン ID **"sample-WebApp"** のプランを作成した場合、AppSource に "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview" と表示されます
 
 ### <a name="publisher-id"></a>パブリッシャー ID
 
@@ -82,21 +82,21 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 これらのフィールドの説明を次に示します。
 
-* [File name of your package]\(パッケージのファイル名\): 前の手順で、CRM AppSource パッケージの zip ファイルを作成するときに付けたファイル名です。 上記の例では、"Microsoft\_SamplePackage.zip" です。
-* [Url of your package location]\(パッケージの場所の URL\): これは、上記で指定したパッケージのファイル名を含む Azure Storage アカウントの URL です。 前のセクションの手順 9 で作成した URL です。
-* [Is there more than one crm package in your package file]\(パッケージ ファイルには、複数の crm パッケージがある\): 異なるパッケージで crm の複数のバージョンをサポートしている場合に**のみ**、[はい] を選択します。 ほとんどのパートナーの場合、これは [いいえ] になります。 [はい] を選択した場合は、ソリューションの各バージョンの AppSource パッケージを作成する必要があります。 _注: これは、**zip** ファイルが複数あるかどうかを聞いているのではありません。ソリューションの .zip ファイルが複数あっても、バージョンが 1 つだけの場合は、[いいえ] を選択してください。これらはパッケージ化ツールによって自動的にまとめられます。_
+* File name of your package (パッケージのファイル名): 前の手順で、お客様の CRM AppSource パッケージである ZIP ファイルを作成するときに付けたファイル名です。 上記の例では、"Microsoft\_SamplePackage.zip" です。
+* Url of your package location (パッケージの場所の URL): これは、上記で指定したパッケージのファイル名が含まれている Azure ストレージ アカウントの URL です。 前のセクションの手順 9 で作成した URL です。
+* Is there more than one crm package in your package file (パッケージ ファイルには、複数の CRM パッケージがある): 異なるパッケージで CRM の複数のバージョンをサポートしている場合に**のみ**、[はい] を選択します。 ほとんどのパートナーの場合、これは [いいえ] になります。 [はい] を選択した場合は、ソリューションの各バージョンの AppSource パッケージを作成する必要があります。 _注:これは、**ZIP** ファイルが複数あるかどうかを聞いているのではありません。ソリューションの .zip ファイルが複数あっても、バージョンが 1 つだけの場合は、[いいえ] を選択してください。これらはパッケージ化ツールによって自動的にまとめられます。_
 
 ### <a name="crm-package-availability"></a>CRM パッケージの利用可能性
 
-このセクションでは、パッケージが使用可能になる CRM のリージョンを選択します。 どのリージョンがどの国にサービスを提供しているかについては、次のリンクを参照してください: [http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
+このセクションでは、パッケージが使用可能になる CRM のリージョンを選択します。 どのリージョンがどの国にサービスを提供しているかについては、次のリンクを参照してください: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
-注: ドイツの "ソブリンおよび US Gov クラウド" ソブリンへのデプロイには、認定の際に特別なアクセス許可と検証が必要です。
+注:ドイツの "ソブリンおよび US Gov クラウド" ソブリンへのデプロイには、認定の際に特別なアクセス許可と検証が必要です。
 
 ## <a name="storefront-details"></a>ネットショップの詳細
 
 ### <a name="offer-summary"></a>オファーの概要
 
-オファーの価値提案の概要です。 オファーの検索ページに表示されます。 最大で 100 文字までにする必要があります。
+これは、オファーの価値提案の概要です。 オファーの検索ページに表示されます。 最大で 100 文字までにする必要があります。
 
 ### <a name="offer-description"></a>オファーの説明
 
@@ -150,15 +150,15 @@ AppSource により顧客はキーワードを基づいた検索を行うこと�
 
 ### <a name="offer-logo-png-format-48x48"></a>オファーのロゴ (png 形式、48 x 48)
 
-アプリの検索ページに表示されます。 **png 形式のみを使用できます。** 解像度 48 x 48 ピクセルの png イメージをアップロードします。
+アプリの検索ページに表示されます。 **png 形式のみを使用できます。** 解像度 48 x 48\* ピクセルの png イメージをアップロードします。
 
 ### <a name="offer-logo-png-format-216x216"></a>オファーのロゴ (png 形式、216 x 216)
 
-アプリの詳細ページに表示されます。 **png 形式のみを使用できます。** 解像度 216 x 216 ピクセルの png イメージをアップロードします。
+アプリの詳細ページに表示されます。 **png 形式のみを使用できます。** 解像度 216 x 216\* ピクセルの png イメージをアップロードします。
 
 ### <a name="videos"></a>ビデオ
 
-最大で 4 つのビデオをアップロードできます。 アップロードするビデオごとに、ビデオと関連付けるビデオ名、URL (YouTube または Vimeo のみ)、およびサムネイルを入力する必要があります。 サムネイルは png 形式で、1280 x 720 ピクセルである必要があります。 新しいビデオを追加するには、プラス記号をクリックします。 ビデオのサムネイルは、アプリの詳細ページに表示されます。
+最大で 4 つのビデオをアップロードできます。 アップロードするビデオごとに、ビデオと関連付けるビデオ名、URL (YouTube または Vimeo のみ)、およびサムネイルを入力する必要があります。 サムネイルは png 形式で、1280 x 720\* ピクセルである必要があります。 新しいビデオを追加するには、プラス記号をクリックします。 ビデオのサムネイルは、アプリの詳細ページに表示されます。
 
 ### <a name="documents"></a>Documents
 
@@ -184,7 +184,7 @@ AppSource の詳細ページに表示されるアプリのスクリーン ショ
 
 ### <a name="lead-destination"></a>リードの宛先
 
-リードの保存先となる CRM システムを選択します。 次のうちいずれかの CRM システムをお持ちの場合、[Azure テーブル] を選択してください。Salesforce、Marketo、Microsoft Dynamics CRM。 ここで選択する CRM システムに、AppSource 上でアプリを試したエンド ユーザー (リード) の詳細が書き込まれます。 選択する CRM システムに応じて下記の該当する URL をクリックして、続く一連のフィールドに入力するための情報を参照してください。
+リードを保存する CRM システムを選択します。 次のいずれかの CRM システムをお持ちの場合、ここで [Azure テーブル] を選択してください (Salesforce、Marketo、Microsoft Dynamics CRM)。 ここで選択する CRM システムに、AppSource でアプリを試すエンド ユーザー (リード) の詳細が記述されます。 選択する CRM システムに応じて下記の該当する URL をクリックして、続く一連のフィールドに入力するための情報を参照してください。
 
 * [Azure テーブル](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
@@ -193,4 +193,4 @@ AppSource の詳細ページに表示されるアプリのスクリーン ショ
 
 ## <a name="storefront-details"></a>ネットショップの詳細
 
-連絡先の詳細は、パートナーと Microsoft の間の内部コミュニケーションにのみに使用されます。 注: これらのフィールドでは、監視されている電子メール アドレスを使用することが重要です。 この電子メールは、AppSource への発行の進行状況の連絡に使用されます。 サポートの URL のみがエンド ユーザーに表示されます。
+連絡先の詳細は、パートナーと Microsoft の間の内部コミュニケーションにのみに使用されます。 注:これらのフィールドでは、監視されているメール アドレスを使用することが重要です。 この電子メールは、AppSource への発行の進行状況の連絡に使用されます。 サポートの URL のみがエンド ユーザーに表示されます。

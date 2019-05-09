@@ -4,7 +4,7 @@ description: アプリケーションデータの定期バックアップを可�
 services: service-fabric
 documentationcenter: .net
 author: hrushib
-manager: timlt
+manager: chackdan
 editor: hrushib
 ms.assetid: FAADBCAB-F0CF-4CBC-B663-4A6DCCB4DEE1
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 2ff7221a3742f59cdef2c5c7c220cc80148b94d0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 1a1c1bafd0a575b01e9774e79a98515d34646f7c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721563"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670672"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 ## <a name="prerequisites"></a>前提条件
 * Service Fabric のバージョンが 6.2 以降の Fabric クラスター。 クラスターは、Windows Server 上に設定されている必要があります。 必要なパッケージのダウンロード手順については、この[記事](service-fabric-cluster-creation-for-windows-server.md)を参照してください。
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得するか自己署名証明書を作成する方法については、[こちらの記事](service-fabric-windows-cluster-x509-security.md)を参照してください。
-* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 Net Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
+* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 .NET Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
 
 ## <a name="enabling-backup-and-restore-service"></a>バックアップと復元サービスの有効化
 最初に、"_バックアップと復元サービス_" をクラスターで有効にする必要があります。 デプロイするクラスター用テンプレートを用意します。 [サンプル テンプレート](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)を使用できます。 次の手順で、"_バックアップと復元サービス_" を有効にします。
@@ -146,6 +146,9 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+> [!IMPORTANT]
+> 実行時間の問題のため、アイテム保持ポリシーのリテンション期間を確実に 24 日未満に構成します。そうしないと、バックアップ復元サービスがレプリカのフェールオーバー後にクォーラム損失になる場合があります。
+
 ### <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 アプリケーションのデータ保護要件を満たすポリシーを定義した後、バックアップ ポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
 
@@ -222,9 +225,13 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+## <a name="known-issues"></a>既知の問題
+- リテンション期間を確実に 24 日未満に構成します。 
+- 小数点の区切り文字が '.' 以外のロケールでは、バックアップ復元サービスは起動しません。
+- gMSA を使用したセキュリティで保護されたクラスターでは、バックアップ復元サービスの起動は失敗します。
+
 ## <a name="limitation-caveats"></a>制限事項/注意事項
 - PowerShell コマンドレットが組み込まれた Service Fabric はありません。
-- Service Fabric CLI はサポートされません。
 - Linux 上の Service Fabric クラスターはサポートされません。
 
 ## <a name="next-steps"></a>次の手順

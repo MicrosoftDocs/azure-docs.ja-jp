@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f7567d0c3bfdfc7bd44b918c9f2feda7499386e8
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984081"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554675"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>スループット向上のために Azure Stream Analytics ジョブをスケーリングする
 この記事では、Stream Analytics クエリをチューニングして、Streaming Analytics ジョブのスループットを向上させる方法について説明します。 次のガイドを使用して、高い負荷を処理し、より多くのシステム リソース (より多くの帯域幅、より多くの CPU リソース、より多くのメモリなど) を利用するようにジョブをスケーリングできます。
@@ -48,15 +48,16 @@ ms.locfileid: "49984081"
 
 クエリ:
 
-    WITH Step1 AS (
-    SELECT COUNT(*) AS Count, TollBoothId, PartitionId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1
-    GROUP BY TumblingWindow(minute, 3), TollBoothId
-
+ ```SQL
+ WITH Step1 AS (
+ SELECT COUNT(*) AS Count, TollBoothId, PartitionId
+ FROM Input1 Partition By PartitionId
+ GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+ )
+ SELECT SUM(Count) AS Count, TollBoothId
+ FROM Step1
+ GROUP BY TumblingWindow(minute, 3), TollBoothId
+ ```
 上記のクエリでは、パーティションごとに各料金所で自動車数をカウントしてから、すべてのパーティションのカウントを合計します。
 
 パーティション分割されたら、ステップのパーティションごとに、最大 6 SU を割り当てます。6 SU を持つ各パーティションが最大であるため、各パーティションを独自の処理ノードに配置できます。

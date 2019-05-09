@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 88dcc7110acaf42243d0ebb3c1ae25aa6d0bca46
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257975"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004098"
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -26,7 +26,7 @@ Azure Migrate の依存関係可視化機能を使用すると、移行評価用
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
-Azure Migrate は、依存関係の視覚化のために [Log Analytics](../log-analytics/log-analytics-overview.md) の [Service Map](../operations-management-suite/operations-management-suite-service-map.md) ソリューションを使用します。
+Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)の [Service Map](../operations-management-suite/operations-management-suite-service-map.md) ソリューションを使用します。
 - 依存関係の視覚化を利用するために、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。
 - 移行プロジェクトが作成された同じサブスクリプション内にのみ、ワークスペースを作成またはアタッチできます。
 - プロジェクトに Log Analytics ワークスペースをアタッチするには、**プロジェクト概要ページで** Essentials **セクションに遷移し**、**「構成が必要です」** をクリックします
@@ -34,8 +34,8 @@ Azure Migrate は、依存関係の視覚化のために [Log Analytics](../log-
     ![Log Analytics ワークスペースを関連付ける](./media/concepts-dependency-visualization/associate-workspace.png)
 
 - ワークスペースを関連付けるときに、新しいワークスペースを作成するか、既存のワークスペースをアタッチするかを選択できます。
-      - 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 移行プロジェクトと同様の [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンでワークスペースが作成されます。
-      - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるのは、[Service Map がサポートされている](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)リージョンで作成されたワークスペースのみであることに注意してください。 ワークスペースをアタッチできるようにするには、ワークスペースへの "読み取り" アクセスがあることを確認してください。
+  - 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 移行プロジェクトと同様の [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンでワークスペースが作成されます。
+  - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるのは、[Service Map がサポートされている](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)リージョンで作成されたワークスペースのみであることに注意してください。 ワークスペースをアタッチできるようにするには、ワークスペースへの "読み取り" アクセスがあることを確認してください。
 
   > [!NOTE]
   > いったんワークスペースをプロジェクトにアタッチすると、後で変更できません。

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを利用し、Bing Image Search SDK を使用して最初の画像検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Python アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初の画像の URL を表示します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c0cb795f2d40963263cbbb15a54ba8af2953f5f0
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cabf29423123d988b08e002077b4782529e96aa0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250367"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095638"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>クイック スタート:Bing Image Search SDK for Python を使用してイメージを検索する
 
@@ -52,16 +52,16 @@ ms.locfileid: "53250367"
 
 ## <a name="create-the-image-search-client"></a>画像検索クライアントを作成する
 
-3. `CognitiveServicesCredentials` のインスタンスを作成し、それを使用してクライアントをインスタンス化します。
+1. `CognitiveServicesCredentials` のインスタンスを作成し、それを使用してクライアントをインスタンス化します。
 
     ```python
     client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
-4. Bing Image Search API に検索クエリを送信します。
+1. Bing Image Search API に検索クエリを送信します。
     ```python
     image_results = client.images.search(query=search_term)
     ```
-## <a name="process-and-view-the-results"></a>結果の処理と表示
+   ## <a name="process-and-view-the-results"></a>結果の処理と表示
 
 応答で返された画像の結果を解析します。
 

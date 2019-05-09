@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 2d58a39efca8733902d157083489e59bf22ef161
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002282"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994018"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -32,9 +32,9 @@ ms.locfileid: "54002282"
 お客様の環境全体に対する観測性を確保するためには、お客様のすべての Web アプリケーションとサービスに対して監視を有効にする必要があります。 そうすることで、すべてのコンポーネントについてエンドツーエンドのトランザクションと接続を容易に視覚化できます。
 
 - [Azure DevOps Projects](../devops-project/overview.md) により、お客様の既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
-- [お客様の DevOps リリース パイプラインに継続的監視](../application-insights/app-insights-vsts-continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
+- [お客様の DevOps リリース パイプラインに継続的監視](../azure-monitor/app/continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
 - [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
-- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../application-insights/quick-monitor-portal.md) 向け、[Java](../application-insights/app-insights-java-quick-start.md) 向け、[Node.js](../application-insights/app-insights-nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../azure-monitor/app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../application-insights/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
+- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../azure-monitor/learn/quick-monitor-portal.md) 向け、[Java](../azure-monitor/learn/java-quick-start.md) 向け、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../azure-monitor/app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
 
 
 
@@ -47,7 +47,7 @@ ms.locfileid: "54002282"
 - お客様の環境内のさまざまなアプリケーションおよびサービス用に[監視ソリューション](insights/solutions-inventory.md)を追加します。
 
 
-[Infrastructure as Code](/devops/learn/what-is-infrastructure-as-code) は、DevOps チームがソース コードに使用するのと同じバージョン管理を使用し、記述的モデルでインフラストラクチャを管理するものです。 これにより、お客様の環境の信頼性とスケーラビリティが高まり、お客様のアプリケーションの管理に使用されるものと同様のプロセスを利用できるようになります。
+[Infrastructure as Code](/azure/devops/learn/what-is-infrastructure-as-code) は、DevOps チームがソース コードに使用するのと同じバージョン管理を使用し、記述的モデルでインフラストラクチャを管理するものです。 これにより、お客様の環境の信頼性とスケーラビリティが高まり、お客様のアプリケーションの管理に使用されるものと同様のプロセスを利用できるようになります。
 
 -  多数のリソースに対して監視を有効にし、アラートを構成するには、[Resource Manager テンプレート](platform/template-workspace-configuration.md)を使用します。
 - お客様のリソースに対してさまざまなルールを強制するには、[Azure Policy](../governance/policy/overview.md) を使用します。 これにより、それらのリソースがお客様の会社の標準やサービス レベル アグリーメントに準拠している状態が確保されます。 
@@ -63,8 +63,8 @@ ms.locfileid: "54002282"
 
 
 - [Azure Pipelines](/azure/devops/pipelines) を使用して継続的配置を実装し、お客様の CI/CD テストに基づいて、コードのコミットから運用までお客様のプロセス全体を自動化します。
-- [品質ゲート](/devops/pipelines/release/approvals/gates)を使用して、お客様のデプロイの前後に監視を統合します。 これにより、お客様のアプリケーションが開発から運用に移行する際に正常性とパフォーマンスの主要指標 (KPI) を確実に満たし、インフラストラクチャ環境の違いやスケールの違いがお客様の KPI に悪い影響を及ぼさないようにできます。
-- お客様のさまざまなデプロイ環境 (開発、テスト、カナリア、運用) の間で[個別の監視インスタンスを維持](../application-insights/app-insights-separate-resources.md)します。そうすることで、関連するアプリケーションおよびインフラストラクチャ全体で、収集されたデータの適合性が得られます。 環境をまたいでデータを相互に関連付ける必要がある場合は、[メトリックス エクスプローラーのマルチリソース グラフ](../azure-monitor/platform/metrics-charts.md)を使用するか、[Log Analytics のクロスリソース クエリ](log-query/cross-workspace-query.md)を使用することができます。
+- [品質ゲート](/azure/devops/pipelines/release/approvals/gates)を使用して、お客様のデプロイの前後に監視を統合します。 これにより、お客様のアプリケーションが開発から運用に移行する際に正常性とパフォーマンスの主要指標 (KPI) を確実に満たし、インフラストラクチャ環境の違いやスケールの違いがお客様の KPI に悪い影響を及ぼさないようにできます。
+- お客様のさまざまなデプロイ環境 (開発、テスト、カナリア、運用) の間で[個別の監視インスタンスを維持](../azure-monitor/app/separate-resources.md)します。そうすることで、関連するアプリケーションおよびインフラストラクチャ全体で、収集されたデータの適合性が得られます。 環境をまたいでデータを相互に関連付ける必要がある場合は、[メトリックス エクスプローラーのマルチリソース グラフ](../azure-monitor/platform/metrics-charts.md)を使用するか、[Azure Monitor のクロスリソース クエリ](log-query/cross-workspace-query.md)を使用することができます。
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>アクションにつながる実用的なアラートを作成する
@@ -79,17 +79,17 @@ ms.locfileid: "54002282"
 ## <a name="prepare-dashboards-and-workbooks"></a>ダッシュボードとブックを準備する
 お客様の開発担当者と運用担当者が同じテレメトリとツールにアクセスできるようにすると、彼らがお客様の環境全体のパターンを確認して、お客様の平均検出時間 (MTTD) と平均復元時間 (MTTR) を最小限に抑えることができるようになります。
 
-- お客様の組織内のさまざまな役割のために、一般的なメトリックとログに基づく[カスタム ダッシュボード](../application-insights/app-insights-tutorial-dashboards.md)を準備します。 すべての Azure リソースからのデータをダッシュボードでまとめることができます。
-- 開発担当者と運用担当者の間で知識を共有できるように[ブック](../application-insights/app-insights-usage-workbooks.md)を準備します。 これらは、メトリック グラフやログ クエリが含まれた動的レポートとして準備される場合があります。また、基本的な問題に対処するカスタマー サポートや運用担当者を支援するために開発者によって作成されたトラブルシューティング ガイドとして準備される場合もあります。
+- お客様の組織内のさまざまな役割のために、一般的なメトリックとログに基づく[カスタム ダッシュボード](../azure-monitor/learn/tutorial-app-dashboards.md)を準備します。 すべての Azure リソースからのデータをダッシュボードでまとめることができます。
+- 開発担当者と運用担当者の間で知識を共有できるように[ブック](../azure-monitor/app/usage-workbooks.md)を準備します。 これらは、メトリック グラフやログ クエリが含まれた動的レポートとして準備される場合があります。また、基本的な問題に対処するカスタマー サポートや運用担当者を支援するために開発者によって作成されたトラブルシューティング ガイドとして準備される場合もあります。
 
 ## <a name="continuously-optimize"></a>継続的に最適化する
  監視は、Build-Measure-Learn (構築-測定-学習) という一般的な方針に含まれている基本的要素の 1 つです。これによると、お客様の KPI とユーザー行動のメトリックを継続的に追跡し、計画の繰り返しを通じてそれらを最適化することを目指すことが推奨されます。 Azure Monitor は、お客様のビジネスに関連するメトリックとログを収集したり、必要に応じて新しいデータ ポイントを次回のデプロイに追加したりするのに役に立ちます。
 
-- Application Insights のツールを使用して、[エンドユーザーの行動とエンゲージメントを追跡](../application-insights/app-insights-tutorial-users.md)します。
-- [影響分析](../application-insights/app-insights-usage-impact.md)を使用して、重要な KPI を高めるためにどの分野に注力すべきかの優先度付けを行います。
+- Application Insights のツールを使用して、[エンドユーザーの行動とエンゲージメントを追跡](../azure-monitor/learn/tutorial-users.md)します。
+- [影響分析](../azure-monitor/app/usage-impact.md)を使用して、重要な KPI を高めるためにどの分野に注力すべきかの優先度付けを行います。
 
 
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Monitor](overview.md) のさまざまなコンポーネントについて確認する。
-- お客様のリリース パイプラインに[継続的監視を追加](../application-insights/app-insights-vsts-continuous-monitoring.md)する。
+- お客様のリリース パイプラインに[継続的監視を追加](../azure-monitor/app/continuous-monitoring.md)する。

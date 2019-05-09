@@ -5,19 +5,19 @@ description: このクイック スタートを使用して、Ruby を使って 
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/20/2018
+ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a5b0c6e67ce4d7a533ad35023261a3c02601a83
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2adefca6c560110bc4d3ff3b2b5a9599e9e635e0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257660"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337194"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>クイック スタート:Bing Image Search REST API と Ruby を使用してイメージを検索する
 
@@ -88,7 +88,7 @@ puts "total number of returned matches: #{total_returned_images}"
 puts "Url to the thumbnail of the first returned search result: #{first_result}"
 ```
 
-## <a name="sample-json-response"></a>サンプルの JSON 応答
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Image Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。
 
@@ -132,7 +132,7 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 

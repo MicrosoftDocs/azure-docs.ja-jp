@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 3fa890b02c791f26f3f25bf2418b105d1116ca75
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: d6a4c5b2b6d9818dffdb1c1fee8c4c0df7cad77c
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094428"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539804"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows VM をアマゾン ウェブ サービス (AWS) から Azure 仮想マシンに移行する
 
@@ -46,16 +46,16 @@ ms.locfileid: "50094428"
 
 ## <a name="export-and-download-the-vhd"></a>VHD をエクスポートおよびダウンロードする 
 
-Amazon S3 バケット内の VHD に EC2 インスタンスをエクスポートします。 Amazon のドキュメント記事「[Exporting an Instance as a VM Using VM Import/Export (VM Import/Export を使用して VM としてインスタンスをエクスポート)](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)」の手順に従って [create-instance-export-task](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) コマンドを実行し、EC2 インスタンスを VHD ファイルにエクスポートします。 
+Amazon S3 バケット内の VHD に EC2 インスタンスをエクスポートします。 Amazon のドキュメント記事「[Exporting an Instance as a VM Using VM Import/Export (VM Import/Export を使用して VM としてインスタンスをエクスポート)](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)」の手順に従って [create-instance-export-task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) コマンドを実行し、EC2 インスタンスを VHD ファイルにエクスポートします。 
 
-エクスポートされた VHD ファイルは、指定した Amazon S3 バケットに保存されます。 VHD をエクスポートするための基本的な構文を次に示します。<brackets> 内のプレースホルダー テキストを実際の情報に置き換えるだけです。
+エクスポートされた VHD ファイルは、指定した Amazon S3 バケットに保存されます。 VHD をエクスポートするための基本的な構文を次に示します。\<brackets> 内のプレースホルダー テキストを実際の情報に置き換えるだけです。
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-VHD のエクスポートが完了したら、「[How Do I Download an Object from an S3 Bucket? (S3 バケットからオブジェクトをダウンロードする方法)](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html)」の手順に従って、S3 バケットから VHD ファイルをダウンロードします。 
+VHD のエクスポートが完了したら、「[How Do I Download an Object from an S3 Bucket? (S3 バケットからオブジェクトをダウンロードする方法)](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html)」の手順に従って、S3 バケットから VHD ファイルをダウンロードします。 
 
 > [!IMPORTANT]
 > VHD をダウンロードする場合、AWS からデータ転送料金が請求されます。 詳細については、「[Amazon S3 Pricing (Amazon S3 の料金)](https://aws.amazon.com/s3/pricing/)」を参照してください。

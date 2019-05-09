@@ -4,24 +4,25 @@ description: ID の柱と、ハイブリッド環境内のユーザーのリソ�
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e3b3b984-0d15-4654-93be-a396324b9f5e
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a92d3237300fcd29fecf49d78b2866f8bd7e6a6b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247706"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197387"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのアクセス制御要件の決定
 組織がハイブリッド ID ソリューションを設計する場合、その機会に、ユーザーに使用できるようにする予定のリソースについて、アクセス要件を見直すこともできます。 データは、次に示す ID の 4 本の柱全体にかかっています。

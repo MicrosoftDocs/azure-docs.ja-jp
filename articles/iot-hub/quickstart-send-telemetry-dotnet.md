@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (C#) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT ハブから利用統計情報を読み取ります。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/20/2018
-ms.author: dobett
-ms.openlocfilehash: f34d1b69deb73e649f34424dda279cd416415882
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.date: 02/22/2019
+ms.openlocfilehash: f339d2e3e329ae40ca8bb8bf651d698c73482a7d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515558"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59049270"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (C#) でハブから利用統計情報を読み取る
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (C#)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -41,6 +41,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 dotnet --version
 ```
 
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip からサンプル C# プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
@@ -51,14 +57,13 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
-   **MyDotnetDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyDotnetDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **MyDotnetDevice**: 登録するデバイスの名前。 示されているように、**MyDotnetDevice** を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新する必要があります。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
     ```
 
@@ -124,7 +129,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 2. 適当なテキスト エディターで **ReadDeviceToCloudMessages.cs** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
 
-    | 可変 | 値 |
+    | 変数 | 値 |
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
     | `s_eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |

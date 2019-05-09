@@ -3,19 +3,20 @@ title: Azure Service Bus のファイアウォール ルール | Microsoft Docs
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Service Bus への接続を許可する方法です。
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: clemensv
-ms.openlocfilehash: b08540787fc61b9bb38ed921bd42e0f3065cf8f4
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136295"
 ---
 # <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
 
@@ -59,7 +60,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して仮想ネットワークとファイアウォール ルールを作成する
 
 > [!IMPORTANT]
-> 仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。
+> ファイアウォールと仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。
 
 次の Resource Manager テンプレートでは、既存の Service Bus 名前空間に仮想ネットワーク ルールを追加できます。
 

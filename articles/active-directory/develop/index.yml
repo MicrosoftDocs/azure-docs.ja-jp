@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 845fb826d18949c30663c829e65537156bd2f865
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986066"
 documentType: LandingData
 title: Microsoft ID プラットフォーム (開発者向け Azure Active Directory)
 metadata:
@@ -14,249 +8,249 @@ metadata:
   author: CelesteDG
   manager: mtillman
   ms.service: active-directory
-  ms.component: develop
+  ms.subservice: develop
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/24/2018
   ms.author: celested
 abstract:
-  description: Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、開発者はすべての Microsoft ID にサインインし、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得することができます。 これは多彩な機能を備えたプラットフォームであり、認証サービス、オープン ソース ライブラリ、アプリケーションの登録と構成、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
+  description: Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。 これはフル機能を備えたプラットフォームであり、OAuth 2.0 および OpenID Connect 標準に準拠した認証サービス、オープンソース ライブラリ、アプリケーションの登録および構成、充実した概念とリファレンスのドキュメント、"クイック スタート サンプル"、コード サンプル、チュートリアル、攻略ガイドによって構成されています。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ./media/index/video-featured.png
       width: 250
     title: 認証を使用した Web アプリ ソリューションの構築 (9 分 31 秒)
-    href: https://www.youtube.com/watch?v=QWh5HZK9vRA
+    href: 'https://www.youtube.com/watch?v=QWh5HZK9vRA'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/active-directory/develop/about-microsoft-identity-platform
+            html: <p>Microsoft ID プラットフォームとその機能について説明します。</p>
+            image:
+              src: ./media/index/i_get-started.svg
+            title: Microsoft ID プラットフォームについて
+          - href: /azure/active-directory/develop/azure-ad-developers-guide/
+            html: <p>Azure AD Authentication Library (ADAL)、Azure portal、および Azure AD Graph API を使用して、Azure AD v1.0 エンドポイントにトークンを要求し、Azure AD の ID (職場および学校のアカウント) を認証します。</p>
+            image:
+              src: ./media/index/i_advanced.svg
+            title: v1.0
+          - href: /azure/active-directory/develop/v2-overview
+            html: <p>Microsoft Authentication Library (MSAL)、Azure portal、および Microsoft Graph API を使用することにより、Azure AD v2.0 エンドポイントとして知られているものを介して幅広い Microsoft ID を認証します。</p>
+            image:
+              src: ./media/index/i_investigate.svg
+            title: v2.0
+  - title: クイック スタート
     items:
-    - href: /azure/active-directory/develop/about-microsoft-identity-platform
-      html: <p>Microsoft ID プラットフォームとその機能について説明します。</p>
-      image:
-        src: ./media/index/i_get-started.svg
-      title: Microsoft ID プラットフォームについて
-    - href: /azure/active-directory/develop/azure-ad-developers-guide/
-      html: <p>Azure AD Authentication Library (ADAL)、Azure portal、および Azure AD Graph API を使用して、Azure AD v1.0 エンドポイントにトークンを要求し、Azure AD の ID (職場および学校のアカウント) を認証します。</p>
-      image:
-        src: ./media/index/i_advanced.svg
-      title: v1.0
-    - href: /azure/active-directory/develop/v2-overview
-      html: <p>Microsoft Authentication Library (MSAL)、Azure portal、および Microsoft Graph API を使用することにより、Azure AD v2.0 エンドポイントとして知られているものを介して幅広い Microsoft ID を認証します。</p>
-      image:
-        src: ./media/index/i_investigate.svg
-      title: v2.0
-- title: クイック スタート
-  items:
-  - type: paragraph
-    text: これらのクイック スタートに従って、迅速にアプリを構築し、トークンの取得、トークンの更新、ユーザーへのサインイン、ユーザー情報の表示などの機能を追加します。
-  - type: paragraph
-    text: <b>シングルページ アプリ</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/angularjs-shield.svg
-      title: AngularJS
-    - image:
-        src: ./media/index/logo_js.svg
-      title: JavaScript
-    rows:
-    - title: v1.0
-      values:
-      - href: quickstart-v1-angularjs-spa.md
-      - href: https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi
-    - title: v2.0
-      values:
-      - href: 
-      - href: quickstart-v2-javascript.md
-  - type: paragraph
-    text: <b>Web アプリ</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_NET.svg
-      title: ASP .NET
-    - image:
-        src: ./media/index/logo_NETcore.svg
-      title: ASP .NET Core
-    - image:
-        src: ./media/index/logo_java.svg
-      title: Java
-    - image:
-        src: ./media/index/logo_nodejs.svg
-      title: NodeJS
-    - image:
-        src: ./media/index/logo_python.svg
-      title: Python
-    rows:
-    - title: v1.0
-      values:
-      - href: quickstart-v1-aspnet-webapp.md
-      - href: 
-      - href: https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect
-      - href: quickstart-v1-openid-connect-code.md
-      - href: https://github.com/Azure-Samples/active-directory-python-webapp-graphapi
-    - title: v2.0
-      values:
-      - href: quickstart-v2-aspnet-webapp.md
-      - href: quickstart-v2-aspnet-core-webapp.md
-      - href: 
-      - href: https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs
-      - href: 
-  - type: paragraph
-    text: <b>Web API</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_NET.svg
-      title: ASP .NET
-    - image:
-        src: ./media/index/logo_NETcore.svg
-      title: ASP .NET Core
-    - image:
-        src: ./media/index/logo_nodejs.svg
-      title: NodeJS
-    rows:
-    - title: v1.0
-      values:
-      - href: quickstart-v1-dotnet-webapi.md
-      - href: 
-      - href: quickstart-v1-nodejs-webapi.md
-    - title: v2.0
-      values:
-      - href: https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet
-      - href: https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2
-      - href: 
-  - type: paragraph
-    text: <b>モバイル アプリとデスクトップ アプリ</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_android.svg
-      title: Android
-    - image:
-        src: ./media/index/logo_ios.svg
-      title: iOS
-    - image:
-        src: ./media/index/logo_Windows.svg
-      title: ユニバーサル Windows プラットフォーム
-    - image:
-        src: ./media/index/logo_Windows.svg
-      title: Windows デスクトップ .NET
-    - image:
-        src: ./media/index/logo_xamarin.svg
-      title: Xamarin
-    rows:
-    - title: v1.0
-      values:
-      - href: quickstart-v1-android.md
-      - href: quickstart-v1-ios.md
-      - href: 
-      - href: quickstart-v1-dotnet.md
-      - href: quickstart-v1-xamarin.md
-    - title: v2.0
-      values:
-      - href: quickstart-v2-android.md
-      - href: quickstart-v2-ios.md
-      - href: quickstart-v2-uwp.md
-      - href: quickstart-v2-windows-desktop.md
-      - href: 
-  - type: paragraph
-    text: <b>サービス間</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_NET.svg
-      title: .NET
-    rows:
-    - title: v1.0
-      values:
-      - href: sample-v1-code.md#server-or-daemon-application-to-web-api
-    - title: v2.0
-      values:
-      - href: https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Microsoft ID プラットフォームを使用し、アクセス トークンの取得や "Microsoft でサインイン" の実装など、開発者の上位認証タスクに対するシナリオベースの詳細な手順に従います。
-  - type: paragraph
-    text: <b>シングルページ アプリ</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_js.svg
-      title: JavaScript
-    rows:
-    - title: v1.0
-      values:
-      - href: 
-    - title: v2.0
-      values:
-      - href: tutorial-v2-javascript-spa.md
-  - type: paragraph
-    text: <b>Web アプリ</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_NET.svg
-      title: ASP .NET
-    rows:
-    - title: v1.0
-      values:
-      - href: 
-    - title: v2.0
-      values:
-      - href: tutorial-v2-asp-webapp.md
-  - type: paragraph
-    text: <b>モバイル アプリとデスクトップ アプリ</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_android.svg
-      title: Android
-    - image:
-        src: ./media/index/logo_ios.svg
-      title: iOS
-    - image:
-        src: ./media/index/logo_Windows.svg
-      title: ユニバーサル Windows プラットフォーム
-    - image:
-        src: ./media/index/logo_Windows.svg
-      title: Windows デスクトップ .NET
-    rows:
-    - title: v1.0
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: v2.0
-      values:
-      - href: tutorial-v2-android.md
-      - href: tutorial-v2-ios.md
-      - href: tutorial-v2-windows-uwp.md
-      - href: tutorial-v2-windows-desktop.md
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 開発中のアプリ、ご利用のプラットフォーム、および使用している API の種類に基づいてコード サンプルを検索します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: これらのクイック スタートに従って、迅速にアプリを構築し、トークンの取得、トークンの更新、ユーザーへのサインイン、ユーザー情報の表示などの機能を追加します。
+      - type: paragraph
+        text: <b>シングルページ アプリ</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/angularjs-shield.svg
+            title: AngularJS
+          - image:
+              src: ./media/index/logo_js.svg
+            title: JavaScript
+        rows:
+          - title: v1.0
+            values:
+              - href: quickstart-v1-angularjs-spa.md
+              - href: 'https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi'
+          - title: v2.0
+            values:
+              - href: null
+              - href: quickstart-v2-javascript.md
+      - type: paragraph
+        text: <b>Web アプリ</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_NET.svg
+            title: ASP .NET
+          - image:
+              src: ./media/index/logo_NETcore.svg
+            title: ASP .NET Core
+          - image:
+              src: ./media/index/logo_java.svg
+            title: Java
+          - image:
+              src: ./media/index/logo_nodejs.svg
+            title: NodeJS
+          - image:
+              src: ./media/index/logo_python.svg
+            title: Python
+        rows:
+          - title: v1.0
+            values:
+              - href: quickstart-v1-aspnet-webapp.md
+              - href: null
+              - href: 'https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect'
+              - href: quickstart-v1-openid-connect-code.md
+              - href: 'https://github.com/Azure-Samples/active-directory-python-webapp-graphapi'
+          - title: v2.0
+            values:
+              - href: quickstart-v2-aspnet-webapp.md
+              - href: quickstart-v2-aspnet-core-webapp.md
+              - href: null
+              - href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
+              - href: null
+      - type: paragraph
+        text: <b>Web API</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_NET.svg
+            title: ASP .NET
+          - image:
+              src: ./media/index/logo_NETcore.svg
+            title: ASP .NET Core
+          - image:
+              src: ./media/index/logo_nodejs.svg
+            title: NodeJS
+        rows:
+          - title: v1.0
+            values:
+              - href: quickstart-v1-dotnet-webapi.md
+              - href: null
+              - href: quickstart-v1-nodejs-webapi.md
+          - title: v2.0
+            values:
+              - href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
+              - href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
+              - href: null
+      - type: paragraph
+        text: <b>モバイル アプリとデスクトップ アプリ</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_android.svg
+            title: Android
+          - image:
+              src: ./media/index/logo_ios.svg
+            title: iOS
+          - image:
+              src: ./media/index/logo_Windows.svg
+            title: ユニバーサル Windows プラットフォーム
+          - image:
+              src: ./media/index/logo_Windows.svg
+            title: Windows デスクトップ .NET
+          - image:
+              src: ./media/index/logo_xamarin.svg
+            title: Xamarin
+        rows:
+          - title: v1.0
+            values:
+              - href: quickstart-v1-android.md
+              - href: quickstart-v1-ios.md
+              - href: null
+              - href: quickstart-v1-dotnet.md
+              - href: quickstart-v1-xamarin.md
+          - title: v2.0
+            values:
+              - href: quickstart-v2-android.md
+              - href: quickstart-v2-ios.md
+              - href: quickstart-v2-uwp.md
+              - href: quickstart-v2-windows-desktop.md
+              - href: null
+      - type: paragraph
+        text: <b>サービス間アプリとデーモン アプリ</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_NET.svg
+            title: .NET
+        rows:
+          - title: v1.0
+            values:
+              - href: sample-v1-code.md
+          - title: v2.0
+            values:
+              - href: quickstart-v2-netcore-daemon.md
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/active-directory/develop/sample-v1-code">シナリオ別の v1.0 コード サンプル</a>
-    - html: <a href="/azure/active-directory/develop/sample-v2-code">シナリオ別の v2.0 コード サンプル</a>
+      - type: paragraph
+        text: Microsoft ID プラットフォームを使用し、アクセス トークンの取得や "Microsoft でサインイン" の実装など、開発者の上位認証タスクに対するシナリオベースの詳細な手順に従います。
+      - type: paragraph
+        text: <b>シングルページ アプリ</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_js.svg
+            title: JavaScript
+        rows:
+          - title: v1.0
+            values:
+              - href: null
+          - title: v2.0
+            values:
+              - href: tutorial-v2-javascript-spa.md
+      - type: paragraph
+        text: <b>Web アプリ</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_NET.svg
+            title: ASP .NET
+        rows:
+          - title: v1.0
+            values:
+              - href: null
+          - title: v2.0
+            values:
+              - href: tutorial-v2-asp-webapp.md
+      - type: paragraph
+        text: <b>モバイル アプリとデスクトップ アプリ</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_android.svg
+            title: Android
+          - image:
+              src: ./media/index/logo_ios.svg
+            title: iOS
+          - image:
+              src: ./media/index/logo_Windows.svg
+            title: ユニバーサル Windows プラットフォーム
+          - image:
+              src: ./media/index/logo_Windows.svg
+            title: Windows デスクトップ .NET
+        rows:
+          - title: v1.0
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: v2.0
+            values:
+              - href: tutorial-v2-android.md
+              - href: tutorial-v2-ios.md
+              - href: tutorial-v2-windows-uwp.md
+              - href: tutorial-v2-windows-desktop.md
+  - title: サンプル
+    items:
+      - type: paragraph
+        text: 開発中のアプリ、ご利用のプラットフォーム、および使用している API の種類に基づいてコード サンプルを検索します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/develop/sample-v1-code">シナリオ別の v1.0 コード サンプル</a>
+          - html: <a href="/azure/active-directory/develop/sample-v2-code">シナリオ別の v2.0 コード サンプル</a>

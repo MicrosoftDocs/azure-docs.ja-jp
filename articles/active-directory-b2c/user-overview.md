@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のユーザー アカウントの概要 | Mic
 description: Azure Active Directory B2C のユーザー アカウントについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: 9d4bcc66cfd82fee13ce57d096e061ddd8706720
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725762"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100127"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -47,21 +47,21 @@ Azure Active Directory (Azure AD) B2C では、さまざまな種類のアカウ
 次の情報を使用して、新しい職場アカウントを作成できます。
 
 - [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>ユーザー アカウントを更新する
 
 次の情報を使用して、ユーザーのプロファイルを更新できます。
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>ユーザーのパスワードをリセットする
 
 次の情報を使用して、ユーザーのパスワードをリセットできます。 
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>ゲスト ユーザー
 
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) B2C では、さまざまな種類のアカウ
 
 ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 ユーザーは招待リンクによって同意ページに移動します。そのページで、**[作業開始]** ボタンを選択し、アクセス許可を受け取ったことを確認します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
 
-ゲスト ユーザーは、[Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/invitation_post) を使用して招待することもできます。
+ゲスト ユーザーは、[Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) を使用して招待することもできます。
 
 ## <a name="consumer-user"></a>コンシューマー ユーザー
 

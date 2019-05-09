@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 64be6af340aa02c6c0b094013d2cbd286286aca7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e61f0f4ba30b29fea1b2fd5f2a2ab253d3a6710c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101995"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475756"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>データ サイエンス仮想マシンに関するサンプル
 

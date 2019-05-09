@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164383"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526406"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -39,7 +39,9 @@ Stream Analytics ジョブは、入力から間違った形式のメッセージ
 ![Azure Stream Analytics の入力タイル](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 診断ログを有効にして、警告の詳細を参照します。 間違った形式の入力イベントの場合、実行ログには次のようなメッセージを持つエントリが含まれます。 
-<code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
+```
+Could not deserialize the input event(s) from resource <blob URI> as json.
+```
 
 ### <a name="what-caused-the-deserialization-error"></a>逆シリアル化エラーの原因
 次の手順を実行して入力イベントを詳しく分析し、何が逆シリアル化エラーの原因となったのかを明確に理解できます。 その後、イベント ソースを解決して、この問題が二度と発生しないように適切な形式でイベントを生成できます。

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 89852e30929cc26aa0cbe63ed4e334c4e878b90b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7139906ac22f8d0dbf6cd6e2d69289c4b910b2b0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714340"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486089"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -145,7 +145,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 **[ホスト名の追加]** ページが表示されます 
 
-**[ホスト名レコード タイプ]** が **[CNAME (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
+**[ホスト名レコード タイプ]** が **[CNAME (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
 **[ホスト名の追加]** を選択します。
 
@@ -199,6 +199,15 @@ A レコードをアプリにマップする場合、App Service では **2 つ*
 | - | - | - |
 | A | `@` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
+
+> [!NOTE]
+> 推奨される [CNAME レコード](#map-a-cname-record)の代わりに A レコードを使用してサブドメイン (`www.contoso.com`など) を追加するには、A レコードと TXT レコードが次の表のようになっている必要があります。
+>
+> | レコード タイプ | Host | 値 |
+> | - | - | - |
+> | A | `www` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
+> | TXT | `www` | `<app_name>.azurewebsites.net` |
+>
 
 レコードが追加されると、DNS レコード ページは次の例のようになります。
 
@@ -273,7 +282,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 **[ホスト名の追加]** ボタンがアクティブになります。 
 
-**[ホスト名レコード タイプ]** が **[CNAME レコード (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
+**[ホスト名レコード タイプ]** が **[CNAME レコード (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
 **[ホスト名の追加]** を選択します。
 
@@ -338,10 +347,12 @@ az webapp config hostname add \
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 次のコマンドでは、構成済みカスタム DNS 名を App Service アプリに追加します。 
 
-```PowerShell  
-Set-AzureRmWebApp `
+```powershell  
+Set-AzWebApp `
     -Name <app_name> `
     -ResourceGroupName <resource_group_name> ` 
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 

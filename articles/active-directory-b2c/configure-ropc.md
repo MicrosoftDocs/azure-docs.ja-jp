@@ -3,26 +3,25 @@ title: Azure Active Directory B2C でリソース所有者のパスワード資�
 description: Azure AD B2C でリソース所有者のパスワード資格情報フローを構成する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 1b07825bd3ff46267764467bba815c1097278084
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726289"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401770"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
 リソース所有者のパスワード資格情報 (ROPC) フローは、OAuth の標準認証フローです。アプリケーションは、証明書利用者とも呼ばれ、ID トークン、アクセス トークン、および更新トークンのユーザー ID とパスワードなどの有効な資格情報を交換します。 
 
-> [!NOTE]
-> この機能はプレビュー段階にあります。
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Azure Active Directory (Azure AD) B2C では、次のオプションがサポートされています。
 
@@ -37,15 +36,15 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 
 ##  <a name="create-a-resource-owner-user-flow"></a>リソース所有者のユーザー フローを作成する
 
-1.  Azure AD B2C テナントの全体管理者として、Azure portal にサインインします。
-2.  Azure AD B2C テナントに切り替えるには、ポータルの右上隅で B2C ディレクトリを選択します。
-3.  **[User Flows]** をクリックし、**[新しいユーザー フロー]** を選択します。
-4.  **[すべて]** タブをクリックして、**[リソース所有者]** を選択します。
-5.  *ROPC_Auth* など、ユーザー フローの名前を入力します。
-6.  **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
-7.  [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
-8.  **[OK]** を選択し、**[作成]** を選択します。
-9.  **[ユーザー フローを実行します]** をクリックします。
+1. Azure AD B2C テナントの全体管理者として、Azure portal にサインインします。
+2. Azure AD B2C テナントに切り替えるには、ポータルの右上隅で B2C ディレクトリを選択します。
+3. **[User Flows]** をクリックし、**[新しいユーザー フロー]** を選択します。
+4. **[すべて]** タブをクリックして、**[ROPC を使用してサインイン]** を選択します。
+5. *ROPC_Auth* など、ユーザー フローの名前を入力します。
+6. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
+7. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
+8. **[OK]** を選択し、**[作成]** を選択します。
+9. **[ユーザー フローを実行します]** をクリックします。
 
    次の例のようなエンドポイントが表示されます。
 
@@ -83,7 +82,7 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 実際の POST 要求は次のようになります。
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
 Host: yourtenant.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

@@ -1,26 +1,26 @@
 ---
 title: Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 description: Mongoose フレームワークを使用して Azure Cosmos DB のデータを格納および管理する方法について説明します。
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: sngun
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: ec47c265c3d6f826bc1b7e7d8038e284c6981b7a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 23275bc639b445b55cafb72c929514541ba00660
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134932"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105949"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 
-このチュートリアルでは、Azure Cosmos DB にデータを格納するときに [Mongoose フレームワーク](https://mongoosejs.com/)を使用する方法について説明します。 このチュートリアルでは MongoDB API for Azure Cosmos DB を使用します。 知らない場合に備えて説明すると、Mongoose は、Node.js での MongoDB 用のオブジェクト モデル化フレームワークです。アプリケーション データをモデル化するための単純なスキーマベース ソリューションが提供されます。
+このチュートリアルでは、Cosmos DB にデータを格納するときに [Mongoose フレームワーク](https://mongoosejs.com/)を使用する方法を示します。 このチュートリアルでは、Azure Cosmos DB の MongoDB 用 API を使用します。 知らない場合に備えて説明すると、Mongoose は、Node.js での MongoDB 用のオブジェクト モデル化フレームワークです。アプリケーション データをモデル化するための単純なスキーマベース ソリューションが提供されます。
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
+Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 ドキュメント、キー/値、およびグラフ データベースをすばやく作成したり、クエリを実行したりでき、そのすべてで、Cosmos DB の中核にあるグローバル配信および水平スケール機能が活用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,9 +30,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 [Node.js](https://nodejs.org/) バージョン v0.10.29 以降
 
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
+## <a name="create-a-cosmos-account"></a>Cosmos アカウントを作成する
 
-それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「[Node.js アプリケーションをセットアップする](#SetupNode)」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「[Node.js アプリケーションをセットアップする](#SetupNode)」に進んでください。
+Cosmos アカウントを作成しましょう。 使用するアカウントが既にある場合は、「Node.js アプリケーションをセットアップする」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「Node.js アプリケーションをセットアップする」に進んでください。
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
@@ -49,15 +49,15 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 1. 新しいファイルをフォルダーに追加し、名前を ```index.js``` にします。
 1. 次の ```npm install``` オプションのいずれかを使用して、必要なパッケージをインストールします。
-    * Mongoose: ```npm install mongoose@5 --save```
+   * Mongoose: ```npm install mongoose@5 --save```
 
-    > [!Note]
-    > 以下の Mongoose の接続の例は Mongoose 5+ に基づいており、これはその前のバージョンから変更されています。
+     > [!Note]
+     > 以下の Mongoose の接続の例は Mongoose 5+ に基づいており、これはその前のバージョンから変更されています。
     
-    * Dotenv (.env ファイルからシークレットを読み込む場合): ```npm install dotenv --save```
+   * Dotenv (.env ファイルからシークレットを読み込む場合): ```npm install dotenv --save```
 
-    >[!Note]
-    > ```--save``` フラグによって、package.json ファイルに依存関係が追加されます。
+     >[!Note]
+     > ```--save``` フラグによって、package.json ファイルに依存関係が追加されます。
 
 1. index.js ファイルに依存関係をインポートします。
     ```JavaScript
@@ -73,7 +73,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     COSMOSDB_PASSWORD=cosmos-secret
     ```
 
-1. Mongoose フレームワークを使用して Azure Cosmos DB に接続するには、次のコードを index.js の末尾に追加します。
+1. index.js の最後に次のコードを追加することによって、Mongoose フレームワークを使用して Cosmos DB に接続します。
     ```JavaScript
     mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -89,9 +89,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     Azure Cosmos DB に接続したら、Mongoose でのオブジェクト モデルのセットアップを開始できます。
 
-## <a name="caveats-to-using-mongoose-with-azure-cosmos-db"></a>Azure Cosmos DB での Mongoose の使用に関する注意事項
+## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>Cosmos DB での Mongoose の使用に関する注意事項
 
-Mongoose では、ユーザーが作成するモデルごとに、新しい MongoDB コレクションが自動的に作成されます。 ただし、Azure Cosmos DB のコレクションごとの課金モデルの場合に、データがほとんど移入されていない複数のオブジェクト モデルがあると、最もコスト効果の高い方法にならない可能性があります。
+ユーザーが作成するすべてのモデルに対して、Mongoose は新しいコレクションを作成します。 ただし、Cosmos DB のコレクションごとの課金モデルの場合は、データがほとんど入力されていない複数のオブジェクト モデルが存在すると、それが最も費用対効果の高い方法ではない可能性があります。
 
 このチュートリアルでは 2 つのモデルを扱います。 最初は、コレクションごとに 1 種類のデータを格納するモデルについて説明します。 これは、Mongoose の標準の動作です。
 
@@ -101,7 +101,7 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
 
 ### <a name="one-collection-per-object-model"></a>オブジェクト モデルごとに 1 つのコレクション
 
-既定の Mongoose の動作では、オブジェクト モデルを作成するたびに MongoDB コレクションが作成されます。 このセクションでは、Azure Cosmos DB 対応の MongoDB でこれがどのように実現されるかを説明します。 この方法を Azure Cosmos DB でお勧めするのは、大容量のデータを含むオブジェクト モデルがある場合です。 これは、Mongoose の既定の処理モデルであり、Mongoose に関する知識があれば知っている可能性があります。
+既定の Mongoose の動作では、オブジェクト モデルを作成するたびに MongoDB コレクションが作成されます。 このセクションでは、Azure Cosmos DB の MongoDB 用 API でこれを実現する方法について説明します。 この方法は、大量のデータを含むオブジェクト モデルがある場合に推奨されます。 これは、Mongoose の既定の処理モデルであり、Mongoose に関する知識があれば知っている可能性があります。
 
 1. 再び、```index.js``` を開きます。
 
@@ -152,7 +152,7 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
     });
     ```
 
-1. 最後に、オブジェクトを Azure Cosmos DB に保存します。 これによりコレクションが自動的に作成されます。
+1. 最後に、そのオブジェクトを Cosmos DB に保存しましょう。 これによりコレクションが自動的に作成されます。
 
     ```JavaScript
     family.save((err, saveFamily) => {
@@ -161,31 +161,31 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
     ```
 
 1. 次に、別のスキーマとオブジェクトを作成します。 ここでは、家族連れ向けの行楽地 (Vacation Destinations) に対応するものを作成します。
-    1. 前回と同じように、まずスキーマを作成します。
-    ```JavaScript
-    const VacationDestinations = mongoose.model('VacationDestinations', new mongoose.Schema({
-        name: String,
-        country: String
-    }));
-    ```
+   1. 前回と同じように、まずスキーマを作成します。
+      ```JavaScript
+      const VacationDestinations = mongoose.model('VacationDestinations', new mongoose.Schema({
+       name: String,
+       country: String
+      }));
+      ```
 
-    1. サンプル オブジェクトを作成して保存します (このスキーマには複数のオブジェクトを追加できます)。
-    ```JavaScript
-    const vacaySpot = new VacationDestinations({
-        name: "Honolulu",
-        country: "USA"
-    });
+   1. サンプル オブジェクトを作成して保存します (このスキーマには複数のオブジェクトを追加できます)。
+      ```JavaScript
+      const vacaySpot = new VacationDestinations({
+       name: "Honolulu",
+       country: "USA"
+      });
 
-    vacaySpot.save((err, saveVacay) => {
-        console.log(JSON.stringify(saveVacay));
-    });
-    ```
+      vacaySpot.save((err, saveVacay) => {
+       console.log(JSON.stringify(saveVacay));
+      });
+      ```
 
-1. ここで、Azure Portal に移動すると、Azure Cosmos DB に 2 つのコレクションが作成されていることがわかります。
+1. ここで、Azure Portal に移動すると、Cosmos DB に作成された 2 つのコレクションに気が付きます。
 
-    ![Node.js チュートリアル - Azure Cosmos DB アカウントを示し、複数のコレクション名が強調表示されている Azure Portal のスクリーン ショット - Node データベース][mutiple-coll]
+    ![Node.js チュートリアル - Azure Cosmos DB アカウントを示し、複数のコレクション名が強調表示されている Azure portal のスクリーンショット - Node データベース][multiple-coll]
 
-1. 最後に、Azure Cosmos DB からデータを読み取ります。 既定の Mongoose 処理モデルを使用しているため、読み取り方法は Mongoose の他の読み取りと同じです。
+1. 最後に、Cosmos DB からデータを読み取りましょう。 既定の Mongoose 処理モデルを使用しているため、読み取り方法は Mongoose の他の読み取りと同じです。
 
     ```JavaScript
     Family.find({ 'children.gender' : "male"}, function(err, foundFamily){
@@ -195,7 +195,7 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Mongoose ディスクリミネーターを使用して 1 つのコレクションにデータを格納する
 
-この方法では、各 Azure Cosmos DB コレクションのコストを最適化するために [Mongoose ディスクリミネーター](https://mongoosejs.com/docs/discriminators.html)を使用します。 ディスクリミネーターによって、識別するための "キー" を定義することができ、このキーを使用して、さまざまなオブジェクト モデルでの格納、識別、フィルター処理が可能になります。
+この方法では、各コレクションのコストを最適化しやすくするために [Mongoose ディスクリミネーター](https://mongoosejs.com/docs/discriminators.html)を使用します。 ディスクリミネーターによって、識別するための "キー" を定義することができ、このキーを使用して、さまざまなオブジェクト モデルでの格納、識別、フィルター処理が可能になります。
 
 ここでは、ベース オブジェクト モデルを作成し、識別キーを定義し、ベース モデルに拡張子として 'Family' と 'VacationDestinations' を追加します。
 
@@ -251,44 +251,44 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
     ```
 
 1. 最後に、モデルのオブジェクトを作成して保存します。
-    1. 'Family' モデルにオブジェクトを追加します。
-    ```JavaScript
-    const family_common = new Family_common({
-        lastName: "Volum",
-        parents: [
-            { firstName: "Thomas" },
-            { firstName: "Mary Kay" }
-        ],
-        children: [
-            { firstName: "Ryan", gender: "male", grade: 8 },
-            { firstName: "Patrick", gender: "male", grade: 7 }
-        ],
-        pets: [
-            { givenName: "Blackie" }
-        ],
-        address: { country: "USA", state: "WA", city: "Seattle" }
-    });
+   1. 'Family' モデルにオブジェクトを追加します。
+      ```JavaScript
+      const family_common = new Family_common({
+       lastName: "Volum",
+       parents: [
+           { firstName: "Thomas" },
+           { firstName: "Mary Kay" }
+       ],
+       children: [
+           { firstName: "Ryan", gender: "male", grade: 8 },
+           { firstName: "Patrick", gender: "male", grade: 7 }
+       ],
+       pets: [
+           { givenName: "Blackie" }
+       ],
+       address: { country: "USA", state: "WA", city: "Seattle" }
+      });
 
-    family_common.save((err, saveFamily) => {
-        console.log("Saved: " + JSON.stringify(saveFamily));
-    });
-    ```
+      family_common.save((err, saveFamily) => {
+       console.log("Saved: " + JSON.stringify(saveFamily));
+      });
+      ```
 
-    1. 次に、'VacationDestinations' モデルにオブジェクトを追加し、保存します。
-    ```JavaScript
-    const vacay_common = new Vacation_common({
-        name: "Honolulu",
-        country: "USA"
-    });
+   1. 次に、'VacationDestinations' モデルにオブジェクトを追加し、保存します。
+      ```JavaScript
+      const vacay_common = new Vacation_common({
+       name: "Honolulu",
+       country: "USA"
+      });
 
-    vacay_common.save((err, saveVacay) => {
-        console.log("Saved: " + JSON.stringify(saveVacay));
-    });
-    ```
+      vacay_common.save((err, saveVacay) => {
+       console.log("Saved: " + JSON.stringify(saveVacay));
+      });
+      ```
 
 1. ここで、Azure Portal に戻ると、```alldata``` というコレクションが 1 つだけがあり、'Family' と 'VacationDestinations' 両方のデータが含まれていることがわかります。
 
-    ![Node.js チュートリアル - Azure Cosmos DB アカウントを示し、コレクション名が強調表示されている Azure Portal のスクリーン ショット - Node データベース][alldata]
+    ![Node.js チュートリアル - Azure Cosmos DB アカウントを示し、コレクション名が強調表示されている Azure portal のスクリーンショット - Node データベース][alldata]
 
 1. また、各オブジェクトには ```__type``` と呼ばれる別の属性があることも確認できます。これが 2 つの異なるオブジェクト モデルを区別するために使用されます。
 
@@ -300,7 +300,7 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
     });
     ```
 
-説明からわかるように、Mongoose ディスクリミネーターは容易に使用できます。 したがって、Mongoose フレームワークを使用するアプリがある場合、このチュートリアルを使用すれば、あまり多くの変更を必要とせずに、アプリケーションを Azure Cosmos DB 上の MongoDB API で実行できるようになります。
+説明からわかるように、Mongoose ディスクリミネーターは容易に使用できます。 そのため、Mongoose フレームワークを使用するアプリがある場合は、このチュートリアルを使用すると、それほど多くの変更を行わなくても Azure Cosmos の MongoDB 用 API を使用してアプリケーションを実行できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -308,7 +308,9 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
 
 ## <a name="next-steps"></a>次の手順
 
-「[MongoDB の機能と構文に対する MongoDB API サポート](mongodb-feature-support.md)」で、Azure Cosmos DB MongoDB API でサポートされる MongoDB の操作、演算子、ステージ、コマンド、オプションについて学びます。
+- Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
+- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学習します。
+- Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調査します。
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[mutiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

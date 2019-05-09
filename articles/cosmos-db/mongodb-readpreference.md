@@ -1,30 +1,29 @@
 ---
-title: Azure Cosmos DB MongoDB API で MongoDB 読み取り設定を使用する | Microsoft Docs
-description: Azure Cosmos DB MongoDB API で MongoDB 読み取り設定を使用する方法について説明します
-services: cosmos-db
-author: vidhoonv
-ms.author: sclyon
+title: Azure Cosmos DB の MongoDB 用 API を使用して MongoDB 読み取り設定を使用する
+description: Azure Cosmos DB の MongoDB 用 API を使用して MongoDB 読み取り設定を使用する方法について説明します
+author: sivethe
+ms.author: sivethe
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.openlocfilehash: 4f40a2dac04102a19be7b3209c6bf37be9252cde
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: dfb1e0093893fadf22c7a92ef5f351ae8920a977
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875350"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036462"
 ---
-# <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API で読み取り設定を使用してグローバルに読み取りを分配する方法 
+# <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して読み取りをグローバルに配布する方法について説明します
 
-この記事では、Azure Cosmos DB の MongoDB API で [MongoDB 読み取り設定](https://docs.mongodb.com/manual/core/read-preference/)を使用して読み取り操作をグローバルに分配する方法を示します。 
+この記事では、Azure Cosmos DB の MongoDB 用 API を使用して [MongoDB 読み取り設定](https://docs.mongodb.com/manual/core/read-preference/)で読み取り操作をグローバルに配布する方法について示します。
 
 ## <a name="prerequisites"></a>前提条件 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
-Azure Portal を使用して Azure Cosmos DB アカウントをグローバル配布でセットアップし、MongoDB API を使用して接続する手順については、この[クイック スタート](tutorial-global-distribution-mongodb.md)の記事を参照してください。
+Azure Portal を使用して Cosmos アカウントをグローバル配布で設定し、接続する手順については、この[クイック スタート](tutorial-global-distribution-mongodb.md)の記事を参照してください。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -52,10 +51,10 @@ cd mean
 npm install
 node index.js
 ```
-アプリケーションは MongoDB ソースに接続しようとしますが、接続文字列が無効であるために失敗します。 README の手順に従って、接続文字列 `url` を更新します。 また、`readFromRegion` を Azure Cosmos DB アカウントの読み取りリージョンに更新します。 次の手順は、NodeJS サンプルのものです。
+アプリケーションは MongoDB ソースに接続しようとしますが、接続文字列が無効であるために失敗します。 README の手順に従って、接続文字列 `url` を更新します。 また、`readFromRegion` を自分の Cosmos アカウントの読み取りリージョンに更新します。 次の手順は、NodeJS サンプルのものです。
 
 ```
-* Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos DB account's values. 
+* Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos account's values. 
 ```
 
 この手順を行うと、サンプル アプリケーションが実行され、次の出力が生成されます。
@@ -74,7 +73,7 @@ readFromSecondaryfunc query completed!
 
 ## <a name="read-using-read-preference-mode"></a>読み取り設定モードを使用した読み取り
 
-MongoDB には、クライアントが使用できる以下の読み取り設定モードがあります。
+MongoDB プロトコルには、クライアントが使用できる以下の読み取り設定モードがあります。
 
 1. PRIMARY
 2. PRIMARY_PREFERRED
@@ -82,7 +81,7 @@ MongoDB には、クライアントが使用できる以下の読み取り設定
 4. SECONDARY_PREFERRED
 5. NEAREST
 
-これらの読み取り設定モードの個々の動作の詳細については、[MongoDB 読み取り設定の動作](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior)に関するドキュメントを参照してください。 Azure Cosmos DB では、プライマリは WRITE リージョンにマップされ、セカンダリは READ リージョンにマップされます。
+これらの読み取り設定モードの個々の動作の詳細については、[MongoDB 読み取り設定の動作](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior)に関するドキュメントを参照してください。 Cosmos DB では、プライマリは WRITE リージョンにマップされ、セカンダリは READ リージョンにマップされます。
 
 一般的なシナリオに基づいて、次の設定を使用することをお勧めします。
 
@@ -137,7 +136,7 @@ MongoClient.connect(url, function(err, client) {
 
 ## <a name="read-using-tags"></a>タグを使用した読み取り
 
-MongoDB では、読み取り設定モードの他に、タグを使用して読み取り操作を指示することもできます。 Azure Cosmos DB for MongoDB API では、`region` タグは既定で `isMaster` 応答の一部として含まれています。
+MongoDB プロトコルでは、読み取り設定モードの他に、タグを使用して読み取り操作を指示することもできます。 Cosmos DB の MongoDB 用 API では、`region` タグは既定で `isMaster` 応答の一部として含まれています。
 
 ```json
 "tags": {
@@ -145,7 +144,7 @@ MongoDB では、読み取り設定モードの他に、タグを使用して読
       }
 ```
 
-そのため、MongoClient は `region` タグとリージョン名を使用して、読み取り操作を特定のリージョンに送ることができます。 Azure Cosmos DB アカウントの場合は、Azure Portal の左側の **[設定] -> [データをグローバルにレプリケート]** にリージョン名が表示されます。 この設定は、**読み取りの分離**を実現する場合に便利です。たとえば、クライアント アプリケーションに読み取り操作を特定のリージョンだけで行うようにさせる場合などです。 この設定は、実稼働ではない、分析的な種類のシナリオに適しています。バックグラウンドで実行され、運用上のクリティカルなサービスは含まれません。
+そのため、MongoClient は `region` タグとリージョン名を使用して、読み取り操作を特定のリージョンに送ることができます。 Cosmos アカウントの場合は、Azure Portal の左側の **[設定] -> [データをグローバルにレプリケート]** にリージョン名が表示されます。 この設定は、**読み取りの分離**を実現する場合に便利です。たとえば、クライアント アプリケーションに読み取り操作を特定のリージョンだけで行うようにさせる場合などです。 この設定は、実稼働ではない、分析的な種類のシナリオに適しています。バックグラウンドで実行され、運用上のクリティカルなサービスは含まれません。
 
 サンプル アプリケーションの次のスニペットは、NodeJS でタグを使用して読み取り設定を構成する方法を示しています。
 
@@ -160,7 +159,7 @@ MongoDB では、読み取り設定モードの他に、タグを使用して読
 
 他のプラットフォームについては、[.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference)、[Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference) など、対応するサンプル アプリケーションのリポジトリを参照してください。
 
-この記事では、Azure Cosmos DB の MongoDB API で読み取り設定を使用して読み取り操作をグローバルに分配する方法について説明しました。
+この記事では、Azure Cosmos DB の MongoDB 用 API で読み取り設定を使用して、読み取り操作をグローバルに配布する方法について説明しました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -172,5 +171,5 @@ MongoDB では、読み取り設定モードの他に、タグを使用して読
 ## <a name="next-steps"></a>次の手順
 
 * [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
-* [グローバルにレプリケートされる Azure Cosmos DB アカウントをセットアップし、MongoDB API で使用する](tutorial-global-distribution-mongodb.md)
-* [エミュレーターを使用したローカル開発](local-emulator.md)
+* [Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散型データベースを設定する](tutorial-global-distribution-mongodb.md)
+* [Azure Cosmos DB エミュレーターを使用したローカルでの開発](local-emulator.md)

@@ -10,17 +10,16 @@ ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b74a431664faa95e8be9c9ff90970fd6e7c0ec7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 90f78428601d7b039d00d39c1ca8339ab3ace9ba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048722"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020355"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザードでデータを簡単にコピーまたは移動する
 > [!NOTE]
@@ -41,7 +40,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常エンド
 > 
 > 
 
-このウィザードは、最初からビッグ データを考慮して設計されています。 数百個のフォルダー、ファイル、またはテーブルを移動する Data Factory パイプラインを、データのコピー ウィザードを使用して簡単かつ効率的に作成できます。 このウィザードは、自動データ プレビュー、スキーマのキャプチャとマッピング、およびデータのフィルター処理の 3 つの機能に対応しています。 
+このウィザードは、最初からビッグ データを考慮して設計されています。 数百個のフォルダー、ファイル、またはテーブルを移動する Data Factory パイプラインを、データのコピー ウィザードを使用して簡単かつ効率的に作成できます。 このウィザードは、自動データ プレビュー、スキーマのキャプチャとマッピング、データのフィルター処理の 3 つの機能をサポートしています。 
 
 ## <a name="automatic-data-preview"></a>自動データ プレビュー
 このコピー ウィザードでは、選択したデータ ソースのデータの一部を確認できるため、データがコピー対象の適切なデータであるかどうかを検証できます。 さらに、ソース データがテキスト ファイル内にある場合は、コピー ウィザードによってテキスト ファイルが解析され、行および列の区切り記号とスキーマが自動的に学習されます。 
@@ -94,5 +93,5 @@ Azure Data Factory コピー ウィザードを使用すると、通常エンド
 ![スケジュール プロパティ](./media/data-factory-copy-wizard/scheduling-properties.png)
 
 ## <a name="next-steps"></a>次の手順
-Data Factory コピー ウィザードを使用して、コピー アクティビティを含むパイプラインを作成する簡単なチュートリアルについては、 [コピー ウィザードを使用してパイプラインを作成する方法に関するチュートリアル](data-factory-copy-data-wizard-tutorial.md)をご覧ください。
+Data Factory コピー ウィザードを使用して、コピー アクティビティを含むパイプラインを作成する簡単なチュートリアルについては、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
 

@@ -12,17 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 02/21/2019
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 2bb9d69487b8576cdae60a1a613a341898495f06
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904087"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990522"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
+# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
 Azure Active Directory (Azure AD) を使用して、アプリを承認した後に受信する応答トークン内のロール要求の要求の種類をカスタマイズできます。
 
@@ -151,25 +152,32 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 8. **[属性]** テーブルを更新して、ロール要求のカスタマイズされたマッピングを定義します。
 
-9. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
+9. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性と要求]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
 
     | 属性名 | 属性名 |
     | -------------- | ----------------|
     | ロール名  | user.assignedroles |
 
-    a. **[属性の追加]** を選択して **[属性の追加]** ウィンドウを開きます。
+    >[!NOTE]
+    >ロール要求の値が null の場合、Azure AD はトークンでこの値を送信しません。これは、設計上の既定値です。
+
+    a. **[編集]** ボタンをクリックして、**[ユーザー属性]** ダイアログを開きます。
+
+      ![[属性の追加] ボタン](./media/active-directory-enterprise-app-role-management/editattribute.png)
+
+    b. **[属性の追加]** を選択し、**[ユーザー要求の管理]** ウィンドウを開きます。
 
       ![[属性の追加] ボタン](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
       ![[属性の追加] ウィンドウ](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. **[名前]** ボックスに、必要に応じて属性名を入力します。 この例では、要求名として**ロールの名前**を使用します。
-
-    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    c. **[名前]** ボックスに、必要に応じて属性名を入力します。 この例では、要求名として**ロールの名前**を使用します。
 
     d. **[名前空間]** ボックスは空白のままにします。
 
-    e. **[OK]** を選びます。
+    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
+
+    f. **[保存]** を選択します。
 
 10. ID プロバイダーによって開始されるシングル サインオンでアプリケーションをテストするには、[アクセス パネル](https://myapps.microsoft.com)にサインインし、アプリケーション タイルを選択します。 SAML トークンには、指定した要求の名前を持つ、そのユーザーに割り当てられているすべてのロールが表示されるはずです。
 

@@ -1,21 +1,20 @@
 ---
-title: Azure データ エクスプローラーでクラスターに接続できない
+title: Azure Data Explorer クラスターの接続障害のトラブルシューティング
 description: この記事では、Azure データ エクスプローラーでクラスターに接続する操作のトラブルシューティング手順について説明します。
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d10d39a65acd3664c99e8b5aa5cc015a76d9d1aa
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c71af799f614e9cd28221d79634666cbc3b2c987
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209379"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795258"
 ---
-# <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>トラブルシューティング: Azure データ エクスプローラーでクラスターに接続できない
+# <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>トラブルシューティング:Azure データ エクスプローラーでクラスターに接続できない
 
 Azure データ エクスプローラーでクラスターに接続できない場合は、次の手順に従います。
 
@@ -27,7 +26,7 @@ Azure データ エクスプローラーでクラスターに接続できない�
 
 1. クラスターが削除されていないことを確認します。サブスクリプションのアクティビティ ログを調べてください。
 
-1. [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/>)を確認します。 クラスターに接続しようしているリージョンの Azure データ エクスプローラーの状態を探します。
+1. [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)を確認します。 クラスターに接続しようしているリージョンの Azure データ エクスプローラーの状態を探します。
 
     状態が**正常** (緑色のチェック マーク) でない場合は、状態が改善されてから、クラスターに接続してみてください。
 

@@ -10,18 +10,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3b49959d167dbb735ebb9be9c75e91ef257c6a70
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c0017d0b0255f5b585f9d8e6f6ec2f3a12752625
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383835"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691489"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Apache Hive メモリ不足エラーの解決
 
 大きなテーブルを処理するときに Apache Hive で発生するメモリ不足 (OOM) エラーを、Hive のメモリ設定を構成することによって解決する方法を紹介します。
 
-## <a name="run-hive-query-against-large-tables"></a>大きなテーブルに対して Hive クエリを実行する
+## <a name="run-apache-hive-query-against-large-tables"></a>大きなテーブルに対して Apache Hive クエリを実行する
 
 ユーザーが次の Hive クエリを実行したとします。
 
@@ -85,19 +85,21 @@ Apache Tez 実行エンジンを使用したところ、 同じクエリの実�
 
 弊社サポート チームとエンジニアリング チームが共同で調査にあたったところ、メモリ不足エラーを引き起こしている問題の 1 つは、[Apache JIRA で説明されている既知の問題](https://issues.apache.org/jira/browse/HIVE-8306)であることを発見しました。
 
-    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesnt take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
+    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesn't take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
 
 hive-site.xml ファイルの **hive.auto.convert.join.noconditionaltask** が **true** に設定されていました。
 
-    <property>
-        <name>hive.auto.convert.join.noconditionaltask</name>
-        <value>true</value>
-        <description>
-              Whether Hive enables the optimization about converting common join into mapjoin based on the input file size.
-              If this parameter is on, and the sum of size for n-1 of the tables/partitions for a n-way join is smaller than the
-              specified size, the join is directly converted to a mapjoin (there is no conditional task).
-        </description>
-      </property>
+```xml
+<property>
+    <name>hive.auto.convert.join.noconditionaltask</name>
+    <value>true</value>
+    <description>
+            Whether Hive enables the optimization about converting common join into mapjoin based on the input file size.
+            If this parameter is on, and the sum of size for n-1 of the tables/partitions for a n-way join is smaller than the
+            specified size, the join is directly converted to a mapjoin (there is no conditional task).
+    </description>
+</property>
+```
 
 Java ヒープ領域のメモリ不足エラーの原因は、おそらく Map Join にあると考えられます。 [HDInsight の Hadoop Yarn メモリ設定](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)に関するブログの投稿で説明したように、Tez 実行エンジンを使用すると、使用されるヒープ領域は、実際には Tez コンテナーに属します。 Tez コンテナー メモリについて説明した次の図を参照してください。
 

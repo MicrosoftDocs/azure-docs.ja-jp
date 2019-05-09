@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 13ed37dddefc5e71e972248545c3e9242bd233ad
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9ede1b48d1b69c738e335676f10233af72e8564e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678202"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754423"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>クイック スタート: Python API で最初の Batch ジョブを実行する
+# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>クイック スタート:Python API で最初の Batch ジョブを実行する
 
 このクイック スタートでは、Azure Batch Python API に基づいて構築されたアプリケーションから Azure Batch ジョブを実行します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行するサンプル "*ジョブ*" を作成します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
  
@@ -64,8 +64,6 @@ _BATCH_ACCOUNT_URL = 'https://mybatchaccount.mybatchregion.batch.azure.com'
 _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
-
-[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
 
 ## <a name="run-the-app"></a>アプリの実行
 
@@ -155,7 +153,7 @@ Batch プールを作成するために、このアプリでは [PoolAddParamete
 
 ノードの数 (`_POOL_NODE_COUNT`) と VM のサイズ (`_POOL_VM_SIZE`) は、定義済みの定数です。 このサンプルでは、既定で、サイズ *Standard_A1_v2* の 2 つのノードで構成されるプールが作成されます。 推奨されるサイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
 
-[pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) メソッドは、プールを Batch サービスを送信します。
+[pool.add](/python/api/azure.batch.operations.pooloperations) メソッドは、プールを Batch サービスを送信します。
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -176,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Batch ジョブの作成
 
-Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 このアプリでは、[JobAddParameter](/python/api/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure.batch.operations.joboperations#azure_batch_operations_JobOperations_add) メソッドは、プールを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
+Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 このアプリでは、[JobAddParameter](/python/api/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure.batch.operations.joboperations) メソッドは、プールを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
 
 ```python
 job = batch.models.JobAddParameter(
@@ -189,7 +187,7 @@ batch_service_client.job.add(job)
 
 このアプリは、[TaskAddParameter](/python/api/azure.batch.models.taskaddparameter) クラスを使用して、タスク オブジェクトの一覧を作成します。 各タスクは、`command_line` プロパティを使用して入力の `resource_files` オブジェクトを処理します。 このサンプルのコマンド ラインでは、Bash シェルの `cat` コマンドを実行してテキスト ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
 
-その後、アプリは、[task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
+その後、アプリは、[task.add_collection](/python/api/azure.batch.operations.taskoperations) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
 
 ```python
 tasks = list()

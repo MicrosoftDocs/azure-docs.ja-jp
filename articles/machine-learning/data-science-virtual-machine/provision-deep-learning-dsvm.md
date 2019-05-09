@@ -9,18 +9,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 6963515958cd55314562e37ffc6ab1d8e0af5bee
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845190"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Azure でディープ ラーニング 仮想マシンをプロビジョニングする 
 
@@ -49,10 +49,10 @@ DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chaine
 > [!NOTE]
 > DLVM は、すべての NC および ND シリーズ GPU VM インスタンスをサポートしています。 DLVM をプロビジョニングするときには、GPU がある Azure 内の場所の 1 つを選択する必要があります。 選択できる場所については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**[コンピューティング]** で **NC シリーズ**、**NCv2 シリーズ**、**NCv3 シリーズ**、または **ND シリーズ**を探してください。 
 
-   2. **設定**:機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+1. **設定**:機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-   3. **概要**:入力したすべての情報が正しいことを確認します。
-   5. **[購入]**:プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
+1. **概要**:入力したすべての情報が正しいことを確認します。
+1. **[購入]**:プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
 
 > [!NOTE]
 > プロビジョニングには、10 ～ 20 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
@@ -66,7 +66,7 @@ VM を作成した後は、前述の **[基本]** セクションで作成した
 
 ### <a name="linux-edition"></a>Linux エディション
 
-VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows クライアントでは、[Putty](http://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
+VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows クライアントでは、[Putty](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
 
 > [!NOTE]
 > テストでは、パフォーマンスは、X11 転送よりも、X2Go クライアントの方が優れていました。 グラフィカル デスクトップ インターフェイスでは、X2Go クライアントを使用することをお勧めします。
@@ -76,7 +76,7 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 #### <a name="installing-and-configuring-x2go-client"></a>X2Go クライアントのインストールと構成
 Linux DLVM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
-1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
+1. [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
      * **[Host]\(ホスト\)**: Linux Data Science VM のホスト名または IP アドレス。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: b0cd20278287b41dd953c64044b705aa2dba7557
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318981"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820027"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にします
 
@@ -33,7 +33,7 @@ ms.locfileid: "52318981"
 
 VM がオンラインにあり、同じ仮想ネットワーク上の別の VM でアクセスできる場合、他の VM を使用してこれらを軽減策にできます。
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>軽減策 1: カスタム スクリプト拡張機能またはコマンド機能の実行
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>軽減策 1: カスタム スクリプト拡張機能または実行コマンド機能
 
 作動中の Azure エージェントがあれば、次のスクリプトをリモートで実行するのに[カスタム スクリプト拡張機能](../extensions/custom-script-windows.md)または[コマンドの実行](../windows/run-command.md)機能(Resource Manager Vm のみ)使用することができます。
 
@@ -70,7 +70,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
     ```
 
 > [!Note]
-> グループ ポリシー オブジェクトを介して、ファイアウォールを設定すると、このコマンドがローカル レジストリのエントリのみを変更するため、このメソッドは機能しません。 ポリシーがある場合、この変更が上書きされます。 
+> グループ ポリシー オブジェクトを介してファイアウォールを設定すると、このコマンドによってローカル レジストリ エントリのみが変更されるため、このメソッドは機能しません。 ポリシーがある場合、この変更が上書きされます。 
 
 #### <a name="mitigation-3-pstools-commands"></a>軽減策 3: PSTools コマンド
 
@@ -162,4 +162,4 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 10. [システム ディスクをデタッチし、VM を再作成します](troubleshoot-recovery-disks-portal-windows.md)。
 
-11. 問題が解決されているかどうかを確認します。
+11. 問題が解決しているかどうかを確認します。

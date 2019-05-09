@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: df4994475bf10fa902a2902b69b231821601d33b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58174343"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>チュートリアル: Cloudyn を使用してコストを管理する
 

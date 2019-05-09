@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387048"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997969"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -316,7 +316,7 @@ type | メトリックの実際のプロバイダーを識別します。
 class | "counter" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counter | "class" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counterSpecifier | Azure Metrics 名前空間内で特定のメトリックを識別します。
-condition | (省略可能) メトリックを適用するオブジェクトの特定のインスタンスを選択するか、そのオブジェクトのすべてのインスタンスの集計を選択します。 詳細については、[`builtin` メトリックの定義](#metrics-supported-by-builtin)を参照してください。
+condition | (省略可能) メトリックを適用するオブジェクトの特定のインスタンスを選択するか、そのオブジェクトのすべてのインスタンスの集計を選択します。 詳細については、`builtin` メトリックの定義を参照してください。
 sampleRate | このメトリックの生のサンプルが収集されるレートを設定する IS 8601 間隔。 設定されていない場合、収集間隔は [sampleRateInSeconds](#ladcfg) 値によって設定されます。 サポートされている最小サンプル レートは 15 秒 (PT15S) です。
 unit | 値は、"Count"、"Bytes"、"Seconds"、"Percent"、"CountPerSecond"、"BytesPerSecond"、"Millisecond" のいずれかの文字列である必要があります。 メトリックの単位を定義します。 収集されたデータのコンシューマーは、収集されたデータ値がこの単位に一致することを期待しています。 LAD はこのフィールドを無視します。
 displayName | Azure メトリックスのこのデータに添付されるラベル (関連付けられているロケール設定で指定された言語で記述) です。 LAD はこのフィールドを無視します。
@@ -386,7 +386,7 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 
 要素 | 値
 ------- | -----
-namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)によって実装されます。
+namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)によって実装されます。
 query | 実行される OMI クエリ。
 table | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
 frequency | (省略可能) クエリの実行間隔 (秒) 。 既定値は 300 (5 分) です。最小値は 15 秒です。

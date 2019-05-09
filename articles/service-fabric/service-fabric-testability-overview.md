@@ -4,7 +4,7 @@ description: この記事では、サービスに対して障害を誘発させ�
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: a4ddfc17a81a6816bc797bab4c3b5a8b2fc4334e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425240"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662355"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Fault Analysis Service の概要
 Fault Analysis Service は、Microsoft Azure Service Fabric で構築されたサービスをテストするために設計されています。 Fault Analysis Service を使用すると、アプリケーションに対して意味のある障害を誘発させ、完全なテスト シナリオを実行することができます。 これらのエラーとシナリオでは、サービスがその有効期間中に経験する多数の状態と遷移を、完全に管理された安全で一貫性のある方法で実行して検証します。
@@ -46,8 +46,8 @@ Fault Analysis Service は、Service Fabric クラスターで自動的に開始
 ## <a name="testing-distributed-systems"></a>分散システムをテストする
 Service Fabric を使用すると、スケーラブルな分散アプリケーションを作成する作業が大幅に簡単になります。 同様に、Fault Analysis Service を使用すると、分散アプリケーションのテストが簡単になります。 テスト時に解決する必要がある 3 つの主な問題があります。
 
-1. 現実世界のシナリオで発生する可能性のある障害のシミュレート/生成: Service Fabric の重要な側面の 1 つに、分散アプリケーションをさまざまな障害から回復できることがあります。 しかし、アプリケーションがこれらの障害から回復できることをテストするためには、制御されたテスト環境で現実世界の障害をシミュレート/生成するメカニズムが必要です。
-1. 相互関係がある障害を生成する機能: ネットワーク障害やコンピューター エラー障害などのシステムの基本的な障害は、個別に生成することは簡単です。 個々のエラーの相互作業の結果として、実際に発生する可能性がある無数のシナリオを生成することは、容易ではありません。
+1. 現実世界のシナリオで発生する可能性のある障害のシミュレートおよび生成: Service Fabric の重要な側面の 1 つに、分散アプリケーションをさまざまな障害から回復できることがあります。 しかし、アプリケーションがこれらの障害から回復できることをテストするためには、制御されたテスト環境で現実世界の障害をシミュレート/生成するメカニズムが必要です。
+1. 相互関係がある障害を生成する機能: ネットワーク障害やマシン障害などのシステムの基本的な障害は、個別に生成することは簡単です。 個々のエラーの相互作業の結果として、実際に発生する可能性がある無数のシナリオを生成することは、容易ではありません。
 1. 開発とデプロイのさまざまなレベルでのエクスペリエンスの統合: さまざまな種類の障害を生成できるフォールト インジェクション システムはたくさんあります。 ただし、ワンボックス開発者シナリオを使用して運用環境でのテストを行うことを目的として、同じテストを大規模なテスト環境で実行するには、これらのシステムのエクスペリエンスでは不十分です。
 
 これらの問題を解決するメカニズムはたくさんありますが、ワンボックス開発者環境から運用環境のクラスターでのテストに至るまで、必要な保証を常に提供しながら実行されるシステムはありません。 Fault Analysis Service を使用すると、アプリケーション開発者はビジネス ロジックのテストに集中できます。 Fault Analysis Service は、基盤となる分散システムでサービスの相互作用をテストするために必要なすべての機能を提供します。

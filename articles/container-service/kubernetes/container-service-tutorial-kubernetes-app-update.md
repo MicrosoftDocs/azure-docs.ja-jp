@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006253"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(非推奨) Kubernetes でアプリケーションを更新する
 
@@ -75,7 +75,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>ローカルでアプリケーションをテストする
 
-http://localhost:8080 に移動し、更新したアプリケーションを確認します。
+`http://localhost:8080` に移動し、更新したアプリケーションを確認します。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 

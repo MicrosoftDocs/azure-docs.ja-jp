@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: notebooks
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 96eb6a823299521a071edc87b5bce95409405ffb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b1618e2ac997445606ce98fc72a1ec35ca1280be
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096275"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59273670"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>クイック スタート:ノートブックの作成と共有
 
@@ -34,12 +34,12 @@ ms.locfileid: "53096275"
 
 1. 表示される **[新しいプロジェクトの作成]** ポップアップで、次の詳細を入力または設定した後、**[作成]** を選択します。
 
-    - **[プロジェクト名]**:Hello World in Python
-    - **[プロジェクト ID]**: hello-world-python
-    - **[Public project]\(パブリック プロジェクト\)**: (オフ)
-    - **[Create a README.md]\(README.md を作成する\)**: (オフ)
+   - **[プロジェクト名]**:Hello World in Python
+   - **[プロジェクト ID]**: hello-world-python
+   - **[Public project]\(パブリック プロジェクト\)**: (オフ)
+   - **[Create a README.md]\(README.md を作成する\)**: (オフ)
 
-    ![詳細が設定された新しいプロジェクト ポップアップ](media/quickstarts/new-project-popup.png)
+     ![詳細が設定された新しいプロジェクト ポップアップ](media/quickstarts/new-project-popup.png)
 
 1. しばらくすると、Azure Notebooks は新しいプロジェクトに移動します。 **[+ 新規]** ドロップダウン (**[+]** とだけ表示されている場合があります) を選択し、**[Notebook]\(ノートブック\)** を選択することで、新しいノートブックをプロジェクトに追加します。
 
@@ -93,7 +93,7 @@ ms.locfileid: "53096275"
 
     ![Jupyter Notebook のツール バーの保存アイコン](media/quickstarts/hello-results-save-icon.png)
 
-1. **[ファイル]** > **[Halt and close]\(停止して閉じる\)** メニュー コマンドを選択し、サーバーを停止してブラウザー ウィンドウを閉じます。
+1. **[ファイル]** > **[Close and Halt]\(閉じて停止\)** メニュー コマンドを選択し、サーバーを停止してブラウザー ウィンドウを閉じます。
 
 ## <a name="share-the-notebook"></a>ノートブックを共有する
 

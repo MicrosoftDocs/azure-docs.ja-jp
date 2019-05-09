@@ -4,7 +4,7 @@ description: Azure Service Fabric のイベント ストアについて
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b66373b6847b96a4fcbc1a0c9da42d285d089a9d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b8e1958947ced5ea2d0bd8b34667210bf935072d
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727887"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662909"
 ---
 # <a name="eventstore-service-overview"></a>EventStore サービスの概要
 
@@ -34,6 +34,7 @@ ms.locfileid: "52727887"
 * クラスターに対して行っている管理アクションが、正しく処理されていることの確認
 * Service Fabric が特定のエンティティと対話している方法の "スナップショット" の取得
 
+![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 EventStore で使用できるイベントの完全な一覧を確認するには、「[Service Fabric イベント](service-fabric-diagnostics-event-generation-operational.md)」を参照してください。
 
@@ -53,7 +54,7 @@ EventStore サービスでは、クラスター内のエンティティとエン
 * パーティション レプリカ: `partitionId` によって示される特定のパーティション内のすべてのレプリカ/インスタンスからのイベント
 * パーティション レプリカ: `replicaId` および `partitionId` によって示される特定のレプリカ/インスタンスのイベント
 
-API について詳しくは、「[EventStore API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)」のページをご覧ください。
+API について詳しくは、[EventStore API のリファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)に関するページをご覧ください。
 
 EventStore サービスは、クラスター内のイベントを関連付ける機能も備えています。 EventStore サービスは、相互に影響を与えた可能性がある異なるエンティティから同時に書き込まれたイベントを調べてそれらのイベントをリンクし、クラスター内で発生したアクティビティの原因の識別に役立てることができます。 たとえば、いずれかのアプリケーションが、誘発された変更を伴わず正常に動作しなくなった場合、EventStore で、プラットフォームによって公開されている他のイベントも調べて、これを `Error` または `Warning` イベントと関連付けることができます。 これは、より迅速な障害の検出と根本原因の分析に役立ちます。
 

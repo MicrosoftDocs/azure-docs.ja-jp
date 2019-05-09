@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0096a7a57cb4a404f5c8e36d8b69eac2c20c1fab
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 31330c3d2b10e6245db775da4039fd1948539df4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106017"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>チュートリアル: Azure Stream Analytics を IoT Edge モジュールとしてデプロイする
 
@@ -33,7 +33,8 @@ Azure Stream Analytics には、クラウド上と IoT Edge デバイス上の�
 > * Azure Stream Analytics ジョブを Azure portal から IoT Edge デバイスに展開します。
 
 <center>
-![ダイアグラム - アーキテクチャ、ステージ、および ASA ジョブのデプロイのチュートリアル](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+
+![図 - チュートリアルのアーキテクチャ、ASA ジョブのステージングとデプロイ](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 
@@ -65,7 +66,7 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
    | フィールド | 値 |
    | ----- | ----- |
    | Name | ストレージ アカウント用に一意の名前を指定します。 | 
-   | 場所 | 近くの場所を選択します。 |
+   | Location | 近くの場所を選択します。 |
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。 |
    | リソース グループ | IoT Edge のクイック スタートおよびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
 
@@ -215,9 +216,9 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
    ```cmd/sh
    iotedge list  
    ```
-<!--
+   <!--
    ![Docker output](./media/tutorial-deploy-stream-analytics/docker_output.png)
--->
+   -->
 1. すべてのシステム ログとメトリック データを表示します。 Stream Analytics モジュールの名前を使用してください。
 
    ```cmd/sh

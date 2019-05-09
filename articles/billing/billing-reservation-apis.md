@@ -1,7 +1,6 @@
 ---
 title: Azure の予約の自動化に関する API | Microsoft Docs
 description: 予約の情報をプログラムで取得するために使用できる Azure API について説明します。
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
-ms.author: cwatson
-ms.openlocfilehash: 01af1249039f8bfa1238cbbc12a77074e9347a39
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.date: 04/13/2019
+ms.author: banders
+ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263567"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008214"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -29,7 +28,7 @@ Azure API を使用して、Azure サービスまたはソフトウェアの予�
 
 組織の使用状況に基づいて購入する予約プランについての推奨事項を取得するには、Reservation Recommendation API を使用します。 詳細については、[予約についの推奨事項の取得](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)に関する記事をご覧ください。
 
-Consumption API の使用状況の詳細を使って、リソースの使用状況を分析することもできます。 詳細については、「[Usage Details - List For Billing Period By Billing Account](/rest/api/consumption/usagedetails/listforbillingperiodbybillingaccount)」(使用状況の詳細 - 請求期間に対する課金アカウント別のリスト) をご覧ください。 通常、一貫して使用する Azure リソースは、予約に最適な候補です。
+Consumption API の使用状況の詳細を使って、リソースの使用状況を分析することもできます。 詳細については、「[Usage Details - List For Billing Period By Billing Account](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod)」(使用状況の詳細 - 請求期間に対する課金アカウント別のリスト) をご覧ください。 通常、一貫して使用する Azure リソースは、予約に最適な候補です。
 
 ## <a name="buy-a-reservation"></a>予約の購入
 
@@ -55,7 +54,7 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 
 - 組織で作成されている仮想マシンが、予約での VM サイズと一致していることを確認します。
 - インスタンス サイズの柔軟性が有効になっていることを確認します。 詳細については、予約の管理に関する記事の「[予約 VM インスタンスの最適化設定を変更する](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)」をご覧ください。
-- より広範に適用されるように、予約範囲を共有に変更します。 詳細については、予約の管理に関する記事の「[予約のスコープを変更する](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation)」をご覧ください。
+- より広範に適用されるように、予約範囲を共有に変更します。 詳細については、予約の管理に関する記事の「[予約のスコープを変更する](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)」をご覧ください。
 - 未使用の数量を交換します。 詳細については、予約の管理に関する記事の「[Cancellations and exchanges](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges)」(キャンセルと交換) をご覧ください。
 
 ## <a name="give-access-to-reservations"></a>予約にアクセスできるようにする
@@ -68,7 +67,7 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 
 ## <a name="split-or-merge-reservation"></a>予約を分割または統合する
 
-予約内で複数のリソース インスタンスを購入した後、その予約内のインスタンスを異なるサブスクリプションに割り当てることができます。 同じ課金コンテキスト内のすべてのサブスクリプションに適用されるように、予約範囲を変更できます。 ただし、コスト管理や予算作成が目的の場合は、範囲を "1 つのサブスクリプション" に維持し、予約インスタンスを特定のサブスクリプションに割り当てるのが望ましいことがあります。 
+予約内で複数のリソース インスタンスを購入した後、その予約内のインスタンスを異なるサブスクリプションに割り当てることができます。 同じ課金コンテキスト内のすべてのサブスクリプションに適用されるように、予約範囲を変更できます。 ただし、コスト管理や予算作成が目的の場合は、範囲を "1 つのサブスクリプション" に維持し、予約インスタンスを特定のサブスクリプションに割り当てるのが望ましいことがあります。
 
 予約を分割するには、[予約分割](/rest/api/reserved-vm-instances/reservation/split) API を使用します。 PowerShell を使用して予約を分割することもできます。 詳細については、予約の管理に関する記事の「[1 つの予約を 2 つの予約に分割する](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations)」をご覧ください。
 
@@ -76,7 +75,7 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 
 ## <a name="change-scope-for-a-reservation"></a>予約の範囲を変更する
 
-予約のスコープは、単一のサブスクリプションになることもあれば、課金コンテキスト内のすべてのサブスクリプションになることもあります。 単一のサブスクリプションにスコープを設定した場合、選択したサブスクリプション内の実行中のリソースに対して予約が照合されます。 スコープを "共有" に設定した場合、課金コンテキスト内の全サブスクリプションで実行されるリソースに対して予約が照合されます。 課金コンテキストは、予約の購入に使用したサブスクリプションによって決まります。 詳細については、予約の管理に関する記事の「[予約のスコープを変更する](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation)」をご覧ください。
+予約のスコープは、単一のサブスクリプションになることもあれば、課金コンテキスト内のすべてのサブスクリプションになることもあります。 単一のサブスクリプションにスコープを設定した場合、選択したサブスクリプション内の実行中のリソースに対して予約が照合されます。 スコープを "共有" に設定した場合、課金コンテキスト内の全サブスクリプションで実行されるリソースに対して予約が照合されます。 課金コンテキストは、予約の購入に使用したサブスクリプションによって決まります。 詳細については、予約の管理に関する記事の「[予約のスコープを変更する](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)」をご覧ください。
 
 プログラムで範囲を変更するには、[予約更新](/rest/api/reserved-vm-instances/reservation/update) API を使用します。
 

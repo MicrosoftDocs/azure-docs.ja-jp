@@ -1,22 +1,20 @@
 ---
-title: Azure Dev Space を操作する場合のシークレットを管理する方法 | Microsoft Docs
+title: Azure Dev Space を操作する場合のシークレットを管理する方法
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
-ms.topic: article
-ms.technology: azds-kubernetes
+ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: e155b4151a3b974e9ccc56a88028a89c35896522
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9fe29e8717c76c353f3e95d4693011f3925c4e1b
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014003"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790709"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure Dev Space を操作する場合のシークレットを管理する方法
 

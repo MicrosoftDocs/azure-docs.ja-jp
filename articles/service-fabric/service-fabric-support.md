@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: 5d2edd3b4d8655133ef2835f0d0e579280123ae7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aa4fd391aef3acf8e72513d91b62c7f16a13062d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889439"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -72,7 +72,7 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
 
 <!--references-->
 [msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric
-[stackoverflow]: http://stackoverflow.com/questions/tagged/azure-service-fabric
+[stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
-[acom-docs]: http://aka.ms/servicefabricdocs
-[sample-repos]: http://aka.ms/servicefabricsamples
+[acom-docs]: https://aka.ms/servicefabricdocs
+[sample-repos]: https://aka.ms/servicefabricsamples

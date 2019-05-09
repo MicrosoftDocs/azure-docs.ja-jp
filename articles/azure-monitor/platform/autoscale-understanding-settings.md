@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: af7e280c7dcd82c18e91ded759756c3826342cd3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: autoscale
+ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53587348"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474831"
 ---
 # <a name="understand-autoscale-settings"></a>自動スケール設定について
 自動スケール設定を使用すると、アプリケーションの変動する負荷に対応するために適切な量のリソースを確実に実行できます。 負荷やパフォーマンスを示すメトリック、またはスケジュールされた日時にトリガーするメトリックに基づいてトリガーされるように自動スケール設定を構成できます。 この記事では、自動スケール設定の構造について詳しく説明します。 まず、設定のスキーマとプロパティについて取り上げ、構成可能なさまざまなプロファイルの種類についてわかりやすく説明します。 最後に、そのときどきで実行されるプロファイルが、Azure の自動スケール機能によって、どのように評価されるかを説明します。
@@ -310,3 +310,4 @@ ms.locfileid: "53587348"
 * [Azure Monitor の自動スケールのベスト プラクティス](../../azure-monitor/platform/autoscale-best-practices.md)
 * [自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [自動スケールの REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+

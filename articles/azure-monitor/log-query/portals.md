@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics におけるデータの表示と分析 | Microsoft Docs
-description: この記事では、Azure Log Analytics でのログ検索の作成および編集に使用できるポータルについて説明します。
+title: Azure Monitor におけるログ データの表示と分析 | Microsoft Docs
+description: この記事では、Azure portal で Log Analytics を使用して、Azure Monitor においてログ クエリを作成および編集する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,22 +10,19 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 04/05/2019
 ms.author: bwren
-ms.openlocfilehash: 9a5472a6dfc944eb793e863704897c92b1a7572e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183354"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798478"
 ---
-# <a name="viewing-and-analyzing-data-in-log-analytics"></a>Log Analytics におけるデータの表示と分析
-Azure portal には、Log Analytics に保存されたデータの分析とアドホック分析用のクエリ作成に使用できる 2 つのオプションがあります。 これらのポータルを使用して作成したクエリは、アラートやダッシュボードなどの他の機能で使用できます。
+# <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Azure Monitor におけるログ データの表示と分析
+Log Analytics は、Azure Monitor におけるログ データ操作とクエリ作成の主要なエクスペリエンスです。 **[Azure Monitor]** メニューの **[ログ]** から Log Analytics を開きます。 「[Azure portal で Log Analytics の使用を開始する](get-started-portal.md)」で、このポータルの概要を参照して、その機能を確認できます。
 
-## <a name="log-analytics-page"></a>Log Analytics ページ
-[Log Analytics] メニューの **[ログ]** から Log Analytics ページを開きます。 これは、ログ データ操作とクエリ作成の新しいエクスペリエンスです。 「[Get started with the Log Analytics page in the Azure portal (Azure portal の Log Analytics ページの概要)](../../azure-monitor/log-query/get-started-portal.md)」で、このポータルの概要を参照して、その機能を確認できます。
-
-Log Analytics ページは、[ログ検索 (クラシック)](#log-search-classic) エクスペリエンスに比べて、次の機能が強化されています。
+Log Analytics には、ログ クエリを操作するための次の機能が用意されています。
 
 * 複数のタブ - 複数のクエリを操作する個別のタブを作成します。
 * 豊富な視覚エフェクト - さまざまなグラフ作成オプション。
@@ -38,14 +35,14 @@ Log Analytics ページは、[ログ検索 (クラシック)](#log-search-classi
 * 列の選択 - クエリ結果の列の並べ替えとグループ化を行います。
 
 > [!NOTE]
-> Log Analytics ページには、Azure portal に含まれていない外部ツールである高度な分析ポータルと同じ機能があります。 高度な分析ポータルは引き続き使用できますが、Azure portal にある高度な分析ポータルへのリンクや他の参照は、この新しいページに置き換えられています。
+> Log Analytics には、Azure portal に含まれていない外部ツールである高度な分析ポータルと同じ機能があります。 高度な分析ポータルは引き続き使用できますが、Azure portal にある高度な分析ポータルへのリンクや他の参照は、この新しいページに置き換えられています。
 
-![高度な分析ポータル](media/portals/advanced-analytics-portal.png)
+![Log Analytics](media/portals/log-analytics.png)
 
-### <a name="resource-logs"></a>リソース ログ
-新しい Log Analytics のエクスペリエンスは、Virtual Machines などのさまざまな Azure リソースと統合されます。 つまり、Azure Monitor や Log Analytics に切り替えることなく、また、リソース コンテキストを失うことなく、リソースの監視メニューから直接 Log Analytics ページを開くことができます。 **[ログ]** は一部の Azure リソースではまだ有効になっていませんが、さまざまな種類のリソース用のポータル メニューに表示されるようになります。
+## <a name="resource-logs"></a>リソース ログ
+Log Analytics は Virtual Machines などのさまざまな Azure リソースと統合されます。 つまり、Azure Monitor に切り替えることなく、また、リソース コンテキストを失うことなく、リソースの監視メニューから直接 Log Analytics を開くことができます。 **[ログ]** は一部の Azure リソースではまだ有効になっていませんが、さまざまな種類のリソース用のポータル メニューに表示されるようになります。
 
-特定のリソースから Log Analytics を開くと、自動的にそのリソースのログ レコードのみにスコープが指定されます。   その他のレコードを含むクエリを記述する場合は、Log Analytics または Azure Monitor のメニューから開く必要があります。
+特定のリソースから Log Analytics を開くと、自動的にそのリソースのログ レコードのみにスコープが指定されます。   その他のレコードを含むクエリを記述する場合は、Azure Monitor メニューから開く必要があります。
 
 次のオプションは、Log Analytics のリソース ビューからはまだ利用できません。
 
@@ -55,26 +52,18 @@ Log Analytics ページは、[ログ検索 (クラシック)](#log-search-classi
 - 別のワークスペース/リソースへの切り替え (現時点では未計画)
 
 
-### <a name="firewall-requirements"></a>ファイアウォールの要件
-Log Analytics ページと高度な分析ポータルにアクセスするには、ブラウザーが次のアドレスにアクセスできる必要があります。  ブラウザーがファイアウォールを介して Azure Portal にアクセスしている場合は、これらのアドレスへのアクセスを有効にする必要があります。
+## <a name="firewall-requirements"></a>ファイアウォールの要件
+Log Analytics にアクセスするには、ブラウザーが次のアドレスにアクセスできる必要があります。  ブラウザーがファイアウォールを介して Azure Portal にアクセスしている場合は、これらのアドレスへのアクセスを有効にする必要があります。
 
-| Uri | IP | ポート |
+| Uri | IP | Port |
 |:---|:---|:---|
 | portal.loganalytics.io | 動的 | 80,443 |
 | api.loganalytics.io    | 動的 | 80,443 |
 | docs.loganalytics.io   | 動的 | 80,443 |
 
 
-## <a name="log-search-classic"></a>ログ検索 (クラシック)
-[Log Analytics] メニューの **[ログ (クラシック)]** または [Azure Monitor] メニューの **[Log Analytics]** からログ検索ページを開きます。 これは Log Analytics クエリを操作するために使用されるクラシック ページであり、上にリストされている [Log Analytics ページ](#log-analytics-page)の追加機能はありません。
-
-
-
-![ログ検索ページ](media/portals/log-search-portal.png)
-
-
 ## <a name="next-steps"></a>次の手順
 
-- [ログ検索の使用に関するチュートリアル](../../azure-monitor/learn/tutorial-viewdata.md)を参照して、クエリ言語を使用してクエリを作成する方法を学習します
-- Log Analytics ページと同じエクスペリエンスを提供する[高度な分析ポータルを使用してレッスン](../../azure-monitor/log-query/get-started-portal.md)を進めます。
+- [Log Analytics の使用に関するチュートリアル](../../azure-monitor/log-query/get-started-portal.md)を参照します。
+- [ログ検索の使用に関するチュートリアル](../../azure-monitor/learn/tutorial-viewdata.md)を参照します。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: c510bb060d5c0dc866c3802fab751c1cbeff3745
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 623ed10e155012780f039bf7b9148be34143454d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141533"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353279"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性のクロスプレミス接続および VNet 間接続
 この記事では、Azure VPN Gateway を使用したクロスプレミス接続と VNet 間接続の高可用性構成オプションの概要を説明します。
@@ -49,7 +49,8 @@ ms.locfileid: "42141533"
 3. この構成には BGP が必要です。 VPN デバイスを表す各ローカル ネットワーク ゲートウェイには、"BgpPeerIpAddress" プロパティに BGP ピアの一意の IP アドレスが指定されている必要があります。
 4. 各ローカル ネットワーク ゲートウェイの AddressPrefix プロパティ フィールドが重複しないようにする必要があります。 AddressPrefix フィールドには、/32 CIDR 形式で "BgpPeerIpAddress" を指定する必要があります (例: 10.200.200.254/32)。
 5. BGP を使用して、同じオンプレミス ネットワーク プレフィックスの同じプレフィックスを Azure VPN Gateway にアドバタイズする必要があります。トラフィックは、同時にこれらのトンネルを介して転送されます。
-6. 各接続は、Azure VPN Gateway のトンネルの最大数 (Basic と Standard SKU では 10、HighPerformance SKU では 30) にカウントされます。 
+6. 等コスト マルチパス ルーティング (ECMP) を使用する必要があります。
+7. 各接続は、Azure VPN Gateway のトンネルの最大数 (Basic と Standard SKU では 10、HighPerformance SKU では 30) にカウントされます。 
 
 この構成では、Azure VPN Gateway はアクティブ/スタンバイ モードのままです。そのため、[上](#activestandby)で説明したのと同じフェールオーバー動作と短い中断が発生します。 ただし、この設定により、オンプレミス ネットワークと VPN デバイスの障害や中断から保護されます。
 

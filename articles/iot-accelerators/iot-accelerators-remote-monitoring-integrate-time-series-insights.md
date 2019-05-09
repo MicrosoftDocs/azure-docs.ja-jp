@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights とリモート監視の統合 | Microsoft Docs
+title: Time Series Insights とリモート監視の統合 - Azure | Microsoft Docs
 description: このハウツーでは、Time Series Insights がまだ含まれていない既存のリモート監視ソリューションに Time Series Insights を構成する方法を説明します。
 author: aditidugar
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085152"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights とリモート監視の統合
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 次に、追加のリソースとして Time Series Insights をリモート監視ソリューションにデプロイし、IoT ハブに接続します。
 
-1. [Azure Portal](http://portal.azure.com/) にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 1. **[リソースの作成]** > **[モノのインターネット (IoT)]** > **[Time Series Insights]** を選択します。
 
@@ -62,8 +62,8 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
     | 環境名 | 次のスクリーン ショットでは、**contorosrmtsi** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
     | リソース グループ | **既存のものを使用します**。 既存のリモート監視リソース グループの名前を選択します。 |
-    | 場所 | **[米国東部]** を使用します。 可能な場合は、リモート監視ソリューションと同じリージョンに環境を作成します。 |
-    | SKU |**S1** |
+    | Location | **[米国東部]** を使用します。 可能な場合は、リモート監視ソリューションと同じリージョンに環境を作成します。 |
+    | Sku |**S1** |
     | 容量 | **1** |
 
     ![Time Series Insights を作成する](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
@@ -96,7 +96,8 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
     | IoT Hub ポリシー名 | **iothubowner**。使用するポリシーは、所有者ポリシーであることを確認してください。 |
     | IoT Hub ポリシー キー | このフィールドは自動的に設定されます。 |
     | IoT Hub コンシューマー グループ | **timeseriesinsights**。 |
-    | イベントのシリアル化の形式 | **JSON**     | タイムスタンプ プロパティ名 | 空白 |
+    | イベントのシリアル化の形式 | **JSON**     | 
+    | タイムスタンプ プロパティ名 | 空白 |
 
     ![イベント ソースを作成する](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
@@ -164,12 +165,13 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 
 .NET: 
 
-```
+```cmd/sh
 docker pull azureiotpcs/asa-manager-dotnet:1.0.2
 ```
 
 Java:
-```
+
+```cmd/sh
 docker pull azureiotpcs/asa-manager-java:1.0.2
 ```
 
@@ -178,13 +180,14 @@ docker pull azureiotpcs/asa-manager-java:1.0.2
 コマンド プロンプトに次のコマンドを入力して、最新のテレメトリ マイクロサービスをプルします。
 
 .NET:
-```
+
+```cmd/sh
 docker pull azureiotpcs/telemetry-dotnet:1.0.2
 ```
 
 Java:
 
-```
+```cmd/sh
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
@@ -192,7 +195,7 @@ docker pull azureiotpcs/telemetry-java:1.0.2
 
 Time Series Insights エクスプローラーでデータを簡単に表示するため、環境に簡単にリンクできるように UI をカスタマイズすることをお勧めします。 これを行うには、次のコマンドを使用して Web UI への最新の変更をプルします。
 
-```
+```cmd/sh
 docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 ```
 
@@ -220,7 +223,7 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 1. docker compose yaml ファイル内の各マイクロサービスと VM の `env-setup` のスクリプトに次の環境変数を追加します。
 
-    ```
+    ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
     PCS_TSI_FQDN={TSI Data Access FQDN}
     PCS_AAD_TENANT={AAD Tenant Id}
@@ -244,7 +247,7 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 1. TSI に次の新しい環境変数を追加するための構成マップを検索します。
 
-    ```
+    ```yaml
     telemetry.storage.type: "tsi"
     telemetry.tsi.fqdn: "{TSI Data Access FQDN}"
     security.auth.serviceprincipal.secret: "{AAD application service principal secret}"
@@ -252,7 +255,7 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 4. テレメトリ サービス ポッドのテンプレート yaml ファイルを編集します。
 
-    ```
+    ```yaml
     - name: PCS_AAD_TENANT
         valueFrom:
         configMapKeyRef:
@@ -282,7 +285,7 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 5. ASA マネージャー サービス ポッドのテンプレート yaml ファイルを編集します。
 
-    ```
+    ```yaml
     - name: PCS_TELEMETRY_STORAGE_TYPE
         valueFrom:
         configMapKeyRef:

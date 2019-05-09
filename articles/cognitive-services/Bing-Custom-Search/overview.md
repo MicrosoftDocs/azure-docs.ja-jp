@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 09/29/2017
+ms.date: 03/4/2019
 ms.author: aahi
-ms.openlocfilehash: 8dae58b1ae58a634ca6a566424a7c2d3fcf6add2
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: e788da047cb0567fc00f27130621a2f21e575dc4
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554607"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337738"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Custom Search API とは
 

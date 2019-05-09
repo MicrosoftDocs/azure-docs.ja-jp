@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: サービス プリンシパル構成のトラブルシューティング | Microsoft Docs'
+title: Azure Active Directory Domain Services:サービス プリンシパル構成のトラブルシューティング | Microsoft Docs
 description: Azure AD Domain Services 向けのサービス プリンシパル構成のトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
@@ -8,27 +8,27 @@ manager: ''
 editor: ''
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: bba7c70a5078d309a55f898c24389d42a8a604ab
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 5bed5dd19f6b736aca7ed2d551c8be0e6f03a810
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094543"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>マネージド ドメインの無効なサービス プリンシパル構成のトラブルシューティング
 
 この記事は、サービス プリンシパル関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。
 
-## <a name="alert-aadds102-service-principal-not-found"></a>アラート AADDS102: サービス プリンシパルが見つかりません
+## <a name="alert-aadds102-service-principal-not-found"></a>アラート AADDS102: Service Principal not found (サービス プリンシパルが見つかりません)
 
-**アラート メッセージ:** "*Azure AD Domain Services が正常に機能するために必要なサービス プリンシパルが Azure AD ディレクトリから削除されています。この構成は、マネージド ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。*"
+**アラート メッセージ:**"*Azure AD Domain Services が正常に機能するために必要なサービス プリンシパルが Azure AD ディレクトリから削除されています。この構成は、マネージド ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。*"
 
 [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)は、Microsoft がマネージド ドメインを管理、更新、および維持するために使用するアプリケーションです。 それらが削除されると、ドメインにサービスを提供する Microsoft の機能が中断します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "51035037"
 3. 次の表を使用して、各アプリケーション ID を検索ボックスに貼り付け、Enter キーを押して検索します。 検索結果が空の場合は、"解決策" 列の手順に従ってそのサービス プリンシパルを再作成する必要があります。
 
 | アプリケーション ID | 解決策 |
-| :--- | :--- | :--- |
+| :--- | :--- |
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [不足しているサービス プリンシパルを PowerShell を使用して再作成する](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Microsoft.AAD 名前空間に再登録する](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [Microsoft.AAD 名前空間に再登録する](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
@@ -87,7 +87,7 @@ Azure AD ディレクトリに ID が ```443155a6-77f3-45e3-882b-22b3a8d431fb```
 5. アラートが解決されたことを確認するには、2 時間後にマネージド ドメインの正常性ページを表示します。
 
 
-## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>アラート AADDS105: パスワード同期アプリケーションが古い
+## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>アラート AADDS105: Password synchronization application is out of date (パスワード同期アプリケーションの期限が切れています)
 
 **アラート メッセージ:** アプリケーション ID "d87dcbc6-a371-462e-88e3-28ad15ec4e64" のサービス プリンシパルは削除されましたが、その後再作成されました。 The recreation leaves behind inconsistent permissions on Azure AD Domain Services resources needed to service your managed domain. (再作成により、マネージド ドメインのサービスに必要な Azure AD Domain Services リソースに整合性のないアクセス許可が残っています。) Synchronization of passwords on your managed domain could be affected. (マネージド ドメインでのパスワードの同期が影響を受ける可能性があります。)
 

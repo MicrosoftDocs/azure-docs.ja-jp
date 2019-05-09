@@ -1,5 +1,5 @@
 ---
-title: Windows 用の Azure Log Analytics 仮想マシン拡張機能 | Microsoft Docs
+title: Windows 用の Azure Monitor 仮想マシン拡張機能 | Microsoft Docs
 description: 仮想マシン拡張機能を使用して、Windows 仮想マシンに Log Analytics エージェントをデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,16 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 12f7c52f916f385ddf95cf16aa89c4848ab7c118
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7c56b54f2d5be2bd47644e07369120468bb6015e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406604"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533699"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
+# <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Windows 用の Azure Monitor 仮想マシン拡張機能
 
-Log Analytics では、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics エージェント仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
+Azure Monitor ログでは、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics エージェント仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Azure Monitor 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -83,9 +85,9 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Log Analytics エージェント拡張機能を実行できます。 Log Analytics エージェント VM 拡張機能を含むサンプル テンプレートは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)にあります。 
 
-仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources)に関する記事を参照してください。 
+仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)に関する記事を参照してください。 
 
-次の例では、Log Analytics 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
+次の例では、Azure Monitor 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 
 
 ```json
@@ -140,13 +142,13 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-`Set-AzureRmVMExtension` コマンドを使用して、Log Analytics エージェント仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納しておく必要があります。 
+`Set-AzVMExtension` コマンドを使用して、Log Analytics エージェント仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納しておく必要があります。 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
 $ProtectedSettings = @{"workspaceKey" = "myWorkspaceKey"}
 
-Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
+Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.EnterpriseCloud.Monitoring" `
@@ -164,7 +166,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell モジュールを使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure PowerShell モジュールを使用して次のコマンドを実行します。
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。

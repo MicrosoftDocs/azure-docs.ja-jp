@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.component: alerts
-ms.openlocfilehash: 0f72097ad9e8b8675d78654c07a62fb6baf90f4a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 0ea34fe4862941bde882b3ea8ed5dbaa111ac742
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582305"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731497"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
@@ -146,7 +146,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
                     "currentHealthStatus": "Unavailable",
                     "previousHealthStatus": "Available",
                     "type": "Downtime",
-                    "cause": "PlatformInitiated",
+                    "cause": "PlatformInitiated"
                 },
                 "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
                 "resourceGroupName": "<resource group>",
@@ -201,3 +201,4 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 * [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS を送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
 * [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
 * [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
+
